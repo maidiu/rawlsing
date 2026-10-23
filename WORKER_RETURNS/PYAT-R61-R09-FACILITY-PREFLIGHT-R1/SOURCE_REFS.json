@@ -1,0 +1,110 @@
+{
+  "schema": "R61_R09F_SOURCE_REFS@1",
+  "startup": {
+    "repo": "maidiu/rawlsing",
+    "commit": "3470da602618b5c04b1f28885b5ad1835169e2d5",
+    "tree": "7f998e1618e1005425881e9083c368d613e01c40",
+    "parent": "1f28c38e700c07986e3ae1c30e3af2a5c9df0512",
+    "date": "2026-10-23 02:39:31 -0400",
+    "subject": "R61G seal productive repair review and facility commissions after user override",
+    "branch": "agent/opencode-pyat-r61-r09f-facility-preflight-r1",
+    "remote_ref": "refs/heads/agent/opencode-pyat-r61-r09f-facility-preflight-r1",
+    "remote_sha_at_start": "3470da602618b5c04b1f28885b5ad1835169e2d5"
+  },
+  "authority": {
+    "grant_commit": "3189a0db1433095c95bfe0294af53a40355fa1dd",
+    "grant_tree": "2ae00223e8f74f7a59c0ffd61f6508f793498d36",
+    "grant_date": "2026-10-23 01:20:45 -0400",
+    "grant_subject": "R61 seal immutable explicit repair grant checkpoint and manifest",
+    "user_grant_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/INPUTS/USER_GRANT.json",
+    "grade": "SOURCEFREE_TEST_ONLY"
+  },
+  "decision": {
+    "path": "PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/R61E_R09_ENGINEERING_DECISION.md",
+    "commit": "3470da602618b5c04b1f28885b5ad1835169e2d5",
+    "blob": "1e6aa84cb561545f866af131ec80c9b5448caa29"
+  },
+  "r09_independent_review": {
+    "commit": "25510c8d84f0ae5e452b301b017bdedf46f40b5c",
+    "tree": "e6cdffd0409d1651e7da91b3c82d7b32735bbf94",
+    "parent": "ef39f11e494745b90259fbc35ffc8eddfdbac01e",
+    "date": "2026-10-23 02:19:20 -0400",
+    "subject": "R61-R09V R2: independent review finds child-authored capture still accepted",
+    "branch": "agent/opencode-pyat-r61-r09v-r2-independent-review-r1",
+    "artifacts": {
+      "WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/00_RETURN.md": "c2632d2ce3e4fb7d7630d042591bcd211bc02928",
+      "WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/defects.md": "de6cea1b5543d8fbfabb0940c237af6b51fc2a6d",
+      "WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/proof_witness.json": "c0d275ac737a2f4da19a951a1b7e6707099bfec3",
+      "WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/evidence/probes_r2.json": "2187abb4611082584e1a1782ab25797f6c189af2",
+      "WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/EXPECTATIONS.md": "317fb937dc0b565695077c800c6eae51c299e06e"
+    }
+  },
+  "r09_candidate": {
+    "return_commit": "4a10c82aa8ba2a31938d3d35e12dc42f4456264c",
+    "return_tree": "ea3d86fa9760221805b82620a8c30125e1f7fb1c",
+    "return_parent": "77f8b4205d8a97f2e9f7ae9e93a3ff913c08a780",
+    "date": "2026-10-23 01:59:44 -0400",
+    "subject": "R61-R09 R2: record repair return, witnesses and manifest",
+    "code_commit": "77f8b4205d8a97f2e9f7ae9e93a3ff913c08a780",
+    "code_tree": "272fd70478b0a46d55ac4be29a2009d27228f7fb",
+    "code_parent": "048e6fe6d10a3ca2b8cf50f3c4aad5237b774e5b",
+    "date_code": "2026-10-23 01:56:29 -0400",
+    "subject_code": "R61-R09 R2: refuse subject observation overwrite by captured result",
+    "files": {
+      "CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py": "7af149e9d0e9cb2bc85c31d370145a86abf078b8",
+      "tests/universal_runner/native_c11_entry.py": "537f5c529d1966464d949e914f40f1b160053aad",
+      "tests/universal_runner/native_c11_case.py": "5727edbaddba2eab6bc91c4e5fb2917f26b296d2",
+      "tests/universal_runner/test_universal_runner_verify.py": "0e1a5725ceb4efcf78060bbd13257bc46321c140"
+    }
+  },
+  "native_owner": {
+    "repo": "maidiu/rawlsing",
+    "commit": "3470da602618b5c04b1f28885b5ad1835169e2d5",
+    "files": {
+      "rawlsing_next/pre553_c11_ingest.py": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "rawlsing_next/pre553_c11_repository.py": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3"
+    },
+    "callables": [
+      "validate_c11_source_release(candidate)",
+      "ingest_c11_source_release(candidate, repository)",
+      "C11Repository()",
+      "C11Repository.resolve_release_exact(ref)",
+      "C11Repository.resolve_object_exact(ref)"
+    ]
+  },
+  "controller": {
+    "repository": "maidiu/rawlsing-controller",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
+    "branch": "infra/r60-pyat-incumbent-client-r1",
+    "head": "c51b74b7a2a3d498c64387dc1ec95cb0c29a44b3",
+    "head_tree": "5270e00b71ecd2ccd0a26910da1bbff573ed9f0c",
+    "ref_first": {
+      "commit": "365a6a16c99a82851fdf70d084eccd13d27956d9",
+      "tree": "77bb8d3a7ac9cff30a994d566ac0ce563a20c631",
+      "date": "2026-10-22 23:31:42 -0400",
+      "subject": "Bank actual five-stage closed-loop success and budget refusal receipts"
+    },
+    "ref_second": {
+      "commit": "c51b74b7a2a3d498c64387dc1ec95cb0c29a44b3",
+      "tree": "5270e00b71ecd2ccd0a26910da1bbff573ed9f0c",
+      "date": "2026-10-23 01:18:39 -0400",
+      "subject": "Resume Pyat qualification after pre-review policy refusal without relaunching worker"
+    },
+    "ancestry": "365a6a16c99a82851fdf70d084eccd13d27956d9 is an ancestor of c51b74b7a2a3d498c64387dc1ec95cb0c29a44b3 (merge-base --is-ancestor exit 0; 4 commits).",
+    "files": {
+      "src/sandbox.ts": "5837f2274dba3b00ea2c24026a2ae13a677aa02e",
+      "src/sandbox-probe.ts": "204d5092cd4902bad9be2cc0d77ddc485af7b9d7",
+      "src/process-runner.ts": "b09c164efa66838f5b05f776d0ec82bb389267f2",
+      "src/trust.ts": "23e97ac69bb07484671031e4a14c82dc8db8bf04",
+      "src/pyat-client.ts": "aa869374bc80b45f34d14d4969b285f1f89d65ea",
+      "src/one-job-demo.ts": "82acadc80e1c85153eaa7b64d96a80855351effb",
+      "MAINMAC/CURRENT.md": "6e6e9ea0977df8210e9f04dcca2109e859f7b334",
+      "MAINMAC/REAL_CLOSED_LOOP_RECEIPT.json": "0b203d08741dff2c2df0f5e5c4a8fec93291f7bc",
+      "MAINMAC/REAL_BUDGET_REFUSAL.json": "cce185144779ec9dd6336402b86160ab26f92f8c",
+      "reports/SANDBOX_PROBE.json": "0447e33ed37bcb2311b085f074fe75d270e9ce46",
+      "CURRENT_STATUS.md": "d4d55985e3bd82de9771b2c77b75b24874e1874b"
+    }
+  },
+  "command_evidence": "COMMANDS_AND_EXITS.json",
+  "generated_utc": "2026-10-23T07:02:22Z"
+}

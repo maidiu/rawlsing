@@ -1,0 +1,303 @@
+{
+  "schema": "R61_R09F_FACILITY_INVENTORY@1",
+  "verdict": "FACILITY_GAP",
+  "verdict_scope": "Existing commissioned host/controller facility only; external CI/VM/issuer facilities are UNVERIFIED, not ABSENT.",
+  "generated_utc": "2026-10-23T07:02:22Z",
+  "authority": {
+    "grant": "3189a0db1433095c95bfe0294af53a40355fa1dd",
+    "grade": "SOURCEFREE_TEST_ONLY",
+    "intelligence": "I2-I3/S3 bounded engineering",
+    "holds": [
+      "no original respondent/source/science/production authority",
+      "no protected CI deployment",
+      "no N11/N12 or Sorok action",
+      "no J52/W52 wake",
+      "no provider/model/account change",
+      "no extra sessions or subagents"
+    ]
+  },
+  "startup": {
+    "commit": "3470da602618b5c04b1f28885b5ad1835169e2d5",
+    "tree": "7f998e1618e1005425881e9083c368d613e01c40",
+    "branch": "agent/opencode-pyat-r61-r09f-facility-preflight-r1",
+    "remote_ref": "refs/heads/agent/opencode-pyat-r61-r09f-facility-preflight-r1",
+    "remote_sha_at_start": "3470da602618b5c04b1f28885b5ad1835169e2d5",
+    "final_remote_verification": "REMOTE_VERIFICATION.md and final response"
+  },
+  "host": {
+    "platform": "Darwin",
+    "kernel": "22.3.0",
+    "os": "macOS 13.2.1",
+    "build": "22D68",
+    "architecture": "x86_64",
+    "uid": 501,
+    "user": "matthewsmith",
+    "gid": 20,
+    "group": "staff",
+    "python": "/usr/local/bin/python3 3.11.3",
+    "git": "2.39.2 (Apple Git-143)"
+  },
+  "facilities": [
+    {
+      "name": "docker",
+      "state": "ABSENT",
+      "evidence": "/usr/bin/which docker exit 1",
+      "consequence": "No local Docker/container boundary available from this host."
+    },
+    {
+      "name": "podman",
+      "state": "ABSENT",
+      "evidence": "/usr/bin/which podman exit 1",
+      "consequence": "No local Podman/container boundary available from this host."
+    },
+    {
+      "name": "colima",
+      "state": "ABSENT",
+      "evidence": "/usr/bin/which colima exit 1",
+      "consequence": "No local Colima VM/container boundary available from this host."
+    },
+    {
+      "name": "limactl",
+      "state": "ABSENT",
+      "evidence": "/usr/bin/which limactl exit 1",
+      "consequence": "No local Lima VM boundary available from this host."
+    },
+    {
+      "name": "sandbox-exec",
+      "state": "PRESENT_UNQUALIFIED",
+      "path": "/usr/bin/sandbox-exec",
+      "evidence": [
+        "/usr/bin/which sandbox-exec exit 0",
+        "/bin/ls -l /usr/bin/sandbox-exec shows root:wheel 0755",
+        "no-argument usage exits 64",
+        "controller src/sandbox.ts uses it only through probeSandbox; tests/scenarios.ts A22 invokes the probe",
+        "controller reports/SANDBOX_PROBE.json records file/credential denial PASS and network NOT_RUN"
+      ],
+      "consequence": "A path-profile primitive exists and its probe is useful, but it is not wired into worker/runtime execution, does not create a separate principal, does not address same-UID process access, and its profile allows process* and mach-lookup. It is not a qualified broker boundary."
+    },
+    {
+      "name": "external CI/VM/issuer facility",
+      "state": "UNVERIFIED",
+      "evidence": "Not observed or inspected in this bounded host inventory.",
+      "consequence": "No absence claim. An external disposable facility would need its own exact qualification."
+    }
+  ],
+  "same_uid_secret_exposure": {
+    "state": "NOT_EXCLUDED",
+    "observed": [
+      "/Users/matthewsmith/Desktop/Rawlsing_Controller/.local-logs/shared-runtime is 0700 matthewsmith:staff",
+      "shared-runtime/pyat/harness.key is 0600 matthewsmith:staff",
+      "shared-runtime/pyat/grant.key is 0600 matthewsmith:staff",
+      "shared-runtime/pyat/trust.json is 0600 matthewsmith:staff",
+      "shared-runtime/controller.sqlite is 0600 matthewsmith:staff",
+      "candidate and controller run as uid 501"
+    ],
+    "interpretation": "Owner-only DAC does not exclude another process running as the same owner. No access test was performed and no credential content was read. No separate UID/service/VM process-access exclusion exists in the observed configuration.",
+    "missing": "A protection domain that is not uid 501, or an actually qualified same-UID process/file exclusion."
+  },
+  "controller_assets": [
+    {
+      "path": "src/kernel.ts",
+      "role": "durable controller kernel / grants / commissions / effects",
+      "state": "PRESENT",
+      "limit": "Scheduling and receipt authority; not a protected execution boundary."
+    },
+    {
+      "path": "src/db.ts",
+      "role": "SQLite persistence",
+      "state": "PRESENT",
+      "limit": "Payloads may contain private prompts; only metadata/source were inspected."
+    },
+    {
+      "path": "src/grants.ts",
+      "role": "signed grant registration/check",
+      "state": "PRESENT",
+      "limit": "Issuer keys are local same-UID files."
+    },
+    {
+      "path": "src/trust.ts",
+      "role": "grant signature verification, harness attestation, repository binding",
+      "state": "PRESENT",
+      "limit": "Local trust root; no external issuer admission service; harness key is read by the same-UID parent."
+    },
+    {
+      "path": "src/process-runner.ts",
+      "role": "bounded argv spawn, env allowlist, checkout binding, process-group ownership, redaction",
+      "state": "PRESENT",
+      "limit": "Useful process custody, but spawns as the same user with no uid/gid/sandbox separation."
+    },
+    {
+      "path": "src/sandbox.ts",
+      "role": "darwin sandbox-exec profile and probe",
+      "state": "PRESENT_UNQUALIFIED",
+      "blob": "5837f2274dba3b00ea2c24026a2ae13a677aa02e",
+      "limit": "Used by probe only; no runtime wiring; process* and mach-lookup allowed; same-UID process access untested."
+    },
+    {
+      "path": "src/pyat-client.ts",
+      "role": "R60 Pyat qualification client and containment attestation",
+      "state": "PRESENT",
+      "blob": "aa869374bc80b45f34d14d4969b285f1f89d65ea",
+      "limit": "Containment is explicitly PYAT_R60_LOCAL_TEST_UNPROVEN / NOT_ATTESTED / isolation UNPROVEN."
+    }
+  ],
+  "receipts": {
+    "MAINMAC/REAL_CLOSED_LOOP_RECEIPT.json": {
+      "blob": "0b203d08741dff2c2df0f5e5c4a8fec93291f7bc",
+      "status": "ACCEPTED_SCOPED",
+      "verdict": "PASS",
+      "effects": [
+        "WORKER:SUCCEEDED",
+        "REVIEW:SUCCEEDED",
+        "HQ:SUCCEEDED"
+      ],
+      "worker_candidate_sha": "9560860b9e0d746344085f99a49cd125b19dbc5e",
+      "isolation": "UNPROVEN",
+      "interpretation": "Real controller/model execution and receipt handling; not protected native capture."
+    },
+    "MAINMAC/REAL_BUDGET_REFUSAL.json": {
+      "blob": "cce185144779ec9dd6336402b86160ab26f92f8c",
+      "code": "DEMO_HOLD/ONE_JOB_BUDGET_EXHAUSTED",
+      "generating_calls": 0,
+      "effects_unchanged": true,
+      "interpretation": "Bounded refusal works; unrelated to native boundary."
+    },
+    "reports/SANDBOX_PROBE.json": {
+      "sandbox_exec_available": true,
+      "allowed_read": true,
+      "forbidden_read_denied": true,
+      "forbidden_write_denied": true,
+      "fake_credential_read_denied": true,
+      "network_status": "NOT_RUN",
+      "interpretation": "File/credential probe evidence only. It is not a broker, not runtime-wired, and does not test same-UID process access."
+    }
+  },
+  "native_owner_interfaces": [
+    {
+      "path": "rawlsing_next/pre553_c11_ingest.py",
+      "blob_at_startup": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "callables": [
+        "validate_c11_source_release(candidate)",
+        "ingest_c11_source_release(candidate, repository)"
+      ],
+      "state": "PRESENT_IN_PROCESS",
+      "limit": "Real owner code, but no separately pinned broker runtime."
+    },
+    {
+      "path": "rawlsing_next/pre553_c11_repository.py",
+      "blob_at_startup": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+      "callables": [
+        "C11Repository()",
+        "C11Repository.resolve_release_exact(ref)",
+        "C11Repository.resolve_object_exact(ref)"
+      ],
+      "state": "PRESENT_IN_PROCESS",
+      "limit": "Exact-ref repository, but currently instantiated/used inside the candidate-controlled child."
+    }
+  ],
+  "r09_capture": {
+    "review_commit": "25510c8d84f0ae5e452b301b017bdedf46f40b5c",
+    "review_verdict": "REVISE/HOLD for independent capture",
+    "candidate_commit": "77f8b4205d8a97f2e9f7ae9e93a3ff913c08a780",
+    "verifier_blob": "7af149e9d0e9cb2bc85c31d370145a86abf078b8",
+    "native_entrypoint_blob": "537f5c529d1966464d949e914f40f1b160053aad",
+    "defects": {
+      "P1": "json.dump monkeypatch reports actual 41 as 42; accepted LOCAL_NATIVE_VERIFIED.",
+      "P2": "substituted source compiles with benign filename/digest and reports 42 while loaded code returns 41; accepted.",
+      "P5": "caller-constructed self-root accepted; no external trust-root admission.",
+      "D7": "non-serializable expectation raises TypeError instead of a typed refusal."
+    },
+    "source_exclusions": [
+      "LOCAL_SUBPROCESS_NOT_A_HOSTILE_CODE_SANDBOX",
+      "SAME_UID_CAN_REWRITE_VERIFIER_OR_RUNTIME",
+      "TRUST_ROOT_MUST_BE_HELD_OUTSIDE_SUBJECT_CONTROL"
+    ],
+    "transport": "Child writes observation.json; parent reads it and HMAC-seals the child-authored payload.",
+    "interpretation": "Same-interpreter capture remains forgeable. The C11 positive and grant/ledger controls are useful scoped assets but not the missing boundary."
+  },
+  "three_questions": {
+    "q1_candidate_excluded_from_broker_runtime_and_secrets": {
+      "answer": "NOT_SATISFIED",
+      "observed": "All observed principals are uid 501; keys are 0600 same-UID; no broker UID/process separation; sandbox-exec is probe-only.",
+      "missing": "Protected broker principal/filesystem/process domain."
+    },
+    "q2_separately_pinned_native_owner_runtime": {
+      "answer": "NOT_SATISFIED",
+      "observed": "C11 callables exist and a real scoped positive exists; they run inside the candidate child in R09.",
+      "missing": "Broker-owned pinned owner root and broker-executed owner call."
+    },
+    "q3_request_receipt_channel_with_external_issuer_admission": {
+      "answer": "NOT_SATISFIED",
+      "observed": "HMAC harness attestation and signed grants exist; R09 trust root is caller-constructed; child authors the observation.",
+      "missing": "Declarative broker request protocol, broker-authored signed receipt, externally pinned issuer admission."
+    }
+  },
+  "missing_primitive": {
+    "name": "separately protected native-owner execution broker",
+    "requirements": [
+      "candidate cannot read/write broker code, receipt ledger or issuer key; same-UID process access excluded",
+      "separately pinned approved owner code and exact inputs resolved by the broker",
+      "validated declarative operation requests; no candidate-supplied call names/code/digests/results",
+      "broker captures its own return object and emits an issuer-authenticated receipt",
+      "verifier pins issuer identity/public key and checks owner code/input/policy/K/run/nonce/sequence and real consumer ref",
+      "atomic nonce/cold replay and typed malformed-input refusal preserved"
+    ],
+    "non_claim": "Broker execution proves broker invocation, not arbitrary internal candidate calls. A stronger observation claim would require a separately qualified runtime/instrumentation mechanism."
+  },
+  "competent_owner": [
+    "host/platform administrator for disposable VM or dedicated non-admin service UID, ownership/ACLs, process isolation and local socket",
+    "R09/CI engineering for broker protocol, pinned owner loader, receipt/ledger and verifier",
+    "repository administrator for pinned owner code root and any separately granted protected-CI integration"
+  ],
+  "minimum_permission": [
+    "host administrator authorization to create one disposable environment (macOS VM preferred; alternatively one dedicated non-admin r61-broker UID on a disposable host) with two principals",
+    "repository administrator authorization to place approved owner code at a read-only non-candidate-writable pinned path",
+    "authority to create an Ed25519 receipt key in the broker/issuer domain and pin its public key in the verifier",
+    "no production credentials, provider changes, live worker dispatch or protected-CI deployment"
+  ],
+  "smallest_disposable_qualification": {
+    "environment": "one disposable sourcefree VM or host with candidate principal and broker principal",
+    "broker_root": "/opt/r61-broker owned by broker, 0700; owner snapshot read-only 0500; issuer.key 0600; ledger 0600; Unix socket 0660 with peer-UID check",
+    "request_schema": "R61_R09_BROKER_REQUEST@1",
+    "operations": [
+      "C11_INGEST_SOURCE_RELEASE",
+      "C11_RESOLVE_RELEASE_EXACT"
+    ],
+    "receipt_schema": "R61_R09_BROKER_RECEIPT@1",
+    "required_cases": [
+      "positive C11 ingest/repository with independently computed expected result",
+      "real same-request consumer resolution",
+      "P1 json.dump forgery refused",
+      "P2 loader/substituted-source forgery refused",
+      "wrong owner code/commit/tree refused",
+      "wrong input/policy/K/issuer refused",
+      "wrong nonce/sequence and cold replay refused",
+      "candidate key/broker-root read/write attempts refused",
+      "D7 malformed typed input refused without crash",
+      "consumer assertion mutation fails; restoration re-passes"
+    ],
+    "acceptance": "Only exact broker receipts for exact requests are accepted; candidate cannot author observations or obtain signing material; no arbitrary-internal-call claim."
+  },
+  "unverified_not_absent": [
+    "external CI runner / protected branch / required check",
+    "external VM/container host not on this machine",
+    "external key service or institutionally authenticated issuer",
+    "network isolation (controller probe explicitly NOT_RUN)"
+  ],
+  "absent_observed": [
+    "docker",
+    "podman",
+    "colima",
+    "limactl",
+    "broker process/source",
+    "separate non-uid-501 service principal",
+    "externally pinned issuer admission channel in the observed controller"
+  ],
+  "non_claims": [
+    "No universal absence of external facilities.",
+    "No claim that sandbox-exec or a container around the same wrapper protects Python instrumentation.",
+    "No claim that same-UID file permissions isolate a candidate.",
+    "No claim that external broker execution proves arbitrary internal candidate calls.",
+    "No architecture/science/production/source/N11/N12/Sorok adoption."
+  ]
+}

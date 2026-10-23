@@ -1,0 +1,79 @@
+{
+  "schema": "R61_R09F_PROOF_WITNESS@1",
+  "verdict": "FACILITY_GAP",
+  "evidence_index": [
+    {
+      "claim": "Startup commit and branch were exact before work.",
+      "artifact": "COMMANDS_AND_EXITS.json",
+      "commands": [
+        "git -C <workspace> rev-parse HEAD",
+        "git -C <workspace> branch --show-current"
+      ],
+      "observed": {
+        "commit": "3470da602618b5c04b1f28885b5ad1835169e2d5",
+        "branch": "agent/opencode-pyat-r61-r09f-facility-preflight-r1"
+      }
+    },
+    {
+      "claim": "The direct remote branch matched startup at launch.",
+      "artifact": "COMMANDS_AND_EXITS.json and REMOTE_VERIFICATION.md",
+      "observed": "3470da602618b5c04b1f28885b5ad1835169e2d5"
+    },
+    {
+      "claim": "No local container/VM CLI is installed on the commissioned host.",
+      "artifact": "COMMANDS_AND_EXITS.json",
+      "commands": [
+        "which docker",
+        "which podman",
+        "which colima",
+        "which limactl"
+      ],
+      "observed": "all exit 1 (ABSENT)"
+    },
+    {
+      "claim": "sandbox-exec is present but unqualified and probe-only.",
+      "artifact": "COMMANDS_AND_EXITS.json; controller src/sandbox.ts; controller reports/SANDBOX_PROBE.json",
+      "observed": "/usr/bin/sandbox-exec exists; no-arg usage exits 64; only probeSandbox uses it; probe reports file/credential denials and network NOT_RUN; runtime wiring absent"
+    },
+    {
+      "claim": "Controller secrets are same-UID files, not protected from a same-UID candidate.",
+      "artifact": "COMMANDS_AND_EXITS.json",
+      "commands": [
+        "stat shared-runtime",
+        "stat shared-runtime/pyat/harness.key",
+        "stat shared-runtime/pyat/grant.key",
+        "stat shared-runtime/pyat/trust.json",
+        "stat shared-runtime/controller.sqlite"
+      ],
+      "observed": "all owner matthewsmith:staff; shared-runtime 0700; keys/DB 0600; candidate uid 501"
+    },
+    {
+      "claim": "Controller loop receipts prove scheduling/receipts, not protected capture.",
+      "artifact": "controller MAINMAC/REAL_CLOSED_LOOP_RECEIPT.json and MAINMAC/CURRENT.md",
+      "observed": "WORKER/REVIEW/HQ SUCCEEDED; ACCEPTED_SCOPED; isolation UNPROVEN"
+    },
+    {
+      "claim": "R09 independent review established same-interpreter capture forgery.",
+      "artifact": "25510c8d84f0ae5e452b301b017bdedf46f40b5c:WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/defects.md",
+      "observed": "P1 actual 41 reported as 42; P2 substituted source with benign digest; both accepted; P5 self-root accepted; D7 crash"
+    },
+    {
+      "claim": "The R09 supervisor parent reads a child-authored observation and seals it.",
+      "artifact": "77f8b4205d8a97f2e9f7ae9e93a3ff913c08a780:CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py",
+      "observed": "LocalNativeSupervisor.observe writes config/wrapper in temp dir, child writes observation.json, parent reads it and HMAC-seals payload"
+    },
+    {
+      "claim": "Native C11 owner callables exist but are not a separately pinned protected runtime.",
+      "artifact": "rawlsing_next/pre553_c11_ingest.py; rawlsing_next/pre553_c11_repository.py; R09 native_c11_entry.py",
+      "observed": "ingest_c11_source_release(candidate, repository), C11Repository.resolve_release_exact(ref); invoked inside candidate child in R09"
+    }
+  ],
+  "non_claims": [
+    "No universal absence of external CI/VM/issuer facilities.",
+    "No claim that sandbox-exec or a container around the same Python wrapper protects Python instrumentation.",
+    "No claim that same-UID DAC isolates a candidate.",
+    "No claim that broker execution proves arbitrary internal candidate calls.",
+    "No rerun of the controller pilot or live worker dispatch.",
+    "No source/science/production/N11/N12/Sorok adoption."
+  ]
+}

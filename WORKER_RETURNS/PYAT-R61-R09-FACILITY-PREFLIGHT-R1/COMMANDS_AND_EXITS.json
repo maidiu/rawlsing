@@ -1,0 +1,776 @@
+{
+  "schema": "R61_R09F_COMMANDS_AND_EXITS@1",
+  "generated_utc": "2026-10-23T06:56:51.346851+00:00",
+  "workspace": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+  "controller_workspace": "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
+  "python": "/usr/local/bin/python3",
+  "note": "Exact argv and observed exits; full stdout is represented by SHA256/size, with a bounded first line. No credential or SQLite payload was read.",
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9d00745aa4fe99429fa989bf312230df391207a3bf49c2077e86515a0c44d870",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "3470da602618b5c04b1f28885b5ad1835169e2d5",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "branch",
+        "--show-current"
+      ],
+      "exit": 0,
+      "stdout_sha256": "63fb0b7d44781d9136547c52b1ec9f660e947e07da282d56526caf32145f2580",
+      "stdout_bytes": 51,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "agent/opencode-pyat-r61-r09f-facility-preflight-r1",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "status",
+        "--porcelain"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8e5926a363d524d6f6a9e56a691912f4eb129b21da3716e77ee331672c4ef88e",
+      "stdout_bytes": 54,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "?? WORKER_RETURNS/PYAT-R61-R09-FACILITY-PREFLIGHT-R1/",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "ls-remote",
+        "origin",
+        "refs/heads/agent/opencode-pyat-r61-r09f-facility-preflight-r1"
+      ],
+      "exit": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "6fdb1babe382cdcbb5eb2e79964dc2f42d3174b2289565f376e86d8fea271a17",
+      "stderr_bytes": 12,
+      "stdout_first_line": "",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/id"
+      ],
+      "exit": 0,
+      "stdout_sha256": "16fdbc27583acc851d31c07b7adee752c8ac46b1a838d57e1dccc940c67f3dec",
+      "stdout_bytes": 331,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "uid=501(matthewsmith) gid=20(staff) groups=20(staff),12(everyone),61(localaccounts),79(_appserverusr),80(admin),81(_appserveradm),98(_lpadmin),33(_appstore),100(_lpoperator),204(_developer),250(_analyticsusers),395(com.apple.access_ftp),398(com.apple.access_screensharing),399(com.apple.access_ssh),4",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/uname",
+        "-a"
+      ],
+      "exit": 0,
+      "stdout_sha256": "71a9bfa06bbaa8807d690ba3327fdf7ae98901eda372bb0ed845ad690ee869de",
+      "stdout_bytes": 133,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "Darwin MacBook-Pro.lan 22.3.0 Darwin Kernel Version 22.3.0: Mon Jan 30 20:42:11 PST 2023; root:xnu-8792.81.3~2/RELEASE_X86_64 x86_64",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/sw_vers"
+      ],
+      "exit": 0,
+      "stdout_sha256": "708e297b2801ded388696568e6fed0a3c816f1b7514b0ef6fe831cde37631b99",
+      "stdout_bytes": 65,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "ProductName:\t\tmacOS",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/which",
+        "docker"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/which",
+        "podman"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/which",
+        "colima"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/which",
+        "limactl"
+      ],
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/which",
+        "sandbox-exec"
+      ],
+      "exit": 0,
+      "stdout_sha256": "d9dda174a7ff0875a7933dc21af0ace3240a4ed6dc597ea4b3ff86c07d85cfd8",
+      "stdout_bytes": 22,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "/usr/bin/sandbox-exec",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/bin/ls",
+        "-l",
+        "/usr/bin/sandbox-exec"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f54eab04395ab5e57482cdaa2865ff0635fe4c16d9b67a77ad49468109a6f558",
+      "stdout_bytes": 69,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "-rwxr-xr-x  1 root  wheel  151712 Feb  9  2023 /usr/bin/sandbox-exec",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/sandbox-exec"
+      ],
+      "exit": 64,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "d95a023feb6245f69772e4e4878bd442dd8b0626970d2c82d2e73bffee5a42c4",
+      "stderr_bytes": 301,
+      "stdout_first_line": "",
+      "stderr_first_line": "Usage: sandbox-exec [options] command [args]"
+    },
+    {
+      "argv": [
+        "/usr/local/bin/python3",
+        "--version"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ee7191b195dad2cc1b86f0919fc9c578f079bdbcc8be0a65f040bf2b40efb0c8",
+      "stdout_bytes": 14,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "Python 3.11.3",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "--version"
+      ],
+      "exit": 0,
+      "stdout_sha256": "2c8bf78e09979271d0f6671e1089fc2d53d60961f296a6fd58b31483e56ecab3",
+      "stdout_bytes": 35,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "git version 2.39.2 (Apple Git-143)",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/stat",
+        "-f",
+        "%Sp %Su:%Sg %z %N",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller/.local-logs/shared-runtime"
+      ],
+      "exit": 0,
+      "stdout_sha256": "a18ee6cbb9f971e441a4a8eafd8a655b52ce2bb5f7b5718ffa3cf98d5315c513",
+      "stdout_bytes": 109,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "drwx------ matthewsmith:staff 128 /Users/matthewsmith/Desktop/Rawlsing_Controller/.local-logs/shared-runtime",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/stat",
+        "-f",
+        "%Sp %Su:%Sg %z %N",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller/.local-logs/shared-runtime/pyat/harness.key"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0188feaf4dd3fd5a0e23e303a20e60e1a3a3521552c27ca1850d6dc1718e4e54",
+      "stdout_bytes": 126,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "-rw------- matthewsmith:staff 119 /Users/matthewsmith/Desktop/Rawlsing_Controller/.local-logs/shared-runtime/pyat/harness.key",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/stat",
+        "-f",
+        "%Sp %Su:%Sg %z %N",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller/.local-logs/shared-runtime/pyat/grant.key"
+      ],
+      "exit": 0,
+      "stdout_sha256": "832be972ccfe969806eaeb02b1969c012f38f2336c781c65ec46839600fc3a0c",
+      "stdout_bytes": 124,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "-rw------- matthewsmith:staff 119 /Users/matthewsmith/Desktop/Rawlsing_Controller/.local-logs/shared-runtime/pyat/grant.key",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/stat",
+        "-f",
+        "%Sp %Su:%Sg %z %N",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller/.local-logs/shared-runtime/pyat/trust.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "499bd64fe40fb77004e4ac4ff37fe0d61c9997b547e276dfd1bc4e845d3eb7e8",
+      "stdout_bytes": 126,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "-rw------- matthewsmith:staff 1273 /Users/matthewsmith/Desktop/Rawlsing_Controller/.local-logs/shared-runtime/pyat/trust.json",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/stat",
+        "-f",
+        "%Sp %Su:%Sg %z %N",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller/.local-logs/shared-runtime/controller.sqlite"
+      ],
+      "exit": 0,
+      "stdout_sha256": "b3b56223061e26bd373895b023da2149458f95d696faac0c2d53ce678bf1f36e",
+      "stdout_bytes": 130,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "-rw------- matthewsmith:staff 274432 /Users/matthewsmith/Desktop/Rawlsing_Controller/.local-logs/shared-runtime/controller.sqlite",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller",
+        "merge-base",
+        "--is-ancestor",
+        "365a6a16c99a82851fdf70d084eccd13d27956d9",
+        "c51b74b7a2a3d498c64387dc1ec95cb0c29a44b3"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller",
+        "show",
+        "-s",
+        "--format=%H %T %ci %s",
+        "365a6a16c99a82851fdf70d084eccd13d27956d9"
+      ],
+      "exit": 0,
+      "stdout_sha256": "83c1bc126a80a79cd6627413ea5d54d80510e1bc1e50d9601a8962f6a6f30c32",
+      "stdout_bytes": 179,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "365a6a16c99a82851fdf70d084eccd13d27956d9 77bb8d3a7ac9cff30a994d566ac0ce563a20c631 2026-10-22 23:31:42 -0400 Bank actual five-stage closed-loop success and budget refusal receipts",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller",
+        "show",
+        "-s",
+        "--format=%H %T %ci %s",
+        "c51b74b7a2a3d498c64387dc1ec95cb0c29a44b3"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ba8921f160b82dfb17b799080df1080bd2403a55fd253a6c76db88ea408d179c",
+      "stdout_bytes": 193,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "c51b74b7a2a3d498c64387dc1ec95cb0c29a44b3 5270e00b71ecd2ccd0a26910da1bbff573ed9f0c 2026-10-23 01:18:39 -0400 Resume Pyat qualification after pre-review policy refusal without relaunching worker",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit": 0,
+      "stdout_sha256": "867dcbb796d1c38ec6fafde32e6809f4fa44ca81d4c73c9d25d097599d6f2e69",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "c51b74b7a2a3d498c64387dc1ec95cb0c29a44b3",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
+        "rev-parse",
+        "HEAD:src/sandbox.ts"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ba8c1c2a3c1237de5f7e29ab261f2c411993d6f115da6469b525ef464740fe3c",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "5837f2274dba3b00ea2c24026a2ae13a677aa02e",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
+        "rev-parse",
+        "HEAD:src/process-runner.ts"
+      ],
+      "exit": 0,
+      "stdout_sha256": "32eb190e4e3aa9489a890892f87737e5a19254e9e3e26d26e01d3551745c0813",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "b09c164efa66838f5b05f776d0ec82bb389267f2",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
+        "rev-parse",
+        "HEAD:src/trust.ts"
+      ],
+      "exit": 0,
+      "stdout_sha256": "60904f7838efdeb5ff55f0b676eefb5d96a46ff1971d6b64462ca02c1273b31a",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "23e97ac69bb07484671031e4a14c82dc8db8bf04",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
+        "rev-parse",
+        "HEAD:src/pyat-client.ts"
+      ],
+      "exit": 0,
+      "stdout_sha256": "9fc2a97365859814da468ce194fa579d0e0b0beca3b6071d7dbe4c2340dcd9ea",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "aa869374bc80b45f34d14d4969b285f1f89d65ea",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
+        "rev-parse",
+        "HEAD:MAINMAC/REAL_CLOSED_LOOP_RECEIPT.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "6032e1292626b30b57425410ee93b6f44bb27f938be590e534398e4d53ab2f12",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "0b203d08741dff2c2df0f5e5c4a8fec93291f7bc",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
+        "rev-parse",
+        "HEAD:MAINMAC/REAL_BUDGET_REFUSAL.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e8984471183f605de82b270a07cf2becb38790a4b89f7c75a47947ffc993e1b4",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "cce185144779ec9dd6336402b86160ab26f92f8c",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
+        "show",
+        "HEAD:reports/SANDBOX_PROBE.json"
+      ],
+      "exit": 0,
+      "stdout_sha256": "4d701e60607fe6b877f9a3c7a387aee0c60b10a0a3e12bcc1a9046447933c9ab",
+      "stdout_bytes": 2091,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "{",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
+        "show",
+        "HEAD:MAINMAC/CURRENT.md"
+      ],
+      "exit": 0,
+      "stdout_sha256": "8d0f8aea7c98f5e6af597d8cf1a1806bd1850be23e60746532f98ad6b104f917",
+      "stdout_bytes": 4460,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "# R59 actual disposable loop \u2014 PASS",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "show",
+        "HEAD:PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/R61E_R09_ENGINEERING_DECISION.md"
+      ],
+      "exit": 0,
+      "stdout_sha256": "890476b0b3936a7a115b8e96946a41549f6294f69677205e6a63560452e7e8b4",
+      "stdout_bytes": 8569,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "# R61E \u2014 bounded R09 engineering disposition",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "show",
+        "-s",
+        "--format=%H %T %ci %s",
+        "3189a0db1433095c95bfe0294af53a40355fa1dd"
+      ],
+      "exit": 0,
+      "stdout_sha256": "5fb8c14c9e1884ed0de3b03632cd5c7e96a7ef32fd46eb4a90314f7ac28b7d89",
+      "stdout_bytes": 173,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "3189a0db1433095c95bfe0294af53a40355fa1dd 2ae00223e8f74f7a59c0ffd61f6508f793498d36 2026-10-23 01:20:45 -0400 R61 seal immutable explicit repair grant checkpoint and manifest",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "rev-parse",
+        "25510c8d84f0ae5e452b301b017bdedf46f40b5c^{tree}"
+      ],
+      "exit": 0,
+      "stdout_sha256": "98c1dd9de6186b80cb16f41fa20df4ef4df8e1bd7ca51c2ea7821cc96632993d",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "e6cdffd0409d1651e7da91b3c82d7b32735bbf94",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "rev-parse",
+        "77f8b4205d8a97f2e9f7ae9e93a3ff913c08a780^{tree}"
+      ],
+      "exit": 0,
+      "stdout_sha256": "007a09bf94fff1bae506608659257b9e5c5569fdf1ec0030f749630e674dc66d",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "272fd70478b0a46d55ac4be29a2009d27228f7fb",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "rev-parse",
+        "25510c8d84f0ae5e452b301b017bdedf46f40b5c:WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/00_RETURN.md"
+      ],
+      "exit": 0,
+      "stdout_sha256": "4cc8d1d63569523314db9b7e187295c8c10ed20eae261b2d8cbf947f6337894d",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "c2632d2ce3e4fb7d7630d042591bcd211bc02928",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "rev-parse",
+        "25510c8d84f0ae5e452b301b017bdedf46f40b5c:WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/defects.md"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ed8bd98ecfbd07c19dabeadc79666b421f8c0323d3476a2b5282615f9279b2cd",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "de6cea1b5543d8fbfabb0940c237af6b51fc2a6d",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "rev-parse",
+        "77f8b4205d8a97f2e9f7ae9e93a3ff913c08a780:CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py"
+      ],
+      "exit": 0,
+      "stdout_sha256": "f7fbfa296576d24b858ba7b70d4bf1a41bda3c84ea0c987761e1e97d4864aacc",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "7af149e9d0e9cb2bc85c31d370145a86abf078b8",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "rev-parse",
+        "77f8b4205d8a97f2e9f7ae9e93a3ff913c08a780:tests/universal_runner/native_c11_entry.py"
+      ],
+      "exit": 0,
+      "stdout_sha256": "b09ab3d3942a40132c5ffa4aee326b2be413e7b6617e8005499bf8bf560f623c",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "537f5c529d1966464d949e914f40f1b160053aad",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "rev-parse",
+        "77f8b4205d8a97f2e9f7ae9e93a3ff913c08a780:tests/universal_runner/native_c11_case.py"
+      ],
+      "exit": 0,
+      "stdout_sha256": "bbca948b853b8e30b510ddd709ba7313235482ede4630f741ea8b36c6ba5617c",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "5727edbaddba2eab6bc91c4e5fb2917f26b296d2",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "rev-parse",
+        "HEAD:rawlsing_next/pre553_c11_ingest.py"
+      ],
+      "exit": 0,
+      "stdout_sha256": "28e30bcbd1b2e1e44a1c08acdf150111c0452bbec7db55708761377770236123",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "rev-parse",
+        "HEAD:rawlsing_next/pre553_c11_repository.py"
+      ],
+      "exit": 0,
+      "stdout_sha256": "ebab593d72d52c991eea02fde34629796d8f3574775eaa0af87becf91e66214b",
+      "stdout_bytes": 41,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "show",
+        "25510c8d84f0ae5e452b301b017bdedf46f40b5c:WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/00_RETURN.md"
+      ],
+      "exit": 0,
+      "stdout_sha256": "afd439e11edef37659bb0e79b92bb7f57b36d6cd9d8dc7bf1e39782e193783f5",
+      "stdout_bytes": 9314,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "# R61-R09V R2 \u2014 independent hostile review return",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "show",
+        "25510c8d84f0ae5e452b301b017bdedf46f40b5c:WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/defects.md"
+      ],
+      "exit": 0,
+      "stdout_sha256": "49300f2632d9f1f4191bc8dd8b8cdd022f73b04862dc0556b38cf824f68495de",
+      "stdout_bytes": 6580,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "# R61-R09V R2 ranked reproducible defects",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "show",
+        "77f8b4205d8a97f2e9f7ae9e93a3ff913c08a780:CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py"
+      ],
+      "exit": 0,
+      "stdout_sha256": "3cf9f5e7d07c110a47fff75c02d4169590060daf24518be95d46ddebf9103b8d",
+      "stdout_bytes": 38061,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "#!/usr/bin/env python3",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "show",
+        "77f8b4205d8a97f2e9f7ae9e93a3ff913c08a780:tests/universal_runner/native_c11_entry.py"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0760df1104b4b2c1edb16a04c69b4b8f966ebd166016475e04adaa4e92309f64",
+      "stdout_bytes": 850,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "\"\"\"Execute the existing C11 ingest/repository owner on a sourcefree fixture.\"\"\"",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "show",
+        "HEAD:rawlsing_next/pre553_c11_ingest.py"
+      ],
+      "exit": 0,
+      "stdout_sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf",
+      "stdout_bytes": 40034,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "\"\"\"Package-atomic C11 source ingest for PRE553 Wave-02 I02.",
+      "stderr_first_line": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "-C",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09f",
+        "show",
+        "HEAD:rawlsing_next/pre553_c11_repository.py"
+      ],
+      "exit": 0,
+      "stdout_sha256": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e",
+      "stdout_bytes": 5278,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stdout_first_line": "\"\"\"Deterministic file-neutral logical C11 repository for PRE553 Wave-02 I02.",
+      "stderr_first_line": ""
+    }
+  ]
+}
