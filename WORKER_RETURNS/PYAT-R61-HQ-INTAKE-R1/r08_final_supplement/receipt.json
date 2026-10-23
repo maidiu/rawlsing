@@ -1,0 +1,88 @@
+{
+  "observed_utc": "2026-10-23T06:03:05.695348+00:00",
+  "earlier_review_candidate": "ad9c3088096ce291d61dfdd292141073b515fbca",
+  "actual_final_author_candidate": "7beffc6d86bcd5585a63ea2c1afa6262bc9ca208",
+  "review_input": "1cc09784b007f63b2e486091466530f427900510",
+  "old_module_blob": "464a2190a811816c52e9d9c244ab126dc950c564",
+  "final_module_blob": "cd95f672d922e09fd4d1fa6114f26d800aee4027",
+  "new_author_report_hashes": {
+    "00_RETURN.md": true,
+    "RESUME.md": true,
+    "junit.xml": true,
+    "proof_witness.json": true
+  },
+  "mechanical_native_replay": [
+    {
+      "case": "baseline",
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "-o",
+        "addopts=",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v/WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/probes/test_r08v_baseline.py",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08/.r61/reconciliation/baseline.xml"
+      ],
+      "exit_code": 0,
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "case": "hostile",
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "-o",
+        "addopts=",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v/WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/probes/test_r08v_hostile.py",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08/.r61/reconciliation/hostile.xml"
+      ],
+      "exit_code": 1,
+      "tests": 8,
+      "failures": 7,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "grade": "HQ_REPLAY_OF_EXISTING_INDEPENDENT_PROBES_NOT_NEW_INDEPENDENT_REVIEW",
+  "direct_remote": "7beffc6d86bcd5585a63ea2c1afa6262bc9ca208\trefs/heads/agent/opencode-pyat-r61-r08-evidence-binding-r1",
+  "failure_kinds": [
+    {
+      "test": "test_wrong_condition_rebind_must_not_authenticate_p1_producer",
+      "message_prefix": "AssertionError: request K names POSITION occurrence/value P2 but the bound actual producer is P1; got SUPPORTED, denominator 60, values={'schema': 'R61_EVIDENCE_CONSUMER_VALUES_REA"
+    },
+    {
+      "test": "test_wrong_typed_value_rebind_must_not_authenticate_p1_producer",
+      "message_prefix": "AssertionError: request K names a BOOLEAN True condition value but the bound actual producer conditions on string P1; got SUPPORTED, denominator 60"
+    },
+    {
+      "test": "test_null_and_integer_value_rebind_must_not_authenticate_p1_producer",
+      "message_prefix": "AssertionError: request K names typed value None but the bound actual producer conditions on string P1; got SUPPORTED"
+    },
+    {
+      "test": "test_wrong_edition_direction_role_design_clock_rebind_must_refuse",
+      "message_prefix": "AssertionError: request K changed edition/digest/as-of/direction/role/design/weight/source but the same forward P1 actual producer was accepted; got SUPPORTED, denominator 60"
+    },
+    {
+      "test": "test_extra_and_reordered_conditions_must_refuse",
+      "message_prefix": "AssertionError: a request with an extra/reordered condition tuple was bound to the single-conditioner P1 producer; got SUPPORTED, values={'schema': 'R61_EVIDENCE_CONSUMER_VALUES_RE"
+    },
+    {
+      "test": "test_self_sealed_cross_source_cache_forgery_must_refuse",
+      "message_prefix": "AssertionError: self-sealed cache bound the victim K to the changed-source producer/evidence and resolved SUPPORTED"
+    },
+    {
+      "test": "test_cache_entry_must_carry_full_k_not_only_hash",
+      "message_prefix": "AssertionError: cache entry carries only request_key plus result/evidence/query/rule; it has no full K preimage to verify the producer association"
+    }
+  ]
+}
