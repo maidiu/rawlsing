@@ -1,3 +1,10 @@
+# R61AI — narrow executor exception discipline
+
+User permits exceptional Codex worker only if genuinely necessary; default noCodexworkers, exact difficulty/insufficient cheaper repair/minimal task/cost case and user agreement required BEFORE launch. Current R01/R08 continue existingOpenCodehandoffs; no exception requested or launched. Three actual OpenCode root/branch startups verified PASS, all observedlive. Existing paused Codex partials preserved/unqualified, no new copies/duplicatejobs. Same heartbeat updated; no scientific/engineering/grant/acceptance change. All holds preserved.
+
+
+## Earlier progress history retained
+
 # R61AH — immediate user executor correction
 
 User forbids Codex worker commissions to conserve HQ escalation quota. Both Codex authors interrupted immediately. Unqualified partials preserved/pushed: R01 7e021bd0eb539baccbd79f19a5e51efa19661e44, R08 d4053ff4359578d78caa0a0953245a827864d832. Same existing OpenCodeDeepSeekMAX authors resumed on those cuts, no duplicate writer/new copies. Actual launch receipts in director 0cd7a423d50ec4c706e707c5d77902e0030c5f8d. Controller sameowner separate.
