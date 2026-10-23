@@ -1959,3 +1959,149 @@ print(json.dumps({"execution": execution, "no_drop": True}))
     child = json.loads(proc.stdout)
     assert child["execution"]
     assert child["no_drop"] is True
+
+
+def test_r7_create_context_catalog_and_query_substitutions_refuse():
+    source, qauth, root, query, policy, s1, s2, s3, campaign = _campaign_fixture()
+    dauths = {tag: _d_auth(tag) for tag in ("R61-R4-G1", "R61-R4-G2", "R61-R4-G3")}
+    registry = _i05_registry(source, qauth, *dauths.values())
+    def factory(grammar):
+        tag = grammar["discovery_operation"].removeprefix("I03-OP-")
+        return _discovery_authority(source, grammar, dauths[tag], tag="r61-r7-" + tag)
+    with pytest.raises(RecurrenceRefusal, match="DUPLICATE_CAMPAIGN_CATALOG_KEY"):
+        create_campaign(
+            policy=policy, root_predicate=root,
+            source_release_refs=(source["release_ref"],),
+            target_label="t", query_object=query,
+            condition_catalog=s1 + (s1[0],),
+            repository=source["repo"], authority_registry=registry,
+            authority_factory=factory,
+        )
+    wrong_query = _query(source, qauth, s1[0][2], ("t",), tag="r61-r7-wrong-root")
+    with pytest.raises(RecurrenceRefusal, match="CAMPAIGN_QUERY_ROOT_MISMATCH"):
+        create_campaign(
+            policy=policy, root_predicate=root,
+            source_release_refs=(source["release_ref"],),
+            target_label="t", query_object=wrong_query,
+            condition_catalog=s1,
+            repository=source["repo"], authority_registry=registry,
+            authority_factory=factory,
+        )
+    missing_release = ExactRef("C11_SOURCE_RELEASE@1", "urn:test:missing-release", "d" * 64)
+    with pytest.raises(Exception):
+        create_campaign(
+            policy=policy, root_predicate=root,
+            source_release_refs=(missing_release,),
+            target_label="t", query_object=query,
+            condition_catalog=s1,
+            repository=source["repo"], authority_registry=registry,
+            authority_factory=factory,
+        )
+    i1 = campaign.issue(parent_lineage_refs=(campaign.root_lineage_ref,),
+                       condition_refs=tuple((k, v) for k, v, _ in s1))
+    e1 = campaign.execute(i1)
+    original_query = campaign._query_object
+    campaign._query_object = wrong_query
+    with pytest.raises(RecurrenceRefusal, match="CAMPAIGN_FROZEN_NATIVE_CONTEXT_MISMATCH|CAMPAIGN_QUERY_ROOT_MISMATCH"):
+        campaign.execute(i1)
+    campaign._query_object = original_query
+    assert campaign.execute(i1) == e1
+    snapshot = campaign.snapshot()
+    with pytest.raises(RecurrenceRefusal, match="RESTORE_FROZEN_NATIVE_CONTEXT_MISMATCH|RESTORE_CONTEXT_REFUSED|CAMPAIGN_QUERY_ROOT_MISMATCH"):
+        RetainedRecurrenceCampaign.restore(
+            snapshot=snapshot, expected_checkpoint_ref=snapshot["checkpoint_ref"],
+            repository=source["repo"], authority_registry=registry,
+            authority_factory=factory, condition_catalog=campaign._condition_catalog,
+            query_object=wrong_query,
+        )
+
+
+def test_r7_multibatch_chronology_and_prepost_activation_restore(monkeypatch):
+    source, qauth, root, query, policy, s1, s2, s3, campaign = _campaign_fixture()
+    calls = {"native": 0}
+    import rawlsing_next.universal_grammar.native_map as nm
+    original = nm.execute_exact_bounded_discovery_with_handoffs
+    def counted(*args, **kwargs):
+        calls["native"] += 1
+        return original(*args, **kwargs)
+    monkeypatch.setattr(nm, "execute_exact_bounded_discovery_with_handoffs", counted)
+    i1 = campaign.issue(parent_lineage_refs=(campaign.root_lineage_ref,),
+                       condition_refs=tuple((k, v) for k, v, _ in s1))
+    e1 = campaign.execute(i1)
+    i2 = campaign.issue(parent_lineage_refs=(campaign.root_lineage_ref,),
+                       condition_refs=tuple((k, v) for k, v, _ in s2))
+    e2 = campaign.execute(i2)
+    assert calls["native"] == 2
+    assert [record["cumulative_issued_count"] for record in campaign.inspect()["issuances"]] == [4, 8]
+    assert campaign.execute(i1) == e1
+    assert calls["native"] == 2
+    # Completed execution before activation restores from activation preimage.
+    before_activation = campaign.snapshot()
+    restored = RetainedRecurrenceCampaign.restore(
+        snapshot=before_activation,
+        expected_checkpoint_ref=before_activation["checkpoint_ref"],
+        repository=source["repo"], authority_registry=campaign._registry,
+        authority_factory=campaign._authority_factory,
+        condition_catalog=campaign._condition_catalog, query_object=query,
+    )
+    a1 = restored.activate(e1)
+    a2 = restored.activate(e2)
+    assert calls["native"] == 2
+    # Post-activation restore returns the same activation, no new execution.
+    after_activation = restored.snapshot()
+    restored2 = RetainedRecurrenceCampaign.restore(
+        snapshot=after_activation,
+        expected_checkpoint_ref=after_activation["checkpoint_ref"],
+        repository=source["repo"], authority_registry=restored._registry,
+        authority_factory=restored._authority_factory,
+        condition_catalog=restored._condition_catalog, query_object=query,
+    )
+    assert restored2.activate(e1) == a1
+    assert calls["native"] == 2
+    # Later generation uses both retained gen1 lineages and exact multiplicity.
+    active = _campaign_active_refs(restored2, a1) + _campaign_active_refs(restored2, a2)
+    i3 = restored2.issue(parent_lineage_refs=active,
+                         condition_refs=tuple((k, v) for k, v, _ in s3))
+    e3 = restored2.execute(i3)
+    record3 = next(record for record in restored2.inspect()["issuances"]
+                   if record["issuance_ref"] == i3)
+    assert record3["cumulative_issued_count"] == 8 + 4
+    assert calls["native"] == 3
+    assert e3
+
+
+def test_r7_typed_receipt_states_and_view_mutation_do_not_change_owner():
+    source, qauth, root, query, policy, s1, s2, s3, campaign = _campaign_fixture()
+    i1 = campaign.issue(parent_lineage_refs=(campaign.root_lineage_ref,),
+                       condition_refs=tuple((k, v) for k, v, _ in s1))
+    e1 = campaign.execute(i1)
+    snapshot = campaign.snapshot()
+    preimage = next(
+        record["activation_preimage"] for record in snapshot["payload"]["executions"]
+        if record["execution_ref"] == e1
+    )
+    states = {receipt["typed_state"] for receipt in preimage["receipts"]}
+    assert states
+    assert states <= {
+        "DISCOVERED_RESULT_SUPPORTED", "VALID_EMPTY", "INSUFFICIENT_SUPPORT",
+        "NONCOMPARABLE", "COVERAGE_LIMITED",
+    }
+    inspected = campaign.inspect()
+    inspected["issuances"][0]["cumulative_issued_count"] = 999
+    assert campaign.inspect()["issuances"][0]["cumulative_issued_count"] == 4
+    altered = deepcopy(snapshot)
+    altered["payload"]["issuances"][0]["cumulative_issued_count"] = 999
+    with pytest.raises(RecurrenceRefusal, match="SNAPSHOT_CHECKPOINT_PIN_MISMATCH"):
+        RetainedRecurrenceCampaign.restore(
+            snapshot=altered, expected_checkpoint_ref=snapshot["checkpoint_ref"],
+            repository=source["repo"], authority_registry=campaign._registry,
+            authority_factory=campaign._authority_factory,
+            condition_catalog=campaign._condition_catalog, query_object=query,
+        )
+    genuine = RetainedRecurrenceCampaign.restore(
+        snapshot=snapshot, expected_checkpoint_ref=snapshot["checkpoint_ref"],
+        repository=source["repo"], authority_registry=campaign._registry,
+        authority_factory=campaign._authority_factory,
+        condition_catalog=campaign._condition_catalog, query_object=query,
+    )
+    assert genuine.inspect()["issuances"][0]["cumulative_issued_count"] == 4
