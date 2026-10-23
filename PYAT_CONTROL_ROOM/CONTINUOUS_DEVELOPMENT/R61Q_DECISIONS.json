@@ -1,0 +1,35 @@
+{
+  "schema": "PYAT_R61Q_R08_ENGINEERING_DECISION@1",
+  "observed_utc": "2026-10-23T16:49:50.555515+00:00",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "intelligence": "I3_BOUNDED_ENGINEERING_NOT_ASTRA",
+  "execution": "S2_READ_ONLY_CODE_AND_DOCUMENTARY_DECISION",
+  "candidate": "84704f4a775d0419ad4a08c8c687bc815df47adc",
+  "review": "5b7e338086cd86a9a011c1e911a2b85b9170239f",
+  "review_hashes_verified": 10,
+  "review_scope_paths_verified": 11,
+  "decision": "EXPLICIT_TRUSTED_HOST_CONFIG__VERIFICATION_ONLY_SUBJECT_INGRESS__REAL_CONSUMER_PIN",
+  "architecture_changed": false,
+  "science_or_product_intent_changed": false,
+  "new_authority_required_for_local_R08_repair": false,
+  "protected_isolated_issuer_required_for_this_local_grade": false,
+  "implementation_verdict": "REVISE_NOT_QUALIFIED",
+  "rules": [
+    "D1_NO_IMPLICIT_ROOT",
+    "D2_OWNER_PERMISSION_NOT_MEASUREMENT",
+    "D3_COMPLETE_EXECUTED_RESULT_ENVELOPE",
+    "D4_VERIFICATION_ONLY_INGRESS_AND_PINNED_CONSUMER",
+    "D5_COLD_REPLAY_WITH_INDEPENDENT_ROOT",
+    "D6_VERSIONED_COMPATIBILITY_AND_UNCHANGED_SCIENCE"
+  ],
+  "no_R08_worker_launched": true,
+  "next_model": "Sol Light",
+  "next_native_executor": "Existing OpenCode opencode-go/deepseek-v4.1-flash MAX/Global",
+  "stop_after_preservation": true,
+  "usage_percent": {
+    "five_hour": 56,
+    "weekly": 55
+  },
+  "holds_unchanged": true
+}
