@@ -100,7 +100,8 @@ which is stronger than required and recorded only as a host-trust demonstration.
 `independent_probes/`, `replay/` JUnit/logs, `evidence/` (startup identity,
 exploration, closure, defect demonstrations, oracle results),
 `proof_witness.json`, `manifest.json`, `RESUME.md`. The reviewer branch is
-pushed non-force; direct remote readback of the evidence commit and final tip
-is recorded in `evidence/remote_readback.txt` and reported to the coordinator.
-The candidate branch is expected to remain at
-`9c0f81ecb76ffe35d0190e31492ea1e9b568f01b`.
+pushed non-force. Evidence commit
+`257a0af9ea2bf76805862b7e0ee8e8451837b6b3` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also verified by direct remote readback and reported to the coordinator. The
+candidate branch remained at `9c0f81ecb76ffe35d0190e31492ea1e9b568f01b`.
