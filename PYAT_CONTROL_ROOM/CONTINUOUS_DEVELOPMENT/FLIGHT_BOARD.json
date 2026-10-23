@@ -605,40 +605,6 @@
   },
   "live_flight": [
     {
-      "id": "R01_R7",
-      "agent_id": "/root/r01_r7_high_author",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
-      "branch": "agent/codex-pyat-r61-r01-r7-retained-owner-repair-r1",
-      "startup": "fea3ca17d94183efbd526dc1687ae06b7bbbf0f7",
-      "commission_tip": "37050d3f11b5dea155f418ce1cdb643753f20f1d",
-      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R01/revisions/r7/00_COMMISSION.md",
-      "model_requested": "gpt-6.1-sol",
-      "reasoning_effort_requested": "high",
-      "facility": "collaboration.spawn_agent explicit model/effort accepted",
-      "state": "ACTUALLY_SPAWNED_NATIVE_CODING_SUBAGENT_NOT_OPENCODE_NOT_CONTROLLER",
-      "actual_tool_preflight": "AWAITING_AGENT_CONFIRMATION",
-      "os_isolation": "NOT_PROVEN",
-      "new_repository_copies": 0,
-      "observed_utc": "2026-10-23T21:58:27.721916+00:00"
-    },
-    {
-      "id": "R08_R7",
-      "agent_id": "/root/r08_r7_high_author",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08",
-      "branch": "agent/codex-pyat-r61-r08-r7-canonical-cache-repair-r1",
-      "startup": "d8a7b4005d23a1e39b35360ca96bf2aef5b9e591",
-      "commission_tip": "37050d3f11b5dea155f418ce1cdb643753f20f1d",
-      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R08/revisions/r7/00_COMMISSION.md",
-      "model_requested": "gpt-6.1-sol",
-      "reasoning_effort_requested": "high",
-      "facility": "collaboration.spawn_agent explicit model/effort accepted",
-      "state": "ACTUALLY_SPAWNED_NATIVE_CODING_SUBAGENT_NOT_OPENCODE_NOT_CONTROLLER",
-      "actual_tool_preflight": "AWAITING_AGENT_CONFIRMATION",
-      "os_isolation": "NOT_PROVEN",
-      "new_repository_copies": 0,
-      "observed_utc": "2026-10-23T21:58:27.721916+00:00"
-    },
-    {
       "id": "CONTROLLER_R3",
       "pid": 28122,
       "sessions": [
@@ -656,6 +622,44 @@
       "actual_tool_preflight": "PENDING",
       "os_isolation": "NOT_PROVEN",
       "started_utc": "2026-10-23T21:57:41.001529+00:00"
+    },
+    {
+      "id": "R01_R7_OPENCODE",
+      "pid": 42167,
+      "sessions": [
+        "ses_e98c905cbffekusoHURfKyEUKG"
+      ],
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
+      "branch": "agent/codex-pyat-r61-r01-r7-retained-owner-repair-r1",
+      "startup": "7e021bd0eb539baccbd79f19a5e51efa19661e44",
+      "commission_tip": "7e05980717b8bf28b1c386b0293b467b7fc15856",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R01/revisions/r7/OPENCODE_SUCCESSOR.md",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "max",
+      "account": "existing Global",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE",
+      "actual_tool_preflight": "PENDING",
+      "started_utc": "2026-10-23T22:05:42.921510+00:00",
+      "os_isolation": "NOT_PROVEN"
+    },
+    {
+      "id": "R08_R7_OPENCODE",
+      "pid": 42181,
+      "sessions": [
+        "ses_e98c8dfe6ffewNYOqJpvqK21a6"
+      ],
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08",
+      "branch": "agent/codex-pyat-r61-r08-r7-canonical-cache-repair-r1",
+      "startup": "d4053ff4359578d78caa0a0953245a827864d832",
+      "commission_tip": "7e05980717b8bf28b1c386b0293b467b7fc15856",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R08/revisions/r7/OPENCODE_SUCCESSOR.md",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "max",
+      "account": "existing Global",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE",
+      "actual_tool_preflight": "PENDING",
+      "started_utc": "2026-10-23T22:05:44.672238+00:00",
+      "os_isolation": "NOT_PROVEN"
     }
   ],
   "prior_review_returns": {
@@ -728,15 +732,10 @@
     "R03_wake": false
   },
   "next_model_boundary": {
-    "HQ_model": "gpt-6.1-sol low verified",
-    "High_judgments_complete": true,
-    "High_native_coding_delegated": [
-      "R01_R7",
-      "R08_R7"
-    ],
-    "controller": "existing DeepSeekMAX",
-    "Astra_required": false,
-    "heartbeat": "ACTIVE_RESUMED_AFTER_USER_LIGHT_CONTINUATION"
+    "HQ": "Sol Light coordination",
+    "worker_rule": "NO_CODEX_WORKER_COMMISSIONS",
+    "workers": "existing OpenCode DeepSeekMAX/Global",
+    "escalation": "HQ only when genuinely necessary"
   },
   "recurrence_decision_route": {
     "branch": "agent/browser-pyat-r61-recurrence-substantive-contract-adjudication-r1",
@@ -1278,5 +1277,29 @@
       "resume_condition": "User returns HQ to economical coordination and says continue/go"
     },
     "next_exact_task": "On Light: read three R61AF contracts; qualify/seal exact bounded native author facilities with existing grants and separate review. R01/R08 may run in parallel with controller repair. If prescribed coding model cannot actually be launched, give exact executable prompt/facility gap; no silent DeepSeek fallback. Resume existing heartbeat after user continuation. No duplicate worker/architecture court."
+  },
+  "executor_policy": {
+    "authority": "Direct user instruction: do not assign commissions using Codex; reserve Codex usage for HQ and intelligence escalation",
+    "rule": "NO_CODEX_WORKER_COMMISSIONS. Browser when whole-job qualified, otherwise existing OpenCode/DeepSeek MAX. If worker cannot resolve a necessary judgment, bank and escalate HQ model; do not spawn Codex coding agents.",
+    "supersedes": "R61AF/R61AG coding executor recommendations ONLY; engineering contracts/authority/scope remain",
+    "Codex_workers": "BOTH_INTERRUPTED",
+    "partials": [
+      {
+        "node": "R01",
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
+        "branch": "agent/codex-pyat-r61-r01-r7-retained-owner-repair-r1",
+        "remote_sha": "7e021bd0eb539baccbd79f19a5e51efa19661e44",
+        "grade": "INTERRUPTED_UNQUALIFIED_PARTIAL",
+        "Codex_worker": "INTERRUPTED"
+      },
+      {
+        "node": "R08",
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08",
+        "branch": "agent/codex-pyat-r61-r08-r7-canonical-cache-repair-r1",
+        "remote_sha": "d4053ff4359578d78caa0a0953245a827864d832",
+        "grade": "INTERRUPTED_UNQUALIFIED_PARTIAL",
+        "Codex_worker": "INTERRUPTED"
+      }
+    ]
   }
 }
