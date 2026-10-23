@@ -1,0 +1,55 @@
+{
+  "schema": "PYAT_R61_R01_R6_PROOF_WITNESS@1",
+  "node": "R01", "revision": "R6",
+  "disposition": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+  "branch": "agent/opencode-pyat-r61-r01-generic-grammar-r1",
+  "startup_commit": "4b5fd7a240a6e2d007ba1df2424780e6b5612ea9",
+  "contract_commit": "e2b87e6c33364e5361ed3c0b10ba5c13e34efbba",
+  "candidate_code_commit": "3d60f9cb6f43830244fbd79699d1cf4041622d05",
+  "review_commit": "537bd3985d8a3825186e41cab9308d8150cac848",
+  "environment": {"python": "3.11.3", "pytest": "9.0.2", "pyreadstat": "1.3.2", "platform": "darwin"},
+  "commands": [
+    {"purpose": "author R6 suite", "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=WORKER_RETURNS/PYAT-R61-R01-IMPLEMENTATION-R1/revisions/r6/junit.xml -o addopts=''", "exit_code": 0, "result": "28 passed", "failures": 0, "errors": 0, "skips": 0, "walltime_seconds": 11.96, "junit": "junit.xml", "log": "pytest.log"},
+    {"purpose": "campaign D3 capacity", "command": "campaign issue/execute/activate x3", "exit_code": 0, "observed": {"generations": 3, "issued_operations": 12, "seconds": 0.3674, "peak_rss_mb_approx": 39}}
+  ],
+  "campaign_owner": {
+    "facade": "RetainedRecurrenceCampaign",
+    "operations": ["create_campaign", "issue", "execute", "activate", "inspect", "snapshot", "restore"],
+    "records": ["CampaignRootRecord", "CampaignIssuanceRecord", "CampaignExecutionRecord", "CampaignLineageRecord", "CampaignActivationRecord"],
+    "generation_convention": "producer generation; root=0; issue sequence separate",
+    "predecessor_binding": "retained issuance ref/plan/count, not caller integer",
+    "trust": "configured local campaign host; no protected issuer/signing/global durability"
+  },
+  "successor_attacks": {
+    "H1_ancestry_strip": "PASS: retained lineage ref/ancestry; legacy canonical parent id now binds ancestry",
+    "H2_generation_relabel": "PASS: campaign derives generation from retained lineage; requested mismatch refuses",
+    "H3_execution_binding": "PASS: campaign reuses retained issuance/lineage; legacy execution rechecks embedded handoff refs",
+    "H4_predecessor_undercount": "PASS: campaign predecessor from retained head issuance/count; forged predecessor refuses",
+    "H5_zero_cap": "PASS: STOPPED_BUDGET + unissued, no native call",
+    "H6_root_mismatch": "PASS: campaign root fixed; legacy gen1 root predicate/source equality enforced",
+    "H7_activation_label": "PASS: ACTIVATION_NEXT_GENERATION_MISMATCH"
+  },
+  "mutations_and_restoration": [
+    {"mutation": "forged lineage ref", "expected": "LINEAGE_REFERENCE_NOT_RETAINED", "restored": "retained lineage issues"},
+    {"mutation": "requested generation relabel", "expected": "REQUESTED_GENERATION_MISMATCH", "restored": "derived generation issues"},
+    {"mutation": "forged predecessor ref", "expected": "PREDECESSOR_ISSUANCE_NOT_RETAINED_HEAD", "restored": "retained head issues"},
+    {"mutation": "altered inspect material", "expected": "retained authority unchanged", "restored": "fresh inspect canonical"},
+    {"mutation": "zero cap", "expected": "STOPPED_BUDGET/unissued/no native", "restored": "budgeted campaign executes"},
+    {"mutation": "altered snapshot and recomputed internal hash", "expected": "CHECKPOINT_PIN_MISMATCH against external pin", "restored": "original pinned snapshot restores and runs N+1"},
+    {"mutation": "dropped legacy recurrence rule", "expected": "anti-join missing rule", "restored": "original plan passes"}
+  ],
+  "imported_owner_blobs": {
+    "rawlsing_next/pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "rawlsing_next/pre553_discovery_exact.py": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+    "rawlsing_next/pre553_recursive_handoff.py": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4",
+    "rawlsing_next/tests/test_pre553_discovery_exact.py": "b53039aeb95e012993c5233a7575c1dad5a14929",
+    "rawlsing_next/tests/test_pre553_empirical_query.py": "cc7d93db1f87d9c311170c229dbe3506937b404a"
+  },
+  "limits": [
+    "Local trusted campaign authority only; no protected issuer/signing/R09/global anti-fork.",
+    "R03/U43/Batch, R04 custody, R05 grades, original 35/1890, F6/F7/F8, N11/N12, Sorok, production/CI, J52/W52 unchanged.",
+    "Restored old executions retain metadata but are not re-run; restored campaigns execute new N+1 work only.",
+    "Legacy issue/execute/activate helpers remain unqualified utilities and cannot register campaign history.",
+    "No self-adoption; fresh distinct reviewer required."
+  ]
+}
