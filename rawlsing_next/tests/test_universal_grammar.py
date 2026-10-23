@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 from dataclasses import replace
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -11,7 +12,11 @@ import sys
 
 import pytest
 
-from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
+from rawlsing_next.pre553_discovery_exact import (
+    ExactBoundedCoverageError,
+    execute_exact_bounded_discovery,
+)
+from rawlsing_next.pre553_empirical_objects import ExactRef
 from rawlsing_next.tests.test_pre553_discovery_exact import (
     _d_auth,
     _discovery_authority,
@@ -37,25 +42,34 @@ from rawlsing_next.universal_grammar.native_map import (
     NativeCatalog,
     current_native_contract,
     lower_frontier,
+    lower_operation,
     native_receipt_anti_join,
 )
 from rawlsing_next.universal_grammar.types import (
+    ABSENT,
     ADMINISTERED,
     ADMINISTRATION_UNKNOWN,
     DEFERRED,
     ELIGIBLE,
+    DISPOSITIONS,
+    ELIGIBILITY_STATES,
+    EXECUTION_STATES,
     HELD,
     INAPPLICABLE_PROVED,
     NOT_ADMINISTERED,
+    NOT_STARTED,
     PROHIBITED,
+    RESULT_STATES,
     UNKNOWN,
     UNSUPPORTED_RUNTIME,
     DirectionGrant,
     GrammarPolicy,
+    HeldRecord,
     MeasurePlan,
     Occurrence,
     OccurrenceKey,
     SourceInventory,
+    typed_value_key,
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -232,18 +246,23 @@ def test_independent_tiny_frontier_oracle_and_complete_disposition_ledger():
     frontier = _frontier(_tiny_inventory(), _policy(j=1, k=1, d=0))
     # Independent combinatorial reference: two target occurrences, one
     # conditioner, two values, one SAMPLE measure plus one unweighted
-    # POPULATION measure, and four deferred classes.
+    # POPULATION measure, and four method-gated classes.
     # SAMPLE: 1 DIST + 1 STATE_ROBUSTNESS + 2 CONDITIONAL = 4 per target.
     # POPULATION: 1 DIST + 2 CONDITIONAL = 3 per target (STATE uses SAMPLE only).
-    # Two targets: 8 eligible + 6 held + 8 deferred = 22 operations.
+    # Method-gated classes are HELD, not a separate execution status.
+    # Two targets: 8 eligible + (6 population + 8 method-gated) held = 22.
     assert len(frontier.operations) == 22
     assert frontier.disposition_counts[ELIGIBLE] == 8
-    assert frontier.disposition_counts[HELD] == 6
-    assert frontier.disposition_counts[DEFERRED] == 8
-    assert set(frontier.disposition_counts) <= {
-        ELIGIBLE, PROHIBITED, INAPPLICABLE_PROVED, HELD, UNKNOWN,
-        UNSUPPORTED_RUNTIME, DEFERRED,
-    }
+    assert frontier.disposition_counts[HELD] == 14
+    assert set(frontier.disposition_counts) <= set(ELIGIBILITY_STATES)
+    assert set(frontier.execution_counts) <= set(EXECUTION_STATES)
+    assert set(frontier.result_counts) <= set(RESULT_STATES)
+    assert frontier.execution_counts == {NOT_STARTED: 22}
+    assert frontier.result_counts == {UNKNOWN: 22}
+    axis = frontier.axis_conservation()
+    assert axis["considered_equals_eligibility"] is True
+    assert axis["execution_equals_considered"] is True
+    assert axis["result_equals_considered"] is True
     assert len(frontier.inventory_ledger) == 3
     assert frontier.e_pre_count == 8
     assert frontier.e_pre_root
@@ -279,7 +298,30 @@ def test_arbitrary_labels_and_bijective_rename_preserve_logical_frontier():
     )
     renamed = _frontier(renamed_inventory, _policy())
 
-    def normalize(operation):
+    def logical_key(operation, remap=None):
+        material = operation.identity_material()
+        if remap is not None:
+            material["targets"] = [
+                {**key, "item_id": remap.get(key["item_id"], key["item_id"])}
+                for key in material["targets"]
+            ]
+            material["conditions"] = [
+                [{**key, "item_id": remap.get(key["item_id"], key["item_id"])}, value]
+                for key, value in material["conditions"]
+            ]
+        material["baseline_ref"] = None
+        return json.dumps(material, sort_keys=True)
+
+    original_by_key = {logical_key(op, rename): op.op_id for op in original.operations}
+    renamed_by_key = {
+        logical_key(op): op.op_id for op in renamed.operations
+    }
+    assert set(original_by_key) == set(renamed_by_key)
+    baseline_map = {
+        original_by_key[key]: renamed_by_key[key] for key in original_by_key
+    }
+
+    def normalize(operation, *, remap_baseline=False):
         material = operation.identity_material()
         material["targets"] = [
             {**key, "item_id": rename.get(key["item_id"], key["item_id"])}
@@ -289,9 +331,11 @@ def test_arbitrary_labels_and_bijective_rename_preserve_logical_frontier():
             [{**key, "item_id": rename.get(key["item_id"], key["item_id"])}, value]
             for key, value in material["conditions"]
         ]
+        if remap_baseline and material["baseline_ref"] is not None:
+            material["baseline_ref"] = baseline_map[material["baseline_ref"]]
         return json.dumps(material, sort_keys=True)
 
-    assert sorted(normalize(op) for op in original.operations) == sorted(
+    assert sorted(normalize(op, remap_baseline=True) for op in original.operations) == sorted(
         normalize(op) for op in renamed.operations
     )
     assert original.e_pre_count == renamed.e_pre_count
@@ -335,10 +379,15 @@ def test_topology_form_repeat_and_administration_are_accounted_not_pruned():
         _occurrence("held_item"),
         _occurrence("household_item", unit="household"),
     )
-    inventory = _inventory(occurrences, held=(OccurrenceKey("held_item").key,))
+    held_record = HeldRecord(
+        occurrence_id=OccurrenceKey("held_item").key,
+        reason="OWNER_HOLD_TEST", authority_ref="urn:r61:test:held-authority",
+    )
+    inventory = _inventory(occurrences, held=(held_record,))
     frontier = _frontier(inventory, _policy(j=2, k=0, d=0))
     assert frontier.operations
-    assert any(op.claim_class == "DIST" and op.disposition == UNSUPPORTED_RUNTIME
+    assert any(op.claim_class == "DIST" and op.disposition == ELIGIBLE
+               and op.execution_state == NOT_STARTED
                for op in frontier.operations if op.topology in {
                    "REPEATED_OCCASION", "MULTI_SELECT_SET", "RANKED_RESPONSE"
                })
@@ -349,7 +398,7 @@ def test_topology_form_repeat_and_administration_are_accounted_not_pruned():
                and op.administration_states == (ADMINISTRATION_UNKNOWN,)
                for op in frontier.operations)
     assert any(op.claim_class == "DIST" and op.disposition == HELD
-               and op.reasons == ("OCCURRENCE_HELD_BY_INVENTORY",)
+               and op.reasons == ("HELD_BY_STRUCTURED_OWNER_RECORD",)
                for op in frontier.operations)
     assert any(op.claim_class == "JOINT" and op.disposition == INAPPLICABLE_PROVED
                and op.reasons == ("DISJOINT_ADMINISTRATION_FORM",)
@@ -359,10 +408,7 @@ def test_topology_form_repeat_and_administration_are_accounted_not_pruned():
                for op in frontier.operations)
     ledger = inventory_ledger(inventory, _policy(j=2, k=0, d=0))
     assert len(ledger) == len(occurrences)
-    assert {entry.disposition for entry in ledger} <= {
-        ELIGIBLE, PROHIBITED, INAPPLICABLE_PROVED, HELD, UNKNOWN,
-        UNSUPPORTED_RUNTIME, DEFERRED,
-    }
+    assert {entry.disposition for entry in ledger} <= set(ELIGIBILITY_STATES)
     assert sum(1 for entry in ledger if entry.disposition == ELIGIBLE) > 0
 
 
@@ -448,7 +494,7 @@ def test_incomplete_inventory_has_no_epre_and_budget_never_prunes():
     assert len(partial.pending_operation_ids) == len(full.eligible()) - 3
 
 
-def test_lazy_partition_and_cold_subprocess_replay():
+def test_lazy_partition_and_cold_subprocess_recomputation():
     frontier = _frontier(_tiny_inventory(), _policy(j=1, k=1, d=0), partition_size=5)
     partitions = list(iter_partitions(frontier))
     assert len(partitions) == frontier.partition_count
@@ -456,6 +502,7 @@ def test_lazy_partition_and_cold_subprocess_replay():
     assert flattened == sorted(op.op_id for op in frontier.operations)
     assert all(part.operation_count == len(part.operation_ids) for part in partitions)
     assert len({part.root for part in partitions}) == len(partitions)
+    # Deterministic cold recomputation, not serialized custody restore (R04).
     first = _frontier(_tiny_inventory(), _policy(j=1, k=1, d=0), partition_size=5)
     assert first.content_hash == frontier.content_hash
     code = (
@@ -506,9 +553,10 @@ def _native_fixture():
     return source, qauth, dauth, all_predicate, predicates, queries, labels
 
 
-def _native_catalog(labels, all_predicate, predicates, queries):
+def _native_catalog(labels, all_predicate, predicates, queries, *, discovery_authority_ref=None,
+                    supported_topologies=("SCALAR_SINGULAR",)):
     predicate_refs = {
-        f"{OccurrenceKey(label).key}|{json.dumps(value, separators=(',', ':'))}": predicate.ref
+        f"{OccurrenceKey(label).key}|{typed_value_key(value)}": predicate.ref
         for (label, value), predicate in predicates.items()
     }
     query_refs = {
@@ -521,6 +569,9 @@ def _native_catalog(labels, all_predicate, predicates, queries):
                    sort_keys=False, separators=(",", ":")): queries[(labels[0], labels[1])].ref
     }
     marginal_refs = {OccurrenceKey(label).key: queries[(label,)].ref for label in labels}
+    predicate_objects = {predicate.ref.key: predicate for predicate in predicates.values()}
+    predicate_objects[all_predicate.ref.key] = all_predicate
+    query_objects = {query.ref.key: query for query in queries.values()}
     return NativeCatalog(
         catalog_ref="urn:r61:test:native-catalog",
         baseline_predicate_ref=all_predicate.ref,
@@ -531,10 +582,15 @@ def _native_catalog(labels, all_predicate, predicates, queries):
         supported_claims=(
             "DIST", "CONDITIONAL", "JOINT", "CO_TRAVEL", "FORK", "INTERACTION",
         ),
-        supported_topologies=("SCALAR_SINGULAR",),
+        supported_topologies=supported_topologies,
         supported_condition_modes=("AND", "XOR_EXACTLY_ONE"),
         maximum_target_arity=2,
         maximum_conditioner_arity=2,
+        cell_codec={typed_value_key(0): "0", typed_value_key(1): "1"},
+        predicate_objects=predicate_objects,
+        query_objects=query_objects,
+        discovery_authority_ref=discovery_authority_ref,
+        batch_unit_refs=("BATCH-UNIT-UNISSUED",),
     )
 
 
@@ -569,7 +625,10 @@ def test_native_mapping_uses_current_i05_contract_and_real_receipts():
             break
     assert len(selected) == 7
     selected_frontier = replace(frontier, operations=tuple(selected))
-    catalog = _native_catalog(labels, all_predicate, predicates, queries)
+    catalog = _native_catalog(
+        labels, all_predicate, predicates, queries,
+        discovery_authority_ref=dauth.authority_ref,
+    )
     plan = lower_frontier(inventory, policy, selected_frontier, catalog)
     report = plan.coverage_report()
     assert report["no_drop_ok"] is True
@@ -595,6 +654,10 @@ def test_native_mapping_uses_current_i05_contract_and_real_receipts():
     assert not join["count_mismatches"]
     assert any(record.status == SUPPORTED for record in plan.records)
     assert any(record.coverage_roles for record in plan.records if record.status == SUPPORTED)
+    assert any(record.expected_candidate_keys for record in plan.records
+               if record.status == SUPPORTED)
+    assert any(record.query_role_refs for record in plan.records
+               if record.status == SUPPORTED)
 
     dropped_rule_id = sorted(plan.expected_native_catalog())[0]
     dropped_grammar = deepcopy(grammar)
@@ -617,13 +680,51 @@ def test_native_mapping_uses_current_i05_contract_and_real_receipts():
     assert restored["no_drop_ok"] is True
     assert restored["missing_rule_ids"] == ()
 
+    semantics = deepcopy(grammar)
+    atoms = list(semantics["atoms"])
+    changed = False
+    for label in labels:
+        zero_ref = predicates[(label, 0)].ref.as_dict()
+        one_ref = predicates[(label, 1)].ref.as_dict()
+        if any(atom["predicate_ref"] == zero_ref for atom in atoms):
+            atoms = [
+                {**atom, "predicate_ref": one_ref}
+                if atom["predicate_ref"] == zero_ref else atom
+                for atom in atoms
+            ]
+            changed = True
+            break
+    assert changed
+    semantics["atoms"] = tuple(atoms)
+    semantic_authority = _discovery_authority(source, semantics, dauth)
+    semantic_result = execute_exact_bounded_discovery(
+        repository=source["repo"],
+        discovery_authority=semantic_authority,
+        authority_registry=_i05_registry(source, qauth, dauth),
+        release_refs=(source["release_ref"],),
+        predicate_catalog=tuple(predicates.values()) + (all_predicate,),
+        query_template_catalog=tuple(queries.values()),
+    )
+    semantic_join = native_receipt_anti_join(plan, semantic_result.receipts)
+    assert semantic_join["no_drop_ok"] is False
+    assert (
+        semantic_join["missing_candidate_ids"]
+        or semantic_join["unexpected_candidate_ids"]
+        or semantic_join["semantic_mismatches"]
+    )
+    restored_semantics = native_receipt_anti_join(plan, result.receipts)
+    assert restored_semantics["no_drop_ok"] is True
+
 
 def test_native_mapping_marks_unsupported_and_never_returns_none():
     source, qauth, dauth, all_predicate, predicates, queries, labels = _native_fixture()
     inventory = _inventory((_occurrence(labels[0]),))
     policy = _policy(j=1, k=0, d=0)
     frontier = _frontier(inventory, policy)
-    catalog = _native_catalog(labels, all_predicate, predicates, queries)
+    catalog = _native_catalog(
+        labels, all_predicate, predicates, queries,
+        discovery_authority_ref=dauth.authority_ref,
+    )
     catalog = replace(catalog, supported_claims=("DIST",))
     plan = lower_frontier(inventory, policy, frontier, catalog)
     assert any(record.status == NATIVE_UNSUPPORTED for record in plan.records)
@@ -644,3 +745,250 @@ def test_native_mapping_marks_unsupported_and_never_returns_none():
         record.status == NATIVE_UNSUPPORTED
         for record in bad_plan.records if record.status != "NOT_ELIGIBLE"
     )
+
+
+def _dummy_ref(kind, tag):
+    digest = hashlib.sha256(f"{kind}|{tag}".encode()).hexdigest()
+    return ExactRef(kind, f"urn:r61:test:{kind.lower()}:{tag}", digest)
+
+
+def _minimal_catalog(*, target="typed_target", topologies=("SCALAR_SINGULAR",), codec=None):
+    target_key = json.dumps(
+        [OccurrenceKey(target).key], sort_keys=False, separators=(",", ":")
+    )
+    return NativeCatalog(
+        catalog_ref="urn:r61:test:minimal-catalog",
+        baseline_predicate_ref=_dummy_ref("Predicate", "baseline"),
+        predicate_refs={},
+        query_refs={target_key + "|SAMPLE": _dummy_ref("QueryTemplate", "query")},
+        joint_query_refs={},
+        marginal_query_refs={},
+        supported_claims=("DIST",),
+        supported_topologies=topologies,
+        supported_condition_modes=("AND",),
+        maximum_target_arity=1,
+        maximum_conditioner_arity=0,
+        cell_codec=codec or {},
+    )
+
+
+def test_typed_bool_int_string_null_and_absent_identity_and_cells():
+    inventory = _inventory((
+        _occurrence("typed_target", conditioner_role=None, domain=(1, "1")),
+        _occurrence("bool_cond", target_role=None, domain=(True, False)),
+        _occurrence("null_cond", target_role=None, domain=(None, ABSENT, 0)),
+        _occurrence("mixed_cond", target_role=None, domain=("1", 1)),
+    ))
+    policy = _policy(j=1, k=1, d=0)
+    frontier = _frontier(inventory, policy)
+    assert _op_for(frontier, claim_class="CONDITIONAL", targets=("typed_target",),
+                   conditions=(("bool_cond", True),)).op_id != _op_for(
+        frontier, claim_class="CONDITIONAL", targets=("typed_target",),
+        conditions=(("bool_cond", False),)).op_id
+    null_op = _op_for(frontier, claim_class="CONDITIONAL", targets=("typed_target",),
+                      conditions=(("null_cond", None),))
+    absent_op = _op_for(frontier, claim_class="CONDITIONAL", targets=("typed_target",),
+                        conditions=(("null_cond", ABSENT),))
+    zero_op = _op_for(frontier, claim_class="CONDITIONAL", targets=("typed_target",),
+                      conditions=(("null_cond", 0),))
+    assert len({null_op.op_id, absent_op.op_id, zero_op.op_id}) == 3
+    str_op = _op_for(frontier, claim_class="CONDITIONAL", targets=("typed_target",),
+                     conditions=(("mixed_cond", "1"),))
+    int_op = _op_for(frontier, claim_class="CONDITIONAL", targets=("typed_target",),
+                     conditions=(("mixed_cond", 1),))
+    assert str_op.op_id != int_op.op_id
+
+    dist_op = _op_for(frontier, claim_class="DIST", targets=("typed_target",))
+    preserved = lower_operation(inventory, policy, dist_op, _minimal_catalog())
+    assert preserved.status == SUPPORTED, preserved.reason
+    assert list(preserved.rule["target_cells"]) == [1, "1"]
+    collided = lower_operation(
+        inventory, policy, dist_op,
+        _minimal_catalog(codec={typed_value_key(1): "one", typed_value_key("1"): "one"}),
+    )
+    assert collided.status == NATIVE_UNSUPPORTED
+    assert collided.reason == "NATIVE_CELL_CODEC_NOT_INJECTIVE"
+    governed = lower_operation(
+        inventory, policy, dist_op,
+        _minimal_catalog(codec={typed_value_key(1): "1", typed_value_key("1"): "s1"}),
+    )
+    assert governed.status == SUPPORTED
+    assert list(governed.rule["target_cells"]) == ["1", "s1"]
+
+
+def test_operation_identity_binds_source_measure_clocks_and_selection():
+    base = _inventory((_occurrence("alpha", conditioner_role=None),))
+    policy = _policy(j=1, k=0, d=0)
+    first = _frontier(base, policy)
+    changed_source = _frontier(replace(
+        base, wave="W2", edition="E2", source_sha256="b" * 64,
+        dataset_id="DATASET-2", instrument_ref="INSTRUMENT-2",
+    ), policy)
+    assert {op.op_id for op in first.operations} != {op.op_id for op in changed_source.operations}
+    m1 = MeasurePlan("SAMPLE", "SAMPLE", None, None, "estimand-one", "UNCERTAINTY_ONE")
+    m2 = MeasurePlan("SAMPLE", "SAMPLE", "WEIGHT-2", "DESIGN-2",
+                     "estimand-two", "UNCERTAINTY_TWO")
+    measure_a = _frontier(replace(base, measure_plans=(m1,)), policy)
+    measure_b = _frontier(replace(base, measure_plans=(m2,)), policy)
+    assert {op.op_id for op in measure_a.operations} != {op.op_id for op in measure_b.operations}
+    clocked = _frontier(replace(
+        base, observation_clock_ref="OBS-2", reference_clock_ref="REF-2",
+        as_of_ref="ASOF-2", publication_clock_ref="PUB-2",
+        current_selection="CURRENT-2",
+    ), policy)
+    assert {op.op_id for op in first.operations} != {op.op_id for op in clocked.operations}
+    fields = set(type(first.operations[0]).__dataclass_fields__)
+    assert {
+        "observation_clock_ref", "reference_clock_ref", "as_of_ref",
+        "publication_clock_ref", "current_selection_ref",
+    } <= fields
+
+
+def test_axes_and_lowering_record_contract_fields_are_complete():
+    from rawlsing_next.universal_grammar.native_map import LoweringRecord
+    assert DISPOSITIONS == ELIGIBILITY_STATES
+    assert UNSUPPORTED_RUNTIME not in DISPOSITIONS
+    assert DEFERRED not in DISPOSITIONS
+    required = {
+        "lowering_version", "discovery_authority_ref", "batch_unit_refs",
+        "evidence_grade_ceiling", "typed_refusal", "predicate_refs",
+        "query_refs", "query_role_refs", "expected_candidate_keys",
+    }
+    assert required <= set(LoweringRecord.__dataclass_fields__)
+    frontier = _frontier(_tiny_inventory(), _policy(j=1, k=1, d=0), budget=3)
+    assert len(frontier.pending_operation_ids) == 5
+    pending = set(frontier.pending_operation_ids)
+    assert all(
+        op.execution_state == "PENDING" for op in frontier.operations
+        if op.op_id in pending
+    )
+    assert all(op.disposition == ELIGIBLE for op in frontier.operations
+               if op.op_id in pending)
+    assert frontier.axis_conservation()["eligibility_total"] == len(frontier.operations)
+    fork_frontier = _frontier(_main_inventory(), _policy(j=1, k=2, d=1))
+    fork = _op_for(
+        fork_frontier, claim_class="FORK", targets=("q_alpha",),
+        conditions=(("q_beta", 1), ("q_gamma", 0)),
+    )
+    assert fork.baseline_ref is not None
+    assert fork.recursion_depth == 1
+    assert fork.recursion_relation_ref is None
+    held_fork = _op_for(
+        _frontier(_main_inventory(), _policy(j=1, k=2, d=0)),
+        claim_class="FORK", targets=("q_alpha",),
+        conditions=(("q_beta", 1), ("q_gamma", 0)),
+    )
+    assert held_fork.disposition == HELD
+    assert held_fork.reasons == ("DEPTH_BEYOND_ISSUED_BOUND",)
+
+
+def test_catalog_topology_promotion_and_forged_direction_refusal():
+    inventory = _inventory((_occurrence("mr_target", topology="MULTI_SELECT_SET",
+                                         conditioner_role=None),))
+    policy = _policy(j=1, k=0, d=0)
+    frontier = _frontier(inventory, policy)
+    operation = _op_for(frontier, claim_class="DIST", targets=("mr_target",))
+    assert operation.disposition == ELIGIBLE
+    promoted = lower_operation(
+        inventory, policy, operation,
+        _minimal_catalog(target="mr_target",
+                         topologies=("SCALAR_SINGULAR", "MULTI_SELECT_SET")),
+    )
+    assert promoted.status == SUPPORTED, promoted.reason
+    forged = replace(operation, direction_ref="FORGED-DIRECTION")
+    refused = lower_operation(inventory, policy, forged, _minimal_catalog(target="mr_target"))
+    assert refused.status == NATIVE_UNSUPPORTED
+    assert refused.reason == "FORGED_OR_UNAUTHORIZED_DIRECTION_REF"
+
+
+def test_structured_held_and_unknown_risk_policy():
+    held_key = OccurrenceKey("held_target").key
+    structured = HeldRecord(occurrence_id=held_key, reason="OWNER_PRIVACY_HOLD",
+                            authority_ref="urn:r61:test:hold-authority")
+    inventory = _inventory((
+        _occurrence("held_target", conditioner_role=None),
+        _occurrence("legacy_held", conditioner_role=None),
+    ), held=(structured, OccurrenceKey("legacy_held").key))
+    ledger = inventory_ledger(inventory, _policy(j=1, k=0, d=0))
+    held_entry = next(entry for entry in ledger if entry.occurrence_id == held_key)
+    legacy_entry = next(entry for entry in ledger if entry.occurrence_id == OccurrenceKey("legacy_held").key)
+    assert held_entry.disposition == HELD
+    assert held_entry.held_reason == "OWNER_PRIVACY_HOLD"
+    assert held_entry.held_authority_ref == "urn:r61:test:hold-authority"
+    assert legacy_entry.disposition == UNKNOWN
+    assert legacy_entry.reasons == ("UNSTRUCTURED_HELD_CLAIM_NOT_AUTHORIZATION",)
+    unknown_risk = _inventory((_occurrence("no_risk", conditioner_role=None, risk_set_refs=()),))
+    unknown_frontier = _frontier(unknown_risk, _policy(j=1, k=0, d=0))
+    assert _op_for(unknown_frontier, claim_class="DIST", targets=("no_risk",)).disposition == UNKNOWN
+    relaxed = replace(_policy(j=1, k=0, d=0), risk_set_policy="UNCONSTRAINED")
+    relaxed_frontier = _frontier(unknown_risk, relaxed)
+    assert _op_for(relaxed_frontier, claim_class="DIST", targets=("no_risk",)).disposition == ELIGIBLE
+
+
+def test_valid_complete_empty_native_grammar_is_explicitly_empty():
+    inventory = _inventory((
+        _occurrence("admin_only", target_role=None, conditioner_role=None,
+                    administrative_role="IDENTITY"),
+    ))
+    policy = _policy(j=1, k=0, d=0)
+    frontier = _frontier(inventory, policy)
+    assert frontier.operations == ()
+    assert frontier.e_pre_count == 0 and frontier.e_pre_root is not None
+    plan = lower_frontier(
+        inventory, policy, frontier,
+        _minimal_catalog(target="admin_only"),
+    )
+    assert plan.supported_operation_ids == ()
+    assert plan.native_grammar()["allow_empty_frontier"] is True
+
+
+def test_all_missing_native_boundary_does_not_shrink_frontier():
+    label = "q_missing"
+    rows = [{"id": f"R{index}", "responses": {label: None}} for index in range(4)]
+    source = _build_source("r61-missing", rows)
+    qauth = _query_authority("r61-missing")
+    dauth = _d_auth("UNIVERSAL-SEMANTIC-LOWERING")
+    all_predicate = _branch_predicate(source, qauth, tag="r61-missing-all")
+    query = _query(source, qauth, all_predicate, (label,), tag="r61-missing-query")
+    inventory = _inventory((_occurrence(label, conditioner_role=None),))
+    policy = _policy(j=1, k=0, d=0)
+    frontier = _frontier(inventory, policy)
+    before = len(frontier.eligible())
+    assert before > 0
+    target_key = json.dumps(
+        [OccurrenceKey(label).key], sort_keys=False, separators=(",", ":")
+    )
+    catalog = NativeCatalog(
+        catalog_ref="urn:r61:test:missing-catalog",
+        baseline_predicate_ref=all_predicate.ref,
+        predicate_refs={},
+        query_refs={target_key + "|SAMPLE": query.ref},
+        joint_query_refs={},
+        marginal_query_refs={},
+        supported_claims=("DIST",),
+        supported_topologies=("SCALAR_SINGULAR",),
+        supported_condition_modes=("AND",),
+        maximum_target_arity=1,
+        maximum_conditioner_arity=0,
+        cell_codec={typed_value_key(0): "0", typed_value_key(1): "1"},
+        predicate_objects={all_predicate.ref.key: all_predicate},
+        query_objects={query.ref.key: query},
+    )
+    plan = lower_frontier(inventory, policy, frontier, catalog)
+    grammar = plan.native_grammar()
+    # The current synthetic I03 fixture refuses an all-missing response value
+    # as a typed integrity failure before I05 can issue a result. This is not a
+    # positive all-missing native result; it is an honest typed boundary. The
+    # prospective frontier remains unchanged either way.
+    with pytest.raises(ExactBoundedCoverageError, match="integrity failure"):
+        execute_exact_bounded_discovery(
+            repository=source["repo"],
+            discovery_authority=_discovery_authority(source, grammar, dauth),
+            authority_registry=_i05_registry(source, qauth, dauth),
+            release_refs=(source["release_ref"],),
+            predicate_catalog=(all_predicate,),
+            query_template_catalog=(query,),
+        )
+    assert len(frontier.eligible()) == before
+    assert frontier.e_pre_count == before
+    assert plan.supported_operation_ids

@@ -34,13 +34,32 @@ UNKNOWN = "UNKNOWN"
 UNSUPPORTED_RUNTIME = "UNSUPPORTED_RUNTIME"
 DEFERRED = "DEFERRED"
 
-DISPOSITIONS = (
+NOT_STARTED = "NOT_STARTED"
+PENDING = "PENDING"
+COMPLETED = "COMPLETED"
+ERROR = "ERROR"
+
+SUPPORTED_RESULT = "SUPPORTED"
+OBSERVED_ZERO = "OBSERVED_ZERO"
+VALID_NULL = "VALID_NULL"
+DIFFUSE = "DIFFUSE"
+VALID_EMPTY = "VALID_EMPTY"
+ZERO_SUPPORT = "ZERO_SUPPORT"
+UNSUPPORTED_RESULT = "UNSUPPORTED"
+
+ELIGIBILITY_STATES = (
     ELIGIBLE, PROHIBITED, INAPPLICABLE_PROVED, HELD, UNKNOWN,
-    UNSUPPORTED_RUNTIME, DEFERRED,
 )
-CONSIDERED_DISPOSITIONS = (
-    ELIGIBLE, PROHIBITED, INAPPLICABLE_PROVED, HELD, UNKNOWN,
+EXECUTION_STATES = (
+    NOT_STARTED, PENDING, COMPLETED, UNSUPPORTED_RUNTIME, ERROR,
 )
+RESULT_STATES = (
+    SUPPORTED_RESULT, OBSERVED_ZERO, VALID_NULL, DIFFUSE,
+    VALID_EMPTY, ZERO_SUPPORT, UNSUPPORTED_RESULT, UNKNOWN,
+)
+# Backward-compatible name: disposition is the eligibility axis only.
+DISPOSITIONS = ELIGIBILITY_STATES
+CONSIDERED_DISPOSITIONS = ELIGIBILITY_STATES
 
 
 def _text(value: Any, name: str) -> str:
@@ -81,6 +100,34 @@ def _material(value: Any) -> Any:
 
 def content_hash(value: Any) -> str:
     return semantic_hash(_material(value))
+
+
+@dataclass(frozen=True)
+class AbsentValue:
+    """Explicit typed absence, distinct from an explicit null value."""
+
+    def as_dict(self) -> dict[str, str]:
+        return {"$typed_value": "ABSENT"}
+
+    def material(self) -> dict[str, str]:
+        return self.as_dict()
+
+
+ABSENT = AbsentValue()
+
+
+def _validate_typed_value(value: Any) -> None:
+    if value is None or isinstance(value, (bool, int, str, AbsentValue)):
+        return
+    raise ValueError("domain values must be typed bool/int/string/null/absent, not float or opaque")
+
+
+def value_material(value: Any) -> Any:
+    return _material(value)
+
+
+def typed_value_key(value: Any) -> str:
+    return json.dumps(_material(value), sort_keys=True, separators=(",", ":"))
 
 
 @dataclass(frozen=True, order=True)
@@ -145,10 +192,8 @@ class Occurrence:
         if not self.domain:
             raise ValueError("domain may not be empty")
         for value in self.domain:
-            if isinstance(value, (float, bool)) or value is None:
-                raise ValueError("domain values must be exact non-float scalars")
-            canonicalize(value)
-        if len({json.dumps(canonicalize(v), sort_keys=True) for v in self.domain}) != len(self.domain):
+            _validate_typed_value(value)
+        if len({typed_value_key(v) for v in self.domain}) != len(self.domain):
             raise ValueError("domain contains duplicate typed values")
         for name in ("target_role", "conditioner_role", "administrative_role"):
             value = getattr(self, name)
@@ -207,6 +252,28 @@ class MeasurePlan:
 
 
 @dataclass(frozen=True)
+class HeldRecord:
+    occurrence_id: str
+    reason: str
+    authority_ref: str | None = None
+    structured: bool = True
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "occurrence_id", _text(self.occurrence_id, "occurrence_id"))
+        object.__setattr__(self, "reason", _text(self.reason, "reason"))
+        if self.authority_ref is not None:
+            object.__setattr__(self, "authority_ref", _text(self.authority_ref, "authority_ref"))
+        if not isinstance(self.structured, bool):
+            raise TypeError("structured must be bool")
+
+    def material(self) -> dict[str, Any]:
+        return {
+            "occurrence_id": self.occurrence_id, "reason": self.reason,
+            "authority_ref": self.authority_ref, "structured": self.structured,
+        }
+
+
+@dataclass(frozen=True)
 class SourceInventory:
     inventory_id: str
     source_id: str
@@ -223,8 +290,14 @@ class SourceInventory:
     current_selection: str | None
     inventory_complete: bool
     inventory_gaps: tuple[str, ...] = ()
-    held: tuple[str, ...] = ()
+    held: tuple[Any, ...] = ()
     unresolved: tuple[str, ...] = ()
+    dataset_id: str | None = None
+    instrument_ref: str | None = None
+    observation_clock_ref: str | None = None
+    reference_clock_ref: str | None = None
+    as_of_ref: str | None = None
+    publication_clock_ref: str | None = None
     schema: str = INVENTORY_SCHEMA
 
     def __post_init__(self) -> None:
@@ -253,10 +326,27 @@ class SourceInventory:
         object.__setattr__(self, "unit_transforms", _texts(self.unit_transforms, "unit_transforms"))
         object.__setattr__(self, "authority_refs", _texts(self.authority_refs, "authority_refs"))
         object.__setattr__(self, "inventory_gaps", _texts(self.inventory_gaps, "inventory_gaps"))
-        object.__setattr__(self, "held", _texts(self.held, "held"))
+        held_records: list[HeldRecord] = []
+        for value in self.held:
+            if isinstance(value, HeldRecord):
+                held_records.append(value)
+            elif isinstance(value, str):
+                held_records.append(HeldRecord(
+                    occurrence_id=_text(value, "held entry"),
+                    reason="UNSTRUCTURED_FREE_TEXT_HELD_CLAIM",
+                    authority_ref=None, structured=False,
+                ))
+            else:
+                raise TypeError("held entries must be HeldRecord or legacy string")
+        object.__setattr__(self, "held", tuple(held_records))
         object.__setattr__(self, "unresolved", _texts(self.unresolved, "unresolved"))
         if self.current_selection is not None:
             object.__setattr__(self, "current_selection", _text(self.current_selection, "current_selection"))
+        for name in ("dataset_id", "instrument_ref", "observation_clock_ref",
+                     "reference_clock_ref", "as_of_ref", "publication_clock_ref"):
+            value = getattr(self, name)
+            if value is not None:
+                object.__setattr__(self, name, _text(value, name))
         if not isinstance(self.inventory_complete, bool):
             raise TypeError("inventory_complete must be bool")
         if not self.inventory_complete and not self.inventory_gaps:
@@ -264,6 +354,10 @@ class SourceInventory:
 
     def by_key(self) -> dict[OccurrenceKey, Occurrence]:
         return {occurrence.key: occurrence for occurrence in self.occurrences}
+
+    @property
+    def held_records(self) -> tuple[HeldRecord, ...]:
+        return tuple(record for record in self.held if isinstance(record, HeldRecord))
 
     def require_version(self) -> None:
         if self.schema != INVENTORY_SCHEMA:
@@ -280,8 +374,14 @@ class SourceInventory:
             "unit_transforms": list(self.unit_transforms), "state_map": dict(self.state_map),
             "authority_refs": list(self.authority_refs), "current_selection": self.current_selection,
             "inventory_complete": self.inventory_complete,
-            "inventory_gaps": list(self.inventory_gaps), "held": list(self.held),
+            "inventory_gaps": list(self.inventory_gaps),
+            "held": [record.material() for record in self.held],
             "unresolved": list(self.unresolved),
+            "dataset_id": self.dataset_id, "instrument_ref": self.instrument_ref,
+            "observation_clock_ref": self.observation_clock_ref,
+            "reference_clock_ref": self.reference_clock_ref,
+            "as_of_ref": self.as_of_ref,
+            "publication_clock_ref": self.publication_clock_ref,
         }
 
     @property
@@ -334,6 +434,9 @@ class GrammarPolicy:
     stop_policy: str
     owner_refs: tuple[str, ...]
     authority_refs: tuple[str, ...]
+    recursion_relation_ref: str | None = None
+    baseline_policy_ref: str | None = None
+    risk_set_policy: str = "UNKNOWN"
     schema: str = POLICY_SCHEMA
 
     def __post_init__(self) -> None:
@@ -362,6 +465,12 @@ class GrammarPolicy:
         object.__setattr__(self, "bounds", normalized)
         if not isinstance(self.population_requires_weight, bool):
             raise TypeError("population_requires_weight must be bool")
+        if self.risk_set_policy not in {"UNKNOWN", "UNCONSTRAINED"}:
+            raise ValueError(f"UNKNOWN_RISK_SET_POLICY:{self.risk_set_policy}")
+        for name in ("recursion_relation_ref", "baseline_policy_ref"):
+            value = getattr(self, name)
+            if value is not None:
+                object.__setattr__(self, name, _text(value, name))
         if not isinstance(self.direction_grants, tuple) or not all(
             isinstance(g, DirectionGrant) for g in self.direction_grants
         ):
@@ -396,6 +505,9 @@ class GrammarPolicy:
             "exploration_policy": self.exploration_policy,
             "stop_policy": self.stop_policy,
             "owner_refs": list(self.owner_refs), "authority_refs": list(self.authority_refs),
+            "recursion_relation_ref": self.recursion_relation_ref,
+            "baseline_policy_ref": self.baseline_policy_ref,
+            "risk_set_policy": self.risk_set_policy,
         }
 
     @property
@@ -423,13 +535,34 @@ class ScientificOperation:
     form_scope: tuple[str, ...]
     scope: str
     branch_depth: int
+    recursion_depth: int
+    baseline_ref: str | None
+    recursion_relation_ref: str | None
     source_inventory: str
+    source_id: str
+    dataset_id: str | None
+    wave: str
+    edition: str
+    source_sha256: str
+    instrument_ref: str | None
     policy_id: str
     policy_hash: str
+    policy_grade: str
+    estimand: str
+    weight_ref: str | None
+    design_ref: str | None
+    variance_policy: str
+    observation_clock_ref: str | None
+    reference_clock_ref: str | None
+    as_of_ref: str | None
+    publication_clock_ref: str | None
+    current_selection_ref: str | None
     disposition: str
     reasons: tuple[str, ...] = ()
     native_support: str = "UNMAPPED"
     administration_states: tuple[str, ...] = ()
+    execution_state: str = NOT_STARTED
+    result_state: str = UNKNOWN
     aliases: tuple[str, ...] = ()
     schema: str = OPERATION_SCHEMA
 
@@ -440,10 +573,14 @@ class ScientificOperation:
             raise ValueError("operation must have at least one target occurrence")
         if not isinstance(self.conditions, tuple):
             raise ValueError("conditions must be a tuple")
-        if self.disposition not in DISPOSITIONS:
-            raise ValueError(f"UNKNOWN_DISPOSITION:{self.disposition}")
-        if self.branch_depth < 0:
-            raise ValueError("branch_depth must be nonnegative")
+        if self.disposition not in ELIGIBILITY_STATES:
+            raise ValueError(f"UNKNOWN_ELIGIBILITY_STATE:{self.disposition}")
+        if self.execution_state not in EXECUTION_STATES:
+            raise ValueError(f"UNKNOWN_EXECUTION_STATE:{self.execution_state}")
+        if self.result_state not in RESULT_STATES:
+            raise ValueError(f"UNKNOWN_RESULT_STATE:{self.result_state}")
+        if self.branch_depth < 0 or self.recursion_depth < 0:
+            raise ValueError("branch/recursion depth must be nonnegative")
 
     def identity_material(self) -> dict[str, Any]:
         return {
@@ -458,8 +595,22 @@ class ScientificOperation:
             "risk_set_ref": self.risk_set_ref, "risk_set_refs": list(self.risk_set_refs),
             "direction_ref": self.direction_ref, "form_scope": list(self.form_scope),
             "scope": self.scope, "branch_depth": self.branch_depth,
-            "source_inventory": self.source_inventory, "policy_id": self.policy_id,
-            "policy_hash": self.policy_hash,
+            "recursion_depth": self.recursion_depth,
+            "baseline_ref": self.baseline_ref,
+            "recursion_relation_ref": self.recursion_relation_ref,
+            "source_inventory": self.source_inventory, "source_id": self.source_id,
+            "dataset_id": self.dataset_id, "wave": self.wave,
+            "edition": self.edition, "source_sha256": self.source_sha256,
+            "instrument_ref": self.instrument_ref,
+            "policy_id": self.policy_id, "policy_hash": self.policy_hash,
+            "policy_grade": self.policy_grade,
+            "estimand": self.estimand, "weight_ref": self.weight_ref,
+            "design_ref": self.design_ref, "variance_policy": self.variance_policy,
+            "observation_clock_ref": self.observation_clock_ref,
+            "reference_clock_ref": self.reference_clock_ref,
+            "as_of_ref": self.as_of_ref,
+            "publication_clock_ref": self.publication_clock_ref,
+            "current_selection_ref": self.current_selection_ref,
             "administration_states": list(self.administration_states),
         }
 
@@ -471,6 +622,7 @@ class ScientificOperation:
         return {
             **self.identity_material(), "op_id": self.op_id,
             "candidate_hash": self.canonical_hash, "disposition": self.disposition,
+            "execution_state": self.execution_state, "result_state": self.result_state,
             "reasons": list(self.reasons), "native_support": self.native_support,
             "aliases": list(self.aliases),
         }
@@ -496,10 +648,14 @@ def make_operation(
     form_scope: Sequence[str],
     scope: str,
     branch_depth: int = 0,
+    recursion_depth: int = 0,
+    baseline_ref: str | None = None,
     disposition: str = ELIGIBLE,
     reasons: Sequence[str] = (),
     native_support: str = "UNMAPPED",
     administration_states: Sequence[str] = (),
+    execution_state: str = NOT_STARTED,
+    result_state: str = UNKNOWN,
     aliases: Sequence[str] = (),
 ) -> ScientificOperation:
     provisional = ScientificOperation(
@@ -521,13 +677,34 @@ def make_operation(
         form_scope=tuple(form_scope),
         scope=scope,
         branch_depth=branch_depth,
+        recursion_depth=recursion_depth,
+        baseline_ref=baseline_ref,
+        recursion_relation_ref=policy.recursion_relation_ref,
         source_inventory=inventory.inventory_id,
+        source_id=inventory.source_id,
+        dataset_id=inventory.dataset_id,
+        wave=inventory.wave,
+        edition=inventory.edition,
+        source_sha256=inventory.source_sha256,
+        instrument_ref=inventory.instrument_ref,
         policy_id=policy.policy_id,
         policy_hash=policy.content_hash,
+        policy_grade=policy.grade,
+        estimand=measure.estimand,
+        weight_ref=measure.weight_ref,
+        design_ref=measure.design_ref,
+        variance_policy=measure.variance_policy,
+        observation_clock_ref=inventory.observation_clock_ref,
+        reference_clock_ref=inventory.reference_clock_ref,
+        as_of_ref=inventory.as_of_ref,
+        publication_clock_ref=inventory.publication_clock_ref,
+        current_selection_ref=inventory.current_selection,
         disposition=disposition,
         reasons=tuple(reasons),
         native_support=native_support,
         administration_states=tuple(administration_states),
+        execution_state=execution_state,
+        result_state=result_state,
         aliases=tuple(aliases),
     )
     return ScientificOperation(
@@ -547,6 +724,8 @@ class InventoryLedgerEntry:
     administration: str
     disposition: str
     reasons: tuple[str, ...]
+    held_reason: str | None = None
+    held_authority_ref: str | None = None
 
     def material(self) -> dict[str, Any]:
         return {
@@ -554,7 +733,8 @@ class InventoryLedgerEntry:
             "conditioner_role": self.conditioner_role,
             "administrative_role": self.administrative_role,
             "administration": self.administration, "disposition": self.disposition,
-            "reasons": list(self.reasons),
+            "reasons": list(self.reasons), "held_reason": self.held_reason,
+            "held_authority_ref": self.held_authority_ref,
         }
 
 
@@ -571,6 +751,8 @@ class ScientificFrontier:
     inventory_ledger: tuple[InventoryLedgerEntry, ...]
     class_counts: Mapping[str, int]
     disposition_counts: Mapping[str, int]
+    execution_counts: Mapping[str, int]
+    result_counts: Mapping[str, int]
     deferred: tuple[Mapping[str, Any], ...]
     unknown: tuple[Mapping[str, Any], ...]
     excluded: tuple[Mapping[str, Any], ...]
@@ -600,13 +782,41 @@ class ScientificFrontier:
     def disposition_ledger(self) -> tuple[Mapping[str, Any], ...]:
         return tuple(
             {"op_id": op.op_id, "class": op.claim_class,
-             "disposition": op.disposition, "reasons": list(op.reasons)}
+             "eligibility": op.disposition,
+             "execution": op.execution_state, "result": op.result_state,
+             "reasons": list(op.reasons)}
             for op in self.operations
         )
 
     @property
+    def eligibility_counts(self) -> Mapping[str, int]:
+        return dict(self.disposition_counts)
+
+    @property
     def considered_count(self) -> int:
         return len(self.operations)
+
+    def axis_conservation(self) -> dict[str, Any]:
+        considered = sum(self.disposition_counts.values())
+        eligible_ops = self.eligible()
+        execution_total = sum(self.execution_counts.values())
+        result_total = sum(self.result_counts.values())
+        return {
+            "considered_count": len(self.operations),
+            "eligibility_total": considered,
+            "eligible_count": len(eligible_ops),
+            "execution_total": execution_total,
+            "eligible_execution_total": sum(
+                1 for op in eligible_ops
+            ),
+            "result_total": result_total,
+            "considered_equals_eligibility": considered == len(self.operations),
+            "execution_equals_considered": execution_total == len(self.operations),
+            "result_equals_considered": result_total == len(self.operations),
+            "eligibility_partition_ok": set(self.disposition_counts) <= set(ELIGIBILITY_STATES),
+            "execution_partition_ok": set(self.execution_counts) <= set(EXECUTION_STATES),
+            "result_partition_ok": set(self.result_counts) <= set(RESULT_STATES),
+        }
 
     def material(self) -> dict[str, Any]:
         return {
@@ -618,6 +828,8 @@ class ScientificFrontier:
             "inventory_ledger": [entry.material() for entry in self.inventory_ledger],
             "class_counts": dict(self.class_counts),
             "disposition_counts": dict(self.disposition_counts),
+            "execution_counts": dict(self.execution_counts),
+            "result_counts": dict(self.result_counts),
             "deferred": list(self.deferred), "unknown": list(self.unknown),
             "excluded": list(self.excluded), "budget_state": self.budget_state,
             "pending_operation_ids": list(self.pending_operation_ids),
@@ -659,7 +871,12 @@ __all__ = [
     "FRONTIER_SCHEMA", "PARTITION_SCHEMA", "ADMINISTERED", "NOT_ADMINISTERED",
     "ADMINISTRATION_UNKNOWN", "ADMINISTRATION_STATES", "SCALAR_TOPOLOGY",
     "ELIGIBLE", "PROHIBITED", "INAPPLICABLE_PROVED", "HELD", "UNKNOWN",
-    "UNSUPPORTED_RUNTIME", "DEFERRED", "DISPOSITIONS", "CONSIDERED_DISPOSITIONS",
+    "UNSUPPORTED_RUNTIME", "DEFERRED", "NOT_STARTED", "PENDING", "COMPLETED",
+    "ERROR", "SUPPORTED_RESULT", "OBSERVED_ZERO", "VALID_NULL", "DIFFUSE",
+    "VALID_EMPTY", "ZERO_SUPPORT", "UNSUPPORTED_RESULT",
+    "ELIGIBILITY_STATES", "EXECUTION_STATES", "RESULT_STATES",
+    "DISPOSITIONS", "CONSIDERED_DISPOSITIONS",
+    "AbsentValue", "ABSENT", "value_material", "typed_value_key", "HeldRecord",
     "OccurrenceKey", "Occurrence", "MeasurePlan", "SourceInventory",
     "DirectionGrant", "GrammarPolicy", "ScientificOperation",
     "InventoryLedgerEntry", "ScientificFrontier", "FrontierPartition",

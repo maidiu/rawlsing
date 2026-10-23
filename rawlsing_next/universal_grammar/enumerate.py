@@ -13,9 +13,10 @@ from rawlsing_next.pre553_empirical_objects import semantic_hash
 
 from .types import (
     ADMINISTERED, ADMINISTRATION_UNKNOWN, DEFERRED, ELIGIBLE,
-    FRONTIER_SCHEMA, HELD, INAPPLICABLE_PROVED, NOT_ADMINISTERED, PARTITION_SCHEMA,
-    PROHIBITED, SCALAR_TOPOLOGY, UNKNOWN, UNSUPPORTED_RUNTIME, FrontierPartition,
-    GrammarPolicy, InventoryLedgerEntry, MeasurePlan, Occurrence, OccurrenceKey,
+    EXECUTION_STATES, FRONTIER_SCHEMA, HELD, INAPPLICABLE_PROVED, NOT_ADMINISTERED,
+    PENDING, PARTITION_SCHEMA, PROHIBITED, RESULT_STATES, UNKNOWN,
+    UNSUPPORTED_RUNTIME, FrontierPartition, GrammarPolicy, HeldRecord,
+    InventoryLedgerEntry, MeasurePlan, Occurrence, OccurrenceKey,
     ScientificFrontier, ScientificOperation, SourceInventory, content_hash,
     make_operation,
 )
@@ -32,10 +33,14 @@ def inventory_ledger(
 ) -> tuple[InventoryLedgerEntry, ...]:
     """Account for every frozen occurrence, including nonsemantic exclusions."""
 
-    held_ids = set(inventory.held)
+    held_by_id: dict[str, HeldRecord] = {}
+    for record in inventory.held_records:
+        held_by_id[record.occurrence_id] = record
     entries: list[InventoryLedgerEntry] = []
     for occurrence in _sorted_occurrences(inventory.occurrences):
         identity = occurrence.occurrence_id
+        held_reason = None
+        held_authority = None
         if occurrence.administrative_role is not None:
             disposition, reasons = PROHIBITED, ("ADMINISTRATIVE_NONSEMANTIC",)
         elif occurrence.target_role is None and occurrence.conditioner_role is None:
@@ -44,8 +49,17 @@ def inventory_ledger(
             disposition, reasons = HELD, ("OCCURRENCE_NOT_ADMINISTERED",)
         elif occurrence.administration == ADMINISTRATION_UNKNOWN:
             disposition, reasons = UNKNOWN, ("ADMINISTRATION_UNKNOWN",)
-        elif identity in held_ids or occurrence.key.key in held_ids:
-            disposition, reasons = HELD, ("OCCURRENCE_HELD_BY_INVENTORY",)
+        elif identity in held_by_id or occurrence.key.key in held_by_id:
+            record = held_by_id.get(identity) or held_by_id[occurrence.key.key]
+            if record.structured and record.authority_ref:
+                disposition = HELD
+                reasons = ("HELD_BY_STRUCTURED_OWNER_RECORD",)
+                held_reason = record.reason
+                held_authority = record.authority_ref
+            else:
+                disposition = UNKNOWN
+                reasons = ("UNSTRUCTURED_HELD_CLAIM_NOT_AUTHORIZATION",)
+                held_reason = record.reason
         elif not (
             (occurrence.target_role is not None and occurrence.target_role in policy.target_roles)
             or (
@@ -64,6 +78,8 @@ def inventory_ledger(
             administration=occurrence.administration,
             disposition=disposition,
             reasons=tuple(reasons),
+            held_reason=held_reason,
+            held_authority_ref=held_authority,
         ))
     return tuple(entries)
 
@@ -93,11 +109,14 @@ def role_disposition(
     used_targets = [by_key[key] for key in targets]
     used_conditions = [by_key[key] for key, _ in conditions]
     used = used_targets + used_conditions
-    held_ids = set(inventory.held)
+    held_by_id = {
+        record.occurrence_id: record for record in inventory.held_records
+        if record.structured and record.authority_ref
+    }
     if any(
-        item.occurrence_id in held_ids or item.key.key in held_ids for item in used
+        item.occurrence_id in held_by_id or item.key.key in held_by_id for item in used
     ):
-        return HELD, ("OCCURRENCE_HELD_BY_INVENTORY",), ()
+        return HELD, ("HELD_BY_STRUCTURED_OWNER_RECORD",), ()
     if any(item.administrative_role is not None for item in used):
         return PROHIBITED, ("ADMINISTRATIVE_ROLE_DENIED",), ()
     if any(item.target_role is None or item.target_role not in policy.target_roles for item in used_targets):
@@ -118,13 +137,16 @@ def role_disposition(
         return PROHIBITED, ("UNLINKED_SOURCE",), ()
     if len({item.unit for item in used}) != 1:
         return HELD, ("UNRESOLVED_UNIT_LINK",), ()
-    risk_sets = [set(item.risk_set_refs) for item in used if item.risk_set_refs]
-    if risk_sets:
-        common_risk = tuple(sorted(set.intersection(*risk_sets)))
+    if any(not item.risk_set_refs for item in used):
+        if policy.risk_set_policy != "UNCONSTRAINED":
+            return UNKNOWN, ("UNKNOWN_RISK_SET",), ()
+        common_risk = ()
+    else:
+        common_risk = tuple(sorted(set.intersection(
+            *(set(item.risk_set_refs) for item in used)
+        )))
         if not common_risk:
             return INAPPLICABLE_PROVED, ("DISJOINT_RISK_SET",), ()
-    else:
-        common_risk = ()
     if any(item.route_state != "KNOWN" for item in used):
         return HELD, ("UNKNOWN_ROUTING_NONPROMOTION",), common_risk
     if not set.intersection(*(set(item.forms) for item in used)):
@@ -133,10 +155,8 @@ def role_disposition(
         return HELD, ("OCCURRENCE_NOT_ADMINISTERED",), common_risk
     if any(item.administration == ADMINISTRATION_UNKNOWN for item in used):
         return UNKNOWN, ("ADMINISTRATION_UNKNOWN",), common_risk
-    if any(item.topology != SCALAR_TOPOLOGY for item in used):
-        return UNSUPPORTED_RUNTIME, ("UNSANCTIONED_TOPOLOGY_OBLIGATION",), common_risk
     if claim_class in policy.separate_classes:
-        return DEFERRED, ("METHOD_GATED_CLASS:" + claim_class,), common_risk
+        return HELD, ("METHOD_GATED_CLASS:" + claim_class,), common_risk
     if claim_class not in policy.allowed_classes:
         return PROHIBITED, ("CLASS_NOT_ALLOWED:" + claim_class,), common_risk
     if measure is None:
@@ -150,7 +170,7 @@ def role_disposition(
     if condition_mode == "XOR_EXACTLY_ONE" and len(conditions) != 2:
         return PROHIBITED, ("XOR_REQUIRES_TWO_OCCURRENCES",), common_risk
     if branch_depth > int(policy.bounds["D"]):
-        return DEFERRED, ("DEPTH_BEYOND_ISSUED_BOUND",), common_risk
+        return HELD, ("DEPTH_BEYOND_ISSUED_BOUND",), common_risk
     return ELIGIBLE, (), common_risk
 
 
@@ -190,6 +210,8 @@ def _add(
     measure: MeasurePlan,
     state_variant: str = "COMPLETE_RESPONSE",
     branch_depth: int = 0,
+    recursion_depth: int = 0,
+    baseline_ref: str | None = None,
     alias: str | None = None,
 ) -> ScientificOperation:
     disposition, reasons, risk_set_refs = role_disposition(
@@ -212,6 +234,7 @@ def _add(
         direction_ref=None if grant is None else grant.direction_ref,
         form_scope=sorted(set.intersection(*(set(item.forms) for item in used))),
         scope=used[0].scope, branch_depth=branch_depth,
+        recursion_depth=recursion_depth, baseline_ref=baseline_ref,
         disposition=disposition, reasons=reasons,
         native_support="PENDING" if disposition == ELIGIBLE else "NOT_APPLICABLE",
         administration_states=sorted({item.administration for item in used}),
@@ -331,6 +354,8 @@ def enumerate_frontier(
         measure: MeasurePlan,
         state_variant: str = "COMPLETE_RESPONSE",
         branch_depth: int = 0,
+        recursion_depth: int = 0,
+        baseline_ref: str | None = None,
         alias: str | None = None,
     ) -> ScientificOperation:
         target_roles = tuple(by_key[key].target_role for key in targets)  # type: ignore[misc]
@@ -340,7 +365,8 @@ def enumerate_frontier(
             claim_class=claim_class, targets=targets, target_roles=target_roles,
             conditions=conditions, conditioner_roles=conditioner_roles,
             condition_mode=condition_mode, measure=measure,
-            state_variant=state_variant, branch_depth=branch_depth, alias=alias,
+            state_variant=state_variant, branch_depth=branch_depth,
+            recursion_depth=recursion_depth, baseline_ref=baseline_ref, alias=alias,
         )
 
     for arity in range(1, min(j, len(target_pool)) + 1):
@@ -367,6 +393,8 @@ def enumerate_frontier(
                                     if depth >= 2:
                                         add("FORK", target_keys, conditions,
                                             measure=measure, branch_depth=depth - 1,
+                                            recursion_depth=depth - 1,
+                                            baseline_ref=parent.op_id,
                                             alias=parent.op_id)
                                 else:
                                     add("JOINT", target_keys, conditions, measure=measure)
@@ -394,10 +422,31 @@ def enumerate_frontier(
     )
 
     eligible = tuple(op for op in ordered if op.disposition == ELIGIBLE)
+
+    operation_ids = tuple(sorted(op.op_id for op in ordered))
+    pending = ()
+    budget_state = "COMPLETE"
+    if budget is not None and len(eligible) > budget:
+        budget_state = "PARTIAL"
+        pending = tuple(op.op_id for op in eligible[budget:])
+    pending_set = set(pending)
+    if pending_set:
+        ordered = tuple(
+            ScientificOperation(**{
+                **{name: getattr(op, name) for name in op.__dataclass_fields__},
+                "execution_state": PENDING if op.op_id in pending_set else op.execution_state,
+            })
+            for op in ordered
+        )
+
     class_counts: dict[str, int] = {}
     disposition_counts: dict[str, int] = {}
+    execution_counts: dict[str, int] = {}
+    result_counts: dict[str, int] = {}
     for op in ordered:
         disposition_counts[op.disposition] = disposition_counts.get(op.disposition, 0) + 1
+        execution_counts[op.execution_state] = execution_counts.get(op.execution_state, 0) + 1
+        result_counts[op.result_state] = result_counts.get(op.result_state, 0) + 1
         if op.disposition == ELIGIBLE:
             class_counts[op.claim_class] = class_counts.get(op.claim_class, 0) + 1
 
@@ -442,12 +491,6 @@ def enumerate_frontier(
          "trigger": "ISSUED_RELEASE_EXPANSION"},
     )
 
-    operation_ids = tuple(sorted(op.op_id for op in ordered))
-    pending = ()
-    budget_state = "COMPLETE"
-    if budget is not None and len(eligible) > budget:
-        budget_state = "PARTIAL"
-        pending = tuple(op.op_id for op in eligible[budget:])
     partition_count = (len(operation_ids) + partition_size - 1) // partition_size
 
     return ScientificFrontier(
@@ -466,6 +509,8 @@ def enumerate_frontier(
         inventory_ledger=occurrence_ledger,
         class_counts=dict(sorted(class_counts.items())),
         disposition_counts=dict(sorted(disposition_counts.items())),
+        execution_counts=dict(sorted(execution_counts.items())),
+        result_counts=dict(sorted(result_counts.items())),
         deferred=deferred,
         unknown=tuple(
             op.material() for op in ordered if op.disposition == UNKNOWN
