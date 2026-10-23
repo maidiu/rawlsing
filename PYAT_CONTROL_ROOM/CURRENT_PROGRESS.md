@@ -1,3 +1,12 @@
+# R61AA — R08 independent qualification advances; R01 boundary preserved
+
+R08 R6 author return d8a7b4005d23a1e39b35360ca96bf2aef5b9e591 verified6hashes/9allowedpaths/pre-code amendment; 38 author passes not acceptance. Existing distinct reviewer resumed PID96003 under2ee413f6c86101a5cecabbc6d5b46fe7351fe68d on exact candidate, stable directory/new R6 branch. Full authenticated provenance/export/cold re-export and R61Q qualification.
+
+Controller owner still live; one exact Pyat pending inbox observed, no ack/adoption. Logical reviewer ref alone insufficient; real effect/provider/session/return custody required. R01 review remains REVISE and user Sol High adjudication pending; no R7/R03 launch. Light sufficient for independent custody/routing only. All holds unchanged.
+
+
+## Earlier progress history retained
+
 # R61Z — R01 R6 review custody verified; finite engineering adjudication
 
 Review568ff717662ac1ee63d29bad3080deaf10bd17f9 verified28artifacthashes/fourcandidateblobs/ownscope/directremote. REVISE; native positives preserved. Explicit source/context/issuance gaps remain. Reviewer forged-pin finding may cross R61V independently trusted expected-pin boundary; pre-activation restored execution also lacks productive replay/activation. Exact bounded Sol High card in director 4f86ea3619a8dce243bbc64e8b3b9d8eb68746f5. No new architecture/science/court.

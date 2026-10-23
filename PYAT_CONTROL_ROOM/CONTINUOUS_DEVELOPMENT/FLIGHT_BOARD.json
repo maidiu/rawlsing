@@ -84,7 +84,7 @@
       "next_action": "Light exact intake6abd49ffd9bb61925084036f2f1275841b3b5c83 then distinct native review",
       "terminal_consequence": "Prevents wrong-condition or unsupported-positive world/possibility serving",
       "acceptance": "Independent exact-identity positive/hostile/actual-consumer/cold proof; HQ scoped disposition; no author self-adoption",
-      "status": "R6_COMPLETE_PROJECTION_REPAIR_RUNNING"
+      "status": "R6_AUTHOR_CUSTODY_VERIFIED__DISTINCT_R6_REVIEW_RUNNING"
     },
     {
       "id": "R09.local",
@@ -374,7 +374,17 @@
       "route": "ATTENDED_EXISTING_INFRASTRUCTURE_BOOTSTRAP_NOT_CONTROLLER_LAUNCH",
       "os_isolation": "NOT_PROVEN"
     },
-    "delivery_grade": "SCHEDULED_APP_HEARTBEAT_ACTIVE__CONTROLLER_INTEGRATION_UNQUALIFIED"
+    "delivery_grade": "SCHEDULED_APP_HEARTBEAT_ACTIVE__CONTROLLER_INTEGRATION_UNQUALIFIED",
+    "pending_inbox_observed": [
+      {
+        "client_id": "pyat-incumbent-01a15c1e",
+        "envelope_id": "pyat_env_d6da155dc135a89cea309c8bf33fd57e",
+        "source_candidate_sha": "a74ce2f278e3463a484f93e041878c6158faec55",
+        "reviewer_session_ref": "ses_r60reviewerlogical",
+        "state": "PENDING",
+        "created_at": "2026-10-23T20:22:17.852Z"
+      }
+    ]
   },
   "governance": {
     "J52": "USER_STOPPED",
@@ -454,30 +464,23 @@
       "actual_tool_root": "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client"
     },
     {
-      "id": "R08_R6",
-      "pid": 84198,
+      "id": "R08V_R6",
+      "pid": 96003,
       "sessions": [
-        "ses_e98c8dfe6ffewNYOqJpvqK21a6"
+        "ses_e962f7b5effeIc4B6gtfbZNHvh"
       ],
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08",
-      "branch": "agent/opencode-pyat-r61-r08-evidence-binding-r1",
-      "startup": "6abd49ffd9bb61925084036f2f1275841b3b5c83",
-      "commission_tip": "d737562873558ce01116f079815b00bdb06416fe",
-      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R08/revisions/r6/00_REPAIR_COMMISSION.md",
-      "write_scope": [
-        "rawlsing_next/pre553_universal_evidence_binding.py",
-        "rawlsing_next/tests/test_universal_evidence_binding.py",
-        "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r6/**"
-      ],
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+      "branch": "agent/opencode-pyat-r61-r08v-r6-independent-review-r1",
+      "startup": "d8a7b4005d23a1e39b35360ca96bf2aef5b9e591",
+      "commission_tip": "2ee413f6c86101a5cecabbc6d5b46fe7351fe68d",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R08V/revisions/r6/00_COMMISSION.md",
       "model": "opencode-go/deepseek-v4.1-flash",
       "variant_requested": "max",
       "account": "existing Global",
-      "started_utc": "2026-10-23T20:03:45.788978+00:00",
       "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_NOT_CONTROLLER",
-      "actual_tool_preflight": "PASS_TOOL_ROOT_BRANCH",
+      "actual_tool_preflight": "PENDING",
       "os_isolation": "NOT_PROVEN",
-      "new_repository_copies": 0,
-      "process_live_observed": true
+      "started_utc": "2026-10-23T20:26:36.386525+00:00"
     }
   ],
   "prior_review_returns": {
@@ -1012,5 +1015,19 @@
     "next": "Bounded Sol High adjudication of reviewer/contract boundary before R7; no new architecture/science",
     "R03": "NOT_STARTED",
     "native_rerun_by_HQ": false
+  },
+  "R61AA_R08_author_intake": {
+    "sha": "d8a7b4005d23a1e39b35360ca96bf2aef5b9e591",
+    "code": "7450b4f389e4a95a85066065dec7acafe83da84d",
+    "amendment": "b9076985ec3be2ead1c47a2f754a52f774dfca59",
+    "artifact_hashes_verified": 6,
+    "authorized_changed_paths_verified": 9,
+    "code_blobs": {
+      "rawlsing_next/pre553_universal_evidence_binding.py": "ad165eba9d04644f4b5ab34cd9e52ea1cf9b0ebe",
+      "rawlsing_next/tests/test_universal_evidence_binding.py": "576142c525e140fdfcd34af3949b5bf68ff2386f"
+    },
+    "grade": "AUTHOR_CUSTODY_VERIFIED__NOT_INDEPENDENT_ACCEPTANCE",
+    "claims": "38 author passes; signed provenance/mode, full export checks and verifier-only re-export",
+    "R01_decision": "STILL_AWAITING_USER_SOL_HIGH__NO_R7"
   }
 }
