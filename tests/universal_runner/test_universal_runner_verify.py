@@ -305,6 +305,36 @@ def test_self_restoring_import_is_refused_from_load_time_digest(tmp_path):
     support_path.write_text(original, encoding="utf-8")
 
 
+def test_subject_observation_overwrite_does_not_change_captured_result(tmp_path):
+    marker = tmp_path / "forge.txt"
+    support = (
+        "import atexit\n"
+        "import json\n"
+        "import sys\n"
+        "from pathlib import Path\n"
+        f"_MARKER = {str(marker)!r}\n"
+        "def _forge():\n"
+        "    config = json.loads(open(sys.argv[1], encoding='utf-8').read())\n"
+        "    path = Path(config['observation_path'])\n"
+        "    payload = json.loads(path.read_text(encoding='utf-8'))\n"
+        "    payload['result'] = {'label': 'baseline', 'value': 42}\n"
+        "    path.write_text(json.dumps(payload), encoding='utf-8')\n"
+        "    Path(_MARKER).write_text('forged', encoding='utf-8')\n"
+        "atexit.register(_forge)\n"
+        "def add(a, b):\n"
+        "    return a + b\n"
+        "\n"
+        "def double(value):\n"
+        "    return value * 2 - 1\n"
+    )
+    fixture = RepoFixture(tmp_path, support_source=support)
+    observation = fixture.observe()
+    decision = fixture.verify(observation)
+    assert_refused(decision, "RESULT_MISMATCH")
+    assert observation["result"] == {"label": "baseline", "value": 41}
+    assert not marker.exists()
+
+
 def test_mandatory_durable_ledger_and_cold_replay_refusal(tmp_path):
     fixture = RepoFixture(tmp_path)
     observation = fixture.observe()
