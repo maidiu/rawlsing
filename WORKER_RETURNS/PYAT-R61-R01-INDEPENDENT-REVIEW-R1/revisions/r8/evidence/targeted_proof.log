@@ -1,0 +1,65 @@
+{
+  "H1_correct_target_label": {
+    "accepted": true,
+    "value": "urn:r61:campaign:6cb628d9151fb7379416727180a5db955f93cf01a602e6f92b656c54fc3737fe"
+  },
+  "H1_wrong_target_label": {
+    "accepted": false,
+    "message": "CAMPAIGN_TARGET_LABEL_QUERY_MISMATCH",
+    "type": "RecurrenceRefusal"
+  },
+  "H2_query_target_mismatch": {
+    "accepted": false,
+    "message": "CAMPAIGN_TARGET_LABEL_QUERY_MISMATCH",
+    "type": "RecurrenceRefusal"
+  },
+  "H3_correct_condition_predicate": {
+    "accepted": true,
+    "value": "urn:r61:campaign:fbcf5ad037dd15f5d4a1653a09713a38ba018991cb43eccbee325da0b4a53110"
+  },
+  "H3_wrong_condition_predicate": {
+    "accepted": false,
+    "message": "CAMPAIGN_CONDITION_VALUE_PREDICATE_MISMATCH",
+    "type": "RecurrenceRefusal"
+  },
+  "H4_malformed_condition_key": {
+    "accepted": false,
+    "message": "CAMPAIGN_TYPED_OCCURRENCE_KEY_REQUIRED",
+    "type": "RecurrenceRefusal"
+  },
+  "H5_duplicate_condition_refs": {
+    "accepted": false,
+    "message": "DUPLICATE_CONDITION_REF",
+    "type": "RecurrenceRefusal"
+  },
+  "pre_activation_restore": {
+    "activation_1": true,
+    "activation_2": true,
+    "executions_after": 2,
+    "restore_accepted": true
+  },
+  "restore_altered_target_context": {
+    "accepted": false,
+    "message": "SNAPSHOT_CHECKPOINT_PIN_MISMATCH",
+    "type": "RecurrenceRefusal"
+  },
+  "restore_genuine": {
+    "accepted": true,
+    "executions": 2
+  },
+  "retained_multibatch": {
+    "accepted": true,
+    "cumulative": [
+      4,
+      8
+    ],
+    "predecessor_counts": [
+      0,
+      4
+    ],
+    "predecessors": [
+      null,
+      "80f33cba897b853c40db06fa702564eeb7e8b7c93b4f46b221da843ffe43c86a"
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "PYAT_R61_R01V_R8_INDEPENDENT_ORACLE_RESULTS@1",
+  "candidate": "813775c07f0831605b6484a1d82afada30d85968",
+  "candidate_code": "b57e6cf7544c9a66d5dc1c9c7b0ba9d5ba810369",
+  "review_branch": "agent/opencode-pyat-r61-r01v-r8-independent-review-r1",
+  "verdict": "ACCEPT_SCOPED_LOCAL",
+  "author_suite_replay": {
+    "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=.../replay/author_suite_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 32,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/author_suite.log",
+    "junit": "replay/author_suite_junit.xml"
+  },
+  "previous_review_regressions": {
+    "r7_positive": {"command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r01v_r8_positive.py -q -o addopts=''", "passed": 2, "failed": 0},
+    "r7_controls": {"command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r01v_r8_controls.py -q -o addopts=''", "passed": 15, "failed": 0},
+    "r7_hostile": {"command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r01v_r8_hostile.py -q -o addopts=''", "passed": 9, "failed": 0},
+    "r3_controls": {"command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r01v_r3_reviewer.py -q -o addopts=''", "passed": 10, "failed": 0},
+    "note": "R7 probes were copied unmodified into the R8 own root as versioned adapters; no archived probe was edited. All expected R7 refusals and retained positives now pass on R8."
+  },
+  "targeted_r8_proof": {
+    "file": "evidence/targeted_results.json",
+    "log": "evidence/targeted_proof.log",
+    "results": {
+      "H1_wrong_target_label": "RecurrenceRefusal CAMPAIGN_TARGET_LABEL_QUERY_MISMATCH",
+      "H1_correct_target_label": "accepted",
+      "H2_query_target_mismatch": "RecurrenceRefusal CAMPAIGN_TARGET_LABEL_QUERY_MISMATCH",
+      "H3_wrong_condition_predicate": "RecurrenceRefusal CAMPAIGN_CONDITION_VALUE_PREDICATE_MISMATCH",
+      "H3_correct_condition_predicate": "accepted",
+      "H4_malformed_condition_key": "RecurrenceRefusal CAMPAIGN_TYPED_OCCURRENCE_KEY_REQUIRED",
+      "H5_duplicate_condition_refs": "RecurrenceRefusal DUPLICATE_CONDITION_REF",
+      "retained_multibatch": "accepted, cumulative 4 then 8, predecessor counts 0 then 4",
+      "pre_activation_restore": "restore accepted, two activations, two executions unchanged",
+      "restore_genuine": "accepted"
+    }
+  },
+  "f1_f6_matrix": {
+    "F1_positive": "PASS: changed-data D3, independent operation sets/multiplicity, root/parent arithmetic, hidden 75/25, nonwinning exploration, A1-A3",
+    "F2_successor_attacks": "PASS: targeted H1-H5 now typed-refuse; retained R7 live injection/chronology/closure refusals pass",
+    "F3_owner_boundary": "PASS: deep-detached views, forged lineage/requested/predecessor/activation refusals, malformed/duplicate condition refusals",
+    "F4_accounting": "PASS: multiple generation-1 batches 4 then 8, stopped/no-work head, exact counts, retry/concurrency, no refund",
+    "F5_restore": "PASS: fixed original pin, wrong query/catalog refusal, pre/post-activation cold restore, no native rerun",
+    "F6_same_consumer": "PASS: baseline/mutation/refusal/restoration, native calls conserved, cold N+1, typed receipt states and HOLD"
+  },
+  "unknowns_and_boundaries": [
+    "Local trusted coordinator/TEST_ONLY synthetic profile; no protected issuer/signing service/global durable uniqueness/R09 capture.",
+    "R04/R09 durable custody and fork prevention NOT_REACHED.",
+    "Original 35/1890, global F6/F7/F8, N11/N12, Sorok, production/CI and J52/W52 remain unqualified.",
+    "R03 remains NOT_STARTED; this review does not authorize an R03 wake.",
+    "R08/R61Q is a separate lane and was not inspected, repaired or certified here."
+  ]
+}
