@@ -1,0 +1,50 @@
+{
+  "id": "R09",
+  "priority": "P0",
+  "title": "Authenticated native runner and required promotion checks",
+  "owner": "Independent CI engineer plus repository administrator",
+  "predecessors": [
+    "R00"
+  ],
+  "base_commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+  "reference_sources": [
+    {
+      "id": "ci",
+      "commit": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "path": ".github/workflows/rabochii-governed-bounded-court.yml",
+      "blob": "3e045885c9593392836871cbe5f4a210bee8eb79"
+    },
+    {
+      "id": "Hcode",
+      "commit": "026a6ba3075817b7f0370619843ee7227967bc8e",
+      "path": "WORKER_RETURNS/PYAT-R53-B53H-HISTORICAL-RECURRENCE-AND-ACCEPTANCE-FAILURE-COURT-R1/09_trusted_oracle_prefilter.py",
+      "blob": "c7eea07999752a5101cacd8c3ede68fb24f061e7"
+    },
+    {
+      "id": "Htest10",
+      "commit": "026a6ba3075817b7f0370619843ee7227967bc8e",
+      "path": "WORKER_RETURNS/PYAT-R53-B53H-HISTORICAL-RECURRENCE-AND-ACCEPTANCE-FAILURE-COURT-R1/10_test_trusted_oracle_prefilter.py",
+      "blob": "df073d1a3ac01e3009699c14022d60f70dae790f"
+    }
+  ],
+  "write_scope": [
+    ".github/workflows/universal-execution-qualification.yml",
+    "CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py",
+    "tests/universal_runner/"
+  ],
+  "precondition": "Protected oracle and trusted workflow/runner administration, separate from candidate writer",
+  "transformation": "Exact candidate digest plus externally pinned policy -> sandboxed real owner execution -> authenticated event/value artifacts -> independent verification",
+  "consumer": "HQ promotion required check",
+  "first_unblock": "Stop forged manifests/native booleans from qualifying general capability",
+  "acceptance": "Forged events/self-pin/wrong commit/replayed run/missing owner/shape relabel all rejected; authentic known baseline accepted; required check enforcement verified at exact commit",
+  "negative_oracle": "P53T B53H forgery witnesses and same-name spoofed status; candidate edits policy/workflow; missing trace; changed runtime import",
+  "material_refs": [
+    "M23",
+    "M29"
+  ],
+  "contract": "09 and UNIVERSAL_RELEASE_GATE_SPEC.json",
+  "original35_effect": "All35 accounting separate from original rights/measurement",
+  "resource_class": "Trusted isolated runner, protected policy/workflow, authenticated CI artifact provenance; native Python and deterministic cold runs",
+  "provider_sufficiency": "CI/security implementation competence and repository admin; scientific oracle requires separate owner",
+  "stop_hold": "If required checks/protection unavailable return DEPLOYMENT_HOLD; never call a local prototype installed"
+}
