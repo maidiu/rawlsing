@@ -1,0 +1,183 @@
+{
+  "schema": "PYAT_R61_R08V_R4_INDEPENDENT_PROOF_WITNESS@1",
+  "logical_job": "R61-R08-INDEPENDENT-REVIEW-R1/revisions/r4",
+  "verdict": "REVISE",
+  "candidate": "48a2eaf6d3c653e2efe40643c427f28c47cd744b",
+  "code_commit": "3c69a13e64dd2bca65858906a367347e895f9d82",
+  "frozen_expectations_commit": "4cf30eee34891f269bed95294e3f31ef80c0b2d5",
+  "frozen_expectations_blob": "6e180623b121e44cedb15b610ba90ecf12baf317",
+  "branch": "agent/opencode-pyat-r61-r08v-r4-independent-review-r1",
+  "decisive_decision": "99222514afbac4fc1671dbc90f02b210e6c1f6ce",
+  "environment": {
+    "python": "3.11.3",
+    "python_executable": "/usr/local/bin/python3",
+    "pytest": "9.0.2"
+  },
+  "custody": {
+    "exact_root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+    "candidate_code_blob": "c3b039fd908c20b6494a2bcf37b89d878dfaf6c6",
+    "candidate_test_blob": "1f72a428283eb35d7bcedf5391528dbcbd22a489",
+    "native_owner_blobs": {
+      "provider": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "composition": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "positioned_evaluator": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "empirical_objects": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "at07_n10e_fixture": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a"
+    },
+    "candidate_delta": [
+      "rawlsing_next/pre553_universal_evidence_binding.py",
+      "rawlsing_next/tests/test_universal_evidence_binding.py"
+    ],
+    "author_r4_report_delta": [
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r4/00_RETURN.md",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r4/COVERAGE_MATRIX.md",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r4/RESUME.md",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r4/junit.xml",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r4/manifest.json",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r4/proof_witness.json"
+    ],
+    "author_manifest_recomputed": {
+      "all_six_artifacts_match": true,
+      "self_excluded": "manifest.json",
+      "artifact_count": 6
+    },
+    "remote_branch_at_start": "48a2eaf6d3c653e2efe40643c427f28c47cd744b"
+  },
+  "commands": [
+    {
+      "command": "git rev-parse HEAD; git rev-parse 48a2eaf6d; git rev-parse 4cf30eee",
+      "exit": 0,
+      "observation": "HEAD=4cf30eee; candidate=48a2eaf6d; frozen expectations=4cf30eee"
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest -q rawlsing_next/tests/test_universal_evidence_binding.py -p no:cacheprovider",
+      "exit": 0,
+      "observation": "18 passed"
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest -q rawlsing_next/tests/test_universal_evidence_binding.py rawlsing_next/tests/test_pre553_analytical_composition.py -p no:cacheprovider --junitxml=<ownroot>/junit/author_suite_replay.xml",
+      "exit": 0,
+      "observation": "31 passed, 0 failed, 0 errors, 0 skipped"
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest -q <ownroot>/probes/test_r08v_r4_independent_boundary.py -p no:cacheprovider --junitxml=<ownroot>/junit/reviewer_probes.xml",
+      "exit": 1,
+      "observation": "9 probes: 6 passed, 3 failed security expectations (the recorded defects)"
+    }
+  ],
+  "independent_positive": {
+    "fixture": "AT07_BIDIRECTIONAL_100",
+    "independent_table_counts": {"POSITION_P1_yes": 54, "POSITION_P1_no": 6, "denominator": 60},
+    "provider_cells": {"yes": 54, "no": 6},
+    "consumer_state": "EXACT_SUPPORTED",
+    "consumer_result_hash": "47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be",
+    "changed_native_case": {"variant": "CHANGED_SOURCE_LAW", "denominator": 70, "cells": {"yes": 54, "no": 16}},
+    "cold_process": {"provenance": "AUTHENTICATED_CACHE", "state": "SUPPORTED", "denominator": 60, "same_hash": true}
+  },
+  "passing_controls": [
+    "no-config resolver/reader/import: NO_CONFIGURED_TRUST_ROOT refusal",
+    "wrong-root reader refused; attacker issuer with same authority_id refused",
+    "cache missing envelope refused; cache forged evidence 999 refused",
+    "original signed result restored and read at denominator 60"
+  ],
+  "probe_results": [
+    {
+      "probe": "independent_positive_54_6_60",
+      "expected": "SUPPORTED 60 with actual provider/evaluator",
+      "observed": "SUPPORTED 60, yes=54, no=6",
+      "outcome": "PASS"
+    },
+    {
+      "probe": "changed_native_case",
+      "expected": "denominator 70, yes=54, no=16",
+      "observed": "denominator 70, yes=54, no=16",
+      "outcome": "PASS"
+    },
+    {
+      "probe": "no_config_refusal",
+      "expected": "typed refusal",
+      "observed": "UNKNOWN / NO_CONFIGURED_TRUST_ROOT",
+      "outcome": "PASS"
+    },
+    {
+      "probe": "wrong_root_and_attacker_issuer",
+      "expected": "both refused; original restored",
+      "observed": "wrong verifier refused, attacker signature refused, original 60",
+      "outcome": "PASS"
+    },
+    {
+      "probe": "forged_consumer_values_read",
+      "expected": "same reader refuses or serves signed 60/SUPPORTED",
+      "observed": "same reader served signed-envelope-mismatched 999/ZERO_SUPPORT and forged cells/evidence_ref",
+      "outcome": "FAIL_DEFECT"
+    },
+    {
+      "probe": "mutated_result_metadata",
+      "expected": "reader refuses forged producer/fact/uncertainty fields",
+      "observed": "same reader accepted result with FORGED_FACT_STATE and forged uncertainty/receipt/fact refs",
+      "outcome": "FAIL_DEFECT"
+    },
+    {
+      "probe": "substituted_producer_without_pin",
+      "expected": "substituted callable never executes",
+      "observed": "SUBSTITUTED_PRODUCER_EXECUTED, call count 1",
+      "outcome": "FAIL_DEFECT"
+    },
+    {
+      "probe": "cache_forgery_refusal",
+      "expected": "missing envelope and forged 999 evidence refuse",
+      "observed": "both EvidenceCacheIntegrityError",
+      "outcome": "PASS"
+    },
+    {
+      "probe": "cold_process_positive",
+      "expected": "fresh process, separate stdin key, same consumer hash",
+      "observed": "AUTHENTICATED_CACHE 60 and same hash",
+      "outcome": "PASS"
+    }
+  ],
+  "defects": [
+    {
+      "id": "R4-D3/D4-01",
+      "class": "D3 incomplete envelope/result agreement; D4 direct-reader route not closed",
+      "public_route": "dataclasses.replace on EvidenceResult.consumer_values_read/metadata; EvidenceConsumerReader.read/e04_step serve the replacement",
+      "signed_value": "denominator 60, SUPPORTED, signed envelope",
+      "observed_value": "denominator 999, ZERO_SUPPORT, forged cells/evidence_ref; forged fact/uncertainty fields accepted",
+      "missing_function": "bind every served result field and full consumer_values_read to the signed envelope, or serve solely from the envelope"
+    },
+    {
+      "id": "R4-D2-02",
+      "class": "D2 producer-callable pin fail-open when admitted_producer omitted",
+      "public_route": "EvidenceResolver(admission_verifier, executor) without admitted_producer; copied legitimate admission + dataclasses.replace(producer=forged)",
+      "observed_value": "forged producer executed",
+      "missing_function": "make the producer callable pin mandatory or default-deny admission"
+    }
+  ],
+  "junit": {
+    "reviewer_probes": {"tests": 9, "failures": 3, "errors": 0, "skipped": 0, "path": "junit/reviewer_probes.xml"},
+    "author_suite_replay": {"tests": 31, "failures": 0, "errors": 0, "skipped": 0, "path": "junit/author_suite_replay.xml"}
+  },
+  "artifacts": [
+    "00_RETURN.md",
+    "defects.md",
+    "limits.md",
+    "EXPECTATIONS.md",
+    "RESUME.md",
+    "FACILITY_HISTORY.md",
+    "proof_witness.json",
+    "SHA256manifest.json",
+    "outcomes/r4_observations.json",
+    "probes/test_r08v_r4_independent_boundary.py",
+    "junit/reviewer_probes.xml",
+    "junit/author_suite_replay.xml",
+    "logs/stdout-replacement1.jsonl"
+  ],
+  "scope_limits": {
+    "not_reached": ["live J42 E41ProviderAdapter.step", "live P41 progressive", "repaired live E04 terminal"],
+    "unchanged_holds": ["original35", "1890", "global F6F7F8", "source/science/CI/prod", "N11/N12/Sorok", "J52/W52"],
+    "no_candidate_repair": true,
+    "no_self_adoption": true,
+    "no_author_wake": true,
+    "no_extra_sessions_subagents_provider_model_account": true
+  }
+}

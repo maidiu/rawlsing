@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="9" time="3.356" timestamp="2026-10-23T13:36:45.919112-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r4.probes.test_r08v_r4_independent_boundary" name="test_independent_fixture_positive_54_6_60_and_actual_provider" time="0.318" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r4.probes.test_r08v_r4_independent_boundary" name="test_changed_native_case_serves_own_values_not_canonical" time="0.311" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r4.probes.test_r08v_r4_independent_boundary" name="test_no_config_default_resolver_and_reader_refuse" time="0.216" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r4.probes.test_r08v_r4_independent_boundary" name="test_wrong_root_and_attacker_issuer_are_refused_by_real_reader" time="0.278" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r4.probes.test_r08v_r4_independent_boundary" name="test_forged_consumer_values_read_must_refuse_or_serve_signed_values" time="0.283"><failure message="AssertionError: assert 999 == 60&#10; +  where 60 = ExecutedEvidenceEnvelope(request_material={'encoding': 'K_TAGGED_CANONICAL@2', 'contract': 'R61_UNIVERSAL_EVIDENCE_REQ...omain='R61_TEST_ONLY_TRUSTED_HOST_DOMAIN', trust_domain_version='1', trust_grade='TEST_ONLY_SCOPED_LOCAL_TRUSTED_HOST').denominator&#10; +    where ExecutedEvidenceEnvelope(request_material={'encoding': 'K_TAGGED_CANONICAL@2', 'contract': 'R61_UNIVERSAL_EVIDENCE_REQ...omain='R61_TEST_ONLY_TRUSTED_HOST_DOMAIN', trust_domain_version='1', trust_grade='TEST_ONLY_SCOPED_LOCAL_TRUSTED_HOST') = EvidenceResult(request_key='e7fd4132f29f4a914998393b6e1c5de7f9d19a70eecb6adb764a71b8a0f8a3c8', eligibility_state='ELIG...NLY_SCOPED_LOCAL_TRUSTED_HOST'), envelope_signature='458631d65e1b27d54c1dd585a7be90b0d30daa6d4739743de3b3767c9e251eb5').execution_envelope">def test_forged_consumer_values_read_must_refuse_or_serve_signed_values():
+        case, request, resolver, produced = _resolve_canonical("r4-independent-values")
+        values = dict(produced.consumer_values_read)
+        forged_cells = [
+            {
+                "cell": "yes",
+                "cell_state": "EXACT",
+                "raw_numerator_support": 999,
+                "raw_probability_exact_fraction": "1",
+            }
+        ]
+        forged_ref = {
+            "kind": "FORGED_EVIDENCE",
+            "object_id": "urn:forged:evidence",
+            "content_hash": semantic_hash({"forged": "evidence"}),
+        }
+        values["denominator"] = 999
+        values["cells"] = forged_cells
+        values["evidence_ref"] = forged_ref
+        values["result_state"] = "ZERO_SUPPORT"
+        mutated = replace(produced, consumer_values_read=values)
+        read = _reader(request, mutated).read()
+        step = _reader(request, mutated).e04_step()
+        _record(
+            "forged_consumer_values_read",
+            {
+                "signed_envelope_denominator": produced.execution_envelope.denominator,
+                "read_denominator": read["denominator"],
+                "read_cells": read["cells"],
+                "read_evidence_ref": read["evidence_ref"],
+                "read_result_state": read["result_state"],
+                "e04_state": step["state"],
+                "e04_denominator": step["denominator"],
+                "observed": "SAME reader served unsigned mutated values",
+            },
+        )
+&gt;       assert read["denominator"] == produced.execution_envelope.denominator
+E       AssertionError: assert 999 == 60
+E        +  where 60 = ExecutedEvidenceEnvelope(request_material={'encoding': 'K_TAGGED_CANONICAL@2', 'contract': 'R61_UNIVERSAL_EVIDENCE_REQ...omain='R61_TEST_ONLY_TRUSTED_HOST_DOMAIN', trust_domain_version='1', trust_grade='TEST_ONLY_SCOPED_LOCAL_TRUSTED_HOST').denominator
+E        +    where ExecutedEvidenceEnvelope(request_material={'encoding': 'K_TAGGED_CANONICAL@2', 'contract': 'R61_UNIVERSAL_EVIDENCE_REQ...omain='R61_TEST_ONLY_TRUSTED_HOST_DOMAIN', trust_domain_version='1', trust_grade='TEST_ONLY_SCOPED_LOCAL_TRUSTED_HOST') = EvidenceResult(request_key='e7fd4132f29f4a914998393b6e1c5de7f9d19a70eecb6adb764a71b8a0f8a3c8', eligibility_state='ELIG...NLY_SCOPED_LOCAL_TRUSTED_HOST'), envelope_signature='458631d65e1b27d54c1dd585a7be90b0d30daa6d4739743de3b3767c9e251eb5').execution_envelope
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r4/probes/test_r08v_r4_independent_boundary.py:249: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r4.probes.test_r08v_r4_independent_boundary" name="test_mutated_result_metadata_must_refuse" time="0.267"><failure message="AssertionError: assert 'FORGED_FACT_STATE' == 'SUPPORTED'&#10;  &#10;  - SUPPORTED&#10;  + FORGED_FACT_STATE">def test_mutated_result_metadata_must_refuse():
+        case, request, resolver, produced = _resolve_canonical("r4-independent-meta")
+        mutated = replace(
+            produced,
+            producer_fact_state="FORGED_FACT_STATE",
+            uncertainty_state="FORGED_UNCERTAINTY",
+            producer_receipt_ref=None,
+            producer_fact_ref=None,
+        )
+        read = _reader(request, mutated).read()
+        _record(
+            "mutated_result_metadata",
+            {
+                "signed_producer_fact_state": produced.execution_envelope.producer_fact_state,
+                "supplied_result_fact_state": mutated.producer_fact_state,
+                "result_accepted": True,
+                "read_denominator": read["denominator"],
+            },
+        )
+&gt;       assert mutated.producer_fact_state == produced.execution_envelope.producer_fact_state
+E       AssertionError: assert 'FORGED_FACT_STATE' == 'SUPPORTED'
+E         
+E         - SUPPORTED
+E         + FORGED_FACT_STATE
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r4/probes/test_r08v_r4_independent_boundary.py:275: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r4.probes.test_r08v_r4_independent_boundary" name="test_substituted_producer_without_optional_pin_must_not_execute" time="0.212"><failure message="AssertionError: assert ['called'] == []&#10;  &#10;  Left contains one more item: 'called'&#10;  Use -v to get more diff">def test_substituted_producer_without_optional_pin_must_not_execute():
+        case = build_provider_case("forward")
+        request = _request(case, request_id="r4-independent-callable")
+        calls: list[str] = []
+    
+        def substituted_producer(**kwargs):
+            calls.append("called")
+            raise RuntimeError("SUBSTITUTED_PRODUCER_EXECUTED")
+    
+        binding = _binding(request, case, producer=substituted_producer)
+        resolver = EvidenceResolver(
+            admission_verifier=_R4_VERIFIER,
+            executor=_R4_ISSUER,
+        )
+        resolver.bind(binding)
+        try:
+            result = resolver.resolve(request)
+            observed = {"returned_state": result.result_state, "calls": len(calls)}
+        except RuntimeError as exc:
+            observed = {"exception": str(exc), "calls": len(calls)}
+        _record("substituted_producer_without_pin", observed)
+&gt;       assert calls == []
+E       AssertionError: assert ['called'] == []
+E         
+E         Left contains one more item: 'called'
+E         Use -v to get more diff
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r4/probes/test_r08v_r4_independent_boundary.py:302: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r4.probes.test_r08v_r4_independent_boundary" name="test_cache_forged_evidence_and_missing_envelope_refuse" time="0.279" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r4.probes.test_r08v_r4_independent_boundary" name="test_cold_process_positive_same_consumer_hash" time="0.789" /></testsuite></testsuites>
