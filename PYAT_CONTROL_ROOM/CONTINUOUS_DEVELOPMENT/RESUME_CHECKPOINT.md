@@ -58,3 +58,5 @@ A4remainsunqualified untilreview; R03NOT_STARTED. ReviewmustchecktrueN+1nativepa
 
 ## R61P — independent R4 return; whole-function lineage repair
 Verified review634ee0dac4ef87347d6f334f6c8c1abc97b24d01:20reporthashes/21ownrootpaths/directremote; author24/R3controls10/own7defectdemonstrations. REVISE: newconsumeracceptsseveredparentreceiptandrootrelabelledgeneration2; cumulativecountunbound. RealD3positivepreserved, A4notqualified/R03NOT_STARTED. SameauthorR5commissionready; faithfulengineeringrequiresnoHighnewcourt. Needactual launchreceipt beforecallingrunning. R08boundedHighdecisionandR09hostgrantremainpending. R03objectidentitypreflightbankedwithoutimplementation/adoptionclaim. Fullgoal/allholdsunchanged. Quota52%fivehour/55%weekly; userwithdrewprior80%stop.
+
+ActualR01R5launched PID36153, retained author session ses_e98c905cbffekusoHURfKyEUKG, logs .r61/r5/, same existing worktree/branch/model/account. Remote observed 5c77413365b9d45375b25dbaa29cb3da497bcb10. Not controller dispatch; same-account role separation/OSisolationNOT_PROVEN. No duplicate investigator.

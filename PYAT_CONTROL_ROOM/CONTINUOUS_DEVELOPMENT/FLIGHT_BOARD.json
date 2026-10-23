@@ -1,6 +1,6 @@
 {
   "schema": "PYAT_CONTINUOUS_DEVELOPMENT_FLIGHT_BOARD_R1",
-  "observed_utc": "2026-10-23T16:42:25.213899+00:00",
+  "observed_utc": "2026-10-23T16:43:28.454847+00:00",
   "goal_sha256": "c4cf4af2eefd290baa89cac22afef37d18b83b16b8564e33cf28205f75ab23d9",
   "canonical_pointer": "HQ_HANDOFF/LATEST.json",
   "authority_cut": "dec71cf5fdf9d65bbc0e6ec58da6318594769eb9",
@@ -61,7 +61,7 @@
         "R00"
       ],
       "authority": "R61 exact four code/test paths",
-      "state": "R4_INDEPENDENT_REVISE__R5_WHOLE_FUNCTION_REPAIR_SEALED_NOT_LAUNCHED",
+      "state": "R5_ACTUALLY_RUNNING__R4_A4_REVISE",
       "owner": "OpenCode author then distinct R01V",
       "required_intelligence": "I2-I3/S3 native engineering and qualification; I3+ only concrete unsettled architecture/science",
       "route": "Browser if qualified whole job; otherwise existing DeepSeek V4.1-Flash MAX/OpenCode",
@@ -416,7 +416,42 @@
       }
     }
   },
-  "live_flight": [],
+  "live_flight": [
+    {
+      "id": "R01_R5",
+      "pid": 36153,
+      "sessions": [
+        "ses_e98c905cbffekusoHURfKyEUKG"
+      ],
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
+      "branch": "agent/opencode-pyat-r61-r01-generic-grammar-r1",
+      "startup": "5c77413365b9d45375b25dbaa29cb3da497bcb10",
+      "commission_tip": "df2fdd12a55e1c153e2b60377c903a764ff59f26",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R01/revisions/r5/00_REPAIR_COMMISSION.md",
+      "write_scope": [
+        "rawlsing_next/universal_grammar/types.py",
+        "rawlsing_next/universal_grammar/enumerate.py",
+        "rawlsing_next/universal_grammar/native_map.py",
+        "rawlsing_next/tests/test_universal_grammar.py",
+        "WORKER_RETURNS/PYAT-R61-R01-IMPLEMENTATION-R1/revisions/r5/"
+      ],
+      "started_utc": "2026-10-23T16:42:54.181265+00:00",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_NOT_CONTROLLER",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "variant_requested": "max",
+      "account": "existing Global",
+      "os_isolation": "NOT_PROVEN",
+      "new_worktrees": 0,
+      "prior_process_terminal_verified": true,
+      "process_live_observed": true,
+      "observed_head_at_checkpoint": "5c77413365b9d45375b25dbaa29cb3da497bcb10",
+      "grain": "SOURCEFREE_TEST_ONLY_NATIVE_RECURRENCE_REPAIR",
+      "library_access": "NO",
+      "pass_wake": "Distinct native review then HQ prerequisite adjudication; no author R03 wake",
+      "blocker_effect": "Own node only; independent R08/R09 decisions remain separate",
+      "hard_forbidden": "NO_SCOPE_EXPANSION_SOURCE_SCIENCE_CI_PROD_N11_N12_J52_W52"
+    }
+  ],
   "prior_review_returns": {
     "R01V": {
       "sha": "b310c5469bb628a583d6e106946cddd08025ddc1",
