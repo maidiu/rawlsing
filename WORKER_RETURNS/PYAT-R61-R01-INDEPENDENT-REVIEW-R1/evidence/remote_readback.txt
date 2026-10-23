@@ -4,10 +4,15 @@ R61 R01V reviewer remote readback
 Branch: agent/opencode-pyat-r61-r01v-independent-review-r1
 Remote: https://github.com/maidiu/rawlsing.git
 
-Non-force push of reviewer artifact commit:
+Non-force push 1 (review artifacts):
   fcf9fe9f8..edb468a52  agent/opencode-pyat-r61-r01v-independent-review-r1 -> agent/opencode-pyat-r61-r01v-independent-review-r1
+  direct: edb468a52f32aa60e27b9003ec91e51ebe9d7996	refs/heads/agent/opencode-pyat-r61-r01v-independent-review-r1
 
-Direct remote verification after that push:
-  edb468a52f32aa60e27b9003ec91e51ebe9d7996	refs/heads/agent/opencode-pyat-r61-r01v-independent-review-r1
+Non-force push 2 (readback + SHA256 manifest):
+  edb468a52..da7e5f0ba  agent/opencode-pyat-r61-r01v-independent-review-r1 -> agent/opencode-pyat-r61-r01v-independent-review-r1
+  direct: da7e5f0bacfbc3b131d2e3b88c8b817d9b627af3	refs/heads/agent/opencode-pyat-r61-r01v-independent-review-r1
 
-The readback commit containing this file is its child; the final reviewer branch head is verified with the same non-force push/readback rule. No force push and no other branch was used.
+Candidate branch unchanged at:
+  fcf9fe9f8662c9e98801e670d0d4357072d8d453	refs/heads/agent/opencode-pyat-r61-r01-generic-grammar-r1
+
+This file is included in the child readback commit; the final reviewer branch head is verified with the same non-force push/readback rule. No force push and no other branch was used.
