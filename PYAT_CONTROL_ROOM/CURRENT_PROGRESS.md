@@ -1,3 +1,12 @@
+# R61AD — R08 R6 independent review verified; bounded coverage/executor escalation
+
+Reviewc42b4abee4e54340659ec6b1f8f6760dfbef9411 verified manifest/scope/directremote. REVISE: duplicate cache producerbinding fields/admission not validated against authenticated owner material, survive re-export. Servednativevalues remain canonical; previous unsignedprovenance/evidenceexport defects fixed and productive native/cold/re-export positives preserved.
+
+No automatic R7 patch. Exact bounded SolHigh serialization/API-coverage and executor card saved in director 50cd0955a12bdd23415f1ff24fe85d4ca3a623c8, alongside pending R01 restore/review card. No Astra/newscience/newcourt. Controller independent review still live. R03 and all original source/science/CI/prod/N11/N12/Sorok/J52W52 holds unchanged.
+
+
+## Earlier progress history retained
+
 # R61AC — exact combined controller independent review actually launched
 
 Existing distinct reviewer session ses_e9ac7f04bffep8CQitKjbiuUn0 resumed PID2049 against exact final3d98c328e83547522c0f8c99470e39219ed76dd7 in existing stable review checkout/new branch; no new copies or sessions. One bounded implementation review, not reviewer-of-reviewer. Five inherited defects plus new reconciliation/finalization/durable inbox and full public trust boundaries; no liveDB mutation or new provider effects. Commission2157d6fa03f72324142b11e188d1e40888208dad, actual receipt in director adc86afe6b764920a7aacc500e0393331f7ab8ff. Tool preflight pending at launch.
