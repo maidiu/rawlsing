@@ -8,6 +8,7 @@ data, source permission or scientific issuance is involved.
 from __future__ import annotations
 
 from dataclasses import replace
+import copy
 import json
 import subprocess
 import sys
@@ -38,6 +39,9 @@ from rawlsing_next.tests.n10e_empirical_slice_fixture import (
 )
 from rawlsing_next.pre553_universal_evidence_binding import (
     CACHE_SCHEMA,
+    CACHE_OWNER_DESCRIPTOR_SCHEMA,
+    CACHE_OWNER_FIELDS,
+    CACHE_OWNER_DESCRIPTOR_FIELDS,
     EXECUTION_STATES,
     ELIGIBILITY_STATES,
     PROVENANCE_CACHE,
@@ -734,11 +738,11 @@ from pathlib import Path
 from rawlsing_next.tests.n10e_empirical_slice_fixture import build_provider_case
 from rawlsing_next.tests.test_universal_evidence_binding import _request
 from rawlsing_next.pre553_universal_evidence_binding import (
-    EvidenceConsumerReader, EvidenceResolver, TrustedAdmissionAuthority,
+    EvidenceConsumerReader, EvidenceResolver, TrustedAdmissionVerifier,
+    EvidenceCacheIntegrityError,
 )
 config = json.loads(sys.stdin.read())
-issuer = TrustedAdmissionAuthority(bytes.fromhex(config["key_hex"]))
-verifier = issuer.verifier()
+verifier = TrustedAdmissionVerifier(bytes.fromhex(config["key_hex"]), authority_id=config["authority_id"])
 case = build_provider_case("forward")
 request = _request(case, request_id="r61-cold-process")
 cache = json.loads(Path({str(cache_path)!r}).read_text(encoding="utf-8"))
@@ -753,6 +757,22 @@ rewritten = again.resolve(request)
 rewritten_values = EvidenceConsumerReader(
     request, rewritten, verifier=verifier
 ).read()
+assert not resolver._bindings and not again._bindings
+assert resolver._executor is None and again._executor is None
+assert resolver._admitted_producer is None and again._admitted_producer is None
+assert reexported["entries"][0]["envelope_signature"] == cache["entries"][0]["envelope_signature"]
+assert reexported["entries"][0]["cache_owner_descriptor"] == cache["entries"][0]["cache_owner_descriptor"]
+refusals = []
+for control in (
+    EvidenceResolver(),
+    EvidenceResolver(admission_verifier=TrustedAdmissionVerifier(b"W" * 32, authority_id=config["authority_id"])),
+):
+    try:
+        control.import_authenticated_cache(cache)
+    except EvidenceCacheIntegrityError:
+        refusals.append("TYPED_REFUSAL")
+    else:
+        raise AssertionError("cold wrong/missing configured root accepted")
 print(json.dumps({{
     "provenance": result.provenance,
     "state": result.result_state,
@@ -764,12 +784,16 @@ print(json.dumps({{
     "original_execution_provenance": rewritten_values[
         "original_execution_provenance"
     ],
+    "cells": {{cell["cell"]: cell["raw_numerator_support"] for cell in rewritten_values["cells"]}},
+    "signature_preserved": True,
+    "verifier_only": True,
+    "missing_wrong_root": refusals,
 }}, sort_keys=True))
 """
         completed = subprocess.run(
             [sys.executable, "-c", script],
             cwd=Path(__file__).resolve().parents[2],
-            input=json.dumps({"key_hex": _R4_ISSUER.key_hex}),
+            input=json.dumps({"key_hex": _R4_ISSUER.key_hex, "authority_id": _R4_ISSUER.authority_id}),
             text=True,
             capture_output=True,
             check=False,
@@ -785,6 +809,10 @@ print(json.dumps({{
         "reexport_denominator": 60,
         "reexport_consumer_denominator": 60,
         "original_execution_provenance": "CANONICAL_PRODUCER",
+        "cells": {"no": 6, "yes": 54},
+        "signature_preserved": True,
+        "verifier_only": True,
+        "missing_wrong_root": ["TYPED_REFUSAL", "TYPED_REFUSAL"],
     }
 
 
@@ -832,7 +860,7 @@ def test_cache_carries_full_k_and_issuer_boundary_rejects_self_seal():
     entry = resolver.export_cache()["entries"][0]
     assert entry["request_material"]["request_id"] == "r61-r2-cache-preimage"
     assert semantic_hash(entry["request_material"]) == entry["request_key"]
-    assert entry["producer_binding"]["validated_conditions"] == [
+    assert entry["cache_owner_descriptor"]["validated_conditions"] == [
         condition.material() for condition in request.ordered_conditions
     ]
 
@@ -1268,7 +1296,7 @@ def test_provenance_mutation_cannot_change_signed_original_execution_or_grade():
     mutated = replace(produced, provenance=PROVENANCE_CACHE)
     mutated_read = _reader(request, mutated).read()
     assert mutated_read["original_execution_provenance"] == PROVENANCE_CANONICAL
-    assert mutated_read["local_delivery_context_unsigned"] == "VERIFIED_REPLAY"
+    assert "local_delivery_context_unsigned" not in mutated_read
     assert "cache_trust_grade" not in mutated_read
 
     cache = resolver.export_cache()
@@ -1277,7 +1305,7 @@ def test_provenance_mutation_cannot_change_signed_original_execution_or_grade():
     restored = cold.resolve(request)
     cold_read = _reader(request, restored).read()
     assert cold_read["original_execution_provenance"] == PROVENANCE_CANONICAL
-    assert cold_read["local_delivery_context_unsigned"] == "VERIFIED_REPLAY"
+    assert "local_delivery_context_unsigned" not in cold_read
     assert "cache_trust_grade" not in cold_read
 
     mislabeled = replace(restored, provenance=PROVENANCE_CANONICAL)
@@ -1293,11 +1321,17 @@ def test_export_refuses_mutated_evidence_query_and_rule_objects():
     resolver.bind(_binding(request, case))
     produced = resolver.resolve(request)
 
+    original_cell = produced.evidence_object.geometry["cells"][0]["raw_numerator_support"]
+    assert original_cell == 6
     produced.evidence_object.geometry["cells"][0]["raw_numerator_support"] = 999
     with pytest.raises(EvidenceCacheIntegrityError):
         resolver.export_cache()
+    with pytest.raises(EvidenceAssociationError):
+        _reader(request, produced).read()
 
-    produced.evidence_object.geometry["cells"][0]["raw_numerator_support"] = 60
+    produced.evidence_object.geometry["cells"][0]["raw_numerator_support"] = original_cell
+    assert _reader(request, produced).read()["denominator"] == 60
+    resolver.export_cache()
     original_query_material = canonicalize(produced.consumer_query_object.material())
     produced.consumer_query_object.requested_projection["kind"] = "FORGED"
     with pytest.raises(EvidenceCacheIntegrityError):
@@ -1306,6 +1340,8 @@ def test_export_refuses_mutated_evidence_query_and_rule_objects():
         original_query_material["requested_projection"]["kind"]
     )
 
+    assert _reader(request, produced).read()["denominator"] == 60
+    resolver.export_cache()
     forged_rule = replace(
         produced.model_rule_object,
         source_universe_refs=(
@@ -1319,6 +1355,11 @@ def test_export_refuses_mutated_evidence_query_and_rule_objects():
     tampered._cache[request.key] = forged_rule_result
     with pytest.raises(EvidenceCacheIntegrityError):
         tampered.export_cache()
+    with pytest.raises(EvidenceAssociationError):
+        _reader(request, forged_rule_result).read()
+    tampered._cache[request.key] = produced
+    assert _reader(request, produced).read()["denominator"] == 60
+    tampered.export_cache()
 
 
 def test_verifier_only_re_export_preserves_signed_execution_projection():
@@ -1367,3 +1408,248 @@ def test_swapped_signed_envelope_from_other_request_refuses():
     )
     with pytest.raises(EvidenceAssociationError):
         _reader(request_a, swapped).read()
+
+
+# Frozen independent inventory copied from the pre-code contract, not derived
+# from the implementation's field whitelist.
+_R7_OWNER_CLASSES = (
+    "context_ref", "context", "actual_conditions", "producer_query_ref",
+    "predicate_ref", "predicate_hash", "release_refs", "consumer_query_ref",
+    "consumer_binding_fingerprint", "model_rule_hash", "source_universe_ref",
+    "risk_set_ref", "target_ref",
+)
+
+
+@pytest.fixture(scope="module")
+def r7_native_cache():
+    case = build_provider_case("forward")
+    request = _request(case, request_id="r61-r7-independent-inventory")
+    resolver = _resolver()
+    resolver.bind(_binding(request, case))
+    result = resolver.resolve(request)
+    assert {cell["cell"]: cell["raw_numerator_support"] for cell in result.cells} == {"no": 6, "yes": 54}
+    assert _reader(request, result).read()["denominator"] == 60
+    return request, resolver.export_cache(), result
+
+
+def _r7_reseal(cache):
+    for entry in cache["entries"]:
+        descriptor = entry["cache_owner_descriptor"]
+        if isinstance(descriptor, dict):
+            owner = descriptor.get("owner_identity_material")
+            if isinstance(owner, dict):
+                descriptor["owner_identity_hash"] = semantic_hash(owner)
+            descriptor["descriptor_hash"] = semantic_hash({k: v for k, v in descriptor.items() if k != "descriptor_hash"})
+        entry["seal"] = semantic_hash({k: v for k, v in entry.items() if k not in {"seal", "issuer_seal", "issuer_grade"}})
+    return cache
+
+
+def _r7_chain(request, cache):
+    """The same configured verifier and consumer through the full transport chain."""
+    first = EvidenceResolver(admission_verifier=_R4_VERIFIER)
+    first.import_authenticated_cache(cache)
+    result = first.resolve(request)
+    first_values = _reader(request, result).read()
+    exported = first.export_cache()
+    second = EvidenceResolver(admission_verifier=_R4_VERIFIER)
+    second.import_authenticated_cache(exported)
+    second_values = _reader(request, second.resolve(request)).read()
+    assert first_values["denominator"] == second_values["denominator"] == 60
+    assert exported["entries"][0]["envelope_signature"] == cache["entries"][0]["envelope_signature"]
+    assert first_values["cells"] == second_values["cells"]
+    assert {cell["cell"]: cell["raw_numerator_support"] for cell in second_values["cells"]} == {"no": 6, "yes": 54}
+    assert second_values["original_execution_provenance"] == PROVENANCE_CANONICAL
+    assert "local_delivery_context_unsigned" not in second_values
+    return exported
+
+
+def _r7_changed(value):
+    if isinstance(value, dict):
+        out = copy.deepcopy(value)
+        first_key = next(iter(out))
+        out[first_key] = _r7_changed(out[first_key])
+        return out
+    if isinstance(value, list):
+        return [_r7_changed(value[0]), *copy.deepcopy(value[1:])] if value else ["FORGED"]
+    return "FORGED:" + str(value)
+
+
+@pytest.mark.parametrize("owner_class", _R7_OWNER_CLASSES)
+@pytest.mark.parametrize("attack", ("mutate", "remove", "duplicate", "type_alias"))
+def test_r7_every_declared_owner_class_rejects_public_resealed_transport(r7_native_cache, owner_class, attack):
+    request, baseline, _ = r7_native_cache
+    assert set(_R7_OWNER_CLASSES) == CACHE_OWNER_FIELDS
+    cache = copy.deepcopy(baseline)
+    descriptor = cache["entries"][0]["cache_owner_descriptor"]
+    owner = descriptor["owner_identity_material"]
+    if attack == "mutate":
+        owner[owner_class] = _r7_changed(owner[owner_class])
+    elif attack == "remove":
+        del owner[owner_class]
+    elif attack == "duplicate":
+        # Mapping ingress cannot represent repeated identical JSON keys. This
+        # tests the forbidden independently authoritative compatibility copy.
+        descriptor[owner_class] = copy.deepcopy(owner[owner_class])
+    else:
+        owner[owner_class] = {"aliased_value": owner[owner_class]}
+    _r7_reseal(cache)
+    with pytest.raises(EvidenceCacheIntegrityError):
+        _r7_chain(request, cache)
+    assert _r7_chain(request, copy.deepcopy(baseline)) == baseline
+
+
+def test_r7_normal_form_has_no_live_admission_or_second_owner_projection(r7_native_cache):
+    request, cache, _ = r7_native_cache
+    entry = cache["entries"][0]
+    descriptor = entry["cache_owner_descriptor"]
+    assert set(descriptor) == CACHE_OWNER_DESCRIPTOR_FIELDS
+    assert descriptor["schema"] == CACHE_OWNER_DESCRIPTOR_SCHEMA == "R61_CACHE_OWNER_DESCRIPTOR@1"
+    assert cache["schema"] == "R61_AUTHENTICATED_EVIDENCE_CACHE@5"
+    assert set(descriptor["owner_identity_material"]) == set(_R7_OWNER_CLASSES)
+    assert "producer_binding" not in entry
+    assert "binding_hash" not in descriptor
+    assert "admission" not in descriptor
+    assert descriptor["descriptor_hash"] == semantic_hash({k: v for k, v in descriptor.items() if k != "descriptor_hash"})
+    assert _r7_chain(request, copy.deepcopy(cache)) == cache
+
+
+@pytest.mark.parametrize("location", ("descriptor", "owner", "entry", "envelope"))
+@pytest.mark.parametrize("name", ("admission", "unknown_field"))
+def test_r7_admission_and_unknown_authority_fields_never_travel(r7_native_cache, location, name):
+    request, baseline, _ = r7_native_cache
+    cache = copy.deepcopy(baseline)
+    entry = cache["entries"][0]
+    targets = {"descriptor": entry["cache_owner_descriptor"], "owner": entry["cache_owner_descriptor"]["owner_identity_material"], "entry": entry, "envelope": entry["execution_envelope"]}
+    targets[location][name] = {"token": "0" * 64}
+    _r7_reseal(cache)
+    with pytest.raises(EvidenceCacheIntegrityError):
+        _r7_chain(request, cache)
+    _r7_chain(request, copy.deepcopy(baseline))
+
+
+@pytest.mark.parametrize("owner_class", _R7_OWNER_CLASSES)
+def test_r7_even_valid_signature_cannot_excuse_owner_envelope_disagreement(r7_native_cache, owner_class):
+    request, baseline, original = r7_native_cache
+    owner = copy.deepcopy(original.execution_envelope.owner_identity_material)
+    owner[owner_class] = _r7_changed(owner[owner_class])
+    envelope = replace(original.execution_envelope, owner_identity_material=owner, owner_identity_hash=semantic_hash(owner))
+    signature = _R4_ISSUER.issue_envelope(envelope)  # trusted synthetic inconsistency control
+    result = replace(original, execution_envelope=envelope, envelope_signature=signature)
+    with pytest.raises(EvidenceAssociationError):
+        _reader(request, result).read()
+    cache = copy.deepcopy(baseline)
+    cache["entries"][0]["execution_envelope"] = canonicalize(envelope.material())
+    cache["entries"][0]["envelope_signature"] = signature
+    cache["entries"][0]["cache_owner_descriptor"]["owner_identity_material"] = owner
+    _r7_reseal(cache)
+    with pytest.raises(EvidenceCacheIntegrityError):
+        _r7_chain(request, cache)
+    _r7_chain(request, copy.deepcopy(baseline))
+
+
+@pytest.mark.parametrize("legacy", ("R61_AUTHENTICATED_EVIDENCE_CACHE@4", "R61_AUTHENTICATED_EVIDENCE_CACHE@3", "UNKNOWN"))
+def test_r7_legacy_schema_and_binding_pins_explicitly_refuse(r7_native_cache, legacy):
+    request, baseline, _ = r7_native_cache
+    cache = copy.deepcopy(baseline)
+    cache["schema"] = legacy
+    with pytest.raises(EvidenceCacheIntegrityError, match="LEGACY_OR_UNKNOWN_CACHE_SCHEMA"):
+        _r7_chain(request, cache)
+    configured = EvidenceResolver(admission_verifier=_R4_VERIFIER, trusted_binding_hashes=("a" * 64,))
+    with pytest.raises(EvidenceCacheIntegrityError, match="LEGACY_BINDING_PINS_REQUIRE_MIGRATION"):
+        configured.import_authenticated_cache(baseline)
+    with pytest.raises(EvidenceCacheIntegrityError, match="LEGACY_BINDING_PINS_REQUIRE_MIGRATION"):
+        configured.export_cache()
+    _r7_chain(request, copy.deepcopy(baseline))
+
+
+def test_r7_descriptor_pins_are_distinct_and_enforced(r7_native_cache):
+    request, baseline, _ = r7_native_cache
+    descriptor_hash = baseline["entries"][0]["cache_owner_descriptor"]["descriptor_hash"]
+    correct = EvidenceResolver(admission_verifier=_R4_VERIFIER, trusted_descriptor_hashes=(descriptor_hash,))
+    correct.import_authenticated_cache(baseline)
+    assert _reader(request, correct.resolve(request)).read()["denominator"] == 60
+    correct.export_cache()
+    wrong = EvidenceResolver(admission_verifier=_R4_VERIFIER, trusted_descriptor_hashes=("a" * 64,))
+    with pytest.raises(EvidenceCacheIntegrityError, match="CACHE_OWNER_DESCRIPTOR_NOT_PINNED"):
+        wrong.import_authenticated_cache(baseline)
+    case = build_provider_case("forward")
+    live = _resolver(trusted_descriptor_hashes=("a" * 64,))
+    live.bind(_binding(request, case))
+    assert live.resolve(request).denominator == 60
+    with pytest.raises(EvidenceCacheIntegrityError, match="CACHE_OWNER_DESCRIPTOR_NOT_PINNED"):
+        live.export_cache()
+    assert live.resolve(request).result_state == "UNKNOWN"
+
+
+@pytest.mark.parametrize("attack", ("null_descriptor", "wrong_descriptor_schema", "conditions_bool", "condition_order_duplicate", "release_order_duplicate", "wrong_owner_hash", "wrong_descriptor_hash", "old_binding_entry"))
+def test_r7_descriptor_shape_typed_conditions_and_order_refuse(r7_native_cache, attack):
+    request, baseline, _ = r7_native_cache
+    cache = copy.deepcopy(baseline)
+    entry = cache["entries"][0]
+    desc = entry["cache_owner_descriptor"]
+    if attack == "null_descriptor":
+        entry["cache_owner_descriptor"] = None
+    elif attack == "wrong_descriptor_schema":
+        desc["schema"] = "R61_CACHE_OWNER_DESCRIPTOR@0"
+    elif attack == "conditions_bool":
+        desc["validated_conditions"][0]["typed_value"] = {"tag": "BOOLEAN", "value": True}
+    elif attack == "condition_order_duplicate":
+        desc["owner_identity_material"]["actual_conditions"] *= 2
+    elif attack == "release_order_duplicate":
+        desc["owner_identity_material"]["release_refs"] *= 2
+    elif attack == "old_binding_entry":
+        entry["producer_binding"] = {"admission": {"token": "0" * 64}}
+    _r7_reseal(cache)
+    if attack == "wrong_owner_hash":
+        desc["owner_identity_hash"] = "0" * 64
+    elif attack == "wrong_descriptor_hash":
+        desc["descriptor_hash"] = "0" * 64
+    entry["seal"] = semantic_hash({k: v for k, v in entry.items() if k != "seal"})
+    with pytest.raises(EvidenceCacheIntegrityError):
+        _r7_chain(request, cache)
+    _r7_chain(request, copy.deepcopy(baseline))
+
+
+def test_r7_deep_detachment_and_retained_descriptor_mutation(r7_native_cache):
+    request, baseline, _ = r7_native_cache
+    supplied = copy.deepcopy(baseline)
+    resolver = EvidenceResolver(admission_verifier=_R4_VERIFIER)
+    resolver.import_authenticated_cache(supplied)
+    supplied["entries"][0]["cache_owner_descriptor"]["owner_identity_material"]["producer_query_ref"]["object_id"] = "FORGED"
+    assert _reader(request, resolver.resolve(request)).read()["denominator"] == 60
+    exported = resolver.export_cache()
+    exported["entries"][0]["cache_owner_descriptor"]["owner_identity_material"]["context"]["source_identity"]["source_id"] = "FORGED"
+    assert resolver.export_cache() == baseline
+    retained = resolver._cache_descriptors[request.key]
+    saved = copy.deepcopy(retained)
+    retained["owner_identity_material"]["producer_query_ref"]["object_id"] = "FORGED"
+    with pytest.raises(EvidenceCacheIntegrityError):
+        resolver.export_cache()
+    assert resolver.resolve(request).result_state == "UNKNOWN"
+    resolver._cache_descriptors[request.key] = saved
+    assert _reader(request, resolver.resolve(request)).read()["denominator"] == 60
+    assert resolver.export_cache() == baseline
+
+
+def test_r7_changed_actual_source_law_and_no_live_invocation_on_replay():
+    from rawlsing_next.tests.n10e_empirical_slice_fixture import at07_rows, changed_source_rows, CHANGED_SOURCE_VARIANT
+    for rows, variant, expected in ((at07_rows(), None, {"no": 6, "yes": 54}), (changed_source_rows(), CHANGED_SOURCE_VARIANT, {"no": 16, "yes": 54})):
+        independent = {answer: sum(row["responses"]["POSITION"] == "P1" and row["responses"]["ANSWER"] == answer for row in rows) for answer in ("no", "yes")}
+        assert independent == expected
+        case = build_provider_case("forward", variant=variant)
+        request = _request(case, request_id="r61-r7-source-law-" + str(variant))
+        resolver = _resolver()
+        resolver.bind(_binding(request, case))
+        result = resolver.resolve(request)
+        values = _reader(request, result).read()
+        assert values["denominator"] == sum(independent.values())
+        assert {cell["cell"]: cell["raw_numerator_support"] for cell in values["cells"]} == independent
+        calls = []
+        def forbidden_live_call(**kwargs):
+            calls.append("called")
+            raise AssertionError("cache replay must never execute a producer")
+        verifier_only = EvidenceResolver(admission_verifier=_R4_VERIFIER, admitted_producer=forbidden_live_call)
+        verifier_only.import_authenticated_cache(resolver.export_cache())
+        assert _reader(request, verifier_only.resolve(request)).read()["denominator"] == sum(independent.values())
+        verifier_only.export_cache()
+        assert calls == []

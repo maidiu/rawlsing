@@ -20,7 +20,7 @@ state, F6/F7 method or production adoption.
 from __future__ import annotations
 
 from collections import Counter
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from decimal import Decimal
 import hashlib
 import hmac
@@ -61,7 +61,18 @@ from rawlsing_next.source_backed_positioned_subject_possibility import (
 REQUEST_CONTRACT_ID = "R61_UNIVERSAL_EVIDENCE_REQUEST@2"
 RESULT_CONTRACT_ID = "R61_UNIVERSAL_EVIDENCE_RESULT@4"
 SUMMARY_CONTRACT_ID = "R61_UNIVERSAL_SUPPORT_SUMMARY@2"
-CACHE_SCHEMA = "R61_AUTHENTICATED_EVIDENCE_CACHE@4"
+CACHE_SCHEMA = "R61_AUTHENTICATED_EVIDENCE_CACHE@5"
+CACHE_OWNER_DESCRIPTOR_SCHEMA = "R61_CACHE_OWNER_DESCRIPTOR@1"
+CACHE_OWNER_FIELDS = frozenset({
+    "context_ref", "context", "actual_conditions", "producer_query_ref",
+    "predicate_ref", "predicate_hash", "release_refs", "consumer_query_ref",
+    "consumer_binding_fingerprint", "model_rule_hash", "source_universe_ref",
+    "risk_set_ref", "target_ref",
+})
+CACHE_OWNER_DESCRIPTOR_FIELDS = frozenset({
+    "schema", "request_key", "owner_identity_material", "owner_identity_hash",
+    "validated_conditions", "descriptor_hash",
+})
 CACHE_SEAL_ALGORITHM = "SHA256_CANONICAL_FULLK_PRODUCER_CONSUMER_PREIMAGE"
 CACHE_TRUST_ASSOCIATION = "FULL_K_PRODUCER_ASSOCIATION_SHA256"
 CACHE_TRUST_ISSUER = "EPHEMERAL_ISSUER_HMAC_SHA256"
@@ -1472,6 +1483,8 @@ class ExecutedEvidenceEnvelope:
             raise EvidenceBindingError("envelope execution mode must be live trusted execution")
         if type(self.denominator) is not int or self.denominator <= 0:
             raise EvidenceBindingError("executed envelope requires a positive denominator")
+        for name in ("request_material", "context_material", "owner_identity_material", "consumer_values_read"):
+            object.__setattr__(self, name, canonicalize(getattr(self, name)))
         object.__setattr__(self, "cells", tuple(canonicalize(cell) for cell in self.cells))
 
     def material(self) -> Mapping[str, Any]:
@@ -1642,6 +1655,136 @@ class TrustedCacheIssuer:
         return isinstance(seal, str) and hmac.compare_digest(self.seal(payload), seal)
 
 
+def _same_material(left: Any, right: Any) -> bool:
+    """Canonical identity comparison preserves bool/int/null and ordered arrays."""
+    return semantic_hash(left) == semantic_hash(right)
+
+
+def _checked_cache_owner_descriptor(
+    request: EvidenceRequest,
+    result: EvidenceResult,
+    verifier: TrustedAdmissionVerifier | None,
+    *,
+    descriptor: Mapping[str, Any] | None = None,
+) -> Mapping[str, Any]:
+    """One authenticated read-only owner projection for every productive API.
+
+    Descriptor hashes are public integrity aids. Only the configured verifier's
+    original executed-envelope signature authenticates this projection.
+    """
+    envelope = result.execution_envelope
+    if verifier is None or envelope is None or not verifier.verify_envelope(envelope, result.envelope_signature):
+        raise EvidenceCacheIntegrityError("signed execution envelope absent/untrusted")
+    if not _envelope_matches_request(envelope, request):
+        raise EvidenceCacheIntegrityError("execution envelope does not match K")
+    owner = envelope.owner_identity_material
+    if not isinstance(owner, Mapping) or set(owner) != CACHE_OWNER_FIELDS:
+        raise EvidenceCacheIntegrityError("unknown/missing canonical owner fields")
+    if envelope.owner_identity_hash != semantic_hash(owner):
+        raise EvidenceCacheIntegrityError("signed owner hash/material disagreement")
+    context = owner["context"]
+    if not isinstance(context, Mapping) or not _same_material(context, envelope.context_material):
+        raise EvidenceCacheIntegrityError("signed owner/envelope context disagreement")
+    context_hash = semantic_hash(context)
+    context_ref = ExactRef(
+        "R61_ADMITTED_EVIDENCE_CONTEXT@1",
+        f"urn:rawlsing:r61:admitted-evidence-context:sha256:{context_hash}", context_hash,
+    )
+    if envelope.context_ref != context_ref or not _same_material(owner["context_ref"], context_ref.as_dict()):
+        raise EvidenceCacheIntegrityError("canonical owner context ref/content disagreement")
+    if not _context_material_matches_request(context, request):
+        raise EvidenceCacheIntegrityError("canonical owner context does not match K")
+    expected = {
+        "producer_query_ref": request.producer_query_ref.as_dict(),
+        "predicate_ref": request.predicate_ref.as_dict(),
+        "predicate_hash": request.predicate_hash,
+        "release_refs": [request.release_ref.as_dict()],
+        "consumer_query_ref": request.consumer_query_ref.as_dict(),
+        "consumer_binding_fingerprint": request.consumer_binding_fingerprint,
+        "model_rule_hash": request.model_rule_hash,
+        "source_universe_ref": request.source_universe_ref.as_dict(),
+        "risk_set_ref": request.risk_set_ref.as_dict(),
+        "target_ref": request.target_ref.as_dict(),
+    }
+    for name, value in expected.items():
+        if not _same_material(owner[name], value):
+            raise EvidenceCacheIntegrityError(f"canonical owner {name} does not match K")
+    actual_conditions = owner["actual_conditions"]
+    if not isinstance(actual_conditions, (list, tuple)) or len(actual_conditions) != len(request.ordered_conditions):
+        raise EvidenceCacheIntegrityError("canonical owner condition arity mismatch")
+    for actual, condition in zip(actual_conditions, request.ordered_conditions):
+        if not isinstance(actual, Mapping) or set(actual) != {
+            "conditioner_binding_id", "occurrence", "leaf_semantic_ref", "typed_value", "domain_state_version"
+        }:
+            raise EvidenceCacheIntegrityError("canonical actual condition fields invalid")
+        leaf_ref = actual["leaf_semantic_ref"]
+        if not isinstance(leaf_ref, Mapping) or not _item_matches_leaf(condition.occurrence.item, leaf_ref):
+            raise EvidenceCacheIntegrityError("canonical condition leaf/item mismatch")
+        exact_ref(leaf_ref, "canonical condition leaf ref")
+        native_value = _typed_from_material(condition.value.material())
+        expected_condition = {
+            "conditioner_binding_id": condition.conditioner_binding_id,
+            "occurrence": {
+                "item": native_value, "option": str(native_value),
+                "form": condition.occurrence.form, "repeat": condition.occurrence.repeat,
+            },
+            "leaf_semantic_ref": leaf_ref,
+            "typed_value": condition.value.material(),
+            "domain_state_version": condition.domain_state_version,
+        }
+        if not _same_material(actual, expected_condition) or context["domain_state_version"] != condition.domain_state_version:
+            raise EvidenceCacheIntegrityError("canonical actual/typed condition mismatch")
+    evidence, query, rule = result.evidence_object, result.consumer_query_object, result.model_rule_object
+    if not _objects_match_envelope(evidence, query, rule, envelope):
+        raise EvidenceCacheIntegrityError("signed evidence/query/rule association mismatch")
+    if (
+        query.ref != request.consumer_query_ref
+        or query.source_universe_ref != request.source_universe_ref
+        or query.release_ref != request.release_ref
+        or query.target_ref != request.target_ref
+        or evidence.source_universe_ref != request.source_universe_ref
+        or evidence.release_ref != request.release_ref
+        or evidence.target_ref != request.target_ref
+        or evidence.raw_support != envelope.denominator
+        or [b.binding_id for b in query.conditioner_bindings] != [c.conditioner_binding_id for c in request.ordered_conditions]
+    ):
+        raise EvidenceCacheIntegrityError("native consumer/source/typed conditions do not match K")
+    fingerprints = {semantic_hash([b.material() for b in query.conditioner_bindings])}
+    if len(query.conditioner_bindings) == 1:
+        fingerprints.add(semantic_hash(query.conditioner_bindings[0].material()))
+    if request.consumer_binding_fingerprint not in fingerprints:
+        raise EvidenceCacheIntegrityError("native consumer binding fingerprint mismatch")
+    actual = evaluate_positioned_subject_possibility(query=query, rule=rule, evidence=(evidence,))
+    cells = _evidence_cells(evidence)
+    if (
+        actual.result_state != "EXACT_SUPPORTED"
+        or actual.result_state != envelope.evaluator_result_state
+        or actual.result_hash != envelope.evaluator_result_hash
+        or envelope.result_state != "SUPPORTED"
+        or envelope.eligibility_state != "ELIGIBLE"
+        or envelope.execution_state != "COMPLETED"
+        or not _same_material(cells, envelope.cells)
+        or not _same_material(envelope.consumer_values_read, _consumer_values(request, evidence, actual, envelope.denominator, cells))
+        or not _result_matches_envelope(result, envelope)
+    ):
+        raise EvidenceCacheIntegrityError("signed evaluator/result/value/status disagreement")
+    projection = {
+        "schema": CACHE_OWNER_DESCRIPTOR_SCHEMA,
+        "request_key": request.key,
+        "owner_identity_material": canonicalize(owner),
+        "owner_identity_hash": envelope.owner_identity_hash,
+        "validated_conditions": [condition.material() for condition in request.ordered_conditions],
+    }
+    projection["descriptor_hash"] = semantic_hash(projection)
+    if descriptor is not None and (
+        not isinstance(descriptor, Mapping)
+        or set(descriptor) != CACHE_OWNER_DESCRIPTOR_FIELDS
+        or not _same_material(descriptor, projection)
+    ):
+        raise EvidenceCacheIntegrityError("cache owner descriptor is not the authenticated normal form")
+    return canonicalize(projection)
+
+
 class EvidenceResolver:
     """Exact full-K registry and association/issuer-bound cache resolver."""
 
@@ -1650,6 +1793,7 @@ class EvidenceResolver:
         *,
         cache_issuer: TrustedCacheIssuer | None = None,
         trusted_binding_hashes: Iterable[str] = (),
+        trusted_descriptor_hashes: Iterable[str] = (),
         admission_verifier: TrustedAdmissionVerifier | None = None,
         executor: TrustedAdmissionAuthority | None = None,
         admitted_producer: Callable[..., Any] | None = None,
@@ -1657,11 +1801,11 @@ class EvidenceResolver:
         self._bindings: dict[str, EmpiricalProducerBinding] = {}
         self._cache: dict[str, EvidenceResult] = {}
         self._requests: dict[str, EvidenceRequest] = {}
-        self._binding_materials: dict[str, Mapping[str, Any]] = {}
-        self._owner_materials: dict[str, Mapping[str, Any]] = {}
+        self._cache_descriptors: dict[str, Mapping[str, Any]] = {}
         self._admitted: dict[str, bool] = {}
         self._issuer = cache_issuer
         self._trusted_binding_hashes = frozenset(trusted_binding_hashes)
+        self._trusted_descriptor_hashes = frozenset(trusted_descriptor_hashes)
         self._admission_verifier = admission_verifier
         self._executor = executor
         self._admitted_producer = admitted_producer
@@ -1681,8 +1825,6 @@ class EvidenceResolver:
             )
         self._bindings[key] = binding
         self._requests[key] = binding.request
-        self._binding_materials[key] = binding.identity_material()
-        self._owner_materials[key] = binding.owner_identity_material()
         self._admitted[key] = bool(
             self._admission_verifier is not None
             and binding.admission is not None
@@ -1736,7 +1878,9 @@ class EvidenceResolver:
         if result.result_state == "SUPPORTED":
             self._cache[request.key] = result
             self._requests[request.key] = request
-            self._binding_materials[request.key] = binding.identity_material()
+            self._cache_descriptors[request.key] = _checked_cache_owner_descriptor(
+                request, result, self._admission_verifier
+            )
         return result
 
     def _produce(self, binding: EmpiricalProducerBinding) -> EvidenceResult:
@@ -1917,126 +2061,51 @@ class EvidenceResolver:
             uncertainty_state=composition.uncertainty_state,
         )
 
+    def _check_cache_configuration(self) -> None:
+        if self._admission_verifier is None:
+            raise EvidenceCacheIntegrityError("NO_CONFIGURED_TRUST_ROOT")
+        if self._trusted_binding_hashes:
+            raise EvidenceCacheIntegrityError("LEGACY_BINDING_PINS_REQUIRE_MIGRATION")
+
+    def _check_descriptor_pin(self, descriptor: Mapping[str, Any]) -> None:
+        if self._trusted_descriptor_hashes and descriptor["descriptor_hash"] not in self._trusted_descriptor_hashes:
+            raise EvidenceCacheIntegrityError("CACHE_OWNER_DESCRIPTOR_NOT_PINNED")
+
     def _replay_cache(
         self, request: EvidenceRequest, cached: EvidenceResult
     ) -> EvidenceResult:
-        if self._admission_verifier is None:
-            return _result_refusal(
-                request,
-                "NO_CONFIGURED_TRUST_ROOT",
-                eligibility="UNKNOWN",
-                execution="NOT_STARTED",
+        try:
+            self._check_cache_configuration()
+            retained = self._cache_descriptors.get(request.key)
+            if retained is None:
+                raise EvidenceCacheIntegrityError("cache owner descriptor missing")
+            descriptor = _checked_cache_owner_descriptor(
+                request, cached, self._admission_verifier, descriptor=retained,
             )
-        if cached.request_key != request.key or cached.result_state != "SUPPORTED":
-            return _result_refusal(request, REFUSAL_IDENTITY_MISMATCH)
-        envelope = cached.execution_envelope
-        signature = cached.envelope_signature
-        if envelope is None or signature is None or not self._admission_verifier.verify_envelope(
-            envelope, signature
-        ):
+            self._check_descriptor_pin(descriptor)
+        except (Pre553IntegrityError, KeyError, TypeError, ValueError):
             return _result_refusal(request, REFUSAL_STALE_CACHE)
-        evidence = cached.evidence_object
-        query = cached.consumer_query_object
-        rule = cached.model_rule_object
-        if evidence is None or query is None or rule is None:
-            return _result_refusal(request, REFUSAL_STALE_CACHE)
-        if not _envelope_matches_request(envelope, request):
-            return _result_refusal(request, REFUSAL_IDENTITY_MISMATCH)
-        if (
-            envelope.evidence_ref != evidence.evidence_ref
-            or envelope.evidence_content_hash != semantic_hash(_evidence_material(evidence))
-            or envelope.consumer_query_ref != query.ref
-            or envelope.model_rule_hash != rule.rule_hash
-            or envelope.denominator != evidence.raw_support
-        ):
-            return _result_refusal(request, REFUSAL_STALE_CACHE)
-        actual = evaluate_positioned_subject_possibility(
-            query=query, rule=rule, evidence=(evidence,)
-        )
-        if (
-            actual.result_state != "EXACT_SUPPORTED"
-            or actual.result_hash != envelope.evaluator_result_hash
-        ):
-            return _result_refusal(request, REFUSAL_STALE_CACHE)
-        cells = _evidence_cells(evidence)
-        values = dict(envelope.consumer_values_read)
-        return EvidenceResult(
-            request_key=request.key,
-            eligibility_state=envelope.eligibility_state,
-            execution_state=envelope.execution_state,
-            result_state="SUPPORTED",
-            provenance=PROVENANCE_CACHE,
-            denominator=envelope.denominator,
-            cells=cells,
-            evidence_ref=evidence.evidence_ref,
-            producer_receipt_ref=envelope.producer_receipt_ref,
-            producer_fact_ref=envelope.producer_fact_ref,
-            producer_fact_state=envelope.producer_fact_state,
-            consumer_query_ref=envelope.consumer_query_ref,
-            consumer_result_state=actual.result_state,
-            consumer_result_hash=actual.result_hash,
-            consumer_values_read=values,
-            uncertainty_state=envelope.uncertainty_state,
-            execution_envelope=envelope,
-            envelope_signature=signature,
-            evidence_object=evidence,
-            consumer_query_object=query,
-            model_rule_object=rule,
-            consumer_result_object=actual,
-        )
+        return replace(cached, provenance=PROVENANCE_CACHE)
 
     def export_cache(self) -> Mapping[str, Any]:
-        if self._admission_verifier is None:
-            raise EvidenceCacheIntegrityError("NO_CONFIGURED_TRUST_ROOT")
+        self._check_cache_configuration()
         entries = []
         for key in sorted(self._cache):
             result = self._cache[key]
             request = self._requests.get(key)
-            binding_material = self._binding_materials.get(key)
-            if request is None or binding_material is None:
-                raise EvidenceCacheIntegrityError(
-                    "cache entry lacks its exact request/producer preimage"
-                )
-            if (
-                result.execution_envelope is None
-                or result.envelope_signature is None
-                or not self._admission_verifier.verify_envelope(
-                    result.execution_envelope, result.envelope_signature
-                )
-            ):
-                raise EvidenceCacheIntegrityError(
-                    "cache export requires the original signed execution envelope"
-                )
-            if not _result_matches_envelope(result, result.execution_envelope):
-                raise EvidenceCacheIntegrityError(
-                    "cache export refuses unsigned result/value substitution"
-                )
-            if not _objects_match_envelope(
-                result.evidence_object,
-                result.consumer_query_object,
-                result.model_rule_object,
-                result.execution_envelope,
-            ):
-                raise EvidenceCacheIntegrityError(
-                    "cache export refuses unsigned evidence/query/rule content"
-                )
-            owner_material = self._owner_materials.get(key)
-            if owner_material is None:
-                raise EvidenceCacheIntegrityError(
-                    "cache entry lacks its retained owner material"
-                )
-            binding_payload = canonicalize(binding_material)
-            binding_payload["owner_identity_material"] = canonicalize(owner_material)
-            binding_payload["owner_identity_hash"] = semantic_hash(owner_material)
-            binding_payload["binding_hash"] = semantic_hash(
-                {k: v for k, v in binding_payload.items() if k != "binding_hash"}
+            descriptor = self._cache_descriptors.get(key)
+            if request is None or descriptor is None:
+                raise EvidenceCacheIntegrityError("cache entry lacks canonical owner descriptor")
+            descriptor = _checked_cache_owner_descriptor(
+                request, result, self._admission_verifier, descriptor=descriptor,
             )
+            self._check_descriptor_pin(descriptor)
             payload = {
                 "schema": CACHE_SCHEMA,
                 "seal_algorithm": CACHE_SEAL_ALGORITHM,
                 "request_key": key,
                 "request_material": canonicalize(request.material()),
-                "producer_binding": binding_payload,
+                "cache_owner_descriptor": descriptor,
                 "execution_envelope": canonicalize(result.execution_envelope.material()),
                 "envelope_signature": result.envelope_signature,
                 "result": canonicalize(_envelope_result_projection(result.execution_envelope)),
@@ -2054,169 +2123,99 @@ class EvidenceResolver:
         return {"schema": CACHE_SCHEMA, "entries": entries}
 
     def import_authenticated_cache(self, material: Mapping[str, Any]) -> None:
-        if self._admission_verifier is None:
-            raise EvidenceCacheIntegrityError("NO_CONFIGURED_TRUST_ROOT")
+        self._check_cache_configuration()
+        # Detach before parsing: retained objects must not alias caller-owned bytes.
+        try:
+            self._import_authenticated_cache(canonicalize(material))
+        except EvidenceCacheIntegrityError:
+            raise
+        except (Pre553IntegrityError, KeyError, TypeError, ValueError, AttributeError) as exc:
+            raise EvidenceCacheIntegrityError("malformed authenticated cache") from exc
+
+    def _import_authenticated_cache(self, material: Mapping[str, Any]) -> None:
         if not isinstance(material, Mapping) or material.get("schema") != CACHE_SCHEMA:
-            raise EvidenceCacheIntegrityError("unrecognized authenticated cache schema")
-        entries = material.get("entries")
-        if not isinstance(entries, Sequence) or isinstance(entries, (str, bytes)):
-            raise EvidenceCacheIntegrityError("cache entries must be a sequence")
+            raise EvidenceCacheIntegrityError("LEGACY_OR_UNKNOWN_CACHE_SCHEMA")
+        if set(material) != {"schema", "entries"}:
+            raise EvidenceCacheIntegrityError("unknown cache fields")
+        entries = material["entries"]
+        if not isinstance(entries, list):
+            raise EvidenceCacheIntegrityError("cache entries must be a list")
         imported: dict[str, EvidenceResult] = {}
         imported_requests: dict[str, EvidenceRequest] = {}
-        imported_bindings: dict[str, Mapping[str, Any]] = {}
-        imported_owners: dict[str, Mapping[str, Any]] = {}
+        imported_descriptors: dict[str, Mapping[str, Any]] = {}
+        required = {
+            "schema", "seal_algorithm", "request_key", "request_material",
+            "cache_owner_descriptor", "execution_envelope", "envelope_signature",
+            "result", "evidence", "consumer_query", "model_rule", "seal",
+        }
         for raw in entries:
-            if not isinstance(raw, Mapping):
-                raise EvidenceCacheIntegrityError("cache entry must be a mapping")
-            payload = {
-                key: canonicalize(value)
-                for key, value in raw.items()
-                if key not in {"seal", "issuer_seal", "issuer_grade"}
-            }
-            if raw.get("seal") != semantic_hash(payload):
+            if not isinstance(raw, Mapping) or not required <= set(raw) or set(raw) - required - {"issuer_grade", "issuer_seal"}:
+                raise EvidenceCacheIntegrityError("unknown/missing cache entry fields")
+            if raw["schema"] != CACHE_SCHEMA or raw["seal_algorithm"] != CACHE_SEAL_ALGORITHM:
+                raise EvidenceCacheIntegrityError("cache entry schema/algorithm mismatch")
+            payload = {key: value for key, value in raw.items() if key not in {"seal", "issuer_seal", "issuer_grade"}}
+            if raw["seal"] != semantic_hash(payload):
                 raise EvidenceCacheIntegrityError("cache entry seal mismatch")
             if self._issuer is not None and not self._issuer.verify(
-                {k: v for k, v in raw.items() if k != "issuer_seal"},
-                raw.get("issuer_seal"),
+                {k: v for k, v in raw.items() if k != "issuer_seal"}, raw.get("issuer_seal"),
             ):
                 raise EvidenceCacheIntegrityError("cache issuer seal missing/invalid")
-            request_key = _sha(raw.get("request_key"), "cache.request_key")
-            request_material = raw.get("request_material")
-            if not isinstance(request_material, Mapping):
-                raise EvidenceCacheIntegrityError("cache entry requires a full request K preimage")
-            request = EvidenceRequest.from_material(request_material)
-            if request.key != request_key:
-                raise EvidenceCacheIntegrityError(
-                    "cache request preimage does not hash to the advertised K"
-                )
-            producer_binding = raw.get("producer_binding")
-            if not isinstance(producer_binding, Mapping):
-                raise EvidenceCacheIntegrityError("cache entry requires producer-binding determinants")
-            if producer_binding.get("request_key") != request_key:
-                raise EvidenceCacheIntegrityError("cache producer binding K mismatch")
-            binding_hash = semantic_hash(
-                {k: v for k, v in producer_binding.items() if k != "binding_hash"}
-            )
-            if producer_binding.get("binding_hash") != binding_hash:
-                raise EvidenceCacheIntegrityError("producer binding self-hash mismatch")
-            if (
-                self._trusted_binding_hashes
-                and binding_hash not in self._trusted_binding_hashes
-            ):
-                raise EvidenceCacheIntegrityError("producer binding is not in the trusted set")
-            owner_material = producer_binding.get("owner_identity_material")
-            owner_hash = producer_binding.get("owner_identity_hash")
-            if not isinstance(owner_material, Mapping) or owner_hash != semantic_hash(owner_material):
-                raise EvidenceCacheIntegrityError("cache owner identity hash mismatch")
-            context_material = producer_binding.get("context")
-            if not isinstance(context_material, Mapping) or not _context_material_matches_request(
-                context_material, request
-            ):
-                raise EvidenceCacheIntegrityError("cache context labels/refs do not match K")
-            if producer_binding.get("validated_conditions") != [
-                condition.material() for condition in request.ordered_conditions
-            ]:
-                raise EvidenceCacheIntegrityError("cache producer conditions do not match K")
-            envelope_material = raw.get("execution_envelope")
-            if not isinstance(envelope_material, Mapping):
-                raise EvidenceCacheIntegrityError("cache requires a complete executed envelope")
-            envelope = _envelope_from_material(envelope_material)
-            signature = raw.get("envelope_signature")
-            if not self._admission_verifier.verify_envelope(envelope, signature):
-                raise EvidenceCacheIntegrityError("execution envelope signature invalid")
-            if not _envelope_matches_request(envelope, request):
-                raise EvidenceCacheIntegrityError("execution envelope does not match K")
-            context_ref = _optional_ref(producer_binding.get("context_ref"))
-            if context_ref is None or envelope.context_ref != context_ref:
-                raise EvidenceCacheIntegrityError("envelope context ref mismatch")
-            if envelope.owner_identity_hash != owner_hash:
-                raise EvidenceCacheIntegrityError("envelope owner identity mismatch")
+            request = EvidenceRequest.from_material(raw["request_material"])
+            if request.key != raw["request_key"] or not _same_material(request.material(), raw["request_material"]):
+                raise EvidenceCacheIntegrityError("cache request preimage does not match K")
+            envelope = _envelope_from_material(raw["execution_envelope"])
             evidence = _evidence_from_material(raw["evidence"])
             query = _query_from_material(raw["consumer_query"])
             rule = _rule_from_material(raw["model_rule"])
-            if (
-                envelope.evidence_ref != evidence.evidence_ref
-                or envelope.evidence_content_hash != semantic_hash(_evidence_material(evidence))
-                or envelope.consumer_query_ref != query.ref
-                or semantic_hash(query.material()) != envelope.consumer_query_material_hash
-                or envelope.model_rule_hash != rule.rule_hash
-                or envelope.denominator != evidence.raw_support
-            ):
-                raise EvidenceCacheIntegrityError("envelope/evidence/query/rule association mismatch")
-            if (
-                query.ref != request.consumer_query_ref
-                or query.source_universe_ref != request.source_universe_ref
-                or query.release_ref != request.release_ref
-                or query.target_ref != request.target_ref
-                or [b.binding_id for b in query.conditioner_bindings]
-                != [c.conditioner_binding_id for c in request.ordered_conditions]
-            ):
-                raise EvidenceCacheIntegrityError("cached consumer query does not match K")
-            actual = evaluate_positioned_subject_possibility(
-                query=query, rule=rule, evidence=(evidence,)
-            )
-            cells = _evidence_cells(evidence)
-            if (
-                actual.result_state != "EXACT_SUPPORTED"
-                or actual.result_hash != envelope.evaluator_result_hash
-                or envelope.result_state != "SUPPORTED"
-                or envelope.eligibility_state != "ELIGIBLE"
-                or envelope.execution_state != "COMPLETED"
-                or [canonicalize(x) for x in envelope.cells]
-                != [canonicalize(x) for x in cells]
-            ):
-                raise EvidenceCacheIntegrityError("envelope/evaluator/status association mismatch")
-            result_material = raw.get("result")
-            if not isinstance(result_material, Mapping):
-                raise EvidenceCacheIntegrityError("cache result material required")
-            if canonicalize(result_material) != canonicalize(
-                _envelope_result_projection(envelope)
-            ):
-                raise EvidenceCacheIntegrityError(
-                    "cache result/public values disagree with signed envelope"
-                )
-            values = dict(envelope.consumer_values_read)
+            actual = evaluate_positioned_subject_possibility(query=query, rule=rule, evidence=(evidence,))
             result = EvidenceResult(
-                request_key=request_key,
+                request_key=request.key,
                 eligibility_state=envelope.eligibility_state,
                 execution_state=envelope.execution_state,
                 result_state=envelope.result_state,
                 provenance=PROVENANCE_CACHE,
                 denominator=envelope.denominator,
-                cells=cells,
+                cells=_evidence_cells(evidence),
                 evidence_ref=evidence.evidence_ref,
                 producer_receipt_ref=envelope.producer_receipt_ref,
                 producer_fact_ref=envelope.producer_fact_ref,
                 producer_fact_state=envelope.producer_fact_state,
-                consumer_query_ref=envelope.consumer_query_ref,
+                consumer_query_ref=query.ref,
                 consumer_result_state=actual.result_state,
                 consumer_result_hash=actual.result_hash,
-                consumer_values_read=values,
+                consumer_values_read=canonicalize(envelope.consumer_values_read),
                 uncertainty_state=envelope.uncertainty_state,
                 execution_envelope=envelope,
-                envelope_signature=signature,
+                envelope_signature=raw["envelope_signature"],
                 evidence_object=evidence,
                 consumer_query_object=query,
                 model_rule_object=rule,
                 consumer_result_object=actual,
             )
-            if request_key in imported:
+            if not isinstance(raw["cache_owner_descriptor"], Mapping):
+                raise EvidenceCacheIntegrityError("canonical cache owner descriptor required")
+            descriptor = _checked_cache_owner_descriptor(
+                request, result, self._admission_verifier,
+                descriptor=raw["cache_owner_descriptor"],
+            )
+            self._check_descriptor_pin(descriptor)
+            if not _same_material(raw["result"], _envelope_result_projection(envelope)):
+                raise EvidenceCacheIntegrityError("cache result differs from signed projection")
+            if request.key in imported:
                 raise EvidenceCacheIntegrityError("duplicate cache request key")
-            imported[request_key] = result
-            imported_requests[request_key] = request
-            imported_bindings[request_key] = producer_binding
-            imported_owners[request_key] = owner_material
+            imported[request.key] = result
+            imported_requests[request.key] = request
+            imported_descriptors[request.key] = descriptor
         if set(imported) & set(self._bindings):
             raise EvidenceCacheIntegrityError("cache/import conflicts with a registered binding")
         self._cache.update(imported)
         self._requests.update(imported_requests)
-        self._binding_materials.update(imported_bindings)
-        self._owner_materials.update(imported_owners)
+        self._cache_descriptors.update(imported_descriptors)
 
 
 def _envelope_from_material(material: Mapping[str, Any]) -> ExecutedEvidenceEnvelope:
     try:
-        return ExecutedEvidenceEnvelope(
+        envelope = ExecutedEvidenceEnvelope(
             request_material=material["request_material"],
             request_key=material["request_key"],
             context_ref=ExactRef(**material["context_ref"]),
@@ -2251,6 +2250,9 @@ def _envelope_from_material(material: Mapping[str, Any]) -> ExecutedEvidenceEnve
             trust_domain_version=material["trust_domain_version"],
             trust_grade=material["trust_grade"],
         )
+        if not _same_material(envelope.material(), material):
+            raise EvidenceCacheIntegrityError("noncanonical executed envelope schema/fields")
+        return envelope
     except (KeyError, TypeError) as exc:
         raise EvidenceCacheIntegrityError("malformed executed evidence envelope") from exc
 
@@ -2308,9 +2310,7 @@ def _result_matches_envelope(
         return False
     if result.denominator != envelope.denominator:
         return False
-    if [canonicalize(x) for x in result.cells] != [
-        canonicalize(x) for x in envelope.cells
-    ]:
+    if not _same_material(result.cells, envelope.cells):
         return False
     if result.evidence_ref != envelope.evidence_ref:
         return False
@@ -2330,9 +2330,7 @@ def _result_matches_envelope(
         return False
     if result.consumer_values_read is None:
         return False
-    return canonicalize(result.consumer_values_read) == canonicalize(
-        envelope.consumer_values_read
-    )
+    return _same_material(result.consumer_values_read, envelope.consumer_values_read)
 
 
 def _assert_result_matches_envelope(
@@ -2506,51 +2504,10 @@ class EvidenceConsumerReader:
             )
         if self.verifier is None:
             raise EvidenceAssociationError("NO_CONFIGURED_TRUST_ROOT: reader is not pinned")
-        envelope = self.result.execution_envelope
-        signature = self.result.envelope_signature
-        if envelope is None or signature is None or not self.verifier.verify_envelope(
-            envelope, signature
-        ):
-            raise EvidenceAssociationError(
-                "signed complete execution envelope is absent or untrusted"
-            )
-        if not _envelope_matches_request(envelope, self.request):
-            raise EvidenceAssociationError("signed envelope does not match request K")
-        _assert_result_matches_envelope(self.result, envelope)
-        if (
-            self.result.evidence_object is None
-            or self.result.consumer_query_object is None
-            or self.result.model_rule_object is None
-        ):
-            raise EvidenceAssociationError("no actual evidence/query/rule object to consume")
-        evidence = self.result.evidence_object
-        query = self.result.consumer_query_object
-        rule = self.result.model_rule_object
-        if not _objects_match_envelope(evidence, query, rule, envelope):
-            raise EvidenceAssociationError(
-                "evidence/query/rule objects do not match the signed envelope"
-            )
-        values = envelope.consumer_values_read
-        if not isinstance(values, Mapping):
-            raise EvidenceAssociationError("actual consumer values-read is absent")
-        if values.get("request_key") != self.request.key:
-            raise EvidenceAssociationError("values-read request key mismatch")
-        if values.get("consumer_query_ref") != self.request.consumer_query_ref.as_dict():
-            raise EvidenceAssociationError("values-read consumer query mismatch")
-        if values.get("target_ref") != self.request.target_ref.as_dict():
-            raise EvidenceAssociationError("values-read target mismatch")
-        if values.get("ordered_conditions") != [
-            x.material() for x in self.request.ordered_conditions
-        ]:
-            raise EvidenceAssociationError("values-read condition/value mismatch")
-        if values.get("direction") != self.request.direction:
-            raise EvidenceAssociationError("values-read direction mismatch")
-        if values.get("role") != self.request.role:
-            raise EvidenceAssociationError("values-read role mismatch")
-        if self.result.evidence_object is None:
-            raise EvidenceAssociationError("no actual evidence object to consume")
-        if self.result.consumer_query_object is None or self.result.model_rule_object is None:
-            raise EvidenceAssociationError("no actual consumer query/rule to consume")
+        try:
+            _checked_cache_owner_descriptor(self.request, self.result, self.verifier)
+        except (Pre553IntegrityError, KeyError, TypeError, ValueError, AttributeError) as exc:
+            raise EvidenceAssociationError("signed execution/owner/object association invalid") from exc
 
     def read(self) -> Mapping[str, Any]:
         self._assert_association()
@@ -2572,11 +2529,6 @@ class EvidenceConsumerReader:
         values["consumer_result_material"] = canonicalize(actual.material())
         values["original_execution_provenance"] = envelope.execution_provenance
         values["original_execution_mode"] = envelope.execution_mode
-        values["local_delivery_context_unsigned"] = (
-            "VERIFIED_REPLAY"
-            if self.result.provenance == PROVENANCE_CACHE
-            else "LIVE_TRUSTED_EXECUTION"
-        )
         return values
 
     def e04_step(self) -> Mapping[str, Any]:
@@ -2714,6 +2666,9 @@ __all__ = [
     "RESULT_CONTRACT_ID",
     "SUMMARY_CONTRACT_ID",
     "CACHE_SCHEMA",
+    "CACHE_OWNER_DESCRIPTOR_SCHEMA",
+    "CACHE_OWNER_FIELDS",
+    "CACHE_OWNER_DESCRIPTOR_FIELDS",
     "CACHE_TRUST_ASSOCIATION",
     "CACHE_TRUST_ISSUER",
     "CACHE_TRUST_ADMISSION",
