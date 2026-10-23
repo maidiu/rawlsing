@@ -24,11 +24,16 @@ from rawlsing_next.pre553_discovery_exact import (
     _combine_predicates,
     _compile_frontier,
     _xor_exactly_one,
+    _catalog_atoms, _catalog_templates, _validate_catalog_scope,
+    _verify_discovery_authority, _allowed_validation_kinds,
+    _derived_ref as _discovery_ref, COVERAGE_CLAIM,
+    QUERY_EXECUTION_CONTRACT_ID, TERMINAL_COVERAGE_STATES,
 )
 from rawlsing_next.pre553_empirical_objects import (
     canonicalize,
     exact_ref,
     semantic_hash,
+    DiscoveryResultReceipt, DiscoveryAuthority, EmpiricalQuerySpec,
 )
 from rawlsing_next.pre553_empirical_authority import validate_object_authority_closure
 from rawlsing_next.pre553_recursive_handoff import (
@@ -38,13 +43,23 @@ from rawlsing_next.pre553_recursive_handoff import (
     execute_exact_bounded_discovery_with_handoffs,
     load_recursive_handoff_bundle,
     replay_recursive_branch_membership,
+    _make_handoff, _resolve_receipt_winner,
 )
+
+from rawlsing_next.pre553_empirical_query import (
+    _resolve_release_indices, _require_exact_i03_authority_fitness,
+    _parse_target_plan, _verify_public_identity,
+)
+from rawlsing_next._pre553_query_predicate import (
+    _validate_public_object_authorities, _eval_predicate,
+)
+from types import SimpleNamespace
 
 from .enumerate import role_disposition
 from .types import (
     ELIGIBLE, UNSUPPORTED_RUNTIME, GrammarPolicy, OccurrenceKey,
     ScientificFrontier, ScientificOperation, SourceInventory, typed_value_key,
-    value_material,
+    value_material, ABSENT, _validate_typed_value,
 )
 
 SUPPORTED = "SUPPORTED"
@@ -1227,10 +1242,6 @@ def build_recurrence_issue_plan(
             key=lambda ref: ref.key,
         )):
             raise RecurrenceRefusal("ROOT_PARENT_SOURCE_RELEASE_MISMATCH")
-        if previous_plan is not None:
-            raise RecurrenceRefusal("ROOT_GENERATION_MUST_NOT_HAVE_PREDECESSOR")
-        issued_before = 0
-        predecessor_ref = None
     else:
         if any(parent.kind == PARENT_ROOT for parent in parents):
             raise RecurrenceRefusal("ROOT_PARENT_NOT_ALLOWED_AFTER_GENERATION_ONE")
@@ -1238,14 +1249,16 @@ def build_recurrence_issue_plan(
             raise RecurrenceRefusal("PARENT_GENERATION_CONTINUITY_VIOLATION")
         if previous_plan is None:
             raise RecurrenceRefusal("PREDECESSOR_PLAN_REQUIRED")
-        if previous_plan.generation < 1 or previous_plan.generation > generation:
-            raise RecurrenceRefusal("PREDECESSOR_PLAN_GENERATION_MISMATCH")
+    # Chronological predecessor and discovery ancestry are independent.
+    issued_before = 0
+    predecessor_ref = None
+    if previous_plan is not None:
         if previous_plan.policy.content_hash != policy.content_hash:
             raise RecurrenceRefusal("PREDECESSOR_PLAN_POLICY_MISMATCH")
         root_ref = exact_ref(root_predicate.ref, "root predicate").as_dict()
         if previous_plan.root_predicate_ref != root_ref:
             raise RecurrenceRefusal("PREDECESSOR_PLAN_ROOT_MISMATCH")
-        if previous_plan.state != RECURRENCE_ISSUED:
+        if previous_plan.state not in {RECURRENCE_ISSUED, RECURRENCE_STOPPED_BUDGET}:
             raise RecurrenceRefusal("PREDECESSOR_PLAN_NOT_ISSUED")
         if previous_plan.cumulative_issued_count != (
             previous_plan.predecessor_issued_count + len(previous_plan.expected_operations)
@@ -1274,7 +1287,7 @@ def build_recurrence_issue_plan(
             query_ref=_ref_material(getattr(query_ref, "ref", query_ref)),
             unissued=tuple({
                 "parent_id": parent.parent_id,
-                "reason": "TOTAL_ISSUED_CAP",
+                "reason": ("TOTAL_ISSUED_CAP" if remaining_total == 0 else "PER_GENERATION_ISSUED_CAP"),
                 "state": RECURRENCE_STOPPED_BUDGET,
             } for parent in canonical_parents),
             query_object=query_ref if hasattr(query_ref, "ref") else None,
@@ -1706,12 +1719,12 @@ def activate_next_generation(
     )
 
 
-CAMPAIGN_SCHEMA = "RetainedRecurrenceCampaign@r61.r6.1"
-CAMPAIGN_ROOT_SCHEMA = "RecurrenceCampaignRoot@r61.r6.1"
-CAMPAIGN_ISSUANCE_SCHEMA = "RecurrenceCampaignIssuance@r61.r6.1"
-CAMPAIGN_EXECUTION_SCHEMA = "RecurrenceCampaignExecution@r61.r6.1"
-CAMPAIGN_LINEAGE_SCHEMA = "RecurrenceCampaignLineage@r61.r6.1"
-CAMPAIGN_ACTIVATION_SCHEMA = "RecurrenceCampaignActivation@r61.r6.1"
+CAMPAIGN_SCHEMA = "RetainedRecurrenceCampaign@r61.r7.1"
+CAMPAIGN_ROOT_SCHEMA = "RecurrenceCampaignRoot@r61.r7.1"
+CAMPAIGN_ISSUANCE_SCHEMA = "RecurrenceCampaignIssuance@r61.r7.1"
+CAMPAIGN_EXECUTION_SCHEMA = "RecurrenceCampaignExecution@r61.r7.1"
+CAMPAIGN_LINEAGE_SCHEMA = "RecurrenceCampaignLineage@r61.r7.1"
+CAMPAIGN_ACTIVATION_SCHEMA = "RecurrenceCampaignActivation@r61.r7.1"
 
 
 def _campaign_hash(value: Any) -> str:
@@ -1742,6 +1755,149 @@ def _mapping(value: Any, name: str) -> Mapping[str, Any]:
     return value
 
 
+def _restore_native_object(cls: Any, payload: Mapping[str, Any]) -> Any:
+    obj = cls(
+        typed_state=payload.get("typed_state"),
+        authority_snapshot_refs=payload.get("authority_snapshot_refs", ()),
+        dependency_refs=payload.get("dependency_refs", ()),
+        producer_replay_locator_or_reference_root=payload.get("producer_replay_locator_or_reference_root"),
+        object_id=payload.get("object_id"), content_hash=payload.get("content_hash"),
+        schema_id=payload.get("schema_id"), schema_version=payload.get("schema_version"),
+        **dict(_mapping(payload.get("semantic_fields"), "native semantic fields")),
+    )
+    if canonicalize(obj.as_dict()) != canonicalize(payload):
+        raise RecurrenceRefusal("NATIVE_OBJECT_PROJECTION_MISMATCH")
+    return obj
+
+
+def _authority_profile(authority: Any, registry: Any) -> dict[str, Any]:
+    _verify_discovery_authority(authority, registry)
+    # Grammar and replay locator vary by issuance. All semantic execution policy
+    # and exact governing authority snapshots remain portable host configuration.
+    fields = dict(authority.semantic_fields)
+    fields.pop("candidate_grammar_ref", None)
+    fields.pop("candidate_universe_definition", None)
+    return canonicalize({
+        "family": authority.FAMILY, "typed_state": authority.typed_state,
+        "authority_snapshot_refs": authority.authority_snapshot_refs,
+        "dependency_refs": authority.dependency_refs, "semantic_fields": fields,
+        "authority_material": [registry.resolve_exact(ref).snapshot.as_dict()
+                               for ref in authority.authority_snapshot_refs],
+    })
+
+
+def _native_campaign_context(*, policy: RecurrencePolicy, root_predicate: Any,
+                             releases: Sequence[Any], target_label: str,
+                             query: Any, catalog: Mapping[tuple[str, str], Any],
+                             repository: Any, registry: Any, factory: Any) -> dict[str, Any]:
+    """Shared create/live/restore resolver; performs no discovery invocation."""
+    try:
+        if not callable(factory) or not isinstance(target_label, str) or not target_label:
+            raise RecurrenceRefusal("CAMPAIGN_NATIVE_SETUP_INVALID")
+        _verify_public_identity(query)
+        _verify_public_identity(root_predicate)
+        if exact_ref(query.condition_predicate_ref) != root_predicate.ref:
+            raise RecurrenceRefusal("CAMPAIGN_QUERY_ROOT_MISMATCH")
+        if int(query.target_arity_and_topology["arity"]) > int(policy.bounds["J"]):
+            raise RecurrenceRefusal("CAMPAIGN_QUERY_EXCEEDS_J")
+        _parse_target_plan(query, registry)
+        resolved = _resolve_release_indices(repository, query=query, release_refs=releases)
+        universe_refs = tuple(ref for ref, _ in resolved)
+        _require_exact_i03_authority_fitness(
+            query=query, predicate=root_predicate, authority_registry=registry,
+            universe_refs=universe_refs,
+        )
+        source_material = []
+        authorities = {}
+        def add_object(obj):
+            if semantic_hash(obj.semantic_projection()) != obj.content_hash:
+                raise RecurrenceRefusal("CAMPAIGN_SOURCE_OBJECT_IDENTITY_MISMATCH")
+            for ref in _validate_public_object_authorities(obj, registry):
+                snap = registry.resolve_exact(ref).snapshot
+                authorities[ref.key] = snap.as_dict()
+        for release_ref in releases:
+            release = repository.resolve_release_exact(release_ref)
+            for obj in release.public_objects:
+                add_object(obj)
+            source_material.append({
+                "release_ref": release.release_ref,
+                "source_artifact_ref": release.source_artifact_ref,
+                "source_release_manifest_hash": release.source_release_manifest_hash,
+                "public_refs": [obj.ref for obj in release.public_objects],
+                "internal_refs": [obj.ref for obj in release.internal_records],
+                "replay_ref": release.replay_manifest.ref,
+            })
+        add_object(query)
+        predicates = (root_predicate,) + tuple(catalog.values())
+        for predicate in predicates:
+            _verify_public_identity(predicate)
+            add_object(predicate)
+            _require_exact_i03_authority_fitness(
+                query=query, predicate=predicate, authority_registry=registry,
+                universe_refs=universe_refs,
+            )
+            if set(exact_ref(ref).key for ref in predicate.scope_refs) != set(ref.key for ref in universe_refs):
+                raise RecurrenceRefusal("CAMPAIGN_PREDICATE_SOURCE_SCOPE_MISMATCH")
+            for ref, index in resolved:
+                risk_refs = {exact_ref(obj.risk_set_ref).key
+                             for rows in index.routing_by_respondent.values() for obj in rows}
+                if exact_ref(query.risk_set_ref).key not in risk_refs:
+                    raise RecurrenceRefusal("CAMPAIGN_QUERY_RISK_UNRESOLVED")
+                if not {exact_ref(r).key for r in predicate.risk_set_refs} <= risk_refs:
+                    raise RecurrenceRefusal("CAMPAIGN_PREDICATE_RISK_UNRESOLVED")
+                events = [obj for rows in index.events_by_respondent.values() for obj in rows]
+                known_targets = {exact_ref(obj.native_question_ref).key for obj in events}
+                known_targets.update(exact_ref(obj.canonical_question_ref_if_authorized).key
+                                     for obj in events if obj.canonical_question_ref_if_authorized is not None)
+                if not {exact_ref(r).key for r in query.target_refs} <= known_targets:
+                    raise RecurrenceRefusal("CAMPAIGN_QUERY_TARGET_UNRESOLVED")
+                # Resolve native leaf semantics, including exact branch membership
+                # and source authority, without manufacturing empirical receipts.
+                for respondent in index.respondents.values():
+                    used, used_auth = [], []
+                    _eval_predicate(predicate.predicate_ast, respondent=respondent,
+                                    index=index, registry=registry, used=used, used_auth=used_auth)
+                    for auth in used_auth:
+                        snap = registry.resolve_exact(auth).snapshot
+                        authorities[auth.key] = snap.as_dict()
+        profiles = []
+        for generation in range(1, int(policy.bounds["D"]) + 1):
+            probe = {
+                "schema": CANDIDATE_GRAMMAR_SCHEMA,
+                "discovery_operation": f"I03-OP-R61-R4-G{generation}",
+                "atoms": (), "query_templates": (), "rules": (),
+                "limits": {"maximum_conditioner_arity_K": int(policy.bounds["K"]),
+                           "maximum_target_arity_J": int(policy.bounds["J"])},
+                "allow_empty_frontier": True,
+            }
+            authority = factory(probe)
+            profiles.append(_authority_profile(authority, registry))
+            allowed = {exact_ref(ref).key for ref in authority.source_universe_scope["allowed_universe_refs"]}
+            if not set(ref.key for ref in universe_refs) <= allowed:
+                raise RecurrenceRefusal("CAMPAIGN_DISCOVERY_SOURCE_SCOPE_MISMATCH")
+            if exact_ref(query.risk_set_ref).key not in {
+                exact_ref(r).key for r in authority.risk_set_scope["allowed_risk_set_refs"]
+            }:
+                raise RecurrenceRefusal("CAMPAIGN_DISCOVERY_RISK_SCOPE_MISMATCH")
+        return canonicalize({
+            "native_contract": current_native_contract(),
+            "repository_owner": type(repository).__module__ + "." + type(repository).__qualname__,
+            "registry_owner": type(registry).__module__ + "." + type(registry).__qualname__,
+            "source_inventory": source_material,
+            "query": query.as_dict(), "root_predicate": root_predicate.as_dict(),
+            "condition_catalog": [
+                {"key": key, "value": value, "predicate": predicate.as_dict()}
+                for (key, value), predicate in sorted(catalog.items())
+            ],
+            "authorities": [authorities[key] for key in sorted(authorities)],
+            "discovery_profiles": profiles,
+        })
+    except RecurrenceRefusal:
+        raise
+    except Exception as exc:
+        raise RecurrenceRefusal("CAMPAIGN_NATIVE_CONTEXT_REFUSED:" + type(exc).__name__) from exc
+
+
 @dataclass(frozen=True)
 class CampaignRootRecord:
     campaign_ref: str
@@ -1752,6 +1908,7 @@ class CampaignRootRecord:
     query_ref: Mapping[str, str]
     native_config_ref: str
     owner_refs: tuple[str, ...]
+    native_context: Mapping[str, Any]
     schema: str = CAMPAIGN_ROOT_SCHEMA
 
     def material(self) -> dict[str, Any]:
@@ -1762,6 +1919,7 @@ class CampaignRootRecord:
             "source_release_refs": self.source_release_refs,
             "target_label": self.target_label, "query_ref": self.query_ref,
             "native_config_ref": self.native_config_ref,
+            "native_context": self.native_context,
             "owner_refs": self.owner_refs,
         })
 
@@ -1861,6 +2019,7 @@ class CampaignExecutionRecord:
     handoff_refs: tuple[Any, ...]
     handoffs: tuple[RecursiveBranchHandoff, ...]
     anti_join: Mapping[str, Any]
+    activation_preimage: Mapping[str, Any] = field(default_factory=dict)
     native_result: Any | None = None
     schema: str = CAMPAIGN_EXECUTION_SCHEMA
 
@@ -1871,6 +2030,7 @@ class CampaignExecutionRecord:
             "grammar_ref": self.grammar_ref, "receipt_refs": self.receipt_refs,
             "handoff_refs": self.handoff_refs,
             "anti_join": self.anti_join,
+            "activation_preimage": self.activation_preimage,
         })
 
 
@@ -1918,6 +2078,8 @@ class RetainedRecurrenceCampaign:
         self._completed_execution: dict[str, str] = {}
         self._activation_by_execution: dict[str, str] = {}
         self._lock = threading.RLock()
+        self._inflight: set[str] = set()
+        self._rebuilding = False
         root_lineage_ref = _campaign_hash({
             "campaign_ref": root.campaign_ref, "kind": PARENT_ROOT,
             "predicate": root.root_predicate.ref, "generation": 0,
@@ -1944,10 +2106,10 @@ class RetainedRecurrenceCampaign:
         return self._root_lineage_ref
 
     def _all_handoffs(self) -> tuple[RecursiveBranchHandoff, ...]:
-        return tuple(
-            record.handoff for record in self._lineage.values()
+        return tuple({
+            record.handoff.ref.key: record.handoff for record in self._lineage.values()
             if record.handoff is not None
-        )
+        }.values())
 
     def _resolver(self) -> RecurrenceParentResolver:
         return make_recurrence_parent_resolver(self._all_handoffs())
@@ -1971,6 +2133,7 @@ class RetainedRecurrenceCampaign:
               requested_generation: int | None = None,
               predecessor_issuance_ref: str | None = None) -> str:
         with self._lock:
+            self._check_history()
             parent_records = tuple(self._lineage_record(ref) for ref in parent_lineage_refs)
             if not parent_records:
                 raise RecurrenceRefusal("CAMPAIGN_REQUIRES_PARENT_LINEAGE")
@@ -1986,7 +2149,10 @@ class RetainedRecurrenceCampaign:
             else:
                 if any(record.producing_execution_ref is None for record in parent_records):
                     raise RecurrenceRefusal("PARENT_LINEAGE_MISSING_PRODUCING_EXECUTION")
-                generation = max(record.producer_generation for record in parent_records) + 1
+                generations = {record.producer_generation for record in parent_records}
+                if len(generations) != 1:
+                    raise RecurrenceRefusal("PARENT_GENERATION_CONTINUITY_VIOLATION")
+                generation = next(iter(generations)) + 1
             if requested_generation is not None and requested_generation != generation:
                 raise RecurrenceRefusal("REQUESTED_GENERATION_MISMATCH")
             parents = tuple(record.legacy_parent() for record in parent_records)
@@ -2027,9 +2193,8 @@ class RetainedRecurrenceCampaign:
             )
             self._issuances[issuance_ref] = record
             self._issue_order.append(issuance_ref)
-            if plan.state == RECURRENCE_ISSUED:
-                self._last_issuance_ref = issuance_ref
-                self._last_plan = plan
+            self._last_issuance_ref = issuance_ref
+            self._last_plan = plan
             return issuance_ref
 
     def _issuance(self, ref: str) -> CampaignIssuanceRecord:
@@ -2038,95 +2203,236 @@ class RetainedRecurrenceCampaign:
             raise RecurrenceRefusal("ISSUANCE_REFERENCE_NOT_RETAINED")
         if record.plan.content_hash != record.plan_ref:
             raise RecurrenceRefusal("ISSUANCE_PLAN_UNSTABLE")
+        plan = record.plan
+        retained = tuple(self._lineage_record(r).legacy_parent() for r in record.parent_lineage_refs)
+        def full_parent(parent):
+            return canonicalize({"parent": parent.material(),
+                "predicate": parent.predicate.as_dict(),
+                "ancestry_predicates": [p.as_dict() for p in parent.ancestry_predicates],
+                "handoff": None if parent.handoff is None else parent.handoff.as_dict()})
+        if (tuple(full_parent(p) for p in plan.parents) != tuple(full_parent(p) for p in retained)
+            or plan.policy.material() != self._root.policy.material()
+            or plan.query_object.as_dict() != self._query_object.as_dict()):
+            raise RecurrenceRefusal("PLAN_FULL_RETAINED_PARENT_OR_CONTEXT_MISMATCH")
+        for key, value, predicate in plan.condition_predicates:
+            if predicate.as_dict() != self._condition_predicate(key, value).as_dict():
+                raise RecurrenceRefusal("PLAN_FULL_CONDITION_PREDICATE_MISMATCH")
         return record
+
+    def _validate_context(self) -> None:
+        actual = _native_campaign_context(
+            policy=self._root.policy, root_predicate=self._root.root_predicate,
+            releases=self._root.source_release_refs, target_label=self._root.target_label,
+            query=self._query_object, catalog=self._condition_catalog,
+            repository=self._repository, registry=self._registry, factory=self._authority_factory,
+        )
+        if actual != self._root.native_context:
+            raise RecurrenceRefusal("CAMPAIGN_FROZEN_NATIVE_CONTEXT_MISMATCH")
+
+    def _check_history(self) -> None:
+        if not self._rebuilding:
+            self._validate_context()
+            self._rebuild(self.snapshot()["payload"])
+
+    def _predicate_catalog(self, plan: RecurrenceIssuePlan) -> tuple[Any, ...]:
+        by_ref = {self._root.root_predicate.ref.key: self._root.root_predicate}
+        by_ref.update((p.ref.key, p) for p in self._condition_catalog.values())
+        by_ref.update((r.predicate.ref.key, r.predicate) for r in self._lineage.values())
+        selected = {}
+        for atom in plan.grammar.get("atoms", ()):
+            ref = exact_ref(atom["predicate_ref"])
+            if ref.key not in by_ref:
+                raise RecurrenceRefusal("PLAN_PREDICATE_NOT_RETAINED")
+            selected[ref.key] = by_ref[ref.key]
+        return tuple(selected.values())
+
+    def _projection(self, record: CampaignExecutionRecord) -> RecurrenceGeneration:
+        """Checked activation view, identical for live and cold completed records."""
+        try:
+            issuance = self._issuance(record.issuance_ref)
+            plan = issuance.plan
+            if plan.state != RECURRENCE_ISSUED or record.plan_ref != plan.content_hash:
+                raise RecurrenceRefusal("EXECUTION_ISSUANCE_MISMATCH")
+            preimage = record.activation_preimage
+            authority = _restore_native_object(DiscoveryAuthority, preimage["authority"])
+            if _authority_profile(authority, self._registry) != self._root.native_context["discovery_profiles"][plan.generation - 1]:
+                raise RecurrenceRefusal("EXECUTION_NATIVE_PROFILE_MISMATCH")
+            if canonicalize(authority.candidate_universe_definition) != canonicalize(plan.grammar):
+                raise RecurrenceRefusal("EXECUTION_NATIVE_GRAMMAR_MISMATCH")
+            grammar_ref = exact_ref(authority.candidate_grammar_ref)
+            if canonicalize(grammar_ref) != canonicalize(record.grammar_ref):
+                raise RecurrenceRefusal("EXECUTION_GRAMMAR_REF_MISMATCH")
+            predicates = self._predicate_catalog(plan)
+            atoms = _catalog_atoms(plan.grammar, predicates)
+            templates = _catalog_templates(plan.grammar, (self._query_object,))
+            _validate_catalog_scope(authority, atoms, templates)
+            candidates = _compile_frontier(plan.grammar, atoms, templates)
+            if not {c.validation["kind"] for c in candidates} <= _allowed_validation_kinds(authority.validation_rules):
+                raise RecurrenceRefusal("EXECUTION_VALIDATION_AUTHORITY_MISMATCH")
+            frontier_ref = _discovery_ref("PRE553_I05_EVALUATED_FRONTIER", "frontier", {
+                "contract": I05_CONTRACT_ID, "discovery_authority_ref": authority.ref.as_dict(),
+                "candidate_grammar_ref": grammar_ref.as_dict(),
+                "query_execution_contract": QUERY_EXECUTION_CONTRACT_ID,
+                "candidate_identities": [{"candidate_id": c.candidate_id, "candidate_hash": c.candidate_hash} for c in candidates],
+                "coverage_claim": COVERAGE_CLAIM,
+            })
+            if exact_ref(preimage["evaluated_frontier_ref"]) != frontier_ref:
+                raise RecurrenceRefusal("EXECUTION_FRONTIER_MISMATCH")
+            receipts = tuple(_restore_native_object(DiscoveryResultReceipt, raw) for raw in preimage["receipts"])
+            if tuple(r.ref for r in receipts) != record.receipt_refs or len({r.ref.key for r in receipts}) != len(receipts):
+                raise RecurrenceRefusal("EXECUTION_RECEIPT_SET_MISMATCH")
+            by_rule = {c.rule_id: c for c in candidates}
+            anti = recurrence_anti_join(plan, receipts)
+            if not anti["no_drop_ok"] or canonicalize(anti) != canonicalize(record.anti_join):
+                raise RecurrenceRefusal("EXECUTION_RECEIPT_RECONCILIATION_MISMATCH")
+            state_by_coverage = {
+                "EVALUATED_SUPPORTED": "DISCOVERED_RESULT_SUPPORTED",
+                "EVALUATED_VALID_EMPTY": "VALID_EMPTY",
+                "EVALUATED_UNDERPOWERED": "INSUFFICIENT_SUPPORT",
+                "EVALUATED_NONCOMPARABLE": "NONCOMPARABLE",
+                "EVALUATED_DENIED_BY_EXACT_AUTHORITY": "COVERAGE_LIMITED",
+                "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY": "COVERAGE_LIMITED",
+            }
+            for receipt in receipts:
+                _validate_public_object_authorities(receipt, self._registry)
+                candidate = by_rule.get(receipt.candidate_identity.get("rule_id"))
+                if candidate is None:
+                    raise RecurrenceRefusal("EXECUTION_RECEIPT_OPERATION_MISSING")
+                identity = {
+                    "candidate_id": candidate.candidate_id, "candidate_hash": candidate.candidate_hash,
+                    "family": candidate.family, "rule_id": candidate.rule_id,
+                    "validation": candidate.validation,
+                    "query_roles": [{"role": r.role, "predicate_ref": r.predicate.ref, "query_ref": r.query.ref} for r in candidate.query_roles],
+                }
+                if canonicalize(receipt.candidate_identity) != canonicalize(identity):
+                    raise RecurrenceRefusal("EXECUTION_RECEIPT_CANDIDATE_MISMATCH")
+                if (exact_ref(receipt.discovery_authority_ref) != authority.ref
+                    or exact_ref(receipt.winning_predicate_ref) != candidate.winning_predicate.ref
+                    or exact_ref(receipt.evaluated_frontier_ref) != frontier_ref
+                    or canonicalize(receipt.branch_or_parent_ancestry_refs) != canonicalize(candidate.ancestry_refs)
+                    or canonicalize(receipt.source_release_refs) != canonicalize(self._root.source_release_refs)
+                    or receipt.exact_query_contract_id != QUERY_EXECUTION_CONTRACT_ID
+                    or state_by_coverage.get(receipt.coverage_state) != receipt.typed_state):
+                    raise RecurrenceRefusal("EXECUTION_RECEIPT_NATIVE_CLOSURE_MISMATCH")
+                fact_refs = tuple(sorted((exact_ref(r) for r in receipt.empirical_fact_refs), key=lambda r: r.key))
+                if canonicalize(receipt.validation_fact_refs) != canonicalize(fact_refs):
+                    raise RecurrenceRefusal("EXECUTION_RECEIPT_FACT_SET_MISMATCH")
+                replay_ref = _discovery_ref("PRE553_I05_DISCOVERY_REPLAY", "candidate-replay", {
+                    "contract": I05_CONTRACT_ID, "authority_ref": authority.ref.as_dict(),
+                    "frontier_ref": frontier_ref.as_dict(), "candidate_id": candidate.candidate_id,
+                    "candidate_hash": candidate.candidate_hash, "coverage_state": receipt.coverage_state,
+                    "fact_refs": [r.as_dict() for r in fact_refs],
+                    "release_refs": [r.as_dict() for r in self._root.source_release_refs],
+                    "query_execution_contract": QUERY_EXECUTION_CONTRACT_ID,
+                })
+                deps = tuple(sorted((authority.ref, grammar_ref, frontier_ref, candidate.winning_predicate.ref, *fact_refs), key=lambda r: r.key))
+                if (exact_ref(receipt.replay_ref) != replay_ref
+                    or exact_ref(receipt.producer_replay_locator_or_reference_root) != replay_ref
+                    or canonicalize(receipt.dependency_refs) != canonicalize(deps)):
+                    raise RecurrenceRefusal("EXECUTION_RECEIPT_REPLAY_MISMATCH")
+            handoffs = tuple(_restore_handoff_material(raw) for raw in preimage["handoffs"])
+            if (tuple(h.ref for h in handoffs) != record.handoff_refs
+                or canonicalize([h.as_dict() for h in handoffs]) != canonicalize([h.as_dict() for h in record.handoffs])):
+                raise RecurrenceRefusal("EXECUTION_HANDOFF_SET_MISMATCH")
+            native_view = SimpleNamespace(candidate_grammar_ref=grammar_ref, evaluated_frontier_ref=frontier_ref)
+            expected_handoffs = []
+            for receipt in receipts:
+                if receipt.typed_state == "DISCOVERED_RESULT_SUPPORTED":
+                    winner, parent = _resolve_receipt_winner(receipt, plan.grammar, predicates)
+                    expected_handoffs.append(_make_handoff(
+                        winning_predicate=winner, immediate_parent=parent, receipt=receipt,
+                        discovery_authority=authority, discovery_result=native_view,
+                        release_refs=self._root.source_release_refs, definition=plan.grammar,
+                    ))
+            expected_handoffs.sort(key=lambda h: h.ref.key)
+            if canonicalize([h.as_dict() for h in handoffs]) != canonicalize([h.as_dict() for h in expected_handoffs]):
+                raise RecurrenceRefusal("EXECUTION_HANDOFF_RECEIPT_CLOSURE_MISMATCH")
+            for handoff in handoffs:
+                replay_recursive_branch_membership(repository=self._repository, handoff=handoff,
+                    authority_registry=self._registry, release_refs=self._root.source_release_refs)
+            fact_refs = sorted({exact_ref(ref) for r in receipts for ref in r.empirical_fact_refs}, key=lambda r: r.key)
+            final_replay = _discovery_ref("PRE553_I05_FRONTIER_REPLAY", "frontier-replay", {
+                "contract": I05_CONTRACT_ID, "frontier_ref": frontier_ref.as_dict(),
+                "receipt_refs": [r.ref.as_dict() for r in receipts],
+                "fact_refs": [r.as_dict() for r in fact_refs],
+                "valid_empty": all(r.typed_state == "VALID_EMPTY" for r in receipts),
+            })
+            if exact_ref(preimage["replay_ref"]) != final_replay:
+                raise RecurrenceRefusal("EXECUTION_FINAL_REPLAY_MISMATCH")
+            material = record.material()
+            material.pop("schema"); material.pop("execution_ref")
+            material["campaign_ref"] = self._root.campaign_ref
+            if _campaign_hash(material) != record.execution_ref:
+                raise RecurrenceRefusal("EXECUTION_RECORD_HASH_MISMATCH")
+            return RecurrenceGeneration(
+                plan=plan,
+                execution=SimpleNamespace(discovery_result=SimpleNamespace(receipts=receipts,
+                    evaluated_frontier_ref=frontier_ref, replay_ref=final_replay), handoffs=handoffs),
+                anti_join=anti, receipt_by_rule={r.candidate_identity["rule_id"]: r for r in receipts},
+                handoff_by_receipt={h.receipt_ref.key: h for h in handoffs},
+            )
+        except RecurrenceRefusal:
+            raise
+        except Exception as exc:
+            raise RecurrenceRefusal("EXECUTION_PREIMAGE_REFUSED:" + type(exc).__name__) from exc
 
     def execute(self, issuance_ref: str) -> str:
         with self._lock:
+            self._check_history()
             existing = self._completed_execution.get(issuance_ref)
             if existing is not None:
                 return existing
+            if issuance_ref in self._inflight:
+                raise RecurrenceRefusal("HOLD_AMBIGUOUS_NATIVE_EXECUTION")
             record = self._issuance(issuance_ref)
             plan = record.plan
             if plan.state != RECURRENCE_ISSUED or not plan.expected_operations:
                 raise RecurrenceRefusal("RECURRENCE_PLAN_HAS_NO_ISSUED_WORK")
-            if plan.predecessor_plan_ref is not None:
-                predecessor = self._issuances.get(record.predecessor_issuance_ref or "")
-                if predecessor is None:
-                    raise RecurrenceRefusal("PREDECESSOR_ISSUANCE_NOT_RETAINED")
-                if predecessor.plan.content_hash != plan.predecessor_plan_ref:
-                    raise RecurrenceRefusal("PREDECESSOR_PLAN_REF_NOT_RETAINED")
-                if predecessor.cumulative_issued_count != plan.predecessor_issued_count:
-                    raise RecurrenceRefusal("PREDECESSOR_COUNT_NOT_RETAINED")
-            if tuple(record.parent_lineage_refs) != tuple(
-                sorted({record.legacy_parent().parent_id for record in
-                        (self._lineage[ref] for ref in record.parent_lineage_refs)},
-                       key=lambda value: value)
-            ):
-                pass
-            parent_records = tuple(self._lineage[ref] for ref in record.parent_lineage_refs)
-            parent_by_id = {lineage.legacy_parent().parent_id: lineage for lineage in parent_records}
-            for parent in plan.parents:
-                lineage = parent_by_id.get(parent.parent_id)
-                if lineage is None:
-                    raise RecurrenceRefusal("PLAN_PARENT_NOT_RETAINED_LINEAGE")
-                if lineage.predicate.ref != parent.predicate.ref:
-                    raise RecurrenceRefusal("PLAN_PARENT_PREDICATE_NOT_RETAINED")
-                if lineage.kind != parent.kind or lineage.producer_generation != parent.generation:
-                    raise RecurrenceRefusal("PLAN_PARENT_LINEAGE_MISMATCH")
-            predicate_by_ref = {self._root.root_predicate.ref.key: self._root.root_predicate}
-            for predicate in self._condition_catalog.values():
-                predicate_by_ref[predicate.ref.key] = predicate
-            for lineage in self._lineage.values():
-                predicate_by_ref[lineage.predicate.ref.key] = lineage.predicate
-            catalog = []
-            for atom in plan.grammar.get("atoms", ()):
-                ref = exact_ref(atom["predicate_ref"])
-                predicate = predicate_by_ref.get(ref.key)
-                if predicate is None:
-                    raise RecurrenceRefusal("PLAN_PREDICATE_NOT_RETAINED")
-                catalog.append(predicate)
             authority = self._authority_factory(plan.grammar)
+            if _authority_profile(authority, self._registry) != self._root.native_context["discovery_profiles"][plan.generation - 1]:
+                raise RecurrenceRefusal("EXECUTION_NATIVE_PROFILE_MISMATCH")
+            self._inflight.add(issuance_ref)
             generation = execute_recurrence_generation(
-                plan=plan, repository=self._repository,
-                discovery_authority=authority,
-                authority_registry=self._registry,
-                release_refs=self._root.source_release_refs,
-                predicate_catalog=tuple({p.ref.key: p for p in catalog}.values()),
-                query_template_catalog=(self._query_object,),
+                plan=plan, repository=self._repository, discovery_authority=authority,
+                authority_registry=self._registry, release_refs=self._root.source_release_refs,
+                predicate_catalog=self._predicate_catalog(plan), query_template_catalog=(self._query_object,),
             )
-            if not generation.anti_join.get("no_drop_ok"):
-                raise RecurrenceRefusal("CAMPAIGN_NATIVE_RECONCILIATION_FAILED")
-            execution_material = {
+            preimage = canonicalize({
+                "authority": authority.as_dict(),
+                "evaluated_frontier_ref": generation.execution.discovery_result.evaluated_frontier_ref,
+                "replay_ref": generation.execution.discovery_result.replay_ref,
+                "receipts": [r.as_dict() for r in generation.execution.discovery_result.receipts],
+                "handoffs": [h.as_dict() for h in generation.execution.handoffs],
+            })
+            material = canonicalize({
                 "campaign_ref": self._root.campaign_ref, "issuance_ref": issuance_ref,
-                "plan_ref": plan.content_hash, "grammar_ref": exact_ref(
-                    authority.candidate_grammar_ref, "grammar ref"
-                ).as_dict(),
+                "plan_ref": plan.content_hash, "grammar_ref": authority.candidate_grammar_ref,
                 "receipt_refs": [r.ref for r in generation.execution.discovery_result.receipts],
                 "handoff_refs": [h.ref for h in generation.execution.handoffs],
-                "anti_join": generation.anti_join,
-            }
-            execution_ref = _campaign_hash(execution_material)
-            record = CampaignExecutionRecord(
-                execution_ref=execution_ref, issuance_ref=issuance_ref,
-                plan_ref=plan.content_hash, grammar_ref=execution_material["grammar_ref"],
-                receipt_refs=tuple(execution_material["receipt_refs"]),
-                handoff_refs=tuple(execution_material["handoff_refs"]),
-                handoffs=tuple(generation.execution.handoffs),
-                anti_join=copy.deepcopy(generation.anti_join),
-                native_result=generation,
+                "anti_join": generation.anti_join, "activation_preimage": preimage,
+            })
+            execution_ref = _campaign_hash(material)
+            execution = CampaignExecutionRecord(
+                execution_ref=execution_ref, issuance_ref=issuance_ref, plan_ref=plan.content_hash,
+                grammar_ref=canonicalize(authority.candidate_grammar_ref),
+                receipt_refs=tuple(r.ref for r in generation.execution.discovery_result.receipts),
+                handoff_refs=tuple(h.ref for h in generation.execution.handoffs),
+                handoffs=tuple(generation.execution.handoffs), anti_join=copy.deepcopy(generation.anti_join),
+                activation_preimage=preimage,
             )
-            self._executions[execution_ref] = record
+            self._projection(execution)
+            self._executions[execution_ref] = execution
             self._completed_execution[issuance_ref] = execution_ref
+            self._inflight.remove(issuance_ref)
             return execution_ref
 
     def activate(self, execution_ref: str, *,
                  requested_next_generation: int | None = None) -> str:
         with self._lock:
+            self._check_history()
             execution = self._executions.get(execution_ref)
             if execution is None:
                 raise RecurrenceRefusal("EXECUTION_REFERENCE_NOT_RETAINED")
-            if execution.native_result is None:
-                raise RecurrenceRefusal("RESTORED_EXECUTION_NATIVE_RESULT_NOT_REPLAYED")
             issuance = self._issuance(execution.issuance_ref)
             plan = issuance.plan
             next_generation = plan.generation + 1
@@ -2141,7 +2447,7 @@ class RetainedRecurrenceCampaign:
                 for ref in issuance.parent_lineage_refs
             }
             activation = activate_next_generation(
-                policy=self._root.policy, generation=execution.native_result,
+                policy=self._root.policy, generation=self._projection(execution),
                 parents=tuple(self._lineage[ref].legacy_parent() for ref in issuance.parent_lineage_refs),
                 root_parent=root_lineage.legacy_parent(),
                 next_generation=next_generation,
@@ -2236,14 +2542,16 @@ class RetainedRecurrenceCampaign:
                 "issuances": [record.material() for record in self._issuances.values()],
                 "executions": [record.material() for record in self._executions.values()],
                 "activations": [record.material() for record in self._activations.values()],
+                "inflight_issuance_refs": sorted(self._inflight),
             })
 
     def snapshot(self) -> dict[str, Any]:
         with self._lock:
             payload = self.inspect()
             payload["handoffs"] = [
-                record.handoff.as_dict() for record in self._lineage.values()
-                if record.handoff is not None
+                handoff.as_dict() for handoff in sorted({
+                    h.ref.key: h for record in self._executions.values() for h in record.handoffs
+                }.values(), key=lambda h: h.ref.key)
             ]
             payload["condition_catalog"] = [
                 {"key": key, "value": value, "predicate": predicate.as_dict()}
@@ -2252,187 +2560,151 @@ class RetainedRecurrenceCampaign:
             checkpoint_ref = _campaign_hash(payload)
             return {"payload": payload, "checkpoint_ref": checkpoint_ref}
 
+    def _rebuild(self, payload: Mapping[str, Any]) -> "RetainedRecurrenceCampaign":
+        """Replay administrative transitions only; never re-execute discovery."""
+        rebuilt = type(self)(root=self._root, repository=self._repository,
+            authority_registry=self._registry, authority_factory=self._authority_factory,
+            condition_catalog=self._condition_catalog, query_object=self._query_object)
+        rebuilt._rebuilding = True
+        try:
+            if payload.get("schema") != CAMPAIGN_SCHEMA:
+                raise RecurrenceRefusal("CAMPAIGN_SNAPSHOT_SCHEMA_MISMATCH")
+            def unique(items, field):
+                result = {}
+                for item in items:
+                    if item[field] in result:
+                        raise RecurrenceRefusal("RESTORE_DUPLICATE_RECORD")
+                    result[item[field]] = item
+                return result
+            execution_items = unique(payload.get("executions", ()), "issuance_ref")
+            activation_items = unique(payload.get("activations", ()), "execution_ref")
+            for item in payload.get("issuances", ()):
+                conditions = tuple((OccurrenceKey(**entry["key"]),
+                    ABSENT if entry["value"] == {"$typed_value": "ABSENT"} else entry["value"])
+                    for entry in item["plan"]["condition_entries"])
+                issue_ref = rebuilt.issue(parent_lineage_refs=tuple(item["parent_lineage_refs"]),
+                    condition_refs=conditions, requested_generation=item["generation"],
+                    predecessor_issuance_ref=item["predecessor_issuance_ref"])
+                if rebuilt._issuance(issue_ref).material() != canonicalize(item):
+                    raise RecurrenceRefusal("RESTORE_ISSUANCE_HISTORY_MISMATCH")
+                raw = execution_items.pop(issue_ref, None)
+                if raw is None:
+                    continue
+                preimage = raw["activation_preimage"]
+                handoffs = tuple(_restore_handoff_material(h) for h in preimage["handoffs"])
+                execution = CampaignExecutionRecord(
+                    execution_ref=raw["execution_ref"], issuance_ref=raw["issuance_ref"],
+                    plan_ref=raw["plan_ref"], grammar_ref=raw["grammar_ref"],
+                    receipt_refs=tuple(exact_ref(r) for r in raw["receipt_refs"]),
+                    handoff_refs=tuple(exact_ref(r) for r in raw["handoff_refs"]),
+                    handoffs=handoffs, anti_join=raw["anti_join"],
+                    activation_preimage=copy.deepcopy(preimage))
+                if execution.material() != canonicalize(raw):
+                    raise RecurrenceRefusal("RESTORE_EXECUTION_RECORD_MISMATCH")
+                rebuilt._projection(execution)
+                rebuilt._executions[execution.execution_ref] = execution
+                rebuilt._completed_execution[issue_ref] = execution.execution_ref
+                activation = activation_items.pop(execution.execution_ref, None)
+                if activation is not None:
+                    ref = rebuilt.activate(execution.execution_ref,
+                        requested_next_generation=activation["next_generation"])
+                    if rebuilt._activations[ref].material() != canonicalize(activation):
+                        raise RecurrenceRefusal("RESTORE_ACTIVATION_RECORD_MISMATCH")
+            if execution_items or activation_items:
+                raise RecurrenceRefusal("RESTORE_ORPHAN_EXECUTION_OR_ACTIVATION")
+            inflight = tuple(payload.get("inflight_issuance_refs", ()))
+            if len(set(inflight)) != len(inflight):
+                raise RecurrenceRefusal("RESTORE_DUPLICATE_INFLIGHT")
+            for ref in inflight:
+                issuance = rebuilt._issuance(ref)
+                if ref in rebuilt._completed_execution or issuance.state != RECURRENCE_ISSUED:
+                    raise RecurrenceRefusal("RESTORE_INVALID_INFLIGHT")
+            rebuilt._inflight = set(inflight)
+            # Full equality catches extra/dropped/reordered lineage, ancestry,
+            # operations, catalog entries, counters and native side material.
+            expected = canonicalize(rebuilt.snapshot()["payload"])
+            # Execution/activation arrays preserve their actual commit order;
+            # administrative replay uses issuance order. Compare by exact refs.
+            for field, key in (("executions", "execution_ref"), ("activations", "activation_ref")):
+                expected[field] = sorted(expected[field], key=lambda x: x[key])
+            supplied = copy.deepcopy(canonicalize(payload))
+            for field, key in (("executions", "execution_ref"), ("activations", "activation_ref")):
+                supplied[field] = sorted(supplied[field], key=lambda x: x[key])
+            if expected != supplied:
+                raise RecurrenceRefusal("RESTORE_FULL_RECORD_CLOSURE_MISMATCH")
+            # Retain observed execution/activation commit order after validation.
+            rebuilt._executions = {raw["execution_ref"]: rebuilt._executions[raw["execution_ref"]]
+                                   for raw in payload["executions"]}
+            rebuilt._activations = {raw["activation_ref"]: rebuilt._activations[raw["activation_ref"]]
+                                    for raw in payload["activations"]}
+            return rebuilt
+        except RecurrenceRefusal:
+            raise
+        except Exception as exc:
+            raise RecurrenceRefusal("RESTORE_RECORD_CLOSURE_REFUSED:" + type(exc).__name__) from exc
+        finally:
+            rebuilt._rebuilding = False
+
     @classmethod
     def restore(cls, *, snapshot: Mapping[str, Any], expected_checkpoint_ref: str,
                 repository: Any, authority_registry: Any, authority_factory: Any,
                 condition_catalog: Mapping[tuple[str, str], Any],
                 query_object: Any) -> "RetainedRecurrenceCampaign":
-        payload = _mapping(snapshot.get("payload"), "snapshot payload")
-        claimed = snapshot.get("checkpoint_ref")
-        actual = _campaign_hash(payload)
-        if claimed != actual or expected_checkpoint_ref != actual:
-            raise RecurrenceRefusal("SNAPSHOT_CHECKPOINT_PIN_MISMATCH")
-        root_material = _mapping(payload.get("root"), "root")
-        policy_material = dict(root_material["policy"])
-        policy_material["comparators"] = tuple(policy_material.get("comparators", ()))
-        policy_material["owner_refs"] = tuple(policy_material.get("owner_refs", ()))
-        policy = RecurrencePolicy(**policy_material)
-        root_predicate = _restore_predicate(_mapping(root_material["root_predicate"], "root predicate"))
-        root = CampaignRootRecord(
-            campaign_ref=root_material["campaign_ref"], policy=policy,
-            root_predicate=root_predicate,
-            source_release_refs=tuple(exact_ref(ref) for ref in root_material["source_release_refs"]),
-            target_label=root_material["target_label"],
-            query_ref=root_material["query_ref"],
-            native_config_ref=root_material["native_config_ref"],
-            owner_refs=tuple(root_material["owner_refs"]),
-        )
-        campaign = cls(
-            root=root, repository=repository, authority_registry=authority_registry,
-            authority_factory=authority_factory,
-            condition_catalog=condition_catalog, query_object=query_object,
-        )
-        handoffs_by_ref = {
-            handoff.ref.key: handoff for handoff in (
-                _restore_handoff_material(item)
-                for item in payload.get("handoffs", ())
-            )
-        }
-        campaign._lineage = {}
-        for item in payload.get("lineage", ()):
-            predicate = _restore_predicate(_mapping(item["predicate"], "lineage predicate"))
-            handoff = None
-            if item.get("handoff") is not None:
-                handoff = _restore_handoff_material(item["handoff"])
-                handoffs_by_ref[handoff.ref.key] = handoff
-            record = CampaignLineageRecord(
-                lineage_ref=item["lineage_ref"], campaign_ref=item["campaign_ref"],
-                parent_id=item["parent_id"], predicate=predicate, kind=item["kind"],
-                producer_generation=item["producer_generation"],
-                producing_issuance_ref=item["producing_issuance_ref"],
-                producing_execution_ref=item["producing_execution_ref"],
-                producing_operation_id=item["producing_operation_id"],
-                prior_lineage_ref=item["prior_lineage_ref"],
-                ancestry_conditions=tuple(
-                    (OccurrenceKey(**cond["key"]), cond["value"])
-                    for cond in item["ancestry_conditions"]
-                ),
-                ancestry_predicates=tuple(
-                    handoff_predicate for handoff_predicate in (
-                        predicate_by_ref
-                        for predicate_by_ref in ()
-                    )
-                ),
-                source_release_refs=tuple(exact_ref(ref) for ref in item["source_release_refs"]),
-                receipt_ref=None if item["receipt_ref"] is None else exact_ref(item["receipt_ref"]),
-                replay_binding_ref=None if item["replay_binding_ref"] is None else exact_ref(item["replay_binding_ref"]),
-                handoff=handoff, activation_reason=item["activation_reason"],
-                construction_ref=item["construction_ref"],
-            )
-            campaign._lineage[record.lineage_ref] = record
-        # Restore ordered ancestry predicate objects from lineage predicate history.
-        for record in campaign._lineage.values():
-            item = next(
-                item for item in payload.get("lineage", ())
-                if item["lineage_ref"] == record.lineage_ref
-            )
-            refs = [exact_ref(ref) for ref in item["ancestry_predicate_refs"]]
-            resolved = []
-            for ref in refs:
-                match = next(
-                    (candidate for candidate in (
-                        [root_predicate]
-                        + [lineage.predicate for lineage in campaign._lineage.values()]
-                        + list(condition_catalog.values())
-                    ) if candidate.ref == ref), None
-                )
-                if match is None:
-                    raise RecurrenceRefusal("RESTORE_ANCESTRY_PREDICATE_MISSING")
-                resolved.append(match)
-            object.__setattr__(record, "ancestry_predicates", tuple(resolved))
-        for item in payload.get("issuances", ()):
-            plan_material = _mapping(item["plan"], "issuance plan")
-            parents = []
-            for lineage_ref in item["parent_lineage_refs"]:
-                lineage = campaign._lineage.get(lineage_ref)
-                if lineage is None:
-                    raise RecurrenceRefusal("RESTORE_ISSUANCE_PARENT_MISSING")
-                parents.append(lineage.legacy_parent())
-            expected = tuple(
-                RecurrenceExpectedOperation(
-                    operation_id=op["operation_id"], generation=op["generation"],
-                    parent_id=op["parent_id"], comparator=op["comparator"],
-                    rule_id=op["rule_id"],
-                    condition_keys=tuple(OccurrenceKey(**key) for key in op["condition_keys"]),
-                    condition_values=tuple(op["condition_values"]),
-                    baseline_predicate_ref=op["baseline_predicate_ref"],
-                    expected_candidate_count=op["expected_candidate_count"],
-                )
-                for op in plan_material["expected_operations"]
-            )
-            conditions = []
-            for entry in plan_material.get("condition_entries", ()):
-                ref = exact_ref(entry["predicate_ref"])
-                match = next(
-                    (predicate for predicate in condition_catalog.values()
-                     if predicate.ref == ref), None
-                )
-                if match is None:
-                    raise RecurrenceRefusal("RESTORE_CONDITION_PREDICATE_MISSING")
-                conditions.append((
-                    OccurrenceKey(**entry["key"]), entry["value"], match
-                ))
-            plan = RecurrenceIssuePlan(
-                generation=plan_material["generation"], policy=policy,
-                grammar=plan_material["grammar"], expected_operations=expected,
-                parents=tuple(parents),
-                condition_predicates=tuple(conditions),
-                target_label=plan_material["target_label"],
-                query_ref=plan_material["query_ref"],
-                unissued=tuple(plan_material.get("unissued", ())),
-                query_object=query_object,
-                predecessor_plan_ref=plan_material.get("predecessor_plan_ref"),
-                predecessor_issued_count=plan_material.get("predecessor_issued_count", 0),
-                cumulative_issued_count=plan_material.get("cumulative_issued_count", 0),
-                root_predicate_ref=plan_material.get("root_predicate_ref"),
-                state=plan_material.get("state", RECURRENCE_ISSUED),
-            )
-            if plan.content_hash != item["plan_ref"]:
-                raise RecurrenceRefusal("RESTORE_PLAN_HASH_MISMATCH")
-            record = CampaignIssuanceRecord(
-                issuance_ref=item["issuance_ref"], sequence=item["sequence"],
-                generation=item["generation"],
-                parent_lineage_refs=tuple(item["parent_lineage_refs"]),
-                predecessor_issuance_ref=item["predecessor_issuance_ref"],
-                predecessor_issued_count=item["predecessor_issued_count"],
-                cumulative_issued_count=item["cumulative_issued_count"],
-                plan=plan, plan_ref=item["plan_ref"], state=item["state"],
-            )
-            campaign._issuances[record.issuance_ref] = record
-            campaign._issue_order.append(record.issuance_ref)
-            if record.state == RECURRENCE_ISSUED:
-                campaign._last_issuance_ref = record.issuance_ref
-                campaign._last_plan = plan
-        for item in payload.get("executions", ()):
-            handoffs = tuple(
-                handoffs_by_ref[exact_ref(ref).key]
-                for ref in item.get("handoff_refs", ())
-                if exact_ref(ref).key in handoffs_by_ref
-            )
-            record = CampaignExecutionRecord(
-                execution_ref=item["execution_ref"],
-                issuance_ref=item["issuance_ref"], plan_ref=item["plan_ref"],
-                grammar_ref=item["grammar_ref"],
-                receipt_refs=tuple(exact_ref(ref) for ref in item.get("receipt_refs", ())),
-                handoff_refs=tuple(exact_ref(ref) for ref in item.get("handoff_refs", ())),
-                handoffs=handoffs, anti_join=item["anti_join"],
-                native_result=None,
-            )
-            campaign._executions[record.execution_ref] = record
-            campaign._completed_execution[record.issuance_ref] = record.execution_ref
-        for item in payload.get("activations", ()):
-            record = CampaignActivationRecord(
-                activation_ref=item["activation_ref"],
-                execution_ref=item["execution_ref"],
-                next_generation=item["next_generation"],
-                active_lineage_refs=tuple(item.get("active_lineage_refs", ())),
-                waiting=tuple(item.get("waiting", ())),
-                stopped=tuple(item.get("stopped", ())),
-                ledger=tuple(item.get("ledger", ())),
-            )
-            campaign._activations[record.activation_ref] = record
-            campaign._activation_by_execution[record.execution_ref] = record.activation_ref
-        return campaign
+        try:
+            payload = _mapping(snapshot.get("payload"), "snapshot payload")
+            actual = _campaign_hash(payload)
+            if (not expected_checkpoint_ref or snapshot.get("checkpoint_ref") != actual
+                or expected_checkpoint_ref != actual):
+                raise RecurrenceRefusal("SNAPSHOT_CHECKPOINT_PIN_MISMATCH")
+            if payload.get("schema") != CAMPAIGN_SCHEMA:
+                raise RecurrenceRefusal("CAMPAIGN_SNAPSHOT_SCHEMA_MISMATCH")
+            root = _mapping(payload["root"], "campaign root")
+            policy_material = dict(root["policy"])
+            policy_material["comparators"] = tuple(policy_material.get("comparators", ()))
+            policy_material["owner_refs"] = tuple(policy_material.get("owner_refs", ()))
+            campaign = _create_campaign_from_catalog(
+                policy=RecurrencePolicy(**policy_material),
+                root_predicate=_restore_predicate(root["root_predicate"]),
+                source_release_refs=tuple(exact_ref(r) for r in root["source_release_refs"]),
+                target_label=root["target_label"], query_object=query_object,
+                catalog=condition_catalog, repository=repository,
+                authority_registry=authority_registry, authority_factory=authority_factory,
+                owner_refs=tuple(root["owner_refs"]))
+            if campaign._root.material() != canonicalize(root):
+                raise RecurrenceRefusal("RESTORE_FROZEN_NATIVE_CONTEXT_MISMATCH")
+            return campaign._rebuild(payload)
+        except RecurrenceRefusal:
+            raise
+        except Exception as exc:
+            raise RecurrenceRefusal("RESTORE_CONTEXT_REFUSED:" + type(exc).__name__) from exc
+
+
+def _create_campaign_from_catalog(*, policy, root_predicate, source_release_refs,
+                                  target_label, query_object, catalog, repository,
+                                  authority_registry, authority_factory, owner_refs):
+    if not isinstance(policy, RecurrencePolicy):
+        raise RecurrenceRefusal("CAMPAIGN_POLICY_REQUIRED")
+    releases = tuple(sorted((exact_ref(ref) for ref in source_release_refs), key=lambda r: r.key))
+    if not releases or len(set(releases)) != len(releases):
+        raise RecurrenceRefusal("CAMPAIGN_EXACT_RELEASE_SET_REQUIRED")
+    # Reconstruct canonical immutable native objects; no public mutable semantic
+    # dictionaries remain attached to campaign identity material.
+    root_predicate = _restore_predicate(root_predicate.as_dict())
+    query_object = _restore_native_object(EmpiricalQuerySpec, query_object.as_dict())
+    catalog = {key: _restore_predicate(p.as_dict()) for key, p in catalog.items()}
+    context = _native_campaign_context(policy=policy, root_predicate=root_predicate,
+        releases=releases, target_label=target_label, query=query_object, catalog=catalog,
+        repository=repository, registry=authority_registry, factory=authority_factory)
+    config_ref = _campaign_hash({"policy": policy.material(), "root": root_predicate.as_dict(),
+        "releases": releases, "target": target_label, "native_context": context,
+        "owner_refs": tuple(owner_refs)})
+    root = CampaignRootRecord(campaign_ref="urn:r61:campaign:" + config_ref,
+        policy=copy.deepcopy(policy), root_predicate=root_predicate, source_release_refs=releases,
+        target_label=target_label, query_ref=query_object.ref.as_dict(),
+        native_config_ref=config_ref, native_context=context, owner_refs=tuple(owner_refs))
+    return RetainedRecurrenceCampaign(root=root, repository=repository,
+        authority_registry=authority_registry, authority_factory=authority_factory,
+        condition_catalog=catalog, query_object=query_object)
 
 
 def create_campaign(*, policy: RecurrencePolicy, root_predicate: Any,
@@ -2442,36 +2714,23 @@ def create_campaign(*, policy: RecurrencePolicy, root_predicate: Any,
                     repository: Any, authority_registry: Any,
                     authority_factory: Any,
                     owner_refs: Sequence[str] = ()) -> RetainedRecurrenceCampaign:
-    if not isinstance(policy, RecurrencePolicy):
-        raise RecurrenceRefusal("CAMPAIGN_POLICY_REQUIRED")
-    releases = tuple(sorted(
-        (exact_ref(ref, "campaign release ref") for ref in source_release_refs),
-        key=lambda ref: ref.key,
-    ))
-    if not releases:
-        raise RecurrenceRefusal("CAMPAIGN_RELEASE_REQUIRED")
-    query_ref = exact_ref(getattr(query_object, "ref", query_object), "query ref")
-    config_ref = _campaign_hash({
-        "policy": policy.content_hash, "root": root_predicate.ref,
-        "releases": releases, "target": target_label, "query": query_ref,
-        "owner_refs": tuple(owner_refs),
-    })
-    root = CampaignRootRecord(
-        campaign_ref="urn:r61:campaign:" + config_ref,
-        policy=copy.deepcopy(policy), root_predicate=root_predicate,
-        source_release_refs=releases, target_label=target_label,
-        query_ref=query_ref.as_dict(), native_config_ref=config_ref,
-        owner_refs=tuple(owner_refs),
-    )
-    catalog = {
-        (key.key, typed_value_key(value)): predicate
-        for key, value, predicate in condition_catalog
-    }
-    return RetainedRecurrenceCampaign(
-        root=root, repository=repository, authority_registry=authority_registry,
-        authority_factory=authority_factory, condition_catalog=catalog,
-        query_object=query_object,
-    )
+    catalog = {}
+    for key, value, predicate in condition_catalog:
+        if not isinstance(key, OccurrenceKey):
+            raise RecurrenceRefusal("CAMPAIGN_TYPED_OCCURRENCE_KEY_REQUIRED")
+        try:
+            _validate_typed_value(value)
+        except ValueError as exc:
+            raise RecurrenceRefusal("CAMPAIGN_TYPED_VALUE_REQUIRED") from exc
+        typed_key = (key.key, typed_value_key(value))
+        if typed_key in catalog:
+            raise RecurrenceRefusal("DUPLICATE_CAMPAIGN_CATALOG_KEY")
+        catalog[typed_key] = predicate
+    return _create_campaign_from_catalog(policy=policy, root_predicate=root_predicate,
+        source_release_refs=source_release_refs, target_label=target_label,
+        query_object=query_object, catalog=catalog, repository=repository,
+        authority_registry=authority_registry, authority_factory=authority_factory,
+        owner_refs=owner_refs)
 
 
 __all__ = [

@@ -1,0 +1,199 @@
+..........................FF                                             [100%]
+=================================== FAILURES ===================================
+____________ test_r6_retained_campaign_owner_d3_lineage_and_restore ____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-414/test_r6_retained_campaign_owne0')
+
+    def test_r6_retained_campaign_owner_d3_lineage_and_restore(tmp_path):
+        source, qauth, root, query, policy, s1, s2, s3, campaign = _campaign_fixture()
+        root_ref = campaign.root_lineage_ref
+>       i1 = campaign.issue(
+            parent_lineage_refs=(root_ref,),
+            condition_refs=tuple((key, value) for key, value, _ in s1),
+        )
+
+rawlsing_next/tests/test_universal_grammar.py:1801: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/universal_grammar/native_map.py:2136: in issue
+    self._check_history()
+rawlsing_next/universal_grammar/native_map.py:2221: in _check_history
+    self._rebuild(self.snapshot()["payload"])
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.universal_grammar.native_map.RetainedRecurrenceCampaign object at 0x110f4c210>
+payload = {'activations': [], 'campaign_ref': 'urn:r61:campaign:7c89256e08499f33be63198cdabb2eac66b08e8d81ba2b663561030cddcf835b...:sha256:107041d821274288fd2bdfcdf778e6742411beeeb071a9b47f87349559aabec3', ...}, 'value': '1'}], 'executions': [], ...}
+
+    def _rebuild(self, payload: Mapping[str, Any]) -> "RetainedRecurrenceCampaign":
+        """Replay administrative transitions only; never re-execute discovery."""
+        rebuilt = type(self)(root=self._root, repository=self._repository,
+            authority_registry=self._registry, authority_factory=self._authority_factory,
+            condition_catalog=self._condition_catalog, query_object=self._query_object)
+        rebuilt._rebuilding = True
+        try:
+            if payload.get("schema") != CAMPAIGN_SCHEMA:
+                raise RecurrenceRefusal("CAMPAIGN_SNAPSHOT_SCHEMA_MISMATCH")
+            def unique(items, field):
+                result = {}
+                for item in items:
+                    if item[field] in result:
+                        raise RecurrenceRefusal("RESTORE_DUPLICATE_RECORD")
+                    result[item[field]] = item
+                return result
+            execution_items = unique(payload.get("executions", ()), "issuance_ref")
+            activation_items = unique(payload.get("activations", ()), "execution_ref")
+            for item in payload.get("issuances", ()):
+                conditions = tuple((OccurrenceKey(**entry["key"]), entry["value"])
+                                   for entry in item["plan"]["condition_entries"])
+                issue_ref = rebuilt.issue(parent_lineage_refs=tuple(item["parent_lineage_refs"]),
+                    condition_refs=conditions, requested_generation=item["generation"],
+                    predecessor_issuance_ref=item["predecessor_issuance_ref"])
+                if rebuilt._issuance(issue_ref).material() != canonicalize(item):
+                    raise RecurrenceRefusal("RESTORE_ISSUANCE_HISTORY_MISMATCH")
+                raw = execution_items.pop(issue_ref, None)
+                if raw is None:
+                    continue
+                preimage = raw["activation_preimage"]
+                handoffs = tuple(_restore_handoff_material(h) for h in preimage["handoffs"])
+                execution = CampaignExecutionRecord(
+                    execution_ref=raw["execution_ref"], issuance_ref=raw["issuance_ref"],
+                    plan_ref=raw["plan_ref"], grammar_ref=raw["grammar_ref"],
+                    receipt_refs=tuple(exact_ref(r) for r in raw["receipt_refs"]),
+                    handoff_refs=tuple(exact_ref(r) for r in raw["handoff_refs"]),
+                    handoffs=handoffs, anti_join=raw["anti_join"],
+                    activation_preimage=copy.deepcopy(preimage))
+                if execution.material() != canonicalize(raw):
+                    raise RecurrenceRefusal("RESTORE_EXECUTION_RECORD_MISMATCH")
+                rebuilt._projection(execution)
+                rebuilt._executions[execution.execution_ref] = execution
+                rebuilt._completed_execution[issue_ref] = execution.execution_ref
+                activation = activation_items.pop(execution.execution_ref, None)
+                if activation is not None:
+                    ref = rebuilt.activate(execution.execution_ref,
+                        requested_next_generation=activation["next_generation"])
+                    if rebuilt._activations[ref].material() != canonicalize(activation):
+                        raise RecurrenceRefusal("RESTORE_ACTIVATION_RECORD_MISMATCH")
+            if execution_items or activation_items:
+                raise RecurrenceRefusal("RESTORE_ORPHAN_EXECUTION_OR_ACTIVATION")
+            inflight = tuple(payload.get("inflight_issuance_refs", ()))
+            if len(set(inflight)) != len(inflight):
+                raise RecurrenceRefusal("RESTORE_DUPLICATE_INFLIGHT")
+            for ref in inflight:
+                issuance = rebuilt._issuance(ref)
+                if ref in rebuilt._completed_execution or issuance.state != RECURRENCE_ISSUED:
+                    raise RecurrenceRefusal("RESTORE_INVALID_INFLIGHT")
+            rebuilt._inflight = set(inflight)
+            # Full equality catches extra/dropped/reordered lineage, ancestry,
+            # operations, catalog entries, counters and native side material.
+            expected = rebuilt.snapshot()["payload"]
+            # Execution/activation arrays preserve their actual commit order;
+            # administrative replay uses issuance order. Compare by exact refs.
+            for field, key in (("executions", "execution_ref"), ("activations", "activation_ref")):
+                expected[field] = sorted(expected[field], key=lambda x: x[key])
+            supplied = copy.deepcopy(canonicalize(payload))
+            for field, key in (("executions", "execution_ref"), ("activations", "activation_ref")):
+                supplied[field] = sorted(supplied[field], key=lambda x: x[key])
+            if expected != supplied:
+>               raise RecurrenceRefusal("RESTORE_FULL_RECORD_CLOSURE_MISMATCH")
+E               rawlsing_next.universal_grammar.native_map.RecurrenceRefusal: RESTORE_FULL_RECORD_CLOSURE_MISMATCH
+
+rawlsing_next/universal_grammar/native_map.py:2619: RecurrenceRefusal
+__________________ test_r6_campaign_snapshot_fresh_process_n1 __________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-414/test_r6_campaign_snapshot_fres0')
+
+    def test_r6_campaign_snapshot_fresh_process_n1(tmp_path):
+        source, qauth, root, query, policy, s1, s2, s3, campaign = _campaign_fixture()
+>       i1 = campaign.issue(
+            parent_lineage_refs=(campaign.root_lineage_ref,),
+            condition_refs=tuple((key, value) for key, value, _ in s1),
+        )
+
+rawlsing_next/tests/test_universal_grammar.py:1904: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/universal_grammar/native_map.py:2136: in issue
+    self._check_history()
+rawlsing_next/universal_grammar/native_map.py:2221: in _check_history
+    self._rebuild(self.snapshot()["payload"])
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.universal_grammar.native_map.RetainedRecurrenceCampaign object at 0x11221bd10>
+payload = {'activations': [], 'campaign_ref': 'urn:r61:campaign:7c89256e08499f33be63198cdabb2eac66b08e8d81ba2b663561030cddcf835b...:sha256:107041d821274288fd2bdfcdf778e6742411beeeb071a9b47f87349559aabec3', ...}, 'value': '1'}], 'executions': [], ...}
+
+    def _rebuild(self, payload: Mapping[str, Any]) -> "RetainedRecurrenceCampaign":
+        """Replay administrative transitions only; never re-execute discovery."""
+        rebuilt = type(self)(root=self._root, repository=self._repository,
+            authority_registry=self._registry, authority_factory=self._authority_factory,
+            condition_catalog=self._condition_catalog, query_object=self._query_object)
+        rebuilt._rebuilding = True
+        try:
+            if payload.get("schema") != CAMPAIGN_SCHEMA:
+                raise RecurrenceRefusal("CAMPAIGN_SNAPSHOT_SCHEMA_MISMATCH")
+            def unique(items, field):
+                result = {}
+                for item in items:
+                    if item[field] in result:
+                        raise RecurrenceRefusal("RESTORE_DUPLICATE_RECORD")
+                    result[item[field]] = item
+                return result
+            execution_items = unique(payload.get("executions", ()), "issuance_ref")
+            activation_items = unique(payload.get("activations", ()), "execution_ref")
+            for item in payload.get("issuances", ()):
+                conditions = tuple((OccurrenceKey(**entry["key"]), entry["value"])
+                                   for entry in item["plan"]["condition_entries"])
+                issue_ref = rebuilt.issue(parent_lineage_refs=tuple(item["parent_lineage_refs"]),
+                    condition_refs=conditions, requested_generation=item["generation"],
+                    predecessor_issuance_ref=item["predecessor_issuance_ref"])
+                if rebuilt._issuance(issue_ref).material() != canonicalize(item):
+                    raise RecurrenceRefusal("RESTORE_ISSUANCE_HISTORY_MISMATCH")
+                raw = execution_items.pop(issue_ref, None)
+                if raw is None:
+                    continue
+                preimage = raw["activation_preimage"]
+                handoffs = tuple(_restore_handoff_material(h) for h in preimage["handoffs"])
+                execution = CampaignExecutionRecord(
+                    execution_ref=raw["execution_ref"], issuance_ref=raw["issuance_ref"],
+                    plan_ref=raw["plan_ref"], grammar_ref=raw["grammar_ref"],
+                    receipt_refs=tuple(exact_ref(r) for r in raw["receipt_refs"]),
+                    handoff_refs=tuple(exact_ref(r) for r in raw["handoff_refs"]),
+                    handoffs=handoffs, anti_join=raw["anti_join"],
+                    activation_preimage=copy.deepcopy(preimage))
+                if execution.material() != canonicalize(raw):
+                    raise RecurrenceRefusal("RESTORE_EXECUTION_RECORD_MISMATCH")
+                rebuilt._projection(execution)
+                rebuilt._executions[execution.execution_ref] = execution
+                rebuilt._completed_execution[issue_ref] = execution.execution_ref
+                activation = activation_items.pop(execution.execution_ref, None)
+                if activation is not None:
+                    ref = rebuilt.activate(execution.execution_ref,
+                        requested_next_generation=activation["next_generation"])
+                    if rebuilt._activations[ref].material() != canonicalize(activation):
+                        raise RecurrenceRefusal("RESTORE_ACTIVATION_RECORD_MISMATCH")
+            if execution_items or activation_items:
+                raise RecurrenceRefusal("RESTORE_ORPHAN_EXECUTION_OR_ACTIVATION")
+            inflight = tuple(payload.get("inflight_issuance_refs", ()))
+            if len(set(inflight)) != len(inflight):
+                raise RecurrenceRefusal("RESTORE_DUPLICATE_INFLIGHT")
+            for ref in inflight:
+                issuance = rebuilt._issuance(ref)
+                if ref in rebuilt._completed_execution or issuance.state != RECURRENCE_ISSUED:
+                    raise RecurrenceRefusal("RESTORE_INVALID_INFLIGHT")
+            rebuilt._inflight = set(inflight)
+            # Full equality catches extra/dropped/reordered lineage, ancestry,
+            # operations, catalog entries, counters and native side material.
+            expected = rebuilt.snapshot()["payload"]
+            # Execution/activation arrays preserve their actual commit order;
+            # administrative replay uses issuance order. Compare by exact refs.
+            for field, key in (("executions", "execution_ref"), ("activations", "activation_ref")):
+                expected[field] = sorted(expected[field], key=lambda x: x[key])
+            supplied = copy.deepcopy(canonicalize(payload))
+            for field, key in (("executions", "execution_ref"), ("activations", "activation_ref")):
+                supplied[field] = sorted(supplied[field], key=lambda x: x[key])
+            if expected != supplied:
+>               raise RecurrenceRefusal("RESTORE_FULL_RECORD_CLOSURE_MISMATCH")
+E               rawlsing_next.universal_grammar.native_map.RecurrenceRefusal: RESTORE_FULL_RECORD_CLOSURE_MISMATCH
+
+rawlsing_next/universal_grammar/native_map.py:2619: RecurrenceRefusal
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_universal_grammar.py::test_r6_retained_campaign_owner_d3_lineage_and_restore
+FAILED rawlsing_next/tests/test_universal_grammar.py::test_r6_campaign_snapshot_fresh_process_n1
+2 failed, 26 passed in 14.21s
