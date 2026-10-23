@@ -608,3 +608,13 @@ PRE-MAIN `27_VERKHOVOD_COMPREHENSIVE...HANDOFF.md` specifically establishes **18
 **Still valid narrow issue from HQ277:** `execute_route_b_production` consumes already prepared `i03_requests` and discovery authority; `execute_exact_bounded_discovery` exhausts an already-authorized finite frontier; Batch processes a prepared manifest. The central unproved assertion is **FULL CURRENT ORIGINAL35 prospective scientifically eligible operation-frontier completeness feeding these owners**, not absence of source semantics or source processing code. First trace existing producer lineage/registry and identify whether this is a missing bridge versus only a missing complete execution receipt.
 
 **R36 action:** previously published `WG5@1e609a3fc2fb378138ed5e0f3cd805f22902dcb6` and `WG5I@7c24ef20ed52dfa06fc5bb11decaf865efd54494` are `DO_NOT_LAUNCH_AS_WRITTEN__R18_REUSE_FIRST_SCOPE_CORRECTION_REQUIRED`. Keep sealed author/reviewer commissions in history; neither GitHub publication launched a Mac agent. Narrow reconciling specification: `PYAT_CONTROL_ROOM/R18_WG5_WG5I_SCIENTIFIC_SCOPE_CORRECTION_AND_INHERITANCE_RECOGNITION_20261018.md` at `bd2e530714f442e0e78918f7f985de7053e6657f`. No new semantic or actor authority, no raw data processing.
+
+
+## R61 — operative revision47
+# Pyat HQ R61 — generic repair implementation
+
+Explicit user approval grants the exact paths in PYAT_CONTROL_ROOM/R61_USER_AUTHORIZED_GENERIC_REPAIR_FLIGHT_20261023.json. R01/R08/local R09 proceed as disjoint native engineering jobs; R03 remains conditional on independently qualified R01 and accepted R02. Separate native reviewers qualify exact candidates before scoped HQ acceptance. The accepted C1 candidate base is not a canonical production merge.
+
+No new architectural court, policy-author round or accession campaign. Incomplete R60 controller attachment must not block productive repair. Attended OpenCode launches are recorded honestly; autonomous delivery is not claimed.
+
+Current HQ gpt-6.1-sol low; actual usage33% five-hour/36% weekly. Native jobs: existing opencode-go/deepseek-v4.1-flash MAX. No new source/science/actor/CI/production/N11/N12 grant. J52/W52 remain USER_STOPPED. Scope, quote and prerequisites in CURRENT.json.
