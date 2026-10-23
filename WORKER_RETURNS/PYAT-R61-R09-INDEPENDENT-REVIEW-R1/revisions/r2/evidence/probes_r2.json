@@ -1,0 +1,209 @@
+{
+  "P0_legit_baseline": {
+    "extra": {
+      "reasons": [],
+      "result": {
+        "label": "baseline",
+        "value": 42
+      }
+    },
+    "observed": "LOCAL_NATIVE_VERIFIED",
+    "pass": true,
+    "required": "LOCAL_NATIVE_VERIFIED"
+  },
+  "P10_non_serializable_expectation": {
+    "extra": {
+      "detail": "Object of type set is not JSON serializable"
+    },
+    "observed": "EXCEPTION:TypeError",
+    "pass": false,
+    "required": "REFUSE_NATIVE_QUALIFICATION"
+  },
+  "P11_non_serializable_observation": {
+    "extra": {
+      "reasons": [
+        "OBSERVATION_AUTHENTICATION_FAILED"
+      ]
+    },
+    "observed": "REFUSE_NATIVE_QUALIFICATION",
+    "pass": true,
+    "required": "REFUSE_NATIVE_QUALIFICATION"
+  },
+  "P12_out_of_tree": {
+    "extra": {
+      "reasons": [
+        "ENTRYPOINT_DIGEST_MISMATCH",
+        "ENTRYPOINT_NOT_TREE_BOUND",
+        "NATIVE_CUSTODY_FAILED:ENTRYPOINT_OUTSIDE_CANDIDATE_TREE",
+        "NATIVE_EVENT_ANTI_JOIN",
+        "NATIVE_EXECUTION_NOT_COMPLETED",
+        "NATIVE_IMPORT_EVENT_MISSING:native_fixture",
+        "NATIVE_IMPORT_MISSING:native_fixture",
+        "PROCESS_EXIT_NONZERO",
+        "RESULT_MISMATCH",
+        "SUPERVISOR_REFUSED:ENTRYPOINT_OUTSIDE_CANDIDATE_TREE"
+      ]
+    },
+    "observed": "REFUSE_NATIVE_QUALIFICATION",
+    "pass": true,
+    "required": "REFUSE_NATIVE_QUALIFICATION"
+  },
+  "P13_actual_c11_positive": {
+    "extra": {
+      "imports": [
+        "native_c11_case",
+        "rawlsing_next.pre553_c11_ingest",
+        "rawlsing_next.pre553_c11_integrity",
+        "rawlsing_next.pre553_c11_repository",
+        "rawlsing_next.pre553_empirical_authority",
+        "rawlsing_next.pre553_empirical_objects"
+      ],
+      "independent_reference": {
+        "accepted": true,
+        "disposition": "ACCEPTED_C11_LOGICAL_RELEASE",
+        "event_count": 2,
+        "m01_m18_count": 18,
+        "release_id": "REL-R09",
+        "repository_length": 1
+      },
+      "reasons": [],
+      "sealed_result": {
+        "accepted": true,
+        "disposition": "ACCEPTED_C11_LOGICAL_RELEASE",
+        "event_count": 2,
+        "m01_m18_count": 18,
+        "release_id": "REL-R09",
+        "repository_length": 1
+      }
+    },
+    "observed": "LOCAL_NATIVE_VERIFIED",
+    "pass": true,
+    "required": "LOCAL_NATIVE_VERIFIED"
+  },
+  "P14_c11_wrong_expectation": {
+    "extra": {
+      "reasons": [
+        "RESULT_MISMATCH"
+      ]
+    },
+    "observed": "REFUSE_NATIVE_QUALIFICATION",
+    "pass": true,
+    "required": "REFUSE_NATIVE_QUALIFICATION"
+  },
+  "P1_child_json_dump_forges_result": {
+    "extra": {
+      "actual_returned_value": "41",
+      "marker_exists": true,
+      "reasons": [],
+      "sealed_result": {
+        "label": "baseline",
+        "value": 42
+      }
+    },
+    "observed": "LOCAL_NATIVE_VERIFIED",
+    "pass": false,
+    "required": "REFUSE_NATIVE_QUALIFICATION"
+  },
+  "P2_child_forges_loaded_bytes_and_result": {
+    "extra": {
+      "actual_returned_value": "41",
+      "marker_exists": true,
+      "reasons": [],
+      "reported_import": {
+        "loaded_sha256": "5205ce76375a313ebf4f6235ad6105fa92070fb210f70762b07f85bbf60ff106",
+        "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09v-r2/WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/probes/work/r2probe-loaded-_gwiie9a/candidate/native_fixture.py",
+        "tree_bound": true,
+        "tree_sha256": "5205ce76375a313ebf4f6235ad6105fa92070fb210f70762b07f85bbf60ff106",
+        "within_target_dir": true
+      },
+      "sealed_result": {
+        "label": "baseline",
+        "value": 42
+      },
+      "tree_digest": "5205ce76375a313ebf4f6235ad6105fa92070fb210f70762b07f85bbf60ff106"
+    },
+    "observed": "LOCAL_NATIVE_VERIFIED",
+    "pass": false,
+    "required": "REFUSE_NATIVE_QUALIFICATION"
+  },
+  "P3_bare_mapping": {
+    "extra": {
+      "reasons": [
+        "UNTRUSTED_OBSERVATION"
+      ]
+    },
+    "observed": "REFUSE_NATIVE_QUALIFICATION",
+    "pass": true,
+    "required": "REFUSE_NATIVE_QUALIFICATION"
+  },
+  "P4_fake_issuer_rewrite": {
+    "extra": {
+      "reasons": [
+        "OBSERVATION_AUTHENTICATION_FAILED"
+      ]
+    },
+    "observed": "REFUSE_NATIVE_QUALIFICATION",
+    "pass": true,
+    "required": "REFUSE_NATIVE_QUALIFICATION"
+  },
+  "P5_self_root_caller_accepted": {
+    "extra": {
+      "fingerprint": "5d539dd0be6058cef508c782585f09a22f4ed79ae69aad742c86ca03434f4324",
+      "reasons": []
+    },
+    "observed": "LOCAL_NATIVE_VERIFIED",
+    "pass": true,
+    "required": "BOUNDARY_DISCLOSED"
+  },
+  "P6_nondurable_ledger": {
+    "extra": {
+      "reasons": [
+        "NONCE_LEDGER_NOT_DURABLE"
+      ]
+    },
+    "observed": "REFUSE_NATIVE_QUALIFICATION",
+    "pass": true,
+    "required": "REFUSE_NATIVE_QUALIFICATION"
+  },
+  "P7_cold_replay_first": {
+    "extra": {
+      "reasons": []
+    },
+    "observed": "LOCAL_NATIVE_VERIFIED",
+    "pass": true,
+    "required": "LOCAL_NATIVE_VERIFIED"
+  },
+  "P8_cold_replay_second": {
+    "extra": {
+      "reasons": [
+        "NONCE_REPLAYED"
+      ]
+    },
+    "observed": "REFUSE_NATIVE_QUALIFICATION",
+    "pass": true,
+    "required": "REFUSE_NATIVE_QUALIFICATION"
+  },
+  "P9_concurrent_nonce": {
+    "extra": {
+      "outcomes": [
+        "CLAIMED",
+        "REPLAYED"
+      ]
+    },
+    "observed": "['CLAIMED', 'REPLAYED']",
+    "pass": true,
+    "required": "['CLAIMED', 'REPLAYED']"
+  },
+  "_summary": {
+    "failed": [
+      "P10_non_serializable_expectation",
+      "P1_child_json_dump_forges_result",
+      "P2_child_forges_loaded_bytes_and_result"
+    ],
+    "head": "ef39f11e494745b90259fbc35ffc8eddfdbac01e",
+    "module": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09v-r2/CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py",
+    "module_sha256": "3cf9f5e7d07c110a47fff75c02d4169590060daf24518be95d46ddebf9103b8d",
+    "passed": 12,
+    "probes": 15
+  }
+}

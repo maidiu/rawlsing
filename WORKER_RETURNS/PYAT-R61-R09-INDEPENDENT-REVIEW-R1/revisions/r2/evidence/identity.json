@@ -1,0 +1,81 @@
+{
+  "schema": "R61_R09V_R2_IDENTITY@1",
+  "author_branch": "agent/opencode-pyat-r61-r09-local-runner-r1",
+  "author_remote_start": "4a10c82aa8ba2a31938d3d35e12dc42f4456264c",
+  "candidate_commit": "4a10c82aa8ba2a31938d3d35e12dc42f4456264c",
+  "candidate_tree": "ea3d86fa9760221805b82620a8c30125e1f7fb1c",
+  "candidate_parents": [
+    "77f8b4205d8a97f2e9f7ae9e93a3ff913c08a780"
+  ],
+  "code_commit": "77f8b4205d8a97f2e9f7ae9e93a3ff913c08a780",
+  "code_tree": "272fd70478b0a46d55ac4be29a2009d27228f7fb",
+  "code_parent": "048e6fe6d10a3ca2b8cf50f3c4aad5237b774e5b",
+  "repair_commission_seal": "3d1e4049675cc7e1f5042a6107fea0acf36b2b68",
+  "prior_independent_review": "05e9ce39640ca6a134031510e762e81fab7d4c57",
+  "expectations_freeze_commit": "ef39f11e494745b90259fbc35ffc8eddfdbac01e",
+  "reviewer_branch": "agent/opencode-pyat-r61-r09v-r2-independent-review-r1",
+  "reviewer_remote_start": "4a10c82aa8ba2a31938d3d35e12dc42f4456264c",
+  "reviewer_separation": "new session; not author ses_e98c8b6c7ffeXtAnuGL58sAeCp; same provider account is role/session separation only",
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "variant": "max/Global existing user-selected account (as commissioned)",
+  "tools": {
+    "os": "Darwin 22.3.0 x86_64",
+    "python": "/usr/local/bin/python3 3.11.3",
+    "pytest": "9.0.2",
+    "git": "2.43.0"
+  },
+  "code_identity": {
+    "CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py": {
+      "blob": "7af149e9d0e9cb2bc85c31d370145a86abf078b8",
+      "sha256": "3cf9f5e7d07c110a47fff75c02d4169590060daf24518be95d46ddebf9103b8d"
+    },
+    "tests/universal_runner/test_universal_runner_verify.py": {
+      "blob": "0e1a5725ceb4efcf78060bbd13257bc46321c140",
+      "sha256": "2b00fd2f7207568a2a578aefa50f7293970be07ca41b576e0929f8a422d54de9"
+    },
+    "tests/universal_runner/native_c11_case.py": {
+      "blob": "5727edbaddba2eab6bc91c4e5fb2917f26b296d2",
+      "sha256": "019508ab9e578e6e0c222ea9c85492383434ab0bb9574a304b69e511f61e9abe"
+    },
+    "tests/universal_runner/native_c11_entry.py": {
+      "blob": "537f5c529d1966464d949e914f40f1b160053aad",
+      "sha256": "0760df1104b4b2c1edb16a04c69b4b8f966ebd166016475e04adaa4e92309f64"
+    }
+  },
+  "author_manifest_recompute": {
+    "artifacts": 8,
+    "hash_and_size_matches": 8,
+    "bad": 0,
+    "self_exclusion_present": true
+  },
+  "v1_reports_unchanged": true,
+  "v1_diff_exit_code": 0,
+  "changed_paths_from_v1_candidate": [
+    "M\tCROSS_HQ_CONTROL_ROOM/universal_runner_verify.py",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/revisions/r2/00_RETURN.md",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/revisions/r2/RESUME.md",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/revisions/r2/existing_oracle_junit.xml",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/revisions/r2/junit.xml",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/revisions/r2/manifest.json",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/revisions/r2/mutation_restored_pass.txt",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/revisions/r2/mutation_targeted_failure.txt",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/revisions/r2/proof_witness.json",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/revisions/r2/reviewer_probes_against_r2.json",
+    "A\ttests/universal_runner/native_c11_case.py",
+    "A\ttests/universal_runner/native_c11_entry.py",
+    "M\ttests/universal_runner/test_universal_runner_verify.py"
+  ],
+  "prior_oracle_receipt_retained": {
+    "commit": "05e9ce39640ca6a134031510e762e81fab7d4c57",
+    "path": "WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/evidence/reviewer_existing_oracle_junit.xml",
+    "sha256": "2a11a2cd6d7a9debd9af075e6e101c107d1d7a48714292d1ad19c489ad5c5e64",
+    "tests": 48,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "reason": "No R2 coupling to tests/universal_execution_oracle; retained by exact identity."
+  },
+  "author_report_identity_error": "R2 00_RETURN.md and proof_witness.json label startup as c8dbdd017... (the v1 candidate) rather than the R2 startup 4a10c82a...; the artifacts themselves are committed at 4a10c82a.",
+  "candidate_files_unchanged_after_review": true,
+  "candidate_git_diff_exit_code": 0
+}

@@ -1,0 +1,251 @@
+{
+  "schema": "R61_R09V_R2_INDEPENDENT_REVIEW_PROOF@1",
+  "reviewer_verdict": "REVISE",
+  "central_promise_state": "HOLD",
+  "production_state": "DEPLOYMENT_HOLD",
+  "reviewer_is_new_session": true,
+  "author_session": "ses_e98c8b6c7ffeXtAnuGL58sAeCp",
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "variant": "max/Global existing user-selected account (as commissioned)",
+  "candidate": {
+    "startup": "4a10c82aa8ba2a31938d3d35e12dc42f4456264c",
+    "startup_tree": "ea3d86fa9760221805b82620a8c30125e1f7fb1c",
+    "code_commit": "77f8b4205d8a97f2e9f7ae9e93a3ff913c08a780",
+    "code_tree": "272fd70478b0a46d55ac4be29a2009d27228f7fb",
+    "repair_commission_seal": "3d1e4049675cc7e1f5042a6107fea0acf36b2b68",
+    "prior_independent_review": "05e9ce39640ca6a134031510e762e81fab7d4c57",
+    "expectations_freeze_commit": "ef39f11e494745b90259fbc35ffc8eddfdbac01e",
+    "files_unchanged_after_probes": true,
+    "git_diff_exit_code": 0,
+    "verifier_blob": "7af149e9d0e9cb2bc85c31d370145a86abf078b8",
+    "verifier_sha256": "3cf9f5e7d07c110a47fff75c02d4169590060daf24518be95d46ddebf9103b8d",
+    "test_blob": "0e1a5725ceb4efcf78060bbd13257bc46321c140",
+    "test_sha256": "2b00fd2f7207568a2a578aefa50f7293970be07ca41b576e0929f8a422d54de9"
+  },
+  "commands": [
+    {
+      "purpose": "author focused suite replay",
+      "command": "/usr/local/bin/python3 -m pytest -q -p no:cacheprovider tests/universal_runner --junitxml=WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/evidence/reviewer_author_suite_junit.xml",
+      "exit_code": 0,
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "walltime_seconds": 4.81
+    },
+    {
+      "purpose": "independent whole-boundary probes",
+      "command": "/usr/local/bin/python3 WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/probes/independent_probes_r2.py",
+      "exit_code": 1,
+      "probes": 15,
+      "passed_required_behaviors": 12,
+      "failed_required_behaviors": 3,
+      "failed": [
+        "P1_child_json_dump_forges_result",
+        "P2_child_forges_loaded_bytes_and_result",
+        "P10_non_serializable_expectation"
+      ],
+      "note": "Non-zero is the expected defect signal: required refusals were accepted or crashed."
+    },
+    {
+      "purpose": "targeted assertion mutation and restoration",
+      "command": "/usr/local/bin/python3 WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/probes/mutant_check.py",
+      "exit_code": 0,
+      "intact_decision": "REFUSE_NATIVE_QUALIFICATION",
+      "intact_reason": "RESULT_MISMATCH",
+      "mutant_decision": "LOCAL_NATIVE_VERIFIED",
+      "mutant_sha256": "1e16cd37b5cf52c38ea3c933b21ba4f8b22b437ab5925c158d6c42f282675cf3",
+      "candidate_untouched": true
+    },
+    {
+      "purpose": "actual committed C11 independent reference",
+      "command": "/usr/local/bin/python3 -I -c '... import native_c11_entry; print(RESULT)' (repo root; no runner)",
+      "exit_code": 0,
+      "result": {
+        "accepted": true,
+        "disposition": "ACCEPTED_C11_LOGICAL_RELEASE",
+        "event_count": 2,
+        "m01_m18_count": 18,
+        "release_id": "REL-R09",
+        "repository_length": 1
+      }
+    }
+  ],
+  "independent_probe_outcomes": {
+    "P0_legit_baseline": {
+      "required": "LOCAL_NATIVE_VERIFIED",
+      "observed": "LOCAL_NATIVE_VERIFIED",
+      "pass": true,
+      "reasons": []
+    },
+    "P1_child_json_dump_forges_result": {
+      "required": "REFUSE_NATIVE_QUALIFICATION",
+      "observed": "LOCAL_NATIVE_VERIFIED",
+      "pass": false,
+      "actual_returned_value": "41",
+      "sealed_result": {"label": "baseline", "value": 42},
+      "marker_exists": true,
+      "defect": "D1-R2 parent seals child-authored protocol"
+    },
+    "P2_child_forges_loaded_bytes_and_result": {
+      "required": "REFUSE_NATIVE_QUALIFICATION",
+      "observed": "LOCAL_NATIVE_VERIFIED",
+      "pass": false,
+      "actual_returned_value": "41",
+      "sealed_result": {"label": "baseline", "value": 42},
+      "reported_import": {
+        "loaded_sha256": "5205ce76375a313ebf4f6235ad6105fa92070fb210f70762b07f85bbf60ff106",
+        "tree_sha256": "5205ce76375a313ebf4f6235ad6105fa92070fb210f70762b07f85bbf60ff106",
+        "tree_bound": true
+      },
+      "marker_exists": true,
+      "defect": "D4-R2 loaded-byte custody is child self-report"
+    },
+    "P3_bare_mapping": {
+      "required": "REFUSE_NATIVE_QUALIFICATION",
+      "observed": "REFUSE_NATIVE_QUALIFICATION",
+      "pass": true,
+      "reasons": ["UNTRUSTED_OBSERVATION"]
+    },
+    "P4_fake_issuer_rewrite": {
+      "required": "REFUSE_NATIVE_QUALIFICATION",
+      "observed": "REFUSE_NATIVE_QUALIFICATION",
+      "pass": true,
+      "reasons": ["OBSERVATION_AUTHENTICATION_FAILED"]
+    },
+    "P5_self_root_caller_accepted": {
+      "required": "BOUNDARY_DISCLOSED",
+      "observed": "LOCAL_NATIVE_VERIFIED",
+      "pass": true,
+      "note": "Caller-supplied self-root accepted; external root authority is not enforced."
+    },
+    "P6_nondurable_ledger": {
+      "required": "REFUSE_NATIVE_QUALIFICATION",
+      "observed": "REFUSE_NATIVE_QUALIFICATION",
+      "pass": true,
+      "reasons": ["NONCE_LEDGER_NOT_DURABLE"]
+    },
+    "P7_cold_replay_first": {
+      "required": "LOCAL_NATIVE_VERIFIED",
+      "observed": "LOCAL_NATIVE_VERIFIED",
+      "pass": true
+    },
+    "P8_cold_replay_second": {
+      "required": "REFUSE_NATIVE_QUALIFICATION",
+      "observed": "REFUSE_NATIVE_QUALIFICATION",
+      "pass": true,
+      "reasons": ["NONCE_REPLAYED"]
+    },
+    "P9_concurrent_nonce": {
+      "required": ["CLAIMED", "REPLAYED"],
+      "observed": ["CLAIMED", "REPLAYED"],
+      "pass": true
+    },
+    "P10_non_serializable_expectation": {
+      "required": "REFUSE_NATIVE_QUALIFICATION",
+      "observed": "EXCEPTION:TypeError",
+      "pass": false,
+      "detail": "Object of type set is not JSON serializable",
+      "defect": "D7-R2 unguarded result comparison"
+    },
+    "P11_non_serializable_observation": {
+      "required": "REFUSE_NATIVE_QUALIFICATION",
+      "observed": "REFUSE_NATIVE_QUALIFICATION",
+      "pass": true,
+      "reasons": ["OBSERVATION_AUTHENTICATION_FAILED"]
+    },
+    "P12_out_of_tree": {
+      "required": "REFUSE_NATIVE_QUALIFICATION",
+      "observed": "REFUSE_NATIVE_QUALIFICATION",
+      "pass": true,
+      "reasons_include": ["SUPERVISOR_REFUSED:ENTRYPOINT_OUTSIDE_CANDIDATE_TREE"]
+    },
+    "P13_actual_c11_positive": {
+      "required": "LOCAL_NATIVE_VERIFIED",
+      "observed": "LOCAL_NATIVE_VERIFIED",
+      "pass": true,
+      "independent_reference": {
+        "accepted": true,
+        "disposition": "ACCEPTED_C11_LOGICAL_RELEASE",
+        "event_count": 2,
+        "m01_m18_count": 18,
+        "release_id": "REL-R09",
+        "repository_length": 1
+      },
+      "imports": [
+        "native_c11_case",
+        "rawlsing_next.pre553_c11_ingest",
+        "rawlsing_next.pre553_c11_integrity",
+        "rawlsing_next.pre553_c11_repository",
+        "rawlsing_next.pre553_empirical_authority",
+        "rawlsing_next.pre553_empirical_objects"
+      ]
+    },
+    "P14_c11_wrong_expectation": {
+      "required": "REFUSE_NATIVE_QUALIFICATION",
+      "observed": "REFUSE_NATIVE_QUALIFICATION",
+      "pass": true,
+      "reasons": ["RESULT_MISMATCH"]
+    }
+  },
+  "targeted_mutation_restoration": {
+    "mutant_path": "mutants/universal_runner_verify_mutant_disable_result_check.py",
+    "mutated_assertion": "RESULT_MISMATCH comparison guarded by `elif False and ...` in disposable copy only",
+    "intact_verifier_sha256_before_and_after": "3cf9f5e7d07c110a47fff75c02d4169590060daf24518be95d46ddebf9103b8d",
+    "intact_wrong_result": "REFUSE_NATIVE_QUALIFICATION (RESULT_MISMATCH)",
+    "mutant_wrong_result": "LOCAL_NATIVE_VERIFIED",
+    "candidate_untouched": true
+  },
+  "actual_native_consumer": {
+    "positive": "tests/universal_runner/test_universal_runner_verify.py::test_existing_c11_native_owner_and_repository_are_executed",
+    "actual_calls": [
+      "rawlsing_next.pre553_c11_ingest.ingest_c11_source_release",
+      "rawlsing_next.pre553_c11_repository.C11Repository.resolve_release_exact"
+    ],
+    "returned_result": {
+      "accepted": true,
+      "disposition": "ACCEPTED_C11_LOGICAL_RELEASE",
+      "event_count": 2,
+      "m01_m18_count": 18,
+      "release_id": "REL-R09",
+      "repository_length": 1
+    },
+    "scope": "sourcefree synthetic fixture built through existing native constructors; not whole machine, not original35"
+  },
+  "authored_artifact_recompute": {
+    "author_manifest_artifacts": 8,
+    "hash_and_size_matches": 8,
+    "bad": 0,
+    "self_exclusion_present": true,
+    "v1_reports_unchanged": true
+  },
+  "prior_oracle_retained": {
+    "path": "WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/evidence/reviewer_existing_oracle_junit.xml",
+    "commit": "05e9ce39640ca6a134031510e762e81fab7d4c57",
+    "sha256": "2a11a2cd6d7a9debd9af075e6e101c107d1d7a48714292d1ad19c489ad5c5e64",
+    "tests": 48,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "reason": "No R2 coupling to tests/universal_execution_oracle."
+  },
+  "limits_not_reached": [
+    "No independent parent-owned capture of actual return values or loaded bytes against a lying subject.",
+    "No OS sandbox/isolation, separate UID, kernel tracing, or native parent harness.",
+    "No authenticated external trust-root admission; self-root is accepted by the caller-facing API.",
+    "No protected CI required check, branch protection, admin attestation, or deployed enforcement.",
+    "No external key service or institutionally authenticated issuer.",
+    "No original source data/science, original35/1890, F6/F7/F8 issuance, N11/N12, or production promotion.",
+    "No downstream B49/G50/U43/I03/I05/Batch/E04 consumer executed; C11 ingest/repository is the actual positive."
+  ],
+  "obligations_unchanged": {
+    "original35": 35,
+    "cells": 1890,
+    "global_F6_F7_F8": "held",
+    "Z_UNRESOLVED": 16
+  },
+  "timestamps": {
+    "expectations_frozen_utc": "2026-10-23T06:12:00Z",
+    "return_bank_utc": "2026-10-23T06:18:30Z"
+  }
+}

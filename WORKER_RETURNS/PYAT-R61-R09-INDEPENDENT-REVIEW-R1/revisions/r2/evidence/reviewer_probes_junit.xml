@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites tests="15" failures="3" errors="0" skipped="0">
+  <testsuite name="r09v_r2_independent_probes" tests="15" failures="3" errors="0" skipped="0">
+    <testcase classname="R09V_R2" name="P0_legit_baseline">
+    </testcase>
+    <testcase classname="R09V_R2" name="P10_non_serializable_expectation">
+      <failure message="required=REFUSE_NATIVE_QUALIFICATION observed=EXCEPTION:TypeError extra={"detail": "Object of type set is not JSON serializable"}">required=REFUSE_NATIVE_QUALIFICATION observed=EXCEPTION:TypeError extra={"detail": "Object of type set is not JSON serializable"}</failure>
+    </testcase>
+    <testcase classname="R09V_R2" name="P11_non_serializable_observation">
+    </testcase>
+    <testcase classname="R09V_R2" name="P12_out_of_tree">
+    </testcase>
+    <testcase classname="R09V_R2" name="P13_actual_c11_positive">
+    </testcase>
+    <testcase classname="R09V_R2" name="P14_c11_wrong_expectation">
+    </testcase>
+    <testcase classname="R09V_R2" name="P1_child_json_dump_forges_result">
+      <failure message="required=REFUSE_NATIVE_QUALIFICATION observed=LOCAL_NATIVE_VERIFIED extra={"actual_returned_value": "41", "marker_exists": true, "reasons": [], "sealed_result": {"label": "baseline", "value": 42}}">required=REFUSE_NATIVE_QUALIFICATION observed=LOCAL_NATIVE_VERIFIED extra={"actual_returned_value": "41", "marker_exists": true, "reasons": [], "sealed_result": {"label": "baseline", "value": 42}}</failure>
+    </testcase>
+    <testcase classname="R09V_R2" name="P2_child_forges_loaded_bytes_and_result">
+      <failure message="required=REFUSE_NATIVE_QUALIFICATION observed=LOCAL_NATIVE_VERIFIED extra={"actual_returned_value": "41", "marker_exists": true, "reasons": [], "reported_import": {"loaded_sha256": "5205ce76375a313ebf4f6235ad6105fa92070fb210f70762b07f85bbf60ff106", "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09v-r2/WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/probes/work/r2probe-loaded-_gwiie9a/candidate/native_fixture.py", "tree_bound": true, "tree_sha256": "5205ce76375a313ebf4f6235ad6105fa92070fb210f70762b07f85bbf60ff106", "within_target_dir": true}, "sealed_result": {"label": "baseline", "value": 42}, "tree_digest": "5205ce76375a313ebf4f6235ad6105fa92070fb210f70762b07f85bbf60ff106"}">required=REFUSE_NATIVE_QUALIFICATION observed=LOCAL_NATIVE_VERIFIED extra={"actual_returned_value": "41", "marker_exists": true, "reasons": [], "reported_import": {"loaded_sha256": "5205ce76375a313ebf4f6235ad6105fa92070fb210f70762b07f85bbf60ff106", "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09v-r2/WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/probes/work/r2probe-loaded-_gwiie9a/candidate/native_fixture.py", "tree_bound": true, "tree_sha256": "5205ce76375a313ebf4f6235ad6105fa92070fb210f70762b07f85bbf60ff106", "within_target_dir": true}, "sealed_result": {"label": "baseline", "value": 42}, "tree_digest": "5205ce76375a313ebf4f6235ad6105fa92070fb210f70762b07f85bbf60ff106"}</failure>
+    </testcase>
+    <testcase classname="R09V_R2" name="P3_bare_mapping">
+    </testcase>
+    <testcase classname="R09V_R2" name="P4_fake_issuer_rewrite">
+    </testcase>
+    <testcase classname="R09V_R2" name="P5_self_root_caller_accepted">
+    </testcase>
+    <testcase classname="R09V_R2" name="P6_nondurable_ledger">
+    </testcase>
+    <testcase classname="R09V_R2" name="P7_cold_replay_first">
+    </testcase>
+    <testcase classname="R09V_R2" name="P8_cold_replay_second">
+    </testcase>
+    <testcase classname="R09V_R2" name="P9_concurrent_nonce">
+    </testcase>
+  </testsuite>
+</testsuites>

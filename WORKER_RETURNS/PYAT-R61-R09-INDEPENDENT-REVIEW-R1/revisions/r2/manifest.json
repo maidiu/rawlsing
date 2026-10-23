@@ -1,0 +1,95 @@
+{
+  "algorithm": "sha256",
+  "artifacts": [
+    {
+      "path": "00_RETURN.md",
+      "sha256": "afd439e11edef37659bb0e79b92bb7f57b36d6cd9d8dc7bf1e39782e193783f5",
+      "size": 9314
+    },
+    {
+      "path": "EXPECTATIONS.md",
+      "sha256": "836269d4f9bdcccc0fa469e5408a213db69b91e3d009d3fb0b86f70a00800f04",
+      "size": 11432
+    },
+    {
+      "path": "REMOTE_VERIFICATION.md",
+      "sha256": "38488a79ff123c3f2d7c855b9a4c9066e60968ba5def6efb9410ef7ff28145ba",
+      "size": 948
+    },
+    {
+      "path": "RESUME.md",
+      "sha256": "a6ffb6652f7fd775fa08daa70b09d697191d0f6215ed973ea4c12581fb3d66ae",
+      "size": 2205
+    },
+    {
+      "path": "defects.md",
+      "sha256": "49300f2632d9f1f4191bc8dd8b8cdd022f73b04862dc0556b38cf824f68495de",
+      "size": 6580
+    },
+    {
+      "path": "evidence/identity.json",
+      "sha256": "b43691d0d66438ce2798a621edfa525d23775592879d9dabef777ea3c319b0a2",
+      "size": 4212
+    },
+    {
+      "path": "evidence/mutant_check.json",
+      "sha256": "d4d40aa1d51ac4e3e4a832bd0070f1d6255ceb1f8807e294531ff0f2990512bf",
+      "size": 736
+    },
+    {
+      "path": "evidence/probes_r2.json",
+      "sha256": "48cdb2bce7180dd767ad8e822dc60ab1938145e566448ba473657eb342a84c00",
+      "size": 5850
+    },
+    {
+      "path": "evidence/probes_r2_stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "evidence/reviewer_author_suite_junit.xml",
+      "sha256": "aa526e8cdb77237e8300bad064d77ea4a1e39ec55d036ba180d1a8c508464542",
+      "size": 2364
+    },
+    {
+      "path": "evidence/reviewer_probes_junit.xml",
+      "sha256": "7b5039b875ea1e17e0fa5d279d764b3313816c96f12d861d786ee02c98b5530e",
+      "size": 3653
+    },
+    {
+      "path": "mutants/universal_runner_verify_mutant_disable_result_check.py",
+      "sha256": "1e16cd37b5cf52c38ea3c933b21ba4f8b22b437ab5925c158d6c42f282675cf3",
+      "size": 38071
+    },
+    {
+      "path": "probes/independent_probes_r2.py",
+      "sha256": "27e44d1d26c8aa1bc6bcde9a3fed8cf1ae091b3d362f0d4b1e3509e520e1801a",
+      "size": 23399
+    },
+    {
+      "path": "probes/mutant_check.py",
+      "sha256": "4e0cc54b06a78e045c66698626f3b093e6902eb54e65c051dc25155e1a27cf36",
+      "size": 1810
+    },
+    {
+      "path": "proof_witness.json",
+      "sha256": "55eaefd06c339df2794dc5434959de6ef168be4d93f2b777042d38ea3b2e21c6",
+      "size": 10079
+    }
+  ],
+  "candidate": "4a10c82aa8ba2a31938d3d35e12dc42f4456264c",
+  "code_commit": "77f8b4205d8a97f2e9f7ae9e93a3ff913c08a780",
+  "excluded": [
+    {
+      "path": "manifest.json",
+      "reason": "Self-exclusion: a manifest cannot contain a stable hash of itself before it is written."
+    }
+  ],
+  "notes": [
+    "Reviewer artifacts only; no candidate code is included or modified.",
+    "Author manifest is independently recomputed in evidence/identity.json.",
+    "The final push SHA is stated in the final response and verified by direct ls-remote."
+  ],
+  "reviewer_verdict": "REVISE",
+  "schema": "R61_R09V_R2_INDEPENDENT_REVIEW_MANIFEST@1"
+}
