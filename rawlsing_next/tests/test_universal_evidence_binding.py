@@ -1422,13 +1422,26 @@ _R7_OWNER_CLASSES = (
 
 @pytest.fixture(scope="module")
 def r7_native_cache():
+    from rawlsing_next.tests.n10e_empirical_slice_fixture import at07_rows
+    rows = at07_rows()
+    independent = {
+        answer: sum(
+            row["responses"]["POSITION"] == "P1"
+            and row["responses"]["ANSWER"] == answer
+            for row in rows
+        )
+        for answer in ("no", "yes")
+    }
+    assert independent == {"no": 6, "yes": 54}
+    assert sum(independent.values()) == 60
     case = build_provider_case("forward")
     request = _request(case, request_id="r61-r7-independent-inventory")
     resolver = _resolver()
     resolver.bind(_binding(request, case))
     result = resolver.resolve(request)
-    assert {cell["cell"]: cell["raw_numerator_support"] for cell in result.cells} == {"no": 6, "yes": 54}
-    assert _reader(request, result).read()["denominator"] == 60
+    assert {cell["cell"]: cell["raw_numerator_support"] for cell in result.cells} == independent
+    read = _reader(request, result).read()
+    assert read["denominator"] == sum(independent.values()) == 60
     return request, resolver.export_cache(), result
 
 
