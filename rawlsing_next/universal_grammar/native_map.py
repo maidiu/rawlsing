@@ -10,6 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field, replace
 import copy
 import json
+import re
 import threading
 from typing import Any, Mapping, Sequence
 
@@ -1320,7 +1321,7 @@ def build_recurrence_issue_plan(
     seen_condition_refs: set[str] = set()
     for key, value, predicate in condition_predicates:
         if predicate.ref.key in seen_condition_refs:
-            raise ValueError("RECURRENCE_DUPLICATE_CONDITION_PREDICATE")
+            raise RecurrenceRefusal("RECURRENCE_DUPLICATE_CONDITION_PREDICATE")
         seen_condition_refs.add(predicate.ref.key)
         atom_for(predicate, "RESPONSE")
     issued_so_far = 0
@@ -1786,6 +1787,56 @@ def _authority_profile(authority: Any, registry: Any) -> dict[str, Any]:
     })
 
 
+def _label_matches_ref(label: str, ref: Any) -> bool:
+    ref = exact_ref(ref, "inventory ref")
+    if label == ref.object_id:
+        return True
+    parts = [part for part in re.split(r"[:/|]", ref.object_id) if part]
+    tail = parts[-1] if parts else ref.object_id
+    return label == tail or label == tail.rsplit("-", 1)[-1]
+
+
+def _response_leaf_identity(predicate: Any) -> tuple[Any, str]:
+    ast = getattr(predicate, "predicate_ast", None)
+    if not isinstance(ast, Mapping) or ast.get("op") != "LEAF":
+        raise RecurrenceRefusal("CAMPAIGN_CONDITION_PREDICATE_NOT_RESPONSE_LEAF")
+    if ast.get("leaf_type") != "SURVEY_RESPONSE_EVENT":
+        raise RecurrenceRefusal("CAMPAIGN_CONDITION_PREDICATE_NOT_RESPONSE_EVENT")
+    question_ref = exact_ref(ast.get("question_semantic_ref"), "response question ref")
+    exact_value = ast.get("exact_value")
+    if not isinstance(exact_value, str):
+        raise RecurrenceRefusal("CAMPAIGN_CONDITION_PREDICATE_VALUE_UNRESOLVED")
+    return question_ref, exact_value
+
+
+def _validate_target_label(target_label: str, query: Any, question_refs: set[str]) -> None:
+    matches = [ref for ref in (exact_ref(r) for r in query.target_refs)
+               if _label_matches_ref(target_label, ref)]
+    if len(matches) != 1:
+        raise RecurrenceRefusal("CAMPAIGN_TARGET_LABEL_QUERY_MISMATCH")
+    if matches[0].key not in question_refs:
+        raise RecurrenceRefusal("CAMPAIGN_TARGET_LABEL_NOT_IN_SOURCE_INVENTORY")
+
+
+def _validate_condition_catalog(
+    catalog: Mapping[tuple[str, str], Any], question_refs: set[str]
+) -> None:
+    for (key_text, value_text), predicate in sorted(catalog.items()):
+        try:
+            key = OccurrenceKey(**json.loads(key_text))
+            value = json.loads(value_text)
+        except Exception as exc:
+            raise RecurrenceRefusal("CAMPAIGN_CONDITION_KEY_OR_VALUE_MALFORMED") from exc
+        question_ref, exact_value = _response_leaf_identity(predicate)
+        if question_ref.key not in question_refs:
+            raise RecurrenceRefusal("CAMPAIGN_CONDITION_QUESTION_NOT_IN_SOURCE_INVENTORY")
+        if not _label_matches_ref(key.item_id, question_ref):
+            raise RecurrenceRefusal("CAMPAIGN_CONDITION_KEY_QUESTION_MISMATCH")
+        expected = str(value)
+        if exact_value != expected:
+            raise RecurrenceRefusal("CAMPAIGN_CONDITION_VALUE_PREDICATE_MISMATCH")
+
+
 def _native_campaign_context(*, policy: RecurrencePolicy, root_predicate: Any,
                              releases: Sequence[Any], target_label: str,
                              query: Any, catalog: Mapping[tuple[str, str], Any],
@@ -1809,6 +1860,7 @@ def _native_campaign_context(*, policy: RecurrencePolicy, root_predicate: Any,
         )
         source_material = []
         authorities = {}
+        question_refs: set[str] = set()
         def add_object(obj):
             if semantic_hash(obj.semantic_projection()) != obj.content_hash:
                 raise RecurrenceRefusal("CAMPAIGN_SOURCE_OBJECT_IDENTITY_MISMATCH")
@@ -1819,6 +1871,9 @@ def _native_campaign_context(*, policy: RecurrencePolicy, root_predicate: Any,
             release = repository.resolve_release_exact(release_ref)
             for obj in release.public_objects:
                 add_object(obj)
+                native_question_ref = getattr(obj, "native_question_ref", None)
+                if native_question_ref is not None:
+                    question_refs.add(exact_ref(native_question_ref).key)
             source_material.append({
                 "release_ref": release.release_ref,
                 "source_artifact_ref": release.source_artifact_ref,
@@ -1828,6 +1883,8 @@ def _native_campaign_context(*, policy: RecurrencePolicy, root_predicate: Any,
                 "replay_ref": release.replay_manifest.ref,
             })
         add_object(query)
+        _validate_target_label(target_label, query, question_refs)
+        _validate_condition_catalog(catalog, question_refs)
         predicates = (root_predicate,) + tuple(catalog.values())
         for predicate in predicates:
             _verify_public_identity(predicate)
@@ -2156,10 +2213,21 @@ class RetainedRecurrenceCampaign:
             if requested_generation is not None and requested_generation != generation:
                 raise RecurrenceRefusal("REQUESTED_GENERATION_MISMATCH")
             parents = tuple(record.legacy_parent() for record in parent_records)
-            conditions = tuple(
-                (key, value, self._condition_predicate(key, value))
-                for key, value in condition_refs
-            )
+            proposed = []
+            seen_condition_keys: set[tuple[str, str]] = set()
+            for key, value in condition_refs:
+                if not isinstance(key, OccurrenceKey):
+                    raise RecurrenceRefusal("CAMPAIGN_TYPED_OCCURRENCE_KEY_REQUIRED")
+                try:
+                    _validate_typed_value(value)
+                except ValueError as exc:
+                    raise RecurrenceRefusal("CAMPAIGN_TYPED_VALUE_REQUIRED") from exc
+                typed_key = (key.key, typed_value_key(value))
+                if typed_key in seen_condition_keys:
+                    raise RecurrenceRefusal("DUPLICATE_CONDITION_REF")
+                seen_condition_keys.add(typed_key)
+                proposed.append((key, value, self._condition_predicate(key, value)))
+            conditions = tuple(proposed)
             previous_plan = self._last_plan
             predecessor_issuance = self._last_issuance_ref
             plan = build_recurrence_issue_plan(

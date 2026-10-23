@@ -2105,3 +2105,69 @@ def test_r7_typed_receipt_states_and_view_mutation_do_not_change_owner():
         condition_catalog=campaign._condition_catalog, query_object=query,
     )
     assert genuine.inspect()["issuances"][0]["cumulative_issued_count"] == 4
+
+
+def test_r8_target_condition_semantics_and_typed_refusals():
+    source, qauth, root, query, policy, s1, s2, s3, campaign = _campaign_fixture()
+    dauths = {tag: _d_auth(tag) for tag in ("R61-R4-G1", "R61-R4-G2", "R61-R4-G3")}
+    registry = _i05_registry(source, qauth, *dauths.values())
+    def factory(grammar):
+        tag = grammar["discovery_operation"].removeprefix("I03-OP-")
+        return _discovery_authority(source, grammar, dauths[tag], tag="r61-r8-" + tag)
+    common = dict(
+        policy=policy, root_predicate=root,
+        source_release_refs=(source["release_ref"],),
+        condition_catalog=s1 + s2 + s3,
+        repository=source["repo"], authority_registry=registry,
+        authority_factory=factory,
+    )
+    with pytest.raises(RecurrenceRefusal, match="CAMPAIGN_TARGET_LABEL_QUERY_MISMATCH"):
+        create_campaign(target_label="wrong-label", query_object=query, **common)
+    s3_query = _query(source, qauth, root, ("s3",), tag="r61-r8-s3-query")
+    with pytest.raises(RecurrenceRefusal, match="CAMPAIGN_TARGET_LABEL_QUERY_MISMATCH"):
+        create_campaign(target_label="t", query_object=s3_query, **common)
+    s1_zero = s1[0][2]
+    s1_one = s1[1][2]
+    swapped_value = [(s1[0][0], s1[0][1], s1_one)] + list(s1[1:]) + list(s2) + list(s3)
+    with pytest.raises(RecurrenceRefusal, match="CAMPAIGN_CONDITION_VALUE_PREDICATE_MISMATCH"):
+        create_campaign(target_label="t", query_object=query,
+                        **{**common, "condition_catalog": swapped_value})
+    swapped_question = [(s2[0][0], s2[0][1], s1_zero)] + list(s2[1:]) + list(s1) + list(s3)
+    with pytest.raises(RecurrenceRefusal, match="CAMPAIGN_CONDITION_KEY_QUESTION_MISMATCH"):
+        create_campaign(target_label="t", query_object=query,
+                        **{**common, "condition_catalog": swapped_question})
+    with pytest.raises(RecurrenceRefusal, match="CAMPAIGN_TYPED_OCCURRENCE_KEY_REQUIRED"):
+        campaign.issue(
+            parent_lineage_refs=(campaign.root_lineage_ref,),
+            condition_refs=(("s1", 0),),
+        )
+    duplicate = ((s1[0][0], s1[0][1]), (s1[0][0], s1[0][1]))
+    with pytest.raises(RecurrenceRefusal, match="DUPLICATE_CONDITION_REF"):
+        campaign.issue(
+            parent_lineage_refs=(campaign.root_lineage_ref,),
+            condition_refs=duplicate,
+        )
+    # Typed occurrence variants remain accepted by the same semantic validator.
+    variant = OccurrenceKey("s1", form_id="FORM-X")
+    variant_catalog = [(variant, 0, s1_zero)] + list(s1[1:]) + list(s2) + list(s3)
+    variant_campaign = create_campaign(
+        target_label="t", query_object=query,
+        **{**common, "condition_catalog": variant_catalog},
+    )
+    issue_ref = variant_campaign.issue(
+        parent_lineage_refs=(variant_campaign.root_lineage_ref,),
+        condition_refs=((variant, 0), (s1[1][0], s1[1][1])),
+    )
+    record = next(r for r in variant_campaign.inspect()["issuances"]
+                  if r["issuance_ref"] == issue_ref)
+    assert record["plan"]["condition_entries"][0]["key"]["form_id"] == "FORM-X"
+    # Restore shares the same target/condition semantic validator.
+    snapshot = campaign.snapshot()
+    with pytest.raises(RecurrenceRefusal, match="CAMPAIGN_CONDITION_VALUE_PREDICATE_MISMATCH"):
+        RetainedRecurrenceCampaign.restore(
+            snapshot=snapshot, expected_checkpoint_ref=snapshot["checkpoint_ref"],
+            repository=source["repo"], authority_registry=registry,
+            authority_factory=factory,
+            condition_catalog={(k.key, typed_value_key(v)): p for k, v, p in swapped_value},
+            query_object=query,
+        )
