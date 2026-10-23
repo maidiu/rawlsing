@@ -1,0 +1,68 @@
+{
+  "schema": "PYAT_R61_R01_PROOF_WITNESS@1",
+  "node": "R01",
+  "branch": "agent/opencode-pyat-r61-r01-generic-grammar-r1",
+  "startup_commit": "c84842e20e1d00d0b036977c9f5006aad5328ae9",
+  "candidate_code_commit": "d6f41177b16711ec721a9782c9797131295db2b5",
+  "grade": "SOURCEFREE_SYNTHETIC_TEST_ONLY_NOT_ORIGINAL_SCIENCE",
+  "environment": {
+    "python": "3.11.3",
+    "python_path": "/usr/local/bin/python3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "platform": "darwin",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01"
+  },
+  "commands": [
+    {
+      "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=WORKER_RETURNS/PYAT-R61-R01-IMPLEMENTATION-R1/junit.xml -o addopts=''",
+      "exit_code": 0,
+      "result": "11 passed",
+      "walltime_seconds_reported_by_pytest": 6.56,
+      "junit": "junit.xml",
+      "log": "pytest.log"
+    },
+    {
+      "command": "/usr/bin/time -l /usr/local/bin/python3 - <<'PY' ... enumerate tiny/main fixtures ... PY",
+      "exit_code": 0,
+      "observed": {
+        "tiny": {"operations": 22, "eligible": 8, "partitions": 1, "seconds": 0.017},
+        "main": {"operations": 1852, "eligible": 536, "partitions": 29, "seconds": 0.9326, "peak_rss_mb_approx": 30}
+      }
+    }
+  ],
+  "tests": [
+    {"node": "test_independent_tiny_frontier_oracle_and_complete_disposition_ledger", "asserts": "independent combinatorial cardinality 22; eligible 8; held 6; deferred 8; complete inventory ledger; symbolic E_pre only"},
+    {"node": "test_arbitrary_labels_and_bijective_rename_preserve_logical_frontier", "asserts": "arbitrary item labels; bijective rename preserves normalized operation identities, class/disposition counts and E_pre count; physical E_pre root changes"},
+    {"node": "test_ordered_targets_and_conditioners_are_distinct_exact_identities", "asserts": "ordered target and conditioner permutations are distinct exact identities and remain eligible"},
+    {"node": "test_topology_form_repeat_and_administration_are_accounted_not_pruned", "asserts": "repeat/MR/rank remain UNSUPPORTED_RUNTIME; not-admin HELD; unknown administration UNKNOWN; held and disjoint-form/unit cases retained"},
+    {"node": "test_administrative_roles_and_reverse_direction_are_prohibited", "asserts": "administrative occurrence is nonsemantic ledger entry; reversed roles refused without grant and accepted with explicit reverse grants"},
+    {"node": "test_duplicate_occurrence_and_count_preserving_substitution_refused", "asserts": "duplicate occurrence key raises; count-preserving operation substitution fails exact anti-join"},
+    {"node": "test_all_missing_observations_do_not_shrink_eligible_frontier", "asserts": "empty/all-missing observation store does not change frontier content or eligible membership"},
+    {"node": "test_incomplete_inventory_has_no_epre_and_budget_never_prunes", "asserts": "incomplete inventory has no U/E_pre roots; budget adds pending IDs without removing operations"},
+    {"node": "test_lazy_partition_and_cold_subprocess_replay", "asserts": "lazy partitions flatten to exact stable order; partition roots unique; cold subprocess content/partition root/count identical"},
+    {"node": "test_native_mapping_uses_current_i05_contract_and_real_receipts", "asserts": "current imported I05 contract id/schema; real execute_exact_bounded_discovery; exact receipt rule-id anti-join; dropped-rule mutation fails and original restoration passes"},
+    {"node": "test_native_mapping_marks_unsupported_and_never_returns_none", "asserts": "unsupported catalog capability is typed with exact reason; historical contract id is refused; every frontier operation appears in supported/unsupported/not-eligible partition"}
+  ],
+  "mutations_and_restoration": [
+    {"mutation": "duplicate occurrence key in inventory", "expected": "ValueError DUPLICATE_OCCURRENCE", "restored": "original inventory enumerates unchanged"},
+    {"mutation": "replace one expected operation id with a duplicate of another while preserving count", "expected": "conservation_report no_drop_ok=false, count_preserving_substitution=true, missing+duplicate ids", "restored": "original expected id list no_drop_ok=true"},
+    {"mutation": "remove one supported rule from the real I05 grammar before execution", "expected": "native_receipt_anti_join no_drop_ok=false and exact missing rule id", "restored": "original receipt set no_drop_ok=true"},
+    {"mutation": "set NativeCatalog contract_id to HISTORICAL-I05", "expected": "all non-ineligible records typed UNSUPPORTED_RUNTIME with reason", "restored": "current contract id lowers supported records"},
+    {"mutation": "current policy without reverse role grant", "expected": "reverse DIST/CONDITIONAL dispositions PROHIBITED DIRECTION_NOT_GRANTED", "restored": "explicit reverse grant makes the same operations ELIGIBLE"},
+    {"mutation": "administration NOT_ADMINISTERED or UNKNOWN", "expected": "HELD or UNKNOWN records remain present, never ELIGIBLE", "restored": "ADMINISTERED inventory yields eligible operations"},
+    {"mutation": "budget=3", "expected": "PARTIAL with pending IDs and unchanged full operation set/E_pre", "restored": "unbudgeted frontier is identical"}
+  ],
+  "imported_owner_blobs": {
+    "rawlsing_next/pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "rawlsing_next/pre553_discovery_exact.py": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+    "rawlsing_next/tests/test_pre553_discovery_exact.py": "b53039aeb95e012993c5233a7575c1dad5a14929",
+    "rawlsing_next/tests/test_pre553_empirical_query.py": "cc7d93db1f87d9c311170c229dbe3506937b404a"
+  },
+  "limits": [
+    "Synthetic TEST_ONLY source and Python helpers; no original survey bytes or respondent reads.",
+    "No R03 issued workload, R02 row/occasion repair, independent review, HQ acceptance, production promotion or protected CI deployment.",
+    "No original U/E_pre, empirical support, F6/F7/F8 proof, actor/N11/N12 effect, or source permission issued.",
+    "Main-fixture capacity is a bounded synthetic pilot, not a whole-original-corpus estimate."
+  ]
+}
