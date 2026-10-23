@@ -1,0 +1,120 @@
+{
+  "schema": "PYAT_R61_R08_R2_PROOF_WITNESS_V1",
+  "node": "R08",
+  "revision": "r2",
+  "startup_commit": "7beffc6d86bcd5585a63ea2c1afa6262bc9ca208",
+  "code_commit": "abf77ee10691adccb1127abd78aec49c6623ea37",
+  "branch": "agent/opencode-pyat-r61-r08-evidence-binding-r1",
+  "preserved_review_input": "1cc09784b007f63b2e486091466530f427900510",
+  "preserved_hq_supplement": "WORKER_RETURNS/PYAT-R61-HQ-INTAKE-R1/r08_final_supplement",
+  "environment": {
+    "python": "3.11.3",
+    "python_executable": "/usr/local/bin/python3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "pyreadstat_used": false
+  },
+  "commands": [
+    {
+      "id": "author-suite",
+      "command": "/usr/local/bin/python3 -m pytest -q rawlsing_next/tests/test_universal_evidence_binding.py rawlsing_next/tests/test_pre553_analytical_composition.py --junitxml=WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r2/junit.xml",
+      "exit_code": 0,
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "time_seconds": 7.13
+    },
+    {
+      "id": "immutable-review-probe-replay",
+      "command": "PYTHONPATH=\"$PWD\" /usr/local/bin/python3 -m pytest -q .r61/reconciliation/r2/probes/test_r08v_baseline.py .r61/reconciliation/r2/probes/test_r08v_hostile.py .r61/reconciliation/r2/probes/test_r08v_e04_fixed_semantics.py .r61/reconciliation/r2/probes/test_r08v_reach.py --junitxml=WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r2/reviewer_probes_replay.xml",
+      "exit_code": 0,
+      "tests": 19,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "time_seconds": 5.06,
+      "source": "probe files reconstructed byte-for-byte from review commit 1cc09784b007f63b2e486091466530f427900510; review probe copies are disposable and outside the commit"
+    }
+  ],
+  "defect_repairs": [
+    {
+      "id": "D1",
+      "formerly": "wrong condition/typed value/extra condition/edition/direction/role/design/clock/source K rebound to the unchanged P1 producer and served SUPPORTED denominator 60",
+      "repair": "AdmittedEvidenceContext tied to actual owner source/release/risk/target/authority refs; request labels compared to context; ordered conditions/typed values/items/form/repeat/domain compared to actual predicate leaves and consumer conditioner bindings before serving",
+      "assertions": [
+        "test_wrong_actual_condition_or_admitted_labels_refuse_positive: POSITION=P2 and changed labels resolve UNKNOWN/IDENTITY_MISMATCH",
+        "review probe test_wrong_condition_rebind_must_not_authenticate_p1_producer: PASS",
+        "review probe test_wrong_typed_value_rebind_must_not_authenticate_p1_producer: PASS",
+        "review probe test_null_and_integer_value_rebind_must_not_authenticate_p1_producer: PASS",
+        "review probe test_wrong_edition_direction_role_design_clock_rebind_must_refuse: PASS",
+        "review probe test_extra_and_reordered_conditions_must_refuse: PASS"
+      ],
+      "restoration": "exact admitted K still reaches actual provider/evaluator SUPPORTED 54/60 with consumer values-read"
+    },
+    {
+      "id": "D2",
+      "formerly": "self-sealed cache bound victim K to CHANGED_SOURCE_LAW evidence/query/rule and served forged denominator 999; entries carried no full K preimage",
+      "repair": "cache @2 carries request_material, producer_binding context/actual/validated conditions/binding hash, evidence, query, rule and result; import recomputes full K hash, checks context/query/rule/evidence source-release-target-condition association, replays evaluator and recomputes denominator/cells/values; optional ephemeral HMAC issuer; association-only trust explicitly labelled",
+      "assertions": [
+        "test_cache_carries_full_k_and_issuer_boundary_rejects_self_seal: full K preimage present; self-sealed cache rejected by a different issuer",
+        "review probe test_self_sealed_cross_source_cache_forgery_must_refuse: PASS (import refused or no forged values served)",
+        "review probe test_cache_entry_must_carry_full_k_not_only_hash: PASS",
+        "review probe test_cold_process_cache_baseline: PASS",
+        "review probe test_request_clock_and_permission_changes_do_not_hit_cache: PASS"
+      ],
+      "restoration": "legitimate fresh-process cold replay with full K/producer preimage returns denominator 60, same consumer hash, provenance AUTHENTICATED_CACHE"
+    },
+    {
+      "id": "D3",
+      "formerly": "single VALID_NULL/DIFFUSE/VALID_EMPTY/OBSERVED_ZERO produced support_state NO_SUPPORT while productive_all_required=true",
+      "repair": "distinct productive support states and ZERO_SUPPORT/UNKNOWN_SUPPORT/NO_SUPPORT/PARTIAL/EXACT classifications; Z UNRESOLVED denominator 16 retained as unresolved, never exact support",
+      "assertions": [
+        "test_valid_products_preserve_support_state_and_z_unresolved: all four valid product states are non-NO_SUPPORT and not exact; Z denominator 16 retained",
+        "test_actual_observed_zero_cell_remains_supported_product: actual observed-zero law denominator 60, no=0, SUPPORTED and EXACT_SUPPORT",
+        "test_actual_zero_support_does_not_become_positive_and_breaks_consumer: ZERO_SUPPORT denominator 0, no consumer values, support_state ZERO_SUPPORT"
+      ],
+      "restoration": "positive actual AT07 result remains SUPPORTED/EXACT_SUPPORT"
+    }
+  ],
+  "independent_arithmetic": {
+    "positive_law": "AT07_POSITION_P1: 60 respondents, ANSWER yes=54, no=6, exact 9/10",
+    "observed_zero_law": "60 P1-yes plus 40 P2-no: denominator 60, no=0, yes=60, SUPPORTED",
+    "zero_support_law": "condition POSITION=P3 absent: denominator 0, ZERO_SUPPORT, no evidence/consumer values"
+  },
+  "trust_model": {
+    "default_cache_grade": "FULL_K_PRODUCER_ASSOCIATION_SHA256",
+    "issuer_cache_grade": "EPHEMERAL_ISSUER_HMAC_SHA256",
+    "issuer_key": "generated in memory or supplied by test supervisor; never written into cache material or read from production secrets",
+    "honest_limit": "the default association grade is integrity/full-K association, not external issuer authentication"
+  },
+  "reach": {
+    "covered": [
+      "callable full-K evidence binding",
+      "actual canonical provider and unchanged evaluator values-read",
+      "fresh-process full-K cache replay",
+      "actual observed-zero and ZERO_SUPPORT controls",
+      "total support reduction with distinct valid products"
+    ],
+    "not_reached": [
+      "live J42 E41ProviderAdapter.step adoption",
+      "live P41 progressive adoption",
+      "repaired live E04 terminal"
+    ],
+    "reason": "no maintained non-test caller at this candidate cut; exact adapter/service/terminal bodies remain archived historical returns outside the R08 allowlist",
+    "owner_amendment_required": "separately granted live owner integration at the E41 provider step, P41 progressive service and E04 terminal success assertion; do not edit archived returns"
+  },
+  "mutation_restoration": [
+    "wrong typed condition P2: KEY changed, context/leaf mismatch -> UNKNOWN; restored exact K -> SUPPORTED 54/60",
+    "wrong admitted labels edition/digest/as-of/direction/role/design/weight/source: context mismatch -> UNKNOWN; restored exact K -> SUPPORTED 54/60",
+    "tampered cache seal: EvidenceCacheIntegrityError; restored canonical cache -> cold replay SUPPORTED 60",
+    "cross-source cache evidence: import refused before serving; restored exact source cache -> cold replay SUPPORTED 60",
+    "valid null/empty/diffuse/observed-zero: support_state preserved as productive; ZERO_SUPPORT remains non-productive"
+  ],
+  "observed_limits": [
+    "No original survey/data/credential/external-home read.",
+    "No new evaluator or broad court.",
+    "No production/CI/source/science/N11/N12/F6/F7/F8/actor/Sorok authority.",
+    "Author-only validation; distinct R2 independent reviewer not launched or self-adopted."
+  ]
+}
