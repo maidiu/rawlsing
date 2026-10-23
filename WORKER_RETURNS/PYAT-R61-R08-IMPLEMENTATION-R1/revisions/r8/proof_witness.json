@@ -1,0 +1,37 @@
+{
+  "schema": "PYAT_R61_R08_R8_PROOF_WITNESS_V1",
+  "node": "R08",
+  "revision": "r8",
+  "executor": "OpenCode DeepSeek V4.1-Flash MAX/Global, same existing author",
+  "branch": "agent/codex-pyat-r61-r08-r7-canonical-cache-repair-r1",
+  "startup_commit": "ea39bd324d297a93bb9e87ede9b9da75dfa8750a",
+  "contract_commit": "3f45fc9bc6bb5abb35427f752ef25abd4de8e79e",
+  "final_code_commit": "80bb8c18241ebcd7ddbe559b76c6b39a72025b89",
+  "module_blob": "3ca860e409f1d063da4cd03dd1691a89c67333f6",
+  "test_blob": "5832ce0598fa02df93fcd200010a0076921e6cbe",
+  "preserved_r7_review": "fc4597fb8398b8012367d8d9d1fa36502b3d798e",
+  "environment": {"python": "3.11.3", "python_executable": "/usr/local/bin/python3", "pytest": "9.0.2", "pyreadstat": "1.3.2", "pyreadstat_used": false},
+  "command": "/usr/local/bin/python3 -m pytest -q rawlsing_next/tests/test_universal_evidence_binding.py rawlsing_next/tests/test_pre553_analytical_composition.py --junitxml=WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r8/junit.xml",
+  "exit_code": 0,
+  "junit": {"tests": 126, "failures": 0, "errors": 0, "skipped": 0, "time_seconds": 24.90, "r08_tests": 113, "c1_regressions": 13},
+  "defect": {
+    "id": "R7-AF-01",
+    "formerly": "cache hit under nonempty legacy trusted_binding_hashes collapsed to UNKNOWN/STALE_OR_UNAUTHENTICATED_CACHE",
+    "now": "cache hit returns UNKNOWN/LEGACY_BINDING_PINS_REQUIRE_MIGRATION; wrong descriptor pin returns CACHE_OWNER_DESCRIPTOR_NOT_PINNED; missing verifier preserves NO_CONFIGURED_TRUST_ROOT",
+    "probe": "R7 reviewer test_legacy_binding_pin_cache_replay_has_explicit_migration_code: PASS"
+  },
+  "mutations_restoration": [
+    "legacy pin live first SUPPORTED 60 -> second cache hit explicit migration refusal; normal resolver restores 60",
+    "descriptor pin live first SUPPORTED -> cache hit explicit descriptor-pin refusal; normal verifier-only restores 60",
+    "no setup crash/import error counted as refusal"
+  ],
+  "preserved": [
+    "R61AF descriptor @1 normal form and 13-owner-class inventory",
+    "native 54/6/60 and changed 54/16/70",
+    "verifier-only replay/re-export and cold positive",
+    "observed zero, ZERO_SUPPORT, valid-product states, Z UNRESOLVED16",
+    "live producer pin fail-closed"
+  ],
+  "reach": {"covered": "bounded replay refusal-code correction and prior R61AF capabilities", "not_reached": ["live J42", "live P41", "live E04"], "reason": "owner/allowlist boundary; archived returns unedited"},
+  "limits": ["TEST_ONLY sourcefree", "no original science/source/CI/production/N11/N12/F6/F7/F8/actor/Sorok/J52/W52 authority", "author qualification only; distinct reviewer follows; no self-adoption"]
+}
