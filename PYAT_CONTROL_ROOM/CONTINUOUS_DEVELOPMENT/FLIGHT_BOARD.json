@@ -384,7 +384,29 @@
         "state": "PENDING",
         "created_at": "2026-10-23T20:22:17.852Z"
       }
-    ]
+    ],
+    "R61AB_HQ_delivery_decision": {
+      "controller_return": "3d98c328e83547522c0f8c99470e39219ed76dd7",
+      "author_manifest_hashes_verified": 9,
+      "direct_remote_verified": true,
+      "reviewed_job_candidate": "a74ce2f278e3463a484f93e041878c6158faec55",
+      "current_controller_code_reviewed_at_exact_tip": false,
+      "reason": "Real reviewer qualified old a74 report candidate; new R2 src/pyat-client.ts reconciliation/finalization changes at97349b9 are not that reviewed candidate. Do not upgrade whole-code acceptance.",
+      "delivery": {
+        "status": "ACKED",
+        "client_id": "pyat-incumbent-01a15c1e",
+        "envelope_id": "pyat_env_d6da155dc135a89cea309c8bf33fd57e",
+        "binding_digest": "d6da155dc135a89cea309c8bf33fd57efd18febbf4c0b4ab7a20d2c8a36d0d0c",
+        "ack_id": "pyat-hq-r61ab-delivery-only",
+        "acked_at": "2026-10-23T20:36:25.036Z"
+      },
+      "receipt_status": "ACTUAL_INCUMBENT_HQ_READ_AND_DELIVERY_ACK_FROM_SCHEDULED_HEARTBEAT",
+      "decision": "ACCEPT_SCOPED_RECEIPT_AND_DURABLE_INBOX_DEMONSTRATION__COMBINED_CODE_QUALIFICATION_HOLD",
+      "controller_automatic_hq_effect": "UNKNOWN_FENCING_TOKEN_INVALID_NO_GENERATION",
+      "next": "Independent hostile qualification of exact combined controller3d98c328e83547522c0f8c99470e39219ed76dd7 including new reconciliation/finalize paths, using existing distinct reviewer role where safely resumable; no third reviewer-of-reviewer, no replay of completed worker effects.",
+      "R01": "AWAITING_USER_SOL_HIGH",
+      "R08": "R6_REVIEW_RUNNING"
+    }
   },
   "governance": {
     "J52": "USER_STOPPED",
@@ -446,23 +468,6 @@
     }
   },
   "live_flight": [
-    {
-      "id": "CONTROLLER_PYAT_R2",
-      "pid": 80106,
-      "session": "ses_e98dfb4ceffeOIN94FajJA56s1",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
-      "branch": "infra/r60-pyat-incumbent-client-r1",
-      "startup": "e3d2213e29c9940a946b2f263e93f3f78470493b",
-      "model": "opencode-go/deepseek-v4.1-flash",
-      "variant": "max",
-      "account": "existing Global",
-      "started_utc": "2026-10-23T19:57:39.823479+00:00",
-      "actual_tool_preflight": "PASS_TOOL_CWD_TOPLEVEL_BRANCH_TRACKED_CLEAN",
-      "route": "ATTENDED_EXISTING_INFRASTRUCTURE_BOOTSTRAP_NOT_CONTROLLER_LAUNCH",
-      "os_isolation": "NOT_PROVEN",
-      "process_live_observed": true,
-      "actual_tool_root": "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client"
-    },
     {
       "id": "R08V_R6",
       "pid": 96003,
