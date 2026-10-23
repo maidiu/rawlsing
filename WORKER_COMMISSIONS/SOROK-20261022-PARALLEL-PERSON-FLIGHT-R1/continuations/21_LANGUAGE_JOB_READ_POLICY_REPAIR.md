@@ -1,0 +1,9 @@
+# Actual language job failure and existing-session repair
+
+Previous heartbeat observation was not a verified wait because it inspected STARTING journal only. This continuation checked actual process and terminal receipt: controller47821 exited2; job WORKER_UNKNOWN, effecteff_9c388d58751b7d8d5ce7abc45fbdc727 UNKNOWN, zero reviewer effects. Actual provider session ses_e94f9ede1ffeTrQkq6zQ6PkheP in job-local OpenCode DB: terminal finish length after denied reads; worker Git status clean. No replay/resume of domain provider, journal, claim, keys or authorization mutation.
+
+Concrete blocker: workerConfigContent uses allowed write paths as entire read scope. Source files and handoff outside LANGUAGE_MEDIATION_R1 could not be read. Safe metadata/tool error diagnostic banked controller6a2265ac2e9ab5074f9827105f78aad62a300635, SOROK/LANGUAGE_CONSUMER_R1/FAILURE_DIAGNOSTIC.json; no hidden reasoning or credentials copied.
+
+SAME existing controller author session ses_e99158eb5ffebqkkLsng2I1TLR continuation15 executing SOROK/09_BOUNDED_WORKER_READ_INPUTS_REPAIR.md. SAME reviewer ses_e98fa7144ffeXQs21DMwv7tro3 continuation13 follows only after author exits0 with changed clean remote-exact SHA. Ordinary subprocess completion watcher48690 orchestrates these existing sessions, not Codex polling or new workers. Author/reviewer newest continuation JSON and actual process/exit receipt are authoritative; never rely on stale PID alone.
+
+Repair scope: distinct explicit authorized read-only supporting paths with unchanged narrow writes, tamper/escape/edit refusal, actual controlled-port source-read/output/review positive, and bounded sanitized UNKNOWN diagnostics. Preserve prior W02/W03/gate/proofs. No live domain reactivation. After independently accepted repair HQ adjudicates next bounded operation using a NEW explicit authorization only after reconciling this terminal failed/held job; do not clear UNKNOWN or silently reuse its effect.
