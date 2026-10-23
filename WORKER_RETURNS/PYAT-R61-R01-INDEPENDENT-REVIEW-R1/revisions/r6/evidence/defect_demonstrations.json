@@ -1,0 +1,90 @@
+{
+  "CONTEXT_multiple_gen2_batches": {
+    "accepted": true,
+    "count": 2,
+    "cumulative": [
+      8,
+      12
+    ],
+    "predecessor_counts": [
+      4,
+      8
+    ]
+  },
+  "H1_multiple_gen1_batches": {
+    "accepted": false,
+    "message": "ROOT_GENERATION_MUST_NOT_HAVE_PREDECESSOR",
+    "type": "RecurrenceRefusal"
+  },
+  "H2_bogus_release": {
+    "anti_join_no_drop_ok": true,
+    "create_accepted": true,
+    "execute_accepted": true,
+    "first_receipt_release_refs": [
+      {
+        "content_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "kind": "C11_SOURCE_RELEASE@1",
+        "object_id": "urn:test:r61-r6:bogus-release"
+      }
+    ],
+    "issue_accepted": true,
+    "receipt_count": 4,
+    "requested_bogus_release": {
+      "content_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "kind": "C11_SOURCE_RELEASE@1",
+      "object_id": "urn:test:r61-r6:bogus-release"
+    }
+  },
+  "H3_wrong_restore_query": {
+    "next_execute_accepted": true,
+    "next_issue_accepted": true,
+    "plan_query_ref": {
+      "content_hash": "146791648c1d76b7164198ac3700e4909e33766f2ddfeedeb4089da3f664c13e",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:146791648c1d76b7164198ac3700e4909e33766f2ddfeedeb4089da3f664c13e"
+    },
+    "query_matches_root": false,
+    "restore_accepted": true,
+    "root_query_ref": {
+      "content_hash": "a85ef95e6c15e82083cd0587e66892e68f081490d02cf543bfc2feb13265064b",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:a85ef95e6c15e82083cd0587e66892e68f081490d02cf543bfc2feb13265064b"
+    },
+    "supplied_query_ref": {
+      "content_hash": "146791648c1d76b7164198ac3700e4909e33766f2ddfeedeb4089da3f664c13e",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:146791648c1d76b7164198ac3700e4909e33766f2ddfeedeb4089da3f664c13e"
+    }
+  },
+  "H4_forged_snapshot_forged_pin": {
+    "forged_lineage_parent_id": "forged-parent-id",
+    "original_pin_error": "SNAPSHOT_CHECKPOINT_PIN_MISMATCH",
+    "original_pin_rejects_altered_snapshot": true,
+    "restore_accepted": true,
+    "same_campaign_ref_as_original": true
+  },
+  "H5_restore_pre_activation": {
+    "activate_accepted": false,
+    "message": "RESTORED_EXECUTION_NATIVE_RESULT_NOT_REPLAYED",
+    "type": "RecurrenceRefusal"
+  },
+  "H6_stopped_issuance_chain": {
+    "first_cumulative": 0,
+    "first_predecessor": null,
+    "first_ref": "c1971aee9c1d2bcb32b39ec16861df51546309da243f31da57dd130c67298961",
+    "second_cumulative": 0,
+    "second_predecessor": null,
+    "second_ref": "211aee8b8b08c456f80c86bbe451a743ce63b746e62a3a7457bc27f9fb2c21f2",
+    "second_should_predecessor_first": false
+  },
+  "H7_duplicate_catalog": {
+    "accepted": true,
+    "catalog_size": 2
+  },
+  "H8_incomplete_restore_catalog": {
+    "restore_accepted": true,
+    "snapshot_catalog_size": 6,
+    "subsequent_issue": "RecurrenceRefusal: CONDITION_NOT_IN_CAMPAIGN_CATALOG",
+    "supplied_catalog_size": 2
+  }
+}

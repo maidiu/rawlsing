@@ -1,0 +1,97 @@
+{
+  "schema": "PYAT_R61_R01V_R6_INDEPENDENT_ORACLE_RESULTS@1",
+  "candidate": "fea3ca17d94183efbd526dc1687ae06b7bbbf0f7",
+  "candidate_code": "3d60f9cb6f43830244fbd79699d1cf4041622d05",
+  "review_branch": "agent/opencode-pyat-r61-r01v-r6-independent-review-r1",
+  "verdict": "REVISE",
+  "author_suite_replay": {
+    "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=.../replay/author_suite_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 28,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/author_suite.log",
+    "junit": "replay/author_suite_junit.xml"
+  },
+  "r3_controls_replay": {
+    "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r01v_r3_reviewer.py -q --junitxml=.../replay/r3_controls_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 10,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/r3_controls.log",
+    "junit": "replay/r3_controls_junit.xml",
+    "covers": "R3 A1 conditioned JOINT/CO_TRAVEL, A2 canonical operation identity, A3 empty/unsupported/pending distinctions"
+  },
+  "reviewer_positive_changed_data_d3": {
+    "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r01v_r6_positive.py -q --junitxml=.../replay/positive_probe_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 2,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/positive_probe.log",
+    "junit": "replay/positive_probe_junit.xml",
+    "evidence": [
+      "campaign-owner D=3 changed-data chain with real native execution",
+      "independently constructed expected operation set matched content and multiplicity",
+      "independently recomputed root-relative and parent-relative typed states matched",
+      "neutral-aggregate exploratory parent with 75%/25% opposite hidden subgroups",
+      "nonwinning exploratory lineage and separate root/parent baselines",
+      "in-process snapshot restore followed by a real next-batch execution",
+      "fresh-process persisted snapshot restore with separately supplied checkpoint pin followed by a real next-batch execution"
+    ]
+  },
+  "reviewer_controls": {
+    "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r01v_r6_controls.py -q --junitxml=.../replay/controls_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 8,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/controls.log",
+    "junit": "replay/controls_junit.xml",
+    "covers": [
+      "completed-issue retry idempotent with no second native call",
+      "zero per-generation and zero total caps stop with no native call",
+      "forged lineage, requested-generation, predecessor rollback, activation-label, unknown-issuance and unknown-execution refusals",
+      "cross-campaign lineage refusal for a different campaign configuration",
+      "deep-detached inspect cannot register history",
+      "altered snapshot with the original pin and wrong pin both refuse",
+      "multiple batches at generation 2 are accepted and counted",
+      "run-local concurrent execute is serialized to one native call and one execution ref"
+    ]
+  },
+  "reviewer_hostile_refusal_suite": {
+    "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r01v_r6_hostile.py -q --junitxml=.../replay/hostile_probes_junit.xml -o addopts=''",
+    "exit": 1,
+    "passed": 0,
+    "failed": 8,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/hostile_probes.log",
+    "junit": "replay/hostile_probes_junit.xml",
+    "meaning": "Each failure is a reviewer-owned expected-positive or expected-refusal probe that the candidate did not satisfy; all are product behavior, not import/setup crashes.",
+    "failures": [
+      "H1 second explicit batch at generation 1 refused as ROOT_GENERATION_MUST_NOT_HAVE_PREDECESSOR",
+      "H2 create accepts a source release absent from the repository; issue and execute then succeed and receipts claim the bogus release",
+      "H3 restore accepts a wrong query object; next issue/execute succeed with plan query_ref different from retained root query_ref",
+      "H4 self-consistent forged snapshot with a supplied forged pin restores and retains the original campaign_ref",
+      "H5 snapshot of a completed execution before activation restores but cannot activate (RESTORED_EXECUTION_NATIVE_RESULT_NOT_REPLAYED)",
+      "H6 second stopped-budget issuance has predecessor_issuance_ref None instead of the first stopped issuance",
+      "H7 duplicate condition catalog silently collapses to one entry",
+      "H8 restore accepts an incomplete condition catalog; later issue fails only with CONDITION_NOT_IN_CAMPAIGN_CATALOG"
+    ]
+  },
+  "defect_demonstrations": "evidence/defect_demonstrations.json",
+  "defect_demonstration_log": "evidence/defect_demonstration.log",
+  "unknowns_and_boundaries": [
+    "No protected issuer/signing service/global durable uniqueness/R09 isolation; local trusted runtime only.",
+    "R04/R09 durable custody and fork prevention NOT_REACHED.",
+    "Reference caps/rows are TEST_ONLY synthetic engineering, not original 35/1890 science.",
+    "No R03 activation, self-adoption, source/science/CI/prod/N11/N12/Sorok/J52/W52.",
+    "R08/R61Q projection/export lane is separate and was not reviewed or repaired here."
+  ]
+}

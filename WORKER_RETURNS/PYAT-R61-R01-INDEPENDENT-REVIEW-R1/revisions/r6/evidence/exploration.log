@@ -1,0 +1,24 @@
+i1 5c3263ac5b79
+second gen1 batch RecurrenceRefusal ROOT_GENERATION_MUST_NOT_HAVE_PREDECESSOR
+second gen2 batch ACCEPTED ed650c7ea413
+restored execute fad3121067fe
+restored activate RecurrenceRefusal RESTORED_EXECUTION_NATIVE_RESULT_NOT_REPLAYED
+restore wrong query ACCEPTED; root query {'content_hash': 'a85ef95e6c15e82083cd0587e66892e68f081490d02cf543bfc2feb13265064b', 'kind': 'EmpiricalQuerySpec@1.0.0', 'object_id': 'urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:a85ef95e6c15e82083cd0587e66892e68f081490d02cf543bfc2feb13265064b'} supplied {'kind': 'EmpiricalQuerySpec@1.0.0', 'object_id': 'urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ba4ac2c70aa4bef6ca26f89c649c80a7f94483bb7392b941857b37df51f77d7a', 'content_hash': 'ba4ac2c70aa4bef6ca26f89c649c80a7f94483bb7392b941857b37df51f77d7a'}
+create bogus release ACCEPTED
+issue bogus release accepted 5ee92172847a
+execute bogus release ACCEPTED bb7934117b5e
+forged snapshot+forged pin ACCEPTED; lineage1 parent forged-parent-id
+altered snapshot with original pin RecurrenceRefusal SNAPSHOT_CHECKPOINT_PIN_MISMATCH
+bogus root releases [{'kind': 'C11_SOURCE_RELEASE@1', 'object_id': 'urn:test:r61-r6:bogus-release', 'content_hash': 'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'}]
+bogus execution handoff refs []
+bogus native handoff releases []
+restored wrong-query issue root.query_ref {'content_hash': 'a85ef95e6c15e82083cd0587e66892e68f081490d02cf543bfc2feb13265064b', 'kind': 'EmpiricalQuerySpec@1.0.0', 'object_id': 'urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:a85ef95e6c15e82083cd0587e66892e68f081490d02cf543bfc2feb13265064b'}
+restored wrong-query plan query_ref {'content_hash': 'ba4ac2c70aa4bef6ca26f89c649c80a7f94483bb7392b941857b37df51f77d7a', 'kind': 'EmpiricalQuerySpec@1.0.0', 'object_id': 'urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ba4ac2c70aa4bef6ca26f89c649c80a7f94483bb7392b941857b37df51f77d7a'}
+restored wrong-query execute accepted 602b4854c99d
+stopped issuances [(1, 'STOPPED_BUDGET', None, 0, 0), (2, 'STOPPED_BUDGET', None, 0, 0)]
+duplicate condition catalog ACCEPTED; catalog size 2
+wrong-query create+execute ACCEPTED 428e3aa10c5f plan query {'content_hash': 'b07f93f659794299b1faa31e054041912bc5d1bc3c516d585f0cf9243532de98', 'kind': 'EmpiricalQuerySpec@1.0.0', 'object_id': 'urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:b07f93f659794299b1faa31e054041912bc5d1bc3c516d585f0cf9243532de98'}
+receipt count 4
+receipt attrs []
+source_release_refs [mappingproxy({'content_hash': 'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff', 'kind': 'C11_SOURCE_RELEASE@1', 'object_id': 'urn:test:r61-r6:bogus-release'})]
+scope context releases no handoffs
