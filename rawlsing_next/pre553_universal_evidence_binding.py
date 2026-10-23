@@ -2083,6 +2083,15 @@ class EvidenceResolver:
                 request, cached, self._admission_verifier, descriptor=retained,
             )
             self._check_descriptor_pin(descriptor)
+        except EvidenceCacheIntegrityError as exc:
+            code = str(exc)
+            if code in {
+                "LEGACY_BINDING_PINS_REQUIRE_MIGRATION",
+                "CACHE_OWNER_DESCRIPTOR_NOT_PINNED",
+                "NO_CONFIGURED_TRUST_ROOT",
+            }:
+                return _result_refusal(request, code)
+            return _result_refusal(request, REFUSAL_STALE_CACHE)
         except (Pre553IntegrityError, KeyError, TypeError, ValueError):
             return _result_refusal(request, REFUSAL_STALE_CACHE)
         return replace(cached, provenance=PROVENANCE_CACHE)

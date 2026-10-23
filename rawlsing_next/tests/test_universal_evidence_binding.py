@@ -1572,6 +1572,15 @@ def test_r7_legacy_schema_and_binding_pins_explicitly_refuse(r7_native_cache, le
         configured.import_authenticated_cache(baseline)
     with pytest.raises(EvidenceCacheIntegrityError, match="LEGACY_BINDING_PINS_REQUIRE_MIGRATION"):
         configured.export_cache()
+    case = build_provider_case("forward")
+    configured_live = _resolver(trusted_binding_hashes=("a" * 64,))
+    configured_live.bind(_binding(request, case))
+    first = configured_live.resolve(request)
+    assert first.result_state == "SUPPORTED"
+    assert first.denominator == 60
+    second = configured_live.resolve(request)
+    assert second.result_state == "UNKNOWN"
+    assert second.typed_refusal == "LEGACY_BINDING_PINS_REQUIRE_MIGRATION"
     _r7_chain(request, copy.deepcopy(baseline))
 
 
@@ -1591,7 +1600,9 @@ def test_r7_descriptor_pins_are_distinct_and_enforced(r7_native_cache):
     assert live.resolve(request).denominator == 60
     with pytest.raises(EvidenceCacheIntegrityError, match="CACHE_OWNER_DESCRIPTOR_NOT_PINNED"):
         live.export_cache()
-    assert live.resolve(request).result_state == "UNKNOWN"
+    pinned_hit = live.resolve(request)
+    assert pinned_hit.result_state == "UNKNOWN"
+    assert pinned_hit.typed_refusal == "CACHE_OWNER_DESCRIPTOR_NOT_PINNED"
 
 
 @pytest.mark.parametrize("attack", ("null_descriptor", "wrong_descriptor_schema", "conditions_bool", "condition_order_duplicate", "release_order_duplicate", "wrong_owner_hash", "wrong_descriptor_hash", "old_binding_entry"))
