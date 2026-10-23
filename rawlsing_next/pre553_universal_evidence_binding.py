@@ -22,6 +22,10 @@ from __future__ import annotations
 from collections import Counter
 from dataclasses import dataclass, field
 from decimal import Decimal
+import hashlib
+import hmac
+import json
+import secrets
 from typing import Any, Callable, Iterable, Mapping, Sequence
 
 from rawlsing_next.pre553_analytical_composition import (
@@ -54,12 +58,14 @@ from rawlsing_next.source_backed_positioned_subject_possibility import (
     evaluate_positioned_subject_possibility,
 )
 
-REQUEST_CONTRACT_ID = "R61_UNIVERSAL_EVIDENCE_REQUEST@1"
-RESULT_CONTRACT_ID = "R61_UNIVERSAL_EVIDENCE_RESULT@1"
-SUMMARY_CONTRACT_ID = "R61_UNIVERSAL_SUPPORT_SUMMARY@1"
-CACHE_SCHEMA = "R61_AUTHENTICATED_EVIDENCE_CACHE@1"
+REQUEST_CONTRACT_ID = "R61_UNIVERSAL_EVIDENCE_REQUEST@2"
+RESULT_CONTRACT_ID = "R61_UNIVERSAL_EVIDENCE_RESULT@2"
+SUMMARY_CONTRACT_ID = "R61_UNIVERSAL_SUPPORT_SUMMARY@2"
+CACHE_SCHEMA = "R61_AUTHENTICATED_EVIDENCE_CACHE@2"
 CACHE_SEAL_ALGORITHM = "SHA256_CANONICAL_FULLK_PRODUCER_CONSUMER_PREIMAGE"
-K_ENCODING_VERSION = "K_TAGGED_CANONICAL@1"
+CACHE_TRUST_ASSOCIATION = "FULL_K_PRODUCER_ASSOCIATION_SHA256"
+CACHE_TRUST_ISSUER = "EPHEMERAL_ISSUER_HMAC_SHA256"
+K_ENCODING_VERSION = "K_TAGGED_CANONICAL@2"
 
 ELIGIBILITY_STATES = frozenset(
     {"ELIGIBLE", "PROHIBITED", "INAPPLICABLE_PROVED", "HELD", "UNKNOWN"}
@@ -150,6 +156,19 @@ def _auth(value: Any, name: str) -> AuthorityRef:
     if not isinstance(value, AuthorityRef):
         raise EvidenceRequestShapeError(f"{name} must be AuthorityRef")
     return value
+
+
+def _typed_from_material(material: Mapping[str, Any]) -> Any:
+    tag = material.get("tag")
+    if tag == "NULL":
+        return None
+    if tag == "BOOLEAN":
+        return material["value"]
+    if tag == "INTEGER":
+        return int(material["value"])
+    if tag == "DECIMAL":
+        return Decimal(str(material["value"]))
+    return material["value"]
 
 
 @dataclass(frozen=True)
@@ -257,6 +276,162 @@ class TypedCondition:
             "domain_state_version": self.domain_state_version,
             "conditioner_binding_id": self.conditioner_binding_id,
         }
+
+
+@dataclass(frozen=True)
+class AdmittedEvidenceContext:
+    """Explicit admitted source/operation context bound by the supervisor.
+
+    The labels are declarations by the admitting boundary, not semantic
+    inventions by this module.  Source/release/risk/target refs and authority
+    refs must match the actual owner objects before a producer binding is
+    accepted; the context hash is part of the cache preimage.
+    """
+
+    context_id: str
+    admission_ref: ExactRef
+    provenance_refs: tuple[ExactRef, ...]
+    authority_refs: tuple[AuthorityRef, ...]
+    source_id: str
+    dataset_id: str
+    wave_id: str
+    edition: str
+    byte_digest: str
+    instrument_version: str
+    sampled_unit: str
+    reporting_unit: str
+    link_refs: tuple[ExactRef, ...]
+    estimand: str
+    weight_method: str
+    design_ref: ExactRef
+    uncertainty_method: str
+    direction: str
+    role: str
+    consumer_use: str
+    grammar_version: str
+    custody_ref: ExactRef
+    observation_clock: str
+    reference_clock: str
+    as_of_clock: str
+    publication_clock: str
+    permission_ref: ExactRef
+    source_universe_ref: ExactRef
+    release_ref: ExactRef
+    risk_set_ref: ExactRef
+    target_ref: ExactRef
+    occurrence_item: str
+    occurrence_option: str
+    occurrence_form: str
+    occurrence_repeat: str
+    domain_state_version: str
+
+    def __post_init__(self) -> None:
+        for name in (
+            "context_id",
+            "source_id",
+            "dataset_id",
+            "wave_id",
+            "edition",
+            "instrument_version",
+            "sampled_unit",
+            "reporting_unit",
+            "estimand",
+            "weight_method",
+            "uncertainty_method",
+            "direction",
+            "role",
+            "consumer_use",
+            "grammar_version",
+            "observation_clock",
+            "reference_clock",
+            "as_of_clock",
+            "publication_clock",
+            "occurrence_item",
+            "occurrence_option",
+            "occurrence_form",
+            "occurrence_repeat",
+            "domain_state_version",
+        ):
+            object.__setattr__(self, name, _text(getattr(self, name), name))
+        object.__setattr__(self, "byte_digest", _sha(self.byte_digest, "context.byte_digest"))
+        for name in (
+            "admission_ref",
+            "design_ref",
+            "custody_ref",
+            "permission_ref",
+            "source_universe_ref",
+            "release_ref",
+            "risk_set_ref",
+            "target_ref",
+        ):
+            object.__setattr__(self, name, _ref(getattr(self, name), name))
+        province = _refs(self.provenance_refs, "context.provenance_refs")
+        if not province:
+            raise EvidenceRequestShapeError("context provenance refs may not be empty")
+        object.__setattr__(self, "provenance_refs", province)
+        object.__setattr__(self, "link_refs", _refs(self.link_refs, "context.link_refs"))
+        auths = tuple(self.authority_refs)
+        if not auths or any(not isinstance(x, AuthorityRef) for x in auths):
+            raise EvidenceRequestShapeError("context authority refs required")
+        object.__setattr__(self, "authority_refs", tuple(sorted(set(auths), key=lambda x: x.key)))
+
+    def material(self) -> Mapping[str, Any]:
+        return {
+            "contract": "R61_ADMITTED_EVIDENCE_CONTEXT@1",
+            "context_id": self.context_id,
+            "admission_ref": self.admission_ref.as_dict(),
+            "provenance_refs": [x.as_dict() for x in self.provenance_refs],
+            "authority_refs": [x.as_dict() for x in self.authority_refs],
+            "source_identity": {
+                "source_id": self.source_id,
+                "dataset_id": self.dataset_id,
+                "wave_id": self.wave_id,
+                "edition": self.edition,
+                "byte_digest": self.byte_digest,
+                "instrument_version": self.instrument_version,
+            },
+            "units": {
+                "sampled_unit": self.sampled_unit,
+                "reporting_unit": self.reporting_unit,
+                "link_refs": [x.as_dict() for x in self.link_refs],
+            },
+            "measure": {
+                "estimand": self.estimand,
+                "weight_method": self.weight_method,
+                "design_ref": self.design_ref.as_dict(),
+                "uncertainty_method": self.uncertainty_method,
+            },
+            "authority": {
+                "direction": self.direction,
+                "role": self.role,
+                "consumer_use": self.consumer_use,
+                "permission_ref": self.permission_ref.as_dict(),
+            },
+            "bindings": {
+                "grammar_version": self.grammar_version,
+                "custody_ref": self.custody_ref.as_dict(),
+                "source_universe_ref": self.source_universe_ref.as_dict(),
+                "release_ref": self.release_ref.as_dict(),
+                "risk_set_ref": self.risk_set_ref.as_dict(),
+                "target_ref": self.target_ref.as_dict(),
+            },
+            "occurrence": {
+                "item": self.occurrence_item,
+                "option": self.occurrence_option,
+                "form": self.occurrence_form,
+                "repeat": self.occurrence_repeat,
+            },
+            "domain_state_version": self.domain_state_version,
+        }
+
+    @property
+    def context_ref(self) -> ExactRef:
+        digest = semantic_hash(self.material())
+        return ExactRef(
+            "R61_ADMITTED_EVIDENCE_CONTEXT@1",
+            f"urn:rawlsing:r61:admitted-evidence-context:sha256:{digest}",
+            digest,
+        )
 
 
 @dataclass(frozen=True)
@@ -383,6 +558,7 @@ class EvidenceRequest:
         return {
             "encoding": K_ENCODING_VERSION,
             "contract": REQUEST_CONTRACT_ID,
+            "request_id": self.request_id,
             "schema_version": self.schema_version,
             "claim_grade": self.claim_grade,
             "source_identity": {
@@ -451,6 +627,83 @@ class EvidenceRequest:
             REQUEST_CONTRACT_ID,
             f"urn:rawlsing:r61:evidence-request:sha256:{self.key}",
             self.key,
+        )
+
+    @classmethod
+    def from_material(cls, material: Mapping[str, Any]) -> "EvidenceRequest":
+        if not isinstance(material, Mapping):
+            raise EvidenceRequestShapeError("request material must be a mapping")
+        if material.get("contract") != REQUEST_CONTRACT_ID:
+            raise EvidenceRequestShapeError("unexpected request contract")
+        source = material["source_identity"]
+        units = material["units"]
+        applicability = material["applicability"]
+        query = material["query"]
+        measure = material["measure"]
+        authority = material["authority"]
+        bindings = material["bindings"]
+        clocks = material["clocks"]
+        conditions = tuple(
+            TypedCondition(
+                OccurrenceKey(
+                    item["occurrence"]["item"],
+                    item["occurrence"]["option"],
+                    item["occurrence"]["form"],
+                    item["occurrence"]["repeat"],
+                ),
+                TypedValue(item["typed_value"]["tag"], _typed_from_material(item["typed_value"])),
+                item["domain_state_version"],
+                item["conditioner_binding_id"],
+            )
+            for item in query["ordered_conditions"]
+        )
+        occurrence = material["occurrence"]
+        return cls(
+            request_id=material["request_id"],
+            schema_version=material["schema_version"],
+            claim_grade=material["claim_grade"],
+            source_id=source["source_id"],
+            dataset_id=source["dataset_id"],
+            wave_id=source["wave_id"],
+            edition=source["edition"],
+            byte_digest=source["byte_digest"],
+            instrument_version=source["instrument_version"],
+            occurrence=OccurrenceKey(
+                occurrence["item"], occurrence["option"], occurrence["form"], occurrence["repeat"]
+            ),
+            sampled_unit=units["sampled_unit"],
+            reporting_unit=units["reporting_unit"],
+            link_refs=tuple(ExactRef(**x) for x in units["link_refs"]),
+            risk_set_ref=ExactRef(**applicability["risk_set_ref"]),
+            predicate_ref=ExactRef(**applicability["predicate_ref"]),
+            predicate_hash=applicability["predicate_hash"],
+            ordered_target_refs=tuple(
+                ExactRef(**x) for x in query["ordered_target_refs"]
+            ),
+            ordered_conditions=conditions,
+            operation_class=query["operation_class"],
+            arity=query["arity"],
+            estimand=measure["estimand"],
+            weight_method=measure["weight_method"],
+            design_ref=ExactRef(**measure["design_ref"]),
+            uncertainty_method=measure["uncertainty_method"],
+            direction=authority["direction"],
+            role=authority["role"],
+            consumer_use=authority["consumer_use"],
+            grammar_version=bindings["grammar_version"],
+            model_rule_hash=bindings["model_rule_hash"],
+            release_ref=ExactRef(**bindings["release_ref"]),
+            custody_ref=ExactRef(**bindings["custody_ref"]),
+            observation_clock=clocks["observation"],
+            reference_clock=clocks["reference"],
+            as_of_clock=clocks["as_of"],
+            publication_clock=clocks["publication"],
+            permission_ref=ExactRef(**authority["permission_ref"]),
+            producer_query_ref=ExactRef(**bindings["producer_query_ref"]),
+            consumer_query_ref=ExactRef(**bindings["consumer_query_ref"]),
+            consumer_binding_fingerprint=bindings["consumer_binding_fingerprint"],
+            source_universe_ref=ExactRef(**bindings["source_universe_ref"]),
+            target_ref=ExactRef(**bindings["target_ref"]),
         )
 
     def changed(self, **changes: Any) -> "EvidenceRequest":
@@ -573,6 +826,95 @@ def _consumer_binding_fingerprint(
     return semantic_hash(consumer_query.conditioner_bindings[0].material())
 
 
+def _value_bearing_leaves(predicate: EmpiricalPredicate) -> tuple[Mapping[str, Any], ...]:
+    ast = canonicalize(predicate.predicate_ast)
+    leaves: list[Mapping[str, Any]] = []
+
+    def collect(node: Mapping[str, Any]) -> None:
+        if (
+            node.get("op") == "LEAF"
+            and node.get("leaf_type") in {"SURVEY_RESPONSE_EVENT", "EMPIRICAL_POSITION_COORDINATE"}
+            and node.get("operator") == "EQ"
+            and "exact_value" in node
+        ):
+            leaves.append(node)
+        elif node.get("op") in {"AND", "OR", "NOT"}:
+            for child in node.get("children", ()):
+                collect(child)
+
+    collect(ast)
+    return tuple(leaves)
+
+
+def _leaf_semantic_ref(leaf: Mapping[str, Any]) -> Mapping[str, Any]:
+    if leaf.get("leaf_type") == "EMPIRICAL_POSITION_COORDINATE":
+        return leaf.get("coordinate_semantic_ref")
+    return leaf.get("question_semantic_ref")
+
+
+def _actual_condition_identities(binding: "EmpiricalProducerBinding") -> tuple[Mapping[str, Any], ...]:
+    leaves = _value_bearing_leaves(binding.predicate)
+    bindings = binding.consumer_query.conditioner_bindings
+    if len(leaves) != len(bindings):
+        raise EvidenceBindingMismatch(
+            "actual producer leaf/conditioner count differs from consumer bindings"
+        )
+    out = []
+    for leaf, conditioner in zip(leaves, bindings):
+        semantic_ref = _leaf_semantic_ref(leaf)
+        if not isinstance(semantic_ref, Mapping):
+            raise EvidenceBindingMismatch("producer leaf lacks a semantic ref")
+        exact = leaf.get("exact_value")
+        value = TypedValue.build(exact)
+        out.append(
+            {
+                "conditioner_binding_id": conditioner.binding_id,
+                "occurrence": {
+                    "item": exact,
+                    "option": str(exact),
+                    "form": binding.context.occurrence_form,
+                    "repeat": binding.context.occurrence_repeat,
+                },
+                "leaf_semantic_ref": canonicalize(semantic_ref),
+                "typed_value": value.material(),
+                "domain_state_version": binding.context.domain_state_version,
+            }
+        )
+    return tuple(out)
+
+
+def _item_matches_leaf(item: str, leaf_semantic_ref: Mapping[str, Any]) -> bool:
+    object_id = leaf_semantic_ref.get("object_id")
+    if not isinstance(object_id, str):
+        return False
+    tail = object_id.rsplit(":", 1)[-1]
+    return tail == item or tail.endswith("-" + item) or tail.endswith("_" + item)
+
+
+def _context_matches_request(context: AdmittedEvidenceContext, request: EvidenceRequest) -> bool:
+    labels = (
+        "source_id", "dataset_id", "wave_id", "edition", "byte_digest",
+        "instrument_version", "sampled_unit", "reporting_unit", "estimand",
+        "weight_method", "uncertainty_method", "direction", "role",
+        "consumer_use", "grammar_version", "observation_clock", "reference_clock",
+        "as_of_clock", "publication_clock",
+    )
+    for name in labels:
+        if getattr(context, name) != getattr(request, name):
+            return False
+    if context.link_refs != request.link_refs:
+        return False
+    for name in ("design_ref", "custody_ref", "permission_ref", "source_universe_ref", "release_ref", "risk_set_ref", "target_ref"):
+        if getattr(context, name) != getattr(request, name):
+            return False
+    return (
+        context.occurrence_item == request.occurrence.item
+        and context.occurrence_option == request.occurrence.option
+        and context.occurrence_form == request.occurrence.form
+        and context.occurrence_repeat == request.occurrence.repeat
+    )
+
+
 @dataclass(frozen=True)
 class EmpiricalProducerBinding:
     """Exact actual-provider determinants for one registered request key."""
@@ -586,6 +928,7 @@ class EmpiricalProducerBinding:
     consumer_query: PositionedSubjectPossibilityQuery
     model_rule: PositionedSubjectPossibilityModelRule
     condition_binding_witness: ConditionValueBindingWitness
+    context: AdmittedEvidenceContext
     producer: Callable[..., EmpiricalPossibilitySliceProviderResult] = field(
         default=provide_empirical_possibility_slice, repr=False, compare=False
     )
@@ -593,43 +936,86 @@ class EmpiricalProducerBinding:
     def __post_init__(self) -> None:
         if not isinstance(self.request, EvidenceRequest):
             raise EvidenceBindingMismatch("binding.request must be EvidenceRequest")
-        if self.request.consumer_query_ref != self.consumer_query.ref:
-            raise EvidenceBindingMismatch("request consumer query ref mismatch")
-        if self.request.producer_query_ref != self.empirical_query.ref:
-            raise EvidenceBindingMismatch("request producer query ref mismatch")
-        if self.request.predicate_ref != self.predicate.ref:
-            raise EvidenceBindingMismatch("request predicate ref mismatch")
-        if self.request.predicate_hash != self.predicate.predicate_hash:
-            raise EvidenceBindingMismatch("request predicate hash mismatch")
-        if tuple(sorted(self.release_refs, key=lambda x: x.key)) != (
-            self.request.release_ref,
-        ):
-            raise EvidenceBindingMismatch("request release ref mismatch")
-        if self.request.model_rule_hash != self.model_rule.rule_hash:
-            raise EvidenceBindingMismatch("request model rule hash mismatch")
-        if len(self.consumer_query.conditioner_bindings) != 1:
-            raise EvidenceBindingMismatch("C1 single-conditioner grain required")
-        if self.request.consumer_binding_fingerprint != _consumer_binding_fingerprint(
-            self.consumer_query, self.condition_binding_witness
-        ):
-            raise EvidenceBindingMismatch("request consumer binding fingerprint mismatch")
-        if self.request.source_universe_ref != self.consumer_query.source_universe_ref:
-            raise EvidenceBindingMismatch("request source universe mismatch")
-        if self.request.target_ref != self.consumer_query.target_ref:
-            raise EvidenceBindingMismatch("request target ref mismatch")
-        if self.request.risk_set_ref != exact_ref(
+        if not isinstance(self.context, AdmittedEvidenceContext):
+            raise EvidenceBindingMismatch("binding.context must be AdmittedEvidenceContext")
+        if tuple(sorted(self.release_refs, key=lambda x: x.key)) != (self.context.release_ref,):
+            raise EvidenceBindingMismatch("actual release refs differ from admitted context")
+        if self.context.source_universe_ref != self.consumer_query.source_universe_ref:
+            raise EvidenceBindingMismatch("admitted context source universe mismatch")
+        if self.context.release_ref != self.consumer_query.release_ref:
+            raise EvidenceBindingMismatch("admitted context release mismatch")
+        if self.context.risk_set_ref != exact_ref(
             self.empirical_query.risk_set_ref, "risk_set_ref"
         ):
-            raise EvidenceBindingMismatch("request risk set mismatch")
-        if tuple(self.request.ordered_target_refs) != tuple(
-            exact_ref(target, "target_ref")
-            for target in self.empirical_query.target_refs
+            raise EvidenceBindingMismatch("admitted context risk set mismatch")
+        if self.context.target_ref != self.consumer_query.target_ref:
+            raise EvidenceBindingMismatch("admitted context target mismatch")
+        if self.context.authority_refs != tuple(
+            sorted(set(self.predicate.authority_snapshot_refs), key=lambda x: x.key)
         ):
-            raise EvidenceBindingMismatch("request ordered targets mismatch")
+            raise EvidenceBindingMismatch(
+                "admitted context authority refs differ from the actual predicate authorities"
+            )
+        if len(self.context.link_refs) != len(set(self.context.link_refs)):
+            raise EvidenceBindingMismatch("admitted context link refs are ambiguous")
+
+    def mismatch_reason(self, request: EvidenceRequest) -> str | None:
+        if request.material() != self.request.material() or request.key != self.request.key:
+            return "registered request material differs from requested K"
+        if not _context_matches_request(self.context, request):
+            return "request labels/clocks/currentness differ from admitted context"
+        if request.consumer_query_ref != self.consumer_query.ref:
+            return "request consumer query ref mismatch"
+        if request.producer_query_ref != self.empirical_query.ref:
+            return "request producer query ref mismatch"
+        if request.predicate_ref != self.predicate.ref:
+            return "request predicate ref mismatch"
+        if request.predicate_hash != self.predicate.predicate_hash:
+            return "request predicate hash mismatch"
+        if request.release_ref != self.context.release_ref:
+            return "request release ref mismatch"
+        if request.model_rule_hash != self.model_rule.rule_hash:
+            return "request model rule hash mismatch"
+        if request.consumer_binding_fingerprint != _consumer_binding_fingerprint(
+            self.consumer_query, self.condition_binding_witness
+        ):
+            return "request consumer binding fingerprint mismatch"
+        if request.source_universe_ref != self.consumer_query.source_universe_ref:
+            return "request source universe mismatch"
+        if request.target_ref != self.consumer_query.target_ref:
+            return "request target ref mismatch"
+        if request.risk_set_ref != exact_ref(self.empirical_query.risk_set_ref, "risk_set_ref"):
+            return "request risk set mismatch"
+        if tuple(request.ordered_target_refs) != tuple(
+            exact_ref(target, "target_ref") for target in self.empirical_query.target_refs
+        ):
+            return "request ordered targets mismatch"
+        actual = _actual_condition_identities(self)
+        if len(request.ordered_conditions) != len(actual):
+            return "request condition arity differs from actual producer determinants"
+        for index, (condition, identity) in enumerate(zip(request.ordered_conditions, actual)):
+            if condition.conditioner_binding_id != identity["conditioner_binding_id"]:
+                return f"condition {index} binding id mismatch"
+            if condition.domain_state_version != identity["domain_state_version"]:
+                return f"condition {index} domain/state version mismatch"
+            if condition.value.material() != identity["typed_value"]:
+                return f"condition {index} typed value mismatch"
+            occurrence = identity["occurrence"]
+            if condition.occurrence.option != occurrence["option"]:
+                return f"condition {index} option/value mismatch"
+            if condition.occurrence.form != occurrence["form"] or condition.occurrence.repeat != occurrence["repeat"]:
+                return f"condition {index} form/repeat mismatch"
+            if not _item_matches_leaf(condition.occurrence.item, identity["leaf_semantic_ref"]):
+                return f"condition {index} item does not match actual producer question"
+        return None
 
     def identity_material(self) -> Mapping[str, Any]:
         return {
             "request_key": self.request.key,
+            "context_ref": self.context.context_ref.as_dict(),
+            "context": canonicalize(self.context.material()),
+            "actual_conditions": [canonicalize(x) for x in _actual_condition_identities(self)],
+            "validated_conditions": [condition.material() for condition in self.request.ordered_conditions],
             "producer_query_ref": self.empirical_query.ref.as_dict(),
             "predicate_ref": self.predicate.ref.as_dict(),
             "predicate_hash": self.predicate.predicate_hash,
@@ -846,7 +1232,8 @@ def _consumer_values(
     request: EvidenceRequest,
     evidence: PossibilitySliceEvidence,
     consumer_result: PositionedSubjectPossibilityResult,
-    composition: AnalyticalCompositionResult,
+    denominator: int,
+    cells: Iterable[Mapping[str, Any]],
 ) -> Mapping[str, Any]:
     return {
         "schema": "R61_EVIDENCE_CONSUMER_VALUES_READ@1",
@@ -860,18 +1247,122 @@ def _consumer_values(
         "result_state": consumer_result.result_state,
         "result_hash": consumer_result.result_hash,
         "retained_conditioner_ids": list(evidence.retained_conditioner_ids),
-        "denominator": composition.raw_denominator_support,
-        "cells": [canonicalize(cell) for cell in _cells(composition)],
+        "denominator": denominator,
+        "cells": [canonicalize(cell) for cell in cells],
         "model_rule_hash": request.model_rule_hash,
     }
 
 
-class EvidenceResolver:
-    """Exact full-K registry and authenticated-cache resolver."""
+def _cell_core(cell: Mapping[str, Any]) -> Mapping[str, Any]:
+    return {
+        "cell": cell.get("cell"),
+        "cell_state": cell.get("cell_state"),
+        "raw_numerator_support": cell.get("raw_numerator_support"),
+        "raw_probability_exact_fraction": cell.get("raw_probability_exact_fraction"),
+    }
 
-    def __init__(self) -> None:
+
+def _evidence_cells(evidence: PossibilitySliceEvidence) -> tuple[Mapping[str, Any], ...]:
+    geometry = canonicalize(evidence.geometry or {})
+    return tuple(_cell_core(cell) for cell in geometry.get("cells", ()))
+
+
+def _context_material_matches_request(
+    material: Mapping[str, Any], request: EvidenceRequest
+) -> bool:
+    try:
+        source = material["source_identity"]
+        units = material["units"]
+        measure = material["measure"]
+        authority = material["authority"]
+        bindings = material["bindings"]
+        occurrence = material["occurrence"]
+        labels = {
+            "source_id": source["source_id"],
+            "dataset_id": source["dataset_id"],
+            "wave_id": source["wave_id"],
+            "edition": source["edition"],
+            "byte_digest": source["byte_digest"],
+            "instrument_version": source["instrument_version"],
+            "sampled_unit": units["sampled_unit"],
+            "reporting_unit": units["reporting_unit"],
+            "estimand": measure["estimand"],
+            "weight_method": measure["weight_method"],
+            "uncertainty_method": measure["uncertainty_method"],
+            "direction": authority["direction"],
+            "role": authority["role"],
+            "consumer_use": authority["consumer_use"],
+            "grammar_version": bindings["grammar_version"],
+        }
+    except (KeyError, TypeError):
+        return False
+    for name, value in labels.items():
+        if getattr(request, name) != value:
+            return False
+    if [ExactRef(**x) for x in units["link_refs"]] != list(request.link_refs):
+        return False
+    ref_fields = {
+        "design_ref": measure["design_ref"],
+        "custody_ref": bindings["custody_ref"],
+        "permission_ref": authority["permission_ref"],
+        "source_universe_ref": bindings["source_universe_ref"],
+        "release_ref": bindings["release_ref"],
+        "risk_set_ref": bindings["risk_set_ref"],
+        "target_ref": bindings["target_ref"],
+    }
+    for name, value in ref_fields.items():
+        if getattr(request, name) != ExactRef(**value):
+            return False
+    return (
+        request.occurrence.item == occurrence["item"]
+        and request.occurrence.option == occurrence["option"]
+        and request.occurrence.form == occurrence["form"]
+        and request.occurrence.repeat == occurrence["repeat"]
+    )
+
+
+class TrustedCacheIssuer:
+    """Test-only ephemeral issuer boundary for cold cache records.
+
+    The key is generated in memory or supplied explicitly by a supervisor.  It is
+    deliberately not written into cache material by this module.  Production
+    secrets are never read.
+    """
+
+    def __init__(self, key: bytes | None = None) -> None:
+        self._key = key if key is not None else secrets.token_bytes(32)
+        if len(self._key) < 32:
+            raise EvidenceCacheIntegrityError("issuer key must be at least 32 bytes")
+
+    @property
+    def key_hex(self) -> str:
+        return self._key.hex()
+
+    def seal(self, payload: Mapping[str, Any]) -> str:
+        body = json.dumps(
+            canonicalize(payload), sort_keys=True, separators=(",", ":"), ensure_ascii=True
+        ).encode("utf-8")
+        return hmac.new(self._key, body, hashlib.sha256).hexdigest()
+
+    def verify(self, payload: Mapping[str, Any], seal: Any) -> bool:
+        return isinstance(seal, str) and hmac.compare_digest(self.seal(payload), seal)
+
+
+class EvidenceResolver:
+    """Exact full-K registry and association/issuer-bound cache resolver."""
+
+    def __init__(
+        self,
+        *,
+        cache_issuer: TrustedCacheIssuer | None = None,
+        trusted_binding_hashes: Iterable[str] = (),
+    ) -> None:
         self._bindings: dict[str, EmpiricalProducerBinding] = {}
         self._cache: dict[str, EvidenceResult] = {}
+        self._requests: dict[str, EvidenceRequest] = {}
+        self._binding_materials: dict[str, Mapping[str, Any]] = {}
+        self._issuer = cache_issuer
+        self._trusted_binding_hashes = frozenset(trusted_binding_hashes)
 
     def bind(self, binding: EmpiricalProducerBinding) -> str:
         if not isinstance(binding, EmpiricalProducerBinding):
@@ -887,6 +1378,8 @@ class EvidenceResolver:
                 "cannot bind a producer over an existing authenticated cache entry"
             )
         self._bindings[key] = binding
+        self._requests[key] = binding.request
+        self._binding_materials[key] = binding.identity_material()
         return key
 
     def resolve(self, request: EvidenceRequest) -> EvidenceResult:
@@ -903,14 +1396,19 @@ class EvidenceResolver:
                 eligibility="UNKNOWN",
                 execution="NOT_STARTED",
             )
-        if (
-            binding.request.material() != request.material()
-            or binding.request.key != request.key
-        ):
-            return _result_refusal(request, REFUSAL_IDENTITY_MISMATCH)
+        reason = binding.mismatch_reason(request)
+        if reason is not None:
+            return _result_refusal(
+                request,
+                REFUSAL_IDENTITY_MISMATCH,
+                eligibility="UNKNOWN",
+                execution="NOT_STARTED",
+            )
         result = self._produce(binding)
         if result.result_state == "SUPPORTED":
             self._cache[request.key] = result
+            self._requests[request.key] = request
+            self._binding_materials[request.key] = binding.identity_material()
         return result
 
     def _produce(self, binding: EmpiricalProducerBinding) -> EvidenceResult:
@@ -950,9 +1448,7 @@ class EvidenceResolver:
             evidence = provider.generated_evidence_or_null
             producer_consumer = provider.consumer_result_or_null
             if evidence is None or producer_consumer is None:
-                return _result_refusal(
-                    request, REFUSAL_MISSING_STRUCTURAL_STATE
-                )
+                return _result_refusal(request, REFUSAL_MISSING_STRUCTURAL_STATE)
             if (
                 evidence.target_ref != request.target_ref
                 or evidence.source_universe_ref != request.source_universe_ref
@@ -986,8 +1482,13 @@ class EvidenceResolver:
                     producer_fact_state=composition.producer_fact_state,
                     uncertainty_state=composition.uncertainty_state,
                 )
+            cells = _cells(composition)
             values = _consumer_values(
-                request, evidence, actual_consumer, composition
+                request,
+                evidence,
+                actual_consumer,
+                composition.raw_denominator_support,
+                cells,
             )
             return EvidenceResult(
                 request_key=request.key,
@@ -996,7 +1497,7 @@ class EvidenceResolver:
                 result_state="SUPPORTED",
                 provenance=PROVENANCE_CANONICAL,
                 denominator=composition.raw_denominator_support,
-                cells=_cells(composition),
+                cells=cells,
                 evidence_ref=evidence.evidence_ref,
                 producer_receipt_ref=provider.receipt_ref,
                 producer_fact_ref=composition.producer_fact_ref,
@@ -1073,27 +1574,43 @@ class EvidenceResolver:
         rule = cached.model_rule_object
         if evidence is None or query is None or rule is None:
             return _result_refusal(request, REFUSAL_STALE_CACHE)
+        if (
+            evidence.source_universe_ref != request.source_universe_ref
+            or evidence.release_ref != request.release_ref
+            or evidence.target_ref != request.target_ref
+            or query.ref != request.consumer_query_ref
+            or query.source_universe_ref != request.source_universe_ref
+            or query.release_ref != request.release_ref
+            or query.target_ref != request.target_ref
+            or rule.rule_hash != request.model_rule_hash
+        ):
+            return _result_refusal(request, REFUSAL_STALE_CACHE)
         actual = evaluate_positioned_subject_possibility(
             query=query, rule=rule, evidence=(evidence,)
         )
-        if actual.result_hash != cached.consumer_result_hash:
+        if actual.result_state != "EXACT_SUPPORTED":
             return _result_refusal(request, REFUSAL_STALE_CACHE)
-        values = dict(cached.consumer_values_read or {})
-        values["request_key"] = request.key
-        values["cache_seal"] = semantic_hash(cached.material())
+        denominator = evidence.raw_support
+        if type(denominator) is not int or denominator <= 0:
+            return _result_refusal(request, REFUSAL_STALE_CACHE)
+        cells = _evidence_cells(evidence)
+        values = _consumer_values(request, evidence, actual, denominator, cells)
+        values["cache_trust_grade"] = (
+            CACHE_TRUST_ISSUER if self._issuer is not None else CACHE_TRUST_ASSOCIATION
+        )
         return EvidenceResult(
             request_key=request.key,
             eligibility_state=cached.eligibility_state,
             execution_state=cached.execution_state,
-            result_state=cached.result_state,
+            result_state="SUPPORTED",
             provenance=PROVENANCE_CACHE,
-            denominator=cached.denominator,
-            cells=cached.cells,
-            evidence_ref=cached.evidence_ref,
+            denominator=denominator,
+            cells=cells,
+            evidence_ref=evidence.evidence_ref,
             producer_receipt_ref=cached.producer_receipt_ref,
             producer_fact_ref=cached.producer_fact_ref,
             producer_fact_state=cached.producer_fact_state,
-            consumer_query_ref=cached.consumer_query_ref,
+            consumer_query_ref=request.consumer_query_ref,
             consumer_result_state=actual.result_state,
             consumer_result_hash=actual.result_hash,
             consumer_values_read=values,
@@ -1108,10 +1625,20 @@ class EvidenceResolver:
         entries = []
         for key in sorted(self._cache):
             result = self._cache[key]
+            request = self._requests.get(key)
+            binding_material = self._binding_materials.get(key)
+            if request is None or binding_material is None:
+                raise EvidenceCacheIntegrityError(
+                    "cache entry lacks its exact request/producer preimage"
+                )
+            binding_payload = canonicalize(binding_material)
+            binding_payload["binding_hash"] = semantic_hash(binding_payload)
             payload = {
                 "schema": CACHE_SCHEMA,
                 "seal_algorithm": CACHE_SEAL_ALGORITHM,
                 "request_key": key,
+                "request_material": canonicalize(request.material()),
+                "producer_binding": binding_payload,
                 "result": canonicalize(result.material()),
                 "evidence": None
                 if result.evidence_object is None
@@ -1123,7 +1650,13 @@ class EvidenceResolver:
                 if result.model_rule_object is None
                 else canonicalize(result.model_rule_object.material()),
             }
-            entries.append({**payload, "seal": semantic_hash(payload)})
+            entry = {**payload, "seal": semantic_hash(payload)}
+            if self._issuer is not None:
+                entry["issuer_grade"] = CACHE_TRUST_ISSUER
+                entry["issuer_seal"] = self._issuer.seal(
+                    {key: value for key, value in entry.items() if key != "issuer_seal"}
+                )
+            entries.append(entry)
         return {"schema": CACHE_SCHEMA, "entries": entries}
 
     def import_authenticated_cache(self, material: Mapping[str, Any]) -> None:
@@ -1133,23 +1666,73 @@ class EvidenceResolver:
         if not isinstance(entries, Sequence) or isinstance(entries, (str, bytes)):
             raise EvidenceCacheIntegrityError("cache entries must be a sequence")
         imported: dict[str, EvidenceResult] = {}
+        imported_requests: dict[str, EvidenceRequest] = {}
+        imported_bindings: dict[str, Mapping[str, Any]] = {}
         for raw in entries:
             if not isinstance(raw, Mapping):
                 raise EvidenceCacheIntegrityError("cache entry must be a mapping")
             payload = {
                 key: canonicalize(value)
                 for key, value in raw.items()
-                if key != "seal"
+                if key not in {"seal", "issuer_seal", "issuer_grade"}
             }
             seal = raw.get("seal")
             if seal != semantic_hash(payload):
                 raise EvidenceCacheIntegrityError("cache entry seal mismatch")
+            if self._issuer is not None:
+                if not self._issuer.verify(
+                    {key: value for key, value in raw.items() if key != "issuer_seal"},
+                    raw.get("issuer_seal"),
+                ):
+                    raise EvidenceCacheIntegrityError("cache issuer seal missing/invalid")
             request_key = _sha(raw.get("request_key"), "cache.request_key")
+            request_material = raw.get("request_material")
+            if not isinstance(request_material, Mapping):
+                raise EvidenceCacheIntegrityError(
+                    "cache entry requires a full request K preimage"
+                )
+            request = EvidenceRequest.from_material(request_material)
+            if request.key != request_key:
+                raise EvidenceCacheIntegrityError(
+                    "cache request preimage does not hash to the advertised K"
+                )
+            producer_binding = raw.get("producer_binding")
+            if not isinstance(producer_binding, Mapping):
+                raise EvidenceCacheIntegrityError(
+                    "cache entry requires actual producer-binding determinants"
+                )
+            if producer_binding.get("request_key") != request_key:
+                raise EvidenceCacheIntegrityError("cache producer binding K mismatch")
+            binding_hash = semantic_hash(
+                {
+                    key: value
+                    for key, value in producer_binding.items()
+                    if key != "binding_hash"
+                }
+            )
+            if producer_binding.get("binding_hash") != binding_hash:
+                raise EvidenceCacheIntegrityError("producer binding self-hash mismatch")
+            if self._trusted_binding_hashes and binding_hash not in self._trusted_binding_hashes:
+                raise EvidenceCacheIntegrityError(
+                    "producer binding is not in the trusted binding set"
+                )
+            context_material = producer_binding.get("context")
+            if not isinstance(context_material, Mapping) or not _context_material_matches_request(
+                context_material, request
+            ):
+                raise EvidenceCacheIntegrityError(
+                    "cache context labels/refs do not match the request K"
+                )
+            validated_conditions = producer_binding.get("validated_conditions")
+            if validated_conditions != [x.material() for x in request.ordered_conditions]:
+                raise EvidenceCacheIntegrityError(
+                    "cache producer conditions do not match the request K"
+                )
             result_material = raw.get("result")
             if not isinstance(result_material, Mapping):
                 raise EvidenceCacheIntegrityError("cache result material required")
             if result_material.get("request_key") != request_key:
-                raise EvidenceCacheIntegrityError("cache request key mismatch")
+                raise EvidenceCacheIntegrityError("cache result K mismatch")
             evidence = None
             evidence_material = raw.get("evidence")
             if evidence_material is not None:
@@ -1162,57 +1745,136 @@ class EvidenceResolver:
             rule_material = raw.get("model_rule")
             if rule_material is not None:
                 rule = _rule_from_material(rule_material)
-            result = EvidenceResult(
-                request_key=request_key,
-                eligibility_state=result_material["eligibility_state"],
-                execution_state=result_material["execution_state"],
-                result_state=result_material["result_state"],
-                provenance=PROVENANCE_CACHE,
-                denominator=result_material["denominator"],
-                cells=tuple(result_material["cells"]),
-                evidence_ref=_optional_ref(result_material["evidence_ref"]),
-                producer_receipt_ref=_optional_ref(
-                    result_material["producer_receipt_ref"]
-                ),
-                producer_fact_ref=_optional_ref(result_material["producer_fact_ref"]),
-                producer_fact_state=result_material["producer_fact_state"],
-                consumer_query_ref=_optional_ref(
-                    result_material["consumer_query_ref"]
-                ),
-                consumer_result_state=result_material["consumer_result_state"],
-                consumer_result_hash=result_material["consumer_result_hash"],
-                consumer_values_read=result_material["consumer_values_read"],
-                uncertainty_state=result_material["uncertainty_state"],
-                typed_refusal=result_material["typed_refusal"],
-                evidence_object=evidence,
-                consumer_query_object=query,
-                model_rule_object=rule,
-            )
-            if result.result_state == "SUPPORTED":
+            if query is not None:
+                if (
+                    query.ref != request.consumer_query_ref
+                    or query.source_universe_ref != request.source_universe_ref
+                    or query.release_ref != request.release_ref
+                    or query.target_ref != request.target_ref
+                    or len(query.conditioner_bindings) != len(request.ordered_conditions)
+                ):
+                    raise EvidenceCacheIntegrityError(
+                        "cached consumer query does not match the request K"
+                    )
+                if [
+                    binding.binding_id for binding in query.conditioner_bindings
+                ] != [
+                    condition.conditioner_binding_id
+                    for condition in request.ordered_conditions
+                ]:
+                    raise EvidenceCacheIntegrityError(
+                        "cached conditioner ids do not match the request K"
+                    )
+            if rule is not None and rule.rule_hash != request.model_rule_hash:
+                raise EvidenceCacheIntegrityError("cached model rule does not match K")
+            if result_material["result_state"] == "SUPPORTED":
                 if evidence is None or query is None or rule is None:
                     raise EvidenceCacheIntegrityError(
                         "supported cache entry requires evidence/query/rule"
                     )
+                if (
+                    evidence.source_universe_ref != request.source_universe_ref
+                    or evidence.release_ref != request.release_ref
+                    or evidence.target_ref != request.target_ref
+                    or evidence.evidence_ref != _optional_ref(result_material["evidence_ref"])
+                ):
+                    raise EvidenceCacheIntegrityError(
+                        "cached evidence does not match the request K"
+                    )
                 actual = evaluate_positioned_subject_possibility(
                     query=query, rule=rule, evidence=(evidence,)
                 )
-                if actual.result_hash != result.consumer_result_hash:
+                if actual.result_state != "EXACT_SUPPORTED":
                     raise EvidenceCacheIntegrityError(
-                        "cached consumer result does not replay"
+                        "cached evidence does not replay to exact support"
                     )
-                if (
-                    result.evidence_ref is None
-                    or evidence.evidence_ref != result.evidence_ref
-                ):
-                    raise EvidenceCacheIntegrityError("cached evidence ref mismatch")
+                denominator = evidence.raw_support
+                if type(denominator) is not int or denominator <= 0:
+                    raise EvidenceCacheIntegrityError("cached evidence denominator invalid")
+                cells = _evidence_cells(evidence)
+                if result_material.get("denominator") != denominator:
+                    raise EvidenceCacheIntegrityError(
+                        "cached denominator disagrees with producer evidence"
+                    )
+                cached_cells = sorted(
+                    (canonicalize(_cell_core(x)) for x in result_material.get("cells", ())),
+                    key=lambda x: str(x.get("cell")),
+                )
+                evidence_cells = sorted(
+                    (canonicalize(x) for x in cells),
+                    key=lambda x: str(x.get("cell")),
+                )
+                if cached_cells != evidence_cells:
+                    raise EvidenceCacheIntegrityError(
+                        "cached cells disagree with producer evidence"
+                    )
+                if actual.result_hash != result_material.get("consumer_result_hash"):
+                    raise EvidenceCacheIntegrityError(
+                        "cached consumer hash disagrees with actual evaluator"
+                    )
+                values = _consumer_values(request, evidence, actual, denominator, cells)
+                values["cache_trust_grade"] = (
+                    CACHE_TRUST_ISSUER
+                    if self._issuer is not None
+                    else CACHE_TRUST_ASSOCIATION
+                )
+                result = EvidenceResult(
+                    request_key=request_key,
+                    eligibility_state=result_material["eligibility_state"],
+                    execution_state=result_material["execution_state"],
+                    result_state="SUPPORTED",
+                    provenance=PROVENANCE_CACHE,
+                    denominator=denominator,
+                    cells=cells,
+                    evidence_ref=evidence.evidence_ref,
+                    producer_receipt_ref=_optional_ref(result_material["producer_receipt_ref"]),
+                    producer_fact_ref=_optional_ref(result_material["producer_fact_ref"]),
+                    producer_fact_state=result_material["producer_fact_state"],
+                    consumer_query_ref=request.consumer_query_ref,
+                    consumer_result_state=actual.result_state,
+                    consumer_result_hash=actual.result_hash,
+                    consumer_values_read=values,
+                    uncertainty_state=result_material["uncertainty_state"],
+                    evidence_object=evidence,
+                    consumer_query_object=query,
+                    model_rule_object=rule,
+                    consumer_result_object=actual,
+                )
+            else:
+                result = EvidenceResult(
+                    request_key=request_key,
+                    eligibility_state=result_material["eligibility_state"],
+                    execution_state=result_material["execution_state"],
+                    result_state=result_material["result_state"],
+                    provenance=PROVENANCE_CACHE,
+                    denominator=result_material["denominator"],
+                    cells=tuple(result_material["cells"]),
+                    evidence_ref=_optional_ref(result_material["evidence_ref"]),
+                    producer_receipt_ref=_optional_ref(result_material["producer_receipt_ref"]),
+                    producer_fact_ref=_optional_ref(result_material["producer_fact_ref"]),
+                    producer_fact_state=result_material["producer_fact_state"],
+                    consumer_query_ref=_optional_ref(result_material["consumer_query_ref"]),
+                    consumer_result_state=result_material["consumer_result_state"],
+                    consumer_result_hash=result_material["consumer_result_hash"],
+                    consumer_values_read=result_material["consumer_values_read"],
+                    uncertainty_state=result_material["uncertainty_state"],
+                    typed_refusal=result_material["typed_refusal"],
+                    evidence_object=evidence,
+                    consumer_query_object=query,
+                    model_rule_object=rule,
+                )
             if request_key in imported:
                 raise EvidenceCacheIntegrityError("duplicate cache request key")
             imported[request_key] = result
+            imported_requests[request_key] = request
+            imported_bindings[request_key] = producer_binding
         if set(imported) & set(self._bindings):
             raise EvidenceCacheIntegrityError(
                 "cache/import conflicts with a registered producer binding"
             )
         self._cache.update(imported)
+        self._requests.update(imported_requests)
+        self._binding_materials.update(imported_bindings)
 
 
 def _optional_ref(value: Any) -> ExactRef | None:
@@ -1487,8 +2149,21 @@ def reduce_required_support(
         support_state = "VALID_EMPTY" if valid_empty_frontier else "NO_REQUIRED_SUPPORT"
     elif exact_all_support:
         support_state = "EXACT_SUPPORT"
+    elif productive_all_required:
+        productive_states = {
+            state for state in result_counts if state in PRODUCTIVE_RESULT_STATES
+        }
+        support_state = (
+            f"{next(iter(productive_states))}_PRODUCTIVE"
+            if len(productive_states) == 1
+            else "MIXED_VALID_PRODUCTS"
+        )
     elif positive:
         support_state = "PARTIAL_SUPPORT"
+    elif result_counts.get("ZERO_SUPPORT"):
+        support_state = "ZERO_SUPPORT"
+    elif result_counts.get("UNKNOWN"):
+        support_state = "UNKNOWN_SUPPORT"
     else:
         support_state = "NO_SUPPORT"
     return SupportSummary(

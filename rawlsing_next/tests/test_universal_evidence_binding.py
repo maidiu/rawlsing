@@ -25,8 +25,13 @@ from rawlsing_next.source_backed_positioned_subject_possibility import (
 )
 from rawlsing_next.tests import c1_at08_at13_fixture as fx
 from rawlsing_next.tests.n10e_empirical_slice_fixture import (
+    build_consumer,
+    build_model_rule,
+    build_producer,
     build_provider_case,
+    build_witness,
     fixture_authority,
+    frozen_at07_source,
 )
 from rawlsing_next.pre553_universal_evidence_binding import (
     CACHE_SCHEMA,
@@ -36,6 +41,7 @@ from rawlsing_next.pre553_universal_evidence_binding import (
     PROVENANCE_CANONICAL,
     REFUSAL_NO_EXACT_BINDING,
     RESULT_STATES,
+    AdmittedEvidenceContext,
     EmpiricalProducerBinding,
     EvidenceAssociationError,
     EvidenceCacheIntegrityError,
@@ -45,6 +51,7 @@ from rawlsing_next.pre553_universal_evidence_binding import (
     EvidenceResolver,
     EvidenceResult,
     OccurrenceKey,
+    TrustedCacheIssuer,
     TypedCondition,
     TypedValue,
     reduce_required_support,
@@ -67,6 +74,57 @@ def _condition(item: str, option: str, value, binding_id: str) -> TypedCondition
     )
 
 
+def _make_context(case) -> AdmittedEvidenceContext:
+    source = case["source"]
+    item, option, value, binding_id = case.get(
+        "default_condition", ("POSITION", "P1", "P1", "position")
+    )
+    return AdmittedEvidenceContext(
+        context_id="r61-at07-admitted-context",
+        admission_ref=_ref(
+            "R61_ADMISSION", "at07-admission", {"fixture": "AT07_BIDIRECTIONAL_100"}
+        ),
+        provenance_refs=(source["release_ref"], source["universe"].ref),
+        authority_refs=tuple(case["predicate"].authority_snapshot_refs),
+        source_id="AT07_SYNTHETIC_SOURCE",
+        dataset_id="AT07_BIDIRECTIONAL_100",
+        wave_id="W1",
+        edition="2026-01",
+        byte_digest=semantic_hash({"fixture": "AT07_BIDIRECTIONAL_100"}),
+        instrument_version="AT07_INSTRUMENT@1",
+        sampled_unit="SYNTHETIC_INDIVIDUAL_RESPONDENT",
+        reporting_unit="SYNTHETIC_INDIVIDUAL_RESPONDENT",
+        link_refs=(),
+        estimand="CONDITIONAL_DISTRIBUTION",
+        weight_method="RAW_UNWEIGHTED",
+        design_ref=_ref("R61_DESIGN", "at07-design", {"design": "AT07"}),
+        uncertainty_method="UNCERTAINTY_UNQUANTIFIED",
+        direction=case.get("default_direction", "POSITION_P1_TO_ANSWER"),
+        role=case.get("default_role", "FORWARD_AUTHORIZED"),
+        consumer_use="TEST_ONLY_EMPIRICAL_POSSIBILITY",
+        grammar_version="C1_AT07_GRAMMAR@1",
+        custody_ref=_ref("R61_CUSTODY", "at07-custody", {"fixture": "AT07"}),
+        observation_clock="2026-01",
+        reference_clock="2026-01",
+        as_of_clock="2026-01-31",
+        publication_clock="2026-02-01",
+        permission_ref=_ref(
+            "R61_PERMISSION", "test-only-permission", {"scope": "TEST_ONLY"}
+        ),
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+        risk_set_ref=case["empirical_query"].risk_set_ref
+        if isinstance(case["empirical_query"].risk_set_ref, ExactRef)
+        else ExactRef(**case["empirical_query"].risk_set_ref),
+        target_ref=case["consumer_query"].target_ref,
+        occurrence_item=item,
+        occurrence_option=option,
+        occurrence_form="FORM_1",
+        occurrence_repeat="0",
+        domain_state_version="AT07_DOMAIN@1",
+    )
+
+
 def _request(
     case,
     *,
@@ -84,6 +142,8 @@ def _request(
     conditions = conditions or (
         _condition("POSITION", "P1", "P1", binding.binding_id),
     )
+    if "_r61_context" not in case:
+        case["_r61_context"] = _make_context(case)
     values = dict(
         request_id="r61-at07-positive",
         claim_grade="TEST_ONLY_SOURCE_LOCAL",
@@ -93,7 +153,7 @@ def _request(
         edition="2026-01",
         byte_digest=semantic_hash({"fixture": "AT07_BIDIRECTIONAL_100"}),
         instrument_version="AT07_INSTRUMENT@1",
-        occurrence=OccurrenceKey("POSITION", "P1", "FORM_1", "0"),
+        occurrence=conditions[0].occurrence,
         sampled_unit="SYNTHETIC_INDIVIDUAL_RESPONDENT",
         reporting_unit="SYNTHETIC_INDIVIDUAL_RESPONDENT",
         link_refs=(),
@@ -134,6 +194,7 @@ def _binding(request, case, *, producer=None) -> EmpiricalProducerBinding:
         consumer_query=case["consumer_query"],
         model_rule=case["model_rule"],
         condition_binding_witness=case["condition_binding_witness"],
+        context=case.get("_r61_context") or _make_context(case),
     )
     if producer is not None:
         kwargs["producer"] = producer
@@ -259,6 +320,8 @@ def _zero_case(case):
         "condition_binding_witness": witness,
         "model_rule": case["model_rule"],
         "release_refs": (source["release_ref"],),
+        "default_condition": ("POSITION", "P3", "P3", "position"),
+        "default_direction": "POSITION_P3_TO_ANSWER",
     }
 
 
@@ -323,6 +386,8 @@ def _xor_case(condition_value, tag="r61-xor"):
         "condition_binding_witness": witness,
         "model_rule": fx.make_model_rule(source["universe"].ref, tag),
         "release_refs": (source["release_ref"],),
+        "default_condition": ("A", str(condition_value), condition_value, "a"),
+        "default_direction": f"A{condition_value}_TO_C",
     }
 
 
@@ -333,14 +398,14 @@ def test_condition_a0_result_cannot_resolve_a1_request():
     )
     request_a0 = _request(
         case,
-        conditions=(_condition("A", "0", 0, "a"),),
+        conditions=(_condition("A", "0", "0", "a"),),
         consumer_binding_fingerprint=fingerprint,
         direction="A0_TO_C",
         request_id="r61-xor-a0",
     )
     request_a1 = _request(
         case,
-        conditions=(_condition("A", "1", 1, "a"),),
+        conditions=(_condition("A", "1", "1", "a"),),
         consumer_binding_fingerprint=fingerprint,
         direction="A1_TO_C",
         request_id="r61-xor-a1",
@@ -427,7 +492,7 @@ def test_actual_zero_support_does_not_become_positive_and_breaks_consumer():
     assert summary.exact_all_support is False
     assert summary.productive_all_required is False
     assert summary.positive_support_count == 0
-    assert summary.support_state == "NO_SUPPORT"
+    assert summary.support_state == "ZERO_SUPPORT"
 
 
 def test_changed_typed_values_and_identity_axes_refuse_same_consumer():
@@ -590,7 +655,7 @@ def test_missing_state_controls_and_total_support_summary():
     assert set(summary.eligibility_counts) <= ELIGIBILITY_STATES
     assert set(summary.execution_counts) <= EXECUTION_STATES
     assert set(summary.result_counts) <= RESULT_STATES
-    assert summary.support_state == "NO_SUPPORT"
+    assert summary.support_state == "UNKNOWN_SUPPORT"
 
     empty_valid = reduce_required_support([], valid_empty_frontier=True)
     assert empty_valid.support_state == "VALID_EMPTY"
@@ -673,3 +738,150 @@ print(json.dumps({{
         "consumer_denominator": 60,
         "consumer_hash": produced.consumer_result_hash,
     }
+
+
+def test_wrong_actual_condition_or_admitted_labels_refuse_positive():
+    case = build_provider_case("forward")
+    wrong_condition = _request(
+        case,
+        conditions=(_condition("POSITION", "P2", "P2", "position"),),
+        request_id="r61-r2-wrong-condition",
+    )
+    resolver = EvidenceResolver()
+    resolver.bind(_binding(wrong_condition, case))
+    result = resolver.resolve(wrong_condition)
+    assert result.result_state == "UNKNOWN"
+    assert result.typed_refusal == "IDENTITY_MISMATCH"
+    with pytest.raises(EvidenceAssociationError):
+        EvidenceConsumerReader(wrong_condition, result).read()
+
+    labelled = build_provider_case("forward")
+    wrong_labels = _request(
+        labelled,
+        edition="2025-12",
+        source_id="OTHER_SOURCE",
+        byte_digest=semantic_hash({"fixture": "other-edition"}),
+        as_of_clock="2026-02-28",
+        direction="ANSWER_YES_TO_POSITION",
+        role="REVERSE_AUTHORIZED",
+        design_ref=_ref("R61_DESIGN", "other-design", {"design": "OTHER"}),
+        weight_method="GOVERNED_WEIGHTED",
+        request_id="r61-r2-wrong-labels",
+    )
+    labelled_resolver = EvidenceResolver()
+    labelled_resolver.bind(_binding(wrong_labels, labelled))
+    refused = labelled_resolver.resolve(wrong_labels)
+    assert refused.result_state == "UNKNOWN"
+    assert refused.typed_refusal == "IDENTITY_MISMATCH"
+
+
+def test_cache_carries_full_k_and_issuer_boundary_rejects_self_seal():
+    case = build_provider_case("forward")
+    request = _request(case, request_id="r61-r2-cache-preimage")
+    resolver = EvidenceResolver()
+    resolver.bind(_binding(request, case))
+    resolver.resolve(request)
+    entry = resolver.export_cache()["entries"][0]
+    assert entry["request_material"]["request_id"] == "r61-r2-cache-preimage"
+    assert semantic_hash(entry["request_material"]) == entry["request_key"]
+    assert entry["producer_binding"]["validated_conditions"] == [
+        condition.material() for condition in request.ordered_conditions
+    ]
+
+    issuer = TrustedCacheIssuer()
+    issued_resolver = EvidenceResolver(cache_issuer=issuer)
+    issued_resolver.bind(_binding(request, case))
+    issued_resolver.resolve(request)
+    issued_cache = issued_resolver.export_cache()
+    assert issued_cache["entries"][0]["issuer_grade"] == "EPHEMERAL_ISSUER_HMAC_SHA256"
+
+    with pytest.raises(EvidenceCacheIntegrityError):
+        EvidenceResolver(cache_issuer=TrustedCacheIssuer()).import_authenticated_cache(
+            issued_cache
+        )
+    same_key = TrustedCacheIssuer(bytes.fromhex(issuer.key_hex))
+    cold = EvidenceResolver(cache_issuer=same_key)
+    cold.import_authenticated_cache(issued_cache)
+    restored = cold.resolve(request)
+    assert restored.result_state == "SUPPORTED"
+    assert restored.denominator == 60
+
+
+def test_valid_products_preserve_support_state_and_z_unresolved():
+    controls = [
+        EvidenceResult(
+            request_key=semantic_hash({"control": state}),
+            eligibility_state="ELIGIBLE",
+            execution_state="COMPLETED",
+            result_state=state,
+            provenance="TYPED_REFUSAL",
+            denominator=10,
+        )
+        for state in ("VALID_NULL", "DIFFUSE", "VALID_EMPTY", "OBSERVED_ZERO")
+    ]
+    for control in controls:
+        summary = reduce_required_support([control])
+        assert summary.productive_all_required is True
+        assert summary.exact_all_support is False
+        assert summary.support_state != "NO_SUPPORT"
+        assert summary.support_state.startswith(control.result_state)
+    unresolved = EvidenceResult(
+        request_key=semantic_hash({"control": "Z"}),
+        eligibility_state="ELIGIBLE",
+        execution_state="COMPLETED",
+        result_state="UNKNOWN",
+        provenance="TYPED_REFUSAL",
+        denominator=16,
+        typed_refusal="Z_UNRESOLVED",
+    )
+    summary = reduce_required_support([unresolved])
+    assert summary.support_state == "UNKNOWN_SUPPORT"
+    assert summary.unresolved_denominator_support == 16
+    assert summary.exact_all_support is False
+
+
+def test_actual_observed_zero_cell_remains_supported_product():
+    rows = [
+        {"id": f"P1Y{n:03d}", "responses": {"POSITION": "P1", "ANSWER": "yes"}}
+        for n in range(1, 61)
+    ] + [
+        {"id": f"P2N{n:03d}", "responses": {"POSITION": "P2", "ANSWER": "no"}}
+        for n in range(1, 41)
+    ]
+    with frozen_at07_source(
+        tag="r61-observed-zero",
+        rows=rows,
+        scope_query_authority_to_universe=True,
+    ) as (source, query_authority, registry):
+        predicate, producer_query = build_producer(source, query_authority, "forward")
+        consumer_query, conditioner_binding = build_consumer(source, "forward")
+        witness = build_witness(
+            source,
+            "forward",
+            consumer_query,
+            conditioner_binding,
+            producer_query,
+            predicate,
+        )
+        case = {
+            "source": source,
+            "query_authority": query_authority,
+            "registry": registry,
+            "predicate": predicate,
+            "empirical_query": producer_query,
+            "consumer_query": consumer_query,
+            "condition_binding_witness": witness,
+            "model_rule": build_model_rule(source),
+            "release_refs": (source["release_ref"],),
+        }
+        request = _request(case, request_id="r61-observed-zero")
+        resolver = EvidenceResolver()
+        resolver.bind(_binding(request, case))
+        result = resolver.resolve(request)
+    assert result.result_state == "SUPPORTED"
+    assert result.denominator == 60
+    cells = {cell["cell"]: cell["raw_numerator_support"] for cell in result.cells}
+    assert cells == {"no": 0, "yes": 60}
+    summary = reduce_required_support([result])
+    assert summary.exact_all_support is True
+    assert summary.support_state == "EXACT_SUPPORT"
