@@ -1,3 +1,14 @@
+# Pyat HQ R61R — actual parallel native repairs on Light
+
+R61Qengineeringdecisioncomplete; actual currentmodelSolLight. R08R4launchedPID43125/retainedsessionses_e98c8dfe6ffewNYOqJpvqK21a6, startup84704f4a775d0419ad4a08c8c687bc815df47adc, commission5fce75ffd2690261b637e0d88bde8e8adb91eb5a. Existing DeepSeekMAX/Global/worktree; exact2paths/ownr4return. D1-D6whole-function owneradmission/resultenvelope/SAMEconsumerrepair; distincthostilereviewfollows, noauthenticityfrompublicdefaultkey.
+
+R01R5existingPID36153observedlive; workinglocalhead63fe9ebf110e76326a07b9d0badf0ab7b208af6f, directremote5c77413365b9d45375b25dbaa29cb3da497bcb10, trackedcodeinprogress. This is not returned/accepted evidence; noR03wake. No workerduplication or extrarepositorycopy. Both attendedOpenCode, notcontrollerautonomy.
+
+Director evidence480f7f391e11263821a6b7c74b2414073f30b86e. CurrentLightadequateforcoordination; stop only at concrete new intelligence/substantive boundary. R09hostgrantpending; fulloriginal35/1890/globalF6F7F8/source/science/CI/prod/N11/N12/Sorok/J52W52holdsunchanged. No codeadoption.
+
+
+## Earlier progress history retained
+
 # Pyat HQ R61Q — R08 bounded High decision complete
 
 Exact candidate84704f4a775d0419ad4a08c8c687bc815df47adc / review5b7e338086cd86a9a011c1e911a2b85b9170239f reverified10hashes/11ownrootpaths/directremote. Current code remainsREVISE; source-visible defaultissuer mints forgedcontext/evidence. No HQ native rerun or code adoption.
