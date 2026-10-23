@@ -1,3 +1,12 @@
+# Pyat HQ R61M — direct user approval of both recurrence principles
+
+Userquote: "i agree with yes to both". Approved wider-source-root context AND enclosing-parent differentiation, and finite exploratory effort for hidden internal/minority/counterpattern differences even where currentaggregateunremarkable. Exact antecedents and limits at director37dba2837c94ddb71287ffbc18260d051fc9765a:PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/R61M_USER_APPROVED_RECURRENCE_PRINCIPLES.json. This confirmsS1/S2principles, not a fullalgorithm/numericalpolicy/originalscience/mandatorycomplementorR03wake.
+
+High reasoning is finished; downshiftSolLight. NextfaithfulboundedTEST_ONLYcontract -> authorizedR01A4repair -> distinctnativequalification -> HQR03startdecision -> totalR03integration. No routineuserapprovalfor equivalentengineering; newoutcome-changingchoices requireuser. R01A4EXACT_CONTRACT_GAP andR61prerequisite stillapply. Original35/1890/globalF6F7F8/source/science/CI/prod/N11/N12/Sorokholds/J52W52stops unchanged. No code/nativeexperiment/workerlaunch inthisbankingstep.
+
+
+## Earlier progress history retained
+
 # Pyat HQ R61L — bounded executive disposition, two user choices
 
 Userapprovedintent b733b9eb685aaecb8d5417e9785f60ba4c5de5af and R61grantpreserved. Finiteadaptiveissue/accounting and existingpredicate/replay/comparator/lineage engineeringE1-E6decided at source-independentinterfacelevel. Exactdecisionatdirector3cb1d659bc9efb10b307e66db5cf26af3256f1f5:PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/R61L_BOUNDED_RECURRENCE_EXECUTIVE_DISPOSITION.md. No numerical scientific thresholds or original policy issued.
