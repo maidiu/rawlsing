@@ -1,0 +1,29 @@
+{
+  "schema": "SOROK_NATIVE_HEARTBEAT_WAKE_EVIDENCE_V1",
+  "verdict": "HOST_HEARTBEAT_SAME_HQ_IDLE_RESUMPTION_OBSERVED",
+  "automation_id": "sorok-hq-worker-returns",
+  "host_supplied_heartbeat_time": "2026-10-23T19:39:47.201Z",
+  "thread_id": "01a161c5-a44a-7b13-ad50-49e10112874d",
+  "observed_current_turn": {
+    "id": "01a16a46-cccc-78f0-85cf-9784578c7b2f",
+    "started_at": 1792784387,
+    "origin": "host-delivered heartbeat user message"
+  },
+  "previous_turn": {
+    "id": "01a16a37-d851-7382-abdd-4f6188161d3a",
+    "status": "completed",
+    "completed_at": 1792783706
+  },
+  "idle_gap_seconds": 681,
+  "same_cwd": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing",
+  "overlap_with_previous_turn": false,
+  "native_turn_start_called": false,
+  "controller_triggered_event_wake": "NOT_PROVED",
+  "return_intake_this_wake": "NO_NEW_COMPLETED_RETURN; existing author PID7497 confirmed live",
+  "watcher_observation_bound": "old watcher expired while author still live; extended observation only, no worker restart",
+  "proof_limits": [
+    "One actual host heartbeat delivery and same-incumbent execution, not arbitrary host concurrency proof",
+    "Periodic host wake, not direct controller event transport",
+    "No new completed worker return available on this first wake"
+  ]
+}
