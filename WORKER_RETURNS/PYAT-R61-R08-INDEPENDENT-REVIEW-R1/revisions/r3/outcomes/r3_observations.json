@@ -1,0 +1,84 @@
+{
+  "schema": "PYAT_R61_R08V_R3_REVIEW_OBSERVATIONS_V1",
+  "candidate": "84704f4a775d0419ad4a08c8c687bc815df47adc",
+  "code_commit": "3e5a53ce8905a361bce5a1ef9ddea05638b86f99",
+  "forged_context_public_mint": {
+    "attack": "caller invokes exported R61_TEST_ONLY_OWNER_ADMISSION_AUTHORITY.issue_producer over a self-consistent forged context and matching request",
+    "source_id": "FORGED_SOURCE",
+    "edition": "1999-01",
+    "direction": "ANSWER_YES_TO_POSITION",
+    "role": "REVERSE_AUTHORIZED",
+    "result_state": "SUPPORTED",
+    "provenance": "CANONICAL_PRODUCER",
+    "denominator": 60,
+    "consumer_denominator": 60,
+    "expected": "typed refusal/UNKNOWN; no values-read"
+  },
+  "forged_evidence_public_resign": {
+    "attack": "caller invokes exported R61_TEST_ONLY_OWNER_ADMISSION_AUTHORITY.issue_evidence over forged same-source evidence using a valid exported producer admission",
+    "import_accepted": true,
+    "result_state": "SUPPORTED",
+    "provenance": "AUTHENTICATED_CACHE",
+    "denominator": 999,
+    "consumer_denominator": 999,
+    "cache_trust_grade": "FULL_K_PRODUCER_ASSOCIATION_SHA256",
+    "admission_grade": "TRUSTED_OWNER_EVIDENCE_ADMISSION_HMAC_SHA256",
+    "forged_actual_hash": "07f98b853c8341ad22bca2af82c593c27cd1ae3c10fe59b52931d1bf4b884c99",
+    "expected": "EvidenceCacheIntegrityError or typed refusal; no forged values served"
+  },
+  "repaired_prior_probes": {
+    "caller_context_without_admission": {
+      "result_state": "UNKNOWN",
+      "typed_refusal": "OWNER_ADMISSION_UNRESOLVED",
+      "consumer_raises": "EvidenceAssociationError"
+    },
+    "self_sealed_cache_without_admission": {
+      "import_raises": "EvidenceCacheIntegrityError"
+    }
+  },
+  "positive_control": {
+    "result_state": "SUPPORTED",
+    "denominator": 60,
+    "cells": {
+      "yes": 54,
+      "no": 6
+    },
+    "cold_replay_denominator": 60,
+    "cold_replay_same_consumer_hash": true,
+    "admission_grade": "TRUSTED_OWNER_EVIDENCE_ADMISSION_HMAC_SHA256"
+  },
+  "replay": {
+    "author_suite": {
+      "tests": 28,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    "retained_r1_r2_probes": {
+      "tests": 24,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    "reviewer_r3_probes": {
+      "tests": 4,
+      "failures": 2,
+      "passed": 2,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 1
+    }
+  },
+  "reach": {
+    "covered": "full-K binding, actual provider/evaluator/consumer values-read, authenticated cache positive cold replay, typed refusal, status reduction",
+    "not_reached": [
+      "live J42 E41ProviderAdapter.step adoption",
+      "live P41 progressive adoption",
+      "repaired live E04 terminal success assertion"
+    ],
+    "reason": "unchanged owner/integration allowlist boundary; archived returns immutable",
+    "prior_reach_evidence": "db356748251c01e237df3a360a532ed8ffe45ec6 and 1cc09784b007f63b2e486091466530f427900510"
+  }
+}

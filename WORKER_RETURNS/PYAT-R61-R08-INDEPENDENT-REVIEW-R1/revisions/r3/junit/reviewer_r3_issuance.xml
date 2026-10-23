@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="4" time="1.852" timestamp="2026-10-23T10:09:58.875029-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r3.probes.test_r08v_r3_issuance_boundary" name="test_default_public_authority_must_not_admit_forged_caller_context" time="0.414"><failure message="Failed: default public admission authority minted SUPPORTED for caller-forged context: source='FORGED_SOURCE', edition='1999-01', role='REVERSE_AUTHORIZED', denominator=60, consumer=60">def test_default_public_authority_must_not_admit_forged_caller_context():
+        case = build_provider_case("forward")
+        context = _forged_context(case)
+        request = _forged_request(case, context)
+        binding = _binding_for(request, case, context)
+        admission = R61_TEST_ONLY_OWNER_ADMISSION_AUTHORITY.issue_producer(
+            context_ref=context.context_ref,
+            owner_identity_material=binding.owner_identity_material(),
+        )
+        binding = replace(binding, admission=admission)
+        resolver = EvidenceResolver()
+        resolver.bind(binding)
+        result = resolver.resolve(request)
+        if result.result_state == "SUPPORTED":
+            values = EvidenceConsumerReader(request, result).read()
+&gt;           pytest.fail(
+                "default public admission authority minted SUPPORTED for caller-forged "
+                f"context: source={request.source_id!r}, edition={request.edition!r}, "
+                f"role={request.role!r}, denominator={result.denominator}, "
+                f"consumer={values.get('denominator')}"
+            )
+E           Failed: default public admission authority minted SUPPORTED for caller-forged context: source='FORGED_SOURCE', edition='1999-01', role='REVERSE_AUTHORIZED', denominator=60, consumer=60
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r3/probes/test_r08v_r3_issuance_boundary.py:165: Failed</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r3.probes.test_r08v_r3_issuance_boundary" name="test_default_ingress_must_reject_evidence_resigned_with_public_default_key" time="0.408"><failure message="Failed: default ingress accepted evidence re-signed with the source-visible default admission key: imported=SUPPORTED, denominator=999, forged_hash=07f98b853c8341ad22bca2af82c593c27cd1ae3c10fe59b52931d1bf4b884c99, consumer=999">def test_default_ingress_must_reject_evidence_resigned_with_public_default_key():
+        case = build_provider_case("forward")
+        request = _request(case, request_id="r61-r3-public-cache-resign")
+        resolver = EvidenceResolver()
+        resolver.bind(_binding(request, case))
+        produced = resolver.resolve(request)
+        assert produced.result_state == "SUPPORTED" and produced.denominator == 60
+        base = resolver.export_cache()["entries"][0]
+        forged_cache, forged_actual = _forged_evidence_cache(
+            produced, base, R61_TEST_ONLY_OWNER_ADMISSION_AUTHORITY
+        )
+        cold = EvidenceResolver()
+        try:
+            cold.import_authenticated_cache(forged_cache)
+        except EvidenceCacheIntegrityError:
+            return
+        restored = cold.resolve(request)
+        values = None
+        if restored.result_state == "SUPPORTED":
+            values = EvidenceConsumerReader(request, restored).read()
+&gt;       pytest.fail(
+            "default ingress accepted evidence re-signed with the source-visible "
+            f"default admission key: imported={restored.result_state}, "
+            f"denominator={restored.denominator}, forged_hash={forged_actual.result_hash}, "
+            f"consumer={None if values is None else values.get('denominator')}"
+        )
+E       Failed: default ingress accepted evidence re-signed with the source-visible default admission key: imported=SUPPORTED, denominator=999, forged_hash=07f98b853c8341ad22bca2af82c593c27cd1ae3c10fe59b52931d1bf4b884c99, consumer=999
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r3/probes/test_r08v_r3_issuance_boundary.py:239: Failed</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r3.probes.test_r08v_r3_issuance_boundary" name="test_legitimate_canonical_admission_and_cold_replay_remain_positive" time="0.483" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r3.probes.test_r08v_r3_issuance_boundary" name="test_missing_admission_still_refuses_old_r2_context_relabel" time="0.266" /></testsuite></testsuites>
