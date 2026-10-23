@@ -53,7 +53,9 @@ CREATE TABLE IF NOT EXISTS lme_concept_sense (
   PRIMARY KEY(concept_id, sense_id, discourse_ref, source_version_ref)
 );
 CREATE TABLE IF NOT EXISTS lme_lexeme_index (
-  lexeme_id TEXT PRIMARY KEY,
+  lexeme_occurrence_id TEXT PRIMARY KEY,    -- index row, NOT universal word identity
+  lexeme_id TEXT NOT NULL,                  -- may recur across persons/senses/sources
+  concept_id TEXT NOT NULL,
   language_tag TEXT NOT NULL,
   surface_text TEXT NOT NULL,
   sense_id TEXT NOT NULL,
