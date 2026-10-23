@@ -93,5 +93,8 @@ Full analysis and required minimal functions are in `defects_and_limits.md`.
 `defects_and_limits.md`, `independent_probes/`, `replay/` JUnit/logs,
 `evidence/` (startup identity, defect demonstrations, oracle results),
 `proof_witness.json`, `manifest.json`, `RESUME.md`. The reviewer branch is
-pushed non-force; direct remote readback of the evidence commit and final tip
-is recorded in `evidence/remote_readback.txt` and reported to the coordinator.
+pushed non-force. Evidence commit `c9b6fc59150a646e605bea5f8f27b856921b9fdb`
+was directly read back at the remote, as recorded in
+`evidence/remote_readback.txt`; the final branch tip is also verified by direct
+remote readback and reported to the coordinator. The candidate branch remained
+at `4b5fd7a240a6e2d007ba1df2424780e6b5612ea9`.

@@ -1,34 +1,19 @@
 {
-  "schema": "PYAT_R61_R01V_R5_INDEPENDENT_PROOF_WITNESS@1",
-  "verdict": "REVISE",
-  "candidate_startup": "4b5fd7a240a6e2d007ba1df2424780e6b5612ea9",
-  "candidate_code": "c9cd59536e9323e6f48f1818bd41204cc6ae6095",
-  "review_branch": "agent/opencode-pyat-r61-r01v-r5-independent-review-r1",
-  "coordinate_commits": {
-    "correction": "3249eb333e1288362af649242d17f5ae9e689817",
-    "original_commission": "9307abc2a9a4177fc8964496334e74694f8ba711",
-    "expectations_recovery": "1738231a9ede56ada79861dac83130aa55285520",
-    "r6l_e1_e6": "3cb1d659bc9efb10b307e66db5cf26af3256f1f5",
-    "r6m_s1_s2": "37dba2837c94ddb71287ffbc18260d051fc9765a",
-    "author_commission": "df2fdd12a55e1c153e2b60377c903a764ff59f26",
-    "amendment_freeze": "63fe9ebf110e76326a07b9d0badf0ab7b208af6f",
-    "r4_review": "634ee0dac4ef87347d6f334f6c8c1abc97b24d01"
+  "author_manifest_reproduction": {
+    "code_blob_claims_match": true,
+    "compared_entries": 7,
+    "manifest_excludes_itself": true,
+    "matched": 7,
+    "mismatched": 0
   },
-  "custody_commit": "e9cb6af5edb160bd235f41505529ca8f73966f83",
-  "expectations_sha256": "394238be34b98431f819020997061df7fd96817913d7ad696ed7be4e94cca39b",
+  "candidate_code": "c9cd59536e9323e6f48f1818bd41204cc6ae6095",
   "candidate_code_blobs": {
-    "rawlsing_next/universal_grammar/types.py": "e7b196efe5b1f86134c27a80bfdd8f472be76e5d",
+    "rawlsing_next/tests/test_universal_grammar.py": "49cc9ad92367c90a0f6a0a08a1077d89234eabaa",
     "rawlsing_next/universal_grammar/enumerate.py": "fd9203a0b272f98771c24070d01a9e5287c9b099",
     "rawlsing_next/universal_grammar/native_map.py": "017c925fdb339894e682c8a5a9f2f1cabc5255e9",
-    "rawlsing_next/tests/test_universal_grammar.py": "49cc9ad92367c90a0f6a0a08a1077d89234eabaa"
+    "rawlsing_next/universal_grammar/types.py": "e7b196efe5b1f86134c27a80bfdd8f472be76e5d"
   },
-  "author_manifest_reproduction": {
-    "compared_entries": 7,
-    "matched": 7,
-    "mismatched": 0,
-    "manifest_excludes_itself": true,
-    "code_blob_claims_match": true
-  },
+  "candidate_startup": "4b5fd7a240a6e2d007ba1df2424780e6b5612ea9",
   "commands": [
     {
       "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=.../replay/author_suite_junit.xml -o addopts=''",
@@ -56,6 +41,17 @@
       "result": "recorded accepted candidate behavior in evidence/defect_demonstrations.json"
     }
   ],
+  "coordinate_commits": {
+    "amendment_freeze": "63fe9ebf110e76326a07b9d0badf0ab7b208af6f",
+    "author_commission": "df2fdd12a55e1c153e2b60377c903a764ff59f26",
+    "correction": "3249eb333e1288362af649242d17f5ae9e689817",
+    "expectations_recovery": "1738231a9ede56ada79861dac83130aa55285520",
+    "original_commission": "9307abc2a9a4177fc8964496334e74694f8ba711",
+    "r4_review": "634ee0dac4ef87347d6f334f6c8c1abc97b24d01",
+    "r6l_e1_e6": "3cb1d659bc9efb10b307e66db5cf26af3256f1f5",
+    "r6m_s1_s2": "37dba2837c94ddb71287ffbc18260d051fc9765a"
+  },
+  "custody_commit": "e9cb6af5edb160bd235f41505529ca8f73966f83",
   "defect_ids": [
     "D1_execution_does_not_revalidate_parent_binding",
     "D2_receipt_bound_ancestry_not_bound",
@@ -64,6 +60,27 @@
     "D5_root_parent_not_bound_to_declared_root",
     "D6_zero_per_generation_cap_not_stopped_budget",
     "D7_activation_label_not_enforced"
+  ],
+  "environment": {
+    "hardware_model_route": "existing opencode-go/deepseek-v4.1-flash MAX/Global",
+    "pyreadstat": "1.3.2",
+    "pytest": "9.0.2",
+    "python": "3.11.3"
+  },
+  "evidence_commit": "c9b6fc59150a646e605bea5f8f27b856921b9fdb",
+  "evidence_commit_remote_readback": {
+    "candidate_branch_remote_sha": "4b5fd7a240a6e2d007ba1df2424780e6b5612ea9",
+    "command": "git ls-remote origin refs/heads/agent/opencode-pyat-r61-r01v-r5-independent-review-r1",
+    "file": "evidence/remote_readback.txt",
+    "remote_sha": "c9b6fc59150a646e605bea5f8f27b856921b9fdb"
+  },
+  "expectations_sha256": "394238be34b98431f819020997061df7fd96817913d7ad696ed7be4e94cca39b",
+  "not_reached": [
+    "R03 activation or qualification",
+    "source/science/original35/1890/global F6/F7/F8",
+    "N11/N12/Sorok",
+    "production/CI",
+    "J52/W52"
   ],
   "positive_evidence": [
     "real synthetic D=3 execution with anti_join no_drop_ok",
@@ -74,19 +91,9 @@
     "fresh-process persisted-handoff replay matched predecessor plan ref",
     "R3 A1-A3 controls passed"
   ],
-  "environment": {
-    "python": "3.11.3",
-    "pytest": "9.0.2",
-    "pyreadstat": "1.3.2",
-    "hardware_model_route": "existing opencode-go/deepseek-v4.1-flash MAX/Global"
-  },
   "remote_verification": "evidence/remote_readback.txt (direct git ls-remote of the pushed reviewer branch)",
+  "review_branch": "agent/opencode-pyat-r61-r01v-r5-independent-review-r1",
+  "schema": "PYAT_R61_R01V_R5_INDEPENDENT_PROOF_WITNESS@1",
   "trust_boundary": "declared trusted coordinator resolver; not a protected issuer/signing service, global durable uniqueness, or R09 isolation; R04/R09 service-level fork prevention NOT_REACHED",
-  "not_reached": [
-    "R03 activation or qualification",
-    "source/science/original35/1890/global F6/F7/F8",
-    "N11/N12/Sorok",
-    "production/CI",
-    "J52/W52"
-  ]
+  "verdict": "REVISE"
 }
