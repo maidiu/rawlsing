@@ -1,0 +1,61 @@
+{
+  "schema": "R61_R09_R2_RETURN_MANIFEST@1",
+  "contract_id": "R61-R09-NATIVE-RUNNER-VERIFY@2",
+  "candidate_code_commit": "77f8b4205d8a97f2e9f7ae9e93a3ff913c08a780",
+  "candidate_tree": "272fd70478b0a46d55ac4be29a2009d27228f7fb",
+  "algorithm": "sha256",
+  "artifacts": [
+    {
+      "path": "00_RETURN.md",
+      "sha256": "e7a6fc550c61074a11187b655ef0db169a9b293b220b9fb7df42f0b0c5c33de8",
+      "size": 10508
+    },
+    {
+      "path": "RESUME.md",
+      "sha256": "bc418522592a86fb6f484d16e5b78c37a2a219ca08c9e68f18e560bb6f7a79e3",
+      "size": 2653
+    },
+    {
+      "path": "existing_oracle_junit.xml",
+      "sha256": "d8f7df95383e38aa798b965be4edfc2647a3dbb8089beb6d7fea0f2ebe707aa6",
+      "size": 7650
+    },
+    {
+      "path": "junit.xml",
+      "sha256": "3f722b03c270b05badd945e737f5f1b4f245517dddc777ba90d502ba481890a0",
+      "size": 2364
+    },
+    {
+      "path": "mutation_restored_pass.txt",
+      "sha256": "fcbc04cf049b77c70066bceb13e1b4646645e1a5d0317bb2d03e783cd2f57a49",
+      "size": 105
+    },
+    {
+      "path": "mutation_targeted_failure.txt",
+      "sha256": "cacf242151e4cdfb58ae9ab90b550dff4d659f68450c5d1935a29563f9581944",
+      "size": 2939
+    },
+    {
+      "path": "proof_witness.json",
+      "sha256": "dd24e50e40e8e04bce89e09f5cc5f9d078ed2b7dbca4668572fc4af7dacf71f5",
+      "size": 6379
+    },
+    {
+      "path": "reviewer_probes_against_r2.json",
+      "sha256": "1e92c3d2a75ce663c3627b261bf70020dd0d74f402345496366e9b2c735ffb38",
+      "size": 4311
+    }
+  ],
+  "excluded": [
+    {
+      "path": "manifest.json",
+      "reason": "Self-exclusion: a manifest cannot contain a stable hash of itself before it is written."
+    }
+  ],
+  "notes": [
+    "R2 author-validation artifacts only; not independent acceptance.",
+    "The old reviewer P0 out-of-tree positive is intentionally superseded by the committed C11 native-owner positive.",
+    "No hash is claimed for any future self or future artifact.",
+    "Production remains DEPLOYMENT_HOLD."
+  ]
+}

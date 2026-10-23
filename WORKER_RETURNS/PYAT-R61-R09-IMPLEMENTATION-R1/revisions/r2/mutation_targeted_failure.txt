@@ -1,0 +1,63 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________ test_missing_event_status_spoof_and_wrong_result_are_refused _________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-350/test_missing_event_status_spoo0')
+
+    def test_missing_event_status_spoof_and_wrong_result_are_refused(tmp_path):
+        entry_missing = (
+            "from native_fixture import add\n"
+            "_ = add(20, 1)\n"
+            "RESULT = {\"label\": \"baseline\", \"value\": 42}\n"
+        )
+        fixture = RepoFixture(tmp_path / "missing", entry_source=entry_missing)
+        decision = fixture.verify(fixture.observe())
+        assert_refused(decision, "NATIVE_EVENT_ANTI_JOIN")
+    
+        support = (
+            "def add(a, b):\n"
+            "    return a + b\n"
+            "\n"
+            "def double(value):\n"
+            "    raise RuntimeError('forced status mutation')\n"
+        )
+        entry = (
+            "from native_fixture import add, double\n"
+            "try:\n"
+            "    double(add(20, 1))\n"
+            "except RuntimeError:\n"
+            "    pass\n"
+            "RESULT = {\"label\": \"baseline\", \"value\": 42}\n"
+        )
+        spoof = RepoFixture(tmp_path / "spoof", support_source=support,
+                            entry_source=entry)
+        decision = spoof.verify(spoof.observe())
+        assert_refused(decision, "NATIVE_EVENT_STATUS_MISMATCH")
+    
+        wrong = RepoFixture(
+            tmp_path / "wrong",
+            entry_source=(
+                "from native_fixture import add, double\n"
+                "RESULT = {\"label\": \"baseline\", \"value\": double(add(20, 1)) - 1}\n"
+            ))
+        decision = wrong.verify(wrong.observe())
+>       assert_refused(decision, "RESULT_MISMATCH")
+
+tests/universal_runner/test_universal_runner_verify.py:417: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+decision = {'bindings': {'candidate_commit': '3232a31cd4d6b90e1c4bed4f71084de728fc3e36', 'candidate_tree': '27b32cf28dbfb25d052aa...': 'LOCAL_NATIVE_TEST_ONLY', 'contract_id': 'R61-R09-NATIVE-RUNNER-VERIFY@2', 'decision': 'LOCAL_NATIVE_VERIFIED', ...}
+reason = 'RESULT_MISMATCH'
+
+    def assert_refused(decision: dict, reason: str) -> None:
+>       assert decision["decision"] == verify.REFUSE
+E       AssertionError: assert 'LOCAL_NATIVE_VERIFIED' == 'REFUSE_NATIVE_QUALIFICATION'
+E         
+E         - REFUSE_NATIVE_QUALIFICATION
+E         + LOCAL_NATIVE_VERIFIED
+
+tests/universal_runner/test_universal_runner_verify.py:131: AssertionError
+=========================== short test summary info ============================
+FAILED tests/universal_runner/test_universal_runner_verify.py::test_missing_event_status_spoof_and_wrong_result_are_refused
+1 failed in 0.66s
+EXIT=1

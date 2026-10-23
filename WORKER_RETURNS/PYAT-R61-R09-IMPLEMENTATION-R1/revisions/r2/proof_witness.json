@@ -1,0 +1,141 @@
+{
+  "schema": "R61_R09_R2_PROOF_WITNESS@1",
+  "contract_id": "R61-R09-NATIVE-RUNNER-VERIFY@2",
+  "author_validation_only": true,
+  "independent_review_required": true,
+  "production_state": "DEPLOYMENT_HOLD",
+  "startup": "c8dbdd017b216e01dc43e0e15d4e044f3ec6d6e8",
+  "reviewed_revision": "05e9ce39640ca6a134031510e762e81fab7d4c57",
+  "environment": {
+    "os": "Darwin",
+    "python": "/usr/local/bin/python3 3.11.3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2 (verified, not used)",
+    "git": "2.43.0"
+  },
+  "focused_suite": {
+    "command": "/usr/local/bin/python3 -m pytest -q -p no:cacheprovider tests/universal_runner --junitxml=WORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/revisions/r2/junit.xml",
+    "exit_code": 0,
+    "junit": "junit.xml",
+    "tests": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "walltime_seconds": 4.08
+  },
+  "existing_oracle_regression": {
+    "command": "/usr/local/bin/python3 -m pytest -q -p no:cacheprovider tests/universal_execution_oracle --junitxml=WORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/revisions/r2/existing_oracle_junit.xml",
+    "exit_code": 0,
+    "junit": "existing_oracle_junit.xml",
+    "tests": 48,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "walltime_seconds": 30.99
+  },
+  "native_owner_positive": {
+    "node": "tests/universal_runner/test_universal_runner_verify.py::test_existing_c11_native_owner_and_repository_are_executed",
+    "actual_owners": [
+      "rawlsing_next.pre553_c11_ingest.ingest_c11_source_release",
+      "rawlsing_next.pre553_c11_repository.C11Repository.resolve_release_exact"
+    ],
+    "frozen_result": {
+      "accepted": true,
+      "disposition": "ACCEPTED_C11_LOGICAL_RELEASE",
+      "event_count": 2,
+      "release_id": "REL-R09",
+      "repository_length": 1,
+      "m01_m18_count": 18
+    },
+    "assertions": [
+      "decision is LOCAL_NATIVE_VERIFIED",
+      "actual C11 owner modules were imported with load-time digests equal to candidate tree blobs",
+      "native_c11_case import is tree_bound",
+      "import audit contains rawlsing_next.pre553_c11_ingest",
+      "production remains DEPLOYMENT_HOLD"
+    ]
+  },
+  "defect_controls": [
+    {
+      "defect": "D1_subject_observation_overwrite",
+      "node": "tests/universal_runner/test_universal_runner_verify.py::test_subject_observation_overwrite_does_not_change_captured_result",
+      "expected_reason": "RESULT_MISMATCH",
+      "observed_result": {"label": "baseline", "value": 41},
+      "forge_marker_absent": true
+    },
+    {
+      "defect": "D2_unauthenticated_mapping_and_fake_issuer",
+      "nodes": [
+        "tests/universal_runner/test_universal_runner_verify.py::test_unsealed_mapping_and_mutated_seal_are_refused",
+        "tests/universal_runner/test_universal_runner_verify.py::test_attacker_trust_root_and_rewritten_issuer_are_refused"
+      ],
+      "expected_reasons": [
+        "UNTRUSTED_OBSERVATION",
+        "OBSERVATION_AUTHENTICATION_FAILED",
+        "TRUST_ROOT_FINGERPRINT_MISMATCH"
+      ]
+    },
+    {
+      "defect": "D3_claimed_tree_not_bound",
+      "node": "tests/universal_runner/test_universal_runner_verify.py::test_out_of_tree_execution_is_refused_before_acceptance",
+      "expected_reason": "SUPERVISOR_REFUSED:ENTRYPOINT_OUTSIDE_CANDIDATE_TREE"
+    },
+    {
+      "defect": "D4_loaded_bytes_not_rehashed_files",
+      "nodes": [
+        "tests/universal_runner/test_universal_runner_verify.py::test_loaded_bytes_not_restored_file_are_refused",
+        "tests/universal_runner/test_universal_runner_verify.py::test_self_restoring_import_is_refused_from_load_time_digest"
+      ],
+      "expected_reason_prefix": "NATIVE_CUSTODY_FAILED:IMPORT_LOADED_BYTES_NOT_IN_TREE"
+    },
+    {
+      "defect": "D5_default_cli_replay",
+      "node": "tests/universal_runner/test_universal_runner_verify.py::test_cli_requires_durable_ledger_and_trust_root",
+      "expected_reasons": ["NONCE_LEDGER_NOT_DURABLE", "TRUST_ROOT_REQUIRED"],
+      "with_ledger": "first cold process LOCAL_NATIVE_VERIFIED; second cold process NONCE_REPLAYED"
+    },
+    {
+      "defect": "D6_concurrent_ledger_race",
+      "nodes": [
+        "tests/universal_runner/test_universal_runner_verify.py::test_mandatory_durable_ledger_and_cold_replay_refusal",
+        "tests/universal_runner/test_universal_runner_verify.py::test_cross_process_nonce_claim_is_atomic"
+      ],
+      "expected_reason": "NONCE_REPLAYED",
+      "cross_process_outcomes": ["CLAIMED", "REPLAYED"]
+    },
+    {
+      "defect": "D7_malformed_typed_input",
+      "node": "tests/universal_runner/test_universal_runner_verify.py::test_malformed_typed_inputs_fail_closed_without_crashing",
+      "expected_reasons": [
+        "OBSERVATION_AUTHENTICATION_FAILED",
+        "EXPECTATION_RESULT_NOT_SERIALIZABLE"
+      ]
+    }
+  ],
+  "reviewer_probe_replay": {
+    "artifact": "reviewer_probes_against_r2.json",
+    "result": "P1 through P8 required refusals pass; old P0 is intentionally superseded because its temporary out-of-tree fixture is the D3 defect",
+    "successor_positive": "test_existing_c11_native_owner_and_repository_are_executed"
+  },
+  "targeted_mutation": {
+    "path": "CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py",
+    "old": "elif typed_digest(observation.get(\"result\")) != typed_digest(expectation.expected_result):",
+    "new": "elif False and typed_digest(observation.get(\"result\")) != typed_digest(expectation.expected_result):",
+    "target_node": "tests/universal_runner/test_universal_runner_verify.py::test_missing_event_status_spoof_and_wrong_result_are_refused",
+    "mutant_exit_code": 1,
+    "mutant_false_positive": "LOCAL_NATIVE_VERIFIED where REFUSE_NATIVE_QUALIFICATION required",
+    "failure_kind": "TARGET_ASSERTION_FAILED",
+    "raw_output": "mutation_targeted_failure.txt",
+    "restored_exit_code": 0,
+    "restored_summary": "1 passed",
+    "restored_raw_output": "mutation_restored_pass.txt",
+    "restored_git_diff_exit_code": 0
+  },
+  "limits": [
+    "Local subprocess is not a hostile-code sandbox.",
+    "Trust-root key must remain outside subject control; same-UID rewrite of verifier/runtime defeats a purely local check.",
+    "No protected CI required check, admin attestation, external key service or deployed enforcement.",
+    "No original data/science, F6/F7/F8, N11/N12 or production promotion.",
+    "Author validation is not independent review."
+  ]
+}

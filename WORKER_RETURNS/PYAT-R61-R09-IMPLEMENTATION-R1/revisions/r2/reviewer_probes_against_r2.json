@@ -1,0 +1,128 @@
+{
+  "module": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09/CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py",
+  "result": {
+    "P0_genuine_baseline_accepted": {
+      "extra": {},
+      "observed_decision": "REFUSE_NATIVE_QUALIFICATION",
+      "pass": false,
+      "reasons": [
+        "EXPECTATION_FIELD_INVALID:trust_root_fingerprint",
+        "TRUST_ROOT_REQUIRED"
+      ],
+      "required_decision": "LOCAL_NATIVE_VERIFIED"
+    },
+    "P1_forged_observation_no_process": {
+      "extra": {
+        "marker_exists": false,
+        "note": "no LocalNativeSupervisor.observe call was made"
+      },
+      "observed_decision": "REFUSE_NATIVE_QUALIFICATION",
+      "pass": true,
+      "reasons": [
+        "EXPECTATION_FIELD_INVALID:trust_root_fingerprint",
+        "TRUST_ROOT_REQUIRED"
+      ],
+      "required_decision": "REFUSE_NATIVE_QUALIFICATION"
+    },
+    "P2_fake_issuer_rewritten_accepted": {
+      "extra": {
+        "original_issuer": "candidate-issued-supervisor"
+      },
+      "observed_decision": "REFUSE_NATIVE_QUALIFICATION",
+      "pass": true,
+      "reasons": [
+        "EXPECTATION_FIELD_INVALID:trust_root_fingerprint",
+        "TRUST_ROOT_REQUIRED"
+      ],
+      "required_decision": "REFUSE_NATIVE_QUALIFICATION"
+    },
+    "P3_claimed_tree_not_bound_to_executed_bytes": {
+      "extra": {
+        "executed_under_repo": false,
+        "path_present_in_claimed_commit": {
+          "entry": false,
+          "support": false
+        },
+        "target_paths": [
+          "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09/WORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/revisions/r2/work/r09v-c0wf7ci3/native_fixture.py",
+          "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09/WORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/revisions/r2/work/r09v-c0wf7ci3/native_entry.py"
+        ]
+      },
+      "observed_decision": "REFUSE_NATIVE_QUALIFICATION",
+      "pass": true,
+      "reasons": [
+        "EXPECTATION_FIELD_INVALID:trust_root_fingerprint",
+        "TRUST_ROOT_REQUIRED"
+      ],
+      "required_decision": "REFUSE_NATIVE_QUALIFICATION"
+    },
+    "P4_loaded_bytes_differ_reported_digest": {
+      "extra": {
+        "marker_exists": false,
+        "marker_text": null,
+        "post_run_file_digest_matches_expected": false,
+        "reported_import_digest": null
+      },
+      "observed_decision": "REFUSE_NATIVE_QUALIFICATION",
+      "pass": true,
+      "reasons": [
+        "EXPECTATION_FIELD_INVALID:trust_root_fingerprint",
+        "TRUST_ROOT_REQUIRED"
+      ],
+      "required_decision": "REFUSE_NATIVE_QUALIFICATION"
+    },
+    "P5_default_cli_replay_accepted": {
+      "extra": {
+        "first_decision": "REFUSE_NATIVE_QUALIFICATION",
+        "first_exit": 2,
+        "nonce_ledger_configured": false,
+        "second_decision": "REFUSE_NATIVE_QUALIFICATION",
+        "second_exit": 2
+      },
+      "observed_decision": "REFUSE_NATIVE_QUALIFICATION",
+      "pass": true,
+      "reasons": null,
+      "required_decision": "REFUSE_NATIVE_QUALIFICATION"
+    },
+    "P6_concurrent_preconstructed_ledger_replay": {
+      "extra": {
+        "first": "REFUSE_NATIVE_QUALIFICATION",
+        "second": "REFUSE_NATIVE_QUALIFICATION",
+        "second_reasons": [
+          "EXPECTATION_FIELD_INVALID:trust_root_fingerprint",
+          "TRUST_ROOT_REQUIRED"
+        ]
+      },
+      "observed_decision": "REFUSE_NATIVE_QUALIFICATION",
+      "pass": true,
+      "reasons": null,
+      "required_decision": "REFUSE_NATIVE_QUALIFICATION"
+    },
+    "P7_wrong_result_refused_baseline": {
+      "extra": {
+        "has_result_mismatch": false
+      },
+      "observed_decision": "REFUSE_NATIVE_QUALIFICATION",
+      "pass": true,
+      "reasons": [
+        "EXPECTATION_FIELD_INVALID:trust_root_fingerprint",
+        "TRUST_ROOT_REQUIRED"
+      ],
+      "required_decision": "REFUSE_NATIVE_QUALIFICATION"
+    },
+    "P8_subject_overwrites_observation": {
+      "extra": {
+        "marker": null,
+        "post_run_file_restored_to_expected": false,
+        "reported_result": null
+      },
+      "observed_decision": "REFUSE_NATIVE_QUALIFICATION",
+      "pass": true,
+      "reasons": [
+        "EXPECTATION_FIELD_INVALID:trust_root_fingerprint",
+        "TRUST_ROOT_REQUIRED"
+      ],
+      "required_decision": "REFUSE_NATIVE_QUALIFICATION"
+    }
+  }
+}
