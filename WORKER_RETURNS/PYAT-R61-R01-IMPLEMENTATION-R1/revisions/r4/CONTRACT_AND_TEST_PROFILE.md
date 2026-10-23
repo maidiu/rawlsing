@@ -35,7 +35,7 @@ not original-source science, a production search policy, or an R03 wake.
 
 ## Reference profile (TEST_ONLY demonstration parameters)
 
-- J=2, K=2, D=3.
+- J=2, K=3, D=3 (three generations add one ancestor-conditioned split each; K counts ancestors honestly).
 - Root generation 0 issues the source-root comparison jobs; generations 1..D
   are issued from active parents only.
 - Per generation: breadth cap 2, followup cap 2, protected exploration slot 1.
