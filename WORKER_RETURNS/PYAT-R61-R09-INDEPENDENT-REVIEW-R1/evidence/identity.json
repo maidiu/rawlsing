@@ -1,0 +1,51 @@
+{
+  "author_branch": "agent/opencode-pyat-r61-r09-local-runner-r1",
+  "author_manifest_recompute": "all 7 listed artifacts OK; BAD_COUNT 0",
+  "author_remote_start": "c8dbdd017b216e01dc43e0e15d4e044f3ec6d6e8",
+  "candidate_commit": "c8dbdd017b216e01dc43e0e15d4e044f3ec6d6e8",
+  "candidate_files_unchanged_sha256_after_probes": {
+    "CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py": "60f1c359fa0f1c6cd5d91b59243d129b8073b7ef4b7580918342d79b7b571a6c",
+    "tests/universal_runner/test_universal_runner_verify.py": "a08cff30dd1386198a2768f4bf6ad60a0a9bd3f0831e5614f8e9e5cd50d24f88"
+  },
+  "candidate_parents": [
+    "c8dbdd017b216e01dc43e0e15d4e044f3ec6d6e8",
+    "2cc6ce35112a9b98178556cd07ffd46f6ec815fb"
+  ],
+  "candidate_tree": "102c01243d801feb8587aefe8f8744f820e95d35",
+  "changed_paths_from_seal": [
+    "A\tCROSS_HQ_CONTROL_ROOM/universal_runner_verify.py",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/00_RETURN.md",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/RESUME.md",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/existing_oracle_junit.xml",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/junit.xml",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/manifest.json",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/mutation_restored_pass.txt",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/mutation_targeted_failure.txt",
+    "A\tWORKER_RETURNS/PYAT-R61-R09-IMPLEMENTATION-R1/proof_witness.json",
+    "A\ttests/universal_runner/test_universal_runner_verify.py"
+  ],
+  "code_blobs": {
+    "CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py": "04d06bfe4c0cc3150e6012b2b42d421b00c75551",
+    "tests/universal_runner/test_universal_runner_verify.py": "8c77529859fcd1f8f5ee690c768d4bc92e6acf46"
+  },
+  "code_commit": "2cc6ce35112a9b98178556cd07ffd46f6ec815fb",
+  "code_sha256": {
+    "CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py": "60f1c359fa0f1c6cd5d91b59243d129b8073b7ef4b7580918342d79b7b571a6c",
+    "tests/universal_runner/test_universal_runner_verify.py": "a08cff30dd1386198a2768f4bf6ad60a0a9bd3f0831e5614f8e9e5cd50d24f88"
+  },
+  "code_tree": "4f7102cd42c710b3d2b6ed227eb267b08de15e52",
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "reviewer_branch": "agent/opencode-pyat-r61-r09v-independent-review-r1",
+  "reviewer_head_at_start": "c8dbdd017b216e01dc43e0e15d4e044f3ec6d6e8",
+  "reviewer_remote_start": "c8dbdd017b216e01dc43e0e15d4e044f3ec6d6e8",
+  "reviewer_separation": "new session; not author ses_e98c8b6c7ffeXtAnuGL58sAeCp; same provider account only role/session separation",
+  "seal_commit": "c84842e20e1d00d0b036977c9f5006aad5328ae9",
+  "tools": {
+    "git": "git version 2.43.0",
+    "os": "Darwin 22.3.0",
+    "pyreadstat": "1.3.2",
+    "pytest": "pytest 9.0.2",
+    "python": "Python 3.11.3"
+  },
+  "variant": "max/Global existing user-selected account (as commissioned)"
+}

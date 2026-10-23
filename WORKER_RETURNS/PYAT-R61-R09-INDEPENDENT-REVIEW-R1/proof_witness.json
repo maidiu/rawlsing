@@ -1,0 +1,206 @@
+{
+  "author_session": "ses_e98c8b6c7ffeXtAnuGL58sAeCp",
+  "candidate": {
+    "code_commit": "2cc6ce35112a9b98178556cd07ffd46f6ec815fb",
+    "code_tree": "4f7102cd42c710b3d2b6ed227eb267b08de15e52",
+    "files_unchanged_after_probes": true,
+    "startup": "c8dbdd017b216e01dc43e0e15d4e044f3ec6d6e8",
+    "startup_tree": "102c01243d801feb8587aefe8f8744f820e95d35",
+    "test_blob": "8c77529859fcd1f8f5ee690c768d4bc92e6acf46",
+    "test_sha256": "a08cff30dd1386198a2768f4bf6ad60a0a9bd3f0831e5614f8e9e5cd50d24f88",
+    "verifier_blob": "04d06bfe4c0cc3150e6012b2b42d421b00c75551",
+    "verifier_sha256": "60f1c359fa0f1c6cd5d91b59243d129b8073b7ef4b7580918342d79b7b571a6c"
+  },
+  "commands": [
+    {
+      "command": "/usr/local/bin/python3 -m pytest -q -p no:cacheprovider tests/universal_runner --junitxml=WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/evidence/reviewer_author_suite_junit.xml",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "purpose": "author focused suite replay",
+      "skipped": 0,
+      "tests": 13,
+      "walltime_seconds": 1.97
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest -q -p no:cacheprovider tests/universal_execution_oracle --junitxml=WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/evidence/reviewer_existing_oracle_junit.xml",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "purpose": "existing oracle regression replay",
+      "skipped": 0,
+      "tests": 48,
+      "walltime_seconds": 40.34
+    },
+    {
+      "command": "/usr/local/bin/python3 WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/probes/independent_probes.py --out WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/evidence/probes_candidate.json",
+      "exit_code": 1,
+      "failed_required_behaviors": 7,
+      "note": "non-zero is the expected signal that hostile required-refusal cases were accepted",
+      "passed_required_behaviors": 2,
+      "purpose": "independent hostile probe suite",
+      "tests": 9
+    },
+    {
+      "command": "/usr/local/bin/python3 WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/probes/independent_probes.py --mutant WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/mutants/universal_runner_verify_mutant_disable_result_check.py",
+      "exit_code": 0,
+      "intact_candidate_decision": "REFUSE_NATIVE_QUALIFICATION",
+      "mutant_decision": "LOCAL_NATIVE_VERIFIED",
+      "mutated_assertion": "RESULT_MISMATCH comparison changed to `elif False and ...` in disposable copy only",
+      "purpose": "targeted mutant (disposable copy)"
+    }
+  ],
+  "environment": {
+    "git": "2.43.0",
+    "os": "Darwin 22.3.0",
+    "pyreadstat": "1.3.2",
+    "pytest": "9.0.2",
+    "python": "/usr/local/bin/python3 3.11.3"
+  },
+  "independent_probe_outcomes": {
+    "P0_genuine_baseline_accepted": {
+      "defect_demonstrated": false,
+      "evidence": {},
+      "observed": "LOCAL_NATIVE_VERIFIED",
+      "reasons": [],
+      "required": "LOCAL_NATIVE_VERIFIED"
+    },
+    "P1_forged_observation_no_process": {
+      "defect_demonstrated": true,
+      "evidence": {
+        "marker_exists": false,
+        "note": "no LocalNativeSupervisor.observe call was made"
+      },
+      "observed": "LOCAL_NATIVE_VERIFIED",
+      "reasons": [],
+      "required": "REFUSE_NATIVE_QUALIFICATION"
+    },
+    "P2_fake_issuer_rewritten_accepted": {
+      "defect_demonstrated": true,
+      "evidence": {
+        "original_issuer": "candidate-issued-supervisor"
+      },
+      "observed": "LOCAL_NATIVE_VERIFIED",
+      "reasons": [],
+      "required": "REFUSE_NATIVE_QUALIFICATION"
+    },
+    "P3_claimed_tree_not_bound_to_executed_bytes": {
+      "defect_demonstrated": true,
+      "evidence": {
+        "executed_under_repo": false,
+        "path_present_in_claimed_commit": {
+          "entry": false,
+          "support": false
+        },
+        "target_paths": [
+          "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09v/WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/probes/work/r09v-5qxhal_s/native_fixture.py",
+          "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09v/WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/probes/work/r09v-5qxhal_s/native_entry.py"
+        ]
+      },
+      "observed": "LOCAL_NATIVE_VERIFIED",
+      "reasons": [],
+      "required": "REFUSE_NATIVE_QUALIFICATION"
+    },
+    "P4_loaded_bytes_differ_reported_digest": {
+      "defect_demonstrated": true,
+      "evidence": {
+        "marker_exists": true,
+        "marker_text": "mutated-native-loaded",
+        "post_run_file_digest_matches_expected": true,
+        "reported_import_digest": "5205ce76375a313ebf4f6235ad6105fa92070fb210f70762b07f85bbf60ff106"
+      },
+      "observed": "LOCAL_NATIVE_VERIFIED",
+      "reasons": [],
+      "required": "REFUSE_NATIVE_QUALIFICATION"
+    },
+    "P5_default_cli_replay_accepted": {
+      "defect_demonstrated": true,
+      "evidence": {
+        "first_decision": "LOCAL_NATIVE_VERIFIED",
+        "first_exit": 0,
+        "nonce_ledger_configured": false,
+        "second_decision": "LOCAL_NATIVE_VERIFIED",
+        "second_exit": 0
+      },
+      "observed": "LOCAL_NATIVE_VERIFIED",
+      "reasons": null,
+      "required": "REFUSE_NATIVE_QUALIFICATION"
+    },
+    "P6_concurrent_preconstructed_ledger_replay": {
+      "defect_demonstrated": true,
+      "evidence": {
+        "first": "LOCAL_NATIVE_VERIFIED",
+        "second": "LOCAL_NATIVE_VERIFIED",
+        "second_reasons": []
+      },
+      "observed": "LOCAL_NATIVE_VERIFIED",
+      "reasons": null,
+      "required": "REFUSE_NATIVE_QUALIFICATION"
+    },
+    "P7_wrong_result_refused_baseline": {
+      "defect_demonstrated": false,
+      "evidence": {
+        "has_result_mismatch": true
+      },
+      "observed": "REFUSE_NATIVE_QUALIFICATION",
+      "reasons": [
+        "RESULT_MISMATCH"
+      ],
+      "required": "REFUSE_NATIVE_QUALIFICATION"
+    },
+    "P8_subject_overwrites_observation": {
+      "defect_demonstrated": true,
+      "evidence": {
+        "marker": {
+          "pre_forge_result": {
+            "label": "baseline",
+            "value": 41
+          },
+          "pre_forge_status": "COMPLETED"
+        },
+        "post_run_file_restored_to_expected": true,
+        "reported_result": {
+          "label": "baseline",
+          "value": 42
+        }
+      },
+      "observed": "LOCAL_NATIVE_VERIFIED",
+      "reasons": [],
+      "required": "REFUSE_NATIVE_QUALIFICATION"
+    }
+  },
+  "limits": [
+    "No existing repository native owner/consumer was executed; positive is a synthetic temp fixture.",
+    "No protected CI required-check installation, administrator attestation, OS sandbox, external key/issuer, original source/science, N11/N12 or deployed enforcement.",
+    "A candidate able to rewrite verifier/imports/Python defeats any purely local check; excluded and disclosed."
+  ],
+  "manifest_recompute": {
+    "author_artifacts": 7,
+    "bad": 0,
+    "hash_matches": 7,
+    "self_exclusion_present": true
+  },
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "obligations_unchanged": {
+    "Z_UNRESOLVED": 16,
+    "cells": 1890,
+    "global_F6_F7_F8": "held",
+    "original35": 35
+  },
+  "reviewer_is_new_session": true,
+  "reviewer_verdict": "REVISE",
+  "schema": "R61_R09V_INDEPENDENT_REVIEW_PROOF@1",
+  "targeted_mutation_restoration": {
+    "candidate_untouched": true,
+    "intact_git_diff_exit": 0,
+    "intact_verifier_sha256_after": "60f1c359fa0f1c6cd5d91b59243d129b8073b7ef4b7580918342d79b7b571a6c",
+    "mutant_path": "mutants/universal_runner_verify_mutant_disable_result_check.py",
+    "wrong_result_intact": "REFUSE_NATIVE_QUALIFICATION",
+    "wrong_result_mutant": "LOCAL_NATIVE_VERIFIED"
+  },
+  "timestamps": {
+    "expectations_frozen_utc": "2026-10-23T05:35:17Z",
+    "return_bank_utc": "2026-10-23T05:44:20Z"
+  },
+  "variant": "max/Global existing user-selected account (as commissioned)"
+}

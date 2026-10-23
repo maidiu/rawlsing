@@ -1,0 +1,88 @@
+{
+  "algorithm": "sha256",
+  "artifacts": [
+    {
+      "path": "00_RETURN.md",
+      "sha256": "4a958a86f5620eea7192fa494dd5f7343722dafe425bc9fb85c377110ed31ee1",
+      "size": 7563
+    },
+    {
+      "path": "EXPECTATIONS.md",
+      "sha256": "d1420467a4fea1b363078a637603b6c51d4d4fe51fa562f847f68428423fa9b5",
+      "size": 6409
+    },
+    {
+      "path": "RESUME.md",
+      "sha256": "670c3889ba5935c784c4d4501fa06bde2e05272f0a415a64fb37cd6ed0f98837",
+      "size": 2465
+    },
+    {
+      "path": "defects.md",
+      "sha256": "cfafe7546e4906731579dece1d3f1c7ded233f515c4bd3d46b5e83481d697e8d",
+      "size": 7629
+    },
+    {
+      "path": "evidence/identity.json",
+      "sha256": "3fb8cf94c5e3a4f37ce0914601acd4d88bd37324251e18daac134b435adb66c5",
+      "size": 2858
+    },
+    {
+      "path": "evidence/malformed_result.json",
+      "sha256": "8d260e07f58df619752e03e1930b3be884fc2c10d0c5456543890d0ec0f76e05",
+      "size": 582
+    },
+    {
+      "path": "evidence/probe_mutant_result_check.json",
+      "sha256": "bedb78b0f2162d0b0cac1f0bb13b6120ec560657a2ed3f14b57c378c19b144ef",
+      "size": 275
+    },
+    {
+      "path": "evidence/probes_candidate.json",
+      "sha256": "0849c0d93a1d5866a11b2e2841435ab70956202a7626eb766d47e5da97ea8771",
+      "size": 3783
+    },
+    {
+      "path": "evidence/reviewer_author_suite_junit.xml",
+      "sha256": "af42c73debc27646c4b438fed0a8cc371bc0f3a3561cbfbb8bebb366ea464f2a",
+      "size": 2567
+    },
+    {
+      "path": "evidence/reviewer_existing_oracle_junit.xml",
+      "sha256": "2a11a2cd6d7a9debd9af075e6e101c107d1d7a48714292d1ad19c489ad5c5e64",
+      "size": 7650
+    },
+    {
+      "path": "evidence/reviewer_probes_junit.xml",
+      "sha256": "fe5d4f9e03772a9940b41da17a7e9c64ce69ef65a9d7c7ff040354e7ac0eaedf",
+      "size": 7067
+    },
+    {
+      "path": "mutants/universal_runner_verify_mutant_disable_result_check.py",
+      "sha256": "a7e52ce17304cc40c9b2777c350f1d497153aa2017a4efc1533c5eac99493d44",
+      "size": 23732
+    },
+    {
+      "path": "probes/independent_probes.py",
+      "sha256": "6f5bfd6fc7009b4e6e8541f2fcf5451f2e2ec7f4dadf092ac9983a2fdd734185",
+      "size": 15580
+    },
+    {
+      "path": "proof_witness.json",
+      "sha256": "483540bf0c8901875af92912255de7e802c071b2a0197ef46097afc3fb9d05e9",
+      "size": 7825
+    }
+  ],
+  "candidate": "c8dbdd017b216e01dc43e0e15d4e044f3ec6d6e8",
+  "excluded": [
+    {
+      "path": "manifest.json",
+      "reason": "Self-exclusion: a manifest cannot contain a stable hash of itself before it is written."
+    }
+  ],
+  "notes": [
+    "Reviewer artifacts only; no candidate code is included or modified.",
+    "Author manifest is separately recomputed in evidence/identity.json."
+  ],
+  "reviewer_verdict": "REVISE",
+  "schema": "R61_R09V_INDEPENDENT_REVIEW_MANIFEST@1"
+}

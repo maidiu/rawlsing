@@ -1,0 +1,9 @@
+{
+  "case": "D7_malformed_typed_result",
+  "contract": "R09V primary job 3: malformed/typed inputs must fail closed with typed refusal, not crash-accept",
+  "input": "observation['result'] = {'x': {1,2}} (a non-JSON Python set)",
+  "method": "direct verify_observation call with otherwise valid expectation and observation",
+  "note": "fail-closed (no ACCEPT) but aborts the verifier; not a typed decision",
+  "observed": "TypeError: Object of type set is not JSON serializable (raised from typed_digest/canonical_json)",
+  "required": "typed REFUSE_NATIVE_QUALIFICATION decision"
+}

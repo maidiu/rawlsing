@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="R61-R09V-independent-hostile-probes" tests="9" failures="7" errors="0" skipped="0">
+  <testcase classname="R61_R09V_INDEPENDENT" name="P0_genuine_baseline_accepted">
+    <system-out>{"extra": {}, "observed_decision": "LOCAL_NATIVE_VERIFIED", "pass": true, "reasons": [], "required_decision": "LOCAL_NATIVE_VERIFIED"}</system-out>
+  </testcase>
+  <testcase classname="R61_R09V_INDEPENDENT" name="P1_forged_observation_no_process">
+    <failure message="required REFUSE_NATIVE_QUALIFICATION but observed LOCAL_NATIVE_VERIFIED">{
+  "extra": {
+    "marker_exists": false,
+    "note": "no LocalNativeSupervisor.observe call was made"
+  },
+  "observed_decision": "LOCAL_NATIVE_VERIFIED",
+  "pass": false,
+  "reasons": [],
+  "required_decision": "REFUSE_NATIVE_QUALIFICATION"
+}</failure>
+    <system-out>{"extra": {"marker_exists": false, "note": "no LocalNativeSupervisor.observe call was made"}, "observed_decision": "LOCAL_NATIVE_VERIFIED", "pass": false, "reasons": [], "required_decision": "REFUSE_NATIVE_QUALIFICATION"}</system-out>
+  </testcase>
+  <testcase classname="R61_R09V_INDEPENDENT" name="P2_fake_issuer_rewritten_accepted">
+    <failure message="required REFUSE_NATIVE_QUALIFICATION but observed LOCAL_NATIVE_VERIFIED">{
+  "extra": {
+    "original_issuer": "candidate-issued-supervisor"
+  },
+  "observed_decision": "LOCAL_NATIVE_VERIFIED",
+  "pass": false,
+  "reasons": [],
+  "required_decision": "REFUSE_NATIVE_QUALIFICATION"
+}</failure>
+    <system-out>{"extra": {"original_issuer": "candidate-issued-supervisor"}, "observed_decision": "LOCAL_NATIVE_VERIFIED", "pass": false, "reasons": [], "required_decision": "REFUSE_NATIVE_QUALIFICATION"}</system-out>
+  </testcase>
+  <testcase classname="R61_R09V_INDEPENDENT" name="P3_claimed_tree_not_bound_to_executed_bytes">
+    <failure message="required REFUSE_NATIVE_QUALIFICATION but observed LOCAL_NATIVE_VERIFIED">{
+  "extra": {
+    "executed_under_repo": false,
+    "path_present_in_claimed_commit": {
+      "entry": false,
+      "support": false
+    },
+    "target_paths": [
+      "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09v/WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/probes/work/r09v-5qxhal_s/native_fixture.py",
+      "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09v/WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/probes/work/r09v-5qxhal_s/native_entry.py"
+    ]
+  },
+  "observed_decision": "LOCAL_NATIVE_VERIFIED",
+  "pass": false,
+  "reasons": [],
+  "required_decision": "REFUSE_NATIVE_QUALIFICATION"
+}</failure>
+    <system-out>{"extra": {"executed_under_repo": false, "path_present_in_claimed_commit": {"entry": false, "support": false}, "target_paths": ["/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09v/WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/probes/work/r09v-5qxhal_s/native_fixture.py", "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r09v/WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/probes/work/r09v-5qxhal_s/native_entry.py"]}, "observed_decision": "LOCAL_NATIVE_VERIFIED", "pass": false, "reasons": [], "required_decision": "REFUSE_NATIVE_QUALIFICATION"}</system-out>
+  </testcase>
+  <testcase classname="R61_R09V_INDEPENDENT" name="P4_loaded_bytes_differ_reported_digest">
+    <failure message="required REFUSE_NATIVE_QUALIFICATION but observed LOCAL_NATIVE_VERIFIED">{
+  "extra": {
+    "marker_exists": true,
+    "marker_text": "mutated-native-loaded",
+    "post_run_file_digest_matches_expected": true,
+    "reported_import_digest": "5205ce76375a313ebf4f6235ad6105fa92070fb210f70762b07f85bbf60ff106"
+  },
+  "observed_decision": "LOCAL_NATIVE_VERIFIED",
+  "pass": false,
+  "reasons": [],
+  "required_decision": "REFUSE_NATIVE_QUALIFICATION"
+}</failure>
+    <system-out>{"extra": {"marker_exists": true, "marker_text": "mutated-native-loaded", "post_run_file_digest_matches_expected": true, "reported_import_digest": "5205ce76375a313ebf4f6235ad6105fa92070fb210f70762b07f85bbf60ff106"}, "observed_decision": "LOCAL_NATIVE_VERIFIED", "pass": false, "reasons": [], "required_decision": "REFUSE_NATIVE_QUALIFICATION"}</system-out>
+  </testcase>
+  <testcase classname="R61_R09V_INDEPENDENT" name="P5_default_cli_replay_accepted">
+    <failure message="required REFUSE_NATIVE_QUALIFICATION but observed LOCAL_NATIVE_VERIFIED">{
+  "extra": {
+    "first_decision": "LOCAL_NATIVE_VERIFIED",
+    "first_exit": 0,
+    "nonce_ledger_configured": false,
+    "second_decision": "LOCAL_NATIVE_VERIFIED",
+    "second_exit": 0
+  },
+  "observed_decision": "LOCAL_NATIVE_VERIFIED",
+  "pass": false,
+  "reasons": null,
+  "required_decision": "REFUSE_NATIVE_QUALIFICATION"
+}</failure>
+    <system-out>{"extra": {"first_decision": "LOCAL_NATIVE_VERIFIED", "first_exit": 0, "nonce_ledger_configured": false, "second_decision": "LOCAL_NATIVE_VERIFIED", "second_exit": 0}, "observed_decision": "LOCAL_NATIVE_VERIFIED", "pass": false, "reasons": null, "required_decision": "REFUSE_NATIVE_QUALIFICATION"}</system-out>
+  </testcase>
+  <testcase classname="R61_R09V_INDEPENDENT" name="P6_concurrent_preconstructed_ledger_replay">
+    <failure message="required REFUSE_NATIVE_QUALIFICATION but observed LOCAL_NATIVE_VERIFIED">{
+  "extra": {
+    "first": "LOCAL_NATIVE_VERIFIED",
+    "second": "LOCAL_NATIVE_VERIFIED",
+    "second_reasons": []
+  },
+  "observed_decision": "LOCAL_NATIVE_VERIFIED",
+  "pass": false,
+  "reasons": null,
+  "required_decision": "REFUSE_NATIVE_QUALIFICATION"
+}</failure>
+    <system-out>{"extra": {"first": "LOCAL_NATIVE_VERIFIED", "second": "LOCAL_NATIVE_VERIFIED", "second_reasons": []}, "observed_decision": "LOCAL_NATIVE_VERIFIED", "pass": false, "reasons": null, "required_decision": "REFUSE_NATIVE_QUALIFICATION"}</system-out>
+  </testcase>
+  <testcase classname="R61_R09V_INDEPENDENT" name="P7_wrong_result_refused_baseline">
+    <system-out>{"extra": {"has_result_mismatch": true}, "observed_decision": "REFUSE_NATIVE_QUALIFICATION", "pass": true, "reasons": ["RESULT_MISMATCH"], "required_decision": "REFUSE_NATIVE_QUALIFICATION"}</system-out>
+  </testcase>
+  <testcase classname="R61_R09V_INDEPENDENT" name="P8_subject_overwrites_observation">
+    <failure message="required REFUSE_NATIVE_QUALIFICATION but observed LOCAL_NATIVE_VERIFIED">{
+  "extra": {
+    "marker": {
+      "pre_forge_result": {
+        "label": "baseline",
+        "value": 41
+      },
+      "pre_forge_status": "COMPLETED"
+    },
+    "post_run_file_restored_to_expected": true,
+    "reported_result": {
+      "label": "baseline",
+      "value": 42
+    }
+  },
+  "observed_decision": "LOCAL_NATIVE_VERIFIED",
+  "pass": false,
+  "reasons": [],
+  "required_decision": "REFUSE_NATIVE_QUALIFICATION"
+}</failure>
+    <system-out>{"extra": {"marker": {"pre_forge_result": {"label": "baseline", "value": 41}, "pre_forge_status": "COMPLETED"}, "post_run_file_restored_to_expected": true, "reported_result": {"label": "baseline", "value": 42}}, "observed_decision": "LOCAL_NATIVE_VERIFIED", "pass": false, "reasons": [], "required_decision": "REFUSE_NATIVE_QUALIFICATION"}</system-out>
+  </testcase>
+</testsuite>
