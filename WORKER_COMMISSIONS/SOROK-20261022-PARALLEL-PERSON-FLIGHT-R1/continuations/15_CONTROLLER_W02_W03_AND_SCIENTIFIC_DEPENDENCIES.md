@@ -25,3 +25,11 @@ No new substantive Matthew decision is presented until the existing finite A/T p
 ## Immediate admission rule
 
 Every consequential commission is classified by HQ: settled authorized engineering (A), unresolved Matthew decision (B), unissued scientific authority (C), or justified independent work (D). Current repair and disposable generic proof are A/D: controller transport correctness, no psychological rule selection. B/C-dependent generation remains barred. Future gate extension must bind authenticated prerequisite dispositions to authorization; missing/unresolved required rules block before generation, independent bounded jobs remain usable, and changed dispositions invalidate stale authorization.
+
+## Independent delta: W01/W02/W03 cleared
+
+Reviewer receipt `0cfc3e5bad101c2b6fde1908c1448bc822ea1ab8`, remote verified, independently clears these behaviors on author `2c6aa004ce92a732bf8e33524243d1f639faba6b` (implementation `bf2ecbf51964adf283ccea5231952bdbe4ba532e`). Controlled single-ports execution: one worker edit, trusted host commit, exact derived-child reviewer, deferred return; one worker and one reviewer invocation, zero HQ calls. Worker bash deny-all; edit scope and binary substitution checked. No OS isolation claim and no live generic-provider proof.
+
+Remaining precise REVISE: deferred envelope omits actual worker provider/session/effect and changed-path evidence, although runtime_effect persists worker outcome. Same author continuation-12 PID96591 is repairing only this omission; a bounded watcher (terminal session1755) hands a clean finished cut to same reviewer continuation-10. Never replay a completed effect to reconstruct evidence.
+
+Prepared useful job `sorok-external-junit-audit-r1`: read-only Python-standard-library JUnit audit utility and meaningful tests in `SOROK/evidence_tools`. Class D independent of unissued science. Owned disposable controller clone and exact commission/config are prepared beneath author `.local-logs/sorok-attachment/external-useful-job-r1/`; parser/target validation zero holds and zero generation. Reference=base for new worker task; no prior implementation delta folded into scope. Activation and live generic-provider execution NOT_RUN. Exact base/config/auth must be updated to accepted final controller cut before launch. No new implementation/reviewer sessions created.
