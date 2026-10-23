@@ -1,0 +1,115 @@
+{
+  "schema": "R59_MASTER_SUPPLEMENT_MANIFEST_V1",
+  "parent": "eaa3404e87311629160c5b176b99bdca94bd88cc",
+  "frozen_predecessor": "00e17f96d360eb85bec2f5553e5ca4d1045238ed",
+  "review_target": "Exact enclosing final Git commit, supplied after non-force publication; no recursive self-SHA",
+  "write_scope": "WORKER_RETURNS/PYAT-CODEX-HQ-ACCESSION-ELIGIBILITY-R1/",
+  "outputs": [
+    {
+      "path": "00_FULL_SUCCESSION_REPORT_TO_OUTGOING_HQ.md",
+      "bytes": 12255,
+      "sha256": "9501bd010236ff863bbb1cf12c3a2ebba055509873631da82ee4c0fb1048db08",
+      "git_blob": "db07eab8dba379845d34b4dd63c034f636a59451"
+    },
+    {
+      "path": "01_INCOMING_HQ_GROK_ATTESTATION.json",
+      "bytes": 58008,
+      "sha256": "572b9519fa0ae966b295f1d860a141f4d9a8461e5148934dd4cb085c01141096",
+      "git_blob": "04e8cb6726f986d23e0890a7edc3fe55b7da7442"
+    },
+    {
+      "path": "02_EVIDENCE_READBACK_AND_INDEPENDENT_REVIEW_REQUEST.md",
+      "bytes": 6383,
+      "sha256": "2847198e0b65d1d320b36ea60a9676b61796ae0aadba6b8d0a9405a9725579c8",
+      "git_blob": "72edcb65b3c0ec0fd70c21b9da729e8ada4b4e2c"
+    },
+    {
+      "path": "03_FUNCTIONAL_GAPS_AND_OWNER_DECISIONS.md",
+      "bytes": 8726,
+      "sha256": "187af8de50ebb93a436f6fb8c865316c8ebbcfb4e2ccd9a8f4d05eef5082b686",
+      "git_blob": "42cde5f047e5ff9467e6fae7ba4f62510a300451"
+    },
+    {
+      "path": "04_WHOLE_MACHINE_FLIGHT_AND_TERMINAL_CAMPAIGNS.md",
+      "bytes": 6197,
+      "sha256": "f2b61e19e6be4669dc2309d6b85b1f1418840b028036a3f91e31146aee8a4d40",
+      "git_blob": "3c327acebd6d9485fe124771d305bf6d3deee90d"
+    },
+    {
+      "path": "05_PERSONA_OUTPUT_CONSUMER_TEST_AND_METHOD_ALTERNATIVES.md",
+      "bytes": 6289,
+      "sha256": "1de04a50b6eb8f24eb50179f23774c20e101951167048df0301165d330195533",
+      "git_blob": "8c785be91970cb4ab3dd715eba5f7eeb7feb6ed7"
+    },
+    {
+      "path": "06_SOURCE_EVIDENCE_INDEX.json",
+      "bytes": 17834,
+      "sha256": "6bc18fc227958ae7ac8425d3b149e99ac2f0599b5d15a91029c396ab0f30dac6",
+      "git_blob": "036d3112734092a7ddf66176deaaead4ed163354"
+    },
+    {
+      "path": "07_COMPLETE_NODE_AND_ACCEPTANCE_MAP.json",
+      "bytes": 27571,
+      "sha256": "b96102e528125a1a12a91f72e934e1b079cceb8cfb87df73934124362efb7c30",
+      "git_blob": "4e6a99bbb7236d9f15567be06a71cbd3d793bd16"
+    },
+    {
+      "path": "08_FUNCTION_ADJUDICATIONS.json",
+      "bytes": 12687,
+      "sha256": "a694afcff2be86903bb4950a8928a4cfedb7ac1d01b32915cbeebefb7e6cbdfb",
+      "git_blob": "6ea12ec96d1f6bd27e7c9420966ff99f34e45043"
+    },
+    {
+      "path": "09_SELF_EXAM.md",
+      "bytes": 11700,
+      "sha256": "12dd5bda15676bfbb2f06ee3513517a5d69ac568a773afcd57d6c37144e9a9b7",
+      "git_blob": "9e67d906bdcc3b3b8c917aa4cf5a98c819234230"
+    },
+    {
+      "path": "10_LIVE_TERMINAL_FLIGHT_BOARD.json",
+      "bytes": 12182,
+      "sha256": "1513ea779cea404fd2c613381d8b65565e3af575ea9c51da9b438e1d3412a89f",
+      "git_blob": "a65621573dd0e26ec7c9460b8e321bc33863024c"
+    },
+    {
+      "path": "STRUCTURAL_CHECK_RECEIPT.json",
+      "bytes": 886,
+      "sha256": "3b1fdf7b07de0eb173ef2e226468808adb226cc24e7834d3823e2d700cd974b5",
+      "git_blob": "63d0f1e344e15959721590bba239a814f5470c34"
+    }
+  ],
+  "consistency": {
+    "scope": "Candidate package consistency only; not science, independent review or full structural acceptance",
+    "checks": {
+      "fifteen_proof_sections": true,
+      "eight_functions": true,
+      "fifteen_main_plus_N13": true,
+      "all_35_AT": true,
+      "24_self_exam_answers": true,
+      "two_partial_preserved": true,
+      "unperformed_review_not_faked": true
+    },
+    "all_pass": true
+  },
+  "native_check": {
+    "command": [
+      "/usr/local/bin/python3",
+      "verify_incoming_hq_grok_r1.py",
+      "01_INCOMING_HQ_GROK_ATTESTATION.json"
+    ],
+    "exit_code": 1,
+    "stdout": "HQ_GROK_STRUCTURAL_CHECK_FAIL (9 findings)\n- proof crosswave_semantic_driver_facet: not PASS\n- proof long_memory_current_succession: not PASS\n- independent acceptance not recorded\n- independent acceptance: reviewer type invalid\n- independent acceptance: missing reviewer_identity_or_user_ack\n- independent acceptance: missing review_artifact_ref\n- independent acceptance: missing review_sha\n- independent acceptance: missing reviewed_candidate_sha\n- final readiness did not preserve original authority hierarchy\n",
+    "stderr": "",
+    "checker_git_blob": "648f706cb17c791148075bc4234ac4990d08c152",
+    "execution_scope": "Read-only JSON structural check in temporary directory. No production/native source tests."
+  },
+  "evidence_bank": "eaa3404e87311629160c5b176b99bdca94bd88cc",
+  "retained_primary_receipt_blob": "e0c71aff5ac2e1ed8de17c60241cbe350cee6439",
+  "self_excluded_from_content_hash": true,
+  "limits": [
+    "Candidate only;13selfPASS/2PARTIAL; full maximum-strict independent acceptance NOT_CLAIMED.",
+    "Reading-depth limitation is explicit in report/attestation/review request.",
+    "No new worker, native experiment, production change, source data access or authority issuance."
+  ],
+  "verification_contract": "Direct remote HEAD must equal committed SHA; every changed file must equal staged content on GitHub readback. Record verification result in user return; enclosing Git tree is authoritative output binding."
+}

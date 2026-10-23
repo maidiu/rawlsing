@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "verify_incoming_hq_grok_r1.py",
+    "01_INCOMING_HQ_GROK_ATTESTATION.json"
+  ],
+  "exit_code": 1,
+  "stdout": "HQ_GROK_STRUCTURAL_CHECK_FAIL (9 findings)\n- proof crosswave_semantic_driver_facet: not PASS\n- proof long_memory_current_succession: not PASS\n- independent acceptance not recorded\n- independent acceptance: reviewer type invalid\n- independent acceptance: missing reviewer_identity_or_user_ack\n- independent acceptance: missing review_artifact_ref\n- independent acceptance: missing review_sha\n- independent acceptance: missing reviewed_candidate_sha\n- final readiness did not preserve original authority hierarchy\n",
+  "stderr": "",
+  "checker_git_blob": "648f706cb17c791148075bc4234ac4990d08c152",
+  "execution_scope": "Read-only JSON structural check in temporary directory. No production/native source tests."
+}
