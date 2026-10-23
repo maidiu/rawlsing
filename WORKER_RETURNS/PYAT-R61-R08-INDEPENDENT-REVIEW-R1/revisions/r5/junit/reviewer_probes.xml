@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="8" time="3.459" timestamp="2026-10-23T15:25:05.002382-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r5.probes.test_r08v_r5_independent_boundary" name="test_independent_positive_54_6_60_signed_projection" time="0.341" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r5.probes.test_r08v_r5_independent_boundary" name="test_changed_native_case_serves_54_16_70" time="0.300" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r5.probes.test_r08v_r5_independent_boundary" name="test_no_config_wrong_root_attacker_issuer_refuse" time="0.481" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r5.probes.test_r08v_r5_independent_boundary" name="test_r4_reader_mutations_now_typed_refuse_and_restore" time="0.273" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r5.probes.test_r08v_r5_independent_boundary" name="test_missing_live_producer_pin_does_not_execute" time="0.213" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r5.probes.test_r08v_r5_independent_boundary" name="test_provenance_mutation_must_not_serve_unsigned_grade" time="0.310"><failure message="AssertionError: assert 'FULL_K_PRODUCER_ASSOCIATION_SHA256' is None&#10; +  where 'FULL_K_PRODUCER_ASSOCIATION_SHA256' = &lt;built-in method get of dict object at 0x10fba7140&gt;('cache_trust_grade')&#10; +    where &lt;built-in method get of dict object at 0x10fba7140&gt; = {'admission_grade': 'TRUSTED_OWNER_EVIDENCE_ADMISSION_HMAC_SHA256', 'cache_trust_grade': 'FULL_K_PRODUCER_ASSOCIATION_...:learned-world:positioned-subject-query:sha256:0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330'}, ...}.get">def test_provenance_mutation_must_not_serve_unsigned_grade():
+        case, request, resolver, produced = _resolve_canonical("r5-independent-provenance")
+        assert produced.provenance == PROVENANCE_CANONICAL
+        canonical_mutated = replace(produced, provenance=PROVENANCE_CACHE)
+        canonical_read = _reader(request, canonical_mutated).read()
+    
+        cache = resolver.export_cache()
+        cold = EvidenceResolver(admission_verifier=_R4_VERIFIER)
+        cold.import_authenticated_cache(cache)
+        restored = cold.resolve(request)
+        assert restored.provenance == PROVENANCE_CACHE
+        cache_mutated = replace(restored, provenance=PROVENANCE_CANONICAL)
+        cache_read = _reader(request, cache_mutated).read()
+    
+        _record(
+            "provenance_grade_mutation",
+            {
+                "canonical_signed_provenance": produced.provenance,
+                "canonical_supplied_provenance": canonical_mutated.provenance,
+                "canonical_read_cache_trust_grade": canonical_read.get("cache_trust_grade"),
+                "cache_signed_provenance": restored.provenance,
+                "cache_supplied_provenance": cache_mutated.provenance,
+                "cache_read_cache_trust_grade": cache_read.get("cache_trust_grade"),
+                "expected_cache_grade": CACHE_TRUST_ASSOCIATION,
+            },
+        )
+&gt;       assert canonical_read.get("cache_trust_grade") is None
+E       AssertionError: assert 'FULL_K_PRODUCER_ASSOCIATION_SHA256' is None
+E        +  where 'FULL_K_PRODUCER_ASSOCIATION_SHA256' = &lt;built-in method get of dict object at 0x10fba7140&gt;('cache_trust_grade')
+E        +    where &lt;built-in method get of dict object at 0x10fba7140&gt; = {'admission_grade': 'TRUSTED_OWNER_EVIDENCE_ADMISSION_HMAC_SHA256', 'cache_trust_grade': 'FULL_K_PRODUCER_ASSOCIATION_...:learned-world:positioned-subject-query:sha256:0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330'}, ...}.get
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r5/probes/test_r08v_r5_independent_boundary.py:321: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r5.probes.test_r08v_r5_independent_boundary" name="test_export_must_reject_mutated_evidence_object" time="0.292"><failure message="assert not True">def test_export_must_reject_mutated_evidence_object():
+        case, request, resolver, produced = _resolve_canonical("r5-independent-export-object")
+        geometry = produced.evidence_object.geometry
+        assert isinstance(geometry, dict)
+        cell = geometry["cells"][0]
+        cell["raw_numerator_support"] = 999
+    
+        with pytest.raises(EvidenceAssociationError):
+            _reader(request, produced).read()
+    
+        try:
+            cache = resolver.export_cache()
+            exported = True
+            exported_evidence_support = cache["entries"][0]["evidence"]["geometry"]["cells"][0].get(
+                "raw_numerator_support"
+            )
+        except EvidenceCacheIntegrityError as exc:
+            exported = False
+            exported_evidence_support = None
+            export_refusal = str(exc)
+        else:
+            export_refusal = None
+    
+        import_refused = False
+        if exported:
+            try:
+                _resolver().import_authenticated_cache(cache)
+            except EvidenceCacheIntegrityError:
+                import_refused = True
+    
+        _record(
+            "export_mutated_evidence_object",
+            {
+                "reader_refused_mutated_object": True,
+                "export_accepted": exported,
+                "exported_evidence_raw_support": exported_evidence_support,
+                "export_refusal": export_refusal,
+                "downstream_import_refused": import_refused,
+                "signed_envelope_evidence_hash": produced.execution_envelope.evidence_content_hash,
+            },
+        )
+&gt;       assert not exported
+E       assert not True
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r5/probes/test_r08v_r5_independent_boundary.py:366: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r5.probes.test_r08v_r5_independent_boundary" name="test_verifier_only_replay_and_cold_process_positive" time="0.860" /></testsuite></testsuites>
