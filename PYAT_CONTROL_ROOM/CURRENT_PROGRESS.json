@@ -1,7 +1,7 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 67,
+  "revision": 68,
   "r39_return_intake": {
     "status": "WORKER_AUTHOR_EVIDENCE_RECEIVED__NO_INDEPENDENT_ADOPTION",
     "startup": "2e6c189fd54b818556a44419b19691938ea76d5a",
@@ -2953,7 +2953,7 @@
     ],
     "acceptance": "Author result is candidate; distinct reviewer independently qualifies exact candidate, then HQ scoped disposition. R09 local is not deployed enforcement."
   },
-  "next_action": "Receive actual correct-directory independent R01VR5/R08VR4 returns; keep R03 stopped until qualification; no High needed now",
+  "next_action": "STOP foruserSolHigh: resolve boundedR01retainedlineageowner card; R08R5continues independently; noR03wake",
   "active_r61_native_workers": [
     {
       "node": "R01",
@@ -9388,6 +9388,404 @@
         "High_required": false
       },
       "next_action": "Receive actual correct-directory independent R01VR5/R08VR4 returns; keep R03 stopped until qualification; no High needed now"
+    }
+  },
+  "r61u": {
+    "checkpoint_id": "20261023-PYAT-HQ-R61U-VERIFIED-REVIEWS-REPAIR-AND-HIGH-BOUNDARY-R1",
+    "summary": "# Pyat HQ R61U \u2014 independent verdicts / exact High boundary\n\nR01VR5review537bd3985d8a3825186e41cab9308d8150cac848 verified25hashes/26ownrootpaths/4codeblobs/directremote: REVISE. Author26/R3controls10/independentchanged-dataD3+cold2pass; sevenhostilerefusalprobesfail. Actualminority75-25/rootparentprofileisindependentlypositive; ownershipoflineage/ancestry/generation/issuedhistoryandexecutionrevalidationstillmissing. R03NOT_STARTED. BoundedSolHighcardreadyin director6d2b004235f9a4df1153f03bbebe48833e094924:SOL_HIGH_R01_RETAINED_LINEAGE_OWNER_DECISION.md. NoR01R6launched; noAstra/newscience/court required onpresentevidence.\n\nR08VR4reviewd1baa92cb457c30bf6dffb91f23f8cee351de4f6 verified12hashes/13ownrootpaths/directremote: REVISEunsignedconsumerfields/optionalproducerpin. Native54/6/60,changed54/16/70,cold/cacheattackpositivespreserved. ExistingR61QD2-D4fullyspecifyneededrepair; sameauthorR08R5actuallyrunningPID60297 at48a2eaf6d3c653e2efe40643c427f28c47cd744b/commission643678e090832e446772bc6e07761b1c7a836018. Actualsessionmetadata+TOOLroot/branchverified, no newrepo/session/provider/account. Independentreviewfollows.\n\nCurrentLightworkfinished; STOP foruserSolHighswitchafterpreservation. R08nativeworkcontinues independently. Usageobserved4%fivehour/1%weeklyafterexternalallowancechange; notoolreset/creditaction. R09hostgrantpending; original35/1890/globalF6F7F8/source/science/CI/prod/N11/N12/Sorok/J52W52holdsunchanged. No codeadoption.\n",
+    "updates": {
+      "active_workers": [
+        {
+          "id": "R08_R5",
+          "pid": 60297,
+          "sessions": [
+            "ses_e98c8dfe6ffewNYOqJpvqK21a6"
+          ],
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08",
+          "branch": "agent/opencode-pyat-r61-r08-evidence-binding-r1",
+          "startup": "48a2eaf6d3c653e2efe40643c427f28c47cd744b",
+          "commission_tip": "643678e090832e446772bc6e07761b1c7a836018",
+          "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R08/revisions/r5/00_REPAIR_COMMISSION.md",
+          "write_scope": [
+            "rawlsing_next/pre553_universal_evidence_binding.py",
+            "rawlsing_next/tests/test_universal_evidence_binding.py",
+            "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r5/"
+          ],
+          "started_utc": "2026-10-23T17:46:31.318039+00:00",
+          "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_NOT_CONTROLLER",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "variant_requested": "max",
+          "account": "existing Global",
+          "session_directory_from_supported_export": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08",
+          "explicit_cli_dir_and_PWD": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08",
+          "actual_tool_preflight": "PASS_TOOL_ROOT_AND_BRANCH",
+          "os_isolation": "NOT_PROVEN",
+          "new_worktrees": 0,
+          "independent_review_required_after_return": true,
+          "preflight_evidence": {
+            "pwd; git rev-parse --show-toplevel; git branch --show-current; git status --short --branch": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08\n/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08\nagent/opencode-pyat-r61-r08-evidence-binding-r1\n## agent/opencode-pyat-r61-r08-evidence-binding-r1...origin/agent/opencode-pyat-r61-r08-evidence-binding-r1"
+          },
+          "process_live_observed": true,
+          "observed_utc": "2026-10-23T17:48:17.437829+00:00",
+          "observed_head_at_checkpoint": "48a2eaf6d3c653e2efe40643c427f28c47cd744b",
+          "grain": "SOURCEFREE_TEST_ONLY_NATIVE_REPAIR_TO_SETTLED_R61Q_CONTRACT",
+          "library_access": "NO",
+          "pass_wake": "Distinct independent review then scoped HQ intake only",
+          "blocker_effect": "R08 independent of pending R01 High decision",
+          "hard_forbidden": "NO_SCOPE_EXPANSION_SOURCE_SCIENCE_CI_PROD_N11_N12_J52_W52"
+        }
+      ],
+      "dependency_graph": {
+        "R00": {
+          "status": "ACCEPTED_SCOPED_LOCAL_C1__NO_GENERIC_NATIVE_PROMOTION",
+          "prerequisites": [],
+          "authority": "R56/R57 grant",
+          "wake_effect": "Prevents local fixture proof being promoted to universal/original claims",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R02": {
+          "status": "ACCEPTED_SCOPED_LOCAL_C1",
+          "prerequisites": [
+            "R00"
+          ],
+          "authority": "R56 grant",
+          "wake_effect": "Preserves distinct respondents/occasions and actual native facts",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R04": {
+          "status": "JOINED_NOT_QUALIFIED__R04_BYTE_SCOPED_C1_ACCEPTED",
+          "prerequisites": [
+            "R03_WHEN_JOINED",
+            "EXPLICIT_USER_UNPAUSE"
+          ],
+          "wake_effect": "ACTUAL_CONSUMED_BYTES_AUTHENTICATED",
+          "prohibited_early_actions": [
+            "NO_ORIGINAL_FILE_READ"
+          ]
+        },
+        "R06": {
+          "status": "NOT_STARTED",
+          "prerequisites": [
+            "R05",
+            "applicable F5/F6/F7 decisions"
+          ],
+          "authority": "ADDITIONAL_CODE_AND_SEPARATE_APPLICABLE_SCIENCE_GRANTS_REQUIRED",
+          "wake_effect": "Lawful world/possibility machinery from distinct fields and genuinely comparable observed pairs",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "N11": {
+          "status": "NOT_READY",
+          "prerequisites": [
+            "SOURCE_ALL35_ISSUED_U_EPRE",
+            "ACTUAL_F1_F8",
+            "INDEPENDENT_ACCEPTANCE"
+          ],
+          "wake_effect": "ELIGIBLE_FOR_SEPARATE_N12_DECISION",
+          "prohibited_early_actions": [
+            "NO_ORIGINAL_COMPLETION_CERTIFICATE"
+          ]
+        },
+        "N12": {
+          "status": "HOLD",
+          "prerequisites": [
+            "N11_ACCEPTED",
+            "USER_ACTOR_GRANT",
+            "SOROK_COMPETENT_AUTHORITY"
+          ],
+          "wake_effect": "NONE_AUTOMATIC",
+          "prohibited_early_actions": [
+            "NO_PERSON_WELD"
+          ]
+        },
+        "R04_BYTE": {
+          "status": "INDEPENDENT_R04BYTE_NATIVE_SCOPED_LOCAL_QUALIFIED__COMBINED_C1_SCOPED_ACCEPT",
+          "prerequisites": [
+            "ADMITTED_R00P_R2_POLICY",
+            "EXACT_R04BYTE_OWNER_STARTUP_FACILITY_SEAL"
+          ],
+          "wake_effect": "LOCAL_BYTE_SNAPSHOT_PROOF_ONLY_NOT_JOINED_R04",
+          "prohibited_early_actions": [
+            "NO_ORIGINAL_SOURCE_READ",
+            "NO_CODE_OUTSIDE_TWO_R04BYTE_PATHS",
+            "NO_JOINED_R04_ACCEPTANCE"
+          ]
+        },
+        "R04_JOINED": {
+          "status": "NOT_AUTHORIZED_R03_DEPENDENCY_UNSATISFIED",
+          "prerequisites": [
+            "R03_TOTAL_NATIVE_JOIN",
+            "SUBSEQUENT_AUTHORIZATION"
+          ],
+          "wake_effect": "JOINED_LIFECYCLE_CUSTODY",
+          "prohibited_early_actions": [
+            "NO_OVERCLAIM_R04_BYTE"
+          ]
+        },
+        "R04.byte": {
+          "status": "ACCEPTED_SCOPED_LOCAL_C1__NOT_JOINED_R04",
+          "prerequisites": [
+            "R00"
+          ],
+          "authority": "R56 grant",
+          "wake_effect": "Prevents source identity surviving changed consumed bytes",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R01": {
+          "status": "R5_INDEPENDENT_REVISE__RETAINED_HISTORY_SOL_HIGH_DECISION_REQUIRED",
+          "prerequisites": [
+            "R00"
+          ],
+          "authority": "R61 exact four code/test paths",
+          "wake_effect": "Unblocks generic R03 workload instead of selected fixtures",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R08": {
+          "status": "R4_INDEPENDENT_REVISE__R5_ACTUAL_NATIVE_REPAIR_RUNNING",
+          "prerequisites": [
+            "R00"
+          ],
+          "authority": "R61 exact two code/test paths",
+          "wake_effect": "Prevents wrong-condition or unsupported-positive world/possibility serving",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R09.local": {
+          "status": "CAPTURE_HOLD__FACILITY_GAP__EXACT_HOST_DECISION_REQUIRED",
+          "prerequisites": [
+            "R00"
+          ],
+          "authority": "R61 local verifier/test paths only",
+          "wake_effect": "Reliable bounded qualification; forged native proof cannot stand in for real execution",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R03": {
+          "status": "NOT_STARTED__R01_A4_INTEGRITY_UNQUALIFIED",
+          "prerequisites": [
+            "independently qualified R01",
+            "accepted R02"
+          ],
+          "authority": "R61 conditional exact four paths",
+          "wake_effect": "Full sourcefront -> real empirical operations with exact no-drop lineage",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R04.joined": {
+          "status": "NOT_STARTED",
+          "prerequisites": [
+            "accepted R03",
+            "accepted R04.byte"
+          ],
+          "authority": "ADDITIONAL_EXACT_GRANT_REQUIRED",
+          "wake_effect": "Restartable full workload without omission or duplicate scientific counting",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R05": {
+          "status": "NOT_STARTED",
+          "prerequisites": [
+            "R03",
+            "R08"
+          ],
+          "authority": "ADDITIONAL_EXACT_GRANT_REQUIRED",
+          "wake_effect": "Computed evidence and lawful current/as-of products actually reach empirical possibility consumer",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R09.protected": {
+          "status": "NOT_DEPLOYED",
+          "prerequisites": [
+            "qualified local R09",
+            "independent policy",
+            "competent administrator"
+          ],
+          "authority": "CI_ADMINISTRATION_AND_DEPLOYMENT_HELD",
+          "wake_effect": "Non-gameable accepted promotion at exact commit",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "R07": {
+          "status": "NOT_READY",
+          "prerequisites": [
+            "qualified R03",
+            "qualified joined R04",
+            "qualified R05",
+            "qualified R06",
+            "qualified R09",
+            "current source/scientific grants"
+          ],
+          "authority": "ORIGINAL_EXECUTION_AND_N11_ADOPTION_HELD",
+          "wake_effect": "Actual independently assessed original35 N11 evidence",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        },
+        "SOROK_INTERFACE": {
+          "status": "INTERFACE_QUALIFICATION_REMAINS",
+          "prerequisites": [
+            "qualified Pyat product",
+            "separate competent Sorok coordination"
+          ],
+          "authority": "SOROK_INDEPENDENT__N12_ACTOR_WAKE_HELD",
+          "wake_effect": "Ready separately governed downstream person interface",
+          "prohibited_early_actions": [
+            "NO_AUTHOR_SELF_ADOPTION",
+            "NO_SCOPE_EXPANSION",
+            "NO_ORIGINAL_SCIENCE_OR_N11_N12_FROM_LOCAL_PROOF"
+          ]
+        }
+      },
+      "R61U_R01V_R5_intake": {
+        "schema": "PYAT_R61U_R01V_R5_INTAKE@1",
+        "observed_utc": "2026-10-23T17:42:04.418320+00:00",
+        "review": "537bd3985d8a3825186e41cab9308d8150cac848",
+        "candidate": "4b5fd7a240a6e2d007ba1df2424780e6b5612ea9",
+        "manifest_hashes_verified": 25,
+        "changed_ownroot_paths_verified": 26,
+        "code_blobs_verified": 4,
+        "direct_remote_verified": true,
+        "junit": {
+          "author_suite": [
+            {
+              "name": "pytest",
+              "errors": "0",
+              "failures": "0",
+              "skipped": "0",
+              "tests": "26",
+              "time": "11.201",
+              "timestamp": "2026-10-23T13:36:46.728848-04:00",
+              "hostname": "MacBook-Pro.lan"
+            }
+          ],
+          "r3_controls": [
+            {
+              "name": "pytest",
+              "errors": "0",
+              "failures": "0",
+              "skipped": "0",
+              "tests": "10",
+              "time": "4.443",
+              "timestamp": "2026-10-23T13:36:58.280816-04:00",
+              "hostname": "MacBook-Pro.lan"
+            }
+          ],
+          "positive_probe": [
+            {
+              "name": "pytest",
+              "errors": "0",
+              "failures": "0",
+              "skipped": "0",
+              "tests": "2",
+              "time": "1.282",
+              "timestamp": "2026-10-23T13:37:04.886081-04:00",
+              "hostname": "MacBook-Pro.lan"
+            }
+          ],
+          "hostile_probes": [
+            {
+              "name": "pytest",
+              "errors": "0",
+              "failures": "7",
+              "skipped": "0",
+              "tests": "7",
+              "time": "1.546",
+              "timestamp": "2026-10-23T13:37:03.029423-04:00",
+              "hostname": "MacBook-Pro.lan"
+            }
+          ]
+        },
+        "engineering": "REVISE_A4_UNQUALIFIED",
+        "independent_positive": "Changed-data nativeD3/root-parent arithmetic/nonwinning hidden75-25opposition/coldrestore nowconfirmed; preserveA1-A3",
+        "missing_function": "Coordinator-owned lineage and issued-plan records independent of caller plans, revalidated by actual execution; exact ancestry/generation/root/count binding",
+        "next_intelligence": "I3_BOUNDED_SOL_HIGH_ENGINEERING_SEAM_DECISION",
+        "R03": "NOT_STARTED",
+        "native_rerun_by_HQ": false,
+        "new_science_or_authority": false
+      },
+      "R61U_R08V_R4_intake": {
+        "schema": "PYAT_R61U_R08V_R4_INTAKE@1",
+        "observed_utc": "2026-10-23T17:45:53.326369+00:00",
+        "review": "d1baa92cb457c30bf6dffb91f23f8cee351de4f6",
+        "candidate": "48a2eaf6d3c653e2efe40643c427f28c47cd744b",
+        "manifest_hashes_verified": 12,
+        "changed_ownroot_paths_verified": 13,
+        "direct_remote_verified": true,
+        "junit": {
+          "junit/author_suite_replay.xml": [
+            {
+              "name": "pytest",
+              "errors": "0",
+              "failures": "0",
+              "skipped": "0",
+              "tests": "31",
+              "time": "7.693",
+              "timestamp": "2026-10-23T13:36:46.592340-04:00",
+              "hostname": "MacBook-Pro.lan"
+            }
+          ],
+          "junit/reviewer_probes.xml": [
+            {
+              "name": "pytest",
+              "errors": "0",
+              "failures": "3",
+              "skipped": "0",
+              "tests": "9",
+              "time": "3.356",
+              "timestamp": "2026-10-23T13:36:45.919112-04:00",
+              "hostname": "MacBook-Pro.lan"
+            }
+          ]
+        },
+        "engineering": "REVISE_UNAUTHENTICATED_SERVED_FIELDS_AND_OPTIONAL_LIVE_PRODUCER_PIN",
+        "independent_positive": "Native54/6/60, changed54/16/70, cold samehash, no-config/wrongroot/attackerroot/cacheforgeryrefusals preserved",
+        "missing_function": "Complete authenticated-envelope-to-served-result projection/validation on every consumer path; missing live producer configuration denies execution",
+        "decision": "Faithful implementation remand under existing R61Q D1-D6, no changed trust/scientific contract",
+        "next_intelligence": "I2-I3_S3_DeepSeek_MAX_WHOLE_FUNCTION_REPAIR",
+        "new_High_decision_needed_for_R08": false,
+        "full_live_progressive_integration": "NOT_REACHED",
+        "native_rerun_by_HQ": false
+      },
+      "next_action": "STOP foruserSolHigh: resolve boundedR01retainedlineageowner card; R08R5continues independently; noR03wake"
     }
   }
 }
