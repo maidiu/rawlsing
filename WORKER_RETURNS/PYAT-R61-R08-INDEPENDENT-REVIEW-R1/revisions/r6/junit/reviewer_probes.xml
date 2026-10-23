@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="11" time="4.121" timestamp="2026-10-23T16:41:00.697011-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.test_r08v_r6_independent_boundary" name="test_independent_positive_54_6_60_signed_original" time="0.314" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.test_r08v_r6_independent_boundary" name="test_changed_native_54_16_70" time="0.270" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.test_r08v_r6_independent_boundary" name="test_no_config_wrong_root_attacker_and_missing_pin_refuse" time="0.433" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.test_r08v_r6_independent_boundary" name="test_provenance_semantics_signed_original_and_unsigned_local_label" time="0.293" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.test_r08v_r6_independent_boundary" name="test_export_refuses_each_mutated_object_and_restores" time="0.265" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.test_r08v_r6_independent_boundary" name="test_verifier_only_reexport_round_trip" time="0.311" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.test_r08v_r6_independent_boundary" name="test_cold_process_positive_and_reexport" time="0.696" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.test_r08v_r6_independent_boundary" name="test_old_cache_schema_and_old_envelope_refuse" time="0.263" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.test_r08v_r6_independent_boundary" name="test_cache_result_projection_mutation_and_swapped_envelope_refuse" time="0.503" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.test_r08v_r6_independent_boundary" name="test_producer_binding_metadata_must_not_survive_altered" time="0.293"><failure message="assert not True">def test_producer_binding_metadata_must_not_survive_altered():
+        case, request, resolver, produced = _resolve_canonical("r6-independent-binding")
+        cache = resolver.export_cache()
+        entry = cache["entries"][0]
+    
+        altered = copy.deepcopy(entry)
+        altered["producer_binding"]["producer_query_ref"] = {
+            "kind": "FORGED_PRODUCER_QUERY",
+            "object_id": "urn:forged:producer-query",
+            "content_hash": semantic_hash({"forged": "producer-query"}),
+        }
+        altered["producer_binding"]["binding_hash"] = semantic_hash(
+            {
+                k: v
+                for k, v in altered["producer_binding"].items()
+                if k != "binding_hash"
+            }
+        )
+        altered["seal"] = semantic_hash(
+            {k: v for k, v in altered.items() if k != "seal"}
+        )
+    
+        accepted = False
+        reexported_metadata = None
+        second_denominator = None
+        try:
+            verifier_only = EvidenceResolver(admission_verifier=_R4_VERIFIER)
+            verifier_only.import_authenticated_cache(
+                {"schema": cache["schema"], "entries": [altered]}
+            )
+            accepted = True
+            reexported = verifier_only.export_cache()
+            reexported_metadata = reexported["entries"][0]["producer_binding"][
+                "producer_query_ref"
+            ]
+            second = EvidenceResolver(admission_verifier=_R4_VERIFIER)
+            second.import_authenticated_cache(reexported)
+            second_denominator = second.resolve(request).denominator
+        except EvidenceCacheIntegrityError as exc:
+            refusal = str(exc)
+        else:
+            refusal = None
+    
+        altered_admission = copy.deepcopy(entry)
+        altered_admission["producer_binding"]["admission"]["token"] = "0" * 64
+        altered_admission["producer_binding"]["binding_hash"] = semantic_hash(
+            {
+                k: v
+                for k, v in altered_admission["producer_binding"].items()
+                if k != "binding_hash"
+            }
+        )
+        altered_admission["seal"] = semantic_hash(
+            {k: v for k, v in altered_admission.items() if k != "seal"}
+        )
+        admission_accepted = False
+        try:
+            admission_only = EvidenceResolver(admission_verifier=_R4_VERIFIER)
+            admission_only.import_authenticated_cache(
+                {"schema": cache["schema"], "entries": [altered_admission]}
+            )
+            admission_accepted = True
+        except EvidenceCacheIntegrityError:
+            pass
+    
+        _record(
+            "producer_binding_metadata_mutation",
+            {
+                "altered_producer_query_import_accepted": accepted,
+                "reexported_producer_query_ref": reexported_metadata,
+                "second_import_denominator": second_denominator,
+                "altered_admission_token_import_accepted": admission_accepted,
+                "refusal": refusal,
+                "original_producer_query_ref": entry["producer_binding"][
+                    "producer_query_ref"
+                ],
+            },
+        )
+&gt;       assert not accepted
+E       assert not True
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r6/probes/test_r08v_r6_independent_boundary.py:547: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.test_r08v_r6_independent_boundary" name="test_verifier_only_cannot_execute_new_producer" time="0.191" /></testsuite></testsuites>

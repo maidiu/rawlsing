@@ -1,0 +1,82 @@
+{
+  "probes": [
+    {
+      "consumer_hash": "47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be",
+      "e04_denominator": 60,
+      "fixture_counts": {
+        "P1_no": 6,
+        "P1_yes": 54,
+        "denominator": 60
+      },
+      "observed": "SUPPORTED 54/6/60",
+      "probe": "independent_positive_54_6_60",
+      "provider_cells": {
+        "no": 6,
+        "yes": 54
+      },
+      "provider_denominator": 60,
+      "read_denominator": 60
+    },
+    {
+      "fixture_counts": {
+        "P1_no": 16,
+        "P1_yes": 54,
+        "denominator": 70
+      },
+      "observed_denominator": 70,
+      "probe": "changed_native_54_16_70",
+      "read_denominator": 70
+    },
+    {
+      "attacker_signature_refused": true,
+      "no_config_refusal": "NO_CONFIGURED_TRUST_ROOT",
+      "no_config_state": "UNKNOWN",
+      "probe": "no_config_wrong_root_attacker",
+      "restored_denominator": 60,
+      "wrong_root_refused": true
+    },
+    {
+      "e04_mutation_refused": true,
+      "metadata_mutation_refused": true,
+      "probe": "r4_reader_mutations_closed",
+      "restored_denominator": 60,
+      "value_mutation_refused": true
+    },
+    {
+      "legitimate_without_pin_state": "UNKNOWN",
+      "probe": "missing_live_pin_fail_closed",
+      "refusal": "OWNER_ADMISSION_UNRESOLVED",
+      "state": "UNKNOWN",
+      "substituted_call_count": 0
+    },
+    {
+      "cache_read_cache_trust_grade": null,
+      "cache_signed_provenance": "AUTHENTICATED_CACHE",
+      "cache_supplied_provenance": "CANONICAL_PRODUCER",
+      "canonical_read_cache_trust_grade": null,
+      "canonical_signed_provenance": "CANONICAL_PRODUCER",
+      "canonical_supplied_provenance": "AUTHENTICATED_CACHE",
+      "expected_cache_grade": "FULL_K_PRODUCER_ASSOCIATION_SHA256",
+      "probe": "provenance_grade_mutation"
+    },
+    {
+      "downstream_import_refused": false,
+      "export_accepted": false,
+      "export_refusal": "cache export refuses unsigned evidence/query/rule content",
+      "exported_evidence_raw_support": null,
+      "probe": "export_mutated_evidence_object",
+      "reader_refused_mutated_object": true,
+      "signed_envelope_evidence_hash": "e02259ecaf044e40bb17960455627a8e9ae4e7c7e391fa8509b64ecca5a07d49"
+    },
+    {
+      "consumer_denominator": 60,
+      "consumer_hash": "47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be",
+      "denominator": 60,
+      "probe": "cold_process_positive",
+      "provenance": "AUTHENTICATED_CACHE",
+      "reexport": "ACCEPTED",
+      "state": "SUPPORTED"
+    }
+  ],
+  "schema": "R61_R08V_R5_INDEPENDENT_OBSERVATIONS@1"
+}

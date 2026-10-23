@@ -1,0 +1,180 @@
+{
+  "schema": "PYAT_R61_R08V_R6_INDEPENDENT_PROOF_WITNESS@1",
+  "logical_job": "R61-R08-INDEPENDENT-REVIEW-R1/revisions/r6",
+  "verdict": "REVISE",
+  "candidate": "d8a7b4005d23a1e39b35360ca96bf2aef5b9e591",
+  "code_commit": "7450b4f389e4a95a85066065dec7acafe83da84d",
+  "amendment_commit": "b9076985ec3be2ead1c47a2f754a52f774dfca59",
+  "frozen_expectations_commit": "57ce687fefca959fa736abeb822a87c3060521d9",
+  "prior_r5_review": "4a5d9a9f8d700cbc5e692401220623df1122e22b",
+  "prior_r4_review": "d1baa92cb457c30bf6dffb91f23f8cee351de4f6",
+  "branch": "agent/opencode-pyat-r61-r08v-r6-independent-review-r1",
+  "environment": {
+    "python": "3.11.3",
+    "python_executable": "/usr/local/bin/python3",
+    "pytest": "9.0.2"
+  },
+  "custody": {
+    "exact_root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+    "candidate_module_blob": "ad165eba9d04644f4b5ab34cd9e52ea1cf9b0ebe",
+    "candidate_test_blob": "576142c525e140fdfcd34af3949b5bf68ff2386f",
+    "amendment_blob": "93589a1d9c04bf87dddba5a8767a5c195fe1464e",
+    "r6_commission_blob": "69515af7696b1ccd5451c9a4bf61aa9bc72bdca3",
+    "r6_author_commission_blob": "4b4f1086fc89659b231ee6741d617cb0eec6e50d",
+    "native_owner_blobs": {
+      "provider": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "composition": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "positioned_evaluator": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "empirical_objects": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "at07_n10e_fixture": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a"
+    },
+    "candidate_delta": [
+      "rawlsing_next/pre553_universal_evidence_binding.py",
+      "rawlsing_next/tests/test_universal_evidence_binding.py"
+    ],
+    "author_r6_report_delta": [
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r6/00_RETURN.md",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r6/COVERAGE_MATRIX.md",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r6/REPAIR_AMENDMENT.md",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r6/RESUME.md",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r6/junit.xml",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r6/manifest.json",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r6/proof_witness.json"
+    ],
+    "author_manifest_recomputed": {
+      "all_six_artifacts_match": true,
+      "self_excluded": "manifest.json",
+      "artifact_count": 6
+    },
+    "remote_branch_at_start": "d8a7b4005d23a1e39b35360ca96bf2aef5b9e591",
+    "r4_probe_blob": "80b89a714da02a670c96a69f40706dd8d80df0b5",
+    "r5_probe_blob": "0f33dfd069d455d8e0dd33b076e63fab221a33fa"
+  },
+  "commands": [
+    {
+      "command": "pwd; git rev-parse --show-toplevel; git branch --show-current; git status",
+      "exit": 0,
+      "observation": "exact root, required R6 branch, clean tree; no facility mismatch"
+    },
+    {
+      "command": "git show 2ee413f6:WORKER_COMMISSIONS/.../r6/00_COMMISSION.md",
+      "exit": 0,
+      "observation": "sealed R6 commission read in full before candidate code"
+    },
+    {
+      "command": "git show 99222514 R61Q; git show 643678e R5 author commission; git show b907698 R6 amendment; git show d1baa92 R4 review; git show 4a5d9a9f8 R5 review",
+      "exit": 0,
+      "observation": "D1-D6, amendment and prior reviews read; R01 untouched"
+    },
+    {
+      "command": "git add EXPECTATIONS.md; git commit -m 'R61-R08V-R6: freeze independent review expectations'",
+      "exit": 0,
+      "observation": "EXPECTATIONS frozen and committed at 57ce687f before candidate code/conclusions"
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest -q rawlsing_next/tests/test_universal_evidence_binding.py rawlsing_next/tests/test_pre553_analytical_composition.py -p no:cacheprovider --junitxml=<ownroot>/junit/author_suite_replay.xml",
+      "exit": 0,
+      "observation": "38 passed, 0 failed, 0 errors, 0 skipped"
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest -q <ownroot>/probes/r4_immutable_probe.py -p no:cacheprovider --junitxml=<ownroot>/junit/r4_immutable_probe_replay.xml",
+      "exit": 1,
+      "observation": "7 passed, 2 failed; both lawful EvidenceAssociationError from repaired reader"
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest -q <ownroot>/probes/r5_immutable_probe.py -p no:cacheprovider --junitxml=<ownroot>/junit/r5_immutable_probe_replay.xml",
+      "exit": 1,
+      "observation": "6 passed, 2 failed; both superseded old expectations (removed unsigned cache_trust_grade; import-refusal after export already refused)"
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest -q <ownroot>/probes/test_r08v_r6_independent_boundary.py -p no:cacheprovider --junitxml=<ownroot>/junit/reviewer_probes.xml",
+      "exit": 1,
+      "observation": "10 passed, 1 failed security expectation: producer-binding metadata mutation survives import/re-export"
+    }
+  ],
+  "independent_positive": {
+    "fixture": "AT07_BIDIRECTIONAL_100",
+    "independent_table_counts": {"POSITION_P1_yes": 54, "POSITION_P1_no": 6, "denominator": 60},
+    "provider_cells": {"yes": 54, "no": 6},
+    "consumer_state": "EXACT_SUPPORTED",
+    "consumer_result_hash": "47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be",
+    "changed_native_case": {"variant": "CHANGED_SOURCE_LAW", "denominator": 70, "cells": {"yes": 54, "no": 16}},
+    "cold_process": {"provenance": "AUTHENTICATED_CACHE", "state": "SUPPORTED", "denominator": 60, "same_hash": true, "reexport_denominator": 60}
+  },
+  "passing_controls": [
+    "signed original provenance/mode CANONICAL_PRODUCER/LIVE_TRUSTED_EXECUTION; no cache_trust_grade",
+    "mutated evidence/query refused by reader/export; mutated rule refused by reader; restored export/read 60",
+    "verifier-only import/read/re-export/second import/read 60 with same envelope signature",
+    "cold fresh process 60 same consumer hash and re-export 60",
+    "no-config/wrong-root/attacker-issuer/old-cache/old-envelope refusal",
+    "missing live producer pin call count 0",
+    "verifier-only resolver cannot execute a new producer"
+  ],
+  "r4_r5_replay": {
+    "r4": {"tests": 9, "passed": 7, "failed": 2, "failure_types": ["EvidenceAssociationError", "EvidenceAssociationError"], "lawful_typed_refusal": true},
+    "r5": {"tests": 8, "passed": 6, "failed": 2, "failure_reasons": ["removed unsigned cache_trust_grade expectation", "old import-refusal assertion after export already refused"], "superseded_expectations": true}
+  },
+  "probe_results": [
+    {"probe": "independent_positive_54_6_60", "expected": "SUPPORTED 60, yes=54, no=6, signed original", "observed": "SUPPORTED 60, yes=54, no=6, canonical/live, no cache_trust_grade", "outcome": "PASS"},
+    {"probe": "changed_native_54_16_70", "expected": "70 denominator, 54/16", "observed": "70 denominator, 54/16", "outcome": "PASS"},
+    {"probe": "no_config_wrong_root_attacker_missing_pin", "expected": "typed refusals, substituted call 0", "observed": "NO_CONFIGURED_TRUST_ROOT; wrong root/attacker refused; call count 0", "outcome": "PASS"},
+    {"probe": "provenance_semantics", "expected": "signed original canonical/live; no unsigned grade", "observed": "signed original canonical/live under provenance mutation; no cache_trust_grade; local label explicit unsigned", "outcome": "PASS"},
+    {"probe": "export_mutated_objects", "expected": "mutated evidence/query/rule refused; restore passes", "observed": "evidence/query export+read refused; rule reader refused; restore 60", "outcome": "PASS"},
+    {"probe": "verifier_only_reexport_round_trip", "expected": "same signature and 60 after second import", "observed": "signature preserved; first/second read 60; same hash", "outcome": "PASS"},
+    {"probe": "cold_process_positive", "expected": "fresh process separate key, 60, re-export 60", "observed": "AUTHENTICATED_CACHE 60, same hash, re-export 60, original canonical", "outcome": "PASS"},
+    {"probe": "old_versions_refuse", "expected": "old cache/envelope refuse", "observed": "old schema @3 and envelope @1 refused", "outcome": "PASS"},
+    {"probe": "cache_projection_and_swap_refuse", "expected": "result projection/swap refused", "observed": "both EvidenceCacheIntegrityError/EvidenceAssociationError", "outcome": "PASS"},
+    {"probe": "verifier_only_no_live_producer", "expected": "no new producer execution", "observed": "OWNER_ADMISSION_UNRESOLVED, call count 0", "outcome": "PASS"},
+    {"probe": "producer_binding_metadata_mutation", "expected": "altered producer query/admission refused", "observed": "altered producer_query_ref and admission token accepted; re-exported; second import/read 60", "outcome": "FAIL_DEFECT"}
+  ],
+  "defects": [
+    {
+      "id": "R6-D2/D5-01",
+      "class": "cache producer-binding metadata/admission not authenticated against signed owner identity material",
+      "public_route": "public cache import -> verifier-only export_cache -> second import/read",
+      "observed_value": "forged producer_query_ref and all-zero admission token accepted; forged ref re-exported; second import/read 60",
+      "missing_function": "validate/reconstruct duplicated producer-binding fields from signed owner_identity_material and verify/drop admission at import/export"
+    }
+  ],
+  "partials": [
+    "local_delivery_context_unsigned is derived from unsigned result.provenance and can be attacker-influenced; explicit unsigned, signed original canonical/live unaffected, no cache_trust_grade served; not scored separately",
+    "verifier-only re-export without the original ephemeral cache issuer drops optional issuer_grade/issuer_seal; original envelope/signature and 60 preserved; local label downgrade, not upgrade",
+    "author R6 export-object test restores evidence cell to 60 instead of original 6; query-mutation refusal is not isolated; independent probe isolates and passes"
+  ],
+  "junit": {
+    "reviewer_probes": {"tests": 11, "failures": 1, "errors": 0, "skipped": 0, "path": "junit/reviewer_probes.xml"},
+    "author_suite_replay": {"tests": 38, "failures": 0, "errors": 0, "skipped": 0, "path": "junit/author_suite_replay.xml"},
+    "r4_immutable_probe_replay": {"tests": 9, "failures": 2, "errors": 0, "skipped": 0, "path": "junit/r4_immutable_probe_replay.xml"},
+    "r5_immutable_probe_replay": {"tests": 8, "failures": 2, "errors": 0, "skipped": 0, "path": "junit/r5_immutable_probe_replay.xml"}
+  },
+  "artifacts": [
+    "EXPECTATIONS.md",
+    "00_RETURN.md",
+    "defects.md",
+    "limits.md",
+    "RESUME.md",
+    "FACILITY_HISTORY.md",
+    "proof_witness.json",
+    "SHA256manifest.json",
+    "outcomes/r6_observations.json",
+    "outcomes/r4_probe_replay_observations.json",
+    "outcomes/r5_probe_replay_observations.json",
+    "probes/test_r08v_r6_independent_boundary.py",
+    "probes/r4_immutable_probe.py",
+    "probes/r5_immutable_probe.py",
+    "junit/reviewer_probes.xml",
+    "junit/author_suite_replay.xml",
+    "junit/r4_immutable_probe_replay.xml",
+    "junit/r5_immutable_probe_replay.xml",
+    "logs/stdout.jsonl"
+  ],
+  "scope_limits": {
+    "not_reached": ["live J42 E41ProviderAdapter.step", "live P41 progressive", "repaired live E04 terminal"],
+    "unchanged_holds": ["original35", "1890", "global F6F7F8", "source/science/CI/prod", "N11/N12/Sorok", "J52/W52", "R03", "R09"],
+    "r01_untouched": true,
+    "no_candidate_repair": true,
+    "no_self_adoption": true,
+    "no_author_wake": true,
+    "no_extra_sessions_subagents_provider_model_account": true
+  }
+}

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="8" time="2.923" timestamp="2026-10-23T16:41:23.994835-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r5_immutable_probe" name="test_independent_positive_54_6_60_signed_projection" time="0.316" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r5_immutable_probe" name="test_changed_native_case_serves_54_16_70" time="0.266" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r5_immutable_probe" name="test_no_config_wrong_root_attacker_issuer_refuse" time="0.436" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r5_immutable_probe" name="test_r4_reader_mutations_now_typed_refuse_and_restore" time="0.255" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r5_immutable_probe" name="test_missing_live_producer_pin_does_not_execute" time="0.185" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r5_immutable_probe" name="test_provenance_mutation_must_not_serve_unsigned_grade" time="0.282"><failure message="AssertionError: assert None == 'FULL_K_PRODUCER_ASSOCIATION_SHA256'&#10; +  where None = &lt;built-in method get of dict object at 0x1031d9c00&gt;('cache_trust_grade')&#10; +    where &lt;built-in method get of dict object at 0x1031d9c00&gt; = {'cells': [{'cell': 'no', 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 6, 'raw_probability_exact_fracti...k_set:c1-at07-R_ALL_100'}, ...}, ...}, 'reason': 'EXACT_POSITIONED_STRATUM_SUPPORTED'}, 'fallback_path': [], ...}, ...}.get">def test_provenance_mutation_must_not_serve_unsigned_grade():
+        case, request, resolver, produced = _resolve_canonical("r5-independent-provenance")
+        assert produced.provenance == PROVENANCE_CANONICAL
+        canonical_mutated = replace(produced, provenance=PROVENANCE_CACHE)
+        canonical_read = _reader(request, canonical_mutated).read()
+    
+        cache = resolver.export_cache()
+        cold = EvidenceResolver(admission_verifier=_R4_VERIFIER)
+        cold.import_authenticated_cache(cache)
+        restored = cold.resolve(request)
+        assert restored.provenance == PROVENANCE_CACHE
+        cache_mutated = replace(restored, provenance=PROVENANCE_CANONICAL)
+        cache_read = _reader(request, cache_mutated).read()
+    
+        _record(
+            "provenance_grade_mutation",
+            {
+                "canonical_signed_provenance": produced.provenance,
+                "canonical_supplied_provenance": canonical_mutated.provenance,
+                "canonical_read_cache_trust_grade": canonical_read.get("cache_trust_grade"),
+                "cache_signed_provenance": restored.provenance,
+                "cache_supplied_provenance": cache_mutated.provenance,
+                "cache_read_cache_trust_grade": cache_read.get("cache_trust_grade"),
+                "expected_cache_grade": CACHE_TRUST_ASSOCIATION,
+            },
+        )
+        assert canonical_read.get("cache_trust_grade") is None
+&gt;       assert cache_read.get("cache_trust_grade") == CACHE_TRUST_ASSOCIATION
+E       AssertionError: assert None == 'FULL_K_PRODUCER_ASSOCIATION_SHA256'
+E        +  where None = &lt;built-in method get of dict object at 0x1031d9c00&gt;('cache_trust_grade')
+E        +    where &lt;built-in method get of dict object at 0x1031d9c00&gt; = {'cells': [{'cell': 'no', 'cell_state': 'OBSERVED_POSITIVE', 'raw_numerator_support': 6, 'raw_probability_exact_fracti...k_set:c1-at07-R_ALL_100'}, ...}, ...}, 'reason': 'EXACT_POSITIONED_STRATUM_SUPPORTED'}, 'fallback_path': [], ...}, ...}.get
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r6/probes/r5_immutable_probe.py:322: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r5_immutable_probe" name="test_export_must_reject_mutated_evidence_object" time="0.245"><failure message="assert False">def test_export_must_reject_mutated_evidence_object():
+        case, request, resolver, produced = _resolve_canonical("r5-independent-export-object")
+        geometry = produced.evidence_object.geometry
+        assert isinstance(geometry, dict)
+        cell = geometry["cells"][0]
+        cell["raw_numerator_support"] = 999
+    
+        with pytest.raises(EvidenceAssociationError):
+            _reader(request, produced).read()
+    
+        try:
+            cache = resolver.export_cache()
+            exported = True
+            exported_evidence_support = cache["entries"][0]["evidence"]["geometry"]["cells"][0].get(
+                "raw_numerator_support"
+            )
+        except EvidenceCacheIntegrityError as exc:
+            exported = False
+            exported_evidence_support = None
+            export_refusal = str(exc)
+        else:
+            export_refusal = None
+    
+        import_refused = False
+        if exported:
+            try:
+                _resolver().import_authenticated_cache(cache)
+            except EvidenceCacheIntegrityError:
+                import_refused = True
+    
+        _record(
+            "export_mutated_evidence_object",
+            {
+                "reader_refused_mutated_object": True,
+                "export_accepted": exported,
+                "exported_evidence_raw_support": exported_evidence_support,
+                "export_refusal": export_refusal,
+                "downstream_import_refused": import_refused,
+                "signed_envelope_evidence_hash": produced.execution_envelope.evidence_content_hash,
+            },
+        )
+        assert not exported
+&gt;       assert import_refused
+E       assert False
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r6/probes/r5_immutable_probe.py:367: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r5_immutable_probe" name="test_verifier_only_replay_and_cold_process_positive" time="0.668" /></testsuite></testsuites>

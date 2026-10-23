@@ -1,0 +1,109 @@
+{
+  "probes": [
+    {
+      "consumer_hash": "47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be",
+      "fixture_counts": {
+        "P1_no": 6,
+        "P1_yes": 54,
+        "denominator": 60
+      },
+      "observed": "SUPPORTED 54/6/60",
+      "original_execution_mode": "LIVE_TRUSTED_EXECUTION",
+      "original_execution_provenance": "CANONICAL_PRODUCER",
+      "probe": "independent_positive_54_6_60",
+      "provider_cells": {
+        "no": 6,
+        "yes": 54
+      },
+      "provider_denominator": 60
+    },
+    {
+      "fixture_counts": {
+        "P1_no": 16,
+        "P1_yes": 54,
+        "denominator": 70
+      },
+      "observed_denominator": 70,
+      "probe": "changed_native_54_16_70",
+      "read_denominator": 70
+    },
+    {
+      "attacker_signature_refused": true,
+      "missing_pin_refusal": "OWNER_ADMISSION_UNRESOLVED",
+      "no_config_refusal": "NO_CONFIGURED_TRUST_ROOT",
+      "probe": "no_config_wrong_root_attacker_missing_pin",
+      "substituted_call_count": 0,
+      "wrong_root_refused": true
+    },
+    {
+      "cache_mislabeled_local_label": "LIVE_TRUSTED_EXECUTION",
+      "cache_original_mode": "LIVE_TRUSTED_EXECUTION",
+      "cache_original_provenance": "CANONICAL_PRODUCER",
+      "cache_trust_grade_present": false,
+      "canonical_mutated_local_label": "VERIFIED_REPLAY",
+      "canonical_mutated_original_provenance": "CANONICAL_PRODUCER",
+      "live_original_mode": "LIVE_TRUSTED_EXECUTION",
+      "live_original_provenance": "CANONICAL_PRODUCER",
+      "probe": "provenance_semantics"
+    },
+    {
+      "evidence_refused": true,
+      "probe": "export_mutated_objects",
+      "query_refused": true,
+      "restored_denominator": 60,
+      "restored_export_succeeded": true,
+      "rule_reader_refused": true
+    },
+    {
+      "first_read_denominator": 60,
+      "original_execution_provenance": "CANONICAL_PRODUCER",
+      "probe": "verifier_only_reexport_round_trip",
+      "same_consumer_hash": true,
+      "second_read_denominator": 60,
+      "signature_preserved": true
+    },
+    {
+      "consumer_denominator": 60,
+      "consumer_hash": "47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be",
+      "denominator": 60,
+      "original_execution_provenance": "CANONICAL_PRODUCER",
+      "probe": "cold_process_positive",
+      "provenance": "AUTHENTICATED_CACHE",
+      "reexport_denominator": 60,
+      "state": "SUPPORTED"
+    },
+    {
+      "old_cache_schema_refused": true,
+      "old_envelope_refused": true,
+      "probe": "old_versions_refuse"
+    },
+    {
+      "probe": "cache_projection_and_swap_refuse",
+      "result_projection_mutation_refused": true,
+      "swapped_envelope_refused": true
+    },
+    {
+      "altered_admission_token_import_accepted": true,
+      "altered_producer_query_import_accepted": true,
+      "original_producer_query_ref": {
+        "content_hash": "ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371"
+      },
+      "probe": "producer_binding_metadata_mutation",
+      "reexported_producer_query_ref": {
+        "content_hash": "56a41b4aeb462db7d261d10741061c92da41b07d83a9bebab34b071ae1c5c340",
+        "kind": "FORGED_PRODUCER_QUERY",
+        "object_id": "urn:forged:producer-query"
+      },
+      "refusal": null,
+      "second_import_denominator": 60
+    },
+    {
+      "probe": "verifier_only_no_live_producer",
+      "refusal": "OWNER_ADMISSION_UNRESOLVED",
+      "state": "UNKNOWN"
+    }
+  ],
+  "schema": "R61_R08V_R6_INDEPENDENT_OBSERVATIONS@1"
+}

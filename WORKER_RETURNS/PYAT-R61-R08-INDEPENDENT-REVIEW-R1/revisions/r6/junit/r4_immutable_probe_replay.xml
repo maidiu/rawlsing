@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="9" time="2.997" timestamp="2026-10-23T16:41:30.454992-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r4_immutable_probe" name="test_independent_fixture_positive_54_6_60_and_actual_provider" time="0.302" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r4_immutable_probe" name="test_changed_native_case_serves_own_values_not_canonical" time="0.291" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r4_immutable_probe" name="test_no_config_default_resolver_and_reader_refuse" time="0.189" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r4_immutable_probe" name="test_wrong_root_and_attacker_issuer_are_refused_by_real_reader" time="0.256" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r4_immutable_probe" name="test_forged_consumer_values_read_must_refuse_or_serve_signed_values" time="0.239"><failure message="rawlsing_next.pre553_universal_evidence_binding.EvidenceAssociationError: result fields/values do not equal the complete signed execution envelope">def test_forged_consumer_values_read_must_refuse_or_serve_signed_values():
+        case, request, resolver, produced = _resolve_canonical("r4-independent-values")
+        values = dict(produced.consumer_values_read)
+        forged_cells = [
+            {
+                "cell": "yes",
+                "cell_state": "EXACT",
+                "raw_numerator_support": 999,
+                "raw_probability_exact_fraction": "1",
+            }
+        ]
+        forged_ref = {
+            "kind": "FORGED_EVIDENCE",
+            "object_id": "urn:forged:evidence",
+            "content_hash": semantic_hash({"forged": "evidence"}),
+        }
+        values["denominator"] = 999
+        values["cells"] = forged_cells
+        values["evidence_ref"] = forged_ref
+        values["result_state"] = "ZERO_SUPPORT"
+        mutated = replace(produced, consumer_values_read=values)
+&gt;       read = _reader(request, mutated).read()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r6/probes/r4_immutable_probe.py:234: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_universal_evidence_binding.py:2556: in read
+    self._assert_association()
+rawlsing_next/pre553_universal_evidence_binding.py:2519: in _assert_association
+    _assert_result_matches_envelope(self.result, envelope)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = EvidenceResult(request_key='e7fd4132f29f4a914998393b6e1c5de7f9d19a70eecb6adb764a71b8a0f8a3c8', eligibility_state='ELIG...NLY_SCOPED_LOCAL_TRUSTED_HOST'), envelope_signature='d5016eb2e8ea49055c26a1a059967dcbd581208dd596a9abdc661e00302f0213')
+envelope = ExecutedEvidenceEnvelope(request_material={'encoding': 'K_TAGGED_CANONICAL@2', 'contract': 'R61_UNIVERSAL_EVIDENCE_REQ...omain='R61_TEST_ONLY_TRUSTED_HOST_DOMAIN', trust_domain_version='1', trust_grade='TEST_ONLY_SCOPED_LOCAL_TRUSTED_HOST')
+
+    def _assert_result_matches_envelope(
+        result: EvidenceResult, envelope: ExecutedEvidenceEnvelope
+    ) -&gt; None:
+        if not _result_matches_envelope(result, envelope):
+&gt;           raise EvidenceAssociationError(
+                "result fields/values do not equal the complete signed execution envelope"
+            )
+E           rawlsing_next.pre553_universal_evidence_binding.EvidenceAssociationError: result fields/values do not equal the complete signed execution envelope
+
+rawlsing_next/pre553_universal_evidence_binding.py:2342: EvidenceAssociationError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r4_immutable_probe" name="test_mutated_result_metadata_must_refuse" time="0.249"><failure message="rawlsing_next.pre553_universal_evidence_binding.EvidenceAssociationError: result fields/values do not equal the complete signed execution envelope">def test_mutated_result_metadata_must_refuse():
+        case, request, resolver, produced = _resolve_canonical("r4-independent-meta")
+        mutated = replace(
+            produced,
+            producer_fact_state="FORGED_FACT_STATE",
+            uncertainty_state="FORGED_UNCERTAINTY",
+            producer_receipt_ref=None,
+            producer_fact_ref=None,
+        )
+&gt;       read = _reader(request, mutated).read()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r6/probes/r4_immutable_probe.py:265: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_universal_evidence_binding.py:2556: in read
+    self._assert_association()
+rawlsing_next/pre553_universal_evidence_binding.py:2519: in _assert_association
+    _assert_result_matches_envelope(self.result, envelope)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+result = EvidenceResult(request_key='203655dde2f2b6d7cbd734a93013de305220c1a452d7c4d3604c3b4497a2e5c2', eligibility_state='ELIG...NLY_SCOPED_LOCAL_TRUSTED_HOST'), envelope_signature='b51d8db1f29dc8cf3386332dd83beed33f670a256e6911f2250360822742addf')
+envelope = ExecutedEvidenceEnvelope(request_material={'encoding': 'K_TAGGED_CANONICAL@2', 'contract': 'R61_UNIVERSAL_EVIDENCE_REQ...omain='R61_TEST_ONLY_TRUSTED_HOST_DOMAIN', trust_domain_version='1', trust_grade='TEST_ONLY_SCOPED_LOCAL_TRUSTED_HOST')
+
+    def _assert_result_matches_envelope(
+        result: EvidenceResult, envelope: ExecutedEvidenceEnvelope
+    ) -&gt; None:
+        if not _result_matches_envelope(result, envelope):
+&gt;           raise EvidenceAssociationError(
+                "result fields/values do not equal the complete signed execution envelope"
+            )
+E           rawlsing_next.pre553_universal_evidence_binding.EvidenceAssociationError: result fields/values do not equal the complete signed execution envelope
+
+rawlsing_next/pre553_universal_evidence_binding.py:2342: EvidenceAssociationError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r4_immutable_probe" name="test_substituted_producer_without_optional_pin_must_not_execute" time="0.190" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r4_immutable_probe" name="test_cache_forged_evidence_and_missing_envelope_refuse" time="0.260" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r6.probes.r4_immutable_probe" name="test_cold_process_positive_same_consumer_hash" time="0.658" /></testsuite></testsuites>
