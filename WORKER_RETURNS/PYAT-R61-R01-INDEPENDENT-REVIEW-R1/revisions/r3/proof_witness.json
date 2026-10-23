@@ -1,0 +1,133 @@
+{
+  "schema": "PYAT_R61_R01V_R3_INDEPENDENT_REVIEW_WITNESS@1",
+  "verdict": "ACCEPT_SCOPED_LOCAL",
+  "node": "R01V",
+  "revision": "R3",
+  "candidate_startup": "9fbf1ec3bbd569b5fd83cfd9e20cb931523a42c5",
+  "candidate_code": "89774b01990a7d18c10cf4f6e819895776a1a633",
+  "candidate_parent": "f0c602eddaee14a58d6f0935a587a46fcf96c6db",
+  "prior_review": "3ac1e498a08648950d31df0bf52750f9335d24fa",
+  "repair_commission": "3470da602618b5c04b1f28885b5ad1835169e2d5",
+  "review_commission": "ed6cb8675baacc266ec9c85a566380048d30dded",
+  "reviewer_branch": "agent/opencode-pyat-r61-r01v-r3-independent-review-r1",
+  "reviewer_expectations_commit": "1db7de32131a1ec4191fde6bbe3633a08894c357",
+  "grade": "SOURCEFREE_SYNTHETIC_TEST_ONLY_NOT_ORIGINAL_SCIENCE",
+  "environment": {
+    "python": "3.11.3",
+    "python_path": "/usr/local/bin/python3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "platform": "darwin",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r3"
+  },
+  "commands": [
+    {
+      "purpose": "verify author/reviewer remote and startup",
+      "command": "git ls-remote origin refs/heads/agent/opencode-pyat-r61-r01-generic-grammar-r1 refs/heads/agent/opencode-pyat-r61-r01v-r3-independent-review-r1",
+      "exit_code": 0,
+      "result": "author 9fbf1ec3b; reviewer branch started 9fbf1ec3b"
+    },
+    {
+      "purpose": "verify four code blobs and six author report hashes",
+      "command": "python SHA-256 report check and git rev-parse code blobs at 9fbf1ec3b",
+      "exit_code": 0,
+      "result": "all four blobs and all six report hashes match the author manifest; manifest self-excluded"
+    },
+    {
+      "purpose": "verify changed-path allowlist and immutable prior trees",
+      "command": "git diff --name-only f0c602ed 9fbf1ec3b; git diff --stat f0c602ed 9fbf1ec3b -- <immutable paths>",
+      "exit_code": 0,
+      "result": "exactly four R01 code paths plus author R3 report root; immutable prior reports/INPUTS/commissions unchanged"
+    },
+    {
+      "purpose": "author suite replay",
+      "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=.../replay/author_suite_junit.xml -o addopts=''",
+      "exit_code": 0,
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "walltime_seconds": 10.092
+    },
+    {
+      "purpose": "retained focused controls",
+      "command": "PYTHONPATH=$PWD pytest .../probes/prior_test_r01v_independent.py -q --junitxml=.../replay/adapted_prior_probes_junit.xml",
+      "exit_code": 0,
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "walltime_seconds": 1.667,
+      "adaptation": "forged-direction probe recomputes canonical op_id before lowering; stale-ID path covered by own A2 probe"
+    },
+    {
+      "purpose": "own A1-A4 probes",
+      "command": "PYTHONPATH=$PWD:.../probes pytest .../probes/test_r01v_r3_reviewer.py -q --junitxml=.../replay/own_probes_junit.xml",
+      "exit_code": 0,
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "walltime_seconds": 5.36
+    }
+  ],
+  "A1": {
+    "status": "PASS",
+    "evidence": "conditioned JOINT/CO_TRAVEL exact typed predicates in joint and all marginal roles; two values; multi-condition AND dependency refs; actual I05 baseline/mutation/refusal/restoration/cold exact joins",
+    "mutation": "derived predicate atom ref changed while atom_id/rule_id preserved",
+    "mutation_result": "reviewer join and candidate anti-join both fail; restored baseline and cold subprocess pass"
+  },
+  "A2": {
+    "status": "PASS",
+    "evidence": "forged op_id typed OPERATION_ID_NOT_CANONICAL; semantic change with stale op_id refused; recomputed canonical ID lowers SUPPORTED"
+  },
+  "A3": {
+    "status": "PASS",
+    "evidence": "unsupported-only false; truly empty true; budget pending false; exact unsupported IDs retained; total disjoint identity partition"
+  },
+  "A4": {
+    "status": "EXACT_CONTRACT_GAP_HONEST_PRESERVED_LIMITATION",
+    "evidence": "FORK branch_depth 1/2 versus recursion_depth 0; baseline/recursion policy refs carried; deferred gap state EXACT_CONTRACT_GAP; D not used as conditioner-depth bound; no D13 PASS claim",
+    "remaining_not_delivered": "independent governed recurrence/baseline enumeration",
+    "smallest_generic_option": "typed dyadic recurrence relation plus baseline selection policy, enumerate repeated generations to D",
+    "original_source_science_required": false
+  },
+  "imported_owner_blobs": {
+    "rawlsing_next/pre553_discovery_exact.py": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+    "rawlsing_next/pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "rawlsing_next/pre553_empirical_query.py": "03facecf70890bfd13b80418620d274cbcd69d02",
+    "rawlsing_next/pre553_empirical_authority.py": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+    "rawlsing_next/pre553_recursive_handoff.py": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4",
+    "rawlsing_next/tests/test_pre553_discovery_exact.py": "b53039aeb95e012993c5233a7575c1dad5a14929",
+    "rawlsing_next/tests/test_pre553_empirical_query.py": "cc7d93db1f87d9c311170c229dbe3506937b404a",
+    "rawlsing_next/tests/test_universal_grammar.py": "785ba9e13deba10ac72e1389add35c5914b4e7f2"
+  },
+  "candidate_code_blobs": {
+    "rawlsing_next/universal_grammar/types.py": "e7b196efe5b1f86134c27a80bfdd8f472be76e5d",
+    "rawlsing_next/universal_grammar/enumerate.py": "fd9203a0b272f98771c24070d01a9e5287c9b099",
+    "rawlsing_next/universal_grammar/native_map.py": "ea09c02efd273c92970b697397b78558647eb214",
+    "rawlsing_next/tests/test_universal_grammar.py": "785ba9e13deba10ac72e1389add35c5914b4e7f2"
+  },
+  "r03_prerequisite": {
+    "r01": "independently qualified scoped local at generic lowering grain; not full recurrence",
+    "r02": "accepted in inherited R56-R02V r2 at da9a8c4e0ce66baf5a55a6b44a9c0e0139a47cec, remote readback e1f0aeb65, candidate 6f4be33854c0437a52e1c49b977104db111ac327",
+    "basis": "INPUTS/USER_GRANT.json r03_start_condition; 00_FLIGHT.md",
+    "conclusion": "met for supported/non-recurrence R03 operations; recursive/minority R03 coverage remains blocked by A4 generic contract gap; reviewer supplies evidence not wake authority"
+  },
+  "limits": [
+    "Synthetic TEST_ONLY source and Python helpers; no original survey bytes or respondent values.",
+    "No R03 issued workload/U43/Batch or recursive/minority execution.",
+    "No R04 serialized cold restore or authenticated byte custody.",
+    "No independent recurrence/baseline chain; explicit contract gap, not D13 PASS.",
+    "No original U/E_pre, empirical support, F6/F7/F8, N11/N12, actor, production/CI or source permission.",
+    "Own probes are disposable and live only below the R3 reviewer return root; no candidate code/test edit."
+  ],
+  "not_reached": [
+    "R03 total issuance/U43/Batch and recursive/minority execution",
+    "R04 serialized restore/byte custody/revocation",
+    "R05 five grades/canonical N10E values-read",
+    "R06 F5/F6/F7/F8 and observed temporal pairs",
+    "original 35/1,890 and original U/E_pre",
+    "N11/N12, production/protected CI, J52/W52, Browser runtime"
+  ]
+}

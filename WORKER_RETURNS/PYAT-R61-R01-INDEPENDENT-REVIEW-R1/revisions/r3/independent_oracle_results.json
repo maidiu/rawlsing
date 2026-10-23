@@ -1,0 +1,56 @@
+{
+  "A1": {
+    "condition_values_distinct": true,
+    "evidence": "conditioned JOINT/CO_TRAVEL single and multi-condition lowering uses exact derived predicate refs in every JOINT/MARGINAL role; actual I05 baseline/mutation/refusal/restoration/cold join passes",
+    "multi_condition_dependencies": "derived predicate dependency_refs contain both condition predicate refs",
+    "result": "PASS"
+  },
+  "A2": {
+    "evidence": "forged op_id typed refused; semantic change with stale op_id typed refused; recomputed canonical ID lowers SUPPORTED",
+    "result": "PASS"
+  },
+  "A3": {
+    "evidence": "unsupported-only frontier keeps exact unsupported IDs and allow_empty_frontier false; truly empty complete frontier true; pending frontier false; partitions conserve all operation IDs",
+    "result": "PASS"
+  },
+  "A4": {
+    "evidence": "FORK recursion_depth=0 separate from branch_depth 1/2; policy baseline and recursion refs carried; deferred RECURSION_BASELINE_NOT_ENUMERATED state EXACT_CONTRACT_GAP; D not used as conditioner-depth bound; no D13 PASS claim",
+    "remaining_not_delivered": "independent governed recurrence/baseline enumeration",
+    "result": "EXACT_CONTRACT_GAP_HONEST_PRESERVED_LIMITATION"
+  },
+  "adapted_prior_probes": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 20,
+    "time": 1.667
+  },
+  "author_suite": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 20,
+    "time": 10.092
+  },
+  "candidate_code": "89774b01990a7d18c10cf4f6e819895776a1a633",
+  "candidate_startup": "9fbf1ec3bbd569b5fd83cfd9e20cb931523a42c5",
+  "frozen_expectations": "EXPECTATIONS.md @ 1db7de32131a1ec4191fde6bbe3633a08894c357",
+  "not_reached": [
+    "R03 total issuance/U43/Batch and recursive/minority execution",
+    "R04 serialized restore/byte custody/revocation",
+    "R05 five grades/canonical N10E values-read",
+    "R06 F5/F6/F7/F8 and observed temporal pairs",
+    "original 35/1890 and U/E_pre",
+    "N11/N12, production/CI, J52/W52, Browser runtime"
+  ],
+  "own_probes": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 10,
+    "time": 5.36
+  },
+  "r03": "R01_SCoped qualification; R02 accepted evidence at R56-R02V r2; recursive/minority R03 coverage remains blocked by A4 generic contract gap",
+  "schema": "PYAT_R61_R01V_R3_INDEPENDENT_ORACLE_RESULTS@1",
+  "verdict": "ACCEPT_SCOPED_LOCAL"
+}
