@@ -1,0 +1,24 @@
+{
+  "authority": "Direct user instruction: do not assign commissions using Codex; reserve Codex usage for HQ and intelligence escalation",
+  "rule": "NO_CODEX_WORKER_COMMISSIONS. Browser when whole-job qualified, otherwise existing OpenCode/DeepSeek MAX. If worker cannot resolve a necessary judgment, bank and escalate HQ model; do not spawn Codex coding agents.",
+  "supersedes": "R61AF/R61AG coding executor recommendations ONLY; engineering contracts/authority/scope remain",
+  "Codex_workers": "BOTH_INTERRUPTED",
+  "partials": [
+    {
+      "node": "R01",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
+      "branch": "agent/codex-pyat-r61-r01-r7-retained-owner-repair-r1",
+      "remote_sha": "7e021bd0eb539baccbd79f19a5e51efa19661e44",
+      "grade": "INTERRUPTED_UNQUALIFIED_PARTIAL",
+      "Codex_worker": "INTERRUPTED"
+    },
+    {
+      "node": "R08",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08",
+      "branch": "agent/codex-pyat-r61-r08-r7-canonical-cache-repair-r1",
+      "remote_sha": "d4053ff4359578d78caa0a0953245a827864d832",
+      "grade": "INTERRUPTED_UNQUALIFIED_PARTIAL",
+      "Codex_worker": "INTERRUPTED"
+    }
+  ]
+}
