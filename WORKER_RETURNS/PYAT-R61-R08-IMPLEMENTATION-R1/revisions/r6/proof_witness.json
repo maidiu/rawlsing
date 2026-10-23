@@ -1,0 +1,114 @@
+{
+  "schema": "PYAT_R61_R08_R6_PROOF_WITNESS_V1",
+  "node": "R08",
+  "revision": "r6",
+  "startup_commit": "6abd49ffd9bb61925084036f2f1275841b3b5c83",
+  "amendment_commit": "b9076985ec3be2ead1c47a2f754a52f774dfca59",
+  "code_commit": "7450b4f389e4a95a85066065dec7acafe83da84d",
+  "branch": "agent/opencode-pyat-r61-r08-evidence-binding-r1",
+  "preserved_r5_review": "4a5d9a9f8d700cbc5e692401220623df1122e22b",
+  "environment": {
+    "python": "3.11.3",
+    "python_executable": "/usr/local/bin/python3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "pyreadstat_used": false
+  },
+  "command": "/usr/local/bin/python3 -m pytest -q rawlsing_next/tests/test_universal_evidence_binding.py rawlsing_next/tests/test_pre553_analytical_composition.py --junitxml=WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r6/junit.xml",
+  "exit_code": 0,
+  "junit": {
+    "path": "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r6/junit.xml",
+    "tests": 38,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "time_seconds": 9.64,
+    "r08_tests": 25,
+    "c1_regressions": 13
+  },
+  "r5_defects_closed": [
+    {
+      "id": "R5-D3/D4-01",
+      "formerly": "unsigned EvidenceResult.provenance selected served cache grade; canonical->cache and cache->canonical mutations changed served trust labels",
+      "now": "envelope @2 signs original execution provenance/mode; served output reports signed original provenance/mode and only an explicitly unsigned local delivery label; no cache_trust_grade from result.provenance",
+      "tests": [
+        "test_provenance_mutation_cannot_change_signed_original_execution_or_grade"
+      ]
+    },
+    {
+      "id": "R5-D3-02",
+      "formerly": "export_cache emitted mutated evidence/query/rule objects under a valid envelope signature",
+      "now": "export_cache applies shared _objects_match_envelope content/ref checks and refuses before emitting; only canonical validated objects and signed projection are written",
+      "tests": [
+        "test_export_refuses_mutated_evidence_query_and_rule_objects",
+        "test_export_refuses_unsigned_result_mutation_and_cache_projection_is_signed"
+      ]
+    },
+    {
+      "id": "verifier-only re-export",
+      "formerly": "imported verifier-only resolver could read/replay but export_cache failed for lack of admitted binding",
+      "now": "owner/binding material retained on import; verifier-only resolver re-exports the original envelope/signature and signed projection; re-import/read succeeds",
+      "tests": [
+        "test_verifier_only_re_export_preserves_signed_execution_projection",
+        "test_cold_process_cache_replay_preserves_same_consumer_values"
+      ]
+    }
+  ],
+  "positive_control": {
+    "law": "AT07 forward POSITION=P1",
+    "denominator": 60,
+    "cells": {"yes": 54, "no": 6},
+    "changed_native": {"denominator": 70, "cells": {"yes": 54, "no": 16}},
+    "actual_provider": true,
+    "unchanged_evaluator": true,
+    "cold_replay": "fresh process with verifier key via stdin; 60 and same consumer hash; re-export round-trip 60"
+  },
+  "preserved_controls": [
+    "observed zero denominator 60/no=0",
+    "ZERO_SUPPORT denominator 0/no values",
+    "VALID_NULL/DIFFUSE/VALID_EMPTY/OBSERVED_ZERO productive states",
+    "Z UNRESOLVED denominator 16",
+    "no-config/wrong-root/attacker-issuer/forged-context/cache-forgery refusal",
+    "missing live producer pin call count 0",
+    "typed condition/value/order/currentness identities"
+  ],
+  "r5_probe_replay": {
+    "tests": 8,
+    "passed": 6,
+    "failed_as_superseded_expectations": 2,
+    "explanation": "one old probe requires the removed unsigned cache_trust_grade key; one asserts import_refused even when export correctly refused earlier. Successor R6 tests cover signed provenance and export refusal. No archived probe edited."
+  },
+  "mutation_restoration": [
+    "provenance mutation -> signed original provenance unchanged, no unsigned grade; restore PASS",
+    "mutated evidence geometry -> reader/export refuse; restored object -> PASS",
+    "mutated query projection -> export refuses; restored -> PASS",
+    "substituted model rule -> export refuses; original -> PASS",
+    "swapped envelope from other request -> reader refuses; original -> 60",
+    "unsigned result/value mutation -> reader/export/cache refuse; original -> 60",
+    "missing producer pin substituted callable -> 0 calls/UNKNOWN; pinned -> SUPPORTED 54/6/60",
+    "verifier-only re-export -> signed same envelope, re-import/read 60"
+  ],
+  "scope": {
+    "changed_code_paths": [
+      "rawlsing_next/pre553_universal_evidence_binding.py",
+      "rawlsing_next/tests/test_universal_evidence_binding.py"
+    ],
+    "module_blob": "ad165eba9d04644f4b5ab34cd9e52ea1cf9b0ebe",
+    "test_blob": "576142c525e140fdfcd34af3949b5bf68ff2386f",
+    "own_report_root": "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r6/"
+  },
+  "reach": {
+    "covered": "signed trusted-host admission, actual provider/evaluator/consumer, complete signed projection, export/import/replay, verifier-only re-export, fail-closed live pin, status reduction",
+    "not_reached": [
+      "live J42 E41ProviderAdapter.step",
+      "live P41 progressive",
+      "repaired live E04 terminal"
+    ],
+    "reason": "no maintained non-test caller; archived owner bodies outside R08 allowlist and unedited"
+  },
+  "limits": [
+    "TEST_ONLY sourcefree local callable; no original science/source/CI/production/N11/N12/F6/F7/F8/actor/Sorok/J52/W52 authority",
+    "same-UID host/key compromise, ptrace/root and dishonest competent issuer out of scope",
+    "author validation only; distinct R6 reviewer not launched or self-adopted"
+  ]
+}
