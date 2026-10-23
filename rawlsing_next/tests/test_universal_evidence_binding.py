@@ -24,6 +24,9 @@ from rawlsing_next.source_backed_positioned_subject_possibility import (
     PositionedSubjectPossibilityQuery,
 )
 from rawlsing_next.tests import c1_at08_at13_fixture as fx
+from rawlsing_next.pre553_empirical_possibility_provider import (
+    provide_empirical_possibility_slice,
+)
 from rawlsing_next.tests.n10e_empirical_slice_fixture import (
     build_consumer,
     build_model_rule,
@@ -39,7 +42,6 @@ from rawlsing_next.pre553_universal_evidence_binding import (
     ELIGIBILITY_STATES,
     PROVENANCE_CACHE,
     PROVENANCE_CANONICAL,
-    R61_TEST_ONLY_OWNER_ADMISSION_AUTHORITY,
     REFUSAL_NO_EXACT_BINDING,
     RESULT_STATES,
     AdmittedEvidenceContext,
@@ -52,6 +54,7 @@ from rawlsing_next.pre553_universal_evidence_binding import (
     EvidenceResolver,
     EvidenceResult,
     OccurrenceKey,
+    TrustedAdmissionAuthority,
     TrustedCacheIssuer,
     TypedCondition,
     _evidence_material,
@@ -65,6 +68,21 @@ def _ref(kind: str, tag: str, material=None) -> ExactRef:
     material = {"tag": tag} if material is None else material
     digest = semantic_hash(material)
     return ExactRef(kind, f"urn:test:r61:{tag}:sha256:{digest}", digest)
+
+
+_R4_ISSUER = TrustedAdmissionAuthority()
+_R4_VERIFIER = _R4_ISSUER.verifier()
+
+
+def _resolver(**kwargs) -> EvidenceResolver:
+    kwargs.setdefault("admission_verifier", _R4_VERIFIER)
+    kwargs.setdefault("executor", _R4_ISSUER)
+    kwargs.setdefault("admitted_producer", provide_empirical_possibility_slice)
+    return EvidenceResolver(**kwargs)
+
+
+def _reader(request, result) -> EvidenceConsumerReader:
+    return EvidenceConsumerReader(request, result, verifier=_R4_VERIFIER)
 
 
 def _condition(item: str, option: str, value, binding_id: str) -> TypedCondition:
@@ -203,7 +221,7 @@ def _binding(request, case, *, producer=None) -> EmpiricalProducerBinding:
         kwargs["producer"] = producer
     binding = EmpiricalProducerBinding(**kwargs)
     canonical_owner = replace(binding, context=canonical_context, admission=None)
-    admission = R61_TEST_ONLY_OWNER_ADMISSION_AUTHORITY.issue_producer(
+    admission = _R4_ISSUER.issue_producer(
         context_ref=canonical_context.context_ref,
         owner_identity_material=canonical_owner.owner_identity_material(),
     )
@@ -420,7 +438,7 @@ def test_condition_a0_result_cannot_resolve_a1_request():
         request_id="r61-xor-a1",
     )
     assert request_a0.key != request_a1.key
-    resolver = EvidenceResolver()
+    resolver = _resolver()
     resolver.bind(_binding(request_a0, case))
     result_a0 = resolver.resolve(request_a0)
     assert result_a0.result_state == "SUPPORTED"
@@ -430,7 +448,7 @@ def test_condition_a0_result_cannot_resolve_a1_request():
         "1": 1,
     }
     assert (
-        EvidenceConsumerReader(request_a0, result_a0).read()["consumer_result_state"]
+        _reader(request_a0, result_a0).read()["consumer_result_state"]
         == "EXACT_SUPPORTED"
     )
 
@@ -438,13 +456,13 @@ def test_condition_a0_result_cannot_resolve_a1_request():
     assert refused_a1.result_state == "UNKNOWN"
     assert refused_a1.typed_refusal == REFUSAL_NO_EXACT_BINDING
     with pytest.raises(EvidenceAssociationError):
-        EvidenceConsumerReader(request_a1, result_a0).read()
+        _reader(request_a1, result_a0).read()
 
 
 def test_positive_actual_producer_consumer_values_read():
     case = build_provider_case("forward")
     request = _request(case)
-    resolver = EvidenceResolver()
+    resolver = _resolver()
     assert resolver.bind(_binding(request, case)) == request.key
 
     result = resolver.resolve(request)
@@ -465,7 +483,7 @@ def test_positive_actual_producer_consumer_values_read():
     }
     assert values["ordered_conditions"][0]["occurrence"]["option"] == "P1"
 
-    reader = EvidenceConsumerReader(request, result)
+    reader = _reader(request, result)
     read = reader.read()
     assert read["consumer_result_state"] == "EXACT_SUPPORTED"
     assert read["consumer_result_hash"] == result.consumer_result_hash
@@ -485,7 +503,7 @@ def test_actual_zero_support_does_not_become_positive_and_breaks_consumer():
         direction="POSITION_P3_TO_ANSWER",
         request_id="r61-at07-zero-support",
     )
-    resolver = EvidenceResolver()
+    resolver = _resolver()
     resolver.bind(_binding(request, zero))
 
     result = resolver.resolve(request)
@@ -495,7 +513,7 @@ def test_actual_zero_support_does_not_become_positive_and_breaks_consumer():
     assert result.evidence_ref is None
     assert result.consumer_values_read is None
     with pytest.raises(EvidenceAssociationError):
-        EvidenceConsumerReader(request, result).read()
+        _reader(request, result).read()
 
     summary = reduce_required_support([result])
     assert summary.exact_all_support is False
@@ -507,11 +525,11 @@ def test_actual_zero_support_does_not_become_positive_and_breaks_consumer():
 def test_changed_typed_values_and_identity_axes_refuse_same_consumer():
     case = build_provider_case("forward")
     request = _request(case)
-    resolver = EvidenceResolver()
+    resolver = _resolver()
     resolver.bind(_binding(request, case))
     result = resolver.resolve(request)
     assert result.result_state == "SUPPORTED"
-    EvidenceConsumerReader(request, result).read()
+    _reader(request, result).read()
 
     changed_condition = request.changed(
         ordered_conditions=(
@@ -525,7 +543,7 @@ def test_changed_typed_values_and_identity_axes_refuse_same_consumer():
         == REFUSAL_NO_EXACT_BINDING
     )
     with pytest.raises(EvidenceAssociationError):
-        EvidenceConsumerReader(changed_condition, result).read()
+        _reader(changed_condition, result).read()
 
     mutations = {
         "edition": "2025-12",
@@ -544,7 +562,7 @@ def test_changed_typed_values_and_identity_axes_refuse_same_consumer():
         assert refused.result_state == "UNKNOWN", name
         assert refused.typed_refusal == REFUSAL_NO_EXACT_BINDING, name
         with pytest.raises(EvidenceAssociationError):
-            EvidenceConsumerReader(mutated, result).read()
+            _reader(mutated, result).read()
 
     other_target = request.changed(
         target_ref=case["source"]["qrefs"]["POSITION"],
@@ -553,7 +571,7 @@ def test_changed_typed_values_and_identity_axes_refuse_same_consumer():
     assert other_target.key != request.key
     assert resolver.resolve(other_target).result_state == "UNKNOWN"
     with pytest.raises(EvidenceAssociationError):
-        EvidenceConsumerReader(other_target, result).read()
+        _reader(other_target, result).read()
 
 
 def test_typed_encoding_is_tagged_and_duplicate_occurrence_rejected():
@@ -588,7 +606,7 @@ def test_typed_encoding_is_tagged_and_duplicate_occurrence_rejected():
 def test_cache_cold_replay_and_authenticated_tamper():
     case = build_provider_case("forward")
     request = _request(case, request_id="r61-cache-cold")
-    resolver = EvidenceResolver()
+    resolver = _resolver()
     resolver.bind(_binding(request, case))
     produced = resolver.resolve(request)
     assert produced.denominator == 60
@@ -597,7 +615,7 @@ def test_cache_cold_replay_and_authenticated_tamper():
     assert cache["schema"] == CACHE_SCHEMA
     assert len(cache["entries"]) == 1
 
-    cold = EvidenceResolver()
+    cold = _resolver()
     cold.import_authenticated_cache(cache)
     restored = cold.resolve(request)
     assert restored.provenance == PROVENANCE_CACHE
@@ -605,7 +623,7 @@ def test_cache_cold_replay_and_authenticated_tamper():
     assert restored.denominator == 60
     assert restored.consumer_result_hash == produced.consumer_result_hash
     assert restored.cells == produced.cells
-    read = EvidenceConsumerReader(request, restored).read()
+    read = _reader(request, restored).read()
     assert read["denominator"] == 60
     assert read["cells"] == canonicalize(produced.cells)
 
@@ -618,14 +636,14 @@ def test_cache_cold_replay_and_authenticated_tamper():
     }
     tampered["entries"][0]["seal"] = "0" * 64
     with pytest.raises(EvidenceCacheIntegrityError):
-        EvidenceResolver().import_authenticated_cache(tampered)
+        _resolver().import_authenticated_cache(tampered)
 
     payload = dict(cache["entries"][0])
     payload.pop("seal")
     payload["request_key"] = semantic_hash({"different": "request"})
     resealed = {**payload, "seal": semantic_hash(payload)}
     with pytest.raises(EvidenceCacheIntegrityError):
-        EvidenceResolver().import_authenticated_cache(
+        _resolver().import_authenticated_cache(
             {"schema": CACHE_SCHEMA, "entries": [resealed]}
         )
 
@@ -633,7 +651,7 @@ def test_cache_cold_replay_and_authenticated_tamper():
 def test_missing_state_controls_and_total_support_summary():
     case = build_provider_case("forward")
     request = _request(case, request_id="r61-summary-control")
-    missing = EvidenceResolver().resolve(request)
+    missing = _resolver().resolve(request)
     assert missing.result_state == "UNKNOWN"
     assert missing.eligibility_state == "UNKNOWN"
 
@@ -680,10 +698,10 @@ def test_missing_state_controls_and_total_support_summary():
 def test_consumer_assertion_mutation_and_restoration():
     case = build_provider_case("forward")
     request = _request(case, request_id="r61-mutation")
-    resolver = EvidenceResolver()
+    resolver = _resolver()
     resolver.bind(_binding(request, case))
     result = resolver.resolve(request)
-    assert EvidenceConsumerReader(request, result).read()["denominator"] == 60
+    assert _reader(request, result).read()["denominator"] == 60
 
     mutated_values = dict(result.consumer_values_read)
     mutated_values["ordered_conditions"] = [
@@ -691,16 +709,16 @@ def test_consumer_assertion_mutation_and_restoration():
     ]
     mutated = replace(result, consumer_values_read=mutated_values)
     with pytest.raises(EvidenceAssociationError):
-        EvidenceConsumerReader(request, mutated).read()
+        _reader(request, mutated).read()
 
     restored = replace(result, consumer_values_read=result.consumer_values_read)
-    assert EvidenceConsumerReader(request, restored).read()["denominator"] == 60
+    assert _reader(request, restored).read()["denominator"] == 60
 
 
 def test_cold_process_cache_replay_preserves_same_consumer_values():
     case = build_provider_case("forward")
     request = _request(case, request_id="r61-cold-process")
-    resolver = EvidenceResolver()
+    resolver = _resolver()
     resolver.bind(_binding(request, case))
     produced = resolver.resolve(request)
     assert produced.result_state == "SUPPORTED"
@@ -710,19 +728,23 @@ def test_cold_process_cache_replay_preserves_same_consumer_values():
         cache_path.write_text(json.dumps(resolver.export_cache()), encoding="utf-8")
         script = f"""
 import json
+import sys
 from pathlib import Path
 from rawlsing_next.tests.n10e_empirical_slice_fixture import build_provider_case
 from rawlsing_next.tests.test_universal_evidence_binding import _request
 from rawlsing_next.pre553_universal_evidence_binding import (
-    EvidenceConsumerReader, EvidenceResolver,
+    EvidenceConsumerReader, EvidenceResolver, TrustedAdmissionAuthority,
 )
+config = json.loads(sys.stdin.read())
+issuer = TrustedAdmissionAuthority(bytes.fromhex(config["key_hex"]))
+verifier = issuer.verifier()
 case = build_provider_case("forward")
 request = _request(case, request_id="r61-cold-process")
 cache = json.loads(Path({str(cache_path)!r}).read_text(encoding="utf-8"))
-resolver = EvidenceResolver()
+resolver = EvidenceResolver(admission_verifier=verifier)
 resolver.import_authenticated_cache(cache)
 result = resolver.resolve(request)
-values = EvidenceConsumerReader(request, result).read()
+values = EvidenceConsumerReader(request, result, verifier=verifier).read()
 print(json.dumps({{
     "provenance": result.provenance,
     "state": result.result_state,
@@ -734,6 +756,7 @@ print(json.dumps({{
         completed = subprocess.run(
             [sys.executable, "-c", script],
             cwd=Path(__file__).resolve().parents[2],
+            input=json.dumps({"key_hex": _R4_ISSUER.key_hex}),
             text=True,
             capture_output=True,
             check=False,
@@ -756,13 +779,13 @@ def test_wrong_actual_condition_or_admitted_labels_refuse_positive():
         conditions=(_condition("POSITION", "P2", "P2", "position"),),
         request_id="r61-r2-wrong-condition",
     )
-    resolver = EvidenceResolver()
+    resolver = _resolver()
     resolver.bind(_binding(wrong_condition, case))
     result = resolver.resolve(wrong_condition)
     assert result.result_state == "UNKNOWN"
     assert result.typed_refusal == "IDENTITY_MISMATCH"
     with pytest.raises(EvidenceAssociationError):
-        EvidenceConsumerReader(wrong_condition, result).read()
+        _reader(wrong_condition, result).read()
 
     labelled = build_provider_case("forward")
     wrong_labels = _request(
@@ -777,7 +800,7 @@ def test_wrong_actual_condition_or_admitted_labels_refuse_positive():
         weight_method="GOVERNED_WEIGHTED",
         request_id="r61-r2-wrong-labels",
     )
-    labelled_resolver = EvidenceResolver()
+    labelled_resolver = _resolver()
     labelled_resolver.bind(_binding(wrong_labels, labelled))
     refused = labelled_resolver.resolve(wrong_labels)
     assert refused.result_state == "UNKNOWN"
@@ -787,7 +810,7 @@ def test_wrong_actual_condition_or_admitted_labels_refuse_positive():
 def test_cache_carries_full_k_and_issuer_boundary_rejects_self_seal():
     case = build_provider_case("forward")
     request = _request(case, request_id="r61-r2-cache-preimage")
-    resolver = EvidenceResolver()
+    resolver = _resolver()
     resolver.bind(_binding(request, case))
     resolver.resolve(request)
     entry = resolver.export_cache()["entries"][0]
@@ -798,22 +821,29 @@ def test_cache_carries_full_k_and_issuer_boundary_rejects_self_seal():
     ]
 
     issuer = TrustedCacheIssuer()
-    issued_resolver = EvidenceResolver(cache_issuer=issuer)
+    issued_resolver = _resolver(cache_issuer=issuer)
     issued_resolver.bind(_binding(request, case))
     issued_resolver.resolve(request)
     issued_cache = issued_resolver.export_cache()
     assert issued_cache["entries"][0]["issuer_grade"] == "EPHEMERAL_ISSUER_HMAC_SHA256"
 
     with pytest.raises(EvidenceCacheIntegrityError):
-        EvidenceResolver(cache_issuer=TrustedCacheIssuer()).import_authenticated_cache(
+        _resolver(cache_issuer=TrustedCacheIssuer()).import_authenticated_cache(
             issued_cache
         )
     same_key = TrustedCacheIssuer(bytes.fromhex(issuer.key_hex))
-    cold = EvidenceResolver(cache_issuer=same_key)
+    cold = _resolver(cache_issuer=same_key)
     cold.import_authenticated_cache(issued_cache)
     restored = cold.resolve(request)
     assert restored.result_state == "SUPPORTED"
     assert restored.denominator == 60
+
+    wrong_root = _resolver(
+        cache_issuer=same_key,
+        admission_verifier=TrustedAdmissionAuthority().verifier(),
+    )
+    with pytest.raises(EvidenceCacheIntegrityError):
+        wrong_root.import_authenticated_cache(issued_cache)
 
 
 def test_valid_products_preserve_support_state_and_z_unresolved():
@@ -884,7 +914,7 @@ def test_actual_observed_zero_cell_remains_supported_product():
             "release_refs": (source["release_ref"],),
         }
         request = _request(case, request_id="r61-observed-zero")
-        resolver = EvidenceResolver()
+        resolver = _resolver()
         resolver.bind(_binding(request, case))
         result = resolver.resolve(request)
     assert result.result_state == "SUPPORTED"
@@ -954,33 +984,33 @@ def test_forged_caller_context_cannot_mint_owner_admission():
         publication_clock=forged.publication_clock,
         permission_ref=forged.permission_ref,
     )
-    resolver = EvidenceResolver()
+    resolver = _resolver()
     resolver.bind(_binding(request, case))
     result = resolver.resolve(request)
     assert result.result_state == "UNKNOWN"
     assert result.typed_refusal == "OWNER_ADMISSION_UNRESOLVED"
     with pytest.raises(EvidenceAssociationError):
-        EvidenceConsumerReader(request, result).read()
+        _reader(request, result).read()
 
 
 def test_default_cache_rejects_missing_admission_and_forged_same_source_evidence():
     case = build_provider_case("forward")
     request = _request(case, request_id="r61-r3-cache-admission")
-    resolver = EvidenceResolver()
+    resolver = _resolver()
     resolver.bind(_binding(request, case))
     produced = resolver.resolve(request)
     assert produced.result_state == "SUPPORTED"
     base = resolver.export_cache()["entries"][0]
 
-    no_admission = {
+    no_envelope = {
         key: canonicalize(value)
         for key, value in base.items()
-        if key not in {"seal", "issuer_seal", "issuer_grade", "producer_admission"}
+        if key not in {"seal", "issuer_seal", "issuer_grade", "execution_envelope", "envelope_signature"}
     }
-    no_admission["seal"] = semantic_hash(no_admission)
+    no_envelope["seal"] = semantic_hash(no_envelope)
     with pytest.raises(EvidenceCacheIntegrityError):
-        EvidenceResolver().import_authenticated_cache(
-            {"schema": CACHE_SCHEMA, "entries": [no_admission]}
+        _resolver().import_authenticated_cache(
+            {"schema": CACHE_SCHEMA, "entries": [no_envelope]}
         )
 
     forged = {
@@ -1011,6 +1041,82 @@ def test_default_cache_rejects_missing_admission_and_forged_same_source_evidence
         {key: value for key, value in forged.items() if key != "seal"}
     )
     with pytest.raises(EvidenceCacheIntegrityError):
-        EvidenceResolver().import_authenticated_cache(
+        _resolver().import_authenticated_cache(
             {"schema": CACHE_SCHEMA, "entries": [forged]}
+        )
+
+
+def test_default_unconfigured_resolver_and_reader_refuse_admitted_support():
+    case = build_provider_case("forward")
+    request = _request(case, request_id="r61-r4-unconfigured")
+    binding = _binding(request, case)
+    resolver = EvidenceResolver()
+    resolver.bind(binding)
+    result = resolver.resolve(request)
+    assert result.result_state == "UNKNOWN"
+    assert result.typed_refusal == "NO_CONFIGURED_TRUST_ROOT"
+    with pytest.raises(EvidenceAssociationError):
+        EvidenceConsumerReader(request, result).read()
+    with pytest.raises(EvidenceCacheIntegrityError):
+        EvidenceResolver().import_authenticated_cache(
+            {"schema": CACHE_SCHEMA, "entries": []}
+        )
+
+
+def test_attacker_issuer_and_fabricated_envelope_do_not_satisfy_real_reader():
+    case = build_provider_case("forward")
+    request = _request(case, request_id="r61-r4-attacker-issuer")
+    resolver = _resolver()
+    resolver.bind(_binding(request, case))
+    produced = resolver.resolve(request)
+    assert produced.result_state == "SUPPORTED"
+
+    attacker = TrustedAdmissionAuthority()
+    assert attacker.authority_id == _R4_ISSUER.authority_id
+    forged_signature = attacker.issue_envelope(produced.execution_envelope)
+    forged = replace(produced, envelope_signature=forged_signature)
+    with pytest.raises(EvidenceAssociationError):
+        _reader(request, forged).read()
+
+    swapped = replace(produced, envelope_signature=produced.envelope_signature)
+    assert _reader(request, swapped).read()["denominator"] == 60
+
+
+def test_callable_substitution_and_signed_envelope_metadata_mutation_refuse():
+    case = build_provider_case("forward")
+    request = _request(case, request_id="r61-r4-callable-pin")
+    resolver = _resolver()
+
+    def forged_producer(**kwargs):
+        raise AssertionError("forged producer must never execute")
+
+    substituted = _binding(request, case, producer=forged_producer)
+    resolver.bind(substituted)
+    result = resolver.resolve(request)
+    assert result.result_state == "UNKNOWN"
+    assert result.typed_refusal == "OWNER_ADMISSION_UNRESOLVED"
+
+    good = _resolver()
+    good.bind(_binding(request, case))
+    produced = good.resolve(request)
+    mutated_envelope = replace(
+        produced.execution_envelope, result_state="ZERO_SUPPORT"
+    )
+    mutated = replace(produced, execution_envelope=mutated_envelope)
+    with pytest.raises(EvidenceAssociationError):
+        _reader(request, mutated).read()
+
+    base = good.export_cache()["entries"][0]
+    altered = {
+        key: canonicalize(value)
+        for key, value in base.items()
+        if key not in {"seal", "issuer_seal", "issuer_grade"}
+    }
+    result_material = dict(canonicalize(altered["result"]))
+    result_material["result_state"] = "ZERO_SUPPORT"
+    altered["result"] = canonicalize(result_material)
+    altered["seal"] = semantic_hash(altered)
+    with pytest.raises(EvidenceCacheIntegrityError):
+        _resolver().import_authenticated_cache(
+            {"schema": CACHE_SCHEMA, "entries": [altered]}
         )
