@@ -1,3 +1,14 @@
+# Pyat HQ R61X — returned work, scheduled wake and finite client completion
+
+R01 R6 fea3ca17d94183efbd526dc1687ae06b7bbbf0f7 custody verified7hashes/fourblobs; independent review still required. R08V R5 4a5d9a9f8d700cbc5e692401220623df1122e22b verified15hashes, REVISE unsigned served provenance/cache object export. Both previous processes terminal.
+
+Exact incumbent ten-minute app heartbeat registered ACTIVE, first actual wake not yet observed. Not controller event delivery. Existing client qualification FAILED REVIEWER_NOT_INDEPENDENT. Existing infrastructure owner resumed at controller e3d2213e29c9940a946b2f263e93f3f78470493b, session ses_e98dfb4ceffeOIN94FajJA56s1 PID80106. Actual tool preflight pending; attended bootstrap, no controller qualification claim. Full direct user completion packet preserved adjacent commission; finite scoped five-defect/client repair, reuse qualified Sorok cuts, no controller rebuild or branch collision.
+
+Light sufficient for custody and settled-contract coordination. R03 still gated. R09 host question and source/science/production/CI/N11/N12/Sorok/J52W52 holds unchanged. No code adoption.
+
+
+## Earlier progress history retained
+
 # Pyat HQ R61W — productive repairs and review running
 
 R01 R6 retained campaign-owner implementation and distinct R08V R5 hostile review actually launched on existing DeepSeek MAX/Global sessions. Both actual tool directory/branch preflights passed. Exact launch receipts and R08 author custody intake pinned in director 5a3dcac513ee5fa08e19413502c34de136e58faa. R08 author return6abd49ffd9bb61925084036f2f1275841b3b5c83 is custody verified, not independently accepted. R01 full R61V contract and R08 R61Q contract remain unchanged.
