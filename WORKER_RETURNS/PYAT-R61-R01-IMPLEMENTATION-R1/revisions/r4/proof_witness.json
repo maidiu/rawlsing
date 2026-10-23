@@ -1,0 +1,72 @@
+{
+  "schema": "PYAT_R61_R01_R4_PROOF_WITNESS@1",
+  "node": "R01",
+  "revision": "R4",
+  "disposition": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+  "branch": "agent/opencode-pyat-r61-r01-generic-grammar-r1",
+  "startup_commit": "9fbf1ec3bbd569b5fd83cfd9e20cb931523a42c5",
+  "profile_commit": "e8034e3ed9da38d9b46acd7810860ddf1d53e3c6",
+  "profile_correction_commit": "f3601f418d79c83d467ce8dd0ed1c0113c31d7e8",
+  "candidate_code_commit": "009dc5119ae21cd1bc943eeb49019cd25e22eaa6",
+  "environment": {
+    "python": "3.11.3",
+    "python_path": "/usr/local/bin/python3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "platform": "darwin"
+  },
+  "commands": [
+    {
+      "purpose": "author R4 suite",
+      "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=WORKER_RETURNS/PYAT-R61-R01-IMPLEMENTATION-R1/revisions/r4/junit.xml -o addopts=''",
+      "exit_code": 0,
+      "result": "24 passed",
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "walltime_seconds": 10.31,
+      "junit": "junit.xml",
+      "log": "pytest.log"
+    },
+    {
+      "purpose": "three-generation recurrence chain capacity",
+      "command": "ad hoc native chain using committed helpers",
+      "exit_code": 0,
+      "result": "3 generations, 12 issued operations, 0.4083s, peak RSS ~31MB"
+    }
+  ],
+  "native_recurrence": {
+    "generations": 3,
+    "issued_operations": 12,
+    "actual_engine": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery via execute_exact_bounded_discovery_with_handoffs",
+    "comparators": ["ROOT_RELATIVE", "IMMEDIATE_PARENT_RELATIVE"],
+    "handoff_contract": "PRE553_MX01R2_RECURSIVE_HANDOFF@1.0.0",
+    "fresh_process_parent": true,
+    "neutral_aggregate_hidden_differentiation": true,
+    "nonwinning_exploratory_parent": true,
+    "exact_antijoin_each_generation": true
+  },
+  "mutations_and_restoration": [
+    {"mutation": "drop one issued recurrence rule", "expected": "recurrence_anti_join missing rule and no_drop false", "restored": "original plan no_drop true"},
+    {"mutation": "D=2 with requested generation 3", "expected": "D_REACHED stop", "restored": "D=3 profile continues"},
+    {"mutation": "K=2 with three ancestor-conditioned generations", "expected": "typed EXCEED_K refusal", "restored": "K=3 profile executes third generation"},
+    {"mutation": "tight per-generation cap", "expected": "explicit unissued entries, not silent omission", "restored": "larger cap issues full expected set"},
+    {"mutation": "exploratory parent with receipt_ref", "expected": "ValueError exploratory parent may not claim winner receipt", "restored": "source-grounded exploratory parent without receipt"},
+    {"mutation": "mismatched authority/grammar", "expected": "typed GRAMMAR_MISMATCH refusal", "restored": "matching authority executes"},
+    {"mutation": "persisted handoff bundle loaded in fresh subprocess", "expected": "same refs and N+1 no-drop", "restored": "in-process chain same"}
+  ],
+  "imported_owner_blobs": {
+    "rawlsing_next/pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "rawlsing_next/pre553_discovery_exact.py": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+    "rawlsing_next/pre553_recursive_handoff.py": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4",
+    "rawlsing_next/tests/test_pre553_discovery_exact.py": "b53039aeb95e012993c5233a7575c1dad5a14929",
+    "rawlsing_next/tests/test_pre553_empirical_query.py": "cc7d93db1f87d9c311170c229dbe3506937b404a"
+  },
+  "limits": [
+    "Synthetic TEST_ONLY data/profile only; no original respondents, source authority or science.",
+    "Reference numeric caps are demonstration parameters, not global/source defaults.",
+    "R03 issuance/U43/Batch, R04 custody, R05 grades, original 35/1890 and N11/N12 remain NOT_REACHED.",
+    "Wrong-source/replay negative is guarded by existing owner closure and not separately mutated in this suite.",
+    "No self-adoption; fresh distinct reviewer required."
+  ]
+}
