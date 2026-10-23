@@ -1,0 +1,294 @@
+..........FFFFFFFFFF                                                     [100%]
+=================================== FAILURES ===================================
+______________ test_DEFECT_bool_condition_domain_is_representable ______________
+
+    def test_DEFECT_bool_condition_domain_is_representable():
+        """CONTRACTS K requires tagged bool values; candidate forbids bool domains."""
+        try:
+>           occ = _occ("bool_condition", domain=(True, False))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py:389: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py:108: in _occ
+    return Occurrence(
+<string>:18: in __init__
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Occurrence(key=OccurrenceKey(item_id='bool_condition', option_id=None, form_id=None, repeat_id=None), label='BOOL_COND...te='KNOWN', semantic_state='UNRESOLVED', scope='WAVE-A', risk_set_refs=('RISK-A',), schema='UniversalOccurrence@r61.1')
+
+    def __post_init__(self) -> None:
+        if self.schema != OCCURRENCE_SCHEMA:
+            raise ValueError(f"INCOMPATIBLE_OCCURRENCE_SCHEMA:{self.schema}")
+        object.__setattr__(self, "label", _text(self.label, "label"))
+        object.__setattr__(self, "unit", _text(self.unit, "unit"))
+        object.__setattr__(self, "topology", _text(self.topology, "topology"))
+        object.__setattr__(self, "forms", _texts(self.forms, "forms", allow_empty=False))
+        if not isinstance(self.domain, tuple):
+            object.__setattr__(self, "domain", tuple(self.domain))
+        if not self.domain:
+            raise ValueError("domain may not be empty")
+        for value in self.domain:
+            if isinstance(value, (float, bool)) or value is None:
+>               raise ValueError("domain values must be exact non-float scalars")
+E               ValueError: domain values must be exact non-float scalars
+
+rawlsing_next/universal_grammar/types.py:149: ValueError
+
+During handling of the above exception, another exception occurred:
+
+    def test_DEFECT_bool_condition_domain_is_representable():
+        """CONTRACTS K requires tagged bool values; candidate forbids bool domains."""
+        try:
+            occ = _occ("bool_condition", domain=(True, False))
+        except ValueError as exc:
+>           pytest.fail(f"typed bool condition domain rejected: {exc}")
+E           Failed: typed bool condition domain rejected: domain values must be exact non-float scalars
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py:391: Failed
+__________ test_DEFECT_explicit_null_condition_value_is_representable __________
+
+    def test_DEFECT_explicit_null_condition_value_is_representable():
+        """CONTRACTS K requires explicit null distinct from absent."""
+        try:
+>           occ = _occ("null_condition", domain=(None,))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py:398: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py:108: in _occ
+    return Occurrence(
+<string>:18: in __init__
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Occurrence(key=OccurrenceKey(item_id='null_condition', option_id=None, form_id=None, repeat_id=None), label='NULL_COND...te='KNOWN', semantic_state='UNRESOLVED', scope='WAVE-A', risk_set_refs=('RISK-A',), schema='UniversalOccurrence@r61.1')
+
+    def __post_init__(self) -> None:
+        if self.schema != OCCURRENCE_SCHEMA:
+            raise ValueError(f"INCOMPATIBLE_OCCURRENCE_SCHEMA:{self.schema}")
+        object.__setattr__(self, "label", _text(self.label, "label"))
+        object.__setattr__(self, "unit", _text(self.unit, "unit"))
+        object.__setattr__(self, "topology", _text(self.topology, "topology"))
+        object.__setattr__(self, "forms", _texts(self.forms, "forms", allow_empty=False))
+        if not isinstance(self.domain, tuple):
+            object.__setattr__(self, "domain", tuple(self.domain))
+        if not self.domain:
+            raise ValueError("domain may not be empty")
+        for value in self.domain:
+            if isinstance(value, (float, bool)) or value is None:
+>               raise ValueError("domain values must be exact non-float scalars")
+E               ValueError: domain values must be exact non-float scalars
+
+rawlsing_next/universal_grammar/types.py:149: ValueError
+
+During handling of the above exception, another exception occurred:
+
+    def test_DEFECT_explicit_null_condition_value_is_representable():
+        """CONTRACTS K requires explicit null distinct from absent."""
+        try:
+            occ = _occ("null_condition", domain=(None,))
+        except ValueError as exc:
+>           pytest.fail(f"explicit null condition value rejected: {exc}")
+E           Failed: explicit null condition value rejected: domain values must be exact non-float scalars
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py:400: Failed
+________ test_DEFECT_operation_identity_binds_source_edition_and_digest ________
+
+    def test_DEFECT_operation_identity_binds_source_edition_and_digest():
+        """K binds source/dataset/wave/edition/digest, not only inventory_id."""
+        a = _frontier(_inventory((_occ("alpha"),), source_sha="a" * 64,
+                                 wave="W1", edition="E1"), _policy(j=1, k=0, d=0))
+        b = _frontier(_inventory((_occ("alpha"),), source_sha="b" * 64,
+                                 wave="W2", edition="E2"), _policy(j=1, k=0, d=0))
+        assert a.inventory_hash != b.inventory_hash
+>       assert {op.op_id for op in a.operations} != {op.op_id for op in b.operations}
+E       AssertionError: assert {'urn:r61:op:...68d3ab4e5fdf'} != {'urn:r61:op:...68d3ab4e5fdf'}
+E         
+E         Both sets are equal
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py:411: AssertionError
+_______ test_DEFECT_operation_identity_binds_estimand_weight_and_design ________
+
+    def test_DEFECT_operation_identity_binds_estimand_weight_and_design():
+        """K binds estimand and weight/design/uncertainty refs, not only measure_id."""
+        m1 = MeasurePlan("SAMPLE", "SAMPLE", None, None, "estimand-one", "UNCERTAINTY_ONE")
+        m2 = MeasurePlan("SAMPLE", "SAMPLE", "WEIGHT-2", "DESIGN-2",
+                         "estimand-two", "UNCERTAINTY_TWO")
+        a = _frontier(_inventory((_occ("alpha"),), measures=(m1,)), _policy(j=1, k=0, d=0))
+        b = _frontier(_inventory((_occ("alpha"),), measures=(m2,)), _policy(j=1, k=0, d=0))
+        assert a.inventory_hash != b.inventory_hash
+>       assert {op.op_id for op in a.operations} != {op.op_id for op in b.operations}
+E       AssertionError: assert {'urn:r61:op:...68d3ab4e5fdf'} != {'urn:r61:op:...68d3ab4e5fdf'}
+E         
+E         Both sets are equal
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py:422: AssertionError
+__________ test_DEFECT_operation_type_carries_clocks_and_currentness ___________
+
+    def test_DEFECT_operation_type_carries_clocks_and_currentness():
+        """K binds observation/reference/as-of/publication clocks and selection."""
+        fields = set(ug_types.ScientificOperation.__dataclass_fields__)
+        missing = {
+            "observation_clock_ref", "reference_clock_ref", "as_of_ref",
+            "publication_clock_ref", "current_selection_ref",
+        } - fields
+>       assert not missing, f"operation identity cannot represent clocks/currentness: {sorted(missing)}"
+E       AssertionError: operation identity cannot represent clocks/currentness: ['as_of_ref', 'current_selection_ref', 'observation_clock_ref', 'publication_clock_ref', 'reference_clock_ref']
+E       assert not {'as_of_ref', 'current_selection_ref', 'observation_clock_ref', 'publication_clock_ref', 'reference_clock_ref'}
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py:432: AssertionError
+__________ test_DEFECT_eligibility_execution_result_axes_are_separate __________
+
+    def test_DEFECT_eligibility_execution_result_axes_are_separate():
+        """CONTRACTS Revision 2: a single enum conflating axes is forbidden."""
+>       assert hasattr(ug_types, "ELIGIBILITY_STATES")
+E       AssertionError: assert False
+E        +  where False = hasattr(ug_types, 'ELIGIBILITY_STATES')
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py:437: AssertionError
+_________ test_DEFECT_native_target_cells_preserve_typed_int_vs_string _________
+
+    def test_DEFECT_native_target_cells_preserve_typed_int_vs_string():
+        """No float/string coercion: int 1 and str '1' are distinct K values."""
+        inv = _inventory((_occ("target", domain=(1, "1")),))
+        pol = _policy(j=1, k=0, d=0)
+        f = _frontier(inv, pol)
+        op = next(o for o in f.operations if o.claim_class == "DIST")
+        key = json.dumps([OccurrenceKey("target").key], sort_keys=False,
+                         separators=(",", ":"))
+        catalog = NativeCatalog(
+            catalog_ref="urn:r01v:catalog", baseline_predicate_ref=_ref("Predicate", "base"),
+            predicate_refs={}, query_refs={key + "|SAMPLE": _ref("QueryTemplate", "q")},
+            joint_query_refs={}, marginal_query_refs={},
+            supported_claims=("DIST",), supported_topologies=("SCALAR_SINGULAR",),
+            supported_condition_modes=("AND",), maximum_target_arity=1,
+            maximum_conditioner_arity=0,
+        )
+        record = lower_operation(inv, pol, op, catalog)
+        assert record.status == SUPPORTED
+        cells = list(record.rule["target_cells"])
+>       assert [canonicalize(cell) for cell in cells] == [1, "1"], cells
+E       AssertionError: ['1', '1']
+E       assert ['1', '1'] == [1, '1']
+E         
+E         At index 0 diff: '1' != 1
+E         Use -v to get more diff
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py:463: AssertionError
+___________ test_DEFECT_lowering_record_has_required_contract_fields ___________
+
+    def test_DEFECT_lowering_record_has_required_contract_fields():
+        """CONTRACTS 3: version/DiscoveryAuthority/Batch/grade/typed-refusal fields."""
+        from rawlsing_next.universal_grammar.native_map import LoweringRecord
+        fields = set(LoweringRecord.__dataclass_fields__)
+        missing = {
+            "lowering_version", "discovery_authority_ref", "batch_unit_refs",
+            "evidence_grade_ceiling", "typed_refusal",
+        } - fields
+>       assert not missing, f"lowering record cannot represent contract fields: {sorted(missing)}"
+E       AssertionError: lowering record cannot represent contract fields: ['batch_unit_refs', 'discovery_authority_ref', 'evidence_grade_ceiling', 'lowering_version', 'typed_refusal']
+E       assert not {'batch_unit_refs', 'discovery_authority_ref', 'evidence_grade_ceiling', 'lowering_version', 'typed_refusal'}
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py:474: AssertionError
+_________ test_DEFECT_catalog_supported_topology_can_promote_operation _________
+
+    def test_DEFECT_catalog_supported_topology_can_promote_operation():
+        """Capability must come from current catalog, not a hardcoded topology gate."""
+        inv = _inventory((_occ("mr", topology="MULTI_SELECT_SET"),))
+        pol = _policy(j=1, k=0, d=0)
+        f = _frontier(inv, pol)
+        op = next(o for o in f.operations if o.claim_class == "DIST")
+        assert op.disposition == UNSUPPORTED_RUNTIME
+        key = json.dumps([OccurrenceKey("mr").key], sort_keys=False,
+                         separators=(",", ":"))
+        catalog = NativeCatalog(
+            catalog_ref="urn:r01v:catalog", baseline_predicate_ref=_ref("Predicate", "base"),
+            predicate_refs={}, query_refs={key + "|SAMPLE": _ref("QueryTemplate", "q")},
+            joint_query_refs={}, marginal_query_refs={},
+            supported_claims=("DIST",),
+            supported_topologies=("SCALAR_SINGULAR", "MULTI_SELECT_SET"),
+            supported_condition_modes=("AND",), maximum_target_arity=1,
+            maximum_conditioner_arity=0,
+        )
+        record = lower_operation(inv, pol, op, catalog)
+>       assert record.status == SUPPORTED, (
+            "catalog declares MULTI_SELECT_SET support but frontier pre-classified "
+            f"the operation as {op.disposition}; lowerer returned {record.status}/{record.reason}")
+E       AssertionError: catalog declares MULTI_SELECT_SET support but frontier pre-classified the operation as UNSUPPORTED_RUNTIME; lowerer returned NOT_ELIGIBLE/FRONTIER_DISPOSITION_UNSUPPORTED_RUNTIME
+E       assert 'NOT_ELIGIBLE' == 'SUPPORTED'
+E         
+E         - SUPPORTED
+E         + NOT_ELIGIBLE
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py:496: AssertionError
+____ test_DEFECT_native_receipt_antijoin_binds_conditions_not_just_rule_id _____
+
+    def test_DEFECT_native_receipt_antijoin_binds_conditions_not_just_rule_id():
+        """I05 receipts must be checked for exact target/condition/value, not only rule_id."""
+        from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
+        from rawlsing_next.tests.test_universal_grammar import (
+            _native_catalog, _native_fixture,
+        )
+        from rawlsing_next.tests.test_pre553_discovery_exact import (
+            _discovery_authority, _registry as _i05_registry,
+        )
+    
+        source, qauth, dauth, all_predicate, predicates, queries, labels = _native_fixture()
+        inv = _inventory((_occ(labels[0]), _occ(labels[1])))
+        pol = _policy(j=1, k=1, d=0)
+        f = _frontier(inv, pol)
+        selected = tuple(op for op in f.operations
+                         if op.disposition == ELIGIBLE and op.measure_id == "SAMPLE")
+        plan = lower_frontier(inv, pol, replace(f, operations=selected),
+                              _native_catalog(labels, all_predicate, predicates, queries))
+        grammar = plan.native_grammar()
+        authority = _discovery_authority(source, grammar, dauth)
+        result = execute_exact_bounded_discovery(
+            repository=source["repo"], discovery_authority=authority,
+            authority_registry=_i05_registry(source, qauth, dauth),
+            release_refs=(source["release_ref"],),
+            predicate_catalog=tuple(predicates.values()) + (all_predicate,),
+            query_template_catalog=tuple(queries.values()),
+        )
+        assert native_receipt_anti_join(plan, result.receipts)["no_drop_ok"] is True
+        # Mutate the predicate behind one condition atom without changing rule_id.
+        mutated = deepcopy(grammar)
+        atoms = list(mutated["atoms"])
+        target_atom = next(a for a in atoms if a["predicate_ref"] in
+                           [p.ref.as_dict() for (label, value), p in predicates.items()
+                            if label == labels[1] and value == 0])
+        replacement = next(p.ref.as_dict() for (label, value), p in predicates.items()
+                           if label == labels[1] and value == 1)
+        idx = atoms.index(target_atom)
+        atoms[idx] = {**target_atom, "predicate_ref": replacement}
+        mutated["atoms"] = tuple(atoms)
+        mutated_authority = _discovery_authority(source, mutated, dauth)
+        mutated_result = execute_exact_bounded_discovery(
+            repository=source["repo"], discovery_authority=mutated_authority,
+            authority_registry=_i05_registry(source, qauth, dauth),
+            release_refs=(source["release_ref"],),
+            predicate_catalog=tuple(predicates.values()) + (all_predicate,),
+            query_template_catalog=tuple(queries.values()),
+        )
+        mutated_join = native_receipt_anti_join(plan, mutated_result.receipts)
+>       assert mutated_join["no_drop_ok"] is False, (
+            "changed condition semantics were accepted by rule_id-only anti-join: "
+            f"{mutated_join}")
+E       AssertionError: changed condition semantics were accepted by rule_id-only anti-join: {'expected_rule_count': 6, 'actual_rule_count': 6, 'missing_rule_ids': (), 'unexpected_rule_ids': (), 'count_mismatches': {}, 'no_drop_ok': True}
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py:549: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py::test_DEFECT_bool_condition_domain_is_representable
+FAILED WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py::test_DEFECT_explicit_null_condition_value_is_representable
+FAILED WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py::test_DEFECT_operation_identity_binds_source_edition_and_digest
+FAILED WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py::test_DEFECT_operation_identity_binds_estimand_weight_and_design
+FAILED WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py::test_DEFECT_operation_type_carries_clocks_and_currentness
+FAILED WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py::test_DEFECT_eligibility_execution_result_axes_are_separate
+FAILED WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py::test_DEFECT_native_target_cells_preserve_typed_int_vs_string
+FAILED WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py::test_DEFECT_lowering_record_has_required_contract_fields
+FAILED WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py::test_DEFECT_catalog_supported_topology_can_promote_operation
+FAILED WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py::test_DEFECT_native_receipt_antijoin_binds_conditions_not_just_rule_id
+10 failed, 10 passed in 1.79s

@@ -1,0 +1,231 @@
+{
+  "schema": "PYAT_R61_R01V_INDEPENDENT_PROOF_WITNESS@1",
+  "node": "R01V",
+  "verdict": "REVISE",
+  "reviewer_branch": "agent/opencode-pyat-r61-r01v-independent-review-r1",
+  "candidate_startup": "fcf9fe9f8662c9e98801e670d0d4357072d8d453",
+  "candidate_code_commit": "d6f41177b16711ec721a9782c9797131295db2b5",
+  "candidate_base": "a54893657ba65e44c1049f763208b0b4b6ed5eb9",
+  "review_commission": "48ab66e49c1696474a34a56d04e2a5d48ec498e7:WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R01V/00_COMMISSION.md",
+  "author_session": "ses_e98c905cbffekusoHURfKyEUKG",
+  "reviewer_session": "not externally assigned in launch.json (reviewer_session=PENDING_OBSERVATION); this process is the distinct reviewer session",
+  "model": {
+    "name": "opencode-go/deepseek-v4.1-flash",
+    "variant_requested": "max",
+    "account": "existing user-selected Global",
+    "provider_separation_note": "same provider account as author; not institutional scientific independence"
+  },
+  "environment": {
+    "python": "3.11.3",
+    "python_path": "/usr/local/bin/python3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "platform": "darwin",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v"
+  },
+  "commands": [
+    {
+      "purpose": "reviewer replay of author suite with own JUnit and actual imports",
+      "command": "PYTHONPATH=\"$PWD\" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/replay/author_suite_junit.xml -o addopts='' -p no:cacheprovider",
+      "exit_code": 0,
+      "result": "11 passed",
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "walltime_seconds": 6.55,
+      "junit": "replay/author_suite_junit.xml",
+      "log": "replay/author_suite.log"
+    },
+    {
+      "purpose": "independent hostile probes and hand-oracle tests",
+      "command": "PYTHONPATH=\"$PWD:$PWD/WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes\" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/probes/test_r01v_independent.py -q --junitxml=WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/replay/independent_probes_junit.xml -o addopts='' -p no:cacheprovider",
+      "exit_code": 1,
+      "result": "20 collected: 10 passed, 10 failed (the 10 failures are the contract defects)",
+      "failures": 10,
+      "errors": 0,
+      "skips": 0,
+      "walltime_seconds": 1.79,
+      "junit": "replay/independent_probes_junit.xml",
+      "log": "replay/independent_probes.log"
+    },
+    {
+      "purpose": "author manifest artifact hash verification",
+      "command": "sha256 of WORKER_RETURNS/PYAT-R61-R01-IMPLEMENTATION-R1 report artifacts compared with its manifest.json",
+      "exit_code": 0,
+      "result": "all six listed artifacts MATCH; manifest explicitly excludes manifest.json; no future self hash claimed"
+    },
+    {
+      "purpose": "startup, remote head, changed-path allowlist and imported blob inspection",
+      "command": "git rev-parse HEAD; git ls-remote origin refs/heads/agent/opencode-pyat-r61-r01-generic-grammar-r1 refs/heads/agent/opencode-pyat-r61-r01v-independent-review-r1; git diff --name-status a54893657ba65e44c1049f763208b0b4b6ed5eb9 fcf9fe9f8662c9e98801e670d0d4357072d8d453; git ls-tree -r fcf9fe9f8662c9e98801e670d0d4357072d8d453",
+      "exit_code": 0,
+      "result": "startup matches launch.json; candidate and reviewer remote heads both fcf9fe9 before review; only R01 allowlist plus sealed commissions and author return changed",
+      "evidence": "evidence/startup_and_identity.txt"
+    }
+  ],
+  "independent_hand_oracles": {
+    "ordered_target_condition_pairs_J2_K1": {
+      "expected": 20,
+      "derivation": "4 ordered target tuples (2 singles + 2 ordered pairs) x 5 ordered condition tuples (empty + 2 conditioners x 2 int values)",
+      "observed": "exact set match"
+    },
+    "ordered_condition_pairs_J1_K2": {
+      "expected": 13,
+      "derivation": "empty + 4 singles + 8 ordered distinct-conditioner pairs with typed values",
+      "observed": "exact set match; ((gamma,0),(delta,1)) != ((delta,1),(gamma,0))"
+    },
+    "count_preserving_substitution": {
+      "expected": "no_drop_ok=false with missing and duplicate ids",
+      "observed": "match"
+    },
+    "budget_3": {
+      "expected": "full operation set/E_pre retained; exact pending ids; bounds unchanged",
+      "observed": "match"
+    },
+    "cold_recompute": {
+      "expected": "same content hash, partition root, operation ids, disposition counts, pending/held/unknown/unsupported ids",
+      "observed": "match; serialized restore ingress NOT_REACHED"
+    }
+  },
+  "mutants_and_restoration": [
+    {
+      "mutant": "duplicate qualified occurrence key",
+      "expected": "ValueError DUPLICATE_OCCURRENCE",
+      "observed": "match",
+      "restored": "original inventory enumerates unchanged"
+    },
+    {
+      "mutant": "count-preserving operation substitution",
+      "expected": "no_drop_ok=false",
+      "observed": "match",
+      "restored": "original ids no_drop_ok=true"
+    },
+    {
+      "mutant": "budget=3",
+      "expected": "PARTIAL pending without pruning",
+      "observed": "match",
+      "restored": "unbudgeted frontier identical"
+    },
+    {
+      "mutant": "administration NOT_ADMINISTERED / UNKNOWN",
+      "expected": "HELD / UNKNOWN retained, never eligible",
+      "observed": "match",
+      "restored": "ADMINISTERED operations eligible"
+    },
+    {
+      "mutant": "reverse direction without grant",
+      "expected": "PROHIBITED DIRECTION_NOT_GRANTED",
+      "observed": "match",
+      "restored": "explicit reverse grant makes the same operations eligible"
+    },
+    {
+      "mutant": "occurrence tuple order reversed",
+      "expected": "same logical frontier/content hash",
+      "observed": "match",
+      "restored": "original order same frontier"
+    },
+    {
+      "mutant": "domain=(True,False)",
+      "expected": "representable typed bool condition domain",
+      "observed": "ValueError at types.py:148-150",
+      "restored": "n/a (constructor rejects before frontier)"
+    },
+    {
+      "mutant": "domain=(None,)",
+      "expected": "representable explicit null distinct from absent",
+      "observed": "ValueError at types.py:148-150",
+      "restored": "n/a"
+    },
+    {
+      "mutant": "same inventory_id, changed source_sha256/wave/edition",
+      "expected": "operation identity changes or typed refusal",
+      "observed": "identical op_id set",
+      "restored": "original source identity same op_ids"
+    },
+    {
+      "mutant": "same measure_id/kind, changed estimand/weight/design/variance",
+      "expected": "operation identity changes",
+      "observed": "identical op_id set",
+      "restored": "original measure plan same op_ids"
+    },
+    {
+      "mutant": "target domain=(1,\"1\") lowered to native DIST",
+      "expected": "typed cells preserved or typed refusal",
+      "observed": "rule target_cells ['1','1'] (collision)",
+      "restored": "scalar int/string distinct in operation identity, not in rule"
+    },
+    {
+      "mutant": "condition atom predicate q_beta=0 -> q_beta=1 with same rule_id",
+      "expected": "actual I05 receipt anti-join refutes changed condition",
+      "observed": "no_drop_ok=true, missing/unexpected/count_mismatch empty",
+      "restored": "original receipts no_drop_ok=true"
+    },
+    {
+      "mutant": "forged operation direction_ref=FORGED-DIRECTION while ELIGIBLE",
+      "expected": "lowerer refuses or revalidates policy grant",
+      "observed": "SUPPORTED (lower_operation ignores policy)",
+      "restored": "original operation SUPPORTED"
+    },
+    {
+      "mutant": "catalog declares MULTI_SELECT_SET support",
+      "expected": "catalog capability can promote the operation",
+      "observed": "frontier pre-classifies UNSUPPORTED_RUNTIME; lowerer returns NOT_ELIGIBLE",
+      "restored": "scalar topology SUPPORTED"
+    }
+  ],
+  "probe_results": {
+    "passed": [
+      "test_frontier_covers_exact_ordered_target_condition_pairs",
+      "test_two_condition_order_is_semantic_and_all_pairs_present",
+      "test_no_values_dependent_pruning_and_row_order_invariance",
+      "test_administration_duplicate_and_valid_empty_vs_incomplete",
+      "test_budget_partition_and_cold_recompute_conserve_identity_sets",
+      "test_conservation_antijoin_rejects_count_preserving_substitution",
+      "test_direction_and_role_order_are_explicit_grants",
+      "test_form_repeat_and_topology_are_distinct_ledger_entries",
+      "test_risk_set_and_measure_kind_are_identity_components",
+      "test_observation_lowerer_trusts_operation_disposition_and_direction"
+    ],
+    "failed_contract_defects": [
+      "test_DEFECT_bool_condition_domain_is_representable",
+      "test_DEFECT_explicit_null_condition_value_is_representable",
+      "test_DEFECT_operation_identity_binds_source_edition_and_digest",
+      "test_DEFECT_operation_identity_binds_estimand_weight_and_design",
+      "test_DEFECT_operation_type_carries_clocks_and_currentness",
+      "test_DEFECT_eligibility_execution_result_axes_are_separate",
+      "test_DEFECT_native_target_cells_preserve_typed_int_vs_string",
+      "test_DEFECT_lowering_record_has_required_contract_fields",
+      "test_DEFECT_catalog_supported_topology_can_promote_operation",
+      "test_DEFECT_native_receipt_antijoin_binds_conditions_not_just_rule_id"
+    ]
+  },
+  "imported_owner_blobs": {
+    "rawlsing_next/universal_grammar/types.py": "5886f634614c4c561a7800da5f7d98c5f37ae2b6",
+    "rawlsing_next/universal_grammar/enumerate.py": "4ebb600d28bdd3c7fc05f414673cc6b38e195a24",
+    "rawlsing_next/universal_grammar/native_map.py": "0c39f4caf5c4ff681b017d0aa97da9c7a05f6bbc",
+    "rawlsing_next/tests/test_universal_grammar.py": "6f22b048c7be3116d86d75093e9cd51a94124dac",
+    "rawlsing_next/pre553_discovery_exact.py": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+    "rawlsing_next/pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "rawlsing_next/tests/test_pre553_discovery_exact.py": "b53039aeb95e012993c5233a7575c1dad5a14929",
+    "rawlsing_next/tests/test_pre553_empirical_query.py": "cc7d93db1f87d9c311170c229dbe3506937b404a"
+  },
+  "actual_consumer": {
+    "reached": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery with synthetic C11/I03 objects; six supported rules; actual DiscoveryResultReceipt rule-id/count anti-join; one condition-atom semantic mutation passed the anti-join (defect D6)",
+    "not_reached": [
+      "R03 issued workload, U43 admission, Batch replay/dedup",
+      "direct C11/I03/Route B construction by the R01 lowerer",
+      "full recursion/baseline enumeration",
+      "serialized cold restore",
+      "R02 row/occasion projection or physical source-row permutation",
+      "original 35/1,890 obligations, original U/E_pre, F6/F7/F8, N11/N12",
+      "production/CI, J52/W52, Browser runtime"
+    ]
+  },
+  "limits": [
+    "SOURCEFREE synthetic TEST_ONLY only; no original survey bytes or respondent values were read.",
+    "No candidate code/test edits, no repair, no self-adoption, no source/science issuance.",
+    "Reviewer probes are disposable fixtures below the reviewer return root; candidate tests remain unchanged.",
+    "Seven author-selected mappings and the reviewer six-rule I05 probe do not establish full native R03 execution.",
+    "Same provider account as author; not institutional scientific independence.",
+    "Session id is not externally assigned in launch.json; the reviewer identity is the distinct launched process/worktree."
+  ]
+}
