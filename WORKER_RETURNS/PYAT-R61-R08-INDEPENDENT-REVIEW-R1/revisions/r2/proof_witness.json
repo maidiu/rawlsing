@@ -1,0 +1,190 @@
+{
+  "schema": "PYAT_R61_R08V_R2_INDEPENDENT_REVIEW_WITNESS_V1",
+  "reviewer": {
+    "branch": "agent/opencode-pyat-r61-r08v-r2-independent-review-r1",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r2",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "account": "existing user-selected Global",
+    "harness_pid": 92739,
+    "attended": true,
+    "os_isolation": "NOT_PROVEN",
+    "author_session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+    "author_session_used": false,
+    "same_provider_account_note": "Distinct session/worktree is role separation, not institutional scientific independence."
+  },
+  "candidate": {
+    "startup_commit": "f419e9a4b16638cf2de7700da60ab2a7e71986d9",
+    "code_commit": "abf77ee10691adccb1127abd78aec49c6623ea37",
+    "commission_commit": "3470da602618b5c04b1f28885b5ad1835169e2d5",
+    "corrected_r2_startup": "7beffc6d86bcd5585a63ea2c1afa6262bc9ca208",
+    "prior_review_commit": "1cc09784b007f63b2e486091466530f427900510",
+    "module": {
+      "path": "rawlsing_next/pre553_universal_evidence_binding.py",
+      "blob": "88e66ddd5de3c588e54470bf9aebcf2326d4f7d7"
+    },
+    "test": {
+      "path": "rawlsing_next/tests/test_universal_evidence_binding.py",
+      "blob": "5f05634ca49916eb7faf4ecf5a04895c11bd0dcc"
+    },
+    "native_owner_blobs": {
+      "rawlsing_next/pre553_empirical_possibility_provider.py": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "rawlsing_next/pre553_analytical_composition.py": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "rawlsing_next/source_backed_positioned_subject_possibility.py": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "rawlsing_next/pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "rawlsing_next/tests/n10e_empirical_slice_fixture.py": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a"
+    }
+  },
+  "author_report_hashes_recomputed": {
+    "00_RETURN.md": "c57408d0acb42e3830659e35c024fbe91c9131d72820e26e8904230f3ee299f8",
+    "RESUME.md": "7d2b7031ffdcc2c607bf061adf542daea12347c512a13ea6c0d0f6dc59b55009",
+    "junit.xml": "741f4210f13d158dca80b1b97214b5da7a429464a665bcf85bf8002baa69ac36",
+    "proof_witness.json": "0b8a7c0124adb103de74377f3b03ac2d436b8fac6ceb9aaeb13bd01bdede4d46",
+    "reviewer_probes_replay.xml": "14e296e3da3bafcc799f78515a13863a799ca1179fcbbd8939ec298f7c62881b"
+  },
+  "custody": {
+    "allowed_diff_window": "7beffc6d86bcd5585a63ea2c1afa6262bc9ca208..f419e9a4b16638cf2de7700da60ab2a7e71986d9",
+    "allowed_changed_paths": [
+      "rawlsing_next/pre553_universal_evidence_binding.py",
+      "rawlsing_next/tests/test_universal_evidence_binding.py",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r2/00_RETURN.md",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r2/RESUME.md",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r2/junit.xml",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r2/manifest.json",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r2/proof_witness.json",
+      "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r2/reviewer_probes_replay.xml"
+    ],
+    "prior_review_tree_edited": false,
+    "candidate_or_native_owner_edited": false,
+    "write_root": "WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r2/",
+    "fixtures_materialized_from_pinned_head_blobs_for_replay": [
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json"
+    ]
+  },
+  "commands": [
+    {
+      "id": "author_replay",
+      "command": "/usr/local/bin/python3 -m pytest -q rawlsing_next/tests/test_universal_evidence_binding.py rawlsing_next/tests/test_pre553_analytical_composition.py --junitxml=WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r2/junit/author_replay.xml",
+      "exit_code": 0,
+      "tests": 26,
+      "passed": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "time_seconds": 7.016
+    },
+    {
+      "id": "retained_probes_replay",
+      "command": "PYTHONPATH=\"$PWD\" /usr/local/bin/python3 -m pytest -q probes/test_r08v_baseline.py probes/test_r08v_hostile.py probes/test_r08v_e04_fixed_semantics.py probes/test_r08v_reach.py --junitxml=WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r2/junit/retained_probes_replay.xml",
+      "exit_code": 0,
+      "tests": 19,
+      "passed": 19,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "time_seconds": 5.126
+    },
+    {
+      "id": "reviewer_r2_hostile",
+      "command": "PYTHONPATH=\"$PWD\" /usr/local/bin/python3 -m pytest -q probes/test_r08v_r2_hostile.py --junitxml=WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r2/junit/reviewer_r2_hostile.xml",
+      "exit_code": 1,
+      "tests": 3,
+      "passed": 1,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0,
+      "time_seconds": 0.995,
+      "expected_failures": [
+        "test_caller_owned_context_labels_cannot_relabel_real_producer",
+        "test_self_sealed_same_source_denominator_999_must_refuse"
+      ]
+    },
+    {
+      "id": "reviewer_r2_status",
+      "command": "PYTHONPATH=\"$PWD\" /usr/local/bin/python3 -m pytest -q probes/test_r08v_r2_status.py --junitxml=WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r2/junit/reviewer_r2_status.xml",
+      "exit_code": 0,
+      "tests": 2,
+      "passed": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "time_seconds": 0.384
+    }
+  ],
+  "assertion_level_observations": {
+    "positive_actual_provider": {
+      "source": "retained baseline",
+      "at07_forward_cohort": 60,
+      "yes": 54,
+      "no": 6,
+      "consumer_denominator": 60,
+      "actual_evaluator_witnessed": true
+    },
+    "typed_request_refusal": {
+      "source": "retained hostile",
+      "bool_int_null_extra_reordered_edition_digest_clock_direction_role_design_weight_risk": "refused or changed as asserted",
+      "passed": 8
+    },
+    "cold_cache": {
+      "source": "retained baseline and author test",
+      "denominator": 60,
+      "consumer_hash_stable": true,
+      "changed_as_of_permission_edition": "UNKNOWN"
+    },
+    "status": {
+      "VALID_NULL_DIFFUSE_VALID_EMPTY_OBSERVED_ZERO": "distinct productive states",
+      "ZERO_SUPPORT": "not exact/all-support",
+      "Z_UNRESOLVED_denominator": 16,
+      "positive": "EXACT_SUPPORT"
+    },
+    "forged_caller_context": {
+      "result_state": "SUPPORTED",
+      "provenance": "CANONICAL_PRODUCER",
+      "denominator": 60,
+      "consumer_accepted_denominator": 60,
+      "forged_labels": {
+        "source_id": "FORGED_SOURCE",
+        "edition": "1999-01",
+        "direction": "ANSWER_YES_TO_POSITION",
+        "role": "REVERSE_AUTHORIZED"
+      }
+    },
+    "forged_same_source_cache": {
+      "import_accepted": true,
+      "result_state": "SUPPORTED",
+      "denominator": 999,
+      "consumer_denominator": 999,
+      "trust_grade": "FULL_K_PRODUCER_ASSOCIATION_SHA256",
+      "forged_actual_hash": "07f98b853c8341ad22bca2af82c593c27cd1ae3c10fe59b52931d1bf4b884c99"
+    },
+    "cross_source_cache_transposition": "refused by retained probe"
+  },
+  "reach": {
+    "covered": "callable EvidenceRequest@2 K -> actual producer/evaluator/cold/status grain",
+    "not_reached": [
+      "live J42/P41 progressive adoption",
+      "repaired E04 terminal"
+    ],
+    "live_non_test_caller_at_candidate": false,
+    "classification": "integration permission/owner interface, not a local module defect",
+    "historical_refs": {
+      "j42_blob": "40f1e9f69fafff37f6bc44474b0189543d4997b3",
+      "p41_blob": "7d428106c79bcc56973f7c0044fc273a2b354554",
+      "e04_blob": "2181b832d3c4376d4b9428e13f4354f273be8f32"
+    }
+  },
+  "result": {
+    "verdict": "REVISE",
+    "reason": "D1-R2 forged caller context accepted; D2-R2 default self-sealed same-source cache forgery accepted and serves denominator 999.",
+    "self_adoption": false
+  },
+  "push": {
+    "branch_only": true,
+    "force": false,
+    "direct_remote_verification": "performed after commit; exact final SHA reported in final response"
+  }
+}

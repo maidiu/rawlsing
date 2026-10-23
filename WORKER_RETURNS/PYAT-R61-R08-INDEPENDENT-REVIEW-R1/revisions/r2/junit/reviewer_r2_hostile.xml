@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="3" time="0.995" timestamp="2026-10-23T02:58:54.394478-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r2.probes.test_r08v_r2_hostile" name="test_caller_owned_context_labels_cannot_relabel_real_producer" time="0.278"><failure message="AssertionError: caller-owned AdmittedEvidenceContext changed source/dataset/wave/edition/digest/instrument/units/estimand/weight/design/uncertainty/direction/role/consumer-use/grammar/custody/clocks/permission while the unchanged real producer was accepted: SUPPORTED, denominator 60&#10;assert 'SUPPORTED' != 'SUPPORTED'&#10; +  where 'SUPPORTED' = EvidenceResult(request_key='2ab3d7f7205e3e9d23f4dad9831540157b746ceb2fac51623edfdc8f01825a1e', eligibility_state='ELIG...1b4c8d7f1c99b1f9dbc689af128ad09285b4343c91e96cab6e'}, uncertainty_state='UNCERTAINTY_UNQUANTIFIED', typed_refusal=None).result_state">def test_caller_owned_context_labels_cannot_relabel_real_producer():
+        case = build_provider_case("forward")
+        request = _forged_request(case)
+        resolver = EvidenceResolver()
+        resolver.bind(_binding(request, case))
+        result = resolver.resolve(request)
+        OBSERVATIONS["forged_context"] = {
+            "result_state": result.result_state,
+            "provenance": result.provenance,
+            "denominator": result.denominator,
+            "source_id": request.source_id,
+            "edition": request.edition,
+            "direction": request.direction,
+            "role": request.role,
+            "permission_scope": request.permission_ref.object_id,
+            "consumer_accepted": None,
+        }
+        if result.result_state == "SUPPORTED":
+            values = EvidenceConsumerReader(request, result).read()
+            OBSERVATIONS["forged_context"]["consumer_accepted"] = values["denominator"]
+&gt;       assert result.result_state != "SUPPORTED", (
+            "caller-owned AdmittedEvidenceContext changed source/dataset/wave/edition/"
+            "digest/instrument/units/estimand/weight/design/uncertainty/direction/role/"
+            "consumer-use/grammar/custody/clocks/permission while the unchanged real "
+            f"producer was accepted: {result.result_state}, denominator {result.denominator}"
+        )
+E       AssertionError: caller-owned AdmittedEvidenceContext changed source/dataset/wave/edition/digest/instrument/units/estimand/weight/design/uncertainty/direction/role/consumer-use/grammar/custody/clocks/permission while the unchanged real producer was accepted: SUPPORTED, denominator 60
+E       assert 'SUPPORTED' != 'SUPPORTED'
+E        +  where 'SUPPORTED' = EvidenceResult(request_key='2ab3d7f7205e3e9d23f4dad9831540157b746ceb2fac51623edfdc8f01825a1e', eligibility_state='ELIG...1b4c8d7f1c99b1f9dbc689af128ad09285b4343c91e96cab6e'}, uncertainty_state='UNCERTAINTY_UNQUANTIFIED', typed_refusal=None).result_state
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r2/probes/test_r08v_r2_hostile.py:119: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r2.probes.test_r08v_r2_hostile" name="test_self_sealed_same_source_denominator_999_must_refuse" time="0.297"><failure message="AssertionError: default self-sealed cache ingress accepted a forged same-source evidence preimage and resolved SUPPORTED&#10;assert 'SUPPORTED' != 'SUPPORTED'&#10; +  where 'SUPPORTED' = EvidenceResult(request_key='2e2d74b3e44cf445f0b67a1b7e58faee8e04a9595d94aa794be6a06e90622984', eligibility_state='ELIG..._trust_grade': 'FULL_K_PRODUCER_ASSOCIATION_SHA256'}, uncertainty_state='UNCERTAINTY_UNQUANTIFIED', typed_refusal=None).result_state">def test_self_sealed_same_source_denominator_999_must_refuse():
+        case = build_provider_case("forward")
+        request = _request(case, request_id="r08v-r2-forged-cache-victim")
+        resolver = EvidenceResolver()
+        resolver.bind(_binding(request, case))
+        produced = resolver.resolve(request)
+        assert produced.result_state == "SUPPORTED"
+        assert produced.denominator == 60
+    
+        base = resolver.export_cache()["entries"][0]
+        forged_cache, forged_actual = _forged_evidence_cache(produced, base)
+        cold = EvidenceResolver()
+        accepted = False
+        restored = None
+        try:
+            cold.import_authenticated_cache(forged_cache)
+            accepted = True
+            restored = cold.resolve(request)
+        except EvidenceCacheIntegrityError as exc:
+            OBSERVATIONS["forged_cache"] = {
+                "import_accepted": False,
+                "refusal": type(exc).__name__,
+            }
+            return
+        values = None
+        consumer_error = None
+        if restored.result_state == "SUPPORTED":
+            try:
+                values = EvidenceConsumerReader(request, restored).read()
+            except EvidenceAssociationError as exc:
+                consumer_error = str(exc)
+        OBSERVATIONS["forged_cache"] = {
+            "import_accepted": accepted,
+            "result_state": restored.result_state,
+            "denominator": restored.denominator,
+            "forged_actual_hash": forged_actual.result_hash,
+            "consumer_denominator": None if values is None else values["denominator"],
+            "consumer_error": consumer_error,
+        }
+&gt;       assert restored.result_state != "SUPPORTED", (
+            "default self-sealed cache ingress accepted a forged same-source evidence "
+            f"preimage and resolved {restored.result_state}"
+        )
+E       AssertionError: default self-sealed cache ingress accepted a forged same-source evidence preimage and resolved SUPPORTED
+E       assert 'SUPPORTED' != 'SUPPORTED'
+E        +  where 'SUPPORTED' = EvidenceResult(request_key='2e2d74b3e44cf445f0b67a1b7e58faee8e04a9595d94aa794be6a06e90622984', eligibility_state='ELIG..._trust_grade': 'FULL_K_PRODUCER_ASSOCIATION_SHA256'}, uncertainty_state='UNCERTAINTY_UNQUANTIFIED', typed_refusal=None).result_state
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r2/probes/test_r08v_r2_hostile.py:210: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r2.probes.test_r08v_r2_hostile" name="test_authenticated_issuer_still_rejects_plain_self_seal_but_default_accepts_preimage" time="0.300" /></testsuite></testsuites>
