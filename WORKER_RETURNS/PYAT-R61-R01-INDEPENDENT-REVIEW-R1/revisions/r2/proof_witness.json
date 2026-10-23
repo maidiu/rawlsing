@@ -1,0 +1,153 @@
+{
+  "schema": "PYAT_R61_R01V_R2_INDEPENDENT_REVIEW_WITNESS@1",
+  "verdict": "REVISE",
+  "node": "R01V",
+  "revision": "R2",
+  "candidate_startup": "f0c602eddaee14a58d6f0935a587a46fcf96c6db",
+  "candidate_code": "d56e53301aaa0203e83fc1b60a0bcafb86b17892",
+  "candidate_parent": "fcf9fe9f8662c9e98801e670d0d4357072d8d453",
+  "prior_review": "b310c5469bb628a583d6e106946cddd08025ddc1",
+  "repair_commission": "0ad99eadaf7aa2edd96e5a50f7b61f84c893ff70",
+  "reviewer_branch": "agent/opencode-pyat-r61-r01v-r2-independent-review-r1",
+  "reviewer_expectations_commit": "515c1d704760c80652eb8a6877bcec3d1daf6152",
+  "grade": "SOURCEFREE_SYNTHETIC_TEST_ONLY_NOT_ORIGINAL_SCIENCE",
+  "environment": {
+    "python": "3.11.3",
+    "python_path": "/usr/local/bin/python3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "platform": "darwin",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r2"
+  },
+  "commands": [
+    {
+      "purpose": "verify candidate remote and changed paths",
+      "command": "git ls-remote origin refs/heads/agent/opencode-pyat-r61-r01-generic-grammar-r1; git diff --name-only fcf9fe9..f0c602ed",
+      "exit_code": 0,
+      "result": "author remote f0c602ed; only four allowlist code paths plus R2 author reports changed"
+    },
+    {
+      "purpose": "verify author report manifest and code blobs",
+      "command": "python3 check manifest SHA256 and git hash-object",
+      "exit_code": 0,
+      "result": "all six report hashes and all four code blobs match"
+    },
+    {
+      "purpose": "replay author suite with reviewer JUnit",
+      "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=.../replay/author_suite_junit.xml -o addopts=''",
+      "exit_code": 0,
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "walltime_seconds": 8.512
+    },
+    {
+      "purpose": "retained + adapted prior reviewer probes",
+      "command": "PYTHONPATH=... pytest probes/prior_test_r01v_independent.py -q --junitxml=.../replay/adapted_prior_probes_junit.xml",
+      "exit_code": 0,
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0
+    },
+    {
+      "purpose": "own hostile probes",
+      "command": "PYTHONPATH=... pytest probes/test_r01v_r2_reviewer.py -q --junitxml=.../replay/own_probes_junit.xml",
+      "exit_code": 1,
+      "tests": 5,
+      "passed": 2,
+      "failures": 3,
+      "errors": 0,
+      "skips": 0,
+      "failures_are_required_defect_assertions": [
+        "test_conditional_joint_condition_has_native_semantic_role",
+        "test_forged_operation_id_is_not_accepted_as_exact_identity",
+        "test_unsupported_only_frontier_is_not_declared_valid_empty"
+      ]
+    },
+    {
+      "purpose": "own native positive/mutation/restoration/cold case",
+      "command": "PYTHONPATH=... pytest probes/test_r01v_r2_reviewer.py -q -k 'condition_mutation or cold_deterministic' --junitxml=.../replay/native_positive_junit.xml",
+      "exit_code": 0,
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0
+    }
+  ],
+  "native_consumer": {
+    "module": "rawlsing_next.pre553_discovery_exact",
+    "function": "execute_exact_bounded_discovery",
+    "blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+    "inputs": "synthetic TEST_ONLY C11/I03 source, predicates and query templates from current owner fixtures",
+    "baseline": "expected candidate identities compiled independently by reviewer calling current native _compile_frontier on candidate grammar/catalog",
+    "condition_mutation": "q_beta=0 -> q_beta=1 predicate ref with rule_id/count preserved",
+    "mutation_result": "reviewer exact candidate/query-role join and candidate native_receipt_anti_join both fail",
+    "restoration": "baseline receipts pass both joins",
+    "cold": "subprocess reproduces the same baseline/mutation/restoration case"
+  },
+  "mutants_and_restoration": [
+    {
+      "mutation": "conditioned JOIN/CO_TRAVEL condition atom",
+      "expected": "condition ref bound in native rule/query roles or typed refusal",
+      "observed": "SUPPORTED with condition atom unused; baseline predicate used in all query roles",
+      "status": "DEFECT_A1"
+    },
+    {
+      "mutation": "forged operation op_id",
+      "expected": "typed refusal or canonical identity check",
+      "observed": "SUPPORTED",
+      "status": "DEFECT_A2"
+    },
+    {
+      "mutation": "unsupported-only frontier",
+      "expected": "allow_empty_frontier false",
+      "observed": "allow_empty_frontier true",
+      "status": "DEFECT_A3"
+    },
+    {
+      "mutation": "FORK recursion depth/baseline",
+      "expected": "independent recursion/baseline identity or declared limitation",
+      "observed": "recursion_depth == branch_depth == conditioner_depth-1; baseline_ref is parent op id",
+      "status": "DEFECT_A4"
+    },
+    {
+      "mutation": "native condition atom q_beta=0 -> q_beta=1, same rule_id",
+      "expected": "same consumer assertion fails",
+      "observed": "reviewer join and candidate anti-join fail; restored baseline passes",
+      "status": "PASS"
+    }
+  ],
+  "imported_owner_blobs": {
+    "rawlsing_next/pre553_discovery_exact.py": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+    "rawlsing_next/pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "rawlsing_next/pre553_empirical_query.py": "03facecf70890bfd13b80418620d274cbcd69d02",
+    "rawlsing_next/pre553_empirical_authority.py": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+    "rawlsing_next/tests/test_pre553_discovery_exact.py": "b53039aeb95e012993c5233a7575c1dad5a14929",
+    "rawlsing_next/tests/test_pre553_empirical_query.py": "cc7d93db1f87d9c311170c229dbe3506937b404a"
+  },
+  "candidate_code_blobs": {
+    "rawlsing_next/universal_grammar/types.py": "04b1d7608cdbf3bb79c849a8e2c529cab05be25b",
+    "rawlsing_next/universal_grammar/enumerate.py": "2f038cae64ed6b7d1ecbde8e73b7897821218a94",
+    "rawlsing_next/universal_grammar/native_map.py": "c8ef2cbc8bb18ed3ce09121b3a89d0fc457adcff",
+    "rawlsing_next/tests/test_universal_grammar.py": "078122dc620a117da8e6f59fe6ab8053ecf97f0e"
+  },
+  "limits": [
+    "Synthetic TEST_ONLY source and Python helpers; no original survey bytes or respondent values.",
+    "No R03 issued workload/U43/Batch proof; R03 remains NOT_STARTED.",
+    "No R04 serialized cold restore or authenticated byte custody.",
+    "No original U/E_pre, empirical support, F6/F7/F8, N11/N12, actor, production/CI or source permission.",
+    "Own probes are disposable and live only below the R2 reviewer return root.",
+    "No candidate code/test edit, no self-adoption."
+  ],
+  "not_reached": [
+    "R03 total issuance/U43/Batch",
+    "R04 serialized restore/byte custody/revocation",
+    "R02 row/occasion projection",
+    "R05 five grades/canonical N10E values-read",
+    "R06 F5/F6/F7/F8 and observed temporal pairs",
+    "original 35/1,890 and original U/E_pre",
+    "N11/N12, production/protected CI, J52/W52, Browser runtime"
+  ]
+}

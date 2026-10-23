@@ -1,0 +1,55 @@
+R61-R01V R2 independent review — startup and identity evidence
+================================================================
+
+Reviewer branch: agent/opencode-pyat-r61-r01v-r2-independent-review-r1
+Worktree: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r2
+Candidate/startup: f0c602eddaee14a58d6f0935a587a46fcf96c6db
+Candidate code: d56e53301aaa0203e83fc1b60a0bcafb86b17892
+Candidate parent/base: fcf9fe9f8662c9e98801e670d0d4357072d8d453 -> a54893657ba65e44c1049f763208b0b4b6ed5eb9
+Prior independent review: b310c5469bb628a583d6e106946cddd08025ddc1
+R2 repair commission: 0ad99eadaf7aa2edd96e5a50f7b61f84c893ff70
+R01V R2 commission: b04278d1eaa388cc213167bbe94243f367543a00:WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R01V/revisions/r2/00_COMMISSION.md
+Frozen reviewer expectations commit: 515c1d704760c80652eb8a6877bcec3d1daf6152
+
+Remote direct readback before review artifacts:
+git ls-remote origin refs/heads/agent/opencode-pyat-r61-r01-generic-grammar-r1
+  f0c602eddaee14a58d6f0935a587a46fcf96c6db
+git ls-remote origin refs/heads/agent/opencode-pyat-r61-r01v-r2-independent-review-r1
+  f0c602eddaee14a58d6f0935a587a46fcf96c6db
+
+Changed paths from candidate startup fcf9fe9f to f0c602ed:
+  WORKER_RETURNS/PYAT-R61-R01-IMPLEMENTATION-R1/revisions/r2/{00_RETURN.md,
+    RESUME.md,junit.xml,manifest.json,proof_witness.json,pytest.log,
+    reviewer_d1_d8_replay.log}
+  rawlsing_next/universal_grammar/{types.py,enumerate.py,native_map.py}
+  rawlsing_next/tests/test_universal_grammar.py
+No unlisted code path. Immutable v1 report tree, reviewer tree and R61 INPUTS
+are unchanged between fcf9fe9 and f0c602ed (empty git diff).
+
+Author R2 report manifest hashes verified:
+  00_RETURN.md OK
+  RESUME.md OK
+  junit.xml OK
+  manifest.json (self-excluded)
+  proof_witness.json OK
+  pytest.log OK
+  reviewer_d1_d8_replay.log OK
+
+Candidate code git blobs (match author manifest):
+  rawlsing_next/universal_grammar/types.py             04b1d7608cdbf3bb79c849a8e2c529cab05be25b
+  rawlsing_next/universal_grammar/enumerate.py         2f038cae64ed6b7d1ecbde8e73b7897821218a94
+  rawlsing_next/universal_grammar/native_map.py        c8ef2cbc8bb18ed3ce09121b3a89d0fc457adcff
+  rawlsing_next/tests/test_universal_grammar.py        078122dc620a117da8e6f59fe6ab8053ecf97f0e
+
+Current imported native-owner blobs:
+  rawlsing_next/pre553_discovery_exact.py       905f24d114419dbdd93879ad2bee5b59dd2f23af
+  rawlsing_next/pre553_empirical_objects.py     a61365b994e5c3c50de0f598fcf40e90abf757b6
+  rawlsing_next/pre553_empirical_query.py       03facecf70890bfd13b80418620d274cbcd69d02
+  rawlsing_next/pre553_empirical_authority.py   ca65a7fd4d52f0c44447434559b1d09412e7aa39
+  rawlsing_next/tests/test_pre553_discovery_exact.py b53039aeb95e012993c5233a7575c1dad5a14929
+  rawlsing_next/tests/test_pre553_empirical_query.py cc7d93db1f87d9c311170c229dbe3506937b404a
+
+Toolchain: Python 3.11.3 (/usr/local/bin/python3), pytest 9.0.2,
+pyreadstat 1.3.2, darwin. Browser whole-native runtime remains unqualified.
+Same provider account opencode-go/deepseek-v4.1-flash variant max/Global is
+disclosed; it is not organizational scientific independence.

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="5" time="2.064" timestamp="2026-10-23T02:26:47.775643-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R61-R01-INDEPENDENT-REVIEW-R1.revisions.r2.probes.test_r01v_r2_reviewer" name="test_native_condition_mutation_refusal_and_restoration_with_own_oracle" time="0.481" /><testcase classname="WORKER_RETURNS.PYAT-R61-R01-INDEPENDENT-REVIEW-R1.revisions.r2.probes.test_r01v_r2_reviewer" name="test_native_case_is_cold_deterministic" time="1.175" /><testcase classname="WORKER_RETURNS.PYAT-R61-R01-INDEPENDENT-REVIEW-R1.revisions.r2.probes.test_r01v_r2_reviewer" name="test_conditional_joint_condition_has_native_semantic_role" time="0.111"><failure message="AssertionError: conditional JOINT lowered SUPPORTED but its exact condition value is not referenced by the native rule/query roles: status=SUPPORTED reason=None rule_keys=['baseline_atom_id', 'family', 'form', 'joint_template_id', 'marginal_template_ids', 'rule_id', 'validation'] coverage_roles=('JOINT', 'MARGINAL_0', 'MARGINAL_1') unused_atoms=['ATOM-782202b57076c974dfe6007cac4aae67824250761716751cda1c551b9300a73c', 'ATOM-d738f6f36c85c13549d680caf84153764fdbcee08a0f7072852eeb78a866bde8']&#10;assert False">def test_conditional_joint_condition_has_native_semantic_role():
+        _inventory, _native_catalog, _native_fixture, _occurrence, _policy = _author_fixtures()
+        source, qauth, dauth, all_predicate, predicates, queries, labels = _native_fixture()
+        inv = _inventory(tuple(_occurrence(label) for label in labels))
+        policy = _policy(j=2, k=1, d=0)
+        frontier = enumerate_frontier(inv, policy)
+        op = next(
+            op for op in frontier.operations
+            if op.claim_class == "JOINT" and op.disposition == ELIGIBLE
+            and op.measure_id == "SAMPLE"
+            and tuple(key.item_id for key in op.targets) == (labels[0], labels[1])
+            and len(op.conditions) == 1
+        )
+        key, value = op.conditions[0]
+        catalog = _native_catalog(
+            labels, all_predicate, predicates, queries,
+            discovery_authority_ref=dauth.authority_ref,
+        )
+        plan = lower_frontier(inv, policy, replace(frontier, operations=(op,)), catalog)
+        record = plan.records[0]
+        assert record.status == SUPPORTED, record.reason
+        condition_ref = catalog.predicate_ref(key, value).as_dict()
+        rule = record.rule or {}
+        # Required: if the joint family is claimed supported, the exact condition
+        # must be part of the executed candidate semantics, or the record must be a
+        # typed refusal.  Merely carrying an unused atom entry is not binding.
+        rule_atom_ids = set()
+        for name in ("baseline_atom_id", "atom_ids"):
+            value_field = rule.get(name)
+            if isinstance(value_field, str):
+                rule_atom_ids.add(value_field)
+            elif isinstance(value_field, (list, tuple)):
+                rule_atom_ids.update(value_field)
+        for group in rule.get("atom_groups", ()):
+            if isinstance(group, (list, tuple)):
+                rule_atom_ids.update(group)
+            else:
+                rule_atom_ids.add(group)
+        rule_atom_refs = []
+        for atom_id in rule_atom_ids:
+            if isinstance(atom_id, str) and atom_id in record.atoms:
+                rule_atom_refs.append(canonicalize(dict(record.atoms[atom_id])))
+        role_refs = _query_role_predicate_refs(record)
+        referenced = condition_ref in rule_atom_refs or condition_ref in role_refs
+&gt;       assert referenced, (
+            "conditional JOINT lowered SUPPORTED but its exact condition value is "
+            f"not referenced by the native rule/query roles: status={record.status} "
+            f"reason={record.reason} rule_keys={sorted(rule)} "
+            f"coverage_roles={record.coverage_roles} "
+            f"unused_atoms={sorted(record.atoms)}"
+        )
+E       AssertionError: conditional JOINT lowered SUPPORTED but its exact condition value is not referenced by the native rule/query roles: status=SUPPORTED reason=None rule_keys=['baseline_atom_id', 'family', 'form', 'joint_template_id', 'marginal_template_ids', 'rule_id', 'validation'] coverage_roles=('JOINT', 'MARGINAL_0', 'MARGINAL_1') unused_atoms=['ATOM-782202b57076c974dfe6007cac4aae67824250761716751cda1c551b9300a73c', 'ATOM-d738f6f36c85c13549d680caf84153764fdbcee08a0f7072852eeb78a866bde8']
+E       assert False
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r2/probes/test_r01v_r2_reviewer.py:278: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R01-INDEPENDENT-REVIEW-R1.revisions.r2.probes.test_r01v_r2_reviewer" name="test_forged_operation_id_is_not_accepted_as_exact_identity" time="0.050"><failure message="AssertionError: lowering accepted an operation whose op_id is not its canonical identity: status=SUPPORTED reason=None&#10;assert 'SUPPORTED' == 'UNSUPPORTED_RUNTIME'&#10;  &#10;  - UNSUPPORTED_RUNTIME&#10;  + SUPPORTED">def test_forged_operation_id_is_not_accepted_as_exact_identity():
+        _inventory, _native_catalog, _native_fixture, _occurrence, _policy = _author_fixtures()
+        source, qauth, dauth, all_predicate, predicates, queries, labels = _native_fixture()
+        inv = _inventory((_occurrence(labels[0], conditioner_role=None),))
+        policy = _policy(j=1, k=0, d=0)
+        frontier = enumerate_frontier(inv, policy)
+        op = next(
+            o for o in frontier.operations
+            if o.claim_class == "DIST" and o.disposition == ELIGIBLE
+            and o.measure_id == "SAMPLE"
+        )
+        catalog = _native_catalog(
+            labels, all_predicate, predicates, queries,
+            discovery_authority_ref=dauth.authority_ref,
+        )
+        forged = replace(op, op_id="urn:r61:op:forged-identity")
+        record = lower_operation(inv, policy, forged, catalog)
+&gt;       assert record.status == NATIVE_UNSUPPORTED, (
+            "lowering accepted an operation whose op_id is not its canonical "
+            f"identity: status={record.status} reason={record.reason}"
+        )
+E       AssertionError: lowering accepted an operation whose op_id is not its canonical identity: status=SUPPORTED reason=None
+E       assert 'SUPPORTED' == 'UNSUPPORTED_RUNTIME'
+E         
+E         - UNSUPPORTED_RUNTIME
+E         + SUPPORTED
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r2/probes/test_r01v_r2_reviewer.py:313: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R01-INDEPENDENT-REVIEW-R1.revisions.r2.probes.test_r01v_r2_reviewer" name="test_unsupported_only_frontier_is_not_declared_valid_empty" time="0.045"><failure message="AssertionError: a frontier with unsupported scientific operations was advertised as a valid empty native frontier&#10;assert True is False">def test_unsupported_only_frontier_is_not_declared_valid_empty():
+        _inventory, _native_catalog, _native_fixture, _occurrence, _policy = _author_fixtures()
+        source, qauth, dauth, all_predicate, predicates, queries, labels = _native_fixture()
+        inv = _inventory((_occurrence(labels[0], conditioner_role=None),))
+        policy = _policy(j=1, k=0, d=0)
+        frontier = enumerate_frontier(inv, policy)
+        catalog = replace(
+            _native_catalog(labels, all_predicate, predicates, queries),
+            supported_claims=(),
+        )
+        plan = lower_frontier(inv, policy, frontier, catalog)
+        assert plan.unsupported_operation_ids
+&gt;       assert plan.native_grammar()["allow_empty_frontier"] is False, (
+            "a frontier with unsupported scientific operations was advertised as a "
+            "valid empty native frontier"
+        )
+E       AssertionError: a frontier with unsupported scientific operations was advertised as a valid empty native frontier
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r2/probes/test_r01v_r2_reviewer.py:331: AssertionError</failure></testcase></testsuite></testsuites>

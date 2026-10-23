@@ -1,0 +1,59 @@
+{
+  "schema": "PYAT_R61_R01V_INDEPENDENT_ORACLE_RESULTS@1",
+  "oracle_frozen_in": "EXPECTATIONS.md (committed before candidate inspection)",
+  "candidate": "fcf9fe9f8662c9e98801e670d0d4357072d8d453",
+  "results": {
+    "E1_ordered_targets_and_conditions": {
+      "status": "PASS",
+      "expected": "4 ordered target tuples x 5 ordered condition tuples = 20 exact (targets,conditions) pairs for J=2,K=1; distinct permutations",
+      "observed": "exact set match; op_ids unique; target/conditioner roles preserved"
+    },
+    "E2_bijective_rename": {
+      "status": "NOT_INDEPENDENTLY_REPRODUCED",
+      "expected": "logical frontier invariant under bijective item rename with rewritten authority refs",
+      "observed": "author suite passed its rename test; reviewer did not derive a separate rename oracle",
+      "note": "author count is not used as the reviewer oracle"
+    },
+    "E3_roles_direction_form_repeat": {
+      "status": "PASS_WITH_LIMITATIONS",
+      "expected": "distinct qualified occurrence/form/repeat/unit/risk/direction identities; explicit grants",
+      "observed": "direction/role order explicit and reverse prohibited until granted; form/repeat keys distinct; unit mismatch HELD; empty risk refs treated as unconstrained (D11)"
+    },
+    "E4_ordered_typed_conditions": {
+      "status": "PARTIAL_FAIL",
+      "expected": "typed bool/int/null/absent/order distinct",
+      "observed": "int order distinct; bool and null domains rejected (D1); int/string native cell collision (D8)"
+    },
+    "E5_recursion_baseline_arity_bounds": {
+      "status": "PARTIAL",
+      "expected": "J/K/D exact enumeration, baseline identity, no silent budget reduction",
+      "observed": "J/K respected; budget does not prune; D only filters FORK branch_depth derived from conditioner depth; no baseline-ref or recurrence chain (D13)"
+    },
+    "E6_administration_inventory": {
+      "status": "PASS",
+      "expected": "admin false held, unknown retained, all-missing no prune, absent vs valid empty, duplicate refusal",
+      "observed": "all matched structurally; all-missing has no observation input so membership is value-independent; author all-missing test is vacuous (D16)"
+    },
+    "E7_multiplicity_no_drop": {
+      "status": "PASS_AT_FRONTIER_ANTIJOIN",
+      "expected": "no omission, no duplicate, count-preserving substitution fails",
+      "observed": "conservation_report rejects substitution; native receipt anti-join is rule_id-only and fails semantic condition mutation (D6)"
+    },
+    "E8_partition_cold_restore": {
+      "status": "PARTIAL",
+      "expected": "partition/cold restore conserves exact ids and held/unknown/unsupported/pending sets",
+      "observed": "partition flatten and cold subprocess recomputation conserve exact ids/sets; no serialized restore ingress (D14)"
+    },
+    "E9_three_axes": {
+      "status": "FAIL",
+      "expected": "separate eligibility/execution/result axes; conservation partition",
+      "observed": "single DISPOSITIONS enum includes UNSUPPORTED_RUNTIME/DEFERRED; no result axis (D5)"
+    },
+    "E10_native_lowering": {
+      "status": "PARTIAL_FAIL",
+      "expected": "actual current catalog/contract refs, exact targets/conditions/query roles, typed unsupported, semantic receipt anti-join",
+      "observed": "imported current I05 contract constants; actual I05 executed six rules; condition mutation passes anti-join (D6); target cell coercion (D8); LoweringRecord fields missing (D7); topology gate (D9); forged direction accepted (D10)"
+    }
+  },
+  "verdict": "REVISE"
+}

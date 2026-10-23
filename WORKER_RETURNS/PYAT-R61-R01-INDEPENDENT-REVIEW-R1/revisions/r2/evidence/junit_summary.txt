@@ -1,0 +1,44 @@
+R61-R01V R2 reviewer JUnit summary
+==================================
+
+author_suite_junit.xml
+  tests=18 failures=0 errors=0 skipped=0
+  exit=0; 18 passed
+  command: /usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py
+  -q --junitxml=.../author_suite_junit.xml -o addopts=''
+
+adapted_prior_probes_junit.xml
+  tests=20 failures=0 errors=0 skipped=0
+  exit=0; 20 passed
+  command: pytest probes/prior_test_r01v_independent.py -q
+  (retained history; only R2 obsolete assertions/path helper adapted)
+
+own_probes_junit.xml
+  tests=5 failures=3 errors=0 skipped=0
+  exit=1; 2 passed, 3 failed
+  The 3 failures are the required contract assertions:
+    test_conditional_joint_condition_has_native_semantic_role  (A1)
+    test_forged_operation_id_is_not_accepted_as_exact_identity  (A2)
+    test_unsupported_only_frontier_is_not_declared_valid_empty  (A3)
+
+native_positive_junit.xml
+  tests=2 failures=0 errors=0 skipped=0
+  exit=0; 2 passed
+  test_native_condition_mutation_refusal_and_restoration_with_own_oracle
+  test_native_case_is_cold_deterministic
+
+A1 exact failure text (own_probes.log):
+  AssertionError: conditional JOINT lowered SUPPORTED but its exact condition
+  value is not referenced by the native rule/query roles: status=SUPPORTED
+  reason=None rule_keys=['baseline_atom_id','family','form','joint_template_id',
+  'marginal_template_ids','rule_id','validation']
+  coverage_roles=('JOINT','MARGINAL_0','MARGINAL_1')
+  unused_atoms=['ATOM-782202...','ATOM-d738f6...']
+
+A2 exact failure text:
+  AssertionError: lowering accepted an operation whose op_id is not its
+  canonical identity: status=SUPPORTED reason=None
+
+A3 exact failure text:
+  AssertionError: a frontier with unsupported scientific operations was
+  advertised as a valid empty native frontier
