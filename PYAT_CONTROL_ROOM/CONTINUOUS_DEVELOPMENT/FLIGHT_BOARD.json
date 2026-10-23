@@ -68,7 +68,7 @@
       "next_action": "On Light commission one retained-campaign-owner repair, then distinct native qualification",
       "terminal_consequence": "Unblocks generic R03 workload instead of selected fixtures",
       "acceptance": "Independent exact-identity positive/hostile/actual-consumer/cold proof; HQ scoped disposition; no author self-adoption",
-      "status": "R6_AUTHOR_CUSTODY_VERIFIED__INDEPENDENT_REVIEW_REQUIRED"
+      "status": "R6_DISTINCT_INDEPENDENT_REVIEW_RUNNING"
     },
     {
       "id": "R08",
@@ -84,7 +84,7 @@
       "next_action": "Light exact intake6abd49ffd9bb61925084036f2f1275841b3b5c83 then distinct native review",
       "terminal_consequence": "Prevents wrong-condition or unsupported-positive world/possibility serving",
       "acceptance": "Independent exact-identity positive/hostile/actual-consumer/cold proof; HQ scoped disposition; no author self-adoption",
-      "status": "R5_INDEPENDENT_REVISE__UNSIGNED_PROVENANCE_AND_CACHE_OBJECTS"
+      "status": "R6_COMPLETE_PROJECTION_REPAIR_RUNNING"
     },
     {
       "id": "R09.local",
@@ -447,9 +447,61 @@
       "variant": "max",
       "account": "existing Global",
       "started_utc": "2026-10-23T19:57:39.823479+00:00",
-      "actual_tool_preflight": "PENDING",
+      "actual_tool_preflight": "PASS_TOOL_CWD_TOPLEVEL_BRANCH_TRACKED_CLEAN",
       "route": "ATTENDED_EXISTING_INFRASTRUCTURE_BOOTSTRAP_NOT_CONTROLLER_LAUNCH",
-      "os_isolation": "NOT_PROVEN"
+      "os_isolation": "NOT_PROVEN",
+      "process_live_observed": true,
+      "actual_tool_root": "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client"
+    },
+    {
+      "id": "R01V_R6",
+      "pid": 84197,
+      "sessions": [
+        "ses_e96304356ffeC8HSvwFluWOjG1"
+      ],
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5",
+      "branch": "agent/opencode-pyat-r61-r01v-r6-independent-review-r1",
+      "startup": "fea3ca17d94183efbd526dc1687ae06b7bbbf0f7",
+      "commission_tip": "d737562873558ce01116f079815b00bdb06416fe",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R01V/revisions/r6/00_COMMISSION.md",
+      "write_scope": [
+        "WORKER_RETURNS/PYAT-R61-R01-INDEPENDENT-REVIEW-R1/revisions/r6/**"
+      ],
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "variant_requested": "max",
+      "account": "existing Global",
+      "started_utc": "2026-10-23T20:03:45.785683+00:00",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_NOT_CONTROLLER",
+      "actual_tool_preflight": "PASS_TOOL_ROOT_BRANCH",
+      "os_isolation": "NOT_PROVEN",
+      "new_repository_copies": 0,
+      "process_live_observed": true
+    },
+    {
+      "id": "R08_R6",
+      "pid": 84198,
+      "sessions": [
+        "ses_e98c8dfe6ffewNYOqJpvqK21a6"
+      ],
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08",
+      "branch": "agent/opencode-pyat-r61-r08-evidence-binding-r1",
+      "startup": "6abd49ffd9bb61925084036f2f1275841b3b5c83",
+      "commission_tip": "d737562873558ce01116f079815b00bdb06416fe",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R08/revisions/r6/00_REPAIR_COMMISSION.md",
+      "write_scope": [
+        "rawlsing_next/pre553_universal_evidence_binding.py",
+        "rawlsing_next/tests/test_universal_evidence_binding.py",
+        "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r6/**"
+      ],
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "variant_requested": "max",
+      "account": "existing Global",
+      "started_utc": "2026-10-23T20:03:45.788978+00:00",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_NOT_CONTROLLER",
+      "actual_tool_preflight": "PASS_TOOL_ROOT_BRANCH",
+      "os_isolation": "NOT_PROVEN",
+      "new_repository_copies": 0,
+      "process_live_observed": true
     }
   ],
   "prior_review_returns": {
@@ -958,6 +1010,15 @@
         "grade": "INDEPENDENT_REVISE_UNSIGNED_PROVENANCE_AND_CACHE_OBJECT_EXPORT",
         "native_rerun_by_HQ": false
       }
+    }
+  },
+  "R61Y_model_route": {
+    "coordination": "I1-I2/S2 Sol Light sufficient",
+    "native_worker_and_review": "I2-I3/S3 existing DeepSeek MAX/Global",
+    "High_or_Astra_needed_now": false,
+    "quota_percent_used": {
+      "five_hour": 26,
+      "weekly": 4
     }
   }
 }
