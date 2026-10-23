@@ -1,3 +1,12 @@
+# R61AC — exact combined controller independent review actually launched
+
+Existing distinct reviewer session ses_e9ac7f04bffep8CQitKjbiuUn0 resumed PID2049 against exact final3d98c328e83547522c0f8c99470e39219ed76dd7 in existing stable review checkout/new branch; no new copies or sessions. One bounded implementation review, not reviewer-of-reviewer. Five inherited defects plus new reconciliation/finalization/durable inbox and full public trust boundaries; no liveDB mutation or new provider effects. Commission2157d6fa03f72324142b11e188d1e40888208dad, actual receipt in director adc86afe6b764920a7aacc500e0393331f7ab8ff. Tool preflight pending at launch.
+
+R08 independent review still live. R01 user Sol High boundary remains; no R7/R03. Scheduled same-thread wake and actual inbox receipt proved, full combined controller qualification pending. All source/science/CI/prod/N11/N12/Sorok/J52W52 holds unchanged.
+
+
+## Earlier progress history retained
+
 # R61AB — real incumbent receives controller evidence without human ferry
 
 Controller owner final3d98c328e83547522c0f8c99470e39219ed76dd7 verified9manifesthashes/directremote. This exact HQ read and ACKED durable envelope through supported client pending/ack during scheduled heartbeat, bindingd6da155dc135a89cea309c8bf33fd57efd18febbf4c0b4ab7a20d2c8a36d0d0c. Receipt accepted, not code adoption. Real reused worker/distinct review correspond to old a74 report candidate; current R2 controller changes still need independent exact combined native review. No full controller qualification claimed. UNKNOWN HQeffect/FENCING_TOKEN_INVALID preserved/no retry/no modelgeneration.
