@@ -1,3 +1,12 @@
+# R61Z — R01 R6 review custody verified; finite engineering adjudication
+
+Review568ff717662ac1ee63d29bad3080deaf10bd17f9 verified28artifacthashes/fourcandidateblobs/ownscope/directremote. REVISE; native positives preserved. Explicit source/context/issuance gaps remain. Reviewer forged-pin finding may cross R61V independently trusted expected-pin boundary; pre-activation restored execution also lacks productive replay/activation. Exact bounded Sol High card in director 4f86ea3619a8dce243bbc64e8b3b9d8eb68746f5. No new architecture/science/court.
+
+R01R7 not launched; R03 not started. R08R6 and existing infrastructure owner still live, heartbeat observation/intake continues independently. Scheduled same-thread heartbeat actually observed; controller-triggered delivery unqualified. All authority holds unchanged.
+
+
+## Earlier progress history retained
+
 # Pyat HQ R61Y — productive repair and qualification running
 
 R01 R6 distinct hostile reviewer resumed on candidate fea3ca17d94183efbd526dc1687ae06b7bbbf0f7 under full retained-owner R61V contract. R08 same-author R6 repair resumed on6abd49ffd9bb61925084036f2f1275841b3b5c83 under settled R61Q complete projection requirements, including R5 unsigned provenance/cache-export findings. Exact commissions/actual launch receipts in director 886da961f570bf32c7d83061b352fe7f980e86ba. Existing sessions/worktrees/account, no replacement engines or duplicate copies.
