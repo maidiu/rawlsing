@@ -358,7 +358,23 @@
     "partial_source": "maidiu/rawlsing-controller@c51b74b7a2a3d498c64387dc1ec95cb0c29a44b3",
     "last_observed_result": "REVIEWER_NOT_INDEPENDENT same-account fixture policy missing",
     "automatic_HQ_delivery": "NOT_PROVEN",
-    "current_dispatch": "ATTENDED_DIRECT_OPENCODE; no duplicate controller rebuild"
+    "current_dispatch": "ATTENDED_DIRECT_OPENCODE; no duplicate controller rebuild",
+    "current_completion_worker": {
+      "id": "CONTROLLER_PYAT_R2",
+      "pid": 80106,
+      "session": "ses_e98dfb4ceffeOIN94FajJA56s1",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
+      "branch": "infra/r60-pyat-incumbent-client-r1",
+      "startup": "e3d2213e29c9940a946b2f263e93f3f78470493b",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "variant": "max",
+      "account": "existing Global",
+      "started_utc": "2026-10-23T19:57:39.823479+00:00",
+      "actual_tool_preflight": "PENDING",
+      "route": "ATTENDED_EXISTING_INFRASTRUCTURE_BOOTSTRAP_NOT_CONTROLLER_LAUNCH",
+      "os_isolation": "NOT_PROVEN"
+    },
+    "delivery_grade": "SCHEDULED_APP_HEARTBEAT_ACTIVE__CONTROLLER_INTEGRATION_UNQUALIFIED"
   },
   "governance": {
     "J52": "USER_STOPPED",
@@ -419,7 +435,23 @@
       }
     }
   },
-  "live_flight": [],
+  "live_flight": [
+    {
+      "id": "CONTROLLER_PYAT_R2",
+      "pid": 80106,
+      "session": "ses_e98dfb4ceffeOIN94FajJA56s1",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
+      "branch": "infra/r60-pyat-incumbent-client-r1",
+      "startup": "e3d2213e29c9940a946b2f263e93f3f78470493b",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "variant": "max",
+      "account": "existing Global",
+      "started_utc": "2026-10-23T19:57:39.823479+00:00",
+      "actual_tool_preflight": "PENDING",
+      "route": "ATTENDED_EXISTING_INFRASTRUCTURE_BOOTSTRAP_NOT_CONTROLLER_LAUNCH",
+      "os_isolation": "NOT_PROVEN"
+    }
+  ],
   "prior_review_returns": {
     "R01V": {
       "sha": "b310c5469bb628a583d6e106946cddd08025ddc1",
