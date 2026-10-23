@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261023-PYAT-HQ-R61AA-R08-R6-INDEPENDENT-REVIEW-AND-PENDING-CONTROLLER-INBOX-R1",
-  "handoff_commit": "fed10a0cdcb1be62968d4891b43972bd241cfb85",
+  "checkpoint_id": "20261023-PYAT-HQ-R61AB-ACTUAL-CONTROLLER-INBOX-RECEIPT-AND-COMBINED-QUALIFICATION-HOLD-R1",
+  "handoff_commit": "6dc791e15fef0908383d372ea29e95a06645b476",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AA-R08-R6-INDEPENDENT-REVIEW-AND-PENDING-CONTROLLER-INBOX-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AA-R08-R6-INDEPENDENT-REVIEW-AND-PENDING-CONTROLLER-INBOX-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AA-R08-R6-INDEPENDENT-REVIEW-AND-PENDING-CONTROLLER-INBOX-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AB-ACTUAL-CONTROLLER-INBOX-RECEIPT-AND-COMBINED-QUALIFICATION-HOLD-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AB-ACTUAL-CONTROLLER-INBOX-RECEIPT-AND-COMBINED-QUALIFICATION-HOLD-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AB-ACTUAL-CONTROLLER-INBOX-RECEIPT-AND-COMBINED-QUALIFICATION-HOLD-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "fed10a0cdcb1be62968d4891b43972bd241cfb85",
+  "canonical_control_base": "6dc791e15fef0908383d372ea29e95a06645b476",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "fed10a0cdcb1be62968d4891b43972bd241cfb85",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AA-R08-R6-INDEPENDENT-REVIEW-AND-PENDING-CONTROLLER-INBOX-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AA-R08-R6-INDEPENDENT-REVIEW-AND-PENDING-CONTROLLER-INBOX-R1/CURRENT.md",
+  "qualified_working_hq_commit": "6dc791e15fef0908383d372ea29e95a06645b476",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AB-ACTUAL-CONTROLLER-INBOX-RECEIPT-AND-COMBINED-QUALIFICATION-HOLD-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AB-ACTUAL-CONTROLLER-INBOX-RECEIPT-AND-COMBINED-QUALIFICATION-HOLD-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 74,
-    "canonical_report_commit": "fed10a0cdcb1be62968d4891b43972bd241cfb85",
+    "revision": 75,
+    "canonical_report_commit": "6dc791e15fef0908383d372ea29e95a06645b476",
     "counterpart": "Sorok rev34 independent; attachment86a7b382 unaccepted and state untouched"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261023-PYAT-HQ-R61Z-R01-R6-REVIEW-INTAKE-AND-BOUNDED-HIGH-BOUNDARY-R1",
-    "handoff_commit": "1892646f18644ef285cb01373c9bcacf19b8bcea"
+    "checkpoint_id": "20261023-PYAT-HQ-R61AA-R08-R6-INDEPENDENT-REVIEW-AND-PENDING-CONTROLLER-INBOX-R1",
+    "handoff_commit": "fed10a0cdcb1be62968d4891b43972bd241cfb85"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "Observe R08 independent review and controller final return; verify actual queued job/reviewer identities before intake/ack. R01 remains awaiting user Sol High; no R7/R03.",
-  "worker_state_truth": "R08 author terminal, distinct reviewer actually launched; infrastructure owner observed live; R01 paused at finite High boundary.",
+  "next_action": "Qualify exact combined R2 controller with independent native reviewer, no worker effect replay; continue R08 independent review. R01 awaits user Sol High.",
+  "worker_state_truth": "Controller owner terminal; actual inbox received/acknowledged; R08 reviewer live; R01 paused pending user model switch.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -356,34 +356,6 @@
   },
   "r61_actual_workers": [
     {
-      "id": "CONTROLLER_PYAT_R2",
-      "pid": 80106,
-      "session": "ses_e98dfb4ceffeOIN94FajJA56s1",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
-      "branch": "infra/r60-pyat-incumbent-client-r1",
-      "startup": "e3d2213e29c9940a946b2f263e93f3f78470493b",
-      "model": "opencode-go/deepseek-v4.1-flash",
-      "variant": "max",
-      "account": "existing Global",
-      "started_utc": "2026-10-23T19:57:39.823479+00:00",
-      "actual_tool_preflight": "PASS_TOOL_CWD_TOPLEVEL_BRANCH_TRACKED_CLEAN",
-      "route": "ATTENDED_EXISTING_INFRASTRUCTURE_BOOTSTRAP_NOT_CONTROLLER_LAUNCH",
-      "os_isolation": "NOT_PROVEN",
-      "process_live_observed": true,
-      "actual_tool_root": "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
-      "commission_tip": "e3d2213e29c9940a946b2f263e93f3f78470493b",
-      "observed_head_at_checkpoint": "e3d2213e29c9940a946b2f263e93f3f78470493b",
-      "grain": "SOURCEFREE_LOCAL_ONLY",
-      "library_access": "EXACT_ONLY",
-      "pass_wake": "Independent result intake and HQ decision required",
-      "blocker_effect": "No automatic R03 wake",
-      "hard_forbidden": [
-        "NO_SELF_ADOPTION",
-        "NO_SCOPE_EXPANSION",
-        "NO_ORIGINAL_SCIENCE_PRODUCTION_N11_N12"
-      ]
-    },
-    {
       "id": "R08V_R6",
       "pid": 96003,
       "sessions": [
@@ -422,5 +394,5 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "c0fa257023c9622fe8679d835eeff0d57cab1327"
+  "current_development_evidence": "32ef0c9dd5b852719e56aab25c9cb0a1c017a620"
 }
