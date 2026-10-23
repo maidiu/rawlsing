@@ -57,6 +57,8 @@ from rawlsing_next.universal_grammar.native_map import (
     execute_recurrence_generation,
     lower_frontier,
     lower_operation,
+    RecurrenceRefusal,
+    make_recurrence_parent_resolver,
     make_root_parent,
     native_receipt_anti_join,
 )
@@ -1205,6 +1207,7 @@ def _recurrence_source():
     for index in range(2):
         add(1, 1, 1, 1 if index == 0 else 0)
     source = _build_source("r61-r4", rows)
+    source["_rows"] = rows
     qauth = _query_authority("r61-r4")
     root = _branch_predicate(source, qauth, tag="r61-r4-root")
     query = _query(source, qauth, root, ("t",), tag="r61-r4-t")
@@ -1245,7 +1248,8 @@ def test_bounded_adaptive_recurrence_three_generations_actual_native():
     catalog = [root_predicate]
     generations = []
     parents = (root_parent,)
-    issued_before = 0
+    previous_plan = None
+    all_handoffs = []
     s1 = _condition_predicates(source, qauth, "s1")
     s2 = _condition_predicates(source, qauth, "s2")
     s3 = _condition_predicates(source, qauth, "s3")
@@ -1257,10 +1261,16 @@ def test_bounded_adaptive_recurrence_three_generations_actual_native():
             policy=policy, generation=generation, parents=parents,
             root_predicate=root_predicate, target_label="t",
             query_ref=query, condition_predicates=conditions,
-            total_issued_before=issued_before,
+            previous_plan=previous_plan,
+            parent_resolver=(
+                make_recurrence_parent_resolver(all_handoffs)
+                if all_handoffs else None
+            ),
+            release_refs=(source["release_ref"],),
         )
         result = _run_recurrence_generation(source, qauth, plan, generation, catalog)
-        issued_before += len(plan.expected_operations)
+        all_handoffs.extend(result.execution.handoffs)
+        previous_plan = plan
         assert result.anti_join["no_drop_ok"], result.anti_join
         generations.append(result)
         if generation < 3:
@@ -1323,19 +1333,13 @@ def test_bounded_adaptive_recurrence_three_generations_actual_native():
         operation for operation in gen3.plan.expected_operations
         if operation.parent_id == exploratory_parents[0].parent_id
     ]
-    exploratory_states = {
-        operation.comparator: gen3.receipt_by_rule[operation.rule_id].typed_state
+    exploratory_states = [
+        gen3.receipt_by_rule[operation.rule_id].typed_state
         for operation in exploratory_ops
-    }
+    ]
     assert exploratory_states
-    assert any(
-        state == "DISCOVERED_RESULT_SUPPORTED"
-        for state in exploratory_states.values()
-    )
-    assert any(
-        state != "DISCOVERED_RESULT_SUPPORTED"
-        for state in exploratory_states.values()
-    )
+    assert any(state == "DISCOVERED_RESULT_SUPPORTED" for state in exploratory_states)
+    assert any(state != "DISCOVERED_RESULT_SUPPORTED" for state in exploratory_states)
 
     gen1 = generations[0]
     assert all(
@@ -1381,6 +1385,9 @@ def test_recurrence_k_bound_and_budget_leave_explicit_unrun_work():
         policy=tight_k, generation=2, parents=parents,
         root_predicate=root_predicate, target_label="t",
         query_ref=query, condition_predicates=s2,
+        previous_plan=p1,
+        parent_resolver=make_recurrence_parent_resolver(g1.execution.handoffs),
+        release_refs=(source["release_ref"],),
     )
     g2 = _run_recurrence_generation(source, qauth, p2, 2, catalog)
     activation2 = activate_next_generation(
@@ -1393,6 +1400,9 @@ def test_recurrence_k_bound_and_budget_leave_explicit_unrun_work():
             policy=tight_k, generation=3, parents=activation2.active_parents,
             root_predicate=root_predicate, target_label="t",
             query_ref=query, condition_predicates=s3,
+            previous_plan=p2,
+            parent_resolver=make_recurrence_parent_resolver(g2.execution.handoffs),
+            release_refs=(source["release_ref"],),
         )
     budget_policy = _recurrence_policy(breadth=3, per_generation=2)
     p_budget = build_recurrence_issue_plan(
@@ -1436,20 +1446,11 @@ def test_recurrence_issued_mutation_and_invalid_parent_identity():
             generation=1, source_release_refs=(source["release_ref"],),
             receipt_ref=ExactRef("K", "urn:test:bad", "a" * 64),
         )
-    wrong_parent = RecurrenceParent(
-        parent_id="wrong", predicate=root_predicate, kind=PARENT_RECEIPT_BOUND,
-        generation=1, source_release_refs=(source["release_ref"],),
-    )
-    wrong_plan = build_recurrence_issue_plan(
-        policy=policy, generation=1, parents=(wrong_parent,),
-        root_predicate=root_predicate, target_label="t",
-        query_ref=query, condition_predicates=s1,
-    )
     dauth = _d_auth("R61-R4-G1")
     with pytest.raises(ValueError, match="GRAMMAR_MISMATCH"):
         execute_recurrence_generation(
-            plan=wrong_plan, repository=source["repo"],
-            discovery_authority=_discovery_authority(source, plan.grammar, dauth,
+            plan=plan, repository=source["repo"],
+            discovery_authority=_discovery_authority(source, dropped, dauth,
                                                      tag="r61-r4-wrong-authority"),
             authority_registry=_i05_registry(source, qauth, dauth),
             release_refs=(source["release_ref"],),
@@ -1505,36 +1506,51 @@ from rawlsing_next.tests.test_universal_grammar import (
     _run_recurrence_generation,
 )
 from rawlsing_next.universal_grammar.native_map import (
-    PARENT_RECEIPT_BOUND, RecurrenceParent, build_recurrence_issue_plan,
+    activate_next_generation, build_recurrence_issue_plan,
+    make_recurrence_parent_resolver, make_root_parent,
 )
 from rawlsing_next.pre553_recursive_handoff import load_recursive_handoff_bundle
 from rawlsing_next.universal_grammar.types import OccurrenceKey
-bundle_path, value, handoff_index = sys.argv[1], json.loads(sys.argv[2]), int(sys.argv[3])
+bundle_path, value, handoff_index, expected_predecessor = (
+    sys.argv[1], json.loads(sys.argv[2]), int(sys.argv[3]), sys.argv[4]
+)
 source, qauth, root, query = _recurrence_source()
 policy = _recurrence_policy()
 bundle_ref, handoffs = load_recursive_handoff_bundle(bundle_path)
 handoff = handoffs[handoff_index]
 s1 = _condition_predicates(source, qauth, "s1")
 s2 = _condition_predicates(source, qauth, "s2")
-s1_predicate = next(p for k, v, p in s1 if v == value)
-parent = RecurrenceParent(
-    parent_id="persisted-" + handoff.ref.content_hash,
-    predicate=handoff.winning_predicate, kind=PARENT_RECEIPT_BOUND,
-    generation=1, source_release_refs=(source["release_ref"],),
-    ancestry_conditions=((OccurrenceKey("s1"), value),),
-    ancestry_predicates=(s1_predicate,), receipt_ref=handoff.receipt_ref,
-    replay_binding_ref=handoff.ref, handoff=handoff,
-    activation_reason="PERSISTED_PARENT_FRESH_PROCESS",
+root_parent = make_root_parent(
+    predicate=root, source_release_refs=(source["release_ref"],)
+)
+gen1_plan = build_recurrence_issue_plan(
+    policy=policy, generation=1, parents=(root_parent,),
+    root_predicate=root, target_label="t", query_ref=query,
+    condition_predicates=s1,
+)
+gen1_catalog = [root] + [p for _, _, p in s1]
+gen1 = _run_recurrence_generation(source, qauth, gen1_plan, 1, gen1_catalog)
+activation = activate_next_generation(
+    policy=policy, generation=gen1, parents=(root_parent,),
+    root_parent=root_parent, next_generation=2, condition_predicates=s2,
+)
+parent = next(
+    candidate for candidate in activation.active_parents
+    if candidate.replay_binding_ref == handoff.ref
 )
 plan = build_recurrence_issue_plan(
     policy=policy, generation=2, parents=(parent,), root_predicate=root,
     target_label="t", query_ref=query, condition_predicates=s2,
+    previous_plan=gen1_plan,
+    parent_resolver=make_recurrence_parent_resolver(handoffs),
+    release_refs=(source["release_ref"],),
 )
 catalog = [root, handoff.winning_predicate] + [p for _, _, p in s1] + [p for _, _, p in s2]
 result = _run_recurrence_generation(source, qauth, plan, 2, catalog)
 print(json.dumps({
     "bundle_ref": bundle_ref.as_dict(),
     "handoff_ref": handoff.ref.as_dict(),
+    "predecessor_plan_ref": plan.predecessor_plan_ref,
     "no_drop_ok": result.anti_join["no_drop_ok"],
     "receipt_refs": [r.ref.as_dict() for r in result.execution.discovery_result.receipts],
 }))
@@ -1543,13 +1559,14 @@ print(json.dumps({
     env["PYTHONPATH"] = str(REPO_ROOT) + os.pathsep + env.get("PYTHONPATH", "")
     proc = subprocess.run(
         [sys.executable, "-c", child_code, str(path), json.dumps(persisted_value),
-         str(persisted_index)],
+         str(persisted_index), plan.content_hash],
         cwd=str(REPO_ROOT), env=env, capture_output=True, text=True, timeout=180,
     )
     assert proc.returncode == 0, proc.stderr[-2000:]
     child = json.loads(proc.stdout)
     assert child["handoff_ref"] == persisted_handoff.ref.as_dict()
     assert child["bundle_ref"] == bundle_ref.as_dict()
+    assert child["predecessor_plan_ref"] == plan.content_hash
     assert child["no_drop_ok"] is True
     assert child["receipt_refs"]
 
@@ -1596,3 +1613,134 @@ print(json.dumps({
     )
     assert renamed_generation.anti_join["no_drop_ok"]
     assert len(renamed_plan.expected_operations) <= 2
+
+
+def test_r5_receipt_lineage_generation_and_budget_refusals():
+    source, qauth, root_predicate, query = _recurrence_source()
+    policy = _recurrence_policy()
+    root_parent = make_root_parent(
+        predicate=root_predicate, source_release_refs=(source["release_ref"],)
+    )
+    s1 = _condition_predicates(source, qauth, "s1")
+    s2 = _condition_predicates(source, qauth, "s2")
+    catalog = [root_predicate] + [p for _, _, p in s1]
+    p1 = build_recurrence_issue_plan(
+        policy=policy, generation=1, parents=(root_parent,),
+        root_predicate=root_predicate, target_label="t",
+        query_ref=query, condition_predicates=s1,
+        release_refs=(source["release_ref"],),
+    )
+    g1 = _run_recurrence_generation(source, qauth, p1, 1, catalog)
+    activation = activate_next_generation(
+        policy=policy, generation=g1, parents=(root_parent,),
+        root_parent=root_parent, next_generation=2, condition_predicates=s2,
+    )
+    parent = activation.active_parents[0]
+    resolver = make_recurrence_parent_resolver(g1.execution.handoffs)
+    common = dict(
+        policy=policy, generation=2, parents=(parent,),
+        root_predicate=root_predicate, target_label="t", query_ref=query,
+        condition_predicates=s2, previous_plan=p1,
+        parent_resolver=resolver, release_refs=(source["release_ref"],),
+    )
+    bogus = ExactRef("BOGUS", "urn:test:r61-r5:bogus", "b" * 64)
+    severed = replace(parent, receipt_ref=bogus, replay_binding_ref=bogus, handoff=None)
+    with pytest.raises(RecurrenceRefusal, match="PARENT_HANDOFF_RESOLUTION_MISMATCH|PARENT_REPLAY_BINDING_NOT_RESOLVED|RECEIPT_BOUND_PARENT_BINDING_MISSING"):
+        build_recurrence_issue_plan(**{**common, "parents": (severed,)})
+    bare = RecurrenceParent(
+        parent_id="caller-invented", predicate=root_predicate,
+        kind=PARENT_RECEIPT_BOUND, generation=1,
+        source_release_refs=(source["release_ref"],),
+    )
+    with pytest.raises(RecurrenceRefusal, match="PARENT_RESOLVER_REQUIRED"):
+        build_recurrence_issue_plan(**{
+            **common, "parents": (bare,), "parent_resolver": None,
+        })
+    with pytest.raises(RecurrenceRefusal, match="RECEIPT_BOUND_PARENT_BINDING_MISSING"):
+        build_recurrence_issue_plan(**{**common, "parents": (bare,)})
+    with pytest.raises(RecurrenceRefusal, match="ROOT_PARENT_NOT_ALLOWED_AFTER_GENERATION_ONE"):
+        build_recurrence_issue_plan(**{
+            **common, "parents": (root_parent,), "parent_resolver": None,
+        })
+    with pytest.raises(RecurrenceRefusal, match="UNBOUND_TOTAL_ISSUED_BEFORE_REFUSED"):
+        build_recurrence_issue_plan(**{**common, "total_issued_before": 4})
+    with pytest.raises(RecurrenceRefusal, match="DUPLICATE_PARENT_IDENTITY"):
+        build_recurrence_issue_plan(**{**common, "parents": (parent, parent)})
+    other_release = ExactRef("C11_SOURCE_RELEASE@1", "urn:test:other-release", "c" * 64)
+    with pytest.raises(RecurrenceRefusal, match="PARENT_SOURCE_RELEASE_EXECUTION_MISMATCH"):
+        build_recurrence_issue_plan(**{**common, "release_refs": (other_release,)})
+    other_policy = replace(policy, policy_id="DIFFERENT-POLICY")
+    with pytest.raises(RecurrenceRefusal, match="PREDECESSOR_PLAN_POLICY_MISMATCH"):
+        build_recurrence_issue_plan(**{
+            **common, "previous_plan": replace(p1, policy=other_policy),
+        })
+    exhausted_policy = _recurrence_policy(total=0)
+    exhausted = build_recurrence_issue_plan(
+        policy=exhausted_policy, generation=1, parents=(root_parent,),
+        root_predicate=root_predicate, target_label="t",
+        query_ref=query, condition_predicates=s1,
+        release_refs=(source["release_ref"],),
+    )
+    assert exhausted.state == "STOPPED_BUDGET"
+    assert exhausted.unissued and exhausted.expected_operations == ()
+    with pytest.raises(RecurrenceRefusal, match="RECURRENCE_PLAN_HAS_NO_ISSUED_WORK"):
+        _run_recurrence_generation(source, qauth, exhausted, 1, catalog)
+
+
+def test_r5_comparator_arithmetic_is_independently_expected():
+    source, qauth, root_predicate, query = _recurrence_source()
+    rows = source["_rows"]
+    policy = _recurrence_policy()
+    root_parent = make_root_parent(
+        predicate=root_predicate, source_release_refs=(source["release_ref"],)
+    )
+    s1 = _condition_predicates(source, qauth, "s1")
+    s2 = _condition_predicates(source, qauth, "s2")
+    catalog = [root_predicate] + [p for _, _, p in s1]
+    p1 = build_recurrence_issue_plan(
+        policy=policy, generation=1, parents=(root_parent,),
+        root_predicate=root_predicate, target_label="t", query_ref=query,
+        condition_predicates=s1, release_refs=(source["release_ref"],),
+    )
+    g1 = _run_recurrence_generation(source, qauth, p1, 1, catalog)
+    activation = activate_next_generation(
+        policy=policy, generation=g1, parents=(root_parent,),
+        root_parent=root_parent, next_generation=2, condition_predicates=s2,
+    )
+    parent = activation.active_parents[0]
+    resolver = make_recurrence_parent_resolver(g1.execution.handoffs)
+    p2 = build_recurrence_issue_plan(
+        policy=policy, generation=2, parents=(parent,),
+        root_predicate=root_predicate, target_label="t", query_ref=query,
+        condition_predicates=s2, previous_plan=p1,
+        parent_resolver=resolver, release_refs=(source["release_ref"],),
+    )
+    g2 = _run_recurrence_generation(
+        source, qauth, p2, 2,
+        catalog + [p for _, _, p in s2] + [parent.predicate],
+    )
+
+    def rate(s1_value=None, s2_value=None):
+        selected = [
+            row for row in rows
+            if (s1_value is None or row["responses"]["s1"] == s1_value)
+            and (s2_value is None or row["responses"]["s2"] == s2_value)
+        ]
+        return sum(row["responses"]["t"] for row in selected), len(selected)
+
+    s1_value = parent.ancestry_conditions[0][1]
+    for s2_key, s2_value, s2_predicate in s2:
+        child_num, child_den = rate(s1_value, s2_value)
+        root_num, root_den = rate()
+        parent_num, parent_den = rate(s1_value)
+        parent_diff = child_num * parent_den != parent_num * child_den
+        root_diff = child_num * root_den != root_num * child_den
+        for operation in p2.expected_operations:
+            if operation.parent_id != parent.parent_id:
+                continue
+            if operation.comparator == COMPARATOR_PARENT and operation.condition_values[-1] == s2_value:
+                state = g2.receipt_by_rule[operation.rule_id].typed_state
+                assert state == ("DISCOVERED_RESULT_SUPPORTED" if parent_diff else "VALID_EMPTY")
+            if operation.comparator == COMPARATOR_ROOT and operation.condition_values[-1] == s2_value:
+                state = g2.receipt_by_rule[operation.rule_id].typed_state
+                assert state == ("DISCOVERED_RESULT_SUPPORTED" if root_diff else "VALID_EMPTY")

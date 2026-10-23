@@ -28,9 +28,12 @@ from rawlsing_next.pre553_empirical_objects import (
     exact_ref,
     semantic_hash,
 )
+from rawlsing_next.pre553_empirical_authority import validate_object_authority_closure
 from rawlsing_next.pre553_recursive_handoff import (
     RecursiveBranchHandoff,
     execute_exact_bounded_discovery_with_handoffs,
+    load_recursive_handoff_bundle,
+    replay_recursive_branch_membership,
 )
 
 from .enumerate import role_disposition
@@ -884,6 +887,12 @@ PARENT_ROOT = "ROOT"
 PARENT_RECEIPT_BOUND = "RECEIPT_BOUND"
 PARENT_EXPLORATORY = "EXPLORATORY_PREDICATE"
 RECURRENCE_COUNTING_CONVENTION = "ANCESTOR_CONDITIONS_COUNT_TOWARD_K"
+RECURRENCE_ISSUED = "ISSUED"
+RECURRENCE_STOPPED_BUDGET = "STOPPED_BUDGET"
+
+
+class RecurrenceRefusal(ValueError):
+    """Typed recurrence identity/lineage/accounting refusal."""
 
 
 @dataclass(frozen=True)
@@ -986,6 +995,95 @@ class RecurrenceParent:
         })
 
 
+@dataclass(frozen=True)
+class RecurrenceParentResolver:
+    """Trusted coordinator catalog of canonical recursive handoffs."""
+
+    handoffs: tuple[RecursiveBranchHandoff, ...]
+    bundle_ref: Any | None = None
+
+    def __post_init__(self) -> None:
+        ordered = tuple(sorted(self.handoffs, key=lambda handoff: handoff.ref.key))
+        if len({handoff.ref.key for handoff in ordered}) != len(ordered):
+            raise RecurrenceRefusal("DUPLICATE_RESOLVER_HANDOFF")
+        object.__setattr__(self, "handoffs", ordered)
+
+    def resolve(self, ref: Any) -> RecursiveBranchHandoff:
+        target = exact_ref(ref, "parent replay binding ref")
+        matches = [handoff for handoff in self.handoffs if handoff.ref == target]
+        if len(matches) != 1:
+            raise RecurrenceRefusal("PARENT_REPLAY_BINDING_NOT_RESOLVED")
+        return matches[0]
+
+
+def make_recurrence_parent_resolver(
+    handoffs: Sequence[RecursiveBranchHandoff], *, bundle_ref: Any | None = None
+) -> RecurrenceParentResolver:
+    return RecurrenceParentResolver(tuple(handoffs), bundle_ref=bundle_ref)
+
+
+def load_recurrence_parent_resolver(path: str | Path) -> RecurrenceParentResolver:
+    bundle_ref, handoffs = load_recursive_handoff_bundle(path)
+    return RecurrenceParentResolver(handoffs, bundle_ref=bundle_ref)
+
+
+def _validate_parent_resolution(
+    parent: RecurrenceParent,
+    resolver: RecurrenceParentResolver | None,
+    release_refs: Sequence[Any],
+) -> RecurrenceParent:
+    if parent.kind == PARENT_ROOT:
+        if parent.generation != 0 or parent.receipt_ref is not None or parent.handoff is not None:
+            raise RecurrenceRefusal("ROOT_PARENT_IDENTITY_INVALID")
+        return parent
+    if parent.kind == PARENT_EXPLORATORY:
+        if parent.receipt_ref is not None or parent.replay_binding_ref is not None or parent.handoff is not None:
+            raise RecurrenceRefusal("EXPLORATORY_PARENT_MAY_NOT_CLAIM_WINNER_RECEIPT")
+        if not parent.construction_ref:
+            raise RecurrenceRefusal("EXPLORATORY_PARENT_CONSTRUCTION_REF_MISSING")
+        return parent
+    if resolver is None:
+        raise RecurrenceRefusal("PARENT_RESOLVER_REQUIRED")
+    if parent.receipt_ref is None or parent.replay_binding_ref is None or parent.handoff is None:
+        raise RecurrenceRefusal("RECEIPT_BOUND_PARENT_BINDING_MISSING")
+    handoff = resolver.resolve(parent.replay_binding_ref)
+    if parent.handoff.ref != handoff.ref:
+        raise RecurrenceRefusal("PARENT_HANDOFF_RESOLUTION_MISMATCH")
+    if handoff.receipt_ref != exact_ref(parent.receipt_ref, "parent receipt ref"):
+        raise RecurrenceRefusal("PARENT_RECEIPT_REF_MISMATCH")
+    if handoff.winning_predicate.ref != parent.predicate.ref:
+        raise RecurrenceRefusal("PARENT_PREDICATE_HANDOFF_MISMATCH")
+    if handoff.winning_predicate.content_hash != parent.predicate.content_hash:
+        raise RecurrenceRefusal("PARENT_PREDICATE_HASH_MISMATCH")
+    if tuple(sorted(handoff.source_release_refs, key=lambda ref: ref.key)) != tuple(sorted(
+        (exact_ref(ref, "parent source release ref") for ref in parent.source_release_refs),
+        key=lambda ref: ref.key,
+    )):
+        raise RecurrenceRefusal("PARENT_SOURCE_RELEASE_HANDOFF_MISMATCH")
+    execution_releases = tuple(sorted(
+        (exact_ref(ref, "execution release ref") for ref in release_refs),
+        key=lambda ref: ref.key,
+    ))
+    if tuple(sorted(handoff.source_release_refs, key=lambda ref: ref.key)) != execution_releases:
+        raise RecurrenceRefusal("PARENT_SOURCE_RELEASE_EXECUTION_MISMATCH")
+    expected_id = _parent_id(
+        PARENT_RECEIPT_BOUND, handoff.winning_predicate, parent.generation,
+        (exact_ref(parent.receipt_ref, "parent receipt ref"), handoff.ref),
+    )
+    if parent.parent_id != expected_id:
+        raise RecurrenceRefusal("PARENT_CANONICAL_ID_MISMATCH")
+    return RecurrenceParent(
+        **{
+            **{name: getattr(parent, name) for name in parent.__dataclass_fields__},
+            "predicate": handoff.winning_predicate,
+            "handoff": handoff,
+            "receipt_ref": handoff.receipt_ref,
+            "replay_binding_ref": handoff.ref,
+            "source_release_refs": tuple(handoff.source_release_refs),
+        }
+    )
+
+
 def _parent_id(kind: str, predicate: Any, generation: int, ancestry_refs: Any) -> str:
     return "urn:r61:recurrence:parent:" + semantic_hash(canonicalize({
         "kind": kind, "predicate_ref": predicate.ref,
@@ -1038,6 +1136,11 @@ class RecurrenceIssuePlan:
     query_ref: Mapping[str, str]
     unissued: tuple[Mapping[str, Any], ...] = ()
     query_object: Any = None
+    predecessor_plan_ref: str | None = None
+    predecessor_issued_count: int = 0
+    cumulative_issued_count: int = 0
+    root_predicate_ref: Mapping[str, str] | None = None
+    state: str = RECURRENCE_ISSUED
     schema: str = RECURRENCE_PLAN_SCHEMA
 
     def material(self) -> dict[str, Any]:
@@ -1051,6 +1154,11 @@ class RecurrenceIssuePlan:
             "target_label": self.target_label,
             "query_ref": self.query_ref,
             "unissued": list(self.unissued),
+            "predecessor_plan_ref": self.predecessor_plan_ref,
+            "predecessor_issued_count": self.predecessor_issued_count,
+            "cumulative_issued_count": self.cumulative_issued_count,
+            "root_predicate_ref": self.root_predicate_ref,
+            "state": self.state,
         })
 
     @property
@@ -1071,22 +1179,85 @@ def build_recurrence_issue_plan(
     target_label: str,
     query_ref: Any,
     condition_predicates: Sequence[tuple[OccurrenceKey, Any, Any]],
-    total_issued_before: int = 0,
+    previous_plan: RecurrenceIssuePlan | None = None,
+    parent_resolver: RecurrenceParentResolver | None = None,
+    release_refs: Sequence[Any] | None = None,
+    total_issued_before: int | None = None,
 ) -> RecurrenceIssuePlan:
     """Freeze one finite generation's exact grammar and expected operation IDs."""
 
     if generation < 1 or generation > int(policy.bounds["D"]):
-        raise ValueError("RECURRENCE_GENERATION_OUTSIDE_ISSUED_D")
+        raise RecurrenceRefusal("RECURRENCE_GENERATION_OUTSIDE_ISSUED_D")
+    if total_issued_before is not None:
+        raise RecurrenceRefusal("UNBOUND_TOTAL_ISSUED_BEFORE_REFUSED")
     if not parents:
-        raise ValueError("RECURRENCE_REQUIRES_ACTIVE_PARENT")
+        raise RecurrenceRefusal("RECURRENCE_REQUIRES_ACTIVE_PARENT")
     if not condition_predicates:
-        raise ValueError("RECURRENCE_REQUIRES_NEXT_CONDITION")
-    if not isinstance(total_issued_before, int) or isinstance(total_issued_before, bool) or total_issued_before < 0:
-        raise ValueError("TOTAL_ISSUED_BEFORE_MUST_BE_NONNEGATIVE_INTEGER")
-    issued_cap = min(
-        policy.per_generation_issued_cap,
-        max(0, policy.total_issued_cap - total_issued_before),
+        raise RecurrenceRefusal("RECURRENCE_REQUIRES_NEXT_CONDITION")
+    parent_ids = [parent.parent_id for parent in parents]
+    if len(set(parent_ids)) != len(parent_ids):
+        raise RecurrenceRefusal("DUPLICATE_PARENT_IDENTITY")
+    if generation == 1:
+        if len(parents) != 1 or parents[0].kind != PARENT_ROOT or parents[0].generation != 0:
+            raise RecurrenceRefusal("GENERATION_ONE_REQUIRES_SINGLE_ROOT_PARENT")
+        if previous_plan is not None:
+            raise RecurrenceRefusal("ROOT_GENERATION_MUST_NOT_HAVE_PREDECESSOR")
+        issued_before = 0
+        predecessor_ref = None
+    else:
+        if any(parent.kind == PARENT_ROOT for parent in parents):
+            raise RecurrenceRefusal("ROOT_PARENT_NOT_ALLOWED_AFTER_GENERATION_ONE")
+        if any(parent.generation != generation - 1 for parent in parents):
+            raise RecurrenceRefusal("PARENT_GENERATION_CONTINUITY_VIOLATION")
+        if previous_plan is None:
+            raise RecurrenceRefusal("PREDECESSOR_PLAN_REQUIRED")
+        if previous_plan.generation != generation - 1:
+            raise RecurrenceRefusal("PREDECESSOR_PLAN_GENERATION_MISMATCH")
+        if previous_plan.policy.content_hash != policy.content_hash:
+            raise RecurrenceRefusal("PREDECESSOR_PLAN_POLICY_MISMATCH")
+        root_ref = exact_ref(root_predicate.ref, "root predicate").as_dict()
+        if previous_plan.root_predicate_ref != root_ref:
+            raise RecurrenceRefusal("PREDECESSOR_PLAN_ROOT_MISMATCH")
+        if previous_plan.state != RECURRENCE_ISSUED:
+            raise RecurrenceRefusal("PREDECESSOR_PLAN_NOT_ISSUED")
+        if previous_plan.cumulative_issued_count != (
+            previous_plan.predecessor_issued_count + len(previous_plan.expected_operations)
+        ):
+            raise RecurrenceRefusal("PREDECESSOR_PLAN_ISSUED_COUNT_INCONSISTENT")
+        issued_before = previous_plan.cumulative_issued_count
+        predecessor_ref = previous_plan.content_hash
+    canonical_parents = tuple(
+        _validate_parent_resolution(
+            parent, parent_resolver, release_refs or ()
+        )
+        for parent in parents
     )
+    remaining_total = max(0, policy.total_issued_cap - issued_before)
+    if remaining_total == 0:
+        return RecurrenceIssuePlan(
+            generation=generation, policy=policy,
+            grammar={"schema": CANDIDATE_GRAMMAR_SCHEMA, "atoms": (),
+                     "query_templates": (), "rules": (),
+                     "limits": {"maximum_conditioner_arity_K": int(policy.bounds["K"]),
+                                "maximum_target_arity_J": int(policy.bounds["J"])},
+                     "allow_empty_frontier": False},
+            expected_operations=(), parents=canonical_parents,
+            condition_predicates=tuple(condition_predicates),
+            target_label=target_label,
+            query_ref=_ref_material(getattr(query_ref, "ref", query_ref)),
+            unissued=tuple({
+                "parent_id": parent.parent_id,
+                "reason": "TOTAL_ISSUED_CAP",
+                "state": RECURRENCE_STOPPED_BUDGET,
+            } for parent in canonical_parents),
+            query_object=query_ref if hasattr(query_ref, "ref") else None,
+            predecessor_plan_ref=predecessor_ref,
+            predecessor_issued_count=issued_before,
+            cumulative_issued_count=issued_before,
+            root_predicate_ref=exact_ref(root_predicate.ref, "root predicate").as_dict(),
+            state=RECURRENCE_STOPPED_BUDGET,
+        )
+    issued_cap = min(policy.per_generation_issued_cap, remaining_total)
     query_ref_object = getattr(query_ref, "ref", query_ref)
     query_material = _ref_material(query_ref_object)
     atoms: dict[str, Any] = {}
@@ -1113,7 +1284,7 @@ def build_recurrence_issue_plan(
         seen_condition_refs.add(predicate.ref.key)
         atom_for(predicate, "RESPONSE")
     issued_so_far = 0
-    for parent in parents:
+    for parent in canonical_parents:
         for condition_key, condition_value, condition_predicate in condition_predicates:
             all_conditions = parent.ancestry_conditions + ((condition_key, condition_value),)
             if len({key.item_id for key, _ in all_conditions}) != len(all_conditions):
@@ -1177,7 +1348,7 @@ def build_recurrence_issue_plan(
                 ))
                 issued_so_far += 1
     if not rules:
-        raise ValueError("RECURRENCE_GENERATION_ISSUED_NO_OPERATIONS")
+        raise RecurrenceRefusal("RECURRENCE_GENERATION_ISSUED_NO_OPERATIONS")
     grammar = {
         "schema": CANDIDATE_GRAMMAR_SCHEMA,
         "discovery_operation": f"I03-OP-R61-R4-G{generation}",
@@ -1193,10 +1364,15 @@ def build_recurrence_issue_plan(
     return RecurrenceIssuePlan(
         generation=generation, policy=policy, grammar=grammar,
         expected_operations=tuple(sorted(expected, key=lambda op: op.operation_id)),
-        parents=tuple(parents), condition_predicates=tuple(condition_predicates),
+        parents=canonical_parents, condition_predicates=tuple(condition_predicates),
         target_label=target_label, query_ref=query_material,
         unissued=tuple(sorted(unissued, key=lambda item: (item["parent_id"], item["comparator"]))),
         query_object=query_ref if hasattr(query_ref, "ref") else None,
+        predecessor_plan_ref=predecessor_ref,
+        predecessor_issued_count=issued_before,
+        cumulative_issued_count=issued_before + len(expected),
+        root_predicate_ref=exact_ref(root_predicate.ref, "root predicate").as_dict(),
+        state=RECURRENCE_ISSUED,
     )
 
 
@@ -1261,8 +1437,40 @@ def execute_recurrence_generation(
     predicate_catalog: Sequence[Any],
     query_template_catalog: Sequence[Any],
 ) -> RecurrenceGeneration:
+    if plan.state != RECURRENCE_ISSUED or not plan.expected_operations:
+        raise RecurrenceRefusal("RECURRENCE_PLAN_HAS_NO_ISSUED_WORK")
     if exact_ref(discovery_authority.candidate_grammar_ref).content_hash != semantic_hash(plan.grammar):
-        raise ValueError("RECURRENCE_AUTHORITY_GRAMMAR_MISMATCH")
+        raise RecurrenceRefusal("RECURRENCE_AUTHORITY_GRAMMAR_MISMATCH")
+    releases = tuple(sorted(
+        (exact_ref(ref, "execution release ref") for ref in release_refs),
+        key=lambda ref: ref.key,
+    ))
+    if not releases:
+        raise RecurrenceRefusal("RECURRENCE_EXECUTION_RELEASE_REQUIRED")
+    for parent in plan.parents:
+        if parent.kind == PARENT_RECEIPT_BOUND:
+            if parent.handoff is None:
+                raise RecurrenceRefusal("RECEIPT_BOUND_PARENT_HANDOFF_MISSING")
+            if tuple(sorted(parent.source_release_refs, key=lambda ref: ref.key)) != releases:
+                raise RecurrenceRefusal("PARENT_SOURCE_RELEASE_EXECUTION_MISMATCH")
+            try:
+                replay_recursive_branch_membership(
+                    repository=repository,
+                    handoff=parent.handoff,
+                    authority_registry=authority_registry,
+                    release_refs=releases,
+                )
+            except Exception as exc:
+                raise RecurrenceRefusal(
+                    "PARENT_RECEIPT_REPLAY_REFUSED:" + type(exc).__name__
+                ) from exc
+        else:
+            try:
+                validate_object_authority_closure(parent.predicate, authority_registry)
+            except Exception as exc:
+                raise RecurrenceRefusal(
+                    "PARENT_PREDICATE_AUTHORITY_REFUSED:" + type(exc).__name__
+                ) from exc
     execution = execute_exact_bounded_discovery_with_handoffs(
         repository=repository,
         discovery_authority=discovery_authority,
@@ -1362,9 +1570,9 @@ def activate_next_generation(
         ancestry_predicates = parent.ancestry_predicates + selected_predicates
         child = RecurrenceParent(
             parent_id=_parent_id(PARENT_RECEIPT_BOUND, handoff.winning_predicate,
-                                 next_generation, (receipt.ref, handoff.ref)),
+                                 generation.plan.generation, (receipt.ref, handoff.ref)),
             predicate=handoff.winning_predicate,
-            kind=PARENT_RECEIPT_BOUND, generation=next_generation,
+            kind=PARENT_RECEIPT_BOUND, generation=generation.plan.generation,
             source_release_refs=tuple(parent.source_release_refs),
             ancestry_conditions=ancestry_keys,
             ancestry_predicates=ancestry_predicates,
@@ -1402,10 +1610,10 @@ def activate_next_generation(
                           "operation": operation.operation_id},
         )
         child = RecurrenceParent(
-            parent_id=_parent_id(PARENT_EXPLORATORY, composed, next_generation,
-                                 (receipt.ref,)),
+            parent_id=_parent_id(PARENT_EXPLORATORY, composed,
+                                 generation.plan.generation, (receipt.ref,)),
             predicate=composed, kind=PARENT_EXPLORATORY,
-            generation=next_generation,
+            generation=generation.plan.generation,
             source_release_refs=tuple(parent.source_release_refs),
             ancestry_conditions=parent.ancestry_conditions + tuple(
                 zip(operation.condition_keys, operation.condition_values)
