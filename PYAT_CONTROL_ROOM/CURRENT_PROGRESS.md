@@ -1,3 +1,14 @@
+# Pyat HQ R61N — actual approved A4 implementation / separate R08 escalation
+
+UserS1/S2approvalR61Mfullybanked before modelchange. CurrentSolLight coordinator launched sameR01authorR4 at exact9fbf1ec3bbd569b5fd83cfd9e20cb931523a42c5, commission6214ad14d11b40e4b35c7a45b16fa14e702e8132. ActualPID26447/session/remote/scope inCURRENT.json; no newcheckout/session/model/provider, attendedOpenCodeDeepSeekMAX, not fictitiouscontrollerdispatch. ConcreteTEST_ONLYprofilefirstcommit then actualboundednativeA4repair underoriginalfourpaths; independentreview reserved afterward. R03stillNOT_STARTED.
+
+R08VR3review5b7e338086cd86a9a011c1e911a2b85b9170239f verified10hashes/11ownrootpaths/directremote. Centralpublicdefaultissuer/key remains forgeable, REVISE. Exactmissing-functionSolHighengineeringcardatdirector61d4cd71703307ce7e9c162454531b4d0690e031:PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/SOL_HIGH_R08_ADMISSION_BOUNDARY_DECISION.md. No4thcanarypatch, no newcourt; R01continuesindependently. R09hostgrantpending.
+
+All fulloriginal35/1890/globalF6F7F8/source/science/CI/prod/N11/N12/Sorok/J52W52holds preserved. SolLight appropriate for currentcoordination; R01doesnotrequireHighnow. Usage34%fivehour/52%weeklyobserved; userwithdrewpriorquota80%expansionstop, frequentpreservationcontinues.
+
+
+## Earlier progress history retained
+
 # Pyat HQ R61M — direct user approval of both recurrence principles
 
 Userquote: "i agree with yes to both". Approved wider-source-root context AND enclosing-parent differentiation, and finite exploratory effort for hidden internal/minority/counterpattern differences even where currentaggregateunremarkable. Exact antecedents and limits at director37dba2837c94ddb71287ffbc18260d051fc9765a:PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/R61M_USER_APPROVED_RECURRENCE_PRINCIPLES.json. This confirmsS1/S2principles, not a fullalgorithm/numericalpolicy/originalscience/mandatorycomplementorR03wake.
