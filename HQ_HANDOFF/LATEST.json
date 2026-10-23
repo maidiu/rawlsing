@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261023-PYAT-HQ-R61AG-ACTUAL-PRESCRIBED-NATIVE-REPAIRS-AND-LIGHT-COORDINATION-R1",
-  "handoff_commit": "611a0b23940aaa485405d1c52f34588a00d0ff72",
+  "checkpoint_id": "20261023-PYAT-HQ-R61AH-USER-NO-CODEX-WORKERS-AND-OPENCODE-HANDOFF-R1",
+  "handoff_commit": "b329cb50b73d35feede3a42e7df5105e4f467432",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AG-ACTUAL-PRESCRIBED-NATIVE-REPAIRS-AND-LIGHT-COORDINATION-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AG-ACTUAL-PRESCRIBED-NATIVE-REPAIRS-AND-LIGHT-COORDINATION-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AG-ACTUAL-PRESCRIBED-NATIVE-REPAIRS-AND-LIGHT-COORDINATION-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AH-USER-NO-CODEX-WORKERS-AND-OPENCODE-HANDOFF-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AH-USER-NO-CODEX-WORKERS-AND-OPENCODE-HANDOFF-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AH-USER-NO-CODEX-WORKERS-AND-OPENCODE-HANDOFF-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "611a0b23940aaa485405d1c52f34588a00d0ff72",
+  "canonical_control_base": "b329cb50b73d35feede3a42e7df5105e4f467432",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "611a0b23940aaa485405d1c52f34588a00d0ff72",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AG-ACTUAL-PRESCRIBED-NATIVE-REPAIRS-AND-LIGHT-COORDINATION-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AG-ACTUAL-PRESCRIBED-NATIVE-REPAIRS-AND-LIGHT-COORDINATION-R1/CURRENT.md",
+  "qualified_working_hq_commit": "b329cb50b73d35feede3a42e7df5105e4f467432",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AH-USER-NO-CODEX-WORKERS-AND-OPENCODE-HANDOFF-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AH-USER-NO-CODEX-WORKERS-AND-OPENCODE-HANDOFF-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 80,
-    "canonical_report_commit": "611a0b23940aaa485405d1c52f34588a00d0ff72",
+    "revision": 81,
+    "canonical_report_commit": "b329cb50b73d35feede3a42e7df5105e4f467432",
     "counterpart": "Sorok rev34 independent; attachment86a7b382 unaccepted and state untouched"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261023-PYAT-HQ-R61AF-BOUNDED-THREE-LANE-ADJUDICATION-COMPLETE-AND-DOWNSHIFT-R1",
-    "handoff_commit": "958fd76c6eca09a5d776e7b1f03d8e872bb9db17"
+    "checkpoint_id": "20261023-PYAT-HQ-R61AG-ACTUAL-PRESCRIBED-NATIVE-REPAIRS-AND-LIGHT-COORDINATION-R1",
+    "handoff_commit": "611a0b23940aaa485405d1c52f34588a00d0ff72"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "Verify native actual preflights, observe R01/R08 CodexHigh and controllerDeepSeek returns; custody verify then distinct DeepSeek native reviews. HQ Light, heartbeat ACTIVE; no new architectural decision.",
-  "worker_state_truth": "Two actual prescribed CodexHigh coding subagents plus one actual same-session OpenCodeDeepSeek controller repair; no duplicate workers.",
+  "next_action": "Coordinate OpenCode author returns and distinct hostile reviews only; Codex reserved for HQ/escalation, no Codex worker commissions. Preserve all holds.",
+  "worker_state_truth": "Codex authors interrupted; partials banked; same OpenCode R01/R08 authors resumed, controllerR3 separate.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -356,62 +356,6 @@
   },
   "r61_actual_workers": [
     {
-      "id": "R01_R7",
-      "agent_id": "/root/r01_r7_high_author",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
-      "branch": "agent/codex-pyat-r61-r01-r7-retained-owner-repair-r1",
-      "startup": "fea3ca17d94183efbd526dc1687ae06b7bbbf0f7",
-      "commission_tip": "37050d3f11b5dea155f418ce1cdb643753f20f1d",
-      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R01/revisions/r7/00_COMMISSION.md",
-      "model_requested": "gpt-6.1-sol",
-      "reasoning_effort_requested": "high",
-      "facility": "collaboration.spawn_agent explicit model/effort accepted",
-      "state": "ACTUALLY_SPAWNED_NATIVE_CODING_SUBAGENT_NOT_OPENCODE_NOT_CONTROLLER",
-      "actual_tool_preflight": "AWAITING_AGENT_CONFIRMATION",
-      "os_isolation": "NOT_PROVEN",
-      "new_repository_copies": 0,
-      "observed_utc": "2026-10-23T21:58:27.721916+00:00",
-      "observed_head_at_checkpoint": "fea3ca17d94183efbd526dc1687ae06b7bbbf0f7",
-      "grain": "SOURCEFREE_LOCAL_ONLY",
-      "library_access": "EXACT_ONLY",
-      "pass_wake": "Distinct native review then HQ intake; no selfadoption",
-      "blocker_effect": "No automatic R03 wake",
-      "hard_forbidden": [
-        "NO_SCOPE_EXPANSION",
-        "NO_ORIGINAL_SOURCE_SCIENCE",
-        "NO_PROD_CI_N11_N12",
-        "NO_SELF_ADOPTION"
-      ]
-    },
-    {
-      "id": "R08_R7",
-      "agent_id": "/root/r08_r7_high_author",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08",
-      "branch": "agent/codex-pyat-r61-r08-r7-canonical-cache-repair-r1",
-      "startup": "d8a7b4005d23a1e39b35360ca96bf2aef5b9e591",
-      "commission_tip": "37050d3f11b5dea155f418ce1cdb643753f20f1d",
-      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R08/revisions/r7/00_COMMISSION.md",
-      "model_requested": "gpt-6.1-sol",
-      "reasoning_effort_requested": "high",
-      "facility": "collaboration.spawn_agent explicit model/effort accepted",
-      "state": "ACTUALLY_SPAWNED_NATIVE_CODING_SUBAGENT_NOT_OPENCODE_NOT_CONTROLLER",
-      "actual_tool_preflight": "AWAITING_AGENT_CONFIRMATION",
-      "os_isolation": "NOT_PROVEN",
-      "new_repository_copies": 0,
-      "observed_utc": "2026-10-23T21:58:27.721916+00:00",
-      "observed_head_at_checkpoint": "d8a7b4005d23a1e39b35360ca96bf2aef5b9e591",
-      "grain": "SOURCEFREE_LOCAL_ONLY",
-      "library_access": "EXACT_ONLY",
-      "pass_wake": "Distinct native review then HQ intake; no selfadoption",
-      "blocker_effect": "No automatic R03 wake",
-      "hard_forbidden": [
-        "NO_SCOPE_EXPANSION",
-        "NO_ORIGINAL_SOURCE_SCIENCE",
-        "NO_PROD_CI_N11_N12",
-        "NO_SELF_ADOPTION"
-      ]
-    },
-    {
       "id": "CONTROLLER_R3",
       "pid": 28122,
       "sessions": [
@@ -440,6 +384,64 @@
         "NO_PROD_CI_N11_N12",
         "NO_SELF_ADOPTION"
       ]
+    },
+    {
+      "id": "R01_R7_OPENCODE",
+      "pid": 42167,
+      "sessions": [
+        "ses_e98c905cbffekusoHURfKyEUKG"
+      ],
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
+      "branch": "agent/codex-pyat-r61-r01-r7-retained-owner-repair-r1",
+      "startup": "7e021bd0eb539baccbd79f19a5e51efa19661e44",
+      "commission_tip": "7e05980717b8bf28b1c386b0293b467b7fc15856",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R01/revisions/r7/OPENCODE_SUCCESSOR.md",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "max",
+      "account": "existing Global",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE",
+      "actual_tool_preflight": "PENDING",
+      "started_utc": "2026-10-23T22:05:42.921510+00:00",
+      "os_isolation": "NOT_PROVEN",
+      "observed_head_at_checkpoint": "7e021bd0eb539baccbd79f19a5e51efa19661e44",
+      "grain": "SOURCEFREE_LOCAL_ONLY",
+      "library_access": "EXACT_ONLY",
+      "pass_wake": "Distinct native review and HQ intake required",
+      "blocker_effect": "R03 still gated",
+      "hard_forbidden": [
+        "NO_CODEX_WORKERS",
+        "NO_SELF_ADOPTION",
+        "NO_SCOPE_EXPANSION"
+      ]
+    },
+    {
+      "id": "R08_R7_OPENCODE",
+      "pid": 42181,
+      "sessions": [
+        "ses_e98c8dfe6ffewNYOqJpvqK21a6"
+      ],
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08",
+      "branch": "agent/codex-pyat-r61-r08-r7-canonical-cache-repair-r1",
+      "startup": "d4053ff4359578d78caa0a0953245a827864d832",
+      "commission_tip": "7e05980717b8bf28b1c386b0293b467b7fc15856",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R08/revisions/r7/OPENCODE_SUCCESSOR.md",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "max",
+      "account": "existing Global",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE",
+      "actual_tool_preflight": "PENDING",
+      "started_utc": "2026-10-23T22:05:44.672238+00:00",
+      "os_isolation": "NOT_PROVEN",
+      "observed_head_at_checkpoint": "d4053ff4359578d78caa0a0953245a827864d832",
+      "grain": "SOURCEFREE_LOCAL_ONLY",
+      "library_access": "EXACT_ONLY",
+      "pass_wake": "Distinct native review and HQ intake required",
+      "blocker_effect": "R03 still gated",
+      "hard_forbidden": [
+        "NO_CODEX_WORKERS",
+        "NO_SELF_ADOPTION",
+        "NO_SCOPE_EXPANSION"
+      ]
     }
   ],
   "r61_launch_evidence": "ae63a8c2da620d850cc974eb43c3e396abec30cb",
@@ -451,5 +453,5 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "27e7092acc43a199fee900a3021496ef628f26f1"
+  "current_development_evidence": "0cd7a423d50ec4c706e707c5d77902e0030c5f8d"
 }
