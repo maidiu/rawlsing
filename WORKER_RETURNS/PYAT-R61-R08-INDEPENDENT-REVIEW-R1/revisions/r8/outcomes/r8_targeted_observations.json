@@ -1,0 +1,33 @@
+{
+  "probes": [
+    {
+      "first": "SUPPORTED",
+      "probe": "legacy_binding_pin_replay",
+      "second": "UNKNOWN",
+      "second_refusal": "LEGACY_BINDING_PINS_REQUIRE_MIGRATION"
+    },
+    {
+      "correct_pin_denominator": 60,
+      "hit_refusal": "CACHE_OWNER_DESCRIPTOR_NOT_PINNED",
+      "hit_state": "UNKNOWN",
+      "probe": "descriptor_pin_replay"
+    },
+    {
+      "probe": "genuine_stale_replay",
+      "refusal": "STALE_OR_UNAUTHENTICATED_CACHE",
+      "state": "UNKNOWN",
+      "support_served": false
+    },
+    {
+      "probe": "missing_verifier_cache_hit",
+      "refusal": "NO_CONFIGURED_TRUST_ROOT",
+      "state": "UNKNOWN"
+    },
+    {
+      "export_error": "LEGACY_BINDING_PINS_REQUIRE_MIGRATION",
+      "import_error": "LEGACY_BINDING_PINS_REQUIRE_MIGRATION",
+      "probe": "import_export_limits"
+    }
+  ],
+  "schema": "R61_R08V_R8_TARGETED_OBSERVATIONS@1"
+}

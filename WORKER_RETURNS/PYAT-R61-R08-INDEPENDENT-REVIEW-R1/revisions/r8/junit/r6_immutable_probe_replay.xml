@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="11" time="5.551" timestamp="2026-10-23T19:36:03.913801-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r8.probes.r6_immutable_probe" name="test_independent_positive_54_6_60_signed_original" time="0.411" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r8.probes.r6_immutable_probe" name="test_changed_native_54_16_70" time="0.361" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r8.probes.r6_immutable_probe" name="test_no_config_wrong_root_attacker_and_missing_pin_refuse" time="0.552" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r8.probes.r6_immutable_probe" name="test_provenance_semantics_signed_original_and_unsigned_local_label" time="0.337"><failure message="KeyError: 'local_delivery_context_unsigned'">def test_provenance_semantics_signed_original_and_unsigned_local_label():
+        case, request, resolver, produced = _resolve_canonical("r6-independent-provenance")
+        live_read = _reader(request, produced).read()
+        assert live_read["original_execution_provenance"] == PROVENANCE_CANONICAL
+        assert live_read["original_execution_mode"] == "LIVE_TRUSTED_EXECUTION"
+&gt;       assert live_read["local_delivery_context_unsigned"] == "LIVE_TRUSTED_EXECUTION"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'local_delivery_context_unsigned'
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r8/probes/r6_immutable_probe.py:226: KeyError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r8.probes.r6_immutable_probe" name="test_export_refuses_each_mutated_object_and_restores" time="0.387" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r8.probes.r6_immutable_probe" name="test_verifier_only_reexport_round_trip" time="0.427" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r8.probes.r6_immutable_probe" name="test_cold_process_positive_and_reexport" time="1.025" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r8.probes.r6_immutable_probe" name="test_old_cache_schema_and_old_envelope_refuse" time="0.333" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r8.probes.r6_immutable_probe" name="test_cache_result_projection_mutation_and_swapped_envelope_refuse" time="0.651" /><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r8.probes.r6_immutable_probe" name="test_producer_binding_metadata_must_not_survive_altered" time="0.348"><failure message="KeyError: 'producer_binding'">def test_producer_binding_metadata_must_not_survive_altered():
+        case, request, resolver, produced = _resolve_canonical("r6-independent-binding")
+        cache = resolver.export_cache()
+        entry = cache["entries"][0]
+    
+        altered = copy.deepcopy(entry)
+&gt;       altered["producer_binding"]["producer_query_ref"] = {
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "kind": "FORGED_PRODUCER_QUERY",
+            "object_id": "urn:forged:producer-query",
+            "content_hash": semantic_hash({"forged": "producer-query"}),
+        }
+E       KeyError: 'producer_binding'
+
+WORKER_RETURNS/PYAT-R61-R08-INDEPENDENT-REVIEW-R1/revisions/r8/probes/r6_immutable_probe.py:475: KeyError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R08-INDEPENDENT-REVIEW-R1.revisions.r8.probes.r6_immutable_probe" name="test_verifier_only_cannot_execute_new_producer" time="0.225" /></testsuite></testsuites>

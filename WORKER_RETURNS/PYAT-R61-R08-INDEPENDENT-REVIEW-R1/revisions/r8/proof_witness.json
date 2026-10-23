@@ -1,0 +1,75 @@
+{
+  "schema": "PYAT_R61_R08V_R8_INDEPENDENT_PROOF_WITNESS@1",
+  "logical_job": "R61-R08-INDEPENDENT-REVIEW-R1/revisions/r8",
+  "verdict": "ACCEPT_SCOPED_LOCAL_TRUSTED_HOST_ADMISSION_AND_CONSUMER_BINDING",
+  "candidate": "be1133391d91b5c2bf69299188e6f011162f269b",
+  "code_commit": "80bb8c182",
+  "frozen_expectations_commit": "cb018e1011fca433c9a8132fbbe3a75879429fe9",
+  "prior_r7_review": "fc4597fb8398b8012367d8d9d1fa36502b3d798e",
+  "branch": "agent/opencode-pyat-r61-r08v-r8-independent-review-r1",
+  "environment": {
+    "python": "3.11.3",
+    "python_executable": "/usr/local/bin/python3",
+    "pytest": "9.0.2"
+  },
+  "custody": {
+    "exact_root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+    "candidate_module_blob": "3ca860e409f1d063da4cd03dd1691a89c67333f6",
+    "candidate_test_blob": "5832ce0598fa02df93fcd200010a0076921e6cbe",
+    "correction_contract_blob": "49f3734feff8a7be1a48fa849f9cede12751533a",
+    "r8_commission_blob": "3f2d522e19bfc80f83fc3a85ab7472d98450292e",
+    "native_owner_blobs": {
+      "provider": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "composition": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "positioned_evaluator": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "empirical_objects": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "at07_n10e_fixture": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a"
+    },
+    "candidate_delta": [
+      "rawlsing_next/pre553_universal_evidence_binding.py",
+      "rawlsing_next/tests/test_universal_evidence_binding.py"
+    ],
+    "author_r8_manifest": {"artifacts": 6, "all_match": true, "self_excluded": "manifest.json"},
+    "remote_branch_at_start": "be1133391d91b5c2bf69299188e6f011162f269b"
+  },
+  "commands": [
+    {"command": "pwd; git rev-parse --show-toplevel; git branch --show-current; git status", "exit": 0, "observation": "exact root/branch, clean tree; no facility mismatch"},
+    {"command": "git -C .../r61-flight-director show d5e9d097...:R08V/revisions/r8/00_COMMISSION.md", "exit": 0, "observation": "sealed R8 commission read in full"},
+    {"command": "git show fc4597fb8 R7 review; git show e349da0d R61AF; git show 3f45fc9bc CORRECTION_CONTRACT", "exit": 0, "observation": "target defect and bounded contract read before freeze"},
+    {"command": "git commit -m 'R61-R08V-R8: freeze independent review expectations'", "exit": 0, "observation": "EXPECTATIONS committed at cb018e101 before candidate code/conclusions"},
+    {"command": "PYTHONPATH=<inherited r7 harness> pytest test_universal_evidence_binding.py test_pre553_analytical_composition.py --junitxml=<ownroot>/junit/author_suite_replay.xml", "exit": 0, "observation": "126 passed, 0 failed/errors/skipped"},
+    {"command": "pytest <ownroot>/probes/test_r08v_r8_targeted_refusal_codes.py --junitxml=<ownroot>/junit/targeted_probes.xml", "exit": 0, "observation": "5 passed: legacy code, descriptor code, stale, missing verifier, import/export limits"},
+    {"command": "pytest <ownroot>/probes/test_r08v_r7_independent_boundary.py --junitxml=<ownroot>/junit/r7_successor_probe_replay.xml", "exit": 0, "observation": "76 passed, including the formerly failing legacy-pin resolve probe"},
+    {"command": "pytest <ownroot>/probes/test_r08v_r7_semantic_adapters.py --junitxml=<ownroot>/junit/semantic_adapters.xml", "exit": 0, "observation": "3 passed"},
+    {"command": "pytest r6/r5/r4 immutable probes", "exit": 1, "observation": "R6 9/2 removed-transport; R5 6/2 old grade/import; R4 7/2 lawful EvidenceAssociationError"}
+  ],
+  "target_refusal_codes": {
+    "legacy_binding_pin_cache_hit": {"state": "UNKNOWN", "code": "LEGACY_BINDING_PINS_REQUIRE_MIGRATION", "support": false},
+    "descriptor_pin_cache_hit": {"state": "UNKNOWN", "code": "CACHE_OWNER_DESCRIPTOR_NOT_PINNED", "correct_pin": 60, "support": false},
+    "missing_verifier_cache_hit": {"state": "UNKNOWN", "code": "NO_CONFIGURED_TRUST_ROOT", "support": false},
+    "genuine_stale": {"state": "UNKNOWN", "code": "STALE_OR_UNAUTHENTICATED_CACHE", "support": false},
+    "import_export_legacy_limits": "LEGACY_BINDING_PINS_REQUIRE_MIGRATION"
+  },
+  "retained": {
+    "author_suite": {"tests": 126, "failures": 0, "errors": 0, "skipped": 0},
+    "r7_successor_probes": {"tests": 76, "failures": 0, "errors": 0, "skipped": 0},
+    "r8_targeted_probes": {"tests": 5, "failures": 0, "errors": 0, "skipped": 0},
+    "r7_semantic_adapters": {"tests": 3, "failures": 0, "errors": 0, "skipped": 0},
+    "r6_immutable": {"tests": 11, "failures": 2, "classification": "removed transport/local label superseded"},
+    "r5_immutable": {"tests": 8, "failures": 2, "classification": "old grade/import expectations superseded"},
+    "r4_immutable": {"tests": 9, "failures": 2, "classification": "lawful EvidenceAssociationError"},
+    "native": {"at07": {"yes": 54, "no": 6, "denominator": 60}, "changed": {"yes": 54, "no": 16, "denominator": 70}},
+    "status": ["observed zero 60/no=0", "ZERO_SUPPORT 0", "typed bool/int/null", "currentness", "Z UNRESOLVED16"],
+    "descriptor": ["cache @5", "descriptor @1", "13 owner classes", "no admission/duplicate transport", "descriptor pins"],
+    "cold_chain": {"first": 60, "second": 60, "provenance": "CANONICAL_PRODUCER", "local_label_present": false}
+  },
+  "defects": [],
+  "scope_limits": {
+    "not_reached": ["live J42 E41ProviderAdapter.step", "live P41 progressive", "repaired live E04 terminal"],
+    "unchanged_holds": ["original35", "1890", "global F6F7F8", "source/science/CI/prod", "N11/N12/Sorok", "J52/W52", "R03", "R09"],
+    "no_candidate_repair": true,
+    "no_self_adoption": true,
+    "no_author_wake": true,
+    "no_extra_sessions_subagents_provider_model_account": true
+  }
+}
