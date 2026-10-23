@@ -18,3 +18,5 @@ Next economical work: one bounded same-author generic R01 function repair using 
 
 ## R61G user override and productive continuation
 User explicitly withdrew the quota-preservation stop: "fuck the preservation boundary, that exists for other purposes. do the work". Continue authorized work with frequent commits. Existing intelligence/authority boundaries unchanged. Sol low verified; no further High needed. Preparing R01R3 same-author generic repair, R08V_R2 distinct hostile review, R09F finite non-mutating facility preflight. A Git commission is not a launched worker; actual receipts follow.
+
+Actual R61G launches are now in WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R61G_ACTUAL_LAUNCH_RECEIPTS.json. Initial R01 PID91970 terminal SQL error; one same-session retry with separate retained logs. New R08V_R2 and R09F sparse worktrees avoid full duplicate checkout; no files deleted. Only1.5GiB available observed, cause of SQL error remains unverified. Never count failed launch as engineering. Check actual handles before any further dispatch.
