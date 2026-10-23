@@ -1,0 +1,927 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:rawlsing:sorok:lme:sourcefree-contract:r1",
+  "title": "Sorok Linguistic Mediation candidate sourcefree boundary contracts",
+  "description": "PROPOSAL ONLY: validation of DTO shape does not establish admissible event, scientific rule, psychological update, provenance, source rights, or human fidelity. All owner refs require semantic/runtime verification.",
+  "$comment": "No inferred classification from nationality, ethnicity, gender, religion, class or family name. Repertoire snapshots are derived caches. No native grants or CAN011 writes.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/LanguageEncounterEvent"
+    },
+    {
+      "$ref": "#/$defs/ActorConceptRelation"
+    },
+    {
+      "$ref": "#/$defs/RepertoireSnapshot"
+    },
+    {
+      "$ref": "#/$defs/ActorExpressionCandidate"
+    },
+    {
+      "$ref": "#/$defs/AdmittedSpeechOccurrence"
+    },
+    {
+      "$ref": "#/$defs/TranslationProjection"
+    },
+    {
+      "$ref": "#/$defs/SemanticRelevanceProposal"
+    },
+    {
+      "$ref": "#/$defs/UserPhenomenalView"
+    }
+  ],
+  "$defs": {
+    "SourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner",
+        "ref",
+        "content_hash"
+      ],
+      "properties": {
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_hash": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "read_permission_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "SpeechSpan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "language_tag",
+        "text"
+      ],
+      "properties": {
+        "language_tag": {
+          "type": "string",
+          "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$"
+        },
+        "text": {
+          "type": "string"
+        },
+        "span_role": {
+          "enum": [
+            "SPOKEN",
+            "QUOTED",
+            "BORROWED",
+            "WRITTEN"
+          ]
+        },
+        "role": {
+          "enum": [
+            "SPOKEN",
+            "QUOTED",
+            "BORROWED",
+            "WRITTEN"
+          ]
+        },
+        "start_offset": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_offset": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "LanguageEncounterEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "event_id",
+        "branch_id",
+        "effective_at",
+        "speaker_actor_id",
+        "audience_actor_ids",
+        "kind",
+        "utterance",
+        "source",
+        "epistemic"
+      ],
+      "properties": {
+        "schema": {
+          "const": "LME_LANGUAGE_ENCOUNTER@1"
+        },
+        "event_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branch_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "effective_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "speaker_actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "audience_actor_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "kind": {
+          "enum": [
+            "ACTUAL_SPEECH",
+            "ACTUAL_WRITING",
+            "QUOTED_UTTERANCE",
+            "ACTUAL_LANGUAGE_LESSON",
+            "ACTUAL_CORRECTION",
+            "OTHER_VERIFIED_LINGUISTIC_EVENT"
+          ]
+        },
+        "utterance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "spans"
+          ],
+          "properties": {
+            "spans": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/SpeechSpan"
+              }
+            },
+            "speech_act_candidate": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "register_candidate": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "source": {
+          "$ref": "#/$defs/SourceRef"
+        },
+        "perception": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "actor_id",
+            "perceived"
+          ],
+          "properties": {
+            "actor_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "perceived": {
+              "enum": [
+                "SOURCE_REQUIRED",
+                "OBSERVED",
+                "NOT_OBSERVED",
+                "PARTIAL",
+                "UNKNOWN"
+              ]
+            },
+            "actor_access_receipt_ref": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "epistemic": {
+          "const": "OBSERVED"
+        },
+        "source_grade": {
+          "enum": [
+            "TEST_ONLY",
+            "DOCUMENTARY",
+            "NATIVE_ISSUED_EXACT"
+          ]
+        }
+      }
+    },
+    "ActorConceptRelation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "candidate_id",
+        "actor_id",
+        "branch_id",
+        "concept_id",
+        "sense_id",
+        "source_discourse_id",
+        "context_scope",
+        "relation_labels",
+        "evidence_refs",
+        "contrary_evidence_refs",
+        "status",
+        "owner_effect_ref"
+      ],
+      "properties": {
+        "schema": {
+          "const": "LME_ACTOR_CONCEPT_RELATION@1"
+        },
+        "candidate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branch_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "concept_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sense_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_discourse_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "context_scope": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "relation_labels": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "FAMILIAR",
+              "AMBIVALENT",
+              "SELF_APPLIED",
+              "ATTRACTION",
+              "REPULSION",
+              "EXPOSED",
+              "CONTESTED",
+              "QUOTED",
+              "IRONIC",
+              "STRATEGICALLY_ACCOMMODATED",
+              "HABITUALLY_EXPRESSED",
+              "PERSONALLY_APPROPRIATED",
+              "AFFIRMED_FOR_OTHERS",
+              "PRACTICED",
+              "UNKNOWN"
+            ]
+          }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "contrary_evidence_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "status": {
+          "enum": [
+            "INFERRED_HYPOTHESIS",
+            "SOURCE_ATTESTED_RELATION",
+            "OWNER_REFERENCED_EFFECT",
+            "UNKNOWN"
+          ]
+        },
+        "owner_effect_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "declared_not": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "RepertoireSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "snapshot_id",
+        "actor_id",
+        "branch_id",
+        "compiled_from",
+        "worlds",
+        "charged_concept_refs",
+        "counterexamples_preserved",
+        "not_authorized_for",
+        "status"
+      ],
+      "properties": {
+        "schema": {
+          "const": "LME_REPERTOIRE_SNAPSHOT@1"
+        },
+        "snapshot_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branch_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "compiled_from": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "person_state_digest",
+            "event_ref_set_digest",
+            "source_ref_ids",
+            "lexical_relation_index_version",
+            "compiler_contract"
+          ],
+          "properties": {
+            "person_state_digest": {
+              "type": "string",
+              "minLength": 1
+            },
+            "event_ref_set_digest": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_ref_ids": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "lexical_relation_index_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "compiler_contract": {
+              "type": "string",
+              "minLength": 1
+            },
+            "language_model_identity": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "compiler_config_digest": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "worlds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "milieu_id",
+              "register",
+              "availability",
+              "ordinary_expression",
+              "tension_refs",
+              "source_event_refs",
+              "exception_refs"
+            ],
+            "properties": {
+              "milieu_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "register": {
+                "type": "string",
+                "minLength": 1
+              },
+              "availability": {
+                "enum": [
+                  "CONTEXTUAL",
+                  "KNOWN",
+                  "UNDETERMINED",
+                  "NOT_ACCESSIBLE"
+                ]
+              },
+              "ordinary_expression": {
+                "type": "string"
+              },
+              "tension_refs": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "source_event_refs": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "exception_refs": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        "charged_concept_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "counterexamples_preserved": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "not_authorized_for": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "status": {
+          "const": "DERIVED_CACHE"
+        }
+      }
+    },
+    "ActorExpressionCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "candidate_id",
+        "actor_id",
+        "branch_id",
+        "audience_actor_ids",
+        "source_context_ids",
+        "speech_spans",
+        "observable_gestures",
+        "actual_code_switch",
+        "epistemic",
+        "admission_ref"
+      ],
+      "properties": {
+        "schema": {
+          "const": "LME_ACTOR_EXPRESSION@1"
+        },
+        "candidate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branch_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "audience_actor_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "source_context_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "speech_spans": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SpeechSpan"
+          }
+        },
+        "observable_gestures": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "actual_code_switch": {
+          "type": "boolean"
+        },
+        "pragmatic_intent_hypothesis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "epistemic": {
+          "const": "INFERRED_HYPOTHESIS"
+        },
+        "admission_ref": {
+          "type": "null"
+        }
+      }
+    },
+    "AdmittedSpeechOccurrence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "speech_occurrence_id",
+        "actor_id",
+        "branch_id",
+        "source_speech_spans",
+        "admitted_event_ref",
+        "admitted_source_digest",
+        "actor_access_receipt_refs",
+        "objective_observable_event_refs",
+        "status"
+      ],
+      "properties": {
+        "schema": {
+          "const": "LME_ADMITTED_SPEECH@1"
+        },
+        "speech_occurrence_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branch_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_speech_spans": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/SpeechSpan"
+          }
+        },
+        "admitted_event_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "admitted_source_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_access_receipt_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "objective_observable_event_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "status": {
+          "enum": [
+            "TEST_ONLY_ADMITTED",
+            "NATIVE_ISSUED_EXACT_ADMITTED"
+          ]
+        }
+      }
+    },
+    "TranslationProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "source_admitted_speech_ref",
+        "source_utterance_digest",
+        "target_language_tag",
+        "text",
+        "source_language_tags",
+        "render_mode",
+        "loss_notes",
+        "status"
+      ],
+      "properties": {
+        "schema": {
+          "const": "LME_TRANSLATION_PROJECTION@1"
+        },
+        "source_admitted_speech_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_utterance_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_language_tag": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string"
+        },
+        "source_language_tags": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "render_mode": {
+          "enum": [
+            "ENGLISH_TRANSLATION",
+            "LABELED_TRANSLATION_OTHER",
+            "DUAL_SOURCE_TRANSLATION"
+          ]
+        },
+        "loss_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "const": "DERIVED_CACHE"
+        },
+        "translation_model_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "target_audience": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "SemanticRelevanceProposal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "proposal_id",
+        "branch_id",
+        "target_actor_id",
+        "source_user_event_ref",
+        "candidate_relevances",
+        "world_event_proposals",
+        "status"
+      ],
+      "properties": {
+        "schema": {
+          "const": "LME_SEMANTIC_RELEVANCE_PROPOSAL@1"
+        },
+        "proposal_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branch_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_user_event_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "candidate_relevances": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "target_ref",
+              "hypothesis",
+              "positive_evidence_refs",
+              "contrary_evidence_refs",
+              "epistemic"
+            ],
+            "properties": {
+              "target_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "hypothesis": {
+                "type": "string"
+              },
+              "positive_evidence_refs": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "contrary_evidence_refs": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "epistemic": {
+                "enum": [
+                  "CANDIDATE_UNVERIFIED",
+                  "SOURCE_ATTESTED",
+                  "UNKNOWN"
+                ]
+              },
+              "proposed_owner_read_role": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "world_event_proposals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "proposed_kind",
+              "candidate_source_refs"
+            ],
+            "properties": {
+              "proposed_kind": {
+                "type": "string",
+                "minLength": 1
+              },
+              "candidate_source_refs": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        "status": {
+          "const": "PROPOSAL_ONLY_NO_EFFECT"
+        }
+      }
+    },
+    "UserPhenomenalView": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "user_id",
+        "branch_id",
+        "objective_admitted_occurrence_refs",
+        "speech_occurrence_refs",
+        "display_mode",
+        "display_text",
+        "status"
+      ],
+      "properties": {
+        "schema": {
+          "const": "LME_USER_PHENOMENAL_VIEW@1"
+        },
+        "user_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branch_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "objective_admitted_occurrence_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "speech_occurrence_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "display_mode": {
+          "enum": [
+            "SOURCE_ORIGINAL",
+            "LABELED_ENGLISH_TRANSLATION",
+            "DUAL"
+          ]
+        },
+        "translation_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "display_text": {
+          "type": "string"
+        },
+        "status": {
+          "const": "DERIVED_OBSERVABLE_PROJECTION"
+        },
+        "user_linguistic_access_grade": {
+          "enum": [
+            "KNOWN",
+            "PARTIAL",
+            "UNKNOWN",
+            "NOT_ACCESSIBLE"
+          ]
+        }
+      }
+    }
+  }
+}
