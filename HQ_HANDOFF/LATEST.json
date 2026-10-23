@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261023-PYAT-HQ-R61AB-ACTUAL-CONTROLLER-INBOX-RECEIPT-AND-COMBINED-QUALIFICATION-HOLD-R1",
-  "handoff_commit": "6dc791e15fef0908383d372ea29e95a06645b476",
+  "checkpoint_id": "20261023-PYAT-HQ-R61AC-EXACT-COMBINED-CONTROLLER-INDEPENDENT-REVIEW-R1",
+  "handoff_commit": "c3746b401b6fc8d0d3683ffabe42447500be8b29",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AB-ACTUAL-CONTROLLER-INBOX-RECEIPT-AND-COMBINED-QUALIFICATION-HOLD-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AB-ACTUAL-CONTROLLER-INBOX-RECEIPT-AND-COMBINED-QUALIFICATION-HOLD-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AB-ACTUAL-CONTROLLER-INBOX-RECEIPT-AND-COMBINED-QUALIFICATION-HOLD-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AC-EXACT-COMBINED-CONTROLLER-INDEPENDENT-REVIEW-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AC-EXACT-COMBINED-CONTROLLER-INDEPENDENT-REVIEW-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AC-EXACT-COMBINED-CONTROLLER-INDEPENDENT-REVIEW-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "6dc791e15fef0908383d372ea29e95a06645b476",
+  "canonical_control_base": "c3746b401b6fc8d0d3683ffabe42447500be8b29",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "6dc791e15fef0908383d372ea29e95a06645b476",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AB-ACTUAL-CONTROLLER-INBOX-RECEIPT-AND-COMBINED-QUALIFICATION-HOLD-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AB-ACTUAL-CONTROLLER-INBOX-RECEIPT-AND-COMBINED-QUALIFICATION-HOLD-R1/CURRENT.md",
+  "qualified_working_hq_commit": "c3746b401b6fc8d0d3683ffabe42447500be8b29",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AC-EXACT-COMBINED-CONTROLLER-INDEPENDENT-REVIEW-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261023-PYAT-HQ-R61AC-EXACT-COMBINED-CONTROLLER-INDEPENDENT-REVIEW-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 75,
-    "canonical_report_commit": "6dc791e15fef0908383d372ea29e95a06645b476",
+    "revision": 76,
+    "canonical_report_commit": "c3746b401b6fc8d0d3683ffabe42447500be8b29",
     "counterpart": "Sorok rev34 independent; attachment86a7b382 unaccepted and state untouched"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261023-PYAT-HQ-R61AA-R08-R6-INDEPENDENT-REVIEW-AND-PENDING-CONTROLLER-INBOX-R1",
-    "handoff_commit": "fed10a0cdcb1be62968d4891b43972bd241cfb85"
+    "checkpoint_id": "20261023-PYAT-HQ-R61AB-ACTUAL-CONTROLLER-INBOX-RECEIPT-AND-COMBINED-QUALIFICATION-HOLD-R1",
+    "handoff_commit": "6dc791e15fef0908383d372ea29e95a06645b476"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "Qualify exact combined R2 controller with independent native reviewer, no worker effect replay; continue R08 independent review. R01 awaits user Sol High.",
-  "worker_state_truth": "Controller owner terminal; actual inbox received/acknowledged; R08 reviewer live; R01 paused pending user model switch.",
+  "next_action": "Intake actual R08 R6 review and final combined controller independent verdict. R01 still awaiting user Sol High, no R7/R03.",
+  "worker_state_truth": "R08 independent reviewer and exact combined controller independent reviewer launched; R01 paused pending user model switch.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -383,6 +383,37 @@
         "NO_SELF_ADOPTION",
         "NO_AUTHORITY_EXPANSION"
       ]
+    },
+    {
+      "id": "CONTROLLER_COMBINED_V",
+      "pid": 2049,
+      "sessions": [
+        "ses_e9ac7f04bffep8CQitKjbiuUn0"
+      ],
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Controller/.reviews/r59-p1r2-independent-review",
+      "branch": "review/pyat-r60-r2-combined-client-r1",
+      "startup": "3d98c328e83547522c0f8c99470e39219ed76dd7",
+      "commission_tip": "2157d6fa03f72324142b11e188d1e40888208dad",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/CONTROLLER_V/00_COMMISSION.md",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "variant_requested": "max",
+      "account": "existing Global",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_INDEPENDENT_REVIEW_NOT_CONTROLLER_EFFECT",
+      "actual_tool_preflight": "PENDING",
+      "os_isolation": "NOT_PROVEN",
+      "new_repository_copies": 0,
+      "started_utc": "2026-10-23T20:46:57.720519+00:00",
+      "observed_head_at_checkpoint": "3d98c328e83547522c0f8c99470e39219ed76dd7",
+      "grain": "SOURCEFREE_LOCAL_ONLY",
+      "library_access": "EXACT_ONLY",
+      "pass_wake": "HQ intake required no self adoption",
+      "blocker_effect": "No R01/R03 or science authority change",
+      "hard_forbidden": [
+        "NO_CANDIDATE_EDITS",
+        "NO_LIVE_SERVICE_MUTATION",
+        "NO_PROVIDER_GENERATION",
+        "NO_AUTHORITY_EXPANSION"
+      ]
     }
   ],
   "r61_launch_evidence": "ae63a8c2da620d850cc974eb43c3e396abec30cb",
@@ -394,5 +425,5 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "32ef0c9dd5b852719e56aab25c9cb0a1c017a620"
+  "current_development_evidence": "adc86afe6b764920a7aacc500e0393331f7ab8ff"
 }
