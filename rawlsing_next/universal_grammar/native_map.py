@@ -1071,6 +1071,7 @@ def build_recurrence_issue_plan(
     target_label: str,
     query_ref: Any,
     condition_predicates: Sequence[tuple[OccurrenceKey, Any, Any]],
+    total_issued_before: int = 0,
 ) -> RecurrenceIssuePlan:
     """Freeze one finite generation's exact grammar and expected operation IDs."""
 
@@ -1080,6 +1081,12 @@ def build_recurrence_issue_plan(
         raise ValueError("RECURRENCE_REQUIRES_ACTIVE_PARENT")
     if not condition_predicates:
         raise ValueError("RECURRENCE_REQUIRES_NEXT_CONDITION")
+    if not isinstance(total_issued_before, int) or isinstance(total_issued_before, bool) or total_issued_before < 0:
+        raise ValueError("TOTAL_ISSUED_BEFORE_MUST_BE_NONNEGATIVE_INTEGER")
+    issued_cap = min(
+        policy.per_generation_issued_cap,
+        max(0, policy.total_issued_cap - total_issued_before),
+    )
     query_ref_object = getattr(query_ref, "ref", query_ref)
     query_material = _ref_material(query_ref_object)
     atoms: dict[str, Any] = {}
@@ -1115,10 +1122,12 @@ def build_recurrence_issue_plan(
                 raise ValueError("RECURRENCE_ANCESTOR_CONDITIONS_EXCEED_K")
             parent_atom = atom_for(parent.predicate, "BRANCH", (parent.predicate_ref,))
             for comparator in policy.comparators:
-                if issued_so_far >= policy.per_generation_issued_cap:
+                if issued_so_far >= issued_cap:
                     unissued.append({
                         "parent_id": parent.parent_id, "comparator": comparator,
-                        "reason": "PER_GENERATION_ISSUED_CAP",
+                        "reason": ("TOTAL_ISSUED_CAP"
+                                   if issued_cap < policy.per_generation_issued_cap
+                                   else "PER_GENERATION_ISSUED_CAP"),
                         "condition_key": condition_key.material(),
                         "condition_value": value_material(condition_value),
                     })

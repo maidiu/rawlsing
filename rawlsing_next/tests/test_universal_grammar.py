@@ -1245,6 +1245,7 @@ def test_bounded_adaptive_recurrence_three_generations_actual_native():
     catalog = [root_predicate]
     generations = []
     parents = (root_parent,)
+    issued_before = 0
     s1 = _condition_predicates(source, qauth, "s1")
     s2 = _condition_predicates(source, qauth, "s2")
     s3 = _condition_predicates(source, qauth, "s3")
@@ -1256,8 +1257,10 @@ def test_bounded_adaptive_recurrence_three_generations_actual_native():
             policy=policy, generation=generation, parents=parents,
             root_predicate=root_predicate, target_label="t",
             query_ref=query, condition_predicates=conditions,
+            total_issued_before=issued_before,
         )
         result = _run_recurrence_generation(source, qauth, plan, generation, catalog)
+        issued_before += len(plan.expected_operations)
         assert result.anti_join["no_drop_ok"], result.anti_join
         generations.append(result)
         if generation < 3:
