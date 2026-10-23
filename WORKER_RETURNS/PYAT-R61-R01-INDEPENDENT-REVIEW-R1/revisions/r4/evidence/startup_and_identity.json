@@ -1,0 +1,44 @@
+{
+  "schema": "PYAT_R61_R01V_R4_STARTUP_IDENTITY@1",
+  "reviewer_branch": "agent/opencode-pyat-r61-r01v-r4-independent-review-r1",
+  "reviewer_expectations_commit": "9038e5d74c3f76274248d0d06085ded55d04ad3b",
+  "candidate_startup": "5c77413365b9d45375b25dbaa29cb3da497bcb10",
+  "author_branch": "agent/opencode-pyat-r61-r01-generic-grammar-r1",
+  "r4_startup": "9fbf1ec3bbd569b5fd83cfd9e20cb931523a42c5",
+  "profile_freeze": "e8034e3ed9da38d9b46acd7810860ddf1d53e3c6",
+  "profile_correction": "f3601f418d79c83d467ce8dd0ed1c0113c31d7e8",
+  "profile_unchanged_from_correction_to_candidate": true,
+  "code_blobs": {
+    "rawlsing_next/universal_grammar/types.py": "e7b196efe5b1f86134c27a80bfdd8f472be76e5d",
+    "rawlsing_next/universal_grammar/enumerate.py": "fd9203a0b272f98771c24070d01a9e5287c9b099",
+    "rawlsing_next/universal_grammar/native_map.py": "c21d896d0c25a4352f379fe32fca0c1546e1a88d",
+    "rawlsing_next/tests/test_universal_grammar.py": "2b15177a7c60499c81c506245a5899055f63bfe3"
+  },
+  "changed_code_paths_since_r4_startup": [
+    "rawlsing_next/tests/test_universal_grammar.py",
+    "rawlsing_next/universal_grammar/native_map.py"
+  ],
+  "author_manifest_sha256_verified": {
+    "00_RETURN.md": true,
+    "CONTRACT_AND_TEST_PROFILE.md": true,
+    "DECISION_AND_COVERAGE_MATRIX.md": true,
+    "RESUME.md": true,
+    "junit.xml": true,
+    "proof_witness.json": true,
+    "pytest.log": true,
+    "test_profile.json": true
+  },
+  "manifest_self_exclusion": "manifest.json explicitly excludes itself",
+  "native_owner_blobs": {
+    "rawlsing_next/pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "rawlsing_next/pre553_discovery_exact.py": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+    "rawlsing_next/pre553_recursive_handoff.py": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4"
+  },
+  "environment": {
+    "python": "3.11.3",
+    "python_path": "/usr/local/bin/python3",
+    "pytest": "9.0.2",
+    "platform": "darwin"
+  },
+  "note": "Direct remote readback is recorded in startup_and_identity.txt and must match the final reviewer push."
+}

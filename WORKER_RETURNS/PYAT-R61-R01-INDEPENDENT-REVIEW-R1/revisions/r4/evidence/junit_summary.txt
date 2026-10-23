@@ -1,0 +1,13 @@
+R61-R01V R4 reviewer JUnit summary
+candidate: 5c77413365b9d45375b25dbaa29cb3da497bcb10
+reviewer expectations commit: 9038e5d74c3f76274248d0d06085ded55d04ad3b
+
+author_suite_junit.xml:  tests=24 failures=0 errors=0 skipped=0 time=10.486s
+r3_controls_junit.xml:   tests=10 failures=0 errors=0 skipped=0 time=4.515s
+own_probes_junit.xml:    tests=7  failures=0 errors=0 skipped=0 time=1.532s
+
+Own probes B1-B7 are intentional characterizations of candidate behavior:
+B1, B2, B5 reproduce blocking lineage/generation defects; B3 and B7 reproduce
+secondary budget/accounting gaps; B4 and B6 are positive typed-refusal and
+comparator-distinction checks. A passing own probe does not mean the candidate
+passes the commission; see 00_RETURN.md and defects.md.

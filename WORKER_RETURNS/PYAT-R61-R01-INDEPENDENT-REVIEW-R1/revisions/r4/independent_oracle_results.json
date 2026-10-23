@@ -1,0 +1,40 @@
+{
+  "schema": "PYAT_R61_R01V_R4_INDEPENDENT_ORACLE_RESULTS@1",
+  "candidate": "5c77413365b9d45375b25dbaa29cb3da497bcb10",
+  "verdict": "REVISE",
+  "expectations_frozen_commit": "9038e5d74c3f76274248d0d06085ded55d04ad3b",
+  "oracle_expectations": {
+    "receipt_bound_parent": "exact canonical persisted parent; receipt/binding severance must change or refuse the same N+1 consumer",
+    "generation_continuity": "N+1 parent must be generation N; root-only relabel is not recurrence",
+    "comparators": "ROOT_RELATIVE and IMMEDIATE_PARENT_RELATIVE have distinct actual baselines/query roles and correct values",
+    "adaptive_selection": "finite selection over governed inventory/policy/parent evidence; protected minority/nonwinning exploration; exploration distinct from finding",
+    "accounting": "immutable pre-execution issued set; append-only successor issuance; explicit activated/waiting/stopped/unsupported/budget states; exact multiplicity",
+    "budget": "per-generation/total caps checked before materialization; exhaustion leaves explicit pending/unissued",
+    "J/K/D": "D actual generations independent of K; ancestor conditions counted toward K; missing/malformed config typed refuses",
+    "preservation": "R3 A1-A3 unchanged; legacy A4 gap label preserved"
+  },
+  "observed": {
+    "receipt_bound_parent": "FAIL: B1 severed receipt/replay refs produce identical grammar/expected IDs and the same consumer passes; B5 parent with no receipt/handoff executes",
+    "generation_continuity": "FAIL: B2 generation=2 with only root generation=0 parent executes and passes",
+    "comparators": "PARTIAL: B6 distinct baseline hashes/condition sets and both execute; value-level opposite-direction arithmetic not independently completed",
+    "adaptive_selection": "PARTIAL: author suite replay shows nonwinning exploration/hidden differentiation; independent fixture not completed",
+    "accounting": "PARTIAL: per-generation unissued records exist; cumulative ledger not enforced and absent from plan material",
+    "budget": "FAIL (secondary): B3 understated total_issued_before issues more; B7 exhaustion raises no-operations instead of explicit pending",
+    "J/K/D": "PASS for typed config refusals (B4) and author D/K checks; continuity defect limits D qualification",
+    "preservation": "PASS: R3 A1-A3 controls 10/10 and author R3 tests pass"
+  },
+  "junit": {
+    "author_suite": {"tests": 24, "passed": 24, "failures": 0, "errors": 0, "skips": 0},
+    "r3_controls": {"tests": 10, "passed": 10, "failures": 0, "errors": 0, "skips": 0},
+    "own_probes": {"tests": 7, "passed": 7, "failures": 0, "errors": 0, "skips": 0}
+  },
+  "a4_qualified": false,
+  "r03_prerequisite_met": false,
+  "remaining_r03_prerequisites": [
+    "authenticated receipt-bound parent predicate/handoff/receipt/source-release equality",
+    "enforced generation N -> N+1 continuity",
+    "typed wrong-source/edition/replay negatives on the recurrence consumer",
+    "honest cumulative issued-set accounting or declared trusted scheduling input",
+    "independent value-level comparator arithmetic and hidden-minority oracle"
+  ]
+}
