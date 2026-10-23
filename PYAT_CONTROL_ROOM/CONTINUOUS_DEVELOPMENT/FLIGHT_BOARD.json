@@ -1,6 +1,6 @@
 {
   "schema": "PYAT_CONTINUOUS_DEVELOPMENT_FLIGHT_BOARD_R1",
-  "observed_utc": "2026-10-23T21:53:22.108687+00:00",
+  "observed_utc": "2026-10-23T21:58:27.721916+00:00",
   "goal_sha256": "c4cf4af2eefd290baa89cac22afef37d18b83b16b8564e33cf28205f75ab23d9",
   "canonical_pointer": "HQ_HANDOFF/LATEST.json",
   "authority_cut": "dec71cf5fdf9d65bbc0e6ec58da6318594769eb9",
@@ -68,7 +68,7 @@
       "next_action": "On Light commission one retained-campaign-owner repair, then distinct native qualification",
       "terminal_consequence": "Unblocks generic R03 workload instead of selected fixtures",
       "acceptance": "Independent exact-identity positive/hostile/actual-consumer/cold proof; HQ scoped disposition; no author self-adoption",
-      "status": "R6_CODE_REVISE__R61AF_RESTORE_CONTEXT_CONTRACT_DECIDED__CODING_HIGH_RECOMMENDED"
+      "status": "R7_NATIVE_CODEX_HIGH_AUTHOR_RUNNING"
     },
     {
       "id": "R08",
@@ -84,7 +84,7 @@
       "next_action": "Light exact intake6abd49ffd9bb61925084036f2f1275841b3b5c83 then distinct native review",
       "terminal_consequence": "Prevents wrong-condition or unsupported-positive world/possibility serving",
       "acceptance": "Independent exact-identity positive/hostile/actual-consumer/cold proof; HQ scoped disposition; no author self-adoption",
-      "status": "R6_CODE_REVISE__R61AF_CANONICAL_CACHE_CONTRACT_DECIDED__CODING_HIGH_RECOMMENDED"
+      "status": "R7_NATIVE_CODEX_HIGH_AUTHOR_RUNNING"
     },
     {
       "id": "R09.local",
@@ -603,7 +603,61 @@
       }
     }
   },
-  "live_flight": [],
+  "live_flight": [
+    {
+      "id": "R01_R7",
+      "agent_id": "/root/r01_r7_high_author",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
+      "branch": "agent/codex-pyat-r61-r01-r7-retained-owner-repair-r1",
+      "startup": "fea3ca17d94183efbd526dc1687ae06b7bbbf0f7",
+      "commission_tip": "37050d3f11b5dea155f418ce1cdb643753f20f1d",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R01/revisions/r7/00_COMMISSION.md",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_effort_requested": "high",
+      "facility": "collaboration.spawn_agent explicit model/effort accepted",
+      "state": "ACTUALLY_SPAWNED_NATIVE_CODING_SUBAGENT_NOT_OPENCODE_NOT_CONTROLLER",
+      "actual_tool_preflight": "AWAITING_AGENT_CONFIRMATION",
+      "os_isolation": "NOT_PROVEN",
+      "new_repository_copies": 0,
+      "observed_utc": "2026-10-23T21:58:27.721916+00:00"
+    },
+    {
+      "id": "R08_R7",
+      "agent_id": "/root/r08_r7_high_author",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08",
+      "branch": "agent/codex-pyat-r61-r08-r7-canonical-cache-repair-r1",
+      "startup": "d8a7b4005d23a1e39b35360ca96bf2aef5b9e591",
+      "commission_tip": "37050d3f11b5dea155f418ce1cdb643753f20f1d",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/R08/revisions/r7/00_COMMISSION.md",
+      "model_requested": "gpt-6.1-sol",
+      "reasoning_effort_requested": "high",
+      "facility": "collaboration.spawn_agent explicit model/effort accepted",
+      "state": "ACTUALLY_SPAWNED_NATIVE_CODING_SUBAGENT_NOT_OPENCODE_NOT_CONTROLLER",
+      "actual_tool_preflight": "AWAITING_AGENT_CONFIRMATION",
+      "os_isolation": "NOT_PROVEN",
+      "new_repository_copies": 0,
+      "observed_utc": "2026-10-23T21:58:27.721916+00:00"
+    },
+    {
+      "id": "CONTROLLER_R3",
+      "pid": 28122,
+      "sessions": [
+        "ses_e98dfb4ceffeOIN94FajJA56s1"
+      ],
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Controller/.worktrees/r60-pyat-client",
+      "branch": "infra/r60-pyat-incumbent-client-r1",
+      "startup": "3d98c328e83547522c0f8c99470e39219ed76dd7",
+      "commission_tip": "37050d3f11b5dea155f418ce1cdb643753f20f1d",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R61-GENERIC-REPAIR-FLIGHT-R1/CONTROLLER/revisions/r3/00_COMMISSION.md",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "effort": "max",
+      "account": "existing Global",
+      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_NOT_CONTROLLER",
+      "actual_tool_preflight": "PENDING",
+      "os_isolation": "NOT_PROVEN",
+      "started_utc": "2026-10-23T21:57:41.001529+00:00"
+    }
+  ],
   "prior_review_returns": {
     "R01V": {
       "sha": "b310c5469bb628a583d6e106946cddd08025ddc1",
@@ -674,17 +728,15 @@
     "R03_wake": false
   },
   "next_model_boundary": {
-    "current": "Sol High HIGH",
-    "High_thought_complete": true,
-    "required": "Sol Light coordination",
-    "pending_High_decisions": [],
-    "higher_coding_jobs": [
-      "R01",
-      "R08"
+    "HQ_model": "gpt-6.1-sol low verified",
+    "High_judgments_complete": true,
+    "High_native_coding_delegated": [
+      "R01_R7",
+      "R08_R7"
     ],
+    "controller": "existing DeepSeekMAX",
     "Astra_required": false,
-    "no_workers_launched": true,
-    "heartbeat": "PAUSED_USER_MODEL_BOUNDARY"
+    "heartbeat": "ACTIVE_RESUMED_AFTER_USER_LIGHT_CONTINUATION"
   },
   "recurrence_decision_route": {
     "branch": "agent/browser-pyat-r61-recurrence-substantive-contract-adjudication-r1",
