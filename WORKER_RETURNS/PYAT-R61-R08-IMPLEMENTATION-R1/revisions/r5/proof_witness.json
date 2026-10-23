@@ -1,0 +1,98 @@
+{
+  "schema": "PYAT_R61_R08_R5_PROOF_WITNESS_V1",
+  "node": "R08",
+  "revision": "r5",
+  "startup_commit": "48a2eaf6d3c653e2efe40643c427f28c47cd744b",
+  "amendment_commit": "5cdbaaecdcd3a1ecfee62025e4a0ca7f99e9b469",
+  "code_commit": "cfe3297e8962b3a11a62e9e89d26d7de50fadba5",
+  "branch": "agent/opencode-pyat-r61-r08-evidence-binding-r1",
+  "preserved_r4_review": "d1baa92cb457c30bf6dffb91f23f8cee351de4f6",
+  "environment": {
+    "python": "3.11.3",
+    "python_executable": "/usr/local/bin/python3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "pyreadstat_used": false
+  },
+  "command": "/usr/local/bin/python3 -m pytest -q rawlsing_next/tests/test_universal_evidence_binding.py rawlsing_next/tests/test_pre553_analytical_composition.py --junitxml=WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r5/junit.xml",
+  "exit_code": 0,
+  "junit": {
+    "path": "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r5/junit.xml",
+    "tests": 34,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "time_seconds": 9.70,
+    "r08_tests": 21,
+    "c1_regressions": 13
+  },
+  "r4_defects_closed": [
+    {
+      "id": "R4-D3/D4-01",
+      "formerly": "SAME reader/e04_step served caller-mutated consumer_values_read denominator/cells/evidence_ref/state and metadata while signed envelope said 60/SUPPORTED",
+      "now": "reader/e04_step require result to equal the complete signed projection and serve only envelope.consumer_values_read; mutations raise EvidenceAssociationError; cache export refuses mutation; import requires signed projection",
+      "tests": [
+        "test_reader_serves_only_signed_projection_for_all_mutated_fields",
+        "test_callable_substitution_and_signed_envelope_metadata_mutation_refuse",
+        "test_consumer_assertion_mutation_and_restoration",
+        "test_export_refuses_unsigned_result_mutation_and_cache_projection_is_signed"
+      ]
+    },
+    {
+      "id": "R4-D2-02",
+      "formerly": "omitted admitted_producer meant accept-any-callable; substituted producer executed",
+      "now": "bind requires non-null configured admitted_producer identity; omitted pin disables live execution; substituted/legitimate binding resolves UNKNOWN/OWNER_ADMISSION_UNRESOLVED with zero producer calls",
+      "tests": [
+        "test_missing_live_producer_pin_is_fail_closed_before_execution",
+        "test_callable_substitution_and_signed_envelope_metadata_mutation_refuse"
+      ]
+    }
+  ],
+  "preserved_controls": [
+    "actual AT07 54 yes / 6 no / denominator 60 signed positive",
+    "changed native 54/16/70",
+    "actual observed zero denominator 60/no=0",
+    "actual ZERO_SUPPORT denominator 0 no values",
+    "VALID_NULL/DIFFUSE/VALID_EMPTY/OBSERVED_ZERO productive states",
+    "Z UNRESOLVED denominator 16 retained",
+    "no-config/wrong-root/attacker-issuer/forged-context/cache-forgery refusal",
+    "fresh-process cold replay with verifier key via stdin, same consumer hash"
+  ],
+  "r4_probe_replay": {
+    "tests": 9,
+    "passed": 7,
+    "failed_as_expected_old_defect_assertions": 2,
+    "explanation": "the two failures assert the old defect by requiring read() to return unsigned 999 values; repaired read raises EvidenceAssociationError. Successor R5 tests assert lawful refusal/signed projection. No archived probe edited."
+  },
+  "mutation_restoration": [
+    "consumer values denominator 999/cells/state/evidence ref -> typed refusal; restored original -> 60",
+    "producer receipt/fact/state/uncertainty/query/evidence/axes mutations -> typed refusal; restored -> 60",
+    "export of unsigned-mutated result -> EvidenceCacheIntegrityError; original signed export -> cold PASS",
+    "cache result projection mutation -> import refusal; original signed projection -> cold PASS",
+    "missing producer pin + substituted callable -> zero calls, UNKNOWN; pinned configured callable -> SUPPORTED 54/6/60",
+    "wrong root/cache evidence 999/missing envelope -> refusal; configured root/original evidence -> cold 60"
+  ],
+  "scope": {
+    "changed_code_paths": [
+      "rawlsing_next/pre553_universal_evidence_binding.py",
+      "rawlsing_next/tests/test_universal_evidence_binding.py"
+    ],
+    "module_blob": "f3835b4add2f42d81a0f4b64f8df49398537edc9",
+    "test_blob": "c0740589967d68dd29cfacf8d55490c5b4776f71",
+    "own_report_root": "WORKER_RETURNS/PYAT-R61-R08-IMPLEMENTATION-R1/revisions/r5/"
+  },
+  "reach": {
+    "covered": "trusted-host admission, actual provider/evaluator/consumer, complete signed projection, cold cache, live pin fail-closed, status reduction",
+    "not_reached": [
+      "live J42 E41ProviderAdapter.step",
+      "live P41 progressive",
+      "repaired live E04 terminal"
+    ],
+    "reason": "no maintained non-test caller; archived owner bodies outside R08 allowlist and unedited"
+  },
+  "limits": [
+    "TEST_ONLY sourcefree local callable; no original science/source/CI/production/N11/N12/F6/F7/F8/actor/Sorok/J52/W52 authority",
+    "same-UID host/key compromise, ptrace/root and dishonest competent issuer out of scope",
+    "author validation only; distinct R5 reviewer not launched or self-adopted"
+  ]
+}
