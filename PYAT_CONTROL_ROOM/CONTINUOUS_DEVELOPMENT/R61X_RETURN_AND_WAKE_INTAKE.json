@@ -1,0 +1,35 @@
+{
+  "observed_utc": "2026-10-23T19:56:06.725011+00:00",
+  "model": "gpt-6.1-sol/low",
+  "controller_client": "c51b74b7a2a3d498c64387dc1ec95cb0c29a44b3",
+  "controller_qualification": "FAILED_REVIEWER_NOT_INDEPENDENT",
+  "controller_process_observed": false,
+  "wake": {
+    "automation_id": "pyat-hq-return-intake-and-authorized-development",
+    "status": "ACTIVE",
+    "cadence_minutes": 10,
+    "thread": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da",
+    "actual_wake_observed": false,
+    "claim": "SCHEDULED_APP_HEARTBEAT_NOT_CONTROLLER_EVENT_DELIVERY"
+  },
+  "returns": {
+    "R01_R6": {
+      "sha": "fea3ca17d94183efbd526dc1687ae06b7bbbf0f7",
+      "branch": "agent/opencode-pyat-r61-r01-generic-grammar-r1",
+      "artifact_hashes_verified": 7,
+      "scope_paths_verified": 10,
+      "process_terminal": true,
+      "grade": "AUTHOR_CUSTODY_VERIFIED_INDEPENDENT_REVIEW_REQUIRED",
+      "native_rerun_by_HQ": false
+    },
+    "R08V_R5": {
+      "sha": "4a5d9a9f8d700cbc5e692401220623df1122e22b",
+      "branch": "agent/opencode-pyat-r61-r08v-r5-independent-review-r1",
+      "artifact_hashes_verified": 15,
+      "scope_paths_verified": 16,
+      "process_terminal": true,
+      "grade": "INDEPENDENT_REVISE_UNSIGNED_PROVENANCE_AND_CACHE_OBJECT_EXPORT",
+      "native_rerun_by_HQ": false
+    }
+  }
+}
