@@ -169,8 +169,6 @@ def role_disposition(
         return PROHIBITED, ("DIRECTION_NOT_GRANTED",), common_risk
     if condition_mode == "XOR_EXACTLY_ONE" and len(conditions) != 2:
         return PROHIBITED, ("XOR_REQUIRES_TWO_OCCURRENCES",), common_risk
-    if branch_depth > int(policy.bounds["D"]):
-        return HELD, ("DEPTH_BEYOND_ISSUED_BOUND",), common_risk
     return ELIGIBLE, (), common_risk
 
 
@@ -393,7 +391,7 @@ def enumerate_frontier(
                                     if depth >= 2:
                                         add("FORK", target_keys, conditions,
                                             measure=measure, branch_depth=depth - 1,
-                                            recursion_depth=depth - 1,
+                                            recursion_depth=0,
                                             baseline_ref=parent.op_id,
                                             alias=parent.op_id)
                                 else:
@@ -489,6 +487,12 @@ def enumerate_frontier(
     ) + (
         {"kind": "ARITY_DEFERRED", "beyond": {"J": j, "K": k, "D": d},
          "trigger": "ISSUED_RELEASE_EXPANSION"},
+        {"kind": "RECURSION_BASELINE_NOT_ENUMERATED",
+         "policy_D": d,
+         "recursion_relation_ref": policy.recursion_relation_ref,
+         "baseline_policy_ref": policy.baseline_policy_ref,
+         "reason": "R01_DECLARES_FORK_OVER_CONDITIONERS_ONLY_NO_INDEPENDENT_RECURRENCE_CHAIN",
+         "state": "EXACT_CONTRACT_GAP"},
     )
 
     partition_count = (len(operation_ids) + partition_size - 1) // partition_size

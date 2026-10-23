@@ -538,6 +538,7 @@ class ScientificOperation:
     recursion_depth: int
     baseline_ref: str | None
     recursion_relation_ref: str | None
+    baseline_policy_ref: str | None
     source_inventory: str
     source_id: str
     dataset_id: str | None
@@ -598,6 +599,7 @@ class ScientificOperation:
             "recursion_depth": self.recursion_depth,
             "baseline_ref": self.baseline_ref,
             "recursion_relation_ref": self.recursion_relation_ref,
+            "baseline_policy_ref": self.baseline_policy_ref,
             "source_inventory": self.source_inventory, "source_id": self.source_id,
             "dataset_id": self.dataset_id, "wave": self.wave,
             "edition": self.edition, "source_sha256": self.source_sha256,
@@ -680,6 +682,7 @@ def make_operation(
         recursion_depth=recursion_depth,
         baseline_ref=baseline_ref,
         recursion_relation_ref=policy.recursion_relation_ref,
+        baseline_policy_ref=policy.baseline_policy_ref,
         source_inventory=inventory.inventory_id,
         source_id=inventory.source_id,
         dataset_id=inventory.dataset_id,

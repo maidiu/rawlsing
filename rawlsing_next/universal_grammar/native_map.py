@@ -19,7 +19,9 @@ from rawlsing_next.pre553_discovery_exact import (
     VALIDATION_KINDS,
     _Atom,
     _Template,
+    _combine_predicates,
     _compile_frontier,
+    _xor_exactly_one,
 )
 from rawlsing_next.pre553_empirical_objects import (
     canonicalize,
@@ -151,6 +153,7 @@ class LoweringRecord:
     query_refs: tuple[Mapping[str, str], ...] = ()
     query_role_refs: tuple[Mapping[str, Any], ...] = ()
     expected_candidate_keys: tuple[str, ...] = ()
+    derived_predicates: Mapping[str, Any] = field(default_factory=dict)
 
     def material(self) -> dict[str, Any]:
         return {
@@ -174,6 +177,10 @@ class LoweringRecord:
             "query_refs": [dict(ref) for ref in self.query_refs],
             "query_role_refs": [_normalize_material(role) for role in self.query_role_refs],
             "expected_candidate_keys": list(self.expected_candidate_keys),
+            "derived_predicate_refs": {
+                atom_id: exact_ref(predicate.ref, "derived predicate").as_dict()
+                for atom_id, predicate in sorted(self.derived_predicates.items())
+            },
         }
 
 
@@ -364,6 +371,8 @@ def lower_operation(
 ) -> LoweringRecord:
     if operation.disposition != ELIGIBLE:
         return _not_eligible(operation, catalog)
+    if operation.op_id != "urn:r61:op:" + operation.canonical_hash:
+        return _unsupported(operation, catalog, "OPERATION_ID_NOT_CANONICAL")
     if catalog.contract_id != I05_CONTRACT_ID:
         return _unsupported(operation, catalog, "CURRENT_I05_CONTRACT_MISMATCH")
     if catalog.grammar_schema != CANDIDATE_GRAMMAR_SCHEMA:
@@ -478,14 +487,53 @@ def lower_operation(
             marginal_id = _template_id(marginal_ref)
             templates[marginal_id] = _ref_material(marginal_ref)
             marginal_ids.append(marginal_id)
+        joint_baseline_atom_id = baseline_atom_id
+        derived_predicates: dict[str, Any] = {}
+        condition_atom_ids: list[str] = []
+        if operation.conditions:
+            condition_objects = []
+            for key, value in operation.conditions:
+                ref = catalog.predicate_ref(key, value)
+                if ref is None:
+                    return _unsupported(operation, catalog, "CURRENT_CATALOG_PREDICATE_UNAVAILABLE")
+                obj = catalog.predicate_objects.get(exact_ref(ref, "condition predicate").key)
+                if obj is None:
+                    return _unsupported(
+                        operation, catalog, "CURRENT_CATALOG_PREDICATE_OBJECT_UNAVAILABLE"
+                    )
+                condition_objects.append(obj)
+                atom_id = _atom_id(ref)
+                atoms[atom_id] = _ref_material(ref)
+                condition_atom_ids.append(atom_id)
+            tag_material = {
+                "rule": _rule_id(operation), "operation": operation.op_id,
+                "conditions": [
+                    {"key": key.key, "value": typed_value_key(value)}
+                    for key, value in operation.conditions
+                ],
+            }
+            if operation.condition_mode == "XOR_EXACTLY_ONE":
+                derived = _xor_exactly_one(condition_objects, tag_material=tag_material)
+            elif len(condition_objects) == 1:
+                derived = condition_objects[0]
+            else:
+                derived = _combine_predicates(
+                    condition_objects, op="AND", tag_material=tag_material
+                )
+            derived_id = _atom_id(derived.ref)
+            atoms[derived_id] = _ref_material(derived.ref)
+            derived_predicates[derived_id] = derived
+            joint_baseline_atom_id = derived_id
         rule = _base_rule(
             operation, family="PAIR_RESPONSE_COTRAVEL", form="JOINT_DEPENDENCE",
-            baseline_atom_id=baseline_atom_id, joint_template_id=joint_id,
+            baseline_atom_id=joint_baseline_atom_id, joint_template_id=joint_id,
             marginal_template_ids=marginal_ids, validation=_JOINT_VALIDATION,
+            condition_atom_ids=condition_atom_ids,
         )
         return _supported_lowering(
             operation, catalog, rule, atoms, templates, 1,
             tuple(["JOINT"] + [f"MARGINAL_{index}" for index in range(len(marginal_ids))]),
+            derived_predicates=derived_predicates,
         )
 
     return _unsupported(operation, catalog, "CLAIM_CLASS_NOT_LOWERABLE_TO_CURRENT_I05")
@@ -499,6 +547,7 @@ def _supported_lowering(
     templates: Mapping[str, Any],
     expected_candidate_count: int,
     coverage_roles: tuple[str, ...],
+    derived_predicates: Mapping[str, Any] | None = None,
 ) -> LoweringRecord:
     family = str(rule["family"])
     form = str(rule["form"])
@@ -527,6 +576,7 @@ def _supported_lowering(
             {"role": template_id, **exact_ref(ref, "template ref").as_dict()}
             for template_id, ref in sorted(templates.items())
         ),
+        derived_predicates=dict(derived_predicates or {}),
     )
 
 
@@ -630,10 +680,13 @@ def _compute_expected_candidates(
 ) -> tuple[tuple[Mapping[str, Any], ...], str | None]:
     grammar = plan.native_grammar()
     missing_objects: list[str] = []
+    derived_by_atom: dict[str, Any] = {}
+    for record in plan.records:
+        derived_by_atom.update(record.derived_predicates)
     atoms: dict[str, _Atom] = {}
     for item in grammar["atoms"]:
         ref = exact_ref(item["predicate_ref"], "expected atom ref")
-        obj = catalog.predicate_objects.get(ref.key)
+        obj = derived_by_atom.get(item["atom_id"]) or catalog.predicate_objects.get(ref.key)
         if obj is None:
             missing_objects.append(f"PREDICATE:{ref.key}")
             continue
@@ -723,7 +776,9 @@ def lower_frontier(
             **{name: getattr(plan, name) for name in plan.__dataclass_fields__},
             "expected_candidates": expected,
             "expected_candidate_error": error,
-            "allow_empty_frontier": not bool(plan.supported_operation_ids),
+            "allow_empty_frontier": (
+                not frontier.operations and not plan.unsupported_operation_ids
+            ),
         }
     )
 

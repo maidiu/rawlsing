@@ -16,7 +16,7 @@ from rawlsing_next.pre553_discovery_exact import (
     ExactBoundedCoverageError,
     execute_exact_bounded_discovery,
 )
-from rawlsing_next.pre553_empirical_objects import ExactRef
+from rawlsing_next.pre553_empirical_objects import ExactRef, exact_ref
 from rawlsing_next.tests.test_pre553_discovery_exact import (
     _d_auth,
     _discovery_authority,
@@ -525,12 +525,13 @@ def test_lazy_partition_and_cold_subprocess_recomputation():
 
 def _native_fixture():
     rows = []
-    labels = ("q_alpha", "q_beta", "q_gamma")
+    labels = ("q_alpha", "q_beta", "q_gamma", "q_delta")
     for index in range(12):
         responses = {
             labels[0]: index % 2,
             labels[1]: (index // 2) % 2,
             labels[2]: index % 3 % 2,
+            labels[3]: (index // 3) % 2,
         }
         rows.append({"id": f"R{index:02d}", "responses": responses})
     source = _build_source("r61-universal", rows)
@@ -716,6 +717,144 @@ def test_native_mapping_uses_current_i05_contract_and_real_receipts():
     assert restored_semantics["no_drop_ok"] is True
 
 
+def test_conditioned_joint_and_cotravel_bind_condition_roles_natively():
+    source, qauth, dauth, all_predicate, predicates, queries, labels = _native_fixture()
+    inventory = _inventory(tuple(_occurrence(label) for label in labels))
+    policy = _policy(j=2, k=1, d=0)
+    frontier = _frontier(inventory, policy)
+    selected = tuple(
+        op for op in frontier.operations
+        if op.disposition == ELIGIBLE and op.measure_id == "SAMPLE"
+        and op.claim_class in {"JOINT", "CO_TRAVEL"}
+        and tuple(key.item_id for key in op.targets) == (labels[0], labels[1])
+        and len(op.conditions) == 1
+        and op.conditions[0][0].item_id in labels[2:4]
+    )
+    assert len(selected) == 8
+    catalog = _native_catalog(
+        labels, all_predicate, predicates, queries,
+        discovery_authority_ref=dauth.authority_ref,
+    )
+    plan = lower_frontier(inventory, policy, replace(frontier, operations=selected), catalog)
+    assert plan.coverage_report()["no_drop_ok"] is True
+    assert len(plan.expected_candidates) == len(selected)
+    baseline_key = all_predicate.ref.key
+    for record in plan.records:
+        assert record.status == SUPPORTED, record.reason
+        assert record.derived_predicates
+        derived_refs = {
+            derived.ref.key for derived in record.derived_predicates.values()
+        }
+        candidates = [
+            candidate for candidate in plan.expected_candidates
+            if candidate["rule_id"] == record.rule_id
+        ]
+        assert candidates
+        for candidate in candidates:
+            assert {
+                role["predicate_ref"]["content_hash"]
+                for role in candidate["query_roles"]
+            } != {all_predicate.ref.content_hash}
+            for role in candidate["query_roles"]:
+                role_ref = exact_ref(role["predicate_ref"], "candidate role")
+                assert role_ref.key in derived_refs
+
+    by_value = {}
+    for record in plan.records:
+        operation = next(op for op in selected if op.op_id == record.operation_id)
+        value_key = typed_value_key(operation.conditions[0][1])
+        by_value.setdefault(
+            (operation.claim_class, operation.conditions[0][0].key, value_key), set()
+        ).update(record.derived_predicates.keys())
+        assert any(
+            operation.conditions[0][0].item_id in atom_ref
+            for atom_ref in record.atoms
+        ) or record.derived_predicates
+    assert all(len(values) == 1 for values in by_value.values())
+    zero_refs = set().union(
+        *[values for (cls, item, value), values in by_value.items()
+          if value == typed_value_key(0)]
+    )
+    one_refs = set().union(
+        *[values for (cls, item, value), values in by_value.items()
+          if value == typed_value_key(1)]
+    )
+    assert zero_refs.isdisjoint(one_refs)
+
+    grammar = plan.native_grammar()
+    result = execute_exact_bounded_discovery(
+        repository=source["repo"],
+        discovery_authority=_discovery_authority(source, grammar, dauth),
+        authority_registry=_i05_registry(source, qauth, dauth),
+        release_refs=(source["release_ref"],),
+        predicate_catalog=tuple(predicates.values()) + (all_predicate,),
+        query_template_catalog=tuple(queries.values()),
+    )
+    join = native_receipt_anti_join(plan, result.receipts)
+    assert join["no_drop_ok"], join
+    assert len({candidate["candidate_id"] for candidate in plan.expected_candidates}) == len(selected)
+
+    multi_policy = _policy(j=2, k=2, d=0)
+    multi_policy = replace(
+        multi_policy,
+        direction_grants=multi_policy.direction_grants + (
+            DirectionGrant(
+                ("OUTCOME", "OUTCOME"), ("EXPOSURE", "EXPOSURE"),
+                "JOINT", "DIR-JOINT-COND2",
+            ),
+        ),
+    )
+    multi_frontier = _frontier(inventory, multi_policy)
+    multi = next(
+        op for op in multi_frontier.operations
+        if op.disposition == ELIGIBLE and op.measure_id == "SAMPLE"
+        and op.claim_class == "JOINT"
+        and tuple(key.item_id for key in op.targets) == (labels[0], labels[1])
+        and len(op.conditions) == 2
+    )
+    multi_plan = lower_frontier(
+        inventory, multi_policy, replace(multi_frontier, operations=(multi,)), catalog
+    )
+    multi_record = multi_plan.records[0]
+    assert multi_record.status == SUPPORTED, multi_record.reason
+    assert len(multi_record.derived_predicates) == 1
+    multi_candidate = multi_plan.expected_candidates[0]
+    derived_refs = {
+        predicate.ref.key for predicate in multi_record.derived_predicates.values()
+    }
+    assert {
+        exact_ref(role["predicate_ref"], "multi role").key
+        for role in multi_candidate["query_roles"]
+    } == derived_refs
+    multi_grammar = multi_plan.native_grammar()
+    multi_result = execute_exact_bounded_discovery(
+        repository=source["repo"],
+        discovery_authority=_discovery_authority(source, multi_grammar, dauth),
+        authority_registry=_i05_registry(source, qauth, dauth),
+        release_refs=(source["release_ref"],),
+        predicate_catalog=tuple(predicates.values()) + (all_predicate,) + tuple(
+            multi_record.derived_predicates.values()
+        ),
+        query_template_catalog=tuple(queries.values()),
+    )
+    assert native_receipt_anti_join(multi_plan, multi_result.receipts)["no_drop_ok"] is True
+
+
+def test_unsupported_only_frontier_is_not_declared_valid_empty():
+    source, qauth, dauth, all_predicate, predicates, queries, labels = _native_fixture()
+    inventory = _inventory((_occurrence(labels[0]),))
+    policy = _policy(j=1, k=0, d=0)
+    frontier = _frontier(inventory, policy)
+    catalog = _native_catalog(
+        labels, all_predicate, predicates, queries,
+        discovery_authority_ref=dauth.authority_ref,
+    )
+    catalog = replace(catalog, supported_claims=())
+    plan = lower_frontier(inventory, policy, frontier, catalog)
+    assert plan.unsupported_operation_ids
+    assert plan.native_grammar()["allow_empty_frontier"] is False
+
+
 def test_native_mapping_marks_unsupported_and_never_returns_none():
     source, qauth, dauth, all_predicate, predicates, queries, labels = _native_fixture()
     inventory = _inventory((_occurrence(labels[0]),))
@@ -871,15 +1010,26 @@ def test_axes_and_lowering_record_contract_fields_are_complete():
         conditions=(("q_beta", 1), ("q_gamma", 0)),
     )
     assert fork.baseline_ref is not None
-    assert fork.recursion_depth == 1
+    assert fork.recursion_depth == 0
     assert fork.recursion_relation_ref is None
-    held_fork = _op_for(
-        _frontier(_main_inventory(), _policy(j=1, k=2, d=0)),
-        claim_class="FORK", targets=("q_alpha",),
+    assert fork.baseline_policy_ref is None
+    recursion_frontier = _frontier(
+        _main_inventory(),
+        replace(_policy(j=1, k=2, d=3),
+                recursion_relation_ref="REC-1", baseline_policy_ref="BASE-1"),
+    )
+    recursion_fork = _op_for(
+        recursion_frontier, claim_class="FORK", targets=("q_alpha",),
         conditions=(("q_beta", 1), ("q_gamma", 0)),
     )
-    assert held_fork.disposition == HELD
-    assert held_fork.reasons == ("DEPTH_BEYOND_ISSUED_BOUND",)
+    assert recursion_fork.recursion_depth == 0
+    assert recursion_fork.recursion_relation_ref == "REC-1"
+    assert recursion_fork.baseline_policy_ref == "BASE-1"
+    assert any(
+        gap.get("kind") == "RECURSION_BASELINE_NOT_ENUMERATED"
+        and gap["state"] == "EXACT_CONTRACT_GAP"
+        for gap in recursion_frontier.deferred
+    )
 
 
 def test_catalog_topology_promotion_and_forged_direction_refusal():
@@ -896,9 +1046,16 @@ def test_catalog_topology_promotion_and_forged_direction_refusal():
     )
     assert promoted.status == SUPPORTED, promoted.reason
     forged = replace(operation, direction_ref="FORGED-DIRECTION")
+    forged = replace(forged, op_id="urn:r61:op:" + forged.canonical_hash)
     refused = lower_operation(inventory, policy, forged, _minimal_catalog(target="mr_target"))
     assert refused.status == NATIVE_UNSUPPORTED
     assert refused.reason == "FORGED_OR_UNAUTHORIZED_DIRECTION_REF"
+    noncanonical = replace(operation, op_id="urn:r61:op:forged-identity")
+    id_refused = lower_operation(
+        inventory, policy, noncanonical, _minimal_catalog(target="mr_target")
+    )
+    assert id_refused.status == NATIVE_UNSUPPORTED
+    assert id_refused.reason == "OPERATION_ID_NOT_CANONICAL"
 
 
 def test_structured_held_and_unknown_risk_policy():
