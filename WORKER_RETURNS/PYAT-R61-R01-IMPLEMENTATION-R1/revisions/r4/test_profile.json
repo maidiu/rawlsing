@@ -1,0 +1,43 @@
+{
+  "schema": "R61_R01_R4_RECURRENCE_TEST_PROFILE@1",
+  "grade": "TEST_ONLY",
+  "sourcefree": true,
+  "counting_convention": "ANCESTOR_CONDITIONS_COUNT_TOWARD_K",
+  "reference": {
+    "profile_id": "R61-R4-REFERENCE",
+    "policy_version": "r61.r4.1",
+    "bounds": {"J": 2, "K": 2, "D": 3},
+    "activation": {
+      "breadth_cap": 2,
+      "followup_cap": 2,
+      "protected_exploration_slots": 1,
+      "tie_order": "OPERATION_ID_ASC",
+      "allow_nonwinning_exploratory_parent": true
+    },
+    "comparators": ["ROOT_RELATIVE", "IMMEDIATE_PARENT_RELATIVE"],
+    "complement": "OPTIONAL_NOT_MANDATORY",
+    "budget": {"per_generation_issued_cap": 4, "total_issued_cap": 12},
+    "stop_rules": ["D_REACHED", "NO_ACTIVE_PARENTS", "BUDGET_EXHAUSTED", "INVALID_PARENT", "UNSUPPORTED_NATIVE", "HELD_OR_OUT_OF_RELEASE"]
+  },
+  "transformed": {
+    "profile_id": "R61-R4-TRANSFORMED",
+    "policy_version": "r61.r4.1",
+    "bounds": {"J": 2, "K": 2, "D": 2},
+    "activation": {
+      "breadth_cap": 1,
+      "followup_cap": 1,
+      "protected_exploration_slots": 1,
+      "tie_order": "OPERATION_ID_ASC",
+      "allow_nonwinning_exploratory_parent": true
+    },
+    "comparators": ["ROOT_RELATIVE", "IMMEDIATE_PARENT_RELATIVE"],
+    "complement": "OPTIONAL_NOT_MANDATORY",
+    "budget": {"per_generation_issued_cap": 3, "total_issued_cap": 6},
+    "stop_rules": ["D_REACHED", "NO_ACTIVE_PARENTS", "BUDGET_EXHAUSTED", "INVALID_PARENT", "UNSUPPORTED_NATIVE", "HELD_OR_OUT_OF_RELEASE"]
+  },
+  "notes": [
+    "Demonstration parameters only; not global or original-source scientific defaults.",
+    "Exploratory activation is bookkeeping, never a supported finding.",
+    "R03/R04/science/N11 remain NOT_REACHED."
+  ]
+}
