@@ -1,0 +1,51 @@
+{
+  "schema": "PYAT_R61_R01_R7_PROOF_WITNESS@1",
+  "node": "R01", "revision": "R7",
+  "disposition": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+  "branch": "agent/codex-pyat-r61-r01-r7-retained-owner-repair-r1",
+  "startup_commit": "7e021bd0eb539baccbd79f19a5e51efa19661e44",
+  "successor_directive_commit": "7e05980717b8bf28b1c386b0293b467b7fc15856",
+  "contract_commit": "3f96169b2",
+  "partial_patch_commit": "7e021bd0e",
+  "candidate_code_commit": "0271a7e37a3ccccce5ff69db99f56f7745a62875",
+  "executor": "existing OpenCode DeepSeek V4.1-Flash MAX/Global (same author session)",
+  "environment": {"python": "3.11.3", "pytest": "9.0.2", "pyreadstat": "1.3.2", "platform": "darwin"},
+  "commands": [
+    {"purpose": "author R7 suite", "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=WORKER_RETURNS/PYAT-R61-R01-IMPLEMENTATION-R1/revisions/r7/junit.xml -o addopts=''", "exit_code": 0, "result": "31 passed", "failures": 0, "errors": 0, "skips": 0, "walltime_seconds": 26.31, "junit": "junit.xml", "log": "pytest.log"},
+    {"purpose": "campaign D3 capacity", "command": "campaign issue/execute/activate x3", "exit_code": 0, "observed": {"generations": 3, "issuances": 3, "executions": 3, "seconds": 2.925, "peak_rss_mb_approx": 39}}
+  ],
+  "r7_repairs": {
+    "create_context": "PASS source/query/catalog/release substitutions refuse",
+    "chronology_multi_batch": "PASS two gen1 batches exact 4/8, later gen exact count",
+    "activation_preimage": "PASS snapshot after execute before activate restores and activates without rerun",
+    "retry_conservation": "PASS repeated execute/activate keep native call count and budget",
+    "receipt_states": "PASS typed states retained in activation preimage",
+    "view_detachment": "PASS inspect mutation does not change owner",
+    "fixed_pin": "PASS altered rehashed snapshot refuses; genuine restore passes",
+    "full_closure": "PASS restore rebuilds plans/counts/receipts/handoffs and compares complete records",
+    "executor_correction": "PASS same OpenCode author completed interrupted Codex partial patch without API rewrite"
+  },
+  "mutations_and_restoration": [
+    {"mutation": "query/root/catalog/release substitution", "expected": "typed create refusal", "restored": "exact context creates"},
+    {"mutation": "mutate host query object after create", "expected": "native context mismatch refusal", "restored": "original query executes"},
+    {"mutation": "forge lineage/predecessor/generation", "expected": "typed lineage/predecessor/generation refusal", "restored": "retained refs execute"},
+    {"mutation": "alter inspect view", "expected": "owner unchanged", "restored": "fresh inspect canonical"},
+    {"mutation": "alter snapshot and recompute hashes", "expected": "fixed-pin refusal", "restored": "genuine pinned snapshot restores"},
+    {"mutation": "retry execute/activate", "expected": "no second native call or budget charge", "restored": "same execution/activation refs"},
+    {"mutation": "zero-cap issue", "expected": "STOPPED_BUDGET/unissued/no native", "restored": "budgeted campaign executes"}
+  ],
+  "imported_owner_blobs": {
+    "rawlsing_next/pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "rawlsing_next/pre553_discovery_exact.py": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+    "rawlsing_next/pre553_recursive_handoff.py": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4",
+    "rawlsing_next/tests/test_pre553_discovery_exact.py": "b53039aeb95e012993c5233a7575c1dad5a14929",
+    "rawlsing_next/tests/test_pre553_empirical_query.py": "cc7d93db1f87d9c311170c229dbe3506937b404a"
+  },
+  "limits": [
+    "Local trusted-host authority only; no protected issuer/signing/R09/global durable anti-fork.",
+    "Snapshot pin is exact-history, not latest-state/anti-rollback knowledge.",
+    "R03/U43/Batch, R04 custody, R05 grades, original 35/1890, F6/F7/F8, N11/N12, Sorok, production/CI, J52/W52 unchanged.",
+    "Inflight/ambiguous execution remains typed HOLD.",
+    "No self-adoption; distinct independent reviewer required."
+  ]
+}
