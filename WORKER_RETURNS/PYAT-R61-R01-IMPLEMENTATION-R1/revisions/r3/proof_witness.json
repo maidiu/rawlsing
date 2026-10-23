@@ -1,0 +1,91 @@
+{
+  "schema": "PYAT_R61_R01_R3_PROOF_WITNESS@1",
+  "node": "R01",
+  "revision": "R3",
+  "disposition": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+  "branch": "agent/opencode-pyat-r61-r01-generic-grammar-r1",
+  "startup_commit": "f0c602eddaee14a58d6f0935a587a46fcf96c6db",
+  "candidate_code_commit": "89774b01990a7d18c10cf4f6e819895776a1a633",
+  "r2_review_commit": "3ac1e498a08648950d31df0bf52750f9335d24fa",
+  "repair_commission_commit": "3470da602618b5c04b1f28885b5ad1835169e2d5",
+  "grade": "SOURCEFREE_SYNTHETIC_TEST_ONLY_NOT_ORIGINAL_SCIENCE",
+  "environment": {
+    "python": "3.11.3",
+    "python_path": "/usr/local/bin/python3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "platform": "darwin",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01"
+  },
+  "commands": [
+    {
+      "purpose": "author R3 suite",
+      "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=WORKER_RETURNS/PYAT-R61-R01-IMPLEMENTATION-R1/revisions/r3/junit.xml -o addopts=''",
+      "exit_code": 0,
+      "result": "20 passed",
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "walltime_seconds": 10.19,
+      "junit": "junit.xml",
+      "log": "pytest.log"
+    },
+    {
+      "purpose": "R2 reviewer A1-A4 probe replay, excluding only the copied-path cold import artifact",
+      "command": "PYTHONPATH=\"$PWD:$PWD/.r61/tmp\" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest .r61/tmp/test_r01v_r2_reviewer.py -q -o addopts='' -k 'not cold'",
+      "exit_code": 0,
+      "result": "4 passed, 1 deselected",
+      "walltime_seconds": 1.72,
+      "log": "reviewer_r2_a_probes.log"
+    },
+    {
+      "purpose": "capacity measurements",
+      "command": "/usr/bin/time -l /usr/local/bin/python3 - <<'PY' ... enumerate tiny/main fixtures ... PY",
+      "exit_code": 0,
+      "observed": {
+        "tiny": {"operations": 22, "eligible": 8, "partitions": 1, "seconds": 0.0111},
+        "main": {"operations": 1852, "eligible": 536, "partitions": 29, "seconds": 0.8953, "peak_rss_mb_approx": 36}
+      }
+    }
+  ],
+  "a_items": {
+    "A1": {
+      "status": "PASS",
+      "evidence": "conditioned JOINT/CO_TRAVEL lowers with derived exact predicate in baseline and every joint/marginal role; real I05 executes 8 single-condition operations plus a multi-condition JOINT control; exact candidate anti-join passes; condition values 0/1 produce distinct derived refs and candidate IDs"
+    },
+    "A2": {
+      "status": "PASS",
+      "evidence": "forged op_id refused as OPERATION_ID_NOT_CANONICAL; canonical forged-direction operation refused by policy revalidation"
+    },
+    "A3": {
+      "status": "PASS",
+      "evidence": "unsupported-only nonempty frontier keeps unsupported IDs and allow_empty_frontier=False"
+    },
+    "A4": {
+      "status": "EXACT_CONTRACT_GAP_NOT_PASS",
+      "evidence": "recursion_depth=0 separate from conditioner branch_depth; baseline_policy_ref carried; frontier emits RECURSION_BASELINE_NOT_ENUMERATED EXACT_CONTRACT_GAP; no D13 PASS claim"
+    }
+  },
+  "mutations_and_restoration": [
+    {"mutation": "conditioned JOINT/CO_TRAVEL previously used all-response baseline", "expected": "derived condition predicate appears in every JOINT/MARGINAL role", "restored": "actual I05 receipts match expected candidates exactly"},
+    {"mutation": "condition value 0 vs 1", "expected": "different derived predicate refs, candidate IDs and executed query roles", "restored": "both configurations execute and anti-join independently"},
+    {"mutation": "multi-condition JOINT", "expected": "one AND-derived predicate binds both typed conditions in all roles", "restored": "real I05 execution and exact anti-join pass"},
+    {"mutation": "forge op_id while fields unchanged", "expected": "typed OPERATION_ID_NOT_CANONICAL refusal", "restored": "canonical operation lowers SUPPORTED"},
+    {"mutation": "catalog supports no claims", "expected": "unsupported IDs retained, allow_empty_frontier false", "restored": "supported catalog lowers normally"},
+    {"mutation": "declare recursion_relation_ref/baseline_policy_ref and D=3", "expected": "no false recurrence chain; explicit contract gap and baseline_policy_ref carried", "restored": "FORK over conditioners remains explicitly declared limitation"}
+  ],
+  "imported_owner_blobs": {
+    "rawlsing_next/pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "rawlsing_next/pre553_discovery_exact.py": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+    "rawlsing_next/tests/test_pre553_discovery_exact.py": "b53039aeb95e012993c5233a7575c1dad5a14929",
+    "rawlsing_next/tests/test_pre553_empirical_query.py": "cc7d93db1f87d9c311170c229dbe3506937b404a"
+  },
+  "limits": [
+    "Synthetic TEST_ONLY source and Python helpers; no original survey bytes or respondent values.",
+    "No R03 issuance/U43/Batch proof; R03 remains NOT_STARTED.",
+    "No R04 serialized custody restore; deterministic cold recomputation only.",
+    "No independent recurrence/baseline chain; explicit contract gap, not D13 PASS.",
+    "No original U/E_pre, empirical support, F6/F7/F8, N11/N12, actor, production/CI or source permission.",
+    "No self-adoption; a fresh distinct reviewer must qualify the exact pushed candidate."
+  ]
+}
