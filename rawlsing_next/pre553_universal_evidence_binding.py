@@ -492,10 +492,15 @@ def request_from_empirical_case(
     predicate: EmpiricalPredicate,
     consumer_query: PositionedSubjectPossibilityQuery,
     model_rule: PositionedSubjectPossibilityModelRule,
+    consumer_binding_fingerprint: str | None = None,
 ) -> EvidenceRequest:
     """Build K from actual accepted owner objects (no copied producer hashes)."""
 
-    if len(consumer_query.conditioner_bindings) != 1:
+    if len(consumer_query.conditioner_bindings) not in {1}:
+        if consumer_binding_fingerprint is None:
+            raise EvidenceRequestShapeError(
+                "multi-conditioner requests require the exact consumer fingerprint"
+            )
         raise EvidenceRequestShapeError(
             "R61 C1 binding follows the accepted single-conditioner grain"
         )
@@ -542,10 +547,30 @@ def request_from_empirical_case(
         permission_ref=permission_ref,
         producer_query_ref=empirical_query.ref,
         consumer_query_ref=consumer_query.ref,
-        consumer_binding_fingerprint=semantic_hash(binding.material()),
+        consumer_binding_fingerprint=(
+            consumer_binding_fingerprint
+            if consumer_binding_fingerprint is not None
+            else semantic_hash(binding.material())
+        ),
         source_universe_ref=consumer_query.source_universe_ref,
         target_ref=consumer_query.target_ref,
     )
+
+
+def _consumer_binding_fingerprint(
+    consumer_query: PositionedSubjectPossibilityQuery,
+    witness: ConditionValueBindingWitness,
+) -> str:
+    identity = canonicalize(witness.identity_material)
+    if "consumer_binding_materials" in identity:
+        return semantic_hash(
+            [binding.material() for binding in consumer_query.conditioner_bindings]
+        )
+    if len(consumer_query.conditioner_bindings) != 1:
+        raise EvidenceBindingMismatch(
+            "legacy single-binding witness cannot cover multiple conditioners"
+        )
+    return semantic_hash(consumer_query.conditioner_bindings[0].material())
 
 
 @dataclass(frozen=True)
@@ -584,9 +609,8 @@ class EmpiricalProducerBinding:
             raise EvidenceBindingMismatch("request model rule hash mismatch")
         if len(self.consumer_query.conditioner_bindings) != 1:
             raise EvidenceBindingMismatch("C1 single-conditioner grain required")
-        if (
-            self.request.consumer_binding_fingerprint
-            != semantic_hash(self.consumer_query.conditioner_bindings[0].material())
+        if self.request.consumer_binding_fingerprint != _consumer_binding_fingerprint(
+            self.consumer_query, self.condition_binding_witness
         ):
             raise EvidenceBindingMismatch("request consumer binding fingerprint mismatch")
         if self.request.source_universe_ref != self.consumer_query.source_universe_ref:
@@ -611,8 +635,8 @@ class EmpiricalProducerBinding:
             "predicate_hash": self.predicate.predicate_hash,
             "release_refs": [x.as_dict() for x in self.release_refs],
             "consumer_query_ref": self.consumer_query.ref.as_dict(),
-            "consumer_binding_fingerprint": semantic_hash(
-                self.consumer_query.conditioner_bindings[0].material()
+            "consumer_binding_fingerprint": _consumer_binding_fingerprint(
+                self.consumer_query, self.condition_binding_witness
             ),
             "model_rule_hash": self.model_rule.rule_hash,
         }

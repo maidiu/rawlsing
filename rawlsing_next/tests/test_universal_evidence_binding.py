@@ -23,6 +23,7 @@ from rawlsing_next.source_backed_positioned_subject_possibility import (
     ConditionerBinding,
     PositionedSubjectPossibilityQuery,
 )
+from rawlsing_next.tests import c1_at08_at13_fixture as fx
 from rawlsing_next.tests.n10e_empirical_slice_fixture import (
     build_provider_case,
     fixture_authority,
@@ -259,6 +260,111 @@ def _zero_case(case):
         "model_rule": case["model_rule"],
         "release_refs": (source["release_ref"],),
     }
+
+
+def _xor_case(condition_value, tag="r61-xor"):
+    source = fx.xor_fixture(tag)
+    query_authority = i03._query_authority(tag)
+    predicate = i03._predicate(
+        source,
+        query_authority,
+        i03._response_leaf(source, query_authority, "A", condition_value),
+        tag=f"{tag}-predicate",
+    )
+    empirical_query = i03._query(
+        source,
+        query_authority,
+        predicate,
+        ("C",),
+        tag=f"{tag}-query",
+    )
+    pairing = fx.make_pairing_authority(tag)
+    binding = fx.make_conditioner_binding(
+        binding_id="a",
+        subject_fact_ref=ExactRef(**fx.subject_fact_ref(source, "A", condition_value)),
+        empirical_coordinate_ref=source["qrefs"]["A"],
+        comparability_authority_ref=pairing,
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+    )
+    subject_ref = ExactRef(
+        "C1_SYNTHETIC_POSITIONED_SUBJECT@1",
+        f"urn:test:r61:{tag}:subject",
+        semantic_hash({"tag": tag, "condition_value": condition_value}),
+    )
+    consumer_query = fx.make_multi_conditioner_consumer_query(
+        query_id=f"{tag}-consumer",
+        subject_ref=subject_ref,
+        target_ref=source["qrefs"]["C"],
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+        bindings=[binding],
+        projection_kind="R61_XOR_CONDITIONAL",
+        projection_payload={"condition_value": condition_value},
+    )
+    witness = fx.build_witness_for_binding(
+        witness_object_id=f"urn:test:r61:{tag}:witness",
+        consumer_query=consumer_query,
+        producer_query=empirical_query,
+        producer_predicate=predicate,
+        bindings=[binding],
+        coordinate_value_pairs=[(source["qrefs"]["A"], condition_value)],
+        pairing_authority=pairing,
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+    )
+    return {
+        "source": source,
+        "query_authority": query_authority,
+        "registry": i03._registry(source, query_authority),
+        "predicate": predicate,
+        "empirical_query": empirical_query,
+        "consumer_query": consumer_query,
+        "condition_binding_witness": witness,
+        "model_rule": fx.make_model_rule(source["universe"].ref, tag),
+        "release_refs": (source["release_ref"],),
+    }
+
+
+def test_condition_a0_result_cannot_resolve_a1_request():
+    case = _xor_case(0)
+    fingerprint = semantic_hash(
+        [case["consumer_query"].conditioner_bindings[0].material()]
+    )
+    request_a0 = _request(
+        case,
+        conditions=(_condition("A", "0", 0, "a"),),
+        consumer_binding_fingerprint=fingerprint,
+        direction="A0_TO_C",
+        request_id="r61-xor-a0",
+    )
+    request_a1 = _request(
+        case,
+        conditions=(_condition("A", "1", 1, "a"),),
+        consumer_binding_fingerprint=fingerprint,
+        direction="A1_TO_C",
+        request_id="r61-xor-a1",
+    )
+    assert request_a0.key != request_a1.key
+    resolver = EvidenceResolver()
+    resolver.bind(_binding(request_a0, case))
+    result_a0 = resolver.resolve(request_a0)
+    assert result_a0.result_state == "SUPPORTED"
+    assert result_a0.denominator == 2
+    assert {cell["cell"]: cell["raw_numerator_support"] for cell in result_a0.cells} == {
+        "0": 1,
+        "1": 1,
+    }
+    assert (
+        EvidenceConsumerReader(request_a0, result_a0).read()["consumer_result_state"]
+        == "EXACT_SUPPORTED"
+    )
+
+    refused_a1 = resolver.resolve(request_a1)
+    assert refused_a1.result_state == "UNKNOWN"
+    assert refused_a1.typed_refusal == REFUSAL_NO_EXACT_BINDING
+    with pytest.raises(EvidenceAssociationError):
+        EvidenceConsumerReader(request_a1, result_a0).read()
 
 
 def test_positive_actual_producer_consumer_values_read():
