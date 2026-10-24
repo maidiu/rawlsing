@@ -1,6 +1,6 @@
 # SOROK JOIN-V — independent hostile causal and persistence return
 
-**STATUS:** `LINEAGE_FINAL_REVISE__49022f6__INVALID_FORK_PARTIAL_BRANCH_LEAK__AWAIT_NEXT_REPAIR_SHA`
+**STATUS:** `FORK_ATOMICITY_7BF_ACCEPT_SCOPED__INVALID_EMPTY_FORK_ATOMIC__STOP`
 **ROLE:** independent hostile engineering reviewer; not JOIN-E, J, E, Sorok HQ, native C12/CAN/ADP/Pyat/C11 or human A5 authority.
 **BRANCH:** `codex/sorok-join-v-20261022`
 **STARTUP:** `3fe8444b4a0374d95fa9f7e60dd295049a5d3172`
@@ -8,11 +8,35 @@
 **PRIOR FINAL CUT:** `c367777f83367240352c267a2d3750abb7f09397`
 **PRIOR REPAIRED CUT:** `cc0ff7d0305340b806ba94b020017c3d8d0585dc`
 **PRIOR TARGETLESS CUT:** `75a134ed733acaed2c62ea3421b54fcb09c5442f`
-**REVIEWED SHARED-LINEAGE CUT:** `49022f693c99b6cb58226513f8bad71c26bdac3c` (read-only detached worktree)
+**REVIEWED SHARED-LINEAGE CUT:** `49022f693c99b6cb58226513f8bad71c26bdac3c`
+**REVIEWED FORK-ATOMICITY CUT:** `7bf2da302996491ddf34b9a039fea47ac982d135` (read-only detached worktree)
+**EXACT COMMISSION SEAL:** `2b8d3067d894941c21ec7fd23d1f883f51b15026`
 **AUTHORITY:** independent accession `3de081023406a52ec23e1ae43ade77aea485a3f8`; HQ appointment; effective owner `6456fc57cbe05cdf69e63ef51fa6ca6198401c60`. No native grants.
 **WRITE ONLY:** `WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/**`. No candidate/J/E edit.
 
-## Shared-lineage adjudication of 49022f6
+## Fork-atomicity qualification of 7bf2da3
+
+See `evidence/7bf_atomic/verification.json`.
+
+| Command / check | Result |
+|---|---|
+| Preserved 30 reviewer tests | **30/30 passed** |
+| Adjacent lineage-contract file | **5/5 passed** |
+| Positive joined fork + cold | **passed** |
+| Positive targetless fork parent/cold | **passed** |
+| Author post-create receipt rollback test | **passed** |
+| Empty fork, both sessions | **refused; before == after `['first_session','root']`; branch/lineage/store unchanged; verify true** |
+
+The original RED is closed: `fork_alt("")` returns `FORK_REFUSED` with `FORK_BRANCH_EMPTY`, and the C12 store, selected branch, session metadata and lineage are unchanged in both `JoinedSession` and `RefusalSession`. Legitimate forks/cold reopening still pass. The candidate owns a pre-validate and SQLite SAVEPOINT implementation; no implementation edit was made by this reviewer.
+
+| FINDING | CAUSAL INTERPRETATION | ACTION | OWNER |
+|---|---|---|---|
+| Invalid empty fork is atomic in both sessions. | Pre-validation rejects before `product.fork`; store and metadata remain unchanged. | `ACCEPT_SCOPED` for exact 7bf fork atomicity/shared lineage; stop. | JOIN-V independent; HQ adjudicates. |
+| Legitimate nested/joined/targetless fork and cold behavior preserved. | Shared lineage receipts and parent isolation remain green. | Preserve. | JOIN-E + JOIN-V. |
+
+**Exact-cut engineering verdict: ACCEPT_SCOPED.** Science remains TEST_ONLY/H0; authority remains none (no native C12/CAN/ADP/C8/Pyat/C11 or human A5). B-source remains bounded receiving-edge. No full 444-file recensus, provider call, native operation or self-adoption.
+
+## Prior shared-lineage adjudication of 49022f6
 
 See `LINEAGE_FINAL_ADJUDICATION.md`. Frozen hashes were checked first and unchanged.
 
@@ -110,16 +134,36 @@ Final-cut engineering verdict: **REVISE**. Await the next repair SHA; keep the f
 
 ## DONE / REMAINING / CRITICAL BLOCKER / LARGEST MOVE / FLIGHT / DELTA
 
-- **DONE:** adjudicated shared-lineage cut `49022f6`; independently reproduced 30/30 preserved reviewer tests; ran targeted c367, candidate 17-test suite and inherited suites; added nested-fork, parent/sibling/root switch, missing/tampered receipt, duplicate/invalid fork and atomicity attacks.
-- **REMAINING:** next repair SHA for invalid-fork atomicity; rerun preserved 30, targeted c367 and lineage tests; final verdict. No polling and no second worker.
-- **CRITICAL BLOCKER:** `fork_alt("")` is refused but leaves an empty `''` branch in the C12 store in both joined and targetless paths; all other requested shared-lineage transitions pass.
-- **LARGEST MOVE:** validate the requested branch name before `product.fork`, or remove the created branch if lineage construction fails; preserve all passing lineage behavior.
-- **FLIGHT:** one reviewer on `codex/sorok-join-v-20261022`; shared-lineage cut 49022f6 read-only; no candidate/J/E edits; no subagents/provider/native operations.
-- **DELTA:** shared lineage, nested forks, parent/sibling/root rejection, receipt tamper/duplicate handling, parent isolation, targetless no-target and 30/30 preserved tests pass; only empty-branch partial-failure atomicity remains.
+- **DONE:** adjudicated exact fork-atomicity cut `7bf2da3`; reproduced 30/30 preserved reviewer tests, 5/5 lineage-contract tests, joined/targetless fork positives and the author post-create rollback test; demonstrated empty-fork no-change.
+- **REMAINING:** none for this bounded fork-atomicity qualification; STOP. No polling, new worker or broad recensus.
+- **CRITICAL BLOCKER:** none for the exact observed defect; sourcefree native/science limits remain external.
+- **LARGEST MOVE:** none; `ACCEPT_SCOPED` for 7bf atomic fork/shared lineage.
+- **FLIGHT:** one reviewer on `codex/sorok-join-v-20261022`; exact cut 7bf2da3 read-only; no candidate/J/E edits; no subagents/provider/native operations.
+- **DELTA:** prior empty-fork RED is green in both sessions; legitimate fork/cold, 30/30 preserved tests and lineage contract remain green.
 
 ## Exact commands and results
 
-Shared-lineage cut `49022f6` (read-only worktree; frozen tests unchanged; hashes checked first):
+Fork-atomicity cut `7bf2da3` (read-only worktree; exact candidate; no frozen test edited):
+
+```text
+cd WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1
+SOROK_JOIN_CANDIDATE_ROOT=<7bf worktree>/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1   PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_positive.py tests/test_join_v_hostile.py tests/test_join_v_repaired_cut.py tests/test_join_v_targetless_final.py -p no:cacheprovider --tb=short
+30 passed
+
+SOROK_JOIN_CANDIDATE_ROOT=... PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_lineage_contract.py -p no:cacheprovider --tb=short
+5 passed
+
+SOROK_JOIN_CANDIDATE_ROOT=... PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_final_cut.py::test_lawful_fork_alt_continuation_is_supported tests/test_join_v_targetless_final.py::test_refusal_fork_parent_not_corrupted_positive -p no:cacheprovider --tb=short
+2 passed
+
+cd <7bf worktree>/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1
+PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join.py::test_fork_post_create_receipt_failure_rolls_back -p no:cacheprovider --tb=short
+1 passed
+```
+
+Empty-fork evidence: both sessions refused with `FORK_REFUSED: FORK_BRANCH_EMPTY`; before/after branches both `['first_session', 'root']`; branch, lineage and store unchanged; `verify=true`. Full small evidence: `evidence/7bf_atomic/verification.json`.
+
+Historical shared-lineage cut `49022f6` (read-only worktree; frozen tests unchanged; hashes checked first):
 
 ```text
 cd WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1
@@ -207,6 +251,16 @@ Shared-lineage cut 49022f6 hashes (full list in `evidence/lineage_final/source.j
 | `tests/test_join_v_lineage_contract.py` | `79fc117a21243e0f3d0c6316d95365244158d07787f8308eafa82741651e8751` |
 | `tools/collect_lineage_final.py` | `fae35daace49228255fc62eaf9fda2f3518f842f97274f0cdead3f3a7b7c63cd` |
 
+Fork-atomicity cut 7bf2da3 hashes:
+
+| Artifact | SHA-256 |
+|---|---|
+| `joined/lineage.py` | `5578951d4dcce3839a114036684336fa759f537b62d8ed1174b0a6a0b03d7383` |
+| `joined/session.py` | `ea820ec3e30a2825c3d0d8c5dc66e812afdda40b08f9cc0a8c868c8b3e0dd0da` |
+| `joined/refusal.py` | `ca491610a62eda46159f006e7591872e6b31c55f287c4fe6162dbf061ddd984a` |
+| `tests/test_join.py` | `8b5e6bb356ee85eca8a67d8a15093e339509e5964650e80fe7ca3b4d98dea81f` |
+| V `tests/test_join_v_lineage_contract.py` | `79fc117a21243e0f3d0c6316d95365244158d07787f8308eafa82741651e8751` |
+
 ## Changed-path allowlist
 
 Only:
@@ -229,19 +283,19 @@ No candidate, J, E, R30A, R29P, BP2P4J, C8, C12, C9, PRE-MAIN or HQ-control file
 
 ## NOT_RUN
 
-- Next repair SHA after 49022f6: `PENDING`; final verdict waits for that immutable cut.
-- Full inherited R31J/R31E/R29P 155–202 denominators: not promoted; only 8 + 15 + 10 affected suites rerun on the shared-lineage cut.
-- Process-kill crash injection between `_attach_new` and join-meta write: inferred, not injected.
+- Next repair SHA: `NONE` for the exact observed defect; bounded 7bf qualification is closed. No polling.
+- Full inherited R31J/R31E/R29P 155–202 denominators: not promoted; no broad recensus performed for this bounded qualification.
+- Process-kill crash injection beyond the author receipt-failure test: not performed; not needed for the exact empty-fork defect.
 - Protected C12/KMS custody, native CAN/ADP/C8/C9/C11/Pyat, external provider calls, human A5, production/deployment: `NOT_RUN`; no authority.
-- Cross-root canonical identity and all J variants/scenarios: not imposed; HQ intake explicitly says distinct roots need not have identical target IDs/histories/variants. No cross-root determinism failure is claimed.
-- End-to-end original B pre-C8 severance beyond the bounded receiving edge: not proven; only actual source→tools→E consumer and fault/restore were tested.
+- Cross-root canonical identity and all J variants/scenarios: not imposed; HQ intake explicitly says distinct roots need not have identical target IDs/histories/variants.
+- End-to-end original B pre-C8 severance beyond the bounded receiving edge: not proven; unchanged.
 
 ## Courts
 
-| Court | Shared-lineage cut 49022f6 | Ceiling |
+| Court | Fork-atomicity cut 7bf2da3 | Ceiling |
 |---|---|---|
-| **ENGINEERING** | `REVISE` | Shared lineage, nested forks, switch rejection, receipt tamper/duplicate handling and 30/30 preserved tests pass; invalid empty `fork_alt("")` leaves an orphan `''` branch. |
-| **SCIENTIFIC** | `HOLD__NO_ISSUANCE` | TEST_ONLY sourcefree material/expression only; actual B refusal is lawful no-tool/no-target; receiving-edge evidence, not end-to-end B pre-C8; no psychology, acquired practice, personhood or A5. |
+| **ENGINEERING** | `ACCEPT_SCOPED` | Exact empty-fork atomicity now refuses before mutation in both sessions; store, branch, metadata and lineage unchanged; 30/30 preserved tests, 5/5 lineage tests, joined/targetless fork+cold and author receipt rollback pass. |
+| **SCIENTIFIC** | `HOLD__NO_ISSUANCE` | TEST_ONLY sourcefree; B-source bounded receiving-edge; no original pre-C8 severance, acquired practice, psychology, personhood or A5. |
 | **AUTHORITY** | `HOLD` | No native C12/CAN/ADP/C8/C11/Pyat, protected keys, external provider or human A5 grant. |
 
 ## Publication

@@ -1,0 +1,66 @@
+{
+  "schema": "SOROK_JOIN_V_7BF_FORK_ATOMICITY_ACCEPT@1",
+  "candidate_sha": "7bf2da302996491ddf34b9a039fea47ac982d135",
+  "commission_seal": "2b8d3067d894941c21ec7fd23d1f883f51b15026",
+  "reviewer_branch": "codex/sorok-join-v-20261022",
+  "reviewer_prior_head": "0c80354e2eb967a9ffdba40ec8b8ca308374e117",
+  "candidate_git_blob": {
+    "joined/lineage.py": "deb55c6768f2d4fdcd0757c6e47a59b08a96a4ec"
+  },
+  "commands": [
+    {
+      "command": "SOROK_JOIN_CANDIDATE_ROOT=<7bf worktree>/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1 PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_positive.py tests/test_join_v_hostile.py tests/test_join_v_repaired_cut.py tests/test_join_v_targetless_final.py -p no:cacheprovider --tb=short",
+      "result": "30 passed in 41.08s"
+    },
+    {
+      "command": "SOROK_JOIN_CANDIDATE_ROOT=<7bf worktree>/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1 PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_lineage_contract.py -p no:cacheprovider --tb=short",
+      "result": "5 passed in 14.47s"
+    },
+    {
+      "command": "SOROK_JOIN_CANDIDATE_ROOT=<7bf worktree>/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1 PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join_v_final_cut.py::test_lawful_fork_alt_continuation_is_supported tests/test_join_v_targetless_final.py::test_refusal_fork_parent_not_corrupted_positive -p no:cacheprovider --tb=short",
+      "result": "2 passed in 4.13s"
+    },
+    {
+      "command": "cd <7bf worktree>/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1 && PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q tests/test_join.py::test_fork_post_create_receipt_failure_rolls_back -p no:cacheprovider --tb=short",
+      "result": "1 passed in 3.94s"
+    }
+  ],
+  "empty_fork": {
+    "joined": {
+      "before": ["first_session", "root"],
+      "after": ["first_session", "root"],
+      "refusal_code": "FORK_REFUSED",
+      "detail": "FORK_REFUSED: FORK_BRANCH_EMPTY:FORK_BRANCH_EMPTY",
+      "branch_unchanged": true,
+      "lineage_unchanged": true,
+      "store_unchanged": true,
+      "verify": true
+    },
+    "refusal": {
+      "before": ["first_session", "root"],
+      "after": ["first_session", "root"],
+      "refusal_code": "FORK_REFUSED",
+      "detail": "FORK_REFUSED: FORK_BRANCH_EMPTY:FORK_BRANCH_EMPTY",
+      "branch_unchanged": true,
+      "lineage_unchanged": true,
+      "store_unchanged": true,
+      "verify": true
+    }
+  },
+  "source_hashes_sha256": {
+    "joined/lineage.py": "5578951d4dcce3839a114036684336fa759f537b62d8ed1174b0a6a0b03d7383",
+    "joined/session.py": "ea820ec3e30a2825c3d0d8c5dc66e812afdda40b08f9cc0a8c868c8b3e0dd0da",
+    "joined/refusal.py": "ca491610a62eda46159f006e7591872e6b31c55f287c4fe6162dbf061ddd984a",
+    "tests/test_join.py": "8b5e6bb356ee85eca8a67d8a15093e339509e5964650e80fe7ca3b4d98dea81f",
+    "V tests/test_join_v_lineage_contract.py": "79fc117a21243e0f3d0c6316d95365244158d07787f8308eafa82741651e8751"
+  },
+  "verdict": "ACCEPT_SCOPED",
+  "scope": "invalid-fork atomicity and shared lineage repair only; sourcefree TEST_ONLY; no native/scientific/A5 grant",
+  "not_run": [
+    "full 444-file test recensus",
+    "native CAN/ADP/C8/Pyat/C11/native C12",
+    "provider calls or human A5",
+    "cross-root determinism",
+    "original B pre-C8 severance beyond bounded receiving-edge evidence"
+  ]
+}
