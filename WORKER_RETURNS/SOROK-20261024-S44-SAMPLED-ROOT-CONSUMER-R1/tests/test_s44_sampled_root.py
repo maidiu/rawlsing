@@ -13,6 +13,7 @@ install()
 
 from s44.bundle import default_bundle, normalize_bundle  # noqa: E402
 from s44.errors import S44Refusal  # noqa: E402
+from s44.rng import candidate_replay_hash, sha256_hex  # noqa: E402
 from s44.root import generate_root  # noqa: E402
 from s44.session import ROOT_FILE, S44Session  # noqa: E402
 from s37.harness import case_for, source_for  # noqa: E402
@@ -78,6 +79,18 @@ def test_candidate_order_and_unrelated_stream_do_not_perturb_decisions():
     assert reordered.receipt["draw_receipts"] == baseline.receipt["draw_receipts"]
 
     extra = _bundle("22" * 32)
+    unused = deepcopy(extra["rules"]["joint_units"]["candidates"][0])
+    unused["candidate_id"] = "unused_1"
+    unused["source_ref"] = "TEST_ONLY_UNUSED_SOURCE"
+    unused["eligibility_payload"] = {
+        **unused["eligibility_payload"],
+        "candidate_id": "unused_1",
+        "source_ref": "TEST_ONLY_UNUSED_SOURCE",
+    }
+    unused["eligibility_or_admission_receipt_hash"] = sha256_hex(
+        unused["eligibility_payload"]
+    )
+    unused["candidate_replay_hash"] = candidate_replay_hash(unused)
     extra["rules"]["unused_observation"] = {
         "rule_id": "S44_UNUSED_OBSERVATION",
         "rule_version": "1",
@@ -87,10 +100,7 @@ def test_candidate_order_and_unrelated_stream_do_not_perturb_decisions():
         "scope_id": "S44_ROOT",
         "operation": "WEIGHTED_CANDIDATE_INTEGER",
         "candidate_owner_authority": "TEST_ONLY_UNUSED",
-        "candidates": [{
-            "candidate_id": "unused_1", "value": 1, "weight_units": 1,
-            "source_ref": "TEST_ONLY_UNUSED_SOURCE",
-        }],
+        "candidates": [unused],
     }
     with_extra = generate_root(extra)
     assert with_extra.root_hash != baseline.root_hash
@@ -212,7 +222,10 @@ def test_changed_root_rule_is_refused_at_actual_reader_then_restored(tmp_path):
                          encoding="utf8")
     with pytest.raises(S44Refusal) as exc:
         S44Session.open(state)
-    assert exc.value.code == "S44_ROOT_REPLAY_MISMATCH"
+    assert exc.value.code in {
+        "S44_ROOT_REPLAY_MISMATCH",
+        "S44_CANDIDATE_REPLAY_HASH_MISMATCH",
+    }
     root_path.write_text(original, encoding="utf8")
     restored = S44Session.open(state)
     try:
@@ -235,3 +248,79 @@ def test_frozen_root_survives_attention_change(tmp_path):
         assert changed.verify()["ok"] is True
     finally:
         changed.close()
+
+
+def test_adp020_candidate_and_coordinate_contract_is_complete():
+    root = generate_root(_bundle("88" * 32))
+    required_candidate = {
+        "candidate_id", "candidate_replay_hash", "candidate_authority_id",
+        "candidate_authority_version",
+        "eligibility_or_admission_receipt_hash", "weight_units",
+    }
+    required_coordinate = {
+        "scope_kind", "scope_id", "stream_name", "anchor_event_index",
+        "anchor_event_id_or_init_checkpoint_hash", "rule_invocation_id",
+        "decision_slot", "occurrence_index", "draw_index",
+    }
+    weighted = [
+        row for row in root.receipt["draw_receipts"]
+        if row["operation"] == "WEIGHTED_CANDIDATE_INTEGER"
+    ]
+    assert weighted
+    for draw in weighted:
+        for entry in draw["candidate_set"]["entries"]:
+            assert required_candidate.issubset(entry)
+            assert entry["candidate_replay_hash"] == candidate_replay_hash(entry)
+        assert required_coordinate.issubset(draw["coordinate"])
+        assert "anchor_event_id" not in draw["coordinate"]
+        assert draw["draw_receipt"]["schema"] == "ADP020_DRAW_RECEIPT_V1"
+        assert draw["draw_receipt"]["draw_replay_hash"]
+        assert draw["draw_receipt"]["draw_coordinate_hash"] == sha256_hex(
+            draw["coordinate"]
+        )
+
+
+def test_changed_candidate_payload_requires_new_proof_and_changes_identity():
+    baseline = generate_root(_bundle("99" * 32))
+    stale = _bundle("99" * 32)
+    candidate = stale["rules"]["joint_time"]["candidates"][0]
+    candidate["value"] = int(candidate["value"]) + 1
+    with pytest.raises(S44Refusal) as exc:
+        generate_root(stale)
+    assert exc.value.code == "S44_CANDIDATE_REPLAY_HASH_MISMATCH"
+
+    stale_eligibility = _bundle("99" * 32)
+    candidate = stale_eligibility["rules"]["joint_time"]["candidates"][0]
+    candidate["value"] = int(candidate["value"]) + 1
+    candidate["candidate_replay_hash"] = candidate_replay_hash(candidate)
+    with pytest.raises(S44Refusal) as exc:
+        generate_root(stale_eligibility)
+    assert exc.value.code in {
+        "S44_CANDIDATE_ELIGIBILITY_HASH_MISMATCH",
+        "S44_CANDIDATE_ELIGIBILITY_PAYLOAD_MISMATCH",
+    }
+
+    changed = _bundle("99" * 32)
+    candidate = changed["rules"]["joint_time"]["candidates"][0]
+    candidate["value"] = int(candidate["value"]) + 1
+    candidate["eligibility_payload"] = {
+        **candidate["eligibility_payload"],
+        "value": candidate["value"],
+    }
+    candidate["eligibility_or_admission_receipt_hash"] = sha256_hex(
+        candidate["eligibility_payload"]
+    )
+    candidate["candidate_replay_hash"] = candidate_replay_hash(candidate)
+    changed_root = generate_root(changed)
+    base_draw = next(
+        row for row in baseline.receipt["draw_receipts"]
+        if row["rule_name"] == "joint_time"
+    )
+    changed_draw = next(
+        row for row in changed_root.receipt["draw_receipts"]
+        if row["rule_name"] == "joint_time"
+    )
+    assert changed_draw["candidate_set_hash"] != base_draw["candidate_set_hash"]
+    assert changed_draw["decision_replay_identity_hash"] != (
+        base_draw["decision_replay_identity_hash"]
+    )

@@ -35,12 +35,17 @@ install()
 from s42.session import S42Session  # noqa: E402
 from s44.bundle import default_bundle, normalize_bundle  # noqa: E402
 from s44.errors import S44Refusal  # noqa: E402
+from s44.rng import candidate_replay_hash, sha256_hex  # noqa: E402
 from s44.root import generate_root  # noqa: E402
 from s44.session import ROOT_FILE, S44Session  # noqa: E402
 from s37.harness import case_for, source_for  # noqa: E402
 
 S43_RETURN = Path(roots()["s43_return"])
 S42_RETURN = Path(roots()["s42_return"])
+REVIEW_ADP020 = Path(
+    "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/"
+    "sorok-incumbent-review/SOROK_REVIEW/S44/evidence/repro_adp020_contract.py"
+)
 S43_FILES = [
     "s43/__init__.py", "s43/bootstrap.py", "s43/errors.py", "s43/fixtures.py",
     "s43/performer.py", "s43/planner.py", "s43/reader.py", "s43/registry.py",
@@ -151,6 +156,18 @@ def root_evidence():
     replayed = generate_root(_bundle("11" * 32))
     reordered = generate_root(_reverse_candidates(_bundle("11" * 32)))
     extra = _bundle("11" * 32)
+    unused = deepcopy(extra["rules"]["joint_units"]["candidates"][0])
+    unused["candidate_id"] = "unused_1"
+    unused["source_ref"] = "TEST_ONLY_UNUSED_SOURCE"
+    unused["eligibility_payload"] = {
+        **unused["eligibility_payload"],
+        "candidate_id": "unused_1",
+        "source_ref": "TEST_ONLY_UNUSED_SOURCE",
+    }
+    unused["eligibility_or_admission_receipt_hash"] = sha256_hex(
+        unused["eligibility_payload"]
+    )
+    unused["candidate_replay_hash"] = candidate_replay_hash(unused)
     extra["rules"]["unused_observation"] = {
         "rule_id": "S44_UNUSED_OBSERVATION",
         "rule_version": "1",
@@ -159,9 +176,7 @@ def root_evidence():
         "scope_kind": "RUN", "scope_id": "S44_ROOT",
         "operation": "WEIGHTED_CANDIDATE_INTEGER",
         "candidate_owner_authority": "TEST_ONLY_UNUSED",
-        "candidates": [{"candidate_id": "unused_1", "value": 1,
-                        "weight_units": 1,
-                        "source_ref": "TEST_ONLY_UNUSED_SOURCE"}],
+        "candidates": [unused],
     }
     with_extra = generate_root(extra)
     seeds = {}
@@ -347,7 +362,15 @@ def fault_evidence(state):
     finally:
         restored.close()
     changed = _bundle("66" * 32)
-    changed["rules"]["a_material"]["candidates"][0]["weight_units"] = 99
+    candidate = changed["rules"]["joint_time"]["candidates"][0]
+    candidate["value"] = int(candidate["value"]) + 1
+    candidate["eligibility_payload"] = {
+        **candidate["eligibility_payload"], "value": candidate["value"],
+    }
+    candidate["eligibility_or_admission_receipt_hash"] = sha256_hex(
+        candidate["eligibility_payload"]
+    )
+    candidate["candidate_replay_hash"] = candidate_replay_hash(candidate)
     changed_root = generate_root(changed)
     missing = _bundle("66" * 32)
     del missing["rules"]["a_material"]
@@ -393,6 +416,28 @@ def attention_evidence(state):
         }
     finally:
         cold.close()
+
+
+def adp020_contract_evidence() -> dict:
+    env = dict(ENV, S44_RETURN=str(RET))
+    proc = subprocess.run(
+        [PY, str(REVIEW_ADP020)], cwd=str(RET), env=env,
+        capture_output=True, text=True,
+    )
+    (LOGS / "repro_adp020_contract.log").write_text(proc.stdout + proc.stderr)
+    try:
+        report = json.loads(proc.stdout)
+    except json.JSONDecodeError:
+        report = {}
+    return {
+        "schema": "SOROK_S44_ADP020_CONTRACT@1",
+        "oracle": str(REVIEW_ADP020),
+        "oracle_sha256": _sha256(REVIEW_ADP020),
+        "exit": proc.returncode,
+        "refused": proc.returncode != 0,
+        "report": report,
+        "stderr_tail": proc.stderr.strip().splitlines()[-3:],
+    }
 
 
 def test_evidence() -> dict:
@@ -482,6 +527,7 @@ def main() -> None:
         faults = fault_evidence(work / "faults")
         attention = attention_evidence(work / "attention")
         tests = test_evidence()
+        adp020 = adp020_contract_evidence()
         entry = _run([PY, "-B", "run_s44.py"], "entrypoint.log")
         if entry.returncode != 0:
             raise RuntimeError("S44_ENTRYPOINT_FAILED:" + entry.stderr)
@@ -496,9 +542,22 @@ def main() -> None:
             "schema": "SOROK_S44_TEST_RUN@1", "rows": tests,
             "entrypoint_exit": entry.returncode,
         })
+        _write(EVID / "adp020_contract.json", adp020)
         _write(EVID / "source_manifest.json", source_manifest())
         print(json.dumps({
             "tests": {key: value["counts"] for key, value in tests.items()},
+            "adp020_contract": {
+                "exit": adp020["exit"],
+                "candidate_missing": adp020.get("report", {}).get(
+                    "candidate_missing_required_fields"
+                ),
+                "coordinate_missing": adp020.get("report", {}).get(
+                    "coordinate_missing_required_fields"
+                ),
+                "coordinate_has_old_anchor": adp020.get("report", {}).get(
+                    "coordinate_has_anchor_event_id"
+                ),
+            },
             "entrypoint_exit": entry.returncode,
             "replay_exact": root["replay_exact"],
             "candidate_order_isolated": root["candidate_order_isolated"],

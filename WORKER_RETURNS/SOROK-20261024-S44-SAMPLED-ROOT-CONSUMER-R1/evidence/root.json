@@ -3,17 +3,17 @@
     "TEST_ONLY_BP1_R26V_ACTOR_A",
     "TEST_ONLY_BP1_R26V_ACTOR_B"
   ],
-  "bundle_hash": "6e9b608381d2a5808824a73f35272b327d61d04f89ac0c612f8c3105d1fb48ab",
+  "bundle_hash": "ac388eea0a8736111d4d0bc2ca31a96193fce3d54579a2591453448a3b22867d",
   "candidate_order_isolated": true,
   "conditional_predecessors": {
     "a_optional_decline": {
       "predecessor": "joint_time",
-      "receipt_hash": "610dba4a9193f148c417e22b80631786eeb275a788ca7b4c4a0860577dc28045",
-      "value": 238
+      "receipt_hash": "377702dd2052b7efdc99eb9a986a2e41f8ed7f7abd119c9172947060c58354bc",
+      "value": 210
     },
     "b_extra_refusal": {
       "predecessor": "a_material",
-      "receipt_hash": "40c2f227f04a53ddb5a79a0d9d5150c1516c78936240cf74c24e9ff6af6953d4",
+      "receipt_hash": "f086751f2bba284a816513aee61965ad3c2249d2053e84b5de5d2578469abb75",
       "value": 4
     }
   },
@@ -22,11 +22,11 @@
     "rule_name": "a_material",
     "rules": [
       {
-        "candidate_set_hash": "0b440040c66c58dd27236569ba84cb74c0db093de451242cf9e9959a95d0133d",
+        "candidate_set_hash": "b6f257bef3c047474c076161ba161e79362c9dedd63cdc5ff537cfda603cda4b",
         "conditioned_on_value": null,
         "draw_consumed": true,
         "operation": "WEIGHTED_CANDIDATE_INTEGER",
-        "replay_identity": "d01f40bd06cbe22bea088f8cfde92dc96c484e7953ac4af8cc49f0a9c7fa6734",
+        "replay_identity": "49b341bf1ddf570d93cbb949c5abd1e5d25f9f79cbfb1418cb955452478c6733",
         "rule_id": "S44_A_MATERIAL",
         "rule_name": "a_material",
         "rule_version": "1",
@@ -34,11 +34,11 @@
         "stream_name": "v3.causal.s44.initial.a_material"
       },
       {
-        "candidate_set_hash": "3e54e391b10af240d1e6789e2eb6adb6321ebf04bb34d85c5b9b00f30043328a",
+        "candidate_set_hash": "62d684e7e9a14f8180bb0d93c303e22df88dd588abc41f30e64c33ec1ab9d009",
         "conditioned_on_value": null,
         "draw_consumed": true,
         "operation": "WEIGHTED_CANDIDATE_INTEGER",
-        "replay_identity": "1f0f01e4019e2005dec14696781d6bd7e3db4fe2653eb364549d195f1cea7424",
+        "replay_identity": "7404ccf6aaf34037b02a16bec948fd0a977010af31f29636ec8c0894307be1d5",
         "rule_id": "S44_B_MATERIAL",
         "rule_name": "b_material",
         "rule_version": "1",
@@ -46,35 +46,35 @@
         "stream_name": "v3.causal.s44.initial.b_material"
       },
       {
-        "candidate_set_hash": "70e546de367cf33e9a9ba47a56a3421ff1151b74298f02d913760fb5706348a4",
+        "candidate_set_hash": "a2c84b19d67d4deac9d13b39f51874231a33097fb818e70d1bdc6a9bbcefd241",
         "conditioned_on_value": null,
         "draw_consumed": true,
         "operation": "WEIGHTED_CANDIDATE_INTEGER",
-        "replay_identity": "e3a6a71d59f679d0e23484ed79c3dcfe690b56d0832495084a9c771b8e2584ce",
+        "replay_identity": "f07fb4e4c871ee0583c926398dbce3018aaa05f8d17689bc1d687bc4065a0295",
         "rule_id": "S44_A_CASH",
         "rule_name": "a_cash",
         "rule_version": "1",
-        "selected_value": 18,
+        "selected_value": 36,
         "stream_name": "v3.causal.s44.initial.a_cash"
       },
       {
-        "candidate_set_hash": "8d3de22ebf7ff5d2f0e7a08f3dd206be44a6c6d739e910706b6578ffd761d5f8",
+        "candidate_set_hash": "c35fae94174d0a48e7bec9c1d1df10dad0a9854acbc8de0d85266175eb159539",
         "conditioned_on_value": null,
         "draw_consumed": true,
         "operation": "WEIGHTED_CANDIDATE_INTEGER",
-        "replay_identity": "35df11f4be82f08d3cde940a93e0544d2b94784b9188d799adf1bb6df2d960ae",
+        "replay_identity": "407e7eba7914c4a882154602e69434e4de3c2a98bfeccbb0cd33fad35927aa4c",
         "rule_id": "S44_B_CASH",
         "rule_name": "b_cash",
         "rule_version": "1",
-        "selected_value": 22,
+        "selected_value": 16,
         "stream_name": "v3.causal.s44.initial.b_cash"
       },
       {
-        "candidate_set_hash": "cfad1659a6eed3c33c82ac2c06c6107fc47e5d7e9ef7312f5962d50f00cadc73",
+        "candidate_set_hash": "a48c8b4550c11c538b1e578d709b051a773444c93c1bc33626b0b268c156cfe4",
         "conditioned_on_value": null,
         "draw_consumed": true,
         "operation": "WEIGHTED_CANDIDATE_INTEGER",
-        "replay_identity": "e2e61d7332c86b21a9eafc41ec6d0521b6955b6d9f4b527d8a50c7753306f02b",
+        "replay_identity": "41ae36a144d4be42e704e0a83955b76ed34e2b0577442f4269a6d20265a8b8fe",
         "rule_id": "S44_A_HOURS",
         "rule_name": "a_hours",
         "rule_version": "1",
@@ -82,11 +82,11 @@
         "stream_name": "v3.causal.s44.initial.a_hours"
       },
       {
-        "candidate_set_hash": "b65c72291338d301a6fa5630b2ad46301262b5865186707a0088b7a9be45247f",
+        "candidate_set_hash": "7584a9c769cdf39306c7ec3134f20ce18d8c086c74bd293969bedde154ec8d74",
         "conditioned_on_value": null,
         "draw_consumed": true,
         "operation": "WEIGHTED_CANDIDATE_INTEGER",
-        "replay_identity": "6c2a2aa00ecbc88383d734b90b09bd9cb4f78f6ca7fe1690e3e3deb30268c528",
+        "replay_identity": "0ea9454a7d492977332147f75c4dc86b36da63b13af9474d58d82b0e0c7177a7",
         "rule_id": "S44_B_HOURS",
         "rule_name": "b_hours",
         "rule_version": "1",
@@ -94,11 +94,11 @@
         "stream_name": "v3.causal.s44.initial.b_hours"
       },
       {
-        "candidate_set_hash": "b81858b5cbfb4ede8864ede8f4a766c5b6bb2fc1bf4c990d9d7116c06c39ca4f",
+        "candidate_set_hash": "fd2b2afd1f4b6cdcfef4f75a1782d8457d11e460ec0f177c77854544320a2293",
         "conditioned_on_value": null,
         "draw_consumed": true,
         "operation": "WEIGHTED_CANDIDATE_INTEGER",
-        "replay_identity": "4e74ec04ec17bb506056be78e2d45518a69d1866d9d38494367baf6be6b1bb7a",
+        "replay_identity": "00ab118e2ca62ee4cc80670f3fedc79a2b2cd642b3c999812460c328f0c00d6a",
         "rule_id": "S44_A_BIRTH",
         "rule_name": "a_birth",
         "rule_version": "1",
@@ -106,59 +106,59 @@
         "stream_name": "v3.causal.s44.initial.a_birth"
       },
       {
-        "candidate_set_hash": "358f90d30f775052dfed9e8c319ea69e8c30d26837ba744b5f03cef0790f024c",
+        "candidate_set_hash": "21378a6f728a41ef4c6fa79be96fd918494cb76c01cf0871e6ea4b1de56f7a5b",
         "conditioned_on_value": null,
         "draw_consumed": true,
         "operation": "WEIGHTED_CANDIDATE_INTEGER",
-        "replay_identity": "8d458937be2812c7c3fb921b6d8eade1c7f0dbb5c75a724e0764113545883968",
+        "replay_identity": "e1d1980ac3c9ef19c378c144ad17041324bf34f2a16c1bc1fda18d4801645576",
         "rule_id": "S44_B_BIRTH",
         "rule_name": "b_birth",
         "rule_version": "1",
-        "selected_value": 16,
+        "selected_value": 10,
         "stream_name": "v3.causal.s44.initial.b_birth"
       },
       {
-        "candidate_set_hash": "e833732f67ebbdcd357ad8d40edf78909c9cac2e8a2ff8c16b42ab1e1020761b",
+        "candidate_set_hash": "ad3959604eee09bb03735d3f175ba6a956543396318c994fe4e43026c7b8f61f",
         "conditioned_on_value": null,
         "draw_consumed": true,
         "operation": "WEIGHTED_CANDIDATE_INTEGER",
-        "replay_identity": "d0d2822019852f1447513c69bfa45739d431cce14751f77946cd718e321dbef5",
+        "replay_identity": "d88e1931b6b262d5b21637273f19aa0f34d7b0a18697361412e803edf5099dbe",
         "rule_id": "S44_JOINT_TIME",
         "rule_name": "joint_time",
         "rule_version": "1",
-        "selected_value": 238,
+        "selected_value": 210,
         "stream_name": "v3.causal.s44.joint.time"
       },
       {
-        "candidate_set_hash": "438461784f18bed6e18e06137bb659dd9a5c8f1141e606a47388eb18e8fa859e",
+        "candidate_set_hash": "17a08049e6bd520d503c4a0c7c660c0fce1783d9663de863b2d368bd09324e1f",
         "conditioned_on_value": null,
         "draw_consumed": true,
         "operation": "WEIGHTED_CANDIDATE_INTEGER",
-        "replay_identity": "ef46fa01bbc14604d908b046e77a3d41fc3e475d693a25893f109ee2bcfda0c7",
+        "replay_identity": "dc6e34f7661c02ef88f88152d0b7883d6559bbb7fa02b359b413afd87ec769b1",
         "rule_id": "S44_JOINT_PAYMENT",
         "rule_name": "joint_payment",
         "rule_version": "1",
-        "selected_value": 3,
+        "selected_value": 4,
         "stream_name": "v3.causal.s44.joint.payment"
       },
       {
-        "candidate_set_hash": "a5bf799f78c11d9edd3d1db9fdb66e5a3b8c9906013b3db63dd2a5e7948f88b7",
+        "candidate_set_hash": "4c03b117f44e8c5769e869a93f60dd07ccc7dd9f3c5d7dc45827071f49bb7769",
         "conditioned_on_value": null,
         "draw_consumed": true,
         "operation": "WEIGHTED_CANDIDATE_INTEGER",
-        "replay_identity": "a6f4a461b9f772b332bb609a165e76fb2a5f5258ede036033fc0190b0807a99b",
+        "replay_identity": "7ec87fdcad7d68f4ef4d2dd8ae3616d34d72ebd293e8565db92e53379d6cc9ea",
         "rule_id": "S44_JOINT_HOURS",
         "rule_name": "joint_hours",
         "rule_version": "1",
-        "selected_value": 3,
+        "selected_value": 1,
         "stream_name": "v3.causal.s44.joint.hours"
       },
       {
-        "candidate_set_hash": "822a0965dd3043b916b06907d682d66aed5b393527cfae74bf294bb72dc1487a",
+        "candidate_set_hash": "5c39055f15e763b049b7e0af9ac67a173b463ff545c8daef8f7559dc7cd94b3b",
         "conditioned_on_value": null,
         "draw_consumed": true,
         "operation": "WEIGHTED_CANDIDATE_INTEGER",
-        "replay_identity": "105e528a2be62fc7df8bf34beb228002256d427f053b78b02890ad0b3726b2e6",
+        "replay_identity": "1b71c7009d810014a9fa38b8c399c943ec23d56dc5e12137d654ebb9aae607a4",
         "rule_id": "S44_JOINT_UNITS",
         "rule_name": "joint_units",
         "rule_version": "1",
@@ -170,7 +170,7 @@
         "conditioned_on_value": 4,
         "draw_consumed": true,
         "operation": "BERNOULLI_RATIONAL",
-        "replay_identity": "40c2f227f04a53ddb5a79a0d9d5150c1516c78936240cf74c24e9ff6af6953d4",
+        "replay_identity": "f086751f2bba284a816513aee61965ad3c2249d2053e84b5de5d2578469abb75",
         "rule_id": "S44_B_EXTRA_REFUSAL",
         "rule_name": "b_extra_refusal",
         "rule_version": "1",
@@ -179,10 +179,10 @@
       },
       {
         "candidate_set_hash": "",
-        "conditioned_on_value": 238,
+        "conditioned_on_value": 210,
         "draw_consumed": true,
         "operation": "BERNOULLI_RATIONAL",
-        "replay_identity": "610dba4a9193f148c417e22b80631786eeb275a788ca7b4c4a0860577dc28045",
+        "replay_identity": "377702dd2052b7efdc99eb9a986a2e41f8ed7f7abd119c9172947060c58354bc",
         "rule_id": "S44_A_OPTIONAL_DECLINE",
         "rule_name": "a_optional_decline",
         "rule_version": "1",
@@ -193,19 +193,19 @@
   },
   "event_refs": {
     "TEST_ONLY_BP1_R26V_ACTOR_A": [
-      "TEST_ONLY_BP1_EVT_e3be0417826ca19a16bf71fa90f5e8d89f3628d245441c830a6a6add603d9a44",
-      "TEST_ONLY_BP1_EVT_0c3c8511f4c77813be623445b09d91f088a6f4f89674f25314141b34408ae580",
-      "TEST_ONLY_BP1_EVT_0b3a2f915c0fb48cea4fc8f8a1d53b00dd1a41b72e5c18287ec05430ce6c0e2b",
-      "TEST_ONLY_BP1_EVT_e65fa69a221e91eec2039848c15360f0f607d6261aa7075a60112850d30436ac",
-      "TEST_ONLY_BP1_EVT_2623de2b904ac616f40fc23868c129d39e251c2e9918fa85e63b731ead8242c1"
+      "TEST_ONLY_BP1_EVT_666e18acee84591017e7c2dc19e73271d9f9529b04f4ab3bff370adb088be99e",
+      "TEST_ONLY_BP1_EVT_007fa5dfb7c45da5132a347292d109a0eed6f5de8270d68e1342e3f09ab6f062",
+      "TEST_ONLY_BP1_EVT_97d55f566672c4d06dfb66248c71b2175f2808a0ced760e57881417b8c191b02",
+      "TEST_ONLY_BP1_EVT_74d38ec93d0e772509790a745fbb25dd349c71388fb7c4a8f74264481ab0d952",
+      "TEST_ONLY_BP1_EVT_0cbbf740a5b0c22eb00c4c666509a9e2aa7908e1e7aaba894c0cff2ca1e67f46"
     ],
     "TEST_ONLY_BP1_R26V_ACTOR_B": [
-      "TEST_ONLY_BP1_EVT_65f6ae32b67bf124f35f05b53f36b6436ad4a3330a38b1f7a6ce36473c970935",
-      "TEST_ONLY_BP1_EVT_6c7580cd6bb6f14c024421a3844d9a48528cc99219e2177195b7e614c4c3edce",
-      "TEST_ONLY_BP1_EVT_c0e5ecedcb793423c0af27f78366fc6fd93e901fef701f94dcf61b0854c2e0a9",
-      "TEST_ONLY_BP1_EVT_033b2d929a0a252cfbb900fb72cddaf26c5d69ad0c2e0c7cdfdc7acb20417bef",
-      "TEST_ONLY_BP1_EVT_f51e7fe409fb3a578018bfeacac956729bf26cea5cb4a69f816152b4b3f59dd0",
-      "TEST_ONLY_BP1_EVT_b4bdd305519047c5bea6a7693d674ab1231044bf51779e671576b2fe76c8fe9f"
+      "TEST_ONLY_BP1_EVT_30884cf2fd52b0f69938b6a4fd4d72f43701de5c0ad0dd3d24122b4d5e721368",
+      "TEST_ONLY_BP1_EVT_2f489bf044ba45ed660dce0ad7183c156e52b3a718818bd5dd1106625536f601",
+      "TEST_ONLY_BP1_EVT_0873590bebd88968805056c5353ebc8ec2e67ab58c36495d0b0c4bd400a89cd0",
+      "TEST_ONLY_BP1_EVT_ec93290d93bfd62ccd9c433cba6e93d12f031a5dc90b9379714170c5cdf57a3e",
+      "TEST_ONLY_BP1_EVT_9907917ff5fc76589c024ddc09b5c1fcc9a1ca362c278b723caf22893e2bb12d",
+      "TEST_ONLY_BP1_EVT_ac404f584983c8d91eb4c7fb3952f0537829adc31e94680ec5e872a8e84c6b93"
     ]
   },
   "g18_history_hashes": {
@@ -214,40 +214,40 @@
   },
   "initial_facts": {
     "a_birth_clock": 13,
-    "a_cash": 18,
+    "a_cash": 36,
     "a_free_hours": 24,
     "a_material": 4,
-    "b_birth_clock": 16,
-    "b_cash": 22,
+    "b_birth_clock": 10,
+    "b_cash": 16,
     "b_free_hours": 22,
     "b_material": 3
   },
   "joint": {
-    "effective_index": 238,
-    "material_event_ref": "sha256:e3e6a5e3ff4912964a7c41226eb7675029d062d573d300469990c62621754845",
-    "objective_ref": "TEST_ONLY_BP1_OBJ_4d95759fd3c8b254b2011b9f2ef9d097839fc0fd129eacba0c2c4f3408b08b96",
-    "payment_per_actor": 3,
-    "task_hours": 3,
+    "effective_index": 210,
+    "material_event_ref": "sha256:09e7c710f249e4ea4592655ef7330cc87f319968a2e4773ef2e7d770812ef836",
+    "objective_ref": "TEST_ONLY_BP1_OBJ_605816190884935e9d0f48e46cb774da0e4f9b5aab94fd3e6bcdd13b0cdf0be4",
+    "payment_per_actor": 4,
+    "task_hours": 1,
     "units": 1,
-    "witness_ref": "sha256:91d14b6591dbaa40f6536f5b1fd32df3f253ed6728244076e369fe279bd30508"
+    "witness_ref": "sha256:dece04c2ec8933225674f05b6b8a32b97c83d4d97efcdfbb403aa00512cbcd7e"
   },
   "no_effect_branches": [
     "a_optional_decline"
   ],
   "product_model_calls": 0,
   "replay_exact": true,
-  "root_hash": "a00294c994a748bb2f78e9829fd2233a96e4893751cde45466a612ca0fc20523",
-  "root_id": "S44_ROOT_A00294C994A748BB2F78E982",
+  "root_hash": "84687e6f34116693c00243b4c7e7e76fa0f24146b992b372d8920cab153cb930",
+  "root_id": "S44_ROOT_84687E6F34116693C00243B4",
   "root_seed_sha256": "02d449a31fbb267c8f352e9968a79e3e5fc95c1bbeaa502fd6454ebde5a4bedc",
   "schema": "SOROK_S44_ROOT_EVIDENCE@1",
   "seed_divergence": {
     "distinct_roots": 20,
     "distinct_selected_sets": 20,
     "examples": {
-      "0000000000000000000000000000000000000000000000000000000000000000": "69ac8334e92f9f5d9766bc5e0134c72a47f9369a0e59f6002506edae26dba628",
-      "0101010101010101010101010101010101010101010101010101010101010101": "9aef45240cadecb9061440f0a5b5bcf07c110d4d0df2c64158693ec14b0081c7",
-      "0202020202020202020202020202020202020202020202020202020202020202": "8d4408a7f0de7317d0ec68967ac482a2aff9667090c181730f789900e5173355",
-      "0303030303030303030303030303030303030303030303030303030303030303": "9e5893c852c3849e798788023dca92a7f1583dceb1c2d871dc88b5d05ade1ac9"
+      "0000000000000000000000000000000000000000000000000000000000000000": "7cff70ca86e236c0996ccf2aa4597deb035b98db1e31bdda7a974dd7bb297757",
+      "0101010101010101010101010101010101010101010101010101010101010101": "689b159acce877e29d94bbfb5859ae47d231a375158a84113cfb131c7f6c07f5",
+      "0202020202020202020202020202020202020202020202020202020202020202": "c625451ae3660a8fb71c9e3d444b8d24f7cb7294f99d072a691cf15d20a5294b",
+      "0303030303030303030303030303030303030303030303030303030303030303": "4c8099ae4e981088cbec04adaa37527a29dc2d47ee78cc30ae1bffcf9ff2a9e0"
     },
     "nondegenerate": true,
     "seeds_checked": 20
@@ -258,24 +258,24 @@
     "conditions": {
       "a_optional_decline": {
         "predecessor": "joint_time",
-        "receipt_hash": "610dba4a9193f148c417e22b80631786eeb275a788ca7b4c4a0860577dc28045",
-        "value": 238
+        "receipt_hash": "377702dd2052b7efdc99eb9a986a2e41f8ed7f7abd119c9172947060c58354bc",
+        "value": 210
       },
       "b_extra_refusal": {
         "predecessor": "a_material",
-        "receipt_hash": "40c2f227f04a53ddb5a79a0d9d5150c1516c78936240cf74c24e9ff6af6953d4",
+        "receipt_hash": "f086751f2bba284a816513aee61965ad3c2249d2053e84b5de5d2578469abb75",
         "value": 4
       }
     }
   },
   "selected_finished_life": false,
   "snapshot_hashes": {
-    "a": "c161d07ee8ef38007670c0f9edc6eb9eb1c1c8a0a0c5870ae4e57ed10c5a2afa",
-    "b": "452b6174a68c1bc39ca54bbd26027eb076965b3404dd035c8c6378dccb0767fe"
+    "a": "09c5e88fd999fbc1e2b64c7898b3309ed4c053293c94932ef97c6bb0461df77b",
+    "b": "7d375fb5e3e62e6eaa72c5a2284b934d195e9fda0d7805bc6a992807d28189b2"
   },
   "source_hashes": [
-    "9c76c56db75dc634199382ee2153f71cb8f75cf7d401a81a2301b6d8928464b5",
-    "19580aa77ba44655204f699b14be224cf080f3afc88598d2843a9c2adaa28bf9"
+    "1c142eb985911f2c4e8a0def044b2c9802e0f30bb74d5c158a46814396f6b8ed",
+    "f2d560f60763e631b5a81a3368f558b86fdc9258f443ebdfe8ec76fb7caf8dd5"
   ],
   "unrelated_stream_isolated": true
 }

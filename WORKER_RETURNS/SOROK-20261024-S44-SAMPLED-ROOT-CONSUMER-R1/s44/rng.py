@@ -79,7 +79,7 @@ def stream_seed(scope: bytes, stream_name: str) -> bytes:
     return _hmac(scope, {"kind": "stream", "stream_name": stream_name})
 
 
-def _uniform_below(stream: bytes, coordinate: Mapping[str, Any], n: int) -> tuple[int, int]:
+def _uniform_below(stream: bytes, coordinate: Mapping[str, Any], n: int) -> tuple[int, int, int]:
     if not isinstance(n, int) or isinstance(n, bool) or not (1 <= n < MAX_U64):
         raise S44Refusal("S44_DRAW_BOUND_INVALID", str(n))
     limit = MAX_U64 - (MAX_U64 % n)
@@ -94,7 +94,7 @@ def _uniform_below(stream: bytes, coordinate: Mapping[str, Any], n: int) -> tupl
         ).digest()
         raw = int.from_bytes(digest[:8], "big")
         if raw < limit:
-            return raw % n, blocks
+            return raw % n, blocks, raw
         blocks += 1
 
 
@@ -104,12 +104,33 @@ def _coordinate(rule: Mapping[str, Any], anchor_id: str, draw_index: int = 0) ->
         "scope_id": rule["scope_id"],
         "stream_name": rule["stream"],
         "anchor_event_index": -1,
-        "anchor_event_id": anchor_id,
+        "anchor_event_id_or_init_checkpoint_hash": anchor_id,
         "rule_invocation_id": "s44.root.initial",
         "decision_slot": rule["rule_id"],
         "occurrence_index": 0,
         "draw_index": draw_index,
     }
+
+
+REQUIRED_CANDIDATE_FIELDS = (
+    "candidate_id",
+    "candidate_replay_hash",
+    "candidate_authority_id",
+    "candidate_authority_version",
+    "eligibility_or_admission_receipt_hash",
+    "weight_units",
+)
+
+
+def candidate_payload(candidate: Mapping[str, Any]) -> dict:
+    return {
+        key: value for key, value in candidate.items()
+        if key != "candidate_replay_hash"
+    }
+
+
+def candidate_replay_hash(candidate: Mapping[str, Any]) -> str:
+    return sha256_hex(candidate_payload(candidate))
 
 
 def _candidate_set(rule: Mapping[str, Any]) -> dict:
@@ -122,11 +143,30 @@ def _candidate_set(rule: Mapping[str, Any]) -> dict:
         if not isinstance(cid, str) or not cid or cid in seen:
             raise S44Refusal("S44_CANDIDATE_INVALID")
         seen.add(cid)
-        if "weight_units" not in candidate:
-            raise S44Refusal("S44_CANDIDATE_WEIGHT_MISSING", cid)
+        for field in REQUIRED_CANDIDATE_FIELDS:
+            if field not in candidate or candidate.get(field) in (None, ""):
+                raise S44Refusal("S44_CANDIDATE_FIELD_MISSING", f"{cid}:{field}")
         weight = candidate.get("weight_units")
         if not isinstance(weight, int) or isinstance(weight, bool) or weight < 0:
             raise S44Refusal("S44_CANDIDATE_WEIGHT_INVALID", cid)
+        if candidate["candidate_replay_hash"] != candidate_replay_hash(candidate):
+            raise S44Refusal("S44_CANDIDATE_REPLAY_HASH_MISMATCH", cid)
+        eligibility_payload = candidate.get("eligibility_payload")
+        eligibility_hash = candidate.get("eligibility_or_admission_receipt_hash")
+        if isinstance(eligibility_payload, Mapping):
+            for field in (
+                "candidate_id", "value", "source_ref",
+                "candidate_authority_id", "candidate_authority_version",
+            ):
+                if eligibility_payload.get(field) != candidate.get(field):
+                    raise S44Refusal(
+                        "S44_CANDIDATE_ELIGIBILITY_PAYLOAD_MISMATCH",
+                        f"{cid}:{field}",
+                    )
+            if eligibility_hash != sha256_hex(eligibility_payload):
+                raise S44Refusal(
+                    "S44_CANDIDATE_ELIGIBILITY_HASH_MISMATCH", cid
+                )
         entries.append(dict(candidate))
     if not rule.get("candidate_owner_authority"):
         raise S44Refusal("S44_CANDIDATE_AUTHORITY_MISSING", rule.get("rule_id", ""))
@@ -238,11 +278,12 @@ def draw_candidate(
         receipt.update({
             "draw_consumed": False,
             "selected_candidate_id": selected["candidate_id"],
+            "selected_candidate_replay_hash": selected["candidate_replay_hash"],
             "selected_value": selected.get("value"),
             "entropy_block_count": 0,
         })
     else:
-        value, blocks = _uniform_below(stream, coord, total)
+        value, blocks, raw = _uniform_below(stream, coord, total)
         cursor = 0
         selected = None
         for row in cset["entries"]:
@@ -256,8 +297,26 @@ def draw_candidate(
             "draw_consumed": True,
             "uniform_value": value,
             "selected_candidate_id": selected["candidate_id"],
+            "selected_candidate_replay_hash": selected["candidate_replay_hash"],
             "selected_value": selected.get("value"),
             "entropy_block_count": blocks,
+            "accepted_raw_u64": raw,
+            "uniform_below_n": total,
+            "mapped_result": selected["candidate_id"],
+            "draw_coordinate_hash": sha256_hex(coord),
+            "draw_receipt": {
+                "schema": "ADP020_DRAW_RECEIPT_V1",
+                "draw_index": 0,
+                "entropy_block_count": blocks,
+                "uniform_below_n": total,
+                "accepted_raw_u64": raw,
+                "mapped_result": selected["candidate_id"],
+                "draw_coordinate_hash": sha256_hex(coord),
+            },
+        })
+        receipt["draw_receipt"]["draw_replay_hash"] = sha256_hex({
+            "coordinate": coord,
+            "draw_receipt": receipt["draw_receipt"],
         })
     if conditional_value is not None:
         receipt["conditioned_on_value"] = conditional_value
@@ -288,11 +347,26 @@ def draw_bernoulli(
             "entropy_block_count": 0,
         })
     else:
-        draw, blocks = _uniform_below(stream, coord, denominator)
+        draw, blocks, raw = _uniform_below(stream, coord, denominator)
         value = draw < numerator
         receipt.update({
             "draw_consumed": True, "uniform_value": draw,
             "selected_value": value, "entropy_block_count": blocks,
+            "uniform_below_n": denominator, "accepted_raw_u64": raw,
+            "mapped_result": value, "draw_coordinate_hash": sha256_hex(coord),
+            "draw_receipt": {
+                "schema": "ADP020_DRAW_RECEIPT_V1",
+                "draw_index": 0,
+                "entropy_block_count": blocks,
+                "uniform_below_n": denominator,
+                "accepted_raw_u64": raw,
+                "mapped_result": value,
+                "draw_coordinate_hash": sha256_hex(coord),
+            },
+        })
+        receipt["draw_receipt"]["draw_replay_hash"] = sha256_hex({
+            "coordinate": coord,
+            "draw_receipt": receipt["draw_receipt"],
         })
     if conditional_value is not None:
         receipt["conditioned_on_value"] = conditional_value
@@ -302,5 +376,6 @@ def draw_bernoulli(
 __all__ = [
     "AUTHORITY_ID", "AUTHORITY_VERSION", "SEED_SCHEME_ID", "SAMPLER_ID",
     "canonical_json", "sha256_hex", "seed_bytes", "scope_seed", "stream_seed",
+    "candidate_payload", "candidate_replay_hash", "REQUIRED_CANDIDATE_FIELDS",
     "draw_candidate", "draw_bernoulli",
 ]

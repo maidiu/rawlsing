@@ -21,12 +21,27 @@ FORBIDDEN_KEYS = frozenset({
 
 def _cand(candidate_id: str, value: int, weight: int = 1,
           source_ref: str = "") -> dict:
-    return {
+    source_ref = source_ref or ("TEST_ONLY_S44_CANDIDATE_" + candidate_id.upper())
+    eligibility = {
+        "schema": "S44_TEST_ONLY_CANDIDATE_ELIGIBILITY@1",
+        "candidate_id": candidate_id,
+        "source_ref": source_ref,
+        "value": int(value),
+        "candidate_authority_id": "TEST_ONLY_S44_ROOT_MODEL",
+        "candidate_authority_version": "1",
+    }
+    body = {
         "candidate_id": candidate_id,
         "value": int(value),
         "weight_units": int(weight),
-        "source_ref": source_ref or ("TEST_ONLY_S44_CANDIDATE_" + candidate_id.upper()),
+        "source_ref": source_ref,
+        "candidate_authority_id": "TEST_ONLY_S44_ROOT_MODEL",
+        "candidate_authority_version": "1",
+        "eligibility_payload": eligibility,
+        "eligibility_or_admission_receipt_hash": sha256_hex(eligibility),
     }
+    body["candidate_replay_hash"] = sha256_hex(body)
+    return body
 
 
 def _rule(rule_id: str, stream: str, scope_kind: str, scope_id: str,
