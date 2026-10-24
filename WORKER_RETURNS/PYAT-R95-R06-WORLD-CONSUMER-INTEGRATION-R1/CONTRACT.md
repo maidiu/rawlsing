@@ -1,6 +1,6 @@
 # R95 R06 pre-code contract — source-separated world selected-view binding
 
-Status: frozen before the R06 code commit. Sourcefree TEST_ONLY local trusted
+Status: frozen before the R06 code commit; later actual-joined extension is recorded in ADDENDUM_J42_INTEGRATION.md. Sourcefree TEST_ONLY local trusted
 host. Reuses accepted R05 fixture/products and the unchanged N10E positioned-
 subject consumer via `compose_positioned_subject_possibility`; no new world,
 possibility, FF/F6/F7, evaluator or evidence engine.

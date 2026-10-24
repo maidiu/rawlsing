@@ -2,7 +2,7 @@
 
 Branch: `agent/opencode-pyat-r95-r06-world-consumer-integration-r1`
 
-Code commit: `7f28ca4ad241a749e85ce6bbdac8f25795b80468`
+Current code: `0b64393b2f4b8c28131f868738499475335496ed`
 
 Startup: `a7f5cc70520e5236c24bbac241fad071c026d881`
 
@@ -14,12 +14,13 @@ cd /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01
   --junitxml=WORKER_RETURNS/PYAT-R95-R06-WORLD-CONSUMER-INTEGRATION-R1/junit.xml -o addopts=''
 ```
 
-Expected: `4 passed`.
+Expected: `7 passed` (~2m40s; builds the pinned J42 packet twice for cold proof).
 
 ## Boundary
 
-- Actual N10E two-field selected view plus cold/hostile controls are proven.
-- R05 learned-product integration for the changed two-field predicate remains
-  open; no substitute learned evidence was invented.
-- R04/R05/replacement engines and original science/FF/F6/F7 remain untouched.
-- Distinct reviewer required; no self-adoption.
+- Actual two-field N10E and actual J42/P41 N9/N10W/E04 selected views are proven.
+- Temporal positive is permitted clock-mode/as-of mutation, not an observed F7
+  measured-wave pair; that requirement remains open.
+- R05 candidate learned product is not joined into J42; J42 uses its own pinned
+  E04L learned-release readthrough.
+- No original science, replacement engines, or self-adoption.

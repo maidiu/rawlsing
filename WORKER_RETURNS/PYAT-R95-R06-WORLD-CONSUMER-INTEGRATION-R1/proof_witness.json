@@ -1,36 +1,82 @@
 {
-  "schema": "PYAT_R95_R06_PROOF_WITNESS@1",
+  "schema": "PYAT_R95_R06_PROOF_WITNESS@2",
   "node": "R06",
   "disposition": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
   "branch": "agent/opencode-pyat-r95-r06-world-consumer-integration-r1",
   "startup_commit": "a7f5cc70520e5236c24bbac241fad071c026d881",
   "contract_commit": "2f1d67e87a9803d3db6db2773cf3b2589877999c",
-  "candidate_code_commit": "7f28ca4ad241a749e85ce6bbdac8f25795b80468",
+  "initial_n10e_code_commit": "7f28ca4ad241a749e85ce6bbdac8f25795b80468",
+  "candidate_code_commit": "0b64393b2f4b8c28131f868738499475335496ed",
   "commands": [
-    {"purpose": "R06 world binding suite", "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_world_binding.py -q --junitxml=WORKER_RETURNS/PYAT-R95-R06-WORLD-CONSUMER-INTEGRATION-R1/junit.xml -o addopts=''", "exit_code": 0, "result": "4 passed", "failures": 0, "errors": 0, "skips": 0, "walltime_seconds": 2.43, "junit": "junit.xml", "log": "pytest.log"}
+    {
+      "purpose": "R06 world binding suite",
+      "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_world_binding.py -q --junitxml=WORKER_RETURNS/PYAT-R95-R06-WORLD-CONSUMER-INTEGRATION-R1/junit.xml -o addopts=''",
+      "exit_code": 0,
+      "result": "7 passed",
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "walltime_seconds": 158.74,
+      "junit": "junit.xml",
+      "log": "pytest.log"
+    }
   ],
-  "native_consumer": {
+  "n10e_consumer": {
     "function": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility",
     "two_field_values": [["X", 1], ["O", "AB"]],
     "alternate_view": [["X", 0], ["O", "BA"]],
     "view_hash_changes": true,
     "cold_subprocess_same_hash": true
   },
+  "actual_joined_consumer": {
+    "packet_commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+    "packet": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1",
+    "materialized_from_git": true,
+    "fresh_build_subprocess": true,
+    "providers": {
+      "n9_world": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1",
+      "n10e_empirical": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+      "n10w_progressive": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+      "e04_consumer": "J42_JOINED_E41_W41_P41_PREV3_CONSUMER@1"
+    },
+    "two_fields": ["training_access", "civil_sanction"],
+    "base_view": "base/TEST_CURRENT/budget5",
+    "training_field_changed_view": "formal/TEST_CURRENT/budget5",
+    "civil_field_changed_view": "civil_sanction/TEST_CURRENT/budget5",
+    "structural_routes_observed": {
+      "base": {"training": "ELIGIBLE", "civil": "ELIGIBLE"},
+      "formal": {"training": "BLOCKED_BY_MODELED_RULE", "civil": "ELIGIBLE"},
+      "civil_sanction": {"training": "ELIGIBLE", "civil": "BLOCKED_BY_MODELED_RULE"}
+    },
+    "view_hash_changes": true,
+    "temporal_mode_mutation": {
+      "from": "base/TEST_CURRENT/budget5",
+      "to": "base/HISTORICAL/budget5",
+      "valid_at_from": "2027-09-01",
+      "valid_at_to": "2026-06-01",
+      "view_hash_changes": true,
+      "grade": "PERMITTED_CLOCK_MODE_NOT_OBSERVED_F7_PAIR"
+    },
+    "cold_fresh_build_same_view_steps_n10w": true
+  },
   "mutations_and_restoration": [
-    {"mutation": "foreign source universe", "expected": "WORLD_FIELD_SOURCE_RELEASE_MISMATCH", "restored": "original selects"},
-    {"mutation": "person/household pooling", "expected": "UNLINKED_UNIT_POOLING_UNAUTHORIZED", "restored": "same-unit selects"},
+    {"mutation": "foreign source rows", "expected": "JOINED_SOURCE_ROWS_MISMATCH", "restored": "original selects"},
+    {"mutation": "one joined field", "expected": "WORLD_REQUIRES_AT_LEAST_TWO_FIELDS", "restored": "two fields select"},
     {"mutation": "context as structural", "expected": "CONTEXT_AS_STRUCTURAL_UNAUTHORIZED", "restored": "structural fields select"},
-    {"mutation": "unobserved clock pair", "expected": "UNOBSERVED_TEMPORAL_PAIR", "restored": "observed pair selects"},
-    {"mutation": "revoked currentness", "expected": "WORLD_CURRENTNESS_NOT_CURRENT", "restored": "CURRENT selects"}
+    {"mutation": "person/household pooling", "expected": "UNLINKED_UNIT_POOLING_UNAUTHORIZED", "restored": "same-unit selects"},
+    {"mutation": "unobserved clock pair", "expected": "UNOBSERVED_TEMPORAL_PAIR", "restored": "observed-pair refs select"},
+    {"mutation": "revoked currentness", "expected": "WORLD_CURRENTNESS_NOT_CURRENT", "restored": "CURRENT selects"},
+    {"mutation": "foreign source universe", "expected": "WORLD_FIELD_SOURCE_RELEASE_MISMATCH", "restored": "original N10E view selects"}
   ],
   "blobs": {
-    "rawlsing_next/pre553_universal_world_binding.py": "6ecc472378efb5b2bf6d87b218a23147ec2bda45",
-    "rawlsing_next/tests/test_universal_world_binding.py": "50ee595980c91227ba6bcced04475abf1e997b7f"
+    "rawlsing_next/pre553_universal_world_binding.py": "71cb2c79386bc3a9accc5eee09ab1d0c0f2b0456",
+    "rawlsing_next/tests/test_universal_world_binding.py": "304e109563a6c58229a0c71e3e1472fee63aec96"
   },
   "limits": [
-    "R05 learned-world consumer for the two-field predicate is NOT complete; its original bound predicate refuses substitution correctly.",
-    "N10E actual consumer is wired; N9/N10W were not separately integrated.",
-    "No original source/science/FF/F6/F7/CI/prod/N11/N12/Sorok/J52-W52.",
+    "Temporal positive is actual permitted clock-mode/as-of selection, not an observed F7 measured-wave comparison pair; observed-pair positive is NOT COMPLETE.",
+    "Accepted R05 candidate learned product is not joined into the J42 packet; J42 carries its own pinned E04L learned-release readthrough.",
+    "Cross-unit relation/transport is validated but no indexed linked cross-unit query is claimed.",
+    "No original source/science/FF/F6/F7/F8/CI/prod/N11/N12/Sorok/J52-W52.",
     "No self-adoption; distinct reviewer required."
   ]
 }
