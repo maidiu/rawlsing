@@ -86,7 +86,8 @@ candidate repair or unauthorized native-owner edit is performed.
 
 `EXPECTATIONS.md`, `00_RETURN.md`, `defects_and_limits.md`,
 `independent_probes/`, `replay/` JUnit/logs, `evidence/`, `proof_witness.json`,
-`manifest.json`, `RESUME.md`. The reviewer branch is pushed non-force; direct
-remote readback of the evidence commit and final tip is recorded in
-`evidence/remote_readback.txt` and reported to the coordinator. The candidate
-branch remains at `a88ccd140f30fe621140ee98841c6ce57ae9cab4`.
+`manifest.json`, `RESUME.md`. The reviewer branch was pushed non-force. Evidence commit
+`902151591b84fdf92684a9576cd144155d7cd17f` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also verified by direct remote readback and reported to the coordinator. The
+candidate branch remained at `a88ccd140f30fe621140ee98841c6ce57ae9cab4`.
