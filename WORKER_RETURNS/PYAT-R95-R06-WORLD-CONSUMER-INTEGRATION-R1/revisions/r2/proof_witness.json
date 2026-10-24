@@ -1,0 +1,83 @@
+{
+  "schema": "PYAT_R95_R06R2_PROOF_WITNESS@1",
+  "node": "R06R2",
+  "disposition": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+  "branch": "agent/opencode-pyat-r95-r06-world-consumer-integration-r1",
+  "startup_commit": "2c97293784392b708b3188574a260025d78cbb30",
+  "contract_commit": "fd06e5f9d57b436fe0f493193a49994e7ca354c0",
+  "candidate_code_commit": "2a884d54c22f90449cd93d61ef2d317056f332bf",
+  "commands": [
+    {
+      "purpose": "full R06R2 world binding suite",
+      "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_world_binding.py -q --junitxml=WORKER_RETURNS/PYAT-R95-R06-WORLD-CONSUMER-INTEGRATION-R1/revisions/r2/junit.xml -o addopts=''",
+      "exit_code": 0,
+      "result": "10 passed",
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "walltime_seconds": 189.912,
+      "junit": "junit.xml",
+      "log": "pytest.log"
+    }
+  ],
+  "actual_r05_to_p41": {
+    "r05_candidate": "bc2b5465c8f0ec2ea4657c6206436cdfa9ca58d0",
+    "r05_review": "2f7faac6da620b7651c175ec074d7088d5a49343",
+    "r05_learned_state": "LEARNED_CONSUMER_EXACT_SUPPORTED",
+    "coordinator": "rawlsing_next.pre553_learned_world_composition.TrustedNativeGraphCoordinator",
+    "p41_packet_commit": "f27d1101048638bba395143a48efb7ef00bfcda4",
+    "p41_service": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+    "n10e_consumer": "evaluate_learned_world_consumer / unchanged positioned-subject consumer",
+    "n10w": "E03_PROGRESSIVE_CHAIN@1 / P41 progressive assembly",
+    "e04": "product.nonparent.consume NONPARENT_OPTIONS (unchanged)",
+    "source_rows_hash_from": "actual accepted R05 physical stream source_sha256",
+    "actual_consumer_subprocess": true,
+    "cold_fresh_subprocess_same_view": true
+  },
+  "synthetic_temporal_pair": {
+    "contract": "declared sourcefree P41 SelectedSnapshot pair",
+    "t0": {
+      "mode": "HISTORICAL", "valid_at": "2026-06-01", "published_asof": "2026-04-15",
+      "training_access": 1, "exit_cost": 2,
+      "routes": {"training": "ELIGIBLE", "exit_constraint": "WITHIN_MODELED_BUDGET"}
+    },
+    "t1": {
+      "mode": "AS_OF", "valid_at": "2027-09-01", "published_asof": "2027-09-01",
+      "training_access": 0, "exit_cost": 8, "revision": 2,
+      "routes": {"training": "BLOCKED_BY_MODELED_RULE", "exit_constraint": "RESOURCE_CONSTRAINED"}
+    },
+    "same_r05_learned_step": true,
+    "receipt_hashes_distinct": true,
+    "view_hash_changes": true,
+    "not_original_f7": true
+  },
+  "mutations_and_restoration": [
+    {"mutation": "foreign source rows", "expected": "R05_SOURCE_ROWS_MISMATCH", "restored": "original selects"},
+    {"mutation": "one field", "expected": "R05_WORLD_REQUIRES_AT_LEAST_TWO_FIELDS", "restored": "two fields select"},
+    {"mutation": "context as structural", "expected": "CONTEXT_AS_STRUCTURAL_UNAUTHORIZED", "restored": "structural fields select"},
+    {"mutation": "person/household pooling", "expected": "UNLINKED_UNIT_POOLING_UNAUTHORIZED", "restored": "same-unit selects"},
+    {"mutation": "unobserved temporal pair", "expected": "UNOBSERVED_TEMPORAL_PAIR", "restored": "observed pair selects"},
+    {"mutation": "revoked currentness", "expected": "R05_CURRENTNESS_NOT_CURRENT", "restored": "CURRENT selects"},
+    {"mutation": "tampered T1 receipt", "expected": "R05_TEMPORAL_R05_CONSUMER_RECEIPT_HASH_MISMATCH", "restored": "original selects"},
+    {"mutation": "wrong learned receipt", "expected": "R05_LEARNED_RECEIPT_MISMATCH", "restored": "original selects"},
+    {"mutation": "wrong evidence ref", "expected": "R05_EVIDENCE_REF_MISMATCH", "restored": "original selects"},
+    {"mutation": "wrong N10E fact ref", "expected": "R05_N10E_FACT_BINDING_MISMATCH", "restored": "original selects"}
+  ],
+  "blobs": {
+    "rawlsing_next/pre553_universal_world_binding.py": "d5429c470ae6c2d1912207638b3a6a5e8e341360",
+    "rawlsing_next/tests/test_universal_world_binding.py": "8ee623eb9d1aafa00b1bd311dba9d9b852799316"
+  },
+  "import_pins": {
+    "rawlsing_next/pre553_learned_world_composition.py": "adbcc3316920c708580097dfe9f5aef4c9ca82fb",
+    "rawlsing_next/tests/test_universal_learned_consumer.py": "b0114a82c8852faffc52686c69585a50ee89ba9f",
+    "rawlsing_next/pre553_analytical_composition.py": "ed2b1680006ac2b89ddd40499e0a6d1429327d7b",
+    "rawlsing_next/pre553_universal_empirical_extension.py": "37279fa82001d5853dadf4906efc904e8dc3b9bc"
+  },
+  "limits": [
+    "Synthetic declared modeled-rule temporal pair, not original F7 measured waves; original F7 remains held.",
+    "Sourcefree synthetic engineering only; no original source/science/F5/F6/F8/CI/prod/N11/N12/Sorok/J52-W52.",
+    "P41 is invoked from its pinned historical callable packet; no native body edited or copied into repo.",
+    "R1 J42 evidence preserved but not used as the R2 integration path.",
+    "No self-adoption; distinct independent reviewer required."
+  ]
+}
