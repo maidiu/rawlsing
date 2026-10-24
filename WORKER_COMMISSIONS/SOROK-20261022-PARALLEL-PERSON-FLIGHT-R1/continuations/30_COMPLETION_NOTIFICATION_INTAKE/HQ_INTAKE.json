@@ -1,0 +1,74 @@
+{
+  "schema": "SOROK_HQ_COMPLETION_INTAKE_OBSERVED@1",
+  "hq_thread_id": "01a161c5-a44a-7b13-ad50-49e10112874d",
+  "implementation_commit": "6e4ed08fe08c20223cee3f201fabefbc1e9958e7",
+  "implementation_push_verification": "PENDING_AUTHOR19_RETURN",
+  "observed_scope": "Real completed-return notices queued and consumed at existing HQ; detached watcher now armed before next product completion",
+  "notifications": [
+    {
+      "job_id": "sorok-s41-independent-review-29",
+      "queued_message_id": "01a16e6d-fd18-7f23-b545-739849fb200d",
+      "notification_digest": "cd23a9707e7cb651d85d12b753fac15e3fb6b8290b5422e499f2dc31704be082",
+      "source_files_verified": true,
+      "observed_directly_in_same_hq_conversation": true,
+      "acceptance_implied": false
+    },
+    {
+      "job_id": "sorok-s41-history-repair1-worker",
+      "queued_message_id": "01a16e6d-fec9-7941-9eed-ce827bbf659f",
+      "notification_digest": "8698648af7a8d4060ca220f01e4bbcf6485d2383bb6476b37912f25951a6da0a",
+      "source_files_verified": true,
+      "observed_directly_in_same_hq_conversation": true,
+      "acceptance_implied": false
+    },
+    {
+      "job_id": "sorok-s41-history-closure-review30",
+      "queued_message_id": "01a16e72-941c-7572-9dff-b6385eec9a55",
+      "notification_digest": "6c3cbe23fd5f9bb3d479104583ac1d3a1f3d987808ffb05a0102ccc958f3f632",
+      "source_files_verified": true,
+      "observed_directly_in_same_hq_conversation": true,
+      "acceptance_implied": false
+    }
+  ],
+  "watcher_process": "66042 02:23 /Users/matthewsmith/repos/rawlsing-controller/.worktrees/runtime/node_modules/.bin/bun SOROK/completion-watcher.ts serve --manifest /Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/queue-integration/live/external-completion-inputs.json",
+  "launch": {
+    "pid": 66042,
+    "started_at_epoch": 1792854364.563018,
+    "argv": [
+      "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/runtime/node_modules/.bin/bun",
+      "SOROK/completion-watcher.ts",
+      "serve",
+      "--manifest",
+      "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/queue-integration/live/external-completion-inputs.json"
+    ],
+    "start_new_session": true,
+    "stdin": "DEVNULL",
+    "log": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/queue-integration/live/completion-watcher.detached.log",
+    "reason": "Previous watcher process63005 absent after backlog delivery; no workers/reviewers restarted",
+    "prior_notice_ids": [
+      "01a16e6d-fd18-7f23-b545-739849fb200d",
+      "01a16e6d-fec9-7941-9eed-ce827bbf659f"
+    ],
+    "hq_thread_id": "01a161c5-a44a-7b13-ad50-49e10112874d"
+  },
+  "launch_path": "bun SOROK/completion-watcher.ts serve --manifest .local-logs/queue-integration/live/external-completion-inputs.json",
+  "future_compatible_controller_launch": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/queue-integration/live/controller",
+  "next_live_job": "sorok-s41-generation-readset-repair2-worker",
+  "next_job_registered_before_launch": true,
+  "next_job_launch": {
+    "session_id": "ses_e9387509affeR5dC27RoUy3WSH",
+    "launcher_pid": 67712,
+    "started_at_epoch": 1792854470.359918,
+    "target_commit": "ff12892dddf332e1f731e0c4cb13f8d62db0f294",
+    "review_commit": "a81740cfd38ff47ab28b1b9390acd2799a6f2ecf",
+    "hq_reproduction": "canonical history valid but replacement generation readset accepted warm/cold",
+    "completion_watch_live_before_launch_pid": 66042,
+    "notification_manifest": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/queue-integration/live/external-completion-inputs.json",
+    "notification_job_id": "sorok-s41-generation-readset-repair2-worker",
+    "state": "EXACT_GENERATION_READSET_REPAIR_LAUNCHED"
+  },
+  "heartbeat_role": "FALLBACK",
+  "no_worker_or_reviewer_restarted_for_notification": true,
+  "prior_source_results_handled_without_replay": true,
+  "adoption_remaining": "Observe next already-registered live completion and verify controller author source push; no new demonstration job"
+}
