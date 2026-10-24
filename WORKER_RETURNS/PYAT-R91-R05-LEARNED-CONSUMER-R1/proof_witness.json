@@ -1,0 +1,34 @@
+{
+  "schema": "PYAT_R91_R05_PROOF_WITNESS_V1",
+  "node": "R91-R05",
+  "startup_commit": "8a6ea2f6c8f3bbdc1d43454abfabc6d7744718d7",
+  "contract_commit": "4524cc431747aa84d0eb22c4fa67a82a6492d8a4",
+  "code_commit": "766652c47bf3b34c19b10116a3f84f62e0ffd257",
+  "branch": "agent/opencode-pyat-r91-r05-learned-consumer-r1",
+  "environment": {"python": "3.11.3", "python_executable": "/usr/local/bin/python3", "pytest": "9.0.2"},
+  "command": "/usr/local/bin/python3 -m pytest -q rawlsing_next/tests/test_universal_learned_consumer.py rawlsing_next/tests/test_pre553_learned_world_composition.py --junitxml=WORKER_RETURNS/PYAT-R91-R05-LEARNED-CONSUMER-R1/junit.xml",
+  "exit_code": 0,
+  "junit": {"tests": 34, "failures": 0, "errors": 0, "skipped": 0, "time_seconds": 9.12, "new_r05_tests": 4, "learned_world_regressions": 30},
+  "actual_positive": {
+    "m01": "real fixture execution",
+    "m1": "RULE_SATISFIED / SYNTHETIC_RULE_DECISION",
+    "m2_release": "20e68b801f64066103aeeaac05307eceda8489498a293030de7e4ba6fb0930a4",
+    "c1_denominator": 1,
+    "c1_cells": {"0": 0, "1": 1},
+    "consumer_state": "EXACT_SUPPORTED"
+  },
+  "sever_restore": [
+    "blocked learned product -> LEARNED_PRODUCT_NOT_PRODUCTIVE; exact productive product restores",
+    "wrong producer predicate/query -> typed determinant mismatch; exact restoration returns original consumer hash",
+    "require_current_selection without B5 selection -> LEARNED_CURRENT_SELECTION_ABSENT",
+    "E41 direct extension -> EXACT_SUPPORTED and same consumer hash"
+  ],
+  "blobs": {
+    "rawlsing_next/pre553_learned_world_composition.py": "cdd5a1b5f4a12208cb752eb3ebabe5fa72f51255",
+    "rawlsing_next/pre553_universal_empirical_extension.py": "37279fa82001d5853dadf4906efc904e8dc3b9bc",
+    "rawlsing_next/tests/test_universal_learned_consumer.py": "61c84067d3062cfb70568b8ecc1f56484d7722a5"
+  },
+  "not_run": "8 historical AT07-successor provider tests omitted because isolated sparse checkout lacks their INPUTS fixture files; not counted as passes",
+  "reach": {"covered": "actual learned product + actual C1/N10E consumer and E41 direct extension", "not_reached": ["full J42/P41/E04 live service", "original35/1890 science", "R04.joined custody"], "reason": "scope/allowlist; archived returns unedited"},
+  "limits": ["sourcefree TEST_ONLY", "no original data/science/CI/production/N11/N12/F6/F7/Sorok/J52/W52 authority", "author candidate only; distinct reviewer follows"]
+}
