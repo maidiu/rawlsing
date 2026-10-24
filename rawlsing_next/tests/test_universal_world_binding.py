@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import replace
+from types import SimpleNamespace
 import json
 import os
 from pathlib import Path
@@ -20,6 +21,7 @@ from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
 from rawlsing_next.pre553_universal_world_binding import (
     JoinedWorldField, JoinedWorldSelectionRequest,
     R05ActualExecution, R05WorldConsumerRequest, R05WorldField,
+    WorldBindingError, configure_trusted_execution_context,
     WorldFieldBinding, WorldSelectionRequest,
     select_joined_world_view, select_r05_world_view, select_world_view,
 )
@@ -180,7 +182,7 @@ def test_r06_world_separation_and_authority_refusals():
         replace(request.fields[1], role="CONTEXT"),
     )
     refused = select_world_view(replace(request, fields=contextual))
-    assert refused.reason_code == "CONTEXT_AS_STRUCTURAL_UNAUTHORIZED"
+    assert refused.reason_code == "CONTEXT_STRUCTURAL_AUTHORITY_HELD"
 
     temporal = (
         request.fields[0],
@@ -316,7 +318,7 @@ def test_r06_actual_j42_separation_controls_refuse_restore(j42_receipts):
     fields = _joined_request(j42_receipts).fields
     refused = select_joined_world_view(_joined_request(
         j42_receipts, fields=(fields[0], replace(fields[1], role="CONTEXT"))))
-    assert refused.reason_code == "CONTEXT_AS_STRUCTURAL_UNAUTHORIZED"
+    assert refused.reason_code == "CONTEXT_STRUCTURAL_AUTHORITY_HELD"
     refused = select_joined_world_view(_joined_request(
         j42_receipts, fields=(replace(fields[0], unit="person"),
                               replace(fields[1], unit="household"))))
@@ -407,7 +409,8 @@ def _build_r05_learned_inprocess():
     coordinator = i4.TrustedNativeGraphCoordinator(
         admitted_slots={slot.slot_id: slot}
     )
-    bound = coordinator.execute(i4.NativeGraphExecutionRequest((slot,)))
+    execution_request = i4.NativeGraphExecutionRequest((slot,))
+    bound = coordinator.execute(execution_request)
     learned = i4.evaluate_learned_world_consumer(
         case["learned"], composition=bound.view.compositions[0],
         consumer_query=case["consumer_query"], model_rule=case["model_rule"],
@@ -439,6 +442,9 @@ def _build_r05_learned_inprocess():
         release_ref=case["consumer_query"].release_ref,
         source_rows_hash=case["m01"]["stream"].source_sha256,
         coordinator_original_ref=bound.original_ref,
+        coordinator=coordinator,
+        execution_request=execution_request,
+        bound=bound,
     )
 
 
@@ -611,10 +617,26 @@ def _actual_execution_for(data, runtime, *, structural_revision=True, step=None)
         "rows_hash": data["source_rows_hash"],
         "publication": "2026-03-01",
     }
+    step_data = dict(step or data["step"])
+    try:
+        handle = configure_trusted_execution_context(
+            p41_runtime=runtime,
+            learned_consumer=data["learned"],
+            step=step_data,
+            empirical=empirical,
+            structural_revision=structural_revision,
+            coordinator=data["coordinator"],
+            execution_request=data["execution_request"],
+            original_ref=data["coordinator_original_ref"],
+            original_view=data["bound"],
+        )
+    except WorldBindingError:
+        handle = None
     return R05ActualExecution(
-        runtime, empirical, dict(step or data["step"]), data["learned"],
+        runtime, empirical, step_data, data["learned"],
         structural_revision=structural_revision,
         coordinator_original_ref=data["coordinator_original_ref"],
+        execution_handle=handle,
     )
 
 
@@ -637,6 +659,9 @@ def _r05_request(data, receipts=None, *, actual_execution=None, **changes):
         observed_temporal_pair_refs=(pair,),
         actual_execution=actual_execution,
         claimed_receipts=receipts,
+        execution_handle=(
+            None if actual_execution is None else actual_execution.execution_handle
+        ),
     )
     values.update(changes)
     return R05WorldConsumerRequest(**values)
@@ -690,7 +715,7 @@ def test_r06r2_actual_r05_world_separation_refusals_restore(p41_runtime):
     refused = select_r05_world_view(_r05_request(
         data, receipts, fields=(fields[0], replace(fields[1], role="CONTEXT")),
     ))
-    assert refused.reason_code == "FF_STRUCTURAL_ADMISSION_REQUIRED"
+    assert refused.reason_code == "CONTEXT_STRUCTURAL_AUTHORITY_HELD"
     refused = select_r05_world_view(_r05_request(
         data, receipts,
         fields=(replace(fields[0], unit="person"), replace(fields[1], unit="household")),
@@ -823,7 +848,7 @@ def test_r06r3_actual_transport_and_context_refusals(p41_runtime):
         data, fields=promoted, actual_execution=execution,
         ff_structural_authority_ref=bogus_ff,
     ))
-    assert refused.reason_code == "FF_STRUCTURAL_ADMISSION_REQUIRED"
+    assert refused.reason_code == "CONTEXT_STRUCTURAL_AUTHORITY_HELD"
     calls = []
     refused = select_r05_world_view(_r05_request(
         data, actual_execution=execution,
@@ -856,3 +881,60 @@ def test_r06r3_actual_step_severance_refuses_restore(p41_runtime):
     }
     restored = select_r05_world_view(_r05_request(data, actual_execution=execution))
     assert restored.view_hash == base.view_hash
+
+
+def test_r06r4_forged_p41_runtime_is_refused(tmp_path, p41_runtime):
+    _run_r05_p41(p41_runtime)
+    data = _build_r05_learned_inprocess()
+    fake = tmp_path / "forged-p41"
+    fake.mkdir()
+    (fake / "p41_service.py").write_text("class P41Service:\n    pass\n")
+    execution = _actual_execution_for(data, str(fake))
+    view = select_r05_world_view(_r05_request(data, actual_execution=execution))
+    assert view.state == "REFUSED"
+    assert view.reason_code == "UNTRUSTED_P41_RUNTIME"
+
+
+def test_r06r4_subject_selected_coordinator_original_is_refused(p41_runtime):
+    _run_r05_p41(p41_runtime)
+    data = _build_r05_learned_inprocess()
+    execution = replace(
+        _actual_execution_for(data, _persistent_p41_runtime()),
+        coordinator_original_ref=ExactRef(
+            "R06R4_FORGED_COORDINATOR_ORIGINAL",
+            "urn:test:r06r4:forged-original", "a" * 64,
+        ),
+    )
+    view = select_r05_world_view(_r05_request(data, actual_execution=execution))
+    assert view.state == "REFUSED"
+    assert view.reason_code == "R05_COORDINATOR_ORIGINAL_MISMATCH"
+
+
+def test_r06r4_context_authority_is_held_in_all_public_wrappers(j42_receipts, p41_runtime):
+    _run_r05_p41(p41_runtime)
+    data = _build_r05_learned_inprocess()
+    execution = _actual_execution_for(data, _persistent_p41_runtime())
+    fields = _r05_request(data).fields
+    plausible = SimpleNamespace(
+        typed_state="ADMITTED_FOR_EXACT_STRUCTURAL_USE",
+        target_use="STRUCTURAL_MEDIATION_INPUT",
+        source_universe_refs=(data["source_universe_ref"],),
+        structural_semantic_identity_refs=(fields[1].field_ref,),
+    )
+    view = select_r05_world_view(_r05_request(
+        data, fields=(fields[0], replace(fields[1], role="CONTEXT")),
+        actual_execution=execution, ff_structural_admission=plausible,
+    ))
+    assert view.reason_code == "CONTEXT_STRUCTURAL_AUTHORITY_HELD"
+    joined_fields = _joined_request(j42_receipts).fields
+    view = select_joined_world_view(_joined_request(
+        j42_receipts, fields=(joined_fields[0], replace(joined_fields[1], role="CONTEXT")),
+        ff_structural_admission=plausible,
+    ))
+    assert view.reason_code == "CONTEXT_STRUCTURAL_AUTHORITY_HELD"
+    case, request, _ = _world_case("AB")
+    view = select_world_view(replace(
+        request, fields=(request.fields[0], replace(request.fields[1], role="CONTEXT")),
+        ff_structural_admission=plausible,
+    ))
+    assert view.reason_code == "CONTEXT_STRUCTURAL_AUTHORITY_HELD"

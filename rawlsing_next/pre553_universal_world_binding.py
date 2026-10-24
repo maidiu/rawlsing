@@ -6,12 +6,139 @@ no new evidence, geometry, pooling or temporal authority.
 """
 from __future__ import annotations
 
+import hashlib
+import os
+import shutil
+import subprocess
 import sys
+import tarfile
+import tempfile
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Mapping, Sequence
 
 from rawlsing_next.pre553_analytical_composition import compose_positioned_subject_possibility
 from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+
+
+P41_COMMIT = "f27d1101048638bba395143a48efb7ef00bfcda4"
+P41_PACKET = ("WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-"
+              "N10E-N10W-SERVING-R1")
+_P41_PINNED = None
+
+
+def _tree_sha256(root: Path) -> str:
+    entries = []
+    for path in sorted(root.rglob("*")):
+        if not path.is_file():
+            continue
+        if "__pycache__" in path.parts or path.suffix == ".pyc":
+            continue
+        rel = path.relative_to(root).as_posix()
+        entries.append((rel, hashlib.sha256(path.read_bytes()).hexdigest()))
+    return semantic_hash(entries)
+
+
+def _pinned_p41_runtime() -> Path:
+    global _P41_PINNED
+    if _P41_PINNED is not None:
+        return _P41_PINNED
+    repo = Path(__file__).resolve().parents[1]
+    base = Path(tempfile.mkdtemp(prefix="r06r4-pinned-p41-"))
+    archive = base / "pinned-p41.tar"
+    proc = subprocess.run(
+        ["git", "-C", str(repo), "archive", P41_COMMIT, P41_PACKET,
+         "-o", str(archive)],
+        capture_output=True, text=True, timeout=300,
+    )
+    if proc.returncode != 0:
+        shutil.rmtree(base, ignore_errors=True)
+        raise WorldBindingError("P41_RUNTIME_PIN_UNAVAILABLE")
+    with tarfile.open(archive) as handle:
+        handle.extractall(base)
+    runtime = base / P41_PACKET / "runtime"
+    if not runtime.is_dir():
+        shutil.rmtree(base, ignore_errors=True)
+        raise WorldBindingError("P41_RUNTIME_PIN_INCOMPLETE")
+    _P41_PINNED = runtime.resolve()
+    return _P41_PINNED
+
+
+def _validate_pinned_runtime(candidate: str) -> Path:
+    if not isinstance(candidate, str) or not candidate:
+        raise WorldBindingError("P41_RUNTIME_PIN_REQUIRED")
+    candidate_path = Path(candidate).resolve()
+    if not candidate_path.is_dir():
+        raise WorldBindingError("UNTRUSTED_P41_RUNTIME")
+    pinned = _pinned_p41_runtime()
+    if _tree_sha256(candidate_path) != _tree_sha256(pinned):
+        raise WorldBindingError("UNTRUSTED_P41_RUNTIME")
+    return pinned
+
+
+def _purge_p41_modules() -> None:
+    for name in tuple(sys.modules):
+        if (name in {"bootstrap", "p41_service", "fixture", "readthrough"}
+                or name == "product" or name.startswith("product.")):
+            del sys.modules[name]
+
+
+@dataclass(frozen=True)
+class R06TrustedExecutionContext:
+    learned_consumer: Any
+    original_ref: ExactRef
+    step: Mapping[str, Any]
+    empirical: Mapping[str, Any]
+    structural_revision: bool
+    p41_runtime: str
+    coordinator: Any
+    execution_request: Any
+    original_view: Any
+
+    def verify_original(self) -> Any:
+        bound = self.coordinator.execute(self.execution_request)
+        if bound.original_ref != self.original_ref:
+            raise WorldBindingError("R05_COORDINATOR_ORIGINAL_MISMATCH")
+        if self.original_view.original_ref != self.original_ref:
+            raise WorldBindingError("R05_COORDINATOR_ORIGINAL_MISMATCH")
+        if self.step.get("content_hash") != self.learned_consumer.consumer_result.result_hash:
+            raise WorldBindingError("R05_ACTUAL_STEP_CONSUMER_MISMATCH")
+        if not bound.view.compositions:
+            raise WorldBindingError("R05_COORDINATOR_ORIGINAL_EMPTY")
+        if (bound.view.compositions[0].consumer_result_or_null is None
+                or bound.view.compositions[0].consumer_result_or_null.result_hash
+                != self.learned_consumer.consumer_result.result_hash):
+            raise WorldBindingError("R05_COORDINATOR_CONSUMER_MISMATCH")
+        return bound
+
+
+_TRUSTED_CONTEXTS: dict[str, R06TrustedExecutionContext] = {}
+
+
+def configure_trusted_execution_context(
+    *,
+    p41_runtime: str,
+    learned_consumer: Any,
+    step: Mapping[str, Any],
+    empirical: Mapping[str, Any],
+    structural_revision: bool,
+    coordinator: Any,
+    execution_request: Any,
+    original_ref: ExactRef,
+    original_view: Any,
+) -> str:
+    pinned = _validate_pinned_runtime(p41_runtime)
+    context = R06TrustedExecutionContext(
+        learned_consumer=learned_consumer, original_ref=original_ref,
+        step=dict(step), empirical=empirical,
+        structural_revision=structural_revision, p41_runtime=str(pinned),
+        coordinator=coordinator, execution_request=execution_request,
+        original_view=original_view,
+    )
+    context.verify_original()
+    handle = "r06ctx-" + hashlib.sha256(os.urandom(32)).hexdigest()
+    _TRUSTED_CONTEXTS[handle] = context
+    return handle
 
 
 class WorldBindingError(ValueError):
@@ -142,22 +269,7 @@ def select_world_view(request: WorldSelectionRequest) -> WorldSelectedView:
     if len(units) > 1:
         return _refusal("CROSS_UNIT_LINKED_QUERY_UNAVAILABLE", request, field_refs)
     if any(field.role == "CONTEXT" for field in fields):
-        admission = request.ff_structural_admission
-        if admission is None:
-            return _refusal("CONTEXT_AS_STRUCTURAL_UNAUTHORIZED", request, field_refs)
-        from rawlsing_next.pre553_empirical_objects import StructuralEmpiricalAdmission
-        if not isinstance(admission, StructuralEmpiricalAdmission):
-            return _refusal("FF_STRUCTURAL_ADMISSION_NOT_EXACT", request, field_refs)
-        if admission.typed_state != "ADMITTED_FOR_EXACT_STRUCTURAL_USE":
-            return _refusal("FF_STRUCTURAL_ADMISSION_NOT_POSITIVE", request, field_refs)
-        if admission.target_use != "STRUCTURAL_MEDIATION_INPUT":
-            return _refusal("FF_STRUCTURAL_ADMISSION_TARGET_USE_MISMATCH", request, field_refs)
-        if request.consumer_query.source_universe_ref not in tuple(admission.source_universe_refs):
-            return _refusal("FF_STRUCTURAL_ADMISSION_SOURCE_MISMATCH", request, field_refs)
-        for field in fields:
-            if field.role == "CONTEXT" and field.empirical_coordinate_ref not in tuple(
-                    admission.structural_semantic_identity_refs):
-                return _refusal("FF_STRUCTURAL_ADMISSION_FIELD_MISMATCH", request, field_refs)
+        return _refusal("CONTEXT_STRUCTURAL_AUTHORITY_HELD", request, field_refs)
     clocks = {field.clock_ref for field in fields if field.clock_ref is not None}
     if len(clocks) > 1:
         if (request.temporal_pair_ref is None or not request.observed_temporal_pair_refs
@@ -344,16 +456,7 @@ def select_joined_world_view(request: JoinedWorldSelectionRequest) -> JoinedWorl
     if len(units) > 1:
         return _joined_refusal("CROSS_UNIT_LINKED_QUERY_UNAVAILABLE", request, field_ids)
     if any(field.role == "CONTEXT" for field in fields):
-        admission = request.ff_structural_admission
-        if admission is None:
-            return _joined_refusal("CONTEXT_AS_STRUCTURAL_UNAUTHORIZED", request, field_ids)
-        from rawlsing_next.pre553_empirical_objects import StructuralEmpiricalAdmission
-        if not isinstance(admission, StructuralEmpiricalAdmission):
-            return _joined_refusal("FF_STRUCTURAL_ADMISSION_NOT_EXACT", request, field_ids)
-        if admission.typed_state != "ADMITTED_FOR_EXACT_STRUCTURAL_USE":
-            return _joined_refusal("FF_STRUCTURAL_ADMISSION_NOT_POSITIVE", request, field_ids)
-        if admission.target_use != "STRUCTURAL_MEDIATION_INPUT":
-            return _joined_refusal("FF_STRUCTURAL_ADMISSION_TARGET_USE_MISMATCH", request, field_ids)
+        return _joined_refusal("CONTEXT_STRUCTURAL_AUTHORITY_HELD", request, field_ids)
     clocks = {field.clock_ref for field in fields if field.clock_ref is not None}
     if len(clocks) > 1:
         if (request.temporal_pair_ref is None or not request.observed_temporal_pair_refs
@@ -427,6 +530,8 @@ class R05ActualExecution:
     learned_consumer: Any
     structural_revision: bool = True
     coordinator_original_ref: ExactRef | None = None
+    trusted_context: R06TrustedExecutionContext | None = None
+    execution_handle: str | None = None
 
 
 @dataclass(frozen=True)
@@ -447,6 +552,7 @@ class R05WorldConsumerRequest:
     ff_structural_admission: Any | None = None
     actual_execution: R05ActualExecution | None = None
     claimed_receipts: Mapping[str, Mapping[str, Any]] | None = None
+    execution_handle: str | None = None
 
 
 @dataclass(frozen=True)
@@ -576,43 +682,37 @@ def _validate_r05_receipt(receipt: Any, request: R05WorldConsumerRequest,
 
 def _validate_ff_admission(request: R05WorldConsumerRequest,
                            fields: tuple[R05WorldField, ...]) -> str | None:
-    if not any(field.role == "CONTEXT" for field in fields):
-        return None
-    admission = request.ff_structural_admission
-    if admission is None:
-        return "FF_STRUCTURAL_ADMISSION_REQUIRED"
-    from rawlsing_next.pre553_empirical_objects import StructuralEmpiricalAdmission
-    if not isinstance(admission, StructuralEmpiricalAdmission):
-        return "FF_STRUCTURAL_ADMISSION_NOT_EXACT"
-    if admission.typed_state != "ADMITTED_FOR_EXACT_STRUCTURAL_USE":
-        return "FF_STRUCTURAL_ADMISSION_NOT_POSITIVE"
-    if admission.target_use != "STRUCTURAL_MEDIATION_INPUT":
-        return "FF_STRUCTURAL_ADMISSION_TARGET_USE_MISMATCH"
-    if request.source_universe_ref not in tuple(admission.source_universe_refs):
-        return "FF_STRUCTURAL_ADMISSION_SOURCE_MISMATCH"
-    for field in fields:
-        if field.role != "CONTEXT":
-            continue
-        if field.field_ref is None or field.field_ref not in tuple(
-                admission.structural_semantic_identity_refs):
-            return "FF_STRUCTURAL_ADMISSION_FIELD_MISMATCH"
+    if any(field.role == "CONTEXT" for field in fields):
+        return "CONTEXT_STRUCTURAL_AUTHORITY_HELD"
     return None
 
 
-def _execute_p41_world(request: R05WorldConsumerRequest) -> dict[str, Mapping[str, Any]]:
+def _execute_p41_world(
+    request: R05WorldConsumerRequest,
+    context: R06TrustedExecutionContext,
+) -> dict[str, Mapping[str, Any]]:
     actual = request.actual_execution
-    if actual is None:
-        raise WorldBindingError("ACTUAL_EXECUTION_INPUTS_REQUIRED")
-    runtime = actual.p41_runtime
-    if runtime not in sys.path:
-        sys.path.insert(0, runtime)
-    import bootstrap
-    bootstrap.install()
-    from p41_service import P41Service
-    from product.world import SelectedWorldCatalog
-
-    learned = actual.learned_consumer
+    if actual is not None:
+        actual_pinned = _validate_pinned_runtime(actual.p41_runtime)
+        if str(actual_pinned) != context.p41_runtime:
+            raise WorldBindingError("UNTRUSTED_P41_RUNTIME")
+        if actual.coordinator_original_ref != context.original_ref:
+            raise WorldBindingError("R05_COORDINATOR_ORIGINAL_MISMATCH")
+        if actual.learned_consumer is not context.learned_consumer:
+            requested = actual.learned_consumer
+            learned = context.learned_consumer
+            if (learned.learned_receipt_ref != requested.learned_receipt_ref
+                    or learned.m1_disposition_ref != requested.m1_disposition_ref
+                    or learned.m2_release_ref != requested.m2_release_ref
+                    or learned.consumer_result.result_hash
+                    != requested.consumer_result.result_hash
+                    or getattr(learned, "evidence_ref", None)
+                    != getattr(requested, "evidence_ref", None)):
+                raise WorldBindingError("R05_LEARNED_ORIGINAL_MISMATCH")
+        if dict(actual.step) != dict(context.step):
+            raise WorldBindingError("R05_ACTUAL_STEP_ORIGINAL_MISMATCH")
     requested = request.learned_consumer
+    learned = context.learned_consumer
     if (learned.learned_receipt_ref != requested.learned_receipt_ref
             or learned.m1_disposition_ref != requested.m1_disposition_ref
             or learned.m2_release_ref != requested.m2_release_ref
@@ -621,10 +721,23 @@ def _execute_p41_world(request: R05WorldConsumerRequest) -> dict[str, Mapping[st
             or getattr(learned, "evidence_ref", None)
             != getattr(requested, "evidence_ref", None)):
         raise WorldBindingError("R05_LEARNED_ORIGINAL_MISMATCH")
-    step = dict(actual.step)
+    pinned = Path(context.p41_runtime)
+    _purge_p41_modules()
+    if str(pinned) not in sys.path:
+        sys.path.insert(0, str(pinned))
+    import bootstrap
+    bootstrap.install()
+    import p41_service
+    from p41_service import P41Service
+    from product.world import SelectedWorldCatalog
+    for module in (bootstrap, p41_service):
+        module_file = Path(getattr(module, "__file__", "")).resolve()
+        if pinned not in module_file.parents:
+            raise WorldBindingError("UNTRUSTED_P41_MODULE_SUBSTITUTION")
+    step = dict(context.step)
     if step.get("content_hash") != learned.consumer_result.result_hash:
         raise WorldBindingError("R05_ACTUAL_STEP_CONSUMER_MISMATCH")
-    empirical = actual.empirical
+    empirical = context.empirical
     source = empirical.get("source") or {}
     universe = source.get("universe")
     if universe is None or universe.ref != request.source_universe_ref:
@@ -634,7 +747,7 @@ def _execute_p41_world(request: R05WorldConsumerRequest) -> dict[str, Mapping[st
     if empirical.get("rows_hash") != request.source_rows_hash:
         raise WorldBindingError("R05_ACTUAL_EMPIRICAL_ROWS_MISMATCH")
     catalog = SelectedWorldCatalog(
-        empirical, structural_revision=actual.structural_revision
+        empirical, structural_revision=context.structural_revision
     )
     snapshots = {
         "T0": catalog.select(mode="HISTORICAL", valid_at="2026-06-01",
@@ -713,10 +826,7 @@ def _execute_p41_world(request: R05WorldConsumerRequest) -> dict[str, Mapping[st
                 "learned_receipt_ref": learned.learned_receipt_ref.as_dict(),
                 "m1_disposition_ref": learned.m1_disposition_ref.as_dict(),
                 "m2_release_ref": learned.m2_release_ref.as_dict(),
-                "coordinator_original_ref": (
-                    None if actual.coordinator_original_ref is None
-                    else actual.coordinator_original_ref.as_dict()
-                ),
+                "coordinator_original_ref": context.original_ref.as_dict(),
                 "consumer_result_hash": learned.consumer_result.result_hash,
                 "evidence_ref": (
                     None if learned.evidence_ref is None
@@ -748,8 +858,16 @@ def select_r05_world_view(request: R05WorldConsumerRequest) -> R05WorldSelectedV
         return _r05_refusal("CALLER_CALLBACK_NOT_ACCEPTED", request)
     if getattr(learned, "state", None) != "LEARNED_CONSUMER_EXACT_SUPPORTED":
         return _r05_refusal("R05_LEARNED_CONSUMER_NOT_EXACT_SUPPORTED", request)
-    if request.actual_execution is None:
-        return _r05_refusal("ACTUAL_EXECUTION_INPUTS_REQUIRED", request)
+    if request.actual_execution is not None:
+        try:
+            _validate_pinned_runtime(request.actual_execution.p41_runtime)
+        except WorldBindingError as exc:
+            return _r05_refusal(exc.code, request)
+    if not request.execution_handle:
+        return _r05_refusal("TRUSTED_EXECUTION_HANDLE_REQUIRED", request)
+    context = _TRUSTED_CONTEXTS.get(request.execution_handle)
+    if context is None:
+        return _r05_refusal("TRUSTED_EXECUTION_HANDLE_INVALID", request)
     if request.currentness != "CURRENT":
         return _r05_refusal("R05_CURRENTNESS_NOT_CURRENT", request)
     fields = tuple(request.fields)
@@ -773,7 +891,7 @@ def select_r05_world_view(request: R05WorldConsumerRequest) -> R05WorldSelectedV
         if request.temporal_pair_ref not in request.observed_temporal_pair_refs:
             return _r05_refusal("UNOBSERVED_TEMPORAL_PAIR", request, field_ids)
     try:
-        receipts = _execute_p41_world(request)
+        receipts = _execute_p41_world(request, context)
     except WorldBindingError as exc:
         return _r05_refusal(exc.code, request, field_ids)
     except Exception as exc:
