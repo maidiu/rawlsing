@@ -11,7 +11,8 @@ R04/R05 custody, CI/prod, N11/N12, Sorok or J52/W52 is claimed.
 - Startup: `813775c07f0831605b6484a1d82afada30d85968`
 - Predecessor candidate: `5f3cee7cb7a9b53af266b05a4c8db01a53a13add`
 - Code commits: `d22319f2d6031a9766d7afe8bed205d9219f5b2a`,
-  `db79e3913050039ddb55ba62b08bd764c79f1035`
+  `db79e3913050039ddb55ba62b08bd764c79f1035`,
+  `54a2c427c94767b29653426f7cfb55db9cf22aac`
 - Recovered U43 transport blob: `31e84f49d624f5524906e9e7839d2873106f8249`
   (unchanged)
 
