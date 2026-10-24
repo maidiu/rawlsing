@@ -1,0 +1,148 @@
+{
+  "choices": [
+    {
+      "attempt_action": "REQUEST_TOOL",
+      "contrary_predicates": [
+        "AVOID_DEBT"
+      ],
+      "input_contains_desired_action": false,
+      "label": "P_REQUEST",
+      "rule_hash": "b5de8b26c6a352bdf3907aa9cf3aaba5bbc88994710f01867cfbe3c0bff01aa8",
+      "selected_option": "REQUEST_TOOL",
+      "selection_status": "UNIQUE_SELECTED",
+      "supporting_predicates": [
+        "REPAIR_URGENT",
+        "PRIOR_B_SHARE"
+      ],
+      "undominated_options": [
+        "REQUEST_TOOL"
+      ],
+      "unresolved_reason": ""
+    },
+    {
+      "attempt_action": "INSPECT_OBJECT",
+      "contrary_predicates": [],
+      "input_contains_desired_action": false,
+      "label": "C1_ATTEND",
+      "rule_hash": "b5de8b26c6a352bdf3907aa9cf3aaba5bbc88994710f01867cfbe3c0bff01aa8",
+      "selected_option": "ATTEND_OBJECT",
+      "selection_status": "UNIQUE_SELECTED",
+      "supporting_predicates": [
+        "AVOID_DEBT",
+        "PREFER_INDEPENDENT"
+      ],
+      "undominated_options": [
+        "ATTEND_OBJECT"
+      ],
+      "unresolved_reason": ""
+    },
+    {
+      "attempt_action": "EXPLICIT_REFUSAL",
+      "contrary_predicates": [],
+      "input_contains_desired_action": false,
+      "label": "C2_REFUSAL",
+      "rule_hash": "b5de8b26c6a352bdf3907aa9cf3aaba5bbc88994710f01867cfbe3c0bff01aa8",
+      "selected_option": "EXPLICIT_REFUSAL",
+      "selection_status": "UNIQUE_SELECTED",
+      "supporting_predicates": [
+        "PRIOR_B_REFUSAL"
+      ],
+      "undominated_options": [
+        "EXPLICIT_REFUSAL"
+      ],
+      "unresolved_reason": ""
+    },
+    {
+      "attempt_action": "",
+      "contrary_predicates": [],
+      "input_contains_desired_action": false,
+      "label": "OPEN",
+      "rule_hash": "b5de8b26c6a352bdf3907aa9cf3aaba5bbc88994710f01867cfbe3c0bff01aa8",
+      "selected_option": "",
+      "selection_status": "OPEN_CHOICE_SET",
+      "supporting_predicates": [],
+      "undominated_options": [
+        "ATTEND_OBJECT",
+        "EXPLICIT_REFUSAL",
+        "REQUEST_TOOL"
+      ],
+      "unresolved_reason": "MULTIPLE_SURVIVORS"
+    },
+    {
+      "attempt_action": "",
+      "contrary_predicates": [],
+      "input_contains_desired_action": false,
+      "label": "CYCLE",
+      "rule_hash": "b5de8b26c6a352bdf3907aa9cf3aaba5bbc88994710f01867cfbe3c0bff01aa8",
+      "selected_option": "",
+      "selection_status": "CONFLICT_UNRESOLVED",
+      "supporting_predicates": [],
+      "undominated_options": [],
+      "unresolved_reason": "COMPARISON_CYCLE"
+    },
+    {
+      "attempt_action": "",
+      "contrary_predicates": [],
+      "input_contains_desired_action": false,
+      "label": "MISSING_COMPARISON",
+      "rule_hash": "1496c2edac031dfdad8b4f8b414bbbf84d4b0be89f8fb59050c44aff9d8df3ce",
+      "selected_option": "",
+      "selection_status": "OPEN_CHOICE_SET",
+      "supporting_predicates": [],
+      "undominated_options": [
+        "EXPLICIT_REFUSAL",
+        "REQUEST_TOOL"
+      ],
+      "unresolved_reason": "MISSING_COMPARISON"
+    },
+    {
+      "attempt_action": "REQUEST_TOOL",
+      "contrary_predicates": [
+        "AVOID_DEBT"
+      ],
+      "input_contains_desired_action": false,
+      "label": "LABELS",
+      "rule_hash": "b5de8b26c6a352bdf3907aa9cf3aaba5bbc88994710f01867cfbe3c0bff01aa8",
+      "selected_option": "REQUEST_TOOL",
+      "selection_status": "UNIQUE_SELECTED",
+      "supporting_predicates": [
+        "REPAIR_URGENT",
+        "PRIOR_B_SHARE"
+      ],
+      "undominated_options": [
+        "REQUEST_TOOL"
+      ],
+      "unresolved_reason": ""
+    },
+    {
+      "attempt_action": "",
+      "contrary_predicates": [],
+      "input_contains_desired_action": false,
+      "label": "MISSING_PRIOR_SHARE",
+      "rule_hash": "b5de8b26c6a352bdf3907aa9cf3aaba5bbc88994710f01867cfbe3c0bff01aa8",
+      "selected_option": "",
+      "selection_status": "OPEN_CHOICE_SET",
+      "supporting_predicates": [],
+      "undominated_options": [
+        "ATTEND_OBJECT",
+        "EXPLICIT_REFUSAL",
+        "REQUEST_TOOL"
+      ],
+      "unresolved_reason": "MULTIPLE_SURVIVORS"
+    }
+  ],
+  "grade": "TEST_ONLY_CONSTRUCTIVE_GENERATION_NOT_EXTERNALLY_OBSERVED",
+  "label_invariance": {
+    "ignored_label_count": 2,
+    "same_attempt_action": true,
+    "same_contrary_predicates": true,
+    "same_selected_option": true,
+    "same_supporting_predicates": true
+  },
+  "open_cycle_no_attempt": true,
+  "schema": "SOROK_S39_CHOICE_EVIDENCE@1",
+  "tampered_source": {
+    "code": "S39_SOURCE_INTEGRITY_REFUSAL",
+    "status": "REFUSED"
+  }
+}
