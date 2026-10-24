@@ -28,6 +28,14 @@ from rawlsing_next.tests.test_pre553_learned_empirical_adjudication import (
 )
 from rawlsing_next.tests.test_pre553_learned_world_composition import _contract
 from rawlsing_next.tests.test_pre553_route_b_production import _execute, _fixture
+from rawlsing_next.tests import test_pre553_analytical_composition_higher_order as ho
+from rawlsing_next.tests.test_pre553_learned_empirical_adjudication import (
+    CLAIM_FAMILY,
+    CLAIM_RULE,
+)
+from rawlsing_next.pre553_recursive_handoff import (
+    execute_exact_bounded_discovery_with_handoffs,
+)
 
 
 def _build_case(*, valid_empty: bool = False):
@@ -478,3 +486,315 @@ def test_trusted_coordinator_retains_original_and_validates_submitted_view(r05_c
     )
     assert refused.state == "REFUSED"
     assert refused.reason_code == "GRAPH_VIEW_DOES_NOT_MATCH_RETAINED_ORIGINAL"
+
+
+def _learned_from_discovery(
+    source, qauth, dauth, authority, discovery, *, tag: str
+):
+    validator_auth = _m1_authority(f"r91-r05-{tag}")
+    bundle = m1.build_m1_adjudication_input_bundle(
+        requested_claim_family_id=CLAIM_FAMILY,
+        requested_claim_rule_id=CLAIM_RULE,
+        selected_discovery_receipts=discovery.receipts,
+        discovery_authority_catalog=(authority,),
+        empirical_fact_catalog=discovery.empirical_facts,
+        empirical_query_catalog=discovery.executed_queries,
+        empirical_predicate_catalog=discovery.executed_predicates,
+        authority_snapshots=tuple(source["authorities"]) + (qauth, dauth, validator_auth),
+        requested_scope={"fixture": tag},
+        prerequisite_channels=(),
+        additional_dependency_refs=(source["release_ref"],),
+    )
+    binding = _binding(validator_auth)
+    disposition = m1.adjudicate_learned_empirical(
+        bundle,
+        binding,
+        validator_registry=_registry(binding, _validator(outcome="RULE_SATISFIED")),
+    )
+    learned = i4.compose_learned_world(
+        _contract(route="M1_M2_B5", binding=binding, tag=tag),
+        m2_repository=M2Repository(),
+        lifecycle_executor=LearnedProductLifecycleExecutor(),
+        m1_disposition=disposition,
+    )
+    return learned, disposition
+
+
+def test_actual_discovery_route_learned_and_consumer():
+    source = ho._at10_source()
+    qauth = ho._query_authority("r91-r05-at10")
+    dauth = ho._d_auth("r91-r05-at10-discovery")
+    registry = ho._registry(source, qauth, dauth)
+    all_p = ho._branch_predicate(source, qauth, tag="r91-r05-at10-all")
+    x1 = ho._predicate(
+        source, qauth, ho._response_leaf(source, qauth, "X", 1), tag="r91-r05-at10-x1"
+    )
+    yq = ho._query(source, qauth, all_p, ("Y",), tag="r91-r05-at10-y")
+    grammar = ho._grammar(
+        operation="I03-OP-r91-r05-at10-discovery",
+        atoms=[ho._atom("ALL", all_p, "BRANCH"), ho._atom("X1", x1, "RESPONSE")],
+        templates=[ho._qt("Y", yq)],
+        rules=[
+            ho._rule(
+                "pair",
+                "PAIR_RESPONSE_COTRAVEL",
+                "SINGLE_ATOM",
+                atom_ids=("X1",),
+                baseline_atom_id="ALL",
+                query_template_id="Y",
+                validation={"kind": "DISTRIBUTION_DIFFERS_FROM_BASELINE"},
+            )
+        ],
+    )
+    authority = ho._discovery_authority(
+        source, grammar, dauth, tag="r91-r05-at10"
+    )
+    discovery = ho._execute_discovery(
+        source,
+        qauth,
+        dauth,
+        grammar,
+        (all_p, x1),
+        (yq,),
+        authority=authority,
+    )
+    receipt = discovery.receipts[0]
+    pred_by_ref = {p.ref: p for p in discovery.executed_predicates}
+    query_by_ref = {q.ref: q for q in discovery.executed_queries}
+    fact_by_ref = {f.ref: f for f in discovery.empirical_facts}
+    produced_predicate = pred_by_ref[ExactRef(**receipt.winning_predicate_ref)]
+    produced_fact = fact_by_ref[ExactRef(**receipt.empirical_fact_refs[0])]
+    produced_query = query_by_ref[ExactRef(**produced_fact.empirical_query_spec_ref)]
+    pairing = fx.make_pairing_authority("r91-r05-at10")
+    conditioner = fx.make_conditioner_binding(
+        binding_id="x",
+        subject_fact_ref=ExactRef(**ho._subject_fact_ref(source, "X", 1)),
+        empirical_coordinate_ref=source["qrefs"]["X"],
+        comparability_authority_ref=pairing,
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+    )
+    consumer_query = fx.make_multi_conditioner_consumer_query(
+        query_id="r91-r05-at10-consumer",
+        subject_ref=ExactRef(
+            "C1_SYNTHETIC_POSITIONED_SUBJECT@1",
+            "urn:test:r91-r05:at10:subject",
+            semantic_hash({"fixture": "R91_R05_AT10"}),
+        ),
+        target_ref=source["qrefs"]["Y"],
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+        bindings=[conditioner],
+        projection_kind="R91_R05_AT10_DISCOVERY",
+    )
+    witness = fx.build_witness_for_binding(
+        witness_object_id="urn:test:r91-r05:at10:witness",
+        consumer_query=consumer_query,
+        producer_query=produced_query,
+        producer_predicate=produced_predicate,
+        bindings=[conditioner],
+        coordinate_value_pairs=[(source["qrefs"]["X"], 1)],
+        pairing_authority=pairing,
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+    )
+    composition = compose_positioned_subject_possibility(
+        repository=source["repo"],
+        empirical_query=produced_query,
+        predicate=produced_predicate,
+        authority_registry=registry,
+        release_refs=(source["release_ref"],),
+        consumer_query=consumer_query,
+        model_rule=fx.make_model_rule(source["universe"].ref, "r91-r05-at10"),
+        condition_binding_witness=witness,
+        discovery_result=discovery,
+        discovery_receipt_ref=receipt.ref,
+    )
+    assert composition.producer_route == "I05_EXACT_BOUNDED_TO_POSITIONED_SUBJECT"
+    learned, disposition = _learned_from_discovery(
+        source, qauth, dauth, authority, discovery, tag="r91-r05-at10"
+    )
+    result = i4.evaluate_learned_world_consumer(
+        learned,
+        composition=composition,
+        consumer_query=consumer_query,
+        model_rule=fx.make_model_rule(source["universe"].ref, "r91-r05-at10"),
+        producer_query_ref=produced_query.ref,
+        producer_predicate_ref=produced_predicate.ref,
+    )
+    assert result.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    assert result.producer_route == "I05_EXACT_BOUNDED_TO_POSITIONED_SUBJECT"
+    assert result.discovery_receipt_refs == (receipt.ref,)
+    assert result.discovery_frontier_ref == discovery.evaluated_frontier_ref
+    assert result.consumer_result.result_state == "EXACT_SUPPORTED"
+
+    joint_query = ho._query(
+        source, qauth, produced_predicate, ("X", "Y"), tag="r91-r05-at10-joint"
+    )
+    joint_pairing = fx.make_pairing_authority("r91-r05-at10-joint")
+    joint_conditioner = fx.make_conditioner_binding(
+        binding_id="x",
+        subject_fact_ref=ExactRef(**ho._subject_fact_ref(source, "X", 1)),
+        empirical_coordinate_ref=source["qrefs"]["X"],
+        comparability_authority_ref=joint_pairing,
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+    )
+    joint_consumer = fx.make_multi_conditioner_consumer_query(
+        query_id="r91-r05-at10-joint-consumer",
+        subject_ref=ExactRef(
+            "C1_SYNTHETIC_POSITIONED_SUBJECT@1",
+            "urn:test:r91-r05:at10:joint-subject",
+            semantic_hash({"fixture": "R91_R05_AT10_JOINT"}),
+        ),
+        target_ref=source["qrefs"]["X"],
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+        bindings=[joint_conditioner],
+        projection_kind="R91_R05_AT10_JOINT",
+    )
+    joint_witness = fx.build_witness_for_binding(
+        witness_object_id="urn:test:r91-r05:at10:joint-witness",
+        consumer_query=joint_consumer,
+        producer_query=joint_query,
+        producer_predicate=produced_predicate,
+        bindings=[joint_conditioner],
+        coordinate_value_pairs=[(source["qrefs"]["X"], 1)],
+        pairing_authority=joint_pairing,
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+    )
+    joint_model = fx.make_model_rule(source["universe"].ref, "r91-r05-at10-joint")
+    joint_composition = compose_positioned_subject_possibility(
+        repository=source["repo"],
+        empirical_query=joint_query,
+        predicate=produced_predicate,
+        authority_registry=registry,
+        release_refs=(source["release_ref"],),
+        consumer_query=joint_consumer,
+        model_rule=joint_model,
+        condition_binding_witness=joint_witness,
+    )
+    assert joint_composition.joint_component_count == 2
+    joint_result = i4.evaluate_learned_world_consumer(
+        learned,
+        composition=joint_composition,
+        consumer_query=joint_consumer,
+        model_rule=joint_model,
+        producer_query_ref=joint_query.ref,
+        producer_predicate_ref=produced_predicate.ref,
+    )
+    assert joint_result.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    assert joint_result.joint_component_count == 2
+    assert joint_result.consumer_result.result_state == "EXACT_SUPPORTED"
+
+
+def test_actual_recursive_route_learned_and_consumer():
+    source = ho._at11_source()
+    qauth = ho._query_authority("r91-r05-at11")
+    dauth = ho._d_auth("r91-r05-at11-discovery")
+    registry = ho._registry(source, qauth, dauth)
+    parent = ho._branch_predicate(
+        source,
+        qauth,
+        members=tuple(source["respondents"][rid] for rid in ("R1", "R2", "R3", "R4", "R5", "R6")),
+        tag="r91-r05-at11-parent",
+    )
+    x1 = ho._predicate(
+        source, qauth, ho._response_leaf(source, qauth, "X", 1), tag="r91-r05-at11-x1"
+    )
+    x_query = ho._query(source, qauth, parent, ("X",), tag="r91-r05-at11-g1-x")
+    grammar = ho._grammar(
+        operation="I03-OP-r91-r05-at11-discovery",
+        atoms=[ho._atom("PARENT", parent, "BRANCH"), ho._atom("X1", x1, "RESPONSE")],
+        templates=[ho._qt("X", x_query)],
+        rules=[
+            ho._rule(
+                "child",
+                "RECURSIVE_SUBGROUP_FORK",
+                "SINGLE_ATOM",
+                atom_ids=("X1",),
+                baseline_atom_id="PARENT",
+                query_template_id="X",
+                validation={"kind": "DISTRIBUTION_DIFFERS_FROM_BASELINE"},
+            )
+        ],
+        k=2,
+    )
+    authority = ho._discovery_authority(
+        source, grammar, dauth, tag="r91-r05-at11-g1"
+    )
+    g1 = execute_exact_bounded_discovery_with_handoffs(
+        repository=source["repo"],
+        discovery_authority=authority,
+        authority_registry=registry,
+        release_refs=(source["release_ref"],),
+        predicate_catalog=(parent, x1),
+        query_template_catalog=(x_query,),
+    )
+    handoff = g1.handoffs[0]
+    child_predicate = handoff.winning_predicate
+    child_query = ho._query(
+        source, qauth, child_predicate, ("Y",), tag="r91-r05-at11-child-to-y"
+    )
+    pairing = fx.make_pairing_authority("r91-r05-at11")
+    conditioner = fx.make_conditioner_binding(
+        binding_id="x",
+        subject_fact_ref=ExactRef(**ho._subject_fact_ref(source, "X", 1)),
+        empirical_coordinate_ref=source["qrefs"]["X"],
+        comparability_authority_ref=pairing,
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+    )
+    consumer_query = fx.make_multi_conditioner_consumer_query(
+        query_id="r91-r05-at11-consumer",
+        subject_ref=ExactRef(
+            "C1_SYNTHETIC_POSITIONED_SUBJECT@1",
+            "urn:test:r91-r05:at11:subject",
+            semantic_hash({"fixture": "R91_R05_AT11"}),
+        ),
+        target_ref=source["qrefs"]["Y"],
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+        bindings=[conditioner],
+        projection_kind="R91_R05_AT11_RECURSIVE",
+    )
+    witness = fx.build_witness_for_binding(
+        witness_object_id="urn:test:r91-r05:at11:witness",
+        consumer_query=consumer_query,
+        producer_query=child_query,
+        producer_predicate=child_predicate,
+        bindings=[conditioner],
+        coordinate_value_pairs=[(source["qrefs"]["X"], 1)],
+        pairing_authority=pairing,
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+    )
+    composition = compose_positioned_subject_possibility(
+        repository=source["repo"],
+        empirical_query=child_query,
+        predicate=child_predicate,
+        authority_registry=registry,
+        release_refs=(source["release_ref"],),
+        consumer_query=consumer_query,
+        model_rule=fx.make_model_rule(source["universe"].ref, "r91-r05-at11"),
+        condition_binding_witness=witness,
+        recursive_handoff=handoff,
+    )
+    assert composition.producer_route == "MX01R2_RECURSIVE_TO_POSITIONED_SUBJECT"
+    learned, disposition = _learned_from_discovery(
+        source, qauth, dauth, authority, g1.discovery_result, tag="r91-r05-at11"
+    )
+    result = i4.evaluate_learned_world_consumer(
+        learned,
+        composition=composition,
+        consumer_query=consumer_query,
+        model_rule=fx.make_model_rule(source["universe"].ref, "r91-r05-at11"),
+        producer_query_ref=child_query.ref,
+        producer_predicate_ref=child_predicate.ref,
+    )
+    assert result.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    assert result.producer_route == "MX01R2_RECURSIVE_TO_POSITIONED_SUBJECT"
+    assert result.recursive_handoff_refs == (handoff.ref,)
+    assert handoff.immediate_parent_branch_ref in result.recursive_lineage_refs
+    assert result.consumer_result.result_state == "EXACT_SUPPORTED"
