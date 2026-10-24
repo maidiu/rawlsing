@@ -1,0 +1,42 @@
+{
+  "schema": "PYAT_R61_R03_R4_PROOF_WITNESS@1",
+  "node": "R03", "revision": "R4",
+  "disposition": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+  "branch": "agent/opencode-pyat-r61-r03-total-native-workload-r1",
+  "startup_commit": "5b28d09602a35d4c5d5f060f450956c612ab3580",
+  "contract_commit": "496bacae2deee56f8c827157a63ea7a7416e9a21",
+  "candidate_code_commit": "61ce7975d822688edd9525a10ad7fa9048f69455",
+  "decision_commit": "7a36e8091eda463c736f4ca0528d47f061b26cce",
+  "review_commit": "7d8396329ed8ac2df86c82bb46e785a0dc487cde",
+  "commands": [
+    {"purpose": "R03 R4 suite", "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_workload.py -q --junitxml=WORKER_RETURNS/PYAT-R61-R03-TOTAL-NATIVE-WORKLOAD-R1/revisions/r4/junit.xml -o addopts=''", "exit_code": 0, "result": "15 passed", "failures": 0, "errors": 0, "skips": 0, "walltime_seconds": 70.49, "junit": "junit.xml", "log": "pytest.log"},
+    {"purpose": "retained R01 suite", "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q -o addopts=''", "exit_code": 0, "result": "32 passed", "failures": 0, "errors": 0, "skips": 0}
+  ],
+  "fixed_pin_evidence": {
+    "genuine_restore": "original live freeze pin restores",
+    "missing_pin": "GOVERNED_FRONTIER_EXPECTED_CHECKPOINT_REQUIRED",
+    "fact_deletion": "CHECKPOINT_PIN_MISMATCH with original pin",
+    "fact_duplication": "CHECKPOINT_PIN_MISMATCH with original pin",
+    "job_substitution": "CHECKPOINT_PIN_MISMATCH despite both mutable copies + hashes",
+    "failed_live_capture": "RESTORE_CHECKPOINT_LIVE_* refusal",
+    "fresh_process": "pinned ledger restored without native execution"
+  },
+  "mutations_and_restoration": [
+    {"mutation": "remove native fact", "expected": "pin mismatch", "restored": "genuine ledger restores"},
+    {"mutation": "duplicate native fact", "expected": "pin mismatch", "restored": "genuine ledger restores"},
+    {"mutation": "substitute expected job query/predicate", "expected": "pin mismatch", "restored": "genuine jobs restore"},
+    {"mutation": "omit expected pin", "expected": "missing-pin refusal", "restored": "genuine pin restores"},
+    {"mutation": "capture failed live result", "expected": "capture refusal", "restored": "valid live capture returns pin"}
+  ],
+  "blobs": {
+    "rawlsing_next/pre553_issued_workload.py": "31e84f49d624f5524906e9e7839d2873106f8249",
+    "rawlsing_next/pre553_native_workload_binding.py": "dac73e484f8619088f5c6701b2b6991c07540f3b",
+    "rawlsing_next/pre553_universal_workload.py": "8e780b2430b8a6a930f45329596cfdec2f1aa46c",
+    "rawlsing_next/tests/test_universal_workload.py": "9adbb081122c6f097f42e01203b3c835cbf7b17b"
+  },
+  "limits": [
+    "Local trusted-host TEST_ONLY; trusted-host replacement of both pin and candidate excluded.",
+    "No R04 durable custody/cryptographic issuer/R05+/original science/CI/prod/N11/N12/Sorok/J52-W52.",
+    "No self-adoption; distinct reviewer required."
+  ]
+}
