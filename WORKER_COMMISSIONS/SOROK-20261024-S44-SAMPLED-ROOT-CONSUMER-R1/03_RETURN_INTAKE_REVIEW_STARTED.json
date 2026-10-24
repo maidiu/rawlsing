@@ -1,0 +1,52 @@
+{
+  "status": "RETURNED__FOCUSED_HQ_PASS__INDEPENDENT_REVIEW_RUNNING",
+  "candidate_commit": "b623a9852e476c9427ec6077285819f0586bc39b",
+  "remote_branch": "codex/sorok-s44-sampled-root-consumer",
+  "exact_remote_sha_verified": true,
+  "changed_files": 28,
+  "changed_scope": "WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/**",
+  "worker_completion_digest": "6484fa81128b96c21473ec5489f130c99bf3db3cf0c98806c88731702f9372a3",
+  "worker_events_sha256": "60e56e22d4b66abf07dc183add8cac4a2bebfb55329dfced2ce1f327476d412d",
+  "worker_exit_sha256": "3ef758bc27e1299c4a0ecacbc93745a915dbb8a7eded229f4124c3ff9758d149",
+  "hq_test_command": "python3 -m pytest -q tests",
+  "hq_result": "8 passed in 5.21s",
+  "review_session_id": "ses_e98fa7144ffeXQs21DMwv7tro3",
+  "review_continuation": 36,
+  "review_process": {
+    "pid": 61366,
+    "session_id": "ses_e98fa7144ffeXQs21DMwv7tro3",
+    "started_at_epoch": 1792876337.675043,
+    "task": "S44 sampled root actual consumer review",
+    "target_commit": "b623a9852e476c9427ec6077285819f0586bc39b"
+  },
+  "live_process_observation": "61366 61363 R    /Users/matthewsmith/.opencode/bin/opencode",
+  "observed_review_event_sessions": [
+    "ses_e98fa7144ffeXQs21DMwv7tro3"
+  ],
+  "review_exit_present": false,
+  "completion_arm": {
+    "before_launch": true,
+    "job": {
+      "job_id": "sorok-s44-sampled-root-review36",
+      "role": "REVIEWER",
+      "session_id": "ses_e98fa7144ffeXQs21DMwv7tro3",
+      "worktree": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review",
+      "process_path": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/.local-logs/sorok-attachment-reviewer/continuation-36.json",
+      "events_path": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/.local-logs/sorok-attachment-reviewer/continuation-36.events.jsonl",
+      "exit_path": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/.local-logs/sorok-attachment-reviewer/continuation-36.exit.json",
+      "candidate_commit": "b623a9852e476c9427ec6077285819f0586bc39b"
+    },
+    "status": {
+      "job_id": "sorok-s44-sampled-root-review36",
+      "role": "REVIEWER",
+      "session_id": "ses_e98fa7144ffeXQs21DMwv7tro3",
+      "status": "WAITING"
+    },
+    "watcher_pid": 71590,
+    "observed_at": "2026-10-24T21:12:17.067Z"
+  },
+  "observed_at_epoch": 1792876364.8201768,
+  "hq_acceptance": "PENDING_INDEPENDENT_REVIEW",
+  "native_person_validity": "UNPROVED",
+  "native_source_human_grants_changed": false
+}
