@@ -274,6 +274,50 @@ def test_counterexample_severance_invalidates_the_dependent_relation(mediated):
     assert session.verify()["ok"] is True
 
 
+@pytest.mark.parametrize("declared_branch,declared_hash", [
+    ("other-branch", None),
+    (None, "0" * 64),
+], ids=["wrong-branch", "wrong-hash"])
+def test_forged_counterexample_receipt_cannot_restore_access(
+        mediated, declared_branch, declared_hash):
+    session, data = mediated
+    session.revoke_language_access(data["counter_help_receipt"])
+
+    before = session.language_index()
+    invalid_before = {row["relation_id"]: row for row in
+                      before["invalidated_relations"]}
+    assert invalid_before[data["family_relation"]]["invalid_reason"] == (
+        "COUNTEREXAMPLE_NOT_ACCESSIBLE")
+
+    session.append_test_only_access_receipt(
+        data["counter_help"]["event"]["event_id"],
+        declared_branch=declared_branch,
+        declared_hash=declared_hash,
+        record_perception=True,
+    )
+    after = session.language_index()
+    invalid_after = {row["relation_id"]: row for row in
+                     after["invalidated_relations"]}
+    assert invalid_after[data["family_relation"]]["invalid_reason"] == (
+        "COUNTEREXAMPLE_NOT_ACCESSIBLE")
+    assert data["family_relation"] not in {
+        row["relation_id"] for row in after["relations"]}
+
+    refused = session.say(TRIGGER)
+    assert refused["strategy"] == "SAFE_GREETING"
+    assert refused["candidate"]["speech"] == NATIVE_BENCH
+
+    session.restore_language_access(data["counter_help_receipt"])
+    restored = session.language_index()
+    assert {row["relation_id"] for row in restored["relations"]} == {
+        data["family_relation"], data["work_relation"]}
+    assert restored["invalidated_relations"] == []
+    resumed = session.say(TRIGGER)
+    assert resumed["strategy"] == "SELF_RELIANCE"
+    assert resumed["candidate"]["speech"] == NATIVE_SELF
+    assert session.verify()["ok"] is True
+
+
 def test_wrong_access_branch_is_refused(tmp_path):
     session = _fresh_session(tmp_path)
     try:

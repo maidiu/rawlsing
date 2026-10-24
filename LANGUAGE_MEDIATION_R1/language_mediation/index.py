@@ -93,6 +93,9 @@ def _validate_source(session, branch_id: str, event_id: str,
 
 def _accessible(session, branch_id: str, actor_id: str, event_id: str,
                 receipts: dict[str, dict]) -> bool:
+    event = session.product.store.world_event(branch_id, event_id)
+    if event is None:
+        return False
     perceived = {
         (row["actor_id"], row["event_id"])
         for row in session.product.store.perceptions(branch_id)
@@ -101,6 +104,8 @@ def _accessible(session, branch_id: str, actor_id: str, event_id: str,
         return False
     return any(
         receipt.get("source_event_id") == event_id
+        and receipt.get("source_event_hash") == event.get("hash")
+        and receipt.get("branch_id") == branch_id
         and receipt.get("actor_id") == actor_id
         and receipt.get("status") == "GRANTED"
         for receipt in receipts.values()
