@@ -1,0 +1,55 @@
+# R95-R06V R3 exact commands (reviewer, TEST_ONLY)
+
+Root: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5
+Branch: agent/opencode-pyat-r95-r06v-r3-world-consumer-review-r1
+Startup: 02800fcfd77abde178851031f877838bedb5e242
+
+## Identity and freeze
+
+git cat-file -t 0fcf61136bbd05a184034c05990a87a6a8a9b6a7
+git show 0fcf61136bbd05a184034c05990a87a6a8a9b6a7:WORKER_COMMISSIONS/PYAT-R95-R06-WORLD-CONSUMER-INTEGRATION-R1/R06V/revisions/r3/00_COMMISSION.md
+mkdir -p WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/revisions/r3/{evidence,independent_probes,replay}
+# EXPECTATIONS.md written before R3 code/probe inspection
+git add --sparse WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/revisions/r3/EXPECTATIONS.md
+git commit -m "R95-R06V-R3: freeze four-boundary successor expectations before candidate code/probes"
+# commit 535a936b2
+
+## Author R3 suite
+
+PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_world_binding.py -q \
+  --junitxml=WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/revisions/r3/replay/author_suite_junit.xml -o addopts=''
+# 14 passed in 169.85s
+
+## Prior five R06V probes
+
+git show 0153d1f9b88ede3f76e5b1658a7441cb2e9a1713:WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/independent_probes/test_r06v_world.py \
+  > WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/revisions/r3/independent_probes/test_r06v_world.py
+PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest \
+  WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/revisions/r3/independent_probes/test_r06v_world.py -q \
+  --junitxml=WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/revisions/r3/replay/prior_probes_junit.xml -o addopts=''
+# 5 passed in 6.42s
+
+## Successor controls
+
+PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest \
+  WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/revisions/r3/independent_probes/test_r06v_r3_successor.py -q \
+  --junitxml=WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/revisions/r3/replay/successor_probes_junit.xml -o addopts=''
+# 3 failed, 3 passed in 88.33s
+# S1 forged runtime accepted; S3 forged coordinator original accepted;
+# S6 joined forged real-type FF admission accepted.
+# S2/S4/S5 passed.
+
+## Scope and blobs
+
+git diff --name-only 08fa9a2560ff5a37313434a3edb3d61e702926eb..HEAD -- rawlsing_next
+# rawlsing_next/pre553_universal_world_binding.py
+# rawlsing_next/tests/test_universal_world_binding.py
+git hash-object rawlsing_next/pre553_universal_world_binding.py rawlsing_next/tests/test_universal_world_binding.py
+# f695d8974c1b5cf617213a9976620defc91fb270
+# a0cdee8d481382a4fd1e6065206badd99398192f
+
+## Remote
+
+git push origin agent/opencode-pyat-r95-r06v-r3-world-consumer-review-r1
+git ls-remote origin refs/heads/agent/opencode-pyat-r95-r06v-r3-world-consumer-review-r1 \
+  refs/heads/agent/opencode-pyat-r95-r06-world-consumer-integration-r1

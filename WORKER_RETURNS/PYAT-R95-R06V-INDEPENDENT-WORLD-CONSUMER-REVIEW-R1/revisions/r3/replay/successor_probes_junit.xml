@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="6" time="88.326" timestamp="2026-10-24T19:16:35.510263-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1.revisions.r3.independent_probes.test_r06v_r3_successor" name="test_S1_forged_runtime_cannot_mint_actual_execution" time="2.143"><failure message="AssertionError: a forged P41 runtime returning canned self-consistent receipts was accepted as authenticated actual execution&#10;assert 'R05_WORLD_SELECTED_VIEW' == 'REFUSED'&#10;  &#10;  - REFUSED&#10;  + R05_WORLD_SELECTED_VIEW">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-536/test_S1_forged_runtime_cannot_0')
+
+    def test_S1_forged_runtime_cannot_mint_actual_execution(tmp_path):
+        data, receipts = _fixture()
+        fake = _fake_runtime(tmp_path, receipts)
+        execution = _actual_execution_for(data, fake)
+        view = select_r05_world_view(
+            _r05_request(data, receipts, actual_execution=execution)
+        )
+        print("S1_REASON", view.state, view.reason_code)
+        if fake in sys.path:
+            sys.path.remove(fake)
+        for name in tuple(sys.modules):
+            if name in {"bootstrap", "p41_service"} or name.startswith("product"):
+                del sys.modules[name]
+&gt;       assert view.state == "REFUSED", (
+            "a forged P41 runtime returning canned self-consistent receipts was "
+            "accepted as authenticated actual execution"
+        )
+E       AssertionError: a forged P41 runtime returning canned self-consistent receipts was accepted as authenticated actual execution
+E       assert 'R05_WORLD_SELECTED_VIEW' == 'REFUSED'
+E         
+E         - REFUSED
+E         + R05_WORLD_SELECTED_VIEW
+
+WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/revisions/r3/independent_probes/test_r06v_r3_successor.py:125: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1.revisions.r3.independent_probes.test_r06v_r3_successor" name="test_S2_forged_real_type_ff_admission_cannot_authorize_context" time="1.709" /><testcase classname="WORKER_RETURNS.PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1.revisions.r3.independent_probes.test_r06v_r3_successor" name="test_S3_subject_selected_coordinator_original_cannot_mint_output" time="1.477"><failure message="AssertionError: subject-selected coordinator original was emitted as authenticated&#10;assert {'content_hash': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'kind': 'FORGED_COORDINATOR_ORIGINAL', 'object_id': 'urn:test:r06v-r3:original'} != {'content_hash': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'kind': 'FORGED_COORDINATOR_ORIGINAL', 'object_id': 'urn:test:r06v-r3:original'}&#10; +  where {'content_hash': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'kind': 'FORGED_COORDINATOR_ORIGINAL', 'object_id': 'urn:test:r06v-r3:original'} = as_dict()&#10; +    where as_dict = ExactRef(kind='FORGED_COORDINATOR_ORIGINAL', object_id='urn:test:r06v-r3:original', content_hash='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa').as_dict&#10; +      where ExactRef(kind='FORGED_COORDINATOR_ORIGINAL', object_id='urn:test:r06v-r3:original', content_hash='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') = R05ActualExecution(p41_runtime='/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5/.r06r2-p41-doueraby/WORKER_...bject_id='urn:test:r06v-r3:original', content_hash='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')).coordinator_original_ref">def test_S3_subject_selected_coordinator_original_cannot_mint_output():
+        data, _ = _fixture()
+        execution = replace(
+            _actual_execution_for(data, _persistent_p41_runtime()),
+            coordinator_original_ref=_ref("FORGED_COORDINATOR_ORIGINAL", "original"),
+        )
+        view = select_r05_world_view(_r05_request(data, actual_execution=execution))
+        if view.state == "R05_WORLD_SELECTED_VIEW":
+&gt;           assert view.consumer_values_read["coordinator_original_ref"] != (
+                execution.coordinator_original_ref.as_dict()
+            ), "subject-selected coordinator original was emitted as authenticated"
+E           AssertionError: subject-selected coordinator original was emitted as authenticated
+E           assert {'content_hash': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'kind': 'FORGED_COORDINATOR_ORIGINAL', 'object_id': 'urn:test:r06v-r3:original'} != {'content_hash': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'kind': 'FORGED_COORDINATOR_ORIGINAL', 'object_id': 'urn:test:r06v-r3:original'}
+E            +  where {'content_hash': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'kind': 'FORGED_COORDINATOR_ORIGINAL', 'object_id': 'urn:test:r06v-r3:original'} = as_dict()
+E            +    where as_dict = ExactRef(kind='FORGED_COORDINATOR_ORIGINAL', object_id='urn:test:r06v-r3:original', content_hash='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa').as_dict
+E            +      where ExactRef(kind='FORGED_COORDINATOR_ORIGINAL', object_id='urn:test:r06v-r3:original', content_hash='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') = R05ActualExecution(p41_runtime='/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5/.r06r2-p41-doueraby/WORKER_...bject_id='urn:test:r06v-r3:original', content_hash='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')).coordinator_original_ref
+
+WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/revisions/r3/independent_probes/test_r06v_r3_successor.py:162: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1.revisions.r3.independent_probes.test_r06v_r3_successor" name="test_S4_equal_actual_payload_with_distinct_clocks_refuses" time="1.283" /><testcase classname="WORKER_RETURNS.PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1.revisions.r3.independent_probes.test_r06v_r3_successor" name="test_S5_genuine_positive_then_hostile_then_restore" time="1.248" /><testcase classname="WORKER_RETURNS.PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1.revisions.r3.independent_probes.test_r06v_r3_successor" name="test_S6_joined_wrapper_forged_real_type_ff_admission_is_not_authority" time="80.122"><failure message="AssertionError: joined wrapper accepted an arbitrary real-type FF admission as a competent CONTEXT-to-STRUCTURAL authority&#10;assert 'SELECTED_VIE...INED_CONSUMER' == 'REFUSED'&#10;  &#10;  - REFUSED&#10;  + SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER">def test_S6_joined_wrapper_forged_real_type_ff_admission_is_not_authority():
+        receipts = _run_j42_build()
+        fields = _joined_request(receipts).fields
+        forged = _forged_admission(
+            R05WorldField(
+                "civil_sanction", False, "modeled policy eligibility boolean",
+                field_ref=_ref("STRUCTURAL_SEMANTICS", "joined-context-field"),
+            ),
+            _ref("EmpiricalUniverse", "joined-source"),
+        )
+        view = select_joined_world_view(_joined_request(
+            receipts, fields=(fields[0], replace(fields[1], role="CONTEXT")),
+            ff_structural_admission=forged,
+        ))
+        print("S6_REASON", view.state, view.reason_code)
+&gt;       assert view.state == "REFUSED", (
+            "joined wrapper accepted an arbitrary real-type FF admission as a "
+            "competent CONTEXT-to-STRUCTURAL authority"
+        )
+E       AssertionError: joined wrapper accepted an arbitrary real-type FF admission as a competent CONTEXT-to-STRUCTURAL authority
+E       assert 'SELECTED_VIE...INED_CONSUMER' == 'REFUSED'
+E         
+E         - REFUSED
+E         + SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER
+
+WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/revisions/r3/independent_probes/test_r06v_r3_successor.py:225: AssertionError</failure></testcase></testsuite></testsuites>
