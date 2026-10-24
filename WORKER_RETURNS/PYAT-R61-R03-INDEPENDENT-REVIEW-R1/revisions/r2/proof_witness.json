@@ -1,24 +1,18 @@
 {
-  "schema": "PYAT_R61_R03V_R2_INDEPENDENT_PROOF_WITNESS@1",
-  "verdict": "REVISE",
-  "candidate_startup": "2d32d68e2a5acb9cac136c313e82068dfb8e6ba1",
   "author_branch": "agent/opencode-pyat-r61-r03-total-native-workload-r1",
-  "review_branch": "agent/opencode-pyat-r61-r03v-r2-independent-review-r1",
-  "commission": "7d18e0a467db28e37079340f596ead83ef9dc20a",
-  "previous_review": "efb1822552bdb017adedc8617e268f9ad5719de8",
-  "expectations_freeze_commit": "d61f4ded4",
-  "candidate_code_blobs": {
-    "rawlsing_next/pre553_issued_workload.py": "31e84f49d624f5524906e9e7839d2873106f8249",
-    "rawlsing_next/pre553_native_workload_binding.py": "dac73e484f8619088f5c6701b2b6991c07540f3b",
-    "rawlsing_next/pre553_universal_workload.py": "b9f05d152e1c33507206071c89961473679e6809",
-    "rawlsing_next/tests/test_universal_workload.py": "3ea13ff7e149200c5ce093380aa81322e7d6516b"
-  },
   "author_manifest_reproduction": {
     "entries_checked": 8,
     "entries_matched": 8,
     "manifest_excludes_itself": true,
     "u43_exact": true
   },
+  "candidate_code_blobs": {
+    "rawlsing_next/pre553_issued_workload.py": "31e84f49d624f5524906e9e7839d2873106f8249",
+    "rawlsing_next/pre553_native_workload_binding.py": "dac73e484f8619088f5c6701b2b6991c07540f3b",
+    "rawlsing_next/pre553_universal_workload.py": "b9f05d152e1c33507206071c89961473679e6809",
+    "rawlsing_next/tests/test_universal_workload.py": "3ea13ff7e149200c5ce093380aa81322e7d6516b"
+  },
+  "candidate_startup": "2d32d68e2a5acb9cac136c313e82068dfb8e6ba1",
   "commands": [
     {
       "command": "/usr/local/bin/python3 -m pytest <author eight-file suite> -q --junitxml=.../replay/author_suite_junit.xml -o addopts=''",
@@ -31,6 +25,38 @@
       "result": "1 passed, 5 failed required behaviours"
     }
   ],
+  "commission": "7d18e0a467db28e37079340f596ead83ef9dc20a",
+  "environment": {
+    "hardware_model_route": "existing OpenCode Go DeepSeek V4.1-Flash MAX/Global",
+    "pyreadstat": "1.3.2",
+    "pytest": "9.0.2",
+    "python": "3.11.3"
+  },
+  "evidence_commit": "e7b850b650f2eda40cd99be31668756c62fcd19a",
+  "evidence_commit_remote_readback": {
+    "candidate_remote_sha": "2d32d68e2a5acb9cac136c313e82068dfb8e6ba1",
+    "file": "evidence/remote_readback.txt",
+    "remote_sha": "e7b850b650f2eda40cd99be31668756c62fcd19a"
+  },
+  "expectations_freeze_commit": "d61f4ded4",
+  "f1_f6_matrix": {
+    "F1": "PASS (governed frontier/D3/value fault at tested fixture)",
+    "F2": "FAIL (fact/expected-job/ledger stripping not reconciled)",
+    "F3": "PARTIAL (governed owner path real; cold ledger self-consistently forgeable)",
+    "F4": "PARTIAL (supported/unsupported/pending/valid-empty present; held/unknown collapsed)",
+    "F5": "FAIL (exact receipt/fact/expected-job cold assertion)",
+    "F6": "PARTIAL (D3 receipt/plan/handoff severance passes; root release severance accepted)"
+  },
+  "not_reached": [
+    "R04 joined custody/durability",
+    "R05 lifecycle/grades",
+    "F5-F8 global",
+    "original35/1890 N11",
+    "N12/Sorok",
+    "protected CI/production",
+    "J52/W52"
+  ],
+  "previous_review": "efb1822552bdb017adedc8617e268f9ad5719de8",
   "remaining_failures": [
     "H2a self-consistent governed ledger stripping accepted; restore checks only ledger hash/presence",
     "H2b native receipt empirical_fact_refs removal leaves native_receipt_anti_join no_drop_ok true",
@@ -38,6 +64,7 @@
     "H4 bind_recursive_workload accepts root source-release severance with no_drop_ok true",
     "H5 HELD/UNKNOWN operations normalize result_state to NOT_ELIGIBLE"
   ],
+  "remote_verification": "evidence/remote_readback.txt (direct git ls-remote of the pushed reviewer branch); final tip reported to the coordinator",
   "retained_positives": [
     "author 120 passed",
     "governed frontier 150 eligible/147 supported/3 unsupported/150 receipts/330 facts",
@@ -47,29 +74,8 @@
     "U43 exact and four-path scope; R01/R02/native unchanged",
     "prior unary value fault and R2 governed value fault/restore pass"
   ],
-  "f1_f6_matrix": {
-    "F1": "PASS (governed frontier/D3/value fault at tested fixture)",
-    "F2": "FAIL (fact/expected-job/ledger stripping not reconciled)",
-    "F3": "PARTIAL (governed owner path real; cold ledger self-consistently forgeable)",
-    "F4": "PARTIAL (supported/unsupported/pending/valid-empty present; held/unknown collapsed)",
-    "F5": "FAIL (exact receipt/fact/expected-job cold assertion)",
-    "F6": "PARTIAL (D3 receipt/plan/handoff severance passes; root release severance accepted)"
-  },
-  "environment": {
-    "python": "3.11.3",
-    "pytest": "9.0.2",
-    "pyreadstat": "1.3.2",
-    "hardware_model_route": "existing OpenCode Go DeepSeek V4.1-Flash MAX/Global"
-  },
-  "remote_verification": "evidence/remote_readback.txt (direct git ls-remote of the pushed reviewer branch); final tip reported to the coordinator",
+  "review_branch": "agent/opencode-pyat-r61-r03v-r2-independent-review-r1",
+  "schema": "PYAT_R61_R03V_R2_INDEPENDENT_PROOF_WITNESS@1",
   "trust_boundary": "sourcefree TEST_ONLY local trusted host; no source respondent access; R04/R05/F5-F8/original science held",
-  "not_reached": [
-    "R04 joined custody/durability",
-    "R05 lifecycle/grades",
-    "F5-F8 global",
-    "original35/1890 N11",
-    "N12/Sorok",
-    "protected CI/production",
-    "J52/W52"
-  ]
+  "verdict": "REVISE"
 }
