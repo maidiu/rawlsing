@@ -1,0 +1,41 @@
+{
+  "schema": "SOROK_REVIEW_S43_V1",
+  "candidate_branch": "codex/sorok-s43-historical-language-consumer",
+  "candidate_commit": "f0ee2d04f1392bde9be65ad942c653574dcbb208",
+  "base": "2489f8cdfbb5c400c636f33c7cf8cdf0aa55dc91",
+  "source_cuts": {
+    "m35": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+    "s36": "8da78d8031a06a4bd7e1297fd713e573299c0860",
+    "s37": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+    "s39": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+    "s40": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+    "s41": "c72a10d284f8869b990db3e6849ed174a51bd784",
+    "s42": "2489f8cdfbb5c400c636f33c7cf8cdf0aa55dc91",
+    "language": "8d2920da951f98cd8246d7c34cac777928e0c732",
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135"
+  },
+  "decision": "REVISE",
+  "defect": "read_s43_event/read_s43_events raise S43_REPERTOIRE_BINDING_MISSING on the explicitly scoped S40 first event instead of returning/skipping the base dependency event",
+  "checks": {
+    "focused_tests": "9 PASS, 0 FAIL (10.82s)",
+    "entrypoint": "PASS (exit 0); family/workshop cold stream, native/English, no new B speech, NO_CHANGE/NO_PROPOSAL",
+    "wrong_access_boundary": "DENIED, no A language/speech, cold preserved",
+    "source_revocation_contrary_history": "PASS in focused tests",
+    "first_event_reader": "REFUSED S43_REPERTOIRE_BINDING_MISSING; defect",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "s43/session.py": "da04f4b16c722945b8c9d9679010941a20ed82b75bb9cbf9c156c6daf89a78cb",
+    "s43/reader.py": "1dc385dc6d8324e03e8a9f6a91e81b2a997b5d75f95eb8995eaf671a35a15fe6",
+    "s43/performer.py": "09d8ea48128dd154ac6dc5483a943518d4479a62d1ec912fb77d510fcf157d76",
+    "s43/planner.py": "7adec3db8b810b4fea8c297fa84f6123f0dc65d3c2d544c620c8459cedaa36b9",
+    "s43/repertoire.py": "8be4537b3fc6d7f312c7bc718f17939689ef17ec77af0f240cb398f49a3bd8e6",
+    "tests/test_s43_historical_language.py": "a3f8f813aea9af86610c4d31908673baa8f3f5eb18f99f33ff2f58a7a1a21d30",
+    "evidence/s43-tests-9.out": "934983dfaf8bd3275037b50a3277060736eeb556c69a91da12c85dc2de66afe1",
+    "evidence/s43-entrypoint.json": "434a78d549a64665c0b2f0e866f5b79e410980d98a36185f45f3b46ca5e4ed22",
+    "evidence/repro_s40_first_reader.py": "9e15cb962495713a78c6e538307449a75e4258f0438a4bbd63deb3034ded4d43",
+    "evidence/s43-s40-first-reader.json": "079eac7a65858288b889e702dc701b0422ee2500319e143a37e32f7ee8e1a73e",
+    "evidence/repro_wrong_access_boundary.py": "18070df12d600ea94e0fb65ba3aa6fbe73253f27058040cf38946b779932ff7e",
+    "evidence/s43-wrong-access-boundary.json": "d1322640cbc49e1e07f8f7ca1e43341c12b7553abe6c5e2b3105b2aa9691b184"
+  }
+}
