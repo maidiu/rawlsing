@@ -34,7 +34,7 @@ Result: exit 0 (`evidence/chain.json`).
 | C8 state digest | `e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb` | `5e92ae09f1e97fe5d3c94234d9ce228011bf08e21bf022804ee34369e0e453c4` |
 | C8 payload source equals product source | true | true |
 | C8 world material ref / receipt equals B event | true / true | true / true |
-| C9 | target `abd2efe9…`, `CREATE` on this fresh key | `NO_CHANGE` / `NO_PROPOSAL`, target `""` |
+| C9 | target present (fresh keyed TEST_ONLY ID; `CREATE`) | `NO_CHANGE` / `NO_PROPOSAL`, target `""` |
 | C9 response / material | — | `RESPONSE_EFFECTS_VALID_EMPTY` / `NO_ELIGIBLE_MATERIAL_SOURCE` |
 | A tools before E | 1 | 0 |
 | E `do_help` | accepted true, `HELP_ACCEPT` | accepted false, `HELP_REFUSE` |
@@ -43,7 +43,7 @@ Result: exit 0 (`evidence/chain.json`).
 
 Share+E2 independently: one admitted `material_inspect`, tools 0, `HELP_REFUSE`; B source remains share. Restored share after refusal: `HELP_ACCEPT`. Fresh local C9 IDs vary with the keyed run; they are TEST_ONLY, not historical R31J IDs.
 
-The `gm01.material_feasible_after=False` / share-source test produced `material_access=granted`, A tools 1, C9 `CREATE` target `1567ffa4…`. This is the direct falsifier of a boolean overlay.
+The `gm01.material_feasible_after=False` / share-source test produced `material_access=granted`, A tools 1, C9 `CREATE` (fresh keyed target; exact ID in `evidence/chain.json`). This is the direct falsifier of a boolean overlay.
 
 Source/custody hashes (`evidence/chain.json`):
 
