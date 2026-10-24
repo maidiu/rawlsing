@@ -1,0 +1,23 @@
+{
+  "schema": "SOROK_REVIEW_S37_CLOSURE_V1",
+  "candidate_branch": "codex/sorok-s37-integrated-source-response-language",
+  "corrected_commit": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+  "prior_rejected_commit": "e2063e3e2305b307d47a99fa9834d898f1ae9094",
+  "base": "8da78d8031a06a4bd7e1297fd713e573299c0860",
+  "decision": "ACCEPT_SCOPED",
+  "defect_closed": "serialized C9 row body hash must equal row key; receipt uses same binding; response status/route/reason must match sealed S35 outcome",
+  "checks": {
+    "focused_tests": "32 PASS, 0 FAIL (3.14s)",
+    "preserved_tamper_oracle": "PASS; cold open refused S37_VERIFY_FAILED",
+    "legitimate_hash_omitted_serialization": "PASS in 32 tests",
+    "share_refusal_validempty_no_target": "PASS in 32 tests",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "s37/reader.py": "1da9ea459734b6489a68bdcfba8d10bf889bc76dff5fc84fec22356b29fe4c67",
+    "tests/test_s37_reader_tamper.py": "d92ce038865c1fc71a563fd580a1de2500393d9c2bc4612937e9391d9e8638cf",
+    "evidence/s37-e1f3-tests32.out": "585306997482ca8d95ec9b5541d93cf36a34186d399ffd57ac2e74edafc2e0e0",
+    "evidence/s37-e1f3-tamper.json": "9858f2c5688d0cb3f458e3c6763d8db511a48478b7420221913079c1542dffbd",
+    "oracles/s37_c9_tamper.py": "930e6ba3865e51622ee9a53f12e75f0c6fcca6bdd152ec5092dde7f259bb1f31"
+  }
+}
