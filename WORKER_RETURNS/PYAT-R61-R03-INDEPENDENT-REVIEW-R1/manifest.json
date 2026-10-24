@@ -1,0 +1,52 @@
+{
+  "author_manifest_verification": {
+    "entries_checked": 7,
+    "entries_matched": 7,
+    "self_exclusion_verified": true
+  },
+  "candidate_code": "47bb3b7f13a4c9d720a9be23a1d17e50a42e69c2",
+  "candidate_code_blobs": {
+    "rawlsing_next/pre553_issued_workload.py": "31e84f49d624f5524906e9e7839d2873106f8249",
+    "rawlsing_next/pre553_native_workload_binding.py": "6abc58e21a9c7e11511772c8fe8fec365a455af8",
+    "rawlsing_next/pre553_universal_workload.py": "7aed3647ac079dd2d7a4dbe74f1039edf97d988f",
+    "rawlsing_next/tests/test_universal_workload.py": "a8a1b4dae611d4101fd041df5c49a84dcf5df9fc"
+  },
+  "candidate_startup": "5f3cee7cb7a9b53af266b05a4c8db01a53a13add",
+  "excluded_from_manifest": [
+    "manifest.json"
+  ],
+  "expectations_freeze_commit": "020d742e2",
+  "f1_f6_matrix": {
+    "F1": "PARTIAL",
+    "F2": "FAIL",
+    "F3": "PARTIAL",
+    "F4": "FAIL",
+    "F5": "PARTIAL",
+    "F6": "FAIL"
+  },
+  "files_sha256": {
+    "00_RETURN.md": "682239d1dca5c80ec450faab86dc0474da4e0c8c71c9d1302e13b46bf6113cf6",
+    "EXPECTATIONS.md": "f1d418df2cf3fbe4f540f0c93f0b01bdd2da64814c513505362a64a1ac2ab261",
+    "RESUME.md": "b7544e06faf791333faaad0713e248c1bff8b132107041c7c36a105a7e44af45",
+    "defects_and_limits.md": "d83fb3482ae91e4dff6ec588bc0409f5b73e4b956b1ebbe15096e74e6e1ee765",
+    "evidence/exploration.log": "25fbf6a6d68e5fda75971a5f24de41b3a8400ed64f76a68ee20a8bbb6cd102df",
+    "evidence/independent_oracle_results.json": "428bd4a649cdd392681ec03f19a665d8c1b640ec071fc9f8c9a6914e8a7b0b1a",
+    "evidence/startup_and_identity.txt": "f528fc520cdec555d9deb4df9219d6173c8344581717b204cf0cedcfb7cbdeee",
+    "independent_probes/test_r03v_hostile.py": "dcadc4ca31096e450f92de0a5497f6094bfa81470fc797b5d9daa571c4a2d4f1",
+    "proof_witness.json": "bd72d63040d7ec9ec40e84e184ff4fdf7dab87f67987b46e692da83d6af3ec0d",
+    "replay/author_suite.log": "4dd5ce65cb2dcfbb8e070e2467643e3e8a8c2cc70335e4b3e130d8aadab8d8f6",
+    "replay/author_suite_junit.xml": "f5db9f919f791577dab4877f4adf5cd0a343f6c4e34528bbb70963f0f08c0656",
+    "replay/hostile_probes.log": "96fb894fa2dedd86213983bcb82ffe27abc96e4e68a59ee1aff360ffb39ac431",
+    "replay/hostile_probes_junit.xml": "562a325462bcfbe4129fff8af7369c4776373eb1680bdcf84da9d67b852bca23"
+  },
+  "results": {
+    "author_passed": 6,
+    "reviewer_hostile_failed": 5,
+    "reviewer_value_fault_passed": 1
+  },
+  "review_branch": "agent/opencode-pyat-r61-r03v-independent-review-r1",
+  "schema": "PYAT_R61_R03V_INDEPENDENT_REVIEW_MANIFEST@1",
+  "u43_blob_exact": "31e84f49d624f5524906e9e7839d2873106f8249",
+  "verdict": "REVISE",
+  "write_scope": "WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/"
+}

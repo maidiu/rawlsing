@@ -1,0 +1,61 @@
+R61-R03V independent review — startup and identity evidence
+==========================================================
+
+Mandatory first-tool preflight (before any mutation):
+  pwd                           = /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5
+  git rev-parse --show-toplevel = /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5
+  git branch --show-current     = agent/opencode-pyat-r61-r03v-independent-review-r1
+  HEAD                          = 5f3cee7cb7a9b53af266b05a4c8db01a53a13add
+  git status                    = only untracked __pycache__; no tracked changes
+
+Coordinate identities:
+  commission                  22b06e0f84e11bf159351777af4bbb54232e5a2d
+  startup                     5f3cee7cb7a9b53af266b05a4c8db01a53a13add
+  candidate code              47bb3b7f13a4c9d720a9be23a1d17e50a42e69c2
+  author contract             0a323d7a2eee81e7fc0497e194ff62ec7c18fb45
+  R01 acceptance              2c744a07b8ccbbe24fcc8dccf6ca8a8282ee7c9a
+  R02 inherited base          a54893657ba65e44c1049f763208b0b4b6ed5eb9
+  U53A court                  d7988b3d5d313902d883d2d8c244fd2526058410
+  R87 commission              78999114ffb8c91f32863e2e492b7d4245f195cd
+  mainMac R03 commission      bdf9661cc89ec3dbb9c754287f0c835663ee325b
+  reviewer branch             agent/opencode-pyat-r61-r03v-independent-review-r1
+  reviewer EXPECTATIONS freeze 020d742e2
+
+Direct remote readback at review start (git ls-remote origin):
+  5f3cee7cb7a9b53af266b05a4c8db01a53a13add refs/heads/agent/opencode-pyat-r61-r03v-independent-review-r1
+  5f3cee7cb7a9b53af266b05a4c8db01a53a13add refs/heads/agent/opencode-pyat-r61-r03-total-native-workload-r1
+  fea3ca17d94183efbd526dc1687ae06b7bbbf0f7 refs/heads/agent/opencode-pyat-r61-r01-generic-grammar-r1
+
+Candidate code blobs independently read:
+  rawlsing_next/pre553_issued_workload.py        31e84f49d624f5524906e9e7839d2873106f8249
+  rawlsing_next/pre553_native_workload_binding.py 6abc58e21a9c7e11511772c8fe8fec365a455af8
+  rawlsing_next/pre553_universal_workload.py      7aed3647ac079dd2d7a4dbe74f1039edf97d988f
+  rawlsing_next/tests/test_universal_workload.py  a8a1b4dae611d4101fd041df5c49a84dcf5df9fc
+
+The recovered U43 issued module is byte-exact blob
+31e84f49d624f5524906e9e7839d2873106f8249. The changed code scope from startup
+813775c to code 47bb3b7 is exactly four allowed paths plus the author's
+CONTRACT.md; R01/R02/native owner bodies are unchanged by that diff.
+
+Author report artifacts independently hashed from startup; all 7 manifest
+entries matched:
+  00_RETURN.md 40a392a6...
+  CONTRACT.md a096c149...
+  COVERAGE_AND_LIMITS.md 82c4f6bc...
+  RESUME.md d9cea097...
+  junit.xml b1e62cfb...
+  proof_witness.json 85550992...
+  pytest.log 606bd36b...
+manifest.json explicitly excludes itself.
+
+Environment:
+  Python /usr/local/bin/python3 3.11.3
+  pytest 9.0.2
+  pyreadstat 1.3.2
+  Existing OpenCode Go DeepSeek V4.1-Flash MAX/Global harness.
+  Same-account role/session separation only; not institutional or OS isolation.
+
+Scope:
+  Writes only WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/. Candidate and
+  production/native owners untouched; no source respondent access; no R04/R05/
+  R06/R07, science/CI/prod/N11/N12/Sorok/J52/W52 activity.

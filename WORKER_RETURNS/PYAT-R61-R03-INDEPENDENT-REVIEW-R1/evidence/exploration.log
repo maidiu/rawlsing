@@ -1,0 +1,5 @@
+fact refs equal? False counts 3 3
+receipt refs equal? False
+ops equal? False expected jobs equal? False
+empty receipts/facts anti_join {'expected_count': 3, 'executed_count': 3, 'missing_operation_ids': (), 'unexpected_operation_ids': (), 'duplicate_operation_ids': (), 'no_drop_ok': True}
+bad expected jobs anti_join {'expected_count': 3, 'executed_count': 3, 'missing_operation_ids': (), 'unexpected_operation_ids': (), 'duplicate_operation_ids': (), 'no_drop_ok': True}

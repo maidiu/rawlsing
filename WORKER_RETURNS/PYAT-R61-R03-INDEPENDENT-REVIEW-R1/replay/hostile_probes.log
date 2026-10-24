@@ -1,0 +1,79 @@
+FFFFF.                                                                   [100%]
+=================================== FAILURES ===================================
+___________ test_H1_compiler_consumes_grammar_or_scientific_frontier ___________
+
+    def test_H1_compiler_consumes_grammar_or_scientific_frontier():
+        parameters = set(inspect.signature(compile_universal_workload).parameters)
+>       assert parameters & {"grammar", "frontier", "scientific_frontier", "expected_frontier"}, (
+            "compile_universal_workload has no grammar/scientific-frontier input; "
+            "it only enumerates administered unary item/value pairs"
+        )
+E       AssertionError: compile_universal_workload has no grammar/scientific-frontier input; it only enumerates administered unary item/value pairs
+E       assert ({'as_of', 'bundle', 'host', 'measure_kind', 'purpose'} & {'expected_frontier', 'frontier', 'grammar', 'scientific_frontier'})
+
+WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/independent_probes/test_r03v_hostile.py:40: AssertionError
+__________ test_H2_antijoin_requires_native_receipt_and_fact_content ___________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-443/test_H2_antijoin_requires_nati0')
+
+    def test_H2_antijoin_requires_native_receipt_and_fact_content(tmp_path):
+        bundle = _bundle(tmp_path)
+        compilation, result = _run(bundle)
+        assert result.anti_join()["no_drop_ok"]
+        stripped = replace(result, receipt_refs=(), fact_refs=(), native_results=())
+>       assert stripped.anti_join()["no_drop_ok"] is False, (
+            "anti_join still reports no-drop after all native receipts/facts/results are removed"
+        )
+E       AssertionError: anti_join still reports no-drop after all native receipts/facts/results are removed
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/independent_probes/test_r03v_hostile.py:55: AssertionError
+____________ test_H3_antijoin_requires_expected_native_job_identity ____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-443/test_H3_antijoin_requires_expe0')
+
+    def test_H3_antijoin_requires_expected_native_job_identity(tmp_path):
+        bundle = _bundle(tmp_path)
+        compilation, result = _run(bundle)
+        assert result.anti_join()["no_drop_ok"]
+        altered = replace(result, compilation=replace(compilation, expected_jobs=()))
+>       assert altered.anti_join()["no_drop_ok"] is False, (
+            "anti_join ignores expected_jobs and only compares R03 operation ids"
+        )
+E       AssertionError: anti_join ignores expected_jobs and only compares R03 operation ids
+E       assert True is False
+
+WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/independent_probes/test_r03v_hostile.py:65: AssertionError
+___________ test_H4_recursive_fragment_is_composed_into_the_workload ___________
+
+    def test_H4_recursive_fragment_is_composed_into_the_workload():
+        parameters = set(inspect.signature(execute_universal_workload).parameters)
+>       assert parameters & {"recursive_fragment", "campaign", "execution_ref", "recursive_executions"}, (
+            "execute_universal_workload has no path for the R01 D3 fragment; "
+            "bind_recursive_execution only decorates unrelated receipts"
+        )
+E       AssertionError: execute_universal_workload has no path for the R01 D3 fragment; bind_recursive_execution only decorates unrelated receipts
+E       assert ({'compilation', 'source_factory'} & {'campaign', 'execution_ref', 'recursive_executions', 'recursive_fragment'})
+
+WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/independent_probes/test_r03v_hostile.py:72: AssertionError
+_________________ test_H5_typed_operation_states_are_retained __________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-443/test_H5_typed_operation_states0')
+
+    def test_H5_typed_operation_states_are_retained(tmp_path):
+        fields = set(UniversalWorkloadResult.__dataclass_fields__)
+>       assert {"operation_states", "typed_states", "status_by_operation"} & fields, (
+            "UniversalWorkloadResult has no per-operation typed state ledger; "
+            "unsupported/error/unrun/valid-empty cannot be distinguished"
+        )
+E       AssertionError: UniversalWorkloadResult has no per-operation typed state ledger; unsupported/error/unrun/valid-empty cannot be distinguished
+E       assert ({'operation_states', 'status_by_operation', 'typed_states'} & {'compilation', 'executed_operation_ids', 'fact_refs', 'failed', 'native_results', 'receipt_refs'})
+
+WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/independent_probes/test_r03v_hostile.py:84: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/independent_probes/test_r03v_hostile.py::test_H1_compiler_consumes_grammar_or_scientific_frontier
+FAILED WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/independent_probes/test_r03v_hostile.py::test_H2_antijoin_requires_native_receipt_and_fact_content
+FAILED WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/independent_probes/test_r03v_hostile.py::test_H3_antijoin_requires_expected_native_job_identity
+FAILED WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/independent_probes/test_r03v_hostile.py::test_H4_recursive_fragment_is_composed_into_the_workload
+FAILED WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/independent_probes/test_r03v_hostile.py::test_H5_typed_operation_states_are_retained
+5 failed, 1 passed in 1.72s
