@@ -86,6 +86,7 @@ def test_candidate_order_and_unrelated_stream_do_not_perturb_decisions():
         "scope_kind": "RUN",
         "scope_id": "S44_ROOT",
         "operation": "WEIGHTED_CANDIDATE_INTEGER",
+        "candidate_owner_authority": "TEST_ONLY_UNUSED",
         "candidates": [{
             "candidate_id": "unused_1", "value": 1, "weight_units": 1,
             "source_ref": "TEST_ONLY_UNUSED_SOURCE",

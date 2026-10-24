@@ -122,10 +122,14 @@ def _candidate_set(rule: Mapping[str, Any]) -> dict:
         if not isinstance(cid, str) or not cid or cid in seen:
             raise S44Refusal("S44_CANDIDATE_INVALID")
         seen.add(cid)
-        weight = candidate.get("weight_units", 1)
+        if "weight_units" not in candidate:
+            raise S44Refusal("S44_CANDIDATE_WEIGHT_MISSING", cid)
+        weight = candidate.get("weight_units")
         if not isinstance(weight, int) or isinstance(weight, bool) or weight < 0:
             raise S44Refusal("S44_CANDIDATE_WEIGHT_INVALID", cid)
         entries.append(dict(candidate))
+    if not rule.get("candidate_owner_authority"):
+        raise S44Refusal("S44_CANDIDATE_AUTHORITY_MISSING", rule.get("rule_id", ""))
     if not entries:
         raise S44Refusal("S44_CANDIDATE_SET_EMPTY", rule.get("rule_id", ""))
     if not any(int(row.get("weight_units", 1)) > 0 for row in entries):
