@@ -1,0 +1,385 @@
+{
+  "branch_actors": [
+    "A",
+    "B",
+    "U"
+  ],
+  "checks": {
+    "family_and_work_selected_differently": true,
+    "family_work_contrary_preserved": true,
+    "private_generation_sources_absent": true,
+    "same_native_english_pair": true,
+    "source_grades_present": true,
+    "zero_targets": true
+  },
+  "clock": 245,
+  "cold_reopen_per_admission": true,
+  "events": [
+    {
+      "access_receipt_id": "LME_ACCESS_90073b38e843e4cae4a32b473a3cea608b66f9c03c26b75f95c0b8c308990a8a",
+      "attempt_status": "ADMITTED",
+      "context": {
+        "milieu_id": "family"
+      },
+      "contrary_relation_ids": [
+        "LME_ENC_02c3cb988925e3565a0140ee2beb8fd44267d7d1bcb03d06c5caeec3128731d8"
+      ],
+      "contrary_relations": [
+        {
+          "access_receipt": {
+            "access": "OBSERVED_HEARING",
+            "actor_id": "A",
+            "receipt_id": "LME_ACCESS_4472001e54448949af956d5212f488b4031bffa1c554767a7e3a5432915aa780",
+            "status": "GRANTED"
+          },
+          "atoms": [
+            "TOOL_REQUEST_WORKSHOP"
+          ],
+          "concept_id": "concept:request-tool",
+          "counterexamples": [
+            {
+              "event_hash": "59a699a6895a0c63068d7c23aa27c607501107d2f9596fc18a918cb06ede6a08",
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_ab4de74d9bf829eadf738469fd57b66593592bf4d9d16b5dc082b1c594beca46"
+            }
+          ],
+          "epistemic": "TEST_ONLY_SOURCE_INDEX",
+          "language_tag": "es-MX",
+          "milieu_id": "workshop",
+          "relation_id": "LME_ENC_02c3cb988925e3565a0140ee2beb8fd44267d7d1bcb03d06c5caeec3128731d8",
+          "relation_label": "AFFIRMED",
+          "sense_id": "sense:workshop-request",
+          "source_event_ref": {
+            "branch_id": "first_session",
+            "event_hash": "3924e0eda119090459ad255582d1e9cf32b65ffbe7ec35ad5630539d2b3ab201",
+            "event_id": "TEST_ONLY_BP4_WORLD_EVT_e06218fbf44d32483f6c90b3c5d4ee3d7952aaa98243173210664c311718a75d"
+          },
+          "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+          "status": "VALID"
+        }
+      ],
+      "current_cache_status": "CACHE_VALID",
+      "currently_available": true,
+      "event_ordinal": 2,
+      "generation_source_refs": [
+        "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+        "TEST_ONLY_S39_CTX_AVOID_DEBT",
+        "TEST_ONLY_S41_HIST_TEST_ONLY_BP2_E1_OCC-0001"
+      ],
+      "native_text": "\u00bfPuedo usar la herramienta?",
+      "performed": true,
+      "plan_hash": "b49517425e58aeb0f017c2e4f2e1a1f86978c3de3ea1e26d92edd06e9c76f378",
+      "repertoire_hash": "7f8fb5677afd7c76cb2cc3da4365349fae369dcb183f032244601659b37ad43e",
+      "repertoire_id": "S43_REP_7F8FB5677AFD7C76CB2CC3DA",
+      "selected_option": "REQUEST_TOOL",
+      "selected_relation_ids": [
+        "LME_ENC_1c148890d5b7b679df5d973854e285cf185052f21e3928c7e6092134f998150e"
+      ],
+      "selected_relations": [
+        {
+          "access_receipt": {
+            "access": "OBSERVED_HEARING",
+            "actor_id": "A",
+            "receipt_id": "LME_ACCESS_90073b38e843e4cae4a32b473a3cea608b66f9c03c26b75f95c0b8c308990a8a",
+            "status": "GRANTED"
+          },
+          "atoms": [
+            "TOOL_REQUEST_WORKSHOP"
+          ],
+          "concept_id": "concept:request-tool",
+          "counterexamples": [
+            {
+              "event_hash": "c995c2ca7e34c60c48ecdce7aed2a6f12531b4195b0d034a0664dfc2ee9e74a8",
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_29182007ba10d9475c19135623c23815cb6d519f0a91c74e1c2053438bb2f4a0"
+            }
+          ],
+          "epistemic": "TEST_ONLY_SOURCE_INDEX",
+          "language_tag": "es-MX",
+          "milieu_id": "family",
+          "relation_id": "LME_ENC_1c148890d5b7b679df5d973854e285cf185052f21e3928c7e6092134f998150e",
+          "relation_label": "CONTESTED",
+          "sense_id": "sense:family-request",
+          "source_event_ref": {
+            "branch_id": "first_session",
+            "event_hash": "4c76cd483ed196faf2a8fd0cfa6b38377296c20433f218dd7b0505b144aeb98a",
+            "event_id": "TEST_ONLY_BP4_WORLD_EVT_89da99cd1e42b55ad0d1cdecda41119013fb77061d4fedab89be3b1219fc8571"
+          },
+          "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+          "status": "VALID"
+        }
+      ],
+      "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_89da99cd1e42b55ad0d1cdecda41119013fb77061d4fedab89be3b1219fc8571",
+      "source_event_ids": [
+        "TEST_ONLY_BP4_WORLD_EVT_29182007ba10d9475c19135623c23815cb6d519f0a91c74e1c2053438bb2f4a0",
+        "TEST_ONLY_BP4_WORLD_EVT_89da99cd1e42b55ad0d1cdecda41119013fb77061d4fedab89be3b1219fc8571",
+        "TEST_ONLY_BP4_WORLD_EVT_ab4de74d9bf829eadf738469fd57b66593592bf4d9d16b5dc082b1c594beca46",
+        "TEST_ONLY_BP4_WORLD_EVT_e06218fbf44d32483f6c90b3c5d4ee3d7952aaa98243173210664c311718a75d"
+      ],
+      "source_grades": {
+        "TEST_ONLY_BP4_WORLD_EVT_29182007ba10d9475c19135623c23815cb6d519f0a91c74e1c2053438bb2f4a0": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+        "TEST_ONLY_BP4_WORLD_EVT_89da99cd1e42b55ad0d1cdecda41119013fb77061d4fedab89be3b1219fc8571": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+        "TEST_ONLY_BP4_WORLD_EVT_ab4de74d9bf829eadf738469fd57b66593592bf4d9d16b5dc082b1c594beca46": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+        "TEST_ONLY_BP4_WORLD_EVT_e06218fbf44d32483f6c90b3c5d4ee3d7952aaa98243173210664c311718a75d": "TEST_ONLY_INVENTED_LANGUAGE_EVENT"
+      },
+      "status": "OK",
+      "target_branch": "NO_CHANGE",
+      "target_proposals": [],
+      "target_reason": "NO_PROPOSAL",
+      "translation_text": "May I use the tool?"
+    },
+    {
+      "access_receipt_id": "LME_ACCESS_4472001e54448949af956d5212f488b4031bffa1c554767a7e3a5432915aa780",
+      "attempt_status": "ADMITTED",
+      "context": {
+        "milieu_id": "workshop"
+      },
+      "contrary_relation_ids": [
+        "LME_ENC_1c148890d5b7b679df5d973854e285cf185052f21e3928c7e6092134f998150e"
+      ],
+      "contrary_relations": [
+        {
+          "access_receipt": {
+            "access": "OBSERVED_HEARING",
+            "actor_id": "A",
+            "receipt_id": "LME_ACCESS_90073b38e843e4cae4a32b473a3cea608b66f9c03c26b75f95c0b8c308990a8a",
+            "status": "GRANTED"
+          },
+          "atoms": [
+            "TOOL_REQUEST_WORKSHOP"
+          ],
+          "concept_id": "concept:request-tool",
+          "counterexamples": [
+            {
+              "event_hash": "c995c2ca7e34c60c48ecdce7aed2a6f12531b4195b0d034a0664dfc2ee9e74a8",
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_29182007ba10d9475c19135623c23815cb6d519f0a91c74e1c2053438bb2f4a0"
+            }
+          ],
+          "epistemic": "TEST_ONLY_SOURCE_INDEX",
+          "language_tag": "es-MX",
+          "milieu_id": "family",
+          "relation_id": "LME_ENC_1c148890d5b7b679df5d973854e285cf185052f21e3928c7e6092134f998150e",
+          "relation_label": "CONTESTED",
+          "sense_id": "sense:family-request",
+          "source_event_ref": {
+            "branch_id": "first_session",
+            "event_hash": "4c76cd483ed196faf2a8fd0cfa6b38377296c20433f218dd7b0505b144aeb98a",
+            "event_id": "TEST_ONLY_BP4_WORLD_EVT_89da99cd1e42b55ad0d1cdecda41119013fb77061d4fedab89be3b1219fc8571"
+          },
+          "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+          "status": "VALID"
+        }
+      ],
+      "current_cache_status": "CACHE_VALID",
+      "currently_available": true,
+      "event_ordinal": 3,
+      "generation_source_refs": [
+        "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+        "TEST_ONLY_S39_CTX_AVOID_DEBT",
+        "TEST_ONLY_S41_HIST_TEST_ONLY_BP2_E1_OCC-0001"
+      ],
+      "native_text": "\u00bfPuedo usar la herramienta?",
+      "performed": true,
+      "plan_hash": "f61e5ec55cc2dc63605c010ac4cf29d52dde379da2087223f2e4f13ff1a8fc86",
+      "repertoire_hash": "9eca77eda1f7b699001e9dc401f4ebb6c69f59643c258ad6319c311d68e261c6",
+      "repertoire_id": "S43_REP_9ECA77EDA1F7B699001E9DC4",
+      "selected_option": "REQUEST_TOOL",
+      "selected_relation_ids": [
+        "LME_ENC_02c3cb988925e3565a0140ee2beb8fd44267d7d1bcb03d06c5caeec3128731d8"
+      ],
+      "selected_relations": [
+        {
+          "access_receipt": {
+            "access": "OBSERVED_HEARING",
+            "actor_id": "A",
+            "receipt_id": "LME_ACCESS_4472001e54448949af956d5212f488b4031bffa1c554767a7e3a5432915aa780",
+            "status": "GRANTED"
+          },
+          "atoms": [
+            "TOOL_REQUEST_WORKSHOP"
+          ],
+          "concept_id": "concept:request-tool",
+          "counterexamples": [
+            {
+              "event_hash": "59a699a6895a0c63068d7c23aa27c607501107d2f9596fc18a918cb06ede6a08",
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_ab4de74d9bf829eadf738469fd57b66593592bf4d9d16b5dc082b1c594beca46"
+            }
+          ],
+          "epistemic": "TEST_ONLY_SOURCE_INDEX",
+          "language_tag": "es-MX",
+          "milieu_id": "workshop",
+          "relation_id": "LME_ENC_02c3cb988925e3565a0140ee2beb8fd44267d7d1bcb03d06c5caeec3128731d8",
+          "relation_label": "AFFIRMED",
+          "sense_id": "sense:workshop-request",
+          "source_event_ref": {
+            "branch_id": "first_session",
+            "event_hash": "3924e0eda119090459ad255582d1e9cf32b65ffbe7ec35ad5630539d2b3ab201",
+            "event_id": "TEST_ONLY_BP4_WORLD_EVT_e06218fbf44d32483f6c90b3c5d4ee3d7952aaa98243173210664c311718a75d"
+          },
+          "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+          "status": "VALID"
+        }
+      ],
+      "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_e06218fbf44d32483f6c90b3c5d4ee3d7952aaa98243173210664c311718a75d",
+      "source_event_ids": [
+        "TEST_ONLY_BP4_WORLD_EVT_29182007ba10d9475c19135623c23815cb6d519f0a91c74e1c2053438bb2f4a0",
+        "TEST_ONLY_BP4_WORLD_EVT_89da99cd1e42b55ad0d1cdecda41119013fb77061d4fedab89be3b1219fc8571",
+        "TEST_ONLY_BP4_WORLD_EVT_ab4de74d9bf829eadf738469fd57b66593592bf4d9d16b5dc082b1c594beca46",
+        "TEST_ONLY_BP4_WORLD_EVT_e06218fbf44d32483f6c90b3c5d4ee3d7952aaa98243173210664c311718a75d"
+      ],
+      "source_grades": {
+        "TEST_ONLY_BP4_WORLD_EVT_29182007ba10d9475c19135623c23815cb6d519f0a91c74e1c2053438bb2f4a0": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+        "TEST_ONLY_BP4_WORLD_EVT_89da99cd1e42b55ad0d1cdecda41119013fb77061d4fedab89be3b1219fc8571": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+        "TEST_ONLY_BP4_WORLD_EVT_ab4de74d9bf829eadf738469fd57b66593592bf4d9d16b5dc082b1c594beca46": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+        "TEST_ONLY_BP4_WORLD_EVT_e06218fbf44d32483f6c90b3c5d4ee3d7952aaa98243173210664c311718a75d": "TEST_ONLY_INVENTED_LANGUAGE_EVENT"
+      },
+      "status": "OK",
+      "target_branch": "NO_CHANGE",
+      "target_proposals": [],
+      "target_reason": "NO_PROPOSAL",
+      "translation_text": "May I use the tool?"
+    },
+    {
+      "access_receipt_id": "LME_ACCESS_90073b38e843e4cae4a32b473a3cea608b66f9c03c26b75f95c0b8c308990a8a",
+      "attempt_status": "ADMITTED",
+      "context": {
+        "milieu_id": "family"
+      },
+      "contrary_relation_ids": [
+        "LME_ENC_02c3cb988925e3565a0140ee2beb8fd44267d7d1bcb03d06c5caeec3128731d8"
+      ],
+      "contrary_relations": [
+        {
+          "access_receipt": {
+            "access": "OBSERVED_HEARING",
+            "actor_id": "A",
+            "receipt_id": "LME_ACCESS_4472001e54448949af956d5212f488b4031bffa1c554767a7e3a5432915aa780",
+            "status": "GRANTED"
+          },
+          "atoms": [
+            "TOOL_REQUEST_WORKSHOP"
+          ],
+          "concept_id": "concept:request-tool",
+          "counterexamples": [
+            {
+              "event_hash": "59a699a6895a0c63068d7c23aa27c607501107d2f9596fc18a918cb06ede6a08",
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_ab4de74d9bf829eadf738469fd57b66593592bf4d9d16b5dc082b1c594beca46"
+            }
+          ],
+          "epistemic": "TEST_ONLY_SOURCE_INDEX",
+          "language_tag": "es-MX",
+          "milieu_id": "workshop",
+          "relation_id": "LME_ENC_02c3cb988925e3565a0140ee2beb8fd44267d7d1bcb03d06c5caeec3128731d8",
+          "relation_label": "AFFIRMED",
+          "sense_id": "sense:workshop-request",
+          "source_event_ref": {
+            "branch_id": "first_session",
+            "event_hash": "3924e0eda119090459ad255582d1e9cf32b65ffbe7ec35ad5630539d2b3ab201",
+            "event_id": "TEST_ONLY_BP4_WORLD_EVT_e06218fbf44d32483f6c90b3c5d4ee3d7952aaa98243173210664c311718a75d"
+          },
+          "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+          "status": "VALID"
+        }
+      ],
+      "current_cache_status": "CACHE_VALID",
+      "currently_available": true,
+      "event_ordinal": 4,
+      "generation_source_refs": [
+        "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+        "TEST_ONLY_S39_CTX_AVOID_DEBT",
+        "TEST_ONLY_S41_HIST_TEST_ONLY_BP2_E1_OCC-0001"
+      ],
+      "native_text": "\u00bfPuedo usar la herramienta?",
+      "performed": true,
+      "plan_hash": "6f6cbc433fd766b7d57cdca58f338221d70b71a2d2fc9de9326e73370099f4bf",
+      "repertoire_hash": "7f8fb5677afd7c76cb2cc3da4365349fae369dcb183f032244601659b37ad43e",
+      "repertoire_id": "S43_REP_7F8FB5677AFD7C76CB2CC3DA",
+      "selected_option": "REQUEST_TOOL",
+      "selected_relation_ids": [
+        "LME_ENC_1c148890d5b7b679df5d973854e285cf185052f21e3928c7e6092134f998150e"
+      ],
+      "selected_relations": [
+        {
+          "access_receipt": {
+            "access": "OBSERVED_HEARING",
+            "actor_id": "A",
+            "receipt_id": "LME_ACCESS_90073b38e843e4cae4a32b473a3cea608b66f9c03c26b75f95c0b8c308990a8a",
+            "status": "GRANTED"
+          },
+          "atoms": [
+            "TOOL_REQUEST_WORKSHOP"
+          ],
+          "concept_id": "concept:request-tool",
+          "counterexamples": [
+            {
+              "event_hash": "c995c2ca7e34c60c48ecdce7aed2a6f12531b4195b0d034a0664dfc2ee9e74a8",
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_29182007ba10d9475c19135623c23815cb6d519f0a91c74e1c2053438bb2f4a0"
+            }
+          ],
+          "epistemic": "TEST_ONLY_SOURCE_INDEX",
+          "language_tag": "es-MX",
+          "milieu_id": "family",
+          "relation_id": "LME_ENC_1c148890d5b7b679df5d973854e285cf185052f21e3928c7e6092134f998150e",
+          "relation_label": "CONTESTED",
+          "sense_id": "sense:family-request",
+          "source_event_ref": {
+            "branch_id": "first_session",
+            "event_hash": "4c76cd483ed196faf2a8fd0cfa6b38377296c20433f218dd7b0505b144aeb98a",
+            "event_id": "TEST_ONLY_BP4_WORLD_EVT_89da99cd1e42b55ad0d1cdecda41119013fb77061d4fedab89be3b1219fc8571"
+          },
+          "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+          "status": "VALID"
+        }
+      ],
+      "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_89da99cd1e42b55ad0d1cdecda41119013fb77061d4fedab89be3b1219fc8571",
+      "source_event_ids": [
+        "TEST_ONLY_BP4_WORLD_EVT_29182007ba10d9475c19135623c23815cb6d519f0a91c74e1c2053438bb2f4a0",
+        "TEST_ONLY_BP4_WORLD_EVT_89da99cd1e42b55ad0d1cdecda41119013fb77061d4fedab89be3b1219fc8571",
+        "TEST_ONLY_BP4_WORLD_EVT_ab4de74d9bf829eadf738469fd57b66593592bf4d9d16b5dc082b1c594beca46",
+        "TEST_ONLY_BP4_WORLD_EVT_e06218fbf44d32483f6c90b3c5d4ee3d7952aaa98243173210664c311718a75d"
+      ],
+      "source_grades": {
+        "TEST_ONLY_BP4_WORLD_EVT_29182007ba10d9475c19135623c23815cb6d519f0a91c74e1c2053438bb2f4a0": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+        "TEST_ONLY_BP4_WORLD_EVT_89da99cd1e42b55ad0d1cdecda41119013fb77061d4fedab89be3b1219fc8571": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+        "TEST_ONLY_BP4_WORLD_EVT_ab4de74d9bf829eadf738469fd57b66593592bf4d9d16b5dc082b1c594beca46": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+        "TEST_ONLY_BP4_WORLD_EVT_e06218fbf44d32483f6c90b3c5d4ee3d7952aaa98243173210664c311718a75d": "TEST_ONLY_INVENTED_LANGUAGE_EVENT"
+      },
+      "status": "OK",
+      "target_branch": "NO_CHANGE",
+      "target_proposals": [],
+      "target_reason": "NO_PROPOSAL",
+      "translation_text": "May I use the tool?"
+    }
+  ],
+  "histories": {
+    "family_independence_relation": "LME_ENC_06ed2d3bdfb8d8e459d63f55391db177259769367d1a601bca0ddd7e4cbddc62",
+    "family_independence_source": "TEST_ONLY_BP4_WORLD_EVT_a9239581bb0d23a1c5a30412ab9a379ff5d5b0203c63f96db003dfc8a318a9a1",
+    "family_request_relation": "LME_ENC_1c148890d5b7b679df5d973854e285cf185052f21e3928c7e6092134f998150e",
+    "family_request_source": "TEST_ONLY_BP4_WORLD_EVT_89da99cd1e42b55ad0d1cdecda41119013fb77061d4fedab89be3b1219fc8571",
+    "work_independence_relation": "LME_ENC_d14d6d1a3d98a9d5067b92446c7aa2e0d25e3f2941908168fd5f0b2ac907e869",
+    "work_independence_source": "TEST_ONLY_BP4_WORLD_EVT_1dc57dadaab21da4d2f4c74991f9dfbee17fa642cc6f4e417eee536908a1b719",
+    "work_request_relation": "LME_ENC_02c3cb988925e3565a0140ee2beb8fd44267d7d1bcb03d06c5caeec3128731d8",
+    "work_request_source": "TEST_ONLY_BP4_WORLD_EVT_e06218fbf44d32483f6c90b3c5d4ee3d7952aaa98243173210664c311718a75d"
+  },
+  "index_cache_status": "CACHE_VALID",
+  "index_contradictions": 3,
+  "index_relations": 7,
+  "locale_did_not_change_event": true,
+  "locale_view_en": {
+    "display_mode": "LABELED_ENGLISH",
+    "source_event_hash": "067d68186e7e4a399f38e531188d7261f6ca46aaff3d3edee78be9f536975e76",
+    "translation_text": "May I use the tool?"
+  },
+  "locale_view_es": {
+    "display_mode": "SOURCE_ORIGINAL",
+    "source_event_hash": "067d68186e7e4a399f38e531188d7261f6ca46aaff3d3edee78be9f536975e76",
+    "translation_text": null
+  },
+  "no_new_b_source_during_event2": true,
+  "root_actors": [
+    "A",
+    "B"
+  ],
+  "schema": "SOROK_S43_HISTORICAL_LANGUAGE_CHAIN@1",
+  "second_event_hash": "067d68186e7e4a399f38e531188d7261f6ca46aaff3d3edee78be9f536975e76",
+  "tools_remaining": 1,
+  "verify_ok": true
+}
