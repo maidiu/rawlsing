@@ -95,7 +95,8 @@ remaining defects are structural/ledger/composition gaps.
 
 `EXPECTATIONS.md`, `00_RETURN.md`, `defects_and_limits.md`,
 `independent_probes/`, `replay/` JUnit/logs, `evidence/`, `proof_witness.json`,
-`manifest.json`, `RESUME.md`. The reviewer branch is pushed non-force; direct
-remote readback of the evidence commit and final tip is recorded in
-`evidence/remote_readback.txt` and reported to the coordinator. The candidate
-branch is expected to remain at `5f3cee7cb7a9b53af266b05a4c8db01a53a13add`.
+`manifest.json`, `RESUME.md`. The reviewer branch was pushed non-force. Evidence commit
+`88a055cef9bb3a597d1614d75be5eb4ae09a40a5` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also verified by direct remote readback and reported to the coordinator. The
+candidate branch remained at `5f3cee7cb7a9b53af266b05a4c8db01a53a13add`.
