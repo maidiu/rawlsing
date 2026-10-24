@@ -1,0 +1,23 @@
+{
+  "schema": "PYAT_R91_R05_R6_PROOF_WITNESS_V1",
+  "startup_commit": "68b8f33fae7432e968e25f312f265f45c523718c",
+  "contract_commit": "f069e1a80970d8b1601ec6de4156107d77bf48a5",
+  "code_commit": "4f2b097e433c2a6dfa986cccdcf85d637ba69c5e",
+  "branch": "agent/opencode-pyat-r91-r05-learned-consumer-r1",
+  "review_input": "73f6f1f6d7fc5cca09ffe570c39a5a2fb08f653b",
+  "environment": {"python": "3.11.3", "python_executable": "/usr/local/bin/python3", "pytest": "9.0.2"},
+  "commands": [
+    {"id": "author", "command": "/usr/local/bin/python3 -m pytest -q rawlsing_next/tests/test_universal_learned_consumer.py rawlsing_next/tests/test_pre553_learned_world_composition.py --junitxml=.../r6/junit.xml", "exit_code": 0, "tests": 40, "failures": 0, "errors": 0, "skipped": 0, "time_seconds": 8.22},
+    {"id": "r05v-r1-r2-r3-r5-probes", "command": "PYTHONPATH=\"$PWD\" /usr/local/bin/python3 -m pytest -q .r61/reconciliation/r05r6/probes/ --junitxml=.../r6/r05v_probes_replay.xml", "exit_code": 0, "tests": 19, "failures": 0, "errors": 0, "skipped": 0, "time_seconds": 1.26}
+  ],
+  "actual_routes": {
+    "discovery": "AT10 actual discovery_result+receipt via coordinator -> C1 I05 -> same N10E EXACT_SUPPORTED; E41 discovery route reconciled",
+    "recursive": "AT11 actual handoff+lineage via coordinator -> C1 MX01R2 -> same N10E EXACT_SUPPORTED; E41 recursive route reconciled",
+    "joint": "AT10 actual joint query arity 2 via coordinator -> same consumer",
+    "direct": "R4/R5 direct positive retained",
+    "changed_evidence": "actual changed C1 evidence refuses; exact original restores"
+  },
+  "custody": ["admitted_slots map", "actual C1/E41 invocation", "complete original projection", "bound view full comparison", "typed axes/Z16"],
+  "blobs": {"rawlsing_next/pre553_learned_world_composition.py": "a486eddfe5892a4d0ebd44f8f0842a06de931283", "rawlsing_next/tests/test_universal_learned_consumer.py": "f3a90a537e81bbd752e06a14e4d4d39a12135d96"},
+  "limits": ["full J42/P41/E04 NOT_REACHED", "sourcefree TEST_ONLY", "local coordinator only; no OS/R09 protection", "no original/science/CI/prod/N11/N12/F6/F7/Sorok/J52/W52/R04 authority", "author candidate only"]
+}
