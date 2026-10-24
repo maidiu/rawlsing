@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from types import MappingProxyType
-from typing import Any, Iterable, Mapping, Sequence
+from typing import Any, Callable, Iterable, Mapping, Sequence
 
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
@@ -48,7 +48,10 @@ from rawlsing_next.pre553_learned_product_release import (
     register_producer_subject,
 )
 from rawlsing_next.pre553_route_b_production import RouteBProductionResult
-from rawlsing_next.pre553_analytical_composition import AnalyticalCompositionResult
+from rawlsing_next.pre553_analytical_composition import (
+    AnalyticalCompositionResult,
+    native_composition_original,
+)
 from rawlsing_next.pre553_universal_empirical_extension import (
     EXT_ROUTE_DIRECT_MULTI_CONDITIONER,
     EXT_ROUTE_DIRECT_VIA_ACCEPTED_PROVIDER,
@@ -1588,6 +1591,126 @@ def _learned_refusal(
     )
 
 
+
+
+@dataclass(frozen=True)
+class NativeGraphSlot:
+    slot_id: str
+    source_universe_ref: ExactRef
+    release_ref: ExactRef
+    producer_query_ref: ExactRef
+    producer_predicate_ref: ExactRef
+    consumer_query_ref: ExactRef
+    model_rule_hash: str
+    producer_route: str
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "slot_id", str(self.slot_id).strip())
+        if not self.slot_id:
+            raise LearnedWorldConsumerError("graph slot id is required")
+        for name in (
+            "source_universe_ref", "release_ref", "producer_query_ref",
+            "producer_predicate_ref", "consumer_query_ref",
+        ):
+            object.__setattr__(self, name, _exact(getattr(self, name), name))
+        if len(str(self.model_rule_hash)) != 64:
+            raise LearnedWorldConsumerError("slot model_rule_hash must be sha256")
+        if not str(self.producer_route).strip():
+            raise LearnedWorldConsumerError("slot producer route is required")
+
+
+@dataclass(frozen=True)
+class NativeGraphExecutionRequest:
+    slots: tuple[NativeGraphSlot, ...]
+
+    def __post_init__(self) -> None:
+        slots = tuple(self.slots)
+        if not slots:
+            raise LearnedWorldConsumerError("graph request requires admitted slots")
+        if len({slot.slot_id for slot in slots}) != len(slots):
+            raise LearnedWorldConsumerError("graph slot ids must be unique")
+        object.__setattr__(self, "slots", slots)
+
+
+@dataclass(frozen=True)
+class BoundNativeProductGraph:
+    original_ref: ExactRef
+    view: NativeProductGraph
+    projection_hash: str
+
+
+class TrustedNativeGraphCoordinator:
+    """Local trusted coordinator holding actual executed originals separately."""
+
+    def __init__(
+        self,
+        executors: Mapping[str, Callable[[NativeGraphSlot], AnalyticalCompositionResult]],
+    ) -> None:
+        self._executors = dict(executors)
+        self._originals: dict[str, tuple[Mapping[str, Any], tuple[AnalyticalCompositionResult, ...]]] = {}
+
+    def execute(self, request: NativeGraphExecutionRequest) -> BoundNativeProductGraph:
+        components = []
+        for slot in request.slots:
+            executor = self._executors.get(slot.slot_id)
+            if executor is None:
+                raise LearnedWorldConsumerError(f"no trusted executor for slot {slot.slot_id!r}")
+            component = executor(slot)
+            if not isinstance(component, AnalyticalCompositionResult):
+                raise LearnedWorldConsumerError("trusted executor did not return a native composition")
+            if (
+                component.producer_query_ref != slot.producer_query_ref
+                or component.producer_predicate_ref != slot.producer_predicate_ref
+                or component.consumer_query_ref != slot.consumer_query_ref
+                or component.consumer_model_rule_hash != slot.model_rule_hash
+                or component.producer_route != slot.producer_route
+                or slot.source_universe_ref not in set(component.source_universe_refs)
+                or slot.release_ref not in set(component.release_refs)
+            ):
+                raise LearnedWorldConsumerError("executed slot does not match admitted determinants")
+            if native_composition_original(component) is None:
+                raise LearnedWorldConsumerError("executed slot lacks retained native original")
+            components.append(component)
+        material = {
+            "schema": "R91_BOUND_NATIVE_GRAPH_ORIGINAL@1",
+            "slots": [
+                {
+                    "slot_id": slot.slot_id,
+                    "source_universe_ref": slot.source_universe_ref.as_dict(),
+                    "release_ref": slot.release_ref.as_dict(),
+                    "producer_query_ref": slot.producer_query_ref.as_dict(),
+                    "producer_predicate_ref": slot.producer_predicate_ref.as_dict(),
+                    "consumer_query_ref": slot.consumer_query_ref.as_dict(),
+                    "model_rule_hash": slot.model_rule_hash,
+                    "producer_route": slot.producer_route,
+                    "composition": canonicalize(component.identity_material()),
+                    "composition_hash": component.composed_result_identity_hash,
+                }
+                for slot, component in zip(request.slots, components)
+            ],
+        }
+        digest = semantic_hash(material)
+        ref = ExactRef(
+            "R91_BOUND_NATIVE_GRAPH_ORIGINAL@1",
+            f"urn:rawlsing:r91:bound-native-graph:sha256:{digest}",
+            digest,
+        )
+        self._originals[digest] = (canonicalize(material), tuple(components))
+        return BoundNativeProductGraph(
+            original_ref=ref,
+            view=NativeProductGraph(tuple(components)),
+            projection_hash=digest,
+        )
+
+    def resolve_original(self, ref: ExactRef) -> Mapping[str, Any] | None:
+        entry = self._originals.get(ref.content_hash)
+        return None if entry is None else entry[0]
+
+    def original_components(self, ref: ExactRef) -> tuple[AnalyticalCompositionResult, ...] | None:
+        entry = self._originals.get(ref.content_hash)
+        return None if entry is None else entry[1]
+
+
 def _consumer_status_axes(state: str) -> tuple[str, str, str]:
     if state == "SUPPORTED":
         return ("ELIGIBLE", "COMPLETED", "SUPPORTED")
@@ -1646,6 +1769,12 @@ def _authoritative_graph(
         "MX01R2_RECURSIVE_TO_POSITIONED_SUBJECT",
     }
     for component in compositions:
+        original = native_composition_original(component)
+        if (
+            original is None
+            or canonicalize(original) != canonicalize(component.identity_material())
+        ):
+            return (_fallback_graph(compositions), "COMPONENT_NOT_RETAINED_NATIVE_ORIGINAL")
         topology = canonicalize(component.target_arity_and_topology)
         arity = topology.get("arity")
         components = topology.get("components", ())
@@ -1797,6 +1926,7 @@ def evaluate_learned_world_consumer(
     producer_predicate_ref: ExactRef,
     require_current_selection: bool = False,
     product_graph: NativeProductGraph | None = None,
+    trusted_graph_reader: TrustedNativeGraphCoordinator | None = None,
 ) -> LearnedWorldConsumerResult:
     """Serve unchanged N10E consumer values over the actual native product graph.
 
@@ -1809,12 +1939,51 @@ def evaluate_learned_world_consumer(
         raise LearnedWorldConsumerError("exact LearnedWorldCompositionResult required")
     if not isinstance(composition, AnalyticalCompositionResult):
         raise LearnedWorldConsumerError("exact AnalyticalCompositionResult required")
-    graph_model = NativeProductGraph((composition,)) if product_graph is None else product_graph
-    if not isinstance(graph_model, NativeProductGraph):
-        raise LearnedWorldConsumerError("product_graph must be NativeProductGraph")
-    compositions = graph_model.compositions
-    if composition not in compositions:
-        raise LearnedWorldConsumerError("primary composition is not in the product graph")
+    if trusted_graph_reader is not None:
+        if not isinstance(trusted_graph_reader, TrustedNativeGraphCoordinator):
+            raise LearnedWorldConsumerError("trusted_graph_reader is not a configured coordinator")
+        if not isinstance(product_graph, BoundNativeProductGraph):
+            return _learned_refusal(
+                learned=learned,
+                reason="UNTRUSTED_GRAPH_VIEW",
+                disposition=learned.m1_disposition,
+                evidence=composition.possibility_slice_evidence_or_null,
+                producer_query_ref=producer_query_ref,
+                producer_predicate_ref=producer_predicate_ref,
+            )
+        original = trusted_graph_reader.resolve_original(product_graph.original_ref)
+        original_components = trusted_graph_reader.original_components(
+            product_graph.original_ref
+        )
+        if (
+            original is None
+            or original_components is None
+            or product_graph.projection_hash != product_graph.original_ref.content_hash
+            or len(product_graph.view.compositions) != len(original["slots"])
+            or [
+                canonicalize(component.identity_material())
+                for component in product_graph.view.compositions
+            ]
+            != [slot["composition"] for slot in original["slots"]]
+        ):
+            return _learned_refusal(
+                learned=learned,
+                reason="GRAPH_VIEW_DOES_NOT_MATCH_RETAINED_ORIGINAL",
+                disposition=learned.m1_disposition,
+                evidence=composition.possibility_slice_evidence_or_null,
+                producer_query_ref=producer_query_ref,
+                producer_predicate_ref=producer_predicate_ref,
+            )
+        graph_model = NativeProductGraph(tuple(original_components))
+        composition = original_components[0]
+        compositions = graph_model.compositions
+    else:
+        graph_model = NativeProductGraph((composition,)) if product_graph is None else product_graph
+        if not isinstance(graph_model, NativeProductGraph):
+            raise LearnedWorldConsumerError("product_graph must be NativeProductGraph")
+        compositions = graph_model.compositions
+        if composition not in compositions:
+            raise LearnedWorldConsumerError("primary composition is not in the product graph")
     disposition = learned.m1_disposition
     if learned.receipt.terminal_state != "RULE_SATISFIED" or disposition is None:
         return _learned_refusal(
@@ -1879,6 +2048,9 @@ def evaluate_learned_world_consumer(
             or ext_consumer is None
             or composition.consumer_result_or_null is None
             or ext_consumer.result_hash != composition.consumer_result_or_null.result_hash
+            or ext_route != extension.extension_receipt.producer_route
+            or extension.extension_receipt.composed_result_identity_hash
+            != composition.composed_result_identity_hash
         ):
             return _learned_refusal(
                 learned=learned,

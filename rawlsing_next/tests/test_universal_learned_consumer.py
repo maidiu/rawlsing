@@ -414,3 +414,67 @@ def test_actual_multi_component_graph_reaches_same_consumer(r05_case):
     )
     assert refused.state != "LEARNED_CONSUMER_EXACT_SUPPORTED"
     assert refused.reason_code == "DUPLICATE_GRAPH_COMPONENT"
+
+
+def test_trusted_coordinator_retains_original_and_validates_submitted_view(r05_case):
+    case = r05_case
+    slots = (
+        i4.NativeGraphSlot(
+            "slot-a",
+            case["composition"].source_universe_refs[0],
+            case["release"],
+            case["composition"].producer_query_ref,
+            case["composition"].producer_predicate_ref,
+            case["composition"].consumer_query_ref,
+            case["composition"].consumer_model_rule_hash,
+            case["composition"].producer_route,
+        ),
+        i4.NativeGraphSlot(
+            "slot-b",
+            case["composition_b"].source_universe_refs[0],
+            case["release"],
+            case["composition_b"].producer_query_ref,
+            case["composition_b"].producer_predicate_ref,
+            case["composition_b"].consumer_query_ref,
+            case["composition_b"].consumer_model_rule_hash,
+            case["composition_b"].producer_route,
+        ),
+    )
+    request = i4.NativeGraphExecutionRequest(slots)
+    coordinator = i4.TrustedNativeGraphCoordinator(
+        {
+            "slot-a": lambda slot: case["composition"],
+            "slot-b": lambda slot: case["composition_b"],
+        }
+    )
+    bound = coordinator.execute(request)
+    result = i4.evaluate_learned_world_consumer(
+        case["learned"],
+        composition=case["composition"],
+        consumer_query=case["consumer_query"],
+        model_rule=case["model_rule"],
+        producer_query_ref=case["producer_query"].ref,
+        producer_predicate_ref=case["predicate"].ref,
+        product_graph=bound,
+        trusted_graph_reader=coordinator,
+    )
+    assert result.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    assert result.joint_component_count == 2
+
+    forged_view = i4.BoundNativeProductGraph(
+        original_ref=bound.original_ref,
+        view=i4.NativeProductGraph((case["composition"], case["composition"])),
+        projection_hash=bound.projection_hash,
+    )
+    refused = i4.evaluate_learned_world_consumer(
+        case["learned"],
+        composition=case["composition"],
+        consumer_query=case["consumer_query"],
+        model_rule=case["model_rule"],
+        producer_query_ref=case["producer_query"].ref,
+        producer_predicate_ref=case["predicate"].ref,
+        product_graph=forged_view,
+        trusted_graph_reader=coordinator,
+    )
+    assert refused.state == "REFUSED"
+    assert refused.reason_code == "GRAPH_VIEW_DOES_NOT_MATCH_RETAINED_ORIGINAL"
