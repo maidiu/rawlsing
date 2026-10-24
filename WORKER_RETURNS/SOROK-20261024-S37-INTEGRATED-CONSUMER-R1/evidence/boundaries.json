@@ -1,0 +1,247 @@
+{
+  "access_fault_restore": {
+    "all_zero_targets": true,
+    "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+    "c8_unchanged": true,
+    "e1_event_hash": "5b1e76caa30aa7b2d2a66b6a7d2aeccc5d69b69e43ded5cb67a8a8d4e417d1ba",
+    "e1_unchanged": true,
+    "fault": {
+      "outcome": "UNKNOWN_RECEIVABILITY",
+      "status": "RESPONSE_EFFECTS_VALID_EMPTY",
+      "target_branch": "NO_CHANGE",
+      "target_proposals": 0,
+      "target_reason": "NO_PROPOSAL"
+    },
+    "fault_outcome": true,
+    "positive": {
+      "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+      "status": "RESPONSE_COMMITTED",
+      "target_branch": "NO_CHANGE",
+      "target_proposals": 0,
+      "target_reason": "NO_PROPOSAL"
+    },
+    "positive_outcome": true,
+    "restored": {
+      "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+      "status": "RESPONSE_COMMITTED",
+      "target_branch": "NO_CHANGE",
+      "target_proposals": 0,
+      "target_reason": "NO_PROPOSAL"
+    },
+    "restored_outcome": true
+  },
+  "language_access_loss": {
+    "first_native": "Uno se arregla.",
+    "first_strategy": "SELF_RELIANCE",
+    "refused_fallback": true,
+    "refused_reason": "SOURCE_DEPENDENT_UNIT_UNAVAILABLE",
+    "refused_strategy": "SAFE_GREETING",
+    "restored_fallback": false,
+    "restored_strategy": "SELF_RELIANCE",
+    "s36_no_target": true,
+    "s36_response_unchanged": true,
+    "source_preserved": true
+  },
+  "language_guard": {
+    "codes": [
+      "UNAUTHORIZED_MEANING_STRENGTHENED"
+    ],
+    "plan_unit": "SAFE_BENCH",
+    "rejected_strengthening": true,
+    "status": "REJECTED"
+  },
+  "m35_preimage": {
+    "all_rejected": true,
+    "cases": [
+      {
+        "c8_created": false,
+        "case": "wrong_owner",
+        "code": "MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+        "rejected": true
+      },
+      {
+        "c8_created": false,
+        "case": "wrong_event_hash",
+        "code": "MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+        "rejected": true
+      },
+      {
+        "c8_created": false,
+        "case": "wrong_clock",
+        "code": "MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+        "rejected": true
+      },
+      {
+        "c8_created": false,
+        "case": "wrong_operation",
+        "code": "MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+        "rejected": true
+      },
+      {
+        "c8_created": false,
+        "case": "wrong_quantity",
+        "code": "MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+        "rejected": true
+      },
+      {
+        "c8_created": false,
+        "case": "wrong_e1_hash",
+        "code": "MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+        "rejected": true
+      }
+    ]
+  },
+  "missing_response": {
+    "outcome": "RECEIVABLE_NO_OBSERVED_UPTAKE",
+    "status": "RESPONSE_EFFECTS_VALID_EMPTY",
+    "target_branch": "NO_CHANGE",
+    "target_proposals": 0,
+    "target_reason": "NO_PROPOSAL",
+    "valid_empty": true
+  },
+  "wrong_witnesses": {
+    "all_refused": true,
+    "cases": [
+      {
+        "case": "wrong_actor",
+        "committed": false,
+        "kind": "access",
+        "no_ghost": true,
+        "reason": "S35_ACCESS_ACTOR_MISMATCH",
+        "status": "REFUSED",
+        "tables_empty": true,
+        "target_proposals": 0
+      },
+      {
+        "case": "wrong_event",
+        "committed": false,
+        "kind": "access",
+        "no_ghost": true,
+        "reason": "S35_ACCESS_EVENT_MISMATCH",
+        "status": "REFUSED",
+        "tables_empty": true,
+        "target_proposals": 0
+      },
+      {
+        "case": "wrong_hash",
+        "committed": false,
+        "kind": "access",
+        "no_ghost": true,
+        "reason": "S35_ACCESS_SOURCE_HASH_MISMATCH",
+        "status": "REFUSED",
+        "tables_empty": true,
+        "target_proposals": 0
+      },
+      {
+        "case": "wrong_scene",
+        "committed": false,
+        "kind": "access",
+        "no_ghost": true,
+        "reason": "S35_ACCESS_SCENE_MISMATCH",
+        "status": "REFUSED",
+        "tables_empty": true,
+        "target_proposals": 0
+      },
+      {
+        "case": "before_event",
+        "committed": false,
+        "kind": "access",
+        "no_ghost": true,
+        "reason": "S35_ACCESS_TIME_INVALID",
+        "status": "REFUSED",
+        "tables_empty": true,
+        "target_proposals": 0
+      },
+      {
+        "case": "after_as_of",
+        "committed": false,
+        "kind": "access",
+        "no_ghost": true,
+        "reason": "S35_ACCESS_TIME_INVALID",
+        "status": "REFUSED",
+        "tables_empty": true,
+        "target_proposals": 0
+      },
+      {
+        "case": "revoked_field",
+        "committed": false,
+        "kind": "access",
+        "no_ghost": true,
+        "reason": "S35_ACCESS_REVOKED",
+        "status": "REFUSED",
+        "tables_empty": true,
+        "target_proposals": 0
+      },
+      {
+        "case": "wrong_actor",
+        "committed": false,
+        "kind": "response",
+        "no_ghost": true,
+        "reason": "S35_RESPONSE_ACTOR_MISMATCH",
+        "status": "REFUSED",
+        "tables_empty": true,
+        "target_proposals": 0
+      },
+      {
+        "case": "wrong_event",
+        "committed": false,
+        "kind": "response",
+        "no_ghost": true,
+        "reason": "S35_RESPONSE_EVENT_MISMATCH",
+        "status": "REFUSED",
+        "tables_empty": true,
+        "target_proposals": 0
+      },
+      {
+        "case": "wrong_hash",
+        "committed": false,
+        "kind": "response",
+        "no_ghost": true,
+        "reason": "S35_RESPONSE_SOURCE_HASH_MISMATCH",
+        "status": "REFUSED",
+        "tables_empty": true,
+        "target_proposals": 0
+      },
+      {
+        "case": "before_access",
+        "committed": false,
+        "kind": "response",
+        "no_ghost": true,
+        "reason": "S35_RESPONSE_TIME_INVALID",
+        "status": "REFUSED",
+        "tables_empty": true,
+        "target_proposals": 0
+      },
+      {
+        "case": "after_as_of",
+        "committed": false,
+        "kind": "response",
+        "no_ghost": true,
+        "reason": "S35_RESPONSE_TIME_INVALID",
+        "status": "REFUSED",
+        "tables_empty": true,
+        "target_proposals": 0
+      },
+      {
+        "case": "revoked_field",
+        "committed": false,
+        "kind": "response",
+        "no_ghost": true,
+        "reason": "S35_RESPONSE_REVOKED",
+        "status": "REFUSED",
+        "tables_empty": true,
+        "target_proposals": 0
+      },
+      {
+        "case": "bad_kind",
+        "committed": false,
+        "kind": "response",
+        "no_ghost": true,
+        "reason": "S35_RESPONSE_KIND_INVALID",
+        "status": "REFUSED",
+        "tables_empty": true,
+        "target_proposals": 0
+      }
+    ]
+  }
+}

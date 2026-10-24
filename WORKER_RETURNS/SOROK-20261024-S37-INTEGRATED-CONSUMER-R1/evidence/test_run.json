@@ -1,0 +1,155 @@
+{
+  "cases": [
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_access_severance_same_c8_e1_fault_restore",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_missing_own_response_is_valid_empty",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_wrong_witness_is_refused_without_positive_or_target[access-wrong_actor]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_wrong_witness_is_refused_without_positive_or_target[access-wrong_event]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_wrong_witness_is_refused_without_positive_or_target[access-wrong_hash]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_wrong_witness_is_refused_without_positive_or_target[access-wrong_scene]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_wrong_witness_is_refused_without_positive_or_target[access-before_event]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_wrong_witness_is_refused_without_positive_or_target[access-after_as_of]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_wrong_witness_is_refused_without_positive_or_target[access-revoked_field]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_wrong_witness_is_refused_without_positive_or_target[response-wrong_actor]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_wrong_witness_is_refused_without_positive_or_target[response-wrong_event]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_wrong_witness_is_refused_without_positive_or_target[response-wrong_hash]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_wrong_witness_is_refused_without_positive_or_target[response-before_access]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_wrong_witness_is_refused_without_positive_or_target[response-after_as_of]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_wrong_witness_is_refused_without_positive_or_target[response-revoked_field]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_wrong_witness_is_refused_without_positive_or_target[response-bad_kind]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_revoked_source_ref_is_refused",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_m35_source_preimage_rejected_before_c8",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_language_semantic_guard_rejects_unsupported_strengthening",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_boundaries",
+      "name": "test_language_access_loss_preserves_fallback_and_source",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_integration",
+      "name": "test_same_targetless_session_reader_for_share_and_refuse[True]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_integration",
+      "name": "test_same_targetless_session_reader_for_share_and_refuse[False]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_integration",
+      "name": "test_same_neutral_language_speech_and_resource_governed_help[True]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_integration",
+      "name": "test_same_neutral_language_speech_and_resource_governed_help[False]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_integration",
+      "name": "test_cold_reopen_preserves_c9_reader_c12_and_language[True]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_integration",
+      "name": "test_cold_reopen_preserves_c9_reader_c12_and_language[False]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_integration",
+      "name": "test_reader_reads_actual_committed_c9_rows_not_summary",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_integration",
+      "name": "test_no_duplicate_actor_roots_or_replacement_ledger",
+      "status": "PASS"
+    }
+  ],
+  "command": "/usr/local/bin/python3 -B -m pytest -q -p no:cacheprovider --junitxml=/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/junit/s37_full.xml tests",
+  "counts": {
+    "ERROR": 0,
+    "PASS": 28,
+    "RED": 0,
+    "SKIP": 0,
+    "tests": 28
+  },
+  "exit": 0,
+  "junit": "junit/s37_full.xml",
+  "schema": "SOROK_S37_TEST_RUN@1"
+}

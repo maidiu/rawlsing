@@ -1,0 +1,129 @@
+{
+  "both_cold_verify": true,
+  "both_no_target": true,
+  "both_observed": true,
+  "chains": [
+    {
+      "access_source_ref": "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+      "c8_occurrence_id": "OCC-0001",
+      "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+      "c9_receipt_hash": "b88d7e86036e41107631d23cc145e2fe6ca3e18a7335c7f1e969832dab303293",
+      "cold": {
+        "english_text": "The bench is still here.",
+        "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+        "response_ref": "8d0bd53724661f381d40632caf231e2aad87f73b9082041ec7de540380afc28b",
+        "response_ref_matches": true,
+        "speech_event_hash": "a4cca2674286a5b8b3d42042b704d9c29f92b13c3811d4c73684994a2aa06695",
+        "target_branch": "NO_CHANGE",
+        "target_reason": "NO_PROPOSAL",
+        "target_state_rows": 0,
+        "verify_ok": true
+      },
+      "e1_event_hash": "78c35c944e7a2e5ee0c7509c8f20b709c66165bfc09c254eda34756db90d54ed",
+      "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+      "help": {
+        "accepted": true,
+        "strategy": "HELP_ACCEPT"
+      },
+      "label": "share",
+      "language": {
+        "english_text": "The bench is still here.",
+        "equivalence": "ACCEPTED",
+        "native_text": "El banco sigue aqu\u00ed.",
+        "product_model_calls": 0,
+        "strategy": "SAFE_GREETING",
+        "view_display_mode": "LABELED_ENGLISH",
+        "view_status": "OK"
+      },
+      "native": false,
+      "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+      "product_model_calls": 0,
+      "response_kind": "REQUEST_TOOL",
+      "response_receipt_hash": "617dcadd587d0c77ddba4d072a048e134b4c227dc1b6c05b91d95fd6227c7f39",
+      "response_ref": "8d0bd53724661f381d40632caf231e2aad87f73b9082041ec7de540380afc28b",
+      "response_source_ref": "TEST_ONLY_A_RESPONSE_S37_SHARE_TOOL",
+      "s35_receipt_hash": "617dcadd587d0c77ddba4d072a048e134b4c227dc1b6c05b91d95fd6227c7f39",
+      "session_class": "S37IntegratedSession",
+      "source_actor_map": {
+        "TEST_ONLY_R31J_A": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "TEST_ONLY_R31J_B": "TEST_ONLY_BP1_R26V_ACTOR_B"
+      },
+      "source_b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+      "source_operation": "SHARE_TOOL",
+      "target_branch": "NO_CHANGE",
+      "target_id": "",
+      "target_proposals": [],
+      "target_reason": "NO_PROPOSAL",
+      "target_state_rows": 0,
+      "tool_available": true,
+      "tools_remaining": 1,
+      "verify_ok": true
+    },
+    {
+      "access_source_ref": "TEST_ONLY_ADP017_ACCESS_S37_REFUSE_TOOL",
+      "c8_occurrence_id": "OCC-0001",
+      "c8_state_digest": "5e92ae09f1e97fe5d3c94234d9ce228011bf08e21bf022804ee34369e0e453c4",
+      "c9_receipt_hash": "1f4fa40a700b30be0637a3a45e13f0946019a6af05e416472b77d8f387454029",
+      "cold": {
+        "english_text": "The bench is still here.",
+        "outcome": "OBSERVED_CURRENT_REFUSAL",
+        "response_ref": "8698aa5be5274eaea284cbcc5d9ef35771d894c0f59cf0730753bf141b2af1e7",
+        "response_ref_matches": true,
+        "speech_event_hash": "0a6089443c79829d1b8077dc7c76800515a2a2d86d2d91877b28e40cac07b42f",
+        "target_branch": "NO_CHANGE",
+        "target_reason": "NO_PROPOSAL",
+        "target_state_rows": 0,
+        "verify_ok": true
+      },
+      "e1_event_hash": "0e5bb63b6fe0454f17a15c05c65f006ff81caf0e94dd4de1695edcd38b31c2bd",
+      "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+      "help": {
+        "accepted": false,
+        "strategy": "HELP_REFUSE"
+      },
+      "label": "refuse",
+      "language": {
+        "english_text": "The bench is still here.",
+        "equivalence": "ACCEPTED",
+        "native_text": "El banco sigue aqu\u00ed.",
+        "product_model_calls": 0,
+        "strategy": "SAFE_GREETING",
+        "view_display_mode": "LABELED_ENGLISH",
+        "view_status": "OK"
+      },
+      "native": false,
+      "outcome": "OBSERVED_CURRENT_REFUSAL",
+      "product_model_calls": 0,
+      "response_kind": "EXPLICIT_REFUSAL",
+      "response_receipt_hash": "89b03a76142eb4207aac9e36eff7f4a6fb2b9a426999bee53151be25c6c4c665",
+      "response_ref": "8698aa5be5274eaea284cbcc5d9ef35771d894c0f59cf0730753bf141b2af1e7",
+      "response_source_ref": "TEST_ONLY_A_RESPONSE_S37_REFUSE_TOOL",
+      "s35_receipt_hash": "89b03a76142eb4207aac9e36eff7f4a6fb2b9a426999bee53151be25c6c4c665",
+      "session_class": "S37IntegratedSession",
+      "source_actor_map": {
+        "TEST_ONLY_R31J_A": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "TEST_ONLY_R31J_B": "TEST_ONLY_BP1_R26V_ACTOR_B"
+      },
+      "source_b_event_hash": "3e00199d533b793897cd8b9bdc0639830252c60588de732b46dfcec3cc3b9421",
+      "source_operation": "REFUSE_TOOL",
+      "target_branch": "NO_CHANGE",
+      "target_id": "",
+      "target_proposals": [],
+      "target_reason": "NO_PROPOSAL",
+      "target_state_rows": 0,
+      "tool_available": false,
+      "tools_remaining": 0,
+      "verify_ok": true
+    }
+  ],
+  "grade": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+  "native": false,
+  "product_model_calls": 0,
+  "provider_calls": 0,
+  "refuse_tool": true,
+  "same_neutral_speech": true,
+  "same_reader_path": true,
+  "same_session_class": true,
+  "schema": "SOROK_S37_INTEGRATED_CHAINS@1",
+  "share_tool": true
+}
