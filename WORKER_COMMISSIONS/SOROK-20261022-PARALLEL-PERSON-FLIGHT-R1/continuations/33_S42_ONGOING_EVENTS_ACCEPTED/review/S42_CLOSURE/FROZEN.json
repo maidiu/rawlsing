@@ -1,0 +1,38 @@
+{
+  "schema": "SOROK_REVIEW_S42_CLOSURE_V1",
+  "candidate_branch": "codex/sorok-s42-ongoing-event-consumer",
+  "corrected_commit": "2489f8cdfbb5c400c636f33c7cf8cdf0aa55dc91",
+  "prior_reviewed_commit": "65029da42af560abf23d8746a9e961dd29764a39",
+  "prior_review_receipt": "f768b06cee5c9e2bbe467add096f938112578c6f",
+  "base": "c72a10d284f8869b990db3e6849ed174a51bd784",
+  "source_cuts": {
+    "m35": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+    "s36": "8da78d8031a06a4bd7e1297fd713e573299c0860",
+    "s37": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+    "s39": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+    "s40": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+    "s41": "c72a10d284f8869b990db3e6849ed174a51bd784",
+    "language": "8d2920da951f98cd8246d7c34cac777928e0c732",
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135"
+  },
+  "decision": "ACCEPT_SCOPED",
+  "closed_defect": "persisted immediate predecessor substitution is now refused warm/cold and before later admission",
+  "checks": {
+    "focused_tests": "12 PASS, 0 FAIL (13.60s)",
+    "entrypoint": "PASS (exit 0); five-event cold-reopened stream, native/English, NO_CHANGE/NO_PROPOSAL, zero targets",
+    "predecessor_oracle": "exit 1; S42_PREDECESSOR_BINDING_MISMATCH: event_ordinal",
+    "history_input_native_world_boundaries": "PASS in focused tests",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "s42/reader.py": "d8548d7317f63aa6e999e867626c509d9b0b99599479bba5ba4212f0440c867b",
+    "s42/session.py": "4caa968488d39a9b8f7066c8908331302c99047c40e1bc008670a3812e3b887f",
+    "s42/bindings.py": "a76ab993da80f75015e0b597276c9f4199e31fc57dce21245211ac492fe300f5",
+    "s42/event.py": "e6ab34d895b03b6958f29709eb0a745aec134744cf6889036b94217101a4a498",
+    "tests/test_s42_ongoing.py": "886430953e0a4e92f203ed150f637b3c7786cc538e3cd8ed88ebb0bbc0228ebd",
+    "evidence/s42-closure-tests-12.out": "0ae0a3d23738442beff63fce4bc7b2e60b46d59b1877c9b22f16690b63bce85f",
+    "evidence/s42-closure-entrypoint.json": "177c8ff19ada5e049e5872cc356eed9fcf40fb65b8250d77f7458f84937263ba",
+    "evidence/predecessor-oracle.status": "4bf4fca02e6eeaf7f1c510b82c756e7f8a3c567a230bae1094b254adc774f38b",
+    "evidence/predecessor-oracle.stderr.txt": "49ed77c99242d09892407c7eb77891492181061e2cc365bd9b4acada1b8ed678"
+  }
+}

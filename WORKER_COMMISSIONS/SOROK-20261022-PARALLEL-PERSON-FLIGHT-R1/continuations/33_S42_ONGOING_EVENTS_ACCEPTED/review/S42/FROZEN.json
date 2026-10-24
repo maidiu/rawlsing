@@ -1,0 +1,36 @@
+{
+  "schema": "SOROK_REVIEW_S42_V1",
+  "candidate_branch": "codex/sorok-s42-ongoing-event-consumer",
+  "candidate_commit": "65029da42af560abf23d8746a9e961dd29764a39",
+  "base": "c72a10d284f8869b990db3e6849ed174a51bd784",
+  "source_cuts": {
+    "m35": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+    "s36": "8da78d8031a06a4bd7e1297fd713e573299c0860",
+    "s37": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+    "s39": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+    "s40": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+    "s41": "c72a10d284f8869b990db3e6849ed174a51bd784",
+    "language": "8d2920da951f98cd8246d7c34cac777928e0c732",
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135"
+  },
+  "decision": "REVISE",
+  "defect": "persisted predecessor binding can be substituted; fully admitted event reads OK warm/cold with verify true and wrong predecessor",
+  "checks": {
+    "focused_tests": "9 PASS, 0 FAIL (9.78s)",
+    "entrypoint": "PASS (exit 0); five-event cold-reopened stream, native/English, NO_CHANGE/NO_PROPOSAL, zero targets",
+    "stream_cold_history_source_fault": "PASS in focused tests",
+    "predecessor_substitution": "ACCEPTED OK warm/cold; defect",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "s42/session.py": "1659a9f626a154de78841da746f0fef7e59e76f416c2e683bda141b442f6aa00",
+    "s42/reader.py": "83c3007e1be26776f469ff69a913eebfd88cb87f97054f91b7aa3714aae4a37c",
+    "s42/event.py": "1f37c723670c4500e75213b5154300077bcba994692dbdfa461988eb9e1e19b5",
+    "s42/bindings.py": "2dae138c531abebef887f335a7cb811dc953ef680414ede23c85a1cb45333465",
+    "tests/test_s42_ongoing.py": "5f40edbaf59a29664c72083803a3267a7ad8d54c6bb6fdce648b5c2762805a11",
+    "evidence/s42-tests-9.out": "ee4d2ad727ce5acf9cc50901e6a51ff855922d1fd3adbf7cabf2e9772b46ec01",
+    "evidence/s42-entrypoint.json": "5d8cfae0d4aac0657efeb91742164694858b2bc9d313a6489f8e08c0ddf7b204",
+    "evidence/repro_predecessor_binding.py": "9d80981e0bfc17094eaee880ae84740a93c903329204d91d30e068c52aac2ae9",
+    "evidence/s42-predecessor-repro.json": "6428e3521c0122ad42fa28ffc1f5b1b52517b3aff0abdf6bcfb11b3e57aabaac"
+  }
+}

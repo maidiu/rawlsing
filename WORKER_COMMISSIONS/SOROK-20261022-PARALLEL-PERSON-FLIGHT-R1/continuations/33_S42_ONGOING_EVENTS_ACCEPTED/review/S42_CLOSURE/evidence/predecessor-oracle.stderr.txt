@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/SOROK_REVIEW/S42/evidence/repro_predecessor_binding.py", line 103, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/SOROK_REVIEW/S42/evidence/repro_predecessor_binding.py", line 53, in main
+    third_result = session.admit_event(
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s42-closure.2hyEJa/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/session.py", line 295, in admit_event
+    "event": self.read_event(binding["e1_event_id"]),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s42-closure.2hyEJa/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/session.py", line 77, in read_event
+    return read_event(self, event_ref)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s42-closure.2hyEJa/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/reader.py", line 328, in read_event
+    return _read_s42_event(session, binding, bindings)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s42-closure.2hyEJa/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/reader.py", line 180, in _read_s42_event
+    _validate_predecessor(session, binding, bindings, c8_event)
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s42-closure.2hyEJa/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/reader.py", line 81, in _validate_predecessor
+    raise S42ReadRefusal("S42_PREDECESSOR_BINDING_MISMATCH", key)
+s42.reader.S42ReadRefusal: S42_PREDECESSOR_BINDING_MISMATCH: event_ordinal
