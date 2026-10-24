@@ -1,0 +1,33 @@
+{
+  "schema": "SOROK_REVIEW_S39_V1",
+  "candidate_branch": "codex/sorok-s39-sourcebound-generated-response",
+  "candidate_commit": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+  "base": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+  "source_cuts": {
+    "m35": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+    "s36": "8da78d8031a06a4bd7e1297fd713e573299c0860",
+    "s37": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+    "language": "8d2920da951f98cd8246d7c34cac777928e0c732",
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135",
+    "s38_hq_decision": "8f037c2f553a902df41b9db3333f41cda26a830e"
+  },
+  "decision": "ACCEPT_SCOPED",
+  "checks": {
+    "focused_tests": "10 PASS, 0 FAIL (1.76s)",
+    "entrypoint": "PASS (exit 0); share admitted, refusal independently denied, both C9 NO_CHANGE/NO_PROPOSAL and zero target rows",
+    "cold_sidecar_tamper": "REFUSED S37_PROVENANCE_MISMATCH",
+    "source_preimage_labels_open_cycle": "PASS in focused tests",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "s39/sources.py": "cddd0ecfa2cc35affc10d3d3bee51bfc280bf2949a5850e0a8963ba5ac93a7d5",
+    "s39/model.py": "1c86ce518beb40cacb8ddac5461dcdedf7cad50f703e6bbbd7da5e097748e8f1",
+    "s39/performer.py": "919a0bf416bf5373aeb58511ff676ed244ce7d0bee882a291668e76909841c52",
+    "s39/producer.py": "a85b95a43864cff27d2aee2d39322fe2e5c9b5f52d448cfa1b577abf43044d6d",
+    "s39/reader.py": "046ce40721289658e0df34d2229f5c58fea4dce1dce7a73b9bfb0ae090f20970",
+    "s39/session.py": "5433cfbac73a1bff7ae89ed83574d4d2f119c5522da94841d8ee271f03671ae9",
+    "evidence/s39-tests-10.out": "23486bb8512e271e65d11546b49ba64e053cebc47dc434a9c0cf6c77a7a87183",
+    "evidence/s39-entrypoint.json": "b02ccd1e247c2dc2cdca3c7e512d5110eeef7ea103002f896a62c94af0995a01",
+    "evidence/s39-cold-sidecar-tamper.out": "c859b47c1fe05924d557f89ce5217cb1c310f4ae5ca07774064a96bce4a123bb"
+  }
+}
