@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261024-PYAT-HQ-R93-JOINED-ACCEPTANCE-AND-R05-NATIVE-CUSTODY-REPAIR-R1",
-  "handoff_commit": "5663bd29cd2aa99184bd9c4a7f6be6eaeda94f8f",
+  "checkpoint_id": "20261024-PYAT-HQ-R94-R05-SCOPED-ACCEPTANCE-AND-R06-EXACT-GRANT-REQUEST-R1",
+  "handoff_commit": "852a41e598ebf18ddbcec75ba592e2d953fa6e81",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261024-PYAT-HQ-R93-JOINED-ACCEPTANCE-AND-R05-NATIVE-CUSTODY-REPAIR-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261024-PYAT-HQ-R93-JOINED-ACCEPTANCE-AND-R05-NATIVE-CUSTODY-REPAIR-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261024-PYAT-HQ-R93-JOINED-ACCEPTANCE-AND-R05-NATIVE-CUSTODY-REPAIR-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261024-PYAT-HQ-R94-R05-SCOPED-ACCEPTANCE-AND-R06-EXACT-GRANT-REQUEST-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261024-PYAT-HQ-R94-R05-SCOPED-ACCEPTANCE-AND-R06-EXACT-GRANT-REQUEST-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261024-PYAT-HQ-R94-R05-SCOPED-ACCEPTANCE-AND-R06-EXACT-GRANT-REQUEST-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "5663bd29cd2aa99184bd9c4a7f6be6eaeda94f8f",
+  "canonical_control_base": "852a41e598ebf18ddbcec75ba592e2d953fa6e81",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "5663bd29cd2aa99184bd9c4a7f6be6eaeda94f8f",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261024-PYAT-HQ-R93-JOINED-ACCEPTANCE-AND-R05-NATIVE-CUSTODY-REPAIR-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261024-PYAT-HQ-R93-JOINED-ACCEPTANCE-AND-R05-NATIVE-CUSTODY-REPAIR-R1/CURRENT.md",
+  "qualified_working_hq_commit": "852a41e598ebf18ddbcec75ba592e2d953fa6e81",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261024-PYAT-HQ-R94-R05-SCOPED-ACCEPTANCE-AND-R06-EXACT-GRANT-REQUEST-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261024-PYAT-HQ-R94-R05-SCOPED-ACCEPTANCE-AND-R06-EXACT-GRANT-REQUEST-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 93,
-    "canonical_report_commit": "5663bd29cd2aa99184bd9c4a7f6be6eaeda94f8f",
+    "revision": 94,
+    "canonical_report_commit": "852a41e598ebf18ddbcec75ba592e2d953fa6e81",
     "counterpart": "Sorok rev34 independent; no Pyat actor grant"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261024-PYAT-HQ-R92-R04-R05-RETURN-AND-INDEPENDENT-REVIEWS-R1",
-    "handoff_commit": "00c04167c3c846ba822b789dec13b91f7311b5b5"
+    "checkpoint_id": "20261024-PYAT-HQ-R93-JOINED-ACCEPTANCE-AND-R05-NATIVE-CUSTODY-REPAIR-R1",
+    "handoff_commit": "5663bd29cd2aa99184bd9c4a7f6be6eaeda94f8f"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "R05 R4 actual OpenCode native execution/custody repair then distinct review; R04 joined accepted local",
-  "worker_state_truth": "Only R05 R4 existing OpenCode author live at publication; prior authors/reviewers terminal. R04 scoped local accepted; R05 not accepted; no production merge.",
+  "next_action": "User decision on exact inherited R06 two-path sourcefree implementation/read-only assembly; no code worker launched",
+  "worker_state_truth": "All R91 authors/reviewers terminal. R04joined and R05 scoped local accepted; R06 proposed only, no worker/production merge.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -354,22 +354,7 @@
     ],
     "acceptance": "Author result is candidate; distinct reviewer independently qualifies exact candidate, then HQ scoped disposition. R09 local is not deployed enforcement."
   },
-  "r61_actual_workers": [
-    {
-      "id": "R05_R4",
-      "branch": "agent/opencode-pyat-r91-r05-learned-consumer-r1",
-      "commission_tip": "7faf784368f43c8f66ee10a3e1c69c1a042cb642",
-      "observed_head_at_checkpoint": "737f1b143963352f201973140002d6f66dbabcaa",
-      "pid": 60000,
-      "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
-      "grain": "SOURCEFREE_TEST_ONLY_NATIVE_IMPLEMENTATION",
-      "library_access": "EXACT_ONLY",
-      "pass_wake": "distinct independent native review then HQ scoped decision",
-      "blocker_effect": "R05 unaccepted; unrelated accepted R04 preserved",
-      "hard_forbidden": "outside five paths/source/science/CI/prod/N11/N12/Sorok/J52W52",
-      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_MAX"
-    }
-  ],
+  "r61_actual_workers": [],
   "r61_launch_evidence": "ae63a8c2da620d850cc974eb43c3e396abec30cb",
   "active_goal": {
     "active": true,
@@ -379,7 +364,7 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "4dfcdabd1e411c741a7d5ee34357e78f4144199c",
+  "current_development_evidence": "bd6e7e225efe8e204ec8db063445264a413dfa8a",
   "new_R87_operative_grants": false,
   "secondary_hq_status": "USER_APPOINTED_BROWSER_SECONDARY__PRIMARY_CODEX_NOT_REVOKED"
 }
