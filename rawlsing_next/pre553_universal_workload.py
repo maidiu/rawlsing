@@ -461,6 +461,20 @@ class GovernedFrontierResult:
     def content_hash(self) -> str:
         return self.ledger()["ledger_hash"]
 
+    def freeze_restore_checkpoint(self) -> str:
+        """Capture the original validated result checkpoint for cold restore."""
+        if not self.anti_join.get("no_drop_ok"):
+            raise WorkloadBindingRefusal("RESTORE_CHECKPOINT_LIVE_CANDIDATE_ANTIJOIN_FAILED")
+        if not self.operation_anti_join.get("no_drop_ok"):
+            raise WorkloadBindingRefusal("RESTORE_CHECKPOINT_LIVE_OPERATION_ANTIJOIN_FAILED")
+        if not self.compilation.expected_operation_ids:
+            raise WorkloadBindingRefusal("RESTORE_CHECKPOINT_EXPECTED_OPERATIONS_MISSING")
+        if not self.compilation.issued.record.expected_jobs:
+            raise WorkloadBindingRefusal("RESTORE_CHECKPOINT_EXPECTED_JOBS_MISSING")
+        if not self.receipt_refs or not self.fact_refs:
+            raise WorkloadBindingRefusal("RESTORE_CHECKPOINT_NATIVE_IDENTITY_MISSING")
+        return self.ledger()["ledger_hash"]
+
 
 def compile_governed_frontier(
     *,
@@ -642,6 +656,8 @@ def execute_governed_frontier(
     native = execution.native_result
     anti = native_receipt_anti_join(plan, native.receipts)
     fact_by_ref = {fact.ref.key: fact for fact in native.empirical_facts}
+    if len(fact_by_ref) != len(native.empirical_facts):
+        anti = {**anti, "no_drop_ok": False, "duplicate_native_fact_ids": True}
     receipt_fact_refs: set[str] = set()
     fact_closure_ok = True
     for receipt in native.receipts:
@@ -817,14 +833,21 @@ def _ledger_ref(value: Mapping[str, Any]) -> ExactRef:
     return ExactRef(value["kind"], value["object_id"], value["content_hash"])
 
 
-def restore_governed_frontier_ledger(ledger: Mapping[str, Any]) -> Mapping[str, Any]:
-    """Validate an exact persisted ledger without re-executing or re-issuing."""
+def restore_governed_frontier_ledger(
+    ledger: Mapping[str, Any], *, expected_checkpoint_ref: str | None = None
+) -> Mapping[str, Any]:
+    """Validate an exact persisted ledger against the original external pin."""
     if not isinstance(ledger, Mapping):
         raise WorkloadBindingRefusal("GOVERNED_FRONTIER_LEDGER_REQUIRED")
+    if not isinstance(expected_checkpoint_ref, str) or not expected_checkpoint_ref:
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_EXPECTED_CHECKPOINT_REQUIRED")
     material = dict(ledger)
     claimed = material.pop("ledger_hash", None)
-    if claimed is None or _hash(material) != claimed:
+    computed = _hash(material)
+    if claimed is None or computed != claimed:
         raise WorkloadBindingRefusal("GOVERNED_FRONTIER_LEDGER_HASH_MISMATCH")
+    if computed != expected_checkpoint_ref:
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_CHECKPOINT_PIN_MISMATCH")
     if material.get("schema") != GOVERNED_FRONTIER_RESULT_SCHEMA:
         raise WorkloadBindingRefusal("GOVERNED_FRONTIER_LEDGER_SCHEMA_MISMATCH")
     required = (
@@ -874,6 +897,10 @@ def restore_governed_frontier_ledger(ledger: Mapping[str, Any]) -> Mapping[str, 
         ExactRef(f"{row['schema_id']}@{row['schema_version']}", row["object_id"], row["content_hash"]).key: row
         for row in native_facts
     }
+    if len(fact_by_key) != len(native_facts):
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_DUPLICATE_NATIVE_FACT")
+    if len(receipt_refs_from_objects) != len(native_receipts):
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_DUPLICATE_NATIVE_RECEIPT")
     if tuple(sorted(fact_refs, key=lambda ref: ref.key)) != tuple(sorted(
         (ExactRef(f"{row['schema_id']}@{row['schema_version']}", row["object_id"], row["content_hash"])
          for row in native_facts), key=lambda ref: ref.key

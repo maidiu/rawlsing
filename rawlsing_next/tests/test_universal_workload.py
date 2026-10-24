@@ -4,6 +4,10 @@ from __future__ import annotations
 from copy import deepcopy
 from dataclasses import replace
 import hashlib
+import json
+import os
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -25,6 +29,7 @@ from rawlsing_next.tests.test_universal_source_projection import (
     write_rows,
 )
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
 AS_OF = "2026-10-23"
 HOST = "local-r03"
 PURPOSE = "TEST_ONLY_SOURCEFREE"
@@ -291,11 +296,14 @@ def test_r03_governed_frontier_joint_conditional_no_drop_and_cold(tmp_path):
     ]
     assert joint_rows
     ledger = result.ledger()
-    assert restore_governed_frontier_ledger(ledger)["schema"] == ledger["schema"]
+    pin = result.freeze_restore_checkpoint()
+    assert restore_governed_frontier_ledger(
+        ledger, expected_checkpoint_ref=pin
+    )["schema"] == ledger["schema"]
     tampered = dict(ledger)
     tampered["operation_ledger"] = []
     with pytest.raises(WorkloadBindingRefusal):
-        restore_governed_frontier_ledger(tampered)
+        restore_governed_frontier_ledger(tampered, expected_checkpoint_ref=pin)
 
     cold_compilation = compile_governed_frontier(
         bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
@@ -510,13 +518,16 @@ def test_r03_successor_ledger_identity_strip_and_fact_removal_refused(tmp_path):
         row["expected_candidate_ids"] = []
     stripped = _rehash(stripped)
     with pytest.raises(WorkloadBindingRefusal):
-        restore_governed_frontier_ledger(stripped)
+        restore_governed_frontier_ledger(
+            stripped, expected_checkpoint_ref=result.freeze_restore_checkpoint())
     removed_fact = deepcopy(ledger)
     removed_fact["native_receipts"][0]["semantic_fields"]["empirical_fact_refs"] = []
     removed_fact = _rehash(removed_fact)
     with pytest.raises(WorkloadBindingRefusal):
-        restore_governed_frontier_ledger(removed_fact)
-    restored = restore_governed_frontier_ledger(ledger)
+        restore_governed_frontier_ledger(
+            removed_fact, expected_checkpoint_ref=result.freeze_restore_checkpoint())
+    restored = restore_governed_frontier_ledger(
+        ledger, expected_checkpoint_ref=result.freeze_restore_checkpoint())
     assert restored["expected_jobs"] == ledger["expected_jobs"]
     assert restored["expected_candidate_ids"] == ledger["expected_candidate_ids"]
 
@@ -546,7 +557,8 @@ def test_r03_successor_held_unknown_states_remain_typed(tmp_path):
     assert rows[unknown.op_id]["result_state"] == UNKNOWN
     assert rows[held.op_id]["eligibility_state"] == HELD
     assert rows[unknown.op_id]["eligibility_state"] == UNKNOWN
-    restored = restore_governed_frontier_ledger(result.ledger())
+    restored = restore_governed_frontier_ledger(
+        result.ledger(), expected_checkpoint_ref=result.freeze_restore_checkpoint())
     restored_rows = {row["operation_id"]: row for row in restored["operation_ledger"]}
     assert restored_rows[held.op_id]["result_state"] == HELD
     assert restored_rows[unknown.op_id]["result_state"] == UNKNOWN
@@ -572,3 +584,76 @@ def test_r03_successor_recursive_root_release_severance_refused():
     with pytest.raises(WorkloadBindingRefusal):
         bind_recursive_workload(Wrapper(), execution)
     assert baseline.source_release_refs
+
+
+def test_r04_fixed_original_checkpoint_genuine_and_hostile(tmp_path):
+    bundle, inventory, policy, frontier, compilation, result = _governed_result(
+        tmp_path, "r04_fixed_pin.sav")
+    pin = result.freeze_restore_checkpoint()
+    ledger = result.ledger()
+    restored = restore_governed_frontier_ledger(
+        ledger, expected_checkpoint_ref=pin)
+    assert restored["expected_jobs"] == ledger["expected_jobs"]
+    with pytest.raises(WorkloadBindingRefusal, match="EXPECTED_CHECKPOINT_REQUIRED"):
+        restore_governed_frontier_ledger(ledger)
+    # Coordinated fact deletion with original pin.
+    deleted = deepcopy(ledger)
+    deleted["native_facts"].pop(0)
+    deleted["fact_refs"].pop(0)
+    deleted = _rehash(deleted)
+    with pytest.raises(WorkloadBindingRefusal, match="CHECKPOINT_PIN_MISMATCH"):
+        restore_governed_frontier_ledger(deleted, expected_checkpoint_ref=pin)
+    # Coordinated fact duplication with original pin.
+    duplicated = deepcopy(ledger)
+    duplicated["native_facts"].append(deepcopy(duplicated["native_facts"][0]))
+    duplicated["fact_refs"].append(deepcopy(duplicated["fact_refs"][0]))
+    duplicated = _rehash(duplicated)
+    with pytest.raises(WorkloadBindingRefusal, match="CHECKPOINT_PIN_MISMATCH"):
+        restore_governed_frontier_ledger(duplicated, expected_checkpoint_ref=pin)
+    # Expected job/predicate substitution in both mutable copies.
+    substituted = deepcopy(ledger)
+    old_job = substituted["expected_jobs"][0]
+    new_job = [old_job[0], old_job[1], "c" * 64]
+    substituted["expected_jobs"][0] = new_job
+    substituted["compilation"]["issued"]["expected_jobs"][0] = new_job
+    substituted["compilation_hash"] = semantic_hash(substituted["compilation"])
+    # Sync the self-hash chain then keep the original external pin.
+    substituted.pop("ledger_hash", None)
+    substituted["ledger_hash"] = semantic_hash(substituted)
+    with pytest.raises(WorkloadBindingRefusal, match="CHECKPOINT_PIN_MISMATCH"):
+        restore_governed_frontier_ledger(substituted, expected_checkpoint_ref=pin)
+    # A failed live result cannot acquire an accepted checkpoint.
+    failed = replace(result, anti_join={**dict(result.anti_join),
+                                        "no_drop_ok": False})
+    with pytest.raises(WorkloadBindingRefusal, match="CHECKPOINT_LIVE"):
+        failed.freeze_restore_checkpoint()
+
+
+def test_r04_fixed_pin_fresh_process_restore(tmp_path):
+    bundle, inventory, policy, frontier, compilation, result = _governed_result(
+        tmp_path, "r04_fresh.sav")
+    pin = result.freeze_restore_checkpoint()
+    ledger = result.ledger()
+    ledger_path = tmp_path / "r04_ledger.json"
+    ledger_path.write_text(json.dumps(ledger, sort_keys=True))
+    code = """
+import json, sys
+from rawlsing_next.pre553_universal_workload import restore_governed_frontier_ledger
+ledger = json.loads(open(sys.argv[1], encoding="utf-8").read())
+restored = restore_governed_frontier_ledger(ledger, expected_checkpoint_ref=sys.argv[2])
+print(json.dumps({"schema": restored["schema"],
+                  "jobs": len(restored["expected_jobs"]),
+                  "receipts": len(restored["receipt_refs"]),
+                  "facts": len(restored["fact_refs"])}, sort_keys=True))
+"""
+    env = dict(os.environ)
+    env["PYTHONPATH"] = str(REPO_ROOT) + os.pathsep + env.get("PYTHONPATH", "")
+    proc = subprocess.run(
+        [sys.executable, "-c", code, str(ledger_path), pin],
+        cwd=str(REPO_ROOT), env=env, capture_output=True, text=True, timeout=180,
+    )
+    assert proc.returncode == 0, proc.stderr[-2000:]
+    child = json.loads(proc.stdout)
+    assert child["jobs"] == len(ledger["expected_jobs"])
+    assert child["receipts"] == len(ledger["receipt_refs"])
+    assert child["facts"] == len(ledger["fact_refs"])
