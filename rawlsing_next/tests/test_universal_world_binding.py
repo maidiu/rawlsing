@@ -5,15 +5,20 @@ from dataclasses import replace
 import json
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
+import tarfile
+import tempfile
 
 import pytest
 
 from rawlsing_next.pre553_analytical_composition import compose_positioned_subject_possibility
 from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
 from rawlsing_next.pre553_universal_world_binding import (
-    WorldFieldBinding, WorldSelectionRequest, select_world_view,
+    JoinedWorldField, JoinedWorldSelectionRequest,
+    WorldFieldBinding, WorldSelectionRequest,
+    select_joined_world_view, select_world_view,
 )
 from rawlsing_next.tests import c1_at08_at13_fixture as fx
 from rawlsing_next.tests.test_pre553_empirical_query import (
@@ -201,3 +206,123 @@ def test_r06_actual_relation_transport_and_observed_temporal_pair_controls():
     ))
     assert authorized.state == "SUPPORTED"
     assert authorized.reason_code == "WORLD_SELECTED_VIEW"
+
+
+J42_COMMIT = "f53cb0d2bce52640268c844c398bbd8007d28edc"
+J42_PACKET = ("WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-"
+              "ACTUAL-JOINT-PREV3-CONSUMER-R1")
+J42_ROWS_HASH = "4320b3a505478c274fc756ce0e025e36685e0742e940072aae80ce11286e4c02"
+
+
+def _run_j42_build():
+    base = Path(tempfile.mkdtemp(prefix=".r06-j42-", dir=REPO_ROOT))
+    try:
+        archive = base / "packet.tar"
+        subprocess.run(
+            ["git", "archive", J42_COMMIT, J42_PACKET, "-o", str(archive)],
+            cwd=str(REPO_ROOT), check=True, capture_output=True, timeout=180,
+        )
+        with tarfile.open(archive) as handle:
+            handle.extractall(base)
+        packet = base / J42_PACKET
+        env = dict(os.environ, PYTHONHASHSEED="0", PYTHONDONTWRITEBYTECODE="1")
+        env["PYTHONPATH"] = str(REPO_ROOT) + os.pathsep + env.get("PYTHONPATH", "")
+        proc = subprocess.run(
+            [sys.executable, str(packet / "runtime/j42_build.py"),
+             "--outdir", str(base / "out")],
+            cwd=str(REPO_ROOT), env=env, capture_output=True, text=True,
+            timeout=900,
+        )
+        assert proc.returncode == 0, (proc.stdout[-3000:] + proc.stderr[-3000:])
+        receipts = json.loads(
+            (packet / "n9_n10e_n10w_real_joined_consumer_receipts.json").read_text()
+        )
+        return receipts
+    finally:
+        shutil.rmtree(base, ignore_errors=True)
+
+
+@pytest.fixture(scope="module")
+def j42_receipts():
+    return _run_j42_build()
+
+
+def _joined_request(receipts, view_key="base/TEST_CURRENT/budget5", **changes):
+    training = False if view_key.startswith("formal/") else True
+    sanction = view_key.startswith("civil_sanction/")
+    key_fields = (
+        JoinedWorldField("training_access", training),
+        JoinedWorldField("civil_sanction", sanction),
+    )
+    values = dict(
+        joined_receipts=receipts, view_key=view_key, fields=key_fields,
+        source_rows_hash=J42_ROWS_HASH,
+    )
+    values.update(changes)
+    return JoinedWorldSelectionRequest(**values)
+
+
+def test_r06_actual_j42_n9_n10w_e04_two_fields(j42_receipts):
+    receipts = j42_receipts
+    base = select_joined_world_view(_joined_request(receipts))
+    assert base.state == "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER"
+    values = base.consumer_values_read
+    assert values["families"]["n9"].startswith("W41_")
+    assert values["families"]["n10e"].startswith("E41_")
+    assert values["families"]["n10w"].startswith("P41_")
+    assert len(values["n10e_steps"]) == 3
+    assert values["n10e_steps"][0]["state"] == "EXACT_SUPPORTED"
+    assert values["n9_routes"]["training"] == "ELIGIBLE"
+    assert values["n9_routes"]["civil"] == "ELIGIBLE"
+    formal = select_joined_world_view(_joined_request(receipts, "formal/TEST_CURRENT/budget5"))
+    assert formal.state == "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER"
+    assert formal.consumer_values_read["n9_routes"]["training"] == "BLOCKED_BY_MODELED_RULE"
+    assert formal.view_hash != base.view_hash
+    sanction = select_joined_world_view(_joined_request(receipts, "civil_sanction/TEST_CURRENT/budget5"))
+    assert sanction.state == "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER"
+    assert sanction.consumer_values_read["n9_routes"]["civil"] == "BLOCKED_BY_MODELED_RULE"
+    assert sanction.view_hash not in (base.view_hash, formal.view_hash)
+    historical = select_joined_world_view(_joined_request(receipts, "base/HISTORICAL/budget5"))
+    assert historical.state == "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER"
+    assert historical.consumer_values_read["n9_clock"]["valid_at"] == "2026-06-01"
+    assert historical.consumer_values_read["n9_clock"]["valid_at"] != (
+        base.consumer_values_read["n9_clock"]["valid_at"]
+    )
+    assert historical.view_hash != base.view_hash
+    again = select_joined_world_view(_joined_request(receipts))
+    assert again.view_hash == base.view_hash
+
+
+def test_r06_actual_j42_cold_process_replay(j42_receipts):
+    base = select_joined_world_view(_joined_request(j42_receipts))
+    cold = select_joined_world_view(_joined_request(_run_j42_build()))
+    assert cold.view_hash == base.view_hash
+    assert cold.consumer_values_read["n10e_steps"] == base.consumer_values_read["n10e_steps"]
+    assert cold.consumer_values_read["n10w"] == base.consumer_values_read["n10w"]
+
+
+def test_r06_actual_j42_separation_controls_refuse_restore(j42_receipts):
+    base = select_joined_world_view(_joined_request(j42_receipts))
+    assert base.state == "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER"
+    refused = select_joined_world_view(_joined_request(
+        j42_receipts, source_rows_hash="f" * 64))
+    assert refused.reason_code == "JOINED_SOURCE_ROWS_MISMATCH"
+    refused = select_joined_world_view(_joined_request(
+        j42_receipts, fields=(JoinedWorldField("training_access", True),)))
+    assert refused.reason_code == "WORLD_REQUIRES_AT_LEAST_TWO_FIELDS"
+    fields = _joined_request(j42_receipts).fields
+    refused = select_joined_world_view(_joined_request(
+        j42_receipts, fields=(fields[0], replace(fields[1], role="CONTEXT"))))
+    assert refused.reason_code == "CONTEXT_AS_STRUCTURAL_UNAUTHORIZED"
+    refused = select_joined_world_view(_joined_request(
+        j42_receipts, fields=(replace(fields[0], unit="person"),
+                              replace(fields[1], unit="household"))))
+    assert refused.reason_code == "UNLINKED_UNIT_POOLING_UNAUTHORIZED"
+    refused = select_joined_world_view(_joined_request(
+        j42_receipts, fields=(replace(fields[0], clock_ref="T0"),
+                              replace(fields[1], clock_ref="T1"))))
+    assert refused.reason_code == "UNOBSERVED_TEMPORAL_PAIR"
+    refused = select_joined_world_view(_joined_request(j42_receipts, currentness="REVOKED"))
+    assert refused.reason_code == "WORLD_CURRENTNESS_NOT_CURRENT"
+    restored = select_joined_world_view(_joined_request(j42_receipts))
+    assert restored.view_hash == base.view_hash

@@ -207,3 +207,166 @@ __all__ = [
     "WorldBindingError", "WorldFieldBinding", "WorldSelectionRequest",
     "WorldSelectedView", "select_world_view",
 ]
+
+
+# ---------------------------------------------------------------------------
+# Actual joined N9/N10W/E04 adapter (J42/P41 runtime, TEST_ONLY).
+
+@dataclass(frozen=True)
+class JoinedWorldField:
+    field_id: str
+    expected_value: Any
+    unit: str = "SYNTHETIC_INDIVIDUAL_RESPONDENT"
+    role: str = "STRUCTURAL"
+    clock_ref: str | None = None
+    relation_ref: ExactRef | None = None
+
+    def __post_init__(self) -> None:
+        if not self.field_id or not self.unit or not self.role:
+            raise WorldBindingError("JOINED_FIELD_IDENTITY_INCOMPLETE")
+        if self.role not in {"STRUCTURAL", "CONTEXT"}:
+            raise WorldBindingError("JOINED_FIELD_ROLE_UNKNOWN")
+
+
+@dataclass(frozen=True)
+class JoinedWorldSelectionRequest:
+    joined_receipts: Mapping[str, Any]
+    view_key: str
+    fields: tuple[JoinedWorldField, ...]
+    source_rows_hash: str
+    currentness: str = "CURRENT"
+    as_of_ref: str | None = None
+    relation_transport_ref: ExactRef | None = None
+    relation_transport_authorized: bool = False
+    ff_structural_authority_ref: ExactRef | None = None
+    temporal_pair_ref: ExactRef | None = None
+    observed_temporal_pair_refs: tuple[ExactRef, ...] = ()
+
+
+@dataclass(frozen=True)
+class JoinedWorldSelectedView:
+    state: str
+    reason_code: str
+    view_key: str
+    field_ids: tuple[str, ...]
+    consumer_values_read: Mapping[str, Any] | None
+    view_hash: str
+    z_unresolved: bool = True
+
+    def material(self) -> Mapping[str, Any]:
+        return {
+            "state": self.state, "reason_code": self.reason_code,
+            "view_key": self.view_key, "field_ids": list(self.field_ids),
+            "consumer_values_read": self.consumer_values_read,
+            "view_hash": self.view_hash, "z_unresolved": self.z_unresolved,
+        }
+
+
+def _joined_refusal(code: str, request: JoinedWorldSelectionRequest,
+                    field_ids: tuple[str, ...] = ()) -> JoinedWorldSelectedView:
+    return JoinedWorldSelectedView(
+        state="REFUSED", reason_code=code, view_key=request.view_key,
+        field_ids=field_ids, consumer_values_read=None,
+        view_hash=semantic_hash({"state": "REFUSED", "reason": code,
+                                 "view_key": request.view_key,
+                                 "field_ids": list(field_ids)}),
+    )
+
+
+def select_joined_world_view(request: JoinedWorldSelectionRequest) -> JoinedWorldSelectedView:
+    """Select from the actual unchanged J42/P41 N9/N10W/E04 product.
+
+    The caller supplies receipts produced by the pinned J42 build; this adapter
+    validates identities and returns a world-view assertion. It does not
+    reimplement or replace the native consumer.
+    """
+    if request.currentness != "CURRENT":
+        return _joined_refusal("WORLD_CURRENTNESS_NOT_CURRENT", request)
+    receipts = request.joined_receipts
+    if not isinstance(receipts, Mapping):
+        return _joined_refusal("JOINED_RECEIPTS_REQUIRED", request)
+    p41 = (receipts.get("p41_joined_receipts") or {}).get(request.view_key)
+    joined = (receipts.get("joined_consumer_receipts") or {}).get(request.view_key)
+    if not isinstance(p41, Mapping) or not isinstance(joined, Mapping):
+        return _joined_refusal("JOINED_VIEW_NOT_FOUND", request)
+    if (p41.get("schema") != "PYAT_R41_P41_GENERIC_POSSIBILITY_RECEIPT@1"
+            or p41.get("service") != "P41_GENERIC_POSSIBILITY_SERVICE@1"):
+        return _joined_refusal("JOINED_CONSUMER_CONTRACT_MISMATCH", request)
+    providers = p41.get("providers") or {}
+    if (not str(providers.get("n9_world", "")).startswith("W41_")
+            or not str(providers.get("n10e_empirical", "")).startswith("E41_")
+            or not str(providers.get("n10w_progressive", "")).startswith("P41_")):
+        return _joined_refusal("JOINED_PROVIDER_IDENTITY_MISMATCH", request)
+    material = joined.get("material") or {}
+    if (material.get("service_contract")
+            != "J42_JOINED_E41_W41_P41_PREV3_CONSUMER@1"):
+        return _joined_refusal("JOINED_E04_CONSUMER_CONTRACT_MISMATCH", request)
+    bindings = p41.get("j42_bindings") or {}
+    if (not request.source_rows_hash
+            or bindings.get("e41_rows_hash") != request.source_rows_hash
+            or material.get("e41_rows_hash") != request.source_rows_hash):
+        return _joined_refusal("JOINED_SOURCE_ROWS_MISMATCH", request)
+    clock = bindings.get("w41_clock") or {}
+    if request.as_of_ref is not None and request.as_of_ref not in {
+        clock.get("valid_at"), clock.get("published_asof"), clock.get("test_now")
+    }:
+        return _joined_refusal("JOINED_AS_OF_MISMATCH", request)
+    fields = tuple(request.fields)
+    field_ids = tuple(field.field_id for field in fields)
+    if len(fields) < 2:
+        return _joined_refusal("WORLD_REQUIRES_AT_LEAST_TWO_FIELDS", request, field_ids)
+    if len(set(field_ids)) != len(fields):
+        return _joined_refusal("WORLD_DUPLICATE_FIELD_BINDING", request, field_ids)
+    rules = (p41.get("n9_world") or {}).get("rules") or {}
+    for field in fields:
+        if field.field_id not in rules:
+            return _joined_refusal("JOINED_WORLD_FIELD_ABSENT", request, field_ids)
+        if rules[field.field_id].get("value") != field.expected_value:
+            return _joined_refusal("JOINED_WORLD_FIELD_VALUE_MISMATCH", request, field_ids)
+        if field.field_id not in set(material.get("dependencies") or ()):
+            return _joined_refusal("JOINED_FIELD_NOT_CONSUMED", request, field_ids)
+    units = {field.unit for field in fields}
+    if len(units) > 1:
+        if not request.relation_transport_authorized or request.relation_transport_ref is None:
+            return _joined_refusal("UNLINKED_UNIT_POOLING_UNAUTHORIZED", request, field_ids)
+        if any(field.relation_ref != request.relation_transport_ref for field in fields):
+            return _joined_refusal("UNAUTHORIZED_TRANSPORT_RELATION", request, field_ids)
+    if any(field.role == "CONTEXT" for field in fields) and request.ff_structural_authority_ref is None:
+        return _joined_refusal("CONTEXT_AS_STRUCTURAL_UNAUTHORIZED", request, field_ids)
+    clocks = {field.clock_ref for field in fields if field.clock_ref is not None}
+    if len(clocks) > 1:
+        if (request.temporal_pair_ref is None or not request.observed_temporal_pair_refs
+                or request.temporal_pair_ref not in request.observed_temporal_pair_refs):
+            return _joined_refusal("UNOBSERVED_TEMPORAL_PAIR", request, field_ids)
+    n10e = p41.get("n10e_steps") or ()
+    n10w = p41.get("n10w") or {}
+    structural = p41.get("structural") or {}
+    if (len(n10e) < 1
+            or not all(step.get("state") == "EXACT_SUPPORTED" for step in n10e)
+            or not n10w.get("positioned_consumptions")
+            or not structural.get("routes")):
+        return _joined_refusal("JOINED_CONSUMER_NOT_PRODUCTIVE", request, field_ids)
+    values = {
+        "schema": "R95_R06_JOINED_WORLD_VIEW@1",
+        "view_key": request.view_key,
+        "field_values": {field.field_id: field.expected_value for field in fields},
+        "n9_clock": clock,
+        "n9_currentness": (p41.get("n9_world") or {}).get("currentness"),
+        "n9_routes": structural.get("routes"),
+        "n10e_steps": n10e,
+        "n10w": n10w,
+        "joined_receipt_hash": joined.get("receipt_hash"),
+        "p41_receipt_hash": p41.get("content_hash"),
+        "consumer": p41.get("consumer"),
+        "families": {"n9": providers.get("n9_world"),
+                     "n10e": providers.get("n10e_empirical"),
+                     "n10w": providers.get("n10w_progressive")},
+        "z_unresolved": True,
+    }
+    return JoinedWorldSelectedView(
+        state="SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+        reason_code="WORLD_SELECTED_VIEW",
+        view_key=request.view_key, field_ids=field_ids,
+        consumer_values_read=values,
+        view_hash=semantic_hash(values),
+    )
