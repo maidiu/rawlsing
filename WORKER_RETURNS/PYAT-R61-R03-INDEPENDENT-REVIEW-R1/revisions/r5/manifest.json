@@ -1,0 +1,57 @@
+{
+  "author_manifest_verification": {
+    "entries_checked": 7,
+    "entries_matched": 7,
+    "self_exclusion_verified": true,
+    "u43_exact": true
+  },
+  "candidate_code_blobs": {
+    "rawlsing_next/pre553_issued_workload.py": "31e84f49d624f5524906e9e7839d2873106f8249",
+    "rawlsing_next/pre553_native_workload_binding.py": "dac73e484f8619088f5c6701b2b6991c07540f3b",
+    "rawlsing_next/pre553_universal_workload.py": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e",
+    "rawlsing_next/tests/test_universal_workload.py": "33c34a3bf4d14fa59a4f7a1f7f83a3c148a241f7"
+  },
+  "candidate_startup": "c912497b25411ebbd3d796db139f32f5bebb6c4c",
+  "commission": "0f6acf2317ecd561e754af984da256c90c43be86",
+  "excluded_from_manifest": [
+    "manifest.json"
+  ],
+  "expectations_freeze_commit": "15064375f",
+  "f1_f6_matrix": {
+    "F1": "PASS",
+    "F2": "PASS",
+    "F3": "PASS",
+    "F4": "PASS",
+    "F5": "PASS",
+    "F6": "PASS"
+  },
+  "files_sha256": {
+    "00_RETURN.md": "4d019ab1885c1eb50e392fbd1e42451286f1f4d6907b008e0049b8a08ac76a40",
+    "EXPECTATIONS.md": "ed3ed567ea9c62888c109bd64fde8afce7b8b8c6d942cc15bb88973fde674511",
+    "RESUME.md": "13d4c091d94b78ec13cadea802ca4d22b47c818539fc4fa3bfd580f320f8e4e6",
+    "defects_and_limits.md": "2b9db073d21d0c80e9f9596f7168479db7dce63e9f70a314e092a81f99a6e476",
+    "evidence/independent_oracle_results.json": "0aeb2bd3d87b4f46f25de8b4f371afd1cefb65f5d3868d5d7eac59eb04fe405b",
+    "evidence/startup_and_identity.txt": "1f158bf766c49dd3354b44f509fc692d8e217ddd4f56cde20baabbf22c183fe5",
+    "independent_probes/test_r03v_r5_pin.py": "9f335941c51b9f769fa6546ff2703d1402e38b69ae8ca812f24584897b2bd6d4",
+    "proof_witness.json": "b9d24d3f126141048986f69b51920e878dd8784053ef174769f9c822b3d21928",
+    "replay/author_suite.log": "5249d0cca6093df8e3fd1ff66e8e1583ca8128cf3cbb06afc169a2ae425c5806",
+    "replay/author_suite_junit.xml": "0a98a12533f9986e691190afdcac3ca18b0422023c373ef40d5d8d3c45f6ff15",
+    "replay/hostile_probes.log": "e08d33ffd3f01d1ae911550af6eeca689ebdd2d5bd17f408a4fb27e7af63bbb0",
+    "replay/hostile_probes_junit.xml": "093373610f704b90640c1eecd595fabf1aa8a591ad2c0ed1647af1e6ccdf1a4f",
+    "replay/r01_suite.log": "9d1cb34fc84c961093ade337ee135516e8fa24df5d02d80534f9656a90996796",
+    "replay/r01_suite_junit.xml": "6554b3dc7cfe118602a3e007922010310f6a4fa948549e5f72bbb1c6f6ce6f6a"
+  },
+  "non_blocking_note": "duplicated immediately-shadowed dead definition of restore_governed_frontier_ledger; no behavioral effect",
+  "previous_review": "61356022db35254193605ae1cf749b1dff29794e",
+  "r61av_decision": "7a36e8091eda463c736f4ca0528d47f061b26cce",
+  "results": {
+    "author_passed": 16,
+    "r01_passed": 32,
+    "reviewer_failed": 0,
+    "reviewer_passed": 5
+  },
+  "review_branch": "agent/opencode-pyat-r61-r03v-r5-independent-review-r1",
+  "schema": "PYAT_R61_R03V_R5_INDEPENDENT_REVIEW_MANIFEST@1",
+  "verdict": "ACCEPT_SCOPED_LOCAL",
+  "write_scope": "WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/revisions/r5/"
+}

@@ -1,0 +1,79 @@
+{
+  "schema": "PYAT_R61_R03V_R5_INDEPENDENT_PROOF_WITNESS@1",
+  "verdict": "ACCEPT_SCOPED_LOCAL",
+  "candidate_startup": "c912497b25411ebbd3d796db139f32f5bebb6c4c",
+  "author_branch": "agent/opencode-pyat-r61-r03-total-native-workload-r1",
+  "review_branch": "agent/opencode-pyat-r61-r03v-r5-independent-review-r1",
+  "commission": "0f6acf2317ecd561e754af984da256c90c43be86",
+  "r61av_decision": "7a36e8091eda463c736f4ca0528d47f061b26cce",
+  "previous_review": "61356022db35254193605ae1cf749b1dff29794e",
+  "expectations_freeze_commit": "15064375f",
+  "candidate_code_blobs": {
+    "rawlsing_next/pre553_issued_workload.py": "31e84f49d624f5524906e9e7839d2873106f8249",
+    "rawlsing_next/pre553_native_workload_binding.py": "dac73e484f8619088f5c6701b2b6991c07540f3b",
+    "rawlsing_next/pre553_universal_workload.py": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e",
+    "rawlsing_next/tests/test_universal_workload.py": "33c34a3bf4d14fa59a4f7a1f7f83a3c148a241f7"
+  },
+  "author_manifest_reproduction": {
+    "entries_checked": 7,
+    "entries_matched": 7,
+    "manifest_excludes_itself": true,
+    "u43_exact": true
+  },
+  "commands": [
+    {
+      "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_workload.py -q --junitxml=.../replay/author_suite_junit.xml -o addopts=''",
+      "exit": 0,
+      "result": "16 passed, 0 failed/error/skip"
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=.../replay/r01_suite_junit.xml -o addopts=''",
+      "exit": 0,
+      "result": "32 passed, 0 failed/error/skip"
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r03v_r5_pin.py -q --junitxml=.../replay/hostile_probes_junit.xml -o addopts=''",
+      "exit": 0,
+      "result": "5 passed, 0 failed"
+    }
+  ],
+  "probe_outcomes": [
+    "genuine original pin restores; missing/wrong pin refuses",
+    "prior fact deletion, fact duplication and expected job substitution refuse against original pin with genuine restore between faults",
+    "content mutation retaining advertised refs refuses",
+    "empty operation ledger cannot capture checkpoint",
+    "duplicated fact_refs cannot capture checkpoint"
+  ],
+  "retained_positives": [
+    "shared _validate_governed_ledger_material used by capture and restore",
+    "fresh-process genuine restore/no native rerun in author suite",
+    "governed joint/conditional/D3/minority/pending/source-value and HELD/UNKNOWN",
+    "U43 exact and four-path scope; owners unchanged"
+  ],
+  "non_blocking_note": "duplicated immediately-shadowed dead definition of restore_governed_frontier_ledger; no behavioral effect",
+  "f1_f6_matrix": {
+    "F1": "PASS",
+    "F2": "PASS",
+    "F3": "PASS",
+    "F4": "PASS",
+    "F5": "PASS",
+    "F6": "PASS"
+  },
+  "environment": {
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "hardware_model_route": "existing OpenCode Go DeepSeek V4.1-Flash MAX/Global"
+  },
+  "remote_verification": "evidence/remote_readback.txt (direct git ls-remote of the pushed reviewer branch); final tip reported to the coordinator",
+  "trust_boundary": "sourcefree TEST_ONLY local trusted host; both pin and candidate replaced by a different trusted host is R61AF excluded",
+  "not_reached": [
+    "R04 joined custody/durability",
+    "R05 lifecycle/grades",
+    "F5-F8 global",
+    "original35/1890 N11",
+    "N12/Sorok",
+    "protected CI/production",
+    "J52/W52"
+  ]
+}
