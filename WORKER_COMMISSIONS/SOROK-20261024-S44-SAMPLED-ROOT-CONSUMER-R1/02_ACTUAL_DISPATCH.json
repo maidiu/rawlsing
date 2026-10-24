@@ -1,0 +1,54 @@
+{
+  "commission_commit": "3c71f2af12cc42ebd05302d13f14a5ec47177239",
+  "base": "3edd631fb6c31751dfd2143ba2faa9fc31561e54",
+  "session_id": "ses_e9387509affeR5dC27RoUy3WSH",
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "variant": "max",
+  "branch": "codex/sorok-s44-sampled-root-consumer",
+  "initial_exit": {
+    "exit_code": 0,
+    "finished_at_epoch": 1792873994.4424691
+  },
+  "initial_outcome": "OpenCode auto-denied two exact commission-directory reads; no code change",
+  "correction": "two exact read-directory permissions added; same session resumed",
+  "continuation_process": {
+    "pid": 16649,
+    "started_at_epoch": 1792874033.941078,
+    "task": "S44 source-bound sampled root generation and actual continuing consumer",
+    "session_id": "ses_e9387509affeR5dC27RoUy3WSH",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "candidate_base": "3edd631fb6c31751dfd2143ba2faa9fc31561e54"
+  },
+  "actual_process_observation": "16649 16646 S    /Users/matthewsmith/.opencode/bin/opencode",
+  "observed_event_sessions": [
+    "ses_e9387509affeR5dC27RoUy3WSH"
+  ],
+  "observed_event_count": 16,
+  "continuation_exit_present": false,
+  "prelaunch_completion_arm": {
+    "job": {
+      "job_id": "sorok-s44-sampled-root-continuation1",
+      "role": "WORKER",
+      "session_id": "ses_e9387509affeR5dC27RoUy3WSH",
+      "worktree": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker",
+      "process_path": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/s44-continuation-1.process.json",
+      "events_path": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/s44-continuation-1.events.jsonl",
+      "exit_path": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/s44-continuation-1.exit.json",
+      "candidate_base": "3edd631fb6c31751dfd2143ba2faa9fc31561e54"
+    },
+    "before_worker_launch": true,
+    "watcher_pid": 71590,
+    "status": {
+      "job_id": "sorok-s44-sampled-root-continuation1",
+      "role": "WORKER",
+      "session_id": "ses_e9387509affeR5dC27RoUy3WSH",
+      "status": "WAITING"
+    },
+    "observed_at": "2026-10-24T20:33:53.743Z"
+  },
+  "job_id": "sorok-s44-sampled-root-continuation1",
+  "observed_at_epoch": 1792874061.7145011,
+  "acceptance": "NOT_YET_RETURNED_OR_ADJUDICATED",
+  "native_grants_changed": false
+}
