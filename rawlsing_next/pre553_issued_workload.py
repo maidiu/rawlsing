@@ -15,10 +15,11 @@ import json
 from typing import Any, Callable, Protocol
 
 from rawlsing_next.pre553_batch_runner import (
-    BatchExecutionRunner, BatchManifest, BatchUnitSpec, ExecutionOutcome, ExecutorBinding,
+    BatchExecutionRunner, BatchManifest, BatchUnitSpec, ExecutionOutcome,
+    ExecutorBinding, UnitExecutionReceipt,
 )
 from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor, RuntimeObjectCatalog
-from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+from rawlsing_next.pre553_empirical_objects import ExactRef, exact_ref, semantic_hash
 from rawlsing_next.pre553_route_b_production import I03ExecutionRequest, execute_route_b_production
 from rawlsing_next.pre553_source_backed_c11_facade import (
     GovernedC11Projection, build_source_backed_c11_repository,
@@ -265,6 +266,7 @@ class NativeWorkloadResult:
     scope: str
     summary: Any
     original_wave_identity: OriginalWaveIdentity | None = None
+    source_sha256: str | None = None
 
 
 def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionResolver, *,
@@ -339,4 +341,238 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
     return NativeWorkloadResult(routes, tuple(outputs[k] for k in sorted(outputs)), manifest, runner.receipts,
         tuple(ref for r in runner.receipts for ref in r.result_refs),
         record.envelope_sha256, record.decision_ref, record.scope, runner.summary(),
-        record.original_wave_identity)
+        record.original_wave_identity, record.source_sha256)
+
+
+JOINED_CUSTODY_SCHEMA = "PRE553_R04_JOINED_WORKLOAD_CUSTODY@1.0.0"
+
+
+@dataclass(frozen=True)
+class WorkloadCustodyEntry:
+    decision_ref: ExactRef
+    envelope_sha256: str
+    source_sha256: str
+    manifest_hash: str
+    receipt_materials: tuple[Mapping[str, Any], ...]
+    output_refs: tuple[ExactRef, ...]
+    entry_hash: str
+
+    def material(self) -> dict[str, Any]:
+        return {
+            "decision_ref": self.decision_ref.as_dict(),
+            "envelope_sha256": self.envelope_sha256,
+            "source_sha256": self.source_sha256,
+            "manifest_hash": self.manifest_hash,
+            "receipt_materials": [material(row) for row in self.receipt_materials],
+            "output_refs": [ref.as_dict() for ref in self.output_refs],
+            "entry_hash": self.entry_hash,
+        }
+
+
+@dataclass(frozen=True)
+class JoinedWorkloadCheckpoint:
+    schema: str
+    entries: tuple[WorkloadCustodyEntry, ...]
+    checkpoint_hash: str
+
+    def material(self) -> dict[str, Any]:
+        return {
+            "schema": self.schema,
+            "entries": [entry.material() for entry in self.entries],
+            "checkpoint_hash": self.checkpoint_hash,
+        }
+
+    @property
+    def completed_decision_refs(self) -> tuple[ExactRef, ...]:
+        return tuple(entry.decision_ref for entry in self.entries)
+
+
+@dataclass(frozen=True)
+class JoinedWorkloadResumeResult:
+    checkpoint: JoinedWorkloadCheckpoint
+    completed_results: tuple[NativeWorkloadResult, ...]
+    resumed_results: tuple[NativeWorkloadResult, ...]
+    output_refs: tuple[ExactRef, ...]
+    receipt_materials: tuple[Mapping[str, Any], ...]
+
+    @property
+    def all_results(self) -> tuple[NativeWorkloadResult, ...]:
+        return (*self.completed_results, *self.resumed_results)
+
+
+def capture_joined_checkpoint(
+    results: Sequence[NativeWorkloadResult],
+) -> JoinedWorkloadCheckpoint:
+    """Capture completed U43/R03 workload results without claiming unfinished work."""
+    entries = []
+    for result in results:
+        if not isinstance(result, NativeWorkloadResult):
+            raise WorkloadAdmissionError("EXACT_NATIVE_WORKLOAD_RESULT_REQUIRED")
+        if not result.receipts or any(r.state != "COMPLETED" for r in result.receipts):
+            raise WorkloadAdmissionError("JOINED_CHECKPOINT_REQUIRES_COMPLETED_RESULTS")
+        if len(result.receipts) != len(result.manifest.units):
+            raise WorkloadAdmissionError("JOINED_CHECKPOINT_MANIFEST_CLOSURE_MISSING")
+        receipt_materials = tuple(material(r) for r in result.receipts)
+        output_refs = tuple(sorted(
+            (ref for r in result.receipts for ref in r.result_refs),
+            key=lambda ref: ref.key,
+        ))
+        payload = {
+            "decision_ref": result.decision_ref.as_dict(),
+            "envelope_sha256": result.envelope_sha256,
+            "source_sha256": result.source_sha256 or "",
+            "manifest_hash": result.manifest.manifest_hash,
+            "receipt_materials": receipt_materials,
+            "output_refs": [ref.as_dict() for ref in output_refs],
+        }
+        entries.append(WorkloadCustodyEntry(
+            decision_ref=result.decision_ref,
+            envelope_sha256=result.envelope_sha256,
+            source_sha256=result.source_sha256 or "",
+            manifest_hash=result.manifest.manifest_hash,
+            receipt_materials=receipt_materials,
+            output_refs=output_refs,
+            entry_hash=semantic_hash(payload),
+        ))
+    ordered = tuple(sorted(entries, key=lambda entry: entry.decision_ref.key))
+    if len({entry.decision_ref.key for entry in ordered}) != len(ordered):
+        raise WorkloadAdmissionError("JOINED_CHECKPOINT_DUPLICATE_DECISION")
+    payload = {"schema": JOINED_CUSTODY_SCHEMA,
+               "entries": [entry.material() for entry in ordered]}
+    return JoinedWorkloadCheckpoint(
+        schema=JOINED_CUSTODY_SCHEMA, entries=ordered,
+        checkpoint_hash=semantic_hash(payload),
+    )
+
+
+def resume_joined_workloads(
+    *,
+    workloads: Sequence[Any],
+    source_factory: Callable[[ExactRef], Any],
+    host: str,
+    purpose: str,
+    checkpoint: JoinedWorkloadCheckpoint,
+    allow_test_only: bool = True,
+) -> JoinedWorkloadResumeResult:
+    """Resume a finite sequence of actual R03-issued workloads without rerunning completed ones."""
+    if not isinstance(checkpoint, JoinedWorkloadCheckpoint):
+        raise WorkloadAdmissionError("JOINED_CHECKPOINT_REQUIRED")
+    if semantic_hash({
+        "schema": checkpoint.schema,
+        "entries": [entry.material() for entry in checkpoint.entries],
+    }) != checkpoint.checkpoint_hash:
+        raise WorkloadAdmissionError("JOINED_CHECKPOINT_HASH_MISMATCH")
+    by_decision = {item.record.decision_ref.key: item for item in workloads}
+    if len(by_decision) != len(workloads):
+        raise WorkloadAdmissionError("JOINED_WORKLOAD_DUPLICATE_DECISION")
+    completed_entries = {entry.decision_ref.key: entry for entry in checkpoint.entries}
+    if not set(completed_entries) <= set(by_decision):
+        raise WorkloadAdmissionError("JOINED_CHECKPOINT_UNKNOWN_WORKLOAD")
+    completed_results: list[NativeWorkloadResult] = []
+    resumed_results: list[NativeWorkloadResult] = []
+    for item in workloads:
+        key = item.record.decision_ref.key
+        entry = completed_entries.get(key)
+        if entry is not None:
+            if (entry.envelope_sha256 != semantic_hash(item.workload.envelope())
+                    or entry.source_sha256 != item.record.source_sha256
+                    or entry.decision_ref != item.record.decision_ref):
+                raise WorkloadAdmissionError("JOINED_CHECKPOINT_WORKLOAD_IDENTITY_MISMATCH")
+            # Completed work is represented by its retained receipts/refs; no reexecution.
+            completed_results.append(NativeWorkloadResult(
+                route_results=(), native_outputs=(),
+                manifest=BatchManifest((BatchUnitSpec(
+                    "QUERY",
+                    ExactRef("R04_JOINED_COMPLETED_UNIT", entry.decision_ref.object_id, entry.decision_ref.content_hash),
+                    (ExactRef("C11LogicalRelease", "urn:r04:joined:completed-release", entry.decision_ref.content_hash),),
+                    (),
+                ),)),
+                receipts=tuple(
+                    UnitExecutionReceipt(
+                        manifest_hash=row["manifest_hash"],
+                        unit_ref=exact_ref(row["unit_ref"]),
+                        attempt_index=row["attempt_index"],
+                        state=row["state"],
+                        execution_performed=row["execution_performed"],
+                        executor_ref=None if row["executor_ref"] is None else exact_ref(row["executor_ref"]),
+                        result_refs=tuple(exact_ref(ref) for ref in row["result_refs"]),
+                        provenance_refs=tuple(exact_ref(ref) for ref in row["provenance_refs"]),
+                        failure_code=row["failure_code"],
+                        detail_hash=row["detail_hash"],
+                    ) for row in entry.receipt_materials
+                ),
+                output_refs=entry.output_refs,
+                envelope_sha256=entry.envelope_sha256,
+                decision_ref=entry.decision_ref,
+                scope=item.record.scope,
+                summary=None, source_sha256=entry.source_sha256,
+            ))
+            continue
+        resumed_results.append(execute_issued_workload(
+            item.workload, _resolver_for(item),
+            source_factory=source_factory, host=host, purpose=purpose,
+            allow_test_only=allow_test_only,
+        ))
+    all_results = tuple(completed_results + resumed_results)
+    output_refs = tuple(sorted(
+        {ref for result in all_results
+         for receipt in result.receipts for ref in receipt.result_refs},
+        key=lambda ref: ref.key,
+    ))
+    receipt_materials = tuple(
+        material(receipt)
+        for result in all_results for receipt in result.receipts
+    )
+    return JoinedWorkloadResumeResult(
+        checkpoint=checkpoint, completed_results=tuple(completed_results),
+        resumed_results=tuple(resumed_results), output_refs=output_refs,
+        receipt_materials=receipt_materials,
+    )
+
+
+def _resolver_for(item: Any) -> CurrentDecisionResolver:
+    record = item.record
+    class _Resolver:
+        def resolve_current(self, decision_ref: ExactRef) -> IssuedWorkloadRecord:
+            if decision_ref != record.decision_ref:
+                raise WorkloadAdmissionError("UNKNOWN_DECISION_REF")
+            return record
+    return _Resolver()
+
+
+def restore_joined_checkpoint(material_payload: Mapping[str, Any]) -> JoinedWorkloadCheckpoint:
+    """Rehydrate a joined checkpoint from canonical material and verify closure."""
+    payload = dict(material_payload)
+    claimed = payload.get("checkpoint_hash")
+    entries_material = payload.get("entries", ())
+    computed_payload = {
+        "schema": payload.get("schema"),
+        "entries": [dict(row) for row in entries_material],
+    }
+    if claimed != semantic_hash(computed_payload):
+        raise WorkloadAdmissionError("JOINED_CHECKPOINT_HASH_MISMATCH")
+    entries = []
+    for row in entries_material:
+        entry_payload = {
+            "decision_ref": row["decision_ref"],
+            "envelope_sha256": row["envelope_sha256"],
+            "source_sha256": row["source_sha256"],
+            "manifest_hash": row["manifest_hash"],
+            "receipt_materials": row["receipt_materials"],
+            "output_refs": row["output_refs"],
+        }
+        if row.get("entry_hash") != semantic_hash(entry_payload):
+            raise WorkloadAdmissionError("JOINED_CHECKPOINT_ENTRY_HASH_MISMATCH")
+        entries.append(WorkloadCustodyEntry(
+            decision_ref=exact_ref(row["decision_ref"]),
+            envelope_sha256=row["envelope_sha256"],
+            source_sha256=row["source_sha256"],
+            manifest_hash=row["manifest_hash"],
+            receipt_materials=tuple(dict(item) for item in row["receipt_materials"]),
+            output_refs=tuple(exact_ref(ref) for ref in row["output_refs"]),
+            entry_hash=row["entry_hash"],
+        ))
+    return JoinedWorkloadCheckpoint(
+        schema=payload["schema"], entries=tuple(entries),
+        checkpoint_hash=claimed,
+    )
