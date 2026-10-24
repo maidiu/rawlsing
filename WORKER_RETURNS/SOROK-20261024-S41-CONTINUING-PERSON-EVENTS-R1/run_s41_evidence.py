@@ -225,6 +225,17 @@ def chain_evidence(root: Path) -> dict:
     }
     history_binding["generation_source_refs"] = generation_refs
     history_binding["generation_sources_present"] = bool(generation_sources)
+    input_refs = [record.get("source_ref") for record in generation_sources]
+    canonical_inputs = [
+        record for record in generation_sources
+        if record.get("source_ref") == history.get("source_ref")
+    ]
+    history_binding["generation_input_count"] = len(canonical_inputs)
+    history_binding["generation_input_exact"] = (
+        len(input_refs) == len(set(input_refs))
+        and len(canonical_inputs) == 1
+        and dict(canonical_inputs[0]) == dict(history)
+    )
     history_binding["generation_readset_canonical"] = all((
         history.get("source_ref") in generation_refs,
         not generation_sources or set(generation_refs).issubset(generation_allowed),
@@ -290,6 +301,9 @@ def chain_evidence(root: Path) -> dict:
             "history_canonical": history_binding["canonical"],
             "generation_readset_canonical": history_binding[
                 "generation_readset_canonical"
+            ],
+            "generation_input_canonical": history_binding[
+                "generation_input_exact"
             ],
             "zero_targets": events[0]["c9"]["target_proposals"] == []
             and events[1]["c9"]["target_proposals"] == []
@@ -664,6 +678,40 @@ def repro_generation_evidence() -> dict:
     return evidence
 
 
+def repro_generation_input_evidence() -> dict:
+    oracle = Path(
+        "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/"
+        "sorok-incumbent-review/SOROK_REVIEW/S41_FINAL_CLOSURE/evidence/"
+        "repro_generation_input_source.py"
+    )
+    env = dict(ENV, S41_RETURN=str(RET))
+    proc = subprocess.run(
+        [PY, str(oracle)], cwd=str(RET), env=env, capture_output=True, text=True
+    )
+    (EVID / "repro_generation_input_source.stderr.txt").write_text(proc.stderr)
+    err = proc.stderr.strip().splitlines()
+    code = ""
+    for line in reversed(err):
+        if "S41ReadRefusal:" in line:
+            code = line.split("S41ReadRefusal:", 1)[1].strip()
+            break
+    evidence = {
+        "schema": "SOROK_S41_GENERATION_INPUT_SOURCE_REPRO_REPAIR@1",
+        "reproducer": str(oracle),
+        "exit": proc.returncode,
+        "refused": proc.returncode != 0,
+        "expected_repaired_behavior": "REFUSE_TYPED",
+        "error": "S41ReadRefusal" if "S41ReadRefusal:" in proc.stderr else "",
+        "code": code,
+        "stdout": proc.stdout.strip(),
+        "stderr_tail": err[-4:],
+    }
+    _write(EVID / "repro_generation_input_source.json", evidence)
+    if proc.returncode == 0:
+        raise RuntimeError("S41_REPRO_ACCEPTED_REPLACED_GENERATION_INPUT")
+    return evidence
+
+
 def main() -> None:
     EVID.mkdir(exist_ok=True)
     JUNIT.mkdir(exist_ok=True)
@@ -678,6 +726,7 @@ def main() -> None:
         tests = test_evidence()
         repro = repro_evidence()
         repro_generation = repro_generation_evidence()
+        repro_generation_input = repro_generation_input_evidence()
         entry = _run([PY, "-B", "run_s41.py"], "entrypoint.log")
         if entry.returncode != 0:
             raise RuntimeError("S41_ENTRYPOINT_FAILED:" + entry.stderr)
@@ -697,6 +746,7 @@ def main() -> None:
             "history_binding": chain["history_binding"],
             "repro": repro,
             "repro_generation": repro_generation,
+            "repro_generation_input": repro_generation_input,
             "open": opened,
             "denial": denial,
             "tamper": tamper,

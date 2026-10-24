@@ -217,6 +217,11 @@ def read_event(session, event_ref: str) -> dict:
     if generation.get("hash") != binding.get("generation_hash"):
         raise S41ReadRefusal("S41_GENERATION_HASH_MISMATCH")
     if binding.get("event_ordinal") != 1:
+        if not binding.get("generation_sources"):
+            raise S41ReadRefusal(
+                "S41_GENERATION_READSET_INVALID",
+                "S41_GENERATION_INPUT_SOURCES_MISSING",
+            )
         try:
             validate_generation_readset(
                 generation,

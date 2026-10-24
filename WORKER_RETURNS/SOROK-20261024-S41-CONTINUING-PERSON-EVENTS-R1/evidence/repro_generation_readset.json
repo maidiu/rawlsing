@@ -1,5 +1,5 @@
 {
-  "code": "S41_GENERATION_READSET_INVALID: S41_GENERATION_CANONICAL_HISTORY_ABSENT",
+  "code": "S41_GENERATION_READSET_INVALID: S41_GENERATION_INPUT_SOURCES_MISSING",
   "error": "S41ReadRefusal",
   "exit": 1,
   "expected_repaired_behavior": "REFUSE_TYPED",
@@ -8,9 +8,9 @@
   "schema": "SOROK_S41_GENERATION_READSET_REPRO_REPAIR@1",
   "stderr_tail": [
     "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-    "  File \"/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/s41/reader.py\", line 227, in read_event",
+    "  File \"/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/s41/reader.py\", line 221, in read_event",
     "    raise S41ReadRefusal(",
-    "s41.reader.S41ReadRefusal: S41_GENERATION_READSET_INVALID: S41_GENERATION_CANONICAL_HISTORY_ABSENT"
+    "s41.reader.S41ReadRefusal: S41_GENERATION_READSET_INVALID: S41_GENERATION_INPUT_SOURCES_MISSING"
   ],
   "stdout": ""
 }

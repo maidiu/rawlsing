@@ -1,6 +1,6 @@
 # SOROK S41 — sequential admitted events for the same continuing person
 
-**RESULT:** `S41_TWO_EVENT_CONTINUING_PERSON__COLD_BETWEEN_AND_AFTER__SAME_ROOT_BRANCH_STORE__SECOND_ACTUAL_C8_E1__CANONICAL_PRIOR_FACT_AND_GENERATION_READSET_BOUND__EVENT_KEYED_READERS__17_OF_17_FOCUSED_TESTS__ENTRYPOINT_0__NO_TARGET__NATIVE_HOLD`.
+**RESULT:** `S41_TWO_EVENT_CONTINUING_PERSON__COLD_BETWEEN_AND_AFTER__SAME_ROOT_BRANCH_STORE__SECOND_ACTUAL_C8_E1__CANONICAL_PRIOR_FACT_GENERATION_READSET_AND_INPUT_SOURCE_BOUND__EVENT_KEYED_READERS__19_OF_19_FOCUSED_TESTS__ENTRYPOINT_0__NO_TARGET__NATIVE_HOLD`.
 
 One accepted S40/S37 person/product is started once, its first event and generated request are committed, the session is closed and reopened, and a second distinct world/E1 event is admitted through `continue_event` on the same actor/root/branch/store and the same keyed C8/C9 state. The second generation cites the first admitted B share as an actual historical source, not a caller boolean. Both event-specific readers remain valid after the second event and after cold reopen.
 
@@ -10,6 +10,19 @@ One accepted S40/S37 person/product is started once, its first event and generat
 - Branch `codex/sorok-s41-continuing-person-events`; base accepted S40 `79b0357c7af9b66ad8a28f5b77b46b0348094a23`.
 - Write scope only `WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/**`.
 - S40/S39/S37/S36/M35/language/JOIN-E remain read-only at their pinned cuts.
+
+## Persisted generation-input repair — REVISE 0a03d4c4
+
+Review `31`/`4c37abae…` reproduced a final substitution: the attached canonical history and generation receipt remained valid, but the persisted input record with the same canonical `source_ref` carried a different `source_hash`/content; warm/cold read and verify still passed.
+
+Repair:
+
+- `validate_generation_readset` now requires the persisted input records to contain the canonical history record **exactly once** and by full sealed identity (`source_hash`, content, actor, branch, time, access fields), not merely by source ref.
+- Replacement input records with the same source ref are refused (`S41_GENERATION_CANONICAL_INPUT_REPLACED`); duplicate canonical input records are refused (`S41_GENERATION_INPUT_SOURCE_DUPLICATE`).
+- Event-2 bindings must persist actual `generation_sources`; absence is refused.
+- `continue_event` runs the same validator after `producer.generate` and before world/action/C9 effects; the shared warm/cold event reader runs it on persisted bindings.
+
+The unchanged input-source reproducer now exits **1** with `S41ReadRefusal: S41_GENERATION_READSET_INVALID: S41_GENERATION_CANONICAL_INPUT_REPLACED`. Evidence is in `evidence/repro_generation_input_source.json`; both earlier reproducers remain typed refusals.
 
 ## Generation-readset repair — REVISE ff12892d
 
@@ -22,7 +35,7 @@ Repair:
 - Normal continuation bindings persist the actual `generation_sources`; warm/cold event-keyed readers validate the generation readset against them and against the attached canonical history, even when every outer seal is valid.
 - The reader refuses absent/replacement/wrong-bound consumed history and keeps event 1 readable.
 
-The unchanged generation-readset reproducer now exits **1** with `S41ReadRefusal: S41_GENERATION_READSET_INVALID: S41_GENERATION_CANONICAL_HISTORY_ABSENT`; it is not counted as passed by exit 0. Both unchanged reviewer reproducers are recorded in `evidence/repro_bad_history.json` and `evidence/repro_generation_readset.json`.
+The unchanged generation-readset reproducer now exits **1** with `S41ReadRefusal: S41_GENERATION_READSET_INVALID: S41_GENERATION_INPUT_SOURCES_MISSING` (it no longer persists input sources; the final input-source reproducer separately exercises `S41_GENERATION_CANONICAL_INPUT_REPLACED`). It is not counted as passed by exit 0. All three unchanged reviewer reproducers are recorded in `evidence/`.
 
 ## First history-source repair — REVISE cced4223
 
@@ -79,7 +92,7 @@ Boundary evidence:
 - Actual `take_tool` current-world action then second event: performer `DENIED` (`TOOL_NOT_AVAILABLE_IN_CURRENT_WORLD`), no speech/action, C9 valid-empty `RECEIVABLE_NO_OBSERVED_UPTAKE`, zero target.
 - Second-event plan/projection mismatch is refused by the event-keyed reader while event 1 remains valid; cold reopen refuses.
 
-Focused tests: **17 passed** (`junit/s41_full.xml`); entrypoint exit 0; both unchanged reviewer reproducers exit 1 with typed refusals (`S41_HISTORY_BINDING_INVALID` and `S41_GENERATION_READSET_INVALID`). No broad inherited rerun.
+Focused tests: **19 passed** (`junit/s41_full.xml`); entrypoint exit 0; all three unchanged reviewer reproducers exit 1 with typed refusals (`S41_HISTORY_BINDING_INVALID`, `S41_GENERATION_READSET_INVALID`, and the final input-source `S41_GENERATION_CANONICAL_INPUT_REPLACED`). No broad inherited rerun.
 
 ## Reused roots/cuts
 
@@ -89,4 +102,4 @@ S40 `79b0357c…` five key files exact; S39 `e41513fa…`; S37 `e1f3c1da…`; S3
 
 Wholly TEST_ONLY sourcefree continuation. No native CAN008/CAN011/CAN022/023, C11/native C12, original/human data, A5, acquired practice, motive/trust change, stochastic choice or general planner. Event/history facts are not a new practice or psychological transformation. No provider/domain/model calls, extra workers/reviewers, controller/M35/S37/S39/S40 edits, target fabrication or native/source/human grants.
 
-**Terminal:** `S41_TWO_EVENT_CONTINUING_PERSON__COLD_BETWEEN_AND_AFTER__SAME_ROOT_BRANCH_STORE__CANONICAL_PRIOR_FACT_AND_GENERATION_READSET_BOUND__EVENT_KEYED_READERS__17_OF_17_TESTS__NO_TARGET__NATIVE_HOLD`. Final commit and remote SHA are verified after push and reported in the final handback.
+**Terminal:** `S41_TWO_EVENT_CONTINUING_PERSON__COLD_BETWEEN_AND_AFTER__SAME_ROOT_BRANCH_STORE__CANONICAL_PRIOR_FACT_GENERATION_READSET_AND_INPUT_SOURCE_BOUND__EVENT_KEYED_READERS__19_OF_19_TESTS__NO_TARGET__NATIVE_HOLD`. Final commit and remote SHA are verified after push and reported in the final handback.

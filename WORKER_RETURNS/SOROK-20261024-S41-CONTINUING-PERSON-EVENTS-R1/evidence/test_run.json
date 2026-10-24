@@ -41,6 +41,16 @@
       "status": "PASS"
     },
     {
+      "classname": "tests.test_s41_generation_readset",
+      "name": "test_persisted_generation_input_substitution_refused_warm_cold[replacement-S41_GENERATION_CANONICAL_INPUT_REPLACED]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s41_generation_readset",
+      "name": "test_persisted_generation_input_substitution_refused_warm_cold[duplicate-S41_GENERATION_INPUT_SOURCE_DUPLICATE]",
+      "status": "PASS"
+    },
+    {
       "classname": "tests.test_s41_history_binding",
       "name": "test_wrong_history_refused_before_second_c8[unrelated_source_ref]",
       "status": "PASS"
@@ -89,10 +99,10 @@
   "command": "/usr/local/bin/python3 -B -m pytest -q -p no:cacheprovider --junitxml=/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/junit/s41_full.xml tests",
   "counts": {
     "ERROR": 0,
-    "PASS": 17,
+    "PASS": 19,
     "RED": 0,
     "SKIP": 0,
-    "tests": 17
+    "tests": 19
   },
   "exit": 0,
   "junit": "junit/s41_full.xml",

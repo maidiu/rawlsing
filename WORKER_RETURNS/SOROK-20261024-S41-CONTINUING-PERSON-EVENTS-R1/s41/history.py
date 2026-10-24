@@ -132,6 +132,24 @@ def validate_generation_readset(
     if not canonical or canonical not in refs:
         raise S41HistoryRefusal("S41_GENERATION_CANONICAL_HISTORY_ABSENT")
     if source_records is not None:
+        if not isinstance(source_records, list):
+            raise S41HistoryRefusal("S41_GENERATION_INPUT_SOURCES_INVALID")
+        input_refs = [record.get("source_ref") for record in source_records]
+        if len(input_refs) != len(set(input_refs)):
+            raise S41HistoryRefusal("S41_GENERATION_INPUT_SOURCE_DUPLICATE")
+        canonical_rows = [
+            record for record in source_records
+            if record.get("source_ref") == canonical
+        ]
+        if len(canonical_rows) != 1:
+            raise S41HistoryRefusal("S41_GENERATION_CANONICAL_INPUT_COUNT")
+        canonical_record = canonical_rows[0]
+        if (
+            not isinstance(canonical_record, Mapping)
+            or not valid(dict(canonical_record))
+            or dict(canonical_record) != dict(history)
+        ):
+            raise S41HistoryRefusal("S41_GENERATION_CANONICAL_INPUT_REPLACED")
         allowed = {
             record.get("source_ref")
             for record in source_records
