@@ -118,6 +118,30 @@ def _build_case(*, valid_empty: bool = False):
         model_rule=model_rule,
         condition_binding_witness=witness,
     )
+    producer_query_b = _query(
+        source, m01["qauth"], predicate, ("Y",), tag="r91-r05-c1-b"
+    )
+    witness_b = fx.build_witness_for_binding(
+        witness_object_id="urn:test:r91-r05:witness-b",
+        consumer_query=consumer_query,
+        producer_query=producer_query_b,
+        producer_predicate=predicate,
+        bindings=[conditioner],
+        coordinate_value_pairs=[(source["qrefs"]["X"], 1)],
+        pairing_authority=pairing,
+        source_universe_ref=universe.ref,
+        release_ref=release.release_ref,
+    )
+    composition_b = compose_positioned_subject_possibility(
+        repository=repository,
+        empirical_query=producer_query_b,
+        predicate=predicate,
+        authority_registry=registry,
+        release_refs=(release.release_ref,),
+        consumer_query=consumer_query,
+        model_rule=model_rule,
+        condition_binding_witness=witness_b,
+    )
     return {
         "m01": m01,
         "m01_result": m01_result,
@@ -133,6 +157,8 @@ def _build_case(*, valid_empty: bool = False):
         "witness": witness,
         "registry": registry,
         "composition": composition,
+        "composition_b": composition_b,
+        "producer_query_b": producer_query_b,
         "context": {
             "repository": repository,
             "empirical_query": producer_query,
@@ -350,3 +376,41 @@ def test_product_graph_and_e41_extension_reach_same_consumer(r05_case):
     )
     assert refused.state == "REFUSED"
     assert refused.reason_code == "E41_EXTENSION_GRAPH_MISMATCH"
+
+
+def test_actual_multi_component_graph_reaches_same_consumer(r05_case):
+    case = r05_case
+    graph = i4.NativeProductGraph(
+        compositions=(case["composition"], case["composition_b"])
+    )
+    result = i4.evaluate_learned_world_consumer(
+        case["learned"],
+        composition=case["composition"],
+        consumer_query=case["consumer_query"],
+        model_rule=case["model_rule"],
+        producer_query_ref=case["producer_query"].ref,
+        producer_predicate_ref=case["predicate"].ref,
+        product_graph=graph,
+    )
+    assert result.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    assert result.joint_component_count == 2
+    assert result.consumer_values_read["component_count"] == 2
+    assert len(result.consumer_values_read["component_consumer_result_hashes"]) == 2
+    assert result.consumer_result.result_hash == (
+        case["composition"].consumer_result_or_null.result_hash
+    )
+
+    duplicate = i4.NativeProductGraph(
+        compositions=(case["composition"], case["composition"])
+    )
+    refused = i4.evaluate_learned_world_consumer(
+        case["learned"],
+        composition=case["composition"],
+        consumer_query=case["consumer_query"],
+        model_rule=case["model_rule"],
+        producer_query_ref=case["producer_query"].ref,
+        producer_predicate_ref=case["predicate"].ref,
+        product_graph=duplicate,
+    )
+    assert refused.state != "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    assert refused.reason_code == "DUPLICATE_GRAPH_COMPONENT"
