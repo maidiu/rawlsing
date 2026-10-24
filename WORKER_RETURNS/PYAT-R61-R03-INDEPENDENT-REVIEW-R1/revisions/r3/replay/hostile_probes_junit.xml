@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="6" time="27.534" timestamp="2026-10-24T01:29:34.763295-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R61-R03-INDEPENDENT-REVIEW-R1.revisions.r3.independent_probes.test_r03v_r3_hostile" name="test_H1_governed_frontier_contract_is_present" time="4.241" /><testcase classname="WORKER_RETURNS.PYAT-R61-R03-INDEPENDENT-REVIEW-R1.revisions.r3.independent_probes.test_r03v_r3_hostile" name="test_H2_self_consistent_single_fact_removal_must_refuse" time="5.625"><failure message="Failed: DID NOT RAISE &lt;class 'Exception'&gt;">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-473/test_H2_self_consistent_single0')
+
+    def test_H2_self_consistent_single_fact_removal_must_refuse(tmp_path):
+        bundle, inventory, policy, frontier, compilation, result = _governed(tmp_path)
+        ledger = result.ledger()
+        assert ledger["native_facts"]
+        target = _fact_identity(ledger["native_facts"][0])
+        _remove_fact(ledger, target)
+        forged = _forge(ledger)
+&gt;       with pytest.raises(Exception):
+E       Failed: DID NOT RAISE &lt;class 'Exception'&gt;
+
+WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/revisions/r3/independent_probes/test_r03v_r3_hostile.py:119: Failed</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R03-INDEPENDENT-REVIEW-R1.revisions.r3.independent_probes.test_r03v_r3_hostile" name="test_H2_self_consistent_fact_duplicate_must_refuse" time="5.530"><failure message="Failed: DID NOT RAISE &lt;class 'Exception'&gt;">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-473/test_H2_self_consistent_fact_d0')
+
+    def test_H2_self_consistent_fact_duplicate_must_refuse(tmp_path):
+        bundle, inventory, policy, frontier, compilation, result = _governed(tmp_path)
+        ledger = result.ledger()
+        target = _fact_identity(ledger["native_facts"][0])
+        _duplicate_fact(ledger, target)
+        forged = _forge(ledger)
+&gt;       with pytest.raises(Exception):
+E       Failed: DID NOT RAISE &lt;class 'Exception'&gt;
+
+WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/revisions/r3/independent_probes/test_r03v_r3_hostile.py:129: Failed</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R03-INDEPENDENT-REVIEW-R1.revisions.r3.independent_probes.test_r03v_r3_hostile" name="test_H3_self_consistent_expected_job_substitution_must_refuse" time="5.642"><failure message="Failed: DID NOT RAISE &lt;class 'Exception'&gt;">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-473/test_H3_self_consistent_expect0')
+
+    def test_H3_self_consistent_expected_job_substitution_must_refuse(tmp_path):
+        bundle, inventory, policy, frontier, compilation, result = _governed(tmp_path)
+        ledger = result.ledger()
+        assert ledger["expected_jobs"]
+        forged = deepcopy(ledger)
+        job = list(forged["expected_jobs"][0])
+        job[1] = "urn:forged:query-ref"
+        job[2] = "urn:forged:predicate-ref"
+        forged["expected_jobs"] = [job]
+        forged["compilation"]["issued"]["expected_jobs"] = [job]
+        forged = _forge(forged, rehash_compilation=True)
+&gt;       with pytest.raises(Exception):
+E       Failed: DID NOT RAISE &lt;class 'Exception'&gt;
+
+WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/revisions/r3/independent_probes/test_r03v_r3_hostile.py:144: Failed</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R03-INDEPENDENT-REVIEW-R1.revisions.r3.independent_probes.test_r03v_r3_hostile" name="test_H4_checkpoint_valid_root_release_severance_must_refuse" time="0.513" /><testcase classname="WORKER_RETURNS.PYAT-R61-R03-INDEPENDENT-REVIEW-R1.revisions.r3.independent_probes.test_r03v_r3_hostile" name="test_H5_held_unknown_states_remain_typed" time="5.123" /></testsuite></testsuites>

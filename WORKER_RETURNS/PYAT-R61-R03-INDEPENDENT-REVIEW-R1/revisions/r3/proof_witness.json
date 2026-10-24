@@ -1,0 +1,76 @@
+{
+  "schema": "PYAT_R61_R03V_R3_INDEPENDENT_PROOF_WITNESS@1",
+  "verdict": "REVISE",
+  "candidate_startup": "5b28d09602a35d4c5d5f060f450956c612ab3580",
+  "author_branch": "agent/opencode-pyat-r61-r03-total-native-workload-r1",
+  "review_branch": "agent/opencode-pyat-r61-r03v-r3-independent-review-r1",
+  "commission": "36c8e6ab123562de902f0b53ae9846a3b3560df5",
+  "previous_review": "3853c2a8c609e53cbc6d6ebf852540faa40bd6c2",
+  "expectations_freeze_commit": "7ac6bf910",
+  "candidate_code_blobs": {
+    "rawlsing_next/pre553_issued_workload.py": "31e84f49d624f5524906e9e7839d2873106f8249",
+    "rawlsing_next/pre553_native_workload_binding.py": "dac73e484f8619088f5c6701b2b6991c07540f3b",
+    "rawlsing_next/pre553_universal_workload.py": "e3267600086fc17937017cedf7a7812e6310032c",
+    "rawlsing_next/tests/test_universal_workload.py": "0e9cc8ccf904b78fff651ff9855ee4fbbf1e1032"
+  },
+  "author_manifest_reproduction": {
+    "entries_checked": 7,
+    "entries_matched": 7,
+    "manifest_excludes_itself": true,
+    "u43_exact": true
+  },
+  "commands": [
+    {
+      "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_workload.py -q --junitxml=.../replay/author_suite_junit.xml -o addopts=''",
+      "exit": 0,
+      "result": "13 passed, 0 failed/error/skip"
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=.../replay/r01_suite_junit.xml -o addopts=''",
+      "exit": 0,
+      "result": "32 passed, 0 failed/error/skip"
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r03v_r3_hostile.py -q --junitxml=.../replay/hostile_probes_junit.xml -o addopts=''",
+      "exit": 1,
+      "result": "3 passed, 3 failed required behaviours"
+    }
+  ],
+  "remaining_failures": [
+    "self-consistent single native fact removal (native_facts, fact_refs, receipt fact refs, row fact refs) accepted by cold restore",
+    "self-consistent native fact duplication accepted; no expected multiplicity/duplicate check",
+    "self-consistent expected job query/predicate substitution in ledger+compilation with recomputed hashes accepted"
+  ],
+  "fixed_r2_items": [
+    "full-strip of all receipts/facts refused",
+    "checkpoint-valid root source-release severance refused",
+    "HELD/UNKNOWN distinct in live and cold ledger",
+    "governed/D3/value-fault positives retained",
+    "U43 exact and four-path scope"
+  ],
+  "f1_f6_matrix": {
+    "F1": "PASS",
+    "F2": "PARTIAL/FAIL (self-consistent fact removal/duplication and expected-job substitution)",
+    "F3": "PARTIAL (owner paths real; cold fact/job identity not independently anchored)",
+    "F4": "PARTIAL (held/unknown fixed; observed-zero/error at R03 ledger grain unproven)",
+    "F5": "FAIL (self-consistent fact/job shrink/rehash accepted)",
+    "F6": "PARTIAL (D3 receipt/plan/handoff/root-release severance fixed; cold fact/job substitution gap)"
+  },
+  "environment": {
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "hardware_model_route": "existing OpenCode Go DeepSeek V4.1-Flash MAX/Global"
+  },
+  "remote_verification": "evidence/remote_readback.txt (direct git ls-remote of the pushed reviewer branch); final tip reported to the coordinator",
+  "trust_boundary": "sourcefree TEST_ONLY local trusted host; no source respondent access; R04/R05/F5-F8/original science held",
+  "not_reached": [
+    "R04 joined custody/durability",
+    "R05 lifecycle/grades",
+    "F5-F8 global",
+    "original35/1890 N11",
+    "N12/Sorok",
+    "protected CI/production",
+    "J52/W52"
+  ]
+}

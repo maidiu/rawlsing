@@ -1,0 +1,55 @@
+.FFF..                                                                   [100%]
+=================================== FAILURES ===================================
+___________ test_H2_self_consistent_single_fact_removal_must_refuse ____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-473/test_H2_self_consistent_single0')
+
+    def test_H2_self_consistent_single_fact_removal_must_refuse(tmp_path):
+        bundle, inventory, policy, frontier, compilation, result = _governed(tmp_path)
+        ledger = result.ledger()
+        assert ledger["native_facts"]
+        target = _fact_identity(ledger["native_facts"][0])
+        _remove_fact(ledger, target)
+        forged = _forge(ledger)
+>       with pytest.raises(Exception):
+E       Failed: DID NOT RAISE <class 'Exception'>
+
+WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/revisions/r3/independent_probes/test_r03v_r3_hostile.py:119: Failed
+______________ test_H2_self_consistent_fact_duplicate_must_refuse ______________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-473/test_H2_self_consistent_fact_d0')
+
+    def test_H2_self_consistent_fact_duplicate_must_refuse(tmp_path):
+        bundle, inventory, policy, frontier, compilation, result = _governed(tmp_path)
+        ledger = result.ledger()
+        target = _fact_identity(ledger["native_facts"][0])
+        _duplicate_fact(ledger, target)
+        forged = _forge(ledger)
+>       with pytest.raises(Exception):
+E       Failed: DID NOT RAISE <class 'Exception'>
+
+WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/revisions/r3/independent_probes/test_r03v_r3_hostile.py:129: Failed
+________ test_H3_self_consistent_expected_job_substitution_must_refuse _________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-473/test_H3_self_consistent_expect0')
+
+    def test_H3_self_consistent_expected_job_substitution_must_refuse(tmp_path):
+        bundle, inventory, policy, frontier, compilation, result = _governed(tmp_path)
+        ledger = result.ledger()
+        assert ledger["expected_jobs"]
+        forged = deepcopy(ledger)
+        job = list(forged["expected_jobs"][0])
+        job[1] = "urn:forged:query-ref"
+        job[2] = "urn:forged:predicate-ref"
+        forged["expected_jobs"] = [job]
+        forged["compilation"]["issued"]["expected_jobs"] = [job]
+        forged = _forge(forged, rehash_compilation=True)
+>       with pytest.raises(Exception):
+E       Failed: DID NOT RAISE <class 'Exception'>
+
+WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/revisions/r3/independent_probes/test_r03v_r3_hostile.py:144: Failed
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/revisions/r3/independent_probes/test_r03v_r3_hostile.py::test_H2_self_consistent_single_fact_removal_must_refuse
+FAILED WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/revisions/r3/independent_probes/test_r03v_r3_hostile.py::test_H2_self_consistent_fact_duplicate_must_refuse
+FAILED WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/revisions/r3/independent_probes/test_r03v_r3_hostile.py::test_H3_self_consistent_expected_job_substitution_must_refuse
+3 failed, 3 passed in 27.54s
