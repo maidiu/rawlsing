@@ -1,0 +1,31 @@
+{
+  "schema": "SOROK_REVIEW_S40_V1",
+  "candidate_branch": "codex/sorok-s40-generated-native-speech",
+  "candidate_commit": "1d6f89b2ef60f4713741c9432c63940737248984",
+  "base": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+  "source_cuts": {
+    "m35": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+    "s36": "8da78d8031a06a4bd7e1297fd713e573299c0860",
+    "s37": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+    "language": "8d2920da951f98cd8246d7c34cac777928e0c732",
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135"
+  },
+  "decision": "REVISE",
+  "defect": "plan public ADMITTED_E1 fact uses the E1 hash as event_id instead of the actual E1 event ID; warm/cold reader does not validate this public fact",
+  "executed": {
+    "focused_tests": "7 PASS, 0 FAIL (2.09s)",
+    "entrypoint": "PASS, four expected chains",
+    "e1_plan_binding_oracle": "FAIL; actual E1 ID TEST_ONLY_BP2_E1_OCC-0001, plan event_id is hash",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "s40/language.py": "548231fd1940009a9eb90384ce22be4d81bdb1da7bc9c8500a5149ffbda79aa0",
+    "s40/performer.py": "03701558665a71a65a75d1a4585db34384a3c879100911cc1b3ce1effd7f4b61",
+    "s40/reader.py": "1778608a7ea8141379a9dd7e089b3bbfc0c244246bf22edbd98541577f3fc201",
+    "s40/session.py": "70472ec6426f6c0caeafe2aac89723789a836ed903b9e993c9ba314ba1b20c5c",
+    "evidence/s40-tests-7.out": "7d887e809a42836fb3fe47250fca4bc0e926a251011f8d2b7d67ff41e7701163",
+    "evidence/s40-entrypoint.json": "db40eae662be02b3df2caf4546a7c19a775ea2b39fd06bf468bcfd08648a05c0",
+    "evidence/s40-e1-plan-binding.json": "37fb742c593265abfa734ce6905835ada13704aee2cbbf3d6c8087691c256746",
+    "oracles/s40_e1_plan_binding.py": "c38ed92f03f0f4cfbd7730d2a0d5df3058618085f7b975666cf175ecb6fffe18"
+  }
+}

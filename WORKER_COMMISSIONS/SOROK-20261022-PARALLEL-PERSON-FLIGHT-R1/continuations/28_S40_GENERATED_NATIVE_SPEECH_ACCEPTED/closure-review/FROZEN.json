@@ -1,0 +1,25 @@
+{
+  "schema": "SOROK_REVIEW_S40_CLOSURE_V1",
+  "candidate_branch": "codex/sorok-s40-generated-native-speech",
+  "corrected_commit": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+  "prior_rejected_commit": "1d6f89b2ef60f4713741c9432c63940737248984",
+  "base": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+  "decision": "ACCEPT_SCOPED",
+  "defect_closed": "plan public ADMITTED_E1 fact uses actual E1 event ID/hash and C8 occurrence/state; reader validates against actual session/C8/C9, warm and cold",
+  "checks": {
+    "focused_tests": "8 PASS, 0 FAIL (2.45s)",
+    "preserved_e1_oracle": "1 PASS, 0 FAIL",
+    "wrong_public_e1_rejection": "PASS warm/cold in focused test",
+    "request_refusal_denied_nonverbal_open_no_target": "PASS in 8 tests",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "s40/language.py": "7b960516a803d4ef2afeb243ddcc9a8e1b6f04b8bac9a5694b4bbc6b5a6a2e83",
+    "s40/reader.py": "cf88464bc195384f930413f5455381529bf198ced53af99cf65ef1a686851e82",
+    "s40/performer.py": "094c87865c0cda9c2974bccf6213de7abe32ffbde85a114344dd54c7849bd14d",
+    "s40/session.py": "abe771cc22c60eb806916040a5dea8423369c9824c1d1b22410d689ff84a8222",
+    "evidence/s40-79b-tests8.out": "85d31c5bf2e0b67094da63d7f3e0694a68ab2a41da51b84e4aeb62371f8f9163",
+    "evidence/s40-79b-e1.json": "608a8fb15fb521438c565af53fd02e66e94f251213dce384d4595f6f45751b7a",
+    "oracles/s40_e1_plan_binding.py": "c38ed92f03f0f4cfbd7730d2a0d5df3058618085f7b975666cf175ecb6fffe18"
+  }
+}
