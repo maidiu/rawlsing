@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="5" time="1.051" timestamp="2026-10-24T10:46:07.507467-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1.revisions.r2.probes.test_r05v_r2_graph_gap" name="test_actual_single_component_positive" time="0.419" /><testcase classname="WORKER_RETURNS.PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1.revisions.r2.probes.test_r05v_r2_graph_gap" name="test_copied_joint_discovery_recursive_labels_are_not_a_trusted_graph" time="0.009"><failure message="AssertionError: assert 'LEARNED_CONSUMER_EXACT_SUPPORTED' != 'LEARNED_CONSUMER_EXACT_SUPPORTED'&#10; +  where 'LEARNED_CONSUMER_EXACT_SUPPORTED' = LearnedWorldConsumerResult(contract_id='R91_LEARNED_WORLD_POSSIBILITY_CONSUMER@1.0.0', state='LEARNED_CONSUMER_EXACT_S...t:r05v:forged', content_hash='225027b12db6f29fbe579ac84a2600454f70649fe78fc7bf6700889a713d8d48'),), z_unresolved=False).state">case = {'bundle': M1AdjudicationInputBundle(requested_claim_family_id='SYNTHETIC_LEARNED_RELATION', requested_claim_rule_id='...cb755cbfda8530a3e99eeaab50bd53492fb0323ff1a08e9d2d782141c149c5', typed_state='QUERY_AUTHORIZED_RESOLVABLE'), ...}, ...}
+
+    def test_copied_joint_discovery_recursive_labels_are_not_a_trusted_graph(case):
+        forged_ref = ExactRef(
+            "R91_FORGED_GRAPH", "urn:test:r05v:forged", semantic_hash({"forged": 1})
+        )
+        mutated = replace(
+            case["composition"],
+            joint_component_count=2,
+            joint_order_semantics="SEMANTIC_ORDERED",
+            discovery_receipt_refs=(forged_ref,),
+            discovery_frontier_ref=forged_ref,
+            recursive_handoff_refs=(forged_ref,),
+            recursive_lineage_refs=(forged_ref,),
+        )
+        graph = NativeProductGraph((mutated,))
+        result = _consume(case, mutated, graph)
+        values = result.consumer_values_read or {}
+        _record(
+            "copied_graph_labels",
+            {
+                "state": result.state,
+                "joint_component_count": values.get("joint_component_count"),
+                "discovery_receipt_refs": values.get("discovery_receipt_refs"),
+                "recursive_handoff_refs": values.get("recursive_handoff_refs"),
+                "actual_component_joint_count": case["composition"].joint_component_count,
+            },
+        )
+&gt;       assert result.state != "LEARNED_CONSUMER_EXACT_SUPPORTED"
+E       AssertionError: assert 'LEARNED_CONSUMER_EXACT_SUPPORTED' != 'LEARNED_CONSUMER_EXACT_SUPPORTED'
+E        +  where 'LEARNED_CONSUMER_EXACT_SUPPORTED' = LearnedWorldConsumerResult(contract_id='R91_LEARNED_WORLD_POSSIBILITY_CONSUMER@1.0.0', state='LEARNED_CONSUMER_EXACT_S...t:r05v:forged', content_hash='225027b12db6f29fbe579ac84a2600454f70649fe78fc7bf6700889a713d8d48'),), z_unresolved=False).state
+
+WORKER_RETURNS/PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/revisions/r2/probes/test_r05v_r2_graph_gap.py:99: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1.revisions.r2.probes.test_r05v_r2_graph_gap" name="test_non_supported_analytical_state_cannot_be_false_exact" time="0.009"><failure message="AssertionError: assert 'LEARNED_CONSUMER_EXACT_SUPPORTED' != 'LEARNED_CONSUMER_EXACT_SUPPORTED'&#10; +  where 'LEARNED_CONSUMER_EXACT_SUPPORTED' = LearnedWorldConsumerResult(contract_id='R91_LEARNED_WORLD_POSSIBILITY_CONSUMER@1.0.0', state='LEARNED_CONSUMER_EXACT_S...receipt_refs=(), discovery_frontier_ref=None, recursive_handoff_refs=(), recursive_lineage_refs=(), z_unresolved=False).state">case = {'bundle': M1AdjudicationInputBundle(requested_claim_family_id='SYNTHETIC_LEARNED_RELATION', requested_claim_rule_id='...cb755cbfda8530a3e99eeaab50bd53492fb0323ff1a08e9d2d782141c149c5', typed_state='QUERY_AUTHORIZED_RESOLVABLE'), ...}, ...}
+
+    def test_non_supported_analytical_state_cannot_be_false_exact(case):
+        mutated = replace(
+            case["composition"],
+            analytical_state="ZERO_SUPPORT",
+            producer_fact_state="SUPPORTED",
+            raw_denominator_support=0,
+        )
+        result = _consume(case, mutated)
+        _record(
+            "false_exact_state",
+            {
+                "analytical_state": mutated.analytical_state,
+                "producer_fact_state": mutated.producer_fact_state,
+                "observed_state": result.state,
+                "observed_result_state": result.result_state,
+                "observed_denominator": result.denominator,
+            },
+        )
+&gt;       assert result.state != "LEARNED_CONSUMER_EXACT_SUPPORTED"
+E       AssertionError: assert 'LEARNED_CONSUMER_EXACT_SUPPORTED' != 'LEARNED_CONSUMER_EXACT_SUPPORTED'
+E        +  where 'LEARNED_CONSUMER_EXACT_SUPPORTED' = LearnedWorldConsumerResult(contract_id='R91_LEARNED_WORLD_POSSIBILITY_CONSUMER@1.0.0', state='LEARNED_CONSUMER_EXACT_S...receipt_refs=(), discovery_frontier_ref=None, recursive_handoff_refs=(), recursive_lineage_refs=(), z_unresolved=False).state
+
+WORKER_RETURNS/PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/revisions/r2/probes/test_r05v_r2_graph_gap.py:122: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1.revisions.r2.probes.test_r05v_r2_graph_gap" name="test_duplicate_component_count_or_order_must_refuse" time="0.009"><failure message="AssertionError: assert 'LEARNED_CONSUMER_EXACT_SUPPORTED' != 'LEARNED_CONSUMER_EXACT_SUPPORTED'&#10; +  where 'LEARNED_CONSUMER_EXACT_SUPPORTED' = LearnedWorldConsumerResult(contract_id='R91_LEARNED_WORLD_POSSIBILITY_CONSUMER@1.0.0', state='LEARNED_CONSUMER_EXACT_S...receipt_refs=(), discovery_frontier_ref=None, recursive_handoff_refs=(), recursive_lineage_refs=(), z_unresolved=False).state">case = {'bundle': M1AdjudicationInputBundle(requested_claim_family_id='SYNTHETIC_LEARNED_RELATION', requested_claim_rule_id='...cb755cbfda8530a3e99eeaab50bd53492fb0323ff1a08e9d2d782141c149c5', typed_state='QUERY_AUTHORIZED_RESOLVABLE'), ...}, ...}
+
+    def test_duplicate_component_count_or_order_must_refuse(case):
+        graph = NativeProductGraph((case["composition"], case["composition"]))
+        result = _consume(case, case["composition"], graph)
+        values = result.consumer_values_read or {}
+        _record(
+            "duplicate_component",
+            {
+                "state": result.state,
+                "joint_component_count": values.get("joint_component_count"),
+                "component_hashes": values.get("component_consumer_result_hashes"),
+            },
+        )
+&gt;       assert result.state != "LEARNED_CONSUMER_EXACT_SUPPORTED"
+E       AssertionError: assert 'LEARNED_CONSUMER_EXACT_SUPPORTED' != 'LEARNED_CONSUMER_EXACT_SUPPORTED'
+E        +  where 'LEARNED_CONSUMER_EXACT_SUPPORTED' = LearnedWorldConsumerResult(contract_id='R91_LEARNED_WORLD_POSSIBILITY_CONSUMER@1.0.0', state='LEARNED_CONSUMER_EXACT_S...receipt_refs=(), discovery_frontier_ref=None, recursive_handoff_refs=(), recursive_lineage_refs=(), z_unresolved=False).state
+
+WORKER_RETURNS/PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/revisions/r2/probes/test_r05v_r2_graph_gap.py:138: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1.revisions.r2.probes.test_r05v_r2_graph_gap" name="test_fake_e41_extension_route_cannot_be_echoed" time="0.010"><failure message="AssertionError: assert 'LEARNED_CONSUMER_EXACT_SUPPORTED' != 'LEARNED_CONSUMER_EXACT_SUPPORTED'&#10; +  where 'LEARNED_CONSUMER_EXACT_SUPPORTED' = LearnedWorldConsumerResult(contract_id='R91_LEARNED_WORLD_POSSIBILITY_CONSUMER@1.0.0', state='LEARNED_CONSUMER_EXACT_S...receipt_refs=(), discovery_frontier_ref=None, recursive_handoff_refs=(), recursive_lineage_refs=(), z_unresolved=False).state">case = {'bundle': M1AdjudicationInputBundle(requested_claim_family_id='SYNTHETIC_LEARNED_RELATION', requested_claim_rule_id='...cb755cbfda8530a3e99eeaab50bd53492fb0323ff1a08e9d2d782141c149c5', typed_state='QUERY_AUTHORIZED_RESOLVABLE'), ...}, ...}
+
+    def test_fake_e41_extension_route_cannot_be_echoed(case):
+        class FakeExtension:
+            composition_result = None
+            producer_route = "FAKE_ROUTE"
+    
+        fake = FakeExtension()
+        fake.composition_result = case["composition"]
+        graph = NativeProductGraph(
+            compositions=(case["composition"],),
+            extension_result=fake,
+        )
+        result = _consume(case, case["composition"], graph)
+        values = result.consumer_values_read or {}
+        _record(
+            "fake_e41_route",
+            {"state": result.state, "extension_route": values.get("extension_route")},
+        )
+&gt;       assert result.state != "LEARNED_CONSUMER_EXACT_SUPPORTED"
+E       AssertionError: assert 'LEARNED_CONSUMER_EXACT_SUPPORTED' != 'LEARNED_CONSUMER_EXACT_SUPPORTED'
+E        +  where 'LEARNED_CONSUMER_EXACT_SUPPORTED' = LearnedWorldConsumerResult(contract_id='R91_LEARNED_WORLD_POSSIBILITY_CONSUMER@1.0.0', state='LEARNED_CONSUMER_EXACT_S...receipt_refs=(), discovery_frontier_ref=None, recursive_handoff_refs=(), recursive_lineage_refs=(), z_unresolved=False).state
+
+WORKER_RETURNS/PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/revisions/r2/probes/test_r05v_r2_graph_gap.py:158: AssertionError</failure></testcase></testsuite></testsuites>

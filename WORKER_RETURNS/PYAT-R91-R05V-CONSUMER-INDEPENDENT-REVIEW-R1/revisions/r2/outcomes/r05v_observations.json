@@ -1,0 +1,351 @@
+{
+  "probes": [
+    {
+      "consumer_hash": "8e54f8b0f664051a089590379ba53a1716bbd8f9fa8d8813c29ea46cba1d52cc",
+      "consumer_state": "EXACT_SUPPORTED",
+      "probe": "single_m01_positive",
+      "product_graph_parameter": true,
+      "signature": [
+        "learned",
+        "composition",
+        "consumer_query",
+        "model_rule",
+        "producer_query_ref",
+        "producer_predicate_ref",
+        "require_current_selection",
+        "product_graph"
+      ],
+      "single_composition_parameter": true,
+      "state": "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    },
+    {
+      "observed": [
+        {
+          "consumer_values_read": {
+            "b5_selection_receipt_ref": null,
+            "cells": [
+              {
+                "cell": "0",
+                "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+                "raw_numerator_support": 0,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    0,
+                    1
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              },
+              {
+                "cell": "1",
+                "cell_state": "OBSERVED_POSITIVE",
+                "raw_numerator_support": 1,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    1,
+                    1
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              }
+            ],
+            "component_count": 1,
+            "component_result_hashes": [
+              "786de22ddc3bad5709c6a4042df17d1214ed371e22457663526eadff26bcd99d"
+            ],
+            "consumer_query_ref": {
+              "content_hash": "7501928df8d4069934826faf3e69bd60a7bccb3da561141fa892867ca7d08d78",
+              "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+              "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:7501928df8d4069934826faf3e69bd60a7bccb3da561141fa892867ca7d08d78"
+            },
+            "denominator": 0,
+            "discovery_frontier_ref": null,
+            "discovery_receipt_refs": [],
+            "eligibility_state": "ELIGIBLE",
+            "execution_state": "COMPLETED",
+            "joint_component_count": 1,
+            "joint_order_semantics": "SEMANTIC_ORDERED",
+            "learned_receipt_ref": {
+              "content_hash": "e0aa587f30b8e4d5895fdc06959030f6f9bd8ba7ca3d014e06bba12fd56c4404",
+              "kind": "LearnedWorldCompositionReceipt@1.0.0",
+              "object_id": "urn:rawlsing:pre553:i4:composition-receipt:sha256:e0aa587f30b8e4d5895fdc06959030f6f9bd8ba7ca3d014e06bba12fd56c4404"
+            },
+            "m1_disposition_ref": {
+              "content_hash": "ef180e112d5c46c9e422c255449ed3d8a4629543c9a8dfa3f9e03e4b3014444c",
+              "kind": "LearnedEmpiricalDisposition@1.0.0",
+              "object_id": "urn:rawlsing:pre553:m1:LearnedEmpiricalDisposition:sha256:ef180e112d5c46c9e422c255449ed3d8a4629543c9a8dfa3f9e03e4b3014444c"
+            },
+            "m2_release_ref": {
+              "content_hash": "20e68b801f64066103aeeaac05307eceda8489498a293030de7e4ba6fb0930a4",
+              "kind": "LearnedProductReleaseCore",
+              "object_id": "urn:rawlsing:pre553:m2:release:sha256:20e68b801f64066103aeeaac05307eceda8489498a293030de7e4ba6fb0930a4"
+            },
+            "producer_predicate_ref": {
+              "content_hash": "748851e829abeb65f29cbf024f5478fb1761e4f90c8e562b1e3ef9dc8320081f",
+              "kind": "EmpiricalPredicate@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:748851e829abeb65f29cbf024f5478fb1761e4f90c8e562b1e3ef9dc8320081f"
+            },
+            "producer_query_ref": {
+              "content_hash": "abcb755cbfda8530a3e99eeaab50bd53492fb0323ff1a08e9d2d782141c149c5",
+              "kind": "EmpiricalQuerySpec@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:abcb755cbfda8530a3e99eeaab50bd53492fb0323ff1a08e9d2d782141c149c5"
+            },
+            "producer_route": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+            "producer_routes": [
+              "DIRECT_I03_TO_POSITIONED_SUBJECT"
+            ],
+            "product_contract_ref": {
+              "content_hash": "885e5102aa49dd06e1e84fa4a7569e8727b5c3e8983600d45e70a058445c9b2a",
+              "kind": "LearnedWorldProductContractBinding@1.0.0",
+              "object_id": "urn:rawlsing:pre553:i4:product-contract:sha256:885e5102aa49dd06e1e84fa4a7569e8727b5c3e8983600d45e70a058445c9b2a"
+            },
+            "recursive_handoff_refs": [],
+            "recursive_lineage_refs": [],
+            "result_state": "ZERO_SUPPORT",
+            "schema": "R91_LEARNED_WORLD_CONSUMER_VALUES@2",
+            "z_unresolved": false
+          },
+          "denominator": 0,
+          "input_state": "ZERO_SUPPORT",
+          "reason_code": "TYPED_ZERO_SUPPORT_PRODUCT",
+          "state": "LEARNED_CONSUMER_ZERO_SUPPORT"
+        },
+        {
+          "consumer_values_read": {
+            "b5_selection_receipt_ref": null,
+            "cells": [
+              {
+                "cell": "0",
+                "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+                "raw_numerator_support": 0,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    0,
+                    1
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              },
+              {
+                "cell": "1",
+                "cell_state": "OBSERVED_POSITIVE",
+                "raw_numerator_support": 1,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    1,
+                    1
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              }
+            ],
+            "component_count": 1,
+            "component_result_hashes": [
+              "786de22ddc3bad5709c6a4042df17d1214ed371e22457663526eadff26bcd99d"
+            ],
+            "consumer_query_ref": {
+              "content_hash": "7501928df8d4069934826faf3e69bd60a7bccb3da561141fa892867ca7d08d78",
+              "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+              "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:7501928df8d4069934826faf3e69bd60a7bccb3da561141fa892867ca7d08d78"
+            },
+            "denominator": 0,
+            "discovery_frontier_ref": null,
+            "discovery_receipt_refs": [],
+            "eligibility_state": "ELIGIBLE",
+            "execution_state": "COMPLETED",
+            "joint_component_count": 1,
+            "joint_order_semantics": "SEMANTIC_ORDERED",
+            "learned_receipt_ref": {
+              "content_hash": "e0aa587f30b8e4d5895fdc06959030f6f9bd8ba7ca3d014e06bba12fd56c4404",
+              "kind": "LearnedWorldCompositionReceipt@1.0.0",
+              "object_id": "urn:rawlsing:pre553:i4:composition-receipt:sha256:e0aa587f30b8e4d5895fdc06959030f6f9bd8ba7ca3d014e06bba12fd56c4404"
+            },
+            "m1_disposition_ref": {
+              "content_hash": "ef180e112d5c46c9e422c255449ed3d8a4629543c9a8dfa3f9e03e4b3014444c",
+              "kind": "LearnedEmpiricalDisposition@1.0.0",
+              "object_id": "urn:rawlsing:pre553:m1:LearnedEmpiricalDisposition:sha256:ef180e112d5c46c9e422c255449ed3d8a4629543c9a8dfa3f9e03e4b3014444c"
+            },
+            "m2_release_ref": {
+              "content_hash": "20e68b801f64066103aeeaac05307eceda8489498a293030de7e4ba6fb0930a4",
+              "kind": "LearnedProductReleaseCore",
+              "object_id": "urn:rawlsing:pre553:m2:release:sha256:20e68b801f64066103aeeaac05307eceda8489498a293030de7e4ba6fb0930a4"
+            },
+            "producer_predicate_ref": {
+              "content_hash": "748851e829abeb65f29cbf024f5478fb1761e4f90c8e562b1e3ef9dc8320081f",
+              "kind": "EmpiricalPredicate@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:748851e829abeb65f29cbf024f5478fb1761e4f90c8e562b1e3ef9dc8320081f"
+            },
+            "producer_query_ref": {
+              "content_hash": "abcb755cbfda8530a3e99eeaab50bd53492fb0323ff1a08e9d2d782141c149c5",
+              "kind": "EmpiricalQuerySpec@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:abcb755cbfda8530a3e99eeaab50bd53492fb0323ff1a08e9d2d782141c149c5"
+            },
+            "producer_route": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+            "producer_routes": [
+              "DIRECT_I03_TO_POSITIONED_SUBJECT"
+            ],
+            "product_contract_ref": {
+              "content_hash": "885e5102aa49dd06e1e84fa4a7569e8727b5c3e8983600d45e70a058445c9b2a",
+              "kind": "LearnedWorldProductContractBinding@1.0.0",
+              "object_id": "urn:rawlsing:pre553:i4:product-contract:sha256:885e5102aa49dd06e1e84fa4a7569e8727b5c3e8983600d45e70a058445c9b2a"
+            },
+            "recursive_handoff_refs": [],
+            "recursive_lineage_refs": [],
+            "result_state": "VALID_EMPTY",
+            "schema": "R91_LEARNED_WORLD_CONSUMER_VALUES@2",
+            "z_unresolved": false
+          },
+          "denominator": 0,
+          "input_state": "VALID_EMPTY",
+          "reason_code": "TYPED_VALID_EMPTY_PRODUCT",
+          "state": "LEARNED_CONSUMER_VALID_EMPTY"
+        },
+        {
+          "consumer_values_read": {
+            "b5_selection_receipt_ref": null,
+            "cells": [
+              {
+                "cell": "0",
+                "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+                "raw_numerator_support": 0,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    0,
+                    1
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              },
+              {
+                "cell": "1",
+                "cell_state": "OBSERVED_POSITIVE",
+                "raw_numerator_support": 1,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    1,
+                    1
+                  ]
+                },
+                "weighted_numerator_support_if_authorized": null,
+                "weighted_probability_exact_fraction_if_authorized": null
+              }
+            ],
+            "component_count": 1,
+            "component_result_hashes": [
+              "786de22ddc3bad5709c6a4042df17d1214ed371e22457663526eadff26bcd99d"
+            ],
+            "consumer_query_ref": {
+              "content_hash": "7501928df8d4069934826faf3e69bd60a7bccb3da561141fa892867ca7d08d78",
+              "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+              "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:7501928df8d4069934826faf3e69bd60a7bccb3da561141fa892867ca7d08d78"
+            },
+            "denominator": 16,
+            "discovery_frontier_ref": null,
+            "discovery_receipt_refs": [],
+            "eligibility_state": "ELIGIBLE",
+            "execution_state": "COMPLETED",
+            "joint_component_count": 1,
+            "joint_order_semantics": "SEMANTIC_ORDERED",
+            "learned_receipt_ref": {
+              "content_hash": "e0aa587f30b8e4d5895fdc06959030f6f9bd8ba7ca3d014e06bba12fd56c4404",
+              "kind": "LearnedWorldCompositionReceipt@1.0.0",
+              "object_id": "urn:rawlsing:pre553:i4:composition-receipt:sha256:e0aa587f30b8e4d5895fdc06959030f6f9bd8ba7ca3d014e06bba12fd56c4404"
+            },
+            "m1_disposition_ref": {
+              "content_hash": "ef180e112d5c46c9e422c255449ed3d8a4629543c9a8dfa3f9e03e4b3014444c",
+              "kind": "LearnedEmpiricalDisposition@1.0.0",
+              "object_id": "urn:rawlsing:pre553:m1:LearnedEmpiricalDisposition:sha256:ef180e112d5c46c9e422c255449ed3d8a4629543c9a8dfa3f9e03e4b3014444c"
+            },
+            "m2_release_ref": {
+              "content_hash": "20e68b801f64066103aeeaac05307eceda8489498a293030de7e4ba6fb0930a4",
+              "kind": "LearnedProductReleaseCore",
+              "object_id": "urn:rawlsing:pre553:m2:release:sha256:20e68b801f64066103aeeaac05307eceda8489498a293030de7e4ba6fb0930a4"
+            },
+            "producer_predicate_ref": {
+              "content_hash": "748851e829abeb65f29cbf024f5478fb1761e4f90c8e562b1e3ef9dc8320081f",
+              "kind": "EmpiricalPredicate@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:748851e829abeb65f29cbf024f5478fb1761e4f90c8e562b1e3ef9dc8320081f"
+            },
+            "producer_query_ref": {
+              "content_hash": "abcb755cbfda8530a3e99eeaab50bd53492fb0323ff1a08e9d2d782141c149c5",
+              "kind": "EmpiricalQuerySpec@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:abcb755cbfda8530a3e99eeaab50bd53492fb0323ff1a08e9d2d782141c149c5"
+            },
+            "producer_route": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+            "producer_routes": [
+              "DIRECT_I03_TO_POSITIONED_SUBJECT"
+            ],
+            "product_contract_ref": {
+              "content_hash": "885e5102aa49dd06e1e84fa4a7569e8727b5c3e8983600d45e70a058445c9b2a",
+              "kind": "LearnedWorldProductContractBinding@1.0.0",
+              "object_id": "urn:rawlsing:pre553:i4:product-contract:sha256:885e5102aa49dd06e1e84fa4a7569e8727b5c3e8983600d45e70a058445c9b2a"
+            },
+            "recursive_handoff_refs": [],
+            "recursive_lineage_refs": [],
+            "result_state": "UNKNOWN",
+            "schema": "R91_LEARNED_WORLD_CONSUMER_VALUES@2",
+            "z_unresolved": true
+          },
+          "denominator": 16,
+          "input_state": "UNRESOLVED",
+          "reason_code": "TYPED_UNRESOLVED_PRODUCT",
+          "state": "LEARNED_CONSUMER_UNKNOWN"
+        }
+      ],
+      "probe": "status_axes"
+    },
+    {
+      "consumer_state": "EXACT_SUPPORTED",
+      "has_discovery": true,
+      "has_joint": true,
+      "has_producer_route": true,
+      "has_recursive": true,
+      "probe": "joint_recursive_binding",
+      "state": "LEARNED_CONSUMER_EXACT_SUPPORTED",
+      "values_keys": [
+        "b5_selection_receipt_ref",
+        "cells",
+        "component_consumer_result_hashes",
+        "component_count",
+        "component_result_hashes",
+        "consumer_query_ref",
+        "consumer_result_hash",
+        "consumer_result_state",
+        "consumer_values_read",
+        "denominator",
+        "discovery_frontier_ref",
+        "discovery_receipt_refs",
+        "eligibility_state",
+        "evidence_ref",
+        "execution_state",
+        "joint_component_count",
+        "joint_order_semantics",
+        "learned_receipt_ref",
+        "m1_disposition_ref",
+        "m2_release_ref",
+        "producer_predicate_ref",
+        "producer_query_ref",
+        "producer_route",
+        "producer_routes",
+        "product_contract_ref",
+        "recursive_handoff_refs",
+        "recursive_lineage_refs",
+        "result_state",
+        "schema",
+        "z_unresolved"
+      ]
+    },
+    {
+      "consumer_accepts_extension_result": false,
+      "extension_consumer_state": "EXACT_SUPPORTED",
+      "extension_route": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "probe": "e41_separate_route"
+    }
+  ],
+  "schema": "R91_R05V_INDEPENDENT_OBSERVATIONS@1"
+}

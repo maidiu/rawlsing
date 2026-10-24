@@ -1,0 +1,52 @@
+{
+  "probes": [
+    {
+      "consumer_hash": "8e54f8b0f664051a089590379ba53a1716bbd8f9fa8d8813c29ea46cba1d52cc",
+      "probe": "single_component_positive",
+      "state": "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    },
+    {
+      "actual_component_joint_count": 1,
+      "discovery_receipt_refs": [
+        {
+          "content_hash": "225027b12db6f29fbe579ac84a2600454f70649fe78fc7bf6700889a713d8d48",
+          "kind": "R91_FORGED_GRAPH",
+          "object_id": "urn:test:r05v:forged"
+        }
+      ],
+      "joint_component_count": 2,
+      "probe": "copied_graph_labels",
+      "recursive_handoff_refs": [
+        {
+          "content_hash": "225027b12db6f29fbe579ac84a2600454f70649fe78fc7bf6700889a713d8d48",
+          "kind": "R91_FORGED_GRAPH",
+          "object_id": "urn:test:r05v:forged"
+        }
+      ],
+      "state": "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    },
+    {
+      "analytical_state": "ZERO_SUPPORT",
+      "observed_denominator": 0,
+      "observed_result_state": "SUPPORTED",
+      "observed_state": "LEARNED_CONSUMER_EXACT_SUPPORTED",
+      "probe": "false_exact_state",
+      "producer_fact_state": "SUPPORTED"
+    },
+    {
+      "component_hashes": [
+        "8e54f8b0f664051a089590379ba53a1716bbd8f9fa8d8813c29ea46cba1d52cc",
+        "8e54f8b0f664051a089590379ba53a1716bbd8f9fa8d8813c29ea46cba1d52cc"
+      ],
+      "joint_component_count": 2,
+      "probe": "duplicate_component",
+      "state": "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    },
+    {
+      "extension_route": "FAKE_ROUTE",
+      "probe": "fake_e41_route",
+      "state": "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    }
+  ],
+  "schema": "R91_R05V_R2_INDEPENDENT_OBSERVATIONS@1"
+}
