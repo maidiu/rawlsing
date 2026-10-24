@@ -101,6 +101,7 @@ LOCAL_FILES = [
     "tests/conftest.py",
     "tests/test_s37_integration.py",
     "tests/test_s37_boundaries.py",
+    "tests/test_s37_reader_tamper.py",
 ]
 LANGUAGE_FILES = [
     "language_mediation/session.py",

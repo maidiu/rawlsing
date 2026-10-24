@@ -27,17 +27,76 @@ class S37ReadRefusal(ValueError):
         self.code = code
 
 
+_OUTCOME_STATUS_ROUTE = {
+    "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION": (
+        "RESPONSE_COMMITTED",
+        "S35_OBSERVED_PRESENT_ORIENTATION",
+    ),
+    "OBSERVED_CURRENT_REFUSAL": (
+        "RESPONSE_COMMITTED",
+        "S35_OBSERVED_PRESENT_ORIENTATION",
+    ),
+    "RECEIVABLE_NO_OBSERVED_UPTAKE": (
+        "RESPONSE_EFFECTS_VALID_EMPTY",
+        "S35_VALID_EMPTY_NO_OBSERVED_UPTAKE",
+    ),
+    "UNKNOWN_RECEIVABILITY": (
+        "RESPONSE_EFFECTS_VALID_EMPTY",
+        "S35_VALID_EMPTY_UNKNOWN_RECEIVABILITY",
+    ),
+    "AMBIGUOUS_CONTRADICTORY": (
+        "RESPONSE_EFFECTS_VALID_EMPTY",
+        "S35_VALID_EMPTY_CONTRADICTORY",
+    ),
+}
+
+
 def _loads(row, code: str, record_hash: str) -> dict:
+    """Load one C9 row and bind its serialized body to the exact lookup key.
+
+    Legitimate C9 rows store the body without a top-level ``hash``; the row key
+    is that sealed hash. A tampered body may be re-sealed with its own new hash;
+    that hash must still equal the unchanged row key or the row is refused.
+    """
     if row is None:
-        raise S37ReadRefusal(code)
+        raise S37ReadRefusal(code + "_ROW_MISSING")
     try:
         value = json.loads(row[0])
     except (TypeError, ValueError) as exc:
         raise S37ReadRefusal(code + "_UNREADABLE", str(exc)) from exc
     if not isinstance(value, dict):
         raise S37ReadRefusal(code + "_NOT_OBJECT")
-    value.setdefault("hash", record_hash)
+    if "hash" in value:
+        if value.get("hash") != record_hash:
+            raise S37ReadRefusal(code + "_ROW_KEY_MISMATCH")
+    else:
+        value["hash"] = record_hash
+    if not valid(value):
+        raise S37ReadRefusal(code + "_UNSEALED")
     return value
+
+
+def _validate_s35_consistency(
+    response: Mapping[str, Any],
+    s35: Mapping[str, Any],
+    s36_binding: Mapping[str, Any],
+) -> None:
+    """Require the actual C9 response semantics to match the sealed S35 outcome."""
+    outcome = s35.get("outcome")
+    expected = _OUTCOME_STATUS_ROUTE.get(outcome)
+    if expected is None:
+        raise S37ReadRefusal("S36_OUTCOME_UNKNOWN")
+    status, route = expected
+    if s35.get("hash") != s36_binding.get("response_receipt_hash"):
+        raise S37ReadRefusal("S36_RECEIPT_HASH_MISMATCH")
+    if s35.get("candidate_route") != route:
+        raise S37ReadRefusal("S36_ROUTE_OUTCOME_MISMATCH")
+    if response.get("status") != status:
+        raise S37ReadRefusal("C9_RESPONSE_STATUS_OUTCOME_MISMATCH")
+    if response.get("candidate_route") != route:
+        raise S37ReadRefusal("C9_RESPONSE_ROUTE_OUTCOME_MISMATCH")
+    if response.get("reason", outcome) != outcome:
+        raise S37ReadRefusal("C9_RESPONSE_REASON_OUTCOME_MISMATCH")
 
 
 def _read_rows(c9_path: Path, response_ref: str, receipt_ref: str) -> tuple[dict, dict, int]:
@@ -62,8 +121,8 @@ def _read_rows(c9_path: Path, response_ref: str, receipt_ref: str) -> tuple[dict
     finally:
         conn.close()
     return (
-        _loads(response_row, "C9_RESPONSE_ROW_MISSING", response_ref),
-        _loads(receipt_row, "C9_RECEIPT_ROW_MISSING", receipt_ref),
+        _loads(response_row, "C9_RESPONSE", response_ref),
+        _loads(receipt_row, "C9_RECEIPT", receipt_ref),
         int(target_rows),
     )
 
@@ -86,10 +145,6 @@ def read_committed_s36(
         raise S37ReadRefusal("C9_BINDING_INCOMPLETE")
     response, receipt, target_rows = _read_rows(c9_path, response_ref, receipt_ref)
 
-    if not valid(response):
-        raise S37ReadRefusal("C9_RESPONSE_UNSEALED")
-    if not valid(receipt):
-        raise S37ReadRefusal("C9_RECEIPT_UNSEALED")
     if response.get("event_ref") != s36_binding.get("e1_event_hash"):
         raise S37ReadRefusal("C9_RESPONSE_EVENT_MISMATCH")
     if response.get("receipt_hash") != s36_binding.get("response_receipt_hash"):
@@ -129,14 +184,7 @@ def read_committed_s36(
         raise S37ReadRefusal("S36_RESPONSE_HASH_MISMATCH")
     if s35.get("response_kind") != s36_binding.get("response_kind"):
         raise S37ReadRefusal("S36_RESPONSE_KIND_MISMATCH")
-    if s35.get("outcome") not in {
-        "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
-        "OBSERVED_CURRENT_REFUSAL",
-        "RECEIVABLE_NO_OBSERVED_UPTAKE",
-        "UNKNOWN_RECEIVABILITY",
-        "AMBIGUOUS_CONTRADICTORY",
-    }:
-        raise S37ReadRefusal("S36_OUTCOME_UNKNOWN")
+    _validate_s35_consistency(response, s35, s36_binding)
 
     episode = product.s36_episode_body() or {}
     episode_s36 = episode.get("s36") or {}

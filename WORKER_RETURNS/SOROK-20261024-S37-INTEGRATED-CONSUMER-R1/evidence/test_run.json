@@ -139,15 +139,35 @@
       "classname": "tests.test_s37_integration",
       "name": "test_no_duplicate_actor_roots_or_replacement_ledger",
       "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_reader_tamper",
+      "name": "test_resealed_response_status_tamper_is_refused_cold",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_reader_tamper",
+      "name": "test_resealed_receipt_body_tamper_is_refused_cold",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_reader_tamper",
+      "name": "test_legitimate_c9_serialized_format_still_reads",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s37_reader_tamper",
+      "name": "test_status_and_route_must_agree_with_sealed_s35_outcome",
+      "status": "PASS"
     }
   ],
   "command": "/usr/local/bin/python3 -B -m pytest -q -p no:cacheprovider --junitxml=/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/junit/s37_full.xml tests",
   "counts": {
     "ERROR": 0,
-    "PASS": 28,
+    "PASS": 32,
     "RED": 0,
     "SKIP": 0,
-    "tests": 28
+    "tests": 32
   },
   "exit": 0,
   "junit": "junit/s37_full.xml",

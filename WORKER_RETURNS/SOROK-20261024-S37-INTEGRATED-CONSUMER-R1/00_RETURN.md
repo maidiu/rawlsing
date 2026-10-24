@@ -1,6 +1,6 @@
 # SOROK S37 — one actual integrated targetless consumer
 
-**RESULT:** `S37_SINGLE_TEST_ONLY_CHAIN_SHARE_AND_REFUSE__M35_C8_E1_TO_S36_TARGETLESS_TO_LANGUAGE__SAME_SESSION_READER__28_OF_28_FOCUSED_TESTS_PASS__ENTRYPOINT_0__NO_TARGET__NATIVE_HOLD`.
+**RESULT:** `S37_SINGLE_TEST_ONLY_CHAIN_SHARE_AND_REFUSE__M35_C8_E1_TO_S36_TARGETLESS_TO_LANGUAGE__SAME_SESSION_READER__32_OF_32_FOCUSED_TESTS_PASS__REVIEWER_C9_TAMPER_ORACLE_PASS__ENTRYPOINT_0__NO_TARGET__NATIVE_HOLD`.
 
 This is one actual TEST_ONLY integrated chain, not three separate fixture demonstrations. Both lawful `SHARE_TOOL` and `REFUSE_TOOL` histories use the same `S37IntegratedSession`, the same persistent C12/world session class and the same `read_s36` public reader. The reader opens the actual committed C9 SQLite rows; it does not return the C12 episode or a copied sidecar summary as its primary result.
 
@@ -10,6 +10,23 @@ This is one actual TEST_ONLY integrated chain, not three separate fixture demons
 - Working branch: `codex/sorok-s37-integrated-source-response-language`, based on accepted S36 `8da78d8031a06a4bd7e1297fd713e573299c0860`.
 - Write scope only: `WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/**`.
 - No edit to accepted S36, M35, language mediation, original JOIN-E, controller or PRE-MAIN.
+
+## Independent review repair — REVISE e2063e3e
+
+Reviewer `ea16bbc418a0c283a164436164576ff6d4155d9f` reported `REVISE` at candidate `e2063e3e2305b307d47a99fa9834d898f1ae9094`: the actual C9 response body status could be re-sealed from `RESPONSE_COMMITTED` to `RESPONSE_EFFECTS_VALID_EMPTY` while the DB row key stayed unchanged, and the cold reader/verify still accepted it.
+
+Repair is confined to `s37/reader.py`:
+
+- the common row loader now requires any serialized top-level `hash` to equal the exact DB lookup key; a body without a top-level `hash` is accepted only by binding the row key as the sealed record hash (the legitimate C9 storage format);
+- the same loader is used for both the response and receipt rows, so resealed receipt-row identity mismatches are refused too;
+- before success, the actual C9 response `status` and `candidate_route` must agree with the sealed S35 `outcome`/`candidate_route`, and the sealed S35 receipt hash must equal the session response receipt binding.
+
+Focused regressions in `tests/test_s37_reader_tamper.py` cover the demonstrated resealed response-status tamper, a resealed receipt-body tamper, the legitimate no-top-level-hash serialization, and direct status/route semantic mismatches. The exact reviewer oracle was run unchanged:
+
+```text
+PYTHONPATH=<S37 return> M35_JOIN_E_RETURN=<warm JOIN-E> python3 /Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/SOROK_REVIEW/S37/oracles/s37_c9_tamper.py
+# exit 0; status PASS; opened false; code S37_VERIFY_FAILED
+```
 
 ## Exact chain actually executed
 
@@ -70,7 +87,7 @@ Focused boundary evidence:
 ```text
 PYTHONPATH=<S37 return> M35_JOIN_E_RETURN=<warm JOIN-E> \
 python3 -m pytest -q -p no:cacheprovider <S37 return>/tests
-# 28 passed
+# 32 passed
 
 PYTHONPATH=<S37 return> M35_JOIN_E_RETURN=<warm JOIN-E> \
 python3 <S37 return>/run_s37.py
@@ -78,13 +95,13 @@ python3 <S37 return>/run_s37.py
 
 PYTHONPATH=<S37 return> M35_JOIN_E_RETURN=<warm JOIN-E> \
 python3 <S37 return>/run_s37_evidence.py
-# tests 28 PASS, entrypoint_exit 0, both_no_target true,
+# tests 32 PASS, entrypoint_exit 0, both_no_target true,
 # access_fault_restore true, wrong_witnesses_all_refused true,
 # m35_preimage_all_rejected true, language_guard_rejected true,
 # language_loss_fallback true, source_roots true
 ```
 
-Evidence files: `evidence/entrypoint.json`, `evidence/chain.json`, `evidence/boundaries.json`, `evidence/test_run.json`, `evidence/source_manifest.json`; JUnit `junit/s37_full.xml`; logs `logs/`.
+Evidence files: `evidence/entrypoint.json`, `evidence/chain.json`, `evidence/boundaries.json`, `evidence/test_run.json`, `evidence/source_manifest.json`, `evidence/review_oracle.json`; JUnit `junit/s37_full.xml`; logs `logs/`.
 
 ## Source roots/cuts and exactness
 
@@ -109,6 +126,7 @@ Wholly invented sourcefree TEST_ONLY. This is a recorded observed response and i
 
 ## Files
 
+- `s37/reader.py` — actual C9 row-key and sealed S35 semantic consistency reader (review repair).
 - `run_s37.py` — runnable minimal integrated entrypoint.
 - `run_s37_evidence.py` — focused evidence generator.
 - `s37/bootstrap.py` — exact read-only roots and S36 candidate selection.
@@ -118,4 +136,4 @@ Wholly invented sourcefree TEST_ONLY. This is a recorded observed response and i
 - `s37/session.py` — one targetless language session class for both histories.
 - `s37/harness.py`, `tests/`, `vendor/m35/`, `evidence/`, `junit/`, `logs/`.
 
-**Terminal:** `S37_ONE_ACTUAL_INTEGRATED_TARGETLESS_CONSUMER__SHARE_AND_REFUSE_SAME_SESSION_READER__28_OF_28_FOCUSED_TESTS__ENTRYPOINT_0__NO_TARGET__NATIVE_HOLD`. Final commit and remote branch SHA are verified after push and reported in the final handback.
+**Terminal:** `S37_ONE_ACTUAL_INTEGRATED_TARGETLESS_CONSUMER__SHARE_AND_REFUSE_SAME_SESSION_READER__32_OF_32_FOCUSED_TESTS__REVIEWER_C9_TAMPER_ORACLE_PASS__ENTRYPOINT_0__NO_TARGET__NATIVE_HOLD`. Final commit and remote branch SHA are verified after push and reported in the final handback.
