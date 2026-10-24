@@ -360,6 +360,7 @@ class GovernedFrontierCompilation:
     expected_candidate_ids: tuple[str, ...]
     frontier_eligible_operation_ids: tuple[str, ...] = ()
     frontier_disposition_counts: Mapping[str, int] | None = None
+    operation_claim_classes: Mapping[str, str] | None = None
 
     def material(self) -> dict[str, Any]:
         return {
@@ -390,6 +391,9 @@ class GovernedFrontierCompilation:
             ),
             "frontier_disposition_counts": dict(
                 self.frontier_disposition_counts or {}
+            ),
+            "operation_claim_classes": dict(
+                self.operation_claim_classes or {}
             ),
         }
 
@@ -555,6 +559,10 @@ def compile_governed_frontier(
             operation.op_id for operation in frontier.eligible()
         )),
         frontier_disposition_counts=dict(frontier.disposition_counts),
+        operation_claim_classes={
+            operation.op_id: operation.claim_class
+            for operation in frontier.operations
+        },
     )
 
 
@@ -655,12 +663,18 @@ def execute_governed_frontier(
         )
         if operation.status == SUPPORTED and missing:
             missing_operations.append(operation.operation_id)
+        if operation.status == NATIVE_UNSUPPORTED:
+            result_state = "UNSUPPORTED"
+        elif operation.status != SUPPORTED:
+            result_state = "NOT_ELIGIBLE"
+        else:
+            result_state = _result_state_for(typed_states)
         operation_rows.append({
             "operation_id": operation.operation_id,
             "lowering_status": operation.status,
             "reason": operation.reason,
             "execution_state": execution_state,
-            "result_state": _result_state_for(typed_states),
+            "result_state": result_state,
             "expected_candidate_ids": list(sorted(expected)),
             "received_candidate_ids": [
                 _receipt_candidate_id(receipt) for receipt in receipts
@@ -673,6 +687,11 @@ def execute_governed_frontier(
             "receipt_refs": [receipt.ref.as_dict() for receipt in receipts],
             "fact_refs": [ref.as_dict() for ref in fact_refs],
             "claim_class": (
+                (compilation.operation_claim_classes or {}).get(
+                    operation.operation_id
+                )
+            ),
+            "native_family": (
                 source_operation.rule["family"] if source_operation
                 and source_operation.rule else None
             ),
@@ -688,7 +707,9 @@ def execute_governed_frontier(
             "expected_candidate_ids": [],
             "received_candidate_ids": [], "missing_candidate_ids": [],
             "candidate_typed_states": [], "coverage_states": [],
-            "receipt_refs": [], "fact_refs": [], "claim_class": None,
+            "receipt_refs": [], "fact_refs": [], "claim_class": (
+                (compilation.operation_claim_classes or {}).get(operation_id)
+            ), "native_family": None,
         })
     expected_operations = set(compilation.expected_operation_ids)
     actual_operations = {

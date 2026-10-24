@@ -285,7 +285,7 @@ def test_r03_governed_frontier_joint_conditional_no_drop_and_cold(tmp_path):
                for row in rows.values())
     joint_rows = [
         row for row in rows.values()
-        if row["claim_class"] == "PAIR_RESPONSE_COTRAVEL"
+        if row["claim_class"] in {"JOINT", "CO_TRAVEL"}
     ]
     assert joint_rows
     ledger = result.ledger()
