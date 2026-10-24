@@ -1,0 +1,23 @@
+{
+  "schema": "SOROK_REVIEW_S36_CLOSURE_V1",
+  "candidate_branch": "agent/rabochii-sorok-20261024-s36-actor-access-response-r1",
+  "corrected_commit": "8da78d8031a06a4bd7e1297fd713e573299c0860",
+  "prior_rejected_commit": "25fdc92bb9cac303c6f9a9b59add2d3fa9b0567c",
+  "base": "888ccae53ec02ca572cbb7ba208956e2c99170b9",
+  "decision": "ACCEPT_SCOPED",
+  "defect_closed": "access witness scene must be nonempty and exactly equal to nonempty actual event scene before commit",
+  "checks": {
+    "focused_tests": "39 PASS, 0 FAIL (0.63s)",
+    "preserved_scene_oracle": "3 PASS, 0 FAIL",
+    "positive_exact_scene": "PASS; RESPONSE_COMMITTED with empty target proposals",
+    "legacy_and_targetless": "PASS in 39 tests",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "candidate/actor_access_response.py": "987352a620e944e88b8d5112b1b5c37d6dcc7f523076b9683d5cab6526f2d04a",
+    "tests/test_s36_refusals.py": "3fedc8cc24a75d9283b6e5243f1f9b9b550f2b7eb0b4fb256c8182a0667ff757",
+    "evidence/s36-8da-tests39.out": "f464d11c91fd6bfc0467b1f033f84980c27e98c86abe11303befc0d0a4d14ab8",
+    "evidence/s36-8da-scene.json": "94f3ee0e39af653e39a2e50472ed82aa957bfd3a4448abdf85fdb6488652a145",
+    "oracles/s36_scene_binding_oracle.py": "3c13550aa9c40c890ab6c1dac774e5eb37ba8add1b591acb7f0d24d526195f5d"
+  }
+}

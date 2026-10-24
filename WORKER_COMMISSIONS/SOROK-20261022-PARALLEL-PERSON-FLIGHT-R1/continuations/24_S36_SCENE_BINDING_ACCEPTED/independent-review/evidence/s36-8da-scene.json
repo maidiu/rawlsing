@@ -1,0 +1,38 @@
+{
+  "schema": "SOROK_REVIEW_S36_SCENE_BINDING_V1",
+  "cut": "25fdc92bb9cac303c6f9a9b59add2d3fa9b0567c",
+  "base": "888ccae53ec02ca572cbb7ba208956e2c99170b9",
+  "counts": {
+    "PASS": 3,
+    "FAIL": 0
+  },
+  "red_oracles": [],
+  "rows": [
+    {
+      "label": "scene_wrong",
+      "status": "REFUSED",
+      "reason": "S35_ACCESS_SCENE_MISMATCH",
+      "uptake_refs": [],
+      "target_proposals": [],
+      "committed": false
+    },
+    {
+      "label": "scene_empty",
+      "status": "REFUSED",
+      "reason": "S35_ACCESS_SCENE_MISSING",
+      "uptake_refs": [],
+      "target_proposals": [],
+      "committed": false
+    },
+    {
+      "label": "scene_exact",
+      "status": "RESPONSE_COMMITTED",
+      "reason": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+      "uptake_refs": [
+        "TEST_ONLY_S36_A_REQUEST_TOOL"
+      ],
+      "target_proposals": [],
+      "committed": true
+    }
+  ]
+}
