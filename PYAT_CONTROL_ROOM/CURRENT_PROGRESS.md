@@ -1,3 +1,12 @@
+# Pyat R90 — R03 independently qualified and scoped accepted
+
+R03 candidate c912497b25411ebbd3d796db139f32f5bebb6c4c; exact independent review d15de915ea3388894c0f8839d28db3b23bc00367. Custody verified, no blocking defects; 16 focused author,32 retained R01,5 independent probes pass. Genuine governed native joint/conditional/D3 and fixed-original-pin shared capture/restore at TEST_ONLY trusted-host grain. Engineering ACCEPT_SCOPED_LOCAL; no original35/scientific/N11/production adoption. No further R03 audit/cleanup.
+
+Next settled disjoint R04.joined two-path custody/resume and R05 five-path learned/actual N10E consumer flight: exact proposed user grant in director R61BB_R03_ACCEPTANCE_AND_NEXT_FLIGHT_GRANT.json, NOT_GRANTED/NOT_LAUNCHED. R04.byte/R01/R02/R08 accepted scoped components retained. Source/science/CI/prod/N11/N12/Sorok/J52W52 holds unchanged. Existing independent Sorok command/progress preserved. Controller infrastructure ongoing original owner; no duplicate launch.
+
+
+## Earlier progress history retained
+
 # R88 — primary Codex HQ resumes operative R87 and records one actual R03 launch
 
 Secondary Browser HQ R87 appointment, exact scoped R01/R08 acceptances and existing R61 R03 dispatch seal c5ece93e3071274a9dbbc318db772c8dd6acfb03 read and preserved. Canonical advanced during this turn; primary fast-forwarded tothe exact R87 canonical tip (immutable identity in previous_handoff). No duplicate worker existed: R87 explicitly issued-not-launched, already prepared samebranch at813775c07f0831605b6484a1d82afada30d85968. Primary actual attended OpenCode launch now supplies missing native execution. One author PID59217/same existing session/stable worktree, same exact four code paths, no R08 code merge, no native-owner edits. Primary supplementary sourcefree implementation contract bdf9661cc89ec3dbb9c754287f0c835663ee325b compatible with R87 mission; ordinary ownreturn IMPLEMENTATION root used by actual author and retained as documentary alias, no new code authority.
