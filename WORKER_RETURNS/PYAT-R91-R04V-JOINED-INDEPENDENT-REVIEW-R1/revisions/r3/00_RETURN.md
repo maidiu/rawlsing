@@ -71,7 +71,8 @@ Reviewer probes confirm:
 
 `EXPECTATIONS.md`, `00_RETURN.md`, `defects_and_limits.md`,
 `independent_probes/`, `replay/` JUnit/logs, `evidence/`, `proof_witness.json`,
-`manifest.json`, `RESUME.md`. The reviewer branch is pushed non-force; direct
-remote readback of the evidence commit and final tip is recorded in
-`evidence/remote_readback.txt` and reported to the coordinator. The candidate
-branch remains at `e6f7b04c49772e07c20ad36f65b9b270a28a49cf`.
+`manifest.json`, `RESUME.md`. The reviewer branch was pushed non-force. Evidence commit
+`4138504cb99b3c120e398fb2eb0370a20132b22d` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also verified by direct remote readback and reported to the coordinator. The
+candidate branch remained at `e6f7b04c49772e07c20ad36f65b9b270a28a49cf`.

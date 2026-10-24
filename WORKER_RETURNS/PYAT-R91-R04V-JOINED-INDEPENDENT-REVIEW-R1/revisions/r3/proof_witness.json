@@ -1,23 +1,59 @@
 {
-  "schema": "PYAT_R91_R04V_R3_JOINED_INDEPENDENT_PROOF_WITNESS@1",
-  "verdict": "ACCEPT_SCOPED_LOCAL",
-  "candidate_startup": "e6f7b04c49772e07c20ad36f65b9b270a28a49cf",
   "author_branch": "agent/opencode-pyat-r91-r04-joined-custody-r1",
-  "review_branch": "agent/opencode-pyat-r91-r04v-r3-joined-review-r1",
-  "commission": "9bbc2b235a63882551580d364a4963324d36aeba",
-  "prior_review": "239f492272bd72011f53570020a4b0cdc27dff27",
-  "author_contract": "cca9d5d50f6571fc6ca08135bc17f6b33d229833",
   "author_code": "6068ab9e53b652ab603b30f8db55738393daff9b",
-  "expectations_freeze_commit": "7730acfad",
+  "author_contract": "cca9d5d50f6571fc6ca08135bc17f6b33d229833",
   "candidate_code_blobs": {
     "rawlsing_next/pre553_issued_workload.py": "be5ffc75287ad25ac35eb03bc5e506c00a5837a2",
     "rawlsing_next/tests/test_universal_workload_custody.py": "074f5373ed28693aa75af44e28c8dff4c8bd46a0"
   },
+  "candidate_startup": "e6f7b04c49772e07c20ad36f65b9b270a28a49cf",
   "commands": [
-    {"command": "pytest rawlsing_next/tests/test_universal_workload_custody.py", "exit": 0, "result": "6 passed"},
-    {"command": "pytest rawlsing_next/tests/test_universal_workload.py", "exit": 0, "result": "16 passed"},
-    {"command": "pytest .../independent_probes/test_r04v_r3.py", "exit": 0, "result": "5 passed"}
+    {
+      "command": "pytest rawlsing_next/tests/test_universal_workload_custody.py",
+      "exit": 0,
+      "result": "6 passed"
+    },
+    {
+      "command": "pytest rawlsing_next/tests/test_universal_workload.py",
+      "exit": 0,
+      "result": "16 passed"
+    },
+    {
+      "command": "pytest .../independent_probes/test_r04v_r3.py",
+      "exit": 0,
+      "result": "5 passed"
+    }
   ],
+  "commission": "9bbc2b235a63882551580d364a4963324d36aeba",
+  "environment": {
+    "pyreadstat": "1.3.2",
+    "pytest": "9.0.2",
+    "python": "3.11.3"
+  },
+  "evidence_commit": "4138504cb99b3c120e398fb2eb0370a20132b22d",
+  "evidence_commit_remote_readback": {
+    "candidate_remote_sha": "e6f7b04c49772e07c20ad36f65b9b270a28a49cf",
+    "file": "evidence/remote_readback.txt",
+    "remote_sha": "4138504cb99b3c120e398fb2eb0370a20132b22d"
+  },
+  "expectations_freeze_commit": "7730acfad",
+  "f1_f6_matrix": {
+    "F1": "PASS",
+    "F2": "PASS",
+    "F3": "PASS",
+    "F4": "PASS",
+    "F5": "PASS",
+    "F6": "PASS"
+  },
+  "non_blocking_note": "discovery completed result is a SimpleNamespace container whose native_result is the frozen checked RetainedDiscoveryResultView",
+  "not_reached": [
+    "R05",
+    "original science",
+    "global durable exactly-once",
+    "protected CI/prod",
+    "N11/N12/Sorok/J52/W52"
+  ],
+  "prior_review": "239f492272bd72011f53570020a4b0cdc27dff27",
   "probe_outcomes": [
     "unary restored output actual QueryExecutionResult with equal query_ref/facts/release_refs",
     "governed restored discovery frozen RetainedDiscoveryResultView with equal identity fields/facts/receipts",
@@ -25,6 +61,7 @@
     "external original pin rejects self-rehashed forged checkpoint; genuine restore passes",
     "real partial multi-unit prefix -> fresh process -> pending units matches uninterrupted output refs/facts/states, no completed rerun"
   ],
+  "remote_verification": "evidence/remote_readback.txt; final tip reported to coordinator",
   "retained_positives": [
     "actual governed capture/restore",
     "original external pin",
@@ -34,10 +71,8 @@
     "current grant/source recheck",
     "U43 exact; owners/decoder unchanged"
   ],
-  "non_blocking_note": "discovery completed result is a SimpleNamespace container whose native_result is the frozen checked RetainedDiscoveryResultView",
-  "f1_f6_matrix": {"F1": "PASS", "F2": "PASS", "F3": "PASS", "F4": "PASS", "F5": "PASS", "F6": "PASS"},
-  "environment": {"python": "3.11.3", "pytest": "9.0.2", "pyreadstat": "1.3.2"},
-  "remote_verification": "evidence/remote_readback.txt; final tip reported to coordinator",
+  "review_branch": "agent/opencode-pyat-r91-r04v-r3-joined-review-r1",
+  "schema": "PYAT_R91_R04V_R3_JOINED_INDEPENDENT_PROOF_WITNESS@1",
   "trust_boundary": "sourcefree TEST_ONLY local trusted host; R05/original science/CI/prod/N11/N12/Sorok/J52/W52 held",
-  "not_reached": ["R05", "original science", "global durable exactly-once", "protected CI/prod", "N11/N12/Sorok/J52/W52"]
+  "verdict": "ACCEPT_SCOPED_LOCAL"
 }
