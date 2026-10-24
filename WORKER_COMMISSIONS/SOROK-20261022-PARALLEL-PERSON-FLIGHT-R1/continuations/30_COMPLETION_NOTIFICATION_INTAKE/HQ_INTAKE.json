@@ -1,9 +1,9 @@
 {
   "schema": "SOROK_HQ_COMPLETION_INTAKE_OBSERVED@1",
   "hq_thread_id": "01a161c5-a44a-7b13-ad50-49e10112874d",
-  "implementation_commit": "6e4ed08fe08c20223cee3f201fabefbc1e9958e7",
-  "implementation_push_verification": "PENDING_AUTHOR19_RETURN",
-  "observed_scope": "Real completed-return notices queued and consumed at existing HQ; detached watcher now armed before next product completion",
+  "implementation_commit": "39b74f728b3b0c21b9f75b8a66cf1da68155454d",
+  "implementation_push_verification": "REMOTE_SHA_VERIFIED",
+  "observed_scope": "Five genuine completion notifications queued and consumed at same HQ; no repeated worker/reviewer execution",
   "notifications": [
     {
       "job_id": "sorok-s41-independent-review-29",
@@ -27,6 +27,24 @@
       "notification_digest": "6c3cbe23fd5f9bb3d479104583ac1d3a1f3d987808ffb05a0102ccc958f3f632",
       "source_files_verified": true,
       "observed_directly_in_same_hq_conversation": true,
+      "acceptance_implied": false
+    },
+    {
+      "job_id": "sorok-controller-completion-connection-author19",
+      "queued_message_id": "01a16e77-fb3d-7b31-a387-f6a0c96a097e",
+      "notification_digest": "18b38b614c55eb0c15a4f4cfa977ea6395233426df1f8edf19d198a1bbb940b4",
+      "source_files_verified": true,
+      "observed_directly_in_same_hq_conversation": true,
+      "return_already_processed_no_replay": true,
+      "acceptance_implied": false
+    },
+    {
+      "job_id": "sorok-s41-generation-readset-repair2-worker",
+      "queued_message_id": "01a16e7b-32d1-7432-987d-119edf7f989c",
+      "notification_digest": "746b3cb3522f942f02d5bd1b0a4b4237fd2cce0f5dc5efcd328d620927732ed7",
+      "source_files_verified": true,
+      "observed_directly_in_same_hq_conversation": true,
+      "return_already_processed_no_replay": true,
       "acceptance_implied": false
     }
   ],
@@ -53,7 +71,7 @@
   },
   "launch_path": "bun SOROK/completion-watcher.ts serve --manifest .local-logs/queue-integration/live/external-completion-inputs.json",
   "future_compatible_controller_launch": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/queue-integration/live/controller",
-  "next_live_job": "sorok-s41-generation-readset-repair2-worker",
+  "next_live_job": "sorok-s41-generation-readset-closure-review31",
   "next_job_registered_before_launch": true,
   "next_job_launch": {
     "session_id": "ses_e9387509affeR5dC27RoUy3WSH",
@@ -70,5 +88,47 @@
   "heartbeat_role": "FALLBACK",
   "no_worker_or_reviewer_restarted_for_notification": true,
   "prior_source_results_handled_without_replay": true,
-  "adoption_remaining": "Observe next already-registered live completion and verify controller author source push; no new demonstration job"
+  "adoption_remaining": "Observe prearmed review31 completion-triggered message and same-HQ intake; controller source push complete",
+  "controller_fixture_tests": {
+    "PASS": 53,
+    "FAIL": 0,
+    "scope": "fixture/state machine only; no provider generation"
+  },
+  "watcher_launch": {
+    "pid": 71590,
+    "started_at_epoch": 1792854929.481729,
+    "argv": [
+      "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/runtime/node_modules/.bin/bun",
+      "SOROK/completion-watcher.ts",
+      "serve",
+      "--manifest",
+      "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/queue-integration/live/external-completion-inputs.json"
+    ],
+    "start_new_session": true,
+    "job_selection": "All and only explicitly authorized manifest entries; no stale --jobs/environment filter",
+    "previous_pid": 69365,
+    "reason": "Cover current authorized product repair/closure jobs",
+    "next_job": "sorok-s41-generation-readset-closure-review31",
+    "next_job_exit_absent_before_start": true
+  },
+  "watcher_pid": 71590,
+  "job_selection": "All and only explicit authorized manifest entries; obsolete original-two-job filter removed by HQ operation",
+  "next_live_job_launch": {
+    "continuation": 31,
+    "reviewer_session_id": "ses_e98fa7144ffeXQs21DMwv7tro3",
+    "target_commit": "0a03d4c4697e3f706382891b9c958aa109042747",
+    "launcher_pid": 72157,
+    "started_at_epoch": 1792854990.907493,
+    "hq_tests": {
+      "passed": 17,
+      "seconds": 7.13
+    },
+    "preserved_reproducers": "both now refuse exact wrong source",
+    "notification_job_id": "sorok-s41-generation-readset-closure-review31",
+    "watcher_pid_before_launch": 71590,
+    "watcher_job_waiting_before_launch": true,
+    "remote_verified": true,
+    "state": "S41_FINAL_CHANGED_CODE_CLOSURE_LAUNCHED_NOT_ACCEPTED"
+  },
+  "dispatch_rule": "Use configured controller wrapper for compatible new commissions. Existing ordinary sessions require explicit completion manifest registration and verified live watcher before launch. Heartbeat is fallback, not primary delivery."
 }
