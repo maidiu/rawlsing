@@ -1,0 +1,37 @@
+{
+  "probes": [
+    {
+      "joint": 2,
+      "probe": "two_direct_positive",
+      "state": "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    },
+    {
+      "actual_component_count": 1,
+      "joint": 2,
+      "probe": "forged_joint_topology",
+      "state": "LEARNED_CONSUMER_UNKNOWN"
+    },
+    {
+      "discovery": [],
+      "probe": "forged_discovery_route",
+      "state": "LEARNED_CONSUMER_UNKNOWN"
+    },
+    {
+      "probe": "forged_recursive_route",
+      "recursive": [],
+      "state": "LEARNED_CONSUMER_UNKNOWN"
+    },
+    {
+      "probe": "actual_type_e41_forged_route",
+      "route": null,
+      "state": "REFUSED"
+    },
+    {
+      "denominator": 0,
+      "probe": "status_disagreement",
+      "result_state": "ZERO_SUPPORT",
+      "state": "LEARNED_CONSUMER_ZERO_SUPPORT"
+    }
+  ],
+  "schema": "R91_R05V_R3_INDEPENDENT_OBSERVATIONS@1"
+}

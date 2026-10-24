@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="4" time="0.645" timestamp="2026-10-24T11:59:26.446954-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1.revisions.r5.probes.test_r05v_r5_coordinator_gap" name="test_native_graph_slot_carries_actual_native_input_associations" time="0.001"><failure message="AssertionError: assert not ['b5_selection', 'condition_value_witness', 'discovery_frontier_ref', 'discovery_receipt_ref', 'discovery_result', 'e41_input', ...]">def test_native_graph_slot_carries_actual_native_input_associations():
+        names = {field.name for field in fields(NativeGraphSlot)}
+        required = {
+            "discovery_result", "discovery_receipt_ref", "discovery_frontier_ref",
+            "recursive_handoff", "recursive_lineage_refs", "root_parent_ref",
+            "condition_value_witness", "target_arity", "joint_order_semantics",
+            "m1_disposition", "m2_release", "b5_selection", "require_current_selection",
+            "e41_input",
+        }
+        missing = sorted(required - names)
+        _record("slot_fields", {"fields": sorted(names), "missing": missing})
+&gt;       assert not missing
+E       AssertionError: assert not ['b5_selection', 'condition_value_witness', 'discovery_frontier_ref', 'discovery_receipt_ref', 'discovery_result', 'e41_input', ...]
+
+WORKER_RETURNS/PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/revisions/r5/probes/test_r05v_r5_coordinator_gap.py:51: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1.revisions.r5.probes.test_r05v_r5_coordinator_gap" name="test_coordinator_execute_binds_discovery_recursive_e41_inputs" time="0.002"><failure message="AssertionError: assert not ['discovery', 'recursive', 'handoff', 'lineage', 'frontier', 'e41', ...]">def test_coordinator_execute_binds_discovery_recursive_e41_inputs():
+        source = inspect.getsource(TrustedNativeGraphCoordinator.execute)
+        required_terms = ("discovery", "recursive", "handoff", "lineage", "frontier", "e41", "m1", "m2", "b5", "currentness")
+        missing = [term for term in required_terms if term not in source.lower()]
+        _record("coordinator_inputs", {"missing_terms": missing})
+&gt;       assert not missing
+E       AssertionError: assert not ['discovery', 'recursive', 'handoff', 'lineage', 'frontier', 'e41', ...]
+
+WORKER_RETURNS/PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/revisions/r5/probes/test_r05v_r5_coordinator_gap.py:59: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1.revisions.r5.probes.test_r05v_r5_coordinator_gap" name="test_actual_discovery_recursive_use_trusted_coordinator" time="0.005"><failure message="assert 'trusted_graph_reader' in 'def test_actual_discovery_route_learned_and_consumer():\n    source = ho._at10_source()\n    qauth = ho._query_author...t joint_result.joint_component_count == 2\n    assert joint_result.consumer_result.result_state == &quot;EXACT_SUPPORTED&quot;\n'">def test_actual_discovery_recursive_use_trusted_coordinator():
+        disc = inspect.getsource(t.test_actual_discovery_route_learned_and_consumer)
+        rec = inspect.getsource(t.test_actual_recursive_route_learned_and_consumer)
+        _record(
+            "trusted_coordinator_route_coverage",
+            {"discovery_has_reader": "trusted_graph_reader" in disc,
+             "recursive_has_reader": "trusted_graph_reader" in rec},
+        )
+&gt;       assert "trusted_graph_reader" in disc
+E       assert 'trusted_graph_reader' in 'def test_actual_discovery_route_learned_and_consumer():\n    source = ho._at10_source()\n    qauth = ho._query_author...t joint_result.joint_component_count == 2\n    assert joint_result.consumer_result.result_state == "EXACT_SUPPORTED"\n'
+
+WORKER_RETURNS/PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/revisions/r5/probes/test_r05v_r5_coordinator_gap.py:70: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1.revisions.r5.probes.test_r05v_r5_coordinator_gap" name="test_actual_source_sever_and_e41_route_on_discovery_recursive" time="0.005"><failure message="assert False&#10; +  where False = any(&lt;generator object test_actual_source_sever_and_e41_route_on_discovery_recursive.&lt;locals&gt;.&lt;genexpr&gt; at 0x109ba7760&gt;)">def test_actual_source_sever_and_e41_route_on_discovery_recursive():
+        disc = inspect.getsource(t.test_actual_discovery_route_learned_and_consumer)
+        rec = inspect.getsource(t.test_actual_recursive_route_learned_and_consumer)
+        combined = (disc + rec).lower()
+        _record(
+            "actual_source_e41_coverage",
+            {"has_wrong_source_or_evidence": any(x in combined for x in ("wrong_source", "changed_source", "source_change", "evidence_change")),
+             "has_e41_extension": "provide_empirical_possibility_slice_ext" in combined or "e41" in combined},
+        )
+&gt;       assert any(x in combined for x in ("wrong_source", "changed_source", "source_change", "evidence_change"))
+E       assert False
+E        +  where False = any(&lt;generator object test_actual_source_sever_and_e41_route_on_discovery_recursive.&lt;locals&gt;.&lt;genexpr&gt; at 0x109ba7760&gt;)
+
+WORKER_RETURNS/PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/revisions/r5/probes/test_r05v_r5_coordinator_gap.py:83: AssertionError</failure></testcase></testsuite></testsuites>
