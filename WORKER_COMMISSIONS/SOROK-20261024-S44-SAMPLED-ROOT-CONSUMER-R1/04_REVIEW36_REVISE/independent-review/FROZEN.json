@@ -1,0 +1,38 @@
+{
+  "schema": "SOROK_REVIEW_S44_V1",
+  "candidate_branch": "codex/sorok-s44-sampled-root-consumer",
+  "candidate_commit": "b623a9852e476c9427ec6077285819f0586bc39b",
+  "base": "3edd631fb6c31751dfd2143ba2faa9fc31561e54",
+  "hq_decision": "f5305c6d6159ef7117bce52b95369b5618f5444c",
+  "source_cuts": {
+    "m35": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+    "s36": "8da78d8031a06a4bd7e1297fd713e573299c0860",
+    "s37": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+    "s39": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+    "s40": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+    "s41": "c72a10d284f8869b990db3e6849ed174a51bd784",
+    "s42": "2489f8cdfbb5c400c636f33c7cf8cdf0aa55dc91",
+    "s43": "3edd631fb6c31751dfd2143ba2faa9fc31561e54",
+    "language": "8d2920da951f98cd8246d7c34cac777928e0c732",
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135"
+  },
+  "decision": "REVISE",
+  "defect": "advertised ADP-020 candidate/coordinate receipt is incomplete: missing candidate replay/authority/eligibility fields and uses anchor_event_id instead of anchor_event_id_or_init_checkpoint_hash",
+  "checks": {
+    "focused_tests": "8 PASS, 0 FAIL (5.45s)",
+    "entrypoint": "PASS (exit 0); sampled root substitution, cold replay, root language, native/English, NO_CHANGE/NO_PROPOSAL",
+    "adp020_contract": "FAIL: required candidate fields and exact coordinate field absent",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "s44/rng.py": "1fb449ace66fd2385e9c00653f3b52de0124f323a58d2aabbc1eccf9a7ff3343",
+    "s44/bundle.py": "80afb123a12ef6da2009edcd0853360a44fa5e0bae0e6e4f0c52c46751d30822",
+    "s44/root.py": "a52dbe79b848f02714ccedb176529a58e5bf5365fdc5edde1aa4e044a7a53226",
+    "s44/session.py": "eccc8d6a420d1715ebb972407505397d930e898ce4ecec9ec7ca64beaaf75259",
+    "tests/test_s44_sampled_root.py": "a65ca778a88eac9791b6ce653d65453680d15719e079e91edc31261c80efdaa7",
+    "evidence/s44-tests-8.out": "961ebfa7c50ca4dee4e227f0b9c6d3cbd77f89e230fefacb76619b13ac7b2590",
+    "evidence/s44-entrypoint.json": "5e5880bedd1c9fceda46d794f1adbb3364bc240fbe9a6ae62d9ab0737986f914",
+    "evidence/repro_adp020_contract.py": "2b9392b8a3d1c3a22b17a7c9a7066d707541b9ed7c39212a1767b8da669148f7",
+    "evidence/s44-adp020-contract.json": "fe0b27f4a4d3e0acc76f4eeb6a59032d84cafc9a36ba408685909b5ae508c294"
+  }
+}

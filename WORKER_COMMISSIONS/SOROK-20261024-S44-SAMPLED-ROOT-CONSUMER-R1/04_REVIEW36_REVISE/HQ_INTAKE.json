@@ -1,0 +1,25 @@
+{
+  "verdict": "REVISE",
+  "candidate": "b623a9852e476c9427ec6077285819f0586bc39b",
+  "review_commit": "edbaf4264a621f62bda09b3fe140b9cc1b7917a4",
+  "review_remote_verified": true,
+  "review_completion_digest": "825f471ea06256f8042c9d7cf06d7b6c2d2464148206d71ec1c98363f3113818",
+  "hq_reproduction": "preserved repro emits missing four candidate authority/replay/eligibility fields and required coordinate anchor field; diagnostic exit0 is not PASS",
+  "independent_tests": "8 passed in5.45s plus actual entrypoint",
+  "repair_scope": "exact ADP020 candidate/coordinate receipt contract and payload binding only",
+  "existing_author_session": "ses_e9387509affeR5dC27RoUy3WSH",
+  "repair_process": {
+    "pid": 68738,
+    "started_at_epoch": 1792876708.918933,
+    "task": "S44 source-bound sampled root generation and actual continuing consumer",
+    "session_id": "ses_e9387509affeR5dC27RoUy3WSH",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "candidate_base": "3edd631fb6c31751dfd2143ba2faa9fc31561e54"
+  },
+  "live_process_observation": "68738 68734 S    /Users/matthewsmith/.opencode/bin/opencode",
+  "repair_exit_present": false,
+  "repair_prearmed": true,
+  "observed_at_epoch": 1792876730.556103,
+  "native_grants_changed": false
+}
