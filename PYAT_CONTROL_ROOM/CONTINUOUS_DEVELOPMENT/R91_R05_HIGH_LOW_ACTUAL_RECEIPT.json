@@ -1,0 +1,36 @@
+{
+  "schema": "PYAT_R05_HIGH_DECISION_ROUTING_RECEIPT_V1",
+  "transition_id": "r91-r05-native-graph-binding-high-20261024",
+  "state": "LOW_OBSERVED_TERMINAL",
+  "high_actual": {
+    "turn_id": "01a16e88-4f90-7413-8b7d-9ea490598ca2",
+    "model": "gpt-6.1-sol",
+    "effort": "high",
+    "thread_ref": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da"
+  },
+  "low_actual": {
+    "turn_id": "01a16e8c-36ab-7ab2-a9d6-886296adf6a9",
+    "model": "gpt-6.1-sol",
+    "effort": "low",
+    "thread_ref": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da"
+  },
+  "decision_commit": "c618dc28d722ba64f2f9d7bf39cbd9915b429ea8",
+  "desktop_tool_acceptance": {
+    "high": {
+      "reservation_id": "r05-high-desktop-1",
+      "reserved_at": "2026-10-24T15:29:18.267Z",
+      "accepted_at": "2026-10-24T15:29:32.359Z",
+      "acceptance_ref": "same-hq-desktop-tool-success-r05-high-1"
+    },
+    "low": {
+      "reservation_id": "r05-decision-low-1",
+      "reserved_at": "2026-10-24T15:33:49.141Z",
+      "accepted_at": "2026-10-24T15:34:01.346Z",
+      "acceptance_ref": "r05-low-desktop-tool-success-1"
+    }
+  },
+  "wake_route": "ordinary supported codex queue without model or effort flags",
+  "goal_state": "BLOCKED unchanged",
+  "worker_launch": "NONE",
+  "authority_change": "NONE"
+}
