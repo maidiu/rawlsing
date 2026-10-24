@@ -281,3 +281,6 @@ Candidate02800fcfd77abde178851031f877838bedb5e242 verified9reporthashes/2codeblo
 
 ## R95 R06V R3 REVISE — pinned-owner/original/FF boundary repair running
 Review05f54b961712695b4836c6160586510dff60986a all 15 reporthashes/ownroot/directremote verified. Temporal actualpayload and crossunit UNAVAILABLE pass; forged publicruntime, subjectoriginalref and joined realtypeFF issuance bypass remain. Sameexisting OpenCodeMAX author resumed PID4101 sessionses_e98c905cbffekusoHURfKyEUKG stable r61-r01 exactstartup02800fcfd77abde178851031f877838bedb5e242 commission5bb1c853e968de76ec274ca5d1226ef1a2f1f8bb. Logs .r61/r95-r06-r4. Existing trustedowner/original contract, no newscience orscope; allholds retained.
+
+## R95 R06R3 returned; distinct successor review running
+Candidateb2cfe93cee854b7aff2081a7a223ada75295332a verified9reporthashes/2codeblobs/scope/directremote; author17+11passes not acceptance. Existing distinct OpenCodeMAX reviewer resumed PID7707 sessionses_e96304356ffeC8HSvwFluWOjG1 stable r61-r01v-r5 branchagent/opencode-pyat-r95-r06v-r4-world-consumer-review-r1 commissionf3698cf286e4659ba451304175c29cda8041787f. Actual consumer receipt authenticity, consumerpayload temporalchange, linkedtransport unavailable and competentFF admission-or-refusal are decisive. Logs .r61/r95-r06v-r4. All holds retained; no new author/productionadoption.
