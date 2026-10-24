@@ -13,8 +13,10 @@ from rawlsing_next.pre553_source_native_preimage_adapter import (
     NativePreimageRefusal, NativeSourceRule, materialize_native_preimages,
 )
 from rawlsing_next.pre553_universal_workload import (
-    bind_recursive_execution, compile_universal_workload,
-    execute_universal_workload,
+    bind_recursive_execution, bind_recursive_workload,
+    compile_governed_frontier, compile_universal_workload,
+    execute_governed_frontier, execute_universal_workload,
+    restore_governed_frontier_ledger,
 )
 from rawlsing_next.tests.test_universal_source_projection import (
     SOURCE_ID, build_s3, decode_sav as _decode_sav, package, s3_rows,
@@ -199,3 +201,266 @@ def test_r03_count_preserving_substitution_and_duplicate_fail_antijoin(tmp_path)
     assert report["duplicate_operation_ids"]
     restored = replace(result, executed_operation_ids=tuple(ids))
     assert restored.anti_join()["no_drop_ok"]
+
+
+def _frontier_bundle(path):
+    rows = [
+        {
+            "A": float(index % 2),
+            "B": float((index // 2) % 2),
+            "Y": float((index % 2) ^ ((index // 2) % 2)),
+            "G": float(index % 2),
+        }
+        for index in range(12)
+    ]
+    write_rows(path, rows)
+    pkg = package(
+        path, len(rows),
+        (NativeSourceRule("impl.a", "A"),
+         NativeSourceRule("impl.b", "B"),
+         NativeSourceRule("impl.y", "Y")),
+        coordinate="G",
+    )
+    return materialize_native_preimages(
+        package=pkg, incidence=decode_sav(path)
+    ), rows
+
+
+def _frontier_fixture(bundle, *, budget=None):
+    from rawlsing_next.tests.test_universal_grammar import (
+        _frontier, _inventory, _occurrence, _policy,
+    )
+    inventory = _inventory((
+        _occurrence("A"), _occurrence("B"), _occurrence("Y"),
+    ), complete=True)
+    inventory = replace(inventory, source_sha256=bundle.source_sha256)
+    policy = _policy(j=2, k=2, d=1)
+    frontier = _frontier(inventory, policy, budget=budget)
+    return inventory, policy, frontier
+
+
+def test_r03_governed_frontier_joint_conditional_no_drop_and_cold(tmp_path):
+    bundle, _ = _frontier_bundle(tmp_path / "r03_frontier.sav")
+    inventory, policy, frontier = _frontier_fixture(bundle)
+    classes = {op.claim_class for op in frontier.eligible()}
+    assert {"DIST", "CONDITIONAL", "JOINT", "CO_TRAVEL",
+            "INTERACTION", "FORK"} <= classes
+    compilation = compile_governed_frontier(
+        bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+        as_of=AS_OF, host=HOST, purpose=PURPOSE,
+    )
+    pending = set(compilation.pending_operation_ids)
+    assert pending == set()
+    eligible_ids = {op.op_id for op in frontier.eligible()}
+    assert set(compilation.frontier_eligible_operation_ids) == eligible_ids
+    assert set(compilation.expected_operation_ids) == (
+        eligible_ids - set(compilation.unsupported_operation_ids)
+    )
+    assert compilation.unsupported_operation_ids
+    assert compilation.expected_candidate_ids
+    result = execute_governed_frontier(
+        compilation=compilation,
+        source_factory=lambda _ref: bundle.physical_stream,
+    )
+    assert result.anti_join["no_drop_ok"], result.anti_join
+    assert result.operation_anti_join["accounting_ok"], result.operation_anti_join
+    assert result.operation_anti_join["no_drop_ok"], result.operation_anti_join
+    assert result.receipt_refs and result.fact_refs
+    assert len(result.native_execution.receipts) == 1
+    assert len(result.native_execution.native_result.receipts) == len(
+        compilation.expected_candidate_ids
+    )
+    rows = {row["operation_id"]: row for row in result.operation_ledger}
+    assert set(rows) == {
+        op.op_id for op in frontier.operations
+    } | pending
+    assert any(row["lowering_status"] == "SUPPORTED"
+               and row["execution_state"] == "COMPLETED"
+               for row in rows.values())
+    assert any(row["lowering_status"] == "UNSUPPORTED_RUNTIME"
+               for row in rows.values())
+    assert any("DISCOVERED_RESULT_SUPPORTED" in row["candidate_typed_states"]
+               for row in rows.values())
+    assert any("VALID_EMPTY" in row["candidate_typed_states"]
+               for row in rows.values())
+    joint_rows = [
+        row for row in rows.values()
+        if row["claim_class"] == "PAIR_RESPONSE_COTRAVEL"
+    ]
+    assert joint_rows
+    ledger = result.ledger()
+    assert restore_governed_frontier_ledger(ledger)["schema"] == ledger["schema"]
+    tampered = dict(ledger)
+    tampered["operation_ledger"] = []
+    with pytest.raises(WorkloadBindingRefusal):
+        restore_governed_frontier_ledger(tampered)
+
+    cold_compilation = compile_governed_frontier(
+        bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+        as_of=AS_OF, host=HOST, purpose=PURPOSE,
+    )
+    cold = execute_governed_frontier(
+        compilation=cold_compilation,
+        source_factory=lambda _ref: bundle.physical_stream,
+    )
+    assert cold.compilation.content_hash == compilation.content_hash
+    assert cold.fact_refs == result.fact_refs
+    assert cold.receipt_refs == result.receipt_refs
+    assert cold.content_hash == result.content_hash
+
+
+def test_r03_source_value_fault_changes_dependent_fact_and_restores(tmp_path):
+    from rawlsing_next.pre553_physical_decoder import PhysicalMissingState
+    from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
+
+    bundle, _ = _frontier_bundle(tmp_path / "r03_value.sav")
+    inventory, policy, frontier = _frontier_fixture(bundle)
+    compilation = compile_governed_frontier(
+        bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+        as_of=AS_OF, host=HOST, purpose=PURPOSE,
+    )
+    good = execute_governed_frontier(
+        compilation=compilation,
+        source_factory=lambda _ref: bundle.physical_stream,
+    )
+    assert good.anti_join["no_drop_ok"]
+    cells = tuple(bundle.physical_stream.iter_cells())
+
+    def mutated_cells():
+        result = []
+        for cell in cells:
+            if (cell.variable_name == "A"
+                    and cell.missing_state is PhysicalMissingState.OBSERVED_STORAGE_VALUE):
+                result.append(replace(cell, raw_value=1.0 - float(cell.raw_value)))
+            else:
+                result.append(cell)
+        return tuple(result)
+
+    mutated_stream = ExactPhysicalCellStream(
+        source_sha256=bundle.source_sha256,
+        row_count=bundle.physical_stream.row_count,
+        cell_iter_factory=mutated_cells,
+    )
+    mutated = execute_governed_frontier(
+        compilation=compilation,
+        source_factory=lambda _ref: mutated_stream,
+    )
+    assert mutated.compilation is compilation
+    assert mutated.anti_join["no_drop_ok"]
+    assert set(mutated.fact_refs) != set(good.fact_refs)
+    good_by_operation = {
+        row["operation_id"]: row["fact_refs"] for row in good.operation_ledger
+    }
+    mutated_by_operation = {
+        row["operation_id"]: row["fact_refs"]
+        for row in mutated.operation_ledger
+    }
+    assert any(
+        good_by_operation[operation_id]
+        != mutated_by_operation[operation_id]
+        for operation_id in good_by_operation
+    )
+    restored = execute_governed_frontier(
+        compilation=compilation,
+        source_factory=lambda _ref: bundle.physical_stream,
+    )
+    assert set(restored.fact_refs) == set(good.fact_refs)
+    assert restored.operation_ledger == good.operation_ledger
+
+
+def test_r03_budget_pending_operations_are_explicit_and_not_executed(tmp_path):
+    bundle, _ = _frontier_bundle(tmp_path / "r03_pending.sav")
+    inventory, policy, frontier = _frontier_fixture(bundle, budget=5)
+    assert len(frontier.pending_operation_ids) > 0
+    compilation = compile_governed_frontier(
+        bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+        as_of=AS_OF, host=HOST, purpose=PURPOSE,
+    )
+    assert set(compilation.pending_operation_ids) == set(
+        frontier.pending_operation_ids
+    )
+    result = execute_governed_frontier(
+        compilation=compilation,
+        source_factory=lambda _ref: bundle.physical_stream,
+    )
+    assert result.operation_anti_join["accounting_ok"]
+    assert result.operation_anti_join["no_drop_ok"], result.operation_anti_join
+    pending_rows = [
+        row for row in result.operation_ledger
+        if row["lowering_status"] == "PENDING"
+    ]
+    assert len(pending_rows) == len(compilation.pending_operation_ids)
+    assert all(
+        row["execution_state"] == "PENDING" and row["receipt_refs"] == []
+        for row in pending_rows
+    )
+    assert not (set(compilation.expected_operation_ids)
+                & set(compilation.pending_operation_ids))
+
+
+def test_r03_d3_recursive_root_parent_minority_and_cold(tmp_path):
+    from rawlsing_next.tests.test_universal_grammar import (
+        _campaign_active_refs, _campaign_fixture,
+    )
+    from rawlsing_next.universal_grammar.native_map import RetainedRecurrenceCampaign
+
+    source, _qauth, _root, query, _policy_obj, s1, s2, s3, campaign = (
+        _campaign_fixture()
+    )
+    bindings = []
+    executions = []
+    active_refs = (campaign.root_lineage_ref,)
+    for generation, conditions in enumerate((s1, s2, s3), start=1):
+        issuance = campaign.issue(
+            parent_lineage_refs=active_refs,
+            condition_refs=tuple((key, value) for key, value, _ in conditions),
+        )
+        execution = campaign.execute(issuance)
+        executions.append(execution)
+        binding = bind_recursive_workload(campaign, execution)
+        assert binding.generation == generation
+        assert binding.anti_join["no_drop_ok"], binding.anti_join
+        assert binding.expected_operation_ids
+        assert binding.actual_rule_ids
+        assert binding.receipt_refs and binding.fact_refs
+        assert binding.root_contrasts and binding.parent_contrasts
+        assert not binding.anti_join["missing_candidate_operations"]
+        bindings.append(binding)
+        if generation < 3:
+            activation = campaign.activate(execution)
+            active_refs = _campaign_active_refs(campaign, activation)
+    assert [binding.generation for binding in bindings] == [1, 2, 3]
+    gen2 = bind_recursive_workload(campaign, executions[1])
+    groups = {}
+    for row in gen2.operations:
+        groups.setdefault(row["parent_id"], []).append(row)
+    contrast = next(
+        rows for rows in groups.values()
+        if {row["comparator"] for row in rows}
+        == {"ROOT_RELATIVE", "IMMEDIATE_PARENT_RELATIVE"}
+        and len({
+            row["typed_state"] for row in rows
+            if row["comparator"] in {"ROOT_RELATIVE", "IMMEDIATE_PARENT_RELATIVE"}
+        }) > 1
+    )
+    states = {
+        row["comparator"]: row["typed_state"] for row in contrast
+    }
+    assert states["ROOT_RELATIVE"] != states["IMMEDIATE_PARENT_RELATIVE"]
+    assert gen2.minority
+
+    before = len(campaign.inspect()["executions"])
+    snapshot = campaign.snapshot()
+    restored = RetainedRecurrenceCampaign.restore(
+        snapshot=snapshot, expected_checkpoint_ref=snapshot["checkpoint_ref"],
+        repository=source["repo"], authority_registry=campaign._registry,
+        authority_factory=campaign._authority_factory,
+        condition_catalog=campaign._condition_catalog, query_object=query,
+    )
+    rebound = bind_recursive_workload(restored, executions[1])
+    assert rebound.content_hash == gen2.content_hash
+    assert rebound.fact_refs == gen2.fact_refs
+    assert rebound.operations == gen2.operations
+    assert rebound.minority == gen2.minority
+    assert len(campaign.inspect()["executions"]) == before
+    assert len(restored.inspect()["executions"]) == before
