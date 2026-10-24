@@ -1,0 +1,42 @@
+{
+  "schema": "SOROK_REVIEW_S41_FINAL_CLOSURE_V1",
+  "candidate_branch": "codex/sorok-s41-continuing-person-events",
+  "corrected_commit": "0a03d4c4697e3f706382891b9c958aa109042747",
+  "prior_reviewed_commit": "ff12892dddf332e1f731e0c4cb13f8d62db0f294",
+  "prior_review_receipt": "a81740cfd38ff47ab28b1b9390acd2799a6f2ecf",
+  "base": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+  "source_cuts": {
+    "m35": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+    "s36": "8da78d8031a06a4bd7e1297fd713e573299c0860",
+    "s37": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+    "s39": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+    "s40": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+    "language": "8d2920da951f98cd8246d7c34cac777928e0c732",
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135"
+  },
+  "decision": "REVISE",
+  "defect": "persisted canonical input source record can be replaced with a same-ref/different-hash record; generation readset and history remain valid, event reads OK warm/cold with verify true",
+  "checks": {
+    "focused_tests": "17 PASS, 0 FAIL (7.52s)",
+    "entrypoint": "PASS (exit 0); two E1/C8, native/English, NO_CHANGE/NO_PROPOSAL, zero targets, cold verify true",
+    "bad_history_reproducer": "exit 1; S41_HISTORY_BINDING_INVALID: S41_HISTORY_SOURCE_REF_NOT_CANONICAL",
+    "generation_readset_reproducer": "exit 1; S41_GENERATION_READSET_INVALID: S41_GENERATION_CANONICAL_HISTORY_ABSENT",
+    "replaced_input_record": "ACCEPTED OK warm/cold; defect",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "s41/history.py": "0175d03406684c287d73c5cbc2b2741cb8723b2bbc19c2d8d2c5739f7943065e",
+    "s41/reader.py": "0715014468384f040cf5cdc85f58fe2922d2b8d0a609de5e8d6d96902b6e679a",
+    "s41/session.py": "8d0eb0aae5879442d5b35b2f9d58d65a93f15f773a5f0e4f4c625e1970be1ff8",
+    "s41/bindings.py": "b112d800d93ab7deaeca0ed018d2018e1af216da90f28d75ef44f8fc9f8473a8",
+    "tests/test_s41_generation_readset.py": "7552af13b39c772bd70d9bc675db51ccfdbd65b04c02bf0cabd4cdf69621d2cd",
+    "evidence/s41-final-tests-17.out": "01d8013295d3ac5820c8c353d94cb3fe9b7adbd5248aa572b858e72132ce5d14",
+    "evidence/s41-final-entrypoint.json": "40b593206ab28a13245aab58c4e8c8e2bf11db6fe147f71313fdfabd3b6331f3",
+    "evidence/bad-history-reproducer.status": "4bf4fca02e6eeaf7f1c510b82c756e7f8a3c567a230bae1094b254adc774f38b",
+    "evidence/bad-history-reproducer.stderr.txt": "77f446a7272b7df123264caf9c730711f9dbd745bd6a3fd58e1032bdae2e500b",
+    "evidence/generation-readset-reproducer.status": "4bf4fca02e6eeaf7f1c510b82c756e7f8a3c567a230bae1094b254adc774f38b",
+    "evidence/generation-readset-reproducer.stderr.txt": "0ecd0a7ead5057992ad47180b8e021fe416789a552697e9ac74ede8f7a994837",
+    "evidence/repro_generation_input_source.py": "55b8db75eaeda78ac4e85ba6610340677ff5ca37734259ab63d0a83af73e048a",
+    "evidence/s41-generation-input-source.json": "c4f24df08c8a0223b474919b1a48c03d70799816db88a500207595a49444f8a3"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema": "SOROK_REVIEW_S41_INPUT_CLOSURE_V1",
+  "candidate_branch": "codex/sorok-s41-continuing-person-events",
+  "corrected_commit": "c72a10d284f8869b990db3e6849ed174a51bd784",
+  "prior_reviewed_commit": "0a03d4c4697e3f706382891b9c958aa109042747",
+  "prior_review_receipt": "4c37abaeb5fbbe0c80f33461d4f41a852281c00e",
+  "base": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+  "source_cuts": {
+    "m35": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+    "s36": "8da78d8031a06a4bd7e1297fd713e573299c0860",
+    "s37": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+    "s39": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+    "s40": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+    "language": "8d2920da951f98cd8246d7c34cac777928e0c732",
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135"
+  },
+  "decision": "ACCEPT_SCOPED",
+  "closed_defect": "persisted canonical-ref input could substitute hash/content; exact canonical input is now required once before effects and in warm/cold reader",
+  "checks": {
+    "focused_tests": "19 PASS, 0 FAIL (9.32s)",
+    "entrypoint": "PASS (exit 0); two E1/C8, native/English, NO_CHANGE/NO_PROPOSAL, zero targets, cold verify true",
+    "bad_history_reproducer": "exit 1; S41_HISTORY_BINDING_INVALID: S41_HISTORY_SOURCE_REF_NOT_CANONICAL",
+    "generation_readset_reproducer": "exit 1; S41_GENERATION_READSET_INVALID: S41_GENERATION_INPUT_SOURCES_MISSING",
+    "input_source_reproducer": "exit 1; S41_GENERATION_READSET_INVALID: S41_GENERATION_CANONICAL_INPUT_REPLACED",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "s41/history.py": "3ef8196a44f8b00e6219b8e05cc1f904226f6f03df777b0fb4bf1604ddf22818",
+    "s41/reader.py": "3a493dca029e5aa9a806f69bee7013eabe18cbfe2276e4a8c0ba87cee7a59c4b",
+    "tests/test_s41_generation_readset.py": "ee8c6afc48b11c26f6cd62d47198845c41e56ba7524cf08ae99b49aff69bdfbd",
+    "evidence/s41-input-tests-19.out": "851b8cb477781bb9b29747c03ec1677d82d67b2b178370604d9c9f289999289a",
+    "evidence/s41-input-entrypoint.json": "ab65d456b18201afec46c28f3201423fa195371759de8e00e2d53d70e73e3f4d",
+    "evidence/bad-history-reproducer.status": "4bf4fca02e6eeaf7f1c510b82c756e7f8a3c567a230bae1094b254adc774f38b",
+    "evidence/bad-history-reproducer.stderr.txt": "4e3b5d5593c0bc2704135d340780b301b1aad1776cc107bdaadbc2c705d869cc",
+    "evidence/generation-readset-reproducer.status": "4bf4fca02e6eeaf7f1c510b82c756e7f8a3c567a230bae1094b254adc774f38b",
+    "evidence/generation-readset-reproducer.stderr.txt": "36cebf4281f34a7d2b62d7babb9955102ab8d4e4f5506e12416605cbe966f077",
+    "evidence/input-source-reproducer.status": "4bf4fca02e6eeaf7f1c510b82c756e7f8a3c567a230bae1094b254adc774f38b",
+    "evidence/input-source-reproducer.stderr.txt": "ba23df3f0a02f9f41a69e634f51a566976bb7244f3cecc6ef85c238d5692cfec"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "SOROK_REVIEW_S41_CLOSURE_V1",
+  "candidate_branch": "codex/sorok-s41-continuing-person-events",
+  "corrected_commit": "ff12892dddf332e1f731e0c4cb13f8d62db0f294",
+  "prior_reviewed_commit": "cced4223ce559e66765921627288283cfc24e370",
+  "base": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+  "source_cuts": {
+    "m35": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+    "s36": "8da78d8031a06a4bd7e1297fd713e573299c0860",
+    "s37": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+    "s39": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+    "s40": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+    "language": "8d2920da951f98cd8246d7c34cac777928e0c732",
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135"
+  },
+  "decision": "REVISE",
+  "defect": "canonical history source is validated, but the generation receipt can cite a self-sealed replacement readset source; event reads OK warm/cold with verify true",
+  "checks": {
+    "focused_tests": "15 PASS, 0 FAIL (5.92s)",
+    "entrypoint": "PASS (exit 0); two E1/C8, same branch/store, native/English, NO_CHANGE/NO_PROPOSAL, zero targets, cold verify true",
+    "original_reproducer": "exit 1; S41_HISTORY_BINDING_INVALID: S41_HISTORY_SOURCE_REF_NOT_CANONICAL",
+    "generation_readset_replacement": "ACCEPTED OK warm/cold; defect",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "s41/history.py": "d1abcad6efdf4e4947d1f580f5d58486f88f3357d7320e794c89665721f5f4e9",
+    "s41/event.py": "1a078c4d94ec2b4b198354963f90b0c5e7cf71af2ecc3bda2b8441a98222457e",
+    "s41/reader.py": "8d92edb4461d104fb9e90f2552f56bc41354682d46debde61df9045a78d396c7",
+    "s41/session.py": "d1910b289d43256ff25d5fb3ae9b2537c43a551381f9ba05801466f5288c6fe1",
+    "tests/test_s41_history_binding.py": "371a5aeab1ad428f119b0a959927763ad6feaf892121bcfb2bcfe205d04db95f",
+    "evidence/s41-closure-tests-15.out": "13d6ece28833c37ce8cbe05c34ca902fe14ad749efa1cab93b18c4ed367c3b53",
+    "evidence/s41-closure-entrypoint.json": "ff7172f2df87bb04f0bf24d31d8509b2530d7170466f3ba853c5b017b6954343",
+    "evidence/original-reproducer.status": "4bf4fca02e6eeaf7f1c510b82c756e7f8a3c567a230bae1094b254adc774f38b",
+    "evidence/original-reproducer.stderr.txt": "027c7de423cd41effadab48edf3b5ded475a721017416a67e3a560707e213c18",
+    "evidence/repro_generation_readset.py": "14ca57fd0af92bc4eee7da4d7c5c08d8de5334e545fa09a3bf6645bb3f79a27e",
+    "evidence/s41-generation-readset.json": "1b38a3da786ea53d80d8f048a3f61887981a9801310c65820fc06c2deccf528b"
+  }
+}

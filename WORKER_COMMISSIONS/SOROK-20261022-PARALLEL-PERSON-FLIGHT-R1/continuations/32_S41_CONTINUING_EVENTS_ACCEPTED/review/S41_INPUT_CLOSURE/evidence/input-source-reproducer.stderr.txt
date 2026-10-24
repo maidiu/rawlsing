@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s41-input.E1KxLS/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/s41/reader.py", line 226, in read_event
+    validate_generation_readset(
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s41-input.E1KxLS/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/s41/history.py", line 152, in validate_generation_readset
+    raise S41HistoryRefusal("S41_GENERATION_CANONICAL_INPUT_REPLACED")
+s41.history.S41HistoryRefusal: S41_GENERATION_CANONICAL_INPUT_REPLACED
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/SOROK_REVIEW/S41_FINAL_CLOSURE/evidence/repro_generation_input_source.py", line 154, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/SOROK_REVIEW/S41_FINAL_CLOSURE/evidence/repro_generation_input_source.py", line 120, in main
+    second = session.read_event(binding["e1_event_id"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s41-input.E1KxLS/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/s41/session.py", line 74, in read_event
+    return read_event(self, event_ref)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s41-input.E1KxLS/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/s41/reader.py", line 232, in read_event
+    raise S41ReadRefusal(
+s41.reader.S41ReadRefusal: S41_GENERATION_READSET_INVALID: S41_GENERATION_CANONICAL_INPUT_REPLACED

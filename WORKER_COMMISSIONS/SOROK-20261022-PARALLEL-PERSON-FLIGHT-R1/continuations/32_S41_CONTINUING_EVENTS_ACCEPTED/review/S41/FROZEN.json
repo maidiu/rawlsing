@@ -1,0 +1,35 @@
+{
+  "schema": "SOROK_REVIEW_S41_V1",
+  "candidate_branch": "codex/sorok-s41-continuing-person-events",
+  "candidate_commit": "cced4223ce559e66765921627288283cfc24e370",
+  "base": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+  "source_cuts": {
+    "m35": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+    "s36": "8da78d8031a06a4bd7e1297fd713e573299c0860",
+    "s37": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+    "s39": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+    "s40": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+    "language": "8d2920da951f98cd8246d7c34cac777928e0c732",
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135"
+  },
+  "decision": "REVISE",
+  "defect": "history source identity is not bound: reader accepts an unrelated/wrong-bound sealed history source (wrong source_ref and prior_b_event_hash), cold verify true",
+  "checks": {
+    "focused_tests": "6 PASS, 0 FAIL (2.91s)",
+    "entrypoint": "PASS (exit 0); two E1/C8 occurrences, same branch/store, cold verify true",
+    "forged_caller_prior": "FILTERED; internal history source used",
+    "wrong_history_source": "ACCEPTED as OK warm/cold; defect",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "s41/reader.py": "31c462769cba7019c31f45b7004f1acf9116e1d5f741c3f022c9c395819619c5",
+    "s41/event.py": "1a0b4a7669be4b527ceb3cd70f569ac42245fd4259b24c32824a058dcfeff821",
+    "s41/session.py": "a9cccd42b35077db3a21108bfcbb99c2c302754a47b37bae97da1e26f627c2b9",
+    "s41/bindings.py": "1fd62ef87dbdcfd74d8000698795f27f694e0a22165ac12f29e7263a244c1e96",
+    "s41/performer.py": "435525a4455e8c5f79dfee43bbd81c79fd95576f5bd4a1698f6d2f077a791838",
+    "evidence/s41-tests-6.out": "f8d42294697d4b007c6ffcae799c132d1c46e36540c046a800e973f6b95955ef",
+    "evidence/s41-entrypoint.json": "9f9cb257c4dfd8001c5067f207c06e15e30b66cb4920e1782e6edf70b4f92e8c",
+    "evidence/repro_bad_history_reader.py": "bcdaaa291df6d5a2828f0a3c55874f98c04d348dcea71ef10fcfecfc2b9075d8",
+    "evidence/s41-bad-history-reader.json": "3a4461923419e1049cfb011a5f4f11fa692f75b1d6582467ed2b3e47e6135f10"
+  }
+}

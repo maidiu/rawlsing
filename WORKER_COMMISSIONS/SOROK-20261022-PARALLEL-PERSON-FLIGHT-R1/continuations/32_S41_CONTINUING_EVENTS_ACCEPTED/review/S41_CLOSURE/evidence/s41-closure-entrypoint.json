@@ -1,0 +1,123 @@
+{
+  "actor_action_appended": true,
+  "clock": 243,
+  "cold": {
+    "events": [
+      {
+        "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_513be6f634453126bf27464a9125ba07066de115bc79b19ca30e001da4213a64",
+        "attempt_status": "ADMITTED",
+        "c8_occurrence_id": "OCC-0001",
+        "e1_event_hash": "8836029250d49aa8dbdb33808ba4429d88dc2ccdbb1e8f1a770a503359ed403e",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "event_ordinal": 1,
+        "event_time": 242,
+        "generation_source_refs": [
+          "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+          "TEST_ONLY_S39_CTX_AVOID_DEBT",
+          "TEST_ONLY_S39_HIST_B_PRIOR_SHARE"
+        ],
+        "history_predicate": null,
+        "native_text": "\u00bfPuedo usar la herramienta?",
+        "performed": true,
+        "selected_option": "REQUEST_TOOL",
+        "source_operation": "SHARE_TOOL",
+        "status": "OK",
+        "target_branch": "NO_CHANGE",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL",
+        "translation_text": "May I use the tool?"
+      },
+      {
+        "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_d6ce1c3cae0fca4e387406de8fabd336e64948d49afb917de135b528f81d3039",
+        "attempt_status": "ADMITTED",
+        "c8_occurrence_id": "OCC-0002",
+        "e1_event_hash": "f0628e1bcdbe1c322cc2094f85c03ecf5e5e1cefae86cd64cc9ba3d2e1345d6d",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0002",
+        "event_ordinal": 2,
+        "event_time": 243,
+        "generation_source_refs": [
+          "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+          "TEST_ONLY_S39_CTX_AVOID_DEBT",
+          "TEST_ONLY_S41_HIST_TEST_ONLY_BP2_E1_OCC-0001"
+        ],
+        "history_predicate": "PRIOR_B_SHARE",
+        "native_text": "\u00bfPuedo usar la herramienta?",
+        "performed": true,
+        "selected_option": "REQUEST_TOOL",
+        "source_operation": "REFUSE_TOOL",
+        "status": "OK",
+        "target_branch": "NO_CHANGE",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL",
+        "translation_text": "May I use the tool?"
+      }
+    ],
+    "latest_ordinal": 2,
+    "verify_ok": true
+  },
+  "continue_status": "OK",
+  "events": [
+    {
+      "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_513be6f634453126bf27464a9125ba07066de115bc79b19ca30e001da4213a64",
+      "attempt_status": "ADMITTED",
+      "c8_occurrence_id": "OCC-0001",
+      "e1_event_hash": "8836029250d49aa8dbdb33808ba4429d88dc2ccdbb1e8f1a770a503359ed403e",
+      "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+      "event_ordinal": 1,
+      "event_time": 242,
+      "generation_source_refs": [
+        "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+        "TEST_ONLY_S39_CTX_AVOID_DEBT",
+        "TEST_ONLY_S39_HIST_B_PRIOR_SHARE"
+      ],
+      "history_predicate": null,
+      "native_text": "\u00bfPuedo usar la herramienta?",
+      "performed": true,
+      "selected_option": "REQUEST_TOOL",
+      "source_operation": "SHARE_TOOL",
+      "status": "OK",
+      "target_branch": "NO_CHANGE",
+      "target_proposals": [],
+      "target_reason": "NO_PROPOSAL",
+      "translation_text": "May I use the tool?"
+    },
+    {
+      "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_d6ce1c3cae0fca4e387406de8fabd336e64948d49afb917de135b528f81d3039",
+      "attempt_status": "ADMITTED",
+      "c8_occurrence_id": "OCC-0002",
+      "e1_event_hash": "f0628e1bcdbe1c322cc2094f85c03ecf5e5e1cefae86cd64cc9ba3d2e1345d6d",
+      "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0002",
+      "event_ordinal": 2,
+      "event_time": 243,
+      "generation_source_refs": [
+        "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+        "TEST_ONLY_S39_CTX_AVOID_DEBT",
+        "TEST_ONLY_S41_HIST_TEST_ONLY_BP2_E1_OCC-0001"
+      ],
+      "history_predicate": "PRIOR_B_SHARE",
+      "native_text": "\u00bfPuedo usar la herramienta?",
+      "performed": true,
+      "selected_option": "REQUEST_TOOL",
+      "source_operation": "REFUSE_TOOL",
+      "status": "OK",
+      "target_branch": "NO_CHANGE",
+      "target_proposals": [],
+      "target_reason": "NO_PROPOSAL",
+      "translation_text": "May I use the tool?"
+    }
+  ],
+  "grade": "TEST_ONLY_SOURCEFREE_CONTINUING_PERSON_NOT_NATIVE",
+  "latest_ordinal": 2,
+  "native": false,
+  "product_model_calls": 0,
+  "provider_calls": 0,
+  "root_actors": [
+    "A",
+    "B"
+  ],
+  "schema": "SOROK_S41_CONTINUING_PERSON_RUN@1",
+  "state_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-s41-ojo9iwwx",
+  "tool_available": true,
+  "tools_remaining": 1,
+  "verify_ok": true
+}
