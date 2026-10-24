@@ -1,0 +1,53 @@
+# R61AV — R03 cold restore: fixed external checkpoint, no new trust service
+
+**Disposition: ENGINEERING_CONTRACT_DECIDED__IMPLEMENTATION_REQUIRED.** R03 candidate `5b28d09602a35d4c5d5f060f450956c612ab3580` remains REVISE under independent review `7d8396329ed8ac2df86c82bb46e785a0dc487cde`. No code accepted or modified by this decision. User confirmed this HQ is on Sol High. I3/S2 bounded engineering decision; Astra and new scientific/product adjudication unnecessary. Last observed quota: 47% five-hour / 39% weekly consumed. Next work is economical coordination and existing OpenCode MAX implementation.
+
+## 1. Finding and minimum repair
+
+The cold API currently accepts only the submitted ledger. Its expected jobs, compilation, facts, references and self-hashes can all be changed together. Structural consistency alone cannot identify which internally consistent execution was the original one. More self-hashes cannot repair this trust boundary.
+
+Reuse R61AF's independently retained original-pin rule. The trusted coordinator captures the canonical checkpoint reference of the ORIGINAL validated R03 native result and retains it separately from the submitted ledger. Cold restore requires that exact separately supplied reference and checks it against the entire submitted canonical material before releasing a restored result. It must then retain existing structural/closure validation. No new registry, signer, protected store, provider call or native rerun is required.
+
+A cryptographic commitment to the complete canonical result is sufficient to bind the original job/fact identities, contents, associations and multiplicities; redundant parallel expectation ledgers are unnecessary. This does not make a self-selected hash trustworthy. Independence comes from the coordinator's original capture and fixed ingress, not the hash function or placement of a hash in another field of the submitted document.
+
+## 2. What is known before and after execution
+
+**Before native execution:** the independently frozen source/inventory/grammar/scientific frontier and lowering/issued workload determine expected operations, native candidate/job query-predicate identities, dispositions, budgets and permitted pending work. Preserve those commitments and actual plan-to-native reconciliation.
+
+**After actual native execution:** the existing native owner supplies receipts, empirical facts, typed outcomes and their identities. The coordinator can bind those OBSERVED outputs to the independently issued plan after live reconciliation. It cannot predict arbitrary empirical fact values from the grammar, and this repair must not require it to. The captured result checkpoint binds the complete original observation; it does not establish scientific truth, source issuance, R04 durable custody, R09 protected execution or native promotion.
+
+Thus choose the minimal combination: existing independently issued plan/native owner reconciliation at live execution + an externally retained complete result checkpoint at cold restore. Do not rederive empirical facts by re-executing discovery during restoration. Do not build an additional fact engine.
+
+## 3. Exact interface and ownership
+
+Implement in the existing R03 compositor (`rawlsing_next/pre553_universal_workload.py`); use other already authorized R03 paths only if indispensable. Keep R01/R02/native owners and the exact recovered U43 transport unchanged.
+
+1. Add a small explicit trusted-host capture interface on the live result, e.g. `GovernedFrontierResult.freeze_restore_checkpoint() -> str`. It verifies the actual result has successful candidate/operation no-drop and eligible accounting, complete expected operation/job/candidate mapping, native receipt/fact closure and valid multiplicities, then returns the canonical whole-result checkpoint. Share existing validation rather than duplicate a second result validator. It must not accept an arbitrary submitted ledger as its capture input. A failed/incomplete result cannot acquire an accepted-completed restore checkpoint; preserve its diagnostic/typed result without claiming cold-qualified completion.
+2. Change the cold API to `restore_governed_frontier_ledger(ledger, *, expected_checkpoint_ref: str | None = None)`. `None` is permitted only to produce a deliberate typed refusal. Missing, malformed or mismatched reference refuses with `WorkloadBindingRefusal` before any restored result is released. Preserve exact successful mapping-return semantics otherwise. There is no compatibility fallback which accepts an unpinned ledger.
+3. Compute the submitted canonical material hash using the existing convention (exclude only the self `ledger_hash`). Require both the submitted self-hash and the independently supplied original checkpoint to equal that computed hash; schema and full structural/closure validation still apply. The checkpoint commits all source/compilation/policy/frontier/issued jobs and operation/candidate identities, statuses, native receipt/fact OBJECT CONTENTS and references, receipt-to-fact/operation associations, multiplicities, Batch/replay and evaluated-frontier references already in the ledger.
+4. The trusted coordinator invokes capture directly on the original validated live result, stores the returned string independently, and provisions it into the next cold process. Subject-facing ingress accepts only the ledger; it closes over or receives the trusted original pin through host setup, never a request-selected pin. Update actual R03 test consumers to demonstrate this configured ingress. No new persistent coordinator service is needed: existing trusted caller/test host is the owner at this TEST_ONLY grade.
+5. Preserve collection semantics: compare ordered fields as ordered; compare unordered collections as canonical multisets where appropriate. Do not erase multiplicities through set/dict conversion before validation. The native fact-object catalogue must reject duplicate fact identities; legitimately shared facts referenced by different receipts remain lawful. Do not incorrectly mandate a globally one-to-one receipt/fact relation. A byte/content mutation with the old advertised fact ref must also change the committed canonical material and refuse.
+
+Using a different internal helper name is an engineering detail; the required public boundary and behavior above are fixed. A separately stored original whole-result checkpoint is the required expectation anchor. A full copy of expected facts/jobs in a second mutable candidate-controlled structure is not an alternative.
+
+## 4. Required refusals and finite proof
+
+Use the SAME coordinator, source/plan and captured original checkpoint for every hostile submission:
+- Genuine original ledger restores in a fresh process with the separately provisioned original pin, without native execution, new work issuance or budget charge.
+- Each prior coordinated single-fact deletion, fact duplication, and expected query/predicate job substitution, with internal hashes recomputed, refuses against that fixed pin. Preserve a real original positive restore between or after faults.
+- Changing fact contents while retaining advertised refs, dropping/swapping receipts/facts or changing typed/operation rows cannot pass by retaining a claimed `no_drop_ok` flag. Reuse relevant prior controls; do not create a universal mutation census.
+- Missing pin refuses. Subject cannot select/replace the pin through the configured ingress or cause a new pin to be computed from its submitted ledger.
+- Constructing a new trusted host and supplying BOTH a forged ledger and its forged pin is outside the fixed-host trusted-runtime promise, exactly as R61AF decided for R01. Document that demonstration without claiming an in-scope refusal requirement. Same-UID/private-state/root replacement remains excluded.
+- Verify the original live reconciliation detects duplicate native fact-object identities, missing receipt-to-fact closure and invalid expected native candidate/job correspondence BEFORE successful checkpoint capture. Do not bless arbitrary failed live results merely by hashing them.
+
+Retain real governed joint/conditional/D3/root-parent/minority/pending/source-value positives and HELD/UNKNOWN separation. The author should run the focused R03 and relevant retained suites; the existing distinct reviewer adapts the three failed cold probes to the fixed-pin API and checks the original positive. Missing-argument exceptions alone do NOT establish success: each hostile probe must pass the genuine original pin explicitly and a genuine restore with that pin must work. No fresh architecture/reviewer layer or R04 tests.
+
+## 5. Authority and implementation handoff
+
+This changes preservation/verification of the SAME empirical result, not scientific intent, estimand, ontology, minority policy or recursive search. No new user substantive choice is required. The four R03 code paths remain the complete code allowlist; ordinary own-return documentary revisions remain permitted. J52/W52, source/science/CI/production/N11/N12/Sorok and separately gated R04+ holds remain unchanged. N11 remains NOT_READY.
+
+**NEXT: downshift HQ to Sol Light.** Economical coordinator checks latest branch/actual sessions to avoid duplicate writers, then resumes the same existing OpenCode DeepSeek V4.1-Flash MAX author at the exact current candidate (or reconciles any intervening authorized return). The code job is one coherent fixed-pin restore repair, not another general investigation. Existing distinct OpenCode reviewer checks its successor once returned. No Codex worker or Astra needed on current evidence.
+
+### Ready-to-paste economical continuation
+
+Continue existing Pyat HQ from R61AV_R03_COLD_RESTORE_FIXED_PIN_DECISION.md on `agent/codex-pyat-r61-native-flight-director-r1`. The Sol High decision is complete. Verify exact current remote author/reviewer state and no active duplicate. Translate THIS decision into one same-author R03 bounded repair at candidate `5b28d09602a35d4c5d5f060f450956c612ab3580` if unchanged: live validated result captures an independently retained canonical checkpoint; cold restore requires the ORIGINAL separately provisioned pin; no pin from submitted payload or recomputed candidate. Keep existing no-drop/closure/multiplicity checks and native engines. Follow the finite proof in section4; no argument-omission-only fake hostile pass. Existing OpenCode MAX author/session/worktree and four code paths; own r4 return, prior evidence immutable. Then reuse distinct reviewer. Preserve all holds. Do not reopen court or build R04 trust infrastructure. Save/push/verify actual launch and result. No further High needed unless a concrete new decision appears.

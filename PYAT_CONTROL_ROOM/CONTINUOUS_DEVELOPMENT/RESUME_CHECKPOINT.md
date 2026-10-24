@@ -170,3 +170,6 @@ Candidate 5b28d09602a35d4c5d5f060f450956c612ab3580 verified11 SHA256/blob identi
 
 ## R61AU — R03 R3 review verified; Sol High decision boundary
 Review 7d8396329ed8ac2df86c82bb46e785a0dc487cde verified manifest/ownroot/directremote. Three fixes pass, three coordinated fact/job mutation failures remain. Stop further R03 repair until bounded independently retained expected baseline contract decided. Read R61AU_R03_COLD_EXPECTATION_DECISION.md. Request Sol High; no Astra/science expansion, no new worker. Full product incomplete, all holds retained.
+
+## R61AV — Sol High R03 restore decision complete; downshift
+User confirmed Sol High. Settled minimum: existing native issued-plan/result reconciliation plus original whole-result checkpoint captured by trusted coordinator from live validated result and retained separately; cold restore requires fixed original pin, missing/mismatch refuses, no subject-selected/recomputed pin. No re-execution/fact prediction/new trust service/R04 expansion. Read R61AV_R03_COLD_RESTORE_FIXED_PIN_DECISION.md for exact API, finite hostile+positive/cold proof, trust exclusions and ready continuation. No worker launched. Next Sol Light coordination then same OpenCodeMAX author/fourpath repair and existing distinct review. 47% fivehour/39%weekly observed. Downshift now; scientific/authority grades unchanged.
