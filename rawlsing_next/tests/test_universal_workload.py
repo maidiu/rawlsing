@@ -625,7 +625,7 @@ def test_r04_fixed_original_checkpoint_genuine_and_hostile(tmp_path):
     # A failed live result cannot acquire an accepted checkpoint.
     failed = replace(result, anti_join={**dict(result.anti_join),
                                         "no_drop_ok": False})
-    with pytest.raises(WorkloadBindingRefusal, match="CHECKPOINT_LIVE"):
+    with pytest.raises(WorkloadBindingRefusal, match="CANDIDATE_ANTIJOIN_FAILED"):
         failed.freeze_restore_checkpoint()
 
 
@@ -657,3 +657,18 @@ print(json.dumps({"schema": restored["schema"],
     assert child["jobs"] == len(ledger["expected_jobs"])
     assert child["receipts"] == len(ledger["receipt_refs"])
     assert child["facts"] == len(ledger["fact_refs"])
+
+
+def test_r05_capture_rejects_empty_ledger_and_duplicate_fact_refs(tmp_path):
+    bundle, inventory, policy, frontier, compilation, result = _governed_result(
+        tmp_path, "r05_capture.sav")
+    pin = result.freeze_restore_checkpoint()
+    empty = replace(result, operation_ledger=())
+    with pytest.raises(WorkloadBindingRefusal):
+        empty.freeze_restore_checkpoint()
+    duplicated = replace(
+        result, fact_refs=tuple(result.fact_refs) + (result.fact_refs[0],)
+    )
+    with pytest.raises(WorkloadBindingRefusal):
+        duplicated.freeze_restore_checkpoint()
+    assert result.freeze_restore_checkpoint() == pin

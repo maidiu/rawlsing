@@ -463,17 +463,11 @@ class GovernedFrontierResult:
 
     def freeze_restore_checkpoint(self) -> str:
         """Capture the original validated result checkpoint for cold restore."""
-        if not self.anti_join.get("no_drop_ok"):
-            raise WorkloadBindingRefusal("RESTORE_CHECKPOINT_LIVE_CANDIDATE_ANTIJOIN_FAILED")
-        if not self.operation_anti_join.get("no_drop_ok"):
-            raise WorkloadBindingRefusal("RESTORE_CHECKPOINT_LIVE_OPERATION_ANTIJOIN_FAILED")
-        if not self.compilation.expected_operation_ids:
-            raise WorkloadBindingRefusal("RESTORE_CHECKPOINT_EXPECTED_OPERATIONS_MISSING")
-        if not self.compilation.issued.record.expected_jobs:
-            raise WorkloadBindingRefusal("RESTORE_CHECKPOINT_EXPECTED_JOBS_MISSING")
-        if not self.receipt_refs or not self.fact_refs:
-            raise WorkloadBindingRefusal("RESTORE_CHECKPOINT_NATIVE_IDENTITY_MISSING")
-        return self.ledger()["ledger_hash"]
+        ledger = self.ledger()
+        material = dict(ledger)
+        material.pop("ledger_hash", None)
+        _validate_governed_ledger_material(material)
+        return ledger["ledger_hash"]
 
 
 def compile_governed_frontier(
@@ -848,6 +842,28 @@ def restore_governed_frontier_ledger(
         raise WorkloadBindingRefusal("GOVERNED_FRONTIER_LEDGER_HASH_MISMATCH")
     if computed != expected_checkpoint_ref:
         raise WorkloadBindingRefusal("GOVERNED_FRONTIER_CHECKPOINT_PIN_MISMATCH")
+def restore_governed_frontier_ledger(
+    ledger: Mapping[str, Any], *, expected_checkpoint_ref: str | None = None
+) -> Mapping[str, Any]:
+    """Validate an exact persisted ledger against the original external pin."""
+    if not isinstance(ledger, Mapping):
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_LEDGER_REQUIRED")
+    if not isinstance(expected_checkpoint_ref, str) or not expected_checkpoint_ref:
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_EXPECTED_CHECKPOINT_REQUIRED")
+    material = dict(ledger)
+    claimed = material.pop("ledger_hash", None)
+    computed = _hash(material)
+    if claimed is None or computed != claimed:
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_LEDGER_HASH_MISMATCH")
+    if computed != expected_checkpoint_ref:
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_CHECKPOINT_PIN_MISMATCH")
+    return _validate_governed_ledger_material(material)
+
+
+def _validate_governed_ledger_material(
+    material: Mapping[str, Any]
+) -> Mapping[str, Any]:
+    """Shared pin-free structural/expected/native closure validator."""
     if material.get("schema") != GOVERNED_FRONTIER_RESULT_SCHEMA:
         raise WorkloadBindingRefusal("GOVERNED_FRONTIER_LEDGER_SCHEMA_MISMATCH")
     required = (
