@@ -1,0 +1,22 @@
+{
+  "schema": "PYAT_R91_R05_R5_PROOF_WITNESS_V1",
+  "startup_commit": "d966b019b24ad0882ddf6964fe5dc11409ec4947",
+  "contract_commit": "ee999a4aada1d779364dd4734d6d4763e99d3e4b",
+  "code_commit": "70d1d87417bad215234145ac1b587cbeec8f98d0",
+  "branch": "agent/opencode-pyat-r91-r05-learned-consumer-r1",
+  "environment": {"python": "3.11.3", "python_executable": "/usr/local/bin/python3", "pytest": "9.0.2"},
+  "commands": [
+    {"id": "author", "command": "/usr/local/bin/python3 -m pytest -q rawlsing_next/tests/test_universal_learned_consumer.py rawlsing_next/tests/test_pre553_learned_world_composition.py --junitxml=.../r5/junit.xml", "exit_code": 0, "tests": 40, "failures": 0, "errors": 0, "skipped": 0, "time_seconds": 7.64},
+    {"id": "r05v-r1-r2-r3-probes", "command": "PYTHONPATH=\"$PWD\" /usr/local/bin/python3 -m pytest -q .r61/reconciliation/r05r4/probes/ --junitxml=.../r5/r05v_probes_replay.xml", "exit_code": 0, "tests": 15, "failures": 0, "errors": 0, "skipped": 0, "time_seconds": 1.23}
+  ],
+  "actual_native_routes": {
+    "direct": "actual M01/M1/M2/C1/N10E EXACT_SUPPORTED",
+    "joint": "actual AT10-source joint query arity 2, same learned disposition, EXACT_SUPPORTED",
+    "discovery": "actual AT10 ExactBoundedDiscoveryResult + receipt -> I05 C1 -> N10E EXACT_SUPPORTED",
+    "recursive": "actual AT11 RecursiveBranchHandoff -> MX01R2 C1 -> N10E EXACT_SUPPORTED",
+    "sever_restore": "discovery and recursive wrong-predicate refusal; exact restoration positive"
+  },
+  "custody": ["retained native composition originals", "trusted coordinator bound view", "complete view/original comparison", "typed statuses/Z16"],
+  "blobs": {"rawlsing_next/pre553_learned_world_composition.py": "1095f491b8867f592cd32c22fb43b25d6d41f805", "rawlsing_next/tests/test_universal_learned_consumer.py": "9c04f789655dcf36406c3784d68372fb98562f6a"},
+  "limits": ["full J42/P41/E04 NOT_REACHED", "sourcefree TEST_ONLY", "no original/science/CI/prod/N11/N12/F6/F7/Sorok/J52/W52/R04 authority", "author candidate only"]
+}
