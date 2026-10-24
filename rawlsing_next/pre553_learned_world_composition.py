@@ -1708,6 +1708,9 @@ class TrustedNativeGraphCoordinator:
                     raise LearnedWorldConsumerError(
                         "request slot differs from trusted admitted slot"
                     )
+                # The admitted slot is the sole authority for every retained
+                # actual association. Request-supplied actual values are ignored.
+                slot = admitted
                 if (
                     admitted.repository is None
                     or admitted.empirical_query is None
