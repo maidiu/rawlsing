@@ -188,6 +188,11 @@ def language_evidence(root: Path) -> dict:
         projection = session._projection(s40["speech_event_id"])
         view = session.language_view(s40["speech_event_id"], locale="en")
         generation = session.read_generation()["generation"]
+        plan = admission.get("plan") or {}
+        facts = (plan.get("readset") or {}).get("public_outward_facts") or []
+        e1_fact = next(
+            (row for row in facts if row.get("kind") == "ADMITTED_E1"), None
+        )
         private_refs = set(generation["source_refs"])
         language_refs = {row.get("event_id", "") for row in lme["source_event_refs"]}
         evidence = {
@@ -209,6 +214,14 @@ def language_evidence(root: Path) -> dict:
             "speech_event_hash": s40["speech_event_hash"],
             "admission_id": s40["admission_id"],
             "projection_episode_id": s40["projection_episode_id"],
+            "plan_public_e1_fact": e1_fact,
+            "actual_c8_e1_event_id": session.meta["c8"]["e1_event_id"],
+            "actual_c8_e1_event_hash": session.meta["c8"]["e1_event_hash"],
+            "plan_e1_fact_matches_actual": bool(
+                e1_fact
+                and e1_fact.get("event_id") == session.meta["c8"]["e1_event_id"]
+                and e1_fact.get("event_hash") == session.meta["c8"]["e1_event_hash"]
+            ),
             "lme_source_event_refs": lme["source_event_refs"],
             "lme_access_receipt_ids": lme["access_receipt_ids"],
             "admission_plan_hash": (admission.get("plan") or {}).get("plan_hash"),

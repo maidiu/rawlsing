@@ -99,8 +99,15 @@ class S40GeneratedSession(S39GeneratedSession):
                 world.advance(producer.event_time)
                 product._checkpoint(session.branch_id, world.clock, world)
 
+            e1_identity = {
+                "event_id": producer.e1_event["event_id"],
+                "event_hash": producer.e1_event["hash"],
+                "c8_occurrence_id": producer.out9.occurrence_id,
+                "c8_state_digest": producer.out9.readset["state_digest"],
+            }
             attempt = perform_generated_attempt(
-                session, attempt_request, generation_receipt=receipt
+                session, attempt_request, generation_receipt=receipt,
+                e1_identity=e1_identity,
             )
             producer.finalize_s36(attempt_result=attempt)
             s36 = dict(producer.s36_binding or {})

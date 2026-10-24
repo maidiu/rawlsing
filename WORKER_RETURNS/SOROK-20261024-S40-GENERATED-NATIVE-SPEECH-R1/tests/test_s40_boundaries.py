@@ -157,3 +157,48 @@ def test_mismatched_projection_plan_binding_is_refused(tmp_path):
         session.close()
     with pytest.raises(Exception):
         S40GeneratedSession.open(state)
+
+
+def test_wrong_public_e1_identity_refused_warm_and_cold(tmp_path):
+    case = case_for(True)
+    state = tmp_path / "wrong-e1"
+    session = S40GeneratedSession.start(state, case=case, source=source_for(case))
+    try:
+        s40 = session.read_s40()
+        rows = [
+            row for row in session.product.store.episodes(session.branch_id)
+            if row.get("kind") == "EXPRESSION_ADMISSION"
+            and (row.get("body") or {}).get("admission", {}).get(
+                "speech_event_id"
+            ) == s40["speech_event_id"]
+        ]
+        assert len(rows) == 1
+        body = dict(rows[0]["body"])
+        admission = dict(body["admission"])
+        plan = dict(admission["plan"])
+        readset = dict(plan["readset"])
+        facts = [dict(item) for item in readset.get("public_outward_facts", [])]
+        for fact in facts:
+            if fact.get("kind") == "ADMITTED_E1":
+                fact["event_id"] = "TEST_ONLY_WRONG_E1_ID"
+                fact["event_hash"] = "0" * 64
+        readset["public_outward_facts"] = facts
+        plan["readset"] = readset
+        admission["plan"] = plan
+        body["admission"] = admission
+        body["tamper_note"] = "wrong-e1-public-fact"
+        session.product._append_episode(
+            session.branch_id, "A", "EXPRESSION_ADMISSION",
+            session.clock(), body,
+        )
+        with pytest.raises(S40ReadRefusal) as exc:
+            session.read_s40()
+        assert exc.value.code in {
+            "S40_PLAN_E1_ID_MISMATCH",
+            "S40_PLAN_E1_HASH_MISMATCH",
+        }
+        assert session.verify()["ok"] is False
+    finally:
+        session.close()
+    with pytest.raises(Exception):
+        S40GeneratedSession.open(state)

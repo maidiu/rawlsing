@@ -47,7 +47,8 @@ def _result(*, actor_id, branch_id, attempt_request, generation_receipt_hash,
 
 
 def perform_generated_attempt(session, attempt_request: Mapping[str, object], *,
-                              generation_receipt: Mapping[str, object]) -> dict:
+                              generation_receipt: Mapping[str, object],
+                              e1_identity: Mapping[str, object]) -> dict:
     actor_id = attempt_request["actor_id"]
     branch_id = session.branch_id
     option = attempt_request["option_id"]
@@ -96,6 +97,7 @@ def perform_generated_attempt(session, attempt_request: Mapping[str, object], *,
             attempt_request=attempt_request,
             generation_receipt=generation_receipt,
             contract=contract,
+            e1_identity=e1_identity,
         )
         event = realized["event"]
         return _result(

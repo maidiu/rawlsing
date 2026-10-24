@@ -80,6 +80,8 @@ def run_one(root: Path, *, label: str, share: bool, context: str) -> dict:
         "translation_text": s40["translation_text"],
         "plan_hash": s40["plan_hash"],
         "equivalence_receipt_hash": s40["equivalence_receipt_hash"],
+        "e1_event_id": s40.get("e1_event_id", ""),
+        "e1_event_hash": s40.get("e1_event_hash", ""),
         "s36_outcome": read["outcome"],
         "s36_response_kind": read["response_kind"],
         "target_branch": read["target_branch"],

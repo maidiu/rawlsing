@@ -124,6 +124,7 @@ def make_plan(
     generation_receipt: Mapping[str, Any],
     source_event: Mapping[str, Any],
     access_receipt: Mapping[str, Any],
+    e1_identity: Mapping[str, Any],
 ) -> ExpressionPlan:
     if intent not in S40_UNITS:
         raise S40LanguageRefusal("S40_INTENT_NOT_IN_LANGUAGE_REGISTRY", intent)
@@ -154,8 +155,10 @@ def make_plan(
         "public_outward_facts": [
             {
                 "kind": "ADMITTED_E1",
-                "event_id": generation_receipt.get("event_ref", ""),
-                "event_hash": generation_receipt.get("event_ref", ""),
+                "event_id": e1_identity["event_id"],
+                "event_hash": e1_identity["event_hash"],
+                "c8_occurrence_id": e1_identity["c8_occurrence_id"],
+                "c8_state_digest": e1_identity["c8_state_digest"],
             },
             {
                 "kind": "OBJECTIVE_TOOL_STATE",
@@ -199,6 +202,7 @@ def realize_speaking(
     attempt_request: Mapping[str, Any],
     generation_receipt: Mapping[str, Any],
     contract: Mapping[str, Any],
+    e1_identity: Mapping[str, Any],
 ) -> dict:
     intent = attempt_request["option_id"]
     _ensure_competence(session)
@@ -210,6 +214,7 @@ def realize_speaking(
         generation_receipt=generation_receipt,
         source_event=source["event"],
         access_receipt=source["receipt"],
+        e1_identity=e1_identity,
     )
     native = build_native_artifact(plan)
     translation = build_translation_artifact(plan, native)
@@ -303,6 +308,8 @@ def realize_speaking(
         "language_registry_hash": S40_REGISTRY_HASH,
         "atom_universe_hash": digest(sorted(S40_ATOMS)),
         "private_generation_sources_in_plan": False,
+        "e1_event_id": e1_identity["event_id"],
+        "e1_event_hash": e1_identity["event_hash"],
         "target_proposals": [],
     })
     return {

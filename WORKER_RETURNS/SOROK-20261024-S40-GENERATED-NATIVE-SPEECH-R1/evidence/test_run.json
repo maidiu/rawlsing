@@ -21,6 +21,11 @@
       "status": "PASS"
     },
     {
+      "classname": "tests.test_s40_boundaries",
+      "name": "test_wrong_public_e1_identity_refused_warm_and_cold",
+      "status": "PASS"
+    },
+    {
       "classname": "tests.test_s40_native_speech",
       "name": "test_generated_request_has_own_native_speech_and_english_view",
       "status": "PASS"
@@ -39,10 +44,10 @@
   "command": "/usr/local/bin/python3 -B -m pytest -q -p no:cacheprovider --junitxml=/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S40-GENERATED-NATIVE-SPEECH-R1/junit/s40_full.xml tests",
   "counts": {
     "ERROR": 0,
-    "PASS": 7,
+    "PASS": 8,
     "RED": 0,
     "SKIP": 0,
-    "tests": 7
+    "tests": 8
   },
   "exit": 0,
   "junit": "junit/s40_full.xml",

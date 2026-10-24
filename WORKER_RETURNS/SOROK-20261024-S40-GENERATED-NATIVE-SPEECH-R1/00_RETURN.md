@@ -1,6 +1,6 @@
 # SOROK S40 — the generated response's own native speech and English view
 
-**RESULT:** `S40_GENERATED_REQUEST_OWN_SOURCE_LANGUAGE_SPEECH__AUTHORIZED_PLAN_NATIVE_ARTIFACT_EQUIVALENCE_LABELED_ENGLISH__SAME_S37_C12_C9__7_OF_7_FOCUSED_TESTS__ENTRYPOINT_0__NO_TARGET__NATIVE_HOLD`.
+**RESULT:** `S40_GENERATED_REQUEST_OWN_SOURCE_LANGUAGE_SPEECH__AUTHORIZED_PLAN_NATIVE_ARTIFACT_EQUIVALENCE_LABELED_ENGLISH__SAME_S37_C12_C9__8_OF_8_FOCUSED_TESTS__E1_ID_HASH_BOUND__ENTRYPOINT_0__NO_TARGET__NATIVE_HOLD`.
 
 The generated `REQUEST_TOOL` and supported generated `EXPLICIT_REFUSAL` now pass through an explicit S40-owned finite language registry, an authorized expression plan, native source-language artifact, three-way equivalence admission, one actual C12 speech event and a labeled English projection. The same S39/S37 persistent session, actor root, C9 reader and C12 event writer are reused. No neutral bench utterance is substituted for the generated request.
 
@@ -11,12 +11,29 @@ The generated `REQUEST_TOOL` and supported generated `EXPLICIT_REFUSAL` now pass
 - Write scope only `WORKER_RETURNS/SOROK-20261024-S40-GENERATED-NATIVE-SPEECH-R1/**`.
 - S39 accepted internals are read-only. S38 is settled; this is sourcefree language engineering independent of unissued native A/T and the pending stochastic tie policy.
 
+## Independent review repair — REVISE 1d6f89b2
+
+Review `27`/`44a0bcfe…` reproduced that the plan's `ADMITTED_E1` public fact used the E1 hash as both `event_id` and `event_hash`. Repair:
+
+- `S40GeneratedSession.start` now passes the actual producer/C8 E1 identity to the performer: `producer.e1_event["event_id"]`, `producer.e1_event["hash"]`, `producer.out9.occurrence_id` and the C8 state digest.
+- `make_plan` writes those values separately into the public `ADMITTED_E1` fact before wording/commit.
+- `read_s40` enforces the exact identity on warm/cold reads against the actual C8 journal occurrence, the derived E1 event ID (`TEST_ONLY_BP2_E1_<occurrence_id>`), the session C8 binding and the actual C9 response event hash, rather than trusting a self-sealed plan summary.
+- Added a focused persisted wrong-E1 public-fact test: warm `read_s40` refuses and cold reopen refuses.
+
+The unchanged reviewer oracle now passes:
+
+```text
+PYTHONPATH=<S40 return> python3 .../s40_e1_plan_binding.py
+# counts PASS 1 / FAIL 0; actual E1 TEST_ONLY_BP2_E1_OCC-0001;
+# plan public fact has same actual ID and hash
+```
+
 ## What was implemented
 
 - `s40/language.py`: S40-owned finite registry with two explicit synthetic phrase/atom pairs — `TOOL_REQUEST_WORKSHOP` (`¿Puedo usar la herramienta?` / `May I use the tool?`) and `EXPLICIT_REFUSAL_NOW` (`No, ahora no.` / `No, not now.`). The registry is versioned, sealed, labeled a model premise, and not a general translation claim.
 - `s40/performer.py`: generated `REQUEST_TOOL` and `EXPLICIT_REFUSAL` use the generated intent, declared competence and test-only language source/access, then the accepted `ExpressionPlan`/native/translation/equivalence/writer seams. `ATTEND_OBJECT` remains nonverbal inspection via `product.inspect`. A denied `REQUEST_TOOL` returns before any language setup and writes no speech. No legacy target or action-admission fabrication.
 - `s40/session.py`: subclasses the accepted S39 session, reuses its deterministic generation, M35/E1/access, targetless performer, C12/C9 persistence and reader. It overrides only `start` to use the S40 performer, and `_projection_verification` to evaluate the S40-owned finite registry on warm/cold views. No edit or global monkeypatch of accepted language/S37/S39 modules.
-- `s40/reader.py`: binds generation, attempt, plan, native/translation artifacts, equivalence receipt, access/source witness, admission, actual speech event, projection and C9 response in the same persistent session; warm/cold reads use the same records.
+- `s40/reader.py`: binds generation, attempt, plan, native/translation artifacts, equivalence receipt, access/source witness, actual speech event, projection and C9 response in the same persistent session; warm/cold reads use the same records and enforce the exact actual C8/E1 event ID/hash in the authorized plan.
 
 ## Precise model premises
 
@@ -45,11 +62,11 @@ Boundary evidence (`evidence/competence.json`, `evidence/mismatch.json`):
 
 - Missing language competence refuses with `S40_LANGUAGE_COMPETENCE_MISSING`; no speech event and zero C9 responses follow. Normal competence restores the accepted request speech.
 - An unauthorized stronger native/English pair is rejected against the unchanged plan with `UNAUTHORIZED_MEANING_STRENGTHENED`.
-- A mismatched persisted projection/plan binding is refused on warm read and cold reopen.
+- A mismatched persisted projection/plan binding is refused on warm read and cold reopen; the plan’s public E1 ID/hash is separately bound to the actual C8/E1 source and a wrong-E1 public fact is refused warm and cold.
 - OPEN/cycle generation still appends no actor action; this inherited S39 boundary remains in the focused tests.
 - No source/access failure silently falls back to an unrelated neutral utterance while certifying the request as performed.
 
-Focused tests: **7 passed** (`junit/s40_full.xml`); entrypoint exit 0. No broad historical reruns.
+Focused tests: **8 passed** (`junit/s40_full.xml`); entrypoint exit 0. No broad historical reruns.
 
 ## Reused roots/cuts
 
@@ -60,4 +77,4 @@ Focused tests: **7 passed** (`junit/s40_full.xml`); entrypoint exit 0. No broad 
 
 Wholly TEST_ONLY sourcefree synthetic language and generated action. No native CAN008/CAN011, CAN022/023 native issuance, C11/native C12, original/human data, A5, general translation quality, acquired competence, practice target or production architecture. The native/English phrase registry is a small explicit model premise. No product edits outside this return, no provider/domain/model calls, no extra workers/reviewers, no controller/M35/S37/S39 edits.
 
-**Terminal:** `S40_GENERATED_REQUEST_OWN_NATIVE_SPEECH__EXPLICIT_PLAN_ARTIFACT_EQUIVALENCE_LABELED_ENGLISH__DENIAL_NONVERBAL_PRESERVED__COLD_PERSISTED__7_OF_7_TESTS__NO_TARGET__NATIVE_HOLD`. Final commit and remote SHA are verified after push and reported in the final handback.
+**Terminal:** `S40_GENERATED_REQUEST_OWN_NATIVE_SPEECH__EXPLICIT_PLAN_ARTIFACT_EQUIVALENCE_LABELED_ENGLISH__E1_ID_HASH_BOUND__DENIAL_NONVERBAL_PRESERVED__COLD_PERSISTED__8_OF_8_TESTS__NO_TARGET__NATIVE_HOLD`. Final commit and remote SHA are verified after push and reported in the final handback.

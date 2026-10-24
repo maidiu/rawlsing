@@ -8,6 +8,7 @@ from .bootstrap import install
 install()
 
 from candidate import valid  # noqa: E402
+from c8_readonly_consumer import C8ReadOnlyConsumer  # noqa: E402
 from s39.model import PROVENANCE  # noqa: E402
 
 from .performer import SPEAKING_OPTIONS  # noqa: E402
@@ -147,6 +148,44 @@ def read_s40(session) -> dict:
             "equivalence_receipt_hash"
         ):
             raise S40ReadRefusal("S40_ADMISSION_EQUIVALENCE_MISMATCH")
+
+        plan = admission.get("plan") or {}
+        facts = (plan.get("readset") or {}).get("public_outward_facts") or []
+        e1_fact = next(
+            (row for row in facts if row.get("kind") == "ADMITTED_E1"), None
+        )
+        if not e1_fact:
+            raise S40ReadRefusal("S40_PLAN_ADMITTED_E1_FACT_MISSING")
+        c8 = session.meta.get("c8") or {}
+        actual_e1_id = c8.get("e1_event_id", "")
+        actual_e1_hash = c8.get("e1_event_hash", "")
+        if not actual_e1_id or not actual_e1_hash:
+            raise S40ReadRefusal("S40_ACTUAL_E1_IDENTITY_MISSING")
+        if e1_fact.get("event_id") != actual_e1_id:
+            raise S40ReadRefusal("S40_PLAN_E1_ID_MISMATCH")
+        if e1_fact.get("event_hash") != actual_e1_hash:
+            raise S40ReadRefusal("S40_PLAN_E1_HASH_MISMATCH")
+        if e1_fact.get("c8_occurrence_id") != c8.get("occurrence_id"):
+            raise S40ReadRefusal("S40_PLAN_E1_C8_ID_MISMATCH")
+        if e1_fact.get("c8_state_digest") != c8.get("c8_state_digest"):
+            raise S40ReadRefusal("S40_PLAN_E1_C8_DIGEST_MISMATCH")
+        if actual_e1_id != "TEST_ONLY_BP2_E1_" + str(c8.get("occurrence_id", "")):
+            raise S40ReadRefusal("S40_ACTUAL_E1_ID_DERIVATION_MISMATCH")
+        try:
+            c8_view = C8ReadOnlyConsumer(str(c8.get("journal_path", ""))).load()
+        except Exception as exc:
+            raise S40ReadRefusal("S40_C8_SOURCE_UNREADABLE", str(exc)) from exc
+        c8_event = c8_view.get(c8.get("occurrence_id", ""))
+        if not c8_event:
+            raise S40ReadRefusal("S40_C8_OCCURRENCE_ABSENT")
+        if c8_event.get("content_hash") != c8.get("c8_content_hash"):
+            raise S40ReadRefusal("S40_C8_CONTENT_HASH_MISMATCH")
+        try:
+            actual_s36 = session.read_s36()
+        except Exception as exc:
+            raise S40ReadRefusal("S40_ACTUAL_S36_READ_FAILED", str(exc)) from exc
+        if actual_s36.get("e1_event_hash") != actual_e1_hash:
+            raise S40ReadRefusal("S40_ACTUAL_C9_E1_HASH_MISMATCH")
         if s36["outcome"] not in {
             "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
             "OBSERVED_CURRENT_REFUSAL",
@@ -174,6 +213,8 @@ def read_s40(session) -> dict:
             "native_artifact_hash": language.get("native_artifact_hash"),
             "translation_artifact_hash": language.get("translation_artifact_hash"),
             "equivalence_receipt_hash": language.get("equivalence_receipt_hash"),
+            "e1_event_id": language.get("e1_event_id"),
+            "e1_event_hash": language.get("e1_event_hash"),
             "access_receipt_id": language.get("access_receipt_id"),
             "source_event_id": language.get("source_event_id"),
             "source_event_hash": language.get("source_event_hash"),
