@@ -51,6 +51,8 @@ def _current_repertoire(session, s43: dict) -> dict:
 
 def read_s43_event(session, event_ref: str) -> dict:
     base = session.read_event(event_ref)
+    if base.get("event_ordinal") == 1:
+        return {**base, "s43": None}
     if base.get("status") == "OK" and base.get("attempt_status") == "DENIED":
         binding = next(
             (

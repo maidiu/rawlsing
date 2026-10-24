@@ -466,3 +466,38 @@ def test_wrong_source_hash_and_branch_are_refused(tmp_path):
         assert exc.value.code == "SOURCE_BRANCH_MISMATCH"
     finally:
         session.close()
+
+
+def test_s40_first_event_reader_is_base_event_without_repertoire_assertion(tmp_path):
+    state = tmp_path / "first-reader"
+    case = case_for(True)
+    session = S43Session.start(state, case=case, source=source_for(case))
+    try:
+        first = session.read_events()[0]
+        assert first["event_ordinal"] == 1
+        base = session.read_event(first["e1_event_id"])
+        single = session.read_s43_event(first["e1_event_id"])
+        all_events = session.read_s43_events()
+        assert base["status"] == "OK"
+        assert single["status"] == "OK"
+        assert single["event_ordinal"] == 1
+        assert single["s43"] is None
+        assert len(all_events) == 1
+        assert all_events[0]["e1_event_id"] == first["e1_event_id"]
+        assert all_events[0]["s43"] is None
+        assert session.verify()["ok"] is True
+    finally:
+        session.close()
+
+    cold = S43Session.open(state)
+    try:
+        first = cold.read_events()[0]
+        assert cold.read_s43_event(first["e1_event_id"])["status"] == "OK"
+        assert cold.read_s43_event(first["e1_event_id"])["s43"] is None
+        events = cold.read_s43_events()
+        assert len(events) == 1
+        assert events[0]["e1_event_id"] == first["e1_event_id"]
+        assert events[0]["s43"] is None
+        assert cold.verify()["ok"] is True
+    finally:
+        cold.close()

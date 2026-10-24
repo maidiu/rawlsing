@@ -44,6 +44,10 @@ from s39.sources import context_records  # noqa: E402
 S42_RETURN = Path(roots()["s42_return"])
 S41_RETURN = Path(roots()["s41_return"])
 S40_RETURN = Path(roots()["s40_return"])
+REVIEW_FIRST_READER = Path(
+    "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/"
+    "sorok-incumbent-review/SOROK_REVIEW/S43/evidence/repro_s40_first_reader.py"
+)
 S42_MANIFEST = S42_RETURN / "evidence" / "source_manifest.json"
 S41_MANIFEST = S41_RETURN / "evidence" / "source_manifest.json"
 S42_FILES = [
@@ -533,6 +537,28 @@ def comparison_evidence(root: Path) -> dict:
     }
 
 
+def first_reader_evidence() -> dict:
+    env = dict(ENV, S43_RETURN=str(RET))
+    proc = subprocess.run(
+        [PY, str(REVIEW_FIRST_READER)], cwd=str(RET), env=env,
+        capture_output=True, text=True,
+    )
+    (LOGS / "repro_s40_first_reader.log").write_text(proc.stdout + proc.stderr)
+    try:
+        report = json.loads(proc.stdout)
+    except json.JSONDecodeError:
+        report = {}
+    return {
+        "schema": "SOROK_S43_S40_FIRST_READER_REPRO@1",
+        "oracle": str(REVIEW_FIRST_READER),
+        "oracle_sha256": _sha256(REVIEW_FIRST_READER),
+        "exit": proc.returncode,
+        "refused": proc.returncode != 0,
+        "report": report,
+        "stderr_tail": proc.stderr.strip().splitlines()[-3:],
+    }
+
+
 def test_evidence() -> dict:
     xml = JUNIT / "s43_full.xml"
     proc = _run(
@@ -652,6 +678,7 @@ def main() -> None:
         wrong = wrong_binding_evidence(work / "wrong")
         comparison = comparison_evidence(work / "comparison")
         tests = test_evidence()
+        first_reader = first_reader_evidence()
         s42_compat = s42_compat_evidence()
         s41_compat = s41_compat_evidence()
         entry = _run([PY, "-B", "run_s43.py"], "entrypoint.log")
@@ -664,11 +691,14 @@ def main() -> None:
         _write(EVID / "wrong_bindings.json", wrong)
         _write(EVID / "comparison.json", comparison)
         _write(EVID / "test_run.json", tests)
+        _write(EVID / "repro_s40_first_reader.json", first_reader)
         _write(EVID / "s42_compat.json", s42_compat)
         _write(EVID / "s41_compat.json", s41_compat)
         _write(EVID / "source_manifest.json", manifest)
         print(json.dumps({
             "tests": tests["counts"],
+            "first_reader_refused": first_reader["refused"],
+            "first_reader_report": first_reader["report"],
             "s42_compat": s42_compat["counts"],
             "s41_compat": s41_compat["counts"],
             "entrypoint_exit": entry.returncode,
