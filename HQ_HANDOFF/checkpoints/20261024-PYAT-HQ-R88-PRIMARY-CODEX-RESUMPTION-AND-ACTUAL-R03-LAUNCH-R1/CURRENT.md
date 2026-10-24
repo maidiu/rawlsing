@@ -1,0 +1,8 @@
+# R88 — primary Codex HQ resumes operative R87 and records one actual R03 launch
+
+Secondary Browser HQ R87 appointment, exact scoped R01/R08 acceptances and existing R61 R03 dispatch seal c5ece93e3071274a9dbbc318db772c8dd6acfb03 read and preserved. Canonical advanced during this turn; primary fast-forwarded tothe exact R87 canonical tip (immutable identity in previous_handoff). No duplicate worker existed: R87 explicitly issued-not-launched, already prepared samebranch at813775c07f0831605b6484a1d82afada30d85968. Primary actual attended OpenCode launch now supplies missing native execution. One author PID59217/same existing session/stable worktree, same exact four code paths, no R08 code merge, no native-owner edits. Primary supplementary sourcefree implementation contract bdf9661cc89ec3dbb9c754287f0c835663ee325b compatible with R87 mission; ordinary ownreturn IMPLEMENTATION root used by actual author and retained as documentary alias, no new code authority.
+
+Both review manifests/directremotes independently reverified (R01 29hashes/30reviewpaths; R08 27hashes/28paths), scoped acceptance limits retained. R02 C1 ancestor+unchangedadapter/decoderblobs checked. R03 conditional existinggrant satisfied at sourcefree local grain, code/fact integration now executing; not adoption/original35/N11 completion. Full downstream/no-drop operation accounting remains required.
+
+Light sufficient, no Codexworkers, original scientific/product compass and R04joined/R05/R06/source/FF/F6F7/CI/prod/N11/N12/Sorok/J52W52 holds unchanged. Controller externally owned; no duplicate work. Current10minquietheartbeat, no continuousgoalpolling. Actual R03 startup toolpreflight pending in primary launchreceipt.
+
