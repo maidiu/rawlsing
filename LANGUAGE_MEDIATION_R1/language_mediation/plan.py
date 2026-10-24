@@ -138,10 +138,13 @@ def _readset(index: dict, relations: list[dict], invalidated: list[dict],
 
 
 def _relation_matches(relation: dict, unit: dict) -> bool:
+    pair = pair_for_unit(unit)
     return (
         relation.get("concept_id") == unit.get("concept_id")
         and relation.get("milieu_id") == unit.get("milieu_id")
         and relation.get("sense_id") == unit.get("sense_id")
+        and relation.get("language_tag") == pair["native_language"]
+        and set(pair["atoms"]).issubset(set(relation.get("atoms", []) or []))
     )
 
 
@@ -181,20 +184,26 @@ def compile_plan(session, index: dict, contract: dict, *,
 
     pair = pair_for_unit(supported_unit)
     concept_id = supported_unit.get("concept_id") or ""
-    if concept_id:
+    readset_concept_id = concept_id
+    if fallback and requested_unit.get("concept_id"):
+        # A refused source-dependent request still needs its invalidated
+        # relations in the readset so the fallback cannot look as if the
+        # requested history was never consulted.
+        readset_concept_id = requested_unit["concept_id"]
+    if readset_concept_id:
         readset_relations = [
             row for row in index.get("relations", [])
-            if row.get("concept_id") == concept_id
+            if row.get("concept_id") == readset_concept_id
         ]
         readset_invalidated = [
             row for row in index.get("invalidated_relations", [])
-            if row.get("concept_id") == concept_id
+            if row.get("concept_id") == readset_concept_id
         ]
     else:
         readset_relations = []
         readset_invalidated = []
     readset = _readset(index, readset_relations, readset_invalidated,
-                       concept_id=concept_id)
+                       concept_id=readset_concept_id)
 
     plan = ExpressionPlan(
         schema=PLAN_SCHEMA,

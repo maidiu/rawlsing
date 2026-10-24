@@ -189,8 +189,21 @@ class MediatedJoinedSession(JoinedSession):
         return {"encounter": body, "episode": episode,
                 "event": event, "access": source["access"]}
 
+    def _access_receipt_ids(self) -> set[str]:
+        ids: set[str] = set()
+        for episode in self.episodes():
+            if episode.get("kind") != "LANGUAGE_ACCESS":
+                continue
+            body = episode.get("body", {})
+            receipt = body.get("receipt") or body
+            if receipt.get("receipt_id"):
+                ids.add(receipt["receipt_id"])
+        return ids
+
     def revoke_language_access(self, receipt_id: str, *,
                                reason: str = "TEST_ONLY_SEVERANCE"):
+        if receipt_id not in self._access_receipt_ids():
+            raise LanguageRefusal("ACCESS_RECEIPT_UNKNOWN", receipt_id)
         body = {
             "schema": "LME_SOURCE_ACCESS_REVOCATION@1",
             "receipt_id": receipt_id,
@@ -207,6 +220,8 @@ class MediatedJoinedSession(JoinedSession):
 
     def restore_language_access(self, receipt_id: str, *,
                                 reason: str = "TEST_ONLY_RESTORE"):
+        if receipt_id not in self._access_receipt_ids():
+            raise LanguageRefusal("ACCESS_RECEIPT_UNKNOWN", receipt_id)
         body = {
             "schema": "LME_SOURCE_ACCESS_RESTORATION@1",
             "receipt_id": receipt_id,
@@ -538,6 +553,67 @@ class MediatedJoinedSession(JoinedSession):
                 return body
         return None
 
+    def _admission_for(self, plan_hash: str, event_id: str) -> dict | None:
+        for episode in reversed(self.episodes()):
+            if episode.get("kind") != "EXPRESSION_ADMISSION":
+                continue
+            body = episode.get("body", {})
+            admission = body.get("admission") or {}
+            if (admission.get("speech_event_id") == event_id
+                    and (admission.get("plan") or {}).get("plan_hash")
+                    == plan_hash):
+                return admission
+        return None
+
+    def _projection_verification(self, event: dict, lme: dict,
+                                 projection: dict) -> dict:
+        """Re-bind a cached projection to its admitted event and artifacts."""
+        event_id = event.get("event_id", "")
+        if projection.get("schema") != PROJECTION_SCHEMA:
+            return {"ok": False, "reason": "PROJECTION_SCHEMA_MISMATCH"}
+        if projection.get("source_speech_event_id") != event_id:
+            return {"ok": False, "reason": "PROJECTION_SOURCE_EVENT_MISMATCH"}
+        if projection.get("source_event_hash") != event.get("hash", ""):
+            return {"ok": False, "reason": "PROJECTION_SOURCE_HASH_MISMATCH"}
+        if projection.get("plan_hash") != lme.get("plan_hash", ""):
+            return {"ok": False, "reason": "PROJECTION_PLAN_HASH_MISMATCH"}
+        if (projection.get("native_artifact_hash")
+                != lme.get("native_artifact_hash", "")):
+            return {"ok": False, "reason": "PROJECTION_NATIVE_HASH_MISMATCH"}
+        if (projection.get("translation_artifact_hash")
+                != lme.get("translation_artifact_hash", "")):
+            return {"ok": False,
+                    "reason": "PROJECTION_TRANSLATION_HASH_MISMATCH"}
+        receipt = projection.get("equivalence_receipt") or {}
+        if receipt.get("status") != "ACCEPTED":
+            return {"ok": False,
+                    "reason": "EQUIVALENCE_" + str(receipt.get("status"))}
+        if receipt.get("receipt_hash") != lme.get("equivalence_receipt_hash", ""):
+            return {"ok": False,
+                    "reason": "PROJECTION_EQUIVALENCE_HASH_MISMATCH"}
+        admission = self._admission_for(lme.get("plan_hash", ""), event_id)
+        if not admission:
+            return {"ok": False, "reason": "PROJECTION_ADMISSION_MISSING"}
+        native = admission.get("native_artifact") or {}
+        translation = admission.get("translation_artifact") or {}
+        if native.get("artifact_hash") != projection.get("native_artifact_hash"):
+            return {"ok": False, "reason": "PROJECTION_NATIVE_ARTIFACT_MISMATCH"}
+        if (translation.get("artifact_hash")
+                != projection.get("translation_artifact_hash")):
+            return {"ok": False,
+                    "reason": "PROJECTION_TRANSLATION_ARTIFACT_MISMATCH"}
+        if translation.get("text") != projection.get("text"):
+            return {"ok": False, "reason": "PROJECTION_TEXT_MISMATCH"}
+        recheck = evaluate_pair(admission.get("plan") or {}, native, translation)
+        if recheck.get("status") != "ACCEPTED":
+            return {"ok": False,
+                    "reason": "PROJECTION_EQUIVALENCE_"
+                              + str(recheck.get("status"))}
+        if recheck.get("receipt_hash") != receipt.get("receipt_hash"):
+            return {"ok": False,
+                    "reason": "PROJECTION_EQUIVALENCE_RECEIPT_MISMATCH"}
+        return {"ok": True}
+
     def language_view(self, event_id: str, *, locale: str | None = None,
                       attention: str | None = None,
                       fail_translation: bool = False) -> dict:
@@ -599,14 +675,13 @@ class MediatedJoinedSession(JoinedSession):
                     "display_mode": "TRANSLATION_UNAVAILABLE",
                     "translation_status": "PROJECTION_MISSING",
                     "source_preserved": True}
-        receipt = projection.get("equivalence_receipt", {})
-        if receipt.get("status") != "ACCEPTED":
+        verification = self._projection_verification(event, lme, projection)
+        if not verification["ok"]:
             return {**base, "status": "UNRESOLVED",
                     "display_mode": "TRANSLATION_UNAVAILABLE",
-                    "translation_status": "EQUIVALENCE_" + str(
-                        receipt.get("status")),
-                    "source_preserved": True,
-                    "equivalence": receipt}
+                    "translation_status": verification["reason"],
+                    "source_preserved": True}
+        receipt = projection.get("equivalence_receipt", {})
         return {
             **base,
             "status": "OK",

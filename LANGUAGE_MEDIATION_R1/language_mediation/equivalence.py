@@ -33,6 +33,11 @@ def _plan_field(plan, name, default=None):
     return getattr(plan, name, default)
 
 
+def _ref_key(row: dict) -> tuple:
+    return (row.get("event_id", ""), row.get("event_hash", ""),
+            row.get("branch_id", ""))
+
+
 def _lookup_pair(native: dict, translation: dict,
                  pairs: dict) -> dict | None:
     key = (
@@ -65,6 +70,44 @@ def evaluate_pair(plan, native: dict, translation: dict, *,
     checks["translation_source_binding"] = (
         translation.get("source_artifact_hash") == native.get("artifact_hash")
     )
+    checks["translation_source_language"] = (
+        translation.get("source_language_tag") == native.get("language_tag")
+    )
+    checks["translation_not_actor_speech"] = (
+        translation.get("not_actor_speech") is True
+    )
+
+    # When the plan carries its authorized unit/readset (the real
+    # ExpressionPlan does), both artifacts must still be bound to that same
+    # plan detail.  The bare plan-hash equality above is necessary but not
+    # sufficient: an artifact set can be re-sealed with the same plan hash.
+    plan_unit = _plan_field(plan, "unit", None)
+    plan_pair = _plan_field(plan, "pair", None)
+    if isinstance(plan_unit, dict) and plan_unit:
+        checks["native_unit_binding"] = (
+            native.get("unit_id") == plan_unit.get("unit_id")
+        )
+        expected_language = plan_unit.get("language_tag")
+        if expected_language is None and isinstance(plan_pair, dict):
+            expected_language = plan_pair.get("native_language")
+        if expected_language is not None:
+            checks["native_language_binding"] = (
+                native.get("language_tag") == expected_language
+            )
+    plan_relations = _plan_field(plan, "relation_ids", None)
+    if plan_relations is not None:
+        checks["native_source_relations"] = (
+            sorted(native.get("source_relation_ids", []) or [])
+            == sorted(plan_relations)
+        )
+    plan_readset = _plan_field(plan, "readset", None)
+    if isinstance(plan_readset, dict) and "source_event_refs" in plan_readset:
+        checks["native_source_events"] = (
+            sorted(_ref_key(row)
+                   for row in native.get("source_event_refs", []) or [])
+            == sorted(_ref_key(row)
+                      for row in plan_readset.get("source_event_refs", []) or [])
+        )
 
     structural = all(checks.values())
     pair = None if not structural else _lookup_pair(native, translation, pairs)
@@ -89,6 +132,11 @@ def evaluate_pair(plan, native: dict, translation: dict, *,
             codes.append("ARTIFACT_BINDING_MISMATCH")
         if not checks["native_artifact_hash"] or not checks["translation_artifact_hash"]:
             codes.append("ARTIFACT_HASH_INVALID")
+        if not all(checks.get(key, True) for key in (
+                "native_unit_binding", "native_language_binding",
+                "native_source_relations", "native_source_events",
+                "translation_source_language", "translation_not_actor_speech")):
+            codes.append("ARTIFACT_PLAN_BINDING_MISMATCH")
         return _receipt("REJECTED", codes or ["ARTIFACT_STRUCTURE_INVALID"],
                         checks, plan, native, translation, authorized,
                         list(native_atoms))
