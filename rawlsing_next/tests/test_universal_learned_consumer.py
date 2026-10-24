@@ -647,6 +647,116 @@ def test_actual_discovery_route_learned_and_consumer():
     )
     assert restored.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
 
+    extension = provide_empirical_possibility_slice_ext(
+        repository=source["repo"],
+        empirical_query=produced_query,
+        predicate=produced_predicate,
+        authority_registry=registry,
+        release_refs=(source["release_ref"],),
+        consumer_query=consumer_query,
+        model_rule=fx.make_model_rule(source["universe"].ref, "r91-r05-at10"),
+        condition_binding_witness=witness,
+        discovery_result=discovery,
+        discovery_receipt_ref=receipt.ref,
+    )
+    assert extension.producer_route == "I05_EXACT_BOUNDED_VIA_ACCEPTED_COMPOSITION"
+    slot = i4.NativeGraphSlot(
+        "at10-discovery",
+        source["universe"].ref,
+        source["release_ref"],
+        produced_query.ref,
+        produced_predicate.ref,
+        consumer_query.ref,
+        learned.m1_disposition.validator_authority_ref.authority_content_hash
+        if hasattr(learned.m1_disposition.validator_authority_ref, "authority_content_hash")
+        else fx.make_model_rule(source["universe"].ref, "r91-r05-at10").rule_hash,
+        "I05_EXACT_BOUNDED_TO_POSITIONED_SUBJECT",
+        discovery_result=discovery,
+        discovery_receipt_ref=receipt.ref,
+        discovery_frontier_ref=discovery.evaluated_frontier_ref,
+        condition_value_witness=witness,
+        target_arity=1,
+        joint_order_semantics="SEMANTIC_ORDERED",
+        m1_disposition=learned.m1_disposition,
+        m2_release=learned.m2_artifacts.release.ref,
+        repository=source["repo"],
+        empirical_query=produced_query,
+        predicate=produced_predicate,
+        authority_registry=registry,
+        consumer_query=consumer_query,
+        model_rule=fx.make_model_rule(source["universe"].ref, "r91-r05-at10"),
+    )
+    # model hash must be the actual consumer model rule hash
+    slot = replace(
+        slot,
+        model_rule_hash=fx.make_model_rule(
+            source["universe"].ref, "r91-r05-at10"
+        ).rule_hash,
+    )
+    extension = provide_empirical_possibility_slice_ext(
+        repository=slot.repository,
+        empirical_query=slot.empirical_query,
+        predicate=slot.predicate,
+        authority_registry=slot.authority_registry,
+        release_refs=(slot.release_ref,),
+        consumer_query=slot.consumer_query,
+        model_rule=slot.model_rule,
+        condition_binding_witness=slot.condition_value_witness,
+        discovery_result=slot.discovery_result,
+        discovery_receipt_ref=slot.discovery_receipt_ref,
+    )
+    slot = replace(slot, e41_input=extension)
+    request = i4.NativeGraphExecutionRequest((slot,))
+    coordinator = i4.TrustedNativeGraphCoordinator(admitted_slots={slot.slot_id: slot})
+    bound = coordinator.execute(request)
+    trusted = i4.evaluate_learned_world_consumer(
+        learned,
+        composition=bound.view.compositions[0],
+        consumer_query=consumer_query,
+        model_rule=slot.model_rule,
+        producer_query_ref=produced_query.ref,
+        producer_predicate_ref=produced_predicate.ref,
+        product_graph=bound,
+        trusted_graph_reader=coordinator,
+    )
+    assert trusted.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    assert trusted.producer_route == "I05_EXACT_BOUNDED_TO_POSITIONED_SUBJECT"
+    assert trusted.consumer_values_read["extension_route"] == extension.producer_route
+
+    evidence_change_query = ho._query(
+        source, qauth, x1, ("Y",), tag="r91-r05-at10-changed-evidence"
+    )
+    evidence_change_witness = fx.build_witness_for_binding(
+        witness_object_id="urn:test:r91-r05:at10:changed-witness",
+        consumer_query=consumer_query,
+        producer_query=evidence_change_query,
+        producer_predicate=x1,
+        bindings=[conditioner],
+        coordinate_value_pairs=[(source["qrefs"]["X"], 1)],
+        pairing_authority=pairing,
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+    )
+    evidence_change_composition = compose_positioned_subject_possibility(
+        repository=source["repo"],
+        empirical_query=evidence_change_query,
+        predicate=x1,
+        authority_registry=registry,
+        release_refs=(source["release_ref"],),
+        consumer_query=consumer_query,
+        model_rule=slot.model_rule,
+        condition_binding_witness=evidence_change_witness,
+    )
+    evidence_change_refused = i4.evaluate_learned_world_consumer(
+        learned,
+        composition=evidence_change_composition,
+        consumer_query=consumer_query,
+        model_rule=slot.model_rule,
+        producer_query_ref=evidence_change_query.ref,
+        producer_predicate_ref=x1.ref,
+    )
+    assert evidence_change_refused.state != "LEARNED_CONSUMER_EXACT_SUPPORTED"
+
     joint_query = ho._query(
         source, qauth, produced_predicate, ("X", "Y"), tag="r91-r05-at10-joint"
     )
@@ -836,3 +946,60 @@ def test_actual_recursive_route_learned_and_consumer():
         producer_predicate_ref=child_predicate.ref,
     )
     assert restored.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
+
+
+    extension = provide_empirical_possibility_slice_ext(
+        repository=source["repo"],
+        empirical_query=child_query,
+        predicate=child_predicate,
+        authority_registry=registry,
+        release_refs=(source["release_ref"],),
+        consumer_query=consumer_query,
+        model_rule=fx.make_model_rule(source["universe"].ref, "r91-r05-at11"),
+        condition_binding_witness=witness,
+        recursive_handoff=handoff,
+    )
+    assert extension.producer_route == "MX01R2_RECURSIVE_VIA_ACCEPTED_COMPOSITION"
+    recursive_slot = i4.NativeGraphSlot(
+        "at11-recursive",
+        source["universe"].ref,
+        source["release_ref"],
+        child_query.ref,
+        child_predicate.ref,
+        consumer_query.ref,
+        fx.make_model_rule(source["universe"].ref, "r91-r05-at11").rule_hash,
+        "MX01R2_RECURSIVE_TO_POSITIONED_SUBJECT",
+        recursive_handoff=handoff,
+        recursive_lineage_refs=tuple(composition.recursive_lineage_refs),
+        root_parent_ref=handoff.immediate_parent_branch_ref,
+        condition_value_witness=witness,
+        target_arity=1,
+        joint_order_semantics="SEMANTIC_ORDERED",
+        m1_disposition=learned.m1_disposition,
+        m2_release=learned.m2_artifacts.release.ref,
+        e41_input=extension,
+        repository=source["repo"],
+        empirical_query=child_query,
+        predicate=child_predicate,
+        authority_registry=registry,
+        consumer_query=consumer_query,
+        model_rule=fx.make_model_rule(source["universe"].ref, "r91-r05-at11"),
+    )
+    coordinator = i4.TrustedNativeGraphCoordinator(
+        admitted_slots={recursive_slot.slot_id: recursive_slot}
+    )
+    bound = coordinator.execute(i4.NativeGraphExecutionRequest((recursive_slot,)))
+    trusted = i4.evaluate_learned_world_consumer(
+        learned,
+        composition=bound.view.compositions[0],
+        consumer_query=consumer_query,
+        model_rule=recursive_slot.model_rule,
+        producer_query_ref=child_query.ref,
+        producer_predicate_ref=child_predicate.ref,
+        product_graph=bound,
+        trusted_graph_reader=coordinator,
+    )
+    assert trusted.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    assert trusted.producer_route == "MX01R2_RECURSIVE_TO_POSITIONED_SUBJECT"
+    assert trusted.recursive_handoff_refs == (handoff.ref,)
+    assert trusted.consumer_values_read["extension_route"] == extension.producer_route

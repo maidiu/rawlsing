@@ -50,6 +50,7 @@ from rawlsing_next.pre553_learned_product_release import (
 from rawlsing_next.pre553_route_b_production import RouteBProductionResult
 from rawlsing_next.pre553_analytical_composition import (
     AnalyticalCompositionResult,
+    compose_positioned_subject_possibility,
     native_composition_original,
 )
 from rawlsing_next.pre553_universal_empirical_extension import (
@@ -58,6 +59,7 @@ from rawlsing_next.pre553_universal_empirical_extension import (
     EXT_ROUTE_DISCOVERY,
     EXT_ROUTE_RECURSIVE,
     EmpiricalPossibilitySliceExtensionResult,
+    provide_empirical_possibility_slice_ext,
 )
 from rawlsing_next.source_backed_positioned_subject_possibility import (
     PositionedSubjectPossibilityModelRule,
@@ -1603,6 +1605,26 @@ class NativeGraphSlot:
     consumer_query_ref: ExactRef
     model_rule_hash: str
     producer_route: str
+    discovery_result: Any | None = None
+    discovery_receipt_ref: ExactRef | None = None
+    discovery_frontier_ref: ExactRef | None = None
+    recursive_handoff: Any | None = None
+    recursive_lineage_refs: tuple[ExactRef, ...] = ()
+    root_parent_ref: ExactRef | None = None
+    condition_value_witness: Any | None = None
+    target_arity: int | None = None
+    joint_order_semantics: str | None = None
+    m1_disposition: Any | None = None
+    m2_release: ExactRef | None = None
+    b5_selection: ExactRef | None = None
+    require_current_selection: bool = False
+    e41_input: Any | None = None
+    repository: Any | None = None
+    empirical_query: Any | None = None
+    predicate: Any | None = None
+    authority_registry: Any | None = None
+    consumer_query: Any | None = None
+    model_rule: Any | None = None
 
     def __post_init__(self) -> None:
         object.__setattr__(self, "slot_id", str(self.slot_id).strip())
@@ -1617,6 +1639,21 @@ class NativeGraphSlot:
             raise LearnedWorldConsumerError("slot model_rule_hash must be sha256")
         if not str(self.producer_route).strip():
             raise LearnedWorldConsumerError("slot producer route is required")
+        for name in ("discovery_receipt_ref", "discovery_frontier_ref", "root_parent_ref", "m2_release", "b5_selection"):
+            value = getattr(self, name)
+            if value is not None:
+                object.__setattr__(self, name, _exact(value, name))
+        object.__setattr__(
+            self,
+            "recursive_lineage_refs",
+            _refs(self.recursive_lineage_refs, "recursive_lineage_refs"),
+        )
+        if self.target_arity is not None and (
+            type(self.target_arity) is not int or self.target_arity < 1
+        ):
+            raise LearnedWorldConsumerError("slot target_arity must be positive int")
+        if self.require_current_selection and self.b5_selection is None:
+            raise LearnedWorldConsumerError("current selection required but absent in admitted slot")
 
 
 @dataclass(frozen=True)
@@ -1644,20 +1681,99 @@ class TrustedNativeGraphCoordinator:
 
     def __init__(
         self,
-        executors: Mapping[str, Callable[[NativeGraphSlot], AnalyticalCompositionResult]],
+        executors: Mapping[str, Callable[[NativeGraphSlot], AnalyticalCompositionResult]] | None = None,
+        *,
+        admitted_slots: Mapping[str, NativeGraphSlot] | None = None,
     ) -> None:
-        self._executors = dict(executors)
+        self._executors = dict(executors or {})
+        self._admitted_slots = dict(admitted_slots or {})
         self._originals: dict[str, tuple[Mapping[str, Any], tuple[AnalyticalCompositionResult, ...]]] = {}
 
     def execute(self, request: NativeGraphExecutionRequest) -> BoundNativeProductGraph:
         components = []
+        slot_records = []
+        extensions: list[Any] = []
         for slot in request.slots:
-            executor = self._executors.get(slot.slot_id)
-            if executor is None:
-                raise LearnedWorldConsumerError(f"no trusted executor for slot {slot.slot_id!r}")
-            component = executor(slot)
+            admitted = self._admitted_slots.get(slot.slot_id)
+            if admitted is not None:
+                if (
+                    admitted.producer_query_ref != slot.producer_query_ref
+                    or admitted.producer_predicate_ref != slot.producer_predicate_ref
+                    or admitted.consumer_query_ref != slot.consumer_query_ref
+                    or admitted.model_rule_hash != slot.model_rule_hash
+                    or admitted.producer_route != slot.producer_route
+                    or admitted.source_universe_ref != slot.source_universe_ref
+                    or admitted.release_ref != slot.release_ref
+                ):
+                    raise LearnedWorldConsumerError(
+                        "request slot differs from trusted admitted slot"
+                    )
+                if (
+                    admitted.repository is None
+                    or admitted.empirical_query is None
+                    or admitted.predicate is None
+                    or admitted.authority_registry is None
+                    or admitted.consumer_query is None
+                    or admitted.model_rule is None
+                ):
+                    raise LearnedWorldConsumerError(
+                        "admitted slot lacks actual native invocation inputs"
+                    )
+                kwargs = dict(
+                    repository=admitted.repository,
+                    empirical_query=admitted.empirical_query,
+                    predicate=admitted.predicate,
+                    authority_registry=admitted.authority_registry,
+                    release_refs=(admitted.release_ref,),
+                    consumer_query=admitted.consumer_query,
+                    model_rule=admitted.model_rule,
+                    condition_binding_witness=admitted.condition_value_witness,
+                )
+                if slot.require_current_selection and slot.b5_selection is None:
+                    raise LearnedWorldConsumerError(
+                        "admitted currentness requirement lacks B5 selection"
+                    )
+                if admitted.discovery_result is not None:
+                    if admitted.discovery_receipt_ref is None:
+                        raise LearnedWorldConsumerError(
+                            "discovery input requires exact receipt"
+                        )
+                    kwargs["discovery_result"] = admitted.discovery_result
+                    kwargs["discovery_receipt_ref"] = admitted.discovery_receipt_ref
+                if admitted.recursive_handoff is not None:
+                    kwargs["recursive_handoff"] = admitted.recursive_handoff
+                component = compose_positioned_subject_possibility(**kwargs)
+                if admitted.e41_input is not None:
+                    extension = provide_empirical_possibility_slice_ext(
+                        repository=admitted.repository,
+                        empirical_query=admitted.empirical_query,
+                        predicate=admitted.predicate,
+                        authority_registry=admitted.authority_registry,
+                        release_refs=(admitted.release_ref,),
+                        consumer_query=admitted.consumer_query,
+                        model_rule=admitted.model_rule,
+                        condition_binding_witness=admitted.condition_value_witness,
+                        discovery_result=admitted.discovery_result,
+                        discovery_receipt_ref=admitted.discovery_receipt_ref,
+                        recursive_handoff=admitted.recursive_handoff,
+                    )
+                    if (
+                        extension.composition_result.composed_result_identity_hash
+                        != component.composed_result_identity_hash
+                        or extension.producer_route
+                        != extension.extension_receipt.producer_route
+                    ):
+                        raise LearnedWorldConsumerError(
+                            "E41 execution does not reconcile with actual C1 execution"
+                        )
+                    extensions.append(extension)
+            else:
+                executor = self._executors.get(slot.slot_id)
+                if executor is None:
+                    raise LearnedWorldConsumerError(f"no trusted executor for slot {slot.slot_id!r}")
+                component = executor(slot)
             if not isinstance(component, AnalyticalCompositionResult):
-                raise LearnedWorldConsumerError("trusted executor did not return a native composition")
+                raise LearnedWorldConsumerError("trusted execution did not return a native composition")
             if (
                 component.producer_query_ref != slot.producer_query_ref
                 or component.producer_predicate_ref != slot.producer_predicate_ref
@@ -1668,12 +1784,27 @@ class TrustedNativeGraphCoordinator:
                 or slot.release_ref not in set(component.release_refs)
             ):
                 raise LearnedWorldConsumerError("executed slot does not match admitted determinants")
+            if slot.target_arity is not None and component.joint_component_count != slot.target_arity:
+                raise LearnedWorldConsumerError("executed slot joint arity differs from admitted slot")
+            if slot.joint_order_semantics is not None and component.joint_order_semantics != slot.joint_order_semantics:
+                raise LearnedWorldConsumerError("executed slot joint order differs from admitted slot")
+            if admitted is not None:
+                if admitted.discovery_result is not None and (
+                    component.discovery_receipt_refs != (slot.discovery_receipt_ref,)
+                    or component.discovery_frontier_ref != slot.discovery_frontier_ref
+                ):
+                    raise LearnedWorldConsumerError("executed discovery refs differ from admitted slot")
+                if admitted.recursive_handoff is not None and (
+                    component.recursive_handoff_refs != (admitted.recursive_handoff.ref,)
+                    or not set(slot.recursive_lineage_refs).issubset(
+                        set(component.recursive_lineage_refs)
+                    )
+                ):
+                    raise LearnedWorldConsumerError("executed recursive lineage differs from admitted slot")
             if native_composition_original(component) is None:
                 raise LearnedWorldConsumerError("executed slot lacks retained native original")
             components.append(component)
-        material = {
-            "schema": "R91_BOUND_NATIVE_GRAPH_ORIGINAL@1",
-            "slots": [
+            slot_records.append(
                 {
                     "slot_id": slot.slot_id,
                     "source_universe_ref": slot.source_universe_ref.as_dict(),
@@ -1683,11 +1814,26 @@ class TrustedNativeGraphCoordinator:
                     "consumer_query_ref": slot.consumer_query_ref.as_dict(),
                     "model_rule_hash": slot.model_rule_hash,
                     "producer_route": slot.producer_route,
+                    "target_arity": slot.target_arity,
+                    "joint_order_semantics": slot.joint_order_semantics,
+                    "discovery_receipt_ref": None if slot.discovery_receipt_ref is None else slot.discovery_receipt_ref.as_dict(),
+                    "discovery_frontier_ref": None if slot.discovery_frontier_ref is None else slot.discovery_frontier_ref.as_dict(),
+                    "recursive_handoff_ref": None if admitted is None or admitted.recursive_handoff is None else admitted.recursive_handoff.ref.as_dict(),
+                    "recursive_lineage_refs": [x.as_dict() for x in slot.recursive_lineage_refs],
+                    "root_parent_ref": None if slot.root_parent_ref is None else slot.root_parent_ref.as_dict(),
+                    "m1_disposition_ref": None if slot.m1_disposition is None else _exact_ref_of(slot.m1_disposition).as_dict(),
+                    "m2_release_ref": None if slot.m2_release is None else slot.m2_release.as_dict(),
+                    "b5_selection_ref": None if slot.b5_selection is None else slot.b5_selection.as_dict(),
+                    "require_current_selection": slot.require_current_selection,
+                    "e41_route": None if admitted is None or admitted.e41_input is None else extension.producer_route,
+                    "e41_receipt_hash": None if admitted is None or admitted.e41_input is None else extension.extension_receipt.receipt_hash,
                     "composition": canonicalize(component.identity_material()),
                     "composition_hash": component.composed_result_identity_hash,
                 }
-                for slot, component in zip(request.slots, components)
-            ],
+            )
+        material = {
+            "schema": "R91_BOUND_NATIVE_GRAPH_ORIGINAL@2",
+            "slots": slot_records,
         }
         digest = semantic_hash(material)
         ref = ExactRef(
@@ -1830,6 +1976,15 @@ def _authoritative_graph(
     return (graph, None)
 
 
+def _exact_ref_of(value: Any) -> ExactRef:
+    ref = getattr(value, "ref", None)
+    if isinstance(ref, ExactRef):
+        return ref
+    if isinstance(value, Mapping):
+        return _exact(value, "ref")
+    raise LearnedWorldConsumerError("object does not expose an exact ref")
+
+
 def _graph_refs(compositions: Sequence[AnalyticalCompositionResult]) -> Mapping[str, Any]:
     graph, problem = _authoritative_graph(compositions)
     if problem is not None:
@@ -1939,6 +2094,7 @@ def evaluate_learned_world_consumer(
         raise LearnedWorldConsumerError("exact LearnedWorldCompositionResult required")
     if not isinstance(composition, AnalyticalCompositionResult):
         raise LearnedWorldConsumerError("exact AnalyticalCompositionResult required")
+    trusted_extension_route = None
     if trusted_graph_reader is not None:
         if not isinstance(trusted_graph_reader, TrustedNativeGraphCoordinator):
             raise LearnedWorldConsumerError("trusted_graph_reader is not a configured coordinator")
@@ -1977,6 +2133,7 @@ def evaluate_learned_world_consumer(
         graph_model = NativeProductGraph(tuple(original_components))
         composition = original_components[0]
         compositions = graph_model.compositions
+        trusted_extension_route = original["slots"][0].get("e41_route")
     else:
         graph_model = NativeProductGraph((composition,)) if product_graph is None else product_graph
         if not isinstance(graph_model, NativeProductGraph):
@@ -2013,6 +2170,8 @@ def evaluate_learned_world_consumer(
             producer_predicate_ref=producer_predicate_ref,
         )
     graph, graph_problem = _authoritative_graph(compositions)
+    if trusted_extension_route is not None:
+        graph = {**graph, "extension_route": trusted_extension_route}
     if graph_problem is not None:
         return _typed_graph_result(
             learned=learned,
