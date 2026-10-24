@@ -1,0 +1,32 @@
+{
+  "schema": "PYAT_R95_R06V_INDEPENDENT_WORLD_CONSUMER_PROOF_WITNESS@1",
+  "verdict": "REVISE",
+  "candidate_startup": "08fa9a2560ff5a37313434a3edb3d61e702926eb",
+  "author_branch": "agent/opencode-pyat-r95-r06-world-consumer-integration-r1",
+  "review_branch": "agent/opencode-pyat-r95-r06v-world-consumer-review-r1",
+  "commission": "e2776897af673f14237178daf7ae35c2331d48af",
+  "original_commission": "bd712a4aed1c57bd9ac6ebd158ea05f48842bc54",
+  "r2_commission": "fe92f83348201cad5b9e41d5bd0ab1b68b5847d2",
+  "grant": "1315aff53c3eb063a65088fcb5bd8398852668fa",
+  "expectations_freeze_commit": "36a2abfd1",
+  "candidate_code_blobs": {
+    "rawlsing_next/pre553_universal_world_binding.py": "d5429c470ae6c2d1912207638b3a6a5e8e341360",
+    "rawlsing_next/tests/test_universal_world_binding.py": "8ee623eb9d1aafa00b1bd311dba9d9b852799316"
+  },
+  "commands": [
+    {"command": "pytest rawlsing_next/tests/test_universal_world_binding.py", "exit": 0, "result": "10 passed"},
+    {"command": "pytest .../independent_probes/test_r06v_world.py", "exit": 1, "result": "1 passed, 4 failed"}
+  ],
+  "positive": "actual R05 learned -> actual P41 N9/N10W/E04 authored configured path; routes and N10E bindings match, coordinator original present",
+  "remaining_failures": [
+    "canned caller callback receipt accepted as actual P41/E04 invocation",
+    "temporal pair with identical actual routes/N10W but distinct clocks/hash accepted as changed",
+    "person/household transport label without linked indexed query accepted",
+    "CONTEXT promotion with arbitrary FF ref accepted"
+  ],
+  "f1_f6_matrix": {"F1": "PARTIAL", "F2": "FAIL", "F3": "FAIL", "F4": "FAIL", "F5": "PARTIAL", "F6": "FAIL"},
+  "environment": {"python": "3.11.3", "pytest": "9.0.2", "pyreadstat": "1.3.2"},
+  "remote_verification": "evidence/remote_readback.txt; final tip reported to coordinator",
+  "trust_boundary": "sourcefree TEST_ONLY local trusted host; original F7/science/CI/prod/N11/N12/Sorok/J52/W52 held",
+  "not_reached": ["original F7 measured waves", "F5/F6/F8 issuance", "original35/1890", "CI/prod", "N11/N12/Sorok/J52/W52"]
+}

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="5" time="6.098" timestamp="2026-10-24T18:12:08.898038-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1.independent_probes.test_r06v_world" name="test_P1_actual_r05_to_p41_positive" time="1.186" /><testcase classname="WORKER_RETURNS.PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1.independent_probes.test_r06v_world" name="test_H1_hash_clock_only_temporal_mutation_must_refuse" time="1.178"><failure message="AssertionError: identical actual consumer routes were accepted as a temporal pair change&#10;assert ('R05_WORLD_SELECTED_VIEW' == 'REFUSED'&#10;  &#10;  - REFUSED&#10;  + R05_WORLD_SELECTED_VIEW or True is False)&#10; +  where True = R05WorldSelectedView(state='R05_WORLD_SELECTED_VIEW', reason_code='ACTUAL_R05_TO_P41_VIEW', field_ids=('training_acces...view_hash='772708d74b46f1088dfa5c922e277c5da3b0e0f2af03097419dbd453cccfa8c2', temporal_changed=True, z_unresolved=True).temporal_changed">def test_H1_hash_clock_only_temporal_mutation_must_refuse():
+        data, receipts = _fixture()
+        mutated = deepcopy(receipts)
+        # Keep the pair clocks/hashes distinct, but make the actual consumer
+        # routes and N10W state identical. A hash/clock-only temporal change must
+        # not count as consumed pair state.
+        mutated["T1"]["structural"]["routes"] = deepcopy(
+            mutated["T0"]["structural"]["routes"])
+        mutated["T1"]["n10w"] = deepcopy(mutated["T0"]["n10w"])
+        mutated["T1"].pop("content_hash", None)
+        mutated["T1"]["content_hash"] = semantic_hash(mutated["T1"])
+        view = select_r05_world_view(_r05_request(data, mutated))
+&gt;       assert view.state == "REFUSED" or view.temporal_changed is False, (
+            "identical actual consumer routes were accepted as a temporal pair change"
+        )
+E       AssertionError: identical actual consumer routes were accepted as a temporal pair change
+E       assert ('R05_WORLD_SELECTED_VIEW' == 'REFUSED'
+E         
+E         - REFUSED
+E         + R05_WORLD_SELECTED_VIEW or True is False)
+E        +  where True = R05WorldSelectedView(state='R05_WORLD_SELECTED_VIEW', reason_code='ACTUAL_R05_TO_P41_VIEW', field_ids=('training_acces...view_hash='772708d74b46f1088dfa5c922e277c5da3b0e0f2af03097419dbd453cccfa8c2', temporal_changed=True, z_unresolved=True).temporal_changed
+
+WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/independent_probes/test_r06v_world.py:73: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1.independent_probes.test_r06v_world" name="test_H2_transport_label_without_linked_index_must_refuse" time="1.178"><failure message="AssertionError: person/household pooling accepted from a transport label without a linked indexed query&#10;assert 'R05_WORLD_SELECTED_VIEW' == 'REFUSED'&#10;  &#10;  - REFUSED&#10;  + R05_WORLD_SELECTED_VIEW">def test_H2_transport_label_without_linked_index_must_refuse():
+        data, receipts = _fixture()
+        fields = _r05_request(data, receipts).fields
+        relation = ExactRef(
+            "R06V_TRANSPORT_RELATION", "urn:test:r06v:transport", "e" * 64)
+        linked_claim = (
+            replace(fields[0], unit="person", relation_ref=relation),
+            replace(fields[1], unit="household", relation_ref=relation),
+        )
+        request = _r05_request(
+            data, receipts, fields=linked_claim,
+            relation_transport_authorized=True, relation_transport_ref=relation,
+        )
+        view = select_r05_world_view(request)
+&gt;       assert view.state == "REFUSED", (
+            "person/household pooling accepted from a transport label without a linked indexed query"
+        )
+E       AssertionError: person/household pooling accepted from a transport label without a linked indexed query
+E       assert 'R05_WORLD_SELECTED_VIEW' == 'REFUSED'
+E         
+E         - REFUSED
+E         + R05_WORLD_SELECTED_VIEW
+
+WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/independent_probes/test_r06v_world.py:96: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1.independent_probes.test_r06v_world" name="test_H3_context_promotion_with_bogus_ff_authority_must_refuse" time="1.170"><failure message="AssertionError: context field promoted to structural with an unvalidated FF ref&#10;assert 'R05_WORLD_SELECTED_VIEW' == 'REFUSED'&#10;  &#10;  - REFUSED&#10;  + R05_WORLD_SELECTED_VIEW">def test_H3_context_promotion_with_bogus_ff_authority_must_refuse():
+        data, receipts = _fixture()
+        fields = _r05_request(data, receipts).fields
+        promoted = (
+            fields[0],
+            replace(fields[1], role="CONTEXT"),
+        )
+        bogus_ff = ExactRef(
+            "R06V_BOGUS_FF_AUTHORITY", "urn:test:r06v:bogus-ff", "f" * 64)
+        request = _r05_request(
+            data, receipts, fields=promoted, ff_structural_authority_ref=bogus_ff)
+        view = select_r05_world_view(request)
+&gt;       assert view.state == "REFUSED", (
+            "context field promoted to structural with an unvalidated FF ref"
+        )
+E       AssertionError: context field promoted to structural with an unvalidated FF ref
+E       assert 'R05_WORLD_SELECTED_VIEW' == 'REFUSED'
+E         
+E         - REFUSED
+E         + R05_WORLD_SELECTED_VIEW
+
+WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/independent_probes/test_r06v_world.py:113: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1.independent_probes.test_r06v_world" name="test_H4_actual_consumer_receipt_is_not_a_canned_callback" time="1.188"><failure message="AssertionError: a canned caller callback returning a receipt was accepted as actual P41/E04&#10;assert 'R05_WORLD_SELECTED_VIEW' == 'REFUSED'&#10;  &#10;  - REFUSED&#10;  + R05_WORLD_SELECTED_VIEW">def test_H4_actual_consumer_receipt_is_not_a_canned_callback():
+        data, receipts = _fixture()
+        canned = deepcopy(receipts)
+        # The wrapper must not accept an arbitrary caller callback returning a
+        # self-consistent receipt; this callback is not actual P41/E04 execution.
+        calls = []
+        def consumer(label):
+            calls.append(label)
+            return canned[label]
+        request = _r05_request(data, canned, consumer=consumer)
+        view = select_r05_world_view(request)
+&gt;       assert view.state == "REFUSED", (
+            "a canned caller callback returning a receipt was accepted as actual P41/E04"
+        )
+E       AssertionError: a canned caller callback returning a receipt was accepted as actual P41/E04
+E       assert 'R05_WORLD_SELECTED_VIEW' == 'REFUSED'
+E         
+E         - REFUSED
+E         + R05_WORLD_SELECTED_VIEW
+
+WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/independent_probes/test_r06v_world.py:129: AssertionError</failure></testcase></testsuite></testsuites>
