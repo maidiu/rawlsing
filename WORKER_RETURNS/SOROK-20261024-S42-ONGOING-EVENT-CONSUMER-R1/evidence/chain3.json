@@ -1,0 +1,177 @@
+{
+  "branch_actors": [
+    "A",
+    "B",
+    "U"
+  ],
+  "checks": {
+    "distinct_c8": true,
+    "distinct_e1": true,
+    "increasing_times": true,
+    "speaking_fidelity": true,
+    "tool_retained": true,
+    "zero_targets": true
+  },
+  "clock": 244,
+  "events": [
+    {
+      "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_a0491e08ed21ce7364353dbec5fc353d6ce0908b169290a79757c4559dadb816",
+      "attempt_status": "ADMITTED",
+      "c8_occurrence_id": "OCC-0001",
+      "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+      "c9": {
+        "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+        "receipt_ref": "7cbb020b295fc7c91ae3e0b151dad511e225a395a4d18a6f9d018d15958d689c",
+        "response_kind": "REQUEST_TOOL",
+        "response_ref": "32a60b0f4868abba462d3dc10ac15d1dd2d846ed6f1be19bc1f61931f8322217",
+        "target_branch": "NO_CHANGE",
+        "target_id": "",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL",
+        "target_state_rows": 0
+      },
+      "e1_event_hash": "d56dc1362cc4ba7de311554422e581745326c675318fe80d14b1bd1e841003c3",
+      "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+      "event_ordinal": 1,
+      "event_time": 242,
+      "history_predicates": [],
+      "history_refs": [],
+      "language": {
+        "access_receipt_id": "LME_ACCESS_4bbfdcb6bc6142d1626fce023da852a24bee241849421f8270940ac1e031fa8d",
+        "equivalence_receipt_hash": "9093164c5b0905261c29a8a69e27a3ae6a979f9cac9ef98c8567402eff22a6ae",
+        "native_artifact_hash": "53be0725a7cdeb39885395702a8d7cd27d9f5222fb45735f46879877d9b17b38",
+        "native_text": "\u00bfPuedo usar la herramienta?",
+        "plan_hash": "c3dafe8effd3c4083a38cbec2fa3c007b64c05c6d99a07b7982ee12c708dd870",
+        "source_event_hash": "dd71356ee87e8a52ea235e0dfa4f20bd0e645d2c6fb56baf6e09eefecd73aa87",
+        "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_5dfe1b25c3d2ea7e9cb14e7d414c89d693e569ea4a353e018af6911e379adf11",
+        "status": "ACCEPTED",
+        "translation_artifact_hash": "cf51814bf48ebae2b3234e051e16c18c72e21ba3ad2778fb911c9b724b028d20",
+        "translation_text": "May I use the tool?"
+      },
+      "performed": true,
+      "selected_option": "REQUEST_TOOL",
+      "source_operation": "SHARE_TOOL",
+      "status": "OK",
+      "target_proposals": [],
+      "world_clock_after": 242,
+      "world_clock_before": 242,
+      "world_tools_remaining": 1
+    },
+    {
+      "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_571c8d15f5bd687a24a9252587c1892697905eaa095d3f6fcc1f12d53c442a0b",
+      "attempt_status": "ADMITTED",
+      "c8_occurrence_id": "OCC-0002",
+      "c8_state_digest": "c196a09616a79854223a9f0501de75ceb0eb96fa8482c53300a3ca8dfe370a4b",
+      "c9": {
+        "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+        "receipt_ref": "dde52cbfe35cd5a066fbe6912814862e470f973700213fc1acaa78737f961d57",
+        "response_kind": "REQUEST_TOOL",
+        "response_ref": "04441014fc300d1496adddf6f2db893527df09583b7c3f59a09db0d34bf82237",
+        "target_branch": "NO_CHANGE",
+        "target_id": "",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL",
+        "target_state_rows": 0
+      },
+      "e1_event_hash": "214a1ca64b781080884a61c33848cf64ebd08b11786cb65f6772265b4ca320cc",
+      "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0002",
+      "event_ordinal": 2,
+      "event_time": 243,
+      "history_predicates": [
+        "PRIOR_B_SHARE"
+      ],
+      "history_refs": [
+        {
+          "c8_content_hash": "fab216d52b69482bcda0188449639f58692373f4ad90dd024258fc9f1a6b953a",
+          "c8_occurrence_id": "OCC-0001",
+          "e1_event_hash": "d56dc1362cc4ba7de311554422e581745326c675318fe80d14b1bd1e841003c3",
+          "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+          "event_ordinal": 1
+        }
+      ],
+      "language": {
+        "access_receipt_id": "LME_ACCESS_25655958fc1fb6faf5c6147151753531889b922b65d9f387c549fb0b58701a31",
+        "equivalence_receipt_hash": "03a29a958e3d1e883cede2e1d0f54acd4c5a24c15da4e192a3afc183119b7d65",
+        "native_artifact_hash": "2c0c33f7e495ee8ecbdd10ef4b9ffeb125c21d8be17f3e9423ed4a3efb8095c9",
+        "native_text": "\u00bfPuedo usar la herramienta?",
+        "plan_hash": "ac96e904198838108469b095b58357ab8ce180c6ddba8c44cfb456e62f6f1b96",
+        "source_event_hash": "864c25acdea57a96e16703bf2e22bd4a5decea5e0269e9fd0d940a45a275fb1b",
+        "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_6911b6928e115fe619a7e4fba1dd91d8fdc113c1d115b30ca4dd04ae7248ceba",
+        "status": "ACCEPTED",
+        "translation_artifact_hash": "10a31ca4e99ced20c18847e11587d873ddcede2ad35b72e1c2bc81c67a94fb68",
+        "translation_text": "May I use the tool?"
+      },
+      "performed": true,
+      "selected_option": "REQUEST_TOOL",
+      "source_operation": "REFUSE_TOOL",
+      "status": "OK",
+      "target_proposals": [],
+      "world_clock_after": 243,
+      "world_clock_before": 242,
+      "world_tools_remaining": 1
+    },
+    {
+      "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_5ce1663cca4d8fe4d6e520e98caf9c46fec146b5bead5bc4b93862e56d010d2a",
+      "attempt_status": "ADMITTED",
+      "c8_occurrence_id": "OCC-0003",
+      "c8_state_digest": "16910877f4aef8508076ad266e284bcc4bd2f5477ee13451aa6531da688999ab",
+      "c9": {
+        "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+        "receipt_ref": "da972dc2e29f508633dac1d900d452f1f23cfde704cb6148af998433c6fe5130",
+        "response_kind": "REQUEST_TOOL",
+        "response_ref": "3da30cb13c9b83091059f47573cf72af6b24ce74e58ef0457a93d69eedb80b8d",
+        "target_branch": "NO_CHANGE",
+        "target_id": "",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL",
+        "target_state_rows": 0
+      },
+      "e1_event_hash": "1420afe8d069dff1b284f2485efe6455945b052511915817c312a9af3073b9f3",
+      "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0003",
+      "event_ordinal": 3,
+      "event_time": 244,
+      "history_predicates": [
+        "PRIOR_B_SHARE"
+      ],
+      "history_refs": [
+        {
+          "c8_content_hash": "fab216d52b69482bcda0188449639f58692373f4ad90dd024258fc9f1a6b953a",
+          "c8_occurrence_id": "OCC-0001",
+          "e1_event_hash": "d56dc1362cc4ba7de311554422e581745326c675318fe80d14b1bd1e841003c3",
+          "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+          "event_ordinal": 1
+        }
+      ],
+      "language": {
+        "access_receipt_id": "LME_ACCESS_64896629c5274cb140084a836e5ddcc4c10ccdae0178dfa7a715457c6b3f11a8",
+        "equivalence_receipt_hash": "22b22cc7f9ac65780455beece876127ff342da57b6d4a3f065d4a45d17443a68",
+        "native_artifact_hash": "f0ab867ec909331df4856417a0eed205b73cf0e4aa9cff9ab91d15a91efa78ba",
+        "native_text": "\u00bfPuedo usar la herramienta?",
+        "plan_hash": "00441cc69cd840f60e0b702f1da0b6222c75ffba29ad3d0263694824ec4dbc72",
+        "source_event_hash": "24225826f38a8fb125fe489fd16e90f9319d9ddd5c33d7614916a39e464810d1",
+        "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_432f306cc254c20d9afcbfc1731faa0763c4b688614bd71950f3b6917bb65037",
+        "status": "ACCEPTED",
+        "translation_artifact_hash": "e8bd665966f75b1109cc8e51c53adf8f6408b5b6505f99fe4e213ef253d020df",
+        "translation_text": "May I use the tool?"
+      },
+      "performed": true,
+      "selected_option": "REQUEST_TOOL",
+      "source_operation": "SHARE_TOOL",
+      "status": "OK",
+      "target_proposals": [],
+      "world_clock_after": 244,
+      "world_clock_before": 243,
+      "world_tools_remaining": 1
+    }
+  ],
+  "first_response_preserved": true,
+  "latest_ordinal": 3,
+  "length": 3,
+  "root_actors": [
+    "A",
+    "B"
+  ],
+  "tool_available": true,
+  "tools_remaining": 1,
+  "verify_ok": true
+}
