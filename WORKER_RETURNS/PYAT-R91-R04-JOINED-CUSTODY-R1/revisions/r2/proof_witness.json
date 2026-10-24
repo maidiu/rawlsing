@@ -1,0 +1,39 @@
+{
+  "schema": "PYAT_R91_R04_JOINED_R2_PROOF_WITNESS@1",
+  "node": "R04_JOINED", "revision": "R2",
+  "disposition": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+  "branch": "agent/opencode-pyat-r91-r04-joined-custody-r1",
+  "startup_commit": "a88ccd140f30fe621140ee98841c6ce57ae9cab4",
+  "contract_commit": "7b84cf20df2fc2bfea3b00e57f42047df55cb5e0",
+  "candidate_code_commit": "c0c4b9e15a84546ca200d8da85bd3979832e7b1e",
+  "review_commit": "50b8bee9e59d4c13fffeda319e257b37b5593356",
+  "commands": [
+    {"purpose": "R04 joined R2 suite", "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_workload_custody.py -q --junitxml=WORKER_RETURNS/PYAT-R91-R04-JOINED-CUSTODY-R1/revisions/r2/junit.xml -o addopts=''", "exit_code": 0, "result": "5 passed", "failures": 0, "errors": 0, "skips": 0, "walltime_seconds": 10.56, "junit": "junit.xml", "log": "pytest.log"},
+    {"purpose": "retained R03 suite", "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_workload.py -q -o addopts=''", "exit_code": 0, "result": "16 passed", "failures": 0, "errors": 0, "skips": 0}
+  ],
+  "repairs": {
+    "actual_governed_discovery_capture": "PASS retained native_result facts/receipts/manifest",
+    "external_original_pin": "PASS missing/wrong/self-rehashed refuse; genuine pin restores",
+    "completed_outputs_facts": "PASS rehydrated facts and original manifest",
+    "partial_multiunit_prefix": "PASS max_units partial, pending Batch resume, completed not rerun",
+    "uninterrupted_output_equality": "PASS exact output refs",
+    "revoked_wrong_source": "PASS refusal before pending native work",
+    "fresh_process_full_prefix": "PASS; partial fresh-process remains PARTIAL evidence"
+  },
+  "mutations_and_restoration": [
+    {"mutation": "forged checkpoint with recomputed hashes", "expected": "original-pin mismatch", "restored": "genuine pin resumes"},
+    {"mutation": "missing/wrong pin", "expected": "typed refusal", "restored": "genuine pin resumes"},
+    {"mutation": "drop/duplicate completed unit", "expected": "checkpoint manifest/unit closure refusal", "restored": "genuine prefix resumes"},
+    {"mutation": "revoked grant/wrong source", "expected": "admission/source refusal", "restored": "current/right source resumes"}
+  ],
+  "blobs": {
+    "rawlsing_next/pre553_issued_workload.py": "5ce71e6fdc4bb6e9ee3b9075616fa50432394a0d",
+    "rawlsing_next/tests/test_universal_workload_custody.py": "94cdeecbda03ca17b4226b2d2fb571f3e16d7068"
+  },
+  "limits": [
+    "Fresh-process proof is full-prefix; actual partial multi-unit resume is in-process.",
+    "No indivisible native discovery split, new lineage engine, R05+, original science, CI/prod/N11/N12/Sorok/J52-W52.",
+    "R04.byte accepted decoder reused read-only.",
+    "No self-adoption; distinct reviewer required."
+  ]
+}
