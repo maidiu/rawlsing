@@ -1,23 +1,58 @@
 {
-  "schema": "PYAT_R91_R04V_R2_JOINED_INDEPENDENT_PROOF_WITNESS@1",
-  "verdict": "REVISE",
-  "candidate_startup": "dfeaab23998291be81abe4caecd08de663053eaa",
   "author_branch": "agent/opencode-pyat-r91-r04-joined-custody-r1",
-  "review_branch": "agent/opencode-pyat-r91-r04v-r2-joined-review-r1",
-  "commission": "6482c4f7435ef5c7d93b0a68804b821481505d9f",
-  "prior_review": "50b8bee9e59d4c13fffeda319e257b37b5593356",
-  "author_contract": "7b84cf20df2fc2bfea3b00e57f42047df55cb5e0",
   "author_code": "c0c4b9e15a84546ca200d8da85bd3979832e7b1e",
-  "expectations_freeze_commit": "d400edf93",
+  "author_contract": "7b84cf20df2fc2bfea3b00e57f42047df55cb5e0",
   "candidate_code_blobs": {
     "rawlsing_next/pre553_issued_workload.py": "5ce71e6fdc4bb6e9ee3b9075616fa50432394a0d",
     "rawlsing_next/tests/test_universal_workload_custody.py": "94cdeecbda03ca17b4226b2d2fb571f3e16d7068"
   },
+  "candidate_startup": "dfeaab23998291be81abe4caecd08de663053eaa",
   "commands": [
-    {"command": "pytest rawlsing_next/tests/test_universal_workload_custody.py", "exit": 0, "result": "5 passed"},
-    {"command": "pytest rawlsing_next/tests/test_universal_workload.py", "exit": 0, "result": "16 passed"},
-    {"command": "pytest .../independent_probes/test_r04v_r2.py", "exit": 1, "result": "3 passed, 1 failed"}
+    {
+      "command": "pytest rawlsing_next/tests/test_universal_workload_custody.py",
+      "exit": 0,
+      "result": "5 passed"
+    },
+    {
+      "command": "pytest rawlsing_next/tests/test_universal_workload.py",
+      "exit": 0,
+      "result": "16 passed"
+    },
+    {
+      "command": "pytest .../independent_probes/test_r04v_r2.py",
+      "exit": 1,
+      "result": "3 passed, 1 failed"
+    }
   ],
+  "commission": "6482c4f7435ef5c7d93b0a68804b821481505d9f",
+  "environment": {
+    "pyreadstat": "1.3.2",
+    "pytest": "9.0.2",
+    "python": "3.11.3"
+  },
+  "evidence_commit": "73899d3566ebb0213970c31568512aa320374650",
+  "evidence_commit_remote_readback": {
+    "candidate_remote_sha": "dfeaab23998291be81abe4caecd08de663053eaa",
+    "file": "evidence/remote_readback.txt",
+    "remote_sha": "73899d3566ebb0213970c31568512aa320374650"
+  },
+  "expectations_freeze_commit": "d400edf93",
+  "f1_f6_matrix": {
+    "F1": "PASS at actual governed/partial cold grain",
+    "F2": "PASS for governed capture and partial multi-unit resume",
+    "F3": "PASS external pin; FAIL completed output object identity",
+    "F4": "PASS manifests/receipts/facts; output owner identity incomplete",
+    "F5": "PASS partial multi-unit fresh-process resume",
+    "F6": "PARTIAL facts/manifest pass; QueryExecutionResult identity lost"
+  },
+  "not_reached": [
+    "R05",
+    "original science",
+    "global durable exactly-once",
+    "protected CI/prod",
+    "N11/N12/Sorok/J52/W52"
+  ],
+  "prior_review": "50b8bee9e59d4c13fffeda319e257b37b5593356",
   "probe_outcomes": [
     "actual R03 governed NativeDiscoveryExecution capture/restore preserves facts/manifest",
     "external original pin rejects self-rehashed forged checkpoint",
@@ -25,6 +60,7 @@
     "completed native_outputs is mutable SimpleNamespace facts-only; QueryExecutionResult.query_ref lost"
   ],
   "remaining_failure": "completed/discovery output views are mutable facts-only SimpleNamespace objects, not actual owner result objects or checked immutable views with query/evaluated-frontier/replay/fact identity",
+  "remote_verification": "evidence/remote_readback.txt; final tip reported to coordinator",
   "retained_positives": [
     "actual governed capture/restore",
     "external original pin",
@@ -34,16 +70,8 @@
     "author 5 and R03 16 pass",
     "U43 exact; owners/decoder unchanged"
   ],
-  "f1_f6_matrix": {
-    "F1": "PASS at actual governed/partial cold grain",
-    "F2": "PASS for governed capture and partial multi-unit resume",
-    "F3": "PASS external pin; FAIL completed output object identity",
-    "F4": "PASS manifests/receipts/facts; output owner identity incomplete",
-    "F5": "PASS partial multi-unit fresh-process resume",
-    "F6": "PARTIAL facts/manifest pass; QueryExecutionResult identity lost"
-  },
-  "environment": {"python": "3.11.3", "pytest": "9.0.2", "pyreadstat": "1.3.2"},
-  "remote_verification": "evidence/remote_readback.txt; final tip reported to coordinator",
+  "review_branch": "agent/opencode-pyat-r91-r04v-r2-joined-review-r1",
+  "schema": "PYAT_R91_R04V_R2_JOINED_INDEPENDENT_PROOF_WITNESS@1",
   "trust_boundary": "sourcefree TEST_ONLY local trusted host; R05/original science/CI/prod/N11/N12/Sorok/J52/W52 held",
-  "not_reached": ["R05", "original science", "global durable exactly-once", "protected CI/prod", "N11/N12/Sorok/J52/W52"]
+  "verdict": "REVISE"
 }
