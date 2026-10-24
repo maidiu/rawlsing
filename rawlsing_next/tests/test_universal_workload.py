@@ -1,12 +1,14 @@
 """R03 sourcefree total native workload qualification (TEST_ONLY)."""
 from __future__ import annotations
 
+from copy import deepcopy
 from dataclasses import replace
 import hashlib
 from pathlib import Path
 
 import pytest
 
+from rawlsing_next.pre553_empirical_objects import semantic_hash
 from rawlsing_next.pre553_native_workload_binding import WorkloadBindingRefusal
 from rawlsing_next.pre553_physical_decoder import decode_dta, decode_sav
 from rawlsing_next.pre553_source_native_preimage_adapter import (
@@ -464,3 +466,109 @@ def test_r03_d3_recursive_root_parent_minority_and_cold(tmp_path):
     assert rebound.minority == gen2.minority
     assert len(campaign.inspect()["executions"]) == before
     assert len(restored.inspect()["executions"]) == before
+
+
+def _governed_result(tmp_path, name="r03_defects.sav"):
+    bundle, _ = _frontier_bundle(tmp_path / name)
+    inventory, policy, frontier = _frontier_fixture(bundle)
+    compilation = compile_governed_frontier(
+        bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+        as_of=AS_OF, host=HOST, purpose=PURPOSE,
+    )
+    result = execute_governed_frontier(
+        compilation=compilation,
+        source_factory=lambda _ref: bundle.physical_stream,
+    )
+    return bundle, inventory, policy, frontier, compilation, result
+
+
+def _rehash(ledger):
+    material = dict(ledger)
+    material.pop("ledger_hash", None)
+    material["ledger_hash"] = semantic_hash(material)
+    return material
+
+
+def test_r03_successor_ledger_identity_strip_and_fact_removal_refused(tmp_path):
+    bundle, inventory, policy, frontier, compilation, result = _governed_result(
+        tmp_path)
+    ledger = result.ledger()
+    assert ledger["expected_jobs"]
+    assert ledger["expected_candidate_ids"]
+    stripped = deepcopy(ledger)
+    stripped["native_receipts"] = []
+    stripped["native_facts"] = []
+    stripped["receipt_refs"] = []
+    stripped["fact_refs"] = []
+    stripped["batch_receipt_refs"] = []
+    for row in stripped["operation_ledger"]:
+        row["receipt_refs"] = []
+        row["fact_refs"] = []
+        row["received_candidate_ids"] = []
+        row["candidate_typed_states"] = []
+        row["coverage_states"] = []
+        row["expected_candidate_ids"] = []
+    stripped = _rehash(stripped)
+    with pytest.raises(WorkloadBindingRefusal):
+        restore_governed_frontier_ledger(stripped)
+    removed_fact = deepcopy(ledger)
+    removed_fact["native_receipts"][0]["semantic_fields"]["empirical_fact_refs"] = []
+    removed_fact = _rehash(removed_fact)
+    with pytest.raises(WorkloadBindingRefusal):
+        restore_governed_frontier_ledger(removed_fact)
+    restored = restore_governed_frontier_ledger(ledger)
+    assert restored["expected_jobs"] == ledger["expected_jobs"]
+    assert restored["expected_candidate_ids"] == ledger["expected_candidate_ids"]
+
+
+def test_r03_successor_held_unknown_states_remain_typed(tmp_path):
+    from rawlsing_next.universal_grammar.types import HELD, UNKNOWN
+    bundle, _ = _frontier_bundle(tmp_path / "r03_held_unknown.sav")
+    inventory, policy, frontier = _frontier_fixture(bundle)
+    eligible = [op for op in frontier.operations if op.disposition == "ELIGIBLE"]
+    held = replace(eligible[0], disposition=HELD, reasons=("R03V_HELD",))
+    unknown = replace(eligible[1], disposition=UNKNOWN, reasons=("R03V_UNKNOWN",))
+    altered = replace(frontier, operations=tuple(
+        held if op.op_id == held.op_id else
+        unknown if op.op_id == unknown.op_id else op
+        for op in frontier.operations
+    ))
+    compilation = compile_governed_frontier(
+        bundle=bundle, inventory=inventory, policy=policy, frontier=altered,
+        as_of=AS_OF, host=HOST, purpose=PURPOSE,
+    )
+    result = execute_governed_frontier(
+        compilation=compilation,
+        source_factory=lambda _ref: bundle.physical_stream,
+    )
+    rows = {row["operation_id"]: row for row in result.operation_ledger}
+    assert rows[held.op_id]["result_state"] == HELD
+    assert rows[unknown.op_id]["result_state"] == UNKNOWN
+    assert rows[held.op_id]["eligibility_state"] == HELD
+    assert rows[unknown.op_id]["eligibility_state"] == UNKNOWN
+    restored = restore_governed_frontier_ledger(result.ledger())
+    restored_rows = {row["operation_id"]: row for row in restored["operation_ledger"]}
+    assert restored_rows[held.op_id]["result_state"] == HELD
+    assert restored_rows[unknown.op_id]["result_state"] == UNKNOWN
+
+
+def test_r03_successor_recursive_root_release_severance_refused():
+    from rawlsing_next.tests.test_universal_grammar import _campaign_fixture
+    source, _qauth, _root, query, _policy_obj, s1, s2, s3, campaign = (
+        _campaign_fixture()
+    )
+    issuance = campaign.issue(
+        parent_lineage_refs=(campaign.root_lineage_ref,),
+        condition_refs=tuple((key, value) for key, value, _ in s1),
+    )
+    execution = campaign.execute(issuance)
+    baseline = bind_recursive_workload(campaign, execution)
+    assert baseline.anti_join["no_drop_ok"]
+    severed = deepcopy(campaign.snapshot())
+    severed["payload"]["root"]["source_release_refs"] = []
+    class Wrapper:
+        def snapshot(self):
+            return severed
+    with pytest.raises(WorkloadBindingRefusal):
+        bind_recursive_workload(Wrapper(), execution)
+    assert baseline.source_release_refs

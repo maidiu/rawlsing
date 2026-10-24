@@ -292,6 +292,16 @@ def bind_recursive_execution(campaign: Any, execution_ref: str) -> RecursiveWork
     """Consume exact retained R01 campaign execution; never re-run lineage."""
     snapshot = campaign.snapshot()
     payload = snapshot["payload"]
+    if snapshot.get("checkpoint_ref") != _hash(payload):
+        raise WorkloadBindingRefusal("RECURSIVE_SNAPSHOT_CHECKPOINT_MISMATCH")
+    root_material = payload.get("root", {})
+    if root_material.get("campaign_ref") != payload.get("campaign_ref"):
+        raise WorkloadBindingRefusal("RECURSIVE_CAMPAIGN_ROOT_MISMATCH")
+    root_releases = tuple(sorted(
+        (ExactRef(**ref) for ref in root_material.get("source_release_refs", ())),
+        key=lambda ref: ref.key))
+    if not root_releases:
+        raise WorkloadBindingRefusal("RECURSIVE_ROOT_SOURCE_RELEASE_MISSING")
     execution = next(
         (row for row in payload.get("executions", ())
          if row["execution_ref"] == execution_ref), None)
@@ -361,6 +371,7 @@ class GovernedFrontierCompilation:
     frontier_eligible_operation_ids: tuple[str, ...] = ()
     frontier_disposition_counts: Mapping[str, int] | None = None
     operation_claim_classes: Mapping[str, str] | None = None
+    operation_dispositions: Mapping[str, str] | None = None
 
     def material(self) -> dict[str, Any]:
         return {
@@ -394,6 +405,9 @@ class GovernedFrontierCompilation:
             ),
             "operation_claim_classes": dict(
                 self.operation_claim_classes or {}
+            ),
+            "operation_dispositions": dict(
+                self.operation_dispositions or {}
             ),
         }
 
@@ -435,6 +449,11 @@ class GovernedFrontierResult:
                 receipt.receipt_ref.as_dict()
                 for receipt in self.native_execution.receipts
             ],
+            "expected_jobs": [
+                list(job) for job in self.compilation.issued.record.expected_jobs
+            ],
+            "expected_candidate_ids": list(self.compilation.expected_candidate_ids),
+            "compilation": self.compilation.material(),
         }
         return {**material, "ledger_hash": _hash(material)}
 
@@ -563,6 +582,10 @@ def compile_governed_frontier(
             operation.op_id: operation.claim_class
             for operation in frontier.operations
         },
+        operation_dispositions={
+            operation.op_id: operation.disposition
+            for operation in frontier.operations
+        },
     )
 
 
@@ -618,6 +641,20 @@ def execute_governed_frontier(
     )
     native = execution.native_result
     anti = native_receipt_anti_join(plan, native.receipts)
+    fact_by_ref = {fact.ref.key: fact for fact in native.empirical_facts}
+    receipt_fact_refs: set[str] = set()
+    fact_closure_ok = True
+    for receipt in native.receipts:
+        refs = [exact_ref(ref).key for ref in receipt.empirical_fact_refs]
+        if any(ref not in fact_by_ref for ref in refs):
+            fact_closure_ok = False
+        receipt_fact_refs.update(refs)
+    if receipt_fact_refs != set(fact_by_ref):
+        fact_closure_ok = False
+    if not fact_closure_ok:
+        anti = {**anti, "no_drop_ok": False, "fact_closure_ok": False}
+    else:
+        anti = {**anti, "fact_closure_ok": True}
     receipt_by_candidate = {
         _receipt_candidate_id(receipt): receipt for receipt in native.receipts
     }
@@ -663,16 +700,24 @@ def execute_governed_frontier(
         )
         if operation.status == SUPPORTED and missing:
             missing_operations.append(operation.operation_id)
+        disposition = (compilation.operation_dispositions or {}).get(
+            operation.operation_id
+        )
         if operation.status == NATIVE_UNSUPPORTED:
             result_state = "UNSUPPORTED"
+            execution_state = "UNSUPPORTED_RUNTIME"
         elif operation.status != SUPPORTED:
-            result_state = "NOT_ELIGIBLE"
+            result_state = disposition if disposition in {
+                "HELD", "UNKNOWN", "PROHIBITED", "INAPPLICABLE_PROVED"
+            } else "NOT_ELIGIBLE"
+            execution_state = "NOT_STARTED"
         else:
             result_state = _result_state_for(typed_states)
         operation_rows.append({
             "operation_id": operation.operation_id,
             "lowering_status": operation.status,
             "reason": operation.reason,
+            "eligibility_state": disposition,
             "execution_state": execution_state,
             "result_state": result_state,
             "expected_candidate_ids": list(sorted(expected)),
@@ -768,6 +813,10 @@ def execute_governed_frontier(
     )
 
 
+def _ledger_ref(value: Mapping[str, Any]) -> ExactRef:
+    return ExactRef(value["kind"], value["object_id"], value["content_hash"])
+
+
 def restore_governed_frontier_ledger(ledger: Mapping[str, Any]) -> Mapping[str, Any]:
     """Validate an exact persisted ledger without re-executing or re-issuing."""
     if not isinstance(ledger, Mapping):
@@ -778,14 +827,96 @@ def restore_governed_frontier_ledger(ledger: Mapping[str, Any]) -> Mapping[str, 
         raise WorkloadBindingRefusal("GOVERNED_FRONTIER_LEDGER_HASH_MISMATCH")
     if material.get("schema") != GOVERNED_FRONTIER_RESULT_SCHEMA:
         raise WorkloadBindingRefusal("GOVERNED_FRONTIER_LEDGER_SCHEMA_MISMATCH")
-    for field_name in (
+    required = (
         "operation_ledger", "candidate_anti_join", "operation_anti_join",
         "receipt_refs", "fact_refs", "native_receipts", "native_facts",
-    ):
+        "expected_jobs", "expected_candidate_ids", "compilation",
+        "batch_receipt_refs", "evaluated_frontier_ref", "replay_ref",
+    )
+    for field_name in required:
         if field_name not in material:
             raise WorkloadBindingRefusal(
                 "GOVERNED_FRONTIER_LEDGER_FIELD_MISSING", field_name
             )
+    compilation = material["compilation"]
+    if _hash(compilation) != material.get("compilation_hash"):
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_COMPILATION_HASH_MISMATCH")
+    expected_jobs = tuple(tuple(job) for job in material["expected_jobs"])
+    issued_jobs = tuple(tuple(job) for job in
+                        compilation.get("issued", {}).get("expected_jobs", ()))
+    if expected_jobs != issued_jobs or not expected_jobs:
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_EXPECTED_JOB_MISMATCH")
+    expected_candidates = set(material["expected_candidate_ids"])
+    if expected_candidates != set(compilation.get("expected_candidate_ids", ())):
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_EXPECTED_CANDIDATE_MISMATCH")
+    rows = material["operation_ledger"]
+    row_ids = [row["operation_id"] for row in rows]
+    if len(set(row_ids)) != len(row_ids):
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_DUPLICATE_OPERATION")
+    row_candidates: dict[str, Mapping[str, Any]] = {}
+    for row in rows:
+        for candidate in row.get("expected_candidate_ids", ()):
+            if candidate in row_candidates:
+                raise WorkloadBindingRefusal("GOVERNED_FRONTIER_DUPLICATE_EXPECTED_CANDIDATE")
+            row_candidates[candidate] = row
+    if set(row_candidates) != expected_candidates:
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_EXPECTED_CANDIDATE_ROW_MISMATCH")
+    native_receipts = material["native_receipts"]
+    native_facts = material["native_facts"]
+    receipt_refs = tuple(_ledger_ref(ref) for ref in material["receipt_refs"])
+    fact_refs = tuple(_ledger_ref(ref) for ref in material["fact_refs"])
+    receipt_refs_from_objects = tuple(sorted(
+        (ExactRef(f"{row['schema_id']}@{row['schema_version']}", row["object_id"], row["content_hash"])
+         for row in native_receipts), key=lambda ref: ref.key))
+    if tuple(sorted(receipt_refs, key=lambda ref: ref.key)) != receipt_refs_from_objects:
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_RECEIPT_REF_MISMATCH")
+    fact_by_key = {
+        ExactRef(f"{row['schema_id']}@{row['schema_version']}", row["object_id"], row["content_hash"]).key: row
+        for row in native_facts
+    }
+    if tuple(sorted(fact_refs, key=lambda ref: ref.key)) != tuple(sorted(
+        (ExactRef(f"{row['schema_id']}@{row['schema_version']}", row["object_id"], row["content_hash"])
+         for row in native_facts), key=lambda ref: ref.key
+    )):
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_FACT_REF_MISMATCH")
+    covered_facts: set[str] = set()
+    seen_candidates: list[str] = []
+    for receipt in native_receipts:
+        semantic = receipt.get("semantic_fields", {})
+        identity = semantic.get("candidate_identity") if isinstance(semantic, Mapping) else None
+        if not isinstance(identity, Mapping) or not isinstance(identity.get("candidate_id"), str):
+            raise WorkloadBindingRefusal("GOVERNED_FRONTIER_RECEIPT_IDENTITY_MISSING")
+        candidate = identity["candidate_id"]
+        seen_candidates.append(candidate)
+        row = row_candidates.get(candidate)
+        if row is None:
+            raise WorkloadBindingRefusal("GOVERNED_FRONTIER_UNEXPECTED_RECEIPT_CANDIDATE")
+        ref = ExactRef(f"{receipt['schema_id']}@{receipt['schema_version']}", receipt["object_id"], receipt["content_hash"])
+        if ref.as_dict() not in row.get("receipt_refs", ()):
+            raise WorkloadBindingRefusal("GOVERNED_FRONTIER_ROW_RECEIPT_MISMATCH")
+        receipt_facts = set()
+        for fact_ref in semantic.get("empirical_fact_refs", ()):
+            fact = _ledger_ref(fact_ref).key
+            if fact not in fact_by_key:
+                raise WorkloadBindingRefusal("GOVERNED_FRONTIER_RECEIPT_FACT_MISSING")
+            receipt_facts.add(fact)
+            if fact_ref not in row.get("fact_refs", ()):
+                raise WorkloadBindingRefusal("GOVERNED_FRONTIER_ROW_FACT_MISMATCH")
+        covered_facts.update(receipt_facts)
+        if receipt["typed_state"] not in row.get("candidate_typed_states", ()):
+            raise WorkloadBindingRefusal("GOVERNED_FRONTIER_ROW_STATE_MISMATCH")
+        if semantic.get("coverage_state") not in row.get("coverage_states", ()):
+            raise WorkloadBindingRefusal("GOVERNED_FRONTIER_ROW_COVERAGE_MISMATCH")
+    if len(seen_candidates) != len(set(seen_candidates)):
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_DUPLICATE_RECEIPT_CANDIDATE")
+    if set(seen_candidates) != expected_candidates:
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_RECEIPT_CANDIDATE_SET_MISMATCH")
+    if covered_facts != set(fact_by_key):
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_FACT_COVERAGE_MISMATCH")
+    if material["candidate_anti_join"].get("no_drop_ok") is not True:
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_CANDIDATE_ANTIJOIN_FAILED")
+    if material["operation_anti_join"].get("no_drop_ok") is not True:
+        raise WorkloadBindingRefusal("GOVERNED_FRONTIER_OPERATION_ANTIJOIN_FAILED")
     return material
 
 
@@ -859,6 +990,16 @@ def bind_recursive_workload(
     """Bind exact retained recurrence receipts to their issued operation plan."""
     snapshot = campaign.snapshot()
     payload = snapshot["payload"]
+    if snapshot.get("checkpoint_ref") != _hash(payload):
+        raise WorkloadBindingRefusal("RECURSIVE_SNAPSHOT_CHECKPOINT_MISMATCH")
+    root_material = payload.get("root", {})
+    if root_material.get("campaign_ref") != payload.get("campaign_ref"):
+        raise WorkloadBindingRefusal("RECURSIVE_CAMPAIGN_ROOT_MISMATCH")
+    root_releases = tuple(sorted(
+        (ExactRef(**ref) for ref in root_material.get("source_release_refs", ())),
+        key=lambda ref: ref.key))
+    if not root_releases:
+        raise WorkloadBindingRefusal("RECURSIVE_ROOT_SOURCE_RELEASE_MISSING")
     execution = next(
         (row for row in payload.get("executions", ())
          if row["execution_ref"] == execution_ref), None)
@@ -876,6 +1017,13 @@ def bind_recursive_workload(
         raise WorkloadBindingRefusal("RECURSIVE_EXECUTION_PLAN_MISMATCH")
     preimage = execution["activation_preimage"]
     receipts = tuple(preimage["receipts"])
+    for receipt in receipts:
+        semantic = receipt.get("semantic_fields", {})
+        receipt_releases = tuple(sorted(
+            (ExactRef(**ref) for ref in semantic.get("source_release_refs", ())),
+            key=lambda ref: ref.key))
+        if receipt_releases != root_releases:
+            raise WorkloadBindingRefusal("RECURSIVE_RECEIPT_SOURCE_RELEASE_MISMATCH")
     expected = tuple(plan["expected_operations"])
     expected_by_rule = {row["rule_id"]: row for row in expected}
     if len(expected_by_rule) != len(expected):
