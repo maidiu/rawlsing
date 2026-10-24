@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="3" time="6.118" timestamp="2026-10-24T10:23:25.479754-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R91-R04V-JOINED-INDEPENDENT-REVIEW-R1.independent_probes.test_r04v_joined" name="test_H1_actual_governed_r03_result_is_consumable" time="4.890"><failure message="rawlsing_next.pre553_issued_workload.WorkloadAdmissionError: EXACT_NATIVE_WORKLOAD_RESULT_REQUIRED">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-506/test_H1_actual_governed_r03_re0')
+
+    def test_H1_actual_governed_r03_result_is_consumable(tmp_path):
+        bundle, _ = _frontier_bundle(tmp_path / "r04v_governed.sav")
+        inventory, policy, frontier = _frontier_fixture(bundle)
+        compilation = compile_governed_frontier(
+            bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+            as_of=GOV_AS_OF, host=GOV_HOST, purpose=GOV_PURPOSE,
+        )
+        discovery = execute_test_only_discovery_workload(
+            issued=compilation.issued,
+            source_factory=lambda _ref: bundle.physical_stream,
+            host=GOV_HOST, purpose=GOV_PURPOSE,
+        )
+        # The authorized joined custody interface must consume the actual R03
+        # governed-issued discovery result, not only unary NativeWorkloadResults.
+&gt;       capture_joined_checkpoint((discovery,))
+
+WORKER_RETURNS/PYAT-R91-R04V-JOINED-INDEPENDENT-REVIEW-R1/independent_probes/test_r04v_joined.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+results = (NativeDiscoveryExecution(native_result=ExactBoundedDiscoveryResult(contract_id='PRE553_I05_EXACT_BOUNDED_DISCOVERY@1....-23', content_hash='0df112a33c2fe35e52d8015496efcb62b43759d190b873b04e940e6e750f3478'), scope='TEST_ONLY_SOURCEFREE'),)
+
+    def capture_joined_checkpoint(
+        results: Sequence[NativeWorkloadResult],
+    ) -&gt; JoinedWorkloadCheckpoint:
+        """Capture completed U43/R03 workload results without claiming unfinished work."""
+        entries = []
+        for result in results:
+            if not isinstance(result, NativeWorkloadResult):
+&gt;               raise WorkloadAdmissionError("EXACT_NATIVE_WORKLOAD_RESULT_REQUIRED")
+E               rawlsing_next.pre553_issued_workload.WorkloadAdmissionError: EXACT_NATIVE_WORKLOAD_RESULT_REQUIRED
+
+rawlsing_next/pre553_issued_workload.py:410: WorkloadAdmissionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R91-R04V-JOINED-INDEPENDENT-REVIEW-R1.independent_probes.test_r04v_joined" name="test_H2_self_hashed_checkpoint_forgery_must_refuse" time="0.221"><failure message="Failed: DID NOT RAISE &lt;class 'Exception'&gt;">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-506/test_H2_self_hashed_checkpoint0')
+
+    def test_H2_self_hashed_checkpoint_forgery_must_refuse(tmp_path):
+        bundle, issued = _issued_workloads(tmp_path)
+        first = _first_result(issued, bundle)
+        checkpoint = capture_joined_checkpoint((first,))
+        forged = _forge_checkpoint(checkpoint)
+        # Only the candidate-controlled checkpoint was rewritten and rehashed;
+        # there is no separately provisioned original pin.
+&gt;       with pytest.raises(Exception):
+E       Failed: DID NOT RAISE &lt;class 'Exception'&gt;
+
+WORKER_RETURNS/PYAT-R91-R04V-JOINED-INDEPENDENT-REVIEW-R1/independent_probes/test_r04v_joined.py:80: Failed</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R91-R04V-JOINED-INDEPENDENT-REVIEW-R1.independent_probes.test_r04v_joined" name="test_H3_completed_resume_preserves_native_outputs_and_manifest" time="0.195"><failure message="AssertionError: completed resume lost the retained native output/fact objects&#10;assert () == (QueryExecuti...b7a00b4'),)),)&#10;  &#10;  Right contains one more item: QueryExecutionResult(query_ref=ExactRef(kind='EmpiricalQuerySpec@1.0.0', object_id='urn:rawlsing:pre553:EmpiricalQuery... object_id='R56-SYNTHETIC-RELEASE', content_hash='b741d3792dea0986db266d2bc0ed9f15d79bbbf4cfff1187ec2742821b7a00b4'),))&#10;  Use -v to get more diff">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-506/test_H3_completed_resume_prese0')
+
+    def test_H3_completed_resume_preserves_native_outputs_and_manifest(tmp_path):
+        bundle, issued = _issued_workloads(tmp_path)
+        first = _first_result(issued, bundle)
+        assert first.native_outputs
+        checkpoint = capture_joined_checkpoint((first,))
+        resumed = resume_joined_workloads(
+            workloads=issued,
+            source_factory=lambda _ref: bundle.physical_stream,
+            host=HOST, purpose=PURPOSE, checkpoint=checkpoint,
+        )
+        completed = resumed.completed_results[0]
+&gt;       assert completed.native_outputs == first.native_outputs, (
+            "completed resume lost the retained native output/fact objects"
+        )
+E       AssertionError: completed resume lost the retained native output/fact objects
+E       assert () == (QueryExecuti...b7a00b4'),)),)
+E         
+E         Right contains one more item: QueryExecutionResult(query_ref=ExactRef(kind='EmpiricalQuerySpec@1.0.0', object_id='urn:rawlsing:pre553:EmpiricalQuery... object_id='R56-SYNTHETIC-RELEASE', content_hash='b741d3792dea0986db266d2bc0ed9f15d79bbbf4cfff1187ec2742821b7a00b4'),))
+E         Use -v to get more diff
+
+WORKER_RETURNS/PYAT-R91-R04V-JOINED-INDEPENDENT-REVIEW-R1/independent_probes/test_r04v_joined.py:99: AssertionError</failure></testcase></testsuite></testsuites>

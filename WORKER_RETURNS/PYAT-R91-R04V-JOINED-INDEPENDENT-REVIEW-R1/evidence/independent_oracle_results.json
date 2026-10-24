@@ -1,0 +1,62 @@
+{
+  "schema": "PYAT_R91_R04V_JOINED_INDEPENDENT_ORACLE_RESULTS@1",
+  "candidate": "a88ccd140f30fe621140ee98841c6ce57ae9cab4",
+  "author_code": "ef1e71628c0a89753c0c6aeea3c35c5fb06e29eb",
+  "review_branch": "agent/opencode-pyat-r91-r04v-joined-independent-review-r1",
+  "accepted_r03_review": "d15de915ea3388894c0f8839d28db3b23bc00367",
+  "verdict": "REVISE",
+  "author_focused_suite": {
+    "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_workload_custody.py -q --junitxml=.../replay/author_suite_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 3,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/author_suite.log",
+    "junit": "replay/author_suite_junit.xml"
+  },
+  "retained_r03_suite": {
+    "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_workload.py -q --junitxml=.../replay/r03_suite_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 16,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/r03_suite.log",
+    "junit": "replay/r03_suite_junit.xml"
+  },
+  "reviewer_probes": {
+    "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r04v_joined.py -q --junitxml=.../replay/hostile_probes_junit.xml -o addopts=''",
+    "exit": 1,
+    "passed": 0,
+    "failed": 3,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/hostile_probes.log",
+    "junit": "replay/hostile_probes_junit.xml",
+    "failures": [
+      "H1 actual R03 governed-issued NativeDiscoveryExecution cannot be consumed by capture_joined_checkpoint; only NativeWorkloadResult from the unary path is accepted",
+      "H2 joined checkpoint is self-hashed; a forged checkpoint with altered receipt/output refs and recomputed entry/checkpoint hashes is accepted, with no separately provisioned original pin",
+      "H3 completed resume loses native_outputs/native facts and substitutes a synthetic manifest; the resumed completed result is not the original result"
+    ]
+  },
+  "author_positive_grain": {
+    "unary_sequence": "complete single-unit compile_universal_workload sequence; partial sequence of complete workloads resumes with no rerun; revoked/wrong source refuse; fresh-process checkpoint test passes",
+    "limitation": "workload-granularity only; fully completed NativeWorkloadResult; unary fixtures; no automatic governed-discovery caller wiring",
+    "u43_exact": true,
+    "scope": "two authorized code paths; U43/R03/native owners unchanged"
+  },
+  "f1_f6_matrix": {
+    "F1": "PARTIAL (unary complete-workload sequence only)",
+    "F2": "FAIL (actual governed R03 result not consumable)",
+    "F3": "FAIL (self-hashed checkpoint; no external original pin)",
+    "F4": "FAIL (completed native outputs/facts/manifest lost)",
+    "F5": "PARTIAL/FAIL (workload-granularity complete prefix; no partial multi-unit/partial native result)",
+    "F6": "FAIL (same consumer cannot recover completed native outputs/facts)"
+  },
+  "unknowns_and_boundaries": [
+    "Sourcefree TEST_ONLY local trusted host; no source respondent access.",
+    "R04.byte decoder reused read-only; no decoder rewrite. R05/original science/CI/prod/N11/N12/Sorok/J52/W52 NOT_REACHED.",
+    "No new trust service or global durable exactly-once/anti-fork claimed."
+  ]
+}
