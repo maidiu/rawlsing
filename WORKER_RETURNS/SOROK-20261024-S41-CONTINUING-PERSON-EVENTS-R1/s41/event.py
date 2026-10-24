@@ -302,11 +302,12 @@ def history_record_from_prior(
     predicates = {"SHARE_TOOL": "PRIOR_B_SHARE", "REFUSE_TOOL": "PRIOR_B_REFUSAL"}
     if operation not in predicates:
         raise S41EventRefusal("S41_PRIOR_B_OPERATION_UNSUPPORTED", str(operation))
+    generation = first_binding["generation"]
     return make_source(
         source_ref="TEST_ONLY_S41_HIST_" + first_binding["e1_event_id"],
         source_class="HISTORICAL_EPISODE",
-        actor_id=session.meta["source_actor_map"]["TEST_ONLY_R31J_A"],
-        branch_id=session.branch_id,
+        actor_id=first_binding["actor_id"],
+        branch_id=first_binding["branch_id"],
         as_of=as_of,
         predicate=predicates[operation],
         value=1,
@@ -314,10 +315,19 @@ def history_record_from_prior(
             "mapping_premise": "WITNESSED_PRIOR_B_OPERATION_TO_EXISTING_HISTORICAL_PREDICATE",
             "mapped_from_e1_event_id": first_binding["e1_event_id"],
             "mapped_from_e1_event_hash": first_binding["e1_event_hash"],
+            "prior_e1_event_id": first_binding["e1_event_id"],
+            "prior_e1_event_hash": first_binding["e1_event_hash"],
             "prior_c8_occurrence_id": first_binding["c8"]["occurrence_id"],
             "prior_c8_content_hash": first_binding["c8"].get("c8_content_hash", ""),
             "prior_b_operation": operation,
             "prior_b_event_hash": first_source["b_event_hash"],
+            "prior_actor_id": first_binding["actor_id"],
+            "prior_branch_id": first_binding["branch_id"],
+            "prior_event_time": first_binding["event_time"],
+            "prior_access_witness_hash": generation.get("access_witness_hash", ""),
+            "prior_access_source_ref": generation.get("access_source_ref", ""),
+            "prior_access_source_hash": generation.get("access_source_hash", ""),
+            "prior_source_actor_map": first_binding["source_actor_map"],
         },
     )
 

@@ -12,9 +12,8 @@ install()
 
 from c8_readonly_consumer import C8ReadOnlyConsumer  # noqa: E402
 from candidate import valid  # noqa: E402
-from s39.sources import validate_source  # noqa: E402
-
 from .bindings import BINDING_SCHEMA, binding_episodes  # noqa: E402
+from .history import S41HistoryRefusal, validate_history_source  # noqa: E402
 
 
 class S41ReadRefusal(ValueError):
@@ -173,12 +172,13 @@ def _validate_history(session, binding: dict, bindings: list[dict]) -> list[dict
     history = binding.get("history_source")
     if not isinstance(history, dict) or not valid(dict(history)):
         raise S41ReadRefusal("S41_HISTORY_SOURCE_MISSING")
-    validate_source(
-        history,
-        actor_id=binding["source_actor_map"]["TEST_ONLY_R31J_A"],
-        branch_id=binding["branch_id"],
-        as_of=binding["as_of"],
-    )
+    try:
+        validate_history_source(
+            session, history, prior,
+            branch_id=binding["branch_id"], as_of=binding["as_of"],
+        )
+    except S41HistoryRefusal as exc:
+        raise S41ReadRefusal("S41_HISTORY_BINDING_INVALID", exc.code) from exc
     prior_source = prior.get("source") or {}
     expected = {
         "SHARE_TOOL": "PRIOR_B_SHARE",
@@ -186,15 +186,6 @@ def _validate_history(session, binding: dict, bindings: list[dict]) -> list[dict
     }.get(prior_source.get("b_operation"))
     if expected is None or history.get("predicate") != expected:
         raise S41ReadRefusal("S41_HISTORY_PREDICATE_MISMATCH")
-    content = history.get("content") or {}
-    if content.get("mapped_from_e1_event_id") != prior.get("e1_event_id"):
-        raise S41ReadRefusal("S41_HISTORY_E1_LINK_MISMATCH")
-    if content.get("mapped_from_e1_event_hash") != prior.get("e1_event_hash"):
-        raise S41ReadRefusal("S41_HISTORY_E1_HASH_LINK_MISMATCH")
-    if content.get("prior_c8_occurrence_id") != prior["c8"].get("occurrence_id"):
-        raise S41ReadRefusal("S41_HISTORY_C8_LINK_MISMATCH")
-    if content.get("prior_b_operation") != prior_source.get("b_operation"):
-        raise S41ReadRefusal("S41_HISTORY_SOURCE_LINK_MISMATCH")
     return refs
 
 

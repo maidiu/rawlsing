@@ -65,11 +65,13 @@ LOCAL_FILES = [
     "s41/bindings.py",
     "s41/bootstrap.py",
     "s41/event.py",
+    "s41/history.py",
     "s41/performer.py",
     "s41/reader.py",
     "s41/session.py",
     "tests/conftest.py",
     "tests/test_s41_continuation.py",
+    "tests/test_s41_history_binding.py",
 ]
 
 
@@ -185,8 +187,43 @@ def chain_evidence(root: Path) -> dict:
         first_after = session.read_event(first["e1_event_id"])
         second_read = session.read_event(events[1]["e1_event_id"])
         view = session.language_view(second_read["action_event_id"], locale="en")
+        bindings = binding_episodes(session)
     finally:
         session.close()
+    first_binding = bindings[0]
+    second_binding = bindings[1]
+    history = second_binding.get("history_source") or {}
+    history_content = history.get("content") or {}
+    history_binding = {
+        "source_ref": history.get("source_ref"),
+        "canonical_source_ref": "TEST_ONLY_S41_HIST_" + first_binding["e1_event_id"],
+        "prior_e1_event_hash": history_content.get("prior_e1_event_hash"),
+        "actual_prior_e1_event_hash": first_binding["e1_event_hash"],
+        "prior_b_event_hash": history_content.get("prior_b_event_hash"),
+        "actual_prior_b_event_hash": first_binding["source"]["b_event_hash"],
+        "prior_c8_content_hash": history_content.get("prior_c8_content_hash"),
+        "actual_prior_c8_content_hash": first_binding["c8"]["c8_content_hash"],
+        "prior_access_witness_hash": history_content.get("prior_access_witness_hash"),
+        "actual_prior_access_witness_hash": first_binding["generation"].get(
+            "access_witness_hash"
+        ),
+        "prior_actor_id": history_content.get("prior_actor_id"),
+        "actual_prior_actor_id": first_binding["actor_id"],
+        "prior_branch_id": history_content.get("prior_branch_id"),
+        "actual_prior_branch_id": first_binding["branch_id"],
+        "prior_event_time": history_content.get("prior_event_time"),
+        "actual_prior_event_time": first_binding["event_time"],
+    }
+    history_binding["canonical"] = all((
+        history_binding["source_ref"] == history_binding["canonical_source_ref"],
+        history_binding["prior_e1_event_hash"] == history_binding["actual_prior_e1_event_hash"],
+        history_binding["prior_b_event_hash"] == history_binding["actual_prior_b_event_hash"],
+        history_binding["prior_c8_content_hash"] == history_binding["actual_prior_c8_content_hash"],
+        history_binding["prior_access_witness_hash"] == history_binding["actual_prior_access_witness_hash"],
+        history_binding["prior_actor_id"] == history_binding["actual_prior_actor_id"],
+        history_binding["prior_branch_id"] == history_binding["actual_prior_branch_id"],
+        history_binding["prior_event_time"] == history_binding["actual_prior_event_time"],
+    ))
     cold = S41Session.open(state)
     try:
         cold_events = cold.read_events()
@@ -208,6 +245,7 @@ def chain_evidence(root: Path) -> dict:
         "events": [_event_summary(row) for row in events],
         "latest_ordinal": latest["event_ordinal"],
         "first_after_second": _event_summary(first_after),
+        "history_binding": history_binding,
         "second_language_view": {
             "status": view["status"],
             "display_mode": view["display_mode"],
@@ -233,6 +271,7 @@ def chain_evidence(root: Path) -> dict:
             and events[1]["history_refs"][0]["e1_event_id"] == events[0]["e1_event_id"]
             and any(ref.startswith("TEST_ONLY_S41_HIST_")
                     for ref in events[1]["generation_source_refs"]),
+            "history_canonical": history_binding["canonical"],
             "zero_targets": events[0]["c9"]["target_proposals"] == []
             and events[1]["c9"]["target_proposals"] == []
             and events[0]["c9"]["target_state_rows"] == 0
@@ -538,6 +577,40 @@ def source_manifest() -> dict:
     }
 
 
+def repro_evidence() -> dict:
+    oracle = Path(
+        "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/"
+        "sorok-incumbent-review/SOROK_REVIEW/S41/evidence/"
+        "repro_bad_history_reader.py"
+    )
+    env = dict(ENV, S41_RETURN=str(RET))
+    proc = subprocess.run(
+        [PY, str(oracle)], cwd=str(RET), env=env, capture_output=True, text=True
+    )
+    (EVID / "repro_bad_history.stderr.txt").write_text(proc.stderr)
+    err = proc.stderr.strip().splitlines()
+    code = ""
+    for line in reversed(err):
+        if "S41EventRefusal:" in line:
+            code = line.split("S41EventRefusal:", 1)[1].strip()
+            break
+    evidence = {
+        "schema": "SOROK_S41_BAD_HISTORY_REPRO_REPAIR@1",
+        "reproducer": str(oracle),
+        "exit": proc.returncode,
+        "refused": proc.returncode != 0,
+        "expected_repaired_behavior": "REFUSE_TYPED",
+        "error": "S41EventRefusal" if "S41EventRefusal:" in proc.stderr else "",
+        "code": code,
+        "stdout": proc.stdout.strip(),
+        "stderr_tail": err[-4:],
+    }
+    _write(EVID / "repro_bad_history.json", evidence)
+    if proc.returncode == 0:
+        raise RuntimeError("S41_REPRO_ACCEPTED_BAD_HISTORY")
+    return evidence
+
+
 def main() -> None:
     EVID.mkdir(exist_ok=True)
     JUNIT.mkdir(exist_ok=True)
@@ -550,6 +623,7 @@ def main() -> None:
         tamper = tamper_evidence(work / "tamper")
         mismatch = mismatch_evidence(work / "mismatch")
         tests = test_evidence()
+        repro = repro_evidence()
         entry = _run([PY, "-B", "run_s41.py"], "entrypoint.log")
         if entry.returncode != 0:
             raise RuntimeError("S41_ENTRYPOINT_FAILED:" + entry.stderr)
@@ -566,6 +640,8 @@ def main() -> None:
             "tests": tests["counts"],
             "entrypoint_exit": entry.returncode,
             "chain_checks": chain["checks"],
+            "history_binding": chain["history_binding"],
+            "repro": repro,
             "open": opened,
             "denial": denial,
             "tamper": tamper,

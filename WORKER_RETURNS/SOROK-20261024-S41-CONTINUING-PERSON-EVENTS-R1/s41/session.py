@@ -28,6 +28,7 @@ from .event import (
     history_record_from_prior,
     world_prerequisites,
 )
+from .history import S41HistoryRefusal, validate_history_source
 from .performer import perform_continuation_attempt  # noqa: E402
 from .reader import S41ReadRefusal, read_all_events, read_event, read_latest_event
 
@@ -134,6 +135,13 @@ class S41Session(S40GeneratedSession):
         history_record = history_record_from_prior(
             self, first_binding=first, as_of=second_as_of
         )
+        try:
+            validate_history_source(
+                self, history_record, first,
+                branch_id=self.branch_id, as_of=second_as_of,
+            )
+        except S41HistoryRefusal as exc:
+            raise S41EventRefusal("S41_HISTORY_BINDING_INVALID", exc.code) from exc
         records = context_records(
             actor_id=self.meta["source_actor_map"]["TEST_ONLY_R31J_A"],
             branch_id=self.branch_id,

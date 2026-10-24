@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/s41/session.py", line 139, in continue_event
+    validate_history_source(
+  File "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/s41/history.py", line 40, in validate_history_source
+    raise S41HistoryRefusal("S41_HISTORY_SOURCE_REF_NOT_CANONICAL")
+s41.history.S41HistoryRefusal: S41_HISTORY_SOURCE_REF_NOT_CANONICAL
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/SOROK_REVIEW/S41/evidence/repro_bad_history_reader.py", line 93, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/SOROK_REVIEW/S41/evidence/repro_bad_history_reader.py", line 50, in main
+    result = session.continue_event(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/s41/session.py", line 144, in continue_event
+    raise S41EventRefusal("S41_HISTORY_BINDING_INVALID", exc.code) from exc
+s41.event.S41EventRefusal: S41_HISTORY_BINDING_INVALID: S41_HISTORY_SOURCE_REF_NOT_CANONICAL

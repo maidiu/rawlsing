@@ -1,6 +1,6 @@
 # SOROK S41 — sequential admitted events for the same continuing person
 
-**RESULT:** `S41_TWO_EVENT_CONTINUING_PERSON__COLD_BETWEEN_AND_AFTER__SAME_ROOT_BRANCH_STORE__SECOND_ACTUAL_C8_E1__PRIOR_FACT_BOUND__EVENT_KEYED_READERS__6_OF_6_FOCUSED_TESTS__ENTRYPOINT_0__NO_TARGET__NATIVE_HOLD`.
+**RESULT:** `S41_TWO_EVENT_CONTINUING_PERSON__COLD_BETWEEN_AND_AFTER__SAME_ROOT_BRANCH_STORE__SECOND_ACTUAL_C8_E1__PRIOR_FACT_BOUND__EVENT_KEYED_READERS__15_OF_15_FOCUSED_TESTS__ENTRYPOINT_0__NO_TARGET__NATIVE_HOLD`.
 
 One accepted S40/S37 person/product is started once, its first event and generated request are committed, the session is closed and reopened, and a second distinct world/E1 event is admitted through `continue_event` on the same actor/root/branch/store and the same keyed C8/C9 state. The second generation cites the first admitted B share as an actual historical source, not a caller boolean. Both event-specific readers remain valid after the second event and after cold reopen.
 
@@ -10,6 +10,18 @@ One accepted S40/S37 person/product is started once, its first event and generat
 - Branch `codex/sorok-s41-continuing-person-events`; base accepted S40 `79b0357c7af9b66ad8a28f5b77b46b0348094a23`.
 - Write scope only `WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/**`.
 - S40/S39/S37/S36/M35/language/JOIN-E remain read-only at their pinned cuts.
+
+## Independent review repair — REVISE cced4223
+
+Review `29`/`3a22d3a9…` reproduced that a self-sealed unrelated history source (`TEST_ONLY_UNRELATED_SELFSEALED`) with zero `prior_b_event_hash` could still drive `REQUEST_TOOL` and verify warm/cold. Repair:
+
+- `history_record_from_prior` now emits a canonical source ref `TEST_ONLY_S41_HIST_<first_e1_event_id>` and exact prior fields: prior E1 ID/hash, C8 occurrence/content hash, B operation/event hash, actor, branch, event time, prior access witness/source ref/hash and source-actor map.
+- `s41/history.py` validates that record against the actual earlier C8 occurrence/source/actor/clock and the sealed earlier generation/access binding, not the history record alone.
+- `continue_event` validates the canonical history **before** admitting the second C8 event; generation consumes only the validated canonical source.
+- The event-keyed warm/cold reader applies the same validator, so persisted unrelated/wrong-bound history refuses rather than passing a self-sealed summary.
+- Added focused regressions for unrelated source ref, wrong B event hash, wrong C8 content hash, wrong access witness hash, wrong E1 hash, wrong actor/branch/time, plus a persisted bad-history event rejected warm and cold.
+
+The unchanged reviewer reproducer now exits **1** with `S41EventRefusal: S41_HISTORY_BINDING_INVALID: S41_HISTORY_SOURCE_REF_NOT_CANONICAL`; it is not counted as passed by exit 0. Evidence is in `evidence/repro_bad_history.json` and `.stderr.txt`.
 
 ## What was implemented
 
@@ -42,7 +54,7 @@ One accepted S40/S37 person/product is started once, its first event and generat
 | Native / English | `¿Puedo usar la herramienta?` / `May I use the tool?` | same |
 | C9 | `OBSERVED_IMMEDIATE_OBJECT_ORIENTATION`, `NO_CHANGE/NO_PROPOSAL` | same |
 | Target proposals/rows | `[]` / 0 | `[]` / 0 |
-| History | none | first actual E1/C8, `PRIOR_B_SHARE` |
+| History | none | canonical first actual E1/C8/source/access, `PRIOR_B_SHARE` |
 
 The first event is read after the second with its own response reference. A's tool remains available (1) after the second REFUSE_TOOL event. Root actors remain A/B; branch actors remain A/B/U. Cold reopen between and after the events returns both readers valid and the latest event as ordinal 2.
 
@@ -54,7 +66,7 @@ Boundary evidence:
 - Actual `take_tool` current-world action then second event: performer `DENIED` (`TOOL_NOT_AVAILABLE_IN_CURRENT_WORLD`), no speech/action, C9 valid-empty `RECEIVABLE_NO_OBSERVED_UPTAKE`, zero target.
 - Second-event plan/projection mismatch is refused by the event-keyed reader while event 1 remains valid; cold reopen refuses.
 
-Focused tests: **6 passed** (`junit/s41_full.xml`); entrypoint exit 0. No broad inherited rerun.
+Focused tests: **15 passed** (`junit/s41_full.xml`); entrypoint exit 0; unchanged reviewer reproducer exits 1 with the typed history-binding refusal. No broad inherited rerun.
 
 ## Reused roots/cuts
 
@@ -64,4 +76,4 @@ S40 `79b0357c…` five key files exact; S39 `e41513fa…`; S37 `e1f3c1da…`; S3
 
 Wholly TEST_ONLY sourcefree continuation. No native CAN008/CAN011/CAN022/023, C11/native C12, original/human data, A5, acquired practice, motive/trust change, stochastic choice or general planner. Event/history facts are not a new practice or psychological transformation. No provider/domain/model calls, extra workers/reviewers, controller/M35/S37/S39/S40 edits, target fabrication or native/source/human grants.
 
-**Terminal:** `S41_TWO_EVENT_CONTINUING_PERSON__COLD_BETWEEN_AND_AFTER__SAME_ROOT_BRANCH_STORE__PRIOR_ACTUAL_FACT_BOUND__EVENT_KEYED_READERS__6_OF_6_TESTS__NO_TARGET__NATIVE_HOLD`. Final commit and remote SHA are verified after push and reported in the final handback.
+**Terminal:** `S41_TWO_EVENT_CONTINUING_PERSON__COLD_BETWEEN_AND_AFTER__SAME_ROOT_BRANCH_STORE__CANONICAL_PRIOR_ACTUAL_FACT_BOUND__EVENT_KEYED_READERS__15_OF_15_TESTS__NO_TARGET__NATIVE_HOLD`. Final commit and remote SHA are verified after push and reported in the final handback.
