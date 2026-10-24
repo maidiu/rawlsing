@@ -1,0 +1,36 @@
+{
+  "schema": "PYAT_R95_R06_PROOF_WITNESS@1",
+  "node": "R06",
+  "disposition": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+  "branch": "agent/opencode-pyat-r95-r06-world-consumer-integration-r1",
+  "startup_commit": "a7f5cc70520e5236c24bbac241fad071c026d881",
+  "contract_commit": "2f1d67e87a9803d3db6db2773cf3b2589877999c",
+  "candidate_code_commit": "7f28ca4ad241a749e85ce6bbdac8f25795b80468",
+  "commands": [
+    {"purpose": "R06 world binding suite", "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_world_binding.py -q --junitxml=WORKER_RETURNS/PYAT-R95-R06-WORLD-CONSUMER-INTEGRATION-R1/junit.xml -o addopts=''", "exit_code": 0, "result": "4 passed", "failures": 0, "errors": 0, "skips": 0, "walltime_seconds": 2.43, "junit": "junit.xml", "log": "pytest.log"}
+  ],
+  "native_consumer": {
+    "function": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility",
+    "two_field_values": [["X", 1], ["O", "AB"]],
+    "alternate_view": [["X", 0], ["O", "BA"]],
+    "view_hash_changes": true,
+    "cold_subprocess_same_hash": true
+  },
+  "mutations_and_restoration": [
+    {"mutation": "foreign source universe", "expected": "WORLD_FIELD_SOURCE_RELEASE_MISMATCH", "restored": "original selects"},
+    {"mutation": "person/household pooling", "expected": "UNLINKED_UNIT_POOLING_UNAUTHORIZED", "restored": "same-unit selects"},
+    {"mutation": "context as structural", "expected": "CONTEXT_AS_STRUCTURAL_UNAUTHORIZED", "restored": "structural fields select"},
+    {"mutation": "unobserved clock pair", "expected": "UNOBSERVED_TEMPORAL_PAIR", "restored": "observed pair selects"},
+    {"mutation": "revoked currentness", "expected": "WORLD_CURRENTNESS_NOT_CURRENT", "restored": "CURRENT selects"}
+  ],
+  "blobs": {
+    "rawlsing_next/pre553_universal_world_binding.py": "6ecc472378efb5b2bf6d87b218a23147ec2bda45",
+    "rawlsing_next/tests/test_universal_world_binding.py": "50ee595980c91227ba6bcced04475abf1e997b7f"
+  },
+  "limits": [
+    "R05 learned-world consumer for the two-field predicate is NOT complete; its original bound predicate refuses substitution correctly.",
+    "N10E actual consumer is wired; N9/N10W were not separately integrated.",
+    "No original source/science/FF/F6/F7/CI/prod/N11/N12/Sorok/J52-W52.",
+    "No self-adoption; distinct reviewer required."
+  ]
+}
