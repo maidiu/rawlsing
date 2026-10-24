@@ -628,6 +628,25 @@ def test_actual_discovery_route_learned_and_consumer():
     assert result.discovery_frontier_ref == discovery.evaluated_frontier_ref
     assert result.consumer_result.result_state == "EXACT_SUPPORTED"
 
+    severed = i4.evaluate_learned_world_consumer(
+        learned,
+        composition=composition,
+        consumer_query=consumer_query,
+        model_rule=fx.make_model_rule(source["universe"].ref, "r91-r05-at10"),
+        producer_query_ref=produced_query.ref,
+        producer_predicate_ref=all_p.ref,
+    )
+    assert severed.state == "REFUSED"
+    restored = i4.evaluate_learned_world_consumer(
+        learned,
+        composition=composition,
+        consumer_query=consumer_query,
+        model_rule=fx.make_model_rule(source["universe"].ref, "r91-r05-at10"),
+        producer_query_ref=produced_query.ref,
+        producer_predicate_ref=produced_predicate.ref,
+    )
+    assert restored.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
+
     joint_query = ho._query(
         source, qauth, produced_predicate, ("X", "Y"), tag="r91-r05-at10-joint"
     )
@@ -798,3 +817,22 @@ def test_actual_recursive_route_learned_and_consumer():
     assert result.recursive_handoff_refs == (handoff.ref,)
     assert handoff.immediate_parent_branch_ref in result.recursive_lineage_refs
     assert result.consumer_result.result_state == "EXACT_SUPPORTED"
+
+    severed = i4.evaluate_learned_world_consumer(
+        learned,
+        composition=composition,
+        consumer_query=consumer_query,
+        model_rule=fx.make_model_rule(source["universe"].ref, "r91-r05-at11"),
+        producer_query_ref=child_query.ref,
+        producer_predicate_ref=parent.ref,
+    )
+    assert severed.state == "REFUSED"
+    restored = i4.evaluate_learned_world_consumer(
+        learned,
+        composition=composition,
+        consumer_query=consumer_query,
+        model_rule=fx.make_model_rule(source["universe"].ref, "r91-r05-at11"),
+        producer_query_ref=child_query.ref,
+        producer_predicate_ref=child_predicate.ref,
+    )
+    assert restored.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
