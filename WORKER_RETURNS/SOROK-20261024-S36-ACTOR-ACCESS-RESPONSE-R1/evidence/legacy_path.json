@@ -1,0 +1,27 @@
+{
+  "legacy_two_history_response": {
+    "declared_history_refs": [
+      "TEST_ONLY_S36_ACT_H1",
+      "TEST_ONLY_S36_ACT_H2"
+    ],
+    "note": "Existing evaluate_response adapter preserved and isolated from S35 route.",
+    "proposal_count": 1,
+    "proposal_operation": "CREATE",
+    "status": "RESPONSE_COMMITTED"
+  },
+  "native_registries": {
+    "response_rule_entries": 0,
+    "target_rule_entries": 0
+  },
+  "s35_two_history_response": {
+    "committed_target_ids": [],
+    "declared_history_refs": [],
+    "event_hash": "4b4092533ba5786000edf983845e23a9530f8406d3f97a35a57963338ac583aa",
+    "note": "S35 route never falls back to the legacy two-history CREATE proposal.",
+    "proposal_count": 0,
+    "response_outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+    "response_status": "RESPONSE_COMMITTED",
+    "target_branch": "NO_CHANGE",
+    "target_reason": "NO_PROPOSAL"
+  }
+}

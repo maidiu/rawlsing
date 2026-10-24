@@ -1,0 +1,51 @@
+{
+  "all_pass": true,
+  "mutation_scope": "candidate/actor_access_response.py only; restored in finally",
+  "schema": "SOROK_S36_SAME_ASSERTION_FAULTS@1",
+  "trials": [
+    {
+      "claim_id": "ACCESS_WITNESS_GATE",
+      "pass": true,
+      "phases": {
+        "fault": {
+          "exit": 1,
+          "junit": "junit/faults/00_access_witness_gate_fault.xml",
+          "named_status": "RED"
+        },
+        "positive": {
+          "exit": 0,
+          "junit": "junit/faults/00_access_witness_gate_positive.xml",
+          "named_status": "PASS"
+        },
+        "restored": {
+          "exit": 0,
+          "junit": "junit/faults/00_access_witness_gate_restored.xml",
+          "named_status": "PASS"
+        }
+      },
+      "positive_node": "tests/test_s36_vectors.py::test_p1_observed_immediate_positive_zero_proposals"
+    },
+    {
+      "claim_id": "RESPONSE_WITNESS_GATE",
+      "pass": true,
+      "phases": {
+        "fault": {
+          "exit": 1,
+          "junit": "junit/faults/01_response_witness_gate_fault.xml",
+          "named_status": "RED"
+        },
+        "positive": {
+          "exit": 0,
+          "junit": "junit/faults/01_response_witness_gate_positive.xml",
+          "named_status": "PASS"
+        },
+        "restored": {
+          "exit": 0,
+          "junit": "junit/faults/01_response_witness_gate_restored.xml",
+          "named_status": "PASS"
+        }
+      },
+      "positive_node": "tests/test_s36_vectors.py::test_p1_observed_immediate_positive_zero_proposals"
+    }
+  ]
+}
