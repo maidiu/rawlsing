@@ -1,0 +1,67 @@
+{
+  "schema": "PYAT_R91_R04V_R2_JOINED_INDEPENDENT_ORACLE_RESULTS@1",
+  "candidate": "dfeaab23998291be81abe4caecd08de663053eaa",
+  "author_code": "c0c4b9e15a84546ca200d8da85bd3979832e7b1e",
+  "review_branch": "agent/opencode-pyat-r91-r04v-r2-joined-review-r1",
+  "prior_review": "50b8bee9e59d4c13fffeda319e257b37b5593356",
+  "verdict": "REVISE",
+  "author_focused_suite": {
+    "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_workload_custody.py -q --junitxml=.../replay/author_suite_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 5,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/author_suite.log",
+    "junit": "replay/author_suite_junit.xml"
+  },
+  "retained_r03_suite": {
+    "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_workload.py -q --junitxml=.../replay/r03_suite_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 16,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/r03_suite.log",
+    "junit": "replay/r03_suite_junit.xml"
+  },
+  "reviewer_successor_probes": {
+    "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r04v_r2.py -q --junitxml=.../replay/hostile_probes_junit.xml -o addopts=''",
+    "exit": 1,
+    "passed": 3,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/hostile_probes.log",
+    "junit": "replay/hostile_probes_junit.xml",
+    "passes": [
+      "actual R03 governed NativeDiscoveryExecution captured/restored with exact facts and original manifest",
+      "external original pin rejects a self-rehashed forged checkpoint",
+      "real partial multi-unit prefix -> fresh process -> pending units completed, matching uninterrupted output refs/facts/states"
+    ],
+    "failure": [
+      "completed resume builds native_outputs as mutable SimpleNamespace facts-only views; original QueryExecutionResult.query_ref/native output identity is lost"
+    ]
+  },
+  "retained_fixed_items": {
+    "actual_governed_capture": "PASS",
+    "external_original_pin": "PASS",
+    "partial_multinode_fresh_process": "PASS independently (author had only in-process partial evidence)",
+    "native_manifest": "original manifest retained for completed workloads",
+    "u43_exact": true,
+    "r03_native_unchanged": true
+  },
+  "f1_f6_matrix": {
+    "F1": "PASS at actual governed/partial cold grain",
+    "F2": "PASS for actual governed capture and partial multi-unit resume",
+    "F3": "PASS for external original pin; FAIL for completed output object identity",
+    "F4": "PASS for manifests/receipts/facts; output owner object identity incomplete",
+    "F5": "PASS for partial multi-unit fresh-process resume",
+    "F6": "PARTIAL: facts/manifest same consumer pass; QueryExecutionResult identity lost"
+  },
+  "unknowns_and_boundaries": [
+    "Sourcefree TEST_ONLY local trusted host; no source respondent access.",
+    "R05/original science/CI/prod/N11/N12/Sorok/J52/W52 NOT_REACHED.",
+    "No new global durable exactly-once/anti-fork or cryptographic issuer claimed."
+  ]
+}
