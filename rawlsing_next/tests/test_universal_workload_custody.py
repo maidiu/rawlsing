@@ -72,6 +72,7 @@ def test_r91_partial_resume_matches_uninterrupted_without_rerun(tmp_path):
     resumed = resume_joined_workloads(
         workloads=issued, source_factory=counted,
         host=HOST, purpose=PURPOSE, checkpoint=checkpoint,
+        expected_checkpoint_ref=checkpoint.checkpoint_hash,
     )
     assert len(resumed.completed_results) == 1
     assert len(resumed.resumed_results) == len(issued) - 1
@@ -97,12 +98,14 @@ def test_r91_revoked_and_wrong_source_refuse_before_native(tmp_path):
         resume_joined_workloads(
             workloads=(issued[0], revoked), source_factory=lambda _ref: bundle.physical_stream,
             host=HOST, purpose=PURPOSE, checkpoint=checkpoint,
+            expected_checkpoint_ref=checkpoint.checkpoint_hash,
         )
     bad_stream = replace(bundle.physical_stream, source_sha256="f" * 64)
     with pytest.raises(WorkloadAdmissionError):
         resume_joined_workloads(
             workloads=(issued[0], issued[1]), source_factory=lambda _ref: bad_stream,
             host=HOST, purpose=PURPOSE, checkpoint=checkpoint,
+            expected_checkpoint_ref=checkpoint.checkpoint_hash,
         )
 
 
@@ -131,10 +134,12 @@ compilation = compile_universal_workload(
     bundle=bundle, as_of=sys.argv[3], host=sys.argv[4], purpose=sys.argv[5])
 issued = tuple(item.issued for item in compilation.compiled if item.issued is not None)
 checkpoint = restore_joined_checkpoint(
-    json.loads(open(sys.argv[2], encoding="utf-8").read()))
+    json.loads(open(sys.argv[2], encoding="utf-8").read()),
+    expected_checkpoint_ref=sys.argv[6])
 result = resume_joined_workloads(
     workloads=issued, source_factory=lambda _ref: bundle.physical_stream,
-    host=sys.argv[4], purpose=sys.argv[5], checkpoint=checkpoint)
+    host=sys.argv[4], purpose=sys.argv[5], checkpoint=checkpoint,
+    expected_checkpoint_ref=sys.argv[6])
 print(json.dumps({
     "completed": len(result.completed_results),
     "resumed": len(result.resumed_results),
@@ -145,7 +150,7 @@ print(json.dumps({
     env["PYTHONPATH"] = str(REPO_ROOT) + os.pathsep + env.get("PYTHONPATH", "")
     proc = subprocess.run(
         [sys.executable, "-c", code, str(source_path), str(checkpoint_path),
-         AS_OF, HOST, PURPOSE],
+         AS_OF, HOST, PURPOSE, checkpoint.checkpoint_hash],
         cwd=str(REPO_ROOT), env=env, capture_output=True, text=True, timeout=180,
     )
     assert proc.returncode == 0, proc.stderr[-2000:]
@@ -159,3 +164,139 @@ print(json.dumps({
         (ref.kind, ref.object_id, ref.content_hash)
         for ref in _refs(uninterrupted)
     )
+
+
+def test_r91_actual_r03_governed_discovery_capture_and_retained_facts(tmp_path):
+    from rawlsing_next.tests.test_universal_workload import (
+        _frontier_bundle, _frontier_fixture,
+    )
+    from rawlsing_next.pre553_universal_workload import (
+        compile_governed_frontier, execute_governed_frontier,
+    )
+    bundle, _ = _frontier_bundle(tmp_path / "r91_governed.sav")
+    inventory, policy, frontier = _frontier_fixture(bundle)
+    compilation = compile_governed_frontier(
+        bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+        as_of=AS_OF, host=HOST, purpose=PURPOSE,
+    )
+    governed = execute_governed_frontier(
+        compilation=compilation,
+        source_factory=lambda _ref: bundle.physical_stream,
+    )
+    native_execution = governed.native_execution
+    checkpoint = capture_joined_checkpoint(
+        (native_execution,),
+        source_sha256_by_decision={
+            native_execution.decision_ref.key: compilation.issued.record.source_sha256
+        },
+    )
+    pin = checkpoint.checkpoint_hash
+    restored = restore_joined_checkpoint(
+        checkpoint.material(), expected_checkpoint_ref=pin)
+    resumed = resume_joined_workloads(
+        workloads=(compilation.issued,), source_factory=lambda _ref: bundle.physical_stream,
+        host=HOST, purpose=PURPOSE, checkpoint=restored,
+        expected_checkpoint_ref=pin,
+    )
+    retained = resumed.completed_results[0]
+    original_facts = tuple(fact.ref for fact in native_execution.native_result.empirical_facts)
+    retained_facts = tuple(fact.ref for fact in retained.native_result.empirical_facts)
+    assert retained_facts == original_facts
+    assert retained.manifest.manifest_hash == native_execution.manifest.manifest_hash
+    assert retained.decision_ref == native_execution.decision_ref
+    with pytest.raises(WorkloadAdmissionError, match="PIN_MISMATCH|HASH_MISMATCH"):
+        restore_joined_checkpoint(
+            checkpoint.material(), expected_checkpoint_ref="f" * 64)
+
+
+def test_r91_partial_multiunit_native_prefix_resume(tmp_path):
+    from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
+    from rawlsing_next.pre553_issued_workload import (
+        IssuedWorkloadRecord, NativeWorkload, execute_issued_workload,
+        operation_jobs,
+    )
+    from rawlsing_next.pre553_native_workload_binding import (
+        OperationFixture, TestOnlyDecisionResolver, TestOnlyIssuedWorkload,
+        build_projection_catalog,
+    )
+    from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+    bundle, issued = _issued_workloads(tmp_path)
+    first, second = issued[0], issued[1]
+    catalogs = []
+    for item, variable, value in (
+        (first, "SCORE", "0"), (second, "SCORE", "1"),
+    ):
+        fixture = OperationFixture(
+            fixture_id="R91-PARTIAL-" + variable + value,
+            target_variable_code=variable, response_value=value)
+        catalog, request = build_projection_catalog(
+            bundle=bundle, operation=fixture, as_of=AS_OF)
+        catalogs.append((catalog, request))
+    authorities = {}
+    predicates = {}
+    queries = {}
+    for catalog, _ in catalogs:
+        for obj in catalog.authorities:
+            authorities[obj.authority_ref.key] = obj
+        for obj in catalog.predicates:
+            predicates[obj.ref.key] = obj
+        for obj in catalog.queries:
+            queries[obj.ref.key] = obj
+    runtime_catalog = RuntimeObjectCatalog(
+        authorities=tuple(authorities.values()),
+        predicates=tuple(predicates.values()),
+        queries=tuple(queries.values()),
+        discovery_authorities=(),
+    )
+    requests = tuple(request for _, request in catalogs)
+    base = first.workload
+    workload = NativeWorkload(
+        decision_ref=ExactRef("R91_PARTIAL_DECISION", "urn:test:r91:partial", "9" * 64),
+        source_factory_ref=base.source_factory_ref,
+        descriptor=base.descriptor, projection=base.projection,
+        catalog=runtime_catalog, requests=requests, discoveries=(),
+        original_u_root=base.original_u_root,
+        expected_frontier_root=base.expected_frontier_root,
+    )
+    record = IssuedWorkloadRecord(
+        decision_ref=workload.decision_ref,
+        source_permission_ref=first.record.source_permission_ref,
+        scientific_permission_refs=first.record.scientific_permission_refs,
+        host=HOST, purpose=PURPOSE,
+        source_sha256=first.record.source_sha256,
+        envelope_sha256=semantic_hash(workload.envelope()),
+        original_u_root=workload.original_u_root,
+        expected_frontier_root=workload.expected_frontier_root,
+        expected_jobs=operation_jobs(requests, ()),
+        currentness="CURRENT_GRANTED", scope=first.record.scope,
+    )
+    multi = TestOnlyIssuedWorkload(
+        workload=workload, record=record, descriptor=first.descriptor,
+        envelope_sha256=record.envelope_sha256)
+    resolver = TestOnlyDecisionResolver(record)
+    partial = execute_issued_workload(
+        workload, resolver, source_factory=lambda _ref: bundle.physical_stream,
+        host=HOST, purpose=PURPOSE, allow_test_only=True, max_units=1,
+    )
+    assert len(partial.receipts) == 1
+    assert len(partial.manifest.units) == 2
+    checkpoint = capture_joined_checkpoint((partial,))
+    assert checkpoint.entries[0].state == "PARTIAL"
+    resumed = resume_joined_workloads(
+        workloads=(multi,), source_factory=lambda _ref: bundle.physical_stream,
+        host=HOST, purpose=PURPOSE, checkpoint=checkpoint,
+        expected_checkpoint_ref=checkpoint.checkpoint_hash,
+    )
+    assert len(resumed.resumed_results) == 1
+    final = resumed.resumed_results[0]
+    assert len(final.receipts) == 2
+    assert final.outputs_by_unit and len(final.outputs_by_unit) == 2
+    uninterrupted = execute_issued_workload(
+        workload, resolver, source_factory=lambda _ref: bundle.physical_stream,
+        host=HOST, purpose=PURPOSE, allow_test_only=True,
+    )
+    assert resumed.output_refs == tuple(sorted(
+        {ref for receipt in uninterrupted.receipts for ref in receipt.result_refs},
+        key=lambda ref: ref.key))
+    assert len({receipt.unit_ref.key for receipt in final.receipts}) == 2
+    assert all(receipt.state == "COMPLETED" for receipt in final.receipts)
