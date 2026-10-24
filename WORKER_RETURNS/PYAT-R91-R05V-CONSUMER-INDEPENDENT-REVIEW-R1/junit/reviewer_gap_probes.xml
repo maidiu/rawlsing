@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="4" time="0.930" timestamp="2026-10-24T10:29:10.577839-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1.probes.test_r05v_consumer_gap" name="test_positive_single_m01_actual_chain" time="0.348" /><testcase classname="WORKER_RETURNS.PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1.probes.test_r05v_consumer_gap" name="test_typed_status_axes_are_preserved_by_consumer" time="0.008"><failure message="AssertionError: {'consumer_values_read': None, 'denominator': 0, 'input_state': 'ZERO_SUPPORT', 'reason_code': 'EMPIRICAL_EVIDENCE_NOT_SUPPORTED', ...}&#10;assert 'REFUSED' != 'REFUSED'">case = {'bundle': M1AdjudicationInputBundle(requested_claim_family_id='SYNTHETIC_LEARNED_RELATION', requested_claim_rule_id='...cb755cbfda8530a3e99eeaab50bd53492fb0323ff1a08e9d2d782141c149c5', typed_state='QUERY_AUTHORIZED_RESOLVABLE'), ...}, ...}
+
+    def test_typed_status_axes_are_preserved_by_consumer(case):
+        observed = []
+        for state, denominator in (
+            ("ZERO_SUPPORT", 0),
+            ("VALID_EMPTY", 0),
+            ("UNRESOLVED", 16),
+        ):
+            mutated = replace(
+                case["composition"],
+                analytical_state=state,
+                producer_fact_state=state,
+                possibility_slice_evidence_or_null=None,
+                raw_denominator_support=denominator,
+            )
+            result = _consume(case, mutated)
+            observed.append(
+                {
+                    "input_state": state,
+                    "denominator": denominator,
+                    "state": result.state,
+                    "reason_code": result.reason_code,
+                    "consumer_values_read": result.consumer_values_read,
+                }
+            )
+        _record("status_axes", {"observed": observed})
+        for entry in observed:
+            # A typed ZERO_SUPPORT/VALID_EMPTY/UNRESOLVED result (with its axes,
+            # denominator and Z16) must survive, not collapse to generic REFUSED.
+&gt;           assert entry["state"] != "REFUSED", entry
+E           AssertionError: {'consumer_values_read': None, 'denominator': 0, 'input_state': 'ZERO_SUPPORT', 'reason_code': 'EMPIRICAL_EVIDENCE_NOT_SUPPORTED', ...}
+E           assert 'REFUSED' != 'REFUSED'
+
+WORKER_RETURNS/PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/probes/test_r05v_consumer_gap.py:115: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1.probes.test_r05v_consumer_gap" name="test_joint_recursive_discovery_bindings_affect_consumer" time="0.006"><failure message="AssertionError: assert 'joint_component_count' in {'b5_selection_receipt_ref': None, 'consumer_query_ref': {'content_hash': '7501928df8d4069934826faf3e69bd60a7bccb3da56...': '8e54f8b0f664051a089590379ba53a1716bbd8f9fa8d8813c29ea46cba1d52cc', 'consumer_result_state': 'EXACT_SUPPORTED', ...}">case = {'bundle': M1AdjudicationInputBundle(requested_claim_family_id='SYNTHETIC_LEARNED_RELATION', requested_claim_rule_id='...cb755cbfda8530a3e99eeaab50bd53492fb0323ff1a08e9d2d782141c149c5', typed_state='QUERY_AUTHORIZED_RESOLVABLE'), ...}, ...}
+
+    def test_joint_recursive_discovery_bindings_affect_consumer(case):
+        mutated = replace(
+            case["composition"],
+            joint_component_count=2,
+            joint_order_semantics="SEMANTIC_ORDERED",
+            discovery_receipt_refs=(
+                ExactRef("R91_DISCOVERY", "urn:test:r05v:discovery", semantic_hash({"d": 1})),
+            ),
+            discovery_frontier_ref=ExactRef(
+                "R91_DISCOVERY_FRONTIER", "urn:test:r05v:frontier", semantic_hash({"f": 1})
+            ),
+            recursive_handoff_refs=(
+                ExactRef("R91_RECURSIVE_HANDOFF", "urn:test:r05v:handoff", semantic_hash({"h": 1})),
+            ),
+            recursive_lineage_refs=(
+                ExactRef("R91_RECURSIVE_LINEAGE", "urn:test:r05v:lineage", semantic_hash({"l": 1})),
+            ),
+            analytical_state="SUPPORTED",
+            producer_fact_state="SUPPORTED",
+        )
+        result = _consume(case, mutated)
+        values = result.consumer_values_read or {}
+        _record(
+            "joint_recursive_binding",
+            {
+                "state": result.state,
+                "consumer_state": None if result.consumer_result is None else result.consumer_result.result_state,
+                "values_keys": sorted(values),
+                "has_joint": "joint_component_count" in values,
+                "has_discovery": "discovery_receipt_refs" in values,
+                "has_recursive": "recursive_handoff_refs" in values,
+                "has_producer_route": "producer_route" in values,
+            },
+        )
+&gt;       assert "joint_component_count" in values
+E       AssertionError: assert 'joint_component_count' in {'b5_selection_receipt_ref': None, 'consumer_query_ref': {'content_hash': '7501928df8d4069934826faf3e69bd60a7bccb3da56...': '8e54f8b0f664051a089590379ba53a1716bbd8f9fa8d8813c29ea46cba1d52cc', 'consumer_result_state': 'EXACT_SUPPORTED', ...}
+
+WORKER_RETURNS/PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/probes/test_r05v_consumer_gap.py:152: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1.probes.test_r05v_consumer_gap" name="test_e41_extension_is_not_part_of_the_learned_consumer_binding" time="0.008" /></testsuite></testsuites>

@@ -1,0 +1,105 @@
+{
+  "schema": "PYAT_R91_R05V_INDEPENDENT_PROOF_WITNESS@1",
+  "logical_job": "PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1",
+  "verdict": "REVISE_HOLD_FULL_R05",
+  "startup": "31d77fd37c501954c088c786db20d8056b6748f5",
+  "branch": "agent/opencode-pyat-r91-r05v-consumer-independent-review-r1",
+  "frozen_expectations": "0ad34409c1f456677e6c84ce17cfc1086dfa456e",
+  "environment": {
+    "python": "3.11.3",
+    "python_executable": "/usr/local/bin/python3",
+    "pytest": "9.0.2"
+  },
+  "custody": {
+    "exact_root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+    "r05_contract": "4524cc431747aa84d0eb22c4fa67a82a6492d8a4",
+    "r05_code_commit": "766652c47bf3b34c19b10116a3f84f62e0ffd257",
+    "r05_base": "8a6ea2f6c8f3bbdc1d43454abfabc6d7744718d7",
+    "accepted_r03": "c912497b25411ebbd3d796db139f32f5bebb6c4c",
+    "accepted_r03_by": "d15de915ea3388894c0f8839d28db3b23bc00367",
+    "accepted_r08": "be1133391d91b5c2bf69299188e6f011162f269b",
+    "code_blobs": {
+      "rawlsing_next/pre553_learned_world_composition.py": "cdd5a1b5f4a12208cb752eb3ebabe5fa72f51255",
+      "rawlsing_next/pre553_universal_empirical_extension.py": "37279fa82001d5853dadf4906efc904e8dc3b9bc",
+      "rawlsing_next/tests/test_universal_learned_consumer.py": "61c84067d3062cfb70568b8ecc1f56484d7722a5"
+    },
+    "accepted_owner_blobs": {
+      "pre553_analytical_composition.py": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "pre553_empirical_possibility_provider.py": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "source_backed_positioned_subject_possibility.py": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "pre553_universal_evidence_binding.py": "3ca860e409f1d063da4cd03dd1691a89c67333f6",
+      "tests/test_universal_evidence_binding.py": "5832ce0598fa02df93fcd200010a0076921e6cbe"
+    },
+    "code_scope": [
+      "rawlsing_next/pre553_learned_world_composition.py",
+      "rawlsing_next/pre553_universal_empirical_extension.py",
+      "rawlsing_next/tests/test_universal_learned_consumer.py"
+    ],
+    "author_manifest": {"artifacts": 6, "all_match": true, "self_excluded": "manifest.json"}
+  },
+  "already_qualified": {
+    "author_r05": {"tests": 34, "failures": 0, "errors": 0, "skipped": 0},
+    "provider_after_exact_fixture_materialization": {"tests": 43, "failures": 0, "errors": 0, "skipped": 0},
+    "analytical_composition": {"tests": 13, "failures": 0, "errors": 0, "skipped": 0},
+    "author_broader_69_plus_8_fixture_missing": "77/77 applicable passes after materializing only WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1; no semantic fixture failure",
+    "actual_positive": {
+      "chain": "M01 facts/discovery -> M1 RULE_SATISFIED -> M2 release -> C1 evidence -> unchanged N10E",
+      "consumer_state": "EXACT_SUPPORTED",
+      "consumer_hash": "8e54f8b0f664051a089590379ba53a1716bbd8f9fa8d8813c29ea46cba1d52cc",
+      "single_case_sever_restore": true
+    },
+    "e41": {"direct_route": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION", "delegates_to_accepted_owner": true, "same_consumer_hash": true}
+  },
+  "independent_gap_probes": {
+    "positive_single_m01": {"outcome": "PASS", "signature": ["learned", "composition", "consumer_query", "model_rule", "producer_query_ref", "producer_predicate_ref", "require_current_selection"]},
+    "status_axes": {
+      "outcome": "FAIL_DEFECT",
+      "observed": {
+        "ZERO_SUPPORT": "REFUSED / EMPIRICAL_EVIDENCE_NOT_SUPPORTED, values null",
+        "VALID_EMPTY": "REFUSED / EMPIRICAL_EVIDENCE_NOT_SUPPORTED, values null",
+        "UNRESOLVED16": "REFUSED / EMPIRICAL_EVIDENCE_NOT_SUPPORTED, values null"
+      }
+    },
+    "joint_recursive_discovery": {
+      "outcome": "FAIL_DEFECT",
+      "observed": "EXACT_SUPPORTED but values lack joint_component_count, discovery_receipt_refs, recursive_handoff_refs, producer_route"
+    },
+    "e41_separate": {"outcome": "PASS", "observed": "direct extension actual; consumer signature accepts no extension/E41 parameter"}
+  },
+  "defects": [
+    {
+      "id": "R05V-P1",
+      "class": "single-composition canary does not bind full R03/M1/M2/B5/I4/E41 product graph",
+      "missing_function": "accept/validate full product graph including minority/counterpattern, joint/conditional/recursive/discovery, E41 routes, and bind each to the same unchanged consumer assertion"
+    },
+    {
+      "id": "R05V-P2",
+      "class": "typed status/axes collapsed to generic refusal",
+      "missing_function": "preserve eligibility/execution/result axes, denominator/cells, observed zero vs absent/valid-empty/held, all-missing Z UNRESOLVED16"
+    }
+  ],
+  "junit": {
+    "author_r05_replay": {"tests": 34, "failures": 0, "errors": 0, "skipped": 0},
+    "provider_suite_replay": {"tests": 43, "failures": 0, "errors": 0, "skipped": 0},
+    "analytical_composition_replay": {"tests": 13, "failures": 0, "errors": 0, "skipped": 0},
+    "reviewer_gap_probes": {"tests": 4, "failures": 2, "errors": 0, "skipped": 0}
+  },
+  "artifacts": [
+    "EXPECTATIONS.md", "00_RETURN.md", "defects.md", "limits.md", "RESUME.md",
+    "proof_witness.json", "SHA256manifest.json",
+    "outcomes/r05v_observations.json",
+    "probes/test_r05v_consumer_gap.py",
+    "junit/author_r05_replay.xml", "junit/provider_suite_replay.xml",
+    "junit/analytical_composition_replay.xml", "junit/reviewer_gap_probes.xml",
+    "logs/stdout.jsonl"
+  ],
+  "scope_limits": {
+    "not_reached": ["full J42/P41/E04 live service", "original35/1890 science", "R04.joined custody"],
+    "r04_independent": true,
+    "no_candidate_repair": true,
+    "no_self_adoption": true,
+    "no_author_wake": true,
+    "no_extra_workers_sessions_provider_account": true
+  }
+}

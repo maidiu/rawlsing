@@ -1,0 +1,78 @@
+{
+  "probes": [
+    {
+      "consumer_hash": "8e54f8b0f664051a089590379ba53a1716bbd8f9fa8d8813c29ea46cba1d52cc",
+      "consumer_state": "EXACT_SUPPORTED",
+      "probe": "single_m01_positive",
+      "product_graph_parameter": false,
+      "signature": [
+        "learned",
+        "composition",
+        "consumer_query",
+        "model_rule",
+        "producer_query_ref",
+        "producer_predicate_ref",
+        "require_current_selection"
+      ],
+      "single_composition_parameter": true,
+      "state": "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    },
+    {
+      "observed": [
+        {
+          "consumer_values_read": null,
+          "denominator": 0,
+          "input_state": "ZERO_SUPPORT",
+          "reason_code": "EMPIRICAL_EVIDENCE_NOT_SUPPORTED",
+          "state": "REFUSED"
+        },
+        {
+          "consumer_values_read": null,
+          "denominator": 0,
+          "input_state": "VALID_EMPTY",
+          "reason_code": "EMPIRICAL_EVIDENCE_NOT_SUPPORTED",
+          "state": "REFUSED"
+        },
+        {
+          "consumer_values_read": null,
+          "denominator": 16,
+          "input_state": "UNRESOLVED",
+          "reason_code": "EMPIRICAL_EVIDENCE_NOT_SUPPORTED",
+          "state": "REFUSED"
+        }
+      ],
+      "probe": "status_axes"
+    },
+    {
+      "consumer_state": "EXACT_SUPPORTED",
+      "has_discovery": false,
+      "has_joint": false,
+      "has_producer_route": false,
+      "has_recursive": false,
+      "probe": "joint_recursive_binding",
+      "state": "LEARNED_CONSUMER_EXACT_SUPPORTED",
+      "values_keys": [
+        "b5_selection_receipt_ref",
+        "consumer_query_ref",
+        "consumer_result_hash",
+        "consumer_result_state",
+        "consumer_values_read",
+        "evidence_ref",
+        "learned_receipt_ref",
+        "m1_disposition_ref",
+        "m2_release_ref",
+        "producer_predicate_ref",
+        "producer_query_ref",
+        "product_contract_ref",
+        "schema"
+      ]
+    },
+    {
+      "consumer_accepts_extension_result": false,
+      "extension_consumer_state": "EXACT_SUPPORTED",
+      "extension_route": "DIRECT_VIA_ACCEPTED_PROVIDER_FUNCTION",
+      "probe": "e41_separate_route"
+    }
+  ],
+  "schema": "R91_R05V_INDEPENDENT_OBSERVATIONS@1"
+}
