@@ -177,6 +177,16 @@ def _build_case(*, valid_empty: bool = False):
             "model_rule": model_rule,
             "condition_binding_witness": witness,
         },
+        "context_b": {
+            "repository": repository,
+            "empirical_query": producer_query_b,
+            "predicate": predicate,
+            "authority_registry": registry,
+            "release_refs": (release.release_ref,),
+            "consumer_query": consumer_query,
+            "model_rule": model_rule,
+            "condition_binding_witness": witness_b,
+        },
     }
 
 
@@ -426,34 +436,34 @@ def test_actual_multi_component_graph_reaches_same_consumer(r05_case):
 
 def test_trusted_coordinator_retains_original_and_validates_submitted_view(r05_case):
     case = r05_case
+    def _slot(slot_id, comp, context):
+        return i4.NativeGraphSlot(
+            slot_id,
+            comp.source_universe_refs[0],
+            case["release"],
+            comp.producer_query_ref,
+            comp.producer_predicate_ref,
+            comp.consumer_query_ref,
+            comp.consumer_model_rule_hash,
+            comp.producer_route,
+            m1_disposition=case["learned"].m1_disposition,
+            m2_release=case["learned"].m2_artifacts.release.ref,
+            repository=context["repository"],
+            empirical_query=context["empirical_query"],
+            predicate=context["predicate"],
+            authority_registry=context["authority_registry"],
+            consumer_query=context["consumer_query"],
+            model_rule=context["model_rule"],
+            condition_value_witness=context["condition_binding_witness"],
+        )
+
     slots = (
-        i4.NativeGraphSlot(
-            "slot-a",
-            case["composition"].source_universe_refs[0],
-            case["release"],
-            case["composition"].producer_query_ref,
-            case["composition"].producer_predicate_ref,
-            case["composition"].consumer_query_ref,
-            case["composition"].consumer_model_rule_hash,
-            case["composition"].producer_route,
-        ),
-        i4.NativeGraphSlot(
-            "slot-b",
-            case["composition_b"].source_universe_refs[0],
-            case["release"],
-            case["composition_b"].producer_query_ref,
-            case["composition_b"].producer_predicate_ref,
-            case["composition_b"].consumer_query_ref,
-            case["composition_b"].consumer_model_rule_hash,
-            case["composition_b"].producer_route,
-        ),
+        _slot("slot-a", case["composition"], case["context"]),
+        _slot("slot-b", case["composition_b"], case["context_b"]),
     )
     request = i4.NativeGraphExecutionRequest(slots)
     coordinator = i4.TrustedNativeGraphCoordinator(
-        {
-            "slot-a": lambda slot: case["composition"],
-            "slot-b": lambda slot: case["composition_b"],
-        }
+        admitted_slots={slot.slot_id: slot for slot in slots}
     )
     bound = coordinator.execute(request)
     result = i4.evaluate_learned_world_consumer(
@@ -757,6 +767,56 @@ def test_actual_discovery_route_learned_and_consumer():
     )
     assert evidence_change_refused.state != "LEARNED_CONSUMER_EXACT_SUPPORTED"
 
+    changed_slot = i4.NativeGraphSlot(
+        "at10-changed-evidence",
+        source["universe"].ref,
+        source["release_ref"],
+        evidence_change_query.ref,
+        x1.ref,
+        consumer_query.ref,
+        slot.model_rule_hash,
+        "DIRECT_I03_TO_POSITIONED_SUBJECT",
+        condition_value_witness=evidence_change_witness,
+        target_arity=1,
+        joint_order_semantics="SEMANTIC_ORDERED",
+        m1_disposition=learned.m1_disposition,
+        m2_release=learned.m2_artifacts.release.ref,
+        repository=source["repo"],
+        empirical_query=evidence_change_query,
+        predicate=x1,
+        authority_registry=registry,
+        consumer_query=consumer_query,
+        model_rule=slot.model_rule,
+    )
+    changed_coordinator = i4.TrustedNativeGraphCoordinator(
+        admitted_slots={changed_slot.slot_id: changed_slot}
+    )
+    changed_bound = changed_coordinator.execute(
+        i4.NativeGraphExecutionRequest((changed_slot,))
+    )
+    changed_trusted = i4.evaluate_learned_world_consumer(
+        learned,
+        composition=changed_bound.view.compositions[0],
+        consumer_query=consumer_query,
+        model_rule=slot.model_rule,
+        producer_query_ref=evidence_change_query.ref,
+        producer_predicate_ref=x1.ref,
+        product_graph=changed_bound,
+        trusted_graph_reader=changed_coordinator,
+    )
+    assert changed_trusted.state != "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    restored_trusted = i4.evaluate_learned_world_consumer(
+        learned,
+        composition=bound.view.compositions[0],
+        consumer_query=consumer_query,
+        model_rule=slot.model_rule,
+        producer_query_ref=produced_query.ref,
+        producer_predicate_ref=produced_predicate.ref,
+        product_graph=bound,
+        trusted_graph_reader=coordinator,
+    )
+    assert restored_trusted.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
+
     joint_query = ho._query(
         source, qauth, produced_predicate, ("X", "Y"), tag="r91-r05-at10-joint"
     )
@@ -816,6 +876,60 @@ def test_actual_discovery_route_learned_and_consumer():
     assert joint_result.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
     assert joint_result.joint_component_count == 2
     assert joint_result.consumer_result.result_state == "EXACT_SUPPORTED"
+
+    joint_extension = provide_empirical_possibility_slice_ext(
+        repository=source["repo"],
+        empirical_query=joint_query,
+        predicate=produced_predicate,
+        authority_registry=registry,
+        release_refs=(source["release_ref"],),
+        consumer_query=joint_consumer,
+        model_rule=joint_model,
+        condition_binding_witness=joint_witness,
+    )
+    joint_slot = i4.NativeGraphSlot(
+        "at10-joint",
+        source["universe"].ref,
+        source["release_ref"],
+        joint_query.ref,
+        produced_predicate.ref,
+        joint_consumer.ref,
+        joint_model.rule_hash,
+        "DIRECT_I03_TO_POSITIONED_SUBJECT",
+        condition_value_witness=joint_witness,
+        target_arity=2,
+        joint_order_semantics="SEMANTIC_ORDERED",
+        m1_disposition=learned.m1_disposition,
+        m2_release=learned.m2_artifacts.release.ref,
+        e41_input=joint_extension,
+        repository=source["repo"],
+        empirical_query=joint_query,
+        predicate=produced_predicate,
+        authority_registry=registry,
+        consumer_query=joint_consumer,
+        model_rule=joint_model,
+    )
+    joint_coordinator = i4.TrustedNativeGraphCoordinator(
+        admitted_slots={joint_slot.slot_id: joint_slot}
+    )
+    joint_bound = joint_coordinator.execute(
+        i4.NativeGraphExecutionRequest((joint_slot,))
+    )
+    joint_trusted = i4.evaluate_learned_world_consumer(
+        learned,
+        composition=joint_bound.view.compositions[0],
+        consumer_query=joint_consumer,
+        model_rule=joint_model,
+        producer_query_ref=joint_query.ref,
+        producer_predicate_ref=produced_predicate.ref,
+        product_graph=joint_bound,
+        trusted_graph_reader=joint_coordinator,
+    )
+    assert joint_trusted.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    assert joint_trusted.joint_component_count == 2
+    assert joint_trusted.consumer_values_read["extension_route"] == (
+        joint_extension.producer_route
+    )
 
 
 def test_actual_recursive_route_learned_and_consumer():

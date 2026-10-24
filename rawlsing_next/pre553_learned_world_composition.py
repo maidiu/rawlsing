@@ -1841,7 +1841,8 @@ class TrustedNativeGraphCoordinator:
             f"urn:rawlsing:r91:bound-native-graph:sha256:{digest}",
             digest,
         )
-        self._originals[digest] = (canonicalize(material), tuple(components))
+        if all(slot.slot_id in self._admitted_slots for slot in request.slots):
+            self._originals[digest] = (canonicalize(material), tuple(components))
         return BoundNativeProductGraph(
             original_ref=ref,
             view=NativeProductGraph(tuple(components)),
@@ -2111,6 +2112,32 @@ def evaluate_learned_world_consumer(
         original_components = trusted_graph_reader.original_components(
             product_graph.original_ref
         )
+        if original is not None and original_components is not None:
+            expected_m1 = learned.m1_disposition.ref.as_dict() if learned.m1_disposition else None
+            expected_m2 = (
+                learned.m2_artifacts.release.ref.as_dict()
+                if learned.m2_artifacts is not None
+                else None
+            )
+            expected_b5 = (
+                learned.b5_selection_receipt.ref.as_dict()
+                if learned.b5_selection_receipt is not None
+                else None
+            )
+            for slot_record in original["slots"]:
+                if (
+                    slot_record["m1_disposition_ref"] != expected_m1
+                    or slot_record["m2_release_ref"] != expected_m2
+                    or slot_record["b5_selection_ref"] != expected_b5
+                ):
+                    return _learned_refusal(
+                        learned=learned,
+                        reason="LEARNED_ASSOCIATION_DOES_NOT_MATCH_RETAINED_ORIGINAL",
+                        disposition=learned.m1_disposition,
+                        evidence=composition.possibility_slice_evidence_or_null,
+                        producer_query_ref=producer_query_ref,
+                        producer_predicate_ref=producer_predicate_ref,
+                    )
         if (
             original is None
             or original_components is None
