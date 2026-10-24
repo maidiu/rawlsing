@@ -1027,12 +1027,22 @@ def execute_test_only_discovery_workload(
     if not isinstance(issued, TestOnlyIssuedWorkload):
         raise WorkloadBindingRefusal("TEST_ONLY_WORKLOAD_REQUIRED")
     resolver = TestOnlyDecisionResolver(issued.record)
-    admit(
+    admitted = admit(
         issued.workload, resolver, host=host, purpose=purpose, allow_test_only=True
     )
+
+    def check_current() -> None:
+        current = admit(
+            issued.workload, resolver, host=host, purpose=purpose,
+            allow_test_only=True,
+        )
+        if current != admitted:
+            raise WorkloadBindingRefusal("ISSUER_SNAPSHOT_CHANGED_DURING_EXECUTION")
+
     source = source_factory(issued.workload.source_factory_ref)
     if getattr(source, "source_sha256", None) != issued.record.source_sha256:
         raise WorkloadBindingRefusal("SOURCE_FACTORY_RETURNED_WRONG_EDITION")
+    check_current()
     repository, release = build_source_backed_c11_repository(
         source, issued.workload.projection
     )
@@ -1065,6 +1075,7 @@ def execute_test_only_discovery_workload(
     runner.run(executors={
         "DISCOVERY": ExecutorBinding(executor_ref, execute),
     })
+    check_current()
     if len(runner.receipts) != 1 or runner.receipts[0].state != "COMPLETED":
         raise WorkloadBindingRefusal("NATIVE_DISCOVERY_EXECUTION_INCOMPLETE")
     native_result = outputs[manifest.units[0].unit_hash]
