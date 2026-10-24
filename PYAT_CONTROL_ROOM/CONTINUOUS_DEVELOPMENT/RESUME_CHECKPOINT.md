@@ -179,3 +179,6 @@ User go after SolHigh decision/downshift request. Existing idle OpenCodeMAX auth
 
 ## R61AX — R03 successor independently reviewing
 Candidate 8c506f8f239204b004e4b677572898c8dba06811 verified11 SHA256/blob identities, authorized successor paths, clean author tracked tree/directremote; 15 author plus32 retained R01 passes not acceptance. Same distinct OpenCodeMAX reviewer resumed PID577 session ses_e96304356ffeC8HSvwFluWOjG1 branch agent/opencode-pyat-r61-r03v-r4-independent-review-r1 stable r61-r01v-r5, exact commission 3e7d0df8a9c3d6dd37949b1e9abc490afcef739a. Logs .r61/r03v-r4. Prior defect obligations preserved, new APIs tested faithfully, repeated/qualified occurrence limit explicitly reviewed. No duplicate author, code adoption or hold change.
+
+## R61AY — automatic settings route HOLD, completion notifications separate
+Controller409f6c78e9d9ed77377c778476b2c23e9eb15e8a remote verified, samechat qualification turn01a16c7e-9e00-7e83-863c-4ebbc767f9ce exact rollout context independently read: gpt-6.1-sol/low despite requested high and HIGH_OK marker. HQ focused replay5pass. No actual settings-change capability; manual user model/effort escalation remains necessary. No low transition/new appserver/retry. Existing completion queue notifications unaffected. R03 R4 reviewerPID577 continues; no changes to product/authority holds.
