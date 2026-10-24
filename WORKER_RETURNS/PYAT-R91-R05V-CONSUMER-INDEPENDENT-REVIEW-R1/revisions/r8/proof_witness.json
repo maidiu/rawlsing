@@ -1,0 +1,69 @@
+{
+  "schema": "PYAT_R91_R05V_R8_INDEPENDENT_PROOF_WITNESS@1",
+  "logical_job": "PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/revisions/r8",
+  "verdict": "ACCEPT_SCOPED_LOCAL",
+  "startup": "bc2b5465c8f0ec2ea4657c6206436cdfa9ca58d0",
+  "branch": "agent/opencode-pyat-r91-r05v-r8-consumer-review-r1",
+  "frozen_expectations": "576360fe695382f86705549f1448694c467e437f",
+  "environment": {"python": "3.11.3", "python_executable": "/usr/local/bin/python3", "pytest": "9.0.2"},
+  "custody": {
+    "exact_root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+    "high_decision": "c618dc28d722ba64f2f9d7bf39cbd9915b429ea8",
+    "r8_contract": "06751e285c75f401cacb43cade74e22c3a1cb826",
+    "r8_code_commit": "3db59b71ba771291f67e16a2575f6d28f9566fce",
+    "module_blob": "adbcc3316920c708580097dfe9f5aef4c9ca82fb",
+    "test_blob": "b0114a82c8852faffc52686c69585a50ee89ba9f",
+    "accepted_owners": {"provider": "23167aa25291fb148b1e3cf210ac33fe7769b783", "evaluator": "62e5eced47b64512f47b004e3e13a6ef3fe21de7", "r08_module": "3ca860e409f1d063da4cd03dd1691a89c67333f6"},
+    "author_manifest": {"artifacts": 7, "all_match": true, "self_excluded": true},
+    "code_scope": ["rawlsing_next/pre553_learned_world_composition.py"]
+  },
+  "retained": {
+    "author": {"tests": 40, "failures": 0},
+    "prior_probes": {"tests": 23, "failures": 0},
+    "retained_regressions": {"tests": 56, "failures": 0, "provider": 43, "c1": 13},
+    "r7_immutable": {"tests": 1, "failures": 0}
+  },
+  "r8_independent": {
+    "request_fields": {
+      "tests": 2,
+      "failures": 0,
+      "forged_request_actual_fields": {
+        "state": "LEARNED_CONSUMER_EXACT_SUPPORTED",
+        "baseline_original": "404694252163970084c9dd4cc94b9a6e3d450b015e1e4b9251638e276d5d8ddc",
+        "forged_original": "404694252163970084c9dd4cc94b9a6e3d450b015e1e4b9251638e276d5d8ddc",
+        "same_original": true
+      },
+      "nested_admitted_witness_mutation": {
+        "refusal": "ConditionValueRelationMismatch: CONDITION_VALUE_RELATION_MISMATCH: witness identity preimage hash mismatch"
+      }
+    }
+  },
+  "closed_defects": [
+    {"id": "R7-P1", "class": "request actual fields rewrite admitted learned association/original", "status": "closed: slot=admitted; forged request ignored; R7 dynamic attack refuses; nested witness mutation refuses"}
+  ],
+  "junit": {
+    "author_r8_replay": {"tests": 40, "failures": 0},
+    "prior_probes_replay": {"tests": 23, "failures": 0},
+    "retained_regression_replay": {"tests": 56, "failures": 0},
+    "r7_immutable_probe_replay": {"tests": 1, "failures": 0},
+    "reviewer_r8_fields_probes": {"tests": 2, "failures": 0}
+  },
+  "artifacts": [
+    "EXPECTATIONS.md", "00_RETURN.md", "defects.md", "limits.md", "RESUME.md",
+    "proof_witness.json", "SHA256manifest.json", "outcomes/r05v_r8_observations.json",
+    "probes/test_r05v_r8_request_fields.py", "probes/test_r05v_r7_immutable_probe.py",
+    "probes/r1_immutable_probe.py", "probes/r2_immutable_probe.py",
+    "probes/r3_immutable_probe.py", "probes/r5_immutable_probe.py",
+    "probes/r6_immutable_probe.py", "junit/*.xml", "logs/stdout.jsonl"
+  ],
+  "scope_limits": {
+    "not_reached": ["full J42/P41/E04 live service", "original35/1890 science", "R04.joined custody"],
+    "local_trusted_coordinator_only": true,
+    "no_os_r09_capture": true,
+    "r04_independent": true,
+    "no_candidate_repair": true,
+    "no_self_adoption": true,
+    "no_author_wake": true,
+    "no_extra_workers_sessions_provider_account": true
+  }
+}

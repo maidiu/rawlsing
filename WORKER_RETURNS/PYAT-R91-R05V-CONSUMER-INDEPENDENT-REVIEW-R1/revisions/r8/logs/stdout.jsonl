@@ -1,0 +1,16 @@
+{"seq":1,"phase":"preflight","command":"pwd","exit":0,"stdout":"/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4","note":"exact stable root"}
+{"seq":2,"phase":"preflight","command":"git rev-parse --show-toplevel","exit":0,"stdout":"/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4","note":"toplevel exact"}
+{"seq":3,"phase":"preflight","command":"git branch --show-current","exit":0,"stdout":"agent/opencode-pyat-r91-r05v-r8-consumer-review-r1","note":"required branch"}
+{"seq":4,"phase":"preflight","command":"git status","exit":0,"stdout":"On branch agent/opencode-pyat-r91-r05v-r8-consumer-review-r1; up to date with origin; sparse checkout 6%; nothing to commit, working tree clean","note":"no facility mismatch"}
+{"seq":5,"phase":"preflight","command":"git rev-parse HEAD","exit":0,"stdout":"bc2b5465c8f0ec2ea4657c6206436cdfa9ca58d0","note":"exact startup HEAD"}
+{"seq":6,"phase":"commission","command":"git show 859a8d40...:R05V/revisions/r8/00_COMMISSION.md; High decision; R4-R7 contracts/returns/manifests; prior reviews","exit":0,"note":"full controlling decision/author artifacts read before freeze"}
+{"seq":7,"phase":"freeze","command":"git commit -m 'R91-R05V-R8: freeze independent review expectations'","exit":0,"stdout":"576360fe695382f86705549f1448694c467e437f","note":"EXPECTATIONS committed before R8 code inspection"}
+{"seq":8,"phase":"custody","command":"verify R4-R8 scope/blobs/manifests; accepted owners","exit":0,"stdout":"module adbcc331; test b0114a82; provider/evaluator/R08 unchanged; R8 manifest 7/7","note":"scope exact"}
+{"seq":9,"phase":"author-tests","command":"pytest test_universal_learned_consumer.py test_pre553_learned_world_composition.py --junitxml=<r8>/junit/author_r8_replay.xml","exit":0,"stdout":"40 passed in 8.25s","note":"author 40/40 replayed"}
+{"seq":10,"phase":"prior-probes","command":"pytest r1/r2/r3/r5/r6/r7 immutable probes","exit":0,"stdout":"23 passed in 3.33s","note":"prior probes pass under R8"}
+{"seq":11,"phase":"retained-regression","command":"pytest provider + analytical composition","exit":0,"stdout":"56 passed in 15.09s","note":"provider 43 + C1 13"}
+{"seq":12,"phase":"independent-probes","command":"pytest <r8>/probes/test_r05v_r8_request_fields.py --junitxml=<r8>/junit/reviewer_r8_fields_probes.xml","exit":0,"stdout":"2 passed in 1.40s","note":"forged request actual fields ignored/same original; nested admitted witness mutation refused"}
+{"seq":13,"phase":"observation","probe":"forged_request_actual_fields","expected":"request actual fields cannot rewrite admitted original","observed":"EXACT_SUPPORTED; baseline/forged original both 404694...; same_original true","outcome":"PASS"}
+{"seq":14,"phase":"observation","probe":"nested_admitted_witness_mutation","expected":"nested admitted mutation refuses/does not silent-exact","observed":"ConditionValueRelationMismatch: witness identity preimage hash mismatch","outcome":"PASS"}
+{"seq":15,"phase":"verdict","decision":"ACCEPT_SCOPED_LOCAL","reason":"R7-P1 closed; admitted original fixed against request fields; nested mutation refused; all retained coordinator/native/status positives pass","no_self_adoption":true,"no_author_wake":true}
+{"seq":16,"phase":"facility","command":"git status","exit":0,"note":"only r8 ownroot written; no candidate/native/archived/HQ edit"}

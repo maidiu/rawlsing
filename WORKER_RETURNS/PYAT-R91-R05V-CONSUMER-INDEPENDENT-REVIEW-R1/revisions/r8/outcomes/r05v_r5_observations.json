@@ -1,0 +1,53 @@
+{
+  "probes": [
+    {
+      "fields": [
+        "authority_registry",
+        "b5_selection",
+        "condition_value_witness",
+        "consumer_query",
+        "consumer_query_ref",
+        "discovery_frontier_ref",
+        "discovery_receipt_ref",
+        "discovery_result",
+        "e41_input",
+        "empirical_query",
+        "joint_order_semantics",
+        "m1_disposition",
+        "m2_release",
+        "model_rule",
+        "model_rule_hash",
+        "predicate",
+        "producer_predicate_ref",
+        "producer_query_ref",
+        "producer_route",
+        "recursive_handoff",
+        "recursive_lineage_refs",
+        "release_ref",
+        "repository",
+        "require_current_selection",
+        "root_parent_ref",
+        "slot_id",
+        "source_universe_ref",
+        "target_arity"
+      ],
+      "missing": [],
+      "probe": "slot_fields"
+    },
+    {
+      "missing_terms": [],
+      "probe": "coordinator_inputs"
+    },
+    {
+      "discovery_has_reader": true,
+      "probe": "trusted_coordinator_route_coverage",
+      "recursive_has_reader": true
+    },
+    {
+      "has_e41_extension": true,
+      "has_wrong_source_or_evidence": true,
+      "probe": "actual_source_e41_coverage"
+    }
+  ],
+  "schema": "R91_R05V_R5_INDEPENDENT_OBSERVATIONS@1"
+}
