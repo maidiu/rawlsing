@@ -1,0 +1,500 @@
+{
+  "bundle_hash": "6e9b608381d2a5808824a73f35272b327d61d04f89ac0c612f8c3105d1fb48ab",
+  "bundle_id": "TEST_ONLY_S44_ROOT_BUNDLE",
+  "grade": "TEST_ONLY_S44_SYNTHETIC_SOURCE_MODEL_NOT_EMPIRICAL",
+  "language_evidence": [
+    {
+      "atoms": [
+        "TOOL_REQUEST_WORKSHOP"
+      ],
+      "concept_id": "concept:request-tool",
+      "counterexample_event_ids": [],
+      "evidence_id": "TEST_ONLY_S44_ROOT_FAMILY_REQUEST",
+      "intent": "REQUEST_TOOL",
+      "language_tag": "es-MX",
+      "milieu_id": "family",
+      "relation_label": "CONTESTED",
+      "sense_id": "sense:family-request",
+      "speaker_actor": "B",
+      "text": "\u00bfPuedo usar la herramienta?"
+    },
+    {
+      "atoms": [
+        "TOOL_REQUEST_WORKSHOP"
+      ],
+      "concept_id": "concept:request-tool",
+      "counterexample_event_ids": [],
+      "evidence_id": "TEST_ONLY_S44_ROOT_WORKSHOP_REQUEST",
+      "intent": "REQUEST_TOOL",
+      "language_tag": "es-MX",
+      "milieu_id": "workshop",
+      "relation_label": "AFFIRMED",
+      "sense_id": "sense:workshop-request",
+      "speaker_actor": "B",
+      "text": "\u00bfPuedo usar la herramienta?"
+    }
+  ],
+  "model_parameters": {
+    "empirical_claim": false,
+    "grade": "TEST_ONLY_EXPLICIT_SYNTHETIC_PARAMETERS",
+    "note": "Explicit invented weights and conditional fractions; not empirical coefficients.",
+    "production_default": false
+  },
+  "native": false,
+  "psychology_claim": false,
+  "root_seed": "1111111111111111111111111111111111111111111111111111111111111111",
+  "root_seed_source": "EXPLICIT_CALLER_SEED",
+  "rules": {
+    "a_birth": {
+      "candidate_owner_authority": "TEST_ONLY_S44_ROOT_MODEL",
+      "candidates": [
+        {
+          "candidate_id": "a_birth_11",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_A_BIRTH_11",
+          "value": 11,
+          "weight_units": 1
+        },
+        {
+          "candidate_id": "a_birth_13",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_A_BIRTH_13",
+          "value": 13,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "a_birth_15",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_A_BIRTH_15",
+          "value": 15,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "a_birth_17",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_A_BIRTH_17",
+          "value": 17,
+          "weight_units": 1
+        }
+      ],
+      "operation": "WEIGHTED_CANDIDATE_INTEGER",
+      "registry_hash": "655b0b526c60082857ec532a3955ad475a32f4fadd85ceedef9ee55bf06f27e0",
+      "rule_id": "S44_A_BIRTH",
+      "rule_version": "1",
+      "scope_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "scope_kind": "ACTOR",
+      "stream": "v3.causal.s44.initial.a_birth"
+    },
+    "a_cash": {
+      "candidate_owner_authority": "TEST_ONLY_S44_ROOT_MODEL",
+      "candidates": [
+        {
+          "candidate_id": "a_cash_18",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_A_CASH_18",
+          "value": 18,
+          "weight_units": 1
+        },
+        {
+          "candidate_id": "a_cash_24",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_A_CASH_24",
+          "value": 24,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "a_cash_30",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_A_CASH_30",
+          "value": 30,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "a_cash_36",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_A_CASH_36",
+          "value": 36,
+          "weight_units": 1
+        }
+      ],
+      "operation": "WEIGHTED_CANDIDATE_INTEGER",
+      "registry_hash": "655b0b526c60082857ec532a3955ad475a32f4fadd85ceedef9ee55bf06f27e0",
+      "rule_id": "S44_A_CASH",
+      "rule_version": "1",
+      "scope_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "scope_kind": "ACTOR",
+      "stream": "v3.causal.s44.initial.a_cash"
+    },
+    "a_hours": {
+      "candidate_owner_authority": "TEST_ONLY_S44_ROOT_MODEL",
+      "candidates": [
+        {
+          "candidate_id": "a_hours_20",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_A_HOURS_20",
+          "value": 20,
+          "weight_units": 1
+        },
+        {
+          "candidate_id": "a_hours_24",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_A_HOURS_24",
+          "value": 24,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "a_hours_28",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_A_HOURS_28",
+          "value": 28,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "a_hours_32",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_A_HOURS_32",
+          "value": 32,
+          "weight_units": 1
+        }
+      ],
+      "operation": "WEIGHTED_CANDIDATE_INTEGER",
+      "registry_hash": "655b0b526c60082857ec532a3955ad475a32f4fadd85ceedef9ee55bf06f27e0",
+      "rule_id": "S44_A_HOURS",
+      "rule_version": "1",
+      "scope_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "scope_kind": "ACTOR",
+      "stream": "v3.causal.s44.initial.a_hours"
+    },
+    "a_material": {
+      "candidate_owner_authority": "TEST_ONLY_S44_ROOT_MODEL",
+      "candidates": [
+        {
+          "candidate_id": "a_material_2",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_A_MATERIAL_2",
+          "value": 2,
+          "weight_units": 1
+        },
+        {
+          "candidate_id": "a_material_3",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_A_MATERIAL_3",
+          "value": 3,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "a_material_4",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_A_MATERIAL_4",
+          "value": 4,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "a_material_5",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_A_MATERIAL_5",
+          "value": 5,
+          "weight_units": 1
+        }
+      ],
+      "operation": "WEIGHTED_CANDIDATE_INTEGER",
+      "registry_hash": "655b0b526c60082857ec532a3955ad475a32f4fadd85ceedef9ee55bf06f27e0",
+      "rule_id": "S44_A_MATERIAL",
+      "rule_version": "1",
+      "scope_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "scope_kind": "ACTOR",
+      "stream": "v3.causal.s44.initial.a_material"
+    },
+    "a_optional_decline": {
+      "condition_on": "a_material",
+      "condition_threshold": 3,
+      "denominator_if_false": 4,
+      "denominator_if_true": 4,
+      "numerator_if_false": 3,
+      "numerator_if_true": 1,
+      "operation": "BERNOULLI_RATIONAL",
+      "registry_hash": "655b0b526c60082857ec532a3955ad475a32f4fadd85ceedef9ee55bf06f27e0",
+      "rule_id": "S44_A_OPTIONAL_DECLINE",
+      "rule_version": "1",
+      "scope_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "scope_kind": "ACTOR",
+      "stream": "v3.causal.s44.optional.a_decline"
+    },
+    "b_birth": {
+      "candidate_owner_authority": "TEST_ONLY_S44_ROOT_MODEL",
+      "candidates": [
+        {
+          "candidate_id": "b_birth_10",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_B_BIRTH_10",
+          "value": 10,
+          "weight_units": 1
+        },
+        {
+          "candidate_id": "b_birth_12",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_B_BIRTH_12",
+          "value": 12,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "b_birth_14",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_B_BIRTH_14",
+          "value": 14,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "b_birth_16",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_B_BIRTH_16",
+          "value": 16,
+          "weight_units": 1
+        }
+      ],
+      "operation": "WEIGHTED_CANDIDATE_INTEGER",
+      "registry_hash": "655b0b526c60082857ec532a3955ad475a32f4fadd85ceedef9ee55bf06f27e0",
+      "rule_id": "S44_B_BIRTH",
+      "rule_version": "1",
+      "scope_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+      "scope_kind": "ACTOR",
+      "stream": "v3.causal.s44.initial.b_birth"
+    },
+    "b_cash": {
+      "candidate_owner_authority": "TEST_ONLY_S44_ROOT_MODEL",
+      "candidates": [
+        {
+          "candidate_id": "b_cash_16",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_B_CASH_16",
+          "value": 16,
+          "weight_units": 1
+        },
+        {
+          "candidate_id": "b_cash_22",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_B_CASH_22",
+          "value": 22,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "b_cash_28",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_B_CASH_28",
+          "value": 28,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "b_cash_34",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_B_CASH_34",
+          "value": 34,
+          "weight_units": 1
+        }
+      ],
+      "operation": "WEIGHTED_CANDIDATE_INTEGER",
+      "registry_hash": "655b0b526c60082857ec532a3955ad475a32f4fadd85ceedef9ee55bf06f27e0",
+      "rule_id": "S44_B_CASH",
+      "rule_version": "1",
+      "scope_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+      "scope_kind": "ACTOR",
+      "stream": "v3.causal.s44.initial.b_cash"
+    },
+    "b_extra_refusal": {
+      "condition_on": "a_material",
+      "condition_threshold": 3,
+      "denominator_if_false": 3,
+      "denominator_if_true": 3,
+      "numerator_if_false": 2,
+      "numerator_if_true": 1,
+      "operation": "BERNOULLI_RATIONAL",
+      "registry_hash": "655b0b526c60082857ec532a3955ad475a32f4fadd85ceedef9ee55bf06f27e0",
+      "rule_id": "S44_B_EXTRA_REFUSAL",
+      "rule_version": "1",
+      "scope_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+      "scope_kind": "ACTOR",
+      "stream": "v3.causal.s44.optional.b_refusal"
+    },
+    "b_hours": {
+      "candidate_owner_authority": "TEST_ONLY_S44_ROOT_MODEL",
+      "candidates": [
+        {
+          "candidate_id": "b_hours_18",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_B_HOURS_18",
+          "value": 18,
+          "weight_units": 1
+        },
+        {
+          "candidate_id": "b_hours_22",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_B_HOURS_22",
+          "value": 22,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "b_hours_26",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_B_HOURS_26",
+          "value": 26,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "b_hours_30",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_B_HOURS_30",
+          "value": 30,
+          "weight_units": 1
+        }
+      ],
+      "operation": "WEIGHTED_CANDIDATE_INTEGER",
+      "registry_hash": "655b0b526c60082857ec532a3955ad475a32f4fadd85ceedef9ee55bf06f27e0",
+      "rule_id": "S44_B_HOURS",
+      "rule_version": "1",
+      "scope_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+      "scope_kind": "ACTOR",
+      "stream": "v3.causal.s44.initial.b_hours"
+    },
+    "b_material": {
+      "candidate_owner_authority": "TEST_ONLY_S44_ROOT_MODEL",
+      "candidates": [
+        {
+          "candidate_id": "b_material_2",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_B_MATERIAL_2",
+          "value": 2,
+          "weight_units": 1
+        },
+        {
+          "candidate_id": "b_material_3",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_B_MATERIAL_3",
+          "value": 3,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "b_material_4",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_B_MATERIAL_4",
+          "value": 4,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "b_material_5",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_B_MATERIAL_5",
+          "value": 5,
+          "weight_units": 1
+        }
+      ],
+      "operation": "WEIGHTED_CANDIDATE_INTEGER",
+      "registry_hash": "655b0b526c60082857ec532a3955ad475a32f4fadd85ceedef9ee55bf06f27e0",
+      "rule_id": "S44_B_MATERIAL",
+      "rule_version": "1",
+      "scope_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+      "scope_kind": "ACTOR",
+      "stream": "v3.causal.s44.initial.b_material"
+    },
+    "joint_hours": {
+      "candidate_owner_authority": "TEST_ONLY_S44_ROOT_MODEL",
+      "candidates": [
+        {
+          "candidate_id": "task_hours_1",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_TASK_HOURS_1",
+          "value": 1,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "task_hours_2",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_TASK_HOURS_2",
+          "value": 2,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "task_hours_3",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_TASK_HOURS_3",
+          "value": 3,
+          "weight_units": 1
+        }
+      ],
+      "operation": "WEIGHTED_CANDIDATE_INTEGER",
+      "registry_hash": "655b0b526c60082857ec532a3955ad475a32f4fadd85ceedef9ee55bf06f27e0",
+      "rule_id": "S44_JOINT_HOURS",
+      "rule_version": "1",
+      "scope_id": "S44_ROOT",
+      "scope_kind": "RUN",
+      "stream": "v3.causal.s44.joint.hours"
+    },
+    "joint_payment": {
+      "candidate_owner_authority": "TEST_ONLY_S44_ROOT_MODEL",
+      "candidates": [
+        {
+          "candidate_id": "payment_1",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_PAYMENT_1",
+          "value": 1,
+          "weight_units": 1
+        },
+        {
+          "candidate_id": "payment_2",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_PAYMENT_2",
+          "value": 2,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "payment_3",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_PAYMENT_3",
+          "value": 3,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "payment_4",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_PAYMENT_4",
+          "value": 4,
+          "weight_units": 1
+        }
+      ],
+      "operation": "WEIGHTED_CANDIDATE_INTEGER",
+      "registry_hash": "655b0b526c60082857ec532a3955ad475a32f4fadd85ceedef9ee55bf06f27e0",
+      "rule_id": "S44_JOINT_PAYMENT",
+      "rule_version": "1",
+      "scope_id": "S44_ROOT",
+      "scope_kind": "RUN",
+      "stream": "v3.causal.s44.joint.payment"
+    },
+    "joint_time": {
+      "candidate_owner_authority": "TEST_ONLY_S44_ROOT_MODEL",
+      "candidates": [
+        {
+          "candidate_id": "joint_time_210",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_JOINT_TIME_210",
+          "value": 210,
+          "weight_units": 1
+        },
+        {
+          "candidate_id": "joint_time_220",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_JOINT_TIME_220",
+          "value": 220,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "joint_time_230",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_JOINT_TIME_230",
+          "value": 230,
+          "weight_units": 2
+        },
+        {
+          "candidate_id": "joint_time_238",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_JOINT_TIME_238",
+          "value": 238,
+          "weight_units": 1
+        }
+      ],
+      "operation": "WEIGHTED_CANDIDATE_INTEGER",
+      "registry_hash": "655b0b526c60082857ec532a3955ad475a32f4fadd85ceedef9ee55bf06f27e0",
+      "rule_id": "S44_JOINT_TIME",
+      "rule_version": "1",
+      "scope_id": "S44_ROOT",
+      "scope_kind": "RUN",
+      "stream": "v3.causal.s44.joint.time"
+    },
+    "joint_units": {
+      "candidate_owner_authority": "TEST_ONLY_S44_ROOT_MODEL",
+      "candidates": [
+        {
+          "candidate_id": "joint_units_1",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_JOINT_UNITS_1",
+          "value": 1,
+          "weight_units": 3
+        },
+        {
+          "candidate_id": "joint_units_2",
+          "source_ref": "TEST_ONLY_S44_CANDIDATE_JOINT_UNITS_2",
+          "value": 2,
+          "weight_units": 1
+        }
+      ],
+      "operation": "WEIGHTED_CANDIDATE_INTEGER",
+      "registry_hash": "655b0b526c60082857ec532a3955ad475a32f4fadd85ceedef9ee55bf06f27e0",
+      "rule_id": "S44_JOINT_UNITS",
+      "rule_version": "1",
+      "scope_id": "S44_ROOT",
+      "scope_kind": "RUN",
+      "stream": "v3.causal.s44.joint.units"
+    }
+  },
+  "schema": "S44_SOURCE_MODEL_BUNDLE@1",
+  "seed_scheme": "V3_CAUSAL_HMAC_SHA256_COUNTER_V1@1.0.0",
+  "source_bindings": {
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135",
+    "root_model": "TEST_ONLY_S44_SOURCE_MODEL",
+    "s43_base": "3edd631fb6c31751dfd2143ba2faa9fc31561e54"
+  }
+}
