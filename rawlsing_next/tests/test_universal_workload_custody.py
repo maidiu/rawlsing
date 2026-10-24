@@ -300,3 +300,63 @@ def test_r91_partial_multiunit_native_prefix_resume(tmp_path):
         key=lambda ref: ref.key))
     assert len({receipt.unit_ref.key for receipt in final.receipts}) == 2
     assert all(receipt.state == "COMPLETED" for receipt in final.receipts)
+
+
+def test_r93_restored_outputs_preserve_query_and_discovery_identity(tmp_path):
+    from dataclasses import FrozenInstanceError
+    from rawlsing_next._pre553_query_common import QueryExecutionResult
+    from rawlsing_next.pre553_issued_workload import RetainedDiscoveryResultView
+    from rawlsing_next.tests.test_universal_workload import (
+        _frontier_bundle, _frontier_fixture,
+    )
+    from rawlsing_next.pre553_universal_workload import (
+        compile_governed_frontier, execute_governed_frontier,
+    )
+    bundle, issued = _issued_workloads(tmp_path)
+    first = execute_test_only_workload(
+        issued=issued[0], source_factory=lambda _ref: bundle.physical_stream,
+        host=HOST, purpose=PURPOSE,
+    )
+    checkpoint = capture_joined_checkpoint((first,))
+    restored = resume_joined_workloads(
+        workloads=(issued[0],), source_factory=lambda _ref: bundle.physical_stream,
+        host=HOST, purpose=PURPOSE, checkpoint=checkpoint,
+        expected_checkpoint_ref=checkpoint.checkpoint_hash,
+    )
+    output = restored.completed_results[0].native_outputs[0]
+    assert isinstance(output, QueryExecutionResult)
+    assert output.query_ref == first.native_outputs[0].query_ref
+    assert output.facts == first.native_outputs[0].facts
+    assert output.release_refs == first.native_outputs[0].release_refs
+
+    governed_bundle, _ = _frontier_bundle(tmp_path / "r93_governed.sav")
+    inventory, policy, frontier = _frontier_fixture(governed_bundle)
+    compilation = compile_governed_frontier(
+        bundle=governed_bundle, inventory=inventory, policy=policy,
+        frontier=frontier, as_of=AS_OF, host=HOST, purpose=PURPOSE,
+    )
+    governed = execute_governed_frontier(
+        compilation=compilation,
+        source_factory=lambda _ref: governed_bundle.physical_stream,
+    )
+    native = governed.native_execution
+    checkpoint = capture_joined_checkpoint(
+        (native,),
+        source_sha256_by_decision={
+            native.decision_ref.key: compilation.issued.record.source_sha256
+        },
+    )
+    resumed = resume_joined_workloads(
+        workloads=(compilation.issued,),
+        source_factory=lambda _ref: governed_bundle.physical_stream,
+        host=HOST, purpose=PURPOSE, checkpoint=checkpoint,
+        expected_checkpoint_ref=checkpoint.checkpoint_hash,
+    )
+    view = resumed.completed_results[0].native_result
+    assert isinstance(view, RetainedDiscoveryResultView)
+    assert view.evaluated_frontier_ref == native.native_result.evaluated_frontier_ref
+    assert view.replay_ref == native.native_result.replay_ref
+    assert view.empirical_fact_refs == native.native_result.empirical_fact_refs
+    assert view.receipts == native.native_result.receipts
+    with pytest.raises(FrozenInstanceError):
+        view.candidate_count = 0

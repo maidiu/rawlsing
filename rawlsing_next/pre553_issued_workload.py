@@ -19,10 +19,12 @@ from rawlsing_next.pre553_batch_runner import (
     ExecutorBinding, UnitExecutionReceipt,
 )
 from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor, RuntimeObjectCatalog
-from rawlsing_next.pre553_empirical_objects import (
-    EmpiricalFact, ExactRef, exact_ref, semantic_hash,
-)
+from rawlsing_next._pre553_query_common import QueryExecutionResult
 from types import SimpleNamespace
+from rawlsing_next.pre553_empirical_objects import (
+    DiscoveryResultReceipt, EmpiricalFact, EmpiricalPredicate,
+    EmpiricalQuerySpec, ExactRef, exact_ref, semantic_hash,
+)
 from rawlsing_next.pre553_route_b_production import I03ExecutionRequest, execute_route_b_production
 from rawlsing_next.pre553_source_backed_c11_facade import (
     GovernedC11Projection, build_source_backed_c11_repository,
@@ -361,7 +363,7 @@ class WorkloadCustodyEntry:
     kind: str
     state: str
     unit_materials: tuple[Mapping[str, Any], ...]
-    completed_output_facts: Mapping[str, tuple[Mapping[str, Any], ...]]
+    completed_outputs: Mapping[str, Mapping[str, Any]]
     receipt_materials: tuple[Mapping[str, Any], ...]
     output_refs: tuple[ExactRef, ...]
     entry_hash: str
@@ -374,9 +376,8 @@ class WorkloadCustodyEntry:
             "manifest_hash": self.manifest_hash,
             "kind": self.kind, "state": self.state,
             "unit_materials": [material(row) for row in self.unit_materials],
-            "completed_output_facts": {
-                key: [material(row) for row in rows]
-                for key, rows in self.completed_output_facts.items()
+            "completed_outputs": {
+                key: material(row) for key, row in self.completed_outputs.items()
             },
             "receipt_materials": [material(row) for row in self.receipt_materials],
             "output_refs": [ref.as_dict() for ref in self.output_refs],
@@ -458,16 +459,134 @@ def _restore_fact(row: Mapping[str, Any]) -> EmpiricalFact:
     )
 
 
-def _result_output_facts(result: Any) -> dict[str, tuple[Mapping[str, Any], ...]]:
+@dataclass(frozen=True)
+class RetainedDiscoveryResultView:
+    contract_id: str
+    discovery_authority_ref: ExactRef
+    candidate_grammar_ref: ExactRef
+    evaluated_frontier_ref: ExactRef
+    coverage_claim: str
+    candidate_count: int
+    covered_candidate_count: int
+    receipts: tuple[DiscoveryResultReceipt, ...]
+    empirical_fact_refs: tuple[ExactRef, ...]
+    empirical_facts: tuple[EmpiricalFact, ...]
+    executed_predicate_refs: tuple[ExactRef, ...]
+    executed_query_refs: tuple[ExactRef, ...]
+    valid_empty: bool
+    replay_ref: ExactRef
+
+    def __post_init__(self) -> None:
+        if tuple(sorted(self.receipts, key=lambda row: row.ref.key)) != self.receipts:
+            raise WorkloadAdmissionError("RETAINED_DISCOVERY_RECEIPT_ORDER_INVALID")
+        if tuple(sorted(self.empirical_fact_refs, key=lambda ref: ref.key)) != self.empirical_fact_refs:
+            raise WorkloadAdmissionError("RETAINED_DISCOVERY_FACT_REF_ORDER_INVALID")
+        if tuple(f.ref for f in self.empirical_facts) != self.empirical_fact_refs:
+            raise WorkloadAdmissionError("RETAINED_DISCOVERY_FACT_CLOSURE_INVALID")
+        if tuple(sorted(self.executed_predicate_refs, key=lambda ref: ref.key)) != self.executed_predicate_refs:
+            raise WorkloadAdmissionError("RETAINED_DISCOVERY_PREDICATE_ORDER_INVALID")
+        if tuple(sorted(self.executed_query_refs, key=lambda ref: ref.key)) != self.executed_query_refs:
+            raise WorkloadAdmissionError("RETAINED_DISCOVERY_QUERY_ORDER_INVALID")
+
+
+def _restore_discovery_receipt(row: Mapping[str, Any]) -> DiscoveryResultReceipt:
+    semantic = dict(row["semantic_fields"])
+    return DiscoveryResultReceipt(
+        typed_state=row["typed_state"],
+        authority_snapshot_refs=tuple(row["authority_snapshot_refs"]),
+        dependency_refs=tuple(row["dependency_refs"]),
+        producer_replay_locator_or_reference_root=row["producer_replay_locator_or_reference_root"],
+        object_id=row["object_id"], content_hash=row["content_hash"],
+        schema_id=row["schema_id"], schema_version=row["schema_version"],
+        **semantic,
+    )
+
+
+def _restore_output_material(row: Mapping[str, Any]) -> Any:
+    if row["kind"] == "QUERY":
+        facts = tuple(sorted(
+            (_restore_fact(fact) for fact in row["facts"]),
+            key=lambda fact: fact.ref.key,
+        ))
+        return QueryExecutionResult(
+            query_ref=exact_ref(row["query_ref"]), facts=facts,
+            source_scope_mode=row["source_scope_mode"],
+            release_refs=tuple(sorted(
+                (exact_ref(ref) for ref in row["release_refs"]),
+                key=lambda ref: ref.key,
+            )),
+        )
+    if row["kind"] == "DISCOVERY":
+        facts = tuple(sorted(
+            (_restore_fact(fact) for fact in row["empirical_facts"]),
+            key=lambda fact: fact.ref.key,
+        ))
+        receipts = tuple(sorted(
+            (_restore_discovery_receipt(receipt) for receipt in row["receipts"]),
+            key=lambda receipt: receipt.ref.key,
+        ))
+        return RetainedDiscoveryResultView(
+            contract_id=row["contract_id"],
+            discovery_authority_ref=exact_ref(row["discovery_authority_ref"]),
+            candidate_grammar_ref=exact_ref(row["candidate_grammar_ref"]),
+            evaluated_frontier_ref=exact_ref(row["evaluated_frontier_ref"]),
+            coverage_claim=row["coverage_claim"],
+            candidate_count=row["candidate_count"],
+            covered_candidate_count=row["covered_candidate_count"],
+            receipts=receipts,
+            empirical_fact_refs=tuple(sorted(
+                (exact_ref(ref) for ref in row["empirical_fact_refs"]),
+                key=lambda ref: ref.key,
+            )),
+            empirical_facts=facts,
+            executed_predicate_refs=tuple(sorted(
+                (exact_ref(ref) for ref in row.get("executed_predicate_refs", ())),
+                key=lambda ref: ref.key,
+            )),
+            executed_query_refs=tuple(sorted(
+                (exact_ref(ref) for ref in row.get("executed_query_refs", ())),
+                key=lambda ref: ref.key,
+            )),
+            valid_empty=row["valid_empty"],
+            replay_ref=exact_ref(row["replay_ref"]),
+        )
+    raise WorkloadAdmissionError("UNKNOWN_RETAINED_OUTPUT_KIND")
+
+
+def _discovery_result_material(result: Any) -> dict[str, Any]:
+    return {
+        "kind": "DISCOVERY",
+        "contract_id": result.contract_id,
+        "discovery_authority_ref": result.discovery_authority_ref.as_dict(),
+        "candidate_grammar_ref": result.candidate_grammar_ref.as_dict(),
+        "evaluated_frontier_ref": result.evaluated_frontier_ref.as_dict(),
+        "coverage_claim": result.coverage_claim,
+        "candidate_count": result.candidate_count,
+        "covered_candidate_count": result.covered_candidate_count,
+        "receipts": [receipt.as_dict() for receipt in result.receipts],
+        "empirical_fact_refs": [ref.as_dict() for ref in result.empirical_fact_refs],
+        "empirical_facts": [fact.as_dict() for fact in result.empirical_facts],
+        "executed_predicate_refs": [p.ref.as_dict() for p in result.executed_predicates],
+        "executed_query_refs": [q.ref.as_dict() for q in result.executed_queries],
+        "valid_empty": result.valid_empty,
+        "replay_ref": result.replay_ref.as_dict(),
+    }
+
+
+def _result_output_material(result: Any) -> dict[str, Mapping[str, Any]]:
     if getattr(result, "native_result", None) is not None:
-        facts = getattr(result.native_result, "empirical_facts", ())
         unit_hash = result.manifest.units[0].unit_hash
-        return {unit_hash: tuple(material(fact) for fact in facts)}
+        return {unit_hash: _discovery_result_material(result.native_result)}
     outputs = getattr(result, "outputs_by_unit", None) or {}
     mapped = {}
     for unit_hash, output in outputs.items():
-        facts = getattr(output, "facts", ())
-        mapped[unit_hash] = tuple(material(fact) for fact in facts)
+        mapped[unit_hash] = {
+            "kind": "QUERY",
+            "query_ref": output.query_ref.as_dict(),
+            "facts": [fact.as_dict() for fact in output.facts],
+            "source_scope_mode": output.source_scope_mode,
+            "release_refs": [ref.as_dict() for ref in output.release_refs],
+        }
     return mapped
 
 
@@ -513,7 +632,7 @@ def capture_joined_checkpoint(
             "kind": "DISCOVERY" if is_discovery else "WORKLOAD",
             "state": state,
             "unit_materials": [_unit_material(unit) for unit in manifest.units],
-            "completed_output_facts": _result_output_facts(result),
+            "completed_outputs": _result_output_material(result),
             "receipt_materials": [material(receipt) for receipt in receipts],
             "output_refs": [ref.as_dict() for ref in output_refs],
         }
@@ -527,7 +646,7 @@ def capture_joined_checkpoint(
             manifest_hash=manifest.manifest_hash,
             kind=entry_payload["kind"], state=state,
             unit_materials=tuple(entry_payload["unit_materials"]),
-            completed_output_facts=entry_payload["completed_output_facts"],
+            completed_outputs=entry_payload["completed_outputs"],
             receipt_materials=tuple(entry_payload["receipt_materials"]),
             output_refs=output_refs,
             entry_hash=semantic_hash(entry_payload),
@@ -569,7 +688,7 @@ def restore_joined_checkpoint(
             "manifest_hash": row["manifest_hash"],
             "kind": row["kind"], "state": row["state"],
             "unit_materials": row["unit_materials"],
-            "completed_output_facts": row["completed_output_facts"],
+            "completed_outputs": row["completed_outputs"],
             "receipt_materials": row["receipt_materials"],
             "output_refs": row["output_refs"],
         }
@@ -585,9 +704,8 @@ def restore_joined_checkpoint(
             manifest_hash=row["manifest_hash"],
             kind=row["kind"], state=row["state"],
             unit_materials=tuple(dict(item) for item in row["unit_materials"]),
-            completed_output_facts={
-                key: tuple(dict(item) for item in rows)
-                for key, rows in row["completed_output_facts"].items()
+            completed_outputs={
+                key: dict(item) for key, item in row["completed_outputs"].items()
             },
             receipt_materials=tuple(dict(item) for item in row["receipt_materials"]),
             output_refs=tuple(exact_ref(ref) for ref in row["output_refs"]),
@@ -602,22 +720,20 @@ def restore_joined_checkpoint(
 def _completed_entry_view(entry: WorkloadCustodyEntry, scope: str) -> Any:
     manifest = _restore_manifest(entry.unit_materials)
     receipts = tuple(_restore_receipt(row) for row in entry.receipt_materials)
+    outputs = {
+        unit_hash: _restore_output_material(row)
+        for unit_hash, row in entry.completed_outputs.items()
+    }
     if entry.kind == "DISCOVERY":
-        facts = tuple(
-            _restore_fact(row)
-            for rows in entry.completed_output_facts.values() for row in rows
-        )
+        if len(outputs) != 1:
+            raise WorkloadAdmissionError("RETAINED_DISCOVERY_OUTPUT_COUNT_INVALID")
+        native_result = next(iter(outputs.values()))
         return SimpleNamespace(
-            native_result=SimpleNamespace(empirical_facts=facts, receipts=receipts),
-            manifest=manifest, receipts=receipts,
+            native_result=native_result, manifest=manifest, receipts=receipts,
             envelope_sha256=entry.envelope_sha256,
             decision_ref=entry.decision_ref, scope=scope,
             source_sha256=entry.source_sha256,
         )
-    outputs = {
-        unit_hash: SimpleNamespace(facts=tuple(_restore_fact(row) for row in rows))
-        for unit_hash, rows in entry.completed_output_facts.items()
-    }
     return NativeWorkloadResult(
         route_results=(), native_outputs=tuple(outputs[key] for key in sorted(outputs)),
         manifest=manifest, receipts=receipts, output_refs=entry.output_refs,
@@ -663,8 +779,8 @@ def resume_joined_workloads(
                 continue
             prior_receipts = tuple(_restore_receipt(row) for row in entry.receipt_materials)
             prior_outputs = {
-                unit_hash: SimpleNamespace(facts=tuple(_restore_fact(row) for row in rows))
-                for unit_hash, rows in entry.completed_output_facts.items()
+                unit_hash: _restore_output_material(row)
+                for unit_hash, row in entry.completed_outputs.items()
             }
             resumed_results.append(execute_issued_workload(
                 item.workload, _resolver_for(item), source_factory=source_factory,
