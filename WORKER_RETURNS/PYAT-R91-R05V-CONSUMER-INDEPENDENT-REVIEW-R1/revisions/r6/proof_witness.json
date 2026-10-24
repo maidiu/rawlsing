@@ -1,0 +1,63 @@
+{
+  "schema": "PYAT_R91_R05V_R6_INDEPENDENT_PROOF_WITNESS@1",
+  "logical_job": "PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/revisions/r6",
+  "verdict": "REVISE",
+  "startup": "6a46e9e93ba148e4685aec585db70acf4cf84494",
+  "branch": "agent/opencode-pyat-r91-r05v-r6-consumer-review-r1",
+  "frozen_expectations": "bf3f7e983e1b191ed2ed43c7d977a5789e42a511",
+  "environment": {"python": "3.11.3", "python_executable": "/usr/local/bin/python3", "pytest": "9.0.2"},
+  "custody": {
+    "exact_root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+    "high_decision": "c618dc28d722ba64f2f9d7bf39cbd9915b429ea8",
+    "r6_contract": "f069e1a80970d8b1601ec6de4156107d77bf48a5",
+    "r6_code_commit": "4f2b097e433c2a6dfa986cccdcf85d637ba69c5e",
+    "module_blob": "a486eddfe5892a4d0ebd44f8f0842a06de931283",
+    "test_blob": "f3a90a537e81bbd752e06a14e4d4d39a12135d96",
+    "r4_custody": "0b60f26db55119cfdbc68895e24cee9db6408d29",
+    "r5_linkage": "70d1d87417bad215234145ac1b587cbeec8f98d0",
+    "accepted_owners": {"provider": "23167aa25291fb148b1e3cf210ac33fe7769b783", "evaluator": "62e5eced47b64512f47b004e3e13a6ef3fe21de7", "r08_module": "3ca860e409f1d063da4cd03dd1691a89c67333f6"},
+    "author_manifest": {"artifacts": 7, "all_match": true, "self_excluded": true},
+    "code_scope": ["rawlsing_next/pre553_learned_world_composition.py", "rawlsing_next/tests/test_universal_learned_consumer.py"]
+  },
+  "retained": {
+    "author": {"tests": 40, "failures": 0},
+    "prior_probes": {"tests": 19, "failures": 0},
+    "provider": {"tests": 43, "failures": 0},
+    "c1": {"tests": 13, "failures": 0},
+    "actual_partial": {"discovery_coordinator": true, "recursive_coordinator": true, "e41_discovery_recursive": true, "joint_arity": 2, "typed_status_z16": true}
+  },
+  "actual_gap_probes": {
+    "tests": 3,
+    "failures": 3,
+    "unadmitted_executor": {"state": "LEARNED_CONSUMER_EXACT_SUPPORTED", "reason": "PRODUCTIVE_LEARNED_PRODUCT_WITH_ACTUAL_EMPIRICAL_EVIDENCE"},
+    "learned_m1_m2_b5_association": {"default_m1": "83220c2a8018034213e78ce9422967aafb9c1c18ad3041651f68f5a25867767f", "alternate_m1": "04921497ff32b53c6ef087855ead42e94073c4df32d6bcac260caa16a869d757", "state": "LEARNED_CONSUMER_EXACT_SUPPORTED"},
+    "joint_route": {"raw_joint_calls": 1, "trusted_joint_calls": 0}
+  },
+  "defects": [
+    {"id": "R6-P1", "class": "unadmitted executor-only coordinator mints trusted original", "missing_function": "require admitted slots/deny executor-only exact original"},
+    {"id": "R6-P2", "class": "learned M1/M2/B5 not bound to retained original", "missing_function": "compare submitted learned M1/M2/B5/currentness to retained original before exact"},
+    {"id": "R6-P3", "class": "actual joint and evidence-change routes raw-only", "missing_function": "run actual joint/source/evidence-change through trusted coordinator with restore"}
+  ],
+  "junit": {
+    "author_r6_replay": {"tests": 40, "failures": 0},
+    "prior_probes_replay": {"tests": 19, "failures": 0},
+    "provider_suite_replay": {"tests": 43, "failures": 0},
+    "analytical_composition_replay": {"tests": 13, "failures": 0},
+    "reviewer_r6_gap_probes": {"tests": 3, "failures": 3}
+  },
+  "artifacts": [
+    "EXPECTATIONS.md", "00_RETURN.md", "defects.md", "limits.md", "RESUME.md",
+    "proof_witness.json", "SHA256manifest.json", "outcomes/r05v_r6_observations.json",
+    "probes/test_r05v_r6_actual_gap.py", "probes/r1_immutable_probe.py",
+    "probes/r2_immutable_probe.py", "probes/r3_immutable_probe.py",
+    "probes/r5_immutable_probe.py", "junit/*.xml", "logs/stdout.jsonl"
+  ],
+  "scope_limits": {
+    "not_reached": ["full J42/P41/E04 live service", "original35/1890 science", "R04.joined custody"],
+    "r04_independent": true,
+    "no_candidate_repair": true,
+    "no_self_adoption": true,
+    "no_author_wake": true,
+    "no_extra_workers_sessions_provider_account": true
+  }
+}

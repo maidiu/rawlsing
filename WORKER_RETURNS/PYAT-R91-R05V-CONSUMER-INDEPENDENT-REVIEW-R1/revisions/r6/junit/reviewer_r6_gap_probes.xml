@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="3" time="1.748" timestamp="2026-10-24T12:19:13.857093-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1.revisions.r6.probes.test_r05v_r6_actual_gap" name="test_unadmitted_executor_cannot_mint_trusted_original" time="0.354"><failure message="AssertionError: assert 'LEARNED_CONSUMER_EXACT_SUPPORTED' != 'LEARNED_CONSUMER_EXACT_SUPPORTED'&#10; +  where 'LEARNED_CONSUMER_EXACT_SUPPORTED' = LearnedWorldConsumerResult(contract_id='R91_LEARNED_WORLD_POSSIBILITY_CONSUMER@1.0.0', state='LEARNED_CONSUMER_EXACT_S...receipt_refs=(), discovery_frontier_ref=None, recursive_handoff_refs=(), recursive_lineage_refs=(), z_unresolved=False).state">def test_unadmitted_executor_cannot_mint_trusted_original():
+        case = t._build_case()
+        comp = case["composition"]
+        slot = i4.NativeGraphSlot(
+            "unadmitted",
+            comp.source_universe_refs[0],
+            case["release"],
+            comp.producer_query_ref,
+            comp.producer_predicate_ref,
+            comp.consumer_query_ref,
+            comp.consumer_model_rule_hash,
+            comp.producer_route,
+        )
+        coordinator = i4.TrustedNativeGraphCoordinator({"unadmitted": lambda slot: comp})
+        bound = coordinator.execute(i4.NativeGraphExecutionRequest((slot,)))
+        result = i4.evaluate_learned_world_consumer(
+            case["learned"],
+            composition=bound.view.compositions[0],
+            consumer_query=case["consumer_query"],
+            model_rule=case["model_rule"],
+            producer_query_ref=case["producer_query"].ref,
+            producer_predicate_ref=case["predicate"].ref,
+            product_graph=bound,
+            trusted_graph_reader=coordinator,
+        )
+        _record("unadmitted_executor", {"state": result.state, "reason": result.reason_code})
+&gt;       assert result.state != "LEARNED_CONSUMER_EXACT_SUPPORTED"
+E       AssertionError: assert 'LEARNED_CONSUMER_EXACT_SUPPORTED' != 'LEARNED_CONSUMER_EXACT_SUPPORTED'
+E        +  where 'LEARNED_CONSUMER_EXACT_SUPPORTED' = LearnedWorldConsumerResult(contract_id='R91_LEARNED_WORLD_POSSIBILITY_CONSUMER@1.0.0', state='LEARNED_CONSUMER_EXACT_S...receipt_refs=(), discovery_frontier_ref=None, recursive_handoff_refs=(), recursive_lineage_refs=(), z_unresolved=False).state
+
+WORKER_RETURNS/PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/revisions/r6/probes/test_r05v_r6_actual_gap.py:61: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1.revisions.r6.probes.test_r05v_r6_actual_gap" name="test_trusted_consumer_binds_learned_m1_m2_b5_to_original" time="0.403"><failure message="AssertionError: assert 'LEARNED_CONSUMER_EXACT_SUPPORTED' != 'LEARNED_CONSUMER_EXACT_SUPPORTED'&#10; +  where 'LEARNED_CONSUMER_EXACT_SUPPORTED' = LearnedWorldConsumerResult(contract_id='R91_LEARNED_WORLD_POSSIBILITY_CONSUMER@1.0.0', state='LEARNED_CONSUMER_EXACT_S...6f1992e0944faae4b31b53531e7ae2d0ce0f2742db'), recursive_handoff_refs=(), recursive_lineage_refs=(), z_unresolved=False).state">def test_trusted_consumer_binds_learned_m1_m2_b5_to_original():
+        captured, real_eval = _capture_actual_discovery()
+        assert captured.get("trusted_calls"), "R6 discovery test made no trusted-reader call"
+        args, kwargs = captured["trusted_calls"][0]
+        learned2 = captured["learned2"]
+        kwargs = dict(kwargs)
+        if "learned" in kwargs:
+            kwargs["learned"] = learned2
+            call_args = args
+        else:
+            call_args = (learned2, *args[1:])
+        result = real_eval(*call_args, **kwargs)
+        _record(
+            "learned_m1_m2_b5_association",
+            {
+                "state": result.state,
+                "default_m1": captured["learned1"].m1_disposition.ref.as_dict(),
+                "alternate_m1": learned2.m1_disposition.ref.as_dict(),
+            },
+        )
+&gt;       assert result.state != "LEARNED_CONSUMER_EXACT_SUPPORTED"
+E       AssertionError: assert 'LEARNED_CONSUMER_EXACT_SUPPORTED' != 'LEARNED_CONSUMER_EXACT_SUPPORTED'
+E        +  where 'LEARNED_CONSUMER_EXACT_SUPPORTED' = LearnedWorldConsumerResult(contract_id='R91_LEARNED_WORLD_POSSIBILITY_CONSUMER@1.0.0', state='LEARNED_CONSUMER_EXACT_S...6f1992e0944faae4b31b53531e7ae2d0ce0f2742db'), recursive_handoff_refs=(), recursive_lineage_refs=(), z_unresolved=False).state
+
+WORKER_RETURNS/PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/revisions/r6/probes/test_r05v_r6_actual_gap.py:115: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1.revisions.r6.probes.test_r05v_r6_actual_gap" name="test_actual_joint_route_uses_trusted_coordinator" time="0.384"><failure message="assert []">def test_actual_joint_route_uses_trusted_coordinator():
+        captured, _ = _capture_actual_discovery()
+        joint_calls = [
+            (a, k)
+            for a, k in captured.get("raw_calls", [])
+            if getattr(k.get("composition"), "joint_component_count", None) == 2
+        ]
+        trusted_joint = [
+            (a, k)
+            for a, k in captured.get("trusted_calls", [])
+            if getattr(k.get("composition"), "joint_component_count", None) == 2
+        ]
+        _record(
+            "joint_route",
+            {"raw_joint_calls": len(joint_calls), "trusted_joint_calls": len(trusted_joint)},
+        )
+&gt;       assert trusted_joint
+E       assert []
+
+WORKER_RETURNS/PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/revisions/r6/probes/test_r05v_r6_actual_gap.py:134: AssertionError</failure></testcase></testsuite></testsuites>
