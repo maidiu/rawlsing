@@ -1,0 +1,22 @@
+{
+  "schema": "PYAT_R91_R05_R2_PROOF_WITNESS_V1",
+  "startup_commit": "31d77fd37c501954c088c786db20d8056b6748f5",
+  "contract_commit": "cde351f734143da2c1b3eab076ff35c080a60438",
+  "code_commit": "09a0232f7bd6eac45ab835e62e6e4f55f8a06b44",
+  "branch": "agent/opencode-pyat-r91-r05-learned-consumer-r1",
+  "review_input": "eefc2e65f3d1e6d579b06e522f23b9cd6fc942b5",
+  "environment": {"python": "3.11.3", "python_executable": "/usr/local/bin/python3", "pytest": "9.0.2"},
+  "commands": [
+    {"id": "author", "command": "/usr/local/bin/python3 -m pytest -q rawlsing_next/tests/test_universal_learned_consumer.py rawlsing_next/tests/test_pre553_learned_world_composition.py --junitxml=WORKER_RETURNS/PYAT-R91-R05-LEARNED-CONSUMER-R1/revisions/r2/junit.xml", "exit_code": 0, "tests": 36, "failures": 0, "errors": 0, "skipped": 0, "time_seconds": 9.16},
+    {"id": "r05v-probes", "command": "PYTHONPATH=\"$PWD\" /usr/local/bin/python3 -m pytest -q .r61/reconciliation/r05r2/probes/test_r05v_consumer_gap.py --junitxml=.../r05v_probes_replay.xml", "exit_code": 0, "tests": 4, "failures": 0, "errors": 0, "skipped": 0, "time_seconds": 0.59}
+  ],
+  "gaps_closed": {
+    "P1": "NativeProductGraph multiple components + E41 extension, joint/discovery/recursive/route fields bound and validated",
+    "P2": "typed eligibility/execution/result axes, denominator/cells, ZERO_SUPPORT/VALID_EMPTY/UNKNOWN retained; Z UNRESOLVED16 marked"
+  },
+  "actual_positive": {"m01": "actual fixture execution", "m1": "RULE_SATISFIED", "m2": "actual release", "c1_denominator": 1, "c1_cells": {"0": 0, "1": 1}, "consumer": "EXACT_SUPPORTED", "e41_direct": "same consumer hash"},
+  "sever_restore": ["blocked product refuses", "wrong predicate/query refuses", "exact restore positive", "typed status mutations retain axes/denominator"],
+  "blobs": {"rawlsing_next/pre553_learned_world_composition.py": "32631d17b2db87a16d2ac55d5c3faf2235d13be0", "rawlsing_next/tests/test_universal_learned_consumer.py": "3ae5e674265d12e3fad1761211db67dfd6017747"},
+  "not_run": "historical AT07 provider fixture tests where exact INPUTS material is absent in isolated checkout; not counted as passes",
+  "limits": ["sourcefree TEST_ONLY", "full J42/P41/E04 NOT_REACHED", "no original/science/CI/prod/N11/N12/F6/F7/Sorok/J52/W52 authority", "author candidate only; distinct reviewer follows"]
+}
