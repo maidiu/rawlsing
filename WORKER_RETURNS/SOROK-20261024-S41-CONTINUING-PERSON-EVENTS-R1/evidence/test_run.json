@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "classname": "tests.test_s41_continuation",
+      "name": "test_two_event_same_person_root_branch_cold",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s41_continuation",
+      "name": "test_open_second_event_no_actor_action_and_duplicate_replay",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s41_continuation",
+      "name": "test_denied_second_event_uses_current_world_without_success",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s41_continuation",
+      "name": "test_wrong_second_source_and_duplicate_do_not_append_action",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s41_continuation",
+      "name": "test_tampered_actual_prior_history_and_access_refuse_then_restore",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s41_continuation",
+      "name": "test_second_event_plan_projection_mismatch_refused_but_first_intact",
+      "status": "PASS"
+    }
+  ],
+  "command": "/usr/local/bin/python3 -B -m pytest -q -p no:cacheprovider --junitxml=/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/junit/s41_full.xml tests",
+  "counts": {
+    "ERROR": 0,
+    "PASS": 6,
+    "RED": 0,
+    "SKIP": 0,
+    "tests": 6
+  },
+  "exit": 0,
+  "junit": "junit/s41_full.xml",
+  "schema": "SOROK_S41_TEST_RUN@1"
+}

@@ -1,0 +1,317 @@
+{
+  "actor_action_appended": true,
+  "branch_actors": [
+    "A",
+    "B",
+    "U"
+  ],
+  "checks": {
+    "cold_both_valid": true,
+    "distinct_c8": true,
+    "distinct_e1": true,
+    "distinct_e1_hash": true,
+    "first_bytes_preserved": true,
+    "increasing_clocks": true,
+    "prior_fact_cited": true,
+    "same_branch": true,
+    "same_root": true,
+    "speaking_fidelity": true,
+    "tool_retained": true,
+    "zero_targets": true
+  },
+  "clock": 243,
+  "cold": {
+    "events": [
+      {
+        "action_event_hash": "4553f55285721d04cbc96c13f8e0675490cce1b3c16668632ddd02b33e3528c6",
+        "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_861d90428ae608ade40dc98d47cc65764a31c08a8c30b37a39ab67985e3d293d",
+        "attempt_status": "ADMITTED",
+        "c8_occurrence_id": "OCC-0001",
+        "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+        "c9": {
+          "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+          "receipt_ref": "5307689122ca519cf6b06627944b43d3a25deb60dc130e32d8bdd3896eff73f3",
+          "response_kind": "REQUEST_TOOL",
+          "response_ref": "733ac70d0230d4bfe0da0d985870921cf1f1c655c7435968151709e715401908",
+          "target_branch": "NO_CHANGE",
+          "target_id": "",
+          "target_proposals": [],
+          "target_reason": "NO_PROPOSAL",
+          "target_state_rows": 0
+        },
+        "e1_event_hash": "0df84bf1ab8a5aa8ed0e6590a017d77da2edc0c0262e8c396b29277b14a885c2",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "event_ordinal": 1,
+        "event_time": 242,
+        "generation_source_refs": [
+          "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+          "TEST_ONLY_S39_CTX_AVOID_DEBT",
+          "TEST_ONLY_S39_HIST_B_PRIOR_SHARE"
+        ],
+        "history_predicate": null,
+        "history_refs": [],
+        "language": {
+          "access_receipt_id": "LME_ACCESS_4bbfdcb6bc6142d1626fce023da852a24bee241849421f8270940ac1e031fa8d",
+          "equivalence_receipt_hash": "78207ce52f87b1c4bf9e3539cb2f1ffcdd4e5bb4d6b921d8461177319d915eb8",
+          "native_artifact_hash": "ec4d63bfb8622ce290d821c04c7f652c8cf5c113b7ebc3b460aa18abc480c4df",
+          "native_text": "\u00bfPuedo usar la herramienta?",
+          "plan_hash": "7d965aeaf7114eb0b2738fd7ccf29118210203cd8acbdec48e68e15153fc5b56",
+          "source_event_hash": "dd71356ee87e8a52ea235e0dfa4f20bd0e645d2c6fb56baf6e09eefecd73aa87",
+          "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_5dfe1b25c3d2ea7e9cb14e7d414c89d693e569ea4a353e018af6911e379adf11",
+          "status": "ACCEPTED",
+          "translation_artifact_hash": "d3c96116f744da4a7e9b4cc4ffcf5cb85c9c9aa4a90e4d77bf99b8ce70fae35a",
+          "translation_text": "May I use the tool?"
+        },
+        "performed": true,
+        "provenance": "TEST_ONLY_CONSTRUCTIVE_GENERATION_NOT_EXTERNALLY_OBSERVED",
+        "selected_option": "REQUEST_TOOL",
+        "source_operation": "SHARE_TOOL",
+        "status": "OK",
+        "target_proposals": [],
+        "world_clock_after": 242,
+        "world_clock_before": 242,
+        "world_tools_remaining": 1
+      },
+      {
+        "action_event_hash": "9891f937762b4aec04bfe1aa9d57dd8d16b3974c4eaab781af7059556f2e27fd",
+        "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_9111238c4fc1f1429dbd51692c939367ce15e746eae1eb12f510f5818ce7ac8a",
+        "attempt_status": "ADMITTED",
+        "c8_occurrence_id": "OCC-0002",
+        "c8_state_digest": "18f8ba5325d018272ec819d3503bbb6020e9d9196a151ead2e32ba434bb6a8cb",
+        "c9": {
+          "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+          "receipt_ref": "21297061a57dd7a61c22128f00ca29797bb2594b877d01ca80ba24eb03e2c0e4",
+          "response_kind": "REQUEST_TOOL",
+          "response_ref": "197c0887e7e01111fd504f6e7a13abef4837debb7cef71dd7a82fec51c546ec9",
+          "target_branch": "NO_CHANGE",
+          "target_id": "",
+          "target_proposals": [],
+          "target_reason": "NO_PROPOSAL",
+          "target_state_rows": 0
+        },
+        "e1_event_hash": "4f7c6c2bd484df50e19ee5ff1aa47c5d7a668691f0d031b138a7fb351f871eaf",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0002",
+        "event_ordinal": 2,
+        "event_time": 243,
+        "generation_source_refs": [
+          "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+          "TEST_ONLY_S39_CTX_AVOID_DEBT",
+          "TEST_ONLY_S41_HIST_TEST_ONLY_BP2_E1_OCC-0001"
+        ],
+        "history_predicate": "PRIOR_B_SHARE",
+        "history_refs": [
+          {
+            "c8_content_hash": "fab216d52b69482bcda0188449639f58692373f4ad90dd024258fc9f1a6b953a",
+            "c8_occurrence_id": "OCC-0001",
+            "e1_event_hash": "0df84bf1ab8a5aa8ed0e6590a017d77da2edc0c0262e8c396b29277b14a885c2",
+            "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+            "event_ordinal": 1
+          }
+        ],
+        "language": {
+          "access_receipt_id": "LME_ACCESS_25655958fc1fb6faf5c6147151753531889b922b65d9f387c549fb0b58701a31",
+          "equivalence_receipt_hash": "f1b4a11076bb8d3fc37c3d7247cf03e9958d554e09491485476a0c1a731572aa",
+          "native_artifact_hash": "01b4ba0be43ad2bdc869ab143b675db39a9a22e652720575ec54fd51ada588f2",
+          "native_text": "\u00bfPuedo usar la herramienta?",
+          "plan_hash": "738b05112565a0860b1a0ea3230c930f6fbeae73f41628105241ba0c23ea2fe0",
+          "source_event_hash": "864c25acdea57a96e16703bf2e22bd4a5decea5e0269e9fd0d940a45a275fb1b",
+          "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_6911b6928e115fe619a7e4fba1dd91d8fdc113c1d115b30ca4dd04ae7248ceba",
+          "status": "ACCEPTED",
+          "translation_artifact_hash": "263687a8e42882d0432426946b0cd41123d84d616ae0916d42b60720cea3f3d9",
+          "translation_text": "May I use the tool?"
+        },
+        "performed": true,
+        "provenance": "TEST_ONLY_CONSTRUCTIVE_GENERATION_NOT_EXTERNALLY_OBSERVED",
+        "selected_option": "REQUEST_TOOL",
+        "source_operation": "REFUSE_TOOL",
+        "status": "OK",
+        "target_proposals": [],
+        "world_clock_after": 243,
+        "world_clock_before": 242,
+        "world_tools_remaining": 1
+      }
+    ],
+    "latest_ordinal": 2,
+    "verify_ok": true
+  },
+  "continue_status": "OK",
+  "events": [
+    {
+      "action_event_hash": "4553f55285721d04cbc96c13f8e0675490cce1b3c16668632ddd02b33e3528c6",
+      "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_861d90428ae608ade40dc98d47cc65764a31c08a8c30b37a39ab67985e3d293d",
+      "attempt_status": "ADMITTED",
+      "c8_occurrence_id": "OCC-0001",
+      "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+      "c9": {
+        "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+        "receipt_ref": "5307689122ca519cf6b06627944b43d3a25deb60dc130e32d8bdd3896eff73f3",
+        "response_kind": "REQUEST_TOOL",
+        "response_ref": "733ac70d0230d4bfe0da0d985870921cf1f1c655c7435968151709e715401908",
+        "target_branch": "NO_CHANGE",
+        "target_id": "",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL",
+        "target_state_rows": 0
+      },
+      "e1_event_hash": "0df84bf1ab8a5aa8ed0e6590a017d77da2edc0c0262e8c396b29277b14a885c2",
+      "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+      "event_ordinal": 1,
+      "event_time": 242,
+      "generation_source_refs": [
+        "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+        "TEST_ONLY_S39_CTX_AVOID_DEBT",
+        "TEST_ONLY_S39_HIST_B_PRIOR_SHARE"
+      ],
+      "history_predicate": null,
+      "history_refs": [],
+      "language": {
+        "access_receipt_id": "LME_ACCESS_4bbfdcb6bc6142d1626fce023da852a24bee241849421f8270940ac1e031fa8d",
+        "equivalence_receipt_hash": "78207ce52f87b1c4bf9e3539cb2f1ffcdd4e5bb4d6b921d8461177319d915eb8",
+        "native_artifact_hash": "ec4d63bfb8622ce290d821c04c7f652c8cf5c113b7ebc3b460aa18abc480c4df",
+        "native_text": "\u00bfPuedo usar la herramienta?",
+        "plan_hash": "7d965aeaf7114eb0b2738fd7ccf29118210203cd8acbdec48e68e15153fc5b56",
+        "source_event_hash": "dd71356ee87e8a52ea235e0dfa4f20bd0e645d2c6fb56baf6e09eefecd73aa87",
+        "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_5dfe1b25c3d2ea7e9cb14e7d414c89d693e569ea4a353e018af6911e379adf11",
+        "status": "ACCEPTED",
+        "translation_artifact_hash": "d3c96116f744da4a7e9b4cc4ffcf5cb85c9c9aa4a90e4d77bf99b8ce70fae35a",
+        "translation_text": "May I use the tool?"
+      },
+      "performed": true,
+      "provenance": "TEST_ONLY_CONSTRUCTIVE_GENERATION_NOT_EXTERNALLY_OBSERVED",
+      "selected_option": "REQUEST_TOOL",
+      "source_operation": "SHARE_TOOL",
+      "status": "OK",
+      "target_proposals": [],
+      "world_clock_after": 242,
+      "world_clock_before": 242,
+      "world_tools_remaining": 1
+    },
+    {
+      "action_event_hash": "9891f937762b4aec04bfe1aa9d57dd8d16b3974c4eaab781af7059556f2e27fd",
+      "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_9111238c4fc1f1429dbd51692c939367ce15e746eae1eb12f510f5818ce7ac8a",
+      "attempt_status": "ADMITTED",
+      "c8_occurrence_id": "OCC-0002",
+      "c8_state_digest": "18f8ba5325d018272ec819d3503bbb6020e9d9196a151ead2e32ba434bb6a8cb",
+      "c9": {
+        "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+        "receipt_ref": "21297061a57dd7a61c22128f00ca29797bb2594b877d01ca80ba24eb03e2c0e4",
+        "response_kind": "REQUEST_TOOL",
+        "response_ref": "197c0887e7e01111fd504f6e7a13abef4837debb7cef71dd7a82fec51c546ec9",
+        "target_branch": "NO_CHANGE",
+        "target_id": "",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL",
+        "target_state_rows": 0
+      },
+      "e1_event_hash": "4f7c6c2bd484df50e19ee5ff1aa47c5d7a668691f0d031b138a7fb351f871eaf",
+      "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0002",
+      "event_ordinal": 2,
+      "event_time": 243,
+      "generation_source_refs": [
+        "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+        "TEST_ONLY_S39_CTX_AVOID_DEBT",
+        "TEST_ONLY_S41_HIST_TEST_ONLY_BP2_E1_OCC-0001"
+      ],
+      "history_predicate": "PRIOR_B_SHARE",
+      "history_refs": [
+        {
+          "c8_content_hash": "fab216d52b69482bcda0188449639f58692373f4ad90dd024258fc9f1a6b953a",
+          "c8_occurrence_id": "OCC-0001",
+          "e1_event_hash": "0df84bf1ab8a5aa8ed0e6590a017d77da2edc0c0262e8c396b29277b14a885c2",
+          "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+          "event_ordinal": 1
+        }
+      ],
+      "language": {
+        "access_receipt_id": "LME_ACCESS_25655958fc1fb6faf5c6147151753531889b922b65d9f387c549fb0b58701a31",
+        "equivalence_receipt_hash": "f1b4a11076bb8d3fc37c3d7247cf03e9958d554e09491485476a0c1a731572aa",
+        "native_artifact_hash": "01b4ba0be43ad2bdc869ab143b675db39a9a22e652720575ec54fd51ada588f2",
+        "native_text": "\u00bfPuedo usar la herramienta?",
+        "plan_hash": "738b05112565a0860b1a0ea3230c930f6fbeae73f41628105241ba0c23ea2fe0",
+        "source_event_hash": "864c25acdea57a96e16703bf2e22bd4a5decea5e0269e9fd0d940a45a275fb1b",
+        "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_6911b6928e115fe619a7e4fba1dd91d8fdc113c1d115b30ca4dd04ae7248ceba",
+        "status": "ACCEPTED",
+        "translation_artifact_hash": "263687a8e42882d0432426946b0cd41123d84d616ae0916d42b60720cea3f3d9",
+        "translation_text": "May I use the tool?"
+      },
+      "performed": true,
+      "provenance": "TEST_ONLY_CONSTRUCTIVE_GENERATION_NOT_EXTERNALLY_OBSERVED",
+      "selected_option": "REQUEST_TOOL",
+      "source_operation": "REFUSE_TOOL",
+      "status": "OK",
+      "target_proposals": [],
+      "world_clock_after": 243,
+      "world_clock_before": 242,
+      "world_tools_remaining": 1
+    }
+  ],
+  "first_action_event_id": "TEST_ONLY_BP4_WORLD_EVT_861d90428ae608ade40dc98d47cc65764a31c08a8c30b37a39ab67985e3d293d",
+  "first_after_second": {
+    "action_event_hash": "4553f55285721d04cbc96c13f8e0675490cce1b3c16668632ddd02b33e3528c6",
+    "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_861d90428ae608ade40dc98d47cc65764a31c08a8c30b37a39ab67985e3d293d",
+    "attempt_status": "ADMITTED",
+    "c8_occurrence_id": "OCC-0001",
+    "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+    "c9": {
+      "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+      "receipt_ref": "5307689122ca519cf6b06627944b43d3a25deb60dc130e32d8bdd3896eff73f3",
+      "response_kind": "REQUEST_TOOL",
+      "response_ref": "733ac70d0230d4bfe0da0d985870921cf1f1c655c7435968151709e715401908",
+      "target_branch": "NO_CHANGE",
+      "target_id": "",
+      "target_proposals": [],
+      "target_reason": "NO_PROPOSAL",
+      "target_state_rows": 0
+    },
+    "e1_event_hash": "0df84bf1ab8a5aa8ed0e6590a017d77da2edc0c0262e8c396b29277b14a885c2",
+    "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+    "event_ordinal": 1,
+    "event_time": 242,
+    "generation_source_refs": [
+      "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+      "TEST_ONLY_S39_CTX_AVOID_DEBT",
+      "TEST_ONLY_S39_HIST_B_PRIOR_SHARE"
+    ],
+    "history_predicate": null,
+    "history_refs": [],
+    "language": {
+      "access_receipt_id": "LME_ACCESS_4bbfdcb6bc6142d1626fce023da852a24bee241849421f8270940ac1e031fa8d",
+      "equivalence_receipt_hash": "78207ce52f87b1c4bf9e3539cb2f1ffcdd4e5bb4d6b921d8461177319d915eb8",
+      "native_artifact_hash": "ec4d63bfb8622ce290d821c04c7f652c8cf5c113b7ebc3b460aa18abc480c4df",
+      "native_text": "\u00bfPuedo usar la herramienta?",
+      "plan_hash": "7d965aeaf7114eb0b2738fd7ccf29118210203cd8acbdec48e68e15153fc5b56",
+      "source_event_hash": "dd71356ee87e8a52ea235e0dfa4f20bd0e645d2c6fb56baf6e09eefecd73aa87",
+      "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_5dfe1b25c3d2ea7e9cb14e7d414c89d693e569ea4a353e018af6911e379adf11",
+      "status": "ACCEPTED",
+      "translation_artifact_hash": "d3c96116f744da4a7e9b4cc4ffcf5cb85c9c9aa4a90e4d77bf99b8ce70fae35a",
+      "translation_text": "May I use the tool?"
+    },
+    "performed": true,
+    "provenance": "TEST_ONLY_CONSTRUCTIVE_GENERATION_NOT_EXTERNALLY_OBSERVED",
+    "selected_option": "REQUEST_TOOL",
+    "source_operation": "SHARE_TOOL",
+    "status": "OK",
+    "target_proposals": [],
+    "world_clock_after": 242,
+    "world_clock_before": 242,
+    "world_tools_remaining": 1
+  },
+  "first_clock": 242,
+  "grade": "TEST_ONLY_SOURCEFREE_CONTINUING_PERSON_NOT_NATIVE",
+  "latest_ordinal": 2,
+  "native": false,
+  "provider_calls": 0,
+  "root_actors": [
+    "A",
+    "B"
+  ],
+  "schema": "SOROK_S41_TWO_EVENT_CHAIN@1",
+  "second_language_view": {
+    "display_mode": "LABELED_ENGLISH",
+    "status": "OK",
+    "translation_text": "May I use the tool?"
+  },
+  "tool_available": true,
+  "tools_remaining": 1,
+  "verify_ok": true
+}
