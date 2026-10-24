@@ -101,4 +101,4 @@ No production, original source, accepted authority, historical J/E/V/DEV-R branc
 
 ## 6. Publication
 
-The ordinary non-force remote commit and exact remote tip are recorded in `PUBLICATION_RECEIPT.json` after push. No self-adoption, no force-push, no production or native claim.
+Source commit `2d11e32c2d5e7d44449e03c6af68aa75d4de1a60` was pushed with an ordinary non-force push. `git ls-remote` read back the same SHA before the receipt-only commit; `PUBLICATION_RECEIPT.json` records that readback, and the final branch tip includes the receipt. No self-adoption, no force-push, no production or native claim.
