@@ -136,6 +136,8 @@ original F7 issuance. No self-adoption, production merge or R05 wake.
 `independent_probes/` (`test_r06v_world.py`, `test_r06v_r3_successor.py`),
 `replay/` JUnit/logs, `evidence/commands.txt`, `proof_witness.json`,
 `manifest.json` (self-excluding), and `evidence/remote_readback.txt`. The
-reviewer branch is pushed non-force; direct remote SHA readback is recorded
-after the evidence push and reported to the coordinator. The candidate branch
+reviewer branch is pushed non-force. Evidence commit
+`2225cc2c6dba5fa7742d937b2574e86944e28fc9` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also verified by direct remote readback and reported to the coordinator. The candidate branch
 remains at `02800fcfd77abde178851031f877838bedb5e242` throughout this review.

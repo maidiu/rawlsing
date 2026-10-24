@@ -7,12 +7,16 @@
   "candidate_startup": "02800fcfd77abde178851031f877838bedb5e242",
   "commission": "0fcf61136bbd05a184034c05990a87a6a8a9b6a7",
   "environment": {
+    "pyreadstat": "1.3.2",
     "pytest": "9.0.2",
-    "python": "3.11.3",
-    "pyreadstat": "1.3.2"
+    "python": "3.11.3"
   },
-  "evidence_commit": "",
-  "evidence_commit_remote_readback": {},
+  "evidence_commit": "2225cc2c6dba5fa7742d937b2574e86944e28fc9",
+  "evidence_commit_remote_readback": {
+    "candidate_remote_sha": "02800fcfd77abde178851031f877838bedb5e242",
+    "file": "evidence/remote_readback.txt",
+    "remote_sha": "2225cc2c6dba5fa7742d937b2574e86944e28fc9"
+  },
   "expectations_freeze_commit": "535a936b2",
   "expectations_sha256": "1553ce5ec23a950ad848b9580a5e0c6275c60b2559952a499aeb9b9763bf8f3d",
   "grant": "1315aff53c3eb063a65088fcb5bd8398852668fa",
@@ -58,16 +62,16 @@
     },
     "successor_probes": {
       "errors": 0,
-      "failures": 3,
-      "junit": "replay/successor_probes_junit.xml",
-      "passed": 3,
-      "skipped": 0,
-      "time_seconds": 88.326,
       "failed_tests": [
         "test_S1_forged_runtime_cannot_mint_actual_execution",
         "test_S3_subject_selected_coordinator_original_cannot_mint_output",
         "test_S6_joined_wrapper_forged_real_type_ff_admission_is_not_authority"
-      ]
+      ],
+      "failures": 3,
+      "junit": "replay/successor_probes_junit.xml",
+      "passed": 3,
+      "skipped": 0,
+      "time_seconds": 88.326
     }
   },
   "verdict": "REVISE"
