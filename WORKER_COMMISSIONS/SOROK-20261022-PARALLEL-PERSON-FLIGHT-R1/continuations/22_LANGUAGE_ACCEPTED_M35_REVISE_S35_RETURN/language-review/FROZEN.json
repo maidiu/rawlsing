@@ -1,0 +1,24 @@
+{
+  "schema": "SOROK_REVIEW_LANGUAGE_CLOSURE_V1",
+  "corrected_cut": "8d2920da951f98cd8246d7c34cac777928e0c732",
+  "prior_cut": "7ed7dc9afccffb3f27e78832160ab83ac02ffc7d",
+  "base": "76961d2e58e7139ddd63f1758aea19a8026b375f",
+  "decision": "ACCEPT_LANGUAGE_COUNTEREXAMPLE_ACCESS_CLOSURE",
+  "correction_scope": [
+    "LANGUAGE_MEDIATION_R1/language_mediation/index.py",
+    "LANGUAGE_MEDIATION_R1/tests/test_language_mediation.py"
+  ],
+  "checks": {
+    "affected_suite": "21 PASS, 0 FAIL (6.16s)",
+    "preserved_counterexample_oracle": "2 PASS, 0 FAIL",
+    "lawful_restore": "PASS in added affected test",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "LANGUAGE_MEDIATION_R1/language_mediation/index.py": "7fe649537d20f449d4d83b514b78641efe1f0e0c0fc874d4c68630111894ac9c",
+    "LANGUAGE_MEDIATION_R1/tests/test_language_mediation.py": "61e233fb9d5affac30e2e8121bcd9e0fa4368a740b32751dab2445f446ab4598",
+    "evidence/language-8d-tests21.out": "0bb0e760d47fab057cde01331152f98b8531c28a219206c67b58f4e9c0d3a7bb",
+    "evidence/language-8d-counterexample.json": "c05c2c4d230315e2c82880842990f7b2aa60631068cf04278482354a194c2164",
+    "oracles/r59_language_counterexample_access.py": "d67fe72e900a00711a2fb2d25eca938306918efea0331818b2e30101085a3f96"
+  }
+}

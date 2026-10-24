@@ -1,0 +1,30 @@
+{
+  "schema": "SOROK_REVIEW_LANGUAGE_COUNTEREXAMPLE_ACCESS_V1",
+  "cut": "7ed7dc9afccffb3f27e78832160ab83ac02ffc7d",
+  "base": "76961d2e58e7139ddd63f1758aea19a8026b375f",
+  "counts": {
+    "PASS": 2,
+    "FAIL": 0
+  },
+  "red_oracles": [],
+  "rows": [
+    {
+      "label": "wrong-branch",
+      "before_revocation_status": "INVALID",
+      "before_reason": "COUNTEREXAMPLE_NOT_ACCESSIBLE",
+      "after_wrong_receipt_status": "INVALID",
+      "after_wrong_receipt_reason": "COUNTEREXAMPLE_NOT_ACCESSIBLE",
+      "declared_branch": "other-branch",
+      "declared_hash": null
+    },
+    {
+      "label": "wrong-hash",
+      "before_revocation_status": "INVALID",
+      "before_reason": "COUNTEREXAMPLE_NOT_ACCESSIBLE",
+      "after_wrong_receipt_status": "INVALID",
+      "after_wrong_receipt_reason": "COUNTEREXAMPLE_NOT_ACCESSIBLE",
+      "declared_branch": null,
+      "declared_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ]
+}
