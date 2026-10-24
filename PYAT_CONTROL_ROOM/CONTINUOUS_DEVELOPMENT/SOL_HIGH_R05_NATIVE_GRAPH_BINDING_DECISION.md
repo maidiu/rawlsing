@@ -1,0 +1,14 @@
+# Sol High required — exact R05 native provenance binding decision
+No new architecture court. No Astra requirement established. Current economical HQ must stop before choosing a consequential native provenance interface.
+
+## Exact evidence
+Candidate737f1b143963352f201973140002d6f66dbabcaa; independent review71b0c9c426e56246c27bbfdd8f22e7f8ef24957e, full return/probes under WORKER_RETURNS/PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/revisions/r3/. R2review01d59c7ca8335c5d1f38041f4d76624b38c5c7fd documents preceding same defect. Two direct actual compositions and typed-status bug repair pass, but invented internally consistent joint topology, discovery refs, recursive lineage and real-type forged E41 route all still return EXACT_SUPPORTED. Actual discovery/recursive learned-to-C1 linkage remains unexercised.
+
+## Smallest decision
+Select precise in-scope native evidence binding API and validation ownership for R05, or identify indispensable extra code path and request only that grant. Compare (A) faithful existing owner result/receipt reconciliation and validated construction within current five paths versus (B) native caller-owned graph/result handoff requiring an additional path. Read actual relevant owner schemas and existing accepted R03/R08 contracts at pinned commits; no broad repository sweep, no replacement engine, no novel signer/registry. State exact inputs, trusted versus candidate-owned fields, actual native route and consumer dependency, refusal, test and minimal repair owner. Self-consistency/hash/type membership of subject-owned metadata cannot authenticate origin. Do not invent a new stronger trust boundary than accepted local trusted host; distinguish native recomputation/structural validation from protected R09 execution authority.
+
+## Why escalation
+Two precise OpenCode successors repaired other defects but left the same central evidence-versus-metadata ambiguity. Another generic instruction to validate provenance is insufficient. The boundary between actual owner evidence, trusted construction and consumer representation must be settled before dependent construction. Importance alone does not justify expensive coding workers: Sol High HQ makes only this bounded engineering decision, then same existing OpenCode author implements and distinct reviewer qualifies. No Codex workers.
+
+## Authority / stop
+Existing R91 five-code-path R05 grant at0f0f08373486a733b8946b82bfd576c17e506006; inspect exact list. Source/science/CI/prod/N11/N12/Sorok/J52W52 holds unchanged. R04 joined independently accepted at local scope, not production adoption. No new substantive product/scientific semantics without user. Acceptable bounded HOLD names exact absent caller/function and smallest requested path. Stop once concrete faithful API/owner/dependency decision banked; immediately downshift to Light. Do not rerun prior reviews or native experiments absent decision-reversing need.
