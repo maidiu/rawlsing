@@ -1,0 +1,69 @@
+{
+  "schema": "PYAT_R95_R06R4_PROOF_WITNESS@1",
+  "node": "R06R4",
+  "disposition": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+  "branch": "agent/opencode-pyat-r95-r06-world-consumer-integration-r1",
+  "startup_commit": "02800fcfd77abde178851031f877838bedb5e242",
+  "contract_commit": "3382aa85f3f88f9f58d54bf3f3d1b3064aa50d07",
+  "candidate_code_commit": "80a85827a0f5a840566290abf449a89873f59fbc",
+  "reviewer_defect_commit": "05f54b961712695b4836c6160586510dff60986a",
+  "commands": [
+    {"purpose": "author R06R4 suite", "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_world_binding.py -q --junitxml=WORKER_RETURNS/PYAT-R95-R06-WORLD-CONSUMER-INTEGRATION-R1/revisions/r4/junit.xml -o addopts=''", "exit_code": 0, "result": "17 passed", "failures": 0, "errors": 0, "skips": 0, "walltime_seconds": 180.674, "junit": "junit.xml", "log": "pytest.log"},
+    {"purpose": "independent R06V prior + R3 successor probes", "command": "PYTHONPATH=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01 /usr/local/bin/python3 -m pytest <R06V prior> <R06V R3 successor> -q --junitxml=.../reviewer_probes_junit.xml -o addopts=''", "exit_code": 0, "result": "11 passed", "failures": 0, "errors": 0, "skips": 0, "walltime_seconds": 97.557, "junit": "reviewer_probes_junit.xml", "log": "reviewer_probes.log"}
+  ],
+  "runtime_pin": {
+    "commit": "f27d1101048638bba395143a48efb7ef00bfcda4",
+    "packet": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1",
+    "materialized_by_wrapper_from_git": true,
+    "tree_sha256_checked": true,
+    "caller_runtime_must_match": true,
+    "preloaded_module_guard": true,
+    "forged_runtime": "UNTRUSTED_P41_RUNTIME"
+  },
+  "trusted_context": {
+    "configure": "configure_trusted_execution_context",
+    "verifies": ["P41 tree pin", "TrustedNativeGraphCoordinator.execute", "original ref", "consumer result", "step hash"],
+    "request_carries": "opaque execution_handle plus view/field/learned claims",
+    "forged_original": "R05_COORDINATOR_ORIGINAL_MISMATCH",
+    "missing_handle": "TRUSTED_EXECUTION_HANDLE_REQUIRED",
+    "subject_original_not_authority": true
+  },
+  "structural_authority": {
+    "state": "CONTEXT_STRUCTURAL_AUTHORITY_HELD",
+    "applies_to": ["select_world_view", "select_joined_world_view", "select_r05_world_view"],
+    "forged_real_type_ff_refused": true,
+    "direct_structural_positive_preserved": true,
+    "original_f5_f6_f7_issued": false
+  },
+  "preserved": {
+    "actual_r05_to_p41": true,
+    "two_field_same_assertion": true,
+    "temporal_actual_payload_change": true,
+    "equal_payload_refusal": "R05_TEMPORAL_PAIR_NOT_CONSUMED",
+    "cross_unit": "CROSS_UNIT_LINKED_QUERY_UNAVAILABLE",
+    "cold_fresh_process": true,
+    "current_asof_revocation": true,
+    "r1_j42_n10e_positives": true
+  },
+  "blobs": {
+    "rawlsing_next/pre553_universal_world_binding.py": "44ac11c9b7f5809e06b22fb9afee11ca8bc0dee5",
+    "rawlsing_next/tests/test_universal_world_binding.py": "7095820c4ac1e263da3a9670d6d792f3a161ec0d"
+  },
+  "import_pins": {
+    "r05_candidate": "bc2b5465c8f0ec2ea4657c6206436cdfa9ca58d0",
+    "r05_review": "2f7faac6da620b7651c175ec074d7088d5a49343",
+    "p41_packet": "f27d1101048638bba395143a48efb7ef00bfcda4",
+    "r1_j42_packet": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+    "pre553_learned_world_composition.py": "adbcc3316920c708580097dfe9f5aef4c9ca82fb",
+    "test_universal_learned_consumer.py": "b0114a82c8852faffc52686c69585a50ee89ba9f",
+    "pre553_analytical_composition.py": "ed2b1680006ac2b89ddd40499e0a6d1429327d7b",
+    "pre553_universal_empirical_extension.py": "37279fa82001d5853dadf4906efc904e8dc3b9bc"
+  },
+  "limits": [
+    "Local trusted-host context handle is private registration, not cryptographic/R09 isolation.",
+    "CONTEXT structural authority is HELD; no F5/F6/F7 issuance.",
+    "Synthetic modeled-rule temporal pair, not original F7 measured waves.",
+    "Original science/source/F5/F6/F8/CI/prod/N11/N12/Sorok/J52-W52 held.",
+    "No self-adoption; distinct reviewer required."
+  ]
+}
