@@ -1,0 +1,73 @@
+{
+  "schema": "PYAT_R91_R05V_R3_INDEPENDENT_PROOF_WITNESS@1",
+  "logical_job": "PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/revisions/r3",
+  "verdict": "REVISE",
+  "startup": "737f1b143963352f201973140002d6f66dbabcaa",
+  "branch": "agent/opencode-pyat-r91-r05v-r3-consumer-review-r1",
+  "frozen_expectations": "d6b4b3482fbc2863e3ddf4fb2ff1ff67b01c4fb1",
+  "environment": {"python": "3.11.3", "python_executable": "/usr/local/bin/python3", "pytest": "9.0.2"},
+  "custody": {
+    "exact_root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08v-r4",
+    "r3_contract": "45cf09d55f80109114454d859aeb9b68ba6d2184",
+    "r3_code_commit": "0c416bed7fdae59cbb57a190d1ea215eae8de44a",
+    "module_blob": "4e013062c433659a94f63995ba1b8179096bca9d",
+    "test_blob": "b942370e83cb901fc1a6b1b31ad98c345afda039",
+    "accepted_r08": {"module": "3ca860e409f1d063da4cd03dd1691a89c67333f6", "test": "5832ce0598fa02df93fcd200010a0076921e6cbe"},
+    "accepted_owners": {
+      "analytical_composition": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "provider": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "evaluator": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "empirical_objects": "a61365b994e5c3c50de0f598fcf40e90abf757b6"
+    },
+    "code_scope": ["rawlsing_next/pre553_learned_world_composition.py", "rawlsing_next/tests/test_universal_learned_consumer.py"],
+    "author_manifest": {"artifacts": 7, "all_match": true, "self_excluded": "manifest.json"},
+    "duplicate_definitions_removed": true
+  },
+  "retained": {
+    "author_r3": {"tests": 37, "failures": 0, "errors": 0, "skipped": 0},
+    "r05v_r1_exact": {"tests": 4, "failures": 0, "errors": 0, "skipped": 0},
+    "r05v_r2_exact": {"tests": 5, "failures": 0, "errors": 0, "skipped": 0},
+    "provider": {"tests": 43, "failures": 0, "errors": 0, "skipped": 0},
+    "analytical_composition": {"tests": 13, "failures": 0, "errors": 0, "skipped": 0},
+    "actual_positive": {"chain": "M01/M1/M2/C1/N10E", "state": "EXACT_SUPPORTED", "consumer_hash": "8e54f8b0f664051a089590379ba53a1716bbd8f9fa8d8813c29ea46cba1d52cc", "two_direct_components": true},
+    "status_false_exact_fixed": true,
+    "duplicate_definitions_fixed": true
+  },
+  "independent_gap_probes": {
+    "tests": 6,
+    "passed": 2,
+    "failed": 4,
+    "failures": {
+      "forged_joint_topology": {"state": "LEARNED_CONSUMER_EXACT_SUPPORTED", "joint": 2, "actual_components": 1},
+      "forged_discovery_route": {"state": "LEARNED_CONSUMER_EXACT_SUPPORTED", "forged_ref_echoed": true},
+      "forged_recursive_route": {"state": "LEARNED_CONSUMER_EXACT_SUPPORTED", "forged_refs_echoed": true},
+      "actual_type_e41_forged_route": {"state": "LEARNED_CONSUMER_EXACT_SUPPORTED", "route": "I05_EXACT_BOUNDED_VIA_ACCEPTED_COMPOSITION"}
+    },
+    "passes": ["two_distinct_direct_components", "status_disagreement_typed"]
+  },
+  "defects": [
+    {"id": "R05V-R3-P1", "class": "native graph provenance/route not validated; internally consistent forged metadata accepted", "missing_function": "reconcile topology/joint/discovery/frontier/recursive/lineage/root-parent/currentness with actual native owner objects/results; validate E41 route against actual component/evidence; exercise real discovery/recursive C1 linkage or name exact outside-five-path fixture/caller dependency"}
+  ],
+  "junit": {
+    "author_r3_replay": {"tests": 37, "failures": 0, "errors": 0, "skipped": 0},
+    "r05v_r1_probe_replay": {"tests": 4, "failures": 0, "errors": 0, "skipped": 0},
+    "r05v_r2_probe_replay": {"tests": 5, "failures": 0, "errors": 0, "skipped": 0},
+    "provider_suite_replay": {"tests": 43, "failures": 0, "errors": 0, "skipped": 0},
+    "analytical_composition_replay": {"tests": 13, "failures": 0, "errors": 0, "skipped": 0},
+    "reviewer_r3_gap_probes": {"tests": 6, "failures": 4, "errors": 0, "skipped": 0}
+  },
+  "artifacts": [
+    "EXPECTATIONS.md", "00_RETURN.md", "defects.md", "limits.md", "RESUME.md",
+    "proof_witness.json", "SHA256manifest.json", "outcomes/r05v_r3_observations.json",
+    "probes/test_r05v_r3_actual_graph_gap.py", "probes/r05v_r1_immutable_probe.py",
+    "probes/r05v_r2_immutable_probe.py", "junit/*.xml", "logs/stdout.jsonl"
+  ],
+  "scope_limits": {
+    "not_reached": ["full J42/P41/E04 live service", "original35/1890 science", "R04.joined custody"],
+    "r04_independent": true,
+    "no_candidate_repair": true,
+    "no_self_adoption": true,
+    "no_author_wake": true,
+    "no_extra_workers_sessions_provider_account": true
+  }
+}

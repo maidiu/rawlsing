@@ -1,0 +1,49 @@
+{
+  "probes": [
+    {
+      "joint": 2,
+      "probe": "two_direct_positive",
+      "state": "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    },
+    {
+      "actual_component_count": 1,
+      "joint": 2,
+      "probe": "forged_joint_topology",
+      "state": "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    },
+    {
+      "discovery": [
+        {
+          "content_hash": "99e6326a5a58748fb618850ce96523d192332126fbaeafd073b004f75148fdd3",
+          "kind": "R91_FORGED_DISCOVERY",
+          "object_id": "urn:test:r05v:discovery"
+        }
+      ],
+      "probe": "forged_discovery_route",
+      "state": "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    },
+    {
+      "probe": "forged_recursive_route",
+      "recursive": [
+        {
+          "content_hash": "b244c53fcd627a24c82563c4a800c51a4246ec9efbb0e6b6d22dab146d7ff3d5",
+          "kind": "R91_FORGED_RECURSIVE",
+          "object_id": "urn:test:r05v:recursive"
+        }
+      ],
+      "state": "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    },
+    {
+      "probe": "actual_type_e41_forged_route",
+      "route": "I05_EXACT_BOUNDED_VIA_ACCEPTED_COMPOSITION",
+      "state": "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    },
+    {
+      "denominator": 0,
+      "probe": "status_disagreement",
+      "result_state": "ZERO_SUPPORT",
+      "state": "LEARNED_CONSUMER_ZERO_SUPPORT"
+    }
+  ],
+  "schema": "R91_R05V_R3_INDEPENDENT_OBSERVATIONS@1"
+}
