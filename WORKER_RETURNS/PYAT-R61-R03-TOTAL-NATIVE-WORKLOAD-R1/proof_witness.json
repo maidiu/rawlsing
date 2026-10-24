@@ -1,0 +1,90 @@
+{
+  "branch": "agent/opencode-pyat-r61-r03-total-native-workload-r1",
+  "governed_frontier": {
+    "batch_receipts": 1,
+    "candidate_anti_join_no_drop": true,
+    "claim_classes": [
+      "CONDITIONAL",
+      "CO_TRAVEL",
+      "CROSS_SOURCE",
+      "DIST",
+      "FORK",
+      "INTERACTION",
+      "JOINT",
+      "POSSIBILITY",
+      "STATE_ROBUSTNESS",
+      "STRUCTURAL",
+      "TEMPORAL"
+    ],
+    "eligible_operations": 150,
+    "expected_candidates": 150,
+    "fact_refs": 330,
+    "ledger_restore": "PRE553_R03_GOVERNED_FRONTIER_RESULT@1.0.0",
+    "native_families": [
+      "BOUNDED_K_WAY_RESPONSE_CONFIGURATION",
+      "BRANCH_CONDITIONED_DISTRIBUTION",
+      "PAIR_RESPONSE_COTRAVEL",
+      "RECURSIVE_SUBGROUP_FORK"
+    ],
+    "native_receipts": 150,
+    "operation_accounting_ok": true,
+    "operation_no_drop": true,
+    "pending_operations": 0,
+    "result_states": [
+      "NOT_ELIGIBLE",
+      "SUPPORTED",
+      "UNSUPPORTED",
+      "VALID_EMPTY"
+    ],
+    "supported_operations": 147,
+    "unsupported_operations": 3
+  },
+  "recursive_d3": {
+    "cold_content_equal": true,
+    "cold_operations_equal": true,
+    "contrast_parent_id": "urn:r61:recurrence:parent:27f0917068e9e3f96240165253bc6f5691b14bbe5f349309d3a33e5f510bc994",
+    "contrast_states": {
+      "IMMEDIATE_PARENT_RELATIVE": "VALID_EMPTY",
+      "ROOT_RELATIVE": "DISCOVERED_RESULT_SUPPORTED"
+    },
+    "execution_count_before": 3,
+    "execution_count_restored": 3,
+    "generations": [
+      {
+        "expected_operations": 4,
+        "generation": 1,
+        "minority": 0,
+        "no_drop": true,
+        "parent": 2,
+        "root": 2,
+        "rules": 4
+      },
+      {
+        "expected_operations": 4,
+        "generation": 2,
+        "minority": 2,
+        "no_drop": true,
+        "parent": 2,
+        "root": 2,
+        "rules": 4
+      },
+      {
+        "expected_operations": 4,
+        "generation": 3,
+        "minority": 1,
+        "no_drop": true,
+        "parent": 2,
+        "root": 2,
+        "rules": 4
+      }
+    ]
+  },
+  "schema": "PRE553_R03_PROOF_WITNESS@1.0.0",
+  "sourcefree": "TEST_ONLY_SOURCEFREE",
+  "value_fault": {
+    "changed_fact_refs": 660,
+    "changed_operation_count": 147,
+    "restored_fact_refs_equal": true,
+    "same_compilation": true
+  }
+}

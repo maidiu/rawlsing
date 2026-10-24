@@ -1,0 +1,51 @@
+{
+  "artifacts": {
+    "WORKER_RETURNS/PYAT-R61-R03-TOTAL-NATIVE-WORKLOAD-R1/00_RETURN.md": {
+      "git_blob": "50e5a3254bc32c2b3875efb787c89d0c0e992d8d",
+      "sha256": "d7b5232886ac1443e9d774a19d59ffe0201a2d71acd4eefd1083dea8207feb8c"
+    },
+    "WORKER_RETURNS/PYAT-R61-R03-TOTAL-NATIVE-WORKLOAD-R1/junit.xml": {
+      "git_blob": "0e38da7ea5dee0e0962b3af7199e4c7a3f9f8662",
+      "sha256": "224b53bac2472c67f4b8748333a6c265e84f4df4ac3904de911726f4270d2194"
+    },
+    "WORKER_RETURNS/PYAT-R61-R03-TOTAL-NATIVE-WORKLOAD-R1/proof_witness.json": {
+      "git_blob": "90634773f993403ba9f3b1de4513e65f5293e490",
+      "sha256": "ae5df89e22888d82d12399baa5f8b24c96831bb9adf4237c10ff2f81c3174b82"
+    },
+    "WORKER_RETURNS/PYAT-R61-R03-TOTAL-NATIVE-WORKLOAD-R1/pytest.log": {
+      "git_blob": "84439a952a09f17e8229e7faa6492bb56f033278",
+      "sha256": "ce9bb43102b2288dd6de19473942a2124dc26fc90de4f1fd8b5b2056be4f8f3d"
+    },
+    "rawlsing_next/pre553_issued_workload.py": {
+      "git_blob": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "sha256": "8a420647ec32e1e6935e2b359c0c6e3cab1f802be59c3861a8ba2393b3351ac6"
+    },
+    "rawlsing_next/pre553_native_workload_binding.py": {
+      "git_blob": "90d98fa9faa817b95c28a1a1da3b46f08d5b9149",
+      "sha256": "4f5075e402350ba3dce6cf776ca773af2e7b31d0a587aa9f7e6c87ca113c155a"
+    },
+    "rawlsing_next/pre553_universal_workload.py": {
+      "git_blob": "b9f05d152e1c33507206071c89961473679e6809",
+      "sha256": "3564155a1df42f1a749da5b905d7f97d9f90d10ed2e92c7988e8fcd398911c74"
+    },
+    "rawlsing_next/tests/test_universal_workload.py": {
+      "git_blob": "3ea13ff7e149200c5ce093380aa81322e7d6516b",
+      "sha256": "08000e17a6e3127400d866c635def1ae9493a0c3efb0a6f6421baa4b1a2fb971"
+    }
+  },
+  "branch": "agent/opencode-pyat-r61-r03-total-native-workload-r1",
+  "code_commits": [
+    "d22319f2d6031a9766d7afe8bed205d9219f5b2a",
+    "db79e3913050039ddb55ba62b08bd764c79f1035"
+  ],
+  "predecessor_candidate": "5f3cee7cb7a9b53af266b05a4c8db01a53a13add",
+  "pytest": {
+    "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_workload.py rawlsing_next/tests/test_universal_grammar.py rawlsing_next/tests/test_universal_source_projection.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_batch_runner.py rawlsing_next/tests/test_pre553_carrier_execution.py rawlsing_next/tests/test_pre553_route_b_production.py -q -o addopts=''",
+    "errors": 0,
+    "failed": 0,
+    "passed": 120,
+    "skipped": 0
+  },
+  "schema": "PRE553_R03_RETURN_MANIFEST@1.0.0",
+  "startup": "813775c07f0831605b6484a1d82afada30d85968"
+}
