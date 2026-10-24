@@ -6,6 +6,7 @@ no new evidence, geometry, pooling or temporal authority.
 """
 from __future__ import annotations
 
+import sys
 from dataclasses import dataclass
 from typing import Any, Mapping, Sequence
 
@@ -73,6 +74,7 @@ class WorldSelectionRequest:
     relation_transport_ref: ExactRef | None = None
     relation_transport_authorized: bool = False
     ff_structural_authority_ref: ExactRef | None = None
+    ff_structural_admission: Any | None = None
     temporal_pair_ref: ExactRef | None = None
     observed_temporal_pair_refs: tuple[ExactRef, ...] = ()
     as_of_ref: str | None = None
@@ -138,12 +140,24 @@ def select_world_view(request: WorldSelectionRequest) -> WorldSelectedView:
         return _refusal("WORLD_FIELD_RELEASE_NOT_ADMITTED", request, field_refs)
     units = {field.unit for field in fields}
     if len(units) > 1:
-        if not request.relation_transport_authorized or request.relation_transport_ref is None:
-            return _refusal("UNLINKED_UNIT_POOLING_UNAUTHORIZED", request, field_refs)
-        if any(field.relation_ref != request.relation_transport_ref for field in fields):
-            return _refusal("UNAUTHORIZED_TRANSPORT_RELATION", request, field_refs)
-    if any(field.role == "CONTEXT" for field in fields) and request.ff_structural_authority_ref is None:
-        return _refusal("CONTEXT_AS_STRUCTURAL_UNAUTHORIZED", request, field_refs)
+        return _refusal("CROSS_UNIT_LINKED_QUERY_UNAVAILABLE", request, field_refs)
+    if any(field.role == "CONTEXT" for field in fields):
+        admission = request.ff_structural_admission
+        if admission is None:
+            return _refusal("CONTEXT_AS_STRUCTURAL_UNAUTHORIZED", request, field_refs)
+        from rawlsing_next.pre553_empirical_objects import StructuralEmpiricalAdmission
+        if not isinstance(admission, StructuralEmpiricalAdmission):
+            return _refusal("FF_STRUCTURAL_ADMISSION_NOT_EXACT", request, field_refs)
+        if admission.typed_state != "ADMITTED_FOR_EXACT_STRUCTURAL_USE":
+            return _refusal("FF_STRUCTURAL_ADMISSION_NOT_POSITIVE", request, field_refs)
+        if admission.target_use != "STRUCTURAL_MEDIATION_INPUT":
+            return _refusal("FF_STRUCTURAL_ADMISSION_TARGET_USE_MISMATCH", request, field_refs)
+        if request.consumer_query.source_universe_ref not in tuple(admission.source_universe_refs):
+            return _refusal("FF_STRUCTURAL_ADMISSION_SOURCE_MISMATCH", request, field_refs)
+        for field in fields:
+            if field.role == "CONTEXT" and field.empirical_coordinate_ref not in tuple(
+                    admission.structural_semantic_identity_refs):
+                return _refusal("FF_STRUCTURAL_ADMISSION_FIELD_MISMATCH", request, field_refs)
     clocks = {field.clock_ref for field in fields if field.clock_ref is not None}
     if len(clocks) > 1:
         if (request.temporal_pair_ref is None or not request.observed_temporal_pair_refs
@@ -239,6 +253,7 @@ class JoinedWorldSelectionRequest:
     relation_transport_ref: ExactRef | None = None
     relation_transport_authorized: bool = False
     ff_structural_authority_ref: ExactRef | None = None
+    ff_structural_admission: Any | None = None
     temporal_pair_ref: ExactRef | None = None
     observed_temporal_pair_refs: tuple[ExactRef, ...] = ()
 
@@ -327,12 +342,18 @@ def select_joined_world_view(request: JoinedWorldSelectionRequest) -> JoinedWorl
             return _joined_refusal("JOINED_FIELD_NOT_CONSUMED", request, field_ids)
     units = {field.unit for field in fields}
     if len(units) > 1:
-        if not request.relation_transport_authorized or request.relation_transport_ref is None:
-            return _joined_refusal("UNLINKED_UNIT_POOLING_UNAUTHORIZED", request, field_ids)
-        if any(field.relation_ref != request.relation_transport_ref for field in fields):
-            return _joined_refusal("UNAUTHORIZED_TRANSPORT_RELATION", request, field_ids)
-    if any(field.role == "CONTEXT" for field in fields) and request.ff_structural_authority_ref is None:
-        return _joined_refusal("CONTEXT_AS_STRUCTURAL_UNAUTHORIZED", request, field_ids)
+        return _joined_refusal("CROSS_UNIT_LINKED_QUERY_UNAVAILABLE", request, field_ids)
+    if any(field.role == "CONTEXT" for field in fields):
+        admission = request.ff_structural_admission
+        if admission is None:
+            return _joined_refusal("CONTEXT_AS_STRUCTURAL_UNAUTHORIZED", request, field_ids)
+        from rawlsing_next.pre553_empirical_objects import StructuralEmpiricalAdmission
+        if not isinstance(admission, StructuralEmpiricalAdmission):
+            return _joined_refusal("FF_STRUCTURAL_ADMISSION_NOT_EXACT", request, field_ids)
+        if admission.typed_state != "ADMITTED_FOR_EXACT_STRUCTURAL_USE":
+            return _joined_refusal("FF_STRUCTURAL_ADMISSION_NOT_POSITIVE", request, field_ids)
+        if admission.target_use != "STRUCTURAL_MEDIATION_INPUT":
+            return _joined_refusal("FF_STRUCTURAL_ADMISSION_TARGET_USE_MISMATCH", request, field_ids)
     clocks = {field.clock_ref for field in fields if field.clock_ref is not None}
     if len(clocks) > 1:
         if (request.temporal_pair_ref is None or not request.observed_temporal_pair_refs
@@ -373,7 +394,7 @@ def select_joined_world_view(request: JoinedWorldSelectionRequest) -> JoinedWorl
 
 
 # ---------------------------------------------------------------------------
-# R05 accepted-product -> actual P41 N9/N10W/E04 consumer (R06R2).
+# R05 accepted-product -> actual P41 N9/N10W/E04 consumer (R06R3).
 
 from typing import Callable
 
@@ -387,6 +408,7 @@ class R05WorldField:
     clock_ref: str | None = None
     relation_ref: ExactRef | None = None
     temporal_expected_value: Any = None
+    field_ref: ExactRef | None = None
 
     def __post_init__(self) -> None:
         if not self.field_id or not self.unit or not self.role:
@@ -396,10 +418,22 @@ class R05WorldField:
 
 
 @dataclass(frozen=True)
+class R05ActualExecution:
+    """Host-retained actual P41 execution inputs, not a caller receipt."""
+
+    p41_runtime: str
+    empirical: Mapping[str, Any]
+    step: Mapping[str, Any]
+    learned_consumer: Any
+    structural_revision: bool = True
+    coordinator_original_ref: ExactRef | None = None
+
+
+@dataclass(frozen=True)
 class R05WorldConsumerRequest:
     learned_consumer: Any
     fields: tuple[R05WorldField, ...]
-    consumer: Callable[[str], Mapping[str, Any]]
+    consumer: Callable[[str], Mapping[str, Any]] | None
     source_universe_ref: ExactRef
     release_ref: ExactRef
     source_rows_hash: str
@@ -410,6 +444,9 @@ class R05WorldConsumerRequest:
     relation_transport_ref: ExactRef | None = None
     relation_transport_authorized: bool = False
     ff_structural_authority_ref: ExactRef | None = None
+    ff_structural_admission: Any | None = None
+    actual_execution: R05ActualExecution | None = None
+    claimed_receipts: Mapping[str, Mapping[str, Any]] | None = None
 
 
 @dataclass(frozen=True)
@@ -441,6 +478,26 @@ def _r05_refusal(code: str, request: R05WorldConsumerRequest,
         view_hash=semantic_hash({"state": "REFUSED", "reason": code,
                                  "fields": list(field_ids)}),
     )
+
+
+def _actual_temporal_payload(receipt: Mapping[str, Any]) -> Mapping[str, Any]:
+    """Actual consumer value projection; excludes clock/hash/provenance labels."""
+    steps = []
+    for step in receipt.get("n10e_steps") or ():
+        steps.append({
+            "target": step.get("target"),
+            "conditioners": step.get("conditioners"),
+            "state": step.get("state"),
+            "denominator": step.get("denominator"),
+            "cells": step.get("cells"),
+        })
+    n10w = receipt.get("n10w") or {}
+    return {
+        "routes": (receipt.get("structural") or {}).get("routes"),
+        "n10e": steps,
+        "n10w_consumptions": n10w.get("positioned_consumptions"),
+        "n10w_state": n10w.get("progressive_chain_state"),
+    }
 
 
 def _validate_r05_receipt(receipt: Any, request: R05WorldConsumerRequest,
@@ -517,17 +574,182 @@ def _validate_r05_receipt(receipt: Any, request: R05WorldConsumerRequest,
     return receipt, None
 
 
-def select_r05_world_view(request: R05WorldConsumerRequest) -> R05WorldSelectedView:
-    """Feed the actual accepted R05 learned/empirical result into the actual P41
-    N9/N10W/E04 consumer and validate the same selected view.
+def _validate_ff_admission(request: R05WorldConsumerRequest,
+                           fields: tuple[R05WorldField, ...]) -> str | None:
+    if not any(field.role == "CONTEXT" for field in fields):
+        return None
+    admission = request.ff_structural_admission
+    if admission is None:
+        return "FF_STRUCTURAL_ADMISSION_REQUIRED"
+    from rawlsing_next.pre553_empirical_objects import StructuralEmpiricalAdmission
+    if not isinstance(admission, StructuralEmpiricalAdmission):
+        return "FF_STRUCTURAL_ADMISSION_NOT_EXACT"
+    if admission.typed_state != "ADMITTED_FOR_EXACT_STRUCTURAL_USE":
+        return "FF_STRUCTURAL_ADMISSION_NOT_POSITIVE"
+    if admission.target_use != "STRUCTURAL_MEDIATION_INPUT":
+        return "FF_STRUCTURAL_ADMISSION_TARGET_USE_MISMATCH"
+    if request.source_universe_ref not in tuple(admission.source_universe_refs):
+        return "FF_STRUCTURAL_ADMISSION_SOURCE_MISMATCH"
+    for field in fields:
+        if field.role != "CONTEXT":
+            continue
+        if field.field_ref is None or field.field_ref not in tuple(
+                admission.structural_semantic_identity_refs):
+            return "FF_STRUCTURAL_ADMISSION_FIELD_MISMATCH"
+    return None
 
-    `consumer(label)` must invoke the pinned P41 service configured over the R05
-    provider; this function validates and canonically binds its returned receipt.
-    No replacement evaluator or historical parallel packet is used.
+
+def _execute_p41_world(request: R05WorldConsumerRequest) -> dict[str, Mapping[str, Any]]:
+    actual = request.actual_execution
+    if actual is None:
+        raise WorldBindingError("ACTUAL_EXECUTION_INPUTS_REQUIRED")
+    runtime = actual.p41_runtime
+    if runtime not in sys.path:
+        sys.path.insert(0, runtime)
+    import bootstrap
+    bootstrap.install()
+    from p41_service import P41Service
+    from product.world import SelectedWorldCatalog
+
+    learned = actual.learned_consumer
+    requested = request.learned_consumer
+    if (learned.learned_receipt_ref != requested.learned_receipt_ref
+            or learned.m1_disposition_ref != requested.m1_disposition_ref
+            or learned.m2_release_ref != requested.m2_release_ref
+            or learned.consumer_result.result_hash
+            != requested.consumer_result.result_hash
+            or getattr(learned, "evidence_ref", None)
+            != getattr(requested, "evidence_ref", None)):
+        raise WorldBindingError("R05_LEARNED_ORIGINAL_MISMATCH")
+    step = dict(actual.step)
+    if step.get("content_hash") != learned.consumer_result.result_hash:
+        raise WorldBindingError("R05_ACTUAL_STEP_CONSUMER_MISMATCH")
+    empirical = actual.empirical
+    source = empirical.get("source") or {}
+    universe = source.get("universe")
+    if universe is None or universe.ref != request.source_universe_ref:
+        raise WorldBindingError("R05_ACTUAL_EMPIRICAL_SOURCE_MISMATCH")
+    if source.get("release_ref") != request.release_ref:
+        raise WorldBindingError("R05_ACTUAL_EMPIRICAL_RELEASE_MISMATCH")
+    if empirical.get("rows_hash") != request.source_rows_hash:
+        raise WorldBindingError("R05_ACTUAL_EMPIRICAL_ROWS_MISMATCH")
+    catalog = SelectedWorldCatalog(
+        empirical, structural_revision=actual.structural_revision
+    )
+    snapshots = {
+        "T0": catalog.select(mode="HISTORICAL", valid_at="2026-06-01",
+                             published_asof="2026-04-15"),
+    }
+    if request.temporal_pair_ref is not None:
+        snapshots["T1"] = catalog.select(
+            mode="AS_OF", valid_at="2027-09-01", published_asof="2027-09-01"
+        )
+
+    class R05Provider:
+        def __init__(self):
+            self.world = {"query_permits": {"Y": {}}}
+            self.trace = []
+
+        def _validate(self, target, ordered):
+            if target != "Y" or tuple(tuple(c) for c in ordered) != (("X", 1),):
+                raise ValueError("R06R3_R05_CONDITION_AUTHORITY")
+
+        def progressive(self, target, ordered):
+            self._validate(target, ordered)
+            self.trace.append(dict(
+                call="R05_LEARNED_CONSUMER_READ",
+                consumer_result_hash=step["content_hash"],
+            ))
+            return [dict(step)]
+
+    class R05StructuralService:
+        def __init__(self, catalog):
+            self.catalog = catalog
+            self.value_reads = []
+
+        def structural(self, snapshot, key, consumer):
+            value = self.catalog.read(snapshot, key)
+            self.value_reads.append(dict(
+                consumer=consumer, key=key, state=value["state"],
+                value=value.get("value"), snapshot_ref=snapshot.snapshot_hash,
+            ))
+            return value
+
+        def possibilities(self, snapshot, *, target="Y",
+                          conditions=(("X", 1),), consumer="GENERIC"):
+            self.value_reads.append(dict(
+                consumer=consumer, key="empirical", state="EXACT_SUPPORTED",
+                value=step["cells"], snapshot_ref=snapshot.snapshot_hash,
+            ))
+            return dict(
+                state="PRODUCTIVE_TEST_ONLY", steps=[dict(step)],
+                dependencies=["empirical"], source_root="TEST_ONLY_E04_SOURCE_ROOT",
+            )
+
+        def _record(self, material):
+            from copy import deepcopy
+            material = deepcopy(material)
+            material.update(
+                service_contract="R06R3_R05_WORLD_SERVICE@1",
+                grade="TEST_ONLY", operative_N9=False, operative_N10W=False,
+                new_issuer=False, actor_executions=0, model_calls=0,
+            )
+            digest = semantic_hash(material)
+            return dict(receipt_hash=digest, material=material)
+
+    class R05P41Service(P41Service):
+        def __init__(self, provider, structural):
+            self.prepared = object()
+            self.readthrough = structural
+            self.provider = provider
+            self.receipts = {}
+
+        def _world_block(self, snapshot):
+            block = super()._world_block(snapshot)
+            block["r05_binding"] = {
+                "source_universe_ref": request.source_universe_ref.as_dict(),
+                "release_ref": request.release_ref.as_dict(),
+                "source_rows_hash": request.source_rows_hash,
+                "learned_receipt_ref": learned.learned_receipt_ref.as_dict(),
+                "m1_disposition_ref": learned.m1_disposition_ref.as_dict(),
+                "m2_release_ref": learned.m2_release_ref.as_dict(),
+                "coordinator_original_ref": (
+                    None if actual.coordinator_original_ref is None
+                    else actual.coordinator_original_ref.as_dict()
+                ),
+                "consumer_result_hash": learned.consumer_result.result_hash,
+                "evidence_ref": (
+                    None if learned.evidence_ref is None
+                    else learned.evidence_ref.as_dict()
+                ),
+            }
+            return block
+
+    receipts = {}
+    for label, snapshot in snapshots.items():
+        provider = R05Provider()
+        structural = R05StructuralService(catalog)
+        service = R05P41Service(provider, structural)
+        receipts[label] = service.progressive(
+            target="Y", conditions=(("X", 1),), snapshot=snapshot
+        )
+    return receipts
+
+
+def select_r05_world_view(request: R05WorldConsumerRequest) -> R05WorldSelectedView:
+    """Invoke the actual P41/N9/N10W/E04 owner from admitted R05 inputs.
+
+    The caller cannot supply the execution receipt. The host-retained
+    `actual_execution` inputs are consumed by the actual pinned P41 service here.
+    A caller callback or canned receipt is refused.
     """
     learned = request.learned_consumer
+    if request.consumer is not None:
+        return _r05_refusal("CALLER_CALLBACK_NOT_ACCEPTED", request)
     if getattr(learned, "state", None) != "LEARNED_CONSUMER_EXACT_SUPPORTED":
         return _r05_refusal("R05_LEARNED_CONSUMER_NOT_EXACT_SUPPORTED", request)
+    if request.actual_execution is None:
+        return _r05_refusal("ACTUAL_EXECUTION_INPUTS_REQUIRED", request)
     if request.currentness != "CURRENT":
         return _r05_refusal("R05_CURRENTNESS_NOT_CURRENT", request)
     fields = tuple(request.fields)
@@ -538,37 +760,41 @@ def select_r05_world_view(request: R05WorldConsumerRequest) -> R05WorldSelectedV
         return _r05_refusal("R05_DUPLICATE_FIELD_BINDING", request, field_ids)
     units = {field.unit for field in fields}
     if len(units) > 1:
-        if not request.relation_transport_authorized or request.relation_transport_ref is None:
-            return _r05_refusal("UNLINKED_UNIT_POOLING_UNAUTHORIZED", request, field_ids)
-        if any(field.relation_ref != request.relation_transport_ref for field in fields):
-            return _r05_refusal("UNAUTHORIZED_TRANSPORT_RELATION", request, field_ids)
-    if any(field.role == "CONTEXT" for field in fields) and request.ff_structural_authority_ref is None:
-        return _r05_refusal("CONTEXT_AS_STRUCTURAL_UNAUTHORIZED", request, field_ids)
+        return _r05_refusal("CROSS_UNIT_LINKED_QUERY_UNAVAILABLE", request, field_ids)
+    ff_problem = _validate_ff_admission(request, fields)
+    if ff_problem is not None:
+        return _r05_refusal(ff_problem, request, field_ids)
     clocks = {field.clock_ref for field in fields if field.clock_ref is not None}
     if len(clocks) > 1:
         if (request.temporal_pair_ref is None or not request.observed_temporal_pair_refs
                 or request.temporal_pair_ref not in request.observed_temporal_pair_refs):
             return _r05_refusal("UNOBSERVED_TEMPORAL_PAIR", request, field_ids)
+    if request.temporal_pair_ref is not None:
+        if request.temporal_pair_ref not in request.observed_temporal_pair_refs:
+            return _r05_refusal("UNOBSERVED_TEMPORAL_PAIR", request, field_ids)
     try:
-        receipt_t0 = request.consumer("T0")
+        receipts = _execute_p41_world(request)
+    except WorldBindingError as exc:
+        return _r05_refusal(exc.code, request, field_ids)
     except Exception as exc:
         return _r05_refusal("R05_ACTUAL_CONSUMER_REFUSED:" + type(exc).__name__, request, field_ids)
+    if request.claimed_receipts is not None:
+        for label, claimed in request.claimed_receipts.items():
+            actual = receipts.get(label)
+            if not isinstance(claimed, Mapping) or not isinstance(actual, Mapping):
+                return _r05_refusal("R05_CLAIMED_RECEIPT_MISSING", request, field_ids)
+            if claimed.get("content_hash") != actual.get("content_hash"):
+                return _r05_refusal("R05_CLAIMED_RECEIPT_MISMATCH", request, field_ids)
     receipt_t0, problem = _validate_r05_receipt(
-        receipt_t0, request, fields, learned, temporal=False
+        receipts.get("T0"), request, fields, learned, temporal=False
     )
     if problem is not None:
         return _r05_refusal(problem, request, field_ids)
     temporal_changed = False
     receipt_t1 = None
     if request.temporal_pair_ref is not None:
-        if request.temporal_pair_ref not in request.observed_temporal_pair_refs:
-            return _r05_refusal("UNOBSERVED_TEMPORAL_PAIR", request, field_ids)
-        try:
-            receipt_t1 = request.consumer("T1")
-        except Exception as exc:
-            return _r05_refusal("R05_ACTUAL_TEMPORAL_CONSUMER_REFUSED:" + type(exc).__name__, request, field_ids)
         receipt_t1, problem = _validate_r05_receipt(
-            receipt_t1, request, fields, learned, temporal=True
+            receipts.get("T1"), request, fields, learned, temporal=True
         )
         if problem is not None:
             return _r05_refusal("R05_TEMPORAL_" + problem, request, field_ids)
@@ -577,11 +803,11 @@ def select_r05_world_view(request: R05WorldConsumerRequest) -> R05WorldSelectedV
         if (clock0.get("valid_at") == clock1.get("valid_at")
                 or clock0.get("published_asof") == clock1.get("published_asof")):
             return _r05_refusal("R05_TEMPORAL_CLOCKS_NOT_DISTINCT", request, field_ids)
-        if receipt_t0.get("content_hash") == receipt_t1.get("content_hash"):
+        if _actual_temporal_payload(receipt_t0) == _actual_temporal_payload(receipt_t1):
             return _r05_refusal("R05_TEMPORAL_PAIR_NOT_CONSUMED", request, field_ids)
         temporal_changed = True
     values = {
-        "schema": "R95_R06R2_R05_WORLD_VIEW@1",
+        "schema": "R95_R06R3_R05_WORLD_VIEW@1",
         "field_values": {field.field_id: field.expected_value for field in fields},
         "learned_receipt_ref": learned.learned_receipt_ref.as_dict(),
         "m1_disposition_ref": learned.m1_disposition_ref.as_dict(),

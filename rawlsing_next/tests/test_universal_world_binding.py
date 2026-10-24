@@ -19,7 +19,7 @@ from rawlsing_next.pre553_universal_empirical_extension import provide_empirical
 from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
 from rawlsing_next.pre553_universal_world_binding import (
     JoinedWorldField, JoinedWorldSelectionRequest,
-    R05WorldConsumerRequest, R05WorldField,
+    R05ActualExecution, R05WorldConsumerRequest, R05WorldField,
     WorldFieldBinding, WorldSelectionRequest,
     select_joined_world_view, select_r05_world_view, select_world_view,
 )
@@ -173,7 +173,7 @@ def test_r06_world_separation_and_authority_refusals():
         replace(request.fields[1], unit="household"),
     )
     refused = select_world_view(replace(request, fields=pooled))
-    assert refused.reason_code == "UNLINKED_UNIT_POOLING_UNAUTHORIZED"
+    assert refused.reason_code == "CROSS_UNIT_LINKED_QUERY_UNAVAILABLE"
 
     contextual = (
         request.fields[0],
@@ -202,13 +202,13 @@ def test_r06_actual_relation_transport_and_observed_temporal_pair_controls():
         replace(request.fields[0], unit="person", relation_ref=transport, clock_ref="T0"),
         replace(request.fields[1], unit="household", relation_ref=transport, clock_ref="T1"),
     )
-    authorized = select_world_view(replace(
+    refused = select_world_view(replace(
         request, fields=fields,
         relation_transport_ref=transport, relation_transport_authorized=True,
         temporal_pair_ref=pair, observed_temporal_pair_refs=(pair,),
     ))
-    assert authorized.state == "SUPPORTED"
-    assert authorized.reason_code == "WORLD_SELECTED_VIEW"
+    assert refused.state == "REFUSED"
+    assert refused.reason_code == "CROSS_UNIT_LINKED_QUERY_UNAVAILABLE"
 
 
 J42_COMMIT = "f53cb0d2bce52640268c844c398bbd8007d28edc"
@@ -320,7 +320,7 @@ def test_r06_actual_j42_separation_controls_refuse_restore(j42_receipts):
     refused = select_joined_world_view(_joined_request(
         j42_receipts, fields=(replace(fields[0], unit="person"),
                               replace(fields[1], unit="household"))))
-    assert refused.reason_code == "UNLINKED_UNIT_POOLING_UNAUTHORIZED"
+    assert refused.reason_code == "CROSS_UNIT_LINKED_QUERY_UNAVAILABLE"
     refused = select_joined_world_view(_joined_request(
         j42_receipts, fields=(replace(fields[0], clock_ref="T0"),
                               replace(fields[1], clock_ref="T1"))))
@@ -565,7 +565,21 @@ def _build_r05_p41_receipts(p41_runtime: str):
     return receipts
 
 
+_PERSISTENT_P41_RUNTIME = None
+_LAST_P41_RUNTIME = None
+
+
+def _persistent_p41_runtime():
+    global _PERSISTENT_P41_RUNTIME
+    if _PERSISTENT_P41_RUNTIME is None:
+        runtime, _base = _materialize_p41_runtime()
+        _PERSISTENT_P41_RUNTIME = str(runtime)
+    return _PERSISTENT_P41_RUNTIME
+
+
 def _run_r05_p41(p41_runtime: str):
+    global _LAST_P41_RUNTIME
+    _LAST_P41_RUNTIME = _persistent_p41_runtime()
     code = (
         "import json,sys;"
         "from rawlsing_next.tests.test_universal_world_binding import "
@@ -582,20 +596,47 @@ def _run_r05_p41(p41_runtime: str):
     return json.loads(proc.stdout)
 
 
-def _r05_request(data, receipts, **changes):
+def _actual_execution_for(data, runtime, *, structural_revision=True, step=None):
+    m01 = data["case"]["m01"]
+    empirical = {
+        "source": {
+            "universe": data["case"]["m01"]["projection"].universes[0],
+            "release_ref": data["release_ref"],
+            "risk_refs": {"R": m01["risk"]},
+            "qrefs": m01["qrefs"],
+            "repo": data["case"]["repository"],
+        },
+        "release_ref": data["release_ref"],
+        "risk_refs": {"R": m01["risk"]},
+        "rows_hash": data["source_rows_hash"],
+        "publication": "2026-03-01",
+    }
+    return R05ActualExecution(
+        runtime, empirical, dict(step or data["step"]), data["learned"],
+        structural_revision=structural_revision,
+        coordinator_original_ref=data["coordinator_original_ref"],
+    )
+
+
+def _r05_request(data, receipts=None, *, actual_execution=None, **changes):
     pair = ExactRef("R06R2_SYNTHETIC_TEMPORAL_PAIR", "urn:test:r06r2:pair", "a" * 64)
+    runtime = _LAST_P41_RUNTIME
+    if actual_execution is None and runtime is not None:
+        actual_execution = _actual_execution_for(data, runtime)
     values = dict(
         learned_consumer=data["learned"],
         fields=(
             R05WorldField("training_access", True, "modeled policy eligibility boolean", temporal_expected_value=False),
             R05WorldField("civil_sanction", False, "modeled policy eligibility boolean"),
         ),
-        consumer=lambda label: receipts[label],
+        consumer=None,
         source_universe_ref=data["source_universe_ref"],
         release_ref=data["release_ref"],
         source_rows_hash=data["source_rows_hash"],
         temporal_pair_ref=pair,
         observed_temporal_pair_refs=(pair,),
+        actual_execution=actual_execution,
+        claimed_receipts=receipts,
     )
     values.update(changes)
     return R05WorldConsumerRequest(**values)
@@ -639,7 +680,7 @@ def test_r06r2_actual_r05_world_separation_refusals_restore(p41_runtime):
     base = select_r05_world_view(_r05_request(data, receipts))
     assert base.state == "R05_WORLD_SELECTED_VIEW"
     refused = select_r05_world_view(_r05_request(data, receipts, source_rows_hash="f" * 64))
-    assert refused.reason_code == "R05_SOURCE_ROWS_MISMATCH"
+    assert refused.reason_code == "R05_ACTUAL_EMPIRICAL_ROWS_MISMATCH"
     refused = select_r05_world_view(_r05_request(
         data, receipts,
         fields=(R05WorldField("training_access", True, "modeled policy eligibility boolean", temporal_expected_value=False),),
@@ -649,12 +690,12 @@ def test_r06r2_actual_r05_world_separation_refusals_restore(p41_runtime):
     refused = select_r05_world_view(_r05_request(
         data, receipts, fields=(fields[0], replace(fields[1], role="CONTEXT")),
     ))
-    assert refused.reason_code == "CONTEXT_AS_STRUCTURAL_UNAUTHORIZED"
+    assert refused.reason_code == "FF_STRUCTURAL_ADMISSION_REQUIRED"
     refused = select_r05_world_view(_r05_request(
         data, receipts,
         fields=(replace(fields[0], unit="person"), replace(fields[1], unit="household")),
     ))
-    assert refused.reason_code == "UNLINKED_UNIT_POOLING_UNAUTHORIZED"
+    assert refused.reason_code == "CROSS_UNIT_LINKED_QUERY_UNAVAILABLE"
     refused = select_r05_world_view(_r05_request(
         data, receipts, observed_temporal_pair_refs=(),
     ))
@@ -663,8 +704,10 @@ def test_r06r2_actual_r05_world_separation_refusals_restore(p41_runtime):
     assert refused.reason_code == "R05_CURRENTNESS_NOT_CURRENT"
     tampered = json.loads(json.dumps(receipts))
     tampered["T1"]["structural"]["routes"]["training"] = "ELIGIBLE"
+    tampered["T1"].pop("content_hash", None)
+    tampered["T1"]["content_hash"] = semantic_hash(tampered["T1"])
     refused = select_r05_world_view(_r05_request(data, tampered))
-    assert refused.reason_code == "R05_TEMPORAL_R05_CONSUMER_RECEIPT_HASH_MISMATCH"
+    assert refused.reason_code == "R05_CLAIMED_RECEIPT_MISMATCH"
     wrong_learned = replace(
         data["learned"],
         learned_receipt_ref=ExactRef(
@@ -673,8 +716,11 @@ def test_r06r2_actual_r05_world_separation_refusals_restore(p41_runtime):
         ),
     )
     changed = dict(data, learned=wrong_learned)
-    refused = select_r05_world_view(_r05_request(changed, receipts))
-    assert refused.reason_code == "R05_LEARNED_RECEIPT_MISMATCH"
+    original_execution = _actual_execution_for(data, _LAST_P41_RUNTIME)
+    refused = select_r05_world_view(_r05_request(
+        changed, receipts, actual_execution=original_execution,
+    ))
+    assert refused.reason_code == "R05_LEARNED_ORIGINAL_MISMATCH"
     evidence_tampered = json.loads(json.dumps(receipts))
     evidence_tampered["T0"]["n9_world"]["r05_binding"]["evidence_ref"] = ExactRef(
         "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
@@ -683,7 +729,7 @@ def test_r06r2_actual_r05_world_separation_refusals_restore(p41_runtime):
     evidence_tampered["T0"].pop("content_hash", None)
     evidence_tampered["T0"]["content_hash"] = semantic_hash(evidence_tampered["T0"])
     refused = select_r05_world_view(_r05_request(data, evidence_tampered))
-    assert refused.reason_code == "R05_EVIDENCE_REF_MISMATCH"
+    assert refused.reason_code == "R05_CLAIMED_RECEIPT_MISMATCH"
     fact_tampered = json.loads(json.dumps(receipts))
     fact_tampered["T0"]["n10e_steps"][0]["producer_fact_ref"] = ExactRef(
         "EmpiricalFact@1.0.0",
@@ -692,6 +738,121 @@ def test_r06r2_actual_r05_world_separation_refusals_restore(p41_runtime):
     fact_tampered["T0"].pop("content_hash", None)
     fact_tampered["T0"]["content_hash"] = semantic_hash(fact_tampered["T0"])
     refused = select_r05_world_view(_r05_request(data, fact_tampered))
-    assert refused.reason_code == "R05_N10E_FACT_BINDING_MISMATCH"
+    assert refused.reason_code == "R05_CLAIMED_RECEIPT_MISMATCH"
     restored = select_r05_world_view(_r05_request(data, receipts))
+    assert restored.view_hash == base.view_hash
+
+
+def _run_actual_world_view(p41_runtime):
+    code = (
+        "import json,sys;"
+        "from rawlsing_next.tests.test_universal_world_binding import "
+        "_build_r05_learned_inprocess,_actual_execution_for,_r05_request;"
+        "from rawlsing_next.pre553_universal_world_binding import select_r05_world_view;"
+        "data=_build_r05_learned_inprocess();"
+        "execution=_actual_execution_for(data,sys.argv[1]);"
+        "view=select_r05_world_view(_r05_request(data,actual_execution=execution));"
+        "print(json.dumps(view.material(),sort_keys=True))"
+    )
+    env = dict(os.environ, PYTHONHASHSEED="0", PYTHONDONTWRITEBYTECODE="1")
+    env["PYTHONPATH"] = str(REPO_ROOT) + os.pathsep + env.get("PYTHONPATH", "")
+    proc = subprocess.run(
+        [sys.executable, "-c", code, p41_runtime], cwd=str(REPO_ROOT),
+        env=env, capture_output=True, text=True, timeout=900,
+    )
+    assert proc.returncode == 0, proc.stdout[-3000:] + proc.stderr[-3000:]
+    return json.loads(proc.stdout)
+
+
+def test_r06r3_actual_wrapper_cold_fresh_process(p41_runtime):
+    _run_r05_p41(p41_runtime)
+    data = _build_r05_learned_inprocess()
+    execution = _actual_execution_for(data, _persistent_p41_runtime())
+    view = select_r05_world_view(_r05_request(data, actual_execution=execution))
+    assert view.state == "R05_WORLD_SELECTED_VIEW"
+    cold = _run_actual_world_view(_persistent_p41_runtime())
+    assert cold["state"] == view.state
+    assert cold["view_hash"] == view.view_hash
+    assert cold["consumer_values_read"]["t0_routes"] == (
+        view.consumer_values_read["t0_routes"]
+    )
+
+
+def test_r06r3_no_actual_temporal_change_refuses(p41_runtime):
+    _run_r05_p41(p41_runtime)
+    data = _build_r05_learned_inprocess()
+    execution = _actual_execution_for(
+        data, _persistent_p41_runtime(), structural_revision=False,
+    )
+    fields = (
+        R05WorldField(
+            "training_access", True, "modeled policy eligibility boolean",
+            temporal_expected_value=True,
+        ),
+        R05WorldField("civil_sanction", False, "modeled policy eligibility boolean"),
+    )
+    view = select_r05_world_view(_r05_request(
+        data, fields=fields, actual_execution=execution,
+    ))
+    assert view.state == "REFUSED"
+    assert view.reason_code == "R05_TEMPORAL_PAIR_NOT_CONSUMED"
+
+
+def test_r06r3_actual_transport_and_context_refusals(p41_runtime):
+    _run_r05_p41(p41_runtime)
+    data = _build_r05_learned_inprocess()
+    execution = _actual_execution_for(data, _persistent_p41_runtime())
+    fields = _r05_request(data).fields
+    relation = ExactRef(
+        "R06R3_TRANSPORT_RELATION", "urn:test:r06r3:transport", "e" * 64,
+    )
+    linked_claim = (
+        replace(fields[0], unit="person", relation_ref=relation),
+        replace(fields[1], unit="household", relation_ref=relation),
+    )
+    refused = select_r05_world_view(_r05_request(
+        data, fields=linked_claim, actual_execution=execution,
+        relation_transport_authorized=True, relation_transport_ref=relation,
+    ))
+    assert refused.reason_code == "CROSS_UNIT_LINKED_QUERY_UNAVAILABLE"
+    promoted = (fields[0], replace(fields[1], role="CONTEXT"))
+    bogus_ff = ExactRef(
+        "R06R3_BOGUS_FF_AUTHORITY", "urn:test:r06r3:bogus-ff", "f" * 64,
+    )
+    refused = select_r05_world_view(_r05_request(
+        data, fields=promoted, actual_execution=execution,
+        ff_structural_authority_ref=bogus_ff,
+    ))
+    assert refused.reason_code == "FF_STRUCTURAL_ADMISSION_REQUIRED"
+    calls = []
+    refused = select_r05_world_view(_r05_request(
+        data, actual_execution=execution,
+        consumer=lambda label: calls.append(label) or {},
+    ))
+    assert refused.reason_code == "CALLER_CALLBACK_NOT_ACCEPTED"
+    assert calls == []
+
+
+def test_r06r3_actual_step_severance_refuses_restore(p41_runtime):
+    _run_r05_p41(p41_runtime)
+    data = _build_r05_learned_inprocess()
+    execution = _actual_execution_for(data, _persistent_p41_runtime())
+    base = select_r05_world_view(_r05_request(data, actual_execution=execution))
+    assert base.state == "R05_WORLD_SELECTED_VIEW"
+    foreign = ExactRef(
+        "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "urn:test:r06r3:foreign-evidence", "9" * 64,
+    )
+    bad_step = dict(data["step"])
+    bad_step["evidence_ref"] = foreign.as_dict()
+    bad = _actual_execution_for(
+        data, _persistent_p41_runtime(), step=bad_step,
+    )
+    refused = select_r05_world_view(_r05_request(data, actual_execution=bad))
+    assert refused.state == "REFUSED"
+    assert refused.reason_code in {
+        "R05_N10E_EVIDENCE_BINDING_MISMATCH",
+        "R05_ACTUAL_STEP_CONSUMER_MISMATCH",
+    }
+    restored = select_r05_world_view(_r05_request(data, actual_execution=execution))
     assert restored.view_hash == base.view_hash
