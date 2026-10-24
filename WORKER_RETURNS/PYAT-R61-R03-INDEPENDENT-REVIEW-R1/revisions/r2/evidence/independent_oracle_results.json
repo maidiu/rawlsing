@@ -1,0 +1,57 @@
+{
+  "schema": "PYAT_R61_R03V_R2_INDEPENDENT_ORACLE_RESULTS@1",
+  "candidate": "2d32d68e2a5acb9cac136c313e82068dfb8e6ba1",
+  "review_branch": "agent/opencode-pyat-r61-r03v-r2-independent-review-r1",
+  "previous_oracle": "efb1822552bdb017adedc8617e268f9ad5719de8/WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/EXPECTATIONS.md",
+  "verdict": "REVISE",
+  "author_suite_replay": {
+    "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_workload.py rawlsing_next/tests/test_universal_grammar.py rawlsing_next/tests/test_universal_source_projection.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_batch_runner.py rawlsing_next/tests/test_pre553_carrier_execution.py rawlsing_next/tests/test_pre553_route_b_production.py -q --junitxml=.../replay/author_suite_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 120,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/author_suite.log",
+    "junit": "replay/author_suite_junit.xml"
+  },
+  "reviewer_successor_probes": {
+    "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r03v_r2_hostile.py -q --junitxml=.../replay/hostile_probes_junit.xml -o addopts=''",
+    "exit": 1,
+    "passed": 1,
+    "failed": 5,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/hostile_probes.log",
+    "junit": "replay/hostile_probes_junit.xml",
+    "failures": [
+      "H2a self-consistent ledger stripping accepted; restore only checks ledger_hash and field presence",
+      "H2b removing a native receipt's empirical fact refs leaves native_receipt_anti_join no_drop_ok true",
+      "H3 governed result ledger does not expose expected native job identity; expected candidate IDs can be stripped with a recomputed ledger hash and still restore",
+      "H4 bind_recursive_workload accepts a snapshot with root source releases removed and reports no_drop_ok true",
+      "H5 held/unknown operations preserve reason strings but normalize result_state to NOT_ELIGIBLE"
+    ],
+    "passes": [
+      "H1 governed frontier accepts bundle/inventory/policy/frontier; joint/conditional/co-travel/fork classes present; anti_join true"
+    ]
+  },
+  "retained_positive_evidence": {
+    "author_governed_frontier": "150 eligible, 147 supported, 3 unsupported, 150 receipts, 330 facts, candidate/operation anti-joins true; 24 valid-empty ledger rows; joint/conditional classes present",
+    "pending_budget": "pending operations explicit, not executed",
+    "d3_recursive_baseline": "bind_recursive_workload binds exact D3 expected operations to receipts/facts, root/parent contrasts, minority; missing receipt/plan/handoff mutations are refused",
+    "u43_exact": "31e84f49d624f5524906e9e7839d2873106f8249",
+    "scope": "four R03 paths; R01/R02/native owners unchanged",
+    "value_fault": "prior R1 unary P1 retained; R2 author governed value mutation/restore test passes inside the 120 suite"
+  },
+  "f1_f6_matrix": {
+    "F1_positive": "PASS for governed frontier/conditional/joint/D3/value fault at the tested fixture",
+    "F2_successor_attacks": "FAIL: fact/expected-job/ledger stripping and native fact removal are not reconciled",
+    "F3_owner_boundary": "PARTIAL: governed owner path is real; cold ledger can be self-consistently forged",
+    "F4_accounting": "PARTIAL: supported/unsupported/pending/valid-empty present; held/unknown normalized state collapsed",
+    "F5_restore": "FAIL at the exact receipt/fact/expected-job cold ledger assertion",
+    "F6_same_consumer": "PARTIAL: D3 baseline and receipt/plan/handoff severance pass; root release severance accepted"
+  },
+  "unknowns_and_boundaries": [
+    "Sourcefree TEST_ONLY local trusted host; no source respondent access.",
+    "R04 joined custody/durability, R05 lifecycle/grades, F5-F8 global, original35/1890 N11, N12/Sorok, protected CI/production remain NOT_REACHED."
+  ]
+}

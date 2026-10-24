@@ -1,0 +1,59 @@
+{
+  "schema": "PYAT_R61_R03V_R2_FAILURE_EVIDENCE@1",
+  "candidate": "2d32d68e2a5acb9cac136c313e82068dfb8e6ba1",
+  "author_suite": "120 passed, 0 failed/error/skip",
+  "governed_positive": {
+    "H1_contract": "PASS: compile_governed_frontier accepts bundle/inventory/policy/frontier; joint/conditional/co-travel/fork classes present; anti_join true",
+    "unary_value_fault": "prior R1 P1 retained; current R2 author governed value-fault test passes in the 120 suite"
+  },
+  "remaining_failures": [
+    {
+      "id": "H2a_self_consistent_ledger_stripping",
+      "expected": "restore_governed_frontier_ledger refuses a ledger whose fact/receipt/native-fact/native-receipt/expected-candidate rows are stripped",
+      "actual": "accepted; only ledger_hash is checked",
+      "impact": "a self-consistent forged cold ledger can erase native receipt/fact evidence while anti_join remains true"
+    },
+    {
+      "id": "H2b_native_receipt_fact_removal",
+      "expected": "native_receipt_anti_join no_drop_ok false after removing one receipt's empirical_fact_refs",
+      "actual": "no_drop_ok remains true; candidate identity/rule counts do not include empirical fact refs",
+      "impact": "fact identity/content/multiplicity is not reconciled by the same native anti-join"
+    },
+    {
+      "id": "H3_expected_native_job_identity",
+      "expected": "governed result ledger exposes and reconciles expected native job identities",
+      "actual": "no expected_jobs or equivalent query/predicate job identity in the result ledger; operation rows expose expected candidate IDs but a self-consistent forged ledger can strip them and still restore",
+      "impact": "expected job identity does not reach the same downstream/cold assertion"
+    },
+    {
+      "id": "H4_recursive_root_release_severance",
+      "expected": "bind_recursive_workload refuses/changes when the retained root source release set is severed",
+      "actual": "a snapshot wrapper with root source_release_refs=[] yields binding.anti_join.no_drop_ok true",
+      "impact": "root lineage severance is not consumed by the R03 recursive binding",
+      "positive_partial": "missing declared receipt, missing preimage receipt, missing handoff and altered expected plan are refused by bind_recursive_workload; baseline binding passes"
+    },
+    {
+      "id": "H5_held_unknown_state_collapse",
+      "expected": "held and unknown frontier operations retain distinct normalized result states",
+      "actual": "operation_ledger reason preserves FRONTIER_ELIGIBILITY_HELD/UNKNOWN, but result_state is NOT_ELIGIBLE for both; observed-zero/error not independently demonstrated",
+      "impact": "a consumer reading result_state cannot separate held/unknown from other non-eligible states"
+    }
+  ],
+  "retained_positive_evidence": [
+    "U43 blob 31e84f49d624f5524906e9e7839d2873106f8249 unchanged",
+    "four-path candidate scope and R01/R02/native owners unchanged",
+    "author 120 tests pass under reviewer harness",
+    "governed frontier includes DIST/CONDITIONAL/JOINT/CO_TRAVEL/INTERACTION/FORK and real U43/C11/Batch/I05 execution",
+    "supported 147 / unsupported 3 / valid-empty 24 / 150 receipts / 330 facts on the author fixture",
+    "pending budget operations explicitly retained and not executed",
+    "receipt/plan/handoff severance refuses in bind_recursive_workload; baseline binds exact D3 receipts/facts with root/parent contrasts and minority"
+  ],
+  "not_reached": [
+    "R04 joined durable custody",
+    "R05 lifecycle/grades",
+    "F5-F8 global",
+    "original35/1890 N11",
+    "N12/Sorok",
+    "protected CI/production"
+  ]
+}
