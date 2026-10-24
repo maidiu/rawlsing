@@ -1,0 +1,11 @@
+# Pyat R89 — R03 repaired author returned; successor R03V R2 issued
+
+The user reports R03 finished. Direct remote shows author branch `agent/opencode-pyat-r61-r03-total-native-workload-r1` at `2d32d68e2a5acb9cac136c313e82068dfb8e6ba1`, from reviewed R01 base. Its author reports `120 passed`, real C11/I03/I05/Batch sourcefree finite 150 operations (147 supported, 3 explicit unsupported), native receipts and fact refs, D3 parent/root contrast, cold restore and input-value fault/restore. This is **author CANDIDATE** not independent acceptance.
+
+An existing distinct reviewer R03V R1 branch `efb1822552bdb017adedc8617e268f9ad5719de8` reviewed an **earlier** code `47bb3b7f13a4c9d720a9be23a1d17e50a42e69c2`/target `5f3cee7cb7a9b53af266b05a4c8db01a53a13add`, verdict `REVISE` with 5 real required behaviours absent. The latest author code is descended by 5 additional commits and materially changed; old verdict neither applies automatically nor qualifies new candidate.
+
+Existing R61 independent native qualification requirement triggers exactly one successor R03V R2 review, not another architecture court. **Published** in `WORKER_COMMISSIONS/PYAT-R61-R03-TOTAL-NATIVE-WORKLOAD-R1/R03V_R2/00_COMMISSION.md` at `7d18e0a467db28e37079340f596ead83ef9dc20a`, with pre-created isolated reviewer branch `agent/opencode-pyat-r61-r03v-r2-independent-review-r1` at the exact repaired candidate. Reuse same distinct native reviewer, DeepSeek V4.1-Flash MAX. **No reviewer actually launched by this Browser.** Focus only previous failures: complete finite grammar, anti-join against real native job/receipt/fact, D3 native composition, typed states, retained physical-value sensitivity. No gratuitous hostile-review expansion.
+
+Codex HQ is PRIMARY, resumed at R88. Browser remains user-appointed SECONDARY and does not displace or edit primary thread. No source/semantic issuance, F5/F6/F7 FF, R09 protected host, R04.joined, R05/R06 code expansion, CI/prod, original35/1,890 N11, N12/Sorok or J52/W52 change. On primary return, consume this checkpoint and exact verified R03 reviewer return, no duplicate work.
+
+**Next:** user launches R03V R2 existing-reviewer prompt; then HQ intakes exact verdict. Preserve actual end-person objective without making a sourcefree test a source-issued world.
