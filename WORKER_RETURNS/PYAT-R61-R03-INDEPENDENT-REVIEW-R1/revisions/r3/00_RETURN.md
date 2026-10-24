@@ -83,7 +83,8 @@ repair, self-adoption, new worker, cryptographic issuer or production merge.
 
 `EXPECTATIONS.md`, `00_RETURN.md`, `defects_and_limits.md`,
 `independent_probes/`, `replay/` JUnit/logs, `evidence/`, `proof_witness.json`,
-`manifest.json`, `RESUME.md`. The reviewer branch is pushed non-force; direct
-remote readback of the evidence commit and final tip is recorded in
-`evidence/remote_readback.txt` and reported to the coordinator. The candidate
-branch remains at `5b28d09602a35d4c5d5f060f450956c612ab3580`.
+`manifest.json`, `RESUME.md`. The reviewer branch was pushed non-force. Evidence commit
+`781bdfcc1b7bc69d6406c1c3061859298bee7d02` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also verified by direct remote readback and reported to the coordinator. The
+candidate branch remained at `5b28d09602a35d4c5d5f060f450956c612ab3580`.
