@@ -1,0 +1,32 @@
+...FF                                                                    [100%]
+=================================== FAILURES ===================================
+___________ test_H4_incomplete_live_result_cannot_freeze_checkpoint ____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-486/test_H4_incomplete_live_result0')
+
+    def test_H4_incomplete_live_result_cannot_freeze_checkpoint(tmp_path):
+        bundle, compilation, result = _governed(tmp_path)
+        assert result.freeze_restore_checkpoint()
+        incomplete = replace(result, operation_ledger=())
+>       with pytest.raises(Exception):
+E       Failed: DID NOT RAISE <class 'Exception'>
+
+WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/revisions/r4/independent_probes/test_r03v_r4_pin.py:135: Failed
+____________ test_H4b_duplicate_fact_refs_cannot_freeze_checkpoint _____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-486/test_H4b_duplicate_fact_refs_c0')
+
+    def test_H4b_duplicate_fact_refs_cannot_freeze_checkpoint(tmp_path):
+        bundle, compilation, result = _governed(tmp_path)
+        assert result.freeze_restore_checkpoint()
+        duplicated_refs = replace(
+            result, fact_refs=result.fact_refs + (result.fact_refs[0],)
+        )
+>       with pytest.raises(Exception):
+E       Failed: DID NOT RAISE <class 'Exception'>
+
+WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/revisions/r4/independent_probes/test_r03v_r4_pin.py:150: Failed
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/revisions/r4/independent_probes/test_r03v_r4_pin.py::test_H4_incomplete_live_result_cannot_freeze_checkpoint
+FAILED WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/revisions/r4/independent_probes/test_r03v_r4_pin.py::test_H4b_duplicate_fact_refs_cannot_freeze_checkpoint
+2 failed, 3 passed in 39.26s

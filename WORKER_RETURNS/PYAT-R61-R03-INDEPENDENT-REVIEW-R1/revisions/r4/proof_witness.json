@@ -1,0 +1,81 @@
+{
+  "schema": "PYAT_R61_R03V_R4_INDEPENDENT_PROOF_WITNESS@1",
+  "verdict": "REVISE",
+  "candidate_startup": "8c506f8f239204b004e4b677572898c8dba06811",
+  "author_branch": "agent/opencode-pyat-r61-r03-total-native-workload-r1",
+  "review_branch": "agent/opencode-pyat-r61-r03v-r4-independent-review-r1",
+  "commission": "3e7d0df8a9c3d6dd37949b1e9abc490afcef739a",
+  "r61av_decision": "7a36e8091eda463c736f4ca0528d47f061b26cce",
+  "previous_review": "7d8396329ed8ac2df86c82bb46e785a0dc487cde",
+  "expectations_freeze_commit": "483335fe6",
+  "candidate_code_blobs": {
+    "rawlsing_next/pre553_issued_workload.py": "31e84f49d624f5524906e9e7839d2873106f8249",
+    "rawlsing_next/pre553_native_workload_binding.py": "dac73e484f8619088f5c6701b2b6991c07540f3b",
+    "rawlsing_next/pre553_universal_workload.py": "8e780b2430b8a6a930f45329596cfdec2f1aa46c",
+    "rawlsing_next/tests/test_universal_workload.py": "9adbb081122c6f097f42e01203b3c835cbf7b17b"
+  },
+  "author_manifest_reproduction": {
+    "entries_checked": 7,
+    "entries_matched": 7,
+    "manifest_excludes_itself": true,
+    "u43_exact": true
+  },
+  "commands": [
+    {
+      "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_workload.py -q --junitxml=.../replay/author_suite_junit.xml -o addopts=''",
+      "exit": 0,
+      "result": "15 passed, 0 failed/error/skip"
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_grammar.py -q --junitxml=.../replay/r01_suite_junit.xml -o addopts=''",
+      "exit": 0,
+      "result": "32 passed, 0 failed/error/skip"
+    },
+    {
+      "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r03v_r4_pin.py -q --junitxml=.../replay/hostile_probes_junit.xml -o addopts=''",
+      "exit": 1,
+      "result": "3 passed fixed-pin probes; 2 failed capture-boundary probes"
+    }
+  ],
+  "fixed_pin_passes": [
+    "genuine original pin restores; missing and wrong pin refuse",
+    "prior fact deletion, fact duplication and expected job substitution refuse against original pin",
+    "content mutation retaining refs refuses",
+    "genuine restore between faults passes"
+  ],
+  "remaining_failures": [
+    "freeze_restore_checkpoint accepts empty operation_ledger while flags true",
+    "freeze_restore_checkpoint accepts duplicated fact_refs without multiplicity validation"
+  ],
+  "retained_positives": [
+    "author 15 and retained R01 32 pass",
+    "governed joint/conditional/D3/minority/pending/source-value and HELD/UNKNOWN positives",
+    "fresh-process genuine restore/no native rerun",
+    "U43 exact and four-path scope; owners unchanged"
+  ],
+  "f1_f6_matrix": {
+    "F1": "PASS",
+    "F2": "PASS for fixed original-pin cold submission",
+    "F3": "PARTIAL (capture does not run shared structural/closure/multiplicity validation)",
+    "F4": "PASS retained",
+    "F5": "PARTIAL (cold submission pinned; incomplete/forged result can acquire checkpoint)",
+    "F6": "PASS retained"
+  },
+  "environment": {
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "pyreadstat": "1.3.2",
+    "hardware_model_route": "existing OpenCode Go DeepSeek V4.1-Flash MAX/Global"
+  },
+  "remote_verification": "evidence/remote_readback.txt (direct git ls-remote of the pushed reviewer branch); final tip reported to the coordinator",
+  "trust_boundary": "sourcefree TEST_ONLY local trusted host; both pin and candidate replaced by a different trusted host is R61AF excluded",
+  "not_reached": [
+    "R04 joined custody/durability",
+    "R05 lifecycle/grades",
+    "F5-F8 global",
+    "original35/1890 N11",
+    "N12/Sorok",
+    "protected CI/production",
+    "J52/W52"
+  ]
+}

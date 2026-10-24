@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="5" time="39.263" timestamp="2026-10-24T02:12:33.351219-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R61-R03-INDEPENDENT-REVIEW-R1.revisions.r4.independent_probes.test_r03v_r4_pin" name="test_H1_genuine_original_pin_restore_and_missing_wrong_pin_refuse" time="8.938" /><testcase classname="WORKER_RETURNS.PYAT-R61-R03-INDEPENDENT-REVIEW-R1.revisions.r4.independent_probes.test_r03v_r4_pin" name="test_H2_prior_fact_job_probes_refuse_against_original_pin" time="10.351" /><testcase classname="WORKER_RETURNS.PYAT-R61-R03-INDEPENDENT-REVIEW-R1.revisions.r4.independent_probes.test_r03v_r4_pin" name="test_H3_content_mutation_retaining_refs_refuses_with_original_pin" time="6.925" /><testcase classname="WORKER_RETURNS.PYAT-R61-R03-INDEPENDENT-REVIEW-R1.revisions.r4.independent_probes.test_r03v_r4_pin" name="test_H4_incomplete_live_result_cannot_freeze_checkpoint" time="5.802"><failure message="Failed: DID NOT RAISE &lt;class 'Exception'&gt;">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-486/test_H4_incomplete_live_result0')
+
+    def test_H4_incomplete_live_result_cannot_freeze_checkpoint(tmp_path):
+        bundle, compilation, result = _governed(tmp_path)
+        assert result.freeze_restore_checkpoint()
+        incomplete = replace(result, operation_ledger=())
+&gt;       with pytest.raises(Exception):
+E       Failed: DID NOT RAISE &lt;class 'Exception'&gt;
+
+WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/revisions/r4/independent_probes/test_r03v_r4_pin.py:135: Failed</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R61-R03-INDEPENDENT-REVIEW-R1.revisions.r4.independent_probes.test_r03v_r4_pin" name="test_H4b_duplicate_fact_refs_cannot_freeze_checkpoint" time="6.410"><failure message="Failed: DID NOT RAISE &lt;class 'Exception'&gt;">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-486/test_H4b_duplicate_fact_refs_c0')
+
+    def test_H4b_duplicate_fact_refs_cannot_freeze_checkpoint(tmp_path):
+        bundle, compilation, result = _governed(tmp_path)
+        assert result.freeze_restore_checkpoint()
+        duplicated_refs = replace(
+            result, fact_refs=result.fact_refs + (result.fact_refs[0],)
+        )
+&gt;       with pytest.raises(Exception):
+E       Failed: DID NOT RAISE &lt;class 'Exception'&gt;
+
+WORKER_RETURNS/PYAT-R61-R03-INDEPENDENT-REVIEW-R1/revisions/r4/independent_probes/test_r03v_r4_pin.py:150: Failed</failure></testcase></testsuite></testsuites>
