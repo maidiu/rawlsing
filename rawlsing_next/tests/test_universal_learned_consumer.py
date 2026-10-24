@@ -275,3 +275,78 @@ def test_learned_current_selection_requirement_is_explicit(r05_case):
     )
     assert refused.state == "REFUSED"
     assert refused.reason_code == "LEARNED_CURRENT_SELECTION_ABSENT"
+
+
+def test_typed_status_axes_and_z16_survive_consumer(r05_case):
+    case = r05_case
+    expectations = (
+        ("ZERO_SUPPORT", 0, "ZERO_SUPPORT", False),
+        ("VALID_EMPTY", 0, "VALID_EMPTY", False),
+        ("UNRESOLVED", 16, "UNKNOWN", True),
+    )
+    for raw_state, denominator, result_state, z_unresolved in expectations:
+        mutated = replace(
+            case["composition"],
+            analytical_state=raw_state,
+            producer_fact_state=raw_state,
+            possibility_slice_evidence_or_null=None,
+            raw_denominator_support=denominator,
+        )
+        result = i4.evaluate_learned_world_consumer(
+            case["learned"],
+            composition=mutated,
+            consumer_query=case["consumer_query"],
+            model_rule=case["model_rule"],
+            producer_query_ref=case["producer_query"].ref,
+            producer_predicate_ref=case["predicate"].ref,
+        )
+        assert result.state != "REFUSED"
+        assert result.result_state == result_state
+        assert result.denominator == denominator
+        assert result.z_unresolved is z_unresolved
+        assert result.consumer_values_read["result_state"] == result_state
+        assert result.consumer_values_read["denominator"] == denominator
+
+
+def test_product_graph_and_e41_extension_reach_same_consumer(r05_case):
+    case = r05_case
+    extension = provide_empirical_possibility_slice_ext(**case["context"])
+    graph = i4.NativeProductGraph(
+        compositions=(case["composition"],),
+        extension_result=extension,
+    )
+    result = i4.evaluate_learned_world_consumer(
+        case["learned"],
+        composition=case["composition"],
+        consumer_query=case["consumer_query"],
+        model_rule=case["model_rule"],
+        producer_query_ref=case["producer_query"].ref,
+        producer_predicate_ref=case["predicate"].ref,
+        product_graph=graph,
+    )
+    assert result.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    values = result.consumer_values_read
+    assert values["joint_component_count"] >= 1
+    assert "discovery_receipt_refs" in values
+    assert "recursive_handoff_refs" in values
+    assert "producer_route" in values
+    assert values["extension_route"] == extension.producer_route
+    assert result.consumer_result.result_hash == (
+        case["composition"].consumer_result_or_null.result_hash
+    )
+
+    bad_graph = i4.NativeProductGraph(
+        compositions=(case["composition"],),
+        extension_result=object(),
+    )
+    refused = i4.evaluate_learned_world_consumer(
+        case["learned"],
+        composition=case["composition"],
+        consumer_query=case["consumer_query"],
+        model_rule=case["model_rule"],
+        producer_query_ref=case["producer_query"].ref,
+        producer_predicate_ref=case["predicate"].ref,
+        product_graph=bad_graph,
+    )
+    assert refused.state == "REFUSED"
+    assert refused.reason_code == "E41_EXTENSION_GRAPH_MISMATCH"
