@@ -67,7 +67,8 @@ minority/pending/source-value and HELD/UNKNOWN positives.
 
 `EXPECTATIONS.md`, `00_RETURN.md`, `defects_and_limits.md`,
 `independent_probes/`, `replay/` JUnit/logs, `evidence/`, `proof_witness.json`,
-`manifest.json`, `RESUME.md`. The reviewer branch is pushed non-force; direct
-remote readback of the evidence commit and final tip is recorded in
-`evidence/remote_readback.txt` and reported to the coordinator. The candidate
-branch remains at `c912497b25411ebbd3d796db139f32f5bebb6c4c`.
+`manifest.json`, `RESUME.md`. The reviewer branch was pushed non-force. Evidence commit
+`88abab210d92843bdc87d5884bf069580227d576` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also verified by direct remote readback and reported to the coordinator. The
+candidate branch remained at `c912497b25411ebbd3d796db139f32f5bebb6c4c`.
