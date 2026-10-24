@@ -9,7 +9,7 @@ install()
 
 from c8_readonly_consumer import C8ReadOnlyConsumer  # noqa: E402
 from candidate import valid  # noqa: E402
-from s39.sources import validate_source  # noqa: E402
+from s39.sources import CONTEXT_KINDS, validate_source  # noqa: E402
 
 CANONICAL_PREFIX = "TEST_ONLY_S41_HIST_"
 
@@ -115,9 +115,50 @@ def validate_history_source(
     }
 
 
+def validate_generation_readset(
+    generation: Mapping[str, Any],
+    history: Mapping[str, Any],
+    source_records: list[Mapping[str, Any]] | None = None,
+) -> None:
+    """Require the actual consumed generation sources to include canonical history."""
+    refs = generation.get("source_refs")
+    if not isinstance(refs, list) or not refs:
+        raise S41HistoryRefusal("S41_GENERATION_SOURCE_REFS_MISSING")
+    if any(not isinstance(ref, str) or not ref for ref in refs):
+        raise S41HistoryRefusal("S41_GENERATION_SOURCE_REF_INVALID")
+    if len(set(refs)) != len(refs):
+        raise S41HistoryRefusal("S41_GENERATION_SOURCE_REF_DUPLICATE")
+    canonical = history.get("source_ref")
+    if not canonical or canonical not in refs:
+        raise S41HistoryRefusal("S41_GENERATION_CANONICAL_HISTORY_ABSENT")
+    if source_records is not None:
+        allowed = {
+            record.get("source_ref")
+            for record in source_records
+            if record.get("source_class") in CONTEXT_KINDS
+        }
+        if canonical not in allowed:
+            raise S41HistoryRefusal("S41_GENERATION_CANONICAL_HISTORY_NOT_INPUT")
+        if not set(refs).issubset(allowed):
+            raise S41HistoryRefusal("S41_GENERATION_UNRECOGNIZED_SOURCE_REF")
+    reasons = generation.get("reasons") or []
+    history_reasons = [
+        row for row in reasons if row.get("source_ref") == canonical
+    ]
+    if not history_reasons:
+        raise S41HistoryRefusal("S41_GENERATION_HISTORY_REASON_ABSENT")
+    if any(
+        row.get("source_hash") != history.get("source_hash")
+        or row.get("predicate") != history.get("predicate")
+        for row in history_reasons
+    ):
+        raise S41HistoryRefusal("S41_GENERATION_HISTORY_REASON_MISMATCH")
+
+
 __all__ = [
     "CANONICAL_PREFIX",
     "S41HistoryRefusal",
     "canonical_source_ref",
+    "validate_generation_readset",
     "validate_history_source",
 ]

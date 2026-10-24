@@ -72,6 +72,7 @@ LOCAL_FILES = [
     "tests/conftest.py",
     "tests/test_s41_continuation.py",
     "tests/test_s41_history_binding.py",
+    "tests/test_s41_generation_readset.py",
 ]
 
 
@@ -214,6 +215,21 @@ def chain_evidence(root: Path) -> dict:
         "prior_event_time": history_content.get("prior_event_time"),
         "actual_prior_event_time": first_binding["event_time"],
     }
+    generation_refs = list(second_binding.get("generation", {}).get("source_refs") or [])
+    generation_sources = second_binding.get("generation_sources") or []
+    generation_allowed = {
+        record.get("source_ref") for record in generation_sources
+        if record.get("source_class") in {
+            "CURRENT_PROJECT", "ACTOR_PRIORITY", "HISTORICAL_EPISODE"
+        }
+    }
+    history_binding["generation_source_refs"] = generation_refs
+    history_binding["generation_sources_present"] = bool(generation_sources)
+    history_binding["generation_readset_canonical"] = all((
+        history.get("source_ref") in generation_refs,
+        not generation_sources or set(generation_refs).issubset(generation_allowed),
+        not generation_sources or history.get("source_ref") in generation_allowed,
+    ))
     history_binding["canonical"] = all((
         history_binding["source_ref"] == history_binding["canonical_source_ref"],
         history_binding["prior_e1_event_hash"] == history_binding["actual_prior_e1_event_hash"],
@@ -272,6 +288,9 @@ def chain_evidence(root: Path) -> dict:
             and any(ref.startswith("TEST_ONLY_S41_HIST_")
                     for ref in events[1]["generation_source_refs"]),
             "history_canonical": history_binding["canonical"],
+            "generation_readset_canonical": history_binding[
+                "generation_readset_canonical"
+            ],
             "zero_targets": events[0]["c9"]["target_proposals"] == []
             and events[1]["c9"]["target_proposals"] == []
             and events[0]["c9"]["target_state_rows"] == 0
@@ -611,6 +630,40 @@ def repro_evidence() -> dict:
     return evidence
 
 
+def repro_generation_evidence() -> dict:
+    oracle = Path(
+        "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/"
+        "sorok-incumbent-review/SOROK_REVIEW/S41_CLOSURE/evidence/"
+        "repro_generation_readset.py"
+    )
+    env = dict(ENV, S41_RETURN=str(RET))
+    proc = subprocess.run(
+        [PY, str(oracle)], cwd=str(RET), env=env, capture_output=True, text=True
+    )
+    (EVID / "repro_generation_readset.stderr.txt").write_text(proc.stderr)
+    err = proc.stderr.strip().splitlines()
+    code = ""
+    for line in reversed(err):
+        if "S41ReadRefusal:" in line:
+            code = line.split("S41ReadRefusal:", 1)[1].strip()
+            break
+    evidence = {
+        "schema": "SOROK_S41_GENERATION_READSET_REPRO_REPAIR@1",
+        "reproducer": str(oracle),
+        "exit": proc.returncode,
+        "refused": proc.returncode != 0,
+        "expected_repaired_behavior": "REFUSE_TYPED",
+        "error": "S41ReadRefusal" if "S41ReadRefusal:" in proc.stderr else "",
+        "code": code,
+        "stdout": proc.stdout.strip(),
+        "stderr_tail": err[-4:],
+    }
+    _write(EVID / "repro_generation_readset.json", evidence)
+    if proc.returncode == 0:
+        raise RuntimeError("S41_REPRO_ACCEPTED_REPLACED_GENERATION_READSET")
+    return evidence
+
+
 def main() -> None:
     EVID.mkdir(exist_ok=True)
     JUNIT.mkdir(exist_ok=True)
@@ -624,6 +677,7 @@ def main() -> None:
         mismatch = mismatch_evidence(work / "mismatch")
         tests = test_evidence()
         repro = repro_evidence()
+        repro_generation = repro_generation_evidence()
         entry = _run([PY, "-B", "run_s41.py"], "entrypoint.log")
         if entry.returncode != 0:
             raise RuntimeError("S41_ENTRYPOINT_FAILED:" + entry.stderr)
@@ -642,6 +696,7 @@ def main() -> None:
             "chain_checks": chain["checks"],
             "history_binding": chain["history_binding"],
             "repro": repro,
+            "repro_generation": repro_generation,
             "open": opened,
             "denial": denial,
             "tamper": tamper,

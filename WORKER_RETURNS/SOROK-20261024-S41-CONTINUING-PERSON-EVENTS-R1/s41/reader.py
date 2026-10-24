@@ -13,7 +13,11 @@ install()
 from c8_readonly_consumer import C8ReadOnlyConsumer  # noqa: E402
 from candidate import valid  # noqa: E402
 from .bindings import BINDING_SCHEMA, binding_episodes  # noqa: E402
-from .history import S41HistoryRefusal, validate_history_source  # noqa: E402
+from .history import (  # noqa: E402
+    S41HistoryRefusal,
+    validate_generation_readset,
+    validate_history_source,
+)
 
 
 class S41ReadRefusal(ValueError):
@@ -212,6 +216,17 @@ def read_event(session, event_ref: str) -> dict:
         raise S41ReadRefusal("S41_GENERATION_UNSEALED")
     if generation.get("hash") != binding.get("generation_hash"):
         raise S41ReadRefusal("S41_GENERATION_HASH_MISMATCH")
+    if binding.get("event_ordinal") != 1:
+        try:
+            validate_generation_readset(
+                generation,
+                binding.get("history_source") or {},
+                binding.get("generation_sources"),
+            )
+        except S41HistoryRefusal as exc:
+            raise S41ReadRefusal(
+                "S41_GENERATION_READSET_INVALID", exc.code
+            ) from exc
     status = binding.get("status")
     if status in {"OPEN", "REFUSED"}:
         if status == "OPEN" and generation.get("selection_status") == "UNIQUE_SELECTED":

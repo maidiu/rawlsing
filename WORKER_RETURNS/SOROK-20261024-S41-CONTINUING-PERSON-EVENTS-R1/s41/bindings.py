@@ -87,6 +87,7 @@ def make_continuation_binding(
     world_before: Mapping[str, Any],
     world_after: Mapping[str, Any],
     status: str,
+    generation_sources: list[Mapping[str, Any]] | None = None,
 ) -> dict:
     attempt = dict(attempt or {})
     s36 = dict(s36 or {})
@@ -141,6 +142,9 @@ def make_continuation_binding(
             "c8_content_hash": first_binding["c8"].get("c8_content_hash", ""),
         }],
         "history_source": dict(history_source) if history_source else None,
+        "generation_sources": [
+            dict(record) for record in (generation_sources or [])
+        ],
         "world_before": dict(world_before),
         "world_after": dict(world_after),
         "status": status,

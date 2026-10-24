@@ -28,7 +28,11 @@ from .event import (
     history_record_from_prior,
     world_prerequisites,
 )
-from .history import S41HistoryRefusal, validate_history_source
+from .history import (
+    S41HistoryRefusal,
+    validate_generation_readset,
+    validate_history_source,
+)
 from .performer import perform_continuation_attempt  # noqa: E402
 from .reader import S41ReadRefusal, read_all_events, read_event, read_latest_event
 
@@ -174,6 +178,12 @@ class S41Session(S40GeneratedSession):
                 world=world,
                 access_witness=access_witness,
             )
+            try:
+                validate_generation_readset(receipt, history_record, records)
+            except S41HistoryRefusal as exc:
+                raise S41EventRefusal(
+                    "S41_GENERATION_READSET_INVALID", exc.code
+                ) from exc
             if receipt.get("selection_status") != "UNIQUE_SELECTED":
                 producer.close()
                 binding = make_continuation_binding(
@@ -188,6 +198,7 @@ class S41Session(S40GeneratedSession):
                     world_before=current_world,
                     world_after=self.world().snapshot(),
                     status="OPEN",
+                    generation_sources=records,
                 )
                 append_event_binding(self, binding)
                 self._record_continuation(binding)
@@ -228,6 +239,7 @@ class S41Session(S40GeneratedSession):
                 world_before=current_world,
                 world_after=self.world().snapshot(),
                 status=attempt.get("attempt_status", ""),
+                generation_sources=records,
             )
             append_event_binding(self, binding)
             self._record_continuation(binding)
@@ -236,6 +248,12 @@ class S41Session(S40GeneratedSession):
                 "event": self.read_event(binding["e1_event_id"]),
                 "actor_action_appended": bool(attempt.get("performed")),
             }
+        except S41EventRefusal:
+            try:
+                producer.close()
+            except Exception:
+                pass
+            raise
         except Exception as exc:
             try:
                 producer.close()
@@ -255,6 +273,7 @@ class S41Session(S40GeneratedSession):
                     world_before=current_world,
                     world_after=self.world().snapshot(),
                     status="REFUSED",
+                    generation_sources=records,
                 )
                 if binding.get("generation_hash"):
                     append_event_binding(self, binding)
