@@ -1,6 +1,6 @@
 # SOROK S36 — TEST_ONLY actor-access / witnessed immediate-response bridge
 
-**RESULT:** `S36_TEST_ONLY_S35_ACTOR_ACCESS_RESPONSE_BRIDGE_IMPLEMENTED__34_OF_34_FOCUSED_TESTS_PASS__ZERO_TARGET_PROPOSALS__CAN011_NO_CHANGE_NO_PROPOSAL__NATIVE_AND_SCIENCE_HOLD`.
+**RESULT:** `S36_TEST_ONLY_S35_ACTOR_ACCESS_RESPONSE_BRIDGE_IMPLEMENTED__39_OF_39_FOCUSED_TESTS_PASS__SCENE_BINDING_ORACLE_3_OF_3__ZERO_TARGET_PROPOSALS__CAN011_NO_CHANGE_NO_PROPOSAL__NATIVE_AND_SCIENCE_HOLD`.
 
 This is an isolated TEST_ONLY engineering bridge of the S35 conditional actor-access/immediate-response specification into the actual existing C9R `run_candidate_path` pipeline. It is not a native CAN008/CAN011 rule, not an issued target grant, not acquired-practice science, and not a new engine. It writes only inside `WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/**`. The original C9R return at `WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/**` was read from the pinned Git object store and was not altered.
 
@@ -13,6 +13,29 @@ This is an isolated TEST_ONLY engineering bridge of the S35 conditional actor-ac
 - Four S35 files read directly from `WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/`: `00_RETURN.md`, `01_S35_CONDITIONAL_A_T_SCIENTIFIC_RESOURCE_CANDIDATE.json`, `02_SCHOLARLY_WARRANT_SOURCE_RIGHTS_AND_H0.md`, `03_C9R_EXACT_CONSUMER_CONTRACT_AND_TEST_VECTORS.md`.
 - Pinned candidate and native-guard bytes were materialized with `git archive` from the pinned commit into this return. No full transitive tree was read. Warm closures were not modified.
 - No M35, language, controller, PRE-MAIN, Pyat, original C9P/C9PI, original C9R, native CAN008/CAN011, ADP, C8, C11, C12 or human-study files were edited.
+
+## Independent review repair — REVISE25fdc92
+
+Reviewer `f3f87d9ab0cd91338874e5643c681c151cc070df` reported `REVISE25fdc92` with reproduced `2 PASS / 1 FAIL`: an empty access-witness scene was accepted for an actual garage event because `_access_error` compared scene only when both strings were truthy. The reproducer is `/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/SOROK_REVIEW/S36/oracles/s36_scene_binding_oracle.py`.
+
+Exact repair:
+
+- Access scene is now required to be a nonempty string before any response commit. An empty or missing scene returns `S35_ACCESS_SCENE_MISSING`.
+- The admitted event scene is also required to be a nonempty string. An empty/missing event scene returns `S35_ACCESS_EVENT_SCENE_MISSING`.
+- A nonempty scene that differs from the exact admitted event scene still returns `S35_ACCESS_SCENE_MISMATCH`.
+- Exact nonempty scene still yields the positive observed-response result, zero target proposals and `NO_CHANGE/NO_PROPOSAL`.
+- Added regression coverage for empty and missing access scenes, plus an empty actual event scene. No other hardening or redesign was made.
+
+Oracle command and actual result:
+
+```text
+PYTHONPATH=<S36 return>:<S36 return>/runtime/native \
+python3 /Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/SOROK_REVIEW/S36/oracles/s36_scene_binding_oracle.py
+# counts: {"PASS": 3, "FAIL": 0}
+# scene_wrong  REFUSED  S35_ACCESS_SCENE_MISMATCH
+# scene_empty  REFUSED  S35_ACCESS_SCENE_MISSING
+# scene_exact  RESPONSE_COMMITTED  OBSERVED_IMMEDIATE_OBJECT_ORIENTATION
+```
 
 ## What was actually implemented
 
@@ -45,20 +68,20 @@ Commands run with the normal shell, no wall-clock timeout:
 ```text
 PYTHONPATH=.../SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1:.../runtime/native \
 python3 -m pytest -q -p no:cacheprovider .../tests
-# 34 passed
+# 39 passed
 
 PYTHONPATH=... python3 .../run_s36_evidence.py
 # {"faults_all_pass": true, "legacy_proposals": 1,
-#  "refusals": 19, "s35_proposals": 0,
-#  "tests": {"ERROR": 0, "PASS": 34, "RED": 0, "SKIP": 0, "tests": 34},
+#  "refusals": 21, "s35_proposals": 0,
+#  "tests": {"ERROR": 0, "PASS": 39, "RED": 0, "SKIP": 0, "tests": 39},
 #  "vectors": 9}
 ```
 
 JUnit and machine evidence:
 
-- `junit/s36_full.xml` — 34 PASS / 0 RED / 0 ERROR / 0 SKIP.
+- `junit/s36_full.xml` — 39 PASS / 0 RED / 0 ERROR / 0 SKIP.
 - `evidence/vectors.json` — nine executed rows covering the six S35 vector families and subcases.
-- `evidence/refusals.json` — 19/19 refusals, all with zero target proposals, `committed=false`, `no_ghost=true`, empty store tables.
+- `evidence/refusals.json` — 21/21 refusals, all with zero target proposals, `committed=false`, `no_ghost=true`, empty store tables.
 - `evidence/fault_trials.json` — two same-assertion source-mutation trials, both PASS → RED → PASS.
 - `evidence/legacy_path.json` — legacy two-history response still yields one CREATE proposal; S35 two-history route yields zero proposals and `NO_CHANGE/NO_PROPOSAL`.
 - `evidence/source_manifest.json` — pinned blobs, byte-exact files, changed files and new files.
@@ -94,9 +117,9 @@ The access fault forces the valid access path to the typed empty branch; the res
 
 ### Refusals
 
-19 source-bound cases all return `REFUSED` with zero target proposals, no target decision, `committed=false`, `no_ghost=true` and empty store tables:
+21 source-bound cases all return `REFUSED` with zero target proposals, no target decision, `committed=false`, `no_ghost=true` and empty store tables:
 
-- access: wrong actor, wrong event, wrong source hash, wrong scene, before-event time, after-as-of time, revoked field, revoked source set, invalid source namespace;
+- access: wrong actor, wrong event, wrong source hash, wrong nonempty scene, empty scene, missing scene, before-event time, after-as-of time, revoked field, revoked source set, invalid source namespace;
 - response: wrong actor, wrong event, wrong source hash, before-access time, after-as-of time, revoked field, revoked source set, invalid response kind, invalid source namespace;
 - contradictory context with no bound contradictory ref.
 
@@ -135,9 +158,9 @@ The original C9R path was not present in this sparse checkout and was not modifi
 3. `candidate/pipeline.py` — isolated additive pipeline integration.
 4. `candidate/response_rules.py` — additive optional `s35_receipt` field.
 5. `candidate/` remaining files and `runtime/native/rawlsing_next/` — byte-exact pinned C9R candidates/native guard.
-6. `tests/` — 34 focused tests.
+6. `tests/` — 39 focused tests, including empty/missing access-scene and empty-event-scene regression.
 7. `s36_harness.py`, `run_s36_evidence.py` — shared TEST_ONLY fixtures and evidence generator.
 8. `evidence/` and `junit/` — actual execution evidence.
 9. `logs/` — test and fault logs.
 
-**Terminal:** `S36_TEST_ONLY_ACTOR_ACCESS_RESPONSE_BRIDGE_IMPLEMENTED__TESTS_34_OF_34__ZERO_TARGET_PROPOSALS__CAN011_NO_CHANGE_NO_PROPOSAL__NATIVE_SCIENCE_AND_SOURCE_GRANTS_HOLD`. Final commit and remote branch HEAD SHA are verified after push with `git rev-parse HEAD` and `git ls-remote origin refs/heads/agent/rabochii-sorok-20261024-s36-actor-access-response-r1`; the exact SHA is reported in the final handback.
+**Terminal:** `S36_TEST_ONLY_ACTOR_ACCESS_RESPONSE_BRIDGE_IMPLEMENTED__TESTS_39_OF_39__SCENE_BINDING_ORACLE_3_OF_3__ZERO_TARGET_PROPOSALS__CAN011_NO_CHANGE_NO_PROPOSAL__NATIVE_SCIENCE_AND_SOURCE_GRANTS_HOLD`. Final commit and remote branch HEAD SHA are verified after push with `git rev-parse HEAD` and `git ls-remote origin refs/heads/agent/rabochii-sorok-20261024-s36-actor-access-response-r1`; the exact SHA is reported in the final handback.

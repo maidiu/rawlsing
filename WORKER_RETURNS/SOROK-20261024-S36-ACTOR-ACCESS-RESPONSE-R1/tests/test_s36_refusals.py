@@ -4,7 +4,7 @@ from __future__ import annotations
 import pytest
 
 from candidate import CandidateStore, ResponseStatus
-from s36_harness import refusal_case, run_s35_case
+from s36_harness import access_witness, event_record, refusal_case, run_s35_case
 
 
 def _tables_empty(store: CandidateStore) -> bool:
@@ -18,6 +18,8 @@ def _tables_empty(store: CandidateStore) -> bool:
         "access_wrong_event",
         "access_wrong_source_hash",
         "access_wrong_scene",
+        "access_scene_empty",
+        "access_scene_missing",
         "access_before_event",
         "access_after_as_of",
         "access_revoked_field",
@@ -64,4 +66,40 @@ def test_unbound_contradictory_context_is_refused(tmp_path):
         assert result.response.reason == "S35_CONTRADICTORY_CONTEXT_UNBOUND"
         assert result.response.target_proposals == ()
         assert result.committed is False
+        assert _tables_empty(store)
+
+
+@pytest.mark.parametrize("scene", ["", None])
+def test_empty_or_missing_access_scene_is_refused(scene, tmp_path):
+    event = event_record()
+    access = access_witness(event, scene=scene)
+    with CandidateStore(tmp_path / f"scene_missing_{scene!r}.sqlite") as store:
+        result, _ = run_s35_case(store, access=access, response=None)
+        assert result.response.status is ResponseStatus.REFUSED
+        assert result.response.reason == "S35_ACCESS_SCENE_MISSING"
+        assert result.response.target_proposals == ()
+        assert result.decision is None
+        assert result.receipt is None
+        assert result.committed is False
+        assert result.no_ghost is True
+        assert _tables_empty(store)
+
+
+def test_empty_actual_event_scene_is_refused(tmp_path):
+    event = event_record(scene="")
+    access = access_witness(event, scene="garage")
+    with CandidateStore(tmp_path / "event_scene_missing.sqlite") as store:
+        result, _ = run_s35_case(
+            store,
+            scene="",
+            access=access,
+            response=None,
+        )
+        assert result.response.status is ResponseStatus.REFUSED
+        assert result.response.reason == "S35_ACCESS_EVENT_SCENE_MISSING"
+        assert result.response.target_proposals == ()
+        assert result.decision is None
+        assert result.receipt is None
+        assert result.committed is False
+        assert result.no_ghost is True
         assert _tables_empty(store)

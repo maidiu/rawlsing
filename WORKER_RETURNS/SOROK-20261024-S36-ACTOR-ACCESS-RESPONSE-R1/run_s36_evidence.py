@@ -77,6 +77,8 @@ REFUSAL_CASES = [
     "access_wrong_event",
     "access_wrong_source_hash",
     "access_wrong_scene",
+    "access_scene_empty",
+    "access_scene_missing",
     "access_before_event",
     "access_after_as_of",
     "access_revoked_field",

@@ -262,7 +262,11 @@ def _access_error(
     if record.get("event_ref") != event_ref:
         return "S35_ACCESS_EVENT_MISMATCH"
     scene = record.get("scene")
-    if isinstance(scene, str) and scene and event_scene and scene != event_scene:
+    if not isinstance(scene, str) or not scene:
+        return "S35_ACCESS_SCENE_MISSING"
+    if not isinstance(event_scene, str) or not event_scene:
+        return "S35_ACCESS_EVENT_SCENE_MISSING"
+    if scene != event_scene:
         return "S35_ACCESS_SCENE_MISMATCH"
     access_time = record.get("access_time")
     if not _is_int(access_time):

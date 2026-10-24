@@ -47,6 +47,16 @@
     },
     {
       "classname": "tests.test_s36_refusals",
+      "name": "test_source_bound_refusal_is_atomic_and_targetless[access_scene_empty]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s36_refusals",
+      "name": "test_source_bound_refusal_is_atomic_and_targetless[access_scene_missing]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s36_refusals",
       "name": "test_source_bound_refusal_is_atomic_and_targetless[access_before_event]",
       "status": "PASS"
     },
@@ -121,6 +131,21 @@
       "status": "PASS"
     },
     {
+      "classname": "tests.test_s36_refusals",
+      "name": "test_empty_or_missing_access_scene_is_refused[]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s36_refusals",
+      "name": "test_empty_or_missing_access_scene_is_refused[None]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s36_refusals",
+      "name": "test_empty_actual_event_scene_is_refused",
+      "status": "PASS"
+    },
+    {
       "classname": "tests.test_s36_vectors",
       "name": "test_p1_observed_immediate_positive_zero_proposals",
       "status": "PASS"
@@ -174,10 +199,10 @@
   "command": "/usr/local/bin/python3 -B -m pytest -q -p no:cacheprovider --junitxml=/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/junit/s36_full.xml tests",
   "counts": {
     "ERROR": 0,
-    "PASS": 34,
+    "PASS": 39,
     "RED": 0,
     "SKIP": 0,
-    "tests": 34
+    "tests": 39
   },
   "exit": 0,
   "junit": "junit/s36_full.xml",

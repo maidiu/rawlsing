@@ -179,6 +179,7 @@ def run_s35_case(
     event_time: int = 15,
     as_of: int = 20,
     b_act: str = "SHARE_TOOL",
+    scene: str = "garage",
     material: bool = True,
     access: Any = _AUTO,
     response: Any = _AUTO,
@@ -199,6 +200,7 @@ def run_s35_case(
         event_id=event_id,
         event_time=event_time,
         b_act=b_act,
+        scene=scene,
     )
     if access is _AUTO:
         access = access_witness(event, **(access_kwargs or {}))
@@ -216,7 +218,7 @@ def run_s35_case(
         store=store,
         actor_raw=actor_record(actor_labels),
         event_raw=event,
-        conditioning_sources=conditioning_sources() if material else [],
+        conditioning_sources=conditioning_sources(scene=scene) if material else [],
         response_registry=ResponseRuleRegistry.test_only((rule,)),
         target_registry=target_registry or TargetRuleRegistry.production(),
         authority_id=rule.authority_id,
@@ -258,6 +260,10 @@ def refusal_case(case: str):
         return tampered, None, frozenset()
     if case == "access_wrong_scene":
         return access_witness(event, scene="TEST_ONLY_OTHER_ROOM"), None, frozenset()
+    if case == "access_scene_empty":
+        return access_witness(event, scene=""), None, frozenset()
+    if case == "access_scene_missing":
+        return access_witness(event, scene=None), None, frozenset()
     if case == "access_before_event":
         return access_witness(event, access_time=event["time"] - 1), None, frozenset()
     if case == "access_after_as_of":
