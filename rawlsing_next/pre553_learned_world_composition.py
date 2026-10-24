@@ -48,6 +48,14 @@ from rawlsing_next.pre553_learned_product_release import (
     register_producer_subject,
 )
 from rawlsing_next.pre553_route_b_production import RouteBProductionResult
+from rawlsing_next.pre553_analytical_composition import AnalyticalCompositionResult
+from rawlsing_next.source_backed_positioned_subject_possibility import (
+    PositionedSubjectPossibilityModelRule,
+    PositionedSubjectPossibilityQuery,
+    PositionedSubjectPossibilityResult,
+    PossibilitySliceEvidence,
+    evaluate_positioned_subject_possibility,
+)
 
 
 PRODUCT_CONTRACT_SCHEMA = "LearnedWorldProductContractBinding@1.0.0"
@@ -1423,4 +1431,247 @@ __all__ = [
     "adapt_m2_release_to_b5",
     "compose_learned_world",
     "compose_direct_producer",
+    "LEARNED_CONSUMER_CONTRACT_ID",
+    "LEARNED_CONSUMER_SCHEMA",
+    "LearnedWorldConsumerError",
+    "LearnedWorldConsumerResult",
+    "evaluate_learned_world_consumer",
 ]
+
+
+LEARNED_CONSUMER_CONTRACT_ID = "R91_LEARNED_WORLD_POSSIBILITY_CONSUMER@1.0.0"
+LEARNED_CONSUMER_SCHEMA = "R91_LEARNED_WORLD_CONSUMER_RESULT@1"
+
+
+class LearnedWorldConsumerError(LearnedWorldCompositionError):
+    """Typed learned-product consumer refusal; no new geometry is invented."""
+
+
+@dataclass(frozen=True)
+class LearnedWorldConsumerResult:
+    contract_id: str
+    state: str
+    reason_code: str
+    learned_receipt_ref: ExactRef
+    product_contract_ref: ExactRef
+    m1_disposition_ref: ExactRef | None
+    m2_release_ref: ExactRef | None
+    b5_selection_receipt_ref: ExactRef | None
+    evidence_ref: ExactRef | None
+    producer_query_ref: ExactRef | None
+    producer_predicate_ref: ExactRef | None
+    consumer_query_ref: ExactRef | None
+    consumer_result: PositionedSubjectPossibilityResult | None
+    consumer_values_read: Mapping[str, Any] | None
+
+    def material(self) -> Mapping[str, Any]:
+        return {
+            "schema": LEARNED_CONSUMER_SCHEMA,
+            "contract_id": self.contract_id,
+            "state": self.state,
+            "reason_code": self.reason_code,
+            "learned_receipt_ref": self.learned_receipt_ref.as_dict(),
+            "product_contract_ref": self.product_contract_ref.as_dict(),
+            "m1_disposition_ref": None
+            if self.m1_disposition_ref is None
+            else self.m1_disposition_ref.as_dict(),
+            "m2_release_ref": None
+            if self.m2_release_ref is None
+            else self.m2_release_ref.as_dict(),
+            "b5_selection_receipt_ref": None
+            if self.b5_selection_receipt_ref is None
+            else self.b5_selection_receipt_ref.as_dict(),
+            "evidence_ref": None
+            if self.evidence_ref is None
+            else self.evidence_ref.as_dict(),
+            "producer_query_ref": None
+            if self.producer_query_ref is None
+            else self.producer_query_ref.as_dict(),
+            "producer_predicate_ref": None
+            if self.producer_predicate_ref is None
+            else self.producer_predicate_ref.as_dict(),
+            "consumer_query_ref": None
+            if self.consumer_query_ref is None
+            else self.consumer_query_ref.as_dict(),
+            "consumer_result_state": None
+            if self.consumer_result is None
+            else self.consumer_result.result_state,
+            "consumer_result_hash": None
+            if self.consumer_result is None
+            else self.consumer_result.result_hash,
+            "consumer_values_read": self.consumer_values_read,
+        }
+
+    @property
+    def result_hash(self) -> str:
+        return semantic_hash(self.material())
+
+
+def _learned_refusal(
+    *,
+    learned: LearnedWorldCompositionResult,
+    reason: str,
+    disposition: LearnedEmpiricalDisposition | None = None,
+    evidence: PossibilitySliceEvidence | None = None,
+    producer_query_ref: ExactRef | None = None,
+    producer_predicate_ref: ExactRef | None = None,
+) -> LearnedWorldConsumerResult:
+    return LearnedWorldConsumerResult(
+        contract_id=LEARNED_CONSUMER_CONTRACT_ID,
+        state="REFUSED",
+        reason_code=reason,
+        learned_receipt_ref=learned.receipt.ref,
+        product_contract_ref=learned.receipt.product_contract_ref,
+        m1_disposition_ref=None if disposition is None else disposition.ref,
+        m2_release_ref=None
+        if learned.m2_artifacts is None
+        else learned.m2_artifacts.release.ref,
+        b5_selection_receipt_ref=None
+        if learned.b5_selection_receipt is None
+        else learned.b5_selection_receipt.ref,
+        evidence_ref=None if evidence is None else evidence.evidence_ref,
+        producer_query_ref=producer_query_ref,
+        producer_predicate_ref=producer_predicate_ref,
+        consumer_query_ref=None,
+        consumer_result=None,
+        consumer_values_read=None,
+    )
+
+
+def evaluate_learned_world_consumer(
+    learned: LearnedWorldCompositionResult,
+    *,
+    composition: AnalyticalCompositionResult,
+    consumer_query: PositionedSubjectPossibilityQuery,
+    model_rule: PositionedSubjectPossibilityModelRule,
+    producer_query_ref: ExactRef,
+    producer_predicate_ref: ExactRef,
+    require_current_selection: bool = False,
+) -> LearnedWorldConsumerResult:
+    """Serve unchanged N10E consumer values only under a productive learned product.
+
+    The learned product is the authorization/gate and provenance binding.  The
+    empirical geometry continues to come exclusively from the actual C1/I03
+    composition; no learned-product value is converted into invented geometry.
+    """
+    if not isinstance(learned, LearnedWorldCompositionResult):
+        raise LearnedWorldConsumerError("exact LearnedWorldCompositionResult required")
+    if not isinstance(composition, AnalyticalCompositionResult):
+        raise LearnedWorldConsumerError("exact AnalyticalCompositionResult required")
+    disposition = learned.m1_disposition
+    evidence = composition.possibility_slice_evidence_or_null
+    if learned.receipt.terminal_state != "RULE_SATISFIED" or disposition is None:
+        return _learned_refusal(
+            learned=learned,
+            reason="LEARNED_PRODUCT_NOT_PRODUCTIVE",
+            disposition=disposition,
+            evidence=evidence,
+            producer_query_ref=producer_query_ref,
+            producer_predicate_ref=producer_predicate_ref,
+        )
+    if learned.m2_artifacts is None or learned.b5_protocol_view is None:
+        return _learned_refusal(
+            learned=learned,
+            reason="LEARNED_PRODUCT_RELEASE_OR_PROTOCOL_ABSENT",
+            disposition=disposition,
+            evidence=evidence,
+            producer_query_ref=producer_query_ref,
+            producer_predicate_ref=producer_predicate_ref,
+        )
+    if require_current_selection and learned.b5_selection_receipt is None:
+        return _learned_refusal(
+            learned=learned,
+            reason="LEARNED_CURRENT_SELECTION_ABSENT",
+            disposition=disposition,
+            evidence=evidence,
+            producer_query_ref=producer_query_ref,
+            producer_predicate_ref=producer_predicate_ref,
+        )
+    if (
+        composition.producer_query_ref != producer_query_ref
+        or composition.producer_predicate_ref != producer_predicate_ref
+    ):
+        return _learned_refusal(
+            learned=learned,
+            reason="EMPIRICAL_COMPOSITION_DETERMINANT_MISMATCH",
+            disposition=disposition,
+            evidence=evidence,
+            producer_query_ref=producer_query_ref,
+            producer_predicate_ref=producer_predicate_ref,
+        )
+    if evidence is None or composition.producer_fact_state != "SUPPORTED":
+        return _learned_refusal(
+            learned=learned,
+            reason="EMPIRICAL_EVIDENCE_NOT_SUPPORTED",
+            disposition=disposition,
+            evidence=evidence,
+            producer_query_ref=producer_query_ref,
+            producer_predicate_ref=producer_predicate_ref,
+        )
+    if producer_predicate_ref not in set(disposition.empirical_predicate_refs):
+        return _learned_refusal(
+            learned=learned,
+            reason="LEARNED_EMPIRICAL_PREDICATE_MISMATCH",
+            disposition=disposition,
+            evidence=evidence,
+            producer_query_ref=producer_query_ref,
+            producer_predicate_ref=producer_predicate_ref,
+        )
+    if evidence.source_universe_ref not in set(disposition.source_universe_refs):
+        return _learned_refusal(
+            learned=learned,
+            reason="LEARNED_SOURCE_UNIVERSE_MISMATCH",
+            disposition=disposition,
+            evidence=evidence,
+            producer_query_ref=producer_query_ref,
+            producer_predicate_ref=producer_predicate_ref,
+        )
+    producer_result = evaluate_positioned_subject_possibility(
+        query=consumer_query,
+        rule=model_rule,
+        evidence=(evidence,),
+    )
+    if producer_result.result_state != "EXACT_SUPPORTED":
+        return _learned_refusal(
+            learned=learned,
+            reason=f"EMPIRICAL_CONSUMER_{producer_result.result_state}",
+            disposition=disposition,
+            evidence=evidence,
+            producer_query_ref=producer_query_ref,
+            producer_predicate_ref=producer_predicate_ref,
+        )
+    values = {
+        "schema": "R91_LEARNED_WORLD_CONSUMER_VALUES@1",
+        "learned_receipt_ref": learned.receipt.ref.as_dict(),
+        "product_contract_ref": learned.receipt.product_contract_ref.as_dict(),
+        "m1_disposition_ref": disposition.ref.as_dict(),
+        "m2_release_ref": learned.m2_artifacts.release.ref.as_dict(),
+        "b5_selection_receipt_ref": None
+        if learned.b5_selection_receipt is None
+        else learned.b5_selection_receipt.ref.as_dict(),
+        "evidence_ref": evidence.evidence_ref.as_dict(),
+        "producer_query_ref": producer_query_ref.as_dict(),
+        "producer_predicate_ref": producer_predicate_ref.as_dict(),
+        "consumer_query_ref": consumer_query.ref.as_dict(),
+        "consumer_result_state": producer_result.result_state,
+        "consumer_result_hash": producer_result.result_hash,
+        "consumer_values_read": canonicalize(producer_result.material()),
+    }
+    return LearnedWorldConsumerResult(
+        contract_id=LEARNED_CONSUMER_CONTRACT_ID,
+        state="LEARNED_CONSUMER_EXACT_SUPPORTED",
+        reason_code="PRODUCTIVE_LEARNED_PRODUCT_WITH_ACTUAL_EMPIRICAL_EVIDENCE",
+        learned_receipt_ref=learned.receipt.ref,
+        product_contract_ref=learned.receipt.product_contract_ref,
+        m1_disposition_ref=disposition.ref,
+        m2_release_ref=learned.m2_artifacts.release.ref,
+        b5_selection_receipt_ref=None
+        if learned.b5_selection_receipt is None
+        else learned.b5_selection_receipt.ref,
+        evidence_ref=evidence.evidence_ref,
+        producer_query_ref=producer_query_ref,
+        producer_predicate_ref=producer_predicate_ref,
+        consumer_query_ref=consumer_query.ref,
+        consumer_result=producer_result,
+        consumer_values_read=values,
+    )
