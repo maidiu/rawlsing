@@ -1,0 +1,81 @@
+{
+  "schema": "PYAT_R95_R06R3_PROOF_WITNESS@1",
+  "node": "R06R3",
+  "disposition": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+  "branch": "agent/opencode-pyat-r95-r06-world-consumer-integration-r1",
+  "startup_commit": "08fa9a2560ff5a37313434a3edb3d61e702926eb",
+  "contract_commit": "033efe2b4a636d909fe4def2056aa5c68762e182",
+  "candidate_code_commit": "d0690af0c85fca962a4ac1e08012e869e94cb404",
+  "reviewer_defect_commit": "0153d1f9b88ede3f76e5b1658a7441cb2e9a1713",
+  "commands": [
+    {
+      "purpose": "author R06R3 suite",
+      "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_world_binding.py -q --junitxml=WORKER_RETURNS/PYAT-R95-R06-WORLD-CONSUMER-INTEGRATION-R1/revisions/r3/junit.xml -o addopts=''",
+      "exit_code": 0,
+      "result": "14 passed",
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "walltime_seconds": 170.142,
+      "junit": "junit.xml",
+      "log": "pytest.log"
+    },
+    {
+      "purpose": "independent R06V probes replayed",
+      "command": "PYTHONPATH=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01 /usr/local/bin/python3 -m pytest <R06V independent_probes/test_r06v_world.py> -q --junitxml=.../reviewer_probes_junit.xml -o addopts=''",
+      "exit_code": 0,
+      "result": "5 passed",
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "walltime_seconds": 7.302,
+      "junit": "reviewer_probes_junit.xml",
+      "log": "reviewer_probes.log"
+    }
+  ],
+  "actual_execution": {
+    "wrapper": "rawlsing_next.pre553_universal_world_binding.select_r05_world_view",
+    "constructs": "actual SelectedWorldCatalog + R05 provider + structural service + P41Service",
+    "invokes": "actual P41 N10W progressive and unchanged E04 consume",
+    "caller_callback_rejected": "CALLER_CALLBACK_NOT_ACCEPTED",
+    "claimed_receipt_mismatch": "R05_CLAIMED_RECEIPT_MISMATCH",
+    "actual_r05_learned": "LEARNED_CONSUMER_EXACT_SUPPORTED",
+    "coordinator_original_present": true,
+    "cold_fresh_process": true
+  },
+  "temporal": {
+    "t0_routes": {"training": "ELIGIBLE", "exit_constraint": "WITHIN_MODELED_BUDGET"},
+    "t1_routes": {"training": "BLOCKED_BY_MODELED_RULE", "exit_constraint": "RESOURCE_CONSTRAINED"},
+    "t0_clock": ["HISTORICAL", "2026-06-01", "2026-04-15"],
+    "t1_clock": ["AS_OF", "2027-09-01", "2027-09-01"],
+    "payload_excludes": ["clock labels", "receipt hashes", "incidental provenance"],
+    "identical_actual_payload": "R05_TEMPORAL_PAIR_NOT_CONSUMED",
+    "not_original_f7": true
+  },
+  "boundaries": {
+    "cross_unit": "CROSS_UNIT_LINKED_QUERY_UNAVAILABLE",
+    "context_without_admission": "FF_STRUCTURAL_ADMISSION_REQUIRED",
+    "context_with_arbitrary_ref": "FF_STRUCTURAL_ADMISSION_REQUIRED",
+    "ff_admission_exact_type": "StructuralEmpiricalAdmission",
+    "ff_admission_positive_state": "ADMITTED_FOR_EXACT_STRUCTURAL_USE",
+    "ff_admission_target_use": "STRUCTURAL_MEDIATION_INPUT"
+  },
+  "blobs": {
+    "rawlsing_next/pre553_universal_world_binding.py": "f695d8974c1b5cf617213a9976620defc91fb270",
+    "rawlsing_next/tests/test_universal_world_binding.py": "a0cdee8d481382a4fd1e6065206badd99398192f"
+  },
+  "import_pins": {
+    "rawlsing_next/pre553_learned_world_composition.py": "adbcc3316920c708580097dfe9f5aef4c9ca82fb",
+    "rawlsing_next/tests/test_universal_learned_consumer.py": "b0114a82c8852faffc52686c69585a50ee89ba9f",
+    "rawlsing_next/pre553_analytical_composition.py": "ed2b1680006ac2b89ddd40499e0a6d1429327d7b",
+    "rawlsing_next/pre553_universal_empirical_extension.py": "37279fa82001d5853dadf4906efc904e8dc3b9bc",
+    "p41_packet": "f27d1101048638bba395143a48efb7ef00bfcda4",
+    "r1_j42_packet": "f53cb0d2bce52640268c844c398bbd8007d28edc"
+  },
+  "limits": [
+    "Sourcefree TEST_ONLY trusted host; no cryptographic/R09 isolation.",
+    "Synthetic modeled-rule temporal pair, not original F7 measured waves.",
+    "Original science/source/F5/F6/F8/CI/prod/N11/N12/Sorok/J52-W52 held.",
+    "No self-adoption; distinct reviewer required."
+  ]
+}
