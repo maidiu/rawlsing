@@ -1,3 +1,17 @@
+# Sorok current progress revision35 — appointed Browser R3 acting HQ; JOIN-E7bf independently accepted sourcefree
+
+**Effective appointment:** independent R3 applicant `9be6045d8614c97fe581df9eda579ef3c1fb361f`; independent qualified reviewer `b9d5d945f3e1d6c2b2c0a271df141efa3217722c` verdict `ACCEPT_EXISTING_SOROK_HQ_SCOPE`; user directly appointed bounded *acting Browser Sorok HQ* on 2026-10-24 (“yeah totally, now rip it”), documented in `SOROK_PRODUCT_CONTROL_ROOM/HQ_MOTIONS/20261024_R3_BROWSER_HQ_HUMAN_APPOINTMENT_AND_BOUNDED_ACTING_EFFECTIVE_CUT_R1.md` at `28e4a576abea5933b34bb6933612d8f5175580d3`. Previous independently/human-appointed Sorok incumbent `b206b085d09e25f7d4d188b6c09e9d2eab06dacc` remains historical incumbent, not retroactively invalidated or falsely resigned. No native/source/semantic/production grants.
+
+**Fresh PRE-MAIN exact source parent:** `7b6d1998f41049067008afab4daddcacd52e3a9c`; other-HQ Pyat revision **89**, immutable R89 source `HQ_HANDOFF/LATEST.json` pointing to `9e687fbe353c11c1e4c3d8edd8767ac9969998eb`. Pyat R03 repaired author returned and R03V R2 independent review issued, **not launched** per latest pointer. Sorok does not dispatch or alter Pyat.
+
+**Actual worker verdict:** JOIN-E exact `7bf2da302996491ddf34b9a039fea47ac982d135`, JOIN-V independent exact-review `4387dc818a96fda2d5271672505fbd9da1059703`: **ACCEPT_SCOPED** for sourcefree joined/targetless same-person fork/lineage atomicity, 30/30 preserved reviewer tests, 5/5 lineage cases, lawful fork/cold and postcreate rollback; no orphan branch or mutation after invalid empty fork. Original older 49022f6 RED is closed on this cut. No further repair/review of that defect. DEV-R `cea01931d3df1b0dd38e50f5d7288cd2b5658a30` ended finite original A/T scientific docket, no RULE_A/T issued; retract false B refusal→E help inference. Native C12=0, C11=0, A5 NOT_RUN.
+
+**Needs-first function and actual next consumer:** existing L1 sourcefree B independently owned material action→C8/C9, lawful C9 NO_CHANGE/targetless or E2 executed→persisted shared C12 life→R31E actor-limited first-neighbor A0/A2 and cold forks. Next native/person completion is not another fork test: real actor-world/history/source-permitted E1 plus distinct competent `CAN008 RULE_A` event receivability/response and `CAN011 RULE_T` formed practice/no-change with before-state, independent E2, actual C9R/C10/C12 downstream; ADP, protected C8, Pyat N11/N12 and C11 owners remain separately held. Synthetic material effect does not issue psyche or rule. One next substantive sourcefree/engineering action requires a named missing consumer defect, not an exploratory review. Respect no procedural expansion and no Codex commissions; Browser or OpenCode/DeepSeek-Harness only.
+
+**Three courts:** ENGINEERING exact 7bf L1 ACCEPT_SCOPED; SCIENCE material action H0 live and original A/T evidence still unissued; AUTHORITY acting bounded HQ accepted, all native scientific and trust permissions remain separate. Existing independent return and direct human appointment satisfy *existing* HQ command admission; no added approval gate. Future commissions only for named indispensable positive-producing work, one accountable owner and one proportionate independent check if needed.
+
+---
+
 # Sorok current progress revision34 — joined positive scoped acceptance and coherent targetless repair
 
 Exact parent 64c9ed21ede9d28c76096393e2312b20ff8a1f64; owner b206b085d09e25f7d4d188b6c09e9d2eab06dacc; continuation 90ada146693a805e407ce95a8637f9e22fabf551.
