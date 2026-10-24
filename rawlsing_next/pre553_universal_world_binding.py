@@ -370,3 +370,244 @@ def select_joined_world_view(request: JoinedWorldSelectionRequest) -> JoinedWorl
         consumer_values_read=values,
         view_hash=semantic_hash(values),
     )
+
+
+# ---------------------------------------------------------------------------
+# R05 accepted-product -> actual P41 N9/N10W/E04 consumer (R06R2).
+
+from typing import Callable
+
+
+@dataclass(frozen=True)
+class R05WorldField:
+    field_id: str
+    expected_value: Any
+    unit: str
+    role: str = "STRUCTURAL"
+    clock_ref: str | None = None
+    relation_ref: ExactRef | None = None
+    temporal_expected_value: Any = None
+
+    def __post_init__(self) -> None:
+        if not self.field_id or not self.unit or not self.role:
+            raise WorldBindingError("R05_FIELD_IDENTITY_INCOMPLETE")
+        if self.role not in {"STRUCTURAL", "CONTEXT"}:
+            raise WorldBindingError("R05_FIELD_ROLE_UNKNOWN")
+
+
+@dataclass(frozen=True)
+class R05WorldConsumerRequest:
+    learned_consumer: Any
+    fields: tuple[R05WorldField, ...]
+    consumer: Callable[[str], Mapping[str, Any]]
+    source_universe_ref: ExactRef
+    release_ref: ExactRef
+    source_rows_hash: str
+    temporal_pair_ref: ExactRef | None = None
+    observed_temporal_pair_refs: tuple[ExactRef, ...] = ()
+    currentness: str = "CURRENT"
+    as_of_ref: str | None = None
+    relation_transport_ref: ExactRef | None = None
+    relation_transport_authorized: bool = False
+    ff_structural_authority_ref: ExactRef | None = None
+
+
+@dataclass(frozen=True)
+class R05WorldSelectedView:
+    state: str
+    reason_code: str
+    field_ids: tuple[str, ...]
+    consumer_values_read: Mapping[str, Any] | None
+    view_hash: str
+    temporal_changed: bool = False
+    z_unresolved: bool = True
+
+    def material(self) -> Mapping[str, Any]:
+        return {
+            "state": self.state, "reason_code": self.reason_code,
+            "field_ids": list(self.field_ids),
+            "consumer_values_read": self.consumer_values_read,
+            "view_hash": self.view_hash,
+            "temporal_changed": self.temporal_changed,
+            "z_unresolved": self.z_unresolved,
+        }
+
+
+def _r05_refusal(code: str, request: R05WorldConsumerRequest,
+                 field_ids: tuple[str, ...] = ()) -> R05WorldSelectedView:
+    return R05WorldSelectedView(
+        state="REFUSED", reason_code=code, field_ids=field_ids,
+        consumer_values_read=None,
+        view_hash=semantic_hash({"state": "REFUSED", "reason": code,
+                                 "fields": list(field_ids)}),
+    )
+
+
+def _validate_r05_receipt(receipt: Any, request: R05WorldConsumerRequest,
+                          fields: tuple[R05WorldField, ...], learned: Any,
+                          *, temporal: bool) -> tuple[Mapping[str, Any] | None, str | None]:
+    if not isinstance(receipt, Mapping):
+        return None, "R05_CONSUMER_RECEIPT_REQUIRED"
+    expected_hash = receipt.get("content_hash")
+    material = {key: value for key, value in receipt.items() if key != "content_hash"}
+    if not expected_hash or semantic_hash(material) != expected_hash:
+        return None, "R05_CONSUMER_RECEIPT_HASH_MISMATCH"
+    if (receipt.get("schema") != "PYAT_R41_P41_GENERIC_POSSIBILITY_RECEIPT@1"
+            or receipt.get("service") != "P41_GENERIC_POSSIBILITY_SERVICE@1"):
+        return None, "R05_P41_CONSUMER_CONTRACT_MISMATCH"
+    providers = receipt.get("providers") or {}
+    if providers.get("n10w_progressive") not in {
+        "E03_PROGRESSIVE_CHAIN@1", "P41_GENERIC_POSSIBILITY_SERVICE@1"
+    }:
+        return None, "R05_P41_N10W_PROVIDER_MISMATCH"
+    n9 = receipt.get("n9_world") or {}
+    binding = n9.get("r05_binding") or {}
+    if not binding:
+        return None, "R05_LEARNED_BINDING_ABSENT"
+    if (binding.get("source_universe_ref") != request.source_universe_ref.as_dict()
+            or binding.get("release_ref") != request.release_ref.as_dict()):
+        return None, "R05_SOURCE_RELEASE_MISMATCH"
+    if binding.get("source_rows_hash") != request.source_rows_hash:
+        return None, "R05_SOURCE_ROWS_MISMATCH"
+    if binding.get("learned_receipt_ref") != learned.learned_receipt_ref.as_dict():
+        return None, "R05_LEARNED_RECEIPT_MISMATCH"
+    if binding.get("m1_disposition_ref") != learned.m1_disposition_ref.as_dict():
+        return None, "R05_M1_DISPOSITION_MISMATCH"
+    if binding.get("m2_release_ref") != learned.m2_release_ref.as_dict():
+        return None, "R05_M2_RELEASE_MISMATCH"
+    consumer_hash = learned.consumer_result.result_hash
+    if binding.get("consumer_result_hash") != consumer_hash:
+        return None, "R05_CONSUMER_RESULT_MISMATCH"
+    if (learned.evidence_ref is None
+            or binding.get("evidence_ref") != learned.evidence_ref.as_dict()):
+        return None, "R05_EVIDENCE_REF_MISMATCH"
+    steps = receipt.get("n10e_steps") or ()
+    if not steps or any(step.get("content_hash") != consumer_hash for step in steps):
+        return None, "R05_N10E_STEP_BINDING_MISMATCH"
+    if learned.producer_query_ref is None or learned.producer_predicate_ref is None:
+        return None, "R05_LEARNED_PRODUCER_REFERENCE_ABSENT"
+    geometry = getattr(learned.consumer_result, "exact_geometry", None) or {}
+    for step in steps:
+        if step.get("producer_query_ref") != learned.producer_query_ref.as_dict():
+            return None, "R05_N10E_QUERY_BINDING_MISMATCH"
+        if step.get("producer_query_ref") != geometry.get("producer_query_ref"):
+            return None, "R05_N10E_QUERY_BINDING_MISMATCH"
+        if step.get("producer_fact_ref") != geometry.get("source_fact_ref"):
+            return None, "R05_N10E_FACT_BINDING_MISMATCH"
+        if step.get("evidence_ref") != learned.evidence_ref.as_dict():
+            return None, "R05_N10E_EVIDENCE_BINDING_MISMATCH"
+    if not (receipt.get("n10w") or {}).get("positioned_consumptions"):
+        return None, "R05_N10W_CONSUMPTION_ABSENT"
+    if not (receipt.get("structural") or {}).get("routes"):
+        return None, "R05_E04_STRUCTURAL_ROUTES_ABSENT"
+    rules = n9.get("rules") or {}
+    for field in fields:
+        if field.field_id not in rules:
+            return None, "R05_WORLD_FIELD_ABSENT"
+        expected = field.temporal_expected_value if (
+            temporal and field.temporal_expected_value is not None
+        ) else field.expected_value
+        if rules[field.field_id].get("value") != expected:
+            return None, "R05_WORLD_FIELD_VALUE_MISMATCH"
+    selection = n9.get("selection") or {}
+    if request.as_of_ref is not None and request.as_of_ref not in {
+        selection.get("valid_at"), selection.get("published_asof")
+    }:
+        return None, "R05_AS_OF_MISMATCH"
+    return receipt, None
+
+
+def select_r05_world_view(request: R05WorldConsumerRequest) -> R05WorldSelectedView:
+    """Feed the actual accepted R05 learned/empirical result into the actual P41
+    N9/N10W/E04 consumer and validate the same selected view.
+
+    `consumer(label)` must invoke the pinned P41 service configured over the R05
+    provider; this function validates and canonically binds its returned receipt.
+    No replacement evaluator or historical parallel packet is used.
+    """
+    learned = request.learned_consumer
+    if getattr(learned, "state", None) != "LEARNED_CONSUMER_EXACT_SUPPORTED":
+        return _r05_refusal("R05_LEARNED_CONSUMER_NOT_EXACT_SUPPORTED", request)
+    if request.currentness != "CURRENT":
+        return _r05_refusal("R05_CURRENTNESS_NOT_CURRENT", request)
+    fields = tuple(request.fields)
+    field_ids = tuple(field.field_id for field in fields)
+    if len(fields) < 2:
+        return _r05_refusal("R05_WORLD_REQUIRES_AT_LEAST_TWO_FIELDS", request, field_ids)
+    if len(set(field_ids)) != len(fields):
+        return _r05_refusal("R05_DUPLICATE_FIELD_BINDING", request, field_ids)
+    units = {field.unit for field in fields}
+    if len(units) > 1:
+        if not request.relation_transport_authorized or request.relation_transport_ref is None:
+            return _r05_refusal("UNLINKED_UNIT_POOLING_UNAUTHORIZED", request, field_ids)
+        if any(field.relation_ref != request.relation_transport_ref for field in fields):
+            return _r05_refusal("UNAUTHORIZED_TRANSPORT_RELATION", request, field_ids)
+    if any(field.role == "CONTEXT" for field in fields) and request.ff_structural_authority_ref is None:
+        return _r05_refusal("CONTEXT_AS_STRUCTURAL_UNAUTHORIZED", request, field_ids)
+    clocks = {field.clock_ref for field in fields if field.clock_ref is not None}
+    if len(clocks) > 1:
+        if (request.temporal_pair_ref is None or not request.observed_temporal_pair_refs
+                or request.temporal_pair_ref not in request.observed_temporal_pair_refs):
+            return _r05_refusal("UNOBSERVED_TEMPORAL_PAIR", request, field_ids)
+    try:
+        receipt_t0 = request.consumer("T0")
+    except Exception as exc:
+        return _r05_refusal("R05_ACTUAL_CONSUMER_REFUSED:" + type(exc).__name__, request, field_ids)
+    receipt_t0, problem = _validate_r05_receipt(
+        receipt_t0, request, fields, learned, temporal=False
+    )
+    if problem is not None:
+        return _r05_refusal(problem, request, field_ids)
+    temporal_changed = False
+    receipt_t1 = None
+    if request.temporal_pair_ref is not None:
+        if request.temporal_pair_ref not in request.observed_temporal_pair_refs:
+            return _r05_refusal("UNOBSERVED_TEMPORAL_PAIR", request, field_ids)
+        try:
+            receipt_t1 = request.consumer("T1")
+        except Exception as exc:
+            return _r05_refusal("R05_ACTUAL_TEMPORAL_CONSUMER_REFUSED:" + type(exc).__name__, request, field_ids)
+        receipt_t1, problem = _validate_r05_receipt(
+            receipt_t1, request, fields, learned, temporal=True
+        )
+        if problem is not None:
+            return _r05_refusal("R05_TEMPORAL_" + problem, request, field_ids)
+        clock0 = (receipt_t0.get("n9_world") or {}).get("selection") or {}
+        clock1 = (receipt_t1.get("n9_world") or {}).get("selection") or {}
+        if (clock0.get("valid_at") == clock1.get("valid_at")
+                or clock0.get("published_asof") == clock1.get("published_asof")):
+            return _r05_refusal("R05_TEMPORAL_CLOCKS_NOT_DISTINCT", request, field_ids)
+        if receipt_t0.get("content_hash") == receipt_t1.get("content_hash"):
+            return _r05_refusal("R05_TEMPORAL_PAIR_NOT_CONSUMED", request, field_ids)
+        temporal_changed = True
+    values = {
+        "schema": "R95_R06R2_R05_WORLD_VIEW@1",
+        "field_values": {field.field_id: field.expected_value for field in fields},
+        "learned_receipt_ref": learned.learned_receipt_ref.as_dict(),
+        "m1_disposition_ref": learned.m1_disposition_ref.as_dict(),
+        "m2_release_ref": learned.m2_release_ref.as_dict(),
+        "consumer_result_hash": learned.consumer_result.result_hash,
+        "coordinator_original_ref": (
+            receipt_t0.get("n9_world") or {}
+        ).get("r05_binding", {}).get("coordinator_original_ref"),
+        "source_universe_ref": request.source_universe_ref.as_dict(),
+        "release_ref": request.release_ref.as_dict(),
+        "source_rows_hash": request.source_rows_hash,
+        "t0_receipt_hash": receipt_t0.get("content_hash"),
+        "t0_routes": (receipt_t0.get("structural") or {}).get("routes"),
+        "t0_clock": (receipt_t0.get("n9_world") or {}).get("selection"),
+        "t0_n10e_steps": receipt_t0.get("n10e_steps"),
+        "t0_n10w": receipt_t0.get("n10w"),
+        "t1_receipt_hash": None if receipt_t1 is None else receipt_t1.get("content_hash"),
+        "t1_routes": None if receipt_t1 is None else (receipt_t1.get("structural") or {}).get("routes"),
+        "t1_clock": None if receipt_t1 is None else (receipt_t1.get("n9_world") or {}).get("selection"),
+        "t1_n10e_steps": None if receipt_t1 is None else receipt_t1.get("n10e_steps"),
+        "t1_n10w": None if receipt_t1 is None else receipt_t1.get("n10w"),
+        "temporal_changed": temporal_changed,
+        "z_unresolved": True,
+    }
+    return R05WorldSelectedView(
+        state="R05_WORLD_SELECTED_VIEW", reason_code="ACTUAL_R05_TO_P41_VIEW",
+        field_ids=field_ids, consumer_values_read=values,
+        view_hash=semantic_hash(values), temporal_changed=temporal_changed,
+    )

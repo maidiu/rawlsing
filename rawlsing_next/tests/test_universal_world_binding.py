@@ -13,12 +13,15 @@ import tempfile
 
 import pytest
 
+import rawlsing_next.pre553_learned_world_composition as i4
 from rawlsing_next.pre553_analytical_composition import compose_positioned_subject_possibility
+from rawlsing_next.pre553_universal_empirical_extension import provide_empirical_possibility_slice_ext
 from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
 from rawlsing_next.pre553_universal_world_binding import (
     JoinedWorldField, JoinedWorldSelectionRequest,
+    R05WorldConsumerRequest, R05WorldField,
     WorldFieldBinding, WorldSelectionRequest,
-    select_joined_world_view, select_world_view,
+    select_joined_world_view, select_r05_world_view, select_world_view,
 )
 from rawlsing_next.tests import c1_at08_at13_fixture as fx
 from rawlsing_next.tests.test_pre553_empirical_query import (
@@ -325,4 +328,370 @@ def test_r06_actual_j42_separation_controls_refuse_restore(j42_receipts):
     refused = select_joined_world_view(_joined_request(j42_receipts, currentness="REVOKED"))
     assert refused.reason_code == "WORLD_CURRENTNESS_NOT_CURRENT"
     restored = select_joined_world_view(_joined_request(j42_receipts))
+    assert restored.view_hash == base.view_hash
+
+
+P41_COMMIT = "f27d1101048638bba395143a48efb7ef00bfcda4"
+P41_PACKET = ("WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-"
+              "N10E-N10W-SERVING-R1")
+
+
+def _materialize_p41_runtime():
+    base = Path(tempfile.mkdtemp(prefix=".r06r2-p41-", dir=REPO_ROOT))
+    archive = base / "p41.tar"
+    subprocess.run(
+        ["git", "archive", P41_COMMIT, P41_PACKET, "-o", str(archive)],
+        cwd=str(REPO_ROOT), check=True, capture_output=True, timeout=180,
+    )
+    with tarfile.open(archive) as handle:
+        handle.extractall(base)
+    return base / P41_PACKET / "runtime", base
+
+
+@pytest.fixture(scope="module")
+def p41_runtime():
+    runtime, base = _materialize_p41_runtime()
+    try:
+        yield str(runtime)
+    finally:
+        shutil.rmtree(base, ignore_errors=True)
+
+
+def _build_r05_learned_inprocess():
+    """Build the actual accepted R05 learned object + retained-original coordinator view."""
+    case = _build_case()
+    disposition = case["learned"].m1_disposition
+    objects = {
+        obj.ref: obj for obj in (
+            case["m01_result"].object_graph.empirical_facts
+            + case["m01_result"].object_graph.executed_queries
+            + case["m01_result"].object_graph.executed_predicates
+        )
+    }
+    query = objects[disposition.empirical_query_spec_refs[0]]
+    predicate = objects[disposition.empirical_predicate_refs[1]]
+    fact = objects[disposition.empirical_fact_refs[1]]
+    conditioner = case["consumer_query"].conditioner_bindings[0]
+    pairing = conditioner.comparability_authority_ref
+    witness = fx.build_witness_for_binding(
+        witness_object_id="urn:test:r06r2:actual:r05",
+        consumer_query=case["consumer_query"],
+        producer_query=query,
+        producer_predicate=predicate,
+        bindings=[conditioner],
+        coordinate_value_pairs=[(case["m01"]["qrefs"]["X"], 1)],
+        pairing_authority=pairing,
+        source_universe_ref=case["consumer_query"].source_universe_ref,
+        release_ref=case["consumer_query"].release_ref,
+    )
+    extension = provide_empirical_possibility_slice_ext(
+        repository=case["repository"], empirical_query=query,
+        predicate=predicate, authority_registry=case["registry"],
+        release_refs=(case["release"],), consumer_query=case["consumer_query"],
+        model_rule=case["model_rule"], condition_binding_witness=witness,
+    )
+    slot = i4.NativeGraphSlot(
+        "r06r2-actual-r05", case["consumer_query"].source_universe_ref,
+        case["consumer_query"].release_ref, query.ref, predicate.ref,
+        case["consumer_query"].ref, case["model_rule"].rule_hash,
+        "DIRECT_I03_TO_POSITIONED_SUBJECT",
+        condition_value_witness=witness, target_arity=1,
+        joint_order_semantics="SEMANTIC_ORDERED",
+        m1_disposition=case["learned"].m1_disposition,
+        m2_release=case["learned"].m2_artifacts.release.ref,
+        e41_input=extension, repository=case["repository"],
+        empirical_query=query, predicate=predicate,
+        authority_registry=case["registry"],
+        consumer_query=case["consumer_query"], model_rule=case["model_rule"],
+    )
+    coordinator = i4.TrustedNativeGraphCoordinator(
+        admitted_slots={slot.slot_id: slot}
+    )
+    bound = coordinator.execute(i4.NativeGraphExecutionRequest((slot,)))
+    learned = i4.evaluate_learned_world_consumer(
+        case["learned"], composition=bound.view.compositions[0],
+        consumer_query=case["consumer_query"], model_rule=case["model_rule"],
+        producer_query_ref=query.ref, producer_predicate_ref=predicate.ref,
+        product_graph=bound, trusted_graph_reader=coordinator,
+    )
+    assert learned.state == "LEARNED_CONSUMER_EXACT_SUPPORTED", learned.reason_code
+    step = {
+        "schema": "R06R2_R05_LEARNED_PROVIDER@1",
+        "state": "EXACT_SUPPORTED",
+        "route": learned.producer_route,
+        "target": "Y", "conditioners": [["X", 1]],
+        "denominator": learned.denominator,
+        "cells": [dict(cell) for cell in learned.cells],
+        "uncertainty": "UNCERTAINTY_UNQUANTIFIED",
+        "evidence_ref": None if learned.evidence_ref is None else learned.evidence_ref.as_dict(),
+        "producer_query_ref": query.ref.as_dict(),
+        "producer_fact_ref": fact.ref.as_dict(),
+        "producer_predicate_ref": predicate.ref.as_dict(),
+        "condition_witness_ref": witness.witness_ref.as_dict(),
+        "model_rule_hash": case["model_rule"].rule_hash,
+        "risk_set_ref": case["m01"]["risk"].as_dict(),
+        "release_ref": case["release"].as_dict(),
+        "content_hash": learned.consumer_result.result_hash,
+    }
+    return dict(
+        case=case, learned=learned, step=step,
+        source_universe_ref=case["consumer_query"].source_universe_ref,
+        release_ref=case["consumer_query"].release_ref,
+        source_rows_hash=case["m01"]["stream"].source_sha256,
+        coordinator_original_ref=bound.original_ref,
+    )
+
+
+def _build_r05_p41_receipts(p41_runtime: str):
+    """Subprocess entrypoint: actual R05 objects -> actual P41 N9/N10W/E04 view."""
+    if p41_runtime not in sys.path:
+        sys.path.insert(0, p41_runtime)
+    import bootstrap
+    bootstrap.install()
+    from p41_service import P41Service
+    from product.world import SelectedWorldCatalog
+
+    data = _build_r05_learned_inprocess()
+    case = data["case"]
+    m01 = case["m01"]
+    universe = case["consumer_query"].source_universe_ref
+    release = case["consumer_query"].release_ref
+    empirical = {
+        "source": {
+            "universe": case["m01"]["projection"].universes[0],
+            "release_ref": release,
+            "risk_refs": {"R": m01["risk"]},
+            "qrefs": m01["qrefs"],
+            "repo": case["repository"],
+        },
+        "release_ref": release,
+        "risk_refs": {"R": m01["risk"]},
+        "rows_hash": data["source_rows_hash"],
+        "publication": "2026-03-01",
+    }
+    catalog = SelectedWorldCatalog(empirical, structural_revision=True)
+    snapshots = {
+        "T0": catalog.select(mode="HISTORICAL", valid_at="2026-06-01",
+                             published_asof="2026-04-15"),
+        "T1": catalog.select(mode="AS_OF", valid_at="2027-09-01",
+                             published_asof="2027-09-01"),
+    }
+    step = data["step"]
+
+    class R05Provider:
+        def __init__(self):
+            self.world = {"query_permits": {"Y": {}}}
+            self.trace = []
+
+        def _validate(self, target, ordered):
+            if target != "Y" or tuple(tuple(c) for c in ordered) != (("X", 1),):
+                raise ValueError("R06R2_R05_CONDITION_AUTHORITY")
+
+        def progressive(self, target, ordered):
+            self._validate(target, ordered)
+            self.trace.append(dict(
+                call="R05_LEARNED_CONSUMER_READ",
+                consumer_result_hash=step["content_hash"],
+            ))
+            return [dict(step)]
+
+    class R05StructuralService:
+        def __init__(self, catalog):
+            self.catalog = catalog
+            self.value_reads = []
+
+        def structural(self, snapshot, key, consumer):
+            value = self.catalog.read(snapshot, key)
+            self.value_reads.append(dict(
+                consumer=consumer, key=key, state=value["state"],
+                value=value.get("value"), snapshot_ref=snapshot.snapshot_hash,
+            ))
+            return value
+
+        def possibilities(self, snapshot, *, target="Y",
+                          conditions=(("X", 1),), consumer="GENERIC"):
+            self.value_reads.append(dict(
+                consumer=consumer, key="empirical", state="EXACT_SUPPORTED",
+                value=self.catalog.read(snapshot, "empirical"),
+                snapshot_ref=snapshot.snapshot_hash,
+            ))
+            return dict(
+                state="PRODUCTIVE_TEST_ONLY", steps=[dict(step)],
+                dependencies=["empirical"], source_root="TEST_ONLY_E04_SOURCE_ROOT",
+            )
+
+        def _record(self, material):
+            import copy
+            from rawlsing_next.pre553_empirical_objects import semantic_hash
+            material = copy.deepcopy(material)
+            material.update(
+                service_contract="R06R2_R05_WORLD_SERVICE@1",
+                grade="TEST_ONLY", operative_N9=False, operative_N10W=False,
+                new_issuer=False, actor_executions=0, model_calls=0,
+            )
+            digest = semantic_hash(material)
+            return dict(receipt_hash=digest, material=material)
+
+    class R05P41Service(P41Service):
+        def __init__(self, provider, structural):
+            self.prepared = object()
+            self.readthrough = structural
+            self.provider = provider
+            self.receipts = {}
+
+        def _world_block(self, snapshot):
+            block = super()._world_block(snapshot)
+            block["r05_binding"] = {
+                "source_universe_ref": universe.as_dict(),
+                "release_ref": release.as_dict(),
+                "source_rows_hash": data["source_rows_hash"],
+                "learned_receipt_ref": data["learned"].learned_receipt_ref.as_dict(),
+                "m1_disposition_ref": data["learned"].m1_disposition_ref.as_dict(),
+                "m2_release_ref": data["learned"].m2_release_ref.as_dict(),
+                "coordinator_original_ref": data["coordinator_original_ref"].as_dict(),
+                "consumer_result_hash": data["learned"].consumer_result.result_hash,
+                "evidence_ref": step["evidence_ref"],
+            }
+            return block
+
+    receipts = {}
+    for label, snapshot in snapshots.items():
+        provider = R05Provider()
+        structural = R05StructuralService(catalog)
+        service = R05P41Service(provider, structural)
+        receipts[label] = service.progressive(
+            target="Y", conditions=(("X", 1),), snapshot=snapshot
+        )
+    return receipts
+
+
+def _run_r05_p41(p41_runtime: str):
+    code = (
+        "import json,sys;"
+        "from rawlsing_next.tests.test_universal_world_binding import "
+        "_build_r05_p41_receipts;"
+        "print(json.dumps(_build_r05_p41_receipts(sys.argv[1]), sort_keys=True))"
+    )
+    env = dict(os.environ, PYTHONHASHSEED="0", PYTHONDONTWRITEBYTECODE="1")
+    env["PYTHONPATH"] = str(REPO_ROOT) + os.pathsep + env.get("PYTHONPATH", "")
+    proc = subprocess.run(
+        [sys.executable, "-c", code, p41_runtime], cwd=str(REPO_ROOT),
+        env=env, capture_output=True, text=True, timeout=900,
+    )
+    assert proc.returncode == 0, proc.stdout[-3000:] + proc.stderr[-3000:]
+    return json.loads(proc.stdout)
+
+
+def _r05_request(data, receipts, **changes):
+    pair = ExactRef("R06R2_SYNTHETIC_TEMPORAL_PAIR", "urn:test:r06r2:pair", "a" * 64)
+    values = dict(
+        learned_consumer=data["learned"],
+        fields=(
+            R05WorldField("training_access", True, "modeled policy eligibility boolean", temporal_expected_value=False),
+            R05WorldField("civil_sanction", False, "modeled policy eligibility boolean"),
+        ),
+        consumer=lambda label: receipts[label],
+        source_universe_ref=data["source_universe_ref"],
+        release_ref=data["release_ref"],
+        source_rows_hash=data["source_rows_hash"],
+        temporal_pair_ref=pair,
+        observed_temporal_pair_refs=(pair,),
+    )
+    values.update(changes)
+    return R05WorldConsumerRequest(**values)
+
+
+def test_r06r2_actual_r05_learned_to_p41_world_with_synthetic_pair(p41_runtime):
+    data = _build_r05_learned_inprocess()
+    receipts = _run_r05_p41(p41_runtime)
+    view = select_r05_world_view(_r05_request(data, receipts))
+    assert view.state == "R05_WORLD_SELECTED_VIEW", view.reason_code
+    assert view.temporal_changed is True
+    values = view.consumer_values_read
+    assert values["t0_routes"]["training"] == "ELIGIBLE"
+    assert values["t1_routes"]["training"] == "BLOCKED_BY_MODELED_RULE"
+    assert values["t0_routes"]["exit_constraint"] == "WITHIN_MODELED_BUDGET"
+    assert values["t1_routes"]["exit_constraint"] == "RESOURCE_CONSTRAINED"
+    assert values["t0_clock"]["valid_at"] == "2026-06-01"
+    assert values["t1_clock"]["valid_at"] == "2027-09-01"
+    assert values["t0_n10e_steps"][0]["content_hash"] == values["consumer_result_hash"]
+    assert values["t1_n10e_steps"][0]["content_hash"] == values["consumer_result_hash"]
+    assert values["t0_receipt_hash"] != values["t1_receipt_hash"]
+    assert values["coordinator_original_ref"] is not None
+    again = select_r05_world_view(_r05_request(data, receipts))
+    assert again.view_hash == view.view_hash
+
+
+def test_r06r2_actual_r05_world_cold_replay(p41_runtime):
+    data = _build_r05_learned_inprocess()
+    fresh = _run_r05_p41(p41_runtime)
+    view = select_r05_world_view(_r05_request(data, fresh))
+    cold_receipts = _run_r05_p41(p41_runtime)
+    cold = select_r05_world_view(_r05_request(data, cold_receipts))
+    assert cold.view_hash == view.view_hash
+    assert cold.consumer_values_read["t0_n10w"] == view.consumer_values_read["t0_n10w"]
+    assert cold.consumer_values_read["t1_routes"] == view.consumer_values_read["t1_routes"]
+
+
+def test_r06r2_actual_r05_world_separation_refusals_restore(p41_runtime):
+    data = _build_r05_learned_inprocess()
+    receipts = _run_r05_p41(p41_runtime)
+    base = select_r05_world_view(_r05_request(data, receipts))
+    assert base.state == "R05_WORLD_SELECTED_VIEW"
+    refused = select_r05_world_view(_r05_request(data, receipts, source_rows_hash="f" * 64))
+    assert refused.reason_code == "R05_SOURCE_ROWS_MISMATCH"
+    refused = select_r05_world_view(_r05_request(
+        data, receipts,
+        fields=(R05WorldField("training_access", True, "modeled policy eligibility boolean", temporal_expected_value=False),),
+    ))
+    assert refused.reason_code == "R05_WORLD_REQUIRES_AT_LEAST_TWO_FIELDS"
+    fields = _r05_request(data, receipts).fields
+    refused = select_r05_world_view(_r05_request(
+        data, receipts, fields=(fields[0], replace(fields[1], role="CONTEXT")),
+    ))
+    assert refused.reason_code == "CONTEXT_AS_STRUCTURAL_UNAUTHORIZED"
+    refused = select_r05_world_view(_r05_request(
+        data, receipts,
+        fields=(replace(fields[0], unit="person"), replace(fields[1], unit="household")),
+    ))
+    assert refused.reason_code == "UNLINKED_UNIT_POOLING_UNAUTHORIZED"
+    refused = select_r05_world_view(_r05_request(
+        data, receipts, observed_temporal_pair_refs=(),
+    ))
+    assert refused.reason_code == "UNOBSERVED_TEMPORAL_PAIR"
+    refused = select_r05_world_view(_r05_request(data, receipts, currentness="REVOKED"))
+    assert refused.reason_code == "R05_CURRENTNESS_NOT_CURRENT"
+    tampered = json.loads(json.dumps(receipts))
+    tampered["T1"]["structural"]["routes"]["training"] = "ELIGIBLE"
+    refused = select_r05_world_view(_r05_request(data, tampered))
+    assert refused.reason_code == "R05_TEMPORAL_R05_CONSUMER_RECEIPT_HASH_MISMATCH"
+    wrong_learned = replace(
+        data["learned"],
+        learned_receipt_ref=ExactRef(
+            "LearnedWorldCompositionReceipt",
+            "urn:test:r06r2:wrong-learned", "b" * 64,
+        ),
+    )
+    changed = dict(data, learned=wrong_learned)
+    refused = select_r05_world_view(_r05_request(changed, receipts))
+    assert refused.reason_code == "R05_LEARNED_RECEIPT_MISMATCH"
+    evidence_tampered = json.loads(json.dumps(receipts))
+    evidence_tampered["T0"]["n9_world"]["r05_binding"]["evidence_ref"] = ExactRef(
+        "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "urn:test:r06r2:foreign-evidence", "c" * 64,
+    ).as_dict()
+    evidence_tampered["T0"].pop("content_hash", None)
+    evidence_tampered["T0"]["content_hash"] = semantic_hash(evidence_tampered["T0"])
+    refused = select_r05_world_view(_r05_request(data, evidence_tampered))
+    assert refused.reason_code == "R05_EVIDENCE_REF_MISMATCH"
+    fact_tampered = json.loads(json.dumps(receipts))
+    fact_tampered["T0"]["n10e_steps"][0]["producer_fact_ref"] = ExactRef(
+        "EmpiricalFact@1.0.0",
+        "urn:test:r06r2:foreign-fact", "d" * 64,
+    ).as_dict()
+    fact_tampered["T0"].pop("content_hash", None)
+    fact_tampered["T0"]["content_hash"] = semantic_hash(fact_tampered["T0"])
+    refused = select_r05_world_view(_r05_request(data, fact_tampered))
+    assert refused.reason_code == "R05_N10E_FACT_BINDING_MISMATCH"
+    restored = select_r05_world_view(_r05_request(data, receipts))
     assert restored.view_hash == base.view_hash
