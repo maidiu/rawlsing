@@ -206,3 +206,6 @@ Review 50b8bee9e59d4c13fffeda319e257b37b5593356 hash/scope/directremote verified
 
 ## R91 R05 review REVISE; actual graph-consumer repair running
 Review eefc2e65f3d1e6d579b06e522f23b9cd6fc942b5 hash/scope/directremote verified; Genuine nonempty learned N10E positive retained; complete product graph/route dependencies and distinct typedstatus/denominator axes missing. Sameexisting OpenCodeMAX author resumed PID36254 exactstartup31d77fd37c501954c088c786db20d8056b6748f5 sessionses_e98c8dfe6ffewNYOqJpvqK21a6 commission9e82774185d6931e6469a6a725f0249a45407afe. Five paths only; full graph consumed not metadata echo. R04repairPID33537 independent. Logs .r61/r91-r05-r2. All holds retained.
+
+## R91 R04 joined returned; distinct R04V running
+Candidate dfeaab23998291be81abe4caecd08de663053eaa verified7hashes/2codeblobs/ownscope/directremote, author5+16passes not acceptance. Existing distinct OpenCodeMAX reviewer resumed PID37285 exactcandidate, branch agent/opencode-pyat-r91-r04v-r2-joined-review-r1 session ses_e96304356ffeC8HSvwFluWOjG1 stable r61-r01v-r5. Commission 6482c4f7435ef5c7d93b0a68804b821481505d9f. Workloadgranularity versus actual finitefrontier/revocation/priorartifactidentity proof explicitly required; no easier unary substitution or newcourt. R05author26430 still running at last observation, no duplicate. All holds unchanged. Logs .r61/r91-r04v-r2.
