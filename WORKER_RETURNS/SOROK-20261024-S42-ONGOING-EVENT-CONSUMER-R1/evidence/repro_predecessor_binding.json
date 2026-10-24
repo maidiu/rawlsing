@@ -1,0 +1,13 @@
+{
+  "code": "S42_PREDECESSOR_BINDING_MISMATCH: event_ordinal",
+  "exit": 1,
+  "oracle": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/SOROK_REVIEW/S42/evidence/repro_predecessor_binding.py",
+  "oracle_sha256": "9d80981e0bfc17094eaee880ae84740a93c903329204d91d30e068c52aac2ae9",
+  "refused": true,
+  "schema": "SOROK_S42_PREDECESSOR_REPRO@1",
+  "stderr_tail": [
+    "  File \"/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/reader.py\", line 81, in _validate_predecessor",
+    "    raise S42ReadRefusal(\"S42_PREDECESSOR_BINDING_MISMATCH\", key)",
+    "s42.reader.S42ReadRefusal: S42_PREDECESSOR_BINDING_MISMATCH: event_ordinal"
+  ]
+}

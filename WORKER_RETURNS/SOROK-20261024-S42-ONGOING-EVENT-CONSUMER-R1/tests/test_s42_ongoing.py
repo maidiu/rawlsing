@@ -329,3 +329,79 @@ def test_wrong_branch_history_source_refused(tmp_path):
         assert session.read_event(first["e1_event_id"])["status"] == "OK"
     finally:
         session.close()
+
+
+def _replace_predecessor(binding, mode, first_binding):
+    if binding.get("event_ordinal") != 3:
+        return binding
+    body = {key: value for key, value in binding.items() if key != "hash"}
+    if mode == "substitution":
+        body["predecessor"] = dict(first_binding)
+    elif mode == "missing":
+        body.pop("predecessor", None)
+    elif mode == "out_of_order":
+        predecessor = dict(body["predecessor"])
+        predecessor["event_ordinal"] = 1
+        predecessor["event_time"] = 242
+        body["predecessor"] = predecessor
+    else:
+        raise AssertionError(mode)
+    return seal(body)
+
+
+@pytest.mark.parametrize(
+    "mode,detail",
+    [
+        ("substitution", "S42_PREDECESSOR_BINDING_MISMATCH"),
+        ("missing", "S42_PREDECESSOR_BINDING_MISSING"),
+        ("out_of_order", "S42_PREDECESSOR_BINDING_MISMATCH"),
+    ],
+)
+def test_resealed_predecessor_substitution_refused_warm_cold(mode, detail, tmp_path, monkeypatch):
+    import s42.session as session_module
+    from s41.bindings import binding_episodes as s41_binding_episodes
+    session = _start(tmp_path)
+    try:
+        first = session.read_events()[0]
+        _admit(session, share=False, history_ordinals=(1,))
+        second = session.read_events()[1]
+        assert second["event_ordinal"] == 2
+        original = session_module.make_event_binding
+        first_binding = s41_binding_episodes(session)[0]
+
+        def bad_binding(*args, **kwargs):
+            return _replace_predecessor(
+                original(*args, **kwargs), mode, first_binding
+            )
+
+        monkeypatch.setattr(session_module, "make_event_binding", bad_binding)
+        with pytest.raises(S42ReadRefusal) as exc:
+            _admit(session, share=False, history_ordinals=(1,))
+        assert detail in str(exc.value)
+        monkeypatch.setattr(session_module, "make_event_binding", original)
+        bad = binding_episodes(session)[-1]
+        assert bad["event_ordinal"] == 3
+        assert len(binding_episodes(session)) == 2
+        assert session.read_event(first["e1_event_id"])["status"] == "OK"
+        assert session.read_event(second["e1_event_id"])["status"] == "OK"
+        with pytest.raises(S42ReadRefusal) as read_exc:
+            session.read_event(bad["e1_event_id"])
+        assert detail in str(read_exc.value)
+        assert session.verify()["ok"] is False
+        before_bindings = len(binding_episodes(session))
+        before_actions = len(_a_actions(session))
+        before_c9 = _c9_count(session)
+        with pytest.raises(S42ReadRefusal) as next_exc:
+            session.admit_event(
+                case=case_for(True), source=source_for(case_for(True)),
+                history_event_refs=(first["e1_event_id"],),
+                event_time=245,
+            )
+        assert detail in str(next_exc.value)
+        assert len(binding_episodes(session)) == before_bindings
+        assert len(_a_actions(session)) == before_actions
+        assert _c9_count(session) == before_c9
+    finally:
+        session.close()
+    with pytest.raises(Exception):
+        S42Session.open(tmp_path / "state")

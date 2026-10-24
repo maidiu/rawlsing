@@ -62,6 +62,10 @@ LOCAL_FILES = [
     "tests/conftest.py",
     "tests/test_s42_ongoing.py",
 ]
+REVIEW_PREDECESSOR = Path(
+    "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/"
+    "SOROK_REVIEW/S42/evidence/repro_predecessor_binding.py"
+)
 REPRODUCERS = [
     ("bad_history", S41_RETURN / "evidence" / "repro_bad_history.json",
      Path("/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/SOROK_REVIEW/S41/evidence/repro_bad_history_reader.py")),
@@ -361,6 +365,29 @@ def reproduced_s41_refusals() -> dict:
             "all_refused": all(row["refused"] for row in rows.values())}
 
 
+def predecessor_repro_evidence() -> dict:
+    env = dict(ENV, S42_RETURN=str(RET))
+    proc = subprocess.run(
+        [PY, str(REVIEW_PREDECESSOR)], cwd=str(RET), env=env,
+        capture_output=True, text=True,
+    )
+    (LOGS / "repro_predecessor_binding.log").write_text(proc.stdout + proc.stderr)
+    code = ""
+    for line in reversed(proc.stderr.strip().splitlines()):
+        if "S42ReadRefusal:" in line:
+            code = line.split("S42ReadRefusal:", 1)[1].strip()
+            break
+    return {
+        "schema": "SOROK_S42_PREDECESSOR_REPRO@1",
+        "oracle": str(REVIEW_PREDECESSOR),
+        "oracle_sha256": _sha256(REVIEW_PREDECESSOR),
+        "exit": proc.returncode,
+        "refused": proc.returncode != 0,
+        "code": code,
+        "stderr_tail": proc.stderr.strip().splitlines()[-3:],
+    }
+
+
 def source_manifest() -> dict:
     s41_manifest = json.loads(S41_MANIFEST.read_text()) if S41_MANIFEST.is_file() else {}
     s40_manifest = json.loads(S40_MANIFEST.read_text()) if S40_MANIFEST.is_file() else {}
@@ -431,6 +458,7 @@ def main() -> None:
         tests = test_evidence()
         compat = s41_compat_evidence()
         repros = reproduced_s41_refusals()
+        predecessor = predecessor_repro_evidence()
         entry = _run([PY, "-B", "run_s42.py"], "entrypoint.log")
         if entry.returncode != 0:
             raise RuntimeError("S42_ENTRYPOINT_FAILED:" + entry.stderr)
@@ -442,11 +470,14 @@ def main() -> None:
         _write(EVID / "test_run.json", tests)
         _write(EVID / "s41_compat.json", compat)
         _write(EVID / "s41_reproducers.json", repros)
+        _write(EVID / "repro_predecessor_binding.json", predecessor)
         _write(EVID / "source_manifest.json", manifest)
         print(json.dumps({
             "tests": tests["counts"],
             "s41_compat": compat["counts"],
             "s41_reproducers_all_refused": repros["all_refused"],
+            "predecessor_repro_refused": predecessor["refused"],
+            "predecessor_repro_code": predecessor["code"],
             "entrypoint_exit": entry.returncode,
             "chain3": three["checks"],
             "chain5": five["checks"],

@@ -28,7 +28,13 @@ from s39.sources import context_records  # noqa: E402
 
 from .bindings import append_event_binding, binding_episodes, make_event_binding
 from .event import build_ongoing_occurrence, make_history_records
-from .reader import S42ReadRefusal, read_all_events, read_event, read_latest_event
+from .reader import (
+    S42ReadRefusal,
+    read_all_events,
+    read_event,
+    read_latest_event,
+    validate_predecessor_chain,
+)
 
 S42_SCHEMA = "SOROK_S42_ONGOING_EVENT_SESSION@1"
 
@@ -89,6 +95,7 @@ class S42Session(S41Session):
         access_witness: Mapping[str, Any] | None = None,
     ) -> dict:
         bindings = self._all_bindings()
+        validate_predecessor_chain(self, bindings)
         predecessor = bindings[-1]
         ordinal = max(int(row["event_ordinal"]) for row in bindings) + 1
         if event_time is None:

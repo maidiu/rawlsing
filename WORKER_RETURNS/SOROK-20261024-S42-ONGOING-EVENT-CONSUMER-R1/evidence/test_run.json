@@ -44,14 +44,29 @@
       "classname": "tests.test_s42_ongoing",
       "name": "test_wrong_branch_history_source_refused",
       "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s42_ongoing",
+      "name": "test_resealed_predecessor_substitution_refused_warm_cold[substitution-S42_PREDECESSOR_BINDING_MISMATCH]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s42_ongoing",
+      "name": "test_resealed_predecessor_substitution_refused_warm_cold[missing-S42_PREDECESSOR_BINDING_MISSING]",
+      "status": "PASS"
+    },
+    {
+      "classname": "tests.test_s42_ongoing",
+      "name": "test_resealed_predecessor_substitution_refused_warm_cold[out_of_order-S42_PREDECESSOR_BINDING_MISMATCH]",
+      "status": "PASS"
     }
   ],
   "counts": {
     "ERROR": 0,
-    "PASS": 9,
+    "PASS": 12,
     "RED": 0,
     "SKIP": 0,
-    "tests": 9
+    "tests": 12
   },
   "exit": 0,
   "junit": "junit/s42_full.xml",

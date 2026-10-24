@@ -41,6 +41,74 @@ def _find_binding(bindings: list[dict], event_ref: str) -> dict | None:
     )
 
 
+_PREDECESSOR_KEYS = (
+    "event_ordinal", "e1_event_id", "e1_event_hash",
+    "c8_occurrence_id", "c8_content_hash", "event_time",
+    "actor_id", "branch_id",
+)
+
+
+def _validate_predecessor(session, binding: dict, bindings: list[dict],
+                          c8_event: dict) -> None:
+    if int(binding.get("event_ordinal", 0)) <= 1:
+        raise S42ReadRefusal("S42_PREDECESSOR_ORDINAL_INVALID")
+    index = next(
+        (
+            i for i, row in enumerate(bindings)
+            if row.get("e1_event_id") == binding.get("e1_event_id")
+            and row.get("event_ordinal") == binding.get("event_ordinal")
+        ),
+        None,
+    )
+    if index is None or index == 0:
+        raise S42ReadRefusal("S42_PREDECESSOR_BINDING_MISSING")
+    actual = bindings[index - 1]
+    predecessor = binding.get("predecessor")
+    if not isinstance(predecessor, dict):
+        raise S42ReadRefusal("S42_PREDECESSOR_BINDING_MISSING")
+    actual_values = {
+        "event_ordinal": actual.get("event_ordinal"),
+        "e1_event_id": actual.get("e1_event_id"),
+        "e1_event_hash": actual.get("e1_event_hash"),
+        "c8_occurrence_id": actual["c8"].get("occurrence_id"),
+        "c8_content_hash": actual["c8"].get("c8_content_hash", ""),
+        "event_time": actual.get("event_time"),
+        "actor_id": actual.get("actor_id"),
+        "branch_id": actual.get("branch_id"),
+    }
+    for key in _PREDECESSOR_KEYS:
+        if predecessor.get(key) != actual_values[key]:
+            raise S42ReadRefusal("S42_PREDECESSOR_BINDING_MISMATCH", key)
+    if int(actual.get("event_ordinal", 0)) != int(binding.get("event_ordinal", 0)) - 1:
+        raise S42ReadRefusal("S42_PREDECESSOR_ORDER_INVALID")
+    if int(actual.get("event_time", 0)) >= int(binding.get("event_time", 0)):
+        raise S42ReadRefusal("S42_PREDECESSOR_TIME_INVALID")
+    continuation = (c8_event.get("payload") or {}).get("s42_continuation")
+    if not isinstance(continuation, dict):
+        raise S42ReadRefusal("S42_C8_PREDECESSOR_FIELDS_MISSING")
+    expected = {
+        "event_ordinal": binding.get("event_ordinal"),
+        "predecessor_e1_ref": actual.get("e1_event_id"),
+        "predecessor_e1_event_hash": actual.get("e1_event_hash"),
+        "predecessor_c8_occurrence_id": actual["c8"].get("occurrence_id"),
+        "predecessor_c8_content_hash": actual["c8"].get("c8_content_hash", ""),
+        "predecessor_event_time": actual.get("event_time"),
+        "predecessor_actor_id": actual.get("actor_id"),
+        "predecessor_branch_id": actual.get("branch_id"),
+    }
+    for key, value in expected.items():
+        if continuation.get(key) != value:
+            raise S42ReadRefusal("S42_C8_PREDECESSOR_MISMATCH", key)
+
+
+def validate_predecessor_chain(session, bindings: list[dict]) -> None:
+    for binding in bindings:
+        if binding.get("schema") != BINDING_SCHEMA:
+            continue
+        c8_event = s41_reader._read_c8(binding["c8"], binding["source"], binding)
+        _validate_predecessor(session, binding, bindings, c8_event)
+
+
 def _validate_histories(
     session, binding: dict, bindings: list[dict]
 ) -> list[dict]:
@@ -109,6 +177,7 @@ def _read_s42_event(session, binding: dict, bindings: list[dict]) -> dict:
         raise S42ReadRefusal("S42_EVENT_BINDING_SCHEMA_MISMATCH")
     _validate_histories(session, binding, bindings)
     c8_event = s41_reader._read_c8(binding["c8"], binding["source"], binding)
+    _validate_predecessor(session, binding, bindings, c8_event)
     generation = binding.get("generation")
     if not isinstance(generation, dict) or not s41_reader.valid(dict(generation)):
         raise S42ReadRefusal("S42_GENERATION_UNSEALED")
@@ -280,4 +349,5 @@ __all__ = [
     "read_all_events",
     "read_event",
     "read_latest_event",
+    "validate_predecessor_chain",
 ]

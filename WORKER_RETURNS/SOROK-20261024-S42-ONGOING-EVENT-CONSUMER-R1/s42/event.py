@@ -104,6 +104,9 @@ def build_ongoing_occurrence(
         "predecessor_e1_event_hash": predecessor["e1_event_hash"],
         "predecessor_c8_occurrence_id": predecessor["c8"]["occurrence_id"],
         "predecessor_c8_content_hash": predecessor["c8"].get("c8_content_hash", ""),
+        "predecessor_event_time": predecessor["event_time"],
+        "predecessor_actor_id": predecessor["actor_id"],
+        "predecessor_branch_id": predecessor["branch_id"],
         "history_refs": [{
             "event_ordinal": row["event_ordinal"],
             "e1_event_id": row["e1_event_id"],

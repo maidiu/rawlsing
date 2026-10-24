@@ -74,6 +74,9 @@ def make_event_binding(
             "e1_event_hash": predecessor["e1_event_hash"],
             "c8_occurrence_id": predecessor["c8"]["occurrence_id"],
             "c8_content_hash": predecessor["c8"].get("c8_content_hash", ""),
+            "event_time": predecessor["event_time"],
+            "actor_id": predecessor["actor_id"],
+            "branch_id": predecessor["branch_id"],
         },
         "history_refs": [{
             "event_ordinal": row["event_ordinal"],
