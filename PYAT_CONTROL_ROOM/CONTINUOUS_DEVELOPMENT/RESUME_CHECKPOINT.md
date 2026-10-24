@@ -167,3 +167,6 @@ Review 3853c2a8c609e53cbc6d6ebf852540faa40bd6c2 manifest/scope/directremote veri
 
 ## R61AT — R03 successor independently reviewing
 Candidate 5b28d09602a35d4c5d5f060f450956c612ab3580 verified11 SHA256/blob identities, authorized successor paths, clean author tracked tree/directremote; 13 author plus32 retained R01 passes not acceptance. Same distinct OpenCodeMAX reviewer resumed PID90792 session ses_e96304356ffeC8HSvwFluWOjG1 branch agent/opencode-pyat-r61-r03v-r3-independent-review-r1 stable r61-r01v-r5, exact commission 36c8e6ab123562de902f0b53ae9846a3b3560df5. Logs .r61/r03v-r3. Prior defect obligations preserved, new APIs tested faithfully, repeated/qualified occurrence limit explicitly reviewed. No duplicate author, code adoption or hold change.
+
+## R61AU — R03 R3 review verified; Sol High decision boundary
+Review 7d8396329ed8ac2df86c82bb46e785a0dc487cde verified manifest/ownroot/directremote. Three fixes pass, three coordinated fact/job mutation failures remain. Stop further R03 repair until bounded independently retained expected baseline contract decided. Read R61AU_R03_COLD_EXPECTATION_DECISION.md. Request Sol High; no Astra/science expansion, no new worker. Full product incomplete, all holds retained.
