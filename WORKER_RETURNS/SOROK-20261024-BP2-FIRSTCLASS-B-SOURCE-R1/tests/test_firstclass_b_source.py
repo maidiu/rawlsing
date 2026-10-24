@@ -214,3 +214,44 @@ def test_share_e2_is_a_separate_performed_action(tmp_path):
         assert helped["strategy"] == "HELP_REFUSE"
     finally:
         session.close()
+
+
+def test_source_must_match_exact_b_and_e1_preimage(tmp_path):
+    case = evaluated(share=True, e2=False)["case"]
+    base = firstclass.source_from_case(case)
+    assert firstclass.validate_source(base, case) == base
+    mutations = {
+        "wrong_owner": {"b_owner": "FAKE_OWNER"},
+        "wrong_event_ref": {"b_event_ref": "TEST_ONLY_FAKE_EVENT"},
+        "wrong_event_hash": {"b_event_hash": "0" * 64},
+        "wrong_clock": {"b_clock": 999},
+        "wrong_operation": {"b_operation": "REFUSE_TOOL", "b_quantity": 0},
+        "wrong_quantity": {"b_quantity": 5},
+        "wrong_e1_ref": {"a_e1_ref": "TEST_ONLY_FAKE_E1"},
+        "wrong_e1_hash": {"a_e1_hash": "0" * 64},
+        "wrong_e1_clock": {"a_e1_clock": 999},
+    }
+    for label, mutation in mutations.items():
+        source = dict(base)
+        source.update(mutation)
+        root = tmp_path / label
+        with pytest.raises(MaterialSourceRefusal) as exc:
+            firstclass.c9_only(root, case=case, source=source)
+        assert exc.value.code == "MATERIAL_SOURCE_PREIMAGE_MISMATCH", label
+        assert not (root / "bp2").exists(), label
+
+
+def test_lawful_case_source_change_is_still_accepted(tmp_path):
+    for share, access in ((True, "granted"), (False, "denied")):
+        case = evaluated(share=share, e2=False)["case"]
+        source = firstclass.source_from_case(case)
+        partial, producer = firstclass.c9_only(
+            tmp_path / ("share" if share else "refuse"),
+            case=case, source=source)
+        try:
+            assert partial["gm01_source"] == source
+            assert partial["material_access"] == access
+            assert partial["c9"]["target_branch"] == (
+                "CREATE" if share else "NO_CHANGE")
+        finally:
+            producer.close()

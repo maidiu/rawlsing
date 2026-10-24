@@ -1,6 +1,6 @@
 # SOROK R35 M35 — first-class B material source into BP2 → C12/E
 
-**Disposition:** `TEST_ONLY_SOURCEFREE_AUTHOR_EVIDENCE__FIRSTCLASS_B_SOURCE_PRE_C8__SHARE_CREATE_REFUSAL_NO_CHANGE__SAME_E_CONSUMER_COLD__AUTHORITY_HOLD`
+**Disposition:** `TEST_ONLY_SOURCEFREE_AUTHOR_EVIDENCE__SOURCE_BINDING_REPAIRED__FIRSTCLASS_B_SOURCE_PRE_C8__SHARE_CREATE_REFUSAL_NO_CHANGE__SAME_E_CONSUMER_COLD__AUTHORITY_HOLD__PENDING_INDEPENDENT_REVERIFY`
 
 **Branch:** `agent/rabochii-sorok-20261024-m35-firstclass-b-source-bp2-c12-r1`
 **Exact sealed startup:** `89b703e8d775b8ecd0efb2a9c1cbfa6616bc7889`
@@ -21,7 +21,7 @@
 ## 2. Exact evidence
 
 Run: `PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q WORKER_RETURNS/SOROK-20261024-BP2-FIRSTCLASS-B-SOURCE-R1/tests -p no:cacheprovider`
-Result: **6 passed in 1.79s, exit 0** (`evidence/test_run.txt`).
+Result: **8 passed in 2.03s, exit 0** (`evidence/m35-tests-repair.out`); the six existing tests plus two focused source-binding regressions.
 
 Run: `PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/SOROK-20261024-BP2-FIRSTCLASS-B-SOURCE-R1/tools/capture_evidence.py`
 Result: exit 0 (`evidence/chain.json`).
@@ -53,12 +53,59 @@ candidate/vendor/bp2/bp2_joined/binding.py          e8ec62177e38f5946b7f493922c4
 candidate/vendor/bp2/bp2_joined/producer.py         38a492e96eecbbeb06de7b352d7bd138a84cb3388c8441437127e6c348875970
 candidate/vendor/bp2/bp2_joined/__init__.py         09b803a5add78012012281c9bf92dbb2422b408752809fce77e4eb626bd8b1f6
 candidate/vendor/bp2/bp2_joined/bootstrap.py        268c3be5c6f5193246c60f2672327d359fed840ec28ddca9338dd158dfe24c6a
-firstclass.py                                       29d47d30dac65e04f4bb369371a1e32a5867fd7429888337ed65d1a9a686a0d7
+firstclass.py                                       acfdc42daec3e701e017664caef370780db47c72ed1bc85fcc26999f8a38a3db
 install.py                                          359491275da6452b392fdec7b7dfcf5a39c618d9ca2b6447150b946feb7fab88
-tests/test_firstclass_b_source.py                   e9d69ed6055ef51409c34a42f213698dc144f9f052c897c686bafd4789769daa
+tests/test_firstclass_b_source.py                   b4f5a58fb9b24106fa0b45ae21558fe4a0afc089ec2e53e304b245d885c45d49
+evidence/m35-tests-repair.out                       a758b90531b0e254fdd48f6511dbcfb48499dd6abbef79b98723132d98a9a606
+evidence/m35-source-mutation-repair.json            194a257a7ee397506b47af941e8798c7ae893b0eab867a5e314d220497052304
+oracles/m35_source_mutation_oracle.py               63b232576a1377ca4bee93a8c448960e93f3b015e5e111c4382470c8d8b6ceaf
 ```
 
 Loaded closure: `bp2_joined.__file__` is under this return's `candidate/vendor/bp2`; `firstclass.JoinedProducer is bp2_joined.JoinedProducer` is true. The warm R31J BP2 staged vendor closure verifies 30/30 files (`bp2_joined.verify_sources()`; `source_manifest_sha256=1f624513d7f5591eb7418002871c9717ca430606e1205531e9f0d1d6025414da`), and no J/E/BP2 vendor file was edited or copied into this return.
+
+### Independent-review repair — exact source binding
+
+Review `901ee92248eb8ed8dc9ebf417a26d6ce22435060` in `maidiu/rawlsing-controller`
+reported 0 PASS / 9 FAIL at cut `55377b…`: `firstclass.validate_source` checked
+only envelope types and B actor/A recipient, so a caller could supply a
+valid-looking owner/event/operation/quantity/clock/E1 preimage that differed from
+the actual case and reach C8/C9.
+
+Repair:
+
+- Added `firstclass.case_preimage(case)` returning the exact observed B and E1
+  fields.
+- `firstclass.validate_source(source, case)` now compares every typed field to
+  that preimage: B actor, owner, event ref/hash, performed flag, operation,
+  quantity, recipient, clock, and A E1 ref/hash/clock.
+- A mismatch raises `MaterialSourceRefusal("MATERIAL_SOURCE_PREIMAGE_MISMATCH")`
+  in `c9_only`/`build_product` before the producer or C8 directory is created.
+- `source_from_case` now projects that same preimage, so a genuinely changed
+  lawful case (share→refuse) remains accepted while a forged envelope against a
+  fixed case is rejected.
+
+Executed after repair:
+
+```text
+PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q \
+  WORKER_RETURNS/SOROK-20261024-BP2-FIRSTCLASS-B-SOURCE-R1/tests \
+  -p no:cacheprovider
+8 passed in 2.03s, exit 0
+
+PYTHONDONTWRITEBYTECODE=1 python3 -B \
+  WORKER_RETURNS/SOROK-20261024-BP2-FIRSTCLASS-B-SOURCE-R1/oracles/m35_source_mutation_oracle.py
+9 rejected / 0 accepted, exit 0
+```
+
+The oracle is the reviewer's exact file (SHA-256
+`63b232576a1377ca4bee93a8c448960e93f3b015e5e111c4382470c8d8b6ceaf`); its
+frozen `cut`/`source_commit` fields name the reviewed cut. All nine mutations
+(`wrong_owner`, `wrong_event_ref`, `wrong_event_hash`, `wrong_clock`,
+`wrong_operation`, `wrong_quantity`, `wrong_e1_ref`, `wrong_e1_hash`,
+`wrong_e1_clock`) now fail with the named preimage code. Lawful share/refusal,
+targetless C12, the same E consumer, cold reopen and share→refusal→share restore
+remain green in the eight tests. Receipts: `evidence/m35-tests-repair.out`,
+`evidence/m35-source-mutation-repair.json`.
 
 ## 3. What changed and what did not
 
@@ -80,9 +127,9 @@ No production, original source, accepted authority, historical J/E/V/DEV-R branc
 | **SCIENTIFIC** | `TEST_ONLY_SYNTHETIC_MATERIAL_SOURCE__NO_PSYCHOGENESIS__NO_ACQUIRED_PRACTICE__B_ACTOR_ACCESS_UNKNOWN__H0_LIVE`. |
 | **AUTHORITY** | `HOLD` — no native CAN008/CAN011/ADP/C8/C11/C12/Pyat, no production, no human A5. |
 
-**DONE:** first-class typed B source before C8; A tool state derived from performed B operation/quantity; share → C9 CREATE and refusal → NO_CHANGE/no target; same R31E `do_help` consumer and targetless C12; cold reopen; source fault/restore; no ghost A inspection.
+**DONE:** exact B/E1 preimage binding before C8; forged source envelopes rejected; lawful share/refusal still accepted; first-class typed B source; A tool state derived from performed B operation/quantity; share → C9 CREATE and refusal → NO_CHANGE/no target; same R31E `do_help` consumer and targetless C12; cold reopen; source fault/restore; no ghost A inspection.
 
-**REMAINING:** independent acceptance review of the exact pushed SHA; native C10 targetless semantics for refusal; protected C8/C12 custody; original CAN008/CAN011 science and accountable issuers.
+**REMAINING:** independent reverify of the exact repair SHA; native C10 targetless semantics for refusal; protected C8/C12 custody; original CAN008/CAN011 science and accountable issuers.
 
 **CRITICAL BLOCKER:** no native targetless C10 contract and no verified original A/T issuer. Neither is fabricated here.
 
@@ -101,4 +148,4 @@ No production, original source, accepted authority, historical J/E/V/DEV-R branc
 
 ## 6. Publication
 
-Source commit `2d11e32c2d5e7d44449e03c6af68aa75d4de1a60` was pushed with an ordinary non-force push. `git ls-remote` read back the same SHA before the receipt-only commit; `PUBLICATION_RECEIPT.json` records that readback, and the final branch tip includes the receipt. No self-adoption, no force-push, no production or native claim.
+Original source commit `2d11e32c2d5e7d44449e03c6af68aa75d4de1a60` was pushed with an ordinary non-force push; `PUBLICATION_RECEIPT.json` records that readback. The source-binding repair is the branch tip after this return; its exact SHA and `git ls-remote` readback are returned in the worker response. No self-adoption, no force-push, no production or native claim.

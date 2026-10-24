@@ -24,12 +24,18 @@ from bp2_joined.material_source import (
 from r31j.product import R31JProduct
 
 
-def source_from_case(case: dict) -> dict:
-    """Project the GM01 B observation into the first-class BP2 envelope."""
+PREIMAGE_FIELDS = (
+    "b_actor", "b_owner", "b_event_ref", "b_event_hash", "b_performed",
+    "b_operation", "b_quantity", "b_to_actor", "b_clock",
+    "a_e1_ref", "a_e1_hash", "a_e1_clock",
+)
+
+
+def case_preimage(case: dict) -> dict:
+    """Return the exact observed B and A E1 fields that a source must match."""
     b_event = next(r for r in case["records"] if r["kind"] == "OTHER_PERFORMED")
     e1 = next(r for r in case["records"] if r["kind"] == "E1_EVENT")
     return {
-        "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
         "b_actor": b_event["subject"],
         "b_owner": b_event["owner"],
         "b_event_ref": b_event["ref"],
@@ -42,6 +48,14 @@ def source_from_case(case: dict) -> dict:
         "a_e1_ref": e1["ref"],
         "a_e1_hash": e1["content_hash"],
         "a_e1_clock": int(e1["at"]),
+    }
+
+
+def source_from_case(case: dict) -> dict:
+    """Project the exact GM01 B/E1 preimage into the first-class BP2 envelope."""
+    return {
+        "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+        **case_preimage(case),
         "source_grade": "TEST_ONLY_SOURCEFREE",
         "native": False,
         "psychology_claim": False,
@@ -49,16 +63,14 @@ def source_from_case(case: dict) -> dict:
 
 
 def validate_source(source: dict, case: dict) -> dict:
-    """Validate the envelope and its case-local owner/recipient identity."""
+    """Require the exact B and E1 preimage, not merely a valid-looking envelope."""
     normalized = validate_material_source(source)
-    if normalized["b_actor"] != case["other"]:
-        raise MaterialSourceRefusal(
-            "MATERIAL_SOURCE_B_ACTOR_MISMATCH",
-            f'{normalized["b_actor"]} != {case["other"]}')
-    if normalized["b_to_actor"] != case["actor"]:
-        raise MaterialSourceRefusal(
-            "MATERIAL_SOURCE_RECIPIENT_MISMATCH",
-            f'{normalized["b_to_actor"]} != {case["actor"]}')
+    expected = case_preimage(case)
+    for field in PREIMAGE_FIELDS:
+        if normalized[field] != expected[field]:
+            raise MaterialSourceRefusal(
+                "MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+                f'{field}: {normalized[field]!r} != {expected[field]!r}')
     return normalized
 
 
@@ -171,9 +183,11 @@ def c9_only(root, *, gm01=None, case, variant="A_REPAIR_LONG", source=None):
 
 __all__ = [
     "MaterialSourceRefusal",
+    "PREIMAGE_FIELDS",
     "SHARE_TOOL",
     "build_product",
     "c9_only",
+    "case_preimage",
     "material_access",
     "prepare_life",
     "produce",
