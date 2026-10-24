@@ -1,3 +1,12 @@
+# Pyat R92 — R04.joined and R05 returned; distinct reviews actually running
+
+R04 candidatea88ccd140f30fe621140ee98841c6ce57ae9cab4 verified7reporthashes/2codeblobs/ownscope, reviewerPID30032 session ses_e96304356ffeC8HSvwFluWOjG1. R05 candidate31d77fd37c501954c088c786db20d8056b6748f5 verified6hashes/3codeblobs/ownscope, reviewerPID31631 session ses_e962f7b5effeIc4B6gtfbZNHvh. Both existing distinct OpenCodeMAX native reviewers, no duplicate/new Codex workers. Neither candidate accepted. Actual restart/frontier/grant custody and actual learned/empirical unchanged N10E consumer proof are decisive, not author test counts.
+
+R91 user grant unchanged. R03 accepted sourcefree local. Original35/science/CI/prod/N11/N12/Sorok/J52W52 held.
+
+
+## Earlier progress history retained
+
 # Pyat R91 — direct user approved; R04.joined and R05 actually launched
 
 User approved the exact seven-path R61BB proposal. Controlling grant PYAT_CONTROL_ROOM/R91_USER_AUTHORIZED_R04_JOINED_R05_FLIGHT_20261024.json. Existing different OpenCode DeepSeekMAX/Global owners reused on isolated disjoint branches, no Codexworkers/newclones. R04joined startupc912497b25411ebbd3d796db139f32f5bebb6c4c PID26429; R05 exact accepted R03+R08 readonly assembly startup8a6ea2f6c8f3bbdc1d43454abfabc6d7744718d7 PID26430. Actual launch receipts/commissions pinned by director8a5583955eb30827c70e541eb1f5ced51da8f912. First TOOL startup gates pending; no author success or acceptance inferred.

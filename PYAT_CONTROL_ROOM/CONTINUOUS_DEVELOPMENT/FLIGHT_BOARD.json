@@ -1415,53 +1415,66 @@
       "return_commit": "409f6c78e9d9ed77377c778476b2c23e9eb15e8a"
     },
     "R04_joined": {
-      "id": "R04_JOINED",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
-      "branch": "agent/opencode-pyat-r91-r04-joined-custody-r1",
-      "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "scope": [
-        "rawlsing_next/pre553_issued_workload.py",
-        "rawlsing_next/tests/test_universal_workload_custody.py"
-      ],
-      "return_root": "WORKER_RETURNS/PYAT-R91-R04-JOINED-CUSTODY-R1/",
-      "startup": "c912497b25411ebbd3d796db139f32f5bebb6c4c",
-      "commission_path": "WORKER_COMMISSIONS/PYAT-R91-R04-JOINED-R05-FLIGHT-R1/R04_JOINED/00_COMMISSION.md",
-      "pid": 26429,
-      "commission_tip": "0f0f08373486a733b8946b82bfd576c17e506006",
-      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE",
-      "actual_tool_preflight": "PENDING",
-      "model": "opencode-go/deepseek-v4.1-flash",
-      "effort": "max",
-      "account": "existing Global",
-      "os_isolation": "NOT_PROVEN"
+      "state": "INDEPENDENT_REVIEW_RUNNING",
+      "candidate": "a88ccd140f30fe621140ee98841c6ce57ae9cab4",
+      "review": {
+        "id": "R04V",
+        "candidate": "a88ccd140f30fe621140ee98841c6ce57ae9cab4",
+        "report_hashes_verified": 7,
+        "code_blobs_verified": 2,
+        "scope_verified": [
+          "WORKER_RETURNS/PYAT-R91-R04-JOINED-CUSTODY-R1/00_RETURN.md",
+          "WORKER_RETURNS/PYAT-R91-R04-JOINED-CUSTODY-R1/CONTRACT.md",
+          "WORKER_RETURNS/PYAT-R91-R04-JOINED-CUSTODY-R1/COVERAGE_AND_LIMITS.md",
+          "WORKER_RETURNS/PYAT-R91-R04-JOINED-CUSTODY-R1/RESUME.md",
+          "WORKER_RETURNS/PYAT-R91-R04-JOINED-CUSTODY-R1/junit.xml",
+          "WORKER_RETURNS/PYAT-R91-R04-JOINED-CUSTODY-R1/manifest.json",
+          "WORKER_RETURNS/PYAT-R91-R04-JOINED-CUSTODY-R1/proof_witness.json",
+          "WORKER_RETURNS/PYAT-R91-R04-JOINED-CUSTODY-R1/pytest.log",
+          "rawlsing_next/pre553_issued_workload.py",
+          "rawlsing_next/tests/test_universal_workload_custody.py"
+        ],
+        "pid": 30032,
+        "session": "ses_e96304356ffeC8HSvwFluWOjG1",
+        "branch": "agent/opencode-pyat-r91-r04v-joined-independent-review-r1",
+        "commission_tip": "4d78c019d7c34c1ca2448e04f6a5e94248f35ba0",
+        "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_MAX",
+        "actual_tool_preflight": "PENDING",
+        "acceptance": "NOT_ACCEPTED"
+      }
     },
     "R05": {
-      "id": "R05",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r08",
-      "branch": "agent/opencode-pyat-r91-r05-learned-consumer-r1",
-      "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
-      "scope": [
-        "rawlsing_next/pre553_analytical_composition.py",
-        "rawlsing_next/pre553_learned_world_composition.py",
-        "rawlsing_next/pre553_empirical_possibility_provider.py",
-        "rawlsing_next/tests/test_universal_learned_consumer.py",
-        "rawlsing_next/pre553_universal_empirical_extension.py"
-      ],
-      "return_root": "WORKER_RETURNS/PYAT-R91-R05-LEARNED-CONSUMER-R1/",
-      "startup": "8a6ea2f6c8f3bbdc1d43454abfabc6d7744718d7",
-      "readonly_R08_assembly": {
-        "rawlsing_next/pre553_universal_evidence_binding.py": "3ca860e409f1d063da4cd03dd1691a89c67333f6",
-        "rawlsing_next/tests/test_universal_evidence_binding.py": "5832ce0598fa02df93fcd200010a0076921e6cbe"
-      },
-      "commission_path": "WORKER_COMMISSIONS/PYAT-R91-R04-JOINED-R05-FLIGHT-R1/R05/00_COMMISSION.md",
-      "pid": 26430,
-      "commission_tip": "0f0f08373486a733b8946b82bfd576c17e506006",
-      "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE",
-      "actual_tool_preflight": "PENDING",
-      "model": "opencode-go/deepseek-v4.1-flash",
-      "effort": "max",
-      "account": "existing Global",
-      "os_isolation": "NOT_PROVEN"
+      "state": "INDEPENDENT_REVIEW_RUNNING",
+      "candidate": "31d77fd37c501954c088c786db20d8056b6748f5",
+      "review": {
+        "id": "R05V",
+        "candidate": "31d77fd37c501954c088c786db20d8056b6748f5",
+        "report_hashes_verified": 6,
+        "code_blobs_verified": {
+          "rawlsing_next/pre553_learned_world_composition.py": "cdd5a1b5f4a12208cb752eb3ebabe5fa72f51255",
+          "rawlsing_next/pre553_universal_empirical_extension.py": "37279fa82001d5853dadf4906efc904e8dc3b9bc",
+          "rawlsing_next/tests/test_universal_learned_consumer.py": "61c84067d3062cfb70568b8ecc1f56484d7722a5"
+        },
+        "scope_verified": [
+          "WORKER_RETURNS/PYAT-R91-R05-LEARNED-CONSUMER-R1/00_RETURN.md",
+          "WORKER_RETURNS/PYAT-R91-R05-LEARNED-CONSUMER-R1/CONTRACT.md",
+          "WORKER_RETURNS/PYAT-R91-R05-LEARNED-CONSUMER-R1/COVERAGE_AND_LIMITS.md",
+          "WORKER_RETURNS/PYAT-R91-R05-LEARNED-CONSUMER-R1/RESUME.md",
+          "WORKER_RETURNS/PYAT-R91-R05-LEARNED-CONSUMER-R1/junit.xml",
+          "WORKER_RETURNS/PYAT-R91-R05-LEARNED-CONSUMER-R1/manifest.json",
+          "WORKER_RETURNS/PYAT-R91-R05-LEARNED-CONSUMER-R1/proof_witness.json",
+          "rawlsing_next/pre553_learned_world_composition.py",
+          "rawlsing_next/pre553_universal_empirical_extension.py",
+          "rawlsing_next/tests/test_universal_learned_consumer.py"
+        ],
+        "pid": 31631,
+        "session": "ses_e962f7b5effeIc4B6gtfbZNHvh",
+        "branch": "agent/opencode-pyat-r91-r05v-consumer-independent-review-r1",
+        "commission_tip": "40c725a97f920fe408a3a2ea208917c21f71cd22",
+        "state": "ACTUALLY_LAUNCHED_ATTENDED_OPENCODE_MAX",
+        "actual_tool_preflight": "PENDING",
+        "acceptance": "NOT_ACCEPTED"
+      }
     }
   },
   "next_implementation_grant": {
