@@ -1,0 +1,70 @@
+{
+  "schema": "PYAT_R91_R04V_R3_JOINED_INDEPENDENT_ORACLE_RESULTS@1",
+  "candidate": "e6f7b04c49772e07c20ad36f65b9b270a28a49cf",
+  "author_code": "6068ab9e53b652ab603b30f8db55738393daff9b",
+  "review_branch": "agent/opencode-pyat-r91-r04v-r3-joined-review-r1",
+  "prior_review": "239f492272bd72011f53570020a4b0cdc27dff27",
+  "verdict": "ACCEPT_SCOPED_LOCAL",
+  "author_focused_suite": {
+    "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_workload_custody.py -q --junitxml=.../replay/author_suite_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 6,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/author_suite.log",
+    "junit": "replay/author_suite_junit.xml"
+  },
+  "retained_r03_suite": {
+    "command": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_workload.py -q --junitxml=.../replay/r03_suite_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 16,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/r03_suite.log",
+    "junit": "replay/r03_suite_junit.xml"
+  },
+  "reviewer_successor_probes": {
+    "command": "/usr/local/bin/python3 -m pytest .../independent_probes/test_r04v_r3.py -q --junitxml=.../replay/hostile_probes_junit.xml -o addopts=''",
+    "exit": 0,
+    "passed": 5,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "replay/hostile_probes.log",
+    "junit": "replay/hostile_probes_junit.xml",
+    "covers": [
+      "uninterrupted vs restored unary output is actual QueryExecutionResult with equal query_ref/facts/release_refs",
+      "uninterrupted vs restored governed discovery is a frozen RetainedDiscoveryResultView with equal evaluated-frontier/replay/fact/receipt/executed-predicate/query identities",
+      "restored discovery view mutation raises FrozenInstanceError",
+      "external original pin rejects self-rehashed forged checkpoint; genuine restore passes",
+      "real partial multi-unit prefix -> fresh process -> pending units matches uninterrupted output refs/facts/states with no completed rerun"
+    ]
+  },
+  "retained_positives": {
+    "actual_governed_capture": "PASS",
+    "external_original_pin": "PASS",
+    "partial_multinode_fresh_process": "PASS",
+    "original_manifest": "PASS",
+    "no_completed_rerun": "PASS",
+    "current_grant_source": "PASS",
+    "u43_exact": true,
+    "r03_native_unchanged": true,
+    "r04_byte_decoder_readonly": true
+  },
+  "f1_f6_matrix": {
+    "F1": "PASS",
+    "F2": "PASS",
+    "F3": "PASS",
+    "F4": "PASS",
+    "F5": "PASS",
+    "F6": "PASS"
+  },
+  "non_blocking_note": "The unary completed output is the actual QueryExecutionResult. The discovery completed result remains a SimpleNamespace container whose native_result is the frozen checked RetainedDiscoveryResultView; the output view itself is immutable/validated.",
+  "unknowns_and_boundaries": [
+    "Sourcefree TEST_ONLY local trusted host; no source respondent access.",
+    "Both pin and candidate replaced by a different trusted host is the R61AV excluded boundary.",
+    "R05/original science/CI/prod/N11/N12/Sorok/J52/W52 NOT_REACHED."
+  ]
+}
