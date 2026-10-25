@@ -1,0 +1,78 @@
+{
+  "author_candidate": "359ffcef4c2dbde0bea7233bdb8901e8ed28e9be",
+  "author_code": "b6acb241366b1a940c613a779037f97351bd0d85",
+  "author_code_blobs": {
+    "rawlsing_next/pre553_universal_world_binding.py": "fe167820246ace0881d33870442064f85a04da10",
+    "rawlsing_next/tests/test_universal_world_binding.py": "f78b983b514f1a0a78bf16c5f05ddc2adfaf2bc8"
+  },
+  "baseline": "22280a3f43e751bab1bbebe0a9d8c601b3160120",
+  "commission": "ac6a26809d8cb94cf806d15936f68a96cacd29c6",
+  "environment": {
+    "pytest": "9.0.2",
+    "python": "3.11.3",
+    "reviewer": "existing distinct OpenCode Go DeepSeek V4.1 Flash MAX Global session"
+  },
+  "evidence_commit": "",
+  "evidence_commit_remote_readback": {},
+  "expectations_freeze_commit": "ef3cf0167",
+  "expectations_sha256": "aa7c8828cb029c702311554c6e5feb7b9de9af41e8c9fbcfd1ac1bddc9bcba82",
+  "findings": {
+    "accepted_scoped": [
+      "empirical revocation/currentness/restore actual state",
+      "actual evaluated N10E to N10W positioned binding"
+    ],
+    "held": [
+      "P41 world-value to N10W consumption, exact owner amendment reported"
+    ],
+    "revise": [
+      "world rows_hash agreement missing",
+      "world source repository omission bypasses agreement",
+      "mixed-prefix repository identity not checked"
+    ]
+  },
+  "not_reached": [
+    "original 35/1890",
+    "global F6/F7/F8",
+    "source/science",
+    "actor/person state",
+    "R09/CI/prod",
+    "N11/N12/Sorok/J52/W52"
+  ],
+  "positive": "author 26/26; exact R109 probes 6/6; condition value, unlike shape, minority/zero/uncertainty, T0/T1 routes, field/empirical revocation, actual N10W LIVE_TRACE hashes, cold replay",
+  "prior_r109_review": "e38a6a8c07ea6535a0d4de38053c15e4278934d7",
+  "r110_contract": "53981ac013755407ebf7de88f894add2f1dc2858",
+  "r107_contract": "bb4ad106af69eae197251d8c0d54f7162901fd5e",
+  "review_branch": "agent/opencode-pyat-r111-r06-binding-repair-review-r1",
+  "tests": {
+    "author_suite": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/author_suite_junit.xml",
+      "passed": 26,
+      "skipped": 0,
+      "time_seconds": 219.557
+    },
+    "r109_probes": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/r109_probes_junit.xml",
+      "passed": 6,
+      "skipped": 0,
+      "time_seconds": 4.599
+    },
+    "successor_probes": {
+      "errors": 0,
+      "failures": 3,
+      "junit": "replay/successor_junit.xml",
+      "passed": 2,
+      "skipped": 0,
+      "time_seconds": 3.452,
+      "failed_tests": [
+        "test_R111_world_rows_hash_mismatch_must_refuse",
+        "test_R111_world_repository_omission_must_refuse",
+        "test_R111_mixed_prefix_repository_must_refuse"
+      ]
+    }
+  },
+  "verdict": "REVISE_SCOPED_REPAIR_1_ACCEPT_2_3"
+}

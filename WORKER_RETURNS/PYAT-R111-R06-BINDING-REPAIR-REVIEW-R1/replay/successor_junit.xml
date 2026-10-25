@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="5" time="3.452" timestamp="2026-10-25T15:26:18.263817-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R111-R06-BINDING-REPAIR-REVIEW-R1.probes.test_r111_successor" name="test_R111_world_rows_hash_mismatch_must_refuse" time="0.252"><failure message="AssertionError: world rows_hash mismatch was accepted while a selected view was served&#10;assert 'PROGRESSIVE_WORLD_SELECTED_VIEW' in {'PROGRESSIVE_WORLD_UNAVAILABLE', 'REFUSED'}&#10; +  where 'PROGRESSIVE_WORLD_SELECTED_VIEW' = ProgressiveWorldView(state='PROGRESSIVE_WORLD_SELECTED_VIEW', reason_code='ACTUAL_N9_N10E_N10W', target_ref=ExactRef(k...r_state='NOT_TOUCHED', view_hash='c8fa572b094fef6aba7fe67c5da085887e26b6e72a8113d2a2a395d34cb93765', z_unresolved=True).state">def test_R111_world_rows_hash_mismatch_must_refuse():
+        target, conditions, prefixes, world = _progressive_fixture_parts()
+        bad = dict(world)
+        bad["rows_hash"] = "f" * 64
+        handle = configure_progressive_world_context(
+            target_ref=target, conditions=conditions, prefixes=prefixes,
+            world_empirical=bad,
+        )
+        view = _view(handle)
+&gt;       assert view.state in {"REFUSED", "PROGRESSIVE_WORLD_UNAVAILABLE"}, (
+            "world rows_hash mismatch was accepted while a selected view was served"
+        )
+E       AssertionError: world rows_hash mismatch was accepted while a selected view was served
+E       assert 'PROGRESSIVE_WORLD_SELECTED_VIEW' in {'PROGRESSIVE_WORLD_UNAVAILABLE', 'REFUSED'}
+E        +  where 'PROGRESSIVE_WORLD_SELECTED_VIEW' = ProgressiveWorldView(state='PROGRESSIVE_WORLD_SELECTED_VIEW', reason_code='ACTUAL_N9_N10E_N10W', target_ref=ExactRef(k...r_state='NOT_TOUCHED', view_hash='c8fa572b094fef6aba7fe67c5da085887e26b6e72a8113d2a2a395d34cb93765', z_unresolved=True).state
+
+WORKER_RETURNS/PYAT-R111-R06-BINDING-REPAIR-REVIEW-R1/probes/test_r111_successor.py:28: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R111-R06-BINDING-REPAIR-REVIEW-R1.probes.test_r111_successor" name="test_R111_world_repository_omission_must_refuse" time="0.109"><failure message="AssertionError: world source repository omission bypassed repository identity agreement&#10;assert 'PROGRESSIVE_WORLD_SELECTED_VIEW' in {'PROGRESSIVE_WORLD_UNAVAILABLE', 'REFUSED'}&#10; +  where 'PROGRESSIVE_WORLD_SELECTED_VIEW' = ProgressiveWorldView(state='PROGRESSIVE_WORLD_SELECTED_VIEW', reason_code='ACTUAL_N9_N10E_N10W', target_ref=ExactRef(k...r_state='NOT_TOUCHED', view_hash='b53c95b7b2165435ccd3a8253305d7f936926b86d1ae34cfcb0456f4f7849272', z_unresolved=True).state">def test_R111_world_repository_omission_must_refuse():
+        target, conditions, prefixes, world = _progressive_fixture_parts()
+        bad = dict(world)
+        bad["source"] = {
+            key: value for key, value in world["source"].items() if key != "repo"
+        }
+        handle = configure_progressive_world_context(
+            target_ref=target, conditions=conditions, prefixes=prefixes,
+            world_empirical=bad,
+        )
+        view = _view(handle)
+&gt;       assert view.state in {"REFUSED", "PROGRESSIVE_WORLD_UNAVAILABLE"}, (
+            "world source repository omission bypassed repository identity agreement"
+        )
+E       AssertionError: world source repository omission bypassed repository identity agreement
+E       assert 'PROGRESSIVE_WORLD_SELECTED_VIEW' in {'PROGRESSIVE_WORLD_UNAVAILABLE', 'REFUSED'}
+E        +  where 'PROGRESSIVE_WORLD_SELECTED_VIEW' = ProgressiveWorldView(state='PROGRESSIVE_WORLD_SELECTED_VIEW', reason_code='ACTUAL_N9_N10E_N10W', target_ref=ExactRef(k...r_state='NOT_TOUCHED', view_hash='b53c95b7b2165435ccd3a8253305d7f936926b86d1ae34cfcb0456f4f7849272', z_unresolved=True).state
+
+WORKER_RETURNS/PYAT-R111-R06-BINDING-REPAIR-REVIEW-R1/probes/test_r111_successor.py:44: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R111-R06-BINDING-REPAIR-REVIEW-R1.probes.test_r111_successor" name="test_R111_repairs_two_and_three_and_prior_positives_remain" time="1.711" /><testcase classname="WORKER_RETURNS.PYAT-R111-R06-BINDING-REPAIR-REVIEW-R1.probes.test_r111_successor" name="test_R111_mixed_prefix_repository_must_refuse" time="0.121"><failure message="AssertionError: mixed-prefix repository identity was accepted while a selected view was served&#10;assert 'PROGRESSIVE_WORLD_SELECTED_VIEW' in {'PROGRESSIVE_WORLD_UNAVAILABLE', 'REFUSED'}&#10; +  where 'PROGRESSIVE_WORLD_SELECTED_VIEW' = ProgressiveWorldView(state='PROGRESSIVE_WORLD_SELECTED_VIEW', reason_code='ACTUAL_N9_N10E_N10W', target_ref=ExactRef(k...r_state='NOT_TOUCHED', view_hash='b53c95b7b2165435ccd3a8253305d7f936926b86d1ae34cfcb0456f4f7849272', z_unresolved=True).state">def test_R111_mixed_prefix_repository_must_refuse():
+        from copy import copy
+        from dataclasses import replace
+        target, conditions, prefixes, world = _progressive_fixture_parts()
+        mixed = (prefixes[0], replace(
+            prefixes[1], repository=copy(prefixes[1].repository),
+        ))
+        handle = configure_progressive_world_context(
+            target_ref=target, conditions=conditions, prefixes=mixed,
+            world_empirical=world,
+        )
+        view = _view(handle)
+&gt;       assert view.state in {"REFUSED", "PROGRESSIVE_WORLD_UNAVAILABLE"}, (
+            "mixed-prefix repository identity was accepted while a selected view was served"
+        )
+E       AssertionError: mixed-prefix repository identity was accepted while a selected view was served
+E       assert 'PROGRESSIVE_WORLD_SELECTED_VIEW' in {'PROGRESSIVE_WORLD_UNAVAILABLE', 'REFUSED'}
+E        +  where 'PROGRESSIVE_WORLD_SELECTED_VIEW' = ProgressiveWorldView(state='PROGRESSIVE_WORLD_SELECTED_VIEW', reason_code='ACTUAL_N9_N10E_N10W', target_ref=ExactRef(k...r_state='NOT_TOUCHED', view_hash='b53c95b7b2165435ccd3a8253305d7f936926b86d1ae34cfcb0456f4f7849272', z_unresolved=True).state
+
+WORKER_RETURNS/PYAT-R111-R06-BINDING-REPAIR-REVIEW-R1/probes/test_r111_successor.py:82: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R111-R06-BINDING-REPAIR-REVIEW-R1.probes.test_r111_successor" name="test_R111_actual_evaluator_value_use_is_required" time="0.468" /></testsuite></testsuites>
