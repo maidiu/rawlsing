@@ -1,0 +1,371 @@
+{
+  "state_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s44-hq-encounter-_dety5wx",
+  "root": "84687e6f34116693c00243b4c7e7e76fa0f24146b992b372d8920cab153cb930",
+  "branch": "first_session",
+  "events_before": 1,
+  "mediation_binding": null,
+  "methods": {
+    "say": {
+      "status": "OK",
+      "user_event": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_891473bb947fc61c86a15ceb4bf02b044b31585b83cdeaac012b593edc2fc08e",
+        "schema": "BP4_WORLD_EVENT@1",
+        "clock": 212,
+        "kind": "SPEECH",
+        "actor_id": "U",
+        "location": "workshop",
+        "summary": "U says: Can I help?",
+        "body": {
+          "text": "Can I help?",
+          "observable": true
+        },
+        "owner_receipt": null,
+        "persistent": false,
+        "sequence": 4,
+        "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+        "native": false,
+        "hash": "ef9f4a7019803fb8c565efa112e85a1e949283cf36ffdedb5fa101f302bfd04b"
+      },
+      "strategy": "HELP_INVITE",
+      "candidate": {
+        "schema": "R31E_EXPRESSION_CANDIDATE@1",
+        "strategy": "HELP_INVITE",
+        "template_id": "help_invite_2",
+        "slots": {},
+        "speech": "You can hold the near edge if you mean it.",
+        "gesture": "A tilts the piece toward you.",
+        "tone": "practical",
+        "action": "NONE",
+        "facts": [],
+        "contact": "",
+        "knowledge_refs": [],
+        "variant": 1
+      },
+      "admission": {
+        "schema": "R31E_EXPRESSION_ADMISSION@1",
+        "admission_id": "9a49e41148560dd725529b9f33a7088a08eac3c0a2b485a122cc033a58434be4",
+        "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+        "native": false,
+        "strategy": "HELP_INVITE",
+        "template_id": "help_invite_2",
+        "contract_hash": "e2f9d74b9fa43744711b4c8e1cd5e29f70f07871cbb06d9bad4cb74b2ac2cdab",
+        "source_ref": "TEST_ONLY_S40_M35_FIRSTCLASS_B",
+        "target_id": "",
+        "consumed_state_hash": "",
+        "clock": 212,
+        "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_001375cbdca8cf3e020f53b67bd29bbf131caa2a28a261a5f0dab913b5414d31",
+        "message_episode_id": "",
+        "action_event_id": "",
+        "contact_outcome": "",
+        "validation": {
+          "ok": true,
+          "checks": {
+            "contract_hash_current": true,
+            "scene_open_or_message": true,
+            "actor_present_or_message": true,
+            "not_stale_clock": true,
+            "template_known": true,
+            "action_allowed": true,
+            "speech_nonempty": true,
+            "speech_length": true,
+            "speech_single_line": true,
+            "template_rerender_exact": true,
+            "no_private_tokens": true,
+            "no_private_values": true,
+            "facts_supported": true,
+            "knowledge_refs": true
+          }
+        },
+        "fact_count": 0,
+        "knowledge_ref_count": 0,
+        "motive_status": "MOTIVE_UNDERDETERMINED",
+        "attention_excluded": true
+      },
+      "contract_hash": "e2f9d74b9fa43744711b4c8e1cd5e29f70f07871cbb06d9bad4cb74b2ac2cdab",
+      "surface": [
+        "You say: \"Can I help?\"",
+        "the repair worker says: \"You can hold the near edge if you mean it.\" A tilts the piece toward you."
+      ],
+      "language": null,
+      "product_model_calls": 0
+    },
+    "do_help": {
+      "status": "OK",
+      "accepted": true,
+      "strategy": "HELP_ACCEPT",
+      "candidate": {
+        "schema": "R31E_EXPRESSION_CANDIDATE@1",
+        "strategy": "HELP_ACCEPT",
+        "template_id": "help_accept_2",
+        "slots": {},
+        "speech": "Put your hand on the near edge. I'll take the slack.",
+        "gesture": "A clears a space at the bench.",
+        "tone": "practical",
+        "action": "REPAIR",
+        "facts": [
+          {
+            "kind": "ACTOR_FIELD",
+            "field": "tools_remaining",
+            "value": 1
+          }
+        ],
+        "contact": "",
+        "knowledge_refs": [],
+        "variant": 1
+      },
+      "admission": {
+        "schema": "R31E_EXPRESSION_ADMISSION@1",
+        "admission_id": "ece38a7ec3b298a43a63752ae33ac34fb3a7ff46144390f8e011fef0298896e7",
+        "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+        "native": false,
+        "strategy": "HELP_ACCEPT",
+        "template_id": "help_accept_2",
+        "contract_hash": "b33684c55c67f221d302f434ccaa4b3643046d92186f8005bd65b0226bfaa121",
+        "source_ref": "TEST_ONLY_S40_M35_FIRSTCLASS_B",
+        "target_id": "",
+        "consumed_state_hash": "",
+        "clock": 212,
+        "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_ab7dcf5363b6d7e1e4a536824663c891156664b1049801542058293062753433",
+        "message_episode_id": "",
+        "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_d24702d2e14d72273359443c07c4b86cc3fbcd476f992197bdb7ac8ea6f58804",
+        "contact_outcome": "",
+        "validation": {
+          "ok": true,
+          "checks": {
+            "contract_hash_current": true,
+            "scene_open_or_message": true,
+            "actor_present_or_message": true,
+            "not_stale_clock": true,
+            "template_known": true,
+            "action_allowed": true,
+            "speech_nonempty": true,
+            "speech_length": true,
+            "speech_single_line": true,
+            "template_rerender_exact": true,
+            "no_private_tokens": true,
+            "no_private_values": true,
+            "facts_supported": true,
+            "knowledge_refs": true,
+            "repair_capacity": true,
+            "a_at_workshop": true
+          }
+        },
+        "fact_count": 1,
+        "knowledge_ref_count": 0,
+        "motive_status": "MOTIVE_UNDERDETERMINED",
+        "attention_excluded": true
+      },
+      "contract_hash": "b33684c55c67f221d302f434ccaa4b3643046d92186f8005bd65b0226bfaa121",
+      "surface": [
+        "A material repair is performed in the workshop.",
+        "the repair worker says: \"Put your hand on the near edge. I'll take the slack.\" A clears a space at the bench."
+      ]
+    },
+    "attend": {
+      "status": "NO_CHANGE",
+      "new_knowledge": [],
+      "surface": []
+    }
+  },
+  "events_after": 1,
+  "verify": {
+    "ok": true,
+    "errors": [],
+    "counts": {
+      "episode": 24,
+      "world_event": 9,
+      "checkpoint": 19,
+      "perception": 27
+    },
+    "branch_id": "first_session",
+    "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+    "verifier": "R26E_QUALIFIED_C12_PREIMAGE",
+    "root": {
+      "ok": true,
+      "errors": [],
+      "counts": {
+        "episode": 0,
+        "world_event": 1,
+        "checkpoint": 1,
+        "perception": 2
+      },
+      "branch_id": "root",
+      "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+      "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+    },
+    "lineage": {
+      "ok": true,
+      "checks": {
+        "no_lineage_is_root_session": true,
+        "parent_is_c12_root": true
+      },
+      "observed": {
+        "branch_id": "first_session",
+        "branch": {
+          "branch_id": "first_session",
+          "parent_branch_id": "root",
+          "fork_clock": 10,
+          "root_hash": "98cec99bfcf01dbdd2d324bd19593b7c90b8134922180d994eb0c7cd72ab4ca8",
+          "root_counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "created_clock": 10,
+          "actor_ids": [
+            "A",
+            "B",
+            "U"
+          ]
+        }
+      }
+    },
+    "provenance": {
+      "ok": true,
+      "checks": {
+        "source_matches_meta": true,
+        "source_matches_c8": true,
+        "source_matches_sidecar": true,
+        "source_operation_lawful": true,
+        "source_performed": true,
+        "c8_matches_sidecar": true,
+        "s36_matches_sidecar": true,
+        "meta_case_matches_source": true,
+        "source_actor_map": true,
+        "c8_actor_is_seed_a": true,
+        "c8_other_is_seed_b": true,
+        "source_b_is_seed_b": true,
+        "source_b_to_is_seed_a": true,
+        "meta_c8_matches_sidecar": true,
+        "meta_e1_matches_sidecar": true,
+        "c8_state_digest_matches_seed": true,
+        "e1_hash_matches_seed": true,
+        "c12_source_matches": true,
+        "c12_c8_matches": true,
+        "c12_s36_matches": true,
+        "targetless_meta": true,
+        "target_id_absent": true,
+        "target_branch_no_change": true,
+        "target_reason_no_proposal": true,
+        "target_proposals_zero": true,
+        "tool_state_matches_source": true,
+        "material_access_matches_source": true,
+        "native_grants_false": true,
+        "no_native_sidecar": true,
+        "root_actors_a_b": true,
+        "branch_has_user": true,
+        "c12_root_ok": true,
+        "c12_branch_ok": true,
+        "binding_readable": true
+      },
+      "observed": {
+        "source_operation": "SHARE_TOOL",
+        "source_b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+        "c8_occurrence_id": "OCC-0001",
+        "c8_state_digest": "3e511c654d81c916344600d89dcd42f00eef68399bdc990a29891e042ece56a4",
+        "e1_event_hash": "79e8224ff3122d9005ab3c691661d292e84f7bf3330ec6b86e24a44ba9984b71",
+        "response_ref": "de6bf8d91e27a19d6542999f3f853b5a2e37cade6cf9b379201af67be634af41",
+        "c9_receipt_hash": "89d0b89bb17c3bc54e0b5a9118c6c310547b9dd13029beb8e7338dae6c13259e",
+        "target_branch": "NO_CHANGE",
+        "target_reason": "NO_PROPOSAL",
+        "tools_remaining": 1,
+        "source_actor_map": {
+          "TEST_ONLY_R31J_A": "TEST_ONLY_BP1_R26V_ACTOR_A",
+          "TEST_ONLY_R31J_B": "TEST_ONLY_BP1_R26V_ACTOR_B"
+        },
+        "seed_actors": {
+          "a": "TEST_ONLY_BP1_R26V_ACTOR_A",
+          "b": "TEST_ONLY_BP1_R26V_ACTOR_B"
+        }
+      }
+    },
+    "targetless": true,
+    "s36": {
+      "response_ref": "de6bf8d91e27a19d6542999f3f853b5a2e37cade6cf9b379201af67be634af41",
+      "c9_receipt_hash": "89d0b89bb17c3bc54e0b5a9118c6c310547b9dd13029beb8e7338dae6c13259e",
+      "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+      "target_branch": "NO_CHANGE",
+      "target_reason": "NO_PROPOSAL",
+      "target_proposals": []
+    },
+    "s39_generation": {
+      "status": "OK",
+      "generation_hash": "c3b183000983fb6dda74130225d5c3fcd19fcab5c4847b309209aedf7e2c1636",
+      "attempt_hash": "59b9e9a6331dff490010752dd229ab8b5ce845bb2b5508f0f3c24534d52afc20",
+      "selected_option": "REQUEST_TOOL",
+      "attempt_status": "ADMITTED",
+      "performed": true,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_e0ba3ed807d933144be6b18e2b67f56660aeeae0fbc1d1cb07db2c2f12bbc209",
+      "event_hash": "94ee97426ac94daae832607bbc35cebd8604705e9c49534d88d17ef3f7683daf",
+      "s36": {
+        "response_ref": "de6bf8d91e27a19d6542999f3f853b5a2e37cade6cf9b379201af67be634af41",
+        "c9_receipt_hash": "89d0b89bb17c3bc54e0b5a9118c6c310547b9dd13029beb8e7338dae6c13259e",
+        "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+        "response_kind": "REQUEST_TOOL",
+        "target_branch": "NO_CHANGE",
+        "target_reason": "NO_PROPOSAL",
+        "target_proposals": [],
+        "target_state_rows": 0
+      },
+      "provenance": "TEST_ONLY_CONSTRUCTIVE_GENERATION_NOT_EXTERNALLY_OBSERVED"
+    },
+    "s40_language": {
+      "status": "OK",
+      "selected_option": "REQUEST_TOOL",
+      "attempt_status": "ADMITTED",
+      "performed": true,
+      "language_status": "ACCEPTED",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_e0ba3ed807d933144be6b18e2b67f56660aeeae0fbc1d1cb07db2c2f12bbc209",
+      "speech_event_hash": "94ee97426ac94daae832607bbc35cebd8604705e9c49534d88d17ef3f7683daf",
+      "native_text": "\u00bfPuedo usar la herramienta?",
+      "translation_text": "May I use the tool?",
+      "plan_hash": "dc7ab388b926d8481771e8fb168d158253f13a31f180ff76c707ea419fe2e7e8",
+      "equivalence_receipt_hash": "221a6685612215b1f0e5301f91dbb7a6221a2217872220c221f51ef48896df93",
+      "s36": {
+        "response_ref": "de6bf8d91e27a19d6542999f3f853b5a2e37cade6cf9b379201af67be634af41",
+        "c9_receipt_hash": "89d0b89bb17c3bc54e0b5a9118c6c310547b9dd13029beb8e7338dae6c13259e",
+        "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+        "response_kind": "REQUEST_TOOL",
+        "target_branch": "NO_CHANGE",
+        "target_reason": "NO_PROPOSAL",
+        "target_proposals": [],
+        "target_state_rows": 0
+      }
+    },
+    "s41_events": [
+      {
+        "event_ordinal": 1,
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "e1_event_hash": "79e8224ff3122d9005ab3c691661d292e84f7bf3330ec6b86e24a44ba9984b71",
+        "status": "OK",
+        "source_operation": "SHARE_TOOL",
+        "selected_option": "REQUEST_TOOL",
+        "attempt_status": "ADMITTED",
+        "target_proposals": []
+      }
+    ],
+    "s42_events": [
+      {
+        "event_ordinal": 1,
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "e1_event_hash": "79e8224ff3122d9005ab3c691661d292e84f7bf3330ec6b86e24a44ba9984b71",
+        "status": "OK",
+        "source_operation": "SHARE_TOOL",
+        "selected_option": "REQUEST_TOOL",
+        "attempt_status": "ADMITTED",
+        "target_proposals": []
+      }
+    ],
+    "s43_events": [],
+    "s44_root": {
+      "status": "OK",
+      "root_hash": "84687e6f34116693c00243b4c7e7e76fa0f24146b992b372d8920cab153cb930",
+      "actor_ids": [
+        "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "TEST_ONLY_BP1_R26V_ACTOR_B"
+      ],
+      "event_ref_count": 11
+    }
+  }
+}
