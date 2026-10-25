@@ -1,0 +1,39 @@
+{
+  "schema": "SOROK_REVIEW_S44_CLOSURE_V1",
+  "candidate_branch": "codex/sorok-s44-sampled-root-consumer",
+  "corrected_commit": "923278fbe6b030e2ffdd10fe42d7a18266344611",
+  "prior_reviewed_commit": "b623a9852e476c9427ec6077285819f0586bc39b",
+  "prior_review_receipt": "edbaf4264a621f62bda09b3fe140b9cc1b7917a4",
+  "base": "3edd631fb6c31751dfd2143ba2faa9fc31561e54",
+  "hq_decision": "f5305c6d6159ef7117bce52b95369b5618f5444c",
+  "source_cuts": {
+    "m35": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+    "s36": "8da78d8031a06a4bd7e1297fd713e573299c0860",
+    "s37": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+    "s39": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+    "s40": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+    "s41": "c72a10d284f8869b990db3e6849ed174a51bd784",
+    "s42": "2489f8cdfbb5c400c636f33c7cf8cdf0aa55dc91",
+    "s43": "3edd631fb6c31751dfd2143ba2faa9fc31561e54",
+    "language": "8d2920da951f98cd8246d7c34cac777928e0c732",
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135"
+  },
+  "decision": "ACCEPT_SCOPED",
+  "closed_defect": "ADP-020 candidate replay/authority/eligibility fields and exact anchor coordinate are present, validated, and included in candidate-set/decision identity",
+  "checks": {
+    "focused_tests": "10 PASS, 0 FAIL (5.78s)",
+    "contract_negative_subset": "2 passed, 8 deselected",
+    "preserved_oracle": "exit 0; no missing candidate fields, no missing coordinate fields, no legacy anchor_event_id",
+    "entrypoint": "PASS; sampled root, root language, cold replay, native/English, NO_CHANGE, zero targets",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "s44/rng.py": "d4c858890f90c31cd50915fb673e27fc9aa932015a2670393eb0fc053f483468",
+    "s44/bundle.py": "82e433cbbcc23eb51664c1189ab0c4f7e6126d5bb458eb1879ef1dad80917af8",
+    "tests/test_s44_sampled_root.py": "ef461c5e0e036d9f3c3a8c41edc239108259a77c7039dbba5ba7e24b12056935",
+    "evidence/s44-closure-tests-10.out": "0799c94bed7b9580474ef216cf4f28c4d5a49de7c54b3f7aef528b3ed1b7ff9a",
+    "evidence/s44-contract-negatives.out": "b86c2349a287d0508890da8b7598a6b26f353fbd27116ef7666f2047d71f3628",
+    "evidence/s44-closure-entrypoint.json": "f436bc26c143b4d4eb09dac3895c9c21f3070ed28e8c6da2e76b8ea0150addfe",
+    "evidence/adp020-contract.json": "d31ad567192f5231bb4200a44f6690a7404279ce231736adc96d8487e32dd959"
+  }
+}
