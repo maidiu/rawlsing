@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261025-PYAT-HQ-R109-AUTOMATIC-REVIEW-FLIGHT-R1",
-  "handoff_commit": "55e34994ccfa4347a777b1ca610cf3b03b2b9186",
+  "checkpoint_id": "20261025-PYAT-HQ-R110-BINDING-REPAIR-FLIGHT-R1",
+  "handoff_commit": "a8cba83191b66322e01e0bd202e7b890735e21de",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R109-AUTOMATIC-REVIEW-FLIGHT-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R109-AUTOMATIC-REVIEW-FLIGHT-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R109-AUTOMATIC-REVIEW-FLIGHT-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R110-BINDING-REPAIR-FLIGHT-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R110-BINDING-REPAIR-FLIGHT-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R110-BINDING-REPAIR-FLIGHT-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "55e34994ccfa4347a777b1ca610cf3b03b2b9186",
+  "canonical_control_base": "a8cba83191b66322e01e0bd202e7b890735e21de",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "55e34994ccfa4347a777b1ca610cf3b03b2b9186",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R109-AUTOMATIC-REVIEW-FLIGHT-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R109-AUTOMATIC-REVIEW-FLIGHT-R1/CURRENT.md",
+  "qualified_working_hq_commit": "a8cba83191b66322e01e0bd202e7b890735e21de",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R110-BINDING-REPAIR-FLIGHT-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R110-BINDING-REPAIR-FLIGHT-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 109,
-    "canonical_report_commit": "55e34994ccfa4347a777b1ca610cf3b03b2b9186",
+    "revision": 110,
+    "canonical_report_commit": "a8cba83191b66322e01e0bd202e7b890735e21de",
     "counterpart": "Sorok rev34 independent; no Pyat actor grant"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261025-PYAT-HQ-R108-LOW-RETURN-R1",
-    "handoff_commit": "0aa6a9f8aa153960de9dd01b0afa85382d828a40"
+    "checkpoint_id": "20261025-PYAT-HQ-R109-AUTOMATIC-REVIEW-FLIGHT-R1",
+    "handoff_commit": "55e34994ccfa4347a777b1ca610cf3b03b2b9186"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "Automatic scheduled intake of R109 distinct R06 progressive review; verify terminal return then adjudicate precise scope. Repair demonstrated defects through existing author if needed; no duplicate workers or scope expansion.",
-  "worker_state_truth": "R107 author terminal; R109 distinct reviewer actually launched; no duplicate session or worker.",
+  "next_action": "Automatic intake of existing R110 binding repair author; exact outside-owner dependency must stop affected construction. Distinct existing reviewer after terminal candidate; no acceptance before qualification.",
+  "worker_state_truth": "R109 reviewer terminal; R110 existing author actually launched; distinct review follows terminal candidate.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -356,18 +356,18 @@
   },
   "r61_actual_workers": [
     {
-      "id": "R109_R06_PROGRESSIVE_REVIEW",
-      "pid": 71935,
-      "session": "ses_e96304356ffeC8HSvwFluWOjG1",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5",
-      "branch": "agent/opencode-pyat-r109-r06-progressive-independent-review-r1",
-      "candidate": "22280a3f43e751bab1bbebe0a9d8c601b3160120",
-      "commission_tip": "40b784671f555cd716a3afe9b86318a1dc99d66c",
+      "id": "R110_R06_PROGRESSIVE_BINDING_AUTHOR",
+      "pid": 76679,
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
+      "branch": "agent/opencode-pyat-r110-r06-progressive-binding-repair-r1",
+      "startup": "22280a3f43e751bab1bbebe0a9d8c601b3160120",
+      "commission_tip": "97ac5a00fd2319765d0a24f44f8e7874d48dd621",
       "state": "ACTUALLY_LAUNCHED_OPENCODE_MAX",
       "actual_tool_preflight": "PENDING",
-      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5/.r61/r109-r06-progressive-review",
-      "parent": "Astra C8 / N9+N10E\u2192N10W / later R06",
-      "return_root": "WORKER_RETURNS/PYAT-R109-R06-PROGRESSIVE-INDEPENDENT-REVIEW-R1"
+      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r110-r06-binding-repair",
+      "parent": "Astra C8 / N9+N10E\u2192N10W / R06",
+      "return_root": "WORKER_RETURNS/PYAT-R110-R06-PROGRESSIVE-BINDING-REPAIR-R1"
     }
   ],
   "r61_launch_evidence": "ae63a8c2da620d850cc974eb43c3e396abec30cb",
@@ -379,7 +379,7 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "088cd66a6c3ff18505bb6eab291a98920a544397",
+  "current_development_evidence": "cb24ea79a4cc877181041183f6d39f4c55958443",
   "new_R87_operative_grants": false,
   "secondary_hq_status": "USER_APPOINTED_BROWSER_SECONDARY__PRIMARY_CODEX_NOT_REVOKED"
 }
