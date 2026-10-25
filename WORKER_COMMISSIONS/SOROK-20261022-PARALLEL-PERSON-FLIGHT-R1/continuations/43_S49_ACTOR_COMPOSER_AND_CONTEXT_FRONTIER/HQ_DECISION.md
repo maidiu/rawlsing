@@ -1,0 +1,9 @@
+# S49 scoped actor composer accepted; real context production remains open
+
+Candidate6604f2d9ebeca47ab58c5e1f5fee1e6a34b1bb43 accepted by HQ after exact narrow closure of original actor/performer/source-chain defects. HQ13testsPASS17.75s, preservedstrip/intentoracle and diffinspection; no final independent ACCEPT claimed. Mandatory base S42 guard checks canonical generated source despite stripped fields/instance no-op override; legitimate intactsource is allowed after actualbasevalidation, not because bypass is permitted. Exact canonicalperformer result now required and hashbound.
+
+Actualroot B still lacks current actor-owned premise content. Controlled testmodel creates a causally separate Bresponse using unchanged acceptedS39rule; it is not a generated adult innerlife or positive S48currentworldclosure. Do not silently seed Bwith a refusalhistory/priority merely to manufacture a positive.
+
+Next indispensable operation is exact historical V3 source recovery and assessment of its actual initialization/development/context projection. TD-R05 already establishes directsource inspection of BackboneState, need/expectation/striving, transactionalflow/history and LLM/application split in exactarchive953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086. Reuse those functions before inventing another psychology; oldheuristiccoefficients/defaults are not automatically governinglaw.
+
+Currenthost bounded filename/tree check did not locate that archive or raw v3/core/state.py and v3/psyche/flow.py on available taskattachment/DesktopRawlsing/repos surfaces. This is an exact source-location dependency, not proof the machinery does not exist or a request for new native authority. Need current mount/path or repositoryref for that exactartifact; next operation is retrieve/verifyexactbytes then recover actualactorcontext producer and independently admissible interfaces, preserving full C0–C12/A0–A5 Goal.
