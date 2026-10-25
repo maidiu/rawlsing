@@ -1091,17 +1091,26 @@ def progressive_source_rows_identity(repository, release_ref: ExactRef) -> str:
     })
 
 
+def _progressive_model_identity(model_rule) -> str:
+    return semantic_hash({
+        "rule_hash": model_rule.rule_hash,
+        "material": canonicalize(model_rule.material()),
+    })
+
+
 def _progressive_prefix_identity(prefixes: tuple[ProgressivePrefixInput, ...]):
     first = prefixes[0]
     universe = first.consumer_query.source_universe_ref
     release = first.release_ref
     risk = canonicalize(first.query.risk_set_ref)
+    model_identity = _progressive_model_identity(first.model_rule)
     for prefix in prefixes:
         if (prefix.consumer_query.source_universe_ref != universe
                 or prefix.consumer_query.release_ref != release
                 or prefix.release_ref != release
                 or prefix.repository is not first.repository
                 or canonicalize(prefix.query.risk_set_ref) != risk
+                or _progressive_model_identity(prefix.model_rule) != model_identity
                 or canonicalize(universe) not in [
                     canonicalize(ref) for ref in prefix.query.empirical_universe_refs
                 ]):

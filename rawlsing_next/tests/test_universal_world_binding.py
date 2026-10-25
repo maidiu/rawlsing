@@ -1276,3 +1276,17 @@ def test_r115_mixed_prefix_repository_identity_refuses():
         handle, "T0", "GENERIC_POSITIONED_SUBJECT", "HISTORICAL"))
     assert view.state == "REFUSED"
     assert view.reason_code == "PROGRESSIVE_WORLD_SOURCE_RELEASE_RISK_MISMATCH"
+
+
+def test_r117_mixed_prefix_model_identity_refuses():
+    target, conditions, prefixes, world = _progressive_fixture_parts()
+    other = fx.make_model_rule(
+        prefixes[0].model_rule.source_universe_refs[0], "r117-other-model")
+    mixed = (prefixes[0], replace(prefixes[1], model_rule=other))
+    handle = configure_progressive_world_context(
+        target_ref=target, conditions=conditions, prefixes=mixed,
+        world_empirical=world)
+    view = progressive_world_view(ProgressiveWorldRequest(
+        handle, "T0", "GENERIC_POSITIONED_SUBJECT", "HISTORICAL"))
+    assert view.state == "REFUSED"
+    assert view.reason_code == "PROGRESSIVE_WORLD_SOURCE_RELEASE_RISK_MISMATCH"
