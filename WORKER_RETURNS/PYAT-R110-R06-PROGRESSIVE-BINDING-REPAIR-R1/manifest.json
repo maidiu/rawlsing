@@ -1,0 +1,35 @@
+{
+  "baseline": "22280a3f43e751bab1bbebe0a9d8c601b3160120",
+  "branch": "agent/opencode-pyat-r110-r06-progressive-binding-repair-r1",
+  "candidate_code_commit": "b6acb241366b1a940c613a779037f97351bd0d85",
+  "code_paths_blobs": {
+    "rawlsing_next/pre553_universal_world_binding.py": "fe167820246ace0881d33870442064f85a04da10",
+    "rawlsing_next/tests/test_universal_world_binding.py": "f78b983b514f1a0a78bf16c5f05ddc2adfaf2bc8"
+  },
+  "contract_commit": "53981ac013755407ebf7de88f894add2f1dc2858",
+  "excluded_from_manifest": [
+    "manifest.json"
+  ],
+  "note": "Only two authorized code paths changed. N10W world-value dependency is explicitly held at P41 owner. manifest excludes itself.",
+  "report_artifacts_sha256": {
+    "00_RETURN.md": "9bf5be3019f45e26ca85d3a070d45bd79ffe1a8fd1fd2b79702be435661fba7f",
+    "CONTRACT.md": "d20216bcb1b461fe9a0724b713a474f333afc35bbbb1e20c2f7ca3e6059d54ea",
+    "COVERAGE_AND_LIMITS.md": "4212f92b16cf70a26dd67d9dc05055272d2f14051acaa715c801463795f6bb13",
+    "RESUME.md": "370345623e65ef67cec14691cd09297cae9e5ed379863efbbeb38979ac4ddbaa",
+    "commands.txt": "c04ed9bb1d90f25894a18da6002cd8f4908a591f26c35985c9bcc7053bc0bfb8",
+    "junit.xml": "6b591786d25dad252d54f96e5f2825a3e70eb90682e8e327daf60bddec7ead9a",
+    "proof_witness.json": "5b63f6ef44431def2d6600df5bcf72e213f861106be97be453259d4133f4e5dd",
+    "pytest.log": "938dbb125a4b5b6914f583eeeac7168c3b6afbf4089f710c302f56c35873ced5",
+    "r109_probes.log": "3893bd22bf67409e6725b1dd52a70f54850285a713ec4ed2f1bf720857aa0887",
+    "r109_probes_junit.xml": "158ebf28cf43983b65a7e0b63980fa0636ba0972e9fd5efa411ed90ac366556a",
+    "world_n10w_dependency_gap.md": "c8e8e3ff640e860564a50dd2c2fe11b40b0e1720bd117cd4bc4d9c621f8e7e5f"
+  },
+  "review": "e38a6a8c07ea6535a0d4de38053c15e4278934d7",
+  "schema": "PYAT_R110_R06_PROGRESSIVE_REPAIR_MANIFEST@1",
+  "upstream_pins": {
+    "p41_packet": "f27d1101048638bba395143a48efb7ef00bfcda4",
+    "r05_candidate": "bc2b5465c8f0ec2ea4657c6206436cdfa9ca58d0",
+    "r05_review": "2f7faac6da620b7651c175ec074d7088d5a49343",
+    "r109_review": "e38a6a8c07ea6535a0d4de38053c15e4278934d7"
+  }
+}
