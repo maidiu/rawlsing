@@ -50,6 +50,23 @@ def _source_from_b_event(session, *, generation_body: Mapping[str, Any],
         raise
     if attempt.get("generation_hash") != generation_body.get("hash"):
         raise S49Refusal("S49_ATTEMPT_GENERATION_LINK_MISMATCH")
+    existing_results = [
+        row for row in session.product.store.episodes(session.branch_id)
+        if row.get("kind") == B_RESULT_KIND
+        and (row.get("body") or {}).get("stage") == "B_PERFORMER"
+        and (row.get("body") or {}).get("generation_hash")
+        == generation_body.get("hash")
+    ]
+    if not existing_results:
+        session._append(B_RESULT_KIND, {
+            "schema": S49_SCHEMA,
+            "stage": "B_PERFORMER",
+            "controlled": False,
+            "generation_hash": generation_body.get("hash", ""),
+            "generation_episode_ref": "",
+            "attempt": attempt,
+            "source_grade": "TEST_ONLY_S49_INDEPENDENT_ACTOR_PRODUCER",
+        })
     generation = generation_body.get("generation") or {}
     request = generation.get("attempt_request") or {}
     source_chain_hash = generation_body.get(

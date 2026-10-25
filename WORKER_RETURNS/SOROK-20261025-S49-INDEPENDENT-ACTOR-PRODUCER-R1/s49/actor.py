@@ -485,14 +485,31 @@ def validate_normal_admission(session, source: Mapping[str, Any],
         and (row.get("body") or {}).get("generation_hash")
         == generation.get("hash")
     ]
-    if attempt_rows:
-        attempt = (attempt_rows[-1].get("body") or {}).get("attempt") or {}
-        if attempt.get("event_id") != source.get("b_event_ref"):
-            raise S49Refusal("S49_NORMAL_CONSUMER_B_EVENT_MISMATCH")
-        if attempt.get("event_hash") != source.get("b_event_hash"):
-            raise S49Refusal("S49_NORMAL_CONSUMER_B_HASH_MISMATCH")
-        if attempt.get("actor_id") != source.get("b_actor"):
-            raise S49Refusal("S49_NORMAL_CONSUMER_B_ACTOR_MISMATCH")
+    if len(attempt_rows) != 1:
+        raise S49Refusal("S49_NORMAL_CONSUMER_PERFORMER_MISSING")
+    attempt = (attempt_rows[0].get("body") or {}).get("attempt")
+    if not isinstance(attempt, dict) or not valid(dict(attempt)):
+        raise S49Refusal("S49_NORMAL_CONSUMER_PERFORMER_UNSEALED")
+    if attempt.get("hash") != source.get("s49_attempt_hash"):
+        raise S49Refusal("S49_NORMAL_CONSUMER_ATTEMPT_SUBSTITUTED")
+    if attempt.get("generation_hash") != generation.get("hash"):
+        raise S49Refusal("S49_NORMAL_CONSUMER_ATTEMPT_GENERATION_MISMATCH")
+    if attempt.get("actor_id") != source.get("b_actor"):
+        raise S49Refusal("S49_NORMAL_CONSUMER_B_ACTOR_MISMATCH")
+    if attempt.get("branch_id") != session.branch_id:
+        raise S49Refusal("S49_NORMAL_CONSUMER_ATTEMPT_BRANCH_MISMATCH")
+    if attempt.get("event_id") != source.get("b_event_ref"):
+        raise S49Refusal("S49_NORMAL_CONSUMER_B_EVENT_MISMATCH")
+    if attempt.get("event_hash") != source.get("b_event_hash"):
+        raise S49Refusal("S49_NORMAL_CONSUMER_B_HASH_MISMATCH")
+    if attempt.get("status") != "ADMITTED" or attempt.get("performed") is not True:
+        raise S49Refusal("S49_NORMAL_CONSUMER_PERFORMER_NOT_ADMITTED")
+    if attempt.get("option_id") != "EXPLICIT_REFUSAL" or attempt.get(
+        "event_kind"
+    ) != "REFUSAL":
+        raise S49Refusal("S49_NORMAL_CONSUMER_PERFORMER_KIND_MISMATCH")
+    if attempt.get("world_clock") != source.get("b_clock"):
+        raise S49Refusal("S49_NORMAL_CONSUMER_PERFORMER_CLOCK_MISMATCH")
     return None
 
 
@@ -627,6 +644,7 @@ def perform_b_attempt(session, generation_body: Mapping[str, Any]) -> dict:
         "grade": S49_GRADE,
         "native": False,
         "actor_id": actor_id,
+        "branch_id": session.branch_id,
         "role": "B",
         "status": "ADMITTED",
         "performed": True,

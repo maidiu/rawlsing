@@ -193,3 +193,48 @@ def test_base_guard_rejects_forged_chain_even_with_instance_override(tmp_path):
         with pytest.raises(S49Refusal):
             s.admit_event(case=case,source=forged,history_event_refs=(s.read_events()[-1]["e1_event_id"],),event_time=s.clock()+1)
     finally: s.close()
+
+
+def _canonical_consumer_source(session):
+    from s49.actor import generate_b, perform_b_attempt
+    from s49.session import _source_from_b_event
+    record_b_observation(session)
+    gen=generate_b(session,source_records=controlled_b_sources(session))
+    session._append("S49_B_ACTOR_TURN",{"schema":"SOROK_S49_INDEPENDENT_ACTOR_PRODUCER@1","stage":"GENERATION","controlled":True,"generation":gen,"source_grade":"TEST_ONLY_S49_CONTROLLED_B_MODEL_PREMISE","missing_context":""})
+    attempt=perform_b_attempt(session,gen)
+    return _source_from_b_event(session,generation_body=gen,attempt=attempt)
+
+
+def test_normal_consumer_requires_canonical_performer_then_restores(tmp_path):
+    from unittest.mock import patch
+    s=_start(tmp_path/"performer-cut")
+    try:
+        case,source,event=_canonical_consumer_source(s)
+        real_episodes=s.product.store.episodes
+        def no_performer(branch):
+            return [row for row in real_episodes(branch) if not (
+                row.get("kind")=="S49_B_ACTOR_RESULT"
+                and (row.get("body") or {}).get("stage")=="B_PERFORMER"
+            )]
+        with patch.object(s.product.store,"episodes",side_effect=no_performer):
+            with pytest.raises(S49Refusal) as exc:
+                s.admit_event(case=case,source=source,history_event_refs=(s.read_events()[-1]["e1_event_id"],),event_time=s.clock()+1)
+            assert exc.value.code=="S49_NORMAL_CONSUMER_PERFORMER_MISSING"
+        admitted=s.admit_event(case=case,source=source,history_event_refs=(s.read_events()[-1]["e1_event_id"],),event_time=s.clock()+1)
+        assert admitted["status"]=="OK"
+    finally: s.close()
+
+
+def test_normal_consumer_rejects_rehashed_attempt_substitution(tmp_path):
+    from copy import deepcopy
+    from s49.session import _source_from_b_event
+    s=_start(tmp_path/"attempt-sub")
+    try:
+        case,source,event=_canonical_consumer_source(s)
+        forged=deepcopy(source)
+        forged["s49_attempt_hash"]="FORGED_ATTEMPT"
+        with pytest.raises(S49Refusal) as exc:
+            s.admit_event(case=case,source=forged,history_event_refs=(s.read_events()[-1]["e1_event_id"],),event_time=s.clock()+1)
+        assert exc.value.code=="S49_NORMAL_CONSUMER_ATTEMPT_SUBSTITUTED"
+        assert len(s.read_events())==1
+    finally: s.close()
