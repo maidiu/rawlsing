@@ -1,0 +1,42 @@
+{
+  "schema": "PYAT_R115_PROOF_WITNESS@1",
+  "node": "R115",
+  "disposition": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+  "branch": "agent/opencode-pyat-r112-r06-world-consuming-successor-r1",
+  "startup_commit": "79e73d0a4188bd413211d7cc54aa5507daa4a811",
+  "contract_commit": "12e8154ce8f7c61a756bdd0cb425995d58ae5dd6",
+  "candidate_code_commit": "d4b4d9bdb488296702692835395eb1e821dafa13",
+  "commands": [
+    {"purpose":"R115 + R112 + retained R06 suite","command":"/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_world_binding.py rawlsing_next/tests/test_world_conditioned_progressive_service.py -q --junitxml=.../junit.xml -o addopts=''","exit_code":0,"result":"32 passed","failures":0,"errors":0,"skips":0,"walltime_seconds":182.239,"junit":"junit.xml","log":"pytest.log"},
+    {"purpose":"exact R111 successor probes","command":"PYTHONPATH=repo python -m pytest test_r111_successor.py -q --junitxml=.../r111_probes_junit.xml -o addopts=''","exit_code":0,"result":"5 passed","failures":0,"errors":0,"skips":0,"walltime_seconds":2.363,"junit":"r111_probes_junit.xml","log":"r111_probes.log"},
+    {"purpose":"exact R109 probes","command":"PYTHONPATH=repo python -m pytest test_r109_progressive.py -q --junitxml=.../r109_probes_junit.xml -o addopts=''","exit_code":0,"result":"6 passed","failures":0,"errors":0,"skips":0,"walltime_seconds":3.385,"junit":"r109_probes_junit.xml","log":"r109_probes.log"}
+  ],
+  "identity": {
+    "rows_identity": "5f0e24a653b6f498485a74b1f8ab6fa9c99a2b70a0c1aff1bcdfa5e8b7542418",
+    "world_rows_matches_owner": true,
+    "world_source_repo_required": true,
+    "prefix_repositories_same_object": true,
+    "foreign_world_release": "REFUSED / PROGRESSIVE_WORLD_SOURCE_RELEASE_RISK_MISMATCH",
+    "rows_hash_mismatch": "REFUSED",
+    "repo_omission": "REFUSED",
+    "mixed_prefix_repo": "REFUSED"
+  },
+  "preserved_native": {
+    "T0": {"state":"PROGRESSIVE_WORLD_SELECTED_VIEW","view_hash":"8d73ef2e49f2e413756800e866d57310b29f961eef45cca43892a68835b6c734","receipt_hash":"079665420bd3db3d5fd1c74a4eac8410b8c092c269c81516382359c0aa94abe4"},
+    "T1": {"state":"PROGRESSIVE_WORLD_SELECTED_VIEW","view_hash":"37aa705aca2dc5df6c3bc339ffadb6f2e56adc16694c0ed072bb9f43bb4f7ed7","receipt_hash":"c7b04b7bc1d1be6a1c57beb8c0c6acc8c6b043984617b04d5d31f3f58376e47e"},
+    "native_receipts": ["57e23b1f6c8f1c489c2f66b05b967311184d6ee2c9c4ffc766ba8aef9666f1f5","058a7601d46036f3917b8efba5de345ceb6ff31f9833f3686b2a37620690ec72"],
+    "source_balance": [20,30],
+    "route_probability": null
+  },
+  "blobs": {
+    "rawlsing_next/pre553_universal_world_binding.py": "7519667ee6f085163d72789ad406ba5f9a472e3a",
+    "rawlsing_next/tests/test_universal_world_binding.py": "78352cd4ba3bb7674606ff59e91a18b89d7feb3a",
+    "rawlsing_next/pre553_world_conditioned_progressive_service.py": "db573027a2416f1b43f2bc47d6f2e3b9d5cd3b31",
+    "rawlsing_next/tests/test_world_conditioned_progressive_service.py": "c46af4acb61e08fe70eccb78af055120a8b9a4b0"
+  },
+  "limits": [
+    "Sourcefree finite-shape; no original 35/1890/F5/F6/F7/F8/source/actor/R09/CI/prod/N11/N12/Sorok/J52-W52.",
+    "No world-conditioned probability; route_probability stays null.",
+    "No self-adoption; distinct reviewer required."
+  ]
+}

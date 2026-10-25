@@ -1,0 +1,38 @@
+{
+  "branch": "agent/opencode-pyat-r112-r06-world-consuming-successor-r1",
+  "candidate_code_commit": "d4b4d9bdb488296702692835395eb1e821dafa13",
+  "code_paths_blobs": {
+    "rawlsing_next/pre553_universal_world_binding.py": "7519667ee6f085163d72789ad406ba5f9a472e3a",
+    "rawlsing_next/tests/test_universal_world_binding.py": "78352cd4ba3bb7674606ff59e91a18b89d7feb3a"
+  },
+  "contract_commit": "12e8154ce8f7c61a756bdd0cb425995d58ae5dd6",
+  "excluded_from_manifest": [
+    "manifest.json"
+  ],
+  "note": "Only the two R115 code paths changed. R112 service/test preserved read-only. manifest excludes itself.",
+  "preserved_r112_blobs": {
+    "rawlsing_next/pre553_world_conditioned_progressive_service.py": "db573027a2416f1b43f2bc47d6f2e3b9d5cd3b31",
+    "rawlsing_next/tests/test_world_conditioned_progressive_service.py": "c46af4acb61e08fe70eccb78af055120a8b9a4b0"
+  },
+  "report_artifacts_sha256": {
+    "00_RETURN.md": "e76405be7cc1efa16e8095eb02d986b10c93912e1ec55d07eda0df8ec30ddfb1",
+    "CONTRACT.md": "7625be43d123ff295aa305f54256bb30314f88d24a21fc935fd2dba4784b8fd2",
+    "COVERAGE_AND_LIMITS.md": "0add79f0a72f2c8dd5da3f8a5f40990f005635b5bf96baf442bc7ccefb4ccad5",
+    "RESUME.md": "c5d992d43607fbfac2266e9decaf295c579fc59b8e0f56d6e776b81834c60457",
+    "commands.txt": "ee2a6f47c41be0488d40f60a775977cdb684bcc847e6313c19e9758229a9e54e",
+    "junit.xml": "d9263f123c8e3f6680cb21d15205b7d85e2675673e1095b2a01f48310626fe20",
+    "proof_witness.json": "22160fa88551ea663dc118d212a73a59b5fb0dbe807f27a1b2a593c0362a9d91",
+    "pytest.log": "96193aa5f251fb420d3f66774df68665b1423c9507c6111d1c0564e0a95ff1e6",
+    "r109_probes.log": "bce59568370c8366d3a5d222c0b21cf4ccde41458e5bc46bfd8af081ffd7b2e0",
+    "r109_probes_junit.xml": "0f67c60bac0ee0546c34847d8ceebd5c92cb958124baeec166f388462760ba9c",
+    "r111_probes.log": "175c049463ed496e27ba04bdf14bab3d9fb63b819e5dd5e87381f325a126eb2e",
+    "r111_probes_junit.xml": "1fe99bcb88b92e66ba9c0b90c78397af5c90789f36ad7f52aaf04acdb10bbcfe"
+  },
+  "schema": "PYAT_R115_IDENTITY_COMPLETION_MANIFEST@1",
+  "startup_commit": "79e73d0a4188bd413211d7cc54aa5507daa4a811",
+  "upstream_pins": {
+    "r109_review": "e38a6a8c07ea6535a0d4de38053c15e4278934d7",
+    "r111_review": "ab578a9dc1c788847d0328976fe418948a44e7ac",
+    "r112_baseline": "79e73d0a4188bd413211d7cc54aa5507daa4a811"
+  }
+}
