@@ -1358,6 +1358,33 @@ def progressive_world_view(request: ProgressiveWorldRequest) -> ProgressiveWorld
                         extension.composition_result.complete_cell_geometry)}
         for index, extension in enumerate(context.extensions)
     )
+    from rawlsing_next.pre553_world_conditioned_progressive_service import (
+        WorldConditionedPrefix, consume_world_conditioned_prefixes,
+    )
+    snapshot = context.snapshots[request.snapshot_key]
+    native_results = consume_world_conditioned_prefixes(
+        snapshot=snapshot, catalog=context.catalog,
+        prefixes=tuple(
+            WorldConditionedPrefix(
+                prefix.prefix_id, context.target_ref.object_id,
+                tuple((ref.object_id, value) for ref, value in prefix.conditions),
+                step,
+            )
+            for prefix, step in zip(context.prefixes, steps)
+        ),
+    )
+    native_productive = all(
+        result.native_material.get("state") == "OPTIONS_AND_SOURCE_SUPPORT_PRODUCED"
+        for result in native_results
+    )
+    n10w = dict(n10w)
+    n10w["world_conditioned_prefixes"] = [
+        result.material() for result in native_results
+    ]
+    n10w["world_conditioned_state"] = (
+        "OPTIONS_AND_SOURCE_SUPPORT_PRODUCED" if native_productive
+        else "TYPED_PARTIAL_OPTIONS_OR_SOURCE_SUPPORT"
+    )
     routes = structural.get("routes") or {}
     empirical_state = ((receipt.get("n9_world") or {}).get("empirical") or {}).get("state")
     empirical_unavailable = empirical_state not in {None, "SUPPORTED_TEST_ONLY", "SUPPORTED"}
@@ -1365,6 +1392,7 @@ def progressive_world_view(request: ProgressiveWorldRequest) -> ProgressiveWorld
         str(value).startswith("UNAVAILABLE") or str(value).startswith("REVOKED")
         for value in routes.values()
     )
+    unavailable = unavailable or not native_productive
     state = "PROGRESSIVE_WORLD_UNAVAILABLE" if unavailable else "PROGRESSIVE_WORLD_SELECTED_VIEW"
     material = {
         "state": state,
