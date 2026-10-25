@@ -1,0 +1,43 @@
+{
+  "schema": "PYAT_R107_WORLD_DEPENDENCY_GRAPH@1",
+  "scope": "SOURCEFREE_SYNTHETIC_FINITE_SHAPE_RELEASE",
+  "nodes": [
+    {"id":"request","kind":"public_request","fields":["execution_handle","snapshot_key","purpose","currentness","as_of_ref"]},
+    {"id":"producer_prefix_1","kind":"actual_N10E_prefix","source":"sourcefree_C11_fixture","target":"Y","conditions":[["X",1]],"denominator":40},
+    {"id":"producer_prefix_2","kind":"actual_N10E_prefix","source":"sourcefree_C11_fixture","target":"Y","conditions":[["X",1],["O","AB"]],"denominator":30},
+    {"id":"world_T0","kind":"N9_selected_snapshot","mode":"HISTORICAL","valid_at":"2026-06-01","published_asof":"2026-04-15"},
+    {"id":"world_T1","kind":"N9_selected_snapshot","mode":"AS_OF","valid_at":"2027-09-01","published_asof":"2027-09-01"},
+    {"id":"p41","kind":"actual_N10W_consumer","packet_commit":"f27d1101048638bba395143a48efb7ef00bfcda4","world_part":true},
+    {"id":"view","kind":"permitted_progressive_world_view","actor_state":"NOT_TOUCHED"}
+  ],
+  "edges": [
+    ["producer_prefix_1","p41","N10E_EXACT_SLICE"],
+    ["producer_prefix_2","p41","N10E_EXACT_SLICE"],
+    ["world_T0","p41","N9_WORLD_CONTENT"],
+    ["world_T1","p41","N9_WORLD_CONTENT"],
+    ["p41","view","N10W_PROGRESSIVE_ASSEMBLY"],
+    ["producer_prefix_1","view","ALTERNATIVE_PREFIX_1"],
+    ["producer_prefix_2","view","ALTERNATIVE_PREFIX_2"],
+    ["world_T0","view","STRUCTURAL_CONTEXT"],
+    ["world_T1","view","STRUCTURAL_CONTEXT"]
+  ],
+  "identities": {
+    "p41_packet": "f27d1101048638bba395143a48efb7ef00bfcda4",
+    "p41_service_blob": "7d428106c79bcc56973f7c0044fc273a2b354554",
+    "r06_startup": "b2cfe93cee854b7aff2081a7a223ada75295332a",
+    "candidate_code_commit": "98f9d136176af856185eb9fa7ac8e08afeb2deeb"
+  },
+  "source_indexing": {
+    "world_source": "sourcefree C11 fixture / modeled E04 structural rules",
+    "empirical_source": "sourcefree C11 fixture; exact target/conditioner refs",
+    "cross_unit_person_join": "NOT_USED",
+    "same_source_world_empirical_identity": true,
+    "original_source_access": false
+  },
+  "invalidation": {
+    "world_revocation": "PROGRESSIVE_WORLD_UNAVAILABLE / UNAVAILABLE_AUTHORITY_OR_CLOCK",
+    "restore": "new non-revoked context passes",
+    "unknown_snapshot_currentness_asof": "typed refusal",
+    "selective_full_estate_invalidation": "HELD"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "PYAT_R107_PROGRESSIVE_CONDITIONING_RECEIPT@1",
+  "status": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+  "declared_scope": "sourcefree synthetic finite shape release",
+  "positive": {
+    "T0": {
+      "state": "PROGRESSIVE_WORLD_SELECTED_VIEW",
+      "view_hash": "fb4b1710afc0f13d1da024c420f3a0b5bc857041dabbdb523c4132cd90704850",
+      "receipt_hash": "8be29670bd1f063b1e049ed1fead5f8fcb18cfb4536fe20ee392aa7181ddd28a",
+      "snapshot_hash": "c888aecb9b83847283d21bd108958b77a6250c27e98f1c6b270734bcb90d18f1",
+      "routes": {"training":"ELIGIBLE","civil":"ELIGIBLE","exit_constraint":"WITHIN_MODELED_BUDGET"},
+      "n10e_steps": [
+        {"prefix":1,"denominator":40,"cells":{"0":10,"1":30}},
+        {"prefix":2,"denominator":30,"cells":{"0":0,"1":30},"zero_retained":true}
+      ],
+      "n10w_update_identity": [
+        "0223749f764dd696f24dd9817afd6cb7d7c8e9974977b51ece84652982a6ee3b",
+        "9270b358731fb79a3dabbbecd1662cc4abb09ac7d521c90be441a4486b99e199"
+      ]
+    },
+    "T1": {
+      "state": "PROGRESSIVE_WORLD_SELECTED_VIEW",
+      "view_hash": "0e7fdcac4475031262f439dfe3d723552a16c6bd884d6758a17d9337bbf11bcc",
+      "receipt_hash": "01ac123b3af479d342cb26852bc6ef2a640662d866463eb95623afcb223ee3f5",
+      "snapshot_hash": "e6bfc8a8e3e2de8f33219087f31e8b85d66043a0d9599aedae352ed03f4cd1bc",
+      "routes": {"training":"BLOCKED_BY_MODELED_RULE","civil":"ELIGIBLE","exit_constraint":"RESOURCE_CONSTRAINED"}
+    },
+    "second_shape": {
+      "target": "X",
+      "conditions": [["Y",1],["O","AB"]],
+      "view_hash": "b84816c02177ed789cf28fe0c83cee0f1263d00334cd12cc5aef4f662fa61386",
+      "n10e_denominators": [50,30],
+      "second_prefix_zero_retained": true
+    }
+  },
+  "revocation": {
+    "scope": "training_access",
+    "state": "PROGRESSIVE_WORLD_UNAVAILABLE",
+    "reason": "WORLD_AUTHORITY_UNAVAILABLE_OR_REVOKED",
+    "route": "UNAVAILABLE_AUTHORITY_OR_CLOCK",
+    "restore": "new clean context returns PROGRESSIVE_WORLD_SELECTED_VIEW"
+  },
+  "actor": {"state":"NOT_TOUCHED","person_generation":false,"route_probability":null},
+  "limits": [
+    "Sourcefree synthetic shape; not original source measurement.",
+    "F5/F6/F7 original families and full estate selective invalidation held.",
+    "No dyad/household joint, V3 or N12."
+  ]
+}
