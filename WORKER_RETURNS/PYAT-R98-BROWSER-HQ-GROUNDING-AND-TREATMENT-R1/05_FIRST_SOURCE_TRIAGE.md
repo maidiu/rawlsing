@@ -1,0 +1,23 @@
+# R98 first-source triage: scoped further result before Codex HQ handback
+
+STATUS: DOCUMENTARY_CANDIDATE_SELECTED__NO_NEW_ORIGINAL_EXECUTION_OR_AUTHORITY.
+
+**Recommended first actual-source reconciliation target:** Afrobarometer Round 5, Q86B (ordered conditioner) and Q86A (target), for a bounded contextual SOCIAL_ATMOSPHERE product at RAW/unweighted sampled-risk grade. Do not mistake the current retained result for newly authorized original survey execution.
+
+Exact historical source identity: `Data/Afro Barometer Round 5.sav`, frozen file SHA256 `c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651`. Risk: `FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1`, exact risk member hash `0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b`, 19,210 respondents. Source-native Q86B implementation `question_impl.phase0.2fb3a62609dad4c1306d`; Q86A `question_impl.phase0.67f036c0efb7fb98ff4a`. Existing actual retained EmpiricalQuerySpec `e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0` and EmpiricalFact `540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46`. Count profile: full 36 of 36 6x6 typed cells, with zero and minority groups, not a weighted population probability. Old source-derived committed transport rehydration was already tested by HQ221; raw SAV was not read.
+
+**Already positive path:** existing GT12 count relation, PREV3 admission, SIG-004 V554 and exact V557/V558 `CONTEXT` `RESOLUTION_COMPLETE`. There is still no proven consumer route from this precise source relation into the later R95/R96 permitted R05->R06->P41/N9/N10W/E04 contextual view; the existing R06 wrapper explicitly refuses CONTEXT in structural-only field slots. That missing *consumer-purpose association* is a real next operation, not missing empirical counts.
+
+**Critical adverse semantic fact:** HQ224's exact Q86 archaeology found both Q86B and Q86A previously adjudicated `ACTIVE_DISPOSITION / ATTITUDE_OR_DISPOSITION_ONLY`, not independently warranted source/receiver structural positions. The required GT2 V555 source position, producer-mediated structural channel, receiving position and closure authority were not recovered. HQ221 observed M2 `M1 contract id mismatch` and GT2 forbids V555 as producer. This is not fixed by relabeling attitudes or adding a synthetic closure hash. Do not dispatch another forced V555 structural route. A separate material-position/pressure product needs its own genuinely structural source and rule; social atmosphere can still be represented as CONTEXT at its actual evidence grade.
+
+**Why this candidate:** unusually complete exact source/variable/risk/response and minority details; validated contextual path and reusable downstream consumer capital. LiTS-I and WVS7 remain independently historically native-qualified candidates, but R98 did not show a superior current rights/transport/use path for the same specific Field Forge contextual goal. Selection here is *first documentary reconciliation priority*, not a global source rank or claim of presently available data rights.
+
+**Minimal next Codex HQ action:** check present source edition/digest and actual host/licence/purpose permission; recover authoritative Q86 item/admin/risk/unit and if needed design/weight estimand; freeze one finite prospectively issued U_item/U_unit/U_app/E_pre at permitted source scope, without extrapolating unweighted data to a population estimator. If a source right or instrument element is absent, report its exact name and remain held. If admitted, execute the existing native original source -> field context -> permitted R06 view with same-request response/source-permission mutation and restoration. Do not substitute the retained source-free rehydration as new original evidence. No new user question about whether empirically supported social atmosphere matters: R61 already settled that intent. Escalate only a concrete new substantive use difference.
+
+Preserve all other original35, 1890 per-wave obligations, global F6/F7/F8, R09 host, N11 NOT_READY and Sorok N12 HOLD. Documentary follow-through here did not grant or perform any source read, code editing, native test, authority or R06 adoption.
+
+PRIMARY EVIDENCE:
+- `WORKER_RETURNS/PYAT-HQ221-C5-GT2-STRUCTURAL-POSITIVE-REALIZATION-R1/00_RETURN.md` blob `c90d0c75cb62c3d0deb8af6c61a31e972a757823`.
+- Same return `01_RETAINED_EMPIRICAL_INPUT_BINDING.json` blob `b6829d672fbc72b3f7a04ec12781e643031665b0`; `06_FINAL_DISPOSITION.json` blob `e42e43c8a6e9d9343f36cf0423079f8f00e9d2bb`.
+- `WORKER_RETURNS/PYAT-HQ224-V555-GT2-STRUCTURAL-PREMISE-ARCHAEOLOGY-R1/00_RETURN.md` blob `72df3c736038c557246e665d036e915e1c669037`.
+- Current R98 treatment and handoff `8c49fa47ce903d7bdcdcd60e5b9ff31c3e74c8be`.
