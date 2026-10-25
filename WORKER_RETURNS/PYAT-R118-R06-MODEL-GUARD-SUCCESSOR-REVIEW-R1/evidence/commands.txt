@@ -1,0 +1,80 @@
+# R118 exact commands and results (focused reviewer, TEST_ONLY)
+
+Root: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5
+Branch: agent/opencode-pyat-r118-r06-model-guard-successor-review-r1
+Candidate/startup: 849a76de18ef627c3c403b426ebe70f0951a7e7b
+R117 code: 3e8275cf45820f82c27da8f729e838b78d68bb20
+
+## Gate and freeze
+
+pwd
+git rev-parse --show-toplevel
+git rev-parse HEAD
+git branch --show-current
+git status --porcelain=v1
+# exact branch/HEAD; only generated untracked runtime material.
+git show dc0c1e478f36477d1eb9abff7bac703473c18bb0:WORKER_COMMISSIONS/PYAT-R118-R06-MODEL-GUARD-SUCCESSOR-REVIEW-R1/00_COMMISSION.md
+git show 4069198e658bc05951d0792db210385ba777c80f:WORKER_RETURNS/PYAT-R116-R06-COMBINED-WORLD-CONSUMER-REVIEW-R1/ORACLE.md
+# ORACLE.md frozen before R117 code inspection
+git add --sparse WORKER_RETURNS/PYAT-R118-R06-MODEL-GUARD-SUCCESSOR-REVIEW-R1/ORACLE.md
+git commit -m "R118: freeze focused model-guard oracle before candidate code inspection"
+# commit cc59db25d
+
+## Author suite
+
+PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest \
+  rawlsing_next/tests/test_universal_world_binding.py \
+  rawlsing_next/tests/test_world_conditioned_progressive_service.py -q \
+  --junitxml=WORKER_RETURNS/PYAT-R118-R06-MODEL-GUARD-SUCCESSOR-REVIEW-R1/replay/author_suite_junit.xml -o addopts=''
+# 34 passed in 183.43s (author evidence, not acceptance)
+
+## Exact R116 + R111 + R109 replay
+
+git show 4069198e658bc05951d0792db210385ba777c80f:WORKER_RETURNS/PYAT-R116-R06-COMBINED-WORLD-CONSUMER-REVIEW-R1/probes/test_r116_native.py \
+  > WORKER_RETURNS/PYAT-R118-R06-MODEL-GUARD-SUCCESSOR-REVIEW-R1/probes/test_r116_replay.py
+git show ab578a9dc1c788847d0328976fe418948a44e7ac:WORKER_RETURNS/PYAT-R111-R06-BINDING-REPAIR-REVIEW-R1/probes/test_r111_successor.py \
+  > WORKER_RETURNS/PYAT-R118-R06-MODEL-GUARD-SUCCESSOR-REVIEW-R1/probes/test_r111_replay.py
+git show e38a6a8c07ea6535a0d4de38053c15e4278934d7:WORKER_RETURNS/PYAT-R109-R06-PROGRESSIVE-INDEPENDENT-REVIEW-R1/probes/test_r109_progressive.py \
+  > WORKER_RETURNS/PYAT-R118-R06-MODEL-GUARD-SUCCESSOR-REVIEW-R1/probes/test_r109_replay.py
+PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest \
+  WORKER_RETURNS/PYAT-R118-R06-MODEL-GUARD-SUCCESSOR-REVIEW-R1/probes/test_r116_replay.py \
+  WORKER_RETURNS/PYAT-R118-R06-MODEL-GUARD-SUCCESSOR-REVIEW-R1/probes/test_r111_replay.py \
+  WORKER_RETURNS/PYAT-R118-R06-MODEL-GUARD-SUCCESSOR-REVIEW-R1/probes/test_r109_replay.py -q \
+  --junitxml=WORKER_RETURNS/PYAT-R118-R06-MODEL-GUARD-SUCCESSOR-REVIEW-R1/replay/prior_native_junit.xml -o addopts=''
+# 16 passed in 8.72s
+
+## Focused model probes
+
+PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest \
+  WORKER_RETURNS/PYAT-R118-R06-MODEL-GUARD-SUCCESSOR-REVIEW-R1/probes/test_r118_model.py -q \
+  --junitxml=WORKER_RETURNS/PYAT-R118-R06-MODEL-GUARD-SUCCESSOR-REVIEW-R1/replay/r118_probes_junit.xml -o addopts=''
+# 3 passed in 1.28s
+
+## Cold replay
+
+PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 - <<'PY'
+import json
+from rawlsing_next.tests.test_universal_world_binding import _progressive_fixture, _run_r107_view_subprocess
+from rawlsing_next.pre553_universal_world_binding import ProgressiveWorldRequest, progressive_world_view
+h=_progressive_fixture()
+v=progressive_world_view(ProgressiveWorldRequest(h,'T0','GENERIC_POSITIONED_SUBJECT','HISTORICAL'))
+cold=_run_r107_view_subprocess()
+print(json.dumps({'warm_state':v.state,'warm_view':v.view_hash,'warm_receipt':v.receipt_hash,'cold':cold,'match':cold['view_hash']==v.view_hash},sort_keys=True))
+PY
+# match true; view 8d73ef2e...c734; receipt 07966542...abe4
+
+## Diff / blobs
+
+git diff --name-only 73b7d62c391f444a0dd4cd60532ac071543ac14d..3e8275cf45820f82c27da8f729e838b78d68bb20
+# R117 contract + two rawlsing_next paths
+git hash-object rawlsing_next/pre553_universal_world_binding.py \
+  rawlsing_next/tests/test_universal_world_binding.py \
+  rawlsing_next/pre553_world_conditioned_progressive_service.py \
+  rawlsing_next/tests/test_world_conditioned_progressive_service.py
+# dfb1e9fb... / ae7f7bad... / db573027... / c46af4ac...
+
+## Remote
+
+git push origin agent/opencode-pyat-r118-r06-model-guard-successor-review-r1
+git ls-remote origin refs/heads/agent/opencode-pyat-r118-r06-model-guard-successor-review-r1 \
+  refs/heads/agent/opencode-pyat-r112-r06-world-consuming-successor-r1

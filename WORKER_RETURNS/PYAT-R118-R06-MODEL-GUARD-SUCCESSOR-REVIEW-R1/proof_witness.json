@@ -1,0 +1,72 @@
+{
+  "author_candidate": "849a76de18ef627c3c403b426ebe70f0951a7e7b",
+  "author_code": "3e8275cf45820f82c27da8f729e838b78d68bb20",
+  "author_code_blobs": {
+    "rawlsing_next/pre553_universal_world_binding.py": "dfb1e9fb72f1ee4b50fd7138fe978ce50db49f37",
+    "rawlsing_next/tests/test_universal_world_binding.py": "ae7f7bad72ac6118ab8f07c9ba19b22ea933950b",
+    "rawlsing_next/pre553_world_conditioned_progressive_service.py": "db573027a2416f1b43f2bc47d6f2e3b9d5cd3b31",
+    "rawlsing_next/tests/test_world_conditioned_progressive_service.py": "c46af4acb61e08fe70eccb78af055120a8b9a4b0"
+  },
+  "commission": "dc0c1e478f36477d1eb9abff7bac703473c18bb0",
+  "environment": {
+    "pytest": "9.0.2",
+    "python": "3.11.3",
+    "reviewer": "existing distinct OpenCode Go DeepSeek V4.1 Flash MAX Global session"
+  },
+  "evidence_commit": "",
+  "evidence_commit_remote_readback": {},
+  "expectations_freeze_commit": "cc59db25d",
+  "expectations_sha256": "d2acd3592c32146ae549123044a0ac0a34a0f799589f4b33b1e6f9575b668726",
+  "findings": {
+    "accepted_scoped": [
+      "mixed-prefix model identity refuses under public path",
+      "shared model remains productive",
+      "consistent alternate admitted model remains usable",
+      "R116 native world+empirical behavior and R111/R109 controls preserved"
+    ],
+    "held": [
+      "original 35/1890/global F6/F7/F8",
+      "full family/source/science/F5/F6/F7",
+      "actor/person/dyad/V3",
+      "R09/CI/prod, N11/N12, Sorok/J52/W52, production"
+    ]
+  },
+  "high_r112_decision": "4b31a6f8e1281fe988bfd980b3f51de6250a0742",
+  "prior_r109_review": "e38a6a8c07ea6535a0d4de38053c15e4278934d7",
+  "prior_r111_review": "ab578a9dc1c788847d0328976fe418948a44e7ac",
+  "prior_r116_review": "4069198e658bc05951d0792db210385ba777c80f",
+  "review_branch": "agent/opencode-pyat-r118-r06-model-guard-successor-review-r1",
+  "tests": {
+    "author_suite": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/author_suite_junit.xml",
+      "passed": 34,
+      "skipped": 0,
+      "time_seconds": 183.430
+    },
+    "cold_replay": {
+      "log": "replay/cold_replay.log",
+      "match": true,
+      "receipt": "079665420bd3db3d5fd1c74a4eac8410b8c092c269c81516382359c0aa94abe4",
+      "view_hash": "8d73ef2e49f2e413756800e866d57310b29f961eef45cca43892a68835b6c734"
+    },
+    "focused_model_probes": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/r118_probes_junit.xml",
+      "passed": 3,
+      "skipped": 0,
+      "time_seconds": 1.285
+    },
+    "prior_native_probes": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/prior_native_junit.xml",
+      "passed": 16,
+      "skipped": 0,
+      "time_seconds": 8.723
+    }
+  },
+  "verdict": "ACCEPT_SCOPED_LOCAL"
+}
