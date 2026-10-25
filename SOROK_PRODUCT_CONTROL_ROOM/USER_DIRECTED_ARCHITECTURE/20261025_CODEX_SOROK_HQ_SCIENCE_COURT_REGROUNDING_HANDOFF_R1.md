@@ -1,0 +1,75 @@
+# CODEX SOROK HQ — user-directed science-court re-grounding handoff R1
+
+**Date** 2026-10-25. **Classification** HQ INTAKE/HANDOFF AND OPEN-QUESTIONS REGISTER, not CAN/ADP rule issuance, original source authority, architecture adoption, native execution permission, or user command to switch active workers. **Repository** maidiu/rawlsing (private). **Intended recipient** incumbent/appointed Codex Sorok HQ. **Source branch** agent/userdirect-sorok-20261024-v3-pff-sdtf-developmental-inheritance-science-court-r1. **Parent committed court** 9fece7a9f532603687235e6a645b2a0fc2309502.
+
+## 0. Exact mandatory source-first read order
+
+1. START HERE and the live controlling PRE-MAIN + Sorok 00_READ_ME_FIRST, 00D, whole Goal, C0→C12→A0–A5 terminal requirements, active HQ owner/appointment/authority boundaries, current Sorok progress and full actual local/remote session state. Follow newer current controlling law where exact and competent; do not infer that Codex HQ was superseded by an independently appointed bounded Browser HQ.
+2. Read in FULL the 37,288-character user-directed architecture requirement **20261024_RECURSIVE_PERSON_WORLD_CONTINGENCY_ONE_LLM_CALL_V3_SELF_INTERPRETATION_R1.md** at original commit 40b8c59688986340f223e6be30f6474d2abdadbb.
+3. Read in FULL the 44,533-character independent-science inheritance synthesis **20261024_V3_PFF_SDTF_PERSON_DEVELOPMENT_INHERITANCE_AND_SCIENCE_COURT_R1.md** at parent commit 9fece7a9f532603687235e6a645b2a0fc2309502.
+4. Follow its **exact project-source paths** to binding Governing Spirit, TD-R05 V3 code/mechanism audit, CAN008 R2, CAN010, CAN011, CAN012, ADP015/016/017/019/020/021, PFF 00–64 and V3/PFF united reconciliation, SDTF T1–T6 and M1–M11 + R3 final review, Field Forge *exploratory* bridge, and the original v3.4/Full Vector/Cross-cultural artifacts where directly available.
+5. Consume scientific cross-reference registry in the court, particularly Leontiev–Vygotsky–Luria, Holzkamp, Sève, Dreier, Lahire, Archer, Kohn/Schooler, Elder, Mortimer; Mischel/Shoda conditional patterns; Gottlieb probabilistic epigenesis, neuroconstructivism, developmental emotion concepts and cultural emotion/meaning, trait change. Preserve primary-source vs prior extract vs external research vs proposal statuses.
+6. Check real current S44 author/reviewer/worker status BEFORE any dispatch. As of observed 2026-10-25 remote author branch **codex/sorok-s44-sampled-root-consumer@923278fbe6b030e2ffdd10fe42d7a18266344611** has an S44 REPAIRED return reporting 10/10 focused, 10/10 S43, 12/12 S42 and ADP020 exact candidate/coordinate replay; this is **AUTHOR evidence, not independently adopted**. Do not revert to outdated S44 b623a... author cut; verify subsequent reviewer and HQ motion. S44 is ZERO provider/product LLM calls and durable A/T no-change; it is not the new architecture.
+
+## 1. Quick operational yes/no
+
+**YES** these two documents are sufficient to instruct an HQ re-ground and bounded engineering/architectural integration decisions. **NO** they do not scientifically calibrate a concrete coupled-V3 psychological transition kernel, grant original native CAN008 A / CAN011 T issuance, or establish human predictive validity.
+
+Never use "the science is unresolved" as a blanket halt on verifiable inherited C0–C12/A0–A5 implementation. Equally, do not let a sourcefree mechanism fixture, generated prose, random draw, old numeric formula or the PFF exploratory bank silently answer an unresolved native psychological law. Separate engineering/synthetic demonstrations, rule authority, empirical warrant, and final human/person science.
+
+## 2. Scientifically settled or sharply inherited for design purposes
+
+- Actual generated history and materially/socially organized life precede any person-specific psyche. Objective world pressure ≠ psychological event, and measured population footprint ≠ individual response.
+- One person, no duplicate PFF durable psyche, shadow emotion store, or all-purpose psyche matrix; reuse actual V3/actor owner state and event ledger.
+- Coupled event-local response, actor-access restricted meaning, contradictory concurrent causal streams and nonlinear possible transformations; no automatic trait arithmetic or universal strongest-motive winner.
+- Not everything becomes conscious; actor self-description, actual causation, memory, belief and reader rendering are separate.
+- Interpretive/practical capacities develop through meaningful histories and language/tools/activity; the same basic body/need can acquire new possible distinctions and ways of acting. Do not preload mature ideology/concept repertoire at birth or enforce five Inside-Out-style emotions as a biological stage progression. Evidence does not settle full biological versus constructionist emotion ontology.
+- Authentic action and independent other/world effects create consequences; latent possibilities are not outcomes; durable CAN011 change requires a valid separate actor owner/rule; NO_CHANGE can accompany meaningful objective/experienced history.
+- The desired rolling ordinary event cycle has ONE LLM call with TWO typed outputs: R_T retrospective renderer + proposed actor-owned self-interpretation, and P_T+1 prospective conditional realities/event-side potential loadings. **Required order**: actual event T → first CAN008/V3 response → ONE call (R_T + P_T+1) → admit an actually enacted actor-interpretation if warranted → **second V3 computation of its effects** → freeze post-interpretation actor state → validate/realize P_T+1 (never stale-preinterpreted) → first V3 response for T+1. Repeat. LLM proposals are nonfacts and pure V2 narration has no V3 write permission. Actor's private self-interpretation can be generated only under independently competent internal-act admission. Some turns have none.
+- Typed validity, conditional guards, actor and world provenance, controlled seeds/replay, no in-call assumptions about post-R_T results, fail-closed invalid candidates. One-call optimization does not justify hidden repair calls or causal time travel.
+
+## 3. OPEN scientific judgments — do not settle them in unaudited code
+
+**Q1 (FIRST SCIENCE DISCUSSION): ACQUIRED INTERPRETIVE/PRACTICAL OPERATION.** Which minimal history- and actor-ownable distinction captures: (a) bodily/affective discrimination without articulated concept; (b) word overheard/known; (c) concept understood; (d) concept employable in present situated action; (e) recurring usable operation; (f) durable V3 mediator, tension or practice? How can Nadia newly separate "accept food" from "accept mother's relational authority" WITHOUT a new static trait or arbitrary operator? Is CAN011 + ADP016/017 + CAN010 + CAN008 composition sufficient, and if not which exact missing relation (not schema) is necessary? What counts as evidence of formation/competent use/contextual transfer? What developmental change is irreversible, reversible, blocked, dormant or contingent?
+
+**Q2: COUPLED EVENT RESPONSE.** Precisely what does event-side pressure/attraction coordinate represent, which actor-side relations does it recruit, how are support/inhibition/deflection/cross-conversion/coalition/gating realized without a global weighted vector, and what rule makes a context-specific edge true? What can persist as fast residue versus durable CAN011 effect? Is a transient event-local relational computation over existing V3 types enough? What if opposed motives stay jointly active while behavior is singular?
+
+**Q3: ACTOR SELF-INTERPRETATION AND CAUSAL REENTRY.** Where is a candidate self-narrative independently admitted as an actual private thought, introspection, self-directed utterance, journal action or belief? Which existing owner (CAN008, ADP016/017, CAN010, CAN011, CAN025/external occurrence) qualifies the act versus its memory versus enduring effect? How do mistaken/rationalizing/incomplete self-theories change future activity without becoming objective world truth? Show one actual second V3 result conditioned on admitted self-interpretation; pure rendered prose alone must not change state.
+
+**Q4: NON-EVENT CONDITIONS AND TIMESCALES.** Recurrent work, kinship obligations, economic dependence, social support, exhaustion, waiting and institutional rules persist without a discrete narrative fork. How do SDTF D1' + OBL062 source-bound condition/relation/time inputs legitimately condition V3 without false event laundering? What governs slow integrator, acute response, reactivation, concept/practice maintenance, forgetting and later reinterpretation?
+
+**Q5: WORLD/OTHER-ACTOR GENERATIVE CONTINGENCY.** Under what exact source/actor/world model can an LLM propose 2–5 candidate lived realities, which event distributions are empirically informed vs TEST_ONLY, who owns other actors' independent action, how are material/casual encounters realized, and what happens when every P_T+1 candidate becomes invalid after R_T? Do not assign "Nadia has a good time" probability instead of generating actual world happenings. Can the loop be live/liveness-safe with no hidden extra LLM call?
+
+**Q6: AGENCY AND OPEN CHOICE.** Can the system construct new feasible alternatives (eat while declining implied debt, go to both parties, refuse dilemma) rather than rank frozen binary responses? What counts as insufficiently specified encounter vs genuine residual openness? What lawful transparent synthetic selection policy resolves unresolved alternatives without claiming empirically known psychology or Sartrean metaphysics?
+
+**Q7: BIOLOGICAL/DEVELOPMENTAL SCIENCE.** What physiological regulation/temperament/maturation constraints are source-supported at a given life stage; what affect discrimination/concept repertoire is learned; how are emotional categories variable across language/culture and activity without treating feeling as arbitrary? Avoid universal onset schedules and ethnicity/faith identity→mind shortcuts. Distinguish concept vocabulary from felt experience and practical capacity; avoid falsely treating language access as adult psychogenesis.
+
+**Q8: VALIDATION/IDENTIFIABILITY.** Which specific within-person longitudinal, dyadic, naturalistic, ecological momentary, lab/process or experimental evidence could warrant quantitative interactions or learning thresholds? What can the 35 cross-sectional survey waves legitimately constrain (positioned distributions/joint morphology, NOT an individual developmental transition kernel)? Which inverse models and parameter sets are observationally equivalent? What would falsify an appealing but underdetermined bike-wheel explanation?
+
+**Q9: DEVELOPMENTAL ATTRACTOR STATUS.** What recurrent cross-context actor-history evidence demonstrates an emergent basin/conditional tendency? Can a sparse evidence graph do the job instead of literal geometric basin? Which valid rival mechanism rejects Enneagram-derived prototypes? Never instantiate type at birth or use type as behavior cause.
+
+**Q10: HUMAN SCIENTIFIC AUTHORITY.** Exactly which unresolved mechanism/rule must be decided by original scientific/semantic source issuer versus HQ, versus synthetic implementation test? Can the exact missing function be reused from recovered V3, PFF, SDTF or elsewhere? Apply no-duplicative-ownership and user-first missing-function protocol rather than inventing an unavailable external authority.
+
+Do NOT pretend these questions all need a new research campaign before any more sourcefree product engineering. Prioritize Q1→Q2→Q3 as substantive questions for user/science adjudication; Q4→Q10 are scoped proof/evidence dependencies.
+
+## 4. What Codex Sorok HQ must actually do upon receiving this handoff
+
+A. Reconcile NOW the exact two user-directed court documents against operative PRE-MAIN/Sorok canonical control, latest local/remote HQ/worker facts and reviewed implementation. Identify named supersessions and conflicts rather than silently applying archaeology or old legacy formulas. Do not claim a branch's existence has canonically adopted a psychological law.
+
+B. Issue a ONE-PAGE **COURT DISPOSITION AND CURRENT CONSUMER MAP** in the existing HQ lineage or a lawful bounded branch:
+  - each significant requirement: PRESENT_AND_REUSED / PARTIAL_TEST_ONLY / MISSING_CONCRETE_FUNCTION / SCIENCE_UNRESOLVED / NATIVE_RULE_UNISSUED / CONTRADICTS_CURRENT_LAW;
+  - exact source/producer/current consumer, critical causal effect and source refs;
+  - current S44 reviewer state, next largest authorized C12/A0 productive move, and actual active/unknown session/process state.
+  - distinguish the user-directed architecture from quantitative formulas no one has adopted.
+
+C. Demonstrate in a small **NADIA SCIENTIFIC DISCRIMINATION COURT** without pretending to have original production science: same-world-food-event with (i) ordinary care relation, (ii) relationship where help is historically loaded; actor prehistory and knowledge/access varies; concept absent versus learned word versus usable practical distinction; coactivated affection/resentment; allowed new action; actor self-report admitted vs rejected; the later next event must consume *post*-self-interpretation V3. A useful result can be a bounded diagnostic mapping and missing-rule witness, not necessarily product code. Never cook the outcome by a pre-selected narrative.
+
+D. Only if exact current source/owner/permission permits, issue **one smallest positive integration commission** to existing continuing person consumer; otherwise provide the exact missing rule/owner, accepted lower-scope actions and why no additional sourcefree micro-proofs would answer the science. Do not duplicate accepted S42/S43/S44, independent reviewer, runtime history store or PFF psyche. Honor HQ-only and user routing; do not unilaterally launch local worker or change machine/provider/branch.
+
+E. Return actionable decision, not a second high-level manifesto. State: DONE, REUSED, UNRESOLVED, CONTRADICTION, NEXT LAWFUL POSITIVE STEP, USER SCIENCE DECISION(S), DISPATCHED vs NOT DISPATCHED, and evidence exact SHA. If a question does not block the next real positive product task, it should remain open and not delay that task.
+
+## 5. Evidence and no-false-progress reminders
+
+Do not call the original old-v3 pressure-flow source "production-complete" merely because TD-R05 recovered 40 mechanisms. Do not cite S44 root sampling as an LLM-based continuing psychological life; author reports 0 product calls. Do not collapse Browser acting HQ and user-appointed Codex HQ authority or suppose every earlier movement was seen by the incumbent. Do not claim these courts have solved Q1–Q10 or issued calibrated pressure and magnet values. Preserve Sourcefree TEST_ONLY vs validated empirical law vs competent native owner. Original S44 current reviewed acceptance was not verified by the documentary author of this handoff.
+
+**Target result:** fully regrounded HQ that keeps C12/A0 product moving while routing only real psychological-science gaps for a competent decision, with no catastrophic re-architecture, duplicate psychology, predestined plot or narrative-as-cause bypass.
