@@ -1,3 +1,10 @@
+# R110 — exact reviewed binding defects under repair
+
+R109 terminal REVISE custody verified13 report hashes/bytes,own-root scope,direct remote. Existing author launched on identity,empirical revocation,actual positioned-result and world consumption binding repairs. Preserve real positives. No scope narrowing, extra-owner edits without exact amendment, new science or adoption. Automatic heartbeat active.
+
+
+## Earlier progress history retained
+
 # R109 — automatic intake resumed; independent review running
 
 Existing ten-minute exact-HQ heartbeat ACTIVE by user request. R107 terminal candidate custody verified:11 report hashes,2 code blobs,allowed changes,direct remote. Existing distinct OpenCode MAX reviewer actually launched; tool preflight pending. No acceptance or scope expansion. Current Astra C8 / R06 trajectory and all source/science/actor/CI/prod/N11/N12/Sorok holds retained.
