@@ -1,7 +1,7 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 105,
+  "revision": 106,
   "r39_return_intake": {
     "status": "WORKER_AUTHOR_EVIDENCE_RECEIVED__NO_INDEPENDENT_ADOPTION",
     "startup": "2e6c189fd54b818556a44419b19691938ea76d5a",
@@ -20618,6 +20618,45 @@
         "parent_scope_preserved": true,
         "paused_goal_and_heartbeat": "UNCHANGED",
         "new_commission_or_acceptance": false
+      }
+    }
+  },
+  "r106": {
+    "checkpoint_id": "20261025-PYAT-HQ-R106-R100-TERMINAL-R0-STATE-R1",
+    "summary": "# Pyat R106 \u2014 current R0 repair state and terminal R100 candidate\n\nR100author terminal79309093e39d363b760436df2a06f4009c81c789 verified7reporthashes/2codeblobs/authorizeddelta/directremote,22authorpassesnotindependentacceptance. Q86specificempiricalcontext/world_partFalse; productfitreview/acceptanceheld. activeworkerscorrectedempty. AllpriorR00/R01/R02/R03/R04/R05/R08localacceptancesandR06R96scopepreserved. R07notready/R09capture+deploymentheld. ExistingAstraparentplusR0repairflightremainthesameprogram; no restart,newcommissionornewadoption. Goal/heartbeatpausedandR101holdunchanged.\n",
+    "updates": {
+      "active_workers": [],
+      "next_action": "R101hold: humanreview existingAstra parent and R103subordinate-notealignment. No newcommission/acceptance/R100reviewer; choosefutureworkfromexistingN/Cdependency+maturity notnewTprogram.",
+      "r106_r100_terminal_custody": {
+        "schema": "PYAT_R106_R100_TERMINAL_CUSTODY_V1",
+        "candidate": "79309093e39d363b760436df2a06f4009c81c789",
+        "code_commit": "e2a7d540d1a052eff0db315e95c329a18244157d",
+        "branch": "agent/opencode-pyat-r100-q86-context-consumer-r1",
+        "process": "PID43019missingandterminalreturnpresent",
+        "report_hashes_verified": 7,
+        "code_blobs_verified": {
+          "rawlsing_next/pre553_universal_world_binding.py": "79a15a98876da763da8effb1da393dcd214d1f63",
+          "rawlsing_next/tests/test_universal_world_binding.py": "27ae5b4572e0815997a13eb80275ab26ba4eda0d"
+        },
+        "authorized_delta_paths_verified": 10,
+        "direct_remote_verified": true,
+        "author_junit": {
+          "tests": 22,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "grade": "AUTHOR_RETURN_CUSTODY_VERIFIED_NOT_INDEPENDENT_QUALIFICATION",
+        "product_fit": "Q86-specificretainedempiricalcontextconnection; world_partFalse; notproofgenericN9+N10E\u2192N10Wororiginalsource-completeR06",
+        "acceptance": "HELD_R101_HIGH_PRODUCT_FIT",
+        "reviewer_dispatch": "HELD",
+        "does_not_change": "R00\u2013R05/R08existinglocalacceptances,R06R96scope,R07notready,R09capturehold; fullAstraprogramandallholds"
+      },
+      "r100_actual_launch": {
+        "state": "AUTHOR_TERMINAL_CANDIDATE_BANKED_ACCEPTANCE_HELD",
+        "candidate": "79309093e39d363b760436df2a06f4009c81c789",
+        "current_worker": "NONE",
+        "reviewer": "NOT_LAUNCHED_R101_HOLD"
       }
     }
   }

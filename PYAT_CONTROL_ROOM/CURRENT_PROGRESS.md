@@ -1,3 +1,10 @@
+# Pyat R106 — current R0 repair state and terminal R100 candidate
+
+R100author terminal79309093e39d363b760436df2a06f4009c81c789 verified7reporthashes/2codeblobs/authorizeddelta/directremote,22authorpassesnotindependentacceptance. Q86specificempiricalcontext/world_partFalse; productfitreview/acceptanceheld. activeworkerscorrectedempty. AllpriorR00/R01/R02/R03/R04/R05/R08localacceptancesandR06R96scopepreserved. R07notready/R09capture+deploymentheld. ExistingAstraparentplusR0repairflightremainthesameprogram; no restart,newcommissionornewadoption. Goal/heartbeatpausedandR101holdunchanged.
+
+
+## Earlier progress history retained
+
 # Pyat R105 — goal ties Astra authority to completed Browser science
 
 ActualgoalattachmentandworkingGOALexplicitlyincorporateexactR98finalreturn+allartifacts+05triageandR99verifiedintake. ScientifictreatmentsmappedtoparentAstraC/N/FfunctionsandlaterR09repair. Applicablefindingsmustbereusedwithactualadoption/proposal/limitdisposition; no generalrecoveryrestart, blanketsemanticadoptionorQ86programnarrowing. HumanclarificationandR103broaderscopepreserved. No newworker/grant/measurement/acceptance. Pausedgoal/heartbeatandR101holdunchanged.
