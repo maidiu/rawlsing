@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261025-PYAT-HQ-R111-REVIEW-AND-P41-DECISION-R1",
-  "handoff_commit": "eddb9b785aa8b7594f7b1a1cbe2b434df707c9bf",
+  "checkpoint_id": "20261025-PYAT-HQ-R112-HIGH-P41-SUCCESSOR-DECISION-R1",
+  "handoff_commit": "75dc718254ea0c4883bf34ba148781b28d78458c",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R111-REVIEW-AND-P41-DECISION-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R111-REVIEW-AND-P41-DECISION-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R111-REVIEW-AND-P41-DECISION-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R112-HIGH-P41-SUCCESSOR-DECISION-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R112-HIGH-P41-SUCCESSOR-DECISION-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R112-HIGH-P41-SUCCESSOR-DECISION-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "eddb9b785aa8b7594f7b1a1cbe2b434df707c9bf",
+  "canonical_control_base": "75dc718254ea0c4883bf34ba148781b28d78458c",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "eddb9b785aa8b7594f7b1a1cbe2b434df707c9bf",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R111-REVIEW-AND-P41-DECISION-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R111-REVIEW-AND-P41-DECISION-R1/CURRENT.md",
+  "qualified_working_hq_commit": "75dc718254ea0c4883bf34ba148781b28d78458c",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R112-HIGH-P41-SUCCESSOR-DECISION-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R112-HIGH-P41-SUCCESSOR-DECISION-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 111,
-    "canonical_report_commit": "eddb9b785aa8b7594f7b1a1cbe2b434df707c9bf",
+    "revision": 112,
+    "canonical_report_commit": "75dc718254ea0c4883bf34ba148781b28d78458c",
     "counterpart": "Sorok rev34 independent; no Pyat actor grant"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261025-PYAT-HQ-R110-BINDING-REPAIR-FLIGHT-R1",
-    "handoff_commit": "a8cba83191b66322e01e0bd202e7b890735e21de"
+    "checkpoint_id": "20261025-PYAT-HQ-R111-REVIEW-AND-P41-DECISION-R1",
+    "handoff_commit": "eddb9b785aa8b7594f7b1a1cbe2b434df707c9bf"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "Existing distinct R111 review qualifies three R110 repairs independently. Same-HQ bounded High decision must settle exact P41 successor world-consuming contract/path/grant before dependent construction.",
-  "worker_state_truth": "R110 author terminal; R111 distinct reviewer actually launched; upstream author not launched.",
+  "next_action": "After actual Low metadata verification, dispatch sealed R112 successor commission once to existing idle author from frozen R110; R111 reviewer continues independently. Intake both returns and reconcile before combined acceptance.",
+  "worker_state_truth": "R111 reviewer last observed live PID81619; R110 author terminal; R112 NOT_LAUNCHED.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -378,7 +378,7 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "99913682b6cc39abd81c0a0c45caae41f233689c",
+  "current_development_evidence": "4b31a6f8e1281fe988bfd980b3f51de6250a0742",
   "new_R87_operative_grants": false,
   "secondary_hq_status": "USER_APPOINTED_BROWSER_SECONDARY__PRIMARY_CODEX_NOT_REVOKED"
 }
