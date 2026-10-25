@@ -454,18 +454,79 @@ class S45Session(S44Session):
 
         speech_id = body.get("speech_event_id", "")
         action_id = body.get("action_event_id", "")
-        if body.get("status") == "UNSUPPORTED":
-            if speech_id or action_id or body.get("language"):
-                raise S45ReadRefusal("S45_UNSUPPORTED_HAS_EFFECT")
-        elif kind == "ATTEND":
-            if speech_id or action_id or body.get("language"):
+        admission_id = body.get("admission_id", "")
+        status = body.get("status")
+        if kind == "ATTEND":
+            if status != "NO_CHANGE":
+                raise S45ReadRefusal("S45_ATTEND_STATUS_INVALID", str(status))
+            if (speech_id or action_id or body.get("language")
+                    or admission_id or body.get("strategy")
+                    or body.get("template_id")):
                 raise S45ReadRefusal("S45_ATTEND_HAS_ACTOR_EFFECT")
-        elif body.get("status") == "OK":
+        elif status == "UNSUPPORTED":
+            if speech_id or action_id or body.get("language") or admission_id:
+                raise S45ReadRefusal("S45_UNSUPPORTED_HAS_EFFECT")
+            if body.get("strategy") or body.get("template_id"):
+                raise S45ReadRefusal("S45_UNSUPPORTED_HAS_STRATEGY")
+        elif status == "OK":
+            if not speech_id:
+                raise S45ReadRefusal("S45_OK_REQUIRES_SPEECH")
+            if not admission_id:
+                raise S45ReadRefusal("S45_ADMISSION_REQUIRED")
+            admission_episode = next(
+                (row for row in self.episodes("A")
+                 if row.get("kind") == "EXPRESSION_ADMISSION"
+                 and (row.get("body", {}).get("admission") or {}).get(
+                     "admission_id") == admission_id),
+                None,
+            )
+            if not admission_episode:
+                raise S45ReadRefusal("S45_ADMISSION_MISSING")
+            admission = admission_episode["body"]["admission"]
+            candidate_episode = admission_episode["body"].get("candidate") or {}
+            plan = admission.get("plan") or {}
+            readset = plan.get("readset") or {}
+            s45_plan = readset.get("s45") or {}
+            if admission.get("schema") != "S45_USER_EXPRESSION_ADMISSION@1":
+                raise S45ReadRefusal("S45_ADMISSION_SCHEMA_MISMATCH")
+            if admission.get("s45_boundary") is not True:
+                raise S45ReadRefusal("S45_ADMISSION_BOUNDARY_MISSING")
+            if admission.get("r31e_strategy") != body.get("strategy"):
+                raise S45ReadRefusal("S45_STRATEGY_ADMISSION_MISMATCH")
+            if admission.get("r31e_template_id") != body.get("template_id"):
+                raise S45ReadRefusal("S45_TEMPLATE_ADMISSION_MISMATCH")
+            if plan.get("intent") != body.get("strategy"):
+                raise S45ReadRefusal("S45_PLAN_INTENT_MISMATCH")
+            if plan.get("plan_hash") != body.get("plan_hash"):
+                raise S45ReadRefusal("S45_ADMISSION_PLAN_MISMATCH")
+            if s45_plan.get("strategy") != body.get("strategy"):
+                raise S45ReadRefusal("S45_PLAN_STRATEGY_MISMATCH")
+            if s45_plan.get("template_id") != body.get("template_id"):
+                raise S45ReadRefusal("S45_PLAN_TEMPLATE_MISMATCH")
+            if candidate_episode.get("strategy") != body.get("strategy"):
+                raise S45ReadRefusal("S45_CANDIDATE_STRATEGY_MISMATCH")
+            if candidate_episode.get("template_id") != body.get("template_id"):
+                raise S45ReadRefusal("S45_CANDIDATE_TEMPLATE_MISMATCH")
+            if candidate_episode.get("speech") != body.get("native_text"):
+                raise S45ReadRefusal("S45_CANDIDATE_TEXT_MISMATCH")
+            if admission.get("speech_event_id") != speech_id:
+                raise S45ReadRefusal("S45_ADMISSION_SPEECH_MISMATCH")
+            if admission.get("action_event_id") != action_id:
+                raise S45ReadRefusal("S45_ADMISSION_ACTION_MISMATCH")
+            if admission.get("native_artifact", {}).get("text") != body.get("native_text"):
+                raise S45ReadRefusal("S45_ADMISSION_NATIVE_MISMATCH")
+            if admission.get("translation_artifact", {}).get("text") != body.get(
+                    "translation_text"):
+                raise S45ReadRefusal("S45_ADMISSION_TRANSLATION_MISMATCH")
+            if (plan.get("unit") or {}).get("native_text") != body.get("native_text"):
+                raise S45ReadRefusal("S45_PLAN_NATIVE_MISMATCH")
             event = self.event(speech_id)
             if not event or event.get("hash") != body.get("speech_event_hash"):
                 raise S45ReadRefusal("S45_SPEECH_EVENT_MISSING")
             if event.get("actor_id") != "A" or event.get("kind") != "SPEECH":
                 raise S45ReadRefusal("S45_SPEECH_EVENT_INVALID")
+            if body.get("speech_event_kind") != "SPEECH":
+                raise S45ReadRefusal("S45_SPEECH_KIND_MISMATCH")
             if event.get("body", {}).get("text", "") != body.get("native_text"):
                 raise S45ReadRefusal("S45_SPEECH_TEXT_MISMATCH")
             lme = event.get("body", {}).get("lme") or {}
@@ -480,6 +541,10 @@ class S45Session(S44Session):
                 raise S45ReadRefusal("S45_LANGUAGE_TRANSLATION_MISMATCH")
             if language.get("equivalence_status") != "ACCEPTED":
                 raise S45ReadRefusal("S45_EQUIVALENCE_NOT_ACCEPTED")
+            if language.get("s45_strategy") not in (None, body.get("strategy")):
+                raise S45ReadRefusal("S45_LANGUAGE_STRATEGY_MISMATCH")
+            if language.get("s45_template_id") not in (None, body.get("template_id")):
+                raise S45ReadRefusal("S45_LANGUAGE_TEMPLATE_MISMATCH")
             source_refs = body.get("source_event_refs") or []
             access_ids = body.get("access_receipt_ids") or []
             if not source_refs or not access_ids:
@@ -502,35 +567,16 @@ class S45Session(S44Session):
                 raise S45ReadRefusal("S45_LANGUAGE_VIEW_MISSING")
             if view.get("translation_text") != body.get("translation_text"):
                 raise S45ReadRefusal("S45_LANGUAGE_VIEW_TEXT_MISMATCH")
-        admission_id = body.get("admission_id", "")
-        if admission_id:
-            admission_episode = next(
-                (row for row in self.episodes("A")
-                 if row.get("kind") == "EXPRESSION_ADMISSION"
-                 and (row.get("body", {}).get("admission") or {}).get(
-                     "admission_id") == admission_id),
-                None,
-            )
-            if not admission_episode:
-                raise S45ReadRefusal("S45_ADMISSION_MISSING")
-            admission = admission_episode["body"]["admission"]
-            if admission.get("scheme") == "fake":
-                raise S45ReadRefusal("S45_ADMISSION_INVALID")
-            if speech_id and admission.get("speech_event_id") != speech_id:
-                raise S45ReadRefusal("S45_ADMISSION_SPEECH_MISMATCH")
-            if action_id and admission.get("action_event_id") != action_id:
-                raise S45ReadRefusal("S45_ADMISSION_ACTION_MISMATCH")
-            if body.get("plan_hash") and admission.get("plan", {}).get(
-                    "plan_hash") != body.get("plan_hash"):
-                raise S45ReadRefusal("S45_ADMISSION_PLAN_MISMATCH")
-        if action_id:
-            action = self.event(action_id)
-            if not action or action.get("hash") != body.get("action_event_hash"):
-                raise S45ReadRefusal("S45_ACTION_EVENT_MISSING")
-            if action.get("actor_id") != "A":
-                raise S45ReadRefusal("S45_ACTION_ACTOR_MISMATCH")
-            if action.get("kind") != body.get("action_event_kind"):
-                raise S45ReadRefusal("S45_ACTION_KIND_MISMATCH")
+            if action_id:
+                action = self.event(action_id)
+                if not action or action.get("hash") != body.get("action_event_hash"):
+                    raise S45ReadRefusal("S45_ACTION_EVENT_MISSING")
+                if action.get("actor_id") != "A":
+                    raise S45ReadRefusal("S45_ACTION_ACTOR_MISMATCH")
+                if action.get("kind") != body.get("action_event_kind"):
+                    raise S45ReadRefusal("S45_ACTION_KIND_MISMATCH")
+        else:
+            raise S45ReadRefusal("S45_STATUS_INVALID", str(status))
         c9 = self._c9_lineage()
         if not c9 or c9.get("target_branch") != "NO_CHANGE":
             raise S45ReadRefusal("S45_C9_LINEAGE_MISSING")

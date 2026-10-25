@@ -42,6 +42,11 @@ REVIEW_ENCOUNTER = Path(
     "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/"
     "sorok-incumbent-review/SOROK_REVIEW/S45/evidence/repro_encounter_tamper.py"
 )
+REVIEW_SEMANTIC = Path(
+    "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/"
+    "sorok-incumbent-review/SOROK_REVIEW/S45_CLOSURE/evidence/"
+    "repro_resealed_semantic_mismatch.py"
+)
 S44_FILES = [
     "s44/__init__.py", "s44/bootstrap.py", "s44/bundle.py", "s44/errors.py",
     "s44/rng.py", "s44/root.py", "s44/session.py",
@@ -353,6 +358,32 @@ def encounter_repro_evidence() -> dict:
     }
 
 
+def resealed_semantic_evidence() -> dict:
+    env = dict(ENV, S45_RETURN=str(RET))
+    proc = subprocess.run(
+        [PY, str(REVIEW_SEMANTIC)], cwd=str(RET), env=env,
+        capture_output=True, text=True,
+    )
+    (LOGS / "repro_resealed_semantic_mismatch.log").write_text(
+        proc.stdout + proc.stderr
+    )
+    code = ""
+    for line in reversed(proc.stderr.strip().splitlines()):
+        if "S45ReadRefusal:" in line:
+            code = line.split("S45ReadRefusal:", 1)[1].strip()
+            break
+    return {
+        "schema": "SOROK_S45_RESEALED_SEMANTIC_REPRO@1",
+        "oracle": str(REVIEW_SEMANTIC),
+        "oracle_sha256": _sha256(REVIEW_SEMANTIC),
+        "exit": proc.returncode,
+        "refused": proc.returncode != 0,
+        "code": code,
+        "stdout": proc.stdout,
+        "stderr_tail": proc.stderr.strip().splitlines()[-4:],
+    }
+
+
 def test_evidence():
     rows = {}
     for name, path, env in (
@@ -434,6 +465,7 @@ def main():
         denied = denied_evidence(work / "denied")
         tests = test_evidence()
         encounter_repro = encounter_repro_evidence()
+        semantic_repro = resealed_semantic_evidence()
         entry = _run([PY, "-B", "run_s45.py"], "entrypoint.log")
         if entry.returncode != 0:
             raise RuntimeError("S45_ENTRYPOINT_FAILED:" + entry.stderr)
@@ -447,11 +479,14 @@ def main():
             "entrypoint_exit": entry.returncode,
         })
         _write(EVID / "repro_encounter_tamper.json", encounter_repro)
+        _write(EVID / "repro_resealed_semantic_mismatch.json", semantic_repro)
         _write(EVID / "source_manifest.json", source_manifest())
         print(json.dumps({
             "tests": {key: value["counts"] for key, value in tests.items()},
             "encounter_repro_refused": encounter_repro["refused"],
             "encounter_repro_exit": encounter_repro["exit"],
+            "semantic_repro_refused": semantic_repro["refused"],
+            "semantic_repro_code": semantic_repro["code"],
             "entrypoint_exit": entry.returncode,
             "consumer": {
                 "root_hash": consumer["root_hash"],

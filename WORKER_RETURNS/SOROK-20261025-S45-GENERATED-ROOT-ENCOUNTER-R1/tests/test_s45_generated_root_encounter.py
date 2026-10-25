@@ -169,6 +169,12 @@ def test_source_access_revocation_refuses_then_restores(tmp_path):
         ]
         for receipt in receipts:
             session.revoke_language_access(receipt, reason="TEST_ONLY_S45_FAULT")
+        historical = next(
+            row for row in session.read_encounters()
+            if row.get("status") == "OK" and row.get("kind") == "SAY"
+        )
+        assert set(historical.get("current_access", {}).values()) == {"REVOKED"}
+        assert session.read_event(historical["user_event_id"])["status"] == "OK"
         failed = session.say("Can I help?")
         assert failed["status"] == "UNSUPPORTED"
         assert failed["reason"] == "S45_LANGUAGE_SOURCE_UNAVAILABLE"
@@ -177,6 +183,10 @@ def test_source_access_revocation_refuses_then_restores(tmp_path):
             session.restore_language_access(receipt, reason="TEST_ONLY_S45_RESTORE")
         restored = session.say("Can I help?")
         assert restored["status"] == "OK"
+        restored_historical = session.read_encounters()[0]
+        assert set(restored_historical.get("current_access", {}).values()) == {
+            "GRANTED"
+        }
         assert restored["strategy"] == "HELP_INVITE"
         assert restored["language"]["source_event_id"] in {
             row["source_event_id"]
@@ -278,6 +288,52 @@ def test_resealed_forged_encounter_is_rejected_warm_and_cold(tmp_path, field):
             session.read_event(said["user_event"]["event_id"])
         assert session.verify()["ok"] is False
         assert session.verify()["s45_encounters"]["status"] == "REFUSED"
+    finally:
+        session.close()
+    with pytest.raises(Exception):
+        cold = S45Session.open(state)
+        cold.close()
+
+
+@pytest.mark.parametrize("mode", [
+    "unknown_status", "missing_admission", "strategy_mismatch",
+    "template_mismatch", "plan_mismatch",
+])
+def test_resealed_semantic_status_and_admission_mismatch_rejected(tmp_path, mode):
+    from bp1.canon import digest
+    from s45.session import S45ReadRefusal
+
+    state = tmp_path / f"semantic-{mode}"
+    session = _start(state)
+    try:
+        said = session.say("Can I help?")
+        real = session.read_encounters()[-1]
+        forged = dict(real)
+        forged.pop("encounter_id", None)
+        forged.pop("encounter_hash", None)
+        if mode == "unknown_status":
+            forged["status"] = "BOGUS"
+            forged["strategy"] = "HELP_REFUSE"
+        elif mode == "missing_admission":
+            forged["status"] = "OK"
+            forged["admission_id"] = ""
+        elif mode == "strategy_mismatch":
+            forged["strategy"] = "HELP_REFUSE"
+        elif mode == "template_mismatch":
+            forged["template_id"] = "help_accept_1"
+        elif mode == "plan_mismatch":
+            forged["plan_hash"] = "0" * 64
+        forged["encounter_hash"] = digest(forged)
+        episode = session.product._append_episode(
+            session.branch_id, "A", "S45_USER_ENCOUNTER",
+            session.clock(), forged,
+        )
+        session.product._checkpoint(
+            session.branch_id, session.clock(), session.world()
+        )
+        with pytest.raises(S45ReadRefusal):
+            session.read_event(episode["episode_id"])
+        assert session.verify()["ok"] is False
     finally:
         session.close()
     with pytest.raises(Exception):

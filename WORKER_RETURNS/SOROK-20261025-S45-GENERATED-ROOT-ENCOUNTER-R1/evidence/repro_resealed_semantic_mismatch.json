@@ -1,0 +1,15 @@
+{
+  "code": "S45_STATUS_INVALID: BOGUS",
+  "exit": 1,
+  "oracle": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/SOROK_REVIEW/S45_CLOSURE/evidence/repro_resealed_semantic_mismatch.py",
+  "oracle_sha256": "04f7ded569a503b45bd0603e7189dfd9ab875c3e65a664eaac89cc852826c5ae",
+  "refused": true,
+  "schema": "SOROK_S45_RESEALED_SEMANTIC_REPRO@1",
+  "stderr_tail": [
+    "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "  File \"/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/session.py\", line 579, in _validate_encounter",
+    "    raise S45ReadRefusal(\"S45_STATUS_INVALID\", str(status))",
+    "s45.session.S45ReadRefusal: S45_STATUS_INVALID: BOGUS"
+  ],
+  "stdout": ""
+}
