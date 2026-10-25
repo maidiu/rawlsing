@@ -1,3 +1,10 @@
+# Pyat R104 — actual goal anchored in inherited authority
+
+Useraskedhighestvision/trajectorysourceingoval itselfandunremittinggovernanceofagentsteps. ActualreferencedpastedgoalfileandworkingGOALnowbeginwith exactexistingAstraPROGRAM/DAG/FUNCTIONS/C/AT/wake/frozenPass3/4refs, userR61vision/currentclarification and laterU53A/UR/M3repairoverlays/currentauthority. Requiredreanchoringonresume/compaction/materialboundary; everycommission/adjudicationmustadvanceparentfunctionatcorrectscope. FinerR101/R102notespreservedsubordinateviaR103. Originalobjectivepreserved. No newstrategy/source/code/scienceauthority, no resumedgoal/heartbeat. BothpausedandR101holdretained.
+
+
+## Earlier progress history retained
+
 # Pyat R103 — existing Astra parent, valid finer notes preserved
 
 Directusercorrection: donotfabricatereplacementprogram; preservenoteswherevalidandgearthemagainstAstra. ExactexistingPROGRAM/N-DAG/C-commissions/F-gates/ATcasesandlaterU53A/UR/M3repairrefs verified. R101/R102notesretainedbutsubordinate; many-to-manyparentcrosswalk and explicitnon-erasureofbroaderempirical/structural/objective/multifield/temporal/positioned-parentcoparent/LongMemory/full35scopebanked. GOAL/board/checkpointpointtoparents; wakebulletlabelsdisambiguatedfromCcommissions. No runtimecompletionclaimornewworker/adoption. R101holdandpausedheartbeatpreserved.
