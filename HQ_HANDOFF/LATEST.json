@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261025-PYAT-HQ-R106-R100-TERMINAL-R0-STATE-R1",
-  "handoff_commit": "ec8abbb6dc3be44b3d40cf8c3787ea8b3af32fc3",
+  "checkpoint_id": "20261025-PYAT-HQ-R107-R06-C8-PROGRESSIVE-FLIGHT-R1",
+  "handoff_commit": "f4d79e32f88cc39668ff7fee968e31d879d26f1e",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R106-R100-TERMINAL-R0-STATE-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R106-R100-TERMINAL-R0-STATE-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R106-R100-TERMINAL-R0-STATE-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R107-R06-C8-PROGRESSIVE-FLIGHT-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R107-R06-C8-PROGRESSIVE-FLIGHT-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R107-R06-C8-PROGRESSIVE-FLIGHT-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "ec8abbb6dc3be44b3d40cf8c3787ea8b3af32fc3",
+  "canonical_control_base": "f4d79e32f88cc39668ff7fee968e31d879d26f1e",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "ec8abbb6dc3be44b3d40cf8c3787ea8b3af32fc3",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R106-R100-TERMINAL-R0-STATE-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R106-R100-TERMINAL-R0-STATE-R1/CURRENT.md",
+  "qualified_working_hq_commit": "f4d79e32f88cc39668ff7fee968e31d879d26f1e",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R107-R06-C8-PROGRESSIVE-FLIGHT-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R107-R06-C8-PROGRESSIVE-FLIGHT-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 106,
-    "canonical_report_commit": "ec8abbb6dc3be44b3d40cf8c3787ea8b3af32fc3",
+    "revision": 107,
+    "canonical_report_commit": "f4d79e32f88cc39668ff7fee968e31d879d26f1e",
     "counterpart": "Sorok rev34 independent; no Pyat actor grant"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261025-PYAT-HQ-R105-GOAL-BROWSER-SCIENTIFIC-TREATMENT-LINK-R1",
-    "handoff_commit": "31ba18e1c2a9aee4215a5908b40c460db17e142c"
+    "checkpoint_id": "20261025-PYAT-HQ-R106-R100-TERMINAL-R0-STATE-R1",
+    "handoff_commit": "ec8abbb6dc3be44b3d40cf8c3787ea8b3af32fc3"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "R101hold: humanreview existingAstra parent and R103subordinate-notealignment. No newcommission/acceptance/R100reviewer; choosefutureworkfromexistingN/Cdependency+maturity notnewTprogram.",
-  "worker_state_truth": "Allauthors/reviewersterminal; R100candidatebankedunaccepted; no activeworker/reviewer.",
+  "next_action": "IntakeR107terminalR06/C8genericworld+empiricalprogressivecandidate; distinctexistingreviewerthenHQscopeadjudication. PreserveR100parked; no source/court/goalresumption.",
+  "worker_state_truth": "R107existingauthoractuallylaunched; reviewerNOT_LAUNCHED. PriorR100terminalparkedunaccepted; no duplicateworker.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -354,7 +354,38 @@
     ],
     "acceptance": "Author result is candidate; distinct reviewer independently qualifies exact candidate, then HQ scoped disposition. R09 local is not deployed enforcement."
   },
-  "r61_actual_workers": [],
+  "r61_actual_workers": [
+    {
+      "id": "R107_R06_WORLD_PROGRESSIVE_AUTHOR",
+      "pid": 65585,
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "branch": "agent/opencode-pyat-r107-r06-world-progressive-integration-r1",
+      "startup": "b2cfe93cee854b7aff2081a7a223ada75295332a",
+      "commission_tip": "2b50b54de5c3ce7ce077ef57a3e4e3a4a3afab5e",
+      "state": "ACTUALLY_LAUNCHED_OPENCODE_MAX",
+      "actual_tool_preflight": "PENDING",
+      "library_access": "EXACT_ONLY_ACCEPTED_CODE_AND_LAWFULLY_RETAINED_PRODUCTS_NO_RAW_SOURCE",
+      "grain": "AstraC8/N9+N10E\u2192N10W,R06genericintegrationdeclaredsourcefreescope; notoriginal35completion",
+      "parent_nodes": [
+        "N9",
+        "N10E",
+        "N10W"
+      ],
+      "parent_commission": "C8",
+      "repair": "R06",
+      "blocker_effect": "reusableworld+empiricalprogressiveconsumerintegration; exactoutsidepath/scienceruleresidualifindispensable",
+      "hard_forbidden": [
+        "Raworiginalsource/respondentreads ornewmeasurement",
+        "Unissuedsource/estimand/model/FF/transport/temporalmeaning",
+        "Newsource-specifichardcodedengine orQ86asgenericworld",
+        "Actor/personastate orV3/N12/Sorokwake",
+        "ProtectedCI/OS/prodchanges",
+        "Extraownerpathswithoutindispensableexactamendment",
+        "Newworkers/providers orR97recoveryrestart"
+      ],
+      "reviewer": "existingdistinctsession ses_e96304356ffeC8HSvwFluWOjG1 afterterminalcandidate, notlaunched"
+    }
+  ],
   "r61_launch_evidence": "ae63a8c2da620d850cc974eb43c3e396abec30cb",
   "active_goal": {
     "active": true,
@@ -364,7 +395,7 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "88493e01659322793c134df7c93b2b30a2bc6b37",
+  "current_development_evidence": "d83e569e306ca3e287f92b3c977faef10d32f028",
   "new_R87_operative_grants": false,
   "secondary_hq_status": "USER_APPOINTED_BROWSER_SECONDARY__PRIMARY_CODEX_NOT_REVOKED"
 }
