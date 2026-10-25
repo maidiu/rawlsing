@@ -1,6 +1,6 @@
 # SOROK S46 — actual interval participation in the same continuing person
 
-**RESULT:** `S46_ACTUAL_INTERVAL_PARTICIPATION__SAME_S45_ROOT_PERSON__TWO_BOUNDED_SEGMENTS__ACTUAL_ACTOR_WORLD_ATTEMPTS_AND_RESULTS__REAL_S42_WORLD_READSET__COLD_AND_FORGERY_RESTORE__16_OF_16_FOCUSED_TESTS__NO_TARGET__NATIVE_HOLD`.
+**RESULT:** `S46_ACTUAL_INTERVAL_PARTICIPATION__SAME_S45_ROOT_PERSON__TWO_BOUNDED_SEGMENTS__ACTUAL_ACTOR_WORLD_ATTEMPTS_AND_RESULTS__REAL_S42_WORLD_READSET__COLD_AND_FORGERY_RESTORE__17_OF_17_FOCUSED_TESTS__NO_TARGET__NATIVE_HOLD`.
 
 S46 adds a bounded sourcefree period-grain workshop material-participation producer to the actual S45/S44 person. It records two span segments through the existing C12 episode/checkpoint history and changes the real actor material/free-hours state through the existing `repair` performer. The resulting state is read by the existing S42 `world_prerequisites` path, and the same S45 user SAY/DO_HELP/ATTEND sequence remains on the same root, actor, branch, store and language history.
 
@@ -23,18 +23,19 @@ S46 adds a bounded sourcefree period-grain workshop material-participation produ
 
 ## Evidence
 
-- Focused S46 tests: **16 passed**; S45 compatibility: **21 passed**; S44 regression: **10 passed**.
+- Focused S46 tests: **17 passed**; S45 compatibility: **21 passed**; S44 regression: **10 passed**.
 - Actual interval: first segment `REALIZED` via a real repair event, second `NOT_PERFORMED` after material exhaustion; `PARTIAL`, coverage exactly the one-unit action span (not the full four-unit attempt window), `actual_daily_events_invented: 0`.
 - Same S45 root identity/actor/branch and other-actor B state remain unchanged; cold reopen restores the interval state and encounter history.
 - Actual S42 readset after the interval: `material_available: false`; scheduled-only control: `true`; both use the same four scene kinds (initial speech, SAY, DO_HELP, ATTEND).
 - BLOCKED evidence: two typed `BLOCKED` segments, no actor attempt, no action event and no material mutation. The preserved blocked-mode reproducer exits 0 with `NOT_PERFORMED`, empty actions and unchanged material.
 - Preserved domain-forgery reproducer now exits 1 with typed `S46_STATE_DOMAIN_HASH_MISMATCH`; no forged state is accepted.
+- Preserved self-rehashed-domain reproducer now exits 1 with `S46_DOMAIN_ISSUANCE_DOMAIN_MISMATCH`; the embedded domain is bound to the independently persisted S46 domain-issuance episode.
 - Condition cut/restore evidence: removing the current interval condition makes the real S42 admission fail with `S46_INTERVAL_CONDITION_REVOKED`; restoring it admits with the same validated `s46_interval` receipt.
 - Source/domain/owner/model/span/action forgery rejected at the same consumer; original state remains readable after the forged comparisons. Restoration/replay returns the original interval state.
-- Evidence: `evidence/actual.json`, `scheduled.json`, `blocked.json`, `condition.json`, `faults.json`, `supersession.json`, `review_reproducers.json`, `test_run.json`, `source_manifest.json`, `entrypoint.json`.
+- Evidence: `evidence/actual.json`, `scheduled.json`, `blocked.json`, `condition.json`, `faults.json`, `supersession.json`, `review_reproducers.json`, `repro_self_rehashed_domain.json`, `test_run.json`, `source_manifest.json`, `entrypoint.json`.
 
 ## Limits
 
 TEST_ONLY sourcefree installed-simulation-owner model. This is not an empirical probability, CAN008 response, CAN011 practice/mediator, developmental T, native C12/CAN/ADP issuance, OBL062 closure, childhood biography, or human person. The producer is deliberately narrow to the current material workshop domain; the same bounded span/receipt pattern can accept a legitimately sourced future domain only with its own owner/model. No provider calls, learning coefficient, demographic psyche, hidden daily repetition, target proposals, native/source/human grants or Pyat/PRE-MAIN action.
 
-**Terminal:** `S46_ACTUAL_INTERVAL_PARTICIPATION__SAME_S45_PERSON__REAL_ACTOR_WORLD_SEGMENTS__MATERIAL_TIME_READSET__COLD_FORGERY_RESTORE__16_FOCUSED_21_S45_10_S44__NO_TARGET__NATIVE_HOLD`. Final commit and remote SHA verified after push.
+**Terminal:** `S46_ACTUAL_INTERVAL_PARTICIPATION__SAME_S45_PERSON__REAL_ACTOR_WORLD_SEGMENTS__MATERIAL_TIME_READSET__COLD_FORGERY_RESTORE__17_FOCUSED_21_S45_10_S44__NO_TARGET__NATIVE_HOLD`. Final commit and remote SHA verified after push.

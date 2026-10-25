@@ -47,6 +47,11 @@ REVIEW_DIR = Path(
     "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/"
     "sorok-incumbent-review/SOROK_REVIEW/S46/evidence"
 )
+CLOSURE_REVIEW = Path(
+    "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/"
+    "sorok-incumbent-review/SOROK_REVIEW/S46_CLOSURE/evidence/"
+    "repro_self_rehashed_domain.py"
+)
 S45_FILES = [
     "s45/__init__.py", "s45/bootstrap.py", "s45/errors.py", "s45/fixtures.py",
     "s45/language.py", "s45/session.py", "tests/test_s45_generated_root_encounter.py",
@@ -419,6 +424,30 @@ def review_repro_evidence() -> dict:
     return {"schema": "SOROK_S46_REVIEW_REPRODUCERS@1", "rows": rows}
 
 
+def closure_oracle_evidence() -> dict:
+    env = dict(ENV, S46_RETURN=str(RET))
+    proc = subprocess.run(
+        [PY, str(CLOSURE_REVIEW)], cwd=str(RET), env=env,
+        capture_output=True, text=True,
+    )
+    (LOGS / "repro_self_rehashed_domain.log").write_text(proc.stdout + proc.stderr)
+    code = ""
+    for line in reversed(proc.stderr.strip().splitlines()):
+        if "S46Refusal:" in line:
+            code = line.split("S46Refusal:", 1)[1].strip()
+            break
+    return {
+        "schema": "SOROK_S46_SELF_REHASHED_DOMAIN_REPRO@1",
+        "oracle": str(CLOSURE_REVIEW),
+        "oracle_sha256": _sha256(CLOSURE_REVIEW),
+        "exit": proc.returncode,
+        "refused": proc.returncode != 0,
+        "code": code,
+        "stdout": proc.stdout,
+        "stderr_tail": proc.stderr.strip().splitlines()[-3:],
+    }
+
+
 def test_evidence():
     rows = {}
     for name, path, env in (
@@ -511,6 +540,7 @@ def main():
         supersession = supersession_evidence(work / "supersession")
         tests = test_evidence()
         review_repros = review_repro_evidence()
+        closure_oracle = closure_oracle_evidence()
         entry = _run([PY, "-B", "run_s46.py"], "entrypoint.log")
         if entry.returncode != 0:
             raise RuntimeError("S46_ENTRYPOINT_FAILED:" + entry.stderr)
@@ -526,6 +556,7 @@ def main():
             "entrypoint_exit": entry.returncode,
         })
         _write(EVID / "review_reproducers.json", review_repros)
+        _write(EVID / "repro_self_rehashed_domain.json", closure_oracle)
         _write(EVID / "source_manifest.json", source_manifest())
         print(json.dumps({
             "tests": {key: value["counts"] for key, value in tests.items()},
@@ -545,6 +576,7 @@ def main():
             },
             "faults": faults,
             "review_reproducers": review_repros,
+            "self_rehashed_domain": closure_oracle,
             "blocked": blocked,
             "condition": condition,
             "supersession": supersession,

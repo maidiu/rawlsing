@@ -27,6 +27,7 @@ from .model import (
 
 STATE_SCHEMA = "S46_INTERVAL_PARTICIPATION_STATE@1"
 STATE_KIND = "S46_INTERVAL_STATE"
+ISSUANCE_KIND = "S46_DOMAIN_ISSUANCE"
 STATE_GRADE = "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE"
 STATE_STATUSES = frozenset({
     "REALIZED", "PARTIAL", "NOT_PERFORMED", "UNKNOWN", "REFUSED",
@@ -141,6 +142,34 @@ def produce_interval(session, domain: dict) -> dict:
         raise S46Refusal("S46_DOMAIN_ACTOR_MISMATCH")
     if session.clock() > domain["start"]:
         raise S46Refusal("S46_INTERVAL_STARTS_IN_PAST")
+    issuance_body = {
+        "schema": "S46_DOMAIN_ISSUANCE_RECORD@1",
+        "grade": STATE_GRADE,
+        "native": False,
+        "psychology_claim": False,
+        "domain": dict(domain),
+        "domain_id": domain["domain_id"],
+        "domain_hash": domain["domain_hash"],
+        "mode": domain["mode"],
+        "start": domain["start"],
+        "end": domain["end"],
+        "segments": list(domain["segments"]),
+        "actor_id": domain["actor_id"],
+        "branch_id": domain["branch_id"],
+        "root_hash": root["root_hash"],
+        "root_id": root["root_id"],
+        "model_hash": MODEL_HASH,
+        "owner_registry_hash": OWNER_REGISTRY_HASH,
+        "source_rule_ref": SOURCE_RULE_REF,
+        "issued_clock": session.clock(),
+        "issuer": "INSTALLED_TEST_ONLY_S46_DOMAIN_OWNER",
+    }
+    issuance = _seal(issuance_body)
+    issuance_episode = session.product._append_episode(
+        session.branch_id, "A", ISSUANCE_KIND, session.clock(), issuance,
+    )
+    session.product._checkpoint(session.branch_id, session.clock(), session.world())
+    issuance_id = issuance_episode["episode_id"]
     segments = []
     for segment in domain["segments"]:
         start, end = int(segment[0]), int(segment[1])
@@ -219,6 +248,8 @@ def produce_interval(session, domain: dict) -> dict:
         "domain_id": domain["domain_id"],
         "domain_hash": domain["domain_hash"],
         "domain": dict(domain),
+        "domain_issuance_id": issuance_id,
+        "domain_issuance_hash": issuance["receipt_hash"],
         "model_hash": MODEL_HASH,
         "owner_registry_hash": OWNER_REGISTRY_HASH,
         "actor_owner": ACTOR_OWNER,
@@ -327,6 +358,33 @@ def validate_interval_state(session, state: dict) -> dict:
     domain = state.get("domain")
     if not isinstance(domain, dict):
         raise S46Refusal("S46_STATE_DOMAIN_MISSING")
+    issuance_id = state.get("domain_issuance_id", "")
+    issuance_episode = next(
+        (row for row in session.product.store.episodes(session.branch_id)
+         if row.get("episode_id") == issuance_id
+         and row.get("kind") == ISSUANCE_KIND),
+        None,
+    )
+    if not issuance_episode:
+        raise S46Refusal("S46_DOMAIN_ISSUANCE_MISSING")
+    issuance = dict(issuance_episode.get("body") or {})
+    issuance_body = {k: v for k, v in issuance.items() if k != "receipt_hash"}
+    if issuance.get("receipt_hash") != digest(issuance_body):
+        raise S46Refusal("S46_DOMAIN_ISSUANCE_HASH_MISMATCH")
+    if issuance.get("root_hash") != session.read_root()["root_hash"]:
+        raise S46Refusal("S46_DOMAIN_ISSUANCE_ROOT_MISMATCH")
+    if issuance.get("branch_id") != session.branch_id:
+        raise S46Refusal("S46_DOMAIN_ISSUANCE_BRANCH_MISMATCH")
+    if issuance.get("domain") != domain:
+        raise S46Refusal("S46_DOMAIN_ISSUANCE_DOMAIN_MISMATCH")
+    if issuance.get("domain_hash") != domain.get("domain_hash"):
+        raise S46Refusal("S46_DOMAIN_ISSUANCE_HASH_MISMATCH")
+    if issuance.get("mode") != state.get("domain", {}).get("mode"):
+        raise S46Refusal("S46_DOMAIN_ISSUANCE_MODE_MISMATCH")
+    if issuance.get("segments") != domain.get("segments"):
+        raise S46Refusal("S46_DOMAIN_ISSUANCE_SPAN_MISMATCH")
+    if state.get("domain_issuance_hash") != issuance.get("receipt_hash"):
+        raise S46Refusal("S46_DOMAIN_ISSUANCE_BINDING_MISMATCH")
     validated_domain = validate_domain(domain)
     if state.get("domain_hash") != validated_domain.get("domain_hash"):
         raise S46Refusal("S46_STATE_DOMAIN_HASH_MISMATCH")
@@ -417,6 +475,6 @@ def read_interval_states(session) -> list[dict]:
 
 
 __all__ = [
-    "STATE_SCHEMA", "STATE_KIND", "STATE_GRADE", "STATE_STATUSES",
+    "STATE_SCHEMA", "STATE_KIND", "ISSUANCE_KIND", "STATE_GRADE", "STATE_STATUSES",
     "produce_interval", "read_interval_states", "validate_interval_state",
 ]

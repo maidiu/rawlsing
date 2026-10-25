@@ -7,7 +7,7 @@
       "oracle_sha256": "80a0a0d858907e901107d65525c4ba5a0a5b9280e2addb259b519f525cc8a638",
       "refused": false,
       "stderr_tail": [],
-      "stdout": "{\n  \"action_event_ids\": [\n    \"\",\n    \"\"\n  ],\n  \"attempts\": [\n    \"BLOCKED\",\n    \"BLOCKED\"\n  ],\n  \"material_after\": 1,\n  \"material_before\": 1,\n  \"mode\": \"BLOCKED\",\n  \"schema\": \"SOROK_S46_BLOCKED_MODE_REPRO@1\",\n  \"status\": \"NOT_PERFORMED\",\n  \"verify_ok\": true,\n  \"world_prerequisites_after\": {\n    \"actor_present\": true,\n    \"free_hours\": true,\n    \"material_available\": true,\n    \"object_present\": true,\n    \"s46_interval\": {\n      \"condition_revoked\": false,\n      \"coverage\": [],\n      \"currentness\": \"CURRENT\",\n      \"free_hours_after_interval\": true,\n      \"material_after_interval\": true,\n      \"receipt_hash\": \"09ba12ab822ce858d005380d1709d35924f0f054a67be30ac97bd2a9a9f24898\",\n      \"state_id\": \"S46_STATE_D8BCA145EF22AD2C80126801\",\n      \"status\": \"NOT_PERFORMED\",\n      \"tools_after_interval\": 1\n    },\n    \"tool_available\": true\n  },\n  \"world_statuses\": [\n    \"NOT_PERFORMED\",\n    \"NOT_PERFORMED\"\n  ]\n}\n"
+      "stdout": "{\n  \"action_event_ids\": [\n    \"\",\n    \"\"\n  ],\n  \"attempts\": [\n    \"BLOCKED\",\n    \"BLOCKED\"\n  ],\n  \"material_after\": 1,\n  \"material_before\": 1,\n  \"mode\": \"BLOCKED\",\n  \"schema\": \"SOROK_S46_BLOCKED_MODE_REPRO@1\",\n  \"status\": \"NOT_PERFORMED\",\n  \"verify_ok\": true,\n  \"world_prerequisites_after\": {\n    \"actor_present\": true,\n    \"free_hours\": true,\n    \"material_available\": true,\n    \"object_present\": true,\n    \"s46_interval\": {\n      \"condition_revoked\": false,\n      \"coverage\": [],\n      \"currentness\": \"CURRENT\",\n      \"free_hours_after_interval\": true,\n      \"material_after_interval\": true,\n      \"receipt_hash\": \"c2a5250467d96a58eeed974497bdf5a643a547bcc12e9e89c0e630421aeae8d5\",\n      \"state_id\": \"S46_STATE_D8BCA145EF22AD2C80126801\",\n      \"status\": \"NOT_PERFORMED\",\n      \"tools_after_interval\": 1\n    },\n    \"tool_available\": true\n  },\n  \"world_statuses\": [\n    \"NOT_PERFORMED\",\n    \"NOT_PERFORMED\"\n  ]\n}\n"
     },
     "repro_domain_forgery": {
       "code": "S46_STATE_DOMAIN_HASH_MISMATCH",
@@ -16,7 +16,7 @@
       "oracle_sha256": "19f1f35e987253d942d01be1b0d82f94e4b0c7466fa364499d862159c243c3f9",
       "refused": true,
       "stderr_tail": [
-        "  File \"/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1/s46/producer.py\", line 332, in validate_interval_state",
+        "  File \"/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1/s46/producer.py\", line 390, in validate_interval_state",
         "    raise S46Refusal(\"S46_STATE_DOMAIN_HASH_MISMATCH\")",
         "s46.errors.S46Refusal: S46_STATE_DOMAIN_HASH_MISMATCH"
       ],

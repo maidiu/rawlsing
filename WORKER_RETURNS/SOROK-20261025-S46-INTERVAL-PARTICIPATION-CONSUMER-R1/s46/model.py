@@ -91,7 +91,7 @@ def make_domain(*, mode: str, start: int, end: int,
     if segments is None:
         midpoint = start + (end - start) // 2
         segments = ((start, midpoint), (midpoint, end))
-    normalized = tuple((int(a), int(b)) for a, b in segments)
+    normalized = [[int(a), int(b)] for a, b in segments]
     if (
         not normalized
         or normalized[0][0] != start

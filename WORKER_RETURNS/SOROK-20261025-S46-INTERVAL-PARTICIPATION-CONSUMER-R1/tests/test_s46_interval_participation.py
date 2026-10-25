@@ -361,3 +361,53 @@ def test_rehashed_domain_span_coverage_status_tamper_is_rejected(tmp_path, mode)
         assert session.read_interval_states()[-1]["status"] == real["status"]
     finally:
         session.close()
+
+
+def test_self_rehashed_embedded_domain_is_refused_warm_and_cold(tmp_path):
+    from candidate import digest
+    from s46.session import S46Refusal
+
+    state = tmp_path / "self-rehashed-domain"
+    session = _start(state)
+    try:
+        real = session.produce_interval(
+            make_domain(mode="ACTUAL", start=session.clock(), end=session.clock() + 4)
+        )
+        forged = deepcopy(real)
+        forged.pop("episode_id", None)
+        forged.pop("clock", None)
+        domain = deepcopy(forged["domain"])
+        domain["mode"] = "BLOCKED"
+        domain["domain_id"] = "S46_DOMAIN_BLOCKED"
+        domain.pop("domain_hash", None)
+        domain.pop("hash", None)
+        domain["domain_hash"] = digest(domain)
+        forged["domain"] = domain
+        forged["domain_id"] = domain["domain_id"]
+        forged["domain_hash"] = domain["domain_hash"]
+        forged["state_id"] = "S46_STATE_" + digest({
+            "domain": forged["domain_hash"],
+            "segments": forged["segments"],
+            "root": forged["root_hash"],
+        })[:24].upper()
+        forged["receipt_hash"] = digest({
+            key: value for key, value in forged.items() if key != "receipt_hash"
+        })
+        with pytest.raises(S46Refusal) as exc:
+            session.validate_interval_state(forged)
+        assert exc.value.code == "S46_DOMAIN_ISSUANCE_DOMAIN_MISMATCH"
+        session.product._append_episode(
+            session.branch_id, "A", "S46_INTERVAL_STATE",
+            session.clock(), forged,
+        )
+        session.product._checkpoint(
+            session.branch_id, session.clock(), session.world()
+        )
+        with pytest.raises(S46Refusal):
+            session.read_interval_states()
+        assert session.verify()["ok"] is False
+    finally:
+        session.close()
+    with pytest.raises(Exception):
+        cold = S46Session.open(state)
+        cold.close()
