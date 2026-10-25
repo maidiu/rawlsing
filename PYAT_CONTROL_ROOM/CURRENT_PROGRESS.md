@@ -1,3 +1,10 @@
+# Pyat R103 — existing Astra parent, valid finer notes preserved
+
+Directusercorrection: donotfabricatereplacementprogram; preservenoteswherevalidandgearthemagainstAstra. ExactexistingPROGRAM/N-DAG/C-commissions/F-gates/ATcasesandlaterU53A/UR/M3repairrefs verified. R101/R102notesretainedbutsubordinate; many-to-manyparentcrosswalk and explicitnon-erasureofbroaderempirical/structural/objective/multifield/temporal/positioned-parentcoparent/LongMemory/full35scopebanked. GOAL/board/checkpointpointtoparents; wakebulletlabelsdisambiguatedfromCcommissions. No runtimecompletionclaimornewworker/adoption. R101holdandpausedheartbeatpreserved.
+
+
+## Earlier progress history retained
+
 # Pyat R102 — controlling PRE-V3 trajectory
 
 UserrequestedcorrectcontinuallyreanchoredguideforLight. OnverifiedHigh, reconciled8inheritedendpointconditions/full35/1890/globalF6F7F8 andexistingU53A/UR/R61purposewithactualrepairacceptances. Sixworkstreams, dependencies, positivefunctionandLightdecisionlimits recorded inPRE_V3_TRAJECTORY.md/json; wiredintofrontofGOAL/currentflightboard/checkpoint. R101newcommission/acceptance/R100reviewerholdretainedpendinghumanreview. R100codebankobservednotqualified. Pausedheartbeatpreserved. No newscience/source/code/OS/CI/prod/N11/N12/Sorok/J52W52rightsorworker.
