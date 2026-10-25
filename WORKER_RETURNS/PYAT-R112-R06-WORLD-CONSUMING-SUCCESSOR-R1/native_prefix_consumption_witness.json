@@ -1,0 +1,65 @@
+{
+  "schema": "PYAT_R112_NATIVE_PREFIX_CONSUMPTION_WITNESS@1",
+  "status": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+  "actual_owner": {
+    "p41_packet": "f27d1101048638bba395143a48efb7ef00bfcda4",
+    "nonparent_blob": "2181b832d3c4376d4b9428e13f4354f273be8f32",
+    "p41_service_blob": "7d428106c79bcc56973f7c0044fc273a2b354554",
+    "invocation": "product.nonparent.consume(prefix_bound_service, same_selected_snapshot, budget_tokens=5)"
+  },
+  "T0": {
+    "view_hash": "8823b8d5322c639f7e1d7e80aa91843ef4f0234292f5978e49273a7f67193623",
+    "receipt_hash": "c642a98b6882a77c3740ed9537a6c2bb33f635880a49c1c21b81cce5ed8d2078",
+    "snapshot_hash": "c888aecb9b83847283d21bd108958b77a6250c27e98f1c6b270734bcb90d18f1",
+    "world_conditioned_state": "OPTIONS_AND_SOURCE_SUPPORT_PRODUCED",
+    "prefixes": [
+      {
+        "prefix_id": "r107-Y-1",
+        "n10e_consumer_hash": "8be7de896d99ed4da15c1342dd851bb8080c037f8e31909ec8df5938a6cf4f4c",
+        "native_receipt_hash": "d1b72d4accf2851def3e904e4d8be6fa839b859575488b0f6b00892c45c8c006",
+        "state": "OPTIONS_AND_SOURCE_SUPPORT_PRODUCED",
+        "structural_routes": {"training":"ELIGIBLE","civil":"ELIGIBLE","exit_constraint":"WITHIN_MODELED_BUDGET"},
+        "source_balance_reads": [{"target":"Y","denominator":40,"cells":{"0":10,"1":30},"source_balance_count":20,"support_state":"EXACT_SUPPORTED"}]
+      },
+      {
+        "prefix_id": "r107-Y-2",
+        "n10e_consumer_hash": "6980707e8ce06495bd627e24aec078b57f30874cb90bbb9fde224c5a6b29afb4",
+        "native_receipt_hash": "300c0665e1eab6301f19383690849d49ca218ed3f3242b4c1fcda2f2a3d95dbe",
+        "state": "OPTIONS_AND_SOURCE_SUPPORT_PRODUCED",
+        "structural_routes": {"training":"ELIGIBLE","civil":"ELIGIBLE","exit_constraint":"WITHIN_MODELED_BUDGET"},
+        "source_balance_reads": [{"target":"Y","denominator":30,"cells":{"0":0,"1":30},"source_balance_count":30,"support_state":"EXACT_SUPPORTED"}]
+      }
+    ],
+    "route_probability": null,
+    "route_probability_reason": "NO_JOINT_EMPIRICAL_STRUCTURAL_ROUTE_MODEL"
+  },
+  "T1": {
+    "view_hash": "93bd07704039492a5e1b3d91a30774f759bb53ec7000f5bbcf3f7a213c71565a",
+    "receipt_hash": "f6276d1c05499cd4a6ae0dc69e10caf2b8cf171ae7cda802a9dc338c6d6f6f93",
+    "snapshot_hash": "e6bfc8a8e3e2de8f33219087f31e8b85d66043a0d9599aedae352ed03f4cd1bc",
+    "world_conditioned_state": "OPTIONS_AND_SOURCE_SUPPORT_PRODUCED",
+    "structural_routes": {"training":"BLOCKED_BY_MODELED_RULE","civil":"ELIGIBLE","exit_constraint":"RESOURCE_CONSTRAINED"},
+    "source_balance_reads_unchanged": true,
+    "route_probability": null
+  },
+  "prefix_value_mutation": {
+    "change": "X=1 -> X=0",
+    "source_balance_count_changed": [20, 30],
+    "view_hash": "f7369a41be5b4d616f75f28d027106bd00e7d5e2ce5bfd40901e12cd1e5ce36d"
+  },
+  "world_rule_mutation": {
+    "change": "T0 -> T1",
+    "native_structural_routes_changed": ["training à BLOCKED_BY_MODELED_RULE", "exit_constraint à RESOURCE_CONSTRAINED"],
+    "source_balance_reads_unchanged": true
+  },
+  "revocation": {
+    "empirical": "PROGRESSIVE_WORLD_UNAVAILABLE / WORLD_EMPIRICAL_REVOKED_OR_UNAVAILABLE; native state EMPIRICAL_REVOKED_OR_UNAVAILABLE",
+    "world_field": "PROGRESSIVE_WORLD_UNAVAILABLE; native training UNAVAILABLE_AUTHORITY_OR_CLOCK",
+    "restore": "PROGRESSIVE_WORLD_SELECTED_VIEW"
+  },
+  "limits": [
+    "No world-conditioned probability; route_probability remains null.",
+    "Sourcefree finite-shape scope; no original source/F5/F6/F7/F8/35/1890.",
+    "No actor/dyad/V3/R09/CI/prod/N11/N12/Sorok/J52W52."
+  ]
+}

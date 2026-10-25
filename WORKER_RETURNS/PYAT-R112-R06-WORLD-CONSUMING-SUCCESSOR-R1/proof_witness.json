@@ -1,0 +1,61 @@
+{
+  "schema": "PYAT_R112_PROOF_WITNESS@1",
+  "node": "R112",
+  "disposition": "CANDIDATE_FOR_INDEPENDENT_REVIEW",
+  "branch": "agent/opencode-pyat-r112-r06-world-consuming-successor-r1",
+  "startup_commit": "359ffcef4c2dbde0bea7233bdb8901e8ed28e9be",
+  "commission_tip": "4b31a6f8e1281fe988bfd980b3f51de6250a0742",
+  "contract_commit": "36df471bb797461e870c9315d61303b67d2e2b8e",
+  "candidate_code_commit": "f606b36c60d02039895966a56fe1b7c10db86a7d",
+  "commands": [
+    {"purpose":"R112 + retained R06/R107/R110 suite","command":"/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_universal_world_binding.py rawlsing_next/tests/test_world_conditioned_progressive_service.py -q --junitxml=WORKER_RETURNS/PYAT-R112-R06-WORLD-CONSUMING-SUCCESSOR-R1/junit.xml -o addopts=''","exit_code":0,"result":"29 passed","failures":0,"errors":0,"skips":0,"walltime_seconds":183.419,"junit":"junit.xml","log":"pytest.log"},
+    {"purpose":"exact R109 independent probes","command":"PYTHONPATH=repo python -m pytest test_r109_progressive.py -q --junitxml=.../r109_probes_junit.xml -o addopts=''","exit_code":0,"result":"6 passed","failures":0,"errors":0,"skips":0,"walltime_seconds":3.537,"junit":"r109_probes_junit.xml","log":"r109_probes.log"}
+  ],
+  "actual_native_consumer": {
+    "p41_packet": "f27d1101048638bba395143a48efb7ef00bfcda4",
+    "nonparent_blob": "2181b832d3c4376d4b9428e13f4354f273be8f32",
+    "p41_service_blob": "7d428106c79bcc56973f7c0044fc273a2b354554",
+    "invocation": "product.nonparent.consume per admitted prefix over the same selected snapshot",
+    "world_conditioned_prefixes": 2,
+    "world_conditioned_state": "OPTIONS_AND_SOURCE_SUPPORT_PRODUCED",
+    "route_probability": null,
+    "route_probability_reason": "NO_JOINT_EMPIRICAL_STRUCTURAL_ROUTE_MODEL"
+  },
+  "positive": {
+    "T0": {"view_hash":"8823b8d5322c639f7e1d7e80aa91843ef4f0234292f5978e49273a7f67193623","receipt_hash":"c642a98b6882a77c3740ed9537a6c2bb33f635880a49c1c21b81cce5ed8d2078","snapshot_hash":"c888aecb9b83847283d21bd108958b77a6250c27e98f1c6b270734bcb90d18f1","routes":{"training":"ELIGIBLE","civil":"ELIGIBLE","exit_constraint":"WITHIN_MODELED_BUDGET"}},
+    "T1": {"view_hash":"93bd07704039492a5e1b3d91a30774f759bb53ec7000f5bbcf3f7a213c71565a","receipt_hash":"f6276d1c05499cd4a6ae0dc69e10caf2b8cf171ae7cda802a9dc338c6d6f6f93","snapshot_hash":"e6bfc8a8e3e2de8f33219087f31e8b85d66043a0d9599aedae352ed03f4cd1bc","routes":{"training":"BLOCKED_BY_MODELED_RULE","civil":"ELIGIBLE","exit_constraint":"RESOURCE_CONSTRAINED"}},
+    "prefixes": [
+      {"prefix":"r107-Y-1","n10e_hash":"8be7de896d99ed4da15c1342dd851bb8080c037f8e31909ec8df5938a6cf4f4c","native_receipt":"d1b72d4accf2851def3e904e4d8be6fa839b859575488b0f6b00892c45c8c006","source_balance_count":20,"denominator":40,"cells":{"0":10,"1":30}},
+      {"prefix":"r107-Y-2","n10e_hash":"6980707e8ce06495bd627e24aec078b57f30874cb90bbb9fde224c5a6b29afb4","native_receipt":"300c0665e1eab6301f19383690849d49ca218ed3f3242b4c1fcda2f2a3d95dbe","source_balance_count":30,"denominator":30,"cells":{"0":0,"1":30}}
+    ],
+    "condition_value_mutation": {"X":1,"->X":0,"source_balance_change":[20,30],"view_hash":"f7369a41be5b4d616f75f28d027106bd00e7d5e2ce5bfd40901e12cd1e5ce36d"},
+    "second_shape": {"target":"X","conditions":[["Y",1],["O","AB"]],"state":"PROGRESSIVE_WORLD_SELECTED_VIEW","native_state":"OPTIONS_AND_SOURCE_SUPPORT_PRODUCED"}
+  },
+  "controls": [
+    {"control":"foreign world release","expected":"PROGRESSIVE_WORLD_SOURCE_RELEASE_RISK_MISMATCH","result":"pass"},
+    {"control":"empirical revocation","expected":"PROGRESSIVE_WORLD_UNAVAILABLE / WORLD_EMPIRICAL_REVOKED_OR_UNAVAILABLE; native EMPIRICAL_REVOKED_OR_UNAVAILABLE","result":"pass"},
+    {"control":"world field revocation","expected":"PROGRESSIVE_WORLD_UNAVAILABLE; native training UNAVAILABLE_AUTHORITY_OR_CLOCK","result":"pass"},
+    {"control":"world/empirical restore","expected":"PROGRESSIVE_WORLD_SELECTED_VIEW","result":"pass"},
+    {"control":"N10W positioned hash binding","expected":"LIVE_TRACE hashes equal N10E hashes","result":"pass"},
+    {"control":"condition value / target shape","expected":"actual source support changes; unlike shape selected","result":"pass"},
+    {"control":"cold replay","expected":"same view/receipt/routes","result":"pass"}
+  ],
+  "blobs": {
+    "rawlsing_next/pre553_universal_world_binding.py": "c918e842e35c3c12ce20f4574fcbc3d6ebf4a5df",
+    "rawlsing_next/tests/test_universal_world_binding.py": "f78b983b514f1a0a78bf16c5f05ddc2adfaf2bc8",
+    "rawlsing_next/pre553_world_conditioned_progressive_service.py": "db573027a2416f1b43f2bc47d6f2e3b9d5cd3b31",
+    "rawlsing_next/tests/test_world_conditioned_progressive_service.py": "c46af4acb61e08fe70eccb78af055120a8b9a4b0"
+  },
+  "import_pins": {
+    "r05_candidate": "bc2b5465c8f0ec2ea4657c6206436cdfa9ca58d0",
+    "r05_review": "2f7faac6da620b7651c175ec074d7088d5a49343",
+    "r110_baseline": "359ffcef4c2dbde0bea7233bdb8901e8ed28e9be",
+    "p41_packet": "f27d1101048638bba395143a48efb7ef00bfcda4",
+    "r109_review": "e38a6a8c07ea6535a0d4de38053c15e4278934d7"
+  },
+  "limits": [
+    "Sourcefree finite-shape only; no original 35/1890/F5/F6/F7/F8/actor/R09/CI/prod/N11/N12/Sorok/J52-W52.",
+    "No world-conditioned probability; route_probability stays null; empirical counts are preserved unchanged by world rules.",
+    "No self-adoption; distinct reviewer required."
+  ]
+}
