@@ -1,0 +1,63 @@
+{
+  "access_cache_bypass": {
+    "access_with_forged_cache": "NOT_WITNESSED",
+    "access_without_cache": "NOT_WITNESSED",
+    "forged_access_observer": "B",
+    "forged_access_source_ref": "S49_NO_OBSERVED_B_ACCESS",
+    "store_perceptions": "EMPTY_PATCHED"
+  },
+  "consumer_source_validation": {
+    "clean": {
+      "event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+      "source_chain_hash": "52296a7790d1323557e6a8d7feae8fd65297c9bfa28626d4f119ec0d9576b4ee",
+      "status": "OK",
+      "verify_ok": true
+    },
+    "foreign_event_hash": {
+      "code": "MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+      "refused": "MaterialSourceRefusal"
+    },
+    "rehashed_chain": {
+      "code": "S49_NORMAL_CONSUMER_GENERATION_MISSING",
+      "refused": "S49Refusal"
+    },
+    "stale_clock": {
+      "code": "MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+      "refused": "MaterialSourceRefusal"
+    }
+  },
+  "generation_exactness": {
+    "role_a": {
+      "event_id": "",
+      "event_kind": null,
+      "performed": false,
+      "reason": "S49_GENERATION_ROLE_MISMATCH",
+      "status": "DENIED",
+      "world_events": 13
+    },
+    "root_forged": {
+      "event_id": "",
+      "event_kind": null,
+      "performed": false,
+      "reason": "S49_GENERATION_ROOT_MISMATCH",
+      "status": "DENIED",
+      "world_events": 13
+    },
+    "rule_forged": {
+      "event_id": "",
+      "event_kind": null,
+      "performed": false,
+      "reason": "S49_GENERATION_RULE_MISMATCH",
+      "status": "DENIED",
+      "world_events": 13
+    },
+    "source_refs_forged": {
+      "event_id": "",
+      "event_kind": null,
+      "performed": false,
+      "reason": "S49_GENERATION_SOURCE_REFS_MISMATCH",
+      "status": "DENIED",
+      "world_events": 13
+    }
+  }
+}

@@ -24,7 +24,8 @@ def manifest():
         local=S48_RETURN/rel; pinned=git("rev-parse",f"{CUTS['s48']}:WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/{rel}"); blob=git("hash-object",str(local))
         reused.append({"path":rel,"pinned":pinned,"local":blob,"exact":pinned==blob,"sha256":sha(local)})
     local=[{"path":rel,"sha256":sha(RET/rel),"git_blob_sha1":git("hash-object",str(RET/rel))} for rel in S49_FILES if (RET/rel).exists()]
-    return {"schema":"SOROK_S49_SOURCE_MANIFEST@1","roots":roots(),"cuts":dict(CUTS),"s48_reused":{"rows":reused,"all_exact":all(r["exact"] for r in reused)},"s49_local":local,"native_grants":{"actor":False,"rule":False,"source":False,"human":False,"c8":False,"c9":False,"c12":False}}
+    s42 = Path(roots()["s42_return"]) / "s42/session.py"
+    return {"schema":"SOROK_S49_SOURCE_MANIFEST@1","roots":roots(),"cuts":dict(CUTS),"s48_reused":{"rows":reused,"all_exact":all(r["exact"] for r in reused)},"s49_local":local,"s42_normal_consumer_seam":{"path":"WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/session.py","sha256":sha(s42),"git_blob_sha1":git("hash-object",str(s42)),"reason":"minimal normal admit hook preserves S49 chain before C8"},"native_grants":{"actor":False,"rule":False,"source":False,"human":False,"c8":False,"c9":False,"c12":False}}
 def main():
     EVID.mkdir(exist_ok=True); JUNIT.mkdir(exist_ok=True); LOGS.mkdir(exist_ok=True)
     entry=subprocess.run([sys.executable,"-B","run_s49.py"],cwd=str(RET),env=ENV,capture_output=True,text=True)

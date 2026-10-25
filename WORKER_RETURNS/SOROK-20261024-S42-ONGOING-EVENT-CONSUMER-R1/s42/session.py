@@ -79,6 +79,11 @@ class S42Session(S41Session):
     def _extra_conditioning_sources(self) -> list[dict]:
         return []
 
+    def _validate_admit_source_chain(self, source: Mapping[str, Any],
+                                     case: Mapping[str, Any],
+                                     event_time: int) -> None:
+        return None
+
     def read_event(self, event_ref: str) -> dict:
         return read_event(self, event_ref)
 
@@ -117,9 +122,13 @@ class S42Session(S41Session):
         import firstclass  # noqa: E402
 
         second_case = dict(case)
-        second_source = firstclass.validate_source(
-            source or firstclass.source_from_case(second_case), second_case
-        )
+        raw_source = source or firstclass.source_from_case(second_case)
+        second_source = firstclass.validate_source(raw_source, second_case)
+        second_source.update({
+            key: value for key, value in dict(raw_source).items()
+            if str(key).startswith("s49_")
+        })
+        self._validate_admit_source_chain(second_source, second_case, event_time)
         # Reject an exact incoming source identity replayed at the same derived clock.
         for row in bindings:
             if (

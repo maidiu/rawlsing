@@ -45,14 +45,7 @@ def _b_access(session, event: dict) -> dict:
     ) != action_event.get("location"):
         action_event = None
     perceived = []
-    cached = session.meta.get("s49_last_b_observation")
-    if (
-        isinstance(cached, dict)
-        and cached.get("event_id") == action_event_id
-        and cached.get("actor_id") in {B_ACTOR_KEY, actor_id}
-    ):
-        perceived = [cached]
-    if action_event_id and not perceived:
+    if action_event_id:
         perceived = [
             row for row in session.product.store.perceptions(
                 session.branch_id, B_ACTOR_KEY
@@ -162,6 +155,23 @@ def _world_for_b(session) -> dict:
     }
 
 
+def _source_chain_hash(actor_id, branch_id, event_ref, event_hash, root,
+                       rule_hash, access_source_ref, access_source_hash,
+                       source_refs) -> str:
+    return digest({
+        "actor_id": actor_id,
+        "branch_id": branch_id,
+        "event_ref": event_ref,
+        "event_hash": event_hash,
+        "role": "B",
+        "root_hash": root,
+        "rule_content_hash": rule_hash,
+        "access_source_ref": access_source_ref,
+        "access_source_hash": access_source_hash,
+        "source_refs": source_refs,
+    })
+
+
 def generate_b(session, *, source_records: list[Mapping[str, Any]] | None,
                rule=FULL_RULE) -> dict:
     event = _current_event(session)
@@ -184,6 +194,20 @@ def generate_b(session, *, source_records: list[Mapping[str, Any]] | None,
             "event_hash": event.get("e1_event_hash"),
             "event_time": event.get("event_time"),
             "as_of": session.clock(),
+            "role": "B",
+            "root_hash": session.read_root().get("root_hash", ""),
+            "root_id": session.read_root().get("root_id", ""),
+            "rule_content_hash": rule.content_hash,
+            "access_source_ref": access.get("source_ref", ""),
+            "access_source_hash": access.get("source_hash", ""),
+            "source_chain_hash": _source_chain_hash(
+                actor_id, session.branch_id, event.get("e1_event_id"),
+                event.get("e1_event_hash"),
+                session.read_root().get("root_hash", ""),
+                rule.content_hash, access.get("source_ref", ""),
+                access.get("source_hash", ""),
+                [row.get("source_ref") for row in records],
+            ),
             "source_count": len(records),
             "source_refs": [],
             "access_witness_hash": access.get("hash", ""),
@@ -223,6 +247,20 @@ def generate_b(session, *, source_records: list[Mapping[str, Any]] | None,
         "event_hash": event.get("e1_event_hash"),
         "event_time": event.get("event_time"),
         "as_of": session.clock(),
+        "role": "B",
+        "root_hash": session.read_root().get("root_hash", ""),
+        "root_id": session.read_root().get("root_id", ""),
+        "rule_content_hash": rule.content_hash,
+        "access_source_ref": access.get("source_ref", ""),
+        "access_source_hash": access.get("source_hash", ""),
+        "source_chain_hash": _source_chain_hash(
+            actor_id, session.branch_id, event.get("e1_event_id"),
+            event.get("e1_event_hash"),
+            session.read_root().get("root_hash", ""),
+            rule.content_hash, access.get("source_ref", ""),
+            access.get("source_hash", ""),
+            [row.get("source_ref") for row in records],
+        ),
         "source_count": len(records),
         "source_refs": list(receipt.get("source_refs") or []),
         "access_witness_hash": access.get("hash", ""),
@@ -250,6 +288,42 @@ def _invalid_result(session, generation_body: Mapping[str, Any], reason: str) ->
     })
 
 
+def attempt_intent(session, generation_body: Mapping[str, Any]) -> dict:
+    receipt = generation_body.get("generation") or {}
+    request = receipt.get("attempt_request") or {}
+    return seal({
+        "schema": "S49_B_ATTEMPT_INTENT@1",
+        "grade": S49_GRADE,
+        "native": False,
+        "role": "B",
+        "actor_id": generation_body.get("actor_id"),
+        "branch_id": generation_body.get("branch_id"),
+        "root_hash": generation_body.get("root_hash"),
+        "root_id": generation_body.get("root_id"),
+        "event_ref": generation_body.get("event_ref"),
+        "event_hash": generation_body.get("event_hash"),
+        "generation_hash": generation_body.get("hash"),
+        "attempt_request_hash": request.get("hash"),
+        "option_id": request.get("option_id"),
+        "rule_content_hash": generation_body.get("rule_content_hash"),
+        "access_source_ref": generation_body.get("access_source_ref"),
+        "access_source_hash": generation_body.get("access_source_hash"),
+        "source_chain_hash": generation_body.get("source_chain_hash"),
+    })
+
+
+def canonical_attempt_intent(session, generation_body: Mapping[str, Any]) -> dict | None:
+    rows = [
+        row for row in session.product.store.episodes(session.branch_id)
+        if row.get("kind") == "S49_B_ATTEMPT_INTENT"
+    ]
+    for row in reversed(rows):
+        body = dict(row.get("body") or {})
+        if body.get("generation_hash") == generation_body.get("hash"):
+            return {"episode_id": row.get("episode_id"), "body": body}
+    return None
+
+
 def _canonical_generation(session, generation_body: Mapping[str, Any]) -> dict | None:
     target_hash = generation_body.get("hash", "")
     rows = [
@@ -275,6 +349,46 @@ def validate_b_generation(session, generation_body: Mapping[str, Any]) -> dict:
         raise S49Refusal("S49_GENERATION_BODY_MISMATCH")
     actor_id = _b_state(session).get("actor_id")
     event = _current_event(session)
+    root = session.read_root()
+    receipt = generation_body.get("generation") or {}
+    if generation_body.get("role") != "B":
+        raise S49Refusal("S49_GENERATION_ROLE_MISMATCH")
+    if generation_body.get("root_hash") != root.get("root_hash"):
+        raise S49Refusal("S49_GENERATION_ROOT_MISMATCH")
+    if generation_body.get("root_id") != root.get("root_id"):
+        raise S49Refusal("S49_GENERATION_ROOT_ID_MISMATCH")
+    receipt_rule = receipt.get("rule") or {}
+    if (
+        receipt_rule.get("rule_id") != FULL_RULE.rule_id
+        or receipt_rule.get("version") != FULL_RULE.version
+        or receipt_rule.get("content_hash") != FULL_RULE.content_hash
+        or generation_body.get("rule_content_hash") != FULL_RULE.content_hash
+    ):
+        raise S49Refusal("S49_GENERATION_RULE_MISMATCH")
+    if generation_body.get("source_refs") != list(receipt.get("source_refs") or []):
+        raise S49Refusal("S49_GENERATION_SOURCE_REFS_MISMATCH")
+    expected_chain = _source_chain_hash(
+        actor_id, session.branch_id, event.get("e1_event_id"),
+        event.get("e1_event_hash"),
+        root.get("root_hash", ""), FULL_RULE.content_hash,
+        generation_body.get("access_source_ref", ""),
+        generation_body.get("access_source_hash", ""),
+        generation_body.get("source_refs") or [],
+    )
+    if generation_body.get("source_chain_hash") != expected_chain:
+        raise S49Refusal("S49_GENERATION_SOURCE_CHAIN_MISMATCH")
+    if generation_body.get("event_hash") != event.get("e1_event_hash"):
+        raise S49Refusal("S49_GENERATION_EVENT_HASH_MISMATCH")
+    intent = canonical_attempt_intent(session, generation_body)
+    if intent is None:
+        raise S49Refusal("S49_ATTEMPT_INTENT_MISSING")
+    request = (generation_body.get("generation") or {}).get("attempt_request") or {}
+    if intent["body"].get("attempt_request_hash") != request.get("hash"):
+        raise S49Refusal("S49_ATTEMPT_INTENT_LINK_MISMATCH")
+    if intent["body"].get("option_id") != request.get("option_id"):
+        raise S49Refusal("S49_ATTEMPT_INTENT_OPTION_MISMATCH")
+    if intent["body"].get("source_chain_hash") != generation_body.get("source_chain_hash"):
+        raise S49Refusal("S49_ATTEMPT_INTENT_SOURCE_CHAIN_MISMATCH")
     if generation_body.get("actor_id") != actor_id:
         raise S49Refusal("S49_GENERATION_ACTOR_MISMATCH")
     if generation_body.get("branch_id") != session.branch_id:
@@ -314,6 +428,12 @@ def validate_b_generation(session, generation_body: Mapping[str, Any]) -> dict:
 
 
 def perform_b_attempt(session, generation_body: Mapping[str, Any]) -> dict:
+    if (
+        _canonical_generation(session, generation_body) is not None
+        and canonical_attempt_intent(session, generation_body) is None
+        and isinstance((generation_body.get("generation") or {}).get("attempt_request"), dict)
+    ):
+        session._append("S49_B_ATTEMPT_INTENT", attempt_intent(session, generation_body))
     try:
         validate_b_generation(session, generation_body)
     except S49Refusal as exc:
@@ -455,6 +575,6 @@ def perform_b_attempt(session, generation_body: Mapping[str, Any]) -> dict:
 __all__ = [
     "B_ACTOR_KEY", "CONTROLLED_GRADE", "MISSING_B_CONTEXT", "S49_GRADE",
     "SOURCE_OWNER_HOLD", "controlled_b_sources", "generate_b",
-    "perform_b_attempt", "record_b_observation", "root_b_sources",
-    "validate_b_generation",
+    "attempt_intent", "canonical_attempt_intent", "perform_b_attempt",
+    "record_b_observation", "root_b_sources", "validate_b_generation",
 ]
