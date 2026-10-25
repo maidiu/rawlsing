@@ -1,0 +1,70 @@
+{
+  "author_candidate": "22280a3f43e751bab1bbebe0a9d8c601b3160120",
+  "author_code": "98f9d136176af856185eb9fa7ac8e08afeb2deeb",
+  "author_code_blobs": {
+    "rawlsing_next/pre553_universal_world_binding.py": "c6d33e4780b61668bf7fbbc2b82aec31a9144a0d",
+    "rawlsing_next/tests/test_universal_world_binding.py": "4d5a7d93b482482562ff3065acd8f2208652db0a"
+  },
+  "baseline": "b2cfe93cee854b7aff2081a7a223ada75295332a",
+  "commission": "40b784671f555cd716a3afe9b86318a1dc99d66c",
+  "environment": {
+    "pytest": "9.0.2",
+    "python": "3.11.3",
+    "pyreadstat": "1.3.2",
+    "reviewer_model_session": "opencode-go/deepseek-v4.1-flash max; existing distinct R06V reviewer"
+  },
+  "evidence_commit": "",
+  "evidence_commit_remote_readback": {},
+  "expectations_freeze_commit": "095fac4e8",
+  "expectations_sha256": "c966f6846c28dbbf09ca6201d0d97a0671bed053b0618c790d89d54d3975be44",
+  "findings": [
+    "world source/release identity not bound to producer prefixes; foreign world release accepted as selected view",
+    "empirical revocation ignored; revoked_scope=empirical still serves selected view",
+    "N10W positioned consumptions are cached placeholders with null consumer hashes, not actual N10E bindings",
+    "N10W itself does not change across T0/T1 world change; world consumption is sibling N9 eligibility only"
+  ],
+  "not_reached": [
+    "original 35/1890",
+    "global F6/F7/F8",
+    "source/science",
+    "actor/person state",
+    "R09/CI/prod",
+    "N11/N12/Sorok/J52/W52"
+  ],
+  "positive": "actual producer prefixes, condition value mutation, unlike target X shape, N10E minority/zero/uncertainty, field revocation/restore, T0/T1 E04 route change, N10W update identities, actor NOT_TOUCHED, cold replay",
+  "prior_r06_review": "fbe7ffc00a021aeacce3b15a2ef74cd8657d9d56",
+  "prior_review_oracle": "0153d1f9b88ede3f76e5b1658a7441cb2e9a1713",
+  "r107_contract": "bb4ad106af69eae197251d8c0d54f7162901fd5e",
+  "r107_commission": "2b50b54de",
+  "review_branch": "agent/opencode-pyat-r109-r06-progressive-independent-review-r1",
+  "tests": {
+    "author_suite": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/author_suite_junit.xml",
+      "passed": 23,
+      "skipped": 0,
+      "time_seconds": 179.903
+    },
+    "cold_replay": {
+      "log": "replay/cold_replay.log",
+      "match": true,
+      "receipt": "8be29670bd1f063b1e049ed1fead5f8fcb18cfb4536fe20ee392aa7181ddd28a",
+      "view_hash": "fb4b1710afc0f13d1da024c420f3a0b5bc857041dabbdb523c4132cd90704850"
+    },
+    "independent_probes": {
+      "errors": 0,
+      "failures": 3,
+      "junit": "replay/independent_probes_junit.xml",
+      "passed": 3,
+      "skipped": 0,
+      "time_seconds": 4.11,
+      "failed_tests": [
+        "test_R109_foreign_world_source_release_must_refuse",
+        "test_R109_empirical_revocation_must_not_serve_selected_view",
+        "test_R109_n10w_positioned_consumptions_bind_actual_n10e_hashes"
+      ]
+    }
+  },
+  "verdict": "REVISE"
+}

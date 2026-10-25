@@ -1,0 +1,66 @@
+..FF.F                                                                   [100%]
+=================================== FAILURES ===================================
+______________ test_R109_foreign_world_source_release_must_refuse ______________
+
+    def test_R109_foreign_world_source_release_must_refuse():
+        target, conditions, prefixes, world = _progressive_fixture_parts()
+        foreign = ExactRef("C11LogicalRelease", "REL-r109-foreign", "f" * 64)
+        bad_world = dict(world)
+        bad_world["release_ref"] = foreign
+        bad_world["source"] = dict(world["source"])
+        bad_world["source"]["release_ref"] = foreign
+        handle = configure_progressive_world_context(
+            target_ref=target, conditions=conditions, prefixes=prefixes,
+            world_empirical=bad_world,
+        )
+        view = _view(handle)
+>       assert view.state in {"REFUSED", "PROGRESSIVE_WORLD_UNAVAILABLE"}, (
+            "foreign world release was accepted without source/release refusal"
+        )
+E       AssertionError: foreign world release was accepted without source/release refusal
+E       assert 'PROGRESSIVE_WORLD_SELECTED_VIEW' in {'PROGRESSIVE_WORLD_UNAVAILABLE', 'REFUSED'}
+E        +  where 'PROGRESSIVE_WORLD_SELECTED_VIEW' = ProgressiveWorldView(state='PROGRESSIVE_WORLD_SELECTED_VIEW', reason_code='ACTUAL_N9_N10E_N10W', target_ref=ExactRef(k...r_state='NOT_TOUCHED', view_hash='0d459649d9e6de008e64632243b73e592cb44d967efd363d98f9e61d8b546201', z_unresolved=True).state
+
+WORKER_RETURNS/PYAT-R109-R06-PROGRESSIVE-INDEPENDENT-REVIEW-R1/probes/test_r109_progressive.py:74: AssertionError
+_________ test_R109_empirical_revocation_must_not_serve_selected_view __________
+
+    def test_R109_empirical_revocation_must_not_serve_selected_view():
+        handle = _progressive_fixture(revoked_scope="empirical")
+        view = _view(handle, "T1", "AS_OF")
+>       assert view.state != "PROGRESSIVE_WORLD_SELECTED_VIEW" or (
+            getattr(view, "n9_world", None) or {}
+        ).get("empirical", {}).get("state") in {"REVOKED", "UNAVAILABLE"}, (
+            "empirical permission revocation was ignored while a selected view was served"
+        )
+E       AssertionError: empirical permission revocation was ignored while a selected view was served
+E       assert ('PROGRESSIVE_WORLD_SELECTED_VIEW' != 'PROGRESSIVE_WORLD_SELECTED_VIEW' or None in {'REVOKED', 'UNAVAILABLE'})
+E        +  where 'PROGRESSIVE_WORLD_SELECTED_VIEW' = ProgressiveWorldView(state='PROGRESSIVE_WORLD_SELECTED_VIEW', reason_code='ACTUAL_N9_N10E_N10W', target_ref=ExactRef(k...r_state='NOT_TOUCHED', view_hash='9caa595aee5fdac43237c41eadf395f0fa43fd0bc7e65a9b49fc9d9fb8cbc36d', z_unresolved=True).state
+E        +  and   None = <built-in method get of dict object at 0x109530900>('state')
+E        +    where <built-in method get of dict object at 0x109530900> = {}.get
+E        +      where {} = <built-in method get of dict object at 0x10976dc80>('empirical', {})
+E        +        where <built-in method get of dict object at 0x10976dc80> = ({'currentness': 'CURRENT_TEST_ONLY_SELECTION', 'permission_root': 'TEST_ONLY_E04_SOURCE_ROOT', 'rules': {'civil_open':...n': 2, 'value': False}, ...}, 'selection': {'mode': 'AS_OF', 'published_asof': '2027-09-01', 'valid_at': '2027-09-01'}}).get
+E        +          where {'currentness': 'CURRENT_TEST_ONLY_SELECTION', 'permission_root': 'TEST_ONLY_E04_SOURCE_ROOT', 'rules': {'civil_open':...n': 2, 'value': False}, ...}, 'selection': {'mode': 'AS_OF', 'published_asof': '2027-09-01', 'valid_at': '2027-09-01'}} = getattr(ProgressiveWorldView(state='PROGRESSIVE_WORLD_SELECTED_VIEW', reason_code='ACTUAL_N9_N10E_N10W', target_ref=ExactRef(k...r_state='NOT_TOUCHED', view_hash='9caa595aee5fdac43237c41eadf395f0fa43fd0bc7e65a9b49fc9d9fb8cbc36d', z_unresolved=True), 'n9_world', None)
+
+WORKER_RETURNS/PYAT-R109-R06-PROGRESSIVE-INDEPENDENT-REVIEW-R1/probes/test_r109_progressive.py:82: AssertionError
+________ test_R109_n10w_positioned_consumptions_bind_actual_n10e_hashes ________
+
+    def test_R109_n10w_positioned_consumptions_bind_actual_n10e_hashes():
+        view = _view(_progressive_fixture())
+        assert view.state == "PROGRESSIVE_WORLD_SELECTED_VIEW"
+        step_hashes = {step["content_hash"] for step in view.n10e_steps}
+        positioned = view.n10w["positioned_consumptions"]
+        assert len(positioned) == len(view.n10e_steps)
+        observed = [entry.get("consumer_result_hash") for entry in positioned]
+>       assert all(isinstance(value, str) and value for value in observed), (
+            "N10W positioned consumptions are cached placeholders, not actual N10E bindings"
+        )
+E       AssertionError: N10W positioned consumptions are cached placeholders, not actual N10E bindings
+E       assert False
+E        +  where False = all(<generator object test_R109_n10w_positioned_consumptions_bind_actual_n10e_hashes.<locals>.<genexpr> at 0x109506960>)
+
+WORKER_RETURNS/PYAT-R109-R06-PROGRESSIVE-INDEPENDENT-REVIEW-R1/probes/test_r109_progressive.py:106: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R109-R06-PROGRESSIVE-INDEPENDENT-REVIEW-R1/probes/test_r109_progressive.py::test_R109_foreign_world_source_release_must_refuse
+FAILED WORKER_RETURNS/PYAT-R109-R06-PROGRESSIVE-INDEPENDENT-REVIEW-R1/probes/test_r109_progressive.py::test_R109_empirical_revocation_must_not_serve_selected_view
+FAILED WORKER_RETURNS/PYAT-R109-R06-PROGRESSIVE-INDEPENDENT-REVIEW-R1/probes/test_r109_progressive.py::test_R109_n10w_positioned_consumptions_bind_actual_n10e_hashes
+3 failed, 3 passed in 4.11s
