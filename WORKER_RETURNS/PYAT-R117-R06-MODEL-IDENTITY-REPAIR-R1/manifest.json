@@ -1,0 +1,37 @@
+{
+  "branch": "agent/opencode-pyat-r112-r06-world-consuming-successor-r1",
+  "candidate_code_commit": "3e8275cf45820f82c27da8f729e838b78d68bb20",
+  "code_paths_blobs": {
+    "rawlsing_next/pre553_universal_world_binding.py": "dfb1e9fb72f1ee4b50fd7138fe978ce50db49f37",
+    "rawlsing_next/tests/test_universal_world_binding.py": "ae7f7bad72ac6118ab8f07c9ba19b22ea933950b"
+  },
+  "contract_commit": "647b380b99418c7edca88b5912fb56ab726c468e",
+  "excluded_from_manifest": [
+    "manifest.json"
+  ],
+  "note": "Only the two R117 code paths changed. R112 service/test preserved read-only. manifest excludes itself.",
+  "preserved_r112_blobs": {
+    "rawlsing_next/pre553_world_conditioned_progressive_service.py": "db573027a2416f1b43f2bc47d6f2e3b9d5cd3b31",
+    "rawlsing_next/tests/test_world_conditioned_progressive_service.py": "c46af4acb61e08fe70eccb78af055120a8b9a4b0"
+  },
+  "report_artifacts_sha256": {
+    "00_RETURN.md": "38735c4a880d48b0c1d1995f6515c3cedf70b4ea0f95d42aadfbbdb0e979b737",
+    "CONTRACT.md": "6394463e8fe60f1f4bd15a26168cbe6cdd648d6996afe7c28742ae8bb6f7d499",
+    "COVERAGE_AND_LIMITS.md": "46a0dc2fff11a7ae268fd32052f8e8f575817dd848507ba3910a9586ffac6358",
+    "RESUME.md": "1442af2fbad08a3ba8f2827b5c40a1ee93ba2a7879e986c2981c92d378b3c354",
+    "commands.txt": "263b1291b14335459dd25e0caf2b0df4fda720985e23cfff5173005175d4b2b9",
+    "junit.xml": "0ade5a5be1046651faac743fe5b30b211314b988e6a1a840f65e094e8dda3e49",
+    "prior_probes.log": "5f766c5a9cf76bf10a45167031537364e88c82555dfabc21519e1c27f3b7361f",
+    "prior_probes_junit.xml": "18cb7ecc990909d242d88a36635feca94db6f9ed99d3359a21e0d5cf97ee1eec",
+    "proof_witness.json": "6cbccc65b8e3a2b4901b84340aa5b797a2a03d0e0ac0f6df242b737672af1ea1",
+    "pytest.log": "b87c7105c600c27d1a3f4721cc9f2802f8852810710b76f261cf35a0cfb2f7fe",
+    "r116_probes.log": "da17c5930b11a68e8a0cbf324158bcf4ddfa8493cdae98adcbc234c0bca808ce",
+    "r116_probes_junit.xml": "7065b0ec91844a02125b3b962ab847972497a7bffdaf2020a0f28f1b8f44dc75"
+  },
+  "schema": "PYAT_R117_MODEL_IDENTITY_MANIFEST@1",
+  "startup_commit": "73b7d62c391f444a0dd4cd60532ac071543ac14d",
+  "upstream_pins": {
+    "r115_baseline": "73b7d62c391f444a0dd4cd60532ac071543ac14d",
+    "r116_review": "4069198e658bc05951d0792db210385ba777c80f"
+  }
+}
