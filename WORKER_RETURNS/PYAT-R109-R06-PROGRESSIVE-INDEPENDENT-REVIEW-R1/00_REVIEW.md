@@ -149,5 +149,7 @@ sourcefree scope limitation, not an original temporal claim.
 `ORACLE.md`, this review, `COVERAGE_AND_LIMITS.md`, `RESUME.md`, `probes/`,
 `replay/` (JUnit/logs/cold), `evidence/commands.txt`,
 `evidence/remote_readback.txt`, `proof_witness.json`, and self-excluding
-`manifest.json` with SHA256 and byte sizes. The reviewer branch will be pushed
-non-force and directly read back; final SHA is reported separately.
+`manifest.json` with SHA256 and byte sizes. The reviewer branch was pushed non-force. Evidence commit
+`860c36b987c0f7f868c4cbcd0f562a683cb63132` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also directly verified and reported to the coordinator.
