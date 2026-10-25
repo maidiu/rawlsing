@@ -16,10 +16,24 @@
   "wired_surfaces": [
     "GOAL.md",
     "FLIGHT_BOARD.json",
-    "RESUME_CHECKPOINT.md"
+    "RESUME_CHECKPOINT.md",
+    "existingheartbeatprompt",
+    "actualactivegoalattachment"
   ],
-  "automation": "PAUSEDobserved; promptanchorupdatepending",
+  "automation": {
+    "id": "pyat-hq-return-intake-and-authorized-development",
+    "status": "PAUSED",
+    "rrule": "FREQ=MINUTELY;INTERVAL=10",
+    "anchor": "CONTROLLING TRAJECTORY \u2014 R102",
+    "prompt_sha256": "9e588f9b2e65049fd7c4f2e552b14ab491c37c9a8b2366596129135bf46ebf8f",
+    "tool_update": "SUCCESS_STATUS_PAUSED; configreadbackverified"
+  },
   "R100_observed_head": "79309093e39d363b760436df2a06f4009c81c789",
   "new_workers": [],
-  "decision_status": "GUIDE_PREPARED_AND_WIRED_EXECUTION_HOLD_PENDING_HUMAN_REVIEW"
+  "decision_status": "GUIDE_PREPARED_AND_WIRED_EXECUTION_HOLD_PENDING_HUMAN_REVIEW",
+  "active_goal_attachment": {
+    "path": "/Users/matthewsmith/.codex/attachments/28c0f5c5-098c-4972-9275-333368dfb57e/pasted-text-1.txt",
+    "sha256": "29201f7c90ec36f7d6c1cf2063717daa4be82e570b7a205ee4baaa51b6f56615",
+    "anchor_verified": true
+  }
 }
