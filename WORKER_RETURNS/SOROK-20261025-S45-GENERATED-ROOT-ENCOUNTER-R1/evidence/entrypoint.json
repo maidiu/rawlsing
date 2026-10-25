@@ -1,0 +1,196 @@
+{
+  "attend": {
+    "has_actor_response": false,
+    "new_knowledge": [],
+    "status": "NO_CHANGE"
+  },
+  "clock": 222,
+  "cold_encounters": 3,
+  "cold_events": 4,
+  "do_help": {
+    "accepted": true,
+    "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_7b8c47084ac8e9ee2f38a374b8c78141c2c7f9b5f20376e0c4e7548723f929e0",
+    "native_text": "Pon la mano en el borde cercano. Yo tomo la holgura.",
+    "status": "OK",
+    "strategy": "HELP_ACCEPT",
+    "translation_text": "Put your hand on the near edge. I'll take the slack."
+  },
+  "encounter_count": 3,
+  "encounters": [
+    {
+      "access_receipt_ids": [
+        "LME_ACCESS_5c66dc2526517729a44851e0a8af0396852648b618cc0e9f90356ec1e05c9e2c"
+      ],
+      "action_event_id": "",
+      "encounter_id": "TEST_ONLY_BP4_EP_a285900b6324996d08ee74cd199599ac3763b479fe319e2d0610afb0510eca6b",
+      "kind": "SAY",
+      "native_text": "Si te ofreces, el borde cercano necesita una mano.",
+      "source_event_refs": [
+        {
+          "branch_id": "first_session",
+          "clock": 222,
+          "event_hash": "7d4d3e5fa041f09effe457eb696006059ad70953c3f1239270313a1949f3aab0",
+          "event_id": "TEST_ONLY_BP4_WORLD_EVT_86efe89b82ce043b5a267da9f52917508754a007f703d4a44fe3c27e3926ec8a",
+          "speaker_actor_id": "B"
+        }
+      ],
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_928330f4105829d5e9d483974f5812f5447aadaedbae46a7312c9afaef3dbe5b",
+      "status": "OK",
+      "strategy": "HELP_INVITE",
+      "translation_text": "If you're offering, the near edge needs a hand.",
+      "user_event_id": "TEST_ONLY_BP4_WORLD_EVT_aaf62944f563366b9cad9ec31fe56e89f375d510583660061f2bc090b6b88c81"
+    },
+    {
+      "access_receipt_ids": [
+        "LME_ACCESS_8c743eef129ba885051a9f3b01de02d3648a4f02baf327df93d81cc3d01ff7d9"
+      ],
+      "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_7b8c47084ac8e9ee2f38a374b8c78141c2c7f9b5f20376e0c4e7548723f929e0",
+      "encounter_id": "TEST_ONLY_BP4_EP_02980df68bbb1f7a3048ea22b41314badd1ae7196019ccea1a495ed9e67129cc",
+      "kind": "DO_HELP",
+      "native_text": "Pon la mano en el borde cercano. Yo tomo la holgura.",
+      "source_event_refs": [
+        {
+          "branch_id": "first_session",
+          "clock": 222,
+          "event_hash": "287dc2d1cefc68dd66e68b4f1705958c5fa1399f3f112cc15558e6ca6f5f3f87",
+          "event_id": "TEST_ONLY_BP4_WORLD_EVT_e34c0fde9ff8ed70db965a50f06ec2d5357daa5289772b4233eeaf7da6baab9d",
+          "speaker_actor_id": "B"
+        }
+      ],
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_5ae623f05cef8aed0572c5b20e0fbf6b2fccad33fb7b251695d27202bfaabb02",
+      "status": "OK",
+      "strategy": "HELP_ACCEPT",
+      "translation_text": "Put your hand on the near edge. I'll take the slack.",
+      "user_event_id": ""
+    },
+    {
+      "access_receipt_ids": [],
+      "action_event_id": "",
+      "encounter_id": "TEST_ONLY_BP4_EP_e40d8d7e7ac1023e0af276759efc3f35ca0555f88d883f61ac505fa978c91496",
+      "kind": "ATTEND",
+      "native_text": "",
+      "source_event_refs": [],
+      "speech_event_id": "",
+      "status": "NO_CHANGE",
+      "strategy": null,
+      "translation_text": "",
+      "user_event_id": ""
+    }
+  ],
+  "events_after": 4,
+  "events_before": 1,
+  "grade": "TEST_ONLY_SOURCEBOUND_GENERATED_ROOT_ENCOUNTER_NOT_NATIVE",
+  "material_state_after_attend": {
+    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+    "attitudes": [
+      "reciprocity_in_work_obligations"
+    ],
+    "availability_status": "available_for_encounter",
+    "cash": 58,
+    "completed_units": 6,
+    "debt_units": 2,
+    "free_hours": 10,
+    "health": "recovered",
+    "material_position": "waged_repair",
+    "material_remaining": 0,
+    "nonmother_relations": [
+      "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+    ],
+    "place": "INST_WORKSHOP_A",
+    "practices": [
+      "scheduled_repair_ledger_discipline"
+    ],
+    "projects": [
+      "communal_irrigation_pump_repair"
+    ],
+    "role": "repair",
+    "skill": 6,
+    "tools_remaining": 1
+  },
+  "material_state_after_help": {
+    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+    "attitudes": [
+      "reciprocity_in_work_obligations"
+    ],
+    "availability_status": "available_for_encounter",
+    "cash": 58,
+    "completed_units": 6,
+    "debt_units": 2,
+    "free_hours": 10,
+    "health": "recovered",
+    "material_position": "waged_repair",
+    "material_remaining": 0,
+    "nonmother_relations": [
+      "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+    ],
+    "place": "INST_WORKSHOP_A",
+    "practices": [
+      "scheduled_repair_ledger_discipline"
+    ],
+    "projects": [
+      "communal_irrigation_pump_repair"
+    ],
+    "role": "repair",
+    "skill": 6,
+    "tools_remaining": 1
+  },
+  "material_state_after_say": {
+    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+    "attitudes": [
+      "reciprocity_in_work_obligations"
+    ],
+    "availability_status": "available_for_encounter",
+    "cash": 56,
+    "completed_units": 5,
+    "debt_units": 2,
+    "free_hours": 11,
+    "health": "recovered",
+    "material_position": "waged_repair",
+    "material_remaining": 1,
+    "nonmother_relations": [
+      "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+    ],
+    "place": "INST_WORKSHOP_A",
+    "practices": [
+      "scheduled_repair_ledger_discipline"
+    ],
+    "projects": [
+      "communal_irrigation_pump_repair"
+    ],
+    "role": "repair",
+    "skill": 6,
+    "tools_remaining": 1
+  },
+  "native": false,
+  "native_grants": {
+    "actor": false,
+    "c12": false,
+    "c8": false,
+    "c9": false,
+    "human": false,
+    "rule": false,
+    "source": false
+  },
+  "product_model_calls": 0,
+  "provider_calls": 0,
+  "root_event_unchanged": true,
+  "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+  "root_hash_after": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+  "root_unchanged": true,
+  "say": {
+    "native_text": "Si te ofreces, el borde cercano necesita una mano.",
+    "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_86efe89b82ce043b5a267da9f52917508754a007f703d4a44fe3c27e3926ec8a",
+    "status": "OK",
+    "strategy": "HELP_INVITE",
+    "surface": [
+      "You say: \"Can I help?\"",
+      "the repair worker says: \"Si te ofreces, el borde cercano necesita una mano.\" A keeps one hand on the bench.",
+      "[labeled English view, not actor speech: \"If you're offering, the near edge needs a hand.\"]"
+    ],
+    "translation_text": "If you're offering, the near edge needs a hand."
+  },
+  "schema": "SOROK_S45_GENERATED_ROOT_ENCOUNTER_RUN@1",
+  "state_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-s45-2zpckcr9",
+  "target_proposals": [],
+  "verify_ok": true
+}
