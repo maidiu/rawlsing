@@ -18,7 +18,9 @@ from .actor import (
     controlled_b_sources,
     generate_b,
     perform_b_attempt,
+    record_b_observation,
     root_b_sources,
+    validate_b_generation,
 )
 from .errors import S49Refusal
 
@@ -40,6 +42,20 @@ def _source_from_b_event(session, *, generation_body: Mapping[str, Any],
     world = session.world()
     actor_b = (world.actor_state.get("B") or {}).get("actor_id")
     actor_a = (world.actor_state.get("A") or {}).get("actor_id")
+    try:
+        validate_b_generation(session, generation_body)
+    except S49Refusal:
+        raise
+    if attempt.get("generation_hash") != generation_body.get("hash"):
+        raise S49Refusal("S49_ATTEMPT_GENERATION_LINK_MISMATCH")
+    generation = generation_body.get("generation") or {}
+    request = generation.get("attempt_request") or {}
+    source_chain_hash = digest({
+        "generation": generation_body.get("hash"),
+        "attempt": attempt.get("hash"),
+        "event": attempt.get("event_id"),
+        "event_hash": attempt.get("event_hash"),
+    })
     source = {
         "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
         "b_actor": actor_b,
@@ -57,6 +73,15 @@ def _source_from_b_event(session, *, generation_body: Mapping[str, Any],
         "source_grade": "TEST_ONLY_SOURCEFREE",
         "native": False,
         "psychology_claim": False,
+        "s49_generation_hash": generation_body.get("hash", ""),
+        "s49_attempt_hash": attempt.get("hash", ""),
+        "s49_rule_content_hash": (generation.get("rule") or {}).get(
+            "content_hash", ""
+        ),
+        "s49_access_witness_hash": generation_body.get(
+            "access_witness_hash", ""
+        ),
+        "s49_source_chain_hash": source_chain_hash,
     }
     case = {
         "schema": "S49_CURRENT_B_SOURCE_CASE@1",
@@ -64,6 +89,9 @@ def _source_from_b_event(session, *, generation_body: Mapping[str, Any],
         "actor": {"actor_id": actor_a},
         "other": {"actor_id": actor_b},
         "as_of": world.clock,
+        "s49_generation_hash": generation_body.get("hash", ""),
+        "s49_attempt_hash": attempt.get("hash", ""),
+        "s49_source_chain_hash": source_chain_hash,
         "records": [
             {
                 "kind": "OTHER_PERFORMED",

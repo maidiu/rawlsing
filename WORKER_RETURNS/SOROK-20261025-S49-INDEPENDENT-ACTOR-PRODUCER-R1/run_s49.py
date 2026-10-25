@@ -9,6 +9,7 @@ install()
 from s45.fixtures import root_bundle
 from s37.harness import case_for, source_for
 from s49.session import S49Session
+from s49.actor import record_b_observation
 
 def _start(state):
     c=case_for(True)
@@ -21,6 +22,7 @@ def main() -> int:
     actual_state=base/"actual"; controlled_state=base/"controlled"
     actual=_start(actual_state)
     try:
+        record_b_observation(actual)
         before=(len(actual.world().events),actual.clock(),len(actual.read_events()))
         actual_result=actual.produce_b_turn(controlled=False)
         actual_after=(len(actual.world().events),actual.clock(),len(actual.read_events()))
@@ -28,6 +30,7 @@ def main() -> int:
     finally: actual.close()
     controlled=_start(controlled_state)
     try:
+        record_b_observation(controlled)
         result=controlled.produce_b_turn(controlled=True)
         c9=controlled.read_c9_conditioning(result["event_ref"]) if result.get("event_ref") else None
         controlled_verify=controlled.verify()["ok"]

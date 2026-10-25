@@ -8,7 +8,7 @@ from .bootstrap import install
 install()
 
 from bp4.world import make_event  # noqa: E402
-from candidate import digest, seal  # noqa: E402
+from candidate import digest, seal, valid  # noqa: E402
 from candidate.actor_access_response import make_actor_local_access_witness  # noqa: E402
 from s39.model import FULL_RULE, generate_choice  # noqa: E402
 from s39.sources import make_source  # noqa: E402
@@ -37,19 +37,82 @@ def _b_access(session, event: dict) -> dict:
     actor_id = _b_state(session).get("actor_id")
     if not actor_id:
         raise S49Refusal("S49_B_ACTOR_MISSING")
+    world = session.world()
+    action_event_id = event.get("action_event_id", "")
+    action_event = session.event(action_event_id) if action_event_id else None
+    if action_event is not None and world.positions.get(
+        B_ACTOR_KEY
+    ) != action_event.get("location"):
+        action_event = None
+    perceived = []
+    cached = session.meta.get("s49_last_b_observation")
+    if (
+        isinstance(cached, dict)
+        and cached.get("event_id") == action_event_id
+        and cached.get("actor_id") in {B_ACTOR_KEY, actor_id}
+    ):
+        perceived = [cached]
+    if action_event_id and not perceived:
+        perceived = [
+            row for row in session.product.store.perceptions(
+                session.branch_id, B_ACTOR_KEY
+            )
+            if row.get("event_id") == action_event_id
+        ]
+    if not action_event or not perceived:
+        return make_actor_local_access_witness(
+            actor_id=actor_id,
+            event_ref=event.get("e1_event_hash"),
+            access_time=session.clock(),
+            source_ref="S49_NO_OBSERVED_B_ACCESS",
+            access_status="NOT_WITNESSED",
+            scene="",
+            content={
+                "observed": False,
+                "observed_event_ref": event.get("e1_event_id"),
+                "observer": "B",
+            },
+        )
+    row = perceived[-1]
     return make_actor_local_access_witness(
         actor_id=actor_id,
         event_ref=event.get("e1_event_hash"),
-        access_time=session.clock(),
-        source_ref="TEST_ONLY_S49_B_ACCESS_" + str(event.get("e1_event_id")),
+        access_time=int(row.get("clock", session.clock())),
+        source_ref="TEST_ONLY_ADP017_S49_B_" + action_event_id,
         access_status="ACCESSIBLE",
-        scene="workshop",
+        scene=str(action_event.get("location", "")),
         content={
-            "observed_event_ref": event.get("e1_event_id"),
-            "observed_event_hash": event.get("e1_event_hash"),
+            "observed_event_id": action_event_id,
+            "observed_event_hash": action_event.get("hash", ""),
+            "perception_clock": row.get("clock"),
+            "perception_channel": row.get("channel"),
             "observer": "B",
         },
     )
+
+
+def record_b_observation(session, event: dict | None = None) -> dict:
+    event = event or _current_event(session)
+    action_id = event.get("action_event_id", "")
+    action_event = session.event(action_id) if action_id else None
+    if not action_event:
+        raise S49Refusal("S49_B_OBSERVATION_EVENT_MISSING")
+    world = session.world()
+    if world.positions.get("B") != action_event.get("location"):
+        raise S49Refusal("S49_B_NOT_PRESENT_FOR_OBSERVATION")
+    session._perceive_if_present(action_event, "B")
+    session.product._checkpoint(session.branch_id, world.clock, world)
+    rows = [
+        row for row in session.product.store.perceptions(
+            session.branch_id, B_ACTOR_KEY
+        )
+        if row.get("event_id") == action_id
+    ]
+    if not rows:
+        raise S49Refusal("S49_B_OBSERVATION_NOT_RECORDED")
+    session.meta["s49_last_b_observation"] = dict(rows[-1])
+    session._save_join_meta()
+    return rows[-1]
 
 
 def root_b_sources(session) -> list[dict]:
@@ -108,6 +171,33 @@ def generate_b(session, *, source_records: list[Mapping[str, Any]] | None,
     records = list(source_records or [])
     access = _b_access(session, event)
     c8_digest = event.get("c8_state_digest", "")
+    if access.get("access_status") != "ACCESSIBLE":
+        return seal({
+            "schema": "S49_B_ACTOR_GENERATION@1",
+            "grade": S49_GRADE,
+            "native": False,
+            "psychology_claim": False,
+            "actor_id": actor_id,
+            "role": "B",
+            "branch_id": session.branch_id,
+            "event_ref": event.get("e1_event_id"),
+            "event_hash": event.get("e1_event_hash"),
+            "event_time": event.get("event_time"),
+            "as_of": session.clock(),
+            "source_count": len(records),
+            "source_refs": [],
+            "access_witness_hash": access.get("hash", ""),
+            "generation": {
+                "selection_status": "ACCESS_NOT_OBSERVED",
+                "selected_option": "",
+                "attempt_request": None,
+                "source_refs": [],
+                "reasons": [],
+                "eligible_options": [],
+                "rule": {},
+            },
+            "missing_context": "S49_B_ACCESS_NOT_OBSERVED",
+        })
     receipt = generate_choice(
         actor_id=actor_id,
         branch_id=session.branch_id,
@@ -142,7 +232,92 @@ def generate_b(session, *, source_records: list[Mapping[str, Any]] | None,
     return seal(body)
 
 
+def _invalid_result(session, generation_body: Mapping[str, Any], reason: str) -> dict:
+    return seal({
+        "schema": "S49_B_PERFORMER_RESULT@1",
+        "grade": S49_GRADE,
+        "native": False,
+        "actor_id": "B",
+        "role": "B",
+        "status": "DENIED",
+        "performed": False,
+        "reason": reason,
+        "generation_hash": generation_body.get("hash", ""),
+        "option_id": "",
+        "event_id": "",
+        "event_hash": "",
+        "target_proposals": [],
+    })
+
+
+def _canonical_generation(session, generation_body: Mapping[str, Any]) -> dict | None:
+    target_hash = generation_body.get("hash", "")
+    rows = [
+        row for row in session.product.store.episodes(session.branch_id)
+        if row.get("kind") == "S49_B_ACTOR_TURN"
+        and (row.get("body") or {}).get("stage") == "GENERATION"
+    ]
+    for row in reversed(rows):
+        body = dict(row.get("body") or {})
+        generation = body.get("generation")
+        if isinstance(generation, dict) and generation.get("hash") == target_hash:
+            return body
+    return None
+
+
+def validate_b_generation(session, generation_body: Mapping[str, Any]) -> dict:
+    if not valid(dict(generation_body)):
+        raise S49Refusal("S49_GENERATION_UNSEALED")
+    canonical = _canonical_generation(session, generation_body)
+    if canonical is None:
+        raise S49Refusal("S49_GENERATION_NOT_CANONICAL")
+    if canonical.get("generation") != dict(generation_body):
+        raise S49Refusal("S49_GENERATION_BODY_MISMATCH")
+    actor_id = _b_state(session).get("actor_id")
+    event = _current_event(session)
+    if generation_body.get("actor_id") != actor_id:
+        raise S49Refusal("S49_GENERATION_ACTOR_MISMATCH")
+    if generation_body.get("branch_id") != session.branch_id:
+        raise S49Refusal("S49_GENERATION_BRANCH_MISMATCH")
+    if generation_body.get("event_ref") != event.get("e1_event_id"):
+        raise S49Refusal("S49_GENERATION_EVENT_MISMATCH")
+    receipt = generation_body.get("generation") or {}
+    request = receipt.get("attempt_request")
+    if not isinstance(receipt, dict) or not valid(dict(receipt)):
+        raise S49Refusal("S49_GENERATION_RECEIPT_UNSEALED")
+    if receipt.get("actor_id") != actor_id or receipt.get("branch_id") != session.branch_id:
+        raise S49Refusal("S49_GENERATION_RECEIPT_IDENTITY_MISMATCH")
+    if receipt.get("event_ref") != event.get("e1_event_hash"):
+        raise S49Refusal("S49_GENERATION_RECEIPT_EVENT_MISMATCH")
+    if int(receipt.get("event_time", -1)) != int(event.get("event_time", -2)):
+        raise S49Refusal("S49_GENERATION_TIME_MISMATCH")
+    if int(receipt.get("as_of", -1)) < int(event.get("event_time", 0)):
+        raise S49Refusal("S49_GENERATION_ASOF_MISMATCH")
+    if receipt.get("selection_status") != "UNIQUE_SELECTED":
+        raise S49Refusal("S49_GENERATION_NOT_SELECTED")
+    if not isinstance(request, dict) or not valid(dict(request)):
+        raise S49Refusal("S49_ATTEMPT_REQUEST_UNSEALED")
+    if request.get("actor_id") != actor_id or request.get("branch_id") != session.branch_id:
+        raise S49Refusal("S49_ATTEMPT_IDENTITY_MISMATCH")
+    if request.get("event_ref") != event.get("e1_event_hash"):
+        raise S49Refusal("S49_ATTEMPT_EVENT_MISMATCH")
+    if request.get("option_id") != receipt.get("selected_option"):
+        raise S49Refusal("S49_ATTEMPT_OPTION_MISMATCH")
+    if request.get("generation_receipt_hash") not in (None, receipt.get("hash")):
+        raise S49Refusal("S49_ATTEMPT_GENERATION_LINK_MISMATCH")
+    access = _b_access(session, event)
+    if access.get("access_status") != "ACCESSIBLE":
+        raise S49Refusal("S49_ACCESS_NOT_OBSERVED")
+    if generation_body.get("access_witness_hash") != access.get("hash"):
+        raise S49Refusal("S49_GENERATION_ACCESS_MISMATCH")
+    return canonical
+
+
 def perform_b_attempt(session, generation_body: Mapping[str, Any]) -> dict:
+    try:
+        validate_b_generation(session, generation_body)
+    except S49Refusal as exc:
+        return _invalid_result(session, generation_body, exc.code)
     generation = generation_body.get("generation") or {}
     request = generation.get("attempt_request")
     actor_id = generation_body.get("actor_id")
@@ -280,5 +455,6 @@ def perform_b_attempt(session, generation_body: Mapping[str, Any]) -> dict:
 __all__ = [
     "B_ACTOR_KEY", "CONTROLLED_GRADE", "MISSING_B_CONTEXT", "S49_GRADE",
     "SOURCE_OWNER_HOLD", "controlled_b_sources", "generate_b",
-    "perform_b_attempt", "root_b_sources",
+    "perform_b_attempt", "record_b_observation", "root_b_sources",
+    "validate_b_generation",
 ]

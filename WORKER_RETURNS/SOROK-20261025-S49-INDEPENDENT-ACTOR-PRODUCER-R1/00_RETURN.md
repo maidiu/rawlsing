@@ -1,6 +1,6 @@
 # SOROK S49 — independent actor-parameterized producer
 
-**RESULT:** `S49_INDEPENDENT_ACTOR_PRODUCER__S39_RULE_REUSED__B_ROLE_GENERATION_AND_PERFORMER__CONTROLLED_REFUSAL_TO_NORMAL_S42_C8__ACTUAL_ROOT_B_CONTEXT_HOLD__NO_PROVIDER__NO_NATIVE_GRANT`.
+**RESULT:** `S49_REPAIR1__S39_B_ROLE__OBSERVED_B_ACCESS_ONLY__CANONICAL_GENERATION_VALIDATION__FORGED_ATTEMPT_NO_EFFECT__CONTROLLED_REFUSAL_NORMAL_C8__ACTUAL_ROOT_B_CONTEXT_HOLD__NO_PROVIDER__NO_NATIVE_GRANT`.
 
 S49 adds the missing actor-parameterized generation/performer path over the same S48/S47 person. Actor B independently receives the current event under a B access witness, runs the accepted S39 guarded-comparison rule with B-owned source records, produces its own generation and attempt receipt, and an independent B performer realizes only the selected attempt under actual world constraints. A minimal typed source adapter maps only a performed `EXPLICIT_REFUSAL` to `REFUSE_TOOL` and sends it through the normal S42/S47 C8/C9 path. The actual root has no current B-owned context source, so its actual path remains a typed `S49_MISSING_CURRENT_B_ACTOR_OWNED_CONTEXT` hold with no B world event and no C8.
 
@@ -12,10 +12,11 @@ S49 adds the missing actor-parameterized generation/performer path over the same
 
 ## Implemented
 
-- `s49/actor.py` provides B access, B generation with actor_id/branch/event/time/root C12 state, actual-vs-controlled source grade separation, and an independent B performer for `ATTEND_OBJECT`, `REQUEST_TOOL`, `EXPLICIT_REFUSAL`. The performer checks B presence/tool/free-hour constraints and records its own event/attempt; it does not use A's performer or A private context.
-- `s49/session.py` appends B generation/attempt/result episodes to the same C12 store and uses a typed adapter only for `EXPLICIT_REFUSAL -> REFUSE_TOOL`. The B source event must exist before C8; the normal S42 consumer then computes the next A C9 targetless response. `ATTEND_OBJECT`/`REQUEST_TOOL` are explicitly source-adapter held rather than mislabeled as offer/refusal.
+- `s49/actor.py` provides B access from an actual C12 perception/ADP017 observation bound to the current event, B generation with actor_id/branch/event/time/root C12 state, actual-vs-controlled source grade separation, and an independent B performer for `ATTEND_OBJECT`, `REQUEST_TOOL`, `EXPLICIT_REFUSAL`. Presence alone returns `NOT_WITNESSED`; no synthetic ACCESSIBLE witness is emitted when observation is absent or B is not at the event. The performer checks B presence/tool/free-hour constraints and records its own event/attempt; it does not use A's performer or A private context.
+- `s49/session.py` appends B generation/attempt/result episodes to the same C12 store and uses a typed adapter only for `EXPLICIT_REFUSAL -> REFUSE_TOOL`. The B source event must exist before C8; the normal S42 consumer then computes the next A C9 targetless response. The source now binds the canonical generation hash, attempt hash, access-witness hash, rule content hash and source-chain hash into both source and case. `ATTEND_OBJECT`/`REQUEST_TOOL` are explicitly source-adapter held rather than mislabeled as offer/refusal.
+- The B performer validates the exact sealed generation against the canonical C12 generation episode, actor/role, current event ref/hash, branch, event time/as-of, selected option, attempt link and access witness before any world event. A mutated, unlinked, foreign, stale or rehashed caller body is denied with no world event/C8. The normal adapter also revalidates the generation and attempt link before constructing the source. A raw forged generation or access witness has no effect.
 - Actual root B sources are deliberately empty: the accepted root history/state does not supply a current B-owned S39 predicate source. No urgency, willingness, preference, demographic, resource, or project prose is converted into a B premise. This is the exact remaining content dependency.
-- Controlled B sources use the explicit S39 TEST_ONLY model-premise grade and are labeled `TEST_ONLY_S49_CONTROLLED_B_MODEL_PREMISE`; they are not claimed as observed B inner life.
+- Controlled B sources use the explicit S39 TEST_ONLY model-premise grade and are labeled `TEST_ONLY_S49_CONTROLLED_B_MODEL_PREMISE`; they are not claimed as observed B inner life. The controlled positive also requires a genuine B perception/ADP017 witness delivered through the C12 perception path; the model premise alone cannot license access.
 - SCI05 nonempty self-account hold, no narrative psyche write, no target, and S48 dispatch/replay/cold/no-fake-positive guarantees remain intact. No new provider call is made.
 
 ## Evidence
@@ -24,9 +25,10 @@ S49 adds the missing actor-parameterized generation/performer path over the same
 - Actual root: `B_CONTEXT_HOLD`, reason `S49_MISSING_CURRENT_B_ACTOR_OWNED_CONTEXT`; world events 13→13, clock 222→222, C12 events 1→1, no B event/C8, verify true.
 - Controlled B path: B actor `TEST_ONLY_BP1_R26V_ACTOR_B`, selected `EXPLICIT_REFUSAL`, performer `ADMITTED`, actual B refusal event, adapter `REFUSE_TOOL`, normal consumer event ordinal 2, C9 `NO_CHANGE`/`NO_PROPOSAL`, zero targets.
 - Controlled source cut/restore: removing controlled B sources produces no B event/C8; restoring them produces a new independent B attempt and consumer path. The second normal-consumer status may be typed `OPEN` if the accepted finite generation/history set is unresolved; it is not labeled success.
-- Performer denial: controlled B `REQUEST_TOOL` with actual zero B free hours is denied, no event.
+- Performer denial: controlled B `REQUEST_TOOL` with actual zero B free hours is denied, no event. Forged generation/attempt bodies are denied before any world event; the reviewer access/forgery reproducer exits 0 with absent access `NOT_WITNESSED`, forged result `DENIED`, world event count unchanged, and verify true.
 - Cold: canonical B generation/attempt/result episodes reopen and verify with no provider call.
-- Focused S49 tests: **6 passed**, 0 failed/error/skipped; `junit/s49_full.xml`, `logs/s49_full.log`, `evidence/test_run.json`.
+- Focused S49 tests: **9 passed**, 0 failed/error/skipped; `junit/s49_full.xml`, `logs/s49_full.log`, `evidence/test_run.json`.
+- Preserved reviewer access/forgery reproducer: `logs/repro_s49_access_and_forgery.log` (not a provider call).
 - Source manifest: `evidence/source_manifest.json`; S48 files exact at accepted cut; S49 files local.
 
 ## Known interfaces and exact missing content
@@ -39,7 +41,7 @@ S49 adds the missing actor-parameterized generation/performer path over the same
 ## Limits
 
 - `TEST_ONLY` controlled B premises are not observed B inner life, a human B, native actor/science, T, SCI05, OBL062, or Pyat. No new empirical weights, preferred action, willingness policy, desired action, or demographic inference was added.
-- Actual root B positive remains content-held. The controlled positive is labeled controlled grade and is not advertised as generated actual life.
+- Actual root B positive remains content-held. The controlled positive is labeled controlled grade and is not advertised as generated actual life. The actual root B access is observed through C12 perception, but the B context source is absent.
 - No provider call was made; no native/source/human/C8/C9/C12 grant was issued.
 
 **Terminal:** `S49_INDEPENDENT_ACTOR_PRODUCER__B_ROLE__S39_REUSED__CONTROLLED_REFUSAL_NORMAL_C8__ACTUAL_ROOT_MISSING_B_CONTEXT__NO_PROVIDER__NO_NATIVE_GRANT`.
