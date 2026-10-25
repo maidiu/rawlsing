@@ -1,3 +1,10 @@
+# R113 — Low verified; ready successor actually launched
+
+Same HQ High→Low actual turn metadata verified and banked. Existing OpenCode MAX author actually launched sealed four-path R112 world-consuming successor from frozen R110. Existing distinct R111 review continues separately. Reconcile upstream findings before combined independent qualification and acceptance. Existing native consumer/world laws, broad Astra trajectory and all authority holds preserved. Automatic intake active.
+
+
+## Earlier progress history retained
+
 # R112 — bounded High decision complete
 
 Existing native nonparent consumer computes both modeled structural options and exact source support. Authorize faithful four-path successor reusing it per prefix inside actual N10W, preserving probability-null and scientific grades. Historical P41 untouched. R111 distinct review continues; R112 author ready but not launched. Return Low and verify actual metadata, then dispatch once to existing idle author. Full project/source/science/actor/CI/prod/N11/N12/Sorok holds preserved.
