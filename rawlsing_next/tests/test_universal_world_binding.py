@@ -1290,3 +1290,20 @@ def test_r117_mixed_prefix_model_identity_refuses():
         handle, "T0", "GENERIC_POSITIONED_SUBJECT", "HISTORICAL"))
     assert view.state == "REFUSED"
     assert view.reason_code == "PROGRESSIVE_WORLD_SOURCE_RELEASE_RISK_MISMATCH"
+
+
+def test_r117_consistent_alternate_model_remains_valid():
+    target, conditions, prefixes, world = _progressive_fixture_parts()
+    other = fx.make_model_rule(
+        prefixes[0].model_rule.source_universe_refs[0], "r117-consistent-model")
+    consistent = tuple(
+        replace(prefix, model_rule=other) for prefix in prefixes
+    )
+    handle = configure_progressive_world_context(
+        target_ref=target, conditions=conditions, prefixes=consistent,
+        world_empirical=world)
+    view = progressive_world_view(ProgressiveWorldRequest(
+        handle, "T0", "GENERIC_POSITIONED_SUBJECT", "HISTORICAL"))
+    assert view.state == "PROGRESSIVE_WORLD_SELECTED_VIEW"
+    hashes = {step["model_rule_hash"] for step in view.n10e_steps}
+    assert hashes == {other.rule_hash}
