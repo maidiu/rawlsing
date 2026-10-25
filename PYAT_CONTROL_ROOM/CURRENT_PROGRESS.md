@@ -1,3 +1,10 @@
+# Pyat R99 — Browser return accepted; actual Q86 context continuation
+
+Finalreturn d29a9db26821e937afc3d0ef19e243aafbff1744 verified8hashes/9ownrootpaths/directremote. ExactHQ221retainedproduct and HQ224attitude-onlypremises confirmed; GT12permissionmaps toCONTEXTonly, notV555. AfrobarometerR5Q86B→Q86A firstsourcepriority adopted at documentary scope. Currentpublicdatausepolicy checked, currentlocaloriginalidentity/accessnotverifiedandno rawread. Two-path retainedactualcontextconsumer scope prepared for usergrant; none inferred beyondR95syntheticgrant. Browsercomplete; no generalinvestigation/newworker. Fulloriginal35/1890/globalF6F7F8/R09/N11/N12/prod/Sorok/J52W52 preserved.
+
+
+## Earlier progress history retained
+
 # Pyat R98 — Browser HQ grounding and treatment commission
 
 User clarified scientific synthesis belongs in BrowserHQ/rabochii retrieval arrangement. Existing singleOpenCodeR97recovery terminated and handlemissingverified; partiallogsretained, no trackedcodechangesobserved. SixfileBrowsercommission published on dedicatedbranch agent/browser-pyat-r98-grounding-and-treatment-r1 at0088943109ac71cb4dc6da9375b4c828bc8ed765, directremoteverified. Currentstate/evidence/treatmentquestions/userrole and requiredreturn explicit. Browsernotlaunched. No grant expanded. R96acceptance and fullgoal/holds preserved.
