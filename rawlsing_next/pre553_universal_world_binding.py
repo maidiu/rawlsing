@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any, Mapping, Sequence
 
 from rawlsing_next.pre553_analytical_composition import compose_positioned_subject_possibility
-from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+from rawlsing_next.pre553_empirical_objects import ExactRef, canonicalize, semantic_hash
 
 
 P41_COMMIT = "f27d1101048638bba395143a48efb7ef00bfcda4"
@@ -954,4 +954,354 @@ def select_r05_world_view(request: R05WorldConsumerRequest) -> R05WorldSelectedV
         state="R05_WORLD_SELECTED_VIEW", reason_code="ACTUAL_R05_TO_P41_VIEW",
         field_ids=field_ids, consumer_values_read=values,
         view_hash=semantic_hash(values), temporal_changed=temporal_changed,
+    )
+
+
+# ---------------------------------------------------------------------------
+# R107 generic world + producer N10E -> progressive N10W integration.
+
+@dataclass(frozen=True)
+class ProgressivePrefixInput:
+    prefix_id: str
+    target_ref: ExactRef
+    conditions: tuple[tuple[ExactRef, Any], ...]
+    repository: Any
+    release_ref: ExactRef
+    query: Any
+    predicate: Any
+    authority_registry: Any
+    consumer_query: Any
+    model_rule: Any
+    witness: Any
+
+
+@dataclass(frozen=True)
+class _ProgressiveWorldContext:
+    target_ref: ExactRef
+    conditions: tuple[tuple[ExactRef, Any], ...]
+    purpose: str
+    prefixes: tuple[ProgressivePrefixInput, ...]
+    extensions: tuple[Any, ...]
+    catalog: Any
+    snapshots: Mapping[str, Any]
+    structural_revision: bool
+
+
+_PROGRESSIVE_CONTEXTS: dict[str, _ProgressiveWorldContext] = {}
+
+
+@dataclass(frozen=True)
+class ProgressiveWorldRequest:
+    execution_handle: str
+    snapshot_key: str = "T1"
+    purpose: str = "GENERIC_POSITIONED_SUBJECT"
+    currentness: str | None = None
+    as_of_ref: str | None = None
+
+
+@dataclass(frozen=True)
+class ProgressiveWorldView:
+    state: str
+    reason_code: str
+    target_ref: ExactRef
+    prefix_count: int
+    world_snapshot_hash: str
+    world_routes: Mapping[str, Any] | None
+    n9_world: Mapping[str, Any] | None
+    n10e_steps: tuple[Mapping[str, Any], ...]
+    n10w: Mapping[str, Any] | None
+    alternatives: tuple[Mapping[str, Any], ...]
+    receipt_hash: str | None
+    actor_state: str
+    view_hash: str
+    z_unresolved: bool = True
+
+    def material(self) -> Mapping[str, Any]:
+        return {
+            "state": self.state,
+            "reason_code": self.reason_code,
+            "target_ref": self.target_ref.as_dict(),
+            "prefix_count": self.prefix_count,
+            "world_snapshot_hash": self.world_snapshot_hash,
+            "world_routes": None if self.world_routes is None else canonicalize(self.world_routes),
+            "n9_world": None if self.n9_world is None else canonicalize(self.n9_world),
+            "n10e_steps": [canonicalize(step) for step in self.n10e_steps],
+            "n10w": None if self.n10w is None else canonicalize(self.n10w),
+            "alternatives": [canonicalize(item) for item in self.alternatives],
+            "receipt_hash": self.receipt_hash,
+            "actor_state": self.actor_state,
+            "view_hash": self.view_hash,
+            "z_unresolved": self.z_unresolved,
+        }
+
+
+def _progressive_refusal(code: str, target_ref: ExactRef, prefix_count: int = 0) -> ProgressiveWorldView:
+    return ProgressiveWorldView(
+        state="REFUSED", reason_code=code, target_ref=target_ref,
+        prefix_count=prefix_count, world_snapshot_hash="",
+        world_routes=None, n9_world=None, n10e_steps=(), n10w=None,
+        alternatives=(), receipt_hash=None, actor_state="NOT_TOUCHED",
+        view_hash=semantic_hash({"state": "REFUSED", "reason": code,
+                                 "target": target_ref.as_dict()}),
+    )
+
+
+def _progressive_condition_material(conditions):
+    return [
+        [ref.as_dict(), canonicalize(value)]
+        for ref, value in conditions
+    ]
+
+
+def _progressive_extension(prefix: ProgressivePrefixInput):
+    from rawlsing_next.pre553_universal_empirical_extension import (
+        provide_empirical_possibility_slice_ext,
+    )
+    return provide_empirical_possibility_slice_ext(
+        repository=prefix.repository,
+        empirical_query=prefix.query,
+        predicate=prefix.predicate,
+        authority_registry=prefix.authority_registry,
+        release_refs=(prefix.release_ref,),
+        consumer_query=prefix.consumer_query,
+        model_rule=prefix.model_rule,
+        condition_binding_witness=prefix.witness,
+    )
+
+
+def configure_progressive_world_context(
+    *,
+    target_ref: ExactRef,
+    conditions: tuple[tuple[ExactRef, Any], ...],
+    prefixes: tuple[ProgressivePrefixInput, ...],
+    world_empirical: Mapping[str, Any],
+    purpose: str = "GENERIC_POSITIONED_SUBJECT",
+    structural_revision: bool = True,
+) -> str:
+    if not prefixes or len(prefixes) != len(conditions):
+        raise WorldBindingError("PROGRESSIVE_PREFIX_COUNT_MISMATCH")
+    extensions = []
+    for index, prefix in enumerate(prefixes):
+        if prefix.target_ref != target_ref:
+            raise WorldBindingError("PROGRESSIVE_TARGET_MISMATCH")
+        if prefix.conditions != conditions[: index + 1]:
+            raise WorldBindingError("PROGRESSIVE_PREFIX_ORDER_MISMATCH")
+        if prefix.release_ref is None:
+            raise WorldBindingError("PROGRESSIVE_RELEASE_REQUIRED")
+        extension = _progressive_extension(prefix)
+        if (extension.consumer_result_or_null is None
+                or extension.composition_result is None):
+            raise WorldBindingError("PROGRESSIVE_PRODUCER_NOT_EXACT")
+        if extension.consumer_result_or_null.result_state != "EXACT_SUPPORTED":
+            raise WorldBindingError("PROGRESSIVE_PRODUCER_NOT_EXACT_SUPPORTED")
+        extensions.append(extension)
+    pinned = _pinned_p41_runtime()
+    _purge_p41_modules()
+    if str(pinned) not in sys.path:
+        sys.path.insert(0, str(pinned))
+    import bootstrap
+    bootstrap.install()
+    from product.world import SelectedWorldCatalog
+    catalog = SelectedWorldCatalog(world_empirical, structural_revision=structural_revision)
+    snapshots = {
+        "T0": catalog.select(mode="HISTORICAL", valid_at="2026-06-01",
+                             published_asof="2026-04-15"),
+        "T1": catalog.select(mode="AS_OF", valid_at="2027-09-01",
+                             published_asof="2027-09-01"),
+    }
+    context = _ProgressiveWorldContext(
+        target_ref=target_ref, conditions=conditions, purpose=purpose,
+        prefixes=prefixes, extensions=tuple(extensions), catalog=catalog,
+        snapshots=snapshots, structural_revision=structural_revision,
+    )
+    handle = "r107ctx-" + hashlib.sha256(os.urandom(32)).hexdigest()
+    _PROGRESSIVE_CONTEXTS[handle] = context
+    return handle
+
+
+def _progressive_step(extension, target_ref: ExactRef, conditions, model_rule) -> Mapping[str, Any]:
+    composition = extension.composition_result
+    consumer = extension.consumer_result_or_null
+    evidence = composition.possibility_slice_evidence_or_null
+    if consumer is None or evidence is None:
+        raise WorldBindingError("PROGRESSIVE_EMPTY_SLICE")
+    cells = [
+        {"cell": cell["cell"], "cell_state": cell["cell_state"],
+         "raw_numerator_support": cell["raw_numerator_support"]}
+        for cell in composition.complete_cell_geometry
+    ]
+    step = {
+        "state": consumer.result_state,
+        "route": extension.producer_route,
+        "target": target_ref.object_id,
+        "conditioners": [
+            [ref.object_id, canonicalize(value)] for ref, value in conditions
+        ],
+        "denominator": composition.raw_denominator_support,
+        "cells": cells,
+        "uncertainty": composition.uncertainty_state,
+        "evidence_ref": evidence.evidence_ref.as_dict(),
+        "producer_query_ref": composition.producer_query_ref.as_dict(),
+        "producer_fact_ref": composition.producer_fact_ref.as_dict(),
+        "model_rule_hash": model_rule.rule_hash,
+        "risk_set_ref": canonicalize(composition.risk_set_ref),
+        "release_ref": composition.release_refs[0].as_dict(),
+        "content_hash": consumer.result_hash,
+    }
+    return step
+
+
+def _progressive_world_receipt(context: _ProgressiveWorldContext, request: ProgressiveWorldRequest):
+    snapshot = context.snapshots.get(request.snapshot_key)
+    if snapshot is None:
+        raise WorldBindingError("PROGRESSIVE_WORLD_SNAPSHOT_UNKNOWN")
+    snapshot_material = snapshot.material
+    if request.currentness is not None and request.currentness != snapshot_material.get("mode"):
+        raise WorldBindingError("PROGRESSIVE_CURRENTNESS_MISMATCH")
+    if request.as_of_ref is not None and request.as_of_ref not in {
+        snapshot_material.get("valid_at"), snapshot_material.get("published_asof")
+    }:
+        raise WorldBindingError("PROGRESSIVE_AS_OF_MISMATCH")
+    pinned = _pinned_p41_runtime()
+    _purge_p41_modules()
+    if str(pinned) not in sys.path:
+        sys.path.insert(0, str(pinned))
+    import bootstrap
+    bootstrap.install()
+    from p41_service import P41Service
+    steps = tuple(
+        _progressive_step(extension, context.target_ref,
+                          prefix.conditions, prefix.model_rule)
+        for prefix, extension in zip(context.prefixes, context.extensions)
+    )
+
+    class ProgressiveProvider:
+        def __init__(self):
+            self.world = {"query_permits": {
+                context.target_ref.object_id: {"target_ref": context.target_ref.as_dict()}
+            }}
+            self.trace = []
+
+        def _validate(self, target, ordered):
+            if target != context.target_ref.object_id:
+                raise ValueError("PROGRESSIVE_TARGET_MISMATCH")
+            expected = [
+                [ref.object_id, canonicalize(value)]
+                for ref, value in context.conditions
+            ]
+            if [list(item) for item in ordered] != expected:
+                raise ValueError("PROGRESSIVE_CONDITION_ORDER_MISMATCH")
+
+        def progressive(self, target, ordered):
+            self._validate(target, ordered)
+            self.trace.append({"call": "R107_PRODUCER_PREFIXES_CONSUMED",
+                               "prefix_count": len(steps)})
+            return [dict(step) for step in steps]
+
+    class StructuralService:
+        def __init__(self):
+            self.value_reads = []
+
+        def structural(self, snapshot, key, consumer):
+            value = context.catalog.read(snapshot, key)
+            self.value_reads.append({
+                "consumer": consumer, "key": key, "state": value["state"],
+                "value": value.get("value"), "snapshot_ref": snapshot.snapshot_hash,
+            })
+            return value
+
+        def possibilities(self, snapshot, *, target="Y", conditions=(), consumer="GENERIC"):
+            self.value_reads.append({
+                "consumer": consumer, "key": "empirical", "state": "EXACT_SUPPORTED",
+                "value": steps[-1]["cells"], "snapshot_ref": snapshot.snapshot_hash,
+            })
+            return {
+                "state": "PRODUCTIVE_TEST_ONLY", "steps": [dict(steps[-1])],
+                "dependencies": ["empirical"], "source_root": "R107_SOURCE",
+            }
+
+        def _record(self, material):
+            material = dict(material)
+            material.update(service_contract="R107_PROGRESSIVE_WORLD_SERVICE@1",
+                            grade="SOURCEFREE_TEST_ONLY", operative_N9=False,
+                            operative_N10W=False, new_issuer=False,
+                            actor_executions=0, model_calls=0)
+            digest = semantic_hash(material)
+            return {"receipt_hash": digest, "material": material}
+
+    service = P41Service.__new__(P41Service)
+    service.prepared = object()
+    service.readthrough = StructuralService()
+    service.provider = ProgressiveProvider()
+    service.receipts = {}
+    conditions_as_strings = tuple(
+        (ref.object_id, canonicalize(value)) for ref, value in context.conditions
+    )
+    return service.progressive(
+        target=context.target_ref.object_id,
+        conditions=conditions_as_strings,
+        snapshot=snapshot, world_part=True,
+    )
+
+
+def progressive_world_view(request: ProgressiveWorldRequest) -> ProgressiveWorldView:
+    context = _PROGRESSIVE_CONTEXTS.get(request.execution_handle)
+    if context is None:
+        return _progressive_refusal("PROGRESSIVE_EXECUTION_HANDLE_INVALID",
+                                    ExactRef("R107_TARGET", "urn:test:r107:invalid", "0" * 64))
+    if request.purpose != context.purpose:
+        return _progressive_refusal("PROGRESSIVE_PURPOSE_MISMATCH", context.target_ref)
+    try:
+        receipt = _progressive_world_receipt(context, request)
+    except WorldBindingError as exc:
+        return _progressive_refusal(exc.code, context.target_ref, len(context.prefixes))
+    except Exception as exc:
+        return _progressive_refusal("PROGRESSIVE_CONSUMER_REFUSED:" + type(exc).__name__,
+                                    context.target_ref, len(context.prefixes))
+    steps = receipt.get("n10e_steps") or ()
+    structural = receipt.get("structural") or {}
+    n10w = receipt.get("n10w") or {}
+    if (len(steps) != len(context.prefixes)
+            or not structural.get("routes")
+            or not n10w.get("progressive_update_identity")
+            or not n10w.get("positioned_consumptions")):
+        return _progressive_refusal("PROGRESSIVE_RECEIPT_INCOMPLETE",
+                                    context.target_ref, len(context.prefixes))
+    alternatives = tuple(
+        {"prefix": index + 1,
+         "denominator": extension.composition_result.raw_denominator_support,
+         "cells": tuple(canonicalize(cell) for cell in
+                        extension.composition_result.complete_cell_geometry)}
+        for index, extension in enumerate(context.extensions)
+    )
+    material = {
+        "state": "PROGRESSIVE_WORLD_SELECTED_VIEW",
+        "target_ref": context.target_ref.as_dict(),
+        "conditions": _progressive_condition_material(context.conditions),
+        "purpose": context.purpose,
+        "snapshot_key": request.snapshot_key,
+        "world_snapshot_hash": context.snapshots[request.snapshot_key].snapshot_hash,
+        "world_routes": structural.get("routes"),
+        "n9_world": receipt.get("n9_world"),
+        "n10e_steps": steps,
+        "n10w": n10w,
+        "alternatives": alternatives,
+        "receipt_hash": receipt.get("content_hash"),
+        "actor_state": "NOT_TOUCHED",
+        "world_part": True,
+    }
+    return ProgressiveWorldView(
+        state="PROGRESSIVE_WORLD_SELECTED_VIEW",
+        reason_code="ACTUAL_N9_N10E_N10W",
+        target_ref=context.target_ref,
+        prefix_count=len(context.prefixes),
+        world_snapshot_hash=context.snapshots[request.snapshot_key].snapshot_hash,
+        world_routes=structural.get("routes"),
+        n9_world=receipt.get("n9_world"),
+        n10e_steps=tuple(steps),
+        n10w=n10w,
+        alternatives=alternatives,
+        receipt_hash=receipt.get("content_hash"),
+        actor_state="NOT_TOUCHED",
+        view_hash=semantic_hash(material),
     )
