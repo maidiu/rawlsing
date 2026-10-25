@@ -126,6 +126,8 @@ grain beyond this scoped positive; no self-adoption.
 `independent_probes/` (prior R06V/R3 probes plus R4 successor), `replay/`
 JUnit/logs, `evidence/commands.txt`, `proof_witness.json`, `manifest.json`
 (self-excluding), and `evidence/remote_readback.txt`. The reviewer branch is
-pushed non-force; direct remote SHA readback of the evidence commit and final tip
-is recorded/reported. The candidate branch remains at
+pushed non-force. Evidence commit
+`cb0a1b2053ccf1f5b7c0c6ea5b246e12d2ecfcf7` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also verified by direct remote readback and reported to the coordinator. The candidate branch remains at
 `b2cfe93cee854b7aff2081a7a223ada75295332a`.
