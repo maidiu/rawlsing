@@ -1,0 +1,81 @@
+{
+  "author_candidate": "73b7d62c391f444a0dd4cd60532ac071543ac14d",
+  "author_code": "d4b4d9bdb488296702692835395eb1e821dafa13",
+  "author_code_blobs": {
+    "rawlsing_next/pre553_universal_world_binding.py": "7519667ee6f085163d72789ad406ba5f9a472e3a",
+    "rawlsing_next/tests/test_universal_world_binding.py": "78352cd4ba3bb7674606ff59e91a18b89d7feb3a",
+    "rawlsing_next/pre553_world_conditioned_progressive_service.py": "db573027a2416f1b43f2bc47d6f2e3b9d5cd3b31",
+    "rawlsing_next/tests/test_world_conditioned_progressive_service.py": "c46af4acb61e08fe70eccb78af055120a8b9a4b0"
+  },
+  "commission": "e6f0e78a06694b3b075b06ba9de9eeed1047b925",
+  "environment": {
+    "pytest": "9.0.2",
+    "python": "3.11.3",
+    "reviewer": "existing distinct OpenCode Go DeepSeek V4.1 Flash MAX Global session"
+  },
+  "evidence_commit": "",
+  "evidence_commit_remote_readback": {},
+  "expectations_freeze_commit": "4dd345995",
+  "expectations_sha256": "60d67309205808e5c79f37129600d9999be629cb7b427522dbc6c6da7f1cecd7",
+  "findings": {
+    "blocking": [
+      "mixed-prefix model identity accepted; different model_rule hashes served in one selected view"
+    ],
+    "held": [
+      "original 35/1890/global F6/F7/F8, source/science, F5/F6/F7, actor, R09/CI/prod, N11/N12, Sorok/J52/W52, production"
+    ],
+    "verified_positive": [
+      "actual native nonparent.consume per prefix reads selected world and actual empirical steps",
+      "native structural routes plus source_balance_reads in same N10W assertion",
+      "T0/T1 world route change with unchanged empirical support",
+      "prefix value mutation changes support and positioned hashes",
+      "unlike target shape",
+      "minority/zero and uncertainty retained",
+      "empirical/field revocation and restore",
+      "N10E evaluator actual hash binding",
+      "route_probability null / NO_JOINT_EMPIRICAL_STRUCTURAL_ROUTE_MODEL",
+      "R115 rows/repository/mixed-prefix identity repairs pass exact R111 probes",
+      "cold fresh-process replay"
+    ]
+  },
+  "high_decision": "4b31a6f8e1281fe988bfd980b3f51de6250a0742",
+  "prior_r109_review": "e38a6a8c07ea6535a0d4de38053c15e4278934d7",
+  "prior_r111_review": "ab578a9dc1c788847d0328976fe418948a44e7ac",
+  "review_branch": "agent/opencode-pyat-r116-r06-combined-world-consumer-review-r1",
+  "tests": {
+    "author_suite": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/author_suite_junit.xml",
+      "passed": 32,
+      "skipped": 0,
+      "time_seconds": 187.539
+    },
+    "cold_replay": {
+      "log": "replay/cold_replay.log",
+      "match": true,
+      "receipt": "079665420bd3db3d5fd1c74a4eac8410b8c092c269c81516382359c0aa94abe4",
+      "view_hash": "8d73ef2e49f2e413756800e866d57310b29f961eef45cca43892a68835b6c734"
+    },
+    "native_probes": {
+      "errors": 0,
+      "failed_tests": [
+        "test_R116_wrong_prefix_model_must_refuse"
+      ],
+      "failures": 1,
+      "junit": "replay/native_probes_junit.xml",
+      "passed": 4,
+      "skipped": 0,
+      "time_seconds": 3.752
+    },
+    "prior_probes": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/prior_probes_junit.xml",
+      "passed": 11,
+      "skipped": 0,
+      "time_seconds": 5.699
+    }
+  },
+  "verdict": "REVISE_MODEL_IDENTITY"
+}

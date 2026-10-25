@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="5" time="3.752" timestamp="2026-10-25T17:55:02.082488-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R116-R06-COMBINED-WORLD-CONSUMER-REVIEW-R1.probes.test_r116_native" name="test_R116_native_consumer_reads_world_and_empirical_per_prefix" time="0.488" /><testcase classname="WORKER_RETURNS.PYAT-R116-R06-COMBINED-WORLD-CONSUMER-REVIEW-R1.probes.test_r116_native" name="test_R116_value_and_world_mutations_change_same_native_assertion" time="1.056" /><testcase classname="WORKER_RETURNS.PYAT-R116-R06-COMBINED-WORLD-CONSUMER-REVIEW-R1.probes.test_r116_native" name="test_R116_unlike_target_and_revocation_restore" time="1.416" /><testcase classname="WORKER_RETURNS.PYAT-R116-R06-COMBINED-WORLD-CONSUMER-REVIEW-R1.probes.test_r116_native" name="test_R116_pinned_nonparent_owner_is_imported" time="0.002" /><testcase classname="WORKER_RETURNS.PYAT-R116-R06-COMBINED-WORLD-CONSUMER-REVIEW-R1.probes.test_r116_native" name="test_R116_wrong_prefix_model_must_refuse" time="0.102"><failure message="AssertionError: mixed-prefix model identity was accepted while a selected view was served&#10;assert 'PROGRESSIVE_WORLD_SELECTED_VIEW' in {'PROGRESSIVE_WORLD_UNAVAILABLE', 'REFUSED'}&#10; +  where 'PROGRESSIVE_WORLD_SELECTED_VIEW' = ProgressiveWorldView(state='PROGRESSIVE_WORLD_SELECTED_VIEW', reason_code='ACTUAL_N9_N10E_N10W', target_ref=ExactRef(k...r_state='NOT_TOUCHED', view_hash='dc3661963bf612cf57080955b584eed50a06a68be3444a197a6597ccf1950900', z_unresolved=True).state">def test_R116_wrong_prefix_model_must_refuse():
+        from dataclasses import replace
+        from rawlsing_next.tests.test_universal_world_binding import (
+            _progressive_fixture_parts,
+        )
+        from rawlsing_next.tests import c1_at08_at13_fixture as fx
+        from rawlsing_next.pre553_universal_world_binding import (
+            configure_progressive_world_context,
+        )
+        target, conditions, prefixes, world = _progressive_fixture_parts()
+        other = fx.make_model_rule(
+            prefixes[0].model_rule.source_universe_refs[0], "r116-other-model",
+        )
+        mixed = (prefixes[0], replace(prefixes[1], model_rule=other))
+        handle = configure_progressive_world_context(
+            target_ref=target, conditions=conditions, prefixes=mixed,
+            world_empirical=world,
+        )
+        view = _view(handle)
+&gt;       assert view.state in {"REFUSED", "PROGRESSIVE_WORLD_UNAVAILABLE"}, (
+            "mixed-prefix model identity was accepted while a selected view was served"
+        )
+E       AssertionError: mixed-prefix model identity was accepted while a selected view was served
+E       assert 'PROGRESSIVE_WORLD_SELECTED_VIEW' in {'PROGRESSIVE_WORLD_UNAVAILABLE', 'REFUSED'}
+E        +  where 'PROGRESSIVE_WORLD_SELECTED_VIEW' = ProgressiveWorldView(state='PROGRESSIVE_WORLD_SELECTED_VIEW', reason_code='ACTUAL_N9_N10E_N10W', target_ref=ExactRef(k...r_state='NOT_TOUCHED', view_hash='dc3661963bf612cf57080955b584eed50a06a68be3444a197a6597ccf1950900', z_unresolved=True).state
+
+WORKER_RETURNS/PYAT-R116-R06-COMBINED-WORLD-CONSUMER-REVIEW-R1/probes/test_r116_native.py:124: AssertionError</failure></testcase></testsuite></testsuites>
