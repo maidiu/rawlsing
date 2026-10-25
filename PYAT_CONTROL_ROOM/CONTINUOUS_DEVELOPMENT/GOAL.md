@@ -12,6 +12,13 @@ Acceptance requirements met: accept at the demonstrated scope and move on. Resid
 A plan, commission, report or checkpoint counts as progress only when it enables a required next action or preserves necessary evidence. It is not a substitute for working capability.
 Do not explain these rules during ordinary execution. Apply them.
 
+DEPENDENCY AND PARALLEL EXECUTION DISCIPLINE
+Sequence unresolved decisions and actual consumption dependencies. Parallelize independent authorized work against settled interfaces.
+A running author, reviewer or repair loop in one lane must not make the whole program wait. At a meaningful scheduling boundary, use the existing flight board to distinguish actual prerequisites, shared-write conflicts, authority holds and merely historical ordering. Launch ready independent work with the cheapest qualified existing executor; reuse sessions and never duplicate live or completed effects.
+A frozen sufficient upstream interface may allow downstream preparation or implementation before upstream acceptance. Independent qualification is required before accepting the combined chain; do not invent a blanket requirement that every upstream node finish before any downstream work starts.
+Stop only work dependent on an unresolved substantive choice, consequential engineering contract, missing grant or shared-write conflict. Continue unaffected authorized lanes. Bring exact substantive decisions or missing grants to the user; use qualified High/Astra escalation only when necessary.
+Do not create tasks merely to fill worker capacity, reopen discovery, commission another scheduling court, or add recurring polling. Parallelism is a scheduling rule for necessary goal-directed work, not an expansion of scope or authority. Keep the existing flight board concise and current as work changes; an executable authorized action takes precedence over further scheduling analysis.
+
 DO OR DIE: EXECUTION OVERRIDE — NO PROCEDURAL EXPANSION
 Do not add work merely because it might improve confidence, completeness, safety, maintainability or documentation.
 Add a step only if you can identify:

@@ -1,3 +1,14 @@
+# Pyat R96 — R06 sourcefree world/consumer chain accepted at demonstrated local scope
+
+Candidateb2cfe93cee854b7aff2081a7a223ada75295332a / distinctreviewfbe7ffc00a021aeacce3b15a2ef74cd8657d9d56 independently qualified; HQ ACCEPT_SCOPED_LOCAL. Verified reviewer manifest, ownroot scope and directremote.17author+11prior+3successor controls pass. Actual acceptedR05->pinnedP41/N9/N10W/E04 trustedcontext, twofield and declared synthetictemporalpair effects, cold/currentasof/revocation/hostile substitution+restore. No newworker, productionmerge or wholemachine claim.
+
+Full R06 beyond this grain remains incomplete: genericFF structural use unqualified, CONTEXT promotion HELD without competent issuer; linked indexed crossunit query absent/UNAVAILABLE; original measuredwave F7 and originalF5/F6/F8/source issuance separate. R09protectedcapture facility remains HOLD. Original35/1890/globalF6F7F8/N11NOT_READY/N12HOLD/CI/prod/Sorok/J52W52 unchanged.
+
+All workers terminal. Next competent scientific/source and hostfacility decisions are independent lanes, not another synthetic audit. Preserve accepted software and exact remaining gaps.
+
+
+## Earlier progress history retained
+
 # Pyat R95 — explicit user R06 grant; native author actually running
 
 User approved exact inherited R06 two-code-path sourcefree implementation, read-only accepted assembly and distinct review. Controlling grant 1315aff53c3eb063a65088fcb5bd8398852668fa:PYAT_CONTROL_ROOM/R95_USER_AUTHORIZED_R06_WORLD_INTEGRATION_20261024.json. Existing idle OpenCodeMAX author ses_e98c905cbffekusoHURfKyEUKG actually resumed PID83724 at startupa7f5cc70520e5236c24bbac241fad071c026d881 branchagent/opencode-pyat-r95-r06-world-consumer-integration-r1, commissionbd712a4aed1c57bd9ac6ebd158ea05f48842bc54. Exact R05 accepted tree plus exact two accepted R04joined files, no production merge. Actual TOOL preflight initially pending.
