@@ -1,0 +1,70 @@
+{
+  "author_branch": "agent/opencode-pyat-r95-r06-world-consumer-integration-r1",
+  "author_code_blobs": {
+    "rawlsing_next/pre553_universal_world_binding.py": "44ac11c9b7f5809e06b22fb9afee11ca8bc0dee5",
+    "rawlsing_next/tests/test_universal_world_binding.py": "7095820c4ac1e263da3a9670d6d792f3a161ec0d"
+  },
+  "candidate_startup": "b2cfe93cee854b7aff2081a7a223ada75295332a",
+  "commission": "f3698cf286e4659ba451304175c29cda8041787f",
+  "environment": {
+    "pytest": "9.0.2",
+    "python": "3.11.3",
+    "pyreadstat": "1.3.2"
+  },
+  "evidence_commit": "",
+  "evidence_commit_remote_readback": {},
+  "expectations_freeze_commit": "f233c6e2b",
+  "expectations_sha256": "a668bcd26cb98c83b0e7b274c01afc0ce5549e92fb4f2200372a5e95638bf5a5",
+  "grant": "1315aff53c3eb063a65088fcb5bd8398852668fa",
+  "not_reached": [
+    "original F7 measured waves",
+    "F5/F6/F7 issuance",
+    "original 35/1890",
+    "source/science",
+    "CI/prod",
+    "N11/N12/Sorok/J52/W52"
+  ],
+  "positive": "genuine configured trusted R05 -> pinned P41 N9/N10W/E04 positive; actual routes change; N10E binds R05 consumer hash and trusted original; cold/current/as-of/revocation/restore retained; author 17/17 prior 11/11",
+  "prior_review_commission": "e2776897af673f14237178daf7ae35c2331d48af",
+  "prior_review_oracle": "0153d1f9b88ede3f76e5b1658a7441cb2e9a1713",
+  "prior_r3_review": "05f54b961712695b4836c6160586510dff60986a",
+  "repair_commission": "e57ad4993ceaa6a7f41203c98c28ead5cd1a0167",
+  "review_branch": "agent/opencode-pyat-r95-r06v-r4-world-consumer-review-r1",
+  "review_scope": "only WORKER_RETURNS/PYAT-R95-R06V-INDEPENDENT-WORLD-CONSUMER-REVIEW-R1/revisions/r4/",
+  "source_code_paths_changed_from_prior_startup": [
+    "rawlsing_next/pre553_universal_world_binding.py",
+    "rawlsing_next/tests/test_universal_world_binding.py"
+  ],
+  "successor_passes": [
+    "missing/forged execution handle refuses",
+    "same-context step and learned substitution refuses; genuine view hash restores",
+    "preloaded fake bootstrap/p41_service/product modules are purged and actual positive remains"
+  ],
+  "tests": {
+    "author_suite": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/author_suite_junit.xml",
+      "passed": 17,
+      "skipped": 0,
+      "time_seconds": 175.517
+    },
+    "prior_probes": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/prior_probes_junit.xml",
+      "passed": 11,
+      "skipped": 0,
+      "time_seconds": 93.532
+    },
+    "successor_probes": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/successor_probes_junit.xml",
+      "passed": 3,
+      "skipped": 0,
+      "time_seconds": 5.605
+    }
+  },
+  "verdict": "ACCEPT_SCOPED_LOCAL"
+}
