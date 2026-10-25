@@ -1,0 +1,84 @@
+{
+  "actual_provider_call": false,
+  "actual_root": {
+    "c12_events_after": 1,
+    "c12_events_before": 1,
+    "clock_after": 222,
+    "clock_before": 222,
+    "event_ref": "",
+    "missing_context": "S49_MISSING_CURRENT_B_ACTOR_OWNED_CONTEXT",
+    "reason": "S49_MISSING_CURRENT_B_ACTOR_OWNED_CONTEXT",
+    "source_grade": "UNAVAILABLE_CURRENT_B_ACTOR_OWNED_CONTEXT",
+    "status": "B_CONTEXT_HOLD",
+    "verify_ok": true,
+    "world_events_after": 13,
+    "world_events_before": 13
+  },
+  "cold": {
+    "s49_turns": 3,
+    "same_canonical_store": true,
+    "verify_ok": true
+  },
+  "controlled_b": {
+    "attempt_performed": true,
+    "attempt_status": "ADMITTED",
+    "b_actor": "TEST_ONLY_BP1_R26V_ACTOR_B",
+    "b_source_event_ref": "TEST_ONLY_BP4_WORLD_EVT_ddaa14c7fd0d877327e259ca3c54094b2b8d9bf48e886bec4ade5cfaede0b93f",
+    "c9": {
+      "current_source": null,
+      "current_source_hash": "",
+      "current_source_ref": "",
+      "event_ref": "19088c9b006d3d822becee0ccededf3425777986bedf72db9674c7b30c968bf2",
+      "historical_condition_revoked": false,
+      "historical_source": null,
+      "historical_source_ref": "",
+      "objective_material_eligible": true,
+      "objective_material_refs": [
+        "TEST_ONLY_BP2_MATERIAL_A"
+      ],
+      "present_condition_revoked": false,
+      "present_interval_currentness": "ABSENT",
+      "present_interval_state_id": "",
+      "readset_refs": [
+        "19088c9b006d3d822becee0ccededf3425777986bedf72db9674c7b30c968bf2",
+        "TEST_ONLY_BP2_MATERIAL_A",
+        "TEST_ONLY_ADP017_ACCESS_S37_REFUSE_TOOL",
+        "8aea7e100e956541a2bf78796750219921cb6789d9c61b20cadaf091119f3a5a",
+        "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+        "b7d5ab9aa595d51f370635f1ec09353720ae998d38a0a5aea213cfe6ae28a08c",
+        "TEST_ONLY_BP4_WORLD_EVT_347597cb268fb6ce8c132c4430fe5d0a11a1db7c5a1bbceea3fd826c980840a8"
+      ],
+      "response_status": "RESPONSE_COMMITTED",
+      "s47_source": null,
+      "s47_source_coverage": [],
+      "s47_source_currentness": "",
+      "s47_source_hash": "",
+      "s47_source_in_readset": false,
+      "s47_source_ref": "",
+      "schema": "SOROK_S47_C9_CONDITIONING_READ@1",
+      "selected_event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+      "target_branch": "NO_CHANGE",
+      "target_proposals": [],
+      "target_reason": "NO_PROPOSAL"
+    },
+    "controlled": true,
+    "event_ordinal": 2,
+    "event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+    "option_id": "EXPLICIT_REFUSAL",
+    "source_grade": "TEST_ONLY_S49_CONTROLLED_B_MODEL_PREMISE",
+    "source_operation": "REFUSE_TOOL",
+    "status": "OK",
+    "target_proposals": [],
+    "verify_ok": true
+  },
+  "native_grants": {
+    "actor": false,
+    "c12": false,
+    "c8": false,
+    "c9": false,
+    "human": false,
+    "rule": false,
+    "source": false
+  },
+  "schema": "SOROK_S49_RUN@1"
+}
