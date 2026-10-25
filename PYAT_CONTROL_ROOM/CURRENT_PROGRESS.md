@@ -1,3 +1,10 @@
+# Pyat R97 — recover concrete scientific treatments
+
+User corrected external-owner framing. Existing HQ/model arrangement must recover and synthesize FF/relation/temporal treatments and propose concrete decisions. Existing OpenCodeMAX session resumed on dedicated branch for exact-ref documentary recovery, no code/source/scientific issuance. R96 scoped acceptance retained. R09 facility separate. No N11/N12/prod/Sorok/J52W52 change.
+
+
+## Earlier progress history retained
+
 # Pyat R96 — R06 sourcefree world/consumer chain accepted at demonstrated local scope
 
 Candidateb2cfe93cee854b7aff2081a7a223ada75295332a / distinctreviewfbe7ffc00a021aeacce3b15a2ef74cd8657d9d56 independently qualified; HQ ACCEPT_SCOPED_LOCAL. Verified reviewer manifest, ownroot scope and directremote.17author+11prior+3successor controls pass. Actual acceptedR05->pinnedP41/N9/N10W/E04 trustedcontext, twofield and declared synthetictemporalpair effects, cold/currentasof/revocation/hostile substitution+restore. No newworker, productionmerge or wholemachine claim.
