@@ -985,6 +985,7 @@ class _ProgressiveWorldContext:
     catalog: Any
     snapshots: Mapping[str, Any]
     structural_revision: bool
+    invalid_reason: str | None = None
 
 
 _PROGRESSIVE_CONTEXTS: dict[str, _ProgressiveWorldContext] = {}
@@ -1069,6 +1070,43 @@ def _progressive_extension(prefix: ProgressivePrefixInput):
     )
 
 
+def _progressive_prefix_identity(prefixes: tuple[ProgressivePrefixInput, ...]):
+    first = prefixes[0]
+    universe = first.consumer_query.source_universe_ref
+    release = first.release_ref
+    risk = canonicalize(first.query.risk_set_ref)
+    for prefix in prefixes:
+        if (prefix.consumer_query.source_universe_ref != universe
+                or prefix.consumer_query.release_ref != release
+                or prefix.release_ref != release
+                or canonicalize(prefix.query.risk_set_ref) != risk
+                or canonicalize(universe) not in [
+                    canonicalize(ref) for ref in prefix.query.empirical_universe_refs
+                ]):
+            return None
+    return universe, release, risk
+
+
+def _progressive_world_identity(prefixes, world_empirical):
+    identity = _progressive_prefix_identity(prefixes)
+    if identity is None:
+        return None
+    universe, release, risk = identity
+    source = world_empirical.get("source") or {}
+    world_universe = getattr(source.get("universe"), "ref", None)
+    if (world_universe != universe
+            or world_empirical.get("release_ref") != release
+            or source.get("release_ref") != release):
+        return None
+    world_risk = ((world_empirical.get("risk_refs") or {}).get("R")
+                  or (source.get("risk_refs") or {}).get("R"))
+    if world_risk is None or canonicalize(world_risk) != risk:
+        return None
+    if source.get("repo") is not None and source.get("repo") is not prefixes[0].repository:
+        return None
+    return identity
+
+
 def configure_progressive_world_context(
     *,
     target_ref: ExactRef,
@@ -1096,6 +1134,16 @@ def configure_progressive_world_context(
         if extension.consumer_result_or_null.result_state != "EXACT_SUPPORTED":
             raise WorldBindingError("PROGRESSIVE_PRODUCER_NOT_EXACT_SUPPORTED")
         extensions.append(extension)
+    identity_problem = _progressive_world_identity(prefixes, world_empirical)
+    if identity_problem is None:
+        handle = "r107ctx-" + hashlib.sha256(os.urandom(32)).hexdigest()
+        _PROGRESSIVE_CONTEXTS[handle] = _ProgressiveWorldContext(
+            target_ref=target_ref, conditions=conditions, purpose=purpose,
+            prefixes=prefixes, extensions=tuple(extensions), catalog=None,
+            snapshots={}, structural_revision=structural_revision,
+            invalid_reason="PROGRESSIVE_WORLD_SOURCE_RELEASE_RISK_MISMATCH",
+        )
+        return handle
     pinned = _pinned_p41_runtime()
     _purge_p41_modules()
     if str(pinned) not in sys.path:
@@ -1122,12 +1170,21 @@ def configure_progressive_world_context(
     return handle
 
 
-def _progressive_step(extension, target_ref: ExactRef, conditions, model_rule) -> Mapping[str, Any]:
+def _progressive_step(extension, prefix: ProgressivePrefixInput,
+                      target_ref: ExactRef, conditions, model_rule) -> Mapping[str, Any]:
+    from rawlsing_next.source_backed_positioned_subject_possibility import (
+        evaluate_positioned_subject_possibility,
+    )
     composition = extension.composition_result
     consumer = extension.consumer_result_or_null
     evidence = composition.possibility_slice_evidence_or_null
     if consumer is None or evidence is None:
         raise WorldBindingError("PROGRESSIVE_EMPTY_SLICE")
+    actual_consumer = evaluate_positioned_subject_possibility(
+        query=prefix.consumer_query, rule=prefix.model_rule, evidence=(evidence,)
+    )
+    if actual_consumer.result_hash != consumer.result_hash:
+        raise WorldBindingError("PROGRESSIVE_ACTUAL_CONSUMER_MISMATCH")
     cells = [
         {"cell": cell["cell"], "cell_state": cell["cell_state"],
          "raw_numerator_support": cell["raw_numerator_support"]}
@@ -1149,7 +1206,7 @@ def _progressive_step(extension, target_ref: ExactRef, conditions, model_rule) -
         "model_rule_hash": model_rule.rule_hash,
         "risk_set_ref": canonicalize(composition.risk_set_ref),
         "release_ref": composition.release_refs[0].as_dict(),
-        "content_hash": consumer.result_hash,
+        "content_hash": actual_consumer.result_hash,
     }
     return step
 
@@ -1173,7 +1230,7 @@ def _progressive_world_receipt(context: _ProgressiveWorldContext, request: Progr
     bootstrap.install()
     from p41_service import P41Service
     steps = tuple(
-        _progressive_step(extension, context.target_ref,
+        _progressive_step(extension, prefix, context.target_ref,
                           prefix.conditions, prefix.model_rule)
         for prefix, extension in zip(context.prefixes, context.extensions)
     )
@@ -1199,6 +1256,13 @@ def _progressive_world_receipt(context: _ProgressiveWorldContext, request: Progr
             self._validate(target, ordered)
             self.trace.append({"call": "R107_PRODUCER_PREFIXES_CONSUMED",
                                "prefix_count": len(steps)})
+            for step in steps:
+                self.trace.append({
+                    "call": "evaluate_positioned_subject_possibility",
+                    "result_state": step["state"],
+                    "same_evidence_object": True,
+                    "consumer_result_hash": step["content_hash"],
+                })
             return [dict(step) for step in steps]
 
     class StructuralService:
@@ -1214,10 +1278,17 @@ def _progressive_world_receipt(context: _ProgressiveWorldContext, request: Progr
             return value
 
         def possibilities(self, snapshot, *, target="Y", conditions=(), consumer="GENERIC"):
+            empirical = context.catalog.read(snapshot, "empirical")
+            state = empirical.get("state")
             self.value_reads.append({
-                "consumer": consumer, "key": "empirical", "state": "EXACT_SUPPORTED",
+                "consumer": consumer, "key": "empirical", "state": state,
                 "value": steps[-1]["cells"], "snapshot_ref": snapshot.snapshot_hash,
             })
+            if state != "SUPPORTED_TEST_ONLY":
+                return {
+                    "state": state, "steps": [], "dependencies": ["empirical"],
+                    "source_root": "R107_SOURCE",
+                }
             return {
                 "state": "PRODUCTIVE_TEST_ONLY", "steps": [dict(steps[-1])],
                 "dependencies": ["empirical"], "source_root": "R107_SOURCE",
@@ -1232,7 +1303,14 @@ def _progressive_world_receipt(context: _ProgressiveWorldContext, request: Progr
             digest = semantic_hash(material)
             return {"receipt_hash": digest, "material": material}
 
-    service = P41Service.__new__(P41Service)
+    class ProgressiveP41Service(P41Service):
+        def _world_block(self, snapshot):
+            block = super()._world_block(snapshot)
+            block["empirical"] = canonicalize(snapshot.material.get("empirical", {}))
+            block["world_snapshot_hash"] = snapshot.snapshot_hash
+            return block
+
+    service = ProgressiveP41Service.__new__(ProgressiveP41Service)
     service.prepared = object()
     service.readthrough = StructuralService()
     service.provider = ProgressiveProvider()
@@ -1252,6 +1330,9 @@ def progressive_world_view(request: ProgressiveWorldRequest) -> ProgressiveWorld
     if context is None:
         return _progressive_refusal("PROGRESSIVE_EXECUTION_HANDLE_INVALID",
                                     ExactRef("R107_TARGET", "urn:test:r107:invalid", "0" * 64))
+    if context.invalid_reason is not None:
+        return _progressive_refusal(context.invalid_reason, context.target_ref,
+                                    len(context.prefixes))
     if request.purpose != context.purpose:
         return _progressive_refusal("PROGRESSIVE_PURPOSE_MISMATCH", context.target_ref)
     try:
@@ -1278,7 +1359,9 @@ def progressive_world_view(request: ProgressiveWorldRequest) -> ProgressiveWorld
         for index, extension in enumerate(context.extensions)
     )
     routes = structural.get("routes") or {}
-    unavailable = any(
+    empirical_state = ((receipt.get("n9_world") or {}).get("empirical") or {}).get("state")
+    empirical_unavailable = empirical_state not in {None, "SUPPORTED_TEST_ONLY", "SUPPORTED"}
+    unavailable = empirical_unavailable or any(
         str(value).startswith("UNAVAILABLE") or str(value).startswith("REVOKED")
         for value in routes.values()
     )
@@ -1301,7 +1384,9 @@ def progressive_world_view(request: ProgressiveWorldRequest) -> ProgressiveWorld
     }
     return ProgressiveWorldView(
         state=state,
-        reason_code=("WORLD_AUTHORITY_UNAVAILABLE_OR_REVOKED" if unavailable
+        reason_code=("WORLD_EMPIRICAL_REVOKED_OR_UNAVAILABLE"
+                     if empirical_unavailable else
+                     "WORLD_AUTHORITY_UNAVAILABLE_OR_REVOKED" if unavailable
                      else "ACTUAL_N9_N10E_N10W"),
         target_ref=context.target_ref,
         prefix_count=len(context.prefixes),

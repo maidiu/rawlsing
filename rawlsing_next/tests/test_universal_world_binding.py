@@ -1188,3 +1188,44 @@ def test_r107_cold_replay_same_world_and_progressive_view():
     assert cold["steps"] == len(view.n10e_steps)
     assert cold["routes"] == dict(view.world_routes)
     assert cold["n10w"] == len(view.n10w["progressive_update_identity"])
+
+
+def test_r110_foreign_world_identity_refuses_before_serving():
+    target, conditions, prefixes, world = _progressive_fixture_parts()
+    foreign = ExactRef("C11LogicalRelease", "REL-r110-foreign", "f" * 64)
+    bad = dict(world)
+    bad["release_ref"] = foreign
+    bad["source"] = dict(world["source"])
+    bad["source"]["release_ref"] = foreign
+    handle = configure_progressive_world_context(
+        target_ref=target, conditions=conditions, prefixes=prefixes,
+        world_empirical=bad)
+    view = progressive_world_view(ProgressiveWorldRequest(
+        handle, "T0", "GENERIC_POSITIONED_SUBJECT", "HISTORICAL"))
+    assert view.state == "REFUSED"
+    assert view.reason_code == "PROGRESSIVE_WORLD_SOURCE_RELEASE_RISK_MISMATCH"
+
+
+def test_r110_empirical_revocation_is_typed_unavailable_and_restores():
+    handle = _progressive_fixture(revoked_scope="empirical")
+    view = progressive_world_view(ProgressiveWorldRequest(
+        handle, "T1", "GENERIC_POSITIONED_SUBJECT", "AS_OF"))
+    assert view.state == "PROGRESSIVE_WORLD_UNAVAILABLE"
+    assert view.reason_code == "WORLD_EMPIRICAL_REVOKED_OR_UNAVAILABLE"
+    assert view.n9_world["empirical"]["state"] == "REVOKED"
+    restored = progressive_world_view(ProgressiveWorldRequest(
+        _progressive_fixture(), "T1", "GENERIC_POSITIONED_SUBJECT", "AS_OF"))
+    assert restored.state == "PROGRESSIVE_WORLD_SELECTED_VIEW"
+
+
+def test_r110_n10w_positioned_consumptions_bind_actual_n10e_hashes():
+    view = progressive_world_view(ProgressiveWorldRequest(
+        _progressive_fixture(), "T0", "GENERIC_POSITIONED_SUBJECT", "HISTORICAL"))
+    assert view.state == "PROGRESSIVE_WORLD_SELECTED_VIEW"
+    step_hashes = {step["content_hash"] for step in view.n10e_steps}
+    positioned = view.n10w["positioned_consumptions"]
+    observed = [entry.get("consumer_result_hash") for entry in positioned]
+    assert len(observed) == len(view.n10e_steps)
+    assert all(isinstance(value, str) and value for value in observed)
+    assert set(observed) == step_hashes
+    assert all(entry.get("source") == "LIVE_TRACE" for entry in positioned)
