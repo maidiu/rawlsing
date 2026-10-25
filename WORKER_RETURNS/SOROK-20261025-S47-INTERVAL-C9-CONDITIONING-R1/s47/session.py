@@ -13,8 +13,8 @@ import s41.reader as s41_reader  # noqa: E402
 
 from .conditioning import (  # noqa: E402
     current_interval_source,
-    historical_interval_source,
     qualify_source,
+    validate_event_source,
 )
 
 S47_SCHEMA = "SOROK_S47_INTERVAL_C9_CONDITIONING_SESSION@1"
@@ -62,18 +62,28 @@ class S47Session(S46Session):
         ]
         if len(set(source_refs)) > 1:
             raise S47Refusal("S47_SOURCE_READSET_AMBIGUOUS")
-        historical_source = (
-            historical_interval_source(self, source_refs[0])
-            if source_refs else None
-        )
-        if historical_source is not None:
-            historical = historical_source["content"]
-            if historical.get("actor_id") != event_read.get("actor_id"):
-                raise S47Refusal("S47_SOURCE_ACTOR_ID_MISMATCH")
-            if historical.get("branch_id") != event_read.get("branch_id"):
-                raise S47Refusal("S47_SOURCE_BRANCH_ID_MISMATCH")
-            if historical.get("as_of", 0) > event_read.get("event_time", 0):
-                raise S47Refusal("S47_SOURCE_AS_OF_MISMATCH")
+        if source_refs:
+            s36 = binding.get("s36")
+            if not isinstance(s36, dict):
+                raise S47Refusal("S47_EVENT_SOURCE_BINDING_MISSING")
+            if s36.get("e1_event_hash") != event_read.get("e1_event_hash"):
+                raise S47Refusal("S47_EVENT_SOURCE_EVENT_MISMATCH")
+            candidates = [
+                row for row in s36.get("conditioning_sources") or []
+                if isinstance(row, dict)
+                and row.get("source_ref") == source_refs[0]
+            ]
+            if len(candidates) != 1:
+                raise S47Refusal("S47_EVENT_SOURCE_BINDING_MISSING")
+            historical_source = validate_event_source(
+                candidates[0],
+                expected_ref=source_refs[0],
+                actor_id=event_read.get("actor_id"),
+                branch_id=event_read.get("branch_id"),
+                event_time=event_read.get("event_time"),
+            )
+        else:
+            historical_source = None
         current_source = current_interval_source(self)
         current_states = [
             row for row in self.read_interval_states()

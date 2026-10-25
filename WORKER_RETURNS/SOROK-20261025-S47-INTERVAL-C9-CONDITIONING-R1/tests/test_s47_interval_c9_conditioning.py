@@ -12,7 +12,12 @@ install()
 from s45.fixtures import root_bundle  # noqa: E402
 from s46.errors import S46Refusal  # noqa: E402
 from s46.model import make_domain  # noqa: E402
-from s47.conditioning import SOURCE_CLASS, qualify_source  # noqa: E402
+from s42.bindings import binding_episodes  # noqa: E402
+from s47.conditioning import (  # noqa: E402
+    SOURCE_CLASS,
+    qualify_source,
+    validate_event_source,
+)
 from s47.errors import S47Refusal  # noqa: E402
 from s47.session import S47Session  # noqa: E402
 from s37.harness import case_for, source_for  # noqa: E402
@@ -233,6 +238,79 @@ def test_event_keyed_reader_preserves_historical_source_after_condition_cut(tmp_
             session.close()
         except Exception:
             pass
+
+
+def test_historical_source_uses_admission_availability_after_material_change(tmp_path):
+    state = tmp_path / "admission-material"
+    session = _start(state)
+    try:
+        session.produce_interval(
+            make_domain(mode="SCHEDULED_ONLY", start=session.clock(), end=session.clock() + 4)
+        )
+        interval_end = session.c9_interval_source()
+        helped = session.do_help()
+        admission = session.c9_interval_source()
+        assert helped["accepted"] is True
+        assert interval_end["content"]["access"] == "granted"
+        assert admission["content"]["access"] == "denied"
+        result = _admit(session)
+        event_e1 = result["event"]["e1_event_id"]
+        read = session.read_c9_conditioning(event_e1)
+        assert read["s47_source_hash"] == admission["source_hash"]
+        assert read["s47_source"]["content"]["access"] == "denied"
+        assert read["s47_source_hash"] != interval_end["source_hash"]
+        assert read["current_source_hash"] == admission["source_hash"]
+        assert read["s47_source_in_readset"] is True
+        assert read["objective_material_eligible"] is False
+        assert session.verify()["ok"] is True
+        session.close()
+
+        cold = S47Session.open(state)
+        try:
+            cold_read = cold.read_c9_conditioning(event_e1)
+            assert cold_read["s47_source_hash"] == admission["source_hash"]
+            assert cold_read["s47_source"]["content"]["access"] == "denied"
+            assert cold_read["current_source_hash"] == admission["source_hash"]
+            assert cold_read["s47_source_in_readset"] is True
+            assert cold.verify()["ok"] is True
+        finally:
+            cold.close()
+    finally:
+        try:
+            session.close()
+        except Exception:
+            pass
+
+
+def test_forged_event_bound_source_is_refused(tmp_path):
+    session = _start(tmp_path / "event-source-forgery")
+    try:
+        session.produce_interval(
+            make_domain(mode="ACTUAL", start=session.clock(), end=session.clock() + 4)
+        )
+        _admit(session)
+        binding = binding_episodes(session)[-1]
+        s36 = binding["s36"]
+        source = deepcopy(s36["conditioning_sources"][0])
+        expected = {
+            "expected_ref": source["source_ref"],
+            "actor_id": binding["actor_id"],
+            "branch_id": binding["branch_id"],
+            "event_time": binding["event_time"],
+        }
+        assert validate_event_source(source, **expected)["source_hash"] == source["source_hash"]
+        forged = deepcopy(source)
+        forged["content"]["access"] = "granted"
+        with pytest.raises(S47Refusal) as exc:
+            validate_event_source(forged, **expected)
+        assert exc.value.code == "S47_EVENT_SOURCE_HASH_MISMATCH"
+        forged_ref = deepcopy(source)
+        forged_ref["source_ref"] = "TEST_ONLY_S47_INTERVAL_FORGED"
+        with pytest.raises(S47Refusal) as exc:
+            validate_event_source(forged_ref, **expected)
+        assert exc.value.code == "S47_EVENT_SOURCE_REF_MISMATCH"
+    finally:
+        session.close()
 
 
 @pytest.mark.parametrize("field,value,code", [

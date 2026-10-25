@@ -178,7 +178,7 @@ def source_manifest():
                 "path": "WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/s37/producer.py",
                 "sha256": _sha256(S37_RETURN / "s37/producer.py"),
                 "git_blob_sha1": _git("hash-object", str(S37_RETURN / "s37/producer.py")),
-                "reason": "minimal actual C9 call-site: use qualified interval sources when supplied; accepted B source path unchanged otherwise",
+                "reason": "minimal actual C9 call-site: use qualified interval sources when supplied, persist the exact admitted source list in the S36 binding, and keep the accepted B source path unchanged otherwise",
             },
         ],
         "source_class": "ResolvedStructuralContext",

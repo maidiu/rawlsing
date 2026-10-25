@@ -1,6 +1,6 @@
 # SOROK S47 — actual interval material/activity conditioning in C9
 
-**RESULT:** `S47_INTERVAL_C9_CONDITIONING__SAME_S46_PERSON__ACTUAL_CONDITIONING_SOURCE_IN_C9_READSET__ACTUAL_MATERIAL_FALSE_SCHEDULED_TRUE__CONDITION_CUT_RESTORE_COLD__FORGERY_REFUSED__15_OF_15_FOCUSED_TESTS__NO_TARGET__NATIVE_HOLD`.
+**RESULT:** `S47_INTERVAL_C9_CONDITIONING__SAME_S46_PERSON__ACTUAL_CONDITIONING_SOURCE_IN_C9_READSET__ACTUAL_MATERIAL_FALSE_SCHEDULED_TRUE__CONDITION_CUT_RESTORE_COLD__FORGERY_REFUSED__17_OF_17_FOCUSED_TESTS__NO_TARGET__NATIVE_HOLD`.
 
 S47 composes the current independently issued S46 interval state into the existing S36/C9 conditioning path for the next real S42 admission on the same S45/S44/S46 person. The C9 readset and material eligibility now consume the actual interval source instead of treating the interval receipt as metadata only. The accepted targetless C9 response behavior is preserved.
 
@@ -23,22 +23,24 @@ S47 composes the current independently issued S46 interval state into the existi
 ## Reader repair
 
 - `read_c9_conditioning(event_ref)` now selects and validates the supplied event through the existing S42 canonical binding reader instead of always using the latest binding.
-- The event's canonical C9 receipt/response is read directly. Its `readset_refs` supplies the exact historical S47 source identity for that event. The source body is reconstructed deterministically from that referenced validated S46 interval state receipt; source hash/content is checked. No new ledger, shadow history, or rewritten past C9 row is created.
-- Historical source, present current source, present currentness, present condition revocation, and historical condition revocation are reported separately. Reading an older event after a second interval returns its own event `event_ref` and first source; reading it after a condition cut still returns the historical source while reporting `present_condition_revoked: true` and `current_source: null`.
+- The exact interval source used by the actual C9 pipeline is persisted at admission in the canonical S37 `s36` binding, which is carried by the sealed S42 event binding. This event-local evidence records source identity, content, access, and hash; it is not a parallel ledger or shadow history.
+- The event's canonical C9 receipt/response supplies the source ref in `readset_refs`. The reader finds the matching event-bound source, validates source hash/content/ref, actor, branch, and effective time against that event, and returns the exact admitted source. It never infers historical access from current material or interval-end state.
+- Historical source, present current source, present currentness, present condition revocation, and historical condition revocation are reported separately. Reading an older event after a second interval returns its own event `event_ref` and first source; reading it after a condition cut still returns the admitted historical source while reporting `present_condition_revoked: true` and `current_source: null`.
 - The documented no-argument behavior remains latest-event selection; event-keyed selection applies when `event_ref` is supplied. Unknown/empty event identities are refused via the existing S42 reader.
-- Added warm/cold two-event distinct-source regression and warm/cold historical-read-after-cut regression. Preserved review reproducers pass.
+- Added warm/cold tests for distinct event sources, historical read after cut, and material changing after interval end but before C9 admission. Added event-bound source forgery refusal. Preserved event-key and cut reproducers pass; the closure historical-source oracle passes warm and cold with the admission hash, not the interval-end hash.
 
 ## Evidence
 
-- Focused S47 tests: **15 passed**, 0 failed/error/skipped; `junit/s47_full.xml`, `logs/s47_full.log`, `evidence/test_run.json`.
-- Preserved reviewer reproducers: `logs/repro_reader_event_ref.log` and `logs/repro_reader_cut.log` both exit 0; event-keyed first/second sources remain distinct warm and cold, and historical events retain their source after cut.
+- Focused S47 tests: **17 passed**, 0 failed/error/skipped; `junit/s47_full.xml`, `logs/s47_full.log`, `evidence/test_run.json`.
+- Preserved reviewer reproducers: `logs/repro_reader_event_ref.log` and `logs/repro_reader_cut.log` both exit 0; event-keyed first/second sources remain distinct warm and cold, and historical events retain their admitted source after cut.
+- Preserved closure oracle `repro_historical_source_hash.py` exits 0 warm and cold: source at interval end is granted (`d73a…`), actual `do_help` changes material, C9 admission source is denied (`f4af…`), and the historical read returns `f4af…` rather than `d73a…`; `objective_material_eligible` remains false and verify true.
 - Runnable entrypoint: `run_s47.py` exits **0**; `run_s47_evidence.py` exits **0**; `evidence/entrypoint.json`, `logs/entrypoint.log`, `logs/evidence_run.log`.
 - ACTUAL interval: `PARTIAL`, coverage `[[222, 223]]`; material after interval `0`; C9 interval source is in the actual readset; `objective_material_eligible: false`; targetless `NO_CHANGE`/`NO_PROPOSAL`.
 - SCHEDULED_ONLY control: `NOT_PERFORMED`, coverage `[]`; material after interval `1`; C9 interval source is in the actual readset; `objective_material_eligible: true`; same targetless response, same root `3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7`.
 - C9 source identity/currentness/coverage is present in `evidence/actual.json` and `evidence/scheduled.json`: current interval receipt, exact one-unit coverage for ACTUAL, current source hash, and the S47 source ref in `readset_refs`.
 - Same-person S45 encounters remain SAY OK, DO_HELP refused under ACTUAL / accepted under SCHEDULED_ONLY, ATTEND NO_CHANGE; root and other-actor B state unchanged.
-- Condition cut/restore: revoking the S46 condition refuses the real S42 admission with `S46_INTERVAL_CONDITION_REVOKED`; restoring reconstructs the same source hash and admits with the interval source in C9. Cold reopen reconstructs the same source hash, receipt, coverage and targetless C9 evidence.
-- Source faults refused: actor, branch, coverage, currentness, access, as_of, material-after, source ref and source hash (`evidence/source_faults.json`). Original current source remains readable after comparisons.
+- Condition cut/restore: revoking the S46 condition refuses the real S42 admission with `S46_INTERVAL_CONDITION_REVOKED`; restoring admits with the same event-bound source hash and interval source in C9. Cold reopen reconstructs the same source hash, receipt, coverage and targetless C9 evidence.
+- Source faults refused: actor, branch, coverage, currentness, access, as_of, material-after, source ref and source hash (`evidence/source_faults.json`); event-bound source/content/hash forgery is covered by focused tests. Original current source remains readable after comparisons.
 - No interval: accepted C9 path remains usable with no S47 source and no target (`evidence/no_interval.json`).
 - `evidence/source_manifest.json` shows S46 and S45 reused sources exact at their accepted cuts, and only the two minimal S42/S37 seam files changed.
 
@@ -56,6 +58,12 @@ PYTHONPATH=$PWD/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1 \
 M35_JOIN_E_RETURN=/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1 \
 python3 WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/run_s47_evidence.py \
 > WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/logs/evidence_run.log 2>&1
+
+PYTHONPATH=$PWD/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1 \
+S47_RETURN=$PWD/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1 \
+TMPDIR=$PWD/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/logs/tmp-closure \
+python3 -B /Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/SOROK_REVIEW/S47_CLOSURE/evidence/repro_historical_source_hash.py \
+> WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/logs/repro_historical_source_hash.log 2>&1
 ```
 
-**Terminal:** `S47_INTERVAL_C9_CONDITIONING__SAME_S46_PERSON__QUALIFIED_INTERVAL_SOURCE__REAL_C9_READSET_AND_MATERIAL_ELIGIBILITY__CONDITION_RESTORE_COLD__FORGERY_REFUSED__15_OF_15__NO_TARGET__NATIVE_HOLD`. Final commit and remote SHA are verified after push.
+**Terminal:** `S47_INTERVAL_C9_CONDITIONING__SAME_S46_PERSON__QUALIFIED_INTERVAL_SOURCE__REAL_C9_READSET_AND_MATERIAL_ELIGIBILITY__CONDITION_RESTORE_COLD__FORGERY_REFUSED__17_OF_17__NO_TARGET__NATIVE_HOLD`. Final commit and remote SHA are verified after push.

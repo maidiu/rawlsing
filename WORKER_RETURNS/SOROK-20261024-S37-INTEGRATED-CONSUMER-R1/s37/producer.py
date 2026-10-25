@@ -197,6 +197,13 @@ class IntegratedProducer(JoinedProducer):
             if response_witness is _AUTO
             else response_witness
         )
+        extra_sources = list(
+            getattr(self, "extra_conditioning_sources", ()) or ()
+        )
+        admitted_sources = extra_sources or [self.conditioning_source]
+        self.admitted_conditioning_sources = [
+            dict(row) for row in extra_sources if isinstance(row, dict)
+        ]
         request = S35ActorAccessRequest(
             access_witness=access,
             response_witness=response,
@@ -208,10 +215,7 @@ class IntegratedProducer(JoinedProducer):
             store=target,
             actor_raw=self.actor_record,
             event_raw=self.e1_event,
-            conditioning_sources=(
-                list(getattr(self, "extra_conditioning_sources", ()) or ())
-                or [self.conditioning_source]
-            ),
+            conditioning_sources=admitted_sources,
             response_registry=ResponseRuleRegistry.test_only((self.response_rule,)),
             target_registry=TargetRuleRegistry.production(),
             authority_id=self.response_rule.authority_id,
@@ -267,7 +271,7 @@ class IntegratedProducer(JoinedProducer):
             relpath = str(c9_path.relative_to(self.source_root))
         except ValueError:
             relpath = str(c9_path)
-        return {
+        binding = {
             "schema": "SOROK_S37_S36_COMMITTED_RESPONSE_BINDING@1",
             "grade": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
             "e1_event_id": self.e1_event["event_id"],
@@ -308,6 +312,11 @@ class IntegratedProducer(JoinedProducer):
             "c9_db_path": str(c9_path),
             "c9_db_relpath": relpath,
         }
+        if self.admitted_conditioning_sources:
+            binding["conditioning_sources"] = [
+                dict(row) for row in self.admitted_conditioning_sources
+            ]
+        return binding
 
     def c8_binding(self) -> dict:
         return {

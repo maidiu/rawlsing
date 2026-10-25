@@ -79,28 +79,35 @@ def current_interval_source(session) -> dict | None:
     )
 
 
-def historical_interval_source(session, source_ref: str) -> dict | None:
-    if not isinstance(source_ref, str) or not source_ref.startswith(
-        "TEST_ONLY_S47_INTERVAL_"
-    ):
-        return None
-    state_id = source_ref[len("TEST_ONLY_S47_INTERVAL_"):]
-    state = next(
-        (
-            row for row in session.read_interval_states()
-            if row.get("state_id") == state_id
-        ),
-        None,
+def validate_event_source(source: dict, *, expected_ref: str, actor_id: str,
+                          branch_id: str, event_time: int) -> dict:
+    if not isinstance(source, dict):
+        raise S47Refusal("S47_EVENT_SOURCE_NOT_RECORD")
+    if source.get("source_ref") != expected_ref:
+        raise S47Refusal("S47_EVENT_SOURCE_REF_MISMATCH")
+    if source.get("source_class") != SOURCE_CLASS:
+        raise S47Refusal("S47_EVENT_SOURCE_CLASS_MISMATCH")
+    content = source.get("content")
+    if not isinstance(content, dict) or content.get("schema") != SCHEMA:
+        raise S47Refusal("S47_EVENT_SOURCE_SCHEMA_MISMATCH")
+    if source.get("subject") != actor_id:
+        raise S47Refusal("S47_EVENT_SOURCE_SUBJECT_MISMATCH")
+    if content.get("actor_id") != actor_id:
+        raise S47Refusal("S47_EVENT_SOURCE_ACTOR_ID_MISMATCH")
+    if content.get("branch_id") != branch_id:
+        raise S47Refusal("S47_EVENT_SOURCE_BRANCH_ID_MISMATCH")
+    if not isinstance(content.get("as_of"), int) or content["as_of"] > event_time:
+        raise S47Refusal("S47_EVENT_SOURCE_AS_OF_MISMATCH")
+    expected = make_conditioning_source(
+        source_ref=expected_ref,
+        source_class=SOURCE_CLASS,
+        subject=actor_id,
+        body=dict(content),
     )
-    if state is None:
-        raise S47Refusal("S47_SOURCE_STATE_MISSING", state_id)
-    after = state["segments"][-1]["world"].get("state_after") or {}
-    return _source_for_state(
-        session,
-        state,
-        access="granted" if after.get("material_remaining", 0) else "denied",
-        currentness="CURRENT",
-    )
+    if source.get("source_hash") != expected.get("source_hash"):
+        raise S47Refusal("S47_EVENT_SOURCE_HASH_MISMATCH")
+    return source
+
 
 def qualify_source(session, source: dict) -> dict:
     if not isinstance(source, dict):
@@ -172,5 +179,5 @@ def qualify_source(session, source: dict) -> dict:
 
 __all__ = [
     "SOURCE_CLASS", "SCHEMA", "current_interval_source",
-    "historical_interval_source", "qualify_source",
+    "qualify_source", "validate_event_source",
 ]

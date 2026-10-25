@@ -48,6 +48,16 @@
         },
         {
           "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_historical_source_uses_admission_availability_after_material_change",
+          "status": "PASS"
+        },
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_forged_event_bound_source_is_refused",
+          "status": "PASS"
+        },
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
           "name": "test_forged_conditioning_source_is_refused_then_original_remains[actor_id-WRONG_ACTOR-S47_SOURCE_ACTOR_ID_MISMATCH]",
           "status": "PASS"
         },
@@ -89,10 +99,10 @@
       ],
       "counts": {
         "ERROR": 0,
-        "PASS": 15,
+        "PASS": 17,
         "RED": 0,
         "SKIP": 0,
-        "tests": 15
+        "tests": 17
       },
       "exit": 0,
       "junit": "junit/s47_full.xml"
