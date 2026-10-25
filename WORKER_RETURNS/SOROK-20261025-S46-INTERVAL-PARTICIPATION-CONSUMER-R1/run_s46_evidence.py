@@ -41,6 +41,12 @@ from s46.session import S46Session  # noqa: E402
 
 S45_RETURN = Path(roots()["s45_return"])
 S44_RETURN = Path(roots()["s44_return"])
+S42_RETURN = Path(roots()["s42_return"])
+S42_FILES = ["s42/session.py", "s42/event.py"]
+REVIEW_DIR = Path(
+    "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/"
+    "sorok-incumbent-review/SOROK_REVIEW/S46/evidence"
+)
 S45_FILES = [
     "s45/__init__.py", "s45/bootstrap.py", "s45/errors.py", "s45/fixtures.py",
     "s45/language.py", "s45/session.py", "tests/test_s45_generated_root_encounter.py",
@@ -198,6 +204,22 @@ def fault_evidence(state):
         domain = make_domain(mode="ACTUAL", start=session.clock(),
                              end=session.clock() + 4)
         real = session.produce_interval(domain)
+        forged_domain = deepcopy(real)
+        forged_domain["domain_hash"] = "0" * 64
+        forged_domain["state_id"] = "S46_STATE_" + digest({
+            "domain": forged_domain["domain_hash"],
+            "segments": forged_domain["segments"],
+            "root": forged_domain["root_hash"],
+        })[:24].upper()
+        forged_domain["receipt_hash"] = digest({
+            k: v for k, v in forged_domain.items()
+            if k not in {"receipt_hash", "episode_id", "clock"}
+        })
+        try:
+            session.validate_interval_state(forged_domain)
+            domain_code = "ACCEPTED"
+        except Exception as exc:
+            domain_code = getattr(exc, "code", type(exc).__name__)
         forged_model = deepcopy(real)
         forged_model["model_hash"] = "0" * 64
         forged_model["receipt_hash"] = digest({
@@ -256,6 +278,7 @@ def fault_evidence(state):
         cold.close()
     return {
         "schema": "SOROK_S46_FAULT_EVIDENCE@1",
+        "forged_domain_code": domain_code,
         "forged_model_code": model_code,
         "forged_owner_code": owner_code,
         "forged_action_code": action_code,
@@ -266,6 +289,78 @@ def fault_evidence(state):
         "cold_verify": cold_ok,
         "cold_status": cold_status,
     }
+
+
+def blocked_evidence(state):
+    session = _start(state)
+    try:
+        before = session.world().actor_state["A"]["material_remaining"]
+        domain = make_domain(
+            mode="BLOCKED", start=session.clock(), end=session.clock() + 2
+        )
+        produced = session.produce_interval(domain)
+        return {
+            "schema": "SOROK_S46_BLOCKED_EVIDENCE@1",
+            "status": produced["status"],
+            "attempts": [row["attempt"]["attempt"] for row in produced["segments"]],
+            "world_statuses": [row["world"]["status"] for row in produced["segments"]],
+            "action_event_ids": [
+                row["world"]["actual_action_event_id"]
+                for row in produced["segments"]
+            ],
+            "coverage": produced["coverage"],
+            "material_before": before,
+            "material_after": session.world().actor_state["A"][
+                "material_remaining"
+            ],
+            "verify_ok": session.verify()["ok"],
+        }
+    finally:
+        session.close()
+
+
+def condition_evidence(state):
+    session = _start(state)
+    try:
+        domain = make_domain(
+            mode="ACTUAL", start=session.clock(), end=session.clock() + 4
+        )
+        produced = session.produce_interval(domain)
+        state_id = produced["state_id"]
+        first = session.read_events()[0]
+        session.revoke_interval_condition(state_id, reason="TEST_ONLY_CUT")
+        try:
+            session.admit_event(
+                case=case_for(True), source=source_for(case_for(True)),
+                history_event_refs=(first["e1_event_id"],),
+                event_time=session.clock() + 1,
+            )
+            refused = ""
+        except Exception as exc:
+            refused = getattr(exc, "code", type(exc).__name__)
+        session.restore_interval_condition(state_id, reason="TEST_ONLY_RESTORE")
+        restored = session.admit_event(
+            case=case_for(True), source=source_for(case_for(True)),
+            history_event_refs=(first["e1_event_id"],),
+            event_time=session.clock() + 1,
+        )
+        world = binding_episodes(session)[-1]["generation"]["world_prerequisites"]
+        return {
+            "schema": "SOROK_S46_CONDITION_EVIDENCE@1",
+            "state_id": state_id,
+            "revoked_refusal": refused,
+            "restored_s42_status": restored.get("status"),
+            "restored_s46_state_id": world.get("s46_interval", {}).get(
+                "state_id", ""
+            ),
+            "restored_s46_receipt": world.get("s46_interval", {}).get(
+                "receipt_hash", ""
+            ),
+            "material_available": world.get("material_available"),
+            "verify_ok": session.verify()["ok"],
+        }
+    finally:
+        session.close()
 
 
 def supersession_evidence(state):
@@ -295,6 +390,33 @@ def supersession_evidence(state):
         }
     finally:
         session.close()
+
+
+def review_repro_evidence() -> dict:
+    rows = {}
+    for name in ("repro_blocked_mode", "repro_domain_forgery"):
+        oracle = REVIEW_DIR / (name + ".py")
+        env = dict(ENV, S46_RETURN=str(RET))
+        proc = subprocess.run(
+            [PY, str(oracle)], cwd=str(RET), env=env,
+            capture_output=True, text=True,
+        )
+        (LOGS / (name + ".log")).write_text(proc.stdout + proc.stderr)
+        code = ""
+        for line in reversed(proc.stderr.strip().splitlines()):
+            if "S46Refusal:" in line:
+                code = line.split("S46Refusal:", 1)[1].strip()
+                break
+        rows[name] = {
+            "oracle": str(oracle),
+            "oracle_sha256": _sha256(oracle),
+            "exit": proc.returncode,
+            "refused": proc.returncode != 0,
+            "code": code,
+            "stdout": proc.stdout,
+            "stderr_tail": proc.stderr.strip().splitlines()[-3:],
+        }
+    return {"schema": "SOROK_S46_REVIEW_REPRODUCERS@1", "rows": rows}
 
 
 def test_evidence():
@@ -353,6 +475,15 @@ def source_manifest():
         "cuts": dict(CUTS),
         "s45_reused": s45_rows,
         "s45_all_exact": all(row["exact"] for row in s45_rows),
+        "s42_seam": [
+            {
+                "path": rel,
+                "sha256": _sha256(S42_RETURN / rel),
+                "git_blob_sha1": _git("hash-object", str(S42_RETURN / rel)),
+                "reason": "interval-condition hook used by S42 ongoing event admission",
+            }
+            for rel in S42_FILES
+        ],
         "s46_local": local_rows,
         "model_hash": MODEL_HASH,
         "owner_registry_hash": OWNER_REGISTRY_HASH,
@@ -375,8 +506,11 @@ def main():
         actual = _run_one(work / "actual", "ACTUAL")
         scheduled = _run_one(work / "scheduled", "SCHEDULED_ONLY")
         faults = fault_evidence(work / "faults")
+        blocked = blocked_evidence(work / "blocked")
+        condition = condition_evidence(work / "condition")
         supersession = supersession_evidence(work / "supersession")
         tests = test_evidence()
+        review_repros = review_repro_evidence()
         entry = _run([PY, "-B", "run_s46.py"], "entrypoint.log")
         if entry.returncode != 0:
             raise RuntimeError("S46_ENTRYPOINT_FAILED:" + entry.stderr)
@@ -384,11 +518,14 @@ def main():
         _write(EVID / "actual.json", actual)
         _write(EVID / "scheduled.json", scheduled)
         _write(EVID / "faults.json", faults)
+        _write(EVID / "blocked.json", blocked)
+        _write(EVID / "condition.json", condition)
         _write(EVID / "supersession.json", supersession)
         _write(EVID / "test_run.json", {
             "schema": "SOROK_S46_TEST_RUN@1", "rows": tests,
             "entrypoint_exit": entry.returncode,
         })
+        _write(EVID / "review_reproducers.json", review_repros)
         _write(EVID / "source_manifest.json", source_manifest())
         print(json.dumps({
             "tests": {key: value["counts"] for key, value in tests.items()},
@@ -407,6 +544,9 @@ def main():
                 "s42_material": scheduled["s42_generation_world"].get("material_available"),
             },
             "faults": faults,
+            "review_reproducers": review_repros,
+            "blocked": blocked,
+            "condition": condition,
             "supersession": supersession,
         }, sort_keys=True))
     finally:

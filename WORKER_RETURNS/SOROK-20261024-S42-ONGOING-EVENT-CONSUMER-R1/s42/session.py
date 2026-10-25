@@ -73,6 +73,9 @@ class S42Session(S41Session):
             "S41 fixed continuation is not the S42 ongoing API",
         )
 
+    def _world_prerequisites(self) -> dict:
+        return world_prerequisites(self)
+
     def read_event(self, event_ref: str) -> dict:
         return read_event(self, event_ref)
 
@@ -179,7 +182,7 @@ class S42Session(S41Session):
             event_time=event_time,
         )
         current_world = self.world().snapshot()
-        world = world_prerequisites(self)
+        world = self._world_prerequisites()
         records = context_records(
             actor_id=self.meta["source_actor_map"]["TEST_ONLY_R31J_A"],
             branch_id=self.branch_id,

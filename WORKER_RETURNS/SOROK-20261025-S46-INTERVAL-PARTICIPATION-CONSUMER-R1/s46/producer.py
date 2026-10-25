@@ -51,6 +51,9 @@ def _attempt_receipt(domain: dict, segment: tuple[int, int],
     elif mode == "CONSTRAINED":
         kind = "CONSTRAINED_ATTEMPT"
         reason = "MATERIALLY_CONSTRAINED_ATTEMPT_NO_CONSENT_CLAIM"
+    elif mode == "BLOCKED":
+        kind = "BLOCKED"
+        reason = "QUALIFIED_PROSPECTIVE_ACTIVITY_OBSTRUCTED"
     elif mode == "UNKNOWN":
         kind = "UNKNOWN"
         reason = "SOURCE_OR_OWNER_UNKNOWN_NOT_A_NEGATIVE"
@@ -97,7 +100,7 @@ def _world_receipt(domain: dict, segment: tuple[int, int], attempt: dict,
             "ATTEMPT", "CONSTRAINED_ATTEMPT",
         } else "UNKNOWN"
     )
-    if attempt["attempt"] in {"NOT_ATTEMPTED", "DECLINED"}:
+    if attempt["attempt"] in {"NOT_ATTEMPTED", "DECLINED", "BLOCKED"}:
         status = "NOT_PERFORMED"
     body = {
         "schema": "S46_WORLD_PERIOD_RECEIPT@1",
@@ -160,9 +163,14 @@ def produce_interval(session, domain: dict) -> dict:
         world = _world_receipt(
             domain, (start, end), attempt, before_state, after_state, actual,
         )
+        coverage_span = (
+            [[start, min(end, start + int(domain["action_span_units"]))]]
+            if world["status"] == "CONFIRMED" else []
+        )
         segments.append({
             "start": start,
             "end": end,
+            "coverage": coverage_span,
             "attempt": attempt,
             "world": world,
             "status": (
@@ -175,11 +183,20 @@ def produce_interval(session, domain: dict) -> dict:
             world = session.world()
             world.advance(end)
             session.product._checkpoint(session.branch_id, end, world)
-    coverage = [[row["start"], row["end"]] for row in segments
-                if row["status"] == "REALIZED"]
+    coverage = [
+        span for row in segments for span in (row.get("coverage") or [])
+    ]
+    coverage.sort()
+    full_span = (
+        bool(coverage)
+        and coverage[0][0] == domain["start"]
+        and coverage[-1][1] == domain["end"]
+        and all(coverage[i][1] == coverage[i + 1][0]
+                for i in range(len(coverage) - 1))
+    )
     if any(row["status"] == "UNKNOWN" for row in segments):
         status = "UNKNOWN"
-    elif len(coverage) == len(segments):
+    elif full_span:
         status = "REALIZED"
     elif coverage:
         status = "PARTIAL"
@@ -201,6 +218,7 @@ def produce_interval(session, domain: dict) -> dict:
         "activity_id": domain["activity_id"],
         "domain_id": domain["domain_id"],
         "domain_hash": domain["domain_hash"],
+        "domain": dict(domain),
         "model_hash": MODEL_HASH,
         "owner_registry_hash": OWNER_REGISTRY_HASH,
         "actor_owner": ACTOR_OWNER,
@@ -253,6 +271,19 @@ def _validate_segment(session, state: dict, segment: dict) -> None:
             raise S46Refusal("S46_SEGMENT_SOURCE_RULE_MISMATCH")
     if attempt.get("actor_id") != state["actor_id"] or world.get("actor_id") != state["actor_id"]:
         raise S46Refusal("S46_SEGMENT_ACTOR_MISMATCH")
+    if attempt.get("attempt") == "BLOCKED" and (
+        world.get("status") != "NOT_PERFORMED" or world.get("actual_action_event_id")
+    ):
+        raise S46Refusal("S46_BLOCKED_HAS_ACTOR_EFFECT")
+    expected_coverage = (
+        [[segment.get("start"),
+          min(segment.get("end"), segment.get("start") + int(
+              state.get("domain", {}).get("action_span_units", 1)
+          ))]]
+        if segment.get("status") == "REALIZED" else []
+    )
+    if segment.get("coverage") != expected_coverage:
+        raise S46Refusal("S46_SEGMENT_COVERAGE_MISMATCH")
     if world.get("actor_attempt_receipt_hash") != attempt.get("receipt_hash"):
         raise S46Refusal("S46_ATTEMPT_WORLD_BINDING_MISMATCH")
     if (segment.get("start"), segment.get("end")) != (
@@ -293,6 +324,16 @@ def validate_interval_state(session, state: dict) -> dict:
         raise S46Refusal("S46_STATE_ROOT_MISMATCH")
     if state.get("branch_id") != session.branch_id:
         raise S46Refusal("S46_STATE_BRANCH_MISMATCH")
+    domain = state.get("domain")
+    if not isinstance(domain, dict):
+        raise S46Refusal("S46_STATE_DOMAIN_MISSING")
+    validated_domain = validate_domain(domain)
+    if state.get("domain_hash") != validated_domain.get("domain_hash"):
+        raise S46Refusal("S46_STATE_DOMAIN_HASH_MISMATCH")
+    if state.get("domain_id") != validated_domain.get("domain_id"):
+        raise S46Refusal("S46_STATE_DOMAIN_ID_MISMATCH")
+    if state.get("start") != validated_domain.get("start") or state.get("end") != validated_domain.get("end"):
+        raise S46Refusal("S46_STATE_DOMAIN_SPAN_MISMATCH")
     if state.get("model_hash") != MODEL_HASH:
         raise S46Refusal("S46_STATE_MODEL_MISMATCH")
     if state.get("owner_registry_hash") != OWNER_REGISTRY_HASH:
@@ -321,15 +362,24 @@ def validate_interval_state(session, state: dict) -> dict:
         raise S46Refusal("S46_SEGMENTS_MISSING")
     for segment in segments:
         _validate_segment(session, state, segment)
-    coverage = [[row["start"], row["end"]] for row in segments
-                if row.get("status") == "REALIZED"]
+    coverage = [
+        span for row in segments for span in (row.get("coverage") or [])
+    ]
+    coverage.sort()
     if state.get("coverage") != coverage:
         raise S46Refusal("S46_COVERAGE_MISMATCH")
+    full_span = (
+        bool(coverage)
+        and coverage[0][0] == state.get("start")
+        and coverage[-1][1] == state.get("end")
+        and all(coverage[i][1] == coverage[i + 1][0]
+                for i in range(len(coverage) - 1))
+    )
     if any(row.get("status") == "UNKNOWN" for row in segments):
         expected = "UNKNOWN"
     else:
         expected = (
-            "REALIZED" if coverage and len(coverage) == len(segments)
+            "REALIZED" if full_span
             else "PARTIAL" if coverage
             else "NOT_PERFORMED"
         )

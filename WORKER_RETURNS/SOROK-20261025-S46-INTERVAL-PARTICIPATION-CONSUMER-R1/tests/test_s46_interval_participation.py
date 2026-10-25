@@ -50,7 +50,8 @@ def test_actual_interval_participation_changes_same_person_response_and_cold(tmp
         produced = session.produce_interval(domain)
         after = session.world_prerequisites()
         assert produced["status"] == "PARTIAL"
-        assert produced["coverage"] == [[domain["start"], domain["segments"][0][1]]]
+        assert produced["coverage"] == [[domain["start"], domain["start"] + 1]]
+        assert produced["coverage"] != [[domain["start"], domain["segments"][0][1]]]
         assert [row["status"] for row in produced["segments"]] == [
             "REALIZED", "NOT_PERFORMED",
         ]
@@ -135,6 +136,7 @@ def test_interval_conditioning_reaches_real_s42_world_readset(tmp_path, mode, ex
         binding = binding_episodes(session)[-1]
         world = binding["generation"]["world_prerequisites"]
         assert world["material_available"] is expected
+        assert world["s46_interval"]["state_id"]
         assert session.verify()["ok"] is True
     finally:
         session.close()
@@ -267,5 +269,95 @@ def test_unknown_interval_is_not_a_negative_and_has_no_actor_effect(tmp_path):
         assert produced["segments"][0]["world"]["actual_action_event_id"] == ""
         assert session.world().actor_state["A"]["material_remaining"] == before
         assert session.verify()["ok"] is True
+    finally:
+        session.close()
+
+
+def test_blocked_mode_has_no_actor_attempt_or_material_effect(tmp_path):
+    state = tmp_path / "blocked"
+    session = _start(state)
+    try:
+        before = session.world().actor_state["A"]["material_remaining"]
+        domain = make_domain(
+            mode="BLOCKED", start=session.clock(), end=session.clock() + 2
+        )
+        produced = session.produce_interval(domain)
+        assert produced["status"] == "NOT_PERFORMED"
+        assert produced["segments"][0]["attempt"]["attempt"] == "BLOCKED"
+        assert produced["segments"][0]["world"]["status"] == "NOT_PERFORMED"
+        assert produced["segments"][0]["world"]["actual_action_event_id"] == ""
+        assert produced["coverage"] == []
+        assert session.world().actor_state["A"]["material_remaining"] == before
+        assert session.verify()["ok"] is True
+    finally:
+        session.close()
+
+
+def test_interval_condition_revocation_refuses_then_restores_s42_path(tmp_path):
+    state = tmp_path / "condition-revoke"
+    session = _start(state)
+    try:
+        domain = make_domain(
+            mode="ACTUAL", start=session.clock(), end=session.clock() + 4
+        )
+        produced = session.produce_interval(domain)
+        state_id = produced["state_id"]
+        first = session.read_events()[0]
+        session.revoke_interval_condition(state_id, reason="TEST_ONLY_CUT")
+        with pytest.raises(S46Refusal) as exc:
+            session.admit_event(
+                case=case_for(True), source=source_for(case_for(True)),
+                history_event_refs=(first["e1_event_id"],),
+                event_time=session.clock() + 1,
+            )
+        assert exc.value.code == "S46_INTERVAL_CONDITION_REVOKED"
+        session.restore_interval_condition(state_id, reason="TEST_ONLY_RESTORE")
+        result = session.admit_event(
+            case=case_for(True), source=source_for(case_for(True)),
+            history_event_refs=(first["e1_event_id"],),
+            event_time=session.clock() + 1,
+        )
+        assert result["status"] == "OK"
+        world = binding_episodes(session)[-1]["generation"]["world_prerequisites"]
+        assert world["s46_interval"]["state_id"] == state_id
+        assert session.verify()["ok"] is True
+    finally:
+        session.close()
+
+
+@pytest.mark.parametrize("mode", ["domain", "span", "coverage", "status"])
+def test_rehashed_domain_span_coverage_status_tamper_is_rejected(tmp_path, mode):
+    from candidate import digest
+    from s46.session import S46Refusal
+
+    state = tmp_path / f"tamper-{mode}"
+    session = _start(state)
+    try:
+        real = session.produce_interval(
+            make_domain(mode="ACTUAL", start=session.clock(), end=session.clock() + 4)
+        )
+        forged = deepcopy(real)
+        if mode == "domain":
+            forged["domain_hash"] = "0" * 64
+        elif mode == "span":
+            forged["segments"][0]["end"] += 1
+        elif mode == "coverage":
+            forged["segments"][0]["coverage"] = [[
+                forged["segments"][0]["start"], forged["segments"][0]["end"]
+            ]]
+        elif mode == "status":
+            forged["segments"][0]["status"] = "BOGUS"
+        forged["state_id"] = "S46_STATE_" + digest({
+            "domain": forged["domain_hash"],
+            "segments": forged["segments"],
+            "root": forged["root_hash"],
+        })[:24].upper()
+        forged["receipt_hash"] = digest({
+            key: value for key, value in forged.items()
+            if key not in {"receipt_hash", "episode_id", "clock"}
+        })
+        with pytest.raises(S46Refusal):
+            session.validate_interval_state(forged)
+        assert session.read_interval_states()[-1]["status"] == real["status"]
     finally:
         session.close()

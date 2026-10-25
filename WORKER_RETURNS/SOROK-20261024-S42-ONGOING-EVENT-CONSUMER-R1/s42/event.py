@@ -50,6 +50,11 @@ def _current_snapshot(session, predecessor: Mapping[str, Any],
     return template
 
 
+def _world_prerequisites(session):
+    hook = getattr(session, "_world_prerequisites", None)
+    return hook() if callable(hook) else world_prerequisites(session)
+
+
 def build_ongoing_occurrence(
     session,
     *,
@@ -80,7 +85,7 @@ def build_ongoing_occurrence(
     world.update({
         "material_ref": second_source["b_event_ref"],
         "material_receipt_id": second_source["b_event_hash"],
-        "tool_available": world_prerequisites(session)["tool_available"],
+        "tool_available": _world_prerequisites(session)["tool_available"],
         "material_remaining": state.get("material_remaining"),
         "predecessor_e1_ref": predecessor["e1_event_id"],
         "predecessor_e1_event_hash": predecessor["e1_event_hash"],
@@ -116,7 +121,7 @@ def build_ongoing_occurrence(
         } for row in history_bindings],
         "source_operation": second_source["b_operation"],
         "current_world_clock": session.clock(),
-        "tool_available": world_prerequisites(session)["tool_available"],
+        "tool_available": _world_prerequisites(session)["tool_available"],
         "material_remaining": state.get("material_remaining"),
         "actor_state_hash": digest(state),
     }

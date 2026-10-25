@@ -127,6 +127,8 @@ def make_domain(*, mode: str, start: int, end: int,
         "policy_version": POLICY_VERSION,
         "source_rule_ref": SOURCE_RULE_REF,
         "resolution": "BOUNDED_PERIOD_STATE",
+        "coverage_rule": "ONE_INSTANTANEOUS_ACTION_COVERS_ONE_TIME_UNIT_ACTION_SPAN",
+        "action_span_units": 1,
     }
     return seal({**body, "domain_hash": digest(body)})
 
@@ -146,6 +148,21 @@ def validate_domain(domain: dict) -> dict:
         raise S46Refusal("S46_POLICY_OR_RULE_MISMATCH")
     if domain.get("mode") not in MODES:
         raise S46Refusal("S46_MODE_INVALID")
+    if domain.get("domain_id") != "S46_DOMAIN_" + str(domain.get("mode")):
+        raise S46Refusal("S46_DOMAIN_ID_MISMATCH")
+    if domain.get("source_rule_ref") != SOURCE_RULE_REF:
+        raise S46Refusal("S46_DOMAIN_SOURCE_RULE_MISMATCH")
+    if domain.get("coverage_rule") != (
+        "ONE_INSTANTANEOUS_ACTION_COVERS_ONE_TIME_UNIT_ACTION_SPAN"
+    ) or domain.get("action_span_units") != 1:
+        raise S46Refusal("S46_COVERAGE_RULE_MISMATCH")
+    stored_hash = domain.get("domain_hash", "")
+    body = {
+        key: value for key, value in domain.items()
+        if key not in {"domain_hash", "hash"}
+    }
+    if not stored_hash or digest(body) != stored_hash:
+        raise S46Refusal("S46_DOMAIN_HASH_MISMATCH")
     if not domain.get("actor_id") or not domain.get("branch_id"):
         raise S46Refusal("S46_ACTOR_OR_BRANCH_MISSING")
     if not isinstance(domain.get("segments"), (list, tuple)) or not domain["segments"]:

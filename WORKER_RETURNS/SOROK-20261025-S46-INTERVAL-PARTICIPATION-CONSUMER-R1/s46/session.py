@@ -8,6 +8,8 @@ install()
 from s41.event import world_prerequisites  # noqa: E402
 from s45.session import S45Session  # noqa: E402
 
+from .errors import S46Refusal  # noqa: E402
+
 from .producer import (
     STATE_GRADE,
     STATE_KIND,
@@ -18,6 +20,8 @@ from .producer import (
 )
 
 S46_SCHEMA = "SOROK_S46_INTERVAL_PARTICIPATION_SESSION@1"
+CONDITION_REVOKED_KIND = "S46_INTERVAL_CONDITION_REVOKED"
+CONDITION_RESTORED_KIND = "S46_INTERVAL_CONDITION_RESTORED"
 
 
 class S46Session(S45Session):
@@ -40,8 +44,85 @@ class S46Session(S45Session):
         ]
         return rows[-1] if rows else None
 
+    def _condition_revoked(self, state_id: str) -> bool:
+        rows = [
+            row for row in self.product.store.episodes(self.branch_id)
+            if row.get("kind") in {
+                CONDITION_REVOKED_KIND, CONDITION_RESTORED_KIND,
+            }
+            and (row.get("body") or {}).get("state_id") == state_id
+        ]
+        if not rows:
+            return False
+        return rows[-1].get("kind") == CONDITION_REVOKED_KIND
+
+    def revoke_interval_condition(self, state_id: str, *,
+                                  reason: str = "TEST_ONLY_REVOCATION") -> dict:
+        state = self.read_interval_states()
+        if not any(row.get("state_id") == state_id for row in state):
+            raise S46Refusal("S46_INTERVAL_STATE_UNKNOWN", state_id)
+        body = {
+            "schema": "S46_INTERVAL_CONDITION_CHANGE@1",
+            "state_id": state_id,
+            "branch_id": self.branch_id,
+            "reason": reason,
+            "clock": self.clock(),
+            "product_model_calls": 0,
+        }
+        episode = self.product._append_episode(
+            self.branch_id, "A", CONDITION_REVOKED_KIND,
+            self.clock(), body,
+        )
+        self.product._checkpoint(self.branch_id, self.clock(), self.world())
+        return {**body, "episode_id": episode["episode_id"]}
+
+    def restore_interval_condition(self, state_id: str, *,
+                                   reason: str = "TEST_ONLY_RESTORE") -> dict:
+        body = {
+            "schema": "S46_INTERVAL_CONDITION_CHANGE@1",
+            "state_id": state_id,
+            "branch_id": self.branch_id,
+            "reason": reason,
+            "clock": self.clock(),
+            "product_model_calls": 0,
+        }
+        episode = self.product._append_episode(
+            self.branch_id, "A", CONDITION_RESTORED_KIND,
+            self.clock(), body,
+        )
+        self.product._checkpoint(self.branch_id, self.clock(), self.world())
+        return {**body, "episode_id": episode["episode_id"]}
+
+    def _world_prerequisites(self) -> dict:
+        base = world_prerequisites(self)
+        states = self.read_interval_states()
+        current = [
+            row for row in states if row.get("currentness") == "CURRENT"
+        ]
+        if not current:
+            return base
+        state = current[-1]
+        if self._condition_revoked(state["state_id"]):
+            raise S46Refusal("S46_INTERVAL_CONDITION_REVOKED", state["state_id"])
+        latest_segment = state.get("segments", [])[-1] if state.get("segments") else {}
+        after = (latest_segment.get("world") or {}).get("state_after") or {}
+        return {
+            **base,
+            "s46_interval": {
+                "state_id": state["state_id"],
+                "status": state["status"],
+                "coverage": state["coverage"],
+                "currentness": state["currentness"],
+                "receipt_hash": state["receipt_hash"],
+                "condition_revoked": False,
+                "material_after_interval": bool(after.get("material_remaining", 0)),
+                "free_hours_after_interval": bool(after.get("free_hours", 0)),
+                "tools_after_interval": int(after.get("tools_remaining", 0)),
+            },
+        }
+
     def world_prerequisites(self) -> dict:
-        return world_prerequisites(self)
+        return self._world_prerequisites()
 
     def verify(self) -> dict:
         result = super().verify()
