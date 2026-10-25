@@ -1,3 +1,10 @@
+# R109 — automatic intake resumed; independent review running
+
+Existing ten-minute exact-HQ heartbeat ACTIVE by user request. R107 terminal candidate custody verified:11 report hashes,2 code blobs,allowed changes,direct remote. Existing distinct OpenCode MAX reviewer actually launched; tool preflight pending. No acceptance or scope expansion. Current Astra C8 / R06 trajectory and all source/science/actor/CI/prod/N11/N12/Sorok holds retained.
+
+
+## Earlier progress history retained
+
 # R108 — return to economical coordination
 
 Completed executive work; user-directed same-HQ thinking=low desktop request dispatched once with prior reservation. Tool success is recorded; actual Low next-turn metadata remains pending. Active goal and recurring instructions now follow existing Astra authority and current R107 bounded work without recurring historical example anchors. Immutable history preserved. Goal and heartbeat remain paused.
