@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261025-PYAT-HQ-R112-HIGH-P41-SUCCESSOR-DECISION-R1",
-  "handoff_commit": "75dc718254ea0c4883bf34ba148781b28d78458c",
+  "checkpoint_id": "20261025-PYAT-HQ-R113-ACTUAL-LOW-PARALLEL-FLIGHT-R1",
+  "handoff_commit": "966eb5389f6591c5bcb8306074f42ef20ed63376",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R112-HIGH-P41-SUCCESSOR-DECISION-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R112-HIGH-P41-SUCCESSOR-DECISION-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R112-HIGH-P41-SUCCESSOR-DECISION-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R113-ACTUAL-LOW-PARALLEL-FLIGHT-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R113-ACTUAL-LOW-PARALLEL-FLIGHT-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R113-ACTUAL-LOW-PARALLEL-FLIGHT-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "75dc718254ea0c4883bf34ba148781b28d78458c",
+  "canonical_control_base": "966eb5389f6591c5bcb8306074f42ef20ed63376",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "75dc718254ea0c4883bf34ba148781b28d78458c",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R112-HIGH-P41-SUCCESSOR-DECISION-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R112-HIGH-P41-SUCCESSOR-DECISION-R1/CURRENT.md",
+  "qualified_working_hq_commit": "966eb5389f6591c5bcb8306074f42ef20ed63376",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R113-ACTUAL-LOW-PARALLEL-FLIGHT-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R113-ACTUAL-LOW-PARALLEL-FLIGHT-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 112,
-    "canonical_report_commit": "75dc718254ea0c4883bf34ba148781b28d78458c",
+    "revision": 113,
+    "canonical_report_commit": "966eb5389f6591c5bcb8306074f42ef20ed63376",
     "counterpart": "Sorok rev34 independent; no Pyat actor grant"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261025-PYAT-HQ-R111-REVIEW-AND-P41-DECISION-R1",
-    "handoff_commit": "eddb9b785aa8b7594f7b1a1cbe2b434df707c9bf"
+    "checkpoint_id": "20261025-PYAT-HQ-R112-HIGH-P41-SUCCESSOR-DECISION-R1",
+    "handoff_commit": "75dc718254ea0c4883bf34ba148781b28d78458c"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "After actual Low metadata verification, dispatch sealed R112 successor commission once to existing idle author from frozen R110; R111 reviewer continues independently. Intake both returns and reconcile before combined acceptance.",
-  "worker_state_truth": "R111 reviewer last observed live PID81619; R110 author terminal; R112 NOT_LAUNCHED.",
+  "next_action": "Automatic intake of R111 distinct repair review and R112 successor author, independent frozen worktrees. Reconcile demonstrated upstream findings before combined successor review/acceptance. No duplicate effects or scope narrowing.",
+  "worker_state_truth": "R112 existing author actually launched; R111 reviewer last observed live; no duplicate session or worktree.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -367,6 +367,22 @@
       "actual_tool_preflight": "PENDING",
       "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5/.r61/r111-r06-binding-review",
       "return_root": "WORKER_RETURNS/PYAT-R111-R06-BINDING-REPAIR-REVIEW-R1"
+    },
+    {
+      "id": "R112_WORLD_CONSUMING_SUCCESSOR_AUTHOR",
+      "pid": 86415,
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
+      "branch": "agent/opencode-pyat-r112-r06-world-consuming-successor-r1",
+      "startup": "359ffcef4c2dbde0bea7233bdb8901e8ed28e9be",
+      "commission_tip": "4b31a6f8e1281fe988bfd980b3f51de6250a0742",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R112-R06-WORLD-CONSUMING-SUCCESSOR-R1/00_COMMISSION.md",
+      "state": "ACTUALLY_LAUNCHED_OPENCODE_MAX",
+      "actual_tool_preflight": "PENDING",
+      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r112-world-consuming-successor",
+      "return_root": "WORKER_RETURNS/PYAT-R112-R06-WORLD-CONSUMING-SUCCESSOR-R1",
+      "parent": "Astra C8 / N10W / AT33 / R06",
+      "review_dependency": "R111 independently qualifies frozen three-repair upstream; reconcile findings before combined acceptance"
     }
   ],
   "r61_launch_evidence": "ae63a8c2da620d850cc974eb43c3e396abec30cb",
@@ -378,7 +394,7 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "4b31a6f8e1281fe988bfd980b3f51de6250a0742",
+  "current_development_evidence": "5ad63ef2921cafb27795d5029e3eaa86523347be",
   "new_R87_operative_grants": false,
   "secondary_hq_status": "USER_APPOINTED_BROWSER_SECONDARY__PRIMARY_CODEX_NOT_REVOKED"
 }
