@@ -95,5 +95,7 @@ declared fixture is unexpanded. Broader estate incompleteness is retained as
 proof limitation, not treated as a new software defect.
 
 No candidate edit, self-adoption, new worker/provider, source read, new
-science/authority or broader court was performed. The branch is pushed
-non-force and directly read back; final remote SHA is reported separately.
+science/authority or broader court was performed. The branch was pushed non-force. Evidence commit
+`15d5fb2f129dc6c7ca20a44b74269338835b01fb` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also directly verified and reported to the coordinator.

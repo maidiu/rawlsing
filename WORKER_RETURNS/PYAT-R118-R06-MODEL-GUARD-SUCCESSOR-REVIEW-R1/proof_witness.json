@@ -3,8 +3,8 @@
   "author_code": "3e8275cf45820f82c27da8f729e838b78d68bb20",
   "author_code_blobs": {
     "rawlsing_next/pre553_universal_world_binding.py": "dfb1e9fb72f1ee4b50fd7138fe978ce50db49f37",
-    "rawlsing_next/tests/test_universal_world_binding.py": "ae7f7bad72ac6118ab8f07c9ba19b22ea933950b",
     "rawlsing_next/pre553_world_conditioned_progressive_service.py": "db573027a2416f1b43f2bc47d6f2e3b9d5cd3b31",
+    "rawlsing_next/tests/test_universal_world_binding.py": "ae7f7bad72ac6118ab8f07c9ba19b22ea933950b",
     "rawlsing_next/tests/test_world_conditioned_progressive_service.py": "c46af4acb61e08fe70eccb78af055120a8b9a4b0"
   },
   "commission": "dc0c1e478f36477d1eb9abff7bac703473c18bb0",
@@ -13,8 +13,12 @@
     "python": "3.11.3",
     "reviewer": "existing distinct OpenCode Go DeepSeek V4.1 Flash MAX Global session"
   },
-  "evidence_commit": "",
-  "evidence_commit_remote_readback": {},
+  "evidence_commit": "15d5fb2f129dc6c7ca20a44b74269338835b01fb",
+  "evidence_commit_remote_readback": {
+    "candidate_remote_sha": "849a76de18ef627c3c403b426ebe70f0951a7e7b",
+    "file": "evidence/remote_readback.txt",
+    "remote_sha": "15d5fb2f129dc6c7ca20a44b74269338835b01fb"
+  },
   "expectations_freeze_commit": "cc59db25d",
   "expectations_sha256": "d2acd3592c32146ae549123044a0ac0a34a0f799589f4b33b1e6f9575b668726",
   "findings": {
@@ -43,7 +47,7 @@
       "junit": "replay/author_suite_junit.xml",
       "passed": 34,
       "skipped": 0,
-      "time_seconds": 183.430
+      "time_seconds": 183.43
     },
     "cold_replay": {
       "log": "replay/cold_replay.log",
