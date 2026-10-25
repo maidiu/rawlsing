@@ -1,0 +1,25 @@
+{
+  "call_failure": {
+    "actual_provider_call": false,
+    "event_ref": "",
+    "events_after": 1,
+    "events_before": 1,
+    "fixture_call_count": 0,
+    "reason": "S48_PRODUCT_CALL_FAILED",
+    "status": "CALL_FAILED",
+    "verify_ok": true
+  },
+  "note": "Controlled non-provider fixtures; actual call is entrypoint.json.",
+  "schema": "SOROK_S48_CONTROLLED_BRANCHES@1",
+  "sci05_hold": {
+    "actual_provider_call": false,
+    "event_ref": "",
+    "events_after": 1,
+    "events_before": 1,
+    "fixture_call_count": 1,
+    "reason": "S48_SCI05_HOLD_NO_COMPETENT_INTERNAL_ACT_OWNER",
+    "sci05_hold": true,
+    "status": "SCI05_HOLD",
+    "verify_ok": true
+  }
+}
