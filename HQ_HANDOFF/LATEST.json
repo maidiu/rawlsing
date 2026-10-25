@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261025-PYAT-HQ-R114-SCOPED-REVIEW-INTAKE-R1",
-  "handoff_commit": "4bfb17fc886bd506b6841103617734ecb9612e8b",
+  "checkpoint_id": "20261025-PYAT-HQ-R115-IDENTITY-COMPLETION-FLIGHT-R1",
+  "handoff_commit": "202ac89610275699f07199cb245865c3a04cca93",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R114-SCOPED-REVIEW-INTAKE-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R114-SCOPED-REVIEW-INTAKE-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R114-SCOPED-REVIEW-INTAKE-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R115-IDENTITY-COMPLETION-FLIGHT-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R115-IDENTITY-COMPLETION-FLIGHT-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R115-IDENTITY-COMPLETION-FLIGHT-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "4bfb17fc886bd506b6841103617734ecb9612e8b",
+  "canonical_control_base": "202ac89610275699f07199cb245865c3a04cca93",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "4bfb17fc886bd506b6841103617734ecb9612e8b",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R114-SCOPED-REVIEW-INTAKE-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R114-SCOPED-REVIEW-INTAKE-R1/CURRENT.md",
+  "qualified_working_hq_commit": "202ac89610275699f07199cb245865c3a04cca93",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R115-IDENTITY-COMPLETION-FLIGHT-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R115-IDENTITY-COMPLETION-FLIGHT-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 114,
-    "canonical_report_commit": "4bfb17fc886bd506b6841103617734ecb9612e8b",
+    "revision": 115,
+    "canonical_report_commit": "202ac89610275699f07199cb245865c3a04cca93",
     "counterpart": "Sorok rev34 independent; no Pyat actor grant"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261025-PYAT-HQ-R113-ACTUAL-LOW-PARALLEL-FLIGHT-R1",
-    "handoff_commit": "966eb5389f6591c5bcb8306074f42ef20ed63376"
+    "checkpoint_id": "20261025-PYAT-HQ-R114-SCOPED-REVIEW-INTAKE-R1",
+    "handoff_commit": "4bfb17fc886bd506b6841103617734ecb9612e8b"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "Intake existing R112 author terminal return. Reconcile exact R114/R111 rows+repository identity defects before combined independent review/acceptance; resume same author only if unaddressed. Preserve scoped accepted revocation/evaluator fixes. No duplicate writer.",
-  "worker_state_truth": "R111 reviewer terminal; existing R112 author last observed live; R114 follow-up queued NOT_DISPATCHED.",
+  "next_action": "Intake R115 exact identity repair over preserved R112 world-consuming successor, then distinct existing combined review. No full R06 acceptance from author passes; no source/actor/production expansion.",
+  "worker_state_truth": "R112 author terminal; R115 same author actually resumed; reviewer terminal, no duplicate generation.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -356,20 +356,19 @@
   },
   "r61_actual_workers": [
     {
-      "id": "R112_WORLD_CONSUMING_SUCCESSOR_AUTHOR",
-      "pid": 86415,
+      "id": "R115_R06_IDENTITY_COMPLETION_AUTHOR",
+      "pid": 97561,
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
       "branch": "agent/opencode-pyat-r112-r06-world-consuming-successor-r1",
-      "startup": "359ffcef4c2dbde0bea7233bdb8901e8ed28e9be",
-      "commission_tip": "4b31a6f8e1281fe988bfd980b3f51de6250a0742",
-      "commission_path": "WORKER_COMMISSIONS/PYAT-R112-R06-WORLD-CONSUMING-SUCCESSOR-R1/00_COMMISSION.md",
+      "startup": "79e73d0a4188bd413211d7cc54aa5507daa4a811",
+      "commission_tip": "eac1432e69def6dfd72e5e35abb0559cd5221700",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R112-R06-WORLD-CONSUMING-SUCCESSOR-R1/01_R114_IDENTITY_FOLLOWUP.md",
       "state": "ACTUALLY_LAUNCHED_OPENCODE_MAX",
       "actual_tool_preflight": "PENDING",
-      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r112-world-consuming-successor",
-      "return_root": "WORKER_RETURNS/PYAT-R112-R06-WORLD-CONSUMING-SUCCESSOR-R1",
-      "parent": "Astra C8 / N10W / AT33 / R06",
-      "review_dependency": "R111 independently qualifies frozen three-repair upstream; reconcile findings before combined acceptance"
+      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r115-identity-completion",
+      "return_root": "WORKER_RETURNS/PYAT-R115-R06-IDENTITY-COMPLETION-R1",
+      "prompt": "R115: Execute exact previously queued follow-up git show eac1432e69def6dfd72e5e35abb0559cd5221700:WORKER_COMMISSIONS/PYAT-R112-R06-WORLD-CONSUMING-SUCCESSOR-R1/01_R114_IDENTITY_FOLLOWUP.md. Same final R112 branch agent/opencode-pyat-r112-r06-world-consuming-successor-r1 at exact startup 79e73d0a4188bd413211d7cc54aa5507daa4a811. Current successor is preserved, not accepted. R111 review ab578a9dc1c788847d0328976fe418948a44e7ac has three actual identity failures: rows_hash alteration, omitted world repo, mixed prefix repo. Fix these using actual retained source/rows/repository identity, not two caller-supplied hashes or fixture allowlists. Code writes only rawlsing_next/pre553_universal_world_binding.py and rawlsing_next/tests/test_universal_world_binding.py for this repair; other R112 new owner/test read-only, preserve native world+prefix consumer functionality. Own return root WORKER_RETURNS/PYAT-R115-R06-IDENTITY-COMPLETION-R1/ only; do not edit earlier returns. Reuse exact R111 successor probes and R109 probes plus existing native successor suite proportionately; no broader redesign or scope expansion. First actual TOOL verifies cwd/branch/HEAD. Same existing author, no new worker/provider. Bank45min/stop90min, coherent commit/nonforcepush/directremote, self-excluding SHA256+bytes manifest/code pins, actual tests/RESUME/limits. Distinct review follows terminal combined candidate."
     }
   ],
   "r61_launch_evidence": "ae63a8c2da620d850cc974eb43c3e396abec30cb",
@@ -381,7 +380,7 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "eac1432e69def6dfd72e5e35abb0559cd5221700",
+  "current_development_evidence": "dffc10d22ca2f3258906c76f5c288cec4ec88dc9",
   "new_R87_operative_grants": false,
   "secondary_hq_status": "USER_APPOINTED_BROWSER_SECONDARY__PRIMARY_CODEX_NOT_REVOKED"
 }
