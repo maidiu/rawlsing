@@ -1,4 +1,6 @@
-# Pyat PRE-V3 completion trajectory — controlling operating guide
+> **R103 standing:** Preserve the valid finer notes below. They do not replace the existing Astra PROGRAM, N0–N13 DAG, C1–C11 commissions, F1–F8/EE/LongMemory obligations or AT01–AT35 acceptance. Read R103_ASTRA_PARENT_ALIGNMENT.md/json for exact parent mappings and broader-scope corrections. T-labels are auxiliary groupings only; Wake-1–Wake-8 are the parent wake criterion bullets, not Astra C-commissions. No new program or scientific authority is created.
+
+# R102 finer execution notes — subordinate to the existing Astra program
 
 **Version:** R102, 2026-10-25. **Prepared on verified Sol High** following user's explicit requirement for a correct, continually reanchored path guiding Sol Light. This is an operational reconciliation of established law and the user's clarified purpose, not a replacement architecture, new scientific method, source grant or actor wake.
 
@@ -9,14 +11,14 @@ PRE-V3 completion requires the inherited eight conditions together, at the decla
 
 | Endpoint condition | Positive evidence required at applicable scope | False substitute forbidden |
 |---|---|---|
-| C1 Declared breadth | All35waves and required families accounted, finite issued scientific scope and honest residuals | Familiarcanary or arbitrarycutdown treated as wholeestate |
-| C2 F1–F4 empirical composition | Consumer-visible distributions, bidirectional conditionals, recursive alternatives and same-unit configurations retain support/uncertainty/rolemeaning | Handwrittencloud, scalaraverage, selectedfixturestandingforfrontier |
-| C3 F5 substantive world content | Actual warranted actor-independent relations/context/position products plus lawfulrefusals, serving the socialworldpurpose | Signaturescreatingmeaning; mechanismproofrequiredforallattitudes; refusal-onlyworld |
-| C4 F6/F7 composition | Positive source-separatedmulti-field and observedtemporal cases wherever claimed, exacttarget/transport/comparability | Inventedcrosssurveyrespondents; clock-onlyor syntheticoriginalchange |
-| C5 Encounterable ontology | Requiredposition/context/opportunities/constraints actuallyserved; mechanism/consequencepaths onlywhenfunctiondemands | Mandatoryhistoricalstagechain or forcedV555for everyrelation |
-| C6 F8 progressive usability | Lawful additionalposition/condition updates actualplausibleconfigurations, retaining minority/counterpatterns/uncertainty | Providerlabel,echoedreceipt,changedhashwithoutconsumercontent |
-| C7 Operational integrity | Exactrelease/source/risk/currentasof/permissions/dependency/replay and independenttrustworthyexecution atclaimsgrade | Authorpassasacceptance; localtrustedhostasprotecteddeployment |
-| C8 Actor firewall and handoff | StablegovernedPRE-V3output/interface with claimlimits for separatelygovernedSorok/personawork | Populationfact→fixedpersonstate or automaticN12/V3wake |
+| Wake-1 Declared breadth | All35waves and required families accounted, finite issued scientific scope and honest residuals | Familiarcanary or arbitrarycutdown treated as wholeestate |
+| Wake-2 F1–F4 empirical composition | Consumer-visible distributions, bidirectional conditionals, recursive alternatives and same-unit configurations retain support/uncertainty/rolemeaning | Handwrittencloud, scalaraverage, selectedfixturestandingforfrontier |
+| Wake-3 F5 substantive world content | Actual warranted actor-independent relations/context/position products plus lawfulrefusals, serving the socialworldpurpose | Signaturescreatingmeaning; mechanismproofrequiredforallattitudes; refusal-onlyworld |
+| Wake-4 F6/F7 composition | Positive source-separatedmulti-field and observedtemporal cases wherever claimed, exacttarget/transport/comparability | Inventedcrosssurveyrespondents; clock-onlyor syntheticoriginalchange |
+| Wake-5 Encounterable ontology | Requiredposition/context/opportunities/constraints actuallyserved; mechanism/consequencepaths onlywhenfunctiondemands | Mandatoryhistoricalstagechain or forcedV555for everyrelation |
+| Wake-6 F8 progressive usability | Lawful additionalposition/condition updates actualplausibleconfigurations, retaining minority/counterpatterns/uncertainty | Providerlabel,echoedreceipt,changedhashwithoutconsumercontent |
+| Wake-7 Operational integrity | Exactrelease/source/risk/currentasof/permissions/dependency/replay and independenttrustworthyexecution atclaimsgrade | Authorpassasacceptance; localtrustedhostasprotecteddeployment |
+| Wake-8 Actor firewall and handoff | StablegovernedPRE-V3output/interface with claimlimits for separatelygovernedSorok/personawork | Populationfact→fixedpersonstate or automaticN12/V3wake |
 
 Final independentR07/N11assessment must reconcile these conditions with the per-wave/global evidence and adopted operational integration. No numberoftests/commits/courts can replace this endpoint.
 
@@ -27,17 +29,17 @@ The producerDAG remains source/meaning→RouteB/C11→nativequery/discovery→em
 |---|---|---|---|
 | T1 Generic empirical production | R01frontier,R02projection,R03nativeexecution,R04byte/joinedcustody,R08association; acceptedlocal | Full commissioned source/role/operation-class composition and reuse at actualrequiredscopes | Source-specific releases feed establishedowners; do not rebuildacceptedcomponents |
 | T2 Position-conditioned possibility products | R05actualnativegraph/analytical/learnedlifecycle→N10E; existing PositionedSubjectPossibilityQuery/provider/extension | Source-qualified positionalconditioning→multivariateattitude/dispositionpossibilities with actualprogressiveuse, support/root-parent/minority/uncertainty; reusableacrossrequiredshapes | T1+exactsource/role/science; mayproceedwithoutR09deployment underdeclaredlocalgrade |
-| T3 World/FF integration | R06source-separatedlocalworldconsumer; FFadmission/publication and W41/F43/P41capital | Applicable C3/C5 meaning and actualworldreceivinguse joined withT2, atrealrequiredscope | Reusealreadyqualifiedrelations/context; noforcecausalmechanismorV555; missingmeaningbecomesspecificsynthesis/decision |
+| T3 World/FF integration | R06source-separatedlocalworldconsumer; FFadmission/publication and W41/F43/P41capital | Applicable Wake-3/Wake-5 meaning and actualworldreceivinguse joined withT2, atrealrequiredscope | Reusealreadyqualifiedrelations/context; noforcecausalmechanismorV555; missingmeaningbecomesspecificsynthesis/decision |
 | T4 Source breadth and global composition | CLOSED35identities, source-localLiTS/WVS/otherrecords, existingF6/F7methods | Allper-wavecells dispositionedwithactualevidenceatrequiredgrade; globalF6/F7/F8positivesandlimits; nofalsepooling | Independent source/classes progresswhenready; source-specificU/E_pre/access/design/risk exact; noall35simultaneousissuance requirement |
 | T5 Independent execution/integration | R00policy/localgate,R09observeddefects/brokerdirection | Qualifiedprotectednativecapture; adoptedcoherentintegration; separatelyauthorizedrequiredcheckswhereclaimed | R09hostdecisionindependentofsource/documentary/localdevelopment; adminscopeexplicit |
-| T6 PRE-V3 acceptance/handoff | ExistingN11method/obligationledger and Sorokinterfacecapital | IndependentR07/N11coversC1–C8 acrossfullrequiredscope; governedoutputhandoffcharacterized | ConsumesqualifiedT1–T5andcurrentgrants; N12remainsseparate |
+| T6 PRE-V3 acceptance/handoff | ExistingN11method/obligationledger and Sorokinterfacecapital | IndependentR07/N11coversC1–Wake-8 acrossfullrequiredscope; governedoutputhandoffcharacterized | ConsumesqualifiedT1–T5andcurrentgrants; N12remainsseparate |
 
-R00–R09 are repair responsibilities within this path, not an alternative product. Their ACCEPT_SCOPED_LOCAL states are engineering capital, not full source-qualified C1–C8 completion. T2/T3 semantic/scientific treatment is performed by theproject's HQ/modelarrangement; human is not askedtofindexternalomniscientissuers or certifycode. Research/synthesis produces supportedproposals; genuinelyconsequentialchoices go tothehuman with alternatives/recommendation.
+R00–R09 are repair responsibilities within this path, not an alternative product. Their ACCEPT_SCOPED_LOCAL states are engineering capital, not full source-qualified Wake-1–Wake-8 completion. T2/T3 semantic/scientific treatment is performed by theproject's HQ/modelarrangement; human is not askedtofindexternalomniscientissuers or certifycode. Research/synthesis produces supportedproposals; genuinelyconsequentialchoices go tothehuman with alternatives/recommendation.
 
 ## 3. Current position and next justified edge
 At R102: genericrepairT1 and R05/R06localcompositions exist atreviewedtestscope. Fullsource-qualifiedT2–T4 and T5protectedcapture/integration are incomplete; T6NOT_READY. R100Q86work is heldforproductfit. It cannot redefine this program.
 
-**Current primary edge:** source-qualified position→conditioned possibilitycloud using the existing positioned-subject APIs and exact alreadyretained empirical products where sufficient. Beforeconstruction, name the specific source/product/positionalroles and permittedoperationclass, its existingauthority/evidence, actualconsumer and precise remaininggap. This is a boundedsource/productrelease/integrationreconciliation using existingR98andsourcecapital, not anothergeneralinvestigation. Select by contributiontoC2/C3/C6 and unresolvedoperationclass, not ease/familiarity. No source/product has yet been selected as a scientifically best nextwitness by R101/R102. Do not silently substituteQ86.
+**Current primary edge:** source-qualified position→conditioned possibilitycloud using the existing positioned-subject APIs and exact alreadyretained empirical products where sufficient. Beforeconstruction, name the specific source/product/positionalroles and permittedoperationclass, its existingauthority/evidence, actualconsumer and precise remaininggap. This is a boundedsource/productrelease/integrationreconciliation using existingR98andsourcecapital, not anothergeneralinvestigation. Select by contributiontoC2/Wake-3/Wake-6 and unresolvedoperationclass, not ease/familiarity. No source/product has yet been selected as a scientifically best nextwitness by R101/R102. Do not silently substituteQ86.
 
 If existingcodealreadydoes thefunction, reuse and qualify it attherequiredscope; buildonlyademonstratedmissingfunction. If sourcepermission ismissing, present the exactsource/host/operationgrant; continueindependentauthorizededges. If scientificmeaningisunsettled, prepareboundedgroundedtreatment throughqualifiedBrowserHQ/retrievalarrangement as userdirected, not thisHQdoingthewholejob or animplementationauthorinventingit.
 
@@ -46,7 +48,7 @@ If existingcodealreadydoes thefunction, reuse and qualify it attherequiredscope;
 ## 4. How Light is guided — mandatory at meaningful work boundaries
 Before EACH newcommission, resumptionwithchangedscope, reviewcommission or acceptance, read:
 1. currentcanonicalHQ_HANDOFF/LATESTanditscurrentdecision/authoritydelta;
-2. thisguide (or unchangedverifiedversion) andcurrentRESUME/FLIGHT_BOARD operativefields;
+2. the existingAstra PROGRAM/DAG/relevantN-node and acceptance dossiers, followedby these subordinate notes (or unchangedverifiedversions) andcurrentRESUME/FLIGHT_BOARD operativefields;
 3. theexact relevant contract/grant and candidate/return evidence.
 Use hashes/exactrefs toavoid rereadingunchangedhistory. Reanchorwhen productmeaning, scope, sourceauthority, currentness, dependency, ownercontract or evidencegrade changes. Do notrepeatfullgrok orpollunchangedprocesses.
 
@@ -66,13 +68,13 @@ Compare return to its ORIGINAL trajectorybinding and commissionedpositive at mat
 Localgaps can beclosed withoutcallingwholemachinecomplete. Conversely, indefinitelyrepeatingcanaries/refusalaudits cannotstandinfor fullclasscoverage/sourcebreadth. Propernegativecontrolsprotectpositiveclaims; a searchforuniversalabsence is not thedefaultdevelopmentobjective.
 
 ## 6. Authority, change control and current hold
-Precedence: directuserclarifications/grants → applicableadoptedcontractsandlaterexplicitamendments → thisreconciliationguide → mutableflightboard/history. A concreteconflict is surfacedwith exactrefs; Lightcannot resolveit by silentlyrewritingthisguide. Substantiveguideamendment requiresHighgroundedcomparison and humanchoicewherepurposechanges. Ordinaryevidencestatusupdatesdo not.
+Precedence: directuserclarifications/grants → applicableadoptedcontractsandlaterexplicitamendments → existingAstra functionalprogram withlaterU53A/URoverlays → these subordinateexecutionnotes → mutableflightboard/history. A concreteconflict is surfacedwith exactrefs; Lightcannot resolveit by silentlyrewritingthisguide. Substantiveguideamendment requiresHighgroundedcomparison and humanchoicewherepurposechanges. Ordinaryevidencestatusupdatesdo not.
 
-CurrentR101executiveholdcontinues: no newcommission/acceptance/R100revieweruntilhumanhasreviewedthecorrectedtrajectory. Existingauthor maybankauthorizedwork. Heartbeatautomation currentlyPAUSED: preserveit. No goalreactivation or backgroundcontinuouspolling is authorized by thisguide. Once userauthorizesexecutionagain, Lightuses thisguide andfiniteexistingmachinery; itdoesnot choose a new program.
+CurrentR101executiveholdcontinues: no newcommission/acceptance/R100revieweruntilhumanhasreviewedthecorrectedtrajectory. Existingauthor maybankauthorizedwork. Heartbeatautomation currentlyPAUSED: preserveit. No goalreactivation or backgroundcontinuouspolling is authorized by thisguide. Once userauthorizesexecutionagain, Lightuses theexistingAstraprogramanditsapplicablefinerexecutionnotes; itdoesnot choose a new program.
 
 Source/originalscience/code/OS/CI/prod/N11/N12/Sorok/J52W52holds remain at theiractualscope. No hiddenpermission is issued here.
 
 ## 7. Why this guide is grounded, and its limits
-EndpointC1–C8 directly reconcile the acceptedatlas PRE-V3→V3wakecriterion. Productmeaning is R61userapprovedintent+R61Mprinciples+currenthumanstructuralpriorclarification. Repairs/dependencies are U53Aterminal18 and finalUR/M3, amendedbyactualR56–R100grants/acceptances. R98adds boundedrecovery, not a replacementstrategy. R101corrects HQframing, notscientificlaw. Exactsourcecrosswalk: PRE_V3_TRAJECTORY.json.
+EndpointC1–Wake-8 directly reconcile the acceptedatlas PRE-V3→V3wakecriterion. Productmeaning is R61userapprovedintent+R61Mprinciples+currenthumanstructuralpriorclarification. Repairs/dependencies are U53Aterminal18 and finalUR/M3, amendedbyactualR56–R100grants/acceptances. R98adds boundedrecovery, not a replacementstrategy. R101corrects HQframing, notscientificlaw. Exactsourcecrosswalk: PRE_V3_TRAJECTORY.json.
 
 This makes thepathcheckable; itdoesnotguarantee modelsnevererr, originalscienceisalreadysettled, or allremainingworkisalreadyimplemented. Suchclaims would befalse. Confidencecomes fromconservedrequirements, visibleevidencegrades, productfitchecksand boundeddecisionauthority, not assurancesor repetition.

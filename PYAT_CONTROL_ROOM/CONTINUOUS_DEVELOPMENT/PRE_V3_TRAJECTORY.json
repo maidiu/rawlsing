@@ -1,5 +1,5 @@
 {
-  "schema": "PYAT_PRE_V3_CONTROLLING_TRAJECTORY_V1",
+  "schema": "PYAT_PRE_V3_SUBORDINATE_EXECUTION_NOTES_V1",
   "version": "R102",
   "purpose_authority": [
     "Directuser structuralprior=position-conditionedattitudecloud/habitus/personageneration clarification inexistingHQ",
@@ -11,14 +11,14 @@
     "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/report/P_PRE_V3_V3_WAKE_CRITERION.md"
   },
   "endpoint_conditions": [
-    "C1",
-    "C2",
-    "C3",
-    "C4",
-    "C5",
-    "C6",
-    "C7",
-    "C8"
+    "Wake-1",
+    "Wake-2",
+    "Wake-3",
+    "Wake-4",
+    "Wake-5",
+    "Wake-6",
+    "Wake-7",
+    "Wake-8"
   ],
   "full_scope": {
     "waves": 35,
@@ -35,9 +35,9 @@
     {
       "id": "T1",
       "conditions": [
-        "C1",
-        "C2",
-        "C7"
+        "Wake-1",
+        "Wake-2",
+        "Wake-7"
       ],
       "repairs": [
         "R01",
@@ -52,8 +52,8 @@
     {
       "id": "T2",
       "conditions": [
-        "C2",
-        "C6"
+        "Wake-2",
+        "Wake-6"
       ],
       "repairs": [
         "R05"
@@ -63,9 +63,9 @@
     {
       "id": "T3",
       "conditions": [
-        "C3",
-        "C5",
-        "C6"
+        "Wake-3",
+        "Wake-5",
+        "Wake-6"
       ],
       "repairs": [
         "R06"
@@ -75,11 +75,11 @@
     {
       "id": "T4",
       "conditions": [
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C6"
+        "Wake-1",
+        "Wake-2",
+        "Wake-3",
+        "Wake-4",
+        "Wake-6"
       ],
       "repairs": [
         "R07_source_prerequisites"
@@ -89,7 +89,7 @@
     {
       "id": "T5",
       "conditions": [
-        "C7"
+        "Wake-7"
       ],
       "repairs": [
         "R00",
@@ -100,14 +100,14 @@
     {
       "id": "T6",
       "conditions": [
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8"
+        "Wake-1",
+        "Wake-2",
+        "Wake-3",
+        "Wake-4",
+        "Wake-5",
+        "Wake-6",
+        "Wake-7",
+        "Wake-8"
       ],
       "repairs": [
         "R07",
@@ -167,5 +167,9 @@
       "commit": "fb20c987947791f1606faca460bd194b2e9b017e",
       "path": "WORKER_RETURNS/ASTRA-UR-M3-FINAL-PACKAGE-ASSEMBLY-R1/01_NEXT_IMPLEMENTATION_FLIGHT.json"
     }
-  ]
+  ],
+  "standing": "R103_SUBORDINATE_TO_EXISTING_ASTRA_PARENT_NOT_REPLACEMENT",
+  "parent_alignment": "R103_ASTRA_PARENT_ALIGNMENT.json",
+  "labels_are_auxiliary_not_parent_nodes": true,
+  "legacy_label_correction": "R102.C1-C8 meant parentwakebullets, not Astra C1-C8 commissions"
 }
