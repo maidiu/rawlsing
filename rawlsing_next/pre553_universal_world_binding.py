@@ -7,6 +7,7 @@ no new evidence, geometry, pooling or temporal authority.
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import os
 import shutil
 import subprocess
@@ -15,10 +16,11 @@ import tarfile
 import tempfile
 from dataclasses import dataclass
 from pathlib import Path
+from types import SimpleNamespace
 from typing import Any, Mapping, Sequence
 
 from rawlsing_next.pre553_analytical_composition import compose_positioned_subject_possibility
-from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+from rawlsing_next.pre553_empirical_objects import ExactRef, canonicalize, semantic_hash
 
 
 P41_COMMIT = "f27d1101048638bba395143a48efb7ef00bfcda4"
@@ -954,4 +956,535 @@ def select_r05_world_view(request: R05WorldConsumerRequest) -> R05WorldSelectedV
         state="R05_WORLD_SELECTED_VIEW", reason_code="ACTUAL_R05_TO_P41_VIEW",
         field_ids=field_ids, consumer_values_read=values,
         view_hash=semantic_hash(values), temporal_changed=temporal_changed,
+    )
+
+
+# ---------------------------------------------------------------------------
+# R100 retained Afrobarometer R5 Q86 CONTEXT consumer.
+
+Q86_SOURCE_COMMIT = "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03"
+Q86_TRANSPORT_PATH = (
+    "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/"
+    "R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/"
+    "RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/"
+    "GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/"
+    "R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/"
+    "R4_E2A_RUNTIME_TRANSPORT_SEAL_R1/"
+    "R4A_CURRENT_GT2_EXECUTION_CONSTRUCTOR_COMPLETE_EXTRACTION_R2"
+)
+Q86_OWNER_PATH = "rawlsing_next/pre553_repo_native_current_payload.py"
+Q86_SOURCE_SHA256 = "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651"
+Q86_QUERY_SHA256 = "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0"
+Q86_FACT_SHA256 = "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46"
+Q86_RISK_SHA256 = "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"
+Q86_DENOMINATOR = 19_210
+Q86_ROLE_ORDER = ("Q86B", "Q86A")
+Q86_PURPOSE_CONTEXT = "SOCIAL_ATMOSPHERE_CONTEXT"
+Q86_PURPOSE_CONTROL = "ENGINEERING_CONTROL"
+
+
+@dataclass(frozen=True)
+class Q86ContextEvidence:
+    source: str
+    source_sha256: str
+    query_ref: ExactRef
+    fact_ref: ExactRef
+    conditioner_ref: ExactRef
+    target_ref: ExactRef
+    risk_ref: ExactRef
+    relation_ref: ExactRef
+    admission_ref: ExactRef
+    f1_ref: ExactRef
+    resolution_ref: ExactRef
+    role_order: tuple[str, str]
+    conditioner_domain: tuple[Any, ...]
+    target_domain: tuple[Any, ...]
+    cells: tuple[Mapping[str, Any], ...]
+    denominator: int
+    permission: str
+    operative_current: bool
+    temporal_grade: str
+    v554_rule_material: Mapping[str, Any]
+    payload: Mapping[str, Any]
+    content_hash: str
+
+    def material(self) -> Mapping[str, Any]:
+        return {
+            "source": self.source,
+            "source_sha256": self.source_sha256,
+            "query_ref": self.query_ref.as_dict(),
+            "fact_ref": self.fact_ref.as_dict(),
+            "conditioner_ref": self.conditioner_ref.as_dict(),
+            "target_ref": self.target_ref.as_dict(),
+            "risk_ref": self.risk_ref.as_dict(),
+            "relation_ref": self.relation_ref.as_dict(),
+            "admission_ref": self.admission_ref.as_dict(),
+            "f1_ref": self.f1_ref.as_dict(),
+            "resolution_ref": self.resolution_ref.as_dict(),
+            "role_order": list(self.role_order),
+            "conditioner_domain": list(self.conditioner_domain),
+            "target_domain": list(self.target_domain),
+            "cells": [canonicalize(cell) for cell in self.cells],
+            "denominator": self.denominator,
+            "permission": self.permission,
+            "operative_current": self.operative_current,
+            "temporal_grade": self.temporal_grade,
+            "v554_rule_material": canonicalize(self.v554_rule_material),
+            "payload": canonicalize(self.payload),
+        }
+
+
+@dataclass(frozen=True)
+class Q86ContextRequest:
+    evidence: Q86ContextEvidence
+    purpose: str = Q86_PURPOSE_CONTEXT
+    as_of_ref: str | None = None
+    engineering_counterfactual_cells: tuple[Mapping[str, Any], ...] | None = None
+
+
+@dataclass(frozen=True)
+class Q86ContextView:
+    state: str
+    reason_code: str
+    evidence_ref: ExactRef | None
+    context_cells: tuple[Mapping[str, Any], ...]
+    denominator: int
+    permission: str
+    p41_receipts: tuple[Mapping[str, Any], ...]
+    p41_receipt_hashes: tuple[str, ...]
+    structural_assertion: None
+    actor_state: str
+    nonoriginal: bool
+    view_hash: str
+    z_unresolved: bool = True
+
+    def material(self) -> Mapping[str, Any]:
+        return {
+            "state": self.state,
+            "reason_code": self.reason_code,
+            "evidence_ref": None if self.evidence_ref is None else self.evidence_ref.as_dict(),
+            "context_cells": [canonicalize(cell) for cell in self.context_cells],
+            "denominator": self.denominator,
+            "permission": self.permission,
+            "p41_receipts": [canonicalize(receipt) for receipt in self.p41_receipts],
+            "p41_receipt_hashes": list(self.p41_receipt_hashes),
+            "structural_assertion": None,
+            "actor_state": self.actor_state,
+            "nonoriginal": self.nonoriginal,
+            "view_hash": self.view_hash,
+            "z_unresolved": self.z_unresolved,
+        }
+
+
+def _q86_exact(value: Any) -> ExactRef:
+    if isinstance(value, ExactRef):
+        return value
+    if hasattr(value, "as_dict"):
+        return ExactRef(**dict(value.as_dict()))
+    if isinstance(value, Mapping):
+        return ExactRef(**dict(value))
+    raise WorldBindingError("Q86_EXACT_REF_REQUIRED")
+
+
+def _q86_refusal(code: str) -> Q86ContextView:
+    return Q86ContextView(
+        state="REFUSED", reason_code=code, evidence_ref=None,
+        context_cells=(), denominator=0, permission="CONTEXT_ONLY",
+        p41_receipts=(), p41_receipt_hashes=(), structural_assertion=None,
+        actor_state="NOT_TOUCHED", nonoriginal=False,
+        view_hash=semantic_hash({"state": "REFUSED", "reason": code}),
+    )
+
+
+def _materialize_q86_owner():
+    repo = Path(__file__).resolve().parents[1]
+    base = Path(tempfile.mkdtemp(prefix="r100-q86-", dir=repo))
+    archive = base / "q86-transport.tar"
+    proc = subprocess.run(
+        ["git", "-C", str(repo), "archive", Q86_SOURCE_COMMIT,
+         Q86_TRANSPORT_PATH, Q86_OWNER_PATH, "-o", str(archive)],
+        capture_output=True, text=True, timeout=300,
+    )
+    if proc.returncode != 0:
+        shutil.rmtree(base, ignore_errors=True)
+        raise WorldBindingError("Q86_TRANSPORT_PIN_UNAVAILABLE")
+    with tarfile.open(archive) as handle:
+        handle.extractall(base)
+    module_path = base / Q86_OWNER_PATH
+    spec = importlib.util.spec_from_file_location("r100_q86_payload", module_path)
+    try:
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.load_current_gt2_query_fact_from_committed_transport(), base
+    except Exception:
+        shutil.rmtree(base, ignore_errors=True)
+        raise
+
+
+_Q86_QUERY_FACT_CACHE = None
+
+
+def _load_q86_query_fact():
+    global _Q86_QUERY_FACT_CACHE
+    if _Q86_QUERY_FACT_CACHE is not None:
+        return _Q86_QUERY_FACT_CACHE
+    try:
+        from rawlsing_next.pre553_repo_native_current_payload import (
+            load_current_gt2_query_fact_from_committed_transport,
+        )
+        query_fact = load_current_gt2_query_fact_from_committed_transport()
+    except FileNotFoundError:
+        query_fact, base = _materialize_q86_owner()
+        shutil.rmtree(base, ignore_errors=True)
+    _Q86_QUERY_FACT_CACHE = query_fact
+    return query_fact
+
+
+def _q86_cells(relation: Any) -> tuple[Mapping[str, Any], ...]:
+    cells = []
+    seen = set()
+    for row in relation.conditional_count_profile:
+        conditioner = canonicalize(row["condition_state"])
+        for target in row["target_counts"]:
+            state = canonicalize(target["target_state"])
+            key = (semantic_hash(conditioner), semantic_hash(state))
+            if key in seen:
+                raise WorldBindingError("Q86_DUPLICATE_JOINT_CELL")
+            seen.add(key)
+            cells.append({
+                "conditioner": "Q86B",
+                "conditioner_state": conditioner,
+                "target": "Q86A",
+                "target_state": state,
+                "cell_state": target["cell_state"],
+                "joint_support_count": int(target["joint_support_count"]),
+            })
+    if len(cells) != 36:
+        raise WorldBindingError("Q86_JOINT_CELL_COUNT_MISMATCH")
+    if sum(cell["joint_support_count"] for cell in cells) != Q86_DENOMINATOR:
+        raise WorldBindingError("Q86_DENOMINATOR_MISMATCH")
+    return tuple(cells)
+
+
+_Q86_EVIDENCE_CACHE = None
+
+
+def load_q86_context_evidence() -> Q86ContextEvidence:
+    global _Q86_EVIDENCE_CACHE
+    if _Q86_EVIDENCE_CACHE is not None:
+        return _Q86_EVIDENCE_CACHE
+    from rawlsing_next import field_forge_conditional_support as ff
+    from rawlsing_next import gt12_c_to_d_relation_bridge as ff_admission
+    from rawlsing_next import gt12_d_to_m4_typed_bridge as ff_world
+    from rawlsing_next.gt12_e2b_publication_governance_binding import (
+        load_current_gt12_e2b_publication_governance_binding,
+    )
+    query, fact = _load_q86_query_fact()
+    if query.ref.content_hash != Q86_QUERY_SHA256 or fact.ref.content_hash != Q86_FACT_SHA256:
+        raise WorldBindingError("Q86_FROZEN_QUERY_FACT_MISMATCH")
+    if fact.typed_state != "SUPPORTED":
+        raise WorldBindingError("Q86_FACT_NOT_SUPPORTED")
+    relation = ff.produce_exact_conditional_support_profile(
+        joint_fact=fact, joint_query=query,
+        conditioner_ref=query.target_refs[0], target_ref=query.target_refs[1],
+        producer_permission_ceiling=("STRUCTURAL_MEDIATION_INPUT",),
+        relation_permission_ceiling=("STRUCTURAL_MEDIATION_INPUT",),
+    )
+    if relation.typed_state != "SUPPORTED" or relation.producer_state_blocking:
+        raise WorldBindingError("Q86_RELATION_NOT_SUPPORTED")
+    if _q86_exact(relation.risk_set_ref).content_hash != Q86_RISK_SHA256:
+        raise WorldBindingError("Q86_RISK_MISMATCH")
+    admission = ff_admission.admit_gt12_c_relation(relation).admission
+    if admission.decision != "ADMITTED":
+        raise WorldBindingError("Q86_ADMISSION_NOT_ADMITTED")
+    if admission.target_use != "STRUCTURAL_MEDIATION_INPUT":
+        raise WorldBindingError("Q86_ADMISSION_TARGET_USE_MISMATCH")
+    if "STRUCTURAL_MEDIATION_INPUT" not in tuple(admission.target_use_permissions):
+        raise WorldBindingError("Q86_ADMISSION_PERMISSION_MISMATCH")
+    binding = load_current_gt12_e2b_publication_governance_binding()
+    _, v554 = ff_world.evaluate_typed_d_to_e_at_v554(
+        admission, governed_use_id=binding.governed_use_id,
+        v554_rule_ref=binding.v554_rule_ref,
+        publication_authority=binding.publication_authority,
+    )
+    if str(v554.decision_state).split(".")[-1] != "ELIGIBLE":
+        raise WorldBindingError("Q86_V554_NOT_ELIGIBLE")
+    if not isinstance(v554.f1, Mapping) or v554.f1.get("state") != "ELIGIBLE":
+        raise WorldBindingError("Q86_F1_NOT_ELIGIBLE")
+    terminal = ff_world.publish_and_resolve_relation_v554_at_current_m4(
+        admission, v554, v557_allowed_uses=("CONTEXT",),
+        requested_resolution_uses=("CONTEXT",),
+        v557_authority_ref=binding.v557_authority_ref,
+        v557_decision_state="ALLOW_CONTEXT_ONLY",
+    )
+    entries = terminal.resolution.resolved_entries
+    if len(entries) != 1:
+        raise WorldBindingError("Q86_EXACT_CONTEXT_ENTRY_REQUIRED")
+    entry = entries[0]
+    if tuple(entry.resolver_allowed_uses) != ("CONTEXT",):
+        raise WorldBindingError("Q86_CONTEXT_PERMISSION_MISMATCH")
+    if entry.decision_state != "ELIGIBLE":
+        raise WorldBindingError("Q86_CONTEXT_NOT_ELIGIBLE")
+    producer = next(
+        (item.obj for item in terminal.repository.entries
+         if item.obj.ref == entry.producer_object_ref), None
+    )
+    if producer is None or tuple(producer.producer_allowed_uses) != ("CONTEXT",):
+        raise WorldBindingError("Q86_CONTEXT_PRODUCER_PERMISSION_MISMATCH")
+    payload = canonicalize(producer.payload)
+    if payload.get("family") != "F1" or payload.get("state") != "ELIGIBLE":
+        raise WorldBindingError("Q86_F1_PAYLOAD_MISMATCH")
+    relation_refs = payload.get("originating_field_forge_relation_exact_refs") or ()
+    if [canonicalize(ref) for ref in relation_refs] != [relation.ref.as_dict()]:
+        raise WorldBindingError("Q86_FF_LINEAGE_MISMATCH")
+    cells = _q86_cells(relation)
+    evidence_material = {
+        "source": "Afrobarometer Round 5",
+        "source_sha256": Q86_SOURCE_SHA256,
+        "query_ref": query.ref.as_dict(),
+        "fact_ref": fact.ref.as_dict(),
+        "conditioner_ref": _q86_exact(relation.conditioner_ref).as_dict(),
+        "target_ref": _q86_exact(relation.target_ref).as_dict(),
+        "risk_ref": _q86_exact(relation.risk_set_ref).as_dict(),
+        "relation_ref": relation.ref.as_dict(),
+        "admission_ref": admission.ref.as_dict(),
+        "f1_ref": _q86_exact(entry.producer_object_ref).as_dict(),
+        "resolution_ref": terminal.resolution.receipt.ref.as_dict(),
+        "role_order": list(Q86_ROLE_ORDER),
+        "conditioner_domain": [canonicalize(value) for value in relation.conditioner_domain],
+        "target_domain": [canonicalize(value) for value in relation.target_domain],
+        "cells": [canonicalize(cell) for cell in cells],
+        "denominator": Q86_DENOMINATOR,
+        "permission": "CONTEXT_ONLY",
+        "operative_current": False,
+        "temporal_grade": "RETAINED_HISTORICAL_CONTEXT_NOT_OPERATIVE_CURRENT",
+        "v554_rule_material": canonicalize(binding.v554_rule_ref),
+        "payload": payload,
+    }
+    evidence = Q86ContextEvidence(
+        source="Afrobarometer Round 5", source_sha256=Q86_SOURCE_SHA256,
+        query_ref=query.ref, fact_ref=fact.ref,
+        conditioner_ref=_q86_exact(relation.conditioner_ref),
+        target_ref=_q86_exact(relation.target_ref),
+        risk_ref=_q86_exact(relation.risk_set_ref),
+        relation_ref=relation.ref, admission_ref=admission.ref,
+        f1_ref=_q86_exact(entry.producer_object_ref),
+        resolution_ref=terminal.resolution.receipt.ref,
+        role_order=Q86_ROLE_ORDER,
+        conditioner_domain=tuple(canonicalize(value) for value in relation.conditioner_domain),
+        target_domain=tuple(canonicalize(value) for value in relation.target_domain),
+        cells=cells, denominator=Q86_DENOMINATOR, permission="CONTEXT_ONLY",
+        operative_current=False,
+        temporal_grade="RETAINED_HISTORICAL_CONTEXT_NOT_OPERATIVE_CURRENT",
+        v554_rule_material=canonicalize(binding.v554_rule_ref),
+        payload=payload, content_hash=semantic_hash(evidence_material),
+    )
+    _Q86_EVIDENCE_CACHE = evidence
+    return evidence
+
+
+def _q86_p41_receipts(evidence: Q86ContextEvidence, cells: tuple[Mapping[str, Any], ...]):
+    pinned = _pinned_p41_runtime()
+    _purge_p41_modules()
+    if str(pinned) not in sys.path:
+        sys.path.insert(0, str(pinned))
+    import bootstrap
+    bootstrap.install()
+    import p41_service
+    from p41_service import P41Service
+    for module in (bootstrap, p41_service):
+        module_file = Path(getattr(module, "__file__", "")).resolve()
+        if pinned not in module_file.parents:
+            raise WorldBindingError("UNTRUSTED_P41_MODULE_SUBSTITUTION")
+    grouped = {}
+    for cell in cells:
+        key = semantic_hash(cell["conditioner_state"])
+        grouped.setdefault(key, []).append(cell)
+    snapshot = SimpleNamespace(
+        material={
+            "mode": "HISTORICAL_RETAINED_CONTEXT",
+            "valid_at": "RETAINED_ORIGINAL_TRANSPORT",
+            "published_asof": "R100_CONTEXT_BINDING",
+            "fields": {},
+        },
+        snapshot_hash="r100-q86-context",
+    )
+
+    class Q86Provider:
+        def __init__(self, condition_state, row_cells):
+            self.world = {"query_permits": {"Q86A": {"target_ref": evidence.target_ref.as_dict()}}}
+            self.trace = []
+            self.condition_state = condition_state
+            self.row_cells = row_cells
+
+        def _validate(self, target, ordered):
+            if target != "Q86A" or len(ordered) != 1 or ordered[0][0] != "Q86B":
+                raise ValueError("R100_Q86_ROLE_ORDER")
+
+        def progressive(self, target, ordered):
+            self._validate(target, ordered)
+            step_cells = [
+                {"cell": semantic_hash(cell["target_state"]),
+                 "cell_state": cell["cell_state"],
+                 "raw_numerator_support": cell["joint_support_count"]}
+                for cell in self.row_cells
+            ]
+            step = {
+                "state": "EXACT_SUPPORTED",
+                "route": "RETAINED_Q86_CONTEXT",
+                "target": "Q86A",
+                "conditioners": [["Q86B", self.condition_state]],
+                "denominator": sum(cell["joint_support_count"] for cell in self.row_cells),
+                "cells": step_cells,
+                "uncertainty": "UNCERTAINTY_UNQUANTIFIED",
+                "evidence_ref": evidence.relation_ref.as_dict(),
+                "producer_query_ref": evidence.query_ref.as_dict(),
+                "producer_fact_ref": evidence.fact_ref.as_dict(),
+                "model_rule_hash": evidence.v554_rule_material.get("hash"),
+                "risk_set_ref": evidence.risk_ref.as_dict(),
+                "release_ref": None,
+                "content_hash": semantic_hash(step_cells),
+            }
+            self.trace.append({"call": "R100_Q86_CONTEXT_CONSUMED"})
+            return [step]
+
+    class Q86P41Service(P41Service):
+        def __init__(self, provider):
+            self.prepared = object()
+            self.readthrough = None
+            self.provider = provider
+            self.receipts = {}
+
+        def _world_block(self, snapshot):
+            return {
+                "selection": {
+                    "mode": "HISTORICAL_RETAINED_CONTEXT",
+                    "valid_at": "RETAINED_ORIGINAL_TRANSPORT",
+                    "published_asof": "R100_CONTEXT_BINDING",
+                },
+                "rules": {},
+                "source": {
+                    "source": evidence.source,
+                    "source_sha256": evidence.source_sha256,
+                    "query_ref": evidence.query_ref.as_dict(),
+                    "fact_ref": evidence.fact_ref.as_dict(),
+                    "conditioner_ref": evidence.conditioner_ref.as_dict(),
+                    "target_ref": evidence.target_ref.as_dict(),
+                    "risk_set_ref": evidence.risk_ref.as_dict(),
+                    "relation_ref": evidence.relation_ref.as_dict(),
+                    "permission": evidence.permission,
+                },
+                "permission_root": "RETAINED_Q86_CONTEXT_ONLY",
+                "currentness": evidence.temporal_grade,
+            }
+
+        def progressive(self, *args, **kwargs):
+            core = super().progressive(*args, **kwargs)
+            core["providers"] = {
+                "n9_world": "R100_Q86_RETAINED_CONTEXT@1",
+                "n10e_empirical": "R100_Q86_CONDITIONAL_SUPPORT@1",
+                "n10w_progressive": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+                "learned_release": "NOT_APPLICABLE_RETAINED_Q86_CONTEXT",
+            }
+            core["consumer"] = {
+                "name": "Q86_CONTEXT_READER",
+                "permission_state": "CONTEXT_ONLY",
+                "values_read": "actual retained Q86 conditional count profile",
+            }
+            core["q86_context_ref"] = evidence.relation_ref.as_dict()
+            core.pop("content_hash", None)
+            core["content_hash"] = semantic_hash(core)
+            return core
+
+    receipts = []
+    for condition in evidence.conditioner_domain:
+        key = semantic_hash(condition)
+        row_cells = grouped.get(key)
+        if not row_cells:
+            raise WorldBindingError("Q86_CONDITIONER_ROW_MISSING")
+        service = Q86P41Service(Q86Provider(condition, row_cells))
+        receipt = service.progressive(
+            target="Q86A", conditions=(("Q86B", condition),),
+            snapshot=snapshot, world_part=False,
+        )
+        receipts.append(receipt)
+    return tuple(receipts)
+
+
+def receive_q86_context_view(request: Q86ContextRequest) -> Q86ContextView:
+    if request.purpose not in {Q86_PURPOSE_CONTEXT, Q86_PURPOSE_CONTROL}:
+        return _q86_refusal("Q86_PURPOSE_NOT_PERMITTED")
+    if request.as_of_ref is not None:
+        return _q86_refusal("Q86_AS_OF_NOT_APPLICABLE_TO_RETAINED_CONTEXT")
+    if request.engineering_counterfactual_cells is not None and request.purpose != Q86_PURPOSE_CONTROL:
+        return _q86_refusal("Q86_COUNTERFACTUAL_REQUIRES_ENGINEERING_CONTROL")
+    try:
+        actual = load_q86_context_evidence()
+    except WorldBindingError as exc:
+        return _q86_refusal(exc.code)
+    except Exception as exc:
+        return _q86_refusal("Q86_ACTUAL_OWNER_REFUSED:" + type(exc).__name__)
+    if (not isinstance(request.evidence, Q86ContextEvidence)
+            or request.evidence.content_hash != actual.content_hash
+            or semantic_hash(request.evidence.material()) != semantic_hash(actual.material())):
+        return _q86_refusal("Q86_EVIDENCE_SEVERED")
+    if actual.permission != "CONTEXT_ONLY" or actual.operative_current:
+        return _q86_refusal("Q86_PERMISSION_OR_CURRENTNESS_MISMATCH")
+    if request.purpose == Q86_PURPOSE_CONTROL:
+        cells = tuple(canonicalize(cell) for cell in (
+            request.engineering_counterfactual_cells or actual.cells
+        ))
+        nonoriginal = True
+    else:
+        cells = actual.cells
+        nonoriginal = False
+    if len(cells) != 36 or sum(cell["joint_support_count"] for cell in cells) != Q86_DENOMINATOR:
+        return _q86_refusal("Q86_CONTEXT_CELL_GEOMETRY_MISMATCH")
+    try:
+        receipts = _q86_p41_receipts(actual, cells)
+    except WorldBindingError as exc:
+        return _q86_refusal(exc.code)
+    except Exception as exc:
+        return _q86_refusal("Q86_P41_CONSUMER_REFUSED:" + type(exc).__name__)
+    if len(receipts) != 6:
+        return _q86_refusal("Q86_P41_CONTEXT_RECEIPT_COUNT_MISMATCH")
+    for receipt in receipts:
+        if (receipt.get("schema") != "PYAT_R41_P41_GENERIC_POSSIBILITY_RECEIPT@1"
+                or receipt.get("service") != "P41_GENERIC_POSSIBILITY_SERVICE@1"
+                or receipt.get("structural") is not None
+                or not receipt.get("n10e_steps")
+                or not (receipt.get("n10w") or {}).get("positioned_consumptions")):
+            return _q86_refusal("Q86_P41_CONTEXT_CONSUMER_MISMATCH")
+    material = {
+        "state": "NONORIGINAL_CONTEXT_CONTROL" if nonoriginal else "Q86_CONTEXT_SELECTED_VIEW",
+        "source": actual.source,
+        "source_sha256": actual.source_sha256,
+        "query_ref": actual.query_ref.as_dict(),
+        "fact_ref": actual.fact_ref.as_dict(),
+        "conditioner_ref": actual.conditioner_ref.as_dict(),
+        "target_ref": actual.target_ref.as_dict(),
+        "risk_ref": actual.risk_ref.as_dict(),
+        "relation_ref": actual.relation_ref.as_dict(),
+        "admission_ref": actual.admission_ref.as_dict(),
+        "f1_ref": actual.f1_ref.as_dict(),
+        "resolution_ref": actual.resolution_ref.as_dict(),
+        "permission": actual.permission,
+        "temporal_grade": actual.temporal_grade,
+        "context_cells": [canonicalize(cell) for cell in cells],
+        "denominator": sum(cell["joint_support_count"] for cell in cells),
+        "p41_receipt_hashes": [receipt["content_hash"] for receipt in receipts],
+        "p41_receipts": [canonicalize(receipt) for receipt in receipts],
+        "structural_assertion": None,
+        "actor_state": "NOT_TOUCHED",
+        "nonoriginal": nonoriginal,
+    }
+    return Q86ContextView(
+        state=material["state"],
+        reason_code="ACTUAL_RETAINED_Q86_CONTEXT" if not nonoriginal else "ENGINEERING_COUNTERFACTUAL",
+        evidence_ref=actual.relation_ref,
+        context_cells=cells, denominator=material["denominator"],
+        permission=actual.permission, p41_receipts=receipts,
+        p41_receipt_hashes=tuple(material["p41_receipt_hashes"]),
+        structural_assertion=None, actor_state="NOT_TOUCHED",
+        nonoriginal=nonoriginal, view_hash=semantic_hash(material),
     )

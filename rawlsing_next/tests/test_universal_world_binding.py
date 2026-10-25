@@ -20,9 +20,11 @@ from rawlsing_next.pre553_universal_empirical_extension import provide_empirical
 from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
 from rawlsing_next.pre553_universal_world_binding import (
     JoinedWorldField, JoinedWorldSelectionRequest,
+    Q86ContextRequest, Q86_PURPOSE_CONTROL, Q86_PURPOSE_CONTEXT,
     R05ActualExecution, R05WorldConsumerRequest, R05WorldField,
     WorldBindingError, configure_trusted_execution_context,
     WorldFieldBinding, WorldSelectionRequest,
+    load_q86_context_evidence, receive_q86_context_view,
     select_joined_world_view, select_r05_world_view, select_world_view,
 )
 from rawlsing_next.tests import c1_at08_at13_fixture as fx
@@ -938,3 +940,129 @@ def test_r06r4_context_authority_is_held_in_all_public_wrappers(j42_receipts, p4
         ff_structural_admission=plausible,
     ))
     assert view.reason_code == "CONTEXT_STRUCTURAL_AUTHORITY_HELD"
+
+
+def _q86_counterfactual_cells(evidence):
+    cells = [dict(cell) for cell in evidence.cells]
+    for left, right in zip(cells, cells[1:]):
+        if (left["joint_support_count"] > 0
+                and right["cell_state"] == "OBSERVED_POSITIVE"
+                and right["joint_support_count"] > 0):
+            left["joint_support_count"] -= 1
+            right["joint_support_count"] += 1
+            return tuple(cells)
+    raise AssertionError("no movable Q86 cell pair")
+
+
+def test_r100_retained_q86_context_to_pinned_p41_consumer():
+    evidence = load_q86_context_evidence()
+    view = receive_q86_context_view(Q86ContextRequest(evidence))
+    assert view.state == "Q86_CONTEXT_SELECTED_VIEW", view.reason_code
+    assert len(view.context_cells) == 36
+    assert view.denominator == 19210
+    assert view.permission == "CONTEXT_ONLY"
+    assert view.structural_assertion is None
+    assert view.actor_state == "NOT_TOUCHED"
+    assert view.nonoriginal is False
+    assert len(view.p41_receipts) == 6
+    assert sum(len(receipt["n10e_steps"][0]["cells"]) for receipt in view.p41_receipts) == 36
+    assert all(receipt.get("structural") is None for receipt in view.p41_receipts)
+    assert all(receipt["n10w"]["positioned_consumptions"] for receipt in view.p41_receipts)
+    assert sum(
+        step["denominator"]
+        for receipt in view.p41_receipts for step in receipt["n10e_steps"]
+    ) == 19210
+
+
+def test_r100_q86_p41_consumer_depends_on_context_cells():
+    evidence = load_q86_context_evidence()
+    base = receive_q86_context_view(Q86ContextRequest(evidence))
+    counterfactual = _q86_counterfactual_cells(evidence)
+    changed = receive_q86_context_view(Q86ContextRequest(
+        evidence, purpose=Q86_PURPOSE_CONTROL,
+        engineering_counterfactual_cells=counterfactual,
+    ))
+    assert changed.state == "NONORIGINAL_CONTEXT_CONTROL"
+    assert changed.nonoriginal is True
+    assert changed.view_hash != base.view_hash
+    assert changed.p41_receipt_hashes != base.p41_receipt_hashes
+    assert changed.context_cells != base.context_cells
+    restored = receive_q86_context_view(Q86ContextRequest(evidence))
+    assert restored.view_hash == base.view_hash
+
+
+def test_r100_q86_permission_and_evidence_severance_then_restore():
+    evidence = load_q86_context_evidence()
+    base = receive_q86_context_view(Q86ContextRequest(evidence))
+    revoked = replace(evidence, permission="STRUCTURAL_MEDIATION_INPUT")
+    refused = receive_q86_context_view(Q86ContextRequest(revoked))
+    assert refused.state == "REFUSED"
+    assert refused.reason_code == "Q86_EVIDENCE_SEVERED"
+    mutated_cells = list(evidence.cells)
+    first = dict(mutated_cells[0])
+    first["joint_support_count"] += 1
+    mutated_cells[0] = first
+    second = dict(mutated_cells[1])
+    second["joint_support_count"] -= 1
+    mutated_cells[1] = second
+    refused = receive_q86_context_view(Q86ContextRequest(
+        replace(evidence, cells=tuple(mutated_cells))))
+    assert refused.reason_code == "Q86_EVIDENCE_SEVERED"
+    refused = receive_q86_context_view(Q86ContextRequest(
+        evidence, as_of_ref="OUT_OF_SCOPE"))
+    assert refused.reason_code == "Q86_AS_OF_NOT_APPLICABLE_TO_RETAINED_CONTEXT"
+    refused = receive_q86_context_view(Q86ContextRequest(
+        evidence, engineering_counterfactual_cells=tuple(evidence.cells)))
+    assert refused.reason_code == "Q86_COUNTERFACTUAL_REQUIRES_ENGINEERING_CONTROL"
+    restored = receive_q86_context_view(Q86ContextRequest(evidence))
+    assert restored.view_hash == base.view_hash
+
+
+def test_r100_q86_wrong_reference_or_role_refuses():
+    evidence = load_q86_context_evidence()
+    wrong = ExactRef("QUESTION_IMPLEMENTATION", "urn:test:r100:wrong", "e" * 64)
+    for changed in (
+        replace(evidence, query_ref=wrong),
+        replace(evidence, fact_ref=wrong),
+        replace(evidence, conditioner_ref=wrong),
+        replace(evidence, target_ref=wrong),
+        replace(evidence, risk_ref=wrong),
+        replace(evidence, relation_ref=wrong),
+        replace(evidence, admission_ref=wrong),
+        replace(evidence, f1_ref=wrong),
+        replace(evidence, resolution_ref=wrong),
+        replace(evidence, role_order=("Q86A", "Q86B")),
+    ):
+        view = receive_q86_context_view(Q86ContextRequest(changed))
+        assert view.state == "REFUSED"
+        assert view.reason_code == "Q86_EVIDENCE_SEVERED"
+
+
+def _run_q86_context_view_subprocess():
+    code = (
+        "import json;"
+        "from rawlsing_next.pre553_universal_world_binding import "
+        "load_q86_context_evidence,receive_q86_context_view,Q86ContextRequest;"
+        "e=load_q86_context_evidence();"
+        "v=receive_q86_context_view(Q86ContextRequest(e));"
+        "print(json.dumps({'state':v.state,'view_hash':v.view_hash,"
+        "'hashes':list(v.p41_receipt_hashes),'cells':len(v.context_cells)}))"
+    )
+    env = dict(os.environ, PYTHONHASHSEED="0", PYTHONDONTWRITEBYTECODE="1")
+    env["PYTHONPATH"] = str(REPO_ROOT) + os.pathsep + env.get("PYTHONPATH", "")
+    proc = subprocess.run(
+        [sys.executable, "-c", code], cwd=str(REPO_ROOT), env=env,
+        capture_output=True, text=True, timeout=900,
+    )
+    assert proc.returncode == 0, proc.stdout[-3000:] + proc.stderr[-3000:]
+    return json.loads(proc.stdout)
+
+
+def test_r100_q86_context_cold_fresh_process_replay():
+    evidence = load_q86_context_evidence()
+    view = receive_q86_context_view(Q86ContextRequest(evidence))
+    cold = _run_q86_context_view_subprocess()
+    assert cold["state"] == view.state
+    assert cold["view_hash"] == view.view_hash
+    assert cold["hashes"] == list(view.p41_receipt_hashes)
+    assert cold["cells"] == len(view.context_cells)
