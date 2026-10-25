@@ -6,6 +6,7 @@ install()
 from s45.fixtures import root_bundle
 from s37.harness import case_for, source_for
 from s49.session import S49Session
+from s49.errors import S49Refusal
 from s49.actor import MISSING_B_CONTEXT, controlled_b_sources, record_b_observation
 
 
@@ -156,4 +157,39 @@ def test_controlled_positive_source_chain_is_bound_into_normal_consumer(tmp_path
             if body.get("stage")=="NORMAL_CONSUMER":
                 found.append(body)
         assert found and found[-1].get("b_source_operation")=="REFUSE_TOOL"
+    finally: s.close()
+
+
+def test_stripped_s49_source_fails_at_base_normal_guard(tmp_path):
+    from s49.actor import generate_b, perform_b_attempt
+    from s49.session import _source_from_b_event
+    s=_start(tmp_path/"strip")
+    try:
+        record_b_observation(s)
+        gen=generate_b(s,source_records=controlled_b_sources(s))
+        s._append("S49_B_ACTOR_TURN",{"schema":"SOROK_S49_INDEPENDENT_ACTOR_PRODUCER@1","stage":"GENERATION","controlled":True,"generation":gen,"source_grade":"TEST_ONLY_S49_CONTROLLED_B_MODEL_PREMISE","missing_context":""})
+        attempt=perform_b_attempt(s,gen)
+        case,source,event=_source_from_b_event(s,generation_body=gen,attempt=attempt)
+        stripped={k:v for k,v in source.items() if not str(k).startswith("s49_")}
+        with pytest.raises(S49Refusal) as exc:
+            s.admit_event(case=case,source=stripped,history_event_refs=(s.read_events()[-1]["e1_event_id"],),event_time=s.clock()+1)
+        assert exc.value.code=="S49_NORMAL_CONSUMER_CHAIN_MISSING"
+    finally: s.close()
+
+
+def test_base_guard_rejects_forged_chain_even_with_instance_override(tmp_path):
+    from s49.actor import generate_b, perform_b_attempt
+    from s49.session import _source_from_b_event
+    from copy import deepcopy
+    s=_start(tmp_path/"baseguard")
+    try:
+        record_b_observation(s)
+        gen=generate_b(s,source_records=controlled_b_sources(s))
+        s._append("S49_B_ACTOR_TURN",{"schema":"SOROK_S49_INDEPENDENT_ACTOR_PRODUCER@1","stage":"GENERATION","controlled":True,"generation":gen,"source_grade":"TEST_ONLY_S49_CONTROLLED_B_MODEL_PREMISE","missing_context":""})
+        attempt=perform_b_attempt(s,gen)
+        case,source,event=_source_from_b_event(s,generation_body=gen,attempt=attempt)
+        forged=deepcopy(source); forged["s49_source_chain_hash"]="FORGED_CHAIN"
+        s._validate_admit_source_chain=lambda *a,**k: None
+        with pytest.raises(S49Refusal):
+            s.admit_event(case=case,source=forged,history_event_refs=(s.read_events()[-1]["e1_event_id"],),event_time=s.clock()+1)
     finally: s.close()

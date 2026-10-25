@@ -79,9 +79,25 @@ class S42Session(S41Session):
     def _extra_conditioning_sources(self) -> list[dict]:
         return []
 
+    def _is_s49_generated_source(self, source: Mapping[str, Any]) -> bool:
+        if any(str(key).startswith("s49_") for key in source):
+            return True
+        event = self.event(str(source.get("b_event_ref", "")))
+        return bool(
+            event
+            and event.get("actor_id") == "B"
+            and event.get("kind") == "REFUSAL"
+            and (event.get("body") or {}).get("generated") is True
+        )
+
     def _validate_admit_source_chain(self, source: Mapping[str, Any],
                                      case: Mapping[str, Any],
                                      event_time: int) -> None:
+        if not self._is_s49_generated_source(source):
+            return None
+        from s49.actor import validate_normal_admission
+
+        validate_normal_admission(self, source, case, event_time)
         return None
 
     def read_event(self, event_ref: str) -> dict:
@@ -128,7 +144,9 @@ class S42Session(S41Session):
             key: value for key, value in dict(raw_source).items()
             if str(key).startswith("s49_")
         })
-        self._validate_admit_source_chain(second_source, second_case, event_time)
+        S42Session._validate_admit_source_chain(
+            self, second_source, second_case, event_time
+        )
         # Reject an exact incoming source identity replayed at the same derived clock.
         for row in bindings:
             if (

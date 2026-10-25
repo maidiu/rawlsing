@@ -382,13 +382,16 @@ def validate_b_generation(session, generation_body: Mapping[str, Any]) -> dict:
     intent = canonical_attempt_intent(session, generation_body)
     if intent is None:
         raise S49Refusal("S49_ATTEMPT_INTENT_MISSING")
+    expected_intent = attempt_intent(session, generation_body)
+    if not valid(dict(intent["body"])):
+        raise S49Refusal("S49_ATTEMPT_INTENT_UNSEALED")
+    if dict(intent["body"]) != dict(expected_intent):
+        raise S49Refusal("S49_ATTEMPT_INTENT_MISMATCH")
     request = (generation_body.get("generation") or {}).get("attempt_request") or {}
-    if intent["body"].get("attempt_request_hash") != request.get("hash"):
+    if expected_intent.get("attempt_request_hash") != request.get("hash"):
         raise S49Refusal("S49_ATTEMPT_INTENT_LINK_MISMATCH")
-    if intent["body"].get("option_id") != request.get("option_id"):
+    if expected_intent.get("option_id") != request.get("option_id"):
         raise S49Refusal("S49_ATTEMPT_INTENT_OPTION_MISMATCH")
-    if intent["body"].get("source_chain_hash") != generation_body.get("source_chain_hash"):
-        raise S49Refusal("S49_ATTEMPT_INTENT_SOURCE_CHAIN_MISMATCH")
     if generation_body.get("actor_id") != actor_id:
         raise S49Refusal("S49_GENERATION_ACTOR_MISMATCH")
     if generation_body.get("branch_id") != session.branch_id:
@@ -425,6 +428,72 @@ def validate_b_generation(session, generation_body: Mapping[str, Any]) -> dict:
     if generation_body.get("access_witness_hash") != access.get("hash"):
         raise S49Refusal("S49_GENERATION_ACCESS_MISMATCH")
     return canonical
+
+
+def validate_normal_admission(session, source: Mapping[str, Any],
+                              case: Mapping[str, Any],
+                              event_time: int) -> None:
+    s49_keys = [key for key in source if str(key).startswith("s49_")]
+    required = {
+        "s49_generation_hash", "s49_attempt_hash",
+        "s49_rule_content_hash", "s49_access_source_ref",
+        "s49_access_source_hash", "s49_source_chain_hash",
+    }
+    if not s49_keys:
+        raise S49Refusal("S49_NORMAL_CONSUMER_CHAIN_MISSING")
+    if not required.issubset(source):
+        raise S49Refusal("S49_NORMAL_CONSUMER_CHAIN_MISSING")
+    generation = None
+    for row in session.product.store.episodes(session.branch_id):
+        if row.get("kind") != "S49_B_ACTOR_TURN":
+            continue
+        body = dict(row.get("body") or {})
+        value = body.get("generation")
+        if (
+            body.get("stage") == "GENERATION"
+            and isinstance(value, dict)
+            and value.get("hash") == source.get("s49_generation_hash")
+        ):
+            generation = value
+            break
+    if generation is None:
+        raise S49Refusal("S49_NORMAL_CONSUMER_GENERATION_MISSING")
+    validate_b_generation(session, generation)
+    if generation.get("source_chain_hash") != source.get(
+        "s49_source_chain_hash"
+    ):
+        raise S49Refusal("S49_NORMAL_CONSUMER_SOURCE_CHAIN_MISMATCH")
+    if generation.get("rule_content_hash") != source.get(
+        "s49_rule_content_hash"
+    ) or generation.get("access_source_ref") != source.get(
+        "s49_access_source_ref"
+    ) or generation.get("access_source_hash") != source.get(
+        "s49_access_source_hash"
+    ):
+        raise S49Refusal("S49_NORMAL_CONSUMER_CHAIN_MISMATCH")
+    b_event = session.event(source.get("b_event_ref", ""))
+    if not b_event or b_event.get("actor_id") != "B" or b_event.get(
+        "kind"
+    ) != "REFUSAL" or b_event.get("hash") != source.get(
+        "b_event_hash"
+    ) or b_event.get("clock") != source.get("b_clock"):
+        raise S49Refusal("S49_NORMAL_CONSUMER_PERFORMER_MISSING")
+    attempt_rows = [
+        row for row in session.product.store.episodes(session.branch_id)
+        if row.get("kind") == "S49_B_ACTOR_RESULT"
+        and (row.get("body") or {}).get("stage") == "B_PERFORMER"
+        and (row.get("body") or {}).get("generation_hash")
+        == generation.get("hash")
+    ]
+    if attempt_rows:
+        attempt = (attempt_rows[-1].get("body") or {}).get("attempt") or {}
+        if attempt.get("event_id") != source.get("b_event_ref"):
+            raise S49Refusal("S49_NORMAL_CONSUMER_B_EVENT_MISMATCH")
+        if attempt.get("event_hash") != source.get("b_event_hash"):
+            raise S49Refusal("S49_NORMAL_CONSUMER_B_HASH_MISMATCH")
+        if attempt.get("actor_id") != source.get("b_actor"):
+            raise S49Refusal("S49_NORMAL_CONSUMER_B_ACTOR_MISMATCH")
+    return None
 
 
 def perform_b_attempt(session, generation_body: Mapping[str, Any]) -> dict:
@@ -577,4 +646,5 @@ __all__ = [
     "SOURCE_OWNER_HOLD", "controlled_b_sources", "generate_b",
     "attempt_intent", "canonical_attempt_intent", "perform_b_attempt",
     "record_b_observation", "root_b_sources", "validate_b_generation",
+    "validate_normal_admission",
 ]
