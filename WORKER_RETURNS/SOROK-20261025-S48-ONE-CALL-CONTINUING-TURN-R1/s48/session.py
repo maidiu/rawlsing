@@ -13,14 +13,17 @@ from s47.session import S47Session  # noqa: E402
 
 from .errors import ProductCallError, S48Refusal  # noqa: E402
 from .product import build_payload, build_prompt, run_product_cli  # noqa: E402
-from .sources import issue_current_source  # noqa: E402
+from .sources import (  # noqa: E402
+    MISSING_FUNCTION,
+    SOURCE_OWNER_HOLD,
+    issue_current_source,
+)
 
 S48_SCHEMA = "SOROK_S48_ONE_CALL_CONTINUING_TURN@1"
 PRODUCT_DISPATCH_KIND = "S48_PRODUCT_DISPATCH"
 PRODUCT_TURN_KIND = "S48_PRODUCT_TURN"
 TURN_RESULT_KIND = "S48_TURN_RESULT"
 SCI05_REASON = "S48_SCI05_HOLD_NO_COMPETENT_INTERNAL_ACT_OWNER"
-SOURCE_OWNER_HOLD = "S48_SOURCE_OWNER_HOLD_NO_COMPETENT_OTHER_ACTOR_ADMISSION"
 
 
 class S48Session(S47Session):
@@ -345,7 +348,36 @@ class S48Session(S47Session):
                 "provider_call_count": turn_body["provider_call_count"],
             }
 
+        allowed = {
+            row.get("candidate_id")
+            for row in payload.get("allowed_prospective_candidates") or []
+        }
         prospective = list(envelope.get("prospective") or [])
+        if not allowed:
+            result = self._append_result({
+                "schema": S48_SCHEMA,
+                "status": "SOURCE_OWNER_HOLD",
+                "turn_id": turn_id,
+                "source_event_ref": source_ref,
+                "source_event_hash": source_hash,
+                "product_turn_ref": turn["episode_id"],
+                "reason": SOURCE_OWNER_HOLD,
+                "missing_function": MISSING_FUNCTION,
+                "candidate_id": (
+                    prospective[0].get("candidate_id") if prospective else ""
+                ),
+                "event_ref": "",
+                "cached": False,
+                "provider_call_count": turn_body["provider_call_count"],
+            })
+            return {
+                **result["body"],
+                "turn_id": turn_id,
+                "product_turn_ref": turn["episode_id"],
+                "result_episode_id": result["episode_id"],
+                "cached": False,
+                "provider_call_count": turn_body["provider_call_count"],
+            }
         if len(prospective) != 1:
             status = "UNRESOLVED" if len(prospective) > 1 else "NO_PROSPECTIVE_PROPOSAL"
             result = self._append_result({
@@ -370,10 +402,6 @@ class S48Session(S47Session):
             }
 
         candidate = prospective[0].get("candidate_id")
-        allowed = {
-            row.get("candidate_id")
-            for row in payload.get("allowed_prospective_candidates") or []
-        }
         if candidate not in allowed:
             result = self._append_result({
                 "schema": S48_SCHEMA,

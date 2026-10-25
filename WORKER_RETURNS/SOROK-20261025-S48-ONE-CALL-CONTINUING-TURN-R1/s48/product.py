@@ -14,7 +14,7 @@ from .bootstrap import RETURN, install
 install()
 
 from .errors import ProductCallError, S48Refusal
-from .sources import CANDIDATE_ID, candidate_specs, eligible_candidate_ids
+from .sources import candidate_specs, eligible_candidate_ids
 
 PRODUCT_CLI = os.environ.get(
     "S48_PRODUCT_CLI", "/Users/matthewsmith/.opencode/bin/opencode"
@@ -24,9 +24,13 @@ PRODUCT_VARIANT = "max"
 PRODUCT_SCHEMA = "S48_PRODUCT_ENVELOPE@1"
 PRODUCT_INPUT_SCHEMA = "S48_ACTOR_PRODUCT_INPUT@1"
 CANDIDATES = {
-    CANDIDATE_ID: {
+    "OTHER_REFUSES_TOOL": {
         "source_operation": "REFUSE_TOOL",
-        "source_kind": "BP4_OWNER_RECEIPTED_REFUSAL",
+        "source_kind": "REQUIRES_INDEPENDENT_CURRENT_B_SOURCE",
+    },
+    "OTHER_SHARES_TOOL": {
+        "source_operation": "SHARE_TOOL",
+        "source_kind": "REQUIRES_INDEPENDENT_CURRENT_B_SOURCE",
     },
 }
 

@@ -1,48 +1,45 @@
-# SOROK S48 repair2 — current source-owner closure
+# SOROK S48 repair3 — source-owner hold
 
-**RESULT:** `S48_REPAIR2__CURRENT_BP4_OTHER_SOURCE__ROOT_B_OWNER__WORLD_PERFORMER__SOURCE_BEFORE_C8__ADVANCE_REPLAY_PENDING_PRESERVED__ACTUAL_NEW_CUT_PROVIDER_1__OLD_CUT_PROOFS_PRESERVED__SCI05_HOLD__NO_NATIVE_GRANT`.
+**RESULT:** `S48_REPAIR3__NO_INDEPENDENT_CURRENT_B_SOURCE__TYPED_SOURCE_OWNER_HOLD__NO_B_WORLD_EVENT__NO_C8__ONE_CALL_DISPATCH_REPLAY_PRESERVED__OLD_PROVIDER_PROOFS_LABELED__SCI05_HOLD__NO_NATIVE_GRANT`.
 
-S48 repair2 replaces the foreign R31J share/refusal fixtures with a current independently performed BP4 other-actor source. The product may propose only a source-qualified current operation; the selected operation is performed after the no-input barrier, with an owner receipt and a current world-journal event, before the existing S42 C8/C9 path. Static/foreign candidates are rejected with `SOURCE_OWNER_HOLD`.
+S48 repair3 removes the last fabrication: S48 no longer creates a B refusal body under the BP4 world owner. The current accepted root/session supplies no independently actor-qualified B source or performer for a prospective other-actor operation, so the default turn returns an exact source-owner hold with no B world event, no C8, and no dependent next event. The product narrative/prospective call/dispatch/replay machinery remains at its honest bounded grade.
 
 ## Scope and base
 
-- Branch `codex/sorok-s48-one-call-continuing-turn`; prior cut `ee4b2dd9c025cfd537cf8ac048a6b8619284ebf5`; base accepted S47 `765a441f87292aa4c17794745b65cb54e6aaa83f`.
+- Branch `codex/sorok-s48-one-call-continuing-turn`; prior cut `824170e3ac36390d6155404e58f6d028f3fe8015`; base accepted S47 `765a441f87292aa4c17794745b65cb54e6aaa83f`.
 - Writes only `WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/**`; no accepted S47/S42/S37 edits, agents, native grants, provider/model change, private config reads, or broad accepted-suite run.
-- The final commit SHA is the exact repair cut; the new actual provider run was made in this repair worktree and is labeled with that commit in the completion response. Captured old-cut provider proofs remain separately preserved.
+- No new live provider call was made for this repair. The captured `824170e3` provider transport proof remains valid as transport only and is explicitly labeled independence-superseded.
 
-## Source-owner repair
+## Exact missing B function
 
-- Removed the static `TEST_ONLY_EVENT_share`/`TEST_ONLY_EVENT_refuse` candidates and all `case_for(share)` construction from the turn path.
-- `s48/sources.py` exposes only a currently supported independent BP4 operation: an owner-receipted `REFUSAL` by the root's current `TEST_ONLY_BP1_R26V_ACTOR_B`. The source owner is that root actor; the BP4 world owner is recorded separately as the operation performer.
-- The operation is not preperformed. After the product's explicit no-input barrier, S48 issues one BP4 world event at the current clock, adds it to the canonical world journal, and only then constructs the source. Source-before-C8 ordering is exact. The event has owner/actor receipt, current root, current clock and operation `REFUSE_TOOL`; no material mutation or new willingness law is introduced.
-- The source is validated against the current first event E1 and the dynamically constructed B/E1 case. The product proposal is only a world possibility, not the other person's intention. A stale/foreign/static share fixture is excluded and returns `SOURCE_OWNER_HOLD`; no dependent event is realized.
-- The product can still return narrative and optional self-account. Nonempty self-account remains exact `SCI05_HOLD` with no second V3; explicit absence records `SELF_ACCOUNT_ABSENT_NO_NEW_INTERPRETIVE_INPUT`.
+- Known existing interfaces: the root contains current `TEST_ONLY_BP1_R26V_ACTOR_B`; BP4 has a current world journal, `TEST_ONLY_BP4_WORLD_OWNER`, `owner_receipt`, and a generic `REFUSAL` event builder; S42 has the accepted BP2 source/case validator and normal C8/C9 consumer.
+- Missing: an independent actor-owner-qualified B source/provider that can issue the B operation for the current root/actor/branch/clock. The BP4 world owner can execute a world event, but the body/operation would be written by S48 rather than admitted by an independent B source owner. The normal S42 consumer validates BP2 source/case records; no installed source provider maps a current BP4 world operation to that accepted B source without that fabrication.
+- Therefore `s48/sources.py` exposes no positive candidates; `eligible_candidate_ids` and `candidate_specs` are empty, and `issue_current_source` raises `S48_SOURCE_OWNER_HOLD_NO_CURRENT_OWNER_ADMISSION` with `S48_MISSING_INDEPENDENT_CURRENT_B_SOURCE_PERFORMER`.
+- If a later owner supplies an actual current B source/performer, it must be validated at the normal S42 consumer before C8; no callback/dict-as-authority or permissive production grant is installed.
 
-## Closed semantics retained
+## Orchestration preserved
 
-- Default `run_turn()` advances from the current event; a realized next event starts a new turn and provider invocation.
-- `run_turn(source_event_ref=...)` and `run_turn(replay_turn_id=...)` replay the same logical canonical turn and never reissue the provider.
-- `S48_PRODUCT_DISPATCH` remains a pre-call C12 intent. Crash after provider before terminal turn gives `PENDING_UNKNOWN`/`S48_DISPATCH_WITHOUT_RESULT_NOT_REISSUED`; no blind duplicate call or fake receipt.
-- Cold replay returns the same canonical event/turn; no target or narrative psyche write.
+- One product call per ordinary turn, distinct product session, bounded sourcefree payload, narrative/optional self-account/prospective envelope.
+- Canonical `S48_PRODUCT_DISPATCH` precedes provider effect; crash-after-provider/terminal-append failure returns `PENDING_UNKNOWN` and does not reissue.
+- Explicit `source_event_ref`/`replay_turn_id` replay the same logical turn with zero provider calls; default advance semantics remain in code, but no realized next event exists to advance because the source owner is absent.
+- The product can return a proposal, but with no qualified current B source the result is `SOURCE_OWNER_HOLD`; no B world event, no C8, no target, no psyche write. Empty prospective is also an owner hold; it is not called success.
+- Nonempty self-account remains exact `SCI05_HOLD`; explicit absence records the no-input barrier. Both are separate from the missing B source hold.
 
 ## Evidence
 
-- New repair-cut actual entrypoint: `logs/entrypoint.log` / `evidence/entrypoint.json`; actual envelope `evidence/actual_envelope.json`; raw CLI `logs/product_c0914678feb16918.stdout.jsonl`.
-- New actual call: `provider_call_count: 1`, one step/session, `self_account: null`, candidate `OTHER_REFUSES_TOOL`, source actor `TEST_ONLY_BP1_R26V_ACTOR_B`, source owner B, performer owner `TEST_ONLY_BP4_WORLD_OWNER`.
-- Actual event order: occurred event ordinal 1 → product call/no-input barrier → independently performed BP4 B refusal at current clock → S42 event ordinal 2 → C9. Cold same-turn replay uses `source_event_ref` and records `cached_on_cold: true`, `cold_provider_call_count: 0`.
-- Actual next C9 remains targetless `NO_CHANGE`/`NO_PROPOSAL`; S47 interval source `d73a00…` remains in the readset; root unchanged `3bcb21fc…`.
-- Current-source chronology (`evidence/chronology.json`, `logs/repro_candidate_source_chronology.log`): source owner is in root actor IDs, actor B is the root B, performer is current world owner, event exists in world journal at current clock, source precedes C8.
-- Foreign/static candidate regression returns `SOURCE_OWNER_HOLD` and realizes no event. Current positive regression uses the BP4 refusal source; warm/cold normal consumer paths are covered.
-- Old-cut provider proofs preserved exactly under `evidence/old_cut_ae021e/` and `evidence/old_cut_ee4b2dd9/`; they are not rewritten as proof of this repair.
-- Controlled SCI05 hold and call-failure evidence remains non-provider and marked `actual_provider_call: false` (`evidence/controlled.json`).
-- Focused S48 tests: **16 passed**, 0 failed/error/skipped; `junit/s48_full.xml`, `logs/s48_full.log`, `evidence/test_run.json`.
-- Reviewer chronology oracle had an obsolete `candidate_source` import; `evidence/repro_candidate_source_chronology.py` is the honest schema update only for that import and current source API, with unchanged chronology claims.
+- Active controlled hold: `evidence/controlled_hold.json`; identity before/after equal (world event count 13, clock 222, material/B material, C12 event count, root), `event_ref: ""`, no `REALIZED` result, `actual_provider_call: false` fixture label.
+- No qualified source: `evidence/no_source.json`; candidates empty, install refusal typed, missing function recorded, S47 verify OK.
+- Transport-only proof: `evidence/transport_proof.json`; `actual_provider_call: true`, one provider call, but `transport_only: true`, `positive_independence_superseded: true`, `not_current_positive: true`.
+- Old proofs preserved: `evidence/old_cut_ae021e/` and `evidence/old_cut_ee4b2dd9/`; exact prior actual records remain.
+- Superseded current proof: `evidence/superseded_824170e3/` with `LABEL.json`; its B-refusal independence is invalid and explicitly not current positive evidence.
+- Focused S48 tests: **12 passed**, 0 failed/error/skipped; `junit/s48_full.xml`, `logs/s48_full.log`, `evidence/test_run.json`.
+- Source manifest: `evidence/source_manifest.json`; S47 files exact at accepted cut; old/superseded hashes retained.
 
 ## Limits
 
-- The only current independently supported other-actor operation is BP4 refusal. The product cannot manufacture a share/help will or a mutually exclusive future; a claim without a current authorized operation is source-owner held.
-- Source bytes are TEST_ONLY sourcefree BP4/root records, not native/empirical B psychology. B actor/root identity is current; owner registration is the root B actor, performer is the BP4 world owner. No new owner, grant, target, psyche, or T is issued.
-- Actual provider output remains bounded sourcefree generation; no broad provider/science campaign was run. The old-cut and new-cut actual receipts are distinct and separately labeled.
+- `SOURCE_OWNER_HOLD` is an exact dependency barrier, not a successful next world/full product closure. It does not claim B refused, helped, or formed an intention.
+- The actual provider transport proof does not prove repaired B independence and is not used as such. No fake positive canonical result, B world event, C8, target, psyche write, source/native/human grant, new psychology, weights, or willingness policy exists.
+- The only remaining requirement is an actual independently owner-qualified current B source/performer plus its normal S42 admission adapter; S48 will not synthesize it.
 
 ## Commands
 
@@ -50,8 +47,7 @@ S48 repair2 replaces the foreign R31J share/refusal fixtures with a current inde
 PYTHONPATH=$PWD/WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1 \
 M35_JOIN_E_RETURN=/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1 \
 TMPDIR=$PWD/WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/logs \
-python3 WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/run_s48.py \
-> WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/logs/entrypoint.log 2>&1
+python3 WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/run_s48_evidence.py
 ```
 
-**Terminal:** `S48_REPAIR2__CURRENT_BP4_OTHER_SOURCE__ROOT_B__WORLD_PERFORMER__SOURCE_BEFORE_C8__ADVANCE_REPLAY_PENDING__ACTUAL_1__OLD_PROOFS__SCI05_HOLD__NO_NATIVE_GRANT`. Final commit and remote SHA are verified after push.
+**Terminal:** `S48_REPAIR3__SOURCE_OWNER_HOLD__NO_CURRENT_INDEPENDENT_B_SOURCE__NO_C8__TRANSPORT_PROOF_LABELED__OLD_PROOFS_PRESERVED__DISPATCH_REPLAY_PRESERVED__SCI05_HOLD__NO_NATIVE_GRANT`. Final commit and remote SHA are verified after push.

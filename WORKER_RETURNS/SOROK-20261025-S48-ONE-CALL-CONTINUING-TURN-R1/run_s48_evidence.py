@@ -1,9 +1,4 @@
-"""Generate S48 actual-call, controlled-branch, test and source evidence.
-
-This script intentionally does not invoke the product provider again. It reads
-the already captured actual entrypoint call and produces only focused tests and
-controlled local orchestration evidence.
-"""
+"""Generate S48 source-owner hold, controlled tests and old transport evidence."""
 from __future__ import annotations
 
 import hashlib
@@ -33,21 +28,27 @@ for path in (str(RET), str(RET / "tests")):
         sys.path.insert(0, path)
 
 from s48.bootstrap import CUTS, install, roots  # noqa: E402
-from s48.errors import ProductCallError  # noqa: E402
-from s48.product import parse_envelope  # noqa: E402
 
 install()
 
 from s37.harness import case_for, source_for  # noqa: E402
 from s45.fixtures import root_bundle  # noqa: E402
-from s48.session import S48Session, SCI05_REASON  # noqa: E402
+from s48.errors import ProductCallError  # noqa: E402
+from s48.product import build_payload  # noqa: E402
+from s48.session import S48Session  # noqa: E402
+from s48.sources import (  # noqa: E402
+    MISSING_FUNCTION,
+    SOURCE_OWNER_HOLD,
+    candidate_specs,
+    eligible_candidate_ids,
+    issue_current_source,
+)
 
 S47_RETURN = Path(roots()["s47_return"])
 S48_FILES = [
     ".gitignore", "00_RETURN.md", "run_s48.py", "run_s48_evidence.py",
     "s48/__init__.py", "s48/bootstrap.py", "s48/errors.py", "s48/product.py",
     "s48/session.py", "s48/sources.py",
-    "evidence/repro_candidate_source_chronology.py",
     "tests/conftest.py", "tests/test_s48_one_call.py",
 ]
 S47_FILES = [
@@ -70,13 +71,6 @@ def _git(*args: str) -> str:
 def _write(path: Path, value) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
-
-
-KNOW_ENV = dict(
-    ENV,
-    S48_RETURN=str(RET),
-    TMPDIR=str(LOGS / "tmp"),
-)
 
 
 def _run(cmd, log_name, env=None):
@@ -120,83 +114,118 @@ def _start(state):
     )
 
 
-def _fake(envelope=None, *, calls, receipt=None, error=None):
-    def run(prompt, *, workdir, log_dir, timeout):
-        calls.append({"prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest()})
-        if error is not None:
-            raise error
+def _identity(session):
+    world = session.world()
+    return {
+        "world_events": len(world.events),
+        "clock": session.clock(),
+        "material": dict(world.actor_state["A"]).get("material_remaining"),
+        "b_material": dict(world.actor_state["B"]).get("material_remaining"),
+        "c12_events": len(session.read_events()),
+        "root_hash": session.read_root()["root_hash"],
+    }
+
+
+def _controlled_hold():
+    root = Path(tempfile.mkdtemp(prefix="s48-hold-", dir=str(RET / "logs")))
+    session = _start(root / "state")
+    calls = []
+
+    def runner(prompt, *, workdir, log_dir, timeout):
+        calls.append(1)
         return {
             "status": "OK",
-            "envelope": envelope,
-            "call_receipt": receipt or {
+            "envelope": {
+                "schema": "S48_PRODUCT_ENVELOPE@1",
+                "narrative": "controlled fixture",
+                "self_account": None,
+                "self_account_present": False,
+                "prospective": [{
+                    "candidate_id": "OTHER_REFUSES_TOOL",
+                    "rationale": "controlled unsupported proposal",
+                }],
+            },
+            "call_receipt": {
                 "actual_provider_call": False,
                 "provider_call_count": 1,
                 "step_count": 1,
             },
             "prompt_hash": "fixture",
         }
-    return run
 
-
-def controlled_branches():
-    root = Path(tempfile.mkdtemp(prefix="s48-controlled-", dir=str(RET / "logs")))
     try:
-        hold_state = root / "hold"
-        hold = _start(hold_state)
-        try:
-            calls = []
-            before = len(hold.read_events())
-            result = hold.run_turn(product_runner=_fake({
-                "schema": "S48_PRODUCT_ENVELOPE@1",
-                "narrative": "A bounded narrative.",
-                "self_account": "A proposed internal self-account remains unsupported.",
-                "self_account_present": True,
-                "prospective": [],
-            }, calls=calls))
-            hold_body = {
-                "status": result.get("status"),
-                "sci05_hold": result.get("sci05_hold"),
-                "reason": result.get("reason"),
-                "event_ref": result.get("event_ref"),
-                "events_before": before,
-                "events_after": len(hold.read_events()),
-                "fixture_call_count": result.get("provider_call_count"),
-                "actual_provider_call": False,
-                "verify_ok": hold.verify()["ok"],
-            }
-        finally:
-            hold.close()
-
-        fail_state = root / "failure"
-        fail = _start(fail_state)
-        try:
-            calls = []
-            before = len(fail.read_events())
-            error = ProductCallError(
-                "S48_PRODUCT_CALL_FAILED", "controlled fixture",
-                {"actual_provider_call": False, "provider_call_count": 0},
-            )
-            result = fail.run_turn(product_runner=_fake(calls=calls, error=error))
-            fail_body = {
-                "status": result.get("status"),
-                "reason": result.get("reason"),
-                "event_ref": result.get("event_ref"),
-                "events_before": before,
-                "events_after": len(fail.read_events()),
-                "fixture_call_count": result.get("provider_call_count"),
-                "actual_provider_call": False,
-                "verify_ok": fail.verify()["ok"],
-            }
-        finally:
-            fail.close()
+        before = _identity(session)
+        result = session.run_turn(product_runner=runner)
+        after = _identity(session)
         return {
-            "schema": "SOROK_S48_CONTROLLED_BRANCHES@1",
-            "sci05_hold": hold_body,
-            "call_failure": fail_body,
-            "note": "Controlled non-provider fixtures; actual call is entrypoint.json.",
+            "schema": "SOROK_S48_CONTROLLED_HOLD@1",
+            "actual_provider_call": False,
+            "status": result.get("status"),
+            "reason": result.get("reason"),
+            "missing_function": result.get("missing_function"),
+            "event_ref": result.get("event_ref"),
+            "fixture_call_count": len(calls),
+            "identity_before": before,
+            "identity_after": after,
+            "unchanged": before == after,
+            "no_c8_or_world_event": result.get("event_ref") == "",
+            "no_realized_result": all(
+                row["body"].get("status") != "REALIZED"
+                for row in session.product_turns()
+            ),
+            "verify_ok": session.verify()["ok"],
         }
     finally:
+        session.close()
         shutil.rmtree(root, ignore_errors=True)
+
+
+def _no_qualified_source():
+    root = Path(tempfile.mkdtemp(prefix="s48-nosource-", dir=str(RET / "logs")))
+    session = _start(root / "state")
+    try:
+        payload = build_payload(session)
+        code = ""
+        try:
+            issue_current_source(session, "OTHER_REFUSES_TOOL")
+        except Exception as exc:
+            code = getattr(exc, "code", type(exc).__name__)
+        return {
+            "schema": "SOROK_S48_NO_QUALIFIED_SOURCE@1",
+            "candidate_specs": candidate_specs(session),
+            "eligible_candidate_ids": eligible_candidate_ids(session),
+            "payload_allowed": payload.get("allowed_prospective_candidates"),
+            "install_refusal": code,
+            "missing_function": MISSING_FUNCTION,
+            "verify_ok": session.verify()["ok"],
+        }
+    finally:
+        session.close()
+        shutil.rmtree(root, ignore_errors=True)
+
+
+def _transport_proof():
+    base = EVID / "superseded_824170e3"
+    label = json.loads((base / "LABEL.json").read_text())
+    report = json.loads((base / "entrypoint.json").read_text())
+    receipt = report.get("event_call_receipt") or {}
+    return {
+        "schema": "SOROK_S48_OLD_TRANSPORT_PROOF@1",
+        "cut": label.get("cut"),
+        "actual_provider_call": bool(receipt.get("actual_provider_call")),
+        "provider_call_count": receipt.get("provider_call_count"),
+        "transport_only": True,
+        "positive_independence_superseded": label.get(
+            "positive_independence_superseded"
+        ),
+        "reason": label.get("reason"),
+        "raw_stdout": str(
+            (base / "product.stdout.jsonl").relative_to(RET)
+        ),
+        "raw_stdout_sha256": _sha(base / "product.stdout.jsonl"),
+        "entrypoint_sha256": _sha(base / "entrypoint.json"),
+        "not_current_positive": True,
+    }
 
 
 def test_evidence():
@@ -220,66 +249,14 @@ def test_evidence():
     }
 
 
-def actual_entrypoint():
-    path = LOGS / "entrypoint.log"
-    if not path.is_file():
-        raise RuntimeError("S48_ENTRYPOINT_LOG_MISSING")
-    report = json.loads(path.read_text())
-    receipt = report.get("event_call_receipt") or {}
-    if not receipt.get("actual_provider_call"):
-        raise RuntimeError("S48_ACTUAL_CALL_NOT_PROVEN")
-    if report.get("turn_status") != "REALIZED":
-        raise RuntimeError("S48_ACTUAL_POSITIVE_NOT_REALIZED:" + str(report.get("turn_status")))
-    if receipt.get("provider_call_count") != 1:
-        raise RuntimeError("S48_ACTUAL_CALL_COUNT_INVALID")
-    if report.get("cached_on_cold") is not True:
-        raise RuntimeError("S48_COLD_CACHE_NOT_PROVEN")
-    if report.get("cold_provider_call_count") != 0:
-        raise RuntimeError("S48_COLD_CALL_REPEATED")
-    if not (report.get("c9") or {}).get("s47_source_in_readset"):
-        raise RuntimeError("S48_S47_SOURCE_NOT_IN_C9")
-    return report
-
-
-def actual_envelope(report):
-    receipt = report.get("event_call_receipt") or {}
-    path = RET / receipt.get("stdout_path", "")
-    if not path.is_file():
-        raise RuntimeError("S48_ACTUAL_PRODUCT_LOG_MISSING")
-    text_parts = []
-    import json as _json
-    for line in path.read_text().splitlines():
-        try:
-            event = _json.loads(line)
-        except ValueError:
-            continue
-        if event.get("type") == "text":
-            text_parts.append(str((event.get("part") or {}).get("text", "")))
-    envelope = parse_envelope("".join(text_parts))
-    return {
-        "schema": "SOROK_S48_ACTUAL_ENVELOPE@1",
-        "source_event_ref": report.get("source_event", {}).get("event_ref"),
-        "product_session_ids": receipt.get("session_ids"),
-        "output_sha256": receipt.get("output_sha256"),
-        "envelope": envelope,
-    }
-
-
-def chronology_evidence():
-    proc = _run(
-        [PY, "-B", str(EVID / "repro_candidate_source_chronology.py")],
-        "repro_candidate_source_chronology.log", env=KNOW_ENV,
-    )
-    if proc.returncode != 0:
-        raise RuntimeError("S48_CHRONOLOGY_ORACLE_FAILED:" + proc.stderr)
-    return json.loads(proc.stdout)
-
-
-def source_manifest(report):
+def source_manifest(transport):
     s47_rows = []
     for rel in S47_FILES:
         local = S47_RETURN / rel
-        pinned = _git("rev-parse", f"{CUTS['s47']}:WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/{rel}")
+        pinned = _git(
+            "rev-parse",
+            f"{CUTS['s47']}:WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/{rel}",
+        )
         local_blob = _git("hash-object", str(local))
         s47_rows.append({
             "path": rel,
@@ -296,8 +273,18 @@ def source_manifest(report):
         }
         for rel in S48_FILES if (RET / rel).exists()
     ]
-    receipt = report.get("event_call_receipt") or {}
-    stdout_path = RET / receipt.get("stdout_path", "")
+    old = []
+    for directory in (
+        EVID / "old_cut_ae021e",
+        EVID / "old_cut_ee4b2dd9",
+        EVID / "superseded_824170e3",
+    ):
+        for path in sorted(directory.glob("*")):
+            if path.is_file():
+                old.append({
+                    "path": str(path.relative_to(RET)),
+                    "sha256": _sha(path),
+                })
     return {
         "schema": "SOROK_S48_SOURCE_MANIFEST@1",
         "roots": roots(),
@@ -307,32 +294,12 @@ def source_manifest(report):
             "all_exact": all(row["exact"] for row in s47_rows),
         },
         "s48_local": local_rows,
-        "old_cut_evidence": [
-            {
-                "path": str(path.relative_to(RET)),
-                "sha256": _sha(path),
-            }
-            for directory in (EVID / "old_cut_ae021e", EVID / "old_cut_ee4b2dd9")
-            for path in sorted(directory.glob("*"))
-            if path.is_file()
-        ],
-        "actual_call": {
-            "provider_call_count": receipt.get("provider_call_count"),
-            "actual_envelope_sha256": _sha(EVID / "actual_envelope.json")
-            if (EVID / "actual_envelope.json").is_file() else "",
-            "actual_provider_call": receipt.get("actual_provider_call"),
-            "model": receipt.get("model"),
-            "variant": receipt.get("variant"),
-            "prompt_sha256": receipt.get("prompt_sha256"),
-            "output_sha256": receipt.get("output_sha256"),
-            "stdout_path": receipt.get("stdout_path"),
-            "stdout_sha256": _sha(stdout_path) if stdout_path.is_file() else "",
-        },
-        "product_gateway": {
-            "cli": receipt.get("cli"),
-            "model": receipt.get("model"),
-            "variant": receipt.get("variant"),
-            "provider": receipt.get("provider"),
+        "old_and_superseded_proofs": old,
+        "transport_proof": transport,
+        "current_source": {
+            "status": SOURCE_OWNER_HOLD,
+            "missing_function": MISSING_FUNCTION,
+            "current_positive": False,
         },
         "native_grants": {
             "actor": False, "rule": False, "source": False, "human": False,
@@ -345,38 +312,24 @@ def main():
     EVID.mkdir(exist_ok=True)
     JUNIT.mkdir(exist_ok=True)
     LOGS.mkdir(exist_ok=True)
-    report = actual_entrypoint()
-    _write(EVID / "entrypoint.json", report)
-    envelope = actual_envelope(report)
-    _write(EVID / "actual_envelope.json", envelope)
-    _write(EVID / "controlled.json", controlled_branches())
-    chronology = chronology_evidence()
-    _write(EVID / "chronology.json", chronology)
-    _write(EVID / "source_manifest.json", source_manifest(report))
+    transport = _transport_proof()
+    hold = _controlled_hold()
+    no_source = _no_qualified_source()
+    _write(EVID / "transport_proof.json", transport)
+    _write(EVID / "controlled_hold.json", hold)
+    _write(EVID / "no_source.json", no_source)
+    _write(EVID / "source_manifest.json", source_manifest(transport))
     tests = test_evidence()
     _write(EVID / "test_run.json", {
         "schema": "SOROK_S48_TEST_RUN@1", "s48": tests,
     })
     print(json.dumps({
-        "actual_envelope": envelope["envelope"],
-        "actual": {
-            "status": report.get("turn_status"),
-            "provider_call_count": report.get("provider_call_count"),
-            "cached_on_cold": report.get("cached_on_cold"),
-            "cold_provider_call_count": report.get("cold_provider_call_count"),
-            "event_ref": report.get("event", {}).get("event_ref"),
-            "event_ordinal": report.get("event", {}).get("event_ordinal"),
-            "turn_id": report.get("turn_id"),
-            "source_owner": report.get("source_owner"),
-            "source_actor": report.get("source_actor"),
-            "s47_source_in_readset": report.get("c9", {}).get("s47_source_in_readset"),
-            "output_sha256": (report.get("event_call_receipt") or {}).get("output_sha256"),
-        },
-        "chronology": chronology,
-        "controlled": json.loads((EVID / "controlled.json").read_text()),
+        "transport": transport,
+        "hold": hold,
+        "no_source": no_source,
         "tests": tests["counts"],
     }, sort_keys=True))
-    return 0 if tests["exit"] == 0 else 1
+    return 0 if tests["exit"] == 0 and hold["status"] == "SOURCE_OWNER_HOLD" else 1
 
 
 if __name__ == "__main__":
