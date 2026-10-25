@@ -16,6 +16,21 @@
 
 Direct human decisions and applicable adopted constitutional authority govern precedence. The integrated Astra program's proposed commissions are not blanket code/source/scientific/deployment grants. Newer does not automatically supersede older; later work amends only the exact grain it actually changes. Resolve current operative authority through canonical `HQ_HANDOFF/LATEST.json` and its immutable checkpoint. A concrete conflict must be surfaced with exact references, not silently harmonized.
 
+## Incorporated Browser PYAT HQ scientific recovery and treatment — R98
+
+The existing Astra trajectory MUST be pursued with the completed R98 Browser scientific recovery/treatment in view, not as though that work never occurred. Exact final return: `d29a9db26821e937afc3d0ef19e243aafbff1744:WORKER_RETURNS/PYAT-R98-BROWSER-HQ-GROUNDING-AND-TREATMENT-R1/`. Read `00_HQ_RETURN.md`, `01_RECOVERED_TREATMENTS.md`, `02_INTEGRATED_TREATMENT.md`, `03_HUMAN_DECISIONS.md`, `04_EXECUTION_HANDOFF.json`, final addendum `05_FIRST_SOURCE_TRIAGE.md`, and `EVIDENCE.json`/`RESUME.md`/`manifest.json` at that immutable cut. HQ intake verified the eight artifact hashes, nine-path return scope and direct remote; record `d9032c44da672de407c6b9885bd0b7d533a51828:PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/R99_R98_RETURN_INTAKE.json`.
+
+Apply its findings to the inherited parent functions:
+- Field Forge/context/structural treatments T1–T2 → Astra C5, N5/N6, F5, with actual C8/N9/N10W receiving-use requirements; observational attitude evidence does not automatically assert a material position or causal mechanism, and this does not exclude position-conditioned attitude clouds from structural priors.
+- Source-separated relation/transport treatment T3 → C6/N7/F6; actual linked-unit claims require actual linkage, while lawful separate fields/qualified bounds need not wait for a fictitious same-person join.
+- Temporal treatment T4 → C7/N8E/N8S/F7; historical selection, comparable population change, real panel transitions and modeled scenarios remain distinct.
+- Original-source treatment T5 and first-source triage → C2/N0 plus applicable C4/N4: exact retained source/product/science/rights reconciliation, preserving all35 and global obligations. R98's Q86 recommendation is a bounded source-specific contextual candidate, not a new program priority, generic structural prior, completed N10W or reason to discard stronger relevant positives.
+- Infrastructure treatment T6 → later U53A/UR R09 execution-integrity work; keep this separate from scientific content and source-specific preparation.
+
+The Browser return is completed documentary recovery and scientific recommendation, NOT automatic adoption of every proposed treatment, new original-source measurement or blanket scientific/code/use authority. Its exact recovered primary evidence and limits must be retained; follow actual subsequent user decisions, grants and HQ dispositions at their scope. The current human clarification of structural priors and R103 parent alignment resolve the overbroad context-versus-structure framing. Do not silently revert to earlier wording or turn an attitude-only canary into the entire world.
+
+For every applicable next commission/adjudication, identify which R98 finding is being reused and its disposition—already governed, adopted at an exact scope, proposed, limited or held—alongside the Astra requirement. Do not ignore completed treatment, rerun a general scientific recovery court without specific contradictory evidence, or promote a recommendation merely because a return is complete. Recover this connection after compaction/resumption using the exact refs; finer work must advance the broader Astra function, not replace it.
+
 ## Unremitting trajectory fidelity
 
 - Reanchor at the start of every resumed/compacted HQ context and before every material work-selection, commissioning or acceptance boundary: identify the applicable parent N-node/C-commission/F-gate/acceptance requirement, current evidence, dependency and grant. Reuse verified unchanged references; no repetitive whole-corpus reading or polling ritual.
