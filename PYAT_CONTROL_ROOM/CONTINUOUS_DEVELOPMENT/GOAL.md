@@ -1,3 +1,6 @@
+# Controlling PRE-V3 trajectory and decision limits — R102
+Before commissioning, reviewing or accepting work, read PRE_V3_TRAJECTORY.md, PRE_V3_TRAJECTORY.json and the operative current checkpoint/flight-board fields. Bind necessary work to the exact remaining T-workstream/C-endpoint requirement and actual consumer. Light executes settled contracts; it cannot redefine purpose, narrow breadth, promote evidence grade or invent scientific/persona meaning. Direct user clarification and adopted authority govern conflicts. R101 executive hold remains pending human review; heartbeat PAUSED must stay PAUSED. Existing full objective below is preserved.
+
 DEFAULT: EXECUTE THE NEXT AUTHORIZED ACTION.
 Use the current checkpoint to identify the next action that advances the actual product. Execute it with the cheapest qualified existing worker or tool.
 Before adding work, identify the explicit requirement or observed defect that makes it necessary. If none exists, omit it. Do not create a separate report of this check.
