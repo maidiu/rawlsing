@@ -61,6 +61,10 @@ def test_say_do_help_attend_with_cold_reopen_and_same_language_source(tmp_path):
         assert any("labeled English view" in line for line in said["surface"])
         assert session.read_encounters()[-1]["kind"] == "SAY"
         assert session.read_encounters()[-1]["source_event_refs"]
+        genuine_read = session.read_event(said["user_event"]["event_id"])
+        assert genuine_read["status"] == "OK"
+        assert genuine_read["c9"]["target_branch"] == "NO_CHANGE"
+        assert genuine_read["c9"]["target_proposals"] == []
         assert _b_speech(session) == (before_b, before_a + 1)
         assert len(session.read_events()) == 2
     finally:
@@ -216,3 +220,66 @@ def test_inherited_contact_semantics_are_not_downgraded(tmp_path):
         assert session.verify()["ok"] is True
     finally:
         session.close()
+
+
+@pytest.mark.parametrize("field", [
+    "user_event_id", "user_text", "speech_event_id", "action_event_id",
+    "source_event_refs", "access_receipt_ids", "branch_id", "native_text",
+    "user_actor", "speech_event_hash",
+])
+def test_resealed_forged_encounter_is_rejected_warm_and_cold(tmp_path, field):
+    from bp1.canon import digest
+    from s45.session import S45ReadRefusal
+
+    state = tmp_path / f"forged-{field}"
+    session = _start(state)
+    try:
+        said = session.say("Can I help?")
+        real = session.read_encounters()[-1]
+        forged = dict(real)
+        forged.pop("encounter_id", None)
+        forged.pop("encounter_hash", None)
+        if field == "user_event_id":
+            forged[field] = "TEST_ONLY_FORGED_USER_EVENT"
+            forged["user_text"] = "FORGED USER TEXT"
+        elif field == "user_text":
+            forged[field] = "FORGED USER TEXT"
+        elif field == "speech_event_id":
+            forged[field] = "TEST_ONLY_FORGED_SPEECH_EVENT"
+        elif field == "action_event_id":
+            forged[field] = "TEST_ONLY_FORGED_ACTION_EVENT"
+        elif field == "source_event_refs":
+            forged[field] = [{
+                "event_id": "TEST_ONLY_FORGED_SOURCE",
+                "event_hash": "0" * 64,
+                "branch_id": "forged-branch",
+            }]
+        elif field == "access_receipt_ids":
+            forged[field] = ["TEST_ONLY_FORGED_ACCESS"]
+        elif field == "branch_id":
+            forged[field] = "forged-branch"
+        elif field == "native_text":
+            forged[field] = "FORGED NATIVE TEXT"
+        elif field == "user_actor":
+            forged["user_event_id"] = said["language"]["speech_event_id"]
+            forged["user_event_hash"] = said["language"]["speech_event_hash"]
+            forged["user_text"] = said["language"]["native_text"]
+        elif field == "speech_event_hash":
+            forged["speech_event_hash"] = "0" * 64
+        forged["encounter_hash"] = digest(forged)
+        session.product._append_episode(
+            session.branch_id, "A", "S45_USER_ENCOUNTER",
+            session.clock(), forged,
+        )
+        session.product._checkpoint(
+            session.branch_id, session.clock(), session.world()
+        )
+        with pytest.raises(S45ReadRefusal):
+            session.read_event(said["user_event"]["event_id"])
+        assert session.verify()["ok"] is False
+        assert session.verify()["s45_encounters"]["status"] == "REFUSED"
+    finally:
+        session.close()
+    with pytest.raises(Exception):
+        cold = S45Session.open(state)
+        cold.close()

@@ -38,6 +38,10 @@ from s37.harness import case_for, source_for  # noqa: E402
 
 S44_RETURN = Path(roots()["s44_return"])
 S43_RETURN = Path(roots()["s43_return"])
+REVIEW_ENCOUNTER = Path(
+    "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/"
+    "sorok-incumbent-review/SOROK_REVIEW/S45/evidence/repro_encounter_tamper.py"
+)
 S44_FILES = [
     "s44/__init__.py", "s44/bootstrap.py", "s44/bundle.py", "s44/errors.py",
     "s44/rng.py", "s44/root.py", "s44/session.py",
@@ -144,6 +148,7 @@ def consumer_evidence(state):
         before_b = _b_speech(session)
         first_event = session.read_events()[0]
         said = session.say("Can I help?")
+        said_read = session.read_event(said["user_event"]["event_id"])
         state_say = dict(session.world().actor_state["A"])
     finally:
         session.close()
@@ -203,6 +208,10 @@ def consumer_evidence(state):
         ],
         "say": {
             "status": said.get("status"), "strategy": said.get("strategy"),
+            "read_event_status": said_read.get("status"),
+            "read_event_has_c9": isinstance(said_read.get("c9"), dict),
+            "read_event_c9_target": (said_read.get("c9") or {}).get("target_branch"),
+            "read_event_c9_proposals": (said_read.get("c9") or {}).get("target_proposals"),
             "native_text": (said.get("language") or {}).get("native_text"),
             "translation_text": (said.get("language") or {}).get("translation_text"),
             "source_event_id": (said.get("language") or {}).get("source_event_id"),
@@ -326,6 +335,24 @@ def denied_evidence(state):
     }
 
 
+def encounter_repro_evidence() -> dict:
+    env = dict(ENV, S45_RETURN=str(RET))
+    proc = subprocess.run(
+        [PY, str(REVIEW_ENCOUNTER)], cwd=str(RET), env=env,
+        capture_output=True, text=True,
+    )
+    (LOGS / "repro_encounter_tamper.log").write_text(proc.stdout + proc.stderr)
+    return {
+        "schema": "SOROK_S45_ENCOUNTER_TAMPER_REPRO@1",
+        "oracle": str(REVIEW_ENCOUNTER),
+        "oracle_sha256": _sha256(REVIEW_ENCOUNTER),
+        "exit": proc.returncode,
+        "refused": proc.returncode != 0,
+        "stdout": proc.stdout,
+        "stderr_tail": proc.stderr.strip().splitlines()[-4:],
+    }
+
+
 def test_evidence():
     rows = {}
     for name, path, env in (
@@ -406,6 +433,7 @@ def main():
         unsupported = unsupported_evidence(work / "unsupported")
         denied = denied_evidence(work / "denied")
         tests = test_evidence()
+        encounter_repro = encounter_repro_evidence()
         entry = _run([PY, "-B", "run_s45.py"], "entrypoint.log")
         if entry.returncode != 0:
             raise RuntimeError("S45_ENTRYPOINT_FAILED:" + entry.stderr)
@@ -418,9 +446,12 @@ def main():
             "schema": "SOROK_S45_TEST_RUN@1", "rows": tests,
             "entrypoint_exit": entry.returncode,
         })
+        _write(EVID / "repro_encounter_tamper.json", encounter_repro)
         _write(EVID / "source_manifest.json", source_manifest())
         print(json.dumps({
             "tests": {key: value["counts"] for key, value in tests.items()},
+            "encounter_repro_refused": encounter_repro["refused"],
+            "encounter_repro_exit": encounter_repro["exit"],
             "entrypoint_exit": entry.returncode,
             "consumer": {
                 "root_hash": consumer["root_hash"],

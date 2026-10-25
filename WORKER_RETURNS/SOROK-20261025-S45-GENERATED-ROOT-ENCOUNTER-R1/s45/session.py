@@ -28,6 +28,12 @@ S45_BINDING_SCHEMA = "S45_HELP_LANGUAGE_BINDING@1"
 GRADE = "TEST_ONLY_SOURCEBOUND_GENERATED_ROOT_ENCOUNTER_NOT_NATIVE"
 
 
+class S45ReadRefusal(ValueError):
+    def __init__(self, code: str, detail: str = "") -> None:
+        super().__init__(code if not detail else f"{code}: {detail}")
+        self.code = code
+
+
 class S45Session(S44Session):
     """S44 root plus user SAY/DO/ATTEND through the same person runtime."""
 
@@ -313,6 +319,11 @@ class S45Session(S44Session):
         if kind in {"SAY", "DO_HELP"} and not language:
             language = self._last_language or {}
         candidate = result.get("candidate") or {}
+        action_id = admission.get("action_event_id", "")
+        action_event = self.event(action_id) if action_id else None
+        speech_id = (language or {}).get("speech_event_id", "")
+        speech_event = self.event(speech_id) if speech_id else None
+        root = self.read_root()
         body = {
             "schema": S45_SCHEMA,
             "grade": GRADE,
@@ -320,16 +331,27 @@ class S45Session(S44Session):
             "kind": kind,
             "status": result.get("status"),
             "reason": result.get("reason", ""),
+            "branch_id": self.branch_id,
+            "root_hash": root["root_hash"],
+            "root_id": root["root_id"],
             "user_event_id": (user_event or {}).get("event_id", ""),
             "user_event_hash": (user_event or {}).get("hash", ""),
             "user_event_kind": (user_event or {}).get("kind", ""),
+            "user_text": (user_event or {}).get("body", {}).get("text", ""),
             "user_episode_id": (user_episode or {}).get("episode_id", ""),
             "user_episode_body": dict((user_episode or {}).get("body") or {}),
+            "user_episode_hash": (
+                digest((user_episode or {}).get("body") or {})
+                if user_episode else ""
+            ),
             "strategy": candidate.get("strategy", result.get("strategy")),
             "template_id": candidate.get("template_id", ""),
-            "speech_event_id": (language or {}).get("speech_event_id", ""),
-            "speech_event_hash": (language or {}).get("speech_event_hash", ""),
-            "action_event_id": admission.get("action_event_id", ""),
+            "speech_event_id": speech_id,
+            "speech_event_hash": (speech_event or {}).get("hash", ""),
+            "speech_event_kind": (speech_event or {}).get("kind", ""),
+            "action_event_id": action_id,
+            "action_event_hash": (action_event or {}).get("hash", ""),
+            "action_event_kind": (action_event or {}).get("kind", ""),
             "admission_id": admission.get("admission_id", ""),
             "plan_hash": (language or {}).get("plan_hash", ""),
             "native_text": (language or {}).get("native_text", ""),
@@ -342,12 +364,176 @@ class S45Session(S44Session):
             "target_proposals": [],
             "s45_boundary": True,
         }
+        body["encounter_hash"] = digest(body)
         episode = self.product._append_episode(
             self.branch_id, "A", ENCOUNTER_KIND, self.clock(), body
         )
         self.product._checkpoint(self.branch_id, self.clock(), self.world())
-        body["encounter_id"] = episode["episode_id"]
-        body["encounter_hash"] = digest(body)
+        return {**body, "encounter_id": episode["episode_id"]}
+
+    def _c9_lineage(self) -> dict | None:
+        base = list(super().read_events())
+        if not base:
+            return None
+        row = base[-1]
+        c9 = row.get("c9")
+        if not isinstance(c9, dict):
+            return None
+        return {
+            "lineage_only": True,
+            "source_event_ordinal": row.get("event_ordinal"),
+            "source_e1_event_id": row.get("e1_event_id", ""),
+            "source_e1_event_hash": row.get("e1_event_hash", ""),
+            **dict(c9),
+        }
+
+    def _root_evidence(self) -> dict:
+        root = self.read_root()
+        source_ids = {}
+        access_ids = {}
+        for row in root.get("language_evidence", []):
+            source_ids[row.get("source_event_id", "")] = row
+            access_ids[row.get("access_receipt_id", "")] = row
+        return {"root": root, "sources": source_ids, "access": access_ids}
+
+    def _current_access(self, access_ids: list[str]) -> dict:
+        try:
+            from language_mediation.index import build_index
+            index = build_index(self, actor_id="A")
+            invalid_access = set()
+            for row in index.get("invalidated_relations", []):
+                receipt = (row.get("access_receipt") or {}).get("receipt_id", "")
+                if receipt:
+                    invalid_access.add(receipt)
+            return {
+                receipt: ("REVOKED" if receipt in invalid_access else "GRANTED")
+                for receipt in access_ids
+            }
+        except Exception as exc:
+            return {receipt: "UNKNOWN:" + type(exc).__name__
+                    for receipt in access_ids}
+
+    def _validate_encounter(self, body: dict) -> dict:
+        if body.get("schema") != S45_SCHEMA:
+            raise S45ReadRefusal("S45_ENCOUNTER_SCHEMA_MISMATCH")
+        kind = body.get("kind")
+        if kind not in {"SAY", "DO_HELP", "ATTEND"}:
+            raise S45ReadRefusal("S45_ENCOUNTER_KIND_INVALID", str(kind))
+        evidence = self._root_evidence()
+        root = evidence["root"]
+        if body.get("branch_id") != self.branch_id:
+            raise S45ReadRefusal("S45_ENCOUNTER_BRANCH_MISMATCH")
+        if body.get("root_hash") != root["root_hash"]:
+            raise S45ReadRefusal("S45_ENCOUNTER_ROOT_MISMATCH")
+        stored_hash = body.get("encounter_hash", "")
+        hash_body = {k: v for k, v in body.items()
+                     if k not in {"encounter_id", "encounter_hash"}}
+        if not stored_hash or stored_hash != digest(hash_body):
+            raise S45ReadRefusal("S45_ENCOUNTER_HASH_MISMATCH")
+        if kind == "SAY":
+            user = self.event(body.get("user_event_id", ""))
+            if not user or user.get("hash") != body.get("user_event_hash"):
+                raise S45ReadRefusal("S45_USER_EVENT_MISSING")
+            if user.get("actor_id") != "U" or user.get("kind") != "SPEECH":
+                raise S45ReadRefusal("S45_USER_EVENT_NOT_SPEECH")
+            if user.get("body", {}).get("text", "") != body.get("user_text", ""):
+                raise S45ReadRefusal("S45_USER_EVENT_TEXT_MISMATCH")
+        else:
+            episode = next(
+                (row for row in self.episodes("U")
+                 if row.get("episode_id") == body.get("user_episode_id")),
+                None,
+            )
+            wanted = "DO" if kind == "DO_HELP" else "ATTEND"
+            if not episode or episode.get("kind") != wanted:
+                raise S45ReadRefusal("S45_USER_EPISODE_MISSING")
+            if digest(episode.get("body") or {}) != body.get("user_episode_hash"):
+                raise S45ReadRefusal("S45_USER_EPISODE_HASH_MISMATCH")
+            if episode.get("body") != body.get("user_episode_body"):
+                raise S45ReadRefusal("S45_USER_EPISODE_BODY_MISMATCH")
+
+        speech_id = body.get("speech_event_id", "")
+        action_id = body.get("action_event_id", "")
+        if body.get("status") == "UNSUPPORTED":
+            if speech_id or action_id or body.get("language"):
+                raise S45ReadRefusal("S45_UNSUPPORTED_HAS_EFFECT")
+        elif kind == "ATTEND":
+            if speech_id or action_id or body.get("language"):
+                raise S45ReadRefusal("S45_ATTEND_HAS_ACTOR_EFFECT")
+        elif body.get("status") == "OK":
+            event = self.event(speech_id)
+            if not event or event.get("hash") != body.get("speech_event_hash"):
+                raise S45ReadRefusal("S45_SPEECH_EVENT_MISSING")
+            if event.get("actor_id") != "A" or event.get("kind") != "SPEECH":
+                raise S45ReadRefusal("S45_SPEECH_EVENT_INVALID")
+            if event.get("body", {}).get("text", "") != body.get("native_text"):
+                raise S45ReadRefusal("S45_SPEECH_TEXT_MISMATCH")
+            lme = event.get("body", {}).get("lme") or {}
+            if lme.get("plan_hash") != body.get("plan_hash"):
+                raise S45ReadRefusal("S45_SPEECH_PLAN_MISMATCH")
+            language = body.get("language") or {}
+            if language.get("plan_hash") != body.get("plan_hash"):
+                raise S45ReadRefusal("S45_LANGUAGE_PLAN_MISMATCH")
+            if language.get("native_text") != body.get("native_text"):
+                raise S45ReadRefusal("S45_LANGUAGE_NATIVE_MISMATCH")
+            if language.get("translation_text") != body.get("translation_text"):
+                raise S45ReadRefusal("S45_LANGUAGE_TRANSLATION_MISMATCH")
+            if language.get("equivalence_status") != "ACCEPTED":
+                raise S45ReadRefusal("S45_EQUIVALENCE_NOT_ACCEPTED")
+            source_refs = body.get("source_event_refs") or []
+            access_ids = body.get("access_receipt_ids") or []
+            if not source_refs or not access_ids:
+                raise S45ReadRefusal("S45_SOURCE_OR_ACCESS_MISSING")
+            for ref in source_refs:
+                source = self.event(ref.get("event_id", ""))
+                if not source or source.get("hash") != ref.get("event_hash"):
+                    raise S45ReadRefusal("S45_SOURCE_EVENT_MISSING")
+                if source.get("actor_id") != "B" or source.get("kind") != "SPEECH":
+                    raise S45ReadRefusal("S45_SOURCE_EVENT_INVALID")
+                if ref.get("branch_id") != self.branch_id:
+                    raise S45ReadRefusal("S45_SOURCE_BRANCH_MISMATCH")
+                if ref.get("event_id") not in evidence["sources"]:
+                    raise S45ReadRefusal("S45_SOURCE_NOT_ROOT_EVIDENCE")
+            for receipt in access_ids:
+                if receipt not in evidence["access"]:
+                    raise S45ReadRefusal("S45_ACCESS_NOT_ROOT_EVIDENCE")
+            view = self.language_view(speech_id, locale="en")
+            if view.get("status") != "OK" or view.get("display_mode") != "LABELED_ENGLISH":
+                raise S45ReadRefusal("S45_LANGUAGE_VIEW_MISSING")
+            if view.get("translation_text") != body.get("translation_text"):
+                raise S45ReadRefusal("S45_LANGUAGE_VIEW_TEXT_MISMATCH")
+        admission_id = body.get("admission_id", "")
+        if admission_id:
+            admission_episode = next(
+                (row for row in self.episodes("A")
+                 if row.get("kind") == "EXPRESSION_ADMISSION"
+                 and (row.get("body", {}).get("admission") or {}).get(
+                     "admission_id") == admission_id),
+                None,
+            )
+            if not admission_episode:
+                raise S45ReadRefusal("S45_ADMISSION_MISSING")
+            admission = admission_episode["body"]["admission"]
+            if admission.get("scheme") == "fake":
+                raise S45ReadRefusal("S45_ADMISSION_INVALID")
+            if speech_id and admission.get("speech_event_id") != speech_id:
+                raise S45ReadRefusal("S45_ADMISSION_SPEECH_MISMATCH")
+            if action_id and admission.get("action_event_id") != action_id:
+                raise S45ReadRefusal("S45_ADMISSION_ACTION_MISMATCH")
+            if body.get("plan_hash") and admission.get("plan", {}).get(
+                    "plan_hash") != body.get("plan_hash"):
+                raise S45ReadRefusal("S45_ADMISSION_PLAN_MISMATCH")
+        if action_id:
+            action = self.event(action_id)
+            if not action or action.get("hash") != body.get("action_event_hash"):
+                raise S45ReadRefusal("S45_ACTION_EVENT_MISSING")
+            if action.get("actor_id") != "A":
+                raise S45ReadRefusal("S45_ACTION_ACTOR_MISMATCH")
+            if action.get("kind") != body.get("action_event_kind"):
+                raise S45ReadRefusal("S45_ACTION_KIND_MISMATCH")
+        c9 = self._c9_lineage()
+        if not c9 or c9.get("target_branch") != "NO_CHANGE":
+            raise S45ReadRefusal("S45_C9_LINEAGE_MISSING")
         return body
 
     def read_encounters(self) -> list[dict]:
@@ -358,7 +544,11 @@ class S45Session(S44Session):
             body = dict(row.get("body") or {})
             body["encounter_id"] = row.get("episode_id", "")
             body["clock"] = row.get("clock", body.get("clock", 0))
-            body["encounter_hash"] = digest(body)
+            body = self._validate_encounter(body)
+            body["current_access"] = self._current_access(
+                list(body.get("access_receipt_ids") or [])
+            )
+            body["c9_lineage"] = self._c9_lineage()
             rows.append(body)
         return rows
 
@@ -376,6 +566,7 @@ class S45Session(S44Session):
             "action_event_kind": "",
             "target_proposals": [],
             "s45": body,
+            "c9": body.get("c9_lineage"),
         }
 
     def read_events(self) -> list[dict]:
@@ -388,7 +579,8 @@ class S45Session(S44Session):
         return events
 
     def read_event(self, event_ref: str) -> dict:
-        for body in self.read_encounters():
+        encounters = self.read_encounters()
+        for body in encounters:
             if event_ref in {
                 body.get("encounter_id"), body.get("user_event_id"),
                 body.get("speech_event_id"), body.get("action_event_id"),
@@ -435,18 +627,25 @@ class S45Session(S44Session):
             s40_session.S40_ATOMS = original_atoms
 
     def verify(self) -> dict:
-        result = super().verify()
+        try:
+            result = super().verify()
+        except Exception as exc:
+            result = {"ok": False, "error": type(exc).__name__ + ":" + str(exc)}
         try:
             encounters = self.read_encounters()
             result["s45_encounters"] = {
                 "status": "OK",
                 "count": len(encounters),
                 "kinds": [row.get("kind") for row in encounters],
+                "current_access": {
+                    row.get("encounter_id"): row.get("current_access", {})
+                    for row in encounters
+                },
             }
             s45_ok = True
-        except (S45Refusal, KeyError, OSError, ValueError) as exc:
+        except (S45ReadRefusal, S45Refusal, KeyError, OSError, ValueError) as exc:
             result["s45_encounters"] = {
-                "status": "REFUSED", "code": str(exc),
+                "status": "REFUSED", "code": getattr(exc, "code", str(exc)),
             }
             s45_ok = False
         result["ok"] = bool(result.get("ok")) and s45_ok
@@ -454,5 +653,6 @@ class S45Session(S44Session):
 
 
 __all__ = [
-    "S45_SCHEMA", "S45Session", "ENCOUNTER_KIND", "S45_BINDING_SCHEMA",
+    "S45_SCHEMA", "S45Session", "S45ReadRefusal", "ENCOUNTER_KIND",
+    "S45_BINDING_SCHEMA",
 ]

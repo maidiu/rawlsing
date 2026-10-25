@@ -2,7 +2,13 @@
 from .bootstrap import install
 from .errors import S45Refusal
 from .language import ATOMS, PAIRS, UNITS, compile_help_plan
-from .session import ENCOUNTER_KIND, S45_BINDING_SCHEMA, S45_SCHEMA, S45Session
+from .session import (
+    ENCOUNTER_KIND,
+    S45_BINDING_SCHEMA,
+    S45_SCHEMA,
+    S45ReadRefusal,
+    S45Session,
+)
 
 install()
 
