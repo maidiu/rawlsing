@@ -1,3 +1,10 @@
+# Pyat R105 — goal ties Astra authority to completed Browser science
+
+ActualgoalattachmentandworkingGOALexplicitlyincorporateexactR98finalreturn+allartifacts+05triageandR99verifiedintake. ScientifictreatmentsmappedtoparentAstraC/N/FfunctionsandlaterR09repair. Applicablefindingsmustbereusedwithactualadoption/proposal/limitdisposition; no generalrecoveryrestart, blanketsemanticadoptionorQ86programnarrowing. HumanclarificationandR103broaderscopepreserved. No newworker/grant/measurement/acceptance. Pausedgoal/heartbeatandR101holdunchanged.
+
+
+## Earlier progress history retained
+
 # Pyat R104 — actual goal anchored in inherited authority
 
 Useraskedhighestvision/trajectorysourceingoval itselfandunremittinggovernanceofagentsteps. ActualreferencedpastedgoalfileandworkingGOALnowbeginwith exactexistingAstraPROGRAM/DAG/FUNCTIONS/C/AT/wake/frozenPass3/4refs, userR61vision/currentclarification and laterU53A/UR/M3repairoverlays/currentauthority. Requiredreanchoringonresume/compaction/materialboundary; everycommission/adjudicationmustadvanceparentfunctionatcorrectscope. FinerR101/R102notespreservedsubordinateviaR103. Originalobjectivepreserved. No newstrategy/source/code/scienceauthority, no resumedgoal/heartbeat. BothpausedandR101holdretained.

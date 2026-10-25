@@ -1,0 +1,4 @@
+# Pyat R105 — goal ties Astra authority to completed Browser science
+
+ActualgoalattachmentandworkingGOALexplicitlyincorporateexactR98finalreturn+allartifacts+05triageandR99verifiedintake. ScientifictreatmentsmappedtoparentAstraC/N/FfunctionsandlaterR09repair. Applicablefindingsmustbereusedwithactualadoption/proposal/limitdisposition; no generalrecoveryrestart, blanketsemanticadoptionorQ86programnarrowing. HumanclarificationandR103broaderscopepreserved. No newworker/grant/measurement/acceptance. Pausedgoal/heartbeatandR101holdunchanged.
+
