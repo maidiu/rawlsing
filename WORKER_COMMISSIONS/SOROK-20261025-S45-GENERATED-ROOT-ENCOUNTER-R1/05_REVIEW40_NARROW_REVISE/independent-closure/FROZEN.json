@@ -1,0 +1,27 @@
+{
+  "schema": "SOROK_REVIEW_S45_CLOSURE_V1",
+  "candidate_branch": "codex/sorok-s45-generated-root-encounter",
+  "corrected_commit": "1369b9af53fc59485546fe50e9b23d55f42c6c85",
+  "prior_reviewed_commit": "9e975b9bba4c9dba4e0ac2c77753d87caff78848",
+  "prior_review_receipt": "dc088c7c545116c164a71318258485c6afc5acdc",
+  "base": "923278fbe6b030e2ffdd10fe42d7a18266344611",
+  "decision": "REVISE",
+  "defect": "properly resealed encounters with unknown status or missing admission are accepted as canonical; strategy/admission/status relationship is not validated",
+  "checks": {
+    "focused_tests": "16 PASS, 0 FAIL (56.63s)",
+    "entrypoint": "PASS (exit 0); root SAY/DO_HELP/ATTEND, cold, native/English, NO_CHANGE, zero targets",
+    "original_unresealed_oracle": "exit 1; S45_ENCOUNTER_HASH_MISMATCH",
+    "resealed_status_admission": "ACCEPTED BOGUS/OK warm/cold; defect",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "s45/session.py": "4fb2c2b9648fd3ed069f40bebb12d61a54037b3abff58d66a00dfb81a8b77063",
+    "tests/test_s45_generated_root_encounter.py": "8928a2e2f7559847515ef63a1dc6a70bf053d202edef496de3cadd2157410e3b",
+    "evidence/s45-closure-tests-16.out": "366594721d5fb18c09b13abb5c96d77a27b85d3e2a62e1c64ce6fc252ae6d564",
+    "evidence/s45-closure-entrypoint.json": "b9b4e9ecab31ebb0490f3f491d9adbb74e5af5010fe41e34464c2c6d843f2f37",
+    "evidence/original-oracle.status": "4bf4fca02e6eeaf7f1c510b82c756e7f8a3c567a230bae1094b254adc774f38b",
+    "evidence/original-oracle.stderr.txt": "9c2633aeb443aafa6bbbb7f1e11e0f0b924a6708433d5531f074116e121ed7b3",
+    "evidence/repro_resealed_semantic_mismatch.py": "04f7ded569a503b45bd0603e7189dfd9ab875c3e65a664eaac89cc852826c5ae",
+    "evidence/s45-resealed-semantic.json": "a4aa50efad63f27e8253129d894f4fac1f5d515182445bfe13d3f16f6f6a114c"
+  }
+}

@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/SOROK_REVIEW/S45/evidence/repro_encounter_tamper.py", line 100, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-review/SOROK_REVIEW/S45/evidence/repro_encounter_tamper.py", line 55, in main
+    forged_read = session.read_event("TEST_ONLY_FORGED_USER_EVENT")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s45-closure.o7Nmo0/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/session.py", line 582, in read_event
+    encounters = self.read_encounters()
+                 ^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s45-closure.o7Nmo0/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/session.py", line 547, in read_encounters
+    body = self._validate_encounter(body)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s45-closure.o7Nmo0/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/session.py", line 432, in _validate_encounter
+    raise S45ReadRefusal("S45_ENCOUNTER_HASH_MISMATCH")
+s45.session.S45ReadRefusal: S45_ENCOUNTER_HASH_MISMATCH
