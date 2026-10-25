@@ -111,5 +111,7 @@ changed. This review does not call the whole broader R107/R06 or original
 estate complete.
 
 No candidate edit, self-adoption, new worker/provider or broader court was
-performed. The branch will be pushed non-force and directly read back; final
-remote SHA is reported separately.
+performed. The branch was pushed non-force. Evidence commit
+`245e4ac897fb94781bd757e06c3526798e60257a` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also directly verified and reported to the coordinator.
