@@ -1,0 +1,26 @@
+{
+  "schema": "PYAT_R108_RETURN_TO_LOW_RESERVATION_V1",
+  "reservation_id": "r108-low-once",
+  "target_thread_ref": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da",
+  "observed_current": {
+    "turn_id": "01a1745c-28fd-7a01-8bfc-13bbe33b4ae4",
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "current_entry": "Externally observed High; no desktop High dispatch claimed",
+  "requested_setting": {
+    "model": "gpt-6.1-sol",
+    "effort": "low"
+  },
+  "tool": "mcp__codex_app__send_message_to_thread",
+  "dispatch_count": 0,
+  "reservation": "RESERVED_ONCE",
+  "completion_ref": "director:d83e569e306ca3e287f92b3c977faef10d32f028:R101-R107 executive reorientation and bounded commissioning complete",
+  "goal_status": "PAUSED_PRESERVED",
+  "automation_status": "PAUSED_PRESERVED",
+  "worker_refs": [
+    "ses_e98c905cbffekusoHURfKyEUKG"
+  ],
+  "next": "Dispatch same HQ thinking=low once, omit model; verify actual next-turn metadata. Timeout is ambiguous HOLD, do not retry.",
+  "created_at": "2026-10-25T18:43:16.884Z"
+}

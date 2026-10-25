@@ -1,3 +1,7 @@
+# CURRENT — R108 economical coordination
+
+R107 R06/C8 remains the authorized bounded commission. Its exact launch, scope and parent mapping are in the final R107 entry below. Existing Astra authority and applicable Browser scientific treatments govern. Prior examples must not be repeated in routine prompts or used as program anchors. Historical entries below are evidence, not current dispatch instructions. Goal and heartbeat remain paused. User requested Sol Low following completed executive work; actual next-turn verification pending.
+
 # R61E continuation — High decision complete; downshift now
 
 Read GOAL.md, FLIGHT_BOARD.json and R61E_R09_ENGINEERING_DECISION.md beside this file. Preserve the full N11 trajectory and all holds. No new architecture court.
