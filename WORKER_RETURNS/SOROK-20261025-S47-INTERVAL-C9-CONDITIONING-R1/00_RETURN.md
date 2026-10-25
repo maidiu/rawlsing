@@ -1,6 +1,6 @@
 # SOROK S47 — actual interval material/activity conditioning in C9
 
-**RESULT:** `S47_INTERVAL_C9_CONDITIONING__SAME_S46_PERSON__ACTUAL_CONDITIONING_SOURCE_IN_C9_READSET__ACTUAL_MATERIAL_FALSE_SCHEDULED_TRUE__CONDITION_CUT_RESTORE_COLD__FORGERY_REFUSED__13_OF_13_FOCUSED_TESTS__NO_TARGET__NATIVE_HOLD`.
+**RESULT:** `S47_INTERVAL_C9_CONDITIONING__SAME_S46_PERSON__ACTUAL_CONDITIONING_SOURCE_IN_C9_READSET__ACTUAL_MATERIAL_FALSE_SCHEDULED_TRUE__CONDITION_CUT_RESTORE_COLD__FORGERY_REFUSED__15_OF_15_FOCUSED_TESTS__NO_TARGET__NATIVE_HOLD`.
 
 S47 composes the current independently issued S46 interval state into the existing S36/C9 conditioning path for the next real S42 admission on the same S45/S44/S46 person. The C9 readset and material eligibility now consume the actual interval source instead of treating the interval receipt as metadata only. The accepted targetless C9 response behavior is preserved.
 
@@ -20,9 +20,18 @@ S47 composes the current independently issued S46 interval state into the existi
 - For an admitted interval event, the qualified interval source is the controlling material source. This prevents the stale accepted B material envelope from masking the actual interval material result. The B base path remains unchanged when no interval source exists.
 - The same S42 event remains `NO_CHANGE`/`NO_PROPOSAL` with zero target proposals. C9 consumes `objective_material_eligible`; no existing finite response rule maps interval material presence to a different target/action, so S47 does not invent one or claim an action change.
 
+## Reader repair
+
+- `read_c9_conditioning(event_ref)` now selects and validates the supplied event through the existing S42 canonical binding reader instead of always using the latest binding.
+- The event's canonical C9 receipt/response is read directly. Its `readset_refs` supplies the exact historical S47 source identity for that event. The source body is reconstructed deterministically from that referenced validated S46 interval state receipt; source hash/content is checked. No new ledger, shadow history, or rewritten past C9 row is created.
+- Historical source, present current source, present currentness, present condition revocation, and historical condition revocation are reported separately. Reading an older event after a second interval returns its own event `event_ref` and first source; reading it after a condition cut still returns the historical source while reporting `present_condition_revoked: true` and `current_source: null`.
+- The documented no-argument behavior remains latest-event selection; event-keyed selection applies when `event_ref` is supplied. Unknown/empty event identities are refused via the existing S42 reader.
+- Added warm/cold two-event distinct-source regression and warm/cold historical-read-after-cut regression. Preserved review reproducers pass.
+
 ## Evidence
 
-- Focused S47 tests: **13 passed**, 0 failed/error/skipped; `junit/s47_full.xml`, `logs/s47_full.log`, `evidence/test_run.json`.
+- Focused S47 tests: **15 passed**, 0 failed/error/skipped; `junit/s47_full.xml`, `logs/s47_full.log`, `evidence/test_run.json`.
+- Preserved reviewer reproducers: `logs/repro_reader_event_ref.log` and `logs/repro_reader_cut.log` both exit 0; event-keyed first/second sources remain distinct warm and cold, and historical events retain their source after cut.
 - Runnable entrypoint: `run_s47.py` exits **0**; `run_s47_evidence.py` exits **0**; `evidence/entrypoint.json`, `logs/entrypoint.log`, `logs/evidence_run.log`.
 - ACTUAL interval: `PARTIAL`, coverage `[[222, 223]]`; material after interval `0`; C9 interval source is in the actual readset; `objective_material_eligible: false`; targetless `NO_CHANGE`/`NO_PROPOSAL`.
 - SCHEDULED_ONLY control: `NOT_PERFORMED`, coverage `[]`; material after interval `1`; C9 interval source is in the actual readset; `objective_material_eligible: true`; same targetless response, same root `3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7`.
@@ -49,4 +58,4 @@ python3 WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/run_s47_ev
 > WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/logs/evidence_run.log 2>&1
 ```
 
-**Terminal:** `S47_INTERVAL_C9_CONDITIONING__SAME_S46_PERSON__QUALIFIED_INTERVAL_SOURCE__REAL_C9_READSET_AND_MATERIAL_ELIGIBILITY__CONDITION_RESTORE_COLD__FORGERY_REFUSED__13_OF_13__NO_TARGET__NATIVE_HOLD`. Final commit and remote SHA are verified after push.
+**Terminal:** `S47_INTERVAL_C9_CONDITIONING__SAME_S46_PERSON__QUALIFIED_INTERVAL_SOURCE__REAL_C9_READSET_AND_MATERIAL_ELIGIBILITY__CONDITION_RESTORE_COLD__FORGERY_REFUSED__15_OF_15__NO_TARGET__NATIVE_HOLD`. Final commit and remote SHA are verified after push.

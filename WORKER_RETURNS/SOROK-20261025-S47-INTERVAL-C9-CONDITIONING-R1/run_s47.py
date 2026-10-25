@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 import sys
 import tempfile
 from copy import deepcopy
@@ -265,44 +266,49 @@ def source_faults(root):
 
 
 def main() -> int:
-    root = Path(tempfile.mkdtemp(prefix="sorok-s47-"))
-    report = {
-        "schema": "SOROK_S47_INTERVAL_C9_RUN@1",
-        "grade": "TEST_ONLY_S47_INTERVAL_MATERIAL_C9_CONDITIONING_NOT_NATIVE",
-        "native": False,
-        "provider_calls": 0,
-        "product_model_calls": 0,
-        "state_root": str(root),
-        "actual": _run_mode(root, "ACTUAL"),
-        "scheduled": _run_mode(root, "SCHEDULED_ONLY"),
-        "condition": condition_evidence(root),
-        "no_interval": no_interval_evidence(root),
-        "source_faults": source_faults(root),
-    }
-    report["checks"] = {
-        "actual_material_consumed": (
-            report["actual"]["material_after_interval"] == 0
-            and report["actual"]["c9"]["objective_material_eligible"] is False
-        ),
-        "scheduled_material_retained": (
-            report["scheduled"]["material_after_interval"] == 1
-            and report["scheduled"]["c9"]["objective_material_eligible"] is True
-        ),
-        "source_in_c9_readset": (
-            report["actual"]["c9"]["s47_source_in_readset"]
-            and report["scheduled"]["c9"]["s47_source_in_readset"]
-        ),
-        "targetless": (
-            report["actual"]["c9"]["target_branch"] == "NO_CHANGE"
-            and report["scheduled"]["c9"]["target_branch"] == "NO_CHANGE"
-        ),
-        "condition_restores": report["condition"]["restored_source_same"],
-        "faults_refused": all(
-            value != "ACCEPTED" for value in report["source_faults"]["refusals"].values()
-        ),
-    }
-    print(json.dumps(report, indent=2, sort_keys=True))
-    return 0 if all(report["checks"].values()) else 1
+    (RETURN / "logs").mkdir(parents=True, exist_ok=True)
+    root = Path(tempfile.mkdtemp(prefix="sorok-s47-", dir=str(RETURN / "logs")))
+    try:
+        report = {
+            "schema": "SOROK_S47_INTERVAL_C9_RUN@1",
+            "grade": "TEST_ONLY_S47_INTERVAL_MATERIAL_C9_CONDITIONING_NOT_NATIVE",
+            "native": False,
+            "provider_calls": 0,
+            "product_model_calls": 0,
+            "state_root": str(root),
+            "actual": _run_mode(root, "ACTUAL"),
+            "scheduled": _run_mode(root, "SCHEDULED_ONLY"),
+            "condition": condition_evidence(root),
+            "no_interval": no_interval_evidence(root),
+            "source_faults": source_faults(root),
+        }
+        report["checks"] = {
+            "actual_material_consumed": (
+                report["actual"]["material_after_interval"] == 0
+                and report["actual"]["c9"]["objective_material_eligible"] is False
+            ),
+            "scheduled_material_retained": (
+                report["scheduled"]["material_after_interval"] == 1
+                and report["scheduled"]["c9"]["objective_material_eligible"] is True
+            ),
+            "source_in_c9_readset": (
+                report["actual"]["c9"]["s47_source_in_readset"]
+                and report["scheduled"]["c9"]["s47_source_in_readset"]
+            ),
+            "targetless": (
+                report["actual"]["c9"]["target_branch"] == "NO_CHANGE"
+                and report["scheduled"]["c9"]["target_branch"] == "NO_CHANGE"
+            ),
+            "condition_restores": report["condition"]["restored_source_same"],
+            "faults_refused": all(
+                value != "ACCEPTED"
+                for value in report["source_faults"]["refusals"].values()
+            ),
+        }
+        print(json.dumps(report, indent=2, sort_keys=True))
+        return 0 if all(report["checks"].values()) else 1
+    finally:
+        shutil.rmtree(root, ignore_errors=True)
 
 
 if __name__ == "__main__":

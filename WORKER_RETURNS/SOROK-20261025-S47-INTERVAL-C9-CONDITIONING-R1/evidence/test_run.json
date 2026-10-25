@@ -38,6 +38,16 @@
         },
         {
           "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_event_keyed_reader_keeps_two_distinct_sources_warm_and_cold",
+          "status": "PASS"
+        },
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_event_keyed_reader_preserves_historical_source_after_condition_cut",
+          "status": "PASS"
+        },
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
           "name": "test_forged_conditioning_source_is_refused_then_original_remains[actor_id-WRONG_ACTOR-S47_SOURCE_ACTOR_ID_MISMATCH]",
           "status": "PASS"
         },
@@ -79,10 +89,10 @@
       ],
       "counts": {
         "ERROR": 0,
-        "PASS": 13,
+        "PASS": 15,
         "RED": 0,
         "SKIP": 0,
-        "tests": 13
+        "tests": 15
       },
       "exit": 0,
       "junit": "junit/s47_full.xml"

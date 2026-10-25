@@ -13,6 +13,51 @@ SOURCE_CLASS = "ResolvedStructuralContext"
 SCHEMA = "S47_INTERVAL_MATERIAL_CONDITION@1"
 
 
+def _source_for_state(session, state, *, access: str,
+                     currentness: str) -> dict:
+    latest = state["segments"][-1]["world"]
+    actor_id = state.get("actor_id")
+    source_ref = "TEST_ONLY_S47_INTERVAL_" + state["state_id"]
+    content = {
+        "schema": SCHEMA,
+        "grade": "TEST_ONLY_S47_WORLD_MATERIAL_CONDITION_NOT_NATIVE",
+        "native": False,
+        "psychology_claim": False,
+        "condition_kind": "OBJECTIVE_BOUNDED_MATERIAL_PARTICIPATION",
+        "source_owner": state.get("world_owner"),
+        "source_grade": "TEST_ONLY_INSTALLED_SIMULATION_OWNER",
+        "subject": actor_id,
+        "actor_id": actor_id,
+        "branch_id": state.get("branch_id", session.branch_id),
+        "scene": "workshop",
+        "access": access,
+        "as_of": int(state.get("end", session.clock())),
+        "interval_state_id": state["state_id"],
+        "interval_receipt_hash": state["receipt_hash"],
+        "domain_issuance_id": state.get("domain_issuance_id", ""),
+        "domain_issuance_hash": state.get("domain_issuance_hash", ""),
+        "domain_id": state.get("domain_id", ""),
+        "domain_hash": state.get("domain_hash", ""),
+        "mode": state.get("domain", {}).get("mode", ""),
+        "status": state.get("status"),
+        "coverage": list(state.get("coverage") or []),
+        "currentness": currentness,
+        "material_after_interval": bool(
+            (latest.get("state_after") or {}).get("material_remaining", 0)
+        ),
+        "private_b_motive_included": False,
+        "actor_knowledge_inferred": False,
+        "actor_access_granted": False,
+        "native_authority_claimed": False,
+    }
+    return make_conditioning_source(
+        source_ref=source_ref,
+        source_class=SOURCE_CLASS,
+        subject=actor_id,
+        body=content,
+    )
+
+
 def current_interval_source(session) -> dict | None:
     states = [
         row for row in session.read_interval_states()
@@ -26,48 +71,36 @@ def current_interval_source(session) -> dict | None:
     ):
         return None
     base = session.world_prerequisites()
-    latest = state["segments"][-1]["world"]
-    access = "granted" if base.get("material_available") else "denied"
-    source_ref = "TEST_ONLY_S47_INTERVAL_" + state["state_id"]
-    content = {
-        "schema": SCHEMA,
-        "grade": "TEST_ONLY_S47_WORLD_MATERIAL_CONDITION_NOT_NATIVE",
-        "native": False,
-        "psychology_claim": False,
-        "condition_kind": "OBJECTIVE_BOUNDED_MATERIAL_PARTICIPATION",
-        "source_owner": state.get("world_owner"),
-        "source_grade": "TEST_ONLY_INSTALLED_SIMULATION_OWNER",
-        "subject": session.world().actor_state.get("A", {}).get("actor_id"),
-        "actor_id": session.world().actor_state.get("A", {}).get("actor_id"),
-        "branch_id": session.branch_id,
-        "scene": "workshop",
-        "access": access,
-        "as_of": int(state.get("end", session.clock())),
-        "interval_state_id": state["state_id"],
-        "interval_receipt_hash": state["receipt_hash"],
-        "domain_issuance_id": state.get("domain_issuance_id", ""),
-        "domain_issuance_hash": state.get("domain_issuance_hash", ""),
-        "domain_id": state.get("domain_id", ""),
-        "domain_hash": state.get("domain_hash", ""),
-        "mode": state.get("domain", {}).get("mode", ""),
-        "status": state.get("status"),
-        "coverage": list(state.get("coverage") or []),
-        "currentness": state.get("currentness"),
-        "material_after_interval": bool(
-            (latest.get("state_after") or {}).get("material_remaining", 0)
-        ),
-        "private_b_motive_included": False,
-        "actor_knowledge_inferred": False,
-        "actor_access_granted": False,
-        "native_authority_claimed": False,
-    }
-    return make_conditioning_source(
-        source_ref=source_ref,
-        source_class=SOURCE_CLASS,
-        subject=content["subject"],
-        body=content,
+    return _source_for_state(
+        session,
+        state,
+        access="granted" if base.get("material_available") else "denied",
+        currentness=state.get("currentness", "CURRENT"),
     )
 
+
+def historical_interval_source(session, source_ref: str) -> dict | None:
+    if not isinstance(source_ref, str) or not source_ref.startswith(
+        "TEST_ONLY_S47_INTERVAL_"
+    ):
+        return None
+    state_id = source_ref[len("TEST_ONLY_S47_INTERVAL_"):]
+    state = next(
+        (
+            row for row in session.read_interval_states()
+            if row.get("state_id") == state_id
+        ),
+        None,
+    )
+    if state is None:
+        raise S47Refusal("S47_SOURCE_STATE_MISSING", state_id)
+    after = state["segments"][-1]["world"].get("state_after") or {}
+    return _source_for_state(
+        session,
+        state,
+        access="granted" if after.get("material_remaining", 0) else "denied",
+        currentness="CURRENT",
+    )
 
 def qualify_source(session, source: dict) -> dict:
     if not isinstance(source, dict):
@@ -137,4 +170,7 @@ def qualify_source(session, source: dict) -> dict:
     return source
 
 
-__all__ = ["SOURCE_CLASS", "SCHEMA", "current_interval_source", "qualify_source"]
+__all__ = [
+    "SOURCE_CLASS", "SCHEMA", "current_interval_source",
+    "historical_interval_source", "qualify_source",
+]

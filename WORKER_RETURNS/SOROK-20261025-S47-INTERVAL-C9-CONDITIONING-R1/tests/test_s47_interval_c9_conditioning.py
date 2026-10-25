@@ -137,6 +137,104 @@ def test_condition_cut_refuses_and_restore_reconstructs_same_c9_source(tmp_path)
             session.close()
 
 
+def test_event_keyed_reader_keeps_two_distinct_sources_warm_and_cold(tmp_path):
+    state = tmp_path / "two-events"
+    session = _start(state)
+    try:
+        session.produce_interval(
+            make_domain(mode="ACTUAL", start=session.clock(), end=session.clock() + 4)
+        )
+        first_result = _admit(session)
+        first_e1 = first_result["event"]["e1_event_id"]
+        first_source = session.c9_interval_source()
+        first_before = session.read_c9_conditioning(first_e1)
+        first_event_ref = first_before["event_ref"]
+
+        session.produce_interval(
+            make_domain(mode="SCHEDULED_ONLY", start=session.clock(), end=session.clock() + 2)
+        )
+        second_result = _admit(session)
+        second_e1 = second_result["event"]["e1_event_id"]
+        second_source = session.c9_interval_source()
+        second_read = session.read_c9_conditioning(second_e1)
+        first_after = session.read_c9_conditioning(first_e1)
+        latest = session.read_c9_conditioning()
+
+        assert first_source["source_ref"] != second_source["source_ref"]
+        assert first_before["s47_source_hash"] == first_source["source_hash"]
+        assert first_after["event_ref"] == first_event_ref
+        assert first_after["s47_source_ref"] == first_source["source_ref"]
+        assert first_after["s47_source_hash"] == first_source["source_hash"]
+        assert first_after["s47_source_in_readset"] is True
+        assert first_after["s47_source"]["content"]["coverage"] == [[222, 223]]
+        assert first_after["current_source_ref"] == second_source["source_ref"]
+        assert second_read["event_ref"] != first_after["event_ref"]
+        assert second_read["s47_source_ref"] == second_source["source_ref"]
+        assert latest["s47_source_ref"] == second_source["source_ref"]
+        session.close()
+
+        cold = S47Session.open(state)
+        try:
+            cold_first = cold.read_c9_conditioning(first_e1)
+            assert cold_first["event_ref"] == first_event_ref
+            assert cold_first["s47_source_ref"] == first_source["source_ref"]
+            assert cold_first["s47_source_hash"] == first_source["source_hash"]
+            assert cold_first["s47_source_in_readset"] is True
+            assert cold.verify()["ok"] is True
+        finally:
+            cold.close()
+    finally:
+        try:
+            session.close()
+        except Exception:
+            pass
+
+
+def test_event_keyed_reader_preserves_historical_source_after_condition_cut(tmp_path):
+    state = tmp_path / "historical-cut"
+    session = _start(state)
+    try:
+        produced = session.produce_interval(
+            make_domain(mode="ACTUAL", start=session.clock(), end=session.clock() + 4)
+        )
+        result = _admit(session)
+        event_e1 = result["event"]["e1_event_id"]
+        before = session.read_c9_conditioning(event_e1)
+        source_hash = before["s47_source_hash"]
+        source_ref = before["s47_source_ref"]
+        session.revoke_interval_condition(produced["state_id"], reason="TEST_ONLY_CUT")
+        after = session.read_c9_conditioning(event_e1)
+        assert after["event_ref"] == before["event_ref"]
+        assert after["s47_source_ref"] == source_ref
+        assert after["s47_source_hash"] == source_hash
+        assert after["s47_source_in_readset"] is True
+        assert after["historical_source"]["content"]["interval_receipt_hash"] == produced["receipt_hash"]
+        assert after["present_interval_currentness"] == "CURRENT"
+        assert after["present_condition_revoked"] is True
+        assert after["historical_condition_revoked"] is True
+        assert after["current_source"] is None
+        assert after["current_source_ref"] == ""
+        session.close()
+
+        cold = S47Session.open(state)
+        try:
+            cold_after = cold.read_c9_conditioning(event_e1)
+            assert cold_after["event_ref"] == before["event_ref"]
+            assert cold_after["s47_source_ref"] == source_ref
+            assert cold_after["s47_source_hash"] == source_hash
+            assert cold_after["s47_source_in_readset"] is True
+            assert cold_after["present_condition_revoked"] is True
+            assert cold_after["current_source"] is None
+            assert cold.verify()["ok"] is True
+        finally:
+            cold.close()
+    finally:
+        try:
+            session.close()
+        except Exception:
+            pass
+
+
 @pytest.mark.parametrize("field,value,code", [
     ("actor_id", "WRONG_ACTOR", "S47_SOURCE_ACTOR_ID_MISMATCH"),
     ("branch_id", "wrong_branch", "S47_SOURCE_BRANCH_ID_MISMATCH"),

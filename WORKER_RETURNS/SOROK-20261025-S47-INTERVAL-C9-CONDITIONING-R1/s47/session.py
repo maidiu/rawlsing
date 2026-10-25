@@ -6,10 +6,16 @@ from .bootstrap import install
 install()
 
 from s42.bindings import binding_episodes  # noqa: E402
+from s42.reader import S42ReadRefusal  # noqa: E402
+import s42.reader as s42_reader  # noqa: E402
 from s46.session import S46Session  # noqa: E402
 import s41.reader as s41_reader  # noqa: E402
 
-from .conditioning import current_interval_source, qualify_source  # noqa: E402
+from .conditioning import (  # noqa: E402
+    current_interval_source,
+    historical_interval_source,
+    qualify_source,
+)
 
 S47_SCHEMA = "SOROK_S47_INTERVAL_C9_CONDITIONING_SESSION@1"
 
@@ -26,34 +32,112 @@ class S47Session(S46Session):
 
     def read_c9_conditioning(self, event_ref: str | None = None) -> dict:
         bindings = binding_episodes(self)
-        if not bindings:
-            raise LookupError("S47_C9_BINDING_MISSING")
-        binding = bindings[-1]
-        response, receipt, _ = s41_reader._read_c9(binding["c9"])
+        if event_ref is None:
+            if not bindings:
+                raise LookupError("S47_C9_BINDING_MISSING")
+            selected = bindings[-1]["e1_event_id"]
+        else:
+            if not isinstance(event_ref, str) or not event_ref.strip():
+                raise S42ReadRefusal("S42_EVENT_NOT_FOUND")
+            selected = event_ref
+        all_bindings = self._all_bindings()
+        binding = s42_reader._find_binding(all_bindings, selected)
+        if binding is None:
+            raise S42ReadRefusal("S42_EVENT_NOT_FOUND")
+        event_read = s42_reader.read_event(self, selected)
+        c9_binding = binding.get("c9")
+        if not isinstance(c9_binding, dict):
+            raise S42ReadRefusal("S42_C9_BINDING_MISSING")
+        response, receipt, _ = s41_reader._read_c9(c9_binding)
+        if response.get("event_ref") != binding.get("e1_event_hash"):
+            raise S42ReadRefusal("S42_C9_RESPONSE_EVENT_MISMATCH")
+        if receipt.get("response_ref") != c9_binding.get("response_ref"):
+            raise S42ReadRefusal("S42_C9_RECEIPT_RESPONSE_MISMATCH")
         s35 = response.get("s35_receipt") or {}
-        source = current_interval_source(self)
+        readset = list(s35.get("readset_refs") or [])
+        source_refs = [
+            ref for ref in readset
+            if isinstance(ref, str)
+            and ref.startswith("TEST_ONLY_S47_INTERVAL_")
+        ]
+        if len(set(source_refs)) > 1:
+            raise S47Refusal("S47_SOURCE_READSET_AMBIGUOUS")
+        historical_source = (
+            historical_interval_source(self, source_refs[0])
+            if source_refs else None
+        )
+        if historical_source is not None:
+            historical = historical_source["content"]
+            if historical.get("actor_id") != event_read.get("actor_id"):
+                raise S47Refusal("S47_SOURCE_ACTOR_ID_MISMATCH")
+            if historical.get("branch_id") != event_read.get("branch_id"):
+                raise S47Refusal("S47_SOURCE_BRANCH_ID_MISMATCH")
+            if historical.get("as_of", 0) > event_read.get("event_time", 0):
+                raise S47Refusal("S47_SOURCE_AS_OF_MISMATCH")
+        current_source = current_interval_source(self)
+        current_states = [
+            row for row in self.read_interval_states()
+            if row.get("currentness") == "CURRENT"
+        ]
+        present = current_states[-1] if current_states else None
+        present_revoked = bool(
+            present and self._condition_revoked(present["state_id"])
+        )
+        historical_revoked = bool(
+            historical_source
+            and self._condition_revoked(
+                historical_source["content"]["interval_state_id"]
+            )
+        )
         return {
             "schema": "SOROK_S47_C9_CONDITIONING_READ@1",
-            "event_ref": response.get("event_ref"),
+            "event_ref": event_read.get("e1_event_hash"),
+            "selected_event_ref": selected,
             "response_status": response.get("status"),
-            "readset_refs": list(s35.get("readset_refs") or []),
-            "s47_source_ref": source.get("source_ref") if source else "",
-            "s47_source_hash": source.get("source_hash") if source else "",
+            "readset_refs": readset,
+            "s47_source_ref": (
+                historical_source.get("source_ref") if historical_source else ""
+            ),
+            "s47_source_hash": (
+                historical_source.get("source_hash") if historical_source else ""
+            ),
             "s47_source_currentness": (
-                (source.get("content") or {}).get("currentness") if source else ""
+                (historical_source.get("content") or {}).get("currentness")
+                if historical_source else ""
             ),
             "s47_source_coverage": (
-                (source.get("content") or {}).get("coverage") if source else []
+                (historical_source.get("content") or {}).get("coverage")
+                if historical_source else []
             ),
             "s47_source_in_readset": bool(
-                source and source.get("source_ref") in (s35.get("readset_refs") or [])
+                historical_source
+                and historical_source.get("source_ref") in readset
             ),
+            "historical_source": historical_source,
+            "current_source": current_source,
+            "current_source_ref": (
+                current_source.get("source_ref") if current_source else ""
+            ),
+            "current_source_hash": (
+                current_source.get("source_hash") if current_source else ""
+            ),
+            "present_interval_state_id": (
+                present.get("state_id") if present else ""
+            ),
+            "present_interval_currentness": (
+                present.get("currentness") if present else "ABSENT"
+            ),
+            "present_condition_revoked": present_revoked,
+            "historical_condition_revoked": historical_revoked,
             "objective_material_eligible": s35.get("objective_material_eligible"),
             "objective_material_refs": list(s35.get("objective_material_refs") or []),
             "target_branch": receipt.get("target_branch"),
             "target_reason": receipt.get("target_reason"),
             "target_proposals": list(s35.get("target_proposals") or []),
-            "s47_source": source,
+            "historical_source_ref": (
+                historical_source.get("source_ref") if historical_source else ""
+            ),
+            "s47_source": historical_source,
         }
 
     def verify(self) -> dict:

@@ -197,6 +197,8 @@ def main() -> int:
     EVID.mkdir(exist_ok=True)
     JUNIT.mkdir(exist_ok=True)
     LOGS.mkdir(exist_ok=True)
+    (LOGS / "tmp").mkdir(exist_ok=True)
+    ENV["TMPDIR"] = str(LOGS / "tmp")
     work = Path(tempfile.mkdtemp(prefix="s47-evidence-", dir=str(RET)))
     try:
         entry = _run([PY, "-B", "run_s47.py"], "entrypoint.log")
