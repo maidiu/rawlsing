@@ -1530,28 +1530,39 @@
     "approved_utc": "2026-10-24T14:10:45.118294+00:00",
     "canonical_prior": "8db787b2760e797e359b06cdbadbd5d050b6939a"
   },
-  "next_action": "Intake R97 recovered FF/relation/temporal recommendation; HQ/models perform scientific synthesis, user decides consequential choices. No external-owner dependency. Preserve code/source/facility holds.",
-  "active_workers": [
-    {
-      "id": "R97_WORLD_TREATMENT_RECOVERY",
+  "next_action": "Human launches BrowserHQ with saved prompt; primaryHQ intakes exact returned treatment. Do not restart R97singleworker.",
+  "active_workers": [],
+  "r98_browser_handoff": {
+    "schema": "PYAT_R98_BROWSER_HQ_HANDOFF_V1",
+    "commission_tip": "0088943109ac71cb4dc6da9375b4c828bc8ed765",
+    "branch": "agent/browser-pyat-r98-grounding-and-treatment-r1",
+    "commission_root": "WORKER_COMMISSIONS/PYAT-R98-BROWSER-HQ-GROUNDING-AND-TREATMENT-R1/",
+    "return_root": "WORKER_RETURNS/PYAT-R98-BROWSER-HQ-GROUNDING-AND-TREATMENT-R1/",
+    "browser_launch": "NOT_LAUNCHED_BY_PRIMARY_HQ",
+    "r97_process": {
       "pid": 30501,
-      "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "branch": "agent/opencode-pyat-r97-world-scientific-treatment-recovery-r1",
-      "startup": "b2cfe93cee854b7aff2081a7a223ada75295332a",
-      "commission_tip": "a86ec01d7246daf3e0f35d42f8c9eb5ec4aaa713",
-      "state": "ACTUALLY_LAUNCHED_OPENCODE_MAX_DOCUMENTARY_RECOVERY",
-      "actual_tool_preflight": "PENDING",
-      "library_access": "EXACT_ONLY",
-      "grain": "existing FF/F6/F7 treatment recovery and recommendation, no scientific issuance",
-      "blocker_effect": "prepares concrete engineering continuation and human choices",
-      "hard_forbidden": [
-        "code edits",
-        "original source access",
-        "scientific issuance",
-        "OS/CI/prod",
-        "N11/N12/Sorok",
-        "J52/W52 restart"
-      ]
-    }
-  ]
+      "state": "TERMINATED_USER_ROUTING_CORRECTION_HANDLE_MISSING",
+      "signal": "SIGTERM",
+      "tracked_code_changes_observed": false,
+      "partial_logs_retained": {
+        "stderr.log": {
+          "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r97-world-treatment/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "launch.json": {
+          "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r97-world-treatment/launch.json",
+          "bytes": 784,
+          "sha256": "07944c400b96488b46bba0088b35426555f660b14cb303f1c52905754bc73f73"
+        },
+        "stdout.jsonl": {
+          "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r97-world-treatment/stdout.jsonl",
+          "bytes": 885708,
+          "sha256": "42bdef2fd49478776cb1346eb54b4cf87e3e2c965662b1f8d80871b74042a19e"
+        }
+      }
+    },
+    "authority": "Browser documentary recovery/research/treatment and recommendations; no code/source/scientific issuance or infrastructure deployment",
+    "next": "Human launches BrowserHQ with saved prompt; primaryHQ intakes exact returned treatment. Do not restart R97singleworker."
+  }
 }
