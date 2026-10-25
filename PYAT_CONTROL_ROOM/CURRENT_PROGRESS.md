@@ -1,3 +1,10 @@
+# Pyat R107 — existing R06/C8 world-consuming progressive integration
+
+UserrequestedcommissionlaunchafterR0state. SealedexistingAstraC8/N9+N10E→N10W andlaterR06repair, twoexistingR06code/testpaths only. ExistingOpenCodeMAXauthoractuallylaunchedfromacceptedR96; actualtoolpreflightpending. Reusablequery/prefixclass, actualworldANDcomputedempiricalconsumerdependency, minority/uncertainty/currentness/coldproof; notQ86onlyorN10Eworld_partFalsefallback. Exactoutsidepath/scientificrule residualstop, no newgeneralinvestigation. R100parkedbankedunaccepted. Distinctexistingreviewerafterterminalcandidate. No source/measurement/scientific/CI/prod/N11/N12/Sorok/J52W52grant orgoal/heartbeatresumption.
+
+
+## Earlier progress history retained
+
 # Pyat R106 — current R0 repair state and terminal R100 candidate
 
 R100author terminal79309093e39d363b760436df2a06f4009c81c789 verified7reporthashes/2codeblobs/authorizeddelta/directremote,22authorpassesnotindependentacceptance. Q86specificempiricalcontext/world_partFalse; productfitreview/acceptanceheld. activeworkerscorrectedempty. AllpriorR00/R01/R02/R03/R04/R05/R08localacceptancesandR06R96scopepreserved. R07notready/R09capture+deploymentheld. ExistingAstraparentplusR0repairflightremainthesameprogram; no restart,newcommissionornewadoption. Goal/heartbeatpausedandR101holdunchanged.
