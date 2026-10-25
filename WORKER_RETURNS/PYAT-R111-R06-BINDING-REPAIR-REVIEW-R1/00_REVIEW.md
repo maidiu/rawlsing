@@ -111,4 +111,7 @@ or broader court.
 `ORACLE.md`, this review, `COVERAGE_AND_LIMITS.md`, `RESUME.md`, `probes/`,
 `replay/` JUnit/logs, `evidence/commands.txt`, `evidence/remote_readback.txt`,
 `proof_witness.json`, and self-excluding `manifest.json` with SHA256 and byte
-sizes. Push is non-force; final remote SHA is reported separately.
+sizes. The branch was pushed non-force. Evidence commit
+`f710493a5939be84f6d3fb24c7a1d3f223462311` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also directly verified and reported to the coordinator.

@@ -12,8 +12,12 @@
     "python": "3.11.3",
     "reviewer": "existing distinct OpenCode Go DeepSeek V4.1 Flash MAX Global session"
   },
-  "evidence_commit": "",
-  "evidence_commit_remote_readback": {},
+  "evidence_commit": "f710493a5939be84f6d3fb24c7a1d3f223462311",
+  "evidence_commit_remote_readback": {
+    "candidate_remote_sha": "359ffcef4c2dbde0bea7233bdb8901e8ed28e9be",
+    "file": "evidence/remote_readback.txt",
+    "remote_sha": "f710493a5939be84f6d3fb24c7a1d3f223462311"
+  },
   "expectations_freeze_commit": "ef3cf0167",
   "expectations_sha256": "aa7c8828cb029c702311554c6e5feb7b9de9af41e8c9fbcfd1ac1bddc9bcba82",
   "findings": {
@@ -40,8 +44,8 @@
   ],
   "positive": "author 26/26; exact R109 probes 6/6; condition value, unlike shape, minority/zero/uncertainty, T0/T1 routes, field/empirical revocation, actual N10W LIVE_TRACE hashes, cold replay",
   "prior_r109_review": "e38a6a8c07ea6535a0d4de38053c15e4278934d7",
-  "r110_contract": "53981ac013755407ebf7de88f894add2f1dc2858",
   "r107_contract": "bb4ad106af69eae197251d8c0d54f7162901fd5e",
+  "r110_contract": "53981ac013755407ebf7de88f894add2f1dc2858",
   "review_branch": "agent/opencode-pyat-r111-r06-binding-repair-review-r1",
   "tests": {
     "author_suite": {
@@ -62,16 +66,16 @@
     },
     "successor_probes": {
       "errors": 0,
-      "failures": 3,
-      "junit": "replay/successor_junit.xml",
-      "passed": 2,
-      "skipped": 0,
-      "time_seconds": 3.452,
       "failed_tests": [
         "test_R111_world_rows_hash_mismatch_must_refuse",
         "test_R111_world_repository_omission_must_refuse",
         "test_R111_mixed_prefix_repository_must_refuse"
-      ]
+      ],
+      "failures": 3,
+      "junit": "replay/successor_junit.xml",
+      "passed": 2,
+      "skipped": 0,
+      "time_seconds": 3.452
     }
   },
   "verdict": "REVISE_SCOPED_REPAIR_1_ACCEPT_2_3"
