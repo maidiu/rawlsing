@@ -1070,6 +1070,27 @@ def _progressive_extension(prefix: ProgressivePrefixInput):
     )
 
 
+def progressive_source_rows_identity(repository, release_ref: ExactRef) -> str:
+    """Derive row identity from the actual admitted C11 release owner.
+
+    Uses the public exact release and its canonical respondent/event/routing
+    objects; never a caller-supplied fixture row hash.
+    """
+    release = repository.resolve_release_exact(release_ref)
+    row_objects = []
+    for obj in (*release.public_objects, *release.internal_records):
+        if type(obj).__name__ in {
+            "RespondentIdentity", "RespondentEvent", "RoutingEligibilityFact",
+        }:
+            row_objects.append(obj.ref.as_dict())
+    return semantic_hash({
+        "release_ref": release_ref.as_dict(),
+        "row_objects": sorted(row_objects, key=lambda item: (
+            item["kind"], item["object_id"], item["content_hash"]
+        )),
+    })
+
+
 def _progressive_prefix_identity(prefixes: tuple[ProgressivePrefixInput, ...]):
     first = prefixes[0]
     universe = first.consumer_query.source_universe_ref
@@ -1079,6 +1100,7 @@ def _progressive_prefix_identity(prefixes: tuple[ProgressivePrefixInput, ...]):
         if (prefix.consumer_query.source_universe_ref != universe
                 or prefix.consumer_query.release_ref != release
                 or prefix.release_ref != release
+                or prefix.repository is not first.repository
                 or canonicalize(prefix.query.risk_set_ref) != risk
                 or canonicalize(universe) not in [
                     canonicalize(ref) for ref in prefix.query.empirical_universe_refs
@@ -1102,7 +1124,12 @@ def _progressive_world_identity(prefixes, world_empirical):
                   or (source.get("risk_refs") or {}).get("R"))
     if world_risk is None or canonicalize(world_risk) != risk:
         return None
-    if source.get("repo") is not None and source.get("repo") is not prefixes[0].repository:
+    if source.get("repo") is None or source.get("repo") is not prefixes[0].repository:
+        return None
+    expected_rows = progressive_source_rows_identity(
+        prefixes[0].repository, prefixes[0].release_ref
+    )
+    if world_empirical.get("rows_hash") != expected_rows:
         return None
     return identity
 

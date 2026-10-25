@@ -1,6 +1,7 @@
 """R95 R06 source-separated world selected-view qualification (TEST_ONLY)."""
 from __future__ import annotations
 
+from copy import copy
 from dataclasses import replace
 from types import SimpleNamespace
 import json
@@ -23,7 +24,7 @@ from rawlsing_next.pre553_universal_world_binding import (
     ProgressivePrefixInput, ProgressiveWorldRequest,
     R05ActualExecution, R05WorldConsumerRequest, R05WorldField,
     WorldBindingError, configure_progressive_world_context,
-    configure_trusted_execution_context,
+    configure_trusted_execution_context, progressive_source_rows_identity,
     WorldFieldBinding, WorldSelectionRequest,
     progressive_world_view, select_joined_world_view,
     select_r05_world_view, select_world_view,
@@ -1028,7 +1029,9 @@ def _progressive_fixture(target="Y", conds=(("X", 1), ("O", "AB")),
         },
         "release_ref": source["release_ref"],
         "risk_refs": {"R": source["risk_refs"]["R"]},
-        "rows_hash": semantic_hash(rows), "publication": "2026-03-01",
+        "rows_hash": progressive_source_rows_identity(
+            source["repo"], source["release_ref"]),
+        "publication": "2026-03-01",
     }
     conditions = tuple((source["qrefs"][q], value) for q, value in conds)
     handle = configure_progressive_world_context(
@@ -1125,7 +1128,9 @@ def _progressive_fixture_parts():
                    "qrefs": source["qrefs"], "repo": source["repo"]},
         "release_ref": source["release_ref"],
         "risk_refs": {"R": source["risk_refs"]["R"]},
-        "rows_hash": semantic_hash(rows), "publication": "2026-03-01",
+        "rows_hash": progressive_source_rows_identity(
+            source["repo"], source["release_ref"]),
+        "publication": "2026-03-01",
     }
     return source["qrefs"]["Y"], conditions, prefixes, world
 
@@ -1229,3 +1234,45 @@ def test_r110_n10w_positioned_consumptions_bind_actual_n10e_hashes():
     assert all(isinstance(value, str) and value for value in observed)
     assert set(observed) == step_hashes
     assert all(entry.get("source") == "LIVE_TRACE" for entry in positioned)
+
+
+def test_r115_world_rows_hash_must_match_actual_owner_rows():
+    target, conditions, prefixes, world = _progressive_fixture_parts()
+    bad = dict(world)
+    bad["rows_hash"] = "f" * 64
+    handle = configure_progressive_world_context(
+        target_ref=target, conditions=conditions, prefixes=prefixes,
+        world_empirical=bad)
+    view = progressive_world_view(ProgressiveWorldRequest(
+        handle, "T0", "GENERIC_POSITIONED_SUBJECT", "HISTORICAL"))
+    assert view.state == "REFUSED"
+    assert view.reason_code == "PROGRESSIVE_WORLD_SOURCE_RELEASE_RISK_MISMATCH"
+
+
+def test_r115_world_source_repository_is_required():
+    target, conditions, prefixes, world = _progressive_fixture_parts()
+    bad = dict(world)
+    bad["source"] = {
+        key: value for key, value in world["source"].items() if key != "repo"
+    }
+    handle = configure_progressive_world_context(
+        target_ref=target, conditions=conditions, prefixes=prefixes,
+        world_empirical=bad)
+    view = progressive_world_view(ProgressiveWorldRequest(
+        handle, "T0", "GENERIC_POSITIONED_SUBJECT", "HISTORICAL"))
+    assert view.state == "REFUSED"
+    assert view.reason_code == "PROGRESSIVE_WORLD_SOURCE_RELEASE_RISK_MISMATCH"
+
+
+def test_r115_mixed_prefix_repository_identity_refuses():
+    target, conditions, prefixes, world = _progressive_fixture_parts()
+    mixed = (prefixes[0], replace(
+        prefixes[1], repository=copy(prefixes[1].repository),
+    ))
+    handle = configure_progressive_world_context(
+        target_ref=target, conditions=conditions, prefixes=mixed,
+        world_empirical=world)
+    view = progressive_world_view(ProgressiveWorldRequest(
+        handle, "T0", "GENERIC_POSITIONED_SUBJECT", "HISTORICAL"))
+    assert view.state == "REFUSED"
+    assert view.reason_code == "PROGRESSIVE_WORLD_SOURCE_RELEASE_RISK_MISMATCH"
