@@ -1,3 +1,5 @@
+> R120 DIRECT USER CORRECTION GOVERNS: the source-first/whole-wave framing below is a PROPOSED direction, not established current priority. No LiTS/WVS selection or source commission is authorized by it. First demonstrate current unmet parent function and actual useful positive product/consumer edge against current evidence. Historical C4 readiness cannot choose product priority. Preserve original text below as history; R120 current checkpoint governs.
+
 # Bounded next-operation decision after accepted R06 software function
 
 R119 accepts candidate 849a76de18ef627c3c403b426ebe70f0951a7e7b / independent review 73de309b24562716761fabe2a0f3cf518734cb2b at exact issued R107/High R112 sourcefree software scope. Read R119_R06_SOURCEFREE_SUCCESSOR_ACCEPTANCE.json; no more repair/review absent actual defect. Existing R00/R01/R02/R03/R04/R05/R08 local acceptances remain; R07 source-qualified N11 and full F5/F6/F7/35-wave obligations are not closed. R09 protected facility remains separate exact administrative hold.
