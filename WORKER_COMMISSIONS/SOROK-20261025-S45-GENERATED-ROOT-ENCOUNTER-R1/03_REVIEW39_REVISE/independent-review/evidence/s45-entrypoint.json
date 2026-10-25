@@ -1,0 +1,196 @@
+{
+  "attend": {
+    "has_actor_response": false,
+    "new_knowledge": [],
+    "status": "NO_CHANGE"
+  },
+  "clock": 222,
+  "cold_encounters": 3,
+  "cold_events": 4,
+  "do_help": {
+    "accepted": true,
+    "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_7b8c47084ac8e9ee2f38a374b8c78141c2c7f9b5f20376e0c4e7548723f929e0",
+    "native_text": "Sost\u00e9n el borde cercano. Revisar\u00e9 la costura.",
+    "status": "OK",
+    "strategy": "HELP_ACCEPT",
+    "translation_text": "Hold the near edge. I'll check the seam."
+  },
+  "encounter_count": 3,
+  "encounters": [
+    {
+      "access_receipt_ids": [
+        "LME_ACCESS_a1b21fe06727f9cdeb1d40ad68df357746d4a65cd5bf20d412bb96017ee0ab37"
+      ],
+      "action_event_id": "",
+      "encounter_id": "TEST_ONLY_BP4_EP_bf7f28117f9c1ef18c386fb16ce08bfd097cf1601bdf950013b1e7bd127a3f5d",
+      "kind": "SAY",
+      "native_text": "Puedes sostener el borde cercano si lo dices en serio.",
+      "source_event_refs": [
+        {
+          "branch_id": "first_session",
+          "clock": 222,
+          "event_hash": "d93cb819fd473ed7001caa5ae03295caba841bd609bad068675433f438c0eb3e",
+          "event_id": "TEST_ONLY_BP4_WORLD_EVT_bf9c51b2836e455c63c0595c0742629c8993694f8ba0040b56705fd964baf435",
+          "speaker_actor_id": "B"
+        }
+      ],
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_7fe44004d95046b38de7c13a220fa27b6ffd90e87344094e46f58004186a7b54",
+      "status": "OK",
+      "strategy": "HELP_INVITE",
+      "translation_text": "You can hold the near edge if you mean it.",
+      "user_event_id": "TEST_ONLY_BP4_WORLD_EVT_aaf62944f563366b9cad9ec31fe56e89f375d510583660061f2bc090b6b88c81"
+    },
+    {
+      "access_receipt_ids": [
+        "LME_ACCESS_8e9b749a1b573d679dc20561237d83696d8243f6a0eeb08341cf69ad557ba12f"
+      ],
+      "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_7b8c47084ac8e9ee2f38a374b8c78141c2c7f9b5f20376e0c4e7548723f929e0",
+      "encounter_id": "TEST_ONLY_BP4_EP_ffe5d17d97335db70dcc88df2754b3c14358a9e576cc00159d37e39d6b6ec2a8",
+      "kind": "DO_HELP",
+      "native_text": "Sost\u00e9n el borde cercano. Revisar\u00e9 la costura.",
+      "source_event_refs": [
+        {
+          "branch_id": "first_session",
+          "clock": 222,
+          "event_hash": "9b348f7f5f89b09ef09ae965c516251d48339314d29bc74ee230c3a287ef6a92",
+          "event_id": "TEST_ONLY_BP4_WORLD_EVT_235db1c23e079d07051e6a84290c764a416840e1accb32a9c0195f014b14b537",
+          "speaker_actor_id": "B"
+        }
+      ],
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_0388299023e336031589afece986b552dab300d689e5628ce51a51302dbe67a4",
+      "status": "OK",
+      "strategy": "HELP_ACCEPT",
+      "translation_text": "Hold the near edge. I'll check the seam.",
+      "user_event_id": ""
+    },
+    {
+      "access_receipt_ids": [],
+      "action_event_id": "",
+      "encounter_id": "TEST_ONLY_BP4_EP_e40d8d7e7ac1023e0af276759efc3f35ca0555f88d883f61ac505fa978c91496",
+      "kind": "ATTEND",
+      "native_text": "",
+      "source_event_refs": [],
+      "speech_event_id": "",
+      "status": "NO_CHANGE",
+      "strategy": null,
+      "translation_text": "",
+      "user_event_id": ""
+    }
+  ],
+  "events_after": 4,
+  "events_before": 1,
+  "grade": "TEST_ONLY_SOURCEBOUND_GENERATED_ROOT_ENCOUNTER_NOT_NATIVE",
+  "material_state_after_attend": {
+    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+    "attitudes": [
+      "reciprocity_in_work_obligations"
+    ],
+    "availability_status": "available_for_encounter",
+    "cash": 58,
+    "completed_units": 6,
+    "debt_units": 2,
+    "free_hours": 10,
+    "health": "recovered",
+    "material_position": "waged_repair",
+    "material_remaining": 0,
+    "nonmother_relations": [
+      "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+    ],
+    "place": "INST_WORKSHOP_A",
+    "practices": [
+      "scheduled_repair_ledger_discipline"
+    ],
+    "projects": [
+      "communal_irrigation_pump_repair"
+    ],
+    "role": "repair",
+    "skill": 6,
+    "tools_remaining": 1
+  },
+  "material_state_after_help": {
+    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+    "attitudes": [
+      "reciprocity_in_work_obligations"
+    ],
+    "availability_status": "available_for_encounter",
+    "cash": 58,
+    "completed_units": 6,
+    "debt_units": 2,
+    "free_hours": 10,
+    "health": "recovered",
+    "material_position": "waged_repair",
+    "material_remaining": 0,
+    "nonmother_relations": [
+      "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+    ],
+    "place": "INST_WORKSHOP_A",
+    "practices": [
+      "scheduled_repair_ledger_discipline"
+    ],
+    "projects": [
+      "communal_irrigation_pump_repair"
+    ],
+    "role": "repair",
+    "skill": 6,
+    "tools_remaining": 1
+  },
+  "material_state_after_say": {
+    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+    "attitudes": [
+      "reciprocity_in_work_obligations"
+    ],
+    "availability_status": "available_for_encounter",
+    "cash": 56,
+    "completed_units": 5,
+    "debt_units": 2,
+    "free_hours": 11,
+    "health": "recovered",
+    "material_position": "waged_repair",
+    "material_remaining": 1,
+    "nonmother_relations": [
+      "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+    ],
+    "place": "INST_WORKSHOP_A",
+    "practices": [
+      "scheduled_repair_ledger_discipline"
+    ],
+    "projects": [
+      "communal_irrigation_pump_repair"
+    ],
+    "role": "repair",
+    "skill": 6,
+    "tools_remaining": 1
+  },
+  "native": false,
+  "native_grants": {
+    "actor": false,
+    "c12": false,
+    "c8": false,
+    "c9": false,
+    "human": false,
+    "rule": false,
+    "source": false
+  },
+  "product_model_calls": 0,
+  "provider_calls": 0,
+  "root_event_unchanged": true,
+  "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+  "root_hash_after": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+  "root_unchanged": true,
+  "say": {
+    "native_text": "Puedes sostener el borde cercano si lo dices en serio.",
+    "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_bf9c51b2836e455c63c0595c0742629c8993694f8ba0040b56705fd964baf435",
+    "status": "OK",
+    "strategy": "HELP_INVITE",
+    "surface": [
+      "You say: \"Can I help?\"",
+      "the repair worker says: \"Puedes sostener el borde cercano si lo dices en serio.\" A tilts the piece toward you.",
+      "[labeled English view, not actor speech: \"You can hold the near edge if you mean it.\"]"
+    ],
+    "translation_text": "You can hold the near edge if you mean it."
+  },
+  "schema": "SOROK_S45_GENERATED_ROOT_ENCOUNTER_RUN@1",
+  "state_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-s45-kqsfrlk0",
+  "target_proposals": [],
+  "verify_ok": true
+}

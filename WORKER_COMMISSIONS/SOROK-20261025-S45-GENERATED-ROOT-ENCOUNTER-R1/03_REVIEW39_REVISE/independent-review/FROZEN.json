@@ -1,0 +1,25 @@
+{
+  "schema": "SOROK_REVIEW_S45_V1",
+  "candidate_branch": "codex/sorok-s45-generated-root-encounter",
+  "candidate_commit": "9e975b9bba4c9dba4e0ac2c77753d87caff78848",
+  "base": "923278fbe6b030e2ffdd10fe42d7a18266344611",
+  "decision": "REVISE",
+  "defect": "merged encounter readers return unchecked S45_USER_ENCOUNTER episode bodies; forged user/speech/source/access fields read OK with no C9 and verify remains true warm/cold",
+  "checks": {
+    "focused_tests": "6 PASS, 0 FAIL (7.19s)",
+    "entrypoint": "PASS (exit 0); root SAY/DO_HELP/ATTEND, cold, native/English, NO_CHANGE, zero targets",
+    "source_revocation_restore": "PASS in focused suite",
+    "forged_encounter_body": "ACCEPTED OK warm/cold; defect",
+    "live_provider_or_domain": "NONE"
+  },
+  "hashes": {
+    "s45/session.py": "21130a42b0e61ba2bc2be702a22df8406bcef839b71805921f62a8380ff604e1",
+    "s45/language.py": "bebc7805bc4a300259b5925e74cb99018e98e6f5a4c4f242704d5cadeeea4202",
+    "s45/fixtures.py": "b3544d8763881794676f9f430592d4a36bf944935709a8299577983b6c707cdd",
+    "tests/test_s45_generated_root_encounter.py": "6ebc0dee19ce324c7bdddd188460a287d3bb37e36e4897715fee0075411b80de",
+    "evidence/s45-tests-6.out": "1458ebc6a439ca92e7235c96c39306d2fc545ad03d1c917d382a0c9075809ebe",
+    "evidence/s45-entrypoint.json": "ebbca1584b9a13cb38f3f1cc71aa339c1c8a57e3336b817b7125ef2232fe4117",
+    "evidence/repro_encounter_tamper.py": "e7522e6cc81183b7d9ffaccdd008ff22d30242457c6b8a408853a94bdbd435fc",
+    "evidence/s45-encounter-tamper.json": "bc45353be7fbe6326daa9c6f8602d95eed480b996eabf6beecc2442bfda3ad92"
+  }
+}
