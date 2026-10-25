@@ -208,7 +208,10 @@ class IntegratedProducer(JoinedProducer):
             store=target,
             actor_raw=self.actor_record,
             event_raw=self.e1_event,
-            conditioning_sources=[self.conditioning_source],
+            conditioning_sources=(
+                list(getattr(self, "extra_conditioning_sources", ()) or ())
+                or [self.conditioning_source]
+            ),
             response_registry=ResponseRuleRegistry.test_only((self.response_rule,)),
             target_registry=TargetRuleRegistry.production(),
             authority_id=self.response_rule.authority_id,

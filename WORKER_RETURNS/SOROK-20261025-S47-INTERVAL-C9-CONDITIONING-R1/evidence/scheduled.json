@@ -1,0 +1,128 @@
+{
+  "c9": {
+    "event_ref": "b7dc80d1ab3191a2722be7a3af9d9ae275b8cb3e196f0f78a58eb98b93d5efda",
+    "objective_material_eligible": true,
+    "objective_material_refs": [
+      "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5"
+    ],
+    "readset_refs": [
+      "b7dc80d1ab3191a2722be7a3af9d9ae275b8cb3e196f0f78a58eb98b93d5efda",
+      "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+      "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+      "16601f90914abc3f5b453ba589604b71424bfd666f52c249a64c13e46a877317",
+      "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+      "b5710ed45a96f6202d5258c792e5257abaf03e94bfa6e88aa79de73efcc8a262",
+      "TEST_ONLY_BP4_WORLD_EVT_f73745a796ed12dd5523a219d9864bea8a872580b00fe9f5f40b4298d9c394db"
+    ],
+    "response_status": "RESPONSE_COMMITTED",
+    "s47_source_coverage": [],
+    "s47_source_currentness": "CURRENT",
+    "s47_source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
+    "s47_source_in_readset": true,
+    "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+    "target_branch": "NO_CHANGE",
+    "target_proposals": [],
+    "target_reason": "NO_PROPOSAL"
+  },
+  "cold_c9": {
+    "objective_material_eligible": true,
+    "s47_source_in_readset": true,
+    "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+    "source": {
+      "access": "denied",
+      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "actor_knowledge_inferred": false,
+      "branch_id": "first_session",
+      "coverage": [],
+      "currentness": "CURRENT",
+      "domain_issuance_id": "TEST_ONLY_BP4_EP_54b226c4d1f74271dd2a9c7c20b3ed24eed2e199e740d1db3f47b4c4ea763c3f",
+      "interval_receipt_hash": "b5d183f68bec1521af1f6dcbcc3e3d23cab9836b55852e8ea177bbc496de0dc1",
+      "interval_state_id": "S46_STATE_55FC9B2FDD360AEBF3474BA5",
+      "material_after_interval": true,
+      "native_authority_claimed": false,
+      "private_b_motive_included": false,
+      "scene": "workshop",
+      "schema": "S47_INTERVAL_MATERIAL_CONDITION@1",
+      "source_class": "ResolvedStructuralContext",
+      "source_hash": "f4af94921ac4ab0646603f8bb79f3c21b666b99a19408e3b2febaa3eec31946d",
+      "source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+      "status": "NOT_PERFORMED"
+    },
+    "target_branch": "NO_CHANGE"
+  },
+  "conditioning_source": {
+    "access": "granted",
+    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+    "actor_knowledge_inferred": false,
+    "branch_id": "first_session",
+    "coverage": [],
+    "currentness": "CURRENT",
+    "domain_issuance_id": "TEST_ONLY_BP4_EP_54b226c4d1f74271dd2a9c7c20b3ed24eed2e199e740d1db3f47b4c4ea763c3f",
+    "interval_receipt_hash": "b5d183f68bec1521af1f6dcbcc3e3d23cab9836b55852e8ea177bbc496de0dc1",
+    "interval_state_id": "S46_STATE_55FC9B2FDD360AEBF3474BA5",
+    "material_after_interval": true,
+    "native_authority_claimed": false,
+    "private_b_motive_included": false,
+    "scene": "workshop",
+    "schema": "S47_INTERVAL_MATERIAL_CONDITION@1",
+    "source_class": "ResolvedStructuralContext",
+    "source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
+    "source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+    "status": "NOT_PERFORMED"
+  },
+  "interval": {
+    "coverage": [],
+    "segment_statuses": [
+      "NOT_PERFORMED",
+      "NOT_PERFORMED"
+    ],
+    "state_id": "S46_STATE_55FC9B2FDD360AEBF3474BA5",
+    "status": "NOT_PERFORMED"
+  },
+  "material_after": 0,
+  "material_after_interval": 1,
+  "material_before": 1,
+  "mode": "SCHEDULED_ONLY",
+  "native_grants": {
+    "actor": false,
+    "c12": false,
+    "c8": false,
+    "c9": false,
+    "human": false,
+    "rule": false,
+    "source": false
+  },
+  "other_actor_preserved": true,
+  "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+  "root_hash_after": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+  "root_unchanged": true,
+  "s42_admission": {
+    "attempt_status": "ADMITTED",
+    "selected_option": "REQUEST_TOOL",
+    "status": "OK"
+  },
+  "s45": {
+    "attend_status": "NO_CHANGE",
+    "do_help_accepted": true,
+    "do_help_status": "OK",
+    "do_help_strategy": "HELP_ACCEPT",
+    "say_status": "OK",
+    "scenes": [
+      {
+        "kind": "SAY",
+        "status": "OK"
+      },
+      {
+        "kind": "DO_HELP",
+        "status": "OK"
+      },
+      {
+        "kind": "ATTEND",
+        "status": "NO_CHANGE"
+      }
+    ]
+  },
+  "schema": "SOROK_S47_INTERVAL_C9_MODE@1",
+  "target_proposals": [],
+  "verify_ok": true
+}

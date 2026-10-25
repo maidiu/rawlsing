@@ -76,6 +76,9 @@ class S42Session(S41Session):
     def _world_prerequisites(self) -> dict:
         return world_prerequisites(self)
 
+    def _extra_conditioning_sources(self) -> list[dict]:
+        return []
+
     def read_event(self, event_ref: str) -> dict:
         return read_event(self, event_ref)
 
@@ -205,6 +208,7 @@ class S42Session(S41Session):
             occurrence=occurrence,
             current_tools=self.world().actor_state["A"].get("tools_remaining", 0),
         )
+        producer.extra_conditioning_sources = self._extra_conditioning_sources()
         try:
             producer.commit_incoming()
             receipt = producer.generate(

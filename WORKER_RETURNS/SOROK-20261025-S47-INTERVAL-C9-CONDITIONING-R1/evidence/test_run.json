@@ -1,0 +1,92 @@
+{
+  "checks": {
+    "actual_material_consumed": true,
+    "condition_restores": true,
+    "faults_refused": true,
+    "scheduled_material_retained": true,
+    "source_in_c9_readset": true,
+    "targetless": true
+  },
+  "entrypoint_exit": 0,
+  "rows": {
+    "s47": {
+      "cases": [
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_real_c9_consumes_interval_material_and_keeps_targetless[ACTUAL-False]",
+          "status": "PASS"
+        },
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_real_c9_consumes_interval_material_and_keeps_targetless[SCHEDULED_ONLY-True]",
+          "status": "PASS"
+        },
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_no_mutation_modes_are_current_conditioning_but_not_material_claims[BLOCKED]",
+          "status": "PASS"
+        },
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_no_mutation_modes_are_current_conditioning_but_not_material_claims[UNKNOWN]",
+          "status": "PASS"
+        },
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_condition_cut_refuses_and_restore_reconstructs_same_c9_source",
+          "status": "PASS"
+        },
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_forged_conditioning_source_is_refused_then_original_remains[actor_id-WRONG_ACTOR-S47_SOURCE_ACTOR_ID_MISMATCH]",
+          "status": "PASS"
+        },
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_forged_conditioning_source_is_refused_then_original_remains[branch_id-wrong_branch-S47_SOURCE_BRANCH_ID_MISMATCH]",
+          "status": "PASS"
+        },
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_forged_conditioning_source_is_refused_then_original_remains[coverage-value2-S47_SOURCE_COVERAGE_MISMATCH]",
+          "status": "PASS"
+        },
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_forged_conditioning_source_is_refused_then_original_remains[currentness-SUPERSEDED-S47_SOURCE_CURRENTNESS_MISMATCH]",
+          "status": "PASS"
+        },
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_forged_conditioning_source_is_refused_then_original_remains[access-granted-S47_SOURCE_ACCESS_MISMATCH]",
+          "status": "PASS"
+        },
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_forged_conditioning_source_is_refused_then_original_remains[as_of-0-S47_SOURCE_AS_OF_MISMATCH]",
+          "status": "PASS"
+        },
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_forged_conditioning_source_is_refused_then_original_remains[material_after_interval-True-S47_SOURCE_MATERIAL_AFTER_INTERVAL_MISMATCH]",
+          "status": "PASS"
+        },
+        {
+          "classname": "tests.test_s47_interval_c9_conditioning",
+          "name": "test_no_interval_preserves_accepted_c9_path",
+          "status": "PASS"
+        }
+      ],
+      "counts": {
+        "ERROR": 0,
+        "PASS": 13,
+        "RED": 0,
+        "SKIP": 0,
+        "tests": 13
+      },
+      "exit": 0,
+      "junit": "junit/s47_full.xml"
+    }
+  },
+  "schema": "SOROK_S47_TEST_RUN@1"
+}
