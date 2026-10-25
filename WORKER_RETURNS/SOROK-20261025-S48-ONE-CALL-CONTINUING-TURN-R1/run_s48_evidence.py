@@ -288,6 +288,14 @@ def source_manifest(report):
             "all_exact": all(row["exact"] for row in s47_rows),
         },
         "s48_local": local_rows,
+        "old_cut_evidence": [
+            {
+                "path": str(path.relative_to(RET)),
+                "sha256": _sha(path),
+            }
+            for path in sorted((EVID / "old_cut_ae021e").glob("*"))
+            if path.is_file()
+        ],
         "actual_call": {
             "provider_call_count": receipt.get("provider_call_count"),
             "actual_envelope_sha256": _sha(EVID / "actual_envelope.json")
@@ -336,6 +344,9 @@ def main():
             "cold_provider_call_count": report.get("cold_provider_call_count"),
             "event_ref": report.get("event", {}).get("event_ref"),
             "event_ordinal": report.get("event", {}).get("event_ordinal"),
+            "turn_id": report.get("turn_id"),
+            "source_owner": report.get("source_owner"),
+            "source_actor": report.get("source_actor"),
             "s47_source_in_readset": report.get("c9", {}).get("s47_source_in_readset"),
             "output_sha256": (report.get("event_call_receipt") or {}).get("output_sha256"),
         },

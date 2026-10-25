@@ -13,6 +13,9 @@ from .bootstrap import RETURN, install
 
 install()
 
+import firstclass  # noqa: E402
+from s37.harness import case_for, source_for  # noqa: E402
+
 from .errors import ProductCallError, S48Refusal
 
 PRODUCT_CLI = os.environ.get(
@@ -22,18 +25,31 @@ PRODUCT_MODEL = "opencode-go/deepseek-v4.1-flash"
 PRODUCT_VARIANT = "max"
 PRODUCT_SCHEMA = "S48_PRODUCT_ENVELOPE@1"
 PRODUCT_INPUT_SCHEMA = "S48_ACTOR_PRODUCT_INPUT@1"
-CANDIDATES = {
-    "OTHER_SHARES_TOOL": {
-        "share": True,
-        "source_operation": "SHARE_TOOL",
-        "description": "The other person makes the workshop tool available.",
-    },
-    "OTHER_REFUSES_TOOL": {
-        "share": False,
-        "source_operation": "REFUSE_TOOL",
-        "description": "The other person withholds the workshop tool.",
-    },
+CANDIDATE_CASES = {
+    "OTHER_SHARES_TOOL": case_for(True),
+    "OTHER_REFUSES_TOOL": case_for(False),
 }
+CANDIDATE_SOURCES = {
+    candidate_id: firstclass.validate_source(source_for(case), case)
+    for candidate_id, case in CANDIDATE_CASES.items()
+}
+CANDIDATES = {
+    candidate_id: {
+        "source_owner": source["b_owner"],
+        "source_actor": source["b_actor"],
+        "source_event_ref": source["b_event_ref"],
+        "source_event_hash": source["b_event_hash"],
+        "source_operation": source["b_operation"],
+        "source_performed": bool(source["b_performed"]),
+        "description": (
+            "The other person makes the workshop tool available."
+            if source["b_operation"] == "SHARE_TOOL"
+            else "The other person withholds the workshop tool."
+        ),
+    }
+    for candidate_id, source in CANDIDATE_SOURCES.items()
+}
+
 PRODUCT_CONFIG = {
     "model": PRODUCT_MODEL,
     "small_model": PRODUCT_MODEL,
@@ -58,18 +74,31 @@ def _json_hash(value: Any) -> str:
     return _sha(json.dumps(value, sort_keys=True, separators=(",", ":")).encode())
 
 
-def eligible_candidate_ids(session) -> list[str]:
-    prerequisites = session.world_prerequisites()
-    if prerequisites.get("material_available"):
-        return ["OTHER_SHARES_TOOL"]
-    return ["OTHER_REFUSES_TOOL"]
+def eligible_candidate_ids(session=None) -> list[str]:
+    """Return the finite source-qualified other-actor candidate IDs.
+
+    Material availability is deliberately not consulted. These IDs name
+    independently validated source records, not an inferred other-person will.
+    """
+    for candidate_id, case in CANDIDATE_CASES.items():
+        firstclass.validate_source(CANDIDATE_SOURCES[candidate_id], case)
+    return sorted(CANDIDATES)
 
 
-def build_payload(session) -> dict:
+def candidate_source(candidate_id: str) -> tuple[dict, dict]:
+    if candidate_id not in CANDIDATES:
+        raise S48Refusal("S48_PRODUCT_CANDIDATE_UNAUTHORIZED")
+    case = CANDIDATE_CASES[candidate_id]
+    source = firstclass.validate_source(CANDIDATE_SOURCES[candidate_id], case)
+    return case, source
+
+
+def build_payload(session, *, event: Mapping[str, Any] | None = None) -> dict:
     events = session.read_events()
-    if not events:
-        raise S48Refusal("S48_OCCURRED_EVENT_MISSING")
-    event = events[-1]
+    if event is None:
+        if not events:
+            raise S48Refusal("S48_OCCURRED_EVENT_MISSING")
+        event = events[-1]
     c9 = event.get("c9")
     if not isinstance(c9, Mapping):
         raise S48Refusal("S48_C9_RESULT_MISSING")
@@ -309,5 +338,6 @@ def run_product_cli(
 __all__ = [
     "CANDIDATES", "PRODUCT_CONFIG", "PRODUCT_INPUT_SCHEMA", "PRODUCT_MODEL",
     "PRODUCT_SCHEMA", "PRODUCT_VARIANT", "build_payload", "build_prompt",
-    "eligible_candidate_ids", "parse_envelope", "run_product_cli",
+    "candidate_source", "eligible_candidate_ids", "parse_envelope",
+    "run_product_cli",
 ]

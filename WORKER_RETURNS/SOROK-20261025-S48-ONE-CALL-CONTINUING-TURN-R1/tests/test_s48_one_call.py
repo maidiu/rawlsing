@@ -90,11 +90,15 @@ def test_positive_absent_self_account_realizes_one_independent_event_and_is_idem
         assert c9["s47_source_in_readset"] is True
         assert c9["target_branch"] == "NO_CHANGE"
         event_ref = result["event_ref"]
+        source_event_ref = result["source_event_ref"]
         session.close()
 
         cold = S48Session.open(state)
         try:
-            cached = cold.run_turn(product_runner=_runner(calls=calls))
+            cached = cold.run_turn(
+                source_event_ref=source_event_ref,
+                product_runner=_runner(calls=calls),
+            )
             assert cached["status"] == "REALIZED"
             assert cached["cached"] is True
             assert cached["provider_call_count"] == 0
@@ -109,6 +113,99 @@ def test_positive_absent_self_account_realizes_one_independent_event_and_is_idem
             session.close()
         except Exception:
             pass
+
+
+def test_default_next_turn_advances_to_a_new_current_event(tmp_path):
+    session = _start(tmp_path / "advance")
+    calls = []
+    try:
+        first = session.run_turn(product_runner=_runner(calls=calls))
+        second = session.run_turn(product_runner=_runner(calls=calls))
+        assert first["status"] == "REALIZED"
+        assert second["status"] == "REALIZED"
+        assert second["cached"] is False
+        assert second["provider_call_count"] == 1
+        assert second["turn_id"] != first["turn_id"]
+        assert second["event_ref"] != first["event_ref"]
+        assert len(calls) == 2
+        assert len(session.read_events()) == 3
+        assert session.verify()["ok"] is True
+    finally:
+        session.close()
+
+
+def test_explicit_source_replay_is_cached_and_does_not_advance(tmp_path):
+    state = tmp_path / "replay"
+    session = _start(state)
+    calls = []
+    try:
+        first = session.run_turn(product_runner=_runner(calls=calls))
+        source_ref = first["source_event_ref"]
+        replay = session.run_turn(
+            source_event_ref=source_ref, product_runner=_runner(calls=calls)
+        )
+        assert replay["cached"] is True
+        assert replay["event_ref"] == first["event_ref"]
+        assert replay["turn_id"] == first["turn_id"]
+        assert replay["provider_call_count"] == 0
+        assert len(calls) == 1
+        session.close()
+        cold = S48Session.open(state)
+        try:
+            cold_replay = cold.run_turn(
+                source_event_ref=source_ref, product_runner=_runner(calls=calls)
+            )
+            assert cold_replay["cached"] is True
+            assert cold_replay["turn_id"] == first["turn_id"]
+            assert len(calls) == 1
+        finally:
+            cold.close()
+    finally:
+        session.close()
+
+
+def test_crash_after_provider_before_final_turn_does_not_reissue(tmp_path):
+    state = tmp_path / "crash"
+    session = _start(state)
+    calls = []
+    try:
+        original = session._append_turn
+
+        def fail(body):
+            raise RuntimeError("append failed after product call")
+
+        session._append_turn = fail
+        with pytest.raises(RuntimeError):
+            session.run_turn(product_runner=_runner(calls=calls))
+        session._append_turn = original
+        assert len(calls) == 1
+        assert session.product_dispatch(session.read_events()[-1]["e1_event_id"])
+        assert len(session.product_turns()) == 0
+        before = len(session.read_events())
+        pending = session.run_turn(product_runner=_runner(calls=calls))
+        assert pending["status"] == "PENDING_UNKNOWN"
+        assert pending["reason"] == "S48_DISPATCH_WITHOUT_RESULT_NOT_REISSUED"
+        assert pending["provider_call_count"] == 0
+        assert len(calls) == 1
+        assert len(session.read_events()) == before
+        assert len(session.product_dispatches()) == 1
+        assert session.verify()["ok"] is True
+    finally:
+        session.close()
+
+
+def test_candidate_ids_do_not_follow_actor_material(tmp_path):
+    session = _start(tmp_path / "candidate-material")
+    try:
+        from s48.product import eligible_candidate_ids
+        before = eligible_candidate_ids(session)
+        session.produce_interval(
+            make_domain(mode="ACTUAL", start=session.clock(), end=session.clock() + 4)
+        )
+        after = eligible_candidate_ids(session)
+        assert before == after == ["OTHER_REFUSES_TOOL", "OTHER_SHARES_TOOL"]
+    finally:
+        session.close()
 
 
 def test_nonempty_self_account_holds_sci05_and_does_not_realize_dependent_event(tmp_path):
@@ -211,7 +308,13 @@ def test_prompt_payload_is_bounded_to_public_event_world_and_finite_candidates(t
         assert "private" not in str(payload).lower()
         assert {
             row["candidate_id"] for row in payload["allowed_prospective_candidates"]
-        } == {"OTHER_SHARES_TOOL"}
+        } == {"OTHER_REFUSES_TOOL", "OTHER_SHARES_TOOL"}
+        for row in payload["allowed_prospective_candidates"]:
+            assert row["source_owner"]
+            assert row["source_actor"] != payload["actor_id"]
+            assert row["source_performed"] is True
+            assert row["source_event_ref"]
+            assert row["source_event_hash"]
     finally:
         session.close()
 

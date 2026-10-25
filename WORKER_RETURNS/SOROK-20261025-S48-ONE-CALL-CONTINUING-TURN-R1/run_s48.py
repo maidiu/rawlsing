@@ -69,6 +69,7 @@ def main() -> int:
     cold = S48Session.open(state)
     try:
         cold_turn = cold.run_turn(
+            source_event_ref=turn.get("source_event_ref"),
             product_workdir=workdir,
             product_log_dir=RETURN / "logs",
             timeout=300,
@@ -112,7 +113,12 @@ def main() -> int:
                 if source_after else ""
             ),
         },
+        "turn_id": turn.get("turn_id"),
         "turn_status": turn.get("status"),
+        "source_owner": turn.get("source_owner", ""),
+        "source_actor": turn.get("source_actor", ""),
+        "candidate_source_event_ref": turn.get("source_event_ref_candidate", ""),
+        "candidate_source_event_hash": turn.get("source_event_hash_candidate", ""),
         "provider_call_count": turn.get("provider_call_count", 0),
         "cached_on_cold": cold_turn.get("cached"),
         "cold_provider_call_count": cold_turn.get("provider_call_count", 0),

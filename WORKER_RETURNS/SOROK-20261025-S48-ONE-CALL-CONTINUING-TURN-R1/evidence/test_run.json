@@ -8,6 +8,26 @@
       },
       {
         "classname": "tests.test_s48_one_call",
+        "name": "test_default_next_turn_advances_to_a_new_current_event",
+        "status": "PASS"
+      },
+      {
+        "classname": "tests.test_s48_one_call",
+        "name": "test_explicit_source_replay_is_cached_and_does_not_advance",
+        "status": "PASS"
+      },
+      {
+        "classname": "tests.test_s48_one_call",
+        "name": "test_crash_after_provider_before_final_turn_does_not_reissue",
+        "status": "PASS"
+      },
+      {
+        "classname": "tests.test_s48_one_call",
+        "name": "test_candidate_ids_do_not_follow_actor_material",
+        "status": "PASS"
+      },
+      {
+        "classname": "tests.test_s48_one_call",
         "name": "test_nonempty_self_account_holds_sci05_and_does_not_realize_dependent_event",
         "status": "PASS"
       },
@@ -54,10 +74,10 @@
     ],
     "counts": {
       "ERROR": 0,
-      "PASS": 10,
+      "PASS": 14,
       "RED": 0,
       "SKIP": 0,
-      "tests": 10
+      "tests": 14
     },
     "exit": 0,
     "junit": "junit/s48_full.xml"
