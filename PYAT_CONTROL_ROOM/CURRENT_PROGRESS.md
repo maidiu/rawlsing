@@ -1,3 +1,10 @@
+# R108 — return to economical coordination
+
+Completed executive work; user-directed same-HQ thinking=low desktop request dispatched once with prior reservation. Tool success is recorded; actual Low next-turn metadata remains pending. Active goal and recurring instructions now follow existing Astra authority and current R107 bounded work without recurring historical example anchors. Immutable history preserved. Goal and heartbeat remain paused.
+
+
+## Earlier progress history retained
+
 # Pyat R107 — existing R06/C8 world-consuming progressive integration
 
 UserrequestedcommissionlaunchafterR0state. SealedexistingAstraC8/N9+N10E→N10W andlaterR06repair, twoexistingR06code/testpaths only. ExistingOpenCodeMAXauthoractuallylaunchedfromacceptedR96; actualtoolpreflightpending. Reusablequery/prefixclass, actualworldANDcomputedempiricalconsumerdependency, minority/uncertainty/currentness/coldproof; notQ86onlyorN10Eworld_partFalsefallback. Exactoutsidepath/scientificrule residualstop, no newgeneralinvestigation. R100parkedbankedunaccepted. Distinctexistingreviewerafterterminalcandidate. No source/measurement/scientific/CI/prod/N11/N12/Sorok/J52W52grant orgoal/heartbeatresumption.
