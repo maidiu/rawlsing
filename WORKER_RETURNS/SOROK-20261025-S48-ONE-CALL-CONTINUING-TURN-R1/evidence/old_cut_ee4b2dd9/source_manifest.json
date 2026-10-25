@@ -1,0 +1,229 @@
+{
+  "actual_call": {
+    "actual_envelope_sha256": "d9d99ced2aa0859bc50325aba75591f5ba80f64d14f8c7274f67be8f3233ce14",
+    "actual_provider_call": true,
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "output_sha256": "43fe1af27ff3a172090a8767c141eb8020adac392a6eb02ada3bcdd252cd9de9",
+    "prompt_sha256": "07a3502e0c4a61b2d6fdb2bef720b0bd79f2ccefc53de294172423e2819f1e23",
+    "provider_call_count": 1,
+    "stdout_path": "logs/product_07a3502e0c4a61b2.stdout.jsonl",
+    "stdout_sha256": "e37b26d5fae047cdc30a10d5db3a04f0dd957dff8a118a09c0b67ace341d3da2",
+    "variant": "max"
+  },
+  "cuts": {
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135",
+    "language": "8d2920da951f98cd8246d7c34cac777928e0c732",
+    "m35": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+    "s36": "8da78d8031a06a4bd7e1297fd713e573299c0860",
+    "s37": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+    "s39": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+    "s40": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+    "s41": "c72a10d284f8869b990db3e6849ed174a51bd784",
+    "s42": "2489f8cdfbb5c400c636f33c7cf8cdf0aa55dc91",
+    "s43": "3edd631fb6c31751dfd2143ba2faa9fc31561e54",
+    "s44": "923278fbe6b030e2ffdd10fe42d7a18266344611",
+    "s45": "f26a138e20d53c809d611cf8d834ec647b0804bf",
+    "s46": "f0ef39b92ce2e4add5c0a699389e12f1d7ae434e",
+    "s47": "765a441f87292aa4c17794745b65cb54e6aaa83f"
+  },
+  "native_grants": {
+    "actor": false,
+    "c12": false,
+    "c8": false,
+    "c9": false,
+    "human": false,
+    "rule": false,
+    "source": false
+  },
+  "old_cut_evidence": [
+    {
+      "path": "evidence/old_cut_ae021e/actual_envelope.json",
+      "sha256": "fdb0726f325aa0ba33e2001336f1c88e57352398057e9da3097a763bf6e1491c"
+    },
+    {
+      "path": "evidence/old_cut_ae021e/entrypoint.json",
+      "sha256": "0e4507cdb5c486b5b71e30d3d3d98f3def4a294cbbc14e7dcc64df3744c948b5"
+    },
+    {
+      "path": "evidence/old_cut_ae021e/product.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/old_cut_ae021e/product.stdout.jsonl",
+      "sha256": "1e44bee6bb7d5752a8486c79859e0656ecb523441342a1afd9ae8afa2c644400"
+    },
+    {
+      "path": "evidence/old_cut_ae021e/source_manifest.json",
+      "sha256": "5383d6ef60cf1680b81288e2defa62c66f1d2f2067a8338d33f4b109614e7248"
+    }
+  ],
+  "product_gateway": {
+    "cli": "/Users/matthewsmith/.opencode/bin/opencode",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "provider": "opencode-go",
+    "variant": "max"
+  },
+  "roots": {
+    "cuts": {
+      "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "language": "8d2920da951f98cd8246d7c34cac777928e0c732",
+      "m35": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+      "s36": "8da78d8031a06a4bd7e1297fd713e573299c0860",
+      "s37": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+      "s38_court": "2d34e1310e51a5a4ff248baa4eb7f9e938d6880e",
+      "s38_hq_decision": "8f037c2f553a902df41b9db3333f41cda26a830e",
+      "s39": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+      "s39_commission": "a91ece256d0367633e546dc7a7fb1806c3ec9c58",
+      "s40": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+      "s41": "c72a10d284f8869b990db3e6849ed174a51bd784",
+      "s42": "2489f8cdfbb5c400c636f33c7cf8cdf0aa55dc91",
+      "s43": "3edd631fb6c31751dfd2143ba2faa9fc31561e54",
+      "s44": "923278fbe6b030e2ffdd10fe42d7a18266344611",
+      "s45": "f26a138e20d53c809d611cf8d834ec647b0804bf",
+      "s46": "f0ef39b92ce2e4add5c0a699389e12f1d7ae434e",
+      "s47": "765a441f87292aa4c17794745b65cb54e6aaa83f",
+      "sdtf_r4": "79659b352035f095b325181d4f35c259da6b79d0"
+    },
+    "join_e_return": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1",
+    "language_return": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/language-consumer-r3/worker/LANGUAGE_MEDIATION_R1",
+    "m35_return": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/vendor/m35",
+    "origins": {
+      "bp2_joined": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/vendor/m35/candidate/vendor/bp2/bp2_joined/__init__.py",
+      "bp4.product": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/product.py",
+      "c8_readonly_consumer": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-r31j/WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1/candidate/vendor/bp2/vendor/bp3/vendor/c8_readonly_consumer.py",
+      "candidate": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+      "candidate.actor_access_response": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py",
+      "firstclass": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/vendor/m35/firstclass.py",
+      "joined.refusal": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/refusal.py",
+      "joined.session": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+      "language_mediation.session": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/language-consumer-r3/worker/LANGUAGE_MEDIATION_R1/language_mediation/session.py",
+      "r30a.first_session": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/first_session.py",
+      "r31e.expression": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/expression.py",
+      "r31j.build": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/r31j/build.py"
+    },
+    "s36_return": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1",
+    "s37_return": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1",
+    "s39_return": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1",
+    "s40_return": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S40-GENERATED-NATIVE-SPEECH-R1",
+    "s41_return": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1",
+    "s42_return": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1",
+    "s43_return": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S43-HISTORICAL-LANGUAGE-CONSUMER-R1",
+    "s44_return": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1",
+    "s45_return": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1",
+    "s46_return": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1",
+    "s47_return": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1",
+    "s48_return": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1"
+  },
+  "s47_reused": {
+    "all_exact": true,
+    "rows": [
+      {
+        "exact": true,
+        "local_git_blob_sha1": "7e8964a0be76ddb0358f24846d9f1fbec1d65612",
+        "path": "s47/__init__.py",
+        "pinned_git_blob_sha1": "7e8964a0be76ddb0358f24846d9f1fbec1d65612",
+        "sha256": "a5164b8a880312ff39ae178ef41bf12f22850a8b59c520e7143b5f1f364c7c21"
+      },
+      {
+        "exact": true,
+        "local_git_blob_sha1": "30173b530af299145eb3f21ed38b1696fe812ec5",
+        "path": "s47/bootstrap.py",
+        "pinned_git_blob_sha1": "30173b530af299145eb3f21ed38b1696fe812ec5",
+        "sha256": "d25f1744600d0d65971050b491327c05efa33fb86ae1f87794058a8fa21b1591"
+      },
+      {
+        "exact": true,
+        "local_git_blob_sha1": "08b4a3013e34c2bcef05a6491964736faf033663",
+        "path": "s47/conditioning.py",
+        "pinned_git_blob_sha1": "08b4a3013e34c2bcef05a6491964736faf033663",
+        "sha256": "97e78287422307b9c7ab1736c2b1ba9b688b115c8ebaa3cf1fcab5a33b15803a"
+      },
+      {
+        "exact": true,
+        "local_git_blob_sha1": "3715c62759832963f218bb66f1d1611df62bdd2d",
+        "path": "s47/errors.py",
+        "pinned_git_blob_sha1": "3715c62759832963f218bb66f1d1611df62bdd2d",
+        "sha256": "83be8224709cfbc98f0a264410800ccb0d5aa8fa1d98c1159687c5d53765db52"
+      },
+      {
+        "exact": true,
+        "local_git_blob_sha1": "60b5e61f19c5f4b09c06d3c4fac0a24a0ff59a87",
+        "path": "s47/session.py",
+        "pinned_git_blob_sha1": "60b5e61f19c5f4b09c06d3c4fac0a24a0ff59a87",
+        "sha256": "467e91a1f4488ab47d46212473d228ddcd93444b78f007501e4f4a123c915d39"
+      },
+      {
+        "exact": true,
+        "local_git_blob_sha1": "2226ca38536594aa0ad0c539fc71853349fcf918",
+        "path": "tests/conftest.py",
+        "pinned_git_blob_sha1": "2226ca38536594aa0ad0c539fc71853349fcf918",
+        "sha256": "b549459c4bd19e9a26073ef981ae38d533dd4c6451a8b2588836c90385691979"
+      },
+      {
+        "exact": true,
+        "local_git_blob_sha1": "b8726c2d59aaa1c894b5c5e48417269c44d5f1e5",
+        "path": "tests/test_s47_interval_c9_conditioning.py",
+        "pinned_git_blob_sha1": "b8726c2d59aaa1c894b5c5e48417269c44d5f1e5",
+        "sha256": "2627abc051fc1a23989f98ddc337bd896b3779e7778107c7ac719f151a4a24e0"
+      }
+    ]
+  },
+  "s48_local": [
+    {
+      "git_blob_sha1": "d503d9a05235b098817c515cc1f79dcf53e635cf",
+      "path": ".gitignore",
+      "sha256": "1da496a8bd17e4d9a754ed32ef847f6e8400d9c3361a2926565b9f87af121b8f"
+    },
+    {
+      "git_blob_sha1": "e51fbb8520cfa968a18aa1307ea976992e3155c7",
+      "path": "00_RETURN.md",
+      "sha256": "013ed8365d10d701f91a5404fe81a9ef19c3bbe778cfed8a2a91fcfa16db8d24"
+    },
+    {
+      "git_blob_sha1": "acceeae7fd717f932defbe028e4f81ecf4e33853",
+      "path": "run_s48.py",
+      "sha256": "00f638310825e863de7203849fb582e65cab8012d839d84099af36e1dcb66460"
+    },
+    {
+      "git_blob_sha1": "543f6042252c4ea3039446a60e5fddea5303ee6c",
+      "path": "run_s48_evidence.py",
+      "sha256": "81588c56b091ce4f7b0ba06bd32b1fecdcebb1f22caee3cbd515bc1a93d704be"
+    },
+    {
+      "git_blob_sha1": "540e68758e728d11cce5586ae6cbf2765f87c7b7",
+      "path": "s48/__init__.py",
+      "sha256": "c850ec81c3b64cfe7a7cd3afbf849ca86e7d0e90f53c893c0b77fac7ef92e790"
+    },
+    {
+      "git_blob_sha1": "059b2c7f79081f0e41be6b8dad9c8fbb21a55bac",
+      "path": "s48/bootstrap.py",
+      "sha256": "380c67f51ef9d2bb0c2fae74601172131eadf71c16634f624a393c72f1a7717e"
+    },
+    {
+      "git_blob_sha1": "201d99400545e51a5a09ba8cf7cfdeef74260a69",
+      "path": "s48/errors.py",
+      "sha256": "d8ff630c409607e628ce50571625b791503078813362500d668426f8b07bd066"
+    },
+    {
+      "git_blob_sha1": "f524e2d4e5c3d07110451b7915f65ed9edbdc0c2",
+      "path": "s48/product.py",
+      "sha256": "189853832b88609f52266aeb6f1f298a59c6fcca7cc83aab22aa8974a383de86"
+    },
+    {
+      "git_blob_sha1": "3e98e3b753be07101836ab54e936ad3e147bc937",
+      "path": "s48/session.py",
+      "sha256": "3279f32cd6e9524b136424e600f0714cbc974500ba25d9d7cdbc09a4b8ae5264"
+    },
+    {
+      "git_blob_sha1": "2226ca38536594aa0ad0c539fc71853349fcf918",
+      "path": "tests/conftest.py",
+      "sha256": "b549459c4bd19e9a26073ef981ae38d533dd4c6451a8b2588836c90385691979"
+    },
+    {
+      "git_blob_sha1": "2c4f3a524feab3efdacf45714e75a6051f0f1819",
+      "path": "tests/test_s48_one_call.py",
+      "sha256": "da24baf011e42dff26a2a145720c4d1a6a8e1fbe881da68732d1848ef4449437"
+    }
+  ],
+  "schema": "SOROK_S48_SOURCE_MANIFEST@1"
+}

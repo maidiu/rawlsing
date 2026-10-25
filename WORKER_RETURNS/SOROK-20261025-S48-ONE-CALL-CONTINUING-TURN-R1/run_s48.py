@@ -116,6 +116,7 @@ def main() -> int:
         "turn_id": turn.get("turn_id"),
         "turn_status": turn.get("status"),
         "source_owner": turn.get("source_owner", ""),
+        "source_performer_owner": turn.get("source_performer_owner", ""),
         "source_actor": turn.get("source_actor", ""),
         "candidate_source_event_ref": turn.get("source_event_ref_candidate", ""),
         "candidate_source_event_hash": turn.get("source_event_hash_candidate", ""),

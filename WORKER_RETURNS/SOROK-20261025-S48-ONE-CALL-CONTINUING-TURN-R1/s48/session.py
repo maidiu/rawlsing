@@ -12,12 +12,8 @@ from candidate import digest  # noqa: E402
 from s47.session import S47Session  # noqa: E402
 
 from .errors import ProductCallError, S48Refusal  # noqa: E402
-from .product import (  # noqa: E402
-    build_payload,
-    build_prompt,
-    candidate_source,
-    run_product_cli,
-)
+from .product import build_payload, build_prompt, run_product_cli  # noqa: E402
+from .sources import issue_current_source  # noqa: E402
 
 S48_SCHEMA = "SOROK_S48_ONE_CALL_CONTINUING_TURN@1"
 PRODUCT_DISPATCH_KIND = "S48_PRODUCT_DISPATCH"
@@ -401,7 +397,7 @@ class S48Session(S47Session):
                 "provider_call_count": turn_body["provider_call_count"],
             }
         try:
-            case, source = candidate_source(candidate)
+            case, source, source_event = issue_current_source(self, candidate)
         except S48Refusal as exc:
             result = self._append_result({
                 "schema": S48_SCHEMA,
@@ -441,9 +437,12 @@ class S48Session(S47Session):
             "product_turn_ref": turn["episode_id"],
             "candidate_id": candidate,
             "source_owner": source.get("b_owner"),
+            "source_performer_owner": source.get("source_performer_owner"),
             "source_actor": source.get("b_actor"),
             "source_event_ref_candidate": source.get("b_event_ref"),
             "source_event_hash_candidate": source.get("b_event_hash"),
+            "source_world_event_ref": source_event.get("event_id"),
+            "source_world_event_hash": source_event.get("hash"),
             "prospective": prospective,
             "no_input_barrier": turn_body["no_input_barrier"],
             "event_ref": event.get("e1_event_id", ""),

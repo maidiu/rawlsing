@@ -1,53 +1,48 @@
-# SOROK S48 repair1 — one-call continuing turn
+# SOROK S48 repair2 — current source-owner closure
 
-**RESULT:** `S48_REPAIR1__EXPLICIT_TURN_ADVANCE_AND_REPLAY__DURABLE_DISPATCH_BEFORE_PROVIDER_EFFECT__SOURCE_QUALIFIED_OTHER_ACTOR_CANDIDATES__ACTUAL_NEW_CUT_PROVIDER_1__OLD_CUT_ACTUAL_PRESERVED__COLD_ZERO_RECALL__SCI05_HOLD_TYPED__NO_NATIVE_GRANT`.
+**RESULT:** `S48_REPAIR2__CURRENT_BP4_OTHER_SOURCE__ROOT_B_OWNER__WORLD_PERFORMER__SOURCE_BEFORE_C8__ADVANCE_REPLAY_PENDING_PRESERVED__ACTUAL_NEW_CUT_PROVIDER_1__OLD_CUT_PROOFS_PRESERVED__SCI05_HOLD__NO_NATIVE_GRANT`.
 
-S48 repair1 fixes the three review defects on the same S47 person: distinct advance versus same-turn replay, a canonical dispatch intent before the provider effect, and removal of the material-to-other-actor-will candidate law. The accepted S47 source/root/C9 path is preserved.
+S48 repair2 replaces the foreign R31J share/refusal fixtures with a current independently performed BP4 other-actor source. The product may propose only a source-qualified current operation; the selected operation is performed after the no-input barrier, with an owner receipt and a current world-journal event, before the existing S42 C8/C9 path. Static/foreign candidates are rejected with `SOURCE_OWNER_HOLD`.
 
 ## Scope and base
 
-- Branch `codex/sorok-s48-one-call-continuing-turn`; prior cut `ae021e470cb6a6e144008e569a286a787120cb9d`; base accepted S47 `765a441f87292aa4c17794745b65cb54e6aaa83f`.
-- Writes only `WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/**`; no accepted S47/S42/S37 edits, no new agents, native grants, psychology, provider/model switch, or broad accepted-suite run.
-- The final commit SHA is the exact repair cut; the new actual provider run was made on this repair worktree and is labeled with the final commit in the response. The prior actual provider run at `ae021e…` is preserved unchanged under `evidence/old_cut_ae021e/`.
+- Branch `codex/sorok-s48-one-call-continuing-turn`; prior cut `ee4b2dd9c025cfd537cf8ac048a6b8619284ebf5`; base accepted S47 `765a441f87292aa4c17794745b65cb54e6aaa83f`.
+- Writes only `WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/**`; no accepted S47/S42/S37 edits, agents, native grants, provider/model change, private config reads, or broad accepted-suite run.
+- The final commit SHA is the exact repair cut; the new actual provider run was made in this repair worktree and is labeled with that commit in the completion response. Captured old-cut provider proofs remain separately preserved.
 
-## Repair 1 — explicit turn identity
+## Source-owner repair
 
-- `run_turn()` with no source advances from the current occurred event. A realized next event is therefore the source of a **new** turn and a new provider invocation.
-- `run_turn(source_event_ref=...)` replays the logical turn for that exact canonical E1 source and returns its cached result with zero provider calls.
-- `run_turn(replay_turn_id=...)` replays the exact canonical product turn ID.
-- A pending dispatch or a final turn without a result returns typed `PENDING_UNKNOWN`; it is never silently reissued. Multi-turn and cold replay regressions are in `tests/test_s48_one_call.py`.
+- Removed the static `TEST_ONLY_EVENT_share`/`TEST_ONLY_EVENT_refuse` candidates and all `case_for(share)` construction from the turn path.
+- `s48/sources.py` exposes only a currently supported independent BP4 operation: an owner-receipted `REFUSAL` by the root's current `TEST_ONLY_BP1_R26V_ACTOR_B`. The source owner is that root actor; the BP4 world owner is recorded separately as the operation performer.
+- The operation is not preperformed. After the product's explicit no-input barrier, S48 issues one BP4 world event at the current clock, adds it to the canonical world journal, and only then constructs the source. Source-before-C8 ordering is exact. The event has owner/actor receipt, current root, current clock and operation `REFUSE_TOOL`; no material mutation or new willingness law is introduced.
+- The source is validated against the current first event E1 and the dynamically constructed B/E1 case. The product proposal is only a world possibility, not the other person's intention. A stale/foreign/static share fixture is excluded and returns `SOURCE_OWNER_HOLD`; no dependent event is realized.
+- The product can still return narrative and optional self-account. Nonempty self-account remains exact `SCI05_HOLD` with no second V3; explicit absence records `SELF_ACCOUNT_ABSENT_NO_NEW_INTERPRETIVE_INPUT`.
 
-## Repair 2 — durable dispatch intent
+## Closed semantics retained
 
-- Before any provider effect, S48 appends canonical `S48_PRODUCT_DISPATCH` with a deterministic `turn_id`, source event ref/hash, payload/prompt hashes, clock and `DISPATCHED` status in the existing C12 store.
-- The provider effect is followed by the canonical `S48_PRODUCT_TURN` and `S48_TURN_RESULT`. If the terminal append is interrupted, the dispatch remains and the next attempt returns `PENDING_UNKNOWN`/`S48_DISPATCH_WITHOUT_RESULT_NOT_REISSUED`; no provider call is repeated.
-- The dispatch/result records are canonical C12 entries, not a parallel ledger. The actual call receipt is stored only after a successful terminal append; no fake receipt is written.
+- Default `run_turn()` advances from the current event; a realized next event starts a new turn and provider invocation.
+- `run_turn(source_event_ref=...)` and `run_turn(replay_turn_id=...)` replay the same logical canonical turn and never reissue the provider.
+- `S48_PRODUCT_DISPATCH` remains a pre-call C12 intent. Crash after provider before terminal turn gives `PENDING_UNKNOWN`/`S48_DISPATCH_WITHOUT_RESULT_NOT_REISSUED`; no blind duplicate call or fake receipt.
+- Cold replay returns the same canonical event/turn; no target or narrative psyche write.
 
-## Repair 3 — source-qualified other actor
+## Evidence
 
-- Removed `material_available → OTHER_SHARES/REFUSES` mapping and all `case_for(share)` construction from the turn path.
-- Allowed candidates now point to two independently source-qualified existing R31J source records. Each carries `b_owner`, `b_actor`, performed event ref/hash, operation and source qualification; `firstclass.validate_source` must pass before a candidate is admitted.
-- The product may select a source proposal but that is not another person's intention and does not create a new willingness policy. The source performer/owner remains the R31J source; S48 only passes the selected source to the existing independent S42 performer.
-- Material availability is reported as accessible world fact but no longer selects the candidate or changes the allowed set. The candidate-mapping reproducer now reports unchanged candidates before/after an ACTUAL interval. If source qualification fails, the turn returns `SOURCE_OWNER_HOLD` with no event.
-
-## Actual evidence
-
-- New repair-cut actual entrypoint: `logs/entrypoint.log` / `evidence/entrypoint.json`; actual envelope `evidence/actual_envelope.json`; raw CLI `logs/product_07a3502e0c4a61b2.stdout.jsonl`.
-- New actual call: `provider_call_count: 1`, `step_count: 1`, one model session, `self_account: null`, one source-qualified proposal `OTHER_SHARES_TOOL` with owner `TEST_ONLY_OWNER_share`, actor `TEST_ONLY_R31J_B`, source event ref `TEST_ONLY_EVENT_share`.
-- Event order: occurred event ordinal 1 → one product call → independently admitted event ordinal 2 (`TEST_ONLY_BP2_E1_OCC-0002`). Cold replay uses `source_event_ref` of the same logical turn and records `cached_on_cold: true`, `cold_provider_call_count: 0`, same event, same turn ID.
-- Same S47 root `3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7`; S47 interval source `d73a00…` remains in the C9 readset; C9 remains targetless `NO_CHANGE`/`NO_PROPOSAL`; no actor response was written by the product.
-- Old-cut actual proof retained exactly: `evidence/old_cut_ae021e/entrypoint.json`, `product.stdout.jsonl`, `product.stderr.log`, `actual_envelope.json`, `source_manifest.json`.
-- Controlled non-provider branches: exact SCI05 hold and `CALL_FAILED` both realize no next event (`evidence/controlled.json`).
-- Reviewer reproducers run unchanged from `SOROK_REVIEW/S48/evidence`: `logs/repro_multiturn_cache.log`, `logs/repro_crash_retry.log`, `logs/repro_candidate_mapping.log`. They show second turn advances to event 3, crash/retry makes no second provider invocation and returns pending, and candidates do not change with material.
-- Focused S48 tests: **14 passed**, 0 failed/error/skipped; `junit/s48_full.xml`, `logs/s48_full.log`, `evidence/test_run.json`.
-- Source manifest: `evidence/source_manifest.json`; S47 source files exact at accepted cut; old-cut evidence hashes preserved.
+- New repair-cut actual entrypoint: `logs/entrypoint.log` / `evidence/entrypoint.json`; actual envelope `evidence/actual_envelope.json`; raw CLI `logs/product_c0914678feb16918.stdout.jsonl`.
+- New actual call: `provider_call_count: 1`, one step/session, `self_account: null`, candidate `OTHER_REFUSES_TOOL`, source actor `TEST_ONLY_BP1_R26V_ACTOR_B`, source owner B, performer owner `TEST_ONLY_BP4_WORLD_OWNER`.
+- Actual event order: occurred event ordinal 1 → product call/no-input barrier → independently performed BP4 B refusal at current clock → S42 event ordinal 2 → C9. Cold same-turn replay uses `source_event_ref` and records `cached_on_cold: true`, `cold_provider_call_count: 0`.
+- Actual next C9 remains targetless `NO_CHANGE`/`NO_PROPOSAL`; S47 interval source `d73a00…` remains in the readset; root unchanged `3bcb21fc…`.
+- Current-source chronology (`evidence/chronology.json`, `logs/repro_candidate_source_chronology.log`): source owner is in root actor IDs, actor B is the root B, performer is current world owner, event exists in world journal at current clock, source precedes C8.
+- Foreign/static candidate regression returns `SOURCE_OWNER_HOLD` and realizes no event. Current positive regression uses the BP4 refusal source; warm/cold normal consumer paths are covered.
+- Old-cut provider proofs preserved exactly under `evidence/old_cut_ae021e/` and `evidence/old_cut_ee4b2dd9/`; they are not rewritten as proof of this repair.
+- Controlled SCI05 hold and call-failure evidence remains non-provider and marked `actual_provider_call: false` (`evidence/controlled.json`).
+- Focused S48 tests: **16 passed**, 0 failed/error/skipped; `junit/s48_full.xml`, `logs/s48_full.log`, `evidence/test_run.json`.
+- Reviewer chronology oracle had an obsolete `candidate_source` import; `evidence/repro_candidate_source_chronology.py` is the honest schema update only for that import and current source API, with unchanged chronology claims.
 
 ## Limits
 
-- The source candidates are the existing sourcefree R31J test source records, not a new live other-person performer or empirical intention. The independent source owner/performer qualification is the proof boundary; no material state is used as a proxy for another actor's will.
-- A nonempty self-account still has no competent internal-act owner and yields exact `SCI05_HOLD`; no second V3, invented internal-act law, or forced absence was added.
-- The actual repair-cut provider call is TEST_ONLY sourcefree product generation, not native science, an empirical probability, OBL062, T, human A5, or a production claim. No broad accepted-suite rerun was performed.
-- The old-cut actual call is not rewritten as proof of repaired independence; it remains a separately labeled historical receipt.
+- The only current independently supported other-actor operation is BP4 refusal. The product cannot manufacture a share/help will or a mutually exclusive future; a claim without a current authorized operation is source-owner held.
+- Source bytes are TEST_ONLY sourcefree BP4/root records, not native/empirical B psychology. B actor/root identity is current; owner registration is the root B actor, performer is the BP4 world owner. No new owner, grant, target, psyche, or T is issued.
+- Actual provider output remains bounded sourcefree generation; no broad provider/science campaign was run. The old-cut and new-cut actual receipts are distinct and separately labeled.
 
 ## Commands
 
@@ -59,4 +54,4 @@ python3 WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/run_s48.py
 > WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/logs/entrypoint.log 2>&1
 ```
 
-**Terminal:** `S48_REPAIR1__ADVANCE_VS_REPLAY__DISPATCH_BEFORE_EFFECT__SOURCE_QUALIFIED_OTHER_ACTOR__ACTUAL_REPAIR_CUT_1__OLD_CUT_PRESERVED__COLD_ZERO__SCI05_HOLD_TYPED__NO_NATIVE_GRANT`. Final commit and remote SHA are verified after push.
+**Terminal:** `S48_REPAIR2__CURRENT_BP4_OTHER_SOURCE__ROOT_B__WORLD_PERFORMER__SOURCE_BEFORE_C8__ADVANCE_REPLAY_PENDING__ACTUAL_1__OLD_PROOFS__SCI05_HOLD__NO_NATIVE_GRANT`. Final commit and remote SHA are verified after push.

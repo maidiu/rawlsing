@@ -28,7 +28,7 @@ def _start(state, seed="01" * 32):
     )
 
 
-def _envelope(self_account=None, candidate="OTHER_SHARES_TOOL"):
+def _envelope(self_account=None, candidate="OTHER_REFUSES_TOOL"):
     return {
         "schema": "S48_PRODUCT_ENVELOPE@1",
         "narrative": "The prior turn is retained.",
@@ -80,7 +80,7 @@ def test_positive_absent_self_account_realizes_one_independent_event_and_is_idem
         assert result["status"] == "REALIZED"
         assert result["provider_call_count"] == 1
         assert result["no_input_barrier"] == "SELF_ACCOUNT_ABSENT_NO_NEW_INTERPRETIVE_INPUT"
-        assert result["candidate_id"] == "OTHER_SHARES_TOOL"
+        assert result["candidate_id"] == "OTHER_REFUSES_TOOL"
         assert result["event_ref"]
         assert len(calls) == 1
         assert len(session.read_events()) == len(before_events) + 1
@@ -203,7 +203,7 @@ def test_candidate_ids_do_not_follow_actor_material(tmp_path):
             make_domain(mode="ACTUAL", start=session.clock(), end=session.clock() + 4)
         )
         after = eligible_candidate_ids(session)
-        assert before == after == ["OTHER_REFUSES_TOOL", "OTHER_SHARES_TOOL"]
+        assert before == after == ["OTHER_REFUSES_TOOL"]
     finally:
         session.close()
 
@@ -308,13 +308,11 @@ def test_prompt_payload_is_bounded_to_public_event_world_and_finite_candidates(t
         assert "private" not in str(payload).lower()
         assert {
             row["candidate_id"] for row in payload["allowed_prospective_candidates"]
-        } == {"OTHER_REFUSES_TOOL", "OTHER_SHARES_TOOL"}
+        } == {"OTHER_REFUSES_TOOL"}
         for row in payload["allowed_prospective_candidates"]:
             assert row["source_owner"]
             assert row["source_actor"] != payload["actor_id"]
-            assert row["source_performed"] is True
-            assert row["source_event_ref"]
-            assert row["source_event_hash"]
+            assert row["source_operation"] == "REFUSE_TOOL"
     finally:
         session.close()
 
@@ -339,5 +337,50 @@ def test_injected_runner_envelope_is_not_treated_as_actual_provider_call(tmp_pat
         assert result["provider_call_count"] == 1
         turn = session.product_turn(result["source_event_ref"])
         assert turn["body"]["call_receipt"]["actual_provider_call"] is False
+    finally:
+        session.close()
+
+
+def test_current_bp4_other_source_is_journal_bound_to_same_root_and_clock(tmp_path):
+    session = _start(tmp_path / "current-source")
+    try:
+        from s48.sources import candidate_specs, issue_current_source
+        specs = candidate_specs(session)
+        assert [row["candidate_id"] for row in specs] == ["OTHER_REFUSES_TOOL"]
+        case, source, event = issue_current_source(session, "OTHER_REFUSES_TOOL")
+        world = session.world()
+        root_ids = set(session.read_root()["actor_ids"])
+        assert source["b_actor"] == "TEST_ONLY_BP1_R26V_ACTOR_B"
+        assert source["b_actor"] in root_ids
+        assert source["b_owner"] == source["b_actor"]
+        assert source["source_performer_owner"] == world.owner
+        assert source["b_clock"] == event["clock"] == session.clock()
+        assert source["b_event_ref"] == event["event_id"]
+        assert source["b_event_hash"] == event["hash"]
+        assert any(row["event_id"] == event["event_id"] for row in world.events)
+        assert event["owner_receipt"]["owner_ref"] == world.owner
+        assert event["owner_receipt"]["actor_id"] == "B"
+        assert source["b_operation"] == "REFUSE_TOOL"
+        assert case["actor"]["actor_id"] == "TEST_ONLY_BP1_R26V_ACTOR_A"
+        assert session.verify()["ok"] is True
+    finally:
+        session.close()
+
+
+def test_foreign_or_unauthorized_other_source_is_owner_held(tmp_path):
+    session = _start(tmp_path / "foreign-source")
+    try:
+        before = len(session.read_events())
+        result = session.run_turn(product_runner=_runner(
+            envelope=_envelope(candidate="OTHER_SHARES_TOOL")
+        ))
+        assert result["status"] == "SOURCE_OWNER_HOLD"
+        assert result["event_ref"] == ""
+        assert len(session.read_events()) == before
+        from s48.sources import issue_current_source
+        from s48.errors import S48Refusal
+        with pytest.raises(S48Refusal) as exc:
+            issue_current_source(session, "OTHER_SHARES_TOOL")
+        assert exc.value.code == "S48_SOURCE_OWNER_HOLD_NO_CURRENT_OPERATION"
     finally:
         session.close()

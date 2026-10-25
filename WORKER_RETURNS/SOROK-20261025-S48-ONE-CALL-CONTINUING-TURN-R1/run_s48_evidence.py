@@ -46,7 +46,9 @@ S47_RETURN = Path(roots()["s47_return"])
 S48_FILES = [
     ".gitignore", "00_RETURN.md", "run_s48.py", "run_s48_evidence.py",
     "s48/__init__.py", "s48/bootstrap.py", "s48/errors.py", "s48/product.py",
-    "s48/session.py", "tests/conftest.py", "tests/test_s48_one_call.py",
+    "s48/session.py", "s48/sources.py",
+    "evidence/repro_candidate_source_chronology.py",
+    "tests/conftest.py", "tests/test_s48_one_call.py",
 ]
 S47_FILES = [
     "s47/__init__.py", "s47/bootstrap.py", "s47/conditioning.py",
@@ -68,6 +70,13 @@ def _git(*args: str) -> str:
 def _write(path: Path, value) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+
+
+KNOW_ENV = dict(
+    ENV,
+    S48_RETURN=str(RET),
+    TMPDIR=str(LOGS / "tmp"),
+)
 
 
 def _run(cmd, log_name, env=None):
@@ -256,6 +265,16 @@ def actual_envelope(report):
     }
 
 
+def chronology_evidence():
+    proc = _run(
+        [PY, "-B", str(EVID / "repro_candidate_source_chronology.py")],
+        "repro_candidate_source_chronology.log", env=KNOW_ENV,
+    )
+    if proc.returncode != 0:
+        raise RuntimeError("S48_CHRONOLOGY_ORACLE_FAILED:" + proc.stderr)
+    return json.loads(proc.stdout)
+
+
 def source_manifest(report):
     s47_rows = []
     for rel in S47_FILES:
@@ -293,7 +312,8 @@ def source_manifest(report):
                 "path": str(path.relative_to(RET)),
                 "sha256": _sha(path),
             }
-            for path in sorted((EVID / "old_cut_ae021e").glob("*"))
+            for directory in (EVID / "old_cut_ae021e", EVID / "old_cut_ee4b2dd9")
+            for path in sorted(directory.glob("*"))
             if path.is_file()
         ],
         "actual_call": {
@@ -330,6 +350,8 @@ def main():
     envelope = actual_envelope(report)
     _write(EVID / "actual_envelope.json", envelope)
     _write(EVID / "controlled.json", controlled_branches())
+    chronology = chronology_evidence()
+    _write(EVID / "chronology.json", chronology)
     _write(EVID / "source_manifest.json", source_manifest(report))
     tests = test_evidence()
     _write(EVID / "test_run.json", {
@@ -350,6 +372,7 @@ def main():
             "s47_source_in_readset": report.get("c9", {}).get("s47_source_in_readset"),
             "output_sha256": (report.get("event_call_receipt") or {}).get("output_sha256"),
         },
+        "chronology": chronology,
         "controlled": json.loads((EVID / "controlled.json").read_text()),
         "tests": tests["counts"],
     }, sort_keys=True))
