@@ -995,7 +995,8 @@ def _progressive_prefix(source, qauth, registry, model_rule, target, conds, tag,
     )
 
 
-def _progressive_fixture(target="Y", conds=(("X", 1), ("O", "AB"))):
+def _progressive_fixture(target="Y", conds=(("X", 1), ("O", "AB")),
+                         revoked_scope=None):
     rows = []
     groups = [
         ("X1OABY1", {"X": 1, "O": "AB", "Y": 1}, 30),
@@ -1033,6 +1034,7 @@ def _progressive_fixture(target="Y", conds=(("X", 1), ("O", "AB"))):
     handle = configure_progressive_world_context(
         target_ref=source["qrefs"][target], conditions=conditions,
         prefixes=prefixes, world_empirical=world_empirical,
+        revoked_scope=revoked_scope,
     )
     return handle
 
@@ -1161,6 +1163,18 @@ def _run_r107_view_subprocess():
     )
     assert proc.returncode == 0, proc.stdout[-3000:] + proc.stderr[-3000:]
     return json.loads(proc.stdout)
+
+
+def test_r107_revoked_world_scope_is_typed_unavailable_and_restores():
+    handle = _progressive_fixture(revoked_scope="training_access")
+    view = progressive_world_view(ProgressiveWorldRequest(
+        handle, "T1", "GENERIC_POSITIONED_SUBJECT", "AS_OF"))
+    assert view.state == "PROGRESSIVE_WORLD_UNAVAILABLE"
+    assert view.world_routes["training"].startswith("UNAVAILABLE")
+    restored_handle = _progressive_fixture()
+    restored = progressive_world_view(ProgressiveWorldRequest(
+        restored_handle, "T1", "GENERIC_POSITIONED_SUBJECT", "AS_OF"))
+    assert restored.state == "PROGRESSIVE_WORLD_SELECTED_VIEW"
 
 
 def test_r107_cold_replay_same_world_and_progressive_view():

@@ -1077,6 +1077,7 @@ def configure_progressive_world_context(
     world_empirical: Mapping[str, Any],
     purpose: str = "GENERIC_POSITIONED_SUBJECT",
     structural_revision: bool = True,
+    revoked_scope: str | None = None,
 ) -> str:
     if not prefixes or len(prefixes) != len(conditions):
         raise WorldBindingError("PROGRESSIVE_PREFIX_COUNT_MISMATCH")
@@ -1103,6 +1104,8 @@ def configure_progressive_world_context(
     bootstrap.install()
     from product.world import SelectedWorldCatalog
     catalog = SelectedWorldCatalog(world_empirical, structural_revision=structural_revision)
+    if revoked_scope is not None:
+        catalog.revoke(revoked_scope)
     snapshots = {
         "T0": catalog.select(mode="HISTORICAL", valid_at="2026-06-01",
                              published_asof="2026-04-15"),
@@ -1274,8 +1277,14 @@ def progressive_world_view(request: ProgressiveWorldRequest) -> ProgressiveWorld
                         extension.composition_result.complete_cell_geometry)}
         for index, extension in enumerate(context.extensions)
     )
+    routes = structural.get("routes") or {}
+    unavailable = any(
+        str(value).startswith("UNAVAILABLE") or str(value).startswith("REVOKED")
+        for value in routes.values()
+    )
+    state = "PROGRESSIVE_WORLD_UNAVAILABLE" if unavailable else "PROGRESSIVE_WORLD_SELECTED_VIEW"
     material = {
-        "state": "PROGRESSIVE_WORLD_SELECTED_VIEW",
+        "state": state,
         "target_ref": context.target_ref.as_dict(),
         "conditions": _progressive_condition_material(context.conditions),
         "purpose": context.purpose,
@@ -1291,8 +1300,9 @@ def progressive_world_view(request: ProgressiveWorldRequest) -> ProgressiveWorld
         "world_part": True,
     }
     return ProgressiveWorldView(
-        state="PROGRESSIVE_WORLD_SELECTED_VIEW",
-        reason_code="ACTUAL_N9_N10E_N10W",
+        state=state,
+        reason_code=("WORLD_AUTHORITY_UNAVAILABLE_OR_REVOKED" if unavailable
+                     else "ACTUAL_N9_N10E_N10W"),
         target_ref=context.target_ref,
         prefix_count=len(context.prefixes),
         world_snapshot_hash=context.snapshots[request.snapshot_key].snapshot_hash,
