@@ -299,3 +299,5 @@ Returnd29a9db26821e937afc3d0ef19e243aafbff1744 verified8artifacthashes/9ownrootp
 
 ## R100 — user approved Q86context scope; existingauthor running
 Directuser rockit approves exactR99retainedcontexttwo-pathscope. Grant/commission3d9dbb79153811715ac68b0ab0b32332ce939d13; existingOpenCodeMAX sessionses_e98c905cbffekusoHURfKyEUKG PID43019 atstabler61-r01 branchagent/opencode-pyat-r100-q86-context-consumer-r1 exactstartupb2cfe93cee854b7aff2081a7a223ada75295332a. Actualtoolpreflightpending; logs.r61/r100-q86-context. Actual retainedQ86FFcontext→permittedpinnedconsumer, no syntheticreplacement/rawsource/newmeasurement/structuralpromotion/actorstate. Distinctexistingreviewerafterterminalcandidate. Stop exactoutsidepathneed; no extraowneredit. Browserrecoverycomplete, no newcourt. Fullgoal/holdsretained.
+
+R100startupreconciliation: stableworktreehadlateR97documentary-onlyreturnc9fb7e69e despite parentPID30501missing. Verifiedownreturnroot-onlydelta, preservedbranch; no codechange/adoption. Parentterminationdidnotprovebackendcancellation. BrowserR98governs. R100branch explicitlycreatedfromb2cfe93, excludingR97docs.
