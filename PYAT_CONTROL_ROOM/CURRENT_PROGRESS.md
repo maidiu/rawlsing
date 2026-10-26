@@ -1,3 +1,10 @@
+# R135 — production binding implementation running
+
+User says get to it after accepting R134 all35 task. Exact bounded existing-author code connection of competent source metadata/authority/independent admitted native workload into existing Route B; no new source/science, generated original grant or engine. Preserve native law/test-only path; prove actual branch with clearly synthetic harness plus negative/restoration, then distinct existing reviewer. Actual source/learned/FF milestone remains next, not claimed. Fullscope/all holds preserved.
+
+
+## Earlier progress history retained
+
 # R134 — all35 present source pipeline task clarified
 
 User requires clarification before implementation. Shared S1-S8 task,35 source cards,25 exact primary input pins plus current code findings are banked under director R134_ALL35_SOURCE_PIPELINE_TASK. Entire source->empirical AND learned->FF/V553 handover/function/estate scope preserved; no all35-before-representative prerequisite. Source-specific metadata/science/permission binding remains explicit, no human scientific oracle. Existing production packages first; TEST_ONLY helper gaps do not mandate rewrite. R133 late return verified7 hashes/bytes/own8paths/directremote:3 TEST_ONLY native executions/facts, no source/learned/FF proof. No live workers, no source/code implementation launched by this task definition. Full35/1890/F1-F8/globalF6F7F8/LongMemory, C5parallel and all holds preserved.
