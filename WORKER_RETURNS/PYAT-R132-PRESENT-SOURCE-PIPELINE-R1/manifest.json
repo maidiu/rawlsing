@@ -1,0 +1,44 @@
+{
+  "actual_attempt_exit_code": 2,
+  "artifacts": {
+    "00_RETURN.md": {
+      "bytes": 4158,
+      "sha256": "80ccafcd00e0943c593bcb9e43132573c5dd683e9c34cdd51719a01218de7854"
+    },
+    "ACTUAL_ATTEMPT.json": {
+      "bytes": 2981,
+      "sha256": "43999d625a51b22efae683511a130af296e0d62215989ad1d9f5ab5cf5c02d1a"
+    },
+    "COMMANDS.md": {
+      "bytes": 2214,
+      "sha256": "d5aca42950d74910de5c83a7c6266b9b517a4889b6ba4c003e8eb552e8c4d041"
+    },
+    "RESUME.md": {
+      "bytes": 1943,
+      "sha256": "e0c789d029a0ba9b1c504a6631112e918c3a3563295e2802c39eb1aa67831463"
+    },
+    "RUNTIME_AND_ACCESS.json": {
+      "bytes": 951,
+      "sha256": "884a787050800c5d06a6d305f97d5f76e79b6776113106f46a9e4497222cc46b"
+    },
+    "SOURCE_PIPELINE_CALL.json": {
+      "bytes": 9259,
+      "sha256": "af3ad3c3c66f49727d02718e53317ac697fc37e9cfb6006ef2503952f99fc0de"
+    },
+    "runtime/r132_present_pipeline.py": {
+      "bytes": 8073,
+      "sha256": "ea19d0cf1351f29d6ff7767651e2d05e85ee16782185acd6167e796c6306ef9d"
+    }
+  },
+  "branch": "agent/opencode-pyat-r131-exact-native-support-m1-replay-r1",
+  "excluded_from_manifest": [
+    "manifest.json",
+    ".r61/r132-present-source-pipeline/"
+  ],
+  "external_directory_scans": 0,
+  "note": "Own R132 return only. Local S44 handoff is evidence, not a grant/runtime. Source-dependent pipeline blocked at current admission. Manifest excludes itself.",
+  "schema": "PYAT_R132_PRESENT_SOURCE_PIPELINE_MANIFEST@1",
+  "source_reads": 0,
+  "startup_commit": "be5c76ae6640c3b644036ad7cbe271d7f95c8ee7",
+  "status": "BLOCKED__CURRENT_NATIVE_RUNTIME_AND_SOURCE_ADMISSION_MISSING__SOURCE_NOT_READ__PIPELINE_NOT_EXECUTED"
+}
