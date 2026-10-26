@@ -110,6 +110,7 @@ def build_projection_catalog(
     bundle: NativePreimageBundle,
     operation: OperationFixture,
     as_of: str,
+    query_authority: AuthoritySnapshot | None = None,
 ) -> tuple[RuntimeObjectCatalog, I03ExecutionRequest]:
     """Build the exact RuntimeObjectCatalog for one TEST_ONLY query operation.
 
@@ -131,38 +132,49 @@ def build_projection_catalog(
         and "RespondentEvent@1.0.0" in a.governed_object_families
         and "EmpiricalCoordinateFact@1.0.0" in a.governed_object_families
     )
-    query_auth_digest = _hash({
-        "tag": "b49-query", "source_sha256": bundle.source_sha256, "as_of": as_of,
-    })
-    query_auth = AuthoritySnapshot(
-        typed_state="ALLOW",
-        authority_snapshot_refs=(),
-        dependency_refs=(),
-        producer_replay_locator_or_reference_root=_ref("REPLAY_ROOT", "query-authority"),
-        authority_id="B49-TEST-ONLY-QUERY-AUTH",
-        authority_version="1.0.0",
-        authority_content_hash=query_auth_digest,
-        authority_kind="PREDICATE_GRAMMAR",
-        decision_state="ALLOW",
-        governed_operations=("B49-OP-query",),
-        governed_object_families=(
-            "EmpiricalPredicate@1.0.0", "EmpiricalQuerySpec@1.0.0", "EmpiricalFact@1.0.0",
-        ),
-        scope_envelope={
-            "source_universe_refs": "EXPLICIT_UNRESTRICTED",
-            "target_use_refs": "EXPLICIT_UNRESTRICTED",
-            "predicate_or_risk_set_refs": "EXPLICIT_UNRESTRICTED",
-            "source_sha256": bundle.source_sha256,
-            "as_of": as_of,
-            "grade": "TEST_ONLY_SOURCEFREE",
-        },
-        effective_time_or_interval=as_of,
-        parent_authority_refs=(),
-        negative_limit_refs=(),
-        supersession_refs=(),
-        interpretation_semantics_fingerprint=_hash({"tag": "b49-query", "as_of": as_of}),
-        replay_protocol_ref=_ref("REPLAY_PROTOCOL", "query-authority"),
-    )
+    if query_authority is None:
+        query_auth_digest = _hash({
+            "tag": "b49-query", "source_sha256": bundle.source_sha256, "as_of": as_of,
+        })
+        query_auth = AuthoritySnapshot(
+            typed_state="ALLOW",
+            authority_snapshot_refs=(),
+            dependency_refs=(),
+            producer_replay_locator_or_reference_root=_ref("REPLAY_ROOT", "query-authority"),
+            authority_id="B49-TEST-ONLY-QUERY-AUTH",
+            authority_version="1.0.0",
+            authority_content_hash=query_auth_digest,
+            authority_kind="PREDICATE_GRAMMAR",
+            decision_state="ALLOW",
+            governed_operations=("B49-OP-query",),
+            governed_object_families=(
+                "EmpiricalPredicate@1.0.0", "EmpiricalQuerySpec@1.0.0", "EmpiricalFact@1.0.0",
+            ),
+            scope_envelope={
+                "source_universe_refs": "EXPLICIT_UNRESTRICTED",
+                "target_use_refs": "EXPLICIT_UNRESTRICTED",
+                "predicate_or_risk_set_refs": "EXPLICIT_UNRESTRICTED",
+                "source_sha256": bundle.source_sha256,
+                "as_of": as_of,
+                "grade": "TEST_ONLY_SOURCEFREE",
+            },
+            effective_time_or_interval=as_of,
+            parent_authority_refs=(),
+            negative_limit_refs=(),
+            supersession_refs=(),
+            interpretation_semantics_fingerprint=_hash({"tag": "b49-query", "as_of": as_of}),
+            replay_protocol_ref=_ref("REPLAY_PROTOCOL", "query-authority"),
+        )
+    else:
+        if not isinstance(query_authority, AuthoritySnapshot):
+            raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_REQUIRED")
+        if (
+            query_authority.typed_state != "ALLOW"
+            or query_authority.decision_state != "ALLOW"
+            or query_authority.authority_kind != "PREDICATE_GRAMMAR"
+        ):
+            raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_NOT_POSITIVE")
+        query_auth = query_authority
     universe = projection.universes[0]
     members = tuple(sorted((r.ref for r in projection.respondents), key=lambda r: r.key))
     membership = _ref(
