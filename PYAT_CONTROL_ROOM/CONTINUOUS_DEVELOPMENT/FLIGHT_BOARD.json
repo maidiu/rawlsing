@@ -1530,7 +1530,7 @@
     "approved_utc": "2026-10-24T14:10:45.118294+00:00",
     "canonical_prior": "8db787b2760e797e359b06cdbadbd5d050b6939a"
   },
-  "next_action": "Deliver sealed R121 C5/N5-N6 admission/use commission to existing Browser HQ. No source priority or execution selected. Await actual delivery/return; do not repeat R98 general recovery or launch a replacement worker.",
+  "next_action": "Under existing Astra C5/N5-N6 and completed R98, adjudicate R121 recommendation; identify exact retained position-linked joint product/use or exact missing edge and executable bounded retrieval. No predetermined source, no general recovery, no dependent code/science grant from this return.",
   "active_workers": [],
   "r98_browser_handoff": {
     "schema": "PYAT_R98_BROWSER_HQ_HANDOFF_V1",
@@ -2104,7 +2104,7 @@
       "Newworkers/providers orR97recoveryrestart"
     ]
   },
-  "current_routing": "Bounded High decision COMPLETE; qualified Low return next; no further High work.",
+  "current_routing": "R122 bounded High required for actual product/use decision; routing reservation before dispatch.",
   "automation_status": "ACTIVE_USER_RESUMED_R109",
   "r109_intake": {
     "candidate": "22280a3f43e751bab1bbebe0a9d8c601b3160120",
@@ -2326,5 +2326,47 @@
     "path": "WORKER_COMMISSIONS/PYAT-R121-C5-CONTENT-ADMISSION-AND-USE-R1/00_COMMISSION.md",
     "state": "READY_NOT_DISPATCHED",
     "delivery_dependency": "Human supplies this sealed commission to existing Browser PYAT HQ, or connects its actual conversation/tab; no available current destination was observed"
+  },
+  "r122_return_intake": {
+    "schema": "PYAT_R122_R121_RETURN_INTAKE_V1",
+    "return_head": "a477a3e6b87f858da4a17e97818436c30b02eddd",
+    "scope": "DOCUMENTARY_RETURN_CUSTODY_VERIFIED_NOT_SCIENTIFIC_ADOPTION",
+    "manifest_verified": [
+      {
+        "path": "WORKER_RETURNS/PYAT-R121-C5-CONTENT-ADMISSION-AND-USE-R1/00_ADMISSION_AND_USE_CONTRACT.md",
+        "sha256": "0f05a51eb2a0d8a66fde2a0c28fa54862fc14d142c9539d9840a355132094c09",
+        "bytes": 10011
+      },
+      {
+        "path": "WORKER_RETURNS/PYAT-R121-C5-CONTENT-ADMISSION-AND-USE-R1/01_PRODUCT_BINDINGS.json",
+        "sha256": "2f985cfb2ce81fb9c34771b980b64f3cba665f5e3444b9a9e243a026af6f69c2",
+        "bytes": 10303
+      },
+      {
+        "path": "WORKER_RETURNS/PYAT-R121-C5-CONTENT-ADMISSION-AND-USE-R1/02_IMPLEMENTATION_HANDOFF.md",
+        "sha256": "d15bb52574d87c55d98c947868057eef5730c045d2b1b9f0679c9b6cab9fe770",
+        "bytes": 5548
+      }
+    ],
+    "only_return_root_changed": true,
+    "pin_discrepancies": [
+      {
+        "role": "P41 world fixture",
+        "claimed_blob": "06a74caebda69f7a99138ef57d9c07b",
+        "resolved_blob": "06a74caebda69f7d1baa8719a99138ef57d9c07b",
+        "commit": "f27d1101048638bba395143a48efb7ef00bfcda4",
+        "path": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/runtime/vendor/product/world.py"
+      },
+      {
+        "role": "Retained GT2 context",
+        "claimed_blob": "b6829d672fbc72b3f7a04ec12781e643031665b0",
+        "resolved_blob": "UNRESOLVED",
+        "commit": "integration/pre-main-reconciliation-r1",
+        "path": "WORKER_RETURNS/PYAT-HQ221-C5-GT2-STRUCTURAL-POSITIVE-REALIZATION-R1/01_RETAINED_EMPIRICAL_INPUT_BINDING.json"
+      }
+    ],
+    "next_bounded_decision": "Under existing Astra C5/N5-N6 and completed R98, adjudicate R121 recommendation; identify exact retained position-linked joint product/use or exact missing edge and executable bounded retrieval. No predetermined source, no general recovery, no dependent code/science grant from this return.",
+    "intelligence_boundary": "Consequential scientific admission/use and product selection require same-HQ High; routine custody only performed at Low.",
+    "workers": []
   }
 }
