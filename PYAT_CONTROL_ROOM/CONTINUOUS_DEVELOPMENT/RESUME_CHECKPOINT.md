@@ -1,3 +1,11 @@
+# CURRENT — R153 native evidence repair RUNNING; R152 REVISE
+
+R1526476b82cedec3133ec1ac8df553acb1c243d0f0d terminal verified13manifesthashesbytes/directremote: REVISE. Independent conservation/native-type grain holds, but WVS Occurrence administrationUNKNOWN contradicts NativeSourceRule administeredTrue; defaultform and hardcodedunit/topology ungrounded. R153 sameauthorPID68278 sealedcef4cc0a0aee756ccd5fa4360f5946eefb8a61a8 repairs exact evidencebindings or holds unsupported objects; no broadcourt/newscience. Reviewerterminal. No surveyread or sourcegrant; exactmetadatarequest pending. Full35goal/C5/allholds retained.
+
+# CURRENT — R147 current metadata integration RUNNING; R146 all35 return banked
+
+R146 terminal manifest/directremote verified. Integrate staged current metadata and reconcile historical labels against completed repairs. Previous metadata return e3a95fef6eecfbac56341553cf3482ccd750a351 manifest hashes/bytes/directremote verified:3317 rows retained, six author checks, no survey execution. LiTS unknown CSV measure is not evidence prior semantic work absent. R147 same existing OpenCode MAX session PID68278 sealed cef4cc0a0aee756ccd5fa4360f5946eefb8a61a8:WORKER_COMMISSIONS/PYAT-R153-NATIVE-EVIDENCE-REPAIR-R1/00_COMMISSION.md extends binder with existing indexed source-specific bindings across35; no new engine/court. Exact survey metadata-only access request remains PENDING; no source read authority inferred. Representative source-to-empirical AND learned-to-FF milestone stays parallel, not all35 prerequisite. Full goal/holds preserved.
+
 # CURRENT — R152 independent native-input review RUNNING
 
 R151 e3a95fef6eecfbac56341553cf3482ccd750a351 terminal manifest hashes/bytes/directremote verified; consumes38typed surfaces, resolves18exact domains17codebook domains3emptyrepresentation domains,4units2topologies4risksets. Actual2WVS Occurrences/2NativeSourceRules/incompleteSourceInventory; author6checks not acceptance. Existing distinct reviewerPID65300 R152 validates exact evidence/scope/default/refusal bindings under frozen R150/R151 contracts; no expanded court. R1504460records/context/unmatched preserved. Nativeinventory incomplete, planner not invoked, no surveyread/learned/FF claim. Sourcemetadata question pending; all35/fullgoal/holds retained.
