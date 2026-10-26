@@ -1,0 +1,555 @@
+{
+  "schema": "PYAT_R126_BOUND_NEXT_OPERATION@1",
+  "status": "BOUND_READ_ONLY_NON_SOURCE_OPERATION__FULL_SOURCE_LAUNCH_NOT_READY",
+  "branch": "agent/opencode-pyat-r125-representative-route-b-launch-packet-r1",
+  "startup_and_repair_target_commit": "2c4721f3a73952e6e127286de5d4560809003b63",
+  "repair_commission": "32d643cf2e823790e4305acfb749968f88bf74e2:WORKER_COMMISSIONS/PYAT-R126-R125-CONCRETE-NEXT-OPERATION-REPAIR-R1/00_COMMISSION.md",
+  "defects_repaired": [
+    "R125 used angle-bracket runtime and issued-preimage placeholders; R126 binds one retained Git object and names every unbound native value as NOT_BOUND.",
+    "R125 treated M2/B5 and downstream as comments; R126 records exact accepted R03/R05/M2/B5 symbols and signatures, and explicitly leaves values unbound rather than inventing a lifecycle interface.",
+    "R125 claimed NativePreimageBundle from the binding module; R126 corrects the defining owner to rawlsing_next/pre553_source_native_preimage_adapter.py.",
+    "R125 claimed M2Repository.resolve_release_exact; R126 corrects this to M2Repository.release_exact and module-level resolve_release_exact(repository, release_ref, *).",
+    "R125 did not distinguish not-verified current rights from evidenced absence; R126 separates NOT_VERIFIED current custody from ABSENT__EVIDENCED mixed-predicate AuthoritySnapshot.",
+    "R125 did not distinguish historical retained checkpoint from the current retry's unwritten checkpoint; R126 records current v3 checkpoint NOT_WRITTEN and zero-source resume NOT_RUN.",
+    "R125 cited an R43 execute_permitted path not present at the candidate HEAD; R126 does not reuse it as a next command."
+  ],
+  "operation": {
+    "id": "R126-N1-LITS-PROJECTION-AUTHORITY-RETRIEVAL",
+    "kind": "READ_ONLY_GIT_OBJECT_RETRIEVAL_AND_HASH_CHECK",
+    "source_id": "SRC27",
+    "source_name": "LiTS I",
+    "carrier": "DTA",
+    "primary_object": {
+      "commit": "01762d7379be4e423dad3e21bcdcee47c536902d",
+      "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-CANONICAL-EMPIRICAL-CLOSURE-SOURCEBACKED-R1/court/oracle_producers/LITS_I/_be1_lits_projection/_be1_immutable/3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS4I0_CHETIRI_ROUTE_B_PRODUCTION_DRIVER_20260827/AS2A_LITS1_SHARED_CERTIFICATION_20260827/04_SOURCE_SPECIFIC_PROJECTION_AUTHORITY_PACKAGE.json",
+      "git_blob": "174b931e8aa89111086e3d46159b47154bed7f16",
+      "bytes": 5275,
+      "sha256": "8bfc5c19da384bcbc1a73219f5412bf5045b7296ff5a9cfd9f6e6d99df9db621",
+      "internal_projection_authority_ref": {
+        "kind": "AS2A_LITS1_SOURCE_SPECIFIC_PROJECTION_AUTHORITY",
+        "object_id": "urn:rawlsing:pre553:as2a:lits1-projection-authority:sha256:9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+        "content_hash": "9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06"
+      }
+    },
+    "why_this_is_concrete": "It is an actual retained primary authority export, not a placeholder. It is retrievable by exact commit/path/blob, has a fixed content hash and byte count, and contains the exact LiTS source identity, response slots, role, routing, coordinates, weights limit, and universe needed for the narrower next step.",
+    "exact_command": "git cat-file -p 01762d7379be4e423dad3e21bcdcee47c536902d:WORKER_RETURNS/PREMAIN-FIABC-LITS-CANONICAL-EMPIRICAL-CLOSURE-SOURCEBACKED-R1/court/oracle_producers/LITS_I/_be1_lits_projection/_be1_immutable/3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS4I0_CHETIRI_ROUTE_B_PRODUCTION_DRIVER_20260827/AS2A_LITS1_SHARED_CERTIFICATION_20260827/04_SOURCE_SPECIFIC_PROJECTION_AUTHORITY_PACKAGE.json",
+    "expected": {
+      "git_blob": "174b931e8aa89111086e3d46159b47154bed7f16",
+      "bytes": 5275,
+      "sha256": "8bfc5c19da384bcbc1a73219f5412bf5045b7296ff5a9cfd9f6e6d99df9db621"
+    },
+    "source_read_or_hash": false,
+    "code_executed": false,
+    "is_source_launch": false,
+    "is_permission": false
+  },
+  "extracted_scope": {
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "source_shape": {
+      "rows": 29002,
+      "variables": 1198,
+      "physical_cells": 34744396
+    },
+    "study_product": "Life in Transition Survey 2006",
+    "instrument_release": "LiTS-I Final questionnaire 2006",
+    "raw_wave": "2006",
+    "canonical_wave_if_governed": "2006",
+    "certified_active_response_contract_slots": [
+      "q301_2",
+      "q301_7",
+      "q312_3",
+      "q315_1",
+      "q511"
+    ],
+    "bounded_proving_response_slots": [
+      "q301_2",
+      "q301_7"
+    ],
+    "positive_response_slots": [
+      "q301_2",
+      "q301_7"
+    ],
+    "routing_scope": {
+      "q301_2": "ELIGIBLE_APPLICABLE__SECTION3_UNCONDITIONAL",
+      "q301_7": "ELIGIBLE_APPLICABLE__SECTION3_UNCONDITIONAL"
+    },
+    "respondent_role": "selected person for Sections 3-7",
+    "respondent_identity_key_law": "source_sha256 + 1-based row ordinal + semantic role SELECTED_RESPONDENT",
+    "positive_coordinate_slots": [
+      "city",
+      "country",
+      "region",
+      "tablec",
+      "tabled"
+    ],
+    "weights": "NONE__RAW_UNWEIGHTED",
+    "country_geography": "source field country; 29 source-present country codes; no cross-release equivalence claim",
+    "target_population_and_sample_frame": "source-documented randomly selected households with one selected person for Sections 3-7; bounded RAW proving release",
+    "nonparticipating_slot_count": 1191,
+    "slot_ledger_sha256": "65bdb972c2004d7ea6539b991125d2111e3705aee2d3e76159208d04e4a3fa60",
+    "slot_ledger_note": "Exact 1,198-slot ownership/projection/exclusion ledger hash; this is not itself a risk-membership claim.",
+    "universe_spec_ref": {
+      "kind": "AS2A_LITS1_EMPIRICAL_UNIVERSE_SPEC",
+      "object_id": "urn:rawlsing:pre553:as2a:universe:sha256:834f9be5c5838226abcc9f0af96f2f582eac8bec2944c514ce52680f45faf99f",
+      "content_hash": "834f9be5c5838226abcc9f0af96f2f582eac8bec2944c514ce52680f45faf99f"
+    },
+    "exact_fact_binding": {
+      "fact_ref": "urn:rawlsing:pre553:EmpiricalFact:sha256:c5b0e1ed85d2ae0c0714efeabf1b951ae827995d65441d419e45aac57b8057fc",
+      "query_ref": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:3419fd8377bd3b681315191bd22a3c37a95443946c0a0477b2c591e6690bfbd0",
+      "predicate_ref": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:3dba42ac25eb61d46958587c46ecacbb4fff83f87de535a72d0d793e5c49b508",
+      "typed_state": "SUPPORTED",
+      "raw_denominator_support": 1191,
+      "raw_resolved_target_support": 1191,
+      "target_topology": {
+        "arity": 1,
+        "joint_order_semantics": "SEMANTIC_ORDERED",
+        "target_domain_identity": "cff1766e654eef4c8769618d34f406e570ec3fe82a93b1a5db900fe1377d416f"
+      },
+      "exact_risk_set_ref": "NOT_RETAINED__OWNED_BY_NativePreimageBundle",
+      "provenance": "Retained current_i05_precheck at 01762d7379be4e423dad3e21bcdcee47c536902d; this is the fact affected by the missing authority, not a complete current workload or acceptance scope."
+    },
+    "scope_limit": "q301_2 and q301_7 are exact retained slots; no semantic item name, risk member, or cross-item relation is inferred. The exact NativePreimageBundle.risk_set_ref and full bundle are not retained in this packet."
+  },
+  "first_missing_preimage": {
+    "kind": "AuthoritySnapshot",
+    "authority_id": "urn:rawlsing:prev3:p2r4a:pre553:mixed-predicate-grammar",
+    "authority_version": "1.0.0-candidate",
+    "authority_content_hash": "0d7cfaac1d63cd438d29b109b590cb828805bd113fc37759a6f6f4c88d3c8f55",
+    "state": "ABSENT__EVIDENCED",
+    "required_by": "LiTS canonical empirical closure and checkpoint v3 prewrite validation",
+    "effect": "The current source retry completed the neutral I05 precheck but failed before writing the checkpoint; no valid source-free resume target exists.",
+    "evidence": [
+      {
+        "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-EXECUTED-ROLE-CLOSURE-REPAIR-AND-SOURCE-RETRY-R1/source_free_role_authority_audit.json",
+        "git_blob": "717977a6004038140368babdd90729076792b837",
+        "bytes": 2670,
+        "sha256": "5d0c9843d7972c70a9e1d297402d71fdc07ea69b9bebc9ad6d45c87034155ff3",
+        "finding": "No exact AuthoritySnapshot preimage in the runtime catalog or historical resolver; minting or substituting a positive snapshot would alter authority semantics."
+      },
+      {
+        "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-EXECUTED-ROLE-CLOSURE-REPAIR-AND-SOURCE-RETRY-R1/checkpoint_disposition.json",
+        "git_blob": "22b6f1e8ffa1c3e81fc4a42a96d2b58b60fcd258",
+        "bytes": 851,
+        "sha256": "8ed57d8f7fa0254e7c5a2c8622ef55ac8a86f0482f8a511d2fabcb58fa49d4bf",
+        "finding": "checkpoint_document_written=false; failure PREWRITE_CANONICAL_OBJECT_CLOSURE_VALIDATION; missing exact authority ref recorded."
+      },
+      {
+        "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-EXECUTED-ROLE-CLOSURE-REPAIR-AND-SOURCE-RETRY-R1/zero_source_checkpoint_resume_receipt.json",
+        "git_blob": "ff62a81b0e3958a2df77fd02fd7de1e8de690121",
+        "bytes": 378,
+        "sha256": "390d0d42d5d544ebc815c04222224acf39b94da7d9bedcda61358159c53fb580",
+        "finding": "status NOT_RUN_NO_CHECKPOINT_DOCUMENT; no valid source-free resume target exists."
+      },
+      {
+        "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-EXECUTED-ROLE-CLOSURE-REPAIR-AND-SOURCE-RETRY-R1/court/oracle_producers/LITS_I/current_i05_precheck.json",
+        "git_blob": "284717079923f85b84c589159491d02a6681bd86",
+        "bytes": 83613,
+        "sha256": "1ffbcb0f02e0c6b89a09cb255ce9342cbcb162ab2a1302de0ca8ade24990eed6",
+        "finding": "Exact affected fact/query/predicate and fact-level denominator/topology are retained; precheck is not a checkpoint or oracle."
+      }
+    ],
+    "owner_package": {
+      "path": "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_03_mixed.json",
+      "git_blob": "a18fd79609f080062b93dfe0e2bab8e9bf865af3",
+      "bytes": 5278,
+      "sha256": "16661cdbf6067acb79ac0bed1ba3b9be5497f523fb51c5ae95b1c79ceba08ba9",
+      "schema": "EE_P2R4A_PARENT_CHILD_GRAMMAR_COMPOSITION_AUTHORITY@1.0.0",
+      "status": "CANDIDATE__HQ_ADOPTION_REQUIRED",
+      "authority_kind": "PREDICATE_GRAMMAR_SUCCESSOR_CANDIDATE"
+    },
+    "recovery_decision": "The competent authority/HQ owner must either ADOPT this exact candidate as a current positive AuthoritySnapshot, or SUPPLY an exact positive AuthoritySnapshot with the same authority_id, authority_version, and authority_content_hash from competent custody. Relabelling the version, minting a synthetic positive snapshot, or reading LiTS source does not repair this gap.",
+    "recovery_command": "git cat-file -p HEAD:rawlsing_next/tests/fixtures/ee_p2r6a_r4a_03_mixed.json",
+    "precise_access_if_external": "If the positive snapshot is held only in an external authority store, the bounded grant is read-only access to the exact AuthoritySnapshot identified by the id/version/hash above; no source read or global grant is required.",
+    "source_read_required": false,
+    "not_a_request_for": [
+      "unbounded source-use signature",
+      "LiTS raw source access",
+      "relabelling 1.0.0-candidate as positive",
+      "minting a substitute AuthoritySnapshot"
+    ]
+  },
+  "full_launch_gate": {
+    "status": "NOT_READY",
+    "first_dependency": "positive mixed-predicate AuthoritySnapshot decision above",
+    "dependent_cells": [
+      {
+        "cell": "current_source_host_purpose_use",
+        "state": "NOT_VERIFIED__NO_CURRENT_CUSTODY_PROOF_IN_RETAINED_PACKET",
+        "not_a_finding_of_absence": true,
+        "needed": "Exact current source/access custodian decision naming source edition, host, purpose, use, retention/export, revocation, and consumer purpose."
+      },
+      {
+        "cell": "current_native_preimage_bundle",
+        "state": "NOT_BOUND__NO_EXACT_CURRENT_BUNDLE_RETAINED",
+        "needed": "Exact NativePreimageBundle with projection, physical stream, administered/held/excluded/unknown items, question refs, risk_set_ref, respondent rows, occurrence bindings, package/bundle hashes, and exact release."
+      },
+      {
+        "cell": "current_issued_workload_transport",
+        "state": "NOT_BOUND",
+        "needed": "Exact NativeWorkload and IssuedWorkloadRecord matching source/scientific permissions, host/purpose, source SHA, envelope, U/Epre roots, expected jobs, currentness, original wave, and native universes."
+      },
+      {
+        "cell": "m1_m2_b5_authorities",
+        "state": "NOT_BOUND",
+        "needed": "Exact M1 family-rule binding, validator registry, learned product contract, producer subjects/closures, and B5 lifecycle event authorities."
+      },
+      {
+        "cell": "ff_v553_n10e_world_consumer",
+        "state": "NOT_BOUND",
+        "needed": "Exact claim-family relation/admission or observed temporal pair, exact N10E graph/query/model rule, and exact world fit/purpose."
+      },
+      {
+        "cell": "wvs7_retained_comparator",
+        "state": "ALTERNATIVE_NOT_SELECTED__NOT_VERIFIED",
+        "needed": "Exact current permission to use the retained admitted release/replay/oracle as comparator; no fresh raw read is implied."
+      }
+    ]
+  },
+  "current_authority_disposition": {
+    "source_host_purpose_use": "NOT_VERIFIED__NO_CURRENT_CUSTODY_EVIDENCE_IN_RETAINED_PACKET__NOT_A_FINDING_OF_ABSENCE",
+    "retention_export_revocation": "NOT_VERIFIED",
+    "consumer_use": "NOT_VERIFIED",
+    "mixed_predicate_authority_snapshot": "ABSENT__EVIDENCED",
+    "current_v3_checkpoint": "NOT_WRITTEN",
+    "zero_source_resume": "NOT_RUN__NO_CHECKPOINT_DOCUMENT",
+    "historical_checkpoint_oracle": "HISTORICAL_RETAINED_EVIDENCE__CURRENTNESS_NOT_VERIFIED"
+  },
+  "api_bindings": {
+    "R03": {
+      "commit": "c912497b25411ebbd3d796db139f32f5bebb6c4c",
+      "review": "d15de915ea3388894c0f8839d28db3b23bc00367",
+      "files": [
+        {
+          "path": "rawlsing_next/pre553_issued_workload.py",
+          "blob": "31e84f49d624f5524906e9e7839d2873106f8249"
+        },
+        {
+          "path": "rawlsing_next/pre553_universal_workload.py",
+          "blob": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e"
+        },
+        {
+          "path": "rawlsing_next/pre553_native_workload_binding.py",
+          "blob": "dac73e484f8619088f5c6701b2b6991c07540f3b"
+        },
+        {
+          "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+          "blob": "a6299c1a6e8b26bd055ced1f49e5b757f20ccd8c",
+          "note": "Defining owner of NativePreimageBundle; imported by the binding module."
+        }
+      ],
+      "native_preimage_bundle": {
+        "defined_in": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "fields": [
+          "schema",
+          "source_sha256",
+          "package_hash",
+          "projection",
+          "physical_stream",
+          "release",
+          "administered",
+          "held",
+          "excluded",
+          "unknown",
+          "bundle_hash",
+          "question_refs",
+          "risk_set_ref",
+          "respondent_rows",
+          "occurrence_bindings"
+        ]
+      },
+      "native_workload_fields": [
+        "decision_ref",
+        "source_factory_ref",
+        "descriptor",
+        "projection",
+        "catalog",
+        "requests",
+        "discoveries",
+        "original_u_root",
+        "expected_frontier_root",
+        "original_wave_identity"
+      ],
+      "issued_workload_record_fields": [
+        "decision_ref",
+        "source_permission_ref",
+        "scientific_permission_refs",
+        "host",
+        "purpose",
+        "source_sha256",
+        "envelope_sha256",
+        "original_u_root",
+        "expected_frontier_root",
+        "expected_jobs",
+        "currentness",
+        "scope",
+        "original_wave_identity",
+        "native_universe_refs"
+      ],
+      "call_bindings": [
+        {
+          "callee": "rawlsing_next.pre553_issued_workload.admit",
+          "signature": "admit(workload: NativeWorkload, resolver: CurrentDecisionResolver, *, host: str, purpose: str, allow_test_only: bool = False, expected_wave: OriginalWaveIdentity | None = None) -> IssuedWorkloadRecord",
+          "current_binding": "NOT_BOUND__NO_CURRENT_ISSUED_WORKLOAD"
+        },
+        {
+          "callee": "rawlsing_next.pre553_issued_workload.execute_issued_workload",
+          "signature": "execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionResolver, *, source_factory: Callable[[ExactRef], Any], host: str, purpose: str, allow_test_only: bool = False, prior_receipts=(), max_units=None, expected_wave: OriginalWaveIdentity | None = None)",
+          "current_binding": "NOT_BOUND__NO_CURRENT_ISSUED_WORKLOAD_OR_SOURCE_FACTORY"
+        },
+        {
+          "callee": "rawlsing_next.pre553_universal_workload.compile_governed_frontier",
+          "signature": "compile_governed_frontier(*, bundle: NativePreimageBundle, inventory: SourceInventory, policy: GrammarPolicy, frontier: ScientificFrontier, as_of: str, host: str, purpose: str) -> GovernedFrontierCompilation",
+          "current_binding": "NOT_BOUND__NO_CURRENT_BUNDLE_INVENTORY_POLICY_FRONTIER_OR_CUSTODY"
+        },
+        {
+          "callee": "rawlsing_next.pre553_universal_workload.execute_governed_frontier",
+          "signature": "execute_governed_frontier(*, compilation: GovernedFrontierCompilation, source_factory: Any) -> GovernedFrontierResult",
+          "current_binding": "NOT_BOUND__NO_CURRENT_COMPILATION_OR_SOURCE_FACTORY"
+        },
+        {
+          "callee": "rawlsing_next.pre553_universal_workload.restore_governed_frontier_ledger",
+          "signature": "restore_governed_frontier_ledger(ledger: Mapping[str, Any], *, expected_checkpoint_ref: str | None = None) -> Mapping[str, Any]",
+          "current_binding": "NOT_BOUND__NO_VALID_CURRENT_CHECKPOINT_DOCUMENT"
+        }
+      ]
+    },
+    "R05": {
+      "commit": "bc2b5465c8f0ec2ea4657c6206436cdfa9ca58d0",
+      "review": "2f7faac6da620b7651c175ec074d7088d5a49343",
+      "files": [
+        {
+          "path": "rawlsing_next/pre553_learned_world_composition.py",
+          "blob": "adbcc3316920c708580097dfe9f5aef4c9ca82fb"
+        },
+        {
+          "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+          "blob": "a11c9eb73abab9be118ef4f0b6e325e676059f27"
+        },
+        {
+          "path": "rawlsing_next/pre553_learned_product_release.py",
+          "blob": "f76c390665f06ef126968ccf1a6b2d816f43ae92"
+        }
+      ],
+      "call_bindings": [
+        {
+          "callee": "rawlsing_next.pre553_learned_world_composition.build_m1_bundle_from_m01",
+          "signature": "build_m1_bundle_from_m01(result: RouteBProductionResult, *, contract: LearnedWorldProductContractBinding, family_rule_binding: M1FamilyRuleBinding | None, selected_discovery_receipt_refs: Iterable[ExactRef], requested_scope: Mapping[str, Any], additional_authority_snapshots: Iterable[Any] = (), prerequisite_channels: Iterable[M1PrerequisiteChannel] = (), additional_dependency_refs: Iterable[ExactRef] = ()) -> M1AdjudicationInputBundle",
+          "current_binding": "NOT_BOUND__NO_EXACT_M01_RESULT_OR_M1_FAMILY_RULE"
+        },
+        {
+          "callee": "rawlsing_next.pre553_learned_world_composition.adapt_m1_disposition_to_m2",
+          "signature": "adapt_m1_disposition_to_m2(disposition: LearnedEmpiricalDisposition, *, contract: LearnedWorldProductContractBinding, repository: M2Repository) -> M2ProductArtifacts",
+          "current_binding": "NOT_BOUND"
+        },
+        {
+          "callee": "rawlsing_next.pre553_learned_world_composition.adapt_m2_release_to_b5",
+          "signature": "adapt_m2_release_to_b5(artifacts: M2ProductArtifacts, *, contract: LearnedWorldProductContractBinding) -> M2B5LifecycleProtocolView",
+          "current_binding": "NOT_BOUND"
+        },
+        {
+          "callee": "rawlsing_next.pre553_learned_world_composition.compose_learned_world",
+          "signature": "compose_learned_world(contract: LearnedWorldProductContractBinding, *, m2_repository: M2Repository, lifecycle_executor: LearnedProductLifecycleExecutor, m01_result: RouteBProductionResult | None = None, selected_discovery_receipt_refs: Iterable[ExactRef] = (), requested_scope: Mapping[str, Any] | None = None, m1_family_rule_binding: M1FamilyRuleBinding | None = None, validator_registry: M1ValidatorRegistry | None = None, m1_authority_snapshots: Iterable[Any] = (), prerequisite_channels: Iterable[M1PrerequisiteChannel] = (), additional_dependency_refs: Iterable[ExactRef] = (), m1_disposition: LearnedEmpiricalDisposition | None = None) -> LearnedWorldCompositionResult",
+          "current_binding": "NOT_BOUND__NO_EXACT_CONTRACT_M01_RESULT_RULE_OR_LIFECYCLE_AUTHORITIES"
+        },
+        {
+          "callee": "rawlsing_next.pre553_learned_world_composition.compose_direct_producer",
+          "signature": "compose_direct_producer(contract: LearnedWorldProductContractBinding, ingress: DirectProducerIngress) -> LearnedWorldCompositionResult",
+          "current_binding": "NOT_BOUND__ROUTE_NOT_SELECTED"
+        },
+        {
+          "callee": "rawlsing_next.pre553_learned_world_composition.evaluate_learned_world_consumer",
+          "signature": "evaluate_learned_world_consumer(learned: LearnedWorldCompositionResult, *, composition: AnalyticalCompositionResult, consumer_query: PositionedSubjectPossibilityQuery, model_rule: PositionedSubjectPossibilityModelRule, producer_query_ref: ExactRef, producer_predicate_ref: ExactRef, require_current_selection: bool = False, product_graph: NativeProductGraph | None = None, trusted_graph_reader: TrustedNativeGraphCoordinator | None = None) -> LearnedWorldConsumerResult",
+          "current_binding": "NOT_BOUND__NO_ADMITTED_LEARNED_PRODUCT_OR_ACTUAL_GRAPH"
+        }
+      ],
+      "classes": [
+        "M2Repository",
+        "LearnedProductLifecycleExecutor",
+        "NativeProductGraph",
+        "NativeGraphSlot",
+        "NativeGraphExecutionRequest",
+        "TrustedNativeGraphCoordinator",
+        "LearnedWorldConsumerResult",
+        "M2ProductArtifacts",
+        "M2B5LifecycleProtocolView"
+      ],
+      "no_unverified_n10e_symbol": "The packet relies on evaluate_learned_world_consumer rather than asserting a separate unverified positioned-subject function."
+    },
+    "M2": {
+      "commit": "bc2b5465c8f0ec2ea4657c6206436cdfa9ca58d0",
+      "correction": "M2Repository.resolve_release_exact is not a method.",
+      "method": {
+        "callee": "M2Repository.release_exact",
+        "signature": "release_exact(self, ref: ExactRef | Mapping[str, Any]) -> ReleaseCore"
+      },
+      "module_function": {
+        "callee": "rawlsing_next.pre553_learned_product_release.resolve_release_exact",
+        "signature": "resolve_release_exact(repository: M2Repository, release_ref: ExactRef | Mapping[str, Any], *, publication_binding_refs: Sequence[ExactRef | Mapping[str, Any]] = (), unavailable_binding_refs: Iterable[ExactRef | Mapping[str, Any]] = ()) -> ResolutionResult",
+        "current_binding": "NOT_BOUND__NO_EXACT_RELEASE_OR_PUBLICATION_BINDING"
+      }
+    },
+    "B5": {
+      "commit": "bc2b5465c8f0ec2ea4657c6206436cdfa9ca58d0",
+      "class": "LearnedProductLifecycleExecutor",
+      "call_bindings": [
+        {
+          "callee": "LearnedProductLifecycleExecutor.register_product",
+          "signature": "register_product(self, release_ref: ExactRef, *, event_authority_ref: ExactRef, event_rule_ref: ExactRef, evidence_refs: Iterable[ExactRef] = ()) -> LearnedProductLifecycleEvent",
+          "current_binding": "NOT_BOUND__NO_EXACT_RELEASE_OR_EVENT_AUTHORITY"
+        },
+        {
+          "callee": "LearnedProductLifecycleExecutor.publish_product",
+          "signature": "publish_product(self, release_ref: ExactRef, *, event_authority_ref: ExactRef, event_rule_ref: ExactRef, evidence_refs: Iterable[ExactRef] = ()) -> LearnedProductLifecycleEvent",
+          "current_binding": "NOT_BOUND__NO_EXACT_RELEASE_OR_EVENT_AUTHORITY"
+        },
+        {
+          "callee": "LearnedProductLifecycleExecutor.select_current",
+          "signature": "select_current(self, selection_key_ref: ExactRef, release_ref: ExactRef, *, expected_previous_receipt_ref: ExactRef | None, event_authority_ref: ExactRef, event_rule_ref: ExactRef, selection_attestation_ref: ExactRef, evidence_refs: Iterable[ExactRef] = ()) -> CurrentSelectionReceipt",
+          "current_binding": "NOT_BOUND__NO_EXACT_SELECTION_KEY_OR_AUTHORITY"
+        },
+        {
+          "callee": "LearnedProductLifecycleExecutor.resolve_current_as_of",
+          "signature": "resolve_current_as_of(self, selection_key_ref: ExactRef, *, as_of_event_ref: ExactRef | None = None, as_of_checkpoint: Mapping[str, Any] | None = None) -> SelectionResolution",
+          "current_binding": "NOT_BOUND__NO_EXACT_CURRENT_SELECTION"
+        },
+        {
+          "callee": "LearnedProductLifecycleExecutor.declare_invalidation",
+          "signature": "declare_invalidation(self, changed_determinant_refs: Iterable[ExactRef | AuthorityRef | Mapping[str, Any]], *, event_authority_ref: ExactRef, event_rule_ref: ExactRef, dependency_closure_receipt_ref: ExactRef, selection_attestation_ref: ExactRef, current_transitions: Mapping[str, ExactRef | None] | None = None, evidence_refs: Iterable[ExactRef] = ()) -> InvalidationReceipt",
+          "current_binding": "NOT_BOUND__NO_EXACT_DETERMINANT_OR_AUTHORITY"
+        }
+      ]
+    },
+    "R06_world": {
+      "commit": "849a76de18ef627c3c403b426ebe70f0951a7e7b",
+      "files": [
+        {
+          "path": "rawlsing_next/pre553_universal_world_binding.py",
+          "blob": "dfb1e9fb72f1ee4b50fd7138fe978ce50db49f37"
+        },
+        {
+          "path": "rawlsing_next/pre553_world_conditioned_progressive_service.py",
+          "blob": "db573027a2416f1b43f2bc47d6f2e3b9d5cd3b31"
+        }
+      ],
+      "call_bindings": [
+        {
+          "callee": "rawlsing_next.pre553_universal_world_binding.configure_progressive_world_context",
+          "signature": "configure_progressive_world_context(*, target_ref: ExactRef, conditions: tuple[tuple[ExactRef, Any], ...], prefixes: tuple[ProgressivePrefixInput, ...], world_empirical: Mapping[str, Any], purpose: str = 'GENERIC_POSITIONED_SUBJECT', structural_revision: bool = True, revoked_scope: str | None = None) -> str",
+          "current_binding": "NOT_BOUND__NO_ACTUAL_PREFIXES_OR_WORLD"
+        },
+        {
+          "callee": "rawlsing_next.pre553_universal_world_binding.progressive_world_view",
+          "signature": "progressive_world_view(request: ProgressiveWorldRequest) -> ProgressiveWorldView",
+          "current_binding": "NOT_BOUND__NO_EXECUTION_HANDLE"
+        },
+        {
+          "callee": "rawlsing_next.pre553_world_conditioned_progressive_service.consume_world_conditioned_prefixes",
+          "signature": "consume_world_conditioned_prefixes(*, snapshot: Any, catalog: Any, prefixes: Sequence[WorldConditionedPrefix], budget_tokens: int = 5) -> tuple[WorldConditionedPrefixResult, ...]",
+          "current_binding": "NOT_BOUND__NO_ADMITTED_SUPPORTED_PREFIXES"
+        }
+      ]
+    },
+    "FF_V553": {
+      "commit": "849a76de18ef627c3c403b426ebe70f0951a7e7b",
+      "symbols": [
+        {
+          "path": "rawlsing_next/field_forge_conditional_support.py",
+          "blob": "a70decb20747d84cbcbe27d1280babc6de88ef33",
+          "public": [
+            "produce_exact_conditional_support_profile",
+            "replay_exact_conditional_support_profile"
+          ]
+        },
+        {
+          "path": "rawlsing_next/m1_admitted_field_forge_relation_v554_ingress.py",
+          "blob": "0aeacd9e66c7e4340b36e1b622bb5c9bf2865fd5",
+          "public": [
+            "prepare_admitted_field_forge_relation_basis",
+            "evaluate_m1_admitted_field_forge_relation_v554"
+          ]
+        },
+        {
+          "path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+          "blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+          "public": [
+            "evaluate_m1_temporal_v554_admission_dedup"
+          ]
+        }
+      ],
+      "current_binding": "NOT_BOUND__NO_CLAIM_FAMILY_RELATION_ADMISSION_OR_OBSERVED_TEMPORAL_PAIR"
+    }
+  },
+  "inspected_references": [
+    {
+      "path": "WORKER_RETURNS/PYAT-R125-REPRESENTATIVE-ROUTE-B-LAUNCH-PACKET-R1/00_LAUNCH_PACKET.md",
+      "commit": "2c4721f3a73952e6e127286de5d4560809003b63",
+      "sha256": "d4d26f15e64bf90f8afb6fe77c3e33df095f48b00ffdf60d622805933cb0d62f",
+      "bytes": 7692
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R125-REPRESENTATIVE-ROUTE-B-LAUNCH-PACKET-R1/01_SCOPES_AND_RIGHTS.json",
+      "commit": "2c4721f3a73952e6e127286de5d4560809003b63",
+      "sha256": "953eecfd81d568d49b44aaec5e1a892d719b904206bb2770fbe02d10bdf19317",
+      "bytes": 8555
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R125-REPRESENTATIVE-ROUTE-B-LAUNCH-PACKET-R1/02_PRODUCER_TO_CONSUMER_BINDINGS.json",
+      "commit": "2c4721f3a73952e6e127286de5d4560809003b63",
+      "sha256": "8623e972af5e6e44c53fae7eb87f6268afb9e4c8b2bd9635e658b554fa4a88cb",
+      "bytes": 7292
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-R125-REPRESENTATIVE-ROUTE-B-LAUNCH-PACKET-R1/03_NEXT_COMMANDS.md",
+      "commit": "2c4721f3a73952e6e127286de5d4560809003b63",
+      "sha256": "e3db718d6fc22616cedd3b0219a0ef6f2cc53b345f2f8693a32874cc0cb64b59",
+      "bytes": 4040
+    },
+    {
+      "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-CANONICAL-EMPIRICAL-CLOSURE-SOURCEBACKED-R1/court/oracle_producers/LITS_I/_be1_lits_projection/_be1_immutable/3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS4I0_CHETIRI_ROUTE_B_PRODUCTION_DRIVER_20260827/AS2A_LITS1_SHARED_CERTIFICATION_20260827/04_SOURCE_SPECIFIC_PROJECTION_AUTHORITY_PACKAGE.json",
+      "commit": "01762d7379be4e423dad3e21bcdcee47c536902d",
+      "git_blob": "174b931e8aa89111086e3d46159b47154bed7f16",
+      "sha256": "8bfc5c19da384bcbc1a73219f5412bf5045b7296ff5a9cfd9f6e6d99df9db621",
+      "bytes": 5275
+    },
+    {
+      "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-EXECUTED-ROLE-CLOSURE-REPAIR-AND-SOURCE-RETRY-R1/source_free_role_authority_audit.json",
+      "commit": "01762d7379be4e423dad3e21bcdcee47c536902d",
+      "git_blob": "717977a6004038140368babdd90729076792b837",
+      "sha256": "5d0c9843d7972c70a9e1d297402d71fdc07ea69b9bebc9ad6d45c87034155ff3",
+      "bytes": 2670
+    },
+    {
+      "path": "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_03_mixed.json",
+      "commit": "2c4721f3a73952e6e127286de5d4560809003b63",
+      "git_blob": "a18fd79609f080062b93dfe0e2bab8e9bf865af3",
+      "sha256": "16661cdbf6067acb79ac0bed1ba3b9be5497f523fb51c5ae95b1c79ceba08ba9",
+      "bytes": 5278
+    },
+    {
+      "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-CANONICAL-EMPIRICAL-CLOSURE-RETENTION-R1/04_SOURCE_FREE_QUALIFICATION_RECEIPT.json",
+      "commit": "01762d7379be4e423dad3e21bcdcee47c536902d",
+      "git_blob": "1c9fdaa92b1dfbf5e7343ffb3c8f8ee2021d7be3",
+      "sha256": "bc2953de1544afd5ff90e664607154e68e23f6b3a6241a8afcdfaefea849ed46",
+      "bytes": 1850
+    }
+  ],
+  "limits": [
+    "No raw source, DTA, SAV, archive, or source metadata read was performed by R126.",
+    "No source hash pass, decoder call, code execution, test suite, or production action was performed by R126.",
+    "The retained qualification receipts are historical evidence, not current tests or permissions.",
+    "No current source/host/purpose grant is asserted or denied; current custody is NOT_VERIFIED.",
+    "The missing AuthoritySnapshot is evidenced absent from the retained source-free runtime and checkpoint prewrite path.",
+    "Historical candidate/role/fact/receipt counts are not current scope or acceptance criteria.",
+    "No cross-source joint, temporal comparability, actor/dyad/V3, original 35/1890/global F6/F7/F8, N11/N12, Sorok, J52/W52, or production adoption is claimed."
+  ],
+  "holds": {
+    "original_35_1890": "HELD",
+    "global_F6_F7_F8": "HELD",
+    "source_science": "NOT_VERIFIED__NO_NEW_GRANT",
+    "actor_dyad_v3": "HELD",
+    "R09_CI_prod": "HELD",
+    "N11": "NOT_READY",
+    "N12_Sorok": "HOLD",
+    "J52_W52": "USER_STOPPED"
+  }
+}

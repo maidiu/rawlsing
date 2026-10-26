@@ -1,0 +1,27 @@
+{
+  "schema": "PYAT_R126_REPAIR_MANIFEST@1",
+  "status": "BOUND_READ_ONLY_NON_SOURCE_OPERATION__FULL_SOURCE_LAUNCH_NOT_READY",
+  "branch": "agent/opencode-pyat-r125-representative-route-b-launch-packet-r1",
+  "startup_and_repair_target_commit": "2c4721f3a73952e6e127286de5d4560809003b63",
+  "artifacts": {
+    "00_REPAIR.md": {
+      "bytes": 7461,
+      "sha256": "e062ba624fb361ef3e23ced6b7c72ad853423b0c905ba450ad2027cb5e95c200"
+    },
+    "01_BOUND_NEXT_OPERATION.json": {
+      "bytes": 32284,
+      "sha256": "6205457972ef8f5c30d503f06533599b92726bcafa0e5bc091be90ffd76efb34"
+    },
+    "02_EXACT_COMMANDS.md": {
+      "bytes": 9197,
+      "sha256": "90a09098215afe1b521819c2a1a917563c85d94198a64392c344d97916a95642"
+    }
+  },
+  "excluded_from_manifest": [
+    "manifest.json"
+  ],
+  "code_changes": [],
+  "tests_executed": false,
+  "source_read_or_hashed": false,
+  "note": "R126 sourcefree report repair only. The manifest excludes itself. Full source launch remains NOT_READY."
+}
