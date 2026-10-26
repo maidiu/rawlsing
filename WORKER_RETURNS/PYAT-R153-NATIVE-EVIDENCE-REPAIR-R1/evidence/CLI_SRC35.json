@@ -1,0 +1,439 @@
+{
+  "already_grounded": [
+    "B49 item authority corpus/compiler package",
+    "exact codebook row join by source/wave/var_name",
+    "item disposition/direction/routing/response/relation evidence",
+    "R148 current metadata document/row accounting",
+    "WVS7 exact typed domain/topology/risk-set evidence"
+  ],
+  "b49_item_count": 0,
+  "b49_source_identity": {
+    "canonical_filename": "WVS Wave 7.sav",
+    "declared_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "decoder_mode": "HB01_WVS7_SAV_SELECTED_DECODER_C__SPSS_BYTECODE__FRESH_RAW_REPLAY",
+    "family": "WVS",
+    "source_format": "SAV",
+    "source_id": "35",
+    "wave": "Wave 7"
+  },
+  "binding_hash": "a585873626657ceb0ab118401369285371f999bba8b25fe8083a7b0e00ee78c6",
+  "codebook_collisions": [],
+  "conditioner_context_items": [],
+  "consumer_requirements": [
+    {
+      "consumer_id": "F1_EMPIRICAL_CLOSURE",
+      "owner": "rawlsing_next.pre553_carrier_execution.CarrierNeutralResearchExecutor.execute_i03",
+      "required_outputs": [
+        "EmpiricalQuerySpec",
+        "EmpiricalPredicate",
+        "EmpiricalFact@1.0.0",
+        "exact source/replay refs"
+      ],
+      "state": "PREREGISTERED_PENDING_ACTUAL_SOURCE"
+    },
+    {
+      "consumer_id": "F2_DISCOVERY_AND_NO_DROP",
+      "owner": "rawlsing_next.pre553_carrier_execution.CarrierNeutralResearchExecutor.execute_i05; rawlsing_next.universal_grammar.native_map.native_receipt_anti_join",
+      "required_outputs": [
+        "DiscoveryResultReceipt@1.0.0",
+        "complete declared candidate accounting",
+        "no-drop ledger"
+      ],
+      "state": "PREREGISTERED_PENDING_ACTUAL_SOURCE"
+    },
+    {
+      "consumer_id": "F3_M1_LEARNED_DISPOSITION",
+      "owner": "rawlsing_next.pre553_learned_empirical_adjudication.adjudicate_learned_empirical",
+      "required_outputs": [
+        "M1AdjudicationInputBundle",
+        "exact family-rule binding",
+        "LearnedEmpiricalDisposition@1.0.0"
+      ],
+      "state": "PREREGISTERED_PENDING_ACTUAL_SOURCE"
+    },
+    {
+      "consumer_id": "F4_FF_V553_CONFRONTATION",
+      "owner": "rawlsing_next.pre553_universal_empirical_extension.provide_empirical_possibility_slice_ext",
+      "required_outputs": [
+        "exact I03/I05 evidence",
+        "M1 disposition",
+        "source-local FF/V553 inputs",
+        "typed refusal where not permitted"
+      ],
+      "state": "PREREGISTERED_PENDING_ACTUAL_SOURCE"
+    }
+  ],
+  "current_metadata": {
+    "bytes": 1280878,
+    "columns": [
+      "source",
+      "wave",
+      "module_guess",
+      "var_name",
+      "question_text",
+      "value_label_set",
+      "storage_type",
+      "storage_width",
+      "measure",
+      "format",
+      "value_labels_count",
+      "response_options_substantive",
+      "response_options_special",
+      "response_options_all",
+      "note"
+    ],
+    "duplicate_native_codes": [],
+    "module_guess_counts": {
+      "administrative": 10,
+      "demographic_core": 105,
+      "household_roster": 9,
+      "substantive_module": 240,
+      "survey_item": 249
+    },
+    "original_path": "/Users/matthewsmith/Desktop/Rawlsing/data/FINAL CODEBOOKS/FINAL FINAL CODEBOOKS/World Values Survey Wave 7 codebook.csv",
+    "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r147-all35-current-metadata/inputs/SRC35-World Values Survey Wave 7 codebook.csv",
+    "row_accounting_path": "WORKER_RETURNS/PYAT-R147-ALL35-CURRENT-METADATA-R1/records/records/ROW_ACCOUNTING/SRC35.jsonl",
+    "rows": 613,
+    "scientific_roles": "UNASSIGNED_PENDING_EXACT_SEMANTIC_AUTHORITY",
+    "sha256": "d4d03785c142eae00686ec443853bcf90e21b1cc061e062d4e384ce0e7a51207",
+    "source_values": {
+      "World Values Survey": 613
+    },
+    "status": "CURRENT_METADATA_DOCUMENT_STAGED_AND_PINNED",
+    "wave_values": {
+      "Wave 7": 613
+    }
+  },
+  "current_source_identity_or_grant": {
+    "current_source_access_permission": null,
+    "current_source_edition_sha256": null,
+    "e_pre_root": null,
+    "status": "PENDING_EXACT_CURRENT_SOURCE_ISSUANCE",
+    "u_root": null
+  },
+  "evidence_resolution": {
+    "field_counts": {},
+    "held_native_objects": [
+      {
+        "reason": "PENDING_UNIT_FORM_ADMINISTRATION",
+        "resolved": [
+          "domain",
+          "topology",
+          "risk_set"
+        ],
+        "source_variable_code": "Q291G5",
+        "unresolved": [
+          "unit",
+          "form",
+          "administration"
+        ]
+      },
+      {
+        "reason": "PENDING_UNIT_FORM_ADMINISTRATION",
+        "resolved": [
+          "domain",
+          "topology",
+          "risk_set"
+        ],
+        "source_variable_code": "Q291P5",
+        "unresolved": [
+          "unit",
+          "form",
+          "administration"
+        ]
+      }
+    ],
+    "native_objects": null,
+    "native_occurrence_count": 0,
+    "native_source_rule_count": 0,
+    "planner_invocation_status": "NOT_INVOKED__WVS_UNIT_FORM_ADMINISTRATION_PENDING",
+    "source_inventory_count": 0,
+    "typed_surfaces_consumed": 2,
+    "wvs_evidence": {
+      "administration": null,
+      "evidence_scope": "EXACT_WVS7_SOURCE_SPECIFIC_RUNTIME_PACKAGE",
+      "forms": null,
+      "package_sha256": "c0fa82f9cc2244324fc7cb0306b4244d9320955d71ba8c15ced835cabaed61f6",
+      "risk_ref": {
+        "content_hash": "0bf6a655a35617bec3e54f4d547e89282920e7835e406dcb43b3456774ab87d7",
+        "object_id": "urn:rawlsing:pre553:ee-p2f2:risk-set:sha256:0bf6a655a35617bec3e54f4d547e89282920e7835e406dcb43b3456774ab87d7"
+      },
+      "routing_auth_id": "EE-P2F2-WVS7-ROUTING-RISK-SET",
+      "source_auth_id": "EE-P2F2-WVS7-SOURCE-SEMANTICS-TOPOLOGY",
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "topology": "SCALAR_SINGULAR",
+      "unit": null
+    }
+  },
+  "family": "WVS",
+  "family_label_resolution": "EXACT_FAMILY_LABEL",
+  "frontier_status": "UNSIGNED_PENDING_GROUNDED_ROLES_RISK_EPRE",
+  "indispensable_unbound": [
+    "current source access permission",
+    "current edition SHA-256",
+    "complete native U",
+    "scientific Epre",
+    "source response-read grant/current resolver",
+    "per-item unit/topology/typed domain/risk set",
+    "current source-specific semantic roles and quantum of target/conditioner use",
+    "representative empirical and learned-to-FF owner outputs",
+    "WVS7 source-specific unit/form/administration"
+  ],
+  "item_counts": {
+    "codebook_joined": 0,
+    "codebook_missing": 0,
+    "excluded_non_u_context": 0,
+    "held": 0,
+    "implementation_id_missing": 0,
+    "selected_u_candidate": 0,
+    "superseded": 0,
+    "total": 0,
+    "total_preparation": 2,
+    "unknown": 0
+  },
+  "native_execution_authorized": false,
+  "native_source_identity": {
+    "canonical_filename": "WVS Wave 7.sav",
+    "declared_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "expected_rows": 97220,
+    "family": "WVS",
+    "scope": "INHERITED_DOCUMENTARY_IDENTITY__NOT_CURRENT_EDITION_OR_GRANT",
+    "source_format": "SAV",
+    "source_id": "SRC35",
+    "wave": "Wave 7"
+  },
+  "native_source_inventory_status": "NOT_CONSTRUCTED__NO_COMPLETE_SOURCE_INVENTORY_PREMISES",
+  "native_source_rule_status": "PENDING_UNIT_TOPOLOGY_DOMAIN_RISK__NO_NATIVE_RULE_CONSTRUCTED",
+  "next_native_workload_call": {
+    "function": "rawlsing_next.pre553_production_binding.prepare_production_discovery",
+    "resolved_arguments": {
+      "b49_selected_package_hash": "e4c6d3ac5cb39988821047a068052e5bda911f3c5ba7da8ab5ea38779cb65ccd",
+      "source_id": "SRC35"
+    },
+    "status": "UNSIGNED_PLANNING_ONLY__WVS_RULE_ADMINISTRATION_UNKNOWN",
+    "unbound_arguments": [
+      "NativePreimageBundle",
+      "SourceInventory/GrammarPolicy/ScientificFrontier",
+      "external query/discovery AuthoritySnapshots",
+      "U/Epre roots",
+      "IssuedWorkloadRecord",
+      "current edition/header reconciliation"
+    ]
+  },
+  "next_original_source_read_call": {
+    "function": "rawlsing_next.pre553_source_read_admission.decode_with_source_read_permission",
+    "resolved_arguments": {
+      "historical_canonical_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "metadata_document": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r147-all35-current-metadata/inputs/SRC35-World Values Survey Wave 7 codebook.csv",
+      "source_format": "SAV",
+      "source_id": "SRC35"
+    },
+    "status": "NOT_RUN__EXACT_CURRENT_GRANT_PENDING",
+    "unbound_arguments": [
+      "source_path",
+      "SourceReadRequest.host",
+      "SourceReadRequest.purpose",
+      "SourceReadRequest.consumer_use",
+      "SourceReadRequest.edition_sha256",
+      "SourceReadRequest.metadata_freeze_refs",
+      "SourceReadRequest.semantic_use_scope",
+      "external current decision resolver"
+    ]
+  },
+  "pending_native_occurrences": [
+    {
+      "administration_status": "PENDING_EXACT_WVS7_SOURCE_ADMINISTRATION",
+      "binding_grade": "SOURCE_SPECIFIC_CURRENT_RUNTIME_PACKAGE__NOT_CURRENT_SOURCE_GRANT",
+      "codebook_collision": null,
+      "codebook_join_status": "EXACT_CODEBOOK_VAR_JOIN",
+      "codebook_row_hash": "75afcc9542bc95b938c8a50fa25fedb4ced258e3df5321c8c177c7bb509dd070",
+      "codebook_var_name": "Q291G5",
+      "compiler_reason": "NO_B49_ITEM_RECORD__SOURCE_SPECIFIC_WVS7_RUNTIME_SURFACE",
+      "compiler_status": "SOURCE_SPECIFIC_TYPED_SURFACE_ONLY",
+      "conditioning_context_retained": false,
+      "current_acceptance_status": "NOT_ISSUED__SOURCE_SPECIFIC_RUNTIME_EVIDENCE_ONLY",
+      "current_directional_atom_eligible": false,
+      "directional_certification_status": "NOT_CERTIFIED",
+      "disposition": "SOURCE_SPECIFIC_TYPED_SURFACE_RESPONSE",
+      "domain_status": "EXACT_TYPED_SURFACE_DOMAIN",
+      "domain_values": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ],
+      "exact_identity_sha256": "FIABC-LM2-R1J-WVS7-Q291-SAV-DECODER-REPRESENTATION@1.0.0",
+      "field_owner": {
+        "administration": "WVS7_SOURCE_ADMINISTRATION_AUTHORITY_OWNER",
+        "form": "WVS7_SOURCE_FORM_AUTHORITY_OWNER",
+        "unit": "WVS7_SOURCE_UNIT_AUTHORITY_OWNER"
+      },
+      "forms_status": "PENDING_EXACT_WVS7_SOURCE_FORM",
+      "implementation_id": "question_impl.phase0.03ea3430fb4f08a1f0da",
+      "measure": "nominal",
+      "native_occurrence_constructed": false,
+      "native_occurrence_status": "HELD_PENDING_UNIT_FORM_ADMINISTRATION",
+      "native_source_rule_constructed": false,
+      "ordinal": "388",
+      "overlay_evidence_ids": [],
+      "p2_evidence_id": null,
+      "p2_row": null,
+      "question_text": "Government: The government is generally free of corruption",
+      "relation_evidence_id": null,
+      "relation_scope": "NO_RELATION_EVIDENCE",
+      "representation_authority": "FIABC-LM2-R1J-WVS7-Q291-SAV-DECODER-REPRESENTATION@1.0.0",
+      "resolved_fields": [
+        "domain",
+        "topology",
+        "risk_set"
+      ],
+      "response_binding_status": "bound_exact_wvs7_response_binding",
+      "response_options_special": "-5 = Missing; Not available | -4 = Not asked | -2 = No answer | -1 = Don't know",
+      "response_options_substantive": "1 = Agree strongly | 2 = Agree | 3 = Neither agree nor disagree | 4 = Disagree | 5 = Disagree strongly",
+      "retained": true,
+      "risk_set_ref": "urn:rawlsing:pre553:ee-p2f2:risk-set:sha256:0bf6a655a35617bec3e54f4d547e89282920e7835e406dcb43b3456774ab87d7",
+      "risk_set_status": "EXACT_WVS7_RISK_SET",
+      "routing_status": "ROUTED_APPLICABLE_RISK_SET",
+      "schema": "PYAT_R151_PENDING_NATIVE_OCCURRENCE@1",
+      "scientific_role": "TARGET_ROLE_UNASSIGNED__SOURCE_SPECIFIC_RESPONSE_REPRESENTATION_ONLY",
+      "semantic_direction": "NOT_CERTIFIED",
+      "source_id": "SRC35",
+      "source_variable_code": "Q291G5",
+      "storage_type": "numeric",
+      "surface_kind": "EXACT_EXISTING_REPRESENTATION_OWNER",
+      "topology": "SCALAR_SINGULAR",
+      "topology_status": "EXACT_WVS7_SOURCE_TOPOLOGY",
+      "typed_surface_consumed": true,
+      "typed_surface_id": "S003",
+      "unit_status": "PENDING_EXACT_WVS7_SOURCE_UNIT",
+      "unresolved_fields": [
+        "unit",
+        "form",
+        "administration"
+      ],
+      "value_labels_count": "9"
+    },
+    {
+      "administration_status": "PENDING_EXACT_WVS7_SOURCE_ADMINISTRATION",
+      "binding_grade": "SOURCE_SPECIFIC_CURRENT_RUNTIME_PACKAGE__NOT_CURRENT_SOURCE_GRANT",
+      "codebook_collision": null,
+      "codebook_join_status": "EXACT_CODEBOOK_VAR_JOIN",
+      "codebook_row_hash": "8aba16556b0b87472995278152c795f2ffbebd665dc06d3e4046224bfde3aed5",
+      "codebook_var_name": "Q291P5",
+      "compiler_reason": "NO_B49_ITEM_RECORD__SOURCE_SPECIFIC_WVS7_RUNTIME_SURFACE",
+      "compiler_status": "SOURCE_SPECIFIC_TYPED_SURFACE_ONLY",
+      "conditioning_context_retained": false,
+      "current_acceptance_status": "NOT_ISSUED__SOURCE_SPECIFIC_RUNTIME_EVIDENCE_ONLY",
+      "current_directional_atom_eligible": false,
+      "directional_certification_status": "NOT_CERTIFIED",
+      "disposition": "SOURCE_SPECIFIC_TYPED_SURFACE_RESPONSE",
+      "domain_status": "EXACT_TYPED_SURFACE_DOMAIN",
+      "domain_values": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ],
+      "exact_identity_sha256": "FIABC-LM2-R1J-WVS7-Q291-SAV-DECODER-REPRESENTATION@1.0.0",
+      "field_owner": {
+        "administration": "WVS7_SOURCE_ADMINISTRATION_AUTHORITY_OWNER",
+        "form": "WVS7_SOURCE_FORM_AUTHORITY_OWNER",
+        "unit": "WVS7_SOURCE_UNIT_AUTHORITY_OWNER"
+      },
+      "forms_status": "PENDING_EXACT_WVS7_SOURCE_FORM",
+      "implementation_id": "question_impl.phase0.068ef710ac1c269b8adf",
+      "measure": "nominal",
+      "native_occurrence_constructed": false,
+      "native_occurrence_status": "HELD_PENDING_UNIT_FORM_ADMINISTRATION",
+      "native_source_rule_constructed": false,
+      "ordinal": "394",
+      "overlay_evidence_ids": [],
+      "p2_evidence_id": null,
+      "p2_row": null,
+      "question_text": "Parliament: Parliament is generally free of corruption",
+      "relation_evidence_id": null,
+      "relation_scope": "NO_RELATION_EVIDENCE",
+      "representation_authority": "FIABC-LM2-R1J-WVS7-Q291-SAV-DECODER-REPRESENTATION@1.0.0",
+      "resolved_fields": [
+        "domain",
+        "topology",
+        "risk_set"
+      ],
+      "response_binding_status": "bound_exact_wvs7_response_binding",
+      "response_options_special": "-5 = Missing; Not available | -4 = Not asked | -2 = No answer | -1 = Don't know",
+      "response_options_substantive": "1 = Agree strongly | 2 = Agree | 3 = Neither agree nor disagree | 4 = Disagree | 5 = Disagree strongly",
+      "retained": true,
+      "risk_set_ref": "urn:rawlsing:pre553:ee-p2f2:risk-set:sha256:0bf6a655a35617bec3e54f4d547e89282920e7835e406dcb43b3456774ab87d7",
+      "risk_set_status": "EXACT_WVS7_RISK_SET",
+      "routing_status": "ROUTED_APPLICABLE_RISK_SET",
+      "schema": "PYAT_R151_PENDING_NATIVE_OCCURRENCE@1",
+      "scientific_role": "TARGET_ROLE_UNASSIGNED__SOURCE_SPECIFIC_RESPONSE_REPRESENTATION_ONLY",
+      "semantic_direction": "NOT_CERTIFIED",
+      "source_id": "SRC35",
+      "source_variable_code": "Q291P5",
+      "storage_type": "numeric",
+      "surface_kind": "EXACT_EXISTING_REPRESENTATION_OWNER",
+      "topology": "SCALAR_SINGULAR",
+      "topology_status": "EXACT_WVS7_SOURCE_TOPOLOGY",
+      "typed_surface_consumed": true,
+      "typed_surface_id": "S004",
+      "unit_status": "PENDING_EXACT_WVS7_SOURCE_UNIT",
+      "unresolved_fields": [
+        "unit",
+        "form",
+        "administration"
+      ],
+      "value_labels_count": "9"
+    }
+  ],
+  "schema": "PYAT_R153_NATIVE_EVIDENCE_REPAIR@1",
+  "selected_source_rule_package": {
+    "as_of": "2026-10-26",
+    "authority_object_identity": "c9cd4426e86128faa64e197155d144317ed0883e908d3a8f7cf8e5d367f449f4",
+    "excluded": [],
+    "held": [],
+    "package_hash": "e4c6d3ac5cb39988821047a068052e5bda911f3c5ba7da8ab5ea38779cb65ccd",
+    "package_id": "selected-rule-package:c9cd4426e86128fa",
+    "schema": "PRE553_SELECTED_SOURCE_RULE_PACKAGE@1.0.0",
+    "selected": [],
+    "source": {
+      "canonical_filename": "WVS Wave 7.sav",
+      "declared_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "decoder_mode": "HB01_WVS7_SAV_SELECTED_DECODER_C__SPSS_BYTECODE__FRESH_RAW_REPLAY",
+      "family": "WVS",
+      "source_format": "SAV",
+      "source_id": "35",
+      "wave": "Wave 7"
+    },
+    "superseded": [],
+    "unknown": []
+  },
+  "source_id": "SRC35",
+  "source_read_grant_present": false,
+  "successor_target": [
+    {
+      "content_sha256": "028aa1366b006729979f921ecda542cef9e937e34f8d7c09689fdff609b1c54c",
+      "git_blob": "34ab1f6af51a79e5862896a622304b0fe485c15b",
+      "git_blob_actual": "34ab1f6af51a79e5862896a622304b0fe485c15b",
+      "git_object_verified": true,
+      "id": "s35_dossier_SRC35",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/sources/SRC35.md",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "source_dossier"
+    }
+  ],
+  "survey_file_touched": false,
+  "typed_surface_only_count": 2,
+  "unmatched_relation_ids": [],
+  "wave": "Wave 7"
+}
