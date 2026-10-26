@@ -1,0 +1,87 @@
+{
+  "actual_person_commit": false,
+  "actual_provider_call": false,
+  "actual_root": {
+    "c12_events_after": 1,
+    "c12_events_before": 1,
+    "clock_after": 222,
+    "clock_before": 222,
+    "missing_fields": [
+      "backbone_state",
+      "initial_state_provenance",
+      "expectation_baseline",
+      "striving_objects",
+      "pressure_flow_history",
+      "pressure_flow_memory",
+      "surface_psyche_profile",
+      "analyst_pressure_account",
+      "actor_context_projection",
+      "actor_owned_source"
+    ],
+    "no_c8": null,
+    "reason": "S50_ACTUAL_ROOT_MISSING_HISTORICAL_V3_STATE",
+    "root_unchanged": true,
+    "status": "SOURCE_OWNER_HOLD",
+    "world_events_after": 13,
+    "world_events_before": 13
+  },
+  "cold": {
+    "same_projection_hash": true,
+    "verify_ok": true
+  },
+  "native_grants": {
+    "actor": false,
+    "c12": false,
+    "c8": false,
+    "c9": false,
+    "human": false,
+    "rule": false,
+    "source": false
+  },
+  "recovered_legacy_projection": {
+    "actual_person_commit": false,
+    "age": 32,
+    "episode_id": "TEST_ONLY_BP4_EP_4533deab196706a24fb55b1fbeb6f4f07e973452ca320897ea57ddb78f1bbc4b",
+    "expectation_baseline": {
+      "attachment": "hopeful",
+      "autonomy": "hopeful",
+      "beauty_play": "hopeful",
+      "belonging": "hopeful",
+      "competence": "hopeful",
+      "eros_intimacy": "hopeful",
+      "justice": "hopeful",
+      "meaning": "hopeful",
+      "safety": "hopeful",
+      "status": "hopeful"
+    },
+    "fixture_only": true,
+    "fixture_sha256": "ef7008ac0d83e7690bd89e96ec683d25d3b784806857a799da2978ba7aa35673",
+    "pressure_flow_history_present": true,
+    "pressure_flow_memory_present": true,
+    "projection_hash": "33f01fefca50868cead699759056c6b5deec772ce0c5b554a395fd80a1d87ea4",
+    "read_only": true,
+    "second_mind": false,
+    "source_all_exact": true,
+    "status": "LEGACY_PROJECTION_MATERIALIZED",
+    "striving_count": 0,
+    "year": 2002
+  },
+  "schema": "SOROK_S50_RUN@1",
+  "transforms_enabled_by_legacy_fixture": [
+    "yearly_step_order",
+    "event_sampling",
+    "micro_drift",
+    "age_increment",
+    "pressure_flow_cycle",
+    "derived_recompute"
+  ],
+  "transforms_not_authorized_for_actual_person": [
+    "demographic_to_wound_framework_parent_type",
+    "hopeful_50_parent_default",
+    "blind_run_n_years",
+    "years_as_learning_multiplier",
+    "native_A_T_learning_coefficients",
+    "two_pass_llm"
+  ],
+  "verify_ok": true
+}

@@ -1,0 +1,356 @@
+{
+  "cuts": {
+    "s49": "6604f2d9ebeca47ab58c5e1f5fee1e6a34b1bb43"
+  },
+  "dependency_runtime": {
+    "network": false,
+    "packages_installed": false,
+    "yaml": "system Ruby Psych -> yaml.safe_load JSON bridge"
+  },
+  "native_grants": {
+    "actor": false,
+    "c12": false,
+    "c8": false,
+    "c9": false,
+    "human": false,
+    "rule": false,
+    "source": false
+  },
+  "roots": {
+    "cuts": {
+      "s49": "6604f2d9ebeca47ab58c5e1f5fee1e6a34b1bb43"
+    },
+    "s49_return": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1",
+    "s50_return": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker/WORKER_RETURNS/SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1",
+    "source_identities": "/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/WORKER_COMMISSIONS/SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1/01_SOURCE_IDENTITIES.json",
+    "source_root": "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_code_bundle_staging"
+  },
+  "s49_reused": {
+    "all_exact": true,
+    "rows": [
+      {
+        "exact": true,
+        "local": "1354e541935c2e4e2b912c06545de56106453721",
+        "path": "s49/__init__.py",
+        "pinned": "1354e541935c2e4e2b912c06545de56106453721",
+        "sha256": "dbbed7703525a184d634340b2d8fb797942b7ea545c574ad0ceeb44c12a8f85a"
+      },
+      {
+        "exact": true,
+        "local": "a2c376a74141dcfd821b5b016bc3f71d12692527",
+        "path": "s49/bootstrap.py",
+        "pinned": "a2c376a74141dcfd821b5b016bc3f71d12692527",
+        "sha256": "151673dfa4260ffeaa39cb18f26bfdc9b1a97eab162805851350ab7018b12a2b"
+      },
+      {
+        "exact": true,
+        "local": "a012d69203ebffbd124ea67fbd093baa0aa59cd2",
+        "path": "s49/errors.py",
+        "pinned": "a012d69203ebffbd124ea67fbd093baa0aa59cd2",
+        "sha256": "3db774598633233da2745924941d353688ef048f443a8cbc5d3612322db31fd0"
+      },
+      {
+        "exact": true,
+        "local": "d5433c3b915d695091a4f1fee19deff39ad37589",
+        "path": "s49/actor.py",
+        "pinned": "d5433c3b915d695091a4f1fee19deff39ad37589",
+        "sha256": "fa48d887a8c431aca2dcdbd4dcab8d069e21c041bea0324947041edc3a7e1759"
+      },
+      {
+        "exact": true,
+        "local": "53133d035d80605b7c28c90fbdf7493ec033cea2",
+        "path": "s49/session.py",
+        "pinned": "53133d035d80605b7c28c90fbdf7493ec033cea2",
+        "sha256": "14ed709c3cee9a8fe370577d017602857112ac15263057c39681432ce106aac3"
+      },
+      {
+        "exact": true,
+        "local": "94a5e08f7fed9b6c737dd8025548fafe4cc781ac",
+        "path": "tests/test_s49.py",
+        "pinned": "94a5e08f7fed9b6c737dd8025548fafe4cc781ac",
+        "sha256": "6c9556fdbad0a4e802c44db7347c1efee83af2008c8400384cdabf06454b64f3"
+      }
+    ]
+  },
+  "s50_local": [
+    {
+      "git_blob_sha1": "375524584b8e54d3d1cc4e8216b23f6512c1656c",
+      "path": "00_RETURN.md",
+      "sha256": "dac029b0a3998cabed5b1432f7c9cba9eee63996ee9a4b9ec3c49b52e0821959"
+    },
+    {
+      "git_blob_sha1": "cc9ad91228e380121f4ead76e17026cd5b804dea",
+      "path": "run_s50.py",
+      "sha256": "0f60ec1e32a7f6fbc2f4c72443baea241b5e8981c9346623c197bfb62701c9df"
+    },
+    {
+      "git_blob_sha1": "5e9445faceada4d20ea3d2cc0225b4bd612b3a19",
+      "path": "run_s50_evidence.py",
+      "sha256": "1966f1f341eb85a803afbfa8e74aaab9ab5f129b7b4b612ace46c501b14377c3"
+    },
+    {
+      "git_blob_sha1": "bc46a28f0c41b19c153260bda7d35b20dcd8a159",
+      "path": "s50/__init__.py",
+      "sha256": "b6c237b78927b19144122f597a1242b005ec8fa538bc3475e6b91a2a892932fc"
+    },
+    {
+      "git_blob_sha1": "d42dff658dacb1bbf67a0a4e8826f7e9a484ac23",
+      "path": "s50/bootstrap.py",
+      "sha256": "e0a6a213e923fa781572cb2de5e0eeca3d7415f0d23c54f071fb1ce5b2077e4c"
+    },
+    {
+      "git_blob_sha1": "4fead21a3948237d61fd6a3a9a1dcfabf2784a3f",
+      "path": "s50/yaml_compat.py",
+      "sha256": "dca4021ff6eef944690a1240ac8171d616c83c5d05af8b5f05d73685ea40fd5d"
+    },
+    {
+      "git_blob_sha1": "71cbdcf9d5e6e97fcb5ecf1d3bf0d74c29303f0e",
+      "path": "s50/recovery.py",
+      "sha256": "64f0a656c2e2c791b7ef85c853ca4780c3b499a1f04529e98af832fa0d9832c8"
+    },
+    {
+      "git_blob_sha1": "3854b340e6e65a21b73f06afa2a046142514b02c",
+      "path": "s50/session.py",
+      "sha256": "a026f2cbaa26f0e2beabdb1957526e16dbd91317ea4c8c6c4407cb9b86be5689"
+    },
+    {
+      "git_blob_sha1": "16808382183d61916ac617ec3942841e55c812e2",
+      "path": "tests/conftest.py",
+      "sha256": "00aaa41f57cae6e35137023322365555d5dd180a64279bd9d79ffbb23be99e5a"
+    },
+    {
+      "git_blob_sha1": "6d5e4782cad6dfd253b5753ba6dfc93b8a63908e",
+      "path": "tests/test_s50.py",
+      "sha256": "614dd83516cd9f96c2aba835e5598874fb70461e2c2919a3b922c0ba8aa70035"
+    }
+  ],
+  "schema": "SOROK_S50_SOURCE_MANIFEST@1",
+  "source_identity": {
+    "all_exact": true,
+    "archive_identity": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "count": 31,
+    "fixture_path": "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_code_bundle_staging/v3/tests/fixtures/identity_minimal.json",
+    "fixture_sha256": "ef7008ac0d83e7690bd89e96ec683d25d3b784806857a799da2978ba7aa35673",
+    "rows": [
+      {
+        "actual_sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+        "bytes": 26310,
+        "exact": true,
+        "expected_sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+        "path": "v3/core/state.py"
+      },
+      {
+        "actual_sha256": "e479fc3eba21734752c372742fb2ee247cbdde6a73ac42545dc30b5039301360",
+        "bytes": 15671,
+        "exact": true,
+        "expected_sha256": "e479fc3eba21734752c372742fb2ee247cbdde6a73ac42545dc30b5039301360",
+        "path": "v3/core/derived.py"
+      },
+      {
+        "actual_sha256": "81298f3fc51b46cda8d72d0db914b672b17b9a35e13004fe59a9b0e29dada5e3",
+        "bytes": 14846,
+        "exact": true,
+        "expected_sha256": "81298f3fc51b46cda8d72d0db914b672b17b9a35e13004fe59a9b0e29dada5e3",
+        "path": "v3/core/invariants.py"
+      },
+      {
+        "actual_sha256": "4bbd7518a6ec8bc8dd22758a2f9e876882253dfd59021a998a6d541b23e5cfc2",
+        "bytes": 2537,
+        "exact": true,
+        "expected_sha256": "4bbd7518a6ec8bc8dd22758a2f9e876882253dfd59021a998a6d541b23e5cfc2",
+        "path": "v3/core/year_record.py"
+      },
+      {
+        "actual_sha256": "90496a2cc852ca00ef99c8bd4fcb2b41c9aa43c4aaa9108d3ac8cce0ebe22ffc",
+        "bytes": 16520,
+        "exact": true,
+        "expected_sha256": "90496a2cc852ca00ef99c8bd4fcb2b41c9aa43c4aaa9108d3ac8cce0ebe22ffc",
+        "path": "v3/v3_yearly_step_order.yaml"
+      },
+      {
+        "actual_sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+        "bytes": 9190,
+        "exact": true,
+        "expected_sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+        "path": "v3/engine/yearly_step.py"
+      },
+      {
+        "actual_sha256": "5a737c1704eaa6dc2c67f6c2db3118a6daa8a213b44d559bc37eadbc9c09d95a",
+        "bytes": 1183,
+        "exact": true,
+        "expected_sha256": "5a737c1704eaa6dc2c67f6c2db3118a6daa8a213b44d559bc37eadbc9c09d95a",
+        "path": "v3/engine/step_runner.py"
+      },
+      {
+        "actual_sha256": "f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf",
+        "bytes": 39455,
+        "exact": true,
+        "expected_sha256": "f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf",
+        "path": "v3/engine/llm_contract.py"
+      },
+      {
+        "actual_sha256": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38",
+        "bytes": 18926,
+        "exact": true,
+        "expected_sha256": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38",
+        "path": "v3/engine/run_llm_band.py"
+      },
+      {
+        "actual_sha256": "b57e7ef4df5dabd996dc7de19c1c2c273ad90ee89d73570df1fd85674dd98ded",
+        "bytes": 8371,
+        "exact": true,
+        "expected_sha256": "b57e7ef4df5dabd996dc7de19c1c2c273ad90ee89d73570df1fd85674dd98ded",
+        "path": "v3/engine/event_engine.py"
+      },
+      {
+        "actual_sha256": "36833287c72ffa40d0ece1ebc66fb0d685a92fc71aab1d211be9b21bfd0a82cb",
+        "bytes": 12955,
+        "exact": true,
+        "expected_sha256": "36833287c72ffa40d0ece1ebc66fb0d685a92fc71aab1d211be9b21bfd0a82cb",
+        "path": "v3/engine/scoring.py"
+      },
+      {
+        "actual_sha256": "632e1e608bfc674a241e57bafa24e91834a2b8bdc3e4ed326dae6fca4e695d43",
+        "bytes": 5048,
+        "exact": true,
+        "expected_sha256": "632e1e608bfc674a241e57bafa24e91834a2b8bdc3e4ed326dae6fca4e695d43",
+        "path": "v3/engine/expectation_baseline.py"
+      },
+      {
+        "actual_sha256": "78c79a9312b05aa51220d09bb63c91cafd6bb204f2c398ac1876b1ef3144c1c3",
+        "bytes": 10950,
+        "exact": true,
+        "expected_sha256": "78c79a9312b05aa51220d09bb63c91cafd6bb204f2c398ac1876b1ef3144c1c3",
+        "path": "v3/engine/striving_objects.py"
+      },
+      {
+        "actual_sha256": "68a7b75aa4bb98f7251f72a05747425edb40d24edbe06611ce998e7b6c26a391",
+        "bytes": 3689,
+        "exact": true,
+        "expected_sha256": "68a7b75aa4bb98f7251f72a05747425edb40d24edbe06611ce998e7b6c26a391",
+        "path": "v3/engine/active_magnets.py"
+      },
+      {
+        "actual_sha256": "6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d",
+        "bytes": 40775,
+        "exact": true,
+        "expected_sha256": "6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d",
+        "path": "v3/psyche/flow.py"
+      },
+      {
+        "actual_sha256": "a456ad861a9e40d1f2bfef9e51c008657eeca86235ca27812f2186683359ebb3",
+        "bytes": 1220,
+        "exact": true,
+        "expected_sha256": "a456ad861a9e40d1f2bfef9e51c008657eeca86235ca27812f2186683359ebb3",
+        "path": "v3/psyche/metabolism.py"
+      },
+      {
+        "actual_sha256": "56fed88e37299862774b2401c9a7e43363de6d6bb47a78f8f4744dcc6f91e912",
+        "bytes": 6506,
+        "exact": true,
+        "expected_sha256": "56fed88e37299862774b2401c9a7e43363de6d6bb47a78f8f4744dcc6f91e912",
+        "path": "v3/psyche/vitality.py"
+      },
+      {
+        "actual_sha256": "75cfd5f27528ee00306de353b730d50ab3fc028970c11afcf84edea7eea7b8cd",
+        "bytes": 3059,
+        "exact": true,
+        "expected_sha256": "75cfd5f27528ee00306de353b730d50ab3fc028970c11afcf84edea7eea7b8cd",
+        "path": "v3/systems/relational_field.py"
+      },
+      {
+        "actual_sha256": "2209d8171a14f18c252e847e2d0beb113d574e1378c49d2fb7e7f43513106207",
+        "bytes": 1490,
+        "exact": true,
+        "expected_sha256": "2209d8171a14f18c252e847e2d0beb113d574e1378c49d2fb7e7f43513106207",
+        "path": "v3/systems/alienation.py"
+      },
+      {
+        "actual_sha256": "0d59fc6e177009da92e39eb61ea729eace97f50392baa93999cb6513f81dd2cb",
+        "bytes": 4559,
+        "exact": true,
+        "expected_sha256": "0d59fc6e177009da92e39eb61ea729eace97f50392baa93999cb6513f81dd2cb",
+        "path": "v3/systems/frameworks.py"
+      },
+      {
+        "actual_sha256": "4e3b9b64399dfcfad67a431729d9443767d5e074080ef6b51bc1c8df48711560",
+        "bytes": 3792,
+        "exact": true,
+        "expected_sha256": "4e3b9b64399dfcfad67a431729d9443767d5e074080ef6b51bc1c8df48711560",
+        "path": "v3/systems/topology.py"
+      },
+      {
+        "actual_sha256": "f2f18c1d9ba705212846af41b33cb1dfd2ad986dae4b686873687c2e6d1a653d",
+        "bytes": 7320,
+        "exact": true,
+        "expected_sha256": "f2f18c1d9ba705212846af41b33cb1dfd2ad986dae4b686873687c2e6d1a653d",
+        "path": "v3/render/phenomenology.py"
+      },
+      {
+        "actual_sha256": "5a0f11276a830b959df72653016ca77848dbd81de4adb9fa641bd4244c4f4ced",
+        "bytes": 11091,
+        "exact": true,
+        "expected_sha256": "5a0f11276a830b959df72653016ca77848dbd81de4adb9fa641bd4244c4f4ced",
+        "path": "v3/V3_UNDERLIES_V2_ARTICULATION.md"
+      },
+      {
+        "actual_sha256": "b1536a9817108ccf322c59f3ce9e1c3f6b8688394341a081287b5e6518da326a",
+        "bytes": 24010,
+        "exact": true,
+        "expected_sha256": "b1536a9817108ccf322c59f3ce9e1c3f6b8688394341a081287b5e6518da326a",
+        "path": "v3/OVERVIEW_INTEGRATED.md"
+      },
+      {
+        "actual_sha256": "0855b62a8bebc12da0014db96ef3165ab7453280f4c0f13016617e1829461efd",
+        "bytes": 12362,
+        "exact": true,
+        "expected_sha256": "0855b62a8bebc12da0014db96ef3165ab7453280f4c0f13016617e1829461efd",
+        "path": "v3/FLOW_AND_WIRING.md"
+      },
+      {
+        "actual_sha256": "308ab6ef75e6e31e63f00f4626a9fcc22b14035a45a62654a04271619b7e9867",
+        "bytes": 8905,
+        "exact": true,
+        "expected_sha256": "308ab6ef75e6e31e63f00f4626a9fcc22b14035a45a62654a04271619b7e9867",
+        "path": "v3/HOW_BASELINE_STRIVING_MAGNETS_RUPTURE_WORK.md"
+      },
+      {
+        "actual_sha256": "248d1b8d83784cb87198361beab9d0e8b5eaaee29eff53502f628391be3411e6",
+        "bytes": 7747,
+        "exact": true,
+        "expected_sha256": "248d1b8d83784cb87198361beab9d0e8b5eaaee29eff53502f628391be3411e6",
+        "path": "v3/EXPECTATION_BASELINE_AND_STRIVING_FLOW.md"
+      },
+      {
+        "actual_sha256": "95f8876926dda96a33c36925aedacee65645c74863cff68241e6b67457f819ab",
+        "bytes": 7291,
+        "exact": true,
+        "expected_sha256": "95f8876926dda96a33c36925aedacee65645c74863cff68241e6b67457f819ab",
+        "path": "v2/ENNEAGRAM_EMERGENCE_SYSTEM.md"
+      },
+      {
+        "actual_sha256": "0b0ee1d5e177b22236007ddb15053e4f1d3fc34f69aae8b44e16446def9250d7",
+        "bytes": 34624,
+        "exact": true,
+        "expected_sha256": "0b0ee1d5e177b22236007ddb15053e4f1d3fc34f69aae8b44e16446def9250d7",
+        "path": "v2/PERSONA_CONVERSATION_ENGINE_SPEC.md"
+      },
+      {
+        "actual_sha256": "e8589a59150e6f9fda963502d28317ca4538b75e368aa3ebfbe5e3b692b890d4",
+        "bytes": 12093,
+        "exact": true,
+        "expected_sha256": "e8589a59150e6f9fda963502d28317ca4538b75e368aa3ebfbe5e3b692b890d4",
+        "path": "v2/LIFE_SIMULATION_LAYER.md"
+      },
+      {
+        "actual_sha256": "766bee296379f0faadbede55106bcee0123e9563c965d0e28f8806cedea06135",
+        "bytes": 114499,
+        "exact": true,
+        "expected_sha256": "766bee296379f0faadbede55106bcee0123e9563c965d0e28f8806cedea06135",
+        "path": "v2/conversation_engine.py"
+      }
+    ],
+    "schema": "S50_SOURCE_IDENTITY_VERIFICATION@1",
+    "source_root": "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_code_bundle_staging"
+  }
+}
