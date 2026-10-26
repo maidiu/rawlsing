@@ -1,0 +1,604 @@
+{
+  "atlas_id": "SRC23",
+  "binding_hash": "32a475a2b2b0e353d480b7308a09330b8ead8f293f0e3fa3fca233f4fb2f659e",
+  "binding_state": "EXISTING_USABLE_METADATA_BINDING_WITH_FULL_CODEBOOK",
+  "canonical_filename": "GSS2024.sav",
+  "consumer_requirements": [
+    {
+      "consumer_id": "F1_EMPIRICAL_CLOSURE",
+      "owner": "rawlsing_next.pre553_carrier_execution.CarrierNeutralResearchExecutor.execute_i03",
+      "required_outputs": [
+        "EmpiricalQuerySpec",
+        "EmpiricalPredicate",
+        "EmpiricalFact@1.0.0",
+        "exact source/replay refs"
+      ],
+      "state": "PREREGISTERED_PENDING_ACTUAL_SOURCE"
+    },
+    {
+      "consumer_id": "F2_DISCOVERY_AND_NO_DROP",
+      "owner": "rawlsing_next.pre553_carrier_execution.CarrierNeutralResearchExecutor.execute_i05; rawlsing_next.universal_grammar.native_map.native_receipt_anti_join",
+      "required_outputs": [
+        "DiscoveryResultReceipt@1.0.0",
+        "complete declared candidate accounting",
+        "no-drop ledger"
+      ],
+      "state": "PREREGISTERED_PENDING_ACTUAL_SOURCE"
+    },
+    {
+      "consumer_id": "F3_M1_LEARNED_DISPOSITION",
+      "owner": "rawlsing_next.pre553_learned_empirical_adjudication.adjudicate_learned_empirical",
+      "required_outputs": [
+        "M1AdjudicationInputBundle",
+        "exact family-rule binding",
+        "LearnedEmpiricalDisposition@1.0.0"
+      ],
+      "state": "PREREGISTERED_PENDING_ACTUAL_SOURCE"
+    },
+    {
+      "consumer_id": "F4_FF_V553_CONFRONTATION",
+      "owner": "rawlsing_next.pre553_universal_empirical_extension.provide_empirical_possibility_slice_ext",
+      "required_outputs": [
+        "exact I03/I05 evidence",
+        "M1 disposition",
+        "source-local FF/V553 inputs",
+        "typed refusal where not permitted"
+      ],
+      "state": "PREREGISTERED_PENDING_ACTUAL_SOURCE"
+    }
+  ],
+  "country_resolution": {
+    "authority_artifacts": [
+      [
+        "authority_artifacts/source_country_observed_counts.csv",
+        "61492af2745de8614890b3decb014bf80dcc38f148d6eb85a1f0d399aa70ef33"
+      ]
+    ],
+    "mapping_status_counts": {
+      "SOURCE_MAPPING_RESOLVED": 1
+    },
+    "row_count": 1,
+    "rows": [
+      {
+        "authority_artifact_sha256": "61492af2745de8614890b3decb014bf80dcc38f148d6eb85a1f0d399aa70ef33",
+        "authority_path": "authority_artifacts/source_country_observed_counts.csv",
+        "authority_type": "CANONICAL_CODEBOOK_OR_EXPLICIT_ALIAS",
+        "canonical_country_name": "United States",
+        "canonical_iso2": "US",
+        "canonical_wave": "2024",
+        "country_variable": "IMPLICIT_US_FROM_GSS_SOURCE",
+        "raw_country_label": "United States",
+        "raw_country_value": "US",
+        "source_family": "GSS",
+        "source_file_sha256": "27166a481ba6e240aca68293464a2b1fd9a9171a3ddba89a038038a32b8d1eef",
+        "source_mapping_status": "SOURCE_MAPPING_RESOLVED"
+      }
+    ],
+    "rows_sha256": "f3884eecc205a6747ab7d568239d862bf5e4711e9e4bb72a615b9d64a5efdeaf"
+  },
+  "existing_closed35_binding": {
+    "accepted_decoder_mode": "SAV_NATIVE_GOVERNED",
+    "census": "PASS",
+    "classification": "GENERIC_REGIME_FULLY_CLOSED",
+    "compatibility_scope": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+    "current_original_U_E_pre": "NULL_WITH_CAUSE",
+    "current_usage_rights": "NOT_ISSUED_OR_QUALIFIED_BY_THIS_COURT__HISTORICAL_PREPARATION_AND_BRANCH_ADOPTION_NOT_CURRENT_OPERATION_GRANT",
+    "debt": "",
+    "decoder_lane": {
+      "encoding": null,
+      "generic_decoder_admission": "SUPPORTED",
+      "reader": "pyreadstat.read_sav"
+    },
+    "exceptions": "",
+    "governed_surfaces": [],
+    "later_l2_disposition": "NO_ADDITIONAL_L2_PACKET_APPLICABLE_IN_THIS_JOIN",
+    "later_packet_selected_fields": {},
+    "prep72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED"
+  },
+  "existing_u43_binding": {
+    "current_source_access_permission": null,
+    "current_source_edition_hash": null,
+    "eligible_E_pre_count": null,
+    "historical_structure": {
+      "audit_csv": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build/reports/source_structure_audits/GSS_2024_GSS2024.csv",
+      "audit_error": "",
+      "audit_status": "green",
+      "audit_yaml": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build/reports/source_structure_audits/GSS_2024_GSS2024.yaml",
+      "canonical_intended": "True",
+      "canonical_wave": "2024",
+      "codebook_exists": "True",
+      "codebook_path": "/Users/matthewsmith/Desktop/Rawlsing/data/FINAL CODEBOOKS/FINAL FINAL CODEBOOKS/GSS2024-codebook.csv",
+      "codebook_stale_count": "0",
+      "codebook_trustworthy_count": "0",
+      "dataset_id": "GSS_2024_GSS2024",
+      "high_level_conclusion": "split blocks require child-block handling; single-choice answers can be scored directly; open-text answers require text handling, not numeric scoring",
+      "kind_counts": "{\"derived_or_reference\": 1, \"open_text\": 16, \"single_choice\": 949, \"split_block\": 14}",
+      "manual_review_count": "0",
+      "problem_fields": "",
+      "raw_column_count": "980",
+      "raw_exists": "True",
+      "raw_path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/GSS2024.sav",
+      "raw_read_status": "green_metadata_read",
+      "raw_row_count": "3986",
+      "source_family": "GSS",
+      "source_match_counts": "{\"exact\": 980}",
+      "source_present_count": "980",
+      "source_structure_disagrees_count": "0",
+      "wave": "2024"
+    },
+    "native_BatchManifest": null,
+    "native_entrypoint": "rawlsing_next.pre553_issued_workload.execute_issued_workload",
+    "original_U_count": null,
+    "original_manifest_identity": {
+      "actual_source_edition_hash": "UNBOUND",
+      "classification_confidence": "0.0",
+      "dataset_id": "GSS_2024_GSS2024",
+      "format": "sav",
+      "legacy_wave": "2024",
+      "physical_presence_or_bytes_checked": false,
+      "recorded_basename": "GSS2024.sav",
+      "recorded_size_bytes": 20922610,
+      "recorded_source_sha256": null
+    },
+    "permitted_native_execution_manifests": [],
+    "raw_source_opened": false,
+    "reason": "NO_VERIFIED_CURRENT_SOURCE_HOST_PURPOSE_AND_SCIENTIFIC_E_PRE_ISSUANCE",
+    "required_original_wave_identity": {
+      "atlas_id": "SRC23",
+      "dataset_id": "GSS_2024_GSS2024",
+      "source_family": "GSS",
+      "wave": "2024"
+    },
+    "research_identity_count": 980,
+    "research_identity_root": "c90548b20a843669a5a009f4f5781de1a5ef782ae29286a42c18e23b6b8cc24f"
+  },
+  "family": "GSS",
+  "format": "SAV",
+  "governing_index_refs": [
+    {
+      "content_sha256": "936d99f6a2c7b523b4902818bf423a1a10c12c66246e014c5ae75c0e17f6b63f",
+      "git_blob": "193c921b58d5fd2578cb2a2a02567053160eab00",
+      "git_blob_actual": "193c921b58d5fd2578cb2a2a02567053160eab00",
+      "git_object_verified": true,
+      "id": "atlasY",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/report/Y_FINAL_ORDERED_PROGRAM.md",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "1133a477bdedf475f5da40ec98d340a81a03ee239d95e3d55ba35542de78e36e",
+      "git_blob": "6565d3617aedccbcff462aa13ab9c2031b38e28c",
+      "git_blob_actual": "6565d3617aedccbcff462aa13ab9c2031b38e28c",
+      "git_object_verified": true,
+      "id": "atlasE",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/report/E_ZERO_LOSS_CONSERVATION_MATRIX.md",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "2c7e5318bee271631699acb4d68f6566844346bb109a94c38f5257038a142d95",
+      "git_blob": "f2a77417e362beb05dfb1346149b6f4551ff998d",
+      "git_blob_actual": "f2a77417e362beb05dfb1346149b6f4551ff998d",
+      "git_object_verified": true,
+      "id": "atlasX",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/report/X_PYAT_CONTROL_ROOM_SELF_AUDIT.md",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "5c4c6395222f0d5ed63a7c41f2b06dab11510fd5a7de4314dda7b5478441272c",
+      "git_blob": "dcf4d54404d6fbe13528ee6a5e1ec1176a1f2829",
+      "git_blob_actual": "dcf4d54404d6fbe13528ee6a5e1ec1176a1f2829",
+      "git_object_verified": true,
+      "id": "s35_roots",
+      "path": "WORKER_RETURNS/FIABC-S35-1/01_CLOSED35_CANONICAL_SOURCE_ROOTS.csv",
+      "ref": "770d95c1a604ea1f47ac2971b923673c14c42984",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "6c0207d970b2e10292dc53681620e30bf32cabacd81bd5a5aa1124c8a76dafed",
+      "git_blob": "a67986ae5156d707857ae63dd051c7f973d92cef",
+      "git_blob_actual": "a67986ae5156d707857ae63dd051c7f973d92cef",
+      "git_object_verified": true,
+      "id": "s35_regime_registry",
+      "path": "WORKER_RETURNS/PREMAIN-CLOSED35-REPRESENTATION-REGIME-R1/01_CLOSED35_REPRESENTATION_REGIME_REGISTRY.json",
+      "ref": "463a388b306b742e0323c91b086805e34f714dde",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "94b0329d1b9b55896428e1a729c195e8345ed56a54ca16018ecf6e7f8e202157",
+      "git_blob": "77074261a0594884ac306d2ee40c83d393af266e",
+      "git_blob_actual": "77074261a0594884ac306d2ee40c83d393af266e",
+      "git_object_verified": true,
+      "id": "s35_applicability",
+      "path": "WORKER_RETURNS/PREMAIN-CLOSED35-REPRESENTATION-REGIME-R1/02_CLOSED35_SOURCE_APPLICABILITY.csv",
+      "ref": "463a388b306b742e0323c91b086805e34f714dde",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "8a3963e3a22a3adeefc5139136ee6cb55fafe3c5bcea247d9b961e6198aa760b",
+      "git_blob": "4857f80b2e7eff22af11f788950a7dc263c88c04",
+      "git_blob_actual": "4857f80b2e7eff22af11f788950a7dc263c88c04",
+      "git_object_verified": true,
+      "id": "s35_typed_join",
+      "path": "WORKER_RETURNS/PREMAIN-CLOSED35-QUALIFIED-REPRESENTATION-CENSUS-RESULTS-R1/CLOSED35_TYPED_JOIN_MATRIX.csv",
+      "ref": "b801c58c8e4d6d10e36e0a42ca62cf6908cbf25a",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "27294177d4b5cf70d6d95d22c74341b774804ae021b0a1bd132c9c3b14ecf759",
+      "git_blob": "331de4fb28871b9b18f3da44ea2ac17aa94a5c00",
+      "git_blob_actual": "331de4fb28871b9b18f3da44ea2ac17aa94a5c00",
+      "git_object_verified": true,
+      "id": "s35_acquisition",
+      "path": "WORKER_RETURNS/PREMAIN-CLOSED35-SOURCE-ESTATE-CLOSURE-R1/02_CLOSED35_SOURCE_ACQUISITION_MANIFEST.json",
+      "ref": "4e230628ae31b6b4de581f3a797e1d1bcb0047a0",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "e333e987a260f24b56b335988b57e51a090b687a50d30d421245c5cced204c67",
+      "git_blob": "dd61974c70a1d0c130ccfc71ddbb2afb380dd232",
+      "git_blob_actual": "dd61974c70a1d0c130ccfc71ddbb2afb380dd232",
+      "git_object_verified": true,
+      "id": "s35_authority72",
+      "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/72_PREP71_R10_34_SOURCE_SYNTHESIS_AND_GSR09_LAUNCH_LEDGER_AUTHORITY.md",
+      "ref": "3356b26f2dc518043ffde171c2dca0470b5ac79f",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "e4b39e402971565df80f94a0da47c971f6ddb182b7fb84e9a018262699eb96e8",
+      "git_blob": "31eb9d6a17788b577b7aab46a290d68f12a59288",
+      "git_blob_actual": "31eb9d6a17788b577b7aab46a290d68f12a59288",
+      "git_object_verified": true,
+      "id": "I51",
+      "path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/r51_joined_source_producer.py",
+      "ref": "9bbf9e0509411beb210331d28160324b005a784e",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "67a85706f6387e011422de525236235a80652fdb959564221bf8f35f435ae1d2",
+      "git_blob": "5f6efaceb18d92a362d065d12fdca4076d53fa16",
+      "git_blob_actual": "5f6efaceb18d92a362d065d12fdca4076d53fa16",
+      "git_object_verified": true,
+      "id": "B49rules",
+      "path": "rawlsing_next/pre553_inherited_source_rules.py",
+      "ref": "b5600da96358f8526471d635a1befa8daa3f098b",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "4d3db6f136eaa64bfa0003d2c17bd7628ff35b3a3e34f1581b8a8354267868d9",
+      "git_blob": "e27c116b9a5654a8709aff1042322dc51d3296d3",
+      "git_blob_actual": "e27c116b9a5654a8709aff1042322dc51d3296d3",
+      "git_object_verified": true,
+      "id": "B49preimage",
+      "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "ref": "b5600da96358f8526471d635a1befa8daa3f098b",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "486fb88c72b67e96d6b72d402354088f9f8a517c4f9b653bc1809333d35385e1",
+      "git_blob": "bc88720c2bbcf52a43b799526c7dade094ccd9f8",
+      "git_blob_actual": "bc88720c2bbcf52a43b799526c7dade094ccd9f8",
+      "git_object_verified": true,
+      "id": "B49bind",
+      "path": "rawlsing_next/pre553_native_workload_binding.py",
+      "ref": "b5600da96358f8526471d635a1befa8daa3f098b",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "9f2ba07633f3d9f4b656ba5d33b7b9695c290e09cfb6f789e8347d643543ec55",
+      "git_blob": "f610ef2dea39519a51a5b57fd35bbe245fb9dc9b",
+      "git_blob_actual": "f610ef2dea39519a51a5b57fd35bbe245fb9dc9b",
+      "git_object_verified": true,
+      "id": "G50enum",
+      "path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/enumerate.py",
+      "ref": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "36634ec0765864e82d5fb6adc54b0c71b9a4c41812342da28454caf90cafdcbb",
+      "git_blob": "96bf1778fddd108037be83a3bb5fdafc2259c602",
+      "git_blob_actual": "96bf1778fddd108037be83a3bb5fdafc2259c602",
+      "git_object_verified": true,
+      "id": "G50native",
+      "path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/native_i05.py",
+      "ref": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "71d79dc57077b83557696a2a8c6d980213192098778c5ab58dd7a163d7d7ca4e",
+      "git_blob": "b7a0d3193667013b81dae9eeeef07d26da88fcc3",
+      "git_blob_actual": "b7a0d3193667013b81dae9eeeef07d26da88fcc3",
+      "git_object_verified": true,
+      "id": "G50map",
+      "path": "WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/native_map.py",
+      "ref": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "3a677b4d7a9083ce627f9c773d8a1697f949deebc550bc8f072cff011589f18b",
+      "git_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "git_blob_actual": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "git_object_verified": true,
+      "id": "routeb",
+      "path": "rawlsing_next/pre553_route_b_production.py",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "808fd0bd8e2423c047268285c00ca43f0f4cdbff80ed1ad286e3c6c56b8f7217",
+      "git_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "git_blob_actual": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "git_object_verified": true,
+      "id": "exact",
+      "path": "rawlsing_next/pre553_discovery_exact.py",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "5071bde0180db05f59386884d5de2bdea503cd26db2024806a92887d2a5a1e04",
+      "git_blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "git_blob_actual": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "git_object_verified": true,
+      "id": "batch",
+      "path": "rawlsing_next/pre553_batch_runner.py",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "8a420647ec32e1e6935e2b359c0c6e3cab1f802be59c3861a8ba2393b3351ac6",
+      "git_blob": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "git_blob_actual": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "git_object_verified": true,
+      "id": "issued",
+      "path": "WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/rawlsing_next/pre553_issued_workload.py",
+      "ref": "9bbf9e0509411beb210331d28160324b005a784e",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "ffeaf8a895a3484d0640cf98b7a44b11b19d0a5423a833dcf2c9642ed055ee3f",
+      "git_blob": "c2451b1b9d54b9588455022e0d6625083bb955d2",
+      "git_blob_actual": "c2451b1b9d54b9588455022e0d6625083bb955d2",
+      "git_object_verified": true,
+      "id": "binding",
+      "path": "rawlsing_next/pre553_candidate_c_production_binding.py",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "03b88d258d21c403542756db7316923aa392871442d99294de904b1744da1d01",
+      "git_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "git_blob_actual": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "git_object_verified": true,
+      "id": "c11",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "d83bf9fba14ab7a3c5bb2a4fad30e4746345f29f4d10c16fbc1d2b5d0030bcfe",
+      "git_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "git_blob_actual": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "git_object_verified": true,
+      "id": "c1",
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "bde80b1fa2936c3bd9d18fa73ece913da1561cfd707692cc46e83004f42c4fc2",
+      "git_blob": "4a8e27a226a9c06606f5ba493d2cc7356d491a7b",
+      "git_blob_actual": "4a8e27a226a9c06606f5ba493d2cc7356d491a7b",
+      "git_object_verified": true,
+      "id": "i4",
+      "path": "rawlsing_next/pre553_learned_world_composition.py",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "99d716051f23e1ef75990a5184afec612aa7855078a67893f6436b44f57b4697",
+      "git_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "git_blob_actual": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "git_object_verified": true,
+      "id": "empirical",
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "ec9558c68a2138de7d44796986db39df28a679ccc1506785b79929d624d32034",
+      "git_blob": "a70decb20747d84cbcbe27d1280babc6de88ef33",
+      "git_blob_actual": "a70decb20747d84cbcbe27d1280babc6de88ef33",
+      "git_object_verified": true,
+      "id": "ff",
+      "path": "rawlsing_next/field_forge_conditional_support.py",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "cc4a137263ba87631d01366751809ab8a008f4c13f1c29c8af8a0806234bc154",
+      "git_blob": "0aeacd9e66c7e4340b36e1b622bb5c9bf2865fd5",
+      "git_blob_actual": "0aeacd9e66c7e4340b36e1b622bb5c9bf2865fd5",
+      "git_object_verified": true,
+      "id": "ff_ingress",
+      "path": "rawlsing_next/m1_admitted_field_forge_relation_v554_ingress.py",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "5f6bf653d287dab8063696f2b81a79ab4083e44eaa9b901cfb5aa4589a098ec0",
+      "git_blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "git_blob_actual": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "git_object_verified": true,
+      "id": "temporal",
+      "path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "40ce648ebb60e87eaab02f526f7c5fd9095d6a9d1e1e3712f0cdb4c2b17ea6a7",
+      "git_blob": "761db5924639eacf1c7c8b78a209326c1c51e2c5",
+      "git_blob_actual": "761db5924639eacf1c7c8b78a209326c1c51e2c5",
+      "git_object_verified": true,
+      "id": "cx_m1",
+      "path": "rawlsing_next/pre553_learned_empirical_adjudication.py",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "9683bfd6cbc93763d52253dea019c4d031c47d55c8ac9854901f10df1c04b8e6",
+      "git_blob": "f76c390665f06ef126968ccf1a6b2d816f43ae92",
+      "git_blob_actual": "f76c390665f06ef126968ccf1a6b2d816f43ae92",
+      "git_object_verified": true,
+      "id": "cx_m2",
+      "path": "rawlsing_next/pre553_learned_product_release.py",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    },
+    {
+      "content_sha256": "706bd074b1f1318fc503cbea080c2761b79b73f6f1088addec2e6fdf79c29833",
+      "git_blob": "a11c9eb73abab9be118ef4f0b6e325e676059f27",
+      "git_blob_actual": "a11c9eb73abab9be118ef4f0b6e325e676059f27",
+      "git_object_verified": true,
+      "id": "cx_b5",
+      "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "shared_governing_reference"
+    }
+  ],
+  "historical_canonical_sha256": "27166a481ba6e240aca68293464a2b1fd9a9171a3ddba89a038038a32b8d1eef",
+  "historical_hash_binding_status": "U43_ORIGINAL_MANIFEST_HASH_UNBOUND__CLOSED35_HISTORICAL_HASH_USED_FOR_NAVIGATION_ONLY",
+  "historical_identity_status": "HISTORICAL_NAVIGATION_ONLY_NOT_CURRENT_GRANT_OR_EDITION",
+  "historical_size_bytes": 20922610,
+  "mechanical_wiring": "ADAPTED_BY_R146_ALL35_REUSE_RUNTIME",
+  "native_execution_authorized": false,
+  "native_original_wave_identity": {
+    "atlas_id": "SRC23",
+    "dataset_id": "GSS_2024_GSS2024",
+    "source_family": "GSS",
+    "wave": "2024"
+  },
+  "next_runnable_invocation": "PYTHONPATH=. python3 WORKER_RETURNS/PYAT-R146-ALL35-EXISTING-SOURCE-BINDINGS-R1/runtime/render_source_preparation.py --source-id SRC23",
+  "prospective_u_e_pre": {
+    "cause": "NO_VERIFIED_CURRENT_SOURCE_HOST_PURPOSE_AND_SCIENTIFIC_E_PRE_ISSUANCE",
+    "e_pre_root": null,
+    "scientific_roles": "UNASSIGNED_PENDING_EXACT_SOURCE_ISSUER",
+    "state": "NULL_WITH_CAUSE",
+    "topology": "PENDING_EXACT_HEADER_AND_SEMANTIC_AUTHORITY",
+    "u_root": null
+  },
+  "r145_codebook_reuse": {
+    "dictionary": {
+      "bytes": 2107376,
+      "columns": [
+        "source",
+        "wave",
+        "module_guess",
+        "var_name",
+        "question_text",
+        "question_text_full",
+        "value_label_set",
+        "storage_type",
+        "storage_width",
+        "measure",
+        "format",
+        "value_labels_count",
+        "response_options_substantive",
+        "response_options_special",
+        "response_options_all",
+        "note"
+      ],
+      "document_ref": {
+        "content_hash": "00a2b5e40fc82c5267208c24214cd576a08eb55f2dea5273eb140577f0da6df0",
+        "kind": "R145_CODEBOOK_DOCUMENT",
+        "object_id": "urn:rawlsing:pre553:r145:SRC23-codebook:sha256:00a2b5e40fc82c5267208c24214cd576a08eb55f2dea5273eb140577f0da6df0"
+      },
+      "duplicate_native_codes": [],
+      "filename": "GSS2024-codebook.csv",
+      "rows": 980,
+      "scope": "Instrument/codebook document only; not respondent data or current native-source validation",
+      "sha256": "e0f83b6176f3820d9539ef9d1d6949243bd86d17a5852590b4f257b47e4b01d7"
+    },
+    "note": "codebook rows are not the administered universe; header/semantics remain pending",
+    "preparation_path": "WORKER_RETURNS/PYAT-R145-CURRENT-SOURCE-PACKAGE-BINDING-R1/records/SRC23_PACKAGE_PREPARATION.json",
+    "preparation_sha256": "56c8e27ccdbd06c0bf2c4f382b26e24a12496d7d78e9511d0e9e5be2a2c840eb",
+    "role_counts": {
+      "HELD_NO_GROUNDED_QUESTION_OR_OPTIONS": 15,
+      "HOUSEHOLD_OR_ROSTER": 21,
+      "PERSON_OR_REPEATED_BLOCK": 20,
+      "RANKED_OR_MR_RESPONSE": 4,
+      "SOURCE_ADMINISTRATIVE_IDENTITY": 7,
+      "SOURCE_ADMINISTRATIVE_OR_METADATA": 30,
+      "SUBSTANTIVE_QUESTION_CANDIDATE": 874,
+      "WEIGHT_OR_DESIGN": 9
+    },
+    "row_accounting_bytes": 3048227,
+    "row_accounting_path": "WORKER_RETURNS/PYAT-R145-CURRENT-SOURCE-PACKAGE-BINDING-R1/records/SRC23_ROW_ACCOUNTING.jsonl",
+    "row_accounting_sha256": "29a66a722fe3b7c453f0644705035a31d724cf259a14db9a7558de17f36e6ebd",
+    "rows": 980,
+    "source_read_request_template": {
+      "consumer_use": "R134_SOURCE_LOCAL_EMPIRICAL_AND_LEARNED_PIPELINE",
+      "custody_locator_binding": "PENDING_AUTHORIZED_SOURCE_IDENTITY_RECEIPT",
+      "host": "PENDING_EXTERNAL_TRUSTED_SOURCE_READ_DECISION",
+      "metadata_freeze_refs": [
+        {
+          "content_hash": "cad76ede342a4be0a9dd2fd177cdbe7ac11d809ba6fdfe461f666f09479d8ead",
+          "kind": "R145_METADATA_FREEZE",
+          "object_id": "urn:rawlsing:pre553:r145:SRC23-dictionary:sha256:cad76ede342a4be0a9dd2fd177cdbe7ac11d809ba6fdfe461f666f09479d8ead"
+        }
+      ],
+      "physical_read_extent": "EXACT_FILE",
+      "purpose": "R145_CURRENT_SOURCE_PACKAGE_PREPARATION",
+      "read_operation": "SOURCE_RESPONSE_DECODE",
+      "semantic_use_scope": [
+        "SOURCE_LOCAL_ONLY",
+        "NO_POPULATION_OR_CAUSAL_INFERENCE"
+      ],
+      "source_format": "SAV",
+      "source_id": "SRC23",
+      "source_sha256": null,
+      "source_sha256_status": "PENDING_USER_AUTHORIZED_IDENTITY_RECEIPT",
+      "status": "TEMPLATE_ONLY_DO_NOT_SEND_UNTIL_EDITION_SHA_AND_EXTERNAL_GRANT"
+    },
+    "source_unit": "PERSON_RESPONDENT_IDENTIFIED_BY_ROW_EVIDENCE",
+    "status": "R145_FULL_CODEBOOK_ROW_ACCOUNTING_AVAILABLE"
+  },
+  "schema": "PYAT_R146_ALL35_SOURCE_BINDING_REUSE@1",
+  "source_id": "SRC23",
+  "source_read_grant_present": false,
+  "source_read_request_template": {
+    "consumer_use": "R134_SOURCE_LOCAL_EMPIRICAL_AND_LEARNED_PIPELINE",
+    "custody_locator_binding": "PENDING_CURRENT_SOURCE_IDENTITY_AND_EXTERNAL_GRANT",
+    "historical_canonical_sha256": "27166a481ba6e240aca68293464a2b1fd9a9171a3ddba89a038038a32b8d1eef",
+    "host": "PENDING_EXTERNAL_TRUSTED_SOURCE_READ_DECISION",
+    "physical_read_extent": "EXACT_FILE",
+    "purpose": "R146_SOURCE_BINDING_REUSE_PREPARATION",
+    "read_operation": "SOURCE_RESPONSE_DECODE",
+    "source_format": "SAV",
+    "source_id": "SRC23",
+    "source_sha256": null,
+    "source_sha256_status": "PENDING_EXACT_CURRENT_SOURCE_ISSUANCE",
+    "status": "TEMPLATE_ONLY_NO_GRANT"
+  },
+  "source_specific_index_refs": [
+    {
+      "content_sha256": "b910a378108bb4fb453e0024461e108088e89b419c8367ae5ccc3974bcad4fe8",
+      "git_blob": "726056514de539223b6305aed6d8c6a00c272d7e",
+      "git_blob_actual": "726056514de539223b6305aed6d8c6a00c272d7e",
+      "git_object_verified": true,
+      "id": "s35_dossier_SRC23",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/sources/SRC23.md",
+      "ref": "f148f9ba34deb0ae2ad3983fe94bbcef8f004b03",
+      "role": "source_dossier"
+    }
+  ],
+  "survey_file_touched": false,
+  "unresolved": [
+    "CURRENT_SOURCE_ACCESS_PERMISSION",
+    "CURRENT_SOURCE_EDITION_HASH",
+    "SCIENTIFIC_E_PRE",
+    "COMPLETE_NATIVE_U",
+    "SOURCE_RESPONSE_READ_GRANT_AND_CURRENT_RESOLVER"
+  ],
+  "wave_or_release": "2024"
+}
