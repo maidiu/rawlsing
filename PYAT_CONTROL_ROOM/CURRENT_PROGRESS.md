@@ -1,3 +1,10 @@
+# R142 — combined production ingress qualification
+
+R14110hashesbytes/2blobs/allowlist/directremote and R140prior15/6blobs verified. Same existing distinct reviewer launched exactcandidate combining actualvalues/queryscope repair, sourcepermission-beforedecode, nativefullfrontierdiscovery/no-drop/refusal/restoration. No actualsource/issuer/science/learned/FF/all35claim. Qualifyexactengineeringboundary or repairdemonstrateddefect; actualsourcepipeline milestone next. Fullgoal/holds retained.
+
+
+## Earlier progress history retained
+
 # R141B — exactscope repair launched after actual transportreturn
 
 R14015code/reporthashesbytes/6blobs/allowlist/directremote verified; author18+4test and actualsynthetic predecode/discovery witnesses notacceptance. Queryscopefunction unchanged so queued R141sameauthor actuallylaunched, preserve currentnativepath; same distinctreviewer confirmscombinedcandidate next. Wrong R140manifestcommissionpin retained with exacterratum required. No actualsource/science/learned/FF/all35claim; fullgoal/holds intact.
