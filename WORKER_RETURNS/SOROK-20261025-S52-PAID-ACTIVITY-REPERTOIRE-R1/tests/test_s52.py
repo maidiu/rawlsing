@@ -1,13 +1,14 @@
 """Focused S52 paid-activity repertoire tests."""
 from __future__ import annotations
 import tempfile
+from copy import deepcopy
 from pathlib import Path
 from s52.bootstrap import install
 install()
 from s45.fixtures import root_bundle
 from s37.harness import case_for, source_for
 from s51.session import S51Refusal
-from s52.session import PAID_OPTION, S52Session
+from s52.session import CANDIDATE_KIND, PAID_OPTION, S52Session, candidate_digest
 
 
 def _start(state):
@@ -43,12 +44,15 @@ def test_candidate_source_cut_removes_paid_option_from_normal_generation():
    turns=[row for row in session._episodes("S49_B_ACTOR_TURN")
     if (row.get("body") or {}).get("generation")]
    return turns[-1]["body"]["generation"]["generation"]
+  s.produce_b_turn(controlled=True,source_records_override=[])
+  actual_cut=last_receipt(s)
   s.produce_b_turn(controlled=True,source_records_override=[candidate["source"]])
-  cut_receipt=last_receipt(s)
-  assert PAID_OPTION not in [o["option_id"] for o in cut_receipt.get("options",[])]
+  no_repertoire=last_receipt(s)
   s.produce_b_turn(controlled=True,source_records_override=[candidate["source"]],
    repertoire=candidate["repertoire"])
   restored_receipt=last_receipt(s)
+  assert PAID_OPTION not in [o["option_id"] for o in actual_cut.get("options",[])]
+  assert PAID_OPTION not in [o["option_id"] for o in no_repertoire.get("options",[])]
   assert PAID_OPTION in [o["option_id"] for o in restored_receipt.get("options",[])]
   assert [x for x in restored_receipt.get("reasons",[]) if x["option_id"]==PAID_OPTION]
  finally:s.close()
@@ -151,4 +155,56 @@ def test_foreign_or_stale_offer_cannot_compile_a_paid_candidate():
    pass
   else:
    raise AssertionError("foreign offer accepted")
+ finally:s.close()
+
+
+def test_raw_repertoire_without_canonical_candidate_is_refused():
+ s=_start(__import__('tempfile').mkdtemp())
+ try:
+  actual=s.run_experiment(); source=actual["candidate"]["source"]
+  forged={"schema":"S52_PAID_REPERTOIRE@1","eligible":True,
+   "candidate_hash":"FORGED_CANDIDATE",
+   "option":{"option_id":PAID_OPTION,"s36_response_kind":"PAID_PARTICIPATION",
+    "action":"PARTICIPATE_IN_PAID_TASK","performer":"s52.paid_activity"},
+   "reason":{"option_id":PAID_OPTION,"relation":"CONDITIONAL_SUPPORTS",
+    "predicate":"FORGED_PAID_REASON","source_ref":source["source_ref"],
+    "source_hash":source["source_hash"],"source_class":source["source_class"]}}
+  try:
+   s.produce_b_turn(controlled=True,source_records_override=[source],repertoire=forged)
+  except S51Refusal as exc:
+   assert exc.code=="S52_CANONICAL_CANDIDATE_MISSING"
+  else:
+   raise AssertionError("raw repertoire accepted")
+ finally:s.close()
+
+
+def test_forged_cross_actor_candidate_cannot_duplicate_or_perform():
+ s=_start(__import__('tempfile').mkdtemp())
+ try:
+  actual=s.run_experiment(); candidate=actual["candidate"]; generation=actual["generation"]
+  first=s.perform_paid_participation(candidate,generation=generation,counterpart_performed=True)
+  assert first["performed"] is True
+  forged=deepcopy(candidate); forged.pop("episode_id",None)
+  forged["actor_id"]="FORGED_CROSS_ACTOR"; forged["reason"]="FORGED_CANDIDATE"
+  forged["candidate_hash"]=candidate_digest(forged)
+  s._append(CANDIDATE_KIND,forged)
+  second=s.perform_paid_participation(forged,generation=generation,counterpart_performed=True)
+  assert second["performed"] is False
+  assert second["reason"]=="S52_DUPLICATE_PARTICIPATION"
+  assert s.verify()["ok"] is False
+  assert len([x for x in s._episodes("S52_PAID_ACTIVITY_RESULT")
+   if (x.get("body") or {}).get("performed") is True])==1
+ finally:s.close()
+
+
+def test_current_state_divergence_invalidates_verify():
+ s=_start(__import__('tempfile').mkdtemp())
+ try:
+  actual=s.run_experiment(); candidate=actual["candidate"]; generation=actual["generation"]
+  s.perform_paid_participation(candidate,generation=generation,counterpart_performed=True)
+  world=s.world(); world.actor_state["B"]["cash"]=999
+  s.product._checkpoint(s.branch_id,s.clock(),world)
+  result=s.verify()
+  assert result["ok"] is False
+  assert any(x.startswith("S52_CURRENT_STATE_DIVERGES") for x in result["s52"]["errors"])
  finally:s.close()

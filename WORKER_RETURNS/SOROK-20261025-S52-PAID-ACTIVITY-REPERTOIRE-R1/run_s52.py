@@ -30,8 +30,10 @@ def main():
   candidate=actual["candidate"]; generation=actual["generation"]
   receipt=generation.get("generation_receipt") or {}
   cut_source=candidate["source"]
+  s.produce_b_turn(controlled=True,source_records_override=[])
+  actual_cut_receipt=_last_receipt(s)
   s.produce_b_turn(controlled=True,source_records_override=[cut_source])
-  cut_receipt=_last_receipt(s)
+  no_repertoire_receipt=_last_receipt(s)
   s.produce_b_turn(controlled=True,source_records_override=[cut_source],
    repertoire=candidate["repertoire"])
   restored_receipt=_last_receipt(s)
@@ -69,8 +71,9 @@ def main():
    "repertoire":receipt.get("repertoire"),
   },
   "source_cut":{
-   "paid_option_absent":PAID_OPTION not in [o.get("option_id") for o in cut_receipt.get("options",[])],
-   "paid_option_restored":PAID_OPTION in [o.get("option_id") for o in restored_receipt.get("options",[])],
+   "actual_source_cut_paid":PAID_OPTION in [o.get("option_id") for o in actual_cut_receipt.get("options",[])],
+   "source_kept_repertoire_omitted_paid":PAID_OPTION in [o.get("option_id") for o in no_repertoire_receipt.get("options",[])],
+   "source_and_repertoire_paid":PAID_OPTION in [o.get("option_id") for o in restored_receipt.get("options",[])],
    "reason_restored":bool([x for x in restored_receipt.get("reasons",[]) if x.get("option_id")==PAID_OPTION]),
   },
   "controlled":{

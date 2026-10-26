@@ -42,6 +42,70 @@ class S52Session(S51Session):
     "relevance_hash":relevance["relevance_hash"],
     "access_ref":access.get("source_ref")})
 
+ def resolve_candidate(self,candidate:Mapping[str,Any])->dict:
+  if not isinstance(candidate,Mapping) or not candidate.get("candidate_hash"):
+   raise S51Refusal("S52_CANONICAL_CANDIDATE_MISSING")
+  rows=[row for row in self._episodes(CANDIDATE_KIND)
+   if (row.get("body") or {}).get("candidate_hash")==candidate.get("candidate_hash")]
+  if len(rows)!=1:
+   raise S51Refusal("S52_CANONICAL_CANDIDATE_MISSING")
+  stored=dict(rows[0].get("body") or {})
+  if stored.get("candidate_hash")!=candidate_digest(stored):
+   raise S51Refusal("S52_CANDIDATE_HASH_INVALID")
+  relevance_rows=[row for row in self._episodes("S51_OBJECT_RELEVANCE")
+   if ((row.get("body") or {}).get("result") or {}).get("relevance_hash")==stored.get("relevance_hash")]
+  if len(relevance_rows)!=1:
+   raise S51Refusal("S52_CANDIDATE_RELEVANCE_MISSING")
+  rel_body=dict(relevance_rows[0].get("body") or {})
+  relevance=self._canonical_relevance({"episode_id":relevance_rows[0]["episode_id"],
+   "relevance_hash":(rel_body.get("result") or {}).get("relevance_hash")})
+  obj=self._canonical_object(rel_body.get("object") or {})
+  hyp=self._canonical_hypothesis(rel_body.get("hypothesis") or {},
+   allow_consumed=True,allow_inactive=True)
+  offer=self._canonical_offer(rel_body.get("offer") or {})
+  access=self._canonical_access(rel_body.get("access"),offer) if rel_body.get("access") is not None else None
+  expected=self.compile_candidate(obj,hyp,offer,access,relevance)
+  if expected.get("candidate_hash")!=stored.get("candidate_hash"):
+   raise S51Refusal("S52_CANDIDATE_STALE_OR_FOREIGN")
+  if stored.get("actor_id")!=expected.get("actor_id") or stored.get("root_hash")!=expected.get("root_hash") or stored.get("branch_id")!=expected.get("branch_id"):
+   raise S51Refusal("S52_CANDIDATE_IDENTITY_MISMATCH")
+  if stored.get("source_ref")!=expected.get("source_ref") or stored.get("source_hash")!=expected.get("source_hash"):
+   raise S51Refusal("S52_CANDIDATE_SOURCE_MISMATCH")
+  return expected
+
+ def resolve_repertoire(self,repertoire:Mapping[str,Any])->dict:
+  if not isinstance(repertoire,Mapping):
+   raise S51Refusal("S52_CANONICAL_REPERTOIRE_REQUIRED")
+  candidate=self.resolve_candidate({"candidate_hash":repertoire.get("candidate_hash")})
+  canonical=candidate.get("repertoire")
+  if not isinstance(canonical,Mapping):
+   raise S51Refusal("S52_CANONICAL_REPERTOIRE_MISSING")
+  return dict(canonical)
+
+ def resolve_generation(self,generation:Mapping[str,Any],candidate:Mapping[str,Any])->dict:
+  if not isinstance(generation,Mapping):
+   raise S51Refusal("S52_CANONICAL_GENERATION_MISSING")
+  target=generation.get("generation_hash")
+  turns=[row for row in self._episodes("S49_B_ACTOR_TURN")
+   if ((row.get("body") or {}).get("generation") or {}).get("hash")==target]
+  if not turns:
+   raise S51Refusal("S52_CANONICAL_GENERATION_MISSING")
+  body=dict(turns[-1]["body"].get("generation") or {})
+  receipt=body.get("generation") or {}
+  rep=receipt.get("repertoire") or {}
+  if (
+   rep.get("candidate_hash")!=candidate.get("candidate_hash")
+   or (rep.get("option") or {}).get("option_id")!=PAID_OPTION
+  ):
+   raise S51Refusal("S52_GENERATION_CANDIDATE_MISMATCH")
+  return body
+
+ def produce_b_turn(self,*,controlled=False,source_records_override=None,repertoire=None):
+  if repertoire is not None:
+   repertoire=self.resolve_repertoire(repertoire)
+  return super().produce_b_turn(controlled=controlled,
+   source_records_override=source_records_override,repertoire=repertoire)
+
  def compile_candidate(self,obj,hypothesis,offer,access,relevance)->dict:
   obj=self._canonical_object(obj)
   hypothesis=self._canonical_hypothesis(hypothesis,allow_consumed=True,allow_inactive=True)
@@ -91,6 +155,8 @@ class S52Session(S51Session):
    "actor_id":actor.get("actor_id"),"root_hash":self.read_root()["root_hash"],
    "root_id":self.read_root()["root_id"],"branch_id":self.branch_id,
    "object_event_id":obj["object_event_id"],"hypothesis_id":hypothesis["hypothesis_id"],
+   "hypothesis_episode_id":hypothesis.get("episode_id",""),
+   "relevance_episode_id":relevance.get("episode_id",""),
    "offer_event_id":offer["offer_event_id"],"world_offer_event_id":offer["world_event_id"],
    "offer":offer,"access_ref":access.get("source_ref"),
    "access":access,"relevance_hash":relevance["relevance_hash"],
@@ -152,16 +218,23 @@ class S52Session(S51Session):
   errors=list(r.get("s51",{}).get("errors",[]))
   candidates=[dict(row.get("body") or {}) for row in self._episodes(CANDIDATE_KIND)]
   by_hash={row.get("candidate_hash"):row for row in candidates}
+  b_actor=(self.world().actor_state.get("B") or {}).get("actor_id")
   for body in candidates:
    if body.get("candidate_hash")!=candidate_digest(body):
     errors.append("S52_CANDIDATE_HASH_INVALID")
    if body.get("source_ref") and body.get("source",{}).get("source_ref")!=body.get("source_ref"):
     errors.append("S52_CANDIDATE_SOURCE_MISMATCH")
-  action_hashes=[]
+   if (
+    body.get("actor_id")!=b_actor
+    or body.get("root_hash")!=self.read_root().get("root_hash")
+    or body.get("branch_id")!=self.branch_id
+   ):
+    errors.append("S52_CANDIDATE_IDENTITY_INVALID")
+  action_hashes=[]; last_performed=None
   for row in self._episodes("S52_PAID_ACTIVITY_RESULT"):
    body=dict(row.get("body") or {})
    if body.get("performed") is not True: continue
-   action_hashes.append(body.get("candidate_hash"))
+   action_hashes.append(body.get("candidate_hash")); last_performed=body
    candidate=by_hash.get(body.get("candidate_hash"))
    if candidate is None:
     errors.append("S52_ACTION_CANDIDATE_MISSING"); continue
@@ -177,6 +250,12 @@ class S52Session(S51Session):
     errors.append("S52_ACTION_WORLD_EVENT_MISSING")
   if any(action_hashes.count(value)>1 for value in action_hashes):
    errors.append("S52_DUPLICATE_PERFORMED_ACTION")
+  if last_performed is not None:
+   current=self.world().actor_state.get("B") or {}
+   after=last_performed.get("after") or {}
+   for key in ("cash","free_hours","completed_units"):
+    if current.get(key)!=after.get(key):
+     errors.append("S52_CURRENT_STATE_DIVERGES:"+key)
   r["s52"]={"candidate_count":len(candidates),
    "performed_action_count":len(action_hashes),"errors":errors,"native":False}
   r["ok"]=bool(r.get("ok")) and not errors

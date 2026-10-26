@@ -1,0 +1,34 @@
+{
+  "current_state_consistency": {
+    "current_world_cash": 999,
+    "result_cash": 56,
+    "verify_errors": [
+      "S52_CURRENT_STATE_DIVERGES:cash"
+    ],
+    "verify_ok": false
+  },
+  "forged_candidate_performance": {
+    "first_performed": true,
+    "forged_actor": "FORGED_CROSS_ACTOR",
+    "performed_actions": 1,
+    "second_performed": false,
+    "second_reason": "S52_DUPLICATE_PARTICIPATION",
+    "second_status": "DENIED",
+    "verify_ok": false
+  },
+  "raw_repertoire_injection": {
+    "accepted": false,
+    "code": "S52_CANONICAL_CANDIDATE_MISSING",
+    "detail": "S52_CANONICAL_CANDIDATE_MISSING"
+  },
+  "same_candidate_duplicate": {
+    "duplicate_performed": false,
+    "duplicate_reason": "S52_DUPLICATE_PARTICIPATION",
+    "first_performed": true
+  },
+  "source_cut_vs_call_omission": {
+    "actual_source_cut_paid": false,
+    "source_and_repertoire_paid": true,
+    "source_kept_repertoire_omitted_paid": false
+  }
+}

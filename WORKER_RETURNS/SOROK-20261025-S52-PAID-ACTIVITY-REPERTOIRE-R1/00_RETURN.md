@@ -21,15 +21,16 @@ S52 is built on accepted S51 `2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65` and acce
 
 - **Generated:** only the candidate and conditional reason; no paid action, no C8, no B world event, no earned money. `earned_payment` remains `0`, prospective payment `2`.
 - **Controlled denial:** without an independent counterpart the performer returns `CONDITIONAL_ON_INDEPENDENT_PARTICIPATION` with no actor/world effect.
-- **Controlled performance:** with the explicit test-only counterpart flag, the current-state port records a real BP4 `REPAIR` event and `S52_PAID_ACTIVITY_RESULT`; B moved from cash 54/free 11/completed 5 to cash 56/free 10/completed 6 for payment 2/task 1/material 1. A repeated call is denied as `S52_DUPLICATE_PARTICIPATION`.
+- **Controlled performance:** with the explicit test-only counterpart flag, the current-state port records a real BP4 `REPAIR` event and `S52_PAID_ACTIVITY_RESULT`; B moved from cash 54/free 11/completed 5 to cash 56/free 10/completed 6 for payment 2/task 1/material 1. Duplicate denial is keyed to the canonical paid contract target/offer event, not a caller-mutable candidate hash. A forged cross-actor candidate is denied, and mutating the current B checkpoint away from the lawful result is detected by verification.
 - This is not evidence that B chose the action, that A participated, or that payment was earned in the normal path.
 
 ## Evidence
 
-- Focused S52 tests: **8 passed**, 0 failed/error/skipped; `junit/s52_full.xml`, `logs/s52_full.log`, `evidence/test_run.json`.
-- Entrypoint: `run_s52.py` exits **0**; `evidence/entrypoint.json`, `logs/entrypoint.log`.
+- Focused S52 tests: **11 passed**, 0 failed/error/skipped; `junit/s52_full.xml`, `logs/s52_full.log`, `evidence/test_run.json`.
+- Entrypoint: `run_s52.py` exits **0**; `evidence/entrypoint.json`, `logs/entrypoint.log`. The normal paid option/reason stays OPEN with no action; controlled denial and controlled effect remain distinct; cold replay verifies.
 - Changed seams: S39 model (scoped repertoire option/reason, FULL_RULE unchanged), S49 `generate_b`/`produce_b_turn` optional repertoire forwarding, S51 `consume_generation` optional repertoire forwarding. Source manifest `evidence/source_manifest.json` records these and the accepted base cuts.
 - Existing focused suites remained green after the seam changes: S39 **10**, S49 **13**, S51 **13**.
+- Review53 oracle is captured at `logs/review53_probe_after.json`: raw repertoire is refused (`S52_CANONICAL_CANDIDATE_MISSING`), forged cross-actor performance is denied with one performed action, current-state divergence is rejected, and source cut/restore distinguishes actual source removal from repertoire omission.
 - No provider call, package install, new agent, native A/T/source/Pyat/human/SCI05 grant, second psyche, or S50 runtime use.
 
 ## Remaining real gaps

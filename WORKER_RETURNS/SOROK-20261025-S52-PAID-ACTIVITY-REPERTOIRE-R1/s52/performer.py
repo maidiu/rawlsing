@@ -34,22 +34,27 @@ def perform_paid_participation(session,candidate:Mapping[str,Any],*,
   return _refuse("S52_CANDIDATE_INVALID")
  rows=[row for row in session._episodes("S52_PAID_CANDIDATE")
   if (row.get("body") or {}).get("candidate_hash")==candidate.get("candidate_hash")]
- if not rows:
+ if len(rows)!=1:
   return _refuse("S52_CANDIDATE_NOT_CANONICAL",candidate=candidate)
- candidate=dict(rows[-1].get("body") or {})
- if not generation:
-  return _refuse("S52_GENERATION_REQUIRED",candidate=candidate)
- receipt=(generation.get("generation") or generation or {})
+ stored=dict(rows[0].get("body") or {})
+ # Duplicate key is the canonical paid contract target, not a caller-mutable
+ # candidate hash.
+ existing=[row for row in session._episodes(ACTION_KIND)
+  if (row.get("body") or {}).get("performed") is True
+  and (row.get("body") or {}).get("offer_event_id")==stored.get("offer_event_id")]
+ if existing:
+  return _refuse("S52_DUPLICATE_PARTICIPATION",candidate=stored)
+ try:
+  candidate=session.resolve_candidate({"candidate_hash":stored.get("candidate_hash")})
+  generation_body=session.resolve_generation(generation,candidate)
+ except S51Refusal as exc:
+  return _refuse(exc.code,candidate=stored)
+ receipt=(generation_body.get("generation") or {})
  repertoire=receipt.get("repertoire") or {}
  if repertoire.get("candidate_hash")!=candidate.get("candidate_hash") or (
   repertoire.get("option") or {}
  ).get("option_id")!="PAID_PARTICIPATION":
   return _refuse("S52_GENERATION_CANDIDATE_MISMATCH",candidate=candidate)
- existing=[row for row in session._episodes(ACTION_KIND)
-  if (row.get("body") or {}).get("candidate_hash")==candidate["candidate_hash"]
-  and (row.get("body") or {}).get("performed") is True]
- if existing:
-  return _refuse("S52_DUPLICATE_PARTICIPATION",candidate=candidate)
  world=session.world(); actor=world.actor_state.get("B") or {}
  before=deepcopy(actor)
  offer=candidate.get("offer") or {}; p=offer.get("offer") or {}
@@ -95,7 +100,7 @@ def perform_paid_participation(session,candidate:Mapping[str,Any],*,
  body={"schema":"S52_PAID_ACTIVITY_RESULT@1","grade":GRADE,"native":False,
   "performed":True,"status":"PERFORMED","reason":"OK",
   "candidate_hash":candidate["candidate_hash"],
-  "generation_hash":generation.get("generation_hash","") or (generation.get("generation_body") or {}).get("hash",""),
+  "generation_hash":generation_body.get("hash",""),
   "offer_event_id":offer.get("offer_event_id",""),
   "world_event_id":event["event_id"],"event_hash":event["hash"],
   "before":before,"after":after,"controlled_counterpart":True,
