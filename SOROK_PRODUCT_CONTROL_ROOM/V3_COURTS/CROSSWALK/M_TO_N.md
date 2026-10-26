@@ -1,0 +1,42 @@
+# Historical mechanism → possible new requirements, NOT verified full coverage
+
+- [M01](../V3_EXISTING/M01/README.md): N11, N12 — coverage UNKNOWN / conceptual review needed
+- [M02](../V3_EXISTING/M02/README.md): N01, N06 — coverage UNKNOWN / conceptual review needed
+- [M03](../V3_EXISTING/M03/README.md): N01, N04 — coverage UNKNOWN / conceptual review needed
+- [M04](../V3_EXISTING/M04/README.md): N01, N06, N07, N12 — coverage UNKNOWN / conceptual review needed
+- [M05](../V3_EXISTING/M05/README.md): N03, N04 — coverage UNKNOWN / conceptual review needed
+- [M06](../V3_EXISTING/M06/README.md): N07, N10 — coverage UNKNOWN / conceptual review needed
+- [M07](../V3_EXISTING/M07/README.md): N04, N07, N09 — coverage UNKNOWN / conceptual review needed
+- [M08](../V3_EXISTING/M08/README.md): N02, N03, N05, N08 — coverage UNKNOWN / conceptual review needed
+- [M09](../V3_EXISTING/M09/README.md): N05 — coverage UNKNOWN / conceptual review needed
+- [M10](../V3_EXISTING/M10/README.md): N02, N03, N04, N07, N08 — coverage UNKNOWN / conceptual review needed
+- [M11](../V3_EXISTING/M11/README.md): N04, N05, N09, N10 — coverage UNKNOWN / conceptual review needed
+- [M12](../V3_EXISTING/M12/README.md): N06, N07, N12 — coverage UNKNOWN / conceptual review needed
+- [M13](../V3_EXISTING/M13/README.md): N05, N06, N10 — coverage UNKNOWN / conceptual review needed
+- [M14](../V3_EXISTING/M14/README.md): N04, N05, N08 — coverage UNKNOWN / conceptual review needed
+- [M15](../V3_EXISTING/M15/README.md): N01, N02, N03, N08 — coverage UNKNOWN / conceptual review needed
+- [M16](../V3_EXISTING/M16/README.md): N01, N05, N06, N10 — coverage UNKNOWN / conceptual review needed
+- [M17](../V3_EXISTING/M17/README.md): N02, N03, N05, N08, N09 — coverage UNKNOWN / conceptual review needed
+- [M18](../V3_EXISTING/M18/README.md): N03, N05, N08 — coverage UNKNOWN / conceptual review needed
+- [M19](../V3_EXISTING/M19/README.md): N02, N03, N05, N08, N09, N10 — coverage UNKNOWN / conceptual review needed
+- [M20](../V3_EXISTING/M20/README.md): N04, N07, N10, N12 — coverage UNKNOWN / conceptual review needed
+- [M21](../V3_EXISTING/M21/README.md): N02, N03, N04, N05, N07, N08, N09, N12 — coverage UNKNOWN / conceptual review needed
+- [M22](../V3_EXISTING/M22/README.md): N01, N02, N09, N10 — coverage UNKNOWN / conceptual review needed
+- [M23](../V3_EXISTING/M23/README.md): N01, N03, N04 — coverage UNKNOWN / conceptual review needed
+- [M24](../V3_EXISTING/M24/README.md): N02, N05, N08 — coverage UNKNOWN / conceptual review needed
+- [M25](../V3_EXISTING/M25/README.md): N06, N11, N12 — coverage UNKNOWN / conceptual review needed
+- [M26](../V3_EXISTING/M26/README.md): N11, N12 — coverage UNKNOWN / conceptual review needed
+- [M27](../V3_EXISTING/M27/README.md): N07, N11 — coverage UNKNOWN / conceptual review needed
+- [M28](../V3_EXISTING/M28/README.md): N07, N11 — coverage UNKNOWN / conceptual review needed
+- [M29](../V3_EXISTING/M29/README.md): N09, N11, N12 — coverage UNKNOWN / conceptual review needed
+- [M30](../V3_EXISTING/M30/README.md): N09, N10, N11, N12 — coverage UNKNOWN / conceptual review needed
+- [M31](../V3_EXISTING/M31/README.md):  — coverage UNKNOWN / conceptual review needed
+- [M32](../V3_EXISTING/M32/README.md): N12 — coverage UNKNOWN / conceptual review needed
+- [M33](../V3_EXISTING/M33/README.md): N06, N11 — coverage UNKNOWN / conceptual review needed
+- [M34](../V3_EXISTING/M34/README.md): N11 — coverage UNKNOWN / conceptual review needed
+- [M35](../V3_EXISTING/M35/README.md):  — coverage UNKNOWN / conceptual review needed
+- [M36](../V3_EXISTING/M36/README.md): N02 — coverage UNKNOWN / conceptual review needed
+- [M37](../V3_EXISTING/M37/README.md): N06, N09, N11 — coverage UNKNOWN / conceptual review needed
+- [M38](../V3_EXISTING/M38/README.md): N06, N11 — coverage UNKNOWN / conceptual review needed
+- [M39](../V3_EXISTING/M39/README.md):  — coverage UNKNOWN / conceptual review needed
+- [M40](../V3_EXISTING/M40/README.md): N11, N12 — coverage UNKNOWN / conceptual review needed

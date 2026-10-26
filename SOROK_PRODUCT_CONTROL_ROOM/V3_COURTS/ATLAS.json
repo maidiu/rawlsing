@@ -1,0 +1,1078 @@
+{
+  "schema": "SOROK_V3_COURTS_ATLAS_R1",
+  "source_cut": {
+    "original_TD_R05_blob": "dfcc7e4fc7b6e907218d7a368ceb9d269a49206d",
+    "neo_differential_blob": "2555988f25c2c867a96a8247612728e628261cc0",
+    "base_pre_main": "ec34b4f7a88feafe079fce4383d9ed5e8d1062d1"
+  },
+  "status_policy": "MULTI_AXIS_NO_GLOBAL_PERCENT",
+  "historical": [
+    {
+      "id": "M01",
+      "name": "persistent BackboneState pattern",
+      "original_source": "`v3/core/state.py; v3/core/year_record.py; v3/core/generation_integrity.py` — `BackboneState; hash_jsonable; GenerationIntegrityAccumulator`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N11",
+        "N12"
+      ],
+      "card": "V3_EXISTING/M01/README.md"
+    },
+    {
+      "id": "M02",
+      "name": "material capacity",
+      "original_source": "`v3/core/state.py; v3/systems/capacity.py; v3/systems/health_drift.py` — `Capacity; update_capacity; update_health_drift`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N01",
+        "N06"
+      ],
+      "card": "V3_EXISTING/M02/README.md"
+    },
+    {
+      "id": "M03",
+      "name": "psychological/regulatory capacity vector",
+      "original_source": "`v3/core/state.py; v3/systems/frameworks.py; v3/psyche/vitality.py` — `PsychologicalCapacity; update_framework_weights; derive_vitality_profile`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N01",
+        "N04"
+      ],
+      "card": "V3_EXISTING/M03/README.md"
+    },
+    {
+      "id": "M04",
+      "name": "reproduction constraints",
+      "original_source": "`v3/core/state.py; v3/systems/reproduction.py; v3/psyche/gating.py` — `ReproductionConstraints; update_reproduction_constraints; _derive_hostage_index`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N01",
+        "N06",
+        "N07",
+        "N12"
+      ],
+      "card": "V3_EXISTING/M04/README.md"
+    },
+    {
+      "id": "M05",
+      "name": "A/S/V/Aim domains and latent/expressed Aim",
+      "original_source": "`v3/core/state.py; v3/systems/domains.py; v3/psyche/gating.py` — `DomainState; update_domains; compute_baseline_load; apply_expression_gating`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N03",
+        "N04"
+      ],
+      "card": "V3_EXISTING/M05/README.md"
+    },
+    {
+      "id": "M06",
+      "name": "multidimensional alienation",
+      "original_source": "`v3/core/state.py; v3/systems/alienation.py; v3/engine/effects/delta_templates.py` — `AlienationVector; update_alienation; apply_deltas_to_state`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N07",
+        "N10"
+      ],
+      "card": "V3_EXISTING/M06/README.md"
+    },
+    {
+      "id": "M07",
+      "name": "public/private/inner registers",
+      "original_source": "`v3/core/state.py; v3/psyche/gating.py; v3/io/persona_sheet.py; v2/conversation_engine.py` — `Registers; apply_expression_gating; build_persona_sheet; build_reply_prompt`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N04",
+        "N07",
+        "N09"
+      ],
+      "card": "V3_EXISTING/M07/README.md"
+    },
+    {
+      "id": "M08",
+      "name": "wound/sensitivity state",
+      "original_source": "`v3/core/state.py; v3/psyche/channels.py; v3/engine/effects/metabolization_effects.py` — `WoundVector; seed_wound_vector_from_identity; update_wound_vector_from_rupture`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N02",
+        "N03",
+        "N05",
+        "N08"
+      ],
+      "card": "V3_EXISTING/M08/README.md"
+    },
+    {
+      "id": "M09",
+      "name": "cracks",
+      "original_source": "`v3/core/state.py; v3/systems/cracks.py; v3/core/invariants.py` — `Crack; update_cracks; ensure_min_cracks`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N05"
+      ],
+      "card": "V3_EXISTING/M09/README.md"
+    },
+    {
+      "id": "M10",
+      "name": "buffers and costs",
+      "original_source": "`v3/core/state.py; v3/systems/buffers.py` — `Buffer; BufferCostProfile; update_buffers`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N02",
+        "N03",
+        "N04",
+        "N07",
+        "N08"
+      ],
+      "card": "V3_EXISTING/M10/README.md"
+    },
+    {
+      "id": "M11",
+      "name": "frameworks as metabolic operators",
+      "original_source": "`v3/core/state.py; v3/systems/frameworks.py` — `Framework; update_framework_weights; enforce_framework_caps`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N04",
+        "N05",
+        "N09",
+        "N10"
+      ],
+      "card": "V3_EXISTING/M11/README.md"
+    },
+    {
+      "id": "M12",
+      "name": "collective infrastructure",
+      "original_source": "`v3/core/state.py; v3/systems/infrastructure.py` — `CollectiveInfrastructure; update_collective_infrastructure`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N06",
+        "N07",
+        "N12"
+      ],
+      "card": "V3_EXISTING/M12/README.md"
+    },
+    {
+      "id": "M13",
+      "name": "practice stack",
+      "original_source": "`v3/core/state.py; v3/systems/practices.py` — `PracticeStack; update_practice_stack`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N05",
+        "N06",
+        "N10"
+      ],
+      "card": "V3_EXISTING/M13/README.md"
+    },
+    {
+      "id": "M14",
+      "name": "PeakRouting / loop topology / solidarity boundary",
+      "original_source": "`v3/core/state.py; v3/systems/topology.py; v3/systems/boundary.py; v3/systems/coherence.py` — `PeakRouting; update_loop_topology; update_solidarity_boundary; update_coherence`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N04",
+        "N05",
+        "N08"
+      ],
+      "card": "V3_EXISTING/M14/README.md"
+    },
+    {
+      "id": "M15",
+      "name": "need axes / expectation baseline",
+      "original_source": "`v3/core/state.py; v3/engine/expectation_baseline.py; v3/io/parent_baseline_from_behavior.py` — `NEED_AXES; derive_child_expectation_baseline; infer_parent_baseline_and_regime`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N01",
+        "N02",
+        "N03",
+        "N08"
+      ],
+      "card": "V3_EXISTING/M15/README.md"
+    },
+    {
+      "id": "M16",
+      "name": "StrivingObject",
+      "original_source": "`v3/core/state.py; v3/engine/striving_objects.py` — `StrivingObject; spawn_striving_objects_for_age; update_existing_objects; update_striving_step`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N01",
+        "N05",
+        "N06",
+        "N10"
+      ],
+      "card": "V3_EXISTING/M16/README.md"
+    },
+    {
+      "id": "M17",
+      "name": "Gift/Disruption shards / expectation events",
+      "original_source": "`v3/core/state.py; v3/engine/expectation_events.py; v3/engine/effects/delta_templates.py` — `GiftShard; DisruptionShard; create_gift_shard_from_event; create_disruption_shard_from_event`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N02",
+        "N03",
+        "N05",
+        "N08",
+        "N09"
+      ],
+      "card": "V3_EXISTING/M17/README.md"
+    },
+    {
+      "id": "M18",
+      "name": "RuptureShard",
+      "original_source": "`v3/core/state.py; v3/engine/effects/metabolization_effects.py` — `RuptureShard; create_rupture_shard_from_event; update_wound_vector_from_rupture`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N03",
+        "N05",
+        "N08"
+      ],
+      "card": "V3_EXISTING/M18/README.md"
+    },
+    {
+      "id": "M19",
+      "name": "multi-year MetabolizationProcess",
+      "original_source": "`v3/core/state.py; v3/engine/effects/metabolization_effects.py` — `MetabolizationProcess; compute_metabolization_delta; update_metabolization_and_plasticity_step`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N02",
+        "N03",
+        "N05",
+        "N08",
+        "N09",
+        "N10"
+      ],
+      "card": "V3_EXISTING/M19/README.md"
+    },
+    {
+      "id": "M20",
+      "name": "magnets / relational field",
+      "original_source": "`v3/core/state.py; v3/engine/active_magnets.py; v3/systems/relational_field.py` — `Magnet; apply_selected_magnets_to_state; update_active_magnets_step; build_relational_field_projection`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N04",
+        "N07",
+        "N10",
+        "N12"
+      ],
+      "card": "V3_EXISTING/M20/README.md"
+    },
+    {
+      "id": "M21",
+      "name": "pressure-flow history / memory / grooves / conductance",
+      "original_source": "`v3/psyche/flow.py; v3/psyche/vitality.py; v3/psyche/insulation.py` — `run_pressure_flow_cycle; _domain_charge_ledger; _channel_conductance; _update_memory; derive_vitality_profile; derive_insulation_profile`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N02",
+        "N03",
+        "N04",
+        "N05",
+        "N07",
+        "N08",
+        "N09",
+        "N12"
+      ],
+      "card": "V3_EXISTING/M21/README.md"
+    },
+    {
+      "id": "M22",
+      "name": "child model / assumed rules / taboos / possible-world boundary",
+      "original_source": "`v3/core/state.py; v3/io/identity_to_backbone.py; v3/engine/prompts.py` — `BackboneState.child_model; backbone_state_from_identity; PASS1_SYSTEM`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N01",
+        "N02",
+        "N09",
+        "N10"
+      ],
+      "card": "V3_EXISTING/M22/README.md"
+    },
+    {
+      "id": "M23",
+      "name": "autonomy/safety drives and conditions",
+      "original_source": "`v3/core/state.py; v3/systems/autonomy_safety.py` — `autonomy_drive/safety_drive; autonomy_condition/safety_condition; autonomy_safety_micro_drift`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N01",
+        "N03",
+        "N04"
+      ],
+      "card": "V3_EXISTING/M23/README.md"
+    },
+    {
+      "id": "M24",
+      "name": "stability-threshold inertia",
+      "original_source": "`v3/core/state.py; v3/systems/stability_inertia.py` — `stability_threshold_inertia; stability_inertia_dissipation`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N02",
+        "N05",
+        "N08"
+      ],
+      "card": "V3_EXISTING/M24/README.md"
+    },
+    {
+      "id": "M25",
+      "name": "yearly ordered causal spine",
+      "original_source": "`v3/v3_yearly_step_order.yaml; v3/engine/yearly_step.py; v3/engine/step_runner.py; v3/tests/test_architecture_invariants.py` — `run_one_year; step_one_year; run_n_years; test_step_order_immutable`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N06",
+        "N11",
+        "N12"
+      ],
+      "card": "V3_EXISTING/M25/README.md"
+    },
+    {
+      "id": "M26",
+      "name": "stored-versus-derived separation",
+      "original_source": "`v3/core/state.py; v3/core/derived.py; v3/core/invariants.py; v3/tests/test_architecture_invariants.py` — `DerivedIndices; compute_all_derived; assert_no_derived_fields_in_backbone; test_no_derived_fields_in_backbone_state`",
+      "original_verdict": "REUSE_UNCHANGED_IF_FULLY_COMPATIBLE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N11",
+        "N12"
+      ],
+      "card": "V3_EXISTING/M26/README.md"
+    },
+    {
+      "id": "M27",
+      "name": "Pass 1 LLM proposal",
+      "original_source": "`v3/engine/llm_contract.py; v3/engine/prompts.py; v3/engine/run_llm_band.py` — `parse_candidate_packet; build_pass1_prompt; run_llm_band_year`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N07",
+        "N11"
+      ],
+      "card": "V3_EXISTING/M27/README.md"
+    },
+    {
+      "id": "M28",
+      "name": "score/select/apply boundary",
+      "original_source": "`v3/engine/scoring.py; v3/engine/run_llm_band.py; v3/engine/effects/delta_templates.py` — `score_event_candidate; select_candidates; run_llm_band_year; apply_deltas_to_state`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N07",
+        "N11"
+      ],
+      "card": "V3_EXISTING/M28/README.md"
+    },
+    {
+      "id": "M29",
+      "name": "Pass 2 render-only role",
+      "original_source": "`v3/engine/llm_contract.py; v3/engine/prompts.py; v3/render/phenomenology.py; v3/tests/test_architecture_invariants.py` — `build_render_packet; build_pass2_prompt; render_year; test_llm_no_backbone_mutation`",
+      "original_verdict": "REUSE_UNCHANGED_IF_FULLY_COMPATIBLE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N09",
+        "N11",
+        "N12"
+      ],
+      "card": "V3_EXISTING/M29/README.md"
+    },
+    {
+      "id": "M30",
+      "name": "V3-under-V2 nonmutation architecture",
+      "original_source": "`v3/V3_UNDERLIES_V2_ARTICULATION.md; v3/io/persona_sheet.py; v2/conversation_engine.py` — `design articulation; build_persona_sheet; prepare_conversation_turn`",
+      "original_verdict": "REUSE_UNCHANGED_IF_FULLY_COMPATIBLE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N09",
+        "N10",
+        "N11",
+        "N12"
+      ],
+      "card": "V3_EXISTING/M30/README.md"
+    },
+    {
+      "id": "M31",
+      "name": "life-course Enneagram emergence / end matcher",
+      "original_source": "`v2/ENNEAGRAM_EMERGENCE_SYSTEM.md; v2/PROBABILISTIC_ENNEAGRAM_SYSTEM.md; v2/enneagram_wisdom.py; v2/parent_type_inference.py` — `match_life_course_to_type; infer_parent_type; get_parent_type_effects_for_child`",
+      "original_verdict": "REPLACE_WITH_STRONGER_MECHANISM",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [],
+      "card": "V3_EXISTING/M31/README.md"
+    },
+    {
+      "id": "M32",
+      "name": "old V5 runtime-input / field-injection bridge",
+      "original_source": "`v3/io/v5_bridge.py; v3/io/v5_field_bridge.py; v3/io/field_injection.py` — `normalize_v5_runtime_input_bundle; attach_v5_runtime_input_bundle; build_v5_field_bridge_injection; get_field_injection_for_year`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N12"
+      ],
+      "card": "V3_EXISTING/M32/README.md"
+    },
+    {
+      "id": "M33",
+      "name": "generic pseudo-random mechanical event sampler",
+      "original_source": "`v3/engine/event_engine.py` — `_pseudo_seed; _one_event; sample_events`",
+      "original_verdict": "REPLACE_WITH_STRONGER_MECHANISM",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N06",
+        "N11"
+      ],
+      "card": "V3_EXISTING/M33/README.md"
+    },
+    {
+      "id": "M34",
+      "name": "fallback concretization when Pass 1/selection yields nothing",
+      "original_source": "`v3/engine/llm_contract.py; v3/engine/run_llm_band.py` — `parse_candidate_packet_with_fallback; make_fallback_event; fallback_candidate_packet_if_empty; run_llm_band_year`",
+      "original_verdict": "REMOVE_AS_OBSOLETE_OR_REDUNDANT",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N11"
+      ],
+      "card": "V3_EXISTING/M34/README.md"
+    },
+    {
+      "id": "M35",
+      "name": "placeholder crack/framework invariant repair",
+      "original_source": "`v3/core/invariants.py; v3/engine/yearly_step.py` — `ensure_min_cracks; ensure_min_frameworks; run_one_year`",
+      "original_verdict": "REMOVE_AS_OBSOLETE_OR_REDUNDANT",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [],
+      "card": "V3_EXISTING/M35/README.md"
+    },
+    {
+      "id": "M36",
+      "name": "hopeful/medium parent defaults",
+      "original_source": "`v3/io/parent_baseline_from_behavior.py; v3/engine/expectation_baseline.py` — `infer_parent_baseline_and_regime; derive_child_expectation_baseline`",
+      "original_verdict": "REMOVE_AS_OBSOLETE_OR_REDUNDANT",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N02"
+      ],
+      "card": "V3_EXISTING/M36/README.md"
+    },
+    {
+      "id": "M37",
+      "name": "structural placeholder scene / annotation for non-LLM years",
+      "original_source": "`server/generation/simulation.py; v3/io/persona_sheet.py; v3/tools/distill_memory.py` — `run_simulation_for_session; build_persona_sheet; _trajectory_backstory_from_snapshots; distill_memory filtering`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N06",
+        "N09",
+        "N11"
+      ],
+      "card": "V3_EXISTING/M37/README.md"
+    },
+    {
+      "id": "M38",
+      "name": "dual derived-schedule declaration",
+      "original_source": "`v3/v3_yearly_step_order.yaml; v3/engine/yearly_step.py; v3/core/config_loader.py` — `derived_indices_schedule; _compute_derived_after_step; get_derived_schedule`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N06",
+        "N11"
+      ],
+      "card": "V3_EXISTING/M38/README.md"
+    },
+    {
+      "id": "M39",
+      "name": "server-side/manual rupture injection",
+      "original_source": "`server/generation/simulation.py; v3/engine/effects/metabolization_effects.py` — `_maybe_inject_rupture_at_band_age alias; maybe_inject_rupture_at_band_age`",
+      "original_verdict": "REPLACE_WITH_STRONGER_MECHANISM",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [],
+      "card": "V3_EXISTING/M39/README.md"
+    },
+    {
+      "id": "M40",
+      "name": "generation readiness / global ready surface",
+      "original_source": "`server/generation/store.py; server/generation/simulation.py; server/session_state.py; v3/core/generation_integrity.py` — `_validate_persona_for_store_write; _golden_eligibility_for_session_dir; GenerationIntegrityAccumulator; _generation_state_is_ready`",
+      "original_verdict": "ADAPT_TO_TERMINAL_ARCHITECTURE",
+      "historical_code": "HISTORICAL_SOURCE_AUDITED_TD_R05",
+      "historic_execution_grain": "TD_R05_REPORTED_80_TESTS_AGGREGATE_NOT_PER_MECHANISM",
+      "current_integration": "UNTRACED",
+      "scientific_warrant": "NEO_SPECIFICATION_PROVISIONAL",
+      "native_authority": "NOT_ESTABLISHED",
+      "court": "UNASSIGNED",
+      "neov3_links": [
+        "N11",
+        "N12"
+      ],
+      "card": "V3_EXISTING/M40/README.md"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "N01",
+      "title": "Needs, desires, motives and practical objects",
+      "description": "How embodied and socially produced needs are met/frustrated, and how activity transforms needs and gives motives an object.",
+      "prerequisites": [],
+      "source_candidates": [
+        "M02",
+        "M03",
+        "M04",
+        "M15",
+        "M16",
+        "M22",
+        "M23"
+      ],
+      "question": "What has to be present in actor history for an object to be possible or desired?",
+      "proposed_owner": "CAN010/ADP",
+      "concept": "PROVISIONAL_REQUIREMENT",
+      "formal_science": "UNISSUED",
+      "architecture": "UNDER_SPECIFICATION",
+      "engineering": "NOT_ADJUDICATED",
+      "current_consumer": "NOT_PROVED",
+      "court": "UNASSIGNED",
+      "card": "NEO_V3_REQUIREMENTS/N01_NEEDS_MOTIVES_OBJECTS/README.md"
+    },
+    {
+      "id": "N02",
+      "title": "Thick, scoped expectations and early care",
+      "description": "How reliable, insufficient or contradictory care organizes embodied and practical anticipation; repeat routine without requiring distinctive event memory.",
+      "prerequisites": [
+        "N01",
+        "N06"
+      ],
+      "source_candidates": [
+        "M08",
+        "M10",
+        "M15",
+        "M17",
+        "M19",
+        "M21",
+        "M22",
+        "M24",
+        "M36"
+      ],
+      "question": "What gives a baseline historical weight, scope, repair potential and rival expectation?",
+      "proposed_owner": "CAN011/ADP016",
+      "concept": "PROVISIONAL_REQUIREMENT",
+      "formal_science": "UNISSUED",
+      "architecture": "UNDER_SPECIFICATION",
+      "engineering": "NOT_ADJUDICATED",
+      "current_consumer": "NOT_PROVED",
+      "court": "UNASSIGNED",
+      "card": "NEO_V3_REQUIREMENTS/N02_THICK_RELATIONAL_BASELINES/README.md"
+    },
+    {
+      "id": "N03",
+      "title": "Challenge, complication, threat and repair",
+      "description": "Actor-relative relations between a concrete encounter and a valued expectation, need or practical ability; objective and subjective danger separate.",
+      "prerequisites": [
+        "N01",
+        "N02"
+      ],
+      "source_candidates": [
+        "M05",
+        "M08",
+        "M10",
+        "M15",
+        "M17",
+        "M18",
+        "M19",
+        "M21",
+        "M23"
+      ],
+      "question": "When are challenge, complication and threat distinct and when do they coexist?",
+      "proposed_owner": "CAN008",
+      "concept": "PROVISIONAL_REQUIREMENT",
+      "formal_science": "UNISSUED",
+      "architecture": "UNDER_SPECIFICATION",
+      "engineering": "NOT_ADJUDICATED",
+      "current_consumer": "NOT_PROVED",
+      "court": "UNASSIGNED",
+      "card": "NEO_V3_REQUIREMENTS/N03_CHALLENGE_COMPLICATION_THREAT_REPAIR/README.md"
+    },
+    {
+      "id": "N04",
+      "title": "Simultaneous recruitment, tension and regulation",
+      "description": "Multiple historically formed needs, concerns, interpretations and supports condition one another non-additively under a single situation.",
+      "prerequisites": [
+        "N01",
+        "N02"
+      ],
+      "source_candidates": [
+        "M03",
+        "M05",
+        "M07",
+        "M10",
+        "M11",
+        "M14",
+        "M20",
+        "M21",
+        "M23"
+      ],
+      "question": "Which operator recruits/blocks/reroutes what, and under what source-bearing conditions?",
+      "proposed_owner": "CAN008/PFF",
+      "concept": "PROVISIONAL_REQUIREMENT",
+      "formal_science": "UNISSUED",
+      "architecture": "UNDER_SPECIFICATION",
+      "engineering": "NOT_ADJUDICATED",
+      "current_consumer": "NOT_PROVED",
+      "court": "UNASSIGNED",
+      "card": "NEO_V3_REQUIREMENTS/N04_MULTIPLE_INTERPRESSURES/README.md"
+    },
+    {
+      "id": "N05",
+      "title": "Durable transition, changed relations and contradiction",
+      "description": "History-dependent acquisition, retention, differentiation, support-limited practice, loss, contradictory orientations and actual changes of causal links.",
+      "prerequisites": [
+        "N03",
+        "N04",
+        "N06"
+      ],
+      "source_candidates": [
+        "M08",
+        "M09",
+        "M11",
+        "M13",
+        "M14",
+        "M16",
+        "M17",
+        "M18",
+        "M19",
+        "M21",
+        "M24"
+      ],
+      "question": "What warrants a new practical operation or changed relation rather than a large transient delta?",
+      "proposed_owner": "CAN011/ADP015",
+      "concept": "PROVISIONAL_REQUIREMENT",
+      "formal_science": "UNISSUED",
+      "architecture": "UNDER_SPECIFICATION",
+      "engineering": "NOT_ADJUDICATED",
+      "current_consumer": "NOT_PROVED",
+      "court": "UNASSIGNED",
+      "card": "NEO_V3_REQUIREMENTS/N05_PERSISTENT_REWIRING/README.md"
+    },
+    {
+      "id": "N06",
+      "title": "Interstitial activity, life-stages and social reproduction",
+      "description": "Care, work, play, rest, school, practice, resource shifts and other people's ongoing actions between the event highlights.",
+      "prerequisites": [],
+      "source_candidates": [
+        "M02",
+        "M04",
+        "M12",
+        "M13",
+        "M16",
+        "M25",
+        "M33",
+        "M37",
+        "M38"
+      ],
+      "question": "What recurrent life can be computed without invented events or yearly learning multiplier?",
+      "proposed_owner": "SDTF/ADP",
+      "concept": "PROVISIONAL_REQUIREMENT",
+      "formal_science": "UNISSUED",
+      "architecture": "UNDER_SPECIFICATION",
+      "engineering": "NOT_ADJUDICATED",
+      "current_consumer": "NOT_PROVED",
+      "court": "UNASSIGNED",
+      "card": "NEO_V3_REQUIREMENTS/N06_ACTIVITY_TIME_AND_STAGES/README.md"
+    },
+    {
+      "id": "N07",
+      "title": "Independent others, power, care and relational feedback",
+      "description": "Two distinct constituted participants with actor-limited perceptions, objective relations of power/dependence and ongoing contingent responses.",
+      "prerequisites": [
+        "N04",
+        "N05",
+        "N06"
+      ],
+      "source_candidates": [
+        "M04",
+        "M06",
+        "M07",
+        "M10",
+        "M12",
+        "M20",
+        "M21",
+        "M27",
+        "M28"
+      ],
+      "question": "How do independent intentions/actions and actual material relations alter the resolved encounter?",
+      "proposed_owner": "ADP019/C8/C9",
+      "concept": "PROVISIONAL_REQUIREMENT",
+      "formal_science": "UNISSUED",
+      "architecture": "UNDER_SPECIFICATION",
+      "engineering": "NOT_ADJUDICATED",
+      "current_consumer": "NOT_PROVED",
+      "court": "UNASSIGNED",
+      "card": "NEO_V3_REQUIREMENTS/N07_OTHER_ACTORS_POWER_LOVE/README.md"
+    },
+    {
+      "id": "N08",
+      "title": "Differentiated impression, intensity, salience and no-change",
+      "description": "How expected, novel, intense or disorienting acts form both affective and durable consequences, including not-memorable repetition and lawful no durable change.",
+      "prerequisites": [
+        "N03",
+        "N04",
+        "N07"
+      ],
+      "source_candidates": [
+        "M08",
+        "M10",
+        "M14",
+        "M15",
+        "M17",
+        "M18",
+        "M19",
+        "M21",
+        "M24"
+      ],
+      "question": "What is the actor-specific impression and which components change for defensible reasons?",
+      "proposed_owner": "CAN008/CAN011",
+      "concept": "PROVISIONAL_REQUIREMENT",
+      "formal_science": "UNISSUED",
+      "architecture": "UNDER_SPECIFICATION",
+      "engineering": "NOT_ADJUDICATED",
+      "current_consumer": "NOT_PROVED",
+      "court": "UNASSIGNED",
+      "card": "NEO_V3_REQUIREMENTS/N08_IMPRESSION_SALIENCE_NOCHANGE/README.md"
+    },
+    {
+      "id": "N09",
+      "title": "Actor's fallible autobiographical memory and meaning",
+      "description": "Objective history versus impression, selectively accessible episode, reconstruction, self-account and newly causal internal reflection.",
+      "prerequisites": [
+        "N08"
+      ],
+      "source_candidates": [
+        "M07",
+        "M11",
+        "M17",
+        "M19",
+        "M21",
+        "M22",
+        "M29",
+        "M30",
+        "M37"
+      ],
+      "question": "Why is this remembered, forgotten, misread or later reinterpreted?",
+      "proposed_owner": "ADP016/017/V2",
+      "concept": "PROVISIONAL_REQUIREMENT",
+      "formal_science": "UNISSUED",
+      "architecture": "UNDER_SPECIFICATION",
+      "engineering": "NOT_ADJUDICATED",
+      "current_consumer": "NOT_PROVED",
+      "court": "UNASSIGNED",
+      "card": "NEO_V3_REQUIREMENTS/N09_FALLIBLE_MEMORY_MEANING/README.md"
+    },
+    {
+      "id": "N10",
+      "title": "Later ideology, theology and cosmological rearticulation",
+      "description": "How preverbal felt care and scarcity are later mediated through actually accessible concepts, historical institutions, language and activity; no predetermined doctrine.",
+      "prerequisites": [
+        "N01",
+        "N06",
+        "N09"
+      ],
+      "source_candidates": [
+        "M06",
+        "M11",
+        "M13",
+        "M16",
+        "M19",
+        "M20",
+        "M22",
+        "M30"
+      ],
+      "question": "What new cultural operation becomes practically available and how does it recruit prior felt histories?",
+      "proposed_owner": "ADP017/CAN011",
+      "concept": "PROVISIONAL_REQUIREMENT",
+      "formal_science": "UNISSUED",
+      "architecture": "UNDER_SPECIFICATION",
+      "engineering": "NOT_ADJUDICATED",
+      "current_consumer": "NOT_PROVED",
+      "court": "UNASSIGNED",
+      "card": "NEO_V3_REQUIREMENTS/N10_IDEOLOGY_THEOLOGY_COSMOLOGY/README.md"
+    },
+    {
+      "id": "N11",
+      "title": "User-settled event-batch temporal recursion",
+      "description": "LLM call N latter-half proposes 3–5 conditional events; Rawlsing sequentially resolves and develops; call N+1 first-half retrospectively narrates fallible memory/meaning.",
+      "prerequisites": [
+        "N06",
+        "N07",
+        "N08",
+        "N09"
+      ],
+      "source_candidates": [
+        "M01",
+        "M25",
+        "M26",
+        "M27",
+        "M28",
+        "M29",
+        "M30",
+        "M33",
+        "M34",
+        "M37",
+        "M38",
+        "M40"
+      ],
+      "question": "How can next event consume actual earlier reorganization without an intermediate LLM call?",
+      "proposed_owner": "V3/V2/C12",
+      "concept": "PROVISIONAL_REQUIREMENT",
+      "formal_science": "UNISSUED",
+      "architecture": "UNDER_SPECIFICATION",
+      "engineering": "NOT_ADJUDICATED",
+      "current_consumer": "NOT_PROVED",
+      "court": "UNASSIGNED",
+      "card": "NEO_V3_REQUIREMENTS/N11_SEQUENTIAL_BATCH_RECURSION/README.md"
+    },
+    {
+      "id": "N12",
+      "title": "Actual C12 person, coupled world and human encounter",
+      "description": "Actual historical person plus independently constituted others, legal Pyat world, issued rules and source, coupled user interaction and falsifiable changed later response.",
+      "prerequisites": [
+        "N05",
+        "N07",
+        "N08",
+        "N09",
+        "N10",
+        "N11"
+      ],
+      "source_candidates": [
+        "M01",
+        "M04",
+        "M12",
+        "M20",
+        "M21",
+        "M25",
+        "M26",
+        "M29",
+        "M30",
+        "M32",
+        "M40"
+      ],
+      "question": "Where is first current actual consumer, with native source/actor/owner grant and independent K-style negative?",
+      "proposed_owner": "C0-C12/A0-A5",
+      "concept": "PROVISIONAL_REQUIREMENT",
+      "formal_science": "UNISSUED",
+      "architecture": "UNDER_SPECIFICATION",
+      "engineering": "NOT_ADJUDICATED",
+      "current_consumer": "NOT_PROVED",
+      "court": "UNASSIGNED",
+      "card": "NEO_V3_REQUIREMENTS/N12_ACTUAL_NATIVE_PERSON_CONSUMER/README.md"
+    }
+  ],
+  "last_verified_status": "FOUNDATION_ONLY_NOT_WORKER_RETURN"
+}
