@@ -1,0 +1,298 @@
+{
+  "schema": "SOROK_RA_B_ASTRA_K1_K11_EVIDENCE_MATRIX_R1",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-sorok-20261026-ra-b-astra-k1k11-evidence-r1",
+  "sealed_startup": "5dccb742b00907da7ecb9e11640ea5a56fcb5827",
+  "astra_program": {
+    "commit": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
+    "path": "WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/07_KILL_TEST_PROGRAM.md",
+    "blob_sha": "cefe38fa52a771fc3ddba71eb728736813f5c0e0",
+    "historical_status": "ALL_NOT_EXECUTED"
+  },
+  "hq_cut": "c4721b9d3aca334a376d9ec3e000f0a767cd53cb",
+  "ra_b_tests_executed": 0,
+  "original_grain_counts": {
+    "PARTIAL_DIFFERENT_GRAIN": 5,
+    "SPECIFIED_NOT_EXECUTED": 5,
+    "NOT_VERIFIABLE": 1
+  },
+  "independence": {
+    "peer_RA_A_read": false,
+    "peer_RA_C_read": false,
+    "production_edits": false,
+    "native_grants_issued": false
+  },
+  "cases": [
+    {
+      "id": "K1",
+      "astra_original_criterion": "Fixed lawful world/opportunity; vary lawful developmental histories or seeds; two different actor organizations and typed subsequent response with exact ancestry; identical-history replay and unsupported-biography mutation inert.",
+      "astra_table": "07_KILL_TEST_PROGRAM.md table row K1",
+      "implementation_attempt": "S44 generate_root samples two synthetic actor antecedents; S39 changes response when independently supplied model predicates differ.",
+      "implementation_refs": [
+        "https://github.com/maidiu/rawlsing/blob/923278fbe6b030e2ffdd10fe42d7a18266344611/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/s44/root.py",
+        "https://github.com/maidiu/rawlsing/blob/923278fbe6b030e2ffdd10fe42d7a18266344611/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/tests/test_s44_sampled_root.py",
+        "https://github.com/maidiu/rawlsing/blob/e41513fa65601a37e7b3b430d26c626ae0217d90/WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/tests/test_s39_generation.py"
+      ],
+      "exact_test_functions": [
+        "tests/test_s44_sampled_root.py::test_same_seed_replays_and_seed_divergence_is_nonzero",
+        "tests/test_s44_sampled_root.py::test_candidate_order_and_unrelated_stream_do_not_perturb_decisions",
+        "tests/test_s39_generation.py::test_changing_only_actor_context_changes_choice_or_unresolves"
+      ],
+      "attributed_execution": "S44 HQ 10 focused and independently executed 10 focused tests, overlapping; S39 author sourcefree suite. RA-B 0 executed.",
+      "actual_positive": "Identical seed gives same root and event/draw receipts; 16 seeds yield >1 root hash and >1 chosen draw. Supplying different S39 flags produces REQUEST_TOOL/ATTEND_OBJECT/EXPLICIT_REFUSAL/OPEN.",
+      "actual_null": "Candidate order preserves chosen root effects; extra unused observation changes root hash while event refs and snapshot hashes remain unchanged. Class/Enneagram label changes ignored by S39.",
+      "semantic_value_effect": "S39 predicate values are consumed by its finite comparison rule; not generated developmental organization. S44 changed hash is explicitly decoupled from changed life outcomes for unrelated draw.",
+      "scope_grade": "EXECUTED_ISOLATED sampling/replay; no organization→response comparison",
+      "verdict": "PARTIAL_DIFFERENT_GRAIN",
+      "missing_first_cause_and_owner": "Scientifically qualified formation rule under CAN008/CAN011, same actor's derived historical organization before a fixed later event, and actual response ablation. Owner: V3 developmental-rule science and Sorok existing author; no RA-B rule authority.",
+      "next_discriminating_test": "With world, event and actor held fixed, produce two lawful ancestral operations that generate distinct CAN011 mediators; compare later C9 selected/considered actions; replay identity and biography-label/unused-stream nulls.",
+      "ra_b_executed": false
+    },
+    {
+      "id": "K2",
+      "astra_original_criterion": "Fix same psyche node values, history inventory, event and retrieval; alter exactly one lawfully admitted relation direction/context through histories; test typed recruitment/effect plus irrelevant-ID permutation.",
+      "astra_table": "07_KILL_TEST_PROGRAM.md table row K2",
+      "implementation_attempt": "S39 comparisons vary presence of named SOURCE predicates. S51 computes FACILITATES versus OBSTRUCTS for accessible offer/permit; neither stores or manipulates an admitted psycho-relational topology at fixed nodes.",
+      "implementation_refs": [
+        "https://github.com/maidiu/rawlsing/blob/e41513fa65601a37e7b3b430d26c626ae0217d90/WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/s39/model.py",
+        "https://github.com/maidiu/rawlsing/blob/e41513fa65601a37e7b3b430d26c626ae0217d90/WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/tests/test_s39_generation.py",
+        "https://github.com/maidiu/rawlsing/blob/2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65/WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/tests/test_s51.py"
+      ],
+      "exact_test_functions": [
+        "tests/test_s39_generation.py::test_changing_only_actor_context_changes_choice_or_unresolves",
+        "tests/test_s51.py::test_obstructing_offer_changes_relation_not_actor_action"
+      ],
+      "attributed_execution": "Author and HQ sourcefree component evidence; no independent Astra K2 topology run; RA-B 0.",
+      "actual_positive": "Boolean motive/past flags change finite option ordering or unresolved choice; permit changes objective offer relation FACILITATES→OBSTRUCTS.",
+      "actual_null": "S39 ignored class/Enneagram label; S51 obstruction preserves selected_action=None and performed=False. No node/edge-fixed ID shuffle asserted.",
+      "semantic_value_effect": "Rule consumes flag/permit VALUE, and offer-relevance relation VALUE; no demonstrated graph/topology causal semantics into a changed durable target.",
+      "scope_grade": "EXECUTED_ISOLATED predicate/offer contrasts, not relation-topology test",
+      "verdict": "PARTIAL_DIFFERENT_GRAIN",
+      "missing_first_cause_and_owner": "One typed CAN011/relational owner rule with fixed node values and admissible alternative edges; current S39 predicate records are not that rule. Owner: developmental science plus Sorok implementing existing consumer.",
+      "next_discriminating_test": "At constant source values and event, swap admitted A→B perception/recognition edge with B→A under alternate valid histories; require downstream actor recruitment difference and null on ID shuffle.",
+      "ra_b_executed": false
+    },
+    {
+      "id": "K3",
+      "astra_original_criterion": "Present versus absent retained age-seven trace, retained-but-inaccessible and UNAVAILABLE variants under the same adult event; hidden origin for evaluator only; later effect without actor-access leak or ledger rehydration; relearning only via new event.",
+      "astra_table": "07_KILL_TEST_PROGRAM.md table row K3",
+      "implementation_attempt": "S47 event-keyed historical source and revocation preserves historical material exposure yet blocks current source. No code/test inspected conducts age-seven trace provenance versus later adult uptake.",
+      "implementation_refs": [
+        "https://github.com/maidiu/rawlsing/blob/765a441f87292aa4c17794745b65cb54e6aaa83f/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/tests/test_s47_interval_c9_conditioning.py",
+        "https://github.com/maidiu/rawlsing/blob/765a441f87292aa4c17794745b65cb54e6aaa83f/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/s47/conditioning.py",
+        "https://github.com/maidiu/rawlsing/blob/c4721b9d3aca334a376d9ec3e000f0a767cd53cb/WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/48_DEVELOPMENTAL_CRITICAL_PATH/HQ_SCIENTIFIC_DISPOSITION.md"
+      ],
+      "exact_test_functions": [
+        "tests/test_s47_interval_c9_conditioning.py::test_event_keyed_reader_preserves_historical_source_after_condition_cut"
+      ],
+      "attributed_execution": "S47 17 HQ focused tests and earlier independent reviews for interval custody; not an age-seven actor-memory trial. RA-B 0.",
+      "actual_positive": "Historical interval source hash/ref preserved after revocation; cold reader dereferences event-bound material content.",
+      "actual_null": "Current source becomes None after condition cut; historical source persists. No inaccessible-memory-to-adult-response null asserted.",
+      "semantic_value_effect": "Historical material content and access flags consumed for objective conditioning; no current CAN016/CAN011 latent trace affects adult action.",
+      "scope_grade": "Specified; nearby access/currentness plumbing tested, not age-seven residue",
+      "verdict": "SPECIFIED_NOT_EXECUTED",
+      "missing_first_cause_and_owner": "ADP016 formation/retrieval accessibility and CAN008/CAN011 receipt-bound effect for actual retained trace; do not infer memory from age-seven event. Owner: original ADP/CAN science, Sorok developer.",
+      "next_discriminating_test": "Two otherwise matched histories differing by a source-qualified inaccessible residue, and UNAVAILABLE/absent controls; later adult decision changes from authorized trace only with zero actor prompt leakage.",
+      "ra_b_executed": false
+    },
+    {
+      "id": "K4",
+      "astra_original_criterion": "Given prior interpretation, contrast later corrective event varying counterpart, context and witness evidence with no-significance/no-change; earn revise/narrow/split/supersede/unresolved and distinct downstream conduct while old occurrence stays fixed.",
+      "astra_table": "07_KILL_TEST_PROGRAM.md table row K4",
+      "implementation_attempt": "S51 one-next-received-event hypothesis can be BOUND, EXPIRED, CONSUMED/WITHDRAWN; S47 holds immutable old event source after revocation. Those are evidence-life boundaries, not transformation of adult interpretive mediator.",
+      "implementation_refs": [
+        "https://github.com/maidiu/rawlsing/blob/2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65/WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/tests/test_s51.py",
+        "https://github.com/maidiu/rawlsing/blob/2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65/WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/00_RETURN.md",
+        "https://github.com/maidiu/rawlsing/blob/765a441f87292aa4c17794745b65cb54e6aaa83f/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/tests/test_s47_interval_c9_conditioning.py"
+      ],
+      "exact_test_functions": [
+        "tests/test_s51.py::test_unrelated_next_received_event_expires_before_a_later_offer",
+        "tests/test_s51.py::test_withdrawn_expired_and_consumed_have_distinct_holds"
+      ],
+      "attributed_execution": "S51 author 13 sourcefree tests, HQ scoped acceptance; none original K4. RA-B 0.",
+      "actual_positive": "Unrelated event expires transient experiment hypothesis; same one-event hypothesis cannot be reused; source readset reconstituted cold.",
+      "actual_null": "Missed next received event produces HOLD; historical interval source unmodified on current revoke. No alternative corrective event producing changed self-interpretation.",
+      "semantic_value_effect": "One-event eligibility/status and source meaning consumed; neither past actor interpretation nor later actor organization changes.",
+      "scope_grade": "Nearby lifecycle and replay controls execute; correction-of-meaning transition unexecuted",
+      "verdict": "SPECIFIED_NOT_EXECUTED",
+      "missing_first_cause_and_owner": "CAN011 rule for specific corrective interaction/persistence, ADP memory chronology and supported no-change; Sorok internal-activity owner and original science.",
+      "next_discriminating_test": "Use two causally distinct later events against an admitted earlier actor interpretation; compare rule-earned split/revision/NO_CHANGE and a third downstream decision with the prior event immutable.",
+      "ra_b_executed": false
+    },
+    {
+      "id": "K5",
+      "astra_original_criterion": "Same utterance with independently varied witness standing, institutional power, private/powerless counterpart and actor history; objective recognition differs from felt uptake; no direct category or social-consensus→self-belief.",
+      "astra_table": "07_KILL_TEST_PROGRAM.md table row K5",
+      "implementation_attempt": "S44 has independent witnessed joint material actions and per-actor relation views, not objective institutional recognition plus experienced standing. S39 names source predicates, not recognition-power owners.",
+      "implementation_refs": [
+        "https://github.com/maidiu/rawlsing/blob/923278fbe6b030e2ffdd10fe42d7a18266344611/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/s44/root.py",
+        "https://github.com/maidiu/rawlsing/blob/e41513fa65601a37e7b3b430d26c626ae0217d90/WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/s39/model.py"
+      ],
+      "exact_test_functions": [
+        "tests/test_s44_sampled_root.py::test_conditional_receipts_consume_named_generated_predecessors"
+      ],
+      "attributed_execution": "S44 test-only sourcefree shared event; no performed K5 trial. RA-B 0.",
+      "actual_positive": "Shared objective action witness bound to two actor histories; relation views attached independently.",
+      "actual_null": "No powerless-witness and institutional-standing ablation for constant utterance; no separate felt-uptake result.",
+      "semantic_value_effect": "Objective witnessed participation enters immutable history, but no typed recognized/felt actor response to social legitimacy.",
+      "scope_grade": "Only social/world witness and source-binding utilities; no institutional recognition test",
+      "verdict": "SPECIFIED_NOT_EXECUTED",
+      "missing_first_cause_and_owner": "Source-qualified institutional power and recognition receipt plus CAN008 actor uptake rule and contextual prior; owner world/objective and actor science distinct.",
+      "next_discriminating_test": "Hold statement fixed, vary public standing and actor prior orthogonally; demand independent objective recognition and felt uptake results; powerless/private null should not magically acquire institutional force.",
+      "ra_b_executed": false
+    },
+    {
+      "id": "K6",
+      "astra_original_criterion": "Fix social norm/category; vary actor learned practice and real sanction opportunity; noninternalized and no-opportunity controls; external policing only from recruited organization plus lawful action, no status→action shortcut.",
+      "astra_table": "07_KILL_TEST_PROGRAM.md table row K6",
+      "implementation_attempt": "S39 ignores class/Enneagram labels in a simple finite decision; S49 controlled simulated B refusal from supplied PRIOR_B_REFUSAL, with actual root-source HOLD. A refusal is not enforcement of a learned norm.",
+      "implementation_refs": [
+        "https://github.com/maidiu/rawlsing/blob/e41513fa65601a37e7b3b430d26c626ae0217d90/WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/tests/test_s39_generation.py",
+        "https://github.com/maidiu/rawlsing/blob/6604f2d9ebeca47ab58c5e1f5fee1e6a34b1bb43/WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/tests/test_s49.py",
+        "https://github.com/maidiu/rawlsing/blob/6604f2d9ebeca47ab58c5e1f5fee1e6a34b1bb43/WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/s49/actor.py"
+      ],
+      "exact_test_functions": [
+        "tests/test_s39_generation.py::test_missing_comparison_and_labels",
+        "tests/test_s49.py::test_actual_root_without_b_context_holds_without_b_event_or_c8",
+        "tests/test_s49.py::test_controlled_b_refusal_is_generated_performed_and_consumed"
+      ],
+      "attributed_execution": "S39/S49 synthetic suites, HQ S49 13 focused; K6 unchanged. RA-B 0.",
+      "actual_positive": "Controlled B premise permits independently performed REFUSAL; source-bound actor B and event chain, explicitly psychology_claim=False.",
+      "actual_null": "Class/Enneagram input labels do not select S39 option; no actual B source produces SOURCE_OWNER_HOLD; no learned-practice/sanction counterfactual.",
+      "semantic_value_effect": "Synthetic predicate flags affect controlled selection but neither categorical position nor actor-formed policing practice is admitted.",
+      "scope_grade": "Category-label negative test only; policing action not generated",
+      "verdict": "SPECIFIED_NOT_EXECUTED",
+      "missing_first_cause_and_owner": "Concrete formation of normative practice plus recognized sanction opportunity, independent target/victim actor and world performer; V3 developmental science and material institution owner.",
+      "next_discriminating_test": "Same adult status and external norm, with/without lawfully learned policing practice and sanction power; assert action only from specific history and accessible chance.",
+      "ra_b_executed": false
+    },
+    {
+      "id": "K7",
+      "astra_original_criterion": "Keep two independently constituted adult histories and parent-child labels; intervene on admitted shared coparent coordination/history; generate changed child exposure and later child organization without traits average; asymmetric parent perceptions legal.",
+      "astra_table": "07_KILL_TEST_PROGRAM.md table row K7",
+      "implementation_attempt": "S44 builds actor A and actor B histories from separate source roots, one witnessed material joint event and separate relation views. No mother/father/child roles or continuing child from the shared relation established in inspected test.",
+      "implementation_refs": [
+        "https://github.com/maidiu/rawlsing/blob/923278fbe6b030e2ffdd10fe42d7a18266344611/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/s44/root.py",
+        "https://github.com/maidiu/rawlsing/blob/923278fbe6b030e2ffdd10fe42d7a18266344611/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/tests/test_s44_sampled_root.py",
+        "https://github.com/maidiu/rawlsing/blob/f26a138e20d53c809d611cf8d834ec647b0804bf/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/tests/test_s45_generated_root_encounter.py"
+      ],
+      "exact_test_functions": [
+        "tests/test_s44_sampled_root.py::test_conditional_receipts_consume_named_generated_predecessors",
+        "tests/test_s44_sampled_root.py::test_actual_consumer_uses_root_language_without_new_b_source"
+      ],
+      "attributed_execution": "S44 10 scoped tests; S45 21 HQ tests; not original K7; RA-B 0.",
+      "actual_positive": "Two source-qualified synthetic histories anchored; shared witnessed material occurrence and separate ledger relation views; cold replay and source-bound language are real narrower code functionality.",
+      "actual_null": "No altered coparent shared history at fixed adult lives; no child exposure/later-organization alternative; no trait-averaging failure test.",
+      "semantic_value_effect": "Joint objective action and material history used in ledger/consumer; not a child formation input or child-derived psyche.",
+      "scope_grade": "Same-root multi-actor historical composition partly demonstrated; no coparent-to-child causality",
+      "verdict": "PARTIAL_DIFFERENT_GRAIN",
+      "missing_first_cause_and_owner": "Qualified two-parent genealogy, shared history owner, child developmental metabolism and exact Pyat life-world constraints. Sorok C4 V3 and Pyat independent producer/authority.",
+      "next_discriminating_test": "Hold adult roots fixed, vary authorized relationship coordination events before birth; compare child received situations and later consequences; null irrelevant partner adjectives.",
+      "ra_b_executed": false
+    },
+    {
+      "id": "K8",
+      "astra_original_criterion": "One actually admitted live occurrence followed by slow development versus rejected-draft/no-event controls; one actor owner and history; later earned psychological consequence; replay/clock refinement and no duplicate psychology.",
+      "astra_table": "07_KILL_TEST_PROGRAM.md table row K8",
+      "implementation_attempt": "S46/S47 supply partial actual interval to C9 material eligibility but target NO_CHANGE; S48 executes one provider transport with source-owner and SCI05 holds, cannot produce legal next world; S52 paid current-state verification postcondition guard has a hostile bypass.",
+      "implementation_refs": [
+        "https://github.com/maidiu/rawlsing/blob/765a441f87292aa4c17794745b65cb54e6aaa83f/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/tests/test_s47_interval_c9_conditioning.py",
+        "https://github.com/maidiu/rawlsing/blob/9fe0d066e4bf61ab6819a1f56e42d6d07956c2f7/WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/tests/test_s48_one_call.py",
+        "https://github.com/maidiu/rawlsing/blob/9fe0d066e4bf61ab6819a1f56e42d6d07956c2f7/WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/s48/sources.py",
+        "https://github.com/maidiu/rawlsing/blob/c821b488b3a9a3f0fa01b1981989cc17af637dc1/WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/session.py",
+        "https://github.com/maidiu/rawlsing/blob/c821b488b3a9a3f0fa01b1981989cc17af637dc1/WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/tests/test_s52.py",
+        "https://github.com/maidiu/rawlsing/blob/c4721b9d3aca334a376d9ec3e000f0a767cd53cb/WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/48_DEVELOPMENTAL_CRITICAL_PATH/HQ_SCIENTIFIC_DISPOSITION.md"
+      ],
+      "exact_test_functions": [
+        "tests/test_s47_interval_c9_conditioning.py::test_event_keyed_reader_keeps_two_distinct_sources_warm_and_cold",
+        "tests/test_s48_one_call.py::test_nonempty_self_account_still_sci05_holds_without_event",
+        "tests/test_s52.py::test_current_state_divergence_invalidates_verify"
+      ],
+      "attributed_execution": "S47 HQ17/S48 HQ12/S52 HQ13; HQ hostile S52 post-action unrelated episode+cash 999 bypass reproduced in 07_HQ_RETURN_DISPOSITION; no Astra integrated trial. RA-B 0.",
+      "actual_positive": "S47 scheduled-only vs ACTUAL affects objective_material_eligible; event-keyed cold source, revocation. S48 one call cached after recovery; source HOLD blocks ghost next-world. S52 controlled performer math with caller-set counterpart.",
+      "actual_null": "S48 draft/false B operation yields no C8 or next event; S47 post-revoke no current source; S52 direct terminal mutation rejected only when paid result is last episode; unrelated nontransition episode suppresses check.",
+      "semantic_value_effect": "Material eligibility VALUE read by consumer; durable actor TARGET remains NO_CHANGE/NO_PROPOSAL. S48 never admits reflective actor interpretation or performs second V3. S52 own action VALUE mechanically changes only controlled fixture, its verify has a confirmed provenance gap.",
+      "scope_grade": "One-call transport/replay and objective intervals only; no same-psyche causal second pass; known S52 verifier RED",
+      "verdict": "PARTIAL_DIFFERENT_GRAIN",
+      "missing_first_cause_and_owner": "One qualified CAN011/SCI05 change, actor-owned next-world source/performer and full C8/C9 second V3 continuation; independently fix S52 verification if later reused. Owners original actor science and existing Sorok integrator, not RA-B.",
+      "next_discriminating_test": "One real T event and slow phase with returned R_T, optional licensed SCI05 admission, second V3 action and next E2; rejected draft yields zero; clock refines; first independently reproduce S52 unrelated-note verifier bypass as a component RED.",
+      "ra_b_executed": false
+    },
+    {
+      "id": "K9",
+      "astra_original_criterion": "Swap two truly independent semantically equivalent generic Pyat source providers with different physical stage/file names and same semantic content, plus nonparent consumer/genealogy; exact downstream semantic consumer outputs conserved (except permitted provenance).",
+      "astra_table": "07_KILL_TEST_PROGRAM.md table row K9",
+      "implementation_attempt": "Astra 07 program defines but marks NOT_EXECUTED; Sorok S47 consumes one synthetic installed source, not two independent Pyat provider implementations. Original Astra 16 establishes generic PRE-V3/consumer boundary as proposal, not K9 proof.",
+      "implementation_refs": [
+        "https://github.com/maidiu/rawlsing/blob/3b2d9a1b644a9fa024ed1bd895b67be5c8789531/WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/07_KILL_TEST_PROGRAM.md",
+        "https://github.com/maidiu/rawlsing/blob/3b2d9a1b644a9fa024ed1bd895b67be5c8789531/WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/16_CORRECTIVE_AMENDMENT_AND_GENEALOGY.md",
+        "https://github.com/maidiu/rawlsing/blob/765a441f87292aa4c17794745b65cb54e6aaa83f/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/s47/conditioning.py"
+      ],
+      "exact_test_functions": [
+        "Astra 07 K9: NOT_EXECUTED",
+        "Current two independently implemented qualified Pyat providers and nonparent consumer test: exact executable refs unavailable in RA-B inspected cut"
+      ],
+      "attributed_execution": "Astra officially NOT_EXECUTED; no RA-B provider swap or Pyat raw/model source run.",
+      "actual_positive": "S47 one source content and bounded receipts travel into C9; generic source pattern exists in architectural specification.",
+      "actual_null": "No semantically equivalent provider A/B actual side-by-side test; no nonparent consumer invariant, no opaque parent-stage renaming test.",
+      "semantic_value_effect": "One S47 content is value-read; no conserved semantics across alternate providers demonstrated.",
+      "scope_grade": "Original Astra provider port specified; exact current two-provider equivalence and downstream nonparent consumer not inspected/available as a paired execution at fixed Pyat cut",
+      "verdict": "NOT_VERIFIABLE",
+      "missing_first_cause_and_owner": "Two qualified original Pyat provider code/bundle identities, output-equivalence mapping, permission/wake tuple and actual C0 consumer test. Owner Pyat engineering/source, Sorok consumer; real permission gate separate.",
+      "next_discriminating_test": "Use two independently implemented authorized semantically equivalent provider cut IDs and nonparent N9/N10 consumer with exact comparison excluding permitted provenance; reject nonequivalent swaps rather than calling them loss.",
+      "ra_b_executed": false
+    },
+    {
+      "id": "K10",
+      "astra_original_criterion": "Every declared n-ary role/order, prerequisites, minority/zero/missing/underpowered/not-asked/noncomparable, four clocks, generated binding, revocation and partial closure must reverse-deref and be consumed or explicitly deferred; value mutation changes exact descendant.",
+      "astra_table": "07_KILL_TEST_PROGRAM.md table row K10",
+      "implementation_attempt": "S44 candidate authorities/eligibility/coordinate replay metadata; S47 current/historical material coverage, actual access and as-of source content read by C9; lacks maximal Pyat fabric under comparison.",
+      "implementation_refs": [
+        "https://github.com/maidiu/rawlsing/blob/923278fbe6b030e2ffdd10fe42d7a18266344611/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/tests/test_s44_sampled_root.py",
+        "https://github.com/maidiu/rawlsing/blob/765a441f87292aa4c17794745b65cb54e6aaa83f/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/s47/conditioning.py",
+        "https://github.com/maidiu/rawlsing/blob/765a441f87292aa4c17794745b65cb54e6aaa83f/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/tests/test_s47_interval_c9_conditioning.py",
+        "https://github.com/maidiu/rawlsing/blob/3b2d9a1b644a9fa024ed1bd895b67be5c8789531/WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/07_KILL_TEST_PROGRAM.md"
+      ],
+      "exact_test_functions": [
+        "tests/test_s44_sampled_root.py::test_adp020_candidate_and_coordinate_contract_is_complete",
+        "tests/test_s47_interval_c9_conditioning.py::test_historical_source_uses_admission_availability_after_material_change",
+        "tests/test_s47_interval_c9_conditioning.py::test_event_keyed_reader_preserves_historical_source_after_condition_cut"
+      ],
+      "attributed_execution": "S44 10, S47 17 HQ + reviewer component tests at stated test-only grains; Astra K10 NOT_EXECUTED; RA-B 0.",
+      "actual_positive": "S47 source coverage [[222,223]], actor/branch/access/as_of, source hash and material eligibility read in C9; historical source remains after revocation; S44 candidate/coordinate fields asserted and replayed.",
+      "actual_null": "S47 source forgery of access/coverage/branch rejected; revoked current source is withheld. No four-clock, minority/unasked denominator, n-ary role/order or target readset matrix mutation test.",
+      "semantic_value_effect": "Specific material/access VALUES read; candidate hash/coordinates bound; no proof that every K10 Pyat semantic VALUE flows and changes downstream action.",
+      "scope_grade": "Narrow values-read/refusal proved for S47 plus ADP020 candidate receipts; maximal typed Pyat semantics not shown",
+      "verdict": "PARTIAL_DIFFERENT_GRAIN",
+      "missing_first_cause_and_owner": "Qualified Pyat N11/N12 real adapter + exhaustive expected semantic leaf fixture, values-read hooks/lineage across C0 consumer, original source permission. Owners Pyat and downstream Sorok; not test-only grants.",
+      "next_discriminating_test": "One synthetic/maximal typed Pyat carrier with every required distinction, independent source-issuer refs and four clocks; mutate one leaf at a time; assert exact changed child consumer output or explicit governed defer/refusal.",
+      "ra_b_executed": false
+    },
+    {
+      "id": "K11",
+      "astra_original_criterion": "Same generated mother's preconception checkpoint; finite scenario alternatives and qualified Pyat forward/reverse/intersection queries; governed scenario choice; retrospective independent second-parent whole life that replays forward; at least two lawful families; independent projects, stable chronology and child-output embargo.",
+      "astra_table": "07_KILL_TEST_PROGRAM.md table row K11",
+      "implementation_attempt": "S44 begins with role-fixed repair/finishing adult material seeds and shared workshop history. S50 an unrelated isolated legacy V3 pressure-flow fixture. Neither is maternal conception endpoint-conditioned search or independent second-parent back-generation.",
+      "implementation_refs": [
+        "https://github.com/maidiu/rawlsing/blob/923278fbe6b030e2ffdd10fe42d7a18266344611/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/s44/root.py",
+        "https://github.com/maidiu/rawlsing/blob/923278fbe6b030e2ffdd10fe42d7a18266344611/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/tests/test_s44_sampled_root.py",
+        "https://github.com/maidiu/rawlsing/blob/515b9a8ee45672c97051df4efef679117a679525/WORKER_RETURNS/SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1/tests/test_s50.py",
+        "https://github.com/maidiu/rawlsing/blob/3b2d9a1b644a9fa024ed1bd895b67be5c8789531/WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/16_CORRECTIVE_AMENDMENT_AND_GENEALOGY.md"
+      ],
+      "exact_test_functions": [
+        "Astra 07 K11: NOT_EXECUTED",
+        "tests/test_s44_sampled_root.py::test_same_seed_replays_and_seed_divergence_is_nonzero",
+        "tests/test_s50.py::test_legacy_v3_roundtrip_pressure_flow_and_projection"
+      ],
+      "attributed_execution": "Astra prospective only; S44/S50 narrow sourcefree execution; no RA-B K11 performed.",
+      "actual_positive": "Sourcefree separate A/B antecedent event roots exist; legacy S50 pressure-flow fixture returns after one simulated year with actual_person_commit=False.",
+      "actual_null": "No fixed mother checkpoint, no finite partner candidate set/inference weights, no second-parent forward-replay, no child desired-label embargo, no two family endpoints, no causal/constructor DAG audit.",
+      "semantic_value_effect": "Synthetic root draw affects material episode values; no actual parent prehistory/person-world/genealogy consumer, no child psyche.",
+      "scope_grade": "Conception-conditioned mother-first retrospective whole second-parent construction not exercised",
+      "verdict": "SPECIFIED_NOT_EXECUTED",
+      "missing_first_cause_and_owner": "V3 scenario model/selection weight authority, generic Pyat qualified forward/reverse/intersection, history replay constraints, ADP015/020 authorized endpoint chronology and C4 child effects; Pyat and V3 scientific owners separately.",
+      "next_discriminating_test": "Freeze mother checkpoint, eligible route set, two lawful endpoint-compatible independent B biographies; embargo desired-child label; compare forward replay, accepted parent chronology, partner independent project, future-child label invariant, and constrained-failure receipts.",
+      "ra_b_executed": false
+    }
+  ]
+}
