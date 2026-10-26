@@ -107,5 +107,7 @@ label, not source/scientific issuance. No real source/respondent read, original
 M1-for-all, R09/CI/prod, N11/N12, Sorok/J52/W52 or production adoption is
 claimed. The synthetic source/projection country/population is explicitly
 SYNTHETIC and is not real production metadata. No candidate code edit,
-self-adoption, source permission or new engine was performed. The branch is
-pushed nonforce and directly read back; final SHA is reported separately.
+self-adoption, source permission or new engine was performed. The branch was pushed nonforce. Evidence commit
+`17165fd2062a08b7981c11395fad23023e0eeb04` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also directly verified and reported to the coordinator.
