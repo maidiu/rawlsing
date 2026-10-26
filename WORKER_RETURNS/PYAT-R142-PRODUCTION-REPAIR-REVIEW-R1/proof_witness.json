@@ -1,0 +1,102 @@
+{
+  "author_candidate": "44e7ace44d9e1b023a15d14ee1ead9b176d0e522",
+  "author_code_blobs": {
+    "rawlsing_next/pre553_native_workload_binding.py": "94ef81792ad2db7895b33dbbdaddc7e3b6b9306b",
+    "rawlsing_next/pre553_production_binding.py": "ad5abfe7d71b76eb421f729c1b88e4ac56a59591",
+    "rawlsing_next/pre553_source_read_admission.py": "652ea3cdf0f53cd9ce14c4419486f6c1a81f3584",
+    "rawlsing_next/pre553_universal_workload.py": "95d19e9fa7a8d222e8b429578a8fd3efdc79f8bd",
+    "rawlsing_next/tests/test_pre553_production_binding.py": "b0309b51b6ae23581b74af8fc0819e230636bca1",
+    "rawlsing_next/tests/test_pre553_source_read_admission.py": "b48641813eea1fc78778c65379505d7c46d641b3"
+  },
+  "commission": "3a2fccbeedc4a0f47a62c9a779fa0cc3c43c9eac",
+  "environment": {
+    "pytest": "9.0.2",
+    "python": "3.11.3",
+    "reviewer": "existing distinct OpenCode Go DeepSeek V4.1 Flash MAX Global session"
+  },
+  "evidence_commit": "",
+  "evidence_commit_remote_readback": {},
+  "expectations_freeze_commit": "d8748198b",
+  "expectations_sha256": "0158a65afc546cb91330ebcf4d4cdeff0ebaaee7548ebd57803206338ea22f7a",
+  "findings": {
+    "accepted_scoped": [
+      "R141 query scope six-field foreign witness refuses before catalog",
+      "actual repeated SUPPORTED 2/2 six-cell positive with value change/restore",
+      "foreign source authority/query universe-risk-role/descriptor controls preserved",
+      "predecode zero-I/O refusal, resolve-before-decode, postdecode revocation",
+      "full native I05 discovery 150/150 with no-drop and restore"
+    ],
+    "metadata_note": "R140 original manifest cites wrong commission; R141 erratum identifies actual R139/R140 seal 8a6760dae; original unchanged",
+    "open_deployment": [
+      "actual source package/read decision and trusted issuer/resolver",
+      "real production metadata/all35 proof"
+    ]
+  },
+  "not_reached": [
+    "real source/respondent",
+    "original 35/1890/F1-F8/global F6/F7/F8",
+    "learned/FF/V553",
+    "actor/person/dyad/V3/M1forall",
+    "R09/CI/prod/N11/N12/Sorok/J52/W52"
+  ],
+  "review_branch": "agent/opencode-pyat-r142-production-repair-review-r1",
+  "tests": {
+    "author_focused": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/author_focused_junit.xml",
+      "passed": 19,
+      "skipped": 0,
+      "time_seconds": 13.165
+    },
+    "author_regression": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/author_regression_junit.xml",
+      "passed": 4,
+      "skipped": 0,
+      "time_seconds": 1.646
+    },
+    "cold_stable": {
+      "log": "replay/cold_stable.log",
+      "match": true,
+      "state": "SUPPORTED"
+    },
+    "discovery": {
+      "candidates": 150,
+      "facts": 330,
+      "log": "replay/discovery_values.log",
+      "no_drop": true,
+      "receipts": 150,
+      "supported_facts": 314,
+      "valid_empty_receipts": 52,
+      "zero_support_facts": 16
+    },
+    "r136_frozen": {
+      "errors": 0,
+      "failures": 3,
+      "junit": "replay/r136_frozen_junit.xml",
+      "note": "old assertion forms exception-fail; original RED preserved, not acceptance",
+      "passed": 2,
+      "skipped": 0,
+      "time_seconds": 1.412
+    },
+    "r138_successor": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/r138_successor_junit.xml",
+      "passed": 5,
+      "skipped": 0,
+      "time_seconds": 1.279
+    },
+    "trust_probes": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/trust_probes_junit.xml",
+      "passed": 2,
+      "skipped": 0,
+      "time_seconds": 0.046
+    }
+  },
+  "verdict": "ACCEPT_SCOPED_SOURCEFREE_PRODUCTION_INGRESS"
+}
