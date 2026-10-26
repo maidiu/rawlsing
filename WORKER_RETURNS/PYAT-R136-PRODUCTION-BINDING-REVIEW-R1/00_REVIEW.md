@@ -140,5 +140,7 @@ otherwise state the exact unavailable owner/API.
 Synthetic harness only; `ORIGINAL_SOURCE_GRANTED` in this proof is a code-path
 label, not source/scientific issuance. No real source, original35/1890/F1–F8/
 global F6/F7/F8, learned, FF/V553, actor, M1-for-all, J52/W52/R09/CI/prod/
-N11/N12/Sorok or production claim. The branch is pushed nonforce and directly
-read back; final SHA is reported separately.
+N11/N12/Sorok or production claim. The branch was pushed nonforce. Evidence commit
+`e64c446355e097c4fd5a5597860094a715ceb32c` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also directly verified and reported to the coordinator.
