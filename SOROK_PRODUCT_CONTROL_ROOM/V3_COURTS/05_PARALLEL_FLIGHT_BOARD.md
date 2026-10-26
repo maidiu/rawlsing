@@ -1,14 +1,12 @@
-# V3 Courts actual flight status — after six return intakes
+# V3 Courts flight status after four independent reviews
 
-**6/6 returned remote; 0 independently reviewed; 4 remaining first-wave X03/X04/X05/T04 banked, not verified launched.**
+**Reviewed first-flight: X01/X02/T01/T02/T03/T05 — six returned + RX01/RX02/RS/RC — four reviews received.** Historic code source-verified: 12 selected M cards. Other 28 M still pending primary source investigation. N01–N08 conceptual reviewed with precise source and causal revisions. N12 present static code reviewed. Zero domain-specific new Rule A/T and zero actual native C12 completion.
 
-| Court | Verified SHA | Status | Independent review |
-|---|---|---|---|
-| X01 | 2e1853dd535bb2b4e9d0bd8a8e31ab561aa75c2a | RETURN_VERIFIED_NOT_ADOPTED | RX01 |
-| X02 | b8ccf53f591a9b067a029e3c64ecad2874794d03 | RETURN_VERIFIED_NOT_ADOPTED | RX02 |
-| T01 | 1c1669c2f79e27072d8edcb1279d2a7ce5ef795e | RETURN_VERIFIED_NOT_ADOPTED | RS |
-| T02 | dd9b27598ae1a959b955cde5d91a36065ec49b04 | RETURN_VERIFIED_NOT_ADOPTED | RS |
-| T03 | a02d2156d2502751b84e6b3b0a4e7de82ab71dde | RETURN_VERIFIED_NOT_ADOPTED | RS |
-| T05 | e5777f7f09d49e101d2762e2e73445218187db8c | RETURN_VERIFIED_NOT_ADOPTED | RC |
+| Review | Verified immutable return | Grade |
+|---|---|---|
+| RX01 | `481a5c62b6697e5df0e930a5dc615a8994aacddc` | ACCEPT_SCOPED_WITH_CORRECTIONS; no native grant |
+| RX02 | `69ddef93bfb1148f4d8868d5de2a5751a4674552` | ACCEPT_SCOPED_WITH_CORRECTIONS; no native grant |
+| RS | `dabbc0b038668e05cd723afc31f8b08411648b0a` | ACCEPT_SCOPED_WITH_CORRECTIONS; no native grant |
+| RC | `ddea75634c05bf89cf752da3813d17437b805767` | ACCEPT_SCOPED_WITH_CORRECTIONS; no native grant |
 
-See 08_FIRST_FLIGHT_SIX_RETURN_INTAKE_R1.md and REVIEW_COURTS/00_FIRST_FLIGHT_REVIEW_QUEUE.md. Do not conflate a GitHub head change with active or accepted agent state.
+**Second wave banked, not verified launched:** X03 legacy topology/metabolization, X04 scheduler/LLM, X05 material/coactor/bridges, T04 memory/ideology/recursion. Avoid duplicate session and provider/account switch. For complete reviewed reconciliation see 10_SYN01_REVIEWED_DIFFERENTIAL_REQUIREMENTS_TO_CODE_R1.md. No implementation workers issued yet.
