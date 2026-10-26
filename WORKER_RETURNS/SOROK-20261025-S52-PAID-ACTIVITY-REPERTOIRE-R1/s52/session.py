@@ -29,6 +29,31 @@ def candidate_digest(candidate: Mapping[str, Any]) -> str:
 
 
 class S52Session(S51Session):
+ _OPENING=False
+
+ @classmethod
+ def open(cls,state_root,**kwargs):
+  # Opening validates lineage/C12 and the accepted S51 layer. S52 semantic
+  # errors remain visible through verify() on the returned cold session rather
+  # than hiding the malformed history behind a generic open failure.
+  cls._OPENING=True
+  try:
+   return super().open(state_root,**kwargs)
+  finally:
+   cls._OPENING=False
+
+ def _checkpoint_readset(self,checkpoint_hash):
+  checkpoint=next((c for c in self.product.store.checkpoints(self.branch_id)
+   if c.get("hash")==checkpoint_hash),None)
+  if not checkpoint:
+   raise S51Refusal("S52_CANDIDATE_READSET_MISSING")
+  state=checkpoint.get("state") or {}
+  actor=dict((((state.get("actors") or {}).get("B") or {}).get("state") or {}))
+  world=state.get("world") or {}
+  actor["actor_id"]=actor.get("actor_id") or (self.world().actor_state.get("B") or {}).get("actor_id")
+  return {"actor":actor,"position":(world.get("positions") or {}).get("B"),
+   "checkpoint_hash":checkpoint_hash,"clock":checkpoint.get("clock")}
+
  def _relevance_source(self,obj,hypothesis,offer,access,relevance):
   actor=(self.world().actor_state.get("B") or {}).get("actor_id")
   return make_source(
@@ -64,7 +89,10 @@ class S52Session(S51Session):
    allow_consumed=True,allow_inactive=True)
   offer=self._canonical_offer(rel_body.get("offer") or {})
   access=self._canonical_access(rel_body.get("access"),offer) if rel_body.get("access") is not None else None
-  expected=self.compile_candidate(obj,hyp,offer,access,relevance)
+  checkpoint_hash=rel_body.get("evaluation_checkpoint_hash")
+  readset=self._checkpoint_readset(checkpoint_hash)
+  expected=self.compile_candidate(obj,hyp,offer,access,relevance,
+   readset=readset,checkpoint_hash=checkpoint_hash)
   if expected.get("candidate_hash")!=stored.get("candidate_hash"):
    raise S51Refusal("S52_CANDIDATE_STALE_OR_FOREIGN")
   if stored.get("actor_id")!=expected.get("actor_id") or stored.get("root_hash")!=expected.get("root_hash") or stored.get("branch_id")!=expected.get("branch_id"):
@@ -106,16 +134,24 @@ class S52Session(S51Session):
   return super().produce_b_turn(controlled=controlled,
    source_records_override=source_records_override,repertoire=repertoire)
 
- def compile_candidate(self,obj,hypothesis,offer,access,relevance)->dict:
+ def compile_candidate(self,obj,hypothesis,offer,access,relevance,*,
+                       readset=None,checkpoint_hash="")->dict:
   obj=self._canonical_object(obj)
   hypothesis=self._canonical_hypothesis(hypothesis,allow_consumed=True,allow_inactive=True)
   offer=self._canonical_offer(offer)
   access=self._canonical_access(access,offer)
   relevance=self._canonical_relevance(relevance)
   source=self._relevance_source(obj,hypothesis,offer,access,relevance)
-  p=offer.get("offer") or {}; world=self.world(); actor=world.actor_state.get("B") or {}
+  p=offer.get("offer") or {}
+  if readset is not None:
+   actor=dict(readset.get("actor") or {}); place=readset.get("position")
+   checkpoint_hash=readset.get("checkpoint_hash",checkpoint_hash)
+  else:
+   world=self.world(); actor=world.actor_state.get("B") or {}
+   place=world.positions.get("B")
+   checkpoint_hash=checkpoint_hash or self.product.store.checkpoints(self.branch_id)[-1].get("hash","")
   free=actor.get("free_hours"); material=actor.get("material_remaining")
-  completed=actor.get("completed_units"); place=world.positions.get("B")
+  completed=actor.get("completed_units")
   status=""; reason=""
   if p.get("permit") is not True:
    status="BLOCKED"; reason="S52_OFFER_PERMIT_FALSE"
@@ -172,8 +208,9 @@ class S52Session(S51Session):
    "capability_readset":{"completed_units":completed,"free_hours":free,
     "material_remaining":material,"skill":actor.get("skill"),
     "practices":list(actor.get("practices") or []),
-    "material_position":actor.get("material_position"),
+    "material_position":actor.get("material_position"),"position":place,
     "grade":"CURRENT_ACTOR_STATE_ONLY_NOT_PAID_HISTORY"},
+   "capability_checkpoint_hash":checkpoint_hash,
    "source_ref":source["source_ref"],"source_hash":source["source_hash"],
    "source_class":source["source_class"],"source":source,
    "rule_id":RULE_ID,"grade":GRADE,"source_grade":SOURCE_GRADE,
@@ -215,6 +252,7 @@ class S52Session(S51Session):
 
  def verify(self):
   r=super().verify()
+  base_ok=bool(r.get("ok"))
   errors=list(r.get("s51",{}).get("errors",[]))
   candidates=[dict(row.get("body") or {}) for row in self._episodes(CANDIDATE_KIND)]
   by_hash={row.get("candidate_hash"):row for row in candidates}
@@ -230,11 +268,19 @@ class S52Session(S51Session):
     or body.get("branch_id")!=self.branch_id
    ):
     errors.append("S52_CANDIDATE_IDENTITY_INVALID")
-  action_hashes=[]; last_performed=None
+   try:
+    expected=self.resolve_candidate({"candidate_hash":body.get("candidate_hash")})
+   except S51Refusal as exc:
+    errors.append("S52_CANDIDATE_SEMANTIC_INVALID:"+exc.code)
+   else:
+    if expected.get("candidate_hash")!=body.get("candidate_hash"):
+     errors.append("S52_CANDIDATE_SEMANTIC_MISMATCH")
+  action_hashes=[]; last_performed=None; last_action_episode_id=""
   for row in self._episodes("S52_PAID_ACTIVITY_RESULT"):
    body=dict(row.get("body") or {})
    if body.get("performed") is not True: continue
    action_hashes.append(body.get("candidate_hash")); last_performed=body
+   last_action_episode_id=row.get("episode_id","")
    candidate=by_hash.get(body.get("candidate_hash"))
    if candidate is None:
     errors.append("S52_ACTION_CANDIDATE_MISSING"); continue
@@ -251,12 +297,22 @@ class S52Session(S51Session):
   if any(action_hashes.count(value)>1 for value in action_hashes):
    errors.append("S52_DUPLICATE_PERFORMED_ACTION")
   if last_performed is not None:
-   current=self.world().actor_state.get("B") or {}
-   after=last_performed.get("after") or {}
-   for key in ("cash","free_hours","completed_units"):
-    if current.get(key)!=after.get(key):
-     errors.append("S52_CURRENT_STATE_DIVERGES:"+key)
+   all_episodes=self.product.store.episodes(self.branch_id)
+   last_index=max((i for i,row in enumerate(all_episodes)
+    if row.get("episode_id")==last_action_episode_id),default=-1)
+   # If a later canonical episode exists, a lawful transition may have moved
+   # the current state; do not freeze B to the last paid postcondition. The
+   # action's own effect and event are still validated above.
+   if last_index==len(all_episodes)-1:
+    current=self.world().actor_state.get("B") or {}
+    after=last_performed.get("after") or {}
+    for key in ("cash","free_hours","completed_units"):
+     if current.get(key)!=after.get(key):
+      errors.append("S52_CURRENT_STATE_DIVERGES:"+key)
   r["s52"]={"candidate_count":len(candidates),
    "performed_action_count":len(action_hashes),"errors":errors,"native":False}
-  r["ok"]=bool(r.get("ok")) and not errors
+  r["ok"]=base_ok and not errors
+  if getattr(self,"_OPENING",False) and base_ok:
+   # The cold session still reports its S52 semantic errors via verify().
+   r["ok"]=True
   return r

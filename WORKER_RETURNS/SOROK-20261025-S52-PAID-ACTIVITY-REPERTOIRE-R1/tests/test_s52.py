@@ -208,3 +208,38 @@ def test_current_state_divergence_invalidates_verify():
   assert result["ok"] is False
   assert any(x.startswith("S52_CURRENT_STATE_DIVERGES") for x in result["s52"]["errors"])
  finally:s.close()
+
+
+def test_rehashed_candidate_semantics_refused_warm_and_cold():
+ root=Path(__import__('tempfile').mkdtemp()); s=_start(root)
+ try:
+  actual=s.run_experiment(); forged=deepcopy(actual["candidate"])
+  forged.pop("episode_id",None)
+  forged["task_parameters"]["payment_per_actor"]=999
+  forged["candidate_hash"]=candidate_digest(forged)
+  forged["repertoire"]["candidate_hash"]=forged["candidate_hash"]
+  s._append(CANDIDATE_KIND,forged)
+  warm=s.verify()
+  assert warm["ok"] is False
+  assert any("S52_CANDIDATE_SEMANTIC_INVALID" in x for x in warm["s52"]["errors"])
+ finally:s.close()
+ cold=S52Session.open(root)
+ try:
+  result=cold.verify()
+  assert result["ok"] is False
+  assert any("S52_CANDIDATE_SEMANTIC_INVALID" in x for x in result["s52"]["errors"])
+ finally:cold.close()
+
+
+def test_later_lawful_paid_transition_is_not_frozen_to_first_result():
+ s=_start(__import__('tempfile').mkdtemp())
+ try:
+  first=s.run_experiment(); first_ok=s.perform_paid_participation(
+   first["candidate"],generation=first["generation"],counterpart_performed=True)
+  assert first_ok["performed"] is True
+  second=s.run_experiment(); second_ok=s.perform_paid_participation(
+   second["candidate"],generation=second["generation"],counterpart_performed=True)
+  assert second_ok["performed"] is True
+  assert s.world().actor_state["B"]["cash"]==58
+  assert s.verify()["ok"] is True
+ finally:s.close()
