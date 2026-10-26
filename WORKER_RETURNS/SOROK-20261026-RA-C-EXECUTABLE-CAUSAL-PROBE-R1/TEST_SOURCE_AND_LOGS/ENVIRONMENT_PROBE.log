@@ -1,0 +1,23 @@
+# RA-C environment probe — SELF_EXECUTED_ENVIRONMENT_ONLY
+$ uname -srm
+Linux 6.18.55 x86_64
+$ python3 --version
+Python 3.13.5
+$ pytest --version
+pytest 9.0.2
+$ git --version
+git version 2.47.3
+$ python3 -c 'import subprocess; x=subprocess.run(["python3","-c","print(\\\"subprocess-ok\\\")"],capture_output=True,text=True); print(x.returncode,x.stdout.strip())'
+0 subprocess-ok
+$ git -C /mnt/data rev-parse --show-toplevel
+fatal: not a git repository (or any of the parent directories): .git
+exit=128
+$ git ls-remote https://github.com/maidiu/rawlsing.git HEAD
+fatal: unable to access 'https://github.com/maidiu/rawlsing.git/': Could not resolve host: github.com
+exit=128
+$ python3 -B -c 'import s52'
+ModuleNotFoundError: No module named 's52'
+exit=1
+$ test -f /Users/matthewsmith/Desktop/Rawlsing/rawlsing-r31j/WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1/candidate/vendor/bp2/vendor/g18/lab_sgi1/history.py
+exit=1
+No accepted Sorok code, pytest suite, or causal intervention executed.

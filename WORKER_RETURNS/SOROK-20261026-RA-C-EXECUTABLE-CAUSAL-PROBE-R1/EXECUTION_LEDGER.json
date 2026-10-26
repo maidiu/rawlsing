@@ -1,0 +1,143 @@
+{
+  "schema": "RA_C_EXECUTION_LEDGER@1",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-sorok-20261026-ra-c-runtime-causal-reproduction-r1",
+  "seal": "5dccb742b00907da7ecb9e11640ea5a56fcb5827",
+  "independence": "NO_RA_A_OR_RA_B_FINDINGS_CONSUMED",
+  "executions": [
+    {
+      "id": "ENV01",
+      "execution_origin": "SELF_EXECUTED_ENVIRONMENT_ONLY",
+      "command": "python3 --version; pytest --version; git --version; python3 -c 'import subprocess; ...'",
+      "host": "Linux container",
+      "exit_code": 0,
+      "observed": {
+        "python": "3.13.5",
+        "pytest": "9.0.2",
+        "git": "2.47.3",
+        "subprocess": "working"
+      },
+      "verdict": "ENV_CAPABILITY_EXISTS_NO_SOURCE"
+    },
+    {
+      "id": "ENV02",
+      "execution_origin": "SELF_EXECUTED_ENVIRONMENT_ONLY",
+      "command": "git -C /mnt/data rev-parse --show-toplevel",
+      "exit_code": 128,
+      "observed": "fatal: not a git repository",
+      "verdict": "NO_CHECKOUT"
+    },
+    {
+      "id": "ENV03",
+      "execution_origin": "SELF_EXECUTED_ENVIRONMENT_ONLY",
+      "command": "git ls-remote https://github.com/maidiu/rawlsing.git HEAD",
+      "exit_code": 128,
+      "observed": "Could not resolve host: github.com",
+      "verdict": "CLONE_NETWORK_UNAVAILABLE"
+    },
+    {
+      "id": "ENV04",
+      "execution_origin": "SELF_EXECUTED_ENVIRONMENT_ONLY",
+      "command": "python3 -B -c 'import s52'",
+      "exit_code": 1,
+      "observed": "ModuleNotFoundError: No module named 's52'",
+      "verdict": "SOURCE_IMPORT_UNAVAILABLE"
+    },
+    {
+      "id": "ENV05",
+      "execution_origin": "SELF_EXECUTED_ENVIRONMENT_ONLY",
+      "command": "test -f /Users/matthewsmith/Desktop/Rawlsing/rawlsing-r31j/WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1/candidate/vendor/bp2/vendor/g18/lab_sgi1/history.py",
+      "exit_code": 1,
+      "verdict": "G18_EXTERNAL_PATH_MISSING"
+    },
+    {
+      "id": "S52_AUTHOR_01",
+      "execution_origin": "OTHER_WORKER_ATTESTED_NOT_SELF_EXECUTED",
+      "source_commit": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+      "source_path": "WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/run_s52.py",
+      "artifact_path": "WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/evidence/entrypoint.json",
+      "artifact_git_blob": "c749eb7aae103e1fbdf7d8f66bf6ac9e6f0490ce",
+      "run_command": "python3 -B .../run_s52.py (author report; exact shell envelope not independently observed)",
+      "expected_semantic_contrast": "source cut removes paid option/reason; controlled performer changes material state only with explicit counterpart",
+      "reported_before": {
+        "B": {
+          "cash": 54,
+          "free_hours": 11,
+          "completed_units": 5
+        }
+      },
+      "reported_after": {
+        "B": {
+          "cash": 56,
+          "free_hours": 10,
+          "completed_units": 6
+        }
+      },
+      "reported_later": null,
+      "reported_choice": "OPEN_CHOICE_SET",
+      "verdict": "AUTHOR_TEST_ONLY_NOT_PERSON_PROOF"
+    },
+    {
+      "id": "S52_HQ_REGRESSION",
+      "execution_origin": "OTHER_WORKER_ATTESTED_NOT_SELF_EXECUTED",
+      "source_commit": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+      "source_path": "WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/session.py",
+      "artifact_path": "WORKER_COMMISSIONS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/07_HQ_RETURN_DISPOSITION.md",
+      "expected": "Later unrelated event should not disable postcondition verification",
+      "reported_actual": "warm verify=True despite B cash 999 following unrelated note and checkpoint",
+      "verdict": "HQ_REPORTED_RED_NOT_REPRODUCED_HERE"
+    },
+    {
+      "id": "K1",
+      "execution_origin": "NOT_EXECUTED",
+      "source_commit": "5dccb742b00907da7ecb9e11640ea5a56fcb5827",
+      "run_command": null,
+      "actual_before": null,
+      "actual_after": null,
+      "actual_later": null,
+      "exit_code": null,
+      "verdict": "UNKNOWN_ENVIRONMENTAL_HOLD",
+      "reason": "No pinned source checkout/G18; no issued concrete CAN011 formation/later-use rule"
+    },
+    {
+      "id": "K2",
+      "execution_origin": "NOT_EXECUTED",
+      "source_commit": "5dccb742b00907da7ecb9e11640ea5a56fcb5827",
+      "run_command": null,
+      "actual_before": null,
+      "actual_after": null,
+      "actual_later": null,
+      "exit_code": null,
+      "verdict": "UNKNOWN_ENVIRONMENTAL_HOLD",
+      "reason": "No pinned source checkout/G18; no issued concrete CAN011 formation/later-use rule"
+    },
+    {
+      "id": "K4",
+      "execution_origin": "NOT_EXECUTED",
+      "source_commit": "5dccb742b00907da7ecb9e11640ea5a56fcb5827",
+      "run_command": null,
+      "actual_before": null,
+      "actual_after": null,
+      "actual_later": null,
+      "exit_code": null,
+      "verdict": "UNKNOWN_ENVIRONMENTAL_HOLD",
+      "reason": "No pinned source checkout/G18; no issued concrete CAN011 formation/later-use rule"
+    },
+    {
+      "id": "K8",
+      "execution_origin": "NOT_EXECUTED",
+      "source_commit": "5dccb742b00907da7ecb9e11640ea5a56fcb5827",
+      "run_command": null,
+      "actual_before": null,
+      "actual_after": null,
+      "actual_later": null,
+      "exit_code": null,
+      "verdict": "UNKNOWN_ENVIRONMENTAL_HOLD",
+      "reason": "No pinned source checkout/G18; no issued concrete CAN011 formation/later-use rule"
+    }
+  ],
+  "sourcefree_only": true,
+  "original_data_used": false,
+  "provider_calls": 0,
+  "new_native_grants": false
+}
