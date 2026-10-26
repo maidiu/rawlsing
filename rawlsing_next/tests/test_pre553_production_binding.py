@@ -12,11 +12,12 @@ from rawlsing_next.pre553_issued_workload import (
     IssuedWorkloadRecord, OriginalWaveIdentity, WorkloadAdmissionError,
 )
 from rawlsing_next.pre553_native_workload_binding import (
-    OperationFixture, build_projection_catalog,
+    OperationFixture, build_projection_catalog, native_target_configuration,
+    profile_risk_tag,
 )
 from rawlsing_next.pre553_production_binding import (
     ProductionBindingRefusal, build_production_query_workload,
-    execute_production_workload,
+    build_production_workload, execute_production_workload,
 )
 from rawlsing_next.pre553_source_native_preimage_adapter import (
     build_authority_set, materialize_native_preimages,
@@ -85,6 +86,9 @@ def _query_authority(bundle):
         ),
         scope_envelope={
             "source_sha256": bundle.source_sha256,
+            "source_universe_refs": [u.ref.as_dict() for u in bundle.projection.universes],
+            "predicate_or_risk_set_refs": [bundle.risk_set_ref.as_dict()],
+            "target_use_refs": "EXPLICIT_UNRESTRICTED",
             "grade": "TEST_HARNESS_ONLY",
         },
         effective_time_or_interval="2026-10-26",
@@ -98,19 +102,38 @@ def _query_authority(bundle):
 
 def _descriptor(bundle):
     projection = bundle.projection
+    topology, _ = native_target_configuration(
+        bundle=bundle, target_ref=bundle.question_refs["SCORE"])
     return {
         "source_edition": bundle.source_sha256,
-        "native_item_ids": list(bundle.administered_ids),
+        "native_item_ids": list(sorted(bundle.administered_ids)),
         "release_tag": projection.instrument_release_id,
-        "routing_and_risk": {"routing_facts": len(projection.routing), "risk_tag": "WHOLE_SOURCE"},
-        "carrier": {"source_format": "SAV", "source_artifact_id": projection.source_artifact_id},
+        "routing_and_risk": {
+            "routing_facts": len(projection.routing),
+            "risk_tag": profile_risk_tag(projection),
+        },
+        "carrier": {
+            "source_format": bundle.source_format,
+            "source_artifact_id": projection.source_artifact_id,
+        },
         "country_and_population": {
             "country": projection.universes[0].country_geography,
             "population": projection.universes[0].target_population_and_sample_frame,
         },
-        "weight_design_estimand": {"weight_basis": "NO_WEIGHT", "estimand": "HARNESS_RAW"},
-        "missing_and_occurrence_policy": {"missing": "TYPED", "occurrence": "REPEATED_DECLARED"},
-        "target_conditioner_roles": {"target": "SCORE", "conditioner": None, "measure_kind": "RAW"},
+        "weight_design_estimand": {
+            "weight_basis": (projection.weight_slots[0].weight_basis_id
+                             if projection.weight_slots else "NO_WEIGHT_DECLARED"),
+            "estimand": (projection.weight_slots[0].estimand_authority_ref.as_dict()
+                         if projection.weight_slots
+                         else projection.universes[0].sampling_design_regime),
+        },
+        "missing_and_occurrence_policy": {
+            "missing": "EXPLICIT_TYPED_STATES",
+            "occurrence": topology,
+        },
+        "target_conditioner_roles": {
+            "target": "SCORE", "conditioner": None, "measure_kind": "RAW",
+        },
     }
 
 
@@ -172,6 +195,21 @@ def test_production_branch_uses_supplied_authority_and_emits_value_dependent_fac
         source_factory=lambda _ref: bundle.physical_stream, host=HOST, purpose=PURPOSE,
     )
     assert again.output_refs == result.output_refs
+
+
+def test_production_actual_positive_is_topology_supported_with_real_support(tmp_path):
+    bundle, workload, record = _production(tmp_path, "0")
+    result = execute_production_workload(
+        workload=workload, resolver=Resolver(record),
+        source_factory=lambda _ref: bundle.physical_stream, host=HOST, purpose=PURPOSE,
+    )
+    fact = result.native_outputs[0].facts[0]
+    assert fact.typed_state in {"SUPPORTED", "EXACT_SUPPORTED"}
+    assert fact.raw_denominator_support > 0
+    assert fact.raw_numerator_support > 0
+    assert fact.target_topology["complete_cell_semantic_projection"]
+    assert fact.target_topology["complete_cell_semantic_projection"][0]["cell"]
+    assert fact.execution_detail == "exact governed target distribution resolved"
 
 
 def test_production_refuses_test_only_wrong_host_purpose_and_envelope(tmp_path):
@@ -265,6 +303,86 @@ def test_production_refuses_unbound_risk_descriptor(tmp_path):
         build_production_query_workload(
             bundle=bundle, catalog=catalog, request=request, descriptor=bad,
             decision_ref=workload.decision_ref,
+            source_factory_ref=workload.source_factory_ref,
+            original_u_root=workload.original_u_root,
+            expected_frontier_root=workload.expected_frontier_root,
+            original_wave_identity=workload.original_wave_identity,
+        )
+
+
+def _bad_scope(authority, **changes):
+    fields = dict(authority.semantic_fields)
+    fields["scope_envelope"] = {**dict(fields["scope_envelope"]), **changes}
+    return AuthoritySnapshot(
+        typed_state="ALLOW",
+        authority_snapshot_refs=authority.authority_snapshot_refs,
+        dependency_refs=authority.dependency_refs,
+        producer_replay_locator_or_reference_root=(
+            authority.producer_replay_locator_or_reference_root
+        ),
+        **fields,
+    )
+
+
+def test_production_refuses_foreign_query_authority_scope(tmp_path):
+    from rawlsing_next.pre553_native_workload_binding import WorkloadBindingRefusal
+
+    bundle, workload, record = _production(tmp_path)
+    for changed in (
+        {"source_sha256": "0" * 64},
+        {"source_universe_refs": []},
+        {"predicate_or_risk_set_refs": []},
+    ):
+        with pytest.raises(WorkloadBindingRefusal):
+            build_projection_catalog(
+                bundle=bundle,
+                operation=OperationFixture("R137-foreign", "SCORE", "0"),
+                as_of="2026-10-26",
+                query_authority=_bad_scope(_query_authority(bundle), **changed),
+            )
+
+
+def test_production_refuses_foreign_source_authority_before_materialization(tmp_path):
+    from rawlsing_next.pre553_source_native_preimage_adapter import NativePreimageRefusal
+
+    bundle, _ = _harness_bundle(tmp_path)
+    bad = _bad_scope(bundle.projection.authority_snapshots[0], source_sha256="0" * 64)
+    incidence = decode_sav(tmp_path / "r135.sav")
+    pkg = package(tmp_path / "r135.sav", len(s3_rows(respondents=6, occasions=2)),
+                  (NativeSourceRule("impl.score", "SCORE"),))
+    with pytest.raises(NativePreimageRefusal, match="SUPPLIED_AUTHORITY_SOURCE_MISMATCH"):
+        materialize_native_preimages(
+            package=pkg, incidence=incidence, row_occurrence_plan=repeated_plan("SCORE"),
+            authorities=(bad,) + bundle.projection.authority_snapshots[1:],
+        )
+
+
+def test_production_refuses_foreign_descriptor_metadata(tmp_path):
+    bundle, workload, record = _production(tmp_path)
+    catalog, request = build_projection_catalog(
+        bundle=bundle, operation=OperationFixture("R137-descriptor", "SCORE", "0"),
+        as_of="2026-10-26", query_authority=_query_authority(bundle),
+    )
+    bad = _descriptor(bundle)
+    bad["source_edition"] = "0" * 64
+    bad["country_and_population"] = {"country": "ZZ", "population": "FOREIGN"}
+    with pytest.raises(ProductionBindingRefusal, match="DESCRIPTOR_NOT_BOUND_TO_SOURCE"):
+        build_production_query_workload(
+            bundle=bundle, catalog=catalog, request=request, descriptor=bad,
+            decision_ref=workload.decision_ref,
+            source_factory_ref=workload.source_factory_ref,
+            original_u_root=workload.original_u_root,
+            expected_frontier_root=workload.expected_frontier_root,
+            original_wave_identity=workload.original_wave_identity,
+        )
+
+
+def test_production_refuses_unbanked_discovery_ingress(tmp_path):
+    bundle, workload, _ = _production(tmp_path)
+    with pytest.raises(ProductionBindingRefusal, match="PRODUCTION_DISCOVERY_ISSUANCE_CONTRACT_MISSING"):
+        build_production_workload(
+            bundle=bundle, catalog=workload.catalog, discoveries=(workload.decision_ref,),
+            descriptor=_descriptor(bundle), decision_ref=workload.decision_ref,
             source_factory_ref=workload.source_factory_ref,
             original_u_root=workload.original_u_root,
             expected_frontier_root=workload.expected_frontier_root,

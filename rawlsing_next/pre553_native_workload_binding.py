@@ -33,9 +33,12 @@ from rawlsing_next.pre553_empirical_objects import (
     DiscoveryAuthority,
     EmpiricalQuerySpec,
     ExactRef,
+    RespondentEvent,
+    exact_ref,
     make_empirical_predicate,
     semantic_hash,
 )
+from rawlsing_next.pre553_empirical_authority import require_positive_authority
 from rawlsing_next.pre553_issued_workload import (
     IssuedWorkloadRecord,
     NativeWorkload,
@@ -105,6 +108,139 @@ class OperationFixture:
             raise WorkloadBindingRefusal("FIXTURE_MEASURE_UNSUPPORTED", self.measure_kind)
 
 
+def _event_order_key(event: RespondentEvent) -> tuple[Any, ...]:
+    fields = event.multiplicity_order_rank_fields
+    if isinstance(fields, Mapping):
+        for name in ("semantic_ordinal", "semantic_order", "semantic_order_key",
+                     "ordinal", "order", "rank", "index", "multiplicity_index"):
+            if name in fields:
+                value = fields[name]
+                if isinstance(value, int) and not isinstance(value, bool):
+                    return (0, value, event.ref.key)
+                if isinstance(value, str):
+                    return (1, value, event.ref.key)
+    return (2, event.ref.key)
+
+
+def _event_value(event: RespondentEvent) -> Any:
+    if event.typed_state == "SUBSTANTIVE_RESPONSE":
+        return event.canonical_response_value_if_authorized
+    return {"typed_response_state": event.typed_state}
+
+
+def native_target_configuration(
+    *,
+    bundle: NativePreimageBundle,
+    target_ref: ExactRef,
+    included_states: tuple[str, ...] = ("SUBSTANTIVE_RESPONSE",),
+) -> tuple[str, tuple[Any, ...]]:
+    """Derive exact target topology/domain from the materialized native release."""
+    projection = bundle.projection
+    respondent_by_ref = {respondent.ref.key: respondent.respondent_key
+                         for respondent in projection.respondents}
+    grouped: dict[str, list[RespondentEvent]] = {}
+    for obj in bundle.release.public_objects:
+        if not isinstance(obj, RespondentEvent):
+            continue
+        if exact_ref(obj.native_question_ref) != target_ref:
+            continue
+        if obj.typed_state not in included_states:
+            continue
+        respondent_ref = exact_ref(obj.scoped_respondent_ref)
+        respondent_key = respondent_by_ref.get(respondent_ref.key)
+        if respondent_key is None:
+            raise WorkloadBindingRefusal("TARGET_RESPONDENT_NOT_IN_PROJECTION")
+        grouped.setdefault(respondent_key, []).append(obj)
+    if not grouped:
+        raise WorkloadBindingRefusal("NO_NATIVE_TARGET_EVENTS")
+    topologies = {str(event.multiplicity_order_rank_fields.get("kind") or
+                      event.multiplicity_order_rank_fields.get("topology_kind"))
+                  for events in grouped.values() for event in events}
+    topologies.discard("None")
+    if len(topologies) != 1:
+        raise WorkloadBindingRefusal("MIXED_NATIVE_TARGET_TOPOLOGY", repr(sorted(topologies)))
+    topology = next(iter(topologies))
+    ordered = {
+        key: sorted(events, key=_event_order_key)
+        for key, events in grouped.items()
+    }
+    if topology in {"REPEATED_EVENT", "REPEATED_MEASUREMENT"}:
+        domain = tuple(
+            [{
+                "event_id": event.response_event_id_or_deterministic_index,
+                "multiplicity_order_rank_fields": dict(event.multiplicity_order_rank_fields),
+                "value": _event_value(event),
+            } for event in ordered[key]]
+            for key in sorted(ordered)
+        )
+    elif topology in {"ORDERED_SEQUENCE", "RANKED_RESPONSE"}:
+        domain = tuple([_event_value(event) for event in ordered[key]]
+                       for key in sorted(ordered))
+    elif topology in {"UNORDERED_MULTISELECT_SET", "UNORDERED_MULTISELECT", "MULTISELECT"}:
+        domain = tuple(sorted(
+            ([_event_value(event) for event in ordered[key]] for key in sorted(ordered)),
+            key=lambda values: json.dumps(values, sort_keys=True)))
+    elif topology == "COMPONENTIZED_RESPONSE":
+        domain = tuple(
+            [{
+                "component_or_subitem_ref": exact_ref(event.component_or_subitem_ref).as_dict()
+                if event.component_or_subitem_ref is not None else None,
+                "value": _event_value(event),
+            } for event in ordered[key]]
+            for key in sorted(ordered)
+        )
+    elif topology in {"SCALAR_SINGULAR", "ROUTED_RESPONSE"}:
+        domain = tuple(sorted({_event_value(event) for events in ordered.values()
+                               for event in events}, key=lambda value: json.dumps(value, sort_keys=True)))
+    else:
+        raise WorkloadBindingRefusal("UNSUPPORTED_NATIVE_TARGET_TOPOLOGY", topology)
+    return topology, domain
+
+
+def _exact_external_query_authority(
+    *, authority: AuthoritySnapshot, bundle: NativePreimageBundle, as_of: str,
+) -> str:
+    if not isinstance(authority, AuthoritySnapshot):
+        raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_REQUIRED")
+    if (authority.typed_state != "ALLOW" or authority.decision_state != "ALLOW"
+            or authority.authority_kind != "PREDICATE_GRAMMAR"):
+        raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_NOT_POSITIVE")
+    scope = authority.scope_envelope
+    if not isinstance(scope, Mapping):
+        raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_SCOPE_REQUIRED")
+    if scope.get("source_sha256") != bundle.source_sha256:
+        raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_SOURCE_MISMATCH")
+    universe_raw = scope.get("source_universe_refs")
+    risk_raw = scope.get("predicate_or_risk_set_refs")
+    if (isinstance(universe_raw, (str, bytes)) or not isinstance(universe_raw, Sequence)
+            or isinstance(risk_raw, (str, bytes)) or not isinstance(risk_raw, Sequence)):
+        raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_EXACT_SCOPE_REQUIRED")
+    declared_universes = tuple(sorted(
+        (exact_ref(value, "query_authority.scope.source_universe_refs") for value in universe_raw),
+        key=lambda ref: ref.key))
+    expected_universes = tuple(sorted(
+        (universe.ref for universe in bundle.projection.universes), key=lambda ref: ref.key))
+    if declared_universes != expected_universes:
+        raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_UNIVERSE_MISMATCH")
+    declared_risks = tuple(sorted(
+        (exact_ref(value, "query_authority.scope.predicate_or_risk_set_refs") for value in risk_raw),
+        key=lambda ref: ref.key))
+    if declared_risks != (bundle.risk_set_ref,):
+        raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_RISK_MISMATCH")
+    operations = tuple(authority.governed_operations)
+    if len(operations) != 1 or not isinstance(operations[0], str) or not operations[0].strip():
+        raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_OPERATION_NOT_EXACT")
+    operation = operations[0].strip()
+    for family in ("EmpiricalPredicate@1.0.0", "EmpiricalQuerySpec@1.0.0", "EmpiricalFact@1.0.0"):
+        for universe_ref in expected_universes:
+            require_positive_authority(
+                authority, authority_kind="PREDICATE_GRAMMAR", operation=operation,
+                object_family=family, source_universe_ref=universe_ref.as_dict(),
+                predicate_or_risk_set_ref=bundle.risk_set_ref.as_dict(),
+            )
+    return operation
+
+
 def build_projection_catalog(
     *,
     bundle: NativePreimageBundle,
@@ -132,6 +268,7 @@ def build_projection_catalog(
         and "RespondentEvent@1.0.0" in a.governed_object_families
         and "EmpiricalCoordinateFact@1.0.0" in a.governed_object_families
     )
+    query_operation: str | None = None
     if query_authority is None:
         query_auth_digest = _hash({
             "tag": "b49-query", "source_sha256": bundle.source_sha256, "as_of": as_of,
@@ -166,14 +303,8 @@ def build_projection_catalog(
             replay_protocol_ref=_ref("REPLAY_PROTOCOL", "query-authority"),
         )
     else:
-        if not isinstance(query_authority, AuthoritySnapshot):
-            raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_REQUIRED")
-        if (
-            query_authority.typed_state != "ALLOW"
-            or query_authority.decision_state != "ALLOW"
-            or query_authority.authority_kind != "PREDICATE_GRAMMAR"
-        ):
-            raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_NOT_POSITIVE")
+        query_operation = _exact_external_query_authority(
+            authority=query_authority, bundle=bundle, as_of=as_of)
         query_auth = query_authority
     universe = projection.universes[0]
     members = tuple(sorted((r.ref for r in projection.respondents), key=lambda r: r.key))
@@ -235,13 +366,18 @@ def build_projection_catalog(
         same_respondent_binding_semantics="EXACT_SCOPED_RESPONDENT",
         operator_semantics_refs=(_ref("OPERATOR_SEMANTICS", "BOOLEAN-AND-OR-NOT"),),
     )
-    target_domain = tuple(sorted({
-        rule.canonical_value
-        for slot in projection.response_slots
-        if slot.question_binding.native_question_ref == target.native_question_ref
-        for rule in slot.values
-        if rule.response_state == "SUBSTANTIVE_RESPONSE" and rule.canonical_value is not None
-    }))
+    if query_operation is None:
+        target_domain = tuple(sorted({
+            rule.canonical_value
+            for slot in projection.response_slots
+            if slot.question_binding.native_question_ref == target.native_question_ref
+            for rule in slot.values
+            if rule.response_state == "SUBSTANTIVE_RESPONSE" and rule.canonical_value is not None
+        }))
+        target_topology = "SCALAR_SINGULAR"
+    else:
+        target_topology, target_domain = native_target_configuration(
+            bundle=bundle, target_ref=target.native_question_ref)
     from rawlsing_next.pre553_empirical_objects import EmpiricalQuerySpec
 
     grain = {
@@ -255,6 +391,8 @@ def build_projection_catalog(
         if not projection.weight_slots:
             raise WorkloadBindingRefusal("WEIGHTED_MEASURE_WITHOUT_WEIGHT_SLOT")
         grain["weight_basis_id"] = projection.weight_slots[0].weight_basis_id
+    if query_operation is not None:
+        grain["query_operation"] = query_operation
     query = EmpiricalQuerySpec(
         typed_state="QUERY_AUTHORIZED_RESOLVABLE",
         authority_snapshot_refs=(query_auth.authority_ref,),
@@ -266,8 +404,10 @@ def build_projection_catalog(
             "joint_order_semantics": "SEMANTIC_ORDERED",
             "components": [{
                 "target_ref": target.native_question_ref,
-                "topology": "SCALAR_SINGULAR",
-                "domain": [str(v) for v in target_domain],
+                "topology": target_topology,
+                "domain": ([str(v) for v in target_domain]
+                           if target_topology in {"SCALAR_SINGULAR", "ROUTED_RESPONSE"}
+                           else list(target_domain)),
                 "target_domain_replay_ref": _ref(
                     "TARGET_DOMAIN", f"{operation.target_variable_code}-domain"
                 ),

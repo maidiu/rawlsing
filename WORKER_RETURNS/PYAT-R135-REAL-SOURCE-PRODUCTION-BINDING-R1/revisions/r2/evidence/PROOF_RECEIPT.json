@@ -1,0 +1,238 @@
+{
+  "bounded_discovery": "BANKED_EXACT_MISSING_INGRESS_CONTRACT",
+  "host": "r135-harness-host",
+  "permission_before_decode": "BANKED_EXACT_MISSING_CONTRACT",
+  "positive": {
+    "authority_refs": [
+      {
+        "authority_content_hash": "c9282ebc831465f2de4ec080e305465cdd989038e7a8af3693936a80ae0bfa2a",
+        "authority_id": "R135-HARNESS-QUERY",
+        "authority_version": "1.0.0"
+      },
+      {
+        "authority_content_hash": "fffe37903766e70eb0661a0b610348c333d81156df9de53ee90a7e867a44779a",
+        "authority_id": "R135-HARNESS-mapping",
+        "authority_version": "1.0.0"
+      },
+      {
+        "authority_content_hash": "b1994cb3d7aaa1522273fe20139562040abb3f685cd1c86a44d3530a4eeb15ee",
+        "authority_id": "R135-HARNESS-projection",
+        "authority_version": "1.0.0"
+      },
+      {
+        "authority_content_hash": "ab13d1cc33975ee0ae91b607555130a0a753769c777aac3bcd267e65c1aba5e4",
+        "authority_id": "R135-HARNESS-routing",
+        "authority_version": "1.0.0"
+      },
+      {
+        "authority_content_hash": "26e73e9b2c2e6fe0733a297aa00e865228bb41d52a4ec7fd480b88ef2c60f558",
+        "authority_id": "R135-HARNESS-source",
+        "authority_version": "1.0.0"
+      }
+    ],
+    "decision_ref": {
+      "content_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "kind": "R135_HARNESS_DECISION",
+      "object_id": "urn:r135:harness:0"
+    },
+    "denominator_member_count": 2,
+    "envelope_sha256": "4f05e5a321e0d63f5eb4ecd16f2987d3107ee9da2ddad2a9518aa7d9406da186",
+    "execution_detail": "exact governed target distribution resolved",
+    "fact_ref": {
+      "content_hash": "32347c8f101a49285edaec707a936661e5aea655efdbf05d02bbfd0fbb9f32db",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:32347c8f101a49285edaec707a936661e5aea655efdbf05d02bbfd0fbb9f32db"
+    },
+    "manifest_hash": "45855318bc47f9273864cac1a9b5b5874e28a79c3a05e49dfa0278dae4b73909",
+    "measure_kind": "RAW",
+    "raw_denominator_support": 2,
+    "raw_numerator_support": 2,
+    "receipt_count": 1,
+    "risk_set_member_count": 6,
+    "scope": "ORIGINAL_SOURCE_GRANTED",
+    "target_topology": {
+      "arity": 1,
+      "complete_cell_semantic_projection": [
+        {
+          "cell": [
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:2644c049dc55ecee781ea1a05ed2348bd46901fab31161f782d8a6d12c1cc389",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 0
+              },
+              "value": "0"
+            },
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:25518814e6611acd193e061477bdaf209f27a500fdbb0aae221c518f417987b3",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 1
+              },
+              "value": "0"
+            }
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell": [
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:62224eb21293da29324a3980efb96d829b481ddffa2e1a4a6952da72ba109658",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 0
+              },
+              "value": "2"
+            },
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:9e3a5dd58d45179cae799ee97fbbfcc640eb168fc996330d030fe52f71e0d29a",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 1
+              },
+              "value": "2"
+            }
+          ],
+          "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "raw_numerator_support": 0,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell": [
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:b59a552d5d4696d2f361fe25aaa560cc0db20c7409b9caa72002797682a699a4",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 0
+              },
+              "value": "0"
+            },
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:9424df9a8ee496705d9efdc3cf0cf489318ef743bf89305723d6e61564c5f219",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 1
+              },
+              "value": "0"
+            }
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell": [
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:c3ad9533b12fcefb16d1d8737735cde4ef1b9e90bb0db53fd0136634bc5cab0d",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 0
+              },
+              "value": "1"
+            },
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:c1aabaa8c93396abb7ca77dd2500879a4301a2526a4c2a7dc629e25f991dfd25",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 1
+              },
+              "value": "1"
+            }
+          ],
+          "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "raw_numerator_support": 0,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell": [
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:c4b5aacda3925fd28098561e54ad654ca75fa1aff292d4b437a2a1f3f881dbb6",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 0
+              },
+              "value": "2"
+            },
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:854eac922f84c5cbcce986e1c926332e88df22ea2c60f880b82f564f93cd3a53",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 1
+              },
+              "value": "2"
+            }
+          ],
+          "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "raw_numerator_support": 0,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell": [
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:d5db51b22bc01fe6dd5b8bc997c1cfdcb02b75974c63f2c9161cf215b9d15416",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 0
+              },
+              "value": "1"
+            },
+            {
+              "event_id": "urn:rawlsing:pre553:c05r2a:event:sha256:9144d4dcd2a55d9fda7c09560425072a023511fe0c23026436165c431708a8cf",
+              "multiplicity_order_rank_fields": {
+                "kind": "REPEATED_EVENT",
+                "multiplicity_index": 1
+              },
+              "value": "1"
+            }
+          ],
+          "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "raw_numerator_support": 0,
+          "weighted_numerator_support_if_authorized": null
+        }
+      ],
+      "joint_order_semantics": "SEMANTIC_ORDERED",
+      "target_domain_identity": "b660c9539f4b3867bed29eac3b12fe52d059b6348c464f175faf61579b83e75d"
+    },
+    "typed_state": "SUPPORTED"
+  },
+  "purpose": "R135_HARNESS_TRANSPORT_QUALIFICATION",
+  "refusals": {
+    "foreign_descriptor": "DESCRIPTOR_NOT_BOUND_TO_SOURCE",
+    "foreign_query_source": "SUPPLIED_QUERY_AUTHORITY_SOURCE_MISMATCH",
+    "foreign_source_authority": "SUPPLIED_AUTHORITY_SOURCE_MISMATCH"
+  },
+  "restoration": {
+    "same_fact_refs": true,
+    "same_manifest_hash": true
+  },
+  "schema": "PYAT_R137_PROOF_RECEIPT@1",
+  "source_proof": false,
+  "source_reads": 0,
+  "status": "TOPOLOGY_SUPPORTED_NATIVE_POSITIVE_ON_SYNTHETIC_HARNESS__NOT_SOURCE",
+  "synthetic_harness_only": true,
+  "value_dependence": {
+    "different_fact_refs": true,
+    "response_0": {
+      "denominator": 2,
+      "fact_ref": {
+        "content_hash": "32347c8f101a49285edaec707a936661e5aea655efdbf05d02bbfd0fbb9f32db",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:32347c8f101a49285edaec707a936661e5aea655efdbf05d02bbfd0fbb9f32db"
+      },
+      "numerator": 2,
+      "typed_state": "SUPPORTED"
+    },
+    "response_1": {
+      "denominator": 2,
+      "fact_ref": {
+        "content_hash": "2bb5158fc8fb7f5c1da1bc789b31ae9e487bb42a859dfc264196e4cf830cc45d",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:2bb5158fc8fb7f5c1da1bc789b31ae9e487bb42a859dfc264196e4cf830cc45d"
+      },
+      "numerator": 2,
+      "typed_state": "SUPPORTED"
+    }
+  }
+}

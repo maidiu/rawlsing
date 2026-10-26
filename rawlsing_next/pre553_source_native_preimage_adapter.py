@@ -411,6 +411,7 @@ class NativePreimageBundle:
     risk_set_ref: ExactRef
     respondent_rows: tuple[Mapping[str, Any], ...]
     occurrence_bindings: tuple[Mapping[str, Any], ...]
+    source_format: str = "UNKNOWN"
 
     @property
     def administered_ids(self) -> tuple[str, ...]:
@@ -568,6 +569,11 @@ def materialize_native_preimages(
         )
         if tuple(a.authority_kind for a in authorities) != expected_kinds:
             raise NativePreimageRefusal("SUPPLIED_AUTHORITY_ROLE_MISMATCH")
+        for authority in authorities:
+            scope = authority.scope_envelope
+            if not isinstance(scope, Mapping) or scope.get("source_sha256") != source.declared_sha256:
+                raise NativePreimageRefusal(
+                    "SUPPLIED_AUTHORITY_SOURCE_MISMATCH", authority.authority_id)
     source_auth, mapping_auth, coord_auth, routing_auth, weight_auth, replay_auth, projection_auth = authorities
     variable_names = {name for row in rows.values() for name in row}
     for required in (package.coordinate_variable,):
@@ -922,6 +928,7 @@ def materialize_native_preimages(
         bundle_hash=_hash(material), question_refs=dict(question_refs),
         risk_set_ref=risk_ref, respondent_rows=respondent_rows,
         occurrence_bindings=tuple(occurrence_evidence),
+        source_format=source.source_format,
     )
 
 
