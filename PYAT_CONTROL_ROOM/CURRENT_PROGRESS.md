@@ -1,3 +1,10 @@
+# R125 executable launch-packet assembly running
+
+Existing OpenCode session actually launched bounded sourcefree preparation of exact representative Route B empirical AND learned artifacts/FF/V553+ calls, current rights and execution commands. Historical dataset/test counts are locator evidence not scope authority. No raw source/code/science grant, no new worker/session. R124 milestone active parallel C5, full scope/holds retained. High bounded decision complete; Low next.
+
+
+## Earlier progress history retained
+
 # R124 Route B milestone restored
 
 Direct user restores adopted HQD116/117 artifact-first representative convergence, with HQD118 and later accepted progress retained. Active critical path parallel to C5; all35/full accounting remains endpoint not prerequisite. R123 custody/pins verified, bounded retrieval accepted, exact joint/role/use residual remains; no generic repeat hunt. Bounded High next for exact representative scope/rights/readiness and authorized operation. No source/code/science/host blanket grant or new worker.
