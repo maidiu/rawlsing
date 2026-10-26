@@ -29,25 +29,25 @@ These are theoretical and empirical traditions with differences: Leontiev foregr
 **Multiple clocks:** instant encounter, repeated daily interval, long institutional season, maturation with acquired practices, historical cohort/life course. Clock order is a constraint on causation, not a predetermined age-to-belief mapping. The user's settled 3–5 conditional-event batch requires sequential grounding of intervening activity without intermediate LLM calls; it does **not** authorize silently synthesizing thousands of unseen memory-imprinting microevents.
 
 ## 4. Mechanism proposals: typed contracts, candidate only
-\`resolve_feasible_activity_window(world_context, actor_abilities, household_and_institutional_rosters, coactor_commitments, prior_activities, start, end, source_provenance) -> FeasibilityWindow | UNRESOLVED\`: distinguish permitted, physically feasible, merely wished-for and prohibited acts.
+`resolve_feasible_activity_window(world_context, actor_abilities, household_and_institutional_rosters, coactor_commitments, prior_activities, start, end, source_provenance) -> FeasibilityWindow | UNRESOLVED`: distinguish permitted, physically feasible, merely wished-for and prohibited acts.
 
-\`realize_interval_activity(window, independently_resolved_actor_intentions_and_decisions, accessible_resources, constraint_changes) -> IntervalRecord\`: output actual sequences/occupancy, unmet commitments, supports, emergent opportunities, objective resource changes, explicit UNKNOWN and source/event identities. If sources cannot resolve an event, emit unresolved rather than a pseudo-random psychological incident.
+`realize_interval_activity(window, independently_resolved_actor_intentions_and_decisions, accessible_resources, constraint_changes) -> IntervalRecord`: output actual sequences/occupancy, unmet commitments, supports, emergent opportunities, objective resource changes, explicit UNKNOWN and source/event identities. If sources cannot resolve an event, emit unresolved rather than a pseudo-random psychological incident.
 
-\`derive_participation_effects(interval, prior_practice_history, actor_attempts, support_and_feedback, skill_evidence) -> ProposedPracticeChanges | NO_CHANGE\`: outputs can include context-specific opportunity/skill/repertoire changes or persistence; **no numerical learning law** until scientific owner issues one.
+`derive_participation_effects(interval, prior_practice_history, actor_attempts, support_and_feedback, skill_evidence) -> ProposedPracticeChanges | NO_CHANGE`: outputs can include context-specific opportunity/skill/repertoire changes or persistence; **no numerical learning law** until scientific owner issues one.
 
-\`offer_actor_exposure(actor_id, interval_and_events, situated_sensory_and_conceptual_access) -> ExposurePacket\`: for N01/N07/N08, preserves objective non-exposure and indeterminacy. Only legitimate person consumer writes after rule-qualified admission.
+`offer_actor_exposure(actor_id, interval_and_events, situated_sensory_and_conceptual_access) -> ExposurePacket`: for N01/N07/N08, preserves objective non-exposure and indeterminacy. Only legitimate person consumer writes after rule-qualified admission.
 
 **Example trace, not empirical result:** parent working a late shift (source-backed world fact) → not at home for a particular child bedtime → another caregiver reads to child → child has care and also distinct missing-parent opportunity; on return, affection may be shown → respondent's actual episodes available to N07/N08. A child's "capitalism took my parent" is **not** written. Alternative episode with parent away while child is engaged in play, and no registered need or disruption, produces no psychological event while world occupancy still changes.
 
 ## 5. Crosswalk from historical V3 (documentary)
 | Historical candidate | Grade for N06 | Missing or salvageable edge |
 |---|---|---|
-| M02 \`Capacity; update_capacity; update_health_drift\` | INFRASTRUCTURE_ONLY | Potentially retain material budget/state; annual scalar drift does not resolve time-window care access. |
-| M04 \`ReproductionConstraints; update_reproduction_constraints\` | PARTIAL_WRONG_MEANING | Has dependents/debt/job/care relations; object-level rosters and coactor occupancy absent from evidence. |
-| M12 \`CollectiveInfrastructure; update_collective_infrastructure\` | INFRASTRUCTURE_ONLY | Field of supports; must prove exact accessible institutions/people, no inferred collective psyche bonus. |
-| M13 \`PracticeStack; update_practice_stack\` | PARTIAL_WRONG_MEANING | Practices and event update exist; missing independently grounded repetition/acquisition and contextual transfer. |
-| M16 \`StrivingObject; update_striving_step\` | PARTIAL_WRONG_MEANING | Persistence of objectives, not their actual feasibility; spawn-for-age defective if taken as lived ontology. |
-| M25 \`run_one_year; step_one_year; run_n_years\` | INFRASTRUCTURE_ONLY | Ordered causal spine valuable; yearly period insufficient for ordered 3–5 event / interval-dependent interaction by itself. |
+| M02 `Capacity; update_capacity; update_health_drift` | INFRASTRUCTURE_ONLY | Potentially retain material budget/state; annual scalar drift does not resolve time-window care access. |
+| M04 `ReproductionConstraints; update_reproduction_constraints` | PARTIAL_WRONG_MEANING | Has dependents/debt/job/care relations; object-level rosters and coactor occupancy absent from evidence. |
+| M12 `CollectiveInfrastructure; update_collective_infrastructure` | INFRASTRUCTURE_ONLY | Field of supports; must prove exact accessible institutions/people, no inferred collective psyche bonus. |
+| M13 `PracticeStack; update_practice_stack` | PARTIAL_WRONG_MEANING | Practices and event update exist; missing independently grounded repetition/acquisition and contextual transfer. |
+| M16 `StrivingObject; update_striving_step` | PARTIAL_WRONG_MEANING | Persistence of objectives, not their actual feasibility; spawn-for-age defective if taken as lived ontology. |
+| M25 `run_one_year; step_one_year; run_n_years` | INFRASTRUCTURE_ONLY | Ordered causal spine valuable; yearly period insufficient for ordered 3–5 event / interval-dependent interaction by itself. |
 | M33 generic pseudo-random event sampler | CONFLICTING | May produce illustrative story motion, cannot furnish qualified objective child-care event history. |
 | M37 structural placeholder scene | CONFLICTING_IF_MEMORY | Archived TD-R05 reports quarantine/degraded flag. Preserve inert annotation, never forge memory/exposure. |
 | M38 derived-schedule consistency | INFRASTRUCTURE_ONLY | Fail-fast check retains value, but scheduler authority must be explicit, contextual and source-qualified. |
@@ -61,4 +61,4 @@ Source identities M02/M04/M12/M13/M16/M25/M33/M37/M38 are the M-card and TD-R05 
 
 **Owner boundary:** SDTF/world owner for structurally admissible times/places; ADP/CAN rules for context-to-person practice update; C8/C9 for coactor event-resolution; C12 downstream consumer only on proven native seam. X03/X04/X05 own archival code verification. No admissible learning coefficients, clock weights, or native source permission granted by this document.
 
-**First terminal consumer obligation:** an actual native C9/C12 actor interval must read a \`FeasibilityWindow\` and \`IntervalRecord\`; material shift deletion must sever a particular objective exposure, not merely reduce narrative color. Independently review at exact source ref and positive/negative/NO_CHANGE case.
+**First terminal consumer obligation:** an actual native C9/C12 actor interval must read a `FeasibilityWindow` and `IntervalRecord`; material shift deletion must sever a particular objective exposure, not merely reduce narrative color. Independently review at exact source ref and positive/negative/NO_CHANGE case.

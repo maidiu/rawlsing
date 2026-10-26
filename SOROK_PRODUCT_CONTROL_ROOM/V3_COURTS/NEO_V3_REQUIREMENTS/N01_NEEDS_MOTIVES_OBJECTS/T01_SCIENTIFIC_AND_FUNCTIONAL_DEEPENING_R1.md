@@ -35,28 +35,28 @@ Neither "they didn't love me" nor "they sacrificed for me" follows at the early 
 **Competing causal accounts requiring differentiation:** (A) insufficient time/response is primary; (B) relationship repair/quality stabilizes reliable expectation despite time scarcity; (C) co-caregivers materially meet the need and alter object of pursuit; (D) material depletion affects routines indirectly through caregiver distress rather than hours; (E) practical scarcity is registered only locally and leaves no durable emotional disposition; (F) apparent retrospective grievance is later reinterpretation, not evidence that an infant believed it. The system must allow all six where supported, and withhold judgment otherwise.
 
 ## 4. Typed nonnumeric operator candidates (NOT scientific rules)
-\`derive_need_opportunity(actor_state, bodily_condition_observation, household_resources, resolved_context, history, time_window) -> NeedOpportunityAssessment\`: include need kind, urgency as *observed/not-observed/indeterminate*, candidate attainable objects with permission/actor identity, evidence and noncoverage. Do not deduce desire from hunger or "low income".
+`derive_need_opportunity(actor_state, bodily_condition_observation, household_resources, resolved_context, history, time_window) -> NeedOpportunityAssessment`: include need kind, urgency as *observed/not-observed/indeterminate*, candidate attainable objects with permission/actor identity, evidence and noncoverage. Do not deduce desire from hunger or "low income".
 
-\`resolve_object_engagement(actor, motive_object_candidate, situated_action_options, coactor_actions, costs, outcome_evidence) -> EngagementRecord | NO_ENCOUNTER | BLOCKED\`: expose whose action/decision rendered the object accessible; do not write motive from an LLM proposal.
+`resolve_object_engagement(actor, motive_object_candidate, situated_action_options, coactor_actions, costs, outcome_evidence) -> EngagementRecord | NO_ENCOUNTER | BLOCKED`: expose whose action/decision rendered the object accessible; do not write motive from an LLM proposal.
 
-\`adjudicate_motive_formation(prior_object_history, performed_acts, achieved/failed objects, available_social_meanings, comparative_contexts, evidence) -> HypothesisSet | ABSTAIN\`: hypotheses can remain alternatives; only competent psychological rule owner defines persistence and epistemic update. One isolated act is insufficient to fix a motive.
+`adjudicate_motive_formation(prior_object_history, performed_acts, achieved/failed objects, available_social_meanings, comparative_contexts, evidence) -> HypothesisSet | ABSTAIN`: hypotheses can remain alternatives; only competent psychological rule owner defines persistence and epistemic update. One isolated act is insufficient to fix a motive.
 
-\`record_dual_care_evidence(child, relation_id, episodes, child_accessible_cues, support, times) -> RelationEvidence\`: preserve separable channels provision, absence, experienced safety, recognition and unknown; do not collapse into secure/insecure attachment labels.
+`record_dual_care_evidence(child, relation_id, episodes, child_accessible_cues, support, times) -> RelationEvidence`: preserve separable channels provision, absence, experienced safety, recognition and unknown; do not collapse into secure/insecure attachment labels.
 
 Possible *first consumers*: N06's opportunity/routine resolver, N03/N04's event-response application, N08 impression/no-change, N07 multi-actor encounter; native actor C9/C12 only after source/authority. No psychological update simply from class category, parental work, gender, age or survey averages.
 
 ## 5. Historical candidate comparison (documentary, NOT direct V3 code)
 | Candidate source (TD-R05/M-card) | Coverage grade | Proven capability / precise missing law |
 |---|---|---|
-| M02 \`Capacity; update_capacity; update_health_drift\` (\`v3/core/state.py\`, \`v3/systems/capacity.py\`, \`health_drift.py\`) | INFRASTRUCTURE_ONLY | Material capacity tracked annually; no proven situated object-access/care-recipient mediation. |
-| M03 \`PsychologicalCapacity; derive_vitality_profile\` | PARTIAL_WRONG_MEANING | Internal regulatory dimensions, not a rights/objects/relations model; reject magical psyche-capacity-to-need mapping. |
-| M04 \`ReproductionConstraints; update_reproduction_constraints; _derive_hostage_index\` | INFRASTRUCTURE_ONLY | Household/debt/work constraints; hostage/expression indices cannot issue felt meaning. |
-| M15 \`NEED_AXES; derive_child_expectation_baseline; infer_parent_baseline_and_regime\` | PARTIAL_WRONG_MEANING / CONFLICTING DEFAULT | Typed needs and expectation scaffolding; missing behavior mapped to 50/50/50 and default "hopeful" — invalid unobserved-care inference. |
-| M16 \`StrivingObject; spawn_striving_objects_for_age; update_existing_objects; update_striving_step\` | PARTIAL_WRONG_MEANING | Durable pursuit object useful; age-spawn must be replaced by history/availability/recognition-conditioned formation, not chronological psychological truth. |
-| M22 \`child_model; backbone_state_from_identity; PASS1_SYSTEM\` | PARTIAL_WRONG_MEANING | Model of limits/taboos used in prompt; not a demonstrated endogenous preverbal meaning-development law. |
-| M23 \`autonomy_drive/safety_drive; autonomy_safety_micro_drift\` | PARTIAL_WRONG_MEANING | Existing changes and trace but default drives and global drift not evidence of specific experienced needs. |
+| M02 `Capacity; update_capacity; update_health_drift` (`v3/core/state.py`, `v3/systems/capacity.py`, `health_drift.py`) | INFRASTRUCTURE_ONLY | Material capacity tracked annually; no proven situated object-access/care-recipient mediation. |
+| M03 `PsychologicalCapacity; derive_vitality_profile` | PARTIAL_WRONG_MEANING | Internal regulatory dimensions, not a rights/objects/relations model; reject magical psyche-capacity-to-need mapping. |
+| M04 `ReproductionConstraints; update_reproduction_constraints; _derive_hostage_index` | INFRASTRUCTURE_ONLY | Household/debt/work constraints; hostage/expression indices cannot issue felt meaning. |
+| M15 `NEED_AXES; derive_child_expectation_baseline; infer_parent_baseline_and_regime` | PARTIAL_WRONG_MEANING / CONFLICTING DEFAULT | Typed needs and expectation scaffolding; missing behavior mapped to 50/50/50 and default "hopeful" — invalid unobserved-care inference. |
+| M16 `StrivingObject; spawn_striving_objects_for_age; update_existing_objects; update_striving_step` | PARTIAL_WRONG_MEANING | Durable pursuit object useful; age-spawn must be replaced by history/availability/recognition-conditioned formation, not chronological psychological truth. |
+| M22 `child_model; backbone_state_from_identity; PASS1_SYSTEM` | PARTIAL_WRONG_MEANING | Model of limits/taboos used in prompt; not a demonstrated endogenous preverbal meaning-development law. |
+| M23 `autonomy_drive/safety_drive; autonomy_safety_micro_drift` | PARTIAL_WRONG_MEANING | Existing changes and trace but default drives and global drift not evidence of specific experienced needs. |
 
-All function identities here are **reported by TD-R05 direct-archive audit**, commit 25830fe7462bb9e29bc4087e6ae14f3f84cec377, blob dfcc7e4fc7b6e907218d7a368ceb9d269a49206d; they are not independently recertified line-by-line. A direct fetch of \`v3/core/state.py\` on both worker startup and that historic commit returned 404. Coverage grades refer to *Neo-V3 requirement*, not proof of current code absence.
+All function identities here are **reported by TD-R05 direct-archive audit**, commit 25830fe7462bb9e29bc4087e6ae14f3f84cec377, blob dfcc7e4fc7b6e907218d7a368ceb9d269a49206d; they are not independently recertified line-by-line. A direct fetch of `v3/core/state.py` on both worker startup and that historic commit returned 404. Coverage grades refer to *Neo-V3 requirement*, not proof of current code absence.
 
 ## 6. Falsifiers, scope, and owners
 - **Adversarial positive:** loving parent works nights, third-party care is reliable, child shows comfort at reunion and also frustration at bedtime. Expected: dual evidence, no forced global judgment.

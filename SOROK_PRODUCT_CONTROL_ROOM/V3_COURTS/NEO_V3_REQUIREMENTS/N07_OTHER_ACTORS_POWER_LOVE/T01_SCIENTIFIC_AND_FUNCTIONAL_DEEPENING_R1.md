@@ -43,30 +43,30 @@ For example, equal loving intention under two leave policies may yield different
 **Hostile rival A:** caregiver availability actually is sufficient given child's other relationships; the initial model over-pathologizes missed hours. **Rival B:** parent proclaims love but consistently acts coercively or neglectfully; declared affection cannot override conduct. **Rival C:** child's response is situational fatigue/illness, not durable care inference. **Rival D:** later moral language reorganizes memory; it is not a transcript of infancy. **Rival E:** systemic exploitation is an objective explanatory cause but a caregiver's own contingent conduct still makes an independent difference. Every candidate must survive these.
 
 ## 5. Typed contracts: actors cannot be scenery
-\`resolve_other_actor_actions(coactor_state_id, coactor_specific_context, feasible_choices, constraints, past_commitments, admissible_rule, clock) -> ActorDecisionRecord | DECLINED | UNRESOLVED\` — with independent state lineage and possible refusal, consent and effort.
+`resolve_other_actor_actions(coactor_state_id, coactor_specific_context, feasible_choices, constraints, past_commitments, admissible_rule, clock) -> ActorDecisionRecord | DECLINED | UNRESOLVED` — with independent state lineage and possible refusal, consent and effort.
 
-\`resolve_joint_encounter(world_event, all_actor_decisions, physical_overlap, institutional_power_relations, consent_and_action_permissions) -> ActualEncounter | NO_ENCOUNTER | CONFLICT\` — preserves what each independently did, direct versus indirect exposure, what did not happen and who made the difference.
+`resolve_joint_encounter(world_event, all_actor_decisions, physical_overlap, institutional_power_relations, consent_and_action_permissions) -> ActualEncounter | NO_ENCOUNTER | CONFLICT` — preserves what each independently did, direct versus indirect exposure, what did not happen and who made the difference.
 
-\`derive_recipient_reception(actor_id, actual_encounter, actor_specific_access, preceding_relation_history, need_objects_and_current_activity) -> EvidenceOfReception | INDETERMINATE | NOT_EXPOSED\` — distinct from objective action. Psychological writes are withheld unless separately issued by scientific owner.
+`derive_recipient_reception(actor_id, actual_encounter, actor_specific_access, preceding_relation_history, need_objects_and_current_activity) -> EvidenceOfReception | INDETERMINATE | NOT_EXPOSED` — distinct from objective action. Psychological writes are withheld unless separately issued by scientific owner.
 
-\`propose_relation_revision(previous_relation_state, linked_receptions, actual_support_and_repairs, scope, uncertainty) -> HypothesisSet | NO_CHANGE\` — may preserve simultaneous security/warmth and insufficiency/anger; no global attachment score forced. Only N04/N05/N08/ADP competent rules may admit a lasting result.
+`propose_relation_revision(previous_relation_state, linked_receptions, actual_support_and_repairs, scope, uncertainty) -> HypothesisSet | NO_CHANGE` — may preserve simultaneous security/warmth and insufficiency/anger; no global attachment score forced. Only N04/N05/N08/ADP competent rules may admit a lasting result.
 
-**First consumption:** N06 resolves co-presence and opportunities; N01 binds practical motive-objects; N08 admits actor-level impression or no-effect; N09 later fallible reinterpretation. C8/C9 and eventual C12 must read independent \`ActorDecisionRecord\` and \`ActualEncounter\` identity; never accept the same LLM candidate as another agent's independently chosen action.
+**First consumption:** N06 resolves co-presence and opportunities; N01 binds practical motive-objects; N08 admits actor-level impression or no-effect; N09 later fallible reinterpretation. C8/C9 and eventual C12 must read independent `ActorDecisionRecord` and `ActualEncounter` identity; never accept the same LLM candidate as another agent's independently chosen action.
 
 ## 6. Historical V3 coverage grades, not code reads
 | Candidate | Grade | Required change / preservation |
 |---|---|---|
-| M04 \`ReproductionConstraints; _derive_hostage_index\` | INFRASTRUCTURE_ONLY | Retain dependency/job/care constraints; no hostage-index-to-child-feeling shortcut. |
-| M06 \`AlienationVector; update_alienation\` | PARTIAL_WRONG_MEANING | Individuated alienation candidate but old delta/schema mismatch reported; not relation-specific love. |
-| M07 \`Registers; apply_expression_gating\` | PARTIAL_WRONG_MEANING | Private/expressed difference useful, but an actor's hidden state is not omniscient access to another's. |
-| M10 \`Buffer; BufferCostProfile; update_buffers\` | PARTIAL_WRONG_MEANING | Costs/regulated response; bind to actual persons, time and repairs. |
-| M12 \`CollectiveInfrastructure; update_collective_infrastructure\` | INFRASTRUCTURE_ONLY | Network field can enable options only if actual people/institutions accessible. |
-| M20 \`Magnet; update_active_magnets_step; build_relational_field_projection\` | PARTIAL_WRONG_MEANING | Need independent entity identity and bidirectional histories; never confuse actor attraction with objective V555 structural projection. |
-| M21 \`run_pressure_flow_cycle; _update_memory; _channel_conductance\` | PARTIAL_WRONG_MEANING | Promising transactional pressure history, but no proof of current coactor interaction or justified infant input. |
-| M27 \`parse_candidate_packet; build_pass1_prompt\` | INFRASTRUCTURE_ONLY | Proposal only; cannot unilaterally author coactor choices or psyche truth. |
-| M28 \`score_event_candidate; select_candidates; apply_deltas_to_state\` | PARTIAL_WRONG_MEANING | Admission/apply seam needs independently generated other actor, rules, replay, no fallback concreteness. |
+| M04 `ReproductionConstraints; _derive_hostage_index` | INFRASTRUCTURE_ONLY | Retain dependency/job/care constraints; no hostage-index-to-child-feeling shortcut. |
+| M06 `AlienationVector; update_alienation` | PARTIAL_WRONG_MEANING | Individuated alienation candidate but old delta/schema mismatch reported; not relation-specific love. |
+| M07 `Registers; apply_expression_gating` | PARTIAL_WRONG_MEANING | Private/expressed difference useful, but an actor's hidden state is not omniscient access to another's. |
+| M10 `Buffer; BufferCostProfile; update_buffers` | PARTIAL_WRONG_MEANING | Costs/regulated response; bind to actual persons, time and repairs. |
+| M12 `CollectiveInfrastructure; update_collective_infrastructure` | INFRASTRUCTURE_ONLY | Network field can enable options only if actual people/institutions accessible. |
+| M20 `Magnet; update_active_magnets_step; build_relational_field_projection` | PARTIAL_WRONG_MEANING | Need independent entity identity and bidirectional histories; never confuse actor attraction with objective V555 structural projection. |
+| M21 `run_pressure_flow_cycle; _update_memory; _channel_conductance` | PARTIAL_WRONG_MEANING | Promising transactional pressure history, but no proof of current coactor interaction or justified infant input. |
+| M27 `parse_candidate_packet; build_pass1_prompt` | INFRASTRUCTURE_ONLY | Proposal only; cannot unilaterally author coactor choices or psyche truth. |
+| M28 `score_event_candidate; select_candidates; apply_deltas_to_state` | PARTIAL_WRONG_MEANING | Admission/apply seam needs independently generated other actor, rules, replay, no fallback concreteness. |
 
-TD-R05 provenance: original archive hash 953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086, documentary audit report blob dfcc7e4fc7b6e907218d7a368ceb9d269a49206d; 80 tests were historical and do not certify C9/C12. No direct historical \`v3/\` files available through this branch; no Mac access.
+TD-R05 provenance: original archive hash 953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086, documentary audit report blob dfcc7e4fc7b6e907218d7a368ceb9d269a49206d; 80 tests were historical and do not certify C9/C12. No direct historical `v3/` files available through this branch; no Mac access.
 
 ## 7. Discriminating adversarial tests and authority
 **Case P1:** loving night-shift parent, scarce bedtime time, warm reunions, reliable grandmother. Expected: objective missed presence plus realized care plus separate actor-specific histories, and possible dual child reception; no obligatory childhood belief. **Case P2:** identical parent work shift but no bedtime overlap and no child reception: objective occupancy changes, psyche can remain NO_CHANGE. **Case P3:** affectionate verbal assurances coexisting with repeatedly harmful acts: practical care must not be inferred from professed love. **Case P4:** parent present but emotionally unresponsive; time is not care. **Case P5:** change employer shift/collective care policy and keep parental intention fixed; encounter availability must change *if* that upstream edge is operative.
