@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261026-PYAT-HQ-R148-ALL35-COMPLETE-METADATA-R1",
-  "handoff_commit": "307f703abeb52b7edcdfe2d751f17d99c5934e5a",
+  "checkpoint_id": "20261026-PYAT-HQ-R149-ALL35-METADATA-INTAKE-R1",
+  "handoff_commit": "ae3393162bb268b25e70c6ada84bee7c1de3139d",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R148-ALL35-COMPLETE-METADATA-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R148-ALL35-COMPLETE-METADATA-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R148-ALL35-COMPLETE-METADATA-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R149-ALL35-METADATA-INTAKE-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R149-ALL35-METADATA-INTAKE-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R149-ALL35-METADATA-INTAKE-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "307f703abeb52b7edcdfe2d751f17d99c5934e5a",
+  "canonical_control_base": "ae3393162bb268b25e70c6ada84bee7c1de3139d",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "307f703abeb52b7edcdfe2d751f17d99c5934e5a",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R148-ALL35-COMPLETE-METADATA-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R148-ALL35-COMPLETE-METADATA-R1/CURRENT.md",
+  "qualified_working_hq_commit": "ae3393162bb268b25e70c6ada84bee7c1de3139d",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R149-ALL35-METADATA-INTAKE-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R149-ALL35-METADATA-INTAKE-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 146,
-    "canonical_report_commit": "307f703abeb52b7edcdfe2d751f17d99c5934e5a",
+    "revision": 147,
+    "canonical_report_commit": "ae3393162bb268b25e70c6ada84bee7c1de3139d",
     "counterpart": "Sorok rev34 independent; no Pyat actor grant"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261026-PYAT-HQ-R147-ALL35-CURRENT-METADATA-R1",
-    "handoff_commit": "f8cb0c974f7a7f01b5b9d6a7dbf4345af1f67f27"
+    "checkpoint_id": "20261026-PYAT-HQ-R148-ALL35-COMPLETE-METADATA-R1",
+    "handoff_commit": "307f703abeb52b7edcdfe2d751f17d99c5934e5a"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "Intake R148 all35 metadata integration and exact remaining native wiring prerequisites; no source access until applicable grant.",
-  "worker_state_truth": "R147 terminal; R148 same existing OpenCode author PID49747 launched, tool preflight pending.",
+  "next_action": "Bounded same-HQ High decision: consume existing scientific bindings into actual runnable native workload; isolate exact missing fields/authority without another metadata wrapper. Source access pending.",
+  "worker_state_truth": "All existing authors/reviewers terminal. No new executor.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -354,22 +354,7 @@
     ],
     "acceptance": "Author result is candidate; distinct reviewer independently qualifies exact candidate, then HQ scoped disposition. R09 local is not deployed enforcement."
   },
-  "r61_actual_workers": [
-    {
-      "id": "R148_ALL35_COMPLETE_METADATA",
-      "pid": 49747,
-      "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
-      "branch": "agent/opencode-pyat-r148-all35-complete-metadata-r1",
-      "startup": "3801f743c50634563c2dfe363847bfc4b91347d5",
-      "commission_tip": "cf1a701d33a41a98276a990f92f08fcb563c6364",
-      "commission_path": "WORKER_COMMISSIONS/PYAT-R148-ALL35-COMPLETE-METADATA-R1/00_COMMISSION.md",
-      "return_root": "WORKER_RETURNS/PYAT-R148-ALL35-COMPLETE-METADATA-R1",
-      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r148-all35-complete-metadata",
-      "state": "ACTUALLY_LAUNCHED",
-      "actual_tool_preflight": "PENDING"
-    }
-  ],
+  "r61_actual_workers": [],
   "r61_launch_evidence": "ae63a8c2da620d850cc974eb43c3e396abec30cb",
   "active_goal": {
     "active": true,
@@ -379,7 +364,7 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "7a6a286cc13eada0d663cf625f94386f9db8ef7a",
+  "current_development_evidence": "14dd304645d3e95a57a93d067531e3b771cf2aab",
   "new_R87_operative_grants": false,
   "secondary_hq_status": "USER_APPOINTED_BROWSER_SECONDARY__PRIMARY_CODEX_NOT_REVOKED"
 }
