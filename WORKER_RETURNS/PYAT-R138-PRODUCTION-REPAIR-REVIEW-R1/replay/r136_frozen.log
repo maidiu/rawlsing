@@ -1,0 +1,241 @@
+FF.F.                                                                    [100%]
+=================================== FAILURES ===================================
+______________ test_R136_wrong_query_authority_source_must_refuse ______________
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5/.r61/r138/tmp/test_R136_wrong_query_authorit0')
+
+    def test_R136_wrong_query_authority_source_must_refuse(tmp_path):
+>       result = _run(tmp_path, qauth_transform=_wrong_query_source)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.r61/r138/probes/test_r136_frozen.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.r61/r138/probes/test_r136_frozen.py:44: in _run
+    catalog, request = build_projection_catalog(
+rawlsing_next/pre553_native_workload_binding.py:306: in build_projection_catalog
+    query_operation = _exact_external_query_authority(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _exact_external_query_authority(
+        *, authority: AuthoritySnapshot, bundle: NativePreimageBundle, as_of: str,
+    ) -> str:
+        if not isinstance(authority, AuthoritySnapshot):
+            raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_REQUIRED")
+        if (authority.typed_state != "ALLOW" or authority.decision_state != "ALLOW"
+                or authority.authority_kind != "PREDICATE_GRAMMAR"):
+            raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_NOT_POSITIVE")
+        scope = authority.scope_envelope
+        if not isinstance(scope, Mapping):
+            raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_SCOPE_REQUIRED")
+        if scope.get("source_sha256") != bundle.source_sha256:
+>           raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_SOURCE_MISMATCH")
+E           rawlsing_next.pre553_native_workload_binding.WorkloadBindingRefusal: SUPPLIED_QUERY_AUTHORITY_SOURCE_MISMATCH
+
+rawlsing_next/pre553_native_workload_binding.py:212: WorkloadBindingRefusal
+______________ test_R136_foreign_descriptor_metadata_must_refuse _______________
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5/.r61/r138/tmp/test_R136_foreign_descriptor_m0')
+
+    def test_R136_foreign_descriptor_metadata_must_refuse(tmp_path):
+        def foreign_descriptor(descriptor):
+            descriptor = dict(descriptor)
+            descriptor["source_edition"] = "0" * 64
+            descriptor["country_and_population"] = {
+                "country": "ZZ", "population": "FOREIGN",
+            }
+            return descriptor
+    
+>       result = _run(tmp_path, descriptor_transform=foreign_descriptor)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.r61/r138/probes/test_r136_frozen.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.r61/r138/probes/test_r136_frozen.py:59: in _run
+    workload = build_production_query_workload(
+rawlsing_next/pre553_production_binding.py:205: in build_production_query_workload
+    return build_production_workload(
+rawlsing_next/pre553_production_binding.py:174: in build_production_workload
+    descriptor_bytes = (_exact_descriptor(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _exact_descriptor(
+        *, bundle: NativePreimageBundle, catalog: RuntimeObjectCatalog,
+        requests: tuple[I03ExecutionRequest, ...], descriptor: Mapping[str, Any],
+    ) -> bytes:
+        projection = bundle.projection
+        if len(requests) != 1:
+            raise ProductionBindingRefusal("DESCRIPTOR_REQUIRES_ONE_EXACT_QUERY")
+        request = requests[0]
+        query = catalog.resolve_query_exact(request.query_ref)
+        target_refs = tuple(exact_ref(ref, "descriptor.target_ref") for ref in query.target_refs)
+        if len(target_refs) != 1:
+            raise ProductionBindingRefusal("DESCRIPTOR_TARGET_ARITY_UNSUPPORTED")
+        target_ref = target_refs[0]
+        target_codes = [code for code, ref in bundle.question_refs.items() if ref == target_ref]
+        if len(target_codes) != 1:
+            raise ProductionBindingRefusal("DESCRIPTOR_TARGET_NOT_EXACT")
+        topology, _ = native_target_configuration(bundle=bundle, target_ref=target_ref)
+        grain = query.requested_output_grain
+        if not isinstance(grain, Mapping):
+            raise ProductionBindingRefusal("DESCRIPTOR_QUERY_GRAIN_REQUIRED")
+        weight_basis = (projection.weight_slots[0].weight_basis_id
+                        if projection.weight_slots else "NO_WEIGHT_DECLARED")
+        estimand = (projection.weight_slots[0].estimand_authority_ref.as_dict()
+                    if projection.weight_slots
+                    else projection.universes[0].sampling_design_regime)
+        expected = {
+            "source_edition": bundle.source_sha256,
+            "native_item_ids": list(sorted(bundle.administered_ids)),
+            "release_tag": projection.instrument_release_id,
+            "routing_and_risk": {
+                "routing_facts": len(projection.routing),
+                "risk_tag": profile_risk_tag(projection),
+            },
+            "carrier": {
+                "source_format": bundle.source_format,
+                "source_artifact_id": projection.source_artifact_id,
+            },
+            "country_and_population": {
+                "country": projection.universes[0].country_geography,
+                "population": projection.universes[0].target_population_and_sample_frame,
+            },
+            "weight_design_estimand": {
+                "weight_basis": weight_basis,
+                "estimand": estimand,
+            },
+            "missing_and_occurrence_policy": {
+                "missing": "EXPLICIT_TYPED_STATES",
+                "occurrence": topology,
+            },
+            "target_conditioner_roles": {
+                "target": target_codes[0],
+                "conditioner": None,
+                "measure_kind": grain.get("measure_kind"),
+            },
+        }
+        try:
+            supplied = _descriptor_bytes(descriptor)
+            supplied_material = json.loads(supplied)
+        except ProductionBindingRefusal:
+            raise
+        except (TypeError, ValueError) as exc:
+            raise ProductionBindingRefusal("DESCRIPTOR_CANONICAL_REQUIRED") from exc
+        if supplied_material != expected:
+            foreign = sorted(
+                key for key in set(supplied_material) | set(expected)
+                if supplied_material.get(key) != expected.get(key)
+            )
+>           raise ProductionBindingRefusal("DESCRIPTOR_NOT_BOUND_TO_SOURCE", repr(foreign))
+E           rawlsing_next.pre553_production_binding.ProductionBindingRefusal: DESCRIPTOR_NOT_BOUND_TO_SOURCE: ['country_and_population', 'source_edition']
+
+rawlsing_next/pre553_production_binding.py:111: ProductionBindingRefusal
+___________ test_R136_foreign_source_authority_snapshot_must_refuse ____________
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5/.r61/r138/tmp/test_R136_foreign_source_autho0')
+
+    def test_R136_foreign_source_authority_snapshot_must_refuse(tmp_path):
+        from rawlsing_next.pre553_native_workload_binding import (
+            OperationFixture, build_projection_catalog,
+        )
+        from rawlsing_next.pre553_source_native_preimage_adapter import (
+            NativeSourceRule, build_authority_set, materialize_native_preimages,
+        )
+        from rawlsing_next.tests.test_pre553_production_binding import _harness_authority
+        from rawlsing_next.tests.test_universal_source_projection import (
+            build_s3, decode_sav, package, repeated_plan, s3_rows, write_rows,
+        )
+    
+        path = tmp_path / "foreign-authority.sav"
+        rows = s3_rows(respondents=6, occasions=2)
+        write_rows(path, rows)
+        incidence = decode_sav(path)
+        pkg = package(path, len(rows), (NativeSourceRule("impl.score", "SCORE"),))
+        base = build_authority_set(source=pkg.source, as_of=pkg.as_of)
+        tags = ("source", "mapping", "coordinate", "routing", "weight", "replay", "projection")
+        harness = tuple(
+            _harness_authority(a, tag) for a, tag in zip(base, tags)
+        )
+        source_auth = harness[0]
+        fields = dict(source_auth.semantic_fields)
+        fields["scope_envelope"] = {
+            **dict(fields["scope_envelope"]), "source_sha256": "0" * 64,
+        }
+        bad_source_auth = type(source_auth)(
+            typed_state="ALLOW",
+            authority_snapshot_refs=source_auth.authority_snapshot_refs,
+            dependency_refs=source_auth.dependency_refs,
+            producer_replay_locator_or_reference_root=(
+                source_auth.producer_replay_locator_or_reference_root
+            ),
+            **fields,
+        )
+>       bundle = materialize_native_preimages(
+            package=pkg, incidence=incidence,
+            row_occurrence_plan=repeated_plan("SCORE"),
+            authorities=(bad_source_auth,) + harness[1:],
+        )
+
+.r61/r138/probes/test_r136_frozen.py:179: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def materialize_native_preimages(
+        *,
+        package: NativeSourcePackage,
+        incidence: PhysicalSourceIncidence | ExactPhysicalCellStream,
+        row_occurrence_plan: GovernedRowOccurrencePlan | None = None,
+        authorities: tuple[AuthoritySnapshot, ...] | None = None,
+    ) -> NativePreimageBundle:
+        """Materialize a governed C11 release from exact source cells.
+    
+        A supplied row/occurrence plan is mandatory for repeated-cell sources. No
+        row index, floor, modulo, adjacency or fixed occasion count is used.
+        """
+        if incidence.source_sha256 != package.source.declared_sha256:
+            raise NativePreimageRefusal(
+                "WRONG_SOURCE_EDITION",
+                f"incidence={incidence.source_sha256} package={package.source.declared_sha256}")
+        if package.source.expected_rows is not None and incidence.row_count != package.source.expected_rows:
+            raise NativePreimageRefusal(
+                "SOURCE_ROW_COUNT_MISMATCH",
+                f"incidence={incidence.row_count} expected={package.source.expected_rows}")
+        if isinstance(incidence, PhysicalSourceIncidence) and package.source.source_format:
+            if incidence.source_format != package.source.source_format:
+                raise NativePreimageRefusal(
+                    "SOURCE_FORMAT_MISMATCH",
+                    f"incidence={incidence.source_format} package={package.source.source_format}")
+    
+        all_cells = tuple(incidence.iter_cells())
+        rows = _row_cells(all_cells, incidence.row_count)
+        source = package.source
+        if authorities is None:
+            authorities = build_authority_set(source=source, as_of=package.as_of)
+        else:
+            authorities = tuple(authorities)
+            if len(authorities) != 7 or any(not isinstance(a, AuthoritySnapshot) for a in authorities):
+                raise NativePreimageRefusal("SUPPLIED_AUTHORITY_SET_INVALID")
+            if any(a.typed_state != "ALLOW" or a.decision_state != "ALLOW" for a in authorities):
+                raise NativePreimageRefusal("SUPPLIED_AUTHORITY_NOT_ALLOW")
+            expected_kinds = (
+                "SOURCE_SEMANTICS_TOPOLOGY",
+                "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+                "COORDINATE_SEMANTICS",
+                "ROUTING_RISK_SET",
+                "WEIGHT_DESIGN_ESTIMAND",
+                "REPLAY_PROTOCOL",
+                "SOURCE_SEMANTICS_TOPOLOGY",
+            )
+            if tuple(a.authority_kind for a in authorities) != expected_kinds:
+                raise NativePreimageRefusal("SUPPLIED_AUTHORITY_ROLE_MISMATCH")
+            for authority in authorities:
+                scope = authority.scope_envelope
+                if not isinstance(scope, Mapping) or scope.get("source_sha256") != source.declared_sha256:
+>                   raise NativePreimageRefusal(
+                        "SUPPLIED_AUTHORITY_SOURCE_MISMATCH", authority.authority_id)
+E                   rawlsing_next.pre553_source_native_preimage_adapter.NativePreimageRefusal: SUPPLIED_AUTHORITY_SOURCE_MISMATCH: R135-HARNESS-source
+
+rawlsing_next/pre553_source_native_preimage_adapter.py:575: NativePreimageRefusal
+=========================== short test summary info ============================
+FAILED .r61/r138/probes/test_r136_frozen.py::test_R136_wrong_query_authority_source_must_refuse
+FAILED .r61/r138/probes/test_r136_frozen.py::test_R136_foreign_descriptor_metadata_must_refuse
+FAILED .r61/r138/probes/test_r136_frozen.py::test_R136_foreign_source_authority_snapshot_must_refuse
+3 failed, 2 passed in 1.39s

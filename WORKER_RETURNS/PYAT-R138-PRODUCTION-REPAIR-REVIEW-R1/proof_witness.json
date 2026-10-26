@@ -1,0 +1,92 @@
+{
+  "author_candidate": "98612c6d511d54acdf304ab4086547192573f403",
+  "author_code_blobs": {
+    "rawlsing_next/pre553_native_workload_binding.py": "b60f72668d99cd7c9f4583457be5a4d32b3168d8",
+    "rawlsing_next/pre553_production_binding.py": "6656e657c9a113f66dd7002706fbe876fcbc4bad",
+    "rawlsing_next/pre553_source_native_preimage_adapter.py": "79f9131366574a9c7bc787f71722dbbdda09814c",
+    "rawlsing_next/tests/test_pre553_production_binding.py": "a49a88dafc5f667838626e15395692098cdee0b8"
+  },
+  "baseline": "bda89324a85ce06d44a19e6b19994e5543c065de",
+  "commission": "5b86ea7979edeac7d917f3c4f6a67ade100f8f27",
+  "environment": {
+    "pytest": "9.0.2",
+    "python": "3.11.3",
+    "reviewer": "existing distinct OpenCode Go DeepSeek V4.1 Flash MAX Global session"
+  },
+  "evidence_commit": "",
+  "evidence_commit_remote_readback": {},
+  "expectations_freeze_commit": "68ece3afe",
+  "expectations_sha256": "0dd2d2e37e453432dc35c0f1a5224cfd3322bfe5af4566f2a67e91d1da2b49a3",
+  "findings": {
+    "blocking": [
+      "query authority target_use_refs/measure/as-of/grammar/frontier foreign scope accepted"
+    ],
+    "open_contracts": [
+      "permission before physical decode: no external metadata-only source-read grant; current workload requires materialized projection",
+      "production discovery/frontier issuance: TEST_ONLY only; binding honestly refuses discovery"
+    ],
+    "verified": [
+      "actual repeated-event SUPPORTED fact denominator 2/numerator 2/six cells",
+      "value change and exact restore",
+      "foreign source authority refusal",
+      "foreign query source/universe/risk/role refusal",
+      "foreign descriptor source/country/population refusal",
+      "explicit test-only regression 4/4",
+      "stable-source cold replay"
+    ]
+  },
+  "not_reached": [
+    "real source/respondent",
+    "original 35/1890/F1-F8/global F6/F7/F8",
+    "learned/FF/V553",
+    "actor/person/dyad/V3/M1forall",
+    "R09/CI/prod/N11/N12/Sorok/J52/W52"
+  ],
+  "review_branch": "agent/opencode-pyat-r138-production-repair-review-r1",
+  "tests": {
+    "author_focused": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/author_focused_junit.xml",
+      "passed": 10,
+      "skipped": 0,
+      "time_seconds": 1.553
+    },
+    "author_regression": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/author_regression_junit.xml",
+      "passed": 4,
+      "skipped": 0,
+      "time_seconds": 1.574
+    },
+    "cold_stable": {
+      "denominator": 2,
+      "log": "replay/cold_stable.log",
+      "refs_identical": true,
+      "state": "SUPPORTED"
+    },
+    "independent_probes": {
+      "errors": 0,
+      "failed_tests": [
+        "test_R138_foreign_query_scope_measure_asof_grammar_frontier_refuses"
+      ],
+      "failures": 1,
+      "junit": "replay/independent_probes_junit.xml",
+      "passed": 4,
+      "skipped": 0,
+      "time_seconds": 1.690
+    },
+    "r136_frozen": {
+      "errors": 0,
+      "failures": 3,
+      "junit": "replay/r136_frozen_junit.xml",
+      "note": "exception-fail on repaired typed refusals; original RED preserved, not acceptance",
+      "passed": 2,
+      "skipped": 0,
+      "time_seconds": 1.394
+    }
+  },
+  "verdict": "REVISE",
+  "verdict_note": "The three main repairs are substantially demonstrated; query-authority scope completeness remains the blocking defect. Predecode and discovery are explicit OPEN contracts, not green passes."
+}

@@ -1,0 +1,24 @@
+....F                                                                    [100%]
+=================================== FAILURES ===================================
+_____ test_R138_foreign_query_scope_measure_asof_grammar_frontier_refuses ______
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5/.r61/r138/tmp/test_R138_foreign_query_scope_0')
+
+    def test_R138_foreign_query_scope_measure_asof_grammar_frontier_refuses(tmp_path):
+        bundle, _workload, _record = _production(tmp_path)
+        for changes in (
+            {"target_use_refs": []},
+            {"target_use_refs": "FOREIGN_TARGET_USE"},
+            {"measure": "GOVERNED_WEIGHTED"},
+            {"as_of": "1999-01-01"},
+            {"grammar": "FOREIGN_GRAMMAR"},
+            {"frontier": "FOREIGN_FRONTIER"},
+        ):
+            authority = _bad_scope(_query_authority(bundle), **changes)
+>           with pytest.raises(WorkloadBindingRefusal):
+E           Failed: DID NOT RAISE <class 'rawlsing_next.pre553_native_workload_binding.WorkloadBindingRefusal'>
+
+.r61/r138/probes/test_r138_confirmation.py:152: Failed
+=========================== short test summary info ============================
+FAILED .r61/r138/probes/test_r138_confirmation.py::test_R138_foreign_query_scope_measure_asof_grammar_frontier_refuses
+1 failed, 4 passed in 1.69s

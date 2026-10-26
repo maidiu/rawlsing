@@ -1,0 +1,83 @@
+# R138 focused confirmation commands/results (private probes in .r61/r138)
+
+Root: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5
+Branch: agent/opencode-pyat-r138-production-repair-review-r1
+HEAD: 98612c6d511d54acdf304ab4086547192573f403
+R137 candidate: same HEAD; rejected bda89324a85ce06d44a19e6b19994e5543c065de
+
+## Gate / freeze
+
+pwd
+git rev-parse --show-toplevel
+git rev-parse HEAD
+git branch --show-current
+git status --porcelain=v1
+git show 5b86ea7979edeac7d917f3c4f6a67ade100f8f27:WORKER_COMMISSIONS/PYAT-R138-PRODUCTION-REPAIR-REVIEW-R1/00_COMMISSION.md
+git show 52b5a43ed9c71d29ad3745aef227212202b4d9b8:WORKER_COMMISSIONS/PYAT-R135-REAL-SOURCE-PRODUCTION-BINDING-R1/00_COMMISSION.md
+git show 7c9952a71:PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/R134_ALL35_SOURCE_PIPELINE_TASK/TASK.md
+# ORACLE frozen before code inspection: commit 68ece3afe
+mkdir -p .r61/r138/probes .r61/r138/tmp
+
+## Author focused
+
+PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest \
+  rawlsing_next/tests/test_pre553_production_binding.py -q \
+  --junitxml=WORKER_RETURNS/PYAT-R138-PRODUCTION-REPAIR-REVIEW-R1/replay/author_focused_junit.xml -o addopts=''
+# 10 passed in 1.55s
+
+## Author affected regression
+
+PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest \
+  rawlsing_next/tests/test_universal_source_projection.py::test_s3_exact_respondent_occasion_value_tuples_and_repeated_consumer \
+  rawlsing_next/tests/test_universal_source_projection.py::test_s3_varied_respondent_and_occasion_counts \
+  rawlsing_next/tests/test_universal_source_projection.py::test_s3_missingness_preserves_state_and_does_not_invent_support \
+  rawlsing_next/tests/test_universal_workload_custody.py::test_r91_partial_resume_matches_uninterrupted_without_rerun \
+  -q --junitxml=WORKER_RETURNS/PYAT-R138-PRODUCTION-REPAIR-REVIEW-R1/replay/author_regression_junit.xml -o addopts=''
+# 4 passed in 1.57s
+
+## R136 frozen probes (original RED preserved; exception form not counted as pass)
+
+git show 28b29b5c7919f85989b03b40654ebb7caa0bc9c5:WORKER_RETURNS/PYAT-R136-PRODUCTION-BINDING-REVIEW-R1/probes/test_r136_production.py \
+  > .r61/r138/probes/test_r136_frozen.py
+PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest .r61/r138/probes/test_r136_frozen.py -q \
+  --basetemp=.r61/r138/tmp \
+  --junitxml=WORKER_RETURNS/PYAT-R138-PRODUCTION-REPAIR-REVIEW-R1/replay/r136_frozen_junit.xml -o addopts=''
+# 2 passed, 3 exception-fail (JUnit failures); not acceptance
+
+## R138 private successor probes
+
+PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest \
+  .r61/r138/probes/test_r138_confirmation.py -q --basetemp=.r61/r138/tmp \
+  --junitxml=WORKER_RETURNS/PYAT-R138-PRODUCTION-REPAIR-REVIEW-R1/replay/independent_probes_junit.xml -o addopts=''
+# 4 passed, 1 failed
+# Failed: query authority target_use/measure/as-of/grammar/frontier foreign scope accepted.
+
+## Native positive witness
+
+# .r61 script: _production(value=0) -> execute_production_workload
+# SUPPORTED / denominator 2 / numerator 2 / six repeated cells / detail exact governed target distribution resolved
+# captured in replay/native_positive.log
+
+## Stable-source cold replay
+
+# one stable .r61/r138/coldstable/stable.sav, two separate processes
+# both: source f9a34b33..., ref ...da6b579d..., state SUPPORTED, denom 2
+# captured in replay/cold_stable.log
+# (The _production helper rewrites a SAV; its source SHA changes per write,
+#  so that form is a harness limitation, not code non-determinism.)
+
+## Code identity
+
+git diff --name-only bda89324a85ce06d44a19e6b19994e5543c065de..98612c6d511d54acdf304ab4086547192573f403
+# four rawlsing_next code paths + R135 revisions/r2 returns
+git hash-object rawlsing_next/pre553_native_workload_binding.py \
+  rawlsing_next/pre553_production_binding.py \
+  rawlsing_next/pre553_source_native_preimage_adapter.py \
+  rawlsing_next/tests/test_pre553_production_binding.py
+# b60f7266... / 6656e657... / 79f91313... / a49a88da...
+
+## Remote
+
+git push origin agent/opencode-pyat-r138-production-repair-review-r1
+git ls-remote origin refs/heads/agent/opencode-pyat-r138-production-repair-review-r1 \
+  refs/heads/agent/opencode-pyat-r135-real-source-production-binding-r1
