@@ -171,12 +171,13 @@ class S49Session(S48Session):
         return episode
 
     def produce_b_turn(self, *, controlled: bool = False,
-                       source_records_override: list[Mapping[str, Any]] | None = None) -> dict:
+                       source_records_override: list[Mapping[str, Any]] | None = None,
+                       repertoire: Mapping[str, Any] | None = None) -> dict:
         source_records = (
             list(source_records_override) if source_records_override is not None
             else controlled_b_sources(self) if controlled else root_b_sources(self)
         )
-        generation = generate_b(self, source_records=source_records)
+        generation = generate_b(self, source_records=source_records, repertoire=repertoire)
         generation_episode = self._append(
             B_TURN_KIND,
             {

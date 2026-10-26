@@ -423,14 +423,14 @@ class S51Session(S49Session):
     raise S51Refusal("S51_RELEVANCE_LIFECYCLE_MISMATCH")
   result["episode_id"]=row["episode_id"];return result
 
- def consume_generation(self,obj,hypothesis,offer,access,relevance)->dict:
+ def consume_generation(self,obj,hypothesis,offer,access,relevance,*,repertoire=None)->dict:
   try:
-   return self._consume_generation_canonical(obj,hypothesis,offer,access,relevance)
+   return self._consume_generation_canonical(obj,hypothesis,offer,access,relevance,repertoire=repertoire)
   except S51Refusal as exc:
    return {"schema":S51,"selection_status":"S51_INPUT_REFUSED","reason":exc.code,
     "source_ref":"","reasons":[],"selected_option":"","native":False}
 
- def _consume_generation_canonical(self,obj,hypothesis,offer,access,relevance)->dict:
+ def _consume_generation_canonical(self,obj,hypothesis,offer,access,relevance,*,repertoire=None)->dict:
   obj=self._canonical_object(obj); hypothesis=self._canonical_hypothesis(hypothesis,allow_consumed=True)
   offer=self._canonical_offer(offer); access=self._canonical_access(access,offer)
   relevance=self._canonical_relevance(relevance)
@@ -447,7 +447,7 @@ class S51Session(S49Session):
     "access_ref":access.get("source_ref")})
   # The canonical S49 turn is the consumer. No generic reason channel is used.
   record_b_observation(self)
-  s49=self.produce_b_turn(controlled=True,source_records_override=[source])
+  s49=self.produce_b_turn(controlled=True,source_records_override=[source],repertoire=repertoire)
   turn=[row for row in self._episodes("S49_B_ACTOR_TURN") if (row.get("body") or {}).get("generation",{}).get("hash")]
   gen=dict((turn[-1].get("body") or {}).get("generation") or {}) if turn else {}
   body={"schema":S51,"stage":"S49_GENERATION_CONSUMPTION","source":source,"s49_result":s49,

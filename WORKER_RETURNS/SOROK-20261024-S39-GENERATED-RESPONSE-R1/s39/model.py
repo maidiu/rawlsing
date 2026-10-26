@@ -179,6 +179,7 @@ def generate_choice(
     source_records: list[Mapping[str, Any]],
     world: Mapping[str, Any],
     rule: ComparisonRule = FULL_RULE,
+    repertoire: Mapping[str, Any] | None = None,
 ) -> dict:
     if access_witness.get("actor_id") != actor_id:
         raise S39GenerationRefusal("S39_ACCESS_ACTOR_MISMATCH")
@@ -190,6 +191,36 @@ def generate_choice(
         "OBSERVED_CURRENT_REFUSAL",
     }:
         raise S39GenerationRefusal("S39_EVENT_ACCESS_UNAVAILABLE", access_outcome)
+
+    options = list(OPTIONS)
+    option_by_id = dict(OPTION_BY_ID)
+    extra_reason = None
+    if repertoire is not None:
+        option_data = repertoire.get("option") or {}
+        option_id = str(option_data.get("option_id", ""))
+        if not option_id or option_id in option_by_id:
+            raise S39GenerationRefusal("S39_REPERTOIRE_OPTION_INVALID")
+        for key in ("s36_response_kind", "action", "performer"):
+            if not isinstance(option_data.get(key), str) or not option_data[key]:
+                raise S39GenerationRefusal("S39_REPERTOIRE_OPTION_INVALID")
+        option = GenerationOption(
+            option_id, option_data["s36_response_kind"],
+            option_data["action"], option_data["performer"],
+        )
+        options.append(option)
+        option_by_id[option_id] = option
+        reason_data = repertoire.get("reason")
+        if reason_data is not None:
+            if not isinstance(reason_data, Mapping):
+                raise S39GenerationRefusal("S39_REPERTOIRE_REASON_INVALID")
+            if (
+                reason_data.get("option_id") != option_id
+                or reason_data.get("relation") not in {"SUPPORTS", "CONDITIONAL_SUPPORTS"}
+                or not reason_data.get("source_ref")
+                or not reason_data.get("source_hash")
+            ):
+                raise S39GenerationRefusal("S39_REPERTOIRE_REASON_INVALID")
+            extra_reason = dict(reason_data)
 
     try:
         validated = [
@@ -205,11 +236,14 @@ def generate_choice(
     flags["MATERIAL_AVAILABLE"] = 1 if world.get("material_available") else 0
     flags["FREE_HOURS"] = 1 if world.get("free_hours") else 0
 
-    eligible = [
-        option.option_id
-        for option in OPTIONS
-        if flags.get("EVENT_ACCESS") and flags.get("ACTOR_PRESENT")
-    ]
+    eligible = []
+    for option in options:
+        if not (flags.get("EVENT_ACCESS") and flags.get("ACTOR_PRESENT")):
+            continue
+        if option.option_id in OPTION_BY_ID:
+            eligible.append(option.option_id)
+        elif repertoire is not None and repertoire.get("eligible") is True:
+            eligible.append(option.option_id)
     if not eligible:
         raise S39GenerationRefusal("S39_NO_ELIGIBLE_OPTION")
 
@@ -227,6 +261,26 @@ def generate_choice(
                 "recruitment_mode": record.get("recruitment_mode", ""),
                 "model_premise": True,
             })
+
+    if extra_reason is not None:
+        source = next((
+            record for record in used
+            if record.get("source_ref") == extra_reason["source_ref"]
+            and record.get("source_hash") == extra_reason["source_hash"]
+        ), None)
+        if source is None:
+            raise S39GenerationRefusal("S39_REPERTOIRE_SOURCE_NOT_BOUND")
+        reasons.append({
+            "option_id": extra_reason["option_id"],
+            "relation": extra_reason["relation"],
+            "predicate": str(extra_reason.get("predicate", "")),
+            "source_ref": source["source_ref"],
+            "source_hash": source["source_hash"],
+            "source_class": source["source_class"],
+            "recruitment_mode": source.get("recruitment_mode", ""),
+            "model_premise": True,
+            "repertoire_candidate_hash": str(repertoire.get("candidate_hash", "")),
+        })
 
     defeated = []
     edges: dict[str, set[str]] = {option: set() for option in eligible}
@@ -269,7 +323,7 @@ def generate_choice(
     contrary = [row for row in reasons if row["option_id"] == selected and row["relation"] == "OBSTRUCTS"] if selected else []
     attempt_request = None
     if selected:
-        option = OPTION_BY_ID[selected]
+        option = option_by_id[selected]
         attempt_request = seal({
             "schema": "S39_GENERATED_ATTEMPT_REQUEST@1",
             "grade": GRADE,
@@ -322,8 +376,21 @@ def generate_choice(
             {"option_id": option.option_id, "action": option.action,
              "s36_response_kind": option.s36_response_kind,
              "eligible": option.option_id in eligible}
-            for option in OPTIONS
+            for option in options
         ],
+        "repertoire": (
+            {
+                "schema": repertoire.get("schema", ""),
+                "candidate_hash": repertoire.get("candidate_hash", ""),
+                "option": dict(repertoire.get("option") or {}),
+                "reason": (
+                    dict(repertoire.get("reason") or {})
+                    if repertoire.get("reason") is not None else None
+                ),
+                "eligible": bool(repertoire.get("eligible")),
+            }
+            if repertoire is not None else None
+        ),
         "reasons": reasons,
         "qualified_sources": [
             {

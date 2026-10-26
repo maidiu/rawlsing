@@ -174,7 +174,8 @@ def _source_chain_hash(actor_id, branch_id, event_ref, event_hash, root,
 
 def generate_b(session, *, source_records: list[Mapping[str, Any]] | None,
                rule=FULL_RULE,
-               supplemental_reasons: list[Mapping[str, Any]] | None = None) -> dict:
+               supplemental_reasons: list[Mapping[str, Any]] | None = None,
+               repertoire: Mapping[str, Any] | None = None) -> dict:
     # The former generic supplemental-reason authority is intentionally inert.
     # Callers cannot append option relations or labels outside validated sources.
     _ = supplemental_reasons
@@ -238,6 +239,7 @@ def generate_b(session, *, source_records: list[Mapping[str, Any]] | None,
         source_records=records,
         world=_world_for_b(session),
         rule=rule,
+        repertoire=repertoire,
     )
     body = {
         "schema": "S49_B_ACTOR_GENERATION@1",
