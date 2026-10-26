@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="5" time="1.456" timestamp="2026-10-26T13:27:15.983250-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.PYAT-R136-PRODUCTION-BINDING-REVIEW-R1.probes.test_r136_production" name="test_R136_wrong_query_authority_source_must_refuse" time="0.093"><failure message="AssertionError: a PREDICATE_GRAMMAR ALLOW authority with a foreign source sha was accepted for production query execution&#10;assert 'ORIGINAL_SOURCE_GRANTED' != 'ORIGINAL_SOURCE_GRANTED'&#10; +  where 'ORIGINAL_SOURCE_GRANTED' = NativeWorkloadResult(route_results=(), native_outputs=(QueryExecutionResult(query_ref=ExactRef(kind='EmpiricalQuerySpe...bject_id='R56-SYNTHETIC-RELEASE', content_hash='5160c97ae55a2000ff59742a03c536999d8aa468f648e8ddf0e8f575eab9a00c'),))}).scope">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-578/test_R136_wrong_query_authorit0')
+
+    def test_R136_wrong_query_authority_source_must_refuse(tmp_path):
+        result = _run(tmp_path, qauth_transform=_wrong_query_source)
+&gt;       assert result.scope != "ORIGINAL_SOURCE_GRANTED", (
+            "a PREDICATE_GRAMMAR ALLOW authority with a foreign source sha was "
+            "accepted for production query execution"
+        )
+E       AssertionError: a PREDICATE_GRAMMAR ALLOW authority with a foreign source sha was accepted for production query execution
+E       assert 'ORIGINAL_SOURCE_GRANTED' != 'ORIGINAL_SOURCE_GRANTED'
+E        +  where 'ORIGINAL_SOURCE_GRANTED' = NativeWorkloadResult(route_results=(), native_outputs=(QueryExecutionResult(query_ref=ExactRef(kind='EmpiricalQuerySpe...bject_id='R56-SYNTHETIC-RELEASE', content_hash='5160c97ae55a2000ff59742a03c536999d8aa468f648e8ddf0e8f575eab9a00c'),))}).scope
+
+WORKER_RETURNS/PYAT-R136-PRODUCTION-BINDING-REVIEW-R1/probes/test_r136_production.py:94: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R136-PRODUCTION-BINDING-REVIEW-R1.probes.test_r136_production" name="test_R136_foreign_descriptor_metadata_must_refuse" time="0.080"><failure message="AssertionError: a descriptor with foreign source/country/population metadata was accepted for production execution&#10;assert 'ORIGINAL_SOURCE_GRANTED' != 'ORIGINAL_SOURCE_GRANTED'&#10; +  where 'ORIGINAL_SOURCE_GRANTED' = NativeWorkloadResult(route_results=(), native_outputs=(QueryExecutionResult(query_ref=ExactRef(kind='EmpiricalQuerySpe...bject_id='R56-SYNTHETIC-RELEASE', content_hash='5160c97ae55a2000ff59742a03c536999d8aa468f648e8ddf0e8f575eab9a00c'),))}).scope">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-578/test_R136_foreign_descriptor_m0')
+
+    def test_R136_foreign_descriptor_metadata_must_refuse(tmp_path):
+        def foreign_descriptor(descriptor):
+            descriptor = dict(descriptor)
+            descriptor["source_edition"] = "0" * 64
+            descriptor["country_and_population"] = {
+                "country": "ZZ", "population": "FOREIGN",
+            }
+            return descriptor
+    
+        result = _run(tmp_path, descriptor_transform=foreign_descriptor)
+&gt;       assert result.scope != "ORIGINAL_SOURCE_GRANTED", (
+            "a descriptor with foreign source/country/population metadata was "
+            "accepted for production execution"
+        )
+E       AssertionError: a descriptor with foreign source/country/population metadata was accepted for production execution
+E       assert 'ORIGINAL_SOURCE_GRANTED' != 'ORIGINAL_SOURCE_GRANTED'
+E        +  where 'ORIGINAL_SOURCE_GRANTED' = NativeWorkloadResult(route_results=(), native_outputs=(QueryExecutionResult(query_ref=ExactRef(kind='EmpiricalQuerySpe...bject_id='R56-SYNTHETIC-RELEASE', content_hash='5160c97ae55a2000ff59742a03c536999d8aa468f648e8ddf0e8f575eab9a00c'),))}).scope
+
+WORKER_RETURNS/PYAT-R136-PRODUCTION-BINDING-REVIEW-R1/probes/test_r136_production.py:110: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R136-PRODUCTION-BINDING-REVIEW-R1.probes.test_r136_production" name="test_R136_actual_positive_value_change_and_restore" time="0.193" /><testcase classname="WORKER_RETURNS.PYAT-R136-PRODUCTION-BINDING-REVIEW-R1.probes.test_r136_production" name="test_R136_foreign_source_authority_snapshot_must_refuse" time="0.080"><failure message="AssertionError: a supplied source authority with a foreign source_sha256 was accepted&#10;assert 'ORIGINAL_SOURCE_GRANTED' != 'ORIGINAL_SOURCE_GRANTED'&#10; +  where 'ORIGINAL_SOURCE_GRANTED' = NativeWorkloadResult(route_results=(), native_outputs=(QueryExecutionResult(query_ref=ExactRef(kind='EmpiricalQuerySpe...bject_id='R56-SYNTHETIC-RELEASE', content_hash='1d27042fdd82733d673305c5e071bcb4cc501ebd326cd592aa40433167b51b02'),))}).scope">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-578/test_R136_foreign_source_autho0')
+
+    def test_R136_foreign_source_authority_snapshot_must_refuse(tmp_path):
+        from rawlsing_next.pre553_native_workload_binding import (
+            OperationFixture, build_projection_catalog,
+        )
+        from rawlsing_next.pre553_source_native_preimage_adapter import (
+            NativeSourceRule, build_authority_set, materialize_native_preimages,
+        )
+        from rawlsing_next.tests.test_pre553_production_binding import _harness_authority
+        from rawlsing_next.tests.test_universal_source_projection import (
+            build_s3, decode_sav, package, repeated_plan, s3_rows, write_rows,
+        )
+    
+        path = tmp_path / "foreign-authority.sav"
+        rows = s3_rows(respondents=6, occasions=2)
+        write_rows(path, rows)
+        incidence = decode_sav(path)
+        pkg = package(path, len(rows), (NativeSourceRule("impl.score", "SCORE"),))
+        base = build_authority_set(source=pkg.source, as_of=pkg.as_of)
+        tags = ("source", "mapping", "coordinate", "routing", "weight", "replay", "projection")
+        harness = tuple(
+            _harness_authority(a, tag) for a, tag in zip(base, tags)
+        )
+        source_auth = harness[0]
+        fields = dict(source_auth.semantic_fields)
+        fields["scope_envelope"] = {
+            **dict(fields["scope_envelope"]), "source_sha256": "0" * 64,
+        }
+        bad_source_auth = type(source_auth)(
+            typed_state="ALLOW",
+            authority_snapshot_refs=source_auth.authority_snapshot_refs,
+            dependency_refs=source_auth.dependency_refs,
+            producer_replay_locator_or_reference_root=(
+                source_auth.producer_replay_locator_or_reference_root
+            ),
+            **fields,
+        )
+        bundle = materialize_native_preimages(
+            package=pkg, incidence=incidence,
+            row_occurrence_plan=repeated_plan("SCORE"),
+            authorities=(bad_source_auth,) + harness[1:],
+        )
+        qauth = _query_authority(bundle)
+        catalog, request = build_projection_catalog(
+            bundle=bundle, operation=OperationFixture(
+                "foreign-source-auth", "SCORE", "0",
+            ), as_of="2026-10-26", query_authority=qauth,
+        )
+        wave = OriginalWaveIdentity("SRC135", "R135-HARNESS", "SYNTHETIC", "2026")
+        decision = ExactRef("R136_HARNESS_DECISION", "urn:r136:foreign-auth", "d" * 64)
+        workload = build_production_query_workload(
+            bundle=bundle, catalog=catalog, request=request,
+            descriptor=_descriptor(bundle), decision_ref=decision,
+            source_factory_ref=ExactRef(
+                "SOURCE_FACTORY", "urn:r136:foreign-auth", bundle.source_sha256,
+            ), original_u_root="e" * 64, expected_frontier_root="f" * 64,
+            original_wave_identity=wave,
+        )
+        record = IssuedWorkloadRecord(
+            decision_ref=workload.decision_ref,
+            source_permission_ref=ExactRef("S", "urn:r136:foreign-s", "1" * 64),
+            scientific_permission_refs=(ExactRef("Sci", "urn:r136:foreign-sci", "2" * 64),),
+            host=HOST, purpose=PURPOSE, source_sha256=bundle.source_sha256,
+            envelope_sha256=semantic_hash(workload.envelope()),
+            original_u_root=workload.original_u_root,
+            expected_frontier_root=workload.expected_frontier_root,
+            expected_jobs=(("QUERY", request.query_ref.key, request.predicate_ref.key),),
+            currentness="CURRENT_GRANTED", scope="ORIGINAL_SOURCE_GRANTED",
+            original_wave_identity=wave,
+            native_universe_refs=(bundle.projection.universes[0].ref,),
+        )
+        result = execute_production_workload(
+            workload=workload, resolver=Resolver(record),
+            source_factory=lambda _ref: bundle.physical_stream,
+            host=HOST, purpose=PURPOSE,
+        )
+&gt;       assert result.scope != "ORIGINAL_SOURCE_GRANTED", (
+            "a supplied source authority with a foreign source_sha256 was accepted"
+        )
+E       AssertionError: a supplied source authority with a foreign source_sha256 was accepted
+E       assert 'ORIGINAL_SOURCE_GRANTED' != 'ORIGINAL_SOURCE_GRANTED'
+E        +  where 'ORIGINAL_SOURCE_GRANTED' = NativeWorkloadResult(route_results=(), native_outputs=(QueryExecutionResult(query_ref=ExactRef(kind='EmpiricalQuerySpe...bject_id='R56-SYNTHETIC-RELEASE', content_hash='1d27042fdd82733d673305c5e071bcb4cc501ebd326cd592aa40433167b51b02'),))}).scope
+
+WORKER_RETURNS/PYAT-R136-PRODUCTION-BINDING-REVIEW-R1/probes/test_r136_production.py:218: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R136-PRODUCTION-BINDING-REVIEW-R1.probes.test_r136_production" name="test_R136_actual_positive_requires_supported_empirical_fact" time="0.076"><failure message="AssertionError: production positive returned a typed non-positive empirical fact: UNAVAILABLE/MISSING_REQUIRED_AUTHORITY&#10;assert 'UNAVAILABLE' in {'EXACT_SUPPORTED', 'SUPPORTED'}&#10; +  where 'UNAVAILABLE' = EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:626c4555a8fd5e95705715525b6f9704081803458166e7ab5cd5da0937aa69b9', typed_state='UNAVAILABLE').typed_state">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-578/test_R136_actual_positive_requ0')
+
+    def test_R136_actual_positive_requires_supported_empirical_fact(tmp_path):
+        from rawlsing_next.tests.test_pre553_production_binding import _production
+    
+        bundle, workload, record = _production(tmp_path, "0")
+        result = execute_production_workload(
+            workload=workload, resolver=Resolver(record),
+            source_factory=lambda _ref: bundle.physical_stream,
+            host=HOST, purpose=PURPOSE,
+        )
+        fact = result.native_outputs[0].facts[0]
+&gt;       assert fact.typed_state in {"SUPPORTED", "EXACT_SUPPORTED"}, (
+            "production positive returned a typed non-positive empirical fact: "
+            f"{fact.typed_state}/{fact.semantic_fields.get('p02_failure_state')}"
+        )
+E       AssertionError: production positive returned a typed non-positive empirical fact: UNAVAILABLE/MISSING_REQUIRED_AUTHORITY
+E       assert 'UNAVAILABLE' in {'EXACT_SUPPORTED', 'SUPPORTED'}
+E        +  where 'UNAVAILABLE' = EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:626c4555a8fd5e95705715525b6f9704081803458166e7ab5cd5da0937aa69b9', typed_state='UNAVAILABLE').typed_state
+
+WORKER_RETURNS/PYAT-R136-PRODUCTION-BINDING-REVIEW-R1/probes/test_r136_production.py:233: AssertionError</failure></testcase></testsuite></testsuites>

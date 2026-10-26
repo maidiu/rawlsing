@@ -1,0 +1,90 @@
+{
+  "author_candidate": "bda89324a85ce06d44a19e6b19994e5543c065de",
+  "author_code_blobs": {
+    "rawlsing_next/pre553_native_workload_binding.py": "a166d687786fe89879d2301bc904f1227038d3ac",
+    "rawlsing_next/pre553_production_binding.py": "a34252a89afc8de2e37854f5d3acc4e655287838",
+    "rawlsing_next/pre553_source_native_preimage_adapter.py": "f21e01b19c921be169a96da825910d9836f4b974",
+    "rawlsing_next/tests/test_pre553_production_binding.py": "4e3158cfcbedcc29d8bf1f34fd6186599ab85285"
+  },
+  "baseline": "d933411889dbcbcafc8d3a2c596e44fc69820f63",
+  "branch_reconciliation": {
+    "candidate": "bda89324a85ce06d44a19e6b19994e5543c065de",
+    "code_tree_matches_candidate": true,
+    "initial_review_head": "73de309b24562716761fabe2a0f3cf518734cb2b",
+    "merge_commit": "985dcd7129ed4aaf247be0728387136c447a57f0",
+    "non_force": true,
+    "rawlsing_next_diff_from_candidate": []
+  },
+  "commission": "d38bdefaef53060729deb9a4f0a71186eb8d0025",
+  "environment": {
+    "pytest": "9.0.2",
+    "python": "3.11.3",
+    "reviewer": "existing distinct OpenCode Go DeepSeek V4.1 Flash MAX Global session"
+  },
+  "evidence_commit": "",
+  "evidence_commit_remote_readback": {},
+  "expectations_freeze_commit": "86e73a1f3",
+  "expectations_sha256": "e78962dcf7f9e20881c1ad20354c32a101e4f427fd45b753eb683331d720b14a",
+  "findings": {
+    "blocking": [
+      "no actual supported empirical fact; output is UNAVAILABLE/MISSING_REQUIRED_AUTHORITY raw 0/0",
+      "query authority accepts foreign source scope (ALLOW/string-kind only)",
+      "supplied source authority snapshots accept foreign source scope",
+      "descriptor source/country/population metadata not bound to actual projection",
+      "physical response decode occurs before current permission/admission in the proof path",
+      "bounded discovery/frontier composition not demonstrated"
+    ],
+    "preserved": [
+      "synthetic production transport reaches execute_issued_workload allow_test_only=False",
+      "value change and restore produce deterministic refs",
+      "wrong host/purpose/envelope/roots/native universe/role/TEST_ONLY/unbound descriptor refusals pass",
+      "explicit test-only regression path passes (actual 4 listed nodes)"
+    ]
+  },
+  "not_reached": [
+    "original 35/1890/F1-F8/global F6/F7/F8",
+    "source/science/access/learned",
+    "FF/V553/actor/M1forall",
+    "R09/CI/prod/N11/N12/Sorok/J52/W52"
+  ],
+  "review_branch": "agent/opencode-pyat-r136-production-binding-review-r1",
+  "tests": {
+    "author_focused": {
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/author_focused_junit.xml",
+      "passed": 5,
+      "skipped": 0,
+      "time_seconds": 2.946
+    },
+    "author_regression": {
+      "claimed": 5,
+      "errors": 0,
+      "failures": 0,
+      "junit": "replay/author_regression_junit.xml",
+      "passed_actual": 4,
+      "skipped": 0,
+      "time_seconds": 1.601
+    },
+    "independent_probes": {
+      "errors": 0,
+      "failed_tests": [
+        "test_R136_wrong_query_authority_source_must_refuse",
+        "test_R136_foreign_descriptor_metadata_must_refuse",
+        "test_R136_foreign_source_authority_snapshot_must_refuse",
+        "test_R136_actual_positive_requires_supported_empirical_fact"
+      ],
+      "failures": 4,
+      "junit": "replay/independent_probes_junit.xml",
+      "passed": 1,
+      "skipped": 0,
+      "time_seconds": 1.456
+    },
+    "cold_replay": {
+      "deterministic_refs": true,
+      "log": "replay/cold_replay.log",
+      "output_state": "UNAVAILABLE"
+    }
+  },
+  "verdict": "REVISE"
+}

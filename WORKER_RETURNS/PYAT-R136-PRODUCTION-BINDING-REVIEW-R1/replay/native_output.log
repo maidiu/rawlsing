@@ -1,0 +1,83 @@
+scope ORIGINAL_SOURCE_GRANTED source 794efceaff392078b5a0a2b50701fb6e4bf1ad96b41dcc2a9750bdbfc1c40e77
+fact keys dict_keys(['schema_id', 'schema_version', 'typed_state', 'authority_snapshot_refs', 'dependency_refs', 'producer_replay_locator_or_reference_root', 'semantic_fields', 'object_id', 'content_hash'])
+{
+  "authority_snapshot_refs": [
+    {
+      "authority_content_hash": "2203710b7743bd207f35c68370c9888369e35f4521eb1d3d70c6a1b2773c9129",
+      "authority_id": "R135-HARNESS-QUERY",
+      "authority_version": "1.0.0"
+    }
+  ],
+  "content_hash": "c6a7a600e903c2f3555acb8e50200a40a3b747c6e7ad1dfee3c25301c8b8ada5",
+  "dependency_refs": [
+    {
+      "content_hash": "ba305d7db1a288e53bbeaa17e4253c7d043b5bb1a6366c4d26bdc2e3075e16d6",
+      "kind": "C11LogicalRelease",
+      "object_id": "R56-SYNTHETIC-RELEASE"
+    },
+    {
+      "content_hash": "e70fa7e8095371d589cfcbf3f6ea512e0049fe063b0a3809da37f2e4d0a98018",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:e70fa7e8095371d589cfcbf3f6ea512e0049fe063b0a3809da37f2e4d0a98018"
+    },
+    {
+      "content_hash": "0f5851ce190d16d4bc87d46f19c3a82abf6686c421ebb8e905928ccea8cf6cc5",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:0f5851ce190d16d4bc87d46f19c3a82abf6686c421ebb8e905928ccea8cf6cc5"
+    },
+    {
+      "content_hash": "735d9bfaff577a382c47ee5804b38b4e5b08a38fc3827e16f52bc1846ba10851",
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:735d9bfaff577a382c47ee5804b38b4e5b08a38fc3827e16f52bc1846ba10851"
+    },
+    {
+      "content_hash": "1bf030b626e1ab145ef55d74ef25b1434e6d19dea56e958124364125e6ac15f7",
+      "kind": "PRE553_I03_QUERY_REPLAY",
+      "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:1bf030b626e1ab145ef55d74ef25b1434e6d19dea56e958124364125e6ac15f7"
+    }
+  ],
+  "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c6a7a600e903c2f3555acb8e50200a40a3b747c6e7ad1dfee3c25301c8b8ada5",
+  "producer_replay_locator_or_reference_root": {
+    "content_hash": "1bf030b626e1ab145ef55d74ef25b1434e6d19dea56e958124364125e6ac15f7",
+    "kind": "PRE553_I03_QUERY_REPLAY",
+    "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:1bf030b626e1ab145ef55d74ef25b1434e6d19dea56e958124364125e6ac15f7"
+  },
+  "schema_id": "EmpiricalFact",
+  "schema_version": "1.0.0",
+  "semantic_fields": {
+    "condition_predicate_ref": {
+      "content_hash": "e70fa7e8095371d589cfcbf3f6ea512e0049fe063b0a3809da37f2e4d0a98018",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:e70fa7e8095371d589cfcbf3f6ea512e0049fe063b0a3809da37f2e4d0a98018"
+    },
+    "empirical_query_spec_ref": {
+      "content_hash": "0f5851ce190d16d4bc87d46f19c3a82abf6686c421ebb8e905928ccea8cf6cc5",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:0f5851ce190d16d4bc87d46f19c3a82abf6686c421ebb8e905928ccea8cf6cc5"
+    },
+    "empirical_universe_refs": [
+      {
+        "content_hash": "735d9bfaff577a382c47ee5804b38b4e5b08a38fc3827e16f52bc1846ba10851",
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:735d9bfaff577a382c47ee5804b38b4e5b08a38fc3827e16f52bc1846ba10851"
+      }
+    ],
+    "execution_detail": "exact authority scope does not include source_universe_refs",
+    "measure_basis_ref": {
+      "content_hash": "1e4d9b585bc44be223d46323c7fc2ca76822104cf16c3431c71ca288b282182a",
+      "kind": "MEASURE_BASIS",
+      "object_id": "urn:rawlsing:b49:measure_basis:RAW"
+    },
+    "measure_kind": "RAW",
+    "p02_failure_state": "MISSING_REQUIRED_AUTHORITY",
+    "query_execution_contract_id": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+    "raw_denominator_support": 0,
+    "raw_numerator_support": 0,
+    "replay_ref": {
+      "content_hash": "1bf030b626e1ab145ef55d74ef25b1434e6d19dea56e958124364125e6ac15f7",
+      "kind": "PRE553_I03_QUERY_REPLAY",
+      "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:1bf030b626e1ab145ef55d74ef25b1434e6d19dea56e958124364125e6ac15f7"
+    },
+    "response_state_semantics_ref": {
+      "content_hash": "f417c1014b7dfd3a2986a53b7b8fe3ef4d1e6ed04f69b4293531
+projection universe EmpiricalUniverse(object_id='urn:rawlsing:pre553:EmpiricalUniverse:sha256:735d9bfaff577a382c47ee5804b38b4e5b08a38fc3827e16f52bc1846ba10851', typed_state='UNIVERSE_IDENTIFIED')

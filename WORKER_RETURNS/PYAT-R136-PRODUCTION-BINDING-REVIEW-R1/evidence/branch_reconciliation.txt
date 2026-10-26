@@ -1,0 +1,28 @@
+# R136 branch/reconciliation evidence
+
+## Initial gate
+
+- cwd: `/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5`
+- top-level: same stable worktree
+- branch: `agent/opencode-pyat-r136-production-binding-review-r1`
+- initial HEAD: `73de309b24562716761fabe2a0f3cf518734cb2b`
+  (prior R118 review tip; **not** candidate `bda89324a`)
+- status: only generated untracked runtime material.
+
+The candidate `bda89324a85ce06d44a19e6b19994e5543c065de` was present on
+`agent/opencode-pyat-r135-real-source-production-binding-r1` and in origin.
+Because the review branch was pre-created at the prior review tip and a
+nonforce push was required, the candidate was merged nonforce after freezing
+the oracle:
+
+- oracle commit: `86e73a1f3`
+- nonforce merge commit: `985dcd7129ed4aaf247be0728387136c447a57f0`
+- code identity: `git diff --name-only bda893...HEAD -- rawlsing_next` is empty.
+- candidate code blobs at current tree:
+  `f21e01b19c921be169a96da825910d9836f4b974`,
+  `a166d687786fe89879d2301bc904f1227038d3ac`,
+  `a34252a89afc8de2e37854f5d3acc4e655287838`,
+  `4e3158cfcbedcc29d8bf1f34fd6186599ab85285`.
+
+The reviewer made no candidate code edit; only the own return root was added.
+The final remote branch is fast-forwarded from the pre-created review tip.
