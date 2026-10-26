@@ -1,0 +1,5 @@
+# Actual repair2 dispatch
+
+Commission155b9c707 pushed. Same original author ses_e9387509affeR5dC27RoUy3WSH actually resumed same S52 checkout/branch at97bccca592aacec659582e1717f83a2343f64d34, unchanged FlashMAX/no timeout after prior terminalstop/exit0. Records .local-logs/sorok-s36/s52-repair-2.launch.json/process.json/events.jsonl/exit.json/commission.txt/run.py. Exact job sorok-s52-semantic-replay-repair2-worker observed WAITING before launch; controller live s52-repair2-notification-arm.json. Manifest16/dedupe preserved; retired only delivered/consumed S49 repair1 worker. No competing writer/reviewer.
+
+NOT_ACCEPTED. Close same-actor self-rehashed payment999 semantic cold acceptance using exact historical canonical readset, preserving intact later-state replay and useful normal paid option/conditional reason. No new science/rank/forced choice or native authority. On return unchanged original probes, exact semantic mutation and focused valid warm/cold/sourcecut checks; no automatic broad hostile review for routine narrow correction. Full adult goal remains incomplete.
