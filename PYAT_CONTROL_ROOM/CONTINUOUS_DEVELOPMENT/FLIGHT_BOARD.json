@@ -1534,7 +1534,7 @@
   "active_workers": [
     {
       "id": "R137_PRODUCTION_BINDING_REPAIR",
-      "pid": 10905,
+      "pid": 12695,
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
       "branch": "agent/opencode-pyat-r135-real-source-production-binding-r1",
@@ -1543,9 +1543,11 @@
       "commission_tip": "a68f25aecb0add942a75573502485f9a65abeb66",
       "commission_path": "WORKER_COMMISSIONS/PYAT-R137-PRODUCTION-BINDING-REPAIR-R1/00_COMMISSION.md",
       "return_root": "WORKER_RETURNS/PYAT-R135-REAL-SOURCE-PRODUCTION-BINDING-R1/revisions/r2",
-      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r137-production-repair",
+      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r137-production-repair/local-probes-recovery",
       "state": "ACTUALLY_LAUNCHED_OPENCODE_MAX",
-      "actual_tool_preflight": "PENDING"
+      "actual_tool_preflight": "PENDING",
+      "prior_pid": 10905,
+      "recovery_reason": "CLI exited after external /tmp probe-write rejection; use authorized worktree-local probes, same task/partials"
     }
   ],
   "r98_browser_handoff": {
@@ -3121,7 +3123,7 @@
   },
   "r137_actual_launch": {
     "id": "R137_PRODUCTION_BINDING_REPAIR",
-    "pid": 10905,
+    "pid": 12695,
     "session": "ses_e98c905cbffekusoHURfKyEUKG",
     "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
     "branch": "agent/opencode-pyat-r135-real-source-production-binding-r1",
@@ -3130,8 +3132,10 @@
     "commission_tip": "a68f25aecb0add942a75573502485f9a65abeb66",
     "commission_path": "WORKER_COMMISSIONS/PYAT-R137-PRODUCTION-BINDING-REPAIR-R1/00_COMMISSION.md",
     "return_root": "WORKER_RETURNS/PYAT-R135-REAL-SOURCE-PRODUCTION-BINDING-R1/revisions/r2",
-    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r137-production-repair",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r137-production-repair/local-probes-recovery",
     "state": "ACTUALLY_LAUNCHED_OPENCODE_MAX",
-    "actual_tool_preflight": "PENDING"
+    "actual_tool_preflight": "PENDING",
+    "prior_pid": 10905,
+    "recovery_reason": "CLI exited after external /tmp probe-write rejection; use authorized worktree-local probes, same task/partials"
   }
 }
