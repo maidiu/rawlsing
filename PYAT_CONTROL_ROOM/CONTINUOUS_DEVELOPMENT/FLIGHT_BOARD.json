@@ -1530,20 +1530,19 @@
     "approved_utc": "2026-10-24T14:10:45.118294+00:00",
     "canonical_prior": "8db787b2760e797e359b06cdbadbd5d050b6939a"
   },
-  "next_action": "Wait actual R140 terminalreturn; inspect its scopefix against R138 exactforeignscopeprobes. Dispatch queuedR141sameowner only if remaining, else same reviewer confirms completecandidate. No duplicate/livefilewrite; source/learned/FF unproved.",
+  "next_action": "Intake R141 exactscope successor then existing distinctreviewer confirms scopefix+R140predecode/discoveryactualnativeproof together; source rights/science actualbinding later, no source/learned/FF acceptance.",
   "active_workers": [
     {
-      "id": "R140_PREDECODE_DISCOVERY_TRANSPORT",
-      "pid": 18340,
+      "id": "R141_QUERY_AUTHORITY_SCOPE_REPAIR",
+      "pid": 24251,
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
-      "branch": "agent/opencode-pyat-r140-predecode-discovery-transport-r1",
-      "startup": "98612c6d511d54acdf304ab4086547192573f403",
-      "commission_tip": "8a6760daeccfc09eade88fa4365d06a86509af1a",
-      "commission_path": "WORKER_COMMISSIONS/PYAT-R140-PREDECODE-AND-DISCOVERY-TRANSPORT-R1/00_COMMISSION.md",
-      "contract_path": "PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/R139_PRODUCTION_INGRESS_CONTRACT.json",
-      "return_root": "WORKER_RETURNS/PYAT-R140-PREDECODE-AND-DISCOVERY-TRANSPORT-R1",
-      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r140-production-ingress",
+      "branch": "agent/opencode-pyat-r141-query-authority-scope-repair-r1",
+      "startup": "ccf97c89d276e3b1460b9bc65d380ff79d8fd97b",
+      "commission_tip": "f67b4f2a5aae4da8869b7994f468f53d69ceb658",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R141-QUERY-AUTHORITY-SCOPE-REPAIR-R1/00_COMMISSION.md",
+      "return_root": "WORKER_RETURNS/PYAT-R141-QUERY-AUTHORITY-SCOPE-REPAIR-R1",
+      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r141-scope-repair",
       "state": "ACTUALLY_LAUNCHED_OPENCODE_MAX",
       "actual_tool_preflight": "PENDING"
     }
@@ -3175,7 +3174,7 @@
     "contract_path": "PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/R139_PRODUCTION_INGRESS_CONTRACT.json",
     "return_root": "WORKER_RETURNS/PYAT-R140-PREDECODE-AND-DISCOVERY-TRANSPORT-R1",
     "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r140-production-ingress",
-    "state": "ACTUALLY_LAUNCHED_OPENCODE_MAX",
+    "state": "TERMINAL_CANDIDATE_RETURNED",
     "actual_tool_preflight": "PENDING"
   },
   "r139_decision": {
@@ -3195,9 +3194,34 @@
     "no_source_or_full_path_acceptance": true
   },
   "r141_queue": {
-    "state": "AUTHORIZED_QUEUED_NOT_DISPATCHED",
+    "state": "ACTUALLY_DISPATCHED_AFTER_R140_TERMINAL",
     "commission_path": "WORKER_COMMISSIONS/PYAT-R141-QUERY-AUTHORITY-SCOPE-REPAIR-R1/00_COMMISSION.md",
     "dependency": "R140 samefile single-writer terminal boundary; skip duplicatedfix if alreadyresolved",
     "existing_owner": "ses_e98c905cbffekusoHURfKyEUKG"
+  },
+  "r140_intake": {
+    "head": "ccf97c89d276e3b1460b9bc65d380ff79d8fd97b",
+    "hashes_bytes_verified": 15,
+    "codeblobs": 6,
+    "allowlist_directremote_verified": true,
+    "scope_checker_unchanged": true,
+    "reported_proof": "18focused4regression, predecode14zero-I/O refusals; discovery150coverage98supported52validempty330facts; authoronly",
+    "acceptance": "PENDING_COMBINED_DISTINCT_REVIEW",
+    "metadata_erratum": "MANIFEST commission/r139_contract a68f25a wrong; actualR140seal8a6760dae, immutablefailedmetadataretained",
+    "source_success": false
+  },
+  "r141_actual_launch": {
+    "id": "R141_QUERY_AUTHORITY_SCOPE_REPAIR",
+    "pid": 24251,
+    "session": "ses_e98c905cbffekusoHURfKyEUKG",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
+    "branch": "agent/opencode-pyat-r141-query-authority-scope-repair-r1",
+    "startup": "ccf97c89d276e3b1460b9bc65d380ff79d8fd97b",
+    "commission_tip": "f67b4f2a5aae4da8869b7994f468f53d69ceb658",
+    "commission_path": "WORKER_COMMISSIONS/PYAT-R141-QUERY-AUTHORITY-SCOPE-REPAIR-R1/00_COMMISSION.md",
+    "return_root": "WORKER_RETURNS/PYAT-R141-QUERY-AUTHORITY-SCOPE-REPAIR-R1",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r141-scope-repair",
+    "state": "ACTUALLY_LAUNCHED_OPENCODE_MAX",
+    "actual_tool_preflight": "PENDING"
   }
 }
