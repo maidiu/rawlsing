@@ -1,0 +1,9 @@
+# R157 branch instructions
+
+This branch exists for the user-approved source-file→EXISTING PRE-553 configuration task. Before any work, read SOURCE_PRE553_PLAN/PLAN.md and BROWSER_DISPOSITION.md, then the sealed anchor and actual progress. Follow TASK_GRAPH.json, LANES.json and ACCEPTANCE.json. Do not replace this task with FieldForge/M1/N11 acceptance or original response execution. Do not treat NativeSourcePackage as universally mandatory; existing GovernedC11Projection/source-backedC11 is the receivingowner.
+
+All35source configs must preserve original18276items, exact mapping/routing/authoritylimits and allcurrentphysicalslots. Reuse fullpriorH48/P2/fullrelation evidence, not just the B49subset. Resolve SRC25/26 mappings explicitly. Never invent scalar/person/form/administration/syntheticuniverse/defaultauthority to satisfy constructors.
+
+No implementationworkerlaunch from planning alone. On explicitresume, reuse existingR154OpenCodeintegrationauthor, parallel boundedOpenCodesource-lanes on disjoint paths, and existingdistinctfinalreviewer. No Codexsubagents, replacementengine, protectedCI/prod/actor changes or respondentanalysis under thisscope. Each worker executes one focusedtask at a time with realoutput+check; advance independentlanes against frozeninterfaces. No ritualstagebarriers, duplicatedeffects, report-onlycompletion or routinecontractredefinition.
+
+Do not edit plan scope/acceptance to fit currentresults. An explicituseramendment must be recorded. Completion requires actual nativefactory and all35 declaredsupported-scopevalidation, portablelibrary, preciseexceptions and distinctfinalreview. A refusal/identityloader/DONElabel alone is insufficient. Preserve all existingunrelatedwork; commit ownallowedpaths only and verify directremote. Heartbeat remains paused unless userseparatelyrestores it.

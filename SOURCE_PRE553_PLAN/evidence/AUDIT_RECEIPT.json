@@ -1,0 +1,68 @@
+{
+  "schema": "PYAT_R156_PRIMARY_INPUT_AUDIT_V1",
+  "summary": {
+    "sources": 35,
+    "prior_items": 18276,
+    "primary_relation_rows": 18518,
+    "explicit_relation_ids": 18250,
+    "unmatched_relation_ids": 26,
+    "physical_columns": 18413,
+    "codebook_rows": 18276,
+    "physical_only": 538,
+    "codebook_only": 401,
+    "r154_evidence_rows": 4493,
+    "primary_semantic_role_items": 18250,
+    "primary_topology_items": 18250,
+    "qualified_encoding_sources": [
+      "SRC13",
+      "SRC14",
+      "SRC27",
+      "SRC28",
+      "SRC29",
+      "SRC30"
+    ],
+    "proof_limit": "Prior row authorities are recovered evidence with original grades; populated fields not universal current adoption or execution grant. No respondent-data or source-file reads in assessment.",
+    "encoding_transport_demonstrated_gap_sources": [
+      "SRC13",
+      "SRC14"
+    ],
+    "r154_actual_snapshot_ledger": {
+      "DONE": 178,
+      "DONE_WITH_EXACT_UNRESOLVED_FIELDS": 35
+    },
+    "r154_sourceprep_locator_rows": 43,
+    "r154_field_forge_requirement_rows": 0,
+    "verified_primary_P2": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_Authority_Document_Archive_2026-08-24/documents/source-and-question-authority/08_P2_PHASE0/Rawlsing_P2_Phase0_Question_Node_Skeleton_v1.csv",
+      "sha256": "d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6",
+      "rows": 18276
+    }
+  },
+  "inputs": [
+    {
+      "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+      "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz",
+      "bytes": 3107463,
+      "sha256": "35818e2cdd2b7e16e60788bef094eb117ef78fc63df3dc068ecb8b8948f728f5"
+    },
+    {
+      "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+      "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/04_SOURCE35_MEASUREMENT_AND_AUTHORITY_COVERAGE.csv",
+      "bytes": 47903,
+      "sha256": "4e7d80efbca38f34f78e5153572b6459e3ea0fbdb9c9435b20476afe0c96cc77"
+    },
+    {
+      "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+      "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/EVIDENCE_MANIFEST.json",
+      "bytes": 209986,
+      "sha256": "01d4410929dee47de20e0562a15442f94d574237acaef0579b02e6a1e15eb888"
+    },
+    {
+      "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+      "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+      "bytes": 47874248,
+      "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13"
+    }
+  ],
+  "snapshot_db_sha256": "7d6421e6e50f7d249cf09e7ecf964757d6afa4a7926d7a31eb1aad3407a12a16"
+}
