@@ -1,0 +1,107 @@
+{
+  "bounded_discovery": {
+    "anti_join": {
+      "duplicate_candidate_count": 0,
+      "missing_candidate_count": 0,
+      "no_drop_ok": true,
+      "semantic_mismatch_count": 0,
+      "unexpected_candidate_count": 0
+    },
+    "candidate_count": 150,
+    "catalog_query_count": 9,
+    "covered_candidate_count": 150,
+    "decision_ref": {
+      "content_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "kind": "R140_DECISION",
+      "object_id": "urn:r140:proof"
+    },
+    "discovery_authority_ref": {
+      "content_hash": "e4ceea5b2cc179013217cd75da037bece383ae5bb3ab5b49fb14f3b048659737",
+      "kind": "DiscoveryAuthority@1.0.0",
+      "object_id": "urn:rawlsing:pre553:DiscoveryAuthority:sha256:e4ceea5b2cc179013217cd75da037bece383ae5bb3ab5b49fb14f3b048659737"
+    },
+    "envelope_sha256": "69b93ab990f7d3fa4c9a3e25757b026f9cd625dbabad52da3f101245fda34d0a",
+    "expected_candidate_count": 150,
+    "expected_operation_count": 147,
+    "first_supported_fact": {
+      "measure_kind": "RAW",
+      "raw_denominator_support": 6,
+      "raw_numerator_support": 6,
+      "ref": {
+        "content_hash": "00151b2a2d546a5d89c7ccd32d76844dd80b2d7cd1e5e58ef5fb3402784682d7",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:00151b2a2d546a5d89c7ccd32d76844dd80b2d7cd1e5e58ef5fb3402784682d7"
+      },
+      "target_topology": {
+        "arity": 1,
+        "complete_cell_semantic_projection": [
+          {
+            "cell": "0",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 3,
+            "weighted_numerator_support_if_authorized": null
+          },
+          {
+            "cell": "1",
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 3,
+            "weighted_numerator_support_if_authorized": null
+          }
+        ],
+        "joint_order_semantics": "SEMANTIC_ORDERED",
+        "target_domain_identity": "39a56bca169542b66eb9e57fc428ac92a3a9aa75caf1c88f3085ddf34df458db"
+      },
+      "typed_state": "SUPPORTED"
+    },
+    "honest_negative_receipt_states": [
+      "VALID_EMPTY",
+      "VALID_EMPTY",
+      "VALID_EMPTY"
+    ],
+    "native_coverage_states": {
+      "EVALUATED_SUPPORTED": 98,
+      "EVALUATED_VALID_EMPTY": 52
+    },
+    "native_fact_count": 330,
+    "native_fact_states": {
+      "SUPPORTED": 314,
+      "ZERO_SUPPORT": 16
+    },
+    "native_receipt_count": 150,
+    "native_receipt_states": {
+      "DISCOVERED_RESULT_SUPPORTED": 98,
+      "VALID_EMPTY": 52
+    },
+    "restoration": {
+      "same_evaluated_frontier": true,
+      "same_fact_refs": true,
+      "same_receipt_refs": true,
+      "same_replay": true
+    },
+    "scope": "ORIGINAL_SOURCE_GRANTED",
+    "source_reads": 0,
+    "status": "EXTERNAL_AUTHORITY_HARNESS_BOUNDED_DISCOVERY__NOT_SOURCE",
+    "supported_fact_count": 314,
+    "synthetic_harness_only": true
+  },
+  "limits": [
+    "synthetic fixture values only",
+    "fixture resolver/harness authority is not source or scientific issuance",
+    "no all35/representative/FF/V553/actor/CI/prod claim"
+  ],
+  "predecode_source_read": {
+    "cell_count": 6,
+    "custody_snapshot_sha256": "d966a90a363fe356bbbb53192e189ca1fd89de89f2ee525774c4f94c5541036b",
+    "custody_unlinked": true,
+    "refusal_cases_tested": 14,
+    "resolver_calls": 2,
+    "row_count": 2,
+    "source_format": "SAV",
+    "source_sha256": "d966a90a363fe356bbbb53192e189ca1fd89de89f2ee525774c4f94c5541036b",
+    "status": "AUTHORIZED_WHOLE_FILE_SYNTHETIC__UNCHANGED_R04_PATH",
+    "zero_decoder_and_source_open_on_all_refusals": true
+  },
+  "schema": "PYAT_R140_PROOF_RECEIPT@1",
+  "source_claim": "NONE",
+  "source_proof": false
+}

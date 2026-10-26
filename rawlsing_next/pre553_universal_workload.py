@@ -479,6 +479,8 @@ def compile_governed_frontier(
     as_of: str,
     host: str,
     purpose: str,
+    query_authority: Any | None = None,
+    discovery_authority_snapshot: Any | None = None,
 ) -> GovernedFrontierCompilation:
     """Lower a caller-frozen R01 frontier into one issued native discovery.
 
@@ -500,6 +502,7 @@ def compile_governed_frontier(
     catalog, query_auth, baseline, _ = build_frontier_native_catalog(
         bundle=bundle, inventory=inventory, policy=policy,
         frontier=frontier, as_of=as_of,
+        query_authority=query_authority,
     )
     pending = tuple(sorted(set(frontier.pending_operation_ids)))
     active_frontier = replace(
@@ -511,7 +514,8 @@ def compile_governed_frontier(
     )
     plan = lower_frontier(inventory, policy, active_frontier, catalog)
     discovery_snapshot, discovery_authority = build_discovery_authority(
-        bundle=bundle, grammar=plan.native_grammar(), policy=policy, as_of=as_of
+        bundle=bundle, grammar=plan.native_grammar(), policy=policy, as_of=as_of,
+        authority=discovery_authority_snapshot,
     )
     records = tuple(
         replace(record, discovery_authority_ref=discovery_authority.ref)

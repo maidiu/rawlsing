@@ -794,6 +794,7 @@ def build_frontier_native_catalog(
     policy: Any,
     frontier: Any,
     as_of: str,
+    query_authority: AuthoritySnapshot | None = None,
 ) -> tuple[NativeCatalog, AuthoritySnapshot, Any, ExactRef]:
     """Build exact I05 capability objects for the supplied governed frontier.
 
@@ -817,42 +818,47 @@ def build_frontier_native_catalog(
         )
     except StopIteration as exc:
         raise WorkloadBindingRefusal("PROJECTION_AUTHORITY_UNAVAILABLE") from exc
-    query_auth = AuthoritySnapshot(
-        typed_state="ALLOW",
-        authority_snapshot_refs=(),
-        dependency_refs=(),
-        producer_replay_locator_or_reference_root=_ref(
-            "REPLAY_ROOT", "r03-query-authority"
-        ),
-        authority_id="R03-TEST-ONLY-FRONTIER-QUERY-AUTH",
-        authority_version="1.0.0",
-        authority_content_hash=_hash({
-            "tag": "r03-query", "source_sha256": bundle.source_sha256, "as_of": as_of,
-        }),
-        authority_kind="PREDICATE_GRAMMAR",
-        decision_state="ALLOW",
-        governed_operations=("R03-OP-query",),
-        governed_object_families=(
-            "EmpiricalPredicate@1.0.0", "EmpiricalQuerySpec@1.0.0",
-            "EmpiricalFact@1.0.0",
-        ),
-        scope_envelope={
-            "source_universe_refs": "EXPLICIT_UNRESTRICTED",
-            "target_use_refs": "EXPLICIT_UNRESTRICTED",
-            "predicate_or_risk_set_refs": "EXPLICIT_UNRESTRICTED",
-            "source_sha256": bundle.source_sha256,
-            "as_of": as_of,
-            "grade": "TEST_ONLY_SOURCEFREE",
-        },
-        effective_time_or_interval=as_of,
-        parent_authority_refs=(),
-        negative_limit_refs=(),
-        supersession_refs=(),
-        interpretation_semantics_fingerprint=_hash({
-            "tag": "r03-query", "as_of": as_of,
-        }),
-        replay_protocol_ref=_ref("REPLAY_PROTOCOL", "r03-query-authority"),
-    )
+    if query_authority is None:
+        query_auth = AuthoritySnapshot(
+            typed_state="ALLOW",
+            authority_snapshot_refs=(),
+            dependency_refs=(),
+            producer_replay_locator_or_reference_root=_ref(
+                "REPLAY_ROOT", "r03-query-authority"
+            ),
+            authority_id="R03-TEST-ONLY-FRONTIER-QUERY-AUTH",
+            authority_version="1.0.0",
+            authority_content_hash=_hash({
+                "tag": "r03-query", "source_sha256": bundle.source_sha256, "as_of": as_of,
+            }),
+            authority_kind="PREDICATE_GRAMMAR",
+            decision_state="ALLOW",
+            governed_operations=("R03-OP-query",),
+            governed_object_families=(
+                "EmpiricalPredicate@1.0.0", "EmpiricalQuerySpec@1.0.0",
+                "EmpiricalFact@1.0.0",
+            ),
+            scope_envelope={
+                "source_universe_refs": "EXPLICIT_UNRESTRICTED",
+                "target_use_refs": "EXPLICIT_UNRESTRICTED",
+                "predicate_or_risk_set_refs": "EXPLICIT_UNRESTRICTED",
+                "source_sha256": bundle.source_sha256,
+                "as_of": as_of,
+                "grade": "TEST_ONLY_SOURCEFREE",
+            },
+            effective_time_or_interval=as_of,
+            parent_authority_refs=(),
+            negative_limit_refs=(),
+            supersession_refs=(),
+            interpretation_semantics_fingerprint=_hash({
+                "tag": "r03-query", "as_of": as_of,
+            }),
+            replay_protocol_ref=_ref("REPLAY_PROTOCOL", "r03-query-authority"),
+        )
+    else:
+        _exact_external_query_authority(
+            authority=query_authority, bundle=bundle, as_of=as_of)
+        query_auth = query_authority
     baseline = _branch_predicate_for_bundle(
         bundle=bundle, query_auth=query_auth, as_of=as_of
     )
@@ -965,6 +971,7 @@ def build_discovery_authority(
     grammar: Mapping[str, Any],
     policy: Any,
     as_of: str,
+    authority: AuthoritySnapshot | None = None,
 ) -> tuple[AuthoritySnapshot, DiscoveryAuthority]:
     """Create one exact-bounded TEST_ONLY authority for a frozen grammar."""
     if not isinstance(bundle, NativePreimageBundle):
@@ -983,44 +990,80 @@ def build_discovery_authority(
         *operations,
     }))
     digest = semantic_hash(grammar)
-    authority = AuthoritySnapshot(
-        typed_state="ALLOW",
-        authority_snapshot_refs=(),
-        dependency_refs=(),
-        producer_replay_locator_or_reference_root=_ref(
-            "REPLAY_ROOT", "r03-discovery-authority"
-        ),
-        authority_id="R03-TEST-ONLY-DISCOVERY-AUTH",
-        authority_version="1.0.0",
-        authority_content_hash=_hash({
-            "tag": "r03-discovery", "grammar": digest, "source": bundle.source_sha256,
-            "as_of": as_of,
-        }),
-        authority_kind="DISCOVERY_FRONTIER",
-        decision_state="ALLOW",
-        governed_operations=(str(grammar["discovery_operation"]),),
-        governed_object_families=(
-            "DiscoveryAuthority@1.0.0", "DiscoveryResultReceipt@1.0.0",
-            "EmpiricalPredicate@1.0.0", "EmpiricalQuerySpec@1.0.0",
-            "EmpiricalFact@1.0.0",
-        ),
-        scope_envelope={
-            "source_universe_refs": "EXPLICIT_UNRESTRICTED",
-            "target_use_refs": "EXPLICIT_UNRESTRICTED",
-            "predicate_or_risk_set_refs": "EXPLICIT_UNRESTRICTED",
-            "source_sha256": bundle.source_sha256,
-            "as_of": as_of,
-            "grade": "TEST_ONLY_SOURCEFREE",
-        },
-        effective_time_or_interval=as_of,
-        parent_authority_refs=(),
-        negative_limit_refs=(),
-        supersession_refs=(),
-        interpretation_semantics_fingerprint=_hash({
-            "tag": "r03-discovery", "as_of": as_of,
-        }),
-        replay_protocol_ref=_ref("REPLAY_PROTOCOL", "r03-discovery-authority"),
-    )
+    if authority is None:
+        authority = AuthoritySnapshot(
+            typed_state="ALLOW",
+            authority_snapshot_refs=(),
+            dependency_refs=(),
+            producer_replay_locator_or_reference_root=_ref(
+                "REPLAY_ROOT", "r03-discovery-authority"
+            ),
+            authority_id="R03-TEST-ONLY-DISCOVERY-AUTH",
+            authority_version="1.0.0",
+            authority_content_hash=_hash({
+                "tag": "r03-discovery", "grammar": digest, "source": bundle.source_sha256,
+                "as_of": as_of,
+            }),
+            authority_kind="DISCOVERY_FRONTIER",
+            decision_state="ALLOW",
+            governed_operations=(str(grammar["discovery_operation"]),),
+            governed_object_families=(
+                "DiscoveryAuthority@1.0.0", "DiscoveryResultReceipt@1.0.0",
+                "EmpiricalPredicate@1.0.0", "EmpiricalQuerySpec@1.0.0",
+                "EmpiricalFact@1.0.0",
+            ),
+            scope_envelope={
+                "source_universe_refs": "EXPLICIT_UNRESTRICTED",
+                "target_use_refs": "EXPLICIT_UNRESTRICTED",
+                "predicate_or_risk_set_refs": "EXPLICIT_UNRESTRICTED",
+                "source_sha256": bundle.source_sha256,
+                "as_of": as_of,
+                "grade": "TEST_ONLY_SOURCEFREE",
+            },
+            effective_time_or_interval=as_of,
+            parent_authority_refs=(),
+            negative_limit_refs=(),
+            supersession_refs=(),
+            interpretation_semantics_fingerprint=_hash({
+                "tag": "r03-discovery", "as_of": as_of,
+            }),
+            replay_protocol_ref=_ref("REPLAY_PROTOCOL", "r03-discovery-authority"),
+        )
+    else:
+        if not isinstance(authority, AuthoritySnapshot):
+            raise WorkloadBindingRefusal("SUPPLIED_DISCOVERY_AUTHORITY_REQUIRED")
+        scope = authority.scope_envelope
+        if not isinstance(scope, Mapping) or scope.get("source_sha256") != bundle.source_sha256:
+            raise WorkloadBindingRefusal("SUPPLIED_DISCOVERY_AUTHORITY_SOURCE_MISMATCH")
+        universes = scope.get("source_universe_refs")
+        risks = scope.get("predicate_or_risk_set_refs")
+        if (isinstance(universes, (str, bytes)) or not isinstance(universes, Sequence)
+                or isinstance(risks, (str, bytes)) or not isinstance(risks, Sequence)):
+            raise WorkloadBindingRefusal("SUPPLIED_DISCOVERY_AUTHORITY_EXACT_SCOPE_REQUIRED")
+        declared_universes = tuple(sorted(
+            (exact_ref(value, "discovery_authority.scope.source_universe_refs")
+             for value in universes), key=lambda ref: ref.key))
+        expected_universes = tuple(sorted(
+            (universe.ref for universe in bundle.projection.universes),
+            key=lambda ref: ref.key))
+        declared_risks = tuple(sorted(
+            (exact_ref(value, "discovery_authority.scope.predicate_or_risk_set_refs")
+             for value in risks), key=lambda ref: ref.key))
+        if declared_universes != expected_universes:
+            raise WorkloadBindingRefusal("SUPPLIED_DISCOVERY_AUTHORITY_UNIVERSE_MISMATCH")
+        if declared_risks != (bundle.risk_set_ref,):
+            raise WorkloadBindingRefusal("SUPPLIED_DISCOVERY_AUTHORITY_RISK_MISMATCH")
+        operation = str(grammar["discovery_operation"])
+        for family in ("DiscoveryAuthority@1.0.0", "DiscoveryResultReceipt@1.0.0",
+                       "EmpiricalPredicate@1.0.0", "EmpiricalQuerySpec@1.0.0",
+                       "EmpiricalFact@1.0.0"):
+            for universe_ref in expected_universes:
+                require_positive_authority(
+                    authority, authority_kind="DISCOVERY_FRONTIER",
+                    operation=operation, object_family=family,
+                    source_universe_ref=universe_ref.as_dict(),
+                    predicate_or_risk_set_ref=bundle.risk_set_ref.as_dict(),
+                )
     risk_ref = bundle.risk_set_ref or _ref(
         "RISK_SET", profile_risk_tag(projection)
     )

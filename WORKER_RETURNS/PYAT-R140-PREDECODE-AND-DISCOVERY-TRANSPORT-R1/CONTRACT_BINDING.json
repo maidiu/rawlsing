@@ -1,0 +1,71 @@
+{
+  "schema": "PYAT_R140_CONTRACT_BINDING@1",
+  "commission": "a68f25aecb0add942a75573502485f9a65abeb66:WORKER_COMMISSIONS/PYAT-R140-PREDECODE-AND-DISCOVERY-TRANSPORT-R1/00_COMMISSION.md",
+  "decision": "a68f25aecb0add942a75573502485f9a65abeb66:PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/R139_PRODUCTION_INGRESS_CONTRACT.json",
+  "base": "98612c6d511d54acdf304ab4086547192573f403",
+  "predecode": {
+    "module": "rawlsing_next/pre553_source_read_admission.py",
+    "decoder_reused_unchanged": [
+      "rawlsing_next/pre553_physical_decoder.py:decode_sav",
+      "rawlsing_next/pre553_physical_decoder.py:decode_dta"
+    ],
+    "fields": [
+      "exact decision ref", "source permission refs", "source id", "edition sha256",
+      "source format", "custody locator binding", "trusted host", "purpose",
+      "consumer use", "SOURCE_RESPONSE_DECODE", "EXACT_FILE",
+      "metadata/workload freeze refs", "semantic use scope", "effective interval",
+      "currentness", "revocation ref", "retention/export limits"
+    ],
+    "order": [
+      "resolve/authenticate exact current external decision with metadata only",
+      "call unchanged R04 decoder with decision expected SHA after permission",
+      "re-resolve the same exact current decision before returning incidence"
+    ],
+    "refusal_effect": "no decoder, source open/stat/hash, or released incidence",
+    "selected_columns": "REFUSED_NOT_WIDENED",
+    "projection_hash_prerequisite": "NONE"
+  },
+  "discovery": {
+    "external_authority_inputs": [
+      "exact PREDICATE_GRAMMAR AuthoritySnapshot for query/predicate/fact law",
+      "exact DISCOVERY_FRONTIER AuthoritySnapshot for full frontier"
+    ],
+    "prepared_by": "rawlsing_next.pre553_production_binding.prepare_production_discovery",
+    "executed_by": "rawlsing_next.pre553_production_binding.execute_production_workload",
+    "native_owners_reused": [
+      "pre553_universal_workload.compile_governed_frontier",
+      "universal_grammar.native_map.lower_frontier",
+      "pre553_issued_workload.admit",
+      "pre553_batch_runner.BatchExecutionRunner",
+      "pre553_source_backed_c11_facade.build_source_backed_c11_repository",
+      "pre553_carrier_execution.CarrierNeutralResearchExecutor.execute_i05"
+    ],
+    "generated_allow_authority": false,
+    "record_created_by_transport": false,
+    "allow_test_only": false,
+    "second_discovery_loop": false,
+    "one_scalar_only_wrapper": false
+  },
+  "proof": {
+    "source_reads": 0,
+    "synthetic_only": true,
+    "source_proof": false,
+    "focused_passed": 18,
+    "regression_passed": 4,
+    "discovery_candidates": 150,
+    "discovery_covered": 150,
+    "discovery_receipts": 150,
+    "discovery_supported_receipts": 98,
+    "discovery_valid_empty_receipts": 52,
+    "discovery_facts": 330,
+    "no_drop_ok": true,
+    "source_read_authorized_rows": 2,
+    "source_read_refusal_cases": 14,
+    "zero_decoder_open_on_refusals": true
+  },
+  "limits": [
+    "synthetic fixture values only",
+    "fixture authority/resolver is not source or scientific issuance",
+    "no actual source access or all35/representative/FF claim"
+  ]
+}

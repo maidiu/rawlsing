@@ -1,12 +1,13 @@
 """R135 narrow production transport qualification; synthetic harness, not source."""
 from __future__ import annotations
 
+import dataclasses
 from dataclasses import replace
 
 import pytest
 
 from rawlsing_next.pre553_empirical_objects import (
-    AuthoritySnapshot, ExactRef, semantic_hash,
+    AuthoritySnapshot, ExactRef, exact_ref, semantic_hash,
 )
 from rawlsing_next.pre553_issued_workload import (
     IssuedWorkloadRecord, OriginalWaveIdentity, WorkloadAdmissionError,
@@ -387,4 +388,307 @@ def test_production_refuses_unbanked_discovery_ingress(tmp_path):
             original_u_root=workload.original_u_root,
             expected_frontier_root=workload.expected_frontier_root,
             original_wave_identity=workload.original_wave_identity,
+        )
+
+
+def _discovery_fixture(tmp_path):
+    from dataclasses import replace as _replace
+
+    from rawlsing_next.pre553_empirical_objects import AuthoritySnapshot
+    from rawlsing_next.pre553_native_workload_binding import (
+        build_frontier_native_catalog,
+    )
+    from rawlsing_next.universal_grammar.native_map import lower_frontier
+    from rawlsing_next.tests.test_universal_grammar import (
+        _frontier, _inventory, _occurrence, _policy,
+    )
+
+    path = tmp_path / "r140-scalar.sav"
+    values = [(0, 0, 1), (1, 0, 0), (0, 1, 1), (1, 1, 0), (0, 0, 1), (1, 1, 0)]
+    rows = [{"ROWID": float(i + 1), "X": float(x), "Y": float(y), "Z": float(z)}
+            for i, (x, y, z) in enumerate(values)]
+    write_rows(path, rows)
+    pkg = package(path, len(rows), (
+        NativeSourceRule("impl.x", "X"), NativeSourceRule("impl.y", "Y"),
+        NativeSourceRule("impl.z", "Z")), coordinate="ROWID")
+    base = build_authority_set(source=pkg.source, as_of=pkg.as_of)
+    tags = ("source", "mapping", "coordinate", "routing", "weight", "replay", "projection")
+    harness = tuple(_harness_authority(a, tag) for a, tag in zip(base, tags))
+    bundle = materialize_native_preimages(package=pkg, incidence=decode_sav(path),
+                                          authorities=harness)
+    inventory = _replace(
+        _inventory((_occurrence("X"), _occurrence("Y"), _occurrence("Z"))),
+        source_sha256=bundle.source_sha256, source_id="R140-SCALAR",
+        wave="W1", edition="E1", scope="W1",
+    )
+    policy = _policy()
+    frontier = _frontier(inventory, policy)
+    query_authority = _query_authority(bundle)
+    catalog, _qa, _baseline, _projection_auth = build_frontier_native_catalog(
+        bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+        as_of="2026-10-26", query_authority=query_authority,
+    )
+    pending = set(frontier.pending_operation_ids)
+    active = _replace(frontier, operations=tuple(
+        op for op in frontier.operations if op.op_id not in pending))
+    plan = lower_frontier(inventory, policy, active, catalog)
+    grammar = plan.native_grammar()
+    fields = dict(query_authority.semantic_fields)
+    fields.update(
+        authority_id="R140-HARNESS-DISCOVERY",
+        authority_kind="DISCOVERY_FRONTIER",
+        governed_operations=(str(grammar["discovery_operation"]),),
+        governed_object_families=(
+            "DiscoveryAuthority@1.0.0", "DiscoveryResultReceipt@1.0.0",
+            "EmpiricalPredicate@1.0.0", "EmpiricalQuerySpec@1.0.0",
+            "EmpiricalFact@1.0.0",
+        ),
+        scope_envelope={
+            **dict(fields["scope_envelope"]),
+            "grade": "TEST_HARNESS_ONLY",
+        },
+        authority_content_hash=semantic_hash({
+            "tag": "discovery", "source": bundle.source_sha256,
+        }),
+    )
+    discovery_snapshot = AuthoritySnapshot(
+        typed_state="ALLOW",
+        authority_snapshot_refs=query_authority.authority_snapshot_refs,
+        dependency_refs=query_authority.dependency_refs,
+        producer_replay_locator_or_reference_root=(
+            query_authority.producer_replay_locator_or_reference_root),
+        **fields,
+    )
+    return bundle, inventory, policy, frontier, query_authority, discovery_snapshot
+
+
+def _discovery_descriptor(bundle, frontier):
+    from rawlsing_next.pre553_production_binding import _base_descriptor
+    descriptor = _base_descriptor(bundle)
+    descriptor["missing_and_occurrence_policy"] = {
+        "missing": "EXPLICIT_TYPED_STATES",
+        "occurrence": "FRONTIER_DECLARED_TOPOLOGY",
+    }
+    descriptor["target_conditioner_roles"] = {
+        "targets": sorted({target.item_id for op in frontier.operations
+                           for target in op.targets}),
+        "conditions": sorted({key.item_id for op in frontier.operations
+                              for key, _ in op.conditions}),
+        "measures": sorted({"RAW" if op.measure_kind == "SAMPLE"
+                            else "GOVERNED_WEIGHTED"
+                            for op in frontier.operations}),
+    }
+    return descriptor
+
+
+def test_production_bounded_discovery_full_frontier_native_values_and_accounting(tmp_path):
+    from rawlsing_next.pre553_issued_workload import OriginalWaveIdentity
+    from rawlsing_next.pre553_production_binding import prepare_production_discovery
+    from rawlsing_next.universal_grammar.native_map import native_receipt_anti_join
+
+    bundle, inventory, policy, frontier, qa, ds = _discovery_fixture(tmp_path)
+    wave = OriginalWaveIdentity("SRC140", "R140", "SYNTHETIC", "W1")
+    prep = prepare_production_discovery(
+        bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+        as_of="2026-10-26", host="r140-harness-host", purpose="R140_DISCOVERY",
+        query_authority=qa, discovery_authority_snapshot=ds,
+        descriptor=_discovery_descriptor(bundle, frontier),
+        decision_ref=ExactRef("R140_DECISION", "urn:r140:discovery", "d" * 64),
+        source_factory_ref=ExactRef("SOURCE_FACTORY", "urn:r140:source", bundle.source_sha256),
+        original_u_root="e" * 64, expected_frontier_root="f" * 64,
+        original_wave_identity=wave,
+    )
+    record = IssuedWorkloadRecord(
+        decision_ref=prep.workload.decision_ref,
+        source_permission_ref=ExactRef("R140_SOURCE_PERMISSION", "urn:r140:s", "1" * 64),
+        scientific_permission_refs=(ExactRef(
+            "R140_SCIENTIFIC_PERMISSION", "urn:r140:sci", "2" * 64),),
+        host="r140-harness-host", purpose="R140_DISCOVERY",
+        source_sha256=bundle.source_sha256,
+        envelope_sha256=semantic_hash(prep.workload.envelope()),
+        original_u_root=prep.workload.original_u_root,
+        expected_frontier_root=prep.workload.expected_frontier_root,
+        expected_jobs=(("DISCOVERY", prep.discovery_ref.key, ""),),
+        currentness="CURRENT_GRANTED", scope="ORIGINAL_SOURCE_GRANTED",
+        original_wave_identity=wave,
+        native_universe_refs=(bundle.projection.universes[0].ref,),
+    )
+    result = execute_production_workload(
+        workload=prep.workload, resolver=Resolver(record),
+        source_factory=lambda _ref: bundle.physical_stream,
+        host="r140-harness-host", purpose="R140_DISCOVERY",
+    )
+    native = result.native_outputs[0]
+    assert prep.compilation.runtime_catalog.queries
+    assert prep.compilation.expected_operation_ids
+    assert native.candidate_count == native.covered_candidate_count == len(
+        prep.expected_candidate_ids)
+    assert len(native.receipts) == native.candidate_count
+    assert {receipt.typed_state for receipt in native.receipts} >= {
+        "DISCOVERED_RESULT_SUPPORTED", "VALID_EMPTY"}
+    assert all(receipt.coverage_state.startswith("EVALUATED_")
+               for receipt in native.receipts)
+    facts = {fact.ref.key: fact for fact in native.empirical_facts}
+    assert len(facts) == len(native.empirical_facts)
+    assert {ref.key for ref in native.empirical_fact_refs} == set(facts)
+    receipt_fact_refs = {exact_ref(ref).key for receipt in native.receipts
+                         for ref in receipt.empirical_fact_refs}
+    assert receipt_fact_refs <= set(facts)
+    supported = [fact for fact in native.empirical_facts
+                 if fact.typed_state in {"SUPPORTED", "EXACT_SUPPORTED"}]
+    assert supported
+    assert any(fact.raw_denominator_support > 0 and fact.raw_numerator_support > 0
+               for fact in supported)
+    anti = native_receipt_anti_join(prep.compilation.plan, native.receipts)
+    assert anti["no_drop_ok"] is True
+    assert anti["missing_candidate_ids"] == anti["unexpected_candidate_ids"] == ()
+    restored = execute_production_workload(
+        workload=prep.workload, resolver=Resolver(record),
+        source_factory=lambda _ref: bundle.physical_stream,
+        host="r140-harness-host", purpose="R140_DISCOVERY",
+    )
+    assert restored.native_outputs[0].receipts == native.receipts
+    assert restored.native_outputs[0].empirical_facts == native.empirical_facts
+    assert restored.native_outputs[0].evaluated_frontier_ref == native.evaluated_frontier_ref
+
+
+def _clone_authority(authority, **changes):
+    fields = dict(authority.semantic_fields)
+    fields.update(changes)
+    return AuthoritySnapshot(
+        typed_state=fields.pop("typed_state", authority.typed_state),
+        authority_snapshot_refs=authority.authority_snapshot_refs,
+        dependency_refs=authority.dependency_refs,
+        producer_replay_locator_or_reference_root=(
+            authority.producer_replay_locator_or_reference_root),
+        **fields,
+    )
+
+
+def test_production_discovery_refuses_foreign_authority_descriptor_and_currentness(tmp_path):
+    from rawlsing_next.pre553_empirical_objects import AuthoritySnapshot
+    from rawlsing_next.pre553_native_workload_binding import (
+        WorkloadBindingRefusal, build_discovery_authority,
+    )
+    from rawlsing_next.pre553_production_binding import prepare_production_discovery
+
+    bundle, inventory, policy, frontier, qa, ds = _discovery_fixture(tmp_path)
+    with pytest.raises(WorkloadBindingRefusal, match="SUPPLIED_QUERY_AUTHORITY_SOURCE_MISMATCH"):
+        prepare_production_discovery(
+            bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+            as_of="2026-10-26", host="r140-harness-host", purpose="R140_DISCOVERY",
+            query_authority=_bad_scope(qa, source_sha256="0" * 64),
+            discovery_authority_snapshot=ds,
+            descriptor=_discovery_descriptor(bundle, frontier),
+            decision_ref=ExactRef("R140_DECISION", "urn:r140:bad", "d" * 64),
+            source_factory_ref=ExactRef("SOURCE_FACTORY", "urn:r140:bad", bundle.source_sha256),
+            original_u_root="e" * 64, expected_frontier_root="f" * 64,
+        )
+    with pytest.raises(WorkloadBindingRefusal, match="SUPPLIED_DISCOVERY_AUTHORITY_SOURCE_MISMATCH"):
+        prepare_production_discovery(
+            bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+            as_of="2026-10-26", host="r140-harness-host", purpose="R140_DISCOVERY",
+            query_authority=qa,
+            discovery_authority_snapshot=_bad_scope(ds, source_sha256="0" * 64),
+            descriptor=_discovery_descriptor(bundle, frontier),
+            decision_ref=ExactRef("R140_DECISION", "urn:r140:bad2", "d" * 64),
+            source_factory_ref=ExactRef("SOURCE_FACTORY", "urn:r140:bad2", bundle.source_sha256),
+            original_u_root="e" * 64, expected_frontier_root="f" * 64,
+        )
+    with pytest.raises(WorkloadBindingRefusal, match="SUPPLIED_DISCOVERY_AUTHORITY_RISK_MISMATCH"):
+        prepare_production_discovery(
+            bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+            as_of="2026-10-26", host="r140-harness-host", purpose="R140_DISCOVERY",
+            query_authority=qa,
+            discovery_authority_snapshot=_bad_scope(ds, predicate_or_risk_set_refs=[]),
+            descriptor=_discovery_descriptor(bundle, frontier),
+            decision_ref=ExactRef("R140_DECISION", "urn:r140:bad-risk", "d" * 64),
+            source_factory_ref=ExactRef("SOURCE_FACTORY", "urn:r140:bad-risk", bundle.source_sha256),
+            original_u_root="e" * 64, expected_frontier_root="f" * 64,
+        )
+    from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
+    wrong_operation = _clone_authority(ds, governed_operations=("R140-WRONG-OPERATION",))
+    with pytest.raises(Pre553AuthorityError):
+        prepare_production_discovery(
+            bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+            as_of="2026-10-26", host="r140-harness-host", purpose="R140_DISCOVERY",
+            query_authority=qa, discovery_authority_snapshot=wrong_operation,
+            descriptor=_discovery_descriptor(bundle, frontier),
+            decision_ref=ExactRef("R140_DECISION", "urn:r140:bad-op", "d" * 64),
+            source_factory_ref=ExactRef("SOURCE_FACTORY", "urn:r140:bad-op", bundle.source_sha256),
+            original_u_root="e" * 64, expected_frontier_root="f" * 64,
+        )
+    with pytest.raises(WorkloadBindingRefusal, match="FRONTIER_POLICY_HASH_MISMATCH"):
+        prepare_production_discovery(
+            bundle=bundle, inventory=inventory, policy=policy,
+            frontier=dataclasses.replace(frontier, policy_hash="0" * 64),
+            as_of="2026-10-26", host="r140-harness-host", purpose="R140_DISCOVERY",
+            query_authority=qa, discovery_authority_snapshot=ds,
+            descriptor=_discovery_descriptor(bundle, frontier),
+            decision_ref=ExactRef("R140_DECISION", "urn:r140:bad-frontier", "d" * 64),
+            source_factory_ref=ExactRef("SOURCE_FACTORY", "urn:r140:bad-frontier", bundle.source_sha256),
+            original_u_root="e" * 64, expected_frontier_root="f" * 64,
+        )
+    bad = _discovery_descriptor(bundle, frontier)
+    bad["target_conditioner_roles"]["measures"] = ["WEIGHTED_FOREIGN"]
+    with pytest.raises(ProductionBindingRefusal, match="DISCOVERY_DESCRIPTOR_NOT_BOUND_TO_FRONTIER"):
+        prepare_production_discovery(
+            bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+            as_of="2026-10-26", host="r140-harness-host", purpose="R140_DISCOVERY",
+            query_authority=qa, discovery_authority_snapshot=ds, descriptor=bad,
+            decision_ref=ExactRef("R140_DECISION", "urn:r140:bad-measure", "d" * 64),
+            source_factory_ref=ExactRef("SOURCE_FACTORY", "urn:r140:bad-measure", bundle.source_sha256),
+            original_u_root="e" * 64, expected_frontier_root="f" * 64,
+        )
+    bad = _discovery_descriptor(bundle, frontier)
+    bad["carrier"] = {"source_format": "DTA", "source_artifact_id": "foreign"}
+    with pytest.raises(ProductionBindingRefusal, match="DISCOVERY_DESCRIPTOR_NOT_BOUND_TO_FRONTIER"):
+        prepare_production_discovery(
+            bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+            as_of="2026-10-26", host="r140-harness-host", purpose="R140_DISCOVERY",
+            query_authority=qa, discovery_authority_snapshot=ds,
+            descriptor=bad,
+            decision_ref=ExactRef("R140_DECISION", "urn:r140:bad3", "d" * 64),
+            source_factory_ref=ExactRef("SOURCE_FACTORY", "urn:r140:bad3", bundle.source_sha256),
+            original_u_root="e" * 64, expected_frontier_root="f" * 64,
+        )
+
+
+def test_production_discovery_refuses_noncurrent_record_before_native_execution(tmp_path):
+    from rawlsing_next.pre553_issued_workload import OriginalWaveIdentity
+    from rawlsing_next.pre553_production_binding import prepare_production_discovery
+
+    bundle, inventory, policy, frontier, qa, ds = _discovery_fixture(tmp_path)
+    wave = OriginalWaveIdentity("SRC140", "R140", "SYNTHETIC", "W1")
+    prep = prepare_production_discovery(
+        bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+        as_of="2026-10-26", host="r140-harness-host", purpose="R140_DISCOVERY",
+        query_authority=qa, discovery_authority_snapshot=ds,
+        descriptor=_discovery_descriptor(bundle, frontier),
+        decision_ref=ExactRef("R140_DECISION", "urn:r140:stale", "d" * 64),
+        source_factory_ref=ExactRef("SOURCE_FACTORY", "urn:r140:stale", bundle.source_sha256),
+        original_u_root="e" * 64, expected_frontier_root="f" * 64,
+        original_wave_identity=wave,
+    )
+    stale = IssuedWorkloadRecord(
+        decision_ref=prep.workload.decision_ref,
+        source_permission_ref=ExactRef("R140_SOURCE_PERMISSION", "urn:r140:s", "1" * 64),
+        scientific_permission_refs=(ExactRef(
+            "R140_SCIENTIFIC_PERMISSION", "urn:r140:sci", "2" * 64),),
+        host="r140-harness-host", purpose="R140_DISCOVERY",
+        source_sha256=bundle.source_sha256,
+        envelope_sha256=semantic_hash(prep.workload.envelope()),
+        original_u_root=prep.workload.original_u_root,
+        expected_frontier_root=prep.workload.expected_frontier_root,
+        expected_jobs=(("DISCOVERY", prep.discovery_ref.key, ""),),
+        currentness="REVOKED", scope="ORIGINAL_SOURCE_GRANTED",
+        original_wave_identity=wave,
+        native_universe_refs=(bundle.projection.universes[0].ref,),
+    )
+    with pytest.raises(WorkloadAdmissionError):
+        execute_production_workload(
+            workload=prep.workload, resolver=Resolver(stale),
+            source_factory=lambda _ref: (_ for _ in ()).throw(
+                AssertionError("source factory called")),
+            host="r140-harness-host", purpose="R140_DISCOVERY",
         )
