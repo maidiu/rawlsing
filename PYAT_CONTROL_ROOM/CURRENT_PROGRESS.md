@@ -1,3 +1,10 @@
+# R127 source-use edge
+
+R126 terminal/custody verified; useful API corrections scoped, historical failed retry cannot override exact later final source-backed closure/checkpoint/zero-source success. Existing grammar adopted, no readoption needed. Returned Git N1 retrieval/hash executed PASS; no raw source. Advance exact representative empirical+learned scope/current use decision at bounded High, not another report repair or general hunt. Full program/parallel C5/holds preserved.
+
+
+## Earlier progress history retained
+
 # R126 exact report repair
 
 R125 verified own5 hashes/bytes/delta/directremote. Concrete defect: placeholder runtime/inputs and comment-only learned/downstream commands, no bound source scope for permission request. Same existing OpenCode author actually launched report-only repair, one bound non-source next operation or exact indispensable preimage/recovery dependency. No source/code/science grant, no new court. HQ Low actual verified; fullscope/holds/parallel milestone retained.
