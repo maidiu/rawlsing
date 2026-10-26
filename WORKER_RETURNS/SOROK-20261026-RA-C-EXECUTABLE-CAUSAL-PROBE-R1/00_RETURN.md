@@ -2,7 +2,7 @@
 
 **Terminal:** `RA_C_RUNTIME_REPRODUCTION__RUNNER_UNAVAILABLE_FOR_PINNED_SOURCE__K1_K2_K4_K8_NOT_EXECUTED__FIRST_UNPROVEN_EDGE_FORMATION__NO_PRODUCTION_MUTATION`
 
-**Verdict: ENVIRONMENTAL HOLD (RUNNER_UNAVAILABLE)**, not scientific PASS or failure. This court did **not** execute the accepted Sorok runtime, K1/K2/K4/K8, or the S52 hostile mutation. The independent connected GitHub reader accessed the private repository and verified exact source at specified refs, and a distinct provided Linux container positively ran Python/subprocess capability probes. The container does **not** contain an authenticated Rawlsing Git checkout or the required S51/S52 source closure and G18 Mac-only directory; direct git network access fails DNS. Source cannot be imported. A Python interpreter without exact mounted source is not a qualified integrated runner.
+**Verdict: ENVIRONMENTAL HOLD (RUNNER_UNAVAILABLE)**, not scientific PASS or failure. This court did **not** execute the accepted Sorok runtime, K1/K2/K4/K8, or the S52 hostile mutation. The independent connected GitHub reader accessed the private repository and verified exact source at specified refs, and a distinct provided Linux container positively ran Python/subprocess capability probes. The container does **not** contain an authenticated Rawlsing Git checkout or the required S51/S52 source closure and multiple Mac-only runtime roots: G18, JOIN-E and language mediation; direct git network access fails DNS. Source cannot be imported. A Python interpreter without exact mounted source is not a qualified integrated runner.
 
 ## Authority and read cut
 - Commission `WORKER_COMMISSIONS/SOROK-20261026-RA-C-INTEGRATED-EXECUTION-CAUSAL-REPRODUCTION-R1/00_COMMISSION.md` @ `5dccb742b00907da7ecb9e11640ea5a56fcb5827` (blob `42ef06e640b80076e37b140352ee288291cd889b`).
@@ -16,6 +16,7 @@
 - `git -C /mnt/data rev-parse --show-toplevel` → exit 128, not a git repository.
 - `git ls-remote https://github.com/maidiu/rawlsing.git HEAD` → exit 128, Could not resolve host github.com.
 - `python3 -B -c 'import s52'` → exit 1, ModuleNotFoundError.
+- S37 additionally requires JOIN-E at `/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1` and language mediation at `/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/language-consumer-r3/worker/LANGUAGE_MEDIATION_R1`, neither mounted here. S37 bootstrap Git blob `02747782b3cb91c9a29da87b5962de844ced5bae` confirms these exact default roots; qualified S37 env overrides must carry their own source identity.
 - Required G18 `/Users/matthewsmith/Desktop/Rawlsing/rawlsing-r31j/WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1/candidate/vendor/bp2/vendor/g18/lab_sgi1/history.py` absent on this Linux container.
 - No sourcefree test invocation, no actual result JSON, no JUnit copied as fresh evidence. Exact transcript in `TEST_SOURCE_AND_LOGS/ENVIRONMENT_PROBE.log`.
 

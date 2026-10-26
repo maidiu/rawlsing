@@ -9,6 +9,12 @@ G18="/Users/matthewsmith/Desktop/Rawlsing/rawlsing-r31j/WORKER_RETURNS/SOROK-202
 [[ -d "$REPO/.git" || -f "$REPO/.git" ]] || { echo "BLOCK:NO_AUTHENTICATED_GIT_CHECKOUT"; exit 40; }
 git -C "$REPO" cat-file -e "${SHA}^{commit}" || { echo "BLOCK:SOURCE_COMMIT_MISSING"; exit 41; }
 [[ -f "$G18/lab_sgi1/history.py" ]] || { echo "BLOCK:G18_EXTERNAL_SOURCE_MISSING"; exit 42; }
+JOIN_E="${S37_JOIN_E_RETURN:-/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1}"
+LANGUAGE="${S37_LANGUAGE_RETURN:-/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/language-consumer-r3/worker/LANGUAGE_MEDIATION_R1}"
+[[ -f "$JOIN_E/joined/session.py" ]] || { echo "BLOCK:S37_JOIN_E_ROOT_MISSING"; exit 45; }
+[[ -f "$LANGUAGE/language_mediation/session.py" ]] || { echo "BLOCK:S37_LANGUAGE_ROOT_MISSING"; exit 46; }
+# Explicit overrides must already be authenticated to the original accepted source manifests.
+export S37_JOIN_E_RETURN="$JOIN_E" S37_LANGUAGE_RETURN="$LANGUAGE"
 mkdir -p "$REPO/$RET/TEST_SOURCE_AND_LOGS"
 BASE="$REPO/$RET/TEST_SOURCE_AND_LOGS"
 SCRATCH="$BASE/isolated_archive"

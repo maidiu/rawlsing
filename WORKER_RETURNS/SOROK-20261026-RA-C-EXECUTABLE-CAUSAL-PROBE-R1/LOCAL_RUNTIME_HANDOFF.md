@@ -8,6 +8,7 @@
 - S51 accepted component `2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65`.
 - S49 accepted `6604f2d9ebeca47ab58c5e1f5fee1e6a34b1bb43`.
 - S52 exact `run_s52.py` Git blob `34f633fcc85e85d6acc525dd250601c51afc7b88`, `tests/test_s52.py` blob `8c2470405075a833bbc425976780d6a4b0bcdc0c`, `s52/session.py` blob `c347d8a902f4f451852aca1054e9a3cd99d4c3f0`.
+- S37 additionally requires two exact warm local source roots: JOIN-E `/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1` and language mediation `/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/language-consumer-r3/worker/LANGUAGE_MEDIATION_R1`. `s37/bootstrap.py` blob `02747782b3cb91c9a29da87b5962de844ced5bae` requires these; it allows explicit `S37_JOIN_E_RETURN` / `S37_LANGUAGE_RETURN` only when separately source-verified. Missing any root means HOLD.
 - G18 is an **independently required local source** at `/Users/matthewsmith/Desktop/Rawlsing/rawlsing-r31j/WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1/candidate/vendor/bp2/vendor/g18`. S51/S52 hard-code this directory in their bootstrap. Verify source/manifest custody on the Mac; if missing/mismatched, HOLD. Do NOT change that import path to a fabricated G18 or run a replacement history.
 
 ## Prerequisite read-only checks

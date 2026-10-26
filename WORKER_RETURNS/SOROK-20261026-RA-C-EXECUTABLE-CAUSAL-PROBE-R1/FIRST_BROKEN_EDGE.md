@@ -1,9 +1,9 @@
 # First broken/unproven source→consumer edges — ordered
 
 ## Gate E0: execution access — observed BLOCKER, not product code defect
-**Producer:** authenticated fixed Git tree `c821b488b3a9a3f0fa01b1981989cc17af637dc1` plus same-version S39–S51 dependency closure and G18 external code directory.
+**Producer:** authenticated fixed Git tree `c821b488b3a9a3f0fa01b1981989cc17af637dc1` plus same-version S39–S51 dependency closure and G18/JOIN-E/language-mediation external code directories.
 **Consumer:** Python 3.13/pytest/subprocess capable Linux container.
-**Missing input:** complete repository checkout and `lab_sgi1.history` at S51/S52's hard-coded Mac path. `s51/bootstrap.py` (blob `6339f88e7e1ba3184aec977be228162257838287`), `s52/bootstrap.py` (blob `83ba3875359806f82f12ee3f8c89eb8f04bc58fa`) require that path.
+**Missing input:** complete repository checkout and `lab_sgi1.history` at S51/S52's hard-coded Mac path. `s51/bootstrap.py` (blob `6339f88e7e1ba3184aec977be228162257838287`), `s52/bootstrap.py` (blob `83ba3875359806f82f12ee3f8c89eb8f04bc58fa`) require G18, while S37 `s37/bootstrap.py` (blob `02747782b3cb91c9a29da87b5962de844ced5bae`) also requires the warm JOIN-E and language-mediation roots. All three Mac paths are outside the selected Git archive.
 **Observed:** local import `s52` fails; `git ls-remote` cannot resolve GitHub. Connected reader can inspect blobs but does not install or expose them to the filesystem. **Typed verdict:** `RUNNER_UNAVAILABLE__PINNED_SOURCE_CLOSURE_ABSENT`. Resolve only through a separately qualified authenticated Mac checkout and exact G18 source.
 
 ## E1: actual psychological formation — semantic unissued/untested
