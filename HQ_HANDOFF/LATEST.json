@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261026-PYAT-HQ-R137-PRODUCTION-BINDING-REPAIR-R1",
-  "handoff_commit": "abcc9c6f01b0439f873421ce16976d925a23508d",
+  "checkpoint_id": "20261026-PYAT-HQ-R137A-LOCAL-PROBE-RECOVERY-R1",
+  "handoff_commit": "67a738ff6e35aec3a9a1fef0cdef497dfeaebab8",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R137-PRODUCTION-BINDING-REPAIR-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R137-PRODUCTION-BINDING-REPAIR-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R137-PRODUCTION-BINDING-REPAIR-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R137A-LOCAL-PROBE-RECOVERY-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R137A-LOCAL-PROBE-RECOVERY-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R137A-LOCAL-PROBE-RECOVERY-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,20 +14,20 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "abcc9c6f01b0439f873421ce16976d925a23508d",
+  "canonical_control_base": "67a738ff6e35aec3a9a1fef0cdef497dfeaebab8",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "abcc9c6f01b0439f873421ce16976d925a23508d",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R137-PRODUCTION-BINDING-REPAIR-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R137-PRODUCTION-BINDING-REPAIR-R1/CURRENT.md",
+  "qualified_working_hq_commit": "67a738ff6e35aec3a9a1fef0cdef497dfeaebab8",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R137A-LOCAL-PROBE-RECOVERY-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R137A-LOCAL-PROBE-RECOVERY-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 135,
-    "canonical_report_commit": "abcc9c6f01b0439f873421ce16976d925a23508d",
+    "revision": 136,
+    "canonical_report_commit": "67a738ff6e35aec3a9a1fef0cdef497dfeaebab8",
     "counterpart": "Sorok rev34 independent; no Pyat actor grant"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261026-PYAT-HQ-R136-PRODUCTION-BINDING-REVIEW-R1",
-    "handoff_commit": "efd7a2520d25b2451b7bf6af6a75566621d58063"
+    "checkpoint_id": "20261026-PYAT-HQ-R137-PRODUCTION-BINDING-REPAIR-R1",
+    "handoff_commit": "abcc9c6f01b0439f873421ce16976d925a23508d"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
@@ -35,7 +35,7 @@
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
   "next_action": "Intake R137 exact same-owner repair/actual native supported values/foreign metadata and authority refusals/permission-beforedecode/discovery proof; same distinct reviewer confirmation, or exact substantive missing contract to HQ. No source/learned/FF acceptance.",
-  "worker_state_truth": "R136 reviewer terminal REVISE; R137 existing author actually launched, no duplicate/new Codex workers.",
+  "worker_state_truth": "R137 initial CLI terminal tool rejection; same existing author actually resumed, no duplicate.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -357,7 +357,7 @@
   "r61_actual_workers": [
     {
       "id": "R137_PRODUCTION_BINDING_REPAIR",
-      "pid": 10905,
+      "pid": 12695,
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
       "branch": "agent/opencode-pyat-r135-real-source-production-binding-r1",
@@ -366,9 +366,11 @@
       "commission_tip": "a68f25aecb0add942a75573502485f9a65abeb66",
       "commission_path": "WORKER_COMMISSIONS/PYAT-R137-PRODUCTION-BINDING-REPAIR-R1/00_COMMISSION.md",
       "return_root": "WORKER_RETURNS/PYAT-R135-REAL-SOURCE-PRODUCTION-BINDING-R1/revisions/r2",
-      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r137-production-repair",
+      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r137-production-repair/local-probes-recovery",
       "state": "ACTUALLY_LAUNCHED_OPENCODE_MAX",
-      "actual_tool_preflight": "PENDING"
+      "actual_tool_preflight": "PENDING",
+      "prior_pid": 10905,
+      "recovery_reason": "CLI exited after external /tmp probe-write rejection; use authorized worktree-local probes, same task/partials"
     }
   ],
   "r61_launch_evidence": "ae63a8c2da620d850cc974eb43c3e396abec30cb",
@@ -380,7 +382,7 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "967e6efb903a41a89422912ce9339ea0282ae774",
+  "current_development_evidence": "ebad0d58176a5c8ff85fc1d07d786531f9a54ecc",
   "new_R87_operative_grants": false,
   "secondary_hq_status": "USER_APPOINTED_BROWSER_SECONDARY__PRIMARY_CODEX_NOT_REVOKED"
 }
