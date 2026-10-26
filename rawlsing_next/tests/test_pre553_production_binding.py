@@ -692,3 +692,25 @@ def test_production_discovery_refuses_noncurrent_record_before_native_execution(
                 AssertionError("source factory called")),
             host="r140-harness-host", purpose="R140_DISCOVERY",
         )
+
+
+def test_R141_query_authority_scope_successor_replays_R138_foreign_fields(tmp_path):
+    """Versioned successor for the preserved RED R138 scope witness."""
+    from rawlsing_next.pre553_native_workload_binding import WorkloadBindingRefusal
+
+    bundle, _workload, _record = _production(tmp_path)
+    for changes in (
+        {"target_use_refs": []},
+        {"target_use_refs": "FOREIGN_TARGET_USE"},
+        {"measure": "GOVERNED_WEIGHTED"},
+        {"as_of": "1999-01-01"},
+        {"grammar": "FOREIGN_GRAMMAR"},
+        {"frontier": "FOREIGN_FRONTIER"},
+    ):
+        with pytest.raises(WorkloadBindingRefusal):
+            build_projection_catalog(
+                bundle=bundle,
+                operation=OperationFixture("R141-successor", "SCORE", "0"),
+                as_of="2026-10-26",
+                query_authority=_bad_scope(_query_authority(bundle), **changes),
+            )

@@ -197,8 +197,16 @@ def native_target_configuration(
     return topology, domain
 
 
+_QUERY_SCOPE_FIELDS = frozenset({
+    "source_universe_refs", "target_use_refs", "predicate_or_risk_set_refs",
+    "source_sha256", "grade", "as_of", "measure", "measure_kind",
+    "measure_kinds", "grammar", "frontier",
+})
+
+
 def _exact_external_query_authority(
     *, authority: AuthoritySnapshot, bundle: NativePreimageBundle, as_of: str,
+    expected_measure_kinds: tuple[str, ...] | None = None,
 ) -> str:
     if not isinstance(authority, AuthoritySnapshot):
         raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_REQUIRED")
@@ -208,6 +216,35 @@ def _exact_external_query_authority(
     scope = authority.scope_envelope
     if not isinstance(scope, Mapping):
         raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_SCOPE_REQUIRED")
+    unsupported = set(scope) - _QUERY_SCOPE_FIELDS
+    if unsupported:
+        raise WorkloadBindingRefusal(
+            "SUPPLIED_QUERY_AUTHORITY_UNSUPPORTED_SCOPE_FIELD", repr(sorted(unsupported)))
+    for unsupported_constraint in ("grammar", "frontier"):
+        if unsupported_constraint in scope:
+            raise WorkloadBindingRefusal(
+                "SUPPLIED_QUERY_AUTHORITY_UNSUPPORTED_CONSTRAINT", unsupported_constraint)
+    target_use = scope.get("target_use_refs")
+    if target_use is not None and target_use != "EXPLICIT_UNRESTRICTED":
+        raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_TARGET_USE_MISMATCH")
+    declared_as_of = scope.get("as_of")
+    if declared_as_of is not None and declared_as_of != as_of:
+        raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_AS_OF_MISMATCH")
+    if expected_measure_kinds is not None:
+        raw_measure = scope.get("measure")
+        if raw_measure is None:
+            raw_measure = scope.get("measure_kind")
+        if raw_measure is None:
+            raw_measure = scope.get("measure_kinds")
+        if raw_measure is not None:
+            if isinstance(raw_measure, str):
+                supplied_measures = {raw_measure}
+            elif isinstance(raw_measure, Sequence) and not isinstance(raw_measure, (bytes, bytearray)):
+                supplied_measures = {str(value) for value in raw_measure}
+            else:
+                raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_MEASURE_UNSUPPORTED")
+            if not supplied_measures <= set(expected_measure_kinds):
+                raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_MEASURE_MISMATCH")
     if scope.get("source_sha256") != bundle.source_sha256:
         raise WorkloadBindingRefusal("SUPPLIED_QUERY_AUTHORITY_SOURCE_MISMATCH")
     universe_raw = scope.get("source_universe_refs")
@@ -304,7 +341,9 @@ def build_projection_catalog(
         )
     else:
         query_operation = _exact_external_query_authority(
-            authority=query_authority, bundle=bundle, as_of=as_of)
+            authority=query_authority, bundle=bundle, as_of=as_of,
+            expected_measure_kinds=(operation.measure_kind,),
+        )
         query_auth = query_authority
     universe = projection.universes[0]
     members = tuple(sorted((r.ref for r in projection.respondents), key=lambda r: r.key))
@@ -856,8 +895,15 @@ def build_frontier_native_catalog(
             replay_protocol_ref=_ref("REPLAY_PROTOCOL", "r03-query-authority"),
         )
     else:
+        expected_measure_kinds = tuple(sorted({
+            "RAW" if operation.measure_kind == "SAMPLE" else "GOVERNED_WEIGHTED"
+            for operation in frontier.operations
+            if operation.measure_kind in ("SAMPLE", "POPULATION")
+        }))
         _exact_external_query_authority(
-            authority=query_authority, bundle=bundle, as_of=as_of)
+            authority=query_authority, bundle=bundle, as_of=as_of,
+            expected_measure_kinds=expected_measure_kinds or None,
+        )
         query_auth = query_authority
     baseline = _branch_predicate_for_bundle(
         bundle=bundle, query_auth=query_auth, as_of=as_of

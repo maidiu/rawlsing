@@ -1,0 +1,43 @@
+{
+  "base": "ccf97c89d276e3b1460b9bc65d380ff79d8fd97b",
+  "limits": [
+    "synthetic SAV and test-harness authorities only",
+    "no actual source/scientific/current grant",
+    "R138 original RED and R140 original return remain unmodified"
+  ],
+  "preserved_positive": {
+    "cell_count": 6,
+    "fact_ref": {
+      "content_hash": "8c5dd6758b4c3a79b66ba08d82dff89f8560911f8c01ef286d514614c126151c",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:8c5dd6758b4c3a79b66ba08d82dff89f8560911f8c01ef286d514614c126151c"
+    },
+    "raw_denominator_support": 2,
+    "raw_numerator_support": 2,
+    "response_1_different": true,
+    "restore_same_manifest": true,
+    "restore_same_refs": true,
+    "scope": "ORIGINAL_SOURCE_GRANTED",
+    "typed_state": "SUPPORTED"
+  },
+  "r138_witness": "3f35210eadd9891100b6aae2ac01bb9b05d3406a",
+  "r140_controls": {
+    "bounded_discovery_test": "full external-authority frontier preserved in focused suite",
+    "focused_total": "19 passed",
+    "predecode_source_read_tests": "5 passed in focused suite",
+    "regression_total": "4 passed"
+  },
+  "schema": "PYAT_R141_PROOF_RECEIPT@1",
+  "scope_refusals": {
+    "as_of_foreign": "SUPPLIED_QUERY_AUTHORITY_AS_OF_MISMATCH",
+    "frontier_foreign": "SUPPLIED_QUERY_AUTHORITY_UNSUPPORTED_CONSTRAINT",
+    "grammar_foreign": "SUPPLIED_QUERY_AUTHORITY_UNSUPPORTED_CONSTRAINT",
+    "measure_foreign": "SUPPLIED_QUERY_AUTHORITY_MEASURE_MISMATCH",
+    "target_use_empty": "SUPPLIED_QUERY_AUTHORITY_TARGET_USE_MISMATCH",
+    "target_use_foreign": "SUPPLIED_QUERY_AUTHORITY_TARGET_USE_MISMATCH"
+  },
+  "source_proof": false,
+  "source_reads": 0,
+  "status": "QUERY_AUTHORITY_SCOPE_REPAIRED_ON_SYNTHETIC_HARNESS__NOT_SOURCE",
+  "synthetic_harness_only": true
+}
