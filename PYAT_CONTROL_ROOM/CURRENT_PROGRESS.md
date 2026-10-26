@@ -1,3 +1,10 @@
+# R140 — exact production ingress implementation
+
+Bounded verifiedHigh R139 defines two technicaltransports: externallyauthenticated source-read permission before existing R04decode; and existing native DiscoveryAuthority/frontier/workload/I05 productionwiring. Neither grants source/science or creates engine/issuer. Existing author launched; R138 distinct reviewer remains on frozen98612 independent. Meaningful sourcefree values/refusals/coverage/restoration then distinctqualification, actualsourceexecution later exactpermissions. Fullgoal/holds preserved; HQreturnLowonce.
+
+
+## Earlier progress history retained
+
 # R138 — repaired scope review and exact contract boundary
 
 R137 candidate verified14 hashesbytes/4blobs/allowlist/directremote. Same distinct reviewer launched actual supported repeatedvalues/metadata and authorityrefusals; not yetaccepted. Predecodepermission and productiondiscovery remainOPEN, HQ boundedHigh reuse-first decision separate. No source/learned/FF success or newscience/sourcegrant. Fullgoal/holds retained.
