@@ -1,5 +1,7 @@
 # SCI02/SCI04 disposition: actual acquisition requires an explicit formation hypothesis
 
+> CURRENTNESS CORRECTION — 2026-10-26: the A/B question below is withdrawn as the current decision frame. Matthew supplied and closed the batch-recursion/impression/memory product architecture in `SOROK_PRODUCT_CONTROL_ROOM/USER_DIRECTED_ARCHITECTURE/20261026_USER_SETTLED_BATCH_RECURSION_IMPRESSION_MEMORY_R1.md`. Neither A nor B was selected. Preserve this document as historical scientific analysis; do not treat its pending-question language as an active global implementation blocker. Exact unissued scientific formation rules remain distinct from settled product architecture. Recurring pings remain paused.
+
 Existing Sorok HQ, host-verified gpt-6-astra/max turn01a176a1-b8d4-7753-871e-e70f434dd548. Executes the finite I3 question in c862d71c73eaf2d8ce9fdb158b45165260976ea8 under human re-anchor5674c0931. No worker/reviewer launch or new original rule issuance.
 
 ## Decision
