@@ -90,5 +90,7 @@ worker/engine or broader court. The next actual product edge remains exact
 source/current metadata and grounded native inputs, not this synthetic partial
 grain.
 
-The branch is pushed nonforce and directly read back; final SHA is reported
-separately.
+The branch was pushed nonforce. Evidence commit
+`1a27a769071c1a6373dc6c1b02ca2c418060ef1d` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also directly verified and reported to the coordinator.
