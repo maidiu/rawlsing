@@ -1,0 +1,111 @@
+{
+  "access_identity": {
+    "access_content_offer_id": "TEST_ONLY_BP4_WORLD_EVT_542f5c96810d8f6b80ea5293ae3e7cfd7db9636ad10bd4ba24d155ebd5c8aa14",
+    "access_event_ref": "TEST_ONLY_BP4_WORLD_EVT_542f5c96810d8f6b80ea5293ae3e7cfd7db9636ad10bd4ba24d155ebd5c8aa14",
+    "b_perception_count": 15,
+    "offer_event_id": "TEST_ONLY_BP4_WORLD_EVT_542f5c96810d8f6b80ea5293ae3e7cfd7db9636ad10bd4ba24d155ebd5c8aa14",
+    "offer_in_b_perceptions": true,
+    "offer_in_world_events": true
+  },
+  "cold_verify": {
+    "after_foreign_episode": false,
+    "before_foreign_episode": true,
+    "original_relevance_hash": "3a9fb36772d53ce814d33c56e368d7304441823cdfc2333eda60d910d30eb25c",
+    "s51_verify": {
+      "actual_root_current_purpose_proved": false,
+      "errors": [
+        "S51_RELEVANCE_EPISODE_INVALID"
+      ],
+      "native": false,
+      "object_recovered": true
+    }
+  },
+  "consumer_path": {
+    "c12_events": 1,
+    "episode_kinds": {
+      "ARRIVE": 1,
+      "EXPRESSION_ADMISSION": 1,
+      "LANGUAGE_ACCESS": 11,
+      "LANGUAGE_COMPETENCE": 1,
+      "LANGUAGE_ENCOUNTER": 11,
+      "LANGUAGE_TRANSLATION_PROJECTION": 1,
+      "S36_TARGETLESS_RESPONSE": 1,
+      "S39_CONSTRUCTIVE_GENERATION": 1,
+      "S39_GENERATED_ATTEMPT": 1,
+      "S41_ADMITTED_EVENT": 1,
+      "S44_SAMPLED_ROOT_BINDING": 1,
+      "S49_B_ACTOR_RESULT": 1,
+      "S49_B_ACTOR_TURN": 1,
+      "S51_ACTOR_ACCESS": 1,
+      "S51_OBJECT_RELEVANCE": 1,
+      "S51_RETAINED_OBJECT_HYPOTHESIS": 1,
+      "S51_RETAINED_OBJECT_HYPOTHESIS_LIFECYCLE": 1,
+      "S51_S49_CONSUMER_BINDING": 1,
+      "S51_WORLD_OFFER": 1,
+      "SAY": 12
+    },
+    "generation_reason_count": 0,
+    "generation_status": "OPEN_CHOICE_SET",
+    "s49_b_turns": 2
+  },
+  "default_s49_hold": {
+    "event_ref": "",
+    "reason": "S49_MISSING_CURRENT_B_ACTOR_OWNED_CONTEXT",
+    "status": "SOURCE_OWNER_HOLD"
+  },
+  "foreign_inputs": {
+    "consume_reasons": [],
+    "consume_source_ref": "",
+    "consume_status": "S51_INPUT_REFUSED",
+    "declare_object": "FORGED_OBJECT",
+    "declare_status": "S51_FOREIGN_INPUT_REFUSED",
+    "evaluate_hypothesis": null,
+    "evaluate_object": "FORGED_OBJECT",
+    "evaluate_offer": "FORGED_OFFER",
+    "evaluate_relation": "FOREIGN_INPUT",
+    "evaluate_status": "OBJECT_RELEVANCE_HOLD"
+  },
+  "same_hypothesis_reused": {
+    "first_status": "RELEVANCE_WARRANTED",
+    "hypothesis_id": "S51_HYPOTHESIS_198b568bc074_0",
+    "second_relation": "HYPOTHESIS_CONSUMED",
+    "second_status": "OBJECT_RELEVANCE_HOLD",
+    "stored_status": [
+      "DECLARED_IMMUTABLE"
+    ]
+  },
+  "supplemental_reason_injection": {
+    "baseline_eligible": [
+      "ATTEND_OBJECT",
+      "REQUEST_TOOL",
+      "EXPLICIT_REFUSAL"
+    ],
+    "baseline_selected": "",
+    "baseline_selection": "OPEN_CHOICE_SET",
+    "injected_eligible": [
+      "ATTEND_OBJECT",
+      "REQUEST_TOOL",
+      "EXPLICIT_REFUSAL"
+    ],
+    "injected_reasons": [],
+    "injected_selected": "",
+    "injected_selection": "OPEN_CHOICE_SET"
+  },
+  "two_received_events": {
+    "active_count": 0,
+    "first_status": "RELEVANCE_WARRANTED",
+    "hypotheses": [
+      {
+        "expires_after_events": 1,
+        "scope": "ONE_SUBSEQUENT_RECEIVED_EVENT",
+        "status": "DECLARED_IMMUTABLE"
+      },
+      {
+        "expires_after_events": 1,
+        "scope": "ONE_SUBSEQUENT_RECEIVED_EVENT",
+        "status": "DECLARED_IMMUTABLE"
+      }
+    ],
+    "second_status": "RELEVANCE_WARRANTED"
+  }
+}

@@ -170,8 +170,12 @@ class S49Session(S48Session):
         self.product._checkpoint(self.branch_id, self.clock(), self.world())
         return episode
 
-    def produce_b_turn(self, *, controlled: bool = False) -> dict:
-        source_records = controlled_b_sources(self) if controlled else root_b_sources(self)
+    def produce_b_turn(self, *, controlled: bool = False,
+                       source_records_override: list[Mapping[str, Any]] | None = None) -> dict:
+        source_records = (
+            list(source_records_override) if source_records_override is not None
+            else controlled_b_sources(self) if controlled else root_b_sources(self)
+        )
         generation = generate_b(self, source_records=source_records)
         generation_episode = self._append(
             B_TURN_KIND,
@@ -179,6 +183,7 @@ class S49Session(S48Session):
                 "schema": S49_SCHEMA,
                 "stage": "GENERATION",
                 "controlled": bool(controlled),
+                "turn_ordinal": len(self.b_turns()),
                 "generation": generation,
                 "source_grade": (
                     CONTROLLED_SOURCE_GRADE if controlled else ACTUAL_SOURCE_GRADE
