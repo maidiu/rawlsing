@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261025-PYAT-HQ-R124-ROUTE-B-MILESTONE-RESTORED-R1",
-  "handoff_commit": "53c8c5cba24ef3fb6da4d3efbfa3fe0eb6777e89",
+  "checkpoint_id": "20261025-PYAT-HQ-R125-REPRESENTATIVE-LAUNCH-PACKET-R1",
+  "handoff_commit": "ca24c5081dc6249a01c18ee44f1ab7ef418ad04f",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R124-ROUTE-B-MILESTONE-RESTORED-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R124-ROUTE-B-MILESTONE-RESTORED-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R124-ROUTE-B-MILESTONE-RESTORED-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R125-REPRESENTATIVE-LAUNCH-PACKET-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R125-REPRESENTATIVE-LAUNCH-PACKET-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R125-REPRESENTATIVE-LAUNCH-PACKET-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "53c8c5cba24ef3fb6da4d3efbfa3fe0eb6777e89",
+  "canonical_control_base": "ca24c5081dc6249a01c18ee44f1ab7ef418ad04f",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "53c8c5cba24ef3fb6da4d3efbfa3fe0eb6777e89",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R124-ROUTE-B-MILESTONE-RESTORED-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R124-ROUTE-B-MILESTONE-RESTORED-R1/CURRENT.md",
+  "qualified_working_hq_commit": "ca24c5081dc6249a01c18ee44f1ab7ef418ad04f",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R125-REPRESENTATIVE-LAUNCH-PACKET-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261025-PYAT-HQ-R125-REPRESENTATIVE-LAUNCH-PACKET-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 124,
-    "canonical_report_commit": "53c8c5cba24ef3fb6da4d3efbfa3fe0eb6777e89",
+    "revision": 125,
+    "canonical_report_commit": "ca24c5081dc6249a01c18ee44f1ab7ef418ad04f",
     "counterpart": "Sorok rev34 independent; no Pyat actor grant"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261026-PYAT-HQ-R123-R121-ADJUDICATION-R1",
-    "handoff_commit": "35555fefb393bae20407e9ef1b9dbd703a990805"
+    "checkpoint_id": "20261025-PYAT-HQ-R124-ROUTE-B-MILESTONE-RESTORED-R1",
+    "handoff_commit": "53c8c5cba24ef3fb6da4d3efbfa3fe0eb6777e89"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "Bounded same-HQ High: restore execution from current accepted Route B/R0/M1-M4 state; select small intentionally heterogeneous representative source/product scopes by functional coverage, current rights and actual readiness; prepare exact existing-owner production/consumer operation and any indispensable missing grant. Do not default to old named waves, repeat completed retrieval or create a replacement program. No original source reads before grant.",
-  "worker_state_truth": "All native workers terminal; no new production launched.",
+  "next_action": "Intake R125 exact launch packet. Validate proposed representative scopes against demanded empirical/learned consumer coverage and current permissions, then execute admitted source operation or ask concrete missing access/use grant. No historical count target, no general recovery or source read before admission.",
+  "worker_state_truth": "R125 existing OpenCode author actually launched; no original source execution; tool preflight pending.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -354,7 +354,24 @@
     ],
     "acceptance": "Author result is candidate; distinct reviewer independently qualifies exact candidate, then HQ scoped disposition. R09 local is not deployed enforcement."
   },
-  "r61_actual_workers": [],
+  "r61_actual_workers": [
+    {
+      "id": "R125_REPRESENTATIVE_ROUTE_B_LAUNCH_PACKET",
+      "pid": 47058,
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
+      "branch": "agent/opencode-pyat-r125-representative-route-b-launch-packet-r1",
+      "startup": "849a76de18ef627c3c403b426ebe70f0951a7e7b",
+      "commission_tip": "a1b59fc838af40360a5a70b9fe3deda921e82182",
+      "commission_path": "WORKER_COMMISSIONS/PYAT-R125-REPRESENTATIVE-ROUTE-B-LAUNCH-PACKET-R1/00_COMMISSION.md",
+      "return_root": "WORKER_RETURNS/PYAT-R125-REPRESENTATIVE-ROUTE-B-LAUNCH-PACKET-R1",
+      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r125-representative-launch-packet",
+      "state": "ACTUALLY_LAUNCHED_OPENCODE_MAX",
+      "actual_tool_preflight": "PENDING",
+      "scope": "SOURCEFREE_EXECUTABLE_LAUNCH_PACKET_ASSEMBLY_ONLY",
+      "source_executions_authorized": 0
+    }
+  ],
   "r61_launch_evidence": "ae63a8c2da620d850cc974eb43c3e396abec30cb",
   "active_goal": {
     "active": true,
@@ -364,7 +381,7 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "abb065875f3025897f8433d1acec31b2b839097a",
+  "current_development_evidence": "e8f3a42db6bf683390a28e4ff1f2775a9bb8fb95",
   "new_R87_operative_grants": false,
   "secondary_hq_status": "USER_APPOINTED_BROWSER_SECONDARY__PRIMARY_CODEX_NOT_REVOKED"
 }
