@@ -370,7 +370,9 @@ The required later same-person C9/C12 consumer that reads a typed semantic value
 
 **Changed path:** only `SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/REVIEW_COURTS/RETURNS/RX01/00_REVIEW.md` on this reviewer branch. No source/atlas/production/other-review edit.
 
-**Substantive review commit:** [recorded after the first push].
-**Final remote tip:** [readback commit; independently verified by `git ls-remote` after push].
+**Substantive review commit:** `3442bb81b8f8f44cc2ebd9bab747cd2ff545753c` (first push, verified remote).
+**Readback commit:** the commit containing this line; final remote tip is independently verified with:
+`git ls-remote origin refs/heads/agent/v3court-review-rx01-baseline-source-r1`.
+The final tip SHA is reported in the reviewer handoff response; the substantive review content is at `3442bb81b…`.
 
 **No self-adoption. No native grant. No production implementation. STOP.**
