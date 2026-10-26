@@ -1,22 +1,14 @@
-# Initial parallel V3 Courts flight — commissions prepared, sessions NOT started
+# V3 Courts actual flight status — after six return intakes
 
-**Status:** 10 BANKED / 0 VERIFIED_LAUNCHED / 0 REMOTE_RETURN_VERIFIED / 0 INDEPENDENT_ACCEPTED. This is the entire first-wave *pool*, not an instruction to spend ten simultaneous expensive model sessions. User chooses launch capacity, provider, private-source permission and pairing. Economic routing is task-sufficient not high-for-everything: five bounded direct-original-code investigations have a recommended local qualified source examiner; five meaning/architecture/consumer courts can use Browser High with GitHub documentary access. Accounts, quotas, model availability, exact Mac code checkout and costs UNKNOWN.
+**6/6 returned remote; 0 independently reviewed; 4 remaining first-wave X03/X04/X05/T04 banked, not verified launched.**
 
-X01 State, need baselines, gifted/disrupted impressions and child model | M01 M15 M17 M22 M36 | S2_LOCAL_ORIGINAL_CODE | RECOMMENDED PAIR OpenCode / DeepSeek V4.1-Flash at REASONING MAX (RECOMMENDED, PENDING USER PAIR/PROVIDER/PRIVATE_CODE_PERMISSION) | COMMISSION_BANKED / NOT_LAUNCHED
-X02 Pressure-flow, conductance, grooves, regulatory buffering and stored/derived charge | M03 M05 M08 M10 M21 M23 M24 | S2_LOCAL_ORIGINAL_CODE | RECOMMENDED PAIR OpenCode / DeepSeek V4.1-Flash at REASONING MAX (RECOMMENDED, PENDING USER PAIR/PROVIDER/PRIVATE_CODE_PERMISSION) | COMMISSION_BANKED / NOT_LAUNCHED
-X03 Frameworks, practices, topology, striving, rupture and multi-year metabolization | M09 M11 M13 M14 M16 M18 M19 | S2_LOCAL_ORIGINAL_CODE | RECOMMENDED PAIR OpenCode / DeepSeek V4.1-Flash at REASONING MAX (RECOMMENDED, PENDING USER PAIR/PROVIDER/PRIVATE_CODE_PERMISSION) | COMMISSION_BANKED / NOT_LAUNCHED
-X04 Old V3 causal ordering, event sampling, LLM band and retrospective rendering | M25 M27 M28 M29 M33 M34 M37 M38 M39 | S2_LOCAL_ORIGINAL_CODE | RECOMMENDED PAIR OpenCode / DeepSeek V4.1-Flash at REASONING MAX (RECOMMENDED, PENDING USER PAIR/PROVIDER/PRIVATE_CODE_PERMISSION) | COMMISSION_BANKED / NOT_LAUNCHED
-X05 Material constraints, source bridges, persons/others, typology and provenance | M02 M04 M06 M07 M12 M20 M26 M30 M31 M32 M35 M40 | S2_LOCAL_ORIGINAL_CODE | RECOMMENDED PAIR OpenCode / DeepSeek V4.1-Flash at REASONING MAX (RECOMMENDED, PENDING USER PAIR/PROVIDER/PRIVATE_CODE_PERMISSION) | COMMISSION_BANKED / NOT_LAUNCHED
-T01 Needs, love, power, other actors, real activity and lifelong participation | N01 N06 N07 | S0_BROWSER_GITHUB_DOCUMENTARY | RECOMMENDED PAIR Browser / GPT-6 High (RECOMMENDED, PENDING USER SELECTION) | COMMISSION_BANKED / NOT_LAUNCHED
-T02 Thick baseline, challenge/complication/threat/repair and impression degrees | N02 N03 N08 | S0_BROWSER_GITHUB_DOCUMENTARY | RECOMMENDED PAIR Browser / GPT-6 High (RECOMMENDED, PENDING USER SELECTION) | COMMISSION_BANKED / NOT_LAUNCHED
-T03 Bike-wheel recruitment, durable rewiring, contradictions and plasticity | N04 N05 | S0_BROWSER_GITHUB_DOCUMENTARY | RECOMMENDED PAIR Browser / GPT-6 High (RECOMMENDED, PENDING USER SELECTION) | COMMISSION_BANKED / NOT_LAUNCHED
-T04 Fallible memory, later religious/ideological meaning and 3–5 event recursion | N09 N10 N11 | S0_BROWSER_GITHUB_DOCUMENTARY | RECOMMENDED PAIR Browser / GPT-6 High (RECOMMENDED, PENDING USER SELECTION) | COMMISSION_BANKED / NOT_LAUNCHED
-T05 First real person consumer and missing source-to-psyche edge | N12; current S39–S52, C9/C12/Pyat C11 | S0_BROWSER_GITHUB_DOCUMENTARY | RECOMMENDED PAIR Browser / GPT-6 High (RECOMMENDED, PENDING USER SELECTION) | COMMISSION_BANKED / NOT_LAUNCHED
+| Court | Verified SHA | Status | Independent review |
+|---|---|---|---|
+| X01 | 2e1853dd535bb2b4e9d0bd8a8e31ab561aa75c2a | RETURN_VERIFIED_NOT_ADOPTED | RX01 |
+| X02 | b8ccf53f591a9b067a029e3c64ecad2874794d03 | RETURN_VERIFIED_NOT_ADOPTED | RX02 |
+| T01 | 1c1669c2f79e27072d8edcb1279d2a7ce5ef795e | RETURN_VERIFIED_NOT_ADOPTED | RS |
+| T02 | dd9b27598ae1a959b955cde5d91a36065ec49b04 | RETURN_VERIFIED_NOT_ADOPTED | RS |
+| T03 | a02d2156d2502751b84e6b3b0a4e7de82ab71dde | RETURN_VERIFIED_NOT_ADOPTED | RS |
+| T05 | e5777f7f09d49e101d2762e2e73445218187db8c | RETURN_VERIFIED_NOT_ADOPTED | RC |
 
-## Dispatch economy / concurrency
-- X01–X05 cover **all M01–M40 exactly once as primary owners** with disjoint per-subdirectory write terrain. Their source requirements include original local staging code; historical TD-R05 Git report alone only supports documentary map. Do not claim original line-level code certainty if working Browser lacks source.
-- T01–T04 cover N01–N11 exactly once as primary owners; T05 owns N12 current consumer court. Cross-references allowed, writing another court's card not. Authors do not update central atlas. Theoretical courts can proceed while direct code investigation is pending.
-- All ten are P0 research possibilities, but dispatch in verified economical slots with independent reviewer capacity, without starving other legitimate live Sorok or Pyat workers. Batch stage depends on new return content, not random order.
-- Acceptable first economically balanced flight: X01 + X02 + T01 + T02 + T03 if qualified hosts are actually free; X03/X04/X05/T04/T05 banked and dispatch later after user-selected slots. This is scheduling guidance not mandatory cap.
-- No new protected runtime test, raw survey read, model provider call, native CAN/ADP/Pyat issuance, or active controller hijack. No worker actual execution has begun by these files.
-- Copy-paste launch headers and remote seals will live in 01_STARTUP_MANIFEST.md after commission commit. Only real user launch/verified session can change status to LAUNCHED_VERIFIED.
+See 08_FIRST_FLIGHT_SIX_RETURN_INTAKE_R1.md and REVIEW_COURTS/00_FIRST_FLIGHT_REVIEW_QUEUE.md. Do not conflate a GitHub head change with active or accepted agent state.
