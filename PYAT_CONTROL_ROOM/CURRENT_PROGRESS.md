@@ -1,3 +1,10 @@
+# R130 actual M1 validation boundary
+
+R129 verified6 hashes/bytes/delta/directremote. Real retained evidence builds M1 input with original producer snapshotcatalog+unique support. Duplicateguard preserved; snapshot sever/restore correct. Scoped input composition accepted, no learnedpositive. Next bounded High exact inherited D02 family-law/M1 binding decision: faithful adapter or real scientific gap. No generalcourt or rawsource, fullscope/parallelC5/allholds retained.
+
+
+## Earlier progress history retained
+
 # R129 real artifact -> M1 input
 
 R128 verified9 hashes/bytes/delta/directremote and recovered234 exact native objects, source0/~1.04GiBRSS. Accepted at retained-artifact scope. Existing author actually launched exact original producer-catalog binding against broad retention snapshots before changing M1; native duplicateguard preserved. Existing exports only, no checkpoint/rawsource reread or newscience/authority. Actual call/sever/restore and next exact boundary required. Fullscope/parallelC5/allholds retained.
