@@ -1,0 +1,21 @@
+.F                                                                       [100%]
+=================================== FAILURES ===================================
+____ test_R152_wvs_unknown_administration_not_promoted_and_no_default_form _____
+
+    def test_R152_wvs_unknown_administration_not_promoted_and_no_default_form():
+        result = _load().build_all()
+        native = result["records"]["SRC35"]["evidence_resolution"]["native_objects"]
+        occurrences = native["occurrences"]
+        rules = native["native_source_rules"]
+        assert all(occ["administration"] == "UNKNOWN" for occ in occurrences)
+>       assert not any(rule["administered"] is True for rule in rules), (
+            "NativeSourceRule.administered=True promotes UNKNOWN WVS administration"
+        )
+E       AssertionError: NativeSourceRule.administered=True promotes UNKNOWN WVS administration
+E       assert not True
+E        +  where True = any(<generator object test_R152_wvs_unknown_administration_not_promoted_and_no_default_form.<locals>.<genexpr> at 0x10f559970>)
+
+.r61/r152/probes/test_r152_binding.py:47: AssertionError
+=========================== short test summary info ============================
+FAILED .r61/r152/probes/test_r152_binding.py::test_R152_wvs_unknown_administration_not_promoted_and_no_default_form
+1 failed, 1 passed in 5.94s

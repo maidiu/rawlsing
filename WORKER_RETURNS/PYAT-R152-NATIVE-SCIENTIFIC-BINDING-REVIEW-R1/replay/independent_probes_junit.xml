@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="5.945" timestamp="2026-10-26T17:36:18.929766-04:00" hostname="MacBook-Pro.lan"><testcase classname=".r61.r152.probes.test_r152_binding" name="test_R152_conservation_and_native_types" time="2.990" /><testcase classname=".r61.r152.probes.test_r152_binding" name="test_R152_wvs_unknown_administration_not_promoted_and_no_default_form" time="2.767"><failure message="AssertionError: NativeSourceRule.administered=True promotes UNKNOWN WVS administration&#10;assert not True&#10; +  where True = any(&lt;generator object test_R152_wvs_unknown_administration_not_promoted_and_no_default_form.&lt;locals&gt;.&lt;genexpr&gt; at 0x10f559970&gt;)">def test_R152_wvs_unknown_administration_not_promoted_and_no_default_form():
+        result = _load().build_all()
+        native = result["records"]["SRC35"]["evidence_resolution"]["native_objects"]
+        occurrences = native["occurrences"]
+        rules = native["native_source_rules"]
+        assert all(occ["administration"] == "UNKNOWN" for occ in occurrences)
+&gt;       assert not any(rule["administered"] is True for rule in rules), (
+            "NativeSourceRule.administered=True promotes UNKNOWN WVS administration"
+        )
+E       AssertionError: NativeSourceRule.administered=True promotes UNKNOWN WVS administration
+E       assert not True
+E        +  where True = any(&lt;generator object test_R152_wvs_unknown_administration_not_promoted_and_no_default_form.&lt;locals&gt;.&lt;genexpr&gt; at 0x10f559970&gt;)
+
+.r61/r152/probes/test_r152_binding.py:47: AssertionError</failure></testcase></testsuite></testsuites>

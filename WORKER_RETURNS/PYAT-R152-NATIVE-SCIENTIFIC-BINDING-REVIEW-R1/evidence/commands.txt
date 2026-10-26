@@ -1,0 +1,56 @@
+# R152 exact commands/results (private .r61/r152)
+
+Root: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5
+Branch: agent/opencode-pyat-r152-native-scientific-binding-review-r1
+HEAD: e3a95fef6eecfbac56341553cf3482ccd750a351
+
+## Gate/freeze
+
+pwd
+git rev-parse --show-toplevel
+git rev-parse HEAD
+git branch --show-current
+git status --porcelain=v1
+git show 26d61f11d4213192b30c1842ae3772696dfc2560:WORKER_COMMISSIONS/PYAT-R152-NATIVE-SCIENTIFIC-BINDING-REVIEW-R1/00_COMMISSION.md
+git show 5d68b349e2af147a58b05bba3b0818399226692f:PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/R150_SCIENTIFIC_NATIVE_INPUT_CONTRACT.json
+git show d6b235ca069ec3a128343f0ee80d5024f0672832:WORKER_COMMISSIONS/PYAT-R151-GROUNDED-NATIVE-OCCURRENCES-R1/00_COMMISSION.md
+# ORACLE frozen at 98d48cdad before R151 code inspection
+
+## Author focused (exact candidate runtime/test copied private)
+
+git show e3a95fef6:WORKER_RETURNS/PYAT-R151-GROUNDED-NATIVE-OCCURRENCES-R1/runtime/grounded_occurrences.py \
+  > .r61/r152/repo/WORKER_RETURNS/PYAT-R151-GROUNDED-NATIVE-OCCURRENCES-R1/runtime/grounded_occurrences.py
+git show e3a95fef6:WORKER_RETURNS/PYAT-R151-GROUNDED-NATIVE-OCCURRENCES-R1/tests/test_grounded_occurrences.py \
+  > .r61/r152/repo/WORKER_RETURNS/PYAT-R151-GROUNDED-NATIVE-OCCURRENCES-R1/tests/test_grounded_occurrences.py
+ln -sfn "$PWD/.r61" .r61/r152/repo/.r61
+ln -sfn "$PWD/rawlsing_next" .r61/r152/repo/rawlsing_next
+PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest \
+  .r61/r152/repo/WORKER_RETURNS/PYAT-R151-GROUNDED-NATIVE-OCCURRENCES-R1/tests/test_grounded_occurrences.py -q \
+  --basetemp=.r61/r152/tmp \
+  --junitxml=WORKER_RETURNS/PYAT-R152-NATIVE-SCIENTIFIC-BINDING-REVIEW-R1/replay/author_junit.xml -o addopts=''
+# 6 passed in 2.25s
+
+## Independent probes
+
+PYTHONPATH="$PWD/.r61/r152/repo:$PWD" PYTHONDONTWRITEBYTECODE=1 /usr/local/bin/python3 -m pytest \
+  .r61/r152/probes/test_r152_binding.py -q --basetemp=.r61/r152/tmp \
+  --junitxml=WORKER_RETURNS/PYAT-R152-NATIVE-SCIENTIFIC-BINDING-REVIEW-R1/replay/independent_probes_junit.xml -o addopts=''
+# 1 passed, 1 failed
+# Failed: WVS NativeSourceRule.administered=True while Occurrence administration=UNKNOWN;
+# DEFAULT_FORM hardcoded.
+
+## Summary/native inspector
+
+# private grounded_occurrences.build_all()
+# 4460 B49; 4493 preparation; 3804 context; 26 unmatched; 35 sources;
+# 38 typed surfaces; 18 exact/17 raw domains; 4 units; 2 topologies; 4 risks;
+# WVS 2 occurrences / 2 rules / 1 incomplete inventory;
+# occurrence administration UNKNOWN, rule administered true, forms DEFAULT_FORM;
+# current source grant/U/Epre null, native execution unauthorized.
+# captured replay/summary_witness.log and native_inspect.log
+
+## Scope/pins
+
+git show e3a95fef6 --stat --oneline | head
+# R151 runtime/tests and records; no raw source/decoder
+# No code edit; sourcefree metadata only.
