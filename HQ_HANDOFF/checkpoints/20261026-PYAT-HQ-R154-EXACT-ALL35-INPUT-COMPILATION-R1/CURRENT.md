@@ -1,0 +1,4 @@
+# R154
+
+User explicitly replaces preparationchurn with exact requirements->systematic piecewise acquisition->usable compilation for all35. R153interrupted after committed5e5e36354c426a447ccb54f2e13053a6c3fa2552; saved/unacceptedrepair preserved. Existing sameauthorPID69671 R154 sealed91ac65ad3ee86444613eb3234da5e96d4e19b209 performs wholejob: actual APIrequirements with conditionality, source/fieldworklist, existingevidence+codebooks+currentphysicalmetadata, indexednative-loadablepackage, exactremainingdependencies only. HQ inspected33/35metadata and hashes;2EVSencodingerrors use qualifiedrepairs. No respondentrowsdecoded/exported. User-directed necessarymetadatainspection supersedes oldpending3filemetadataquestion; responseanalysis/current scientificissuance/otherholds remain separate. All35/fullAstra/C5/empiricalANDlearned->FF goal retained.
+
