@@ -1,0 +1,272 @@
+{
+  "schema": "X02_PRESSURE_FLOW_SOURCE_PROBE@1",
+  "source": "<X02_SOURCE_ROOT>",
+  "tests": {
+    "buffer_not_in_route": {
+      "buffer_strength_0": 0.0,
+      "buffer_strength_100": 100.0,
+      "conductance_equal": true,
+      "current_equal": true,
+      "insulation_score_read_by_route": false,
+      "trace_equal": true
+    },
+    "categorical_effect_audit": {
+      "aggregate": {
+        "psychological_capacity.reality_anchor": -12.0
+      },
+      "aggregate_contains_theory": false,
+      "per_domain_keys": [
+        "psychological_capacity.reality_anchor"
+      ],
+      "theory_after_working_copy": "witness_exposure",
+      "theory_before": "institution_building"
+    },
+    "channel_selection_ignores_grooves": {
+      "memory_read_by_assign": false,
+      "same_selection": {
+        "body_self": true,
+        "empire_occupation": true,
+        "family_household": true,
+        "nation_state": true,
+        "sect_class_ethnicity": true
+      },
+      "with_grooves": {
+        "body_self": "withdrawal_numbness",
+        "empire_occupation": "quiet_organizing",
+        "family_household": "caretaking_warmth",
+        "nation_state": "quiet_organizing",
+        "sect_class_ethnicity": "piety_ritual"
+      },
+      "without_grooves": {
+        "body_self": "withdrawal_numbness",
+        "empire_occupation": "quiet_organizing",
+        "family_household": "caretaking_warmth",
+        "nation_state": "quiet_organizing",
+        "sect_class_ethnicity": "piety_ritual"
+      }
+    },
+    "channel_selector": {
+      "channel_set_size": 10,
+      "domain_field_type": "single str",
+      "scores_persisted_on_domain": false,
+      "second_channel_field_present": false,
+      "selected": "humor_irony",
+      "tie_scores": {
+        "humor_irony": 10.0,
+        "hyper_competence": 10.0,
+        "quiet_organizing": 10.0
+      }
+    },
+    "charge_formula": {
+      "actual_current": 81.6,
+      "baseline": 80.0,
+      "conductance": 1.062,
+      "current_equals_overt_plus_internal": true,
+      "expected_current": 81.6,
+      "inner_load": 60.0,
+      "internally_routed_charge": 71.6,
+      "overt_aim_charge": 10.0,
+      "trace_intensity": 76.039,
+      "wound_mean": 50.0
+    },
+    "event_semantics_not_in_route": {
+      "event_context_a": {
+        "event_type_counts": {
+          "job_loss": 1
+        },
+        "events_this_year_count": 1,
+        "micro_trace_this_year_count": 0,
+        "micro_trace_type_counts": {}
+      },
+      "event_context_b": {
+        "event_type_counts": {
+          "job_loss": 1
+        },
+        "events_this_year_count": 1,
+        "micro_trace_this_year_count": 0,
+        "micro_trace_type_counts": {}
+      },
+      "same_current_charge": true,
+      "same_memory": true,
+      "same_trace_delta": true
+    },
+    "expression_rate_ratchet": {
+      "rates": [
+        {
+          "cycle": 1,
+          "expressed_aim": 0,
+          "expression_rate": 30.0
+        },
+        {
+          "cycle": 2,
+          "expressed_aim": 0,
+          "expression_rate": 9.0
+        },
+        {
+          "cycle": 3,
+          "expressed_aim": 0,
+          "expression_rate": 2.6999999999999997
+        }
+      ],
+      "reset_code_found": false
+    },
+    "groove_effect": {
+      "groove_100_conductance": 1.413,
+      "no_groove_conductance": 1.062,
+      "same_current_charge": true,
+      "trace_greater_than_internal_with_groove": true
+    },
+    "hostage_index_duplicate": {
+      "derived_compute_hostage_index": 17.0,
+      "equal": false,
+      "gating_private_derive_hostage_index": 35.2
+    },
+    "memory_update": {
+      "actual": 11.6,
+      "cycles_recorded": 1,
+      "decay": 0.985,
+      "expected": 11.6,
+      "history_window": 5,
+      "increment": 0.035,
+      "prior_groove": 10.0,
+      "trace": 50.0
+    },
+    "route_effects": {
+      "aesthetic_intensification": {
+        "changed_fields": [
+          "practice_stack.craft",
+          "style_traits.aesthetic_sensitivity"
+        ],
+        "domain_A_S_V_changed": false
+      },
+      "caretaking_warmth": {
+        "changed_fields": [
+          "practice_stack.care",
+          "practice_stack.spiritual"
+        ],
+        "domain_A_S_V_changed": false
+      },
+      "conspiracy_symbolic": {
+        "changed_fields": [
+          "psychological_capacity.reality_anchor",
+          "peak_routing.theory_of_change_style"
+        ],
+        "domain_A_S_V_changed": false
+      },
+      "humor_irony": {
+        "changed_fields": [
+          "style_traits.absurdist_humor"
+        ],
+        "domain_A_S_V_changed": false
+      },
+      "hyper_competence": {
+        "changed_fields": [
+          "practice_stack.study",
+          "practice_stack.craft"
+        ],
+        "domain_A_S_V_changed": false
+      },
+      "micro_authoritarianism": {
+        "changed_fields": [
+          "peak_routing.coherence",
+          "style_traits.conscientiousness"
+        ],
+        "domain_A_S_V_changed": false
+      },
+      "piety_ritual": {
+        "changed_fields": [
+          "practice_stack.spiritual",
+          "peak_routing.coherence"
+        ],
+        "domain_A_S_V_changed": false
+      },
+      "quiet_organizing": {
+        "changed_fields": [
+          "practice_stack.organizing",
+          "peak_routing.coherence"
+        ],
+        "domain_A_S_V_changed": false
+      },
+      "somatic_irritability": {
+        "changed_fields": [
+          "capacity.health",
+          "wound_vector.anger"
+        ],
+        "domain_A_S_V_changed": false
+      },
+      "withdrawal_numbness": {
+        "changed_fields": [
+          "psychological_capacity.aperture"
+        ],
+        "domain_A_S_V_changed": false
+      }
+    },
+    "transactional_boundary": {
+      "after": {
+        "affect_channel": {
+          "body_self": "aesthetic_intensification",
+          "empire_occupation": "conspiracy_symbolic",
+          "family_household": "caretaking_warmth",
+          "nation_state": "conspiracy_symbolic",
+          "sect_class_ethnicity": "piety_ritual"
+        },
+        "baseline_load": {
+          "body_self": 60.7,
+          "empire_occupation": 100.0,
+          "family_household": 34.7,
+          "nation_state": 100.0,
+          "sect_class_ethnicity": 100.0
+        },
+        "expressed_aim": {
+          "body_self": 0.0,
+          "empire_occupation": 0.0,
+          "family_household": 0.0,
+          "nation_state": 0.0,
+          "sect_class_ethnicity": 0.0
+        },
+        "expression_rate": {
+          "body_self": 50.0,
+          "empire_occupation": 50.0,
+          "family_household": 50.0,
+          "nation_state": 50.0,
+          "sect_class_ethnicity": 50.0
+        },
+        "history_len": 0
+      },
+      "before": {
+        "affect_channel": {
+          "body_self": "compartmentalization",
+          "empire_occupation": "compartmentalization",
+          "family_household": "compartmentalization",
+          "nation_state": "compartmentalization",
+          "sect_class_ethnicity": "compartmentalization"
+        },
+        "baseline_load": {
+          "body_self": 0.0,
+          "empire_occupation": 0.0,
+          "family_household": 0.0,
+          "nation_state": 0.0,
+          "sect_class_ethnicity": 0.0
+        },
+        "expressed_aim": {
+          "body_self": 0.0,
+          "empire_occupation": 0.0,
+          "family_household": 0.0,
+          "nation_state": 0.0,
+          "sect_class_ethnicity": 0.0
+        },
+        "expression_rate": {
+          "body_self": 50.0,
+          "empire_occupation": 50.0,
+          "family_household": 50.0,
+          "nation_state": 50.0,
+          "sect_class_ethnicity": 50.0
+        },
+        "history_len": 0
+      },
+      "notes": "baseline_load/affect_channel/expression_rate/expressed_aim are written before the working-copy route simulation and are not rolled back.",
+      "pre_route_fields_changed": true,
+      "raised": true
+    }
+  }
+}

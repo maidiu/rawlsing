@@ -1,0 +1,255 @@
+{
+  "schema": "X02_SOURCE_INDEX@1",
+  "branch": "agent/v3court-x02-pressure-flow-interpressure-r1",
+  "sealed_startup": "2647a4cf25d8bb33a00471e1af9c5e58c2825efb",
+  "source_root": "<V3_SOURCE_ROOT>",
+  "source_files": [
+    {
+      "path": "v3/psyche/flow.py",
+      "sha256": "6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d",
+      "lines": 843,
+      "primary_functions": [
+        "run_pressure_flow_cycle",
+        "_derive_current_charge",
+        "_domain_charge_ledger",
+        "_channel_conductance",
+        "_prior_groove",
+        "_update_memory",
+        "_simulate_domain_routes_transactionally",
+        "_apply_single_domain_route",
+        "_commit_route_state"
+      ]
+    },
+    {
+      "path": "v3/psyche/channels.py",
+      "sha256": "2d00bf6b8720879e610160e58455f983e1e63fbe8ceef1a93f46844de8a3f111",
+      "lines": 201,
+      "primary_functions": [
+        "_pick_channel",
+        "assign_sublimation_channels",
+        "seed_wound_vector_from_identity"
+      ]
+    },
+    {
+      "path": "v3/psyche/gating.py",
+      "sha256": "4a82c7c91828b87bb61cd651c777159f04b5733e64158f8679a24efcec1ccfc6",
+      "lines": 236,
+      "primary_functions": [
+        "compute_baseline_load",
+        "apply_expression_gating",
+        "_derive_hostage_index",
+        "route_unexpressed_load"
+      ]
+    },
+    {
+      "path": "v3/psyche/vitality.py",
+      "sha256": "56fed88e37299862774b2401c9a7e43363de6d6bb47a78f8f4744dcc6f91e912",
+      "lines": 191,
+      "primary_functions": [
+        "derive_vitality_profile"
+      ]
+    },
+    {
+      "path": "v3/psyche/insulation.py",
+      "sha256": "c8dd5f96111d3b247ddcf27b876d09c05460b06d7961193bff039e39e5967d28",
+      "lines": 147,
+      "primary_functions": [
+        "derive_insulation_profile"
+      ]
+    },
+    {
+      "path": "v3/psyche/vessels.py",
+      "sha256": "6f4855eef0c19ef514983d4cb47fc21873d6e2af5368b17ea294f8f187f17438",
+      "lines": 119,
+      "primary_functions": [
+        "derive_attribution_and_vessel_hint"
+      ]
+    },
+    {
+      "path": "v3/core/state.py",
+      "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+      "lines": 614,
+      "primary_functions": [
+        "BackboneState",
+        "DomainState",
+        "WoundVector",
+        "Buffer",
+        "PsychologicalCapacity"
+      ]
+    },
+    {
+      "path": "v3/core/derived.py",
+      "sha256": "e479fc3eba21734752c372742fb2ee247cbdde6a73ac42545dc30b5039301360",
+      "lines": 378,
+      "primary_functions": [
+        "compute_all_derived",
+        "compute_hostage_index",
+        "compute_insulation_score",
+        "compute_stability_threshold",
+        "compute_registers_from_state"
+      ]
+    },
+    {
+      "path": "v3/systems/domains.py",
+      "sha256": "24e5215763a11e439075ea7a0f4ac32ae425856a9fd4624744d4a2a744758280",
+      "lines": 56,
+      "primary_functions": [
+        "update_domains"
+      ]
+    },
+    {
+      "path": "v3/systems/frameworks.py",
+      "sha256": "0d59fc6e177009da92e39eb61ea729eace97f50392baa93999cb6513f81dd2cb",
+      "lines": 119,
+      "primary_functions": [
+        "update_framework_weights"
+      ]
+    },
+    {
+      "path": "v3/systems/buffers.py",
+      "sha256": "9c9ed09001dad364ab4011ee29e8ea2df3c332745db736b1a6e1dbe56e332b35",
+      "lines": 80,
+      "primary_functions": [
+        "update_buffers",
+        "_pay_buffer_costs"
+      ]
+    },
+    {
+      "path": "v3/systems/stability_inertia.py",
+      "sha256": "5a11c8b07eafe2b8f1d7e9864c9cb066a5c45f19c2c45a8d4223b3a64c394c78",
+      "lines": 83,
+      "primary_functions": [
+        "stability_inertia_dissipation"
+      ]
+    },
+    {
+      "path": "v3/systems/autonomy_safety.py",
+      "sha256": "fdb6ae0d78bbb93041217e7cd98f16526c97d924393c9f6fd51aa56a128b0e56",
+      "lines": 110,
+      "primary_functions": [
+        "autonomy_safety_micro_drift"
+      ]
+    },
+    {
+      "path": "v3/engine/yearly_step.py",
+      "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+      "lines": 200,
+      "primary_functions": [
+        "run_one_year"
+      ]
+    },
+    {
+      "path": "v3/engine/event_engine.py",
+      "sha256": "b57e7ef4df5dabd996dc7de19c1c2c273ad90ee89d73570df1fd85674dd98ded",
+      "lines": 210,
+      "primary_functions": [
+        "sample_events"
+      ]
+    },
+    {
+      "path": "v3/engine/llm_contract.py",
+      "sha256": "f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf",
+      "lines": 891,
+      "primary_functions": [
+        "state_summary_from_backbone",
+        "build_render_packet"
+      ]
+    },
+    {
+      "path": "v3/engine/run_llm_band.py",
+      "sha256": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38",
+      "lines": 431,
+      "primary_functions": [
+        "run_llm_band_year"
+      ]
+    },
+    {
+      "path": "v3/io/persona_sheet.py",
+      "sha256": "4a0009533443baef2786fc498c7f8db3ead7d133d8ee7e97e6d7128d4322a00e",
+      "lines": 993,
+      "primary_functions": [
+        "build_persona_sheet"
+      ]
+    },
+    {
+      "path": "v3/v3_yearly_step_order.yaml",
+      "sha256": "90496a2cc852ca00ef99c8bd4fcb2b41c9aa43c4aaa9108d3ac8cce0ebe22ffc",
+      "lines": null,
+      "primary_functions": [
+        "configured step order"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "path": "00_RETURN.md",
+      "sha256": "0137d4909318fef7e5461a58c3bf40b37a81132fd78fdc03c2427e14eafb46f9",
+      "role": "immutable court return"
+    },
+    {
+      "path": "FUNCTION_AND_DATAFLOW_ATLAS.md",
+      "sha256": "d0f5112f70a4f30bb85ac7243072f20412698fc27ef024b70cf14a996d6c17fc",
+      "role": "main atlas"
+    },
+    {
+      "path": "NEO_V3_INTERPRESSURE_REQUIREMENTS.md",
+      "sha256": "d140d8f9d8c79b0b57f195f001ca98813c4b111e9e8512ac64639a1ab7ace6cb",
+      "role": "N02-N05,N08 typed differential"
+    },
+    {
+      "path": "SOURCE_IDENTITY_AND_TESTS.md",
+      "sha256": "d30673eec2608a5ad270a6a241034c2cbef83afbaa9585c9fa1be43d7987ad88",
+      "role": "source/test provenance"
+    },
+    {
+      "path": "EXECUTION_LEDGER.json",
+      "sha256": "e32675440019d82f7451817882827ba0eb35b3e4a2880b2b287fb7cbc2568bb1",
+      "role": "commands/results"
+    },
+    {
+      "path": "source_identity.json",
+      "sha256": "07508186d8290441b1ffeb4944071396b5200e18e46a770bbf6ee5775fe256e5",
+      "role": "file hashes, S50 31/31, local zip caveat"
+    },
+    {
+      "path": "logs/pytest_x02_original_v3.log",
+      "sha256": "385456f6a6cdd7a794664c92ae38ce92544a16e3066b022ab9cad73a45491141",
+      "role": "82 passed historical tests"
+    },
+    {
+      "path": "evidence/probe_flow.json",
+      "sha256": "cfc2063fcccd8b9cf34aa31c5d37af888234163188a7a9b79852670c3e062aba",
+      "role": "formula/channel/groove/memory/hostage/ratchet/transaction/buffer/event semantics/categorical audit"
+    },
+    {
+      "path": "evidence/probe_flow.py",
+      "sha256": "4e7af6f3b2e0bdb24ceebd857d4443a3bde71d97dea22dec9852ba08dddae831",
+      "role": "exact read-only probe source"
+    }
+  ],
+  "card_dossiers": [
+    "V3_EXISTING/M03/X02_M03_DOSSIER.md",
+    "V3_EXISTING/M05/X02_M05_DOSSIER.md",
+    "V3_EXISTING/M08/X02_M08_DOSSIER.md",
+    "V3_EXISTING/M10/X02_M10_DOSSIER.md",
+    "V3_EXISTING/M21/X02_M21_DOSSIER.md",
+    "V3_EXISTING/M23/X02_M23_DOSSIER.md",
+    "V3_EXISTING/M24/X02_M24_DOSSIER.md"
+  ],
+  "authority": {
+    "native_actor": false,
+    "native_rule": false,
+    "native_source": false,
+    "c8": false,
+    "c9": false,
+    "c11": false,
+    "c12": false,
+    "pyat": false,
+    "human": false
+  },
+  "notes": [
+    "The local staging zip hash differs from the TD-R05 original archive; file-level selected identities are exact.",
+    "No current Sorok integration is claimed.",
+    "Historical coefficients are not adopted science."
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "schema": "X02_EXECUTION_LEDGER@1",
+  "branch": "agent/v3court-x02-pressure-flow-interpressure-r1",
+  "sealed_startup": "2647a4cf25d8bb33a00471e1af9c5e58c2825efb",
+  "host": {
+    "os": "macOS 13.7.8 Darwin 22.6.0 x86_64",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "ruby": "2.6.10p210",
+    "git": "2.39.1",
+    "provider_calls": 0,
+    "raw_data_calls": 0,
+    "accepted_source_edits": 0
+  },
+  "source": {
+    "root": "<V3_SOURCE_ROOT>",
+    "zip": "<LOCAL_STAGING_ZIP>",
+    "zip_sha256": "3f2c5ed925273153a4f300f75e54524729f0b4fef9974957be1f3cd887c91289",
+    "td_r05_archive_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "archive_wide_identity_claim": false
+  },
+  "commands": [
+    {
+      "id": "preflight",
+      "command": "git worktree add -b agent/v3court-x02-pressure-flow-interpressure-r1 <WORKTREE> 2647a4cf25d8bb33a00471e1af9c5e58c2825efb",
+      "exit": 0,
+      "result": "clean isolated worktree at sealed startup"
+    },
+    {
+      "id": "source_presence",
+      "command": "test -f <V3_SOURCE_ROOT>/v3/psyche/flow.py; shasum -a 256 <key files>",
+      "exit": 0,
+      "result": "all inspected files present; hashes recorded in source_identity.json"
+    },
+    {
+      "id": "s50_manifest",
+      "command": "verify SOROK-20261025-S50.../01_SOURCE_IDENTITIES.json against <V3_SOURCE_ROOT>",
+      "exit": 0,
+      "result": "31/31 exact; no mismatches"
+    },
+    {
+      "id": "zip_entries",
+      "command": "unzip entries for key files; compare SHA-256 to source directory",
+      "exit": 0,
+      "result": "19/19 key zip entries match; archive-wide zip hash differs from TD-R05 original"
+    },
+    {
+      "id": "pytest_x02",
+      "command": "PYTHONPATH=<read-only YAML bridge> PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q -p no:cacheprovider <17 files>",
+      "exit": 0,
+      "result": "82 passed; log logs/pytest_x02_original_v3.log"
+    },
+    {
+      "id": "probe_flow",
+      "command": "X02_SOURCE_ROOT=<V3_SOURCE_ROOT> PYTHONPATH=<read-only YAML bridge> PYTHONDONTWRITEBYTECODE=1 python3 evidence/probe_flow.py",
+      "exit": 0,
+      "result": "formula/channel/groove/memory/hostage/ratchet/transaction/buffer/event-semantic/categorical probes; evidence/probe_flow.json"
+    }
+  ],
+  "tests": {
+    "passed": 82,
+    "failed": 0,
+    "errors": 0,
+    "log": "logs/pytest_x02_original_v3.log",
+    "yaml_bridge": "read-only Ruby Psych bridge outside source tree",
+    "not_run": [
+      "exact full TD-R05 80-test suite",
+      "server/model/provider integration",
+      "live persona conversation",
+      "current Sorok S44/S49/S52 consumer",
+      "original respondent/survey data",
+      "native actor/person tests"
+    ]
+  },
+  "probe_observations": {
+    "current_charge": "81.6 for baseline 80/inner 60/wound 50",
+    "groove_0_vs_100": "conductance 1.062 vs 1.413; current unchanged; channel unchanged",
+    "hostage_duplicate": "derived 17.0 vs gating 35.2",
+    "expression_rate_ratchet": "100 -> 30 -> 9 -> 2.7 under constant high hostage",
+    "buffer_0_vs_100": "charge/conductance/trace identical",
+    "transactional_pre_route": "affect_channel/baseline_load changed before forced failure",
+    "categorical_effect": "conspiracy theory_of_change_style changed but absent from numeric trace",
+    "event_semantics": "label/ID-only change leaves charge/trace/memory identical"
+  },
+  "authority": {
+    "native_actor": false,
+    "native_rule": false,
+    "native_source": false,
+    "c8": false,
+    "c9": false,
+    "c11": false,
+    "c12": false,
+    "pyat_n11_n12": false,
+    "native_human": false
+  },
+  "remote": {
+    "final_sha": "PENDING_PUSH",
+    "verification": "git ls-remote origin refs/heads/agent/v3court-x02-pressure-flow-interpressure-r1"
+  }
+}
