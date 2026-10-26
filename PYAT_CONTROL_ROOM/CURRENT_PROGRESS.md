@@ -1,3 +1,10 @@
+# R154 ordered execution
+
+User requires explicit focusedtasksequence and completionchecks. R154samejob resumed sameexistingauthorPID70586 with sealedf6c865544193d7ae83679f766ea81c9238bbaeb4 orderedaddendum+taskspec: BOOTSTRAP, each35source PHYSICAL->CODEBOOK->EVIDENCE->OCCURRENCES->WORKLOAD->PACKAGE, ASSEMBLE,VERIFY_DELIVER. OneRUNNINGtask; DONE requires output+checkevidence; exactBLOCKEDfact/dependentcall/nextacquisition, continueindependentreadytasks. Existing R154 untrackedmetadata preserved; no discoveryrestart/newworker. Read ordered-resume.stdout.jsonl and stderr from R154launchreceipt, not oldlogs. Metadatainspection authorization/fullgoal/holds unchanged.
+
+
+## Earlier progress history retained
+
 # R154
 
 User explicitly replaces preparationchurn with exact requirements->systematic piecewise acquisition->usable compilation for all35. R153interrupted after committed5e5e36354c426a447ccb54f2e13053a6c3fa2552; saved/unacceptedrepair preserved. Existing sameauthorPID69671 R154 sealed91ac65ad3ee86444613eb3234da5e96d4e19b209 performs wholejob: actual APIrequirements with conditionality, source/fieldworklist, existingevidence+codebooks+currentphysicalmetadata, indexednative-loadablepackage, exactremainingdependencies only. HQ inspected33/35metadata and hashes;2EVSencodingerrors use qualifiedrepairs. No respondentrowsdecoded/exported. User-directed necessarymetadatainspection supersedes oldpending3filemetadataquestion; responseanalysis/current scientificissuance/otherholds remain separate. All35/fullAstra/C5/empiricalANDlearned->FF goal retained.
