@@ -1,0 +1,58 @@
+{
+  "artifacts": {
+    "00_RETURN.md": {
+      "bytes": 7094,
+      "sha256": "fc65c1e004c50264e7c948a2afbe2bb38686572a6f01446f252bd2c179177dc0"
+    },
+    "COMMANDS.md": {
+      "bytes": 3947,
+      "sha256": "ab6b84a0cce923f8b02357efd3fac4d6836a9b7eb6bc88ac4603bd7721d2813d"
+    },
+    "CONSUMER_RECEIPT_OR_REFUSAL.json": {
+      "bytes": 8998,
+      "sha256": "10e27d237c0bca280848c2df457afdde7a2097b879c1bffe0a601a5cac752ef6"
+    },
+    "NATIVE_VALIDATION.json": {
+      "bytes": 5489,
+      "sha256": "6783d3f88bd1aa297fe424ea50bfd62773cbf1ddcb2561af8e1e565b2e5ee263"
+    },
+    "OBJECT_GRAPH.json": {
+      "bytes": 306847,
+      "sha256": "9b0c90332e35f8c38beb9acc3721060abfa70ff697115a85f574e2bdb3ae92b4"
+    },
+    "RESOURCE_AND_ACCESS.json": {
+      "bytes": 1478,
+      "sha256": "cecaee1b723b5083336aeed776ad3fa333c647fce9dcbf10b8e4af4ab5fccedd"
+    },
+    "RESUME.md": {
+      "bytes": 2415,
+      "sha256": "cb26f40fb3d5e40d89ace758da2098ce8e4009e3ca16c886871dc3073cfbe498"
+    },
+    "runtime/attempt_consumer.py": {
+      "bytes": 13720,
+      "sha256": "b90b7259c193a18dc6028aeec8d6e038f5bfda40b7b999b306ff3e6935261ad5"
+    },
+    "runtime/stream_retained_native.py": {
+      "bytes": 35609,
+      "sha256": "d4154a6456fb49e473a9c1873aa932004fc2b278e1e7a3441931db2c175cfac8"
+    }
+  },
+  "branch": "agent/opencode-pyat-r128-retained-real-native-artifacts-r1",
+  "excluded_from_manifest": [
+    "manifest.json",
+    ".r61/r128-retained-native/private/"
+  ],
+  "full_checkpoint_json_loads": 0,
+  "input": {
+    "checkpoint_bytes": 3404445161,
+    "checkpoint_identity_sha256": "3fab15f37db629f0ee24189620c65eff944d8a36c4b4509abb6b8bb2ea69c33f",
+    "checkpoint_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+    "closure_identity": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415"
+  },
+  "note": "Retained-final-success recovery only. Private object preimages and fragments remain under .r61 and are not committed. Manifest excludes itself.",
+  "schema": "PYAT_R128_RETURN_MANIFEST@1",
+  "source_accesses": 0,
+  "startup_commit": "979d31366454e0fe9e085f7da3972ad34746c6cf",
+  "status": "ARTIFACT_RECOVERY_PASS__M1_INPUT_REFUSED__CONFLICTING_AUTHORITY_SNAPSHOT_PREIMAGES__FULL_CONSUMER_NOT_REACHED",
+  "tests_executed": false
+}
