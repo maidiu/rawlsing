@@ -1,0 +1,17 @@
+# R154 exact pipeline requirements
+
+- `SOURCE_IDENTITY_HEADER` [metadata]: pyreadstat/readstat current header receipt + pre553_source_native_preimage_adapter.NativeSourceIdentity — fields: source_id,source_sha256,source_format,canonical_filename,expected_rows,columns,types,labels,missing,MRs; check: one receipt per source, metadataonly, no response rows
+- `CODEBOOK_JOIN` [metadata]: R145/R147/R148 codebook rows — fields: var_name,question/options,storage,measure,module,row identity/hash; check: all physical columns and codebook rows accounted; physical-only/document-only explicit
+- `B49_ITEM_AUTHORITY` [metadata]: pre553_inherited_source_rules.SourceAuthorityCorpus/select_source_rules — fields: implementation_id,source_variable_code,disposition,direction,routing,response,relation,exact identity/evidence; check: every applicable item accounted; unmatched held; no scope borrowing
+- `TYPED_REPRESENTATION` [metadata]: B49 typed_surfaces + source-specific runtime package — fields: surface id,representation authority,ordinal,typed domain; check: all 38 consumed; representation-only ceiling preserved
+- `OCCURRENCE_FIELDS` [predecode]: universal_grammar.types.Occurrence/SourceInventory — fields: unit,form,topology,administration,routing,risk set,domain,role; check: each field resolved or exact missing owner/dependency
+- `SOURCE_READ_REQUEST` [predecode]: pre553_source_read_admission.SourceReadRequest/decode_with_source_read_permission — fields: source_id,edition_sha256,format,custody_locator_binding,host,purpose,consumer_use,SOURCE_RESPONSE_DECODE,EXACT_FILE,freeze refs,semantic scope,current decision; check: no source open/stat/hash/decode before current grant
+- `NATIVE_SOURCE_IDENTITY` [predecode]: NativeSourceIdentity — fields: source identity fields; check: constructor roundtrip; no current grant implied
+- `NATIVE_PREIMAGE_PACKAGE` [workload]: NativeSourcePackage/materialize_native_preimages — fields: source rules, occurrence plan, projection, release; check: actual native constructor/validator where all premises grounded
+- `NATIVE_WORKLOAD` [workload]: NativeWorkload/IssuedWorkloadRecord/admit — fields: descriptor,projection,catalog,requests/discoveries,U/Epre,current record; check: admit refuses absent current issuance; no fabricated U/Epre
+- `I03_EMPIRICAL` [execution]: CarrierNeutralResearchExecutor.execute_i03/EmpiricalFact — fields: query,predicate,exact source scope,replay; check: typed fact/refusal; no metadata render counted as execution
+- `I05_DISCOVERY` [execution]: CarrierNeutralResearchExecutor.execute_i05/DiscoveryResultReceipt — fields: full declared frontier,candidate grammar,coverage/no-drop; check: complete candidate accounting; no old product replay
+- `M1_LEARNED` [learned]: pre553_learned_empirical_adjudication.adjudicate_learned_empirical — fields: exact I05 evidence,M1 family rule binding; check: LearnedEmpiricalDisposition; rule only where constitutive
+- `M2_PERSISTENCE` [learned]: pre553_learned_product_release/persistence — fields: ReleaseCore,PublicationBinding,ResolutionReceipt; check: cold retrieval exact; no adoption implied
+- `FIELD_FORGE` [consumer]: m1_admitted_field_forge_relation_v554_ingress / FieldForge — fields: M1 exact F1/B1 relation target-use authority; check: actual FF receiving use; no claim from metadata
+- `COLD_RETRIEVAL` [persistence]: C11 repository/release + JoinedWorkloadCheckpoint — fields: release/replay/checkpoint exact refs; check: store/import/loader roundtrip
