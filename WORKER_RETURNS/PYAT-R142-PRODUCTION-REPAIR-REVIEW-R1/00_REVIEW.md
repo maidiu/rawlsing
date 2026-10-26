@@ -96,5 +96,7 @@ Synthetic fixtures and test-harness authorities/resolvers only.
 issuance. No real source/respondent read, original 35/1890/F1–F8/global
 F6/F7/F8, learned/FF/V553, actor/person/dyad/V3, M1-for-all, R09/CI/prod,
 N11/N12, Sorok/J52/W52 or production adoption is claimed. No candidate code
-edit, self-adoption, new engine/worker/provider or broader court. The branch is
-pushed nonforce and directly read back; final SHA is reported separately.
+edit, self-adoption, new engine/worker/provider or broader court. The branch was pushed nonforce. Evidence commit
+`b30f8a3c8eaffe4b91adcb6dc2ad9819db1f8fae` was directly read back at the
+remote, as recorded in `evidence/remote_readback.txt`; the final branch tip is
+also directly verified and reported to the coordinator.
