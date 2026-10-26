@@ -1,3 +1,10 @@
+# R141 — exact query-scope repair queued
+
+R138 verified18 hashesbytes/codeunchanged/directremote. Actual repeatedSUPPORTED2/2/valuechange/restore/cold and original bindingrepairs independently demonstrated; foreigntargetuse/measure/asof/grammar/frontier stillaccepted, REVISE. R140author remainslive samefiles; exact R141repair queued at terminal singlewriter boundary, omit if R140alreadyresolves. No duplicateworker or source/learned/FF/fullpathacceptance; fullscope/holds retained.
+
+
+## Earlier progress history retained
+
 # R140 — exact production ingress implementation
 
 Bounded verifiedHigh R139 defines two technicaltransports: externallyauthenticated source-read permission before existing R04decode; and existing native DiscoveryAuthority/frontier/workload/I05 productionwiring. Neither grants source/science or creates engine/issuer. Existing author launched; R138 distinct reviewer remains on frozen98612 independent. Meaningful sourcefree values/refusals/coverage/restoration then distinctqualification, actualsourceexecution later exactpermissions. Fullgoal/holds preserved; HQreturnLowonce.
