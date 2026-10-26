@@ -1,0 +1,457 @@
+{
+  "authority": {
+    "c11": false,
+    "c12": false,
+    "c8": false,
+    "c9": false,
+    "native_actor": false,
+    "native_human": false,
+    "native_rule": false,
+    "native_source": false,
+    "note": "G18/JOIN-E/language/V3 sources are read-only; S52 performer is unaccepted; no production edit.",
+    "pyat_n11_n12": false
+  },
+  "branch": "agent/rabochii-sorok-20261026-ra-d-mac-executable-reality-r1",
+  "external_roots": {
+    "g18": {
+      "commit": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
+      "history_blob": "d667448194a1e8eb7eeab874fa0937b6797b79c0",
+      "history_sha256": "2d861d7a820168d443e23efb2403b7ed9c3e899a8a79aaa72fd859c46f47c1c1",
+      "path": "<G18_SOURCE_ROOT>"
+    },
+    "join_e": {
+      "commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "path": "<JOIN_E_SOURCE_ROOT>",
+      "session_blob": "dc0894289e8b6a5e66148189e41d7efb563f25af",
+      "session_sha256": "ea820ec3e30a2825c3d0d8c5dc66e812afdda40b08f9cc0a8c868c8b3e0dd0da"
+    },
+    "language": {
+      "commit": "8d2920da951f98cd8246d7c34cac777928e0c732",
+      "path": "<LANGUAGE_SOURCE_ROOT>",
+      "session_blob": "4f2cdc62473d626fbd35d2f991562dd349fac35f",
+      "session_sha256": "d6a1628cbfdc1c601f68fb3d3b9adbe91f9464875996b543caf69e548ece25aa"
+    },
+    "v3": {
+      "fixture": "identity_minimal.json",
+      "fixture_sha256": "ef7008ac0d83e7690bd89e96ec683d25d3b784806857a799da2978ba7aa35673",
+      "path": "<V3_SOURCE_ROOT>",
+      "source_identities": "31/31 exact"
+    }
+  },
+  "hq_control_cut": "fbfc529230d8b3c13f824cfac31741a5dfaa57e5",
+  "imported_modules": [
+    {
+      "loaded": true,
+      "module": "bp1.composer",
+      "origin_class": "g18_r31j",
+      "sha256": "358a3c6e2f187e21618ed56af17025e80d5153d29af003dcd9e8df9393b63c88"
+    },
+    {
+      "loaded": true,
+      "module": "bp4.world",
+      "origin_class": "join_e",
+      "sha256": "848bb6d3e3e0375a11077a3cf6984509366863e81e9deb212fd30d7878782ddd"
+    },
+    {
+      "loaded": true,
+      "module": "candidate",
+      "origin_class": "s52_archive",
+      "sha256": "f176282b70d4c1c21831ab3d664a82919c5ea9583c425d527ee584c45be0cd3f"
+    },
+    {
+      "loaded": true,
+      "module": "candidate.actor_access_response",
+      "origin_class": "s52_archive",
+      "sha256": "987352a620e944e88b8d5112b1b5c37d6dcc7f523076b9683d5cab6526f2d04a"
+    },
+    {
+      "loaded": true,
+      "module": "joined.session",
+      "origin_class": "join_e",
+      "sha256": "ea820ec3e30a2825c3d0d8c5dc66e812afdda40b08f9cc0a8c868c8b3e0dd0da"
+    },
+    {
+      "loaded": true,
+      "module": "lab_sgi1.history",
+      "origin_class": "g18_r31j",
+      "sha256": "2d861d7a820168d443e23efb2403b7ed9c3e899a8a79aaa72fd859c46f47c1c1"
+    },
+    {
+      "loaded": true,
+      "module": "lab_sgi1.joint",
+      "origin_class": "g18_r31j",
+      "sha256": "755820d7d703cd459aec8271a784c39a69e9374aae501da1cd9f37bbccc21ee9"
+    },
+    {
+      "loaded": true,
+      "module": "language_mediation.session",
+      "origin_class": "language_mediation",
+      "sha256": "d6a1628cbfdc1c601f68fb3d3b9adbe91f9464875996b543caf69e548ece25aa"
+    },
+    {
+      "loaded": true,
+      "module": "s37.bootstrap",
+      "origin_class": "s52_archive",
+      "sha256": "2d0cd39bd000c01a5b8e1b5b8847f5c98c0973641dadcd37f1791fcdad49bad2"
+    },
+    {
+      "loaded": true,
+      "module": "s37.session",
+      "origin_class": "s52_archive",
+      "sha256": "3e8ffe0325cd441b2fc05586e6a9cb3676982ea809d4c2fbd288524cf253fb37"
+    },
+    {
+      "loaded": true,
+      "module": "s39.model",
+      "origin_class": "s52_archive",
+      "sha256": "6afba4b77b71c40654986fed4eda40915c7a0cc454e07d8293e353f135f1c603"
+    },
+    {
+      "loaded": true,
+      "module": "s39.sources",
+      "origin_class": "s52_archive",
+      "sha256": "cddd0ecfa2cc35affc10d3d3bee51bfc280bf2949a5850e0a8963ba5ac93a7d5"
+    },
+    {
+      "loaded": true,
+      "module": "s44.root",
+      "origin_class": "s52_archive",
+      "sha256": "a52dbe79b848f02714ccedb176529a58e5bf5365fdc5edde1aa4e044a7a53226"
+    },
+    {
+      "loaded": true,
+      "module": "s44.session",
+      "origin_class": "s52_archive",
+      "sha256": "eccc8d6a420d1715ebb972407505397d930e898ce4ecec9ec7ca64beaaf75259"
+    },
+    {
+      "loaded": true,
+      "module": "s45.session",
+      "origin_class": "s52_archive",
+      "sha256": "fad26a91d4368d8de665b815bc174678bca97ece6a5a78cc131a5ef6e6db7ab9"
+    },
+    {
+      "loaded": true,
+      "module": "s46.producer",
+      "origin_class": "s52_archive",
+      "sha256": "6e8fdc28a9171d9f9287dd49b86c9aa4e5de6745d24906c6e376baf6551454c2"
+    },
+    {
+      "loaded": true,
+      "module": "s47.conditioning",
+      "origin_class": "s52_archive",
+      "sha256": "97e78287422307b9c7ab1736c2b1ba9b688b115c8ebaa3cf1fcab5a33b15803a"
+    },
+    {
+      "loaded": true,
+      "module": "s47.session",
+      "origin_class": "s52_archive",
+      "sha256": "467e91a1f4488ab47d46212473d228ddcd93444b78f007501e4f4a123c915d39"
+    },
+    {
+      "loaded": true,
+      "module": "s48.session",
+      "origin_class": "s52_archive",
+      "sha256": "8fc4e3f3c8f32a99174e06c28e1e7bfe046746a73fb7fdf6b57a57b985c450cb"
+    },
+    {
+      "loaded": true,
+      "module": "s49.actor",
+      "origin_class": "s52_archive",
+      "sha256": "c2a889c825807c174cdc91ce4ec08cde07c2e6e0575fadf9ee97185324c5eb95"
+    },
+    {
+      "loaded": true,
+      "module": "s49.session",
+      "origin_class": "s52_archive",
+      "sha256": "9932029c529a399ffedb24545ea5d0f6884a5fe8719ffc39c8af9fe1db0f3625"
+    },
+    {
+      "loaded": true,
+      "module": "s51.session",
+      "origin_class": "s52_archive",
+      "sha256": "6ef8e92eb3ea2d83cfdb5aba1121ed42f1706a0df9bc3f36aff2b91a47596a82"
+    },
+    {
+      "loaded": false,
+      "module": "s52.performer",
+      "origin_class": "not_imported_at_probe_time",
+      "sha256": null
+    },
+    {
+      "loaded": false,
+      "module": "s52.session",
+      "origin_class": "not_imported_at_probe_time",
+      "sha256": null
+    },
+    {
+      "loaded": true,
+      "module": "s52.session",
+      "origin_class": "s52_archive",
+      "sha256": "3ed6dadf2c809a0f6e2d4094c41e34be3e51b4a984a219898e20f6a7b299e32e"
+    },
+    {
+      "loaded": true,
+      "module": "s52.performer",
+      "origin_class": "s52_archive",
+      "sha256": "ff12b71743f421b7f14ff51ae34e4f01cc0cae296bfbebda2fba91942aae8a14"
+    }
+  ],
+  "missing_sources": {
+    "executed_s52_closure": [],
+    "s50_actual_person": [
+      "backbone_state",
+      "initial_state_provenance",
+      "expectation_baseline",
+      "striving_objects",
+      "pressure_flow_history",
+      "pressure_flow_memory",
+      "surface_psyche_profile",
+      "analyst_pressure_account",
+      "actor_context_projection",
+      "actor_owned_source"
+    ]
+  },
+  "other_worker_attestations": {
+    "Astra_R3": "3b2d9a1b...; all K1-K11 NOT_EXECUTED",
+    "RA_A": "ff47e917...; static callgraph; no execution",
+    "RA_B": "48d3c8bb...; K1-K11 evidence court; no fresh execution",
+    "RA_C": "d01454f6...; handoff unexecuted; RA-D executed the path"
+  },
+  "repository": "maidiu/rawlsing (private)",
+  "s52_cut_integrity": {
+    "accepted_cut_compared": 110,
+    "accepted_cut_mismatches": 5,
+    "archive_mismatches": 0,
+    "archive_scope": "S52 commit subtree only; S50 extracted separately from 515b9a8e and exact",
+    "delta_files": [
+      {
+        "accepted_blob": "223e399a224b49876b4f13dbdaf81140da17b3a0",
+        "file": "WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/s37/producer.py",
+        "s52_blob": "cf6f970ff12faa2003c43b0261fc7d6497efa356"
+      },
+      {
+        "accepted_blob": "41fe95c107ed5a33dc2453640b38de73862fd483",
+        "file": "WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/s39/model.py",
+        "s52_blob": "2dc5f16625b1c004be71bfc0c8dc593ad5afec21"
+      },
+      {
+        "accepted_blob": "d5433c3b915d695091a4f1fee19deff39ad37589",
+        "file": "WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/s49/actor.py",
+        "s52_blob": "e4a7781ee15e9f9b9ab0f0653d3224a32aff613a"
+      },
+      {
+        "accepted_blob": "53133d035d80605b7c28c90fbdf7493ec033cea2",
+        "file": "WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/s49/session.py",
+        "s52_blob": "70205dd6366f94b32f478863433469f46e5b31e5"
+      },
+      {
+        "accepted_blob": "0f58b97192c4d30ed6f2c9f20db3131545eb184c",
+        "file": "WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/s51/session.py",
+        "s52_blob": "a6ab590fd6e1dfca32401c123812911b11b6c651"
+      }
+    ],
+    "s52_commit_py_files": 183
+  },
+  "schema": "RA_D_SOURCE_INDEX@1",
+  "sealed_startup": "9c356a0189234f50cb07813eebbd68e4dc2d3740",
+  "source_cuts": [
+    {
+      "cut": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+      "grade": "EXECUTED_AT_S52_OR_S50_CUT",
+      "note": "S52 cut is a modified superset for S37/S39/S49/S51; see deltas",
+      "return": "SOROK-20261024-S37-INTEGRATED-CONSUMER-R1"
+    },
+    {
+      "cut": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+      "grade": "EXECUTED_AT_S52_OR_S50_CUT",
+      "note": "S52 cut is a modified superset for S37/S39/S49/S51; see deltas",
+      "return": "SOROK-20261024-S39-GENERATED-RESPONSE-R1"
+    },
+    {
+      "cut": "923278fbe6b030e2ffdd10fe42d7a18266344611",
+      "grade": "EXECUTED_AT_S52_OR_S50_CUT",
+      "note": "S52 cut is a modified superset for S37/S39/S49/S51; see deltas",
+      "return": "SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1"
+    },
+    {
+      "cut": "f26a138e20d53c809d611cf8d834ec647b0804bf",
+      "grade": "EXECUTED_AT_S52_OR_S50_CUT",
+      "note": "S52 cut is a modified superset for S37/S39/S49/S51; see deltas",
+      "return": "SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1"
+    },
+    {
+      "cut": "f0ef39b92ce2e4add5c0a699389e12f1d7ae434e",
+      "grade": "EXECUTED_AT_S52_OR_S50_CUT",
+      "note": "S52 cut is a modified superset for S37/S39/S49/S51; see deltas",
+      "return": "SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1"
+    },
+    {
+      "cut": "765a441f87292aa4c17794745b65cb54e6aaa83f",
+      "grade": "EXECUTED_AT_S52_OR_S50_CUT",
+      "note": "S52 cut is a modified superset for S37/S39/S49/S51; see deltas",
+      "return": "SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1"
+    },
+    {
+      "cut": "9fe0d066e4bf61ab6819a1f56e42d6d07956c2f7",
+      "grade": "EXECUTED_AT_S52_OR_S50_CUT",
+      "note": "S52 cut is a modified superset for S37/S39/S49/S51; see deltas",
+      "return": "SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1"
+    },
+    {
+      "cut": "6604f2d9ebeca47ab58c5e1f5fee1e6a34b1bb43",
+      "grade": "EXECUTED_AT_S52_OR_S50_CUT",
+      "note": "S52 cut is a modified superset for S37/S39/S49/S51; see deltas",
+      "return": "SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1"
+    },
+    {
+      "cut": "2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65",
+      "grade": "EXECUTED_AT_S52_OR_S50_CUT",
+      "note": "S52 cut is a modified superset for S37/S39/S49/S51; see deltas",
+      "return": "SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1"
+    },
+    {
+      "cut": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+      "grade": "EXECUTED_AT_S52_OR_S50_CUT",
+      "note": "S52 cut is a modified superset for S37/S39/S49/S51; see deltas",
+      "return": "SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1"
+    },
+    {
+      "cut": "515b9a8ee45672c97051df4efef679117a679525",
+      "grade": "EXECUTED_AT_S52_OR_S50_CUT",
+      "note": "S52 cut is a modified superset for S37/S39/S49/S51; see deltas",
+      "return": "SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1"
+    }
+  ],
+  "sources": [
+    {
+      "access": "SOURCE_INSPECTED_AND_READ",
+      "blob": "1225fa211ac8fbf831846ccb99645bf46ecd605c",
+      "commit": "9c356a0189234f50cb07813eebbd68e4dc2d3740",
+      "id": "sealed_commission",
+      "path": "WORKER_COMMISSIONS/SOROK-20261026-RA-D-MAC-ACTUAL-EXECUTION-AND-CAUSAL-DIAGNOSIS-R1/00_COMMISSION.md",
+      "role": "controlling commission"
+    },
+    {
+      "access": "SOURCE_INSPECTED_AND_READ",
+      "blob": "45f06af1fd4061f250f57f24eb2dcaf3d44d26be",
+      "commit": "ff47e917a2b6c72ad827d59d021839b1613c1781",
+      "id": "ra_a_return",
+      "path": "WORKER_RETURNS/SOROK-20261026-RA-A-ACTUAL-PERSON-CALLGRAPH-R1/00_RETURN.md",
+      "role": "prior independent static callgraph"
+    },
+    {
+      "access": "SOURCE_INSPECTED_AND_READ",
+      "blob": "6b056f3e29d1af4535ca1da09ddbac1d76364c3c",
+      "commit": "ff47e917a2b6c72ad827d59d021839b1613c1781",
+      "id": "ra_a_callgraph",
+      "path": "WORKER_RETURNS/SOROK-20261026-RA-A-ACTUAL-PERSON-CALLGRAPH-R1/ACTUAL_CALLGRAPH.md",
+      "role": "prior callgraph"
+    },
+    {
+      "access": "SOURCE_INSPECTED_AND_READ",
+      "blob": "6ea61df24cff371fa0dc29e02678d0cd21e0cc5f",
+      "commit": "ff47e917a2b6c72ad827d59d021839b1613c1781",
+      "id": "ra_a_psychology",
+      "path": "WORKER_RETURNS/SOROK-20261026-RA-A-ACTUAL-PERSON-CALLGRAPH-R1/PSYCHOLOGICAL_ENGINE_FINDING.md",
+      "role": "prior psychological finding"
+    },
+    {
+      "access": "SOURCE_INSPECTED_AND_READ",
+      "blob": "f95418bdddc8ea5c7a0f63208aa7dd256c01d768",
+      "commit": "48d3c8bb6c91038c26ae234c73295b3175c6515e",
+      "id": "ra_b_source_index",
+      "path": "WORKER_RETURNS/SOROK-20261026-RA-B-ASTRA-K1K11-EVIDENCE-COURT-R1/SOURCE_INDEX.json",
+      "role": "prior K evidence court"
+    },
+    {
+      "access": "SOURCE_INSPECTED_AND_READ",
+      "blob": "7d8fa8639c621be8fba801cc8299df3a9bb3f5fb",
+      "commit": "d01454f6ee105bd0b91adcd0d204b4e96831eebb",
+      "id": "ra_c_return",
+      "path": "WORKER_RETURNS/SOROK-20261026-RA-C-EXECUTABLE-CAUSAL-PROBE-R1/00_RETURN.md",
+      "role": "prior runtime handoff"
+    },
+    {
+      "access": "SOURCE_INSPECTED_AND_READ",
+      "blob": "c49844e2a1fcc2d1a93723e5eb79bbafdc8a72a3",
+      "commit": "d01454f6ee105bd0b91adcd0d204b4e96831eebb",
+      "id": "ra_c_first_edge",
+      "path": "WORKER_RETURNS/SOROK-20261026-RA-C-EXECUTABLE-CAUSAL-PROBE-R1/FIRST_BROKEN_EDGE.md",
+      "role": "prior first-edge statement"
+    },
+    {
+      "access": "SOURCE_INSPECTED_AND_READ",
+      "blob": "282f62d30e49aa69c76ef510f70a7ba29cbb9bd2",
+      "commit": "d01454f6ee105bd0b91adcd0d204b4e96831eebb",
+      "id": "ra_c_handoff",
+      "path": "WORKER_RETURNS/SOROK-20261026-RA-C-EXECUTABLE-CAUSAL-PROBE-R1/LOCAL_RUNTIME_HANDOFF.md",
+      "role": "prior unexecuted handoff"
+    },
+    {
+      "access": "SOURCE_INSPECTED_AND_READ",
+      "blob": "92612e94e32c86b72133401a39d4ace24c0696fc",
+      "commit": "d01454f6ee105bd0b91adcd0d204b4e96831eebb",
+      "id": "ra_c_runner",
+      "path": "WORKER_RETURNS/SOROK-20261026-RA-C-EXECUTABLE-CAUSAL-PROBE-R1/TEST_SOURCE_AND_LOGS/local_mac_runner.sh",
+      "role": "prior unexecuted runner"
+    },
+    {
+      "access": "SOURCE_INSPECTED_AND_READ",
+      "blob": "00794b2e1d9bc6704b1769ef72acdcc0d2c69e34",
+      "commit": "d01454f6ee105bd0b91adcd0d204b4e96831eebb",
+      "id": "ra_c_hostile",
+      "path": "WORKER_RETURNS/SOROK-20261026-RA-C-EXECUTABLE-CAUSAL-PROBE-R1/TEST_SOURCE_AND_LOGS/test_s52_postcondition_fault.py",
+      "role": "prior unexecuted hostile test"
+    },
+    {
+      "access": "SOURCE_INSPECTED_AND_READ",
+      "blob": "cefe38fa52a771fc3ddba71eb728736813f5c0e0",
+      "commit": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
+      "id": "astra_k_program",
+      "path": "WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/07_KILL_TEST_PROGRAM.md",
+      "role": "official Astra K1-K11 program"
+    },
+    {
+      "access": "SOURCE_INSPECTED_AND_READ",
+      "blob": "39a3c61bbd7529f8817a4f549680719ead612a59",
+      "commit": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
+      "id": "astra_final_audit",
+      "path": "WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/FINAL_REQUIREMENT_AUDIT.md",
+      "role": "official Astra final audit"
+    },
+    {
+      "access": "SOURCE_INSPECTED_AND_READ",
+      "blob": "1a888b6a0eaa3d74e0a8afed715b4cd20785a5b2",
+      "commit": "fbfc529230d8b3c13f824cfac31741a5dfaa57e5",
+      "id": "hq_architecture",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/USER_DIRECTED_ARCHITECTURE/20261026_USER_SETTLED_BATCH_RECURSION_IMPRESSION_MEMORY_R1.md",
+      "role": "user-settled batch recursion and memory architecture"
+    },
+    {
+      "access": "SOURCE_INSPECTED_AND_READ",
+      "blob": "653046a70f5253d8d10df8b468016de71f34e03a",
+      "commit": "cdca666c7596d646f729eb22653157bb81cca19f",
+      "id": "sorok_00_read",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md",
+      "role": "Sorok front door"
+    },
+    {
+      "access": "SOURCE_INSPECTED_AND_READ",
+      "blob": "0419261f09c79bb5d605ea9670e59fcdd87b2360",
+      "commit": "0eae4cb22324c42973594e3909da56e4b2e5e45b",
+      "id": "sorok_00c",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md",
+      "role": "00C constitution; \u00a79 prompt law"
+    },
+    {
+      "access": "SOURCE_INSPECTED_AND_READ",
+      "blob": "c82c00af983b400b8710809ae45eb509eb5f66c7",
+      "commit": "0eae4cb22324c42973594e3909da56e4b2e5e45b",
+      "id": "sorok_00e",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/00E_NEEDS_FIRST_PERSON_PRODUCTION_HQ_GROK_QUALIFICATION_R1.md",
+      "role": "00E needs-first production qualification"
+    }
+  ],
+  "worker": "RA-D independent I3 local executable integration investigator"
+}

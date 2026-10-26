@@ -1,0 +1,1544 @@
+{
+  "actor_state": {
+    "historical_g18_b_final": {
+      "attitudes": [
+        "reciprocity_in_work_obligations"
+      ],
+      "cash": 53,
+      "completed_units": 3,
+      "free_hours": 13,
+      "material_remaining": 1,
+      "practices": [
+        "scheduled_finishing_ledger_discipline"
+      ]
+    },
+    "later_consumer": {
+      "candidate_status": "BLOCKED",
+      "free_hours": 0,
+      "paid_option_eligible": false,
+      "reason": "S52_INSUFFICIENT_FREE_HOURS"
+    },
+    "psychological_state_change": null,
+    "s44_current_b_after_controlled_paid": {
+      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+      "attitudes": [
+        "reciprocity_in_work_obligations"
+      ],
+      "availability_status": "available_for_encounter",
+      "cash": 56,
+      "completed_units": 6,
+      "debt_units": 2,
+      "free_hours": 10,
+      "health": "recovered",
+      "material_position": "waged_finishing",
+      "material_remaining": 1,
+      "nonmother_relations": [
+        "G15_NONKIN_aeaed10bc2ce4882d7cb6e71825c42105ed8f3f1c73c883fa7357db8db681c8b"
+      ],
+      "place": "INST_WORKSHOP_A",
+      "practices": [
+        "scheduled_finishing_ledger_discipline"
+      ],
+      "projects": [
+        "communal_irrigation_pump_repair"
+      ],
+      "role": "finishing",
+      "skill": 6,
+      "tools_remaining": 1
+    },
+    "s44_current_b_before": {
+      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+      "attitudes": [
+        "reciprocity_in_work_obligations"
+      ],
+      "availability_status": "available_for_encounter",
+      "cash": 54,
+      "completed_units": 5,
+      "debt_units": 2,
+      "free_hours": 11,
+      "health": "recovered",
+      "material_position": "waged_finishing",
+      "material_remaining": 1,
+      "nonmother_relations": [
+        "G15_NONKIN_aeaed10bc2ce4882d7cb6e71825c42105ed8f3f1c73c883fa7357db8db681c8b"
+      ],
+      "place": "INST_WORKSHOP_A",
+      "practices": [
+        "scheduled_finishing_ledger_discipline"
+      ],
+      "projects": [
+        "communal_irrigation_pump_repair"
+      ],
+      "role": "finishing",
+      "skill": 6,
+      "tools_remaining": 1
+    }
+  },
+  "branch": "agent/rabochii-sorok-20261026-ra-d-mac-executable-reality-r1",
+  "commands": [
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/environment_probe.txt",
+      "command": "git status --short --branch; git rev-parse HEAD; git remote -v",
+      "exit": 0,
+      "id": "preflight",
+      "result": "branch and sealed HEAD verified"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/environment_probe.txt",
+      "command": "shasum -a 256 .../00_COMMISSION.md; git show 9c356a...:.../00_COMMISSION.md | shasum -a 256",
+      "exit": 0,
+      "id": "commission_bytes",
+      "result": "sealed blob e72b26e6... exact"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/environment_probe.txt",
+      "command": "git fetch origin --prune",
+      "exit": 0,
+      "id": "source_fetch",
+      "result": "RA-A/B/C, S37-S52 and HQ refs available"
+    },
+    {
+      "artifact": "SOURCE_INDEX.json",
+      "command": "git cat-file -t <RA/S/HQ cuts>",
+      "exit": 0,
+      "id": "source_commits",
+      "result": "all named commits resolve"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/environment_probe.txt",
+      "command": "git worktree add <RA_D_WORKTREE> -b <branch> 9c356a...",
+      "exit": 0,
+      "id": "worktree",
+      "result": "isolated worktree created"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/archive_vs_s52_commit.json",
+      "command": "git archive c821... <SOROK S3*-S5*> | tar -xf -",
+      "exit": 0,
+      "id": "archive_extract",
+      "result": "183 .py files; 0 mismatches to S52 commit"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/source_blob_comparison.json",
+      "command": "compare archive blobs to accepted return cuts",
+      "exit": 0,
+      "id": "blob_compare",
+      "result": "110 files; 5 S52 superset deltas"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/import_manifest.json",
+      "command": "python3 -B TEST_SOURCE_AND_LOGS/import_manifest.py",
+      "exit": 0,
+      "id": "import_manifest",
+      "result": "actual module origins and hashes recorded"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/SOROK-20261024-S39-GENERATED-RESPONSE-R1_pytest.log",
+      "command": "python3 -B -m pytest -q tests -p no:cacheprovider (SOROK-20261024-S39-GENERATED-RESPONSE-R1)",
+      "exit": 0,
+      "id": "pytest_SOROK-20261024-S39-GENERATED-RESPONSE-R1",
+      "result": "10 passed in 2.06s"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1_pytest.log",
+      "command": "python3 -B -m pytest -q tests -p no:cacheprovider (SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1)",
+      "exit": 0,
+      "id": "pytest_SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1",
+      "result": "10 passed in 7.17s"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1_pytest.log",
+      "command": "python3 -B -m pytest -q tests -p no:cacheprovider (SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1)",
+      "exit": 0,
+      "id": "pytest_SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1",
+      "result": "21 passed in 90.14s"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1_pytest.log",
+      "command": "python3 -B -m pytest -q tests -p no:cacheprovider (SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1)",
+      "exit": 0,
+      "id": "pytest_SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1",
+      "result": "17 passed in 45.34s"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1_pytest.log",
+      "command": "python3 -B -m pytest -q tests -p no:cacheprovider (SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1)",
+      "exit": 0,
+      "id": "pytest_SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1",
+      "result": "17 passed in 80.69s"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1_pytest.log",
+      "command": "python3 -B -m pytest -q tests -p no:cacheprovider (SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1)",
+      "exit": 0,
+      "id": "pytest_SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1",
+      "result": "12 passed in 9.79s"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1_pytest.log",
+      "command": "python3 -B -m pytest -q tests -p no:cacheprovider (SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1)",
+      "exit": 0,
+      "id": "pytest_SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1",
+      "result": "13 passed in 20.9s"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1_pytest.log",
+      "command": "python3 -B -m pytest -q tests -p no:cacheprovider (SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1)",
+      "exit": 0,
+      "id": "pytest_SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1",
+      "result": "13 passed in 22.27s"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/s52_pytest_stdout.log",
+      "command": "python3 -B -m pytest -q tests -p no:cacheprovider (SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1)",
+      "exit": 0,
+      "id": "pytest_SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1",
+      "result": "13 passed in 67.64s"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/S50_pytest.log",
+      "command": "python3 -B -m pytest -q tests -p no:cacheprovider (SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1)",
+      "exit": 0,
+      "id": "pytest_SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1",
+      "result": "5 passed in 6.73s"
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1_run.log",
+      "command": "python3 -B run_s44.py",
+      "exit": 0,
+      "id": "s44_entrypoint",
+      "result": {
+        "actor_ids": [
+          "TEST_ONLY_BP1_R26V_ACTOR_A",
+          "TEST_ONLY_BP1_R26V_ACTOR_B"
+        ],
+        "first_event": {
+          "e1_event_hash": "4369220dd371d26c67c01ce1d2618a71188e5053a767c9c74830bfb4b48f6a3d",
+          "event_ordinal": 1,
+          "selected_option": "REQUEST_TOOL",
+          "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_26201f66a0fc7555f0d9d2cd5e057542251f3b5443013dd648bdbf59f2c4a72f",
+          "source_is_root_evidence": true,
+          "status": "OK"
+        },
+        "root_hash": "84687e6f34116693c00243b4c7e7e76fa0f24146b992b372d8920cab153cb930",
+        "second_event": {
+          "attempt_status": "ADMITTED",
+          "event_ordinal": 2,
+          "native_text": "\u00bfPuedo usar la herramienta?",
+          "performed": true,
+          "selected_option": "REQUEST_TOOL",
+          "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_26201f66a0fc7555f0d9d2cd5e057542251f3b5443013dd648bdbf59f2c4a72f",
+          "status": "OK",
+          "target_branch": "NO_CHANGE",
+          "target_proposals": [],
+          "target_reason": "NO_PROPOSAL",
+          "translation_text": "May I use the tool?"
+        },
+        "target": "NO_CHANGE",
+        "verify": true
+      }
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1_run.log",
+      "command": "python3 -B run_s45.py",
+      "exit": 0,
+      "id": "s45_entrypoint",
+      "result": {
+        "attend": {
+          "has_actor_response": false,
+          "new_knowledge": [],
+          "status": "NO_CHANGE"
+        },
+        "do_help": {
+          "accepted": true,
+          "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_7b8c47084ac8e9ee2f38a374b8c78141c2c7f9b5f20376e0c4e7548723f929e0",
+          "native_text": "Sost\u00e9n el borde cercano. Revisar\u00e9 la costura.",
+          "status": "OK",
+          "strategy": "HELP_ACCEPT",
+          "translation_text": "Hold the near edge. I'll check the seam."
+        },
+        "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "say": {
+          "native_text": "Si te ofreces, el borde cercano necesita una mano.",
+          "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_86efe89b82ce043b5a267da9f52917508754a007f703d4a44fe3c27e3926ec8a",
+          "status": "OK",
+          "strategy": "HELP_INVITE",
+          "surface": [
+            "You say: \"Can I help?\"",
+            "the repair worker says: \"Si te ofreces, el borde cercano necesita una mano.\" A keeps one hand on the bench.",
+            "[labeled English view, not actor speech: \"If you're offering, the near edge needs a hand.\"]"
+          ],
+          "translation_text": "If you're offering, the near edge needs a hand."
+        },
+        "verify": true
+      }
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/S47_run.log",
+      "command": "python3 -B run_s47.py",
+      "exit": 0,
+      "id": "s47_entrypoint",
+      "result": {
+        "actual": {
+          "objective_material_eligible": false,
+          "source_in_readset": true,
+          "target": "NO_CHANGE"
+        },
+        "faults": {
+          "original_still_current": true,
+          "refusals": {
+            "access": "S47_SOURCE_ACCESS_MISMATCH",
+            "actor": "S47_SOURCE_ACTOR_ID_MISMATCH",
+            "as_of": "S47_SOURCE_AS_OF_MISMATCH",
+            "branch": "S47_SOURCE_BRANCH_ID_MISMATCH",
+            "coverage": "S47_SOURCE_COVERAGE_MISMATCH",
+            "currentness": "S47_SOURCE_CURRENTNESS_MISMATCH",
+            "material_after_interval": "S47_SOURCE_MATERIAL_AFTER_INTERVAL_MISMATCH",
+            "source_hash": "S47_SOURCE_HASH_MISMATCH",
+            "source_ref": "S47_SOURCE_REF_MISMATCH"
+          },
+          "schema": "SOROK_S47_SOURCE_FAULT_EVIDENCE@1"
+        },
+        "scheduled": {
+          "objective_material_eligible": true,
+          "source_in_readset": true,
+          "target": "NO_CHANGE"
+        }
+      }
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/s51_run_stdout.log",
+      "command": "python3 -B run_s51.py",
+      "exit": 0,
+      "id": "s51_entrypoint",
+      "result": {
+        "cold": {
+          "same_relevance_hash": true,
+          "verify_ok": true
+        },
+        "generation": {
+          "reasons": [],
+          "s49_status": "SOURCE_OWNER_HOLD",
+          "selected_option": "",
+          "selection_status": "OPEN_CHOICE_SET",
+          "source_refs": [
+            "S51_SOURCE_198b568bc0747c50"
+          ]
+        },
+        "relevance": {
+          "actor_free_hours": 11,
+          "actual_current_purpose_proved": false,
+          "hypothesis_scope": "ONE_SUBSEQUENT_RECEIVED_EVENT",
+          "relation": "FACILITATES",
+          "status": "RELEVANCE_WARRANTED"
+        },
+        "verify": true
+      }
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/s48_probe_result.json",
+      "command": "python3 -B TEST_SOURCE_AND_LOGS/probe_s48_hold.py",
+      "exit": 0,
+      "id": "s48_probe",
+      "result": {
+        "nonempty_self_account": {
+          "calls": 1,
+          "event_ref": "",
+          "provider_call_count": 1,
+          "reason": "S48_SCI05_HOLD_NO_COMPETENT_INTERNAL_ACT_OWNER",
+          "status": "SCI05_HOLD"
+        },
+        "unsupported_component": {
+          "calls": 1,
+          "candidate_specs": [],
+          "event_ref": "",
+          "missing_function": "S48_MISSING_INDEPENDENT_CURRENT_B_SOURCE_PERFORMER",
+          "provider_call_count": 1,
+          "reason": "S48_SOURCE_OWNER_HOLD_NO_CURRENT_OWNER_ADMISSION",
+          "status": "SOURCE_OWNER_HOLD"
+        }
+      }
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/s50_run_stdout.log",
+      "command": "python3 -B run_s50.py",
+      "exit": 0,
+      "id": "s50_entrypoint",
+      "result": {
+        "actual_person_commit": false,
+        "actual_root": {
+          "c12_events_after": 1,
+          "c12_events_before": 1,
+          "clock_after": 222,
+          "clock_before": 222,
+          "missing_fields": [
+            "backbone_state",
+            "initial_state_provenance",
+            "expectation_baseline",
+            "striving_objects",
+            "pressure_flow_history",
+            "pressure_flow_memory",
+            "surface_psyche_profile",
+            "analyst_pressure_account",
+            "actor_context_projection",
+            "actor_owned_source"
+          ],
+          "no_c8": null,
+          "reason": "S50_ACTUAL_ROOT_MISSING_HISTORICAL_V3_STATE",
+          "root_unchanged": true,
+          "status": "SOURCE_OWNER_HOLD",
+          "world_events_after": 13,
+          "world_events_before": 13
+        },
+        "age": 32,
+        "cold_same": true,
+        "fixture_only": true,
+        "pressure_flow_history_present": true,
+        "pressure_flow_memory_present": true,
+        "source_all_exact": true,
+        "verify": true,
+        "year": 2002
+      }
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/s52_run_stdout.log",
+      "command": "python3 -B run_s52.py",
+      "exit": 0,
+      "id": "s52_entrypoint",
+      "result": {
+        "candidate": {
+          "candidate_hash": "5efa690a29fa82c8031c2d6bf20b1e143ba27e55bbbb475a2d98c947e1f96db7",
+          "counterpart_status": "INDEPENDENT_PARTICIPATION_NOT_OBSERVED",
+          "earned_payment": 0,
+          "objective_feasibility": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+          "prospective_payment": 2,
+          "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+          "recruited": true,
+          "source_ref": "S51_SOURCE_198b568bc0747c50",
+          "status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION"
+        },
+        "cold": {
+          "candidate_match": true,
+          "verify_ok": true
+        },
+        "controlled": {
+          "cash_after": 56,
+          "cash_before": 54,
+          "completed_after": 6,
+          "completed_before": 5,
+          "denied": {
+            "performed": false,
+            "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+            "status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION"
+          },
+          "free_hours_after": 10,
+          "free_hours_before": 11,
+          "performed": {
+            "payment_earned": 2,
+            "performed": true,
+            "reason": "OK",
+            "status": "PERFORMED",
+            "world_event_id": "TEST_ONLY_BP4_WORLD_EVT_f5d526105669c193f00fe0203ec474c6b2b5a175a9d65b790cec371ed0bd9ef9"
+          }
+        },
+        "generation": {
+          "eligible_options": [
+            "ATTEND_OBJECT",
+            "REQUEST_TOOL",
+            "EXPLICIT_REFUSAL",
+            "PAID_PARTICIPATION"
+          ],
+          "selected_option": "",
+          "selection_status": "OPEN_CHOICE_SET"
+        },
+        "verify": true
+      }
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/causal_probe_result.json",
+      "command": "python3 -B TEST_SOURCE_AND_LOGS/probe_execution.py",
+      "exit": 0,
+      "id": "causal_probe",
+      "result": {
+        "generation": {
+          "defeated_pairs": [],
+          "selected_option": "",
+          "selection_status": "OPEN_CHOICE_SET",
+          "undominated_options": [
+            "ATTEND_OBJECT",
+            "EXPLICIT_REFUSAL",
+            "PAID_PARTICIPATION",
+            "REQUEST_TOOL"
+          ]
+        },
+        "later_material_consumer": {
+          "final_candidate_reason": "S52_INSUFFICIENT_FREE_HOURS",
+          "final_candidate_status": "BLOCKED",
+          "final_eligible_options": [
+            "ATTEND_OBJECT",
+            "REQUEST_TOOL",
+            "EXPLICIT_REFUSAL"
+          ],
+          "final_free_hours": 0,
+          "paid_absent": true
+        },
+        "relevance": {
+          "actor_free_hours": 11,
+          "actual_current_purpose_proved": false,
+          "financial": {
+            "payment_per_actor": 2,
+            "permit": true,
+            "task_hours": 1
+          },
+          "hypothesis_id": "S51_HYPOTHESIS_198b568bc074_0",
+          "native": false,
+          "object_event_id": "sha256:198b568bc0747c50829b68866009a5c5627cef7dbc4b036cfcc03848386a2c60",
+          "object_striving": "fund_finishing_equipment",
+          "performed": false,
+          "reasons": [],
+          "relation": "FACILITATES",
+          "selected_action": null,
+          "status": "RELEVANCE_WARRANTED"
+        },
+        "s39_controls": {
+          "baseline": {
+            "contrary": [
+              "AVOID_DEBT"
+            ],
+            "ignored_label_count": 0,
+            "selected_option": "REQUEST_TOOL",
+            "selection_status": "UNIQUE_SELECTED",
+            "source_refs": [
+              "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+              "TEST_ONLY_S39_CTX_AVOID_DEBT",
+              "TEST_ONLY_S39_HIST_B_PRIOR_SHARE"
+            ],
+            "supporting": [
+              "REPAIR_URGENT",
+              "PRIOR_B_SHARE"
+            ],
+            "unresolved_reason": ""
+          },
+          "cycle": {
+            "contrary": [],
+            "ignored_label_count": 0,
+            "selected_option": "",
+            "selection_status": "CONFLICT_UNRESOLVED",
+            "source_refs": [
+              "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+              "TEST_ONLY_S39_CTX_AVOID_DEBT",
+              "TEST_ONLY_S39_CTX_PREFER_INDEPENDENT",
+              "TEST_ONLY_S39_HIST_B_PRIOR_SHARE",
+              "TEST_ONLY_S39_HIST_B_PRIOR_REFUSAL"
+            ],
+            "supporting": [],
+            "unresolved_reason": "COMPARISON_CYCLE"
+          },
+          "labels": {
+            "contrary": [
+              "AVOID_DEBT"
+            ],
+            "ignored_label_count": 2,
+            "selected_option": "REQUEST_TOOL",
+            "selection_status": "UNIQUE_SELECTED",
+            "source_refs": [
+              "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+              "TEST_ONLY_S39_CTX_AVOID_DEBT",
+              "TEST_ONLY_S39_HIST_B_PRIOR_SHARE"
+            ],
+            "supporting": [
+              "REPAIR_URGENT",
+              "PRIOR_B_SHARE"
+            ],
+            "unresolved_reason": ""
+          },
+          "none": {
+            "contrary": [],
+            "ignored_label_count": 0,
+            "selected_option": "",
+            "selection_status": "OPEN_CHOICE_SET",
+            "source_refs": [],
+            "supporting": [],
+            "unresolved_reason": "MULTIPLE_SURVIVORS"
+          },
+          "prefer_independent": {
+            "contrary": [],
+            "ignored_label_count": 0,
+            "selected_option": "ATTEND_OBJECT",
+            "selection_status": "UNIQUE_SELECTED",
+            "source_refs": [
+              "TEST_ONLY_S39_CTX_AVOID_DEBT",
+              "TEST_ONLY_S39_CTX_PREFER_INDEPENDENT"
+            ],
+            "supporting": [
+              "AVOID_DEBT",
+              "PREFER_INDEPENDENT"
+            ],
+            "unresolved_reason": ""
+          },
+          "prior_b_refusal": {
+            "contrary": [],
+            "ignored_label_count": 0,
+            "selected_option": "EXPLICIT_REFUSAL",
+            "selection_status": "UNIQUE_SELECTED",
+            "source_refs": [
+              "TEST_ONLY_S39_HIST_B_PRIOR_REFUSAL"
+            ],
+            "supporting": [
+              "PRIOR_B_REFUSAL"
+            ],
+            "unresolved_reason": ""
+          }
+        },
+        "source_cut": {
+          "no_source_options": [
+            "ATTEND_OBJECT",
+            "REQUEST_TOOL",
+            "EXPLICIT_REFUSAL"
+          ],
+          "paid_absent_without_repertoire": true,
+          "paid_absent_without_source": true,
+          "paid_present_with_both": true,
+          "source_only_options": [
+            "ATTEND_OBJECT",
+            "REQUEST_TOOL",
+            "EXPLICIT_REFUSAL"
+          ],
+          "source_plus_repertoire_options": [
+            "ATTEND_OBJECT",
+            "REQUEST_TOOL",
+            "EXPLICIT_REFUSAL",
+            "PAID_PARTICIPATION"
+          ]
+        }
+      }
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/s52_hostile_run.log",
+      "command": "python3 -B TEST_SOURCE_AND_LOGS/test_s52_postcondition_fault_ra_d.py",
+      "exit": 0,
+      "id": "s52_hostile",
+      "result": {
+        "after_action_cash": 56,
+        "cold_ok": true,
+        "cold_s52_errors": [],
+        "correct_invariant": "tampered cash after performed paid episode must be rejected",
+        "defect_reproduced": true,
+        "performed": true,
+        "schema": "RA_D_S52_POSTCONDITION_FAULT_PROBE@1",
+        "state_root": "<SCRATCH_TMP>/ra-d-s52-hostile-46f4abgj",
+        "tampered_cash": 999,
+        "warm_ok": true,
+        "warm_s52_errors": []
+      }
+    },
+    {
+      "artifact": "TEST_SOURCE_AND_LOGS/s52_verifier_control.json",
+      "command": "python3 -B TEST_SOURCE_AND_LOGS/probe_s52_verifier_control.py",
+      "exit": 0,
+      "id": "s52_verifier_control",
+      "result": [
+        {
+          "errors": [
+            "S52_CURRENT_STATE_DIVERGES:cash"
+          ],
+          "warm_ok": false,
+          "with_note": false
+        },
+        {
+          "errors": [],
+          "warm_ok": true,
+          "with_note": true
+        }
+      ]
+    },
+    {
+      "artifact": "00_RETURN.md",
+      "command": "git ls-remote origin refs/heads/agent/rabochii-sorok-20261026-ra-d-mac-executable-reality-r1",
+      "exit": 0,
+      "id": "remote_readback_prepush",
+      "result": "9c356a0189234f50cb07813eebbd68e4dc2d3740 (no movement before push)"
+    }
+  ],
+  "commission_blob": "e72b26e6f5d4a86b30ab6152bce5268cf1ec34a2a762010edcc57210bfb7fff9",
+  "environment": {
+    "accepted_source_edits": 0,
+    "gh": "not installed",
+    "git": "2.39.1",
+    "host": "macOS 13.7.8 / Darwin 22.6.0 x86_64",
+    "isolation": "disposable worktree and archive outside active worker worktrees",
+    "native_grants": false,
+    "numpy": "2.4.6",
+    "provider_calls": 0,
+    "pytest": "9.1.1",
+    "python": "3.11.3",
+    "pyyaml": "absent",
+    "raw_data_calls": 0
+  },
+  "hq_control_cut": "fbfc529230d8b3c13f824cfac31741a5dfaa57e5",
+  "not_run": [
+    "official Astra K1-K11",
+    "native/actor/C11/C12 weld",
+    "provider/model calls",
+    "raw survey/original respondent data",
+    "S52 accepted performer/cold acceptance",
+    "same-person actor-owned psychological formation/later consumer"
+  ],
+  "other_worker_attestations": {
+    "Astra_R3": "3b2d9a1b...; all K1-K11 NOT_EXECUTED.",
+    "HQ": "fbfc5292...; user-settled batch recursion and memory architecture read; implementation not verified.",
+    "RA_A": "ff47e917...; static source inspection; no execution. Not re-used as proof.",
+    "RA_B": "48d3c8bb...; K1-K11 evidence court; no fresh execution. Not re-used as proof.",
+    "RA_C": "d01454f6...; runner unexecuted. RA-D executed the local runner/hostile path independently."
+  },
+  "schema": "RA_D_EXECUTION_LEDGER@1",
+  "sealed_startup": "9c356a0189234f50cb07813eebbd68e4dc2d3740",
+  "source_identity": {
+    "accepted_cut_comparison_files": 110,
+    "accepted_cut_comparison_mismatches": 5,
+    "g18_history_sha256": "2d861d7a820168d443e23efb2403b7ed9c3e899a8a79aaa72fd859c46f47c1c1",
+    "g18_r31j": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
+    "imported_s39_model_sha256": "6afba4b77b71c40654986fed4eda40915c7a0cc454e07d8293e353f135f1c603",
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135",
+    "join_e_session_sha256": "ea820ec3e30a2825c3d0d8c5dc66e812afdda40b08f9cc0a8c868c8b3e0dd0da",
+    "language": "8d2920da951f98cd8246d7c34cac777928e0c732",
+    "language_session_sha256": "d6a1628cbfdc1c601f68fb3d3b9adbe91f9464875996b543caf69e548ece25aa",
+    "mismatches": [
+      "s37/producer.py",
+      "s39/model.py",
+      "s49/actor.py",
+      "s49/session.py",
+      "s51/session.py"
+    ],
+    "s50_cut": "515b9a8ee45672c97051df4efef679117a679525",
+    "s50_source_files_exact": 31,
+    "s52_archive_mismatches": 0,
+    "s52_archive_scope": "S52 commit subtree only; S50 extracted separately and exact",
+    "s52_commit_py_files": 183,
+    "s52_cut": "c821b488b3a9a3f0fa01b1981989cc17af637dc1"
+  },
+  "sourcefree_grade": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+  "terminal": "RA_D_LOCAL_EXECUTABLE_REALITY__ENV_VERIFIED__DEEP_PATH_MATERIAL_ONLY_PSYCHOLOGY_OPEN__FIRST_UNPROVEN_EDGE_HISTORY_TO_ACTOR_OWNED_OPERATION__S52_VERIFIER_DEFECT_REPRODUCED__NO_NATIVE_GRANT",
+  "test_summary": {
+    "all_exit_zero": true,
+    "suites": {
+      "SOROK-20261024-S39-GENERATED-RESPONSE-R1": {
+        "duration_s": 2.06,
+        "exit": 0,
+        "log": "TEST_SOURCE_AND_LOGS/SOROK-20261024-S39-GENERATED-RESPONSE-R1_pytest.log",
+        "passed": 10
+      },
+      "SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1": {
+        "duration_s": 7.17,
+        "exit": 0,
+        "log": "TEST_SOURCE_AND_LOGS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1_pytest.log",
+        "passed": 10
+      },
+      "SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1": {
+        "duration_s": 90.14,
+        "exit": 0,
+        "log": "TEST_SOURCE_AND_LOGS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1_pytest.log",
+        "passed": 21
+      },
+      "SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1": {
+        "duration_s": 45.34,
+        "exit": 0,
+        "log": "TEST_SOURCE_AND_LOGS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1_pytest.log",
+        "passed": 17
+      },
+      "SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1": {
+        "duration_s": 80.69,
+        "exit": 0,
+        "log": "TEST_SOURCE_AND_LOGS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1_pytest.log",
+        "passed": 17
+      },
+      "SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1": {
+        "duration_s": 9.79,
+        "exit": 0,
+        "log": "TEST_SOURCE_AND_LOGS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1_pytest.log",
+        "passed": 12
+      },
+      "SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1": {
+        "duration_s": 20.9,
+        "exit": 0,
+        "log": "TEST_SOURCE_AND_LOGS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1_pytest.log",
+        "passed": 13
+      },
+      "SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1": {
+        "duration_s": 6.73,
+        "exit": 0,
+        "log": "TEST_SOURCE_AND_LOGS/S50_pytest.log",
+        "passed": 5
+      },
+      "SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1": {
+        "duration_s": 22.27,
+        "exit": 0,
+        "log": "TEST_SOURCE_AND_LOGS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1_pytest.log",
+        "passed": 13
+      },
+      "SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1": {
+        "duration_s": 67.64,
+        "exit": 0,
+        "log": "TEST_SOURCE_AND_LOGS/s52_pytest_stdout.log",
+        "passed": 13
+      }
+    },
+    "total_passed": 131
+  },
+  "typed_evidence": [
+    {
+      "claim": "finite selection works; sources are caller premises, not history-derived motivation",
+      "consumer": "S39 finite choice",
+      "fault": {
+        "contrary": [],
+        "ignored_label_count": 0,
+        "selected_option": "",
+        "selection_status": "CONFLICT_UNRESOLVED",
+        "source_refs": [
+          "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+          "TEST_ONLY_S39_CTX_AVOID_DEBT",
+          "TEST_ONLY_S39_CTX_PREFER_INDEPENDENT",
+          "TEST_ONLY_S39_HIST_B_PRIOR_SHARE",
+          "TEST_ONLY_S39_HIST_B_PRIOR_REFUSAL"
+        ],
+        "supporting": [],
+        "unresolved_reason": "COMPARISON_CYCLE"
+      },
+      "grade": "TEST_ONLY_SYNTHETIC_MODEL_PREMISES",
+      "id": "E1_s39_premise_contrast",
+      "label_control": {
+        "contrary": [
+          "AVOID_DEBT"
+        ],
+        "ignored_label_count": 2,
+        "selected_option": "REQUEST_TOOL",
+        "selection_status": "UNIQUE_SELECTED",
+        "source_refs": [
+          "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+          "TEST_ONLY_S39_CTX_AVOID_DEBT",
+          "TEST_ONLY_S39_HIST_B_PRIOR_SHARE"
+        ],
+        "supporting": [
+          "REPAIR_URGENT",
+          "PRIOR_B_SHARE"
+        ],
+        "unresolved_reason": ""
+      },
+      "null": {
+        "contrary": [],
+        "ignored_label_count": 0,
+        "selected_option": "",
+        "selection_status": "OPEN_CHOICE_SET",
+        "source_refs": [],
+        "supporting": [],
+        "unresolved_reason": "MULTIPLE_SURVIVORS"
+      },
+      "positive": {
+        "contrary": [
+          "AVOID_DEBT"
+        ],
+        "ignored_label_count": 0,
+        "selected_option": "REQUEST_TOOL",
+        "selection_status": "UNIQUE_SELECTED",
+        "source_refs": [
+          "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+          "TEST_ONLY_S39_CTX_AVOID_DEBT",
+          "TEST_ONLY_S39_HIST_B_PRIOR_SHARE"
+        ],
+        "supporting": [
+          "REPAIR_URGENT",
+          "PRIOR_B_SHARE"
+        ],
+        "unresolved_reason": ""
+      }
+    },
+    {
+      "claim": "generated A/B material/history/ledger and test-only C9 path execute",
+      "grade": "TEST_ONLY_SOURCEFREE_SAMPLED_ROOT",
+      "id": "E2_s44_root",
+      "observed": {
+        "actor_ids": [
+          "TEST_ONLY_BP1_R26V_ACTOR_A",
+          "TEST_ONLY_BP1_R26V_ACTOR_B"
+        ],
+        "first_event": {
+          "e1_event_hash": "4369220dd371d26c67c01ce1d2618a71188e5053a767c9c74830bfb4b48f6a3d",
+          "event_ordinal": 1,
+          "selected_option": "REQUEST_TOOL",
+          "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_26201f66a0fc7555f0d9d2cd5e057542251f3b5443013dd648bdbf59f2c4a72f",
+          "source_is_root_evidence": true,
+          "status": "OK"
+        },
+        "root_hash": "84687e6f34116693c00243b4c7e7e76fa0f24146b992b372d8920cab153cb930",
+        "target": "NO_CHANGE"
+      }
+    },
+    {
+      "claim": "language-mediated encounter and material action execute; attend is NO_CHANGE",
+      "grade": "TEST_ONLY_SOURCEBOUND_GENERATED_ROOT_ENCOUNTER",
+      "id": "E3_s45_encounter",
+      "observed": {
+        "attend": {
+          "has_actor_response": false,
+          "new_knowledge": [],
+          "status": "NO_CHANGE"
+        },
+        "do_help": {
+          "accepted": true,
+          "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_7b8c47084ac8e9ee2f38a374b8c78141c2c7f9b5f20376e0c4e7548723f929e0",
+          "native_text": "Sost\u00e9n el borde cercano. Revisar\u00e9 la costura.",
+          "status": "OK",
+          "strategy": "HELP_ACCEPT",
+          "translation_text": "Hold the near edge. I'll check the seam."
+        },
+        "material_after_help": {
+          "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+          "attitudes": [
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "available_for_encounter",
+          "cash": 58,
+          "completed_units": 6,
+          "debt_units": 2,
+          "free_hours": 10,
+          "health": "recovered",
+          "material_position": "waged_repair",
+          "material_remaining": 0,
+          "nonmother_relations": [
+            "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+          ],
+          "place": "INST_WORKSHOP_A",
+          "practices": [
+            "scheduled_repair_ledger_discipline"
+          ],
+          "projects": [
+            "communal_irrigation_pump_repair"
+          ],
+          "role": "repair",
+          "skill": 6,
+          "tools_remaining": 1
+        },
+        "say": {
+          "native_text": "Si te ofreces, el borde cercano necesita una mano.",
+          "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_86efe89b82ce043b5a267da9f52917508754a007f703d4a44fe3c27e3926ec8a",
+          "status": "OK",
+          "strategy": "HELP_INVITE",
+          "surface": [
+            "You say: \"Can I help?\"",
+            "the repair worker says: \"Si te ofreces, el borde cercano necesita una mano.\" A keeps one hand on the bench.",
+            "[labeled English view, not actor speech: \"If you're offering, the near edge needs a hand.\"]"
+          ],
+          "translation_text": "If you're offering, the near edge needs a hand."
+        }
+      }
+    },
+    {
+      "claim": "objective interval source is read in C9; no actor psychology",
+      "grade": "TEST_ONLY_S47_INTERVAL_MATERIAL_C9_CONDITIONING",
+      "id": "E4_s47_conditioning",
+      "observed": {
+        "actual": {
+          "event_ref": "effb3e9cf5141ffaa25d4770b853a2ca0c0a063ef560d9422493d8b89eed5851",
+          "objective_material_eligible": false,
+          "objective_material_refs": [],
+          "readset_refs": [
+            "effb3e9cf5141ffaa25d4770b853a2ca0c0a063ef560d9422493d8b89eed5851",
+            "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+            "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+            "5fe9789f61c8bdc5d392ea337179c8831de99d957ba9b1b735505271787f5abe",
+            "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+            "b221630086541e71ced27363ba13789b87de08f5845c356d57c5b69369aae58a",
+            "TEST_ONLY_BP4_WORLD_EVT_ce333d5ffe5690d3792a312a9462776e1c6bd44ba45326204ea9d74b455796b1"
+          ],
+          "response_status": "RESPONSE_COMMITTED",
+          "s47_source_coverage": [
+            [
+              222,
+              223
+            ]
+          ],
+          "s47_source_currentness": "CURRENT",
+          "s47_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+          "s47_source_in_readset": true,
+          "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+          "target_branch": "NO_CHANGE",
+          "target_proposals": [],
+          "target_reason": "NO_PROPOSAL"
+        },
+        "faults": {
+          "original_still_current": true,
+          "refusals": {
+            "access": "S47_SOURCE_ACCESS_MISMATCH",
+            "actor": "S47_SOURCE_ACTOR_ID_MISMATCH",
+            "as_of": "S47_SOURCE_AS_OF_MISMATCH",
+            "branch": "S47_SOURCE_BRANCH_ID_MISMATCH",
+            "coverage": "S47_SOURCE_COVERAGE_MISMATCH",
+            "currentness": "S47_SOURCE_CURRENTNESS_MISMATCH",
+            "material_after_interval": "S47_SOURCE_MATERIAL_AFTER_INTERVAL_MISMATCH",
+            "source_hash": "S47_SOURCE_HASH_MISMATCH",
+            "source_ref": "S47_SOURCE_REF_MISMATCH"
+          },
+          "schema": "SOROK_S47_SOURCE_FAULT_EVIDENCE@1"
+        },
+        "scheduled": {
+          "event_ref": "86652489a82b1cf3cdd90dde6287a68f7e1e0e4559bb44ade24fca21967cf32a",
+          "objective_material_eligible": true,
+          "objective_material_refs": [
+            "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5"
+          ],
+          "readset_refs": [
+            "86652489a82b1cf3cdd90dde6287a68f7e1e0e4559bb44ade24fca21967cf32a",
+            "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+            "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+            "36dc13d2c93e8e8cf884712cb25c2d06421fb9bc2d9742a1ad51fc63f8d24bd4",
+            "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+            "c724cbcec7027bc3f5c6ace3711f61fe49b01f1a3f99982b41b91358cd6f0a70",
+            "TEST_ONLY_BP4_WORLD_EVT_a9bdaf67c1418d7b2f15e04006213455aba1bbbd7e82d558fcc9b4633b8699cd"
+          ],
+          "response_status": "RESPONSE_COMMITTED",
+          "s47_source_coverage": [],
+          "s47_source_currentness": "CURRENT",
+          "s47_source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
+          "s47_source_in_readset": true,
+          "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+          "target_branch": "NO_CHANGE",
+          "target_proposals": [],
+          "target_reason": "NO_PROPOSAL"
+        }
+      }
+    },
+    {
+      "claim": "real G18 object; synthetic one-event hypothesis; relation reads current offer/free hours, not object semantics",
+      "grade": "TEST_ONLY_S51_RETAINED_OBJECT_HYPOTHESIS",
+      "id": "E5_s51_object",
+      "observed": {
+        "hypothesis": {
+          "actor_testimony": false,
+          "actual_current_purpose_proved": false,
+          "grade": "TEST_ONLY_S51_RETAINED_OBJECT_HYPOTHESIS_NOT_NATIVE",
+          "hypothesis_id": "S51_HYPOTHESIS_198b568bc074_0",
+          "native": false,
+          "object_event_id": "sha256:198b568bc0747c50829b68866009a5c5627cef7dbc4b036cfcc03848386a2c60",
+          "object_striving": "fund_finishing_equipment",
+          "psychology_claim": false,
+          "scope": "ONE_SUBSEQUENT_RECEIVED_EVENT"
+        },
+        "object": {
+          "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+          "causal_parent_event_ids": [
+            "sha256:4de01226426a427a08df130b563c24e9f8584d52cea6efdf7527f07be3f6e5bc",
+            "sha256:bc48470f4a014b074f7bf119e940954edc5d0d1d6526266e59232a16e9d26014"
+          ],
+          "effective_index": 13,
+          "native": false,
+          "native_purpose_proof": false,
+          "object_event_id": "sha256:198b568bc0747c50829b68866009a5c5627cef7dbc4b036cfcc03848386a2c60",
+          "object_hash": "sha256:198b568bc0747c50829b68866009a5c5627cef7dbc4b036cfcc03848386a2c60",
+          "owner_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+          "project_parent_event_id": "sha256:bc48470f4a014b074f7bf119e940954edc5d0d1d6526266e59232a16e9d26014",
+          "replay_witness": {
+            "after": {
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+              "attitudes": [
+                "reciprocity_in_work_obligations"
+              ],
+              "availability_status": "unavailable",
+              "cash": 44,
+              "completed_units": 3,
+              "debt_units": 2,
+              "free_hours": 15,
+              "health": null,
+              "material_position": "waged_finishing",
+              "material_remaining": 1,
+              "nonmother_relations": [
+                "G15_NONKIN_aeaed10bc2ce4882d7cb6e71825c42105ed8f3f1c73c883fa7357db8db681c8b"
+              ],
+              "place": null,
+              "practices": [
+                "scheduled_finishing_ledger_discipline"
+              ],
+              "projects": [
+                "communal_irrigation_pump_repair"
+              ],
+              "role": "finishing",
+              "skill": 6,
+              "tools_remaining": 1
+            },
+            "before": {
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+              "attitudes": [
+                "reciprocity_in_work_obligations"
+              ],
+              "availability_status": "unavailable",
+              "cash": 44,
+              "completed_units": 3,
+              "debt_units": 2,
+              "free_hours": 15,
+              "health": null,
+              "material_position": "waged_finishing",
+              "material_remaining": 1,
+              "nonmother_relations": [
+                "G15_NONKIN_aeaed10bc2ce4882d7cb6e71825c42105ed8f3f1c73c883fa7357db8db681c8b"
+              ],
+              "place": null,
+              "practices": [
+                "scheduled_finishing_ledger_discipline"
+              ],
+              "projects": [
+                "communal_irrigation_pump_repair"
+              ],
+              "role": "finishing",
+              "skill": 6,
+              "tools_remaining": 1
+            },
+            "effect": {
+              "budget": 6,
+              "role": "finishing",
+              "striving": "fund_finishing_equipment"
+            },
+            "effective_index": 13,
+            "event_id": "sha256:198b568bc0747c50829b68866009a5c5627cef7dbc4b036cfcc03848386a2c60",
+            "kind": "STRIVING",
+            "owner_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+            "readset": [
+              {
+                "event_id": "sha256:4de01226426a427a08df130b563c24e9f8584d52cea6efdf7527f07be3f6e5bc",
+                "owner_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+                "path": "effect",
+                "value": {
+                  "cash": 38,
+                  "earned": 8,
+                  "hours": 4,
+                  "role": "finishing",
+                  "skill": 6
+                }
+              },
+              {
+                "event_id": "sha256:bc48470f4a014b074f7bf119e940954edc5d0d1d6526266e59232a16e9d26014",
+                "owner_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+                "path": "effect",
+                "value": {
+                  "cash": 44,
+                  "completed_units": 3,
+                  "materials_used": 3,
+                  "payment": 6,
+                  "project": "communal_irrigation_pump_repair",
+                  "remaining_material_units": 1,
+                  "role": "finishing"
+                }
+              }
+            ]
+          },
+          "route_usage": [
+            {
+              "effect": {
+                "goal": "fund_finishing_equipment",
+                "net": 1,
+                "offer": {
+                  "hours": 2,
+                  "payment": 5,
+                  "permit": true,
+                  "place": "INST_EVENING_CLASS_B",
+                  "travel_cost": 4
+                },
+                "route": "ROUTE_INSTITUTIONAL",
+                "skill": 6
+              },
+              "event_id": "sha256:a5a4666e3cd3f0526d8fdbd044bd30887ff009973dd1adf181c9422b8cccf0d4",
+              "route": "ROUTE_INSTITUTIONAL"
+            },
+            {
+              "effect": {
+                "goal": "fund_finishing_equipment",
+                "net": 9,
+                "offer": {
+                  "hours": 2,
+                  "payment": 12,
+                  "permit": true,
+                  "place": "INST_WORKSHOP_A",
+                  "travel_cost": 3
+                },
+                "route": "ROUTE_LOCAL_CLOSED",
+                "skill": 6
+              },
+              "event_id": "sha256:e6eb32c78c552b701682f6d27fec1cefd2926b0bf9d9fdcd2ef289d0b84820fb",
+              "route": "ROUTE_LOCAL_CLOSED"
+            },
+            {
+              "effect": {
+                "goal": "fund_finishing_equipment",
+                "net": 1,
+                "offer": {
+                  "hours": 2,
+                  "payment": 10,
+                  "permit": true,
+                  "place": "INST_TRANSIT_E",
+                  "travel_cost": 9
+                },
+                "route": "ROUTE_MOBILITY",
+                "skill": 6
+              },
+              "event_id": "sha256:aa69362dab873806fd3362f6f6d83d03fde0b218abdc5f05f01231cc49d5a092",
+              "route": "ROUTE_MOBILITY"
+            },
+            {
+              "effect": {
+                "goal": "fund_finishing_equipment",
+                "net": 1,
+                "offer": {
+                  "hours": 2,
+                  "payment": 6,
+                  "permit": true,
+                  "place": "INST_COMMUNITY_D",
+                  "travel_cost": 5
+                },
+                "route": "ROUTE_UNCONVENTIONAL",
+                "skill": 6
+              },
+              "event_id": "sha256:64d1f4da399c124200d95fab286d49020af5138dd00bf72ea6d3d5ed40548bf9",
+              "route": "ROUTE_UNCONVENTIONAL"
+            }
+          ],
+          "schema": "S51_RECOVERED_OBJECT@1",
+          "source_grade": "SOURCEFREE_RESEARCH_INPUT",
+          "striving": "fund_finishing_equipment",
+          "work_parent_event_id": "sha256:4de01226426a427a08df130b563c24e9f8584d52cea6efdf7527f07be3f6e5bc"
+        },
+        "relevance": {
+          "actor_free_hours": 11,
+          "actual_current_purpose_proved": false,
+          "financial": {
+            "payment_per_actor": 2,
+            "permit": true,
+            "task_hours": 1
+          },
+          "hypothesis_id": "S51_HYPOTHESIS_198b568bc074_0",
+          "native": false,
+          "object_event_id": "sha256:198b568bc0747c50829b68866009a5c5627cef7dbc4b036cfcc03848386a2c60",
+          "object_striving": "fund_finishing_equipment",
+          "performed": false,
+          "reasons": [],
+          "relation": "FACILITATES",
+          "selected_action": null,
+          "status": "RELEVANCE_WARRANTED"
+        }
+      },
+      "standalone_entrypoint": {
+        "cold": {
+          "same_relevance_hash": true,
+          "verify_ok": true
+        },
+        "generation": {
+          "reasons": [],
+          "s49_status": "SOURCE_OWNER_HOLD",
+          "selected_option": "",
+          "selection_status": "OPEN_CHOICE_SET",
+          "source_refs": [
+            "S51_SOURCE_198b568bc0747c50"
+          ]
+        },
+        "relevance": {
+          "actor_free_hours": 11,
+          "actual_current_purpose_proved": false,
+          "hypothesis_scope": "ONE_SUBSEQUENT_RECEIVED_EVENT",
+          "relation": "FACILITATES",
+          "status": "RELEVANCE_WARRANTED"
+        },
+        "verify": true
+      }
+    },
+    {
+      "claim": "conditional paid option enters options; no comparison selects it; OPEN",
+      "grade": "TEST_ONLY_S52_PAID_ACTIVITY_REPERTOIRE",
+      "id": "E6_s52_option",
+      "observed": {
+        "candidate": {
+          "actual_current_purpose_proved": false,
+          "candidate_hash": "5efa690a29fa82c8031c2d6bf20b1e143ba27e55bbbb475a2d98c947e1f96db7",
+          "capability_readset": {
+            "completed_units": 5,
+            "free_hours": 11,
+            "grade": "CURRENT_ACTOR_STATE_ONLY_NOT_PAID_HISTORY",
+            "material_position": "waged_finishing",
+            "material_remaining": 1,
+            "position": "workshop",
+            "practices": [
+              "scheduled_finishing_ledger_discipline"
+            ],
+            "skill": 6
+          },
+          "counterpart_status": "INDEPENDENT_PARTICIPATION_NOT_OBSERVED",
+          "earned_payment": 0,
+          "native": false,
+          "performed": false,
+          "prospective_payment": 2,
+          "psychology_claim": false,
+          "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+          "recruited": true,
+          "status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION"
+        },
+        "generation": {
+          "defeated_pairs": [],
+          "eligible_options": [
+            "ATTEND_OBJECT",
+            "REQUEST_TOOL",
+            "EXPLICIT_REFUSAL",
+            "PAID_PARTICIPATION"
+          ],
+          "options": [
+            {
+              "action": "INSPECT_OBJECT",
+              "eligible": true,
+              "option_id": "ATTEND_OBJECT",
+              "s36_response_kind": "ATTEND_OBJECT"
+            },
+            {
+              "action": "REQUEST_TOOL",
+              "eligible": true,
+              "option_id": "REQUEST_TOOL",
+              "s36_response_kind": "REQUEST_TOOL"
+            },
+            {
+              "action": "EXPLICIT_REFUSAL",
+              "eligible": true,
+              "option_id": "EXPLICIT_REFUSAL",
+              "s36_response_kind": "EXPLICIT_REFUSAL"
+            },
+            {
+              "action": "PARTICIPATE_IN_PAID_TASK",
+              "eligible": true,
+              "option_id": "PAID_PARTICIPATION",
+              "s36_response_kind": "PAID_PARTICIPATION"
+            }
+          ],
+          "paid_reasons": [
+            {
+              "model_premise": true,
+              "option_id": "PAID_PARTICIPATION",
+              "predicate": "S52_PAID_OBJECT_RELEVANCE",
+              "recruitment_mode": "CAUSAL_NOT_CONSCIOUS_RECALL",
+              "relation": "CONDITIONAL_SUPPORTS",
+              "repertoire_candidate_hash": "5efa690a29fa82c8031c2d6bf20b1e143ba27e55bbbb475a2d98c947e1f96db7",
+              "source_class": "HISTORICAL_EPISODE",
+              "source_hash": "4375c7ae77c9c5d74139e5e683553c73182644df23250c67fd1a2113ecaf8bf9",
+              "source_ref": "S51_SOURCE_198b568bc0747c50"
+            }
+          ],
+          "selected_option": "",
+          "selection_status": "OPEN_CHOICE_SET",
+          "source_refs": [
+            "S51_SOURCE_198b568bc0747c50"
+          ],
+          "undominated_options": [
+            "ATTEND_OBJECT",
+            "EXPLICIT_REFUSAL",
+            "PAID_PARTICIPATION",
+            "REQUEST_TOOL"
+          ],
+          "unresolved_reason": "MULTIPLE_SURVIVORS"
+        },
+        "source_cut": {
+          "no_source_options": [
+            "ATTEND_OBJECT",
+            "REQUEST_TOOL",
+            "EXPLICIT_REFUSAL"
+          ],
+          "paid_absent_without_repertoire": true,
+          "paid_absent_without_source": true,
+          "paid_present_with_both": true,
+          "source_only_options": [
+            "ATTEND_OBJECT",
+            "REQUEST_TOOL",
+            "EXPLICIT_REFUSAL"
+          ],
+          "source_plus_repertoire_options": [
+            "ATTEND_OBJECT",
+            "REQUEST_TOOL",
+            "EXPLICIT_REFUSAL",
+            "PAID_PARTICIPATION"
+          ]
+        }
+      }
+    },
+    {
+      "claim": "changed free_hours blocks later paid option; material not psychological",
+      "grade": "TEST_ONLY_S52_CONTROLLED_MATERIAL_CHAIN",
+      "id": "E7_material_later_consumer",
+      "observed": {
+        "final_candidate_reason": "S52_INSUFFICIENT_FREE_HOURS",
+        "final_candidate_status": "BLOCKED",
+        "final_eligible_options": [
+          "ATTEND_OBJECT",
+          "REQUEST_TOOL",
+          "EXPLICIT_REFUSAL"
+        ],
+        "final_free_hours": 0,
+        "final_relation": "OBSTRUCTS",
+        "iterations": [
+          {
+            "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+            "free_hours": 10,
+            "iteration": 1,
+            "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+            "relation": "FACILITATES"
+          },
+          {
+            "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+            "free_hours": 9,
+            "iteration": 2,
+            "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+            "relation": "FACILITATES"
+          },
+          {
+            "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+            "free_hours": 8,
+            "iteration": 3,
+            "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+            "relation": "FACILITATES"
+          },
+          {
+            "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+            "free_hours": 7,
+            "iteration": 4,
+            "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+            "relation": "FACILITATES"
+          },
+          {
+            "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+            "free_hours": 6,
+            "iteration": 5,
+            "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+            "relation": "FACILITATES"
+          },
+          {
+            "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+            "free_hours": 5,
+            "iteration": 6,
+            "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+            "relation": "FACILITATES"
+          },
+          {
+            "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+            "free_hours": 4,
+            "iteration": 7,
+            "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+            "relation": "FACILITATES"
+          },
+          {
+            "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+            "free_hours": 3,
+            "iteration": 8,
+            "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+            "relation": "FACILITATES"
+          },
+          {
+            "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+            "free_hours": 2,
+            "iteration": 9,
+            "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+            "relation": "FACILITATES"
+          },
+          {
+            "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+            "free_hours": 1,
+            "iteration": 10,
+            "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+            "relation": "FACILITATES"
+          }
+        ],
+        "paid_absent": true,
+        "verify_ok": true
+      }
+    },
+    {
+      "claim": "unauthorized cash divergence is accepted after unrelated later episode; integrity defect in unaccepted component",
+      "control": [
+        {
+          "errors": [
+            "S52_CURRENT_STATE_DIVERGES:cash"
+          ],
+          "warm_ok": false,
+          "with_note": false
+        },
+        {
+          "errors": [],
+          "warm_ok": true,
+          "with_note": true
+        }
+      ],
+      "grade": "TEST_ONLY_S52_INTEGRITY_DEFECT",
+      "id": "E8_s52_hostile",
+      "observed": {
+        "after_action_cash": 56,
+        "cold_ok": true,
+        "cold_s52_errors": [],
+        "correct_invariant": "tampered cash after performed paid episode must be rejected",
+        "defect_reproduced": true,
+        "performed": true,
+        "schema": "RA_D_S52_POSTCONDITION_FAULT_PROBE@1",
+        "state_root": "<SCRATCH_TMP>/ra-d-s52-hostile-46f4abgj",
+        "tampered_cash": 999,
+        "warm_ok": true,
+        "warm_s52_errors": []
+      }
+    },
+    {
+      "claim": "V3/PFF executes on fixture; not wired to S52 actor",
+      "grade": "RECOVERED_HISTORICAL_V3_LEGACY_REPRODUCTION_NOT_NATIVE",
+      "id": "E9_s50_v3",
+      "observed": {
+        "actual_person_commit": false,
+        "actual_root": {
+          "c12_events_after": 1,
+          "c12_events_before": 1,
+          "clock_after": 222,
+          "clock_before": 222,
+          "missing_fields": [
+            "backbone_state",
+            "initial_state_provenance",
+            "expectation_baseline",
+            "striving_objects",
+            "pressure_flow_history",
+            "pressure_flow_memory",
+            "surface_psyche_profile",
+            "analyst_pressure_account",
+            "actor_context_projection",
+            "actor_owned_source"
+          ],
+          "no_c8": null,
+          "reason": "S50_ACTUAL_ROOT_MISSING_HISTORICAL_V3_STATE",
+          "root_unchanged": true,
+          "status": "SOURCE_OWNER_HOLD",
+          "world_events_after": 13,
+          "world_events_before": 13
+        },
+        "fixture_only": true,
+        "source_all_exact": true
+      }
+    },
+    {
+      "claim": "source-owner/SCI05 holds; no batch; no next event",
+      "grade": "TEST_ONLY_S48_ONE_CALL_TRANSPORT",
+      "id": "E10_s48_hold",
+      "observed": {
+        "nonempty_self_account": {
+          "calls": 1,
+          "event_ref": "",
+          "provider_call_count": 1,
+          "reason": "S48_SCI05_HOLD_NO_COMPETENT_INTERNAL_ACT_OWNER",
+          "status": "SCI05_HOLD"
+        },
+        "unsupported_component": {
+          "calls": 1,
+          "candidate_specs": [],
+          "event_ref": "",
+          "missing_function": "S48_MISSING_INDEPENDENT_CURRENT_B_SOURCE_PERFORMER",
+          "provider_call_count": 1,
+          "reason": "S48_SOURCE_OWNER_HOLD_NO_CURRENT_OWNER_ADMISSION",
+          "status": "SOURCE_OWNER_HOLD"
+        }
+      }
+    }
+  ],
+  "worker": "RA-D independent I3 local executable integration investigator"
+}

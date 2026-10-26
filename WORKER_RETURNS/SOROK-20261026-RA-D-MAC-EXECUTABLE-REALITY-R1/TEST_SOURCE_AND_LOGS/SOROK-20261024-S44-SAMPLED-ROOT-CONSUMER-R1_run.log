@@ -1,0 +1,133 @@
+{
+  "actor_ids": [
+    "TEST_ONLY_BP1_R26V_ACTOR_A",
+    "TEST_ONLY_BP1_R26V_ACTOR_B"
+  ],
+  "bundle_hash": "ac388eea0a8736111d4d0bc2ca31a96193fce3d54579a2591453448a3b22867d",
+  "clock": 214,
+  "cold_reopen_actor_ids_same": true,
+  "cold_reopen_root_same": true,
+  "event_count": 3,
+  "first_event": {
+    "e1_event_hash": "4369220dd371d26c67c01ce1d2618a71188e5053a767c9c74830bfb4b48f6a3d",
+    "event_ordinal": 1,
+    "selected_option": "REQUEST_TOOL",
+    "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_26201f66a0fc7555f0d9d2cd5e057542251f3b5443013dd648bdbf59f2c4a72f",
+    "source_is_root_evidence": true,
+    "status": "OK"
+  },
+  "grade": "TEST_ONLY_SOURCEFREE_SAMPLED_ROOT_CONSUMER_NOT_NATIVE",
+  "latest_ordinal": 3,
+  "native": false,
+  "product_model_calls": 0,
+  "provider_calls": 0,
+  "root_draw_receipt_count": 14,
+  "root_event_refs": {
+    "TEST_ONLY_BP1_R26V_ACTOR_A": [
+      "TEST_ONLY_BP1_EVT_666e18acee84591017e7c2dc19e73271d9f9529b04f4ab3bff370adb088be99e",
+      "TEST_ONLY_BP1_EVT_007fa5dfb7c45da5132a347292d109a0eed6f5de8270d68e1342e3f09ab6f062",
+      "TEST_ONLY_BP1_EVT_97d55f566672c4d06dfb66248c71b2175f2808a0ced760e57881417b8c191b02",
+      "TEST_ONLY_BP1_EVT_74d38ec93d0e772509790a745fbb25dd349c71388fb7c4a8f74264481ab0d952",
+      "TEST_ONLY_BP1_EVT_0cbbf740a5b0c22eb00c4c666509a9e2aa7908e1e7aaba894c0cff2ca1e67f46"
+    ],
+    "TEST_ONLY_BP1_R26V_ACTOR_B": [
+      "TEST_ONLY_BP1_EVT_30884cf2fd52b0f69938b6a4fd4d72f43701de5c0ad0dd3d24122b4d5e721368",
+      "TEST_ONLY_BP1_EVT_2f489bf044ba45ed660dce0ad7183c156e52b3a718818bd5dd1106625536f601",
+      "TEST_ONLY_BP1_EVT_0873590bebd88968805056c5353ebc8ec2e67ab58c36495d0b0c4bd400a89cd0",
+      "TEST_ONLY_BP1_EVT_ec93290d93bfd62ccd9c433cba6e93d12f031a5dc90b9379714170c5cdf57a3e",
+      "TEST_ONLY_BP1_EVT_9907917ff5fc76589c024ddc09b5c1fcc9a1ca362c278b723caf22893e2bb12d",
+      "TEST_ONLY_BP1_EVT_ac404f584983c8d91eb4c7fb3952f0537829adc31e94680ec5e872a8e84c6b93"
+    ]
+  },
+  "root_hash": "84687e6f34116693c00243b4c7e7e76fa0f24146b992b372d8920cab153cb930",
+  "root_id": "S44_ROOT_84687E6F34116693C00243B4",
+  "root_language_evidence": [
+    {
+      "access_receipt_id": "LME_ACCESS_300e4e6afb32d8449f7a2ab2a35d84a1622ee3a119379f08abbf9194eae8194d",
+      "evidence_id": "TEST_ONLY_S44_ROOT_FAMILY_REQUEST",
+      "language_tag": "es-MX",
+      "milieu_id": "family",
+      "relation_id": "LME_ENC_3c439dde785699cd84d3180515ff181dcf7515e91cd0316c9bdefe63964e6bad",
+      "sense_id": "sense:family-request",
+      "source_event_hash": "c3a461560e5295bbfa386afcb54d33b6edf665b192ff46572b3fff516e1444bb",
+      "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_0ed3d21da5fde8dd7e0d75e51d7516d4cb77f1ae67aa4c469f3bf06cf93c7ca2",
+      "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+      "text": "\u00bfPuedo usar la herramienta?"
+    },
+    {
+      "access_receipt_id": "LME_ACCESS_34dcd5844f7a73f88a62192f75063a5f720d2b7a0e8094e7c7e3cb756637da14",
+      "evidence_id": "TEST_ONLY_S44_ROOT_WORKSHOP_REQUEST",
+      "language_tag": "es-MX",
+      "milieu_id": "workshop",
+      "relation_id": "LME_ENC_e059498db8ceb58e850a7b735f881bf2f10c7b2e534549de4e2452c627f48a58",
+      "sense_id": "sense:workshop-request",
+      "source_event_hash": "ef3145b2f75cd9a5e11e09fa0e42bb0765d65cbbc6707fb2ec19ffbd095c5af1",
+      "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_26201f66a0fc7555f0d9d2cd5e057542251f3b5443013dd648bdbf59f2c4a72f",
+      "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+      "text": "\u00bfPuedo usar la herramienta?"
+    }
+  ],
+  "root_selected_branches": {
+    "a_optional_decline": false,
+    "b_extra_refusal": true,
+    "conditions": {
+      "a_optional_decline": {
+        "predecessor": "joint_time",
+        "receipt_hash": "377702dd2052b7efdc99eb9a986a2e41f8ed7f7abd119c9172947060c58354bc",
+        "value": 210
+      },
+      "b_extra_refusal": {
+        "predecessor": "a_material",
+        "receipt_hash": "f086751f2bba284a816513aee61965ad3c2249d2053e84b5de5d2578469abb75",
+        "value": 4
+      }
+    }
+  },
+  "root_snapshot_hashes": {
+    "a": "09c5e88fd999fbc1e2b64c7898b3309ed4c053293c94932ef97c6bb0461df77b",
+    "b": "7d375fb5e3e62e6eaa72c5a2284b934d195e9fda0d7805bc6a992807d28189b2"
+  },
+  "schema": "SOROK_S44_SAMPLED_ROOT_RUN@1",
+  "second_event": {
+    "attempt_status": "ADMITTED",
+    "event_ordinal": 2,
+    "native_text": "\u00bfPuedo usar la herramienta?",
+    "performed": true,
+    "selected_option": "REQUEST_TOOL",
+    "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_26201f66a0fc7555f0d9d2cd5e057542251f3b5443013dd648bdbf59f2c4a72f",
+    "status": "OK",
+    "target_branch": "NO_CHANGE",
+    "target_proposals": [],
+    "target_reason": "NO_PROPOSAL",
+    "translation_text": "May I use the tool?"
+  },
+  "second_s43": {
+    "repertoire_hash": "81ba5f1cc8f5bc559d14dc135d70f89fbe97e39148142ec6c84667ba98fc0e35",
+    "selected_relation_ids": [
+      "LME_ENC_e059498db8ceb58e850a7b735f881bf2f10c7b2e534549de4e2452c627f48a58"
+    ],
+    "status": "OK"
+  },
+  "selected_finished_life": false,
+  "source_hashes": [
+    "1c142eb985911f2c4e8a0def044b2c9802e0f30bb74d5c158a46814396f6b8ed",
+    "f2d560f60763e631b5a81a3368f558b86fdc9258f443ebdfe8ec76fb7caf8dd5"
+  ],
+  "state_root": "<SCRATCH_TMP>/sorok-s44-ai0944hm",
+  "target_proposals": [],
+  "third_event": {
+    "attempt_status": "ADMITTED",
+    "event_ordinal": 3,
+    "native_text": "\u00bfPuedo usar la herramienta?",
+    "performed": true,
+    "selected_option": "REQUEST_TOOL",
+    "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_26201f66a0fc7555f0d9d2cd5e057542251f3b5443013dd648bdbf59f2c4a72f",
+    "status": "OK",
+    "target_branch": "NO_CHANGE",
+    "target_proposals": [],
+    "target_reason": "NO_PROPOSAL",
+    "translation_text": "May I use the tool?"
+  },
+  "tools_remaining": 1,
+  "verify_ok": true
+}

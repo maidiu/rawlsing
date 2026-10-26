@@ -1,0 +1,128 @@
+{
+  "actual_current_purpose_proved": false,
+  "candidate": {
+    "candidate_hash": "5efa690a29fa82c8031c2d6bf20b1e143ba27e55bbbb475a2d98c947e1f96db7",
+    "counterpart_status": "INDEPENDENT_PARTICIPATION_NOT_OBSERVED",
+    "earned_payment": 0,
+    "objective_feasibility": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+    "prospective_payment": 2,
+    "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+    "recruited": true,
+    "source_ref": "S51_SOURCE_198b568bc0747c50",
+    "status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION"
+  },
+  "cold": {
+    "candidate_match": true,
+    "verify_ok": true
+  },
+  "controlled": {
+    "cash_after": 56,
+    "cash_before": 54,
+    "completed_after": 6,
+    "completed_before": 5,
+    "denied": {
+      "performed": false,
+      "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+      "status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION"
+    },
+    "free_hours_after": 10,
+    "free_hours_before": 11,
+    "performed": {
+      "payment_earned": 2,
+      "performed": true,
+      "reason": "OK",
+      "status": "PERFORMED",
+      "world_event_id": "TEST_ONLY_BP4_WORLD_EVT_f5d526105669c193f00fe0203ec474c6b2b5a175a9d65b790cec371ed0bd9ef9"
+    }
+  },
+  "generation": {
+    "eligible_options": [
+      "ATTEND_OBJECT",
+      "REQUEST_TOOL",
+      "EXPLICIT_REFUSAL",
+      "PAID_PARTICIPATION"
+    ],
+    "options": [
+      {
+        "action": "INSPECT_OBJECT",
+        "eligible": true,
+        "option_id": "ATTEND_OBJECT",
+        "s36_response_kind": "ATTEND_OBJECT"
+      },
+      {
+        "action": "REQUEST_TOOL",
+        "eligible": true,
+        "option_id": "REQUEST_TOOL",
+        "s36_response_kind": "REQUEST_TOOL"
+      },
+      {
+        "action": "EXPLICIT_REFUSAL",
+        "eligible": true,
+        "option_id": "EXPLICIT_REFUSAL",
+        "s36_response_kind": "EXPLICIT_REFUSAL"
+      },
+      {
+        "action": "PARTICIPATE_IN_PAID_TASK",
+        "eligible": true,
+        "option_id": "PAID_PARTICIPATION",
+        "s36_response_kind": "PAID_PARTICIPATION"
+      }
+    ],
+    "reasons": [
+      {
+        "model_premise": true,
+        "option_id": "PAID_PARTICIPATION",
+        "predicate": "S52_PAID_OBJECT_RELEVANCE",
+        "recruitment_mode": "CAUSAL_NOT_CONSCIOUS_RECALL",
+        "relation": "CONDITIONAL_SUPPORTS",
+        "repertoire_candidate_hash": "5efa690a29fa82c8031c2d6bf20b1e143ba27e55bbbb475a2d98c947e1f96db7",
+        "source_class": "HISTORICAL_EPISODE",
+        "source_hash": "4375c7ae77c9c5d74139e5e683553c73182644df23250c67fd1a2113ecaf8bf9",
+        "source_ref": "S51_SOURCE_198b568bc0747c50"
+      }
+    ],
+    "repertoire": {
+      "candidate_hash": "5efa690a29fa82c8031c2d6bf20b1e143ba27e55bbbb475a2d98c947e1f96db7",
+      "eligible": true,
+      "option": {
+        "action": "PARTICIPATE_IN_PAID_TASK",
+        "option_id": "PAID_PARTICIPATION",
+        "performer": "s52.paid_activity",
+        "s36_response_kind": "PAID_PARTICIPATION"
+      },
+      "reason": {
+        "content": {
+          "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+          "object_event_id": "sha256:198b568bc0747c50829b68866009a5c5627cef7dbc4b036cfcc03848386a2c60",
+          "offer_event_id": "sha256:2c0d9539274afdcd18058b351511a1f46bb588802f688c3572b17508c6db2adc",
+          "relation": "FACILITATES",
+          "relevance_hash": "3a9fb36772d53ce814d33c56e368d7304441823cdfc2333eda60d910d30eb25c",
+          "world_offer_event_id": "TEST_ONLY_BP4_WORLD_EVT_542f5c96810d8f6b80ea5293ae3e7cfd7db9636ad10bd4ba24d155ebd5c8aa14"
+        },
+        "option_id": "PAID_PARTICIPATION",
+        "predicate": "S52_PAID_OBJECT_RELEVANCE",
+        "relation": "CONDITIONAL_SUPPORTS",
+        "source_class": "HISTORICAL_EPISODE",
+        "source_hash": "4375c7ae77c9c5d74139e5e683553c73182644df23250c67fd1a2113ecaf8bf9",
+        "source_ref": "S51_SOURCE_198b568bc0747c50"
+      },
+      "schema": "S52_PAID_REPERTOIRE@1"
+    },
+    "selected_option": "",
+    "selection_status": "OPEN_CHOICE_SET"
+  },
+  "grade": "TEST_ONLY_S52_PAID_ACTIVITY_REPERTOIRE_NOT_NATIVE",
+  "missing_option_relation": "PAID_PARTICIPATION compiled as a conditional current-state alternative; no independent counterpart or generated attempt is fabricated",
+  "native": false,
+  "object_event_id": "sha256:198b568bc0747c50829b68866009a5c5627cef7dbc4b036cfcc03848386a2c60",
+  "offer_event_id": "sha256:2c0d9539274afdcd18058b351511a1f46bb588802f688c3572b17508c6db2adc",
+  "provider_calls": 0,
+  "schema": "SOROK_S52_RUN@1",
+  "source_cut": {
+    "actual_source_cut_paid": false,
+    "reason_restored": true,
+    "source_and_repertoire_paid": true,
+    "source_kept_repertoire_omitted_paid": false
+  },
+  "verify_ok": true
+}
