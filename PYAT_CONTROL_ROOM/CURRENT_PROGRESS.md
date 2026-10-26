@@ -1,3 +1,10 @@
+# R134 — all35 present source pipeline task clarified
+
+User requires clarification before implementation. Shared S1-S8 task,35 source cards,25 exact primary input pins plus current code findings are banked under director R134_ALL35_SOURCE_PIPELINE_TASK. Entire source->empirical AND learned->FF/V553 handover/function/estate scope preserved; no all35-before-representative prerequisite. Source-specific metadata/science/permission binding remains explicit, no human scientific oracle. Existing production packages first; TEST_ONLY helper gaps do not mandate rewrite. R133 late return verified7 hashes/bytes/own8paths/directremote:3 TEST_ONLY native executions/facts, no source/learned/FF proof. No live workers, no source/code implementation launched by this task definition. Full35/1890/F1-F8/globalF6F7F8/LongMemory, C5parallel and all holds preserved.
+
+
+## Earlier progress history retained
+
 # R131 native support -> M1
 
 Bounded High determined existing native targetcell support law can be explicitly bound as technical EXACT_PINNED_REPLAY, no new truth-bearing/statistical/structural claim. Frozen contract + existing OpenCode actual author, actual real artifact values required; exact M2 release if permitted or refusal. No rawsource/checkpoint reread, currentness, new engine or fullmilestone claim. Direct lawful empirical ingress need not wait for this adapter. Distinct review after terminal. High complete, Low next.
