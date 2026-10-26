@@ -1,3 +1,10 @@
+# R126 exact report repair
+
+R125 verified own5 hashes/bytes/delta/directremote. Concrete defect: placeholder runtime/inputs and comment-only learned/downstream commands, no bound source scope for permission request. Same existing OpenCode author actually launched report-only repair, one bound non-source next operation or exact indispensable preimage/recovery dependency. No source/code/science grant, no new court. HQ Low actual verified; fullscope/holds/parallel milestone retained.
+
+
+## Earlier progress history retained
+
 # R125 executable launch-packet assembly running
 
 Existing OpenCode session actually launched bounded sourcefree preparation of exact representative Route B empirical AND learned artifacts/FF/V553+ calls, current rights and execution commands. Historical dataset/test counts are locator evidence not scope authority. No raw source/code/science grant, no new worker/session. R124 milestone active parallel C5, full scope/holds retained. High bounded decision complete; Low next.
