@@ -1,0 +1,11 @@
+# S52 actual original-author dispatch
+
+Commission `d897d34a15093008e2ffab4bf225a16585e20303` pushed. Original author `ses_e9387509affeR5dC27RoUy3WSH`, unchanged OpenCode Go DeepSeek V4.1 Flash MAX/no timeout, actually launched in the same worker checkout on `codex/sorok-s52-paid-activity-repertoire`, accepted S51 component base `2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65`. Source/exit records verified before launch; no competing author/reviewer.
+
+Exact completion job `sorok-s52-paid-activity-repertoire-worker` observed WAITING before launch. Existing watcher/16-entry manifest/durable dedupe retained, only delivered/consumed S48 source-owner repair3 retired. Backup/arm proof in existing controller `queue-integration/live`. No watcher or provider replay.
+
+Records `.local-logs/sorok-s36/s52.launch.json/process.json/events.jsonl/exit.json/commission.txt/run.py`. Launcher76551 is a historical locator only; consult actual current process/session and exit state before acting. No completed provider result or product effect is claimed at dispatch.
+
+Task: compile a real offer-parameterized paid-participation alternative and conditional source-specific reason into normal generation, preserving open choice and independent physical contract constraints. G18 `perform_participation` uses historical replay state and a joint-witness-only contract; reuse arithmetic/source semantics honestly, parameterize current state as indispensable, and do not assume another actor's contribution or unilateral payment. Preserve experimental retained-object grade and default actual-purpose holds. No new preference ranks/native motive/human grants or broad framework.
+
+On return, verify actual changed candidate/reason content and source/access/physical-feasibility cuts, exact scope/remote and cold replay, then reuse reviewer `ses_e98fa7144ffeXQs21DMwv7tro3`, last52 terminal, next53 if free for ONE consequential NEW action boundary. Do not reopen accepted S51 narrow correction or require a fabricated chosen action to validate OPEN. Controlled mechanical performer tests are not endogenous choice. Full adult Goal, sparse intervals, one-call ordering and SCI05/source/Pyat/human limits remain. Return routine banking/intake to Sol/low; no extra reasoning turns merely waiting.
