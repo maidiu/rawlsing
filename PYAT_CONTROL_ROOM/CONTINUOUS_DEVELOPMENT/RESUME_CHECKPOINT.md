@@ -1,3 +1,7 @@
+# CURRENT — R154 SOURCE->EXISTING PRE553 scope corrected; same ordered job RUNNING
+
+User explicitly corrects boundary to SOURCE->PRE553, ready actualfiles for EXISTING pre-FFpipeline, reuse priorpreparedwork. SameR154authorPID72027 sealed3a8c33a855896f4f7d2713919a690c624f01664c scopeoverride: first exactexistingprep producer/config/artifact reconciliation, actualcurrentingressfield requirements; eliminate FF downstreamgates and generic everyPACKAGE rights/rolesblockers. Preserve currentstore35exports/orderedtasks, gatheronlydemonstratedmissingfacts, native sourceinput load/coldreplay. Currentfutureexecutionrights distinct from metadata/input readiness. No freshrespondentanalysis/export or broaderholds changed. Read pre553-resume stdout/stderr from launchreceipt.
+
 # CURRENT — R154 SAME JOB resumed with explicit ordered tasks and DONE checks
 
 User requires explicit focusedtasksequence and completionchecks. R154samejob resumed sameexistingauthorPID70586 with sealedf6c865544193d7ae83679f766ea81c9238bbaeb4 orderedaddendum+taskspec: BOOTSTRAP, each35source PHYSICAL->CODEBOOK->EVIDENCE->OCCURRENCES->WORKLOAD->PACKAGE, ASSEMBLE,VERIFY_DELIVER. OneRUNNINGtask; DONE requires output+checkevidence; exactBLOCKEDfact/dependentcall/nextacquisition, continueindependentreadytasks. Existing R154 untrackedmetadata preserved; no discoveryrestart/newworker. Read ordered-resume.stdout.jsonl and stderr from R154launchreceipt, not oldlogs. Metadatainspection authorization/fullgoal/holds unchanged.
