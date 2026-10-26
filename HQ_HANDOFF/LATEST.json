@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261026-PYAT-HQ-R140-PRODUCTION-INGRESS-TRANSPORT-R1",
-  "handoff_commit": "e92c959f15011957fb08b83a732ed3883edbf8ec",
+  "checkpoint_id": "20261026-PYAT-HQ-R141-QUERY-SCOPE-REPAIR-QUEUE-R1",
+  "handoff_commit": "49cdd7ad03b9534afb2aded5e130f16f67f8a85c",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R140-PRODUCTION-INGRESS-TRANSPORT-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R140-PRODUCTION-INGRESS-TRANSPORT-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R140-PRODUCTION-INGRESS-TRANSPORT-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R141-QUERY-SCOPE-REPAIR-QUEUE-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R141-QUERY-SCOPE-REPAIR-QUEUE-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R141-QUERY-SCOPE-REPAIR-QUEUE-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "e92c959f15011957fb08b83a732ed3883edbf8ec",
+  "canonical_control_base": "49cdd7ad03b9534afb2aded5e130f16f67f8a85c",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "e92c959f15011957fb08b83a732ed3883edbf8ec",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R140-PRODUCTION-INGRESS-TRANSPORT-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R140-PRODUCTION-INGRESS-TRANSPORT-R1/CURRENT.md",
+  "qualified_working_hq_commit": "49cdd7ad03b9534afb2aded5e130f16f67f8a85c",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R141-QUERY-SCOPE-REPAIR-QUEUE-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261026-PYAT-HQ-R141-QUERY-SCOPE-REPAIR-QUEUE-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 138,
-    "canonical_report_commit": "e92c959f15011957fb08b83a732ed3883edbf8ec",
+    "revision": 139,
+    "canonical_report_commit": "49cdd7ad03b9534afb2aded5e130f16f67f8a85c",
     "counterpart": "Sorok rev34 independent; no Pyat actor grant"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261026-PYAT-HQ-R138-REPAIR-REVIEW-AND-CONTRACT-BOUNDARY-R1",
-    "handoff_commit": "a93c8355365cdb7d4decbe3b1ae737c40a680201"
+    "checkpoint_id": "20261026-PYAT-HQ-R140-PRODUCTION-INGRESS-TRANSPORT-R1",
+    "handoff_commit": "e92c959f15011957fb08b83a732ed3883edbf8ec"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "Intake R138 independent repairedscope return and R140 exact2technicaltransport candidate independently; repair only demonstrateddefects, distinctcombinedqualification before actualsourcebinding/read. ReturnHQ Low once afterR139boundeddecision.",
-  "worker_state_truth": "R138 existing reviewer and R140 existing author actually launched on separate frozen worktrees; no duplicate/Codexworkers.",
+  "next_action": "Wait actual R140 terminalreturn; inspect its scopefix against R138 exactforeignscopeprobes. Dispatch queuedR141sameowner only if remaining, else same reviewer confirms completecandidate. No duplicate/livefilewrite; source/learned/FF unproved.",
+  "worker_state_truth": "R138 reviewer terminal REVISE; R140 existingauthor live; R141 authorized queued, not dispatched.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -356,21 +356,6 @@
   },
   "r61_actual_workers": [
     {
-      "id": "R138_PRODUCTION_REPAIR_REVIEW",
-      "pid": 15128,
-      "session": "ses_e96304356ffeC8HSvwFluWOjG1",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5",
-      "branch": "agent/opencode-pyat-r138-production-repair-review-r1",
-      "startup": "98612c6d511d54acdf304ab4086547192573f403",
-      "candidate": "98612c6d511d54acdf304ab4086547192573f403",
-      "commission_tip": "5b86ea7979edeac7d917f3c4f6a67ade100f8f27",
-      "commission_path": "WORKER_COMMISSIONS/PYAT-R138-PRODUCTION-REPAIR-REVIEW-R1/00_COMMISSION.md",
-      "return_root": "WORKER_RETURNS/PYAT-R138-PRODUCTION-REPAIR-REVIEW-R1",
-      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01v-r5/.r61/r138-repair-review",
-      "state": "ACTUALLY_LAUNCHED_OPENCODE_MAX",
-      "actual_tool_preflight": "PENDING"
-    },
-    {
       "id": "R140_PREDECODE_DISCOVERY_TRANSPORT",
       "pid": 18340,
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
@@ -395,7 +380,7 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "3d690fe52e44c0845982b86b55925a817a3e21b2",
+  "current_development_evidence": "f67b4f2a5aae4da8869b7994f468f53d69ceb658",
   "new_R87_operative_grants": false,
   "secondary_hq_status": "USER_APPOINTED_BROWSER_SECONDARY__PRIMARY_CODEX_NOT_REVOKED"
 }
