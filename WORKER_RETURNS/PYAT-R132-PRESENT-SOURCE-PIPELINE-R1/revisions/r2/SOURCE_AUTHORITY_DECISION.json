@@ -1,0 +1,84 @@
+{
+  "current_evidence": {
+    "lits_package": {
+      "note": "source-specific acquisition/closure package exists; no current host/purpose/use grant",
+      "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-CANONICAL-EMPIRICAL-CLOSURE-RETENTION-R1/04_SOURCE_FREE_QUALIFICATION_RECEIPT.json",
+      "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+    },
+    "s44_handoff": {
+      "grant_present": false,
+      "path": ".r61/r132-present-source-pipeline/s44_source_runtime_handoff.json",
+      "raw_source_read": false,
+      "sha256": "959786bd230bb12ff05bb35f253ab18cd29e921c0cc7625c2e24923a98353dde",
+      "status": "EVIDENCE_ONLY__NOT_A_CURRENT_GRANT"
+    },
+    "wvs7_runtime_package": {
+      "candidate_count": 46,
+      "current_binding_ref": {
+        "content_hash": "f5c705b41dd858a9991a16aa9828c476dbe2c4e223c71d85efb31b1f0468e036",
+        "kind": "WVS7SourceCurrentBinding@1.0.0",
+        "object_id": "urn:rawlsing:pre553:ee-p2f2:source-current:sha256:f5c705b41dd858a9991a16aa9828c476dbe2c4e223c71d85efb31b1f0468e036"
+      },
+      "path": "rawlsing_next/runtime/ee_p2x/02_WVS7_P2F2_RUNTIME_PACKAGE.json",
+      "semantic_status": "EXACT_P2F2_LOCK2_PREIMAGES_PACKAGED__NO_OUTCOME_ACCESS",
+      "source_access": false,
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+    }
+  },
+  "decision": {
+    "choose": "One source-specific current tuple, not a historical default or possession inference.",
+    "decision_id": "R132-D1-CURRENT-SOURCE-ADMISSION",
+    "exact_proposed_contract": "select one of the existing source-specific packages (WVS7 current runtime package or LiTS retained source package) only when the source custodian supplies the current tuple above; then build the exact NativeWorkload and call execute_issued_workload; do not reuse S44 grant_present=false as a current decision.",
+    "required_fields": [
+      "source_id",
+      "exact_source_edition_sha256",
+      "canonical_source_locator/custody_ref",
+      "current_source_permission_ref",
+      "scientific_permission_refs",
+      "host",
+      "purpose",
+      "currentness",
+      "expiry/revocation",
+      "retention/export/aggregate limits",
+      "scope",
+      "consumer_purpose"
+    ],
+    "required_native_objects": [
+      "NativePreimageBundle/GovernedC11Projection for the selected source",
+      "RuntimeObjectCatalog",
+      "I03ExecutionRequest(s)",
+      "DiscoveryAuthority/refs",
+      "NativeWorkload",
+      "IssuedWorkloadRecord with the exact envelope/U/Epre/jobs"
+    ],
+    "responsible_owners": [
+      {
+        "field": "source selection/current source-host-purpose/use and licence",
+        "not": "model or code worker by inference",
+        "owner": "competent source custodian/licence owner and deployment host operator"
+      },
+      {
+        "field": "complete native U/response/routing/carrier",
+        "not": "human asked to design science",
+        "owner": "original instrument/source-structure issuer"
+      },
+      {
+        "field": "scientific Epre/targets/conditioners/grammar",
+        "not": "user as oracle",
+        "owner": "competent source-specific scientific owner/HQ"
+      },
+      {
+        "field": "consumer purpose/FF/V553 scope",
+        "not": "automatic from source permission",
+        "owner": "existing consumer/FF/V553 purpose owners"
+      }
+    ]
+  },
+  "finally": "This is a source authority decision, not a request that a human design U/Epre or code; those remain with the competent owner.",
+  "is_global_blocker": false,
+  "is_missing_python_module": false,
+  "safe_next_action": "Source custodian supplies the current source-specific tuple for one package; no source read or source-free fixture may substitute for it.",
+  "schema": "PYAT_R132_SOURCE_AUTHORITY_DECISION@1",
+  "status": "BANKED__SMALLEST_CONSEQUENTIAL_DECISION__SOURCE_SELECTION_AND_CURRENT_ADMISSION",
+  "why_required": "A source-specific U/Epre and NativeWorkload cannot be legally selected or constructed from source possession alone. Current source-specific packages expose source identity/runtime metadata but no current host/purpose/use permission record."
+}

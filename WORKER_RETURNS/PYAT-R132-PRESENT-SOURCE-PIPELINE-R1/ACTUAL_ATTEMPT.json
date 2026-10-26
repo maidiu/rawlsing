@@ -1,0 +1,75 @@
+{
+  "handoff": {
+    "grant_present": false,
+    "path": ".r61/r132-present-source-pipeline/s44_source_runtime_handoff.json",
+    "raw_source_read": false,
+    "selected_source": "LiTS-I",
+    "selected_wave": "SRC27",
+    "sha256": "959786bd230bb12ff05bb35f253ab18cd29e921c0cc7625c2e24923a98353dde"
+  },
+  "missing_current_decisions": [
+    "SRC27:SOURCE_HOST_PURPOSE",
+    "SRC27:COMPLETE_NATIVE_U",
+    "SRC27:RESPONSE_ROUTING_CARRIER",
+    "SRC27:SCIENTIFIC_E_PRE",
+    "SRC27:CONSUMER_PURPOSE"
+  ],
+  "missing_runtime_fields": [
+    "runtime_module",
+    "runtime.resolver",
+    "runtime.workloads[SRC27]",
+    "runtime.source_factory",
+    "runtime.host",
+    "runtime.purpose"
+  ],
+  "pipeline_code_present": true,
+  "pipeline_code_unavailable": false,
+  "ready_executable_call": {
+    "api": "rawlsing_next.pre553_issued_workload.execute_issued_workload",
+    "api_blob": "be5ffc75287ad25ac35eb03bc5e506c00a5837a2",
+    "call": "execute_issued_workload(workload=runtime.workloads['SRC27'], resolver=runtime.resolver, source_factory=runtime.source_factory, host=runtime.host, purpose=runtime.purpose, allow_test_only=False, prior_receipts=(), max_units=None)",
+    "executes_only_after": "runtime.resolver returns CURRENT_GRANTED exact IssuedWorkloadRecord and workload admission succeeds"
+  },
+  "responsible_owners": [
+    {
+      "evidence": "exact current source edition/hash, host identity, purpose, expiry/revocation, private retention/export scope",
+      "field": "SOURCE_HOST_PURPOSE",
+      "owner": "competent original source access/licence custodian and deployment host operator"
+    },
+    {
+      "evidence": "complete administered occurrence inventory and exact native item/occurrence bindings",
+      "field": "COMPLETE_NATIVE_U",
+      "owner": "original questionnaire/instrument and source-structure issuer"
+    },
+    {
+      "evidence": "response states, routing/risk sets, respondent namespace, design/weights/estimand",
+      "field": "RESPONSE_ROUTING_CARRIER",
+      "owner": "source response/routing/subject identity and sampling-design issuers"
+    },
+    {
+      "evidence": "frozen U/Epre roots and exact target/conditioner/query/predicate/discovery grammar",
+      "field": "SCIENTIFIC_E_PRE",
+      "owner": "competent source-specific scientific operation issuer"
+    },
+    {
+      "evidence": "permitted aggregate empirical/learned/FF/V553 consumer scope",
+      "field": "CONSUMER_PURPOSE",
+      "owner": "original purpose issuer and existing consumer authorities"
+    }
+  ],
+  "runtime_contract": {
+    "caller_supplied_checkpoint_receipts": "REFUSED",
+    "members": [
+      "resolver",
+      "workloads",
+      "source_factory",
+      "host",
+      "purpose"
+    ],
+    "trusted_infrastructure": true
+  },
+  "schema": "PYAT_R132_PRESENT_PIPELINE_ATTEMPT@1",
+  "source_dependent_operation": "SOURCE_FILES -> PRE553 EMPIRICAL/LEARNED -> FF/V553",
+  "source_read": false,
+  "status": "BLOCKED__CURRENT_NATIVE_RUNTIME_MODULE_NOT_PROVIDED"
+}

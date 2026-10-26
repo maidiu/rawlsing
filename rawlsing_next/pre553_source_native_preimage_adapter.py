@@ -525,6 +525,7 @@ def materialize_native_preimages(
     package: NativeSourcePackage,
     incidence: PhysicalSourceIncidence | ExactPhysicalCellStream,
     row_occurrence_plan: GovernedRowOccurrencePlan | None = None,
+    authorities: tuple[AuthoritySnapshot, ...] | None = None,
 ) -> NativePreimageBundle:
     """Materialize a governed C11 release from exact source cells.
 
@@ -548,7 +549,25 @@ def materialize_native_preimages(
     all_cells = tuple(incidence.iter_cells())
     rows = _row_cells(all_cells, incidence.row_count)
     source = package.source
-    authorities = build_authority_set(source=source, as_of=package.as_of)
+    if authorities is None:
+        authorities = build_authority_set(source=source, as_of=package.as_of)
+    else:
+        authorities = tuple(authorities)
+        if len(authorities) != 7 or any(not isinstance(a, AuthoritySnapshot) for a in authorities):
+            raise NativePreimageRefusal("SUPPLIED_AUTHORITY_SET_INVALID")
+        if any(a.typed_state != "ALLOW" or a.decision_state != "ALLOW" for a in authorities):
+            raise NativePreimageRefusal("SUPPLIED_AUTHORITY_NOT_ALLOW")
+        expected_kinds = (
+            "SOURCE_SEMANTICS_TOPOLOGY",
+            "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+            "COORDINATE_SEMANTICS",
+            "ROUTING_RISK_SET",
+            "WEIGHT_DESIGN_ESTIMAND",
+            "REPLAY_PROTOCOL",
+            "SOURCE_SEMANTICS_TOPOLOGY",
+        )
+        if tuple(a.authority_kind for a in authorities) != expected_kinds:
+            raise NativePreimageRefusal("SUPPLIED_AUTHORITY_ROLE_MISMATCH")
     source_auth, mapping_auth, coord_auth, routing_auth, weight_auth, replay_auth, projection_auth = authorities
     variable_names = {name for row in rows.values() for name in row}
     for required in (package.coordinate_variable,):

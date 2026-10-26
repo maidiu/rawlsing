@@ -1,0 +1,102 @@
+{
+  "schema": "PYAT_R125_PRODUCER_TO_CONSUMER_BINDINGS@1",
+  "status": "DOCUMENTARY_BINDING_ONLY__NO_EXECUTION",
+  "chain": [
+    "qualified_source_factory + exact source/projection/catalog/requests/discovery",
+    "admit/execute issued native workload (C11 -> M01 Route B -> I03/I05/Batch)",
+    "exact empirical facts + discovery receipts/anti-join",
+    "M1 learned empirical adjudication (claim-family rule/default disposition)",
+    "M2 immutable release core/publication binding",
+    "B5 lifecycle register/publish/select current/as-of/revoke",
+    "exact learned consumer / N10E",
+    "Field Forge claim-specific relation/admission or typed refusal",
+    "V553+ temporal ingress only where an actual comparable pair is issued",
+    "R119 progressive world consumer when the product/use/bindings fit"
+  ],
+  "bindings": [
+    {
+      "stage": "source_native_admission_and_empirical",
+      "owner": "accepted R03",
+      "commit": "c912497b25411ebbd3d796db139f32f5bebb6c4c",
+      "review": "d15de915ea3388894c0f8839d28db3b23bc00367",
+      "code": [
+        {"path":"rawlsing_next/pre553_issued_workload.py","blob":"31e84f49d624f5524906e9e7839d2873106f8249","public":["NativeWorkload","IssuedWorkloadRecord","admit","execute_issued_workload"]},
+        {"path":"rawlsing_next/pre553_universal_workload.py","blob":"8e7fe00a3ed008361d9f3c501e7782b2de3a636e","public":["compile_universal_workload","execute_universal_workload","compile_governed_frontier","execute_governed_frontier","restore_governed_frontier_ledger"]},
+        {"path":"rawlsing_next/pre553_native_workload_binding.py","blob":"dac73e484f8619088f5c6701b2b6991c07540f3b","public":["NativePreimageBundle"]}
+      ],
+      "required_gate": "CurrentDecisionResolver -> IssuedWorkloadRecord with exact source permission, scientific refs, host/purpose, source hash, envelope, U/Epre roots, expected jobs, currentness, original wave identity and native universe refs",
+      "requires": ["exact source_factory_ref", "GovernedC11Projection", "RuntimeObjectCatalog", "I03ExecutionRequest[]", "DiscoveryAuthority refs"],
+      "outputs": ["native route/I03/I05 results", "Batch receipts", "empirical fact refs", "discovery receipt refs", "anti-join/no-drop ledger"],
+      "cannot": "invent source semantics, U/E_pre, source rights, or a fresh native engine"
+    },
+    {
+      "stage": "M01_selected_B_execution",
+      "owner": "accepted M01 Route B",
+      "commit": "c912497b25411ebbd3d796db139f32f5bebb6c4c",
+      "source_commit": "4b35fa546ebcedddad2b30bb2225518252735f3c",
+      "public": "pre553_route_b_production.execute_route_b_production",
+      "requires": "validated physical source incidence, exact projection/catalog, I03 requests, discovery authority",
+      "outputs": "exact native query/discovery objects and receipts",
+      "cannot": "choose source meaning, issue U/E_pre, or widen Field Forge/Temporal authority"
+    },
+    {
+      "stage": "M1_learned_empirical_adjudication",
+      "owner": "accepted R05 / adopted M1",
+      "commit": "bc2b5465c8f0ec2ea4657c6206436cdfa9ca58d0",
+      "review": "2f7faac6da620b7651c175ec074d7088d5a49343",
+      "code": [
+        {"path":"rawlsing_next/pre553_learned_world_composition.py","blob":"adbcc3316920c708580097dfe9f5aef4c9ca82fb","public":["compose_learned_world","TrustedNativeGraphCoordinator","evaluate_learned_world_consumer","NativeProductGraph","NativeGraphSlot"]},
+        {"path":"rawlsing_next/pre553_learned_product_lifecycle.py","blob":"a11c9eb73abab9be118ef4f0b6e325e676059f27"}
+      ],
+      "requires": "exact discovery/evidence refs and explicit claim-family M1FamilyRuleBinding; family-specific substantive validator",
+      "outputs": "LearnedEmpiricalDisposition, M2 release core/publication binding, B5 lifecycle/currentness",
+      "cannot": "treat discovery success as validated relation, create currentness, or invent family validation/estimand"
+    },
+    {
+      "stage": "M2_B5_release_and_currentness",
+      "owner": "accepted R05 M2/B5",
+      "commit": "bc2b5465c8f0ec2ea4657c6206436cdfa9ca58d0",
+      "public": ["M2Repository.resolve_release_exact","LearnedProductLifecycleExecutor.register_product","publish_product","select_current","resolve_current_as_of","declare_invalidation"],
+      "requires": "immutable producer-owned subject, exact dependency/replay/explanation closure, explicit lifecycle events and scope",
+      "outputs": "release/publication/core refs, B5 current/as-of selection or typed NO_CURRENT/INVALIDATED",
+      "cannot": "promote release to source truth or consumer permission"
+    },
+    {
+      "stage": "N10E_consumer",
+      "owner": "accepted R05 native consumer",
+      "public": "evaluate_learned_world_consumer / evaluate_positioned_subject_possibility",
+      "requires": "actual admitted slot/evidence, exact consumer query/model rule, original/trusted graph bindings",
+      "outputs": "actual N10E values-read and consumer result hash",
+      "cannot": "use handwritten slices or metadata-only labels as consumer proof"
+    },
+    {
+      "stage": "FF_and_V553_ingress",
+      "owner": "existing FF/GT12/V554 and V553 temporal owners",
+      "code_pins": [
+        {"path":"rawlsing_next/field_forge_conditional_support.py","blob":"a70decb20747d84cbcbe27d1280babc6de88ef33"},
+        {"path":"rawlsing_next/m1_admitted_field_forge_relation_v554_ingress.py","blob":"0aeacd9e66c7e4340b36e1b622bb5c9bf2865fd5"},
+        {"path":"rawlsing_next/m1_temporal_v554_admission_dedup.py","blob":"e8bd6376720a2de132b384e7771d71d8d39cf261"}
+      ],
+      "requires": "exact claim-family relation/admission/use or exact observed comparable temporal pair; no generic promotion",
+      "outputs": "actual relation/admission/F1 or typed refusal; temporal F1/delta only if source/time comparability is issued",
+      "cannot": "infer structural meaning from names, pool units, invent temporal history, or claim original F5/F6/F7"
+    },
+    {
+      "stage": "world_progressive_consumer",
+      "owner": "accepted R06/R117 sourcefree seam",
+      "commit": "849a76de18ef627c3c403b426ebe70f0951a7e7b",
+      "code": [
+        {"path":"rawlsing_next/pre553_universal_world_binding.py","blob":"dfb1e9fb72f1ee4b50fd7138fe978ce50db49f37","public":["configure_progressive_world_context","progressive_world_view"]},
+        {"path":"rawlsing_next/pre553_world_conditioned_progressive_service.py","blob":"db573027a2416f1b43f2bc47d6f2e3b9d5cd3b31","public":["consume_world_conditioned_prefixes"]}
+      ],
+      "requires": "actual source-consistent prefixes/world and exact purpose; current sourcefree seam consumes model/E04 world, not arbitrary LiTS/WVS source semantics",
+      "outputs": "world-conditioned native route + source-support assertion",
+      "cannot": "be used as a substitute for LiTS/WVS empirical/learned production or original F8; fit must be demonstrated"
+    }
+  ],
+  "actual_narrow_composition_blocker": {
+    "state": "SOURCE_PREIMAGE_AND_CLAIM_USE_GATE",
+    "detail": "The accepted producers/consumers are present, but no current exact LiTS/WVS source/host/purpose grant plus frozen native U/E_pre/preimage bundle exists. FF/V553+ positive also requires claim-specific relation/temporal authority; no original source read is allowed to manufacture it.",
+    "no_dependent_code": true
+  }
+}

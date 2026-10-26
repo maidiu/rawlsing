@@ -1,0 +1,55 @@
+{
+  "host": "r135-harness-host",
+  "positive": {
+    "decision_ref": {
+      "content_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "kind": "R135_HARNESS_DECISION",
+      "object_id": "urn:r135:harness:0"
+    },
+    "envelope_sha256": "c9dbe50d26fad83de881dd225f845916c26f165c9ef22cc86d64b1e052417cfd",
+    "manifest_hash": "53c906b6882f87b594a2cffbd3aa901213c7700a9d99e265c90d44414cc36bd6",
+    "output_refs": [
+      {
+        "content_hash": "ec93de0e4adabd12dd71b5d689b73c530f85056cbdb419df4ebbbf8da335c987",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ec93de0e4adabd12dd71b5d689b73c530f85056cbdb419df4ebbbf8da335c987"
+      }
+    ],
+    "receipts": 1,
+    "scope": "ORIGINAL_SOURCE_GRANTED"
+  },
+  "purpose": "R135_HARNESS_TRANSPORT_QUALIFICATION",
+  "refusals": {
+    "test_only": "WorkloadAdmissionError: CURRENT_COMPETENT_SOURCE_AND_SCIENCE_DECISION_REQUIRED",
+    "wrong_envelope": "WorkloadAdmissionError: ENTIRE_EXECUTION_DESCRIPTOR_NOT_THE_ISSUED_ENVELOPE",
+    "wrong_host": "WorkloadAdmissionError: SOURCE_HOST_PURPOSE_MISMATCH",
+    "wrong_jobs": "WorkloadAdmissionError: EXPECTED_EXECUTED_OPERATION_IDENTITY_MULTISET_MISMATCH",
+    "wrong_source": "WorkloadAdmissionError: ISSUED_SOURCE_EDITION_MISMATCH"
+  },
+  "restoration": {
+    "manifest_same": true,
+    "same_refs": true
+  },
+  "schema": "PYAT_R135_PROOF_RECEIPT@1",
+  "source_free_counts_as_source_proof": false,
+  "source_proof": false,
+  "source_reads": 0,
+  "status": "PRODUCTION_TRANSPORT_QUALIFIED_ON_SYNTHETIC_HARNESS_NOT_SOURCE",
+  "value_dependent": {
+    "different": true,
+    "response_0_ref": [
+      {
+        "content_hash": "ec93de0e4adabd12dd71b5d689b73c530f85056cbdb419df4ebbbf8da335c987",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ec93de0e4adabd12dd71b5d689b73c530f85056cbdb419df4ebbbf8da335c987"
+      }
+    ],
+    "response_1_ref": [
+      {
+        "content_hash": "192e355a0506bd9d54ea716e5cf9836204ca2bd7740106a9b1808d4d20b87495",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:192e355a0506bd9d54ea716e5cf9836204ca2bd7740106a9b1808d4d20b87495"
+      }
+    ]
+  }
+}
