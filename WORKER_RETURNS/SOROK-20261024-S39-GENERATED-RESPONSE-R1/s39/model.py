@@ -179,6 +179,7 @@ def generate_choice(
     source_records: list[Mapping[str, Any]],
     world: Mapping[str, Any],
     rule: ComparisonRule = FULL_RULE,
+    supplemental_reasons: list[Mapping[str, Any]] | None = None,
 ) -> dict:
     if access_witness.get("actor_id") != actor_id:
         raise S39GenerationRefusal("S39_ACCESS_ACTOR_MISMATCH")
@@ -214,6 +215,8 @@ def generate_choice(
         raise S39GenerationRefusal("S39_NO_ELIGIBLE_OPTION")
 
     reasons = []
+    for record in supplemental_reasons or []:
+        reasons.append(dict(record))
     for record in used:
         predicate = str(record.get("predicate", ""))
         for option_id, relation in REASON_MAP.get(predicate, ()):
