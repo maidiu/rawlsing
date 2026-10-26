@@ -1,0 +1,7 @@
+# Actual review53 intake and original-author repair dispatch
+
+Review53 REVISE50bc89ba8e104406f27fc4ea1e4c01e94e1c0b68 consumed in this same HQ. HQ unchanged boundary oracle reproduced raw repertoire injection, cross-actor rehashed second performance, and cash999 divergent checkpoint accepted. Exact output .local-logs/sorok-s52-hq-review53/repro.json. Actual source removal works; prior test mislabeled repertoire omission.
+
+Repair commission798429564 pushed. Original author ses_e9387509affeR5dC27RoUy3WSH actually resumed same S52 branch/checkout/model/no timeout after prior terminal return. Records .local-logs/sorok-s36/s52-repair-1.launch.json/process.json/events.jsonl/exit.json/commission.txt/run.py. Exact job sorok-s52-canonical-paid-repair1-worker observed WAITING before launch; arm proof controller live s52-repair1-notification-arm.json. Manifest16/dedupe retained; retired only delivered/consumed review48. No duplicate author/reviewer.
+
+NOT_ACCEPTED. Preserve real conditional paid option/reason, OPEN/no normal performance, explicit controlled port and current physical contract. On return inspect exact repair scope/remote and unchanged malicious oracle plus meaningful intact source-cut/restore and cold checks. No automatic broad hostile review for routine correction; use existing reviewer only if consequential changed boundary warrants closure. No forced choice, fabricated counterpart, new psychology/native authority or HQ product code. Full adult goal remains incomplete.
