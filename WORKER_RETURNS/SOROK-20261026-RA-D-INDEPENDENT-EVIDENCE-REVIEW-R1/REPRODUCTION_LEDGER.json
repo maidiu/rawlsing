@@ -1,0 +1,422 @@
+{
+  "schema": "RA_D_INDEPENDENT_REVIEW_REPRODUCTION_LEDGER@1",
+  "reviewer": "independent hostile reviewer, sealed startup 007d94a155cd42a89de35b141fec5ca2139f6365",
+  "review_target": "6d3610c576dc0ef3ceccbf7ac122c197f22be6fa",
+  "review_branch": "agent/reviewer-sorok-20261026-ra-d-independent-runtime-evidence-r1",
+  "environment": {
+    "host": "macOS 13.7.8, Darwin 22.6.0, x86_64",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "numpy": "2.4.6",
+    "git": "2.39.1",
+    "gh": "not installed",
+    "provider_calls": 0,
+    "raw_data_calls": 0,
+    "accepted_source_edits": 0,
+    "native_grants": false
+  },
+  "archive": {
+    "s52_commit": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+    "s50_commit": "515b9a8ee45672c97051df4efef679117a679525",
+    "extracted_returns": [
+      "S36",
+      "S37",
+      "S39",
+      "S40",
+      "S41",
+      "S42",
+      "S43",
+      "S44",
+      "S45",
+      "S46",
+      "S47",
+      "S48",
+      "S49",
+      "S50",
+      "S51",
+      "S52"
+    ],
+    "s52_python_files": 183,
+    "s52_python_exact": true,
+    "s50_return_files": 18,
+    "s50_return_exact": true,
+    "s50_source_identities": 31,
+    "s50_source_exact": true
+  },
+  "commands": [
+    {
+      "id": "worktree",
+      "command": "git worktree add -b agent/reviewer-sorok-20261026-ra-d-independent-runtime-evidence-r1 <REVIEW_WORKTREE> 007d94a155cd42a89de35b141fec5ca2139f6365",
+      "exit": 0,
+      "result": "review worktree at exact sealed startup"
+    },
+    {
+      "id": "archive_s52",
+      "command": "git archive c821b488... WORKER_RETURNS/SOROK-20261024-S36... S37 S39-S49 S51 S52 | tar -x -C <RAD_REVIEW_ARCHIVE>",
+      "exit": 0,
+      "result": "S36/S37/S39-S49/S51/S52 extracted"
+    },
+    {
+      "id": "archive_s50",
+      "command": "git archive 515b9a8e... WORKER_RETURNS/SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1 | tar -x -C <RAD_REVIEW_ARCHIVE>",
+      "exit": 0,
+      "result": "S50 extracted separately"
+    },
+    {
+      "id": "bootstrap_git_marker",
+      "command": "mkdir -p <RAD_REVIEW_ARCHIVE>/.git",
+      "exit": 0,
+      "result": "required by vendored M35 bootstrap path discovery; scratch-only marker"
+    },
+    {
+      "id": "pytest_S39",
+      "command": "python3 -m pytest <RAD_REVIEW_ARCHIVE>/WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/tests -q",
+      "exit": 0,
+      "passed": 10,
+      "log": "logs/independent_pytest/SOROK-20261024-S39-GENERATED-RESPONSE-R1.log"
+    },
+    {
+      "id": "pytest_S44",
+      "command": "python3 -m pytest <RAD_REVIEW_ARCHIVE>/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/tests -q",
+      "exit": 0,
+      "passed": 10,
+      "log": "logs/independent_pytest/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1.log"
+    },
+    {
+      "id": "pytest_S45",
+      "command": "python3 -m pytest <RAD_REVIEW_ARCHIVE>/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/tests -q",
+      "exit": 0,
+      "passed": 21,
+      "log": "logs/independent_pytest/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1.log"
+    },
+    {
+      "id": "pytest_S46",
+      "command": "python3 -m pytest <RAD_REVIEW_ARCHIVE>/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1/tests -q",
+      "exit": 0,
+      "passed": 17,
+      "log": "logs/independent_pytest/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1.log"
+    },
+    {
+      "id": "pytest_S47",
+      "command": "python3 -m pytest <RAD_REVIEW_ARCHIVE>/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/tests -q",
+      "exit": 0,
+      "passed": 17,
+      "log": "logs/independent_pytest/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1.log"
+    },
+    {
+      "id": "pytest_S48",
+      "command": "python3 -m pytest <RAD_REVIEW_ARCHIVE>/WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/tests -q",
+      "exit": 0,
+      "passed": 12,
+      "log": "logs/independent_pytest/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1.log"
+    },
+    {
+      "id": "pytest_S49",
+      "command": "python3 -m pytest <RAD_REVIEW_ARCHIVE>/WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/tests -q",
+      "exit": 0,
+      "passed": 13,
+      "log": "logs/independent_pytest/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1.log"
+    },
+    {
+      "id": "pytest_S50",
+      "command": "python3 -m pytest <RAD_REVIEW_ARCHIVE>/WORKER_RETURNS/SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1/tests -q",
+      "exit": 0,
+      "passed": 5,
+      "log": "logs/independent_pytest/SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1.log"
+    },
+    {
+      "id": "pytest_S51",
+      "command": "python3 -m pytest <RAD_REVIEW_ARCHIVE>/WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/tests -q",
+      "exit": 0,
+      "passed": 13,
+      "log": "logs/independent_pytest/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1.log"
+    },
+    {
+      "id": "pytest_S52",
+      "command": "python3 -m pytest <RAD_REVIEW_ARCHIVE>/WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/tests -q",
+      "exit": 0,
+      "passed": 13,
+      "log": "logs/independent_pytest/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1.log"
+    },
+    {
+      "id": "reviewer_probe",
+      "command": "RAD_REVIEW_ARCHIVE=<RAD_REVIEW_ARCHIVE> python3 scripts/reviewer_probe.py",
+      "exit": 0,
+      "result": "material chain and S52 hostile RED reproduced",
+      "logs": [
+        "logs/reviewer_probe_result.json",
+        "logs/reviewer_probe_result.stderr.log"
+      ]
+    },
+    {
+      "id": "reviewer_source_identity",
+      "command": "RAD_REVIEW_REPO=<REPO> RAD_REVIEW_ARCHIVE=<RAD_REVIEW_ARCHIVE> python3 scripts/reviewer_source_identity.py",
+      "exit": 0,
+      "result": "183/183 S52 py exact; five ancestor divergences; S50 31/31; imported module hashes",
+      "logs": [
+        "logs/reviewer_source_identity.json",
+        "logs/reviewer_source_identity.stderr.log"
+      ]
+    },
+    {
+      "id": "reviewer_v3_functions",
+      "command": "RAD_REVIEW_ARCHIVE=<RAD_REVIEW_ARCHIVE> python3 scripts/reviewer_v3_functions.py",
+      "exit": 0,
+      "result": "V3 functions present; one-year historical run produced history/memory/surface/analyst; roundtrip exact",
+      "logs": [
+        "logs/reviewer_v3_functions.json",
+        "logs/reviewer_v3_functions.stderr.log"
+      ]
+    },
+    {
+      "id": "s50_entrypoint",
+      "command": "cd <RAD_REVIEW_ARCHIVE>/WORKER_RETURNS/SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1 && python3 run_s50.py",
+      "exit": 0,
+      "result": "SOURCE_OWNER_HOLD actual root; fixture projection exact; cold reopen exact",
+      "logs": [
+        "logs/s50_entrypoint.json"
+      ]
+    },
+    {
+      "id": "s44_entrypoint",
+      "command": "cd <RAD_REVIEW_ARCHIVE>/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1 && python3 run_s44.py",
+      "exit": 0,
+      "result": "first selected REQUEST_TOOL; provider_calls=0; target proposals empty",
+      "logs": [
+        "logs/s44_entrypoint.json"
+      ]
+    },
+    {
+      "id": "s45_entrypoint",
+      "command": "cd <RAD_REVIEW_ARCHIVE>/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1 && python3 run_s45.py",
+      "exit": 0,
+      "result": "say=HELP_INVITE, do_help=HELP_ACCEPT, attend=NO_CHANGE; provider_calls=0",
+      "logs": [
+        "logs/s45_entrypoint.json"
+      ]
+    },
+    {
+      "id": "s51_entrypoint",
+      "command": "cd <RAD_REVIEW_ARCHIVE>/WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1 && python3 run_s51.py",
+      "exit": 0,
+      "result": "actual_person_commit=false; provider_calls=0; hypothesis actual_current_purpose_proved=false; S49 SOURCE_OWNER_HOLD/OPEN_CHOICE_SET; verify_ok=true",
+      "logs": [
+        "logs/s51_entrypoint.json"
+      ]
+    },
+    {
+      "id": "s52_entrypoint",
+      "command": "cd <RAD_REVIEW_ARCHIVE>/WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1 && python3 run_s52.py",
+      "exit": 0,
+      "result": "conditional paid candidate; controlled 54/11/5 -> 56/10/6; cold candidate match; verify true; provider_calls=0",
+      "logs": [
+        "logs/s52_entrypoint.json"
+      ]
+    },
+    {
+      "id": "s47_entrypoint",
+      "command": "cd <RAD_REVIEW_ARCHIVE>/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1 && python3 run_s47.py",
+      "exit": 0,
+      "result": "actual objective_material_eligible=false; target NO_CHANGE; provider_calls=0",
+      "logs": [
+        "logs/s47_entrypoint.json"
+      ]
+    },
+    {
+      "id": "ra_d_sha256sums",
+      "command": "cd WORKER_RETURNS/SOROK-20261026-RA-D-MAC-EXECUTABLE-REALITY-R1 && shasum -a 256 -c SHA256SUMS",
+      "exit": 0,
+      "result": "all RA-D committed artifacts OK"
+    }
+  ],
+  "source_hashes": {
+    "s52_session_sha256": "3ed6dadf2c809a0f6e2d4094c41e34be3e51b4a984a219898e20f6a7b299e32e",
+    "s52_performer_sha256": "ff12b71743f421b7f14ff51ae34e4f01cc0cae296bfbebda2fba91942aae8a14",
+    "s51_session_sha256": "6ef8e92eb3ea2d83cfdb5aba1121ed42f1706a0df9bc3f36aff2b91a47596a82",
+    "s49_actor_sha256": "c2a889c825807c174cdc91ce4ec08cde07c2e6e0575fadf9ee97185324c5eb95",
+    "s49_session_sha256": "9932029c529a399ffedb24545ea5d0f6884a5fe8719ffc39c8af9fe1db0f3625",
+    "s39_model_sha256": "6afba4b77b71c40654986fed4eda40915c7a0cc454e07d8293e353f135f1c603",
+    "g18_history_sha256": "2d861d7a820168d443e23efb2403b7ed9c3e899a8a79aaa72fd859c46f47c1c1",
+    "g18_joint_sha256": "755820d7d703cd459aec8271a784c39a69e9374aae501da1cd9f37bbccc21ee9",
+    "join_e_session_sha256": "ea820ec3e30a2825c3d0d8c5dc66e812afdda40b08f9cc0a8c868c8b3e0dd0da",
+    "language_session_sha256": "d6a1628cbfdc1c601f68fb3d3b9adbe91f9464875996b543caf69e548ece25aa",
+    "s50_fixture_sha256": "ef7008ac0d83e7690bd89e96ec683d25d3b784806857a799da2978ba7aa35673",
+    "v3_flow_sha256": "6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d",
+    "v3_state_sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+    "v3_derived_sha256": "e479fc3eba21734752c372742fb2ee247cbdde6a73ac42545dc30b5039301360",
+    "v3_yearly_step_sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+    "v3_topology_sha256": "4e3b9b64399dfcfad67a431729d9443767d5e074080ef6b51bc1c8df48711560",
+    "v3_llm_contract_sha256": "f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf",
+    "v3_run_llm_band_sha256": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38"
+  },
+  "observed": {
+    "tests": {
+      "total_passed": 131,
+      "failed": 0,
+      "collection_errors": 0,
+      "suites": {
+        "S39": 10,
+        "S44": 10,
+        "S45": 21,
+        "S46": 17,
+        "S47": 17,
+        "S48": 12,
+        "S49": 13,
+        "S50": 5,
+        "S51": 13,
+        "S52": 13
+      }
+    },
+    "source_identity": {
+      "s52_python_count": 183,
+      "s52_python_all_exact": true,
+      "five_ancestor_divergences": true,
+      "s50_source_count": 31,
+      "s50_source_all_exact": true,
+      "s50_return_count": 18,
+      "s50_return_all_exact": true,
+      "external_roots_exact": true
+    },
+    "material_chain": {
+      "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "g18_events": 21,
+      "g18_replay_valid": true,
+      "striving_event_id": "sha256:198b568bc0747c50829b68866009a5c5627cef7dbc4b036cfcc03848386a2c60",
+      "striving_value": "fund_finishing_equipment",
+      "striving_parents": [
+        "sha256:4de01226426a427a08df130b563c24e9f8584d52cea6efdf7527f07be3f6e5bc",
+        "sha256:bc48470f4a014b074f7bf119e940954edc5d0d1d6526266e59232a16e9d26014"
+      ],
+      "striving_parent_kinds": [
+        "WORK_POSITION",
+        "PROJECT"
+      ],
+      "current_b": {
+        "cash": 54,
+        "free_hours": 11,
+        "completed_units": 5,
+        "material_remaining": 1,
+        "skill": 6
+      },
+      "relevance": {
+        "status": "RELEVANCE_WARRANTED",
+        "relation": "FACILITATES",
+        "actor_free_hours": 11,
+        "actual_current_purpose_proved": false
+      },
+      "candidate": {
+        "status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+        "recruited": true,
+        "performed": false,
+        "counterpart_status": "INDEPENDENT_PARTICIPATION_NOT_OBSERVED"
+      },
+      "selection": {
+        "selection_status": "OPEN_CHOICE_SET",
+        "selected_option": "",
+        "defeated_pairs": [],
+        "unresolved_reason": "MULTIPLE_SURVIVORS"
+      },
+      "paid_comparison_rules": 0,
+      "source_cut_controls": {
+        "paid_absent_without_source": true,
+        "paid_absent_without_repertoire": true,
+        "paid_present_with_both": true
+      },
+      "controlled_perform": {
+        "before": {
+          "cash": 54,
+          "free_hours": 11,
+          "completed_units": 5
+        },
+        "after": {
+          "cash": 56,
+          "free_hours": 10,
+          "completed_units": 6
+        },
+        "changed_keys": [
+          "cash",
+          "completed_units",
+          "free_hours"
+        ],
+        "controlled_counterpart": true,
+        "counterpart_status": "EXPLICIT_CONTROLLED_TEST_ONLY"
+      },
+      "later_material_consumer": {
+        "final_free_hours": 0,
+        "relation": "OBSTRUCTS",
+        "candidate_status": "BLOCKED",
+        "candidate_reason": "S52_INSUFFICIENT_FREE_HOURS",
+        "paid_absent": true,
+        "verify_ok": true
+      }
+    },
+    "s52_verifier": {
+      "with_unrelated_note_cash_999": {
+        "warm_ok": true,
+        "cold_ok": true,
+        "errors": []
+      },
+      "without_note_cash_999": {
+        "warm_ok": false,
+        "cold_ok": false,
+        "errors": [
+          "S52_CURRENT_STATE_DIVERGES:cash"
+        ]
+      },
+      "defect_reproduced": true
+    },
+    "no_psychology": {
+      "can011_or_psych_episode_kinds": [],
+      "changed_actor_keys": [
+        "cash",
+        "completed_units",
+        "free_hours"
+      ],
+      "s39_selected_option": "",
+      "performer_requires_selected_option": false,
+      "capability_readset_grade": "CURRENT_ACTOR_STATE_ONLY_NOT_PAID_HISTORY"
+    },
+    "v3": {
+      "functions_present": [
+        "BackboneState",
+        "compute_all_derived",
+        "run_pressure_flow_cycle",
+        "_derive_current_charge",
+        "_channel_conductance",
+        "_domain_charge_ledger",
+        "_simulate_domain_routes_transactionally",
+        "_commit_route_state",
+        "_update_memory",
+        "update_loop_topology",
+        "run_one_year"
+      ],
+      "one_year_history_len": 1,
+      "memory_groove_domains": 5,
+      "surface_domains": 5,
+      "analyst_domains": 5,
+      "roundtrip_exact": true,
+      "event_context": "type counts only; no event identity/access/semantic content",
+      "wired_to_s52": false,
+      "actual_root_status": "SOURCE_OWNER_HOLD"
+    }
+  },
+  "controls": {
+    "no_source_paid_option_absent": true,
+    "source_only_paid_option_absent": true,
+    "source_plus_repertoire_paid_option_present": true,
+    "deny_without_counterpart": true,
+    "unrelated_note_bypasses_postcondition": true,
+    "no_note_postcondition_rejects_tamper": true,
+    "no_provider_calls": true,
+    "no_accepted_source_edits": true
+  },
+  "limits": [
+    "The RA-D ACTUAL_CAUSAL_TRACE.md declares root 84687e6f..., but the S52 probe root is 3bcb21fc... (RA-D causal_probe_result.json and independent run). This is a proof-path/documentation REVISE; material evidence is unaffected.",
+    "The current B state is the S44 sampled root state, not the G18 replay-final state; the chain is history-object identity plus current-material eligibility, not uninterrupted developmental carry-forward.",
+    "The controlled performer is a test-only port, not an independent counterpart or actor-selected action.",
+    "No official Astra K1-K11 test was executed.",
+    "No current-person BackboneState is bound; S50 actual root remains SOURCE_OWNER_HOLD.",
+    "No CAN011 concrete target rule or CAN008 concrete issuer was available or issued.",
+    "No 3-5-event sequential batch/impression/memory implementation exists in this closure."
+  ]
+}

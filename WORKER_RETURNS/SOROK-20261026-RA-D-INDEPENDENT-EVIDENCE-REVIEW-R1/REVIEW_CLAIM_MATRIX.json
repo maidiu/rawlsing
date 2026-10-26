@@ -1,0 +1,560 @@
+{
+  "schema": "RA_D_INDEPENDENT_REVIEW_CLAIM_MATRIX@1",
+  "reviewer": "independent OpenCode reviewer under sealed startup 007d94a155cd42a89de35b141fec5ca2139f6365",
+  "review_target": "6d3610c576dc0ef3ceccbf7ac122c197f22be6fa",
+  "review_branch": "agent/reviewer-sorok-20261026-ra-d-independent-runtime-evidence-r1",
+  "overall": {
+    "engineering": "ACCEPT_AT_SOURCEFREE_GRAIN_AFTER_ROOT_HASH_CORRECTION",
+    "scientific": "HOLD_NO_ACTOR_OWNED_CURRENT_PSYCHOLOGICAL_FORMATION_OR_CAN011_TRANSITION_PROVED",
+    "authority": "HOLD_NO_NATIVE_GRANT",
+    "s52_verifier": "RED_REPRODUCED_WARM_AND_COLD",
+    "return_disposition": "REVISE_FOR_TRACE_ROOT_HASH_PROOF_PATH"
+  },
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "RA-D committed file tree and SHA256SUMS are self-consistent and were not mutated.",
+      "reviewer_method": "shasum -a 256 -c SHA256SUMS in WORKER_RETURNS/SOROK-20261026-RA-D-MAC-EXECUTABLE-REALITY-R1",
+      "observed": "All listed files OK; no mismatch.",
+      "grade": "ACCEPT",
+      "notes": "The RA-D return remains read-only under this review."
+    },
+    {
+      "id": "C02",
+      "claim": "131 focused sourcefree tests pass with the stated 10-suite split.",
+      "reviewer_method": "python3 -m pytest <suite>/tests -q for each of the ten suites against the independent c821/515b extraction",
+      "observed": {
+        "S39": 10,
+        "S44": 10,
+        "S45": 21,
+        "S46": 17,
+        "S47": 17,
+        "S48": 12,
+        "S49": 13,
+        "S50": 5,
+        "S51": 13,
+        "S52": 13,
+        "total_passed": 131,
+        "failed": 0,
+        "collection_errors": 0
+      },
+      "grade": "ACCEPT",
+      "notes": "Five of the 131 are S50 historical-fixture tests. None is an official Astra K case."
+    },
+    {
+      "id": "C03",
+      "claim": "The S52-commit subtree has 183 Python files and the extracted archive matches the commit exactly.",
+      "reviewer_method": "Recomputed git blob SHA-1 for every extracted .py file under the S36-S52 returns and compared to git rev-parse c821b488:<path>",
+      "observed": {
+        "count": 183,
+        "all_same": true,
+        "mismatches": []
+      },
+      "grade": "ACCEPT",
+      "notes": "Extraction covered S36/S37/S39-S49/S51/S52; S50 was extracted separately from 515b9a8e."
+    },
+    {
+      "id": "C04",
+      "claim": "Five S52-cut files differ from their accepted ancestor cuts: s37/producer.py, s39/model.py, s49/actor.py, s49/session.py, s51/session.py.",
+      "reviewer_method": "Compared accepted cut blobs to the extracted S52 archive blobs and inspected the diffs.",
+      "observed": [
+        {
+          "file": "SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/s37/producer.py",
+          "accepted_blob": "223e399a224b49876b4f13dbdaf81140da17b3a0",
+          "s52_archive_blob": "cf6f970ff12faa2003c43b0261fc7d6497efa356",
+          "effect": "extra conditioning-source plumbing"
+        },
+        {
+          "file": "SOROK-20261024-S39-GENERATED-RESPONSE-R1/s39/model.py",
+          "accepted_blob": "41fe95c107ed5a33dc2453640b38de73862fd483",
+          "s52_archive_blob": "2dc5f16625b1c004be71bfc0c8dc593ad5afec21",
+          "effect": "repertoire option/reason plumbing"
+        },
+        {
+          "file": "SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/s49/actor.py",
+          "accepted_blob": "d5433c3b915d695091a4f1fee19deff39ad37589",
+          "s52_archive_blob": "e4a7781ee15e9f9b9ab0f0653d3224a32aff613a",
+          "effect": "repertoire pass-through; supplemental reasons inert"
+        },
+        {
+          "file": "SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/s49/session.py",
+          "accepted_blob": "53133d035d80605b7c28c90fbdf7493ec033cea2",
+          "s52_archive_blob": "70205dd6366f94b32f478863433469f46e5b31e5",
+          "effect": "source override and turn ordinal"
+        },
+        {
+          "file": "SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/s51/session.py",
+          "accepted_blob": "0f58b97192c4d30ed6f2c9f20db3131545eb184c",
+          "s52_archive_blob": "a6ab590fd6e1dfca32401c123812911b11b6c651",
+          "effect": "passes repertoire to S49 generation"
+        }
+      ],
+      "grade": "ACCEPT",
+      "notes": "The paid option exists only because the S52-cut repertoire plumbing is imported. The accepted ancestor blobs are not substituted."
+    },
+    {
+      "id": "C05",
+      "claim": "S50 has 31 exact selected V3 source identities and an exact fixture hash.",
+      "reviewer_method": "s50.recovery.verify_source(); compared the S50 return archive to 515b9a8e.",
+      "observed": {
+        "count": 31,
+        "all_exact": true,
+        "fixture_sha256": "ef7008ac0d83e7690bd89e96ec683d25d3b784806857a799da2978ba7aa35673",
+        "s50_return_files": 18,
+        "s50_return_all_exact": true
+      },
+      "grade": "ACCEPT"
+    },
+    {
+      "id": "C06",
+      "claim": "G18, JOIN-E and language sources are the declared bytes and the S52 chain is actually imported from the S52 cut.",
+      "reviewer_method": "SHA-256 of working files; module __file__ and SHA-256 after s52.bootstrap.install(); git blob checks at declared commits.",
+      "observed": {
+        "g18_history_sha256": "2d861d7a820168d443e23efb2403b7ed9c3e899a8a79aaa72fd859c46f47c1c1",
+        "g18_history_blob": "d667448194a1e8eb7eeab874fa0937b6797b79c0",
+        "join_e_session_sha256": "ea820ec3e30a2825c3d0d8c5dc66e812afdda40b08f9cc0a8c868c8b3e0dd0da",
+        "join_e_session_blob": "dc0894289e8b6a5e66148189e41d7efb563f25af",
+        "language_session_sha256": "d6a1628cbfdc1c601f68fb3d3b9adbe91f9464875996b543caf69e548ece25aa",
+        "language_session_blob": "4f2cdc62473d626fbd35d2f991562dd349fac35f",
+        "s52_session_sha256": "3ed6dadf2c809a0f6e2d4094c41e34be3e51b4a984a219898e20f6a7b299e32e",
+        "s51_session_sha256": "6ef8e92eb3ea2d83cfdb5aba1121ed42f1706a0df9bc3f36aff2b91a47596a82",
+        "s49_actor_sha256": "c2a889c825807c174cdc91ce4ec08cde07c2e6e0575fadf9ee97185324c5eb95",
+        "s39_model_sha256": "6afba4b77b71c40654986fed4eda40915c7a0cc454e07d8293e353f135f1c603"
+      },
+      "grade": "ACCEPT",
+      "notes": "S52/S51/S49/S39 modules were loaded from the extracted archive; candidate and bp4 came from the expected S36/JOIN-E paths."
+    },
+    {
+      "id": "C07",
+      "claim": "G18 replay is valid over 21 events and the unique STRIVING object has the declared identity/parents/witness/route usage.",
+      "reviewer_method": "Independent replay and recovery through S52Session.recover_object().",
+      "observed": {
+        "event_count": 21,
+        "replay_valid": true,
+        "striving_event_id": "sha256:198b568bc0747c50829b68866009a5c5627cef7dbc4b036cfcc03848386a2c60",
+        "striving_value": "fund_finishing_equipment",
+        "causal_parents": [
+          "sha256:4de01226426a427a08df130b563c24e9f8584d52cea6efdf7527f07be3f6e5bc",
+          "sha256:bc48470f4a014b074f7bf119e940954edc5d0d1d6526266e59232a16e9d26014"
+        ],
+        "parent_kinds": [
+          "WORK_POSITION",
+          "PROJECT"
+        ],
+        "value_witness_present": true,
+        "route_usage_present": true
+      },
+      "grade": "ACCEPT"
+    },
+    {
+      "id": "C08",
+      "claim": "The current S52 actor material state at the trace is cash 54, free hours 11, completed units 5, material remaining 1, skill 6.",
+      "reviewer_method": "Read S52 world actor_state after issue_offer.",
+      "observed": {
+        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+        "cash": 54,
+        "free_hours": 11,
+        "completed_units": 5,
+        "material_remaining": 1,
+        "skill": 6,
+        "place": "INST_WORKSHOP_A"
+      },
+      "grade": "ACCEPT",
+      "notes": "This is the S44 sampled root state, not the G18 replay-final state; see C16 and DIFFERENCES_FROM_RA_D.md."
+    },
+    {
+      "id": "C25",
+      "claim": "The S52 trace declares the exact root hash of the executed S52 session.",
+      "reviewer_method": "Compared ACTUAL_CAUSAL_TRACE.md \u00a71, RA-D causal_probe_result.json, RA-D S44 entrypoint log, and the independent S52 probe root.",
+      "observed": {
+        "trace_declared_root": "84687e6f...",
+        "actual_s52_probe_root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "s44_entrypoint_root": "84687e6f34116693c00243b4c7e7e76fa0f24146b992b372d8920cab153cb930",
+        "why": "S44 entrypoint uses default_bundle('11'*32); S52 probe uses root_bundle('01'*32).",
+        "material_chain_affected": false,
+        "s52_red_affected": false
+      },
+      "grade": "REVISE",
+      "notes": "Formal proof-path/documentation revision; no re-execution required."
+    },
+    {
+      "id": "C09",
+      "claim": "The S51 hypothesis is a one-event test premise and does not prove actual current purpose.",
+      "reviewer_method": "Read declare_hypothesis output and source.",
+      "observed": {
+        "scope": "ONE_SUBSEQUENT_RECEIVED_EVENT",
+        "status": "DECLARED_IMMUTABLE",
+        "actual_current_purpose_proved": false,
+        "psychology_claim": false,
+        "actor_testimony": false,
+        "native": false
+      },
+      "grade": "ACCEPT"
+    },
+    {
+      "id": "C10",
+      "claim": "The current offer is payment 2, task hours 1, material units 1, permit true, workshop, and B has an accessible actor-local witness.",
+      "reviewer_method": "Read issue_offer() and _offer_access() output.",
+      "observed": {
+        "payment_per_actor": 2,
+        "task_hours": 1,
+        "material_units": 1,
+        "permit": true,
+        "place": "INST_WORKSHOP_A",
+        "access_status": "ACCESSIBLE",
+        "access_source_ref": "S51_ACCESS_542f5c96810d8f6b"
+      },
+      "grade": "ACCEPT"
+    },
+    {
+      "id": "C11",
+      "claim": "S51 computes RELEVANCE_WARRANTED/FACILITATES from current offer/access/free hours; the historical object's striving is copied but not read.",
+      "reviewer_method": "Read evaluate()/relevance, inspect _relation_for signature and source, verify object_striving in output.",
+      "observed": {
+        "status": "RELEVANCE_WARRANTED",
+        "relation": "FACILITATES",
+        "actor_free_hours": 11,
+        "object_striving": "fund_finishing_equipment",
+        "actual_current_purpose_proved": false,
+        "selected_action": null,
+        "performed": false,
+        "relation_function_signature": "(offer, access, actor_free_hours)",
+        "relation_reads_object_semantics": false
+      },
+      "grade": "ACCEPT_WITH_SCOPE_NOTE",
+      "notes": "The historical object is provenance/identity, not a determinant of the current relation. Changing only the historical striving cannot lawfully change this path because recover_object hard-codes the expected striving."
+    },
+    {
+      "id": "C12",
+      "claim": "S52 compiles a conditional paid candidate with recruited=true, performed=false and counterpart not observed.",
+      "reviewer_method": "Read consume_generation()/candidate output.",
+      "observed": {
+        "status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+        "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+        "recruited": true,
+        "performed": false,
+        "counterpart_status": "INDEPENDENT_PARTICIPATION_NOT_OBSERVED",
+        "prospective_payment": 2,
+        "earned_payment": 0,
+        "actual_current_purpose_proved": false,
+        "native": false,
+        "psychology_claim": false,
+        "capability_readset_grade": "CURRENT_ACTOR_STATE_ONLY_NOT_PAID_HISTORY"
+      },
+      "grade": "ACCEPT_WITH_FIELD_NOTE",
+      "notes": "recruited=true is relevance recruitment in the candidate, not actor selection. S39 selected_option remains empty."
+    },
+    {
+      "id": "C13",
+      "claim": "S39 leaves PAID_PARTICIPATION unselected in an open choice set and no comparison rule names it.",
+      "reviewer_method": "Read generation_receipt; inspect FULL_RULE.comparisons and paid reasons.",
+      "observed": {
+        "selection_status": "OPEN_CHOICE_SET",
+        "selected_option": "",
+        "unresolved_reason": "MULTIPLE_SURVIVORS",
+        "eligible_options": [
+          "ATTEND_OBJECT",
+          "REQUEST_TOOL",
+          "EXPLICIT_REFUSAL",
+          "PAID_PARTICIPATION"
+        ],
+        "defeated_pairs": [],
+        "undominated_options": [
+          "ATTEND_OBJECT",
+          "EXPLICIT_REFUSAL",
+          "PAID_PARTICIPATION",
+          "REQUEST_TOOL"
+        ],
+        "paid_comparison_rules": [],
+        "paid_reason_relation": "CONDITIONAL_SUPPORTS"
+      },
+      "grade": "ACCEPT"
+    },
+    {
+      "id": "C14",
+      "claim": "The paid option is present only when both the S51 source and the S52 repertoire are supplied.",
+      "reviewer_method": "Controlled produce_b_turn with no source, source only, and source plus repertoire.",
+      "observed": {
+        "no_source_options": [
+          "ATTEND_OBJECT",
+          "REQUEST_TOOL",
+          "EXPLICIT_REFUSAL"
+        ],
+        "source_only_options": [
+          "ATTEND_OBJECT",
+          "REQUEST_TOOL",
+          "EXPLICIT_REFUSAL"
+        ],
+        "source_plus_repertoire_options": [
+          "ATTEND_OBJECT",
+          "REQUEST_TOOL",
+          "EXPLICIT_REFUSAL",
+          "PAID_PARTICIPATION"
+        ],
+        "paid_absent_without_source": true,
+        "paid_absent_without_repertoire": true,
+        "paid_present_with_both": true
+      },
+      "grade": "ACCEPT"
+    },
+    {
+      "id": "C15",
+      "claim": "The paid port denies without a counterpart and performs only under the explicit controlled test flag, changing only material state.",
+      "reviewer_method": "Call perform_paid_participation with false then true; compare actor states.",
+      "observed": {
+        "denied": {
+          "status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+          "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+          "performed": false
+        },
+        "performed": {
+          "status": "PERFORMED",
+          "performed": true,
+          "payment_earned": 2,
+          "controlled_counterpart": true,
+          "counterpart_status": "EXPLICIT_CONTROLLED_TEST_ONLY"
+        },
+        "before": {
+          "cash": 54,
+          "free_hours": 11,
+          "completed_units": 5
+        },
+        "after": {
+          "cash": 56,
+          "free_hours": 10,
+          "completed_units": 6
+        },
+        "changed_keys": [
+          "cash",
+          "completed_units",
+          "free_hours"
+        ]
+      },
+      "grade": "ACCEPT"
+    },
+    {
+      "id": "C16",
+      "claim": "A later S52 event reads changed free hours (0) and blocks the paid option; this is material, not psychological, consumption.",
+      "reviewer_method": "Repeat controlled tasks through run_experiment; inspect final relation, candidate and eligible options.",
+      "observed": {
+        "final_free_hours": 0,
+        "final_relation": "OBSTRUCTS",
+        "final_candidate_status": "BLOCKED",
+        "final_candidate_reason": "S52_INSUFFICIENT_FREE_HOURS",
+        "final_eligible_options": [
+          "ATTEND_OBJECT",
+          "REQUEST_TOOL",
+          "EXPLICIT_REFUSAL"
+        ],
+        "paid_absent": true,
+        "verify_ok": true
+      },
+      "grade": "ACCEPT",
+      "notes": "The current B state is the S44 sampled root state, not the G18 replay-final state. The chain is history-object identity plus current-material eligibility, not uninterrupted developmental carry-forward."
+    },
+    {
+      "id": "C17",
+      "claim": "The current S52 chain computes no actor-owned psychological organization, actor action selection or durable CAN011 transition.",
+      "reviewer_method": "Enumerate episode kinds; diff actor state; inspect performer and candidate readset; search for CAN011 in the S52 chain.",
+      "observed": {
+        "episode_kinds": [
+          "ARRIVE",
+          "EXPRESSION_ADMISSION",
+          "LANGUAGE_ACCESS",
+          "LANGUAGE_COMPETENCE",
+          "LANGUAGE_ENCOUNTER",
+          "LANGUAGE_TRANSLATION_PROJECTION",
+          "S36_TARGETLESS_RESPONSE",
+          "S39_CONSTRUCTIVE_GENERATION",
+          "S39_GENERATED_ATTEMPT",
+          "S41_ADMITTED_EVENT",
+          "S44_SAMPLED_ROOT_BINDING",
+          "S49_B_ACTOR_RESULT",
+          "S49_B_ACTOR_TURN",
+          "S51_ACTOR_ACCESS",
+          "S51_OBJECT_RELEVANCE",
+          "S51_RETAINED_OBJECT_HYPOTHESIS",
+          "S51_RETAINED_OBJECT_HYPOTHESIS_LIFECYCLE",
+          "S51_S49_CONSUMER_BINDING",
+          "S51_WORLD_OFFER",
+          "S52_PAID_ACTIVITY_RESULT",
+          "S52_PAID_CANDIDATE",
+          "SAY"
+        ],
+        "can011_or_psych_episode_kinds": [],
+        "changed_actor_keys": [
+          "cash",
+          "completed_units",
+          "free_hours"
+        ],
+        "s39_selected_option": "",
+        "performer_requires_selected_option": false,
+        "performer_requirements": "candidate + canonical generation repertoire; no check of selection_status or selected_option",
+        "capability_readset_grade": "CURRENT_ACTOR_STATE_ONLY_NOT_PAID_HISTORY"
+      },
+      "grade": "ACCEPT"
+    },
+    {
+      "id": "C18",
+      "claim": "S52 verifier defect: unrelated later episode plus cash tamper 999 is accepted warm and cold; without the later episode it is rejected.",
+      "reviewer_method": "Independent hostile probe against c821 source: perform, append unrelated note, tamper cash, checkpoint; warm verify; cold open+verify; control without note.",
+      "observed": {
+        "with_note": {
+          "warm_ok": true,
+          "cold_ok": true,
+          "warm_errors": [],
+          "cold_errors": []
+        },
+        "without_note": {
+          "warm_ok": false,
+          "cold_ok": false,
+          "warm_errors": [
+            "S52_CURRENT_STATE_DIVERGES:cash"
+          ],
+          "cold_errors": [
+            "S52_CURRENT_STATE_DIVERGES:cash"
+          ]
+        },
+        "post_action_cash": 56,
+        "tampered_cash": 999,
+        "defect_reproduced": true
+      },
+      "grade": "ACCEPT",
+      "notes": "Defect in an unaccepted component; not repaired, not adopted. See s52/session.py:299-311."
+    },
+    {
+      "id": "C19",
+      "claim": "No 3-5-event sequential batch, interconnected impression propagation, intervening-time loop or retrospective first-half/second-half call is implemented in this closure.",
+      "reviewer_method": "Source inspection plus focused S48/S52 tests and entrypoints; searched for batch/sequential/retrospective implementation.",
+      "observed": {
+        "s48": "one-event transport; allowed prospective candidate set empty; source-owner HOLD; no event produced",
+        "s52": "single offer/candidate experiment; repeated calls are independent experiments",
+        "s50": "annual yearly step plus post-year pressure-flow; no event-level batch loop",
+        "batch_implementation_found": false
+      },
+      "grade": "ACCEPT",
+      "notes": "The user-settled architecture is a closed product requirement, not implemented in this source cut."
+    },
+    {
+      "id": "C20",
+      "claim": "Official Astra K1-K11 are NOT_EXECUTED and are not promoted by narrower executions.",
+      "reviewer_method": "Read official Astra R3 program at 3b2d9a1b; inspect all 131 test names; check RA-D K matrix.",
+      "observed": {
+        "official_k_cases_executed": 0,
+        "k_tests_in_131": 0,
+        "ra_d_k_status": "all K1-K11 NOT_EXECUTED",
+        "narrower_material_free_hours_consumer": "not K8 at Astra grain"
+      },
+      "grade": "ACCEPT",
+      "notes": "The material later-event eligibility contrast is real but is not the official K8 live-epoch test."
+    },
+    {
+      "id": "C21",
+      "claim": "S50 executes the recovered historical V3/PFF fixture but the actual current person root is missing the V3 state and remains a source-owner HOLD.",
+      "reviewer_method": "Run run_s50.py; inspect entrypoint output and source.",
+      "observed": {
+        "source_all_exact": true,
+        "fixture_only": true,
+        "actual_person_commit": false,
+        "second_mind": false,
+        "year": 2002,
+        "age": 32,
+        "pressure_flow_history_present": true,
+        "pressure_flow_memory_present": true,
+        "cold_same_projection_hash": true,
+        "actual_root_status": "SOURCE_OWNER_HOLD",
+        "actual_root_reason": "S50_ACTUAL_ROOT_MISSING_HISTORICAL_V3_STATE",
+        "missing_fields": [
+          "backbone_state",
+          "initial_state_provenance",
+          "expectation_baseline",
+          "striving_objects",
+          "pressure_flow_history",
+          "pressure_flow_memory",
+          "surface_psyche_profile",
+          "analyst_pressure_account",
+          "actor_context_projection",
+          "actor_owned_source"
+        ],
+        "fixture_expectation_baseline": "all hopeful; legacy policy",
+        "fixture_striving_count": 0
+      },
+      "grade": "ACCEPT",
+      "notes": "The fixture is not a current person, and the V3 fixture has no striving objects despite the historical G18 STRIVING event. The V3 machine is executable historically, not wired to S52."
+    },
+    {
+      "id": "C22",
+      "claim": "Existing V3 functions are real and executable historically, but annual/fixture-only and unwired to the current S52 actor.",
+      "reviewer_method": "Independent one-year V3 run on identity_minimal; inspect function presence and outputs; read source.",
+      "observed": {
+        "functions_present": {
+          "BackboneState": true,
+          "compute_all_derived": true,
+          "run_pressure_flow_cycle": true,
+          "_derive_current_charge": true,
+          "_channel_conductance": true,
+          "_simulate_domain_routes_transactionally": true,
+          "_commit_route_state": true,
+          "_update_memory": true,
+          "update_loop_topology": true,
+          "run_one_year": true
+        },
+        "one_year_run": {
+          "before_history_len": 0,
+          "after_history_len": 1,
+          "memory_groove_domains": 5,
+          "surface_domains": 5,
+          "analyst_domains": 5,
+          "loop_topology": "self_contained",
+          "topology_transition_observed": false,
+          "roundtrip_exact": true
+        },
+        "event_context_consumed": "counts of events_this_year/micro_trace_this_year by type only; no event identity, access or admitted semantic content",
+        "annual_cadence": "run_one_year increments year/age and applies pressure flow post-year",
+        "wired_to_s52": false
+      },
+      "grade": "ACCEPT_WITH_WORDING_CORRECTION",
+      "notes": "There is an existing transactional pressure-flow composer and a test-only M35 CAN008/CAN011 receiving port. The missing piece is a current event-scoped binding plus concrete issued rules, not a wholly missing machine."
+    },
+    {
+      "id": "C23",
+      "claim": "S44/S45/S47 entrypoints show test-only A-actor paths ending in NO_CHANGE/NO_PROPOSAL, with zero provider calls.",
+      "reviewer_method": "Run run_s44.py, run_s45.py, run_s47.py from the independent extraction.",
+      "observed": {
+        "s44": {
+          "first_selected_option": "REQUEST_TOOL",
+          "target_proposals": [],
+          "provider_calls": 0,
+          "verify_ok": true
+        },
+        "s45": {
+          "say": "HELP_INVITE",
+          "do_help": "HELP_ACCEPT",
+          "attend": "NO_CHANGE",
+          "provider_calls": 0,
+          "verify_ok": true
+        },
+        "s47": {
+          "objective_material_eligible_actual": false,
+          "target_branch": "NO_CHANGE",
+          "target_reason": "NO_PROPOSAL",
+          "provider_calls": 0
+        }
+      },
+      "grade": "ACCEPT"
+    },
+    {
+      "id": "C24",
+      "claim": "No native/actor/rule/source/C8/C9/C12/Pyat grant, provider call, raw data call, accepted-source edit or production write occurred.",
+      "reviewer_method": "Reviewer actions plus RA-D ledger/logs and environment.",
+      "observed": {
+        "provider_calls": 0,
+        "raw_data_calls": 0,
+        "accepted_source_edits": 0,
+        "native_grants": false,
+        "review_only_writes": "WORKER_RETURNS/SOROK-20261026-RA-D-INDEPENDENT-EVIDENCE-REVIEW-R1/"
+      },
+      "grade": "ACCEPT"
+    }
+  ]
+}

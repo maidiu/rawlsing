@@ -1,0 +1,74 @@
+{
+  "after": {
+    "age": 31,
+    "analyst_domains": [
+      "body_self",
+      "empire_occupation",
+      "family_household",
+      "nation_state",
+      "sect_class_ethnicity"
+    ],
+    "capacity_money": 44.0,
+    "domains_with_baseline_load": [
+      "body_self",
+      "empire_occupation",
+      "family_household",
+      "nation_state",
+      "sect_class_ethnicity"
+    ],
+    "loop_topology": "self_contained",
+    "pressure_flow_history_len": 1,
+    "pressure_flow_memory_grooves_domains": [
+      "body_self",
+      "empire_occupation",
+      "family_household",
+      "nation_state",
+      "sect_class_ethnicity"
+    ],
+    "surface_domains": [
+      "body_self",
+      "empire_occupation",
+      "family_household",
+      "nation_state",
+      "sect_class_ethnicity"
+    ],
+    "topology_hysteresis_years": {
+      "to_extractive": 0,
+      "to_reciprocal": 0,
+      "to_self_contained": 0
+    },
+    "vitality": 50.0,
+    "year": 2001
+  },
+  "before": {
+    "age": 30,
+    "analyst_domains": [],
+    "capacity_money": 45.0,
+    "domains_with_baseline_load": [],
+    "loop_topology": "self_contained",
+    "pressure_flow_history_len": 0,
+    "pressure_flow_memory_grooves_domains": [],
+    "surface_domains": [],
+    "topology_hysteresis_years": {},
+    "vitality": 50.0,
+    "year": 2000
+  },
+  "fixture_sha256": "ef7008ac0d83e7690bd89e96ec683d25d3b784806857a799da2978ba7aa35673",
+  "functions_present": {
+    "_channel_conductance": true,
+    "_commit_route_state": true,
+    "_derive_current_charge": true,
+    "_simulate_domain_routes_transactionally": true,
+    "_update_memory": true,
+    "run_one_year": true,
+    "run_pressure_flow_cycle": true,
+    "update_loop_topology": true
+  },
+  "notes": {
+    "annual_cadence": "run_one_year increments year/age and invokes scheduled annual steps before the post-year pressure-flow cycle.",
+    "event_context_consumed": "pressure-flow event_context only counts events_this_year/micro_trace_this_year by type; it does not read event identity, access, or admitted semantic content.",
+    "legacy_defaults": "fixture expectation_baseline is all 'hopeful' and psychological capacities are fixture values; not current-person authority."
+  },
+  "roundtrip_exact": true,
+  "schema": "RA_D_INDEPENDENT_REVIEW_V3_FUNCTIONS@1"
+}

@@ -1,0 +1,419 @@
+{
+  "access": {
+    "access_status": "ACCESSIBLE",
+    "source_ref": "S51_ACCESS_542f5c96810d8f6b"
+  },
+  "actor_ids": [
+    "TEST_ONLY_BP1_R26V_ACTOR_A",
+    "TEST_ONLY_BP1_R26V_ACTOR_B"
+  ],
+  "after": {
+    "cash": 56,
+    "completed_units": 6,
+    "free_hours": 10
+  },
+  "before": {
+    "cash": 54,
+    "completed_units": 5,
+    "free_hours": 11
+  },
+  "can011_or_psych_state_episode": [],
+  "candidate": {
+    "actual_current_purpose_proved": false,
+    "counterpart_status": "INDEPENDENT_PARTICIPATION_NOT_OBSERVED",
+    "earned_payment": 0,
+    "native": false,
+    "performed": false,
+    "prospective_payment": 2,
+    "psychology_claim": false,
+    "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+    "recruited": true,
+    "status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION"
+  },
+  "candidate_capability_readset": {
+    "completed_units": 5,
+    "free_hours": 11,
+    "grade": "CURRENT_ACTOR_STATE_ONLY_NOT_PAID_HISTORY",
+    "material_position": "waged_finishing",
+    "material_remaining": 1,
+    "position": "workshop",
+    "practices": [
+      "scheduled_finishing_ledger_discipline"
+    ],
+    "skill": 6
+  },
+  "controlled_denied": {
+    "performed": false,
+    "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+    "status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION"
+  },
+  "controlled_performed": {
+    "controlled_counterpart": true,
+    "counterpart_status": "EXPLICIT_CONTROLLED_TEST_ONLY",
+    "payment_earned": 2,
+    "performed": true,
+    "status": "PERFORMED"
+  },
+  "current_b_state": {
+    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+    "attitudes": [
+      "reciprocity_in_work_obligations"
+    ],
+    "availability_status": "available_for_encounter",
+    "cash": 54,
+    "completed_units": 5,
+    "debt_units": 2,
+    "free_hours": 11,
+    "health": "recovered",
+    "material_position": "waged_finishing",
+    "material_remaining": 1,
+    "nonmother_relations": [
+      "G15_NONKIN_aeaed10bc2ce4882d7cb6e71825c42105ed8f3f1c73c883fa7357db8db681c8b"
+    ],
+    "place": "INST_WORKSHOP_A",
+    "practices": [
+      "scheduled_finishing_ledger_discipline"
+    ],
+    "projects": [
+      "communal_irrigation_pump_repair"
+    ],
+    "role": "finishing",
+    "skill": 6,
+    "tools_remaining": 1
+  },
+  "episode_kinds": [
+    "ARRIVE",
+    "EXPRESSION_ADMISSION",
+    "LANGUAGE_ACCESS",
+    "LANGUAGE_COMPETENCE",
+    "LANGUAGE_ENCOUNTER",
+    "LANGUAGE_TRANSLATION_PROJECTION",
+    "S36_TARGETLESS_RESPONSE",
+    "S39_CONSTRUCTIVE_GENERATION",
+    "S39_GENERATED_ATTEMPT",
+    "S41_ADMITTED_EVENT",
+    "S44_SAMPLED_ROOT_BINDING",
+    "S49_B_ACTOR_RESULT",
+    "S49_B_ACTOR_TURN",
+    "S51_ACTOR_ACCESS",
+    "S51_OBJECT_RELEVANCE",
+    "S51_RETAINED_OBJECT_HYPOTHESIS",
+    "S51_RETAINED_OBJECT_HYPOTHESIS_LIFECYCLE",
+    "S51_S49_CONSUMER_BINDING",
+    "S51_WORLD_OFFER",
+    "S52_PAID_ACTIVITY_RESULT",
+    "S52_PAID_CANDIDATE",
+    "SAY"
+  ],
+  "final": {
+    "candidate_reason": "S52_INSUFFICIENT_FREE_HOURS",
+    "candidate_status": "BLOCKED",
+    "eligible_options": [
+      "ATTEND_OBJECT",
+      "REQUEST_TOOL",
+      "EXPLICIT_REFUSAL"
+    ],
+    "free_hours": 0,
+    "paid_absent": true,
+    "relation": "OBSTRUCTS",
+    "verify_ok": true
+  },
+  "g18_event_count": 21,
+  "g18_replay_valid": true,
+  "hypothesis": {
+    "actor_testimony": false,
+    "actual_current_purpose_proved": false,
+    "native": false,
+    "psychology_claim": false,
+    "scope": "ONE_SUBSEQUENT_RECEIVED_EVENT",
+    "status": "DECLARED_IMMUTABLE"
+  },
+  "later_sequence": [
+    {
+      "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+      "free_hours": 10,
+      "iteration": 1,
+      "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+      "relation": "FACILITATES"
+    },
+    {
+      "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+      "free_hours": 9,
+      "iteration": 2,
+      "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+      "relation": "FACILITATES"
+    },
+    {
+      "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+      "free_hours": 8,
+      "iteration": 3,
+      "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+      "relation": "FACILITATES"
+    },
+    {
+      "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+      "free_hours": 7,
+      "iteration": 4,
+      "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+      "relation": "FACILITATES"
+    },
+    {
+      "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+      "free_hours": 6,
+      "iteration": 5,
+      "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+      "relation": "FACILITATES"
+    },
+    {
+      "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+      "free_hours": 5,
+      "iteration": 6,
+      "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+      "relation": "FACILITATES"
+    },
+    {
+      "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+      "free_hours": 4,
+      "iteration": 7,
+      "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+      "relation": "FACILITATES"
+    },
+    {
+      "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+      "free_hours": 3,
+      "iteration": 8,
+      "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+      "relation": "FACILITATES"
+    },
+    {
+      "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+      "free_hours": 2,
+      "iteration": 9,
+      "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+      "relation": "FACILITATES"
+    },
+    {
+      "candidate_status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+      "free_hours": 1,
+      "iteration": 10,
+      "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+      "relation": "FACILITATES"
+    }
+  ],
+  "material_state_changed_keys": [
+    "cash",
+    "completed_units",
+    "free_hours"
+  ],
+  "object": {
+    "causal_parent_event_ids": [
+      "sha256:4de01226426a427a08df130b563c24e9f8584d52cea6efdf7527f07be3f6e5bc",
+      "sha256:bc48470f4a014b074f7bf119e940954edc5d0d1d6526266e59232a16e9d26014"
+    ],
+    "object_event_id": "sha256:198b568bc0747c50829b68866009a5c5627cef7dbc4b036cfcc03848386a2c60",
+    "striving": "fund_finishing_equipment"
+  },
+  "offer": {
+    "material_units": 1,
+    "payment_per_actor": 2,
+    "permit": true,
+    "place": "INST_WORKSHOP_A",
+    "task_hours": 1
+  },
+  "paid_comparison_rules": [],
+  "paid_option_present": true,
+  "paid_reason": [
+    {
+      "model_premise": true,
+      "option_id": "PAID_PARTICIPATION",
+      "predicate": "S52_PAID_OBJECT_RELEVANCE",
+      "recruitment_mode": "CAUSAL_NOT_CONSCIOUS_RECALL",
+      "relation": "CONDITIONAL_SUPPORTS",
+      "repertoire_candidate_hash": "5efa690a29fa82c8031c2d6bf20b1e143ba27e55bbbb475a2d98c947e1f96db7",
+      "source_class": "HISTORICAL_EPISODE",
+      "source_hash": "4375c7ae77c9c5d74139e5e683553c73182644df23250c67fd1a2113ecaf8bf9",
+      "source_ref": "S51_SOURCE_198b568bc0747c50"
+    }
+  ],
+  "provider_calls": 0,
+  "receipt": {
+    "defeated_pairs": [],
+    "eligible_options": [
+      "ATTEND_OBJECT",
+      "REQUEST_TOOL",
+      "EXPLICIT_REFUSAL",
+      "PAID_PARTICIPATION"
+    ],
+    "selected_option": "",
+    "selection_status": "OPEN_CHOICE_SET",
+    "undominated_options": [
+      "ATTEND_OBJECT",
+      "EXPLICIT_REFUSAL",
+      "PAID_PARTICIPATION",
+      "REQUEST_TOOL"
+    ],
+    "unresolved_reason": "MULTIPLE_SURVIVORS"
+  },
+  "relation_reads_object_semantics": false,
+  "relation_signature": "(offer, access, actor_free_hours)",
+  "relevance": {
+    "actor_free_hours": 11,
+    "actual_current_purpose_proved": false,
+    "object_striving": "fund_finishing_equipment",
+    "performed": false,
+    "relation": "FACILITATES",
+    "selected_action": null,
+    "status": "RELEVANCE_WARRANTED"
+  },
+  "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+  "s52_verifier_defect_reproduced": true,
+  "s52_verifier_hostile": {
+    "with_note": {
+      "cold_errors": [],
+      "cold_ok": true,
+      "performed": true,
+      "post_cash": 56,
+      "warm_errors": [],
+      "warm_ok": true,
+      "with_note": true
+    },
+    "without_note": {
+      "cold_errors": [
+        "S52_CURRENT_STATE_DIVERGES:cash"
+      ],
+      "cold_ok": false,
+      "performed": true,
+      "post_cash": 56,
+      "warm_errors": [
+        "S52_CURRENT_STATE_DIVERGES:cash"
+      ],
+      "warm_ok": false,
+      "with_note": false
+    }
+  },
+  "schema": "RA_D_INDEPENDENT_REVIEW_PROBE@1",
+  "source_cut_controls": {
+    "both": [
+      "ATTEND_OBJECT",
+      "REQUEST_TOOL",
+      "EXPLICIT_REFUSAL",
+      "PAID_PARTICIPATION"
+    ],
+    "no_source": [
+      "ATTEND_OBJECT",
+      "REQUEST_TOOL",
+      "EXPLICIT_REFUSAL"
+    ],
+    "paid_absent_without_repertoire": true,
+    "paid_absent_without_source": true,
+    "paid_present_with_both": true,
+    "source_only": [
+      "ATTEND_OBJECT",
+      "REQUEST_TOOL",
+      "EXPLICIT_REFUSAL"
+    ]
+  },
+  "striving_event_id": "sha256:198b568bc0747c50829b68866009a5c5627cef7dbc4b036cfcc03848386a2c60",
+  "striving_kinds": [
+    "WORK_POSITION",
+    "PROJECT"
+  ],
+  "striving_parents": [
+    "sha256:4de01226426a427a08df130b563c24e9f8584d52cea6efdf7527f07be3f6e5bc",
+    "sha256:bc48470f4a014b074f7bf119e940954edc5d0d1d6526266e59232a16e9d26014"
+  ],
+  "striving_value": "fund_finishing_equipment",
+  "witness": {
+    "after": {
+      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+      "attitudes": [
+        "reciprocity_in_work_obligations"
+      ],
+      "availability_status": "unavailable",
+      "cash": 44,
+      "completed_units": 3,
+      "debt_units": 2,
+      "free_hours": 15,
+      "health": null,
+      "material_position": "waged_finishing",
+      "material_remaining": 1,
+      "nonmother_relations": [
+        "G15_NONKIN_aeaed10bc2ce4882d7cb6e71825c42105ed8f3f1c73c883fa7357db8db681c8b"
+      ],
+      "place": null,
+      "practices": [
+        "scheduled_finishing_ledger_discipline"
+      ],
+      "projects": [
+        "communal_irrigation_pump_repair"
+      ],
+      "role": "finishing",
+      "skill": 6,
+      "tools_remaining": 1
+    },
+    "before": {
+      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+      "attitudes": [
+        "reciprocity_in_work_obligations"
+      ],
+      "availability_status": "unavailable",
+      "cash": 44,
+      "completed_units": 3,
+      "debt_units": 2,
+      "free_hours": 15,
+      "health": null,
+      "material_position": "waged_finishing",
+      "material_remaining": 1,
+      "nonmother_relations": [
+        "G15_NONKIN_aeaed10bc2ce4882d7cb6e71825c42105ed8f3f1c73c883fa7357db8db681c8b"
+      ],
+      "place": null,
+      "practices": [
+        "scheduled_finishing_ledger_discipline"
+      ],
+      "projects": [
+        "communal_irrigation_pump_repair"
+      ],
+      "role": "finishing",
+      "skill": 6,
+      "tools_remaining": 1
+    },
+    "effect": {
+      "budget": 6,
+      "role": "finishing",
+      "striving": "fund_finishing_equipment"
+    },
+    "effective_index": 13,
+    "event_id": "sha256:198b568bc0747c50829b68866009a5c5627cef7dbc4b036cfcc03848386a2c60",
+    "kind": "STRIVING",
+    "owner_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+    "readset": [
+      {
+        "event_id": "sha256:4de01226426a427a08df130b563c24e9f8584d52cea6efdf7527f07be3f6e5bc",
+        "owner_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+        "path": "effect",
+        "value": {
+          "cash": 38,
+          "earned": 8,
+          "hours": 4,
+          "role": "finishing",
+          "skill": 6
+        }
+      },
+      {
+        "event_id": "sha256:bc48470f4a014b074f7bf119e940954edc5d0d1d6526266e59232a16e9d26014",
+        "owner_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+        "path": "effect",
+        "value": {
+          "cash": 44,
+          "completed_units": 3,
+          "materials_used": 3,
+          "payment": 6,
+          "project": "communal_irrigation_pump_repair",
+          "remaining_material_units": 1,
+          "role": "finishing"
+        }
+      }
+    ]
+  }
+}
