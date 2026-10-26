@@ -1,0 +1,70 @@
+{
+  "limits": [
+    "dictionary documents only",
+    "no raw survey file",
+    "no source/science grant"
+  ],
+  "native_preimage_bundles_created": 0,
+  "schema": "PYAT_R145_METADATA_PACKAGE_SUMMARY@1",
+  "source_count": 3,
+  "source_read_grants_created": 0,
+  "sources": [
+    {
+      "dictionary_sha256": "e0f83b6176f3820d9539ef9d1d6949243bd86d17a5852590b4f257b47e4b01d7",
+      "family": "GSS",
+      "preparation_record": "records/SRC23_PACKAGE_PREPARATION.json",
+      "role_counts": {
+        "HELD_NO_GROUNDED_QUESTION_OR_OPTIONS": 15,
+        "HOUSEHOLD_OR_ROSTER": 21,
+        "PERSON_OR_REPEATED_BLOCK": 20,
+        "RANKED_OR_MR_RESPONSE": 4,
+        "SOURCE_ADMINISTRATIVE_IDENTITY": 7,
+        "SOURCE_ADMINISTRATIVE_OR_METADATA": 30,
+        "SUBSTANTIVE_QUESTION_CANDIDATE": 874,
+        "WEIGHT_OR_DESIGN": 9
+      },
+      "row_accounting": "records/SRC23_ROW_ACCOUNTING.jsonl",
+      "rows": 980,
+      "source_id": "SRC23",
+      "wave": "2024"
+    },
+    {
+      "dictionary_sha256": "0cd58f71ff6272f5bbcb4e2466901d39cfd294bff1388bd67f3085c44e3ed36b",
+      "family": "GSS",
+      "preparation_record": "records/SRC22_PACKAGE_PREPARATION.json",
+      "role_counts": {
+        "HELD_NO_GROUNDED_QUESTION_OR_OPTIONS": 16,
+        "HOUSEHOLD_OR_ROSTER": 120,
+        "PERSON_OR_REPEATED_BLOCK": 28,
+        "RANKED_OR_MR_RESPONSE": 1,
+        "SOURCE_ADMINISTRATIVE_IDENTITY": 7,
+        "SOURCE_ADMINISTRATIVE_OR_METADATA": 18,
+        "SUBSTANTIVE_QUESTION_CANDIDATE": 817,
+        "WEIGHT_OR_DESIGN": 11
+      },
+      "row_accounting": "records/SRC22_ROW_ACCOUNTING.jsonl",
+      "rows": 1018,
+      "source_id": "SRC22",
+      "wave": "2016"
+    },
+    {
+      "dictionary_sha256": "c88ab0ecd3effcfe4a88816263620482c339c40dc61ec2468aa120148d283d07",
+      "family": "LiTS",
+      "preparation_record": "records/SRC30_PACKAGE_PREPARATION.json",
+      "role_counts": {
+        "HOUSEHOLD_OR_ROSTER": 94,
+        "SOURCE_ADMINISTRATIVE_IDENTITY": 3,
+        "SOURCE_ADMINISTRATIVE_OR_METADATA": 184,
+        "TEXT_OR_NONNUMERIC_HELD": 18,
+        "UNKNOWN_MEASURE_HELD": 1015,
+        "WEIGHT_OR_DESIGN": 5
+      },
+      "row_accounting": "records/SRC30_ROW_ACCOUNTING.jsonl",
+      "rows": 1319,
+      "source_id": "SRC30",
+      "wave": "IV"
+    }
+  ],
+  "status": "METADATA_PREPARATION_COMPLETE__SOURCE_ACCESS_AND_SEMANTICS_PENDING",
+  "survey_files_touched": 0
+}

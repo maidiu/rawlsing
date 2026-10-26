@@ -1,0 +1,216 @@
+{
+  "consumer_requirements": [
+    {
+      "consumer_id": "F1_EMPIRICAL_CLOSURE",
+      "owner": "rawlsing_next.pre553_carrier_execution.CarrierNeutralResearchExecutor.execute_i03",
+      "required_outputs": [
+        "EmpiricalQuerySpec",
+        "EmpiricalPredicate",
+        "EmpiricalFact@1.0.0",
+        "exact source_scope/replay/provenance refs"
+      ],
+      "source_id": "SRC30",
+      "state": "PREREGISTERED_PENDING_ACTUAL_SOURCE"
+    },
+    {
+      "consumer_id": "F2_DISCOVERY_AND_NO_DROP",
+      "owner": "rawlsing_next.pre553_carrier_execution.CarrierNeutralResearchExecutor.execute_i05; rawlsing_next.universal_grammar.native_map.native_receipt_anti_join",
+      "required_outputs": [
+        "DiscoveryResultReceipt@1.0.0",
+        "complete declared-frontier candidate accounting",
+        "no missing/duplicate/unexpected candidates",
+        "typed negative receipts where applicable"
+      ],
+      "source_id": "SRC30",
+      "state": "PREREGISTERED_PENDING_ACTUAL_SOURCE"
+    },
+    {
+      "consumer_id": "F3_M1_LEARNED_DISPOSITION",
+      "owner": "rawlsing_next.pre553_learned_empirical_adjudication.adjudicate_learned_empirical",
+      "required_outputs": [
+        "M1AdjudicationInputBundle",
+        "exact family-rule binding",
+        "LearnedEmpiricalDisposition@1.0.0"
+      ],
+      "source_id": "SRC30",
+      "state": "PREREGISTERED_PENDING_EXACT_FAMILY_RULE_AND_EMPIRICAL_EVIDENCE"
+    },
+    {
+      "consumer_id": "F4_FF_V553_CONFRONTATION",
+      "owner": "rawlsing_next.pre553_universal_empirical_extension.provide_empirical_possibility_slice_ext",
+      "required_outputs": [
+        "exact I03/I05 evidence",
+        "M1 disposition",
+        "source-local permitted FF/V553 inputs",
+        "explicit refusal/typed absence when source-local law is not satisfied"
+      ],
+      "source_id": "SRC30",
+      "state": "PREREGISTERED_PENDING_UPSTREAM_EVIDENCE_AND_SEPARATE_USE_AUTHORITY"
+    }
+  ],
+  "dictionary": {
+    "bytes": 732965,
+    "columns": [
+      "source",
+      "wave",
+      "module_guess",
+      "var_name",
+      "question_text",
+      "value_label_set",
+      "storage_type",
+      "storage_width",
+      "measure",
+      "format",
+      "value_labels_count",
+      "response_options_substantive",
+      "response_options_special",
+      "response_options_all",
+      "note"
+    ],
+    "document_ref": {
+      "content_hash": "c07c27a4927ce772f21ed2cec22e1125091ce45b5d8b90892f43163ba99ad0e9",
+      "kind": "R145_CODEBOOK_DOCUMENT",
+      "object_id": "urn:rawlsing:pre553:r145:SRC30-codebook:sha256:c07c27a4927ce772f21ed2cec22e1125091ce45b5d8b90892f43163ba99ad0e9"
+    },
+    "duplicate_native_codes": [],
+    "filename": "LiTS-IV-codebook.csv",
+    "rows": 1319,
+    "scope": "Instrument/codebook document only; not respondent data or current native-source validation",
+    "sha256": "c88ab0ecd3effcfe4a88816263620482c339c40dc61ec2468aa120148d283d07"
+  },
+  "edition_sha256": null,
+  "edition_sha256_status": "PENDING_USER_AUTHORIZED_IDENTITY_RECEIPT",
+  "family": "LiTS",
+  "missing_prerequisites": [
+    "user-authorized survey identity/header metadata receipt with exact edition SHA",
+    "physical header-vs-codebook reconciliation and typed row accounting",
+    "exact source read grant/resolver for response decode; metadata receipt alone is insufficient",
+    "exact source semantic roles/topology, U/Epre and design/weight/country/population/time authority",
+    "exact empirical query/fact and frontier candidate law for this source",
+    "M1 family rule/binding and separate FF/V553 receiving-use authority"
+  ],
+  "next_call": {
+    "command": "python3 runtime/bind_authorized_metadata_receipt.py --scope .r61/r145-current-source-packages/inputs/METADATA_INPUTS.json --source-id <SRC> --receipt <authorized_metadata_receipt.json>",
+    "requires": "externally authorized metadata/header receipt; no raw response open"
+  },
+  "producer_product_learned_ff_sequence": [
+    {
+      "output": "metadata preparation + full row accounting",
+      "owner": "R145 source_package_binder",
+      "state": "READY_FROM_DICTIONARY",
+      "step": 1
+    },
+    {
+      "output": "authorized metadata receipt + NativeSourceIdentity",
+      "owner": "external source identity/header grant",
+      "state": "PENDING_USER_AUTHORIZED_IDENTITY_RECEIPT",
+      "step": 2
+    },
+    {
+      "output": "authorized whole-file incidence",
+      "owner": "rawlsing_next.pre553_source_read_admission",
+      "state": "PENDING_SEPARATE_RESPONSE_GRANT",
+      "step": 3
+    },
+    {
+      "output": "source-native bundle/projection",
+      "owner": "rawlsing_next.pre553_source_native_preimage_adapter.materialize_native_preimages",
+      "state": "PENDING_HEADER_AND_SEMANTICS",
+      "step": 4
+    },
+    {
+      "output": "exact query/discovery plan",
+      "owner": "R01 SourceInventory/GrammarPolicy/frontier + build_frontier_native_catalog",
+      "state": "PENDING_SOURCE_ROLES_AND_U_EPRE",
+      "step": 5
+    },
+    {
+      "output": "EmpiricalFact + DiscoveryResultReceipt + no-drop ledger",
+      "owner": "I03/I05/Batch",
+      "state": "PENDING_ACTUAL_EXECUTION",
+      "step": 6
+    },
+    {
+      "output": "LearnedEmpiricalDisposition (M1)",
+      "owner": "pre553_learned_empirical_adjudication.adjudicate_learned_empirical",
+      "state": "PENDING_FAMILY_RULE",
+      "step": 7
+    },
+    {
+      "output": "separately governed learned/product/FF-V553 receiving use",
+      "owner": "pre553_learned_product_release + pre553_universal_empirical_extension",
+      "state": "PENDING_SEPARATE_USE_AUTHORITY",
+      "step": 8
+    }
+  ],
+  "prospective_source_role_contract": {
+    "eligible_work": {
+      "all_retained_rows": 1319,
+      "operations_compiled": 0,
+      "reason": "source identity/header, value semantics, roles and U/Epre are not yet bound",
+      "substantive_question_candidates": 0
+    },
+    "native_owner_refs": [
+      "rawlsing_next.pre553_source_native_preimage_adapter.NativeSourcePackage",
+      "rawlsing_next.pre553_source_native_preimage_adapter.materialize_native_preimages",
+      "rawlsing_next.universal_grammar.types.SourceInventory",
+      "rawlsing_next.pre553_source_local_universe_admission.materialize_source_local_universe",
+      "rawlsing_next.pre553_native_workload_binding.build_frontier_native_catalog",
+      "rawlsing_next.pre553_universal_workload.compile_governed_frontier"
+    ],
+    "role_source": "row evidence; module_guess is only one retained evidence field",
+    "scientific_target_conditioner_roles": "UNASSIGNED_PENDING_EXACT_SEMANTIC_AUTHORITY",
+    "topology": "UNRESOLVED_PENDING_HEADER_AND_SEMANTIC_AUTHORITY",
+    "u_e_pre": {
+      "e_pre_root": null,
+      "status": "PENDING_AUTHORIZED_SOURCE_IDENTITY_AND_ROLE_SEMANTICS",
+      "u_root": null
+    }
+  },
+  "row_accounting": {
+    "all_rows_retained": true,
+    "retained_rows": 1319,
+    "role_counts": {
+      "HOUSEHOLD_OR_ROSTER": 94,
+      "SOURCE_ADMINISTRATIVE_IDENTITY": 3,
+      "SOURCE_ADMINISTRATIVE_OR_METADATA": 184,
+      "TEXT_OR_NONNUMERIC_HELD": 18,
+      "UNKNOWN_MEASURE_HELD": 1015,
+      "WEIGHT_OR_DESIGN": 5
+    },
+    "row_records_path": "records/SRC30_ROW_ACCOUNTING.jsonl",
+    "total_rows": 1319
+  },
+  "schema": "PYAT_R145_SOURCE_PACKAGE_BINDER@1",
+  "source_format": "DTA",
+  "source_id": "SRC30",
+  "source_read_request_template": {
+    "consumer_use": "R134_SOURCE_LOCAL_EMPIRICAL_AND_LEARNED_PIPELINE",
+    "custody_locator_binding": "PENDING_AUTHORIZED_SOURCE_IDENTITY_RECEIPT",
+    "host": "PENDING_EXTERNAL_TRUSTED_SOURCE_READ_DECISION",
+    "metadata_freeze_refs": [
+      {
+        "content_hash": "c66904005815a9564083a38cf7daddd4d347b31181ef84e79cb31f98d6c0644d",
+        "kind": "R145_METADATA_FREEZE",
+        "object_id": "urn:rawlsing:pre553:r145:SRC30-dictionary:sha256:c66904005815a9564083a38cf7daddd4d347b31181ef84e79cb31f98d6c0644d"
+      }
+    ],
+    "physical_read_extent": "EXACT_FILE",
+    "purpose": "R145_CURRENT_SOURCE_PACKAGE_PREPARATION",
+    "read_operation": "SOURCE_RESPONSE_DECODE",
+    "semantic_use_scope": [
+      "SOURCE_LOCAL_ONLY",
+      "NO_POPULATION_OR_CAUSAL_INFERENCE"
+    ],
+    "source_format": "DTA",
+    "source_id": "SRC30",
+    "source_sha256": null,
+    "source_sha256_status": "PENDING_USER_AUTHORIZED_IDENTITY_RECEIPT",
+    "status": "TEMPLATE_ONLY_DO_NOT_SEND_UNTIL_EDITION_SHA_AND_EXTERNAL_GRANT"
+  },
+  "source_unit": "HOUSEHOLD_ID_WITH_RESPONDENT_ITEMS_BY_ROW_EVIDENCE",
+  "status": "PENDING_AUTHORIZED_SOURCE_METADATA_RECEIPT__NO_SURVEY_FILE_OPENED",
+  "survey_file_touched": false,
+  "survey_locator_requested_for_metadata_only": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/LiTS_IV.dta",
+  "wave": "IV"
+}
