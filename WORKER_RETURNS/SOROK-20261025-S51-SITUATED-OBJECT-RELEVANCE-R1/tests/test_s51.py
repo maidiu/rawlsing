@@ -5,7 +5,14 @@ from s51.bootstrap import install
 install()
 from s45.fixtures import root_bundle
 from s37.harness import case_for, source_for
-from s51.session import S51Session
+from bp4.world import make_event
+from candidate import digest
+from s51.session import (
+    HYPOTHESIS_LIFECYCLE_KIND,
+    RELEVANCE_KIND,
+    RULE_ID,
+    S51Session,
+)
 
 
 def _start(state):
@@ -175,4 +182,70 @@ def test_second_experiment_has_a_separate_declaration_and_no_false_active_extens
   assert s._hypothesis_status(first["hypothesis"]["hypothesis_id"])=="CONSUMED"
   assert s._hypothesis_status(second["hypothesis"]["hypothesis_id"])=="CONSUMED"
   assert s._active_hypothesis() is None
+ finally:s.close()
+
+
+def test_unrelated_next_received_event_expires_before_a_later_offer():
+ s=_start(__import__('tempfile').mkdtemp())
+ try:
+  obj=s.recover_object(); hyp=s.declare_hypothesis(obj)
+  world=s.world(); event=make_event(clock=world.clock,kind="INSPECT",
+   actor_id=world.actor_state["B"]["actor_id"],location="workshop",
+   summary="Unrelated received event.",body={"observable":True,"generated":True},
+   sequence=len(world.events))
+  world.add_event(event); s._append_event(event,perceive=("B",))
+  s.product._checkpoint(s.branch_id,s.clock(),world)
+  assert s._hypothesis_status(hyp["hypothesis_id"])=="EXPIRED"
+  offer=s.issue_offer(); access=s._offer_access(offer)
+  rel=s.evaluate(obj,hyp,offer,access)
+  assert rel["status"]=="OBJECT_RELEVANCE_HOLD"
+  assert rel["relation"]=="HYPOTHESIS_EXPIRED"
+ finally:s.close()
+
+
+def test_withdrawn_expired_and_consumed_have_distinct_holds():
+ s=_start(__import__('tempfile').mkdtemp())
+ try:
+  obj=s.recover_object()
+  withdrawn=s.declare_hypothesis(obj); s.withdraw_hypothesis(withdrawn)
+  expired=s.declare_hypothesis(obj); fresh=s.declare_hypothesis(obj)
+  offer=s.issue_offer(); access=s._offer_access(offer)
+  w=s.evaluate(obj,withdrawn,offer,access)
+  e=s.evaluate(obj,expired,offer,access)
+  f=s.evaluate(obj,fresh,offer,access)
+  assert w["relation"]=="HYPOTHESIS_WITHDRAWN"
+  assert e["relation"]=="HYPOTHESIS_EXPIRED"
+  assert f["relation"]=="FACILITATES" and f["status"]=="RELEVANCE_WARRANTED"
+ finally:s.close()
+
+
+def test_false_rehashed_relevance_is_rejected_and_invalidates_verify():
+ s=_start(__import__('tempfile').mkdtemp())
+ try:
+  obj=s.recover_object(); hyp=s.declare_hypothesis(obj)
+  offer=s.issue_offer(permit=False); access=s._offer_access(offer)
+  checkpoint=s.product.store.checkpoints(s.branch_id)[-1]
+  p=offer["offer"]
+  result={"schema":"SOROK_S51_SITUATED_OBJECT_RELEVANCE@1","status":"RELEVANCE_WARRANTED",
+   "relation":"FACILITATES","actor_id":s.world().actor_state["B"]["actor_id"],
+   "object_event_id":obj["object_event_id"],"object_striving":obj["striving"],
+   "offer_event_id":offer["offer_event_id"],"world_offer_event_id":offer["world_event_id"],
+   "access_ref":access["source_ref"],"hypothesis_id":hyp["hypothesis_id"],
+   "hypothesis_active":True,"hypothesis_scope":hyp["scope"],
+   "financial":{k:p.get(k) for k in ("payment_per_actor","task_hours","permit")},
+   "actor_free_hours":s.world().actor_state["B"].get("free_hours"),"native":False,
+   "selected_action":None,"performed":False,"actual_current_purpose_proved":False,"reasons":[]}
+  result["relevance_hash"]=digest({**result,"episode_id":""})
+  body={"schema":"SOROK_S51_SITUATED_OBJECT_RELEVANCE@1","stage":"OBJECT_RELEVANCE",
+   "result":dict(result),"object":obj,"offer":offer,"access":access,"hypothesis":hyp,
+   "evaluation_clock":s.clock(),"evaluation_checkpoint_hash":checkpoint["hash"],
+   "rule_id":RULE_ID,"native":False}
+  ep=s._append(RELEVANCE_KIND,body); result["episode_id"]=ep["episode_id"]
+  s._append(HYPOTHESIS_LIFECYCLE_KIND,{"schema":"SOROK_S51_SITUATED_OBJECT_RELEVANCE@1",
+   "hypothesis_id":hyp["hypothesis_id"],"hypothesis_episode_id":hyp["episode_id"],
+   "status":"CONSUMED","reason":"FORGED","consumed_by_relevance_hash":result["relevance_hash"],
+   "received_event_id":offer["world_event_id"],"native":False})
+  consumed=s.consume_generation(obj,hyp,offer,access,result)
+  assert consumed["selection_status"]=="S51_INPUT_REFUSED"
+  assert s.verify()["ok"] is False
  finally:s.close()

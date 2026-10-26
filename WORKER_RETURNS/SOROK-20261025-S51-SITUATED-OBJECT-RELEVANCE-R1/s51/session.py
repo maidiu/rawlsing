@@ -41,6 +41,44 @@ class S51Session(S49Session):
   self.product._checkpoint(self.branch_id,self.clock(),self.world())
   return ep
 
+ def _append_event(self,event,*,perceive=()):
+  result=super()._append_event(event,perceive=perceive)
+  if "B" in perceive:
+   self._note_b_received_event(event)
+  return result
+
+ def _perceive_if_present(self,event,*actors):
+  super()._perceive_if_present(event,*actors)
+  if "B" in actors:
+   self._note_b_received_event(event)
+
+ def _note_b_received_event(self,event):
+  active=self._active_hypothesis()
+  if not active: return
+  baseline=active.get("b_perception_baseline")
+  if not isinstance(baseline,int): return
+  perceptions=self.product.store.perceptions(self.branch_id,"B")
+  indexes=[i for i,row in enumerate(perceptions) if row.get("event_id")==event.get("event_id")]
+  if not indexes or indexes[0]!=baseline: return
+  stored=self.event(event.get("event_id","")) or event
+  body=stored.get("body") or {}
+  common={"schema":S51,"hypothesis_id":active["hypothesis_id"],
+   "hypothesis_episode_id":active["episode_id"],
+   "received_event_id":stored.get("event_id",""),"received_event_hash":stored.get("hash",""),
+   "received_event_clock":stored.get("clock"),"native":False}
+  if body.get("schema")=="S51_PUBLISHED_OFFER_EVENT@1":
+   common.update({"status":"BOUND","reason":"NEXT_RECEIVED_EVENT_IS_OFFER",
+    "bound_event_id":stored.get("event_id","")})
+  else:
+   common.update({"status":"EXPIRED","reason":"NEXT_RECEIVED_EVENT_NOT_OFFER"})
+  self._append(HYPOTHESIS_LIFECYCLE_KIND,common)
+
+ def _expire_hypothesis(self,hypothesis,*,reason,event_id=""):
+  self._append(HYPOTHESIS_LIFECYCLE_KIND,{"schema":S51,
+   "hypothesis_id":hypothesis["hypothesis_id"],
+   "hypothesis_episode_id":hypothesis["episode_id"],
+   "status":"EXPIRED","reason":reason,"received_event_id":event_id,"native":False})
+
  def _episodes(self,kind):
   return [row for row in self.product.store.episodes(self.branch_id) if row.get("kind")==kind]
 
@@ -113,19 +151,20 @@ class S51Session(S49Session):
     "object_event_id":(obj or {}).get("object_event_id"),"native":False}
   for active in self._episodes(HYPOTHESIS_KIND):
    body=dict(active.get("body") or {})
-   if self._hypothesis_status(body.get("hypothesis_id",""))=="ACTIVE":
+   if self._hypothesis_status(body.get("hypothesis_id","")) in {"ACTIVE","BOUND"}:
     self._append(HYPOTHESIS_LIFECYCLE_KIND,{"schema":S51,"hypothesis_id":body.get("hypothesis_id"),
      "hypothesis_episode_id":active["episode_id"],"status":"EXPIRED","reason":"NEW_CANONICAL_DECLARATION","native":False})
   seq=len(self._episodes(HYPOTHESIS_KIND))
+  baseline=len(self.product.store.perceptions(self.branch_id,"B"))
   h={"schema":S51,"stage":"RETAINED_OBJECT_HYPOTHESIS","hypothesis_id":"S51_HYPOTHESIS_"+str(obj["object_event_id"]).split(":")[-1][:12]+"_"+str(seq),
    "hypothesis_version":"R1","rule_id":RULE_ID,"actor_id":obj["actor_id"],"root_hash":self.read_root()["root_hash"],
    "root_id":self.read_root()["root_id"],"branch_id":self.branch_id,"object_event_id":obj["object_event_id"],
    "object_hash":obj["object_hash"],"object_striving":obj["striving"],"scope":"ONE_SUBSEQUENT_RECEIVED_EVENT",
-   "expires_after_events":1,"status":"DECLARED_IMMUTABLE","native":False,"psychology_claim":False,"actor_testimony":False,
+   "expires_after_events":1,"b_perception_baseline":baseline,"status":"DECLARED_IMMUTABLE","native":False,"psychology_claim":False,"actor_testimony":False,
    "actual_current_purpose_proved":False,"grade":GRADE}
   ep=self._append(HYPOTHESIS_KIND,h);return {**h,"episode_id":ep["episode_id"]}
 
- def _canonical_hypothesis(self,hypothesis:Mapping[str,Any],*,allow_consumed=False)->dict:
+ def _canonical_hypothesis(self,hypothesis:Mapping[str,Any],*,allow_consumed=False,allow_inactive=False)->dict:
   if not isinstance(hypothesis,Mapping) or not hypothesis.get("episode_id"):
    raise S51Refusal("S51_FOREIGN_HYPOTHESIS")
   row=self._episode(HYPOTHESIS_KIND,hypothesis["episode_id"])
@@ -141,7 +180,19 @@ class S51Session(S49Session):
   ):
    raise S51Refusal("S51_FOREIGN_HYPOTHESIS_PARENT")
   status=self._hypothesis_status(body.get("hypothesis_id",""))
-  if status!="ACTIVE" and not (allow_consumed and status=="CONSUMED"):
+  if status=="WITHDRAWN" and not allow_inactive:
+   raise S51Refusal("S51_HYPOTHESIS_WITHDRAWN",str(body.get("hypothesis_id")))
+  if status=="EXPIRED" and not allow_inactive:
+   raise S51Refusal("S51_HYPOTHESIS_EXPIRED",str(body.get("hypothesis_id")))
+  if status=="CONSUMED" and not allow_consumed:
+   raise S51Refusal("S51_HYPOTHESIS_CONSUMED",str(body.get("hypothesis_id")))
+  if status=="BOUND":
+   life=self._latest_body(HYPOTHESIS_LIFECYCLE_KIND,body.get("hypothesis_id","")) or {}
+   body["bound_event_id"]=life.get("bound_event_id","")
+   body["bound_event_clock"]=life.get("received_event_clock")
+  if status not in {"ACTIVE","BOUND","CONSUMED"} and not (
+   allow_inactive and status in {"EXPIRED","WITHDRAWN"}
+  ):
    raise S51Refusal("S51_HYPOTHESIS_NOT_ACTIVE",str(body.get("hypothesis_id")))
   body["episode_id"]=row["episode_id"]
   return body
@@ -152,10 +203,10 @@ class S51Session(S49Session):
    "hypothesis_episode_id":canonical["episode_id"],"status":"WITHDRAWN","reason":"EXPLICIT_WITHDRAWAL","native":False})
   return {"schema":S51,"hypothesis_id":canonical["hypothesis_id"],"status":"WITHDRAWN","native":False}
 
- def _consume_hypothesis(self,hypothesis,relevance_hash):
+ def _consume_hypothesis(self,hypothesis,relevance_hash,event_id=""):
   self._append(HYPOTHESIS_LIFECYCLE_KIND,{"schema":S51,"hypothesis_id":hypothesis["hypothesis_id"],
    "hypothesis_episode_id":hypothesis["episode_id"],"status":"CONSUMED","reason":"ONE_SUBSEQUENT_RECEIVED_EVENT",
-   "consumed_by_relevance_hash":relevance_hash,"native":False})
+   "consumed_by_relevance_hash":relevance_hash,"received_event_id":event_id,"native":False})
 
  def _actor_access(self,event_ref:str,offer:Mapping[str,Any])->dict:
   # Compatibility entry point: an access is only synthesized from the
@@ -259,7 +310,12 @@ class S51Session(S49Session):
   try:
    return self._evaluate_canonical(obj,hypothesis,offer,access)
   except S51Refusal as exc:
-   relation="HYPOTHESIS_CONSUMED" if exc.code=="S51_HYPOTHESIS_NOT_ACTIVE" else "FOREIGN_INPUT"
+   relation={
+    "S51_HYPOTHESIS_WITHDRAWN":"HYPOTHESIS_WITHDRAWN",
+    "S51_HYPOTHESIS_EXPIRED":"HYPOTHESIS_EXPIRED",
+    "S51_HYPOTHESIS_CONSUMED":"HYPOTHESIS_CONSUMED",
+    "S51_HYPOTHESIS_NOT_ACTIVE":"HYPOTHESIS_INACTIVE",
+   }.get(exc.code,"FOREIGN_INPUT")
    return {"schema":S51,"status":"OBJECT_RELEVANCE_HOLD","relation":relation,
     "reason":exc.code,"object_event_id":(obj or {}).get("object_event_id"),
     "offer_event_id":(offer or {}).get("offer_event_id"),
@@ -275,35 +331,48 @@ class S51Session(S49Session):
   obj=self._canonical_object(obj); hypothesis=self._canonical_hypothesis(hypothesis)
   offer=self._canonical_offer(offer)
   access=self._canonical_access(access,offer) if access is not None else None
+  if hypothesis.get("bound_event_id") and hypothesis["bound_event_id"]!=offer["world_event_id"]:
+   self._expire_hypothesis(hypothesis,reason="BOUND_EVENT_WAS_NOT_OFFER",event_id=offer["world_event_id"])
+   return {"schema":S51,"status":"OBJECT_RELEVANCE_HOLD","relation":"HYPOTHESIS_EXPIRED",
+    "reason":"S51_HYPOTHESIS_BOUND_EVENT_MISMATCH","object_event_id":obj["object_event_id"],
+    "offer_event_id":offer["offer_event_id"],"actor_id":(self.world().actor_state.get("B") or {}).get("actor_id"),
+    "hypothesis_active":False,"reasons":[],"native":False,"selected_action":None,"performed":False}
   actors=(self.world().actor_state.get("B") or {}); actor_id=actors.get("actor_id")
+  actor_free_hours=actors.get("free_hours")
+  checkpoint=self.product.store.checkpoints(self.branch_id)[-1]
+  relation,status=self._relation_for(offer,access,actor_free_hours)
   p=offer.get("offer") or {}
-  if access is None or access.get("access_status")!="ACCESSIBLE":
-   relation,status="NOT_RECEIVED","NOT_RECEIVED"
-  elif p.get("permit") is not True:
-   relation,status="OBSTRUCTS","RELEVANCE_WARRANTED"
-  elif not isinstance(actors.get("free_hours"),int):
-   relation,status="UNKNOWN","RELEVANCE_WARRANTED"
-  elif p.get("payment_per_actor") is None or p.get("task_hours") is None:
-   relation,status="UNKNOWN","RELEVANCE_WARRANTED"
-  elif int(p.get("payment_per_actor",0))<=0:
-   relation,status="OBSTRUCTS","RELEVANCE_WARRANTED"
-  elif int(p.get("task_hours",0))>int(actors.get("free_hours",0)):
-   relation,status="OBSTRUCTS","RELEVANCE_WARRANTED"
-  else:
-   relation,status="FACILITATES","RELEVANCE_WARRANTED"
   result={"schema":S51,"status":status,"relation":relation,"actor_id":actor_id,"object_event_id":obj["object_event_id"],
    "object_striving":obj["striving"],"offer_event_id":offer["offer_event_id"],"world_offer_event_id":offer["world_event_id"],
    "access_ref":(access or {}).get("source_ref",""),"hypothesis_id":hypothesis.get("hypothesis_id"),
    "hypothesis_active":True,"hypothesis_scope":hypothesis.get("scope"),
    "financial":{k:p.get(k) for k in ("payment_per_actor","task_hours","permit")},
-   "actor_free_hours":actors.get("free_hours"),"native":False,"selected_action":None,"performed":False,
+   "actor_free_hours":actor_free_hours,"native":False,"selected_action":None,"performed":False,
    "actual_current_purpose_proved":False,"reasons":[]}
   result["relevance_hash"]=digest({**result,"episode_id":""})
   body={"schema":S51,"stage":"OBJECT_RELEVANCE","result":dict(result),"object":obj,"offer":offer,"access":access,
-   "hypothesis":hypothesis,"rule_id":RULE_ID,"native":False}
+   "hypothesis":hypothesis,"evaluation_clock":self.clock(),"evaluation_checkpoint_hash":checkpoint.get("hash",""),
+   "rule_id":RULE_ID,"native":False}
   ep=self._append(RELEVANCE_KIND,body);result["episode_id"]=ep["episode_id"]
-  if status=="RELEVANCE_WARRANTED": self._consume_hypothesis(hypothesis,result["relevance_hash"])
+  if status=="RELEVANCE_WARRANTED":
+   self._consume_hypothesis(hypothesis,result["relevance_hash"],event_id=offer["world_event_id"])
   return result
+
+ def _relation_for(self,offer,access,actor_free_hours):
+  p=offer.get("offer") or {}
+  if access is None or access.get("access_status")!="ACCESSIBLE":
+   return "NOT_RECEIVED","NOT_RECEIVED"
+  if p.get("permit") is not True:
+   return "OBSTRUCTS","RELEVANCE_WARRANTED"
+  if not isinstance(actor_free_hours,int):
+   return "UNKNOWN","RELEVANCE_WARRANTED"
+  if p.get("payment_per_actor") is None or p.get("task_hours") is None:
+   return "UNKNOWN","RELEVANCE_WARRANTED"
+  if int(p.get("payment_per_actor",0))<=0:
+   return "OBSTRUCTS","RELEVANCE_WARRANTED"
+  if int(p.get("task_hours",0))>int(actor_free_hours):
+   return "OBSTRUCTS","RELEVANCE_WARRANTED"
+  return "FACILITATES","RELEVANCE_WARRANTED"
 
  def _canonical_relevance(self,relevance:Mapping[str,Any])->dict:
   if not isinstance(relevance,Mapping) or not relevance.get("episode_id"):
@@ -312,13 +381,46 @@ class S51Session(S49Session):
   body=dict(row.get("body") or {}); result=dict(body.get("result") or {})
   if result.get("relevance_hash")!=relevance.get("relevance_hash") or body.get("rule_id")!=RULE_ID:
    raise S51Refusal("S51_RELEVANCE_SUBSTITUTED")
-  if result.get("object_event_id")!=self.recover_object()["object_event_id"]:
-   raise S51Refusal("S51_RELEVANCE_FOREIGN_OBJECT")
-  stored_offer=body.get("offer") or {}; stored_access=body.get("access") or {}
-  if result.get("offer_event_id")!=stored_offer.get("offer_event_id") or result.get("world_offer_event_id")!=stored_offer.get("world_event_id"):
-   raise S51Refusal("S51_RELEVANCE_OFFER_MISMATCH")
-  if result.get("access_ref")!=stored_access.get("source_ref"):
-   raise S51Refusal("S51_RELEVANCE_ACCESS_MISMATCH")
+  obj=self._canonical_object(body.get("object") or {})
+  hypothesis=self._canonical_hypothesis(body.get("hypothesis") or {},allow_consumed=True,allow_inactive=True)
+  offer=self._canonical_offer(body.get("offer") or {})
+  access=self._canonical_access(body.get("access"),offer) if body.get("access") is not None else None
+  checkpoint_hash=body.get("evaluation_checkpoint_hash")
+  checkpoint=next((c for c in self.product.store.checkpoints(self.branch_id) if c.get("hash")==checkpoint_hash),None)
+  if not checkpoint:
+   raise S51Refusal("S51_RELEVANCE_READSET_MISSING")
+  if checkpoint.get("clock")!=body.get("evaluation_clock"):
+   raise S51Refusal("S51_RELEVANCE_READSET_CLOCK_MISMATCH")
+  state=checkpoint.get("state") or {}
+  actor_state=(((state.get("actors") or {}).get("B") or {}).get("state") or {})
+  actor_free_hours=actor_state.get("free_hours")
+  actor_id=actor_state.get("actor_id")
+  relation,status=self._relation_for(offer,access,actor_free_hours)
+  p=offer.get("offer") or {}
+  expected={
+   "schema":S51,"status":status,"relation":relation,"actor_id":actor_id,
+   "object_event_id":obj["object_event_id"],"object_striving":obj["striving"],
+   "offer_event_id":offer["offer_event_id"],"world_offer_event_id":offer["world_event_id"],
+   "access_ref":(access or {}).get("source_ref",""),"hypothesis_id":hypothesis["hypothesis_id"],
+   "hypothesis_active":True,"hypothesis_scope":hypothesis.get("scope"),
+   "financial":{k:p.get(k) for k in ("payment_per_actor","task_hours","permit")},
+   "actor_free_hours":actor_free_hours,"native":False,"selected_action":None,"performed":False,
+   "actual_current_purpose_proved":False,"reasons":[],
+  }
+  for key,value in expected.items():
+   if result.get(key)!=value:
+    raise S51Refusal("S51_RELEVANCE_SEMANTIC_MISMATCH",str(key))
+  expected_hash=digest({**expected,"episode_id":""})
+  if result.get("relevance_hash")!=expected_hash:
+   raise S51Refusal("S51_RELEVANCE_HASH_INVALID")
+  if status=="RELEVANCE_WARRANTED":
+   life=self._latest_body(HYPOTHESIS_LIFECYCLE_KIND,hypothesis["hypothesis_id"]) or {}
+   if (
+    life.get("status")!="CONSUMED"
+    or life.get("consumed_by_relevance_hash")!=result.get("relevance_hash")
+    or life.get("received_event_id")!=offer["world_event_id"]
+   ):
+    raise S51Refusal("S51_RELEVANCE_LIFECYCLE_MISMATCH")
   result["episode_id"]=row["episode_id"];return result
 
  def consume_generation(self,obj,hypothesis,offer,access,relevance)->dict:
@@ -380,6 +482,7 @@ class S51Session(S49Session):
   try:
    obj=self.recover_object()
    active=0; consumed_hashes=set()
+   b_perceptions=self.product.store.perceptions(self.branch_id,"B")
    for row in self._episodes(HYPOTHESIS_KIND):
     body=dict(row.get("body") or {})
     if (
@@ -393,13 +496,26 @@ class S51Session(S49Session):
      errors.append("S51_HYPOTHESIS_PARENT_INVALID")
     status=self._hypothesis_status(body.get("hypothesis_id",""))
     life=self._latest_body(HYPOTHESIS_LIFECYCLE_KIND,body.get("hypothesis_id","")) or {}
-    if status not in {"ACTIVE","CONSUMED","EXPIRED","WITHDRAWN"}:
+    if status not in {"ACTIVE","BOUND","CONSUMED","EXPIRED","WITHDRAWN"}:
      errors.append("S51_HYPOTHESIS_LIFECYCLE_INVALID:"+str(status))
-    if status=="ACTIVE": active+=1
+    if status in {"ACTIVE","BOUND"}: active+=1
     if status=="CONSUMED":
      consumed_hashes.add(life.get("consumed_by_relevance_hash",""))
     if life and life.get("hypothesis_episode_id")!=row["episode_id"]:
      errors.append("S51_HYPOTHESIS_LIFECYCLE_PARENT_INVALID")
+    baseline=body.get("b_perception_baseline")
+    if not isinstance(baseline,int) or baseline<0 or baseline>len(b_perceptions):
+     errors.append("S51_HYPOTHESIS_PERCEPTION_BASELINE_INVALID")
+    elif len(b_perceptions)>baseline:
+     next_event=b_perceptions[baseline].get("event_id")
+     if status=="ACTIVE":
+      errors.append("S51_HYPOTHESIS_UNBOUND_RECEIVED_EVENT")
+     elif status=="BOUND" and life.get("bound_event_id")!=next_event:
+      errors.append("S51_HYPOTHESIS_BOUND_EVENT_MISMATCH")
+     elif status=="CONSUMED" and life.get("received_event_id")!=next_event:
+      errors.append("S51_HYPOTHESIS_CONSUMED_EVENT_MISMATCH")
+     elif status=="EXPIRED" and life.get("reason")=="NEXT_RECEIVED_EVENT_NOT_OFFER" and life.get("received_event_id")!=next_event:
+      errors.append("S51_HYPOTHESIS_EXPIRED_EVENT_MISMATCH")
    if active>1: errors.append("S51_MULTIPLE_ACTIVE_HYPOTHESES")
    relevance_hashes={
     (row.get("body") or {}).get("result",{}).get("relevance_hash")
@@ -440,20 +556,11 @@ class S51Session(S49Session):
     body=dict(row.get("body") or {}); result=body.get("result") or {}
     if body.get("stage")!="OBJECT_RELEVANCE" or body.get("rule_id")!=RULE_ID:
      errors.append("S51_RELEVANCE_EPISODE_INVALID")
-    elif result.get("object_event_id")!=obj["object_event_id"]:
-     errors.append("S51_RELEVANCE_OBJECT_INVALID")
-    elif result.get("relevance_hash")!=digest({
-      **{key:value for key,value in result.items() if key not in ("relevance_hash","episode_id")},
-      "episode_id": "",
-     }):
-     errors.append("S51_RELEVANCE_HASH_INVALID")
-    else:
-     hid=body.get("hypothesis",{}).get("hypothesis_id","")
-     life=self._latest_body(HYPOTHESIS_LIFECYCLE_KIND,hid) or {}
-     if result.get("status")=="RELEVANCE_WARRANTED" and (
-      life.get("status")!="CONSUMED" or life.get("consumed_by_relevance_hash")!=result.get("relevance_hash")
-     ):
-      errors.append("S51_RELEVANCE_HYPOTHESIS_UNCONSUMED")
+     continue
+    try:
+     self._canonical_relevance({"episode_id":row["episode_id"],"relevance_hash":result.get("relevance_hash")})
+    except S51Refusal as exc:
+     errors.append("S51_RELEVANCE_INVALID:"+exc.code)
    for row in self._episodes(CONSUMER_KIND):
     body=dict(row.get("body") or {}); source=body.get("source") or {}
     turns=[x for x in self._episodes("S49_B_ACTOR_TURN")
