@@ -1,0 +1,9 @@
+# S52 return intake and actual review53 dispatch
+
+Actual same-HQ intake of completion `sorok-s52-paid-activity-repertoire-worker`, digest `f0c88ec1e554a6c59ba35396bd091506a44978a351d5a697c8a31a35170d3711`. Candidate `2232fc36e8d3a44d10a97624485a4b79770c0cb7` remote verified on `codex/sorok-s52-paid-activity-repertoire`; 21 committed files scoped to S52 and required S39/S49/S51 seams. Untracked S50 runtime excluded. Original author terminal stop/exit0; no author rerun.
+
+HQ independently ran eight focused tests: PASS15.33s. Normal experimental path now contains PAID_PARTICIPATION and CONDITIONAL_SUPPORTS while OPEN/no selected action/no earned money remains. Controlled explicit counterpart flag exercises only mechanical port; not observed counterpart, actor choice or actual native purpose. No acceptance yet.
+
+Existing reviewer `ses_e98fa7144ffeXQs21DMwv7tro3`, prior52 terminal, actually dispatched continuation53 to exact candidate. Records in controller review checkout `.local-logs/sorok-attachment-reviewer/continuation-53.json/events.jsonl/exit.json/commission.txt`; launcher94675 historical only. Exact notification job `sorok-s52-paid-activity-review53` observed WAITING before launch; controller live `review53-notification-arm.json`. Retired only delivered and consumed S49 initial worker from 16-entry manifest, preserving dedupe.
+
+Review only new action boundary: actual source/access cuts rather than omitting supplied repertoire, canonical candidate/reason eligibility versus raw supplemental injection, foreign/rehashed/stale inputs, current-state performer and cold semantic validation. Inspect chosen-attempt requirement separately from explicit controlled test. No broad S51 re-review or forced unique choice. Full historically generated adult goal, scientific/native authority boundaries and one-call ordering persist. Await actual return; do not duplicate live/uncertain jobs.
