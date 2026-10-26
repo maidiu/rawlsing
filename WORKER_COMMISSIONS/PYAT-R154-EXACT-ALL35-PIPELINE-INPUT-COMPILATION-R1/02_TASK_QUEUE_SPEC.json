@@ -1,0 +1,2189 @@
+{
+  "schema": "PYAT_R154_ORDERED_EXECUTION_SPEC_V1",
+  "original_commission": "91ac65ad3ee86444613eb3234da5e96d4e19b209:WORKER_COMMISSIONS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/00_COMMISSION.md",
+  "one_existing_worker_only": true,
+  "task_states": [
+    "READY",
+    "RUNNING",
+    "DONE",
+    "BLOCKED"
+  ],
+  "one_running_task": true,
+  "order": "BOOTSTRAP, then SRC01 through SRC35, completing PHYSICAL->CODEBOOK->EVIDENCE->OCCURRENCES->WORKLOAD->PACKAGE for each before moving on unless a precise blocked dependency prevents it; then ASSEMBLE,VERIFY_DELIVER",
+  "record_per_task": [
+    "task_id",
+    "state",
+    "input_refs",
+    "output_refs",
+    "completed_check",
+    "evidence_refs",
+    "exact_missing_fact_if_blocked",
+    "dependent_operation_if_blocked",
+    "next_acquisition_or_decision_if_blocked"
+  ],
+  "tasks": [
+    {
+      "id": "BOOTSTRAP",
+      "action": "Extract exact required inputs from current owner APIs and validators; create executable requirement schema, indexed store and shared acquisition/load functions",
+      "depends_on": [],
+      "inputs": [
+        "R154 originalcontract",
+        "accepted current producer/workload/analytical/learned/storage/FF owners"
+      ],
+      "output": "requirements/store schema and shared functions, taskledger",
+      "done_when": "Every required field points to actual consumer type/API/validator, necessity/stage/condition, acquisitionmethod and executable check. No speculative requirement. Store+loader skeleton usable for next task."
+    },
+    {
+      "id": "SRC01:PHYSICAL",
+      "source_id": "SRC01",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC01:CODEBOOK",
+      "source_id": "SRC01",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC01:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC01:EVIDENCE",
+      "source_id": "SRC01",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC01:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC01:OCCURRENCES",
+      "source_id": "SRC01",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC01:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC01:WORKLOAD",
+      "source_id": "SRC01",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC01:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC01:PACKAGE",
+      "source_id": "SRC01",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC01:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC02:PHYSICAL",
+      "source_id": "SRC02",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC02:CODEBOOK",
+      "source_id": "SRC02",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC02:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC02:EVIDENCE",
+      "source_id": "SRC02",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC02:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC02:OCCURRENCES",
+      "source_id": "SRC02",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC02:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC02:WORKLOAD",
+      "source_id": "SRC02",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC02:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC02:PACKAGE",
+      "source_id": "SRC02",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC02:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC03:PHYSICAL",
+      "source_id": "SRC03",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC03:CODEBOOK",
+      "source_id": "SRC03",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC03:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC03:EVIDENCE",
+      "source_id": "SRC03",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC03:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC03:OCCURRENCES",
+      "source_id": "SRC03",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC03:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC03:WORKLOAD",
+      "source_id": "SRC03",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC03:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC03:PACKAGE",
+      "source_id": "SRC03",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC03:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC04:PHYSICAL",
+      "source_id": "SRC04",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC04:CODEBOOK",
+      "source_id": "SRC04",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC04:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC04:EVIDENCE",
+      "source_id": "SRC04",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC04:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC04:OCCURRENCES",
+      "source_id": "SRC04",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC04:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC04:WORKLOAD",
+      "source_id": "SRC04",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC04:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC04:PACKAGE",
+      "source_id": "SRC04",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC04:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC05:PHYSICAL",
+      "source_id": "SRC05",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC05:CODEBOOK",
+      "source_id": "SRC05",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC05:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC05:EVIDENCE",
+      "source_id": "SRC05",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC05:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC05:OCCURRENCES",
+      "source_id": "SRC05",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC05:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC05:WORKLOAD",
+      "source_id": "SRC05",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC05:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC05:PACKAGE",
+      "source_id": "SRC05",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC05:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC06:PHYSICAL",
+      "source_id": "SRC06",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC06:CODEBOOK",
+      "source_id": "SRC06",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC06:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC06:EVIDENCE",
+      "source_id": "SRC06",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC06:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC06:OCCURRENCES",
+      "source_id": "SRC06",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC06:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC06:WORKLOAD",
+      "source_id": "SRC06",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC06:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC06:PACKAGE",
+      "source_id": "SRC06",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC06:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC07:PHYSICAL",
+      "source_id": "SRC07",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC07:CODEBOOK",
+      "source_id": "SRC07",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC07:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC07:EVIDENCE",
+      "source_id": "SRC07",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC07:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC07:OCCURRENCES",
+      "source_id": "SRC07",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC07:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC07:WORKLOAD",
+      "source_id": "SRC07",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC07:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC07:PACKAGE",
+      "source_id": "SRC07",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC07:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC08:PHYSICAL",
+      "source_id": "SRC08",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC08:CODEBOOK",
+      "source_id": "SRC08",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC08:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC08:EVIDENCE",
+      "source_id": "SRC08",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC08:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC08:OCCURRENCES",
+      "source_id": "SRC08",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC08:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC08:WORKLOAD",
+      "source_id": "SRC08",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC08:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC08:PACKAGE",
+      "source_id": "SRC08",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC08:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC09:PHYSICAL",
+      "source_id": "SRC09",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC09:CODEBOOK",
+      "source_id": "SRC09",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC09:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC09:EVIDENCE",
+      "source_id": "SRC09",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC09:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC09:OCCURRENCES",
+      "source_id": "SRC09",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC09:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC09:WORKLOAD",
+      "source_id": "SRC09",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC09:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC09:PACKAGE",
+      "source_id": "SRC09",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC09:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC10:PHYSICAL",
+      "source_id": "SRC10",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC10:CODEBOOK",
+      "source_id": "SRC10",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC10:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC10:EVIDENCE",
+      "source_id": "SRC10",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC10:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC10:OCCURRENCES",
+      "source_id": "SRC10",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC10:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC10:WORKLOAD",
+      "source_id": "SRC10",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC10:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC10:PACKAGE",
+      "source_id": "SRC10",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC10:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC11:PHYSICAL",
+      "source_id": "SRC11",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC11:CODEBOOK",
+      "source_id": "SRC11",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC11:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC11:EVIDENCE",
+      "source_id": "SRC11",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC11:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC11:OCCURRENCES",
+      "source_id": "SRC11",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC11:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC11:WORKLOAD",
+      "source_id": "SRC11",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC11:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC11:PACKAGE",
+      "source_id": "SRC11",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC11:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC12:PHYSICAL",
+      "source_id": "SRC12",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC12:CODEBOOK",
+      "source_id": "SRC12",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC12:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC12:EVIDENCE",
+      "source_id": "SRC12",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC12:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC12:OCCURRENCES",
+      "source_id": "SRC12",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC12:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC12:WORKLOAD",
+      "source_id": "SRC12",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC12:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC12:PACKAGE",
+      "source_id": "SRC12",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC12:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC13:PHYSICAL",
+      "source_id": "SRC13",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC13:CODEBOOK",
+      "source_id": "SRC13",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC13:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC13:EVIDENCE",
+      "source_id": "SRC13",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC13:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC13:OCCURRENCES",
+      "source_id": "SRC13",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC13:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC13:WORKLOAD",
+      "source_id": "SRC13",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC13:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC13:PACKAGE",
+      "source_id": "SRC13",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC13:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC14:PHYSICAL",
+      "source_id": "SRC14",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC14:CODEBOOK",
+      "source_id": "SRC14",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC14:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC14:EVIDENCE",
+      "source_id": "SRC14",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC14:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC14:OCCURRENCES",
+      "source_id": "SRC14",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC14:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC14:WORKLOAD",
+      "source_id": "SRC14",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC14:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC14:PACKAGE",
+      "source_id": "SRC14",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC14:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC15:PHYSICAL",
+      "source_id": "SRC15",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC15:CODEBOOK",
+      "source_id": "SRC15",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC15:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC15:EVIDENCE",
+      "source_id": "SRC15",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC15:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC15:OCCURRENCES",
+      "source_id": "SRC15",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC15:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC15:WORKLOAD",
+      "source_id": "SRC15",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC15:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC15:PACKAGE",
+      "source_id": "SRC15",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC15:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC16:PHYSICAL",
+      "source_id": "SRC16",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC16:CODEBOOK",
+      "source_id": "SRC16",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC16:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC16:EVIDENCE",
+      "source_id": "SRC16",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC16:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC16:OCCURRENCES",
+      "source_id": "SRC16",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC16:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC16:WORKLOAD",
+      "source_id": "SRC16",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC16:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC16:PACKAGE",
+      "source_id": "SRC16",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC16:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC17:PHYSICAL",
+      "source_id": "SRC17",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC17:CODEBOOK",
+      "source_id": "SRC17",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC17:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC17:EVIDENCE",
+      "source_id": "SRC17",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC17:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC17:OCCURRENCES",
+      "source_id": "SRC17",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC17:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC17:WORKLOAD",
+      "source_id": "SRC17",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC17:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC17:PACKAGE",
+      "source_id": "SRC17",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC17:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC18:PHYSICAL",
+      "source_id": "SRC18",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC18:CODEBOOK",
+      "source_id": "SRC18",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC18:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC18:EVIDENCE",
+      "source_id": "SRC18",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC18:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC18:OCCURRENCES",
+      "source_id": "SRC18",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC18:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC18:WORKLOAD",
+      "source_id": "SRC18",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC18:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC18:PACKAGE",
+      "source_id": "SRC18",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC18:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC19:PHYSICAL",
+      "source_id": "SRC19",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC19:CODEBOOK",
+      "source_id": "SRC19",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC19:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC19:EVIDENCE",
+      "source_id": "SRC19",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC19:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC19:OCCURRENCES",
+      "source_id": "SRC19",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC19:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC19:WORKLOAD",
+      "source_id": "SRC19",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC19:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC19:PACKAGE",
+      "source_id": "SRC19",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC19:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC20:PHYSICAL",
+      "source_id": "SRC20",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC20:CODEBOOK",
+      "source_id": "SRC20",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC20:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC20:EVIDENCE",
+      "source_id": "SRC20",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC20:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC20:OCCURRENCES",
+      "source_id": "SRC20",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC20:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC20:WORKLOAD",
+      "source_id": "SRC20",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC20:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC20:PACKAGE",
+      "source_id": "SRC20",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC20:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC21:PHYSICAL",
+      "source_id": "SRC21",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC21:CODEBOOK",
+      "source_id": "SRC21",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC21:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC21:EVIDENCE",
+      "source_id": "SRC21",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC21:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC21:OCCURRENCES",
+      "source_id": "SRC21",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC21:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC21:WORKLOAD",
+      "source_id": "SRC21",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC21:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC21:PACKAGE",
+      "source_id": "SRC21",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC21:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC22:PHYSICAL",
+      "source_id": "SRC22",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC22:CODEBOOK",
+      "source_id": "SRC22",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC22:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC22:EVIDENCE",
+      "source_id": "SRC22",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC22:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC22:OCCURRENCES",
+      "source_id": "SRC22",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC22:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC22:WORKLOAD",
+      "source_id": "SRC22",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC22:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC22:PACKAGE",
+      "source_id": "SRC22",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC22:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC23:PHYSICAL",
+      "source_id": "SRC23",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC23:CODEBOOK",
+      "source_id": "SRC23",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC23:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC23:EVIDENCE",
+      "source_id": "SRC23",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC23:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC23:OCCURRENCES",
+      "source_id": "SRC23",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC23:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC23:WORKLOAD",
+      "source_id": "SRC23",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC23:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC23:PACKAGE",
+      "source_id": "SRC23",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC23:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC24:PHYSICAL",
+      "source_id": "SRC24",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC24:CODEBOOK",
+      "source_id": "SRC24",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC24:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC24:EVIDENCE",
+      "source_id": "SRC24",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC24:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC24:OCCURRENCES",
+      "source_id": "SRC24",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC24:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC24:WORKLOAD",
+      "source_id": "SRC24",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC24:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC24:PACKAGE",
+      "source_id": "SRC24",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC24:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC25:PHYSICAL",
+      "source_id": "SRC25",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC25:CODEBOOK",
+      "source_id": "SRC25",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC25:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC25:EVIDENCE",
+      "source_id": "SRC25",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC25:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC25:OCCURRENCES",
+      "source_id": "SRC25",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC25:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC25:WORKLOAD",
+      "source_id": "SRC25",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC25:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC25:PACKAGE",
+      "source_id": "SRC25",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC25:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC26:PHYSICAL",
+      "source_id": "SRC26",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC26:CODEBOOK",
+      "source_id": "SRC26",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC26:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC26:EVIDENCE",
+      "source_id": "SRC26",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC26:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC26:OCCURRENCES",
+      "source_id": "SRC26",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC26:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC26:WORKLOAD",
+      "source_id": "SRC26",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC26:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC26:PACKAGE",
+      "source_id": "SRC26",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC26:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC27:PHYSICAL",
+      "source_id": "SRC27",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC27:CODEBOOK",
+      "source_id": "SRC27",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC27:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC27:EVIDENCE",
+      "source_id": "SRC27",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC27:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC27:OCCURRENCES",
+      "source_id": "SRC27",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC27:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC27:WORKLOAD",
+      "source_id": "SRC27",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC27:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC27:PACKAGE",
+      "source_id": "SRC27",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC27:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC28:PHYSICAL",
+      "source_id": "SRC28",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC28:CODEBOOK",
+      "source_id": "SRC28",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC28:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC28:EVIDENCE",
+      "source_id": "SRC28",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC28:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC28:OCCURRENCES",
+      "source_id": "SRC28",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC28:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC28:WORKLOAD",
+      "source_id": "SRC28",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC28:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC28:PACKAGE",
+      "source_id": "SRC28",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC28:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC29:PHYSICAL",
+      "source_id": "SRC29",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC29:CODEBOOK",
+      "source_id": "SRC29",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC29:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC29:EVIDENCE",
+      "source_id": "SRC29",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC29:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC29:OCCURRENCES",
+      "source_id": "SRC29",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC29:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC29:WORKLOAD",
+      "source_id": "SRC29",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC29:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC29:PACKAGE",
+      "source_id": "SRC29",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC29:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC30:PHYSICAL",
+      "source_id": "SRC30",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC30:CODEBOOK",
+      "source_id": "SRC30",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC30:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC30:EVIDENCE",
+      "source_id": "SRC30",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC30:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC30:OCCURRENCES",
+      "source_id": "SRC30",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC30:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC30:WORKLOAD",
+      "source_id": "SRC30",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC30:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC30:PACKAGE",
+      "source_id": "SRC30",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC30:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC31:PHYSICAL",
+      "source_id": "SRC31",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC31:CODEBOOK",
+      "source_id": "SRC31",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC31:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC31:EVIDENCE",
+      "source_id": "SRC31",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC31:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC31:OCCURRENCES",
+      "source_id": "SRC31",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC31:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC31:WORKLOAD",
+      "source_id": "SRC31",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC31:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC31:PACKAGE",
+      "source_id": "SRC31",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC31:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC32:PHYSICAL",
+      "source_id": "SRC32",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC32:CODEBOOK",
+      "source_id": "SRC32",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC32:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC32:EVIDENCE",
+      "source_id": "SRC32",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC32:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC32:OCCURRENCES",
+      "source_id": "SRC32",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC32:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC32:WORKLOAD",
+      "source_id": "SRC32",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC32:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC32:PACKAGE",
+      "source_id": "SRC32",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC32:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC33:PHYSICAL",
+      "source_id": "SRC33",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC33:CODEBOOK",
+      "source_id": "SRC33",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC33:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC33:EVIDENCE",
+      "source_id": "SRC33",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC33:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC33:OCCURRENCES",
+      "source_id": "SRC33",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC33:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC33:WORKLOAD",
+      "source_id": "SRC33",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC33:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC33:PACKAGE",
+      "source_id": "SRC33",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC33:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC34:PHYSICAL",
+      "source_id": "SRC34",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC34:CODEBOOK",
+      "source_id": "SRC34",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC34:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC34:EVIDENCE",
+      "source_id": "SRC34",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC34:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC34:OCCURRENCES",
+      "source_id": "SRC34",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC34:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC34:WORKLOAD",
+      "source_id": "SRC34",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC34:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC34:PACKAGE",
+      "source_id": "SRC34",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC34:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "SRC35:PHYSICAL",
+      "source_id": "SRC35",
+      "action": "Reconcile exact current file/header metadata",
+      "depends_on": [
+        "BOOTSTRAP"
+      ],
+      "output": "current source hash/format/column names and types/labels/missing/MR/rowcount; exact qualifiedencodingretry for13/14",
+      "done_when": "each physical column counted once; metadatareceipt identity matches source; no response rows decoded; real missing/encoding field has acquisition request, not guessedvalue"
+    },
+    {
+      "id": "SRC35:CODEBOOK",
+      "source_id": "SRC35",
+      "action": "Join full codebook to physical inventory",
+      "depends_on": [
+        "SRC35:PHYSICAL"
+      ],
+      "output": "exact source-wave-column match plus codebook question/answer meanings/specialvalues; physical-only and document-only differences",
+      "done_when": "all physicalcolumns+all codebookrows accounted; exact typed codes preserved, collisions or mismatches explicit; no guessedstemaliases/casefoldjoins"
+    },
+    {
+      "id": "SRC35:EVIDENCE",
+      "source_id": "SRC35",
+      "action": "Consume existing item-level source rules and qualified overlays",
+      "depends_on": [
+        "SRC35:CODEBOOK"
+      ],
+      "output": "exact B49/manual/routing/structure/representation/scientific records joined with source/item/use/edition scope",
+      "done_when": "every applicable existing evidence record accounted; oldcandidate/hold limits retained; material/context not dropped; no ungrounded crosssource scope"
+    },
+    {
+      "id": "SRC35:OCCURRENCES",
+      "source_id": "SRC35",
+      "action": "Resolve necessary per-item meaning and occurrence facts",
+      "depends_on": [
+        "SRC35:EVIDENCE"
+      ],
+      "output": "unit/form/repeat/MR/rank/topology/administration/routing/risk/domain/missing/role evidence from existingrecords and exactdocuments",
+      "done_when": "each required field RESOLVED with evidence or exact UNRESOLVED missingfact+dependency+nextacquisition; native bool/form/domain defaults never fill unknown; readilyretrievablefacts cannot remainpending"
+    },
+    {
+      "id": "SRC35:WORKLOAD",
+      "source_id": "SRC35",
+      "action": "Bind prospective meaningful analyses and required products",
+      "depends_on": [
+        "SRC35:OCCURRENCES"
+      ],
+      "output": "existing approved method/grammar and input-specific target/conditioner/claim/coverage/learned/persistence/FF contracts; sample vs population and nominal vs directional separated",
+      "done_when": "actual required APIfields bound or exact scientificdecision raised; no invented allpairs/bounds/polarity/weights/learnedrules; conditionalneeds not blanketgates; outputs include empirical AND required learned products"
+    },
+    {
+      "id": "SRC35:PACKAGE",
+      "source_id": "SRC35",
+      "action": "Compile and load native source package",
+      "depends_on": [
+        "SRC35:WORKLOAD"
+      ],
+      "output": "canonical store rows+per-source JSON+native loader+concrete next invocation",
+      "done_when": "native constructor/validator roundtrip on grounded scope succeeds; unresolved dependent operation refuses exactly; each original physicalcolumn/evidence retained; no metadata/render mislabeled empiricalexecution"
+    },
+    {
+      "id": "ASSEMBLE",
+      "action": "Assemble single canonical all35 input library, per-source exports and exact missing-input/acquisition view",
+      "depends_on": [
+        "SRC01:PACKAGE",
+        "SRC02:PACKAGE",
+        "SRC03:PACKAGE",
+        "SRC04:PACKAGE",
+        "SRC05:PACKAGE",
+        "SRC06:PACKAGE",
+        "SRC07:PACKAGE",
+        "SRC08:PACKAGE",
+        "SRC09:PACKAGE",
+        "SRC10:PACKAGE",
+        "SRC11:PACKAGE",
+        "SRC12:PACKAGE",
+        "SRC13:PACKAGE",
+        "SRC14:PACKAGE",
+        "SRC15:PACKAGE",
+        "SRC16:PACKAGE",
+        "SRC17:PACKAGE",
+        "SRC18:PACKAGE",
+        "SRC19:PACKAGE",
+        "SRC20:PACKAGE",
+        "SRC21:PACKAGE",
+        "SRC22:PACKAGE",
+        "SRC23:PACKAGE",
+        "SRC24:PACKAGE",
+        "SRC25:PACKAGE",
+        "SRC26:PACKAGE",
+        "SRC27:PACKAGE",
+        "SRC28:PACKAGE",
+        "SRC29:PACKAGE",
+        "SRC30:PACKAGE",
+        "SRC31:PACKAGE",
+        "SRC32:PACKAGE",
+        "SRC33:PACKAGE",
+        "SRC34:PACKAGE",
+        "SRC35:PACKAGE"
+      ],
+      "output": "one canonical indexed store,35exports,loader,commands,status",
+      "done_when": "35sources and all currentphysicalcolumns/18276codebookrows accounted without silentloss; exact resolved/blocked/unresolved distinction, evidence and native call binding preserved; blockeddependenttasks may be carried explicitly, never countdone"
+    },
+    {
+      "id": "VERIFY_DELIVER",
+      "action": "Cold reload compiled store and exercise actual current native input validators; deliver exact source-to-product run commands",
+      "depends_on": [
+        "ASSEMBLE"
+      ],
+      "output": "load/validation receipt and compact usage entrypoint",
+      "done_when": "coldstore/export/native roundtrip and necessary identity/type/refusal checks pass at declaredgrain; exact unboundrunarguments listed; no source-responseexecution or endtoendclaim from metadata"
+    }
+  ]
+}
