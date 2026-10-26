@@ -1,3 +1,7 @@
+# CURRENT — R148 all35 metadata integration RUNNING
+
+R1473801f743c50634563c2dfe363847bfc4b91347d5 terminal manifest/directremote verified:29 sources15695 current metadata rows, not source execution. All six remaining codebooks located in existing final-codebook directory and staged exactly. R148 same existing author PID49747 integrates these with prior29 into all35 current native preparation; no new worker/engine. Source metadata access question remains pending; no raw survey access. Representative empirical AND learned-to-FF stays parallel; all goal/holds preserved.
+
 # CURRENT — R147 current metadata integration RUNNING; R146 all35 return banked
 
 R146 terminal manifest/directremote verified. Integrate staged current metadata and reconcile historical labels against completed repairs. Previous metadata return 3801f743c50634563c2dfe363847bfc4b91347d5 manifest hashes/bytes/directremote verified:3317 rows retained, six author checks, no survey execution. LiTS unknown CSV measure is not evidence prior semantic work absent. R147 same existing OpenCode MAX session PID49747 sealed cf1a701d33a41a98276a990f92f08fcb563c6364:WORKER_COMMISSIONS/PYAT-R148-ALL35-COMPLETE-METADATA-R1/00_COMMISSION.md extends binder with existing indexed source-specific bindings across35; no new engine/court. Exact survey metadata-only access request remains PENDING; no source read authority inferred. Representative source-to-empirical AND learned-to-FF milestone stays parallel, not all35 prerequisite. Full goal/holds preserved.
