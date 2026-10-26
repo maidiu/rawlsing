@@ -1,0 +1,2 @@
+# Actual returns
+Only returned worker evidence lives here. Required exact SHA, runtime/host/source, cited function/line mappings, tests actually run, separate engineering/science/authority claims, findings→interpretation→action→owner, known unknowns, self-limitations.

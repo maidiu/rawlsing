@@ -1,0 +1,2 @@
+# Differential requirement-to-code and code-to-requirement map
+Many-to-many links; possible grades MEANINGFUL_COVERAGE / PARTIAL_WRONG_MEANING / INFRASTRUCTURE_ONLY / MISSING / CONFLICTING / UNKNOWN. Names alone are not coverage. Trace exact inputs/transformation/output/real consumer and reason for retain/rework/replace/create. See 02_ATLAS and per-folder cards.

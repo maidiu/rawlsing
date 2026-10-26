@@ -1,0 +1,2 @@
+# Decisions
+Preserve statuses USER_SETTLED / SCIENTIFIC_ISSUER_ADOPTED / PROVISIONAL_HYPOTHESIS / ENGINEERING_CHOICE / REFUTED / DEFERRED. Every decision has source, scope, author, alternatives, conflicting evidence, and N/M relations. Do not launder a worker proposal into law.

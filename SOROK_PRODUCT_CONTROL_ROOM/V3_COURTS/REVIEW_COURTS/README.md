@@ -1,0 +1,2 @@
+# Independent reviewing
+Review exact worker SHA with source code/claims/alternatives. Accept scoped scientific analysis separately from new issued rules and native runnable person. A writer cannot review itself. Verdict ACCEPT_SCOPED/REVISE_PRECISE/HOLD with named defects, no arbitrary reruns.
