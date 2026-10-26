@@ -1,0 +1,32 @@
+{
+  "schema": "X01_TEST_MANIFEST@1",
+  "sourcefree_only": true,
+  "provider_calls": 0,
+  "focused_tests": [
+    {"file": "v3/tests/test_connector_and_field_injection.py", "result": "11 passed", "log": "TEST_SOURCE_AND_LOGS/test_connector_and_field_injection_pytest.log"},
+    {"file": "v3/tests/test_wave4.py", "result": "14 passed", "log": "TEST_SOURCE_AND_LOGS/test_wave4_pytest.log"},
+    {"file": "v3/tests/test_llm_contract.py", "result": "18 passed", "log": "TEST_SOURCE_AND_LOGS/test_llm_contract_pytest.log"},
+    {"file": "v3/tests/test_v5_baseline_load.py", "result": "8 passed", "log": "TEST_SOURCE_AND_LOGS/test_v5_baseline_load_pytest.log"}
+  ],
+  "full_suite": {
+    "command": "python3 -B run_v3_tests.py v3/tests",
+    "result": "150 passed, 1 failed",
+    "failure": "test_persona_sheet_integrity::... country canonicalization MDV vs Maldives (environment/data; not M15/M17/M22/M36)",
+    "log": "TEST_SOURCE_AND_LOGS/v3_tests_full_improved_bridge.log",
+    "bridge_note": "PyYAML absent; read-only Ruby Psych bridge. The simpler bridge additionally fails test_metabolization_effects::test_get_template_for_age because JSON stringifies numeric YAML keys; the faithful bridge converts them back to ints."
+  },
+  "probes": [
+    {"script": "probe_v3_x01.py", "output": "probe_v3_x01_output.json"},
+    {"script": "probe_v3_x01_one_parent.py", "output": "probe_v3_x01_one_parent.json"},
+    {"script": "probe_v3_x01_backbone.py", "output": "probe_v3_x01_backbone.json"}
+  ],
+  "not_run": [
+    "current S44/S49/C9/C12/S50 actual-person integration",
+    "native actor/source/rule/C8/C9/C11/C12/Pyat N11/N12",
+    "paid model/provider call",
+    "raw survey/original respondent data",
+    "V2 conversation run",
+    "official Astra K1-K11"
+  ],
+  "claim_ceiling": "Historical source behavior and sourcefree probes only; no human developmental law, empirical validity or current person."
+}

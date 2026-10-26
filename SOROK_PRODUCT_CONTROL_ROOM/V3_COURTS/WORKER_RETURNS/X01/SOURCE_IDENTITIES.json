@@ -1,0 +1,305 @@
+{
+  "additional_required_files": [
+    {
+      "bytes": 3732,
+      "evidence": "matches ADP_007_V3_ACTOR_INITIALIZATION/AUTHORITY.json and top-level staging zip entry",
+      "path": "v3/io/parent_baseline_from_behavior.py",
+      "sha256": "4e5be6448a5b76c413492ec2a83b62d9e9a2247ce131a094727d974a17cf750b"
+    },
+    {
+      "bytes": 6436,
+      "evidence": "matches top-level Rawlsing_code_bundle_staging/v3/... staging zip entry; no separate frozen authority hash found",
+      "path": "v3/engine/expectation_events.py",
+      "sha256": "307ae929a43935170a2f792b4a702a02ac54819a4fa897aa3fef4a099a96cb49"
+    },
+    {
+      "bytes": 19066,
+      "evidence": "matches CAN_012_V3_RUPTURE_METABOLIZATION/AUTHORITY and top-level staging zip entry",
+      "path": "v3/engine/effects/delta_templates.py",
+      "sha256": "7d99ddf26fd45b52e5e3c10074066ba5e06d17cdaf1fabad06298af3770815f0"
+    },
+    {
+      "bytes": 33465,
+      "evidence": "matches ADP_007/CAN_011/CAN_009 authority records and top-level staging zip entry",
+      "path": "v3/io/identity_to_backbone.py",
+      "sha256": "cb29c9595ac495c3b69b693d4c58a278e9ef1f63a7a8917d8e407920fbd3bdda"
+    },
+    {
+      "bytes": 17502,
+      "evidence": "matches CAN_017_V2_EXPRESSION_REGISTER/AUTHORITY and top-level staging zip entry",
+      "path": "v3/engine/prompts.py",
+      "sha256": "4702de20590579c3c4543dfa5139aa4a3ce6df47ed1aee2c92c800d5a3038d57"
+    },
+    {
+      "bytes": 7216,
+      "evidence": "local source input; hash computed",
+      "path": "v3/need_axis_rules.yaml",
+      "sha256": "e18cb396cc5dfba28cad1681ca86fb855496a2261b7942d408eedcccbf67bf95"
+    },
+    {
+      "bytes": 10083,
+      "evidence": "local source input; hash computed",
+      "path": "v3/proxy_striving_map.yaml",
+      "sha256": "a9f4e9bdf5a9942e9de9c82b839c1e6f5e4aadef56ee83bdbe53ca6beb150f2c"
+    },
+    {
+      "bytes": 14498,
+      "evidence": "local source input; hash computed",
+      "path": "v3/expectation_event_templates.yaml",
+      "sha256": "4fead2145e6b5695d016e6d22f7dc52349ac43c970c21875b49f728e9d5e0fee"
+    },
+    {
+      "bytes": 10512,
+      "evidence": "matches CAN_012 authority and top-level staging zip entry",
+      "path": "v3/engine/effects/rupture_templates.yaml",
+      "sha256": "8c1821659a5335b511555b3c41b0a3b67fee9a05793e91afd1bfe29deafa7c94"
+    },
+    {
+      "bytes": 18493,
+      "evidence": "local source input; hash computed",
+      "path": "v3/v3config.yaml",
+      "sha256": "5efc71e3f1b6f6a188df8b650a16bb16db099db8448655816e10989129221ba9"
+    }
+  ],
+  "archive_caveat": {
+    "local_staging_zip": "<USER_HOME>/Desktop/Rawlsing/Rawlsing_code_bundle_staging.zip",
+    "local_zip_sha256": "3f2c5ed925273153a4f300f75e54524729f0b4fef9974957be1f3cd887c91289",
+    "td_r05_archive_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "verdict": "LOCAL_ZIP_IS_NOT_THE_TD_R05_ARCHIVE; archive-level exactness is NOT claimed. File-level 31/31 S50 hashes and independent authority-file hashes are the evidence."
+  },
+  "authority": "HISTORICAL V3 READ-ONLY; no native actor/source/rule/C8/C9/C11/C12/Pyat grant.",
+  "branch": "agent/v3court-x01-expectations-child-model-r1",
+  "claim_ceiling": "Function-level historical source behavior and sourcefree probes only; no human developmental law, empirical validity, or current person.",
+  "current_integration": "NOT_VERIFIED; S50 actual root remains SOURCE_OWNER_HOLD; no C9/C12 person test.",
+  "probes": [
+    "TEST_SOURCE_AND_LOGS/probe_v3_x01.py",
+    "TEST_SOURCE_AND_LOGS/probe_v3_x01_output.json",
+    "TEST_SOURCE_AND_LOGS/probe_v3_x01_one_parent.py",
+    "TEST_SOURCE_AND_LOGS/probe_v3_x01_one_parent.json",
+    "TEST_SOURCE_AND_LOGS/probe_v3_x01_backbone.py",
+    "TEST_SOURCE_AND_LOGS/probe_v3_x01_backbone.json"
+  ],
+  "repo": "maidiu/rawlsing (private)",
+  "s50_identity_manifest": {
+    "archive_identity_not_rehashed_zip": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "exact_count": 31,
+    "path": "<USER_HOME>/.codex/worktrees/10f2/Rawlsing/WORKER_COMMISSIONS/SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1/01_SOURCE_IDENTITIES.json",
+    "selected_count": 31,
+    "selected_files": [
+      {
+        "bytes": 26310,
+        "path": "v3/core/state.py",
+        "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2"
+      },
+      {
+        "bytes": 15671,
+        "path": "v3/core/derived.py",
+        "sha256": "e479fc3eba21734752c372742fb2ee247cbdde6a73ac42545dc30b5039301360"
+      },
+      {
+        "bytes": 14846,
+        "path": "v3/core/invariants.py",
+        "sha256": "81298f3fc51b46cda8d72d0db914b672b17b9a35e13004fe59a9b0e29dada5e3"
+      },
+      {
+        "bytes": 2537,
+        "path": "v3/core/year_record.py",
+        "sha256": "4bbd7518a6ec8bc8dd22758a2f9e876882253dfd59021a998a6d541b23e5cfc2"
+      },
+      {
+        "bytes": 16520,
+        "path": "v3/v3_yearly_step_order.yaml",
+        "sha256": "90496a2cc852ca00ef99c8bd4fcb2b41c9aa43c4aaa9108d3ac8cce0ebe22ffc"
+      },
+      {
+        "bytes": 9190,
+        "path": "v3/engine/yearly_step.py",
+        "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb"
+      },
+      {
+        "bytes": 1183,
+        "path": "v3/engine/step_runner.py",
+        "sha256": "5a737c1704eaa6dc2c67f6c2db3118a6daa8a213b44d559bc37eadbc9c09d95a"
+      },
+      {
+        "bytes": 39455,
+        "path": "v3/engine/llm_contract.py",
+        "sha256": "f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf"
+      },
+      {
+        "bytes": 18926,
+        "path": "v3/engine/run_llm_band.py",
+        "sha256": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38"
+      },
+      {
+        "bytes": 8371,
+        "path": "v3/engine/event_engine.py",
+        "sha256": "b57e7ef4df5dabd996dc7de19c1c2c273ad90ee89d73570df1fd85674dd98ded"
+      },
+      {
+        "bytes": 12955,
+        "path": "v3/engine/scoring.py",
+        "sha256": "36833287c72ffa40d0ece1ebc66fb0d685a92fc71aab1d211be9b21bfd0a82cb"
+      },
+      {
+        "bytes": 5048,
+        "path": "v3/engine/expectation_baseline.py",
+        "sha256": "632e1e608bfc674a241e57bafa24e91834a2b8bdc3e4ed326dae6fca4e695d43"
+      },
+      {
+        "bytes": 10950,
+        "path": "v3/engine/striving_objects.py",
+        "sha256": "78c79a9312b05aa51220d09bb63c91cafd6bb204f2c398ac1876b1ef3144c1c3"
+      },
+      {
+        "bytes": 3689,
+        "path": "v3/engine/active_magnets.py",
+        "sha256": "68a7b75aa4bb98f7251f72a05747425edb40d24edbe06611ce998e7b6c26a391"
+      },
+      {
+        "bytes": 40775,
+        "path": "v3/psyche/flow.py",
+        "sha256": "6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d"
+      },
+      {
+        "bytes": 1220,
+        "path": "v3/psyche/metabolism.py",
+        "sha256": "a456ad861a9e40d1f2bfef9e51c008657eeca86235ca27812f2186683359ebb3"
+      },
+      {
+        "bytes": 6506,
+        "path": "v3/psyche/vitality.py",
+        "sha256": "56fed88e37299862774b2401c9a7e43363de6d6bb47a78f8f4744dcc6f91e912"
+      },
+      {
+        "bytes": 3059,
+        "path": "v3/systems/relational_field.py",
+        "sha256": "75cfd5f27528ee00306de353b730d50ab3fc028970c11afcf84edea7eea7b8cd"
+      },
+      {
+        "bytes": 1490,
+        "path": "v3/systems/alienation.py",
+        "sha256": "2209d8171a14f18c252e847e2d0beb113d574e1378c49d2fb7e7f43513106207"
+      },
+      {
+        "bytes": 4559,
+        "path": "v3/systems/frameworks.py",
+        "sha256": "0d59fc6e177009da92e39eb61ea729eace97f50392baa93999cb6513f81dd2cb"
+      },
+      {
+        "bytes": 3792,
+        "path": "v3/systems/topology.py",
+        "sha256": "4e3b9b64399dfcfad67a431729d9443767d5e074080ef6b51bc1c8df48711560"
+      },
+      {
+        "bytes": 7320,
+        "path": "v3/render/phenomenology.py",
+        "sha256": "f2f18c1d9ba705212846af41b33cb1dfd2ad986dae4b686873687c2e6d1a653d"
+      },
+      {
+        "bytes": 11091,
+        "path": "v3/V3_UNDERLIES_V2_ARTICULATION.md",
+        "sha256": "5a0f11276a830b959df72653016ca77848dbd81de4adb9fa641bd4244c4f4ced"
+      },
+      {
+        "bytes": 24010,
+        "path": "v3/OVERVIEW_INTEGRATED.md",
+        "sha256": "b1536a9817108ccf322c59f3ce9e1c3f6b8688394341a081287b5e6518da326a"
+      },
+      {
+        "bytes": 12362,
+        "path": "v3/FLOW_AND_WIRING.md",
+        "sha256": "0855b62a8bebc12da0014db96ef3165ab7453280f4c0f13016617e1829461efd"
+      },
+      {
+        "bytes": 8905,
+        "path": "v3/HOW_BASELINE_STRIVING_MAGNETS_RUPTURE_WORK.md",
+        "sha256": "308ab6ef75e6e31e63f00f4626a9fcc22b14035a45a62654a04271619b7e9867"
+      },
+      {
+        "bytes": 7747,
+        "path": "v3/EXPECTATION_BASELINE_AND_STRIVING_FLOW.md",
+        "sha256": "248d1b8d83784cb87198361beab9d0e8b5eaaee29eff53502f628391be3411e6"
+      },
+      {
+        "bytes": 7291,
+        "path": "v2/ENNEAGRAM_EMERGENCE_SYSTEM.md",
+        "sha256": "95f8876926dda96a33c36925aedacee65645c74863cff68241e6b67457f819ab"
+      },
+      {
+        "bytes": 34624,
+        "path": "v2/PERSONA_CONVERSATION_ENGINE_SPEC.md",
+        "sha256": "0b0ee1d5e177b22236007ddb15053e4f1d3fc34f69aae8b44e16446def9250d7"
+      },
+      {
+        "bytes": 12093,
+        "path": "v2/LIFE_SIMULATION_LAYER.md",
+        "sha256": "e8589a59150e6f9fda963502d28317ca4538b75e368aa3ebfbe5e3b692b890d4"
+      },
+      {
+        "bytes": 114499,
+        "path": "v2/conversation_engine.py",
+        "sha256": "766bee296379f0faadbede55106bcee0123e9563c965d0e28f8806cedea06135"
+      }
+    ]
+  },
+  "schema": "X01_SOURCE_IDENTITIES@1",
+  "sealed_startup": "2647a4cf25d8bb33a00471e1af9c5e58c2825efb",
+  "sourcefree_tests": {
+    "full_v3_tests": "150 passed, 1 environment/data failure (country canonicalization MDV->Maldives)",
+    "simple_bridge_note": "149 passed, 2 failed with the simpler YAML bridge; the extra failure was a Ruby-JSON numeric-key artifact in rupture templates, removed by the faithful numeric-key bridge.",
+    "test_connector_and_field_injection": "11 passed",
+    "test_llm_contract": "18 passed",
+    "test_v5_baseline_load": "8 passed",
+    "test_wave4": "14 passed"
+  },
+  "supporting_files": [
+    {
+      "bytes": 26839,
+      "path": "v3/io/json_codec.py",
+      "sha256": "c4bc07dd73c249c35d788f5b459f4b0c1b23702a7d55157a4eb3fdbc74b1cf14"
+    },
+    {
+      "bytes": 47740,
+      "path": "v3/io/persona_sheet.py",
+      "sha256": "4a0009533443baef2786fc498c7f8db3ead7d133d8ee7e97e6d7128d4322a00e"
+    },
+    {
+      "bytes": 39455,
+      "path": "v3/engine/llm_contract.py",
+      "sha256": "f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf"
+    },
+    {
+      "bytes": 12955,
+      "path": "v3/engine/scoring.py",
+      "sha256": "36833287c72ffa40d0ece1ebc66fb0d685a92fc71aab1d211be9b21bfd0a82cb"
+    },
+    {
+      "bytes": 18926,
+      "path": "v3/engine/run_llm_band.py",
+      "sha256": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38"
+    },
+    {
+      "bytes": 9190,
+      "path": "v3/engine/yearly_step.py",
+      "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb"
+    },
+    {
+      "bytes": 53782,
+      "path": "v2/run_full_simulation_with_llm_log.py",
+      "sha256": "b7d727e2732c5520e663e047c9815eead3b24d41be8b63edc55279bb01f66064"
+    },
+    {
+      "bytes": 48212,
+      "path": "server/generation/simulation.py",
+      "sha256": "5d68ffe3bc6902dc60b90625443a03127cf0d04b4eed4327270a3a0226bc78d1"
+    },
+    {
+      "bytes": 244262,
+      "path": "v2/spec.py",
+      "sha256": "f7ca16a7addf4dd1bd155a985586f926f1a4c31f127b829bcb8056c851d58296"
+    }
+  ],
+  "user_confirmed_source_root": "<USER_HOME>/Desktop/Rawlsing/Rawlsing_code_bundle_staging",
+  "v3_subtree": "<USER_HOME>/Desktop/Rawlsing/Rawlsing_code_bundle_staging/v3"
+}

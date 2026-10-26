@@ -1,0 +1,447 @@
+{
+  "alienation_delta_check": {
+    "after_scalar": 50.0,
+    "after_vector": {
+      "distant_others": 50.0,
+      "moral_totality": 50.0,
+      "near_others": 50.0,
+      "self": 50.0
+    },
+    "before_scalar": 0.0,
+    "before_vector": {
+      "distant_others": 50.0,
+      "moral_totality": 50.0,
+      "near_others": 50.0,
+      "self": 50.0
+    },
+    "delta": 3.0,
+    "dynamic_attrs": {
+      "affective": 53.0,
+      "institutional": 53.0,
+      "structural": 53.0
+    }
+  },
+  "axis_rules_application": {
+    "actual_rules": {
+      "attachment": "hopeful",
+      "autonomy": "hopeful",
+      "beauty_play": "hopeful",
+      "belonging": "hopeful",
+      "competence": "hopeful",
+      "eros_intimacy": "hopeful",
+      "justice": "hopeful",
+      "meaning": "hopeful",
+      "safety": "hopeful",
+      "status": "hopeful"
+    },
+    "empty_rules": {
+      "attachment": "hopeful",
+      "autonomy": "hopeful",
+      "beauty_play": "hopeful",
+      "belonging": "hopeful",
+      "competence": "hopeful",
+      "eros_intimacy": "hopeful",
+      "justice": "hopeful",
+      "meaning": "hopeful",
+      "safety": "hopeful",
+      "status": "hopeful"
+    }
+  },
+  "baseline_after_event": {
+    "after": {
+      "attachment": "forbidden",
+      "status": "hopeless"
+    },
+    "before": {
+      "attachment": "forbidden",
+      "status": "hopeless"
+    }
+  },
+  "baseline_after_striving_step": {
+    "attachment": "forbidden",
+    "autonomy": "hopeful",
+    "beauty_play": "hopeful",
+    "belonging": "hopeful",
+    "competence": "hopeful",
+    "eros_intimacy": "hopeful",
+    "justice": "hopeful",
+    "meaning": "hopeful",
+    "safety": "hopeful",
+    "status": "hopeful"
+  },
+  "cases": {
+    "cold_high_material": {
+      "case": "cold_high_material",
+      "child_model": {
+        "assumed_rules": [
+          "Institutions can hurt you.",
+          "You don't belong by default.",
+          "You don't get to choose."
+        ],
+        "taboos": [
+          "police",
+          "authority",
+          "rejection",
+          "being excluded",
+          "saying no",
+          "choosing for yourself"
+        ],
+        "what_counts_as_possible": "narrow"
+      },
+      "derived_child_baseline": {
+        "attachment": "hopeful",
+        "autonomy": "forbidden",
+        "beauty_play": "hopeful",
+        "belonging": "forbidden",
+        "competence": "hopeful",
+        "eros_intimacy": "hopeful",
+        "justice": "hopeful",
+        "meaning": "hopeful",
+        "safety": "forbidden",
+        "status": "hopeful"
+      },
+      "inferred_parent_baseline": {
+        "attachment": "hopeful",
+        "autonomy": "forbidden",
+        "beauty_play": "hopeful",
+        "belonging": "forbidden",
+        "competence": "hopeful",
+        "eros_intimacy": "hopeful",
+        "justice": "hopeful",
+        "meaning": "hopeful",
+        "safety": "forbidden",
+        "status": "hopeful"
+      },
+      "parent_identity": {
+        "parent_behavior": {
+          "father": {
+            "parental_authority": 80,
+            "parental_material_support": 80,
+            "parental_warmth": 30
+          },
+          "mother": {
+            "parental_authority": 80,
+            "parental_material_support": 80,
+            "parental_warmth": 30
+          }
+        }
+      },
+      "rules_loaded": true,
+      "transmission_regime": {
+        "anxiety": 70.0,
+        "coercion": 80.0,
+        "modeling_consistency": 41.0,
+        "openness": 20.0,
+        "shame": 60.0,
+        "warmth": 30.0
+      }
+    },
+    "loving_low_material": {
+      "case": "loving_low_material",
+      "child_model": {
+        "assumed_rules": [
+          "Status is for others.",
+          "You're not allowed to be good at this."
+        ],
+        "taboos": [
+          "status",
+          "success in front of others",
+          "showing off",
+          "being better"
+        ],
+        "what_counts_as_possible": "medium"
+      },
+      "derived_child_baseline": {
+        "attachment": "entitled",
+        "autonomy": "entitled",
+        "beauty_play": "entitled",
+        "belonging": "entitled",
+        "competence": "forbidden",
+        "eros_intimacy": "entitled",
+        "justice": "entitled",
+        "meaning": "entitled",
+        "safety": "entitled",
+        "status": "forbidden"
+      },
+      "inferred_parent_baseline": {
+        "attachment": "hopeful",
+        "autonomy": "hopeful",
+        "beauty_play": "hopeful",
+        "belonging": "hopeful",
+        "competence": "hopeless",
+        "eros_intimacy": "hopeful",
+        "justice": "hopeful",
+        "meaning": "hopeful",
+        "safety": "hopeful",
+        "status": "hopeless"
+      },
+      "parent_identity": {
+        "parent_behavior": {
+          "father": {
+            "parental_authority": 45,
+            "parental_material_support": 20,
+            "parental_warmth": 85
+          },
+          "mother": {
+            "parental_authority": 45,
+            "parental_material_support": 20,
+            "parental_warmth": 85
+          }
+        }
+      },
+      "rules_loaded": true,
+      "transmission_regime": {
+        "anxiety": 15.0,
+        "coercion": 45.0,
+        "modeling_consistency": 79.0,
+        "openness": 55.0,
+        "shame": 50.0,
+        "warmth": 85.0
+      }
+    },
+    "loving_low_material_environment": {
+      "case": "loving_low_material_environment",
+      "child_model": {
+        "assumed_rules": [
+          "Status is for others.",
+          "You're not allowed to be good at this."
+        ],
+        "taboos": [
+          "status",
+          "success in front of others",
+          "showing off",
+          "being better"
+        ],
+        "what_counts_as_possible": "medium"
+      },
+      "derived_child_baseline": {
+        "attachment": "entitled",
+        "autonomy": "entitled",
+        "beauty_play": "entitled",
+        "belonging": "entitled",
+        "competence": "forbidden",
+        "eros_intimacy": "entitled",
+        "justice": "entitled",
+        "meaning": "entitled",
+        "safety": "entitled",
+        "status": "forbidden"
+      },
+      "inferred_parent_baseline": {
+        "attachment": "hopeful",
+        "autonomy": "hopeful",
+        "beauty_play": "hopeful",
+        "belonging": "hopeful",
+        "competence": "hopeless",
+        "eros_intimacy": "hopeful",
+        "justice": "hopeful",
+        "meaning": "hopeful",
+        "safety": "hopeful",
+        "status": "hopeless"
+      },
+      "parent_identity": {
+        "parent_behavior": {
+          "father": {
+            "parental_authority": 45,
+            "parental_material_support": 20,
+            "parental_warmth": 85
+          },
+          "mother": {
+            "parental_authority": 45,
+            "parental_material_support": 20,
+            "parental_warmth": 85
+          }
+        }
+      },
+      "rules_loaded": true,
+      "transmission_regime": {
+        "anxiety": 15.0,
+        "coercion": 45.0,
+        "modeling_consistency": 79.0,
+        "openness": 55.0,
+        "shame": 50.0,
+        "warmth": 85.0
+      }
+    },
+    "missing_parent": {
+      "case": "missing_parent",
+      "child_model": {
+        "assumed_rules": [
+          "Adults are mostly fair",
+          "Friends don't betray you in public",
+          "Home is safe"
+        ],
+        "taboos": [
+          "sex",
+          "police",
+          "money shame"
+        ],
+        "what_counts_as_possible": "medium"
+      },
+      "derived_child_baseline": {
+        "attachment": "hopeful",
+        "autonomy": "hopeful",
+        "beauty_play": "hopeful",
+        "belonging": "hopeful",
+        "competence": "hopeful",
+        "eros_intimacy": "hopeful",
+        "justice": "hopeful",
+        "meaning": "hopeful",
+        "safety": "hopeful",
+        "status": "hopeful"
+      },
+      "inferred_parent_baseline": {
+        "attachment": "hopeful",
+        "autonomy": "hopeful",
+        "beauty_play": "hopeful",
+        "belonging": "hopeful",
+        "competence": "hopeful",
+        "eros_intimacy": "hopeful",
+        "justice": "hopeful",
+        "meaning": "hopeful",
+        "safety": "hopeful",
+        "status": "hopeful"
+      },
+      "parent_identity": {},
+      "rules_loaded": true,
+      "transmission_regime": {
+        "anxiety": 50.0,
+        "coercion": 50.0,
+        "modeling_consistency": 60.0,
+        "openness": 50.0,
+        "shame": 50.0,
+        "warmth": 50.0
+      }
+    }
+  },
+  "child_model_defaults": {
+    "forbidden_attachment_safety": {
+      "assumed_rules": [
+        "Adults can leave; attachment is not guaranteed.",
+        "Institutions can hurt you."
+      ],
+      "taboos": [
+        "abandonment",
+        "being left",
+        "police",
+        "authority"
+      ],
+      "what_counts_as_possible": "wide"
+    },
+    "missing_parent_baseline": {
+      "assumed_rules": [
+        "Adults are mostly fair",
+        "Friends don't betray you in public",
+        "Home is safe"
+      ],
+      "taboos": [
+        "sex",
+        "police",
+        "money shame"
+      ],
+      "what_counts_as_possible": "medium"
+    }
+  },
+  "environment_ignored": {
+    "with_high_precarity": {
+      "attachment": "hopeful",
+      "autonomy": "hopeful",
+      "beauty_play": "hopeful",
+      "belonging": "hopeful",
+      "competence": "hopeful",
+      "eros_intimacy": "hopeful",
+      "justice": "hopeful",
+      "meaning": "hopeful",
+      "safety": "hopeful",
+      "status": "hopeful"
+    },
+    "without_env": {
+      "attachment": "hopeful",
+      "autonomy": "hopeful",
+      "beauty_play": "hopeful",
+      "belonging": "hopeful",
+      "competence": "hopeful",
+      "eros_intimacy": "hopeful",
+      "justice": "hopeful",
+      "meaning": "hopeful",
+      "safety": "hopeful",
+      "status": "hopeful"
+    }
+  },
+  "shard_cases": {
+    "fulfillment": {
+      "baseline_after": {
+        "attachment": "hopeful"
+      },
+      "disruption_shards": [],
+      "expectation_type": "fulfillment",
+      "gift_shards": [
+        {
+          "age": 8,
+          "id": "gs_2024_8_0",
+          "label": "Parent works late but calls to say she loves me",
+          "need_axis": "attachment",
+          "opacity": "low",
+          "prediction_error": "medium",
+          "striving_object_id": "so_attachment",
+          "valence": "positive",
+          "year": 2024
+        }
+      ],
+      "striving_after": [
+        {
+          "active": true,
+          "costs": [],
+          "feasibility_belief": 50,
+          "id": "so_attachment",
+          "identity_load": 65,
+          "investment": 70,
+          "label": "Parent closeness",
+          "need_axis": "attachment",
+          "recent_momentum": 0,
+          "secrecy": 0,
+          "social_support": 50,
+          "started_age": 3,
+          "tags": []
+        }
+      ]
+    },
+    "violation": {
+      "baseline_after": {
+        "attachment": "hopeful"
+      },
+      "disruption_shards": [
+        {
+          "age": 8,
+          "id": "ds_2024_8_0",
+          "label": "Parent works late but calls to say she loves me",
+          "malheur_risk": true,
+          "need_axis": "attachment",
+          "opacity": "high",
+          "prediction_error": "high",
+          "striving_object_id": "so_attachment",
+          "valence": "negative",
+          "year": 2024
+        }
+      ],
+      "expectation_type": "violation",
+      "gift_shards": [],
+      "striving_after": [
+        {
+          "active": true,
+          "costs": [],
+          "feasibility_belief": 50,
+          "id": "so_attachment",
+          "identity_load": 65,
+          "investment": 70,
+          "label": "Parent closeness",
+          "need_axis": "attachment",
+          "recent_momentum": 0,
+          "secrecy": 0,
+          "social_support": 50,
+          "started_age": 3,
+          "tags": []
+        }
+      ]
+    }
+  }
+}

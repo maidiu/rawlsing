@@ -1,0 +1,63 @@
+......................................F...F............................. [ 47%]
+........................................................................ [ 95%]
+.......                                                                  [100%]
+=================================== FAILURES ===================================
+_____________ TestMetabolizationEffects.test_get_template_for_age ______________
+
+self = <v3.tests.test_metabolization_effects.TestMetabolizationEffects testMethod=test_get_template_for_age>
+
+    def test_get_template_for_age(self) -> None:
+        templates = load_rupture_templates()
+        if not templates:
+            self.skipTest("no rupture_templates.yaml or yaml missing")
+        t = get_template_for_age(templates, 14)
+>       self.assertIsNotNone(t)
+E       AssertionError: unexpectedly None
+
+v3/tests/test_metabolization_effects.py:40: AssertionError
+_ TestPersonaSheetIntegrity.test_field_provenance_records_defaulted_fields_and_coherence_warnings _
+
+self = <v3.tests.test_persona_sheet_integrity.TestPersonaSheetIntegrity testMethod=test_field_provenance_records_defaulted_fields_and_coherence_warnings>
+
+    def test_field_provenance_records_defaulted_fields_and_coherence_warnings(self) -> None:
+        state = BackboneState(year=2026, age=31)
+        derived = compute_all_derived(state)
+        sheet = build_persona_sheet(
+            state,
+            derived,
+            identity_override={
+                "country": "MDV",
+                "locality": "Bogota",
+                "languages": ["English", "or mute"],
+                "_source_provenance": {
+                    "ethnic": {"source_family": "provided", "fallback_used": False},
+                    "religion_language": {
+                        "source_family": "provided",
+                        "source_method": "manual",
+                        "fallback_used": False,
+                        "language_found": True,
+                        "fallback_reason": "",
+                    },
+                    "location": {
+                        "source_family": "geonames",
+                        "geo_country_code_used": "BR",
+                        "city_found": True,
+                        "fallback_used": False,
+                        "fallback_reason": "",
+                    },
+                },
+            },
+        )
+
+        metadata = sheet["metadata"]
+        self.assertEqual(metadata["field_provenance"]["given_name"]["source"], "defaulted")
+>       self.assertEqual(metadata["field_provenance"]["country"]["canonical_name"], "Maldives")
+E       AssertionError: 'MDV' != 'Maldives'
+E       - MDV
+E       + Maldives
+
+v3/tests/test_persona_sheet_integrity.py:49: AssertionError
+=========================== short test summary info ============================
+FAILED v3/tests/test_metabolization_effects.py::TestMetabolizationEffects::test_get_template_for_age
+FAILED v3/tests/test_persona_sheet_integrity.py::TestPersonaSheetIntegrity::test_field_provenance_records_defaulted_fields_and_coherence_warnings
+2 failed, 149 passed in 231.37s (0:03:51)
