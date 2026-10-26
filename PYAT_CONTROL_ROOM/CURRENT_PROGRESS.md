@@ -1,3 +1,10 @@
+# R143 — sourcefree production ingress engineering accepted
+
+R14220hashesbytes/unchangedcode/directremote verified. Exact44e7ace sourcefree mechanical scope independently accepted: repeatedvalues/identity/scopefailures, predecode externalpermission zeroI/O/recheck/custody, nativefullfrontierdiscovery/no-drop/restore. Close repairloop, no furtherconfidencecourt. Actual source/package/access/science/trustedruntime and realempiricalANDlearned->FF milestone remain unproved; boundedHQHigh exactsourcebinding next. Full35/1890/F1-F8/global/LongMemory/C5parallel andallholds preserved.
+
+
+## Earlier progress history retained
+
 # R142 — combined production ingress qualification
 
 R14110hashesbytes/2blobs/allowlist/directremote and R140prior15/6blobs verified. Same existing distinct reviewer launched exactcandidate combining actualvalues/queryscope repair, sourcepermission-beforedecode, nativefullfrontierdiscovery/no-drop/refusal/restoration. No actualsource/issuer/science/learned/FF/all35claim. Qualifyexactengineeringboundary or repairdemonstrateddefect; actualsourcepipeline milestone next. Fullgoal/holds retained.
