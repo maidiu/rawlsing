@@ -1,3 +1,10 @@
+# R131 native support -> M1
+
+Bounded High determined existing native targetcell support law can be explicitly bound as technical EXACT_PINNED_REPLAY, no new truth-bearing/statistical/structural claim. Frozen contract + existing OpenCode actual author, actual real artifact values required; exact M2 release if permitted or refusal. No rawsource/checkpoint reread, currentness, new engine or fullmilestone claim. Direct lawful empirical ingress need not wait for this adapter. Distinct review after terminal. High complete, Low next.
+
+
+## Earlier progress history retained
+
 # R130 actual M1 validation boundary
 
 R129 verified6 hashes/bytes/delta/directremote. Real retained evidence builds M1 input with original producer snapshotcatalog+unique support. Duplicateguard preserved; snapshot sever/restore correct. Scoped input composition accepted, no learnedpositive. Next bounded High exact inherited D02 family-law/M1 binding decision: faithful adapter or real scientific gap. No generalcourt or rawsource, fullscope/parallelC5/allholds retained.
