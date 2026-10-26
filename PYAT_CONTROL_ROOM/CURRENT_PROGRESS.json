@@ -1,7 +1,7 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 153,
+  "revision": 154,
   "r39_return_intake": {
     "status": "WORKER_AUTHOR_EVIDENCE_RECEIVED__NO_INDEPENDENT_ADOPTION",
     "startup": "2e6c189fd54b818556a44419b19691938ea76d5a",
@@ -2953,7 +2953,7 @@
     ],
     "acceptance": "Author result is candidate; distinct reviewer independently qualifies exact candidate, then HQ scoped disposition. R09 local is not deployed enforcement."
   },
-  "next_action": "Single scheduled R154 intake: read ordered-resume logs/actualtaskledger and exact acquisitionrequests; supply needed evidence. Sameworker finishes each focusedtask+check before next, continue unaffectedblocked lanes. No perfieldcommission.",
+  "next_action": "R154 current job SOURCE->existingPRE553: intake exactpriorprep reconciliation/currentingress nativepackage and acquisitionrequests, no FFgate or generic repeatedrights/roles blocker. Existingworker finishes focused orderedtasks; no newwrapper.",
   "active_r61_native_workers": [
     {
       "node": "R01",
@@ -23118,6 +23118,36 @@
         }
       ],
       "next_action": "Single scheduled R154 intake: read ordered-resume logs/actualtaskledger and exact acquisitionrequests; supply needed evidence. Sameworker finishes each focusedtask+check before next, continue unaffectedblocked lanes. No perfieldcommission."
+    }
+  },
+  "r154b": {
+    "checkpoint_id": "20261026-PYAT-HQ-R154B-SOURCE-TO-PRE553-SCOPE-R1",
+    "summary": "# R154 source-to-PRE553\n\nUser explicitly corrects boundary to SOURCE->PRE553, ready actualfiles for EXISTING pre-FFpipeline, reuse priorpreparedwork. SameR154authorPID72027 sealed3a8c33a855896f4f7d2713919a690c624f01664c scopeoverride: first exactexistingprep producer/config/artifact reconciliation, actualcurrentingressfield requirements; eliminate FF downstreamgates and generic everyPACKAGE rights/rolesblockers. Preserve currentstore35exports/orderedtasks, gatheronlydemonstratedmissingfacts, native sourceinput load/coldreplay. Currentfutureexecutionrights distinct from metadata/input readiness. No freshrespondentanalysis/export or broaderholds changed. Read pre553-resume stdout/stderr from launchreceipt.\n",
+    "updates": {
+      "active_workers": [
+        {
+          "id": "R154_EXACT_ALL35_INPUT_COMPILATION",
+          "pid": 72027,
+          "session": "ses_e98c905cbffekusoHURfKyEUKG",
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01",
+          "branch": "agent/opencode-pyat-r154-exact-all35-input-compilation-r1",
+          "startup": "5e5e36354c426a447ccb54f2e13053a6c3fa2552",
+          "commission_tip": "91ac65ad3ee86444613eb3234da5e96d4e19b209",
+          "commission_path": "WORKER_COMMISSIONS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/00_COMMISSION.md",
+          "return_root": "WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1",
+          "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r154-exact-input-compilation",
+          "state": "ACTUALLY_RESUMED_SAME_JOB_SOURCE_TO_PRE553_SCOPE_CORRECTED",
+          "actual_tool_preflight": "PENDING",
+          "ordered_addendum_commit": "f6c865544193d7ae83679f766ea81c9238bbaeb4",
+          "ordered_addendum_path": "WORKER_COMMISSIONS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/01_ORDERED_EXECUTION_ADDENDUM.md",
+          "task_spec_path": "WORKER_COMMISSIONS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/02_TASK_QUEUE_SPEC.json",
+          "stdout": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r154-exact-input-compilation/pre553-resume.stdout.jsonl",
+          "stderr": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r61-r01/.r61/r154-exact-input-compilation/pre553-resume.stderr.log",
+          "scope_correction_commit": "3a8c33a855896f4f7d2713919a690c624f01664c",
+          "scope_correction_path": "WORKER_COMMISSIONS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/03_SOURCE_TO_PRE553_SCOPE_CORRECTION.md"
+        }
+      ],
+      "next_action": "R154 current job SOURCE->existingPRE553: intake exactpriorprep reconciliation/currentingress nativepackage and acquisitionrequests, no FFgate or generic repeatedrights/roles blocker. Existingworker finishes focused orderedtasks; no newwrapper."
     }
   }
 }
