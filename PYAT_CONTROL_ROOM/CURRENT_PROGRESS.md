@@ -1,3 +1,10 @@
+# R128 actual real retained artifact execution
+
+Direct user milestone + adopted retained-input lane supports exact private original-derived checkpoint recovery and native receiver compatibility. Input exists exact3.4GB; current hash/native reconstruction underway by existing OpenCode.16GiB host bounded3GiB streaming with installed ijson; no unsafe full-load. Zero rawsource/newmeasurement/science/actor permission. Not full learned or heterogeneous/fullestate completion. High bounded decision complete, Low next.
+
+
+## Earlier progress history retained
+
 # R127 source-use edge
 
 R126 terminal/custody verified; useful API corrections scoped, historical failed retry cannot override exact later final source-backed closure/checkpoint/zero-source success. Existing grammar adopted, no readoption needed. Returned Git N1 retrieval/hash executed PASS; no raw source. Advance exact representative empirical+learned scope/current use decision at bounded High, not another report repair or general hunt. Full program/parallel C5/holds preserved.
