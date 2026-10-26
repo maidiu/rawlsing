@@ -1,0 +1,11 @@
+# S51 return: review required, not accepted
+
+Author candidate `1703ef5fd1910027ccd9c03c4a4f8c0a566fccb1`, exact remote branch `codex/sorok-s51-situated-object-relevance` verified. Relative to accepted S49 base,18 files: S51 return subtree and small S39 model/S49 actor seams. The only untracked data is previously preserved S50 runtime output, not candidate code. Original author terminal exit0/stop; completion notification actually consumed by this HQ, not merely queue-acknowledged.
+
+HQ independently executed the four focused S51 tests: **4 PASS,5.34s**. This proves those cases only. The return reports recovered G18 B equipment-financing object, one-event hypothesis, paid offer, relevance and supplemental S49 reasons with OPEN choice. No native/current-purpose or completed person claim is accepted.
+
+Consequential independent review51 was actually launched with existing reviewer `ses_e98fa7144ffeXQs21DMwv7tro3` on exact candidate, own write scope `SOROK_REVIEW/S51/`. Records in existing reviewer checkout `.local-logs/sorok-attachment-reviewer/continuation-51.json/events.jsonl/exit.json/commission.txt`, launcher record `continuation-51-launch.json`. Existing completion job `sorok-s51-situated-object-relevance-review51` was observed WAITING before launch; only delivered/consumed review45 retired to preserve manifest16/dedupe.
+
+Review focuses on the actual commissioned causal boundary: enforced one-event hypothesis lifetime/order; offer-specific real actor access rather than an unrelated observation; actual independent world consequence/feasibility; canonical object/hypothesis/offer/access/relevance binding at the consumer; whether injected supplemental reasons can bypass source qualification; whether downstream content changes beyond arbitrary appended labels; and cold verification of dependencies rather than stored-receipt existence. No broad accepted-component review or native grant demand for the explicitly qualified experiment.
+
+Next consume the review, reproduce only concrete defects and repair through the original author where needed. No duplicate reviewer, new theory court, extra waiting model turn or product coding by HQ. Default S49/S48 holds and native-purpose gap remain; full adult Goal and SCI05/source/Pyat/human limits persist.
