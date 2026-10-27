@@ -421,13 +421,25 @@ def build_exceptions(source_id: str, result: Mapping[str, Any]) -> dict[str, Any
             "slice_id": slice_id,
         })
 
+    item_by_code = {i["source_variable_code"]: i["implementation_id"] for i in config["items"]}
+    slot_by_name = {p["name"]: f"physical_slots[{p['ordinal']}]:{p['name']}" for p in config["physical_slots"]}
+    item_docs_by_code = {i["source_variable_code"]: i for i in config["items"]}
     for residual in config["residuals"]:
+        item_label = "SOURCE_LEVEL"
+        refs = [source_ref, metadata_ref]
+        if "-EXCLUDED-" in residual["residual_id"]:
+            code = residual["scope"].split("/", 1)[-1]
+            item_label = item_by_code.get(code) or slot_by_name.get(code) or f"source_item:{code}"
+            if code in item_docs_by_code:
+                refs = list(item_docs_by_code[code]["evidence_refs"]) + [metadata_ref]
+            elif code in {p["name"] for p in config["physical_slots"]}:
+                refs = [metadata_ref]
         add(
             slice_id=residual["residual_id"],
-            item="SOURCE_LEVEL",
+            item=item_label,
             field=residual["field"],
             current=f"{residual['status']}: {residual['reason']}",
-            refs=[source_ref, metadata_ref],
+            refs=refs,
             missing=residual["reason"],
             affected=residual["dependent_operation"],
             unaffected=residual["unaffected_scope"],

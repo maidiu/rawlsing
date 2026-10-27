@@ -4,57 +4,62 @@
   "family": "Latinobarómetro",
   "wave": "1995",
   "source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
-  "config_sha256": "8fbe86b35fa5c903a738bf1e046078ed5cde0832bd297f51f69d6d777e0007b4",
-  "fixture_config_sha256": "020c4b4c80caa012b853f3b065f156aff500d7caf6c027106d6b438358c42e06",
-  "fixture_source_sha256": "74b66afa2c17863e70b01fcebdbbdfd9d8ba61dfcff7b2719dbed6ea98e969ab",
+  "config_sha256": "1c241014c136a9b58935dd536f72795afe15832688fa4b268bb264ad8533de99",
+  "fixture_config_sha256": "a1c9c738ddef09d272102c7f6dcf222664f5b20aa209d149cafb0243cb8fa8b9",
+  "fixture_source_sha256": "c7e3cd4ce10c795c08b5c97a0bbc57d8ef4ffd7da0cf30e0e3845c4b4e0333b9",
   "counts": {
     "physical_slots": 203,
     "original_items": 203,
-    "included_slots": 5,
-    "included_items": 4,
+    "included_slots": 189,
+    "included_items": 189,
+    "excluded_slots": 14,
+    "excluded_items": 14,
+    "response_questions": 183,
+    "response_slots": 183,
+    "coordinate_slots": 6,
     "crosswalk_physical_entries": 203,
     "crosswalk_codebook_entries": 203
   },
   "artifacts": [
     {
       "path": "rawlsing_next/source_configuration/data/SRC24/crosswalk.json",
-      "sha256": "a98e66fdbc9cf349af81af56c5c931c746291eb1cc504dba2739b048dff05e2c",
-      "bytes": 267305
+      "sha256": "d2d16f2e10f7d27191cd9d2f0a3056428d07edd9bdd62ec471764aec50d2dfda",
+      "bytes": 267123
     },
     {
       "path": "rawlsing_next/source_configuration/data/SRC24/source.config.json",
-      "sha256": "5a98e4962f9d42d1349ab3193dc8a3a60c71e4246a6cbd84ad0e09df1dd3d486",
-      "bytes": 839555
+      "sha256": "1cb6de80b546912347b99c2b04f43ebc47c67fba232b8275c91c88abb3a094d7",
+      "bytes": 3672224
     },
     {
       "path": "rawlsing_next/source_configuration/data/SRC24/field_evidence.json",
-      "sha256": "048ba3647be814d3dfbb58b4c6442ff9167ab68e015061eb2a0f79a54c9227ef",
-      "bytes": 329187
+      "sha256": "7b6631a97fc52a8a5524059907bd3cdf679096349eb6f442c8622f772f2e44dd",
+      "bytes": 339455
     },
     {
       "path": "source_pre553_validation/SRC24/fixture.json",
-      "sha256": "02c7fc1bfda603d452027a6883152fc59d8ad1387d9a4ad5ca070b6faee4fa11",
-      "bytes": 11940
+      "sha256": "055b478a1bf958fe595cba74867909d41893e1aa6cae87ec9a7648eef47360d2",
+      "bytes": 320947
     },
     {
       "path": "source_pre553_validation/SRC24/fixture.config.json",
-      "sha256": "f77fb9e4b131091464dfe91f3f528f0bc84f6212ec30082a79cdfa1be5abd0bf",
-      "bytes": 91563
+      "sha256": "73cbeb076515e547d93baa0670a4a1f786cbe0831ff40d83ceaef7e7ab78b8e4",
+      "bytes": 3604484
     },
     {
       "path": "source_pre553_validation/SRC24/fixture_oracle.json",
-      "sha256": "24b3631765a0ec37f5d0003a93ed0e604549dfd9fadecf2bb835935b134479d5",
-      "bytes": 3486
+      "sha256": "6e4386c334f2aa431956a2489a631edc91fd2327de0bf5c1f4f4c08cbaf484b8",
+      "bytes": 91419
     },
     {
       "path": "source_pre553_validation/SRC24/VALIDATION_RESULTS.json",
-      "sha256": "955fa0a8bde6f0b903e22acbff733d4bda772086f6c2203a644a50d1fb671e19",
-      "bytes": 17262
+      "sha256": "b8ec8a93ff3d5b865e3f3a88fabed3b3f3eb5ac44f9ff0b26363adf3c3514d66",
+      "bytes": 277854
     },
     {
       "path": "source_pre553_validation/SRC24/EXCEPTIONS.json",
-      "sha256": "b22f67c7636303fe969343976f39bf0b585ca2a185385202d854847628dac76a",
-      "bytes": 49896
+      "sha256": "7f6cc75b817ec2487908762b2bc790c892c8ad6ecfd019f25b1431f088f9a36c",
+      "bytes": 65097
     }
   ],
   "validation": {
@@ -62,21 +67,21 @@
     "native_release_ref": {
       "kind": "C11LogicalRelease",
       "object_id": "R157_FIXTURE_RELEASE/SRC24",
-      "content_hash": "11bf76356e39c3cc67725103dc88eb44ebf1c9120f15acf58d4626847d16510f"
+      "content_hash": "4faea64a46b1fe539939146358299d8dbf399884c6fd7d563666c81594cbaee6"
     },
-    "semantic_release_hash": "11bf76356e39c3cc67725103dc88eb44ebf1c9120f15acf58d4626847d16510f",
+    "semantic_release_hash": "4faea64a46b1fe539939146358299d8dbf399884c6fd7d563666c81594cbaee6",
     "actual_counts": {
-      "response_event_count": 44,
-      "coordinate_fact_count": 11,
-      "routing_fact_count": 44
+      "response_event_count": 1464,
+      "coordinate_fact_count": 48,
+      "routing_fact_count": 1464
     },
     "no_drop": {
       "physical_slots_total": 203,
-      "physical_slots_included": 5,
-      "physical_slots_excluded": 198,
+      "physical_slots_included": 189,
+      "physical_slots_excluded": 14,
       "items_total": 203,
-      "items_included": 4,
-      "items_excluded": 199
+      "items_included": 189,
+      "items_excluded": 14
     },
     "refusals": [
       {
