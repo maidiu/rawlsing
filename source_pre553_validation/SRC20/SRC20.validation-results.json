@@ -13,11 +13,11 @@
   "config_validation": {
     "validator": "rawlsing_next.source_configuration.schema.validate_source_config",
     "original_path": "rawlsing_next/source_configuration/data/SRC20/SRC20.source.config.json",
-    "original_config_canonical_sha256": "510817e1accbac1a207c761b9e6a54255d837377663ea4db514450fc125142c0",
-    "original_config_file_sha256": "b082b0d729455ccc068c78568ea231d5c69d1ece3eaada79d0841588b8390efd",
+    "original_config_canonical_sha256": "e5e25188a819a8049c47698233329b83faa8dc05d6e0666778327efbea973ea2",
+    "original_config_file_sha256": "904f8076da807caa8d7698e9cc13052e0d99574ed4755b93acc2d4feceb6f035",
     "fixture_path": "source_pre553_validation/SRC20/SRC20.fixture.config.json",
-    "fixture_config_canonical_sha256": "41cb09f443331706fa3c2effca0a45fe74d10b91ca609dbc5e44fe0545af7a21",
-    "fixture_config_file_sha256": "f37364a7cc641f0e65b67372e34fc1c6f6921324e4d7de11b5e2772d3b934231",
+    "fixture_config_canonical_sha256": "844eaa3095decda0dbc1bfdfcb9dea9323bb0aa6ddf251137b041c4948963def",
+    "fixture_config_file_sha256": "dfe0b987423f4945c5ca4cb954e29b0fa458faceab43d55659501b2ea18b4029",
     "passed": true
   },
   "coverage": {
@@ -25,15 +25,1042 @@
     "original_items_total": 1119,
     "physical_slots_serialized": 1119,
     "items_serialized": 1119,
-    "physical_slots_included": 7,
-    "items_included": 3,
-    "physical_slots_excluded": 1112,
-    "items_excluded": 1116,
+    "physical_slots_included": 1119,
+    "items_included": 1119,
+    "physical_slots_excluded": 0,
+    "items_excluded": 0,
+    "response_bound_items": 1021,
+    "held_items": 98,
+    "held_by_role": {
+      "ADMIN": 10,
+      "CONTINUOUS": 84,
+      "COORDINATE": 2,
+      "ROW_KEY": 1,
+      "WEIGHT_HELD": 1
+    },
     "no_drop": true,
     "supported_question_ids": [
+      "GSS:2002:abany",
+      "GSS:2002:abdefect",
+      "GSS:2002:abhlth",
+      "GSS:2002:abnomore",
+      "GSS:2002:abort12",
+      "GSS:2002:abpoor",
+      "GSS:2002:abrape",
+      "GSS:2002:absingle",
+      "GSS:2002:accptoth",
+      "GSS:2002:acqntsex",
+      "GSS:2002:adcou",
+      "GSS:2002:adcoumed",
+      "GSS:2002:addoc",
+      "GSS:2002:addocmed",
+      "GSS:2002:adfam",
+      "GSS:2002:adfammed",
+      "GSS:2002:adhdcon",
+      "GSS:2002:adhdknow",
+      "GSS:2002:adhdknw",
+      "GSS:2002:adhdmed",
+      "GSS:2002:adhdreal",
+      "GSS:2002:adhos",
+      "GSS:2002:adhosmed",
+      "GSS:2002:adpsy",
+      "GSS:2002:adpsymed",
+      "GSS:2002:adtch",
+      "GSS:2002:adtchmed",
+      "GSS:2002:adults",
+      "GSS:2002:advantge",
+      "GSS:2002:advcfrnd",
+      "GSS:2002:advchld",
+      "GSS:2002:advcowrk",
+      "GSS:2002:advfam",
+      "GSS:2002:advlib",
+      "GSS:2002:advofrnd",
+      "GSS:2002:advpar",
+      "GSS:2002:advsib",
+      "GSS:2002:advsp",
+      "GSS:2002:advsrch",
+      "GSS:2002:advstu",
+      "GSS:2002:advsup",
+      "GSS:2002:advtchr",
+      "GSS:2002:affrmact",
+      "GSS:2002:age",
+      "GSS:2002:aged",
+      "GSS:2002:agekdbrn",
+      "GSS:2002:aidkids",
+      "GSS:2002:aidold",
+      "GSS:2002:allergic",
+      "GSS:2002:art30",
+      "GSS:2002:artgn",
+      "GSS:2002:artinfo",
+      "GSS:2002:artmus1",
+      "GSS:2002:artmus2",
+      "GSS:2002:artmus3",
+      "GSS:2002:artschat",
+      "GSS:2002:artschng",
+      "GSS:2002:artsnew",
+      "GSS:2002:artview",
+      "GSS:2002:askelse",
+      "GSS:2002:askwksch",
+      "GSS:2002:attend",
+      "GSS:2002:babies",
+      "GSS:2002:babies_7222",
+      "GSS:2002:backpain",
+      "GSS:2002:badchar",
+      "GSS:2002:belvedoc",
+      "GSS:2002:bestfrd",
+      "GSS:2002:bettrown",
+      "GSS:2002:bible",
+      "GSS:2002:blksimp",
+      "GSS:2002:bookmark",
+      "GSS:2002:born",
+      "GSS:2002:borrow1a",
+      "GSS:2002:borrow2a",
+      "GSS:2002:boycott",
+      "GSS:2002:browser1",
+      "GSS:2002:browser2",
+      "GSS:2002:browser3",
+      "GSS:2002:bstcall",
+      "GSS:2002:bstvisit",
+      "GSS:2002:buyinf12",
+      "GSS:2002:buyinfgn",
+      "GSS:2002:buyit12",
+      "GSS:2002:buythngs",
+      "GSS:2002:byemail",
+      "GSS:2002:byemprob",
+      "GSS:2002:byphone",
+      "GSS:2002:cappun",
+      "GSS:2002:careself",
+      "GSS:2002:caresik1",
+      "GSS:2002:carried",
+      "GSS:2002:catdrcty",
+      "GSS:2002:chat12",
+      "GSS:2002:chembal",
+      "GSS:2002:childs",
+      "GSS:2002:chldcare",
+      "GSS:2002:chldfrnd",
+      "GSS:2002:chldhlp",
+      "GSS:2002:chldidel",
+      "GSS:2002:chldprb",
+      "GSS:2002:chldprob",
+      "GSS:2002:chldsch",
+      "GSS:2002:chldvig",
+      "GSS:2002:chngtme",
+      "GSS:2002:chosedoc",
+      "GSS:2002:class",
+      "GSS:2002:clean1",
+      "GSS:2002:closeblk",
+      "GSS:2002:closewht",
+      "GSS:2002:cohabfst",
+      "GSS:2002:cohabok",
+      "GSS:2002:colath",
+      "GSS:2002:colcom",
+      "GSS:2002:colhomo",
+      "GSS:2002:colmil",
+      "GSS:2002:colrac",
+      "GSS:2002:comknows",
+      "GSS:2002:compelse",
+      "GSS:2002:compfri",
+      "GSS:2002:comphome",
+      "GSS:2002:complib",
+      "GSS:2002:compoth",
+      "GSS:2002:compperf",
+      "GSS:2002:comprend",
+      "GSS:2002:compschl",
+      "GSS:2002:compuse",
+      "GSS:2002:compwork",
+      "GSS:2002:conarmy",
+      "GSS:2002:conbus",
+      "GSS:2002:conclerg",
+      "GSS:2002:condemnd",
+      "GSS:2002:condom",
+      "GSS:2002:coneduc",
+      "GSS:2002:confed",
+      "GSS:2002:confinan",
+      "GSS:2002:conjudge",
+      "GSS:2002:conlabor",
+      "GSS:2002:conlegis",
+      "GSS:2002:conmedic",
+      "GSS:2002:conoffcl",
+      "GSS:2002:conpress",
+      "GSS:2002:consci",
+      "GSS:2002:contact",
+      "GSS:2002:contv",
+      "GSS:2002:cook30",
+      "GSS:2002:cooking1",
+      "GSS:2002:coop",
+      "GSS:2002:courts",
+      "GSS:2002:cousins",
+      "GSS:2002:cowrkfrd",
+      "GSS:2002:cowrkhlp",
+      "GSS:2002:cowrkhrd",
+      "GSS:2002:cowrkint",
+      "GSS:2002:crack30",
+      "GSS:2002:cussup",
+      "GSS:2002:cutahead",
+      "GSS:2002:dance",
+      "GSS:2002:death",
+      "GSS:2002:deckids",
+      "GSS:2002:degree",
+      "GSS:2002:demands",
+      "GSS:2002:denom",
+      "GSS:2002:denom16",
+      "GSS:2002:denom16_7322",
+      "GSS:2002:denom_7222",
+      "GSS:2002:deptperf",
+      "GSS:2002:diffcare",
+      "GSS:2002:directns",
+      "GSS:2002:discaff",
+      "GSS:2002:discaffm",
+      "GSS:2002:discaffw",
+      "GSS:2002:discipln",
+      "GSS:2002:divbest",
+      "GSS:2002:divlaw",
+      "GSS:2002:divorce",
+      "GSS:2002:doc15a",
+      "GSS:2002:doc16a",
+      "GSS:2002:doc18a",
+      "GSS:2002:doc19a",
+      "GSS:2002:doc20a",
+      "GSS:2002:docaskme",
+      "GSS:2002:doccosts",
+      "GSS:2002:docdecid",
+      "GSS:2002:docinfo",
+      "GSS:2002:docnomri",
+      "GSS:2002:docrely",
+      "GSS:2002:docsat",
+      "GSS:2002:docswtch",
+      "GSS:2002:docvig",
+      "GSS:2002:donothng",
+      "GSS:2002:doself",
+      "GSS:2002:down1a",
+      "GSS:2002:down2a",
+      "GSS:2002:download",
+      "GSS:2002:drama",
+      "GSS:2002:drctlink",
+      "GSS:2002:dwelling",
+      "GSS:2002:dwelling_8222",
+      "GSS:2002:dwelown",
+      "GSS:2002:earnrs",
+      "GSS:2002:earnrs_7222",
+      "GSS:2002:earnshh",
+      "GSS:2002:econ12",
+      "GSS:2002:eddone",
+      "GSS:2002:educ",
+      "GSS:2002:educ30",
+      "GSS:2002:emailhr",
+      "GSS:2002:emaillnk",
+      "GSS:2002:emailmin",
+      "GSS:2002:emailyr",
+      "GSS:2002:emchurch",
+      "GSS:2002:emfamloc",
+      "GSS:2002:emfamoth",
+      "GSS:2002:emfri",
+      "GSS:2002:emgroups",
+      "GSS:2002:empathy1",
+      "GSS:2002:empathy2",
+      "GSS:2002:empathy3",
+      "GSS:2002:empathy4",
+      "GSS:2002:empathy5",
+      "GSS:2002:empathy6",
+      "GSS:2002:empathy7",
+      "GSS:2002:emwrkawy",
+      "GSS:2002:emwrkloc",
+      "GSS:2002:enviro12",
+      "GSS:2002:eqwlth",
+      "GSS:2002:eth1",
+      "GSS:2002:eth2",
+      "GSS:2002:eth3",
+      "GSS:2002:ethadapt",
+      "GSS:2002:ethdiff",
+      "GSS:2002:ethignor",
+      "GSS:2002:ethimp",
+      "GSS:2002:ethnic",
+      "GSS:2002:ethnofit",
+      "GSS:2002:ethnum",
+      "GSS:2002:ethsame",
+      "GSS:2002:ethtrads",
+      "GSS:2002:evcrack",
+      "GSS:2002:evidu",
+      "GSS:2002:evpaidsx",
+      "GSS:2002:evstray",
+      "GSS:2002:evwork",
+      "GSS:2002:extr2001",
+      "GSS:2002:extrapay",
+      "GSS:2002:extraval",
+      "GSS:2002:ezines",
+      "GSS:2002:failure",
+      "GSS:2002:fair",
+      "GSS:2002:fairearn",
+      "GSS:2002:fambudgt",
+      "GSS:2002:famdif16",
+      "GSS:2002:famgen",
+      "GSS:2002:famgen_7522",
+      "GSS:2002:family16",
+      "GSS:2002:famsuffr",
+      "GSS:2002:famvswk",
+      "GSS:2002:famvswrk",
+      "GSS:2002:famwkoff",
+      "GSS:2002:fe12",
+      "GSS:2002:fear",
+      "GSS:2002:fechld",
+      "GSS:2002:feelasns",
+      "GSS:2002:feelblks",
+      "GSS:2002:feelhsps",
+      "GSS:2002:feelwhts",
+      "GSS:2002:feeused",
+      "GSS:2002:fefam",
+      "GSS:2002:fehire",
+      "GSS:2002:fejobaff",
+      "GSS:2002:fejobind",
+      "GSS:2002:fepol",
+      "GSS:2002:fepresch",
+      "GSS:2002:fewknokd",
+      "GSS:2002:fin30",
+      "GSS:2002:finalter",
+      "GSS:2002:fininc",
+      "GSS:2002:fininc1",
+      "GSS:2002:fininc2",
+      "GSS:2002:fininc3",
+      "GSS:2002:fininc4",
+      "GSS:2002:finind",
+      "GSS:2002:finrela",
+      "GSS:2002:firstyou",
+      "GSS:2002:foraff12",
+      "GSS:2002:forcedoc",
+      "GSS:2002:forcehos",
+      "GSS:2002:forcemed",
+      "GSS:2002:found",
+      "GSS:2002:frdenjoy",
+      "GSS:2002:frdhelps",
+      "GSS:2002:frdknows",
+      "GSS:2002:frdthink",
+      "GSS:2002:fringeok",
+      "GSS:2002:frndsex",
+      "GSS:2002:ftwork",
+      "GSS:2002:fund",
+      "GSS:2002:fund16",
+      "GSS:2002:game12",
+      "GSS:2002:gamegn",
+      "GSS:2002:games30",
+      "GSS:2002:gender1",
+      "GSS:2002:gender10",
+      "GSS:2002:gender11",
+      "GSS:2002:gender12",
+      "GSS:2002:gender13",
+      "GSS:2002:gender14",
+      "GSS:2002:gender2",
+      "GSS:2002:gender3",
+      "GSS:2002:gender4",
+      "GSS:2002:gender5",
+      "GSS:2002:gender6",
+      "GSS:2002:gender7",
+      "GSS:2002:gender8",
+      "GSS:2002:gender9",
+      "GSS:2002:geneprob",
+      "GSS:2002:getahead",
+      "GSS:2002:getmar",
+      "GSS:2002:givblood",
+      "GSS:2002:givchng",
+      "GSS:2002:givchrty",
+      "GSS:2002:givhmlss",
+      "GSS:2002:givseat",
+      "GSS:2002:godparts",
+      "GSS:2002:gomusic",
+      "GSS:2002:goodlife",
+      "GSS:2002:govt30",
+      "GSS:2002:granborn",
+      "GSS:2002:grass",
+      "GSS:2002:grpchrty",
+      "GSS:2002:grpchurh",
+      "GSS:2002:grpnei",
+      "GSS:2002:grpoth",
+      "GSS:2002:grppol",
+      "GSS:2002:grpsport",
+      "GSS:2002:grpunion",
+      "GSS:2002:grwingup",
+      "GSS:2002:gun12",
+      "GSS:2002:gunlaw",
+      "GSS:2002:handmove",
+      "GSS:2002:hapmar",
       "GSS:2002:happy",
+      "GSS:2002:happy7",
+      "GSS:2002:hapunhap",
+      "GSS:2002:havchld",
+      "GSS:2002:haveinfo",
+      "GSS:2002:health",
+      "GSS:2002:health1",
+      "GSS:2002:health12",
+      "GSS:2002:health30",
+      "GSS:2002:hefinfo",
+      "GSS:2002:helpaway",
+      "GSS:2002:helpblk",
+      "GSS:2002:helpfrds",
+      "GSS:2002:helpful",
+      "GSS:2002:helphwrk",
+      "GSS:2002:helpjob",
+      "GSS:2002:helpnot",
+      "GSS:2002:helpoth",
+      "GSS:2002:helppoor",
+      "GSS:2002:helpsick",
+      "GSS:2002:hhrace",
+      "GSS:2002:hhtype",
+      "GSS:2002:hhtype1",
+      "GSS:2002:hhwkdis",
+      "GSS:2002:hhwkfair",
+      "GSS:2002:hispanic",
+      "GSS:2002:hispanic_0022",
+      "GSS:2002:hlpequip",
+      "GSS:2002:hlpneedy",
+      "GSS:2002:hlthdoc",
+      "GSS:2002:hlthfrel",
+      "GSS:2002:hlthinfo",
+      "GSS:2002:hlthmag1",
+      "GSS:2002:hlthmag2",
+      "GSS:2002:hlthpapr",
+      "GSS:2002:hlthplan",
+      "GSS:2002:hlthtv",
+      "GSS:2002:hlthwww",
+      "GSS:2002:hmefin12",
+      "GSS:2002:hobby30",
+      "GSS:2002:homekid",
+      "GSS:2002:homosex",
+      "GSS:2002:hompop",
+      "GSS:2002:housewrk",
+      "GSS:2002:hrs1",
+      "GSS:2002:hrs2",
+      "GSS:2002:hubbywk1",
+      "GSS:2002:humor30",
+      "GSS:2002:hunt",
+      "GSS:2002:hurtatwk",
+      "GSS:2002:hvylift",
+      "GSS:2002:hyperlnk",
+      "GSS:2002:idu30",
+      "GSS:2002:if00who",
+      "GSS:2002:if96who",
+      "GSS:2002:illphys",
+      "GSS:2002:imprvdis",
+      "GSS:2002:imprveat",
+      "GSS:2002:imprvmed",
+      "GSS:2002:incom16",
+      "GSS:2002:income",
+      "GSS:2002:income98",
+      "GSS:2002:indperf",
+      "GSS:2002:indstatus",
+      "GSS:2002:indtag",
+      "GSS:2002:indus10",
+      "GSS:2002:indus80",
+      "GSS:2002:inperson",
+      "GSS:2002:insrchng",
+      "GSS:2002:insrlmts",
+      "GSS:2002:intaccss",
+      "GSS:2002:intlblks",
+      "GSS:2002:intlwhts",
+      "GSS:2002:invest12",
+      "GSS:2002:investgn",
+      "GSS:2002:isco08",
+      "GSS:2002:isco88",
+      "GSS:2002:issp",
+      "GSS:2002:jew",
+      "GSS:2002:jew16",
+      "GSS:2002:jobcntct",
+      "GSS:2002:jobcowrk",
+      "GSS:2002:jobfind",
+      "GSS:2002:jobfind1",
+      "GSS:2002:jobfrnds",
+      "GSS:2002:jobinfo",
+      "GSS:2002:joblose",
+      "GSS:2002:jobonwww",
+      "GSS:2002:jobpaper",
+      "GSS:2002:jobplace",
+      "GSS:2002:jobpub",
+      "GSS:2002:jobsecok",
+      "GSS:2002:jobtvrad",
+      "GSS:2002:jobvsfam",
+      "GSS:2002:kidcall",
+      "GSS:2002:kidempty",
+      "GSS:2002:kidjoy",
+      "GSS:2002:kidmost",
+      "GSS:2002:kidpars",
+      "GSS:2002:kidssol",
+      "GSS:2002:kidsuffr",
+      "GSS:2002:kidvisit",
+      "GSS:2002:knowwhat",
+      "GSS:2002:knwmhosp",
+      "GSS:2002:knwpatnt",
+      "GSS:2002:laidoff",
+      "GSS:2002:lastwkmo",
+      "GSS:2002:laundry1",
+      "GSS:2002:learnjob",
+      "GSS:2002:learnnew",
+      "GSS:2002:lentto",
+      "GSS:2002:letdie1",
+      "GSS:2002:letters",
+      "GSS:2002:libath",
+      "GSS:2002:libcom",
+      "GSS:2002:libhomo",
+      "GSS:2002:libmil",
+      "GSS:2002:librac",
+      "GSS:2002:life",
+      "GSS:2002:litauth",
+      "GSS:2002:litget",
+      "GSS:2002:litread",
+      "GSS:2002:litsite",
+      "GSS:2002:liveblks",
+      "GSS:2002:livewhts",
+      "GSS:2002:loanitem",
+      "GSS:2002:localgvt",
+      "GSS:2002:localnum",
+      "GSS:2002:locate12",
+      "GSS:2002:lotofsay",
+      "GSS:2002:macall1",
+      "GSS:2002:madeg",
+      "GSS:2002:maeduc",
+      "GSS:2002:maind10",
+      "GSS:2002:maind80",
+      "GSS:2002:maindstatus",
+      "GSS:2002:maindtag",
+      "GSS:2002:maisco08",
+      "GSS:2002:maisco88",
+      "GSS:2002:makeart",
+      "GSS:2002:manbook",
+      "GSS:2002:manvsemp",
+      "GSS:2002:maocc10",
+      "GSS:2002:maocc80",
+      "GSS:2002:maoccindv",
+      "GSS:2002:maoccstatus",
+      "GSS:2002:maocctag",
+      "GSS:2002:mapaid",
+      "GSS:2002:mar1",
+      "GSS:2002:mar10",
+      "GSS:2002:mar11",
+      "GSS:2002:mar12",
+      "GSS:2002:mar13",
+      "GSS:2002:mar14",
+      "GSS:2002:mar2",
+      "GSS:2002:mar3",
+      "GSS:2002:mar4",
+      "GSS:2002:mar5",
+      "GSS:2002:mar6",
+      "GSS:2002:mar7",
+      "GSS:2002:mar8",
+      "GSS:2002:mar9",
+      "GSS:2002:marblk",
+      "GSS:2002:marhappy",
+      "GSS:2002:marital",
+      "GSS:2002:marlegit",
+      "GSS:2002:marnomar",
+      "GSS:2002:marwht",
+      "GSS:2002:matesex",
+      "GSS:2002:matime1",
+      "GSS:2002:mavisit1",
+      "GSS:2002:mawork14",
+      "GSS:2002:mawrkgrw",
+      "GSS:2002:mawrkslf",
+      "GSS:2002:mawrkwrm",
+      "GSS:2002:medaddct",
+      "GSS:2002:medkdneg",
+      "GSS:2002:medsavtx",
+      "GSS:2002:medsymps",
+      "GSS:2002:medunacc",
+      "GSS:2002:medweak",
+      "GSS:2002:meeting",
+      "GSS:2002:meetings",
+      "GSS:2002:mehhwork",
+      "GSS:2002:mekdcare",
+      "GSS:2002:meovrwrk",
+      "GSS:2002:mntlill",
+      "GSS:2002:mntlrel",
+      "GSS:2002:mobile16",
+      "GSS:2002:moral12",
+      "GSS:2002:mostloc",
+      "GSS:2002:mp3",
+      "GSS:2002:music30",
+      "GSS:2002:musicbuy",
+      "GSS:2002:musicdif",
+      "GSS:2002:musicget",
+      "GSS:2002:musicinf",
+      "GSS:2002:musiclke",
+      "GSS:2002:musiclst",
+      "GSS:2002:musicnew",
+      "GSS:2002:mustwork",
+      "GSS:2002:myskills",
+      "GSS:2002:nataid",
+      "GSS:2002:nataidy",
+      "GSS:2002:natarms",
+      "GSS:2002:natarmsy",
+      "GSS:2002:natchld",
+      "GSS:2002:natcity",
+      "GSS:2002:natcityy",
+      "GSS:2002:natcrime",
+      "GSS:2002:natcrimy",
+      "GSS:2002:natdrug",
+      "GSS:2002:natdrugy",
+      "GSS:2002:nateduc",
+      "GSS:2002:nateducy",
+      "GSS:2002:natenvir",
+      "GSS:2002:natenviy",
+      "GSS:2002:natfare",
+      "GSS:2002:natfarey",
+      "GSS:2002:natheal",
+      "GSS:2002:nathealy",
+      "GSS:2002:natmass",
+      "GSS:2002:natpark",
+      "GSS:2002:natrace",
+      "GSS:2002:natracey",
+      "GSS:2002:natroad",
+      "GSS:2002:natsci",
+      "GSS:2002:natsoc",
+      "GSS:2002:natspac",
+      "GSS:2002:natspacy",
+      "GSS:2002:neifrd",
+      "GSS:2002:newjob12",
+      "GSS:2002:news",
+      "GSS:2002:news12",
+      "GSS:2002:news30",
+      "GSS:2002:newsgrps",
+      "GSS:2002:nextdoor",
+      "GSS:2002:niecenep",
+      "GSS:2002:numcntct",
+      "GSS:2002:nummen",
+      "GSS:2002:numprobs",
+      "GSS:2002:numwomen",
+      "GSS:2002:obey",
+      "GSS:2002:occ10",
+      "GSS:2002:occ80",
+      "GSS:2002:occindv",
+      "GSS:2002:occstatus",
+      "GSS:2002:occtag",
+      "GSS:2002:old1",
+      "GSS:2002:old10",
+      "GSS:2002:old11",
+      "GSS:2002:old12",
+      "GSS:2002:old13",
+      "GSS:2002:old14",
+      "GSS:2002:old2",
+      "GSS:2002:old3",
+      "GSS:2002:old4",
+      "GSS:2002:old5",
+      "GSS:2002:old6",
+      "GSS:2002:old7",
+      "GSS:2002:old8",
+      "GSS:2002:old9",
+      "GSS:2002:opdevel",
+      "GSS:2002:oth16",
+      "GSS:2002:other",
+      "GSS:2002:othersex",
+      "GSS:2002:othfrd",
+      "GSS:2002:othshelp",
+      "GSS:2002:outsider",
+      "GSS:2002:overwork",
+      "GSS:2002:ovrmedkd",
+      "GSS:2002:owngun",
+      "GSS:2002:ownhh",
+      "GSS:2002:ownstock",
+      "GSS:2002:pacall1",
+      "GSS:2002:padeg",
+      "GSS:2002:paeduc",
+      "GSS:2002:paidsex",
+      "GSS:2002:painarms",
+      "GSS:2002:paind10",
+      "GSS:2002:paind80",
+      "GSS:2002:paindstatus",
+      "GSS:2002:paindtag",
+      "GSS:2002:paisco08",
+      "GSS:2002:paisco88",
+      "GSS:2002:paocc10",
+      "GSS:2002:paocc80",
+      "GSS:2002:paoccindv",
+      "GSS:2002:paoccstatus",
+      "GSS:2002:paocctag",
+      "GSS:2002:parborn",
+      "GSS:2002:parslaw",
+      "GSS:2002:parsol",
+      "GSS:2002:partfull",
+      "GSS:2002:partners",
+      "GSS:2002:partners_8822",
+      "GSS:2002:partnrs5",
+      "GSS:2002:partteam",
+      "GSS:2002:partthon",
+      "GSS:2002:partyid",
+      "GSS:2002:pavisit1",
+      "GSS:2002:pawrkslf",
+      "GSS:2002:payelse",
+      "GSS:2002:people12",
+      "GSS:2002:peoplegn",
+      "GSS:2002:peoptrbl",
+      "GSS:2002:perform",
+      "GSS:2002:perfrmgn",
+      "GSS:2002:person30",
+      "GSS:2002:petition",
+      "GSS:2002:phone",
+      "GSS:2002:pikupsex",
+      "GSS:2002:pillok",
+      "GSS:2002:pistol",
+      "GSS:2002:plymusic",
+      "GSS:2002:pol30",
+      "GSS:2002:polabuse",
+      "GSS:2002:polagree",
+      "GSS:2002:polalter",
+      "GSS:2002:polattak",
+      "GSS:2002:polcam12",
+      "GSS:2002:polcangn",
+      "GSS:2002:polchnge",
+      "GSS:2002:polconf",
+      "GSS:2002:poldisgn",
+      "GSS:2002:poldsagr",
+      "GSS:2002:polescap",
+      "GSS:2002:polforms",
+      "GSS:2002:polhitok",
+      "GSS:2002:polinf12",
+      "GSS:2002:polinfgn",
+      "GSS:2002:polmurdr",
+      "GSS:2002:polneutl",
+      "GSS:2002:polnew",
+      "GSS:2002:poltough",
+      "GSS:2002:polviews",
+      "GSS:2002:popmusic",
+      "GSS:2002:popular",
+      "GSS:2002:porn30",
+      "GSS:2002:pornlaw",
+      "GSS:2002:postlife",
+      "GSS:2002:pray",
+      "GSS:2002:prayer",
+      "GSS:2002:prefsets",
+      "GSS:2002:premarsx",
+      "GSS:2002:pres00",
+      "GSS:2002:pres96",
+      "GSS:2002:preteen",
+      "GSS:2002:preteen_7222",
+      "GSS:2002:processr",
+      "GSS:2002:prodctiv",
+      "GSS:2002:promtefr",
+      "GSS:2002:promteok",
+      "GSS:2002:protest",
+      "GSS:2002:proudemp",
+      "GSS:2002:pryntfam",
+      "GSS:2002:putsoff",
+      "GSS:2002:racdif1",
+      "GSS:2002:racdif2",
+      "GSS:2002:racdif3",
+      "GSS:2002:racdif4",
+      "GSS:2002:race",
+      "GSS:2002:raceacs14",
+      "GSS:2002:racecen1",
+      "GSS:2002:racecen1_0022",
+      "GSS:2002:racecen2",
+      "GSS:2002:racecen2_0022",
+      "GSS:2002:racecen3",
+      "GSS:2002:racecen3_0022",
+      "GSS:2002:raclive",
+      "GSS:2002:racmar",
+      "GSS:2002:racpush",
+      "GSS:2002:racrel12",
+      "GSS:2002:racwork",
+      "GSS:2002:raised",
+      "GSS:2002:readfict",
+      "GSS:2002:reg16",
+      "GSS:2002:reg16_7222",
+      "GSS:2002:regdoc",
+      "GSS:2002:regdocyr",
+      "GSS:2002:region_7222",
+      "GSS:2002:relate1",
+      "GSS:2002:relate10",
+      "GSS:2002:relate11",
+      "GSS:2002:relate12",
+      "GSS:2002:relate13",
+      "GSS:2002:relate14",
+      "GSS:2002:relate2",
+      "GSS:2002:relate3",
+      "GSS:2002:relate4",
+      "GSS:2002:relate5",
+      "GSS:2002:relate6",
+      "GSS:2002:relate7",
+      "GSS:2002:relate8",
+      "GSS:2002:relate9",
+      "GSS:2002:relatsex",
+      "GSS:2002:relhh1",
+      "GSS:2002:relhh10",
+      "GSS:2002:relhh11",
+      "GSS:2002:relhh12",
+      "GSS:2002:relhh13",
+      "GSS:2002:relhh14",
+      "GSS:2002:relhh2",
+      "GSS:2002:relhh3",
+      "GSS:2002:relhh4",
+      "GSS:2002:relhh5",
+      "GSS:2002:relhh6",
+      "GSS:2002:relhh7",
+      "GSS:2002:relhh8",
+      "GSS:2002:relhh9",
+      "GSS:2002:relhhd1",
+      "GSS:2002:relhhd10",
+      "GSS:2002:relhhd11",
+      "GSS:2002:relhhd12",
+      "GSS:2002:relhhd13",
+      "GSS:2002:relhhd14",
+      "GSS:2002:relhhd2",
+      "GSS:2002:relhhd3",
+      "GSS:2002:relhhd4",
+      "GSS:2002:relhhd5",
+      "GSS:2002:relhhd6",
+      "GSS:2002:relhhd7",
+      "GSS:2002:relhhd8",
+      "GSS:2002:relhhd9",
+      "GSS:2002:relig",
+      "GSS:2002:relig16",
+      "GSS:2002:relig30",
+      "GSS:2002:reliten",
+      "GSS:2002:relsp1",
+      "GSS:2002:relsp10",
+      "GSS:2002:relsp11",
+      "GSS:2002:relsp12",
+      "GSS:2002:relsp13",
+      "GSS:2002:relsp14",
+      "GSS:2002:relsp2",
+      "GSS:2002:relsp3",
+      "GSS:2002:relsp4",
+      "GSS:2002:relsp5",
+      "GSS:2002:relsp6",
+      "GSS:2002:relsp7",
+      "GSS:2002:relsp8",
+      "GSS:2002:relsp9",
+      "GSS:2002:reltrad",
+      "GSS:2002:reltrad16",
+      "GSS:2002:repairs1",
+      "GSS:2002:res16",
+      "GSS:2002:respect",
+      "GSS:2002:respnum",
+      "GSS:2002:retchnge",
+      "GSS:2002:rhhwork",
+      "GSS:2002:richwork",
+      "GSS:2002:rifle",
+      "GSS:2002:rincblls",
+      "GSS:2002:rincom98",
+      "GSS:2002:rincome",
+      "GSS:2002:rowngun",
+      "GSS:2002:rplace",
+      "GSS:2002:rplace_7522",
+      "GSS:2002:rvisitor",
+      "GSS:2002:rwrkbaby",
+      "GSS:2002:rwrkgrwn",
+      "GSS:2002:rwrknokd",
+      "GSS:2002:rwrksch",
+      "GSS:2002:safefrst",
+      "GSS:2002:safehlth",
+      "GSS:2002:safetywk",
+      "GSS:2002:saqissp",
+      "GSS:2002:saqsex",
+      "GSS:2002:satfam7",
       "GSS:2002:satfin",
-      "GSS:2002:abdefect"
+      "GSS:2002:satjob",
+      "GSS:2002:satjob1",
+      "GSS:2002:satjob7",
+      "GSS:2002:schl30",
+      "GSS:2002:sci30",
+      "GSS:2002:secondwk",
+      "GSS:2002:secopin",
+      "GSS:2002:seecowrk",
+      "GSS:2002:seemovie",
+      "GSS:2002:selffrst",
+      "GSS:2002:selfless",
+      "GSS:2002:setthngs",
+      "GSS:2002:sex",
+      "GSS:2002:sexeduc",
+      "GSS:2002:sexfreq",
+      "GSS:2002:sexsex",
+      "GSS:2002:sexsex5",
+      "GSS:2002:shop1",
+      "GSS:2002:shotgun",
+      "GSS:2002:sibcall",
+      "GSS:2002:sibinlaw",
+      "GSS:2002:sibmost",
+      "GSS:2002:sibs",
+      "GSS:2002:sibvisit",
+      "GSS:2002:sick1a",
+      "GSS:2002:sick2a",
+      "GSS:2002:signpet",
+      "GSS:2002:singlpar",
+      "GSS:2002:socbar",
+      "GSS:2002:socfrend",
+      "GSS:2002:socommun",
+      "GSS:2002:socrel",
+      "GSS:2002:solveown",
+      "GSS:2002:spaneng",
+      "GSS:2002:spanking",
+      "GSS:2002:spdeg",
+      "GSS:2002:speduc",
+      "GSS:2002:spendeve",
+      "GSS:2002:spevwork",
+      "GSS:2002:sphrs1",
+      "GSS:2002:sphrs2",
+      "GSS:2002:spind10",
+      "GSS:2002:spind80",
+      "GSS:2002:spindstatus",
+      "GSS:2002:spindtag",
+      "GSS:2002:spisco08",
+      "GSS:2002:spisco88",
+      "GSS:2002:spkath",
+      "GSS:2002:spkcom",
+      "GSS:2002:spkhomo",
+      "GSS:2002:spkmil",
+      "GSS:2002:spkrac",
+      "GSS:2002:spocc10",
+      "GSS:2002:spocc80",
+      "GSS:2002:spoccindv",
+      "GSS:2002:spoccstatus",
+      "GSS:2002:spocctag",
+      "GSS:2002:sports30",
+      "GSS:2002:spwkbaby",
+      "GSS:2002:spwkgrwn",
+      "GSS:2002:spwknokd",
+      "GSS:2002:spwrksch",
+      "GSS:2002:spwrkslf",
+      "GSS:2002:spwrksta",
+      "GSS:2002:srcbelt",
+      "GSS:2002:srcheng",
+      "GSS:2002:stockops",
+      "GSS:2002:stockval",
+      "GSS:2002:stress",
+      "GSS:2002:stressfl",
+      "GSS:2002:strsshme",
+      "GSS:2002:strsswrk",
+      "GSS:2002:sufadult",
+      "GSS:2002:suicide1",
+      "GSS:2002:suicide2",
+      "GSS:2002:suicide3",
+      "GSS:2002:suicide4",
+      "GSS:2002:supcares",
+      "GSS:2002:supfam",
+      "GSS:2002:suphelp",
+      "GSS:2002:talkedto",
+      "GSS:2002:talkemp",
+      "GSS:2002:talksup",
+      "GSS:2002:tax",
+      "GSS:2002:taxes12",
+      "GSS:2002:teamsafe",
+      "GSS:2002:tecsup",
+      "GSS:2002:teens",
+      "GSS:2002:teensex",
+      "GSS:2002:teens_7222",
+      "GSS:2002:thnkself",
+      "GSS:2002:timehome",
+      "GSS:2002:timework",
+      "GSS:2002:tiredhme",
+      "GSS:2002:tiredwrk",
+      "GSS:2002:toofewwk",
+      "GSS:2002:trainops",
+      "GSS:2002:travel12",
+      "GSS:2002:travel30",
+      "GSS:2002:travelgn",
+      "GSS:2002:trbllaw",
+      "GSS:2002:trdunion",
+      "GSS:2002:trust",
+      "GSS:2002:trustman",
+      "GSS:2002:trustpeo",
+      "GSS:2002:trynewjb",
+      "GSS:2002:tvhours",
+      "GSS:2002:tvmov30",
+      "GSS:2002:twoincs1",
+      "GSS:2002:typeurl",
+      "GSS:2002:uncaunts",
+      "GSS:2002:unemp",
+      "GSS:2002:union",
+      "GSS:2002:unrelat",
+      "GSS:2002:unrelat_7222",
+      "GSS:2002:usedup",
+      "GSS:2002:usefrds",
+      "GSS:2002:usewww",
+      "GSS:2002:uswary",
+      "GSS:2002:vietdraft",
+      "GSS:2002:violpeop",
+      "GSS:2002:violself",
+      "GSS:2002:violtv",
+      "GSS:2002:visitart",
+      "GSS:2002:visitors",
+      "GSS:2002:volchrty",
+      "GSS:2002:vote00",
+      "GSS:2002:vote96",
+      "GSS:2002:votefor",
+      "GSS:2002:wantbest",
+      "GSS:2002:waypaid",
+      "GSS:2002:webable",
+      "GSS:2002:webtv",
+      "GSS:2002:webyr",
+      "GSS:2002:weekend",
+      "GSS:2002:weekswrk",
+      "GSS:2002:whoelse1",
+      "GSS:2002:whoelse2",
+      "GSS:2002:whoelse3",
+      "GSS:2002:whoelse4",
+      "GSS:2002:whoelse5",
+      "GSS:2002:whoelse6",
+      "GSS:2002:whtsdiff",
+      "GSS:2002:whywkhme",
+      "GSS:2002:widowed",
+      "GSS:2002:wkageism",
+      "GSS:2002:wkbonus",
+      "GSS:2002:wkdecide",
+      "GSS:2002:wkfreedm",
+      "GSS:2002:wkharoth",
+      "GSS:2002:wkharsex",
+      "GSS:2002:wkpraise",
+      "GSS:2002:wkracism",
+      "GSS:2002:wksexism",
+      "GSS:2002:wksmooth",
+      "GSS:2002:wksub",
+      "GSS:2002:wksubs",
+      "GSS:2002:wksup",
+      "GSS:2002:wksups",
+      "GSS:2002:wktopsat",
+      "GSS:2002:wkvsfam",
+      "GSS:2002:wlthblks",
+      "GSS:2002:wlthwhts",
+      "GSS:2002:work12",
+      "GSS:2002:work30",
+      "GSS:2002:workblks",
+      "GSS:2002:workdiff",
+      "GSS:2002:workfast",
+      "GSS:2002:workfor",
+      "GSS:2002:workhard",
+      "GSS:2002:workwhts",
+      "GSS:2002:world1",
+      "GSS:2002:wrkbaby",
+      "GSS:2002:wrkgovt",
+      "GSS:2002:wrkgrown",
+      "GSS:2002:wrkhome",
+      "GSS:2002:wrknokid",
+      "GSS:2002:wrksch",
+      "GSS:2002:wrksched",
+      "GSS:2002:wrkslf",
+      "GSS:2002:wrkstat",
+      "GSS:2002:wrktime",
+      "GSS:2002:wrktype",
+      "GSS:2002:wrkwayup",
+      "GSS:2002:wwwart",
+      "GSS:2002:wwwbiz",
+      "GSS:2002:wwwcowrk",
+      "GSS:2002:wwwfrnd",
+      "GSS:2002:wwwgfbf",
+      "GSS:2002:wwwhome",
+      "GSS:2002:wwwhr",
+      "GSS:2002:wwwline1",
+      "GSS:2002:wwwline2",
+      "GSS:2002:wwwlit",
+      "GSS:2002:wwwmin",
+      "GSS:2002:wwwmusic",
+      "GSS:2002:wwwnei",
+      "GSS:2002:wwwpersn",
+      "GSS:2002:wwwsp",
+      "GSS:2002:wwwvol",
+      "GSS:2002:xmarsex",
+      "GSS:2002:xmovie",
+      "GSS:2002:xnorcsiz",
+      "GSS:2002:yearsjob",
+      "GSS:2002:yearval",
+      "GSS:2002:yearval1",
+      "GSS:2002:yrsfirm",
+      "GSS:2002:zodiac",
+      "GSS:2002:zombies"
     ]
   },
   "native_validation": {
@@ -42,15 +1069,15 @@
       "projection_identity_ref": {
         "kind": "C11_SEMANTIC_PROJECTION",
         "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC20-NONRESPONDENT-SCALAR:projection",
-        "content_hash": "4c76d2df3cbd4b336096d8b5dadd5b7e616e257ccf61fa551ad3bf9abcdcfc15"
+        "content_hash": "9614274fe1a7f3ed803ca75e3575f444eeb87692f5374bec800fd0e177b1cf16"
       },
-      "expected_source_sha256": "8bf939c171f2369d19f33961faf03c0ed181f0042d68fd4a71384692effd14b5",
+      "expected_source_sha256": "c4e55d674e9445d6251f148971b5e6a80cded55865ab45e21d330b508e65dad1",
       "respondents": 6,
-      "questions": 3,
-      "response_slots": 3,
+      "questions": 1021,
+      "response_slots": 1021,
       "coordinate_slots": 2,
       "weight_slots": 1,
-      "routing_facts": 18,
+      "routing_facts": 6126,
       "authority_snapshots": 7
     },
     "release": {
@@ -59,13 +1086,13 @@
       "release_ref": {
         "kind": "C11LogicalRelease",
         "object_id": "R157_GSS_FIXTURE_RELEASE/SRC20",
-        "content_hash": "ed64d07feba39c301469712c9ae9f427954d542260af4b4193f262f0001c7731"
+        "content_hash": "e2317ee077b3ae2ee7ba447a494c50c6bdf9bc3d3357b6c9ba0baa3c5901d2af"
       },
-      "semantic_release_hash": "ed64d07feba39c301469712c9ae9f427954d542260af4b4193f262f0001c7731",
+      "semantic_release_hash": "e2317ee077b3ae2ee7ba447a494c50c6bdf9bc3d3357b6c9ba0baa3c5901d2af",
       "source_artifact_ref": {
         "kind": "SOURCE_ARTIFACT",
         "object_id": "R157_FIXTURE:R157-GSS-SRC20-NONRESPONDENT-SCALAR",
-        "content_hash": "8bf939c171f2369d19f33961faf03c0ed181f0042d68fd4a71384692effd14b5"
+        "content_hash": "c4e55d674e9445d6251f148971b5e6a80cded55865ab45e21d330b508e65dad1"
       },
       "m01_m18_coverage": {
         "M01": [
@@ -127,7 +1154,7 @@
         ]
       },
       "universes": 1,
-      "respondent_events": 18,
+      "respondent_events": 6126,
       "coordinate_facts": 12,
       "weight_facts": 6,
       "authority_snapshots": 7
@@ -141,24 +1168,3078 @@
         "NOT_ASKED": 1,
         "REFUSAL": 1,
         "SOURCE_SPECIFIC_SPECIAL": 2,
-        "SUBSTANTIVE_RESPONSE": 9
+        "SUBSTANTIVE_RESPONSE": 6117
       },
       "response_state_counts_by_question": {
+        "FIXTURE:SRC20:abany": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
         "FIXTURE:SRC20:abdefect": {
           "INAPPLICABLE": 1,
           "SOURCE_SPECIFIC_SPECIAL": 2,
           "SUBSTANTIVE_RESPONSE": 3
+        },
+        "FIXTURE:SRC20:abhlth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:abnomore": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:abort12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:abpoor": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:abrape": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:absingle": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:accptoth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:acqntsex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:adcou": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:adcoumed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:addoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:addocmed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:adfam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:adfammed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:adhdcon": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:adhdknow": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:adhdknw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:adhdmed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:adhdreal": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:adhos": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:adhosmed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:adpsy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:adpsymed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:adtch": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:adtchmed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:adults": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:advantge": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:advcfrnd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:advchld": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:advcowrk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:advfam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:advlib": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:advofrnd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:advpar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:advsib": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:advsp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:advsrch": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:advstu": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:advsup": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:advtchr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:affrmact": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:age": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:aged": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:agekdbrn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:aidkids": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:aidold": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:allergic": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:art30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:artgn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:artinfo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:artmus1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:artmus2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:artmus3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:artschat": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:artschng": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:artsnew": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:artview": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:askelse": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:askwksch": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:attend": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:babies": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:babies_7222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:backpain": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:badchar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:belvedoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:bestfrd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:bettrown": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:bible": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:blksimp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:bookmark": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:born": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:borrow1a": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:borrow2a": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:boycott": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:browser1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:browser2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:browser3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:bstcall": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:bstvisit": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:buyinf12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:buyinfgn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:buyit12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:buythngs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:byemail": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:byemprob": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:byphone": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:cappun": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:careself": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:caresik1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:carried": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:catdrcty": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:chat12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:chembal": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:childs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:chldcare": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:chldfrnd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:chldhlp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:chldidel": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:chldprb": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:chldprob": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:chldsch": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:chldvig": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:chngtme": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:chosedoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:class": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:clean1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:closeblk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:closewht": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:cohabfst": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:cohabok": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:colath": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:colcom": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:colhomo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:colmil": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:colrac": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:comknows": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:compelse": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:compfri": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:comphome": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:complib": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:compoth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:compperf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:comprend": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:compschl": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:compuse": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:compwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:conarmy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:conbus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:conclerg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:condemnd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:condom": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:coneduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:confed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:confinan": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:conjudge": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:conlabor": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:conlegis": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:conmedic": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:conoffcl": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:conpress": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:consci": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:contact": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:contv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:cook30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:cooking1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:coop": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:courts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:cousins": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:cowrkfrd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:cowrkhlp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:cowrkhrd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:cowrkint": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:crack30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:cussup": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:cutahead": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:dance": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:death": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:deckids": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:degree": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:demands": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:denom": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:denom16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:denom16_7322": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:denom_7222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:deptperf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:diffcare": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:directns": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:discaff": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:discaffm": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:discaffw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:discipln": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:divbest": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:divlaw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:divorce": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:doc15a": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:doc16a": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:doc18a": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:doc19a": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:doc20a": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:docaskme": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:doccosts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:docdecid": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:docinfo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:docnomri": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:docrely": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:docsat": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:docswtch": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:docvig": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:donothng": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:doself": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:down1a": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:down2a": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:download": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:drama": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:drctlink": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:dwelling": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:dwelling_8222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:dwelown": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:earnrs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:earnrs_7222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:earnshh": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:econ12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:eddone": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:educ": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:educ30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:emailhr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:emaillnk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:emailmin": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:emailyr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:emchurch": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:emfamloc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:emfamoth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:emfri": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:emgroups": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:empathy1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:empathy2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:empathy3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:empathy4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:empathy5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:empathy6": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:empathy7": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:emwrkawy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:emwrkloc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:enviro12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:eqwlth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:eth1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:eth2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:eth3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:ethadapt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:ethdiff": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:ethignor": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:ethimp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:ethnic": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:ethnofit": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:ethnum": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:ethsame": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:ethtrads": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:evcrack": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:evidu": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:evpaidsx": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:evstray": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:evwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:extr2001": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:extrapay": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:extraval": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:ezines": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:failure": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fair": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fairearn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fambudgt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:famdif16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:famgen": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:famgen_7522": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:family16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:famsuffr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:famvswk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:famvswrk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:famwkoff": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fe12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fear": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fechld": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:feelasns": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:feelblks": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:feelhsps": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:feelwhts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:feeused": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fefam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fehire": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fejobaff": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fejobind": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fepol": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fepresch": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fewknokd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fin30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:finalter": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fininc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fininc1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fininc2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fininc3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fininc4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:finind": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:finrela": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:firstyou": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:foraff12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:forcedoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:forcehos": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:forcemed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:found": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:frdenjoy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:frdhelps": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:frdknows": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:frdthink": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fringeok": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:frndsex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:ftwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fund": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:fund16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:game12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gamegn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:games30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gender1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gender10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gender11": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gender12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gender13": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gender14": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gender2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gender3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gender4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gender5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gender6": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gender7": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gender8": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gender9": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:geneprob": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:getahead": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:getmar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:givblood": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:givchng": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:givchrty": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:givhmlss": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:givseat": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:godparts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gomusic": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:goodlife": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:govt30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:granborn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:grass": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:grpchrty": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:grpchurh": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:grpnei": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:grpoth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:grppol": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:grpsport": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:grpunion": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:grwingup": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gun12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:gunlaw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:handmove": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hapmar": {
+          "SUBSTANTIVE_RESPONSE": 6
         },
         "FIXTURE:SRC20:happy": {
           "DK": 1,
           "MISSING": 2,
           "SUBSTANTIVE_RESPONSE": 3
         },
+        "FIXTURE:SRC20:happy7": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hapunhap": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:havchld": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:haveinfo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:health": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:health1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:health12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:health30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hefinfo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:helpaway": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:helpblk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:helpfrds": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:helpful": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:helphwrk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:helpjob": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:helpnot": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:helpoth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:helppoor": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:helpsick": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hhrace": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hhtype": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hhtype1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hhwkdis": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hhwkfair": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hispanic": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hispanic_0022": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hlpequip": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hlpneedy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hlthdoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hlthfrel": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hlthinfo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hlthmag1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hlthmag2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hlthpapr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hlthplan": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hlthtv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hlthwww": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hmefin12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hobby30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:homekid": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:homosex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hompop": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:housewrk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hrs1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hrs2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hubbywk1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:humor30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hunt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hurtatwk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hvylift": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:hyperlnk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:idu30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:if00who": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:if96who": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:illphys": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:imprvdis": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:imprveat": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:imprvmed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:incom16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:income": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:income98": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:indperf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:indstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:indtag": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:indus10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:indus80": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:inperson": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:insrchng": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:insrlmts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:intaccss": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:intlblks": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:intlwhts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:invest12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:investgn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:isco08": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:isco88": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:issp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:jew": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:jew16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:jobcntct": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:jobcowrk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:jobfind": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:jobfind1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:jobfrnds": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:jobinfo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:joblose": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:jobonwww": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:jobpaper": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:jobplace": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:jobpub": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:jobsecok": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:jobtvrad": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:jobvsfam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:kidcall": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:kidempty": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:kidjoy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:kidmost": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:kidpars": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:kidssol": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:kidsuffr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:kidvisit": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:knowwhat": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:knwmhosp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:knwpatnt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:laidoff": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:lastwkmo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:laundry1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:learnjob": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:learnnew": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:lentto": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:letdie1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:letters": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:libath": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:libcom": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:libhomo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:libmil": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:librac": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:life": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:litauth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:litget": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:litread": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:litsite": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:liveblks": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:livewhts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:loanitem": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:localgvt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:localnum": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:locate12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:lotofsay": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:macall1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:madeg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:maeduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:maind10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:maind80": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:maindstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:maindtag": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:maisco08": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:maisco88": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:makeart": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:manbook": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:manvsemp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:maocc10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:maocc80": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:maoccindv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:maoccstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:maocctag": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mapaid": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mar1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mar10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mar11": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mar12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mar13": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mar14": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mar2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mar3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mar4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mar5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mar6": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mar7": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mar8": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mar9": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:marblk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:marhappy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:marital": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:marlegit": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:marnomar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:marwht": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:matesex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:matime1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mavisit1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mawork14": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mawrkgrw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mawrkslf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mawrkwrm": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:medaddct": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:medkdneg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:medsavtx": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:medsymps": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:medunacc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:medweak": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:meeting": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:meetings": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mehhwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mekdcare": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:meovrwrk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mntlill": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mntlrel": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mobile16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:moral12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mostloc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mp3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:music30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:musicbuy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:musicdif": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:musicget": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:musicinf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:musiclke": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:musiclst": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:musicnew": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:mustwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:myskills": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:nataid": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:nataidy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natarms": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natarmsy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natchld": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natcity": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natcityy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natcrime": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natcrimy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natdrug": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natdrugy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:nateduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:nateducy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natenvir": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natenviy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natfare": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natfarey": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natheal": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:nathealy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natmass": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natpark": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natrace": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natracey": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natroad": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natsci": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natsoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natspac": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:natspacy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:neifrd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:newjob12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:news": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:news12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:news30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:newsgrps": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:nextdoor": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:niecenep": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:numcntct": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:nummen": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:numprobs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:numwomen": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:obey": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:occ10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:occ80": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:occindv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:occstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:occtag": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:old1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:old10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:old11": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:old12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:old13": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:old14": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:old2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:old3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:old4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:old5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:old6": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:old7": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:old8": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:old9": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:opdevel": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:oth16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:other": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:othersex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:othfrd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:othshelp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:outsider": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:overwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:ovrmedkd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:owngun": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:ownhh": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:ownstock": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:pacall1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:padeg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:paeduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:paidsex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:painarms": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:paind10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:paind80": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:paindstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:paindtag": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:paisco08": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:paisco88": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:paocc10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:paocc80": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:paoccindv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:paoccstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:paocctag": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:parborn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:parslaw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:parsol": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:partfull": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:partners": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:partners_8822": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:partnrs5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:partteam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:partthon": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:partyid": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:pavisit1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:pawrkslf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:payelse": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:people12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:peoplegn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:peoptrbl": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:perform": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:perfrmgn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:person30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:petition": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:phone": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:pikupsex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:pillok": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:pistol": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:plymusic": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:pol30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polabuse": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polagree": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polalter": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polattak": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polcam12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polcangn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polchnge": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polconf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:poldisgn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:poldsagr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polescap": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polforms": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polhitok": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polinf12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polinfgn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polmurdr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polneutl": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polnew": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:poltough": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:polviews": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:popmusic": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:popular": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:porn30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:pornlaw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:postlife": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:pray": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:prayer": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:prefsets": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:premarsx": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:pres00": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:pres96": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:preteen": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:preteen_7222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:processr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:prodctiv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:promtefr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:promteok": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:protest": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:proudemp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:pryntfam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:putsoff": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:racdif1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:racdif2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:racdif3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:racdif4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:race": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:raceacs14": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:racecen1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:racecen1_0022": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:racecen2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:racecen2_0022": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:racecen3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:racecen3_0022": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:raclive": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:racmar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:racpush": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:racrel12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:racwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:raised": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:readfict": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:reg16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:reg16_7222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:regdoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:regdocyr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:region_7222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relate1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relate10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relate11": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relate12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relate13": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relate14": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relate2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relate3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relate4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relate5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relate6": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relate7": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relate8": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relate9": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relatsex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhh1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhh10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhh11": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhh12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhh13": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhh14": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhh2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhh3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhh4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhh5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhh6": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhh7": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhh8": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhh9": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhhd1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhhd10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhhd11": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhhd12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhhd13": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhhd14": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhhd2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhhd3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhhd4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhhd5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhhd6": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhhd7": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhhd8": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relhhd9": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relig": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relig16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relig30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:reliten": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relsp1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relsp10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relsp11": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relsp12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relsp13": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relsp14": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relsp2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relsp3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relsp4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relsp5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relsp6": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relsp7": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relsp8": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:relsp9": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:reltrad": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:reltrad16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:repairs1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:res16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:respect": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:respnum": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:retchnge": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:rhhwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:richwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:rifle": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:rincblls": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:rincom98": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:rincome": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:rowngun": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:rplace": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:rplace_7522": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:rvisitor": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:rwrkbaby": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:rwrkgrwn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:rwrknokd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:rwrksch": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:safefrst": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:safehlth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:safetywk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:saqissp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:saqsex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:satfam7": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
         "FIXTURE:SRC20:satfin": {
           "INVALID_UNRESOLVED": 1,
           "NOT_ASKED": 1,
           "REFUSAL": 1,
           "SUBSTANTIVE_RESPONSE": 3
+        },
+        "FIXTURE:SRC20:satjob": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:satjob1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:satjob7": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:schl30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sci30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:secondwk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:secopin": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:seecowrk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:seemovie": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:selffrst": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:selfless": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:setthngs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sexeduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sexfreq": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sexsex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sexsex5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:shop1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:shotgun": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sibcall": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sibinlaw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sibmost": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sibs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sibvisit": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sick1a": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sick2a": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:signpet": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:singlpar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:socbar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:socfrend": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:socommun": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:socrel": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:solveown": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spaneng": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spanking": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spdeg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:speduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spendeve": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spevwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sphrs1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sphrs2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spind10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spind80": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spindstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spindtag": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spisco08": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spisco88": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spkath": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spkcom": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spkhomo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spkmil": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spkrac": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spocc10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spocc80": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spoccindv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spoccstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spocctag": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sports30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spwkbaby": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spwkgrwn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spwknokd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spwrksch": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spwrkslf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:spwrksta": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:srcbelt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:srcheng": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:stockops": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:stockval": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:stress": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:stressfl": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:strsshme": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:strsswrk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:sufadult": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:suicide1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:suicide2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:suicide3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:suicide4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:supcares": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:supfam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:suphelp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:talkedto": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:talkemp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:talksup": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:tax": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:taxes12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:teamsafe": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:tecsup": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:teens": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:teens_7222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:teensex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:thnkself": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:timehome": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:timework": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:tiredhme": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:tiredwrk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:toofewwk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:trainops": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:travel12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:travel30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:travelgn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:trbllaw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:trdunion": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:trust": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:trustman": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:trustpeo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:trynewjb": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:tvhours": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:tvmov30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:twoincs1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:typeurl": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:uncaunts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:unemp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:union": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:unrelat": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:unrelat_7222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:usedup": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:usefrds": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:usewww": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:uswary": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:vietdraft": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:violpeop": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:violself": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:violtv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:visitart": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:visitors": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:volchrty": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:vote00": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:vote96": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:votefor": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wantbest": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:waypaid": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:webable": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:webtv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:webyr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:weekend": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:weekswrk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:whoelse1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:whoelse2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:whoelse3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:whoelse4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:whoelse5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:whoelse6": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:whtsdiff": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:whywkhme": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:widowed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wkageism": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wkbonus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wkdecide": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wkfreedm": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wkharoth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wkharsex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wkpraise": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wkracism": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wksexism": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wksmooth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wksub": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wksubs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wksup": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wksups": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wktopsat": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wkvsfam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wlthblks": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wlthwhts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:work12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:work30": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:workblks": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:workdiff": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:workfast": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:workfor": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:workhard": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:workwhts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:world1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wrkbaby": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wrkgovt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wrkgrown": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wrkhome": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wrknokid": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wrksch": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wrksched": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wrkslf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wrkstat": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wrktime": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wrktype": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wrkwayup": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wwwart": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wwwbiz": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wwwcowrk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wwwfrnd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wwwgfbf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wwwhome": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wwwhr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wwwline1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wwwline2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wwwlit": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wwwmin": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wwwmusic": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wwwnei": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wwwpersn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wwwsp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:wwwvol": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:xmarsex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:xmovie": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:xnorcsiz": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:yearsjob": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:yearval": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:yearval1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:yrsfirm": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:zodiac": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC20:zombies": {
+          "SUBSTANTIVE_RESPONSE": 6
         }
       },
       "coordinate_state_counts": {
@@ -210,12 +4291,70 @@
       "source_bytes_read": false,
       "permission_decision": "NOT_REQUESTED_OR_EVALUATED_IN_PREPARATION"
     },
+    "calls": [
+      {
+        "call": "rawlsing_next.source_configuration.schema.validate_source_config(original_config)",
+        "result": "PASS"
+      },
+      {
+        "call": "rawlsing_next.source_configuration.schema.validate_source_config(fixture_config)",
+        "result": "PASS"
+      },
+      {
+        "call": "rawlsing_next.source_configuration.factory.row_native_keys_from_transport(fixture_config, stream=fixture_stream)",
+        "result": "PASS",
+        "witness_count": 6,
+        "witness_kind": "R157_NONRESPONDENT_FIXTURE_KEY"
+      },
+      {
+        "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection(fixture_config, row_native_keys=fixture_row_keys)",
+        "result": "PASS",
+        "projection_identity_ref": {
+          "kind": "C11_SEMANTIC_PROJECTION",
+          "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC20-NONRESPONDENT-SCALAR:projection",
+          "content_hash": "9614274fe1a7f3ed803ca75e3575f444eeb87692f5374bec800fd0e177b1cf16"
+        }
+      },
+      {
+        "call": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config(fixture_config, stream=fixture_stream)",
+        "result": "PASS",
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "R157_GSS_FIXTURE_RELEASE/SRC20",
+          "content_hash": "e2317ee077b3ae2ee7ba447a494c50c6bdf9bc3d3357b6c9ba0baa3c5901d2af"
+        }
+      },
+      {
+        "call": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config(fixture_config, stream=fixture_stream)",
+        "result": "PASS",
+        "repository_release_refs": [
+          {
+            "kind": "C11LogicalRelease",
+            "object_id": "R157_GSS_FIXTURE_RELEASE/SRC20",
+            "content_hash": "e2317ee077b3ae2ee7ba447a494c50c6bdf9bc3d3357b6c9ba0baa3c5901d2af"
+          }
+        ]
+      },
+      {
+        "call": "rawlsing_next.source_configuration.reader.reader_configuration_from_config(original_config)",
+        "result": "PASS",
+        "source_bytes_read": false,
+        "encoding": null,
+        "permission_decision": "NOT_REQUESTED_OR_EVALUATED_IN_PREPARATION"
+      },
+      {
+        "call": "rawlsing_next.source_configuration.reader.source_read_request_from_config(original_config)",
+        "result": "PASS",
+        "source_bytes_read": false,
+        "permission_decision": "NOT_REQUESTED_OR_EVALUATED_IN_PREPARATION"
+      }
+    ],
     "repository": {
       "release_refs": [
         {
           "kind": "C11LogicalRelease",
           "object_id": "R157_GSS_FIXTURE_RELEASE/SRC20",
-          "content_hash": "ed64d07feba39c301469712c9ae9f427954d542260af4b4193f262f0001c7731"
+          "content_hash": "e2317ee077b3ae2ee7ba447a494c50c6bdf9bc3d3357b6c9ba0baa3c5901d2af"
         }
       ],
       "release_ref_matches_stream": true
@@ -249,7 +4388,7 @@
   },
   "identity_separation": {
     "original_source_sha256": "8ece381105237a1800051eec3617dad9dd05bf137e34fa833653464a58222be1",
-    "fixture_source_sha256": "8bf939c171f2369d19f33961faf03c0ed181f0042d68fd4a71384692effd14b5",
+    "fixture_source_sha256": "c4e55d674e9445d6251f148971b5e6a80cded55865ab45e21d330b508e65dad1",
     "distinct_bytes": true,
     "original_binding_identity_class": "ORIGINAL_SOURCE",
     "fixture_binding_identity_class": "NONRESPONDENT_FIXTURE",
@@ -335,6 +4474,28 @@
       "unaffected_scope": "source-row identity and raw response-rule construction",
       "owner": "GSS source evidence owner",
       "next_step": "Recover exact wave sampling-frame/design evidence before population or design claims."
+    },
+    {
+      "residual_id": "SRC20-CONTINUOUS-NATIVE-FINITE-RULE",
+      "scope": "SRC20/continuous",
+      "field": "questions[].response_slots",
+      "status": "NATIVE_FINITE_RULE_REQUIRED",
+      "reason": "84 exact items are held: The source variables carry no substantive value labels and are continuous/typed numeric; native ResponseSlotRule requires exact finite physical value keys and must not force a categorical domain. Exact item/evidence rows: source_pre553_validation/SRC20/SRC20.exceptions.json#held_items.",
+      "dependent_operation": "continuous response projection",
+      "unaffected_scope": "continuous/source-native value handling in an owner with an exact continuous rule",
+      "owner": "GSS source/native-representation owner",
+      "next_step": "Do not substitute a default category; consume the exact held-item evidence or extend the receiving owner only through its actual contract."
+    },
+    {
+      "residual_id": "SRC20-ADMIN-NO-RESPONSE-SLOT",
+      "scope": "SRC20/admin",
+      "field": "questions[].response_slots",
+      "status": "RETAINED_ADMINISTRATIVE",
+      "reason": "10 exact items are held: The source items are administrative/context variables, not respondent measurement targets; their identities and dispositions are retained without a response event. Exact item/evidence rows: source_pre553_validation/SRC20/SRC20.exceptions.json#held_items.",
+      "dependent_operation": "administrative variable use as a measurement target",
+      "unaffected_scope": "administrative/context consumption from the retained physical metadata",
+      "owner": "GSS source/native-representation owner",
+      "next_step": "Do not substitute a default category; consume the exact held-item evidence or extend the receiving owner only through its actual contract."
     }
   ],
   "limits": [

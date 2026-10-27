@@ -13,11 +13,11 @@
   "config_validation": {
     "validator": "rawlsing_next.source_configuration.schema.validate_source_config",
     "original_path": "rawlsing_next/source_configuration/data/SRC17/SRC17.source.config.json",
-    "original_config_canonical_sha256": "73753119915f0b63d947abe1601ab18424c91cd952ed08aae44f17c7b9393182",
-    "original_config_file_sha256": "17d0c06196d72094f52dee9532137243b6ab5021178e9f0fde9972de4e55558d",
+    "original_config_canonical_sha256": "3f1eb83abe61415e01b2f67bcfe34ee6fe61d69d3aef7161be5e6e41e2a7be07",
+    "original_config_file_sha256": "ca791189e208c9b311a7261ac254ce5ffea35e9c13b4d6e2ec87e9e55a1ecca8",
     "fixture_path": "source_pre553_validation/SRC17/SRC17.fixture.config.json",
-    "fixture_config_canonical_sha256": "144e1395cbe0a8f5e71e4333dc7f8093d632c31b39e448333a87aca9fa9f6adc",
-    "fixture_config_file_sha256": "42f98796199f172ee0ae0c2406868f5c4528c3d384c25e5931188e1e0db8d892",
+    "fixture_config_canonical_sha256": "61193560b316c1f69e19225add18e133b7c2883c4266e2398268980e82520083",
+    "fixture_config_file_sha256": "83d7810ef1bae288b3ba9a08c49708cf3986c1db059555a0088532dc0a7daf30",
     "passed": true
   },
   "coverage": {
@@ -25,15 +25,300 @@
     "original_items_total": 339,
     "physical_slots_serialized": 339,
     "items_serialized": 339,
-    "physical_slots_included": 7,
-    "items_included": 3,
-    "physical_slots_excluded": 332,
-    "items_excluded": 336,
+    "physical_slots_included": 339,
+    "items_included": 339,
+    "physical_slots_excluded": 0,
+    "items_excluded": 0,
+    "response_bound_items": 279,
+    "held_items": 60,
+    "held_by_role": {
+      "ADMIN": 5,
+      "CONTINUOUS": 51,
+      "COORDINATE": 2,
+      "ROW_KEY": 1,
+      "WEIGHT_HELD": 1
+    },
     "no_drop": true,
     "supported_question_ids": [
+      "GSS:1973:abdefect",
+      "GSS:1973:abhlth",
+      "GSS:1973:abnomore",
+      "GSS:1973:aborct",
+      "GSS:1973:abpoor",
+      "GSS:1973:abrape",
+      "GSS:1973:absingle",
+      "GSS:1973:adults",
+      "GSS:1973:age",
+      "GSS:1973:aged",
+      "GSS:1973:amicable",
+      "GSS:1973:anomia1",
+      "GSS:1973:anomia2",
+      "GSS:1973:anomia3",
+      "GSS:1973:anomia4",
+      "GSS:1973:anomia5",
+      "GSS:1973:anomia6",
+      "GSS:1973:anomia7",
+      "GSS:1973:anomia8",
+      "GSS:1973:anomia9",
+      "GSS:1973:antiwar",
+      "GSS:1973:arrest",
+      "GSS:1973:attend",
+      "GSS:1973:babies",
+      "GSS:1973:babies_7222",
+      "GSS:1973:burglr",
+      "GSS:1973:cappun2",
+      "GSS:1973:childs",
+      "GSS:1973:civright",
+      "GSS:1973:class",
+      "GSS:1973:classy",
+      "GSS:1973:clean",
+      "GSS:1973:colath",
+      "GSS:1973:colcom",
+      "GSS:1973:colhomo",
+      "GSS:1973:colsoc",
+      "GSS:1973:commun",
+      "GSS:1973:comprend",
+      "GSS:1973:conarmy",
+      "GSS:1973:conbus",
+      "GSS:1973:conclerg",
+      "GSS:1973:coneduc",
+      "GSS:1973:confed",
+      "GSS:1973:conjudge",
+      "GSS:1973:conlabor",
+      "GSS:1973:conlegis",
+      "GSS:1973:conmedic",
+      "GSS:1973:conpress",
+      "GSS:1973:consci",
+      "GSS:1973:consider",
+      "GSS:1973:control",
+      "GSS:1973:contv",
+      "GSS:1973:coop",
+      "GSS:1973:courts",
+      "GSS:1973:degree",
+      "GSS:1973:denom",
+      "GSS:1973:denom16",
+      "GSS:1973:denom16_7322",
+      "GSS:1973:denom_7222",
+      "GSS:1973:divorce",
+      "GSS:1973:earnrs",
+      "GSS:1973:earnrs_7222",
+      "GSS:1973:educ",
+      "GSS:1973:ethnic",
+      "GSS:1973:ethnum",
+      "GSS:1973:evwork",
+      "GSS:1973:fair",
+      "GSS:1973:famdif16",
+      "GSS:1973:family16",
+      "GSS:1973:fear",
+      "GSS:1973:finalter",
+      "GSS:1973:finrela",
+      "GSS:1973:found",
+      "GSS:1973:fund",
+      "GSS:1973:fund16",
+      "GSS:1973:getahead",
+      "GSS:1973:govaid",
+      "GSS:1973:grass",
+      "GSS:1973:gun",
+      "GSS:1973:gunage",
+      "GSS:1973:gunlaw",
+      "GSS:1973:gunnum",
+      "GSS:1973:hapmar",
       "GSS:1973:happy",
+      "GSS:1973:health",
+      "GSS:1973:helpful",
+      "GSS:1973:hit",
+      "GSS:1973:hitage",
+      "GSS:1973:hitbeatr",
+      "GSS:1973:hitchild",
+      "GSS:1973:hitdrunk",
+      "GSS:1973:hitmarch",
+      "GSS:1973:hitnum",
+      "GSS:1973:hitok",
+      "GSS:1973:hitrobbr",
+      "GSS:1973:homosex",
+      "GSS:1973:hompop",
+      "GSS:1973:honest",
+      "GSS:1973:hrs1",
+      "GSS:1973:hrs2",
+      "GSS:1973:if68who",
+      "GSS:1973:if72who",
+      "GSS:1973:incdef",
+      "GSS:1973:incom16",
+      "GSS:1973:income",
+      "GSS:1973:indstatus",
+      "GSS:1973:indtag",
+      "GSS:1973:indus10",
+      "GSS:1973:industry",
+      "GSS:1973:interest",
+      "GSS:1973:isco08",
+      "GSS:1973:isco88",
+      "GSS:1973:jobhour",
+      "GSS:1973:jobinc",
+      "GSS:1973:jobmeans",
+      "GSS:1973:jobpromo",
+      "GSS:1973:jobsec",
+      "GSS:1973:judgment",
+      "GSS:1973:libath",
+      "GSS:1973:libcom",
+      "GSS:1973:libhomo",
+      "GSS:1973:libsoc",
+      "GSS:1973:life",
+      "GSS:1973:madeg",
+      "GSS:1973:maeduc",
+      "GSS:1973:maindstatus",
+      "GSS:1973:maindtag",
+      "GSS:1973:manners",
+      "GSS:1973:maoccindv",
+      "GSS:1973:maoccstatus",
+      "GSS:1973:maocctag",
+      "GSS:1973:marital",
+      "GSS:1973:mawk16",
+      "GSS:1973:mawkbaby",
+      "GSS:1973:mawork",
+      "GSS:1973:mobile16",
+      "GSS:1973:nataid",
+      "GSS:1973:natarms",
+      "GSS:1973:natcity",
+      "GSS:1973:natcrime",
+      "GSS:1973:natdrug",
+      "GSS:1973:nateduc",
+      "GSS:1973:natenvir",
+      "GSS:1973:natfare",
+      "GSS:1973:natheal",
+      "GSS:1973:natrace",
+      "GSS:1973:natspac",
+      "GSS:1973:obeys",
+      "GSS:1973:occ10",
+      "GSS:1973:occindv",
+      "GSS:1973:occstatus",
+      "GSS:1973:occtag",
+      "GSS:1973:oth16",
+      "GSS:1973:other",
+      "GSS:1973:owngun",
+      "GSS:1973:padeg",
+      "GSS:1973:paeduc",
+      "GSS:1973:paind10",
+      "GSS:1973:paind16",
+      "GSS:1973:paindstatus",
+      "GSS:1973:paindtag",
+      "GSS:1973:paisco08",
+      "GSS:1973:paisco88",
+      "GSS:1973:paocc10",
+      "GSS:1973:paoccindv",
+      "GSS:1973:paoccstatus",
+      "GSS:1973:paocctag",
+      "GSS:1973:partyid",
+      "GSS:1973:pawrkslf",
+      "GSS:1973:phone",
+      "GSS:1973:pistol",
+      "GSS:1973:polabuse",
+      "GSS:1973:polattak",
+      "GSS:1973:polescap",
+      "GSS:1973:polhitok",
+      "GSS:1973:polmurdr",
+      "GSS:1973:porninf",
+      "GSS:1973:pornlaw",
+      "GSS:1973:pornmorl",
+      "GSS:1973:pornout",
+      "GSS:1973:pornrape",
+      "GSS:1973:postlife",
+      "GSS:1973:povline",
+      "GSS:1973:pres68",
+      "GSS:1973:pres72",
+      "GSS:1973:preteen",
+      "GSS:1973:preteen_7222",
+      "GSS:1973:prowar",
+      "GSS:1973:racclos",
+      "GSS:1973:racdin",
+      "GSS:1973:racdis",
+      "GSS:1973:race",
+      "GSS:1973:rachome",
+      "GSS:1973:racinteg",
+      "GSS:1973:raclive",
+      "GSS:1973:racmar",
+      "GSS:1973:racopen",
+      "GSS:1973:racpush",
+      "GSS:1973:reg16",
+      "GSS:1973:reg16_7222",
+      "GSS:1973:region_7222",
+      "GSS:1973:relig",
+      "GSS:1973:relig16",
+      "GSS:1973:reltrad",
+      "GSS:1973:reltrad16",
+      "GSS:1973:res16",
+      "GSS:1973:responsi",
+      "GSS:1973:richwork",
+      "GSS:1973:rifle",
+      "GSS:1973:robbry",
+      "GSS:1973:role",
+      "GSS:1973:satcity",
+      "GSS:1973:satfam",
       "GSS:1973:satfin",
-      "GSS:1973:abdefect"
+      "GSS:1973:satfrnd",
+      "GSS:1973:sathealt",
+      "GSS:1973:sathobby",
+      "GSS:1973:satjob",
+      "GSS:1973:school",
+      "GSS:1973:sex",
+      "GSS:1973:shotgun",
+      "GSS:1973:sibs",
+      "GSS:1973:spaneng",
+      "GSS:1973:spdeg",
+      "GSS:1973:spden",
+      "GSS:1973:spden16",
+      "GSS:1973:spden_7322",
+      "GSS:1973:speduc",
+      "GSS:1973:spevwork",
+      "GSS:1973:spfund",
+      "GSS:1973:spfund16",
+      "GSS:1973:sphrs1",
+      "GSS:1973:sphrs2",
+      "GSS:1973:spind",
+      "GSS:1973:spind10",
+      "GSS:1973:spindstatus",
+      "GSS:1973:spindtag",
+      "GSS:1973:spisco08",
+      "GSS:1973:spisco88",
+      "GSS:1973:spkath",
+      "GSS:1973:spkcom",
+      "GSS:1973:spkhomo",
+      "GSS:1973:spksoc",
+      "GSS:1973:spocc10",
+      "GSS:1973:spoccindv",
+      "GSS:1973:spoccstatus",
+      "GSS:1973:spocctag",
+      "GSS:1973:spoth16",
+      "GSS:1973:spother",
+      "GSS:1973:sprel",
+      "GSS:1973:sprel16",
+      "GSS:1973:spwrkslf",
+      "GSS:1973:spwrksta",
+      "GSS:1973:srcbelt",
+      "GSS:1973:strike",
+      "GSS:1973:studious",
+      "GSS:1973:success",
+      "GSS:1973:teens",
+      "GSS:1973:teens_7222",
+      "GSS:1973:ticket",
+      "GSS:1973:trust",
+      "GSS:1973:unemp",
+      "GSS:1973:union",
+      "GSS:1973:unrelat",
+      "GSS:1973:unrelat_7222",
+      "GSS:1973:usintl",
+      "GSS:1973:usun",
+      "GSS:1973:uswar",
+      "GSS:1973:vote68",
+      "GSS:1973:vote72",
+      "GSS:1973:wksub",
+      "GSS:1973:wksubs",
+      "GSS:1973:wksup",
+      "GSS:1973:wksups",
+      "GSS:1973:wrkslf",
+      "GSS:1973:wrkstat",
+      "GSS:1973:xmarsex",
+      "GSS:1973:xmovie",
+      "GSS:1973:xnorcsiz"
     ]
   },
   "native_validation": {
@@ -42,15 +327,15 @@
       "projection_identity_ref": {
         "kind": "C11_SEMANTIC_PROJECTION",
         "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC17-NONRESPONDENT-SCALAR:projection",
-        "content_hash": "defae105a0200780d2301435698eb14a6fe120dcaead3a94a10c73fe45b0322c"
+        "content_hash": "ec94032ca59b5a7df758c6bfeb858e068c7d47e430ba357f5bdcb368d864dea1"
       },
-      "expected_source_sha256": "9e9c23841604b1f9bb2a88d0315779f73bad2a338da84a231fd013bb38499734",
+      "expected_source_sha256": "e85b8fc3d9c11f14bf123f32fdfea5bda3b6d37a99a0f7225cd827638c517805",
       "respondents": 6,
-      "questions": 3,
-      "response_slots": 3,
+      "questions": 279,
+      "response_slots": 279,
       "coordinate_slots": 2,
       "weight_slots": 1,
-      "routing_facts": 18,
+      "routing_facts": 1674,
       "authority_snapshots": 7
     },
     "release": {
@@ -59,13 +344,13 @@
       "release_ref": {
         "kind": "C11LogicalRelease",
         "object_id": "R157_GSS_FIXTURE_RELEASE/SRC17",
-        "content_hash": "98a2971c539bb44d05ef50bd4a56256f6a722eb6dd27d93d10f3903a51e0bdf5"
+        "content_hash": "e379c0d70358c897544a4e9d12af5518f5ea4f3e4f9e43c3da86696e18249a64"
       },
-      "semantic_release_hash": "98a2971c539bb44d05ef50bd4a56256f6a722eb6dd27d93d10f3903a51e0bdf5",
+      "semantic_release_hash": "e379c0d70358c897544a4e9d12af5518f5ea4f3e4f9e43c3da86696e18249a64",
       "source_artifact_ref": {
         "kind": "SOURCE_ARTIFACT",
         "object_id": "R157_FIXTURE:R157-GSS-SRC17-NONRESPONDENT-SCALAR",
-        "content_hash": "9e9c23841604b1f9bb2a88d0315779f73bad2a338da84a231fd013bb38499734"
+        "content_hash": "e85b8fc3d9c11f14bf123f32fdfea5bda3b6d37a99a0f7225cd827638c517805"
       },
       "m01_m18_coverage": {
         "M01": [
@@ -127,7 +412,7 @@
         ]
       },
       "universes": 1,
-      "respondent_events": 18,
+      "respondent_events": 1674,
       "coordinate_facts": 12,
       "weight_facts": 6,
       "authority_snapshots": 7
@@ -141,7 +426,7 @@
         "NOT_ASKED": 1,
         "REFUSAL": 1,
         "SOURCE_SPECIFIC_SPECIAL": 2,
-        "SUBSTANTIVE_RESPONSE": 9
+        "SUBSTANTIVE_RESPONSE": 1665
       },
       "response_state_counts_by_question": {
         "FIXTURE:SRC17:abdefect": {
@@ -149,16 +434,844 @@
           "SOURCE_SPECIFIC_SPECIAL": 2,
           "SUBSTANTIVE_RESPONSE": 3
         },
+        "FIXTURE:SRC17:abhlth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:abnomore": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:aborct": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:abpoor": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:abrape": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:absingle": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:adults": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:age": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:aged": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:amicable": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:anomia1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:anomia2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:anomia3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:anomia4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:anomia5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:anomia6": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:anomia7": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:anomia8": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:anomia9": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:antiwar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:arrest": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:attend": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:babies": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:babies_7222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:burglr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:cappun2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:childs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:civright": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:class": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:classy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:clean": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:colath": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:colcom": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:colhomo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:colsoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:commun": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:comprend": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:conarmy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:conbus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:conclerg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:coneduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:confed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:conjudge": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:conlabor": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:conlegis": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:conmedic": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:conpress": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:consci": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:consider": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:control": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:contv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:coop": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:courts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:degree": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:denom": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:denom16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:denom16_7322": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:denom_7222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:divorce": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:earnrs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:earnrs_7222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:educ": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:ethnic": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:ethnum": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:evwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:fair": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:famdif16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:family16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:fear": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:finalter": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:finrela": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:found": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:fund": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:fund16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:getahead": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:govaid": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:grass": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:gun": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:gunage": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:gunlaw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:gunnum": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:hapmar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
         "FIXTURE:SRC17:happy": {
           "DK": 1,
           "MISSING": 2,
           "SUBSTANTIVE_RESPONSE": 3
+        },
+        "FIXTURE:SRC17:health": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:helpful": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:hit": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:hitage": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:hitbeatr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:hitchild": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:hitdrunk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:hitmarch": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:hitnum": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:hitok": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:hitrobbr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:homosex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:hompop": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:honest": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:hrs1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:hrs2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:if68who": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:if72who": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:incdef": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:incom16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:income": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:indstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:indtag": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:indus10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:industry": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:interest": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:isco08": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:isco88": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:jobhour": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:jobinc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:jobmeans": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:jobpromo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:jobsec": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:judgment": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:libath": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:libcom": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:libhomo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:libsoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:life": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:madeg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:maeduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:maindstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:maindtag": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:manners": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:maoccindv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:maoccstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:maocctag": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:marital": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:mawk16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:mawkbaby": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:mawork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:mobile16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:nataid": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:natarms": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:natcity": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:natcrime": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:natdrug": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:nateduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:natenvir": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:natfare": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:natheal": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:natrace": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:natspac": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:obeys": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:occ10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:occindv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:occstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:occtag": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:oth16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:other": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:owngun": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:padeg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:paeduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:paind10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:paind16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:paindstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:paindtag": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:paisco08": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:paisco88": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:paocc10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:paoccindv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:paoccstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:paocctag": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:partyid": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:pawrkslf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:phone": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:pistol": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:polabuse": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:polattak": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:polescap": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:polhitok": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:polmurdr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:porninf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:pornlaw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:pornmorl": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:pornout": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:pornrape": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:postlife": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:povline": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:pres68": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:pres72": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:preteen": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:preteen_7222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:prowar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:racclos": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:racdin": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:racdis": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:race": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:rachome": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:racinteg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:raclive": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:racmar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:racopen": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:racpush": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:reg16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:reg16_7222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:region_7222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:relig": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:relig16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:reltrad": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:reltrad16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:res16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:responsi": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:richwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:rifle": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:robbry": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:role": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:satcity": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:satfam": {
+          "SUBSTANTIVE_RESPONSE": 6
         },
         "FIXTURE:SRC17:satfin": {
           "INVALID_UNRESOLVED": 1,
           "NOT_ASKED": 1,
           "REFUSAL": 1,
           "SUBSTANTIVE_RESPONSE": 3
+        },
+        "FIXTURE:SRC17:satfrnd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:sathealt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:sathobby": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:satjob": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:school": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:sex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:shotgun": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:sibs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spaneng": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spdeg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spden": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spden16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spden_7322": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:speduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spevwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spfund": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spfund16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:sphrs1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:sphrs2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spind": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spind10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spindstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spindtag": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spisco08": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spisco88": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spkath": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spkcom": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spkhomo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spksoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spocc10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spoccindv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spoccstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spocctag": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spoth16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spother": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:sprel": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:sprel16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spwrkslf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:spwrksta": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:srcbelt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:strike": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:studious": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:success": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:teens": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:teens_7222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:ticket": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:trust": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:unemp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:union": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:unrelat": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:unrelat_7222": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:usintl": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:usun": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:uswar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:vote68": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:vote72": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:wksub": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:wksubs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:wksup": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:wksups": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:wrkslf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:wrkstat": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:xmarsex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:xmovie": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC17:xnorcsiz": {
+          "SUBSTANTIVE_RESPONSE": 6
         }
       },
       "coordinate_state_counts": {
@@ -210,12 +1323,70 @@
       "source_bytes_read": false,
       "permission_decision": "NOT_REQUESTED_OR_EVALUATED_IN_PREPARATION"
     },
+    "calls": [
+      {
+        "call": "rawlsing_next.source_configuration.schema.validate_source_config(original_config)",
+        "result": "PASS"
+      },
+      {
+        "call": "rawlsing_next.source_configuration.schema.validate_source_config(fixture_config)",
+        "result": "PASS"
+      },
+      {
+        "call": "rawlsing_next.source_configuration.factory.row_native_keys_from_transport(fixture_config, stream=fixture_stream)",
+        "result": "PASS",
+        "witness_count": 6,
+        "witness_kind": "R157_NONRESPONDENT_FIXTURE_KEY"
+      },
+      {
+        "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection(fixture_config, row_native_keys=fixture_row_keys)",
+        "result": "PASS",
+        "projection_identity_ref": {
+          "kind": "C11_SEMANTIC_PROJECTION",
+          "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC17-NONRESPONDENT-SCALAR:projection",
+          "content_hash": "ec94032ca59b5a7df758c6bfeb858e068c7d47e430ba357f5bdcb368d864dea1"
+        }
+      },
+      {
+        "call": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config(fixture_config, stream=fixture_stream)",
+        "result": "PASS",
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "R157_GSS_FIXTURE_RELEASE/SRC17",
+          "content_hash": "e379c0d70358c897544a4e9d12af5518f5ea4f3e4f9e43c3da86696e18249a64"
+        }
+      },
+      {
+        "call": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config(fixture_config, stream=fixture_stream)",
+        "result": "PASS",
+        "repository_release_refs": [
+          {
+            "kind": "C11LogicalRelease",
+            "object_id": "R157_GSS_FIXTURE_RELEASE/SRC17",
+            "content_hash": "e379c0d70358c897544a4e9d12af5518f5ea4f3e4f9e43c3da86696e18249a64"
+          }
+        ]
+      },
+      {
+        "call": "rawlsing_next.source_configuration.reader.reader_configuration_from_config(original_config)",
+        "result": "PASS",
+        "source_bytes_read": false,
+        "encoding": null,
+        "permission_decision": "NOT_REQUESTED_OR_EVALUATED_IN_PREPARATION"
+      },
+      {
+        "call": "rawlsing_next.source_configuration.reader.source_read_request_from_config(original_config)",
+        "result": "PASS",
+        "source_bytes_read": false,
+        "permission_decision": "NOT_REQUESTED_OR_EVALUATED_IN_PREPARATION"
+      }
+    ],
     "repository": {
       "release_refs": [
         {
           "kind": "C11LogicalRelease",
           "object_id": "R157_GSS_FIXTURE_RELEASE/SRC17",
-          "content_hash": "98a2971c539bb44d05ef50bd4a56256f6a722eb6dd27d93d10f3903a51e0bdf5"
+          "content_hash": "e379c0d70358c897544a4e9d12af5518f5ea4f3e4f9e43c3da86696e18249a64"
         }
       ],
       "release_ref_matches_stream": true
@@ -249,7 +1420,7 @@
   },
   "identity_separation": {
     "original_source_sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
-    "fixture_source_sha256": "9e9c23841604b1f9bb2a88d0315779f73bad2a338da84a231fd013bb38499734",
+    "fixture_source_sha256": "e85b8fc3d9c11f14bf123f32fdfea5bda3b6d37a99a0f7225cd827638c517805",
     "distinct_bytes": true,
     "original_binding_identity_class": "ORIGINAL_SOURCE",
     "fixture_binding_identity_class": "NONRESPONDENT_FIXTURE",
@@ -335,6 +1506,28 @@
       "unaffected_scope": "source-row identity and raw response-rule construction",
       "owner": "GSS source evidence owner",
       "next_step": "Recover exact wave sampling-frame/design evidence before population or design claims."
+    },
+    {
+      "residual_id": "SRC17-CONTINUOUS-NATIVE-FINITE-RULE",
+      "scope": "SRC17/continuous",
+      "field": "questions[].response_slots",
+      "status": "NATIVE_FINITE_RULE_REQUIRED",
+      "reason": "51 exact items are held: The source variables carry no substantive value labels and are continuous/typed numeric; native ResponseSlotRule requires exact finite physical value keys and must not force a categorical domain. Exact item/evidence rows: source_pre553_validation/SRC17/SRC17.exceptions.json#held_items.",
+      "dependent_operation": "continuous response projection",
+      "unaffected_scope": "continuous/source-native value handling in an owner with an exact continuous rule",
+      "owner": "GSS source/native-representation owner",
+      "next_step": "Do not substitute a default category; consume the exact held-item evidence or extend the receiving owner only through its actual contract."
+    },
+    {
+      "residual_id": "SRC17-ADMIN-NO-RESPONSE-SLOT",
+      "scope": "SRC17/admin",
+      "field": "questions[].response_slots",
+      "status": "RETAINED_ADMINISTRATIVE",
+      "reason": "5 exact items are held: The source items are administrative/context variables, not respondent measurement targets; their identities and dispositions are retained without a response event. Exact item/evidence rows: source_pre553_validation/SRC17/SRC17.exceptions.json#held_items.",
+      "dependent_operation": "administrative variable use as a measurement target",
+      "unaffected_scope": "administrative/context consumption from the retained physical metadata",
+      "owner": "GSS source/native-representation owner",
+      "next_step": "Do not substitute a default category; consume the exact held-item evidence or extend the receiving owner only through its actual contract."
     }
   ],
   "limits": [

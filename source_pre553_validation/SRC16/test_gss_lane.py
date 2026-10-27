@@ -66,8 +66,8 @@ def test_original_config_schema_and_no_drop(source_id: str) -> None:
         "NOT_PERFORMED_UNDER_R157_PREPARATION")
     assert document["respondents"]["source_native_key_slot"]["name"] == "id"
     assert document["weight_slots"] == []
-    assert any(item["field"] == "weight_slots" for item in document["residuals"]) is False
-    assert any("weight" in item["field"].lower() for item in document["residuals"])
+    assert any(
+        item["residual_id"].endswith("-WEIGHT-HELD") for item in document["residuals"])
 
 
 @pytest.mark.parametrize("source_id", SOURCES)

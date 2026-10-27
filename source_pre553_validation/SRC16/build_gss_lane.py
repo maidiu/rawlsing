@@ -91,10 +91,6 @@ MISSING_RESPONSE_STATES = {
     -98.0: "DK",
     -99.0: "MISSING",
 }
-ADMIN_SLOTS = {
-    "ballot", "ballotformwt", "ballotformwtnr", "fileversion", "form",
-    "oversamp", "sample", "version", "vpsu", "vstrat",
-}
 SUPPORTED_SCOPE_NOTE = (
     "Source-local scalar response rules are prepared. Original respondent "
     "execution is NOT performed or claimed under R157 preparation."
@@ -117,12 +113,22 @@ def _auth_dict(value: AuthorityRef) -> dict[str, str]:
     return value.as_dict()
 
 
-def _json_write(path: Path, document: Mapping[str, Any]) -> None:
+def _json_write(
+    path: Path, document: Mapping[str, Any], *, compact: bool | None = None,
+) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
-        json.dumps(document, indent=2, ensure_ascii=False, allow_nan=False) + "\n",
-        encoding="utf-8",
-    )
+    if compact is None:
+        compact = path.name.endswith((
+            ".source.config.json", ".fixture.config.json", ".fixture.json",
+        ))
+    if compact:
+        text = json.dumps(
+            document, separators=(",", ":"), ensure_ascii=False,
+            allow_nan=False,
+        )
+    else:
+        text = json.dumps(document, indent=2, ensure_ascii=False, allow_nan=False)
+    path.write_text(text + "\n", encoding="utf-8")
 
 
 def _file_identity(path: Path) -> dict[str, Any]:
@@ -452,45 +458,56 @@ def _item_payload(item: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
-def _slot_disposition(name: str, selected: set[str], weight_name: str | None) -> tuple[str, str]:
-    if name in selected:
+def _slot_disposition(name: str, role: str) -> tuple[str, str]:
+    if role == "BOUND":
         return (
             "SUPPORTED_RESPONSE",
-            "Grounded scalar response slot selected for the source-local supported slice.",
+            "Grounded finite-label respondent variable with an exact source-specific response rule.",
         )
-    if name == "id":
+    if role == "ROW_KEY":
         return (
             "SOURCE_NATIVE_RESPONDENT_KEY",
             "Source-native respondent id slot; values require a permitted decode before row witnesses exist.",
         )
-    if name == "year":
-        return (
-            "SUPPORTED_COORDINATE_TIME",
-            "Source-native GSS survey-year coordinate; raw value copied only at permitted projection.",
-        )
-    if name == "region":
+    if role == "COORDINATE":
+        if name == "year":
+            return (
+                "SUPPORTED_COORDINATE_TIME",
+                "Source-native GSS survey-year coordinate; raw value copied only at permitted projection.",
+            )
         return (
             "SUPPORTED_CONTEXT_COORDINATE",
             "Source-native region context coordinate retained as a coordinate, not a measurement target.",
         )
-    if name == weight_name:
+    if role == "WEIGHT_HELD":
         return (
             "HELD_WEIGHT_DESIGN_UNRESOLVED",
             "Source weight slot exists, but no exact design/estimand/normalization authority is established.",
         )
-    if name in ADMIN_SLOTS:
+    if role == "ADMIN":
         return (
             "RETAINED_ADMINISTRATIVE",
             "Administrative/sample/form metadata retained for identity and no-drop accounting.",
         )
-    return (
-        "RETAINED_NOT_IN_SUPPORTED_SLICE",
-        "Original item/slot identity and evidence retained; not part of the declared scalar response slice.",
-    )
+    if role == "UNKNOWN":
+        return (
+            "RETAINED_UNKNOWN_SEMANTICS",
+            "P2 records an unknown semantic disposition; exact values and evidence are retained without response promotion.",
+        )
+    if role == "CONTINUOUS":
+        return (
+            "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+            "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+        )
+    raise ValueError(f"unknown item role {role!r} for {name!r}")
 
 
 def _residuals(
-    *, source_id: str, wave: str, weight_slot: Mapping[str, Any] | None,
+    *,
+    source_id: str,
+    wave: str,
+    weight_slot: Mapping[str, Any] | None,
+    held_by_role: Mapping[str, Sequence[Mapping[str, Any]]],
 ) -> list[dict[str, str]]:
     residuals = [
         {
@@ -572,6 +589,57 @@ def _residuals(
             "owner": "GSS weight/design evidence owner",
             "next_step": "Establish exact design/estimand/normalization authority before emitting an authorized weight lane.",
         })
+    grouped = (
+        (
+            "CONTINUOUS",
+            "CONTINUOUS-NATIVE-FINITE-RULE",
+            "questions[].response_slots",
+            "NATIVE_FINITE_RULE_REQUIRED",
+            "The source variables carry no substantive value labels and are continuous/typed numeric; native ResponseSlotRule requires exact finite physical value keys and must not force a categorical domain.",
+            "continuous response projection",
+            "continuous/source-native value handling in an owner with an exact continuous rule",
+        ),
+        (
+            "ADMIN",
+            "ADMIN-NO-RESPONSE-SLOT",
+            "questions[].response_slots",
+            "RETAINED_ADMINISTRATIVE",
+            "The source items are administrative/context variables, not respondent measurement targets; their identities and dispositions are retained without a response event.",
+            "administrative variable use as a measurement target",
+            "administrative/context consumption from the retained physical metadata",
+        ),
+        (
+            "UNKNOWN",
+            "UNKNOWN-SEMANTIC-DISPOSITION",
+            "questions[].response_slots",
+            "SEMANTIC_UNKNOWN",
+            "P2 records the source disposition as unknown even where finite value labels exist; no response rule is promoted beyond the retained source values.",
+            "semantic response projection for these items",
+            "source semantic adjudication for the exact implementation IDs",
+        ),
+    )
+    for role, suffix, native_field, status, reason, dependent, unaffected in grouped:
+        held = held_by_role.get(role, ())
+        if not held:
+            continue
+        residuals.append({
+            "residual_id": f"{source_id}-{suffix}",
+            "scope": f"{source_id}/{role.lower()}",
+            "field": native_field,
+            "status": status,
+            "reason": (
+                f"{len(held)} exact items are held: {reason} "
+                f"Exact item/evidence rows: source_pre553_validation/{source_id}/"
+                f"{source_id}.exceptions.json#held_items."
+            ),
+            "dependent_operation": dependent,
+            "unaffected_scope": unaffected,
+            "owner": "GSS source/native-representation owner",
+            "next_step": (
+                "Do not substitute a default category; consume the exact held-item evidence "
+                "or extend the receiving owner only through its actual contract."
+            ),
+        })
     return residuals
 
 
@@ -650,23 +718,70 @@ def _runtime_section(*, fixture: bool) -> dict[str, Any]:
     }
 
 
+def _positive_labels(slot: Mapping[str, Any]) -> list[float]:
+    labels = slot.get("value_labels") or {}
+    values = []
+    for raw in labels:
+        try:
+            number = float(raw)
+        except (TypeError, ValueError):
+            continue
+        if number >= 0:
+            values.append(number)
+    return sorted(set(values))
+
+
+def _item_role(
+    item: Mapping[str, Any], slot: Mapping[str, Any], weight_name: str,
+) -> str:
+    name = item["source_variable_code"]
+    disposition = str(item["p2"]["canonical_disposition"]).lower()
+    if name == "id":
+        return "ROW_KEY"
+    if name in {"year", "region"}:
+        return "COORDINATE"
+    if name == weight_name:
+        return "WEIGHT_HELD"
+    if "admin" in disposition:
+        return "ADMIN"
+    if "unknown" in disposition:
+        return "UNKNOWN"
+    if not _positive_labels(slot):
+        return "CONTINUOUS"
+    return "BOUND"
+
+
 def _source_profiles(source_id: str) -> dict[str, Any]:
     roster = source_roster_entry(source_id)
     physical_rows = list(iter_physical_slots(source_id))
     physical = {row["name"]: row for row in physical_rows}
     codebook_rows = list(iter_codebook_rows(source_id))
-    items = list(iter_item_evidence(source_id))
-    item_by_name = {row["source_variable_code"]: row for row in items}
+    raw_items = list(iter_item_evidence(source_id))
+    item_by_name = {row["source_variable_code"]: row for row in raw_items}
     missing = sorted(set(SELECTED_QUESTIONS) - set(item_by_name))
     if missing:
         raise RuntimeError(f"{source_id} lacks selected items {missing!r}")
-    selected_items = [item_by_name[name] for name in SELECTED_QUESTIONS]
     weight = physical.get("wtssall") or physical.get("wtssps")
     if weight is None:
         raise RuntimeError(f"{source_id} lacks both wtssall and wtssps")
     for name in (*SELECTED_QUESTIONS, "year", "region", "id"):
         if name not in physical:
             raise RuntimeError(f"{source_id} lacks physical slot {name!r}")
+    items = sorted(
+        raw_items,
+        key=lambda item: physical[item["source_variable_code"]]["ordinal"],
+    )
+    roles: dict[str, str] = {}
+    for item in items:
+        slot = physical[item["source_variable_code"]]
+        roles[item["source_variable_code"]] = _item_role(item, slot, weight["name"])
+    bound_items = [item for item in items if roles[item["source_variable_code"]] == "BOUND"]
+    held_items = [item for item in items if roles[item["source_variable_code"]] != "BOUND"]
+    held_by_role: dict[str, list[Mapping[str, Any]]] = {}
+    for item in held_items:
+        held_by_role.setdefault(roles[item["source_variable_code"]], []).append(item)
+    if not bound_items:
+        raise RuntimeError(f"{source_id} has no finite response-bound items")
     return {
         "roster": roster,
         "physical_rows": physical_rows,
@@ -674,7 +789,11 @@ def _source_profiles(source_id: str) -> dict[str, Any]:
         "codebook_rows": codebook_rows,
         "items": items,
         "item_by_name": item_by_name,
-        "selected_items": selected_items,
+        "selected_items": [item_by_name[name] for name in SELECTED_QUESTIONS],
+        "bound_items": bound_items,
+        "held_items": held_items,
+        "held_by_role": held_by_role,
+        "roles": roles,
         "weight": weight,
     }
 
@@ -686,20 +805,18 @@ def _build_original(source_id: str, profile: Mapping[str, Any]) -> dict[str, Any
     metadata_sha = roster["metadata_witness"]["sha256"]
     physical = profile["physical"]
     weight = profile["weight"]
-    selected_items = profile["selected_items"]
-    selected_names = set(SELECTED_QUESTIONS)
-    selected_ordinals = {
-        physical[name]["ordinal"] for name in (*SELECTED_QUESTIONS, "year", "region", "id", weight["name"])
-    }
+    bound_items = profile["bound_items"]
+    all_items = profile["items"]
+    bound_names = {item["source_variable_code"] for item in bound_items}
+    all_ordinals = {slot["ordinal"] for slot in profile["physical_rows"]}
 
-    source_universe_id = f"urn:rawlsing:r157:source:{source_id}:universe"
     source_material = {
         "source_id": source_id,
         "wave": wave,
         "source_sha256": original_sha,
         "metadata_witness_sha256": metadata_sha,
-        "implementation_ids": [item["implementation_id"] for item in selected_items],
-        "physical_ordinals": sorted(selected_ordinals),
+        "implementation_ids": [item["implementation_id"] for item in bound_items],
+        "physical_ordinals": sorted(all_ordinals),
         "h48_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
         "p2_authority_status": "source_reviewed",
     }
@@ -727,7 +844,7 @@ def _build_original(source_id: str, profile: Mapping[str, Any]) -> dict[str, Any
         bundle_sha256=semantic_hash({
             "source_bundle": source_bundle,
             "routing_status": "SOURCE_ROUTING_UNRESOLVED",
-            "question_ids": [item["p2"]["question_id"] for item in selected_items],
+            "question_ids": [item["p2"]["question_id"] for item in bound_items],
         }),
     )
     coord_snapshot = _authority_snapshot(
@@ -770,7 +887,7 @@ def _build_original(source_id: str, profile: Mapping[str, Any]) -> dict[str, Any
             "source_id": source_id,
             "source_sha256": original_sha,
             "wave": wave,
-            "question_ids": [item["p2"]["question_id"] for item in selected_items],
+            "question_ids": [item["p2"]["question_id"] for item in bound_items],
             "coordinate_slots": ["year", "region"],
         },
     )
@@ -825,7 +942,7 @@ def _build_original(source_id: str, profile: Mapping[str, Any]) -> dict[str, Any
     questions = []
     response_slots = []
     routing = []
-    for item in selected_items:
+    for item in all_items:
         name = item["source_variable_code"]
         slot = physical[name]
         native_question = _native_question_ref(
@@ -856,8 +973,11 @@ def _build_original(source_id: str, profile: Mapping[str, Any]) -> dict[str, Any
                 "relation_join_status": "EXACT",
                 "question_text": item["p2"]["question_text"],
                 "source_variable_code": name,
+                "configuration_role": profile["roles"][name],
             },
         })
+        if name not in bound_names:
+            continue
         response_slots.append({
             "slot": {"ordinal": slot["ordinal"], "name": name},
             "question_id": question_id,
@@ -917,31 +1037,11 @@ def _build_original(source_id: str, profile: Mapping[str, Any]) -> dict[str, Any
 
     physical_payloads = []
     for slot in profile["physical_rows"]:
-        disposition, reason = _slot_disposition(slot["name"], selected_names, weight["name"])
+        role = profile["roles"][slot["name"]]
+        disposition, reason = _slot_disposition(slot["name"], role)
         physical_payloads.append(_physical_payload(slot, disposition, reason))
-    items_payload = [_item_payload(item) for item in profile["items"]]
-    selected_ids = [item["implementation_id"] for item in selected_items]
-    selected_id_set = set(selected_ids)
-    excluded_slots = [
-        {
-            "ordinal": slot["ordinal"],
-            "name": slot["name"],
-            "reason": _slot_disposition(slot["name"], selected_names, weight["name"])[1],
-        }
-        for slot in profile["physical_rows"]
-        if slot["ordinal"] not in selected_ordinals
-    ]
-    excluded_items = [
-        {
-            "implementation_id": item["implementation_id"],
-            "reason": (
-                f"retained with source disposition={item['p2']['canonical_disposition']}; "
-                "exact identity and relation evidence retained outside the supported scalar slice"
-            ),
-        }
-        for item in profile["items"]
-        if item["implementation_id"] not in selected_id_set
-    ]
+    items_payload = [_item_payload(item) for item in all_items]
+    bound_ids = [item["implementation_id"] for item in bound_items]
 
     config_id = f"R157-GSS-{source_id}-ORIGINAL-SOURCE-PREPARATION"
     doc = {
@@ -1031,33 +1131,44 @@ def _build_original(source_id: str, profile: Mapping[str, Any]) -> dict[str, Any
             "structural": TypedAbsence("NOT_APPLICABLE").as_dict(),
         },
         "supported_scope": {
-            "scope_id": f"{source_id}-GSS-SCALAR-RESPONSE-PREPARATION",
+            "scope_id": f"{source_id}-GSS-FINITE-RESPONSE-PREPARATION",
             "purpose": "SOURCE_PREPARATION",
             "declared_supported": True,
-            "supported_question_ids": [item["p2"]["question_id"] for item in selected_items],
+            "supported_question_ids": [item["p2"]["question_id"] for item in bound_items],
             "native_validation_expectation": "NOT_RUN",
             "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
             "supported_unit_slice": "GSS_RESPONDENT_ROW_SOURCE_LOCAL",
-            "supported_form_slice": "SCALAR_SINGLE_OBSERVATION_PER_RESPONDENT_FORM_ASSIGNMENT_UNKNOWN",
+            "supported_form_slice": "SINGLE_OBSERVATION_PER_RESPONDENT_FORM_ASSIGNMENT_UNKNOWN",
             "notes": [
                 SUPPORTED_SCOPE_NOTE,
-                "The three source-local scalar variables are happy, satfin and abdefect; no cross-wave equivalence or pooling is asserted.",
-                "Fixture validation uses a separate NONRESPONDENT_FIXTURE config and byte identity.",
+                (
+                    f"{len(bound_items)} finite-label respondent variables have exact source-local response rules; "
+                    f"{len(profile['held_items'])} held items retain exact identity/evidence with typed residuals."
+                ),
+                "Context/position variables with finite labels are bound as source responses without becoming measurement targets.",
+                "Continuous/admin/unknown items are not forced into finite categories; see the per-item exception ledger.",
+                "No cross-wave equivalence or pooling is asserted; fixture validation uses a separate NONRESPONDENT_FIXTURE identity.",
             ],
         },
         "coverage": {
             "physical_slots_total": roster["physical_columns"],
             "items_total": roster["original_items"],
-            "physical_slots_included": sorted(selected_ordinals),
-            "physical_slots_excluded": excluded_slots,
-            "items_included": selected_ids,
-            "items_excluded": excluded_items,
+            "physical_slots_included": sorted(all_ordinals),
+            "physical_slots_excluded": [],
+            "items_included": [item["implementation_id"] for item in all_items],
+            "items_excluded": [],
             "partial_scope_reason": (
-                "Supported scalar slice is explicitly partial; all physical slots and original items remain serialized and accounted."
+                "All physical slots/items are serialized and bound to a role. Every finite-label non-admin/non-unknown "
+                "respondent variable has a response rule; continuous/admin/unknown items have exact typed residuals."
             ),
             "not_a_lane_config": False,
         },
-        "residuals": _residuals(source_id=source_id, wave=wave, weight_slot=weight),
+        "residuals": _residuals(
+            source_id=source_id,
+            wave=wave,
+            weight_slot=weight,
+            held_by_role=profile["held_by_role"],
+        ),
         "evidence": {
             "source_roster_path": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
             "item_index_path": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
@@ -1084,26 +1195,91 @@ def _field_evidence(
     *, source_id: str, profile: Mapping[str, Any], metadata_sha: str,
 ) -> list[dict[str, Any]]:
     roster = profile["roster"]
-    selected = profile["selected_items"]
-    item_refs = []
-    for item in selected:
-        item_refs.extend(_evidence_refs(item))
+    manifest = load_manifest()
     metadata_ref = _ref_dict(ExactRef(
         "R154_PHYSICAL_METADATA",
         f"urn:rawlsing:r157:metadata:{roster['metadata_witness']['path']}",
         metadata_sha,
     ))
+    item_file_ref = _ref_dict(ExactRef(
+        "PORTABLE_ITEM_EVIDENCE",
+        "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+        manifest["files"]["ITEM_EVIDENCE.jsonl.gz"]["sha256"],
+    ))
+    physical_file_ref = _ref_dict(ExactRef(
+        "PORTABLE_PHYSICAL_SLOTS",
+        "rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz",
+        manifest["files"]["PHYSICAL_SLOTS.jsonl.gz"]["sha256"],
+    ))
+    codebook_file_ref = _ref_dict(ExactRef(
+        "PORTABLE_CODEBOOK_ROWS",
+        "rawlsing_next/source_configuration/evidence/CODEBOOK_ROWS.jsonl.gz",
+        manifest["files"]["CODEBOOK_ROWS.jsonl.gz"]["sha256"],
+    ))
     return [
-        {"field": "identity.*", "refs": [metadata_ref]},
-        {"field": "physical_slots[*]", "refs": [metadata_ref]},
-        {"field": "items[*]", "refs": item_refs},
-        {"field": "questions[].item_evidence", "refs": item_refs},
-        {"field": "response_slots[]", "refs": item_refs},
-        {"field": "coordinate_slots[]", "refs": [metadata_ref]},
-        {"field": "routing[].typed_state", "refs": item_refs},
-        {"field": "authority.snapshots", "refs": item_refs},
-        {"field": "supported_scope", "refs": item_refs},
+        {"field": "identity.*", "refs": [metadata_ref, physical_file_ref]},
+        {"field": "physical_slots[*]", "refs": [metadata_ref, physical_file_ref]},
+        {"field": "items[*]", "refs": [item_file_ref, codebook_file_ref]},
+        {"field": "questions[].item_evidence", "refs": [item_file_ref]},
+        {"field": "response_slots[]", "refs": [item_file_ref, physical_file_ref]},
+        {"field": "coordinate_slots[]", "refs": [metadata_ref, physical_file_ref]},
+        {"field": "routing[].typed_state", "refs": [item_file_ref]},
+        {"field": "authority.snapshots", "refs": [item_file_ref, physical_file_ref]},
+        {"field": "supported_scope", "refs": [item_file_ref, physical_file_ref]},
     ]
+
+
+def _held_item_exception(
+    item: Mapping[str, Any], role: str, slot: Mapping[str, Any],
+) -> dict[str, Any]:
+    disposition, reason = _slot_disposition(item["source_variable_code"], role)
+    labels = slot.get("value_labels") or {}
+    return {
+        "implementation_id": item["implementation_id"],
+        "source_variable_code": item["source_variable_code"],
+        "physical_slot": {"ordinal": slot["ordinal"], "name": slot["name"]},
+        "label": slot.get("label"),
+        "storage_type": slot.get("readstat_type"),
+        "original_type": slot.get("original_type"),
+        "measure": slot.get("measure"),
+        "configuration_role": role,
+        "source_disposition": item["p2"]["canonical_disposition"],
+        "p2_question_id": item["p2"]["question_id"],
+        "p2_authority_status": item["p2"]["authority_status"],
+        "h48_binding_grade": item["h48"]["binding_grade"],
+        "relation_authority_status": item["relation"]["authority_status"],
+        "relation_mapping_status": item["relation"]["mapping_status"],
+        "value_label_count": len(labels),
+        "positive_label_count": len(_positive_labels(slot)),
+        "native_field": (
+            "questions[].response_slots" if role in {"CONTINUOUS", "UNKNOWN"} else
+            "physical_slots[].disposition"
+        ),
+        "configuration_disposition": disposition,
+        "reason": reason,
+        "dependent_operation": (
+            "response projection" if role in {"CONTINUOUS", "UNKNOWN"} else
+            "measurement-target eligibility / administration interpretation"
+        ),
+        "evidence_refs": _evidence_refs(item),
+    }
+
+
+def _fixture_raw_value(
+    item: Mapping[str, Any], slot: Mapping[str, Any], row: int,
+) -> Any:
+    name = item["source_variable_code"]
+    record = FIXTURE_DATA[row - 1]
+    if name == "happy":
+        return record[1]
+    if name == "satfin":
+        return record[2]
+    if name == "abdefect":
+        return record[3]
+    labels = _positive_labels(slot)
+    if not labels:
+        raise RuntimeError(f"fixture bound item {name!r} has no finite substantive label")
+    return labels[(row - 1) % len(labels)]
 
 
 def _fixture_expected(
@@ -1115,17 +1291,22 @@ def _fixture_expected(
         for value in section["values"]:
             key = (name, "SYSTEM_MISSING" if value["raw_value"] is None else float(value["raw_value"]))
             response_state_by_key[key] = value["response_state"]
-    question_ids = [f"FIXTURE:{source_id}:{name}" for name in SELECTED_QUESTIONS]
+    bound_items = profile["bound_items"]
     response_counts: Counter[str] = Counter()
-    by_question: dict[str, Counter[str]] = {qid: Counter() for qid in question_ids}
-    for row, happy, satfin, abdefect, region, weight in FIXTURE_DATA:
-        for name, raw in (("happy", happy), ("satfin", satfin), ("abdefect", abdefect)):
+    by_question: dict[str, Counter[str]] = {
+        f"FIXTURE:{source_id}:{item['source_variable_code']}": Counter()
+        for item in bound_items
+    }
+    for row, _happy, _satfin, _abdefect, _region, _weight in FIXTURE_DATA:
+        for item in bound_items:
+            name = item["source_variable_code"]
+            raw = _fixture_raw_value(item, profile["physical"][name], row)
             key = (name, "SYSTEM_MISSING" if raw is None else float(raw))
             state = response_state_by_key[key]
             response_counts[state] += 1
             by_question[f"FIXTURE:{source_id}:{name}"][state] += 1
     weight_counts: Counter[str] = Counter()
-    for row, happy, satfin, abdefect, region, weight in FIXTURE_DATA:
+    for _row, _happy, _satfin, _abdefect, _region, weight in FIXTURE_DATA:
         if weight is None:
             weight_counts["WEIGHT_MISSING"] += 1
         else:
@@ -1133,9 +1314,9 @@ def _fixture_expected(
     return {
         "fixture_only": True,
         "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
-        "response_event_count": FIXTURE_ROWS * len(SELECTED_QUESTIONS),
+        "response_event_count": FIXTURE_ROWS * len(bound_items),
         "coordinate_fact_count": FIXTURE_ROWS * 2,
-        "routing_fact_count": FIXTURE_ROWS * len(SELECTED_QUESTIONS),
+        "routing_fact_count": FIXTURE_ROWS * len(bound_items),
         "weight_fact_count": FIXTURE_ROWS,
         "response_state_counts": dict(sorted(response_counts.items())),
         "response_state_counts_by_question": {
@@ -1143,7 +1324,7 @@ def _fixture_expected(
         },
         "coordinate_state_counts": {"OBSERVED_COORDINATE": FIXTURE_ROWS * 2},
         "weight_state_counts": dict(sorted(weight_counts.items())),
-        "canonical_values": [None] * (FIXTURE_ROWS * len(SELECTED_QUESTIONS)),
+        "canonical_values": [None] * (FIXTURE_ROWS * len(bound_items)),
         "source_relation_section": "DISTINCT_BY_DEFAULT",
     }
 
@@ -1157,12 +1338,17 @@ def _build_fixture(
     metadata_sha = roster["metadata_witness"]["sha256"]
     physical = profile["physical"]
     weight = profile["weight"]
-    selected_items = profile["selected_items"]
+    bound_items = profile["bound_items"]
+    selected_ordinals = {
+        physical[item["source_variable_code"]]["ordinal"] for item in bound_items
+    } | {physical[name]["ordinal"] for name in ("year", "region", "id", weight["name"])}
     fixture_id = FIXTURE_ID.format(source_id=source_id)
     fixture_cells = []
-    for row, happy, satfin, abdefect, region, weight_value in FIXTURE_DATA:
-        for name, raw in (("happy", happy), ("satfin", satfin), ("abdefect", abdefect)):
+    for row, _happy, _satfin, _abdefect, region, weight_value in FIXTURE_DATA:
+        for item in bound_items:
+            name = item["source_variable_code"]
             slot = physical[name]
+            raw = _fixture_raw_value(item, slot, row)
             fixture_cells.append({
                 "row_ordinal": row,
                 "variable_ordinal": slot["ordinal"],
@@ -1212,18 +1398,13 @@ def _build_fixture(
     fixture_sha = fixture_document_sha256(fixture_doc)
     fixture_doc["fixture_source_sha256"] = fixture_sha
 
-    selected_names = set(SELECTED_QUESTIONS)
-    selected_ordinals = {
-        physical[name]["ordinal"]
-        for name in (*SELECTED_QUESTIONS, "year", "region", "id", weight["name"])
-    }
     source_bundle = semantic_hash({
         "source_id": source_id,
         "wave": wave,
         "source_sha256": original_sha,
         "fixture_id": fixture_id_value,
         "fixture_source_sha256": fixture_sha,
-        "implementation_ids": [item["implementation_id"] for item in selected_items],
+        "implementation_ids": [item["implementation_id"] for item in bound_items],
     })
     source_snapshot = _authority_snapshot(
         authority_id=f"R157-{source_id}-FIXTURE-SOURCE",
@@ -1316,7 +1497,7 @@ def _build_fixture(
             "fixture_id": fixture_id_value,
             "fixture_source_sha256": fixture_sha,
             "source_id": source_id,
-            "question_ids": [item["p2"]["question_id"] for item in selected_items],
+            "question_ids": [item["p2"]["question_id"] for item in bound_items],
         },
     )
     projection_snapshot = _authority_snapshot(
@@ -1378,7 +1559,7 @@ def _build_fixture(
     questions = []
     response_slots = []
     routing = []
-    for item in selected_items:
+    for item in bound_items:
         name = item["source_variable_code"]
         slot = physical[name]
         native_question = _native_question_ref(
@@ -1516,9 +1697,10 @@ def _build_fixture(
                 "it is not an original respondent id."
             )
         else:
-            disposition, reason = _slot_disposition(slot["name"], selected_names, weight["name"])
+            disposition, reason = _slot_disposition(
+                slot["name"], profile["roles"][slot["name"]])
         physical_payloads.append(_physical_payload(slot, disposition, reason))
-    items_payload = [_item_payload(item) for item in selected_items]
+    items_payload = [_item_payload(item) for item in bound_items]
 
     config_id = f"R157-GSS-{source_id}-NONRESPONDENT-FIXTURE-VALIDATION"
     doc = {
@@ -1622,14 +1804,18 @@ def _build_fixture(
             "scope_id": f"{source_id}-GSS-NONRESPONDENT-FIXTURE-VALIDATION",
             "purpose": "NONRESPONDENT_FIXTURE_VALIDATION",
             "declared_supported": True,
-            "supported_question_ids": [f"FIXTURE:{source_id}:{name}" for name in SELECTED_QUESTIONS],
+            "supported_question_ids": [f"FIXTURE:{source_id}:{item['source_variable_code']}" for item in bound_items],
             "native_validation_expectation": "POSITIVE_RELEASE",
             "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
             "supported_unit_slice": "NONRESPONDENT_FIXTURE_ROWS",
-            "supported_form_slice": "SCALAR_SINGLE_OBSERVATION_FIXTURE_ONLY",
+            "supported_form_slice": "SINGLE_OBSERVATION_PER_FIXTURE_ROW_ALL_FINITE_RESPONSE_RULES",
             "notes": [
                 "Fixture authority is explicitly nonrespondent and does not establish original-source authority.",
-                "The fixture exercises source-specific scalar response/missing rules, two raw coordinates and an unresolved-basis weight section.",
+                (
+                    f"The fixture exercises all {len(bound_items)} finite-label source response rules with six "
+                    "synthetic rows, two raw coordinates and an unresolved-basis weight section."
+                ),
+                "Continuous/admin/unknown items remain outside response construction by exact typed residual, not by canary selection.",
                 "Original GSS respondent execution is NOT performed or claimed.",
             ],
         },
@@ -1637,8 +1823,8 @@ def _build_fixture(
             "physical_slots_total": roster["physical_columns"],
             "items_total": roster["original_items"],
             "physical_slots_included": sorted(selected_ordinals),
-            "items_included": [item["implementation_id"] for item in selected_items],
-            "partial_scope_reason": "Nonrespondent fixture exercises only the declared source-local scalar rule slice.",
+            "items_included": [item["implementation_id"] for item in bound_items],
+            "partial_scope_reason": "Nonrespondent fixture exercises every finite-label source response rule plus its coordinates, row-key extraction and unresolved-basis weight facts.",
         },
         "residuals": [
             {
@@ -1875,6 +2061,50 @@ def _native_validation(
             "source_bytes_read": False,
             "permission_decision": "NOT_REQUESTED_OR_EVALUATED_IN_PREPARATION",
         },
+        "calls": [
+            {
+                "call": "rawlsing_next.source_configuration.schema.validate_source_config(original_config)",
+                "result": "PASS",
+            },
+            {
+                "call": "rawlsing_next.source_configuration.schema.validate_source_config(fixture_config)",
+                "result": "PASS",
+            },
+            {
+                "call": "rawlsing_next.source_configuration.factory.row_native_keys_from_transport(fixture_config, stream=fixture_stream)",
+                "result": "PASS",
+                "witness_count": len(fixture_row_keys),
+                "witness_kind": "R157_NONRESPONDENT_FIXTURE_KEY",
+            },
+            {
+                "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection(fixture_config, row_native_keys=fixture_row_keys)",
+                "result": "PASS",
+                "projection_identity_ref": projection.projection_identity_ref.as_dict(),
+            },
+            {
+                "call": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config(fixture_config, stream=fixture_stream)",
+                "result": "PASS",
+                "release_ref": release.release_ref.as_dict(),
+            },
+            {
+                "call": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config(fixture_config, stream=fixture_stream)",
+                "result": "PASS",
+                "repository_release_refs": [ref.as_dict() for ref in repository.release_refs],
+            },
+            {
+                "call": "rawlsing_next.source_configuration.reader.reader_configuration_from_config(original_config)",
+                "result": "PASS",
+                "source_bytes_read": False,
+                "encoding": reader_configuration.encoding,
+                "permission_decision": "NOT_REQUESTED_OR_EVALUATED_IN_PREPARATION",
+            },
+            {
+                "call": "rawlsing_next.source_configuration.reader.source_read_request_from_config(original_config)",
+                "result": "PASS",
+                "source_bytes_read": False,
+                "permission_decision": "NOT_REQUESTED_OR_EVALUATED_IN_PREPARATION",
+            },
+        ],
         "repository": {
             "release_refs": [ref.as_dict() for ref in repository.release_refs],
             "release_ref_matches_stream": repository_release.release_ref.as_dict() == release.release_ref.as_dict(),
@@ -1939,7 +2169,7 @@ def _build_one(source_id: str) -> dict[str, Any]:
         fixture_config_path=fixture_config_path,
         original_config_path=original_path,
     )
-    selected = profile["selected_items"]
+    selected = profile["bound_items"]
     original_canonical = canonical_config_hash(original_doc)
     fixture_canonical = canonical_config_hash(fixture_doc)
     results = {
@@ -1973,6 +2203,11 @@ def _build_one(source_id: str) -> dict[str, Any]:
             "items_included": len(original_doc["coverage"]["items_included"]),
             "physical_slots_excluded": len(original_doc["coverage"]["physical_slots_excluded"]),
             "items_excluded": len(original_doc["coverage"]["items_excluded"]),
+            "response_bound_items": len(profile["bound_items"]),
+            "held_items": len(profile["held_items"]),
+            "held_by_role": {
+                role: len(items) for role, items in sorted(profile["held_by_role"].items())
+            },
             "no_drop": (
                 len(original_doc["physical_slots"]) == profile["roster"]["physical_columns"]
                 and len(original_doc["items"]) == profile["roster"]["original_items"]
@@ -2015,12 +2250,26 @@ def _build_one(source_id: str) -> dict[str, Any]:
         ],
     }
     _json_write(results_path, results)
+    held_items = [
+        _held_item_exception(
+            item,
+            profile["roles"][item["source_variable_code"]],
+            profile["physical"][item["source_variable_code"]],
+        )
+        for item in profile["held_items"]
+    ]
     _json_write(exceptions_path, {
         "schema": "PYAT_R157_GSS_EXCEPTION_LEDGER@1.0.0",
         "source_id": source_id,
         "source_config": str(original_path.relative_to(ROOT)),
         "residual_count": len(original_doc["residuals"]),
         "residuals": original_doc["residuals"],
+        "bound_item_count": len(profile["bound_items"]),
+        "held_item_count": len(held_items),
+        "held_by_role_counts": {
+            role: len(items) for role, items in sorted(profile["held_by_role"].items())
+        },
+        "held_items": held_items,
         "fixture_limits": fixture_doc["residuals"],
         "blocking_lane_completion": False,
         "blocking_original_execution": True,
@@ -2043,9 +2292,14 @@ def _build_one(source_id: str) -> dict[str, Any]:
             "codebook_rows": profile["roster"]["codebook_rows"],
             "original_items": profile["roster"]["original_items"],
             "exact_relation_matches": profile["roster"]["exact_relation_matches"],
+            "response_bound_items": len(profile["bound_items"]),
+            "held_items": len(profile["held_items"]),
+            "held_by_role_counts": {
+                role: len(items) for role, items in sorted(profile["held_by_role"].items())
+            },
             "participating_implementation_ids": [item["implementation_id"] for item in selected],
         },
-        "selected_items": [
+        "bound_items": [
             {
                 "source_variable_code": item["source_variable_code"],
                 "implementation_id": item["implementation_id"],
@@ -2059,6 +2313,16 @@ def _build_one(source_id: str) -> dict[str, Any]:
                 "evidence_refs": _evidence_refs(item),
             }
             for item in selected
+        ],
+        "held_items": [
+            {
+                "source_variable_code": item["source_variable_code"],
+                "implementation_id": item["implementation_id"],
+                "configuration_role": profile["roles"][item["source_variable_code"]],
+                "source_disposition": item["p2"]["canonical_disposition"],
+                "evidence_refs": _evidence_refs(item),
+            }
+            for item in profile["held_items"]
         ],
         "all_items_accounted": len(original_doc["items"]) == profile["roster"]["original_items"],
         "all_physical_slots_accounted": len(original_doc["physical_slots"]) == profile["roster"]["physical_columns"],
