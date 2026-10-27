@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "R157_P3_ACCEPTED_FOUR_SOURCE_LANES_EVENTS",
-  "handoff_commit": "7a444b61ec6fcc5232c1a0405e5d26bab7dc4a06",
+  "checkpoint_id": "R157_PROVIDER_AUTH_REPAIR_SAME_SOURCE_SESSIONS",
+  "handoff_commit": "3832fc80aa84a88f641d4a47fe8d7605a6487c75",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/R157_P3_ACCEPTED_FOUR_SOURCE_LANES_EVENTS/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/R157_P3_ACCEPTED_FOUR_SOURCE_LANES_EVENTS/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/R157_P3_ACCEPTED_FOUR_SOURCE_LANES_EVENTS/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/R157_PROVIDER_AUTH_REPAIR_SAME_SOURCE_SESSIONS/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/R157_PROVIDER_AUTH_REPAIR_SAME_SOURCE_SESSIONS/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/R157_PROVIDER_AUTH_REPAIR_SAME_SOURCE_SESSIONS/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "7a444b61ec6fcc5232c1a0405e5d26bab7dc4a06",
+  "canonical_control_base": "3832fc80aa84a88f641d4a47fe8d7605a6487c75",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "7a444b61ec6fcc5232c1a0405e5d26bab7dc4a06",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/R157_P3_ACCEPTED_FOUR_SOURCE_LANES_EVENTS/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/R157_P3_ACCEPTED_FOUR_SOURCE_LANES_EVENTS/CURRENT.md",
+  "qualified_working_hq_commit": "3832fc80aa84a88f641d4a47fe8d7605a6487c75",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/R157_PROVIDER_AUTH_REPAIR_SAME_SOURCE_SESSIONS/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/R157_PROVIDER_AUTH_REPAIR_SAME_SOURCE_SESSIONS/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 162,
-    "canonical_report_commit": "7a444b61ec6fcc5232c1a0405e5d26bab7dc4a06",
+    "revision": 163,
+    "canonical_report_commit": "3832fc80aa84a88f641d4a47fe8d7605a6487c75",
     "counterpart": "Sorok rev34 independent; no Pyat actor grant"
   },
   "previous_handoff": {
-    "checkpoint_id": "R157_P0_TERMINAL_P3_AND_THREE_LANES",
-    "handoff_commit": "bb03e69229b4cfc74bacf249b38286d4d9ade006"
+    "checkpoint_id": "R157_P3_ACCEPTED_FOUR_SOURCE_LANES_EVENTS",
+    "handoff_commit": "7a444b61ec6fcc5232c1a0405e5d26bab7dc4a06"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "Intake actual terminal source-lane notifications; verify scope and advance remaining independent family lanes within max4. Native-bound all35/final review still required.",
-  "worker_state_truth": "P3 PID17591 terminal exit0. EVS25507/LATIN15088/GSS15095/LITS15101 actualrunning/preflightverified; finitecompletionwatchers ready, no timedworkerpolls.",
+  "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
+  "worker_state_truth": "Current LATIN27957/GSS27962/LITS27969 resumed with actual model/preflight verified; EVS25507 no terminalevent. Oldlane15088/15095/15101 terminalauth403 and handled.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -364,10 +364,10 @@
         "SRC26"
       ],
       "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
-      "pid": 15088,
+      "pid": 27957,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin",
       "branch": "agent/pyat-pre553-r157-latin",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "state": "RUNNING_AUTH_RETRY_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     },
     {
@@ -384,10 +384,10 @@
         "SRC23"
       ],
       "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
-      "pid": 15095,
+      "pid": 27962,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss",
       "branch": "agent/pyat-pre553-r157-gss",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "state": "RUNNING_AUTH_RETRY_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     },
     {
@@ -400,10 +400,10 @@
         "SRC30"
       ],
       "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
-      "pid": 15101,
+      "pid": 27969,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
       "branch": "agent/pyat-pre553-r157-lits",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "state": "RUNNING_AUTH_RETRY_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     },
     {
@@ -433,7 +433,7 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "6284f9d32d9f17138b9e8f123dc704962b131bbc",
+  "current_development_evidence": "c12ef571d0a34500bf268fd895a87a9bf9c5a851",
   "new_R87_operative_grants": false,
   "secondary_hq_status": "USER_APPOINTED_BROWSER_SECONDARY__PRIMARY_CODEX_NOT_REVOKED"
 }
