@@ -1,3 +1,7 @@
+R157 final P0 d8d7087a8e56c24042bf5945fea1c97eb0d6c710 terminal exit0; integrated native-key witness correction (configured key slot no longer silently ignored),27manifest files verified,12focused tests pass. Original native fixture release identity unchanged. Same integrator session now P3 PID17591 actual checkout/model/MAX verified. LATIN/GSS/LITS continue unchanged source queues, dependency correction delivered without task restart; four OpenCode authors total. Main branch c60a13a78666c795737ddcb877300adea380249d. All35/final review incomplete; heartbeat PAUSED; no original respondent/issued workload execution.
+
+## Earlier progress history retained
+
 Frozen P0 actual constructor/native fixture release integrated; HQ verified27artifact hashes, full18276uniqueitems/18413slots and18250joins+26unmatched,11focusedtests pass. Three source lanes LATIN/GSS/LITS launched in isolated disjoint worktrees with actualpreflight and GoDeepSeekMAX session verification. Existing integrator still finishing P0 corrections, so do not duplicate live session. All35 preparation/final independentreview incomplete; heartbeatPAUSED.
 
 ## Earlier progress history retained

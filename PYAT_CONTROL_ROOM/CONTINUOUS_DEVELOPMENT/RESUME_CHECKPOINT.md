@@ -1,3 +1,9 @@
+# CURRENT — R157 P0 terminal; P3 + three source lanes RUNNING
+
+R157 final P0 d8d7087a8e56c24042bf5945fea1c97eb0d6c710 terminal exit0; integrated native-key witness correction (configured key slot no longer silently ignored),27manifest files verified,12focused tests pass. Original native fixture release identity unchanged. Same integrator session now P3 PID17591 actual checkout/model/MAX verified. LATIN/GSS/LITS continue unchanged source queues, dependency correction delivered without task restart; four OpenCode authors total. Main branch c60a13a78666c795737ddcb877300adea380249d. All35/final review incomplete; heartbeat PAUSED; no original respondent/issued workload execution.
+
+Read branch progress/P3_LAUNCH.json, LANE_LAUNCHES.json, P0_INTAKE.json and actual logs/terminal completion receipts. Next: Intake terminal P3/source-lane returns and advance independent remaining families within max4; final all35 review/acceptance still required. No duplicate live jobs. Exact user source-configuration boundary clarification governs.
+
 # CURRENT — R157 sufficient P0 integrated; LATIN/GSS/LITS actually RUNNING
 
 Frozen P0 candidate328e394e871ea09289c7023d3fb54b3f030d8481 integrated on agent/pyat-source-pre553-r157, current d62b3e4b4510d8c9aab30ae11d2a7984f7b8b3a7. HQ verified27 artifact hashes/bytes, actual gzip counts18276unique originalIDs/18413slots/18276codebookrows,18250exactjoins+26explicitnonmatches; replayed11focusedtests including actual fixture GovernedC11Projection/native C11 release. Scope: sufficient shared interface for independent lanes, not all35/finalreview. Initial HQ test failure was sparse plan-directory omission, restored tracked directory and all11 passed without code changes. Source respondent execution absent.

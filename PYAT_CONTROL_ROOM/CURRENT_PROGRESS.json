@@ -1,7 +1,7 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 160,
+  "revision": 161,
   "r39_return_intake": {
     "status": "WORKER_AUTHOR_EVIDENCE_RECEIVED__NO_INDEPENDENT_ADOPTION",
     "startup": "2e6c189fd54b818556a44419b19691938ea76d5a",
@@ -2953,7 +2953,7 @@
     ],
     "acceptance": "Author result is candidate; distinct reviewer independently qualifies exact candidate, then HQ scoped disposition. R09 local is not deployed enforcement."
   },
-  "next_action": "Existing integrator finishes P0 return/corrections, then P3; intake ready source lane terminal returns and launch next independent lanes within max4.",
+  "next_action": "Intake terminal P3/source-lane returns and advance independent remaining families within max4; final all35 review/acceptance still required.",
   "active_r61_native_workers": [
     {
       "node": "R01",
@@ -23304,6 +23304,81 @@
       "live_goal_update": "CONSOLIDATED_OBJECTIVE_VERIFIED_ACTIVE",
       "heartbeat": "PAUSED",
       "r157_frozen_p0": "328e394e871ea09289c7023d3fb54b3f030d8481"
+    }
+  },
+  "r157_p3": {
+    "checkpoint_id": "R157_P0_TERMINAL_P3_AND_THREE_LANES",
+    "summary": "R157 final P0 d8d7087a8e56c24042bf5945fea1c97eb0d6c710 terminal exit0; integrated native-key witness correction (configured key slot no longer silently ignored),27manifest files verified,12focused tests pass. Original native fixture release identity unchanged. Same integrator session now P3 PID17591 actual checkout/model/MAX verified. LATIN/GSS/LITS continue unchanged source queues, dependency correction delivered without task restart; four OpenCode authors total. Main branch c60a13a78666c795737ddcb877300adea380249d. All35/final review incomplete; heartbeat PAUSED; no original respondent/issued workload execution.",
+    "updates": {
+      "active_workers": [
+        {
+          "task": "P3_FACTORY_READY",
+          "session": "ses_e98c905cbffekusoHURfKyEUKG",
+          "pid": 17591,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
+          "branch": "agent/pyat-pre553-r157-foundation",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "P3_LAUNCH.json"
+        },
+        {
+          "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "LATIN",
+          "source_ids": [
+            "SRC24",
+            "SRC25",
+            "SRC26"
+          ],
+          "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+          "pid": 15088,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin",
+          "branch": "agent/pyat-pre553-r157-latin",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        },
+        {
+          "task": "GSS:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "GSS",
+          "source_ids": [
+            "SRC16",
+            "SRC17",
+            "SRC18",
+            "SRC19",
+            "SRC20",
+            "SRC21",
+            "SRC22",
+            "SRC23"
+          ],
+          "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+          "pid": 15095,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss",
+          "branch": "agent/pyat-pre553-r157-gss",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        },
+        {
+          "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "LITS",
+          "source_ids": [
+            "SRC27",
+            "SRC28",
+            "SRC29",
+            "SRC30"
+          ],
+          "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+          "pid": 15101,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
+          "branch": "agent/pyat-pre553-r157-lits",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        }
+      ],
+      "next_action": "Intake terminal P3/source-lane returns and advance independent remaining families within max4; final all35 review/acceptance still required.",
+      "r157_branch": "agent/pyat-source-pre553-r157",
+      "r157_branch_head": "c60a13a78666c795737ddcb877300adea380249d",
+      "r157_state": "P3_AND_THREE_SOURCE_LANES_RUNNING",
+      "live_goal_update": "CONSOLIDATED_OBJECTIVE_VERIFIED_ACTIVE",
+      "heartbeat": "PAUSED",
+      "r157_frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710"
     }
   }
 }
