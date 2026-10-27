@@ -1,0 +1,100 @@
+{
+  "schema": "SOROK_SYN02_RB_INDEPENDENT_EVIDENCE_R1",
+  "date": "2026-10-27",
+  "reviewer": "RB",
+  "review_branch": "agent/sorok-syn02-review-rb-source-runtime-migration-r1",
+  "review_startup": "1ede5e7e814b22e6e652fb01549d4a10f5dec18c",
+  "targets": {
+    "SYN02-B": "d8f8b4f7610a4a28d86cf6d0c08f5d297d74d6e3",
+    "SYN02-D": "f904955e1c6f4db2d7fdebf8d2a6b78029274a5f"
+  },
+  "source_root": "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_code_bundle_staging",
+  "source_access": "read-only historical and current source; author worktrees read-only",
+  "rb_executed_tests": {
+    "S44_S45": {"result": "31 passed in 81.88s", "expected": "31"},
+    "S46_S47": {"result": "34 passed in 107.48s", "expected": "34"},
+    "S48": {"result": "12 passed in 8.90s", "expected": "12"},
+    "S49_S51": {"result": "26 passed in 45.81s", "expected": "26"},
+    "S52": {"result": "13 passed in 53.29s", "expected": "13"},
+    "total": {"result": "116 passed, 0 failed", "expected": "116"},
+    "grade": "SOURCEFREE_TEST_ONLY__NOT_NATIVE_PERSON__NOT_C12_A5"
+  },
+  "b_source_identity": {
+    "declared_files": 59,
+    "sha256_exact": 59,
+    "mismatches": 0,
+    "s50_selected": 31,
+    "s50_exact": 31,
+    "archive_zip_mismatch_acknowledged": true
+  },
+  "d_key_source_hashes_verified": {
+    "S37/producer.py": "cbc1a9531caf73b2c70c5ca4e6767b7f2c9e87f3756278555f27dfaee815c42d",
+    "S37/session.py": "3e8ffe0325cd441b2fc05586e6a9cb3676982ea809d4c2fbd288524cf253fb37",
+    "S37/product.py": "4d49453848a7f7e60ad0f2c724ccf5d36d4eb068ae4f7d0cde70a2e1af6993fc",
+    "S36/pipeline.py": "ba8577ae77ed9f3ec291da91caebae1b2a809edb970d22f29db1173747ce05b6",
+    "S36/transaction.py": "d8d5d36ff68a1fa254c829ffa07a8d19699533769791a6d49b0cdfdd23baa803",
+    "S36/response_rules.py": "a1067e97b7309c543029406035e2233dcefb38d571ca198d38f17d86b024889c",
+    "S36/target_rules.py": "e5d38865d2a4d50a904a387b2a8770bda55567dcef670e97c0dd696c8f7475a5",
+    "S42/session.py": "4772a1a10b37dd494610f8f650a3271097e052957f3e2257a997ee3f1db6be0a",
+    "S44/session.py": "eccc8d6a420d1715ebb972407505397d930e898ce4ecec9ec7ca64beaaf75259",
+    "S44/root.py": "a52dbe79b848f02714ccedb176529a58e5bf5365fdc5edde1aa4e044a7a53226",
+    "S45/session.py": "fad26a91d4368d8de665b815bc174678bca97ece6a5a78cc131a5ef6e6db7ab9",
+    "S46/session.py": "d8b51e5700666dbda9122c1ec89984df112abd4930247a9c7f1eff5baece95cf",
+    "S46/producer.py": "6e8fdc28a9171d9f9287dd49b86c9aa4e5de6745d24906c6e376baf6551454c2",
+    "S47/session.py": "467e91a1f4488ab47d46212473d228ddcd93444b78f007501e4f4a123c915d39",
+    "S47/conditioning.py": "97e78287422307b9c7ab1736c2b1ba9b688b115c8ebaa3cf1fcab5a33b15803a",
+    "S48/session.py": "8fc4e3f3c8f32a99174e06c28e1e7bfe046746a73fb7fdf6b57a57b985c450cb",
+    "S48/sources.py": "c29fffb9e2b9a08f24900d8c196197315414bcf424fa8d70d28fb11cdf48d670",
+    "S48/product.py": "dcb7a26f7012b83d2b1bc1259830a0c32a10ca3eb03a1d53983546a5a343a71b",
+    "S49/session.py": "9932029c529a399ffedb24545ea5d0f6884a5fe8719ffc39c8af9fe1db0f3625",
+    "S49/actor.py": "c2a889c825807c174cdc91ce4ec08cde07c2e6e0575fadf9ee97185324c5eb95",
+    "S51/session.py": "6ef8e92eb3ea2d83cfdb5aba1121ed42f1706a0df9bc3f36aff2b91a47596a82",
+    "S52/session.py": "3ed6dadf2c809a0f6e2d4094c41e34be3e51b4a984a219898e20f6a7b299e32e",
+    "C0 possibility": "9c041cb134a7b9198d12f75a1eb82a7e37cdb781adf5f68033b5ad21e62dbc01",
+    "C11 facade": "03b88d258d21c403542756db7316923aa392871442d99294de904b1744da1d01",
+    "C11 repository": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e",
+    "Route B": "3a677b4d7a9083ce627f9c773d8a1697f949deebc550bc8f072cff011589f18b",
+    "source-local": "377b4d767da0c7cac5caa97bfff60febc6c525220c41a1638f2ace13f7d58cdd",
+    "SDTF": "63f3dd0f2471c8d2067f83d786049bc84ca2c07e845ca4d001d0df4a58950d58"
+  },
+  "d_current_source_findings": {
+    "C9_production_response_registry": "EMPTY",
+    "C9_production_target_registry": "EMPTY",
+    "S37_targetless": "confirmed; TEST_ONLY_S37_CAN008_A; NO_CHANGE/NO_PROPOSAL/zero target rows",
+    "S48": "one source event, one prospective; self_account SCI05_HOLD; candidate_specs []; issue_current_source SOURCE_OWNER_HOLD; hardcoded CLI/model",
+    "S49": "root_b_sources []; controlled_b_sources one PRIOR_B_REFUSAL test-only",
+    "C0_C11": "implemented sources in PRE-MAIN; no import from S37/S52; C11 native weld 0 in current progress",
+    "S52": "hardcoded G18 roots; _OPENING+base_ok forces verify ok true; static, not exercised by current tests",
+    "C12_store": "branch/episode/world_event/perception/checkpoint only; no actor_state table",
+    "functional_organization": "missing"
+  },
+  "rb_sourcefree_probes": {
+    "M26": {
+      "before_compute": {"registers": {"public_expression_gate": 50.0, "private_expression_gate": 50.0, "inner_load": 50.0}, "metabolic_style": {}},
+      "after_compute": {"registers": {"public_expression_gate": 50.0, "private_expression_gate": 50.0, "inner_load": 50.0}, "metabolic_style": {"current": "compartmentalizing", "trend": "stabilizing"}},
+      "protected_derived_names_stored": [],
+      "interpretation": "literal compute_all_derived writes state.metabolic_style and state.registers; six-name invariant misses them; literal M26 function is not reusable unchanged"
+    },
+    "M29_M19_M30": {
+      "immediate_render_hash_unchanged": true,
+      "warm_raw_process": {"narration_support_warmth": 30, "aperture": 55.0},
+      "neutral_raw_process": {"narration_support_warmth": 20, "aperture": 54.0},
+      "warm_no_process": {"narration_support_warmth": 30, "aperture": 50.0},
+      "interpretation": "immediate render is nonmutating; next-year metabolization reads previous rendered prose and changes psych capacity only with raw/working process"
+    }
+  },
+  "reviewer_corrections": [
+    "SYN02-B 3 REUSE conflates literal source reuse with reusable invariant: M26 literal compute writes registers/metabolic_style; M30 literal V2 has age/parent/narrator issues; M29 immediate render function is reusable, band is not.",
+    "SYN02-B '40/40 focused-test' overstates mechanism-specific test coverage; selected-source review is 40/40, but M14/M16/M19 and others lack focused semantic tests.",
+    "SYN02-B M37 'server non-LLM-year re-render claim is incorrect' needs precise wording: server simulation does call render_year for non-LLM years; run_and_print final re-render is separate.",
+    "SYN02-D 116 sourcefree tests independently reproduced exactly; this upgrades intake 'not independently reproduced' but remains TEST_ONLY.",
+    "SYN02-D S52 cold-open ok=True is a static code-path risk; current tests do not exercise base_ok true + S52-only error.",
+    "B ActorSnapshotV1 and D ActorStateVersion/PersonState overlap; one canonical actor-state/ledger/receipt schema required before implementation.",
+    "B B0-B3 shell and D T0.1-T0.5 should be merged; relation formation/science T1.3 and prefix policy remain owner-held."
+  ],
+  "limits": [
+    "No native C12/C11/A5, no production edit, no raw survey data, no paid provider call.",
+    "116 tests are sourcefree engineering evidence only; not empirical psychology or native person.",
+    "Historical source is file-level exact; whole archive ZIP not claimed."
+  ]
+}
