@@ -211,7 +211,7 @@ These are architecture/serialization positives, not native psychology.
 - **Reviewer branch:** `agent/v3court-review-rx04-secondwave-r1`.
 - **Review startup:** `9a2753a1e9f76e9fcfa0c76dba49ed0e6cabf2a2`.
 - **Target:** `b609986a3f635de7b7581e763e76d3496ed9ad7e`.
-- **Content commit:** `PENDING_FIRST_PUSH`.
-- **Final remote head:** to be read back from `origin/agent/v3court-review-rx04-secondwave-r1` after push and reported in the final return. No self-referential SHA is embedded in this file.
+- **Content commit:** `6278f5d265051bd887e26916d1cd361a4b85b2d0` (the 11-file RX04 evidence/review commit).
+- **Final remote head:** the branch tip after the metadata-only publication commit, verified with `git ls-remote origin refs/heads/agent/v3court-review-rx04-secondwave-r1`; the exact readback SHA is reported in the final return. No self-referential SHA is embedded in this file.
 
 **No self-adoption. No native grant. No production implementation. STOP.**
