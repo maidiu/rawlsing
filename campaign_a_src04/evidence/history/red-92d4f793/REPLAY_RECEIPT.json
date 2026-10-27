@@ -1,0 +1,71 @@
+{
+  "build_seconds": 312.63,
+  "canonical_values_withheld": 210,
+  "cold_process": true,
+  "local_bundle_exists_and_hashes_match": true,
+  "release_audit_passed": true,
+  "release_match": true,
+  "release_ref": {
+    "content_hash": "fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec",
+    "kind": "C11LogicalRelease",
+    "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION"
+  },
+  "resolver_calls": 2,
+  "rows": 7337,
+  "schema": "PYAT_CAMPAIGN_A_SRC04_REPLAY@1.0.0",
+  "selection_match": true,
+  "semantic_release_hash": "fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec",
+  "source_read_performed": true,
+  "source_read_receipt": {
+    "columns": 181,
+    "decision_ref": {
+      "content_hash": "15b131983f7c193df43fb16d410d6b58605a5dffb46b75a3db707b3d1d9401e9",
+      "kind": "USER_SOURCE_READ_DECISION",
+      "object_id": "urn:rawlsing:campaign-a:src04:USER_GRANT:decision"
+    },
+    "decoder": "rawlsing_next.pre553_physical_decoder.decode_sav",
+    "file_metadata": {
+      "decoder_identity": {
+        "contract_version": "PRE553_PHYSICAL_METADATA@1.0.0",
+        "implementation": "rawlsing_next/pre553_physical_decoder.py"
+      },
+      "file_encoding": "UTF-8",
+      "file_format": "sav/zsav",
+      "number_columns": 181,
+      "number_rows": 7337
+    },
+    "physical_metadata_digest": "1ef1739f290e69ccb74b0bbd0486e8338e8eae6224c924e520e0da141f5cc3be",
+    "read_elapsed_seconds": 0.821,
+    "reader_configuration": {
+      "apply_value_formats": false,
+      "authority_status": null,
+      "decoder_implementation": "rawlsing_next/pre553_physical_decoder.py",
+      "encoding": null,
+      "physical_metadata_contract": "PRE553_PHYSICAL_METADATA@1.0.0",
+      "reader": "pyreadstat",
+      "reader_version": "1.3.2",
+      "user_missing": true
+    },
+    "resolver_calls": 2,
+    "rows": 7337,
+    "source_custody": {
+      "content_bound": true,
+      "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+      "reader_access_mode": "O_RDONLY",
+      "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+      "snapshot_path_unlinked": true,
+      "snapshot_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "snapshot_size": 1531099,
+      "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
+    },
+    "source_format": "SAV",
+    "source_id": "SRC04",
+    "source_read_owner": "rawlsing_next.pre553_source_read_admission.decode_with_source_read_permission",
+    "source_read_performed": true,
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "transport": "rawlsing_next.source_configuration.reader.decode_config_with_source_read_permission"
+  },
+  "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+  "status": "COLD_REPLAY_COMPLETE",
+  "wrong_source_negative_status": "REFUSED"
+}

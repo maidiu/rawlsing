@@ -36,8 +36,10 @@ audit, wrong-source and unbound/canonical negatives, and the positive slice rele
 source through the same owner, rebuilds the slice, and compares the release hash.
 `return` assembles `RETURN.json` from the actual receipts.
 
-The full release object bundle is written only under the local runtime root,
-outside Git:
+The governing program and user grant are committed as exact pinned evidence
+copies under `campaign_a_src04/evidence/`; the runner has no author-private
+author-private control-path dependency for tests or program resolution. The full release object bundle
+is written only under the local runtime root, outside Git:
 
 ```text
 ~/Library/Application Support/Rawlsing/campaign-a-src04/releases/<bundle-id>/

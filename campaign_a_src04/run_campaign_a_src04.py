@@ -67,8 +67,7 @@ EVIDENCE = CAMPAIGN / "evidence"
 CONFIG_PATH = ROOT / "rawlsing_next/source_configuration/data/SRC04/source.config.json"
 CROSSWALK_PATH = ROOT / "rawlsing_next/source_configuration/data/SRC04/crosswalk.json"
 METADATA_PATH = ROOT / "WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC04_PHYSICAL_METADATA.json"
-PROGRAM_PATH = ROOT / ".r61/campaign-a-src04/PROGRAM.txt"
-PRIMARY_GRANT_PATH = ROOT / ".r61/campaign-a-src04/USER_GRANT.json"
+PROGRAM_PATH = EVIDENCE / "PROGRAM.txt"
 COMMITTED_GRANT_PATH = EVIDENCE / "USER_GRANT.json"
 
 SOURCE_ID = "SRC04"
@@ -146,21 +145,18 @@ def _norm_vl(value: Any) -> dict[str, str]:
 
 
 def _grant_paths() -> tuple[Path, list[dict[str, Any]]]:
-    candidates = [p for p in (PRIMARY_GRANT_PATH, COMMITTED_GRANT_PATH) if p.is_file()]
-    if not candidates:
-        raise CampaignError("authorized USER_GRANT.json is absent")
-    evidence = []
-    for path in candidates:
-        evidence.append({"path": str(path), "sha256": sha_file(path)})
-        if sha_file(path) != EXPECTED_GRANT_SHA256:
-            raise CampaignError(f"USER_GRANT hash mismatch: {path}")
+    path = COMMITTED_GRANT_PATH
+    if not path.is_file():
+        raise CampaignError("committed authorized USER_GRANT.json is absent")
+    grant_sha = sha_file(path)
+    if grant_sha != EXPECTED_GRANT_SHA256:
+        raise CampaignError("USER_GRANT hash mismatch")
     if not PROGRAM_PATH.is_file():
-        raise CampaignError("governing PROGRAM.txt is absent")
+        raise CampaignError("committed governing PROGRAM.txt is absent")
     program_sha = sha_file(PROGRAM_PATH)
     if program_sha != EXPECTED_PROGRAM_SHA256:
         raise CampaignError("governing PROGRAM SHA mismatch")
-    primary = PRIMARY_GRANT_PATH if PRIMARY_GRANT_PATH.is_file() else COMMITTED_GRANT_PATH
-    return primary, evidence
+    return path, [{"path": str(path), "role": "COMMITTED_EVIDENCE", "sha256": grant_sha}]
 
 
 def load_grant() -> dict[str, Any]:
@@ -178,11 +174,9 @@ def load_grant() -> dict[str, Any]:
         raise CampaignError("grant consumer mismatch")
     if not document.get("user_authorization") or not document.get("authorization_context"):
         raise CampaignError("grant lacks explicit authorization evidence")
+    # No source stat/hash/open occurs here. The exact source identity is checked
+    # by the SHA-qualified decoder only after the current resolver admits the read.
     source_path = Path(document["source_path"])
-    if not source_path.is_file():
-        raise CampaignError("authorized original source file is absent")
-    if sha_file(source_path) != EXPECTED_SOURCE_SHA256:
-        raise CampaignError("authorized original source SHA mismatch")
     grant_ref = ExactRef("USER_SOURCE_READ_GRANT",
                          "urn:rawlsing:campaign-a:src04:USER_GRANT",
                          EXPECTED_GRANT_SHA256)
@@ -793,9 +787,9 @@ def grant_evidence(grant: Mapping[str, Any], request: SourceReadRequest) -> dict
         "user_grant_sha256": EXPECTED_GRANT_SHA256,
         "program_sha256": EXPECTED_PROGRAM_SHA256,
         "grant_copies": [
-            {"role": "CONTROL_RECEIPT", "sha256": expected["sha256"]}
-            if expected["path"].startswith(str(ROOT / ".r61")) else
-            {"role": "COMMITTED_EVIDENCE", "path": expected["path"], "sha256": expected["sha256"]}
+            {"role": "COMMITTED_EVIDENCE",
+             "path": "campaign_a_src04/evidence/USER_GRANT.json",
+             "sha256": expected["sha256"]}
             for expected in grant["copies"]
         ],
         "authorization_present": True,
@@ -1022,6 +1016,7 @@ def _manifest_files() -> list[dict[str, Any]]:
         "campaign_a_src04/README.md",
         "campaign_a_src04/COMMANDS.md",
         "campaign_a_src04/evidence/USER_GRANT.json",
+        "campaign_a_src04/evidence/PROGRAM.txt",
         "campaign_a_src04/evidence/GRANT_AUTHENTICATION.json",
         "campaign_a_src04/evidence/PHYSICAL_METADATA_AUDIT.json",
         "campaign_a_src04/evidence/SLICE_SELECTION.json",
@@ -1070,6 +1065,8 @@ def run_return(artifact_commit: str) -> int:
     full_negative = load_json(EVIDENCE / "NEGATIVE_FULL_CONFIG.json")
     canonical = load_json(EVIDENCE / "NEGATIVE_CANONICAL_AUTHORITY.json")
     local = load_json(LOCAL_RECEIPT_PATH)
+    history_manifest_path = EVIDENCE / "history/red-92d4f793/MANIFEST.json"
+    history_manifest = load_json(history_manifest_path)
     release = receipt["release"]
     return_document = {
         "schema": "PYAT_CAMPAIGN_A_SRC04_RETURN@1.0.0",
@@ -1104,6 +1101,8 @@ def run_return(artifact_commit: str) -> int:
             "dummy_test_only_resolver_used": False,
             "scientific_ALLOW_claimed": False,
             "authorization_evidence": "campaign_a_src04/evidence/GRANT_AUTHENTICATION.json",
+            "program_evidence": "campaign_a_src04/evidence/PROGRAM.txt",
+            "program_evidence_sha256": sha_file(EVIDENCE / "PROGRAM.txt"),
         },
         "physical_audit": {
             "path": "campaign_a_src04/evidence/PHYSICAL_METADATA_AUDIT.json",
@@ -1169,6 +1168,28 @@ def run_return(artifact_commit: str) -> int:
                 "No eligibility, weight, population, or downstream empirical claim is made.",
             ],
         },
+        "repair": {
+            "review_candidate": "0daf4aa5d143cc3a4e95984620a39489ed2fa39c",
+            "review_disposition": "EXTERNAL_INDEPENDENT_REVIEW_DISPOSITION",
+            "d01_program_portability": {
+                "status": "REPAIRED",
+                "repair": "governing PROGRAM.txt is the committed pinned copy campaign_a_src04/evidence/PROGRAM.txt; runner/tests have no author-private .r61 program dependency",
+                "program_sha256": EXPECTED_PROGRAM_SHA256,
+            },
+            "d02_source_preflight": {
+                "status": "REPAIRED",
+                "repair": "load_grant no longer stats or hashes the source path; source SHA/bytes are checked only by the SHA-qualified decoder after the current resolver admits the read",
+                "direct_source_preflight_removed": True,
+            },
+            "release_identity_unchanged": "fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec",
+            "old_red_history": {
+                "path": "campaign_a_src04/evidence/history/red-92d4f793/MANIFEST.json",
+                "sha256": sha_file(history_manifest_path),
+                "candidate": history_manifest["candidate"],
+                "artifact_commit": history_manifest["artifact_commit"],
+                "file_count": len(history_manifest["files"]),
+            },
+        },
         "negative_tests": {
             "wrong_source": {
                 "path": "campaign_a_src04/evidence/NEGATIVE_WRONG_SOURCE.json",
@@ -1213,6 +1234,7 @@ def run_return(artifact_commit: str) -> int:
             "returncode": tests["returncode"],
             "passed": tests["passed"],
             "stdout_tail": tests["stdout_tail"],
+            "clean_checkout": tests.get("clean_checkout"),
         },
         "local_release": {
             "receipt_path": "campaign_a_src04/evidence/LOCAL_RELEASE_RECEIPT.json",
@@ -1231,6 +1253,7 @@ def run_return(artifact_commit: str) -> int:
             "source_custody": receipt["source_read_receipt"]["source_custody"],
             "resolver_calls": receipt["source_read_receipt"]["resolver_calls"],
             "source_read_performed": True,
+            "source_preflight_io_before_admission": False,
         },
         "artifact_manifest": _manifest_files(),
         "limits": [
