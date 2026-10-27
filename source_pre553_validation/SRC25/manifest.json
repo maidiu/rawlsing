@@ -53,8 +53,8 @@
     },
     {
       "path": "source_pre553_validation/SRC25/VALIDATION_RESULTS.json",
-      "sha256": "15a9d6a5543eaef0e8118845005e33caf3445edcf4a05dd67ab16853a0007e0a",
-      "bytes": 622165
+      "sha256": "0a8f5f900b4a421c503c8048921f72efa178a4ed5df85f699ecdf8c387e356a7",
+      "bytes": 622201
     },
     {
       "path": "source_pre553_validation/SRC25/EXCEPTIONS.json",
@@ -90,7 +90,7 @@
     },
     "refusals": [
       {
-        "case": "original config + fixture stream",
+        "case": "original config + wrong active SHA (pre-expansion)",
         "type": "SourceConfigurationBindingError",
         "message": "active source SHA differs from the frozen config binding"
       },

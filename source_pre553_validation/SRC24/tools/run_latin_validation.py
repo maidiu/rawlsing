@@ -414,14 +414,18 @@ def run_source(source_id: str) -> dict[str, Any]:
 
     # ---- wrong-source / wrong-row / native-key refusals ----
     refusals = []
-    try:
-        build_validated_c11_release_from_config(original, stream=stream)
-    except Exception as exc:  # exact exception type/message recorded
-        refusals.append({"case": "original config + fixture stream", "type": type(exc).__name__, "message": str(exc)})
-    else:
-        refusals.append({"case": "original config + fixture stream", "type": "NO_ERROR", "message": "unexpected acceptance"})
-
     bad_sha = "f" * 64 if stream.source_sha256 != "f" * 64 else "e" * 64
+    # Refuse before constructing any original routing/response expansion: the
+    # active SHA must match the frozen original binding first.
+    try:
+        build_governed_c11_projection(original, source_sha256=bad_sha)
+    except Exception as exc:  # exact exception type/message recorded
+        refusals.append({"case": "original config + wrong active SHA (pre-expansion)",
+                         "type": type(exc).__name__, "message": str(exc)})
+    else:
+        refusals.append({"case": "original config + wrong active SHA (pre-expansion)",
+                         "type": "NO_ERROR", "message": "unexpected acceptance"})
+
     from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
     bad_stream = ExactPhysicalCellStream(
         source_sha256=bad_sha, row_count=stream.row_count,
