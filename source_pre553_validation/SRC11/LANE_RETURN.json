@@ -3,7 +3,7 @@
   "lane_id": "EVS",
   "status": "LANE_COMPLETE__SOURCE_CONFIGS_AND_FIXTURE_POSITIVES",
   "branch": "agent/pyat-pre553-r157-evs",
-  "artifact_commit": "0b5244204e68e14315550af39631db60cfc770ea",
+  "artifact_commit": "c466c639a35a64edcacdb7a82661aa32ea255985",
   "base_p0_tip": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
   "base_p3_tip": "519355ec2215409b40d566ef13c3b21f611e0726",
   "source_ids": [
@@ -228,7 +228,7 @@
   ],
   "tests": {
     "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_foundation.py rawlsing_next/tests/test_source_configuration_p3.py -k 'not r154' -q -o addopts=''",
-    "result": "19 passed, 2 deselected in 1.81s",
+    "result": "19 passed, 2 deselected in 1.56s",
     "passed": true,
     "skipped": false,
     "deselected_note": "Two legacy R154 loader tests are deselected; their runtime file is absent from this sparse EVS checkout and they are outside the EVS source-configuration boundary."
