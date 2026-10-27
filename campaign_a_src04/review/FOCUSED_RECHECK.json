@@ -1,0 +1,135 @@
+{
+  "schema": "PYAT_CAMPAIGN_A_SRC04_FOCUSED_RECHECK@1.0.0",
+  "campaign": "A1",
+  "recheck_type": "FOCUSED_REPAIR_RECHECK_AFTER_PRIOR_RED",
+  "repaired_candidate": "88b7f3cf111c1537511cf25207e1697c7edf0d52",
+  "repair_commit": "009a3459b0e2ad392b0ff765be527e10cb8a7ff8",
+  "repair_artifact_commit": "a7cbfeef20c682c3da202ac858307c196560c12f",
+  "prior_review_commit": "0daf4aa5d143cc3a4e95984620a39489ed2fa39c",
+  "prior_review_disposition_sha256": "6d7044248b9c48df5e4bd96b270ff66973d277ed69716dd1205730e0286b6fc3",
+  "prior_review_report_sha256": "7d8c7ece6694181d022d736fcef8d27e9f99c9ec90c9d9e331fb820ad0682bdf",
+  "candidate_author_branch": "agent/pyat-campaign-a-src04-original-c11",
+  "review_branch": "agent/pyat-campaign-a-src04-review",
+  "candidate_remote_sha": "92d4f793d0ef5de58f21e23b1ad0fa286fa74a01",
+  "program_sha256": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50",
+  "user_grant_sha256": "feb8320a149315fdfe74ae97f0aa91a3720aa141e5a1d5cbd5e2b97746c594f1",
+  "control_commit": "2d2814df614018dbca5687839fe562d16bf900e7",
+  "verdict": "PASS_SCOPED_A1_FIRST_ORIGINAL_C11_POSITIVE",
+  "a1_acceptance_grade": "A1_FIRST_ORIGINAL_C11_POSITIVE_ACCEPTED_AT_SOURCE_NATIVE_ELIGIBLE_SLICE_GRADE",
+  "affected_criteria": [
+    {
+      "id": "A1-R02",
+      "prior_status": "REVISE",
+      "status": "PASS",
+      "requirement": "All source I/O gated by the authentic current grant and existing source-read admission; no direct source preflight",
+      "evidence": [
+        "campaign_a_src04/run_campaign_a_src04.py:145-185",
+        "campaign_a_src04/tests/test_campaign_a_src04.py",
+        ".r61/campaign-a-src04-review/recheck_probe.json",
+        "campaign_a_src04/evidence/GRANT_AUTHENTICATION.json"
+      ],
+      "result": "load_grant() now hashes only the committed USER_GRANT and committed PROGRAM evidence; it no longer stats or hashes the source path. The recheck probe observed empty source-stat and source-hash lists after load_grant and the wrong-source negative. The actual read then used decode_with_source_read_permission, returning source SHA 2a48ba4b..., 7,337 rows, 181 columns, two resolver calls and content-bound custody. source_preflight_io_before_admission=false in the repaired return.",
+      "discriminating_guard": "test_load_grant_and_wrong_source_never_touch_source_before_admission patches Path.is_file and runner.sha_file and asserts no source stat/hash before admission; it passes."
+    },
+    {
+      "id": "A1-R08",
+      "prior_status": "REVISE",
+      "status": "PASS",
+      "requirement": "Committed runner and focused evidence reproducible in a clean checkout; portable committed program; no path-renaming bypass",
+      "evidence": [
+        "campaign_a_src04/evidence/PROGRAM.txt",
+        "campaign_a_src04/run_campaign_a_src04.py:70,145-158",
+        "campaign_a_src04/tests/test_campaign_a_src04.py",
+        ".r61/campaign-a-src04-review/recheck_pytest.log",
+        "campaign_a_src04/evidence/TEST_RESULTS.json"
+      ],
+      "result": "PROGRAM_PATH is campaign_a_src04/evidence/PROGRAM.txt with exact SHA 9e292a10...; the test checks the parent directory is evidence and the exact hash. The exact committed test command passes 7/7 in the review checkout (1.00 s) and in a fresh git-archive extraction (7 passed in 1.01 s). No author-private .r61 program path remains active.",
+      "discriminating_guard": "test_program_evidence_copy_is_pinned verifies the committed evidence location and exact SHA; no alternate program path is accepted."
+    },
+    {
+      "id": "A1-R11",
+      "prior_status": "UNPROVEN",
+      "status": "UNPROVEN",
+      "requirement": "I03/I05 execution/readiness",
+      "result": "Not executed and not required for A1 acceptance. The C11 release remains available to the existing I03/I05 owner only under a separate exact EmpiricalQuerySpec/adopted operation-successor authority; no new semantic ALLOW or downstream workload is issued."
+    }
+  ],
+  "unchanged_prior_acceptance": {
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION",
+      "content_hash": "fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec"
+    },
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "rows": 7337,
+    "columns": 181,
+    "selected_response_slots": 42,
+    "selected_coordinate_slots": [1, 2],
+    "excluded_unbound_response_slots": 15,
+    "excluded_coordinate_slots": 1,
+    "eligible_complete_not_selected": 121,
+    "respondent_events": 308154,
+    "routing_facts": 308154,
+    "coordinate_facts": 14674,
+    "public_objects": 630990,
+    "canonical_values_withheld": 210,
+    "original_authority": "1 replay-protocol ALLOW; 6 DEFER semantic/authority snapshots unchanged",
+    "local_bundle": {
+      "path": "~/Library/Application Support/Rawlsing/campaign-a-src04/releases/SRC04-fc111cfa78d0fc23",
+      "public_objects_sha256": "a47957a1d0b4e6df29195f70b1c3d122cc69b1a8a484b60bbe072d9eff126edd",
+      "internal_records_sha256": "2d9ea42a36e9b326f65f3ed5219ddf84a9fdb7d634ff8e459cc3e8892bc89538",
+      "replay_manifest_sha256": "f13d893f363753ad0d17bbf58c5a8bd51fcb12334daf85232b4365d66f96d09e",
+      "receipt_sha256": "b1333a021c28f0a4fe3a8272d469d9dab2ecb619cf08fcae3fdf18246fb9d8c9"
+    }
+  },
+  "evidence": {
+    "recheck_pytest_log_sha256": "6e17d0e2abd033c981f9408310ab97bf4daa68f2d8379372c51ccf3ed1a0c8db",
+    "recheck_probe_sha256": "95da455dfdaca2e85e9e1d17b48f365c69bed1bb1958c5fc9185c1383ea728bf",
+    "program_evidence_sha256": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50",
+    "grant_authentication_sha256": "cb2ee2da04cdfc2351f4e55eda3d78f5c31c680300900ede8b4b755782cbfbdf",
+    "test_results_sha256": "329db086302066f76dbb9ea968f7703b82599640e0cba15be411cec978165139",
+    "release_receipt_sha256": "4b18f50008b824e17a628a6c66852f6104a7dbff2368bff4297bac1f54526aca",
+    "replay_receipt_sha256": "9d003c0b8b1e507087830f713de34ce982eff6bfef09483d09663441a214baf5",
+    "old_red_manifest_sha256": "4e21e81034de07fa26197e9afa797dce92da27043600c10a75bc449b79e1f483",
+    "artifact_manifest_count": 17,
+    "artifact_manifest_mismatches": 0,
+    "old_red_history_files": 13,
+    "old_red_history_mismatches": 0
+  },
+  "checks": {
+    "program_exact_sha": true,
+    "program_committed_in_evidence": true,
+    "no_active_author_private_program_path": true,
+    "no_active_private_grant_copy_dependency": true,
+    "no_source_stat_or_hash_before_admission": true,
+    "wrong_source_refused_before_sentinel_io": true,
+    "actual_admission_read_after_repair": true,
+    "clean_review_checkout_tests_7_of_7": true,
+    "clean_git_archive_tests_7_of_7": true,
+    "release_identity_unchanged": true,
+    "local_bundle_hashes_unchanged": true,
+    "old_red_history_preserved": true,
+    "no_candidate_owner_or_config_change": true,
+    "no_other_original_source_read": true,
+    "no_raw_respondent_cells_in_review_files": true
+  },
+  "limits": {
+    "source_read_performed": true,
+    "source_read_scope": "SRC04 only",
+    "original_semantic_ALLOW_claimed": false,
+    "canonical_semantic_ALLOW_claimed": false,
+    "weight_population_claim": false,
+    "i03_executed": false,
+    "i05_executed": false,
+    "full_178_original_scope_claimed": false,
+    "full_scientific_readiness_claimed": false,
+    "m1_or_m2_self_claim": false,
+    "raw_release_local_only": true,
+    "raw_respondent_cells_committed": false
+  },
+  "next_consumer": {
+    "capability": "The C11 release fc111cfa... is accepted for a separately authorized I03 consumer at source-native / raw-sample / ROUTING_UNKNOWN / DEFER grade.",
+    "held_premise": "Exact EmpiricalQuerySpec and adopted positive I03 operation-successor/predicate authority, runtime catalog identity and historical parent; canonical/directional semantics remain DEFER. No I03/I05 request or workload is issued here."
+  },
+  "terminal_result": "A1 first original C11 positive is accepted at the scoped source-native eligible-slice grade after the two bounded repairs. Full original 178-field scientific execution, I03/I05 execution, semantic adoption/M2/full science, original workload issuance and all other downstream campaigns remain separate and not claimed."
+}
