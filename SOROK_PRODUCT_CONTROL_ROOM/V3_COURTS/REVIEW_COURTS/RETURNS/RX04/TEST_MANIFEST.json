@@ -1,0 +1,61 @@
+{
+  "schema": "DSH_V3_RX04_TEST_MANIFEST_R1",
+  "review_branch": "agent/v3court-review-rx04-secondwave-r1",
+  "sealed_startup": "9a2753a1e9f76e9fcfa0c76dba49ed0e6cabf2a2",
+  "target_x04_commit": "b609986a3f635de7b7581e763e76d3496ed9ad7e",
+  "environment": {
+    "host": "Darwin Matthews-MBP.lan 22.6.0 x86_64",
+    "macos": "13.7.8 (22H730)",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "ruby": "2.6.10p210",
+    "git": "2.39.1",
+    "yaml": "PyYAML absent; read-only Ruby Psych bridge with numeric-key restoration",
+    "model_provider": "OpenCode / DeepSeek V4.1-Flash; no provider or model call"
+  },
+  "executed": [
+    {
+      "id": "RX04-V3-64",
+      "command": "RAWLSING_STAGING_ROOT=<source> python3 run_v3_tests.py v3/tests/test_architecture_invariants.py v3/tests/test_step_logic.py v3/tests/test_step_sanity.py v3/tests/test_llm_contract.py v3/tests/test_metabolization_effects.py v3/tests/test_v5_render_surface_psyche.py v3/tests/test_wave4.py v3/tests/test_v5_persona_sheet_surface_psyche.py v3/tests/test_v5_v2_chat_prompt_no_raw_v5_leaks.py v3/tests/test_v5_structural_diagnostics.py",
+      "result": "64 passed in 21.82s",
+      "evidence": "TEST_SOURCE_AND_LOGS/v3_64.log",
+      "scope": "historical render nonmutation, event nonmutation, 19-core order, annual steps, 20-year smoke, LLM contract, metabolization helpers, render/persona/prompt surfaces"
+    },
+    {
+      "id": "RX04-DIST-1",
+      "command": "RAWLSING_STAGING_ROOT=<source> python3 run_v3_tests.py v3/tests/test_distribution_smoke.py",
+      "result": "1 passed in 302.02s",
+      "evidence": "TEST_SOURCE_AND_LOGS/distribution_smoke.log",
+      "note": "X04 reported 152s for the same test; time is environment-dependent and not a semantic discrepancy. The pass/fail result is independently reproduced."
+    },
+    {
+      "id": "RX04-S48-12",
+      "command": "PYTHONPATH=<S48_return> M35_JOIN_E_RETURN=<join-e_return> TMPDIR=<S48_logs> python3 -m pytest -q -p no:cacheprovider tests/test_s48_one_call.py",
+      "commit": "9fe0d066e4bf61ab6819a1f56e42d6d07956c2f7",
+      "result": "12 passed in 13.58s",
+      "evidence": "TEST_SOURCE_AND_LOGS/s48_12.log",
+      "scope": "source-owner hold, candidate list empty, one-call/replay/crash/self-account/empty prospective/malformed output/no fake positive"
+    },
+    {
+      "id": "RX04-PROBE-01",
+      "command": "RAWLSING_STAGING_ROOT=<source> python3 probe_rx04.py > probe_rx04.json",
+      "result": "completed; independent sourcefree observations",
+      "evidence": "TEST_SOURCE_AND_LOGS/probe_rx04.json",
+      "not_a_test": "Instrumentation, not a scientific or native-person positive."
+    }
+  ],
+  "total_focused_reproduced": {
+    "old_v3": 65,
+    "s48": 12,
+    "total": 77,
+    "passed": 77,
+    "failed": 0,
+    "errors": 0
+  },
+  "not_completed": [
+    "No live/provider LLM band, no actual S48 product CLI call, no V2 conversation, no current S44/S49/C9/C12 native person loop.",
+    "No full 150-test V3 suite in this review; RX04 uses the 65 focused X04 grouping. The X04 return's 150/1 note is secondhand RX01 evidence and is not independently rerun here.",
+    "No official Astra K suite, raw survey/respondent data, source permission, production implementation or native rule issuance."
+  ],
+  "claim_ceiling": "Historical source and sourcefree review only; no native actor/source/rule/C8/C9/C11/C12/Pyat grant and no current person integration."
+}
