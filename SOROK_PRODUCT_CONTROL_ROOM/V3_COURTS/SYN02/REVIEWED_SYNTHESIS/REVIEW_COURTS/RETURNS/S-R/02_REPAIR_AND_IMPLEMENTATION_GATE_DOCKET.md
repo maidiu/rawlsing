@@ -1,0 +1,140 @@
+# SYN02-S-R — finite repairs and lawful next whole-machine implementation/issuer gate docket
+
+**Final independent review disposition:** `SYN02_S_REVISE_PRECISE__FULL_ENGINEERABLE_SPEC_RED__BOUNDED_F0_AND_SCHEMA_PREPARATION_ELIGIBLE_FOR_SEPARATE_HQ_DISPATCH__ACTUAL_PSYCHOLOGY_AND_NATIVE_C12_HELD`. Branch and target in 00; no source/production/issuer edit here. No adoption by reviewer.
+
+The high-value distinction is between (i) concrete engineering that can be constructed against current source, (ii) research science that the existing authorities must *actually decide*, and (iii) original world/actor/Pyat permissions that a successful unit test cannot issue. None is interchangeable. This docket ends in a bounded tranche and explicit accept/reject tests, not an indefinite permission ritual.
+
+## 1. Ranked accountable findings
+
+| Priority / grade | FINDING → EVIDENCE → RIVAL → exact repair | Accountable OWNER → first current/terminal CONSUMER → acceptance |
+|---|---|---|
+| **P0 RED: actor/world two-store fault** | S03 ActorVersionV1+CanonicalLedgerRowV1+DurableDecisionReceiptV1 lacks selected atomic root and recovery. S36 CandidateStore SQL and S37 QualifiedC12Store are physically different commit realms. Rival: orphan version, duplicate event, cold-fork stale psyche or erased independent B. **Repair:** select single authoritative C9 actor-state/decision/outbox transaction and independent C12 world ledger with eventual exactly-once projection, or prove genuinely shared ACID with DDL and tests. No mere “may need outbox”. | C9/C12 storage/branch owners → `run_candidate_path` E2 + `S37TargetlessProduct` cold open. Kill after every write, 0 ghost, 0 duplicates, source B persists. |
+| **P0 RED: SCI05 implicit same-call dependence** | S07 optional `dependencyOnSelfAccountRef` is not complete because N+1 half2 may depend on unadmitted half1 *semantics without a marker*. Rival typed marker omitted while prose presupposes admitted trust/ideology. **Repair:** after-call SCI05 denial/hold places all potentially reliant proposals in `INVALIDATED_OR_HELD_POSTCALL_SCI05` until genuinely independent authorized basis is established. As the ordinary model sees its own half1 during generation, absence of a marker is **not proof of independence**. Default fail-closed for the entire half2 batch when nondependence cannot be proven. No stealth second ordinary LLM call. | SCI05/ADP016/017 science + C12 envelope owner → prospective C8 source admissibility, N+1. Negative implicit case must not become event. |
+| **P0 RED: false true-nochange / status semantics** | S03 `FactStatus=ABSENT` and `Decision=ACCESS_NOT_RECEIVED` cross world fact, reception and Rule T; S07 has separate vocab. Rival unseen objectively performed care becomes a false internal NO_CHANGE. **Repair:** orthogonal explicit status product below, including NOT_APPLICABLE scoped to competent rule, world actually committed separately, distinguish lost source/absent event from evaluated outcome. | C8/C9/CAN008/011/ADP → durable receipt and next E2. Missing original T must always HOLD. |
+| **P1 RED for build-readiness: 40-source patch delta** | S04's literal table maps 40 M; second “module edit” table is almost invariant boilerplate. RB demonstrated M26/M19/M29/M30 and M37 specifics; 10 S04/S05 link mismatches. **Repair:** patch-level bundle per high-risk M, exact original callable/read/write/import/dependency, new semantic adapter, source hash, migration quarantine and old-v-new assertions. Resolve 10 X disagreements before freeze. | Historic V3/PFF source specialist + C9/C12 engineer → later Rule A/E2, pure projections, V2 membrane. |
+| **P1 REVISE: actor-access packet** | S03 exposes `realizedEventId` internally; S07 `actorAccessiblePremises`, linked proposal ordinals and batch counts can leak through model prompt. Rival objective unseen event known via “second of four” or gap. **Repair:** per-feature ADP016/017 capability filter, strict typed allowlist; no analyst IDs, total count, hidden gaps/order or indirect summarization; if actor cannot know event presence, omit its entire projection. | ADP016/017/C12 packet engineers → S48 successor model retrospective. Feature deletion must remove all explicit/implicit knowledge. |
+| **P1 REVISE: explanatory minimality** | S02 verbally sequences exterior tool/help after novel relation while saying evaluate it in parallel. Rival economic support temporarily permits performance; no formed internal skill. **Repair:** every claimed formation receipt bears same task, actor, world means, B/teacher action, source evidence, fixed value/gate and composite alternatives evaluated in parallel, including underdetermined result. No compulsory PRACTICE for one shot and no refusal on one shot by generic threshold. | CAN010/011/CAN008 scientists, C8/ADP019 → real E2 semantic reader. |
+| **P1 REVISE: temporal and world policy** | User chose 3–5 prospective events and one N+1 call; did not choose PREFIX vs WHOLE_ATOMIC vs INDEPENDENT_SUFFIX. S42/S48 only one source/one proposal. **Repair:** PENDING_POLICY type cannot initiate independently irreversible world batch; record policy decision with competent C6/C9/C12/world owners. In execution, realized prefix is actual history and denied suffix never retrospective. | C6/C8/C9/C12 and user/competent product owner → S42/46/48 successor and N+1. |
+| **P2 REVISE: source cut / S52** | S08 uses old PREMAIN `c5e0e575...`; actual current is `3e7f00fe...`, +15 R157 scoped preparation, P5 unresolved. S52 static `_OPENING` path may falsely return ok. **Repair:** F0 injected pinned source registry, explicit source-owner release check, S52 verifier tests with `base_ok=True` and S52-only error; no native promotion from R157. | Pyat C0/C11 source, C12/S52 engineer → bootstrap/verifier and A0–A5. |
+| **P2 HOLD owner-specific domain rules** | CAN011 original `1ed04e62...` provides three kinds but zero general learning coefficients; S36 production A/T registries empty and natural B root []. **Repair:** scoped science rule and B-world source in the finite G1/G2/G3 docket below; no auto graph, inferred trauma, actor from group averages or trial constant. | Original CAN008/010/011/012, ADP019/016/017, SCI05, Pyat/source custodians → C8/C9/C12. |
+| **P2 REVISE: legacy false psyche migration** | Historic M26 writes derived, M19 narrator later affects psyche, M35/36 fabricated min/hopeful, M31 type and M39 age rupture. **Repair:** immutable archive+per-field grade, quarantine unsafe numeric/causal fields, valid-empty when no lawful seed, provenance and idempotent migration, no reflective/perceived fact inferred from V2. | V3 source engineer/C9 C12 storage + original scientists → actor seed and E2. |
+
+## 2. The missing atomic/actor authority contract: explicit engineering candidate, not a new domain law
+
+**Chosen reviewer recommendation for design repair, to be frozen by competent C9/C12 storage owners before F1:**
+
+- **C12/C8 world journal = authority for independently occurred WORLD/COACTOR/INTERVAL facts** with source owner, event effective clock, immutable source identity and durable world occurrence key. It is not actor psychology and cannot be rolled back after B action. Event-candidate text is a separate `PROPOSED` object, never a world row.
+- **C9 CandidateStore same SQLite transaction = authority for actor version, Rule A/Rule T receipt, effective actor-state payload and transactional outbox.** Extend C9 existing response/target transaction rather than introduce a second psyche database. Enforce `UNIQUE(actor_id, branch_id, world_event_id, rule_version, causal_parent_hash)` or equivalently collision-resistant verified idempotency key *plus payload hash mismatch rejection*. Actor version increment/receipt and C9 target must be within one local COMMIT.
+- **C12 actor-state view is a version-addressed projection of C9 authority**, not an independent committed actor version. C12 independently owns its existing branch/episode/realization lineage. C9 outbox `PENDING→PROJECTED→ACKED` allows reconciliation; C12 projection has unique upstream C9 receipt hash and monotonic `c9_commit_watermark`. Cross-DB transaction is NOT falsely claimed ACID.
+- C9 receives world event only after durable C8 world journal admission; includes `worldCommitted` source ref, `actorReadset`, exact authority rule ref, previous actor hash, actor version, correct RuleA/T application. C9 denial or crash **does not undo WORLD**. A `WORLD_COMMITTED_ACTOR_HELD` projection is durable as an operational status, not actor psyche and not evaluated nochange.
+- Cold open at C12 must reconcile C9 outbox/ref hashes and C8 world timeline before returning a `CLEAN` person. If a C9 commit exists but C12 mirror is missing, replay one outbox receipt; until synchronized return `SYNC_HELD` rather than silently open the old psyche. If C9 was never committed but world occurred, retry actor processing at the same source/event/causal parent and do not create a second world event.
+- Fork must bind immutable actor C9 `version/hash`, world C8 clock/hash and C12 checkpoint watermark to one cut; conflict or checkpoint gap returns `FORK_HELD_INTEGRITY`. Branch CAS checks actor parent, world causal parents and event source, not only a monotonically incrementing integer. Concurrent fork descendants never overwrite shared ancestor or mutate other branches.
+- Source-owner changes after first attempt must refuse same idempotency key with changed payload. Replay receipt may advance mirror, never run Rule T again for same committed event. Writer-to-writer merge/commuting same-time updates remain subject to original ADP ordering rules; engineering cannot resolve incompatible actor updates by arrival order.
+
+**Crash/fork matrix required before acceptance:** (C0) source event proposed, no B action; (C1) B acted, journal write delayed; (C2) durable world fact, before actor receipt; (C3) C9 transaction before commit; (C4) after C9 commit before outbox mirror; (C5) after mirror before ACK; (C6) during fork/cold open; (C7) altered source identity on replay. At every cut assert one source world fact if truly occurred, at most one actor-version/Rule T receipt, correct held status, future E2 sees only qualified actor state, and client A0–A5 cannot mistake held for clean. This protocol assumes a single authoritative C9 actor writer; if the real store architecture cannot guarantee it, **RED** and choose a different proven journal/storage topology rather than a second ledger.
+
+## 3. Exact truth and knowledge status contract
+
+Model these as **orthogonal fields**, never one overloaded enum:
+
+```text
+SourceQualification = QUALIFIED | SOURCE_HELD | SOURCE_DENIED | INTEGRITY_FAILED | UNKNOWN
+WorldOccurrence = PROPOSED_ONLY | OCCURRED | NOT_REALIZED | NO_EVENT | NOT_YET_OBSERVED | OCCURRENCE_UNKNOWN
+ActorReception = RECEIVED | PARTIAL | NOT_WITNESSED | LATER_TESTIMONY | UNKNOWN | NOT_APPLICABLE
+RuleA = APPLIED_WITH_RESPONSE | APPLIED_NO_RESPONSE_IF_ISSUED | HELD_MISSING_RULE | NOT_APPLICABLE_BY_ISSUED_RULE | SOURCE_HELD
+RuleT = COMMITTED_CHANGE | TRUE_NO_CHANGE_EVALUATED | HELD_MISSING_RULE | HELD_MISSING_SOURCE | DEFERRED | NOT_APPLICABLE_BY_ISSUED_RULE | INTEGRITY_FAILED
+ActorState = VALID_EMPTY | VERSIONED_PRESENT | UNAVAILABLE_PENDING_RECONCILIATION | MIGRATION_HELD
+MemoryEvidence = ACTOR_ACCESSIBLE | PARTIAL_TRACE | BELIEF_WITH_SOURCE | ACTOR_UNKNOWN | ANALYST_ONLY
+```
+
+These are **reviewer proposed adapter statuses**, not amendments to original CAN/ADP registries. Map to their actual preexisting codes at implementation; do not silently rename original statuses. `NO_EVENT` is world/process truth, not a Rule T decision. `VALID_EMPTY` is a lawful actor record, not an event of noneffect. If aunt actually cared but X did not observe: WorldOccurrence=OCCURRED, Reception=NOT_WITNESSED, RuleA not inferred, RuleT held/not-applicable only under competent source rule; no memory. If X later reads an eligible witnessed account of the act, store that **later testimony** as a new perception/belief source with later clock, not backdated eyewitness childhood memory. If issued Rule T reads qualified event and returns unchanged, record TRUE_NO_CHANGE_EVALUATED with exact readset/effective time; if rule absent, `HELD_MISSING_RULE` even if payload bytes happen not to change.
+
+## 4. Repaired execution order for the user-settled N/N+1 machine
+
+```text
+Call N / 2nd half:
+   parse and type 3..5 CONDITIONAL prospect specifications
+   no material event created from model text
+   SCI05 self-account from previous retrospective has only postcall qualified status
+   if prior SCI05 denied and implicit/explicit dependency cannot be excluded, HOLD prospects
+Owner-selected world batch policy required before irreversible operations:
+   for each eligible prospect, sequential:
+      source/owner check, world possible/actually happened/denied
+      durable independent C8 B/world/interval receipt
+      actor-specific reception/access admission or held
+      issued Rule A transient response, actor act if separately qualified
+      issued Rule T change/evaluated nochange or explicit hold
+      C9 CAS commit+outbox, C12 projection/replay
+      independent intervening life/time and coactors, next event reads actual preceding state
+   first denied/unknown: committed world prefix survives, phantom suffix forbidden
+Call N+1 / 1st half:
+   deterministic ADP access-filtered retrospective from ONLY realized/actor-permitted fragments
+   no hidden event count/index/ID or fabricated episode; memory may be mistaken with sourced basis
+Call N+1 / 2nd half SAME ordinary model call:
+   new 3..5 CONDITIONAL specs; no midcall SCI05 acceptance
+Postcall:
+   original SCI05 validate internal act; deny/hold => all semantically dependent/undecidable
+   prospects invalidated/held before any B/world realization
+```
+
+A full prospective 3–5 specification is not a promise 3–5 events will occur. World history may contain autonomous coactor acts and nonencounters not listed by the model. `WHOLE_BATCH_ATOMIC` only allowed on truly reversible *staged virtual world* without already independent outside action; C12 cannot label B's accomplished material care provisional retroactively. `PREFIX_CONTIGUOUS` is a sensible **recommendation**, not user/owner adopted law. `INDEPENDENT_SUFFIX` requires explicit causal independence and no hidden memory gap. Until one is selected, shell may parse/record but must not enact an irreversible multi-event batch. No hidden ordinary provider invocations per event.
+
+**SCI05 nondependence:** A proposer's optional JSON pointer is not trustworthy proof. Because single autoregressive inference produces both halves, the proposed next action may depend on anything first-half said. A negative SCI05 admission makes an ordinary second-half text intrinsically suspect; automated keyword rules cannot establish absence of semantic dependence. The only defensible live paths are: (a) HOLD whole proposal set pending qualified original source-independent reauthorization; or (b) admit an individual future prospect by exact independently sourced feasibility and a **separate proof that its causal basis does not require unadmitted change**, under SCI05/C8/ADP authority. No user change to one-call boundary and no model self-affirmation counts as proof. Full-life no-event and stable cases remain allowed.
+
+## 5. Maximal lawful implementation, staged without serial issuer paralysis
+
+**Implementation must be separately commissioned by qualified HQ**, on isolated sourcefree branch after this independent review is assessed. This court does NOT edit source or authorize launch.
+
+| Flight | What engineer must actually build | Reuse / exact first integration consumer | Separate positive/negative tests, stopping condition |
+|---|---|---|---|
+| **F0 custody and portability** | `SourceRef` exact blob/content hash+scope+owner/effective clock, deterministic `resolve_source`/injectable ProductTransport, replace S52 absolute G18 and S48 fixed CLI/model defaults **without launching paid inference**; S52 verifier must check S52 errors even if base_ok | Existing S48/S52 import/bootstrap, B 59-file register and RB source map; Pyat source only under permission | valid pinned root boots; missing hash/role/changed source hard-red; `_OPENING` + base_ok true + S52-only error red. No S52 security claim from old 13 pass. |
+| **F1.0 typed contracts (P0 gate)** | nominate C9 actor authority, C8 world authority, C12 replication; freeze RuleA/T/status crosswalk, `ActorVersionV1` meaning (CAN011 v1 kind whitelist), `DecisionReceipt`/ledger/outbox unique IDs, CAS, clock, fork and idempotency; no assumed field semantics | S36 `run_candidate_path` / `CandidateStore`, S37 `QualifiedC12Store` | schema lints/DDL consistency, valid-empty, missing rule/source held, no response->psych default. **No F1 distributed logic until P0 contract accepted by storage owner.** |
+| **F1.1 actor/migration/recovery** | C9 state table and append-only decision/outbox in *same transaction*; C12 mirror/read through commit watermark, C8 actual event owner link; direct legacy V3 archive migrator with SOURCE_VERIFIED/CARRIER_ONLY/DERIVED_VIEW_ONLY/UNSAFE_HISTORICAL/UNKNOWN/SOURCE_HELD quarantine; pure derived M26 view; M19 narrator cut | S36 candidate transaction; S37 cold branch open; M26 old literal counterexample | 8 crash windows and concurrency/fork; same-event idempotent retry, changed source reject; M26 metabolic_style/registers cannot mutate, M19 prose cut; old type/50/hopeful/placeholder/age wounds never actor state. |
+| **F2 retrospective/V2** | ADP016/017 owner-graded per-feature model view, opaque source references never emitted, actor-safe narrative projection and feature-removal noninterference; former M29 render-only and M30 one-way V2; M37 interstitial annotation not episode | S48 new first-half prompt; S45 A0–A5 projected view | objective unseen care vs seen/partial/later testimony; remove one accessible feature, any direct or count/order/gap leak fails; prose perturbation must not alter future C9 or store; render failure not CLEAN. |
+| **F3 3–5 event and real interval shell** | parser for 3/4/5 proposed specs, reject others; owner-injected C0/C8/B source ports, S42 repeated event+S46/47 interval; per-step C9/C12 receipt/reconcile, source denied and postcall SCI05 refusal; no unchosen policy auto-run | S48 `run_turn`/S42 `admit_event`/S46 `produce_interval`, N+1 same-call | 4 specs E1 realized, E2 denied, E3/E4 absent; actual coactor after E1, no reverse rollback; output batch held if POLICY_UNDECIDED; no ordinary midbatch model calls; postcall implicit dependence denied; 3/4/5 valid prospective only. |
+| **F4 OPTIONAL only** | sparse typed PRACTICE/MEDIATOR query/index, test-only relation candidate storage; never create fourth CAN011 kind or auto Hebbian | existing qualified C9 E2 field selector (once issued) | inert storage cannot cause actor transition; same external help and fixed gate rivals explicitly tested; avoid implementing until original owner demonstrates requirement |
+
+**Scope economics:** S09 F0 ~250–600, F1 ~700–1400, F2 ~350–700, F3 ~500–1000, F4 ~250–500 LOC and 3–5/10–30/8–12/12–18/5–10 engineering-day bands are authored estimates **not measured implementation costs**, not authorization of new subscriptions. Treat concurrency/DDL/recovery/performance as uncertain and re-estimate from actual current working tree. Prefer one reviewed implementation contract across F1–F3 over competing B/D ActorSnapshot+PersonState migrations. Do not unilaterally switch browser/account to Mac/DeepSeek/Codex.
+
+## 6. Original science/actor/Pyat owner decisions to run *in parallel* with lawful engineering
+
+| Owner gate | Finite actual question, rival, required output; first consumer |
+|---|---|
+| **G1 C0/C4/C8/ADP019/world/SDTF** | Supply one independent B (and preferably at least one additional co-carer) with actor-owned real time/resources/actions/refusals, objective care and work/transport/rest/household feasible intervals, source rights/effective clocks, and A's separate reception. Test actually performed but unseen care (objective yes, memory no). C8 journal → C9. S49 `[]` is not native positive. |
+| **G2 original CAN008 Rule A** | For one bounded historically actual E1 and later E2, specify actor receivability, concurrently active pressures, typed operands, scope, readset and available vs unsupported response; no one-winner/age coefficient. Output immediate C9 response and what value is consulted at E2. |
+| **G2 original CAN010/011 Rule T** | On same E1, independently test (a) existing value change, (b) context-gated activation, (c) actually acquired composed practice, (d) optional new mediated relation, (e) actual outside teacher/tool contribution, (f) genuine unchanged. State exact lawful update/NO_CHANGE readset, test single instruction if evidence justifies; no default repetitions/weights. Specify use of CAN011 MEDIATOR/TENSION/PRACTICE **only** or narrowly issue explicit amendment through normal authority. C9 commits and later E2 consumes a semantic payload. |
+| **G3 CAN012/ADP016/017** | Qualify if an actual threat/repair becomes durable tension/metabolization versus nochange; distinguish trace from remembered episode, later testimony, mistaken sourced belief and inaccessible fact. Reject M19 narration causal feed and childhood adult-reflexive retrojection. C9 state→C12 retrospective. |
+| **G3 SCI05** | Decide actual reflective internal act admissibility and status after same N+1 model call. When half1 is denied, does *any* half2 proposal have provable independent causal basis? Default all held otherwise; no text self-authority. |
+| **G4 Pyat C0/C11 and C8/C9/C12 native release** | Exact released R157/other source identities, source-local rights, C0 actual possibilities, C11 authorized weld and native C12/A0–A5 consumer test. R157 all35 prep and 116 tests do not release this. A5 full-life, forks, negative and same-semantic-consumer severed evidence required. |
+| **G-product C6/C9/C12/user** | Select real-world N11 partial-batch policy after weighing independently irreversible B actions; specify fail/unknown, no-event, suffix, recovery and actor-memory semantics. User already settled *recursion structure*, not policy. |
+
+## 7. Hostile prospective acceptance suite and test grades
+
+Every scenario below is **PROPOSED/NOT_RUN by S-R**, never inherited as an executed positive:
+
+| H case | Construct, assertion and source consumer |
+|---|---|
+| **H01 real E1 acquisition → E2** | Qualified source E1 actor performs taught ordered task, actual CAN011 Rule T forms scoped practice; independent E2 same world/B/task invokes C9 CAN008 **semantic operation lookup**. Remove just value read → claimed difference disappears/precise HOLD, not merely actor hash delta. |
+| **H02 lawful NO_CHANGE** | Same grounded event, exact issued Rule T evaluates negative; canonical receipt, unchanged state with valid rule evidence; contrast H03. |
+| **H03 absent Rule T** | Exact same occurrence with registry {} → HELD_MISSING_RULE; cannot call H02. |
+| **H04 external-only aid** | B supplies tool/time; task succeeds while actor owned practice unchanged, no fictional new mediator or trait. |
+| **H05 unseen care** | Independent B performed care, X never saw; world journal advances and resource effect may occur, actor memory/Rule A cannot assert direct perception. Later testimony only at later time. |
+| **H06 tool withdrawn** | qualified practice exists but no required tool; current ineligible, *not DORMANT/ENDED* under generic absence. |
+| **H07 mixed and stable life** | Coexisting love/poverty, a second worker, ordinary intervals and coherent adult without any compulsory internal contradictions/rupture; later institution/meaning possible only with real context. |
+| **H08 batch denied middle** | Four event proposals, E1 source-authorized/committed, E2 SOURCE_DENIED, E3–4 not independently realized; no actor/retrospective phantom suffix; outcome respects explicitly selected policy. |
+| **H09 SCI05 implicit half2** | First-half unadmitted reinterpretation “I now believe I am safe”; second-half “seek safety because I believe it” with absent `dependencyOnSelfAccountRef`; postcall denial invalidates/holds anyway. |
+| **H10 memory taint** | Objective unseen event remains; remove one ADP actor-access feature, verify no event ID/count/ordering, count of unseen events, gap or indirect prose leak to same-call model. |
+| **H11 C9/C12 split commit** | commit actor in C9 then kill before C12 mirror, replay/fork/cold open; exactly same actor version, world reality, receipt and E2 value; C12 never CLEAN stale state. Also C8 B act precedes C9 failure. |
+| **H12 legacy source false psyche** | Old type-at-birth, 50 hopeful parent, forced crack, M26 derived field and M19 warm prose cannot migrate as formed state; valid objective class resource may migrate if separately source-verified. |
+| **H13 S52 security + render** | base_ok true, _OPENING and only new S52 error must reject; postcommit V2 render failure retains real actor/world but not final CLEAN. |
+| **H14 actual A0–A5 full terminal** | Lifespan with childhood dependence, later labor/care/motives, independent B, real opportunity/refusal, qualified old->new adaptation, adult meaning, valid coherence and conflict cases, N/N+1 rounds, cold/fork, C11 authorized world weld, human-facing actor-safe response; both positive and nochange with source fault. |
+
+**Acceptance order:** F0 source hash/portability/verifier → F1 state/receipt, crash/fork and legacy quarantine → F2 no-leak memory/V2 → F3 held-safe 3–5 scheduler → owner-positive G1/G2/G3 science and native source/weld G4 → real C9 E2 semantic cut → full terminal H14. Integration owner cannot replace each omitted source with a synthetic “human” claim. Independently hostile reviewer must check implementation receipts and exact new branch/source SHA; SYN02-S-R neither reviews its own work nor grants native acceptance.
+
+## 8. Explicit finite closeout and forwarding instructions
+
+1. **SYN02-S architecture as complete engineerable blueprint: REJECT at present.** Exact REDs P0 are actionable engineering/security semantics, not lack of theoretical enthusiasm. Repair exact three gaps and S04/S05 ten rows and it becomes suitable for **qualified engineering build** review, not automatic product adoption.
+2. **Preserve selected design rationale**: single actor and versioned state with real external material/relational world, minimal sufficient functional alternatives, rich inherited V3 coding capital, owner-held Rule A/T, valid-empty/stable actor, full user-chosen 3–5 N/N+1. Do not respond by resetting the whole project, eliminating difficult historical functions, adding an undirected graph, or constructing a second psyche.
+3. **Immediate lawful next tranche** after competent HQ receives S-R return: isolated sourcefree F0 and F1.0 typed/storage authority freeze; F1.1 transaction implementation only on accepted storage contract, F2/F3 guarded in same whole-machine program, concurrent G1/G2/G3 owner science/world investigation, G4 only with Pyat release. No obligation to wait idle on a single absent Rule T before implementing pure infrastructure.
+4. **Stop condition:** if a reviewer/worker claims true NO_CHANGE with no evaluated original Rule T, accepts a nonnative B as a real source, produces second N+1 LLM call, persists narrator-derived cause, merges actor on two unverifiable stores, invents post-denial dependent event, or calls sourcefree 116 native release, return explicit RED with exact positive/negative proof missing.
+5. **No self-adoption / no user-work disturbance.** Original source/authority records, active Mac sessions, common atlas, S files and production untouched. No PR merge, model switch or native permission by these documents. This court's three files are the entire write scope.
