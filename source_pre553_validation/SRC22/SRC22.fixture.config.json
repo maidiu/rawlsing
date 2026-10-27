@@ -1,0 +1,2830 @@
+{
+  "schema": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
+  "config_id": "R157-GSS-SRC22-NONRESPONDENT-FIXTURE-VALIDATION",
+  "config_revision": 1,
+  "config_purpose": "NONRESPONDENT_FIXTURE",
+  "identity": {
+    "source_id": "SRC22",
+    "family": "GSS",
+    "wave": "2016",
+    "source_family_id": "GSS",
+    "study_product_id": "GSS_2016",
+    "release_id": "GSS_2016_SOURCE_ARTIFACT",
+    "instrument_release_id": "SRC22_METADATA_WITNESS_SHA256:2ff42bbb31ee5e6ff62165bb384783d9f6950e87c9ec2280c510cc00f27342a8",
+    "source_artifact_id": "GSS2016.sav",
+    "expected_source_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+    "source_format": "SAV",
+    "source_row_count": 2867,
+    "source_column_count": 1018,
+    "source_bytes": 16989724,
+    "codebook_rows": 1018,
+    "original_item_count": 1018,
+    "source_snapshot_retention_ref": {
+      "kind": "SOURCE_SNAPSHOT",
+      "object_id": "urn:rawlsing:r157:source-snapshot:SRC22",
+      "content_hash": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07"
+    },
+    "metadata_witness_ref": {
+      "kind": "R154_PHYSICAL_METADATA",
+      "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC22_PHYSICAL_METADATA.json",
+      "content_hash": "2ff42bbb31ee5e6ff62165bb384783d9f6950e87c9ec2280c510cc00f27342a8"
+    },
+    "locator": {
+      "root": "EXTERNAL_LOCATOR_ID",
+      "locator_id": "SRC22_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING"
+    },
+    "reader": {
+      "decoder_owner": "rawlsing_next.pre553_physical_decoder.decode_sav",
+      "configuration_ref": {
+        "kind": "READER_CONFIGURATION",
+        "object_id": "urn:rawlsing:r157:reader:SRC22:default_sav",
+        "content_hash": "f2b889d9121057bb4a6ae5cc0b4233809c38b936345489f0a014da79493f147b"
+      },
+      "encoding": null
+    }
+  },
+  "binding": {
+    "identity_class": "NONRESPONDENT_FIXTURE",
+    "source_sha256": "e03c7cd7a95f109115d1ffd7cb0d7915de7020f508cbca3fe2a8ce4d64c6c495",
+    "row_count": 6,
+    "source_snapshot_ref": {
+      "kind": "FIXTURE_SNAPSHOT",
+      "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR",
+      "content_hash": "e03c7cd7a95f109115d1ffd7cb0d7915de7020f508cbca3fe2a8ce4d64c6c495"
+    },
+    "fixture_provenance": {
+      "fixture_id": "R157-GSS-SRC22-NONRESPONDENT-SCALAR",
+      "provenance": "Repository-generated nonrespondent fixture for the R157 GSS lane; synthetic cells, no original respondents represented.",
+      "authority_grade": "NONRESPONDENT_FIXTURE_ONLY",
+      "original_source_id": "SRC22",
+      "original_source_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+      "no_original_respondents": true,
+      "fixture_study_product_id": "R157_GSS_FIXTURE/SRC22",
+      "fixture_release_id": "R157_GSS_FIXTURE_RELEASE/SRC22",
+      "fixture_instrument_release_id": "R157_GSS_FIXTURE_INSTRUMENT/SRC22"
+    }
+  },
+  "authority": {
+    "snapshots": [
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:SRC22:authority:R157-SRC22-FIXTURE-SOURCE",
+          "content_hash": "36d77eb10a53c20ceb4265cd49b6b067dd32c3ef40773161ebb60b9c4ba712b3"
+        },
+        "authority_id": "R157-SRC22-FIXTURE-SOURCE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "e8b6c75b7521da692d1f4e1a5fc07441b39ae5ac1b301bd649e4bd7467717ea4",
+        "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_FIXTURE_SOURCE_SEMANTICS"
+        ],
+        "governed_object_families": [
+          "EmpiricalUniverse@1.0.0",
+          "RespondentEvent@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_only": true,
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "fixture_id": "R157-GSS-SRC22-NONRESPONDENT-SCALAR",
+          "source_id": "SRC22",
+          "source_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+          "fixture_source_sha256": "e03c7cd7a95f109115d1ffd7cb0d7915de7020f508cbca3fe2a8ce4d64c6c495",
+          "original_source_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+          "evidence_bundle_sha256": "93f5cab46e6d8d8d2064d1693e74f4dd7a0be667c519d2b966d1dae8c272db5e"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "180b917fabd8cafbc868fd7aa9fefbccd3e5b5b95b91acd9d4938cb5f1bdf2b8",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:native-replay-protocol:1.0.0",
+          "content_hash": "7a6e922f3e78538f52d23286561de642ed5ebc52c2372de8ad1f66a5f53b4095"
+        }
+      },
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:SRC22:authority:R157-SRC22-FIXTURE-ROUTING",
+          "content_hash": "afa7e3ac1ff973e19eb15bea0746c1df0865d7a538b9ee501606b21326725bfb"
+        },
+        "authority_id": "R157-SRC22-FIXTURE-ROUTING",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "cda290df0cdfc7b46aa022ffb46bf48c1bcc1904703f023c4d55578c9306ace3",
+        "authority_kind": "ROUTING_RISK_SET",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_FIXTURE_ROUTING"
+        ],
+        "governed_object_families": [
+          "RoutingEligibilityFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_only": true,
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "fixture_id": "R157-GSS-SRC22-NONRESPONDENT-SCALAR",
+          "source_id": "SRC22",
+          "source_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+          "fixture_source_sha256": "e03c7cd7a95f109115d1ffd7cb0d7915de7020f508cbca3fe2a8ce4d64c6c495",
+          "original_source_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+          "evidence_bundle_sha256": "342c18804d49557568734d4091dee73cd8557367fafde65f3696b25294056efb"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "681ef0bb4be8eceaac65b822fd529f9c1f72da09a8f8980208fd14d5e98aec91",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:native-replay-protocol:1.0.0",
+          "content_hash": "7a6e922f3e78538f52d23286561de642ed5ebc52c2372de8ad1f66a5f53b4095"
+        }
+      },
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:SRC22:authority:R157-SRC22-FIXTURE-COORDINATE",
+          "content_hash": "1464ee776a5f07613675dd5f11bb2a66feb83251ca53f2899f030193c76be816"
+        },
+        "authority_id": "R157-SRC22-FIXTURE-COORDINATE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "e4a9436fc153a393e67017f352d699867ef818a93cbadd0ad58d0697b1ead295",
+        "authority_kind": "COORDINATE_SEMANTICS",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_FIXTURE_COORDINATE"
+        ],
+        "governed_object_families": [
+          "EmpiricalCoordinateFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_only": true,
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "fixture_id": "R157-GSS-SRC22-NONRESPONDENT-SCALAR",
+          "source_id": "SRC22",
+          "source_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+          "fixture_source_sha256": "e03c7cd7a95f109115d1ffd7cb0d7915de7020f508cbca3fe2a8ce4d64c6c495",
+          "original_source_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+          "evidence_bundle_sha256": "7a04258990800410642f6ccc39b88bc6f0de7fdecb3754093c681fca4b0610dc"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "06009630e8af074bb2db26ba5fb1d508f225d0b73b70a24a5caeba9818597673",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:native-replay-protocol:1.0.0",
+          "content_hash": "7a6e922f3e78538f52d23286561de642ed5ebc52c2372de8ad1f66a5f53b4095"
+        }
+      },
+      {
+        "typed_state": "DEFER",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:SRC22:authority:R157-SRC22-FIXTURE-WEIGHT-DESIGN",
+          "content_hash": "ae106c1396b0ce6f1782d4ca0a6d5745789a1c91d013bc56f66fbd496b74b8c2"
+        },
+        "authority_id": "R157-SRC22-FIXTURE-WEIGHT-DESIGN",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "8d2ab614bb500052a01707f9b8fc42d15ec2fffc8f47d8edb3b7d3eebf3ce4f0",
+        "authority_kind": "WEIGHT_DESIGN_ESTIMAND",
+        "decision_state": "DEFER",
+        "governed_operations": [
+          "R157_FIXTURE_WEIGHT_DESIGN"
+        ],
+        "governed_object_families": [
+          "WeightMeasureFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_only": true,
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "fixture_id": "R157-GSS-SRC22-NONRESPONDENT-SCALAR",
+          "source_id": "SRC22",
+          "source_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+          "fixture_source_sha256": "e03c7cd7a95f109115d1ffd7cb0d7915de7020f508cbca3fe2a8ce4d64c6c495",
+          "original_source_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+          "evidence_bundle_sha256": "ad8a6ec2300d8b91616ef512e162e213d334e2d7de5f335c66d21cf5596a4553"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "2dfce899fc47d52bb53f18efe6d9863a1e1a267f848ad12d5bbb3e83a74c50f6",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:native-replay-protocol:1.0.0",
+          "content_hash": "7a6e922f3e78538f52d23286561de642ed5ebc52c2372de8ad1f66a5f53b4095"
+        }
+      },
+      {
+        "typed_state": "DEFER",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:SRC22:authority:R157-SRC22-FIXTURE-WEIGHT-ESTIMAND",
+          "content_hash": "bd0e0cdc82d1b24b588a1ab0bb33e323225708d92b448903da907290b5026305"
+        },
+        "authority_id": "R157-SRC22-FIXTURE-WEIGHT-ESTIMAND",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "659aa4097b59730ae7e8f669fac705e334c1fad7db5455ebca1ab1693f319cc8",
+        "authority_kind": "WEIGHT_DESIGN_ESTIMAND",
+        "decision_state": "DEFER",
+        "governed_operations": [
+          "R157_FIXTURE_WEIGHT_ESTIMAND"
+        ],
+        "governed_object_families": [
+          "WeightMeasureFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_only": true,
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "fixture_id": "R157-GSS-SRC22-NONRESPONDENT-SCALAR",
+          "source_id": "SRC22",
+          "source_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+          "fixture_source_sha256": "e03c7cd7a95f109115d1ffd7cb0d7915de7020f508cbca3fe2a8ce4d64c6c495",
+          "original_source_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+          "evidence_bundle_sha256": "b88188d8ea14e2061672596cf64d8619fe7e2ba6bcc79ff06dfd751d78c33dc2"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "bebc9828dad90f81ef68e7db094ce84eebbbb8d7aab179e82d8e1ff543dba7a0",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:native-replay-protocol:1.0.0",
+          "content_hash": "7a6e922f3e78538f52d23286561de642ed5ebc52c2372de8ad1f66a5f53b4095"
+        }
+      },
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:SRC22:authority:R157-NATIVE-REPLAY-PROTOCOL",
+          "content_hash": "206353462294ba677380c0100a2dde183c695f15ebf5f5aa3aa3fe462282c655"
+        },
+        "authority_id": "R157-NATIVE-REPLAY-PROTOCOL",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "dbb449fe20fbca18a677a3ca2c2cb1ec06719267da9826fb54f0f5dbc942953e",
+        "authority_kind": "REPLAY_PROTOCOL",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_NATIVE_REPLAY"
+        ],
+        "governed_object_families": [
+          "ReplayReceipt@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_only": true,
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "fixture_id": "R157-GSS-SRC22-NONRESPONDENT-SCALAR",
+          "source_id": "SRC22",
+          "source_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+          "fixture_source_sha256": "e03c7cd7a95f109115d1ffd7cb0d7915de7020f508cbca3fe2a8ce4d64c6c495",
+          "original_source_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+          "evidence_bundle_sha256": "05ddb11361bacdb0ede626b14901a0b1d3aa14f5454aefaccb54a4b49b3fc842"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "3671ef1a420fcb42daf71e610ab652d575c37986ccc9b071d15d1c0e1243493e",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:native-replay-protocol:1.0.0",
+          "content_hash": "7a6e922f3e78538f52d23286561de642ed5ebc52c2372de8ad1f66a5f53b4095"
+        }
+      },
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:SRC22:authority:R157-SRC22-FIXTURE-PROJECTION",
+          "content_hash": "f8e86dfa20a4c07fb2f8de0203ccc3ef11630cc6d0c1a09722664e7b86a1c2a9"
+        },
+        "authority_id": "R157-SRC22-FIXTURE-PROJECTION",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "ca9275dad6d914f10d467913ee049347aac1353b3ce55b7d87988f0ab61fb897",
+        "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_FIXTURE_PROJECTION"
+        ],
+        "governed_object_families": [
+          "RespondentEvent@1.0.0",
+          "EmpiricalCoordinateFact@1.0.0",
+          "WeightMeasureFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_only": true,
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "fixture_id": "R157-GSS-SRC22-NONRESPONDENT-SCALAR",
+          "source_id": "SRC22",
+          "source_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+          "fixture_source_sha256": "e03c7cd7a95f109115d1ffd7cb0d7915de7020f508cbca3fe2a8ce4d64c6c495",
+          "original_source_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+          "evidence_bundle_sha256": "a119e88d3635e073519900069453580db8cae1b1f85448fde82e48d6047f8d88"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "79b15518c06dfa8b0ffc605c243977203261135d2890c818bda9f5853b900c51",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:native-replay-protocol:1.0.0",
+          "content_hash": "7a6e922f3e78538f52d23286561de642ed5ebc52c2372de8ad1f66a5f53b4095"
+        }
+      }
+    ],
+    "required_refs": [
+      {
+        "authority_id": "R157-SRC22-FIXTURE-SOURCE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "e8b6c75b7521da692d1f4e1a5fc07441b39ae5ac1b301bd649e4bd7467717ea4"
+      },
+      {
+        "authority_id": "R157-SRC22-FIXTURE-ROUTING",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "cda290df0cdfc7b46aa022ffb46bf48c1bcc1904703f023c4d55578c9306ace3"
+      },
+      {
+        "authority_id": "R157-SRC22-FIXTURE-COORDINATE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "e4a9436fc153a393e67017f352d699867ef818a93cbadd0ad58d0697b1ead295"
+      },
+      {
+        "authority_id": "R157-SRC22-FIXTURE-WEIGHT-DESIGN",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "8d2ab614bb500052a01707f9b8fc42d15ec2fffc8f47d8edb3b7d3eebf3ce4f0"
+      },
+      {
+        "authority_id": "R157-SRC22-FIXTURE-WEIGHT-ESTIMAND",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "659aa4097b59730ae7e8f669fac705e334c1fad7db5455ebca1ab1693f319cc8"
+      },
+      {
+        "authority_id": "R157-NATIVE-REPLAY-PROTOCOL",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "dbb449fe20fbca18a677a3ca2c2cb1ec06719267da9826fb54f0f5dbc942953e"
+      },
+      {
+        "authority_id": "R157-SRC22-FIXTURE-PROJECTION",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "ca9275dad6d914f10d467913ee049347aac1353b3ce55b7d87988f0ab61fb897"
+      }
+    ],
+    "projection_authority_ref": {
+      "authority_id": "R157-SRC22-FIXTURE-PROJECTION",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "ca9275dad6d914f10d467913ee049347aac1353b3ce55b7d87988f0ab61fb897"
+    },
+    "replay_authority_ref": {
+      "authority_id": "R157-NATIVE-REPLAY-PROTOCOL",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "dbb449fe20fbca18a677a3ca2c2cb1ec06719267da9826fb54f0f5dbc942953e"
+    },
+    "projection_identity_ref": {
+      "kind": "C11_SEMANTIC_PROJECTION",
+      "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:projection",
+      "content_hash": "4678b3f5df09bfd74334eaa6c06d897fe5ec888a34d888fc92611b03b438295d"
+    },
+    "tie_order_ref": {
+      "kind": "ORDER_RULE",
+      "object_id": "urn:rawlsing:r157:order:canonical-exact-ref",
+      "content_hash": "0f2a6c88801a6e74adc2be46a8fbc2b65b0fe34c662f88f13da25adeff48088c"
+    },
+    "replay_protocol_version": "1.0.0"
+  },
+  "universe": {
+    "universes": [
+      {
+        "typed_state": "UNIVERSE_IDENTIFIED",
+        "authority_snapshot_refs": [
+          {
+            "authority_id": "R157-SRC22-FIXTURE-SOURCE",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "e8b6c75b7521da692d1f4e1a5fc07441b39ae5ac1b301bd649e4bd7467717ea4"
+          }
+        ],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:universe",
+          "content_hash": "f2c47daf935dfe65e6bea9b092c3aefc3b0b828e6b8219a1a1c237d1fc238336"
+        },
+        "raw_source_identity": "R157-NONRESPONDENT-FIXTURE:R157-GSS-SRC22-NONRESPONDENT-SCALAR",
+        "source_family": "GSS_NONRESPONDENT_FIXTURE",
+        "study_product_release": "R157_GSS_FIXTURE/SRC22",
+        "instrument_release": "R157_GSS_FIXTURE_INSTRUMENT/SRC22",
+        "country_geography": "FIXTURE_US_SOURCE_SHAPE",
+        "sampling_geography": "FIXTURE_NONPROBABILITY",
+        "raw_wave": "2016",
+        "canonical_wave_if_governed": null,
+        "field_or_reference_time": "R157_NONRESPONDENT_FIXTURE",
+        "target_population_and_sample_frame": "NONRESPONDENT_FIXTURE_ROWS",
+        "sampling_design_regime": "NONRESPONDENT_FIXTURE_ONLY",
+        "respondent_namespace": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:respondent",
+        "source_artifact_import_lineage": "R157_NONRESPONDENT_FIXTURE_ONLY__NOT_ORIGINAL_SOURCE",
+        "harmonization_authority_ref": null,
+        "source_relation_refs": []
+      }
+    ]
+  },
+  "respondents": {
+    "subject_unit": "NONRESPONDENT_FIXTURE_ROW",
+    "respondent_namespace": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:respondent",
+    "respondent_key_pattern": "R157-FIXTURE-SRC22-ROW-{row_ordinal:02d}",
+    "source_native_key_slot": {
+      "ordinal": 3,
+      "name": "id"
+    },
+    "identity_map_authority_ref": null,
+    "row_identity_grade": "NONRESPONDENT_FIXTURE_KEY_EXTRACTION_ONLY"
+  },
+  "questions": [
+    {
+      "question_id": "FIXTURE:SRC22:happy",
+      "empirical_universe_ref": {
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:53240e367406e2dd7f6f621e5cca5541764f6dbbb81f99b46890b6049e9384ce",
+        "content_hash": "53240e367406e2dd7f6f621e5cca5541764f6dbbb81f99b46890b6049e9384ce"
+      },
+      "native_question_ref": {
+        "kind": "NATIVE_QUESTION",
+        "object_id": "urn:rawlsing:r157:fixture:SRC22:question_impl.phase0.46ac29388f2729e39e26",
+        "content_hash": "376bbee77bc529acfe7c47aaee2b37c3652e96a69207350dbbb920e3322f9b1e"
+      },
+      "instrument_question_version": "GSS_2016_FIXTURE",
+      "canonical_question_ref_or_typed_absence": {
+        "typed_absence_state": "NOT_AUTHORIZED",
+        "detail": "Fixture-only validation; no original canonical mapping authority is asserted."
+      },
+      "component_subitem_ref_or_typed_absence": {
+        "typed_absence_state": "NOT_APPLICABLE",
+        "detail": "Single fixture scalar variable; no multiple-response component/subitem is asserted."
+      },
+      "semantic_authority_ref": {
+        "authority_id": "R157-SRC22-FIXTURE-SOURCE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "e8b6c75b7521da692d1f4e1a5fc07441b39ae5ac1b301bd649e4bd7467717ea4"
+      },
+      "topology_authority_ref": {
+        "authority_id": "R157-SRC22-FIXTURE-SOURCE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "e8b6c75b7521da692d1f4e1a5fc07441b39ae5ac1b301bd649e4bd7467717ea4"
+      },
+      "item_evidence": {
+        "implementation_id": "question_impl.phase0.46ac29388f2729e39e26",
+        "exact_identity_sha256": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d",
+        "relation_join_status": "EXACT",
+        "fixture_id": "R157-GSS-SRC22-NONRESPONDENT-SCALAR"
+      }
+    },
+    {
+      "question_id": "FIXTURE:SRC22:satfin",
+      "empirical_universe_ref": {
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:53240e367406e2dd7f6f621e5cca5541764f6dbbb81f99b46890b6049e9384ce",
+        "content_hash": "53240e367406e2dd7f6f621e5cca5541764f6dbbb81f99b46890b6049e9384ce"
+      },
+      "native_question_ref": {
+        "kind": "NATIVE_QUESTION",
+        "object_id": "urn:rawlsing:r157:fixture:SRC22:question_impl.phase0.1f4681e08796e31d8a0b",
+        "content_hash": "eddc7e647412838f3671829d0754671f535c2c03203f5eb80a6f9c69859f3e8b"
+      },
+      "instrument_question_version": "GSS_2016_FIXTURE",
+      "canonical_question_ref_or_typed_absence": {
+        "typed_absence_state": "NOT_AUTHORIZED",
+        "detail": "Fixture-only validation; no original canonical mapping authority is asserted."
+      },
+      "component_subitem_ref_or_typed_absence": {
+        "typed_absence_state": "NOT_APPLICABLE",
+        "detail": "Single fixture scalar variable; no multiple-response component/subitem is asserted."
+      },
+      "semantic_authority_ref": {
+        "authority_id": "R157-SRC22-FIXTURE-SOURCE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "e8b6c75b7521da692d1f4e1a5fc07441b39ae5ac1b301bd649e4bd7467717ea4"
+      },
+      "topology_authority_ref": {
+        "authority_id": "R157-SRC22-FIXTURE-SOURCE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "e8b6c75b7521da692d1f4e1a5fc07441b39ae5ac1b301bd649e4bd7467717ea4"
+      },
+      "item_evidence": {
+        "implementation_id": "question_impl.phase0.1f4681e08796e31d8a0b",
+        "exact_identity_sha256": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024",
+        "relation_join_status": "EXACT",
+        "fixture_id": "R157-GSS-SRC22-NONRESPONDENT-SCALAR"
+      }
+    },
+    {
+      "question_id": "FIXTURE:SRC22:abdefect",
+      "empirical_universe_ref": {
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:53240e367406e2dd7f6f621e5cca5541764f6dbbb81f99b46890b6049e9384ce",
+        "content_hash": "53240e367406e2dd7f6f621e5cca5541764f6dbbb81f99b46890b6049e9384ce"
+      },
+      "native_question_ref": {
+        "kind": "NATIVE_QUESTION",
+        "object_id": "urn:rawlsing:r157:fixture:SRC22:question_impl.phase0.5bbf9f25f27cf385fade",
+        "content_hash": "b5e9da3219e280de12c19477ab16037c115cd30c66f10d990595be3e9f0657af"
+      },
+      "instrument_question_version": "GSS_2016_FIXTURE",
+      "canonical_question_ref_or_typed_absence": {
+        "typed_absence_state": "NOT_AUTHORIZED",
+        "detail": "Fixture-only validation; no original canonical mapping authority is asserted."
+      },
+      "component_subitem_ref_or_typed_absence": {
+        "typed_absence_state": "NOT_APPLICABLE",
+        "detail": "Single fixture scalar variable; no multiple-response component/subitem is asserted."
+      },
+      "semantic_authority_ref": {
+        "authority_id": "R157-SRC22-FIXTURE-SOURCE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "e8b6c75b7521da692d1f4e1a5fc07441b39ae5ac1b301bd649e4bd7467717ea4"
+      },
+      "topology_authority_ref": {
+        "authority_id": "R157-SRC22-FIXTURE-SOURCE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "e8b6c75b7521da692d1f4e1a5fc07441b39ae5ac1b301bd649e4bd7467717ea4"
+      },
+      "item_evidence": {
+        "implementation_id": "question_impl.phase0.5bbf9f25f27cf385fade",
+        "exact_identity_sha256": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd",
+        "relation_join_status": "EXACT",
+        "fixture_id": "R157-GSS-SRC22-NONRESPONDENT-SCALAR"
+      }
+    }
+  ],
+  "physical_slots": [
+    {
+      "ordinal": 2,
+      "name": "year",
+      "label": "gss year for this respondent",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "storage_width": "8",
+      "measure": "scale",
+      "value_labels": {
+        "-100.0": "iap",
+        "-40.0": "dk, na, iap",
+        "-60.0": "I don't have a job",
+        "-70.0": "not available in this year",
+        "-80.0": "not available in this release",
+        "-90.0": "refused",
+        "-94.0": "not imputable",
+        "-95.0": "uncodeable",
+        "-96.0": "see codebook",
+        "-97.0": "skipped on web",
+        "-98.0": "don't know",
+        "-99.0": "no answer"
+      },
+      "missing_declarations": null,
+      "mr_declarations": null,
+      "codebook_mapping": {
+        "row_hash": "42494975f78e37fd236f35b848fae45db2665554b92ce44c6b5727d2a69561cd",
+        "status": "EXACT",
+        "var_name": "year"
+      },
+      "disposition": "SUPPORTED_COORDINATE_TIME",
+      "disposition_reason": "Source-native GSS survey-year coordinate; raw value copied only at permitted projection."
+    },
+    {
+      "ordinal": 3,
+      "name": "id",
+      "label": "respondent id number",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "storage_width": "8",
+      "measure": "scale",
+      "value_labels": null,
+      "missing_declarations": null,
+      "mr_declarations": null,
+      "codebook_mapping": {
+        "row_hash": "a86f53b88c42a88bd8ba3abc00870c0ac92df23b37fa14485de2fe5780e92e29",
+        "status": "EXACT",
+        "var_name": "id"
+      },
+      "disposition": "FIXTURE_ROW_KEY",
+      "disposition_reason": "Synthetic nonrespondent fixture id cell used to exercise P3 exact row-key extraction; it is not an original respondent id."
+    },
+    {
+      "ordinal": 5,
+      "name": "abdefect",
+      "label": "strong chance of serious defect",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "storage_width": "8",
+      "measure": "scale",
+      "value_labels": {
+        "-100.0": "iap",
+        "-40.0": "dk, na, iap",
+        "-60.0": "I don't have a job",
+        "-70.0": "not available in this year",
+        "-80.0": "not available in this release",
+        "-90.0": "refused",
+        "-94.0": "not imputable",
+        "-95.0": "uncodeable",
+        "-96.0": "see codebook",
+        "-97.0": "skipped on web",
+        "-98.0": "don't know",
+        "-99.0": "no answer",
+        "1.0": "yes",
+        "2.0": "no"
+      },
+      "missing_declarations": null,
+      "mr_declarations": null,
+      "codebook_mapping": {
+        "row_hash": "dccdf025a579df6b00d0a6d695181bf40a84e9ace11ce9d0be531eaccf85c9cf",
+        "status": "EXACT",
+        "var_name": "abdefect"
+      },
+      "disposition": "SUPPORTED_RESPONSE",
+      "disposition_reason": "Grounded scalar response slot selected for the source-local supported slice."
+    },
+    {
+      "ordinal": 282,
+      "name": "happy",
+      "label": "general happiness",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "storage_width": "8",
+      "measure": "scale",
+      "value_labels": {
+        "-100.0": "iap",
+        "-40.0": "dk, na, iap",
+        "-60.0": "I don't have a job",
+        "-70.0": "not available in this year",
+        "-80.0": "not available in this release",
+        "-90.0": "refused",
+        "-94.0": "not imputable",
+        "-95.0": "uncodeable",
+        "-96.0": "see codebook",
+        "-97.0": "skipped on web",
+        "-98.0": "don't know",
+        "-99.0": "no answer",
+        "1.0": "very happy",
+        "2.0": "pretty happy",
+        "3.0": "not too happy"
+      },
+      "missing_declarations": null,
+      "mr_declarations": null,
+      "codebook_mapping": {
+        "row_hash": "c39cc38e56267c1d7d78759e37fed526cb22fe1033207496a78cd7e25ee6c49a",
+        "status": "EXACT",
+        "var_name": "happy"
+      },
+      "disposition": "SUPPORTED_RESPONSE",
+      "disposition_reason": "Grounded scalar response slot selected for the source-local supported slice."
+    },
+    {
+      "ordinal": 671,
+      "name": "region",
+      "label": "region of interview",
+      "storage_type": "double",
+      "original_type": "F1.0",
+      "storage_width": "8",
+      "measure": "nominal",
+      "value_labels": {
+        "-100.0": "iap",
+        "-40.0": "dk, na, iap",
+        "-60.0": "I don't have a job",
+        "-70.0": "not available in this year",
+        "-80.0": "not available in this release",
+        "-90.0": "refused",
+        "-94.0": "not imputable",
+        "-95.0": "uncodeable",
+        "-96.0": "see codebook",
+        "-97.0": "skipped on web",
+        "-98.0": "don't know",
+        "-99.0": "no answer",
+        "1.0": "northeast",
+        "2.0": "midwest",
+        "3.0": "south",
+        "4.0": "west"
+      },
+      "missing_declarations": null,
+      "mr_declarations": null,
+      "codebook_mapping": {
+        "row_hash": "1db54d8e57321f2537d8c9763411b114472c24c9c8ca70cbbbe2213dbc860293",
+        "status": "EXACT",
+        "var_name": "region"
+      },
+      "disposition": "SUPPORTED_CONTEXT_COORDINATE",
+      "disposition_reason": "Source-native region context coordinate retained as a coordinate, not a measurement target."
+    },
+    {
+      "ordinal": 764,
+      "name": "satfin",
+      "label": "satisfaction with financial situation",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "storage_width": "8",
+      "measure": "scale",
+      "value_labels": {
+        "-100.0": "iap",
+        "-40.0": "dk, na, iap",
+        "-60.0": "I don't have a job",
+        "-70.0": "not available in this year",
+        "-80.0": "not available in this release",
+        "-90.0": "refused",
+        "-94.0": "not imputable",
+        "-95.0": "uncodeable",
+        "-96.0": "see codebook",
+        "-97.0": "skipped on web",
+        "-98.0": "don't know",
+        "-99.0": "no answer",
+        "1.0": "pretty well satisfied",
+        "2.0": "more or less satisfied",
+        "3.0": "not satisfied at all"
+      },
+      "missing_declarations": null,
+      "mr_declarations": null,
+      "codebook_mapping": {
+        "row_hash": "27cf9c170ae5c19fc43e72ff5752ff69f779b34a17192beeab70f78085f81d6f",
+        "status": "EXACT",
+        "var_name": "satfin"
+      },
+      "disposition": "SUPPORTED_RESPONSE",
+      "disposition_reason": "Grounded scalar response slot selected for the source-local supported slice."
+    },
+    {
+      "ordinal": 1007,
+      "name": "wtssall",
+      "label": "weight variable",
+      "storage_type": "double",
+      "original_type": "F6.2",
+      "storage_width": "8",
+      "measure": "scale",
+      "value_labels": {
+        "-100.0": "iap",
+        "-40.0": "dk, na, iap",
+        "-60.0": "I don't have a job",
+        "-70.0": "not available in this year",
+        "-80.0": "not available in this release",
+        "-90.0": "refused",
+        "-94.0": "not imputable",
+        "-95.0": "uncodeable",
+        "-96.0": "see codebook",
+        "-97.0": "skipped on web",
+        "-98.0": "don't know",
+        "-99.0": "no answer"
+      },
+      "missing_declarations": null,
+      "mr_declarations": null,
+      "codebook_mapping": {
+        "row_hash": "952a4987c305cc9234da6052bdce05248808efac8ec1052aa1a518cb4e13c318",
+        "status": "EXACT",
+        "var_name": "wtssall"
+      },
+      "disposition": "HELD_WEIGHT_DESIGN_UNRESOLVED",
+      "disposition_reason": "Source weight slot exists, but no exact design/estimand/normalization authority is established."
+    }
+  ],
+  "items": [
+    {
+      "implementation_id": "question_impl.phase0.46ac29388f2729e39e26",
+      "source_variable_code": "happy",
+      "exact_identity_sha256": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d",
+      "question_text": "general happiness",
+      "disposition": "relation_evidence",
+      "response_classes": "support|oppose|unknown|refusal|missing|inapplicable|other_governed",
+      "mapping_status": "governed_qsmv2_relation",
+      "authority_status": "GOVERNED_QSMV2_RELATION_AUTHORITY",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.46ac29388f2729e39e26",
+          "content_hash": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.46ac29388f2729e39e26",
+          "content_hash": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_2016_happy",
+          "content_hash": "ee12a34c62fcae62edfd5a6892b9e500b36e65e950a0e23d2e496aef010ef12e"
+        }
+      ],
+      "limits": [
+        "h48_binding_grade=EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+        "p2_authority_status=source_reviewed",
+        "full_relation_authority_status=GOVERNED_QSMV2_RELATION_AUTHORITY",
+        "relation_use_status_final=GOVERNED_QSMV2_RELATION_AUTHORITY",
+        "manual_response_topology=scalar",
+        "manual_signed_polarity_status=SIGNED",
+        "R157 preparation does not issue original-source execution authority."
+      ],
+      "item_id": "GSS:2016:happy",
+      "relation": {
+        "status": "EXACT",
+        "question_id": "GSS_2016_happy",
+        "mapping_status": "governed_qsmv2_relation",
+        "manual_response_topology": "scalar",
+        "manual_response_normalization_rule": "map exact source substantive categories to a construct-relative [0,1] axis; preserve every special response unsigned and outside the scale",
+        "manual_position_conditioning": "no",
+        "manual_semantic_role": "RELATION_EVIDENCE",
+        "manual_signed_polarity_status": "SIGNED",
+        "forbidden_inference": "none recorded",
+        "does_not_measure": "none recorded",
+        "governed_row_payload_hash": "ee12a34c62fcae62edfd5a6892b9e500b36e65e950a0e23d2e496aef010ef12e",
+        "p2_exact_identity_sha256": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d"
+      }
+    },
+    {
+      "implementation_id": "question_impl.phase0.1f4681e08796e31d8a0b",
+      "source_variable_code": "satfin",
+      "exact_identity_sha256": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024",
+      "question_text": "satisfaction with financial situation",
+      "disposition": "relation_evidence",
+      "response_classes": "support|oppose|unknown|refusal|missing|inapplicable|other_governed",
+      "mapping_status": "governed_qsmv2_relation",
+      "authority_status": "GOVERNED_QSMV2_RELATION_AUTHORITY",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.1f4681e08796e31d8a0b",
+          "content_hash": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.1f4681e08796e31d8a0b",
+          "content_hash": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS:2016:satfin",
+          "content_hash": "e747ebbe54ef723e9d75e4ac0e5d279def0207ac140dd6ccdf317b6aff44048c"
+        }
+      ],
+      "limits": [
+        "h48_binding_grade=EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+        "p2_authority_status=source_reviewed",
+        "full_relation_authority_status=GOVERNED_QSMV2_RELATION_AUTHORITY",
+        "relation_use_status_final=GOVERNED_QSMV2_RELATION_AUTHORITY",
+        "manual_response_topology=scalar",
+        "manual_signed_polarity_status=SIGNED",
+        "R157 preparation does not issue original-source execution authority."
+      ],
+      "item_id": "GSS:2016:satfin",
+      "relation": {
+        "status": "EXACT",
+        "question_id": "GSS:2016:satfin",
+        "mapping_status": "governed_qsmv2_relation",
+        "manual_response_topology": "scalar",
+        "manual_response_normalization_rule": "map exact source substantive categories to a construct-relative [0,1] axis; preserve every special response unsigned and outside the scale",
+        "manual_position_conditioning": "no",
+        "manual_semantic_role": "RELATION_EVIDENCE",
+        "manual_signed_polarity_status": "SIGNED",
+        "forbidden_inference": "none recorded",
+        "does_not_measure": "none recorded",
+        "governed_row_payload_hash": "e747ebbe54ef723e9d75e4ac0e5d279def0207ac140dd6ccdf317b6aff44048c",
+        "p2_exact_identity_sha256": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024"
+      }
+    },
+    {
+      "implementation_id": "question_impl.phase0.5bbf9f25f27cf385fade",
+      "source_variable_code": "abdefect",
+      "exact_identity_sha256": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd",
+      "question_text": "strong chance of serious defect",
+      "disposition": "relation_evidence",
+      "response_classes": "support|oppose|unknown|refusal|missing|inapplicable",
+      "mapping_status": "accepted_block_child",
+      "authority_status": "FROZEN_ACCEPTED_GSS",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.5bbf9f25f27cf385fade",
+          "content_hash": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.5bbf9f25f27cf385fade",
+          "content_hash": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS:2016:abdefect",
+          "content_hash": "fb739d3097223a9be220366db849cd60c1615421c10100c0e426b05536adae26"
+        }
+      ],
+      "limits": [
+        "h48_binding_grade=EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+        "p2_authority_status=source_reviewed",
+        "full_relation_authority_status=FROZEN_ACCEPTED_GSS",
+        "relation_use_status_final=FROZEN_ACCEPTED_GSS",
+        "manual_response_topology=binary_contrast",
+        "manual_signed_polarity_status=SIGNED",
+        "R157 preparation does not issue original-source execution authority."
+      ],
+      "item_id": "GSS:2016:abdefect",
+      "relation": {
+        "status": "EXACT",
+        "question_id": "GSS:2016:abdefect",
+        "mapping_status": "accepted_block_child",
+        "manual_response_topology": "binary_contrast",
+        "manual_response_normalization_rule": "map exact source substantive categories to a construct-relative [0,1] axis; preserve every special response unsigned and outside the scale",
+        "manual_position_conditioning": "no",
+        "manual_semantic_role": "RELATION_EVIDENCE",
+        "manual_signed_polarity_status": "SIGNED",
+        "forbidden_inference": "none recorded",
+        "does_not_measure": "none recorded",
+        "governed_row_payload_hash": "fb739d3097223a9be220366db849cd60c1615421c10100c0e426b05536adae26",
+        "p2_exact_identity_sha256": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd"
+      }
+    }
+  ],
+  "response_slots": [
+    {
+      "slot": {
+        "ordinal": 282,
+        "name": "happy"
+      },
+      "question_id": "FIXTURE:SRC22:happy",
+      "values": [
+        {
+          "raw_value": -100.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "INAPPLICABLE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:happy:topology",
+                "content_hash": "131d501d31ae220678d068b2fc4680f5b78b3353a17bfe0c6f38faad1d29be1d"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -99.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "MISSING",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:happy:topology",
+                "content_hash": "131d501d31ae220678d068b2fc4680f5b78b3353a17bfe0c6f38faad1d29be1d"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -98.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "DK",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:happy:topology",
+                "content_hash": "131d501d31ae220678d068b2fc4680f5b78b3353a17bfe0c6f38faad1d29be1d"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -97.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "NOT_ASKED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:happy:topology",
+                "content_hash": "131d501d31ae220678d068b2fc4680f5b78b3353a17bfe0c6f38faad1d29be1d"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -96.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SOURCE_SPECIFIC_SPECIAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:happy:topology",
+                "content_hash": "131d501d31ae220678d068b2fc4680f5b78b3353a17bfe0c6f38faad1d29be1d"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -95.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "INVALID_UNRESOLVED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:happy:topology",
+                "content_hash": "131d501d31ae220678d068b2fc4680f5b78b3353a17bfe0c6f38faad1d29be1d"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -94.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "INVALID_UNRESOLVED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:happy:topology",
+                "content_hash": "131d501d31ae220678d068b2fc4680f5b78b3353a17bfe0c6f38faad1d29be1d"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -90.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "REFUSAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:happy:topology",
+                "content_hash": "131d501d31ae220678d068b2fc4680f5b78b3353a17bfe0c6f38faad1d29be1d"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -80.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "NOT_ASKED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:happy:topology",
+                "content_hash": "131d501d31ae220678d068b2fc4680f5b78b3353a17bfe0c6f38faad1d29be1d"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -70.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "NOT_ASKED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:happy:topology",
+                "content_hash": "131d501d31ae220678d068b2fc4680f5b78b3353a17bfe0c6f38faad1d29be1d"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -60.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SOURCE_SPECIFIC_SPECIAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:happy:topology",
+                "content_hash": "131d501d31ae220678d068b2fc4680f5b78b3353a17bfe0c6f38faad1d29be1d"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -40.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SOURCE_SPECIFIC_SPECIAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:happy:topology",
+                "content_hash": "131d501d31ae220678d068b2fc4680f5b78b3353a17bfe0c6f38faad1d29be1d"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 1.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:happy:topology",
+                "content_hash": "131d501d31ae220678d068b2fc4680f5b78b3353a17bfe0c6f38faad1d29be1d"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 2.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:happy:topology",
+                "content_hash": "131d501d31ae220678d068b2fc4680f5b78b3353a17bfe0c6f38faad1d29be1d"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 3.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:happy:topology",
+                "content_hash": "131d501d31ae220678d068b2fc4680f5b78b3353a17bfe0c6f38faad1d29be1d"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": null,
+          "missing_state": "SYSTEM_MISSING",
+          "source_missing_declaration": null,
+          "response_state": "MISSING",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:happy:topology",
+                "content_hash": "131d501d31ae220678d068b2fc4680f5b78b3353a17bfe0c6f38faad1d29be1d"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        }
+      ]
+    },
+    {
+      "slot": {
+        "ordinal": 764,
+        "name": "satfin"
+      },
+      "question_id": "FIXTURE:SRC22:satfin",
+      "values": [
+        {
+          "raw_value": -100.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "INAPPLICABLE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:satfin:topology",
+                "content_hash": "63d39c17047c87fbdb48162ebd763fe9e1a325b9c314fe7fa91f1e44ae010dba"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -99.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "MISSING",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:satfin:topology",
+                "content_hash": "63d39c17047c87fbdb48162ebd763fe9e1a325b9c314fe7fa91f1e44ae010dba"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -98.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "DK",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:satfin:topology",
+                "content_hash": "63d39c17047c87fbdb48162ebd763fe9e1a325b9c314fe7fa91f1e44ae010dba"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -97.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "NOT_ASKED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:satfin:topology",
+                "content_hash": "63d39c17047c87fbdb48162ebd763fe9e1a325b9c314fe7fa91f1e44ae010dba"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -96.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SOURCE_SPECIFIC_SPECIAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:satfin:topology",
+                "content_hash": "63d39c17047c87fbdb48162ebd763fe9e1a325b9c314fe7fa91f1e44ae010dba"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -95.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "INVALID_UNRESOLVED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:satfin:topology",
+                "content_hash": "63d39c17047c87fbdb48162ebd763fe9e1a325b9c314fe7fa91f1e44ae010dba"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -94.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "INVALID_UNRESOLVED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:satfin:topology",
+                "content_hash": "63d39c17047c87fbdb48162ebd763fe9e1a325b9c314fe7fa91f1e44ae010dba"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -90.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "REFUSAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:satfin:topology",
+                "content_hash": "63d39c17047c87fbdb48162ebd763fe9e1a325b9c314fe7fa91f1e44ae010dba"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -80.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "NOT_ASKED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:satfin:topology",
+                "content_hash": "63d39c17047c87fbdb48162ebd763fe9e1a325b9c314fe7fa91f1e44ae010dba"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -70.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "NOT_ASKED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:satfin:topology",
+                "content_hash": "63d39c17047c87fbdb48162ebd763fe9e1a325b9c314fe7fa91f1e44ae010dba"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -60.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SOURCE_SPECIFIC_SPECIAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:satfin:topology",
+                "content_hash": "63d39c17047c87fbdb48162ebd763fe9e1a325b9c314fe7fa91f1e44ae010dba"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -40.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SOURCE_SPECIFIC_SPECIAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:satfin:topology",
+                "content_hash": "63d39c17047c87fbdb48162ebd763fe9e1a325b9c314fe7fa91f1e44ae010dba"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 1.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:satfin:topology",
+                "content_hash": "63d39c17047c87fbdb48162ebd763fe9e1a325b9c314fe7fa91f1e44ae010dba"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 2.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:satfin:topology",
+                "content_hash": "63d39c17047c87fbdb48162ebd763fe9e1a325b9c314fe7fa91f1e44ae010dba"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 3.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:satfin:topology",
+                "content_hash": "63d39c17047c87fbdb48162ebd763fe9e1a325b9c314fe7fa91f1e44ae010dba"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": null,
+          "missing_state": "SYSTEM_MISSING",
+          "source_missing_declaration": null,
+          "response_state": "MISSING",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:satfin:topology",
+                "content_hash": "63d39c17047c87fbdb48162ebd763fe9e1a325b9c314fe7fa91f1e44ae010dba"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "source_manual_topology": "scalar",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        }
+      ]
+    },
+    {
+      "slot": {
+        "ordinal": 5,
+        "name": "abdefect"
+      },
+      "question_id": "FIXTURE:SRC22:abdefect",
+      "values": [
+        {
+          "raw_value": -100.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "INAPPLICABLE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:abdefect:topology",
+                "content_hash": "5bea0f0bc836d1681c39a76e99db10ea22969d7ed9127bab3a5890d32b8b47b9"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST_SINGLE",
+                "source_manual_topology": "binary_contrast",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -99.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "MISSING",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:abdefect:topology",
+                "content_hash": "5bea0f0bc836d1681c39a76e99db10ea22969d7ed9127bab3a5890d32b8b47b9"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST_SINGLE",
+                "source_manual_topology": "binary_contrast",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -98.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "DK",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:abdefect:topology",
+                "content_hash": "5bea0f0bc836d1681c39a76e99db10ea22969d7ed9127bab3a5890d32b8b47b9"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST_SINGLE",
+                "source_manual_topology": "binary_contrast",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -97.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "NOT_ASKED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:abdefect:topology",
+                "content_hash": "5bea0f0bc836d1681c39a76e99db10ea22969d7ed9127bab3a5890d32b8b47b9"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST_SINGLE",
+                "source_manual_topology": "binary_contrast",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -96.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SOURCE_SPECIFIC_SPECIAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:abdefect:topology",
+                "content_hash": "5bea0f0bc836d1681c39a76e99db10ea22969d7ed9127bab3a5890d32b8b47b9"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST_SINGLE",
+                "source_manual_topology": "binary_contrast",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -95.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "INVALID_UNRESOLVED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:abdefect:topology",
+                "content_hash": "5bea0f0bc836d1681c39a76e99db10ea22969d7ed9127bab3a5890d32b8b47b9"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST_SINGLE",
+                "source_manual_topology": "binary_contrast",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -94.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "INVALID_UNRESOLVED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:abdefect:topology",
+                "content_hash": "5bea0f0bc836d1681c39a76e99db10ea22969d7ed9127bab3a5890d32b8b47b9"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST_SINGLE",
+                "source_manual_topology": "binary_contrast",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -90.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "REFUSAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:abdefect:topology",
+                "content_hash": "5bea0f0bc836d1681c39a76e99db10ea22969d7ed9127bab3a5890d32b8b47b9"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST_SINGLE",
+                "source_manual_topology": "binary_contrast",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -80.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "NOT_ASKED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:abdefect:topology",
+                "content_hash": "5bea0f0bc836d1681c39a76e99db10ea22969d7ed9127bab3a5890d32b8b47b9"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST_SINGLE",
+                "source_manual_topology": "binary_contrast",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -70.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "NOT_ASKED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:abdefect:topology",
+                "content_hash": "5bea0f0bc836d1681c39a76e99db10ea22969d7ed9127bab3a5890d32b8b47b9"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST_SINGLE",
+                "source_manual_topology": "binary_contrast",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -60.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SOURCE_SPECIFIC_SPECIAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:abdefect:topology",
+                "content_hash": "5bea0f0bc836d1681c39a76e99db10ea22969d7ed9127bab3a5890d32b8b47b9"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST_SINGLE",
+                "source_manual_topology": "binary_contrast",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -40.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SOURCE_SPECIFIC_SPECIAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:abdefect:topology",
+                "content_hash": "5bea0f0bc836d1681c39a76e99db10ea22969d7ed9127bab3a5890d32b8b47b9"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST_SINGLE",
+                "source_manual_topology": "binary_contrast",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 1.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:abdefect:topology",
+                "content_hash": "5bea0f0bc836d1681c39a76e99db10ea22969d7ed9127bab3a5890d32b8b47b9"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST_SINGLE",
+                "source_manual_topology": "binary_contrast",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 2.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:abdefect:topology",
+                "content_hash": "5bea0f0bc836d1681c39a76e99db10ea22969d7ed9127bab3a5890d32b8b47b9"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST_SINGLE",
+                "source_manual_topology": "binary_contrast",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": null,
+          "missing_state": "SYSTEM_MISSING",
+          "source_missing_declaration": null,
+          "response_state": "MISSING",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:fixture:SRC22:abdefect:topology",
+                "content_hash": "5bea0f0bc836d1681c39a76e99db10ea22969d7ed9127bab3a5890d32b8b47b9"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST_SINGLE",
+                "source_manual_topology": "binary_contrast",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        }
+      ]
+    }
+  ],
+  "coordinate_slots": [
+    {
+      "slot": {
+        "ordinal": 2,
+        "name": "year"
+      },
+      "native_coordinate_ref": {
+        "kind": "COORDINATE_NATIVE",
+        "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:coordinate:year",
+        "content_hash": "ae22940880376c438d3abc0632902f02ebf1dc3dad0196a7109b09318cd4c2e1"
+      },
+      "unit_taxonomy_ref": {
+        "kind": "UNIT_TAXONOMY",
+        "object_id": "urn:rawlsing:r157:unit:source_native_survey_year",
+        "content_hash": "65fc99a44eb469bc2fb239ee470711c117b258dd8338a6e012506aca7a8f3f95"
+      },
+      "effective_time": "R157_NONRESPONDENT_FIXTURE",
+      "source_semantic_authority_ref": {
+        "authority_id": "R157-SRC22-FIXTURE-COORDINATE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "e4a9436fc153a393e67017f352d699867ef818a93cbadd0ad58d0697b1ead295"
+      },
+      "canonical_coordinate_ref": null,
+      "normalization_ref": null,
+      "values": [],
+      "copy_observed_raw": true
+    },
+    {
+      "slot": {
+        "ordinal": 671,
+        "name": "region"
+      },
+      "native_coordinate_ref": {
+        "kind": "COORDINATE_NATIVE",
+        "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:coordinate:region",
+        "content_hash": "a0b30d21927055ac85aa0fa3b0bfef881833636a75b8173da630f55dddef6c15"
+      },
+      "unit_taxonomy_ref": {
+        "kind": "UNIT_TAXONOMY",
+        "object_id": "urn:rawlsing:r157:unit:source_native_region_code",
+        "content_hash": "4aff620620aaadbeb9eca9b139272bbc813b3494e42a1cc10a947fa87f59d111"
+      },
+      "effective_time": "R157_NONRESPONDENT_FIXTURE",
+      "source_semantic_authority_ref": {
+        "authority_id": "R157-SRC22-FIXTURE-COORDINATE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "e4a9436fc153a393e67017f352d699867ef818a93cbadd0ad58d0697b1ead295"
+      },
+      "canonical_coordinate_ref": null,
+      "normalization_ref": null,
+      "values": [],
+      "copy_observed_raw": true
+    }
+  ],
+  "weight_slots": [
+    {
+      "slot": {
+        "ordinal": 1007,
+        "name": "wtssall"
+      },
+      "weight_basis_id": "GSS_WTSSALL_SOURCE_NATIVE_WEIGHT_VARIABLE",
+      "weight_source_ref": {
+        "kind": "WEIGHT_SOURCE",
+        "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:weight:wtssall",
+        "content_hash": "357b0a2b7bf4e87a516c5d769e0d4f567256f18de4cb65ebb62594f51e87fab4"
+      },
+      "design_authority_ref": {
+        "authority_id": "R157-SRC22-FIXTURE-WEIGHT-DESIGN",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "8d2ab614bb500052a01707f9b8fc42d15ec2fffc8f47d8edb3b7d3eebf3ce4f0"
+      },
+      "estimand_authority_ref": {
+        "authority_id": "R157-SRC22-FIXTURE-WEIGHT-ESTIMAND",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "659aa4097b59730ae7e8f669fac705e334c1fad7db5455ebca1ab1693f319cc8"
+      },
+      "effective_scope_ref": {
+        "kind": "WEIGHT_EFFECTIVE_SCOPE",
+        "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:unweighted-validation-scope",
+        "content_hash": "92795a1bc1dd131701840f75209ec15d2f459796dcf8624a531b3dafafaf9913"
+      },
+      "normalization_ref": null,
+      "values": [
+        {
+          "raw_value": 0.75,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "exact_value": "0.75",
+          "state": "WEIGHT_BASIS_UNRESOLVED"
+        },
+        {
+          "raw_value": 0.5,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "exact_value": "0.5",
+          "state": "WEIGHT_BASIS_UNRESOLVED"
+        },
+        {
+          "raw_value": 2.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "exact_value": "2",
+          "state": "WEIGHT_BASIS_UNRESOLVED"
+        },
+        {
+          "raw_value": 1.25,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "exact_value": "1.25",
+          "state": "WEIGHT_BASIS_UNRESOLVED"
+        },
+        {
+          "raw_value": 1.5,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "exact_value": "1.5",
+          "state": "WEIGHT_BASIS_UNRESOLVED"
+        },
+        {
+          "raw_value": null,
+          "missing_state": "SYSTEM_MISSING",
+          "source_missing_declaration": null,
+          "exact_value": null,
+          "state": "WEIGHT_MISSING"
+        }
+      ],
+      "copy_observed_numeric": false,
+      "extra_authority_refs": []
+    }
+  ],
+  "routing": [
+    {
+      "question_id": "FIXTURE:SRC22:happy",
+      "row_selector": "ALL",
+      "typed_state": "ELIGIBLE_APPLICABLE",
+      "risk_set_ref": {
+        "kind": "RISK_SET",
+        "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:happy:risk-set",
+        "content_hash": "ab8dc47a253fd3bb7152530e147cc3bc277a74ae290e1e9ecfadd7e5b0086767"
+      },
+      "routing_rule_ref": {
+        "kind": "ROUTING_RULE",
+        "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:happy:routing-rule",
+        "content_hash": "ab8dc47a253fd3bb7152530e147cc3bc277a74ae290e1e9ecfadd7e5b0086767"
+      },
+      "member_set_replay_ref": {
+        "kind": "MEMBER_SET_REPLAY",
+        "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:happy:member-set",
+        "content_hash": "ab8dc47a253fd3bb7152530e147cc3bc277a74ae290e1e9ecfadd7e5b0086767"
+      },
+      "authority_ref": {
+        "authority_id": "R157-SRC22-FIXTURE-ROUTING",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "cda290df0cdfc7b46aa022ffb46bf48c1bcc1904703f023c4d55578c9306ace3"
+      },
+      "parent_predicate_refs": [],
+      "dependency_refs": []
+    },
+    {
+      "question_id": "FIXTURE:SRC22:satfin",
+      "row_selector": "ALL",
+      "typed_state": "ELIGIBLE_APPLICABLE",
+      "risk_set_ref": {
+        "kind": "RISK_SET",
+        "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:satfin:risk-set",
+        "content_hash": "6ae3b00ca0d102e273b28f1bbe17f4838a1b42fe57596ac02f1815f4d5943d1a"
+      },
+      "routing_rule_ref": {
+        "kind": "ROUTING_RULE",
+        "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:satfin:routing-rule",
+        "content_hash": "6ae3b00ca0d102e273b28f1bbe17f4838a1b42fe57596ac02f1815f4d5943d1a"
+      },
+      "member_set_replay_ref": {
+        "kind": "MEMBER_SET_REPLAY",
+        "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:satfin:member-set",
+        "content_hash": "6ae3b00ca0d102e273b28f1bbe17f4838a1b42fe57596ac02f1815f4d5943d1a"
+      },
+      "authority_ref": {
+        "authority_id": "R157-SRC22-FIXTURE-ROUTING",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "cda290df0cdfc7b46aa022ffb46bf48c1bcc1904703f023c4d55578c9306ace3"
+      },
+      "parent_predicate_refs": [],
+      "dependency_refs": []
+    },
+    {
+      "question_id": "FIXTURE:SRC22:abdefect",
+      "row_selector": "ALL",
+      "typed_state": "ELIGIBLE_APPLICABLE",
+      "risk_set_ref": {
+        "kind": "RISK_SET",
+        "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:abdefect:risk-set",
+        "content_hash": "ae04197bf59b362498b925bff6dd8e82e1f70034ccdd3ec735d560e16ecb4b27"
+      },
+      "routing_rule_ref": {
+        "kind": "ROUTING_RULE",
+        "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:abdefect:routing-rule",
+        "content_hash": "ae04197bf59b362498b925bff6dd8e82e1f70034ccdd3ec735d560e16ecb4b27"
+      },
+      "member_set_replay_ref": {
+        "kind": "MEMBER_SET_REPLAY",
+        "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC22-NONRESPONDENT-SCALAR:abdefect:member-set",
+        "content_hash": "ae04197bf59b362498b925bff6dd8e82e1f70034ccdd3ec735d560e16ecb4b27"
+      },
+      "authority_ref": {
+        "authority_id": "R157-SRC22-FIXTURE-ROUTING",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "cda290df0cdfc7b46aa022ffb46bf48c1bcc1904703f023c4d55578c9306ace3"
+      },
+      "parent_predicate_refs": [],
+      "dependency_refs": []
+    }
+  ],
+  "source_relations": {
+    "typed_absence_state": "DISTINCT_BY_DEFAULT"
+  },
+  "replay": {
+    "predicate": {
+      "typed_absence_state": "NOT_APPLICABLE",
+      "detail": null
+    },
+    "comparator": {
+      "typed_absence_state": "DEFERRED",
+      "detail": null
+    },
+    "discovery": {
+      "typed_absence_state": "DEFERRED",
+      "detail": null
+    },
+    "structural": {
+      "typed_absence_state": "NOT_APPLICABLE",
+      "detail": null
+    }
+  },
+  "supported_scope": {
+    "scope_id": "SRC22-GSS-NONRESPONDENT-FIXTURE-VALIDATION",
+    "purpose": "NONRESPONDENT_FIXTURE_VALIDATION",
+    "declared_supported": true,
+    "supported_question_ids": [
+      "FIXTURE:SRC22:happy",
+      "FIXTURE:SRC22:satfin",
+      "FIXTURE:SRC22:abdefect"
+    ],
+    "native_validation_expectation": "POSITIVE_RELEASE",
+    "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
+    "supported_unit_slice": "NONRESPONDENT_FIXTURE_ROWS",
+    "supported_form_slice": "SCALAR_SINGLE_OBSERVATION_FIXTURE_ONLY",
+    "notes": [
+      "Fixture authority is explicitly nonrespondent and does not establish original-source authority.",
+      "The fixture exercises source-specific scalar response/missing rules, two raw coordinates and an unresolved-basis weight section.",
+      "Original GSS respondent execution is NOT performed or claimed."
+    ]
+  },
+  "coverage": {
+    "physical_slots_total": 1018,
+    "items_total": 1018,
+    "physical_slots_included": [
+      2,
+      3,
+      5,
+      282,
+      671,
+      764,
+      1007
+    ],
+    "items_included": [
+      "question_impl.phase0.46ac29388f2729e39e26",
+      "question_impl.phase0.1f4681e08796e31d8a0b",
+      "question_impl.phase0.5bbf9f25f27cf385fade"
+    ],
+    "partial_scope_reason": "Nonrespondent fixture exercises only the declared source-local scalar rule slice."
+  },
+  "residuals": [
+    {
+      "residual_id": "SRC22-FIXTURE-IDENTITY",
+      "scope": "SRC22/fixture",
+      "field": "binding.identity_class",
+      "status": "FIXTURE_ONLY",
+      "reason": "Fixture bytes, universe, authority and row identities are distinct from the original source and are not promoted.",
+      "dependent_operation": "original-source use",
+      "unaffected_scope": "actual factory and native C11 validation",
+      "owner": "R157 GSS lane author",
+      "next_step": "Consume the original config only with permitted original bytes and decode-produced row witnesses."
+    },
+    {
+      "residual_id": "SRC22-FIXTURE-WEIGHT",
+      "scope": "SRC22/weight_slots",
+      "field": "weight_slots[].weight_basis_id",
+      "status": "WEIGHT_BASIS_UNRESOLVED",
+      "reason": "Fixture exercises exact numeric weight cells, but no weighted design/estimand claim is made.",
+      "dependent_operation": "weighted inference",
+      "unaffected_scope": "nonrespondent scalar/coordinate native validation",
+      "owner": "R157 GSS lane author",
+      "next_step": "Establish design/estimand/normalization authority before any weighted scope."
+    }
+  ],
+  "evidence": {
+    "source_roster_path": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+    "item_index_path": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+    "evidence_manifest_path": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json",
+    "pinned_inputs": [
+      {
+        "kind": "R157_PLAN_SEAL",
+        "commit": "4c0c619eac747afee1d8e65e1418bf2d472da4c3"
+      },
+      {
+        "kind": "R157_P0_CORRECTED_INTERFACE",
+        "commit": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710"
+      },
+      {
+        "kind": "R157_P3_TERMINAL_RUNTIME",
+        "commit": "519355ec2215409b40d566ef13c3b21f611e0726"
+      },
+      {
+        "kind": "R154_METADATA_SNAPSHOT",
+        "commit": "a02adc896264e1b46afd143cba9426182ec14802",
+        "path": "WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/store/r154_all35.sqlite",
+        "sha256": "7d6421e6e50f7d249cf09e7ecf964757d6afa4a7926d7a31eb1aad3407a12a16"
+      },
+      {
+        "kind": "H48_ITEM_INDEX",
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz",
+        "sha256": "35818e2cdd2b7e16e60788bef094eb117ef78fc63df3dc068ecb8b8948f728f5"
+      },
+      {
+        "kind": "P2_PHASE0",
+        "sha256": "d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6"
+      },
+      {
+        "kind": "FULL_RELATION_AUTHORITY",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13"
+      },
+      {
+        "kind": "PORTABLE_EVIDENCE_MANIFEST",
+        "path": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json",
+        "sha256": "ef04e215b6d669123f355082bd15e0f4a3b38ed045a0e3e38cc2b5432727911a"
+      },
+      {
+        "kind": "PORTABLE_ITEM_EVIDENCE",
+        "path": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+        "sha256": "0093130efd3ddbeaf01616047864469b5910f7f936af1bc8bbf817bc1aa759d8"
+      },
+      {
+        "kind": "PORTABLE_PHYSICAL_SLOTS",
+        "path": "rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz",
+        "sha256": "d6d67ec3472edbf86273a00812033a0d153d67baa807f7eab57234fa22d74031"
+      },
+      {
+        "kind": "PORTABLE_CODEBOOK_ROWS",
+        "path": "rawlsing_next/source_configuration/evidence/CODEBOOK_ROWS.jsonl.gz",
+        "sha256": "1e4830d2ca5c6a38e45929865bdaa3a61ca1b7c8526f58e30c43754a27823ea6"
+      }
+    ],
+    "field_evidence": [
+      {
+        "field": "identity.*",
+        "refs": [
+          {
+            "kind": "R154_PHYSICAL_METADATA",
+            "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC22_PHYSICAL_METADATA.json",
+            "content_hash": "2ff42bbb31ee5e6ff62165bb384783d9f6950e87c9ec2280c510cc00f27342a8"
+          }
+        ]
+      },
+      {
+        "field": "physical_slots[*]",
+        "refs": [
+          {
+            "kind": "R154_PHYSICAL_METADATA",
+            "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC22_PHYSICAL_METADATA.json",
+            "content_hash": "2ff42bbb31ee5e6ff62165bb384783d9f6950e87c9ec2280c510cc00f27342a8"
+          }
+        ]
+      },
+      {
+        "field": "items[*]",
+        "refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.46ac29388f2729e39e26",
+            "content_hash": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.46ac29388f2729e39e26",
+            "content_hash": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS_2016_happy",
+            "content_hash": "ee12a34c62fcae62edfd5a6892b9e500b36e65e950a0e23d2e496aef010ef12e"
+          },
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.1f4681e08796e31d8a0b",
+            "content_hash": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.1f4681e08796e31d8a0b",
+            "content_hash": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS:2016:satfin",
+            "content_hash": "e747ebbe54ef723e9d75e4ac0e5d279def0207ac140dd6ccdf317b6aff44048c"
+          },
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.5bbf9f25f27cf385fade",
+            "content_hash": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.5bbf9f25f27cf385fade",
+            "content_hash": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS:2016:abdefect",
+            "content_hash": "fb739d3097223a9be220366db849cd60c1615421c10100c0e426b05536adae26"
+          }
+        ]
+      },
+      {
+        "field": "questions[].item_evidence",
+        "refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.46ac29388f2729e39e26",
+            "content_hash": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.46ac29388f2729e39e26",
+            "content_hash": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS_2016_happy",
+            "content_hash": "ee12a34c62fcae62edfd5a6892b9e500b36e65e950a0e23d2e496aef010ef12e"
+          },
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.1f4681e08796e31d8a0b",
+            "content_hash": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.1f4681e08796e31d8a0b",
+            "content_hash": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS:2016:satfin",
+            "content_hash": "e747ebbe54ef723e9d75e4ac0e5d279def0207ac140dd6ccdf317b6aff44048c"
+          },
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.5bbf9f25f27cf385fade",
+            "content_hash": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.5bbf9f25f27cf385fade",
+            "content_hash": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS:2016:abdefect",
+            "content_hash": "fb739d3097223a9be220366db849cd60c1615421c10100c0e426b05536adae26"
+          }
+        ]
+      },
+      {
+        "field": "response_slots[]",
+        "refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.46ac29388f2729e39e26",
+            "content_hash": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.46ac29388f2729e39e26",
+            "content_hash": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS_2016_happy",
+            "content_hash": "ee12a34c62fcae62edfd5a6892b9e500b36e65e950a0e23d2e496aef010ef12e"
+          },
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.1f4681e08796e31d8a0b",
+            "content_hash": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.1f4681e08796e31d8a0b",
+            "content_hash": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS:2016:satfin",
+            "content_hash": "e747ebbe54ef723e9d75e4ac0e5d279def0207ac140dd6ccdf317b6aff44048c"
+          },
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.5bbf9f25f27cf385fade",
+            "content_hash": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.5bbf9f25f27cf385fade",
+            "content_hash": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS:2016:abdefect",
+            "content_hash": "fb739d3097223a9be220366db849cd60c1615421c10100c0e426b05536adae26"
+          }
+        ]
+      },
+      {
+        "field": "coordinate_slots[]",
+        "refs": [
+          {
+            "kind": "R154_PHYSICAL_METADATA",
+            "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC22_PHYSICAL_METADATA.json",
+            "content_hash": "2ff42bbb31ee5e6ff62165bb384783d9f6950e87c9ec2280c510cc00f27342a8"
+          }
+        ]
+      },
+      {
+        "field": "routing[].typed_state",
+        "refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.46ac29388f2729e39e26",
+            "content_hash": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.46ac29388f2729e39e26",
+            "content_hash": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS_2016_happy",
+            "content_hash": "ee12a34c62fcae62edfd5a6892b9e500b36e65e950a0e23d2e496aef010ef12e"
+          },
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.1f4681e08796e31d8a0b",
+            "content_hash": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.1f4681e08796e31d8a0b",
+            "content_hash": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS:2016:satfin",
+            "content_hash": "e747ebbe54ef723e9d75e4ac0e5d279def0207ac140dd6ccdf317b6aff44048c"
+          },
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.5bbf9f25f27cf385fade",
+            "content_hash": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.5bbf9f25f27cf385fade",
+            "content_hash": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS:2016:abdefect",
+            "content_hash": "fb739d3097223a9be220366db849cd60c1615421c10100c0e426b05536adae26"
+          }
+        ]
+      },
+      {
+        "field": "authority.snapshots",
+        "refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.46ac29388f2729e39e26",
+            "content_hash": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.46ac29388f2729e39e26",
+            "content_hash": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS_2016_happy",
+            "content_hash": "ee12a34c62fcae62edfd5a6892b9e500b36e65e950a0e23d2e496aef010ef12e"
+          },
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.1f4681e08796e31d8a0b",
+            "content_hash": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.1f4681e08796e31d8a0b",
+            "content_hash": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS:2016:satfin",
+            "content_hash": "e747ebbe54ef723e9d75e4ac0e5d279def0207ac140dd6ccdf317b6aff44048c"
+          },
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.5bbf9f25f27cf385fade",
+            "content_hash": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.5bbf9f25f27cf385fade",
+            "content_hash": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS:2016:abdefect",
+            "content_hash": "fb739d3097223a9be220366db849cd60c1615421c10100c0e426b05536adae26"
+          }
+        ]
+      },
+      {
+        "field": "supported_scope",
+        "refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.46ac29388f2729e39e26",
+            "content_hash": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.46ac29388f2729e39e26",
+            "content_hash": "46ac29388f2729e39e2644738536e602f6578cee84fd7651c08aae30e0e6738d"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS_2016_happy",
+            "content_hash": "ee12a34c62fcae62edfd5a6892b9e500b36e65e950a0e23d2e496aef010ef12e"
+          },
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.1f4681e08796e31d8a0b",
+            "content_hash": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.1f4681e08796e31d8a0b",
+            "content_hash": "1f4681e08796e31d8a0be3e2b2258a2c60e3f37d26f4b3634b81760c3ebd4024"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS:2016:satfin",
+            "content_hash": "e747ebbe54ef723e9d75e4ac0e5d279def0207ac140dd6ccdf317b6aff44048c"
+          },
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.5bbf9f25f27cf385fade",
+            "content_hash": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.5bbf9f25f27cf385fade",
+            "content_hash": "5bbf9f25f27cf385fade4cc3302ee940c122b3d813c0340523a9df6502d42cdd"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:GSS:2016:abdefect",
+            "content_hash": "fb739d3097223a9be220366db849cd60c1615421c10100c0e426b05536adae26"
+          }
+        ]
+      }
+    ],
+    "limits": [
+      "Fixture identity and fixture authority are separate from original-source identity.",
+      "No original respondent row or original source byte is read.",
+      "A native fixture release is not an original-source empirical workload."
+    ]
+  },
+  "runtime": {
+    "projection_builder": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "release_builder": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+    "repository_builder": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config",
+    "native_owner": "rawlsing_next.pre553_source_backed_c11_facade.GovernedC11Projection",
+    "native_validator_stream": "rawlsing_next.pre553_source_backed_c11_facade.build_validated_source_backed_c11_release_from_stream",
+    "native_validator_incidence": "rawlsing_next.pre553_source_backed_c11_facade.build_validated_source_backed_c11_release",
+    "source_read_owner": "rawlsing_next.pre553_source_read_admission.decode_with_source_read_permission",
+    "transport": [
+      "ExactPhysicalCellStream",
+      "PhysicalSourceIncidence"
+    ],
+    "reader_encoding_transport": "FIXTURE_ONLY_NO_ORIGINAL_READER"
+  },
+  "notes": [
+    "This is a clearly nonrespondent fixture config, not the original source config.",
+    "Weight facts are emitted with unresolved basis, not as an authorized weighted estimand."
+  ]
+}

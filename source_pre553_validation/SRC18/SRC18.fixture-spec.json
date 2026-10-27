@@ -1,0 +1,85 @@
+{
+  "schema": "PYAT_R157_GSS_FIXTURE_SPEC@1.0.0",
+  "source_id": "SRC18",
+  "fixture_id": "R157-GSS-SRC18-NONRESPONDENT-SCALAR",
+  "fixture_path": "source_pre553_validation/SRC18/SRC18.fixture.json",
+  "fixture_file_sha256": "1f45c94f177f2ae134107326822f57b4ded1682362d76e2f4fb8fb5fa3aa123e",
+  "fixture_source_sha256": "cfd43a129765ce9033807630240377bb36bc83b25062499a1c5da49dbb94786b",
+  "fixture_config_path": "source_pre553_validation/SRC18/SRC18.fixture.config.json",
+  "fixture_config_canonical_sha256": "a190167c7136465b3f9345547519069c1c28d3997793b25458584ce5ce89395f",
+  "fixture_config_file_sha256": "a7f8fb86af2d413620a8fa28466161c7027dced4f26eeb28c2c45d8f8094b7dc",
+  "original_source_id": "SRC18",
+  "original_source_sha256": "1da2df0c0e0692817081a46856deeaa6c78891101e53cf0139a971de16f7ac18",
+  "identity_class": "NONRESPONDENT_FIXTURE",
+  "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
+  "row_count": 6,
+  "expected_results": {
+    "fixture_only": true,
+    "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
+    "response_event_count": 18,
+    "coordinate_fact_count": 12,
+    "routing_fact_count": 18,
+    "weight_fact_count": 6,
+    "response_state_counts": {
+      "DK": 1,
+      "INAPPLICABLE": 1,
+      "INVALID_UNRESOLVED": 1,
+      "MISSING": 2,
+      "NOT_ASKED": 1,
+      "REFUSAL": 1,
+      "SOURCE_SPECIFIC_SPECIAL": 2,
+      "SUBSTANTIVE_RESPONSE": 9
+    },
+    "response_state_counts_by_question": {
+      "FIXTURE:SRC18:happy": {
+        "DK": 1,
+        "MISSING": 2,
+        "SUBSTANTIVE_RESPONSE": 3
+      },
+      "FIXTURE:SRC18:satfin": {
+        "INVALID_UNRESOLVED": 1,
+        "NOT_ASKED": 1,
+        "REFUSAL": 1,
+        "SUBSTANTIVE_RESPONSE": 3
+      },
+      "FIXTURE:SRC18:abdefect": {
+        "INAPPLICABLE": 1,
+        "SOURCE_SPECIFIC_SPECIAL": 2,
+        "SUBSTANTIVE_RESPONSE": 3
+      }
+    },
+    "coordinate_state_counts": {
+      "OBSERVED_COORDINATE": 12
+    },
+    "weight_state_counts": {
+      "WEIGHT_BASIS_UNRESOLVED": 5,
+      "WEIGHT_MISSING": 1
+    },
+    "canonical_values": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "source_relation_section": "DISTINCT_BY_DEFAULT"
+  },
+  "oracle_basis": "Expected counts/states are derived from the declared fixture cells and the serialized source response rules before the native call.",
+  "limits": [
+    "Synthetic nonrespondent fixture cells; no original respondent is represented.",
+    "Fixture authority and fixture SHA are not original-source meaning."
+  ]
+}

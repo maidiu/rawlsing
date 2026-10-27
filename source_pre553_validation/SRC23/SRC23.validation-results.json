@@ -1,0 +1,346 @@
+{
+  "schema": "PYAT_R157_GSS_SOURCE_VALIDATION_RESULTS@1.0.0",
+  "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+  "p0_correction_consumed": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
+  "p3_terminal_runtime_consumed": "519355ec2215409b40d566ef13c3b21f611e0726",
+  "source_id": "SRC23",
+  "source_format": "SAV",
+  "wave": "2024",
+  "commands": [
+    "PYTHONPATH=. python3 source_pre553_validation/SRC16/build_gss_lane.py --all",
+    "PYTHONPATH=. python3 -m pytest source_pre553_validation/SRC16/test_gss_lane.py -q -o addopts=''"
+  ],
+  "config_validation": {
+    "validator": "rawlsing_next.source_configuration.schema.validate_source_config",
+    "original_path": "rawlsing_next/source_configuration/data/SRC23/SRC23.source.config.json",
+    "original_config_canonical_sha256": "618f1bfb28687c067a9ebf7c0a681e8c9b9ec148f9edec042586eb00f0929e97",
+    "original_config_file_sha256": "867a4147a13eb81f16d504bc0f3478358181cf6a2871f05ef7e10f21358403c1",
+    "fixture_path": "source_pre553_validation/SRC23/SRC23.fixture.config.json",
+    "fixture_config_canonical_sha256": "7d7e82cd99a90703303d66747c6c975759302dce122d1dd995eea21941788220",
+    "fixture_config_file_sha256": "034a6f8febde46a94633d33282fe4bcbe001efa6d8d0417e3f45eb2e904488f7",
+    "passed": true
+  },
+  "coverage": {
+    "physical_slots_total": 980,
+    "original_items_total": 980,
+    "physical_slots_serialized": 980,
+    "items_serialized": 980,
+    "physical_slots_included": 7,
+    "items_included": 3,
+    "physical_slots_excluded": 973,
+    "items_excluded": 977,
+    "no_drop": true,
+    "supported_question_ids": [
+      "GSS:2024:happy",
+      "GSS:2024:satfin",
+      "GSS:2024:abdefect"
+    ]
+  },
+  "native_validation": {
+    "projection": {
+      "type": "GovernedC11Projection",
+      "projection_identity_ref": {
+        "kind": "C11_SEMANTIC_PROJECTION",
+        "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC23-NONRESPONDENT-SCALAR:projection",
+        "content_hash": "2b935893d41f02155089d3ab1e1fc15a84e59d47622e2cae32003aa10517601e"
+      },
+      "expected_source_sha256": "9223fa0899299b70a78764be08719a34dcc1f92219eeb8b347b2733d13056d59",
+      "respondents": 6,
+      "questions": 3,
+      "response_slots": 3,
+      "coordinate_slots": 2,
+      "weight_slots": 1,
+      "routing_facts": 18,
+      "authority_snapshots": 7
+    },
+    "release": {
+      "type": "C11LogicalRelease",
+      "release_id": "R157_GSS_FIXTURE_RELEASE/SRC23",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC23",
+        "content_hash": "e691393602c1cababebf08bdcd1cf80356a05d2107077dcd1e82ca3673f95558"
+      },
+      "semantic_release_hash": "e691393602c1cababebf08bdcd1cf80356a05d2107077dcd1e82ca3673f95558",
+      "source_artifact_ref": {
+        "kind": "SOURCE_ARTIFACT",
+        "object_id": "R157_FIXTURE:R157-GSS-SRC23-NONRESPONDENT-SCALAR",
+        "content_hash": "9223fa0899299b70a78764be08719a34dcc1f92219eeb8b347b2733d13056d59"
+      },
+      "m01_m18_coverage": {
+        "M01": [
+          "EmpiricalUniverse"
+        ],
+        "M02": [
+          "RespondentIdentity"
+        ],
+        "M03": [
+          "QuestionVariableBinding"
+        ],
+        "M04": [
+          "RespondentEvent"
+        ],
+        "M05": [
+          "QuestionVariableBinding",
+          "RespondentEvent"
+        ],
+        "M06": [
+          "RespondentEvent.typed_state"
+        ],
+        "M07": [
+          "RoutingEligibilityFact"
+        ],
+        "M08": [
+          "EmpiricalCoordinateFact"
+        ],
+        "M09": [
+          "WeightMeasureFact|TypedAbsence"
+        ],
+        "M10": [
+          "AuthoritySnapshot"
+        ],
+        "M11": [
+          "SourceUniverseRelation|DISTINCT_BY_DEFAULT"
+        ],
+        "M12": [
+          "RoutingEligibilityFact",
+          "EmpiricalPredicateReplayBinding|TypedAbsence"
+        ],
+        "M13": [
+          "ComparatorReplayBinding|DEFERRED"
+        ],
+        "M14": [
+          "DiscoveryBranchReplayBinding|DEFERRED"
+        ],
+        "M15": [
+          "StructuralAdmissionReplayBinding|NOT_APPLICABLE"
+        ],
+        "M16": [
+          "ReplayManifest"
+        ],
+        "M17": [
+          "AuthoritySnapshot",
+          "ReplayManifest"
+        ],
+        "M18": [
+          "ReplayManifest"
+        ]
+      },
+      "universes": 1,
+      "respondent_events": 18,
+      "coordinate_facts": 12,
+      "weight_facts": 6,
+      "authority_snapshots": 7
+    },
+    "actual": {
+      "response_state_counts": {
+        "DK": 1,
+        "INAPPLICABLE": 1,
+        "INVALID_UNRESOLVED": 1,
+        "MISSING": 2,
+        "NOT_ASKED": 1,
+        "REFUSAL": 1,
+        "SOURCE_SPECIFIC_SPECIAL": 2,
+        "SUBSTANTIVE_RESPONSE": 9
+      },
+      "response_state_counts_by_question": {
+        "FIXTURE:SRC23:abdefect": {
+          "INAPPLICABLE": 1,
+          "SOURCE_SPECIFIC_SPECIAL": 2,
+          "SUBSTANTIVE_RESPONSE": 3
+        },
+        "FIXTURE:SRC23:happy": {
+          "DK": 1,
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 3
+        },
+        "FIXTURE:SRC23:satfin": {
+          "INVALID_UNRESOLVED": 1,
+          "NOT_ASKED": 1,
+          "REFUSAL": 1,
+          "SUBSTANTIVE_RESPONSE": 3
+        }
+      },
+      "coordinate_state_counts": {
+        "OBSERVED_COORDINATE": 12
+      },
+      "weight_state_counts": {
+        "WEIGHT_BASIS_UNRESOLVED": 5,
+        "WEIGHT_MISSING": 1
+      },
+      "canonical_response_values_all_null": true
+    },
+    "expected_match": true,
+    "p3_row_native_keys": {
+      "configured_slot": {
+        "ordinal": 3,
+        "name": "id"
+      },
+      "witness_count": 6,
+      "kinds": [
+        "ExactRef"
+      ],
+      "fixture_bound_object_prefix": "urn:rawlsing:r157:r157_nonrespondent_fixture_key",
+      "all_witnesses_fixture_bound": true
+    },
+    "p3_reader_transport": {
+      "reader_configuration": {
+        "source_sha256": "27166a481ba6e240aca68293464a2b1fd9a9171a3ddba89a038038a32b8d1eef",
+        "configuration_ref": {
+          "kind": "READER_CONFIGURATION",
+          "object_id": "urn:rawlsing:r157:reader:SRC23:default_sav",
+          "content_hash": "a897b34b70f32a6036d7927531fed35c9d62cbec9348e2f4d311198d611198b2"
+        },
+        "encoding": null,
+        "authority_status": null
+      },
+      "source_read_request": {
+        "source_id": "SRC23",
+        "source_sha256": "27166a481ba6e240aca68293464a2b1fd9a9171a3ddba89a038038a32b8d1eef",
+        "source_format": "SAV",
+        "custody_locator_binding": "SRC23_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING",
+        "host": "R157_PREPARATION_HOST",
+        "purpose": "SOURCE_CONFIGURATION_PREPARATION",
+        "consumer_use": "R157_GSS_LANE_CONFIGURATION",
+        "semantic_use_scope": [
+          "coordinate_configuration",
+          "response_rule_configuration"
+        ]
+      },
+      "source_bytes_read": false,
+      "permission_decision": "NOT_REQUESTED_OR_EVALUATED_IN_PREPARATION"
+    },
+    "repository": {
+      "release_refs": [
+        {
+          "kind": "C11LogicalRelease",
+          "object_id": "R157_GSS_FIXTURE_RELEASE/SRC23",
+          "content_hash": "e691393602c1cababebf08bdcd1cf80356a05d2107077dcd1e82ca3673f95558"
+        }
+      ],
+      "release_ref_matches_stream": true
+    },
+    "refusals": {
+      "original_without_row_keys": {
+        "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection(original_config)",
+        "outcome": "REFUSED",
+        "exception_type": "SourceConfigurationBindingError",
+        "message": "configured source_native_key_slot requires row_native_keys after a permitted decode"
+      },
+      "original_with_fixture_stream": {
+        "call": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config(original_config, stream=fixture_stream)",
+        "outcome": "REFUSED",
+        "exception_type": "SourceConfigurationBindingError",
+        "message": "active source SHA differs from the frozen config binding"
+      },
+      "fixture_wrong_source_sha": {
+        "call": "build_validated_c11_release_from_config(fixture_config, stream=wrong_sha_stream)",
+        "outcome": "REFUSED",
+        "exception_type": "SourceConfigurationBindingError",
+        "message": "active source SHA differs from the frozen config binding"
+      },
+      "fixture_wrong_row_count": {
+        "call": "build_validated_c11_release_from_config(fixture_config, stream=wrong_row_count_stream)",
+        "outcome": "REFUSED",
+        "exception_type": "SourceConfigurationFactoryError",
+        "message": "configured key slot did not yield exactly one witness per active row"
+      }
+    }
+  },
+  "identity_separation": {
+    "original_source_sha256": "27166a481ba6e240aca68293464a2b1fd9a9171a3ddba89a038038a32b8d1eef",
+    "fixture_source_sha256": "9223fa0899299b70a78764be08719a34dcc1f92219eeb8b347b2733d13056d59",
+    "distinct_bytes": true,
+    "original_binding_identity_class": "ORIGINAL_SOURCE",
+    "fixture_binding_identity_class": "NONRESPONDENT_FIXTURE",
+    "original_authority_has_fixture_only": false,
+    "fixture_authority_all_fixture_only": true,
+    "original_binding_matches_original_sha": true,
+    "fixture_binding_differs_from_original_sha": true
+  },
+  "residuals": [
+    {
+      "residual_id": "SRC23-NATIVE-ROW-KEY",
+      "scope": "SRC23/respondents",
+      "field": "respondents.source_native_key_slot",
+      "status": "DECODE_REQUIRED",
+      "reason": "The source-native id slot is bound, but no permitted decode-produced respondent keys are available during preparation.",
+      "dependent_operation": "original build_governed_c11_projection / build_validated_c11_release_from_config",
+      "unaffected_scope": "schema validation, nonrespondent fixture projection and native C11 validation",
+      "owner": "R157 P3 integration owner with source-read decoder owner",
+      "next_step": "Populate the frozen row_native_keys argument from permitted decoded id cells and verified edition/currentness checks."
+    },
+    {
+      "residual_id": "SRC23-ROUTING-UNKNOWN",
+      "scope": "SRC23/routing",
+      "field": "routing[].typed_state",
+      "status": "ROUTING_UNKNOWN",
+      "reason": "H48/O06 reports SOURCE_ROUTING_UNRESOLVED; exact form, ballot and administration routing was not recovered.",
+      "dependent_operation": "eligibility-conditioned original source claims or subsets",
+      "unaffected_scope": "raw scalar response decoding and fixture positive release",
+      "owner": "GSS source evidence owner",
+      "next_step": "Recover exact original route expressions/form assignment before any original eligibility claim."
+    },
+    {
+      "residual_id": "SRC23-SOURCE-AUTHORITY-DEFER",
+      "scope": "SRC23/authority",
+      "field": "authority.snapshots",
+      "status": "DEFER",
+      "reason": "H48/P2/full-relation evidence is source_reviewed candidate evidence, not an adopted ALLOW authority for original scientific execution.",
+      "dependent_operation": "original scientific issuance or original-source semantic promotion",
+      "unaffected_scope": "portable source preparation and nonrespondent fixture validation",
+      "owner": "R157 authority owner",
+      "next_step": "Adjudicate the exact source operation scope; never promote fixture-only authority into original meaning."
+    },
+    {
+      "residual_id": "SRC23-CANONICAL-VALUE",
+      "scope": "SRC23/response_slots",
+      "field": "response_slots[].values[].canonical_value",
+      "status": "NOT_AUTHORIZED",
+      "reason": "No exact positive NATIVE_CANONICAL_MAPPING_HARMONIZATION authority is present, so raw source values and states are retained without canonical recoding.",
+      "dependent_operation": "canonicalized cross-source value analysis",
+      "unaffected_scope": "raw response state and exact physical value projection",
+      "owner": "R157 mapping authority owner",
+      "next_step": "Adjudicate exact source-native to canonical mapping before setting canonical values."
+    },
+    {
+      "residual_id": "SRC23-WEIGHT-HELD",
+      "scope": "SRC23/weight_slots",
+      "field": "physical_slots[970].name=wtssps",
+      "status": "HELD",
+      "reason": "The source weight slot is identified, but exact weight basis, design, estimand and normalization authority are not established.",
+      "dependent_operation": "weighted estimands and population inference",
+      "unaffected_scope": "unweighted source-local raw sample configuration",
+      "owner": "GSS weight/design evidence owner",
+      "next_step": "Establish exact design/estimand/normalization authority before emitting an authorized weight lane."
+    },
+    {
+      "residual_id": "SRC23-FORM-ADMINISTRATION",
+      "scope": "SRC23/form",
+      "field": "supported_scope.supported_form_slice",
+      "status": "UNKNOWN",
+      "reason": "Split form/ballot assignment and administration are not recovered as exact source facts in the portable evidence rows.",
+      "dependent_operation": "form-conditioned or administration-conditioned claims",
+      "unaffected_scope": "unconditional scalar response-rule fixture validation",
+      "owner": "GSS source evidence owner",
+      "next_step": "Recover exact form/ballot assignment evidence for this wave if a form-conditioned slice is required."
+    },
+    {
+      "residual_id": "SRC23-SAMPLE-FRAME",
+      "scope": "SRC23/universe",
+      "field": "universe.sampling_design_regime",
+      "status": "UNRESOLVED",
+      "reason": "Country scope US is carried from the full-relation row; wave-specific sampling frame and design are not reconstructed from metadata alone.",
+      "dependent_operation": "population, design or design-based inference claims",
+      "unaffected_scope": "source-row identity and raw response-rule construction",
+      "owner": "GSS source evidence owner",
+      "next_step": "Recover exact wave sampling-frame/design evidence before population or design claims."
+    }
+  ],
+  "limits": [
+    "Original GSS respondent execution is NOT performed or claimed.",
+    "The positive native release is from a distinct nonrespondent fixture config and fixture bytes.",
+    "Original construction requires permitted decode-produced row_native_keys and remains P3 reader/transport work.",
+    "No cross-wave equivalence, pooling, canonical mapping, weight authorization or population claim is asserted."
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "schema": "PYAT_R157_GSS_EVIDENCE_ACCOUNTING@1.0.0",
+  "source_id": "SRC18",
+  "source_paths": {
+    "source_config": "rawlsing_next/source_configuration/data/SRC18/SRC18.source.config.json",
+    "fixture_config": "source_pre553_validation/SRC18/SRC18.fixture.config.json",
+    "fixture": "source_pre553_validation/SRC18/SRC18.fixture.json",
+    "fixture_spec": "source_pre553_validation/SRC18/SRC18.fixture-spec.json",
+    "validation_results": "source_pre553_validation/SRC18/SRC18.validation-results.json",
+    "exceptions": "source_pre553_validation/SRC18/SRC18.exceptions.json"
+  },
+  "counts": {
+    "physical_columns": 675,
+    "codebook_rows": 675,
+    "original_items": 675,
+    "exact_relation_matches": 675,
+    "participating_implementation_ids": [
+      "question_impl.phase0.2bc034f8778308162f8d",
+      "question_impl.phase0.cfe959a2bc0616de1f86",
+      "question_impl.phase0.a8d2a701c1dcef13de62"
+    ]
+  },
+  "selected_items": [
+    {
+      "source_variable_code": "happy",
+      "implementation_id": "question_impl.phase0.2bc034f8778308162f8d",
+      "exact_identity_sha256": "2bc034f8778308162f8d7fe3ac89926ae9eef43479826f3dcae762c78ab6a2a1",
+      "question_text": "general happiness",
+      "p2_question_id": "GSS:1984:happy",
+      "relation_question_id": "GSS_1984_happy",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_QSMV2_RELATION_AUTHORITY",
+      "mapping_status": "governed_qsmv2_relation",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.2bc034f8778308162f8d",
+          "content_hash": "2bc034f8778308162f8d7fe3ac89926ae9eef43479826f3dcae762c78ab6a2a1"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.2bc034f8778308162f8d",
+          "content_hash": "2bc034f8778308162f8d7fe3ac89926ae9eef43479826f3dcae762c78ab6a2a1"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1984_happy",
+          "content_hash": "e15644d6a2b5ac6a03181c72483e9b2e86a3cc676cfc44c4370bc3ff582edd7f"
+        }
+      ]
+    },
+    {
+      "source_variable_code": "satfin",
+      "implementation_id": "question_impl.phase0.cfe959a2bc0616de1f86",
+      "exact_identity_sha256": "cfe959a2bc0616de1f861218d120ca5ccd6d650f80802b7996f0a32d3008f145",
+      "question_text": "satisfaction with financial situation",
+      "p2_question_id": "GSS:1984:satfin",
+      "relation_question_id": "GSS:1984:satfin",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_QSMV2_RELATION_AUTHORITY",
+      "mapping_status": "governed_qsmv2_relation",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.cfe959a2bc0616de1f86",
+          "content_hash": "cfe959a2bc0616de1f861218d120ca5ccd6d650f80802b7996f0a32d3008f145"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.cfe959a2bc0616de1f86",
+          "content_hash": "cfe959a2bc0616de1f861218d120ca5ccd6d650f80802b7996f0a32d3008f145"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS:1984:satfin",
+          "content_hash": "c57fa86d247419c8fa0453575c0c0c3cca03ac5781a60b4e5849bf6969d61fb3"
+        }
+      ]
+    },
+    {
+      "source_variable_code": "abdefect",
+      "implementation_id": "question_impl.phase0.a8d2a701c1dcef13de62",
+      "exact_identity_sha256": "a8d2a701c1dcef13de627cc4d189ea94040406395cf92dcfe2cbfa79257cef35",
+      "question_text": "strong chance of serious defect",
+      "p2_question_id": "GSS:1984:abdefect",
+      "relation_question_id": "GSS:1984:abdefect",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "FROZEN_ACCEPTED_GSS",
+      "mapping_status": "accepted_block_child",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.a8d2a701c1dcef13de62",
+          "content_hash": "a8d2a701c1dcef13de627cc4d189ea94040406395cf92dcfe2cbfa79257cef35"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.a8d2a701c1dcef13de62",
+          "content_hash": "a8d2a701c1dcef13de627cc4d189ea94040406395cf92dcfe2cbfa79257cef35"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS:1984:abdefect",
+          "content_hash": "7daadc2a0a3a9124df4f19f088f26cedcc3721f5bca4284ac045c410aa278a9d"
+        }
+      ]
+    }
+  ],
+  "all_items_accounted": true,
+  "all_physical_slots_accounted": true,
+  "excluded_item_count": 672,
+  "excluded_slot_count": 668,
+  "weight_slot": {
+    "ordinal": 670,
+    "name": "wtssall",
+    "status": "HELD_WEIGHT_DESIGN_UNRESOLVED"
+  },
+  "evidence_inputs": {
+    "source_roster_path": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+    "source_roster_sha256": "a0201dbd229c8fc6fddc95b5acbe289d05706eff718d5dfc34329ecdb1bf087d",
+    "item_evidence_path": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+    "item_evidence_sha256": "0093130efd3ddbeaf01616047864469b5910f7f936af1bc8bbf817bc1aa759d8",
+    "physical_slots_path": "rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz",
+    "physical_slots_sha256": "d6d67ec3472edbf86273a00812033a0d153d67baa807f7eab57234fa22d74031",
+    "codebook_rows_path": "rawlsing_next/source_configuration/evidence/CODEBOOK_ROWS.jsonl.gz",
+    "codebook_rows_sha256": "1e4830d2ca5c6a38e45929865bdaa3a61ca1b7c8526f58e30c43754a27823ea6"
+  },
+  "limits": [
+    "No original respondent row or original source byte was read.",
+    "Evidence grades and limits are copied, not promoted.",
+    "The fixture is a separate nonrespondent identity and source-specific rule exercise."
+  ]
+}

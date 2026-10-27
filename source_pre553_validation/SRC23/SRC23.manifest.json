@@ -1,0 +1,60 @@
+{
+  "schema": "PYAT_R157_GSS_SOURCE_MANIFEST@1.0.0",
+  "source_id": "SRC23",
+  "paths": {
+    "source_config": {
+      "path": "rawlsing_next/source_configuration/data/SRC23/SRC23.source.config.json",
+      "sha256": "867a4147a13eb81f16d504bc0f3478358181cf6a2871f05ef7e10f21358403c1",
+      "bytes": 4519074
+    },
+    "evidence_accounting": {
+      "path": "rawlsing_next/source_configuration/data/SRC23/SRC23.evidence-accounting.json",
+      "sha256": "bc4736697d389672dff7f894316e4313670c46558fb24c2be4d45f281b436522",
+      "bytes": 6135
+    },
+    "fixture_config": {
+      "path": "source_pre553_validation/SRC23/SRC23.fixture.config.json",
+      "sha256": "034a6f8febde46a94633d33282fe4bcbe001efa6d8d0417e3f45eb2e904488f7",
+      "bytes": 114738
+    },
+    "fixture": {
+      "path": "source_pre553_validation/SRC23/SRC23.fixture.json",
+      "sha256": "6a39e9216f2a9e824538c510c52b17566bfd7ad1a34cc57ad2ce4d769fff62a9",
+      "bytes": 10741
+    },
+    "fixture_spec": {
+      "path": "source_pre553_validation/SRC23/SRC23.fixture-spec.json",
+      "sha256": "7520f9581c8ccc99489e985468efd2a18a40f0919f4e595ef923e56b95d19346",
+      "bytes": 2691
+    },
+    "validation_results": {
+      "path": "source_pre553_validation/SRC23/SRC23.validation-results.json",
+      "sha256": "787f6792dbd752ffcfb604f95f567362522712da11824bd03167c4c112bb5761",
+      "bytes": 14340
+    },
+    "exceptions": {
+      "path": "source_pre553_validation/SRC23/SRC23.exceptions.json",
+      "sha256": "a1bc4098a5d948563b21dcefacc5d5eefc6fd26fa3090f62408ceabefa157b0e",
+      "bytes": 6346
+    }
+  },
+  "config_hashes": {
+    "original_config_canonical_sha256": "618f1bfb28687c067a9ebf7c0a681e8c9b9ec148f9edec042586eb00f0929e97",
+    "original_config_file_sha256": "867a4147a13eb81f16d504bc0f3478358181cf6a2871f05ef7e10f21358403c1",
+    "fixture_config_canonical_sha256": "7d7e82cd99a90703303d66747c6c975759302dce122d1dd995eea21941788220",
+    "fixture_config_file_sha256": "034a6f8febde46a94633d33282fe4bcbe001efa6d8d0417e3f45eb2e904488f7",
+    "fixture_source_sha256": "9223fa0899299b70a78764be08719a34dcc1f92219eeb8b347b2733d13056d59"
+  },
+  "native_release_ref": {
+    "kind": "C11LogicalRelease",
+    "object_id": "R157_GSS_FIXTURE_RELEASE/SRC23",
+    "content_hash": "e691393602c1cababebf08bdcd1cf80356a05d2107077dcd1e82ca3673f95558"
+  },
+  "no_drop": true,
+  "limits": [
+    "Original GSS respondent execution is NOT performed or claimed.",
+    "The positive native release is from a distinct nonrespondent fixture config and fixture bytes.",
+    "Original construction requires permitted decode-produced row_native_keys and remains P3 reader/transport work.",
+    "No cross-wave equivalence, pooling, canonical mapping, weight authorization or population claim is asserted."
+  ]
+}

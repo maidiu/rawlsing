@@ -1,0 +1,112 @@
+{
+  "schema": "PYAT_R157_GSS_EXCEPTION_LEDGER@1.0.0",
+  "source_id": "SRC22",
+  "source_config": "rawlsing_next/source_configuration/data/SRC22/SRC22.source.config.json",
+  "residual_count": 7,
+  "residuals": [
+    {
+      "residual_id": "SRC22-NATIVE-ROW-KEY",
+      "scope": "SRC22/respondents",
+      "field": "respondents.source_native_key_slot",
+      "status": "DECODE_REQUIRED",
+      "reason": "The source-native id slot is bound, but no permitted decode-produced respondent keys are available during preparation.",
+      "dependent_operation": "original build_governed_c11_projection / build_validated_c11_release_from_config",
+      "unaffected_scope": "schema validation, nonrespondent fixture projection and native C11 validation",
+      "owner": "R157 P3 integration owner with source-read decoder owner",
+      "next_step": "Populate the frozen row_native_keys argument from permitted decoded id cells and verified edition/currentness checks."
+    },
+    {
+      "residual_id": "SRC22-ROUTING-UNKNOWN",
+      "scope": "SRC22/routing",
+      "field": "routing[].typed_state",
+      "status": "ROUTING_UNKNOWN",
+      "reason": "H48/O06 reports SOURCE_ROUTING_UNRESOLVED; exact form, ballot and administration routing was not recovered.",
+      "dependent_operation": "eligibility-conditioned original source claims or subsets",
+      "unaffected_scope": "raw scalar response decoding and fixture positive release",
+      "owner": "GSS source evidence owner",
+      "next_step": "Recover exact original route expressions/form assignment before any original eligibility claim."
+    },
+    {
+      "residual_id": "SRC22-SOURCE-AUTHORITY-DEFER",
+      "scope": "SRC22/authority",
+      "field": "authority.snapshots",
+      "status": "DEFER",
+      "reason": "H48/P2/full-relation evidence is source_reviewed candidate evidence, not an adopted ALLOW authority for original scientific execution.",
+      "dependent_operation": "original scientific issuance or original-source semantic promotion",
+      "unaffected_scope": "portable source preparation and nonrespondent fixture validation",
+      "owner": "R157 authority owner",
+      "next_step": "Adjudicate the exact source operation scope; never promote fixture-only authority into original meaning."
+    },
+    {
+      "residual_id": "SRC22-CANONICAL-VALUE",
+      "scope": "SRC22/response_slots",
+      "field": "response_slots[].values[].canonical_value",
+      "status": "NOT_AUTHORIZED",
+      "reason": "No exact positive NATIVE_CANONICAL_MAPPING_HARMONIZATION authority is present, so raw source values and states are retained without canonical recoding.",
+      "dependent_operation": "canonicalized cross-source value analysis",
+      "unaffected_scope": "raw response state and exact physical value projection",
+      "owner": "R157 mapping authority owner",
+      "next_step": "Adjudicate exact source-native to canonical mapping before setting canonical values."
+    },
+    {
+      "residual_id": "SRC22-WEIGHT-HELD",
+      "scope": "SRC22/weight_slots",
+      "field": "physical_slots[1007].name=wtssall",
+      "status": "HELD",
+      "reason": "The source weight slot is identified, but exact weight basis, design, estimand and normalization authority are not established.",
+      "dependent_operation": "weighted estimands and population inference",
+      "unaffected_scope": "unweighted source-local raw sample configuration",
+      "owner": "GSS weight/design evidence owner",
+      "next_step": "Establish exact design/estimand/normalization authority before emitting an authorized weight lane."
+    },
+    {
+      "residual_id": "SRC22-FORM-ADMINISTRATION",
+      "scope": "SRC22/form",
+      "field": "supported_scope.supported_form_slice",
+      "status": "UNKNOWN",
+      "reason": "Split form/ballot assignment and administration are not recovered as exact source facts in the portable evidence rows.",
+      "dependent_operation": "form-conditioned or administration-conditioned claims",
+      "unaffected_scope": "unconditional scalar response-rule fixture validation",
+      "owner": "GSS source evidence owner",
+      "next_step": "Recover exact form/ballot assignment evidence for this wave if a form-conditioned slice is required."
+    },
+    {
+      "residual_id": "SRC22-SAMPLE-FRAME",
+      "scope": "SRC22/universe",
+      "field": "universe.sampling_design_regime",
+      "status": "UNRESOLVED",
+      "reason": "Country scope US is carried from the full-relation row; wave-specific sampling frame and design are not reconstructed from metadata alone.",
+      "dependent_operation": "population, design or design-based inference claims",
+      "unaffected_scope": "source-row identity and raw response-rule construction",
+      "owner": "GSS source evidence owner",
+      "next_step": "Recover exact wave sampling-frame/design evidence before population or design claims."
+    }
+  ],
+  "fixture_limits": [
+    {
+      "residual_id": "SRC22-FIXTURE-IDENTITY",
+      "scope": "SRC22/fixture",
+      "field": "binding.identity_class",
+      "status": "FIXTURE_ONLY",
+      "reason": "Fixture bytes, universe, authority and row identities are distinct from the original source and are not promoted.",
+      "dependent_operation": "original-source use",
+      "unaffected_scope": "actual factory and native C11 validation",
+      "owner": "R157 GSS lane author",
+      "next_step": "Consume the original config only with permitted original bytes and decode-produced row witnesses."
+    },
+    {
+      "residual_id": "SRC22-FIXTURE-WEIGHT",
+      "scope": "SRC22/weight_slots",
+      "field": "weight_slots[].weight_basis_id",
+      "status": "WEIGHT_BASIS_UNRESOLVED",
+      "reason": "Fixture exercises exact numeric weight cells, but no weighted design/estimand claim is made.",
+      "dependent_operation": "weighted inference",
+      "unaffected_scope": "nonrespondent scalar/coordinate native validation",
+      "owner": "R157 GSS lane author",
+      "next_step": "Establish design/estimand/normalization authority before any weighted scope."
+    }
+  ],
+  "blocking_lane_completion": false,
+  "blocking_original_execution": true,
+  "exact_next_operation": "P3 integration owner transports the qualified exact-SHA reader config and populates row_native_keys from permitted decoded id cells; original source execution remains separately authorized."
+}
