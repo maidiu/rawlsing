@@ -218,6 +218,13 @@ def main() -> int:
         ],
     }
 
+    # Materialize deterministic companions before hashing the artifact manifest.
+    (FOUNDATION / "FIXTURE_SPEC.json").write_text(
+        json.dumps(fixture_spec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (FOUNDATION / "VALIDATION_RESULTS.json").write_text(
+        json.dumps(results, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    results_sha = sha(FOUNDATION / "VALIDATION_RESULTS.json")
+
     lanes = []
     for lane in json.loads((ROOT / "SOURCE_PRE553_PLAN/LANES.json").read_text(encoding="utf-8"))["lanes"]:
         frozen = lane_inputs(lane["lane_id"])
@@ -319,7 +326,7 @@ def main() -> int:
         },
         "validation": {
             "results_path": "source_pre553_validation/foundation/VALIDATION_RESULTS.json",
-            "results_sha256": None,
+            "results_sha256": results_sha,
             "focus_test_result": "11 passed focused; 55 passed focused+owner regression",
             "commands": results["commands"],
         },
@@ -335,12 +342,6 @@ def main() -> int:
         ],
     }
 
-    (FOUNDATION / "FIXTURE_SPEC.json").write_text(
-        json.dumps(fixture_spec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    (FOUNDATION / "VALIDATION_RESULTS.json").write_text(
-        json.dumps(results, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    # results_sha256 is computed after the results file exists.
-    p0_return["validation"]["results_sha256"] = sha(FOUNDATION / "VALIDATION_RESULTS.json")
     (FOUNDATION / "P0_RETURN.json").write_text(
         json.dumps(p0_return, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps({
