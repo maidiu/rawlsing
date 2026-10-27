@@ -1,3 +1,9 @@
+# CURRENT — R157 EVS scoped integration; AFRO launched; Latin bounded repair
+
+R157 EVS9687ff50104fd90c73f9cd727abb625a1300f3ec accepted scoped configuration preparation and integrated: all5 native fixture releases/hash counts replayed;2224 identities/slots,203 exact held premises,1179 conditional/unknown routes preserved. Original authority DEFER; no original respondent execution/workload. LATIN9b51c6578ec6d059463440870ac1ee95e67dbe63 native fixtures replayed positive but two demonstrated source-binding defects returned to same owner39411. Independent ready AFRO SRC01-03 launched using existing EVS/integrator session42454, preflight/model verified, event observer42516. Other GSS/LITS current35732/35733. Main e2cfc49badbe52eb65f44561ccf6727ee53be60e pushed/directremoteverified. All35/final distinct review incomplete; heartbeat paused.
+
+Read branch progress/STATE.json and actual receipts. Stale notices never duplicate current effects.
+
 # CURRENT — R157 disk recovered; same four source sessions resumed
 
 R157 disk recovery: user explicitly said go; same four OpenCode sessions resumed with actual checkout and unchanged Go DeepSeek MAX verified. Current LATIN/GSS/LITS/EVS PIDs35731/35732/35733/35734. Previous processes missing; interrupted writes are reconciled by existing owners. EVS first return rejected as incomplete full scope (2219 items generic unsupported); same owner continues full configuration repair. Main a6f1b9c45e37481ede3b9564042b809da8c9a0b9 direct-remote verified. Four-target OS event observer35854 ready; no polling/heartbeat restart. Full all35 scope and final distinct review remain outstanding; source/workload boundary unchanged.
