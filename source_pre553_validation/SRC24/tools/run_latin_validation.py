@@ -11,7 +11,6 @@ import copy
 import hashlib
 import json
 import sys
-import time
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Mapping
@@ -102,16 +101,13 @@ def run_source(source_id: str) -> dict[str, Any]:
     result["hashes"]["fixture_source"] = fixture_doc["fixture_source_sha256"]
 
     # ---- original-source projection construction (no stream/values read) ----
-    t0 = time.time()
     original_projection = build_governed_c11_projection(original)
-    original_seconds = time.time() - t0
     result["calls"].append({
         "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
         "input": "ORIGINAL_SOURCE config (no physical stream)",
         "config_id": original.config_id,
         "config_sha256": result["hashes"]["original_config_canonical"],
         "result": "GovernedC11Projection",
-        "elapsed_seconds": round(original_seconds, 3),
         "source_sha256": original_projection.expected_source_sha256,
         "respondents": len(original_projection.respondents),
         "response_slots": len(original_projection.response_slots),
@@ -207,9 +203,7 @@ def run_source(source_id: str) -> dict[str, Any]:
         "questions": len(fixture_projection.questions),
     })
 
-    t0 = time.time()
     release = build_validated_c11_release_from_config(fixture_config, stream=stream)
-    release_seconds = time.time() - t0
     result["calls"].append({
         "call": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
         "input": "NONRESPONDENT_FIXTURE config + ExactPhysicalCellStream",
@@ -221,7 +215,6 @@ def run_source(source_id: str) -> dict[str, Any]:
         "release_ref": release.release_ref.as_dict(),
         "semantic_release_hash": release.semantic_release_hash,
         "source_release_manifest_hash": release.source_release_manifest_hash,
-        "elapsed_seconds": round(release_seconds, 3),
     })
 
     response_events = [x for x in release.public_objects if isinstance(x, RespondentEvent)]
