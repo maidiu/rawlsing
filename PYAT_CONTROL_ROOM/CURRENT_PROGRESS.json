@@ -1,7 +1,7 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 161,
+  "revision": 162,
   "r39_return_intake": {
     "status": "WORKER_AUTHOR_EVIDENCE_RECEIVED__NO_INDEPENDENT_ADOPTION",
     "startup": "2e6c189fd54b818556a44419b19691938ea76d5a",
@@ -2953,7 +2953,7 @@
     ],
     "acceptance": "Author result is candidate; distinct reviewer independently qualifies exact candidate, then HQ scoped disposition. R09 local is not deployed enforcement."
   },
-  "next_action": "Intake terminal P3/source-lane returns and advance independent remaining families within max4; final all35 review/acceptance still required.",
+  "next_action": "Intake actual terminal source-lane notifications; verify scope and advance remaining independent family lanes within max4. Native-bound all35/final review still required.",
   "active_r61_native_workers": [
     {
       "node": "R01",
@@ -23379,6 +23379,106 @@
       "live_goal_update": "CONSOLIDATED_OBJECTIVE_VERIFIED_ACTIVE",
       "heartbeat": "PAUSED",
       "r157_frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710"
+    }
+  },
+  "r157_p3_accept": {
+    "checkpoint_id": "R157_P3_ACCEPTED_FOUR_SOURCE_LANES_EVENTS",
+    "summary": "R157 P3 terminal519355ec2215409b40d566ef13c3b21f611e0726 integrated;11artifact hashes verified and65tests replayedpass. Reader exact-SHA encoding, decoded native-key witnesses and prepared R154 constructor delegation implemented; no original respondents/workloads executed. Legacy R154 load_all/load_source private B49 path remains3preexistingfailures outside new prepared path; do not advertise that legacy path as portable or make unused historical behavior a new gate. Freed existing integrator now EVS SRC11-15 session ses_e98c905cbffekusoHURfKyEUKG PID25507, actualpreflight/MAXverified on r157-evs. LATIN/GSS/LITS continue unchanged; fourauthors total. Main branch2cd9382c99dead1e78c7c47ed7989c46dea4acb8. Finite OS kqueue completion watchers replace periodic worker polling. FirstP3event automatically queued exactsameHQmessage01a17b56-b172-7623-b6ce-77af2a1705bf,exit0; subsequentHQturndeliverynotyetobserved. Original4targetobserver23206 remains forother3; EVSsingle-targetobserver25842 verifiedready. No controllerjobsretroactivelyadopted, modeloverride, heartbeatrestart or recurringautomation.",
+    "updates": {
+      "active_workers": [
+        {
+          "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "LATIN",
+          "source_ids": [
+            "SRC24",
+            "SRC25",
+            "SRC26"
+          ],
+          "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+          "pid": 15088,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin",
+          "branch": "agent/pyat-pre553-r157-latin",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        },
+        {
+          "task": "GSS:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "GSS",
+          "source_ids": [
+            "SRC16",
+            "SRC17",
+            "SRC18",
+            "SRC19",
+            "SRC20",
+            "SRC21",
+            "SRC22",
+            "SRC23"
+          ],
+          "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+          "pid": 15095,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss",
+          "branch": "agent/pyat-pre553-r157-gss",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        },
+        {
+          "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "LITS",
+          "source_ids": [
+            "SRC27",
+            "SRC28",
+            "SRC29",
+            "SRC30"
+          ],
+          "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+          "pid": 15101,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
+          "branch": "agent/pyat-pre553-r157-lits",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        },
+        {
+          "task": "EVS:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "EVS",
+          "source_ids": [
+            "SRC11",
+            "SRC12",
+            "SRC13",
+            "SRC14",
+            "SRC15"
+          ],
+          "session": "ses_e98c905cbffekusoHURfKyEUKG",
+          "pid": 25507,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs",
+          "branch": "agent/pyat-pre553-r157-evs",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        }
+      ],
+      "next_action": "Intake actual terminal source-lane notifications; verify scope and advance remaining independent family lanes within max4. Native-bound all35/final review still required.",
+      "r157_branch": "agent/pyat-source-pre553-r157",
+      "r157_branch_head": "2cd9382c99dead1e78c7c47ed7989c46dea4acb8",
+      "r157_state": "FOUR_SOURCE_LANES_RUNNING_P3_ACCEPTED",
+      "live_goal_update": "CONSOLIDATED_OBJECTIVE_VERIFIED_ACTIVE",
+      "heartbeat": "PAUSED",
+      "r157_frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
+      "r157_waiting_policy": {
+        "mechanism": "Finite kqueue OS file-event observer for four existing terminal receipts; ordinary installed codex queue wake to same HQ",
+        "observer_pid": 23206,
+        "observer_ready": true,
+        "periodic_status_checks": false,
+        "fallback_minimum_seconds": 180,
+        "no_model_or_effort_override": true,
+        "end_to_end_hq_notification": "NOT_YET_OBSERVED; verify actual first completion queue acknowledgment and subsequent HQ message",
+        "heartbeat": "PAUSED",
+        "additional_finite_observers": [
+          {
+            "pid": 25842,
+            "targets": "EVS_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          }
+        ]
+      }
     }
   }
 }
