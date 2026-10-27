@@ -1,0 +1,43 @@
+{
+  "field_count": 42,
+  "held_fields": [],
+  "negative_unknown_state": {
+    "actual_code": "UNKNOWN_RESPONSE_STATE",
+    "expected": "UNKNOWN_RESPONSE_STATE",
+    "schema": "PYAT_D1_SRC04_UNKNOWN_STATE_NEGATIVE@1.0.0",
+    "source_release_unchanged": true,
+    "status": "REFUSED"
+  },
+  "negative_wrong_release": {
+    "actual_code": "RELEASE_IDENTITY_MISMATCH",
+    "expected": "RELEASE_IDENTITY_MISMATCH",
+    "local_bundle_consumed": false,
+    "schema": "PYAT_D1_SRC04_WRONG_RELEASE_NEGATIVE@1.0.0",
+    "source_read_performed": false,
+    "status": "REFUSED"
+  },
+  "permission": {
+    "control_commit": "3b703e878946a442b5c880f318b929365865ed00",
+    "grant_sha256": "f51de87818f8fd1365d347da3aee73005fe9ab8ae0c8d2a607487395016d48ae",
+    "i03_or_i05_issued_or_executed": false,
+    "local_release_consumed_by_d1": true,
+    "original_sav_reread": false,
+    "program_sha256": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50",
+    "scope": "D1 SRC04 observed-sample descriptive tally",
+    "source_read_performed_by_d1": false
+  },
+  "product_path": "campaign_d1_src04_tally/evidence/TALLY_PRODUCT.json",
+  "product_ref": {
+    "content_hash": "87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022",
+    "kind": "D1_OBSERVED_SAMPLE_TALLY",
+    "object_id": "urn:rawlsing:d1:SRC04:observed-sample-tally:87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022"
+  },
+  "product_sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+  "replay_ref": {
+    "content_hash": "8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f",
+    "kind": "D1_TALLY_REPLAY",
+    "object_id": "urn:rawlsing:d1:SRC04:observed-sample-replay:8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f"
+  },
+  "schema": "PYAT_D1_SRC04_PRIMARY_RUN@1.0.0",
+  "status": "PRIMARY_TALLY_COMPLETE"
+}

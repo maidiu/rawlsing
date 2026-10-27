@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping
 
 from rawlsing_next.pre553_carrier_execution import materialize_public_object
+from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError, require_positive_authority
 from rawlsing_next.pre553_empirical_objects import ExactRef, exact_ref
 from rawlsing_next.pre553_r5_codec import R5TypedValueCodec
 
@@ -22,8 +23,8 @@ ROOT = Path(__file__).resolve().parents[1]
 CAMPAIGN = Path(__file__).resolve().parent
 EVIDENCE = CAMPAIGN / "evidence"
 A_EVIDENCE = ROOT / "campaign_a_src04/evidence"
-D1_GRANT_PATH = ROOT / ".r61/d1_src04_observed_sample_tally/TRUE_HQ_GRANT.txt"
-D1_PROGRAM_PATH = ROOT / ".r61/d1_src04_observed_sample_tally/PROGRAM.txt"
+D1_GRANT_PATH = EVIDENCE / "TRUE_HQ_GRANT.txt"
+D1_PROGRAM_PATH = EVIDENCE / "PROGRAM.txt"
 EXPECTED_D1_GRANT_SHA256 = "f51de87818f8fd1365d347da3aee73005fe9ab8ae0c8d2a607487395016d48ae"
 EXPECTED_CONTROL_COMMIT = "3b703e878946a442b5c880f318b929365865ed00"
 A_RECEIPT_PATH = A_EVIDENCE / "RELEASE_RECEIPT.json"
@@ -182,9 +183,23 @@ def _native_value(event: Any) -> tuple[Any, str]:
 def build_tally(*, receipt_override: Mapping[str, Any] | None = None) -> dict[str, Any]:
     receipt, config, receipt_sha = _verify_source_metadata()
     if receipt_override is not None:
-        receipt = receipt_override
-        if receipt.get("release", {}).get("release_ref", {}).get("content_hash") != EXPECTED_RELEASE_HASH:
+        if receipt_override.get("source_sha256") != receipt.get("source_sha256"):
+            raise TallyRefusal("SOURCE_IDENTITY_MISMATCH")
+        if receipt_override.get("release", {}).get("release_ref", {}).get("content_hash") != EXPECTED_RELEASE_HASH:
             raise TallyRefusal("RELEASE_IDENTITY_MISMATCH")
+        for field in ("source_rows", "source_columns", "config_file_sha256",
+                      "config_canonical_sha256", "canonicalization",
+                      "selected_response_slots", "selected_question_ids",
+                      "selected_coordinate_slots"):
+            if receipt_override.get(field) != receipt.get(field):
+                raise TallyRefusal("OVERRIDE_IDENTITY_BINDING_MISMATCH", field)
+        if (receipt_override.get("release", {}).get("source_release_manifest_hash")
+                != receipt.get("release", {}).get("source_release_manifest_hash")):
+            raise TallyRefusal("SOURCE_RELEASE_MANIFEST_MISMATCH")
+        if (receipt_override.get("release", {}).get("replay_manifest_ref")
+                != receipt.get("release", {}).get("replay_manifest_ref")):
+            raise TallyRefusal("RELEASE_REPLAY_MANIFEST_MISMATCH")
+        receipt = receipt_override
     local_info = _verify_local_bundle()
     local = local_info["bundle"]
     question_by_id = {q["question_id"]: q for q in config["questions"]}
@@ -387,6 +402,64 @@ def build_tally(*, receipt_override: Mapping[str, Any] | None = None) -> dict[st
     replay_hash = canonical_sha({"tally_ref": tally_ref.as_dict(), "local_bundle": material["local_bundle"]})
     replay_ref = ExactRef("D1_TALLY_REPLAY", f"urn:rawlsing:d1:SRC04:observed-sample-replay:{replay_hash}", replay_hash)
     return {**material, "tally_ref": tally_ref.as_dict(), "replay_ref": replay_ref.as_dict()}
+
+
+def held_authority_negative() -> dict[str, Any]:
+    """Exercise an existing DEFER/canonical authority gate on the same release."""
+    deferred = []
+    with gzip.open(bundle_path() / "public_objects.jsonl.gz", "rt", encoding="utf-8") as handle:
+        for line in handle:
+            document = json.loads(line)
+            if document.get("schema_id") != "AuthoritySnapshot":
+                continue
+            snapshot = materialize_public_object(document)
+            if snapshot.decision_state == "DEFER":
+                deferred.append(snapshot)
+    if not deferred:
+        raise TallyRefusal("NO_DEFERRED_AUTHORITY_IN_RELEASE")
+    snapshot = sorted(deferred, key=lambda x: x.authority_ref.key)[0]
+    try:
+        require_positive_authority(
+            snapshot,
+            authority_kind=snapshot.authority_kind,
+            operation=snapshot.governed_operations[0] if snapshot.governed_operations else None,
+            object_family=snapshot.governed_object_families[0] if snapshot.governed_object_families else None,
+        )
+    except Pre553AuthorityError as exc:
+        return {
+            "schema": "PYAT_D1_SRC04_HELD_AUTHORITY_NEGATIVE@1.0.0",
+            "status": "REFUSED",
+            "expected": "DEFER authority cannot satisfy a positive gate",
+            "actual_code": "SOURCE_AUTHORITY_DEFER",
+            "authority_ref": snapshot.authority_ref.as_dict(),
+            "authority_id": snapshot.authority_id,
+            "authority_kind": snapshot.authority_kind,
+            "decision_state": snapshot.decision_state,
+            "error_type": type(exc).__name__,
+            "error": str(exc),
+            "same_release_ref": {"kind": "C11LogicalRelease", "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION", "content_hash": EXPECTED_RELEASE_HASH},
+            "source_read_performed": False,
+            "issued_i03_or_i05": False,
+        }
+    raise TallyRefusal("DEFER_AUTHORITY_WAS_ACCEPTED")
+
+
+def wrong_source_negative() -> dict[str, Any]:
+    receipt = load_json(A_RECEIPT_PATH)
+    tampered = deepcopy(receipt)
+    tampered["source_sha256"] = "0" * 64
+    try:
+        build_tally(receipt_override=tampered)
+    except TallyRefusal as exc:
+        return {
+            "schema": "PYAT_D1_SRC04_WRONG_SOURCE_NEGATIVE@1.0.0",
+            "status": "REFUSED",
+            "expected": "SOURCE_IDENTITY_MISMATCH",
+            "actual_code": exc.code,
+            "source_read_performed": False,
+            "local_bundle_consumed": False,
+        }
+    raise TallyRefusal("WRONG_SOURCE_NOT_REFUSED")
 
 
 def wrong_release_negative() -> dict[str, Any]:

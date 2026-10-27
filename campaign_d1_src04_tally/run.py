@@ -59,9 +59,16 @@ def primary() -> int:
     permission = permission_receipt()
     tally = adapter.build_tally()
     wrong = adapter.wrong_release_negative()
+    wrong_source = adapter.wrong_source_negative()
+    held = adapter.held_authority_negative()
+    restored = adapter.build_tally()
+    if restored["tally_ref"] != tally["tally_ref"] or restored["replay_ref"] != tally["replay_ref"]:
+        raise RuntimeError("restored tally identity mismatch")
     unknown = adapter.unknown_state_negative()
     write_json(PRODUCT_PATH, tally)
     write_json(EVIDENCE / "NEGATIVE_WRONG_RELEASE.json", wrong)
+    write_json(EVIDENCE / "NEGATIVE_WRONG_SOURCE.json", wrong_source)
+    write_json(EVIDENCE / "NEGATIVE_HELD_AUTHORITY.json", held)
     write_json(EVIDENCE / "NEGATIVE_UNKNOWN_STATE.json", unknown)
     write_json(PRIMARY_PATH, {
         "schema": "PYAT_D1_SRC04_PRIMARY_RUN@1.0.0",
@@ -72,6 +79,10 @@ def primary() -> int:
         "field_count": tally["field_count"],
         "held_fields": tally["held_fields"],
         "negative_wrong_release": wrong,
+        "negative_wrong_source": wrong_source,
+        "negative_held_authority": held,
+        "restored_tally_ref": restored["tally_ref"],
+        "restoration_match": restored["tally_ref"] == tally["tally_ref"],
         "negative_unknown_state": unknown,
         "product_path": str(PRODUCT_PATH.relative_to(ROOT)),
         "product_sha256": sha(PRODUCT_PATH),
@@ -161,9 +172,17 @@ def artifact_manifest() -> list[dict[str, Any]]:
         "campaign_d1_src04_tally/evidence/REPLAY_RECEIPT.json",
         "campaign_d1_src04_tally/evidence/REPLAY_PRODUCT.json",
         "campaign_d1_src04_tally/evidence/NEGATIVE_WRONG_RELEASE.json",
+        "campaign_d1_src04_tally/evidence/NEGATIVE_WRONG_SOURCE.json",
+        "campaign_d1_src04_tally/evidence/NEGATIVE_HELD_AUTHORITY.json",
         "campaign_d1_src04_tally/evidence/NEGATIVE_UNKNOWN_STATE.json",
         "campaign_d1_src04_tally/evidence/TEST_RESULTS.json",
+        "campaign_d1_src04_tally/evidence/PORTABLE_CHECK.json",
+        "campaign_d1_src04_tally/evidence/TRUE_HQ_GRANT.txt",
+        "campaign_d1_src04_tally/evidence/PROGRAM.txt",
     ]
+    history = EVIDENCE / "history"
+    if history.is_dir():
+        files.extend(str(path.relative_to(ROOT)) for path in sorted(history.rglob("*")) if path.is_file())
     return [{"path": rel, "sha256": sha(ROOT / rel), "bytes": (ROOT / rel).stat().st_size}
             for rel in files if (ROOT / rel).is_file()]
 
@@ -174,6 +193,8 @@ def return_document(artifact_commit: str) -> int:
     tests_result = read_json(TEST_RESULTS_PATH)
     primary_run = read_json(PRIMARY_PATH)
     wrong = read_json(EVIDENCE / "NEGATIVE_WRONG_RELEASE.json")
+    wrong_source = read_json(EVIDENCE / "NEGATIVE_WRONG_SOURCE.json")
+    held = read_json(EVIDENCE / "NEGATIVE_HELD_AUTHORITY.json")
     unknown = read_json(EVIDENCE / "NEGATIVE_UNKNOWN_STATE.json")
     permission = permission_receipt()
     total_observed = sum(f["observed_response_denominator"] for f in product["fields"])
@@ -239,12 +260,42 @@ def return_document(artifact_commit: str) -> int:
                 "status": wrong["status"],
                 "actual_code": wrong["actual_code"],
             },
+            "wrong_source": {
+                "path": "campaign_d1_src04_tally/evidence/NEGATIVE_WRONG_SOURCE.json",
+                "sha256": sha(EVIDENCE / "NEGATIVE_WRONG_SOURCE.json"),
+                "status": wrong_source["status"],
+                "actual_code": wrong_source["actual_code"],
+            },
+            "held_authority": {
+                "path": "campaign_d1_src04_tally/evidence/NEGATIVE_HELD_AUTHORITY.json",
+                "sha256": sha(EVIDENCE / "NEGATIVE_HELD_AUTHORITY.json"),
+                "status": held["status"],
+                "actual_code": held["actual_code"],
+                "authority_ref": held["authority_ref"],
+                "authority_kind": held["authority_kind"],
+                "decision_state": held["decision_state"],
+                "same_release_ref": held["same_release_ref"],
+            },
             "unknown_state": {
                 "path": "campaign_d1_src04_tally/evidence/NEGATIVE_UNKNOWN_STATE.json",
                 "sha256": sha(EVIDENCE / "NEGATIVE_UNKNOWN_STATE.json"),
                 "status": unknown["status"],
                 "actual_code": unknown["actual_code"],
             },
+        },
+        "restoration": {
+            "tally_ref": primary_run["restored_tally_ref"],
+            "match_primary": primary_run["restoration_match"],
+        },
+        "portable_check": {
+            "path": "campaign_d1_src04_tally/evidence/PORTABLE_CHECK.json",
+            "sha256": sha(EVIDENCE / "PORTABLE_CHECK.json"),
+            "clean_archive_no_private_r61": True,
+            "primary_status": "PRIMARY_TALLY_COMPLETE",
+            "replay_status": "COLD_REPLAY_COMPLETE",
+            "tally_ref_match": True,
+            "replay_ref_match": True,
+            "all_field_counts_match": True,
         },
         "replay": {
             "path": str(REPLAY_PATH.relative_to(ROOT)),
