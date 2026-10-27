@@ -114,7 +114,7 @@ def _respondents(
     configured_key_slot = section.get("source_native_key_slot")
     respondents = []
     for row in range(1, active_rows + 1):
-        if fixture is not None:
+        if fixture is not None and configured_key_slot is None:
             native_key = ExactRef(
                 "R157_NONRESPONDENT_FIXTURE_ROW",
                 f"urn:rawlsing:r157:fixture:{fixture['fixture_id']}:row:{row}",
@@ -147,6 +147,86 @@ def _respondents(
             ),
         ))
     return tuple(respondents)
+
+
+def row_native_keys_from_transport(
+    config: SourceConfig | Mapping[str, Any],
+    *,
+    stream: ExactPhysicalCellStream | None = None,
+    incidence: PhysicalSourceIncidence | None = None,
+    batch_size: int = 10_000,
+) -> Mapping[int, ExactRef | TypedAbsence] | None:
+    """Extract exact per-row key witnesses from the configured key slot.
+
+    The raw physical key value remains a witness, not a new semantic category.
+    Repeated values keep distinct row-bound refs; missing key cells stay typed
+    unknowns.  This function performs no source I/O itself: the caller must
+    supply an already permitted physical transport.
+    """
+    doc = _doc(config)
+    slot = doc["respondents"].get("source_native_key_slot")
+    if slot is None:
+        return None
+    if (stream is None) == (incidence is None):
+        raise SourceConfigurationFactoryError("exactly one physical transport is required for key extraction")
+    physical_slots = {
+        (item["ordinal"], item["name"]) for item in doc["physical_slots"]
+    }
+    key = (slot["ordinal"], slot["name"])
+    if key not in physical_slots:
+        raise SourceConfigurationBindingError(
+            "configured source_native_key_slot is absent from physical_slots")
+    source_sha = stream.source_sha256 if stream is not None else incidence.source_sha256
+    row_count = stream.row_count if stream is not None else incidence.row_count
+    fixture = doc["binding"].get("fixture_provenance")
+    kind = ("R157_NONRESPONDENT_FIXTURE_KEY" if fixture is not None
+            else "SOURCE_NATIVE_RESPONDENT_KEY")
+    scope = (fixture["fixture_id"] if fixture is not None else source_sha[:16])
+    cells = stream.iter_cells() if stream is not None else incidence.iter_cells(batch_size)
+    keys: dict[int, ExactRef | TypedAbsence] = {}
+    for cell in cells:
+        if (cell.variable_ordinal, cell.variable_name) != key:
+            continue
+        if cell.row_ordinal in keys:
+            raise SourceConfigurationFactoryError("duplicate configured key cell for one row")
+        if cell.missing_state is PhysicalMissingState.OBSERVED_STORAGE_VALUE:
+            keys[cell.row_ordinal] = ExactRef(
+                kind,
+                (f"urn:rawlsing:r157:{kind.lower()}:{doc['identity']['source_id']}:"
+                 f"{scope}:{slot['ordinal']}:{cell.row_ordinal}"),
+                physical_value_binding_key(
+                    cell.raw_value, cell.missing_state, cell.source_missing_declaration),
+            )
+        else:
+            keys[cell.row_ordinal] = TypedAbsence(
+                "UNKNOWN",
+                "configured source-native key cell is missing or unrepresented",
+            )
+    if set(keys) != set(range(1, row_count + 1)):
+        raise SourceConfigurationFactoryError(
+            "configured key slot did not yield exactly one witness per active row")
+    return keys
+
+
+def _effective_row_native_keys(
+    config: SourceConfig | Mapping[str, Any],
+    *,
+    stream: ExactPhysicalCellStream | None,
+    incidence: PhysicalSourceIncidence | None,
+    explicit: Mapping[int, ExactRef | TypedAbsence] | None,
+    batch_size: int,
+) -> Mapping[int, ExactRef | TypedAbsence] | None:
+    doc = _doc(config)
+    slot = doc["respondents"].get("source_native_key_slot")
+    if explicit is not None:
+        if slot is None:
+            raise SourceConfigurationBindingError(
+                "row_native_keys supplied without a configured source_native_key_slot")
+        return explicit
+    if slot is None:
+        return None
+    return row_native_keys_from_transport(
+        config, stream=stream, incidence=incidence, batch_size=batch_size)
 
 
 def _authority_ref(value: Mapping[str, Any]) -> AuthorityRef:
@@ -456,6 +536,9 @@ def build_validated_c11_release_from_config(
     if incidence is not None:
         active_sha = active_sha or incidence.source_sha256
         active_rows = active_rows or incidence.row_count
+    row_native_keys = _effective_row_native_keys(
+        config, stream=stream, incidence=incidence,
+        explicit=row_native_keys, batch_size=batch_size)
     projection = build_governed_c11_projection(
         config, source_sha256=active_sha, row_count=active_rows,
         row_native_keys=row_native_keys)
@@ -476,6 +559,11 @@ def build_source_backed_c11_repository_from_config(
     """Build the existing source-backed C11 repository from a validated config."""
     if not isinstance(source, (ExactPhysicalCellStream, PhysicalSourceIncidence)):
         raise SourceConfigurationFactoryError("existing physical transport is required")
+    row_native_keys = _effective_row_native_keys(
+        config,
+        stream=source if isinstance(source, ExactPhysicalCellStream) else None,
+        incidence=source if isinstance(source, PhysicalSourceIncidence) else None,
+        explicit=row_native_keys, batch_size=batch_size)
     projection = build_governed_c11_projection(
         config, source_sha256=source.source_sha256, row_count=source.row_count,
         row_native_keys=row_native_keys)
