@@ -1,0 +1,172 @@
+{
+  "schema": "PYAT_R157_NONRESPONDENT_FIXTURE_ORACLE@1.0.0",
+  "fixture_id": "R157-LATIN-SRC25-NONRESPONDENT",
+  "fixture_source_sha256": "b7e88419fe62dd793360aa6b1e2d3107f6e1264351c195fd6657c837afd36d5d",
+  "row_count": 10,
+  "expected": {
+    "response_event_count": 40,
+    "coordinate_fact_count": 10,
+    "routing_fact_count": 40,
+    "response_states_by_slot": {
+      "P1ST": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE"
+      ],
+      "P3ST.A": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "DK",
+        "MISSING"
+      ],
+      "P29NEA": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE"
+      ],
+      "P62NG": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE"
+      ]
+    },
+    "raw_values_by_slot": {
+      "P1ST": [
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        -4.0,
+        -3.0,
+        -2.0,
+        -1.0,
+        null,
+        1.0
+      ],
+      "P3ST.A": [
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        -4.0,
+        -3.0,
+        -2.0,
+        -1.0,
+        null
+      ],
+      "P29NEA": [
+        0.0,
+        1.0,
+        null,
+        0.0,
+        1.0,
+        null,
+        0.0,
+        1.0,
+        null,
+        0.0
+      ],
+      "P62NG": [
+        0.0,
+        1.0,
+        null,
+        0.0,
+        1.0,
+        null,
+        0.0,
+        1.0,
+        null,
+        0.0
+      ]
+    },
+    "canonical_values_by_slot": {
+      "P1ST": [
+        "1",
+        "2",
+        "3",
+        "4",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "1"
+      ],
+      "P3ST.A": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "P29NEA": [
+        "0",
+        "1",
+        null,
+        "0",
+        "1",
+        null,
+        "0",
+        "1",
+        null,
+        "0"
+      ],
+      "P62NG": [
+        "0",
+        "1",
+        null,
+        "0",
+        "1",
+        null,
+        "0",
+        "1",
+        null,
+        "0"
+      ]
+    },
+    "response_state_counts": {
+      "SUBSTANTIVE_RESPONSE": 24,
+      "NOT_ASKED": 2,
+      "INAPPLICABLE": 2,
+      "SOURCE_SPECIFIC_SPECIAL": 2,
+      "DK": 2,
+      "MISSING": 8
+    },
+    "weight_section": "NOT_APPLICABLE",
+    "source_relation_section": "DISTINCT_BY_DEFAULT"
+  },
+  "oracle_basis": "Declared from the fixture cells and the serialized source-native value rules before the factory/native-validator call; not copied from the native result."
+}

@@ -1,0 +1,184 @@
+{
+  "schema": "PYAT_R157_NONRESPONDENT_FIXTURE_ORACLE@1.0.0",
+  "fixture_id": "R157-LATIN-SRC24-NONRESPONDENT",
+  "fixture_source_sha256": "74b66afa2c17863e70b01fcebdbbdfd9d8ba61dfcff7b2719dbed6ea98e969ab",
+  "row_count": 11,
+  "expected": {
+    "response_event_count": 44,
+    "coordinate_fact_count": 11,
+    "routing_fact_count": 44,
+    "response_states_by_slot": {
+      "p66c": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE"
+      ],
+      "p44b": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE"
+      ],
+      "p5": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE"
+      ],
+      "p23": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE"
+      ]
+    },
+    "raw_values_by_slot": {
+      "p66c": [
+        1.0,
+        2.0,
+        -4.0,
+        -3.0,
+        -2.0,
+        -1.0,
+        null,
+        1.0,
+        2.0,
+        -4.0,
+        -3.0
+      ],
+      "p44b": [
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        -4.0,
+        -3.0,
+        -2.0,
+        -1.0,
+        null,
+        1.0
+      ],
+      "p5": [
+        1.0,
+        2.0,
+        3.0,
+        -4.0,
+        -3.0,
+        -2.0,
+        -1.0,
+        null,
+        1.0,
+        2.0,
+        3.0
+      ],
+      "p23": [
+        1.0,
+        2.0,
+        -4.0,
+        -3.0,
+        -2.0,
+        -1.0,
+        null,
+        1.0,
+        2.0,
+        -4.0,
+        -3.0
+      ]
+    },
+    "canonical_values_by_slot": {
+      "p66c": [
+        "1",
+        "2",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "1",
+        "2",
+        null,
+        null
+      ],
+      "p44b": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "1"
+      ],
+      "p5": [
+        "1",
+        "2",
+        "3",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "1",
+        "2",
+        "3"
+      ],
+      "p23": [
+        "1",
+        "2",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "1",
+        "2",
+        null,
+        null
+      ]
+    },
+    "response_state_counts": {
+      "SUBSTANTIVE_RESPONSE": 20,
+      "NOT_ASKED": 6,
+      "INAPPLICABLE": 6,
+      "REFUSAL": 4,
+      "DK": 4,
+      "MISSING": 4
+    },
+    "weight_section": "NOT_APPLICABLE",
+    "source_relation_section": "DISTINCT_BY_DEFAULT"
+  },
+  "oracle_basis": "Declared from the fixture cells and the serialized source-native value rules before the factory/native-validator call; not copied from the native result."
+}

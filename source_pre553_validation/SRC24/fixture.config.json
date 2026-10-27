@@ -1,0 +1,2315 @@
+{
+  "schema": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
+  "config_id": "R157-LATIN-SRC24-NONRESPONDENT-FIXTURE",
+  "config_revision": 1,
+  "config_purpose": "NONRESPONDENT_FIXTURE",
+  "identity": {
+    "source_id": "SRC24",
+    "family": "Latinobarómetro",
+    "wave": "1995",
+    "source_family_id": "Latinobarómetro",
+    "study_product_id": "Latinobarómetro:1995",
+    "release_id": "SRC24_LATINOBAROMETRO_1995_PREPARATION",
+    "instrument_release_id": "SRC24_INSTRUMENT_LATINOBAROMETRO_1995",
+    "source_artifact_id": "Latinobarometro 1995.sav",
+    "expected_source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+    "source_format": "SAV",
+    "source_row_count": 9069,
+    "source_column_count": 203,
+    "source_bytes": 2224483,
+    "codebook_rows": 203,
+    "original_item_count": 203,
+    "source_snapshot_retention_ref": {
+      "kind": "SOURCE_SNAPSHOT",
+      "object_id": "urn:rawlsing:r157:source-snapshot:SRC24",
+      "content_hash": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7"
+    },
+    "metadata_witness_ref": {
+      "kind": "R154_PHYSICAL_METADATA",
+      "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+      "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+    },
+    "locator": {
+      "root": "EXTERNAL_LOCATOR_ID",
+      "locator_id": "SRC24_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING"
+    },
+    "reader": {
+      "decoder_owner": "rawlsing_next.pre553_physical_decoder.decode_sav",
+      "configuration_ref": {
+        "kind": "READER_CONFIGURATION",
+        "object_id": "urn:rawlsing:r157:SRC24:default_sav",
+        "content_hash": "a9ce392dabd59fb595d1e9eac56043998db70af2b4a7ca049c0c5d1495555168"
+      },
+      "encoding": null
+    }
+  },
+  "binding": {
+    "identity_class": "NONRESPONDENT_FIXTURE",
+    "source_sha256": "74b66afa2c17863e70b01fcebdbbdfd9d8ba61dfcff7b2719dbed6ea98e969ab",
+    "row_count": 11,
+    "source_snapshot_ref": {
+      "kind": "FIXTURE_SNAPSHOT",
+      "object_id": "urn:rawlsing:r157:fixture:R157-LATIN-SRC24-NONRESPONDENT",
+      "content_hash": "74b66afa2c17863e70b01fcebdbbdfd9d8ba61dfcff7b2719dbed6ea98e969ab"
+    },
+    "fixture_provenance": {
+      "fixture_id": "R157-LATIN-SRC24-NONRESPONDENT",
+      "provenance": "Repository-generated nonrespondent fixture for the R157 LATIN lane; no original respondents are represented.",
+      "authority_grade": "NONRESPONDENT_FIXTURE_ONLY",
+      "original_source_id": "SRC24",
+      "original_source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+      "no_original_respondents": true,
+      "fixture_study_product_id": "R157_FIXTURE/SRC24",
+      "fixture_release_id": "R157_FIXTURE_RELEASE/SRC24",
+      "fixture_instrument_release_id": "R157_FIXTURE_INSTRUMENT/SRC24"
+    }
+  },
+  "authority": {
+    "snapshots": [
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:authority:SRC24:R157_LOCAL_DETERMINISTIC_REPLAY",
+          "content_hash": "597be9a0f0383f3272d33ec1c49a218b7cf5e234d7e391f6cdfaa027c2b0d712"
+        },
+        "authority_id": "R157-SRC24-R157_LOCAL_DETERMINISTIC_REPLAY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "a946cf4566fa37b8a4ca09689963b72bb1f62173f68bc08d8cd901991c9bbc54",
+        "authority_kind": "REPLAY_PROTOCOL",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_LOCAL_DETERMINISTIC_REPLAY"
+        ],
+        "governed_object_families": [
+          "ReplayReceipt@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_only": true,
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "source_id": "SRC24",
+          "source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+          "fixture_id": "R157-LATIN-SRC24-NONRESPONDENT",
+          "original_source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+          "replay_scope": "R157_LOCAL_ENGINEERING_ONLY",
+          "wave": "1995"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "75e1f31e30f3ac850bd8bd3172a4290b8f4ab437d438ae709842e8d5394f6225",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:replay:SRC24",
+          "content_hash": "2ac664d304c4e63d180575f5b295aed8e03ff555d7bdc963066277ded5ea1288"
+        }
+      },
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:authority:SRC24:R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+          "content_hash": "9899d4785644d399a1fa4330ab1d3e656f71eb06ce1f290f27fcb7cd6008be0f"
+        },
+        "authority_id": "R157-SRC24-R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "bf237cc4783c8113a14603aa2bb583946d22e397436dcc1be3af90b72d75d2c7",
+        "authority_kind": "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_MAP_SOURCE_CODE_TOKEN_IDENTITY"
+        ],
+        "governed_object_families": [
+          "RespondentEvent@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_only": true,
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "source_id": "SRC24",
+          "source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+          "fixture_id": "R157-LATIN-SRC24-NONRESPONDENT",
+          "original_source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+          "mapping_scope": "EXACT_SOURCE_NATIVE_CODE_TOKEN_IDENTITY_ONLY_NO_SIGNED_DIRECTION",
+          "wave": "1995"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "43e69702bc285d25b49c0cd4c80ac1b176d52e65cafb380fbd247f913de41cea",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:replay:SRC24",
+          "content_hash": "f2f176995cfbec9c3314de38805db5405b1fe8697db26f3872d9c98f44acfc84"
+        }
+      },
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:authority:SRC24:R157_OBSERVE_SOURCE_NATIVE_COORDINATE_RAW",
+          "content_hash": "169389d3e7b6c66983f024e804de5bc1cffe7a81be8e5b64c3f2ed5e15fc6804"
+        },
+        "authority_id": "R157-SRC24-R157_OBSERVE_SOURCE_NATIVE_COORDINATE_RAW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "cc898a3de9f3dbb051e314828383d094a5649478543e6a8510a73d712bdfda41",
+        "authority_kind": "COORDINATE_SEMANTICS",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_OBSERVE_SOURCE_NATIVE_COORDINATE_RAW"
+        ],
+        "governed_object_families": [
+          "EmpiricalCoordinateFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_only": true,
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "source_id": "SRC24",
+          "source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+          "fixture_id": "R157-LATIN-SRC24-NONRESPONDENT",
+          "original_source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+          "coordinate_scope": "COPY_OBSERVED_RAW_NO_CANONICAL_CROSSWALK",
+          "wave": "1995"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "7f61700e0d3646aa9ada0f8148fc4c28e8613214c612f63356e5c4520fb02ad9",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:replay:SRC24",
+          "content_hash": "3828ab87a1a49697a681e0cfaecb6ea4f6dc5dfecfe2e5be058ac85988cd2404"
+        }
+      },
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:authority:SRC24:R157_PREPARE_SOURCE_ITEM_SEMANTICS",
+          "content_hash": "c2f29f9dbc757ccf17b9ec7001e10d3c86ee45dedd9485e1ac826d74a1eff793"
+        },
+        "authority_id": "R157-SRC24-R157_PREPARE_SOURCE_ITEM_SEMANTICS",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "eb90963bea410e97794c07954452fcd0c74cdc5f37da8370fb8cea68707fe351",
+        "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_PREPARE_SOURCE_ITEM_SEMANTICS"
+        ],
+        "governed_object_families": [
+          "RespondentEvent@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_only": true,
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "source_id": "SRC24",
+          "source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+          "fixture_id": "R157-LATIN-SRC24-NONRESPONDENT",
+          "original_source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+          "semantic_scope": "EXACT_SOURCE_CODEBOOK_AND_H48_EVIDENCE_ONLY",
+          "direction_status": "NOT_CERTIFIED_BY_THIS_AUTHORITY",
+          "wave": "1995"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "4c5d71e82fd82661d1596e8ce749513fd06af5f85a59a5f70b1223389236cc51",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:replay:SRC24",
+          "content_hash": "42416a94b00cdcaf357d68282320a1188f215bc6a90c1f20fc27c270734b0bef"
+        }
+      },
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:authority:SRC24:R157_PREPARE_SOURCE_PROJECTION",
+          "content_hash": "9c84a05841fc3a17efe434a440d03510eb056c903e5d9a5438c609913ac19929"
+        },
+        "authority_id": "R157-SRC24-R157_PREPARE_SOURCE_PROJECTION",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "44b10e6bbba9e6ada52f14a72c5e728e68fcaa98f63abcfd037e05d4db879162",
+        "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_PREPARE_SOURCE_PROJECTION"
+        ],
+        "governed_object_families": [
+          "EmpiricalUniverse@1.0.0",
+          "RespondentEvent@1.0.0",
+          "EmpiricalCoordinateFact@1.0.0",
+          "RoutingEligibilityFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_only": true,
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "source_id": "SRC24",
+          "source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+          "fixture_id": "R157-LATIN-SRC24-NONRESPONDENT",
+          "original_source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+          "projection_scope": "SUPPORTED_SLICE_ONLY",
+          "wave": "1995"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "f418a3a439a1771693b58c9cc2e2e33fc29c321614a7d3081d615cf23479fbe4",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:replay:SRC24",
+          "content_hash": "08fedad3122528b9a243b5ab3437c4584368e23680e5be90ae1e5a17b753becc"
+        }
+      },
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:authority:SRC24:R157_PREPARE_SOURCE_TOPOLOGY",
+          "content_hash": "89500dc2a4e862db4ded7489fc3394d99d6dd955c08213f3c25dd6d42de2b04a"
+        },
+        "authority_id": "R157-SRC24-R157_PREPARE_SOURCE_TOPOLOGY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "44c5b4ff090c6cb6321e92c08d84f2e0ce0da5e310e6c58c7bd180dbad0d26e8",
+        "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_PREPARE_SOURCE_TOPOLOGY"
+        ],
+        "governed_object_families": [
+          "RespondentEvent@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_only": true,
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "source_id": "SRC24",
+          "source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+          "fixture_id": "R157-LATIN-SRC24-NONRESPONDENT",
+          "original_source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+          "topology_scope": "EXACT_SOURCE_VALUE_LABELS_AND_H48_TOPOLOGY_ONLY",
+          "wave": "1995"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "7f9c6b3ea98c14d4f3fd4e20574ad04bff6f67b0666790a1e259b27aecf08e1c",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:replay:SRC24",
+          "content_hash": "c8a57644c84ede92d29509ff498bcf08ecc375b1094819c83b6f91e2a2a25bf4"
+        }
+      },
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:authority:SRC24:R157_RECORD_UNRESOLVED_SOURCE_ROUTING",
+          "content_hash": "dc4604cc66d57eac0cd191bc20ba759a8364bd6e970d27dd4485248b007eb315"
+        },
+        "authority_id": "R157-SRC24-R157_RECORD_UNRESOLVED_SOURCE_ROUTING",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "5e6a124627ebf6b530458c2f456cce37d6e2083d35e6731cc2b3e9d51bd90c83",
+        "authority_kind": "ROUTING_RISK_SET",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_RECORD_UNRESOLVED_SOURCE_ROUTING"
+        ],
+        "governed_object_families": [
+          "RoutingEligibilityFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "fixture_only": true,
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "source_id": "SRC24",
+          "source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+          "fixture_id": "R157-LATIN-SRC24-NONRESPONDENT",
+          "original_source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+          "routing_scope": "SOURCE_ROUTING_UNRESOLVED_NO_ELIGIBILITY_CLAIM",
+          "wave": "1995"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "c5e80e4cfdd96403e95ed38bb0f9e3318f28e3d4b5957f06903569a54a77cb7c",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:replay:SRC24",
+          "content_hash": "d467c40dafc3760592e01413f4acb64a46bcbebed10fb9edf6c15903ef0cfe83"
+        }
+      }
+    ],
+    "required_refs": [
+      {
+        "authority_id": "R157-SRC24-R157_LOCAL_DETERMINISTIC_REPLAY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "a946cf4566fa37b8a4ca09689963b72bb1f62173f68bc08d8cd901991c9bbc54"
+      },
+      {
+        "authority_id": "R157-SRC24-R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "bf237cc4783c8113a14603aa2bb583946d22e397436dcc1be3af90b72d75d2c7"
+      },
+      {
+        "authority_id": "R157-SRC24-R157_OBSERVE_SOURCE_NATIVE_COORDINATE_RAW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "cc898a3de9f3dbb051e314828383d094a5649478543e6a8510a73d712bdfda41"
+      },
+      {
+        "authority_id": "R157-SRC24-R157_PREPARE_SOURCE_ITEM_SEMANTICS",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "eb90963bea410e97794c07954452fcd0c74cdc5f37da8370fb8cea68707fe351"
+      },
+      {
+        "authority_id": "R157-SRC24-R157_PREPARE_SOURCE_PROJECTION",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "44b10e6bbba9e6ada52f14a72c5e728e68fcaa98f63abcfd037e05d4db879162"
+      },
+      {
+        "authority_id": "R157-SRC24-R157_PREPARE_SOURCE_TOPOLOGY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "44c5b4ff090c6cb6321e92c08d84f2e0ce0da5e310e6c58c7bd180dbad0d26e8"
+      },
+      {
+        "authority_id": "R157-SRC24-R157_RECORD_UNRESOLVED_SOURCE_ROUTING",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "5e6a124627ebf6b530458c2f456cce37d6e2083d35e6731cc2b3e9d51bd90c83"
+      }
+    ],
+    "projection_authority_ref": {
+      "authority_id": "R157-SRC24-R157_PREPARE_SOURCE_PROJECTION",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "44b10e6bbba9e6ada52f14a72c5e728e68fcaa98f63abcfd037e05d4db879162"
+    },
+    "replay_authority_ref": {
+      "authority_id": "R157-SRC24-R157_LOCAL_DETERMINISTIC_REPLAY",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "a946cf4566fa37b8a4ca09689963b72bb1f62173f68bc08d8cd901991c9bbc54"
+    },
+    "projection_identity_ref": {
+      "kind": "C11_SEMANTIC_PROJECTION",
+      "object_id": "urn:rawlsing:r157:fixture:SRC24:projection",
+      "content_hash": "7367437579942536c90ed569fc88c915343bd3594dd68d0a60b69baed7e84356"
+    },
+    "tie_order_ref": {
+      "kind": "ORDER_RULE",
+      "object_id": "urn:rawlsing:r157:canonical-ref-sort",
+      "content_hash": "cb11082636043c981df88e86c546210badd327a5aa1691500c99bc820c8f1fc3"
+    },
+    "replay_protocol_version": "1.0.0"
+  },
+  "universe": {
+    "universes": [
+      {
+        "typed_state": "UNIVERSE_IDENTIFIED",
+        "authority_snapshot_refs": [
+          {
+            "authority_id": "R157-SRC24-R157_PREPARE_SOURCE_ITEM_SEMANTICS",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "eb90963bea410e97794c07954452fcd0c74cdc5f37da8370fb8cea68707fe351"
+          }
+        ],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:universe:SRC24:fixture",
+          "content_hash": "610430a9eb266bc486dd30939c29cf68b5eec21cc52682b85688cd915a3aaa64"
+        },
+        "raw_source_identity": "R157-NONRESPONDENT-FIXTURE:SRC24",
+        "source_family": "Latinobarómetro",
+        "study_product_release": "R157_FIXTURE/SRC24",
+        "instrument_release": "R157_FIXTURE_INSTRUMENT/SRC24",
+        "country_geography": "FIXTURE_MULTI_COUNTRY",
+        "sampling_geography": "FIXTURE_NONPROBABILITY",
+        "raw_wave": "1995",
+        "canonical_wave_if_governed": null,
+        "field_or_reference_time": "R157_NONRESPONDENT_FIXTURE",
+        "target_population_and_sample_frame": "NONRESPONDENT_FIXTURE_ROWS",
+        "sampling_design_regime": "NONRESPONDENT_FIXTURE_ONLY",
+        "respondent_namespace": "urn:rawlsing:r157:fixture:SRC24",
+        "source_artifact_import_lineage": "R157_NONRESPONDENT_FIXTURE_ONLY__NOT_ORIGINAL_SOURCE",
+        "harmonization_authority_ref": null,
+        "source_relation_refs": []
+      }
+    ]
+  },
+  "respondents": {
+    "subject_unit": "NONRESPONDENT_FIXTURE_ROW",
+    "respondent_namespace": "urn:rawlsing:r157:fixture:SRC24",
+    "respondent_key_pattern": "FIXTURE-SRC24-ROW-{row_ordinal:03d}",
+    "source_native_key_slot": null,
+    "identity_map_authority_ref": null,
+    "row_identity_grade": "NONRESPONDENT_FIXTURE_ONLY"
+  },
+  "questions": [
+    {
+      "question_id": "p66c",
+      "empirical_universe_ref": {
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:fde35842268fba0d1a8faffeb168cd1cb55f62607448d8f5c62eb86afe889a4d",
+        "content_hash": "fde35842268fba0d1a8faffeb168cd1cb55f62607448d8f5c62eb86afe889a4d"
+      },
+      "native_question_ref": {
+        "kind": "NATIVE_QUESTION",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:item:question_impl.phase0.001beddefac2dd6cfe75",
+        "content_hash": "001beddefac2dd6cfe75b6d2e71e1f249e8386a24e4063ab3dfd701f2d446851"
+      },
+      "instrument_question_version": "1995",
+      "canonical_question_ref_or_typed_absence": {
+        "typed_absence_state": "NOT_AUTHORIZED",
+        "detail": "No canonical adoption or directional certification is issued by this source preparation."
+      },
+      "component_subitem_ref_or_typed_absence": {
+        "typed_absence_state": "NOT_APPLICABLE",
+        "detail": null
+      },
+      "semantic_authority_ref": {
+        "authority_id": "R157-SRC24-R157_PREPARE_SOURCE_ITEM_SEMANTICS",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "eb90963bea410e97794c07954452fcd0c74cdc5f37da8370fb8cea68707fe351"
+      },
+      "topology_authority_ref": {
+        "authority_id": "R157-SRC24-R157_PREPARE_SOURCE_TOPOLOGY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "44c5b4ff090c6cb6321e92c08d84f2e0ce0da5e310e6c58c7bd180dbad0d26e8"
+      },
+      "item_evidence": {
+        "implementation_id": "question_impl.phase0.001beddefac2dd6cfe75",
+        "exact_identity_sha256": "001beddefac2dd6cfe75b6d2e71e1f249e8386a24e4063ab3dfd701f2d446851",
+        "relation_join_status": "EXACT"
+      }
+    },
+    {
+      "question_id": "p44b",
+      "empirical_universe_ref": {
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:fde35842268fba0d1a8faffeb168cd1cb55f62607448d8f5c62eb86afe889a4d",
+        "content_hash": "fde35842268fba0d1a8faffeb168cd1cb55f62607448d8f5c62eb86afe889a4d"
+      },
+      "native_question_ref": {
+        "kind": "NATIVE_QUESTION",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:item:question_impl.phase0.01bfa73fdc2038524285",
+        "content_hash": "01bfa73fdc20385242853976250f1a050707f507226921955e7cbc9ec1a20ac5"
+      },
+      "instrument_question_version": "1995",
+      "canonical_question_ref_or_typed_absence": {
+        "typed_absence_state": "NOT_AUTHORIZED",
+        "detail": "No canonical adoption or directional certification is issued by this source preparation."
+      },
+      "component_subitem_ref_or_typed_absence": {
+        "typed_absence_state": "NOT_APPLICABLE",
+        "detail": null
+      },
+      "semantic_authority_ref": {
+        "authority_id": "R157-SRC24-R157_PREPARE_SOURCE_ITEM_SEMANTICS",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "eb90963bea410e97794c07954452fcd0c74cdc5f37da8370fb8cea68707fe351"
+      },
+      "topology_authority_ref": {
+        "authority_id": "R157-SRC24-R157_PREPARE_SOURCE_TOPOLOGY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "44c5b4ff090c6cb6321e92c08d84f2e0ce0da5e310e6c58c7bd180dbad0d26e8"
+      },
+      "item_evidence": {
+        "implementation_id": "question_impl.phase0.01bfa73fdc2038524285",
+        "exact_identity_sha256": "01bfa73fdc20385242853976250f1a050707f507226921955e7cbc9ec1a20ac5",
+        "relation_join_status": "EXACT"
+      }
+    },
+    {
+      "question_id": "p5",
+      "empirical_universe_ref": {
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:fde35842268fba0d1a8faffeb168cd1cb55f62607448d8f5c62eb86afe889a4d",
+        "content_hash": "fde35842268fba0d1a8faffeb168cd1cb55f62607448d8f5c62eb86afe889a4d"
+      },
+      "native_question_ref": {
+        "kind": "NATIVE_QUESTION",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:item:question_impl.phase0.09c09ba9af3594967880",
+        "content_hash": "09c09ba9af359496788038d47ae737e60b931741b245a91c2fe3cd0ab839b2b5"
+      },
+      "instrument_question_version": "1995",
+      "canonical_question_ref_or_typed_absence": {
+        "typed_absence_state": "NOT_AUTHORIZED",
+        "detail": "No canonical adoption or directional certification is issued by this source preparation."
+      },
+      "component_subitem_ref_or_typed_absence": {
+        "typed_absence_state": "NOT_APPLICABLE",
+        "detail": null
+      },
+      "semantic_authority_ref": {
+        "authority_id": "R157-SRC24-R157_PREPARE_SOURCE_ITEM_SEMANTICS",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "eb90963bea410e97794c07954452fcd0c74cdc5f37da8370fb8cea68707fe351"
+      },
+      "topology_authority_ref": {
+        "authority_id": "R157-SRC24-R157_PREPARE_SOURCE_TOPOLOGY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "44c5b4ff090c6cb6321e92c08d84f2e0ce0da5e310e6c58c7bd180dbad0d26e8"
+      },
+      "item_evidence": {
+        "implementation_id": "question_impl.phase0.09c09ba9af3594967880",
+        "exact_identity_sha256": "09c09ba9af359496788038d47ae737e60b931741b245a91c2fe3cd0ab839b2b5",
+        "relation_join_status": "EXACT"
+      }
+    },
+    {
+      "question_id": "p23",
+      "empirical_universe_ref": {
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:fde35842268fba0d1a8faffeb168cd1cb55f62607448d8f5c62eb86afe889a4d",
+        "content_hash": "fde35842268fba0d1a8faffeb168cd1cb55f62607448d8f5c62eb86afe889a4d"
+      },
+      "native_question_ref": {
+        "kind": "NATIVE_QUESTION",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:item:question_impl.phase0.1c3600697f4a81f6697d",
+        "content_hash": "1c3600697f4a81f6697df9b38532c1abf025eedec8f32e930b2a0ea8fcea86c4"
+      },
+      "instrument_question_version": "1995",
+      "canonical_question_ref_or_typed_absence": {
+        "typed_absence_state": "NOT_AUTHORIZED",
+        "detail": "No canonical adoption or directional certification is issued by this source preparation."
+      },
+      "component_subitem_ref_or_typed_absence": {
+        "typed_absence_state": "NOT_APPLICABLE",
+        "detail": null
+      },
+      "semantic_authority_ref": {
+        "authority_id": "R157-SRC24-R157_PREPARE_SOURCE_ITEM_SEMANTICS",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "eb90963bea410e97794c07954452fcd0c74cdc5f37da8370fb8cea68707fe351"
+      },
+      "topology_authority_ref": {
+        "authority_id": "R157-SRC24-R157_PREPARE_SOURCE_TOPOLOGY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "44c5b4ff090c6cb6321e92c08d84f2e0ce0da5e310e6c58c7bd180dbad0d26e8"
+      },
+      "item_evidence": {
+        "implementation_id": "question_impl.phase0.1c3600697f4a81f6697d",
+        "exact_identity_sha256": "1c3600697f4a81f6697df9b38532c1abf025eedec8f32e930b2a0ea8fcea86c4",
+        "relation_join_status": "EXACT"
+      }
+    }
+  ],
+  "physical_slots": [
+    {
+      "ordinal": 2,
+      "name": "pais",
+      "label": "Country",
+      "storage_type": "double",
+      "original_type": "F2.0",
+      "storage_width": "8",
+      "measure": "scale",
+      "value_labels": {
+        "-1.0": "Don't know",
+        "-2.0": "No answer",
+        "-3.0": "Not applicable",
+        "-4.0": "Not asked in survey",
+        "-5.0": "Missing; Unknown",
+        "100.0": "Bulgaria",
+        "101.0": "SrpSka Republic",
+        "104.0": "Myanmar",
+        "108.0": "Burundi",
+        "112.0": "Belarus",
+        "116.0": "Cambodia",
+        "12.0": "Algeria",
+        "120.0": "Cameroon",
+        "124.0": "Canada",
+        "132.0": "Cape Verde",
+        "144.0": "Sri Lanka",
+        "148.0": "Chad",
+        "152.0": "Chile",
+        "156.0": "China",
+        "158.0": "Taiwan",
+        "16.0": "American Samoa",
+        "170.0": "Colombia",
+        "180.0": "D.R. Congo",
+        "184.0": "Cook Islands",
+        "188.0": "Costa Rica",
+        "191.0": "Croatia",
+        "192.0": "Cuba",
+        "196.0": "Cyprus",
+        "197.0": "Cyprus (T)",
+        "20.0": "Andorra",
+        "203.0": "Czech Rep.",
+        "204.0": "Benin",
+        "208.0": "Denmark",
+        "214.0": "Dominican Rep.",
+        "218.0": "Ecuador",
+        "222.0": "El Salvador",
+        "226.0": "Eq.Guinea",
+        "231.0": "Ethiopia",
+        "232.0": "Eritrea",
+        "233.0": "Estonia",
+        "24.0": "Angola",
+        "246.0": "Finland",
+        "250.0": "France",
+        "268.0": "Georgia",
+        "270.0": "Gambia",
+        "275.0": "Palestine",
+        "276.0": "Germany",
+        "28.0": "Antigua",
+        "288.0": "Ghana",
+        "292.0": "Gibraltar",
+        "300.0": "Greece",
+        "31.0": "Azerbaijan",
+        "32.0": "Argentina",
+        "320.0": "Guatemala",
+        "324.0": "Guinea",
+        "328.0": "Guyana",
+        "332.0": "Haiti",
+        "340.0": "Honduras",
+        "344.0": "Hong Kong",
+        "348.0": "Hungary",
+        "352.0": "Iceland",
+        "356.0": "India",
+        "36.0": "Australia",
+        "360.0": "Indonesia",
+        "364.0": "Iran",
+        "368.0": "Iraq",
+        "372.0": "Ireland",
+        "376.0": "Israel",
+        "380.0": "Italy",
+        "384.0": "Côte d'Ivoire",
+        "388.0": "Jamaica",
+        "392.0": "Japan",
+        "398.0": "Kazakhstan",
+        "4.0": "Afghanistan",
+        "40.0": "Austria",
+        "400.0": "Jordan",
+        "404.0": "Kenya",
+        "408.0": "North Korea",
+        "410.0": "South Korea",
+        "414.0": "Kuwait",
+        "417.0": "Kyrgyzstan",
+        "418.0": "Laos",
+        "422.0": "Lebanon",
+        "426.0": "Lesotho",
+        "428.0": "Latvia",
+        "430.0": "Liberia",
+        "434.0": "Libya",
+        "438.0": "Liechtenstein",
+        "440.0": "Lithuania",
+        "442.0": "Luxembourg",
+        "450.0": "Madagascar",
+        "454.0": "Malawi",
+        "458.0": "Malaysia",
+        "466.0": "Mali",
+        "470.0": "Malta",
+        "474.0": "Martinique",
+        "478.0": "Mauritania",
+        "48.0": "Bahrain",
+        "480.0": "Mauritius",
+        "484.0": "Mexico",
+        "492.0": "Monaco",
+        "496.0": "Mongolia",
+        "498.0": "Moldova",
+        "50.0": "Bangladesh",
+        "504.0": "Morocco",
+        "508.0": "Mozambique",
+        "51.0": "Armenia",
+        "512.0": "Oman",
+        "516.0": "Namibia",
+        "52.0": "Barbados",
+        "524.0": "Nepal",
+        "528.0": "Netherlands",
+        "554.0": "New Zealand",
+        "558.0": "Nicaragua",
+        "56.0": "Belgium",
+        "562.0": "Niger",
+        "566.0": "Nigeria",
+        "578.0": "Norway",
+        "586.0": "Pakistan",
+        "591.0": "Panama",
+        "598.0": "Papua New Guinea",
+        "60.0": "Bermuda",
+        "600.0": "Paraguay",
+        "604.0": "Peru",
+        "608.0": "Philippines",
+        "616.0": "Poland",
+        "620.0": "Portugal",
+        "624.0": "Guinea-Bissau",
+        "626.0": "Timor-Leste",
+        "630.0": "Puerto Rico",
+        "634.0": "Qatar",
+        "64.0": "Bhutan",
+        "642.0": "Romania",
+        "643.0": "Russia",
+        "646.0": "Rwanda",
+        "68.0": "Bolivia",
+        "682.0": "Saudi Arabia",
+        "686.0": "Senegal",
+        "690.0": "Seychelles",
+        "694.0": "Sierra Leone",
+        "70.0": "Bosnia",
+        "702.0": "Singapore",
+        "703.0": "Slovakia",
+        "704.0": "Viet Nam",
+        "705.0": "Slovenia",
+        "706.0": "Somalia",
+        "710.0": "South Africa",
+        "716.0": "Zimbabwe",
+        "72.0": "Botswana",
+        "724.0": "Spain",
+        "736.0": "Sudan",
+        "740.0": "Suriname",
+        "752.0": "Sweden",
+        "756.0": "Switzerland",
+        "76.0": "Brazil",
+        "760.0": "Syria",
+        "762.0": "Tajikistan",
+        "764.0": "Thailand",
+        "768.0": "Togo",
+        "780.0": "Trinidad and Tobago",
+        "784.0": "United Arab Emirates",
+        "788.0": "Tunisia",
+        "792.0": "Turkey",
+        "795.0": "Turkmenistan",
+        "8.0": "Albania",
+        "800.0": "Uganda",
+        "804.0": "Ukraine",
+        "807.0": "Macedonia",
+        "818.0": "Egypt",
+        "826.0": "Great Britain",
+        "834.0": "Tanzania",
+        "84.0": "Belize",
+        "840.0": "United States",
+        "850.0": "U.S. Virgin Islands",
+        "854.0": "Burkina Faso",
+        "858.0": "Uruguay",
+        "860.0": "Uzbekistan",
+        "862.0": "Venezuela",
+        "887.0": "Yemen",
+        "891.0": "Serbia and Montenegro",
+        "894.0": "Zambia",
+        "900.0": "West Germany",
+        "901.0": "East Germany",
+        "902.0": "Tambov",
+        "903.0": "Moscow",
+        "904.0": "Basque Country",
+        "906.0": "Andalusia",
+        "907.0": "Galicia",
+        "909.0": "North Ireland",
+        "910.0": "Valencia",
+        "911.0": "Serbia",
+        "912.0": "Montenegro",
+        "913.0": "Serbian Bosnia",
+        "914.0": "Bosnia",
+        "915.0": "Kosovo"
+      },
+      "missing_declarations": null,
+      "mr_declarations": null,
+      "codebook_mapping": {
+        "var_name": "pais",
+        "row_hash": "96ff2a6b5eae2fbe661fdac62609aa7d57d047e949236b22c204e2f9edb2208a",
+        "status": "EXACT"
+      },
+      "disposition": "SUPPORTED_COORDINATE",
+      "disposition_reason": "Source-native country code; raw observation only."
+    },
+    {
+      "ordinal": 9,
+      "name": "p5",
+      "label": "Past personal economic situation",
+      "storage_type": "double",
+      "original_type": "F1.0",
+      "storage_width": "8",
+      "measure": "nominal",
+      "value_labels": {
+        "-1.0": "Don´t know",
+        "-2.0": "No answer/Refused",
+        "-3.0": "Not applicable",
+        "-4.0": "Not asked",
+        "1.0": "Better",
+        "2.0": "Same",
+        "3.0": "Worse"
+      },
+      "missing_declarations": null,
+      "mr_declarations": null,
+      "codebook_mapping": {
+        "var_name": "p5",
+        "row_hash": "ccd6e8d6f56ed97ab6538a3b4a9c15bd276128c09514242b8844bd2913dfdfcf",
+        "status": "EXACT"
+      },
+      "disposition": "SUPPORTED_RESPONSE",
+      "disposition_reason": "Three-category source-native ordered response."
+    },
+    {
+      "ordinal": 31,
+      "name": "p23",
+      "label": "Clean or rigged elections",
+      "storage_type": "double",
+      "original_type": "F1.0",
+      "storage_width": "8",
+      "measure": "nominal",
+      "value_labels": {
+        "-1.0": "Don´t know",
+        "-2.0": "No answer/Refused",
+        "-3.0": "Not applicable",
+        "-4.0": "Not asked",
+        "1.0": "Are Clean",
+        "2.0": "Are Rigged"
+      },
+      "missing_declarations": null,
+      "mr_declarations": null,
+      "codebook_mapping": {
+        "var_name": "p23",
+        "row_hash": "29d2d13e90050987defd61b134b3077b47a4690399e7c7b8f73664552da42d6a",
+        "status": "EXACT"
+      },
+      "disposition": "SUPPORTED_RESPONSE",
+      "disposition_reason": "Binary source-native response with exact relation."
+    },
+    {
+      "ordinal": 75,
+      "name": "p44b",
+      "label": "Impression of the actions of USA in your country",
+      "storage_type": "double",
+      "original_type": "F1.0",
+      "storage_width": "8",
+      "measure": "nominal",
+      "value_labels": {
+        "-1.0": "Don´t know",
+        "-2.0": "No answer/Refused",
+        "-3.0": "Not applicable",
+        "-4.0": "Not asked",
+        "1.0": "Very positive",
+        "2.0": "Fairly positive",
+        "3.0": "Neither positive nor negative",
+        "4.0": "Fairly negative",
+        "5.0": "Very negative"
+      },
+      "missing_declarations": null,
+      "mr_declarations": null,
+      "codebook_mapping": {
+        "var_name": "p44b",
+        "row_hash": "ece3b01413d2f17e1d0b9512c13682cd54217ff6191dfe6eea126105fca47d60",
+        "status": "EXACT"
+      },
+      "disposition": "SUPPORTED_RESPONSE",
+      "disposition_reason": "Five-category source-native ordered response."
+    },
+    {
+      "ordinal": 142,
+      "name": "p66c",
+      "label": "Same opportunity for women and men: To receive a good education",
+      "storage_type": "double",
+      "original_type": "F1.0",
+      "storage_width": "8",
+      "measure": "nominal",
+      "value_labels": {
+        "-1.0": "Don´t know",
+        "-2.0": "No answer/Refused",
+        "-3.0": "Not applicable",
+        "-4.0": "Not asked",
+        "1.0": "Yes",
+        "2.0": "No"
+      },
+      "missing_declarations": null,
+      "mr_declarations": null,
+      "codebook_mapping": {
+        "var_name": "p66c",
+        "row_hash": "81d2d298dad54101c3f776a2337c99c06f022d7ce0b064a8af0006d30ef16bbc",
+        "status": "EXACT"
+      },
+      "disposition": "SUPPORTED_RESPONSE",
+      "disposition_reason": "Binary source-native response with exact relation."
+    }
+  ],
+  "items": [
+    {
+      "implementation_id": "question_impl.phase0.1c3600697f4a81f6697d",
+      "source_variable_code": "p23",
+      "exact_identity_sha256": "1c3600697f4a81f6697df9b38532c1abf025eedec8f32e930b2a0ea8fcea86c4",
+      "question_text": "Speaking generally, do you think that the elections in this country areclean or rigged?",
+      "disposition": "SUPPORTED_SCALAR_BINARY",
+      "response_classes": "support|oppose|unknown|missing",
+      "mapping_status": "governed_qsmv2_relation",
+      "authority_status": "GOVERNED_QSMV2_RELATION_AUTHORITY",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.1c3600697f4a81f6697d",
+          "content_hash": "1c3600697f4a81f6697df9b38532c1abf025eedec8f32e930b2a0ea8fcea86c4"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.1c3600697f4a81f6697d",
+          "content_hash": "1c3600697f4a81f6697df9b38532c1abf025eedec8f32e930b2a0ea8fcea86c4"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:1995:P23",
+          "content_hash": "45c1d445a6af083e68eb14cab301da5d671f0d461ca0a5469b2c093a3369666f"
+        }
+      ],
+      "limits": [
+        "relation_use_status_final=GOVERNED_QSMV2_RELATION_AUTHORITY",
+        "mapping_status=governed_qsmv2_relation",
+        "manual_signed_polarity_status=signed_evaluation",
+        "forbidden_inference=none recorded",
+        "does_not_measure=none recorded",
+        "Binary source-native response with exact relation."
+      ],
+      "relation": {
+        "status": "EXACT",
+        "question_id": "Latinobarómetro:1995:P23",
+        "mapping_status": "governed_qsmv2_relation",
+        "manual_response_topology": "binary_contrast",
+        "manual_response_normalization_rule": "none",
+        "manual_position_conditioning": "yes",
+        "manual_semantic_role": "relation_evidence",
+        "manual_signed_polarity_status": "signed_evaluation",
+        "forbidden_inference": "none recorded",
+        "does_not_measure": "none recorded",
+        "governed_row_payload_hash": "45c1d445a6af083e68eb14cab301da5d671f0d461ca0a5469b2c093a3369666f",
+        "p2_exact_identity_sha256": "1c3600697f4a81f6697df9b38532c1abf025eedec8f32e930b2a0ea8fcea86c4"
+      }
+    },
+    {
+      "implementation_id": "question_impl.phase0.01bfa73fdc2038524285",
+      "source_variable_code": "p44b",
+      "exact_identity_sha256": "01bfa73fdc20385242853976250f1a050707f507226921955e7cbc9ec1a20ac5",
+      "question_text": "what is your impression of the United States involvement in [nation]?",
+      "disposition": "SUPPORTED_SCALAR_ORDINAL",
+      "response_classes": "support|oppose|neutral|unknown|missing|inapplicable",
+      "mapping_status": "governed_qsmv2_relation",
+      "authority_status": "GOVERNED_QSMV2_RELATION_AUTHORITY",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.01bfa73fdc2038524285",
+          "content_hash": "01bfa73fdc20385242853976250f1a050707f507226921955e7cbc9ec1a20ac5"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.01bfa73fdc2038524285",
+          "content_hash": "01bfa73fdc20385242853976250f1a050707f507226921955e7cbc9ec1a20ac5"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:1995:P44b",
+          "content_hash": "3be5b3dd55f3af94d14afcfcab1aadf31df70164575bde16b9215d11c79c3ca1"
+        }
+      ],
+      "limits": [
+        "relation_use_status_final=GOVERNED_QSMV2_RELATION_AUTHORITY",
+        "mapping_status=governed_qsmv2_relation",
+        "manual_signed_polarity_status=signed_evaluation",
+        "forbidden_inference=none recorded",
+        "does_not_measure=none recorded",
+        "Five-category source-native ordered response."
+      ],
+      "relation": {
+        "status": "EXACT",
+        "question_id": "Latinobarómetro:1995:P44b",
+        "mapping_status": "governed_qsmv2_relation",
+        "manual_response_topology": "scalar",
+        "manual_response_normalization_rule": "none",
+        "manual_position_conditioning": "yes",
+        "manual_semantic_role": "relation_evidence",
+        "manual_signed_polarity_status": "signed_evaluation",
+        "forbidden_inference": "none recorded",
+        "does_not_measure": "none recorded",
+        "governed_row_payload_hash": "3be5b3dd55f3af94d14afcfcab1aadf31df70164575bde16b9215d11c79c3ca1",
+        "p2_exact_identity_sha256": "01bfa73fdc20385242853976250f1a050707f507226921955e7cbc9ec1a20ac5"
+      }
+    },
+    {
+      "implementation_id": "question_impl.phase0.09c09ba9af3594967880",
+      "source_variable_code": "p5",
+      "exact_identity_sha256": "09c09ba9af359496788038d47ae737e60b931741b245a91c2fe3cd0ab839b2b5",
+      "question_text": "Do you consider your economic situation and that of your family to be better, the same, or worse than 12 months ago?.",
+      "disposition": "SUPPORTED_SCALAR_ORDINAL",
+      "response_classes": "support|oppose|neutral|unknown|missing",
+      "mapping_status": "governed_qsmv2_relation",
+      "authority_status": "GOVERNED_QSMV2_RELATION_AUTHORITY",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.09c09ba9af3594967880",
+          "content_hash": "09c09ba9af359496788038d47ae737e60b931741b245a91c2fe3cd0ab839b2b5"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.09c09ba9af3594967880",
+          "content_hash": "09c09ba9af359496788038d47ae737e60b931741b245a91c2fe3cd0ab839b2b5"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:1995:P5",
+          "content_hash": "355600f534058b380f215a30ba8228a13e5f19bec191571420eafe147bce1b42"
+        }
+      ],
+      "limits": [
+        "relation_use_status_final=GOVERNED_QSMV2_RELATION_AUTHORITY",
+        "mapping_status=governed_qsmv2_relation",
+        "manual_signed_polarity_status=signed_evaluation",
+        "forbidden_inference=none recorded",
+        "does_not_measure=none recorded",
+        "Three-category source-native ordered response."
+      ],
+      "relation": {
+        "status": "EXACT",
+        "question_id": "Latinobarómetro:1995:P5",
+        "mapping_status": "governed_qsmv2_relation",
+        "manual_response_topology": "scalar",
+        "manual_response_normalization_rule": "none",
+        "manual_position_conditioning": "yes",
+        "manual_semantic_role": "relation_evidence",
+        "manual_signed_polarity_status": "signed_evaluation",
+        "forbidden_inference": "none recorded",
+        "does_not_measure": "none recorded",
+        "governed_row_payload_hash": "355600f534058b380f215a30ba8228a13e5f19bec191571420eafe147bce1b42",
+        "p2_exact_identity_sha256": "09c09ba9af359496788038d47ae737e60b931741b245a91c2fe3cd0ab839b2b5"
+      }
+    },
+    {
+      "implementation_id": "question_impl.phase0.001beddefac2dd6cfe75",
+      "source_variable_code": "p66c",
+      "exact_identity_sha256": "001beddefac2dd6cfe75b6d2e71e1f249e8386a24e4063ab3dfd701f2d446851",
+      "question_text": "In regards to receiving a good education, do you think that women are given as much opportunity as men in this country?",
+      "disposition": "SUPPORTED_SCALAR_BINARY",
+      "response_classes": "support|oppose|unknown",
+      "mapping_status": "governed_qsmv2_relation",
+      "authority_status": "GOVERNED_QSMV2_RELATION_AUTHORITY",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.001beddefac2dd6cfe75",
+          "content_hash": "001beddefac2dd6cfe75b6d2e71e1f249e8386a24e4063ab3dfd701f2d446851"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.001beddefac2dd6cfe75",
+          "content_hash": "001beddefac2dd6cfe75b6d2e71e1f249e8386a24e4063ab3dfd701f2d446851"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:1995:P66c",
+          "content_hash": "515a3ed4d8e6936ec5a0c62812e650423bd918eee6ce5ecfbea37b2e6d088af3"
+        }
+      ],
+      "limits": [
+        "relation_use_status_final=GOVERNED_QSMV2_RELATION_AUTHORITY",
+        "mapping_status=governed_qsmv2_relation",
+        "manual_signed_polarity_status=signed_evaluation",
+        "forbidden_inference=none recorded",
+        "does_not_measure=none recorded",
+        "Binary source-native response with exact relation."
+      ],
+      "relation": {
+        "status": "EXACT",
+        "question_id": "Latinobarómetro:1995:P66c",
+        "mapping_status": "governed_qsmv2_relation",
+        "manual_response_topology": "binary_contrast",
+        "manual_response_normalization_rule": "none",
+        "manual_position_conditioning": "yes",
+        "manual_semantic_role": "relation_evidence",
+        "manual_signed_polarity_status": "signed_evaluation",
+        "forbidden_inference": "none recorded",
+        "does_not_measure": "none recorded",
+        "governed_row_payload_hash": "515a3ed4d8e6936ec5a0c62812e650423bd918eee6ce5ecfbea37b2e6d088af3",
+        "p2_exact_identity_sha256": "001beddefac2dd6cfe75b6d2e71e1f249e8386a24e4063ab3dfd701f2d446851"
+      }
+    }
+  ],
+  "response_slots": [
+    {
+      "slot": {
+        "ordinal": 142,
+        "name": "p66c"
+      },
+      "question_id": "p66c",
+      "values": [
+        {
+          "raw_value": -4.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "NOT_ASKED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p66c:BINARY_CONTRAST",
+                "content_hash": "12c2f8099349137fa9e7927dcce24caf0ad19bb67a0ab09ea4bcdf20dffd1d56"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -3.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "INAPPLICABLE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p66c:BINARY_CONTRAST",
+                "content_hash": "12c2f8099349137fa9e7927dcce24caf0ad19bb67a0ab09ea4bcdf20dffd1d56"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -2.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "REFUSAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p66c:BINARY_CONTRAST",
+                "content_hash": "12c2f8099349137fa9e7927dcce24caf0ad19bb67a0ab09ea4bcdf20dffd1d56"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -1.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "DK",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p66c:BINARY_CONTRAST",
+                "content_hash": "12c2f8099349137fa9e7927dcce24caf0ad19bb67a0ab09ea4bcdf20dffd1d56"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 1.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p66c:BINARY_CONTRAST",
+                "content_hash": "12c2f8099349137fa9e7927dcce24caf0ad19bb67a0ab09ea4bcdf20dffd1d56"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": "1",
+          "transform_authority_ref": {
+            "authority_id": "R157-SRC24-R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "bf237cc4783c8113a14603aa2bb583946d22e397436dcc1be3af90b72d75d2c7"
+          },
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 2.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p66c:BINARY_CONTRAST",
+                "content_hash": "12c2f8099349137fa9e7927dcce24caf0ad19bb67a0ab09ea4bcdf20dffd1d56"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": "2",
+          "transform_authority_ref": {
+            "authority_id": "R157-SRC24-R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "bf237cc4783c8113a14603aa2bb583946d22e397436dcc1be3af90b72d75d2c7"
+          },
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": null,
+          "missing_state": "SYSTEM_MISSING",
+          "source_missing_declaration": null,
+          "response_state": "MISSING",
+          "occurrences": [
+            {
+              "key": "system_missing",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p66c:BINARY_CONTRAST",
+                "content_hash": "12c2f8099349137fa9e7927dcce24caf0ad19bb67a0ab09ea4bcdf20dffd1d56"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        }
+      ]
+    },
+    {
+      "slot": {
+        "ordinal": 75,
+        "name": "p44b"
+      },
+      "question_id": "p44b",
+      "values": [
+        {
+          "raw_value": -4.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "NOT_ASKED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p44b:SCALAR",
+                "content_hash": "1d0fc8f1085c7ff42684c49580560bb199f40f1fe67ca3deae95531c4c4b0f1a"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -3.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "INAPPLICABLE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p44b:SCALAR",
+                "content_hash": "1d0fc8f1085c7ff42684c49580560bb199f40f1fe67ca3deae95531c4c4b0f1a"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -2.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "REFUSAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p44b:SCALAR",
+                "content_hash": "1d0fc8f1085c7ff42684c49580560bb199f40f1fe67ca3deae95531c4c4b0f1a"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -1.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "DK",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p44b:SCALAR",
+                "content_hash": "1d0fc8f1085c7ff42684c49580560bb199f40f1fe67ca3deae95531c4c4b0f1a"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 1.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p44b:SCALAR",
+                "content_hash": "1d0fc8f1085c7ff42684c49580560bb199f40f1fe67ca3deae95531c4c4b0f1a"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": "1",
+          "transform_authority_ref": {
+            "authority_id": "R157-SRC24-R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "bf237cc4783c8113a14603aa2bb583946d22e397436dcc1be3af90b72d75d2c7"
+          },
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 2.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p44b:SCALAR",
+                "content_hash": "1d0fc8f1085c7ff42684c49580560bb199f40f1fe67ca3deae95531c4c4b0f1a"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": "2",
+          "transform_authority_ref": {
+            "authority_id": "R157-SRC24-R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "bf237cc4783c8113a14603aa2bb583946d22e397436dcc1be3af90b72d75d2c7"
+          },
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 3.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p44b:SCALAR",
+                "content_hash": "1d0fc8f1085c7ff42684c49580560bb199f40f1fe67ca3deae95531c4c4b0f1a"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": "3",
+          "transform_authority_ref": {
+            "authority_id": "R157-SRC24-R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "bf237cc4783c8113a14603aa2bb583946d22e397436dcc1be3af90b72d75d2c7"
+          },
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 4.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p44b:SCALAR",
+                "content_hash": "1d0fc8f1085c7ff42684c49580560bb199f40f1fe67ca3deae95531c4c4b0f1a"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": "4",
+          "transform_authority_ref": {
+            "authority_id": "R157-SRC24-R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "bf237cc4783c8113a14603aa2bb583946d22e397436dcc1be3af90b72d75d2c7"
+          },
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 5.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p44b:SCALAR",
+                "content_hash": "1d0fc8f1085c7ff42684c49580560bb199f40f1fe67ca3deae95531c4c4b0f1a"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": "5",
+          "transform_authority_ref": {
+            "authority_id": "R157-SRC24-R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "bf237cc4783c8113a14603aa2bb583946d22e397436dcc1be3af90b72d75d2c7"
+          },
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": null,
+          "missing_state": "SYSTEM_MISSING",
+          "source_missing_declaration": null,
+          "response_state": "MISSING",
+          "occurrences": [
+            {
+              "key": "system_missing",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p44b:SCALAR",
+                "content_hash": "1d0fc8f1085c7ff42684c49580560bb199f40f1fe67ca3deae95531c4c4b0f1a"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        }
+      ]
+    },
+    {
+      "slot": {
+        "ordinal": 9,
+        "name": "p5"
+      },
+      "question_id": "p5",
+      "values": [
+        {
+          "raw_value": -4.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "NOT_ASKED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p5:SCALAR",
+                "content_hash": "8321b69e3c582d911a4755ca59f2ed318ba60268c8082af8c45f17e37a1142f8"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -3.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "INAPPLICABLE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p5:SCALAR",
+                "content_hash": "8321b69e3c582d911a4755ca59f2ed318ba60268c8082af8c45f17e37a1142f8"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -2.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "REFUSAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p5:SCALAR",
+                "content_hash": "8321b69e3c582d911a4755ca59f2ed318ba60268c8082af8c45f17e37a1142f8"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -1.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "DK",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p5:SCALAR",
+                "content_hash": "8321b69e3c582d911a4755ca59f2ed318ba60268c8082af8c45f17e37a1142f8"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 1.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p5:SCALAR",
+                "content_hash": "8321b69e3c582d911a4755ca59f2ed318ba60268c8082af8c45f17e37a1142f8"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": "1",
+          "transform_authority_ref": {
+            "authority_id": "R157-SRC24-R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "bf237cc4783c8113a14603aa2bb583946d22e397436dcc1be3af90b72d75d2c7"
+          },
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 2.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p5:SCALAR",
+                "content_hash": "8321b69e3c582d911a4755ca59f2ed318ba60268c8082af8c45f17e37a1142f8"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": "2",
+          "transform_authority_ref": {
+            "authority_id": "R157-SRC24-R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "bf237cc4783c8113a14603aa2bb583946d22e397436dcc1be3af90b72d75d2c7"
+          },
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 3.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p5:SCALAR",
+                "content_hash": "8321b69e3c582d911a4755ca59f2ed318ba60268c8082af8c45f17e37a1142f8"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": "3",
+          "transform_authority_ref": {
+            "authority_id": "R157-SRC24-R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "bf237cc4783c8113a14603aa2bb583946d22e397436dcc1be3af90b72d75d2c7"
+          },
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": null,
+          "missing_state": "SYSTEM_MISSING",
+          "source_missing_declaration": null,
+          "response_state": "MISSING",
+          "occurrences": [
+            {
+              "key": "system_missing",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p5:SCALAR",
+                "content_hash": "8321b69e3c582d911a4755ca59f2ed318ba60268c8082af8c45f17e37a1142f8"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        }
+      ]
+    },
+    {
+      "slot": {
+        "ordinal": 31,
+        "name": "p23"
+      },
+      "question_id": "p23",
+      "values": [
+        {
+          "raw_value": -4.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "NOT_ASKED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p23:BINARY_CONTRAST",
+                "content_hash": "0ff6c801bf7428c02b7029173762c2f78d3d9ec2a1ecac16abd88d77d811c1af"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -3.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "INAPPLICABLE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p23:BINARY_CONTRAST",
+                "content_hash": "0ff6c801bf7428c02b7029173762c2f78d3d9ec2a1ecac16abd88d77d811c1af"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -2.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "REFUSAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p23:BINARY_CONTRAST",
+                "content_hash": "0ff6c801bf7428c02b7029173762c2f78d3d9ec2a1ecac16abd88d77d811c1af"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -1.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "DK",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p23:BINARY_CONTRAST",
+                "content_hash": "0ff6c801bf7428c02b7029173762c2f78d3d9ec2a1ecac16abd88d77d811c1af"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 1.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p23:BINARY_CONTRAST",
+                "content_hash": "0ff6c801bf7428c02b7029173762c2f78d3d9ec2a1ecac16abd88d77d811c1af"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": "1",
+          "transform_authority_ref": {
+            "authority_id": "R157-SRC24-R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "bf237cc4783c8113a14603aa2bb583946d22e397436dcc1be3af90b72d75d2c7"
+          },
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 2.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p23:BINARY_CONTRAST",
+                "content_hash": "0ff6c801bf7428c02b7029173762c2f78d3d9ec2a1ecac16abd88d77d811c1af"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": "2",
+          "transform_authority_ref": {
+            "authority_id": "R157-SRC24-R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "bf237cc4783c8113a14603aa2bb583946d22e397436dcc1be3af90b72d75d2c7"
+          },
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": null,
+          "missing_state": "SYSTEM_MISSING",
+          "source_missing_declaration": null,
+          "response_state": "MISSING",
+          "occurrences": [
+            {
+              "key": "system_missing",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:topology:SRC24:p23:BINARY_CONTRAST",
+                "content_hash": "0ff6c801bf7428c02b7029173762c2f78d3d9ec2a1ecac16abd88d77d811c1af"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "BINARY_CONTRAST",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        }
+      ]
+    }
+  ],
+  "coordinate_slots": [
+    {
+      "slot": {
+        "ordinal": 2,
+        "name": "pais"
+      },
+      "native_coordinate_ref": {
+        "kind": "COORDINATE_NATIVE",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:pais",
+        "content_hash": "da28adc78d66ca4e1859e166a45479caa8e7a9954e8cf267ed16294348da3869"
+      },
+      "unit_taxonomy_ref": {
+        "kind": "UNIT_TAXONOMY",
+        "object_id": "urn:rawlsing:r157:SOURCE_NATIVE_COUNTRY_CODE",
+        "content_hash": "f1f16a1c046463425d3c0206a94c76a36b33d7a569addb1937925303e09fc347"
+      },
+      "effective_time": "1995",
+      "source_semantic_authority_ref": {
+        "authority_id": "R157-SRC24-R157_OBSERVE_SOURCE_NATIVE_COORDINATE_RAW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "cc898a3de9f3dbb051e314828383d094a5649478543e6a8510a73d712bdfda41"
+      },
+      "canonical_coordinate_ref": null,
+      "normalization_ref": null,
+      "values": [],
+      "copy_observed_raw": true
+    }
+  ],
+  "weight_slots": [],
+  "routing": [
+    {
+      "question_id": "p66c",
+      "row_selector": "ALL",
+      "typed_state": "ROUTING_UNKNOWN",
+      "risk_set_ref": {
+        "kind": "RISK_SET",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:p66c:unresolved",
+        "content_hash": "1e92e5caba9903abef9afc16fe6c5dba6cdb4c22bc7c7c793ba174d45b4cd361"
+      },
+      "routing_rule_ref": {
+        "kind": "ROUTING_RULE",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:p66c:unresolved",
+        "content_hash": "1b4a358fed9ae374994eb1fff695712d5df72a4b304fcf83d0fd4e6e21d3549e"
+      },
+      "member_set_replay_ref": {
+        "kind": "MEMBER_SET_REPLAY",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:p66c:unresolved",
+        "content_hash": "5508f6b769bd6ec6eb8ec2bb30a5af8b28d30bc8d97fe88861df8d20c2bf81a5"
+      },
+      "authority_ref": {
+        "authority_id": "R157-SRC24-R157_RECORD_UNRESOLVED_SOURCE_ROUTING",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "5e6a124627ebf6b530458c2f456cce37d6e2083d35e6731cc2b3e9d51bd90c83"
+      },
+      "parent_predicate_refs": [],
+      "dependency_refs": []
+    },
+    {
+      "question_id": "p44b",
+      "row_selector": "ALL",
+      "typed_state": "ROUTING_UNKNOWN",
+      "risk_set_ref": {
+        "kind": "RISK_SET",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:p44b:unresolved",
+        "content_hash": "ce7ccbed0612bed97544c5a40cc7da58f0006fc11fe284d672c75b9db0e5a8cf"
+      },
+      "routing_rule_ref": {
+        "kind": "ROUTING_RULE",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:p44b:unresolved",
+        "content_hash": "b61012f4fec51f6e79a916cac3a26f8633d138c0c082ecfde98b2e797fdbbfae"
+      },
+      "member_set_replay_ref": {
+        "kind": "MEMBER_SET_REPLAY",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:p44b:unresolved",
+        "content_hash": "cd2445d036bb889d8aa021428e39c7797bfd53d43f8313b12937b7bec55389a7"
+      },
+      "authority_ref": {
+        "authority_id": "R157-SRC24-R157_RECORD_UNRESOLVED_SOURCE_ROUTING",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "5e6a124627ebf6b530458c2f456cce37d6e2083d35e6731cc2b3e9d51bd90c83"
+      },
+      "parent_predicate_refs": [],
+      "dependency_refs": []
+    },
+    {
+      "question_id": "p5",
+      "row_selector": "ALL",
+      "typed_state": "ROUTING_UNKNOWN",
+      "risk_set_ref": {
+        "kind": "RISK_SET",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:p5:unresolved",
+        "content_hash": "cc880ad79909ac646a88de5ddf5a5134fd87819f25cb96034441a20f74989818"
+      },
+      "routing_rule_ref": {
+        "kind": "ROUTING_RULE",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:p5:unresolved",
+        "content_hash": "b067a13964a731381cb5cb20b19aea7552386f907af8c92f1a93a15a17c16492"
+      },
+      "member_set_replay_ref": {
+        "kind": "MEMBER_SET_REPLAY",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:p5:unresolved",
+        "content_hash": "6bb28bad609503bd4f7b9b029167a7c84389106674b6e202a22bfee80b22e6de"
+      },
+      "authority_ref": {
+        "authority_id": "R157-SRC24-R157_RECORD_UNRESOLVED_SOURCE_ROUTING",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "5e6a124627ebf6b530458c2f456cce37d6e2083d35e6731cc2b3e9d51bd90c83"
+      },
+      "parent_predicate_refs": [],
+      "dependency_refs": []
+    },
+    {
+      "question_id": "p23",
+      "row_selector": "ALL",
+      "typed_state": "ROUTING_UNKNOWN",
+      "risk_set_ref": {
+        "kind": "RISK_SET",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:p23:unresolved",
+        "content_hash": "fe69b95cb58cdc6548cb4d76048b4d4e9069b4de19e4c0314feffd49a5d1aad2"
+      },
+      "routing_rule_ref": {
+        "kind": "ROUTING_RULE",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:p23:unresolved",
+        "content_hash": "ce7c990f3c7a38071bbd940b032deae958f24e441a0aa98c769afbbe44954bae"
+      },
+      "member_set_replay_ref": {
+        "kind": "MEMBER_SET_REPLAY",
+        "object_id": "urn:rawlsing:r157:fixture:SRC24:p23:unresolved",
+        "content_hash": "9026fc800cb7dbd1d4805efb0127a1b014250fd99d5fe5bb3cc188fe9f3362aa"
+      },
+      "authority_ref": {
+        "authority_id": "R157-SRC24-R157_RECORD_UNRESOLVED_SOURCE_ROUTING",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "5e6a124627ebf6b530458c2f456cce37d6e2083d35e6731cc2b3e9d51bd90c83"
+      },
+      "parent_predicate_refs": [],
+      "dependency_refs": []
+    }
+  ],
+  "source_relations": {
+    "typed_absence_state": "DISTINCT_BY_DEFAULT"
+  },
+  "replay": {
+    "predicate": {
+      "typed_absence_state": "NOT_APPLICABLE",
+      "detail": null
+    },
+    "comparator": {
+      "typed_absence_state": "DEFERRED",
+      "detail": null
+    },
+    "discovery": {
+      "typed_absence_state": "DEFERRED",
+      "detail": null
+    },
+    "structural": {
+      "typed_absence_state": "NOT_APPLICABLE",
+      "detail": null
+    }
+  },
+  "supported_scope": {
+    "scope_id": "SRC24-R157-NONRESPONDENT-FIXTURE-SLICE",
+    "purpose": "NONRESPONDENT_FIXTURE_VALIDATION",
+    "declared_supported": true,
+    "supported_question_ids": [
+      "p66c",
+      "p44b",
+      "p5",
+      "p23"
+    ],
+    "native_validation_expectation": "POSITIVE_RELEASE",
+    "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
+    "supported_unit_slice": "NONRESPONDENT_FIXTURE_ROWS",
+    "supported_form_slice": "NONRESPONDENT_FIXTURE_SLICE",
+    "notes": [
+      "Fixture-only authority; never original-source authority.",
+      "The fixture bytes are a distinct identity and do not reuse the original source SHA."
+    ]
+  },
+  "coverage": {
+    "physical_slots_total": 203,
+    "items_total": 203,
+    "partial_scope_reason": "Nonrespondent fixture slice only; original source coverage is declared in the separate ORIGINAL_SOURCE preparation config.",
+    "not_a_lane_config": true
+  },
+  "residuals": [
+    {
+      "residual_id": "SRC24-FIXTURE-ONLY-AUTHORITY",
+      "scope": "SRC24",
+      "field": "authority.snapshots",
+      "status": "FIXTURE_ONLY",
+      "reason": "The fixture proves native construction but does not establish original-source authority.",
+      "dependent_operation": "original-source execution and scientific interpretation",
+      "unaffected_scope": "nonrespondent fixture native C11 validation",
+      "owner": "LATIN lane / P3 integration owner",
+      "next_step": "Keep fixture authority separate from the ORIGINAL_SOURCE config and any future issued workload."
+    }
+  ],
+  "evidence": {
+    "source_roster_path": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+    "item_index_path": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+    "evidence_manifest_path": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json",
+    "pinned_inputs": [
+      {
+        "kind": "R157_PLAN_SEAL",
+        "commit": "4c0c619eac747afee1d8e65e1418bf2d472da4c3"
+      },
+      {
+        "kind": "R154_METADATA_SNAPSHOT",
+        "commit": "a02adc896264e1b46afd143cba9426182ec14802",
+        "path": "WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/store/r154_all35.sqlite",
+        "sha256": "7d6421e6e50f7d249cf09e7ecf964757d6afa4a7926d7a31eb1aad3407a12a16"
+      },
+      {
+        "kind": "H48_ITEM_INDEX",
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz",
+        "sha256": "35818e2cdd2b7e16e60788bef094eb117ef78fc63df3dc068ecb8b8948f728f5"
+      },
+      {
+        "kind": "P2_PHASE0",
+        "sha256": "d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6"
+      },
+      {
+        "kind": "FULL_RELATION_AUTHORITY",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13"
+      }
+    ],
+    "field_evidence": [
+      {
+        "field": "identity.expected_source_sha256",
+        "refs": [
+          {
+            "kind": "SOURCE_SNAPSHOT",
+            "object_id": "urn:rawlsing:r157:source-snapshot:SRC24",
+            "content_hash": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7"
+          }
+        ]
+      },
+      {
+        "field": "identity.metadata_witness_ref",
+        "refs": [
+          {
+            "kind": "R154_PHYSICAL_METADATA",
+            "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+            "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+          }
+        ]
+      },
+      {
+        "field": "physical_slots",
+        "refs": [
+          {
+            "kind": "R154_PHYSICAL_METADATA",
+            "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+            "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+          }
+        ]
+      },
+      {
+        "field": "correspondence",
+        "refs": [
+          {
+            "kind": "SOURCE_CORRESPONDENCE",
+            "object_id": "rawlsing_next/source_configuration/data/SRC24/crosswalk.json",
+            "content_hash": "305ec8f13c3f23029e860a8749feb7cf8ddb0674561b6842a75f9afbfbee36f4"
+          }
+        ]
+      },
+      {
+        "field": "items.supported",
+        "refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.001beddefac2dd6cfe75",
+            "content_hash": "001beddefac2dd6cfe75b6d2e71e1f249e8386a24e4063ab3dfd701f2d446851"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.001beddefac2dd6cfe75",
+            "content_hash": "001beddefac2dd6cfe75b6d2e71e1f249e8386a24e4063ab3dfd701f2d446851"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:1995:P66c",
+            "content_hash": "515a3ed4d8e6936ec5a0c62812e650423bd918eee6ce5ecfbea37b2e6d088af3"
+          },
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.01bfa73fdc2038524285",
+            "content_hash": "01bfa73fdc20385242853976250f1a050707f507226921955e7cbc9ec1a20ac5"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.01bfa73fdc2038524285",
+            "content_hash": "01bfa73fdc20385242853976250f1a050707f507226921955e7cbc9ec1a20ac5"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:1995:P44b",
+            "content_hash": "3be5b3dd55f3af94d14afcfcab1aadf31df70164575bde16b9215d11c79c3ca1"
+          },
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.09c09ba9af3594967880",
+            "content_hash": "09c09ba9af359496788038d47ae737e60b931741b245a91c2fe3cd0ab839b2b5"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.09c09ba9af3594967880",
+            "content_hash": "09c09ba9af359496788038d47ae737e60b931741b245a91c2fe3cd0ab839b2b5"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:1995:P5",
+            "content_hash": "355600f534058b380f215a30ba8228a13e5f19bec191571420eafe147bce1b42"
+          },
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.1c3600697f4a81f6697d",
+            "content_hash": "1c3600697f4a81f6697df9b38532c1abf025eedec8f32e930b2a0ea8fcea86c4"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.1c3600697f4a81f6697d",
+            "content_hash": "1c3600697f4a81f6697df9b38532c1abf025eedec8f32e930b2a0ea8fcea86c4"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:1995:P23",
+            "content_hash": "45c1d445a6af083e68eb14cab301da5d671f0d461ca0a5469b2c093a3369666f"
+          }
+        ]
+      }
+    ],
+    "limits": [
+      "Prior H48/P2/full-relation evidence is reused with its original grades and limits.",
+      "No original respondent rows, original response values or original source bytes were read.",
+      "Fixture authority is not original-source authority."
+    ]
+  },
+  "runtime": {
+    "projection_builder": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "release_builder": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+    "repository_builder": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config",
+    "native_owner": "rawlsing_next.pre553_source_backed_c11_facade.GovernedC11Projection",
+    "native_validator_stream": "rawlsing_next.pre553_source_backed_c11_facade.build_validated_source_backed_c11_release_from_stream",
+    "native_validator_incidence": "rawlsing_next.pre553_source_backed_c11_facade.build_validated_source_backed_c11_release",
+    "source_read_owner": "rawlsing_next.pre553_source_read_admission.decode_with_source_read_permission",
+    "transport": [
+      "ExactPhysicalCellStream",
+      "PhysicalSourceIncidence"
+    ],
+    "reader_encoding_transport": "P3_INTEGRATION_OWNER_QUALIFIED_READER_TRANSPORT"
+  }
+}

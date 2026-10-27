@@ -1,0 +1,50 @@
+{
+  "schema": "PYAT_R157_LATIN_SOURCE_MANIFEST@1.0.0",
+  "source_id": "SRC24",
+  "family": "Latinobarómetro",
+  "wave": "1995",
+  "source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+  "config_sha256": "cb1f7eddd510b6b17cc7b726d2bb466023f7247e02df5afef1dcbc455a28852b",
+  "fixture_config_sha256": "ca575e4aea32a686f8a9b313b4fce56e44e9bc90d41b60cdb40112f21eeb999b",
+  "fixture_source_sha256": "74b66afa2c17863e70b01fcebdbbdfd9d8ba61dfcff7b2719dbed6ea98e969ab",
+  "counts": {
+    "physical_slots": 203,
+    "original_items": 203,
+    "included_slots": 5,
+    "included_items": 4,
+    "crosswalk_physical_entries": 203,
+    "crosswalk_codebook_entries": 203
+  },
+  "artifacts": [
+    {
+      "path": "rawlsing_next/source_configuration/data/SRC24/crosswalk.json",
+      "sha256": "305ec8f13c3f23029e860a8749feb7cf8ddb0674561b6842a75f9afbfbee36f4",
+      "bytes": 181412
+    },
+    {
+      "path": "rawlsing_next/source_configuration/data/SRC24/source.config.json",
+      "sha256": "0d35db47d349b25a644ea5c0089978bb2b813a7819bc29927f3df6bddc446d03",
+      "bytes": 839555
+    },
+    {
+      "path": "rawlsing_next/source_configuration/data/SRC24/field_evidence.json",
+      "sha256": "f26f7de045a57a7d9e05ecd7c358f8e53e3a5d7d60a0f7cce8e061e4c01c45a3",
+      "bytes": 329187
+    },
+    {
+      "path": "source_pre553_validation/SRC24/fixture.json",
+      "sha256": "02c7fc1bfda603d452027a6883152fc59d8ad1387d9a4ad5ca070b6faee4fa11",
+      "bytes": 11940
+    },
+    {
+      "path": "source_pre553_validation/SRC24/fixture.config.json",
+      "sha256": "69c53f1526747db2d78cc32583494269743120287f5f7fe26f47bbf7a67c9239",
+      "bytes": 91563
+    },
+    {
+      "path": "source_pre553_validation/SRC24/fixture_oracle.json",
+      "sha256": "24b3631765a0ec37f5d0003a93ed0e604549dfd9fadecf2bb835935b134479d5",
+      "bytes": 3486
+    }
+  ]
+}
