@@ -3410,20 +3410,73 @@
   },
   "r157_current": {
     "branch": "agent/pyat-source-pre553-r157",
-    "head": "63b96e7bc6c7e9e4e02ada64ee19a19ad17992ba",
+    "head": "d62b3e4b4510d8c9aab30ae11d2a7984f7b8b3a7",
     "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
     "active_workers": [
       {
-        "task": "P0_FOUNDATION",
-        "pid": 5095,
+        "task": "P0_FINAL_RETURN",
         "session": "ses_e98c905cbffekusoHURfKyEUKG",
+        "pid": 5095,
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
-        "state": "RUNNING_ACTUAL_PREFLIGHT_VERIFIED"
+        "state": "RUNNING_FINISHING_RETURN",
+        "launch": "P0_LAUNCH.json"
+      },
+      {
+        "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
+        "lane": "LATIN",
+        "source_ids": [
+          "SRC24",
+          "SRC25",
+          "SRC26"
+        ],
+        "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+        "pid": 15088,
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin",
+        "branch": "agent/pyat-pre553-r157-latin",
+        "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+        "launch": "LANE_LAUNCHES.json"
+      },
+      {
+        "task": "GSS:SOURCE_CONFIGURATION_QUEUE",
+        "lane": "GSS",
+        "source_ids": [
+          "SRC16",
+          "SRC17",
+          "SRC18",
+          "SRC19",
+          "SRC20",
+          "SRC21",
+          "SRC22",
+          "SRC23"
+        ],
+        "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+        "pid": 15095,
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss",
+        "branch": "agent/pyat-pre553-r157-gss",
+        "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+        "launch": "LANE_LAUNCHES.json"
+      },
+      {
+        "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
+        "lane": "LITS",
+        "source_ids": [
+          "SRC27",
+          "SRC28",
+          "SRC29",
+          "SRC30"
+        ],
+        "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+        "pid": 15101,
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
+        "branch": "agent/pyat-pre553-r157-lits",
+        "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+        "launch": "LANE_LAUNCHES.json"
       }
     ],
-    "state": "P0_RUNNING",
+    "state": "P0_FROZEN_THREE_SOURCE_LANES_RUNNING",
     "goal_update": "LIVE_CONSOLIDATED_OBJECTIVE_VERIFIED_ACTIVE",
     "heartbeat": "PAUSED",
-    "next_action": "Intake terminal P0 executable interface; then independent ready source lanes and P3, max4 authors."
+    "next_action": "Existing integrator finishes P0 return/corrections, then P3; intake ready source lane terminal returns and launch next independent lanes within max4.",
+    "frozen_p0": "328e394e871ea09289c7023d3fb54b3f030d8481"
   }
 }
