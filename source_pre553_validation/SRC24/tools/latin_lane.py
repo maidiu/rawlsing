@@ -580,6 +580,42 @@ def make_universe(
     return payload, universe.ref.as_dict()
 
 
+def _label_key(value: Any) -> str:
+    text = str(value or "").casefold().strip()
+    for mark in ("´", "`", "’", "‘"):
+        text = text.replace(mark, "'")
+    return re.sub(r"\s+", " ", text)
+
+
+def _options(text: Any) -> dict[int, str]:
+    out: dict[int, str] = {}
+    for part in str(text or "").split("|"):
+        match = re.match(r"^\s*(-?\d+)\s*=\s*(.*)$", part.strip())
+        if match:
+            out[int(match.group(1))] = _label_key(match.group(2))
+    return out
+
+
+def entry_verification(p: Mapping[str, Any], c: Mapping[str, Any] | None, match_basis: str) -> dict[str, Any]:
+    physical_values: dict[int, str] = {}
+    for key, label in (p.get("value_labels") or {}).items():
+        try:
+            code = int(float(key))
+        except (TypeError, ValueError):
+            continue
+        physical_values[code] = _label_key(label)
+    codebook_values = _options(c.get("response_options_all")) if c else {}
+    exact = sum(1 for code, label in physical_values.items() if codebook_values.get(code) == label)
+    return {
+        "physical_label": p.get("label"),
+        "codebook_question_text": c.get("question_text") if c else None,
+        "physical_labeled_codes": len(physical_values),
+        "codebook_option_codes": len(codebook_values),
+        "exact_code_label_matches": exact,
+        "match_basis": match_basis,
+    }
+
+
 def build_crosswalk(source_id: str, roster: Mapping[str, Any], phys: list[Mapping[str, Any]],
                     cb: list[Mapping[str, Any]], mode: str) -> dict[str, Any]:
     physical_entries: list[dict[str, Any]] = []
@@ -598,6 +634,7 @@ def build_crosswalk(source_id: str, roster: Mapping[str, Any], phys: list[Mappin
                 "codebook_question_text": c["question_text"],
                 "relation_kind": "ONE_TO_ONE",
                 "match_basis": "EXACT_SOURCE_NAME_AND_ORDINAL",
+                "verification": entry_verification(p, c, "EXACT_SOURCE_NAME_AND_ORDINAL"),
             })
             codebook_entries.append({
                 "codebook_var_name": c["var_name"],
@@ -625,10 +662,9 @@ def build_crosswalk(source_id: str, roster: Mapping[str, Any], phys: list[Mappin
                 "relation_kind": "ONE_TO_ONE",
                 "match_basis": match,
                 "verification": {
+                    **entry_verification(p, c, match),
                     "ordinal_equals_codebook_row_index": True,
                     "normalized_name_equal": True,
-                    "physical_label": p["label"],
-                    "codebook_question_text": c["question_text"],
                 },
             })
             codebook_entries.append({
@@ -756,6 +792,7 @@ def build_crosswalk(source_id: str, roster: Mapping[str, Any], phys: list[Mappin
                     "codebook_question_text": None,
                     "relation_kind": "PHYSICAL_ONLY_EXTRA",
                     "match_basis": "NO_EXACT_CODEBOOK_COUNTERPART",
+                    "verification": entry_verification(p, None, "NO_EXACT_CODEBOOK_COUNTERPART"),
                     "held_reason": reason,
                 })
                 continue
@@ -783,6 +820,7 @@ def build_crosswalk(source_id: str, roster: Mapping[str, Any], phys: list[Mappin
                     "relation_kind": relation_kind,
                     "match_basis": match_basis,
                     "group_physical_names": list(names_for_p),
+                    "verification": entry_verification(p, c, match_basis),
                     "evidence_note": "Explicit serialized crosswalk; no dynamic normalization or P/Q alias inference.",
                 })
             else:
@@ -882,6 +920,10 @@ def load_context(source_id: str) -> dict[str, Any]:
             raise RuntimeError(f"{source_id}: supported item lacks exact relation: {code}")
         if x["p2"].get("response_binding_status") != "bound":
             raise RuntimeError(f"{source_id}: supported item response binding not bound: {code}")
+    for entry in crosswalk["entries"]:
+        entry["selected_for_supported_slice"] = entry["physical_name"] in supported_slots
+    crosswalk["counts"]["selected_for_supported_slice"] = sum(
+        1 for entry in crosswalk["entries"] if entry["selected_for_supported_slice"])
     return {
         "source_id": source_id,
         "roster": roster,

@@ -4,8 +4,8 @@
   "family": "Latinobarómetro",
   "wave": "2011",
   "source_sha256": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e",
-  "config_sha256": "4d2fc5c1afe32db63801d2c07aacfcd4e2d57f42a9fc8b2df2c77a8f39765461",
-  "fixture_config_sha256": "5a2e44c1376a650260e8020dad49e7a9e722a174a7bcb8bf753e504a0070cb2d",
+  "config_sha256": "a4af3274d0f57d58345e043803b8d0e8cc8b1cfd00adff9b702215e4b1d63f18",
+  "fixture_config_sha256": "c2216173506e44d694231ad6af12148cd0791b9973aca3c1961de969cb03c3c4",
   "fixture_source_sha256": "b7e88419fe62dd793360aa6b1e2d3107f6e1264351c195fd6657c837afd36d5d",
   "counts": {
     "physical_slots": 414,
@@ -18,17 +18,17 @@
   "artifacts": [
     {
       "path": "rawlsing_next/source_configuration/data/SRC25/crosswalk.json",
-      "sha256": "3cd1d010ac1ff89a7b49a75a80f78fac7dbf952a9c5b5655e9e0edbeaaeb500a",
-      "bytes": 521619
+      "sha256": "72b3dbf63209b4e39067c9c2b130fea50106fe3f03de0b54e57fbd4121a59431",
+      "bytes": 607453
     },
     {
       "path": "rawlsing_next/source_configuration/data/SRC25/source.config.json",
-      "sha256": "1128f485afb88bd624fb780dec7aea1de958be2c894a6c077aa10a6c03fc1c5b",
+      "sha256": "fc65dfdd003e413d8ad1e7ae75068ad882a6444896a6fd18f98dbe70d998cfa5",
       "bytes": 1781463
     },
     {
       "path": "rawlsing_next/source_configuration/data/SRC25/field_evidence.json",
-      "sha256": "6e8f338012508016bcd9604ca988a61f5b66c9de88f7c9cd477c24adcf9675fb",
+      "sha256": "b222f1f533e880692e86c76038d1027efd9ebf714b82af7b7d77a18f0d6a530d",
       "bytes": 684066
     },
     {
@@ -38,13 +38,62 @@
     },
     {
       "path": "source_pre553_validation/SRC25/fixture.config.json",
-      "sha256": "623ac4eb67df30fe610ab767723732e1b80afce05103bd1dfa9a70113b02453d",
+      "sha256": "e80a5c3fb72155bced670019999873bed2dca4f62fbf6f53ff729ddfdee0892b",
       "bytes": 86067
     },
     {
       "path": "source_pre553_validation/SRC25/fixture_oracle.json",
       "sha256": "0666c80b564c20a455a27a9e45d83a150b8f30d8824a3a5ecb4f655b73204136",
       "bytes": 3396
+    },
+    {
+      "path": "source_pre553_validation/SRC25/VALIDATION_RESULTS.json",
+      "sha256": "6b63a970e467f28be42be7e1f1be1635cebbf8bc2f681078e8c10c4e4e5737ac",
+      "bytes": 17108
+    },
+    {
+      "path": "source_pre553_validation/SRC25/EXCEPTIONS.json",
+      "sha256": "f00564c7a55d17f6eed40c9b9beda7e6b9a649363554679c3638eec9821998b1",
+      "bytes": 31187
     }
-  ]
+  ],
+  "validation": {
+    "status": "PASS",
+    "native_release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_FIXTURE_RELEASE/SRC25",
+      "content_hash": "547ec2aff1a4530731019f3cbacdef471e7934eac6b50ed969138b925921a081"
+    },
+    "semantic_release_hash": "547ec2aff1a4530731019f3cbacdef471e7934eac6b50ed969138b925921a081",
+    "actual_counts": {
+      "response_event_count": 40,
+      "coordinate_fact_count": 10,
+      "routing_fact_count": 40
+    },
+    "no_drop": {
+      "physical_slots_total": 414,
+      "physical_slots_included": 5,
+      "physical_slots_excluded": 409,
+      "items_total": 414,
+      "items_included": 4,
+      "items_excluded": 410
+    },
+    "refusals": [
+      {
+        "case": "original config + fixture stream",
+        "type": "SourceConfigurationBindingError",
+        "message": "active source SHA differs from the frozen config binding"
+      },
+      {
+        "case": "fixture config + wrong fixture SHA",
+        "type": "SourceConfigurationBindingError",
+        "message": "active source SHA differs from the frozen config binding"
+      },
+      {
+        "case": "configured source_native_key_slot without row_native_keys",
+        "type": "SourceConfigurationBindingError",
+        "message": "configured source_native_key_slot requires row_native_keys after a permitted decode"
+      }
+    ]
+  }
 }

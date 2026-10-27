@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
 from rawlsing_next.pre553_c11_integrity import RespondentEvent, RoutingEligibilityFact  # noqa: E402
-from rawlsing_next.pre553_empirical_objects import EmpiricalCoordinateFact  # noqa: E402
+from rawlsing_next.pre553_empirical_objects import EmpiricalCoordinateFact, exact_ref  # noqa: E402
 from rawlsing_next.pre553_r5_codec import R5TypedValueCodec  # noqa: E402
 from rawlsing_next.source_configuration.factory import (  # noqa: E402
     build_governed_c11_projection,
@@ -48,9 +48,9 @@ def decode_raw_witness(witness: Any) -> Any:
 
 def slot_from_event(event: RespondentEvent) -> str:
     if event.component_or_subitem_ref is not None:
-        object_id = event.component_or_subitem_ref.object_id
+        object_id = exact_ref(event.component_or_subitem_ref).object_id
         return object_id.rsplit(":", 1)[-1]
-    object_id = event.response_topology_ref.object_id
+    object_id = exact_ref(event.response_topology_ref).object_id
     # urn:rawlsing:r157:topology:<source>:<slot>:<topology>
     parts = object_id.split(":")
     return parts[-2]
@@ -90,8 +90,7 @@ def run_source(source_id: str) -> dict[str, Any]:
                        ("field_evidence_file", field_evidence_path),
                        ("fixture_config_file", fixture_config_path),
                        ("fixture_file", fixture_path),
-                       ("fixture_oracle_file", oracle_path),
-                       ("manifest_file", manifest_path)):
+                       ("fixture_oracle_file", oracle_path)):
         result["hashes"][name] = file_sha(path)
 
     original = load_source_config(original_path)
@@ -181,8 +180,8 @@ def run_source(source_id: str) -> dict[str, Any]:
             "check": "fixture_only_authority",
             "pass": all(x.decision_state == "ALLOW" and x.scope_envelope.get("fixture_only") is True
                         for x in fixture_projection.authority_snapshots),
-            "actual": Counter((x.decision_state, x.scope_envelope.get("fixture_only"))
-                              for x in fixture_projection.authority_snapshots),
+            "actual": dict(Counter(f"{x.decision_state}:{x.scope_envelope.get('fixture_only')}"
+                                  for x in fixture_projection.authority_snapshots)),
             "expected": "all ALLOW fixture_only",
         },
     ])
@@ -228,13 +227,13 @@ def run_source(source_id: str) -> dict[str, Any]:
     response_events = [x for x in release.public_objects if isinstance(x, RespondentEvent)]
     coordinate_facts = [x for x in release.public_objects if isinstance(x, EmpiricalCoordinateFact)]
     routing_facts = [x for x in release.public_objects if isinstance(x, RoutingEligibilityFact)]
-    row_by_respondent = {b.respondent_ref.key: b.row_ordinal for b in fixture_projection.row_bindings}
+    row_by_respondent = {exact_ref(b.respondent_ref).key: b.row_ordinal for b in fixture_projection.row_bindings}
     slot_states: dict[str, list[str]] = defaultdict(list)
     slot_raws: dict[str, list[Any]] = defaultdict(list)
     slot_canonicals: dict[str, list[Any]] = defaultdict(list)
     for event in response_events:
         slot = slot_from_event(event)
-        row = row_by_respondent[event.scoped_respondent_ref.key]
+        row = row_by_respondent[exact_ref(event.scoped_respondent_ref).key]
         slot_states[slot].append((row, event.response_state))
         slot_raws[slot].append((row, decode_raw_witness(event.raw_response_value)))
         slot_canonicals[slot].append((row, event.canonical_response_value_if_authorized))
@@ -377,12 +376,187 @@ def main() -> int:
         all_results[source_id] = result
         out = ROOT / "source_pre553_validation" / source_id / "VALIDATION_RESULTS.json"
         out.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        exceptions = build_exceptions(source_id, result)
+        exceptions_path = ROOT / "source_pre553_validation" / source_id / "EXCEPTIONS.json"
+        exceptions_path.write_text(json.dumps(exceptions, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        manifest = update_manifest(source_id, result, exceptions)
         print(f"{source_id}: {result['status']} checks={len(result['checks'])} failures={len(result['failures'])} "
               f"release={result['actual']['release_ref']['object_id']} "
-              f"hash={result['actual']['semantic_release_hash']}")
+              f"hash={result['actual']['semantic_release_hash']} "
+              f"exceptions={exceptions['counts']['entries']} manifest={file_sha(ROOT / 'source_pre553_validation' / source_id / 'manifest.json')[:12]}")
         if result["status"] != "PASS":
             overall_pass = False
     return 0 if overall_pass else 1
+
+
+
+def build_exceptions(source_id: str, result: Mapping[str, Any]) -> dict[str, Any]:
+    data_dir = ROOT / "rawlsing_next/source_configuration/data" / source_id
+    val_dir = ROOT / "source_pre553_validation" / source_id
+    config = json.loads((data_dir / "source.config.json").read_text(encoding="utf-8"))
+    crosswalk = json.loads((data_dir / "crosswalk.json").read_text(encoding="utf-8"))
+    source_sha = config["identity"]["expected_source_sha256"]
+    source_ref = {
+        "kind": "SOURCE_SNAPSHOT",
+        "object_id": f"urn:rawlsing:r157:source-snapshot:{source_id}",
+        "content_hash": source_sha,
+    }
+    metadata_ref = {
+        "kind": "R154_PHYSICAL_METADATA",
+        "object_id": "urn:rawlsing:r157:metadata:" + config["identity"]["metadata_witness_ref"]["object_id"].split("urn:rawlsing:r157:metadata:", 1)[-1],
+        "content_hash": config["identity"]["metadata_witness_ref"]["content_hash"],
+    }
+    entries: list[dict[str, Any]] = []
+
+    def add(
+        *, slice_id: str, item: str, field: str, current: str, refs: list[Any],
+        missing: str, affected: str, unaffected: str, owner: str, step: str,
+        status: str, resolution: Any = None,
+    ) -> None:
+        entries.append({
+            "source_id": source_id,
+            "implementation_id_or_physical_slot": item,
+            "required_native_field": field,
+            "current_value_or_typed_unknown": current,
+            "exact_evidence_refs": refs,
+            "contradiction_or_missing_fact": missing,
+            "affected_operation_or_slice": affected,
+            "unaffected_usable_slices": unaffected,
+            "acquisition_fix_owner_and_step": f"{owner}: {step}",
+            "status": status,
+            "resolution_evidence": resolution,
+            "slice_id": slice_id,
+        })
+
+    for residual in config["residuals"]:
+        add(
+            slice_id=residual["residual_id"],
+            item="SOURCE_LEVEL",
+            field=residual["field"],
+            current=f"{residual['status']}: {residual['reason']}",
+            refs=[source_ref, metadata_ref],
+            missing=residual["reason"],
+            affected=residual["dependent_operation"],
+            unaffected=residual["unaffected_scope"],
+            owner=residual["owner"],
+            step=residual["next_step"],
+            status=residual["status"],
+        )
+
+    codebook_by_name = {e["codebook_var_name"]: e for e in crosswalk["codebook_entries"]}
+    unmatched = [i for i in config["items"] if i["mapping_status"] == "UNMATCHED_EXPLICIT_ID"]
+    for item in unmatched:
+        codebook_name = item["source_variable_code"]
+        ce = codebook_by_name.get(codebook_name)
+        physical = ce["physical_names"] if ce else []
+        add(
+            slice_id=f"{source_id}-UNMATCHED-{item['implementation_id']}",
+            item=item["implementation_id"],
+            field="items.relation",
+            current="UNMATCHED_EXPLICIT_ID",
+            refs=item["evidence_refs"],
+            missing="No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+            affected="relation-scoped semantic use of this item",
+            unaffected="item accounting, matched items and the declared supported slice",
+            owner="LATIN lane / P3 integration owner",
+            step="Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+            status="HELD_UNMATCHED_RELATION",
+        )
+
+    for entry in crosswalk["entries"]:
+        if entry["relation_kind"] != "PHYSICAL_ONLY_EXTRA":
+            continue
+        selected = entry.get("selected_for_supported_slice", False)
+        add(
+            slice_id=f"{source_id}-PHYSICAL-ONLY-{entry['physical_name']}",
+            item=f"physical_slots[{entry['physical_ordinal']}]:{entry['physical_name']}",
+            field="physical_slots.codebook_mapping",
+            current=("SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW" if selected else "PHYSICAL_ONLY_EXTRA"),
+            refs=[metadata_ref],
+            missing=entry.get("held_reason") or "No exact codebook counterpart in current evidence.",
+            affected=("codebook-linked semantic use; not used for raw coordinate observation"
+                      if selected else "codebook-linked semantic use of this physical slot"),
+            unaffected=("raw source-native country coordinate" if selected else
+                        "explicit crosswalk, supported slice and all other accounted slots"),
+            owner="LATIN lane / P3 integration owner",
+            step="Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+            status=("USED_RAW_COORDINATE" if selected else "HELD_UNMAPPED"),
+        )
+
+    # Bulk no-drop entries.  Exact IDs/ordinals are carried, not just counts.
+    excluded_slots = config["coverage"]["physical_slots_excluded"]
+    if excluded_slots:
+        add(
+            slice_id=f"{source_id}-EXCLUDED-PHYSICAL-SLOTS",
+            item=f"physical_slots: {len(excluded_slots)} ordinals",
+            field="coverage.physical_slots_excluded",
+            current=",".join(str(x["ordinal"]) for x in excluded_slots),
+            refs=[metadata_ref],
+            missing=config["coverage"]["partial_scope_reason"],
+            affected="scope outside the declared supported slice",
+            unaffected="declared supported slice and included slots",
+            owner="LATIN lane / P3 integration owner",
+            step="Widen only with exact evidence; every excluded slot remains accounted in source.config.json.",
+            status="EXCLUDED_ACCOUNTED",
+        )
+    excluded_items = config["coverage"]["items_excluded"]
+    if excluded_items:
+        add(
+            slice_id=f"{source_id}-EXCLUDED-ITEMS",
+            item=f"items: {len(excluded_items)} implementation IDs",
+            field="coverage.items_excluded",
+            current=",".join(x["implementation_id"] for x in excluded_items),
+            refs=[source_ref],
+            missing=config["coverage"]["partial_scope_reason"],
+            affected="scope outside the declared supported slice",
+            unaffected="declared supported slice and included items",
+            owner="LATIN lane / P3 integration owner",
+            step="Widen only with exact evidence; every excluded item remains accounted in source.config.json.",
+            status="EXCLUDED_ACCOUNTED",
+        )
+    return {
+        "schema": "PYAT_R157_SOURCE_EXCEPTION_LEDGER@1.0.0",
+        "source_id": source_id,
+        "source_sha256": source_sha,
+        "entries": entries,
+        "counts": {
+            "entries": len(entries),
+            "residuals": len(config["residuals"]),
+            "unmatched_relation_items": len(unmatched),
+            "physical_only_extra_slots": sum(1 for e in crosswalk["entries"]
+                                             if e["relation_kind"] == "PHYSICAL_ONLY_EXTRA"),
+            "excluded_slots": len(excluded_slots),
+            "excluded_items": len(excluded_items),
+        },
+        "limits": [
+            "The ledger preserves exact IDs/ordinals and evidence; fixture success is not original-source authority.",
+            "Excluded rows are accounted, not deleted or silently aliased.",
+        ],
+    }
+
+
+def update_manifest(source_id: str, result: Mapping[str, Any], exceptions: Mapping[str, Any]) -> dict[str, Any]:
+    val_dir = ROOT / "source_pre553_validation" / source_id
+    manifest_path = val_dir / "manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    artifacts = [a for a in manifest["artifacts"]
+                 if a["path"] not in ("source_pre553_validation/%s/VALIDATION_RESULTS.json" % source_id,
+                                      "source_pre553_validation/%s/EXCEPTIONS.json" % source_id)]
+    for rel in (f"source_pre553_validation/{source_id}/VALIDATION_RESULTS.json",
+                f"source_pre553_validation/{source_id}/EXCEPTIONS.json"):
+        path = ROOT / rel
+        artifacts.append({"path": rel, "sha256": file_sha(path), "bytes": path.stat().st_size})
+    manifest["artifacts"] = artifacts
+    manifest["validation"] = {
+        "status": result["status"],
+        "native_release_ref": result["actual"]["release_ref"],
+        "semantic_release_hash": result["actual"]["semantic_release_hash"],
+        "actual_counts": result["actual"]["counts"],
+        "no_drop": result["no_drop"],
+        "refusals": result["refusals"],
+    }
+    manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return manifest
 
 
 if __name__ == "__main__":

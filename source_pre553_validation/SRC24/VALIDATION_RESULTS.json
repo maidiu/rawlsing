@@ -1,0 +1,700 @@
+{
+  "source_id": "SRC24",
+  "status": "PASS",
+  "calls": [
+    {
+      "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+      "input": "ORIGINAL_SOURCE config (no physical stream)",
+      "config_id": "R157-LATIN-SRC24-SOURCE-PREPARATION",
+      "config_sha256": "8fbe86b35fa5c903a738bf1e046078ed5cde0832bd297f51f69d6d777e0007b4",
+      "result": "GovernedC11Projection",
+      "elapsed_seconds": 7.475,
+      "source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+      "respondents": 9069,
+      "response_slots": 4,
+      "coordinate_slots": 1,
+      "routing_facts": 36276,
+      "questions": 4,
+      "authority_snapshots": 7
+    },
+    {
+      "call": "rawlsing_next.source_configuration.fixture.load_fixture_stream",
+      "input": "source_pre553_validation/SRC24/fixture.json",
+      "fixture_id": "R157-LATIN-SRC24-NONRESPONDENT",
+      "fixture_source_sha256": "74b66afa2c17863e70b01fcebdbbdfd9d8ba61dfcff7b2719dbed6ea98e969ab",
+      "row_count": 11,
+      "transport_identity": "R157_NONRESPONDENT_FIXTURE_EXACT_CELLS@1.0.0"
+    },
+    {
+      "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+      "input": "NONRESPONDENT_FIXTURE config",
+      "config_id": "R157-LATIN-SRC24-NONRESPONDENT-FIXTURE",
+      "config_sha256": "020c4b4c80caa012b853f3b065f156aff500d7caf6c027106d6b438358c42e06",
+      "result": "GovernedC11Projection",
+      "source_sha256": "74b66afa2c17863e70b01fcebdbbdfd9d8ba61dfcff7b2719dbed6ea98e969ab",
+      "respondents": 11,
+      "response_slots": 4,
+      "coordinate_slots": 1,
+      "routing_facts": 44,
+      "questions": 4
+    },
+    {
+      "call": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+      "input": "NONRESPONDENT_FIXTURE config + ExactPhysicalCellStream",
+      "config_id": "R157-LATIN-SRC24-NONRESPONDENT-FIXTURE",
+      "config_sha256": "020c4b4c80caa012b853f3b065f156aff500d7caf6c027106d6b438358c42e06",
+      "fixture_source_sha256": "74b66afa2c17863e70b01fcebdbbdfd9d8ba61dfcff7b2719dbed6ea98e969ab",
+      "result": "C11LogicalRelease",
+      "release_id": "R157_FIXTURE_RELEASE/SRC24",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC24",
+        "content_hash": "11bf76356e39c3cc67725103dc88eb44ebf1c9120f15acf58d4626847d16510f"
+      },
+      "semantic_release_hash": "11bf76356e39c3cc67725103dc88eb44ebf1c9120f15acf58d4626847d16510f",
+      "source_release_manifest_hash": "b3bb6deb7e40395158403b10a861b6111bbc76d4dffcefcb5c021c3dcaa406bd",
+      "elapsed_seconds": 0.07
+    }
+  ],
+  "checks": [
+    {
+      "check": "original_identity_is_original_source",
+      "pass": true,
+      "actual": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+      "expected": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7"
+    },
+    {
+      "check": "original_has_no_fixture_provenance",
+      "pass": true,
+      "actual": null,
+      "expected": null
+    },
+    {
+      "check": "original_respondent_rows_match_source",
+      "pass": true,
+      "actual": 9069,
+      "expected": 9069
+    },
+    {
+      "check": "original_fixture_sha_absent_from_config_bytes",
+      "pass": true,
+      "actual": "absent",
+      "expected": "absent"
+    },
+    {
+      "check": "original_authority_is_not_fixture_allow",
+      "pass": true,
+      "actual": {
+        "ALLOW": 1,
+        "DEFER": 6
+      },
+      "expected": "DEFER source authorities; ALLOW only for local replay protocol"
+    },
+    {
+      "check": "fixture_identity_is_distinct_from_original",
+      "pass": true,
+      "actual": "74b66afa2c17863e70b01fcebdbbdfd9d8ba61dfcff7b2719dbed6ea98e969ab",
+      "expected": "different from 4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7"
+    },
+    {
+      "check": "fixture_binding_matches_stream_sha",
+      "pass": true,
+      "actual": "74b66afa2c17863e70b01fcebdbbdfd9d8ba61dfcff7b2719dbed6ea98e969ab",
+      "expected": "74b66afa2c17863e70b01fcebdbbdfd9d8ba61dfcff7b2719dbed6ea98e969ab"
+    },
+    {
+      "check": "fixture_rows_match_binding",
+      "pass": true,
+      "actual": 11,
+      "expected": 11
+    },
+    {
+      "check": "fixture_only_authority",
+      "pass": true,
+      "actual": {
+        "ALLOW:True": 7
+      },
+      "expected": "all ALLOW fixture_only"
+    },
+    {
+      "check": "fixture_response_event_count",
+      "pass": true,
+      "actual": 44,
+      "expected": 44
+    },
+    {
+      "check": "fixture_coordinate_fact_count",
+      "pass": true,
+      "actual": 11,
+      "expected": 11
+    },
+    {
+      "check": "fixture_routing_fact_count",
+      "pass": true,
+      "actual": 44,
+      "expected": 44
+    },
+    {
+      "check": "fixture_states_p66c",
+      "pass": true,
+      "actual": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE"
+      ],
+      "expected": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE"
+      ]
+    },
+    {
+      "check": "fixture_states_p44b",
+      "pass": true,
+      "actual": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE"
+      ],
+      "expected": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE"
+      ]
+    },
+    {
+      "check": "fixture_states_p5",
+      "pass": true,
+      "actual": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE"
+      ],
+      "expected": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE"
+      ]
+    },
+    {
+      "check": "fixture_states_p23",
+      "pass": true,
+      "actual": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE"
+      ],
+      "expected": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE"
+      ]
+    },
+    {
+      "check": "fixture_raw_values_p66c",
+      "pass": true,
+      "actual": [
+        1.0,
+        2.0,
+        -4.0,
+        -3.0,
+        -2.0,
+        -1.0,
+        null,
+        1.0,
+        2.0,
+        -4.0,
+        -3.0
+      ],
+      "expected": [
+        1.0,
+        2.0,
+        -4.0,
+        -3.0,
+        -2.0,
+        -1.0,
+        null,
+        1.0,
+        2.0,
+        -4.0,
+        -3.0
+      ]
+    },
+    {
+      "check": "fixture_raw_values_p44b",
+      "pass": true,
+      "actual": [
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        -4.0,
+        -3.0,
+        -2.0,
+        -1.0,
+        null,
+        1.0
+      ],
+      "expected": [
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        -4.0,
+        -3.0,
+        -2.0,
+        -1.0,
+        null,
+        1.0
+      ]
+    },
+    {
+      "check": "fixture_raw_values_p5",
+      "pass": true,
+      "actual": [
+        1.0,
+        2.0,
+        3.0,
+        -4.0,
+        -3.0,
+        -2.0,
+        -1.0,
+        null,
+        1.0,
+        2.0,
+        3.0
+      ],
+      "expected": [
+        1.0,
+        2.0,
+        3.0,
+        -4.0,
+        -3.0,
+        -2.0,
+        -1.0,
+        null,
+        1.0,
+        2.0,
+        3.0
+      ]
+    },
+    {
+      "check": "fixture_raw_values_p23",
+      "pass": true,
+      "actual": [
+        1.0,
+        2.0,
+        -4.0,
+        -3.0,
+        -2.0,
+        -1.0,
+        null,
+        1.0,
+        2.0,
+        -4.0,
+        -3.0
+      ],
+      "expected": [
+        1.0,
+        2.0,
+        -4.0,
+        -3.0,
+        -2.0,
+        -1.0,
+        null,
+        1.0,
+        2.0,
+        -4.0,
+        -3.0
+      ]
+    },
+    {
+      "check": "fixture_canonical_values_p66c",
+      "pass": true,
+      "actual": [
+        "1",
+        "2",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "1",
+        "2",
+        null,
+        null
+      ],
+      "expected": [
+        "1",
+        "2",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "1",
+        "2",
+        null,
+        null
+      ]
+    },
+    {
+      "check": "fixture_canonical_values_p44b",
+      "pass": true,
+      "actual": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "1"
+      ],
+      "expected": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "1"
+      ]
+    },
+    {
+      "check": "fixture_canonical_values_p5",
+      "pass": true,
+      "actual": [
+        "1",
+        "2",
+        "3",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "1",
+        "2",
+        "3"
+      ],
+      "expected": [
+        "1",
+        "2",
+        "3",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "check": "fixture_canonical_values_p23",
+      "pass": true,
+      "actual": [
+        "1",
+        "2",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "1",
+        "2",
+        null,
+        null
+      ],
+      "expected": [
+        "1",
+        "2",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "1",
+        "2",
+        null,
+        null
+      ]
+    },
+    {
+      "check": "fixture_release_artifact_sha_is_fixture_sha",
+      "pass": true,
+      "actual": "74b66afa2c17863e70b01fcebdbbdfd9d8ba61dfcff7b2719dbed6ea98e969ab",
+      "expected": "74b66afa2c17863e70b01fcebdbbdfd9d8ba61dfcff7b2719dbed6ea98e969ab"
+    },
+    {
+      "check": "fixture_release_does_not_claim_original_sha",
+      "pass": true,
+      "actual": "74b66afa2c17863e70b01fcebdbbdfd9d8ba61dfcff7b2719dbed6ea98e969ab",
+      "expected": "different from 4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7"
+    },
+    {
+      "check": "fixture_routing_all_unresolved",
+      "pass": true,
+      "actual": {
+        "ROUTING_UNKNOWN": 44
+      },
+      "expected": {
+        "ROUTING_UNKNOWN": 44
+      }
+    },
+    {
+      "check": "fixture_coordinates_all_observed",
+      "pass": true,
+      "actual": {
+        "OBSERVED_COORDINATE": 11
+      },
+      "expected": {
+        "OBSERVED_COORDINATE": 11
+      }
+    },
+    {
+      "check": "wrong_identity_refusals_are_actual_errors",
+      "pass": true,
+      "actual": [
+        {
+          "case": "original config + fixture stream",
+          "type": "SourceConfigurationBindingError",
+          "message": "active source SHA differs from the frozen config binding"
+        },
+        {
+          "case": "fixture config + wrong fixture SHA",
+          "type": "SourceConfigurationBindingError",
+          "message": "active source SHA differs from the frozen config binding"
+        },
+        {
+          "case": "configured source_native_key_slot without row_native_keys",
+          "type": "SourceConfigurationBindingError",
+          "message": "configured source_native_key_slot requires row_native_keys after a permitted decode"
+        }
+      ],
+      "expected": "all three dependent calls refuse"
+    }
+  ],
+  "failures": [],
+  "skips": [],
+  "paths": {
+    "original_config": "rawlsing_next/source_configuration/data/SRC24/source.config.json",
+    "crosswalk": "rawlsing_next/source_configuration/data/SRC24/crosswalk.json",
+    "field_evidence": "rawlsing_next/source_configuration/data/SRC24/field_evidence.json",
+    "fixture_config": "source_pre553_validation/SRC24/fixture.config.json",
+    "fixture": "source_pre553_validation/SRC24/fixture.json",
+    "fixture_oracle": "source_pre553_validation/SRC24/fixture_oracle.json",
+    "manifest": "source_pre553_validation/SRC24/manifest.json"
+  },
+  "hashes": {
+    "original_config_file": "5a98e4962f9d42d1349ab3193dc8a3a60c71e4246a6cbd84ad0e09df1dd3d486",
+    "crosswalk_file": "a98e66fdbc9cf349af81af56c5c931c746291eb1cc504dba2739b048dff05e2c",
+    "field_evidence_file": "048ba3647be814d3dfbb58b4c6442ff9167ab68e015061eb2a0f79a54c9227ef",
+    "fixture_config_file": "f77fb9e4b131091464dfe91f3f528f0bc84f6212ec30082a79cdfa1be5abd0bf",
+    "fixture_file": "02c7fc1bfda603d452027a6883152fc59d8ad1387d9a4ad5ca070b6faee4fa11",
+    "fixture_oracle_file": "24b3631765a0ec37f5d0003a93ed0e604549dfd9fadecf2bb835935b134479d5",
+    "original_config_canonical": "8fbe86b35fa5c903a738bf1e046078ed5cde0832bd297f51f69d6d777e0007b4",
+    "fixture_config_canonical": "020c4b4c80caa012b853f3b065f156aff500d7caf6c027106d6b438358c42e06",
+    "fixture_source": "74b66afa2c17863e70b01fcebdbbdfd9d8ba61dfcff7b2719dbed6ea98e969ab"
+  },
+  "actual": {
+    "counts": {
+      "response_event_count": 44,
+      "coordinate_fact_count": 11,
+      "routing_fact_count": 44
+    },
+    "response_state_counts": {
+      "NOT_ASKED": 6,
+      "INAPPLICABLE": 6,
+      "SUBSTANTIVE_RESPONSE": 20,
+      "DK": 4,
+      "REFUSAL": 4,
+      "MISSING": 4
+    },
+    "response_states_by_slot": {
+      "p5": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE"
+      ],
+      "p44b": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE"
+      ],
+      "p66c": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE"
+      ],
+      "p23": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE"
+      ]
+    },
+    "routing_state_counts": {
+      "ROUTING_UNKNOWN": 44
+    },
+    "coordinate_state_counts": {
+      "OBSERVED_COORDINATE": 11
+    },
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_FIXTURE_RELEASE/SRC24",
+      "content_hash": "11bf76356e39c3cc67725103dc88eb44ebf1c9120f15acf58d4626847d16510f"
+    },
+    "semantic_release_hash": "11bf76356e39c3cc67725103dc88eb44ebf1c9120f15acf58d4626847d16510f",
+    "m01_m18_coverage": {
+      "M01": 1,
+      "M02": 1,
+      "M03": 1,
+      "M04": 1,
+      "M05": 2,
+      "M06": 1,
+      "M07": 1,
+      "M08": 1,
+      "M09": 1,
+      "M10": 1,
+      "M11": 1,
+      "M12": 2,
+      "M13": 1,
+      "M14": 1,
+      "M15": 1,
+      "M16": 1,
+      "M17": 2,
+      "M18": 1
+    }
+  },
+  "refusals": [
+    {
+      "case": "original config + fixture stream",
+      "type": "SourceConfigurationBindingError",
+      "message": "active source SHA differs from the frozen config binding"
+    },
+    {
+      "case": "fixture config + wrong fixture SHA",
+      "type": "SourceConfigurationBindingError",
+      "message": "active source SHA differs from the frozen config binding"
+    },
+    {
+      "case": "configured source_native_key_slot without row_native_keys",
+      "type": "SourceConfigurationBindingError",
+      "message": "configured source_native_key_slot requires row_native_keys after a permitted decode"
+    }
+  ],
+  "no_drop": {
+    "physical_slots_total": 203,
+    "physical_slots_included": 5,
+    "physical_slots_excluded": 198,
+    "items_total": 203,
+    "items_included": 4,
+    "items_excluded": 199
+  }
+}

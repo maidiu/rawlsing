@@ -1,0 +1,209 @@
+{
+  "schema": "PYAT_R157_SOURCE_EXCEPTION_LEDGER@1.0.0",
+  "source_id": "SRC25",
+  "source_sha256": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e",
+  "entries": [
+    {
+      "source_id": "SRC25",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "routing.typed_state",
+      "current_value_or_typed_unknown": "UNKNOWN: Prior H48/P2 evidence records SOURCE_ROUTING_UNRESOLVED for these items; no form or risk-set expression is present in current evidence.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC25",
+          "content_hash": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC25_PHYSICAL_METADATA.json",
+          "content_hash": "7e599499c6fbb816f70378915d4e4c738da5de52d4f8eb7bcb8d1970828ca48c"
+        }
+      ],
+      "contradiction_or_missing_fact": "Prior H48/P2 evidence records SOURCE_ROUTING_UNRESOLVED for these items; no form or risk-set expression is present in current evidence.",
+      "affected_operation_or_slice": "eligibility-conditioned or form-conditioned native query",
+      "unaffected_usable_slices": "raw source-native response incidence for the declared slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Recover the exact indexed source routing/form expression before widening the supported scope.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null,
+      "slice_id": "SRC25-ROUTING-UNRESOLVED"
+    },
+    {
+      "source_id": "SRC25",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "respondents.source_native_key_slot",
+      "current_value_or_typed_unknown": "UNKNOWN: No exact decoded source-native respondent key witness exists in preparation; row ordinal is the only established key.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC25",
+          "content_hash": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC25_PHYSICAL_METADATA.json",
+          "content_hash": "7e599499c6fbb816f70378915d4e4c738da5de52d4f8eb7bcb8d1970828ca48c"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact decoded source-native respondent key witness exists in preparation; row ordinal is the only established key.",
+      "affected_operation_or_slice": "respondent-key linkage or deduplication beyond physical row ordinal",
+      "unaffected_usable_slices": "row-ordinal-scoped source-native response construction",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Supply exact row_native_keys only after a separately permitted decode; the corrected P0 factory refuses otherwise.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null,
+      "slice_id": "SRC25-ROW-NATIVE-KEY"
+    },
+    {
+      "source_id": "SRC25",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "supported_scope.supported_form_slice",
+      "current_value_or_typed_unknown": "UNKNOWN: Current physical/codebook evidence contains no form, ballot or administration variable; single-file SAV shape is all that is established.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC25",
+          "content_hash": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC25_PHYSICAL_METADATA.json",
+          "content_hash": "7e599499c6fbb816f70378915d4e4c738da5de52d4f8eb7bcb8d1970828ca48c"
+        }
+      ],
+      "contradiction_or_missing_fact": "Current physical/codebook evidence contains no form, ballot or administration variable; single-file SAV shape is all that is established.",
+      "affected_operation_or_slice": "form-conditioned or administration-conditioned native query",
+      "unaffected_usable_slices": "source-native response incidence without form conditioning",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Acquire exact source form/administration evidence before claiming a form-conditioned slice.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null,
+      "slice_id": "SRC25-FORM-ADMIN"
+    },
+    {
+      "source_id": "SRC25",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "weight_slots",
+      "current_value_or_typed_unknown": "NOT_DECLARED: The source file carries a weight slot, but no exact design/estimand authority or weighted scope is present in current evidence.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC25",
+          "content_hash": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC25_PHYSICAL_METADATA.json",
+          "content_hash": "7e599499c6fbb816f70378915d4e4c738da5de52d4f8eb7bcb8d1970828ca48c"
+        }
+      ],
+      "contradiction_or_missing_fact": "The source file carries a weight slot, but no exact design/estimand authority or weighted scope is present in current evidence.",
+      "affected_operation_or_slice": "population or weighted estimation",
+      "unaffected_usable_slices": "raw-sample source-native response incidence",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Establish exact weight basis, design, estimand and effective scope before declaring a weighted slice.",
+      "status": "NOT_DECLARED",
+      "resolution_evidence": null,
+      "slice_id": "SRC25-WEIGHT-AUTHORITY"
+    },
+    {
+      "source_id": "SRC25",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "items.relation.manual_signed_polarity_status",
+      "current_value_or_typed_unknown": "NOT_CERTIFIED_BY_THIS_PREPARATION: Response states and exact source code tokens are bound, but this preparation does not issue a new signed-direction or canonical semantic certification.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC25",
+          "content_hash": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC25_PHYSICAL_METADATA.json",
+          "content_hash": "7e599499c6fbb816f70378915d4e4c738da5de52d4f8eb7bcb8d1970828ca48c"
+        }
+      ],
+      "contradiction_or_missing_fact": "Response states and exact source code tokens are bound, but this preparation does not issue a new signed-direction or canonical semantic certification.",
+      "affected_operation_or_slice": "signed-direction empirical or structural analysis",
+      "unaffected_usable_slices": "source-native nominal/ordinal response incidence and exact value accounting",
+      "acquisition_fix_owner_and_step": "LATIN lane / later scientific authority owner: Use the original relation certification only at its exact evidenced scope; do not infer direction from this config.",
+      "status": "NOT_CERTIFIED_BY_THIS_PREPARATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC25-DIRECTION"
+    },
+    {
+      "source_id": "SRC25",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "supported_scope.original_source_execution",
+      "current_value_or_typed_unknown": "NOT_PERFORMED: Original respondent execution and original workload issuance are a separate permission boundary.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC25",
+          "content_hash": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC25_PHYSICAL_METADATA.json",
+          "content_hash": "7e599499c6fbb816f70378915d4e4c738da5de52d4f8eb7bcb8d1970828ca48c"
+        }
+      ],
+      "contradiction_or_missing_fact": "Original respondent execution and original workload issuance are a separate permission boundary.",
+      "affected_operation_or_slice": "original empirical execution",
+      "unaffected_usable_slices": "portable configuration and nonrespondent fixture native validation",
+      "acquisition_fix_owner_and_step": "user-authorized execution owner: Issue a separate exact original-source execution grant and qualified reader binding.",
+      "status": "NOT_PERFORMED",
+      "resolution_evidence": null,
+      "slice_id": "SRC25-ORIGINAL-EXECUTION"
+    },
+    {
+      "source_id": "SRC25",
+      "implementation_id_or_physical_slot": "physical_slots: 409 ordinals",
+      "required_native_field": "coverage.physical_slots_excluded",
+      "current_value_or_typed_unknown": "1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC25_PHYSICAL_METADATA.json",
+          "content_hash": "7e599499c6fbb816f70378915d4e4c738da5de52d4f8eb7bcb8d1970828ca48c"
+        }
+      ],
+      "contradiction_or_missing_fact": "Bounded LATIN lane native slice. All remaining physical slots and original items are individually accounted as excluded/held; no alias or invented semantics is used.",
+      "affected_operation_or_slice": "scope outside the declared supported slice",
+      "unaffected_usable_slices": "declared supported slice and included slots",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Widen only with exact evidence; every excluded slot remains accounted in source.config.json.",
+      "status": "EXCLUDED_ACCOUNTED",
+      "resolution_evidence": null,
+      "slice_id": "SRC25-EXCLUDED-PHYSICAL-SLOTS"
+    },
+    {
+      "source_id": "SRC25",
+      "implementation_id_or_physical_slot": "items: 410 implementation IDs",
+      "required_native_field": "coverage.items_excluded",
+      "current_value_or_typed_unknown": "question_impl.phase0.036d9b284f999a8df73c,question_impl.phase0.03b26d7ee7a2a08025b3,question_impl.phase0.056f48e568b828fb2746,question_impl.phase0.0578c5b9dcdc14feca31,question_impl.phase0.0637817f0e5768125c12,question_impl.phase0.082c382f4c81f1c8a142,question_impl.phase0.084a27d7760b4dc2fca2,question_impl.phase0.08e724061f443e9319f9,question_impl.phase0.09672d21716b7ea7583f,question_impl.phase0.09cdb41df658f52f5d6a,question_impl.phase0.09ef8de5d0bfe68fbda5,question_impl.phase0.0a7b6602f28aa59d4f80,question_impl.phase0.0aa498ea27aab896dd09,question_impl.phase0.0aedce98a0e9df1a41e6,question_impl.phase0.0ba746a2e1f385fc4577,question_impl.phase0.0c7ecdd2777ff99222e5,question_impl.phase0.0d4c630a1fdfc330f57a,question_impl.phase0.0d97e0cff5070a05034d,question_impl.phase0.0dcaa8d8a21c9f3d7f7b,question_impl.phase0.0df4bffa3b0366b7a1d1,question_impl.phase0.0e280e7fe0efe65aa60b,question_impl.phase0.128ba72eeab28ec73320,question_impl.phase0.13b00d123baeef0303c7,question_impl.phase0.1589585a875c3c6d004d,question_impl.phase0.16d37294649bda460acc,question_impl.phase0.17694685ae796c25420a,question_impl.phase0.17df8e5a58b0650068f6,question_impl.phase0.17e2ce39d39b61d067a7,question_impl.phase0.183a7f499c376c7f2101,question_impl.phase0.18df1af1398f696634ab,question_impl.phase0.19106561074ce3ccfd11,question_impl.phase0.1a3d03cd53dca5b2a60c,question_impl.phase0.1afce3bed8029295b104,question_impl.phase0.1b46a5c99adcdbe39980,question_impl.phase0.1da02fade2cb38ca286a,question_impl.phase0.1daa5d8388b4acaae0bb,question_impl.phase0.1e5330fff7386011da4d,question_impl.phase0.200c03f1ab6fe4983092,question_impl.phase0.21361715a7750f310683,question_impl.phase0.230633f2b943d8bd5616,question_impl.phase0.230cab8540cc48c40c10,question_impl.phase0.230d000a08bcc938e3a7,question_impl.phase0.2336c0f7c18771f148bf,question_impl.phase0.23629cefc92eb5653fd5,question_impl.phase0.24aaa000ff8136ddc941,question_impl.phase0.24bf468dd179bc41ba88,question_impl.phase0.26070bedc225ba27bf2b,question_impl.phase0.269f8df008ae2dad5ee7,question_impl.phase0.26d6d024c7ab3e847092,question_impl.phase0.2776baf2dfcf9a287079,question_impl.phase0.27d9af9c154722769f32,question_impl.phase0.287dd54a543f4a674f87,question_impl.phase0.28f23512ab80a5def0dc,question_impl.phase0.297cb2580994f8694c6e,question_impl.phase0.2998d60ef4ca230d3b0c,question_impl.phase0.29e689334695107e9fab,question_impl.phase0.2a088a1968eda4b5996c,question_impl.phase0.2bd5509e54af7ba1a909,question_impl.phase0.2dcea2ed2799e3f7fb61,question_impl.phase0.2e86ae9e35fbdc4a3fca,question_impl.phase0.2fa43e81a8c59b4b50b7,question_impl.phase0.31126b56c17f30e529cc,question_impl.phase0.312c3e805ed310226433,question_impl.phase0.315759ed73300f2ebd53,question_impl.phase0.325124a0aebc6b01b262,question_impl.phase0.328d56fa6cde8ac910f5,question_impl.phase0.33c2395ba09969ae7167,question_impl.phase0.3516f676b33be8fbef7e,question_impl.phase0.35d313239e9bfd491978,question_impl.phase0.363b65c1a1a1f6471142,question_impl.phase0.3649c66b145ea1895c7d,question_impl.phase0.36a21866157881989e9d,question_impl.phase0.3748160ecba087b7e9db,question_impl.phase0.38974e09d84836bd29fe,question_impl.phase0.3986f0882e2cb9c2e7d8,question_impl.phase0.39b39ca264f46328c038,question_impl.phase0.39b5c21b578dd98ba516,question_impl.phase0.3bdacb3a5c75fb3702ec,question_impl.phase0.3bdf986981091253a509,question_impl.phase0.3c03ac0dcae1a90f577d,question_impl.phase0.3c55ef06344c89cdc23e,question_impl.phase0.3c9194bda29ae60fe5ed,question_impl.phase0.3dcf1eec80a1f3504973,question_impl.phase0.3de4f0fa33c7d4482757,question_impl.phase0.3de6487f68fc3c63b757,question_impl.phase0.3ebfaa762b3177033ce8,question_impl.phase0.3faa90de8b50e36bfd69,question_impl.phase0.406e4d625be892b36bc8,question_impl.phase0.411128b36be144b4b350,question_impl.phase0.4146d16a79a48ac16514,question_impl.phase0.4147a56a02fb3e15ebf1,question_impl.phase0.425621094abad027784d,question_impl.phase0.4292a20c96b1397c8561,question_impl.phase0.45e074d931311bbd104e,question_impl.phase0.460396e8f81fa1bdbb59,question_impl.phase0.46f704fb375d83a0d271,question_impl.phase0.471c2ad706e7f733703a,question_impl.phase0.47a15912f8ada10039f6,question_impl.phase0.4883446d0688f64955fc,question_impl.phase0.489fead6a0db05d5e1d4,question_impl.phase0.496d763e0c53196a1575,question_impl.phase0.498e5e1775107f55013f,question_impl.phase0.49bd20dd69b99d5db165,question_impl.phase0.4aa0dadc5328fb7e0985,question_impl.phase0.4b776e5dc9271223d49e,question_impl.phase0.4b7ad18236c667cab114,question_impl.phase0.4ba42a33c56a4e043652,question_impl.phase0.4bc5c98dd56bf9aff8ec,question_impl.phase0.4be1c4ceaa47bee661db,question_impl.phase0.4c003eb7d5ac7de459b0,question_impl.phase0.4c1097da89a4f4aec212,question_impl.phase0.4c34942282ee7a17fd7f,question_impl.phase0.4c97a977db7f62eea062,question_impl.phase0.4d1e6e5c3181f8b5d4b1,question_impl.phase0.4d43d8424aee4eb7569a,question_impl.phase0.4e3d45550c026b2d913f,question_impl.phase0.4f9bab82c9fd9c310055,question_impl.phase0.4faad6b7a2e643e7f9d1,question_impl.phase0.4fbe28f7c2c840e032dc,question_impl.phase0.5036fc67ebb3d8ad2aad,question_impl.phase0.517f384887aead3e7a14,question_impl.phase0.51bf687ee79209c63ef6,question_impl.phase0.52f569d753e19b73b4e8,question_impl.phase0.5308bca709ba88c8db49,question_impl.phase0.548627de5c4b23b21e89,question_impl.phase0.54ba7bd808f089e257d9,question_impl.phase0.55937f89a7436eee0b75,question_impl.phase0.56145d0e16c051f6618d,question_impl.phase0.56b9252d9a6658d668ca,question_impl.phase0.56c0adfe9cb2c107fbbf,question_impl.phase0.56fbd6cfa701ef44969a,question_impl.phase0.5727abb6a4d3e3ea3701,question_impl.phase0.57e74167291d9f319603,question_impl.phase0.596e79d0d823528523d4,question_impl.phase0.598e68459618e9cbce26,question_impl.phase0.59aaab48e84e159eb9ed,question_impl.phase0.5a1599fe330b39ec7e62,question_impl.phase0.5a4f1baa09033053deb5,question_impl.phase0.5abf89b9d7a30d9f7d47,question_impl.phase0.5b46821703cc6095620a,question_impl.phase0.5bd700834d1d2b12045f,question_impl.phase0.5ceccc6bb1de4b65656e,question_impl.phase0.5e7ad4b50d5307d217eb,question_impl.phase0.5e9e35e56d214fca3ed8,question_impl.phase0.5ef1412dd73442b5ac35,question_impl.phase0.5fb0a8fa52a06d7bc909,question_impl.phase0.60476e2bed0be5c5b043,question_impl.phase0.60537165eaca1f82c054,question_impl.phase0.605a1a8b6c05d4017c77,question_impl.phase0.6092bc501b8634ae1f60,question_impl.phase0.60db2cfc7ac480e53469,question_impl.phase0.62a5c9161d726be109f5,question_impl.phase0.62f2d321abf27fa2476a,question_impl.phase0.6307ff719a7ceb14bf29,question_impl.phase0.63dcc825ecae54a7fb22,question_impl.phase0.6544a2729c91edc77365,question_impl.phase0.6544e59f7642bf463cad,question_impl.phase0.65628f7f0c09f7421ce2,question_impl.phase0.65e5631ad191a768653c,question_impl.phase0.664933da1bd7f19daad7,question_impl.phase0.664bc452de3a7882c06a,question_impl.phase0.6701a25cab1e3855bc16,question_impl.phase0.69abb531133a1ff7e894,question_impl.phase0.6a5cf0ec26f3ee0c013f,question_impl.phase0.6a780d027e14e9fe475c,question_impl.phase0.6aa410b895e07e3662c5,question_impl.phase0.6b0669e2dda02b80590d,question_impl.phase0.6b88b19a6272c3ae28a6,question_impl.phase0.6c15d10b14e64f8dac22,question_impl.phase0.6c5c434503ea77cdcd0d,question_impl.phase0.6d6f89797f5200bb1895,question_impl.phase0.6dcc98001c461c74b8c3,question_impl.phase0.6dd6fe8613e3dffa3f89,question_impl.phase0.6dd9e98ecc4d250a437f,question_impl.phase0.71759ddcd0bdf5b8df65,question_impl.phase0.720a89b41e70d3ceaea3,question_impl.phase0.722a77b73e0b3b5d3a95,question_impl.phase0.73036c6ebbb3408378de,question_impl.phase0.741352455c2d4c08a7ac,question_impl.phase0.7501ad80aa6ae7d19479,question_impl.phase0.75e89793fa3753169655,question_impl.phase0.76bdff9fe37f1e732290,question_impl.phase0.770e797abfe2d9a1caef,question_impl.phase0.77657929ee5005a3d3de,question_impl.phase0.777a4589c31485e2fa32,question_impl.phase0.77ccf81fc83b3e203149,question_impl.phase0.77fea5c5f25b4fc3cb59,question_impl.phase0.78b7da2b78a4523a8098,question_impl.phase0.793f807503f9601f9723,question_impl.phase0.7a437e9c3f19cdc1d9f6,question_impl.phase0.7aa19f007f7505cefa6a,question_impl.phase0.7b0b54fbf5f3c008361a,question_impl.phase0.7b7589d37b39c037079d,question_impl.phase0.7e8ed269dec947f8b312,question_impl.phase0.7ed2d22ec7d1b42614ab,question_impl.phase0.7ed8be7dcfe6d503b247,question_impl.phase0.7f2f037e4798a01d2911,question_impl.phase0.80a9f42bbfb790ace212,question_impl.phase0.8331061cd5e34eaf9584,question_impl.phase0.83f9a067f6b90bca98a9,question_impl.phase0.84d01fc595f10d5cdee5,question_impl.phase0.853946ce5ed4ef3797bf,question_impl.phase0.859fb5e14cb3c0dbf232,question_impl.phase0.85a9c62f82d53d24843f,question_impl.phase0.85c16ce0ba2d5817efef,question_impl.phase0.85f242da5e9bd0a66453,question_impl.phase0.8651cbf56a9efc5f4715,question_impl.phase0.86a60f2d9b79c8722811,question_impl.phase0.8709f870c1d8683977cb,question_impl.phase0.871fc293a18566421542,question_impl.phase0.874e0ec32a78320926cd,question_impl.phase0.8828adfd93af051a0d59,question_impl.phase0.890b09a93f79a98f6710,question_impl.phase0.891cb1f34565e268dd56,question_impl.phase0.898d40c1158001de5f45,question_impl.phase0.89a180393c212861f690,question_impl.phase0.89e78e533bc6fbc0cd3c,question_impl.phase0.8ac22f22242250e33ce2,question_impl.phase0.8ba72d3c38e8f784759d,question_impl.phase0.8bf40c44db856ed93bf6,question_impl.phase0.8caaef69d1a5c69fc91d,question_impl.phase0.8d1f409bccc94e3dbcae,question_impl.phase0.8e2fa5f3f505129d7e8a,question_impl.phase0.8ebc2fde29623895b56c,question_impl.phase0.8f34386e876f68ed549a,question_impl.phase0.8f4afb000fdddb477c28,question_impl.phase0.9107a2d1ab983db6b83f,question_impl.phase0.912ec01cfc9f961b81b9,question_impl.phase0.914a47d588fd60a73248,question_impl.phase0.923db570e35deeeef85b,question_impl.phase0.927cfafd34a064aa6a87,question_impl.phase0.943af1faa3017b39ff3f,question_impl.phase0.952c1e704e369ccd8d7c,question_impl.phase0.95e1661654dfa389f5f6,question_impl.phase0.965e64889ab9ff5ca3f8,question_impl.phase0.9679312ea1179376f010,question_impl.phase0.968031ab58396f581c77,question_impl.phase0.9680dc0ed435b7568ba9,question_impl.phase0.96b9f94f0ba22cef85a3,question_impl.phase0.97ab928a6462d6a53ded,question_impl.phase0.97de6579cfab093aceed,question_impl.phase0.987355ace1a9ae09b336,question_impl.phase0.987ed37299c9bf711bef,question_impl.phase0.998975f0f9cc34015fe6,question_impl.phase0.9a0c12b2899ae2f960bb,question_impl.phase0.9a470226b2f10b44a774,question_impl.phase0.9b933eea255d5d6bf73a,question_impl.phase0.9c045a29d6568b935c64,question_impl.phase0.9d1723a2aa184fff6844,question_impl.phase0.9e5dbe704f4e805f746a,question_impl.phase0.9f3d26d49c9524b51f21,question_impl.phase0.9f7ae3f6327dba341d35,question_impl.phase0.9fb96e80528efdfef79c,question_impl.phase0.a10e779071ebb9c393bd,question_impl.phase0.a14fce8387cd8a13c78a,question_impl.phase0.a16a48e319c1d1c6ada0,question_impl.phase0.a1e70a0f50c70d51d486,question_impl.phase0.a216bc31a047fd5a7daa,question_impl.phase0.a30512d3521a20f2b4d5,question_impl.phase0.a30647bcbe07fc7b6e0f,question_impl.phase0.a32ba81226b1e28c0250,question_impl.phase0.a38c861dc7bf82c4fbcd,question_impl.phase0.a39dba0522f80a6f0a35,question_impl.phase0.a3c78258cea0af9cf7f7,question_impl.phase0.a441dff963f53bde778f,question_impl.phase0.a533766d9cc1a576896c,question_impl.phase0.a5561208e892e0f4df1e,question_impl.phase0.a9340bcceaf6ac49eb7f,question_impl.phase0.a9aa7be6b38991d8cb6a,question_impl.phase0.ab33d00d09ea6f7a90e0,question_impl.phase0.abb34831dd156d332e4a,question_impl.phase0.ac1067991c9fc65ca6da,question_impl.phase0.ad15f4bcf13d55e018b2,question_impl.phase0.ad376613ccb63ccafc8a,question_impl.phase0.aedcc8982d9859baf41f,question_impl.phase0.aee28be3fdb2b818101b,question_impl.phase0.aee566916bec698c247f,question_impl.phase0.af5f2f4c4b07b4bf9efd,question_impl.phase0.af70d935fc3300511b8a,question_impl.phase0.afa2a225bae8a12fb9b4,question_impl.phase0.b0431bb6b30176a37b32,question_impl.phase0.b08f9a85b4350aff6703,question_impl.phase0.b0f64e40ffed78ff7b73,question_impl.phase0.b1f0ce9c03d3ab7c6305,question_impl.phase0.b31ead21dd68e4d9236a,question_impl.phase0.b326671e28e574d76b1b,question_impl.phase0.b38b42890874e6652faa,question_impl.phase0.b3ab0a8547b0785aea8d,question_impl.phase0.b407fd1df3f1f3b60a66,question_impl.phase0.b4d93f64d8651ce800a5,question_impl.phase0.b52b3750c4d52c9d7083,question_impl.phase0.b68a170b4eb98d965be3,question_impl.phase0.b8fb087363b348f72d7d,question_impl.phase0.b9114b6e565912bdb8d6,question_impl.phase0.bb7ae1dd952fed9f3932,question_impl.phase0.bc6a161838e255a91afb,question_impl.phase0.bc767867c644e1f6eca4,question_impl.phase0.bcc88a21db86eb9820e2,question_impl.phase0.bd2b40ecfed2ae04fe46,question_impl.phase0.be385fce7aad4a3f23d7,question_impl.phase0.bf07734f30fad7a3915d,question_impl.phase0.bfda33f555839a62cb81,question_impl.phase0.c081030d2a4bc7f9402e,question_impl.phase0.c08fa3be379f78fb889b,question_impl.phase0.c15c254d71637e157125,question_impl.phase0.c1c677e478440b00a047,question_impl.phase0.c1e764350978e5eddd5e,question_impl.phase0.c236f6f2841839651e81,question_impl.phase0.c2951ef107f5ea695583,question_impl.phase0.c2ad8833c4efe987291a,question_impl.phase0.c2db6586669dcafe424d,question_impl.phase0.c44acfe8473cea0a7906,question_impl.phase0.c57edac883b805d83025,question_impl.phase0.c58919cea3f7b9a687ea,question_impl.phase0.c5aa0331f820cba10b54,question_impl.phase0.c5b6b2f39fc18d3b018f,question_impl.phase0.c63998c24b8430599706,question_impl.phase0.c63ad3147e1e17b16131,question_impl.phase0.c6615f4e869ba441a0c6,question_impl.phase0.c6be113eeef3d3c523c0,question_impl.phase0.c76a024f7a1e5f3de48a,question_impl.phase0.c78937a0e0a8130513fc,question_impl.phase0.c81fc259fad145f59c42,question_impl.phase0.c9e50f9452a586d0565b,question_impl.phase0.ca56056740b14935ea23,question_impl.phase0.ca8f8dc4c0904d965e3e,question_impl.phase0.cacacb87f7f7df5beecc,question_impl.phase0.cba85af4e8d56e0e1a73,question_impl.phase0.cbc28069f211a51cc209,question_impl.phase0.cc4808b8d2f5c6d9c316,question_impl.phase0.cc4e3bce322e559f706b,question_impl.phase0.cc5a701efe13c2339281,question_impl.phase0.cdce29946ed4df8d8f95,question_impl.phase0.cde01d057cbf375aa918,question_impl.phase0.ced7e32043f4e17f51c1,question_impl.phase0.cf2b911f5ceabd768d2f,question_impl.phase0.cf98595c758caab5ef78,question_impl.phase0.cf9bc06999357a632020,question_impl.phase0.d00b009a44a95e7204c2,question_impl.phase0.d0b7912184d324f61f6e,question_impl.phase0.d160a0ae23b448320017,question_impl.phase0.d16e127b57fe3a029803,question_impl.phase0.d18433c9fec8b808bdeb,question_impl.phase0.d1d06a0bce9851e44f11,question_impl.phase0.d2be6be230e33bac3384,question_impl.phase0.d45038c682df2a7c82ca,question_impl.phase0.d548151dd9e1ea35feb9,question_impl.phase0.d87aa2c03b272154b712,question_impl.phase0.d9b1c6f25ebc4c52a46b,question_impl.phase0.db847e695c0888e06b9c,question_impl.phase0.dd28fcd1cb4076950ded,question_impl.phase0.dd73e9c4ca1cee470592,question_impl.phase0.de4add335d1d33332981,question_impl.phase0.deaadaad03517100c943,question_impl.phase0.dfe89ffc78e77b01b88d,question_impl.phase0.e049e0c36f0849bb7834,question_impl.phase0.e05ec643548e6e0f1c87,question_impl.phase0.e0a6b73486d25c52f103,question_impl.phase0.e1b38bbfacb515a894aa,question_impl.phase0.e2942399aca339cf6ac1,question_impl.phase0.e42fe525a620fc7804e1,question_impl.phase0.e46513203239e9621b42,question_impl.phase0.e651c9cc8341c25dd0e5,question_impl.phase0.e7d86dd627bf2977b09b,question_impl.phase0.e7dd43100d0488e77459,question_impl.phase0.e7e9aa5f580787a26d27,question_impl.phase0.e80f5e58a856e8ba2de3,question_impl.phase0.e82a8897af683f49ddc7,question_impl.phase0.e9b2d4475cbdd8627577,question_impl.phase0.e9f6f17a4800d0191a81,question_impl.phase0.ea48030cf87142dadd03,question_impl.phase0.ea9e82627038708c12cd,question_impl.phase0.ebc6768716a51bad749b,question_impl.phase0.ec0d441d8740c9fb3534,question_impl.phase0.ec398d4e92e423f33454,question_impl.phase0.ec5401bf43edad51064f,question_impl.phase0.ecbc48d86633afb79442,question_impl.phase0.ed69375a234ba303d490,question_impl.phase0.ed7f0c5f73f68e0429c6,question_impl.phase0.eeb5e52e4615eb532f72,question_impl.phase0.eec955f58495984a365f,question_impl.phase0.ef36e648bcc795896b70,question_impl.phase0.ef816628a738c1d0ba29,question_impl.phase0.effe55fdd87d4aa377fd,question_impl.phase0.f06b814b1dbdc58fd872,question_impl.phase0.f0b922eb8d26af931d72,question_impl.phase0.f1b5b749eda72e4cc684,question_impl.phase0.f24ebe6d8f0d1bb7923f,question_impl.phase0.f32ce7994f38a253424b,question_impl.phase0.f3455023b217613a4d0b,question_impl.phase0.f3abd40d33671fb28a65,question_impl.phase0.f3e429827bb1a61670ed,question_impl.phase0.f43ad2f132f767f0f708,question_impl.phase0.f481cf86b443eb6a7f23,question_impl.phase0.f58c7568390f6e01a261,question_impl.phase0.f5cf820216fe313d68cd,question_impl.phase0.f62121906b45f67401c6,question_impl.phase0.f699166796e16ba212f4,question_impl.phase0.f789fc4bdb480d9d6ee1,question_impl.phase0.f80ebf6f3340c09c3bb4,question_impl.phase0.fa63b59ab9f24100fd8b,question_impl.phase0.fb4f416008411bf77e3b,question_impl.phase0.fc4dad7c0f4cfbf99f85,question_impl.phase0.fd377de2e9d9051c637d,question_impl.phase0.fd66e01f469ebd1c5c04,question_impl.phase0.fd6770a4eb94752eb9f3,question_impl.phase0.fd91b293782d0375fb68,question_impl.phase0.fd9e9a2abb7041dece15,question_impl.phase0.fdce67a728d37b0b56a1,question_impl.phase0.fe5616fdc3e6cbf29d0c",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC25",
+          "content_hash": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e"
+        }
+      ],
+      "contradiction_or_missing_fact": "Bounded LATIN lane native slice. All remaining physical slots and original items are individually accounted as excluded/held; no alias or invented semantics is used.",
+      "affected_operation_or_slice": "scope outside the declared supported slice",
+      "unaffected_usable_slices": "declared supported slice and included items",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Widen only with exact evidence; every excluded item remains accounted in source.config.json.",
+      "status": "EXCLUDED_ACCOUNTED",
+      "resolution_evidence": null,
+      "slice_id": "SRC25-EXCLUDED-ITEMS"
+    }
+  ],
+  "counts": {
+    "entries": 8,
+    "residuals": 6,
+    "unmatched_relation_items": 0,
+    "physical_only_extra_slots": 0,
+    "excluded_slots": 409,
+    "excluded_items": 410
+  },
+  "limits": [
+    "The ledger preserves exact IDs/ordinals and evidence; fixture success is not original-source authority.",
+    "Excluded rows are accounted, not deleted or silently aliased."
+  ]
+}
