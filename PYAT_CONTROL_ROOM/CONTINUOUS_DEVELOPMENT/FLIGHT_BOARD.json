@@ -1552,10 +1552,10 @@
       "lane": "P5",
       "source_ids": [],
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "pid": 54991,
+      "pid": 58620,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
       "branch": "agent/pyat-pre553-r157-integration",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "state": "RUNNING_PATH_CASE_REPAIR_PREFLIGHT_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     }
   ],
@@ -3460,14 +3460,14 @@
         "lane": "P5",
         "source_ids": [],
         "session": "ses_e98c905cbffekusoHURfKyEUKG",
-        "pid": 54991,
+        "pid": 58620,
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
         "branch": "agent/pyat-pre553-r157-integration",
-        "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+        "state": "RUNNING_PATH_CASE_REPAIR_PREFLIGHT_VERIFIED",
         "launch": "LANE_LAUNCHES.json"
       }
     ],
-    "state": "32_SOURCES_SCOPED_INTEGRATED_WVS_AND_PORTABLE_DELIVERY_RUNNING",
+    "state": "32_SOURCES_INTEGRATED_WVS_RUNNING_P5_EXACT_PATH_PORTABILITY_REPAIR",
     "goal_update": "LIVE_CONSOLIDATED_OBJECTIVE_VERIFIED_ACTIVE",
     "heartbeat": "PAUSED",
     "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
@@ -3526,10 +3526,15 @@
           "pid": 55097,
           "targets": "P5_PORTABLE_completion_event_targets.json",
           "mode": "OS_EVENTS_NO_TIMED_POLLING"
+        },
+        {
+          "pid": 58663,
+          "targets": "P5_CASE_REPAIR_completion_event_targets.json",
+          "mode": "OS_EVENTS_NO_TIMED_POLLING"
         }
       ]
     },
-    "branch_head": "4151ec5efed73800e856e7de67d937a8da1490dc",
+    "branch_head": "0fa257b4bbcf02b8e1b3f792788abf3820b7f637",
     "resume_evidence": "User go after disk cleanup; actual first tools/model readback verified",
     "prepared_sources_scoped_integrated": 32
   }

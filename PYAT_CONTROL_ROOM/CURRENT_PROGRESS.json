@@ -1,7 +1,7 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 168,
+  "revision": 169,
   "r39_return_intake": {
     "status": "WORKER_AUTHOR_EVIDENCE_RECEIVED__NO_INDEPENDENT_ADOPTION",
     "startup": "2e6c189fd54b818556a44419b19691938ea76d5a",
@@ -24157,6 +24157,109 @@
           {
             "pid": 55097,
             "targets": "P5_PORTABLE_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          }
+        ]
+      }
+    }
+  },
+  "r157_p5_exact_case_repair": {
+    "checkpoint_id": "20261027-PYAT-R157-P5-EXACT-CASE-PORTABILITY-REPAIR-R1",
+    "summary": "R157 remains32/35scoped source preparations integrated; WVSPID52656 running. P5cde6bac08a4d3b74da8e7824335eaa8ffb693b78 returned32-source registry/index/CLI;15artifacthashes verified,9tests replayedpass and registryCLI SRC27actualnative release607a9c8fd5859ec07153e1152e5d41c6ef5770c14df9890a5f0d11926f84d9d6 reproduced. Notaccepted:8indexedLiTS config/native-result paths havewrongcapitalization versus Git filenames;case-sensitiveportability defect. Existing P5owner resumed exactrepair;actualmodel/preflight/event receipts in branch STATE/LANE_LAUNCHES; no scopechange/newreview. Main 0fa257b4bbcf02b8e1b3f792788abf3820b7f637 pusheddirectremoteverified; originalexecutionunperformed,heartbeatpaused,all35reviewpending.",
+    "updates": {
+      "active_workers": [
+        {
+          "task": "WVS:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "WVS",
+          "source_ids": [
+            "SRC33",
+            "SRC34",
+            "SRC35"
+          ],
+          "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+          "pid": 52656,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-wvs",
+          "branch": "agent/pyat-pre553-r157-wvs",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        },
+        {
+          "task": "P5_PORTABLE_DELIVERY_IMPLEMENTATION",
+          "lane": "P5",
+          "source_ids": [],
+          "session": "ses_e98c905cbffekusoHURfKyEUKG",
+          "pid": 58620,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
+          "branch": "agent/pyat-pre553-r157-integration",
+          "state": "RUNNING_PATH_CASE_REPAIR_PREFLIGHT_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        }
+      ],
+      "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
+      "r157_branch": "agent/pyat-source-pre553-r157",
+      "r157_branch_head": "0fa257b4bbcf02b8e1b3f792788abf3820b7f637",
+      "r157_state": "32_SOURCES_INTEGRATED_WVS_RUNNING_P5_EXACT_PATH_PORTABILITY_REPAIR",
+      "live_goal_update": "CONSOLIDATED_OBJECTIVE_VERIFIED_ACTIVE",
+      "heartbeat": "PAUSED",
+      "r157_frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
+      "r157_waiting_policy": {
+        "mechanism": "Finite kqueue OS file-event observer for four existing terminal receipts; ordinary installed codex queue wake to same HQ",
+        "observer_pid": 23206,
+        "observer_ready": true,
+        "periodic_status_checks": false,
+        "fallback_minimum_seconds": 180,
+        "no_model_or_effort_override": true,
+        "end_to_end_hq_notification": "PROVEN: actual P3 completion queue notice received in this same HQ; already-intaken return recognized, no duplicate effects.",
+        "heartbeat": "PAUSED",
+        "additional_finite_observers": [
+          {
+            "pid": 25842,
+            "targets": "EVS_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 28628,
+            "targets": "AUTH_RETRY_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 30263,
+            "targets": "EVS_REPAIR_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 35854,
+            "targets": "DISK_RESUME_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 39480,
+            "targets": "LATIN_BINDING_REPAIR_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 42516,
+            "targets": "AFRO_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 43834,
+            "targets": "ARAB_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 52893,
+            "targets": "FINAL_SOURCE_QUEUES_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 55097,
+            "targets": "P5_PORTABLE_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 58663,
+            "targets": "P5_CASE_REPAIR_completion_event_targets.json",
             "mode": "OS_EVENTS_NO_TIMED_POLLING"
           }
         ]
