@@ -1,0 +1,106 @@
+{
+  "parent": "N0/N1/N4; F1; C2/C3/C4; AT01-06,AT20-21",
+  "task": "A0_FIRST_ORIGINAL_C11_PREFLIGHT",
+  "requirement": "Standing program campaign A first original-source C11 positive",
+  "missing_edge": "Current original-source read/host and issuer/semantic execution authority; R157 grants preparation only",
+  "consumer": "Existing GovernedC11Projection/source-backed C11, then I03/I05",
+  "source_bytes_read": false,
+  "sources": [
+    {
+      "source_id": "SRC04",
+      "plan": {
+        "source_id": "SRC04",
+        "source_path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Arab Barometer Wave 1.sav",
+        "source_read_request": {
+          "source_id": "SRC04",
+          "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+          "source_format": "SAV",
+          "custody_locator_binding": "SRC04_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING",
+          "host": "USER_LOCAL_MAC",
+          "purpose": "FIRST_ORIGINAL_SOURCE_C11_POSITIVE",
+          "consumer_use": "EXISTING_PRE553_SOURCE_BACKED_C11",
+          "read_operation": "SOURCE_RESPONSE_DECODE",
+          "physical_read_extent": "EXACT_FILE",
+          "metadata_freeze_refs": [
+            {
+              "kind": "R154_PHYSICAL_METADATA",
+              "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC04_PHYSICAL_METADATA.json",
+              "content_hash": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+            }
+          ],
+          "semantic_use_scope": [
+            "R157_DECLARED_ELIGIBLE_SLICE_ONLY"
+          ]
+        },
+        "reader_configuration": {
+          "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+          "encoding": null,
+          "authority_status": null,
+          "configuration_ref": {
+            "kind": "READER_CONFIGURATION",
+            "object_id": "urn:rawlsing:r157:SRC04:default_sav",
+            "content_hash": "a9c105c077274ee4de9cff0d1476db6db27af8462ec76d273ec74f7696636a12"
+          }
+        },
+        "required_external_arguments": [
+          "source_path under the separately authorized source root",
+          "a current SourceReadDecisionResolver decision for this exact request",
+          "host/purpose/consumer_use/semantic_use_scope accepted by the issuer"
+        ],
+        "source_read_performed": false,
+        "original_workload_issued": false,
+        "note": "Plan only; no source bytes are opened. The existing source-read admission owner must authorize and decode separately."
+      },
+      "current_grant": "NOT_ISSUED_BY_STANDING_PROGRAM",
+      "next_edge": "SRC04 exact human source/host grant, then competent current issuer/semantic admission; do not invent ALLOW"
+    },
+    {
+      "source_id": "SRC17",
+      "plan": {
+        "source_id": "SRC17",
+        "source_path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/GSS1973.sav",
+        "source_read_request": {
+          "source_id": "SRC17",
+          "source_sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+          "source_format": "SAV",
+          "custody_locator_binding": "SRC17_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING",
+          "host": "USER_LOCAL_MAC",
+          "purpose": "FIRST_ORIGINAL_SOURCE_C11_POSITIVE",
+          "consumer_use": "EXISTING_PRE553_SOURCE_BACKED_C11",
+          "read_operation": "SOURCE_RESPONSE_DECODE",
+          "physical_read_extent": "EXACT_FILE",
+          "metadata_freeze_refs": [
+            {
+              "kind": "R154_PHYSICAL_METADATA",
+              "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC17_PHYSICAL_METADATA.json",
+              "content_hash": "e7a8515c6473b43b9a8f9233ca7aac5cd8ec246e8f7dcf9ecb42b23d92c89c52"
+            }
+          ],
+          "semantic_use_scope": [
+            "R157_DECLARED_ELIGIBLE_SLICE_ONLY"
+          ]
+        },
+        "reader_configuration": {
+          "source_sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+          "encoding": null,
+          "authority_status": null,
+          "configuration_ref": {
+            "kind": "READER_CONFIGURATION",
+            "object_id": "urn:rawlsing:r157:reader:SRC17:default_sav",
+            "content_hash": "632ebc202780d6180934bc2b64f04960c62a235c98d1cfe464453ab992f003d1"
+          }
+        },
+        "required_external_arguments": [
+          "source_path under the separately authorized source root",
+          "a current SourceReadDecisionResolver decision for this exact request",
+          "host/purpose/consumer_use/semantic_use_scope accepted by the issuer"
+        ],
+        "source_read_performed": false,
+        "original_workload_issued": false,
+        "note": "Plan only; no source bytes are opened. The existing source-read admission owner must authorize and decode separately."
+      },
+      "current_grant": "NOT_ISSUED_BY_STANDING_PROGRAM",
+      "next_edge": "SRC04 exact human source/host grant, then competent current issuer/semantic admission; do not invent ALLOW"
+    }
+  ]
+}
