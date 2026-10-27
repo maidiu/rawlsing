@@ -1,12 +1,12 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "EXECUTION_RESUMED_P0_READY",
+  "status": "P0_BLOCKED_PROVIDER_GLOBAL_REGION",
   "active_workers": [],
   "heartbeat": "PAUSED",
   "implementation_started": false,
   "completed_tasks": [],
   "current_goal_anchor": "GOAL.md",
-  "next_action": "Launch existing R154 OpenCode integration author on isolated R157 foundation checkout for P0; then ready source lanes and P3.",
+  "next_action": "User restore Global workspace Privacy setting; then same author P0, followed by ready parallel source lanes. Heartbeat PAUSED.",
   "live_goal_objective_verified": true,
   "live_goal_tool_status": "active",
   "resume_authorization": {
@@ -14,5 +14,17 @@
     "recorded_utc": "2026-10-27T02:20:30.637789+00:00",
     "grant": "EXECUTION_GRANT.md"
   },
-  "acceptance_clarification": "ACCEPTANCE_BOUNDARY_CLARIFICATION.md"
+  "acceptance_clarification": "ACCEPTANCE_BOUNDARY_CLARIFICATION.md",
+  "tasks": [
+    {
+      "id": "P0_FOUNDATION",
+      "lane": "integration",
+      "phase": "P0",
+      "state": "BLOCKED",
+      "launch": "P0_LAUNCH.json",
+      "dependency": "Existing OpenCode workspace must allow Global region for selected Go model",
+      "output": "No author tool or source/code work executed",
+      "next_action": "After user confirms Global restored, retry same terminal session with corrected v2 CLI and verify actual model/effort/checkout preflight."
+    }
+  ]
 }

@@ -1,0 +1,40 @@
+{
+  "task": "P0_FOUNDATION",
+  "session": "ses_e98c905cbffekusoHURfKyEUKG",
+  "executor": "OpenCode",
+  "provider_model": "opencode-go/deepseek-v4.1-flash",
+  "variant": "max",
+  "account": "existing Global",
+  "quota": "UNKNOWN",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
+  "branch": "agent/pyat-pre553-r157-foundation",
+  "startup_commit": "94c80cc7d59d0376a0405846074a2ae6523f05f1",
+  "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+  "supervisor_pid": 3285,
+  "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation/.r61/r157-p0-cli-repair",
+  "prompt_sha256": "cf1bcbd0c122ba7749c1f9a495c93d523278919671593d527f96f72438276d30",
+  "state": "TERMINAL_PROVIDER_REJECTION_BEFORE_AUTHOR_EXECUTION",
+  "expected_return": "source_pre553_validation/foundation/P0_RETURN.json",
+  "next_consumers": [
+    "parallel source lanes",
+    "P3 shared factory"
+  ],
+  "allowed_paths": [
+    "rawlsing_next/source_configuration/",
+    "rawlsing_next/tests/test_source_configuration*",
+    "source_pre553_validation/foundation/",
+    "minimal qualified source-read encoding binding"
+  ],
+  "prior_terminal_launch": {
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation/.r61/r157-p0",
+    "exit_code": 1,
+    "failure": "CLI syntax rejected before execution; --variant/--dir unsupported"
+  },
+  "actual_cli_model_argument": "opencode-go/deepseek-v4.1-flash#max",
+  "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
+  "actual_pid": 3287,
+  "exit_code": 1,
+  "provider_error": "Upstream request failed: This Go model requires Global regions. Select Global in your workspace's Privacy settings to use it.",
+  "actual_tool_preflight": "NOT_REACHED",
+  "account_region_remediation": "User asked to restore Global in existing workspace Privacy settings; no account/model/provider switch or blind retry."
+}
