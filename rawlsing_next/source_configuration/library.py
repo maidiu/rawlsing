@@ -117,6 +117,52 @@ def _json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _exact_case_path(directory: Path, name: str) -> Path | None:
+    """Return the actual directory entry whose spelling is exactly ``name``.
+
+    ``Path.is_file()`` is case-insensitive on macOS, so it can silently accept a
+    candidate spelling that does not exist on a case-sensitive checkout.  Indexed
+    artifact paths must be the real committed spelling.
+    """
+    try:
+        entries = list(directory.iterdir())
+    except FileNotFoundError:
+        return None
+    for entry in entries:
+        if entry.name == name and entry.is_file():
+            return entry
+    return None
+
+
+def _exact_case_join(root: Path, relative: str | Path) -> Path:
+    """Resolve a repository-relative path component-by-component, exact-case."""
+    current = root
+    for part in Path(relative).parts:
+        if part in ("", "."):
+            continue
+        try:
+            entries = list(current.iterdir())
+        except FileNotFoundError:
+            raise SourceArtifactError(f"missing path component {part!r} under {current}")
+        child = next((entry for entry in entries if entry.name == part), None)
+        if child is None:
+            raise SourceArtifactError(f"non-exact path component {part!r} under {current}")
+        current = child
+    return current
+
+
+def assert_exact_index_paths(index: Mapping[str, Any], root: Path = ROOT) -> None:
+    """Assert every serialized source artifact path is the real directory spelling."""
+    for row in index.get("sources", ()):  # type: ignore[union-attr]
+        for field in ("original_config_path", "fixture_config_path", "fixture_path", "native_results_path"):
+            relative = row.get(field)
+            if not relative:
+                continue
+            path = _exact_case_join(root, relative)
+            if not path.is_file():
+                raise SourceArtifactError(f"{row.get('source_id')}: indexed {field} is not a file: {relative}")
+
+
 def _lane_map() -> dict[str, str]:
     path = ROOT / "SOURCE_PRE553_PLAN/LANES.json"
     try:
@@ -131,8 +177,8 @@ def _candidate_original(source_id: str) -> Path | None:
     numeric = source_id[3:]
     for name in (f"{source_id}.config.json", f"{source_id}.source.config.json",
                  f"src{numeric}.config.json", f"src{numeric}.source.config.json", "source.config.json"):
-        path = data / name
-        if path.is_file():
+        path = _exact_case_path(data, name)
+        if path is not None:
             try:
                 config = load_source_config(path)
             except Exception:
@@ -146,14 +192,16 @@ def _candidate_fixture(source_id: str) -> tuple[Path, Path] | None:
     data = DATA_DIR / source_id
     validation = VALIDATION_DIR / source_id
     candidates = (
-        (data / f"{source_id}.full.fixture.config.json", validation / f"{source_id}.full.fixture.json"),
-        (data / f"{source_id}.fixture.config.json", validation / f"{source_id}.fixture.json"),
-        (validation / f"{source_id}.full.fixture.config.json", validation / f"{source_id}.full.fixture.json"),
-        (validation / f"{source_id}.fixture.config.json", validation / f"{source_id}.fixture.json"),
-        (validation / "fixture.config.json", validation / "fixture.json"),
+        (data, f"{source_id}.full.fixture.config.json", validation, f"{source_id}.full.fixture.json"),
+        (data, f"{source_id}.fixture.config.json", validation, f"{source_id}.fixture.json"),
+        (validation, f"{source_id}.full.fixture.config.json", validation, f"{source_id}.full.fixture.json"),
+        (validation, f"{source_id}.fixture.config.json", validation, f"{source_id}.fixture.json"),
+        (validation, "fixture.config.json", validation, "fixture.json"),
     )
-    for config_path, fixture_path in candidates:
-        if not config_path.is_file() or not fixture_path.is_file():
+    for config_dir, config_name, fixture_dir, fixture_name in candidates:
+        config_path = _exact_case_path(config_dir, config_name)
+        fixture_path = _exact_case_path(fixture_dir, fixture_name)
+        if config_path is None or fixture_path is None:
             continue
         try:
             config = load_source_config(config_path)
@@ -174,15 +222,11 @@ def _candidate_fixture(source_id: str) -> tuple[Path, Path] | None:
 
 def _candidate_native(source_id: str) -> tuple[Path, Mapping[str, Any], Mapping[str, Any]] | None:
     validation = VALIDATION_DIR / source_id
-    candidates = (
-        validation / "FULL_NATIVE_RESULTS.json",
-        validation / "NATIVE_RESULTS.json",
-        validation / "VALIDATION_RESULTS.json",
-        validation / f"{source_id}.validation-results.json",
-        validation / "validation_results.json",
-    )
-    for path in candidates:
-        if not path.is_file():
+    for name in ("FULL_NATIVE_RESULTS.json", "NATIVE_RESULTS.json",
+                 "VALIDATION_RESULTS.json", f"{source_id}.validation-results.json",
+                 "validation_results.json"):
+        path = _exact_case_path(validation, name)
+        if path is None:
             continue
         try:
             document = _json(path)
@@ -320,6 +364,8 @@ def build_index(*, index_path: str | Path = INDEX_PATH, sqlite_path: str | Path 
         "pending_source_ids": pending,
         "sources": [r.as_dict() for r in records],
     }
+    assert_exact_index_paths(index)
+    index["path_case"] = "EXACT_DIRECTORY_ENTRY_ASSERTED"
     index_path.write_text(json.dumps(index, indent=2, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
     if sqlite_path is not None:
         sqlite_path = Path(sqlite_path)
@@ -384,13 +430,13 @@ class SourceConfigLibrary:
     def _artifact(self, source_id: str, kind: str) -> tuple[Path, Mapping[str, Any]]:
         row = self.record(source_id)
         if kind == "original":
-            path = self.root / row["original_config_path"]
+            path = _exact_case_join(self.root, row["original_config_path"])
             expected = row["original_config_file_sha256"]
         elif kind == "fixture-config":
-            path = self.root / row["fixture_config_path"]
+            path = _exact_case_join(self.root, row["fixture_config_path"])
             expected = row["fixture_config_file_sha256"]
         elif kind == "fixture":
-            path = self.root / row["fixture_path"]
+            path = _exact_case_join(self.root, row["fixture_path"])
             expected = row["fixture_file_sha256"]
         else:
             raise SourceArtifactError(f"unknown artifact kind {kind!r}")
@@ -509,5 +555,5 @@ __all__ = [
     "ROOT", "DATA_DIR", "VALIDATION_DIR", "INTEGRATION_DIR", "INDEX_PATH", "SQLITE_PATH",
     "PLAN_SEAL", "FROZEN_P0", "FROZEN_P3", "SOURCE_IDS", "PENDING_SOURCE_IDS",
     "SourceLibraryError", "SourceNotPrepared", "SourceArtifactError", "SourceRecord",
-    "build_index", "SourceConfigLibrary",
+    "build_index", "SourceConfigLibrary", "assert_exact_index_paths",
 ]

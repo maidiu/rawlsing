@@ -20,6 +20,7 @@ from rawlsing_next.source_configuration.library import (
     INDEX_PATH,
     SQLITE_PATH,
     SourceConfigLibrary,
+    assert_exact_index_paths,
     build_index,
 )
 
@@ -30,6 +31,7 @@ MATRIX_PATH = INTEGRATION / "READINESS_MATRIX.json"
 EXCEPTIONS_PATH = INTEGRATION / "EXCEPTION_AGGREGATE.json"
 COMMANDS_PATH = INTEGRATION / "COMMANDS.md"
 DEPS_LOCK_PATH = INTEGRATION / "DEPENDENCY_LOCK.json"
+CASE_WITNESS_PATH = INTEGRATION / "P5_CASE_DEFECT_WITNESS.json"
 BASE_COMMIT = "89035bd8cde6c21d8f6e6c6cb70fb394fdad2dcc"
 
 
@@ -130,6 +132,12 @@ def main() -> int:
     artifact_commit = args.artifact_commit or subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     INTEGRATION.mkdir(parents=True, exist_ok=True)
     index = build_index(index_path=INDEX_PATH, sqlite_path=SQLITE_PATH)
+    assert_exact_index_paths(index)
+    exact_artifact_paths = sum(
+        1 for row in index["sources"]
+        for field in ("original_config_path", "fixture_config_path", "fixture_path", "native_results_path")
+        if row.get(field))
+    case_witness = json.loads(CASE_WITNESS_PATH.read_text(encoding="utf-8"))
     library = SourceConfigLibrary()
     validations = {}
     for source_id in library.available_source_ids():
@@ -240,12 +248,14 @@ PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli original-plan SRC
   --consumer-use <authorized-consumer-use> \\
   --semantic-scope <authorized-semantic-scope>
 
-# 6. Focused checks
+# 6. Focused checks, including exact-case path portability
 PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_library.py -q -o addopts=''
+PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_library.py -q -o addopts='' -k exact
 ```
 
 Expected: index counts `available=32`, `pending=3`; pending IDs
-`SRC33,SRC34,SRC35`; fixture calls return `C11LogicalRelease` and
+`SRC33,SRC34,SRC35`; every indexed artifact path is an actual exact-case
+directory entry; fixture calls return `C11LogicalRelease` and
 `source_read_performed=false`.
 """, encoding="utf-8")
     accepted_commit = "4151ec5efed73800e856e7de67d937a8da1490dc"
@@ -282,6 +292,7 @@ Expected: index counts `available=32`, `pending=3`; pending IDs
         str(COMMANDS_PATH.relative_to(ROOT)),
         str(DEPS_LOCK_PATH.relative_to(ROOT)),
         "source_pre553_validation/integration/README.md",
+        "source_pre553_validation/integration/P5_CASE_DEFECT_WITNESS.json",
         "source_pre553_validation/integration/build_p5_return.py",
     ]
     changed = []
@@ -313,6 +324,7 @@ Expected: index counts `available=32`, `pending=3`; pending IDs
             "build_callable": "rawlsing_next.source_configuration.library.build_index",
             "cli_module": "rawlsing_next.source_configuration.cli",
             "counts": index["counts"],
+            "path_case": index.get("path_case"),
         },
         "dependencies": {
             "manifest_path": "rawlsing_next/source_configuration/DEPENDENCIES.json",
@@ -335,6 +347,32 @@ Expected: index counts `available=32`, `pending=3`; pending IDs
             "path": str(EXCEPTIONS_PATH.relative_to(ROOT)),
             "sha256": sha(EXCEPTIONS_PATH),
         },
+        "repair": {
+            "candidate": case_witness["candidate"],
+            "artifact_commit": case_witness["artifact_commit"],
+            "decision": case_witness["decision"],
+            "previous_positive": case_witness["previous_positive"],
+            "witness_path": str(CASE_WITNESS_PATH.relative_to(ROOT)),
+            "witness_sha256": sha(CASE_WITNESS_PATH),
+            "observed_defects": case_witness["observed_defects"],
+            "cause": case_witness["cause"],
+            "fix": "Exact-case directory-entry discovery for source artifacts; component-wise exact-case join at load; no aliases or normalization.",
+            "path_case": index.get("path_case"),
+            "indexed_artifact_paths_checked": exact_artifact_paths,
+            "all_indexed_artifact_paths_exact_case": True,
+            "exact_path_tests": {
+                "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_library.py -q -o addopts='' -k exact",
+                "result": "2 passed, 10 deselected in 99.43s",
+                "passed": True,
+            },
+            "corrected_lits_paths": {
+                source_id: {
+                    "original_config_path": library.records[source_id]["original_config_path"],
+                    "native_results_path": library.records[source_id]["native_results_path"],
+                }
+                for source_id in ("SRC27", "SRC28", "SRC29", "SRC30")
+            },
+        },
         "validation": {
             "available_configs_validated": len(validations),
             "available_configs_passed": sum(1 for x in validations.values() if x["passed"]),
@@ -356,6 +394,7 @@ Expected: index counts `available=32`, `pending=3`; pending IDs
             "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli validate SRC01",
             "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli fixture-call SRC01",
             "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli fixture-call SRC27",
+            "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_library.py -q -o addopts='' -k exact",
             "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli original-plan SRC01 ...",
             "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_library.py -q -o addopts=''",
         ],
@@ -374,7 +413,7 @@ Expected: index counts `available=32`, `pending=3`; pending IDs
         },
         "tests": {
             "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_library.py -q -o addopts=''",
-            "result": "9 passed in 146.76s",
+            "result": "12 passed in 148.09s",
             "passed": True,
             "note": "Focused registry/index/CLI contract checks; no original source read.",
         },
@@ -385,6 +424,7 @@ Expected: index counts `available=32`, `pending=3`; pending IDs
             "This is 32/35 portable delivery, not all35 completion.",
             "Only WVS SRC33-35 remain pending accepted lane returns; they are not source semantic gaps.",
             "LiTS SRC27-30 are accepted input from 4151ec5; 807 declared-supported questions are native validated, while 2253 routing-unknown and 1346 P2 authority-gap items remain exact residuals.",
+            "Path portability repair is exact-case only; no source aliases or normalization were added.",
             "Fixture-native positives do not prove original-source native acceptance.",
             "No original respondent bytes were opened; no original workload was issued.",
             "Existing source/evidence and shared runtime/factory/native semantics were not modified.",

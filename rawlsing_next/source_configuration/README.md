@@ -80,7 +80,10 @@ PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli fixture-call SRC0
 ```
 
 `fixture-call` constructs the real `GovernedC11Projection` and validates a
-`C11LogicalRelease` from the configured `NONRESPONDENT_FIXTURE`. `original-plan`
+`C11LogicalRelease` from the configured `NONRESPONDENT_FIXTURE`. Indexed artifact
+paths are serialized from actual exact-case directory entries; loading rejects a
+non-exact component rather than relying on case-insensitive filesystem lookup.
+`original-plan`
 emits the exact external source-read request and required resolver/permission
 arguments without opening source bytes. Source files remain external and
 separately authorized. Dependency and package-data manifests are
