@@ -259,6 +259,47 @@ def _find_release_ref(value: Any) -> Mapping[str, Any] | None:
     return None
 
 
+def _candidate_exception(source_id: str) -> Path | None:
+    validation = VALIDATION_DIR / source_id
+    for name in ("EXCEPTION_LEDGER.json", "EXCEPTIONS.json", f"{source_id}.exceptions.json",
+                 "exception_ledger.json"):
+        path = _exact_case_path(validation, name)
+        if path is not None:
+            return path
+    return None
+
+
+def _exception_summary(source_id: str) -> dict[str, Any]:
+    path = _candidate_exception(source_id)
+    if path is None:
+        return {}
+    try:
+        document = _json(path)
+    except Exception:
+        return {"exception_path": str(path.relative_to(ROOT)), "exception_file_sha256": _sha(path)}
+    summary: dict[str, Any] = {
+        "exception_path": str(path.relative_to(ROOT)),
+        "exception_file_sha256": _sha(path),
+    }
+    for key in ("residual_count", "bound_item_count", "held_item_count", "held_by_role_counts"):
+        if key in document:
+            summary[key] = document[key]
+    held_items = document.get("held_items")
+    if isinstance(held_items, list):
+        summary["held_item_refs"] = [
+            {
+                "implementation_id": item.get("implementation_id"),
+                "physical_slot": item.get("physical_slot"),
+                "configuration_role": item.get("configuration_role"),
+                "source_disposition": item.get("source_disposition"),
+                "native_field": item.get("native_field"),
+            }
+            for item in held_items
+            if isinstance(item, Mapping)
+        ]
+    return summary
+
+
 def _held_counts(config: SourceConfig) -> dict[str, Any]:
     categories = Counter()
     for slot in config.document.get("physical_slots", ()):
@@ -323,6 +364,8 @@ def build_index(*, index_path: str | Path = INDEX_PATH, sqlite_path: str | Path 
         fixture_config = load_source_config(fixture_config_path) if fixture_config_path else None
         fixture_stream = load_fixture_stream(fixture_path) if fixture_path else None
         native_path, native_doc, release = native if native else (None, None, None)
+        held = _held_counts(original)
+        held.update(_exception_summary(source_id))
         records.append(SourceRecord(
             source_id=source_id, family=entry["family"], wave=entry["wave"], lane=lanes.get(source_id),
             status=status,
@@ -338,7 +381,7 @@ def build_index(*, index_path: str | Path = INDEX_PATH, sqlite_path: str | Path 
             native_results_file_sha256=_sha(native_path) if native_path else None,
             release_ref=dict(release) if release else None,
             counts=counts,
-            held=_held_counts(original),
+            held=held,
             details=tuple(details),
         ))
     pending = [r.source_id for r in records if r.status == "PENDING_ACCEPTED_RETURN"]

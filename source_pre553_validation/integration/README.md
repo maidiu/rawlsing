@@ -3,10 +3,11 @@
 P5 portable delivery lives in `P5_RETURN.json`, `COMMANDS.md`,
 `SOURCE_LIBRARY_INDEX.json`, `SOURCE_LIBRARY_INDEX.sqlite`,
 `READINESS_MATRIX.json`, `EXCEPTION_AGGREGATE.json` and `DEPENDENCY_LOCK.json`.
-It indexes the current accepted sources and does not claim all35 completion
-while WVS SRC33-35 remain pending accepted returns. `P5_CASE_DEFECT_WITNESS.json`
+It indexes all 35 accepted sources. The portable all35 index, readiness,
+exception aggregation and fixture-native consumer verification are complete;
+final all35 acceptance remains pending P6 distinct review. `P5_CASE_DEFECT_WITNESS.json`
 preserves the prior wrong-case index witness; `P5_RETURN.json` records the exact-case
-repair and the 32/35 result.
+repair, the 32→35 completion and the final all35 evidence.
 
 # R157 P3 integration return
 

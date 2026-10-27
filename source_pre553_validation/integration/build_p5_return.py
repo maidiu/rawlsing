@@ -1,8 +1,8 @@
 """Build the finite independent P5 portable-delivery return.
 
-This is an integration-only command.  It indexes the 32 currently accepted
-configurations, validates their original/fixture identity, exercises representative
-actual native fixture calls, and records the three pending accepted WVS returns.
+This is an integration-only command.  It indexes all 35 accepted configurations,
+validates their original/fixture identity, exercises the actual native fixture
+consumer for every source, and records exact readiness, held scopes and provenance.
 It never opens original source bytes or issues an original workload.
 """
 from __future__ import annotations
@@ -33,6 +33,7 @@ COMMANDS_PATH = INTEGRATION / "COMMANDS.md"
 DEPS_LOCK_PATH = INTEGRATION / "DEPENDENCY_LOCK.json"
 CASE_WITNESS_PATH = INTEGRATION / "P5_CASE_DEFECT_WITNESS.json"
 BASE_COMMIT = "89035bd8cde6c21d8f6e6c6cb70fb394fdad2dcc"
+WVS_COMMIT = "e80ff72192112fd3f8f9c0c2db0f3b20753dadad"
 
 
 def sha(path: Path) -> str:
@@ -125,6 +126,50 @@ def cold_load_check() -> dict[str, Any]:
         }
 
 
+def coverage_audit(library: SourceConfigLibrary) -> dict[str, Any]:
+    roster = json.loads((ROOT / "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json").read_text(encoding="utf-8"))
+    roster_by_id = {entry["source_id"]: entry for entry in roster["sources"]}
+    implementation_ids = []
+    physical_slots = 0
+    mismatches = []
+    for source_id in library.available_source_ids():
+        config = library.load_original(source_id)
+        row = library.record(source_id)
+        entry = roster_by_id[source_id]
+        physical_slots += len(config.document.get("physical_slots", ()))
+        implementation_ids.extend(item.get("implementation_id") for item in config.document.get("items", ()))
+        if row["counts"]["physical_slots"] != int(entry["physical_columns"]) or row["counts"]["original_items"] != int(entry["original_items"]):
+            mismatches.append(source_id)
+    unmatched = [item for entry in roster["sources"] for item in entry.get("unmatched_relation_ids", [])]
+    unique_ids = set(implementation_ids)
+    checks = {
+        "source_count_35": len(library.available_source_ids()) == 35,
+        "physical_slots_18413": physical_slots == int(roster["counts"]["physical_columns"]) == 18_413,
+        "implementation_ids_18276": len(implementation_ids) == int(roster["counts"]["original_items"]) == 18_276,
+        "implementation_ids_unique": len(unique_ids) == len(implementation_ids),
+        "exact_matches_18250": int(roster["counts"]["exact_relation_matches"]) == 18_250,
+        "unmatched_ids_26": len(unmatched) == int(roster["counts"]["unmatched_relation_ids"]) == 26,
+        "unmatched_ids_present_in_configs": all(item in unique_ids for item in unmatched),
+        "exact_plus_unmatched_18276": int(roster["counts"]["exact_relation_matches"]) + int(roster["counts"]["unmatched_relation_ids"]) == int(roster["counts"]["original_items"]),
+        "per_source_counts_match_roster": not mismatches,
+        "all35_available": all(row["status"] == "AVAILABLE_NATIVE_RECEIPT" for row in library.document["sources"]),
+        "exact_case_paths": library.document.get("path_case") == "EXACT_DIRECTORY_ENTRY_ASSERTED",
+    }
+    return {
+        "roster_path": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+        "roster_sha256": sha(ROOT / "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json"),
+        "roster_counts": roster["counts"],
+        "index_counts": library.document["counts"],
+        "implementation_ids": len(implementation_ids),
+        "unique_implementation_ids": len(unique_ids),
+        "physical_slots": physical_slots,
+        "unmatched_relation_ids": unmatched,
+        "per_source_mismatches": mismatches,
+        "checks": checks,
+        "passed": all(checks.values()),
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--artifact-commit", default=None)
@@ -146,7 +191,7 @@ def main() -> int:
     if failures:
         raise SystemExit(f"available config validation failed: {failures}")
     calls = {}
-    for source_id in ("SRC01", "SRC04", "SRC16", "SRC27", "SRC31"):
+    for source_id in library.available_source_ids():
         row = library.record(source_id)
         release = library.build_fixture_release(source_id)
         calls[source_id] = {
@@ -165,6 +210,9 @@ def main() -> int:
             "source_read_performed": False,
             "original_workload_issued": False,
         }
+    coverage = coverage_audit(library)
+    if not coverage["passed"]:
+        raise SystemExit(f"all35 coverage audit failed: {coverage['checks']}")
     exceptions = aggregate_exceptions(library)
     matrix = {
         "schema": "PYAT_R157_P5_READINESS_MATRIX@1.0.0",
@@ -220,13 +268,13 @@ def main() -> int:
         """# R157 P5 portable delivery commands
 
 All commands run from the repository root with `PYTHONPATH=.`; no private
-worktree or `.r61` path is required.
+author-worktree path is required.
 
 ```sh
 # 1. Build/rebuild the portable index and SQLite lookup
 PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli build-index
 
-# 2. Current readiness: 32 available, 3 pending accepted WVS source returns
+# 2. Current readiness: all 35 accepted source configurations available
 PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli status
 PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli list
 
@@ -253,10 +301,9 @@ PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_lib
 PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_library.py -q -o addopts='' -k exact
 ```
 
-Expected: index counts `available=32`, `pending=3`; pending IDs
-`SRC33,SRC34,SRC35`; every indexed artifact path is an actual exact-case
-directory entry; fixture calls return `C11LogicalRelease` and
-`source_read_performed=false`.
+Expected: index counts `available=35`, `pending=0`; every indexed artifact path
+is an actual exact-case directory entry; all35 source-config->native fixture
+consumer calls return `C11LogicalRelease` and `source_read_performed=false`.
 """, encoding="utf-8")
     accepted_commit = "4151ec5efed73800e856e7de67d937a8da1490dc"
     accepted_lits_intake_raw = subprocess.check_output(
@@ -276,6 +323,24 @@ directory entry; fixture calls return `C11LogicalRelease` and
                         "sha256": sha(path),
                         "bytes": path.stat().st_size,
                         "role": "ACCEPTED_INPUT_LITS",
+                    })
+    wvs_intake_raw = subprocess.check_output(
+        ["git", "show", f"{WVS_COMMIT}:SOURCE_PRE553_PLAN/progress/WVS_INTAKE.json"],
+        cwd=ROOT, text=True)
+    wvs_intake = json.loads(wvs_intake_raw)
+    accepted_files_wvs = []
+    for source_id in ("SRC33", "SRC34", "SRC35"):
+        for root in (ROOT / "rawlsing_next/source_configuration/data" / source_id,
+                     ROOT / "source_pre553_validation" / source_id):
+            if not root.is_dir():
+                continue
+            for path in sorted(root.rglob("*")):
+                if path.is_file() and "__pycache__" not in path.parts:
+                    accepted_files_wvs.append({
+                        "path": str(path.relative_to(ROOT)),
+                        "sha256": sha(path),
+                        "bytes": path.stat().st_size,
+                        "role": "ACCEPTED_INPUT_WVS",
                     })
     changed_paths = [
         "rawlsing_next/source_configuration/library.py",
@@ -303,7 +368,7 @@ directory entry; fixture calls return `C11LogicalRelease` and
     p5 = {
         "schema": "PYAT_R157_P5_RETURN@1.0.0",
         "task": "P5_PORTABLE_DELIVERY_IMPLEMENTATION",
-        "status": "P5_PORTABLE_LIBRARY_READY__32_OF_35_AVAILABLE",
+        "status": "P5_PORTABLE_LIBRARY_READY__ALL35_INDEXED__P6_PENDING",
         "plan_seal": index["plan_seal"],
         "base_commit": BASE_COMMIT,
         "artifact_commit": artifact_commit,
@@ -311,8 +376,10 @@ directory entry; fixture calls return `C11LogicalRelease` and
             "available_sources": index["counts"]["available"],
             "pending_accepted_returns": len(index["pending_source_ids"]),
             "pending_source_ids": index["pending_source_ids"],
-            "all35_complete": False,
-            "statement": "32 accepted source configurations are indexed and portable; only WVS SRC33-35 remain pending accepted returns, not semantic gaps and not all35 completion.",
+            "all35_portable_index_complete": True,
+            "all35_final_acceptance": False,
+            "p6_review_pending": True,
+            "statement": "All 35 accepted source configurations are indexed, portable, readiness-accounted and fixture-native consumer verified; final all35 acceptance remains pending P6 distinct review.",
         },
         "baseline": index["baseline"],
         "index": {
@@ -347,6 +414,7 @@ directory entry; fixture calls return `C11LogicalRelease` and
             "path": str(EXCEPTIONS_PATH.relative_to(ROOT)),
             "sha256": sha(EXCEPTIONS_PATH),
         },
+        "coverage_audit": coverage,
         "repair": {
             "candidate": case_witness["candidate"],
             "artifact_commit": case_witness["artifact_commit"],
@@ -362,7 +430,7 @@ directory entry; fixture calls return `C11LogicalRelease` and
             "all_indexed_artifact_paths_exact_case": True,
             "exact_path_tests": {
                 "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_library.py -q -o addopts='' -k exact",
-                "result": "2 passed, 10 deselected in 99.43s",
+                "result": "1 passed, 12 deselected in 109.03s",
                 "passed": True,
             },
             "corrected_lits_paths": {
@@ -378,9 +446,18 @@ directory entry; fixture calls return `C11LogicalRelease` and
             "available_configs_passed": sum(1 for x in validations.values() if x["passed"]),
             "pending_not_loaded": len(index["pending_source_ids"]),
             "failures": failures,
-            "method": "schema + original/fixture identity + source denominators; representative actual native fixture calls below",
+            "method": "schema + original/fixture identity + source denominators; all35 actual native fixture consumer calls below",
         },
         "native_calls": calls,
+        "native_consumer_verification": {
+            "callable": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+            "sources_called": len(calls),
+            "all_releases_match_recorded_receipts": all(
+                row["release_ref"]["content_hash"] == library.records[sid]["release_ref"]["content_hash"]
+                for sid, row in calls.items()),
+            "source_read_performed": False,
+            "original_workload_issued": False,
+        },
         "original_operation": {
             "command": "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli original-plan SRC01 --source-path <EXTERNAL_SOURCE_ROOT>/<file> --host <authorized-host> --purpose <authorized-purpose> --consumer-use <authorized-consumer-use> --semantic-scope <authorized-semantic-scope>",
             "plan": original_plan,
@@ -394,6 +471,7 @@ directory entry; fixture calls return `C11LogicalRelease` and
             "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli validate SRC01",
             "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli fixture-call SRC01",
             "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli fixture-call SRC27",
+            "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli fixture-call SRC33",
             "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_library.py -q -o addopts='' -k exact",
             "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli original-plan SRC01 ...",
             "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_library.py -q -o addopts=''",
@@ -411,26 +489,40 @@ directory entry; fixture calls return `C11LogicalRelease` and
             "files": accepted_files,
             "note": "Mechanically restored read-only from the pinned main commit; no source semantics changed.",
         },
+        "accepted_inputs_wvs": {
+            "commit": WVS_COMMIT,
+            "source_ids": ["SRC33", "SRC34", "SRC35"],
+            "wvs_intake_path": "SOURCE_PRE553_PLAN/progress/WVS_INTAKE.json",
+            "wvs_intake_sha256": hashlib.sha256(wvs_intake_raw.encode()).hexdigest(),
+            "decision": wvs_intake.get("decision"),
+            "accepted_candidate": wvs_intake.get("candidate"),
+            "artifact_commit": wvs_intake.get("artifact_commit"),
+            "source_scope": wvs_intake.get("source_scope"),
+            "hq_native_replay": wvs_intake.get("hq_native_replay"),
+            "limits": wvs_intake.get("limits"),
+            "files": accepted_files_wvs,
+            "note": "Mechanically restored read-only from immutable main e80ff721; 1219 items/slots and 332 exact held roles preserved.",
+        },
         "tests": {
             "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_library.py -q -o addopts=''",
-            "result": "12 passed in 148.09s",
+            "result": "13 passed in 161.60s",
             "passed": True,
             "note": "Focused registry/index/CLI contract checks; no original source read.",
         },
         "changed_artifacts": changed,
-        "changed_artifacts_note": "P5-authored files only; accepted LiTS input files are listed separately and P5_RETURN excludes itself.",
-        "remaining_required_accepted_inputs": index["pending_source_ids"],
+        "changed_artifacts_note": "P5-authored files only; accepted LiTS and WVS input files are listed separately and P5_RETURN excludes itself.",
+        "remaining_required_accepted_inputs": [],
         "limits": [
-            "This is 32/35 portable delivery, not all35 completion.",
-            "Only WVS SRC33-35 remain pending accepted lane returns; they are not source semantic gaps.",
+            "All35 portable index, readiness, exception aggregation and fixture-native consumer verification are complete; final all35 acceptance remains P6 distinct review.",
             "LiTS SRC27-30 are accepted input from 4151ec5; 807 declared-supported questions are native validated, while 2253 routing-unknown and 1346 P2 authority-gap items remain exact residuals.",
+            "WVS SRC33-35 are accepted input from e80ff721; 1219 items/slots, 887 response bindings and 332 exact held roles are preserved.",
             "Path portability repair is exact-case only; no source aliases or normalization were added.",
             "Fixture-native positives do not prove original-source native acceptance.",
             "No original respondent bytes were opened; no original workload was issued.",
             "Existing source/evidence and shared runtime/factory/native semantics were not modified.",
             "Final distinct review remains P6.",
         ],
-        "next_consumer": "HQ final all35 join when WVS SRC33-35 are accepted; then P6 distinct review.",
+        "next_consumer": "P6 distinct review; original execution remains separately authorized.",
     }
     write_json(P5_PATH, p5)
     print(json.dumps({

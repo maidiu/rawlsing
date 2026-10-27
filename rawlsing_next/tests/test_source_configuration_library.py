@@ -23,23 +23,23 @@ def index_dir(tmp_path_factory):
     return target, index
 
 
-def test_index_has_32_available_and_exactly_3_pending(index_dir):
+def test_index_has_all35_available_and_no_pending(index_dir):
     _, index = index_dir
     assert index["baseline"]["sources"] == 35
     assert index["baseline"]["original_items"] == 18_276
     assert index["baseline"]["physical_columns"] == 18_413
-    assert index["counts"]["available"] == 32
-    assert index["counts"]["pending"] == 3
+    assert index["counts"]["available"] == 35
+    assert index["counts"]["pending"] == 0
     assert index["counts"]["other_incomplete"] == 0
-    assert index["pending_source_ids"] == ["SRC33", "SRC34", "SRC35"]
-    assert index["counts"]["available_original_items"] == 17_057
-    assert index["counts"]["available_physical_slots"] == 17_194
+    assert index["pending_source_ids"] == []
+    assert index["counts"]["available_original_items"] == 18_276
+    assert index["counts"]["available_physical_slots"] == 18_413
 
 
 def test_library_loads_full_original_and_fixture_identity(index_dir):
     target, _ = index_dir
     library = SourceConfigLibrary(index_path=target / "index.json")
-    assert len(library.available_source_ids()) == 32
+    assert len(library.available_source_ids()) == 35
     original = library.load_original("SRC01")
     fixture = library.load_fixture_config("SRC01")
     stream = library.load_fixture_stream("SRC01")
@@ -69,13 +69,13 @@ def test_fixture_native_call_matches_recorded_receipt(index_dir):
     assert release.release_ref.kind == "C11LogicalRelease"
 
 
-def test_pending_source_is_not_accepted_or_materialized(index_dir):
+def test_unknown_source_is_not_accepted_or_materialized(index_dir):
     target, _ = index_dir
     library = SourceConfigLibrary(index_path=target / "index.json")
-    with pytest.raises(SourceNotPrepared, match="PENDING_ACCEPTED_RETURN"):
-        library.load_original("SRC33")
-    with pytest.raises(SourceNotPrepared, match="PENDING_ACCEPTED_RETURN"):
-        library.load_fixture_config("SRC33")
+    with pytest.raises(SourceNotPrepared, match="UNKNOWN_SOURCE"):
+        library.load_original("SRC99")
+    with pytest.raises(SourceNotPrepared, match="UNKNOWN_SOURCE"):
+        library.load_fixture_config("SRC99")
 
 
 def test_original_plan_is_explicitly_unexecuted(index_dir, tmp_path):
@@ -104,8 +104,8 @@ def test_sqlite_index_lookup(index_dir):
     con = sqlite3.connect(target / "index.sqlite")
     try:
         assert con.execute("select count(*) from sources").fetchone()[0] == 35
-        assert con.execute("select count(*) from sources where status='AVAILABLE_NATIVE_RECEIPT'").fetchone()[0] == 32
-        assert con.execute("select count(*) from sources where status='PENDING_ACCEPTED_RETURN'").fetchone()[0] == 3
+        assert con.execute("select count(*) from sources where status='AVAILABLE_NATIVE_RECEIPT'").fetchone()[0] == 35
+        assert con.execute("select count(*) from sources where status='PENDING_ACCEPTED_RETURN'").fetchone()[0] == 0
         row = con.execute("select source_id,status,release_content_hash from sources where source_id='SRC01'").fetchone()
         assert row[0] == "SRC01"
         assert row[1] == "AVAILABLE_NATIVE_RECEIPT"
@@ -149,13 +149,16 @@ def test_every_indexed_artifact_path_matches_real_exact_case(index_dir):
                 _assert_exact_directory_entry(ROOT, relative)
 
 
-def test_lits_paths_preserve_committed_lowercase_spelling(index_dir):
+def test_lits_and_wvs_paths_preserve_committed_spelling(index_dir):
     _, index = index_dir
     rows = {row["source_id"]: row for row in index["sources"]}
     for source_id in ("SRC27", "SRC28", "SRC29", "SRC30"):
         lower = source_id.lower()
         assert rows[source_id]["original_config_path"].endswith(f"/{lower}.config.json")
         assert rows[source_id]["native_results_path"].endswith("/validation_results.json")
+    for source_id in ("SRC33", "SRC34", "SRC35"):
+        assert rows[source_id]["original_config_path"].endswith(f"/{source_id}.source.config.json")
+        assert rows[source_id]["native_results_path"].endswith(f"/{source_id}.validation-results.json")
 
 
 def test_library_rejects_wrong_case_serialized_path(index_dir, tmp_path):
@@ -168,3 +171,13 @@ def test_library_rejects_wrong_case_serialized_path(index_dir, tmp_path):
     library = SourceConfigLibrary(index_path=wrong)
     with pytest.raises(SourceArtifactError, match="non-exact path component"):
         library.load_original("SRC27")
+
+def test_wvs_held_scope_and_fixture_release(index_dir):
+    target, index = index_dir
+    rows = {row["source_id"]: row for row in index["sources"]}
+    assert sum(rows[sid]["counts"]["response_slots"] for sid in ("SRC33", "SRC34", "SRC35")) == 887
+    assert sum(rows[sid]["held"]["held_item_count"] for sid in ("SRC33", "SRC34", "SRC35")) == 332
+    assert sum(rows[sid]["held"]["held_slots"] for sid in ("SRC33", "SRC34", "SRC35")) == 3
+    library = SourceConfigLibrary(index_path=target / "index.json")
+    release = library.build_fixture_release("SRC33")
+    assert release.release_ref.content_hash == "af40041eb17c824661d9f8c87864293694317bd3c68d061752963fbf8ded79e2"

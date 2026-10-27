@@ -1,0 +1,1238 @@
+{
+  "schema": "PYAT_R157_WVS_SOURCE_VALIDATION_RESULTS@1.0.0",
+  "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+  "p0_correction_consumed": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
+  "p3_terminal_runtime_consumed": "519355ec2215409b40d566ef13c3b21f611e0726",
+  "source_id": "SRC33",
+  "source_format": "SAV",
+  "wave": "W1",
+  "commands": [
+    "PYTHONPATH=. python3 source_pre553_validation/SRC33/build_wvs_lane.py --all",
+    "PYTHONPATH=. python3 -m pytest source_pre553_validation/SRC33/test_wvs_lane.py -q -o addopts=''"
+  ],
+  "config_validation": {
+    "validator": "rawlsing_next.source_configuration.schema.validate_source_config",
+    "original_path": "rawlsing_next/source_configuration/data/SRC33/SRC33.source.config.json",
+    "original_config_canonical_sha256": "08eb764ae2e23041e720fbd54beb8e1ef4c3e1560f2688e0feb2d8f747a23d7b",
+    "original_config_file_sha256": "3ee3d46a4db06c5b329486e24f5b9e3563d74f346469201f7fc8350c886d7e3b",
+    "fixture_path": "source_pre553_validation/SRC33/SRC33.fixture.config.json",
+    "fixture_config_canonical_sha256": "d829a4f5b41788595118f0bb525d9d50b8bd251b4c4529b11c0b4137a28473e6",
+    "fixture_config_file_sha256": "fc107ca3853df3db664033f89da29f6b44a5c58924e0eddc9850e099a420a800",
+    "passed": true
+  },
+  "coverage": {
+    "physical_slots_total": 188,
+    "original_items_total": 188,
+    "physical_slots_serialized": 188,
+    "items_serialized": 188,
+    "physical_slots_included": 188,
+    "items_included": 188,
+    "physical_slots_excluded": 0,
+    "items_excluded": 0,
+    "response_bound_items": 143,
+    "held_items": 45,
+    "held_by_role": {
+      "ADMIN": 4,
+      "CONTINUOUS": 17,
+      "COORDINATE": 3,
+      "GEN_FORBIDDEN": 5,
+      "KEY": 1,
+      "POSITION": 10,
+      "RANKED": 4,
+      "WEIGHT": 1
+    },
+    "no_drop": true,
+    "supported_question_ids": [
+      "WVS:W1:V10",
+      "WVS:W1:V11",
+      "WVS:W1:V12",
+      "WVS:W1:V13",
+      "WVS:W1:V14",
+      "WVS:W1:V15",
+      "WVS:W1:V16",
+      "WVS:W1:V17",
+      "WVS:W1:V18",
+      "WVS:W1:V19",
+      "WVS:W1:V20",
+      "WVS:W1:V21",
+      "WVS:W1:V22",
+      "WVS:W1:V23",
+      "WVS:W1:V24",
+      "WVS:W1:V27",
+      "WVS:W1:V28",
+      "WVS:W1:V30",
+      "WVS:W1:V31",
+      "WVS:W1:V32",
+      "WVS:W1:V33",
+      "WVS:W1:V34",
+      "WVS:W1:V35",
+      "WVS:W1:V37",
+      "WVS:W1:V51",
+      "WVS:W1:V52",
+      "WVS:W1:V53",
+      "WVS:W1:V54",
+      "WVS:W1:V55",
+      "WVS:W1:V56",
+      "WVS:W1:V57",
+      "WVS:W1:V64",
+      "WVS:W1:V65",
+      "WVS:W1:V66",
+      "WVS:W1:V75",
+      "WVS:W1:V76",
+      "WVS:W1:V77",
+      "WVS:W1:V78",
+      "WVS:W1:V79",
+      "WVS:W1:V80",
+      "WVS:W1:V81",
+      "WVS:W1:V82",
+      "WVS:W1:V83",
+      "WVS:W1:V84",
+      "WVS:W1:V85",
+      "WVS:W1:V86",
+      "WVS:W1:V87",
+      "WVS:W1:V88",
+      "WVS:W1:V90",
+      "WVS:W1:V90A",
+      "WVS:W1:V91",
+      "WVS:W1:V92",
+      "WVS:W1:V93",
+      "WVS:W1:V94",
+      "WVS:W1:V95",
+      "WVS:W1:V96",
+      "WVS:W1:V110",
+      "WVS:W1:V111",
+      "WVS:W1:V112",
+      "WVS:W1:V113",
+      "WVS:W1:V114",
+      "WVS:W1:V115",
+      "WVS:W1:V116",
+      "WVS:W1:V117",
+      "WVS:W1:V118",
+      "WVS:W1:V119",
+      "WVS:W1:V120",
+      "WVS:W1:V121",
+      "WVS:W1:V122",
+      "WVS:W1:V123",
+      "WVS:W1:V124",
+      "WVS:W1:V135",
+      "WVS:W1:V136",
+      "WVS:W1:V137",
+      "WVS:W1:V138",
+      "WVS:W1:V140",
+      "WVS:W1:V141",
+      "WVS:W1:V144",
+      "WVS:W1:V145",
+      "WVS:W1:V146",
+      "WVS:W1:V177",
+      "WVS:W1:V178",
+      "WVS:W1:V179",
+      "WVS:W1:V179N",
+      "WVS:W1:V181",
+      "WVS:W1:V182",
+      "WVS:W1:V183",
+      "WVS:W1:V184",
+      "WVS:W1:V185",
+      "WVS:W1:V186",
+      "WVS:W1:V187",
+      "WVS:W1:V188",
+      "WVS:W1:V189",
+      "WVS:W1:V190",
+      "WVS:W1:V191",
+      "WVS:W1:V192",
+      "WVS:W1:V193",
+      "WVS:W1:V194",
+      "WVS:W1:V195",
+      "WVS:W1:V196",
+      "WVS:W1:V197",
+      "WVS:W1:V198",
+      "WVS:W1:V199",
+      "WVS:W1:V200",
+      "WVS:W1:V201",
+      "WVS:W1:V202",
+      "WVS:W1:V205",
+      "WVS:W1:V219",
+      "WVS:W1:V221",
+      "WVS:W1:V222",
+      "WVS:W1:V224",
+      "WVS:W1:V226",
+      "WVS:W1:V227",
+      "WVS:W1:V232",
+      "WVS:W1:V233",
+      "WVS:W1:V237",
+      "WVS:W1:Y002",
+      "WVS:W1:Y003",
+      "WVS:W1:I_AUTHORITY",
+      "WVS:W1:I_NATIONALISM",
+      "WVS:W1:I_DEVOUT",
+      "WVS:W1:WEIGHT1A",
+      "WVS:W1:I_RELIGIMP",
+      "WVS:W1:I_RELIGBEL",
+      "WVS:W1:WEIGHT2A",
+      "WVS:W1:I_NORM1",
+      "WVS:W1:I_NORM2",
+      "WVS:W1:I_NORM3",
+      "WVS:W1:I_TRUSTARMY",
+      "WVS:W1:I_TRUSTPOLICE",
+      "WVS:W1:I_TRUSTCOURTS",
+      "WVS:W1:I_INDEP",
+      "WVS:W1:I_IMAGIN",
+      "WVS:W1:I_NONOBED",
+      "WVS:W1:WEIGHT1B",
+      "WVS:W1:WEIGHT2B",
+      "WVS:W1:WEIGHT3B",
+      "WVS:W1:I_VOICE1",
+      "WVS:W1:I_VOICE2",
+      "WVS:W1:S001",
+      "WVS:W1:S021",
+      "WVS:W1:S024",
+      "WVS:W1:S025"
+    ]
+  },
+  "native_validation": {
+    "projection": {
+      "type": "GovernedC11Projection",
+      "projection_identity_ref": {
+        "kind": "C11_SEMANTIC_PROJECTION",
+        "object_id": "urn:rawlsing:r157:fixture:SRC33:projection",
+        "content_hash": "72511f3aba2090e7bf26e8ba4594a007a7601a28b2fc009c83c75142791c3d98"
+      },
+      "expected_source_sha256": "3ba032d9dddb2279abb3c6ca33a8f7b99642a8e2ca822f859699274a17122085",
+      "respondents": 6,
+      "questions": 188,
+      "response_slots": 143,
+      "coordinate_slots": 3,
+      "weight_slots": 1,
+      "routing_facts": 858,
+      "authority_snapshots": 7
+    },
+    "release": {
+      "type": "C11LogicalRelease",
+      "release_id": "R157_WVS_FIXTURE_RELEASE/SRC33",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_WVS_FIXTURE_RELEASE/SRC33",
+        "content_hash": "af40041eb17c824661d9f8c87864293694317bd3c68d061752963fbf8ded79e2"
+      },
+      "semantic_release_hash": "af40041eb17c824661d9f8c87864293694317bd3c68d061752963fbf8ded79e2",
+      "source_artifact_ref": {
+        "kind": "SOURCE_ARTIFACT",
+        "object_id": "R157_FIXTURE:R157-WVS-SRC33-NONRESPONDENT",
+        "content_hash": "3ba032d9dddb2279abb3c6ca33a8f7b99642a8e2ca822f859699274a17122085"
+      },
+      "m01_m18_coverage": {
+        "M01": [
+          "EmpiricalUniverse"
+        ],
+        "M02": [
+          "RespondentIdentity"
+        ],
+        "M03": [
+          "QuestionVariableBinding"
+        ],
+        "M04": [
+          "RespondentEvent"
+        ],
+        "M05": [
+          "QuestionVariableBinding",
+          "RespondentEvent"
+        ],
+        "M06": [
+          "RespondentEvent.typed_state"
+        ],
+        "M07": [
+          "RoutingEligibilityFact"
+        ],
+        "M08": [
+          "EmpiricalCoordinateFact"
+        ],
+        "M09": [
+          "WeightMeasureFact|TypedAbsence"
+        ],
+        "M10": [
+          "AuthoritySnapshot"
+        ],
+        "M11": [
+          "SourceUniverseRelation|DISTINCT_BY_DEFAULT"
+        ],
+        "M12": [
+          "RoutingEligibilityFact",
+          "EmpiricalPredicateReplayBinding|TypedAbsence"
+        ],
+        "M13": [
+          "ComparatorReplayBinding|DEFERRED"
+        ],
+        "M14": [
+          "DiscoveryBranchReplayBinding|DEFERRED"
+        ],
+        "M15": [
+          "StructuralAdmissionReplayBinding|NOT_APPLICABLE"
+        ],
+        "M16": [
+          "ReplayManifest"
+        ],
+        "M17": [
+          "AuthoritySnapshot",
+          "ReplayManifest"
+        ],
+        "M18": [
+          "ReplayManifest"
+        ]
+      },
+      "universes": 1,
+      "respondent_events": 858,
+      "coordinate_facts": 18,
+      "weight_facts": 6,
+      "authority_snapshots": 7
+    },
+    "actual": {
+      "response_state_counts": {
+        "DK": 6,
+        "INAPPLICABLE": 2,
+        "MISSING": 202,
+        "NOT_ASKED": 76,
+        "SUBSTANTIVE_RESPONSE": 572
+      },
+      "response_state_counts_by_question": {
+        "FIXTURE:SRC33:I_AUTHORITY": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:I_DEVOUT": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:I_IMAGIN": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:I_INDEP": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:I_NATIONALISM": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:I_NONOBED": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:I_NORM1": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:I_NORM2": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:I_NORM3": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:I_RELIGBEL": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:I_RELIGIMP": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:I_TRUSTARMY": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:I_TRUSTCOURTS": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:I_TRUSTPOLICE": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:I_VOICE1": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:I_VOICE2": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:S001": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:S021": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:S024": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:S025": {
+          "INAPPLICABLE": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V10": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V11": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V110": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V111": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V112": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V113": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V114": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V115": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V116": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V117": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V118": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V119": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V12": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V120": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V121": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V122": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V123": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V124": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V13": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V135": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V136": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V137": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V138": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V14": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V140": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V141": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V144": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V145": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V146": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V15": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V16": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V17": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V177": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V178": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V179": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V179N": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V18": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V181": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V182": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V183": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V184": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V185": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V186": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V187": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V188": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V189": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V19": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V190": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V191": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V192": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V193": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V194": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V195": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V196": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V197": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V198": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V199": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V20": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V200": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V201": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V202": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V205": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V21": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V219": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V22": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V221": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V222": {
+          "INAPPLICABLE": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V224": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V226": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V227": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V23": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V232": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V233": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V237": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V24": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V27": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V28": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V30": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V31": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V32": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V33": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V34": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V35": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V37": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V51": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V52": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V53": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V54": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V55": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V56": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V57": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V64": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V65": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V66": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V75": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V76": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V77": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V78": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V79": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V80": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V81": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V82": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V83": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V84": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V85": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V86": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V87": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V88": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V90": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V90A": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V91": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V92": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V93": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V94": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V95": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:V96": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:WEIGHT1A": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:WEIGHT1B": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:WEIGHT2A": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:WEIGHT2B": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:WEIGHT3B": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:Y002": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC33:Y003": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        }
+      },
+      "coordinate_state_counts": {
+        "OBSERVED_COORDINATE": 18
+      },
+      "weight_state_counts": {
+        "WEIGHT_BASIS_UNRESOLVED": 5,
+        "WEIGHT_MISSING": 1
+      },
+      "canonical_response_values_all_null": true
+    },
+    "expected_match": true,
+    "p3_row_native_keys": {
+      "configured_slot": {
+        "ordinal": 183,
+        "name": "S007"
+      },
+      "witness_count": 6,
+      "kinds": [
+        "ExactRef"
+      ],
+      "all_witnesses_fixture_bound": true
+    },
+    "p3_reader_transport": {
+      "reader_configuration": {
+        "source_sha256": "051bf450568f44181559a5b2bfbe58b4f05b58bc806643d0c63353c937ff0824",
+        "configuration_ref": {
+          "kind": "READER_CONFIGURATION",
+          "object_id": "urn:rawlsing:r157:reader:SRC33:default_sav",
+          "content_hash": "4e7ec5e440f3ffd63c5f93daf62e4a775d728d0f07dedd0887174834af3cf1d3"
+        },
+        "encoding": null,
+        "authority_status": null
+      },
+      "source_read_request": {
+        "source_id": "SRC33",
+        "source_sha256": "051bf450568f44181559a5b2bfbe58b4f05b58bc806643d0c63353c937ff0824",
+        "source_format": "SAV",
+        "custody_locator_binding": "SRC33_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING",
+        "host": "R157_PREPARATION_HOST",
+        "purpose": "SOURCE_CONFIGURATION_PREPARATION",
+        "consumer_use": "R157_WVS_LANE_CONFIGURATION",
+        "semantic_use_scope": [
+          "coordinate_configuration",
+          "response_rule_configuration"
+        ]
+      },
+      "source_bytes_read": false,
+      "permission_decision": "NOT_REQUESTED_OR_EVALUATED_IN_PREPARATION"
+    },
+    "calls": [
+      {
+        "call": "row_native_keys_from_transport(fixture_config, stream=fixture_stream)",
+        "result": "PASS",
+        "witness_count": 6
+      },
+      {
+        "call": "build_governed_c11_projection(fixture_config, row_native_keys=fixture_keys)",
+        "result": "PASS"
+      },
+      {
+        "call": "build_validated_c11_release_from_config(fixture_config, stream=fixture_stream)",
+        "result": "PASS",
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "R157_WVS_FIXTURE_RELEASE/SRC33",
+          "content_hash": "af40041eb17c824661d9f8c87864293694317bd3c68d061752963fbf8ded79e2"
+        }
+      },
+      {
+        "call": "build_source_backed_c11_repository_from_config(fixture_config, stream=fixture_stream)",
+        "result": "PASS",
+        "release_refs": [
+          {
+            "kind": "C11LogicalRelease",
+            "object_id": "R157_WVS_FIXTURE_RELEASE/SRC33",
+            "content_hash": "af40041eb17c824661d9f8c87864293694317bd3c68d061752963fbf8ded79e2"
+          }
+        ]
+      },
+      {
+        "call": "reader_configuration_from_config(original_config)",
+        "result": "PASS",
+        "encoding": null,
+        "source_bytes_read": false
+      },
+      {
+        "call": "source_read_request_from_config(original_config)",
+        "result": "PASS",
+        "source_bytes_read": false
+      }
+    ],
+    "repository": {
+      "release_refs": [
+        {
+          "kind": "C11LogicalRelease",
+          "object_id": "R157_WVS_FIXTURE_RELEASE/SRC33",
+          "content_hash": "af40041eb17c824661d9f8c87864293694317bd3c68d061752963fbf8ded79e2"
+        }
+      ],
+      "release_ref_matches_stream": true
+    },
+    "refusals": {
+      "original_without_row_keys": {
+        "outcome": "REFUSED",
+        "exception_type": "SourceConfigurationBindingError",
+        "message": "configured source_native_key_slot requires row_native_keys after a permitted decode"
+      },
+      "original_with_fixture_stream": {
+        "outcome": "REFUSED",
+        "exception_type": "SourceConfigurationBindingError",
+        "message": "active source SHA differs from the frozen config binding"
+      },
+      "fixture_wrong_source_sha": {
+        "outcome": "REFUSED",
+        "exception_type": "SourceConfigurationBindingError",
+        "message": "active source SHA differs from the frozen config binding"
+      },
+      "fixture_wrong_row_count": {
+        "outcome": "REFUSED",
+        "exception_type": "SourceConfigurationFactoryError",
+        "message": "configured key slot did not yield exactly one witness per active row"
+      }
+    }
+  },
+  "identity_separation": {
+    "original_source_sha256": "051bf450568f44181559a5b2bfbe58b4f05b58bc806643d0c63353c937ff0824",
+    "fixture_source_sha256": "3ba032d9dddb2279abb3c6ca33a8f7b99642a8e2ca822f859699274a17122085",
+    "distinct_bytes": true,
+    "original_binding_identity_class": "ORIGINAL_SOURCE",
+    "fixture_binding_identity_class": "NONRESPONDENT_FIXTURE",
+    "original_authority_has_fixture_only": false,
+    "fixture_authority_all_fixture_only": true,
+    "original_binding_matches_original_sha": true,
+    "fixture_binding_differs_from_original_sha": true
+  },
+  "residuals": [
+    {
+      "residual_id": "SRC33-NATIVE-ROW-KEY",
+      "scope": "SRC33",
+      "field": "respondents.source_native_key_slot",
+      "status": "DECODE_REQUIRED",
+      "reason": "The source-native key slot is declared, but no permitted decode-produced row key witness exists in preparation.",
+      "dependent_operation": "original build_governed_c11_projection / build_validated_c11_release_from_config",
+      "unaffected_scope": "fixture validation and schema preparation",
+      "owner": "P3/source-read owner",
+      "next_step": "Populate row_native_keys from permitted decoded key cells; original execution stays separate."
+    },
+    {
+      "residual_id": "SRC33-ROUTING-UNKNOWN",
+      "scope": "SRC33",
+      "field": "routing[].typed_state",
+      "status": "ROUTING_UNKNOWN",
+      "reason": "H48/O06 routing status is SOURCE_ROUTING_UNRESOLVED; exact form/ballot/administration routes are unavailable.",
+      "dependent_operation": "eligibility/form-conditioned original claims",
+      "unaffected_scope": "raw response rules and fixture positive release",
+      "owner": "WVS source evidence owner",
+      "next_step": "Recover exact route/form evidence before eligibility claims."
+    },
+    {
+      "residual_id": "SRC33-SOURCE-AUTHORITY-DEFER",
+      "scope": "SRC33",
+      "field": "authority.snapshots",
+      "status": "DEFER",
+      "reason": "H48/P2/full-relation evidence is source_reviewed candidate evidence, not an adopted original ALLOW authority.",
+      "dependent_operation": "original scientific issuance",
+      "unaffected_scope": "preparation and nonrespondent fixture validation",
+      "owner": "R157 authority owner",
+      "next_step": "Adjudicate exact source operation scope; do not promote fixture authority."
+    },
+    {
+      "residual_id": "SRC33-CANONICAL-VALUE",
+      "scope": "SRC33",
+      "field": "response_slots[].values[].canonical_value",
+      "status": "NOT_AUTHORIZED",
+      "reason": "No exact positive canonical mapping authority is present; raw source values/states are retained.",
+      "dependent_operation": "canonicalized analysis",
+      "unaffected_scope": "raw response projection",
+      "owner": "R157 mapping authority owner",
+      "next_step": "Adjudicate exact mappings before canonicalization."
+    },
+    {
+      "residual_id": "SRC33-WEIGHT-HELD",
+      "scope": "SRC33",
+      "field": "physical_slots[V236].weight",
+      "status": "HELD",
+      "reason": "A source weight slot is identified; design/estimand/normalization authority is not established.",
+      "dependent_operation": "weighted estimands",
+      "unaffected_scope": "unweighted source-local raw configuration",
+      "owner": "WVS weight/design owner",
+      "next_step": "Establish design/estimand/normalization authority before a weighted scope."
+    },
+    {
+      "residual_id": "SRC33-FORM-ADMINISTRATION",
+      "scope": "SRC33",
+      "field": "routing/supported_form_slice",
+      "status": "UNKNOWN",
+      "reason": "Exact form/ballot/administration assignment is not recovered in the portable evidence.",
+      "dependent_operation": "form/administration-conditioned claims",
+      "unaffected_scope": "unconditional source response rules",
+      "owner": "WVS source evidence owner",
+      "next_step": "Recover exact assignment evidence if required."
+    },
+    {
+      "residual_id": "SRC33-SAMPLE-FRAME",
+      "scope": "SRC33",
+      "field": "universe.sampling_design_regime",
+      "status": "UNRESOLVED",
+      "reason": "WVS source is multi-country and wave-specific sample frames/designs are not reconstructed from metadata alone.",
+      "dependent_operation": "population/design claims",
+      "unaffected_scope": "source-row identity and response rules",
+      "owner": "WVS source evidence owner",
+      "next_step": "Recover exact country/wave frame/design evidence before population claims."
+    },
+    {
+      "residual_id": "SRC33-GEN_FORBIDDEN-HELD",
+      "scope": "SRC33/gen_forbidden",
+      "field": "questions[].response_slots",
+      "status": "GEN_FORBIDDEN_HELD",
+      "reason": "5 exact items are held: P2 explicitly marks the item generation_forbidden; identity and evidence are retained but no response rule is promoted. Exact item/evidence rows: source_pre553_validation/SRC33/SRC33.exceptions.json#held_items.",
+      "dependent_operation": "generation/feature use",
+      "unaffected_scope": "other source-local rules and nonrespondent native validation",
+      "owner": "WVS source/native-representation owner",
+      "next_step": "Consume exact held-item evidence; do not substitute a default category or invented rank/aggregation."
+    },
+    {
+      "residual_id": "SRC33-POSITION-HELD",
+      "scope": "SRC33/position",
+      "field": "coordinate_slots[].native_coordinate_ref",
+      "status": "POSITION_HELD",
+      "reason": "10 exact items are held: The item is a position/context code, not a declared response target; raw codebook identity is retained. Exact item/evidence rows: source_pre553_validation/SRC33/SRC33.exceptions.json#held_items.",
+      "dependent_operation": "coordinate/context interpretation",
+      "unaffected_scope": "other source-local rules and nonrespondent native validation",
+      "owner": "WVS source/native-representation owner",
+      "next_step": "Consume exact held-item evidence; do not substitute a default category or invented rank/aggregation."
+    },
+    {
+      "residual_id": "SRC33-CONTINUOUS-HELD",
+      "scope": "SRC33/continuous",
+      "field": "questions[].response_slots",
+      "status": "CONTINUOUS_HELD",
+      "reason": "17 exact items are held: The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys. Exact item/evidence rows: source_pre553_validation/SRC33/SRC33.exceptions.json#held_items.",
+      "dependent_operation": "continuous response projection",
+      "unaffected_scope": "other source-local rules and nonrespondent native validation",
+      "owner": "WVS source/native-representation owner",
+      "next_step": "Consume exact held-item evidence; do not substitute a default category or invented rank/aggregation."
+    },
+    {
+      "residual_id": "SRC33-RANKED-HELD",
+      "scope": "SRC33/ranked",
+      "field": "response_slots[].values[].occurrences",
+      "status": "RANKED_HELD",
+      "reason": "4 exact items are held: manual_response_topology is ranked_choice, but the single physical column does not carry an exact component/rank map; rank order cannot be invented. Exact item/evidence rows: source_pre553_validation/SRC33/SRC33.exceptions.json#held_items.",
+      "dependent_operation": "ranked response projection",
+      "unaffected_scope": "other source-local rules and nonrespondent native validation",
+      "owner": "WVS source/native-representation owner",
+      "next_step": "Consume exact held-item evidence; do not substitute a default category or invented rank/aggregation."
+    },
+    {
+      "residual_id": "SRC33-ADMIN-HELD",
+      "scope": "SRC33/admin",
+      "field": "physical_slots[].disposition",
+      "status": "ADMIN_HELD",
+      "reason": "4 exact items are held: The item is administrative metadata, not a respondent response target. Exact item/evidence rows: source_pre553_validation/SRC33/SRC33.exceptions.json#held_items.",
+      "dependent_operation": "administrative/metadata use",
+      "unaffected_scope": "other source-local rules and nonrespondent native validation",
+      "owner": "WVS source/native-representation owner",
+      "next_step": "Consume exact held-item evidence; do not substitute a default category or invented rank/aggregation."
+    },
+    {
+      "residual_id": "SRC33-MULTISELECT-AGGREGATION",
+      "scope": "SRC33/multiselect_child",
+      "field": "response_slots[].values[].occurrences[].component_ref",
+      "status": "AGGREGATION_NOT_INVENTED",
+      "reason": "29 exact multiselect child columns are bound as single columns; the portable evidence does not provide an exact member-set component/aggregation map. Exact rows: source_pre553_validation/SRC33/SRC33.exceptions.json#bound_items.",
+      "dependent_operation": "multiselect set/component aggregation",
+      "unaffected_scope": "each child column response rule and native event projection",
+      "owner": "WVS source/topology owner",
+      "next_step": "Recover exact member-set/component topology before aggregation; do not infer it from labels."
+    }
+  ],
+  "limits": [
+    "Original WVS respondent execution is NOT performed or claimed.",
+    "Positive native release is from a distinct nonrespondent fixture.",
+    "Original construction requires permitted decoded row keys and remains P3/source-read work.",
+    "No cross-country canonicalization, weight authorization or population claim is asserted."
+  ]
+}
