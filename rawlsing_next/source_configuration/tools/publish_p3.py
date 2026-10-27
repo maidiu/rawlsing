@@ -306,7 +306,9 @@ def main() -> int:
         "path": path,
         "sha256": sha(ROOT / path),
         "bytes": (ROOT / path).stat().st_size,
-    } for path in changed if (ROOT / path).is_file()]
+    } for path in changed
+        if (ROOT / path).is_file()
+        and path != "source_pre553_validation/integration/P3_RETURN.json"]
 
     reader = {
         "qualified_allowlist_example": {
