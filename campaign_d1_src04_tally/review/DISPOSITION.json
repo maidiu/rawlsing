@@ -1,0 +1,276 @@
+{
+  "schema": "PYAT_D1_SRC04_TALLY_DISPOSITION@1.0.0",
+  "campaign": "D1",
+  "review_type": "DISTINCT_INDEPENDENT_OBSERVED_SAMPLE_TALLY_REVIEW",
+  "verdict": "REVISE",
+  "candidate": "b8f34be3b37bbc648e20b129d8f533c091206c32",
+  "candidate_branch": "agent/pyat-d1-src04-observed-tally-review",
+  "candidate_author_branch": "agent/pyat-d1-src04-observed-tally",
+  "candidate_remote_sha": "b8f34be3b37bbc648e20b129d8f533c091206c32",
+  "artifact_commit": "adf1e81c6719132f1d889e96cf1a222a5f74fff1",
+  "repository": "maidiu/rawlsing",
+  "reviewer_session": "ses_e81fc42a8ffeAbvo6M8l4YG4nK",
+  "review_commit": "the commit containing this file on agent/pyat-d1-src04-observed-tally-review; direct remote readback is recorded in the final response",
+  "program_sha256": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50",
+  "d1_grant_sha256": "f51de87818f8fd1365d347da3aee73005fe9ab8ae0c8d2a607487395016d48ae",
+  "control_commit": "3b703e878946a442b5c880f318b929365865ed00",
+  "accepted_release": {
+    "kind": "C11LogicalRelease",
+    "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION",
+    "content_hash": "fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec",
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "source_records": 7337,
+    "source_columns": 181,
+    "accepted_response_fields": 42
+  },
+  "product": {
+    "tally_ref": {
+      "kind": "D1_OBSERVED_SAMPLE_TALLY",
+      "object_id": "urn:rawlsing:d1:SRC04:observed-sample-tally:87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022",
+      "content_hash": "87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022"
+    },
+    "replay_ref": {
+      "kind": "D1_TALLY_REPLAY",
+      "object_id": "urn:rawlsing:d1:SRC04:observed-sample-replay:8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f",
+      "content_hash": "8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f"
+    },
+    "product_sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+    "replay_product_sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+    "event_presence_count": 308154,
+    "field_count": 42,
+    "held_fields": [],
+    "source_record_denominator": 7337,
+    "observed_response_denominator_total": 298819,
+    "answered_substantive_denominator_total": 277582,
+    "missing_or_unobserved_total": 9335,
+    "state_totals": {
+      "SUBSTANTIVE_RESPONSE": 277582,
+      "DK": 14784,
+      "SOURCE_SPECIFIC_SPECIAL": 6453,
+      "MISSING": 9335
+    },
+    "observed_response_definition": "SUBSTANTIVE_RESPONSE, DK, REFUSAL or SOURCE_SPECIFIC_SPECIAL state; event presence alone is not answered",
+    "routing_state": "ROUTING_UNKNOWN",
+    "canonicalization": "WITHHELD_DEFER_NO_SCIENTIFIC_ALLOW",
+    "canonical_values_emitted": 0,
+    "weight_facts": 0,
+    "population_or_eligibility_claims": "NONE",
+    "typed_product": "PYAT_D1_SRC04_OBSERVED_SAMPLE_TALLY@1.0.0",
+    "not_an_issued_i03_empirical_fact": true
+  },
+  "criteria": [
+    {
+      "id": "D1-C01",
+      "requirement": "Consume only the accepted local SRC04 C11 release and exact 42 fields; no original SAV reread",
+      "status": "PASS",
+      "evidence": [
+        "campaign_d1_src04_tally/adapter.py",
+        "campaign_a_src04/evidence/RELEASE_RECEIPT.json",
+        ".r61/d1-review/independent_tally.json"
+      ],
+      "result": "The adapter verifies the A1 release/source/config and local bundle hashes. Independent recomputation used the same local public objects and did not read the original SAV; source/release identity is exact."
+    },
+    {
+      "id": "D1-C02",
+      "requirement": "Use actual typed C11 event/value owners, not only the author aggregate",
+      "status": "PASS",
+      "evidence": [
+        "rawlsing_next/pre553_carrier_execution.py",
+        "rawlsing_next/pre553_r5_codec.py",
+        ".r61/d1-review/independent_tally.json"
+      ],
+      "result": "Independent probe materialized all 308,154 RespondentEvents with materialize_public_object and decoded every native token with R5TypedValueCodec.decode; it independently recomputed field/state/value counts without invoking the author's build_tally."
+    },
+    {
+      "id": "D1-C03",
+      "requirement": "Field/state/native-value partitions and all totals",
+      "status": "PASS",
+      "evidence": [
+        ".r61/d1-review/independent_tally.json",
+        "campaign_d1_src04_tally/evidence/TALLY_PRODUCT.json"
+      ],
+      "result": "All 42 fields match the product exactly. Per field: event presence 7,337; state counts sum 7,337; native-value counts sum 7,337; state-specific native values sum 7,337; observed + missing = 7,337. Global: 308,154 event presence, 298,819 observed response, 277,582 substantive, 14,784 DK, 6,453 source-specific special, 9,335 missing; all totals and partitions hold.",
+      "details": {
+        "field_count": 42,
+        "held_fields": [],
+        "event_presence": 308154,
+        "observed_response": 298819,
+        "substantive": 277582,
+        "dk": 14784,
+        "source_specific_special": 6453,
+        "missing": 9335,
+        "refusal": 0,
+        "invalid_unresolved": 0
+      }
+    },
+    {
+      "id": "D1-C04",
+      "requirement": "Event presence must not be treated as answered; observed versus substantive versus missing accounting",
+      "status": "PASS",
+      "evidence": [
+        "campaign_d1_src04_tally/evidence/TALLY_PRODUCT.json",
+        ".r61/d1-review/independent_tally.json"
+      ],
+      "result": "Event presence (308,154) is reported separately from observed response (298,819) and substantive answered (277,582). DK and source-specific special are included in observed response; MISSING is excluded and separately counted. No refusal or invalid-unresolved state occurs in the selected 42 fields."
+    },
+    {
+      "id": "D1-C05",
+      "requirement": "Preserve ROUTING_UNKNOWN, DEFER authority and no canonical/directional/population/weight claims",
+      "status": "PASS",
+      "evidence": [
+        "campaign_d1_src04_tally/evidence/TALLY_PRODUCT.json",
+        "campaign_d1_src04_tally/RETURN.json"
+      ],
+      "result": "Product declares ROUTING_UNKNOWN, canonicalization WITHHELD_DEFER_NO_SCIENTIFIC_ALLOW, canonical_values_emitted 0, weight_facts 0, population_or_eligibility_claims NONE. No canonical value, scale, direction, weight or eligible-population field is emitted."
+    },
+    {
+      "id": "D1-C06",
+      "requirement": "Typed separate product must not masquerade as issued I03 EmpiricalFact",
+      "status": "PASS",
+      "evidence": [
+        "campaign_d1_src04_tally/evidence/TALLY_PRODUCT.json",
+        "campaign_d1_src04_tally/RETURN.json"
+      ],
+      "result": "Schema is PYAT_D1_SRC04_OBSERVED_SAMPLE_TALLY@1.0.0; no EmpiricalFact/EmpiricalQuerySpec or I03 issuance is present. The return explicitly lists I03/I05 as not issued."
+    },
+    {
+      "id": "D1-C07",
+      "requirement": "Wrong-release refusal",
+      "status": "PASS",
+      "evidence": [
+        "campaign_d1_src04_tally/evidence/NEGATIVE_WRONG_RELEASE.json",
+        "campaign_d1_src04_tally/tests/test_tally.py"
+      ],
+      "result": "Independent call returned REFUSED / RELEASE_IDENTITY_MISMATCH with local_bundle_consumed false; the unchanged product remained valid."
+    },
+    {
+      "id": "D1-C08",
+      "requirement": "Held-authority refusal required by the D1 grant",
+      "status": "REVISE",
+      "evidence": [
+        "campaign_d1_src04_tally/evidence/NEGATIVE_UNKNOWN_STATE.json",
+        "campaign_d1_src04_tally/adapter.py",
+        "campaign_d1_src04_tally/tests/test_tally.py"
+      ],
+      "result": "No held-authority negative exists. The only other negative is UNKNOWN_RESPONSE_STATE, which is a response-state classifier refusal and is explicitly not an authority refusal. The D1 grant requires a held-authority refusal; this is a missing acceptance artifact, not a count defect.",
+      "minimal_repair": "Add a narrowly additive negative through the existing authority ownership boundary (for example a DEFER/canonical/directional or authority-gated request over the same exact release) and record the existing refusal without changing _risk_membership, validators, predicates or manufacturing an EmpiricalFact. Do not require a separate I03 issuance for the tally itself."
+    },
+    {
+      "id": "D1-C09",
+      "requirement": "Malformed/mutated source/ref/control behavior and restoration",
+      "status": "REVISE",
+      "evidence": [
+        ".r61/d1-review/source_mutation_probe.json",
+        "campaign_d1_src04_tally/adapter.py"
+      ],
+      "result": "A source-mutated receipt override is accepted: build_tally(receipt_override={source_sha256: 0*64}) returned ACCEPTED with the same tally ref and the constant original source hash. The wrong-release hook checks release identity but does not check source/release-manifest override fields. Normal build_tally() uses the actual receipt and remains correct, but the claimed malformed source/ref boundary is not demonstrated. The control q101 discrimination and unknown-state refusal do pass."
+    },
+    {
+      "id": "D1-C10",
+      "requirement": "Stable product/replay references and canonical hash rules",
+      "status": "PASS",
+      "evidence": [
+        "campaign_d1_src04_tally/evidence/TALLY_PRODUCT.json",
+        "campaign_d1_src04_tally/evidence/REPLAY_PRODUCT.json",
+        "campaign_d1_src04_tally/evidence/REPLAY_RECEIPT.json"
+      ],
+      "result": "TALLY_PRODUCT and REPLAY_PRODUCT are byte-identical (d9d7f43b...); tally_ref 87e297bb... and replay_ref 8c7205dc... independently recompute by canonical JSON hashing. All 42 field counts match the replay receipt."
+    },
+    {
+      "id": "D1-C11",
+      "requirement": "Existing consumer actual use and local bundle custody",
+      "status": "PASS",
+      "evidence": [
+        "campaign_d1_src04_tally/evidence/TALLY_PRODUCT.json",
+        "campaign_d1_src04_tally/evidence/REPLAY_RECEIPT.json"
+      ],
+      "result": "Product declares materialize_public_object and R5TypedValueCodec.decode; local bundle hashes are a47957a1..., 2d9ea42a..., f13d893f..., b1333a02..., release receipt 4b18f500.... The original SAV was not reread by D1."
+    },
+    {
+      "id": "D1-C12",
+      "requirement": "Clean-checkout portability of the D1 primary/replay commands",
+      "status": "REVISE",
+      "evidence": [
+        "campaign_d1_src04_tally/run.py:38-44",
+        "campaign_d1_src04_tally/adapter.py:25-26",
+        ".r61/d1-review/primary_command.log"
+      ],
+      "result": "The focused 5 tests pass (0.13 s), but `PYTHONPATH=. python3 campaign_d1_src04_tally/run.py --mode primary` in the review checkout fails: RuntimeError `D1 TRUE_HQ_GRANT is absent`. run.py/adapter.py hardcode author-private `.r61/d1_src04_observed_sample_tally/TRUE_HQ_GRANT.txt` and PROGRAM.txt; the review worktree contains the exact grant at `.r61/d1-review/TRUE_HQ_GRANT.txt`. The committed product is valid, but the claimed clean-checkout primary/replay reproducibility is not.",
+      "minimal_repair": "Use a committed pinned D1 grant/program evidence copy or an explicit portable path; do not require an author-private `.r61` path. Re-run the exact primary/replay commands and update receipts. The product need not be rebuilt if only the path evidence changes."
+    },
+    {
+      "id": "D1-C13",
+      "requirement": "Source privacy and authority ceiling",
+      "status": "PASS",
+      "evidence": [
+        "campaign_d1_src04_tally/RETURN.json",
+        "campaign_d1_src04_tally/evidence/TALLY_PRODUCT.json"
+      ],
+      "result": "Only aggregate counts and nonidentifying refs are committed; no respondent rows or cells; local bundle remains outside Git. No I03/I05, original SAV reread, canonical/directional/weighted/population, M2/M3/F1-F4 or broader program claim is made."
+    }
+  ],
+  "independent_evidence": {
+    "tally_product_sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+    "replay_product_sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+    "replay_receipt_sha256": "1c4a048df0559a5590e0d1b5ce0c539cf18d4490108f9abb0658d7e46abf33f7",
+    "tally_ref": "87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022",
+    "replay_ref": "8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f",
+    "local_bundle": {
+      "bundle_id": "SRC04-fc111cfa78d0fc23",
+      "public_objects_sha256": "a47957a1d0b4e6df29195f70b1c3d122cc69b1a8a484b60bbe072d9eff126edd",
+      "internal_records_sha256": "2d9ea42a36e9b326f65f3ed5219ddf84a9fdb7d634ff8e459cc3e8892bc89538",
+      "replay_manifest_sha256": "f13d893f363753ad0d17bbf58c5a8bd51fcb12334daf85232b4365d66f96d09e",
+      "receipt_sha256": "b1333a021c28f0a4fe3a8272d469d9dab2ecb619cf08fcae3fdf18246fb9d8c9"
+    },
+    "independent_tally_sha256": "a601fcfc022c06a373a339a0e045466c70d644c1fc91736c66e7684b77d4e699",
+    "pytest_log_sha256": "3f2ea59ea3ff3b1f8ed8689f38597c7b6868acf5bbab9f1e2bf4e322510ff5ce",
+    "primary_command_log_sha256": "b1201edc25dd53d966bd15533699200679c1928cc0dd91babb974016bd954c29",
+    "source_mutation_probe_sha256": "7d15b0783f30b03b2b6e10cd3702642283f7b01326a20f0ec2b1f2941a0342e9"
+  },
+  "artifact_hashes": {
+    "count": 13,
+    "mismatches": 0,
+    "return_sha256": "08065806c618534395ceaca7bfb8c549f77016087e7e969d2436e13ffc1ba34a"
+  },
+  "demonstrated_failures": [
+    {
+      "id": "D1-D01",
+      "owner": "Campaign D1 adapter/evidence",
+      "severity": "BLOCKING_REQUIRED_NEGATIVE_MISSING",
+      "summary": "D1 grant requires a held-authority refusal; only wrong-release and UNKNOWN_RESPONSE_STATE negatives exist.",
+      "reproduction": "Search campaign_d1_src04_tally/evidence and tests; NEGATIVE_UNKNOWN_STATE is a classifier state refusal, not a held-authority refusal.",
+      "minimal_repair": "Add the narrowly additive held-authority negative through the existing authority owner and test; preserve the typed tally and no I03 issuance."
+    },
+    {
+      "id": "D1-D02",
+      "owner": "Campaign D1 runner/evidence",
+      "severity": "BLOCKING_CLEAN_CHECKOUT_PORTABILITY",
+      "summary": "run.py --mode primary/replay depends on author-private .r61/d1_src04_observed_sample_tally grant/program; clean review checkout fails before/at permission receipt.",
+      "reproduction": "PYTHONPATH=. python3 campaign_d1_src04_tally/run.py --mode primary -> RuntimeError: D1 TRUE_HQ_GRANT is absent (review worktree has .r61/d1-review/TRUE_HQ_GRANT.txt).",
+      "minimal_repair": "Commit/point to portable pinned D1 grant/program evidence or explicit path; rerun primary/replay."
+    },
+    {
+      "id": "D1-D03",
+      "owner": "Campaign D1 adapter negative-hook",
+      "severity": "NEGATIVE_COVERAGE_GAP",
+      "summary": "A source-mutated receipt override is accepted with the same tally ref; only release identity is checked in the override path. Normal build_tally uses the actual receipt, but the claimed malformed source/ref behavior is not demonstrated.",
+      "reproduction": ".r61/d1-review/source_mutation_probe.json",
+      "minimal_repair": "Verify source and source-release-manifest override fields or remove/narrow the override hook; rerun the wrong-source/ref negative and restore."
+    }
+  ],
+  "scope_limits": {
+    "original_sav_reread": false,
+    "other_original_data_read": false,
+    "local_c11_bundle_consumed": true,
+    "respondent_cells_in_git_or_reports": false,
+    "i03_executed": false,
+    "i05_executed": false,
+    "canonical_semantic_ALLOW_claimed": false,
+    "weight_or_population_claim": false,
+    "m2_m3_f1_f4_claimed": false,
+    "source_read_performed_by_d1": false,
+    "routing_state": "ROUTING_UNKNOWN",
+    "authority_state": "DEFER"
+  },
+  "next_consumer": "Existing descriptive aggregate consumer / independent reviewer. A separately issued I03 operation remains a subsequent obligation; it is not required to accept this typed D1 tally, but a properly issued I03 positive would be a separate future artifact."
+}
