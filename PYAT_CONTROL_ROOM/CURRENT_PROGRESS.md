@@ -1,3 +1,7 @@
+R157ALL35 source configurations integrated at scoped preparation level. WVS a8e49e7518e7434569c4f65c9b93ebcda1a9226d accepted after3nativefixture hashes/counts replayed and24artifacthashes verified;1219items/slots,887responsebindings,332exactother/heldroles retained. Main e80ff72192112fd3f8f9c0c2db0f3b20753dadad directremoteverified. ExistingP5author58620 received pinnedqualifiedWVSinputs via syntheticsteer; finish same exact-case portability repair then original requiredall35 portablejoin/index/CLI/coldbuild/nativeconsumerchecks. No32-source completion substitute now inputsavailable. OnlyP5active; no P6launch untilcoherentfinalcandidate. Alloriginal/science/source/workload/CI/prod/N11/N12holds unchanged, heartbeatpaused; goalnotcomplete.
+
+## Earlier progress history retained
+
 R157 remains32/35scoped source preparations integrated; WVSPID52656 running. P5cde6bac08a4d3b74da8e7824335eaa8ffb693b78 returned32-source registry/index/CLI;15artifacthashes verified,9tests replayedpass and registryCLI SRC27actualnative release607a9c8fd5859ec07153e1152e5d41c6ef5770c14df9890a5f0d11926f84d9d6 reproduced. Notaccepted:8indexedLiTS config/native-result paths havewrongcapitalization versus Git filenames;case-sensitiveportability defect. Existing P5owner resumed exactrepair;actualmodel/preflight/event receipts in branch STATE/LANE_LAUNCHES; no scopechange/newreview. Main 0fa257b4bbcf02b8e1b3f792788abf3820b7f637 pusheddirectremoteverified; originalexecutionunperformed,heartbeatpaused,all35reviewpending.
 
 ## Earlier progress history retained
