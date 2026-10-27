@@ -1,0 +1,43 @@
+{
+  "note": "Plan only; no source bytes are opened. The existing source-read admission owner must authorize and decode separately.",
+  "original_workload_issued": false,
+  "reader_configuration": {
+    "authority_status": null,
+    "configuration_ref": {
+      "content_hash": "64daa104bf8fb6ec9559cc7594899772282744a6c67f61b733155b34997495cd",
+      "kind": "READER_CONFIGURATION",
+      "object_id": "urn:rawlsing:r157:evs:SRC01:sav"
+    },
+    "encoding": null,
+    "source_sha256": "6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2"
+  },
+  "required_external_arguments": [
+    "source_path under the separately authorized source root",
+    "a current SourceReadDecisionResolver decision for this exact request",
+    "host/purpose/consumer_use/semantic_use_scope accepted by the issuer"
+  ],
+  "source_id": "SRC01",
+  "source_path": "/nonexistent/never-opened.sav",
+  "source_read_performed": false,
+  "source_read_request": {
+    "consumer_use": "P6_REVIEW",
+    "custody_locator_binding": "SRC01_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING",
+    "host": "p6-review",
+    "metadata_freeze_refs": [
+      {
+        "content_hash": "1baec222dc5ae37a637729a201dc5488b15f52cbed870f279e75810cce22ead0",
+        "kind": "R154_PHYSICAL_METADATA",
+        "object_id": "WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC01_PHYSICAL_METADATA.json"
+      }
+    ],
+    "physical_read_extent": "EXACT_FILE",
+    "purpose": "P6_REVIEW",
+    "read_operation": "SOURCE_RESPONSE_DECODE",
+    "semantic_use_scope": [
+      "P6_REVIEW"
+    ],
+    "source_format": "SAV",
+    "source_id": "SRC01",
+    "source_sha256": "6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2"
+  }
+}

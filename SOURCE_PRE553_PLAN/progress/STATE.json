@@ -1,40 +1,7 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "P6_DISTINCT_REVIEW_RUNNING",
-  "active_workers": [
-    {
-      "task": "P6_FINAL_INDEPENDENT_REVIEW",
-      "session": "ses_e81fc42a8ffeAbvo6M8l4YG4nK",
-      "replaces": "ses_e96304356ffeC8HSvwFluWOjG1",
-      "user_authorization": "okay, do that I guess",
-      "scope_change": false,
-      "candidate": "1384612bfed8d801140e00ace353779338599da3",
-      "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-final-review",
-      "branch": "agent/pyat-pre553-r157-final-review",
-      "provider": "opencode-go",
-      "model": "deepseek-v4.1-flash",
-      "variant": "max",
-      "actual_metadata_verified": true,
-      "pid": 80424,
-      "started_utc": "2026-10-27T15:39:32.715136+00:00",
-      "prompt_sha256": "dcaeea1d1bdc63c013159fbb83fa5245058a9569b89f678a691749d981b5d43b",
-      "write_paths": [
-        "SOURCE_PRE553_PLAN/review/",
-        ".r61/r157-p6/"
-      ],
-      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-final-review/.r61/r157-p6/completion.json",
-      "old_history_retained": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-final-review/.r61/r157-p6/prior-reviewer-history.json",
-      "state": "RUNNING_ACTUAL_PREFLIGHT_VERIFIED",
-      "first_actual_tool_verified": {
-        "directory": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-final-review",
-        "origin": "https://github.com/maidiu/rawlsing.git",
-        "branch": "agent/pyat-pre553-r157-final-review",
-        "head": "1384612bfed8d801140e00ace353779338599da3",
-        "clean": true
-      }
-    }
-  ],
+  "status": "R157_ACCEPTED_SOURCE_CONFIGURATION_PREPARATION",
+  "active_workers": [],
   "heartbeat": "PAUSED",
   "implementation_started": true,
   "completed_tasks": [
@@ -48,10 +15,13 @@
     "ASIAN_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
     "SOUTH_ASIA_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
     "LITS_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
-    "WVS_SOURCE_CONFIGURATION_PREPARATION_SCOPED"
+    "WVS_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
+    "P5_PORTABLE_DELIVERY",
+    "P6_DISTINCT_FINAL_REVIEW",
+    "P7_COMPLETION_AUDIT"
   ],
   "current_goal_anchor": "GOAL.md",
-  "next_action": "Intake actual P6 final review; repair only demonstrated defects, then completion audit.",
+  "next_action": "Return R157 prepared configuration library/readiness/exceptions to parent HQ; separately authorize exact original-source operations and retain their issuer/custody/science prerequisites. Do not self-start downstream.",
   "live_goal_objective_verified": true,
   "live_goal_tool_status": "active",
   "resume_authorization": {
@@ -260,5 +230,6 @@
   "latin_intake": "LATIN_INTAKE.json",
   "prepared_sources_scoped_integrated": 35,
   "p5_intake": "P5_INTAKE.json",
-  "reviewer_replacement_user_authorized": true
+  "reviewer_replacement_user_authorized": true,
+  "completion_audit": "R157_COMPLETION_AUDIT.json"
 }

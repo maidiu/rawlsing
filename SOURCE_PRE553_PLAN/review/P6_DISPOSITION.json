@@ -1,0 +1,274 @@
+{
+  "schema": "PYAT_R157_P6_DISPOSITION@1.0.0",
+  "review_type": "DISTINCT_FINAL_INDEPENDENT_BOUNDARY_REVIEW",
+  "verdict": "PASS_SCOPED_SOURCE_PREPARATION_NATIVE_FIXTURE_SCOPE",
+  "candidate": "1384612bfed8d801140e00ace353779338599da3",
+  "candidate_branch": "agent/pyat-pre553-r157-final-review",
+  "candidate_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-final-review",
+  "repository": "maidiu/rawlsing",
+  "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+  "plan_manifest_sha256": "4754e9064bf939a294ca29ce420edcf8fae002b02eaf2b9063e27b976a386c37",
+  "plan_sha256": "5f67331b67eb777bcac212970d241d940f31932d4a5e0cbe1aff4ea0297afc95",
+  "acceptance_sha256": "d0975e1ef6922d7b7d8bcd598ecc3c95cacf66ca9cdf2b0e73b9268e5fbc9beb",
+  "original_reviewer_session": "ses_e96304356ffeC8HSvwFluWOjG1",
+  "replacement_review_session": "ses_e81fc42a8ffeAbvo6M8l4YG4nK",
+  "review_commit": "the commit containing this file on agent/pyat-pre553-r157-final-review; direct remote readback is recorded in the final review response",
+  "candidate_modified_by_review": false,
+  "criteria": [
+    {
+      "id": "A01",
+      "status": "PASS",
+      "requirement": "35 source IDs and all original item identities retained",
+      "evidence": [
+        "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+        "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+        "rawlsing_next/source_configuration/evidence/UNMATCHED_RELATIONS.json",
+        "source_pre553_validation/integration/SOURCE_LIBRARY_INDEX.json",
+        ".r61/r157-p6/audit_coverage.log"
+      ],
+      "result": "35 original configs; 18,276 unique implementation IDs exactly once; 18,413 physical slots; 26 exact unmatched IDs present and retained.",
+      "qualification": "The three SRC01 unmatched IDs are explicit in SRC01 EVIDENCE_ACCOUNTING and item limits; config-level mapping_status is UNKNOWN rather than the later-lane UNMATCHED_EXPLICIT_ID spelling. This is a readability note, not a drop or alias."
+    },
+    {
+      "id": "A02",
+      "status": "PASS",
+      "requirement": "Full prior preparation actually consumed; not B49 partial-only",
+      "evidence": [
+        "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json",
+        "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+        "source_pre553_validation/integration/P5_RETURN.json accepted_inputs and accepted_inputs_wvs",
+        ".r61/r157-p6/audit_coverage.log"
+      ],
+      "result": "ITEM_EVIDENCE has 18,276 rows: 18,250 EXACT full-relation joins and 26 UNMATCHED_EXPLICIT_ID. Config items carry H48/P2 and full-relation refs for the 18,250 exact identities; LiTS 4,434-slot/item evidence and WVS 1,219 items/slots are consumed, not a B49-only subset.",
+      "qualification": "Held LiTS items may omit the relation payload from the config item while retaining the exact full-relation evidence ref; the portable ITEM_EVIDENCE and item_accounting ledgers remain authoritative."
+    },
+    {
+      "id": "A03",
+      "status": "PASS",
+      "requirement": "Current physical-column accounting, 18,413 ordered slots, no silent drop",
+      "evidence": [
+        "rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz",
+        "rawlsing_next/source_configuration/data/SRC*/",
+        ".r61/r157-p6/audit_coverage.log"
+      ],
+      "result": "Independent per-source ordered (ordinal,name) comparison matches 18,413/18,413 evidence slots. Codebook-only 401 and physical-only 538 are explicitly accounted; SRC26's 40 physical-only extras remain explicit."
+    },
+    {
+      "id": "A04",
+      "status": "PASS",
+      "requirement": "SRC25/SRC26 exact correspondence, no dynamic normalization",
+      "evidence": [
+        "rawlsing_next/source_configuration/data/SRC25/crosswalk.json",
+        "rawlsing_next/source_configuration/data/SRC26/crosswalk.json",
+        "rawlsing_next/source_configuration/data/SRC25/source.config.json",
+        "rawlsing_next/source_configuration/data/SRC26/source.config.json"
+      ],
+      "result": "SRC25 414/414 one-to-one; SRC26 332 physical / 195 codebook: 182 one-to-one, 110 one-to-many, 40 physical-only, 0 unmapped codebook. Crosswalks are serialized per entry with label/code verification and pinned hashes; config physical mappings were independently checked against all entries.",
+      "qualification": "SRC25 uses explicit serialized ORDERED_NAME_FORMAT_VARIANT evidence and SRC26 uses explicit source-edition/PQ/group relations. These are evidence-backed serialized relations, not loader-side casefold, prefix, nearest-label or alias inference."
+    },
+    {
+      "id": "A05",
+      "status": "PASS",
+      "requirement": "Grounded source-specific meaning, units/coordinates/forms/administration/missingness/routing/topology/optional weights or scoped unknown",
+      "evidence": [
+        "rawlsing_next/source_configuration/data/SRC*/",
+        "source_pre553_validation/SRC*/EXCEPTION*.json",
+        "source_pre553_validation/integration/EXCEPTION_AGGREGATE.json"
+      ],
+      "result": "All 35 serialize source identity, universe, respondents, questions, response/coordinate/weight rules, routing and topology. Original authority has 214 DEFER and 20 replay-protocol-only ALLOW snapshots; source semantics are not replaced by fixture authority. Unknown forms/administration/weights/routing are typed residuals."
+    },
+    {
+      "id": "A06",
+      "status": "PASS",
+      "requirement": "Heterogeneous units and repeats preserved; distinct shape actual factory positive",
+      "evidence": [
+        ".r61/r157-p6/native_replay.json",
+        "source_pre553_validation/SRC27/exception_ledger.json",
+        "source_pre553_validation/SRC29/exception_ledger.json",
+        "source_pre553_validation/integration/P5_RETURN.json"
+      ],
+      "result": "All 35 fixture releases realize distinct source shapes: GSS scalar SAV, Afro/Asian/Arab/EVS/Latin/WVS categorical and coordinate data, LiTS DTA and WVS source-native shapes. SRC29 preserves PR/SR repeated blocks; SRC27 preserves household roster positions; SRC26 preserves one-to-many components. Actual native objects include RespondentEvent, RoutingEligibilityFact, coordinate and weight facts; no forced person/scalar."
+    },
+    {
+      "id": "A07",
+      "status": "PASS",
+      "requirement": "Governing native owner used; actual GovernedC11Projection/source-backed validator calls",
+      "evidence": [
+        "rawlsing_next/source_configuration/factory.py",
+        "rawlsing_next/pre553_source_backed_c11_facade.py",
+        ".r61/r157-p6/native_replay.json"
+      ],
+      "result": "Factory constructs the existing GovernedC11Projection and calls build_validated_source_backed_c11_release_from_stream. All 35 independent fixture calls returned C11LogicalRelease and matched indexed release hashes. NativeSourcePackage is not required."
+    },
+    {
+      "id": "A08",
+      "status": "PASS",
+      "requirement": "Factory implements positive construction, no unconditional stub",
+      "evidence": [
+        "WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/runtime/r154_load.py",
+        "rawlsing_next/tests/test_source_configuration_p3.py",
+        ".r61/r157-p6/native_replay.json"
+      ],
+      "result": "Prepared config plus permitted physical transport delegates to the real source-backed C11 constructor. Without config/transport it preserves the exact refusal; that refusal is not used as completion. 35 positive fixture releases and one independent wrong-source refusal plus exact restore were observed."
+    },
+    {
+      "id": "A09",
+      "status": "PASS",
+      "requirement": "No original synthetic metadata or default authority; fixture identity/provenance separate",
+      "evidence": [
+        "rawlsing_next/source_configuration/data/SRC*/",
+        "rawlsing_next/source_configuration/validator.py",
+        "rawlsing_next/tests/test_source_configuration_foundation.py"
+      ],
+      "result": "All original configs have original identity and DEFER/replay-only authority; no fixture/test-only authority. All 35 fixture configs have distinct fixture IDs/SHAs, NONRESPONDENT_FIXTURE_ONLY authority and no_original_respondents=true. Negative schema tests reject synthetic original universes, fixture authority reuse, wrong identities and private paths.",
+      "qualification": "For sources without an exact instrument release, identity.instrument_release_id is the explicitly labelled METADATA_WITNESS_SHA256 content identity used by the frozen P0 interface; it is not presented as a scientific instrument-release claim."
+    },
+    {
+      "id": "A10",
+      "status": "PASS",
+      "requirement": "Qualified reader configuration transport; no autodetect guess",
+      "evidence": [
+        "rawlsing_next/source_configuration/reader.py",
+        "rawlsing_next/pre553_source_read_admission.py",
+        "rawlsing_next/source_configuration/data/SRC13/SRC13.config.json",
+        "rawlsing_next/source_configuration/data/SRC14/SRC14.config.json",
+        ".r61/r157-p6/pytest.log"
+      ],
+      "result": "SRC13/SRC14 independently resolve to latin1 with the exact source SHA and COMPATIBILITY_EXECUTION_ONLY status. Reader SHA checks and zero-I/O-before-current-permission are tested; unqualified encoding is refused and no autoguess path exists."
+    },
+    {
+      "id": "A11",
+      "status": "PASS",
+      "requirement": "All 35 declared supported scopes native validated",
+      "evidence": [
+        ".r61/r157-p6/native_replay_summary.json",
+        "source_pre553_validation/integration/SOURCE_LIBRARY_INDEX.json",
+        "source_pre553_validation/integration/READINESS_MATRIX.json",
+        "SOURCE_PRE553_PLAN/progress/LITS_INTAKE.json",
+        "source_pre553_validation/SRC27/exception_ledger.json",
+        "source_pre553_validation/SRC28/exception_ledger.json",
+        "source_pre553_validation/SRC29/exception_ledger.json",
+        "source_pre553_validation/SRC30/exception_ledger.json"
+      ],
+      "result": "35/35 fixture configs declare supported=true/POSITIVE_RELEASE; 35/35 independent native releases match receipts. LiTS 807 supported questions native validated; 2,253 routing-unknown prepared bindings and 1,346 P2 authority-gap items remain exact residuals. No source is exception-only. Seventeen fixtures serialize only their declared supported slice, so their fixture item/slot counts are smaller than the full original ledger by design; 0 construction failures and 0 release mismatches.",
+      "qualification": "The declared supported native-validation scope is the separate nonrespondent fixture config. Eleven original configs (SRC01-03, SRC08-15) retain declared_supported=false because original-source native validation/execution is not claimed; their fixture configs declare and realize the validated scope. The other 24 original configs declare a supported configuration slice, but no original-source execution is claimed."
+    },
+    {
+      "id": "A12",
+      "status": "PASS",
+      "requirement": "Single portable library; cold rebuild/load without private .r61/worktree dependencies",
+      "evidence": [
+        "rawlsing_next/source_configuration/DEPENDENCIES.json",
+        "rawlsing_next/source_configuration/PACKAGE_DATA.json",
+        "source_pre553_validation/integration/DEPENDENCY_LOCK.json",
+        "source_pre553_validation/integration/COMMANDS.md"
+      ],
+      "result": "Empty-cwd status and fixture-call succeeded with only PYTHONPATH. Fresh build-index from empty cwd produced byte-identical SOURCE_LIBRARY_INDEX.json (be69b414...). No runtime .r61/private worktree import exists; exact-case path tests pass.",
+      "qualification": "The generated SQLite lookup has the same 35 logical rows and release hashes but a different byte hash after rebuild; it is documented as a generated lookup, not the canonical reproducible JSON index."
+    },
+    {
+      "id": "A13",
+      "status": "PASS",
+      "requirement": "Exact exception/no-drop accounting",
+      "evidence": [
+        "source_pre553_validation/integration/EXCEPTION_AGGREGATE.json",
+        "source_pre553_validation/SRC01/EXCEPTION_LEDGER.json",
+        "source_pre553_validation/SRC24/EXCEPTIONS.json",
+        "source_pre553_validation/SRC26/EXCEPTIONS.json",
+        "source_pre553_validation/SRC27-30 exception ledgers"
+      ],
+      "result": "Coverage partitions exactly account for all serialized items/slots; LiTS residual totals are 2,253 routing-unknown + 1,346 authority-gap; WVS 332 held roles remain exact; no source/item/slot drop was found."
+    },
+    {
+      "id": "A14",
+      "status": "PASS",
+      "requirement": "Distinct final review and repair confirmation; original RED preserved",
+      "evidence": [
+        "source_pre553_validation/integration/P5_CASE_DEFECT_WITNESS.json",
+        "rawlsing_next/tests/test_source_configuration_library.py",
+        ".r61/r157-p6/pytest.log",
+        "SOURCE_PRE553_PLAN/review/P6_REVIEW.md"
+      ],
+      "result": "This is an independent replacement reviewer session, not an author. The prior eight wrong-case LiTS path defects remain preserved in P5_CASE_DEFECT_WITNESS and the exact-case repair was replayed. No candidate/plan/acceptance file was edited by the reviewer."
+    },
+    {
+      "id": "A15",
+      "status": "PASS",
+      "requirement": "Reproducible delivery commands and honest limits",
+      "evidence": [
+        "source_pre553_validation/integration/COMMANDS.md",
+        ".r61/r157-p6/original_plan_SRC01.json",
+        ".r61/r157-p6/pytest.log"
+      ],
+      "result": "Status, build-index, fixture-call, original-plan and focused tests were actually run. The original plan command performed no source read and issued no workload. Limits distinguish fixture-realized native construction from original-source scientific execution."
+    },
+    {
+      "id": "A16",
+      "status": "PASS",
+      "requirement": "Plan/branch fidelity; no silent scope/provider change",
+      "evidence": [
+        "SOURCE_PRE553_PLAN/PLAN.md",
+        "SOURCE_PRE553_PLAN/ACCEPTANCE.json",
+        "SOURCE_PRE553_PLAN/PLAN_MANIFEST.json",
+        "git rev-parse HEAD",
+        "git ls-remote origin"
+      ],
+      "result": "Plan seal and manifest hashes match; candidate is 1384612b on the authorized review branch and an ancestor of the integration branch. No acceptance/plan edit, provider/model change, protected CI/prod mutation or unrelated candidate edit was made."
+    }
+  ],
+  "proof": {
+    "candidate": "1384612bfed8d801140e00ace353779338599da3",
+    "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+    "plan_manifest_sha256": "4754e9064bf939a294ca29ce420edcf8fae002b02eaf2b9063e27b976a386c37",
+    "plan_sha256": "5f67331b67eb777bcac212970d241d940f31932d4a5e0cbe1aff4ea0297afc95",
+    "acceptance_sha256": "d0975e1ef6922d7b7d8bcd598ecc3c95cacf66ca9cdf2b0e73b9268e5fbc9beb",
+    "evidence_manifest_sha256": "ef04e215b6d669123f355082bd15e0f4a3b38ed045a0e3e38cc2b5432727911a",
+    "source_roster_sha256": "a0201dbd229c8fc6fddc95b5acbe289d05706eff718d5dfc34329ecdb1bf087d",
+    "p5_return_sha256": "8f51b629328d4696ec8957540da3c770dbd218fbba71ce52f8ce41defd659949",
+    "p5_case_defect_witness_sha256": "5423dab4c1f1ebd95bc7d991f2999f1b2f1952982f7069c8626e6e6d8e6e5b83",
+    "source_library_index_json_sha256": "be69b414f0c03ffc70e0888137c4bde5a8114a3890011f7e1a40ebdbf83770f6",
+    "source_library_index_sqlite_sha256": "7726de0b23832862c9c7aefbbf3f00704fbf267767a619d25e96e5f3cd737b11",
+    "readiness_matrix_sha256": "6271929f2d3b87b5a3169ca29084e6476637c73c844776552e2313a8c09ce722",
+    "exception_aggregate_sha256": "ba4e94f1878d58c05c0a752db0fc05993ef8681b693e7ccebb57ea4ec879fddc",
+    "dependency_lock_sha256": "8bd0a30b9bdd75a03663c5a6966d9d95d8923d4d1414eae1bea5011e82384901",
+    "commands_sha256": "f6beb9185b89238d7b7eea708ea081ac23819b41f60fe001a85ff88224d73a18",
+    "p6_coverage_log_sha256": "b225730b0a3839ecca81f3dcf7bfddcde61aac16d1e4c9344f3713bc44146969",
+    "p6_native_replay_sha256": "2520cff9fb5993568d7074bf808375c1726ae5a35d390f253cef55c58ac2856e",
+    "p6_native_replay_summary_sha256": "71aff40377ea6130ab93294c9ec01d8bf2d95834e7b9e3aeb3ec85990092cb35",
+    "p6_pytest_log_sha256": "d965dede0bd15943616cb034466be7df3bdeb9541dc22d6b997f0d08f04cc62b"
+  },
+  "source_scope": {
+    "source_ids": 35,
+    "original_items": 18276,
+    "unique_implementation_ids": 18276,
+    "physical_slots": 18413,
+    "exact_relation_matches": 18250,
+    "unmatched_relation_ids": 26,
+    "fixture_native_releases": 35,
+    "fixture_native_release_mismatches": 0,
+    "lits_supported_questions": 807,
+    "lits_routing_unknown_prepared_bindings": 2253,
+    "lits_p2_authority_gap_items": 1346,
+    "wvs_items_slots": 1219,
+    "wvs_response_bindings": 887,
+    "wvs_held_roles": 332
+  },
+  "nonblocking_observations": [
+    "SRC01's three unmatched IDs are exact in EVIDENCE_ACCOUNTING and item limits, while config-level mapping_status is UNKNOWN rather than the later-lane UNMATCHED_EXPLICIT_ID spelling. They are retained, not aliased or dropped.",
+    "SRC25/SRC26 use explicit serialized evidence-backed variants (ordered name format / source-edition and P-Q/group relations); no loader-side dynamic normalization is used.",
+    "A fresh SQLite rebuild has identical rows/release hashes but different file bytes; the JSON index rebuild is byte-identical and is the canonical reproducible artifact.",
+    "For sources without an exact instrument release, instrument_release_id is the explicitly labelled metadata-witness content hash, not a scientific instrument-release assertion."
+  ],
+  "red_preserved": {
+    "witness_path": "source_pre553_validation/integration/P5_CASE_DEFECT_WITNESS.json",
+    "witness_sha256": "5423dab4c1f1ebd95bc7d991f2999f1b2f1952982f7069c8626e6e6d8e6e5b83",
+    "prior_defects": 8,
+    "current_exact_case_paths": true,
+    "status": "PRESERVED_AND_REPAIRED"
+  },
+  "original_execution_performed": false,
+  "original_workload_issued": false,
+  "original_source_bytes_read": false,
+  "scientific_adoption_claimed": false,
+  "next_necessary_action": "Accept/retain this P6 bounded disposition at the fixture-realized configuration-preparation scope. Any later original-source execution requires the external source bytes/locator, a current issuer decision and a separately issued workload; it is not established by this review."
+}
