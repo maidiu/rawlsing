@@ -20,6 +20,7 @@ from rawlsing_next.pre553_physical_decoder import (
     PhysicalCell,
     PhysicalMissingState,
     PhysicalSourceIncidence,
+    PhysicalVariable,
 )
 from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
 from rawlsing_next.pre553_source_read_admission import (
@@ -211,6 +212,32 @@ def test_keyed_fixture_binds_exact_row_witnesses_and_native_release():
     repository, release2 = build_source_backed_c11_repository_from_config(cfg, fixture)
     assert release2.release_ref == release.release_ref
     assert repository is not None
+
+
+def test_keyed_fixture_extracts_keys_from_permitted_physical_incidence():
+    cfg = load_source_config(P3_CONFIG)
+    variables = (
+        PhysicalVariable(1, "country", "double", "Country code", {}, (), {}, {}),
+        PhysicalVariable(124, "q101", "double", "q101", {}, (), {}, {}),
+    )
+    frame = pd.DataFrame({
+        "country": [1.0, 2.0, 3.0, 4.0, 5.0, 1.0, 2.0, 3.0, 4.0],
+        "q101": [1.0, 2.0, 3.0, 4.0, -1.0, 7.0, 8.0, 9.0, None],
+    })
+    incidence = PhysicalSourceIncidence(
+        source_sha256=cfg.active_source_sha256,
+        source_format="SAV",
+        row_count=9,
+        variables=variables,
+        reader_configuration={"fixture": "R157_P3_KEYED"},
+        file_metadata={"fixture": "R157_P3_KEYED"},
+        _frame=frame,
+    )
+    keys = row_native_keys_from_transport(cfg, incidence=incidence)
+    assert len(keys) == 9
+    assert keys[1].kind == "R157_NONRESPONDENT_FIXTURE_KEY"
+    release = build_validated_c11_release_from_config(cfg, incidence=incidence)
+    assert isinstance(release, C11LogicalRelease)
 
 
 def test_configured_key_slot_missing_cell_is_typed_unknown():
