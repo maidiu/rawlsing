@@ -1,10 +1,15 @@
-# V3 Courts flight board — 7/8 independent reviews returned
+# V3 Courts — all ten primary workers and all eight independent reviewers returned
 
-**Ten of ten primary investigators returned.** Historical M01–M40 have scoped independent source review. RT04 still at sealed startup `9a2753a1e9f76e9fcfa0c76dba49ed0e6cabf2a2`, no remote `00_REVIEW.md`. Do not count it or launch a duplicate merely because branch is unchanged.
+**10/10 authored returns; 8/8 reviewer returns.** Original historic M01–M40 independently source checked at selected-file grain. N01–N08 by RS, N09–N11 by RT04 reviewed conceptually, N12 by RC static consumer-source reviewed. No current native actor/person end-to-end pass or new concrete Rule A/T/SCI05 source grant.
 
-- RX03 independently returned: 10807fd633daab347a762727a4d837d54601d655
-- RX04 independently returned: c5db118c70057d3a276d1cacca20843cf01544ae
-- RX05 independently returned: fa2a98d61bd5919140c8cb426d14fb3351adc561
-- RT04: NOT PUBLISHED (memory, later ideology and 3–5 batch scientific source court).
+Immutable independent review tips:
+- RX01 `481a5c62b6697e5df0e930a5dc615a8994aacddc`
+- RX02 `69ddef93bfb1148f4d8868d5de2a5751a4674552`
+- RS `dabbc0b038668e05cd723afc31f8b08411648b0a`
+- RC `ddea75634c05bf89cf752da3813d17437b805767`
+- RX03 `10807fd633daab347a762727a4d837d54601d655`
+- RX04 `c5db118c70057d3a276d1cacca20843cf01544ae`
+- RX05 `fa2a98d61bd5919140c8cb426d14fb3351adc561`
+- RT04 `e298e830ef9cde6ba985267eae1edcd050ad0e50`
 
-**Immediate work:** obtain RT04 from its existing session; source-review corrections incorporated. Pursue separate competent science/domain/source permission and actual same-person E1→CAN008/CAN011→E2 C9 value-read, not a new mock-person fixture. No production code changed or scientific law issued.
+RT04 one signed review added, zero out-of-scope changes. Work now transitions to competent original science/source issuance, world/independent B producer and actual same-person C9/C12 semantic later response. Historic survey/raw source, production code and original native permissions untouched. No new worker automatically launched.
