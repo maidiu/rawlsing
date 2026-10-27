@@ -1,0 +1,71 @@
+{
+  "branch": "agent/v3court-x03-development-topology-r1",
+  "claim_ceiling": "Historical source and sourcefree probe behavior only; no scientific law, current integration or native person.",
+  "environment": {
+    "git": "2.39.1",
+    "host": "Darwin Matthews-MBP.lan 22.6.0 x86_64",
+    "macos": "13.7.8 (22H730)",
+    "model_provider": "OpenCode / DeepSeek V4.1-Flash; no model/provider call",
+    "pytest": "9.1.1",
+    "python": "3.11.3",
+    "ruby": "2.6.10p210",
+    "yaml": "PyYAML absent; read-only Ruby Psych bridge with numeric-key restoration"
+  },
+  "executed": [
+    {
+      "command": "RAWLSING_STAGING_ROOT=<source> python3 run_v3_tests.py v3/tests/test_metabolization_effects.py v3/tests/test_step_logic.py v3/tests/test_v5_framework_dormancy.py v3/tests/test_invariants.py v3/tests/test_wave4.py v3/tests/test_architecture_invariants.py v3/tests/test_step_sanity.py v3/tests/test_llm_contract.py v3/tests/test_v5_baseline_load.py v3/tests/test_v5_alienation.py",
+      "covers": [
+        "rupture creation/process count",
+        "event-delta step wiring",
+        "framework weight/dormancy",
+        "crack event delta",
+        "invariant placeholder repair",
+        "topology/boundary step order presence",
+        "20-year no-crash smoke",
+        "LLM contract serialization",
+        "baseline load",
+        "alienation numeric update"
+      ],
+      "does_not_cover": [
+        "metabolization status transitions",
+        "narrator/IRR update",
+        "topology/boundary hysteresis value cases",
+        "striving spawn/update/retire semantics",
+        "practice acquisition/support/loss",
+        "rupture age injection or wound path",
+        "stability-inertia status drain",
+        "current C9/C12 integration"
+      ],
+      "evidence": "TEST_SOURCE_AND_LOGS/focused_tests.log",
+      "id": "X03-FOCUSED-71",
+      "result": "71 passed in 14.55s"
+    },
+    {
+      "command": "RAWLSING_STAGING_ROOT=<source> python3 probe_x03.py > probe_x03.json",
+      "evidence": "TEST_SOURCE_AND_LOGS/probe_x03.json",
+      "id": "X03-PROBE-01",
+      "not_a_test": "The probe is evidentiary instrumentation, not a green scientific or native-person test.",
+      "result": "completed; direct sourcefree observations for all seven mechanisms"
+    }
+  ],
+  "not_completed": [
+    {
+      "command": "RAWLSING_STAGING_ROOT=<source> python3 run_v3_tests.py v3/tests",
+      "id": "X03-FULL-V3",
+      "note": "Focused 71-test subset is the executed evidence baseline.",
+      "reason": "A timed full-suite attempt reached 15 collected tests and was terminated at 180s. It is not counted as a passing result and no full-suite claim is made.",
+      "status": "NOT_COMPLETED_AFTER_15_TESTS_BY_LOCAL_TIMEOUT"
+    }
+  ],
+  "not_run": [
+    "No real LLM call, V2 conversation run or provider call.",
+    "No current S44/S49/C9/C12/S50 actual-person integration.",
+    "No native actor/rule/source/C8/C9/C11/C12/Pyat grant or production test.",
+    "No survey/raw respondent data and no source copy in outputs.",
+    "No full 50-agent distribution smoke completion.",
+    "No physiological/human developmental validation."
+  ],
+  "schema": "DSH_V3_X03_TEST_MANIFEST_R1",
+  "sealed_startup": "2647a4cf25d8bb33a00471e1af9c5e58c2825efb",
+  "source_root": "<USER_HOME>/Desktop/Rawlsing/Rawlsing_code_bundle_staging"
+}

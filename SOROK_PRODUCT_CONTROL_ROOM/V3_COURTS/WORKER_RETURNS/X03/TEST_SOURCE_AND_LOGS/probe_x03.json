@@ -1,0 +1,1170 @@
+{
+  "cracks": {
+    "adult_seed": [],
+    "child_seed": [
+      {
+        "active": true,
+        "intensity": 35.0,
+        "latent_pressure": 21.0,
+        "origin_year": 1997,
+        "type": "sacred_vs_reality"
+      },
+      {
+        "active": true,
+        "intensity": 30.0,
+        "latent_pressure": 21.0,
+        "origin_year": 1995,
+        "type": "family_vs_stability"
+      },
+      {
+        "active": true,
+        "intensity": 53.0,
+        "latent_pressure": 26.5,
+        "origin_year": 2004,
+        "type": "identity_coherence_vs_fragmentation"
+      },
+      {
+        "active": false,
+        "intensity": 22.0,
+        "latent_pressure": 15.0,
+        "origin_year": 2002,
+        "type": "aspiration_vs_origin"
+      }
+    ],
+    "config_rules_declared": {
+      "annual_update": {
+        "activation_threshold": 40,
+        "deactivation_threshold": 25,
+        "intensify_range": [
+          10,
+          20
+        ],
+        "latent_decay_if_insulated": 8
+      },
+      "brittleness": {
+        "allow_low_active_if_insulation_min": 70,
+        "require_latent_pressure_min": 30
+      },
+      "spawn": {
+        "intensity_on_spawn": 30,
+        "spawn_if_room": true
+      }
+    },
+    "default_ensure_min": {
+      "count": 2,
+      "cracks": [
+        {
+          "active": true,
+          "intensity": 5.0,
+          "latent_pressure": 5.0,
+          "origin_year": 2000,
+          "type": "placeholder"
+        },
+        {
+          "active": true,
+          "intensity": 5.0,
+          "latent_pressure": 5.0,
+          "origin_year": 2000,
+          "type": "placeholder"
+        }
+      ],
+      "placeholder_counts": {
+        "cracks": 2
+      },
+      "placeholder_repair": {
+        "added": 2,
+        "reasons": [
+          "placeholder_cracks_required"
+        ],
+        "status": "degraded"
+      }
+    },
+    "event_delta_update_record": {
+      "active": true,
+      "intensity": 20.0,
+      "latent_pressure": 15.0,
+      "origin_year": 1990,
+      "type": "test"
+    },
+    "no_event_update_record": {
+      "active": false,
+      "intensity": 80.0,
+      "latent_pressure": 70.0,
+      "origin_year": 1990,
+      "type": "latent_test"
+    }
+  },
+  "domains_ignore_frameworks_practices": {
+    "high_framework_high_practice": {
+      "A": 28.0,
+      "Aim": 0,
+      "S": 0,
+      "V": 5.0,
+      "expressed_aim": 0,
+      "latent_aim": 0
+    },
+    "low_framework_low_practice": {
+      "A": 28.0,
+      "Aim": 0,
+      "S": 0,
+      "V": 5.0,
+      "expressed_aim": 0,
+      "latent_aim": 0
+    }
+  },
+  "frameworks": {
+    "adult_operator_empty_event_year": {
+      "after_psych": {
+        "aperture": 50.0,
+        "binding": 50.0,
+        "coherence": 49.67,
+        "transmutation": 50.0,
+        "vitality": 50.0
+      },
+      "before_psych": {
+        "aperture": 50.0,
+        "binding": 50.0,
+        "coherence": 50.0,
+        "transmutation": 50.0,
+        "vitality": 50.0
+      },
+      "frameworks_after": [
+        {
+          "acute_delta": {
+            "agency": 5.0,
+            "coherence": 2.0,
+            "skill": 2.0
+          },
+          "chronic_delta": {
+            "agency": 1.0,
+            "coherence": -1.0
+          },
+          "enemy_requirement": 5.0,
+          "failure_mode": "self_blame_collapse",
+          "half_life_years": 20,
+          "id": "meritocracy_achievement_frame",
+          "institutional_affinities": [
+            "school",
+            "work"
+          ],
+          "phase": "chronic",
+          "tenure_years": 35,
+          "weight": 58.0
+        },
+        {
+          "acute_delta": {
+            "agency": 2.0,
+            "coherence": 3.0
+          },
+          "chronic_delta": {
+            "coherence": -1.0
+          },
+          "enemy_requirement": 5.0,
+          "failure_mode": "disillusionment_rupture",
+          "half_life_years": 20,
+          "id": "institutional_trust_frame",
+          "institutional_affinities": [
+            "school",
+            "work",
+            "government"
+          ],
+          "phase": "chronic",
+          "tenure_years": 33,
+          "weight": 52.0
+        }
+      ]
+    },
+    "adult_seed": [
+      {
+        "acute_delta": {
+          "agency": 5.0,
+          "coherence": 2.0,
+          "skill": 2.0
+        },
+        "chronic_delta": {
+          "agency": 1.0,
+          "coherence": -1.0
+        },
+        "enemy_requirement": 5.0,
+        "failure_mode": "self_blame_collapse",
+        "half_life_years": 20,
+        "id": "meritocracy_achievement_frame",
+        "institutional_affinities": [
+          "school",
+          "work"
+        ],
+        "phase": "chronic",
+        "tenure_years": 34,
+        "weight": 58.0
+      },
+      {
+        "acute_delta": {
+          "agency": 2.0,
+          "coherence": 3.0
+        },
+        "chronic_delta": {
+          "coherence": -1.0
+        },
+        "enemy_requirement": 5.0,
+        "failure_mode": "disillusionment_rupture",
+        "half_life_years": 20,
+        "id": "institutional_trust_frame",
+        "institutional_affinities": [
+          "school",
+          "work",
+          "government"
+        ],
+        "phase": "chronic",
+        "tenure_years": 32,
+        "weight": 52.0
+      }
+    ],
+    "child_seed": [
+      {
+        "acute_delta": {
+          "aperture": -3.0,
+          "binding": 5.0,
+          "coherence": 6.0
+        },
+        "chronic_delta": {
+          "aperture": -5.0,
+          "binding": 3.0,
+          "coherence": 2.0
+        },
+        "enemy_requirement": 20.0,
+        "failure_mode": "legalistic_hardening",
+        "half_life_years": 15,
+        "id": "devout_faith_frame",
+        "institutional_affinities": [
+          "religion",
+          "family",
+          "community"
+        ],
+        "phase": "acute",
+        "tenure_years": 3,
+        "weight": 72.0
+      },
+      {
+        "acute_delta": {
+          "agency": 3.0,
+          "risk_tolerance": 4.0
+        },
+        "chronic_delta": {
+          "binding": 1.0,
+          "coherence": -2.0
+        },
+        "enemy_requirement": 15.0,
+        "failure_mode": "chronic_exhaustion_retreat",
+        "half_life_years": 15,
+        "id": "survival_pragmatism_frame",
+        "institutional_affinities": [
+          "work",
+          "family"
+        ],
+        "phase": "acute",
+        "tenure_years": 0,
+        "weight": 65.0
+      },
+      {
+        "acute_delta": {
+          "agency": -1.0,
+          "aperture": 5.0,
+          "coherence": -3.0
+        },
+        "chronic_delta": {
+          "coherence": -2.0
+        },
+        "enemy_requirement": 0.0,
+        "failure_mode": "chronic_incoherence",
+        "half_life_years": 8,
+        "id": "identity_search_frame",
+        "institutional_affinities": [
+          "school",
+          "peer_group"
+        ],
+        "phase": "acute",
+        "tenure_years": 0,
+        "weight": 75.0
+      },
+      {
+        "acute_delta": {
+          "agency": -1.0,
+          "binding": 4.0,
+          "coherence": 2.0
+        },
+        "chronic_delta": {
+          "aperture": -2.0,
+          "binding": 2.0
+        },
+        "enemy_requirement": 35.0,
+        "failure_mode": "sectarian_rigidity",
+        "half_life_years": 30,
+        "id": "in_group_solidarity_frame",
+        "institutional_affinities": [
+          "community",
+          "family"
+        ],
+        "phase": "acute",
+        "tenure_years": 2,
+        "weight": 62.0
+      }
+    ],
+    "dormancy_after_weight4": {
+      "active": [
+        {
+          "acute_delta": {},
+          "chronic_delta": {},
+          "enemy_requirement": 0.0,
+          "failure_mode": "",
+          "half_life_years": 0,
+          "id": "stable",
+          "institutional_affinities": [],
+          "phase": "acute",
+          "tenure_years": 0,
+          "weight": 20.0
+        }
+      ],
+      "dormant": [
+        {
+          "id": "fragile",
+          "label": "fragile",
+          "last_active_year": 2000,
+          "reason_dormant": "weight_below_5"
+        }
+      ]
+    },
+    "synthetic_acute_then_chronic": [
+      {
+        "after_year": 1,
+        "binding": 51.5,
+        "tenure_years": 1
+      },
+      {
+        "after_year": 2,
+        "binding": 53.0,
+        "tenure_years": 2
+      },
+      {
+        "after_year": 3,
+        "binding": 51.5,
+        "tenure_years": 3
+      }
+    ]
+  },
+  "narrative_support": {
+    "coercive_metab": {
+      "narration_support": {
+        "accuracy": 50,
+        "availability": 50,
+        "coercion": 44,
+        "warmth": 20
+      },
+      "psych": {
+        "aperture": 54.0,
+        "binding": 49.0,
+        "coherence": 48.0,
+        "transmutation": 50.0,
+        "vitality": 49.0
+      }
+    },
+    "neutral_metab": {
+      "narration_support": {
+        "accuracy": 50,
+        "availability": 50,
+        "coercion": 20,
+        "warmth": 20
+      },
+      "psych": {
+        "aperture": 54.0,
+        "binding": 49.0,
+        "coherence": 48.0,
+        "transmutation": 50.0,
+        "vitality": 49.0
+      }
+    },
+    "scores": {
+      "coercive": [
+        50,
+        20,
+        44
+      ],
+      "neutral": [
+        50,
+        20,
+        20
+      ],
+      "warm": [
+        50,
+        30,
+        20
+      ]
+    },
+    "warm_metab": {
+      "narration_support": {
+        "accuracy": 50,
+        "availability": 50,
+        "coercion": 20,
+        "warmth": 30
+      },
+      "psych": {
+        "aperture": 55.0,
+        "binding": 49.0,
+        "coherence": 48.0,
+        "transmutation": 50.0,
+        "vitality": 49.0
+      }
+    }
+  },
+  "practices": {
+    "adult_seed": {
+      "care": 26.0,
+      "craft": 33.0,
+      "organizing": 19.0,
+      "risk_training": 18.0,
+      "spiritual": 50.0,
+      "study": 55.0
+    },
+    "child_seed": {
+      "care": 30.0,
+      "craft": 35.0,
+      "organizing": 35.0,
+      "risk_training": 20.0,
+      "spiritual": 80.0,
+      "study": 25.0
+    },
+    "empty_event_year": {
+      "craft": 50.0,
+      "organizing": 40.0
+    },
+    "event_delta_year": {
+      "craft": 45.0,
+      "organizing": 50.0
+    }
+  },
+  "rupture_metabolization": {
+    "is_malheur_with_process_severity_at_yearly_update": false,
+    "maybe_inject_age14_seeds0to19": {
+      "injected": [
+        {
+          "process_mode": "assimilation",
+          "process_severity": "major",
+          "process_status": "raw",
+          "seed": 1,
+          "shard_status": "raw",
+          "wound": {
+            "abandonment": 58.0,
+            "fear": 52.0,
+            "loss": 50.0,
+            "shame": 50.0
+          }
+        },
+        {
+          "process_mode": "sealing",
+          "process_severity": "micro",
+          "process_status": "raw",
+          "seed": 3,
+          "shard_status": "raw",
+          "wound": {
+            "abandonment": 50.0,
+            "fear": 50.0,
+            "loss": 50.0,
+            "shame": 69.0
+          }
+        },
+        {
+          "process_mode": "collapse",
+          "process_severity": "major",
+          "process_status": "raw",
+          "seed": 4,
+          "shard_status": "raw",
+          "wound": {
+            "abandonment": 58.0,
+            "fear": 52.0,
+            "loss": 50.0,
+            "shame": 50.0
+          }
+        },
+        {
+          "process_mode": "collapse",
+          "process_severity": "major",
+          "process_status": "raw",
+          "seed": 7,
+          "shard_status": "raw",
+          "wound": {
+            "abandonment": 58.0,
+            "fear": 52.0,
+            "loss": 50.0,
+            "shame": 50.0
+          }
+        },
+        {
+          "process_mode": "assimilation",
+          "process_severity": "major",
+          "process_status": "raw",
+          "seed": 8,
+          "shard_status": "raw",
+          "wound": {
+            "abandonment": 55.0,
+            "fear": 51.0,
+            "loss": 50.0,
+            "shame": 50.0
+          }
+        },
+        {
+          "process_mode": "collapse",
+          "process_severity": "micro",
+          "process_status": "raw",
+          "seed": 9,
+          "shard_status": "raw",
+          "wound": {
+            "abandonment": 65.0,
+            "fear": 55.0,
+            "loss": 50.0,
+            "shame": 50.0
+          }
+        },
+        {
+          "process_mode": "mis_aim",
+          "process_severity": "micro",
+          "process_status": "raw",
+          "seed": 10,
+          "shard_status": "raw",
+          "wound": {
+            "abandonment": 69.0,
+            "fear": 56.0,
+            "loss": 50.0,
+            "shame": 50.0
+          }
+        },
+        {
+          "process_mode": "collapse",
+          "process_severity": "major",
+          "process_status": "raw",
+          "seed": 11,
+          "shard_status": "raw",
+          "wound": {
+            "abandonment": 50.0,
+            "fear": 50.0,
+            "loss": 50.0,
+            "shame": 50.0
+          }
+        },
+        {
+          "process_mode": "accommodation",
+          "process_severity": "major",
+          "process_status": "raw",
+          "seed": 12,
+          "shard_status": "raw",
+          "wound": {
+            "abandonment": 50.0,
+            "fear": 50.0,
+            "loss": 50.0,
+            "shame": 50.0
+          }
+        },
+        {
+          "process_mode": "sealing",
+          "process_severity": "major",
+          "process_status": "raw",
+          "seed": 13,
+          "shard_status": "raw",
+          "wound": {
+            "abandonment": 52.0,
+            "fear": 58.0,
+            "loss": 50.0,
+            "shame": 50.0
+          }
+        },
+        {
+          "process_mode": "sealing",
+          "process_severity": "major",
+          "process_status": "raw",
+          "seed": 14,
+          "shard_status": "raw",
+          "wound": {
+            "abandonment": 52.0,
+            "fear": 58.0,
+            "loss": 50.0,
+            "shame": 50.0
+          }
+        },
+        {
+          "process_mode": "sealing",
+          "process_severity": "micro",
+          "process_status": "raw",
+          "seed": 16,
+          "shard_status": "raw",
+          "wound": {
+            "abandonment": 50.0,
+            "fear": 50.0,
+            "loss": 50.0,
+            "shame": 69.0
+          }
+        },
+        {
+          "process_mode": "collapse",
+          "process_severity": "major",
+          "process_status": "raw",
+          "seed": 17,
+          "shard_status": "raw",
+          "wound": {
+            "abandonment": 60.0,
+            "fear": 53.0,
+            "loss": 50.0,
+            "shame": 50.0
+          }
+        },
+        {
+          "process_mode": "sealing",
+          "process_severity": "major",
+          "process_status": "raw",
+          "seed": 18,
+          "shard_status": "raw",
+          "wound": {
+            "abandonment": 50.0,
+            "fear": 50.0,
+            "loss": 50.0,
+            "shame": 50.0
+          }
+        }
+      ],
+      "injected_count": 14
+    },
+    "process_at_creation": {
+      "cluster": "hardening_protection",
+      "downstream_biases": {},
+      "id": "mp_rs_2020_14_0",
+      "intrusive_return_rate": 60,
+      "intrusive_return_rate_prev": 50,
+      "mode": "assimilation",
+      "narrators": [],
+      "plasticity_years_left": 3,
+      "post_plasticity_years": 0,
+      "provisional_frame": null,
+      "reactivation_triggers": [],
+      "sealed_candidate_years": 0,
+      "severity": "micro",
+      "status": "raw"
+    },
+    "second_rupture_overwrites_window": {
+      "after_second": {
+        "crack_rewrite_probability": 10,
+        "framework_switch_sensitivity": 15,
+        "magnet_susceptibility": 10,
+        "years_left": 2
+      },
+      "first": {
+        "crack_rewrite_probability": 10,
+        "framework_switch_sensitivity": 15,
+        "magnet_susceptibility": 10,
+        "years_left": 3
+      },
+      "processes": [
+        {
+          "cluster": "hardening_protection",
+          "downstream_biases": {},
+          "id": "mp_rs_2020_14_0",
+          "intrusive_return_rate": 60,
+          "intrusive_return_rate_prev": 50,
+          "mode": "collapse",
+          "narrators": [],
+          "plasticity_years_left": 3,
+          "post_plasticity_years": 0,
+          "provisional_frame": null,
+          "reactivation_triggers": [],
+          "sealed_candidate_years": 0,
+          "severity": "major",
+          "status": "raw"
+        },
+        {
+          "cluster": "hardening_protection",
+          "downstream_biases": {},
+          "id": "mp_rs_2020_14_1",
+          "intrusive_return_rate": 40,
+          "intrusive_return_rate_prev": 50,
+          "mode": "collapse",
+          "narrators": [],
+          "plasticity_years_left": 2,
+          "post_plasticity_years": 0,
+          "provisional_frame": null,
+          "reactivation_triggers": [],
+          "sealed_candidate_years": 0,
+          "severity": "micro",
+          "status": "raw"
+        }
+      ]
+    },
+    "shard": {
+      "current_status": "raw",
+      "domain": "family_household",
+      "id": "rs_2020_14_0",
+      "intrusive_return_rate": 60,
+      "meaning_attempts": [],
+      "severity_does_not_exist": true,
+      "violated_assumption": "Caregivers return"
+    },
+    "status_enum": [
+      "raw",
+      "working",
+      "provisionally_narrated",
+      "integrated",
+      "sealed",
+      "chronic"
+    ],
+    "three_update_years": [
+      {
+        "downstream_biases": {
+          "betrayal_expectancy": 2,
+          "reality_tolerance": -1
+        },
+        "irr": 60,
+        "irr_prev": 50,
+        "narration_support": {
+          "accuracy": 50,
+          "availability": 50,
+          "coercion": 50,
+          "warmth": 50
+        },
+        "narrators": [],
+        "plasticity_years_left": 2,
+        "status": "raw",
+        "year": 1
+      },
+      {
+        "downstream_biases": {
+          "betrayal_expectancy": 4,
+          "reality_tolerance": -2
+        },
+        "irr": 60,
+        "irr_prev": 50,
+        "narration_support": {
+          "accuracy": 50,
+          "availability": 50,
+          "coercion": 50,
+          "warmth": 50
+        },
+        "narrators": [],
+        "plasticity_years_left": 1,
+        "status": "raw",
+        "year": 2
+      },
+      {
+        "downstream_biases": {
+          "betrayal_expectancy": 6,
+          "reality_tolerance": -3
+        },
+        "irr": 60,
+        "irr_prev": 50,
+        "narration_support": {
+          "accuracy": 50,
+          "availability": 50,
+          "coercion": 50,
+          "warmth": 50
+        },
+        "narrators": [],
+        "plasticity_years_left": 0,
+        "status": "raw",
+        "year": 3
+      }
+    ],
+    "wound_after_create_only": {
+      "abandonment": 50.0,
+      "fear": 50.0,
+      "loss": 50.0,
+      "shame": 50.0
+    },
+    "wound_after_direct_malheur_update": {
+      "abandonment": 69.0,
+      "fear": 56.0,
+      "loss": 50.0,
+      "shame": 50.0
+    },
+    "wound_before": {
+      "abandonment": 50.0,
+      "fear": 50.0,
+      "loss": 50.0,
+      "shame": 50.0
+    }
+  },
+  "stability_inertia": {
+    "manually_integrated_inertia_20_after": 14.7735,
+    "raw_process_inertia_20_after": 19.88675,
+    "source_generated_statuses": [
+      "raw"
+    ]
+  },
+  "striving": {
+    "config": {
+      "max_new_per_year": 2,
+      "retire_prob": 0.35,
+      "use_budget_by_age": true,
+      "use_weighted_axis": true
+    },
+    "five_unseeded_update_striving_step_runs": [
+      [
+        {
+          "active": true,
+          "feasibility_belief": 63,
+          "id": "DIR_BEL_014_SOCIAL_CLUSTER",
+          "identity_load": 55,
+          "investment": 65,
+          "label": "Peer cluster",
+          "need_axis": "belonging",
+          "recent_momentum": 7,
+          "social_support": 64,
+          "started_age": 14
+        },
+        {
+          "active": true,
+          "feasibility_belief": 53,
+          "id": "DIR_JUS_014_DEBATE_MORAL",
+          "identity_load": 50,
+          "investment": 60,
+          "label": "Moral debate",
+          "need_axis": "justice",
+          "recent_momentum": 0,
+          "social_support": 40,
+          "started_age": 14
+        }
+      ],
+      [
+        {
+          "active": true,
+          "feasibility_belief": 67,
+          "id": "DIR_BEA_014_ART_SCENE",
+          "identity_load": 55,
+          "investment": 65,
+          "label": "Art scene belonging",
+          "need_axis": "beauty_play",
+          "recent_momentum": -6,
+          "social_support": 44,
+          "started_age": 14
+        },
+        {
+          "active": true,
+          "feasibility_belief": 61,
+          "id": "DIR_JUS_014_DEBATE_MORAL",
+          "identity_load": 50,
+          "investment": 60,
+          "label": "Moral debate",
+          "need_axis": "justice",
+          "recent_momentum": 8,
+          "social_support": 57,
+          "started_age": 14
+        }
+      ],
+      [
+        {
+          "active": true,
+          "feasibility_belief": 57,
+          "id": "DIR_JUS_014_DEBATE_MORAL",
+          "identity_load": 50,
+          "investment": 60,
+          "label": "Moral debate",
+          "need_axis": "justice",
+          "recent_momentum": -7,
+          "social_support": 60,
+          "started_age": 14
+        },
+        {
+          "active": true,
+          "feasibility_belief": 51,
+          "id": "DIR_ERO_014_CRUSH",
+          "identity_load": 50,
+          "investment": 65,
+          "label": "Open crush",
+          "need_axis": "eros_intimacy",
+          "recent_momentum": 2,
+          "social_support": 59,
+          "started_age": 14
+        }
+      ],
+      [
+        {
+          "active": true,
+          "feasibility_belief": 60,
+          "id": "DIR_BEA_014_ART_SCENE",
+          "identity_load": 55,
+          "investment": 65,
+          "label": "Art scene belonging",
+          "need_axis": "beauty_play",
+          "recent_momentum": -10,
+          "social_support": 50,
+          "started_age": 14
+        },
+        {
+          "active": true,
+          "feasibility_belief": 51,
+          "id": "DIR_BEL_014_SOCIAL_CLUSTER",
+          "identity_load": 55,
+          "investment": 65,
+          "label": "Peer cluster",
+          "need_axis": "belonging",
+          "recent_momentum": -2,
+          "social_support": 61,
+          "started_age": 14
+        }
+      ],
+      [
+        {
+          "active": true,
+          "feasibility_belief": 55,
+          "id": "DIR_ERO_014_CRUSH",
+          "identity_load": 50,
+          "investment": 65,
+          "label": "Open crush",
+          "need_axis": "eros_intimacy",
+          "recent_momentum": 9,
+          "social_support": 42,
+          "started_age": 14
+        },
+        {
+          "active": true,
+          "feasibility_belief": 65,
+          "id": "DIR_JUS_014_DEBATE_MORAL",
+          "identity_load": 50,
+          "investment": 60,
+          "label": "Moral debate",
+          "need_axis": "justice",
+          "recent_momentum": 10,
+          "social_support": 62,
+          "started_age": 14
+        }
+      ]
+    ],
+    "missing_baseline_axes_after_step": [
+      [
+        "attachment",
+        "hopeful"
+      ],
+      [
+        "autonomy",
+        "hopeful"
+      ],
+      [
+        "beauty_play",
+        "hopeful"
+      ],
+      [
+        "belonging",
+        "hopeful"
+      ],
+      [
+        "competence",
+        "hopeful"
+      ],
+      [
+        "eros_intimacy",
+        "hopeful"
+      ],
+      [
+        "justice",
+        "hopeful"
+      ],
+      [
+        "meaning",
+        "hopeful"
+      ],
+      [
+        "safety",
+        "hopeful"
+      ],
+      [
+        "status",
+        "hopeful"
+      ]
+    ],
+    "retire_example_seed0": [
+      {
+        "active": true,
+        "feasibility_belief": 10,
+        "id": "s1",
+        "identity_load": 17,
+        "investment": 7,
+        "label": "",
+        "need_axis": "",
+        "recent_momentum": 0,
+        "social_support": 10,
+        "started_age": 0
+      }
+    ],
+    "retire_seed_scan": [
+      {
+        "remaining": [
+          {
+            "active": true,
+            "feasibility_belief": 10,
+            "id": "s1",
+            "identity_load": 17,
+            "investment": 7,
+            "label": "",
+            "need_axis": "",
+            "recent_momentum": 0,
+            "social_support": 10,
+            "started_age": 0
+          }
+        ],
+        "seed": 0
+      },
+      {
+        "remaining": [],
+        "seed": 1
+      },
+      {
+        "remaining": [
+          {
+            "active": true,
+            "feasibility_belief": 10,
+            "id": "s1",
+            "identity_load": 17,
+            "investment": 7,
+            "label": "",
+            "need_axis": "",
+            "recent_momentum": 0,
+            "social_support": 10,
+            "started_age": 0
+          }
+        ],
+        "seed": 2
+      },
+      {
+        "remaining": [],
+        "seed": 3
+      },
+      {
+        "remaining": [],
+        "seed": 4
+      },
+      {
+        "remaining": [
+          {
+            "active": true,
+            "feasibility_belief": 10,
+            "id": "s1",
+            "identity_load": 17,
+            "investment": 7,
+            "label": "",
+            "need_axis": "",
+            "recent_momentum": 0,
+            "social_support": 10,
+            "started_age": 0
+          }
+        ],
+        "seed": 5
+      }
+    ],
+    "seeded_spawn_rng7": [
+      {
+        "active": true,
+        "feasibility_belief": 63,
+        "id": "DIR_ERO_014_CRUSH",
+        "identity_load": 50,
+        "investment": 65,
+        "label": "Open crush",
+        "need_axis": "eros_intimacy",
+        "recent_momentum": -8,
+        "social_support": 53,
+        "started_age": 14
+      },
+      {
+        "active": true,
+        "feasibility_belief": 68,
+        "id": "DIR_BEL_014_SOCIAL_CLUSTER",
+        "identity_load": 55,
+        "investment": 65,
+        "label": "Peer cluster",
+        "need_axis": "belonging",
+        "recent_momentum": -3,
+        "social_support": 43,
+        "started_age": 14
+      }
+    ]
+  },
+  "topology_boundary": {
+    "boundary_reversal_allowed_repression75": "expanding",
+    "boundary_reversal_blocked_without_condition": "universal",
+    "config_hysteresis": {
+      "loop_topology": {
+        "required_consecutive_years": 2,
+        "transitions": {
+          "to_extractive": {
+            "requires": {
+              "impunity_access_min": 50,
+              "mis_aim_risk_min": 60,
+              "money_min": 70,
+              "social_support_min": 50,
+              "solidarity_boundary_in": [
+                "none",
+                "transactional"
+              ]
+            }
+          },
+          "to_reciprocal": {
+            "requires": {
+              "network_density_min": 60,
+              "organizing_min": 60,
+              "solidarity_boundary_not": [
+                "none"
+              ]
+            }
+          },
+          "to_self_contained": {
+            "or_if": {
+              "hostage_index_min": 60
+            },
+            "requires": {
+              "craft_or_study_min": 60,
+              "network_density_max": 40,
+              "solidarity_boundary_in": [
+                "transactional",
+                "in_group",
+                "expanding"
+              ]
+            }
+          }
+        }
+      },
+      "solidarity_boundary": {
+        "max_step_per_year": 1,
+        "order": [
+          "none",
+          "transactional",
+          "in_group",
+          "expanding",
+          "universal"
+        ],
+        "reversal_requires_any": [
+          {
+            "repression_pressure_min": 70
+          },
+          {
+            "hostage_index_min": 70
+          },
+          {
+            "shock_override": true
+          }
+        ]
+      }
+    },
+    "topology_calls": [
+      {
+        "after_call": 1,
+        "counters": {
+          "to_extractive": 0,
+          "to_reciprocal": 1,
+          "to_self_contained": 0
+        },
+        "loop": "self_contained"
+      },
+      {
+        "after_call": 2,
+        "counters": {
+          "to_extractive": 0,
+          "to_reciprocal": 0,
+          "to_self_contained": 0
+        },
+        "loop": "reciprocal"
+      }
+    ]
+  }
+}
