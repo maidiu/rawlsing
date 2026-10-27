@@ -1027,6 +1027,17 @@ def main() -> int:
     tail = (tests.stdout.strip().splitlines() or [""])[-1]
     if tests.returncode != 0:
         raise SystemExit(f"shared contract tests failed: {tail}\n{tests.stdout}")
+    artifact_paths = []
+    for sid in SOURCES:
+        for root in (DATA / sid, VALIDATION / sid):
+            for path in root.rglob("*"):
+                if path.is_file() and "__pycache__" not in path.parts and path.name != "LANE_RETURN.json":
+                    artifact_paths.append(path)
+    changed_artifacts = [{
+        "path": str(path.relative_to(ROOT)),
+        "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "bytes": path.stat().st_size,
+    } for path in sorted(set(artifact_paths))]
     lane = {
         "schema": "PYAT_R157_AFRO_LANE_RETURN@2.0.0",
         "lane_id": "AFRO", "status": "LANE_COMPLETE__FULL_AVAILABLE_CONFIGURATION_WITH_EXACT_HELD_PREMISES",
@@ -1050,6 +1061,8 @@ def main() -> int:
             "full_release_ref": x["full_release_ref"], "full_response_events": x["full_response_events"],
             "full_coordinate_facts": x["full_coordinate_facts"], "full_routing_facts": x["full_routing_facts"],
             "full_weight_facts": x["full_weight_facts"], "key_count": x["key_count"]} for x in summaries},
+        "changed_artifacts": changed_artifacts,
+        "changed_artifacts_note": "LANE_RETURN.json excludes itself; the final commit hash is reported in the terminal receipt.",
         "native_api_calls": [
             "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
             "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
