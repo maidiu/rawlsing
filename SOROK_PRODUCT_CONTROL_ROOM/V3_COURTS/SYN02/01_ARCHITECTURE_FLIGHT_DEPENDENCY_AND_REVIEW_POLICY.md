@@ -1,8 +1,9 @@
-# SYN02 evidence/architecture sequence — full design first, causal test after
+# SYN02 parallel flight sequence — independently returned author research
 
-FIRST concurrent design courts: A whole-person architecture and alternatives; B exact old V3/PFF migration and proper code dispositions; C source-backed dynamic inter-wiring relation science and rival architectures; D real C12-backward typed runtime/owners and full N/N+1.
-NEXT only after four immutable returned SHAs and separate hostile review: independent integrative synthesis SYN02-S with converged architecture, contested scientific and engineering choices, full revised 40×12 disposition and terminal-function plan. Not an automatic merge, code edit or native semantic adoption.
+Completed: **A/B/C/D** exact immutable author heads (see 00_LAUNCH_INDEX); 40 old-M dispositions by B, typed broad person from A, science/architecture alternatives from C, current effective C9/C12-source mapping and 116 worker-run sourcefree tests from D. All author evidence remains author-attributed until hostile review.
 
-Authority: user architecture correction is explicit. There is NO scientific license to prescribe all-to-all neural-like graph or a universal coactivation learning formula. Inter-wiring model selected only after scientific and computational comparative court. Independent actor/world access, ADP memory/SCI05, original CAN008/011 rules and Pyat C11 remain governed.
+READY: two noncolliding reviews **RA (A+C)** Browser I3 science/architecture and **RB (B+D)** local DeepSeek MAX source/engineering, user selects actual model/editor/account; no automatic launch or active worktree interruption.
 
-Each commission is author-only, branch-isolated. Model recommendations are not active sessions; user explicitly chooses editor/model/account. No global command to stop or disturb current Sorok/Pyat work. Existing current C12 native E1→E2 tests remain acceptance obligations, not a mandate to shrink the architecture.
+SERIAL: SYN02-S integrated architecture/adaptation decision ONLY after reviewer exact return SHAs. Compare sparse optional relational overlay against acquired composite procedures, fixed context-gated state and actual external support; compatible state and current transaction/ledger, versioned V3 migration, no renderer-state causation; full N/N+1; C12→C0 owner rights and first actual semantic consumer. Synthesis must name architecture selection, old-source code edit sets, scientific rule decisions, maximal lawful implementation tranche and accepted alternative/nochange/ablation cases.
+
+NO native person positive, no concrete scientific Rule A/T/SCI05 issuance, no C11 Pyat release, no source grant or production edit. E1→E2 remains an *acceptance requirement*, not architecture-driver.
