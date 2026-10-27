@@ -1,5 +1,6 @@
 """S52 paid-activity candidate over the accepted S51/S49 person."""
 from __future__ import annotations
+import json
 from copy import deepcopy
 from typing import Any, Mapping
 
@@ -9,6 +10,7 @@ install()
 from candidate import digest  # noqa: E402
 from s39.sources import make_source  # noqa: E402
 from s51.session import S51Session, S51Refusal  # noqa: E402
+from r30a.first_session import SessionRefusal  # noqa: E402
 
 S52="SOROK_S52_PAID_ACTIVITY_REPERTOIRE@1"
 CANDIDATE_KIND="S52_PAID_CANDIDATE"
@@ -28,19 +30,30 @@ def candidate_digest(candidate: Mapping[str, Any]) -> str:
  return digest(body)
 
 
-class S52Session(S51Session):
- _OPENING=False
+class S52ColdOpenRefusal(S51Refusal):
+ """A cold S52 session whose own semantic/history verification failed."""
 
+
+class S52Session(S51Session):
  @classmethod
  def open(cls,state_root,**kwargs):
-  # Opening validates lineage/C12 and the accepted S51 layer. S52 semantic
-  # errors remain visible through verify() on the returned cold session rather
-  # than hiding the malformed history behind a generic open failure.
-  cls._OPENING=True
   try:
-   return super().open(state_root,**kwargs)
-  finally:
-   cls._OPENING=False
+   session=super().open(state_root,**kwargs)
+  except SessionRefusal as exc:
+   if getattr(exc,"code","")=="S37_VERIFY_FAILED":
+    raise S52ColdOpenRefusal("S52_COLD_OPEN_INVALID",str(exc)) from exc
+   raise
+  try:
+   verification=session.verify()
+   if not verification.get("ok"):
+    raise S52ColdOpenRefusal(
+     "S52_COLD_OPEN_INVALID",
+     json.dumps(verification,sort_keys=True),
+    )
+   return session
+  except Exception:
+   session.close()
+   raise
 
  def _checkpoint_readset(self,checkpoint_hash):
   checkpoint=next((c for c in self.product.store.checkpoints(self.branch_id)
@@ -312,7 +325,4 @@ class S52Session(S51Session):
   r["s52"]={"candidate_count":len(candidates),
    "performed_action_count":len(action_hashes),"errors":errors,"native":False}
   r["ok"]=base_ok and not errors
-  if getattr(self,"_OPENING",False) and base_ok:
-   # The cold session still reports its S52 semantic errors via verify().
-   r["ok"]=True
   return r

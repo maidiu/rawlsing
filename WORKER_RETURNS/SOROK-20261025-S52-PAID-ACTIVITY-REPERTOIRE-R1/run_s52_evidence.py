@@ -2,18 +2,20 @@
 from __future__ import annotations
 import hashlib,json,os,shutil,subprocess,sys,xml.etree.ElementTree as ET
 from pathlib import Path
-RET=Path(__file__).resolve().parent; EVID=RET/"evidence"; JUNIT=RET/"junit"; LOGS=RET/"logs"
+RET=Path(__file__).resolve().parent; REPO=RET.parents[1]; EVID=RET/"evidence"; JUNIT=RET/"junit"; LOGS=RET/"logs"
 ENV=dict(os.environ,PYTHONDONTWRITEBYTECODE="1",PYTHONPATH=str(RET))
 for p in (str(RET),str(RET/"tests")):
  if p not in sys.path:sys.path.insert(0,p)
 from s52.bootstrap import install,roots
 install()
-FILES=["00_RETURN.md","run_s52.py","run_s52_evidence.py","s52/__init__.py","s52/bootstrap.py","s52/session.py","s52/performer.py","tests/conftest.py","tests/test_s52.py"]
+FILES=["00_RETURN.md","run_s52.py","run_s52_evidence.py","s52/__init__.py","s52/bootstrap.py","s52/session.py","s52/performer.py","s52/source_registry.py","tests/conftest.py","tests/test_s52.py"]
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def write(p,v):p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(v,indent=2,sort_keys=True)+"\n")
 def counts(x):
  r=ET.parse(x).getroot(); su=[r] if r.tag=="testsuite" else list(r); t=sum(int(s.attrib.get("tests",0)) for s in su);f=sum(int(s.attrib.get("failures",0)) for s in su);e=sum(int(s.attrib.get("errors",0)) for s in su);sk=sum(int(s.attrib.get("skipped",0)) for s in su);return {"tests":t,"PASS":t-f-e-sk,"RED":f,"ERROR":e,"SKIP":sk}
-def seam(rel):return {"path":rel,"sha256":sha(Path("/Users/matthewsmith/.codex/worktrees/10f2/Rawlsing/.local-logs/sorok-s36/worker")/rel)}
+def seam(rel):
+ path=Path(rel); path=path if path.is_absolute() else REPO/path
+ return {"path":rel,"sha256":sha(path)}
 def manifest():
  rows=[]
  for rel in FILES:

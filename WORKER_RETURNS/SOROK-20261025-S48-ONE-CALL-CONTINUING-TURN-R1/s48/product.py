@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import shutil
 import subprocess
 import time
 from pathlib import Path
@@ -16,11 +17,19 @@ install()
 from .errors import ProductCallError, S48Refusal
 from .sources import candidate_specs, eligible_candidate_ids
 
-PRODUCT_CLI = os.environ.get(
-    "S48_PRODUCT_CLI", "/Users/matthewsmith/.opencode/bin/opencode"
+PRODUCT_CLI = (
+    os.environ.get("S48_PRODUCT_CLI", "").strip()
+    or shutil.which("opencode")
+    or ""
 )
-PRODUCT_MODEL = "opencode-go/deepseek-v4.1-flash"
-PRODUCT_VARIANT = "max"
+PRODUCT_MODEL = (
+    os.environ.get("S48_PRODUCT_MODEL", "").strip()
+    or "opencode-go/deepseek-v4.1-flash"
+)
+PRODUCT_VARIANT = (
+    os.environ.get("S48_PRODUCT_VARIANT", "").strip()
+    or "max"
+)
 PRODUCT_SCHEMA = "S48_PRODUCT_ENVELOPE@1"
 PRODUCT_INPUT_SCHEMA = "S48_ACTOR_PRODUCT_INPUT@1"
 CANDIDATES = {
@@ -215,6 +224,11 @@ def run_product_cli(
     log_dir: str | Path,
     timeout: int = 300,
 ) -> dict:
+    if not PRODUCT_CLI:
+        raise ProductCallError(
+            "S48_PRODUCT_CLI_MISSING",
+            "set S48_PRODUCT_CLI or make the opencode CLI available on PATH",
+        )
     work = Path(workdir)
     logs = Path(log_dir)
     work.mkdir(parents=True, exist_ok=True)

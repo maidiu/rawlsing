@@ -8,7 +8,7 @@ install()
 from s45.fixtures import root_bundle
 from s37.harness import case_for, source_for
 from s51.session import S51Refusal
-from s52.session import CANDIDATE_KIND, PAID_OPTION, S52Session, candidate_digest
+from s52.session import CANDIDATE_KIND, PAID_OPTION, S52ColdOpenRefusal, S52Session, candidate_digest
 
 
 def _start(state):
@@ -223,12 +223,13 @@ def test_rehashed_candidate_semantics_refused_warm_and_cold():
   assert warm["ok"] is False
   assert any("S52_CANDIDATE_SEMANTIC_INVALID" in x for x in warm["s52"]["errors"])
  finally:s.close()
- cold=S52Session.open(root)
  try:
-  result=cold.verify()
-  assert result["ok"] is False
-  assert any("S52_CANDIDATE_SEMANTIC_INVALID" in x for x in result["s52"]["errors"])
- finally:cold.close()
+  S52Session.open(root)
+ except S52ColdOpenRefusal as exc:
+  assert exc.code=="S52_COLD_OPEN_INVALID"
+  assert "S52_CANDIDATE_SEMANTIC_INVALID" in str(exc)
+ else:
+  raise AssertionError("malformed cold S52 session was accepted")
 
 
 def test_later_lawful_paid_transition_is_not_frozen_to_first_result():
