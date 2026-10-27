@@ -1,0 +1,28 @@
+{
+  "observed_utc": "2026-10-27T03:42:54.383914+00:00",
+  "available": "24 MiB",
+  "lits_pid": 27969,
+  "lits_exit": 1,
+  "defect": "ENOSPC writing configuration; subsequent OpenCode statement persistence failure",
+  "user_dependency": "Free several GB; preserve all sessions and partials",
+  "steering": [
+    {
+      "lane": "LATIN",
+      "exit": 0,
+      "result": "\",\"payload\":{\"text\":\"HQ observed actual volume exhaustion: 24 MiB available; LiTS writes failed ENOSPC and session persistence failed. Preserve partial work. Do not delete shared/user files or retry large generation while disk remains full. Report exact interruption; same scope/session remains. User has been asked to free space.\",\"description\":\"Observed disk-full dependency\"},\"delivery\":\"steer\"}}\n",
+      "error": ""
+    },
+    {
+      "lane": "GSS",
+      "exit": 0,
+      "result": "\",\"payload\":{\"text\":\"HQ observed actual volume exhaustion: 24 MiB available; LiTS writes failed ENOSPC and session persistence failed. Preserve partial work. Do not delete shared/user files or retry large generation while disk remains full. Report exact interruption; same scope/session remains. User has been asked to free space.\",\"description\":\"Observed disk-full dependency\"},\"delivery\":\"steer\"}}\n",
+      "error": ""
+    },
+    {
+      "lane": "EVS",
+      "exit": 0,
+      "result": "\",\"payload\":{\"text\":\"HQ observed actual volume exhaustion: 24 MiB available; LiTS writes failed ENOSPC and session persistence failed. Preserve partial work. Do not delete shared/user files or retry large generation while disk remains full. Report exact interruption; same scope/session remains. User has been asked to free space.\",\"description\":\"Observed disk-full dependency\"},\"delivery\":\"steer\"}}\n",
+      "error": ""
+    }
+  ]
+}
