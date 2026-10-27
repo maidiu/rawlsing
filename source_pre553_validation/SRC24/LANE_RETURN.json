@@ -3,7 +3,7 @@
   "lane_id": "LATIN",
   "branch": "agent/pyat-pre553-r157-latin",
   "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
-  "artifact_commit": "e75872dc3196a2f512af3ade315c28b380bdf112",
+  "artifact_commit": "6cb7cefe25f618c91028d079946ee679c3eca2fd",
   "p0_corrected_commit": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
   "p3_terminal_commit": "519355ec2215409b40d566ef13c3b21f611e0726",
   "source_ids": [
@@ -33,8 +33,8 @@
         "config_id": "R157-LATIN-SRC24-FULL-SOURCE-PREPARATION",
         "config_purpose": "SOURCE_PREPARATION",
         "identity_class": "ORIGINAL_SOURCE",
-        "canonical_sha256": "1c241014c136a9b58935dd536f72795afe15832688fa4b268bb264ad8533de99",
-        "file_sha256": "1cb6de80b546912347b99c2b04f43ebc47c67fba232b8275c91c88abb3a094d7",
+        "canonical_sha256": "a2b532f624ad70a1e81a075befbf930ec1264123c6906df500353bb0dff8c930",
+        "file_sha256": "8108d40a813134c96b67b1571466ad5ada791385a1faa9d3e9ecded79066766f",
         "supported_question_ids": [
           "p66c",
           "p44b",
@@ -669,7 +669,7 @@
             "residual_id": "SRC24-ROUTING-UNRESOLVED",
             "field": "routing.typed_state",
             "status": "UNKNOWN",
-            "reason": "SOURCE_ROUTING_UNRESOLVED for 183 response items; original routing facts are a preparation witness over rows 1-3, not an eligibility claim for every row.",
+            "reason": "SOURCE_ROUTING_UNRESOLVED for 183 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. The original source rows were not physically expanded for validation.",
             "dependent_operation": "eligibility/form-conditioned native query",
             "unaffected_scope": "unconditional source-native response incidence and coordinate binding",
             "owner": "LATIN lane / P3 integration owner",
@@ -899,8 +899,8 @@
         "identity_class": "NONRESPONDENT_FIXTURE",
         "nonrespondent": true,
         "config_path": "source_pre553_validation/SRC24/fixture.config.json",
-        "config_canonical_sha256": "a1c9c738ddef09d272102c7f6dcf222664f5b20aa209d149cafb0243cb8fa8b9",
-        "config_file_sha256": "73cbeb076515e547d93baa0670a4a1f786cbe0831ff40d83ceaef7e7ab78b8e4",
+        "config_canonical_sha256": "d2991c66516743f9d718fad959d5639821ea224232f049644348ff91646b073f",
+        "config_file_sha256": "0f3114661100fa7b3c7b562007ab66c72d7d7f4bd7efc4e80a93435639d91368",
         "oracle_path": "source_pre553_validation/SRC24/fixture_oracle.json",
         "oracle_sha256": "6e4386c334f2aa431956a2489a631edc91fd2327de0bf5c1f4f4c08cbaf484b8",
         "oracle_expected_counts": {
@@ -911,29 +911,28 @@
       },
       "native_validation": {
         "status": "PASS",
-        "check_count": 566,
-        "passed": 566,
+        "check_count": 571,
+        "passed": 571,
         "failed": 0,
         "skipped": 0,
-        "original_projection": {
-          "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
-          "input": "ORIGINAL_SOURCE config (no physical stream)",
+        "original_recipe_validation": {
+          "call": "static original routing recipe validation",
+          "input": "ORIGINAL_SOURCE config (not physically expanded)",
           "config_id": "R157-LATIN-SRC24-FULL-SOURCE-PREPARATION",
-          "config_sha256": "1c241014c136a9b58935dd536f72795afe15832688fa4b268bb264ad8533de99",
-          "result": "GovernedC11Projection",
-          "source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
-          "respondents": 9069,
-          "response_slots": 183,
-          "coordinate_slots": 6,
-          "routing_facts": 549,
+          "config_sha256": "a2b532f624ad70a1e81a075befbf930ec1264123c6906df500353bb0dff8c930",
+          "result": "ROUTING_RECIPE_VALIDATED",
           "questions": 183,
-          "authority_snapshots": 7
+          "routing_entries": 183,
+          "row_selector": "ALL",
+          "typed_state": "ROUTING_UNKNOWN",
+          "physical_row_expansion": "NOT_PERFORMED"
         },
+        "original_projection_expansion": "NOT_PERFORMED_BY_DESIGN",
         "fixture_projection": {
           "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
           "input": "NONRESPONDENT_FIXTURE config",
           "config_id": "R157-LATIN-SRC24-NONRESPONDENT-FIXTURE-FULL",
-          "config_sha256": "a1c9c738ddef09d272102c7f6dcf222664f5b20aa209d149cafb0243cb8fa8b9",
+          "config_sha256": "d2991c66516743f9d718fad959d5639821ea224232f049644348ff91646b073f",
           "result": "GovernedC11Projection",
           "source_sha256": "c7e3cd4ce10c795c08b5c97a0bbc57d8ef4ffd7da0cf30e0e3845c4b4e0333b9",
           "respondents": 8,
@@ -946,16 +945,16 @@
           "call": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
           "input": "NONRESPONDENT_FIXTURE config + ExactPhysicalCellStream",
           "config_id": "R157-LATIN-SRC24-NONRESPONDENT-FIXTURE-FULL",
-          "config_sha256": "a1c9c738ddef09d272102c7f6dcf222664f5b20aa209d149cafb0243cb8fa8b9",
+          "config_sha256": "d2991c66516743f9d718fad959d5639821ea224232f049644348ff91646b073f",
           "fixture_source_sha256": "c7e3cd4ce10c795c08b5c97a0bbc57d8ef4ffd7da0cf30e0e3845c4b4e0333b9",
           "result": "C11LogicalRelease",
           "release_id": "R157_FIXTURE_RELEASE/SRC24",
           "release_ref": {
             "kind": "C11LogicalRelease",
             "object_id": "R157_FIXTURE_RELEASE/SRC24",
-            "content_hash": "4faea64a46b1fe539939146358299d8dbf399884c6fd7d563666c81594cbaee6"
+            "content_hash": "214de015475f919dc17cad231b7de1dc085c66085d30ebf75fd0a65cba68995e"
           },
-          "semantic_release_hash": "4faea64a46b1fe539939146358299d8dbf399884c6fd7d563666c81594cbaee6",
+          "semantic_release_hash": "214de015475f919dc17cad231b7de1dc085c66085d30ebf75fd0a65cba68995e",
           "source_release_manifest_hash": "e587e596ef4001ec7e01d3dd72f405c92f5d710b478aeb0be4289cb045c93c67"
         },
         "actual_counts": {
@@ -981,9 +980,9 @@
         "release_ref": {
           "kind": "C11LogicalRelease",
           "object_id": "R157_FIXTURE_RELEASE/SRC24",
-          "content_hash": "4faea64a46b1fe539939146358299d8dbf399884c6fd7d563666c81594cbaee6"
+          "content_hash": "214de015475f919dc17cad231b7de1dc085c66085d30ebf75fd0a65cba68995e"
         },
-        "semantic_release_hash": "4faea64a46b1fe539939146358299d8dbf399884c6fd7d563666c81594cbaee6",
+        "semantic_release_hash": "214de015475f919dc17cad231b7de1dc085c66085d30ebf75fd0a65cba68995e",
         "m01_m18_coverage": {
           "M01": 1,
           "M02": 1,
@@ -1022,9 +1021,18 @@
           }
         ]
       },
+      "topology_assertions": {
+        "path": "source_pre553_validation/SRC24/TOPOLOGY_ASSERTIONS.json",
+        "sha256": "9fd9e2eaeb94d125b35eac488d68412a0b8a31185095c97539d81604780286a0",
+        "counts": {
+          "affected": 3,
+          "pass": 3,
+          "fail": 0
+        }
+      },
       "exceptions": {
         "path": "source_pre553_validation/SRC24/EXCEPTIONS.json",
-        "sha256": "fe9461b39ec69409a6cf613b7a4e49510159c1c7a94cced0f2c984eb24dcdd2a",
+        "sha256": "eee0fdeb782bbe98a9501d4e30a21348a5cc941ec1dec11fe19149e51e2a3ef6",
         "counts": {
           "entries": 38,
           "residuals": 20,
@@ -1036,7 +1044,7 @@
       },
       "manifest": {
         "path": "source_pre553_validation/SRC24/manifest.json",
-        "sha256": "00b38c77632dfa2fc65316c324dacf1a53eab4c1ea88d07986031c4cb5e55189",
+        "sha256": "4d371c8bf4273357c1a30417abc1f48951007a1acc4260bafd69ef27c227483a",
         "validation_status": "PASS"
       },
       "no_drop": {
@@ -1049,8 +1057,8 @@
       },
       "artifacts": {
         "rawlsing_next/source_configuration/data/SRC24/source.config.json": {
-          "sha256": "1cb6de80b546912347b99c2b04f43ebc47c67fba232b8275c91c88abb3a094d7",
-          "bytes": 3672224
+          "sha256": "8108d40a813134c96b67b1571466ad5ada791385a1faa9d3e9ecded79066766f",
+          "bytes": 3665097
         },
         "rawlsing_next/source_configuration/data/SRC24/crosswalk.json": {
           "sha256": "d2d16f2e10f7d27191cd9d2f0a3056428d07edd9bdd62ec471764aec50d2dfda",
@@ -1061,8 +1069,8 @@
           "bytes": 339455
         },
         "source_pre553_validation/SRC24/fixture.config.json": {
-          "sha256": "73cbeb076515e547d93baa0670a4a1f786cbe0831ff40d83ceaef7e7ab78b8e4",
-          "bytes": 3604484
+          "sha256": "0f3114661100fa7b3c7b562007ab66c72d7d7f4bd7efc4e80a93435639d91368",
+          "bytes": 3603746
         },
         "source_pre553_validation/SRC24/fixture.json": {
           "sha256": "055b478a1bf958fe595cba74867909d41893e1aa6cae87ec9a7648eef47360d2",
@@ -1073,16 +1081,20 @@
           "bytes": 91419
         },
         "source_pre553_validation/SRC24/VALIDATION_RESULTS.json": {
-          "sha256": "b8ec8a93ff3d5b865e3f3a88fabed3b3f3eb5ac44f9ff0b26363adf3c3514d66",
-          "bytes": 277854
+          "sha256": "f35a6330193c83da97620798c44fa883dfe742271e95012555ed07d337b5f899",
+          "bytes": 283218
         },
         "source_pre553_validation/SRC24/EXCEPTIONS.json": {
-          "sha256": "fe9461b39ec69409a6cf613b7a4e49510159c1c7a94cced0f2c984eb24dcdd2a",
-          "bytes": 62187
+          "sha256": "eee0fdeb782bbe98a9501d4e30a21348a5cc941ec1dec11fe19149e51e2a3ef6",
+          "bytes": 62477
+        },
+        "source_pre553_validation/SRC24/TOPOLOGY_ASSERTIONS.json": {
+          "sha256": "9fd9e2eaeb94d125b35eac488d68412a0b8a31185095c97539d81604780286a0",
+          "bytes": 3892
         },
         "source_pre553_validation/SRC24/manifest.json": {
-          "sha256": "00b38c77632dfa2fc65316c324dacf1a53eab4c1ea88d07986031c4cb5e55189",
-          "bytes": 3755
+          "sha256": "4d371c8bf4273357c1a30417abc1f48951007a1acc4260bafd69ef27c227483a",
+          "bytes": 3945
         }
       }
     },
@@ -1099,8 +1111,8 @@
         "config_id": "R157-LATIN-SRC25-FULL-SOURCE-PREPARATION",
         "config_purpose": "SOURCE_PREPARATION",
         "identity_class": "ORIGINAL_SOURCE",
-        "canonical_sha256": "282144ffe58bc47ca9cf6669b6c798930661d680b28cfec49b3c6bcd4163319d",
-        "file_sha256": "2b239b863645c08f698fa96e2b44e57deb5b9d6d18fab91cd5078d8a05651a85",
+        "canonical_sha256": "455f0f27e70da8f92c8876b4cde8d5f248cd4166dd12e02184eed3b4f47176d6",
+        "file_sha256": "57ddf04286ab24481238866b0d9cbb6a601c7bb2734ebbbf4cbda040bae72a06",
         "supported_question_ids": [
           "P62NG",
           "P70ST_D",
@@ -2322,7 +2334,7 @@
             "residual_id": "SRC25-ROUTING-UNRESOLVED",
             "field": "routing.typed_state",
             "status": "UNKNOWN",
-            "reason": "SOURCE_ROUTING_UNRESOLVED for 370 response items; original routing facts are a preparation witness over rows 1-3, not an eligibility claim for every row.",
+            "reason": "SOURCE_ROUTING_UNRESOLVED for 370 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. The original source rows were not physically expanded for validation.",
             "dependent_operation": "eligibility/form-conditioned native query",
             "unaffected_scope": "unconditional source-native response incidence and coordinate binding",
             "owner": "LATIN lane / P3 integration owner",
@@ -2442,8 +2454,8 @@
         "identity_class": "NONRESPONDENT_FIXTURE",
         "nonrespondent": true,
         "config_path": "source_pre553_validation/SRC25/fixture.config.json",
-        "config_canonical_sha256": "8fe080fb068279d0708dd76a6ac02c5db43535ac0471a276f3e2ff06b10ff652",
-        "config_file_sha256": "dee37b8a232eed7e2bce2c3915a18676cce28e0857b18ae13cf9e9d5825a9a8d",
+        "config_canonical_sha256": "235c37370741faecc827a31641701a1fbe436ea12ef2defedea2845ed882d219",
+        "config_file_sha256": "a7aaa2e69f2250ad9dd9a328440811681f620bbdaae1afd9ac073887590213e8",
         "oracle_path": "source_pre553_validation/SRC25/fixture_oracle.json",
         "oracle_sha256": "0cf4eede9c359702099f8686d0c5a95c44981c292823ca92c0a41d7222bf4e24",
         "oracle_expected_counts": {
@@ -2454,29 +2466,28 @@
       },
       "native_validation": {
         "status": "PASS",
-        "check_count": 1127,
-        "passed": 1127,
+        "check_count": 1158,
+        "passed": 1158,
         "failed": 0,
         "skipped": 0,
-        "original_projection": {
-          "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
-          "input": "ORIGINAL_SOURCE config (no physical stream)",
+        "original_recipe_validation": {
+          "call": "static original routing recipe validation",
+          "input": "ORIGINAL_SOURCE config (not physically expanded)",
           "config_id": "R157-LATIN-SRC25-FULL-SOURCE-PREPARATION",
-          "config_sha256": "282144ffe58bc47ca9cf6669b6c798930661d680b28cfec49b3c6bcd4163319d",
-          "result": "GovernedC11Projection",
-          "source_sha256": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e",
-          "respondents": 20204,
-          "response_slots": 370,
-          "coordinate_slots": 41,
-          "routing_facts": 1110,
+          "config_sha256": "455f0f27e70da8f92c8876b4cde8d5f248cd4166dd12e02184eed3b4f47176d6",
+          "result": "ROUTING_RECIPE_VALIDATED",
           "questions": 370,
-          "authority_snapshots": 7
+          "routing_entries": 370,
+          "row_selector": "ALL",
+          "typed_state": "ROUTING_UNKNOWN",
+          "physical_row_expansion": "NOT_PERFORMED"
         },
+        "original_projection_expansion": "NOT_PERFORMED_BY_DESIGN",
         "fixture_projection": {
           "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
           "input": "NONRESPONDENT_FIXTURE config",
           "config_id": "R157-LATIN-SRC25-NONRESPONDENT-FIXTURE-FULL",
-          "config_sha256": "8fe080fb068279d0708dd76a6ac02c5db43535ac0471a276f3e2ff06b10ff652",
+          "config_sha256": "235c37370741faecc827a31641701a1fbe436ea12ef2defedea2845ed882d219",
           "result": "GovernedC11Projection",
           "source_sha256": "23ad09c64ca19fbf290883b459c460344291be50f2fc2bb4a71ed67d48230682",
           "respondents": 8,
@@ -2489,16 +2500,16 @@
           "call": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
           "input": "NONRESPONDENT_FIXTURE config + ExactPhysicalCellStream",
           "config_id": "R157-LATIN-SRC25-NONRESPONDENT-FIXTURE-FULL",
-          "config_sha256": "8fe080fb068279d0708dd76a6ac02c5db43535ac0471a276f3e2ff06b10ff652",
+          "config_sha256": "235c37370741faecc827a31641701a1fbe436ea12ef2defedea2845ed882d219",
           "fixture_source_sha256": "23ad09c64ca19fbf290883b459c460344291be50f2fc2bb4a71ed67d48230682",
           "result": "C11LogicalRelease",
           "release_id": "R157_FIXTURE_RELEASE/SRC25",
           "release_ref": {
             "kind": "C11LogicalRelease",
             "object_id": "R157_FIXTURE_RELEASE/SRC25",
-            "content_hash": "5b3bb58222bc49f6fa7db167668e701e561ac3840f25fa41ed8cf88e28e2d586"
+            "content_hash": "0edcbcdce3efaa1eace617c455624a252ec6ab87b3bd5aa5a3f60e1c6771aa9c"
           },
-          "semantic_release_hash": "5b3bb58222bc49f6fa7db167668e701e561ac3840f25fa41ed8cf88e28e2d586",
+          "semantic_release_hash": "0edcbcdce3efaa1eace617c455624a252ec6ab87b3bd5aa5a3f60e1c6771aa9c",
           "source_release_manifest_hash": "6e2b748a8f65c37e4564d86f9842f76398d50e182368223fcbf12a754f0096e5"
         },
         "actual_counts": {
@@ -2524,9 +2535,9 @@
         "release_ref": {
           "kind": "C11LogicalRelease",
           "object_id": "R157_FIXTURE_RELEASE/SRC25",
-          "content_hash": "5b3bb58222bc49f6fa7db167668e701e561ac3840f25fa41ed8cf88e28e2d586"
+          "content_hash": "0edcbcdce3efaa1eace617c455624a252ec6ab87b3bd5aa5a3f60e1c6771aa9c"
         },
-        "semantic_release_hash": "5b3bb58222bc49f6fa7db167668e701e561ac3840f25fa41ed8cf88e28e2d586",
+        "semantic_release_hash": "0edcbcdce3efaa1eace617c455624a252ec6ab87b3bd5aa5a3f60e1c6771aa9c",
         "m01_m18_coverage": {
           "M01": 1,
           "M02": 1,
@@ -2565,9 +2576,18 @@
           }
         ]
       },
+      "topology_assertions": {
+        "path": "source_pre553_validation/SRC25/TOPOLOGY_ASSERTIONS.json",
+        "sha256": "d55ffe99f89905addc55409bdfaf2675fea0c41a8f1d5fec82b27d4fa303b88d",
+        "counts": {
+          "affected": 29,
+          "pass": 29,
+          "fail": 0
+        }
+      },
       "exceptions": {
         "path": "source_pre553_validation/SRC25/EXCEPTIONS.json",
-        "sha256": "4ab634e7675fe569afe022dcbbfc6e2eff89772accadec5ee93db9cc6de53751",
+        "sha256": "6b29ea53ec64b89d042156ab01a2a298062a84ba1eb2d49cb604cb175630e9ec",
         "counts": {
           "entries": 9,
           "residuals": 9,
@@ -2579,7 +2599,7 @@
       },
       "manifest": {
         "path": "source_pre553_validation/SRC25/manifest.json",
-        "sha256": "9a5fec70da5d3ca0dd45f118a1d59d39e52500ab1e499dab2f4a970e17354d95",
+        "sha256": "4c54b18792b31f653039a37016715e332fa6d644316a805619a5234b2987989a",
         "validation_status": "PASS"
       },
       "no_drop": {
@@ -2592,8 +2612,8 @@
       },
       "artifacts": {
         "rawlsing_next/source_configuration/data/SRC25/source.config.json": {
-          "sha256": "2b239b863645c08f698fa96e2b44e57deb5b9d6d18fab91cd5078d8a05651a85",
-          "bytes": 7486951
+          "sha256": "57ddf04286ab24481238866b0d9cbb6a601c7bb2734ebbbf4cbda040bae72a06",
+          "bytes": 7470248
         },
         "rawlsing_next/source_configuration/data/SRC25/crosswalk.json": {
           "sha256": "be072870e4b5fc9dda3049dc5ea3049fcd7a0df5673f406b6d1d58607959c311",
@@ -2604,8 +2624,8 @@
           "bytes": 706751
         },
         "source_pre553_validation/SRC25/fixture.config.json": {
-          "sha256": "dee37b8a232eed7e2bce2c3915a18676cce28e0857b18ae13cf9e9d5825a9a8d",
-          "bytes": 7431127
+          "sha256": "a7aaa2e69f2250ad9dd9a328440811681f620bbdaae1afd9ac073887590213e8",
+          "bytes": 7427545
         },
         "source_pre553_validation/SRC25/fixture.json": {
           "sha256": "6342bb54bd118dba3314b5bc64f18cba0287aea76a5487b81fa41365d1fe57b3",
@@ -2616,16 +2636,20 @@
           "bytes": 194203
         },
         "source_pre553_validation/SRC25/VALIDATION_RESULTS.json": {
-          "sha256": "4fbe45593530ab09216c6cc30dc8ddf2f329ed2a9cc5355b80fbee671588dad0",
-          "bytes": 578584
+          "sha256": "15a9d6a5543eaef0e8118845005e33caf3445edcf4a05dd67ab16853a0007e0a",
+          "bytes": 622165
         },
         "source_pre553_validation/SRC25/EXCEPTIONS.json": {
-          "sha256": "4ab634e7675fe569afe022dcbbfc6e2eff89772accadec5ee93db9cc6de53751",
-          "bytes": 16711
+          "sha256": "6b29ea53ec64b89d042156ab01a2a298062a84ba1eb2d49cb604cb175630e9ec",
+          "bytes": 17001
+        },
+        "source_pre553_validation/SRC25/TOPOLOGY_ASSERTIONS.json": {
+          "sha256": "d55ffe99f89905addc55409bdfaf2675fea0c41a8f1d5fec82b27d4fa303b88d",
+          "bytes": 34720
         },
         "source_pre553_validation/SRC25/manifest.json": {
-          "sha256": "9a5fec70da5d3ca0dd45f118a1d59d39e52500ab1e499dab2f4a970e17354d95",
-          "bytes": 3754
+          "sha256": "4c54b18792b31f653039a37016715e332fa6d644316a805619a5234b2987989a",
+          "bytes": 3945
         }
       }
     },
@@ -2642,8 +2666,8 @@
         "config_id": "R157-LATIN-SRC26-FULL-SOURCE-PREPARATION",
         "config_purpose": "SOURCE_PREPARATION",
         "identity_class": "ORIGINAL_SOURCE",
-        "canonical_sha256": "74ccd4cb9c6837ff24995c0ac04206d875cc17e3b9e6cb17b929acf236b086a1",
-        "file_sha256": "570009cfbc77a41015c17026c01a7e2fe98b9cc330c8e3ff5fb3a88cc47b3d77",
+        "canonical_sha256": "35039455c945c9992e3ae340eb94f77695978afaaca24112cc6a5c8fecf5ce14",
+        "file_sha256": "dcd99425da198ac68ddba3d816d8e2c3d070426bb4cba3e5a70c5c30588007af",
         "supported_question_ids": [
           "Q29STB",
           "Q19ST",
@@ -3373,7 +3397,7 @@
             "residual_id": "SRC26-ROUTING-UNRESOLVED",
             "field": "routing.typed_state",
             "status": "UNKNOWN",
-            "reason": "SOURCE_ROUTING_UNRESOLVED for 178 response items; original routing facts are a preparation witness over rows 1-3, not an eligibility claim for every row.",
+            "reason": "SOURCE_ROUTING_UNRESOLVED for 178 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. The original source rows were not physically expanded for validation.",
             "dependent_operation": "eligibility/form-conditioned native query",
             "unaffected_scope": "unconditional source-native response incidence and coordinate binding",
             "owner": "LATIN lane / P3 integration owner",
@@ -3543,8 +3567,8 @@
         "identity_class": "NONRESPONDENT_FIXTURE",
         "nonrespondent": true,
         "config_path": "source_pre553_validation/SRC26/fixture.config.json",
-        "config_canonical_sha256": "d27ba1e1400fe7998f257448bea592ad4d8bac7a0ee1112094c4aa5e3b979d86",
-        "config_file_sha256": "487f3d4b58dc42242e76a33d584b71f5e3a1bf372d8fa4fce384455be212daf4",
+        "config_canonical_sha256": "65e963be1ab9abba2a692ad3cc45cc3de0015701f6356d94b8138c567932ef4b",
+        "config_file_sha256": "b32f3a46eaa1700568d9e6061f0335e0928565a90830e19640e835ee18a207fa",
         "oracle_path": "source_pre553_validation/SRC26/fixture_oracle.json",
         "oracle_sha256": "b2d0897f1f4a93fbe5d35cdd62bdac0dc02e4888e8da6635caabefdcadc1a708",
         "oracle_expected_counts": {
@@ -3555,29 +3579,28 @@
       },
       "native_validation": {
         "status": "PASS",
-        "check_count": 842,
-        "passed": 842,
+        "check_count": 859,
+        "passed": 859,
         "failed": 0,
         "skipped": 0,
-        "original_projection": {
-          "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
-          "input": "ORIGINAL_SOURCE config (no physical stream)",
+        "original_recipe_validation": {
+          "call": "static original routing recipe validation",
+          "input": "ORIGINAL_SOURCE config (not physically expanded)",
           "config_id": "R157-LATIN-SRC26-FULL-SOURCE-PREPARATION",
-          "config_sha256": "74ccd4cb9c6837ff24995c0ac04206d875cc17e3b9e6cb17b929acf236b086a1",
-          "result": "GovernedC11Projection",
-          "source_sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
-          "respondents": 19214,
-          "response_slots": 275,
-          "coordinate_slots": 49,
-          "routing_facts": 534,
+          "config_sha256": "35039455c945c9992e3ae340eb94f77695978afaaca24112cc6a5c8fecf5ce14",
+          "result": "ROUTING_RECIPE_VALIDATED",
           "questions": 178,
-          "authority_snapshots": 7
+          "routing_entries": 178,
+          "row_selector": "ALL",
+          "typed_state": "ROUTING_UNKNOWN",
+          "physical_row_expansion": "NOT_PERFORMED"
         },
+        "original_projection_expansion": "NOT_PERFORMED_BY_DESIGN",
         "fixture_projection": {
           "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
           "input": "NONRESPONDENT_FIXTURE config",
           "config_id": "R157-LATIN-SRC26-NONRESPONDENT-FIXTURE-FULL",
-          "config_sha256": "d27ba1e1400fe7998f257448bea592ad4d8bac7a0ee1112094c4aa5e3b979d86",
+          "config_sha256": "65e963be1ab9abba2a692ad3cc45cc3de0015701f6356d94b8138c567932ef4b",
           "result": "GovernedC11Projection",
           "source_sha256": "82a03fb50a1e31d1e3bbf933835a0c67523095ecbe83c335240ca402672ec669",
           "respondents": 8,
@@ -3590,16 +3613,16 @@
           "call": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
           "input": "NONRESPONDENT_FIXTURE config + ExactPhysicalCellStream",
           "config_id": "R157-LATIN-SRC26-NONRESPONDENT-FIXTURE-FULL",
-          "config_sha256": "d27ba1e1400fe7998f257448bea592ad4d8bac7a0ee1112094c4aa5e3b979d86",
+          "config_sha256": "65e963be1ab9abba2a692ad3cc45cc3de0015701f6356d94b8138c567932ef4b",
           "fixture_source_sha256": "82a03fb50a1e31d1e3bbf933835a0c67523095ecbe83c335240ca402672ec669",
           "result": "C11LogicalRelease",
           "release_id": "R157_FIXTURE_RELEASE/SRC26",
           "release_ref": {
             "kind": "C11LogicalRelease",
             "object_id": "R157_FIXTURE_RELEASE/SRC26",
-            "content_hash": "b526e80c2049fe0318813f2b94abd10c41173775377906dcd47cecc29e77789e"
+            "content_hash": "528ca5c34f7d9fd3c92ae5832d7be0001fec001a1053a046ba899a1ceda3164f"
           },
-          "semantic_release_hash": "b526e80c2049fe0318813f2b94abd10c41173775377906dcd47cecc29e77789e",
+          "semantic_release_hash": "528ca5c34f7d9fd3c92ae5832d7be0001fec001a1053a046ba899a1ceda3164f",
           "source_release_manifest_hash": "0ffe516f2c0f49d543dec54de07b92e713f61b4507f9e5fef2ea1a2b6649e605"
         },
         "actual_counts": {
@@ -3625,9 +3648,9 @@
         "release_ref": {
           "kind": "C11LogicalRelease",
           "object_id": "R157_FIXTURE_RELEASE/SRC26",
-          "content_hash": "b526e80c2049fe0318813f2b94abd10c41173775377906dcd47cecc29e77789e"
+          "content_hash": "528ca5c34f7d9fd3c92ae5832d7be0001fec001a1053a046ba899a1ceda3164f"
         },
-        "semantic_release_hash": "b526e80c2049fe0318813f2b94abd10c41173775377906dcd47cecc29e77789e",
+        "semantic_release_hash": "528ca5c34f7d9fd3c92ae5832d7be0001fec001a1053a046ba899a1ceda3164f",
         "m01_m18_coverage": {
           "M01": 1,
           "M02": 1,
@@ -3666,9 +3689,18 @@
           }
         ]
       },
+      "topology_assertions": {
+        "path": "source_pre553_validation/SRC26/TOPOLOGY_ASSERTIONS.json",
+        "sha256": "032d18b7fb3ca4a6fc368ff3588e6b91120085a4085a04814534ef479136b062",
+        "counts": {
+          "affected": 15,
+          "pass": 15,
+          "fail": 0
+        }
+      },
       "exceptions": {
         "path": "source_pre553_validation/SRC26/EXCEPTIONS.json",
-        "sha256": "e583bc9e2b71a2099513b5f72555925381bf727ab1a72b5ee444cbcfe889716b",
+        "sha256": "6f15e994d35269af79ee8364e65f63eb95dd4d027357bb857e4f2a03997d7a7c",
         "counts": {
           "entries": 59,
           "residuals": 14,
@@ -3680,7 +3712,7 @@
       },
       "manifest": {
         "path": "source_pre553_validation/SRC26/manifest.json",
-        "sha256": "548cd38c0d04f49f58bca7f7e08a7150d89f41f1eba5d034385b063c38ad8dcb",
+        "sha256": "dd9612dfc34eb0552515ec801fcce6bdd42b1a668bb5aa308d30fd8a7165751c",
         "validation_status": "PASS"
       },
       "no_drop": {
@@ -3693,8 +3725,8 @@
       },
       "artifacts": {
         "rawlsing_next/source_configuration/data/SRC26/source.config.json": {
-          "sha256": "570009cfbc77a41015c17026c01a7e2fe98b9cc330c8e3ff5fb3a88cc47b3d77",
-          "bytes": 3974255
+          "sha256": "dcd99425da198ac68ddba3d816d8e2c3d070426bb4cba3e5a70c5c30588007af",
+          "bytes": 3965764
         },
         "rawlsing_next/source_configuration/data/SRC26/crosswalk.json": {
           "sha256": "0f27ee8cfaeaaaef3d19ad0394018d7d68524efb9fa2c9c03e54272a4ca8c435",
@@ -3705,8 +3737,8 @@
           "bytes": 422380
         },
         "source_pre553_validation/SRC26/fixture.config.json": {
-          "sha256": "487f3d4b58dc42242e76a33d584b71f5e3a1bf372d8fa4fce384455be212daf4",
-          "bytes": 3929498
+          "sha256": "b32f3a46eaa1700568d9e6061f0335e0928565a90830e19640e835ee18a207fa",
+          "bytes": 3927216
         },
         "source_pre553_validation/SRC26/fixture.json": {
           "sha256": "0fa867df31ca84ce5f9db65e8d9e1abe750f620c52081ff62eceba06b90557fc",
@@ -3717,16 +3749,20 @@
           "bytes": 144911
         },
         "source_pre553_validation/SRC26/VALIDATION_RESULTS.json": {
-          "sha256": "42844733bf14c33be2eb1b42157dfb45aed23b978b054b677c19399e62e8ce95",
-          "bytes": 433177
+          "sha256": "8de993f557280f437d392a173ac0d949e247f091f899a4e52dd3bfeabd39607d",
+          "bytes": 456097
         },
         "source_pre553_validation/SRC26/EXCEPTIONS.json": {
-          "sha256": "e583bc9e2b71a2099513b5f72555925381bf727ab1a72b5ee444cbcfe889716b",
-          "bytes": 79495
+          "sha256": "6f15e994d35269af79ee8364e65f63eb95dd4d027357bb857e4f2a03997d7a7c",
+          "bytes": 79785
+        },
+        "source_pre553_validation/SRC26/TOPOLOGY_ASSERTIONS.json": {
+          "sha256": "032d18b7fb3ca4a6fc368ff3588e6b91120085a4085a04814534ef479136b062",
+          "bytes": 18063
         },
         "source_pre553_validation/SRC26/manifest.json": {
-          "sha256": "548cd38c0d04f49f58bca7f7e08a7150d89f41f1eba5d034385b063c38ad8dcb",
-          "bytes": 3754
+          "sha256": "dd9612dfc34eb0552515ec801fcce6bdd42b1a668bb5aa308d30fd8a7165751c",
+          "bytes": 3945
         }
       }
     }
@@ -3737,14 +3773,14 @@
       "result": "generated/validated full original configs, crosswalks, field evidence, nonrespondent fixtures, fixture configs and oracles for SRC24-SRC26",
       "status": "PASS",
       "stdout_tail": [
-        "SRC24: config=1c241014c136a9b58935dd536f72795afe15832688fa4b268bb264ad8533de99 fixture=c7e3cd4ce10c795c08b5c97a0bbc57d8ef4ffd7da0cf30e0e3845c4b4e0333b9 included_slots=189 included_items=189",
-        "SRC25: config=282144ffe58bc47ca9cf6669b6c798930661d680b28cfec49b3c6bcd4163319d fixture=23ad09c64ca19fbf290883b459c460344291be50f2fc2bb4a71ed67d48230682 included_slots=411 included_items=411",
-        "SRC26: config=74ccd4cb9c6837ff24995c0ac04206d875cc17e3b9e6cb17b929acf236b086a1 fixture=82a03fb50a1e31d1e3bbf933835a0c67523095ecbe83c335240ca402672ec669 included_slots=324 included_items=190"
+        "SRC24: config=a2b532f624ad70a1e81a075befbf930ec1264123c6906df500353bb0dff8c930 fixture=c7e3cd4ce10c795c08b5c97a0bbc57d8ef4ffd7da0cf30e0e3845c4b4e0333b9 included_slots=189 included_items=189",
+        "SRC25: config=455f0f27e70da8f92c8876b4cde8d5f248cd4166dd12e02184eed3b4f47176d6 fixture=23ad09c64ca19fbf290883b459c460344291be50f2fc2bb4a71ed67d48230682 included_slots=411 included_items=411",
+        "SRC26: config=35039455c945c9992e3ae340eb94f77695978afaaca24112cc6a5c8fecf5ce14 fixture=82a03fb50a1e31d1e3bbf933835a0c67523095ecbe83c335240ca402672ec669 included_slots=324 included_items=190"
       ]
     },
     {
       "command": "PYTHONPATH=. python3 source_pre553_validation/SRC24/tools/run_latin_validation.py",
-      "result": "SRC24 PASS 566/566 checks; SRC25 PASS 1127/1127 checks; SRC26 PASS 842/842 checks; 0 failed; 0 skipped",
+      "result": "SRC24 PASS 571/571 checks; SRC25 PASS 1158/1158 checks; SRC26 PASS 859/859 checks; 0 failed; 0 skipped",
       "status": "PASS"
     },
     {
@@ -3792,7 +3828,7 @@
       "SRC24: 189/203 items included; 14 exact exclusions (13 unmatched full-relation identities plus the weight slot authority gap).",
       "SRC25: 411/414 items included; 3 exact exclusions (weight authority gap plus P54ST_9/P56NI no declared finite value domain).",
       "SRC26: 190/195 items included; 5 unmatched full-relation identities excluded; physical-only P14ST.F/P52N hold no item identity; WT has no weight authority.",
-      "Source routing remains SOURCE_ROUTING_UNRESOLVED and is represented as ROUTING_UNKNOWN; original routing facts are a bounded preparation witness over rows 1-3, not an eligibility claim for every row.",
+      "Source routing remains SOURCE_ROUTING_UNRESOLVED. The portable original recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every response question; it does not invent eligibility, forms, populations or permissions. Original rows were not physically expanded for validation.",
       "Source-native respondent key slots are not configured; row ordinal is the only established key. The corrected P0 factory refuses a configured key slot without exact row keys.",
       "No form/ballot/administration variable is present in current evidence; single-file SAV shape is declared.",
       "No weight design/estimand authority is established; weight_slots is empty and no weighted scope is claimed.",
@@ -3806,7 +3842,7 @@
   "next_integration_edge": {
     "owner": "R157 integration owner / P5 coherent all35 boundary",
     "action": "Intake SRC24-SRC26 source configs, crosswalks and nonrespondent fixture positives; rerun the lane validation command; then run the coherent all35 readiness and distinct final review.",
-    "artifact_commit": "e75872dc3196a2f512af3ade315c28b380bdf112",
+    "artifact_commit": "6cb7cefe25f618c91028d079946ee679c3eca2fd",
     "do_not_do": [
       "Do not promote fixture authority, fixture universe or fixture SHA into original-source meaning.",
       "Do not declare original empirical execution from this preparation return.",
