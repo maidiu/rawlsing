@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261027-PYAT-R157-ALL35-SCOPED-INPUTS-P5-FINAL-JOIN-R1",
-  "handoff_commit": "a421b6cfb0a46c843043614544fa55718aac6bb7",
+  "checkpoint_id": "20261027-PYAT-R157-ACCEPTED-SOURCE-CONFIGURATION-PREPARATION-R1",
+  "handoff_commit": "9bc875342a38d3ca4a3e1ac27bf1cd8da7c2ef37",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-ALL35-SCOPED-INPUTS-P5-FINAL-JOIN-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-ALL35-SCOPED-INPUTS-P5-FINAL-JOIN-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-ALL35-SCOPED-INPUTS-P5-FINAL-JOIN-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-ACCEPTED-SOURCE-CONFIGURATION-PREPARATION-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-ACCEPTED-SOURCE-CONFIGURATION-PREPARATION-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-ACCEPTED-SOURCE-CONFIGURATION-PREPARATION-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "a421b6cfb0a46c843043614544fa55718aac6bb7",
+  "canonical_control_base": "9bc875342a38d3ca4a3e1ac27bf1cd8da7c2ef37",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "a421b6cfb0a46c843043614544fa55718aac6bb7",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-ALL35-SCOPED-INPUTS-P5-FINAL-JOIN-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-ALL35-SCOPED-INPUTS-P5-FINAL-JOIN-R1/CURRENT.md",
+  "qualified_working_hq_commit": "9bc875342a38d3ca4a3e1ac27bf1cd8da7c2ef37",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-ACCEPTED-SOURCE-CONFIGURATION-PREPARATION-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-ACCEPTED-SOURCE-CONFIGURATION-PREPARATION-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 170,
-    "canonical_report_commit": "a421b6cfb0a46c843043614544fa55718aac6bb7",
+    "revision": 171,
+    "canonical_report_commit": "9bc875342a38d3ca4a3e1ac27bf1cd8da7c2ef37",
     "counterpart": "Sorok rev34 independent; no Pyat actor grant"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261027-PYAT-R157-P5-EXACT-CASE-PORTABILITY-REPAIR-R1",
-    "handoff_commit": "0c5bf9c773b1679971c4b161fbc734bb2f619e73"
+    "checkpoint_id": "20261027-PYAT-R157-ALL35-SCOPED-INPUTS-P5-FINAL-JOIN-R1",
+    "handoff_commit": "a421b6cfb0a46c843043614544fa55718aac6bb7"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "Existing P5 author completes exact-case repair and final portable all35 index/cold-build/native consumer validation from qualified main inputs, then existing distinct reviewer P6.",
-  "worker_state_truth": "Allsourceauthors terminal; P5sameowner running finaljoin after exactcasefix; finalreviewpending.",
+  "next_action": "Report bounded accepted R157 return to parent; no downstream execution authorized.",
+  "worker_state_truth": "No active R157 workers; final independent review terminal accepted; parent return only.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -354,19 +354,7 @@
     ],
     "acceptance": "Author result is candidate; distinct reviewer independently qualifies exact candidate, then HQ scoped disposition. R09 local is not deployed enforcement."
   },
-  "r61_actual_workers": [
-    {
-      "task": "P5_PORTABLE_DELIVERY_IMPLEMENTATION",
-      "lane": "P5",
-      "source_ids": [],
-      "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "pid": 58620,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
-      "branch": "agent/pyat-pre553-r157-integration",
-      "state": "RUNNING_PATH_CASE_REPAIR_PREFLIGHT_VERIFIED",
-      "launch": "LANE_LAUNCHES.json"
-    }
-  ],
+  "r61_actual_workers": [],
   "r61_launch_evidence": "ae63a8c2da620d850cc974eb43c3e396abec30cb",
   "active_goal": {
     "active": true,
@@ -376,7 +364,7 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "5269bf8c2299aa66f0eacd27035145410c7f619b",
+  "current_development_evidence": "597198668beae317b4570b2fb79d5f4f0033312b",
   "new_R87_operative_grants": false,
   "secondary_hq_status": "USER_APPOINTED_BROWSER_SECONDARY__PRIMARY_CODEX_NOT_REVOKED"
 }
