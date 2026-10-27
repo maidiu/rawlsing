@@ -3,7 +3,7 @@
   "lane_id": "LATIN",
   "branch": "agent/pyat-pre553-r157-latin",
   "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
-  "artifact_commit": "6cb7cefe25f618c91028d079946ee679c3eca2fd",
+  "artifact_commit": "7cd71327833558ffc0f257e8b14291aef32bf41c",
   "p0_corrected_commit": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
   "p3_terminal_commit": "519355ec2215409b40d566ef13c3b21f611e0726",
   "source_ids": [
@@ -1005,7 +1005,7 @@
         },
         "refusals": [
           {
-            "case": "original config + fixture stream",
+            "case": "original config + wrong active SHA (pre-expansion)",
             "type": "SourceConfigurationBindingError",
             "message": "active source SHA differs from the frozen config binding"
           },
@@ -1044,7 +1044,7 @@
       },
       "manifest": {
         "path": "source_pre553_validation/SRC24/manifest.json",
-        "sha256": "4d371c8bf4273357c1a30417abc1f48951007a1acc4260bafd69ef27c227483a",
+        "sha256": "c143a26cb784f0883fb294bdbe874521a48b49b598a54e4249690bc704b37aa9",
         "validation_status": "PASS"
       },
       "no_drop": {
@@ -1081,8 +1081,8 @@
           "bytes": 91419
         },
         "source_pre553_validation/SRC24/VALIDATION_RESULTS.json": {
-          "sha256": "f35a6330193c83da97620798c44fa883dfe742271e95012555ed07d337b5f899",
-          "bytes": 283218
+          "sha256": "5f686a840569b2d3102781697eb3bae49d4324a00e14e3cfb9864e6e72cf6b1f",
+          "bytes": 283254
         },
         "source_pre553_validation/SRC24/EXCEPTIONS.json": {
           "sha256": "eee0fdeb782bbe98a9501d4e30a21348a5cc941ec1dec11fe19149e51e2a3ef6",
@@ -1093,8 +1093,8 @@
           "bytes": 3892
         },
         "source_pre553_validation/SRC24/manifest.json": {
-          "sha256": "4d371c8bf4273357c1a30417abc1f48951007a1acc4260bafd69ef27c227483a",
-          "bytes": 3945
+          "sha256": "c143a26cb784f0883fb294bdbe874521a48b49b598a54e4249690bc704b37aa9",
+          "bytes": 3963
         }
       }
     },
@@ -2560,7 +2560,7 @@
         },
         "refusals": [
           {
-            "case": "original config + fixture stream",
+            "case": "original config + wrong active SHA (pre-expansion)",
             "type": "SourceConfigurationBindingError",
             "message": "active source SHA differs from the frozen config binding"
           },
@@ -2599,7 +2599,7 @@
       },
       "manifest": {
         "path": "source_pre553_validation/SRC25/manifest.json",
-        "sha256": "4c54b18792b31f653039a37016715e332fa6d644316a805619a5234b2987989a",
+        "sha256": "eab02ce94c627f8991c2a74f883f33d083157b41a8ef2c9bc8749f0275c5140b",
         "validation_status": "PASS"
       },
       "no_drop": {
@@ -2636,8 +2636,8 @@
           "bytes": 194203
         },
         "source_pre553_validation/SRC25/VALIDATION_RESULTS.json": {
-          "sha256": "15a9d6a5543eaef0e8118845005e33caf3445edcf4a05dd67ab16853a0007e0a",
-          "bytes": 622165
+          "sha256": "0a8f5f900b4a421c503c8048921f72efa178a4ed5df85f699ecdf8c387e356a7",
+          "bytes": 622201
         },
         "source_pre553_validation/SRC25/EXCEPTIONS.json": {
           "sha256": "6b29ea53ec64b89d042156ab01a2a298062a84ba1eb2d49cb604cb175630e9ec",
@@ -2648,8 +2648,8 @@
           "bytes": 34720
         },
         "source_pre553_validation/SRC25/manifest.json": {
-          "sha256": "4c54b18792b31f653039a37016715e332fa6d644316a805619a5234b2987989a",
-          "bytes": 3945
+          "sha256": "eab02ce94c627f8991c2a74f883f33d083157b41a8ef2c9bc8749f0275c5140b",
+          "bytes": 3963
         }
       }
     },
@@ -3673,7 +3673,7 @@
         },
         "refusals": [
           {
-            "case": "original config + fixture stream",
+            "case": "original config + wrong active SHA (pre-expansion)",
             "type": "SourceConfigurationBindingError",
             "message": "active source SHA differs from the frozen config binding"
           },
@@ -3712,7 +3712,7 @@
       },
       "manifest": {
         "path": "source_pre553_validation/SRC26/manifest.json",
-        "sha256": "dd9612dfc34eb0552515ec801fcce6bdd42b1a668bb5aa308d30fd8a7165751c",
+        "sha256": "d929d327ae49f6558d4598c736beb65240a3a19034e930e243ac910ed0afcf11",
         "validation_status": "PASS"
       },
       "no_drop": {
@@ -3749,8 +3749,8 @@
           "bytes": 144911
         },
         "source_pre553_validation/SRC26/VALIDATION_RESULTS.json": {
-          "sha256": "8de993f557280f437d392a173ac0d949e247f091f899a4e52dd3bfeabd39607d",
-          "bytes": 456097
+          "sha256": "391998cdc24f9b6890ce4cd3e8bbefcda98c052a4bab6ff6f0317d97e47ca037",
+          "bytes": 456133
         },
         "source_pre553_validation/SRC26/EXCEPTIONS.json": {
           "sha256": "6f15e994d35269af79ee8364e65f63eb95dd4d027357bb857e4f2a03997d7a7c",
@@ -3761,8 +3761,8 @@
           "bytes": 18063
         },
         "source_pre553_validation/SRC26/manifest.json": {
-          "sha256": "dd9612dfc34eb0552515ec801fcce6bdd42b1a668bb5aa308d30fd8a7165751c",
-          "bytes": 3945
+          "sha256": "d929d327ae49f6558d4598c736beb65240a3a19034e930e243ac910ed0afcf11",
+          "bytes": 3963
         }
       }
     }
@@ -3842,7 +3842,7 @@
   "next_integration_edge": {
     "owner": "R157 integration owner / P5 coherent all35 boundary",
     "action": "Intake SRC24-SRC26 source configs, crosswalks and nonrespondent fixture positives; rerun the lane validation command; then run the coherent all35 readiness and distinct final review.",
-    "artifact_commit": "6cb7cefe25f618c91028d079946ee679c3eca2fd",
+    "artifact_commit": "7cd71327833558ffc0f257e8b14291aef32bf41c",
     "do_not_do": [
       "Do not promote fixture authority, fixture universe or fixture SHA into original-source meaning.",
       "Do not declare original empirical execution from this preparation return.",
