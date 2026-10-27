@@ -5,7 +5,7 @@
   "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
   "branch": "agent/pyat-pre553-r157-foundation",
   "p0_tip": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
-  "artifact_commit": "da8134e596a5fdea1773af10d52b185a38f10297",
+  "artifact_commit": "b05e5969c96152ca20ebb67ad3947487721a592d",
   "integration_branch": "agent/pyat-source-pre553-r157",
   "frozen_p0_interface": {
     "reused": true,
@@ -52,13 +52,13 @@
     },
     {
       "path": "rawlsing_next/source_configuration/tools/publish_p3.py",
-      "sha256": "7a75354bb1a24fd9c54c10d01066595970bdbc41ca66f083cbed7dc68393eb27",
-      "bytes": 19516
+      "sha256": "fee6952abf6f09749ae9571707a9856a946078b65ba5fc22933acd20ca33557a",
+      "bytes": 19598
     },
     {
       "path": "rawlsing_next/tests/test_source_configuration_p3.py",
-      "sha256": "e79908f75edbe1258dc6728e656d9158f11f0226c4d46ea2edd78ad8deb04724",
-      "bytes": 12254
+      "sha256": "723f18a9f5aec4ff12ec777e4481929d011ffa6cd8c47fcdea3debd2ea5f27a0",
+      "bytes": 13327
     },
     {
       "path": "source_pre553_validation/integration/README.md",
@@ -90,7 +90,7 @@
       "actual_decoder_probes": [
         {
           "format": "SAV",
-          "source_sha256": "5d8c687dfac06457b4fd0947bca3323f20d05cf03c067c36fd76a7399f014859",
+          "source_sha256": "a145580df1c016c6e816b2e6d311051ec9bc4cda2646c66fdaa8e8cc77114cec",
           "row_count": 2,
           "reader_configuration": {
             "reader": "pyreadstat",
@@ -108,7 +108,7 @@
         },
         {
           "format": "DTA",
-          "source_sha256": "c743bf221c8433b28cc16d2627edb72c37345cd0d3aaa5e9ca944628b69b71ce",
+          "source_sha256": "ad5e148e8f39aab846a46f6386d83a12c907822ecbeb135a6bdde3b46b4b14f8",
           "row_count": 2,
           "reader_configuration": {
             "reader": "pyreadstat",
@@ -272,10 +272,10 @@
   "tests": {
     "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_foundation.py rawlsing_next/tests/test_source_configuration_p3.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_r1.py rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py rawlsing_next/tests/test_pre553_source_read_admission.py rawlsing_next/tests/test_pre553_c11_repository_ingest.py -q -o addopts=",
     "returncode": 0,
-    "summary": "64 passed in 2.86s",
+    "summary": "65 passed in 2.49s",
     "stdout_tail": [
-      "................................................................         [100%]",
-      "64 passed in 2.86s"
+      ".................................................................        [100%]",
+      "65 passed in 2.49s"
     ],
     "stderr_tail": [],
     "passed": true,
@@ -284,7 +284,7 @@
   "legacy_r154_suite": {
     "command": "PYTHONPATH=. python3 -m pytest WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/tests/test_r154_store.py -q -o addopts=",
     "returncode": 1,
-    "summary": "3 failed, 2 passed in 0.68s",
+    "summary": "3 failed, 2 passed in 0.63s",
     "known_limit": "The legacy load_all/load_source path still imports the historical private .r61 B49 module, which is absent in this isolated checkout. The prepared P3 path deliberately bypasses _b49 and is tested with it disabled."
   },
   "lane_compatibility": {
