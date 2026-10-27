@@ -1,6 +1,6 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "FOUR_EXISTING_SOURCE_LANES_RESUMED_AFTER_DISK_CLEANUP",
+  "status": "LATIN_NATIVE_FIXTURES_REPLAYED_TWO_SOURCE_BINDING_DEFECTS_IN_SAME_OWNER_REPAIR",
   "active_workers": [
     {
       "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
@@ -11,10 +11,10 @@
         "SRC26"
       ],
       "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
-      "pid": 35731,
+      "pid": 39411,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin",
       "branch": "agent/pyat-pre553-r157-latin",
-      "state": "RUNNING_DISK_RESUME_MODEL_AND_PREFLIGHT_VERIFIED",
+      "state": "RUNNING_SAME_OWNER_BINDING_REPAIR_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     },
     {
@@ -97,8 +97,8 @@
     {
       "id": "LATIN:EVIDENCE",
       "lane": "LATIN",
-      "state": "RUNNING",
-      "process": 35731,
+      "state": "BINDING_REPAIR_RUNNING",
+      "process": 39411,
       "inputs": "91441c34ee58c4c3b13dae37db70a23bb4d4c2b8",
       "output": "source_pre553_validation/SRC24/LANE_RETURN.json",
       "check": "Full prior source facts consumed; ordered source queue then actual native fixture positives; exact residuals",
@@ -171,6 +171,11 @@
         "pid": 35854,
         "targets": "DISK_RESUME_completion_event_targets.json",
         "mode": "OS_EVENTS_NO_TIMED_POLLING"
+      },
+      {
+        "pid": 39480,
+        "targets": "LATIN_BINDING_REPAIR_completion_event_targets.json",
+        "mode": "OS_EVENTS_NO_TIMED_POLLING"
       }
     ]
   },
@@ -189,5 +194,6 @@
     "same_sessions": true,
     "completion_observer_pid": 35854,
     "targets": "DISK_RESUME_completion_event_targets.json"
-  }
+  },
+  "latin_intake": "LATIN_INTAKE.json"
 }

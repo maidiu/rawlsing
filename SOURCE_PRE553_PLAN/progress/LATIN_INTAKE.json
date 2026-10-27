@@ -1,0 +1,23 @@
+{
+  "candidate": "9b51c6578ec6d059463440870ac1ee95e67dbe63",
+  "artifact_commit": "e75872dc3196a2f512af3ade315c28b380bdf112",
+  "terminal_pid": 35731,
+  "decision": "REVISE_EXACT_SOURCE_BINDING_DEFECTS_SAME_OWNER",
+  "remote_verified": true,
+  "hq_replay": [
+    "SRC24 566 checks PASS release4faea64a46b1fe539939146358299d8dbf399884c6fd7d563666c81594cbaee6",
+    "SRC25 1127 checks PASS release5b3bb58222bc49f6fa7db167668e701e561ac3840f25fa41ed8cf88e28e2d586",
+    "SRC26 842 checks PASS releaseb526e80c2049fe0318813f2b94abd10c41173775377906dcd47cecc29e77789e"
+  ],
+  "defects": [
+    {
+      "file": "source_pre553_validation/SRC24/tools/latin_full.py",
+      "observed": "Original config routing selectors hardcode only rows1-3 despite full declared source row scope; a fixture-sized original witness cannot substitute for the source recipe. Unknown routing may remain unknown without inventing actual eligibility."
+    },
+    {
+      "file": "source_pre553_validation/SRC24/tools/latin_full.py classify/response_occurrence",
+      "observed": "47 one-slot nominal_choice/nominal_position/response_status items mapped to UNORDERED_MULTISELECT_SET: SRC24 3; SRC25 29; SRC26 15. E.g SRC24s14/s6 and SRC25S15. Current tests mirror author layout and do not establish evidence-faithful topology."
+    }
+  ],
+  "scope": "Configuration preparation and distinct permitted nonrespondent native proof only; no original-source empirical execution; no new review or grant."
+}
