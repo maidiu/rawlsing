@@ -1549,35 +1549,6 @@
       "launch": "LANE_LAUNCHES.json"
     },
     {
-      "task": "ASIAN:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "ASIAN",
-      "source_ids": [
-        "SRC08",
-        "SRC09",
-        "SRC10"
-      ],
-      "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "pid": 52637,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-asian",
-      "branch": "agent/pyat-pre553-r157-asian",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
-      "launch": "LANE_LAUNCHES.json"
-    },
-    {
-      "task": "SOUTH_ASIA:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "SOUTH_ASIA",
-      "source_ids": [
-        "SRC31",
-        "SRC32"
-      ],
-      "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
-      "pid": 52654,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-south-asia",
-      "branch": "agent/pyat-pre553-r157-south-asia",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
-      "launch": "LANE_LAUNCHES.json"
-    },
-    {
       "task": "WVS:SOURCE_CONFIGURATION_QUEUE",
       "lane": "WVS",
       "source_ids": [
@@ -1589,6 +1560,17 @@
       "pid": 52656,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-wvs",
       "branch": "agent/pyat-pre553-r157-wvs",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "LANE_LAUNCHES.json"
+    },
+    {
+      "task": "P5_PORTABLE_DELIVERY_IMPLEMENTATION",
+      "lane": "P5",
+      "source_ids": [],
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "pid": 54991,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
+      "branch": "agent/pyat-pre553-r157-integration",
       "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     }
@@ -3491,35 +3473,6 @@
         "launch": "LANE_LAUNCHES.json"
       },
       {
-        "task": "ASIAN:SOURCE_CONFIGURATION_QUEUE",
-        "lane": "ASIAN",
-        "source_ids": [
-          "SRC08",
-          "SRC09",
-          "SRC10"
-        ],
-        "session": "ses_e98c905cbffekusoHURfKyEUKG",
-        "pid": 52637,
-        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-asian",
-        "branch": "agent/pyat-pre553-r157-asian",
-        "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
-        "launch": "LANE_LAUNCHES.json"
-      },
-      {
-        "task": "SOUTH_ASIA:SOURCE_CONFIGURATION_QUEUE",
-        "lane": "SOUTH_ASIA",
-        "source_ids": [
-          "SRC31",
-          "SRC32"
-        ],
-        "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
-        "pid": 52654,
-        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-south-asia",
-        "branch": "agent/pyat-pre553-r157-south-asia",
-        "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
-        "launch": "LANE_LAUNCHES.json"
-      },
-      {
         "task": "WVS:SOURCE_CONFIGURATION_QUEUE",
         "lane": "WVS",
         "source_ids": [
@@ -3533,9 +3486,20 @@
         "branch": "agent/pyat-pre553-r157-wvs",
         "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
         "launch": "LANE_LAUNCHES.json"
+      },
+      {
+        "task": "P5_PORTABLE_DELIVERY_IMPLEMENTATION",
+        "lane": "P5",
+        "source_ids": [],
+        "session": "ses_e98c905cbffekusoHURfKyEUKG",
+        "pid": 54991,
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
+        "branch": "agent/pyat-pre553-r157-integration",
+        "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+        "launch": "LANE_LAUNCHES.json"
       }
     ],
-    "state": "23_SOURCES_SCOPED_INTEGRATED_LITS_VALIDATION_REPAIR_AND_FINAL_THREE_FAMILIES_RUNNING",
+    "state": "28_SOURCES_SCOPED_INTEGRATED_LITS_WVS_AND_PORTABLE_IMPLEMENTATION_RUNNING",
     "goal_update": "LIVE_CONSOLIDATED_OBJECTIVE_VERIFIED_ACTIVE",
     "heartbeat": "PAUSED",
     "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
@@ -3589,11 +3553,16 @@
           "pid": 52893,
           "targets": "FINAL_SOURCE_QUEUES_completion_event_targets.json",
           "mode": "OS_EVENTS_NO_TIMED_POLLING"
+        },
+        {
+          "pid": 55097,
+          "targets": "P5_PORTABLE_completion_event_targets.json",
+          "mode": "OS_EVENTS_NO_TIMED_POLLING"
         }
       ]
     },
-    "branch_head": "518de32eaa54b60695d07c1d588efdb679e373a7",
+    "branch_head": "ee210eb20ad96993137f58354d705af50adebaef",
     "resume_evidence": "User go after disk cleanup; actual first tools/model readback verified",
-    "prepared_sources_scoped_integrated": 23
+    "prepared_sources_scoped_integrated": 28
   }
 }
