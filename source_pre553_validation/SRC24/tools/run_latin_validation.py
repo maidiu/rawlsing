@@ -422,6 +422,7 @@ def build_exceptions(source_id: str, result: Mapping[str, Any]) -> dict[str, Any
         })
 
     item_by_code = {i["source_variable_code"]: i["implementation_id"] for i in config["items"]}
+    cbmap = {e["codebook_var_name"]: e["physical_names"] for e in crosswalk["codebook_entries"]}
     slot_by_name = {p["name"]: f"physical_slots[{p['ordinal']}]:{p['name']}" for p in config["physical_slots"]}
     item_docs_by_code = {i["source_variable_code"]: i for i in config["items"]}
     for residual in config["residuals"]:
@@ -429,7 +430,10 @@ def build_exceptions(source_id: str, result: Mapping[str, Any]) -> dict[str, Any
         refs = [source_ref, metadata_ref]
         if "-EXCLUDED-" in residual["residual_id"]:
             code = residual["scope"].split("/", 1)[-1]
-            item_label = item_by_code.get(code) or slot_by_name.get(code) or f"source_item:{code}"
+            if code in item_by_code:
+                item_label = f"{item_by_code[code]} @ {','.join(cbmap.get(code, []))}"
+            else:
+                item_label = slot_by_name.get(code) or f"source_item:{code}"
             if code in item_docs_by_code:
                 refs = list(item_docs_by_code[code]["evidence_refs"]) + [metadata_ref]
             elif code in {p["name"] for p in config["physical_slots"]}:
@@ -456,7 +460,7 @@ def build_exceptions(source_id: str, result: Mapping[str, Any]) -> dict[str, Any
         physical = ce["physical_names"] if ce else []
         add(
             slice_id=f"{source_id}-UNMATCHED-{item['implementation_id']}",
-            item=item["implementation_id"],
+            item=f"{item['implementation_id']} @ {','.join(cbmap.get(codebook_name, []))}",
             field="items.relation",
             current="UNMATCHED_EXPLICIT_ID",
             refs=item["evidence_refs"],
@@ -488,37 +492,6 @@ def build_exceptions(source_id: str, result: Mapping[str, Any]) -> dict[str, Any
             status=("USED_RAW_COORDINATE" if selected else "HELD_UNMAPPED"),
         )
 
-    # Bulk no-drop entries.  Exact IDs/ordinals are carried, not just counts.
-    excluded_slots = config["coverage"]["physical_slots_excluded"]
-    if excluded_slots:
-        add(
-            slice_id=f"{source_id}-EXCLUDED-PHYSICAL-SLOTS",
-            item=f"physical_slots: {len(excluded_slots)} ordinals",
-            field="coverage.physical_slots_excluded",
-            current=",".join(str(x["ordinal"]) for x in excluded_slots),
-            refs=[metadata_ref],
-            missing=config["coverage"]["partial_scope_reason"],
-            affected="scope outside the declared supported slice",
-            unaffected="declared supported slice and included slots",
-            owner="LATIN lane / P3 integration owner",
-            step="Widen only with exact evidence; every excluded slot remains accounted in source.config.json.",
-            status="EXCLUDED_ACCOUNTED",
-        )
-    excluded_items = config["coverage"]["items_excluded"]
-    if excluded_items:
-        add(
-            slice_id=f"{source_id}-EXCLUDED-ITEMS",
-            item=f"items: {len(excluded_items)} implementation IDs",
-            field="coverage.items_excluded",
-            current=",".join(x["implementation_id"] for x in excluded_items),
-            refs=[source_ref],
-            missing=config["coverage"]["partial_scope_reason"],
-            affected="scope outside the declared supported slice",
-            unaffected="declared supported slice and included items",
-            owner="LATIN lane / P3 integration owner",
-            step="Widen only with exact evidence; every excluded item remains accounted in source.config.json.",
-            status="EXCLUDED_ACCOUNTED",
-        )
     return {
         "schema": "PYAT_R157_SOURCE_EXCEPTION_LEDGER@1.0.0",
         "source_id": source_id,
@@ -530,8 +503,8 @@ def build_exceptions(source_id: str, result: Mapping[str, Any]) -> dict[str, Any
             "unmatched_relation_items": len(unmatched),
             "physical_only_extra_slots": sum(1 for e in crosswalk["entries"]
                                              if e["relation_kind"] == "PHYSICAL_ONLY_EXTRA"),
-            "excluded_slots": len(excluded_slots),
-            "excluded_items": len(excluded_items),
+            "excluded_slots": len(config["coverage"]["physical_slots_excluded"]),
+            "excluded_items": len(config["coverage"]["items_excluded"]),
         },
         "limits": [
             "The ledger preserves exact IDs/ordinals and evidence; fixture success is not original-source authority.",
