@@ -1,0 +1,2619 @@
+{
+  "schema": "PYAT_R157_WVS_SOURCE_VALIDATION_RESULTS@1.0.0",
+  "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+  "p0_correction_consumed": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
+  "p3_terminal_runtime_consumed": "519355ec2215409b40d566ef13c3b21f611e0726",
+  "source_id": "SRC35",
+  "source_format": "SAV",
+  "wave": "W7",
+  "commands": [
+    "PYTHONPATH=. python3 source_pre553_validation/SRC33/build_wvs_lane.py --all",
+    "PYTHONPATH=. python3 -m pytest source_pre553_validation/SRC33/test_wvs_lane.py -q -o addopts=''"
+  ],
+  "config_validation": {
+    "validator": "rawlsing_next.source_configuration.schema.validate_source_config",
+    "original_path": "rawlsing_next/source_configuration/data/SRC35/SRC35.source.config.json",
+    "original_config_canonical_sha256": "0f072f5706364ef5063c1e60572585d953ca31ec3a0a0709ced60ec99725b539",
+    "original_config_file_sha256": "00ad786a351a0a2987b442489e1ca91154a8be32954cddd6f1eeb69e2196dbf9",
+    "fixture_path": "source_pre553_validation/SRC35/SRC35.fixture.config.json",
+    "fixture_config_canonical_sha256": "6082a439ae45aa530aceb088ba72ba368a585c7634b4c74fe84aeaeedb2920b6",
+    "fixture_config_file_sha256": "42b69675937441554aedea392508fae58aca23cd87883b5ab2c43370cdc88106",
+    "passed": true
+  },
+  "coverage": {
+    "physical_slots_total": 613,
+    "original_items_total": 613,
+    "physical_slots_serialized": 613,
+    "items_serialized": 613,
+    "physical_slots_included": 613,
+    "items_included": 613,
+    "physical_slots_excluded": 0,
+    "items_excluded": 0,
+    "response_bound_items": 390,
+    "held_items": 223,
+    "held_by_role": {
+      "ADMIN": 4,
+      "CONTINUOUS": 24,
+      "COORDINATE": 3,
+      "GEN_FORBIDDEN": 153,
+      "KEY": 1,
+      "POSITION": 26,
+      "RANKED": 6,
+      "UNKNOWN": 5,
+      "WEIGHT": 1
+    },
+    "no_drop": true,
+    "supported_question_ids": [
+      "WVS:W7:A_WAVE",
+      "WVS:W7:A_STUDY",
+      "WVS:W7:Q_MODE",
+      "WVS:W7:N_TOWN",
+      "WVS:W7:G_TOWNSIZE",
+      "WVS:W7:G_TOWNSIZE2",
+      "WVS:W7:H_SETTLEMENT",
+      "WVS:W7:H_URBRURAL",
+      "WVS:W7:E_RESPINT",
+      "WVS:W7:F_INTPRIVACY",
+      "WVS:W7:E1_LITERACY",
+      "WVS:W7:S025",
+      "WVS:W7:Q1",
+      "WVS:W7:Q2",
+      "WVS:W7:Q3",
+      "WVS:W7:Q4",
+      "WVS:W7:Q5",
+      "WVS:W7:Q6",
+      "WVS:W7:Q7",
+      "WVS:W7:Q8",
+      "WVS:W7:Q9",
+      "WVS:W7:Q10",
+      "WVS:W7:Q11",
+      "WVS:W7:Q12",
+      "WVS:W7:Q13",
+      "WVS:W7:Q14",
+      "WVS:W7:Q15",
+      "WVS:W7:Q16",
+      "WVS:W7:Q17",
+      "WVS:W7:Q18",
+      "WVS:W7:Q19",
+      "WVS:W7:Q20",
+      "WVS:W7:Q21",
+      "WVS:W7:Q22",
+      "WVS:W7:Q23",
+      "WVS:W7:Q24",
+      "WVS:W7:Q25",
+      "WVS:W7:Q26",
+      "WVS:W7:Q27",
+      "WVS:W7:Q28",
+      "WVS:W7:Q29",
+      "WVS:W7:Q31",
+      "WVS:W7:Q32",
+      "WVS:W7:Q33_3",
+      "WVS:W7:Q34_3",
+      "WVS:W7:Q35_3",
+      "WVS:W7:Q36",
+      "WVS:W7:Q37",
+      "WVS:W7:Q38",
+      "WVS:W7:Q39",
+      "WVS:W7:Q40",
+      "WVS:W7:Q41",
+      "WVS:W7:Q42",
+      "WVS:W7:Q43",
+      "WVS:W7:Q44",
+      "WVS:W7:Q45",
+      "WVS:W7:Q46",
+      "WVS:W7:Q47",
+      "WVS:W7:Q48",
+      "WVS:W7:Q49",
+      "WVS:W7:Q50",
+      "WVS:W7:Q51",
+      "WVS:W7:Q52",
+      "WVS:W7:Q53",
+      "WVS:W7:Q55",
+      "WVS:W7:Q56",
+      "WVS:W7:Q57",
+      "WVS:W7:Q58",
+      "WVS:W7:Q59",
+      "WVS:W7:Q60",
+      "WVS:W7:Q61",
+      "WVS:W7:Q62",
+      "WVS:W7:Q63",
+      "WVS:W7:Q64",
+      "WVS:W7:Q65",
+      "WVS:W7:Q66",
+      "WVS:W7:Q67",
+      "WVS:W7:Q68",
+      "WVS:W7:Q69",
+      "WVS:W7:Q70",
+      "WVS:W7:Q71",
+      "WVS:W7:Q72",
+      "WVS:W7:Q73",
+      "WVS:W7:Q74",
+      "WVS:W7:Q75",
+      "WVS:W7:Q76",
+      "WVS:W7:Q77",
+      "WVS:W7:Q78",
+      "WVS:W7:Q79",
+      "WVS:W7:Q80",
+      "WVS:W7:Q81",
+      "WVS:W7:Q82_AFRICANUNION",
+      "WVS:W7:Q82_APEC",
+      "WVS:W7:Q82_ARABLEAGUE",
+      "WVS:W7:Q82_ASEAN",
+      "WVS:W7:Q82_CIS",
+      "WVS:W7:Q82_CUSMA",
+      "WVS:W7:Q82_ECO",
+      "WVS:W7:Q82_EU",
+      "WVS:W7:Q82_GULFCOOP",
+      "WVS:W7:Q82_ISLCOOP",
+      "WVS:W7:Q82_MERCOSUR",
+      "WVS:W7:Q82_NAFTA",
+      "WVS:W7:Q82_OAS",
+      "WVS:W7:Q82_SAARC",
+      "WVS:W7:Q82_SCO",
+      "WVS:W7:Q82_TLC",
+      "WVS:W7:Q82_UNDP",
+      "WVS:W7:Q83",
+      "WVS:W7:Q84",
+      "WVS:W7:Q85",
+      "WVS:W7:Q86",
+      "WVS:W7:Q87",
+      "WVS:W7:Q88",
+      "WVS:W7:Q89",
+      "WVS:W7:Q90",
+      "WVS:W7:Q91",
+      "WVS:W7:Q92",
+      "WVS:W7:Q93",
+      "WVS:W7:Q94",
+      "WVS:W7:Q94R",
+      "WVS:W7:Q95",
+      "WVS:W7:Q95R",
+      "WVS:W7:Q96",
+      "WVS:W7:Q96R",
+      "WVS:W7:Q97",
+      "WVS:W7:Q97R",
+      "WVS:W7:Q98",
+      "WVS:W7:Q98R",
+      "WVS:W7:Q99",
+      "WVS:W7:Q99R",
+      "WVS:W7:Q100",
+      "WVS:W7:Q100R",
+      "WVS:W7:Q101",
+      "WVS:W7:Q101R",
+      "WVS:W7:Q102",
+      "WVS:W7:Q102R",
+      "WVS:W7:Q103",
+      "WVS:W7:Q103R",
+      "WVS:W7:Q104",
+      "WVS:W7:Q104R",
+      "WVS:W7:Q105",
+      "WVS:W7:Q105R",
+      "WVS:W7:Q106",
+      "WVS:W7:Q107",
+      "WVS:W7:Q108",
+      "WVS:W7:Q109",
+      "WVS:W7:Q110",
+      "WVS:W7:Q111",
+      "WVS:W7:Q112",
+      "WVS:W7:Q113",
+      "WVS:W7:Q114",
+      "WVS:W7:Q115",
+      "WVS:W7:Q116",
+      "WVS:W7:Q117",
+      "WVS:W7:Q118",
+      "WVS:W7:Q119",
+      "WVS:W7:Q120",
+      "WVS:W7:Q121",
+      "WVS:W7:Q122",
+      "WVS:W7:Q123",
+      "WVS:W7:Q124",
+      "WVS:W7:Q125",
+      "WVS:W7:Q126",
+      "WVS:W7:Q127",
+      "WVS:W7:Q128",
+      "WVS:W7:Q129",
+      "WVS:W7:Q130",
+      "WVS:W7:Q131",
+      "WVS:W7:Q132",
+      "WVS:W7:Q133",
+      "WVS:W7:Q134",
+      "WVS:W7:Q135",
+      "WVS:W7:Q136",
+      "WVS:W7:Q137",
+      "WVS:W7:Q138",
+      "WVS:W7:Q139",
+      "WVS:W7:Q140",
+      "WVS:W7:Q141",
+      "WVS:W7:Q142",
+      "WVS:W7:Q144",
+      "WVS:W7:Q145",
+      "WVS:W7:Q146",
+      "WVS:W7:Q147",
+      "WVS:W7:Q148",
+      "WVS:W7:Q149",
+      "WVS:W7:Q150",
+      "WVS:W7:Q151",
+      "WVS:W7:Q158",
+      "WVS:W7:Q159",
+      "WVS:W7:Q160",
+      "WVS:W7:Q161",
+      "WVS:W7:Q162",
+      "WVS:W7:Q163",
+      "WVS:W7:Q164",
+      "WVS:W7:Q165",
+      "WVS:W7:Q166",
+      "WVS:W7:Q167",
+      "WVS:W7:Q168",
+      "WVS:W7:Q169",
+      "WVS:W7:Q170",
+      "WVS:W7:Q171",
+      "WVS:W7:Q172",
+      "WVS:W7:Q172R",
+      "WVS:W7:Q173",
+      "WVS:W7:Q174",
+      "WVS:W7:Q175",
+      "WVS:W7:Q176",
+      "WVS:W7:Q177",
+      "WVS:W7:Q178",
+      "WVS:W7:Q179",
+      "WVS:W7:Q180",
+      "WVS:W7:Q181",
+      "WVS:W7:Q182",
+      "WVS:W7:Q183",
+      "WVS:W7:Q184",
+      "WVS:W7:Q185",
+      "WVS:W7:Q187",
+      "WVS:W7:Q188",
+      "WVS:W7:Q189",
+      "WVS:W7:Q190",
+      "WVS:W7:Q191",
+      "WVS:W7:Q192",
+      "WVS:W7:Q194",
+      "WVS:W7:Q195",
+      "WVS:W7:Q196",
+      "WVS:W7:Q197",
+      "WVS:W7:Q198",
+      "WVS:W7:Q199",
+      "WVS:W7:Q200",
+      "WVS:W7:Q201",
+      "WVS:W7:Q202",
+      "WVS:W7:Q203",
+      "WVS:W7:Q204",
+      "WVS:W7:Q205",
+      "WVS:W7:Q206",
+      "WVS:W7:Q207",
+      "WVS:W7:Q208",
+      "WVS:W7:Q209",
+      "WVS:W7:Q210",
+      "WVS:W7:Q211",
+      "WVS:W7:Q212",
+      "WVS:W7:Q213",
+      "WVS:W7:Q214",
+      "WVS:W7:Q215",
+      "WVS:W7:Q216",
+      "WVS:W7:Q217",
+      "WVS:W7:Q218",
+      "WVS:W7:Q219",
+      "WVS:W7:Q220",
+      "WVS:W7:Q221",
+      "WVS:W7:Q222",
+      "WVS:W7:Q223_ABREV",
+      "WVS:W7:Q223_LOCAL",
+      "WVS:W7:Q224",
+      "WVS:W7:Q225",
+      "WVS:W7:Q226",
+      "WVS:W7:Q227",
+      "WVS:W7:Q228",
+      "WVS:W7:Q229",
+      "WVS:W7:Q230",
+      "WVS:W7:Q231",
+      "WVS:W7:Q232",
+      "WVS:W7:Q233",
+      "WVS:W7:Q234",
+      "WVS:W7:Q234A",
+      "WVS:W7:Q235",
+      "WVS:W7:Q236",
+      "WVS:W7:Q237",
+      "WVS:W7:Q238",
+      "WVS:W7:Q239",
+      "WVS:W7:Q240",
+      "WVS:W7:Q241",
+      "WVS:W7:Q242",
+      "WVS:W7:Q243",
+      "WVS:W7:Q244",
+      "WVS:W7:Q245",
+      "WVS:W7:Q246",
+      "WVS:W7:Q247",
+      "WVS:W7:Q248",
+      "WVS:W7:Q249",
+      "WVS:W7:Q250",
+      "WVS:W7:Q251",
+      "WVS:W7:Q252",
+      "WVS:W7:Q253",
+      "WVS:W7:Q254",
+      "WVS:W7:Q255",
+      "WVS:W7:Q257",
+      "WVS:W7:Q258",
+      "WVS:W7:Q259",
+      "WVS:W7:Q263",
+      "WVS:W7:Q264",
+      "WVS:W7:V002",
+      "WVS:W7:Q265",
+      "WVS:W7:V001",
+      "WVS:W7:Q266",
+      "WVS:W7:Q267",
+      "WVS:W7:Q268",
+      "WVS:W7:Q269",
+      "WVS:W7:Q270",
+      "WVS:W7:Q271",
+      "WVS:W7:Q273",
+      "WVS:W7:Q274",
+      "WVS:W7:Q275",
+      "WVS:W7:Q275A",
+      "WVS:W7:Q275R",
+      "WVS:W7:Q276",
+      "WVS:W7:Q276A",
+      "WVS:W7:Q276R",
+      "WVS:W7:Q277",
+      "WVS:W7:Q277A",
+      "WVS:W7:Q277R",
+      "WVS:W7:Q278",
+      "WVS:W7:Q278A",
+      "WVS:W7:Q278R",
+      "WVS:W7:Q279",
+      "WVS:W7:Q281",
+      "WVS:W7:Q282",
+      "WVS:W7:Q283",
+      "WVS:W7:Q285",
+      "WVS:W7:Q286",
+      "WVS:W7:Q287",
+      "WVS:W7:Q288",
+      "WVS:W7:Q289",
+      "WVS:W7:Q289CS9",
+      "WVS:W7:Q290",
+      "WVS:W7:Q291G1",
+      "WVS:W7:Q291G2",
+      "WVS:W7:Q291G3",
+      "WVS:W7:Q291G4",
+      "WVS:W7:Q291G5",
+      "WVS:W7:Q291G6",
+      "WVS:W7:Q291P1",
+      "WVS:W7:Q291P2",
+      "WVS:W7:Q291P3",
+      "WVS:W7:Q291P4",
+      "WVS:W7:Q291P5",
+      "WVS:W7:Q291P6",
+      "WVS:W7:Q291UN1",
+      "WVS:W7:Q291UN2",
+      "WVS:W7:Q291UN3",
+      "WVS:W7:Q291UN4",
+      "WVS:W7:Q291UN5",
+      "WVS:W7:Q291UN6",
+      "WVS:W7:Q292A",
+      "WVS:W7:Q292B",
+      "WVS:W7:Q292C",
+      "WVS:W7:Q292D",
+      "WVS:W7:Q292E",
+      "WVS:W7:Q292F",
+      "WVS:W7:Q292G",
+      "WVS:W7:Q292H",
+      "WVS:W7:Q292I",
+      "WVS:W7:Q292J",
+      "WVS:W7:Q292K",
+      "WVS:W7:Q292L",
+      "WVS:W7:Q292M",
+      "WVS:W7:Q292N",
+      "WVS:W7:Q292O",
+      "WVS:W7:Q293",
+      "WVS:W7:Q294A",
+      "WVS:W7:Q294B",
+      "WVS:W7:Y001",
+      "WVS:W7:Y002",
+      "WVS:W7:Y003",
+      "WVS:W7:I_AUTHORITY",
+      "WVS:W7:I_NATIONALISM",
+      "WVS:W7:I_DEVOUT",
+      "WVS:W7:I_RELIGIMP",
+      "WVS:W7:I_RELIGBEL",
+      "WVS:W7:I_NORM1",
+      "WVS:W7:I_NORM2",
+      "WVS:W7:I_NORM3",
+      "WVS:W7:I_TRUSTARMY",
+      "WVS:W7:I_TRUSTPOLICE",
+      "WVS:W7:I_TRUSTCOURTS",
+      "WVS:W7:I_INDEP",
+      "WVS:W7:I_IMAGIN",
+      "WVS:W7:I_NONOBED",
+      "WVS:W7:I_VOICE1",
+      "WVS:W7:I_VOICE2",
+      "WVS:W7:polregfh",
+      "WVS:W7:regtype",
+      "WVS:W7:btiregime",
+      "WVS:W7:ID_GPS",
+      "WVS:W7:Type_Values",
+      "WVS:W7:Type_Populism",
+      "WVS:W7:Type_Populist_Values",
+      "WVS:W7:Type_Partysize_vote",
+      "WVS:W7:Type_Partysize_seat"
+    ]
+  },
+  "native_validation": {
+    "projection": {
+      "type": "GovernedC11Projection",
+      "projection_identity_ref": {
+        "kind": "C11_SEMANTIC_PROJECTION",
+        "object_id": "urn:rawlsing:r157:fixture:SRC35:projection",
+        "content_hash": "bc25909ebb4aec6b334c898bc5f951a8622a19feb4dcced58e763555856fdf75"
+      },
+      "expected_source_sha256": "689624fb1e11086cd66b9e887f57c4c50080125bf877a7d5cbb3b972480862e9",
+      "respondents": 6,
+      "questions": 613,
+      "response_slots": 390,
+      "coordinate_slots": 3,
+      "weight_slots": 1,
+      "routing_facts": 2340,
+      "authority_snapshots": 7
+    },
+    "release": {
+      "type": "C11LogicalRelease",
+      "release_id": "R157_WVS_FIXTURE_RELEASE/SRC35",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_WVS_FIXTURE_RELEASE/SRC35",
+        "content_hash": "5d43581578f37e5e4545388d4b8914070766d5475a897570f7afec76007fc586"
+      },
+      "semantic_release_hash": "5d43581578f37e5e4545388d4b8914070766d5475a897570f7afec76007fc586",
+      "source_artifact_ref": {
+        "kind": "SOURCE_ARTIFACT",
+        "object_id": "R157_FIXTURE:R157-WVS-SRC35-NONRESPONDENT",
+        "content_hash": "689624fb1e11086cd66b9e887f57c4c50080125bf877a7d5cbb3b972480862e9"
+      },
+      "m01_m18_coverage": {
+        "M01": [
+          "EmpiricalUniverse"
+        ],
+        "M02": [
+          "RespondentIdentity"
+        ],
+        "M03": [
+          "QuestionVariableBinding"
+        ],
+        "M04": [
+          "RespondentEvent"
+        ],
+        "M05": [
+          "QuestionVariableBinding",
+          "RespondentEvent"
+        ],
+        "M06": [
+          "RespondentEvent.typed_state"
+        ],
+        "M07": [
+          "RoutingEligibilityFact"
+        ],
+        "M08": [
+          "EmpiricalCoordinateFact"
+        ],
+        "M09": [
+          "WeightMeasureFact|TypedAbsence"
+        ],
+        "M10": [
+          "AuthoritySnapshot"
+        ],
+        "M11": [
+          "SourceUniverseRelation|DISTINCT_BY_DEFAULT"
+        ],
+        "M12": [
+          "RoutingEligibilityFact",
+          "EmpiricalPredicateReplayBinding|TypedAbsence"
+        ],
+        "M13": [
+          "ComparatorReplayBinding|DEFERRED"
+        ],
+        "M14": [
+          "DiscoveryBranchReplayBinding|DEFERRED"
+        ],
+        "M15": [
+          "StructuralAdmissionReplayBinding|NOT_APPLICABLE"
+        ],
+        "M16": [
+          "ReplayManifest"
+        ],
+        "M17": [
+          "AuthoritySnapshot",
+          "ReplayManifest"
+        ],
+        "M18": [
+          "ReplayManifest"
+        ]
+      },
+      "universes": 1,
+      "respondent_events": 2340,
+      "coordinate_facts": 18,
+      "weight_facts": 6,
+      "authority_snapshots": 7
+    },
+    "actual": {
+      "response_state_counts": {
+        "DK": 87,
+        "INAPPLICABLE": 8,
+        "MISSING": 562,
+        "NOT_ASKED": 123,
+        "SUBSTANTIVE_RESPONSE": 1560
+      },
+      "response_state_counts_by_question": {
+        "FIXTURE:SRC35:A_STUDY": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:A_WAVE": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:E1_LITERACY": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:E_RESPINT": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:F_INTPRIVACY": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:G_TOWNSIZE": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:G_TOWNSIZE2": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:H_SETTLEMENT": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:H_URBRURAL": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:ID_GPS": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:I_AUTHORITY": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:I_DEVOUT": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:I_IMAGIN": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:I_INDEP": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:I_NATIONALISM": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:I_NONOBED": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:I_NORM1": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:I_NORM2": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:I_NORM3": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:I_RELIGBEL": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:I_RELIGIMP": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:I_TRUSTARMY": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:I_TRUSTCOURTS": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:I_TRUSTPOLICE": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:I_VOICE1": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:I_VOICE2": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:N_TOWN": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q1": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q10": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q100": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q100R": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q101": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q101R": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q102": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q102R": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q103": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q103R": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q104": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q104R": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q105": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q105R": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q106": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q107": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q108": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q109": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q11": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q110": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q111": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q112": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q113": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q114": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q115": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q116": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q117": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q118": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q119": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q12": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q120": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q121": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q122": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q123": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q124": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q125": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q126": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q127": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q128": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q129": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q13": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q130": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q131": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q132": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q133": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q134": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q135": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q136": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q137": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q138": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q139": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q14": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q140": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q141": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q142": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q144": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q145": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q146": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q147": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q148": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q149": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q15": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q150": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q151": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q158": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q159": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q16": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q160": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q161": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q162": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q163": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q164": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q165": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q166": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q167": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q168": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q169": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q17": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q170": {
+          "INAPPLICABLE": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q171": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q172": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q172R": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q173": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q174": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q175": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q176": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q177": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q178": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q179": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q18": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q180": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q181": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q182": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q183": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q184": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q185": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q187": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q188": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q189": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q19": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q190": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q191": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q192": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q194": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q195": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q196": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q197": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q198": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q199": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q2": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q20": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q200": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q201": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q202": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q203": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q204": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q205": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q206": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q207": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q208": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q209": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q21": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q210": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q211": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q212": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q213": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q214": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q215": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q216": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q217": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q218": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q219": {
+          "INAPPLICABLE": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q22": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q220": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q221": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q222": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q223_ABREV": {
+          "INAPPLICABLE": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q223_LOCAL": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q224": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q225": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q226": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q227": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q228": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q229": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q23": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q230": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q231": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q232": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q233": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q234": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q234A": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q235": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q236": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q237": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q238": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q239": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q24": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q240": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q241": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q242": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q243": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q244": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q245": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q246": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q247": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q248": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q249": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q25": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q250": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q251": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q252": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q253": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q254": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q255": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q257": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q258": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q259": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q26": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q263": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q264": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q265": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q266": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q267": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q268": {
+          "INAPPLICABLE": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q269": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q27": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q270": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q271": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q273": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q274": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q275": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q275A": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q275R": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q276": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q276A": {
+          "INAPPLICABLE": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q276R": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q277": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q277A": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q277R": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q278": {
+          "INAPPLICABLE": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q278A": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q278R": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q279": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q28": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q281": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q282": {
+          "INAPPLICABLE": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q283": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q285": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q286": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q287": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q288": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q289": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q289CS9": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q29": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q290": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291G1": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291G2": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291G3": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291G4": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291G5": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291G6": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291P1": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291P2": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291P3": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291P4": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291P5": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291P6": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291UN1": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291UN2": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291UN3": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291UN4": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291UN5": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q291UN6": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q292A": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q292B": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q292C": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q292D": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q292E": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q292F": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q292G": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q292H": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q292I": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q292J": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q292K": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q292L": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q292M": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q292N": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q292O": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q293": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q294A": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q294B": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q3": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q31": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q32": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q33_3": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q34_3": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q35_3": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q36": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q37": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q38": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q39": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q4": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q40": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q41": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q42": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q43": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q44": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q45": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q46": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q47": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q48": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q49": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q5": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q50": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q51": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q52": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q53": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q55": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q56": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q57": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q58": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q59": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q6": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q60": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q61": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q62": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q63": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q64": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q65": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q66": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q67": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q68": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q69": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q7": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q70": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q71": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q72": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q73": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q74": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q75": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q76": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q77": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q78": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q79": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q8": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q80": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q81": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_AFRICANUNION": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_APEC": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_ARABLEAGUE": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_ASEAN": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_CIS": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_CUSMA": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_ECO": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_EU": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_GULFCOOP": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_ISLCOOP": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_MERCOSUR": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_NAFTA": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_OAS": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_SAARC": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_SCO": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_TLC": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q82_UNDP": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q83": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q84": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q85": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q86": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q87": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q88": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q89": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q9": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q90": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q91": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q92": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q93": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q94": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q94R": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q95": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q95R": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q96": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q96R": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q97": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q97R": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q98": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q98R": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q99": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q99R": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Q_MODE": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:S025": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Type_Partysize_seat": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Type_Partysize_vote": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Type_Populism": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Type_Populist_Values": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Type_Values": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:V001": {
+          "DK": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:V002": {
+          "INAPPLICABLE": 1,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Y001": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Y002": {
+          "MISSING": 1,
+          "NOT_ASKED": 1,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:Y003": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:btiregime": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:polregfh": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        },
+        "FIXTURE:SRC35:regtype": {
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 4
+        }
+      },
+      "coordinate_state_counts": {
+        "OBSERVED_COORDINATE": 18
+      },
+      "weight_state_counts": {
+        "WEIGHT_BASIS_UNRESOLVED": 5,
+        "WEIGHT_MISSING": 1
+      },
+      "canonical_response_values_all_null": true
+    },
+    "expected_match": true,
+    "p3_row_native_keys": {
+      "configured_slot": {
+        "ordinal": 11,
+        "name": "S007"
+      },
+      "witness_count": 6,
+      "kinds": [
+        "ExactRef"
+      ],
+      "all_witnesses_fixture_bound": true
+    },
+    "p3_reader_transport": {
+      "reader_configuration": {
+        "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+        "configuration_ref": {
+          "kind": "READER_CONFIGURATION",
+          "object_id": "urn:rawlsing:r157:reader:SRC35:default_sav",
+          "content_hash": "76a3015d40b13ad93107bf5953141a965be057153c76705b6a4fa74fb4250a6a"
+        },
+        "encoding": null,
+        "authority_status": null
+      },
+      "source_read_request": {
+        "source_id": "SRC35",
+        "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+        "source_format": "SAV",
+        "custody_locator_binding": "SRC35_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING",
+        "host": "R157_PREPARATION_HOST",
+        "purpose": "SOURCE_CONFIGURATION_PREPARATION",
+        "consumer_use": "R157_WVS_LANE_CONFIGURATION",
+        "semantic_use_scope": [
+          "coordinate_configuration",
+          "response_rule_configuration"
+        ]
+      },
+      "source_bytes_read": false,
+      "permission_decision": "NOT_REQUESTED_OR_EVALUATED_IN_PREPARATION"
+    },
+    "calls": [
+      {
+        "call": "row_native_keys_from_transport(fixture_config, stream=fixture_stream)",
+        "result": "PASS",
+        "witness_count": 6
+      },
+      {
+        "call": "build_governed_c11_projection(fixture_config, row_native_keys=fixture_keys)",
+        "result": "PASS"
+      },
+      {
+        "call": "build_validated_c11_release_from_config(fixture_config, stream=fixture_stream)",
+        "result": "PASS",
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "R157_WVS_FIXTURE_RELEASE/SRC35",
+          "content_hash": "5d43581578f37e5e4545388d4b8914070766d5475a897570f7afec76007fc586"
+        }
+      },
+      {
+        "call": "build_source_backed_c11_repository_from_config(fixture_config, stream=fixture_stream)",
+        "result": "PASS",
+        "release_refs": [
+          {
+            "kind": "C11LogicalRelease",
+            "object_id": "R157_WVS_FIXTURE_RELEASE/SRC35",
+            "content_hash": "5d43581578f37e5e4545388d4b8914070766d5475a897570f7afec76007fc586"
+          }
+        ]
+      },
+      {
+        "call": "reader_configuration_from_config(original_config)",
+        "result": "PASS",
+        "encoding": null,
+        "source_bytes_read": false
+      },
+      {
+        "call": "source_read_request_from_config(original_config)",
+        "result": "PASS",
+        "source_bytes_read": false
+      }
+    ],
+    "repository": {
+      "release_refs": [
+        {
+          "kind": "C11LogicalRelease",
+          "object_id": "R157_WVS_FIXTURE_RELEASE/SRC35",
+          "content_hash": "5d43581578f37e5e4545388d4b8914070766d5475a897570f7afec76007fc586"
+        }
+      ],
+      "release_ref_matches_stream": true
+    },
+    "refusals": {
+      "original_without_row_keys": {
+        "outcome": "REFUSED",
+        "exception_type": "SourceConfigurationBindingError",
+        "message": "configured source_native_key_slot requires row_native_keys after a permitted decode"
+      },
+      "original_with_fixture_stream": {
+        "outcome": "REFUSED",
+        "exception_type": "SourceConfigurationBindingError",
+        "message": "active source SHA differs from the frozen config binding"
+      },
+      "fixture_wrong_source_sha": {
+        "outcome": "REFUSED",
+        "exception_type": "SourceConfigurationBindingError",
+        "message": "active source SHA differs from the frozen config binding"
+      },
+      "fixture_wrong_row_count": {
+        "outcome": "REFUSED",
+        "exception_type": "SourceConfigurationFactoryError",
+        "message": "configured key slot did not yield exactly one witness per active row"
+      }
+    }
+  },
+  "identity_separation": {
+    "original_source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "fixture_source_sha256": "689624fb1e11086cd66b9e887f57c4c50080125bf877a7d5cbb3b972480862e9",
+    "distinct_bytes": true,
+    "original_binding_identity_class": "ORIGINAL_SOURCE",
+    "fixture_binding_identity_class": "NONRESPONDENT_FIXTURE",
+    "original_authority_has_fixture_only": false,
+    "fixture_authority_all_fixture_only": true,
+    "original_binding_matches_original_sha": true,
+    "fixture_binding_differs_from_original_sha": true
+  },
+  "residuals": [
+    {
+      "residual_id": "SRC35-NATIVE-ROW-KEY",
+      "scope": "SRC35",
+      "field": "respondents.source_native_key_slot",
+      "status": "DECODE_REQUIRED",
+      "reason": "The source-native key slot is declared, but no permitted decode-produced row key witness exists in preparation.",
+      "dependent_operation": "original build_governed_c11_projection / build_validated_c11_release_from_config",
+      "unaffected_scope": "fixture validation and schema preparation",
+      "owner": "P3/source-read owner",
+      "next_step": "Populate row_native_keys from permitted decoded key cells; original execution stays separate."
+    },
+    {
+      "residual_id": "SRC35-ROUTING-UNKNOWN",
+      "scope": "SRC35",
+      "field": "routing[].typed_state",
+      "status": "ROUTING_UNKNOWN",
+      "reason": "H48/O06 routing status is SOURCE_ROUTING_UNRESOLVED; exact form/ballot/administration routes are unavailable.",
+      "dependent_operation": "eligibility/form-conditioned original claims",
+      "unaffected_scope": "raw response rules and fixture positive release",
+      "owner": "WVS source evidence owner",
+      "next_step": "Recover exact route/form evidence before eligibility claims."
+    },
+    {
+      "residual_id": "SRC35-SOURCE-AUTHORITY-DEFER",
+      "scope": "SRC35",
+      "field": "authority.snapshots",
+      "status": "DEFER",
+      "reason": "H48/P2/full-relation evidence is source_reviewed candidate evidence, not an adopted original ALLOW authority.",
+      "dependent_operation": "original scientific issuance",
+      "unaffected_scope": "preparation and nonrespondent fixture validation",
+      "owner": "R157 authority owner",
+      "next_step": "Adjudicate exact source operation scope; do not promote fixture authority."
+    },
+    {
+      "residual_id": "SRC35-CANONICAL-VALUE",
+      "scope": "SRC35",
+      "field": "response_slots[].values[].canonical_value",
+      "status": "NOT_AUTHORIZED",
+      "reason": "No exact positive canonical mapping authority is present; raw source values/states are retained.",
+      "dependent_operation": "canonicalized analysis",
+      "unaffected_scope": "raw response projection",
+      "owner": "R157 mapping authority owner",
+      "next_step": "Adjudicate exact mappings before canonicalization."
+    },
+    {
+      "residual_id": "SRC35-WEIGHT-HELD",
+      "scope": "SRC35",
+      "field": "physical_slots[W_WEIGHT].weight",
+      "status": "HELD",
+      "reason": "A source weight slot is identified; design/estimand/normalization authority is not established.",
+      "dependent_operation": "weighted estimands",
+      "unaffected_scope": "unweighted source-local raw configuration",
+      "owner": "WVS weight/design owner",
+      "next_step": "Establish design/estimand/normalization authority before a weighted scope."
+    },
+    {
+      "residual_id": "SRC35-FORM-ADMINISTRATION",
+      "scope": "SRC35",
+      "field": "routing/supported_form_slice",
+      "status": "UNKNOWN",
+      "reason": "Exact form/ballot/administration assignment is not recovered in the portable evidence.",
+      "dependent_operation": "form/administration-conditioned claims",
+      "unaffected_scope": "unconditional source response rules",
+      "owner": "WVS source evidence owner",
+      "next_step": "Recover exact assignment evidence if required."
+    },
+    {
+      "residual_id": "SRC35-SAMPLE-FRAME",
+      "scope": "SRC35",
+      "field": "universe.sampling_design_regime",
+      "status": "UNRESOLVED",
+      "reason": "WVS source is multi-country and wave-specific sample frames/designs are not reconstructed from metadata alone.",
+      "dependent_operation": "population/design claims",
+      "unaffected_scope": "source-row identity and response rules",
+      "owner": "WVS source evidence owner",
+      "next_step": "Recover exact country/wave frame/design evidence before population claims."
+    },
+    {
+      "residual_id": "SRC35-GEN_FORBIDDEN-HELD",
+      "scope": "SRC35/gen_forbidden",
+      "field": "questions[].response_slots",
+      "status": "GEN_FORBIDDEN_HELD",
+      "reason": "153 exact items are held: P2 explicitly marks the item generation_forbidden; identity and evidence are retained but no response rule is promoted. Exact item/evidence rows: source_pre553_validation/SRC35/SRC35.exceptions.json#held_items.",
+      "dependent_operation": "generation/feature use",
+      "unaffected_scope": "other source-local rules and nonrespondent native validation",
+      "owner": "WVS source/native-representation owner",
+      "next_step": "Consume exact held-item evidence; do not substitute a default category or invented rank/aggregation."
+    },
+    {
+      "residual_id": "SRC35-POSITION-HELD",
+      "scope": "SRC35/position",
+      "field": "coordinate_slots[].native_coordinate_ref",
+      "status": "POSITION_HELD",
+      "reason": "26 exact items are held: The item is a position/context code, not a declared response target; raw codebook identity is retained. Exact item/evidence rows: source_pre553_validation/SRC35/SRC35.exceptions.json#held_items.",
+      "dependent_operation": "coordinate/context interpretation",
+      "unaffected_scope": "other source-local rules and nonrespondent native validation",
+      "owner": "WVS source/native-representation owner",
+      "next_step": "Consume exact held-item evidence; do not substitute a default category or invented rank/aggregation."
+    },
+    {
+      "residual_id": "SRC35-CONTINUOUS-HELD",
+      "scope": "SRC35/continuous",
+      "field": "questions[].response_slots",
+      "status": "CONTINUOUS_HELD",
+      "reason": "24 exact items are held: The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys. Exact item/evidence rows: source_pre553_validation/SRC35/SRC35.exceptions.json#held_items.",
+      "dependent_operation": "continuous response projection",
+      "unaffected_scope": "other source-local rules and nonrespondent native validation",
+      "owner": "WVS source/native-representation owner",
+      "next_step": "Consume exact held-item evidence; do not substitute a default category or invented rank/aggregation."
+    },
+    {
+      "residual_id": "SRC35-ADMIN-HELD",
+      "scope": "SRC35/admin",
+      "field": "physical_slots[].disposition",
+      "status": "ADMIN_HELD",
+      "reason": "4 exact items are held: The item is administrative metadata, not a respondent response target. Exact item/evidence rows: source_pre553_validation/SRC35/SRC35.exceptions.json#held_items.",
+      "dependent_operation": "administrative/metadata use",
+      "unaffected_scope": "other source-local rules and nonrespondent native validation",
+      "owner": "WVS source/native-representation owner",
+      "next_step": "Consume exact held-item evidence; do not substitute a default category or invented rank/aggregation."
+    },
+    {
+      "residual_id": "SRC35-UNKNOWN-HELD",
+      "scope": "SRC35/unknown",
+      "field": "questions[].response_slots",
+      "status": "UNKNOWN_HELD",
+      "reason": "5 exact items are held: P2 records an unknown semantic disposition; values are retained without response promotion. Exact item/evidence rows: source_pre553_validation/SRC35/SRC35.exceptions.json#held_items.",
+      "dependent_operation": "semantic response projection",
+      "unaffected_scope": "other source-local rules and nonrespondent native validation",
+      "owner": "WVS source/native-representation owner",
+      "next_step": "Consume exact held-item evidence; do not substitute a default category or invented rank/aggregation."
+    },
+    {
+      "residual_id": "SRC35-RANKED-HELD",
+      "scope": "SRC35/ranked",
+      "field": "response_slots[].values[].occurrences",
+      "status": "RANKED_HELD",
+      "reason": "6 exact items are held: manual_response_topology is ranked_choice, but the single physical column does not carry an exact component/rank map; rank order cannot be invented. Exact item/evidence rows: source_pre553_validation/SRC35/SRC35.exceptions.json#held_items.",
+      "dependent_operation": "ranked response projection",
+      "unaffected_scope": "other source-local rules and nonrespondent native validation",
+      "owner": "WVS source/native-representation owner",
+      "next_step": "Consume exact held-item evidence; do not substitute a default category or invented rank/aggregation."
+    },
+    {
+      "residual_id": "SRC35-MULTISELECT-AGGREGATION",
+      "scope": "SRC35/multiselect_child",
+      "field": "response_slots[].values[].occurrences[].component_ref",
+      "status": "AGGREGATION_NOT_INVENTED",
+      "reason": "20 exact multiselect child columns are bound as single columns; the portable evidence does not provide an exact member-set component/aggregation map. Exact rows: source_pre553_validation/SRC35/SRC35.exceptions.json#bound_items.",
+      "dependent_operation": "multiselect set/component aggregation",
+      "unaffected_scope": "each child column response rule and native event projection",
+      "owner": "WVS source/topology owner",
+      "next_step": "Recover exact member-set/component topology before aggregation; do not infer it from labels."
+    }
+  ],
+  "limits": [
+    "Original WVS respondent execution is NOT performed or claimed.",
+    "Positive native release is from a distinct nonrespondent fixture.",
+    "Original construction requires permitted decoded row keys and remains P3/source-read work.",
+    "No cross-country canonicalization, weight authorization or population claim is asserted."
+  ]
+}

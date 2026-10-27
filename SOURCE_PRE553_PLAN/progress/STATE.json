@@ -1,22 +1,7 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "32_SOURCES_INTEGRATED_WVS_RUNNING_P5_EXACT_PATH_PORTABILITY_REPAIR",
+  "status": "ALL35_SOURCE_CONFIGURATIONS_SCOPED_INTEGRATED_P5_FINAL_JOIN_AND_P6_PENDING",
   "active_workers": [
-    {
-      "task": "WVS:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "WVS",
-      "source_ids": [
-        "SRC33",
-        "SRC34",
-        "SRC35"
-      ],
-      "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
-      "pid": 52656,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-wvs",
-      "branch": "agent/pyat-pre553-r157-wvs",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
-      "launch": "LANE_LAUNCHES.json"
-    },
     {
       "task": "P5_PORTABLE_DELIVERY_IMPLEMENTATION",
       "lane": "P5",
@@ -41,10 +26,11 @@
     "ARAB_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
     "ASIAN_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
     "SOUTH_ASIA_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
-    "LITS_SOURCE_CONFIGURATION_PREPARATION_SCOPED"
+    "LITS_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
+    "WVS_SOURCE_CONFIGURATION_PREPARATION_SCOPED"
   ],
   "current_goal_anchor": "GOAL.md",
-  "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
+  "next_action": "Existing P5 author completes exact-case repair and final portable all35 index/cold-build/native consumer validation from qualified main inputs, then existing distinct reviewer P6.",
   "live_goal_objective_verified": true,
   "live_goal_tool_status": "active",
   "resume_authorization": {
@@ -152,11 +138,12 @@
     {
       "id": "WVS:EVIDENCE",
       "lane": "WVS",
-      "state": "RUNNING",
+      "state": "ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
       "process": 52656,
       "inputs": "3c59f8d391915b67cd08dcfa9b5cd4eeca77a4ad",
       "output": "source_pre553_validation/SRC33/LANE_RETURN.json",
-      "next_consumer": "all35 integration/final review"
+      "next_consumer": "all35 integration/final review",
+      "evidence": "WVS_INTAKE.json"
     },
     {
       "id": "P5_PORTABLE_IMPLEMENTATION",
@@ -249,6 +236,6 @@
     "targets": "DISK_RESUME_completion_event_targets.json"
   },
   "latin_intake": "LATIN_INTAKE.json",
-  "prepared_sources_scoped_integrated": 32,
+  "prepared_sources_scoped_integrated": 35,
   "p5_intake": "P5_INTAKE.json"
 }
