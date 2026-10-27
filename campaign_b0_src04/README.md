@@ -18,9 +18,12 @@ release bundle.
   exact competent issuer supplies operation/predicate authority, target use if
   needed, runtime catalog preimages, historical parent, and routing/risk-set
   decision.
-- The SRC04 nonrespondent fixture is used only to call the existing
-  `build_projection_catalog` seam and construct an actual fixture query/catalog.
-  Its test-only authority is never reused for an original request.
+- The SRC04 nonrespondent fixture remains a typed `UNAVAILABLE` negative because
+  its routing/authority is held; it is not promoted.
+- A separately labelled SRC09 P0 nonrespondent fixture is used for the existing
+  consumer positive seam: it constructs a real query/catalog and returns a
+  `SUPPORTED` `EmpiricalFact` with independently checked 1/1 support. Its
+  test-only authority is never reused for an original request.
 
 ## Commands
 

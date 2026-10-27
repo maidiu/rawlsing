@@ -28,7 +28,9 @@ def test_original_request_plan_is_exact_and_remains_blocked():
     assert "predicate_grammar_and_operation" in roles
     assert "runtime_object_catalog_and_historical_parent" in roles
     assert "routing_risk_set" in roles
-    assert plan["minimal_remaining_authority"]["not_fabricated"] is True
+    substantive = plan["minimal_remaining_authority"]["actual_indispensable_substantive_decision"]
+    assert substantive["not_fabricated"] is True
+    assert substantive["operation_token_selected"] is False
 
 
 def test_original_plan_does_not_open_source_or_local_release(monkeypatch):
@@ -57,17 +59,31 @@ def test_original_release_identity_mismatch_refuses():
     assert result["source_read_performed"] is False
 
 
-def test_fixture_positive_constructs_real_catalog_and_query():
-    result = adapter.build_fixture_positive()
-    assert result["scope"] == "NONRESPONDENT_FIXTURE_ONLY_NOT_ORIGINAL"
-    assert result["fixture_source_sha256"] == adapter.EXPECTED_FIXTURE_SOURCE_SHA256
-    assert result["fixture_release_ref"]["content_hash"] == adapter.EXPECTED_FIXTURE_RELEASE_HASH
+def test_qualified_fixture_positive_returns_supported_nonzero_counts():
+    result = adapter.build_qualified_fixture_positive()
+    assert result["scope"] == "SRC09_P0_NONRESPONDENT_FIXTURE_ONLY__NOT_ORIGINAL_NOT_SRC04"
+    assert result["fixture_source_sha256"] == adapter.EXPECTED_QUALIFIED_FIXTURE_SOURCE_SHA256
+    assert result["fixture_release_ref"]["content_hash"] == adapter.EXPECTED_QUALIFIED_FIXTURE_RELEASE_HASH
     assert result["query_ref"]["kind"] == "EmpiricalQuerySpec@1.0.0"
     assert result["predicate_ref"]["kind"] == "EmpiricalPredicate@1.0.0"
     assert result["catalog_identity"]
     assert result["test_only_query_authority_used"] is True
     assert result["original_source_or_release_read"] is False
-    assert result["execution"]["status"] in {"EXECUTED", "REFUSED_OR_TYPED_UNAVAILABLE"}
+    assert result["execution"]["status"] == "EXECUTED_SUPPORTED"
+    assert result["execution"]["typed_states"] == ["SUPPORTED"]
+    assert result["execution"]["raw_numerator_support"] == [1]
+    assert result["execution"]["raw_denominator_support"] == [1]
+    assert result["independent_count_check"]["matches_empirical_fact"] is True
+
+
+def test_src04_fixture_remains_held_unavailable():
+    result = adapter.build_src04_fixture_held()
+    assert result["scope"] == "SRC04_NONRESPONDENT_FIXTURE_ONLY__UNAVAILABLE_HELD"
+    assert result["fixture_source_sha256"] == adapter.EXPECTED_FIXTURE_SOURCE_SHA256
+    assert result["fixture_release_ref"]["content_hash"] == adapter.EXPECTED_FIXTURE_RELEASE_HASH
+    assert result["product_positive"] is False
+    assert result["execution"]["status"] == "EXECUTED"
+    assert result["execution"]["typed_states"] == ["UNAVAILABLE"]
 
 
 def test_fixture_target_mismatch_refuses():

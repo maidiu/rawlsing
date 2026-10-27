@@ -55,10 +55,14 @@ def manifest() -> list[dict[str, Any]]:
         "campaign_b0_src04/evidence/REQUEST_SET.json",
         "campaign_b0_src04/evidence/AUTHORITY_DEPENDENCIES.json",
         "campaign_b0_src04/evidence/FIXTURE_POSITIVE.json",
+        "campaign_b0_src04/evidence/SRC04_FIXTURE_HELD.json",
         "campaign_b0_src04/evidence/NEGATIVE_RELEASE_MISMATCH.json",
         "campaign_b0_src04/evidence/NEGATIVE_FIXTURE_TARGET.json",
         "campaign_b0_src04/evidence/TEST_RESULTS.json",
     ]
+    history = EVIDENCE / "history"
+    if history.is_dir():
+        files.extend(str(p.relative_to(ROOT)) for p in sorted(history.rglob("*")) if p.is_file())
     out = []
     for rel in files:
         path = ROOT / rel
@@ -72,7 +76,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--artifact-commit", required=True)
     args = parser.parse_args(argv)
     plan = adapter.prepare_original_request_plan()
-    fixture = adapter.build_fixture_positive()
+    src04_fixture_held = adapter.build_src04_fixture_held()
+    fixture = adapter.build_qualified_fixture_positive()
     fixture_mismatch = adapter.fixture_target_mismatch()
     release_mismatch = adapter.original_release_mismatch_negative()
     tests = run_tests()
@@ -90,18 +95,20 @@ def main(argv: list[str] | None = None) -> int:
         "canonicalization": plan["canonicalization"],
     })
     write_json(EVIDENCE / "FIXTURE_POSITIVE.json", fixture)
+    write_json(EVIDENCE / "SRC04_FIXTURE_HELD.json", src04_fixture_held)
     write_json(EVIDENCE / "NEGATIVE_RELEASE_MISMATCH.json", release_mismatch)
     write_json(EVIDENCE / "NEGATIVE_FIXTURE_TARGET.json", fixture_mismatch)
 
     request_set_path = EVIDENCE / "REQUEST_SET.json"
     authority_path = EVIDENCE / "AUTHORITY_DEPENDENCIES.json"
     fixture_path = EVIDENCE / "FIXTURE_POSITIVE.json"
+    src04_held_path = EVIDENCE / "SRC04_FIXTURE_HELD.json"
     release_mismatch_path = EVIDENCE / "NEGATIVE_RELEASE_MISMATCH.json"
     fixture_mismatch_path = EVIDENCE / "NEGATIVE_FIXTURE_TARGET.json"
     return_document = {
         "schema": "PYAT_CAMPAIGN_B0_SRC04_RETURN@1.0.0",
         "campaign": "B0",
-        "status": "CONSUMER_PREPARATION_READY__BLOCKED_MISSING_EXACT_AUTHORITY__FIXTURE_CONSTRUCTION_POSITIVE",
+        "status": "CONSUMER_PREPARATION_READY__BLOCKED_MISSING_EXACT_AUTHORITY__QUALIFIED_FIXTURE_POSITIVE",
         "artifact_commit": args.artifact_commit,
         "milestone_claimed": "NONE_SELF_CLAIMED",
         "source_scope": {
@@ -147,9 +154,19 @@ def main(argv: list[str] | None = None) -> int:
             "predicate_ref": fixture["predicate_ref"],
             "test_only_query_authority_used": fixture["test_only_query_authority_used"],
             "execution": fixture["execution"],
+            "independent_count_check": fixture["independent_count_check"],
             "construction_positive": True,
-            "product_positive": False,
+            "product_positive": True,
+            "fixture_only": True,
             "original_source_or_release_read": False,
+        },
+        "src04_fixture_held": {
+            "path": str(src04_held_path.relative_to(ROOT)),
+            "sha256": sha(src04_held_path),
+            "scope": src04_fixture_held["scope"],
+            "execution": src04_fixture_held["execution"],
+            "product_positive": False,
+            "preserved_as": "UNAVAILABLE_NEGATIVE_NOT_PROMOTED",
         },
         "negatives": {
             "release_identity_mismatch": {
@@ -183,7 +200,7 @@ def main(argv: list[str] | None = None) -> int:
             },
             {
                 "api": "rawlsing_next.pre553_native_workload_binding.build_projection_catalog",
-                "result": "fixture-only EmpiricalQuerySpec and RuntimeObjectCatalog constructed",
+                "result": "qualified SRC09 P0 fixture-only EmpiricalQuerySpec and RuntimeObjectCatalog constructed and executed to SUPPORTED 1/1",
                 "fixture_only": True,
                 "query_ref": fixture["query_ref"],
                 "catalog_identity": fixture["catalog_identity"],
@@ -198,7 +215,8 @@ def main(argv: list[str] | None = None) -> int:
         "tests": tests,
         "artifact_manifest": manifest(),
         "fixture_vs_original_scope": {
-            "fixture": "SRC04 nonrespondent fixture used only to construct/execute the existing catalog/query seam",
+            "fixture_positive": "SRC09 P0 nonrespondent fixture, separately labelled and test-only, used only for the existing consumer positive seam",
+            "src04_fixture_held": "SRC04 nonrespondent fixture remains UNAVAILABLE because routing/authority is held; not promoted",
             "original": "SRC04 committed C11 metadata/receipt only; no original SAV or local original release read; no original query issued",
             "fixture_authority_not_reused_for_original": True,
         },
@@ -206,12 +224,19 @@ def main(argv: list[str] | None = None) -> int:
             "B0 is consumer preparation, not B completion, M1/M2, I03/I05 execution, or final acceptance.",
             "The original request remains blocked until an exact competent issuer supplies the adopted source-native unary-distribution operation/authority, target use if needed, runtime catalog, historical parent, and routing/risk-set decision.",
             "No new semantic predicate, eligibility rule, canonical/directional mapping, estimand, weight, or population claim is invented.",
-            "The permitted SRC04 fixture only demonstrates existing catalog/query construction; its test-only authority is not an original authority.",
+            "The SRC09 P0 fixture positive is separately labelled because SRC04 fixture routing/authority is held; test-only authority is not an original authority.",
             "No original SAV, original local release, respondent cells, or row-wise artifacts were read or committed.",
             "No FF/M1/N11/N12/actor/CI/prod/Sorok/J52W52 or other source-family action.",
         ],
         "next_consumer": "Existing I03 owner after exact authority/catalog/historical-parent issuance; I05 remains downstream and separately authorized.",
     }
+    history_path = EVIDENCE / "history/construction-only-64895f3a/MANIFEST.json"
+    if history_path.is_file():
+        return_document["preserved_history"] = {
+            "path": str(history_path.relative_to(ROOT)),
+            "sha256": sha(history_path),
+            "candidate": "64895f3a785b8a33a08619d7556aa1253e9b4ce0",
+        }
     write_json(RETURN_PATH, return_document)
     print(json.dumps({
         "return_path": str(RETURN_PATH.relative_to(ROOT)),

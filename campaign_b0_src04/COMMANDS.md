@@ -12,12 +12,12 @@ PYTHONPATH=. python3 campaign_b0_src04/run.py --artifact-commit <code-commit>
 ```
 
 Expected original result: a 42-request exact source/release/field plan with
-`query_constructed=false` and exact missing-authority dependencies. Expected
-fixture result: an actual fixture-only `EmpiricalQuerySpec` and
-`RuntimeObjectCatalog` from the existing `build_projection_catalog`; execution is
-reported as typed `UNAVAILABLE` or an exact refusal, never as an original product
-positive. Expected negatives: release identity mismatch and non-administered
-fixture target.
+`query_constructed=false` and exact missing-authority dependencies. The SRC04
+fixture remains a typed `UNAVAILABLE` negative. Expected positive fixture result:
+the separately labelled SRC09 P0 nonrespondent fixture constructs an actual
+`EmpiricalQuerySpec`/`RuntimeObjectCatalog` and executes to `SUPPORTED` 1/1,
+with the count independently checked from fixture cells. Expected negatives:
+release identity mismatch and non-administered fixture target.
 
 Pinned inputs:
 

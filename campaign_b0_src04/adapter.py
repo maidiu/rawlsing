@@ -43,6 +43,8 @@ A_PROGRAM_PATH = A_EVIDENCE / "PROGRAM.txt"
 SOURCE_CONFIG_PATH = ROOT / "rawlsing_next/source_configuration/data/SRC04/source.config.json"
 FIXTURE_CONFIG_PATH = ROOT / "source_pre553_validation/SRC04/fixture.config.json"
 FIXTURE_PATH = ROOT / "source_pre553_validation/SRC04/fixture.json"
+QUALIFIED_FIXTURE_CONFIG_PATH = ROOT / "source_pre553_validation/foundation/examples/SRC09_q101_fixture.config.json"
+QUALIFIED_FIXTURE_PATH = ROOT / "source_pre553_validation/foundation/fixtures/SRC09_q101_nonrespondent.json"
 
 SOURCE_ID = "SRC04"
 EXPECTED_SOURCE_SHA256 = "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
@@ -53,6 +55,8 @@ EXPECTED_CONFIG_CANONICAL_SHA256 = "0e86814b62eb51dc9da22793b6de3e3598c3415632ac
 EXPECTED_PROGRAM_SHA256 = "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50"
 EXPECTED_FIXTURE_SOURCE_SHA256 = "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b"
 EXPECTED_FIXTURE_RELEASE_HASH = "9026fa33bb5739b87b06309f12e1d31fe6fd21fb471237eda870d6d278d47f42"
+EXPECTED_QUALIFIED_FIXTURE_SOURCE_SHA256 = "a93b4dab00a2b7cbd559d8a0bb1ca498caaa87f27bd1bd73e9fceb0f2820a491"
+EXPECTED_QUALIFIED_FIXTURE_RELEASE_HASH = "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f"
 EXPECTED_SELECTED_RESPONSE_SLOTS = tuple(
     [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
      21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
@@ -342,17 +346,33 @@ def prepare_original_request_plan(
         "runtime_catalog_identity": None,
         "historical_parent_snapshot_ref": None,
         "minimal_remaining_authority": {
-            "decision": "EXTERNAL_COMPETENT_ISSUER_MUST_SUPPLY_EXACT_ALLOW_SOURCE_NATIVE_UNARY_DISTRIBUTION_AUTHORITY_AND_CATALOG_HISTORICAL_PARENT",
-            "not_fabricated": True,
-            "operation_token_selected": False,
-            "required_external_inputs": [
-                "exact adopted PREDICATE_GRAMMAR ALLOW authority for the existing source-native unary distribution operation",
-                "exact operation token and predicate semantics from that issuer",
-                "exact TARGET_USE_PERMISSION ALLOW if an EmpiricalFact will be consumed",
-                "exact RuntimeObjectCatalog preimages and catalog identity",
-                "exact ALLOW PREDICATE_GRAMMAR historical parent snapshot and operation succession",
-                "exact routing/risk-set eligibility or explicitly adopted raw-sample policy",
+            "actual_indispensable_substantive_decision": {
+                "decision": "EXTERNAL_COMPETENT_ISSUER_MUST_SUPPLY_EXACT_EXISTING_SOURCE_NATIVE_UNARY_DISTRIBUTION_OPERATION_AND_ROUTING_POLICY",
+                "not_fabricated": True,
+                "operation_token_selected": False,
+                "required_substantive_inputs": [
+                    "exact adopted PREDICATE_GRAMMAR ALLOW authority and its existing source-native unary-distribution operation token/predicate semantics",
+                    "exact TARGET_USE_PERMISSION ALLOW if an EmpiricalFact will be consumed",
+                    "exact eligible/applicability routing or an explicitly adopted raw-sample policy; current SRC04 routing is ROUTING_UNKNOWN",
+                    "exact response-state semantics authority for the prepared unary request",
+                ],
+                "not_required_from_user": [
+                    "manual catalog hashes or object preimages",
+                    "manually authored EmpiricalQuerySpec/predicate refs",
+                    "a new semantic predicate, eligibility rule, canonical mapping, estimand, or population",
+                ],
+            },
+            "mechanically_constructible_after_decision": [
+                "EmpiricalPredicate@1.0.0 and EmpiricalQuerySpec@1.0.0 preimages through the existing owners",
+                "RuntimeObjectCatalog and catalog_identity through the existing catalog constructor",
+                "historical-parent and operation-successor refs once the exact adopted parent is supplied",
             ],
+            "engine_constraint": {
+                "api": "rawlsing_next._pre553_query_eval._risk_membership",
+                "constraint": "raises EmpiricalQueryResolutionError for unresolved ROUTING_UNKNOWN/RULE_UNAVAILABLE; it cannot be coerced to nonmembership or inferred eligibility",
+                "raw_count_note": "raw response values are available in the C11 event carrier; canonical adoption is not required for raw counts, but the original routing/authority gate remains unresolved",
+                "canonical_authority": "DEFER; not required for raw counts and not promoted",
+            },
         },
         "next_invocation": {
             "function": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
@@ -364,8 +384,8 @@ def prepare_original_request_plan(
     return plan
 
 
-def build_fixture_positive() -> dict[str, Any]:
-    """Construct an actual fixture-only catalog/query through the existing owner."""
+def build_src04_fixture_held() -> dict[str, Any]:
+    """Preserve the SRC04 construction-only fixture as a typed UNAVAILABLE negative."""
     fixture_config = load_source_config(FIXTURE_CONFIG_PATH)
     fixture_stream = load_fixture_stream(FIXTURE_PATH)
     if fixture_stream.source_sha256 != EXPECTED_FIXTURE_SOURCE_SHA256:
@@ -437,8 +457,8 @@ def build_fixture_positive() -> dict[str, Any]:
             "error": str(exc),
         }
     return {
-        "schema": "PYAT_CAMPAIGN_B0_SRC04_FIXTURE_POSITIVE@1.0.0",
-        "scope": "NONRESPONDENT_FIXTURE_ONLY_NOT_ORIGINAL",
+        "schema": "PYAT_CAMPAIGN_B0_SRC04_FIXTURE_HELD@1.0.0",
+        "scope": "SRC04_NONRESPONDENT_FIXTURE_ONLY__UNAVAILABLE_HELD",
         "fixture_config_path": str(FIXTURE_CONFIG_PATH.relative_to(ROOT)),
         "fixture_config_file_sha256": sha_file(FIXTURE_CONFIG_PATH),
         "fixture_path": str(FIXTURE_PATH.relative_to(ROOT)),
@@ -459,12 +479,138 @@ def build_fixture_positive() -> dict[str, Any]:
         "test_only_query_authority_used": any(
             a.authority_id == "B49-TEST-ONLY-QUERY-AUTH" for a in catalog.authorities),
         "execution": execution_result,
+        "product_positive": False,
         "actual_existing_api_calls": [
             "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
             "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
             "rawlsing_next.pre553_native_workload_binding.build_projection_catalog",
             "rawlsing_next.pre553_empirical_query.execute_empirical_query",
         ],
+        "original_source_or_release_read": False,
+    }
+
+
+def build_qualified_fixture_positive() -> dict[str, Any]:
+    """Construct and execute an existing qualified SRC09 P0 fixture positive.
+
+    This is a separately labelled nonrespondent/tests-only consumer check.  It
+    is not the SRC04 original request and its test-only authority is never used
+    for an original request.
+    """
+    fixture_config = load_source_config(QUALIFIED_FIXTURE_CONFIG_PATH)
+    fixture_stream = load_fixture_stream(QUALIFIED_FIXTURE_PATH)
+    if fixture_stream.source_sha256 != EXPECTED_QUALIFIED_FIXTURE_SOURCE_SHA256:
+        raise ConsumerPreparationRefusal("QUALIFIED_FIXTURE_SOURCE_SHA_MISMATCH")
+    projection = build_governed_c11_projection(
+        fixture_config, source_sha256=fixture_stream.source_sha256,
+        row_count=fixture_stream.row_count)
+    release = build_validated_c11_release_from_config(fixture_config, stream=fixture_stream)
+    if release.release_ref.content_hash != EXPECTED_QUALIFIED_FIXTURE_RELEASE_HASH:
+        raise ConsumerPreparationRefusal("QUALIFIED_FIXTURE_RELEASE_HASH_MISMATCH")
+    question_refs = {
+        q["question_id"]: exact_ref(q["native_question_ref"], "qualified_fixture_target_ref")
+        for q in fixture_config.document["questions"]
+    }
+    q101_route = next(x for x in fixture_config.document["routing"]
+                      if x["question_id"] == "q101")
+    risk_ref = exact_ref(q101_route["risk_set_ref"], "qualified_fixture_risk_set_ref")
+    bundle = SimpleNamespace(
+        projection=projection,
+        source_sha256=fixture_stream.source_sha256,
+        question_refs=question_refs,
+        administered_ids=tuple(question_refs),
+        risk_set_ref=risk_ref,
+        source_format="SAV",
+        physical_stream=fixture_stream,
+        release=release,
+        administered=(),
+        held=(),
+        excluded=(),
+        unknown=(),
+        bundle_hash="qualified-fixture-bundle",
+        respondent_rows=(),
+        occurrence_bindings=(),
+    )
+    catalog, request = build_projection_catalog(
+        bundle=bundle,
+        operation=OperationFixture(
+            fixture_id="B0-SRC09-P0-FIXTURE-Q101",
+            target_variable_code="q101",
+            response_value="1",
+            measure_kind="RAW",
+        ),
+        as_of="2026-10-27",
+    )
+    query = catalog.resolve_query_exact(request.query_ref)
+    predicate = catalog.resolve_predicate_exact(request.predicate_ref)
+    execution = execute_empirical_query(
+        repository=C11Repository((release,)),
+        query=query,
+        predicate=predicate,
+        authority_registry=AuthorityRegistry(catalog.authorities),
+        release_refs=(release.release_ref,),
+    )
+    if len(execution.facts) != 1:
+        raise ConsumerPreparationRefusal("QUALIFIED_FIXTURE_FACT_COUNT_NOT_ONE")
+    fact = execution.facts[0]
+    expected_numerator = sum(
+        1 for cell in fixture_stream.iter_cells()
+        if cell.variable_name == "q101"
+        and cell.raw_value == 1.0
+        and cell.missing_state.value == "OBSERVED_STORAGE_VALUE")
+    expected_denominator = expected_numerator
+    if fact.typed_state != "SUPPORTED":
+        raise ConsumerPreparationRefusal("QUALIFIED_FIXTURE_NOT_SUPPORTED", fact.typed_state)
+    if fact.raw_numerator_support != expected_numerator:
+        raise ConsumerPreparationRefusal("QUALIFIED_FIXTURE_NUMERATOR_MISMATCH")
+    if fact.raw_denominator_support != expected_denominator:
+        raise ConsumerPreparationRefusal("QUALIFIED_FIXTURE_DENOMINATOR_MISMATCH")
+    if expected_numerator <= 0:
+        raise ConsumerPreparationRefusal("QUALIFIED_FIXTURE_ZERO_SUPPORT")
+    return {
+        "schema": "PYAT_CAMPAIGN_B0_QUALIFIED_FIXTURE_POSITIVE@1.0.0",
+        "scope": "SRC09_P0_NONRESPONDENT_FIXTURE_ONLY__NOT_ORIGINAL_NOT_SRC04",
+        "fixture_config_path": str(QUALIFIED_FIXTURE_CONFIG_PATH.relative_to(ROOT)),
+        "fixture_config_file_sha256": sha_file(QUALIFIED_FIXTURE_CONFIG_PATH),
+        "fixture_path": str(QUALIFIED_FIXTURE_PATH.relative_to(ROOT)),
+        "fixture_source_sha256": fixture_stream.source_sha256,
+        "fixture_release_ref": release.release_ref.as_dict(),
+        "fixture_projection_identity": projection.projection_identity_ref.as_dict(),
+        "catalog_identity": catalog.receipt()["catalog_identity"],
+        "query_ref": query.ref.as_dict(),
+        "predicate_ref": predicate.ref.as_dict(),
+        "target_ref": question_refs["q101"].as_dict(),
+        "requested_output_grain": jsonable(query.requested_output_grain),
+        "authority_grades": [
+            {"authority_id": a.authority_id, "authority_kind": a.authority_kind,
+             "decision_state": a.decision_state, "grade": a.scope_envelope.get("grade")}
+            for a in catalog.authorities
+        ],
+        "test_only_query_authority_used": any(
+            a.authority_id == "B49-TEST-ONLY-QUERY-AUTH" for a in catalog.authorities),
+        "execution": {
+            "status": "EXECUTED_SUPPORTED",
+            "fact_count": len(execution.facts),
+            "typed_states": [fact.typed_state],
+            "raw_numerator_support": [fact.raw_numerator_support],
+            "raw_denominator_support": [fact.raw_denominator_support],
+            "fact_ref": fact.ref.as_dict(),
+        },
+        "independent_count_check": {
+            "source_fixture_rows": fixture_stream.row_count,
+            "target_variable": "q101",
+            "target_raw_value": 1.0,
+            "expected_numerator": expected_numerator,
+            "expected_denominator": expected_denominator,
+            "matches_empirical_fact": True,
+        },
+        "actual_existing_api_calls": [
+            "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+            "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+            "rawlsing_next.pre553_native_workload_binding.build_projection_catalog",
+            "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+        ],
+        "product_positive": True,
         "original_source_or_release_read": False,
     }
 
