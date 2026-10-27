@@ -2,7 +2,7 @@
 
 **Status:** `SYN02_B_DESIGN_RETURN__SOURCE_REVIEWED_DISPOSITION_MATRIX__NO_IMPLEMENTATION__NO_NATIVE_GRANT`.
 **Scope:** all forty historical V3/V2/PFF mechanisms, reviewed at their selected-source/focused-test grain, with a function-level old→new adaptation decision. This is not a current C9/C12 implementation, not a rule issuance and not a production edit.
-**Source/authority:** original source read-only at `<USER_HOME>/Desktop/Rawlsing/Rawlsing_code_bundle_staging`; file identities in `ADAPTATION/B/SOURCE_PLANE_IDENTITIES.json`. The 40 families have independent scoped review through X01–X05 and RX01–RX05; the exact author/reviewer SHAs are in `SOURCE_PLANE_IDENTITIES.json` and `ATLAS.json`. The local staging ZIP is not the TD-R05 archive; file-level identity controls.
+**Source/authority:** original source read-only at `<USER_HOME>/Desktop/Rawlsing/Rawlsing_code_bundle_staging`; 59 source paths were accessed/hashed and key bodies read; file identities in `ADAPTATION/B/SOURCE_PLANE_IDENTITIES.json`. The 40 families have independent scoped review through X01–X05 and RX01–RX05; the exact author/reviewer SHAs are in `SOURCE_PLANE_IDENTITIES.json` and `ATLAS.json`. The local staging ZIP is not the TD-R05 archive; file-level identity controls.
 
 ## 1. Decision summary
 

@@ -21,7 +21,7 @@ Historical V3/V2 is read-only evidence. No native actor/source, CAN/ADP/Pyat, C8
 
 - Remote branch verified at the sealed startup before authoring; no duplicate SYN02-B worktree/session existed. The author worktree is isolated from other workers; no other active Sorok/Pyat/Codex worker was touched. No model/provider/harness switch occurred.
 - Source root: `<USER_HOME>/Desktop/Rawlsing/Rawlsing_code_bundle_staging`; read-only.
-- 59 directly inspected source files hashed in `ADAPTATION/B/SOURCE_PLANE_IDENTITIES.json`; 31/31 selected S50 identities exact per X01/RX01 and RX03/RX04/RX05; 40/40 historical families have scoped independent selected-source/focused-test review through X01–X05 and RX01–RX05.
+- 59 source paths were accessed read-only and hashed in `ADAPTATION/B/SOURCE_PLANE_IDENTITIES.json`; key source bodies used by this design were directly read. 31/31 selected S50 identities are exact per X01/RX01 and RX03/RX04/RX05; 40/40 historical families have scoped independent selected-source/focused-test review through X01–X05 and RX01–RX05. No claim is made that SYN02-B personally read every body line of every file.
 - Local staging ZIP `3f2c5ed9…` is not the TD-R05 archive `953c9149…`; whole-archive exactness is not claimed.
 - Exact author/reviewer SHAs used for the 40-family evidence are recorded in `SOURCE_PLANE_IDENTITIES.json` and `ATLAS.json`. Principal cutpoints: X01 `2e1853dd…`/RX01 `481a5c62…`; X02 `b8ccf53f…`/RX02 `69ddef93…`; X03 `e81dd633b…`/RX03 `10807fd6…`; X04 `b609986a…`/RX04 `c5db118c…`; X05 `4877afed…`/RX05 `fa2a98d6…`.
 - Current S39–S52 source is not one assembled native tree in this checkout. S48 exact-cut source `9fe0d066e4bf61ab6819a1f56e42d6d07956c2f7` is a one-call transport/refusal surface; RC's static current review at `ddea7563…` is the current-consumer ceiling. `CURRENT_INTEGRATION = UNTRACED`.
@@ -130,7 +130,7 @@ These are **SPECIFICATION_ONLY** unless explicitly marked otherwise.
 
 ## 9. Source/custody, tests and NOT_RUN receipts
 
-- **Directly read/hased:** 59 source files, `SOURCE_PLANE_IDENTITIES.json`; 31/31 S50 selected exact; 40/40 family source reviews. No source edit.
+- **Accessed/hashed read-only:** 59 source paths, `SOURCE_PLANE_IDENTITIES.json`; key paths directly body-read; 31/31 S50 selected exact; 40/40 family source reviews. No source edit. No claim of personally reading every line of every file.
 - **Reviewed test evidence cited, not rerun by SYN02-B:** X03/RX03 71 focused PASS; X04/RX04 77 focused PASS; X05/RX05 28 focused PASS; RX01 full-suite note 150/1 is secondhand and not re-run here. The 40/40 review is selected-source/focused-test grain, not full V3 assembly.
 - **Executed by SYN02-B:** no new sourcefree test/probe. None was necessary for a disputed source claim; the reviewed author/reviewer evidence is the appropriate design input.
 - **NOT_RUN:** current C9/C12/S39–S52 assembled runtime; native Pyat/C11/A0–A5; new schema/migration; new event/interval/formation/memory tests; live provider; raw respondent data.
