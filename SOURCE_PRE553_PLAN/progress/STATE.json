@@ -1,22 +1,7 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "EVS_SCOPED_PREPARATION_INTEGRATED_AFRO_READY_QUEUE_RUNNING",
+  "status": "EVS_LATIN_SCOPED_PREPARATION_INTEGRATED_AFRO_ARAB_GSS_LITS_RUNNING",
   "active_workers": [
-    {
-      "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "LATIN",
-      "source_ids": [
-        "SRC24",
-        "SRC25",
-        "SRC26"
-      ],
-      "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
-      "pid": 39411,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin",
-      "branch": "agent/pyat-pre553-r157-latin",
-      "state": "RUNNING_SAME_OWNER_BINDING_REPAIR_MODEL_VERIFIED",
-      "launch": "LANE_LAUNCHES.json"
-    },
     {
       "task": "GSS:SOURCE_CONFIGURATION_QUEUE",
       "lane": "GSS",
@@ -67,6 +52,22 @@
       "branch": "agent/pyat-pre553-r157-afro",
       "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
+    },
+    {
+      "task": "ARAB:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "ARAB",
+      "source_ids": [
+        "SRC04",
+        "SRC05",
+        "SRC06",
+        "SRC07"
+      ],
+      "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+      "pid": 43681,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-arab",
+      "branch": "agent/pyat-pre553-r157-arab",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "LANE_LAUNCHES.json"
     }
   ],
   "heartbeat": "PAUSED",
@@ -74,7 +75,8 @@
   "completed_tasks": [
     "P0_FOUNDATION",
     "P3_FACTORY_READY",
-    "EVS_SOURCE_CONFIGURATION_PREPARATION_SCOPED"
+    "EVS_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
+    "LATIN_SOURCE_CONFIGURATION_PREPARATION_SCOPED"
   ],
   "current_goal_anchor": "GOAL.md",
   "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
@@ -96,12 +98,13 @@
     {
       "id": "LATIN:EVIDENCE",
       "lane": "LATIN",
-      "state": "BINDING_REPAIR_RUNNING",
+      "state": "ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
       "process": 39411,
       "inputs": "91441c34ee58c4c3b13dae37db70a23bb4d4c2b8",
       "output": "source_pre553_validation/SRC24/LANE_RETURN.json",
       "check": "Full prior source facts consumed; ordered source queue then actual native fixture positives; exact residuals",
-      "next_consumer": "integration/P3/final review"
+      "next_consumer": "integration/P3/final review",
+      "evidence": "LATIN_INTAKE.json"
     },
     {
       "id": "GSS:EVIDENCE",
@@ -147,6 +150,15 @@
       "inputs": "db24fc60ed8503487fbc989faff1227ce4b66b0d",
       "output": "source_pre553_validation/SRC01/LANE_RETURN.json",
       "next_consumer": "all35 integration/final review"
+    },
+    {
+      "id": "ARAB:EVIDENCE",
+      "lane": "ARAB",
+      "state": "RUNNING",
+      "process": 43681,
+      "inputs": "e2cfc49badbe52eb65f44561ccf6727ee53be60e",
+      "output": "source_pre553_validation/SRC04/LANE_RETURN.json",
+      "next_consumer": "all35 integration/final review"
     }
   ],
   "frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
@@ -189,6 +201,11 @@
       {
         "pid": 42516,
         "targets": "AFRO_completion_event_targets.json",
+        "mode": "OS_EVENTS_NO_TIMED_POLLING"
+      },
+      {
+        "pid": 43834,
+        "targets": "ARAB_completion_event_targets.json",
         "mode": "OS_EVENTS_NO_TIMED_POLLING"
       }
     ]

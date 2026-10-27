@@ -1,13 +1,25 @@
 {
   "candidate": "9b51c6578ec6d059463440870ac1ee95e67dbe63",
-  "artifact_commit": "e75872dc3196a2f512af3ade315c28b380bdf112",
+  "artifact_commit": "7cd71327833558ffc0f257e8b14291aef32bf41c",
   "terminal_pid": 35731,
-  "decision": "REVISE_EXACT_SOURCE_BINDING_DEFECTS_SAME_OWNER",
+  "decision": "ACCEPTED_SCOPED_CONFIGURATION_PREPARATION_WITH_EXACT_HELD_PREMISES",
   "remote_verified": true,
   "hq_replay": [
-    "SRC24 566 checks PASS release4faea64a46b1fe539939146358299d8dbf399884c6fd7d563666c81594cbaee6",
-    "SRC25 1127 checks PASS release5b3bb58222bc49f6fa7db167668e701e561ac3840f25fa41ed8cf88e28e2d586",
-    "SRC26 842 checks PASS releaseb526e80c2049fe0318813f2b94abd10c41173775377906dcd47cecc29e77789e"
+    {
+      "source": "SRC24",
+      "checks": 571,
+      "release": "214de015475f919dc17cad231b7de1dc085c66085d30ebf75fd0a65cba68995e"
+    },
+    {
+      "source": "SRC25",
+      "checks": 1158,
+      "release": "0edcbcdce3efaa1eace617c455624a252ec6ab87b3bd5aa5a3f60e1c6771aa9c"
+    },
+    {
+      "source": "SRC26",
+      "checks": 859,
+      "release": "528ca5c34f7d9fd3c92ae5832d7be0001fec001a1053a046ba899a1ceda3164f"
+    }
   ],
   "defects": [
     {
@@ -19,5 +31,16 @@
       "observed": "47 one-slot nominal_choice/nominal_position/response_status items mapped to UNORDERED_MULTISELECT_SET: SRC24 3; SRC25 29; SRC26 15. E.g SRC24s14/s6 and SRC25S15. Current tests mirror author layout and do not establish evidence-faithful topology."
     }
   ],
-  "scope": "Configuration preparation and distinct permitted nonrespondent native proof only; no original-source empirical execution; no new review or grant."
+  "scope": "Configuration preparation and distinct permitted nonrespondent native proof only; no original-source empirical execution; no new review or grant.",
+  "accepted_candidate": "f704de41db72578dd2c619506937fc741cd8be86",
+  "integration": "Exact allowed source directories imported; historical lane progress files excluded",
+  "defect_resolution": {
+    "routing": "ALL+ROUTING_UNKNOWN 183/370/178 questions; no arbitrary 3-row original bound",
+    "topology": "47 of47 nominal/status single-response mappings corrected and evidence-backed assertions pass"
+  },
+  "limits": [
+    "Exact source-specific excluded items/slots and unknown routes remain",
+    "No original respondent reads or original workload issuance",
+    "Final distinct all35 qualification pending"
+  ]
 }
