@@ -1,7 +1,7 @@
 {
   "lane": "EVS",
   "candidate": "fff9e29ae11bee4a0d9bc19880fc68f13c8f7eb3",
-  "decision": "RETURNED_INCOMPLETE_REPAIR_SAME_OWNER",
+  "decision": "ACCEPTED_SCOPED_CONFIGURATION_PREPARATION_WITH_EXACT_HELD_PREMISES",
   "observed_defect": "Only one response item per source; 2219 items and2209 slots labeled outside selected slice, without exact missing input premise. No-drop inventory is not configuration completion.",
   "evidence": [
     "source_pre553_validation/SRC11/LANE_RETURN.json supported_scope ONE_SCALAR_SOURCE_ITEM_PER_WAVE_PLUS_COUNTRY_AND_ID_COCAS",
@@ -15,5 +15,117 @@
     "Goal: never substitute narrower/easier subset or redefine success around partial output"
   ],
   "preserve_positive": "Five distinct source-specific native fixture releases and2224item/slot accounting are useful partial work, not full EVS acceptance.",
-  "unchanged_boundary": "No original respondent execution/workload issuance or ALLOW-source authority required for configuration preparation; exact user paragraph governs."
+  "unchanged_boundary": "No original respondent execution/workload issuance or ALLOW-source authority required for configuration preparation; exact user paragraph governs.",
+  "accepted_candidate": "9687ff50104fd90c73f9cd727abb625a1300f3ec",
+  "artifact_commit": "66651e4122d0d09d548184865290e1b85c7ce9d5",
+  "hq_native_replay": [
+    {
+      "source": "SRC11",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/1981",
+        "content_hash": "ebaf9b541a1d63fe1367c3970de13aef82f53dcd5456a6bc94b459be2b10d67e"
+      },
+      "counts": {
+        "AuthoritySnapshot": 8,
+        "EmpiricalCoordinateFact": 150,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 1986,
+        "RoutingEligibilityFact": 1986,
+        "WeightMeasureFact": 6
+      },
+      "config_canonical_hashes_verified": 2,
+      "fixture_file_hash_verified": true
+    },
+    {
+      "source": "SRC12",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/1990",
+        "content_hash": "ef67c234b8def9654f280317b3bf9917f038ead98d07c31f7c82c1dd6f53eb81"
+      },
+      "counts": {
+        "AuthoritySnapshot": 8,
+        "EmpiricalCoordinateFact": 186,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 2016,
+        "RoutingEligibilityFact": 2016,
+        "WeightMeasureFact": 12
+      },
+      "config_canonical_hashes_verified": 2,
+      "fixture_file_hash_verified": true
+    },
+    {
+      "source": "SRC13",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/1999",
+        "content_hash": "52e51eb5948550d6d050a359eac0f6a04ea940bd707501910f724e4adf9a1c86"
+      },
+      "counts": {
+        "AuthoritySnapshot": 8,
+        "EmpiricalCoordinateFact": 270,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 2154,
+        "RoutingEligibilityFact": 2154,
+        "WeightMeasureFact": 12
+      },
+      "config_canonical_hashes_verified": 2,
+      "fixture_file_hash_verified": true
+    },
+    {
+      "source": "SRC14",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/2008",
+        "content_hash": "990464d281caae853880e920b3269eff83e97c517c3ffbe561920a788d823dd3"
+      },
+      "counts": {
+        "AuthoritySnapshot": 8,
+        "EmpiricalCoordinateFact": 426,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 2304,
+        "RoutingEligibilityFact": 2304,
+        "WeightMeasureFact": 12
+      },
+      "config_canonical_hashes_verified": 2,
+      "fixture_file_hash_verified": true
+    },
+    {
+      "source": "SRC15",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/2017",
+        "content_hash": "abcec5d8ce73b3d923292b9e33f49821ffc27e05595825237067682c9411821f"
+      },
+      "counts": {
+        "AuthoritySnapshot": 8,
+        "EmpiricalCoordinateFact": 516,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 2022,
+        "RoutingEligibilityFact": 2022,
+        "WeightMeasureFact": 24
+      },
+      "config_canonical_hashes_verified": 2,
+      "fixture_file_hash_verified": true
+    }
+  ],
+  "changed_paths_verified": 48,
+  "no_drop": {
+    "original_items": 2224,
+    "physical_slots": 2224,
+    "responses": 1747,
+    "coordinates": 258,
+    "weights": 11,
+    "source_keys": 5,
+    "held": 203
+  },
+  "retained_limits": [
+    "145 P2 UNKNOWN",
+    "35 GENERATION_FORBIDDEN",
+    "23 ranked/order evidence gaps",
+    "1179 conditional/unknown routing items",
+    "Original authority DEFER; no original empirical execution/workload issuance",
+    "All35 independent final boundary qualification still required"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "LATIN_NATIVE_FIXTURES_REPLAYED_TWO_SOURCE_BINDING_DEFECTS_IN_SAME_OWNER_REPAIR",
+  "status": "EVS_SCOPED_PREPARATION_INTEGRATED_AFRO_READY_QUEUE_RUNNING",
   "active_workers": [
     {
       "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
@@ -54,20 +54,18 @@
       "launch": "LANE_LAUNCHES.json"
     },
     {
-      "task": "EVS:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "EVS",
+      "task": "AFRO:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "AFRO",
       "source_ids": [
-        "SRC11",
-        "SRC12",
-        "SRC13",
-        "SRC14",
-        "SRC15"
+        "SRC01",
+        "SRC02",
+        "SRC03"
       ],
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "pid": 35734,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs",
-      "branch": "agent/pyat-pre553-r157-evs",
-      "state": "RUNNING_DISK_RESUME_MODEL_AND_PREFLIGHT_VERIFIED",
+      "pid": 42454,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-afro",
+      "branch": "agent/pyat-pre553-r157-afro",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     }
   ],
@@ -75,7 +73,8 @@
   "implementation_started": true,
   "completed_tasks": [
     "P0_FOUNDATION",
-    "P3_FACTORY_READY"
+    "P3_FACTORY_READY",
+    "EVS_SOURCE_CONFIGURATION_PREPARATION_SCOPED"
   ],
   "current_goal_anchor": "GOAL.md",
   "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
@@ -133,11 +132,21 @@
     {
       "id": "EVS:EVIDENCE",
       "lane": "EVS",
-      "state": "RUNNING",
+      "state": "ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
       "process": 35734,
       "inputs": "0b5244204e68e14315550af39631db60cfc770ea",
       "output": "source_pre553_validation/SRC11/LANE_RETURN.json",
-      "next_consumer": "all35 integration/final independent review"
+      "next_consumer": "all35 integration/final independent review",
+      "evidence": "EVS_INTAKE.json"
+    },
+    {
+      "id": "AFRO:EVIDENCE",
+      "lane": "AFRO",
+      "state": "RUNNING",
+      "process": 42454,
+      "inputs": "db24fc60ed8503487fbc989faff1227ce4b66b0d",
+      "output": "source_pre553_validation/SRC01/LANE_RETURN.json",
+      "next_consumer": "all35 integration/final review"
     }
   ],
   "frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
@@ -175,6 +184,11 @@
       {
         "pid": 39480,
         "targets": "LATIN_BINDING_REPAIR_completion_event_targets.json",
+        "mode": "OS_EVENTS_NO_TIMED_POLLING"
+      },
+      {
+        "pid": 42516,
+        "targets": "AFRO_completion_event_targets.json",
         "mode": "OS_EVENTS_NO_TIMED_POLLING"
       }
     ]

@@ -253,7 +253,7 @@
       "rawlsing_next/source_configuration/data/SRC15/",
       "source_pre553_validation/SRC15/"
     ],
-    "state": "RUNNING_DISK_RESUME_MODEL_AND_PREFLIGHT_VERIFIED",
+    "state": "TERMINAL_ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
     "prompt_sha256": "04b17c2e7ab2e856bf2537c939932a78e2a8e997497af16e83947ebb38aa564f",
     "expected_return": "source_pre553_validation/SRC11/LANE_RETURN.json",
     "next_consumer": "all35 integration and distinct final review",
@@ -280,6 +280,44 @@
         "partial_head": "fff9e29ae11bee4a0d9bc19880fc68f13c8f7eb3"
       }
     ],
-    "actual_pid": 35734
+    "actual_pid": 35734,
+    "accepted_candidate": "9687ff50104fd90c73f9cd727abb625a1300f3ec"
+  },
+  {
+    "lane": "AFRO",
+    "task": "AFRO:SOURCE_CONFIGURATION_QUEUE",
+    "source_ids": [
+      "SRC01",
+      "SRC02",
+      "SRC03"
+    ],
+    "session": "ses_e98c905cbffekusoHURfKyEUKG",
+    "supervisor_pid": 42453,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-afro",
+    "branch": "agent/pyat-pre553-r157-afro",
+    "startup": "db24fc60ed8503487fbc989faff1227ce4b66b0d",
+    "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-afro/.r61/r157-lane",
+    "allowed_paths": [
+      "rawlsing_next/source_configuration/data/SRC01/",
+      "source_pre553_validation/SRC01/",
+      "rawlsing_next/source_configuration/data/SRC02/",
+      "source_pre553_validation/SRC02/",
+      "rawlsing_next/source_configuration/data/SRC03/",
+      "source_pre553_validation/SRC03/"
+    ],
+    "prompt_sha256": "0029cc34dfebab6e0f9c427e0233b5c5b67ebad7e94f93bba5a4e004439261e1",
+    "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+    "expected_return": "source_pre553_validation/SRC01/LANE_RETURN.json",
+    "actual_pid": 42454,
+    "actual_model_readback": {
+      "id": "deepseek-v4.1-flash",
+      "providerID": "opencode-go",
+      "variant": "max"
+    },
+    "actual_tool_preflight": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-afro\nhttps://github.com/maidiu/rawlsing.git\nagent/pyat-pre553-r157-afro\ndb24fc60ed8503487fbc989faff1227ce4b66b0d\n",
+    "completion_observer_pid": 42516
   }
 ]
