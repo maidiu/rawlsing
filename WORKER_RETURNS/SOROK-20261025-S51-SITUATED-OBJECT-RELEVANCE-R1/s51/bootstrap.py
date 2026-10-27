@@ -4,7 +4,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-from .source_binding import resolve_g18, verify_g18
+from .source_binding import resolve_g18, verify_g18, verify_sources
 
 RETURN = Path(__file__).resolve().parents[1]
 REPO = RETURN.parents[1]
@@ -23,10 +23,13 @@ def _g18() -> Path:
 
 
 def install() -> None:
-    global _INSTALLED
+    global G18, _INSTALLED
     if _INSTALLED:
         return
-    g18 = _g18()
+    verification = verify_sources(check_cache=True)
+    g18 = Path(verification["roots"]["g18"])
+    G18 = g18
+    verify_g18(g18)
     for path in (str(RETURN), str(S49), str(g18)):
         if path in sys.path:
             sys.path.remove(path)
@@ -41,12 +44,15 @@ def install() -> None:
 
 def roots() -> dict:
     install()
-    g18 = _g18()
+    verification = verify_sources(check_cache=False)
     return {
         "s51_return": str(RETURN),
         "s49_return": str(S49),
-        "g18_source": str(g18),
+        "g18_source": verification["roots"]["g18"],
         "g18_source_verified": True,
+        "source_verified": True,
+        "source_manifest": verification["manifest"],
+        "source_count": verification["verified"],
         "cuts": dict(CUTS),
     }
 

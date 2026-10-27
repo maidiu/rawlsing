@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from s52.bootstrap import install, roots
+from s52.bootstrap import REPO, install, roots
 
 install()
 
@@ -28,12 +28,14 @@ def test_source_roots_are_resolved_without_embedded_user_paths():
  assert Path(r["g18_source"]).is_dir()
  assert r["g18_source_verified"] is True
  assert r["dependency_verified"] is True
+ assert r["source_verified"] is True
+ assert r["source_count"] == 31
  for rel in (
   "WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/s51/bootstrap.py",
   "WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/bootstrap.py",
   "WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/source_registry.py",
  ):
-  assert "/Users/" not in Path(rel).read_text()
+  assert "/Users/" not in Path(REPO, rel).read_text()
 
 
 def test_tampered_dependency_is_rejected_by_hash():

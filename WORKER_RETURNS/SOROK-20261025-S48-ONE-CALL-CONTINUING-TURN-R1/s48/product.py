@@ -4,9 +4,9 @@ from __future__ import annotations
 import hashlib
 import json
 import os
-import shutil
 import subprocess
 import time
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -17,19 +17,6 @@ install()
 from .errors import ProductCallError, S48Refusal
 from .sources import candidate_specs, eligible_candidate_ids
 
-PRODUCT_CLI = (
-    os.environ.get("S48_PRODUCT_CLI", "").strip()
-    or shutil.which("opencode")
-    or ""
-)
-PRODUCT_MODEL = (
-    os.environ.get("S48_PRODUCT_MODEL", "").strip()
-    or "opencode-go/deepseek-v4.1-flash"
-)
-PRODUCT_VARIANT = (
-    os.environ.get("S48_PRODUCT_VARIANT", "").strip()
-    or "max"
-)
 PRODUCT_SCHEMA = "S48_PRODUCT_ENVELOPE@1"
 PRODUCT_INPUT_SCHEMA = "S48_ACTOR_PRODUCT_INPUT@1"
 CANDIDATES = {
@@ -43,20 +30,87 @@ CANDIDATES = {
     },
 }
 
-PRODUCT_CONFIG = {
-    "model": PRODUCT_MODEL,
-    "small_model": PRODUCT_MODEL,
-    "enabled_providers": ["opencode-go"],
-    "autoupdate": False,
-    "permission": {
-        "edit": "deny",
-        "bash": "deny",
-        "webfetch": "deny",
-        "question": "deny",
-        "task": "deny",
-        "external_directory": "deny",
-    },
+# Compatibility names only.  There are deliberately no CLI/model/provider
+# defaults: every paid transport selection must be explicit in the environment.
+PRODUCT_CLI = ""
+PRODUCT_MODEL = ""
+PRODUCT_VARIANT = ""
+PRODUCT_CONFIG: dict[str, Any] = {}
+PRODUCT_PERMISSIONS = {
+    "edit": "deny",
+    "bash": "deny",
+    "webfetch": "deny",
+    "question": "deny",
+    "task": "deny",
+    "external_directory": "deny",
 }
+
+
+@dataclass(frozen=True)
+class ProductSelection:
+    cli: str
+    provider: str
+    model: str
+    variant: str
+    account: str
+
+
+def _required_env(name: str, missing_code: str) -> str:
+    value = os.environ.get(name, "").strip()
+    if not value:
+        raise ProductCallError(
+            missing_code,
+            f"{name} must be explicitly selected; no PATH or model default is used",
+        )
+    return value
+
+
+def select_product() -> ProductSelection:
+    """Return the complete explicit paid-transport selection or fail closed."""
+    cli = _required_env("S48_PRODUCT_CLI", "S48_PRODUCT_CLI_MISSING")
+    provider = _required_env("S48_PRODUCT_PROVIDER", "S48_PRODUCT_PROVIDER_MISSING")
+    model = _required_env("S48_PRODUCT_MODEL", "S48_PRODUCT_MODEL_MISSING")
+    variant = _required_env("S48_PRODUCT_VARIANT", "S48_PRODUCT_VARIANT_MISSING")
+    account = _required_env("S48_PRODUCT_ACCOUNT", "S48_PRODUCT_ACCOUNT_MISSING")
+
+    cli_path = Path(cli).expanduser()
+    if not cli_path.is_absolute():
+        raise ProductCallError(
+            "S48_PRODUCT_CLI_NOT_ABSOLUTE",
+            f"S48_PRODUCT_CLI must be an absolute executable path: {cli_path}",
+        )
+    if not cli_path.is_file() or not os.access(cli_path, os.X_OK):
+        raise ProductCallError(
+            "S48_PRODUCT_CLI_INVALID",
+            f"S48_PRODUCT_CLI is not an executable file: {cli_path}",
+        )
+    if not provider or "/" in provider:
+        raise ProductCallError("S48_PRODUCT_PROVIDER_INVALID", provider)
+    model_provider, separator, model_name = model.partition("/")
+    if not separator or not model_name or model_provider != provider:
+        raise ProductCallError(
+            "S48_PRODUCT_PROVIDER_MODEL_MISMATCH",
+            f"provider={provider!r} model={model!r}",
+        )
+    return ProductSelection(
+        cli=str(cli_path),
+        provider=provider,
+        model=model,
+        variant=variant,
+        account=account,
+    )
+
+
+def product_config(selection: ProductSelection | None = None) -> dict[str, Any]:
+    """Build OpenCode config from the explicit selection, never from defaults."""
+    selected = selection or select_product()
+    return {
+        "model": selected.model,
+        "small_model": selected.model,
+        "enabled_providers": [selected.provider],
+        "autoupdate": False,
+        "permission": dict(PRODUCT_PERMISSIONS),
+    }
 
 
 def _sha(value: bytes) -> str:
@@ -224,11 +278,7 @@ def run_product_cli(
     log_dir: str | Path,
     timeout: int = 300,
 ) -> dict:
-    if not PRODUCT_CLI:
-        raise ProductCallError(
-            "S48_PRODUCT_CLI_MISSING",
-            "set S48_PRODUCT_CLI or make the opencode CLI available on PATH",
-        )
+    selection = select_product()
     work = Path(workdir)
     logs = Path(log_dir)
     work.mkdir(parents=True, exist_ok=True)
@@ -237,17 +287,17 @@ def run_product_cli(
     stdout_path = logs / f"product_{stamp}.stdout.jsonl"
     stderr_path = logs / f"product_{stamp}.stderr.log"
     env = dict(os.environ)
-    env["OPENCODE_CONFIG_CONTENT"] = json.dumps(PRODUCT_CONFIG)
+    env["OPENCODE_CONFIG_CONTENT"] = json.dumps(product_config(selection))
     env["TMPDIR"] = str(logs)
     env["XDG_CACHE_HOME"] = str(RETURN / "runtime" / "product-cache")
     env["PYTHONDONTWRITEBYTECODE"] = "1"
     env.pop("OPENCODE_PID", None)
     started = time.time()
     cmd = [
-        PRODUCT_CLI,
+        selection.cli,
         "run",
-        "--model", PRODUCT_MODEL,
-        "--variant", PRODUCT_VARIANT,
+        "--model", selection.model,
+        "--variant", selection.variant,
         "--format", "json",
         "--pure",
         "--dir", str(work),
@@ -274,10 +324,11 @@ def run_product_cli(
     receipt = {
         "schema": "S48_PRODUCT_CALL_RECEIPT@1",
         "actual_provider_call": True,
-        "provider": PRODUCT_MODEL.split("/", 1)[0],
-        "model": PRODUCT_MODEL,
-        "variant": PRODUCT_VARIANT,
-        "cli": PRODUCT_CLI,
+        "provider": selection.provider,
+        "model": selection.model,
+        "variant": selection.variant,
+        "cli": selection.cli,
+        "account_sha256": _sha(selection.account.encode()),
         "cli_exit": proc.returncode,
         "duration_ms": duration_ms,
         "step_count": len(step_starts),
@@ -313,6 +364,7 @@ def run_product_cli(
 
 __all__ = [
     "CANDIDATES", "PRODUCT_CONFIG", "PRODUCT_INPUT_SCHEMA", "PRODUCT_MODEL",
-    "PRODUCT_SCHEMA", "PRODUCT_VARIANT", "build_payload", "build_prompt",
-    "eligible_candidate_ids", "parse_envelope", "run_product_cli",
+    "PRODUCT_SCHEMA", "PRODUCT_VARIANT", "ProductSelection", "build_payload",
+    "build_prompt", "eligible_candidate_ids", "parse_envelope", "product_config",
+    "run_product_cli", "select_product",
 ]

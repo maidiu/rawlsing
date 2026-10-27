@@ -4,7 +4,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-from .source_registry import verify_dependencies
+from .source_registry import source_roots, verify_dependencies
 
 RETURN = Path(__file__).resolve().parents[1]
 REPO = RETURN.parents[1]
@@ -21,6 +21,7 @@ def install() -> None:
     global _INSTALLED
     if _INSTALLED:
         return
+    verify_dependencies(source_roots())
     for path in (str(RETURN), str(S51), str(S49)):
         if path in sys.path:
             sys.path.remove(path)
@@ -29,7 +30,7 @@ def install() -> None:
     from s51.bootstrap import roots as s51_roots
 
     s51_install()
-    verify_dependencies(s51_roots())
+    s51_roots()
     import s51  # noqa: F401
     _INSTALLED = True
 
@@ -45,6 +46,10 @@ def roots() -> dict:
             "s51_return": str(S51),
             "s49_return": str(S49),
             "dependency_verified": True,
+            "source_verified": True,
+            "source_manifest": str(
+                REPO / "WORKER_RETURNS/SOROK-SYN02-F0-R2-PORTABILITY/source_manifest.json"
+            ),
         }
     )
     value["cuts"].update(CUTS)

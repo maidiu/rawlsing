@@ -10,7 +10,14 @@ from s48.errors import ProductCallError
 
 
 def test_missing_product_cli_is_typed_before_subprocess(monkeypatch, tmp_path):
-    monkeypatch.setattr(product, "PRODUCT_CLI", "")
+    for name in (
+        "S48_PRODUCT_CLI",
+        "S48_PRODUCT_PROVIDER",
+        "S48_PRODUCT_MODEL",
+        "S48_PRODUCT_VARIANT",
+        "S48_PRODUCT_ACCOUNT",
+    ):
+        monkeypatch.delenv(name, raising=False)
     with pytest.raises(ProductCallError) as exc:
         product.run_product_cli(
             "prompt",
@@ -26,3 +33,5 @@ def test_product_cli_is_not_a_fixed_user_path():
     source = (Path(__file__).resolve().parents[1] / "s48/product.py").read_text()
     assert "/Users/" not in source
     assert "S48_PRODUCT_CLI" in source
+    assert "shutil.which" not in source
+    assert "opencode-go/deepseek-v4.1-flash" not in source
