@@ -1533,22 +1533,6 @@
   "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
   "active_workers": [
     {
-      "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "LITS",
-      "source_ids": [
-        "SRC27",
-        "SRC28",
-        "SRC29",
-        "SRC30"
-      ],
-      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
-      "pid": 52782,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
-      "branch": "agent/pyat-pre553-r157-lits",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
-      "launch": "LANE_LAUNCHES.json"
-    },
-    {
       "task": "WVS:SOURCE_CONFIGURATION_QUEUE",
       "lane": "WVS",
       "source_ids": [
@@ -3457,22 +3441,6 @@
     "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
     "active_workers": [
       {
-        "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
-        "lane": "LITS",
-        "source_ids": [
-          "SRC27",
-          "SRC28",
-          "SRC29",
-          "SRC30"
-        ],
-        "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
-        "pid": 52782,
-        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
-        "branch": "agent/pyat-pre553-r157-lits",
-        "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
-        "launch": "LANE_LAUNCHES.json"
-      },
-      {
         "task": "WVS:SOURCE_CONFIGURATION_QUEUE",
         "lane": "WVS",
         "source_ids": [
@@ -3499,7 +3467,7 @@
         "launch": "LANE_LAUNCHES.json"
       }
     ],
-    "state": "28_SOURCES_SCOPED_INTEGRATED_LITS_WVS_AND_PORTABLE_IMPLEMENTATION_RUNNING",
+    "state": "32_SOURCES_SCOPED_INTEGRATED_WVS_AND_PORTABLE_DELIVERY_RUNNING",
     "goal_update": "LIVE_CONSOLIDATED_OBJECTIVE_VERIFIED_ACTIVE",
     "heartbeat": "PAUSED",
     "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
@@ -3561,8 +3529,8 @@
         }
       ]
     },
-    "branch_head": "ee210eb20ad96993137f58354d705af50adebaef",
+    "branch_head": "4151ec5efed73800e856e7de67d937a8da1490dc",
     "resume_evidence": "User go after disk cleanup; actual first tools/model readback verified",
-    "prepared_sources_scoped_integrated": 28
+    "prepared_sources_scoped_integrated": 32
   }
 }
