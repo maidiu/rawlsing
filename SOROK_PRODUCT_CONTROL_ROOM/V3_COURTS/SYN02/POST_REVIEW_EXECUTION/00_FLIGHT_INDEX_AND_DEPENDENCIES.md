@@ -1,0 +1,13 @@
+# SYN02-S-R intake and finite parallel sourcefree build/repair campaign
+
+Independent S-R returned exact ac55c36e42ded82957176896cbc5953db62f7209; GitHub verified own branch 3 commits ahead/0 behind and exactly three assigned files. ENGINEERING REVISE_PRECISE / whole complete build specification RED; SCIENCE ACCEPT_SCOPED research program / Rule A/T unissued; AUTHORITY HOLD for C11/C12/native B/ADP/SCI05.
+
+**DO NOT RESET ARCHITECTURE.** Preserve needs-first whole historically developing person, material care/world and independent coactors; current tested C9/C12 source machinery; source-qualified possible composed practice and optional interfunctional relation; full N/N+1 3–5 candidates. S-R's three hard engineering repair classes: one authoritative actor transaction/replay across C9 and C12; orthogonal world/reception/RuleA/RuleT/NO_CHANGE statuses; and implicit SCI05 first-half dependence fail-closed. Ten exact S04/S05 mismatches and incomplete per-function old source patches also require repair.
+
+PARALLEL independent workers after user selects actual models/editor and verifies unique host: RP0 architecture/storage contract (Browser GPT-6 High proposed); RM40 original-source 40×12 function patch reconciliation (local DeepSeek V4.1 Flash MAX proposed); F0 actual S48/S52 sourcefree portability/security coding (local DeepSeek MAX proposed). These have disjoint writing terrain and separate independent reviews. F0 starts from reviewed SOURCE CODE SHA c821b488b3a9a3f0fa01b1981989cc17af637dc1 rather than documentary branch. Other two begin from documentary commission seal.
+
+After independent RP0 review and competent C9/C12 storage-owner approval only, authorize F1.1 actor/outbox/mirror crash-safe implementation. F0 is buildable without domain causal rules. RM40 informs F1/F2/F3 adaptation. Separate original G1/G2/G3 science/world/SCI05 decisions can proceed in parallel but no agent here issues them. C6/C9/C12 owner has not selected batch prefix/atomic/suffix; code must hold before irreversible multiple world events.
+
+Current PRE-MAIN verified 3e7f00fe6696bace9c3f118dc4c6a1d879e371b6, scoped R157 all35 preparation, P5 final portability/native consumer remains open, not native C11 grant. S-R inherited RB 116/116 selected SOURCEFREE tests; no new S-R native run.
+
+Source cuts freshly inspected: S52 bootstrap hardcodes Mac G18, S48 product.py defaults an absolute OpenCode CLI and fixed provider/model, S52 session.verify line 315–317 overrides own errors when _OPENING+base_ok; static error not yet reproduced in a test.
