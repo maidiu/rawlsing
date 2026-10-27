@@ -1,0 +1,107 @@
+{
+  "schema": "SOROK_V3_COURTS_RX03_INDEPENDENT_EVIDENCE_R1",
+  "date": "2026-10-26",
+  "reviewer": "RX03",
+  "review_branch": "agent/v3court-review-rx03-secondwave-r1",
+  "review_startup": "9a2753a1e9f76e9fcfa0c76dba49ed0e6cabf2a2",
+  "review_target": "e81dd633b419d35619014bdf99f894ad4f98c5a5",
+  "target_branch": "agent/v3court-x03-development-topology-r1",
+  "source_root": "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_code_bundle_staging",
+  "source_access": "read-only",
+  "local_staging_zip_sha256": "3f2c5ed925273153a4f300f75e54524729f0b4fef9974957be1f3cd887c91289",
+  "td_r05_archive_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+  "archive_identity": "WHOLE_ZIP_MISMATCH__SELECTED_FILE_IDENTITIES_EXACT",
+  "x03_source_identities": {
+    "declared_files": 35,
+    "directly_read_and_hash_checked": 35,
+    "exact_matches": 35,
+    "mismatches": 0,
+    "s50_selected_sources": 31,
+    "s50_exact_matches": 31
+  },
+  "tests": {
+    "focused_71": {
+      "status": "REPRODUCED",
+      "result": "71 passed in 16.96s",
+      "command": "RAWLSING_STAGING_ROOT=<source> PYTHONDONTWRITEBYTECODE=1 python3 -B <X03>/TEST_SOURCE_AND_LOGS/run_v3_tests.py v3/tests/test_metabolization_effects.py v3/tests/test_step_logic.py v3/tests/test_v5_framework_dormancy.py v3/tests/test_invariants.py v3/tests/test_wave4.py v3/tests/test_architecture_invariants.py v3/tests/test_step_sanity.py v3/tests/test_llm_contract.py v3/tests/test_v5_baseline_load.py v3/tests/test_v5_alienation.py",
+      "note": "Count reproduced; timing differs from X03 14.55s. This is historical sourcefree behavior only."
+    },
+    "full_v3_suite": {
+      "status": "NOT_RUN_BY_RX03",
+      "x03_claim": "NOT_COMPLETED_AFTER_15_TESTS_BY_LOCAL_TIMEOUT",
+      "x03_evidence": "WORKER_RETURNS/X03/TEST_MANIFEST.json",
+      "reviewer_note": "X03's scoped withholding is correct; no full-suite PASS/FAIL is claimed."
+    }
+  },
+  "independent_probe_results": {
+    "x03_probe_rerun_exit": 0,
+    "x03_probe_rerun_observations": {
+      "cracks_default_placeholders": 2,
+      "framework_synthetic_acute_chronic": "binding 51.5, 53.0, 51.5 (acute/acute/chronic switch)",
+      "practice_seed_child": {
+        "study": 25.0,
+        "care": 30.0,
+        "organizing": 35.0,
+        "craft": 35.0,
+        "spiritual": 80.0,
+        "risk_training": 20.0
+      },
+      "practice_seed_adult": {
+        "study": 55.0,
+        "care": 26.0,
+        "organizing": 19.0,
+        "craft": 33.0,
+        "spiritual": 50.0,
+        "risk_training": 18.0
+      },
+      "topology_two_calls": "self_contained -> self_contained (counter 1) -> reciprocal",
+      "boundary_universal_without_gate": "universal",
+      "boundary_universal_repression75": "expanding",
+      "rupture_malheur_process": "severity=micro, status=raw",
+      "rupture_three_years": "raw; plasticity 3->0; IRR 60->60; narrators empty",
+      "stability_inertia": {
+        "raw_20_after": 19.88675,
+        "manually_integrated_20_after": 14.7735
+      },
+      "narrative_support_scores": {
+        "neutral": [50, 20, 20],
+        "warm": [50, 30, 20],
+        "coercive": [50, 20, 44]
+      }
+    },
+    "narrator_edge_targeted": {
+      "status": "EXECUTED_SOURCEFREE",
+      "positive": "raw process + warm rendered scene -> aperture 55, warmth 30; same state + neutral -> aperture 54, warmth 20",
+      "no_process_alternative": "no process + warm or neutral -> psychological capacity remains 50/50/50/50/50; narration_support still changes",
+      "severed_reader": "monkeypatch _analyze_narrative_for_support_quality to constant (50,50,50) -> warm and neutral both aperture 54; difference disappears",
+      "immediate_render_nonmutation": "render_year after compute_all_derived leaves backbone hash unchanged; only rendered_output changes",
+      "edge": "next-year update_metabolization_and_plasticity_step reads previous rendered_output; raw/working process required for capacity delta"
+    },
+    "rng_observations": {
+      "striving_five_runs": "five age-14 update_striving_step calls produced different object/value sets; exact labels are run-dependent",
+      "retirement_seed_scan": "seeds 0..5 remaining: [1,0,1,0,0,1]; X03's own probe JSON also retires at seeds 1,3,4, not only seed 1",
+      "rupture_mode_creation": "same state created processes with different modes across independent runs (e.g. collapse vs assimilation); unnamed Random",
+      "age14_injection_seeds0to19": "14/20 injected; modes vary; process status raw"
+    },
+    "source_observations": {
+      "status_transition_writers": "none found for working/provisionally_narrated/integrated/sealed/chronic",
+      "narrator_writers": "none found after creation empty list",
+      "IRR_writers": "creation only; intrusive_return_rate_prev remains 50",
+      "downstream_bias_consumers": "none found",
+      "framework_max_active": "no cap/selection in enforce_framework_caps; assert_frameworks_limits exists at year-end",
+      "persona_metabolization_mode": "two reads of nonexistent attr; _sacred_ruptured always false; voice-note branch still emits note"
+    }
+  },
+  "reviewer_corrections": [
+    "M16 exact listed object sets in the dossier are not reproducible from the probe JSON; nonreplayability is the stable finding.",
+    "M16 'retired only at seed 1' is false; own probe JSON and independent rerun retire at seeds 1,3,4.",
+    "M18 'branch is always false' is too broad; _sacred_ruptured is always false, but the unresolved-rupture voice note still emits (mode text only missing).",
+    "M19 exact bias values 2->4->6 and -1->-2->-3 are one random mode/cluster draw; accumulation is stable, exact keys/values are not.",
+    "M11 'no active-count enforcement' is precise only for enforce_framework_caps; assert_frameworks_limits fails fast at year end."
+  ],
+  "limits": [
+    "No current S39-S52/C9/C12/native person executed by RX03.",
+    "No LLM/V2 run, respondent data, source modification or production edit.",
+    "Reviewer evidence is sourcefree historical arithmetic/probe behavior, not empirical validation."
+  ]
+}
