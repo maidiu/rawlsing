@@ -241,7 +241,7 @@ def _test_result() -> dict[str, Any]:
     done = subprocess.run(command, cwd=ROOT, env=env, text=True, capture_output=True)
     tail = (done.stdout.strip().splitlines() or [""])[-1]
     return {
-        "command": "PYTHONPATH=. " + " ".join(command[1:]),
+        "command": "PYTHONPATH=. python3 " + " ".join(command[1:]),
         "returncode": done.returncode,
         "summary": tail,
         "stdout_tail": done.stdout.strip().splitlines()[-8:],
@@ -261,7 +261,7 @@ def _legacy_r154_result() -> dict[str, Any]:
     done = subprocess.run(command, cwd=ROOT, env=env, text=True, capture_output=True)
     tail = (done.stdout.strip().splitlines() or [""])[-1]
     return {
-        "command": "PYTHONPATH=. " + " ".join(command[1:]),
+        "command": "PYTHONPATH=. python3 " + " ".join(command[1:]),
         "returncode": done.returncode,
         "summary": tail,
         "known_limit": (
