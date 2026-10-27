@@ -1,6 +1,6 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "FOUR_SOURCE_LANES_RUNNING_AFTER_USER_AUTH_REPAIR",
+  "status": "EVS_INCOMPLETE_RETURN_REPAIRED_BY_SAME_OWNER",
   "active_workers": [
     {
       "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
@@ -64,10 +64,10 @@
         "SRC15"
       ],
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "pid": 25507,
+      "pid": 30112,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs",
       "branch": "agent/pyat-pre553-r157-evs",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "state": "RUNNING_SAME_OWNER_COMPLETION_REPAIR_PREFLIGHT_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     }
   ],
@@ -98,7 +98,7 @@
       "id": "LATIN:EVIDENCE",
       "lane": "LATIN",
       "state": "RUNNING",
-      "process": 15088,
+      "process": 27957,
       "inputs": "91441c34ee58c4c3b13dae37db70a23bb4d4c2b8",
       "output": "source_pre553_validation/SRC24/LANE_RETURN.json",
       "check": "Full prior source facts consumed; ordered source queue then actual native fixture positives; exact residuals",
@@ -108,7 +108,7 @@
       "id": "GSS:EVIDENCE",
       "lane": "GSS",
       "state": "RUNNING",
-      "process": 15095,
+      "process": 27962,
       "inputs": "91441c34ee58c4c3b13dae37db70a23bb4d4c2b8",
       "output": "source_pre553_validation/SRC16/LANE_RETURN.json",
       "check": "Full prior source facts consumed; ordered source queue then actual native fixture positives; exact residuals",
@@ -118,7 +118,7 @@
       "id": "LITS:EVIDENCE",
       "lane": "LITS",
       "state": "RUNNING",
-      "process": 15101,
+      "process": 27969,
       "inputs": "91441c34ee58c4c3b13dae37db70a23bb4d4c2b8",
       "output": "source_pre553_validation/SRC27/LANE_RETURN.json",
       "check": "Full prior source facts consumed; ordered source queue then actual native fixture positives; exact residuals",
@@ -133,8 +133,8 @@
     {
       "id": "EVS:EVIDENCE",
       "lane": "EVS",
-      "state": "RUNNING",
-      "process": 25507,
+      "state": "REPAIR_RUNNING",
+      "process": 30112,
       "inputs": "0b5244204e68e14315550af39631db60cfc770ea",
       "output": "source_pre553_validation/SRC11/LANE_RETURN.json",
       "next_consumer": "all35 integration/final independent review"
@@ -161,6 +161,11 @@
         "pid": 28628,
         "targets": "AUTH_RETRY_completion_event_targets.json",
         "mode": "OS_EVENTS_NO_TIMED_POLLING"
+      },
+      {
+        "pid": 30263,
+        "targets": "EVS_REPAIR_completion_event_targets.json",
+        "mode": "OS_EVENTS_NO_TIMED_POLLING"
       }
     ]
   },
@@ -170,5 +175,6 @@
     "preserved_banked_partials": true,
     "actual_retry_preflight_verified": true,
     "no_purchase": true
-  }
+  },
+  "evs_intake": "EVS_INTAKE.json"
 }

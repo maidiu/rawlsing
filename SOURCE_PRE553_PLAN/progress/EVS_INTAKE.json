@@ -1,0 +1,19 @@
+{
+  "lane": "EVS",
+  "candidate": "fff9e29ae11bee4a0d9bc19880fc68f13c8f7eb3",
+  "decision": "RETURNED_INCOMPLETE_REPAIR_SAME_OWNER",
+  "observed_defect": "Only one response item per source; 2219 items and2209 slots labeled outside selected slice, without exact missing input premise. No-drop inventory is not configuration completion.",
+  "evidence": [
+    "source_pre553_validation/SRC11/LANE_RETURN.json supported_scope ONE_SCALAR_SOURCE_ITEM_PER_WAVE_PLUS_COUNTRY_AND_ID_COCAS",
+    "EXCEPTION_LEDGER UNSUPPORTED_ITEM_SLICE missing_fact: Items are accounted but not bound in the P3 EVS supported scalar slice.",
+    "EXCEPTION_LEDGER UNBOUND_PHYSICAL_SLOT_SLICE missing_fact: Slots are retained but not bound in the P3 supported slice."
+  ],
+  "existing_requirements": [
+    "PLAN.md section3 source configuration content",
+    "PLAN.md P1 full evidence actually consumed and P2 configs contain values/rules, not mostly unbound placeholders",
+    "PLAN.md section7 exact exception law",
+    "Goal: never substitute narrower/easier subset or redefine success around partial output"
+  ],
+  "preserve_positive": "Five distinct source-specific native fixture releases and2224item/slot accounting are useful partial work, not full EVS acceptance.",
+  "unchanged_boundary": "No original respondent execution/workload issuance or ALLOW-source authority required for configuration preparation; exact user paragraph governs."
+}

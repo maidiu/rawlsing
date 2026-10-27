@@ -202,17 +202,17 @@
       "SRC15"
     ],
     "session": "ses_e98c905cbffekusoHURfKyEUKG",
-    "supervisor_pid": 25504,
+    "supervisor_pid": 30109,
     "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs",
     "branch": "agent/pyat-pre553-r157-evs",
-    "startup": "0b5244204e68e14315550af39631db60cfc770ea",
+    "startup": "fff9e29ae11bee4a0d9bc19880fc68f13c8f7eb3",
     "frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
     "p3": "519355ec2215409b40d566ef13c3b21f611e0726",
     "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
     "model": "opencode-go/deepseek-v4.1-flash",
     "variant": "max",
     "account": "existing Global",
-    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs/.r61/r157-lane",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs/.r61/r157-evs-completion-repair",
     "allowed_paths": [
       "rawlsing_next/source_configuration/data/SRC11/",
       "source_pre553_validation/SRC11/",
@@ -225,17 +225,27 @@
       "rawlsing_next/source_configuration/data/SRC15/",
       "source_pre553_validation/SRC15/"
     ],
-    "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
-    "prompt_sha256": "0b0ecc5b280c946739cfe1037c0baad3819b02fcbe25efafe8293abd971706d5",
+    "state": "RUNNING_SAME_OWNER_COMPLETION_REPAIR_PREFLIGHT_VERIFIED",
+    "prompt_sha256": "89f48daf3ceb4c54d5d5805543e622456ce7fcce51723c775f313263127fc834",
     "expected_return": "source_pre553_validation/SRC11/LANE_RETURN.json",
     "next_consumer": "all35 integration and distinct final review",
-    "actual_pid": 25507,
-    "actual_tool_preflight": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs\nhttps://github.com/maidiu/rawlsing.git\nagent/pyat-pre553-r157-evs\n0b5244204e68e14315550af39631db60cfc770ea\n",
+    "actual_tool_preflight": "r157-evs; origin maidiu/rawlsing; agent/pyat-pre553-r157-evs; fff9e29ae11bee4a0d9bc19880fc68f13c8f7eb3; clean",
     "actual_model_readback": {
       "id": "deepseek-v4.1-flash",
       "providerID": "opencode-go",
       "variant": "max"
     },
-    "completion_observer_pid": 25842
+    "completion_observer_pid": 30263,
+    "prior_attempts": [
+      {
+        "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs/.r61/r157-lane",
+        "pid": 25507,
+        "exit_code": 0,
+        "candidate": "fff9e29ae11bee4a0d9bc19880fc68f13c8f7eb3",
+        "intake": "REVISE_INCOMPLETE_CONFIGURATION_SCOPE",
+        "receipt": "EVS_INTAKE.json"
+      }
+    ],
+    "actual_pid": 30112
   }
 ]
