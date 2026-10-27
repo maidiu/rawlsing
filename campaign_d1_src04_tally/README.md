@@ -21,7 +21,9 @@ Event presence is **not** treated as an answered question. Counts are conditiona
 on recorded response availability, not eligibility or population.
 
 The product preserves `ROUTING_UNKNOWN` and the original `DEFER` canonical
-authority. It contains no weights, canonical scale, signed direction, eligibility,
+authority. A narrow negative exercises the existing authority gate against one
+`DEFER` snapshot from the same release, then restores the exact descriptive tally.
+It contains no weights, canonical scale, signed direction, eligibility,
 population, causal or downstream scientific claims.
 
 ## Commands
@@ -35,8 +37,11 @@ PYTHONPATH=. python3 campaign_d1_src04_tally/run.py --mode return \
 ```
 
 `primary` reads only the accepted local C11 bundle and committed Campaign A
-metadata; it never opens the original SAV. `replay` rebuilds the product in a
-fresh process and compares every field count. `return` assembles `RETURN.json`.
+metadata; it never opens the original SAV. The exact TRUE-HQ grant and governing
+program are committed as pinned evidence copies under
+`campaign_d1_src04_tally/evidence/`, so the portable primary/replay path has no
+author-private `.r61` dependency. `replay` rebuilds the product in a fresh process
+and compares every field count. `return` assembles `RETURN.json`.
 
 Local respondent-bearing objects remain outside Git. Only aggregate counts,
 exact refs, negatives and replay evidence are committed.

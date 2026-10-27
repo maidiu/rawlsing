@@ -62,3 +62,31 @@ def test_unknown_state_is_held_refusal():
     result = adapter.unknown_state_negative()
     assert result["status"] == "REFUSED"
     assert result["actual_code"] == "UNKNOWN_RESPONSE_STATE"
+
+def test_portable_grant_and_program_evidence_are_committed():
+    assert adapter.D1_GRANT_PATH.is_file()
+    assert adapter.D1_PROGRAM_PATH.is_file()
+    assert __import__("hashlib").sha256(adapter.D1_GRANT_PATH.read_bytes()).hexdigest() == adapter.EXPECTED_D1_GRANT_SHA256
+    assert __import__("hashlib").sha256(adapter.D1_PROGRAM_PATH.read_bytes()).hexdigest() == adapter.EXPECTED_PROGRAM_SHA256
+
+
+def test_wrong_source_negative_refuses_before_bundle():
+    result = adapter.wrong_source_negative()
+    assert result["status"] == "REFUSED"
+    assert result["actual_code"] == "SOURCE_IDENTITY_MISMATCH"
+    assert result["local_bundle_consumed"] is False
+
+
+def test_existing_defer_authority_negative_and_same_release():
+    result = adapter.held_authority_negative()
+    assert result["status"] == "REFUSED"
+    assert result["decision_state"] == "DEFER"
+    assert result["same_release_ref"]["content_hash"] == adapter.EXPECTED_RELEASE_HASH
+    assert result["issued_i03_or_i05"] is False
+
+
+def test_portable_primary_builder_recreates_exact_refs():
+    product = adapter.build_tally()
+    assert product["tally_ref"]["content_hash"] == "87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022"
+    assert product["replay_ref"]["content_hash"] == "8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f"
+    assert product["held_fields"] == []

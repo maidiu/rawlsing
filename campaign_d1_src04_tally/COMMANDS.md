@@ -15,7 +15,8 @@ PYTHONPATH=. python3 campaign_d1_src04_tally/run.py --mode return \
   --artifact-commit <code-commit>
 ```
 
-Pinned inputs:
+The exact grant and program are pinned under `campaign_d1_src04_tally/evidence/`;
+the primary/replay path has no author-private `.r61` dependency. Pinned inputs:
 
 - local C11 bundle: `SRC04-fc111cfa78d0fc23`
 - release: `fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec`

@@ -1,0 +1,229 @@
+{
+  "actual_api_calls": [
+    "rawlsing_next.pre553_carrier_execution.materialize_public_object",
+    "rawlsing_next.pre553_r5_codec.R5TypedValueCodec.decode",
+    "campaign_d1_src04_tally.adapter.build_tally",
+    "campaign_d1_src04_tally.adapter.wrong_release_negative",
+    "campaign_d1_src04_tally.adapter.unknown_state_negative"
+  ],
+  "artifact_commit": "adf1e81c6719132f1d889e96cf1a222a5f74fff1",
+  "artifact_manifest": [
+    {
+      "bytes": 0,
+      "path": "campaign_d1_src04_tally/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 21031,
+      "path": "campaign_d1_src04_tally/adapter.py",
+      "sha256": "a31ffb69363f6c2f72b21c495673349148c26da9c95d78205e7dec286af55d38"
+    },
+    {
+      "bytes": 14717,
+      "path": "campaign_d1_src04_tally/run.py",
+      "sha256": "44268fa8a9b84d2410965987721ab6bf7a33bb599f43f145a2a59b3136562f15"
+    },
+    {
+      "bytes": 2646,
+      "path": "campaign_d1_src04_tally/tests/test_tally.py",
+      "sha256": "d947ad5d167689159903136d99f5ec924bb5258e551fa60a6c2798ab379a9477"
+    },
+    {
+      "bytes": 1812,
+      "path": "campaign_d1_src04_tally/README.md",
+      "sha256": "3d07a479c563efdad1b07e34c4b5ba5e2487988bb08a0b61b3c6402f27b14bf8"
+    },
+    {
+      "bytes": 907,
+      "path": "campaign_d1_src04_tally/COMMANDS.md",
+      "sha256": "54e0d89a8714d6ff98977508410d7f106a75ffde3612eb3071f738f042ee4610"
+    },
+    {
+      "bytes": 159942,
+      "path": "campaign_d1_src04_tally/evidence/TALLY_PRODUCT.json",
+      "sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0"
+    },
+    {
+      "bytes": 1857,
+      "path": "campaign_d1_src04_tally/evidence/PRIMARY_RUN.json",
+      "sha256": "b15620ff993280c087ef36d285dc74487e0ad8d309732bde4225329244b4e2cf"
+    },
+    {
+      "bytes": 7675,
+      "path": "campaign_d1_src04_tally/evidence/REPLAY_RECEIPT.json",
+      "sha256": "1c4a048df0559a5590e0d1b5ce0c539cf18d4490108f9abb0658d7e46abf33f7"
+    },
+    {
+      "bytes": 159942,
+      "path": "campaign_d1_src04_tally/evidence/REPLAY_PRODUCT.json",
+      "sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0"
+    },
+    {
+      "bytes": 241,
+      "path": "campaign_d1_src04_tally/evidence/NEGATIVE_WRONG_RELEASE.json",
+      "sha256": "62d978928229ce8e6564231b1782650d307191e4ffb97bf1866fa4cdebbe35bb"
+    },
+    {
+      "bytes": 203,
+      "path": "campaign_d1_src04_tally/evidence/NEGATIVE_UNKNOWN_STATE.json",
+      "sha256": "0d364815a1328b3b88948acd0c7ee8ef039f5c477e1674d8eb86ac71a32abfbd"
+    },
+    {
+      "bytes": 323,
+      "path": "campaign_d1_src04_tally/evidence/TEST_RESULTS.json",
+      "sha256": "2c346c930573d7f2fcf5e6ef9e41dda26aae7409aac028c0e5f73b5cb6a29cae"
+    }
+  ],
+  "campaign": "D1",
+  "denominator_accounting": {
+    "answered_substantive_definition": "records whose source response state is SUBSTANTIVE_RESPONSE",
+    "event_presence_is_not_answered": true,
+    "observed_response_definition": "records whose source response state is SUBSTANTIVE_RESPONSE, DK, REFUSAL or SOURCE_SPECIFIC_SPECIAL; event presence alone is not an answered question",
+    "source_record_denominator_per_field": 7337
+  },
+  "limits": [
+    "This is an observed-sample descriptive tally, not M2/M3 or F1-F4 completion.",
+    "Counts are conditional on recorded response availability; event presence is not treated as an answered question.",
+    "ROUTING_UNKNOWN remains unchanged; no eligibility or noneligibility is inferred.",
+    "Canonical authority remains DEFER and canonical values were not used.",
+    "No weights, population prevalence, causal, structural or downstream scientific claim is made.",
+    "No original SAV reread, I03/I05 issuance, FF/N11/N12/CI/prod/Sorok/actor/J52W52 or fixture authority promotion.",
+    "Respondent-level records remain local; only nonidentifying unary aggregates and exact refs are committed."
+  ],
+  "negatives": {
+    "unknown_state": {
+      "actual_code": "UNKNOWN_RESPONSE_STATE",
+      "path": "campaign_d1_src04_tally/evidence/NEGATIVE_UNKNOWN_STATE.json",
+      "sha256": "0d364815a1328b3b88948acd0c7ee8ef039f5c477e1674d8eb86ac71a32abfbd",
+      "status": "REFUSED"
+    },
+    "wrong_release": {
+      "actual_code": "RELEASE_IDENTITY_MISMATCH",
+      "path": "campaign_d1_src04_tally/evidence/NEGATIVE_WRONG_RELEASE.json",
+      "sha256": "62d978928229ce8e6564231b1782650d307191e4ffb97bf1866fa4cdebbe35bb",
+      "status": "REFUSED"
+    }
+  },
+  "next_consumer": "Existing descriptive aggregate consumer / independent reviewer; a separately issued I03 operation remains subsequent and is not claimed here.",
+  "not_issued": [
+    "I03 EmpiricalQuerySpec/EmpiricalFact",
+    "I05 learned production",
+    "weights, canonical scales, signed direction, eligibility or population claims",
+    "structural causality or downstream scientific adoption"
+  ],
+  "permissions": {
+    "control_commit": "3b703e878946a442b5c880f318b929365865ed00",
+    "grant_sha256": "f51de87818f8fd1365d347da3aee73005fe9ab8ae0c8d2a607487395016d48ae",
+    "i03_or_i05_issued_or_executed": false,
+    "local_release_consumed_by_d1": true,
+    "original_sav_reread": false,
+    "program_sha256": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50",
+    "scope": "D1 SRC04 observed-sample descriptive tally",
+    "source_read_performed_by_d1": false
+  },
+  "product": {
+    "answered_substantive_denominator_total": 277582,
+    "consumer_api": "rawlsing_next.pre553_carrier_execution.materialize_public_object",
+    "control": {
+      "discriminating": true,
+      "field": "q101",
+      "source_release_unchanged": true,
+      "values": [
+        {
+          "count": 257,
+          "native_value": 1.0,
+          "native_value_token": "{\"bits\":\"3ff0000000000000\",\"t\":\"float64_finite\"}"
+        },
+        {
+          "count": 2258,
+          "native_value": 2.0,
+          "native_value_token": "{\"bits\":\"4000000000000000\",\"t\":\"float64_finite\"}"
+        }
+      ]
+    },
+    "event_presence_count": 308154,
+    "field_count": 42,
+    "field_level": "campaign_d1_src04_tally/evidence/TALLY_PRODUCT.json",
+    "held_fields": [],
+    "materialized_event_count": 308154,
+    "missing_or_unobserved_total": 9335,
+    "observed_response_denominator_total": 298819,
+    "path": "campaign_d1_src04_tally/evidence/TALLY_PRODUCT.json",
+    "replay_ref": {
+      "content_hash": "8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f",
+      "kind": "D1_TALLY_REPLAY",
+      "object_id": "urn:rawlsing:d1:SRC04:observed-sample-replay:8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f"
+    },
+    "sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+    "source_record_denominator": 7337,
+    "state_totals": {
+      "DK": 14784,
+      "MISSING": 9335,
+      "SOURCE_SPECIFIC_SPECIAL": 6453,
+      "SUBSTANTIVE_RESPONSE": 277582
+    },
+    "tally_ref": {
+      "content_hash": "87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022",
+      "kind": "D1_OBSERVED_SAMPLE_TALLY",
+      "object_id": "urn:rawlsing:d1:SRC04:observed-sample-tally:87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022"
+    },
+    "value_api": "rawlsing_next.pre553_r5_codec.R5TypedValueCodec.decode"
+  },
+  "replay": {
+    "all_field_counts_match": true,
+    "field_count_match": true,
+    "path": "campaign_d1_src04_tally/evidence/REPLAY_RECEIPT.json",
+    "replay_ref_match": true,
+    "sha256": "1c4a048df0559a5590e0d1b5ce0c539cf18d4490108f9abb0658d7e46abf33f7",
+    "status": "COLD_REPLAY_COMPLETE",
+    "tally_ref_match": true
+  },
+  "schema": "PYAT_D1_SRC04_RETURN@1.0.0",
+  "source": {
+    "lineage": {
+      "local_bundle": {
+        "bundle_id": "SRC04-fc111cfa78d0fc23",
+        "internal_records_lines": 7379,
+        "internal_records_sha256": "2d9ea42a36e9b326f65f3ed5219ddf84a9fdb7d634ff8e459cc3e8892bc89538",
+        "public_objects_lines": 630990,
+        "public_objects_sha256": "a47957a1d0b4e6df29195f70b1c3d122cc69b1a8a484b60bbe072d9eff126edd",
+        "receipt_sha256": "b1333a021c28f0a4fe3a8272d469d9dab2ecb619cf08fcae3fdf18246fb9d8c9",
+        "replay_manifest_sha256": "f13d893f363753ad0d17bbf58c5a8bd51fcb12334daf85232b4365d66f96d09e"
+      },
+      "release_receipt_sha256": "4b18f50008b824e17a628a6c66852f6104a7dbff2368bff4297bac1f54526aca"
+    },
+    "local_release_consumed_by_d1": true,
+    "original_sav_reread": false,
+    "release_ref": {
+      "content_hash": "fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec",
+      "kind": "C11LogicalRelease",
+      "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION"
+    },
+    "replay_manifest_ref": {
+      "content_hash": "ca70d58e2b2f4881dfe7809862d0c005c6e015753175fbcd937ff218546d22bb",
+      "kind": "C11Internal:ReplayManifest",
+      "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:ca70d58e2b2f4881dfe7809862d0c005c6e015753175fbcd937ff218546d22bb"
+    },
+    "source_columns": 181,
+    "source_config_canonical_sha256": "0e86814b62eb51dc9da22793b6de3e3598c3415632accb80f33bac965185f284",
+    "source_config_file_sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900",
+    "source_config_path": "rawlsing_next/source_configuration/data/SRC04/source.config.json",
+    "source_id": "SRC04",
+    "source_read_performed_by_d1": false,
+    "source_records": 7337,
+    "source_release_manifest_hash": "8f8015a1c7c13ac24609693551f51c964feeae9d2ff9097be9b9ca55c5b76d71",
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
+  },
+  "status": "D1_OBSERVED_SAMPLE_TALLY_COMPLETE__LOCAL_ORIGINAL_C11_CONSUMED",
+  "tests": {
+    "command": "python3 -m pytest campaign_d1_src04_tally/tests -q -o addopts=",
+    "passed": true,
+    "returncode": 0,
+    "schema": "PYAT_D1_SRC04_TEST_RESULTS@1.0.0",
+    "stderr_tail": [],
+    "stdout_tail": [
+      ".....                                                                    [100%]",
+      "5 passed in 0.11s"
+    ]
+  }
+}
