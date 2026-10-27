@@ -1,0 +1,122 @@
+{
+  "actual_existing_api_calls": [
+    "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+    "rawlsing_next.pre553_native_workload_binding.build_projection_catalog",
+    "rawlsing_next.pre553_empirical_query.execute_empirical_query"
+  ],
+  "authority_grades": [
+    {
+      "authority_id": "R157-SRC04-R157_PREPARE_SOURCE_TOPOLOGY",
+      "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+      "decision_state": "ALLOW",
+      "grade": "NONRESPONDENT_FIXTURE_ONLY"
+    },
+    {
+      "authority_id": "R157-SRC04-R157_RECORD_UNRESOLVED_SOURCE_ROUTING",
+      "authority_kind": "ROUTING_RISK_SET",
+      "decision_state": "ALLOW",
+      "grade": "NONRESPONDENT_FIXTURE_ONLY"
+    },
+    {
+      "authority_id": "R157-SRC04-R157_OBSERVE_SOURCE_NATIVE_COORDINATE_RAW",
+      "authority_kind": "COORDINATE_SEMANTICS",
+      "decision_state": "ALLOW",
+      "grade": "NONRESPONDENT_FIXTURE_ONLY"
+    },
+    {
+      "authority_id": "R157-SRC04-R157_PREPARE_SOURCE_PROJECTION",
+      "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+      "decision_state": "ALLOW",
+      "grade": "NONRESPONDENT_FIXTURE_ONLY"
+    },
+    {
+      "authority_id": "R157-SRC04-R157_LOCAL_DETERMINISTIC_REPLAY",
+      "authority_kind": "REPLAY_PROTOCOL",
+      "decision_state": "ALLOW",
+      "grade": "NONRESPONDENT_FIXTURE_ONLY"
+    },
+    {
+      "authority_id": "B49-TEST-ONLY-QUERY-AUTH",
+      "authority_kind": "PREDICATE_GRAMMAR",
+      "decision_state": "ALLOW",
+      "grade": "TEST_ONLY_SOURCEFREE"
+    },
+    {
+      "authority_id": "R157-SRC04-R157_PREPARE_SOURCE_ITEM_SEMANTICS",
+      "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+      "decision_state": "ALLOW",
+      "grade": "NONRESPONDENT_FIXTURE_ONLY"
+    },
+    {
+      "authority_id": "R157-SRC04-R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+      "authority_kind": "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+      "decision_state": "ALLOW",
+      "grade": "NONRESPONDENT_FIXTURE_ONLY"
+    }
+  ],
+  "catalog_identity": "24cebd87e16ac39f098ea44d1948843f2296b6063dbee3181f76404b4b795ac6",
+  "execution": {
+    "fact_count": 1,
+    "raw_denominator_support": [
+      0
+    ],
+    "raw_numerator_support": [
+      0
+    ],
+    "status": "EXECUTED",
+    "typed_states": [
+      "UNAVAILABLE"
+    ]
+  },
+  "fixture_config_file_sha256": "7f69af5cfafe07123c211707df353b37da4e9375adfa6e55c5df42a930cfebaa",
+  "fixture_config_path": "source_pre553_validation/SRC04/fixture.config.json",
+  "fixture_path": "source_pre553_validation/SRC04/fixture.json",
+  "fixture_projection_identity": {
+    "content_hash": "e78d21decf1623701dc3768179bd659b77d2284e5c55fccd79dc9d70af58b576",
+    "kind": "C11_SEMANTIC_PROJECTION",
+    "object_id": "urn:rawlsing:r157:fixture:SRC04:projection"
+  },
+  "fixture_release_ref": {
+    "content_hash": "9026fa33bb5739b87b06309f12e1d31fe6fd21fb471237eda870d6d278d47f42",
+    "kind": "C11LogicalRelease",
+    "object_id": "R157_FIXTURE_RELEASE/SRC04"
+  },
+  "fixture_source_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b",
+  "original_source_or_release_read": false,
+  "predicate_ref": {
+    "content_hash": "566185239023a38e2082084ad47f30e3791e1f7289d3f3ab9d1a0e420d11f505",
+    "kind": "EmpiricalPredicate@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:566185239023a38e2082084ad47f30e3791e1f7289d3f3ab9d1a0e420d11f505"
+  },
+  "product_positive": false,
+  "query_ref": {
+    "content_hash": "f37c03208534b92607bac06c176df1a83d4bb62cd7ca7303919e0580e48df48c",
+    "kind": "EmpiricalQuerySpec@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:f37c03208534b92607bac06c176df1a83d4bb62cd7ca7303919e0580e48df48c"
+  },
+  "request_ref": {
+    "content_hash": "f37c03208534b92607bac06c176df1a83d4bb62cd7ca7303919e0580e48df48c",
+    "kind": "EmpiricalQuerySpec@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:f37c03208534b92607bac06c176df1a83d4bb62cd7ca7303919e0580e48df48c"
+  },
+  "requested_output_grain": {
+    "measure_kind": "RAW",
+    "response_state_semantics_ref": {
+      "content_hash": "f417c1014b7dfd3a2986a53b7b8fe3ef4d1e6ed04f69b4293531fa65fc3788f2",
+      "kind": "RESPONSE_STATE_SEMANTICS",
+      "object_id": "urn:rawlsing:b49:response_state_semantics:SUBSTANTIVE"
+    },
+    "risk_set_type": "WHOLE_QUESTION_RISK_SET",
+    "source_scope_mode": "SINGLE_UNIVERSE",
+    "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED"
+  },
+  "schema": "PYAT_CAMPAIGN_B0_SRC04_FIXTURE_HELD@1.0.0",
+  "scope": "SRC04_NONRESPONDENT_FIXTURE_ONLY__UNAVAILABLE_HELD",
+  "target_ref": {
+    "content_hash": "ad0aa3ac8ec22f32b2dea2e7196324f5d875c391e42ffeaf8a12cca84624077d",
+    "kind": "NATIVE_QUESTION",
+    "object_id": "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.ad0aa3ac8ec22f32b2de"
+  },
+  "test_only_query_authority_used": true
+}

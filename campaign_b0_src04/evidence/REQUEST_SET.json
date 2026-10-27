@@ -588,16 +588,32 @@
   "historical_parent_snapshot_ref": null,
   "local_original_release_read_by_b0": false,
   "minimal_remaining_authority": {
-    "decision": "EXTERNAL_COMPETENT_ISSUER_MUST_SUPPLY_EXACT_ALLOW_SOURCE_NATIVE_UNARY_DISTRIBUTION_AUTHORITY_AND_CATALOG_HISTORICAL_PARENT",
-    "not_fabricated": true,
-    "operation_token_selected": false,
-    "required_external_inputs": [
-      "exact adopted PREDICATE_GRAMMAR ALLOW authority for the existing source-native unary distribution operation",
-      "exact operation token and predicate semantics from that issuer",
-      "exact TARGET_USE_PERMISSION ALLOW if an EmpiricalFact will be consumed",
-      "exact RuntimeObjectCatalog preimages and catalog identity",
-      "exact ALLOW PREDICATE_GRAMMAR historical parent snapshot and operation succession",
-      "exact routing/risk-set eligibility or explicitly adopted raw-sample policy"
+    "actual_indispensable_substantive_decision": {
+      "decision": "EXTERNAL_COMPETENT_ISSUER_MUST_SUPPLY_EXACT_EXISTING_SOURCE_NATIVE_UNARY_DISTRIBUTION_OPERATION_AND_ROUTING_POLICY",
+      "not_fabricated": true,
+      "not_required_from_user": [
+        "manual catalog hashes or object preimages",
+        "manually authored EmpiricalQuerySpec/predicate refs",
+        "a new semantic predicate, eligibility rule, canonical mapping, estimand, or population"
+      ],
+      "operation_token_selected": false,
+      "required_substantive_inputs": [
+        "exact adopted PREDICATE_GRAMMAR ALLOW authority and its existing source-native unary-distribution operation token/predicate semantics",
+        "exact TARGET_USE_PERMISSION ALLOW if an EmpiricalFact will be consumed",
+        "exact eligible/applicability routing or an explicitly adopted raw-sample policy; current SRC04 routing is ROUTING_UNKNOWN",
+        "exact response-state semantics authority for the prepared unary request"
+      ]
+    },
+    "engine_constraint": {
+      "api": "rawlsing_next._pre553_query_eval._risk_membership",
+      "canonical_authority": "DEFER; not required for raw counts and not promoted",
+      "constraint": "raises EmpiricalQueryResolutionError for unresolved ROUTING_UNKNOWN/RULE_UNAVAILABLE; it cannot be coerced to nonmembership or inferred eligibility",
+      "raw_count_note": "raw response values are available in the C11 event carrier; canonical adoption is not required for raw counts, but the original routing/authority gate remains unresolved"
+    },
+    "mechanically_constructible_after_decision": [
+      "EmpiricalPredicate@1.0.0 and EmpiricalQuerySpec@1.0.0 preimages through the existing owners",
+      "RuntimeObjectCatalog and catalog_identity through the existing catalog constructor",
+      "historical-parent and operation-successor refs once the exact adopted parent is supplied"
     ]
   },
   "missing_authority": [

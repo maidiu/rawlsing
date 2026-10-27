@@ -10,14 +10,14 @@
     },
     {
       "api": "rawlsing_next.pre553_native_workload_binding.build_projection_catalog",
-      "catalog_identity": "24cebd87e16ac39f098ea44d1948843f2296b6063dbee3181f76404b4b795ac6",
+      "catalog_identity": "305d17e9a1b4c013e24bd1a145b17c659fd2e1b727dc8946a8dbf6ec051109de",
       "fixture_only": true,
       "query_ref": {
-        "content_hash": "f37c03208534b92607bac06c176df1a83d4bb62cd7ca7303919e0580e48df48c",
+        "content_hash": "d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706",
         "kind": "EmpiricalQuerySpec@1.0.0",
-        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:f37c03208534b92607bac06c176df1a83d4bb62cd7ca7303919e0580e48df48c"
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706"
       },
-      "result": "fixture-only EmpiricalQuerySpec and RuntimeObjectCatalog constructed"
+      "result": "qualified SRC09 P0 fixture-only EmpiricalQuerySpec and RuntimeObjectCatalog constructed and executed to SUPPORTED 1/1"
     },
     {
       "api": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
@@ -25,20 +25,25 @@
       "original_execution": false,
       "result": {
         "fact_count": 1,
+        "fact_ref": {
+          "content_hash": "a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
+        },
         "raw_denominator_support": [
-          0
+          1
         ],
         "raw_numerator_support": [
-          0
+          1
         ],
-        "status": "EXECUTED",
+        "status": "EXECUTED_SUPPORTED",
         "typed_states": [
-          "UNAVAILABLE"
+          "SUPPORTED"
         ]
       }
     }
   ],
-  "artifact_commit": "d86d6795d9fecc82235027d892204325174c5d16",
+  "artifact_commit": "82edac29f826ab3e1886e843de451e059a90d28b",
   "artifact_manifest": [
     {
       "bytes": 0,
@@ -46,44 +51,49 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "bytes": 26314,
+      "bytes": 34185,
       "path": "campaign_b0_src04/adapter.py",
-      "sha256": "f2f6e3f0886b8c47457d539b264497359939fd0fba552d9b5552e18e3193d890"
+      "sha256": "01aa31f1cc595425a9648003b8b0ad0c6717402623f5f124a90e73f167269bb5"
     },
     {
-      "bytes": 10927,
+      "bytes": 12383,
       "path": "campaign_b0_src04/run.py",
-      "sha256": "4db69968468b7d9b48056edeb38ca64828dfb521e3e46071d3cb430476489b26"
+      "sha256": "68d3e19bd1c5cbe29274b5d5f9464b2ca1f5d75e03a1f65241f932c36e41628c"
     },
     {
-      "bytes": 3423,
+      "bytes": 4399,
       "path": "campaign_b0_src04/tests/test_adapter.py",
-      "sha256": "64f0ef64826abeed8205646912ae60c0db7546835254a6b806aef3eed2a3f003"
+      "sha256": "ffdff5894c2629e99db8026027504e557942c78efe0ae1e81c36f8a3c52fb9b1"
     },
     {
-      "bytes": 1631,
+      "bytes": 1841,
       "path": "campaign_b0_src04/README.md",
-      "sha256": "ece23374f4bc5e55946b0a4c7438f2ad46b4a776830a8c6d387950acb8049547"
+      "sha256": "907fb4b98c09dcd74ec4243b7eaf5d83f33d8ec056e01f44c798990f4cb36029"
     },
     {
-      "bytes": 1149,
+      "bytes": 1204,
       "path": "campaign_b0_src04/COMMANDS.md",
-      "sha256": "5792c7efa71d6cbe7252d43f1be0ebfada9b37e1958bad12c44a2e6ab1f6bd87"
+      "sha256": "ad67aeceeabde91f2ff85db04b480ec06f89a68bc926224947972e4737d1dd46"
     },
     {
-      "bytes": 138807,
+      "bytes": 139956,
       "path": "campaign_b0_src04/evidence/REQUEST_SET.json",
-      "sha256": "84f0cd2848a6d74ac421fd5300d4dacec17df6bda28dfe5a2764e38624001a47"
+      "sha256": "8e6c5942c697293dccf529c8f72ed2ac608421a68d91bec0c1ce1a4ff751ff9e"
     },
     {
-      "bytes": 44486,
+      "bytes": 45635,
       "path": "campaign_b0_src04/evidence/AUTHORITY_DEPENDENCIES.json",
-      "sha256": "86ce9810e1fa860ed38686971089bbe3ac3ece74982b624621169676c85664cf"
+      "sha256": "c270f5a1073ca554edf7aab5ab24ca1a8b52fb6fdf757f8a50ed576869ad5424"
     },
     {
-      "bytes": 4876,
+      "bytes": 5014,
       "path": "campaign_b0_src04/evidence/FIXTURE_POSITIVE.json",
-      "sha256": "ed90891dd6da387b22e33b37630d764476388ffc5e0de0728d219a46d799268a"
+      "sha256": "947b4950ade82dc7d1c5a80d5a2f2b54e7b918ce331e8e3ee1d64cbbd554c532"
+    },
+    {
+      "bytes": 4912,
+      "path": "campaign_b0_src04/evidence/SRC04_FIXTURE_HELD.json",
+      "sha256": "6c80ac949a1ad402f7b4ad9a1d8382213abfbffb6c2f0a75f71bc4285851665a"
     },
     {
       "bytes": 314,
@@ -98,74 +108,145 @@
     {
       "bytes": 326,
       "path": "campaign_b0_src04/evidence/TEST_RESULTS.json",
+      "sha256": "ccc163078d2b4759325e4b7d9fca81d0289ac9b48d58be12e9387681457f87da"
+    },
+    {
+      "bytes": 44486,
+      "path": "campaign_b0_src04/evidence/history/construction-only-64895f3a/AUTHORITY_DEPENDENCIES.json",
+      "sha256": "86ce9810e1fa860ed38686971089bbe3ac3ece74982b624621169676c85664cf"
+    },
+    {
+      "bytes": 4876,
+      "path": "campaign_b0_src04/evidence/history/construction-only-64895f3a/FIXTURE_POSITIVE.json",
+      "sha256": "ed90891dd6da387b22e33b37630d764476388ffc5e0de0728d219a46d799268a"
+    },
+    {
+      "bytes": 1387,
+      "path": "campaign_b0_src04/evidence/history/construction-only-64895f3a/MANIFEST.json",
+      "sha256": "90d178d63799927c38e14ac8b464d646536b223e98070985d0a8a74cf9be3327"
+    },
+    {
+      "bytes": 259,
+      "path": "campaign_b0_src04/evidence/history/construction-only-64895f3a/NEGATIVE_FIXTURE_TARGET.json",
+      "sha256": "99831f9e66692994d35e02d77f73366add2a7c0a6f58af62e860a23b51a24322"
+    },
+    {
+      "bytes": 314,
+      "path": "campaign_b0_src04/evidence/history/construction-only-64895f3a/NEGATIVE_RELEASE_MISMATCH.json",
+      "sha256": "8c519f4ccc7d2fbcf1e1f842eb9ca336d0c98908c09d3be9728f15352a39eb0b"
+    },
+    {
+      "bytes": 138807,
+      "path": "campaign_b0_src04/evidence/history/construction-only-64895f3a/REQUEST_SET.json",
+      "sha256": "84f0cd2848a6d74ac421fd5300d4dacec17df6bda28dfe5a2764e38624001a47"
+    },
+    {
+      "bytes": 12185,
+      "path": "campaign_b0_src04/evidence/history/construction-only-64895f3a/RETURN.json",
+      "sha256": "b1a9655b5262729e5b5c1b3bc8357501c6da50331fc03fc9637a02a6be0dc9f7"
+    },
+    {
+      "bytes": 326,
+      "path": "campaign_b0_src04/evidence/history/construction-only-64895f3a/TEST_RESULTS.json",
       "sha256": "7af9380b17f330075e0f5eeb58625c0ec7b502bbb0729227911477aee092ee54"
     }
   ],
   "campaign": "B0",
   "fixture_positive": {
-    "catalog_identity": "24cebd87e16ac39f098ea44d1948843f2296b6063dbee3181f76404b4b795ac6",
+    "catalog_identity": "305d17e9a1b4c013e24bd1a145b17c659fd2e1b727dc8946a8dbf6ec051109de",
     "construction_positive": true,
     "execution": {
       "fact_count": 1,
+      "fact_ref": {
+        "content_hash": "a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
+      },
       "raw_denominator_support": [
-        0
+        1
       ],
       "raw_numerator_support": [
-        0
+        1
       ],
-      "status": "EXECUTED",
+      "status": "EXECUTED_SUPPORTED",
       "typed_states": [
-        "UNAVAILABLE"
+        "SUPPORTED"
       ]
     },
+    "fixture_only": true,
     "fixture_release_ref": {
-      "content_hash": "9026fa33bb5739b87b06309f12e1d31fe6fd21fb471237eda870d6d278d47f42",
+      "content_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f",
       "kind": "C11LogicalRelease",
-      "object_id": "R157_FIXTURE_RELEASE/SRC04"
+      "object_id": "R157_P0_FIXTURE_RELEASE/SRC09"
     },
-    "fixture_source_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b",
+    "fixture_source_sha256": "a93b4dab00a2b7cbd559d8a0bb1ca498caaa87f27bd1bd73e9fceb0f2820a491",
+    "independent_count_check": {
+      "expected_denominator": 1,
+      "expected_numerator": 1,
+      "matches_empirical_fact": true,
+      "source_fixture_rows": 9,
+      "target_raw_value": 1.0,
+      "target_variable": "q101"
+    },
     "original_source_or_release_read": false,
     "path": "campaign_b0_src04/evidence/FIXTURE_POSITIVE.json",
     "predicate_ref": {
-      "content_hash": "566185239023a38e2082084ad47f30e3791e1f7289d3f3ab9d1a0e420d11f505",
+      "content_hash": "ff2b51391075df074e1ae76d8de5aa34c236cfabbabeae738227c87c2e7ef7e3",
       "kind": "EmpiricalPredicate@1.0.0",
-      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:566185239023a38e2082084ad47f30e3791e1f7289d3f3ab9d1a0e420d11f505"
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:ff2b51391075df074e1ae76d8de5aa34c236cfabbabeae738227c87c2e7ef7e3"
     },
-    "product_positive": false,
+    "product_positive": true,
     "query_ref": {
-      "content_hash": "f37c03208534b92607bac06c176df1a83d4bb62cd7ca7303919e0580e48df48c",
+      "content_hash": "d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706",
       "kind": "EmpiricalQuerySpec@1.0.0",
-      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:f37c03208534b92607bac06c176df1a83d4bb62cd7ca7303919e0580e48df48c"
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706"
     },
-    "scope": "NONRESPONDENT_FIXTURE_ONLY_NOT_ORIGINAL",
-    "sha256": "ed90891dd6da387b22e33b37630d764476388ffc5e0de0728d219a46d799268a",
+    "scope": "SRC09_P0_NONRESPONDENT_FIXTURE_ONLY__NOT_ORIGINAL_NOT_SRC04",
+    "sha256": "947b4950ade82dc7d1c5a80d5a2f2b54e7b918ce331e8e3ee1d64cbbd554c532",
     "test_only_query_authority_used": true
   },
   "fixture_vs_original_scope": {
-    "fixture": "SRC04 nonrespondent fixture used only to construct/execute the existing catalog/query seam",
     "fixture_authority_not_reused_for_original": true,
-    "original": "SRC04 committed C11 metadata/receipt only; no original SAV or local original release read; no original query issued"
+    "fixture_positive": "SRC09 P0 nonrespondent fixture, separately labelled and test-only, used only for the existing consumer positive seam",
+    "original": "SRC04 committed C11 metadata/receipt only; no original SAV or local original release read; no original query issued",
+    "src04_fixture_held": "SRC04 nonrespondent fixture remains UNAVAILABLE because routing/authority is held; not promoted"
   },
   "limits": [
     "B0 is consumer preparation, not B completion, M1/M2, I03/I05 execution, or final acceptance.",
     "The original request remains blocked until an exact competent issuer supplies the adopted source-native unary-distribution operation/authority, target use if needed, runtime catalog, historical parent, and routing/risk-set decision.",
     "No new semantic predicate, eligibility rule, canonical/directional mapping, estimand, weight, or population claim is invented.",
-    "The permitted SRC04 fixture only demonstrates existing catalog/query construction; its test-only authority is not an original authority.",
+    "The SRC09 P0 fixture positive is separately labelled because SRC04 fixture routing/authority is held; test-only authority is not an original authority.",
     "No original SAV, original local release, respondent cells, or row-wise artifacts were read or committed.",
     "No FF/M1/N11/N12/actor/CI/prod/Sorok/J52W52 or other source-family action."
   ],
   "milestone_claimed": "NONE_SELF_CLAIMED",
   "minimal_remaining_authority": {
-    "decision": "EXTERNAL_COMPETENT_ISSUER_MUST_SUPPLY_EXACT_ALLOW_SOURCE_NATIVE_UNARY_DISTRIBUTION_AUTHORITY_AND_CATALOG_HISTORICAL_PARENT",
-    "not_fabricated": true,
-    "operation_token_selected": false,
-    "required_external_inputs": [
-      "exact adopted PREDICATE_GRAMMAR ALLOW authority for the existing source-native unary distribution operation",
-      "exact operation token and predicate semantics from that issuer",
-      "exact TARGET_USE_PERMISSION ALLOW if an EmpiricalFact will be consumed",
-      "exact RuntimeObjectCatalog preimages and catalog identity",
-      "exact ALLOW PREDICATE_GRAMMAR historical parent snapshot and operation succession",
-      "exact routing/risk-set eligibility or explicitly adopted raw-sample policy"
+    "actual_indispensable_substantive_decision": {
+      "decision": "EXTERNAL_COMPETENT_ISSUER_MUST_SUPPLY_EXACT_EXISTING_SOURCE_NATIVE_UNARY_DISTRIBUTION_OPERATION_AND_ROUTING_POLICY",
+      "not_fabricated": true,
+      "not_required_from_user": [
+        "manual catalog hashes or object preimages",
+        "manually authored EmpiricalQuerySpec/predicate refs",
+        "a new semantic predicate, eligibility rule, canonical mapping, estimand, or population"
+      ],
+      "operation_token_selected": false,
+      "required_substantive_inputs": [
+        "exact adopted PREDICATE_GRAMMAR ALLOW authority and its existing source-native unary-distribution operation token/predicate semantics",
+        "exact TARGET_USE_PERMISSION ALLOW if an EmpiricalFact will be consumed",
+        "exact eligible/applicability routing or an explicitly adopted raw-sample policy; current SRC04 routing is ROUTING_UNKNOWN",
+        "exact response-state semantics authority for the prepared unary request"
+      ]
+    },
+    "engine_constraint": {
+      "api": "rawlsing_next._pre553_query_eval._risk_membership",
+      "canonical_authority": "DEFER; not required for raw counts and not promoted",
+      "constraint": "raises EmpiricalQueryResolutionError for unresolved ROUTING_UNKNOWN/RULE_UNAVAILABLE; it cannot be coerced to nonmembership or inferred eligibility",
+      "raw_count_note": "raw response values are available in the C11 event carrier; canonical adoption is not required for raw counts, but the original routing/authority gate remains unresolved"
+    },
+    "mechanically_constructible_after_decision": [
+      "EmpiricalPredicate@1.0.0 and EmpiricalQuerySpec@1.0.0 preimages through the existing owners",
+      "RuntimeObjectCatalog and catalog_identity through the existing catalog constructor",
+      "historical-parent and operation-successor refs once the exact adopted parent is supplied"
     ]
   },
   "negatives": {
@@ -200,9 +281,14 @@
     "function": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
     "required_context": "sealed SRC04 C11 release + exact EmpiricalQuerySpec/predicate/catalog/historical parent + current original authority"
   },
+  "preserved_history": {
+    "candidate": "64895f3a785b8a33a08619d7556aa1253e9b4ce0",
+    "path": "campaign_b0_src04/evidence/history/construction-only-64895f3a/MANIFEST.json",
+    "sha256": "90d178d63799927c38e14ac8b464d646536b223e98070985d0a8a74cf9be3327"
+  },
   "request_preparation": {
     "authority_dependencies_path": "campaign_b0_src04/evidence/AUTHORITY_DEPENDENCIES.json",
-    "authority_dependencies_sha256": "86ce9810e1fa860ed38686971089bbe3ac3ece74982b624621169676c85664cf",
+    "authority_dependencies_sha256": "c270f5a1073ca554edf7aab5ab24ca1a8b52fb6fdf757f8a50ed576869ad5424",
     "canonical_question_values": 0,
     "canonical_response_values": 0,
     "canonicalization": "WITHHELD_DEFER_NO_SCIENTIFIC_ALLOW",
@@ -212,7 +298,7 @@
     "request_count": 42,
     "request_set_canonical_sha256": "fbfa54b5718c173098125886b0c4846fe02cef81599e56769b098f9ae211551d",
     "request_set_path": "campaign_b0_src04/evidence/REQUEST_SET.json",
-    "request_set_sha256": "84f0cd2848a6d74ac421fd5300d4dacec17df6bda28dfe5a2764e38624001a47",
+    "request_set_sha256": "8e6c5942c697293dccf529c8f72ed2ac608421a68d91bec0c1ce1a4ff751ff9e",
     "runtime_catalog_identity": null,
     "status": "BLOCKED_MISSING_EXACT_CONSUMER_AUTHORITY",
     "weight_slots": 0
@@ -326,7 +412,27 @@
     },
     "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
   },
-  "status": "CONSUMER_PREPARATION_READY__BLOCKED_MISSING_EXACT_AUTHORITY__FIXTURE_CONSTRUCTION_POSITIVE",
+  "src04_fixture_held": {
+    "execution": {
+      "fact_count": 1,
+      "raw_denominator_support": [
+        0
+      ],
+      "raw_numerator_support": [
+        0
+      ],
+      "status": "EXECUTED",
+      "typed_states": [
+        "UNAVAILABLE"
+      ]
+    },
+    "path": "campaign_b0_src04/evidence/SRC04_FIXTURE_HELD.json",
+    "preserved_as": "UNAVAILABLE_NEGATIVE_NOT_PROMOTED",
+    "product_positive": false,
+    "scope": "SRC04_NONRESPONDENT_FIXTURE_ONLY__UNAVAILABLE_HELD",
+    "sha256": "6c80ac949a1ad402f7b4ad9a1d8382213abfbffb6c2f0a75f71bc4285851665a"
+  },
+  "status": "CONSUMER_PREPARATION_READY__BLOCKED_MISSING_EXACT_AUTHORITY__QUALIFIED_FIXTURE_POSITIVE",
   "tests": {
     "command": "python3 -m pytest campaign_b0_src04/tests -q -o addopts=",
     "passed": true,
@@ -334,8 +440,8 @@
     "schema": "PYAT_CAMPAIGN_B0_SRC04_TEST_RESULTS@1.0.0",
     "stderr_tail": [],
     "stdout_tail": [
-      ".....                                                                    [100%]",
-      "5 passed in 2.99s"
+      "......                                                                   [100%]",
+      "6 passed in 3.04s"
     ]
   }
 }
