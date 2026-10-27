@@ -1,0 +1,309 @@
+{
+  "schema": "PYAT_R157_P3_RETURN@1.0.0",
+  "task": "P3_READER_AND_ORIGINAL_BINDING",
+  "status": "COMPLETE",
+  "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+  "branch": "agent/pyat-pre553-r157-foundation",
+  "p0_tip": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
+  "artifact_commit": "da8134e596a5fdea1773af10d52b185a38f10297",
+  "integration_branch": "agent/pyat-source-pre553-r157",
+  "frozen_p0_interface": {
+    "reused": true,
+    "schema": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
+    "factory": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "factory_signature": "(config: SourceConfig | Mapping[str, Any], *, source_sha256: str | None = None, row_count: int | None = None, row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None) -> GovernedC11Projection",
+    "no_signature_redesign": true
+  },
+  "changed_artifacts": [
+    {
+      "path": "WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/runtime/r154_load.py",
+      "sha256": "b573e53beb89991da0beed10cd12cbd914480d252caf9412914dd7df03eb0439",
+      "bytes": 11038
+    },
+    {
+      "path": "rawlsing_next/pre553_source_read_admission.py",
+      "sha256": "ad32573851a6219747fa0d5b8ad113bb70c32b4b5b886370312b7c8d93d8295b",
+      "bytes": 13096
+    },
+    {
+      "path": "rawlsing_next/source_configuration/README.md",
+      "sha256": "6f79782dc74d5490e06cfb650b047ef6b5b9ad40a846f547064fbebe8aeb96e8",
+      "bytes": 3807
+    },
+    {
+      "path": "rawlsing_next/source_configuration/__init__.py",
+      "sha256": "c207ad7940dce470c005b4be23fb44a06c89daf070479dca3bf5890b9b80221f",
+      "bytes": 1989
+    },
+    {
+      "path": "rawlsing_next/source_configuration/factory.py",
+      "sha256": "3848b5ee7c0c1674518ef21b55553b3e646119332415ffc824394438aaa59c33",
+      "bytes": 26493
+    },
+    {
+      "path": "rawlsing_next/source_configuration/reader.py",
+      "sha256": "e22b05f7fd814700b4970d144a20e70e5bbe6ad43545bf6e9f0033907ff1e278",
+      "bytes": 5812
+    },
+    {
+      "path": "rawlsing_next/source_configuration/tools/build_p3_example.py",
+      "sha256": "6a8efbac82232c4e4b8d928a7e2dd4fad5a8b5a840d755c746adac64fe7952cf",
+      "bytes": 2314
+    },
+    {
+      "path": "rawlsing_next/source_configuration/tools/publish_p3.py",
+      "sha256": "7a75354bb1a24fd9c54c10d01066595970bdbc41ca66f083cbed7dc68393eb27",
+      "bytes": 19516
+    },
+    {
+      "path": "rawlsing_next/tests/test_source_configuration_p3.py",
+      "sha256": "e79908f75edbe1258dc6728e656d9158f11f0226c4d46ea2edd78ad8deb04724",
+      "bytes": 12254
+    },
+    {
+      "path": "source_pre553_validation/integration/README.md",
+      "sha256": "e23dee97bd3c191ac5fd8baac445b3152bc2e653e36ceead95f1a649f639783b",
+      "bytes": 1239
+    },
+    {
+      "path": "source_pre553_validation/integration/examples/SRC09_q101_keyed_fixture.config.json",
+      "sha256": "169057b249469fcff767ce13906f517fb7256223f0e3cecedf792661906d970e",
+      "bytes": 41973
+    }
+  ],
+  "shared_seams": {
+    "reader_transport": {
+      "qualified_allowlist_example": {
+        "source_sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+        "encoding": "latin1",
+        "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+        "configuration_ref": {
+          "kind": "READER_CONFIGURATION",
+          "object_id": "urn:rawlsing:r157:p3:probe:qualified",
+          "content_hash": "a0e209f101082822d152a6fc11bac0b916344ee7cd8c65647d7a5e337ab1c8f4"
+        }
+      },
+      "unqualified_encoding_refusal": {
+        "type": "SourceReadAdmissionRefusal",
+        "message": "SOURCE_READ_ENCODING_NOT_QUALIFIED: latin1"
+      },
+      "actual_decoder_probes": [
+        {
+          "format": "SAV",
+          "source_sha256": "5d8c687dfac06457b4fd0947bca3323f20d05cf03c067c36fd76a7399f014859",
+          "row_count": 2,
+          "reader_configuration": {
+            "reader": "pyreadstat",
+            "reader_version": "1.3.2",
+            "decoder_implementation": "rawlsing_next/pre553_physical_decoder.py",
+            "physical_metadata_contract": "PRE553_PHYSICAL_METADATA@1.0.0",
+            "user_missing": true,
+            "apply_value_formats": false,
+            "encoding": null,
+            "authority_status": null
+          },
+          "resolver_calls": 2,
+          "decision": "CURRENT_GRANTED",
+          "original_source_execution": "NOT_PERFORMED"
+        },
+        {
+          "format": "DTA",
+          "source_sha256": "c743bf221c8433b28cc16d2627edb72c37345cd0d3aaa5e9ca944628b69b71ce",
+          "row_count": 2,
+          "reader_configuration": {
+            "reader": "pyreadstat",
+            "reader_version": "1.3.2",
+            "decoder_implementation": "rawlsing_next/pre553_physical_decoder.py",
+            "physical_metadata_contract": "PRE553_PHYSICAL_METADATA@1.0.0",
+            "user_missing": true,
+            "apply_value_formats": false,
+            "encoding": null,
+            "authority_status": null
+          },
+          "resolver_calls": 2,
+          "decision": "CURRENT_GRANTED",
+          "original_source_execution": "NOT_PERFORMED"
+        }
+      ],
+      "encoding_pass_through_test": "test_reader_encoding_is_passed_to_decoder_and_reader_sha_mismatch_refuses_before_resolver",
+      "zero_io_before_permission": "unchanged; request/reader SHA checks precede resolver, decoder opens only after CURRENT_GRANTED"
+    },
+    "row_native_keys": {
+      "config_path": "source_pre553_validation/integration/examples/SRC09_q101_keyed_fixture.config.json",
+      "config_sha256": "ba2b3fabd1362ace3986025a820955693a24410f9fefd453ab46c1d6ecb6b2ba",
+      "fixture_source_sha256": "a93b4dab00a2b7cbd559d8a0bb1ca498caaa87f27bd1bd73e9fceb0f2820a491",
+      "key_count": 9,
+      "key_kind": "R157_NONRESPONDENT_FIXTURE_KEY",
+      "repeated_value_preserved": {
+        "row_1_content_hash": "47f141e43fb2a330ebd2286a0bb658eaa6320768d1bb75a0b969761731ace7bd",
+        "row_6_content_hash": "47f141e43fb2a330ebd2286a0bb658eaa6320768d1bb75a0b969761731ace7bd",
+        "same_value_hash": true,
+        "distinct_row_refs": true
+      },
+      "missing_key_state": "UNKNOWN",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_P0_FIXTURE_RELEASE/SRC09",
+        "content_hash": "3b09bb3b183f13951f20bc9ef935de5c9d021d055f7d93581f79f2d5b3877ebb"
+      },
+      "repository_release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_P0_FIXTURE_RELEASE/SRC09",
+        "content_hash": "3b09bb3b183f13951f20bc9ef935de5c9d021d055f7d93581f79f2d5b3877ebb"
+      },
+      "repository_release_equal": true,
+      "repository_type": "C11Repository"
+    },
+    "r154_loader": {
+      "base": {
+        "status": "PREPARED_CONFIGURATION_ONLY__NOT_ISSUED_ORIGINAL_WORKLOAD",
+        "issued_original_workload": false,
+        "execution_permission_required": true,
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "R157_P0_FIXTURE_RELEASE/SRC09",
+          "content_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f"
+        },
+        "row_native_key_count": 0,
+        "native_calls": [
+          "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+          "rawlsing_next.pre553_source_backed_c11_facade.build_source_backed_c11_repository"
+        ]
+      },
+      "keyed": {
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "R157_P0_FIXTURE_RELEASE/SRC09",
+          "content_hash": "3b09bb3b183f13951f20bc9ef935de5c9d021d055f7d93581f79f2d5b3877ebb"
+        },
+        "row_native_key_count": 9
+      },
+      "wrong_source_refusal": {
+        "type": "SourceConfigurationBindingError",
+        "message": "active source SHA differs from the frozen config binding"
+      },
+      "restored_release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_P0_FIXTURE_RELEASE/SRC09",
+        "content_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f"
+      },
+      "restore_matches_base": true,
+      "partial_input_refusals": [
+        {
+          "kwargs": [
+            "config"
+          ],
+          "type": "LoadRefusal",
+          "message": "PREPARED_NATIVE_CONSTRUCTION_REQUIRES_CONFIG_AND_PERMITTED_SOURCE"
+        },
+        {
+          "kwargs": [
+            "source"
+          ],
+          "type": "LoadRefusal",
+          "message": "PREPARED_NATIVE_CONSTRUCTION_REQUIRES_CONFIG_AND_PERMITTED_SOURCE"
+        }
+      ],
+      "b49_used": false
+    }
+  },
+  "native_api_calls": [
+    "rawlsing_next.source_configuration.reader.source_read_request_from_config",
+    "rawlsing_next.source_configuration.reader.reader_configuration_from_config",
+    "rawlsing_next.pre553_source_read_admission.decode_with_source_read_permission",
+    "rawlsing_next.pre553_physical_decoder.decode_sav / decode_dta",
+    "rawlsing_next.source_configuration.factory.row_native_keys_from_transport",
+    "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "rawlsing_next.pre553_source_backed_c11_facade.build_source_backed_c11_repository",
+    "WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/runtime/r154_load.build_prepared_native_workload"
+  ],
+  "native_results": {
+    "base_fixture_release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_P0_FIXTURE_RELEASE/SRC09",
+      "content_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f"
+    },
+    "keyed_fixture_release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_P0_FIXTURE_RELEASE/SRC09",
+      "content_hash": "3b09bb3b183f13951f20bc9ef935de5c9d021d055f7d93581f79f2d5b3877ebb"
+    },
+    "base_release_is_c11_logical_release": true,
+    "keyed_repository_release_matches": true,
+    "loader_prepared_release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_P0_FIXTURE_RELEASE/SRC09",
+      "content_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f"
+    },
+    "loader_restore_matches_base": true
+  },
+  "before_after": {
+    "before_p3_r154_loader": "unconditional build_native_workload refusal; no prepared config-to-native path",
+    "after_p3_r154_loader": "with exact config + permitted transport it delegates to the existing C11 owner; without both it preserves CURRENT_SOURCE_READ_GRANT_REQUIRED / explicit prepared-input refusal",
+    "wrong_source_then_restore": {
+      "refusal": {
+        "type": "SourceConfigurationBindingError",
+        "message": "active source SHA differs from the frozen config binding"
+      },
+      "restored_release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_P0_FIXTURE_RELEASE/SRC09",
+        "content_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f"
+      },
+      "restore_matches_base": true
+    },
+    "reader_unqualified_then_qualified": {
+      "unqualified_refusal": {
+        "type": "SourceReadAdmissionRefusal",
+        "message": "SOURCE_READ_ENCODING_NOT_QUALIFIED: latin1"
+      },
+      "qualified_example": {
+        "source_sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+        "encoding": "latin1",
+        "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+        "configuration_ref": {
+          "kind": "READER_CONFIGURATION",
+          "object_id": "urn:rawlsing:r157:p3:probe:qualified",
+          "content_hash": "a0e209f101082822d152a6fc11bac0b916344ee7cd8c65647d7a5e337ab1c8f4"
+        }
+      }
+    }
+  },
+  "tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_foundation.py rawlsing_next/tests/test_source_configuration_p3.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_r1.py rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py rawlsing_next/tests/test_pre553_source_read_admission.py rawlsing_next/tests/test_pre553_c11_repository_ingest.py -q -o addopts=",
+    "returncode": 0,
+    "summary": "64 passed in 2.86s",
+    "stdout_tail": [
+      "................................................................         [100%]",
+      "64 passed in 2.86s"
+    ],
+    "stderr_tail": [],
+    "passed": true,
+    "skipped": false
+  },
+  "legacy_r154_suite": {
+    "command": "PYTHONPATH=. python3 -m pytest WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/tests/test_r154_store.py -q -o addopts=",
+    "returncode": 1,
+    "summary": "3 failed, 2 passed in 0.68s",
+    "known_limit": "The legacy load_all/load_source path still imports the historical private .r61 B49 module, which is absent in this isolated checkout. The prepared P3 path deliberately bypasses _b49 and is tested with it disabled."
+  },
+  "lane_compatibility": {
+    "source_lanes_may_continue": true,
+    "lane_data_directories_not_modified": true,
+    "reader_rule": "Set identity.reader.encoding only for the exact source SHA present in COMPATIBILITY_ALLOWLIST; otherwise leave null. No guessing/fallback.",
+    "key_rule": "Configure respondents.source_native_key_slot; wrapper auto-populates exact row_native_keys from permitted decoded cells. Missing cells become TypedAbsence(UNKNOWN), never invented keys.",
+    "original_vs_fixture": "Original configs keep original identity/authority; fixture configs keep distinct fixture SHA and fixture-only authority.",
+    "existing_commands": [
+      "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.tools.publish_p0",
+      "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.tools.publish_p3"
+    ]
+  },
+  "scope_limits": [
+    "No original respondent rows or original source file bytes read.",
+    "No original empirical workload issuance or execution permission is created.",
+    "No all35 source configs were authored or overwritten; source-lane directories are untouched.",
+    "No FieldForge/M1/N11/N12/CI/prod/Sorok/J52W52 scope.",
+    "The legacy R154 load_source B49 path still requires the historical private module; prepared construction deliberately bypasses it. P5 must pin/vendor that legacy dependency if the legacy loader is to remain portable."
+  ],
+  "next_consumer": "HQ / P4 source lanes; use frozen P0 config schema and P3 reader/key wrappers, then return lane configs and native fixture traces."
+}
