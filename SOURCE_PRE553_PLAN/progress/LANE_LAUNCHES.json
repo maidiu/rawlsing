@@ -136,5 +136,52 @@
       "providerID": "opencode-go",
       "variant": "max"
     }
+  },
+  {
+    "lane": "EVS",
+    "task": "EVS:SOURCE_CONFIGURATION_QUEUE",
+    "source_ids": [
+      "SRC11",
+      "SRC12",
+      "SRC13",
+      "SRC14",
+      "SRC15"
+    ],
+    "session": "ses_e98c905cbffekusoHURfKyEUKG",
+    "supervisor_pid": 25504,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs",
+    "branch": "agent/pyat-pre553-r157-evs",
+    "startup": "0b5244204e68e14315550af39631db60cfc770ea",
+    "frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
+    "p3": "519355ec2215409b40d566ef13c3b21f611e0726",
+    "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "account": "existing Global",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs/.r61/r157-lane",
+    "allowed_paths": [
+      "rawlsing_next/source_configuration/data/SRC11/",
+      "source_pre553_validation/SRC11/",
+      "rawlsing_next/source_configuration/data/SRC12/",
+      "source_pre553_validation/SRC12/",
+      "rawlsing_next/source_configuration/data/SRC13/",
+      "source_pre553_validation/SRC13/",
+      "rawlsing_next/source_configuration/data/SRC14/",
+      "source_pre553_validation/SRC14/",
+      "rawlsing_next/source_configuration/data/SRC15/",
+      "source_pre553_validation/SRC15/"
+    ],
+    "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+    "prompt_sha256": "0b0ecc5b280c946739cfe1037c0baad3819b02fcbe25efafe8293abd971706d5",
+    "expected_return": "source_pre553_validation/SRC11/LANE_RETURN.json",
+    "next_consumer": "all35 integration and distinct final review",
+    "actual_pid": 25507,
+    "actual_tool_preflight": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs\nhttps://github.com/maidiu/rawlsing.git\nagent/pyat-pre553-r157-evs\n0b5244204e68e14315550af39631db60cfc770ea\n",
+    "actual_model_readback": {
+      "id": "deepseek-v4.1-flash",
+      "providerID": "opencode-go",
+      "variant": "max"
+    },
+    "completion_observer_pid": 25842
   }
 ]

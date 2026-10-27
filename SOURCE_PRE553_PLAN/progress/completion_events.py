@@ -25,9 +25,12 @@ def save(path, value):
 
 
 def main():
-    jobs = json.loads((ROOT / "completion_event_targets.json").read_text())
+    target = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "completion_event_targets.json"
+    jobs = json.loads(target.read_text())
     receipt_dir = ROOT / ".completion-events"
-    receipt_dir.mkdir(exist_ok=True)
+    if len(sys.argv) > 1:
+        receipt_dir = receipt_dir / target.stem
+    receipt_dir.mkdir(parents=True, exist_ok=True)
     # One observer for this finite target set; stale-lock deletion is never automatic.
     lock = receipt_dir / "observer.lock"
     fd = os.open(lock, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)

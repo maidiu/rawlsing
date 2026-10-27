@@ -1,16 +1,7 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "P3_AND_THREE_SOURCE_LANES_RUNNING",
+  "status": "FOUR_SOURCE_LANES_RUNNING_P3_ACCEPTED",
   "active_workers": [
-    {
-      "task": "P3_FACTORY_READY",
-      "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "pid": 17591,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
-      "branch": "agent/pyat-pre553-r157-foundation",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
-      "launch": "P3_LAUNCH.json"
-    },
     {
       "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
       "lane": "LATIN",
@@ -61,15 +52,33 @@
       "branch": "agent/pyat-pre553-r157-lits",
       "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
+    },
+    {
+      "task": "EVS:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "EVS",
+      "source_ids": [
+        "SRC11",
+        "SRC12",
+        "SRC13",
+        "SRC14",
+        "SRC15"
+      ],
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "pid": 25507,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs",
+      "branch": "agent/pyat-pre553-r157-evs",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "LANE_LAUNCHES.json"
     }
   ],
   "heartbeat": "PAUSED",
   "implementation_started": true,
   "completed_tasks": [
-    "P0_FOUNDATION"
+    "P0_FOUNDATION",
+    "P3_FACTORY_READY"
   ],
   "current_goal_anchor": "GOAL.md",
-  "next_action": "Intake terminal P3/source-lane returns and advance independent remaining families within max4; final all35 review/acceptance still required.",
+  "next_action": "Intake actual terminal source-lane notifications; verify scope and advance remaining independent family lanes within max4. Native-bound all35/final review still required.",
   "live_goal_objective_verified": true,
   "live_goal_tool_status": "active",
   "resume_authorization": {
@@ -117,13 +126,18 @@
     },
     {
       "id": "P3_FACTORY_READY",
-      "lane": "integration",
+      "state": "ACCEPTED_SCOPED",
+      "evidence": "P3_INTAKE.json",
+      "next_consumer": "source lane native validation and final integration"
+    },
+    {
+      "id": "EVS:EVIDENCE",
+      "lane": "EVS",
       "state": "RUNNING",
-      "process": 17591,
-      "inputs": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
-      "output": "source_pre553_validation/integration/P3_RETURN.json",
-      "check": "Qualified reader/key binding, actual native positive/refusal/restore, minimal R154 stub delegation; no original respondent/workload execution",
-      "next_consumer": "source lanes and final integration"
+      "process": 25507,
+      "inputs": "0b5244204e68e14315550af39631db60cfc770ea",
+      "output": "source_pre553_validation/SRC11/LANE_RETURN.json",
+      "next_consumer": "all35 integration/final independent review"
     }
   ],
   "frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
@@ -136,6 +150,13 @@
     "fallback_minimum_seconds": 180,
     "no_model_or_effort_override": true,
     "end_to_end_hq_notification": "NOT_YET_OBSERVED; verify actual first completion queue acknowledgment and subsequent HQ message",
-    "heartbeat": "PAUSED"
+    "heartbeat": "PAUSED",
+    "additional_finite_observers": [
+      {
+        "pid": 25842,
+        "targets": "EVS_completion_event_targets.json",
+        "mode": "OS_EVENTS_NO_TIMED_POLLING"
+      }
+    ]
   }
 }
