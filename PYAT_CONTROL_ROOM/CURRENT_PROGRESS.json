@@ -1,7 +1,7 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 166,
+  "revision": 167,
   "r39_return_intake": {
     "status": "WORKER_AUTHOR_EVIDENCE_RECEIVED__NO_INDEPENDENT_ADOPTION",
     "startup": "2e6c189fd54b818556a44419b19691938ea76d5a",
@@ -23945,6 +23945,120 @@
           {
             "pid": 52893,
             "targets": "FINAL_SOURCE_QUEUES_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          }
+        ]
+      }
+    }
+  },
+  "r157_28_sources_portable_implementation": {
+    "checkpoint_id": "20261027-PYAT-R157-28-SOURCES-P5-PORTABLE-IMPLEMENTATION-R1",
+    "summary": "R15728/35 scoped preparations integrated: ASIANc5c3ea8fceb45c8a7c6a33cf1e8b023c098e7447 and SOUTH_ASIA3d30a416b93b4d2ecaf177b8750dcda4354c097e native fixture releases reproduced, manifests/remote verified and exact holds retained. Main ee210eb20ad96993137f58354d705af50adebaef pushed/directremoteverified. LiTS52782 full-scope physical-fixture validation repair and WVS52656 remain live with no terminalreceipt at latestcheck. Existing integration author reused foundationcheckout on agent/pyat-pre553-r157-integration for independent P5 portable registry/package/commands implementation against frozen schema/factory; actual preflight/model verified, P5completion event attached. Only28acceptedinputs available; P5 all35 join/acceptance still depends on qualified LiTS/WVS returns. No shared runtime semantics change while source lanes run. Final distinct review pending; no original respondent execution or original workload; heartbeatpaused.",
+    "updates": {
+      "active_workers": [
+        {
+          "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "LITS",
+          "source_ids": [
+            "SRC27",
+            "SRC28",
+            "SRC29",
+            "SRC30"
+          ],
+          "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+          "pid": 52782,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
+          "branch": "agent/pyat-pre553-r157-lits",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        },
+        {
+          "task": "WVS:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "WVS",
+          "source_ids": [
+            "SRC33",
+            "SRC34",
+            "SRC35"
+          ],
+          "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+          "pid": 52656,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-wvs",
+          "branch": "agent/pyat-pre553-r157-wvs",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        },
+        {
+          "task": "P5_PORTABLE_DELIVERY_IMPLEMENTATION",
+          "lane": "P5",
+          "source_ids": [],
+          "session": "ses_e98c905cbffekusoHURfKyEUKG",
+          "pid": 54991,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
+          "branch": "agent/pyat-pre553-r157-integration",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        }
+      ],
+      "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
+      "r157_branch": "agent/pyat-source-pre553-r157",
+      "r157_branch_head": "ee210eb20ad96993137f58354d705af50adebaef",
+      "r157_state": "28_SOURCES_SCOPED_INTEGRATED_LITS_WVS_AND_PORTABLE_IMPLEMENTATION_RUNNING",
+      "live_goal_update": "CONSOLIDATED_OBJECTIVE_VERIFIED_ACTIVE",
+      "heartbeat": "PAUSED",
+      "r157_frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
+      "r157_waiting_policy": {
+        "mechanism": "Finite kqueue OS file-event observer for four existing terminal receipts; ordinary installed codex queue wake to same HQ",
+        "observer_pid": 23206,
+        "observer_ready": true,
+        "periodic_status_checks": false,
+        "fallback_minimum_seconds": 180,
+        "no_model_or_effort_override": true,
+        "end_to_end_hq_notification": "PROVEN: actual P3 completion queue notice received in this same HQ; already-intaken return recognized, no duplicate effects.",
+        "heartbeat": "PAUSED",
+        "additional_finite_observers": [
+          {
+            "pid": 25842,
+            "targets": "EVS_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 28628,
+            "targets": "AUTH_RETRY_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 30263,
+            "targets": "EVS_REPAIR_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 35854,
+            "targets": "DISK_RESUME_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 39480,
+            "targets": "LATIN_BINDING_REPAIR_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 42516,
+            "targets": "AFRO_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 43834,
+            "targets": "ARAB_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 52893,
+            "targets": "FINAL_SOURCE_QUEUES_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 55097,
+            "targets": "P5_PORTABLE_completion_event_targets.json",
             "mode": "OS_EVENTS_NO_TIMED_POLLING"
           }
         ]
