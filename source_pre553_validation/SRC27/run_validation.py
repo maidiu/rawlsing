@@ -128,6 +128,33 @@ def source_validation(source_id: str) -> dict[str, Any]:
     fixture_config = load_source_config(fixture_config_path)
     fixture_stream = load_fixture_stream(fixture_path)
     expected = json.loads(expected_path.read_text(encoding="utf-8"))
+    representative_prior = None
+    representative_path = validation_dir / "representative_validation_results.json"
+    if representative_path.is_file():
+        prior = json.loads(representative_path.read_text(encoding="utf-8"))
+        prior_call = next(
+            (
+                call for call in prior.get("native_calls", ())
+                if call.get("call", "").endswith("build_validated_c11_release_from_config")
+            ),
+            None,
+        )
+        representative_prior = {
+            "path": str(representative_path.relative_to(ROOT)),
+            "sha256": sha256(representative_path),
+            "fixture_sha256": prior.get("files", {}).get("fixture_sha256"),
+            "fixture_config_sha256": prior.get("files", {}).get("fixture_config_sha256"),
+            "release_ref": prior_call.get("release_ref") if prior_call else None,
+            "public_object_count": prior_call.get("public_object_count") if prior_call else None,
+            "response_states_match": prior.get("expected_vs_actual", {}).get("response_states_match"),
+            "canonical_values_match": prior.get("expected_vs_actual", {}).get("canonical_values_match"),
+            "status": "PRIOR_REPRESENTATIVE_POSITIVE_PRESERVED",
+            "note": (
+                "Prior representative fixture positive retained as evidence. It predates the "
+                "full-supported fixture and the residual-text correction; it is not the current "
+                "full supported-scope proof."
+            ),
+        }
 
     identity = original.document["identity"]
     coverage = original.document["coverage"]
@@ -252,23 +279,29 @@ def source_validation(source_id: str) -> dict[str, Any]:
     fixture_qids = {
         question["question_id"] for question in fixture_config.document["questions"]
     }
-    fixture_vars = {
-        slot["slot"]["name"] for slot in fixture_config.document["response_slots"]
+    # The full supported fixture is the physical-cell positive.  The original
+    # identity construction smoke uses a fixed three-question representative
+    # slice so it does not expand millions of original routing facts.
+    representative_qids = sorted(fixture_qids)[:3]
+    representative_vars = {
+        slot["slot"]["name"]
+        for slot in fixture_config.document["response_slots"]
+        if slot["question_id"] in representative_qids
     }
     country_slot = fixture_config.document["coordinate_slots"][0]["slot"]["name"]
     original_slice["questions"] = [
-        q for q in original_slice["questions"] if q["question_id"] in fixture_qids
+        q for q in original_slice["questions"] if q["question_id"] in representative_qids
     ]
     original_slice["response_slots"] = [
-        s for s in original_slice["response_slots"] if s["slot"]["name"] in fixture_vars
+        s for s in original_slice["response_slots"] if s["slot"]["name"] in representative_vars
     ]
     original_slice["coordinate_slots"] = [
         s for s in original_slice["coordinate_slots"] if s["slot"]["name"] == country_slot
     ]
     original_slice["routing"] = [
-        r for r in original_slice["routing"] if r["question_id"] in fixture_qids
+        r for r in original_slice["routing"] if r["question_id"] in representative_qids
     ]
-    original_slice["supported_scope"]["supported_question_ids"] = sorted(fixture_qids)
+    original_slice["supported_scope"]["supported_question_ids"] = sorted(representative_qids)
     original_projection = build_governed_c11_projection(original_slice)
     original_projection_counts = {
         "universes": len(original_projection.universes),
@@ -370,10 +403,11 @@ def source_validation(source_id: str) -> dict[str, Any]:
             "check": "full_original_routing_projection",
             "status": "SKIP",
             "reason": (
-                "The full prepared routing set would materialize millions of routing facts. "
-                "The actual factory is positively exercised on the original-identity "
-                "representative slice and on the nonrespondent fixture release; the full "
-                "original config is schema/coverage validated. No original read occurred."
+                "The full original routing set would materialize millions of routing facts. "
+                "The full declared supported scope is positively exercised by the full supported "
+                "nonrespondent fixture release; the original-identity construction smoke is a "
+                "fixed three-question slice. The full original config is schema/coverage "
+                "validated. No original read occurred."
             ),
         },
     ]
@@ -460,8 +494,9 @@ def source_validation(source_id: str) -> dict[str, Any]:
             },
             {
                 "call": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
-                "input": "NONRESPONDENT_FIXTURE config + ExactPhysicalCellStream",
+                "input": "FULL_SUPPORTED_NONRESPONDENT_FIXTURE config + ExactPhysicalCellStream",
                 "result": "C11LogicalRelease",
+                "full_supported_question_count": len(fixture_config.document["supported_scope"]["supported_question_ids"]),
                 "release_ref": release.release_ref.as_dict(),
                 "semantic_release_hash": release.semantic_release_hash,
                 "source_release_manifest_hash": release.source_release_manifest_hash,
@@ -500,6 +535,36 @@ def source_validation(source_id: str) -> dict[str, Any]:
             "authority_snapshot_count_expected": expected["authority_snapshot_count"],
             "authority_snapshot_count_actual": family_counts.get("AuthoritySnapshot", 0),
         },
+        "full_supported_nonrespondent_scope": {
+            "scope": "every declared supported question/response slot and every declared coordinate shape",
+            "fixture_id": fixture_config.document["binding"]["fixture_provenance"]["fixture_id"],
+            "row_count": fixture_stream.row_count,
+            "supported_question_count": len(fixture_config.document["supported_scope"]["supported_question_ids"]),
+            "response_slot_count": len(fixture_config.document["response_slots"]),
+            "coordinate_slot_count": len(fixture_config.document["coordinate_slots"]),
+            "routing_question_count": len(fixture_config.document["routing"]),
+            "response_event_count_expected": expected["response_event_count"],
+            "response_event_count_actual": truth["event_count"],
+            "coordinate_fact_count_expected": expected["coordinate_fact_count"],
+            "coordinate_fact_count_actual": family_counts.get("EmpiricalCoordinateFact", 0),
+            "routing_fact_count_expected": expected["routing_fact_count"],
+            "routing_fact_count_actual": family_counts.get("RoutingEligibilityFact", 0),
+            "occurrence_counts_expected": expected["occurrence_counts"],
+            "routing_states_by_question_expected": expected["routing_states_by_question"],
+            "coordinate_states_by_slot_expected": expected["coordinate_states_by_slot"],
+            "response_states_match": states_match,
+            "canonical_values_match": canonical_match,
+            "release_ref": release.release_ref.as_dict(),
+            "release_semantic_hash": release.semantic_release_hash,
+            "status": "POSITIVE_NATIVE_RELEASE" if states_match and canonical_match else "FAIL",
+        },
+        "representative_prior": representative_prior,
+        "representative_original_identity_slice": {
+            "question_ids": sorted(representative_qids),
+            "response_slot_names": sorted(representative_vars),
+            "coordinate_slot": country_slot,
+            "status": "CONSTRUCTION_SMOKE_ONLY_NOT_FULL_SUPPORTED_PROOF",
+        },
         "negative_checks": negative_checks,
         "pass_count": passed,
         "fail_count": failed,
@@ -511,20 +576,34 @@ def source_validation(source_id: str) -> dict[str, Any]:
         "limits": [
             "The native release is a nonrespondent fixture release; it is not original respondent data.",
             "Original source execution and original workload issuance are not performed or claimed.",
-            "The full original config is schema/coverage validated; its full routing projection is not materialized because it would create millions of facts. The representative original-identity projection and the fixture release are actual factory calls.",
+            "The full declared supported scope is positively exercised by the full supported nonrespondent fixture release. The full original routing projection is not materialized because it would create millions of facts; the original-identity projection is a three-question construction smoke only.",
+            "Prepared routing-unknown/response-gap items remain outside supported scope with exact source residuals; they are not fixture positives.",
             "Fixture authority is NONRESPONDENT_FIXTURE_ONLY and cannot be promoted to original-source authority.",
         ],
     }
     return result
 
 
-def write_exception_ledger(source_id: str, original: Any) -> Path:
+def write_exception_ledger(source_id: str, original: Any, source_result: Any) -> Path:
     path = VALIDATION_ROOT / source_id / "exception_ledger.json"
     document = {
         "schema": "PYAT_R157_LITS_EXCEPTION_LEDGER@1.0.0",
         "source_id": source_id,
         "lane_id": "LITS",
         "residuals": original.document["residuals"],
+        "full_supported_nonrespondent_validation": source_result["full_supported_nonrespondent_scope"],
+        "representative_prior": source_result["representative_prior"],
+        "scope_distinction": {
+            "full_supported_nonrespondent_construction": "POSITIVE_NATIVE_RELEASE",
+            "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
+            "original_workload_issuance": "NOT_ISSUED",
+            "fixture_only_authority": True,
+            "note": (
+                "The full supported fixture closes the A11 supported-scope physical-cell gap. "
+                "It does not convert nonrespondent fixture authority into original-source "
+                "authority, and it does not execute the original source."
+            ),
+        },
         "api_limitations": [
             {
                 "field": "coordinate.normalization_ref",
@@ -547,7 +626,8 @@ def write_exception_ledger(source_id: str, original: Any) -> Path:
         "fixture_limits": [
             "Fixture cells are nonrespondent and cannot be used as original respondent observations.",
             "Fixture-only authority and fixture SHA are not original-source meaning.",
-            "Native fixture validation does not establish original scientific results or execution permission.",
+            "Full supported fixture validation does not establish original scientific results or execution permission.",
+            "Prepared routing-unknown/response-gap items remain outside supported scope with exact source residuals; they are not fixture positives.",
         ],
         "original_access": {
             "original_respondent_rows_read": 0,
@@ -574,7 +654,7 @@ def main() -> int:
         original = load_source_config(
             DATA_ROOT / source_id / f"{source_id.lower()}.config.json"
         )
-        ledger_path = write_exception_ledger(source_id, original)
+        ledger_path = write_exception_ledger(source_id, original, source_result)
         files = {
             "original_config": DATA_ROOT / source_id / f"{source_id.lower()}.config.json",
             "item_accounting": DATA_ROOT / source_id / f"{source_id.lower()}.item_accounting.jsonl",
@@ -584,11 +664,19 @@ def main() -> int:
             "expected_results": VALIDATION_ROOT / source_id / "expected_results.json",
             "validation_results": validation_path,
             "exception_ledger": ledger_path,
+            "full_scope_manifest": VALIDATION_ROOT / source_id / "full_scope_manifest.json",
+            "representative_fixture": VALIDATION_ROOT / source_id / "representative_fixture.json",
+            "representative_fixture_config": VALIDATION_ROOT / source_id / "representative_fixture.config.json",
+            "representative_expected_results": VALIDATION_ROOT / source_id / "representative_expected_results.json",
+            "representative_validation_results": VALIDATION_ROOT / source_id / "representative_validation_results.json",
         }
         if source_id == "SRC27":
             files["lane_builder"] = DATA_ROOT / "SRC27" / "lits_lane_build.py"
             files["full_builder"] = DATA_ROOT / "SRC27" / "lits_full_bindings.py"
             files["validation_runner"] = VALIDATION_ROOT / "SRC27" / "run_validation.py"
+            files["full_scope_builder"] = VALIDATION_ROOT / "SRC27" / "build_full_scope_fixtures.py"
+            files["readme"] = VALIDATION_ROOT / "SRC27" / "README.md"
+            files["test_results"] = VALIDATION_ROOT / "SRC27" / "test_results.json"
         manifest = {
             "schema": "PYAT_R157_LITS_SOURCE_BUILD_MANIFEST@1.0.0",
             "source_id": source_id,
@@ -669,7 +757,9 @@ def main() -> int:
                     "weight_held": result["dispositions"]["items"].get("WEIGHT_HELD_NO_DESIGN_AUTHORITY", 0),
                 },
                 "native_release_ref": result["native_calls"][1]["release_ref"],
-                "native_pass": result["fail_count"] == 0,
+                "full_supported_nonrespondent": result["full_supported_nonrespondent_scope"],
+                "representative_prior": result["representative_prior"],
+                "native_pass": result["fail_count"] == 0 and result["full_supported_nonrespondent_scope"]["status"] == "POSITIVE_NATIVE_RELEASE",
                 "negative_checks_pass": result["pass_count"],
                 "negative_checks_fail": result["fail_count"],
                 "skips": result["skip_count"],
@@ -679,9 +769,34 @@ def main() -> int:
             }
             for result in results
         ],
+        "full_supported_scope_closure": {
+            "A11_supported_scope_gap": "CLOSED_BY_FULL_SUPPORTED_NONRESPONDENT_FIXTURE",
+            "full_supported_question_total": sum(
+                result["full_supported_nonrespondent_scope"]["supported_question_count"]
+                for result in results
+            ),
+            "full_supported_coordinate_total": sum(
+                result["full_supported_nonrespondent_scope"]["coordinate_slot_count"]
+                for result in results
+            ),
+            "full_supported_release_total": sum(
+                1 for result in results
+                if result["full_supported_nonrespondent_scope"]["status"] == "POSITIVE_NATIVE_RELEASE"
+            ),
+            "representative_prior_preserved": all(
+                result["representative_prior"] is not None for result in results
+            ),
+            "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
+            "statement": (
+                "The full declared supported scope is physically exercised by nonrespondent "
+                "fixture releases; the representative prior positives are preserved separately. "
+                "Original source execution remains a distinct permission/issuance boundary."
+            ),
+        },
         "native_calls_summary": {
             "governed_projection_calls": 4,
-            "validated_release_calls": 4,
+            "full_supported_validated_release_calls": 4,
+            "representative_prior_release_calls_preserved": 4,
             "repository_calls": 4,
             "reader_config_extractions": 4,
             "reader_fixture_refusals": 4,
@@ -703,14 +818,19 @@ def main() -> int:
             "original_workload_issued": False,
         },
         "blockers": [],
+        "full_scope_manifest": {
+            "path": "source_pre553_validation/SRC27/full_scope_manifest.json",
+            "sha256": sha256(VALIDATION_ROOT / "SRC27" / "full_scope_manifest.json"),
+        },
         "next_integration_edge": (
-            "P3/P5 integration owner consumes these four source configs and fixture traces; "
-            "the remaining shared edge is the coherent all35 reader/config integration and "
-            "final distinct review, not another LITS source survey."
+            "P3/P5 integration owner consumes these four source configs and full supported "
+            "nonrespondent fixture traces; the remaining shared edge is the coherent all35 "
+            "reader/config integration and final distinct review, not another LITS source survey."
         ),
         "limits": [
             "Original source execution and original workload issuance are NOT performed.",
-            "Native releases are nonrespondent fixture releases with fixture-only authority.",
+            "Full supported native releases are nonrespondent fixture releases with fixture-only authority.",
+            "Prepared routing-unknown/response-gap items remain outside supported scope with exact source residuals; they are not generic representative remainder.",
             "Routing for bound items without exact O06 clauses is typed ROUTING_UNKNOWN; administrative routes are NOT_ASKED.",
             "Response-authority-gap items are held with exact P2 status, not called unselected.",
             "Weights/native keys/forms/admin remain exact scoped unknowns or held; no default is invented.",

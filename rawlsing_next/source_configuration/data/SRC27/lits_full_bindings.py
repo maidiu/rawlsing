@@ -410,28 +410,34 @@ def _full_residuals(
             ),
         }
     )
+    supported_count = sum(
+        1 for t in response_targets
+        if t["routing_status"] in {"UNCONDITIONAL_SOURCE_PROVEN", "ADMIN_OR_NONRESPONDENT"}
+    )
     residuals.append(
         {
-            "residual_id": f"{source_id}-FIXTURE-REPRESENTATIVE-SCOPE",
+            "residual_id": f"{source_id}-FIXTURE-FULL-SUPPORTED-SCOPE",
             "scope": (
-                f"{source_id}: nonrespondent fixture representative shape coverage; "
-                f"{item_count} items and {slot_count} physical slots in the source config"
+                f"{source_id}: full declared supported scope; {supported_count} supported "
+                f"questions and all declared coordinate shapes; source config has {item_count} "
+                f"items and {slot_count} physical slots"
             ),
             "field": "native_validation.harness_scope",
             "status": "SCOPED_HARNESS",
             "reason": (
-                "All response-bound items are serialized with their exact source value/topology "
-                "rules. The permitted nonrespondent fixture exercises a representative set of "
-                "distinct source shapes (scalar/binary/repeated/coordinate/keyed), not every "
-                "item; this is a harness-scope limit, not a source semantic limitation and not "
-                "a claim that the unexercised items are unsupported."
+                "The full supported nonrespondent fixture covers every declared supported "
+                "question and coordinate shape. Prepared routing-unknown and response-authority-"
+                "gap items remain outside the declared supported scope with their exact source "
+                "premises; they are not a generic representative remainder and are not claimed "
+                "as fixture-validated. The full source config still serializes and accounts them."
             ),
-            "dependent_operation": "item-by-item fixture execution",
-            "unaffected_scope": "the full prepared source configuration and its accounting",
+            "dependent_operation": "adding routing-unknown or response-gap items to supported scope",
+            "unaffected_scope": "the full declared supported nonrespondent scope and all accounting",
             "owner": "R157 integration owner / final all35 validation",
             "next_step": (
-                "Reuse the same prepared rules for additional fixtures if item-by-item traces are "
-                "required; do not alter source rules or invent fixture-only authority."
+                "Resolve the exact O06 routing clause or P2 response authority for a prepared item "
+                "before adding it to the supported scope; do not alter source rules or invent "
+                "fixture-only authority."
             ),
         }
     )
@@ -692,8 +698,10 @@ def _build_original_with_codebook(
                     "identity/evidence is retained and they are not called unselected."
                 ),
                 (
-                    "The nonrespondent fixture config exercises a representative set of distinct "
-                    "shapes with the same source rules; original source execution is not performed."
+                    "The full supported nonrespondent fixture config covers every declared "
+                    "supported question and coordinate shape with the same source rules; "
+                    "routing-unknown/response-gap prepared bindings remain outside supported "
+                    "scope with exact residuals. Original source execution is not performed."
                 ),
             ],
         },
@@ -708,8 +716,10 @@ def _build_original_with_codebook(
                 "All original items and physical slots are serialized and accounted. Included "
                 "means accounted in this source config; each item's disposition states whether "
                 "it is a bound response/coordinate, a response-authority-gap hold, a native-key "
-                "hold or a weight-design hold. This is not a claim that every item is "
-                "fixture-exercised."
+                "hold or a weight-design hold. Every item in the declared supported-question "
+                "set and every declared coordinate shape is covered by the full supported "
+                "nonrespondent fixture; routing-unknown/response-gap prepared bindings remain "
+                "outside supported scope with exact residuals."
             ),
         },
         "residuals": residuals,
