@@ -28,6 +28,14 @@ from rawlsing_next.source_configuration.fixture import load_fixture_stream
 - `build_source_backed_c11_repository_from_config(config, source)` — call the
   existing repository/facade owner.
 - `load_fixture_stream(path)` — load an explicitly nonrespondent fixture.
+- `row_native_keys_from_transport(config, stream=...|incidence=...)` — extract
+  exact per-row key witnesses from a configured key slot; missing key cells stay
+  `TypedAbsence(UNKNOWN)`. The release/repository wrappers auto-populate this.
+- `source_read_request_from_config(config, ...)` and
+  `reader_configuration_from_config(config)` — carry the exact qualified
+  `identity.reader` facts into the existing source-read admission owner.
+- `decode_config_with_source_read_permission(config, ...)` — use the existing
+  zero-I/O-before-current-permission admission path with the configured reader.
 
 ## Evidence
 
