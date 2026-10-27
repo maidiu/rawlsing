@@ -1,7 +1,7 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 159,
+  "revision": 160,
   "r39_return_intake": {
     "status": "WORKER_AUTHOR_EVIDENCE_RECEIVED__NO_INDEPENDENT_ADOPTION",
     "startup": "2e6c189fd54b818556a44419b19691938ea76d5a",
@@ -2953,7 +2953,7 @@
     ],
     "acceptance": "Author result is candidate; distinct reviewer independently qualifies exact candidate, then HQ scoped disposition. R09 local is not deployed enforcement."
   },
-  "next_action": "Intake terminal P0 actual executable interface and frozen schema; then launch ready independent source lanes and continue P3 integrator, max4 OpenCode authors. No duplicate live author; heartbeat PAUSED.",
+  "next_action": "Existing integrator finishes P0 return/corrections, then P3; intake ready source lane terminal returns and launch next independent lanes within max4.",
   "active_r61_native_workers": [
     {
       "node": "R01",
@@ -23230,6 +23230,80 @@
       "r157_state": "P0_RUNNING",
       "live_goal_update": "CONSOLIDATED_OBJECTIVE_VERIFIED_ACTIVE",
       "heartbeat": "PAUSED"
+    }
+  },
+  "r157_parallel": {
+    "checkpoint_id": "R157_P0_FROZEN_THREE_SOURCE_LANES",
+    "summary": "Frozen P0 actual constructor/native fixture release integrated; HQ verified27artifact hashes, full18276uniqueitems/18413slots and18250joins+26unmatched,11focusedtests pass. Three source lanes LATIN/GSS/LITS launched in isolated disjoint worktrees with actualpreflight and GoDeepSeekMAX session verification. Existing integrator still finishing P0 corrections, so do not duplicate live session. All35 preparation/final independentreview incomplete; heartbeatPAUSED.",
+    "updates": {
+      "active_workers": [
+        {
+          "task": "P0_FINAL_RETURN",
+          "session": "ses_e98c905cbffekusoHURfKyEUKG",
+          "pid": 5095,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
+          "state": "RUNNING_FINISHING_RETURN",
+          "launch": "P0_LAUNCH.json"
+        },
+        {
+          "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "LATIN",
+          "source_ids": [
+            "SRC24",
+            "SRC25",
+            "SRC26"
+          ],
+          "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+          "pid": 15088,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin",
+          "branch": "agent/pyat-pre553-r157-latin",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        },
+        {
+          "task": "GSS:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "GSS",
+          "source_ids": [
+            "SRC16",
+            "SRC17",
+            "SRC18",
+            "SRC19",
+            "SRC20",
+            "SRC21",
+            "SRC22",
+            "SRC23"
+          ],
+          "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+          "pid": 15095,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss",
+          "branch": "agent/pyat-pre553-r157-gss",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        },
+        {
+          "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "LITS",
+          "source_ids": [
+            "SRC27",
+            "SRC28",
+            "SRC29",
+            "SRC30"
+          ],
+          "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+          "pid": 15101,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
+          "branch": "agent/pyat-pre553-r157-lits",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        }
+      ],
+      "next_action": "Existing integrator finishes P0 return/corrections, then P3; intake ready source lane terminal returns and launch next independent lanes within max4.",
+      "r157_branch": "agent/pyat-source-pre553-r157",
+      "r157_branch_head": "d62b3e4b4510d8c9aab30ae11d2a7984f7b8b3a7",
+      "r157_state": "P0_FROZEN_THREE_SOURCE_LANES_RUNNING",
+      "live_goal_update": "CONSOLIDATED_OBJECTIVE_VERIFIED_ACTIVE",
+      "heartbeat": "PAUSED",
+      "r157_frozen_p0": "328e394e871ea09289c7023d3fb54b3f030d8481"
     }
   }
 }
