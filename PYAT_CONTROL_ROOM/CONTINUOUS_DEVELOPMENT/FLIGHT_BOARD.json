@@ -3410,16 +3410,17 @@
   },
   "r157_current": {
     "branch": "agent/pyat-source-pre553-r157",
-    "head": "d62b3e4b4510d8c9aab30ae11d2a7984f7b8b3a7",
+    "head": "c60a13a78666c795737ddcb877300adea380249d",
     "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
     "active_workers": [
       {
-        "task": "P0_FINAL_RETURN",
+        "task": "P3_FACTORY_READY",
         "session": "ses_e98c905cbffekusoHURfKyEUKG",
-        "pid": 5095,
+        "pid": 17591,
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
-        "state": "RUNNING_FINISHING_RETURN",
-        "launch": "P0_LAUNCH.json"
+        "branch": "agent/pyat-pre553-r157-foundation",
+        "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+        "launch": "P3_LAUNCH.json"
       },
       {
         "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
@@ -3473,10 +3474,10 @@
         "launch": "LANE_LAUNCHES.json"
       }
     ],
-    "state": "P0_FROZEN_THREE_SOURCE_LANES_RUNNING",
+    "state": "P3_AND_THREE_SOURCE_LANES_RUNNING",
     "goal_update": "LIVE_CONSOLIDATED_OBJECTIVE_VERIFIED_ACTIVE",
     "heartbeat": "PAUSED",
-    "next_action": "Existing integrator finishes P0 return/corrections, then P3; intake ready source lane terminal returns and launch next independent lanes within max4.",
-    "frozen_p0": "328e394e871ea09289c7023d3fb54b3f030d8481"
+    "next_action": "Intake terminal P3/source-lane returns and advance independent remaining families within max4; final all35 review/acceptance still required.",
+    "frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710"
   }
 }
