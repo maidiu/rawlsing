@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261027-PYAT-R157-EVS-INTEGRATED-LATIN-REPAIR-AFRO-LAUNCH-R1",
-  "handoff_commit": "ffcf5835963da8e1d807246f2f07abb37640c6b6",
+  "checkpoint_id": "20261027-PYAT-R157-23-SOURCE-INTEGRATION-FINAL-QUEUES-R1",
+  "handoff_commit": "af203e9c4bba887ee9f8be060f5ea75d5bceecec",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-EVS-INTEGRATED-LATIN-REPAIR-AFRO-LAUNCH-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-EVS-INTEGRATED-LATIN-REPAIR-AFRO-LAUNCH-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-EVS-INTEGRATED-LATIN-REPAIR-AFRO-LAUNCH-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-23-SOURCE-INTEGRATION-FINAL-QUEUES-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-23-SOURCE-INTEGRATION-FINAL-QUEUES-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-23-SOURCE-INTEGRATION-FINAL-QUEUES-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,20 +14,20 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "ffcf5835963da8e1d807246f2f07abb37640c6b6",
+  "canonical_control_base": "af203e9c4bba887ee9f8be060f5ea75d5bceecec",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "ffcf5835963da8e1d807246f2f07abb37640c6b6",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-EVS-INTEGRATED-LATIN-REPAIR-AFRO-LAUNCH-R1/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-EVS-INTEGRATED-LATIN-REPAIR-AFRO-LAUNCH-R1/CURRENT.md",
+  "qualified_working_hq_commit": "af203e9c4bba887ee9f8be060f5ea75d5bceecec",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-23-SOURCE-INTEGRATION-FINAL-QUEUES-R1/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/20261027-PYAT-R157-23-SOURCE-INTEGRATION-FINAL-QUEUES-R1/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 165,
-    "canonical_report_commit": "ffcf5835963da8e1d807246f2f07abb37640c6b6",
+    "revision": 166,
+    "canonical_report_commit": "af203e9c4bba887ee9f8be060f5ea75d5bceecec",
     "counterpart": "Sorok rev34 independent; no Pyat actor grant"
   },
   "previous_handoff": {
-    "checkpoint_id": "20261027-PYAT-R157-DISK-RECOVERY-SAME-FOUR-AUTHORS-R1",
-    "handoff_commit": "9726baa89fa933113cb6dcc3d0bd31f3ae129cd7"
+    "checkpoint_id": "20261027-PYAT-R157-EVS-INTEGRATED-LATIN-REPAIR-AFRO-LAUNCH-R1",
+    "handoff_commit": "ffcf5835963da8e1d807246f2f07abb37640c6b6"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
@@ -35,7 +35,7 @@
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
   "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
-  "worker_state_truth": "Current four worker actual launch/preflight/model receipts; scoped EVS native replay proved; Latin two source-binding defects repair pending.",
+  "worker_state_truth": "Four current actual preflight/model readbacks;23 scoped preparations integrated with exact holds, not final acceptance.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -356,41 +356,6 @@
   },
   "r61_actual_workers": [
     {
-      "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "LATIN",
-      "source_ids": [
-        "SRC24",
-        "SRC25",
-        "SRC26"
-      ],
-      "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
-      "pid": 39411,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin",
-      "branch": "agent/pyat-pre553-r157-latin",
-      "state": "RUNNING_SAME_OWNER_BINDING_REPAIR_MODEL_VERIFIED",
-      "launch": "LANE_LAUNCHES.json"
-    },
-    {
-      "task": "GSS:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "GSS",
-      "source_ids": [
-        "SRC16",
-        "SRC17",
-        "SRC18",
-        "SRC19",
-        "SRC20",
-        "SRC21",
-        "SRC22",
-        "SRC23"
-      ],
-      "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
-      "pid": 35732,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss",
-      "branch": "agent/pyat-pre553-r157-gss",
-      "state": "RUNNING_DISK_RESUME_MODEL_AND_PREFLIGHT_VERIFIED",
-      "launch": "LANE_LAUNCHES.json"
-    },
-    {
       "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
       "lane": "LITS",
       "source_ids": [
@@ -400,24 +365,53 @@
         "SRC30"
       ],
       "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
-      "pid": 35733,
+      "pid": 52782,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
       "branch": "agent/pyat-pre553-r157-lits",
-      "state": "RUNNING_DISK_RESUME_MODEL_AND_PREFLIGHT_VERIFIED",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     },
     {
-      "task": "AFRO:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "AFRO",
+      "task": "ASIAN:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "ASIAN",
       "source_ids": [
-        "SRC01",
-        "SRC02",
-        "SRC03"
+        "SRC08",
+        "SRC09",
+        "SRC10"
       ],
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "pid": 42454,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-afro",
-      "branch": "agent/pyat-pre553-r157-afro",
+      "pid": 52637,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-asian",
+      "branch": "agent/pyat-pre553-r157-asian",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "LANE_LAUNCHES.json"
+    },
+    {
+      "task": "SOUTH_ASIA:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "SOUTH_ASIA",
+      "source_ids": [
+        "SRC31",
+        "SRC32"
+      ],
+      "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+      "pid": 52654,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-south-asia",
+      "branch": "agent/pyat-pre553-r157-south-asia",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "LANE_LAUNCHES.json"
+    },
+    {
+      "task": "WVS:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "WVS",
+      "source_ids": [
+        "SRC33",
+        "SRC34",
+        "SRC35"
+      ],
+      "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+      "pid": 52656,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-wvs",
+      "branch": "agent/pyat-pre553-r157-wvs",
       "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     }
@@ -431,7 +425,7 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "251b20a6c2fd34c030269292012ee6c2a759803c",
+  "current_development_evidence": "1cd0acd094517edfcf83dcf69b238241009ab3ee",
   "new_R87_operative_grants": false,
   "secondary_hq_status": "USER_APPOINTED_BROWSER_SECONDARY__PRIMARY_CODEX_NOT_REVOKED"
 }
