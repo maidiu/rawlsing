@@ -1,13 +1,13 @@
 # R157 P5 portable delivery commands
 
 All commands run from the repository root with `PYTHONPATH=.`; no private
-worktree or `.r61` path is required.
+author-worktree path is required.
 
 ```sh
 # 1. Build/rebuild the portable index and SQLite lookup
 PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli build-index
 
-# 2. Current readiness: 32 available, 3 pending accepted WVS source returns
+# 2. Current readiness: all 35 accepted source configurations available
 PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli status
 PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli list
 
@@ -29,10 +29,11 @@ PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli original-plan SRC
   --consumer-use <authorized-consumer-use> \
   --semantic-scope <authorized-semantic-scope>
 
-# 6. Focused checks
+# 6. Focused checks, including exact-case path portability
 PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_library.py -q -o addopts=''
+PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_library.py -q -o addopts='' -k exact
 ```
 
-Expected: index counts `available=32`, `pending=3`; pending IDs
-`SRC33,SRC34,SRC35`; fixture calls return `C11LogicalRelease` and
-`source_read_performed=false`.
+Expected: index counts `available=35`, `pending=0`; every indexed artifact path
+is an actual exact-case directory entry; all35 source-config->native fixture
+consumer calls return `C11LogicalRelease` and `source_read_performed=false`.
