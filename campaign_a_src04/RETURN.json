@@ -1,25 +1,25 @@
 {
-  "artifact_commit": "4b1d407d54e4e7f035a10cbe252d4ca04652f4d7",
+  "artifact_commit": "a7cbfeef20c682c3da202ac858307c196560c12f",
   "artifact_manifest": [
     {
-      "bytes": 64387,
+      "bytes": 65776,
       "path": "campaign_a_src04/run_campaign_a_src04.py",
-      "sha256": "8dfd53f81346227ebab5c1227fd33556de0736bbe928c92fdb56c15f35c01427"
+      "sha256": "eb373949b7a019313d616cf9a60f091a227cc39d5b437b2e73763bc2d3ab53e0"
     },
     {
-      "bytes": 3551,
+      "bytes": 4943,
       "path": "campaign_a_src04/tests/test_campaign_a_src04.py",
-      "sha256": "7496dea2be2a9b57885526efe2c50657a5dc6e227c2fe129755e8fb900dc9730"
+      "sha256": "f27c85294f7a03b7be36772d3721517953113ee7243d98464ad55c04c6d92bef"
     },
     {
-      "bytes": 2335,
+      "bytes": 2559,
       "path": "campaign_a_src04/README.md",
-      "sha256": "9cec806fc7a1b6917eed0a5f2b1528c2a0c4cd8138dac5da5fa226d13576a3a7"
+      "sha256": "c537591b5de4b91c53ad1925e1fe7cfe1b772bcf7c86c58e9f118e1913640eaa"
     },
     {
-      "bytes": 1476,
+      "bytes": 1655,
       "path": "campaign_a_src04/COMMANDS.md",
-      "sha256": "da343e23043d0b090452900830a1719030ce898a3a5fd80002584d8805f909e0"
+      "sha256": "d2aadc36174fd41943ba8637ec9c6e7682c2ecb27d02112d3fb96d7fc1d4b2a8"
     },
     {
       "bytes": 1317,
@@ -27,9 +27,14 @@
       "sha256": "feb8320a149315fdfe74ae97f0aa91a3720aa141e5a1d5cbd5e2b97746c594f1"
     },
     {
-      "bytes": 2891,
+      "bytes": 26226,
+      "path": "campaign_a_src04/evidence/PROGRAM.txt",
+      "sha256": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50"
+    },
+    {
+      "bytes": 2685,
       "path": "campaign_a_src04/evidence/GRANT_AUTHENTICATION.json",
-      "sha256": "172097abce7ade62a084130581c2af217fefe8918a99a2385db6284c2e3564c2"
+      "sha256": "cb2ee2da04cdfc2351f4e55eda3d78f5c31c680300900ede8b4b755782cbfbdf"
     },
     {
       "bytes": 1977,
@@ -59,7 +64,7 @@
     {
       "bytes": 13229,
       "path": "campaign_a_src04/evidence/RELEASE_RECEIPT.json",
-      "sha256": "0c5306df01a11881db5cd47e68d304e40ff54baf7d69bb96213d009217cd70ce"
+      "sha256": "4b18f50008b824e17a628a6c66852f6104a7dbff2368bff4297bac1f54526aca"
     },
     {
       "bytes": 1959,
@@ -67,19 +72,19 @@
       "sha256": "b1333a021c28f0a4fe3a8272d469d9dab2ecb619cf08fcae3fdf18246fb9d8c9"
     },
     {
-      "bytes": 2875,
+      "bytes": 2876,
       "path": "campaign_a_src04/evidence/REPLAY_RECEIPT.json",
-      "sha256": "8789280b9b1055622f6c23a118f97ab8217aee24e34a96e143a9daac8f39782d"
+      "sha256": "9d003c0b8b1e507087830f713de34ce982eff6bfef09483d09663441a214baf5"
     },
     {
-      "bytes": 324,
+      "bytes": 610,
       "path": "campaign_a_src04/evidence/TEST_RESULTS.json",
-      "sha256": "b07281e33d71e7ec18997da8cc1a506deb83c00a7e7d27bd165390dd8db101bc"
+      "sha256": "329db086302066f76dbb9ea968f7703b82599640e0cba15be411cec978165139"
     },
     {
-      "bytes": 3936,
+      "bytes": 3722,
       "path": "campaign_a_src04/evidence/PRIMARY_RUN.json",
-      "sha256": "fab5d7730d81dc0ef40ca3acc6320fad675f1b96d1c530f5c4fa71043fcd0c9e"
+      "sha256": "abe99a7d6e2c8c573e4e9a85fc73813cba4dc4cc30f9172a181afc2c64c2b142"
     }
   ],
   "authority": {
@@ -227,6 +232,8 @@
     "dummy_test_only_resolver_used": false,
     "grant_sha256": "feb8320a149315fdfe74ae97f0aa91a3720aa141e5a1d5cbd5e2b97746c594f1",
     "host": "USER_LOCAL_MAC",
+    "program_evidence": "campaign_a_src04/evidence/PROGRAM.txt",
+    "program_evidence_sha256": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50",
     "program_sha256": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50",
     "purpose": "FIRST_ORIGINAL_SOURCE_C11_POSITIVE",
     "revocation": "NONE_RECORDED",
@@ -273,6 +280,28 @@
     "selected": "42 configured response slots with complete observed value/state bindings in the first battery ordinal range 3..45, plus country and ser coordinates",
     "weights": "no weight slots are declared; no weighted or population claim"
   },
+  "repair": {
+    "d01_program_portability": {
+      "program_sha256": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50",
+      "repair": "governing PROGRAM.txt is the committed pinned copy campaign_a_src04/evidence/PROGRAM.txt; runner/tests have no author-private .r61 program dependency",
+      "status": "REPAIRED"
+    },
+    "d02_source_preflight": {
+      "direct_source_preflight_removed": true,
+      "repair": "load_grant no longer stats or hashes the source path; source SHA/bytes are checked only by the SHA-qualified decoder after the current resolver admits the read",
+      "status": "REPAIRED"
+    },
+    "old_red_history": {
+      "artifact_commit": "4b1d407d54e4e7f035a10cbe252d4ca04652f4d7",
+      "candidate": "92d4f793d0ef5de58f21e23b1ad0fa286fa74a01",
+      "file_count": 13,
+      "path": "campaign_a_src04/evidence/history/red-92d4f793/MANIFEST.json",
+      "sha256": "4e21e81034de07fa26197e9afa797dce92da27043600c10a75bc449b79e1f483"
+    },
+    "release_identity_unchanged": "fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec",
+    "review_candidate": "0daf4aa5d143cc3a4e95984620a39489ed2fa39c",
+    "review_disposition": "EXTERNAL_INDEPENDENT_REVIEW_DISPOSITION"
+  },
   "replay": {
     "cold_process": true,
     "local_bundle_exists_and_hashes_match": true,
@@ -280,7 +309,7 @@
     "release_audit_passed": true,
     "release_match": true,
     "semantic_release_hash": "fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec",
-    "sha256": "8789280b9b1055622f6c23a118f97ab8217aee24e34a96e143a9daac8f39782d",
+    "sha256": "9d003c0b8b1e507087830f713de34ce982eff6bfef09483d09663441a214baf5",
     "source_read_performed": true,
     "status": "COLD_REPLAY_COMPLETE"
   },
@@ -572,6 +601,7 @@
       "snapshot_size": 1531099,
       "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
     },
+    "source_preflight_io_before_admission": false,
     "source_read_performed": true,
     "transport": "rawlsing_next.source_configuration.reader.decode_config_with_source_read_permission"
   },
@@ -579,14 +609,20 @@
   "source_read_performed": true,
   "status": "ORIGINAL_SOURCE_C11_RELEASE_COMPLETED__ELIGIBLE_SLICE__INDEPENDENT_ACCEPTANCE_PENDING",
   "tests": {
+    "clean_checkout": {
+      "checkout": "git archive HEAD extracted without author-private control checkout; no author-private program path",
+      "command": "PYTHONPATH=. python3 -m pytest campaign_a_src04/tests -q -o addopts=",
+      "passed": true,
+      "result": "7 passed in 1.06s"
+    },
     "command": "python3 -m pytest campaign_a_src04/tests -q -o addopts=",
     "passed": true,
     "path": "campaign_a_src04/evidence/TEST_RESULTS.json",
     "returncode": 0,
-    "sha256": "b07281e33d71e7ec18997da8cc1a506deb83c00a7e7d27bd165390dd8db101bc",
+    "sha256": "329db086302066f76dbb9ea968f7703b82599640e0cba15be411cec978165139",
     "stdout_tail": [
-      ".....                                                                    [100%]",
-      "5 passed in 0.79s"
+      ".......                                                                  [100%]",
+      "7 passed in 1.06s"
     ]
   }
 }
