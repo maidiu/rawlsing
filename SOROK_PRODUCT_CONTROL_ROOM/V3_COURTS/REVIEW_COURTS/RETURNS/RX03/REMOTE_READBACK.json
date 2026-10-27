@@ -1,0 +1,25 @@
+{
+  "schema": "SOROK_V3_COURTS_RX03_REMOTE_READBACK_R1",
+  "date": "2026-10-26",
+  "reviewer": "RX03",
+  "review_branch": "agent/v3court-review-rx03-secondwave-r1",
+  "sealed_startup": "9a2753a1e9f76e9fcfa0c76dba49ed0e6cabf2a2",
+  "review_target": "e81dd633b419d35619014bdf99f894ad4f98c5a5",
+  "artifact_commit": "6f7b6bf5e330a8760bac38f67a328796f53e7535",
+  "remote_head_after_artifact_push": "6f7b6bf5e330a8760bac38f67a328796f53e7535",
+  "remote_readback_command": "git ls-remote --heads origin agent/v3court-review-rx03-secondwave-r1",
+  "remote_readback_exact": "6f7b6bf5e330a8760bac38f67a328796f53e7535\trefs/heads/agent/v3court-review-rx03-secondwave-r1",
+  "target_readback_command": "git ls-remote --heads origin agent/v3court-x03-development-topology-r1",
+  "target_readback_exact": "e81dd633b419d35619014bdf99f894ad4f98c5a5\trefs/heads/agent/v3court-x03-development-topology-r1",
+  "changed_paths": [
+    "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/REVIEW_COURTS/RETURNS/RX03/00_REVIEW.md",
+    "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/REVIEW_COURTS/RETURNS/RX03/INDEPENDENT_EVIDENCE.json",
+    "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/REVIEW_COURTS/RETURNS/RX03/LOCAL_PROBES.md"
+  ],
+  "readback_added_by": "REMOTE_READBACK.json",
+  "notes": [
+    "The artifact commit is the immutable review content commit; this readback file is a follow-up custody record and does not alter the review dossier contents.",
+    "The review branch advanced from the sealed startup 9a2753a1e9f76e9fcfa0c76dba49ed0e6cabf2a2 by fast-forward only; no force-push.",
+    "RX03 did not modify X03, original source, production code, CAN/ADP/Pyat or current C9/C12."
+  ]
+}
