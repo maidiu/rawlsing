@@ -372,8 +372,8 @@ def value_rule(
         multiplicity = {"kind": "RANKED_RESPONSE", "rank": rank, "order": rank, "max_occurrences": 3}
     elif topology == "UNORDERED_MULTISELECT_SET":
         multiplicity = {"kind": "UNORDERED_MULTISELECT_SET", "index": 0}
-    elif topology == "BINARY_CONTRAST":
-        multiplicity = {"kind": "BINARY_CONTRAST", "index": 0}
+    elif topology in {"BINARY_CONTRAST", "SCALAR", "NOMINAL_CHOICE", "NOMINAL_POSITION", "RESPONSE_STATUS"}:
+        multiplicity = {"kind": topology, "index": 0}
     else:
         multiplicity = {"kind": "SCALAR", "index": 0}
     occurrence: dict[str, Any] = {

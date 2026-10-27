@@ -23,7 +23,6 @@ DATA_ROOT = ROOT / "rawlsing_next/source_configuration/data"
 VAL_ROOT = ROOT / "source_pre553_validation"
 SOURCE_IDS = ("SRC24", "SRC25", "SRC26")
 FIXTURE_ROWS = 8
-ROUTING_PREPARATION_ROWS = 3
 
 
 def phys_maps(sid: str):
@@ -130,9 +129,10 @@ def classify(source_id: str, ctx: Mapping[str, Any]) -> dict[str, Any]:
             if n == 1:
                 if topology == "binary_contrast":
                     layout = "binary"
-                elif topology in {"multiselect_indicator", "ranking_or_multiselect", "response_status",
-                                  "nominal_choice", "nominal_position"}:
+                elif topology in {"multiselect_indicator", "ranking_or_multiselect"}:
                     layout = "multiselect"
+                elif topology in {"nominal_choice", "nominal_position", "response_status"}:
+                    layout = "single"
                 else:
                     layout = "scalar"
             elif binary:
@@ -290,6 +290,13 @@ def response_occurrence(slot: Mapping[str, Any], plan: Mapping[str, Any], index:
         return f"component_{index + 1}", None, component, "UNORDERED_MULTISELECT_SET"
     if layout == "binary":
         return "0", None, None, "BINARY_CONTRAST"
+    if layout == "single":
+        kind = {
+            "nominal_choice": "NOMINAL_CHOICE",
+            "nominal_position": "NOMINAL_POSITION",
+            "response_status": "RESPONSE_STATUS",
+        }.get(plan["topology"], "SCALAR")
+        return "0", None, None, kind
     return "0", None, None, "SCALAR"
 
 
@@ -411,8 +418,7 @@ def build_config(source_id: str, ctx: Mapping[str, Any], plan: Mapping[str, Any]
     routing = []
     for r in plan["responses"]:
         qid = r["question_id"]
-        selector: Any = ("ALL" if mode == "fixture"
-                         else list(range(1, min(ROUTING_PREPARATION_ROWS, roster["rows"]) + 1)))
+        selector: Any = "ALL"
         routing.append({
             "question_id": qid, "row_selector": selector, "typed_state": "ROUTING_UNKNOWN",
             "risk_set_ref": L.exact_ref(
@@ -472,7 +478,7 @@ def build_config(source_id: str, ctx: Mapping[str, Any], plan: Mapping[str, Any]
             "notes": [
                 "All inclusive items are source-native response or coordinate bindings; exclusions are exact limitations, not unselected canaries.",
                 "Positive native C11 release is exercised by the separately identified nonrespondent fixture config.",
-                "Routing remains SOURCE_ROUTING_UNRESOLVED; original config routing facts are a bounded preparation witness.",
+                "Routing remains SOURCE_ROUTING_UNRESOLVED; the portable recipe uses row_selector=ALL with ROUTING_UNKNOWN and is not physically expanded for original validation.",
             ],
         }
     else:
@@ -655,7 +661,7 @@ def build_residuals(source_id: str, plan: Mapping[str, Any], mode: str) -> list[
                 "scope": source_id,
                 "field": "routing.typed_state",
                 "status": "UNKNOWN",
-                "reason": f"SOURCE_ROUTING_UNRESOLVED for {len(plan['responses'])} response items; original routing facts are a preparation witness over rows 1-{ROUTING_PREPARATION_ROWS}, not an eligibility claim for every row.",
+                "reason": f"SOURCE_ROUTING_UNRESOLVED for {len(plan['responses'])} response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. The original source rows were not physically expanded for validation.",
                 "dependent_operation": "eligibility/form-conditioned native query",
                 "unaffected_scope": "unconditional source-native response incidence and coordinate binding",
                 "owner": "LATIN lane / P3 integration owner",

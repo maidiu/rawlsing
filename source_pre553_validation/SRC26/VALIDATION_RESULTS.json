@@ -3,18 +3,16 @@
   "status": "PASS",
   "calls": [
     {
-      "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
-      "input": "ORIGINAL_SOURCE config (no physical stream)",
+      "call": "static original routing recipe validation",
+      "input": "ORIGINAL_SOURCE config (not physically expanded)",
       "config_id": "R157-LATIN-SRC26-FULL-SOURCE-PREPARATION",
-      "config_sha256": "74ccd4cb9c6837ff24995c0ac04206d875cc17e3b9e6cb17b929acf236b086a1",
-      "result": "GovernedC11Projection",
-      "source_sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
-      "respondents": 19214,
-      "response_slots": 275,
-      "coordinate_slots": 49,
-      "routing_facts": 534,
+      "config_sha256": "35039455c945c9992e3ae340eb94f77695978afaaca24112cc6a5c8fecf5ce14",
+      "result": "ROUTING_RECIPE_VALIDATED",
       "questions": 178,
-      "authority_snapshots": 7
+      "routing_entries": 178,
+      "row_selector": "ALL",
+      "typed_state": "ROUTING_UNKNOWN",
+      "physical_row_expansion": "NOT_PERFORMED"
     },
     {
       "call": "rawlsing_next.source_configuration.fixture.load_fixture_stream",
@@ -28,7 +26,7 @@
       "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
       "input": "NONRESPONDENT_FIXTURE config",
       "config_id": "R157-LATIN-SRC26-NONRESPONDENT-FIXTURE-FULL",
-      "config_sha256": "d27ba1e1400fe7998f257448bea592ad4d8bac7a0ee1112094c4aa5e3b979d86",
+      "config_sha256": "65e963be1ab9abba2a692ad3cc45cc3de0015701f6356d94b8138c567932ef4b",
       "result": "GovernedC11Projection",
       "source_sha256": "82a03fb50a1e31d1e3bbf933835a0c67523095ecbe83c335240ca402672ec669",
       "respondents": 8,
@@ -41,20 +39,195 @@
       "call": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
       "input": "NONRESPONDENT_FIXTURE config + ExactPhysicalCellStream",
       "config_id": "R157-LATIN-SRC26-NONRESPONDENT-FIXTURE-FULL",
-      "config_sha256": "d27ba1e1400fe7998f257448bea592ad4d8bac7a0ee1112094c4aa5e3b979d86",
+      "config_sha256": "65e963be1ab9abba2a692ad3cc45cc3de0015701f6356d94b8138c567932ef4b",
       "fixture_source_sha256": "82a03fb50a1e31d1e3bbf933835a0c67523095ecbe83c335240ca402672ec669",
       "result": "C11LogicalRelease",
       "release_id": "R157_FIXTURE_RELEASE/SRC26",
       "release_ref": {
         "kind": "C11LogicalRelease",
         "object_id": "R157_FIXTURE_RELEASE/SRC26",
-        "content_hash": "b526e80c2049fe0318813f2b94abd10c41173775377906dcd47cecc29e77789e"
+        "content_hash": "528ca5c34f7d9fd3c92ae5832d7be0001fec001a1053a046ba899a1ceda3164f"
       },
-      "semantic_release_hash": "b526e80c2049fe0318813f2b94abd10c41173775377906dcd47cecc29e77789e",
+      "semantic_release_hash": "528ca5c34f7d9fd3c92ae5832d7be0001fec001a1053a046ba899a1ceda3164f",
       "source_release_manifest_hash": "0ffe516f2c0f49d543dec54de07b92e713f61b4507f9e5fef2ea1a2b6649e605"
     }
   ],
   "checks": [
+    {
+      "check": "topology_S20K",
+      "pass": true,
+      "actual": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected": [
+        "NOMINAL_CHOICE"
+      ],
+      "inherited_topology": "nominal_choice"
+    },
+    {
+      "check": "topology_S20F",
+      "pass": true,
+      "actual": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected": [
+        "NOMINAL_CHOICE"
+      ],
+      "inherited_topology": "nominal_choice"
+    },
+    {
+      "check": "topology_S1",
+      "pass": true,
+      "actual": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected": [
+        "NOMINAL_CHOICE"
+      ],
+      "inherited_topology": "nominal_choice"
+    },
+    {
+      "check": "topology_Q28STE",
+      "pass": true,
+      "actual": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected": [
+        "NOMINAL_CHOICE"
+      ],
+      "inherited_topology": "nominal_choice"
+    },
+    {
+      "check": "topology_S20I",
+      "pass": true,
+      "actual": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected": [
+        "NOMINAL_CHOICE"
+      ],
+      "inherited_topology": "nominal_choice"
+    },
+    {
+      "check": "topology_S20G",
+      "pass": true,
+      "actual": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected": [
+        "NOMINAL_CHOICE"
+      ],
+      "inherited_topology": "nominal_choice"
+    },
+    {
+      "check": "topology_Q38STGBS",
+      "pass": true,
+      "actual": [
+        "NOMINAL_POSITION"
+      ],
+      "expected": [
+        "NOMINAL_POSITION"
+      ],
+      "inherited_topology": "nominal_position"
+    },
+    {
+      "check": "topology_Q40STGBSB",
+      "pass": true,
+      "actual": [
+        "NOMINAL_POSITION"
+      ],
+      "expected": [
+        "NOMINAL_POSITION"
+      ],
+      "inherited_topology": "nominal_position"
+    },
+    {
+      "check": "topology_S20J",
+      "pass": true,
+      "actual": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected": [
+        "NOMINAL_CHOICE"
+      ],
+      "inherited_topology": "nominal_choice"
+    },
+    {
+      "check": "topology_S20C",
+      "pass": true,
+      "actual": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected": [
+        "NOMINAL_CHOICE"
+      ],
+      "inherited_topology": "nominal_choice"
+    },
+    {
+      "check": "topology_S20H",
+      "pass": true,
+      "actual": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected": [
+        "NOMINAL_CHOICE"
+      ],
+      "inherited_topology": "nominal_choice"
+    },
+    {
+      "check": "topology_Q53N",
+      "pass": true,
+      "actual": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected": [
+        "NOMINAL_CHOICE"
+      ],
+      "inherited_topology": "nominal_choice"
+    },
+    {
+      "check": "topology_S20D",
+      "pass": true,
+      "actual": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected": [
+        "NOMINAL_CHOICE"
+      ],
+      "inherited_topology": "nominal_choice"
+    },
+    {
+      "check": "topology_S20E",
+      "pass": true,
+      "actual": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected": [
+        "NOMINAL_CHOICE"
+      ],
+      "inherited_topology": "nominal_choice"
+    },
+    {
+      "check": "topology_S20B",
+      "pass": true,
+      "actual": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected": [
+        "NOMINAL_CHOICE"
+      ],
+      "inherited_topology": "nominal_choice"
+    },
+    {
+      "check": "topology_single_response_count_and_shapes",
+      "pass": true,
+      "actual": {
+        "affected": 15,
+        "pass": 15,
+        "fail": 0
+      },
+      "expected": "all affected single-response items use their inherited single-response topology"
+    },
     {
       "check": "original_identity_is_original_source",
       "pass": true,
@@ -78,6 +251,21 @@
       "pass": true,
       "actual": "absent",
       "expected": "absent"
+    },
+    {
+      "check": "original_routing_recipe_covers_all_questions_with_ALL_unknown",
+      "pass": true,
+      "actual": {
+        "questions": 178,
+        "routing_entries": 178,
+        "selectors": [
+          "ALL"
+        ],
+        "states": [
+          "ROUTING_UNKNOWN"
+        ]
+      },
+      "expected": "one ALL/ROUTING_UNKNOWN routing entry per response question; no physical row expansion"
     },
     {
       "check": "original_authority_is_not_fixture_allow",
@@ -19999,15 +20187,510 @@
     "manifest": "source_pre553_validation/SRC26/manifest.json"
   },
   "hashes": {
-    "original_config_file": "570009cfbc77a41015c17026c01a7e2fe98b9cc330c8e3ff5fb3a88cc47b3d77",
+    "original_config_file": "dcd99425da198ac68ddba3d816d8e2c3d070426bb4cba3e5a70c5c30588007af",
     "crosswalk_file": "0f27ee8cfaeaaaef3d19ad0394018d7d68524efb9fa2c9c03e54272a4ca8c435",
     "field_evidence_file": "5e051239d4cb767beb9285f9e64d0beed5e93c3937824c7d1333aa2107242a9f",
-    "fixture_config_file": "487f3d4b58dc42242e76a33d584b71f5e3a1bf372d8fa4fce384455be212daf4",
+    "fixture_config_file": "b32f3a46eaa1700568d9e6061f0335e0928565a90830e19640e835ee18a207fa",
     "fixture_file": "0fa867df31ca84ce5f9db65e8d9e1abe750f620c52081ff62eceba06b90557fc",
     "fixture_oracle_file": "b2d0897f1f4a93fbe5d35cdd62bdac0dc02e4888e8da6635caabefdcadc1a708",
-    "original_config_canonical": "74ccd4cb9c6837ff24995c0ac04206d875cc17e3b9e6cb17b929acf236b086a1",
-    "fixture_config_canonical": "d27ba1e1400fe7998f257448bea592ad4d8bac7a0ee1112094c4aa5e3b979d86",
+    "original_config_canonical": "35039455c945c9992e3ae340eb94f77695978afaaca24112cc6a5c8fecf5ce14",
+    "fixture_config_canonical": "65e963be1ab9abba2a692ad3cc45cc3de0015701f6356d94b8138c567932ef4b",
     "fixture_source": "82a03fb50a1e31d1e3bbf933835a0c67523095ecbe83c335240ca402672ec669"
+  },
+  "topology_assertions": {
+    "schema": "PYAT_R157_TOPOLOGY_ASSERTIONS@1.0.0",
+    "source_id": "SRC26",
+    "entries": [
+      {
+        "source_id": "SRC26",
+        "source_variable_code": "S20K",
+        "implementation_id": "question_impl.phase0.27cce01b6f0bdc348cef",
+        "inherited_topology": "nominal_choice",
+        "config_item_topology": "nominal_choice",
+        "response_slots": [
+          "S20K"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_CHOICE"
+        ],
+        "expected_occurrence_kind": "NOMINAL_CHOICE",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.27cce01b6f0bdc348cef",
+            "content_hash": "27cce01b6f0bdc348cef37a28ca2a4755a7cbecfaab463595b8f1372c47fb7a6"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.27cce01b6f0bdc348cef",
+            "content_hash": "27cce01b6f0bdc348cef37a28ca2a4755a7cbecfaab463595b8f1372c47fb7a6"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:2024:S20K",
+            "content_hash": "def6360f953313183b0c39594fccf68afdc0fca6425819504d6066fb498e50bf"
+          }
+        ]
+      },
+      {
+        "source_id": "SRC26",
+        "source_variable_code": "S20F",
+        "implementation_id": "question_impl.phase0.40b35aa5ca31b3d7227e",
+        "inherited_topology": "nominal_choice",
+        "config_item_topology": "nominal_choice",
+        "response_slots": [
+          "S20F"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_CHOICE"
+        ],
+        "expected_occurrence_kind": "NOMINAL_CHOICE",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.40b35aa5ca31b3d7227e",
+            "content_hash": "40b35aa5ca31b3d7227ecb441309ddc9856d1504fdc9e7665ee7da51b86719a3"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.40b35aa5ca31b3d7227e",
+            "content_hash": "40b35aa5ca31b3d7227ecb441309ddc9856d1504fdc9e7665ee7da51b86719a3"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:2024:S20F",
+            "content_hash": "d210bbe3070e8c4e43d3c53bf5f9650a3e7c2e550b8d872a0bf6833f12b53bbd"
+          }
+        ]
+      },
+      {
+        "source_id": "SRC26",
+        "source_variable_code": "S1",
+        "implementation_id": "question_impl.phase0.6ab7545fc4ddc4816dfc",
+        "inherited_topology": "nominal_choice",
+        "config_item_topology": "nominal_choice",
+        "response_slots": [
+          "S1"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_CHOICE"
+        ],
+        "expected_occurrence_kind": "NOMINAL_CHOICE",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.6ab7545fc4ddc4816dfc",
+            "content_hash": "6ab7545fc4ddc4816dfc40cce4e366f4810924496eebc8008abfebda7bec97c2"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.6ab7545fc4ddc4816dfc",
+            "content_hash": "6ab7545fc4ddc4816dfc40cce4e366f4810924496eebc8008abfebda7bec97c2"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:2024:S1",
+            "content_hash": "16a14fd560b2ccd83f4835fd0d1552b4ae1b350fd7e4674fa976717015af4fde"
+          }
+        ]
+      },
+      {
+        "source_id": "SRC26",
+        "source_variable_code": "Q28STE",
+        "implementation_id": "question_impl.phase0.6d56f0ce6b654419bc46",
+        "inherited_topology": "nominal_choice",
+        "config_item_topology": "nominal_choice",
+        "response_slots": [
+          "P28ST.D"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_CHOICE"
+        ],
+        "expected_occurrence_kind": "NOMINAL_CHOICE",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.6d56f0ce6b654419bc46",
+            "content_hash": "6d56f0ce6b654419bc464eb65812ebca84b3a32ee7bd14281c34ed2fc6175017"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.6d56f0ce6b654419bc46",
+            "content_hash": "6d56f0ce6b654419bc464eb65812ebca84b3a32ee7bd14281c34ed2fc6175017"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:2024:Q28STE",
+            "content_hash": "4c6dedb112d127ba7b57992512a3a9369ee934671d9552f5e44c890db39ee918"
+          }
+        ]
+      },
+      {
+        "source_id": "SRC26",
+        "source_variable_code": "S20I",
+        "implementation_id": "question_impl.phase0.83e0f6302cceb3c9d4f5",
+        "inherited_topology": "nominal_choice",
+        "config_item_topology": "nominal_choice",
+        "response_slots": [
+          "S20I"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_CHOICE"
+        ],
+        "expected_occurrence_kind": "NOMINAL_CHOICE",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.83e0f6302cceb3c9d4f5",
+            "content_hash": "83e0f6302cceb3c9d4f539fd3937d5ed281364979721a46b3918826d402ef45a"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.83e0f6302cceb3c9d4f5",
+            "content_hash": "83e0f6302cceb3c9d4f539fd3937d5ed281364979721a46b3918826d402ef45a"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:2024:S20I",
+            "content_hash": "2f7325f89eea4a4dd15d3b4c23bc2a9f17e442086de32d2b2b10d7dca0525568"
+          }
+        ]
+      },
+      {
+        "source_id": "SRC26",
+        "source_variable_code": "S20G",
+        "implementation_id": "question_impl.phase0.866b6937a0edba2325aa",
+        "inherited_topology": "nominal_choice",
+        "config_item_topology": "nominal_choice",
+        "response_slots": [
+          "S20G"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_CHOICE"
+        ],
+        "expected_occurrence_kind": "NOMINAL_CHOICE",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.866b6937a0edba2325aa",
+            "content_hash": "866b6937a0edba2325aa2c742a0f15c02253e3c90c8b0197dc23b1f9308c3bbd"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.866b6937a0edba2325aa",
+            "content_hash": "866b6937a0edba2325aa2c742a0f15c02253e3c90c8b0197dc23b1f9308c3bbd"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:2024:S20G",
+            "content_hash": "2e54bdccfaa4378bc3e2f2ba6da8463133131290d1f0f33591a64c6880a64ecf"
+          }
+        ]
+      },
+      {
+        "source_id": "SRC26",
+        "source_variable_code": "Q38STGBS",
+        "implementation_id": "question_impl.phase0.8f48877a6c5a6769a976",
+        "inherited_topology": "nominal_position",
+        "config_item_topology": "nominal_position",
+        "response_slots": [
+          "P38STGBS"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_POSITION"
+        ],
+        "expected_occurrence_kind": "NOMINAL_POSITION",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.8f48877a6c5a6769a976",
+            "content_hash": "8f48877a6c5a6769a97697a6d0bc5a93d9b05a20c8cabb5139b91f7dc8f6f736"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.8f48877a6c5a6769a976",
+            "content_hash": "8f48877a6c5a6769a97697a6d0bc5a93d9b05a20c8cabb5139b91f7dc8f6f736"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:2024:Q38STGBS",
+            "content_hash": "500c3ab5feed2ec93cda49b7cfc76fe69ce00cff7b6ef509b89a7b8cb0c2ec72"
+          }
+        ]
+      },
+      {
+        "source_id": "SRC26",
+        "source_variable_code": "Q40STGBSB",
+        "implementation_id": "question_impl.phase0.9c6095db073654aa3f2a",
+        "inherited_topology": "nominal_position",
+        "config_item_topology": "nominal_position",
+        "response_slots": [
+          "P40STGBS.B"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_POSITION"
+        ],
+        "expected_occurrence_kind": "NOMINAL_POSITION",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.9c6095db073654aa3f2a",
+            "content_hash": "9c6095db073654aa3f2a9bfc4f354912649a2876b236e862c83e0bd3dad15cfc"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.9c6095db073654aa3f2a",
+            "content_hash": "9c6095db073654aa3f2a9bfc4f354912649a2876b236e862c83e0bd3dad15cfc"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:2024:Q40STGBSB",
+            "content_hash": "9c212b9d270631cc925f701ade4468e1a90a64b4c514f7a4d795a3dfe51f4230"
+          }
+        ]
+      },
+      {
+        "source_id": "SRC26",
+        "source_variable_code": "S20J",
+        "implementation_id": "question_impl.phase0.9e4b41491444318af7e5",
+        "inherited_topology": "nominal_choice",
+        "config_item_topology": "nominal_choice",
+        "response_slots": [
+          "S20J"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_CHOICE"
+        ],
+        "expected_occurrence_kind": "NOMINAL_CHOICE",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.9e4b41491444318af7e5",
+            "content_hash": "9e4b41491444318af7e5cc2b3351b7659d79277db4bc4baf6d58fd7f84c0dafb"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.9e4b41491444318af7e5",
+            "content_hash": "9e4b41491444318af7e5cc2b3351b7659d79277db4bc4baf6d58fd7f84c0dafb"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:2024:S20J",
+            "content_hash": "9275b96dcd69402f1e1c31864a6d772011a08f6e1dabf085589e9c5f3cc1c300"
+          }
+        ]
+      },
+      {
+        "source_id": "SRC26",
+        "source_variable_code": "S20C",
+        "implementation_id": "question_impl.phase0.a8016e7ad87af1a0561d",
+        "inherited_topology": "nominal_choice",
+        "config_item_topology": "nominal_choice",
+        "response_slots": [
+          "S20C"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_CHOICE"
+        ],
+        "expected_occurrence_kind": "NOMINAL_CHOICE",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.a8016e7ad87af1a0561d",
+            "content_hash": "a8016e7ad87af1a0561d7e40661dfb1359426e3ba66b17db37c035edf41a5367"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.a8016e7ad87af1a0561d",
+            "content_hash": "a8016e7ad87af1a0561d7e40661dfb1359426e3ba66b17db37c035edf41a5367"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:2024:S20C",
+            "content_hash": "17c76942ea6b1d0fae5ee9b603bea127919f986a20e59a77e83b3dcd916e70c4"
+          }
+        ]
+      },
+      {
+        "source_id": "SRC26",
+        "source_variable_code": "S20H",
+        "implementation_id": "question_impl.phase0.b0d267714b5b8559ce2e",
+        "inherited_topology": "nominal_choice",
+        "config_item_topology": "nominal_choice",
+        "response_slots": [
+          "S20H"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_CHOICE"
+        ],
+        "expected_occurrence_kind": "NOMINAL_CHOICE",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.b0d267714b5b8559ce2e",
+            "content_hash": "b0d267714b5b8559ce2ed69d4422274194c34554ab6acc4532240c226822f32e"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.b0d267714b5b8559ce2e",
+            "content_hash": "b0d267714b5b8559ce2ed69d4422274194c34554ab6acc4532240c226822f32e"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:2024:S20H",
+            "content_hash": "7d89239e4f938cd4924e3644087fb60528d716f1255cfe68cda9933531199024"
+          }
+        ]
+      },
+      {
+        "source_id": "SRC26",
+        "source_variable_code": "Q53N",
+        "implementation_id": "question_impl.phase0.c1d555fea07a4266cfe7",
+        "inherited_topology": "nominal_choice",
+        "config_item_topology": "nominal_choice",
+        "response_slots": [
+          "P53N"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_CHOICE"
+        ],
+        "expected_occurrence_kind": "NOMINAL_CHOICE",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.c1d555fea07a4266cfe7",
+            "content_hash": "c1d555fea07a4266cfe769f97d959c4cd3471dfbddc87d5d2ed937047b4af325"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.c1d555fea07a4266cfe7",
+            "content_hash": "c1d555fea07a4266cfe769f97d959c4cd3471dfbddc87d5d2ed937047b4af325"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:2024:Q53N",
+            "content_hash": "5507c31fb93c527ace946fabdf8478d70efb953fe8f87c8a06f0bd03bfc2e7c9"
+          }
+        ]
+      },
+      {
+        "source_id": "SRC26",
+        "source_variable_code": "S20D",
+        "implementation_id": "question_impl.phase0.c81d8fc08a676f3e104f",
+        "inherited_topology": "nominal_choice",
+        "config_item_topology": "nominal_choice",
+        "response_slots": [
+          "S20D"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_CHOICE"
+        ],
+        "expected_occurrence_kind": "NOMINAL_CHOICE",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.c81d8fc08a676f3e104f",
+            "content_hash": "c81d8fc08a676f3e104fbb0eab8662cc900e142b11669ed2fae73fd370397388"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.c81d8fc08a676f3e104f",
+            "content_hash": "c81d8fc08a676f3e104fbb0eab8662cc900e142b11669ed2fae73fd370397388"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:2024:S20D",
+            "content_hash": "e559e0fbc34bb559502897a6b44621f08c905fbd385ea48e6af067787450c3ae"
+          }
+        ]
+      },
+      {
+        "source_id": "SRC26",
+        "source_variable_code": "S20E",
+        "implementation_id": "question_impl.phase0.e3cf17e02bb9916a06c4",
+        "inherited_topology": "nominal_choice",
+        "config_item_topology": "nominal_choice",
+        "response_slots": [
+          "S20E"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_CHOICE"
+        ],
+        "expected_occurrence_kind": "NOMINAL_CHOICE",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.e3cf17e02bb9916a06c4",
+            "content_hash": "e3cf17e02bb9916a06c4485896cc7e4e9359c4908dfdb62907b57d6c4e696bfe"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.e3cf17e02bb9916a06c4",
+            "content_hash": "e3cf17e02bb9916a06c4485896cc7e4e9359c4908dfdb62907b57d6c4e696bfe"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:2024:S20E",
+            "content_hash": "c564e96795a7f201625521c9a69548102845851cc27b455d2c703db957a82aef"
+          }
+        ]
+      },
+      {
+        "source_id": "SRC26",
+        "source_variable_code": "S20B",
+        "implementation_id": "question_impl.phase0.ec453b68f11fc91dec9d",
+        "inherited_topology": "nominal_choice",
+        "config_item_topology": "nominal_choice",
+        "response_slots": [
+          "S20B"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_CHOICE"
+        ],
+        "expected_occurrence_kind": "NOMINAL_CHOICE",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.ec453b68f11fc91dec9d",
+            "content_hash": "ec453b68f11fc91dec9d045d647cba741d82d5373b0eee2ebc2f6f3f30089f9f"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.ec453b68f11fc91dec9d",
+            "content_hash": "ec453b68f11fc91dec9d045d647cba741d82d5373b0eee2ebc2f6f3f30089f9f"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:2024:S20B",
+            "content_hash": "058092d86dea56aa1a1ca1c39846f35fddbda664da949f7e495eabdde5624a08"
+          }
+        ]
+      }
+    ],
+    "counts": {
+      "affected": 15,
+      "pass": 15,
+      "fail": 0
+    },
+    "limits": [
+      "Assertions compare each item's inherited H48/P2 topology to the serialized config occurrence kind.",
+      "A single-response nominal item must not be emitted as UNORDERED_MULTISELECT_SET."
+    ]
   },
   "actual": {
     "counts": {
@@ -20095,16 +20778,6 @@
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
       ],
-      "P40STGBS.B": [
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "INAPPLICABLE",
-        "MISSING",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "INAPPLICABLE",
-        "MISSING"
-      ],
       "P41ST": [
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
@@ -20115,15 +20788,15 @@
         "SUBSTANTIVE_RESPONSE",
         "REFUSAL"
       ],
-      "S20G": [
+      "P53N": [
+        "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
         "SOURCE_SPECIFIC_SPECIAL",
         "MISSING",
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING"
+        "SUBSTANTIVE_RESPONSE"
       ],
       "P48ST.5": [
         "SUBSTANTIVE_RESPONSE",
@@ -20164,16 +20837,6 @@
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
-      ],
-      "S20H": [
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING"
       ],
       "P56ST.8": [
         "SUBSTANTIVE_RESPONSE",
@@ -20262,16 +20925,6 @@
         "SUBSTANTIVE_RESPONSE",
         "SOURCE_SPECIFIC_SPECIAL",
         "MISSING",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE"
-      ],
-      "S1": [
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
       ],
@@ -20365,16 +21018,6 @@
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
       ],
-      "S20K": [
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING"
-      ],
       "S14M.7": [
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
@@ -20384,16 +21027,6 @@
         "MISSING",
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
-      ],
-      "S20B": [
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING"
       ],
       "P4NINT.10": [
         "SUBSTANTIVE_RESPONSE",
@@ -20415,16 +21048,6 @@
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
       ],
-      "S20I": [
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING"
-      ],
       "P28ST.C": [
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
@@ -20444,6 +21067,16 @@
         "MISSING",
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
+      ],
+      "S20I": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING"
       ],
       "P54N": [
         "SUBSTANTIVE_RESPONSE",
@@ -20504,16 +21137,6 @@
         "DK",
         "MISSING",
         "SUBSTANTIVE_RESPONSE"
-      ],
-      "S20D": [
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING"
       ],
       "P3NOIJ.4": [
         "SUBSTANTIVE_RESPONSE",
@@ -20645,6 +21268,16 @@
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
       ],
+      "S20F": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING"
+      ],
       "P14ST.H": [
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
@@ -20674,16 +21307,6 @@
         "MISSING",
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
-      ],
-      "S20E": [
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING"
       ],
       "P12STGBS.B": [
         "SUBSTANTIVE_RESPONSE",
@@ -20794,6 +21417,16 @@
         "MISSING",
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
+      ],
+      "P40STGBS.B": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "INAPPLICABLE",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "INAPPLICABLE",
+        "MISSING"
       ],
       "S4": [
         "SUBSTANTIVE_RESPONSE",
@@ -21375,6 +22008,16 @@
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
       ],
+      "S20C": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING"
+      ],
       "P50ST.C": [
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
@@ -21434,6 +22077,16 @@
         "DK",
         "MISSING",
         "SUBSTANTIVE_RESPONSE"
+      ],
+      "S20H": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING"
       ],
       "P3NOIJ.2": [
         "SUBSTANTIVE_RESPONSE",
@@ -21605,6 +22258,16 @@
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
       ],
+      "S20B": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING"
+      ],
       "P2NCV.9": [
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
@@ -21665,6 +22328,16 @@
         "DK",
         "MISSING"
       ],
+      "P28ST.D": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE"
+      ],
       "P7NCV.D": [
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
@@ -21704,6 +22377,16 @@
         "DK",
         "MISSING",
         "SUBSTANTIVE_RESPONSE"
+      ],
+      "S20E": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING"
       ],
       "P9NCV.8": [
         "SUBSTANTIVE_RESPONSE",
@@ -21855,16 +22538,6 @@
         "MISSING",
         "SUBSTANTIVE_RESPONSE"
       ],
-      "P53N": [
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE"
-      ],
       "S13P1STINT.2": [
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
@@ -21894,6 +22567,16 @@
         "MISSING",
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
+      ],
+      "S20J": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING"
       ],
       "S18.B": [
         "SUBSTANTIVE_RESPONSE",
@@ -22045,16 +22728,6 @@
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
       ],
-      "S20F": [
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING"
-      ],
       "P2NCV.11": [
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
@@ -22115,6 +22788,16 @@
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
       ],
+      "S20G": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING"
+      ],
       "S14M.9": [
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
@@ -22125,17 +22808,7 @@
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
       ],
-      "P28ST.D": [
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE"
-      ],
-      "P38STGBS": [
+      "S20D": [
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
         "SOURCE_SPECIFIC_SPECIAL",
@@ -22224,6 +22897,16 @@
         "MISSING",
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
+      ],
+      "S20K": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING"
       ],
       "P3NCV": [
         "SUBSTANTIVE_RESPONSE",
@@ -22314,6 +22997,16 @@
         "SOURCE_SPECIFIC_SPECIAL",
         "MISSING",
         "SUBSTANTIVE_RESPONSE"
+      ],
+      "P38STGBS": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "MISSING"
       ],
       "P6NCV.4": [
         "SUBSTANTIVE_RESPONSE",
@@ -22465,16 +23158,6 @@
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
       ],
-      "S20J": [
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING"
-      ],
       "P14ST.N": [
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
@@ -22565,16 +23248,6 @@
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE"
       ],
-      "S20C": [
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SOURCE_SPECIFIC_SPECIAL",
-        "MISSING"
-      ],
       "P48ST.9": [
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
@@ -22654,6 +23327,16 @@
         "SUBSTANTIVE_RESPONSE",
         "SOURCE_SPECIFIC_SPECIAL",
         "MISSING"
+      ],
+      "S1": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE"
       ],
       "S6": [
         "SUBSTANTIVE_RESPONSE",
@@ -22785,9 +23468,9 @@
     "release_ref": {
       "kind": "C11LogicalRelease",
       "object_id": "R157_FIXTURE_RELEASE/SRC26",
-      "content_hash": "b526e80c2049fe0318813f2b94abd10c41173775377906dcd47cecc29e77789e"
+      "content_hash": "528ca5c34f7d9fd3c92ae5832d7be0001fec001a1053a046ba899a1ceda3164f"
     },
-    "semantic_release_hash": "b526e80c2049fe0318813f2b94abd10c41173775377906dcd47cecc29e77789e",
+    "semantic_release_hash": "528ca5c34f7d9fd3c92ae5832d7be0001fec001a1053a046ba899a1ceda3164f",
     "m01_m18_coverage": {
       "M01": 1,
       "M02": 1,

@@ -38,9 +38,9 @@ def main() -> int:
         oracle = json.loads((val / "fixture_oracle.json").read_text())
         manifest = json.loads((val / "manifest.json").read_text())
         fixture_doc = json.loads((val / "fixture.json").read_text())
-        projection_call = next(c for c in validation["calls"]
-                               if c.get("result") == "GovernedC11Projection"
-                               and c.get("input", "").startswith("ORIGINAL_SOURCE"))
+        topology = json.loads((val / "TOPOLOGY_ASSERTIONS.json").read_text())
+        original_recipe_call = next(c for c in validation["calls"]
+                                    if c.get("result") == "ROUTING_RECIPE_VALIDATED")
         fixture_projection_call = next(c for c in validation["calls"]
                                        if c.get("result") == "GovernedC11Projection"
                                        and c.get("input", "").startswith("NONRESPONDENT_FIXTURE"))
@@ -50,7 +50,8 @@ def main() -> int:
         for path in (
             data / "source.config.json", data / "crosswalk.json", data / "field_evidence.json",
             val / "fixture.config.json", val / "fixture.json", val / "fixture_oracle.json",
-            val / "VALIDATION_RESULTS.json", val / "EXCEPTIONS.json", val / "manifest.json",
+            val / "VALIDATION_RESULTS.json", val / "EXCEPTIONS.json",
+            val / "TOPOLOGY_ASSERTIONS.json", val / "manifest.json",
         ):
             artifacts[rel(path)] = {"sha256": sha(path), "bytes": path.stat().st_size}
         residuals = []
@@ -125,7 +126,8 @@ def main() -> int:
                 "passed": sum(1 for c in validation["checks"] if c["pass"]),
                 "failed": len(validation["failures"]),
                 "skipped": 0,
-                "original_projection": projection_call,
+                "original_recipe_validation": original_recipe_call,
+                "original_projection_expansion": "NOT_PERFORMED_BY_DESIGN",
                 "fixture_projection": fixture_projection_call,
                 "fixture_release": release_call,
                 "actual_counts": validation["actual"]["counts"],
@@ -136,6 +138,11 @@ def main() -> int:
                 "semantic_release_hash": validation["actual"]["semantic_release_hash"],
                 "m01_m18_coverage": validation["actual"]["m01_m18_coverage"],
                 "refusals": validation["refusals"],
+            },
+            "topology_assertions": {
+                "path": rel(val / "TOPOLOGY_ASSERTIONS.json"),
+                "sha256": sha(val / "TOPOLOGY_ASSERTIONS.json"),
+                "counts": topology["counts"],
             },
             "exceptions": {
                 "path": rel(val / "EXCEPTIONS.json"),
@@ -191,7 +198,7 @@ def main() -> int:
             },
             {
                 "command": "PYTHONPATH=. python3 source_pre553_validation/SRC24/tools/run_latin_validation.py",
-                "result": "SRC24 PASS 566/566 checks; SRC25 PASS 1127/1127 checks; SRC26 PASS 842/842 checks; 0 failed; 0 skipped",
+                "result": "SRC24 PASS 571/571 checks; SRC25 PASS 1158/1158 checks; SRC26 PASS 859/859 checks; 0 failed; 0 skipped",
                 "status": "PASS",
             },
             {
@@ -239,7 +246,7 @@ def main() -> int:
                 f"SRC24: {len(source_results['SRC24']['original_config']['included_items'])}/203 items included; 14 exact exclusions (13 unmatched full-relation identities plus the weight slot authority gap).",
                 f"SRC25: {len(source_results['SRC25']['original_config']['included_items'])}/414 items included; 3 exact exclusions (weight authority gap plus P54ST_9/P56NI no declared finite value domain).",
                 f"SRC26: {len(source_results['SRC26']['original_config']['included_items'])}/195 items included; 5 unmatched full-relation identities excluded; physical-only P14ST.F/P52N hold no item identity; WT has no weight authority.",
-                "Source routing remains SOURCE_ROUTING_UNRESOLVED and is represented as ROUTING_UNKNOWN; original routing facts are a bounded preparation witness over rows 1-3, not an eligibility claim for every row.",
+                "Source routing remains SOURCE_ROUTING_UNRESOLVED. The portable original recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every response question; it does not invent eligibility, forms, populations or permissions. Original rows were not physically expanded for validation.",
                 "Source-native respondent key slots are not configured; row ordinal is the only established key. The corrected P0 factory refuses a configured key slot without exact row keys.",
                 "No form/ballot/administration variable is present in current evidence; single-file SAV shape is declared.",
                 "No weight design/estimand authority is established; weight_slots is empty and no weighted scope is claimed.",

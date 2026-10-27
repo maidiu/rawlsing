@@ -3,18 +3,16 @@
   "status": "PASS",
   "calls": [
     {
-      "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
-      "input": "ORIGINAL_SOURCE config (no physical stream)",
+      "call": "static original routing recipe validation",
+      "input": "ORIGINAL_SOURCE config (not physically expanded)",
       "config_id": "R157-LATIN-SRC24-FULL-SOURCE-PREPARATION",
-      "config_sha256": "1c241014c136a9b58935dd536f72795afe15832688fa4b268bb264ad8533de99",
-      "result": "GovernedC11Projection",
-      "source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
-      "respondents": 9069,
-      "response_slots": 183,
-      "coordinate_slots": 6,
-      "routing_facts": 549,
+      "config_sha256": "a2b532f624ad70a1e81a075befbf930ec1264123c6906df500353bb0dff8c930",
+      "result": "ROUTING_RECIPE_VALIDATED",
       "questions": 183,
-      "authority_snapshots": 7
+      "routing_entries": 183,
+      "row_selector": "ALL",
+      "typed_state": "ROUTING_UNKNOWN",
+      "physical_row_expansion": "NOT_PERFORMED"
     },
     {
       "call": "rawlsing_next.source_configuration.fixture.load_fixture_stream",
@@ -28,7 +26,7 @@
       "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
       "input": "NONRESPONDENT_FIXTURE config",
       "config_id": "R157-LATIN-SRC24-NONRESPONDENT-FIXTURE-FULL",
-      "config_sha256": "a1c9c738ddef09d272102c7f6dcf222664f5b20aa209d149cafb0243cb8fa8b9",
+      "config_sha256": "d2991c66516743f9d718fad959d5639821ea224232f049644348ff91646b073f",
       "result": "GovernedC11Projection",
       "source_sha256": "c7e3cd4ce10c795c08b5c97a0bbc57d8ef4ffd7da0cf30e0e3845c4b4e0333b9",
       "respondents": 8,
@@ -41,20 +39,63 @@
       "call": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
       "input": "NONRESPONDENT_FIXTURE config + ExactPhysicalCellStream",
       "config_id": "R157-LATIN-SRC24-NONRESPONDENT-FIXTURE-FULL",
-      "config_sha256": "a1c9c738ddef09d272102c7f6dcf222664f5b20aa209d149cafb0243cb8fa8b9",
+      "config_sha256": "d2991c66516743f9d718fad959d5639821ea224232f049644348ff91646b073f",
       "fixture_source_sha256": "c7e3cd4ce10c795c08b5c97a0bbc57d8ef4ffd7da0cf30e0e3845c4b4e0333b9",
       "result": "C11LogicalRelease",
       "release_id": "R157_FIXTURE_RELEASE/SRC24",
       "release_ref": {
         "kind": "C11LogicalRelease",
         "object_id": "R157_FIXTURE_RELEASE/SRC24",
-        "content_hash": "4faea64a46b1fe539939146358299d8dbf399884c6fd7d563666c81594cbaee6"
+        "content_hash": "214de015475f919dc17cad231b7de1dc085c66085d30ebf75fd0a65cba68995e"
       },
-      "semantic_release_hash": "4faea64a46b1fe539939146358299d8dbf399884c6fd7d563666c81594cbaee6",
+      "semantic_release_hash": "214de015475f919dc17cad231b7de1dc085c66085d30ebf75fd0a65cba68995e",
       "source_release_manifest_hash": "e587e596ef4001ec7e01d3dd72f405c92f5d710b478aeb0be4289cb045c93c67"
     }
   ],
   "checks": [
+    {
+      "check": "topology_s14",
+      "pass": true,
+      "actual": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected": [
+        "NOMINAL_CHOICE"
+      ],
+      "inherited_topology": "nominal_choice"
+    },
+    {
+      "check": "topology_s6",
+      "pass": true,
+      "actual": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected": [
+        "NOMINAL_CHOICE"
+      ],
+      "inherited_topology": "nominal_choice"
+    },
+    {
+      "check": "topology_p20",
+      "pass": true,
+      "actual": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected": [
+        "NOMINAL_CHOICE"
+      ],
+      "inherited_topology": "nominal_choice"
+    },
+    {
+      "check": "topology_single_response_count_and_shapes",
+      "pass": true,
+      "actual": {
+        "affected": 3,
+        "pass": 3,
+        "fail": 0
+      },
+      "expected": "all affected single-response items use their inherited single-response topology"
+    },
     {
       "check": "original_identity_is_original_source",
       "pass": true,
@@ -78,6 +119,21 @@
       "pass": true,
       "actual": "absent",
       "expected": "absent"
+    },
+    {
+      "check": "original_routing_recipe_covers_all_questions_with_ALL_unknown",
+      "pass": true,
+      "actual": {
+        "questions": 183,
+        "routing_entries": 183,
+        "selectors": [
+          "ALL"
+        ],
+        "states": [
+          "ROUTING_UNKNOWN"
+        ]
+      },
+      "expected": "one ALL/ROUTING_UNKNOWN routing entry per response question; no physical row expansion"
     },
     {
       "check": "original_authority_is_not_fixture_allow",
@@ -13375,15 +13431,126 @@
     "manifest": "source_pre553_validation/SRC24/manifest.json"
   },
   "hashes": {
-    "original_config_file": "1cb6de80b546912347b99c2b04f43ebc47c67fba232b8275c91c88abb3a094d7",
+    "original_config_file": "8108d40a813134c96b67b1571466ad5ada791385a1faa9d3e9ecded79066766f",
     "crosswalk_file": "d2d16f2e10f7d27191cd9d2f0a3056428d07edd9bdd62ec471764aec50d2dfda",
     "field_evidence_file": "7b6631a97fc52a8a5524059907bd3cdf679096349eb6f442c8622f772f2e44dd",
-    "fixture_config_file": "73cbeb076515e547d93baa0670a4a1f786cbe0831ff40d83ceaef7e7ab78b8e4",
+    "fixture_config_file": "0f3114661100fa7b3c7b562007ab66c72d7d7f4bd7efc4e80a93435639d91368",
     "fixture_file": "055b478a1bf958fe595cba74867909d41893e1aa6cae87ec9a7648eef47360d2",
     "fixture_oracle_file": "6e4386c334f2aa431956a2489a631edc91fd2327de0bf5c1f4f4c08cbaf484b8",
-    "original_config_canonical": "1c241014c136a9b58935dd536f72795afe15832688fa4b268bb264ad8533de99",
-    "fixture_config_canonical": "a1c9c738ddef09d272102c7f6dcf222664f5b20aa209d149cafb0243cb8fa8b9",
+    "original_config_canonical": "a2b532f624ad70a1e81a075befbf930ec1264123c6906df500353bb0dff8c930",
+    "fixture_config_canonical": "d2991c66516743f9d718fad959d5639821ea224232f049644348ff91646b073f",
     "fixture_source": "c7e3cd4ce10c795c08b5c97a0bbc57d8ef4ffd7da0cf30e0e3845c4b4e0333b9"
+  },
+  "topology_assertions": {
+    "schema": "PYAT_R157_TOPOLOGY_ASSERTIONS@1.0.0",
+    "source_id": "SRC24",
+    "entries": [
+      {
+        "source_id": "SRC24",
+        "source_variable_code": "s14",
+        "implementation_id": "question_impl.phase0.7b2229c966da3eb73422",
+        "inherited_topology": "nominal_choice",
+        "config_item_topology": "nominal_choice",
+        "response_slots": [
+          "s14"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_CHOICE"
+        ],
+        "expected_occurrence_kind": "NOMINAL_CHOICE",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.7b2229c966da3eb73422",
+            "content_hash": "7b2229c966da3eb7342275642acc5dae204905f8d7838bf7eafc4650acc5ac55"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.7b2229c966da3eb73422",
+            "content_hash": "7b2229c966da3eb7342275642acc5dae204905f8d7838bf7eafc4650acc5ac55"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:1995:S14",
+            "content_hash": "a4291dadc6a680a95e89f24e3d45a7010984db8db4e7c3d155be6692171a7bea"
+          }
+        ]
+      },
+      {
+        "source_id": "SRC24",
+        "source_variable_code": "s6",
+        "implementation_id": "question_impl.phase0.8ff1e5abcf187c5b9ca2",
+        "inherited_topology": "nominal_choice",
+        "config_item_topology": "nominal_choice",
+        "response_slots": [
+          "s6"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_CHOICE"
+        ],
+        "expected_occurrence_kind": "NOMINAL_CHOICE",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.8ff1e5abcf187c5b9ca2",
+            "content_hash": "8ff1e5abcf187c5b9ca2b52b0011e577ac9af368f65f5ef0b418060fd9572b4a"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.8ff1e5abcf187c5b9ca2",
+            "content_hash": "8ff1e5abcf187c5b9ca2b52b0011e577ac9af368f65f5ef0b418060fd9572b4a"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:1995:S6",
+            "content_hash": "2431a570010e7e0b39e165e8bce844cc58ba18ad4669eb557f0161ebd490f730"
+          }
+        ]
+      },
+      {
+        "source_id": "SRC24",
+        "source_variable_code": "p20",
+        "implementation_id": "question_impl.phase0.c427923033739e5b106b",
+        "inherited_topology": "nominal_choice",
+        "config_item_topology": "nominal_choice",
+        "response_slots": [
+          "p20"
+        ],
+        "occurrence_kinds": [
+          "NOMINAL_CHOICE"
+        ],
+        "expected_occurrence_kind": "NOMINAL_CHOICE",
+        "pass": true,
+        "evidence_refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.c427923033739e5b106b",
+            "content_hash": "c427923033739e5b106bb142db26c93dee285e7b3213d2f29ea130e37cd91106"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.c427923033739e5b106b",
+            "content_hash": "c427923033739e5b106bb142db26c93dee285e7b3213d2f29ea130e37cd91106"
+          },
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:1995:P20",
+            "content_hash": "2efbf39cf07b32971d614c2a16b96feead84ef53f41afd4a4f6d74743913df46"
+          }
+        ]
+      }
+    ],
+    "counts": {
+      "affected": 3,
+      "pass": 3,
+      "fail": 0
+    },
+    "limits": [
+      "Assertions compare each item's inherited H48/P2 topology to the serialized config occurrence kind.",
+      "A single-response nominal item must not be emitted as UNORDERED_MULTISELECT_SET."
+    ]
   },
   "actual": {
     "counts": {
@@ -13530,16 +13697,6 @@
         "DK",
         "MISSING",
         "SUBSTANTIVE_RESPONSE"
-      ],
-      "s14": [
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "NOT_ASKED",
-        "INAPPLICABLE",
-        "REFUSAL",
-        "DK",
-        "MISSING"
       ],
       "s15b": [
         "SUBSTANTIVE_RESPONSE",
@@ -13810,16 +13967,6 @@
         "INAPPLICABLE",
         "REFUSAL",
         "DK"
-      ],
-      "p20": [
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "NOT_ASKED",
-        "INAPPLICABLE",
-        "REFUSAL",
-        "DK",
-        "MISSING"
       ],
       "p6": [
         "SUBSTANTIVE_RESPONSE",
@@ -14321,6 +14468,16 @@
         "MISSING",
         "SUBSTANTIVE_RESPONSE"
       ],
+      "s6": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING"
+      ],
       "p59": [
         "SUBSTANTIVE_RESPONSE",
         "SUBSTANTIVE_RESPONSE",
@@ -14410,6 +14567,16 @@
         "DK",
         "MISSING",
         "SUBSTANTIVE_RESPONSE"
+      ],
+      "s14": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING"
       ],
       "p51": [
         "SUBSTANTIVE_RESPONSE",
@@ -14570,16 +14737,6 @@
         "DK",
         "MISSING",
         "SUBSTANTIVE_RESPONSE"
-      ],
-      "s6": [
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "SUBSTANTIVE_RESPONSE",
-        "NOT_ASKED",
-        "INAPPLICABLE",
-        "REFUSAL",
-        "DK",
-        "MISSING"
       ],
       "p28c": [
         "SUBSTANTIVE_RESPONSE",
@@ -14850,6 +15007,16 @@
         "INAPPLICABLE",
         "REFUSAL",
         "DK"
+      ],
+      "p20": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "NOT_ASKED",
+        "INAPPLICABLE",
+        "REFUSAL",
+        "DK",
+        "MISSING"
       ],
       "p16": [
         "SUBSTANTIVE_RESPONSE",
@@ -15241,9 +15408,9 @@
     "release_ref": {
       "kind": "C11LogicalRelease",
       "object_id": "R157_FIXTURE_RELEASE/SRC24",
-      "content_hash": "4faea64a46b1fe539939146358299d8dbf399884c6fd7d563666c81594cbaee6"
+      "content_hash": "214de015475f919dc17cad231b7de1dc085c66085d30ebf75fd0a65cba68995e"
     },
-    "semantic_release_hash": "4faea64a46b1fe539939146358299d8dbf399884c6fd7d563666c81594cbaee6",
+    "semantic_release_hash": "214de015475f919dc17cad231b7de1dc085c66085d30ebf75fd0a65cba68995e",
     "m01_m18_coverage": {
       "M01": 1,
       "M02": 1,

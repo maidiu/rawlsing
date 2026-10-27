@@ -30,6 +30,7 @@ from rawlsing_next.source_configuration.schema import (  # noqa: E402
     canonical_config_hash,
     load_source_config,
 )
+from rawlsing_next.source_configuration import evidence as E  # noqa: E402
 CODEC = R5TypedValueCodec()
 SOURCE_IDS = ("SRC24", "SRC25", "SRC26")
 
@@ -53,6 +54,67 @@ def slot_from_event(event: RespondentEvent) -> str:
     # urn:rawlsing:r157:topology:<source>:<slot>:<topology>
     parts = object_id.split(":")
     return parts[-2]
+
+
+def topology_assertions(source_id: str, original: Any) -> dict[str, Any]:
+    inherited = {x["source_variable_code"]: x for x in E.iter_item_evidence(source_id)}
+    config_items = {i["source_variable_code"]: i for i in original.document["items"]}
+    response_by_question: dict[str, list[dict[str, Any]]] = {}
+    for slot in original.document["response_slots"]:
+        response_by_question.setdefault(slot["question_id"], []).append(slot)
+    affected = {"nominal_choice", "nominal_position", "response_status"}
+    expected_kind = {
+        "nominal_choice": "NOMINAL_CHOICE",
+        "nominal_position": "NOMINAL_POSITION",
+        "response_status": "RESPONSE_STATUS",
+    }
+    entries = []
+    for code, item in inherited.items():
+        relation = item.get("relation") or {}
+        topology = relation.get("manual_response_topology")
+        if topology not in affected:
+            continue
+        slots = response_by_question.get(code, [])
+        kinds = set()
+        for slot in slots:
+            for value in slot["values"]:
+                for occurrence in value["occurrences"]:
+                    kinds.add(occurrence["multiplicity_order_rank_fields"].get("kind"))
+        config_item = config_items.get(code, {})
+        config_topology = (config_item.get("relation") or {}).get("manual_response_topology")
+        expected = expected_kind[topology]
+        passed = (
+            len(slots) == 1
+            and config_topology == topology
+            and kinds == {expected}
+            and "UNORDERED_MULTISELECT_SET" not in kinds
+        )
+        entries.append({
+            "source_id": source_id,
+            "source_variable_code": code,
+            "implementation_id": item["implementation_id"],
+            "inherited_topology": topology,
+            "config_item_topology": config_topology,
+            "response_slots": [s["slot"]["name"] for s in slots],
+            "occurrence_kinds": sorted(k for k in kinds if k is not None),
+            "expected_occurrence_kind": expected,
+            "pass": passed,
+            "evidence_refs": config_item.get("evidence_refs", []),
+        })
+    return {
+        "schema": "PYAT_R157_TOPOLOGY_ASSERTIONS@1.0.0",
+        "source_id": source_id,
+        "entries": entries,
+        "counts": {
+            "affected": len(entries),
+            "pass": sum(1 for e in entries if e["pass"]),
+            "fail": sum(1 for e in entries if not e["pass"]),
+        },
+        "limits": [
+            "Assertions compare each item's inherited H48/P2 topology to the serialized config occurrence kind.",
+            "A single-response nominal item must not be emitted as UNORDERED_MULTISELECT_SET.",
+        ],
+    }
 
 
 def run_source(source_id: str) -> dict[str, Any]:
@@ -100,28 +162,59 @@ def run_source(source_id: str) -> dict[str, Any]:
     result["hashes"]["fixture_config_canonical"] = canonical_config_hash(fixture_config)
     result["hashes"]["fixture_source"] = fixture_doc["fixture_source_sha256"]
 
-    # ---- original-source projection construction (no stream/values read) ----
-    original_projection = build_governed_c11_projection(original)
+    topology = topology_assertions(source_id, original)
+    result["topology_assertions"] = topology
+    for entry in topology["entries"]:
+        result["checks"].append({
+            "check": f"topology_{entry['source_variable_code']}",
+            "pass": entry["pass"],
+            "actual": entry["occurrence_kinds"],
+            "expected": [entry["expected_occurrence_kind"]],
+            "inherited_topology": entry["inherited_topology"],
+        })
+    result["checks"].append({
+        "check": "topology_single_response_count_and_shapes",
+        "pass": topology["counts"]["fail"] == 0,
+        "actual": topology["counts"],
+        "expected": "all affected single-response items use their inherited single-response topology",
+    })
+
+    # ---- original-source portable recipe validation (no row expansion) ----
+    # The original config declares row_selector=ALL with ROUTING_UNKNOWN for every
+    # response question.  We validate that recipe statically instead of expanding
+    # original rows into a physical response workload.
+    original_questions = original.document["questions"]
+    original_routing = original.document["routing"]
+    original_qids = [q["question_id"] for q in original_questions]
+    routing_by_qid = {}
+    for entry in original_routing:
+        routing_by_qid.setdefault(entry["question_id"], []).append(entry)
+    routing_recipe_ok = (
+        len(original_routing) == len(original_questions)
+        and set(routing_by_qid) == set(original_qids)
+        and all(len(v) == 1 for v in routing_by_qid.values())
+        and all(v[0]["row_selector"] == "ALL" for v in routing_by_qid.values())
+        and all(v[0]["typed_state"] == "ROUTING_UNKNOWN" for v in routing_by_qid.values())
+    )
     result["calls"].append({
-        "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
-        "input": "ORIGINAL_SOURCE config (no physical stream)",
+        "call": "static original routing recipe validation",
+        "input": "ORIGINAL_SOURCE config (not physically expanded)",
         "config_id": original.config_id,
         "config_sha256": result["hashes"]["original_config_canonical"],
-        "result": "GovernedC11Projection",
-        "source_sha256": original_projection.expected_source_sha256,
-        "respondents": len(original_projection.respondents),
-        "response_slots": len(original_projection.response_slots),
-        "coordinate_slots": len(original_projection.coordinate_slots),
-        "routing_facts": len(original_projection.routing),
-        "questions": len(original_projection.questions),
-        "authority_snapshots": len(original_projection.authority_snapshots),
+        "result": "ROUTING_RECIPE_VALIDATED",
+        "questions": len(original_questions),
+        "routing_entries": len(original_routing),
+        "row_selector": "ALL",
+        "typed_state": "ROUTING_UNKNOWN",
+        "physical_row_expansion": "NOT_PERFORMED",
     })
+    original_authority_snapshots = original.document["authority"]["snapshots"]
     result["checks"].extend([
         {
             "check": "original_identity_is_original_source",
-            "pass": original_projection.expected_source_sha256 == original.original_source_sha256,
-            "actual": original_projection.expected_source_sha256,
-            "expected": original.original_source_sha256,
+            "pass": original.original_source_sha256 == original.document["identity"]["expected_source_sha256"],
+            "actual": original.original_source_sha256,
+            "expected": original.document["identity"]["expected_source_sha256"],
         },
         {
             "check": "original_has_no_fixture_provenance",
@@ -131,9 +224,10 @@ def run_source(source_id: str) -> dict[str, Any]:
         },
         {
             "check": "original_respondent_rows_match_source",
-            "pass": len(original_projection.respondents) == original.active_row_count,
-            "actual": len(original_projection.respondents),
-            "expected": original.active_row_count,
+            "pass": original.active_row_count == original.document["binding"]["row_count"]
+                    == original.document["identity"]["source_row_count"],
+            "actual": original.active_row_count,
+            "expected": original.document["identity"]["source_row_count"],
         },
         {
             "check": "original_fixture_sha_absent_from_config_bytes",
@@ -141,11 +235,23 @@ def run_source(source_id: str) -> dict[str, Any]:
             "actual": "absent",
             "expected": "absent",
         },
+        {
+            "check": "original_routing_recipe_covers_all_questions_with_ALL_unknown",
+            "pass": routing_recipe_ok,
+            "actual": {
+                "questions": len(original_questions),
+                "routing_entries": len(original_routing),
+                "selectors": sorted({v[0]["row_selector"] for v in routing_by_qid.values()}) if routing_by_qid else [],
+                "states": sorted({v[0]["typed_state"] for v in routing_by_qid.values()}) if routing_by_qid else [],
+            },
+            "expected": "one ALL/ROUTING_UNKNOWN routing entry per response question; no physical row expansion",
+        },
     ])
-    original_authority_states = Counter(x.decision_state for x in original_projection.authority_snapshots)
+    original_authority_states = Counter(a["decision_state"] for a in original_authority_snapshots)
     result["checks"].append({
         "check": "original_authority_is_not_fixture_allow",
-        "pass": "ALLOW" not in {x.decision_state for x in original_projection.authority_snapshots if x.authority_kind != "REPLAY_PROTOCOL"},
+        "pass": all(a["decision_state"] != "ALLOW" for a in original_authority_snapshots
+                    if a["authority_kind"] != "REPLAY_PROTOCOL"),
         "actual": dict(original_authority_states),
         "expected": "DEFER source authorities; ALLOW only for local replay protocol",
     })
@@ -329,9 +435,10 @@ def run_source(source_id: str) -> dict[str, Any]:
         refusals.append({"case": "fixture config + wrong fixture SHA", "type": "NO_ERROR", "message": "unexpected acceptance"})
 
     key_doc = copy.deepcopy(original.document)
+    key_slot = original.document["response_slots"][0]["slot"]
     key_doc["respondents"]["source_native_key_slot"] = {
-        "ordinal": original_projection.response_slots[0].slot.ordinal,
-        "name": original_projection.response_slots[0].slot.name,
+        "ordinal": key_slot["ordinal"],
+        "name": key_slot["name"],
     }
     try:
         build_governed_c11_projection(key_doc)
@@ -372,6 +479,8 @@ def main() -> int:
         exceptions = build_exceptions(source_id, result)
         exceptions_path = ROOT / "source_pre553_validation" / source_id / "EXCEPTIONS.json"
         exceptions_path.write_text(json.dumps(exceptions, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        topology_path = ROOT / "source_pre553_validation" / source_id / "TOPOLOGY_ASSERTIONS.json"
+        topology_path.write_text(json.dumps(result["topology_assertions"], indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         manifest = update_manifest(source_id, result, exceptions)
         print(f"{source_id}: {result['status']} checks={len(result['checks'])} failures={len(result['failures'])} "
               f"release={result['actual']['release_ref']['object_id']} "
@@ -519,9 +628,11 @@ def update_manifest(source_id: str, result: Mapping[str, Any], exceptions: Mappi
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     artifacts = [a for a in manifest["artifacts"]
                  if a["path"] not in ("source_pre553_validation/%s/VALIDATION_RESULTS.json" % source_id,
-                                      "source_pre553_validation/%s/EXCEPTIONS.json" % source_id)]
+                                      "source_pre553_validation/%s/EXCEPTIONS.json" % source_id,
+                                      "source_pre553_validation/%s/TOPOLOGY_ASSERTIONS.json" % source_id)]
     for rel in (f"source_pre553_validation/{source_id}/VALIDATION_RESULTS.json",
-                f"source_pre553_validation/{source_id}/EXCEPTIONS.json"):
+                f"source_pre553_validation/{source_id}/EXCEPTIONS.json",
+                f"source_pre553_validation/{source_id}/TOPOLOGY_ASSERTIONS.json"):
         path = ROOT / rel
         artifacts.append({"path": rel, "sha256": file_sha(path), "bytes": path.stat().st_size})
     manifest["artifacts"] = artifacts

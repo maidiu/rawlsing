@@ -7,7 +7,7 @@
       "source_id": "SRC24",
       "implementation_id_or_physical_slot": "SOURCE_LEVEL",
       "required_native_field": "routing.typed_state",
-      "current_value_or_typed_unknown": "UNKNOWN: SOURCE_ROUTING_UNRESOLVED for 183 response items; original routing facts are a preparation witness over rows 1-3, not an eligibility claim for every row.",
+      "current_value_or_typed_unknown": "UNKNOWN: SOURCE_ROUTING_UNRESOLVED for 183 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. The original source rows were not physically expanded for validation.",
       "exact_evidence_refs": [
         {
           "kind": "SOURCE_SNAPSHOT",
@@ -20,7 +20,7 @@
           "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
         }
       ],
-      "contradiction_or_missing_fact": "SOURCE_ROUTING_UNRESOLVED for 183 response items; original routing facts are a preparation witness over rows 1-3, not an eligibility claim for every row.",
+      "contradiction_or_missing_fact": "SOURCE_ROUTING_UNRESOLVED for 183 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. The original source rows were not physically expanded for validation.",
       "affected_operation_or_slice": "eligibility/form-conditioned native query",
       "unaffected_usable_slices": "unconditional source-native response incidence and coordinate binding",
       "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Recover exact indexed routing/form expressions before claiming eligibility-conditioned scope.",
