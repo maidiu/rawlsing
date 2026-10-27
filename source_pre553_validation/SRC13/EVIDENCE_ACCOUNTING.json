@@ -1,0 +1,101 @@
+{
+  "schema": "PYAT_R157_EVS_SOURCE_EVIDENCE_ACCOUNTING@1.0.0",
+  "source_id": "SRC13",
+  "family": "EVS",
+  "wave": "1999",
+  "source_sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+  "counts": {
+    "physical_columns": 513,
+    "codebook_rows": 513,
+    "original_items": 513,
+    "exact_relation_matches": 513,
+    "unmatched_relation_ids": 0,
+    "physical_only": 0,
+    "codebook_only": 0
+  },
+  "selected_item": {
+    "implementation_id": "question_impl.phase0.4ce0765a185613c20b24",
+    "source_variable_code": "o6",
+    "exact_identity_sha256": "4ce0765a185613c20b24dc206bfad3289d40ae1a7de1db692258f495243b57bf",
+    "p2_exact_identity_sha256": "4ce0765a185613c20b24dc206bfad3289d40ae1a7de1db692258f495243b57bf",
+    "relation_governed_payload_hash": "84e2c6cf1d14b8ea43b061d9dbef102b37ccdfe3ec24d9738e02360673a8ae1f",
+    "question_text": "how often: think about meaning of life (Q20a)",
+    "response_classes": "support|oppose|unknown|missing|inapplicable",
+    "routing_status": "UNCONDITIONAL_SOURCE_PROVEN",
+    "response_binding_status": "bound",
+    "manual_response_topology": "scalar",
+    "manual_position_conditioning": "no",
+    "manual_semantic_role": "RELATION_EVIDENCE",
+    "manual_signed_polarity_status": "signed",
+    "directional_certification_status": "CERTIFIED"
+  },
+  "slots": {
+    "country": {
+      "ordinal": 9,
+      "name": "country"
+    },
+    "id_cocas": {
+      "ordinal": 5,
+      "name": "id_cocas"
+    },
+    "item": {
+      "ordinal": 454,
+      "name": "o6"
+    }
+  },
+  "weights": {
+    "claimed": false,
+    "reason": "No weight design/estimand authority is claimed."
+  },
+  "reader": {
+    "required_encoding": "latin1",
+    "decoder_allowlist_encoding": "latin1",
+    "configuration_ref": {
+      "kind": "READER_CONFIGURATION",
+      "object_id": "urn:rawlsing:r157:evs:SRC13:sav",
+      "content_hash": "d280aef51e7fbb169c1e355635935d78bdc39f1ba5798da93f0fdde3afc3132d"
+    },
+    "request_source_sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a"
+  },
+  "evidence_refs": [
+    {
+      "field": "items[0].implementation_id",
+      "refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:evs:SRC13:question_impl.phase0.4ce0765a185613c20b24:h48",
+          "content_hash": "4ce0765a185613c20b24dc206bfad3289d40ae1a7de1db692258f495243b57bf"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:evs:SRC13:question_impl.phase0.4ce0765a185613c20b24:p2",
+          "content_hash": "4ce0765a185613c20b24dc206bfad3289d40ae1a7de1db692258f495243b57bf"
+        }
+      ]
+    },
+    {
+      "field": "items[0].relation",
+      "refs": [
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:evs:SRC13:EVS:W3:o6:relation",
+          "content_hash": "84e2c6cf1d14b8ea43b061d9dbef102b37ccdfe3ec24d9738e02360673a8ae1f"
+        }
+      ]
+    },
+    {
+      "field": "physical_slots.item",
+      "refs": [
+        {
+          "kind": "CODEBOOK_ROW",
+          "object_id": "urn:rawlsing:r157:evs:SRC13:o6",
+          "content_hash": "0438cbf9c02e42166014e3fc19d6572931aa9ab8cad859b8e1071f541c70aef6"
+        }
+      ]
+    }
+  ],
+  "no_drop": {
+    "items_unaccounted": 0,
+    "slots_unaccounted": 0
+  }
+}

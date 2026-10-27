@@ -1,0 +1,144 @@
+{
+  "schema": "PYAT_R157_EVS_NATIVE_RESULTS@1.0.0",
+  "source_id": "SRC13",
+  "config_path": "rawlsing_next/source_configuration/data/SRC13/SRC13.config.json",
+  "config_sha256": "734b04425186671e3bc21d8860748fa2a091d0262890c5f2dc57adb00cdb56c5",
+  "fixture_config_path": "rawlsing_next/source_configuration/data/SRC13/SRC13.fixture.config.json",
+  "fixture_config_sha256": "1d05986d10ab4d93663d742c97378600944e14a331d4b62dbb5d2bb6fa6cd1ed",
+  "fixture_path": "source_pre553_validation/SRC13/SRC13.fixture.json",
+  "fixture_file_sha256": "cf7870141a725a57bc1e77eaeaa9dd3bea042309055b584656e9cabf24765c91",
+  "fixture_source_sha256": "ecbf9b2daaa8f12e33a771062976d06e9acba012c4094118246b54a243f1c48b",
+  "original_schema_valid": true,
+  "original_native_validation": "NOT_RUN__AUTHORITY_DEFER",
+  "original_projection_construction": "NOT_RUN__RECIPE_ONLY",
+  "fixture_native_validation": {
+    "projection_type": "GovernedC11Projection",
+    "release_type": "C11LogicalRelease",
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_FIXTURE_RELEASE/EVS/1999",
+      "content_hash": "d33b7624a7ccc464058c7f4253f532ed71a5fbce0f913000eee7d4351d97401c"
+    },
+    "semantic_release_hash": "d33b7624a7ccc464058c7f4253f532ed71a5fbce0f913000eee7d4351d97401c",
+    "replay_manifest_ref": {
+      "kind": "C11Internal:ReplayManifest",
+      "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:565a6cd5dac783ee33faccac5572e5f97f639ca1d1a7ea300a0573b7987c62f1",
+      "content_hash": "565a6cd5dac783ee33faccac5572e5f97f639ca1d1a7ea300a0573b7987c62f1"
+    },
+    "m01_m18_coverage": {
+      "M01": [
+        "EmpiricalUniverse"
+      ],
+      "M02": [
+        "RespondentIdentity"
+      ],
+      "M03": [
+        "QuestionVariableBinding"
+      ],
+      "M04": [
+        "RespondentEvent"
+      ],
+      "M05": [
+        "QuestionVariableBinding",
+        "RespondentEvent"
+      ],
+      "M06": [
+        "RespondentEvent.typed_state"
+      ],
+      "M07": [
+        "RoutingEligibilityFact"
+      ],
+      "M08": [
+        "EmpiricalCoordinateFact"
+      ],
+      "M09": [
+        "WeightMeasureFact|TypedAbsence"
+      ],
+      "M10": [
+        "AuthoritySnapshot"
+      ],
+      "M11": [
+        "SourceUniverseRelation|DISTINCT_BY_DEFAULT"
+      ],
+      "M12": [
+        "RoutingEligibilityFact",
+        "EmpiricalPredicateReplayBinding|TypedAbsence"
+      ],
+      "M13": [
+        "ComparatorReplayBinding|DEFERRED"
+      ],
+      "M14": [
+        "DiscoveryBranchReplayBinding|DEFERRED"
+      ],
+      "M15": [
+        "StructuralAdmissionReplayBinding|NOT_APPLICABLE"
+      ],
+      "M16": [
+        "ReplayManifest"
+      ],
+      "M17": [
+        "AuthoritySnapshot",
+        "ReplayManifest"
+      ],
+      "M18": [
+        "ReplayManifest"
+      ]
+    },
+    "response_event_count": 10,
+    "coordinate_fact_count": 10,
+    "routing_fact_count": 10,
+    "response_states": [
+      "SUBSTANTIVE_RESPONSE",
+      "SUBSTANTIVE_RESPONSE",
+      "SUBSTANTIVE_RESPONSE",
+      "SUBSTANTIVE_RESPONSE",
+      "MISSING",
+      "NOT_ASKED",
+      "IAP",
+      "REFUSAL",
+      "DK",
+      "MISSING"
+    ],
+    "canonical_values": [
+      "1",
+      "2",
+      "3",
+      "4",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "key_count": 10,
+    "repository_type": "C11Repository",
+    "repository_release_matches": true,
+    "expected_match": true
+  },
+  "reader": {
+    "encoding": "latin1",
+    "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+    "request_source_sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+    "source_read_performed": false
+  },
+  "native_calls": [
+    "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+    "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config",
+    "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "rawlsing_next.source_configuration.factory.row_native_keys_from_transport",
+    "rawlsing_next.source_configuration.reader.reader_configuration_from_config",
+    "rawlsing_next.source_configuration.reader.source_read_request_from_config"
+  ],
+  "commands": [
+    "PYTHONPATH=. python3 source_pre553_validation/SRC11/build_evs_lane.py",
+    "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_foundation.py rawlsing_next/tests/test_source_configuration_p3.py -q -o addopts=''"
+  ],
+  "artifact_commit": "0b5244204e68e14315550af39631db60cfc770ea",
+  "limits": [
+    "Original authority is DEFER; no original-source native acceptance is claimed.",
+    "Fixture authority is NONRESPONDENT_FIXTURE_ONLY; fixture SHA is not original source identity.",
+    "No original respondent rows or original source file bytes were read.",
+    "No original empirical workload is issued."
+  ]
+}

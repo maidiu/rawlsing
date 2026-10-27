@@ -1,0 +1,101 @@
+{
+  "schema": "PYAT_R157_EVS_SOURCE_EVIDENCE_ACCOUNTING@1.0.0",
+  "source_id": "SRC15",
+  "family": "EVS",
+  "wave": "2017",
+  "source_sha256": "95096c2474b81ef12004726e4ed5b0919b1ea7bb672baff676ae40fb1b629bd2",
+  "counts": {
+    "physical_columns": 474,
+    "codebook_rows": 474,
+    "original_items": 474,
+    "exact_relation_matches": 474,
+    "unmatched_relation_ids": 0,
+    "physical_only": 0,
+    "codebook_only": 0
+  },
+  "selected_item": {
+    "implementation_id": "question_impl.phase0.4295ddc7bcb3beb21c5b",
+    "source_variable_code": "v221",
+    "exact_identity_sha256": "4295ddc7bcb3beb21c5bf3b083d643194aaab7276716fcb11865128d887ded74",
+    "p2_exact_identity_sha256": "4295ddc7bcb3beb21c5bf3b083d643194aaab7276716fcb11865128d887ded74",
+    "relation_governed_payload_hash": "bf17c2139cba6d78f1747cde1cbc5ff22bdc8d01c9ff44a1dff33093ff041c09",
+    "question_text": "important: eliminating income inequalities (Q62A)",
+    "response_classes": "support|oppose|unknown|missing|inapplicable",
+    "routing_status": "UNCONDITIONAL_SOURCE_PROVEN",
+    "response_binding_status": "bound",
+    "manual_response_topology": "scalar",
+    "manual_position_conditioning": "no",
+    "manual_semantic_role": "RELATION_EVIDENCE",
+    "manual_signed_polarity_status": "signed",
+    "directional_certification_status": "CERTIFIED"
+  },
+  "slots": {
+    "country": {
+      "ordinal": 11,
+      "name": "country"
+    },
+    "id_cocas": {
+      "ordinal": 6,
+      "name": "id_cocas"
+    },
+    "item": {
+      "ordinal": 301,
+      "name": "v221"
+    }
+  },
+  "weights": {
+    "claimed": false,
+    "reason": "No weight design/estimand authority is claimed."
+  },
+  "reader": {
+    "required_encoding": null,
+    "decoder_allowlist_encoding": null,
+    "configuration_ref": {
+      "kind": "READER_CONFIGURATION",
+      "object_id": "urn:rawlsing:r157:evs:SRC15:sav",
+      "content_hash": "b6c71e18d6de051a0ae5a232550c5184a086c4e297b768adde6eb3e757d7d724"
+    },
+    "request_source_sha256": "95096c2474b81ef12004726e4ed5b0919b1ea7bb672baff676ae40fb1b629bd2"
+  },
+  "evidence_refs": [
+    {
+      "field": "items[0].implementation_id",
+      "refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:evs:SRC15:question_impl.phase0.4295ddc7bcb3beb21c5b:h48",
+          "content_hash": "4295ddc7bcb3beb21c5bf3b083d643194aaab7276716fcb11865128d887ded74"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:evs:SRC15:question_impl.phase0.4295ddc7bcb3beb21c5b:p2",
+          "content_hash": "4295ddc7bcb3beb21c5bf3b083d643194aaab7276716fcb11865128d887ded74"
+        }
+      ]
+    },
+    {
+      "field": "items[0].relation",
+      "refs": [
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:evs:SRC15:EVS:2017:v221:relation",
+          "content_hash": "bf17c2139cba6d78f1747cde1cbc5ff22bdc8d01c9ff44a1dff33093ff041c09"
+        }
+      ]
+    },
+    {
+      "field": "physical_slots.item",
+      "refs": [
+        {
+          "kind": "CODEBOOK_ROW",
+          "object_id": "urn:rawlsing:r157:evs:SRC15:v221",
+          "content_hash": "44b17b691b0e6a4cdcf7b8e7d8511ad74936e88e9c8653aafef873006ae0eab0"
+        }
+      ]
+    }
+  ],
+  "no_drop": {
+    "items_unaccounted": 0,
+    "slots_unaccounted": 0
+  }
+}

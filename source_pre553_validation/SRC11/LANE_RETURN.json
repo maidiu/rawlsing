@@ -1,0 +1,345 @@
+{
+  "schema": "PYAT_R157_EVS_LANE_RETURN@1.0.0",
+  "lane_id": "EVS",
+  "status": "LANE_COMPLETE__SOURCE_CONFIGS_AND_FIXTURE_POSITIVES",
+  "branch": "agent/pyat-pre553-r157-evs",
+  "artifact_commit": "0b5244204e68e14315550af39631db60cfc770ea",
+  "base_p0_tip": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
+  "base_p3_tip": "519355ec2215409b40d566ef13c3b21f611e0726",
+  "source_ids": [
+    "SRC11",
+    "SRC12",
+    "SRC13",
+    "SRC14",
+    "SRC15"
+  ],
+  "sources": [
+    {
+      "source_id": "SRC11",
+      "selected_item": "v545",
+      "config_path": "rawlsing_next/source_configuration/data/SRC11/SRC11.config.json",
+      "config_sha256": "aae09c01f61faf6e795cf232e696ae9c796f40d7555474d8d0ad31339468f5dc",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC11/SRC11.fixture.config.json",
+      "fixture_config_sha256": "45376ce5fe5d99c14837dbb63045ba8d546330ae8ae4f9d54151565ccb7951a1",
+      "fixture_path": "source_pre553_validation/SRC11/SRC11.fixture.json",
+      "fixture_file_sha256": "8ad4e6c2cd2267022e9b36079793f6c544e53d269e0177bdca38eb0e826b29b7",
+      "fixture_source_sha256": "6c09d726b98bef60c2efc9e6a00f797751970b70356e33ee93f12bc570b30c45",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/1981",
+        "content_hash": "76a867d7a334a827f707221f00ae3c764992cee5485021294cd9a01d980b4008"
+      },
+      "release_hash": "76a867d7a334a827f707221f00ae3c764992cee5485021294cd9a01d980b4008",
+      "key_count": 10,
+      "counts": {
+        "physical_columns": 370,
+        "codebook_rows": 370,
+        "original_items": 370,
+        "exact_relation_matches": 370,
+        "unmatched_relation_ids": 0,
+        "physical_only": 0,
+        "codebook_only": 0
+      },
+      "unsupported_item_count": 369,
+      "unbound_slot_count": 367,
+      "reader_encoding": null,
+      "native_results_path": "source_pre553_validation/SRC11/NATIVE_RESULTS.json",
+      "evidence_accounting_path": "source_pre553_validation/SRC11/EVIDENCE_ACCOUNTING.json",
+      "exception_ledger_path": "source_pre553_validation/SRC11/EXCEPTION_LEDGER.json"
+    },
+    {
+      "source_id": "SRC12",
+      "selected_item": "q650",
+      "config_path": "rawlsing_next/source_configuration/data/SRC12/SRC12.config.json",
+      "config_sha256": "7d416cb4c1de1994bafeab8726dd76e6e998436e54974547aa362b9c6e399802",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC12/SRC12.fixture.config.json",
+      "fixture_config_sha256": "1ca2c8f9e4434c242a8d16cb785f47855847eb1281f044e9e7609e89d8036a38",
+      "fixture_path": "source_pre553_validation/SRC12/SRC12.fixture.json",
+      "fixture_file_sha256": "599ab4949490b1aa988ddf743f615d47e04cc263784f324be16fe3222c4c0c6f",
+      "fixture_source_sha256": "ba2a0a3666388f6aee3eb5aa680cb06ff41fc4f4b8040f1f8ec47b2fe02d506d",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/1990",
+        "content_hash": "4007cf9cbb2490379a9f33ec4ddea1f480b83c3ca062ca4aef11c3436e445bd3"
+      },
+      "release_hash": "4007cf9cbb2490379a9f33ec4ddea1f480b83c3ca062ca4aef11c3436e445bd3",
+      "key_count": 10,
+      "counts": {
+        "physical_columns": 390,
+        "codebook_rows": 390,
+        "original_items": 390,
+        "exact_relation_matches": 390,
+        "unmatched_relation_ids": 0,
+        "physical_only": 0,
+        "codebook_only": 0
+      },
+      "unsupported_item_count": 389,
+      "unbound_slot_count": 387,
+      "reader_encoding": null,
+      "native_results_path": "source_pre553_validation/SRC12/NATIVE_RESULTS.json",
+      "evidence_accounting_path": "source_pre553_validation/SRC12/EVIDENCE_ACCOUNTING.json",
+      "exception_ledger_path": "source_pre553_validation/SRC12/EXCEPTION_LEDGER.json"
+    },
+    {
+      "source_id": "SRC13",
+      "selected_item": "o6",
+      "config_path": "rawlsing_next/source_configuration/data/SRC13/SRC13.config.json",
+      "config_sha256": "734b04425186671e3bc21d8860748fa2a091d0262890c5f2dc57adb00cdb56c5",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC13/SRC13.fixture.config.json",
+      "fixture_config_sha256": "1d05986d10ab4d93663d742c97378600944e14a331d4b62dbb5d2bb6fa6cd1ed",
+      "fixture_path": "source_pre553_validation/SRC13/SRC13.fixture.json",
+      "fixture_file_sha256": "cf7870141a725a57bc1e77eaeaa9dd3bea042309055b584656e9cabf24765c91",
+      "fixture_source_sha256": "ecbf9b2daaa8f12e33a771062976d06e9acba012c4094118246b54a243f1c48b",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/1999",
+        "content_hash": "d33b7624a7ccc464058c7f4253f532ed71a5fbce0f913000eee7d4351d97401c"
+      },
+      "release_hash": "d33b7624a7ccc464058c7f4253f532ed71a5fbce0f913000eee7d4351d97401c",
+      "key_count": 10,
+      "counts": {
+        "physical_columns": 513,
+        "codebook_rows": 513,
+        "original_items": 513,
+        "exact_relation_matches": 513,
+        "unmatched_relation_ids": 0,
+        "physical_only": 0,
+        "codebook_only": 0
+      },
+      "unsupported_item_count": 512,
+      "unbound_slot_count": 510,
+      "reader_encoding": "latin1",
+      "native_results_path": "source_pre553_validation/SRC13/NATIVE_RESULTS.json",
+      "evidence_accounting_path": "source_pre553_validation/SRC13/EVIDENCE_ACCOUNTING.json",
+      "exception_ledger_path": "source_pre553_validation/SRC13/EXCEPTION_LEDGER.json"
+    },
+    {
+      "source_id": "SRC14",
+      "selected_item": "v277",
+      "config_path": "rawlsing_next/source_configuration/data/SRC14/SRC14.config.json",
+      "config_sha256": "79ad908b2f4991b3a2d912c05bdfdcf53184532fdf10a67c2344ddc3fc88c4fd",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC14/SRC14.fixture.config.json",
+      "fixture_config_sha256": "a9dfa4992f5dbd170d730ec167a279483fcea2d73e8ba34d8b76b42cb4223a4c",
+      "fixture_path": "source_pre553_validation/SRC14/SRC14.fixture.json",
+      "fixture_file_sha256": "75986d0b83e159add8c7254fd2f0b76b7245b0babbf62edeeb156dea06f33f19",
+      "fixture_source_sha256": "788e0a5611bbc3903d2766e6b90479842588f0d506f33a08a9a0da6cfe9bd8c4",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/2008",
+        "content_hash": "2addd12e16649d493a0ff774e55053d6b4b67d70ba5bee79e9c0ce30e0f5b7ee"
+      },
+      "release_hash": "2addd12e16649d493a0ff774e55053d6b4b67d70ba5bee79e9c0ce30e0f5b7ee",
+      "key_count": 10,
+      "counts": {
+        "physical_columns": 477,
+        "codebook_rows": 477,
+        "original_items": 477,
+        "exact_relation_matches": 477,
+        "unmatched_relation_ids": 0,
+        "physical_only": 0,
+        "codebook_only": 0
+      },
+      "unsupported_item_count": 476,
+      "unbound_slot_count": 474,
+      "reader_encoding": "latin1",
+      "native_results_path": "source_pre553_validation/SRC14/NATIVE_RESULTS.json",
+      "evidence_accounting_path": "source_pre553_validation/SRC14/EVIDENCE_ACCOUNTING.json",
+      "exception_ledger_path": "source_pre553_validation/SRC14/EXCEPTION_LEDGER.json"
+    },
+    {
+      "source_id": "SRC15",
+      "selected_item": "v221",
+      "config_path": "rawlsing_next/source_configuration/data/SRC15/SRC15.config.json",
+      "config_sha256": "aea24f15985676e727c12bea0edd2bad837cc54f94bac294a75205094d900929",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC15/SRC15.fixture.config.json",
+      "fixture_config_sha256": "c0e91a2af3bad6b69be1b6d88251cd00ea0c88f3a6b4b1d4d0cdb3042ac720c0",
+      "fixture_path": "source_pre553_validation/SRC15/SRC15.fixture.json",
+      "fixture_file_sha256": "f81d6e537c7cf0c3602ff7ee4dd55b92220418a96bf44f5f1307b7ee3d503df1",
+      "fixture_source_sha256": "aa30efd7dcbc4f88fe6d4481ad989fc8321304ca01dda7b3fc6127affda3984c",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/2017",
+        "content_hash": "80175a68ed99873e62078e52cfacaf4f92504ebc9a9856caaa26b1ba5a6f1064"
+      },
+      "release_hash": "80175a68ed99873e62078e52cfacaf4f92504ebc9a9856caaa26b1ba5a6f1064",
+      "key_count": 13,
+      "counts": {
+        "physical_columns": 474,
+        "codebook_rows": 474,
+        "original_items": 474,
+        "exact_relation_matches": 474,
+        "unmatched_relation_ids": 0,
+        "physical_only": 0,
+        "codebook_only": 0
+      },
+      "unsupported_item_count": 473,
+      "unbound_slot_count": 471,
+      "reader_encoding": null,
+      "native_results_path": "source_pre553_validation/SRC15/NATIVE_RESULTS.json",
+      "evidence_accounting_path": "source_pre553_validation/SRC15/EVIDENCE_ACCOUNTING.json",
+      "exception_ledger_path": "source_pre553_validation/SRC15/EXCEPTION_LEDGER.json"
+    }
+  ],
+  "source_manifests": {
+    "SRC11": {
+      "config": "rawlsing_next/source_configuration/data/SRC11/SRC11.config.json",
+      "fixture_config": "rawlsing_next/source_configuration/data/SRC11/SRC11.fixture.config.json",
+      "fixture": "source_pre553_validation/SRC11/SRC11.fixture.json",
+      "native_results": "source_pre553_validation/SRC11/NATIVE_RESULTS.json",
+      "evidence_accounting": "source_pre553_validation/SRC11/EVIDENCE_ACCOUNTING.json",
+      "exception_ledger": "source_pre553_validation/SRC11/EXCEPTION_LEDGER.json"
+    },
+    "SRC12": {
+      "config": "rawlsing_next/source_configuration/data/SRC12/SRC12.config.json",
+      "fixture_config": "rawlsing_next/source_configuration/data/SRC12/SRC12.fixture.config.json",
+      "fixture": "source_pre553_validation/SRC12/SRC12.fixture.json",
+      "native_results": "source_pre553_validation/SRC12/NATIVE_RESULTS.json",
+      "evidence_accounting": "source_pre553_validation/SRC12/EVIDENCE_ACCOUNTING.json",
+      "exception_ledger": "source_pre553_validation/SRC12/EXCEPTION_LEDGER.json"
+    },
+    "SRC13": {
+      "config": "rawlsing_next/source_configuration/data/SRC13/SRC13.config.json",
+      "fixture_config": "rawlsing_next/source_configuration/data/SRC13/SRC13.fixture.config.json",
+      "fixture": "source_pre553_validation/SRC13/SRC13.fixture.json",
+      "native_results": "source_pre553_validation/SRC13/NATIVE_RESULTS.json",
+      "evidence_accounting": "source_pre553_validation/SRC13/EVIDENCE_ACCOUNTING.json",
+      "exception_ledger": "source_pre553_validation/SRC13/EXCEPTION_LEDGER.json"
+    },
+    "SRC14": {
+      "config": "rawlsing_next/source_configuration/data/SRC14/SRC14.config.json",
+      "fixture_config": "rawlsing_next/source_configuration/data/SRC14/SRC14.fixture.config.json",
+      "fixture": "source_pre553_validation/SRC14/SRC14.fixture.json",
+      "native_results": "source_pre553_validation/SRC14/NATIVE_RESULTS.json",
+      "evidence_accounting": "source_pre553_validation/SRC14/EVIDENCE_ACCOUNTING.json",
+      "exception_ledger": "source_pre553_validation/SRC14/EXCEPTION_LEDGER.json"
+    },
+    "SRC15": {
+      "config": "rawlsing_next/source_configuration/data/SRC15/SRC15.config.json",
+      "fixture_config": "rawlsing_next/source_configuration/data/SRC15/SRC15.fixture.config.json",
+      "fixture": "source_pre553_validation/SRC15/SRC15.fixture.json",
+      "native_results": "source_pre553_validation/SRC15/NATIVE_RESULTS.json",
+      "evidence_accounting": "source_pre553_validation/SRC15/EVIDENCE_ACCOUNTING.json",
+      "exception_ledger": "source_pre553_validation/SRC15/EXCEPTION_LEDGER.json"
+    }
+  },
+  "commands": [
+    "PYTHONPATH=. python3 source_pre553_validation/SRC11/build_evs_lane.py",
+    "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_foundation.py rawlsing_next/tests/test_source_configuration_p3.py -k 'not r154' -q -o addopts=''"
+  ],
+  "tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_foundation.py rawlsing_next/tests/test_source_configuration_p3.py -k 'not r154' -q -o addopts=''",
+    "result": "19 passed, 2 deselected in 1.81s",
+    "passed": true,
+    "skipped": false,
+    "deselected_note": "Two legacy R154 loader tests are deselected; their runtime file is absent from this sparse EVS checkout and they are outside the EVS source-configuration boundary."
+  },
+  "native_positives": {
+    "SRC11": {
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/1981",
+        "content_hash": "76a867d7a334a827f707221f00ae3c764992cee5485021294cd9a01d980b4008"
+      },
+      "release_hash": "76a867d7a334a827f707221f00ae3c764992cee5485021294cd9a01d980b4008",
+      "key_count": 10
+    },
+    "SRC12": {
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/1990",
+        "content_hash": "4007cf9cbb2490379a9f33ec4ddea1f480b83c3ca062ca4aef11c3436e445bd3"
+      },
+      "release_hash": "4007cf9cbb2490379a9f33ec4ddea1f480b83c3ca062ca4aef11c3436e445bd3",
+      "key_count": 10
+    },
+    "SRC13": {
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/1999",
+        "content_hash": "d33b7624a7ccc464058c7f4253f532ed71a5fbce0f913000eee7d4351d97401c"
+      },
+      "release_hash": "d33b7624a7ccc464058c7f4253f532ed71a5fbce0f913000eee7d4351d97401c",
+      "key_count": 10
+    },
+    "SRC14": {
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/2008",
+        "content_hash": "2addd12e16649d493a0ff774e55053d6b4b67d70ba5bee79e9c0ce30e0f5b7ee"
+      },
+      "release_hash": "2addd12e16649d493a0ff774e55053d6b4b67d70ba5bee79e9c0ce30e0f5b7ee",
+      "key_count": 10
+    },
+    "SRC15": {
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/2017",
+        "content_hash": "80175a68ed99873e62078e52cfacaf4f92504ebc9a9856caaa26b1ba5a6f1064"
+      },
+      "release_hash": "80175a68ed99873e62078e52cfacaf4f92504ebc9a9856caaa26b1ba5a6f1064",
+      "key_count": 13
+    }
+  },
+  "native_api_calls": [
+    "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+    "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config",
+    "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "rawlsing_next.source_configuration.factory.row_native_keys_from_transport",
+    "rawlsing_next.source_configuration.reader.reader_configuration_from_config",
+    "rawlsing_next.source_configuration.reader.source_read_request_from_config",
+    "rawlsing_next.pre553_source_backed_c11_facade.build_validated_source_backed_c11_release_from_stream"
+  ],
+  "blockers": [
+    {
+      "id": "ORIGINAL_AUTHORITY_DEFER",
+      "scope": "SRC11-SRC15 original configs",
+      "status": "HELD_NON_BLOCKING",
+      "reason": "Original EVS authority snapshots are DEFER/prior-evidence only; fixture-native positives do not become original ALLOW authority.",
+      "owner_and_next_step": "P4/integration supplies exact source-grounded authority if original native validation is required."
+    },
+    {
+      "id": "UNSUPPORTED_EVS_SLICE",
+      "scope": "SRC11-SRC15",
+      "status": "HELD_NON_BLOCKING",
+      "reason": "2219 items and 2209 slots are accounted but outside the five supported scalar slices.",
+      "owner_and_next_step": "P4 lane expansion, preserving exact item/slot evidence and source-specific topology."
+    },
+    {
+      "id": "WEIGHTS_NOT_CLAIMED",
+      "scope": "SRC11-SRC15",
+      "status": "NOT_CLAIMED",
+      "reason": "No weight design/estimand authority is claimed; fixture validation is raw/unweighted.",
+      "owner_and_next_step": "P4 weighted lane only if the prepared scope claims weights."
+    }
+  ],
+  "no_drop": {
+    "sources": 5,
+    "physical_slots": 2224,
+    "items": 2224,
+    "exact_relation_matches": 2224,
+    "unmatched_relation_ids": 0,
+    "unsupported_items_accounted": 2219,
+    "unbound_slots_accounted": 2209
+  },
+  "supported_scope": {
+    "kind": "ONE_SCALAR_SOURCE_ITEM_PER_WAVE_PLUS_COUNTRY_AND_ID_COCAS",
+    "items": {
+      "SRC11": "v545",
+      "SRC12": "q650",
+      "SRC13": "o6",
+      "SRC14": "v277",
+      "SRC15": "v221"
+    },
+    "all_slots_and_items_retained_in_source_configs": true,
+    "fixture_positives": 5
+  },
+  "scope_limits": [
+    "Original authority is DEFER; original-source native validation/execution is not claimed.",
+    "Fixture authority is NONRESPONDENT_FIXTURE_ONLY; fixture SHA is not original source identity.",
+    "No original respondent rows or original source file bytes were read.",
+    "No original empirical workload is issued.",
+    "All other EVS items/slots are accounted in source configs and exact exception ledgers; P4 lane expansion remains.",
+    "No shared runtime/schema/factory/native-validator changes, no other source directories touched."
+  ],
+  "next_integration_edge": "HQ/P4: consume the five source configs, fixture configs, NATIVE_RESULTS and exception ledgers; expand unsupported EVS items/slots per lane and supply source-grounded original authority if required."
+}
