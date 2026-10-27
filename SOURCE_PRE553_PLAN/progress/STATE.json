@@ -1,6 +1,6 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "28_SOURCES_SCOPED_INTEGRATED_LITS_REPAIR_AND_WVS_RUNNING",
+  "status": "28_SOURCES_SCOPED_INTEGRATED_LITS_WVS_AND_PORTABLE_IMPLEMENTATION_RUNNING",
   "active_workers": [
     {
       "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
@@ -30,6 +30,17 @@
       "pid": 52656,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-wvs",
       "branch": "agent/pyat-pre553-r157-wvs",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "LANE_LAUNCHES.json"
+    },
+    {
+      "task": "P5_PORTABLE_DELIVERY_IMPLEMENTATION",
+      "lane": "P5",
+      "source_ids": [],
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "pid": 54991,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
+      "branch": "agent/pyat-pre553-r157-integration",
       "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     }
@@ -161,6 +172,14 @@
       "inputs": "3c59f8d391915b67cd08dcfa9b5cd4eeca77a4ad",
       "output": "source_pre553_validation/SRC33/LANE_RETURN.json",
       "next_consumer": "all35 integration/final review"
+    },
+    {
+      "id": "P5_PORTABLE_IMPLEMENTATION",
+      "state": "RUNNING_PARTIAL_INPUTS_28_OF_35",
+      "process": 54991,
+      "inputs": "89035bd8cde6c21d8f6e6c6cb70fb394fdad2dcc",
+      "output": "source_pre553_validation/integration/P5_RETURN.json",
+      "next_consumer": "Final all35 join after LiTS/WVS qualified inputs; distinct review"
     }
   ],
   "frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
@@ -213,6 +232,11 @@
       {
         "pid": 52893,
         "targets": "FINAL_SOURCE_QUEUES_completion_event_targets.json",
+        "mode": "OS_EVENTS_NO_TIMED_POLLING"
+      },
+      {
+        "pid": 55097,
+        "targets": "P5_PORTABLE_completion_event_targets.json",
         "mode": "OS_EVENTS_NO_TIMED_POLLING"
       }
     ]
