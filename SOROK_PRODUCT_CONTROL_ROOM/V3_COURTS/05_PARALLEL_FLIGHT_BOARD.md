@@ -1,12 +1,10 @@
-# V3 Courts flight status after four independent reviews
+# V3 Courts — full author coverage, second-wave independent review pending
 
-**Reviewed first-flight: X01/X02/T01/T02/T03/T05 — six returned + RX01/RX02/RS/RC — four reviews received.** Historic code source-verified: 12 selected M cards. Other 28 M still pending primary source investigation. N01–N08 conceptual reviewed with precise source and causal revisions. N12 present static code reviewed. Zero domain-specific new Rule A/T and zero actual native C12 completion.
+**10/10 authored worker returns verified; 40/40 historical mechanism families and 12/12 Neo requirements now have primary investigation dossiers.** Only earlier 12 historical families and N01–N08 (plus N12 static consumer) have previous independent scoped review. Remaining 28 historical and N09–N11 are UNREVIEWED independent second wave.
 
-| Review | Verified immutable return | Grade |
-|---|---|---|
-| RX01 | `481a5c62b6697e5df0e930a5dc615a8994aacddc` | ACCEPT_SCOPED_WITH_CORRECTIONS; no native grant |
-| RX02 | `69ddef93bfb1148f4d8868d5de2a5751a4674552` | ACCEPT_SCOPED_WITH_CORRECTIONS; no native grant |
-| RS | `dabbc0b038668e05cd723afc31f8b08411648b0a` | ACCEPT_SCOPED_WITH_CORRECTIONS; no native grant |
-| RC | `ddea75634c05bf89cf752da3813d17437b805767` | ACCEPT_SCOPED_WITH_CORRECTIONS; no native grant |
+| [X03](https://github.com/maidiu/rawlsing/blob/e81dd633b419d35619014bdf99f894ad4f98c5a5/SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/WORKER_RETURNS/X03/00_RETURN.md) | e81dd633b419d35619014bdf99f894ad4f98c5a5 | 7 historical | 71 focused pass |
+| [X04](https://github.com/maidiu/rawlsing/blob/b609986a3f635de7b7581e763e76d3496ed9ad7e/SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/WORKER_RETURNS/X04/00_RETURN.md) | b609986a3f635de7b7581e763e76d3496ed9ad7e | 9 historical | 77 focused pass |
+| [X05](https://github.com/maidiu/rawlsing/blob/4877afed497ccaa974ee092a0db7d6178ecac2a2/SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/WORKER_RETURNS/X05/00_RETURN.md) | 4877afed497ccaa974ee092a0db7d6178ecac2a2 | 12 historical | sourcefree probes, no full suite |
+| [T04](https://github.com/maidiu/rawlsing/blob/76590e61e2c819ba2c9231e9f92dd9e6aa429fa4/SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/WORKER_RETURNS/T04/00_RETURN.md) | 76590e61e2c819ba2c9231e9f92dd9e6aa429fa4 | N09/N10/N11 | documentary, no tests |
 
-**Second wave banked, not verified launched:** X03 legacy topology/metabolization, X04 scheduler/LLM, X05 material/coactor/bridges, T04 memory/ideology/recursion. Avoid duplicate session and provider/account switch. For complete reviewed reconciliation see 10_SYN01_REVIEWED_DIFFERENTIAL_REQUIREMENTS_TO_CODE_R1.md. No implementation workers issued yet.
+X05 branch began at seal and advanced via common foundation before adding 16 owned files. No code/production write proved. Bank independent RX03/RX04/RX05/RT04. Do not claim a native person, issuance or runtime by documentation.
