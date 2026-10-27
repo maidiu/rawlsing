@@ -9,6 +9,20 @@ from typing import Any
 
 from rawlsing_next.pre553_issued_workload import OriginalWaveIdentity
 from rawlsing_next.pre553_source_native_preimage_adapter import NativeSourceIdentity
+from rawlsing_next.source_configuration.factory import (
+    build_governed_c11_projection,
+    row_native_keys_from_transport,
+)
+from rawlsing_next.source_configuration.schema import (
+    SourceConfig,
+    canonical_config_hash,
+    load_source_config,
+)
+from rawlsing_next.pre553_source_backed_c11_facade import (
+    ExactPhysicalCellStream,
+    build_source_backed_c11_repository,
+)
+from rawlsing_next.pre553_physical_decoder import PhysicalSourceIncidence
 import sys
 import importlib.util
 
@@ -108,11 +122,119 @@ def load_source(source_id: str, db_path: Path = DB) -> NativeInputPackage:
         con.close()
 
 
-def build_native_workload(source_id: str, db_path: Path = DB):
-    package = load_source(source_id, db_path)
-    if package.current_grant.get("currentness") == "PENDING_EXACT_CURRENT_SOURCE_ISSUANCE":
-        raise LoadRefusal("CURRENT_SOURCE_READ_GRANT_REQUIRED")
-    raise LoadRefusal("NATIVE_WORKLOAD_ISSUANCE_NOT_IMPLEMENTED_WITHOUT_CURRENT_GRANT")
+@dataclasses.dataclass(frozen=True)
+class PreparedNativeWorkload:
+    """A prepared source-configuration construction, never an issued workload."""
+
+    source_id: str
+    config_id: str
+    config_sha256: str
+    source_sha256: str
+    projection: Any
+    repository: Any
+    release: Any
+    row_native_key_count: int
+    native_calls: tuple[str, ...]
+    status: str = "PREPARED_CONFIGURATION_ONLY__NOT_ISSUED_ORIGINAL_WORKLOAD"
+    issued_original_workload: bool = False
+    execution_permission_required: bool = True
+
+
+def _source_row(source_id: str, db_path: Path = DB) -> dict[str, Any]:
+    con = _connect(db_path)
+    try:
+        row = con.execute("select * from sources where source_id=?", (source_id,)).fetchone()
+        if row is None:
+            raise LoadRefusal("SOURCE_NOT_IN_STORE")
+        return dict(row)
+    finally:
+        con.close()
+
+
+def build_prepared_native_workload(
+    source_id: str,
+    config: SourceConfig | str | Path,
+    source: ExactPhysicalCellStream | PhysicalSourceIncidence,
+    *,
+    db_path: Path = DB,
+    row_native_keys: Any = None,
+    cache: Any = None,
+    batch_size: int = 10_000,
+) -> PreparedNativeWorkload:
+    """Delegate a prepared configuration to the existing source-backed C11 owner.
+
+    This is configuration/native-construction preparation only.  It does not
+    issue an original empirical workload, grant source execution, or replace the
+    existing issued-workload owner.
+    """
+    if isinstance(config, (str, Path)):
+        config = load_source_config(config)
+    elif not isinstance(config, SourceConfig):
+        config = SourceConfig(config)
+    if config.source_id != source_id:
+        raise LoadRefusal("SOURCE_CONFIGURATION_SOURCE_ID_MISMATCH")
+    source_row = _source_row(source_id, db_path)
+    if config.original_source_sha256 != source_row["current_sha256"]:
+        raise LoadRefusal("SOURCE_CONFIGURATION_ORIGINAL_IDENTITY_MISMATCH")
+    if not isinstance(source, (ExactPhysicalCellStream, PhysicalSourceIncidence)):
+        raise LoadRefusal("PERMITTED_PHYSICAL_TRANSPORT_REQUIRED")
+    if row_native_keys is None and config.document["respondents"].get("source_native_key_slot") is not None:
+        row_native_keys = row_native_keys_from_transport(
+            config,
+            stream=source if isinstance(source, ExactPhysicalCellStream) else None,
+            incidence=source if isinstance(source, PhysicalSourceIncidence) else None,
+            batch_size=batch_size,
+        )
+    projection = build_governed_c11_projection(
+        config,
+        source_sha256=source.source_sha256,
+        row_count=source.row_count,
+        row_native_keys=row_native_keys,
+    )
+    repository, release = build_source_backed_c11_repository(
+        source, projection, cache=cache, batch_size=batch_size)
+    return PreparedNativeWorkload(
+        source_id=source_id,
+        config_id=config.config_id,
+        config_sha256=canonical_config_hash(config),
+        source_sha256=source.source_sha256,
+        projection=projection,
+        repository=repository,
+        release=release,
+        row_native_key_count=0 if row_native_keys is None else len(row_native_keys),
+        native_calls=(
+            "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+            "rawlsing_next.pre553_source_backed_c11_facade.build_source_backed_c11_repository",
+        ),
+    )
+
+
+def build_native_workload(
+    source_id: str,
+    db_path: Path = DB,
+    *,
+    config: SourceConfig | str | Path | None = None,
+    source: ExactPhysicalCellStream | PhysicalSourceIncidence | None = None,
+    row_native_keys: Any = None,
+    cache: Any = None,
+    batch_size: int = 10_000,
+):
+    """Compatibility entry point.
+
+    With an exact prepared config and a permitted physical transport it delegates
+    to the real source-backed C11 constructor.  Without both inputs it preserves
+    the historical current-grant refusal; it no longer refuses unconditionally.
+    """
+    if config is None and source is None:
+        package = load_source(source_id, db_path)
+        if package.current_grant.get("currentness") == "PENDING_EXACT_CURRENT_SOURCE_ISSUANCE":
+            raise LoadRefusal("CURRENT_SOURCE_READ_GRANT_REQUIRED")
+        raise LoadRefusal("PREPARED_NATIVE_CONSTRUCTION_REQUIRES_CONFIG_AND_PERMITTED_SOURCE")
+    if config is None or source is None:
+        raise LoadRefusal("PREPARED_NATIVE_CONSTRUCTION_REQUIRES_CONFIG_AND_PERMITTED_SOURCE")
+    return build_prepared_native_workload(
+        source_id, config, source, db_path=db_path,
+        row_native_keys=row_native_keys, cache=cache, batch_size=batch_size)
 
 
 def load_all(db_path: Path = DB) -> tuple[NativeInputPackage, ...]:
