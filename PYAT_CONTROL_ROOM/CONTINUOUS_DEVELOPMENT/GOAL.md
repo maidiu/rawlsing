@@ -1,3 +1,7 @@
+## R157 live goal verified; explicit execution resumed, provider prerequisite blocked
+
+The consolidated branch objective is now the actual live goal (get_goal verified), replacing the stale Browser assessment. User explicitly resumed engineering; current P0 launch is terminal before author execution because selected OpenCode Go model requires Global workspace Privacy setting. See current checkpoint and branch progress/P0_LAUNCH.json. User action requested; no provider/model/account substitution, no automatic retry, no heartbeat restoration. Exact acceptance clarification added without changing plan/gates.
+
 ## R157 bounded execution anchor
 
 Current bounded task follows branch `agent/pyat-source-pre553-r157`, plan seal `4c0c619eac747afee1d8e65e1418bf2d472da4c3`, SOURCE_PRE553_PLAN/PLAN.md and A01-A16. Browser disposition received; engineering not launched. Live goal objective edit failed ACTIVE_WRITER and remains pending; see branch GOAL_UPDATE_RECEIPT.json. This documentary anchor does not assert successful live goal replacement. Broader vision below remains inherited outside this bounded task.
