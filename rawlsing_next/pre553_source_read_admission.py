@@ -11,6 +11,8 @@ from typing import Any, Mapping, Protocol, Sequence
 
 from rawlsing_next.pre553_empirical_objects import ExactRef, exact_ref
 from rawlsing_next.pre553_physical_decoder import (
+    COMPATIBILITY_ALLOWLIST,
+    COMPATIBILITY_ONLY,
     PhysicalSourceIncidence,
     decode_dta,
     decode_sav,
@@ -145,6 +147,45 @@ class IssuedSourceReadDecision:
             raise SourceReadAdmissionRefusal("SOURCE_READ_LIMITS_REQUIRED")
 
 
+@dataclass(frozen=True)
+class SourceReaderConfiguration:
+    """Qualified exact-SHA reader configuration supplied before source I/O.
+
+    The object carries no source right.  It only proves that an encoding choice
+    is the exact allowlisted choice for the request's source SHA, or that no
+    override is requested.
+    """
+
+    source_sha256: str
+    encoding: str | None = None
+    authority_status: str | None = None
+    configuration_ref: ExactRef | None = None
+
+    def __post_init__(self) -> None:
+        _sha(self.source_sha256, "source_sha256")
+        if self.configuration_ref is not None:
+            object.__setattr__(
+                self, "configuration_ref",
+                exact_ref(self.configuration_ref, "configuration_ref"))
+        if self.encoding in ("auto", "guess", "fallback"):
+            raise SourceReadAdmissionRefusal(
+                "SOURCE_READ_ENCODING_GUESS_FORBIDDEN", str(self.encoding))
+        if self.encoding is None:
+            if self.authority_status is not None:
+                raise SourceReadAdmissionRefusal(
+                    "SOURCE_READ_ENCODING_STATUS_WITHOUT_ENCODING")
+            return
+        if not isinstance(self.encoding, str) or not self.encoding.strip():
+            raise SourceReadAdmissionRefusal("SOURCE_READ_ENCODING_REQUIRED")
+        qualified = COMPATIBILITY_ALLOWLIST.get(self.source_sha256)
+        if qualified != self.encoding:
+            raise SourceReadAdmissionRefusal(
+                "SOURCE_READ_ENCODING_NOT_QUALIFIED", self.encoding)
+        if self.authority_status != COMPATIBILITY_ONLY:
+            raise SourceReadAdmissionRefusal(
+                "SOURCE_READ_ENCODING_STATUS_REQUIRED", str(self.authority_status))
+
+
 class SourceReadDecisionResolver(Protocol):
     def resolve_current(self, request: SourceReadRequest) -> IssuedSourceReadDecision:
         """Authenticate issuer/currentness/revocation/host/purpose externally."""
@@ -181,18 +222,29 @@ def decode_with_source_read_permission(
     source_path: Any,
     request: SourceReadRequest,
     resolver: SourceReadDecisionResolver,
+    reader: SourceReaderConfiguration | None = None,
 ) -> PhysicalSourceIncidence:
     """Resolve exact current predecode permission, then invoke the R04 decoder.
 
     ``source_path`` is not opened, stat'ed, hashed or inspected by this function
     before ``resolver.resolve_current(request)`` returns a valid current decision.
+    A supplied ``reader`` is qualified against the request's exact source SHA
+    before any source I/O; it cannot select an unallowlisted encoding.
     """
     if not isinstance(request, SourceReadRequest):
         raise SourceReadAdmissionRefusal("SOURCE_READ_REQUEST_REQUIRED")
+    if reader is not None:
+        if not isinstance(reader, SourceReaderConfiguration):
+            raise SourceReadAdmissionRefusal("SOURCE_READ_READER_CONFIGURATION_REQUIRED")
+        if reader.source_sha256 != request.source_sha256:
+            raise SourceReadAdmissionRefusal(
+                "SOURCE_READ_READER_SOURCE_SHA_MISMATCH", reader.source_sha256)
     decision = resolver.resolve_current(request)
     _assert_current(decision, request)
     decoder = decode_sav if request.source_format == "SAV" else decode_dta
-    incidence = decoder(source_path, expected_source_sha256=decision.source_sha256)
+    encoding = None if reader is None else reader.encoding
+    incidence = decoder(
+        source_path, expected_source_sha256=decision.source_sha256, encoding=encoding)
     try:
         current = resolver.resolve_current(request)
         _assert_current(current, request)
@@ -202,6 +254,15 @@ def decode_with_source_read_permission(
             raise SourceReadAdmissionRefusal("SOURCE_READ_DECODED_EDITION_MISMATCH")
         if str(incidence.source_format).upper() != decision.source_format:
             raise SourceReadAdmissionRefusal("SOURCE_READ_DECODED_FORMAT_MISMATCH")
+        if reader is not None:
+            actual = incidence.reader_configuration
+            if actual.get("encoding") != reader.encoding:
+                raise SourceReadAdmissionRefusal(
+                    "SOURCE_READ_READER_ENCODING_MISMATCH", str(actual.get("encoding")))
+            if reader.encoding is not None and actual.get("authority_status") != COMPATIBILITY_ONLY:
+                raise SourceReadAdmissionRefusal(
+                    "SOURCE_READ_READER_ENCODING_AUTHORITY_MISMATCH",
+                    str(actual.get("authority_status")))
         return incidence
     except BaseException:
         incidence.close()
@@ -211,6 +272,6 @@ def decode_with_source_read_permission(
 __all__ = [
     "CURRENT_GRANTED", "EXACT_FILE", "SOURCE_RESPONSE_DECODE",
     "IssuedSourceReadDecision", "SourceReadAdmissionRefusal",
-    "SourceReadDecisionResolver", "SourceReadRequest",
+    "SourceReadDecisionResolver", "SourceReadRequest", "SourceReaderConfiguration",
     "decode_with_source_read_permission",
 ]
