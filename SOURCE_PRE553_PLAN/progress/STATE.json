@@ -1,27 +1,7 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "EVS_LATIN_SCOPED_PREPARATION_INTEGRATED_AFRO_ARAB_GSS_LITS_RUNNING",
+  "status": "23_SOURCES_SCOPED_INTEGRATED_LITS_VALIDATION_REPAIR_AND_FINAL_THREE_FAMILIES_RUNNING",
   "active_workers": [
-    {
-      "task": "GSS:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "GSS",
-      "source_ids": [
-        "SRC16",
-        "SRC17",
-        "SRC18",
-        "SRC19",
-        "SRC20",
-        "SRC21",
-        "SRC22",
-        "SRC23"
-      ],
-      "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
-      "pid": 35732,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss",
-      "branch": "agent/pyat-pre553-r157-gss",
-      "state": "RUNNING_DISK_RESUME_MODEL_AND_PREFLIGHT_VERIFIED",
-      "launch": "LANE_LAUNCHES.json"
-    },
     {
       "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
       "lane": "LITS",
@@ -32,40 +12,53 @@
         "SRC30"
       ],
       "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
-      "pid": 35733,
+      "pid": 52782,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
       "branch": "agent/pyat-pre553-r157-lits",
-      "state": "RUNNING_DISK_RESUME_MODEL_AND_PREFLIGHT_VERIFIED",
-      "launch": "LANE_LAUNCHES.json"
-    },
-    {
-      "task": "AFRO:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "AFRO",
-      "source_ids": [
-        "SRC01",
-        "SRC02",
-        "SRC03"
-      ],
-      "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "pid": 42454,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-afro",
-      "branch": "agent/pyat-pre553-r157-afro",
       "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     },
     {
-      "task": "ARAB:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "ARAB",
+      "task": "ASIAN:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "ASIAN",
       "source_ids": [
-        "SRC04",
-        "SRC05",
-        "SRC06",
-        "SRC07"
+        "SRC08",
+        "SRC09",
+        "SRC10"
+      ],
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "pid": 52637,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-asian",
+      "branch": "agent/pyat-pre553-r157-asian",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "LANE_LAUNCHES.json"
+    },
+    {
+      "task": "SOUTH_ASIA:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "SOUTH_ASIA",
+      "source_ids": [
+        "SRC31",
+        "SRC32"
       ],
       "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
-      "pid": 43681,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-arab",
-      "branch": "agent/pyat-pre553-r157-arab",
+      "pid": 52654,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-south-asia",
+      "branch": "agent/pyat-pre553-r157-south-asia",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "LANE_LAUNCHES.json"
+    },
+    {
+      "task": "WVS:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "WVS",
+      "source_ids": [
+        "SRC33",
+        "SRC34",
+        "SRC35"
+      ],
+      "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+      "pid": 52656,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-wvs",
+      "branch": "agent/pyat-pre553-r157-wvs",
       "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     }
@@ -76,7 +69,10 @@
     "P0_FOUNDATION",
     "P3_FACTORY_READY",
     "EVS_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
-    "LATIN_SOURCE_CONFIGURATION_PREPARATION_SCOPED"
+    "LATIN_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
+    "GSS_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
+    "AFRO_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
+    "ARAB_SOURCE_CONFIGURATION_PREPARATION_SCOPED"
   ],
   "current_goal_anchor": "GOAL.md",
   "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
@@ -109,22 +105,24 @@
     {
       "id": "GSS:EVIDENCE",
       "lane": "GSS",
-      "state": "RUNNING",
+      "state": "ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
       "process": 35732,
       "inputs": "91441c34ee58c4c3b13dae37db70a23bb4d4c2b8",
       "output": "source_pre553_validation/SRC16/LANE_RETURN.json",
       "check": "Full prior source facts consumed; ordered source queue then actual native fixture positives; exact residuals",
-      "next_consumer": "integration/P3/final review"
+      "next_consumer": "integration/P3/final review",
+      "evidence": "GSS_INTAKE.json"
     },
     {
       "id": "LITS:EVIDENCE",
       "lane": "LITS",
-      "state": "RUNNING",
-      "process": 35733,
+      "state": "FULL_SCOPE_VALIDATION_REPAIR_RUNNING",
+      "process": 52782,
       "inputs": "91441c34ee58c4c3b13dae37db70a23bb4d4c2b8",
       "output": "source_pre553_validation/SRC27/LANE_RETURN.json",
       "check": "Full prior source facts consumed; ordered source queue then actual native fixture positives; exact residuals",
-      "next_consumer": "integration/P3/final review"
+      "next_consumer": "integration/P3/final review",
+      "evidence": "LITS_INTAKE.json"
     },
     {
       "id": "P3_FACTORY_READY",
@@ -145,19 +143,48 @@
     {
       "id": "AFRO:EVIDENCE",
       "lane": "AFRO",
-      "state": "RUNNING",
+      "state": "ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
       "process": 42454,
       "inputs": "db24fc60ed8503487fbc989faff1227ce4b66b0d",
       "output": "source_pre553_validation/SRC01/LANE_RETURN.json",
-      "next_consumer": "all35 integration/final review"
+      "next_consumer": "all35 integration/final review",
+      "evidence": "AFRO_INTAKE.json"
     },
     {
       "id": "ARAB:EVIDENCE",
       "lane": "ARAB",
-      "state": "RUNNING",
+      "state": "ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
       "process": 43681,
       "inputs": "e2cfc49badbe52eb65f44561ccf6727ee53be60e",
       "output": "source_pre553_validation/SRC04/LANE_RETURN.json",
+      "next_consumer": "all35 integration/final review",
+      "evidence": "ARAB_INTAKE.json"
+    },
+    {
+      "id": "ASIAN:EVIDENCE",
+      "lane": "ASIAN",
+      "state": "RUNNING",
+      "process": 52637,
+      "inputs": "3c59f8d391915b67cd08dcfa9b5cd4eeca77a4ad",
+      "output": "source_pre553_validation/SRC08/LANE_RETURN.json",
+      "next_consumer": "all35 integration/final review"
+    },
+    {
+      "id": "SOUTH_ASIA:EVIDENCE",
+      "lane": "SOUTH_ASIA",
+      "state": "RUNNING",
+      "process": 52654,
+      "inputs": "3c59f8d391915b67cd08dcfa9b5cd4eeca77a4ad",
+      "output": "source_pre553_validation/SRC31/LANE_RETURN.json",
+      "next_consumer": "all35 integration/final review"
+    },
+    {
+      "id": "WVS:EVIDENCE",
+      "lane": "WVS",
+      "state": "RUNNING",
+      "process": 52656,
+      "inputs": "3c59f8d391915b67cd08dcfa9b5cd4eeca77a4ad",
+      "output": "source_pre553_validation/SRC33/LANE_RETURN.json",
       "next_consumer": "all35 integration/final review"
     }
   ],
@@ -207,6 +234,11 @@
         "pid": 43834,
         "targets": "ARAB_completion_event_targets.json",
         "mode": "OS_EVENTS_NO_TIMED_POLLING"
+      },
+      {
+        "pid": 52893,
+        "targets": "FINAL_SOURCE_QUEUES_completion_event_targets.json",
+        "mode": "OS_EVENTS_NO_TIMED_POLLING"
       }
     ]
   },
@@ -226,5 +258,6 @@
     "completion_observer_pid": 35854,
     "targets": "DISK_RESUME_completion_event_targets.json"
   },
-  "latin_intake": "LATIN_INTAKE.json"
+  "latin_intake": "LATIN_INTAKE.json",
+  "prepared_sources_scoped_integrated": 23
 }

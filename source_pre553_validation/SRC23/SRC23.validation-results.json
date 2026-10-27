@@ -1,0 +1,3939 @@
+{
+  "schema": "PYAT_R157_GSS_SOURCE_VALIDATION_RESULTS@1.0.0",
+  "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+  "p0_correction_consumed": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
+  "p3_terminal_runtime_consumed": "519355ec2215409b40d566ef13c3b21f611e0726",
+  "source_id": "SRC23",
+  "source_format": "SAV",
+  "wave": "2024",
+  "commands": [
+    "PYTHONPATH=. python3 source_pre553_validation/SRC16/build_gss_lane.py --all",
+    "PYTHONPATH=. python3 -m pytest source_pre553_validation/SRC16/test_gss_lane.py -q -o addopts=''"
+  ],
+  "config_validation": {
+    "validator": "rawlsing_next.source_configuration.schema.validate_source_config",
+    "original_path": "rawlsing_next/source_configuration/data/SRC23/SRC23.source.config.json",
+    "original_config_canonical_sha256": "6df0a09d0edb51fc8588f377bcc0d14005f9db75a99164c4c8544ae28a37f28b",
+    "original_config_file_sha256": "7e29602e127b9369a7af327de727aa11e94378e51f580f14324ed0ccfab1135c",
+    "fixture_path": "source_pre553_validation/SRC23/SRC23.fixture.config.json",
+    "fixture_config_canonical_sha256": "e6795c65fb99416f7fae6401f097f8dac1f0ad1bd018916c4b9c4074a0fa8887",
+    "fixture_config_file_sha256": "8eceb064886495cbf561dae5b3eeb7bdb84ec0474578c4c08a5598104887fb48",
+    "passed": true
+  },
+  "coverage": {
+    "physical_slots_total": 980,
+    "original_items_total": 980,
+    "physical_slots_serialized": 980,
+    "items_serialized": 980,
+    "physical_slots_included": 980,
+    "items_included": 980,
+    "physical_slots_excluded": 0,
+    "items_excluded": 0,
+    "response_bound_items": 879,
+    "held_items": 101,
+    "held_by_role": {
+      "ADMIN": 23,
+      "CONTINUOUS": 74,
+      "COORDINATE": 2,
+      "ROW_KEY": 1,
+      "WEIGHT_HELD": 1
+    },
+    "no_drop": true,
+    "supported_question_ids": [
+      "GSS:2024:abany",
+      "GSS:2024:abanyg",
+      "GSS:2024:abdefect",
+      "GSS:2024:abdefectg",
+      "GSS:2024:abhelp1",
+      "GSS:2024:abhelp2",
+      "GSS:2024:abhelp3",
+      "GSS:2024:abhelp4",
+      "GSS:2024:abhlth",
+      "GSS:2024:abhlthg",
+      "GSS:2024:abmoral",
+      "GSS:2024:abnomore",
+      "GSS:2024:abnomoreg",
+      "GSS:2024:abpoor",
+      "GSS:2024:abpoorg",
+      "GSS:2024:abrape",
+      "GSS:2024:abrapeg",
+      "GSS:2024:absingle",
+      "GSS:2024:absingleg",
+      "GSS:2024:acpttg",
+      "GSS:2024:adcoumed",
+      "GSS:2024:addoc",
+      "GSS:2024:adfam",
+      "GSS:2024:adminconsent",
+      "GSS:2024:adoptus",
+      "GSS:2024:adpsy",
+      "GSS:2024:adtch",
+      "GSS:2024:adults",
+      "GSS:2024:adultsinhh",
+      "GSS:2024:adults_exp",
+      "GSS:2024:advisor1",
+      "GSS:2024:advisor2",
+      "GSS:2024:advisor3",
+      "GSS:2024:advisor4",
+      "GSS:2024:advisor5",
+      "GSS:2024:affrmact",
+      "GSS:2024:afraidof",
+      "GSS:2024:age",
+      "GSS:2024:agekdbrn",
+      "GSS:2024:agetech",
+      "GSS:2024:aidrive",
+      "GSS:2024:aimed",
+      "GSS:2024:aimofart",
+      "GSS:2024:aiworry",
+      "GSS:2024:allergic",
+      "GSS:2024:amancstr",
+      "GSS:2024:ambetter",
+      "GSS:2024:ambornin",
+      "GSS:2024:amchrstn",
+      "GSS:2024:amcit",
+      "GSS:2024:amcitizn",
+      "GSS:2024:amfeel",
+      "GSS:2024:amgovt",
+      "GSS:2024:amownway",
+      "GSS:2024:amshamed",
+      "GSS:2024:amtv",
+      "GSS:2024:attend",
+      "GSS:2024:babies",
+      "GSS:2024:babies_exp",
+      "GSS:2024:badchar",
+      "GSS:2024:befair",
+      "GSS:2024:belikeus",
+      "GSS:2024:biasnews",
+      "GSS:2024:bible",
+      "GSS:2024:biblenv",
+      "GSS:2024:biblev",
+      "GSS:2024:bird",
+      "GSS:2024:bizmoney",
+      "GSS:2024:born",
+      "GSS:2024:breakdwn",
+      "GSS:2024:brneffrt",
+      "GSS:2024:broadband",
+      "GSS:2024:bullied",
+      "GSS:2024:bullpeer",
+      "GSS:2024:cantrust",
+      "GSS:2024:cappun",
+      "GSS:2024:cat",
+      "GSS:2024:cctv",
+      "GSS:2024:charactr",
+      "GSS:2024:chembal",
+      "GSS:2024:child1",
+      "GSS:2024:child2",
+      "GSS:2024:child3",
+      "GSS:2024:child4",
+      "GSS:2024:child5",
+      "GSS:2024:childs",
+      "GSS:2024:childsinhh",
+      "GSS:2024:childs_exp",
+      "GSS:2024:chldfrnd",
+      "GSS:2024:chldidel",
+      "GSS:2024:chldidel_next",
+      "GSS:2024:chldpref_next",
+      "GSS:2024:chldprob",
+      "GSS:2024:chldsch",
+      "GSS:2024:chldvig",
+      "GSS:2024:chngdocs",
+      "GSS:2024:citizen",
+      "GSS:2024:class",
+      "GSS:2024:classtech",
+      "GSS:2024:codeg",
+      "GSS:2024:coden",
+      "GSS:2024:coeduc",
+      "GSS:2024:coevwork",
+      "GSS:2024:cofund",
+      "GSS:2024:cohrs1",
+      "GSS:2024:cohrs2",
+      "GSS:2024:coind10",
+      "GSS:2024:colath",
+      "GSS:2024:colcom",
+      "GSS:2024:colcomy",
+      "GSS:2024:colmslm",
+      "GSS:2024:colrac",
+      "GSS:2024:comprend",
+      "GSS:2024:compuse",
+      "GSS:2024:conarmy",
+      "GSS:2024:conbus",
+      "GSS:2024:conclerg",
+      "GSS:2024:coneduc",
+      "GSS:2024:confed",
+      "GSS:2024:confinan",
+      "GSS:2024:conjudge",
+      "GSS:2024:conlabor",
+      "GSS:2024:conlabory",
+      "GSS:2024:conlegis",
+      "GSS:2024:conmedic",
+      "GSS:2024:conorelgsp",
+      "GSS:2024:conpow",
+      "GSS:2024:conpress",
+      "GSS:2024:consci",
+      "GSS:2024:conscrp",
+      "GSS:2024:consent",
+      "GSS:2024:contv",
+      "GSS:2024:coocc10",
+      "GSS:2024:coop",
+      "GSS:2024:corel",
+      "GSS:2024:corruptn",
+      "GSS:2024:courts",
+      "GSS:2024:courtsnv",
+      "GSS:2024:courtsv",
+      "GSS:2024:cowksup",
+      "GSS:2024:cowork1",
+      "GSS:2024:cowork2",
+      "GSS:2024:cowork3",
+      "GSS:2024:cowork4",
+      "GSS:2024:cowork5",
+      "GSS:2024:cowrkslf",
+      "GSS:2024:cowrkslf2",
+      "GSS:2024:cowrkslffam",
+      "GSS:2024:cowrksta",
+      "GSS:2024:credam",
+      "GSS:2024:credcar",
+      "GSS:2024:credchoice",
+      "GSS:2024:credemp",
+      "GSS:2024:credland",
+      "GSS:2024:credrep",
+      "GSS:2024:cutself",
+      "GSS:2024:dangroth",
+      "GSS:2024:dangrslf",
+      "GSS:2024:dataprot",
+      "GSS:2024:decmoney",
+      "GSS:2024:dectreat",
+      "GSS:2024:degree",
+      "GSS:2024:dem10fut",
+      "GSS:2024:dem10pst",
+      "GSS:2024:demtoday",
+      "GSS:2024:denom",
+      "GSS:2024:denom16",
+      "GSS:2024:devtype",
+      "GSS:2024:diagnosd",
+      "GSS:2024:dipged",
+      "GSS:2024:discaff",
+      "GSS:2024:discaffm",
+      "GSS:2024:discaffw",
+      "GSS:2024:discaffwnv",
+      "GSS:2024:discaffwv",
+      "GSS:2024:discipln",
+      "GSS:2024:disrspct",
+      "GSS:2024:divlaw",
+      "GSS:2024:divlawnv",
+      "GSS:2024:divlawv",
+      "GSS:2024:divorce",
+      "GSS:2024:dofirst",
+      "GSS:2024:dog",
+      "GSS:2024:dsndntpay",
+      "GSS:2024:dwelling",
+      "GSS:2024:dwelown",
+      "GSS:2024:dwelown16",
+      "GSS:2024:earnrs",
+      "GSS:2024:econstat",
+      "GSS:2024:educ",
+      "GSS:2024:eductech",
+      "GSS:2024:emonitor1",
+      "GSS:2024:eqwlth",
+      "GSS:2024:eth1",
+      "GSS:2024:ethnic",
+      "GSS:2024:ethworld1",
+      "GSS:2024:ethworld2",
+      "GSS:2024:ethworld3",
+      "GSS:2024:ethworld4",
+      "GSS:2024:ethworld5",
+      "GSS:2024:ethworld6",
+      "GSS:2024:ethworld7",
+      "GSS:2024:ethworld8",
+      "GSS:2024:ethworld9",
+      "GSS:2024:evwork",
+      "GSS:2024:experts",
+      "GSS:2024:fair",
+      "GSS:2024:fairnv",
+      "GSS:2024:fairv",
+      "GSS:2024:famdif16",
+      "GSS:2024:famdif16y",
+      "GSS:2024:famgen",
+      "GSS:2024:famgen_exp",
+      "GSS:2024:famgen_next",
+      "GSS:2024:family16",
+      "GSS:2024:family16sex",
+      "GSS:2024:fammhneg",
+      "GSS:2024:fear",
+      "GSS:2024:fechld",
+      "GSS:2024:feelevel",
+      "GSS:2024:feeused",
+      "GSS:2024:fefam",
+      "GSS:2024:fehire",
+      "GSS:2024:fejobaff",
+      "GSS:2024:femsee1",
+      "GSS:2024:femself1",
+      "GSS:2024:feovrwrk",
+      "GSS:2024:fepol",
+      "GSS:2024:fepolnv",
+      "GSS:2024:fepolv",
+      "GSS:2024:fepresch",
+      "GSS:2024:fighpeer",
+      "GSS:2024:finalter",
+      "GSS:2024:finrela",
+      "GSS:2024:fish",
+      "GSS:2024:foodalc",
+      "GSS:2024:forland",
+      "GSS:2024:form",
+      "GSS:2024:friend1",
+      "GSS:2024:friend2",
+      "GSS:2024:friend3",
+      "GSS:2024:friend4",
+      "GSS:2024:friend5",
+      "GSS:2024:ftruse",
+      "GSS:2024:fulldem",
+      "GSS:2024:fund",
+      "GSS:2024:fund16",
+      "GSS:2024:gendtech",
+      "GSS:2024:geneprob",
+      "GSS:2024:genetics",
+      "GSS:2024:gestate",
+      "GSS:2024:getahead",
+      "GSS:2024:getaheadnv",
+      "GSS:2024:getaheadv",
+      "GSS:2024:god",
+      "GSS:2024:godswill",
+      "GSS:2024:goodlife",
+      "GSS:2024:granborn",
+      "GSS:2024:grass",
+      "GSS:2024:grassnv",
+      "GSS:2024:grassv",
+      "GSS:2024:grncon",
+      "GSS:2024:grwingup",
+      "GSS:2024:gunlaw",
+      "GSS:2024:hapcohab",
+      "GSS:2024:hapmar",
+      "GSS:2024:happy",
+      "GSS:2024:happy_next",
+      "GSS:2024:harmgood1",
+      "GSS:2024:health",
+      "GSS:2024:helpblk",
+      "GSS:2024:helpful",
+      "GSS:2024:helpfulnv",
+      "GSS:2024:helpfulv",
+      "GSS:2024:helpnot",
+      "GSS:2024:helpoth",
+      "GSS:2024:helppoor",
+      "GSS:2024:helpsick",
+      "GSS:2024:helpusa",
+      "GSS:2024:hhrace",
+      "GSS:2024:hhtype1",
+      "GSS:2024:hhtype1_exp",
+      "GSS:2024:hhtype1_next",
+      "GSS:2024:hispanic",
+      "GSS:2024:hivafraid",
+      "GSS:2024:hivdscrm",
+      "GSS:2024:hivimmrl",
+      "GSS:2024:hivtest",
+      "GSS:2024:hivtest2",
+      "GSS:2024:hlthstrt",
+      "GSS:2024:homosex",
+      "GSS:2024:hompop",
+      "GSS:2024:hompop_exp",
+      "GSS:2024:hrs1",
+      "GSS:2024:hrs2",
+      "GSS:2024:huclean",
+      "GSS:2024:hunt",
+      "GSS:2024:hunt1",
+      "GSS:2024:hurtoth",
+      "GSS:2024:hurtself",
+      "GSS:2024:if16who",
+      "GSS:2024:if20who",
+      "GSS:2024:ifwrong",
+      "GSS:2024:imbalnce",
+      "GSS:2024:immameco",
+      "GSS:2024:immassim",
+      "GSS:2024:immcrime",
+      "GSS:2024:immcrime1",
+      "GSS:2024:immfate",
+      "GSS:2024:immideas1",
+      "GSS:2024:immjobs",
+      "GSS:2024:immjobs1",
+      "GSS:2024:immwlfare",
+      "GSS:2024:impcultr",
+      "GSS:2024:impfinan",
+      "GSS:2024:impgod",
+      "GSS:2024:impjob",
+      "GSS:2024:impkids",
+      "GSS:2024:impmar",
+      "GSS:2024:imports",
+      "GSS:2024:imprvdis",
+      "GSS:2024:imprveat",
+      "GSS:2024:imprvmed",
+      "GSS:2024:imprvown",
+      "GSS:2024:imprvown1",
+      "GSS:2024:imprvtrt",
+      "GSS:2024:impself",
+      "GSS:2024:impthngs",
+      "GSS:2024:incgap1",
+      "GSS:2024:incom16",
+      "GSS:2024:income",
+      "GSS:2024:income16",
+      "GSS:2024:incuspop",
+      "GSS:2024:indus10",
+      "GSS:2024:infodeal",
+      "GSS:2024:infoprofit",
+      "GSS:2024:intaccprxy",
+      "GSS:2024:intapps",
+      "GSS:2024:intbhlf",
+      "GSS:2024:intcnfrm",
+      "GSS:2024:intcomm",
+      "GSS:2024:intfncl",
+      "GSS:2024:intgame",
+      "GSS:2024:inthome",
+      "GSS:2024:inthrss",
+      "GSS:2024:intlincs",
+      "GSS:2024:intliteracy",
+      "GSS:2024:intlnly",
+      "GSS:2024:intmeet",
+      "GSS:2024:intnews",
+      "GSS:2024:intoppo",
+      "GSS:2024:intpolview",
+      "GSS:2024:intprfssnl",
+      "GSS:2024:intpub",
+      "GSS:2024:intrnetuse",
+      "GSS:2024:intrust",
+      "GSS:2024:intscam",
+      "GSS:2024:intsearch",
+      "GSS:2024:intshare",
+      "GSS:2024:intskill",
+      "GSS:2024:intstream",
+      "GSS:2024:intsurf",
+      "GSS:2024:inttrig",
+      "GSS:2024:intviews",
+      "GSS:2024:issp",
+      "GSS:2024:jobfind",
+      "GSS:2024:joblose",
+      "GSS:2024:kidsinhh",
+      "GSS:2024:kidssol",
+      "GSS:2024:kidssolnv",
+      "GSS:2024:kidssolv",
+      "GSS:2024:knwmhosp",
+      "GSS:2024:knwpatnt",
+      "GSS:2024:knwsexor",
+      "GSS:2024:leftrght",
+      "GSS:2024:leftrght1",
+      "GSS:2024:letdie1",
+      "GSS:2024:letdie1y",
+      "GSS:2024:letin1",
+      "GSS:2024:letin1a",
+      "GSS:2024:letinasn",
+      "GSS:2024:letinhsp",
+      "GSS:2024:libath",
+      "GSS:2024:libathy",
+      "GSS:2024:libcom",
+      "GSS:2024:libcomy",
+      "GSS:2024:libmslm",
+      "GSS:2024:libmslmy",
+      "GSS:2024:librac",
+      "GSS:2024:libracy",
+      "GSS:2024:life",
+      "GSS:2024:liveblks",
+      "GSS:2024:lkelyvot",
+      "GSS:2024:lngthinv",
+      "GSS:2024:localnum",
+      "GSS:2024:maborn",
+      "GSS:2024:madeg",
+      "GSS:2024:maeduc",
+      "GSS:2024:maind10",
+      "GSS:2024:major1",
+      "GSS:2024:major2",
+      "GSS:2024:maocc10",
+      "GSS:2024:marasian",
+      "GSS:2024:marblk",
+      "GSS:2024:marcohab",
+      "GSS:2024:marhisp",
+      "GSS:2024:marital",
+      "GSS:2024:marsame",
+      "GSS:2024:marsamey",
+      "GSS:2024:martype",
+      "GSS:2024:marwht",
+      "GSS:2024:mascsee1",
+      "GSS:2024:mascself1",
+      "GSS:2024:mawrkgrw",
+      "GSS:2024:mawrkslf",
+      "GSS:2024:mawrkslf2",
+      "GSS:2024:mawrkslffam",
+      "GSS:2024:meddoc",
+      "GSS:2024:memgrp1",
+      "GSS:2024:memgrp2",
+      "GSS:2024:memgrp3",
+      "GSS:2024:memgrp4",
+      "GSS:2024:memgrp5",
+      "GSS:2024:mentldoc",
+      "GSS:2024:mentlhos",
+      "GSS:2024:mentlill",
+      "GSS:2024:mentloth",
+      "GSS:2024:meovrwrk",
+      "GSS:2024:mhtreatd",
+      "GSS:2024:mhtrtot2",
+      "GSS:2024:mhunsure",
+      "GSS:2024:migage",
+      "GSS:2024:mighist",
+      "GSS:2024:mntlill",
+      "GSS:2024:mobile16",
+      "GSS:2024:mobiledata",
+      "GSS:2024:mode",
+      "GSS:2024:modelobby",
+      "GSS:2024:modeorg",
+      "GSS:2024:modeorgprot",
+      "GSS:2024:modepet",
+      "GSS:2024:modeprot",
+      "GSS:2024:morextrm",
+      "GSS:2024:mustdoc",
+      "GSS:2024:mustdoc1",
+      "GSS:2024:musthosp",
+      "GSS:2024:musthosp1",
+      "GSS:2024:mustmed",
+      "GSS:2024:mustmed1",
+      "GSS:2024:nataid",
+      "GSS:2024:nataidy",
+      "GSS:2024:natarms",
+      "GSS:2024:natarmsy",
+      "GSS:2024:natchld",
+      "GSS:2024:natcity",
+      "GSS:2024:natcityy",
+      "GSS:2024:natcrime",
+      "GSS:2024:natcrimy",
+      "GSS:2024:natdrug",
+      "GSS:2024:natdrugy",
+      "GSS:2024:nateduc",
+      "GSS:2024:nateducy",
+      "GSS:2024:natenrgy",
+      "GSS:2024:natenvir",
+      "GSS:2024:natenviy",
+      "GSS:2024:natfare",
+      "GSS:2024:natfarey",
+      "GSS:2024:natheal",
+      "GSS:2024:nathealy",
+      "GSS:2024:natrace",
+      "GSS:2024:natracey",
+      "GSS:2024:natroad",
+      "GSS:2024:natsci",
+      "GSS:2024:natsoc",
+      "GSS:2024:natspac",
+      "GSS:2024:natspacy",
+      "GSS:2024:negself",
+      "GSS:2024:neighbr1",
+      "GSS:2024:neighbr2",
+      "GSS:2024:neighbr3",
+      "GSS:2024:neighbr4",
+      "GSS:2024:neighbr5",
+      "GSS:2024:neisafe",
+      "GSS:2024:news",
+      "GSS:2024:nextdoor",
+      "GSS:2024:nexteligible",
+      "GSS:2024:nextgen1",
+      "GSS:2024:nextstatus",
+      "GSS:2024:noathome",
+      "GSS:2024:nocondom",
+      "GSS:2024:nodocidu",
+      "GSS:2024:nonurse",
+      "GSS:2024:norelgsp",
+      "GSS:2024:norelgsp16",
+      "GSS:2024:notsmart",
+      "GSS:2024:nouseint1",
+      "GSS:2024:nouseint10",
+      "GSS:2024:nouseint11",
+      "GSS:2024:nouseint12",
+      "GSS:2024:nouseint2",
+      "GSS:2024:nouseint3",
+      "GSS:2024:nouseint4",
+      "GSS:2024:nouseint5",
+      "GSS:2024:nouseint6",
+      "GSS:2024:nouseint7",
+      "GSS:2024:nouseint8",
+      "GSS:2024:nouseint9",
+      "GSS:2024:numemps",
+      "GSS:2024:numgiven",
+      "GSS:2024:numpets",
+      "GSS:2024:obey",
+      "GSS:2024:obeylaws",
+      "GSS:2024:occ10",
+      "GSS:2024:oppsegov",
+      "GSS:2024:otcmed",
+      "GSS:2024:other1",
+      "GSS:2024:other2",
+      "GSS:2024:other3",
+      "GSS:2024:other4",
+      "GSS:2024:other5",
+      "GSS:2024:othfam1",
+      "GSS:2024:othfam2",
+      "GSS:2024:othfam3",
+      "GSS:2024:othfam4",
+      "GSS:2024:othfam5",
+      "GSS:2024:othlang",
+      "GSS:2024:othlang1",
+      "GSS:2024:othlang2",
+      "GSS:2024:othmhneg",
+      "GSS:2024:othpet",
+      "GSS:2024:owndecns",
+      "GSS:2024:owngun",
+      "GSS:2024:paborn",
+      "GSS:2024:padeg",
+      "GSS:2024:paeduc",
+      "GSS:2024:paind10",
+      "GSS:2024:paocc10",
+      "GSS:2024:papernews",
+      "GSS:2024:parborn",
+      "GSS:2024:parent1",
+      "GSS:2024:parent2",
+      "GSS:2024:parent3",
+      "GSS:2024:parent4",
+      "GSS:2024:parent5",
+      "GSS:2024:parsol",
+      "GSS:2024:partfull",
+      "GSS:2024:partners",
+      "GSS:2024:partyid",
+      "GSS:2024:pawrkgrw",
+      "GSS:2024:pawrkslf",
+      "GSS:2024:pawrkslf2",
+      "GSS:2024:pawrkslffam",
+      "GSS:2024:paytaxes",
+      "GSS:2024:perla_self",
+      "GSS:2024:petfam",
+      "GSS:2024:petsseq",
+      "GSS:2024:phase",
+      "GSS:2024:phone",
+      "GSS:2024:physill",
+      "GSS:2024:physill1",
+      "GSS:2024:pillok",
+      "GSS:2024:pistol",
+      "GSS:2024:polabuse",
+      "GSS:2024:polabusey",
+      "GSS:2024:polattak",
+      "GSS:2024:polattaky",
+      "GSS:2024:poleff11",
+      "GSS:2024:poleff18",
+      "GSS:2024:polescap",
+      "GSS:2024:polhitok",
+      "GSS:2024:polhitoky",
+      "GSS:2024:polint",
+      "GSS:2024:polintrst",
+      "GSS:2024:polmurdr",
+      "GSS:2024:polnews",
+      "GSS:2024:polnewsfrom",
+      "GSS:2024:polopts",
+      "GSS:2024:poltalk",
+      "GSS:2024:polviews",
+      "GSS:2024:poorserv",
+      "GSS:2024:popular",
+      "GSS:2024:pornlaw",
+      "GSS:2024:posslq",
+      "GSS:2024:posslqy",
+      "GSS:2024:postlife",
+      "GSS:2024:postlifenv",
+      "GSS:2024:postlifev",
+      "GSS:2024:pray",
+      "GSS:2024:prayer",
+      "GSS:2024:prayernv",
+      "GSS:2024:prayerv",
+      "GSS:2024:premarsx",
+      "GSS:2024:pres16",
+      "GSS:2024:pres20",
+      "GSS:2024:preteen",
+      "GSS:2024:preteen_exp",
+      "GSS:2024:prnt",
+      "GSS:2024:proudart",
+      "GSS:2024:prouddem",
+      "GSS:2024:proudeco",
+      "GSS:2024:proudhis",
+      "GSS:2024:proudpol",
+      "GSS:2024:proudspt",
+      "GSS:2024:prxyuse",
+      "GSS:2024:ptnrornt",
+      "GSS:2024:ptnrsxbrth",
+      "GSS:2024:ptnrsxnow1",
+      "GSS:2024:racdif1",
+      "GSS:2024:racdif1x",
+      "GSS:2024:racdif2",
+      "GSS:2024:racdif2x",
+      "GSS:2024:racdif3",
+      "GSS:2024:racdif3x",
+      "GSS:2024:racdif4",
+      "GSS:2024:racdif4x",
+      "GSS:2024:racdif5",
+      "GSS:2024:racdif5x",
+      "GSS:2024:race",
+      "GSS:2024:race1",
+      "GSS:2024:race2",
+      "GSS:2024:race3",
+      "GSS:2024:race4",
+      "GSS:2024:race5",
+      "GSS:2024:raceacs1",
+      "GSS:2024:raceacs10",
+      "GSS:2024:raceacs14",
+      "GSS:2024:raceacs15",
+      "GSS:2024:raceacs16",
+      "GSS:2024:raceacs2",
+      "GSS:2024:raceacs3",
+      "GSS:2024:raceacs4",
+      "GSS:2024:raceacs5",
+      "GSS:2024:raceacs6",
+      "GSS:2024:raceacs7",
+      "GSS:2024:raceacs8",
+      "GSS:2024:raceacs9",
+      "GSS:2024:racecen1",
+      "GSS:2024:racecen2",
+      "GSS:2024:racecen3",
+      "GSS:2024:racerank1",
+      "GSS:2024:racerank2",
+      "GSS:2024:racerank3",
+      "GSS:2024:raclive",
+      "GSS:2024:racopen",
+      "GSS:2024:racopennv",
+      "GSS:2024:radionews",
+      "GSS:2024:raised",
+      "GSS:2024:rank",
+      "GSS:2024:reborn",
+      "GSS:2024:refmorwk",
+      "GSS:2024:refpromo",
+      "GSS:2024:reg16",
+      "GSS:2024:relactiv",
+      "GSS:2024:relig",
+      "GSS:2024:relig16",
+      "GSS:2024:religinf",
+      "GSS:2024:reliten",
+      "GSS:2024:relitennv",
+      "GSS:2024:relitenv",
+      "GSS:2024:relpersn",
+      "GSS:2024:reltrad",
+      "GSS:2024:reltrad16",
+      "GSS:2024:reptile",
+      "GSS:2024:res16",
+      "GSS:2024:respond",
+      "GSS:2024:rghtsmin",
+      "GSS:2024:rgroomed",
+      "GSS:2024:rhlthend",
+      "GSS:2024:richwork",
+      "GSS:2024:rifle",
+      "GSS:2024:rincom16",
+      "GSS:2024:rincome",
+      "GSS:2024:risklife",
+      "GSS:2024:rlooks",
+      "GSS:2024:rowngun",
+      "GSS:2024:rplace",
+      "GSS:2024:rumopeer",
+      "GSS:2024:rxmed",
+      "GSS:2024:satdemoc",
+      "GSS:2024:satfin",
+      "GSS:2024:satjob",
+      "GSS:2024:schshoot",
+      "GSS:2024:selfhelp",
+      "GSS:2024:seriousp",
+      "GSS:2024:servpub",
+      "GSS:2024:sex",
+      "GSS:2024:sexbirth1",
+      "GSS:2024:sexeduc",
+      "GSS:2024:sexfreq",
+      "GSS:2024:sexnow2",
+      "GSS:2024:sexornt",
+      "GSS:2024:sexornt1",
+      "GSS:2024:sexpaid",
+      "GSS:2024:sexsex",
+      "GSS:2024:shotgun",
+      "GSS:2024:sibs",
+      "GSS:2024:smammal",
+      "GSS:2024:smedia",
+      "GSS:2024:smnews",
+      "GSS:2024:socbar",
+      "GSS:2024:socfrend",
+      "GSS:2024:socommun",
+      "GSS:2024:socrel",
+      "GSS:2024:solok",
+      "GSS:2024:spaneng",
+      "GSS:2024:spanking",
+      "GSS:2024:spanself",
+      "GSS:2024:spdeg",
+      "GSS:2024:spden",
+      "GSS:2024:speduc",
+      "GSS:2024:spendeve",
+      "GSS:2024:spevwork",
+      "GSS:2024:spfund",
+      "GSS:2024:sphealer",
+      "GSS:2024:sphrs1",
+      "GSS:2024:sphrs2",
+      "GSS:2024:spind10",
+      "GSS:2024:spkath",
+      "GSS:2024:spkathy",
+      "GSS:2024:spkcom",
+      "GSS:2024:spkcomy",
+      "GSS:2024:spklang",
+      "GSS:2024:spkmslm",
+      "GSS:2024:spkmslmy",
+      "GSS:2024:spkrac",
+      "GSS:2024:spkracy",
+      "GSS:2024:spnorelgsp",
+      "GSS:2024:spocc10",
+      "GSS:2024:spouse1",
+      "GSS:2024:spouse2",
+      "GSS:2024:spouse3",
+      "GSS:2024:spouse4",
+      "GSS:2024:spouse5",
+      "GSS:2024:sprel",
+      "GSS:2024:sprtprsn",
+      "GSS:2024:spwksup",
+      "GSS:2024:spwrkslf",
+      "GSS:2024:spwrkslf2",
+      "GSS:2024:spwrkslffam",
+      "GSS:2024:spwrksta",
+      "GSS:2024:stresses",
+      "GSS:2024:stressfl",
+      "GSS:2024:subsamprate",
+      "GSS:2024:suicide1",
+      "GSS:2024:suicide1g",
+      "GSS:2024:suicide2",
+      "GSS:2024:suicide2g",
+      "GSS:2024:suicide4",
+      "GSS:2024:suicide4g",
+      "GSS:2024:svyenjoy",
+      "GSS:2024:svyid1",
+      "GSS:2024:svyid2",
+      "GSS:2024:takelife",
+      "GSS:2024:talkto1",
+      "GSS:2024:talkto2",
+      "GSS:2024:talkto3",
+      "GSS:2024:talkto4",
+      "GSS:2024:talkto5",
+      "GSS:2024:tax",
+      "GSS:2024:techesy",
+      "GSS:2024:teens",
+      "GSS:2024:teensex",
+      "GSS:2024:teens_exp",
+      "GSS:2024:tempgen",
+      "GSS:2024:tempgen1",
+      "GSS:2024:thnkself",
+      "GSS:2024:threaten",
+      "GSS:2024:tlkclrgy",
+      "GSS:2024:tlkfam",
+      "GSS:2024:topprob1_next",
+      "GSS:2024:topprob2_crim",
+      "GSS:2024:topprob2_econ",
+      "GSS:2024:topprob2_educ",
+      "GSS:2024:topprob2_envr",
+      "GSS:2024:topprob2_hlth",
+      "GSS:2024:topprob2_immg",
+      "GSS:2024:topprob2_none",
+      "GSS:2024:topprob2_povt",
+      "GSS:2024:topprob2_terr",
+      "GSS:2024:totalincentive",
+      "GSS:2024:trcong",
+      "GSS:2024:trcourts",
+      "GSS:2024:trppl",
+      "GSS:2024:trust",
+      "GSS:2024:trustnv",
+      "GSS:2024:trustv",
+      "GSS:2024:tvhours",
+      "GSS:2024:tvnews1",
+      "GSS:2024:unemp",
+      "GSS:2024:union",
+      "GSS:2024:union1",
+      "GSS:2024:united",
+      "GSS:2024:unplgrsn",
+      "GSS:2024:unplug",
+      "GSS:2024:unrelat",
+      "GSS:2024:upsdowns",
+      "GSS:2024:urbantech",
+      "GSS:2024:uscitzn",
+      "GSS:2024:usmca1",
+      "GSS:2024:usmca2",
+      "GSS:2024:vetyears",
+      "GSS:2024:vigfrnd",
+      "GSS:2024:viggrp",
+      "GSS:2024:viglabel",
+      "GSS:2024:vigmar",
+      "GSS:2024:vignei",
+      "GSS:2024:vigsoc",
+      "GSS:2024:vigversn",
+      "GSS:2024:vigwork",
+      "GSS:2024:violpeop",
+      "GSS:2024:violself",
+      "GSS:2024:violtv",
+      "GSS:2024:visitors",
+      "GSS:2024:vote16",
+      "GSS:2024:vote20",
+      "GSS:2024:voteprob",
+      "GSS:2024:watchgov",
+      "GSS:2024:wayraise",
+      "GSS:2024:webmob",
+      "GSS:2024:webnews",
+      "GSS:2024:weekswrk",
+      "GSS:2024:whatco2",
+      "GSS:2024:whatma2",
+      "GSS:2024:whatpa2",
+      "GSS:2024:whatslf2",
+      "GSS:2024:whatsp2",
+      "GSS:2024:whoelse1",
+      "GSS:2024:whoelse2",
+      "GSS:2024:whoelse3",
+      "GSS:2024:whoelse4",
+      "GSS:2024:whoelse5",
+      "GSS:2024:whoelse6",
+      "GSS:2024:whovote24",
+      "GSS:2024:whovote24a",
+      "GSS:2024:whovotets",
+      "GSS:2024:widowed",
+      "GSS:2024:wksub",
+      "GSS:2024:wksub1",
+      "GSS:2024:wksubs",
+      "GSS:2024:wksubs1",
+      "GSS:2024:wksup",
+      "GSS:2024:wksup1",
+      "GSS:2024:wksups",
+      "GSS:2024:wksups1",
+      "GSS:2024:wlthblks",
+      "GSS:2024:wlthhsps",
+      "GSS:2024:wlthwhts",
+      "GSS:2024:worda",
+      "GSS:2024:wordb",
+      "GSS:2024:wordc",
+      "GSS:2024:wordd",
+      "GSS:2024:worde",
+      "GSS:2024:wordf",
+      "GSS:2024:wordg",
+      "GSS:2024:wordh",
+      "GSS:2024:wordi",
+      "GSS:2024:wordj",
+      "GSS:2024:wordk",
+      "GSS:2024:wordl",
+      "GSS:2024:wordn",
+      "GSS:2024:workblks",
+      "GSS:2024:workhard",
+      "GSS:2024:workhsps",
+      "GSS:2024:workless",
+      "GSS:2024:workwhts",
+      "GSS:2024:wrkgovt1",
+      "GSS:2024:wrkgovt2",
+      "GSS:2024:wrkslf",
+      "GSS:2024:wrkslffam",
+      "GSS:2024:wrkstat",
+      "GSS:2024:wrkwayup",
+      "GSS:2024:wrldgovt",
+      "GSS:2024:xmarsex",
+      "GSS:2024:xmovie",
+      "GSS:2024:xmoviey",
+      "GSS:2024:xnorcsiz",
+      "GSS:2024:yousup",
+      "GSS:2024:baselinestatus",
+      "GSS:2024:amerstatus"
+    ]
+  },
+  "native_validation": {
+    "projection": {
+      "type": "GovernedC11Projection",
+      "projection_identity_ref": {
+        "kind": "C11_SEMANTIC_PROJECTION",
+        "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC23-NONRESPONDENT-SCALAR:projection",
+        "content_hash": "52650f3c0c0a1c70bf0154167cd6c49b416eeb80204396a9b7db291871702496"
+      },
+      "expected_source_sha256": "cd92496de62cdd6a440919b7768bf6e89f20646534210d02b473c1f409966fc9",
+      "respondents": 6,
+      "questions": 879,
+      "response_slots": 879,
+      "coordinate_slots": 2,
+      "weight_slots": 1,
+      "routing_facts": 5274,
+      "authority_snapshots": 7
+    },
+    "release": {
+      "type": "C11LogicalRelease",
+      "release_id": "R157_GSS_FIXTURE_RELEASE/SRC23",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC23",
+        "content_hash": "010aa726ecc111ea2165824417ab1c8bcd4035b32fb00d120bd8b5abcbb915e6"
+      },
+      "semantic_release_hash": "010aa726ecc111ea2165824417ab1c8bcd4035b32fb00d120bd8b5abcbb915e6",
+      "source_artifact_ref": {
+        "kind": "SOURCE_ARTIFACT",
+        "object_id": "R157_FIXTURE:R157-GSS-SRC23-NONRESPONDENT-SCALAR",
+        "content_hash": "cd92496de62cdd6a440919b7768bf6e89f20646534210d02b473c1f409966fc9"
+      },
+      "m01_m18_coverage": {
+        "M01": [
+          "EmpiricalUniverse"
+        ],
+        "M02": [
+          "RespondentIdentity"
+        ],
+        "M03": [
+          "QuestionVariableBinding"
+        ],
+        "M04": [
+          "RespondentEvent"
+        ],
+        "M05": [
+          "QuestionVariableBinding",
+          "RespondentEvent"
+        ],
+        "M06": [
+          "RespondentEvent.typed_state"
+        ],
+        "M07": [
+          "RoutingEligibilityFact"
+        ],
+        "M08": [
+          "EmpiricalCoordinateFact"
+        ],
+        "M09": [
+          "WeightMeasureFact|TypedAbsence"
+        ],
+        "M10": [
+          "AuthoritySnapshot"
+        ],
+        "M11": [
+          "SourceUniverseRelation|DISTINCT_BY_DEFAULT"
+        ],
+        "M12": [
+          "RoutingEligibilityFact",
+          "EmpiricalPredicateReplayBinding|TypedAbsence"
+        ],
+        "M13": [
+          "ComparatorReplayBinding|DEFERRED"
+        ],
+        "M14": [
+          "DiscoveryBranchReplayBinding|DEFERRED"
+        ],
+        "M15": [
+          "StructuralAdmissionReplayBinding|NOT_APPLICABLE"
+        ],
+        "M16": [
+          "ReplayManifest"
+        ],
+        "M17": [
+          "AuthoritySnapshot",
+          "ReplayManifest"
+        ],
+        "M18": [
+          "ReplayManifest"
+        ]
+      },
+      "universes": 1,
+      "respondent_events": 5274,
+      "coordinate_facts": 12,
+      "weight_facts": 6,
+      "authority_snapshots": 7
+    },
+    "actual": {
+      "response_state_counts": {
+        "DK": 1,
+        "INAPPLICABLE": 1,
+        "INVALID_UNRESOLVED": 1,
+        "MISSING": 2,
+        "NOT_ASKED": 1,
+        "REFUSAL": 1,
+        "SOURCE_SPECIFIC_SPECIAL": 2,
+        "SUBSTANTIVE_RESPONSE": 5265
+      },
+      "response_state_counts_by_question": {
+        "FIXTURE:SRC23:abany": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:abanyg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:abdefect": {
+          "INAPPLICABLE": 1,
+          "SOURCE_SPECIFIC_SPECIAL": 2,
+          "SUBSTANTIVE_RESPONSE": 3
+        },
+        "FIXTURE:SRC23:abdefectg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:abhelp1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:abhelp2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:abhelp3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:abhelp4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:abhlth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:abhlthg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:abmoral": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:abnomore": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:abnomoreg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:abpoor": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:abpoorg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:abrape": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:abrapeg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:absingle": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:absingleg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:acpttg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:adcoumed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:addoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:adfam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:adminconsent": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:adoptus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:adpsy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:adtch": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:adults": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:adults_exp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:adultsinhh": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:advisor1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:advisor2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:advisor3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:advisor4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:advisor5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:affrmact": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:afraidof": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:age": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:agekdbrn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:agetech": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:aidrive": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:aimed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:aimofart": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:aiworry": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:allergic": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:amancstr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ambetter": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ambornin": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:amchrstn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:amcit": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:amcitizn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:amerstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:amfeel": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:amgovt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:amownway": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:amshamed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:amtv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:attend": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:babies": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:babies_exp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:badchar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:baselinestatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:befair": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:belikeus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:biasnews": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:bible": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:biblenv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:biblev": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:bird": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:bizmoney": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:born": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:breakdwn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:brneffrt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:broadband": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:bullied": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:bullpeer": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cantrust": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cappun": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cat": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cctv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:charactr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:chembal": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:child1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:child2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:child3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:child4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:child5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:childs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:childs_exp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:childsinhh": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:chldfrnd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:chldidel": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:chldidel_next": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:chldpref_next": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:chldprob": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:chldsch": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:chldvig": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:chngdocs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:citizen": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:class": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:classtech": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:codeg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:coden": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:coeduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:coevwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cofund": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cohrs1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cohrs2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:coind10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:colath": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:colcom": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:colcomy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:colmslm": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:colrac": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:comprend": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:compuse": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:conarmy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:conbus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:conclerg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:coneduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:confed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:confinan": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:conjudge": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:conlabor": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:conlabory": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:conlegis": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:conmedic": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:conorelgsp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:conpow": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:conpress": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:consci": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:conscrp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:consent": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:contv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:coocc10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:coop": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:corel": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:corruptn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:courts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:courtsnv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:courtsv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cowksup": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cowork1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cowork2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cowork3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cowork4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cowork5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cowrkslf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cowrkslf2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cowrkslffam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cowrksta": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:credam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:credcar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:credchoice": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:credemp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:credland": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:credrep": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:cutself": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:dangroth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:dangrslf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:dataprot": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:decmoney": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:dectreat": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:degree": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:dem10fut": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:dem10pst": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:demtoday": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:denom": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:denom16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:devtype": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:diagnosd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:dipged": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:discaff": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:discaffm": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:discaffw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:discaffwnv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:discaffwv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:discipln": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:disrspct": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:divlaw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:divlawnv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:divlawv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:divorce": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:dofirst": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:dog": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:dsndntpay": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:dwelling": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:dwelown": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:dwelown16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:earnrs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:econstat": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:educ": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:eductech": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:emonitor1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:eqwlth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:eth1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ethnic": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ethworld1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ethworld2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ethworld3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ethworld4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ethworld5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ethworld6": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ethworld7": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ethworld8": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ethworld9": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:evwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:experts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fair": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fairnv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fairv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:famdif16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:famdif16y": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:famgen": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:famgen_exp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:famgen_next": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:family16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:family16sex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fammhneg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fear": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fechld": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:feelevel": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:feeused": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fefam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fehire": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fejobaff": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:femsee1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:femself1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:feovrwrk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fepol": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fepolnv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fepolv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fepresch": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fighpeer": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:finalter": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:finrela": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fish": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:foodalc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:forland": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:form": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:friend1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:friend2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:friend3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:friend4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:friend5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ftruse": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fulldem": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fund": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:fund16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:gendtech": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:geneprob": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:genetics": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:gestate": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:getahead": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:getaheadnv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:getaheadv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:god": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:godswill": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:goodlife": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:granborn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:grass": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:grassnv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:grassv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:grncon": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:grwingup": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:gunlaw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hapcohab": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hapmar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:happy": {
+          "DK": 1,
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 3
+        },
+        "FIXTURE:SRC23:happy_next": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:harmgood1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:health": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:helpblk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:helpful": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:helpfulnv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:helpfulv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:helpnot": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:helpoth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:helppoor": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:helpsick": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:helpusa": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hhrace": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hhtype1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hhtype1_exp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hhtype1_next": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hispanic": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hivafraid": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hivdscrm": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hivimmrl": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hivtest": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hivtest2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hlthstrt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:homosex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hompop": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hompop_exp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hrs1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hrs2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:huclean": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hunt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hunt1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hurtoth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:hurtself": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:if16who": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:if20who": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ifwrong": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:imbalnce": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:immameco": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:immassim": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:immcrime": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:immcrime1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:immfate": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:immideas1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:immjobs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:immjobs1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:immwlfare": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:impcultr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:impfinan": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:impgod": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:impjob": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:impkids": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:impmar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:imports": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:imprvdis": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:imprveat": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:imprvmed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:imprvown": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:imprvown1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:imprvtrt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:impself": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:impthngs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:incgap1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:incom16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:income": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:income16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:incuspop": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:indus10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:infodeal": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:infoprofit": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intaccprxy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intapps": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intbhlf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intcnfrm": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intcomm": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intfncl": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intgame": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:inthome": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:inthrss": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intlincs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intliteracy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intlnly": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intmeet": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intnews": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intoppo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intpolview": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intprfssnl": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intpub": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intrnetuse": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intrust": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intscam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intsearch": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intshare": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intskill": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intstream": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intsurf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:inttrig": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:intviews": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:issp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:jobfind": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:joblose": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:kidsinhh": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:kidssol": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:kidssolnv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:kidssolv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:knwmhosp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:knwpatnt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:knwsexor": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:leftrght": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:leftrght1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:letdie1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:letdie1y": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:letin1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:letin1a": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:letinasn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:letinhsp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:libath": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:libathy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:libcom": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:libcomy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:libmslm": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:libmslmy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:librac": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:libracy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:life": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:liveblks": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:lkelyvot": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:lngthinv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:localnum": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:maborn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:madeg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:maeduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:maind10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:major1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:major2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:maocc10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:marasian": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:marblk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:marcohab": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:marhisp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:marital": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:marsame": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:marsamey": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:martype": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:marwht": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mascsee1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mascself1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mawrkgrw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mawrkslf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mawrkslf2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mawrkslffam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:meddoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:memgrp1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:memgrp2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:memgrp3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:memgrp4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:memgrp5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mentldoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mentlhos": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mentlill": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mentloth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:meovrwrk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mhtreatd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mhtrtot2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mhunsure": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:migage": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mighist": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mntlill": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mobile16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mobiledata": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mode": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:modelobby": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:modeorg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:modeorgprot": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:modepet": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:modeprot": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:morextrm": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mustdoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mustdoc1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:musthosp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:musthosp1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mustmed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:mustmed1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nataid": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nataidy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natarms": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natarmsy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natchld": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natcity": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natcityy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natcrime": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natcrimy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natdrug": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natdrugy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nateduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nateducy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natenrgy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natenvir": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natenviy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natfare": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natfarey": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natheal": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nathealy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natrace": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natracey": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natroad": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natsci": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natsoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natspac": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:natspacy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:negself": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:neighbr1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:neighbr2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:neighbr3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:neighbr4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:neighbr5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:neisafe": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:news": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nextdoor": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nexteligible": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nextgen1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nextstatus": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:noathome": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nocondom": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nodocidu": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nonurse": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:norelgsp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:norelgsp16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:notsmart": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nouseint1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nouseint10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nouseint11": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nouseint12": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nouseint2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nouseint3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nouseint4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nouseint5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nouseint6": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nouseint7": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nouseint8": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:nouseint9": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:numemps": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:numgiven": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:numpets": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:obey": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:obeylaws": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:occ10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:oppsegov": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:otcmed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:other1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:other2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:other3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:other4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:other5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:othfam1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:othfam2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:othfam3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:othfam4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:othfam5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:othlang": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:othlang1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:othlang2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:othmhneg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:othpet": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:owndecns": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:owngun": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:paborn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:padeg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:paeduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:paind10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:paocc10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:papernews": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:parborn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:parent1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:parent2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:parent3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:parent4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:parent5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:parsol": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:partfull": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:partners": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:partyid": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:pawrkgrw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:pawrkslf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:pawrkslf2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:pawrkslffam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:paytaxes": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:perla_self": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:petfam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:petsseq": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:phase": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:phone": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:physill": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:physill1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:pillok": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:pistol": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:polabuse": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:polabusey": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:polattak": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:polattaky": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:poleff11": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:poleff18": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:polescap": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:polhitok": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:polhitoky": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:polint": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:polintrst": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:polmurdr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:polnews": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:polnewsfrom": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:polopts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:poltalk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:polviews": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:poorserv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:popular": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:pornlaw": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:posslq": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:posslqy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:postlife": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:postlifenv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:postlifev": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:pray": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:prayer": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:prayernv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:prayerv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:premarsx": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:pres16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:pres20": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:preteen": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:preteen_exp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:prnt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:proudart": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:prouddem": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:proudeco": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:proudhis": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:proudpol": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:proudspt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:prxyuse": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ptnrornt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ptnrsxbrth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:ptnrsxnow1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racdif1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racdif1x": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racdif2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racdif2x": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racdif3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racdif3x": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racdif4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racdif4x": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racdif5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racdif5x": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:race": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:race1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:race2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:race3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:race4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:race5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:raceacs1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:raceacs10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:raceacs14": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:raceacs15": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:raceacs16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:raceacs2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:raceacs3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:raceacs4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:raceacs5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:raceacs6": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:raceacs7": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:raceacs8": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:raceacs9": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racecen1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racecen2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racecen3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racerank1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racerank2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racerank3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:raclive": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racopen": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:racopennv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:radionews": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:raised": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:rank": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:reborn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:refmorwk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:refpromo": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:reg16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:relactiv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:relig": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:relig16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:religinf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:reliten": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:relitennv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:relitenv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:relpersn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:reltrad": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:reltrad16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:reptile": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:res16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:respond": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:rghtsmin": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:rgroomed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:rhlthend": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:richwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:rifle": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:rincom16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:rincome": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:risklife": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:rlooks": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:rowngun": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:rplace": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:rumopeer": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:rxmed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:satdemoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:satfin": {
+          "INVALID_UNRESOLVED": 1,
+          "NOT_ASKED": 1,
+          "REFUSAL": 1,
+          "SUBSTANTIVE_RESPONSE": 3
+        },
+        "FIXTURE:SRC23:satjob": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:schshoot": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:selfhelp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:seriousp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:servpub": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:sex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:sexbirth1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:sexeduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:sexfreq": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:sexnow2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:sexornt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:sexornt1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:sexpaid": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:sexsex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:shotgun": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:sibs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:smammal": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:smedia": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:smnews": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:socbar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:socfrend": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:socommun": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:socrel": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:solok": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spaneng": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spanking": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spanself": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spdeg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spden": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:speduc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spendeve": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spevwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spfund": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:sphealer": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:sphrs1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:sphrs2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spind10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spkath": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spkathy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spkcom": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spkcomy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spklang": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spkmslm": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spkmslmy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spkrac": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spkracy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spnorelgsp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spocc10": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spouse1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spouse2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spouse3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spouse4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spouse5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:sprel": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:sprtprsn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spwksup": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spwrkslf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spwrkslf2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spwrkslffam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:spwrksta": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:stresses": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:stressfl": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:subsamprate": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:suicide1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:suicide1g": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:suicide2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:suicide2g": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:suicide4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:suicide4g": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:svyenjoy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:svyid1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:svyid2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:takelife": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:talkto1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:talkto2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:talkto3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:talkto4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:talkto5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:tax": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:techesy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:teens": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:teens_exp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:teensex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:tempgen": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:tempgen1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:thnkself": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:threaten": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:tlkclrgy": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:tlkfam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:topprob1_next": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:topprob2_crim": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:topprob2_econ": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:topprob2_educ": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:topprob2_envr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:topprob2_hlth": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:topprob2_immg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:topprob2_none": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:topprob2_povt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:topprob2_terr": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:totalincentive": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:trcong": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:trcourts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:trppl": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:trust": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:trustnv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:trustv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:tvhours": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:tvnews1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:unemp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:union": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:union1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:united": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:unplgrsn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:unplug": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:unrelat": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:upsdowns": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:urbantech": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:uscitzn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:usmca1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:usmca2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:vetyears": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:vigfrnd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:viggrp": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:viglabel": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:vigmar": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:vignei": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:vigsoc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:vigversn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:vigwork": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:violpeop": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:violself": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:violtv": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:visitors": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:vote16": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:vote20": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:voteprob": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:watchgov": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wayraise": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:webmob": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:webnews": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:weekswrk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:whatco2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:whatma2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:whatpa2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:whatslf2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:whatsp2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:whoelse1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:whoelse2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:whoelse3": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:whoelse4": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:whoelse5": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:whoelse6": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:whovote24": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:whovote24a": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:whovotets": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:widowed": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wksub": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wksub1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wksubs": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wksubs1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wksup": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wksup1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wksups": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wksups1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wlthblks": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wlthhsps": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wlthwhts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:worda": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wordb": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wordc": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wordd": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:worde": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wordf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wordg": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wordh": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wordi": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wordj": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wordk": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wordl": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wordn": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:workblks": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:workhard": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:workhsps": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:workless": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:workwhts": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wrkgovt1": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wrkgovt2": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wrkslf": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wrkslffam": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wrkstat": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wrkwayup": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:wrldgovt": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:xmarsex": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:xmovie": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:xmoviey": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:xnorcsiz": {
+          "SUBSTANTIVE_RESPONSE": 6
+        },
+        "FIXTURE:SRC23:yousup": {
+          "SUBSTANTIVE_RESPONSE": 6
+        }
+      },
+      "coordinate_state_counts": {
+        "OBSERVED_COORDINATE": 12
+      },
+      "weight_state_counts": {
+        "WEIGHT_BASIS_UNRESOLVED": 5,
+        "WEIGHT_MISSING": 1
+      },
+      "canonical_response_values_all_null": true
+    },
+    "expected_match": true,
+    "p3_row_native_keys": {
+      "configured_slot": {
+        "ordinal": 3,
+        "name": "id"
+      },
+      "witness_count": 6,
+      "kinds": [
+        "ExactRef"
+      ],
+      "fixture_bound_object_prefix": "urn:rawlsing:r157:r157_nonrespondent_fixture_key",
+      "all_witnesses_fixture_bound": true
+    },
+    "p3_reader_transport": {
+      "reader_configuration": {
+        "source_sha256": "27166a481ba6e240aca68293464a2b1fd9a9171a3ddba89a038038a32b8d1eef",
+        "configuration_ref": {
+          "kind": "READER_CONFIGURATION",
+          "object_id": "urn:rawlsing:r157:reader:SRC23:default_sav",
+          "content_hash": "a897b34b70f32a6036d7927531fed35c9d62cbec9348e2f4d311198d611198b2"
+        },
+        "encoding": null,
+        "authority_status": null
+      },
+      "source_read_request": {
+        "source_id": "SRC23",
+        "source_sha256": "27166a481ba6e240aca68293464a2b1fd9a9171a3ddba89a038038a32b8d1eef",
+        "source_format": "SAV",
+        "custody_locator_binding": "SRC23_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING",
+        "host": "R157_PREPARATION_HOST",
+        "purpose": "SOURCE_CONFIGURATION_PREPARATION",
+        "consumer_use": "R157_GSS_LANE_CONFIGURATION",
+        "semantic_use_scope": [
+          "coordinate_configuration",
+          "response_rule_configuration"
+        ]
+      },
+      "source_bytes_read": false,
+      "permission_decision": "NOT_REQUESTED_OR_EVALUATED_IN_PREPARATION"
+    },
+    "calls": [
+      {
+        "call": "rawlsing_next.source_configuration.schema.validate_source_config(original_config)",
+        "result": "PASS"
+      },
+      {
+        "call": "rawlsing_next.source_configuration.schema.validate_source_config(fixture_config)",
+        "result": "PASS"
+      },
+      {
+        "call": "rawlsing_next.source_configuration.factory.row_native_keys_from_transport(fixture_config, stream=fixture_stream)",
+        "result": "PASS",
+        "witness_count": 6,
+        "witness_kind": "R157_NONRESPONDENT_FIXTURE_KEY"
+      },
+      {
+        "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection(fixture_config, row_native_keys=fixture_row_keys)",
+        "result": "PASS",
+        "projection_identity_ref": {
+          "kind": "C11_SEMANTIC_PROJECTION",
+          "object_id": "urn:rawlsing:r157:fixture:R157-GSS-SRC23-NONRESPONDENT-SCALAR:projection",
+          "content_hash": "52650f3c0c0a1c70bf0154167cd6c49b416eeb80204396a9b7db291871702496"
+        }
+      },
+      {
+        "call": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config(fixture_config, stream=fixture_stream)",
+        "result": "PASS",
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "R157_GSS_FIXTURE_RELEASE/SRC23",
+          "content_hash": "010aa726ecc111ea2165824417ab1c8bcd4035b32fb00d120bd8b5abcbb915e6"
+        }
+      },
+      {
+        "call": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config(fixture_config, stream=fixture_stream)",
+        "result": "PASS",
+        "repository_release_refs": [
+          {
+            "kind": "C11LogicalRelease",
+            "object_id": "R157_GSS_FIXTURE_RELEASE/SRC23",
+            "content_hash": "010aa726ecc111ea2165824417ab1c8bcd4035b32fb00d120bd8b5abcbb915e6"
+          }
+        ]
+      },
+      {
+        "call": "rawlsing_next.source_configuration.reader.reader_configuration_from_config(original_config)",
+        "result": "PASS",
+        "source_bytes_read": false,
+        "encoding": null,
+        "permission_decision": "NOT_REQUESTED_OR_EVALUATED_IN_PREPARATION"
+      },
+      {
+        "call": "rawlsing_next.source_configuration.reader.source_read_request_from_config(original_config)",
+        "result": "PASS",
+        "source_bytes_read": false,
+        "permission_decision": "NOT_REQUESTED_OR_EVALUATED_IN_PREPARATION"
+      }
+    ],
+    "repository": {
+      "release_refs": [
+        {
+          "kind": "C11LogicalRelease",
+          "object_id": "R157_GSS_FIXTURE_RELEASE/SRC23",
+          "content_hash": "010aa726ecc111ea2165824417ab1c8bcd4035b32fb00d120bd8b5abcbb915e6"
+        }
+      ],
+      "release_ref_matches_stream": true
+    },
+    "refusals": {
+      "original_without_row_keys": {
+        "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection(original_config)",
+        "outcome": "REFUSED",
+        "exception_type": "SourceConfigurationBindingError",
+        "message": "configured source_native_key_slot requires row_native_keys after a permitted decode"
+      },
+      "original_with_fixture_stream": {
+        "call": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config(original_config, stream=fixture_stream)",
+        "outcome": "REFUSED",
+        "exception_type": "SourceConfigurationBindingError",
+        "message": "active source SHA differs from the frozen config binding"
+      },
+      "fixture_wrong_source_sha": {
+        "call": "build_validated_c11_release_from_config(fixture_config, stream=wrong_sha_stream)",
+        "outcome": "REFUSED",
+        "exception_type": "SourceConfigurationBindingError",
+        "message": "active source SHA differs from the frozen config binding"
+      },
+      "fixture_wrong_row_count": {
+        "call": "build_validated_c11_release_from_config(fixture_config, stream=wrong_row_count_stream)",
+        "outcome": "REFUSED",
+        "exception_type": "SourceConfigurationFactoryError",
+        "message": "configured key slot did not yield exactly one witness per active row"
+      }
+    }
+  },
+  "identity_separation": {
+    "original_source_sha256": "27166a481ba6e240aca68293464a2b1fd9a9171a3ddba89a038038a32b8d1eef",
+    "fixture_source_sha256": "cd92496de62cdd6a440919b7768bf6e89f20646534210d02b473c1f409966fc9",
+    "distinct_bytes": true,
+    "original_binding_identity_class": "ORIGINAL_SOURCE",
+    "fixture_binding_identity_class": "NONRESPONDENT_FIXTURE",
+    "original_authority_has_fixture_only": false,
+    "fixture_authority_all_fixture_only": true,
+    "original_binding_matches_original_sha": true,
+    "fixture_binding_differs_from_original_sha": true
+  },
+  "residuals": [
+    {
+      "residual_id": "SRC23-NATIVE-ROW-KEY",
+      "scope": "SRC23/respondents",
+      "field": "respondents.source_native_key_slot",
+      "status": "DECODE_REQUIRED",
+      "reason": "The source-native id slot is bound, but no permitted decode-produced respondent keys are available during preparation.",
+      "dependent_operation": "original build_governed_c11_projection / build_validated_c11_release_from_config",
+      "unaffected_scope": "schema validation, nonrespondent fixture projection and native C11 validation",
+      "owner": "R157 P3 integration owner with source-read decoder owner",
+      "next_step": "Populate the frozen row_native_keys argument from permitted decoded id cells and verified edition/currentness checks."
+    },
+    {
+      "residual_id": "SRC23-ROUTING-UNKNOWN",
+      "scope": "SRC23/routing",
+      "field": "routing[].typed_state",
+      "status": "ROUTING_UNKNOWN",
+      "reason": "H48/O06 reports SOURCE_ROUTING_UNRESOLVED; exact form, ballot and administration routing was not recovered.",
+      "dependent_operation": "eligibility-conditioned original source claims or subsets",
+      "unaffected_scope": "raw scalar response decoding and fixture positive release",
+      "owner": "GSS source evidence owner",
+      "next_step": "Recover exact original route expressions/form assignment before any original eligibility claim."
+    },
+    {
+      "residual_id": "SRC23-SOURCE-AUTHORITY-DEFER",
+      "scope": "SRC23/authority",
+      "field": "authority.snapshots",
+      "status": "DEFER",
+      "reason": "H48/P2/full-relation evidence is source_reviewed candidate evidence, not an adopted ALLOW authority for original scientific execution.",
+      "dependent_operation": "original scientific issuance or original-source semantic promotion",
+      "unaffected_scope": "portable source preparation and nonrespondent fixture validation",
+      "owner": "R157 authority owner",
+      "next_step": "Adjudicate the exact source operation scope; never promote fixture-only authority into original meaning."
+    },
+    {
+      "residual_id": "SRC23-CANONICAL-VALUE",
+      "scope": "SRC23/response_slots",
+      "field": "response_slots[].values[].canonical_value",
+      "status": "NOT_AUTHORIZED",
+      "reason": "No exact positive NATIVE_CANONICAL_MAPPING_HARMONIZATION authority is present, so raw source values and states are retained without canonical recoding.",
+      "dependent_operation": "canonicalized cross-source value analysis",
+      "unaffected_scope": "raw response state and exact physical value projection",
+      "owner": "R157 mapping authority owner",
+      "next_step": "Adjudicate exact source-native to canonical mapping before setting canonical values."
+    },
+    {
+      "residual_id": "SRC23-WEIGHT-HELD",
+      "scope": "SRC23/weight_slots",
+      "field": "physical_slots[970].name=wtssps",
+      "status": "HELD",
+      "reason": "The source weight slot is identified, but exact weight basis, design, estimand and normalization authority are not established.",
+      "dependent_operation": "weighted estimands and population inference",
+      "unaffected_scope": "unweighted source-local raw sample configuration",
+      "owner": "GSS weight/design evidence owner",
+      "next_step": "Establish exact design/estimand/normalization authority before emitting an authorized weight lane."
+    },
+    {
+      "residual_id": "SRC23-FORM-ADMINISTRATION",
+      "scope": "SRC23/form",
+      "field": "supported_scope.supported_form_slice",
+      "status": "UNKNOWN",
+      "reason": "Split form/ballot assignment and administration are not recovered as exact source facts in the portable evidence rows.",
+      "dependent_operation": "form-conditioned or administration-conditioned claims",
+      "unaffected_scope": "unconditional scalar response-rule fixture validation",
+      "owner": "GSS source evidence owner",
+      "next_step": "Recover exact form/ballot assignment evidence for this wave if a form-conditioned slice is required."
+    },
+    {
+      "residual_id": "SRC23-SAMPLE-FRAME",
+      "scope": "SRC23/universe",
+      "field": "universe.sampling_design_regime",
+      "status": "UNRESOLVED",
+      "reason": "Country scope US is carried from the full-relation row; wave-specific sampling frame and design are not reconstructed from metadata alone.",
+      "dependent_operation": "population, design or design-based inference claims",
+      "unaffected_scope": "source-row identity and raw response-rule construction",
+      "owner": "GSS source evidence owner",
+      "next_step": "Recover exact wave sampling-frame/design evidence before population or design claims."
+    },
+    {
+      "residual_id": "SRC23-CONTINUOUS-NATIVE-FINITE-RULE",
+      "scope": "SRC23/continuous",
+      "field": "questions[].response_slots",
+      "status": "NATIVE_FINITE_RULE_REQUIRED",
+      "reason": "74 exact items are held: The source variables carry no substantive value labels and are continuous/typed numeric; native ResponseSlotRule requires exact finite physical value keys and must not force a categorical domain. Exact item/evidence rows: source_pre553_validation/SRC23/SRC23.exceptions.json#held_items.",
+      "dependent_operation": "continuous response projection",
+      "unaffected_scope": "continuous/source-native value handling in an owner with an exact continuous rule",
+      "owner": "GSS source/native-representation owner",
+      "next_step": "Do not substitute a default category; consume the exact held-item evidence or extend the receiving owner only through its actual contract."
+    },
+    {
+      "residual_id": "SRC23-ADMIN-NO-RESPONSE-SLOT",
+      "scope": "SRC23/admin",
+      "field": "questions[].response_slots",
+      "status": "RETAINED_ADMINISTRATIVE",
+      "reason": "23 exact items are held: The source items are administrative/context variables, not respondent measurement targets; their identities and dispositions are retained without a response event. Exact item/evidence rows: source_pre553_validation/SRC23/SRC23.exceptions.json#held_items.",
+      "dependent_operation": "administrative variable use as a measurement target",
+      "unaffected_scope": "administrative/context consumption from the retained physical metadata",
+      "owner": "GSS source/native-representation owner",
+      "next_step": "Do not substitute a default category; consume the exact held-item evidence or extend the receiving owner only through its actual contract."
+    }
+  ],
+  "limits": [
+    "Original GSS respondent execution is NOT performed or claimed.",
+    "The positive native release is from a distinct nonrespondent fixture config and fixture bytes.",
+    "Original construction requires permitted decode-produced row_native_keys and remains P3 reader/transport work.",
+    "No cross-wave equivalence, pooling, canonical mapping, weight authorization or population claim is asserted."
+  ]
+}
