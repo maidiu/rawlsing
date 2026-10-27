@@ -1,0 +1,23 @@
+{
+  "schema": "PYAT_R157_SOURCE_CONFIGURATION_PACKAGE_DATA@1.0.0",
+  "package_root": "rawlsing_next/source_configuration",
+  "include": [
+    "README.md",
+    "DEPENDENCIES.json",
+    "PACKAGE_DATA.json",
+    "schema/*.json",
+    "evidence/*",
+    "data/SRC*/*.json"
+  ],
+  "exclude": [
+    "**/__pycache__/**",
+    "**/*.pyc",
+    "data/SRC*/**/*.py",
+    "evidence/*.sqlite"
+  ],
+  "generated_outside_package": [
+    "source_pre553_validation/integration/SOURCE_LIBRARY_INDEX.json",
+    "source_pre553_validation/integration/SOURCE_LIBRARY_INDEX.sqlite"
+  ],
+  "note": "Original source files and respondent bytes are never package data. The generated index references external source identities only."
+}

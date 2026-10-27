@@ -1,19 +1,7 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "ALL35_SOURCE_CONFIGURATIONS_SCOPED_INTEGRATED_P5_FINAL_JOIN_AND_P6_PENDING",
-  "active_workers": [
-    {
-      "task": "P5_PORTABLE_DELIVERY_IMPLEMENTATION",
-      "lane": "P5",
-      "source_ids": [],
-      "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "pid": 58620,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
-      "branch": "agent/pyat-pre553-r157-integration",
-      "state": "RUNNING_PATH_CASE_REPAIR_PREFLIGHT_VERIFIED",
-      "launch": "LANE_LAUNCHES.json"
-    }
-  ],
+  "status": "ALL35_P5_CANDIDATE_INTEGRATED_P6_SESSION_RECOVERY_PENDING",
+  "active_workers": [],
   "heartbeat": "PAUSED",
   "implementation_started": true,
   "completed_tasks": [
@@ -30,7 +18,7 @@
     "WVS_SOURCE_CONFIGURATION_PREPARATION_SCOPED"
   ],
   "current_goal_anchor": "GOAL.md",
-  "next_action": "Existing P5 author completes exact-case repair and final portable all35 index/cold-build/native consumer validation from qualified main inputs, then existing distinct reviewer P6.",
+  "next_action": "Resume retained distinct P6 reviewer on coherent frozen integrated candidate; legacy session history retained but not yet migrated to current OpenCode API.",
   "live_goal_objective_verified": true,
   "live_goal_tool_status": "active",
   "resume_authorization": {
@@ -147,12 +135,13 @@
     },
     {
       "id": "P5_PORTABLE_IMPLEMENTATION",
-      "state": "EXACT_CASE_PORTABILITY_REPAIR_RUNNING",
+      "state": "INTEGRATED_CANDIDATE_PENDING_DISTINCT_P6",
       "process": 58620,
       "inputs": "89035bd8cde6c21d8f6e6c6cb70fb394fdad2dcc",
       "output": "source_pre553_validation/integration/P5_RETURN.json",
       "next_consumer": "Final all35 join after LiTS/WVS qualified inputs; distinct review",
-      "evidence": "P5_INTAKE.json"
+      "evidence": "P5_INTAKE.json",
+      "candidate": "056849e23a83d7f4fa33fe4dc8eb65eaf7e2a102"
     }
   ],
   "frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",

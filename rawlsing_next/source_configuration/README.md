@@ -64,6 +64,31 @@ from rawlsing_next.source_configuration.fixture import load_fixture_stream
   stream is projected. It does not pre-invent respondent rows.
 - Original-source execution remains a separate permission/issuance boundary.
 
+## Portable registry and delivery CLI
+
+`library.py` discovers canonical original and nonrespondent-fixture artifacts
+from the established per-lane filename conventions, validates their SHA/identity
+bindings, and writes one portable index plus SQLite lookup. `cli.py` provides
+stable source selection and actual owner calls:
+
+```sh
+PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli build-index
+PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli status
+PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli show SRC01
+PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli validate SRC01
+PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli fixture-call SRC01
+```
+
+`fixture-call` constructs the real `GovernedC11Projection` and validates a
+`C11LogicalRelease` from the configured `NONRESPONDENT_FIXTURE`. Indexed artifact
+paths are serialized from actual exact-case directory entries; loading rejects a
+non-exact component rather than relying on case-insensitive filesystem lookup.
+`original-plan`
+emits the exact external source-read request and required resolver/permission
+arguments without opening source bytes. Source files remain external and
+separately authorized. Dependency and package-data manifests are
+`DEPENDENCIES.json` and `PACKAGE_DATA.json`.
+
 ## Commands
 
 ```sh
