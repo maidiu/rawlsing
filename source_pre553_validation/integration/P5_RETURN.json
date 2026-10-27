@@ -400,7 +400,7 @@
       "SRC30"
     ]
   },
-  "artifact_commit": "89035bd8cde6c21d8f6e6c6cb70fb394fdad2dcc",
+  "artifact_commit": "c4cc7b4bc399c83756d2e6c20946830650fb7d32",
   "base_commit": "89035bd8cde6c21d8f6e6c6cb70fb394fdad2dcc",
   "baseline": {
     "exact_relation_matches": 18250,
@@ -453,7 +453,7 @@
     {
       "bytes": 40960,
       "path": "source_pre553_validation/integration/SOURCE_LIBRARY_INDEX.sqlite",
-      "sha256": "eeef6058cc00022460d96ccd7a27013ddfc42b22afad36299469ebd689befc7e"
+      "sha256": "573f8a3963fdf3dbb6630ccf5f6cabb01b58cdb0953790ce84d50bc39e753a82"
     },
     {
       "bytes": 36766,
@@ -476,9 +476,14 @@
       "sha256": "8bd0a30b9bdd75a03663c5a6966d9d95d8923d4d1414eae1bea5011e82384901"
     },
     {
-      "bytes": 19600,
+      "bytes": 1604,
+      "path": "source_pre553_validation/integration/README.md",
+      "sha256": "a3f53106974ca9072dffb67f94d085fd3838fe84f497d0c678d18c9426f0535f"
+    },
+    {
+      "bytes": 19984,
       "path": "source_pre553_validation/integration/build_p5_return.py",
-      "sha256": "21e927399a504aac2c26a68e376a1112c6ad99986009558e26c5adf9b988c9c8"
+      "sha256": "fad8c740774456feddfd1351739e61bc75ca457ff70fc6e6c0790108ec9939b2"
     }
   ],
   "changed_artifacts_note": "P5-authored files only; accepted LiTS input files are listed separately and P5_RETURN excludes itself.",
@@ -552,7 +557,7 @@
     "json_sha256": "2dde55571de0a3b0800326787004ca9d34785ee5d490985d2147683a132689bc",
     "registry_callable": "rawlsing_next.source_configuration.library.SourceConfigLibrary",
     "sqlite_path": "source_pre553_validation/integration/SOURCE_LIBRARY_INDEX.sqlite",
-    "sqlite_sha256": "eeef6058cc00022460d96ccd7a27013ddfc42b22afad36299469ebd689befc7e"
+    "sqlite_sha256": "573f8a3963fdf3dbb6630ccf5f6cabb01b58cdb0953790ce84d50bc39e753a82"
   },
   "limits": [
     "This is 32/35 portable delivery, not all35 completion.",
@@ -801,6 +806,12 @@
   },
   "status": "P5_PORTABLE_LIBRARY_READY__32_OF_35_AVAILABLE",
   "task": "P5_PORTABLE_DELIVERY_IMPLEMENTATION",
+  "tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_library.py -q -o addopts=''",
+    "note": "Focused registry/index/CLI contract checks; no original source read.",
+    "passed": true,
+    "result": "9 passed in 146.76s"
+  },
   "validation": {
     "available_configs_passed": 32,
     "available_configs_validated": 32,
