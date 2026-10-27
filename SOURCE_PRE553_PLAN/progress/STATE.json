@@ -1,6 +1,6 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "23_SOURCES_SCOPED_INTEGRATED_LITS_VALIDATION_REPAIR_AND_FINAL_THREE_FAMILIES_RUNNING",
+  "status": "28_SOURCES_SCOPED_INTEGRATED_LITS_REPAIR_AND_WVS_RUNNING",
   "active_workers": [
     {
       "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
@@ -15,35 +15,6 @@
       "pid": 52782,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
       "branch": "agent/pyat-pre553-r157-lits",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
-      "launch": "LANE_LAUNCHES.json"
-    },
-    {
-      "task": "ASIAN:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "ASIAN",
-      "source_ids": [
-        "SRC08",
-        "SRC09",
-        "SRC10"
-      ],
-      "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "pid": 52637,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-asian",
-      "branch": "agent/pyat-pre553-r157-asian",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
-      "launch": "LANE_LAUNCHES.json"
-    },
-    {
-      "task": "SOUTH_ASIA:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "SOUTH_ASIA",
-      "source_ids": [
-        "SRC31",
-        "SRC32"
-      ],
-      "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
-      "pid": 52654,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-south-asia",
-      "branch": "agent/pyat-pre553-r157-south-asia",
       "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     },
@@ -72,7 +43,9 @@
     "LATIN_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
     "GSS_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
     "AFRO_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
-    "ARAB_SOURCE_CONFIGURATION_PREPARATION_SCOPED"
+    "ARAB_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
+    "ASIAN_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
+    "SOUTH_ASIA_SOURCE_CONFIGURATION_PREPARATION_SCOPED"
   ],
   "current_goal_anchor": "GOAL.md",
   "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
@@ -163,20 +136,22 @@
     {
       "id": "ASIAN:EVIDENCE",
       "lane": "ASIAN",
-      "state": "RUNNING",
+      "state": "ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
       "process": 52637,
       "inputs": "3c59f8d391915b67cd08dcfa9b5cd4eeca77a4ad",
       "output": "source_pre553_validation/SRC08/LANE_RETURN.json",
-      "next_consumer": "all35 integration/final review"
+      "next_consumer": "all35 integration/final review",
+      "evidence": "ASIAN_INTAKE.json"
     },
     {
       "id": "SOUTH_ASIA:EVIDENCE",
       "lane": "SOUTH_ASIA",
-      "state": "RUNNING",
+      "state": "ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
       "process": 52654,
       "inputs": "3c59f8d391915b67cd08dcfa9b5cd4eeca77a4ad",
       "output": "source_pre553_validation/SRC31/LANE_RETURN.json",
-      "next_consumer": "all35 integration/final review"
+      "next_consumer": "all35 integration/final review",
+      "evidence": "SOUTH_ASIA_INTAKE.json"
     },
     {
       "id": "WVS:EVIDENCE",
@@ -259,5 +234,5 @@
     "targets": "DISK_RESUME_completion_event_targets.json"
   },
   "latin_intake": "LATIN_INTAKE.json",
-  "prepared_sources_scoped_integrated": 23
+  "prepared_sources_scoped_integrated": 28
 }
