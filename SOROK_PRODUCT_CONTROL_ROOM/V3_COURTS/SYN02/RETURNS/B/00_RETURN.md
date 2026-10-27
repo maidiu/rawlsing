@@ -151,8 +151,8 @@ These are **SPECIFICATION_ONLY** unless explicitly marked otherwise.
 
 - **Branch:** `agent/sorok-syn02-b-historical-v3-adaptation-r1`.
 - **Sealed startup:** `cd1f4fd8158c2771d7c565b06ee397a7a60dc779`.
-- **Content commit:** `PENDING_FIRST_PUSH`.
-- **Final remote head:** to be verified from `origin/agent/sorok-syn02-b-historical-v3-adaptation-r1` after push and reported in the final handoff. No self-referential SHA is embedded here.
+- **Content commit:** `e18e59efc5e3acd8b9e0dd7025fed4255ff3f0fd` (the six-file SYN02-B design/evidence commit).
+- **Final remote head:** the branch tip after the metadata-only publication commit, verified from `origin/agent/sorok-syn02-b-historical-v3-adaptation-r1`; the exact readback SHA is reported in the final handoff. No self-referential SHA is embedded here.
 - **Reviewer requirement:** independent source/architecture/science reviewer after the exact return SHA. This return is not self-adopted.
 
 **No implementation. No scientific issuance. No native/source/actor grant. No production merge. STOP.**
