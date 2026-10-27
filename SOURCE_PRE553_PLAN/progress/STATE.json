@@ -1,12 +1,22 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "P0_BLOCKED_PROVIDER_GLOBAL_REGION",
-  "active_workers": [],
+  "status": "P0_RUNNING",
+  "active_workers": [
+    {
+      "task": "P0_FOUNDATION",
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "pid": 5095,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
+      "branch": "agent/pyat-pre553-r157-foundation",
+      "state": "RUNNING",
+      "launch": "P0_LAUNCH.json"
+    }
+  ],
   "heartbeat": "PAUSED",
-  "implementation_started": false,
+  "implementation_started": true,
   "completed_tasks": [],
   "current_goal_anchor": "GOAL.md",
-  "next_action": "User restore Global workspace Privacy setting; then same author P0, followed by ready parallel source lanes. Heartbeat PAUSED.",
+  "next_action": "Intake terminal P0 return; verify actual executable frozen interface, then launch ready independent OpenCode lanes from exact P0 commit and continue integrator P3.",
   "live_goal_objective_verified": true,
   "live_goal_tool_status": "active",
   "resume_authorization": {
@@ -20,11 +30,12 @@
       "id": "P0_FOUNDATION",
       "lane": "integration",
       "phase": "P0",
-      "state": "BLOCKED",
+      "state": "RUNNING",
       "launch": "P0_LAUNCH.json",
-      "dependency": "Existing OpenCode workspace must allow Global region for selected Go model",
-      "output": "No author tool or source/code work executed",
-      "next_action": "After user confirms Global restored, retry same terminal session with corrected v2 CLI and verify actual model/effort/checkout preflight."
+      "process": 5095,
+      "output": "source_pre553_validation/foundation/P0_RETURN.json",
+      "check": "Actual imports/config validator/serialized example/native API mapping/evidence manifest, not report-only; actual preflight verified",
+      "next_consumer": "parallel source lanes and P3 factory"
     }
   ]
 }
