@@ -1,0 +1,94 @@
+{
+  "schema": "PYAT_R157_OWNER_API_MAPPING@1.0.0",
+  "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+  "native_owner": {
+    "module": "rawlsing_next.pre553_source_backed_c11_facade",
+    "class": "GovernedC11Projection",
+    "source_path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+    "sha256": "03b88d258d21c403542756db7316923aa392871442d99294de904b1744da1d01",
+    "git_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "bytes": 35016
+  },
+  "native_validators": [
+    {
+      "module": "rawlsing_next.pre553_source_backed_c11_facade",
+      "callable": "build_validated_source_backed_c11_release_from_stream",
+      "signature": "(stream: ExactPhysicalCellStream, projection: GovernedC11Projection | None)",
+      "use": "P0 fixture and replay-equivalent exact-cell streams"
+    },
+    {
+      "module": "rawlsing_next.pre553_source_backed_c11_facade",
+      "callable": "build_validated_source_backed_c11_release",
+      "signature": "(incidence: PhysicalSourceIncidence, projection: GovernedC11Projection | None, *, batch_size: int = 10000)",
+      "use": "permitted decoded physical incidence in P3/source execution"
+    },
+    {
+      "module": "rawlsing_next.pre553_source_backed_c11_facade",
+      "callable": "build_source_backed_c11_repository",
+      "signature": "(source, projection, *, cache=None, batch_size=10000)",
+      "use": "existing source-backed C11 repository/facade owner"
+    },
+    {
+      "module": "rawlsing_next.pre553_c11_ingest",
+      "callable": "validate_c11_source_release",
+      "signature": "(candidate: C11SourceReleaseCandidate) -> C11LogicalRelease",
+      "use": "native C11 M01-M18 package validation invoked by the facade"
+    }
+  ],
+  "frozen_factory": {
+    "module": "rawlsing_next.source_configuration.factory",
+    "callable": "build_governed_c11_projection",
+    "alias": "construct_governed_c11_projection",
+    "signature": "(config: SourceConfig | Mapping[str, Any], *, source_sha256: str | None = None, row_count: int | None = None) -> GovernedC11Projection",
+    "release_callable": "build_validated_c11_release_from_config",
+    "release_signature": "(config: SourceConfig | Mapping[str, Any], *, stream: ExactPhysicalCellStream | None = None, incidence: PhysicalSourceIncidence | None = None, source_sha256: str | None = None, row_count: int | None = None, batch_size: int = 10000)",
+    "repository_callable": "build_source_backed_c11_repository_from_config",
+    "repository_signature": "(config: SourceConfig | Mapping[str, Any], source: ExactPhysicalCellStream | PhysicalSourceIncidence, *, cache: Any = None, batch_size: int = 10000)"
+  },
+  "projection_field_mapping": {
+    "projection_identity_ref": "authority.projection_identity_ref",
+    "source_artifact_id": "identity.source_artifact_id (original) / R157_FIXTURE:<fixture_id> (fixture)",
+    "expected_source_sha256": "binding.source_sha256; original binding must equal identity.expected_source_sha256",
+    "source_family_id": "identity.source_family_id",
+    "study_product_id": "identity.study_product_id (original) / binding.fixture_provenance.fixture_study_product_id (fixture)",
+    "release_id": "identity.release_id (original) / binding.fixture_provenance.fixture_release_id (fixture)",
+    "instrument_release_id": "identity.instrument_release_id (original) / binding.fixture_provenance.fixture_instrument_release_id (fixture)",
+    "source_snapshot_retention_ref": "identity.source_snapshot_retention_ref (original) / binding.source_snapshot_ref (fixture)",
+    "universes": "universe.universes -> native EmpiricalUniverse constructors",
+    "respondents": "respondents.respondent_key_pattern + binding.row_count -> native RespondentIdentity constructors",
+    "row_bindings": "generated 1..binding.row_count exact RowRespondentBinding values",
+    "questions": "questions -> native QuestionVariableBinding constructors",
+    "response_slots": "response_slots -> native ResponseSlotRule/ResponseValueRule/OccurrenceRule",
+    "coordinate_slots": "coordinate_slots -> native CoordinateSlotRule/CoordinateValueRule",
+    "routing": "routing rules expanded over row_selector -> native RoutingEligibilityFact",
+    "weight_slots": "weight_slots -> native WeightSlotRule/WeightValueRule",
+    "authority_snapshots": "authority.snapshots -> native AuthoritySnapshot constructors",
+    "source_relations": "source_relations.relations -> native SourceUniverseRelation; otherwise explicit distinct default",
+    "predicate_replay": "replay.predicate typed absence (P0 freezes no replay payloads)",
+    "comparator_replay": "replay.comparator typed absence",
+    "discovery_replay": "replay.discovery typed absence",
+    "structural_replay": "replay.structural typed absence",
+    "required_authority_refs": "authority.required_refs",
+    "projection_authority_ref": "authority.projection_authority_ref",
+    "replay_authority_ref": "authority.replay_authority_ref",
+    "tie_order_ref": "authority.tie_order_ref",
+    "replay_protocol_version": "authority.replay_protocol_version",
+    "slot_owner_sets": "slot_owner_sets -> native PhysicalSlotOwnerSet"
+  },
+  "source_read_boundary": {
+    "request_owner": "rawlsing_next.pre553_source_read_admission.SourceReadRequest",
+    "decoder_owner": "rawlsing_next.pre553_source_read_admission.decode_with_source_read_permission",
+    "decoder_implementation": "rawlsing_next.pre553_physical_decoder.decode_sav/decode_dta",
+    "identity_owner": "rawlsing_next.pre553_physical_decoder.PhysicalSourceIncidence",
+    "reader_configuration_frozen_in_config": true,
+    "reader_encoding_transport_state": "P3_PENDING_QUALIFIED_CONFIG_WIRING",
+    "zero_io_before_current_permission": true
+  },
+  "invariants": [
+    "No replacement empirical engine or alternate projection type is accepted by the runtime section.",
+    "Original-source configs may not use a fixture universe, fixture authority, synthetic ZZ/TEST_ONLY/default universe or fixture SHA.",
+    "Fixture configs require a distinct byte identity, explicit nonrespondent provenance and fixture-only authority snapshots.",
+    "The factory constructs respondent/value witnesses only when the physical cell stream is projected; preparation does not pre-invent them.",
+    "Native C11 validation remains the deciding validator; a loader, identity object, refusal or unexecuted recipe is not positive construction."
+  ]
+}

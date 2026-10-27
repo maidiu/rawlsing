@@ -1,0 +1,173 @@
+{
+  "schema": "PYAT_R157_P0_VALIDATION_RESULTS@1.0.0",
+  "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+  "artifact_commit": "94c80cc7d59d0376a0405846074a2ae6523f05f1",
+  "evidence_verification": {
+    "ok": true,
+    "failures": [],
+    "manifest_sha256": "ef04e215b6d669123f355082bd15e0f4a3b38ed045a0e3e38cc2b5432727911a",
+    "counts": {
+      "codebook_only": 401,
+      "codebook_rows": 18276,
+      "exact_relation_joins": 18250,
+      "original_items": 18276,
+      "physical_columns": 18413,
+      "physical_only": 538,
+      "relation_rows_not_imported": 268,
+      "relation_rows_total": 18518,
+      "sources": 35,
+      "unmatched_explicit_ids": 26
+    }
+  },
+  "config_validation": {
+    "ok": true,
+    "validator": "rawlsing_next.source_configuration.schema.validate_source_config",
+    "json_schema": "rawlsing_next/source_configuration/schema/source_configuration.schema.json",
+    "config_path": "source_pre553_validation/foundation/examples/SRC09_q101_fixture.config.json",
+    "config_sha256": "17968eaf280aa2537ba2050e281f71be137e09ae387c52a6b82c9844732e3456",
+    "config_file_sha256": "f69e2ec3bf514da34f1d9e0d60b2cf51e8ac0879655d7a4ad7cec609877359d6"
+  },
+  "native_construction": {
+    "projection_type": "GovernedC11Projection",
+    "projection_module": "rawlsing_next.pre553_source_backed_c11_facade",
+    "native_owner": "rawlsing_next.pre553_source_backed_c11_facade.GovernedC11Projection",
+    "projection_identity_ref": {
+      "kind": "C11_SEMANTIC_PROJECTION",
+      "object_id": "urn:rawlsing:r157:p0:SRC09:q101:p0-fixture",
+      "content_hash": "264bf0e112d87edf3a5e8def4706944fe3b2a98549bc764f8d5474187e761af4"
+    },
+    "expected_source_sha256": "a93b4dab00a2b7cbd559d8a0bb1ca498caaa87f27bd1bd73e9fceb0f2820a491",
+    "respondents": 9,
+    "questions": 1,
+    "response_slots": 1,
+    "coordinate_slots": 1,
+    "weight_slots": 0,
+    "routing_facts": 9,
+    "release_type": "C11LogicalRelease",
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_P0_FIXTURE_RELEASE/SRC09",
+      "content_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f"
+    },
+    "semantic_release_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f",
+    "replay_manifest_ref": {
+      "kind": "C11Internal:ReplayManifest",
+      "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:e55e97a3b2ee5ffcc125f6f37cf246a777d1e159a92cce102d8e609953dc8e9c",
+      "content_hash": "e55e97a3b2ee5ffcc125f6f37cf246a777d1e159a92cce102d8e609953dc8e9c"
+    },
+    "m01_m18_coverage": {
+      "M01": [
+        "EmpiricalUniverse"
+      ],
+      "M02": [
+        "RespondentIdentity"
+      ],
+      "M03": [
+        "QuestionVariableBinding"
+      ],
+      "M04": [
+        "RespondentEvent"
+      ],
+      "M05": [
+        "QuestionVariableBinding",
+        "RespondentEvent"
+      ],
+      "M06": [
+        "RespondentEvent.typed_state"
+      ],
+      "M07": [
+        "RoutingEligibilityFact"
+      ],
+      "M08": [
+        "EmpiricalCoordinateFact"
+      ],
+      "M09": [
+        "WeightMeasureFact|TypedAbsence"
+      ],
+      "M10": [
+        "AuthoritySnapshot"
+      ],
+      "M11": [
+        "SourceUniverseRelation|DISTINCT_BY_DEFAULT"
+      ],
+      "M12": [
+        "RoutingEligibilityFact",
+        "EmpiricalPredicateReplayBinding|TypedAbsence"
+      ],
+      "M13": [
+        "ComparatorReplayBinding|DEFERRED"
+      ],
+      "M14": [
+        "DiscoveryBranchReplayBinding|DEFERRED"
+      ],
+      "M15": [
+        "StructuralAdmissionReplayBinding|NOT_APPLICABLE"
+      ],
+      "M16": [
+        "ReplayManifest"
+      ],
+      "M17": [
+        "AuthoritySnapshot",
+        "ReplayManifest"
+      ],
+      "M18": [
+        "ReplayManifest"
+      ]
+    },
+    "actual": {
+      "response_event_count": 9,
+      "coordinate_fact_count": 9,
+      "routing_fact_count": 9,
+      "response_states": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "MISSING",
+        "DK",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "REFUSAL",
+        "MISSING"
+      ],
+      "canonical_values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "weight_section": "NOT_APPLICABLE",
+      "source_relation_section": "DISTINCT_BY_DEFAULT"
+    },
+    "transport_equivalence": {
+      "stream_release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_P0_FIXTURE_RELEASE/SRC09",
+        "content_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f"
+      },
+      "incidence_release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_P0_FIXTURE_RELEASE/SRC09",
+        "content_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f"
+      },
+      "equal": true
+    }
+  },
+  "fixture_expected_match": true,
+  "original_source_access": {
+    "source_file_opened": false,
+    "source_file_stat_or_hash": false,
+    "respondent_rows_read": 0,
+    "original_workload_issued": false,
+    "note": "P0 reads only committed metadata/authority evidence and the repository-generated fixture."
+  },
+  "commands": [
+    "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_foundation.py -q -o addopts=''",
+    "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_foundation.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_r1.py rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py rawlsing_next/tests/test_pre553_source_read_admission.py rawlsing_next/tests/test_pre553_c11_repository_ingest.py -q -o addopts=''",
+    "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.tools.publish_p0"
+  ]
+}
