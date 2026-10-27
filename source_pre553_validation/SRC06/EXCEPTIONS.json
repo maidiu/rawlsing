@@ -1,0 +1,331 @@
+{
+  "schema": "PYAT_R157_SOURCE_EXCEPTION_LEDGER@1.0.0",
+  "source_id": "SRC06",
+  "source_sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+  "entries": [
+    {
+      "source_id": "SRC06",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "routing.typed_state",
+      "current_value_or_typed_unknown": "UNKNOWN: SOURCE_ROUTING_UNRESOLVED for 337 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. Original rows were not physically expanded for validation.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC06",
+          "content_hash": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC06_PHYSICAL_METADATA.json",
+          "content_hash": "7ef68b14e02d666c468eb63fea21b60e1c66f049da34796f9dc454b7e6b4c9ef"
+        }
+      ],
+      "contradiction_or_missing_fact": "SOURCE_ROUTING_UNRESOLVED for 337 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. Original rows were not physically expanded for validation.",
+      "affected_operation_or_slice": "eligibility/form-conditioned native query",
+      "unaffected_usable_slices": "unconditional source-native response incidence and coordinate binding",
+      "acquisition_fix_owner_and_step": "ARAB lane / P3 integration owner: Recover exact indexed routing/form expressions before claiming eligibility-conditioned scope.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC06",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "respondents.source_native_key_slot",
+      "current_value_or_typed_unknown": "UNKNOWN: No exact decoded source-native respondent key witness exists in preparation; physical row ordinal is the only established key.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC06",
+          "content_hash": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC06_PHYSICAL_METADATA.json",
+          "content_hash": "7ef68b14e02d666c468eb63fea21b60e1c66f049da34796f9dc454b7e6b4c9ef"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact decoded source-native respondent key witness exists in preparation; physical row ordinal is the only established key.",
+      "affected_operation_or_slice": "respondent-key linkage beyond row ordinal",
+      "unaffected_usable_slices": "row-ordinal-scoped source-native construction",
+      "acquisition_fix_owner_and_step": "ARAB lane / P3 integration owner: Supply exact row_native_keys only after a separately permitted decode.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC06",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "supported_scope.supported_form_slice",
+      "current_value_or_typed_unknown": "UNKNOWN: Current physical/codebook evidence contains no form, ballot or administration variable; single-file SAV shape is established.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC06",
+          "content_hash": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC06_PHYSICAL_METADATA.json",
+          "content_hash": "7ef68b14e02d666c468eb63fea21b60e1c66f049da34796f9dc454b7e6b4c9ef"
+        }
+      ],
+      "contradiction_or_missing_fact": "Current physical/codebook evidence contains no form, ballot or administration variable; single-file SAV shape is established.",
+      "affected_operation_or_slice": "form-conditioned or administration-conditioned native query",
+      "unaffected_usable_slices": "source-native response incidence without form conditioning",
+      "acquisition_fix_owner_and_step": "ARAB lane / P3 integration owner: Acquire exact source form/administration evidence before claiming a form-conditioned slice.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC06",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "weight_slots",
+      "current_value_or_typed_unknown": "NOT_DECLARED: The source carries a weight slot, but no exact design/estimand authority or weighted scope is present in current evidence.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC06",
+          "content_hash": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC06_PHYSICAL_METADATA.json",
+          "content_hash": "7ef68b14e02d666c468eb63fea21b60e1c66f049da34796f9dc454b7e6b4c9ef"
+        }
+      ],
+      "contradiction_or_missing_fact": "The source carries a weight slot, but no exact design/estimand authority or weighted scope is present in current evidence.",
+      "affected_operation_or_slice": "population or weighted estimation",
+      "unaffected_usable_slices": "raw-sample source-native response incidence",
+      "acquisition_fix_owner_and_step": "ARAB lane / P3 integration owner: Establish exact weight basis, design, estimand and effective scope before declaring a weighted slice.",
+      "status": "NOT_DECLARED",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC06",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "items.relation.manual_signed_polarity_status",
+      "current_value_or_typed_unknown": "NOT_CERTIFIED_BY_THIS_PREPARATION: Response states and exact source code tokens are bound, but this preparation does not issue a new signed-direction or canonical semantic certification.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC06",
+          "content_hash": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC06_PHYSICAL_METADATA.json",
+          "content_hash": "7ef68b14e02d666c468eb63fea21b60e1c66f049da34796f9dc454b7e6b4c9ef"
+        }
+      ],
+      "contradiction_or_missing_fact": "Response states and exact source code tokens are bound, but this preparation does not issue a new signed-direction or canonical semantic certification.",
+      "affected_operation_or_slice": "signed-direction empirical or structural analysis",
+      "unaffected_usable_slices": "source-native nominal/ordinal response incidence and exact value accounting",
+      "acquisition_fix_owner_and_step": "ARAB lane / later scientific authority owner: Use the original relation certification only at its exact evidenced scope.",
+      "status": "NOT_CERTIFIED_BY_THIS_PREPARATION",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC06",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "supported_scope.original_source_execution",
+      "current_value_or_typed_unknown": "NOT_PERFORMED: Original respondent execution and original workload issuance are a separate permission boundary.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC06",
+          "content_hash": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC06_PHYSICAL_METADATA.json",
+          "content_hash": "7ef68b14e02d666c468eb63fea21b60e1c66f049da34796f9dc454b7e6b4c9ef"
+        }
+      ],
+      "contradiction_or_missing_fact": "Original respondent execution and original workload issuance are a separate permission boundary.",
+      "affected_operation_or_slice": "original empirical execution",
+      "unaffected_usable_slices": "portable configuration and nonrespondent fixture native validation",
+      "acquisition_fix_owner_and_step": "user-authorized execution owner: Issue a separate exact original-source execution grant and qualified reader binding.",
+      "status": "NOT_PERFORMED",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC06",
+      "implementation_id_or_physical_slot": "question_impl.phase0.5391cd50b606af941c4b @ Q860A",
+      "required_native_field": "response_slots[].values (ResponseValueRule.physical_key)",
+      "current_value_or_typed_unknown": "CONTINUOUS_MEASUREMENT_NO_FINITE_NATIVE_DOMAIN: Continuous/list-experiment count field has no declared finite value-label domain; original values were not read, so no non-invented finite response rules exist.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.5391cd50b606af941c4b",
+          "content_hash": "5391cd50b606af941c4bb9f5c34668d80d352f64235d78cff67d73eeac6c6ae1"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.5391cd50b606af941c4b",
+          "content_hash": "5391cd50b606af941c4bb9f5c34668d80d352f64235d78cff67d73eeac6c6ae1"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:Arab Barometer:W5:Q860A",
+          "content_hash": "5523338d643d624b3cdb6328b0c92b26bfd20075862fbfd0c6c8512e7ae5b41f"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC06_PHYSICAL_METADATA.json",
+          "content_hash": "7ef68b14e02d666c468eb63fea21b60e1c66f049da34796f9dc454b7e6b4c9ef"
+        }
+      ],
+      "contradiction_or_missing_fact": "Continuous/list-experiment count field has no declared finite value-label domain; original values were not read, so no non-invented finite response rules exist.",
+      "affected_operation_or_slice": "finite categorical native response construction",
+      "unaffected_usable_slices": "all other included source-native response/coordinate bindings",
+      "acquisition_fix_owner_and_step": "ARAB lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding.",
+      "status": "CONTINUOUS_MEASUREMENT_NO_FINITE_NATIVE_DOMAIN",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC06",
+      "implementation_id_or_physical_slot": "question_impl.phase0.6b7055edebcd5d8e42f9 @ Q860C",
+      "required_native_field": "response_slots[].values (ResponseValueRule.physical_key)",
+      "current_value_or_typed_unknown": "CONTINUOUS_MEASUREMENT_NO_FINITE_NATIVE_DOMAIN: Continuous/list-experiment count field has no declared finite value-label domain; original values were not read, so no non-invented finite response rules exist.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.6b7055edebcd5d8e42f9",
+          "content_hash": "6b7055edebcd5d8e42f955788b8ef5d3ed254fb0b02f1ba2f9c3445b25a8e193"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.6b7055edebcd5d8e42f9",
+          "content_hash": "6b7055edebcd5d8e42f955788b8ef5d3ed254fb0b02f1ba2f9c3445b25a8e193"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:Arab Barometer:W5:Q860C",
+          "content_hash": "1193263eede0986bd659187527ca6999fbbd197ed4a359b3ed49f79fd90524b8"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC06_PHYSICAL_METADATA.json",
+          "content_hash": "7ef68b14e02d666c468eb63fea21b60e1c66f049da34796f9dc454b7e6b4c9ef"
+        }
+      ],
+      "contradiction_or_missing_fact": "Continuous/list-experiment count field has no declared finite value-label domain; original values were not read, so no non-invented finite response rules exist.",
+      "affected_operation_or_slice": "finite categorical native response construction",
+      "unaffected_usable_slices": "all other included source-native response/coordinate bindings",
+      "acquisition_fix_owner_and_step": "ARAB lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding.",
+      "status": "CONTINUOUS_MEASUREMENT_NO_FINITE_NATIVE_DOMAIN",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC06",
+      "implementation_id_or_physical_slot": "question_impl.phase0.ab74a009914cd4d1c7b9 @ Q860D",
+      "required_native_field": "response_slots[].values (ResponseValueRule.physical_key)",
+      "current_value_or_typed_unknown": "CONTINUOUS_MEASUREMENT_NO_FINITE_NATIVE_DOMAIN: Continuous/list-experiment count field has no declared finite value-label domain; original values were not read, so no non-invented finite response rules exist.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.ab74a009914cd4d1c7b9",
+          "content_hash": "ab74a009914cd4d1c7b97ea326112b287c79764d4154fde3983614f50aa1263f"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.ab74a009914cd4d1c7b9",
+          "content_hash": "ab74a009914cd4d1c7b97ea326112b287c79764d4154fde3983614f50aa1263f"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:Arab Barometer:W5:Q860D",
+          "content_hash": "af802209730651945aab804468637400d2460431c9a4cf621e7835b137abb9a3"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC06_PHYSICAL_METADATA.json",
+          "content_hash": "7ef68b14e02d666c468eb63fea21b60e1c66f049da34796f9dc454b7e6b4c9ef"
+        }
+      ],
+      "contradiction_or_missing_fact": "Continuous/list-experiment count field has no declared finite value-label domain; original values were not read, so no non-invented finite response rules exist.",
+      "affected_operation_or_slice": "finite categorical native response construction",
+      "unaffected_usable_slices": "all other included source-native response/coordinate bindings",
+      "acquisition_fix_owner_and_step": "ARAB lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding.",
+      "status": "CONTINUOUS_MEASUREMENT_NO_FINITE_NATIVE_DOMAIN",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC06",
+      "implementation_id_or_physical_slot": "question_impl.phase0.d30bda7b67f372310f48 @ Q860B",
+      "required_native_field": "response_slots[].values (ResponseValueRule.physical_key)",
+      "current_value_or_typed_unknown": "CONTINUOUS_MEASUREMENT_NO_FINITE_NATIVE_DOMAIN: Continuous/list-experiment count field has no declared finite value-label domain; original values were not read, so no non-invented finite response rules exist.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.d30bda7b67f372310f48",
+          "content_hash": "d30bda7b67f372310f48f3d2b1dcacdd84621a7243b32ba9af34c843f4d85d2b"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.d30bda7b67f372310f48",
+          "content_hash": "d30bda7b67f372310f48f3d2b1dcacdd84621a7243b32ba9af34c843f4d85d2b"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:Arab Barometer:W5:Q860B",
+          "content_hash": "061428bcfc70e2a72545fe3dc41341bb4489f6f938e81ae1407ffd972e0706a9"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC06_PHYSICAL_METADATA.json",
+          "content_hash": "7ef68b14e02d666c468eb63fea21b60e1c66f049da34796f9dc454b7e6b4c9ef"
+        }
+      ],
+      "contradiction_or_missing_fact": "Continuous/list-experiment count field has no declared finite value-label domain; original values were not read, so no non-invented finite response rules exist.",
+      "affected_operation_or_slice": "finite categorical native response construction",
+      "unaffected_usable_slices": "all other included source-native response/coordinate bindings",
+      "acquisition_fix_owner_and_step": "ARAB lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding.",
+      "status": "CONTINUOUS_MEASUREMENT_NO_FINITE_NATIVE_DOMAIN",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC06",
+      "implementation_id_or_physical_slot": "question_impl.phase0.f41f8664acf70b48f676 @ wt",
+      "required_native_field": "weight_slots[].design_authority_ref / estimand_authority_ref",
+      "current_value_or_typed_unknown": "WEIGHT_AUTHORITY_NOT_ESTABLISHED: The source carries a weight slot, but current evidence has no exact weight design, estimand or effective-scope authority.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.f41f8664acf70b48f676",
+          "content_hash": "f41f8664acf70b48f676c7f4775154ab3f0974d60c42ef48b7367130a2467a0d"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.f41f8664acf70b48f676",
+          "content_hash": "f41f8664acf70b48f676c7f4775154ab3f0974d60c42ef48b7367130a2467a0d"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:Arab Barometer:W5:wt",
+          "content_hash": "a7dc498e4865a7bbfda492627ae85bc877c75ca0e8b6e3a32ce778de0f6803dd"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC06_PHYSICAL_METADATA.json",
+          "content_hash": "7ef68b14e02d666c468eb63fea21b60e1c66f049da34796f9dc454b7e6b4c9ef"
+        }
+      ],
+      "contradiction_or_missing_fact": "The source carries a weight slot, but current evidence has no exact weight design, estimand or effective-scope authority.",
+      "affected_operation_or_slice": "weighted/population estimation",
+      "unaffected_usable_slices": "all other included source-native response/coordinate bindings",
+      "acquisition_fix_owner_and_step": "ARAB lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding.",
+      "status": "WEIGHT_AUTHORITY_NOT_ESTABLISHED",
+      "resolution_evidence": null
+    }
+  ],
+  "counts": {
+    "entries": 11,
+    "residuals": 11,
+    "excluded_slots": 5,
+    "excluded_items": 5
+  },
+  "limits": [
+    "Exact IDs/slots and evidence are preserved; fixture success is not original authority.",
+    "No generic unselected/future-expansion exception is used."
+  ]
+}

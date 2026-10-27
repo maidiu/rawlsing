@@ -1,0 +1,195 @@
+{
+  "schema": "PYAT_R157_SOURCE_EXCEPTION_LEDGER@1.0.0",
+  "source_id": "SRC05",
+  "source_sha256": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1",
+  "entries": [
+    {
+      "source_id": "SRC05",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "routing.typed_state",
+      "current_value_or_typed_unknown": "UNKNOWN: SOURCE_ROUTING_UNRESOLVED for 448 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. Original rows were not physically expanded for validation.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC05",
+          "content_hash": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC05_PHYSICAL_METADATA.json",
+          "content_hash": "5f0d9d2e3bc6e25878c5424267a319e3d8c86105ccd114c3128eb1113a69a436"
+        }
+      ],
+      "contradiction_or_missing_fact": "SOURCE_ROUTING_UNRESOLVED for 448 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. Original rows were not physically expanded for validation.",
+      "affected_operation_or_slice": "eligibility/form-conditioned native query",
+      "unaffected_usable_slices": "unconditional source-native response incidence and coordinate binding",
+      "acquisition_fix_owner_and_step": "ARAB lane / P3 integration owner: Recover exact indexed routing/form expressions before claiming eligibility-conditioned scope.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC05",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "respondents.source_native_key_slot",
+      "current_value_or_typed_unknown": "UNKNOWN: No exact decoded source-native respondent key witness exists in preparation; physical row ordinal is the only established key.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC05",
+          "content_hash": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC05_PHYSICAL_METADATA.json",
+          "content_hash": "5f0d9d2e3bc6e25878c5424267a319e3d8c86105ccd114c3128eb1113a69a436"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact decoded source-native respondent key witness exists in preparation; physical row ordinal is the only established key.",
+      "affected_operation_or_slice": "respondent-key linkage beyond row ordinal",
+      "unaffected_usable_slices": "row-ordinal-scoped source-native construction",
+      "acquisition_fix_owner_and_step": "ARAB lane / P3 integration owner: Supply exact row_native_keys only after a separately permitted decode.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC05",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "supported_scope.supported_form_slice",
+      "current_value_or_typed_unknown": "UNKNOWN: Current physical/codebook evidence contains no form, ballot or administration variable; single-file SAV shape is established.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC05",
+          "content_hash": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC05_PHYSICAL_METADATA.json",
+          "content_hash": "5f0d9d2e3bc6e25878c5424267a319e3d8c86105ccd114c3128eb1113a69a436"
+        }
+      ],
+      "contradiction_or_missing_fact": "Current physical/codebook evidence contains no form, ballot or administration variable; single-file SAV shape is established.",
+      "affected_operation_or_slice": "form-conditioned or administration-conditioned native query",
+      "unaffected_usable_slices": "source-native response incidence without form conditioning",
+      "acquisition_fix_owner_and_step": "ARAB lane / P3 integration owner: Acquire exact source form/administration evidence before claiming a form-conditioned slice.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC05",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "weight_slots",
+      "current_value_or_typed_unknown": "NOT_DECLARED: The source carries a weight slot, but no exact design/estimand authority or weighted scope is present in current evidence.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC05",
+          "content_hash": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC05_PHYSICAL_METADATA.json",
+          "content_hash": "5f0d9d2e3bc6e25878c5424267a319e3d8c86105ccd114c3128eb1113a69a436"
+        }
+      ],
+      "contradiction_or_missing_fact": "The source carries a weight slot, but no exact design/estimand authority or weighted scope is present in current evidence.",
+      "affected_operation_or_slice": "population or weighted estimation",
+      "unaffected_usable_slices": "raw-sample source-native response incidence",
+      "acquisition_fix_owner_and_step": "ARAB lane / P3 integration owner: Establish exact weight basis, design, estimand and effective scope before declaring a weighted slice.",
+      "status": "NOT_DECLARED",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC05",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "items.relation.manual_signed_polarity_status",
+      "current_value_or_typed_unknown": "NOT_CERTIFIED_BY_THIS_PREPARATION: Response states and exact source code tokens are bound, but this preparation does not issue a new signed-direction or canonical semantic certification.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC05",
+          "content_hash": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC05_PHYSICAL_METADATA.json",
+          "content_hash": "5f0d9d2e3bc6e25878c5424267a319e3d8c86105ccd114c3128eb1113a69a436"
+        }
+      ],
+      "contradiction_or_missing_fact": "Response states and exact source code tokens are bound, but this preparation does not issue a new signed-direction or canonical semantic certification.",
+      "affected_operation_or_slice": "signed-direction empirical or structural analysis",
+      "unaffected_usable_slices": "source-native nominal/ordinal response incidence and exact value accounting",
+      "acquisition_fix_owner_and_step": "ARAB lane / later scientific authority owner: Use the original relation certification only at its exact evidenced scope.",
+      "status": "NOT_CERTIFIED_BY_THIS_PREPARATION",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC05",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "supported_scope.original_source_execution",
+      "current_value_or_typed_unknown": "NOT_PERFORMED: Original respondent execution and original workload issuance are a separate permission boundary.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC05",
+          "content_hash": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC05_PHYSICAL_METADATA.json",
+          "content_hash": "5f0d9d2e3bc6e25878c5424267a319e3d8c86105ccd114c3128eb1113a69a436"
+        }
+      ],
+      "contradiction_or_missing_fact": "Original respondent execution and original workload issuance are a separate permission boundary.",
+      "affected_operation_or_slice": "original empirical execution",
+      "unaffected_usable_slices": "portable configuration and nonrespondent fixture native validation",
+      "acquisition_fix_owner_and_step": "user-authorized execution owner: Issue a separate exact original-source execution grant and qualified reader binding.",
+      "status": "NOT_PERFORMED",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC05",
+      "implementation_id_or_physical_slot": "question_impl.phase0.f8afb49b444a76513a69 @ wt",
+      "required_native_field": "weight_slots[].design_authority_ref / estimand_authority_ref",
+      "current_value_or_typed_unknown": "WEIGHT_AUTHORITY_NOT_ESTABLISHED: The source carries a weight slot, but current evidence has no exact weight design, estimand or effective-scope authority.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.f8afb49b444a76513a69",
+          "content_hash": "f8afb49b444a76513a69c352aac4038d1eb8671c1118171ba02be5fdf0644de0"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.f8afb49b444a76513a69",
+          "content_hash": "f8afb49b444a76513a69c352aac4038d1eb8671c1118171ba02be5fdf0644de0"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:Arab Barometer:W2:wt",
+          "content_hash": "5c1b8347d3082fa3bcf25e2bc9395ad462c29b2875d21f1cacd5307e41c6b4b4"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC05_PHYSICAL_METADATA.json",
+          "content_hash": "5f0d9d2e3bc6e25878c5424267a319e3d8c86105ccd114c3128eb1113a69a436"
+        }
+      ],
+      "contradiction_or_missing_fact": "The source carries a weight slot, but current evidence has no exact weight design, estimand or effective-scope authority.",
+      "affected_operation_or_slice": "weighted/population estimation",
+      "unaffected_usable_slices": "all other included source-native response/coordinate bindings",
+      "acquisition_fix_owner_and_step": "ARAB lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding.",
+      "status": "WEIGHT_AUTHORITY_NOT_ESTABLISHED",
+      "resolution_evidence": null
+    }
+  ],
+  "counts": {
+    "entries": 7,
+    "residuals": 7,
+    "excluded_slots": 1,
+    "excluded_items": 1
+  },
+  "limits": [
+    "Exact IDs/slots and evidence are preserved; fixture success is not original authority.",
+    "No generic unselected/future-expansion exception is used."
+  ]
+}
