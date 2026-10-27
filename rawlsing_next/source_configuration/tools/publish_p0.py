@@ -311,10 +311,11 @@ def main() -> int:
             "id": "P3_READER_AND_ORIGINAL_BINDING",
             "depends_on": "P0_RETURN",
             "constructor_frozen": True,
-            "exact": "In P3, wire config.identity.reader through the existing source-read/decoder path without changing the frozen P0 projection factory signature, then bind original-source configs to the actual source-read owner. The only code seam is the qualified exact-SHA reader configuration (currently decode_with_source_read_permission does not accept the configured encoding) plus the lane configs that replace fixture-only snapshots/bindings with source-grounded authority and routing. Do not add a replacement engine or change the native validator.",
+            "exact": "In P3, wire config.identity.reader through the existing source-read/decoder path without changing the frozen P0 projection factory signature, then bind original-source configs to the actual source-read owner. The code seams are the qualified exact-SHA reader configuration (currently decode_with_source_read_permission does not accept the configured encoding) and call-time binding of respondents.source_native_key_slot/actual row keys when the source provides them; P0 deliberately preserves TypedAbsence(UNKNOWN) rather than inventing a native key. Lane configs replace fixture-only snapshots/bindings with source-grounded authority and routing. Do not add a replacement engine or change the native validator.",
             "required_code_changes": [
                 "Extend the existing pre553_source_read_admission transport with the validated exact-SHA encoding/config argument only; preserve zero-I/O-before-current-permission and post-decode decision/edition checks.",
                 "Use the frozen factory signature to construct original-source projections from lane configs and permitted PhysicalSourceIncidence.",
+                "At call time, bind the configured source_native_key_slot/actual row key values into RespondentIdentity where the source supplies them; keep TypedAbsence when the key is genuinely unavailable.",
                 "Retain the fixture-only config as a distinct validation input; never promote fixture authority or fixture SHA into original identity.",
             ],
             "done_check": "Original-source lane configs are schema-valid, all slot/item coverage is accounted, the qualified reader config is transported, and actual native C11 validation succeeds for the declared supported scope or records an exact dependent refusal.",
