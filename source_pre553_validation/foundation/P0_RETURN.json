@@ -5,7 +5,7 @@
   "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
   "branch": "agent/pyat-pre553-r157-foundation",
   "base_commit": "94c80cc7d59d0376a0405846074a2ae6523f05f1",
-  "artifact_commit": "2d303cf48ee7952217f3637b395c56fb88663ecc",
+  "artifact_commit": "3a184d01d3fef86491d75639d3b03cad4c69563c",
   "integration_branch": "agent/pyat-source-pre553-r157",
   "frozen_interface": {
     "config_schema_id": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
@@ -543,10 +543,11 @@
     "id": "P3_READER_AND_ORIGINAL_BINDING",
     "depends_on": "P0_RETURN",
     "constructor_frozen": true,
-    "exact": "In P3, wire config.identity.reader through the existing source-read/decoder path without changing the frozen P0 projection factory signature, then bind original-source configs to the actual source-read owner. The only code seam is the qualified exact-SHA reader configuration (currently decode_with_source_read_permission does not accept the configured encoding) plus the lane configs that replace fixture-only snapshots/bindings with source-grounded authority and routing. Do not add a replacement engine or change the native validator.",
+    "exact": "In P3, wire config.identity.reader through the existing source-read/decoder path without changing the frozen P0 projection factory signature, then bind original-source configs to the actual source-read owner. The code seams are the qualified exact-SHA reader configuration (currently decode_with_source_read_permission does not accept the configured encoding) and call-time binding of respondents.source_native_key_slot/actual row keys when the source provides them; P0 deliberately preserves TypedAbsence(UNKNOWN) rather than inventing a native key. Lane configs replace fixture-only snapshots/bindings with source-grounded authority and routing. Do not add a replacement engine or change the native validator.",
     "required_code_changes": [
       "Extend the existing pre553_source_read_admission transport with the validated exact-SHA encoding/config argument only; preserve zero-I/O-before-current-permission and post-decode decision/edition checks.",
       "Use the frozen factory signature to construct original-source projections from lane configs and permitted PhysicalSourceIncidence.",
+      "At call time, bind the configured source_native_key_slot/actual row key values into RespondentIdentity where the source supplies them; keep TypedAbsence when the key is genuinely unavailable.",
       "Retain the fixture-only config as a distinct validation input; never promote fixture authority or fixture SHA into original identity."
     ],
     "done_check": "Original-source lane configs are schema-valid, all slot/item coverage is accounted, the qualified reader config is transported, and actual native C11 validation succeeds for the declared supported scope or records an exact dependent refusal.",
@@ -558,7 +559,7 @@
   },
   "validation": {
     "results_path": "source_pre553_validation/foundation/VALIDATION_RESULTS.json",
-    "results_sha256": "1c34d5de0952225ef384e7a5680e16f0b25da5d86cc5f5b2f87b9397bce1b065",
+    "results_sha256": "b355108ae080daeba17866542fed56ae182b2e57841013ab732feea80421bcd7",
     "focus_test_result": "11 passed focused; 55 passed focused+owner regression",
     "commands": [
       "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_foundation.py -q -o addopts=''",
@@ -664,8 +665,8 @@
     },
     {
       "path": "rawlsing_next/source_configuration/tools/publish_p0.py",
-      "sha256": "22968228c388be3d2d56de3da0f3adf09b30e4d20139f321c9bf4129fc2b6c43",
-      "bytes": 19751
+      "sha256": "21fbb2e9d4b9504245c4453e2399c824c497a38881bcb1f0f8049dc75f761fd2",
+      "bytes": 20136
     },
     {
       "path": "rawlsing_next/source_configuration/validator.py",
@@ -689,7 +690,7 @@
     },
     {
       "path": "source_pre553_validation/foundation/VALIDATION_RESULTS.json",
-      "sha256": "1c34d5de0952225ef384e7a5680e16f0b25da5d86cc5f5b2f87b9397bce1b065",
+      "sha256": "b355108ae080daeba17866542fed56ae182b2e57841013ab732feea80421bcd7",
       "bytes": 5898
     },
     {
