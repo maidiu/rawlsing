@@ -1,14 +1,15 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "P0_FROZEN_THREE_SOURCE_LANES_RUNNING",
+  "status": "P3_AND_THREE_SOURCE_LANES_RUNNING",
   "active_workers": [
     {
-      "task": "P0_FINAL_RETURN",
+      "task": "P3_FACTORY_READY",
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "pid": 5095,
+      "pid": 17591,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
-      "state": "RUNNING_FINISHING_RETURN",
-      "launch": "P0_LAUNCH.json"
+      "branch": "agent/pyat-pre553-r157-foundation",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "P3_LAUNCH.json"
     },
     {
       "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
@@ -65,10 +66,10 @@
   "heartbeat": "PAUSED",
   "implementation_started": true,
   "completed_tasks": [
-    "P0_FOUNDATION_SCOPED_INTERFACE"
+    "P0_FOUNDATION"
   ],
   "current_goal_anchor": "GOAL.md",
-  "next_action": "Existing integrator finishes P0 return/corrections, then P3; intake ready source lane terminal returns and launch next independent lanes within max4.",
+  "next_action": "Intake terminal P3/source-lane returns and advance independent remaining families within max4; final all35 review/acceptance still required.",
   "live_goal_objective_verified": true,
   "live_goal_tool_status": "active",
   "resume_authorization": {
@@ -113,8 +114,18 @@
       "output": "source_pre553_validation/SRC27/LANE_RETURN.json",
       "check": "Full prior source facts consumed; ordered source queue then actual native fixture positives; exact residuals",
       "next_consumer": "integration/P3/final review"
+    },
+    {
+      "id": "P3_FACTORY_READY",
+      "lane": "integration",
+      "state": "RUNNING",
+      "process": 17591,
+      "inputs": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
+      "output": "source_pre553_validation/integration/P3_RETURN.json",
+      "check": "Qualified reader/key binding, actual native positive/refusal/restore, minimal R154 stub delegation; no original respondent/workload execution",
+      "next_consumer": "source lanes and final integration"
     }
   ],
-  "frozen_p0": "328e394e871ea09289c7023d3fb54b3f030d8481",
+  "frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
   "p0_intake": "P0_INTAKE.json"
 }
