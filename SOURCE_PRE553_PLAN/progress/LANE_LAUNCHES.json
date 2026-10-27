@@ -487,23 +487,32 @@
     "task": "P5_PORTABLE_DELIVERY_IMPLEMENTATION",
     "source_ids": [],
     "session": "ses_e98c905cbffekusoHURfKyEUKG",
-    "supervisor_pid": 54988,
+    "supervisor_pid": 58619,
     "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
     "branch": "agent/pyat-pre553-r157-integration",
-    "startup": "89035bd8cde6c21d8f6e6c6cb70fb394fdad2dcc",
+    "startup": "cde6bac08a4d3b74da8e7824335eaa8ffb693b78",
     "model": "opencode-go/deepseek-v4.1-flash",
     "variant": "max",
-    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation/.r61/r157-p5-portable",
-    "prompt_sha256": "f759ec34e4d5a22ec366f697877f33261bfc10763bdab2cab6d9795d9fcabe63",
-    "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation/.r61/r157-p5-case-repair",
+    "prompt_sha256": "10b62153c9f49dc275ee4f44d54d319b14cc0df3dcabb11e8084122962c048ff",
+    "state": "RUNNING_PATH_CASE_REPAIR_PREFLIGHT_VERIFIED",
     "expected_return": "source_pre553_validation/integration/P5_RETURN.json",
-    "actual_pid": 54991,
     "actual_model_readback": {
       "id": "deepseek-v4.1-flash",
       "providerID": "opencode-go",
       "variant": "max"
     },
-    "actual_tool_preflight": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation\nhttps://github.com/maidiu/rawlsing.git\nagent/pyat-pre553-r157-integration\n89035bd8cde6c21d8f6e6c6cb70fb394fdad2dcc\n/dev/disk1s1  466Gi  434Gi   15Gi    97% 2588408 156550680    2%   /System/Volumes/Data\n",
-    "completion_observer_pid": 55097
+    "actual_tool_preflight": "[\n  {\n    \"source\": \"SRC27\",\n    \"field\": \"native_results_path\",\n    \"indexed\": \"source_pre553_validation/SRC27/VALIDATION_RESULTS.json\",\n    \"tracked\": [\n      \"source_pre553_validation/SRC27/validation_results.json\"\n    ]\n  },\n  {\n    \"source\": \"SRC27\",\n    \"field\": \"original_config_path\",\n    \"indexed\": \"rawlsing_next/source_configuration/data/SRC27/SRC27.config.json\",\n    \"tracked\": [\n      \"rawlsing_next/source_configuration/data/SRC27/src27.config.json\"\n    ]\n  },\n  {\n    \"source\": \"SRC28\",\n    \"field\": \"native_results_path\",\n    \"indexed\": \"source_pre553_validation/SRC28/VALIDATION_RESULTS.json\",\n    \"tracked\": [\n      \"source_pre553_validation/SRC28/validation_results.json\"\n    ]\n  },\n  {\n    \"source\": \"SRC28\",\n    \"field\": \"original_config_path\",\n    \"indexed\": \"rawlsing_next/source_configuration/data/SRC28/SRC28.config.json\",\n    \"tracked\": [\n      \"rawlsing_next/source_configuration/data/SRC28/src28.config.json\"\n    ]\n  },\n  {\n    \"source\": \"SRC29\",\n    \"field\": \"native_results_path\",\n    \"indexed\": \"source_pre553_validation/SRC29/VALIDATION_RESULTS.json\",\n    \"tracked\": [\n      \"source_pre553_validation/SRC29/validation_results.json\"\n    ]\n  },\n  {\n    \"source\": \"SRC29\",\n    \"field\": \"original_config_path\",\n    \"indexed\": \"rawlsing_next/source_configuration/data/SRC29/SRC29.config.json\",\n    \"tracked\": [\n      \"rawlsing_next/source_configuration/data/SRC29/src29.config.json\"\n    ]\n  },\n  {\n    \"source\": \"SRC30\",\n    \"field\": \"native_results_path\",\n    \"indexed\": \"source_pre553_validation/SRC30/VALIDATION_RESULTS.json\",\n    \"tracked\": [\n      \"source_pre553_validation/SRC30/validation_results.json\"\n    ]\n  },\n  {\n    \"source\": \"SRC30\",\n    \"field\": \"original_config_path\",\n    \"indexed\": \"rawlsing_next/source_configuration/data/SRC30/SRC30.config.json\",\n    \"tracked\": [\n      \"rawlsing_next/source_configuration/data/SRC30/src30.config.json\"\n    ]\n  }\n]\n",
+    "completion_observer_pid": 58663,
+    "prior_attempts": [
+      {
+        "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation/.r61/r157-p5-portable",
+        "pid": 54991,
+        "exit_code": 0,
+        "candidate": "cde6bac08a4d3b74da8e7824335eaa8ffb693b78",
+        "intake": "P5_INTAKE.json"
+      }
+    ],
+    "actual_pid": 58620
   }
 ]

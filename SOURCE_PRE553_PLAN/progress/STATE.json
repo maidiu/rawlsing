@@ -1,6 +1,6 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "32_SOURCES_SCOPED_INTEGRATED_WVS_AND_PORTABLE_DELIVERY_RUNNING",
+  "status": "32_SOURCES_INTEGRATED_WVS_RUNNING_P5_EXACT_PATH_PORTABILITY_REPAIR",
   "active_workers": [
     {
       "task": "WVS:SOURCE_CONFIGURATION_QUEUE",
@@ -22,10 +22,10 @@
       "lane": "P5",
       "source_ids": [],
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "pid": 54991,
+      "pid": 58620,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
       "branch": "agent/pyat-pre553-r157-integration",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "state": "RUNNING_PATH_CASE_REPAIR_PREFLIGHT_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     }
   ],
@@ -160,11 +160,12 @@
     },
     {
       "id": "P5_PORTABLE_IMPLEMENTATION",
-      "state": "RUNNING_PARTIAL_INPUTS_28_OF_35",
-      "process": 54991,
+      "state": "EXACT_CASE_PORTABILITY_REPAIR_RUNNING",
+      "process": 58620,
       "inputs": "89035bd8cde6c21d8f6e6c6cb70fb394fdad2dcc",
       "output": "source_pre553_validation/integration/P5_RETURN.json",
-      "next_consumer": "Final all35 join after LiTS/WVS qualified inputs; distinct review"
+      "next_consumer": "Final all35 join after LiTS/WVS qualified inputs; distinct review",
+      "evidence": "P5_INTAKE.json"
     }
   ],
   "frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
@@ -223,6 +224,11 @@
         "pid": 55097,
         "targets": "P5_PORTABLE_completion_event_targets.json",
         "mode": "OS_EVENTS_NO_TIMED_POLLING"
+      },
+      {
+        "pid": 58663,
+        "targets": "P5_CASE_REPAIR_completion_event_targets.json",
+        "mode": "OS_EVENTS_NO_TIMED_POLLING"
       }
     ]
   },
@@ -243,5 +249,6 @@
     "targets": "DISK_RESUME_completion_event_targets.json"
   },
   "latin_intake": "LATIN_INTAKE.json",
-  "prepared_sources_scoped_integrated": 32
+  "prepared_sources_scoped_integrated": 32,
+  "p5_intake": "P5_INTAKE.json"
 }
