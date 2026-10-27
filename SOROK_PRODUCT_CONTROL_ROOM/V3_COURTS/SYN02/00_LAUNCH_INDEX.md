@@ -1,20 +1,10 @@
-# SYN02 — four complete architecture returns; two independent reviews banked
+# SYN02 — reviewed research flight complete; synthesis dependent
 
-**2026-10-27 status: A, B, C, D all returned on independent sealed branches; four author reports and sixteen substantive design artifacts verified.** Authors have not self-adopted. The two independent reviewers below are PREPARED but **NOT LAUNCHED**; the final integrated SYN02-S begins after their exact verified return SHAs.
+**Six of six research/review returns are remotely verified:** A `b47742b02b9ea1b969798f9e9655222a5deaf397`, B `d8f8b4f7610a4a28d86cf6d0c08f5d297d74d6e3`, C `d99ebb98aa875d79af023f1bfa11f3054ac49684`, D `f904955e1c6f4db2d7fdebf8d2a6b78029274a5f`, RA `7991454bf78060d3bca0aa1bfe4296bded230735`, RB `57f03f75f5ad92c35d23d81a70ae37d23800f7cf`.
 
-Read [four-return intake](02_FOUR_RETURN_EVIDENCE_INTAKE_R1.md) and [cross-track architecture conflict ledger](03_ARCHITECTURE_CONFLICT_AND_COMPATIBILITY_LEDGER_R1.md) before returning to original commissions.
+- [Exact RA/RB reviewed intake](04_RA_RB_INDEPENDENT_REVIEWS_DISPOSITION_R1.md).
+- [Source- and science-corrected architectural decisions needed](05_REVIEWED_ARCHITECTURE_COLLISION_DOCKET_R2.md).
+- [Earlier four author intake](02_FOUR_RETURN_EVIDENCE_INTAKE_R1.md) and [alternatives matrix](03_ARCHITECTURE_CONFLICT_AND_COMPATIBILITY_LEDGER_R1.md).
+- [SYN01 R2 eight-court historical baseline](../15_SYN01_R2_EIGHT_COURT_EVIDENCE_CLOSEOUT_R1.md).
 
-| Author | Theme | Exact immutable head |
-|---|---|---|
-| A | Whole-person needs-first architecture | `b47742b02b9ea1b969798f9e9655222a5deaf397` |
-| B | 40 historical V3 mechanisms and migration | `d8f8b4f7610a4a28d86cf6d0c08f5d297d74d6e3` |
-| C | Individual-specific contingent inter-wiring | `d99ebb98aa875d79af023f1bfa11f3054ac49684` |
-| D | Actual C12-backward current source and N/N+1 execution | `f904955e1c6f4db2d7fdebf8d2a6b78029274a5f` |
-
-**RA** independent whole-person/inter-wiring scientific architectural reviewer, [complete commission](REVIEW_COURTS/COMMISSIONS/RA/00_COMMISSION.md). Proposed Browser GPT-6 High. **RB** independent source/migration/current C12 execution reviewer, [complete commission](REVIEW_COURTS/COMMISSIONS/RB/00_COMMISSION.md). Proposed DeepSeek V4.1-Flash MAX local (editor user selects).
-
-Reviews target all four complete author bodies and authored 01–04 documents. RA and RB have disjoint sole return directories. No extra native review or implementation may be inferred. **SYN02-S** dependent integration adjudicates hybrid alternatives and source-function REUSE/ADAPT/REPLACE/REMOVE, storage/owners and maximal lawful software tranche. It does not invent Rule A/T, private new graphs, independent B source or Pyat weld.
-
-USER PRODUCT DIRECTION: architecture/adaptation **before** E1→E2 test-led building; qualified emergent functional relations/composite operations may develop contingent on a person’s lived activity, but graph-learning remains scientifically open; fixed-context/external-support/no-change alternatives remain allowed. User-settled 3–5-event N/N+1 is binding, no extra ordinary per-event LLM calls.
-
-Existing foundation remains isolated draft PR #509. No worker automatically started by commission publication.
+**NEXT:** SYN02-S independent whole-machine integration, exact source-level legacy adaptation and coherent current C12 backward architecture; original Rule A/T/SCI05 and real independent B/actor/Pyat grants remain separate; no production implementation. Research coverage is not native/person acceptance. SYN02-S commissioned/banked, user selects actual editor/model before agent launch; post-synthesis hostile reviewer required.
