@@ -1,0 +1,38 @@
+{
+  "repair_candidate": "009a3459b0e2ad392b0ff765be527e10cb8a7ff8",
+  "hq_manifest_hashes_verified": 17,
+  "hq_focused_tests": "7 passed in1.29s",
+  "workers": [
+    {
+      "task": "CAMPAIGN_A1_SRC04_FOCUSED_RECHECK",
+      "session": "ses_e81fc42a8ffeAbvo6M8l4YG4nK",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/campaign-a-src04-review",
+      "log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/campaign-a-src04-review/.r61/campaign-a-src04-recheck",
+      "supervisor": 10788,
+      "pid": 10792,
+      "started_utc": "2026-10-27T21:11:15.941452+00:00",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/campaign-a-src04-review/.r61/campaign-a-src04-recheck/completion.json",
+      "provider": "opencode-go",
+      "model": "deepseek-v4.1-flash",
+      "variant": "max",
+      "heartbeat": "PAUSED",
+      "state": "RUNNING_FIRST_TOOL_PREFLIGHT_PENDING"
+    },
+    {
+      "task": "CAMPAIGN_B0_SRC04_CONSUMER_PREPARATION",
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/campaign-b0-src04-consumer",
+      "log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/campaign-b0-src04-consumer/.r61/campaign-b0-src04",
+      "supervisor": 10789,
+      "pid": 10793,
+      "started_utc": "2026-10-27T21:11:15.942811+00:00",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/campaign-b0-src04-consumer/.r61/campaign-b0-src04/completion.json",
+      "provider": "opencode-go",
+      "model": "deepseek-v4.1-flash",
+      "variant": "max",
+      "heartbeat": "PAUSED",
+      "state": "RUNNING_FIRST_TOOL_PREFLIGHT_PENDING"
+    }
+  ],
+  "dependency": "B0 metadata/fixture preparation does not depend on A1 custody recheck; original empirical execution held"
+}
