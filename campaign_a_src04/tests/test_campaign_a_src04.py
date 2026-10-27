@@ -2,11 +2,18 @@
 from __future__ import annotations
 
 import hashlib
+import json
 from pathlib import Path
 
 from rawlsing_next.source_configuration.schema import load_source_config
 
 from campaign_a_src04 import run_campaign_a_src04 as runner
+
+
+def test_program_evidence_copy_is_pinned():
+    assert runner.PROGRAM_PATH.is_file()
+    assert runner.PROGRAM_PATH.parent.name == "evidence"
+    assert hashlib.sha256(runner.PROGRAM_PATH.read_bytes()).hexdigest() == runner.EXPECTED_PROGRAM_SHA256
 
 
 def test_committed_grant_is_the_pinned_human_grant():
@@ -76,3 +83,32 @@ def test_slice_builder_withholds_canonical_values_without_mutating_source_config
     original = load_source_config(runner.CONFIG_PATH)
     assert any(value.get("canonical_value") is not None
                for slot in original.document["response_slots"] for value in slot["values"])
+
+def test_load_grant_and_wrong_source_never_touch_source_before_admission(monkeypatch):
+    grant_document = json.loads(runner.COMMITTED_GRANT_PATH.read_text(encoding="utf-8"))
+    source_path = str(Path(grant_document["source_path"]))
+    source_stats: list[str] = []
+    source_hashes: list[str] = []
+    original_is_file = Path.is_file
+    original_sha = runner.sha_file
+
+    def guarded_is_file(self):
+        if str(self) == source_path:
+            source_stats.append(str(self))
+        return original_is_file(self)
+
+    def guarded_sha(path):
+        if str(Path(path)) == source_path:
+            source_hashes.append(str(path))
+        return original_sha(path)
+
+    monkeypatch.setattr(Path, "is_file", guarded_is_file)
+    monkeypatch.setattr(runner, "sha_file", guarded_sha)
+    config = load_source_config(runner.CONFIG_PATH)
+    grant = runner.load_grant()
+    result = runner.wrong_source_negative(config, grant)
+    assert result["status"] == "REFUSED"
+    assert result["source_read_performed"] is False
+    assert result["before_source_io"] is True
+    assert source_stats == []
+    assert source_hashes == []

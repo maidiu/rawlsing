@@ -17,9 +17,11 @@ PYTHONPATH=. python3 campaign_a_src04/run_campaign_a_src04.py --mode return \
   --artifact-commit <code-commit>
 ```
 
-Expected primary result: a `C11LogicalRelease` for the selected 42-slot /
-2-coordinate slice, 7,337 source rows, with no canonical values emitted and no
-weight facts. Expected negatives:
+The governing program is the committed pinned copy
+`campaign_a_src04/evidence/PROGRAM.txt`; no author-private control path is required
+for the focused tests or runner resolution. Expected primary result: a
+`C11LogicalRelease` for the selected 42-slot / 2-coordinate slice, 7,337 source
+rows, with no canonical values emitted and no weight facts. Expected negatives:
 
 - wrong source decision -> `SOURCE_READ_SOURCE_SHA256_MISMATCH` before source I/O
 - full configured release -> exact unbound observed-value refusal
