@@ -1324,8 +1324,17 @@ def run_return(artifact_commit: str) -> int:
             "additional_source_reads": "NONE",
             "other_holds_unchanged": True,
         },
+        "process_deviations": [
+            {
+                "id": "PRE_ADMISSION_METADATA_LISTING",
+                "detail": "During pre-implementation inspection an exploratory shell `ls -la` displayed the authorized source file size/mtime before the admission-first runner existed. No source bytes were opened, read, hashed or decoded outside admission; the actual source read was resolver-first and SHA-checked by the existing decoder.",
+                "affected_native_result": "NONE_KNOWN",
+                "disclosed_for_audit": True,
+            }
+        ],
         "limits": [
             "This is an original SRC17 source-native C11 construction over the largest observed-cell-qualified configured slice; it is not an I03/I05 workload or population estimate.",
+            "A pre-implementation exploratory `ls -la` metadata listing of the authorized path occurred before admission; no source bytes were opened/read/hashed outside admission, and the actual read was resolver-first/SHA-checked.",
             "Original respondent cells and row-wise C11 products remain in the local runtime bundle outside Git.",
             "Canonical authority remains DEFER; no canonical semantic ALLOW is issued.",
             "ROUTING_UNKNOWN and weight-design held premises are preserved.",
