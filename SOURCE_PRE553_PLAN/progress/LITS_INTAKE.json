@@ -1,8 +1,100 @@
 {
   "candidate": "941072526c831a992d21bffe5a0712f0f52b87f1",
   "terminal_pid": 35733,
-  "decision": "REVISE_NATIVE_VALIDATION_SCOPE_SAME_OWNER",
+  "decision": "ACCEPTED_SCOPED_CONFIGURATION_PREPARATION_WITH_EXACT_HELD_PREMISES",
   "preserved_positive": "Representative fixture releases reproduced; native source configurations and 4434-slot/item evidence retained",
   "defect": "A11 requires declared supported scopes native validated. Original config prepared questions280/542/1165/1073, fixture questions3/2/3/3; native positive proves representative tiny slices only. Original projection metadata/recipe without physical-cell input does not close the remaining positive construction scope.",
-  "required_next": "Use existing configured bindings to generate clearly separate full supported-scope permitted nonrespondent fixtures, real native releases, exact expected assertions/counts; no original execution, no synthetic original metadata, no general investigation."
+  "required_next": "Use existing configured bindings to generate clearly separate full supported-scope permitted nonrespondent fixtures, real native releases, exact expected assertions/counts; no original execution, no synthetic original metadata, no general investigation.",
+  "accepted_candidate": "c868cc7312245ed90f7168bbbed8212cb5287f84",
+  "artifact_commit": "20d25bfb214c249f23c7fa20d524fab0c91f11f2",
+  "remote_verified": true,
+  "file_hashes_verified": 28,
+  "hq_native_replay": [
+    {
+      "source": "SRC27",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC27/FULL_SUPPORTED",
+        "content_hash": "607a9c8fd5859ec07153e1152e5d41c6ef5770c14df9890a5f0d11926f84d9d6"
+      },
+      "fixture_questions": 128,
+      "fixture_response_slots": 128,
+      "counts": {
+        "AuthoritySnapshot": 7,
+        "EmpiricalCoordinateFact": 15,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 640,
+        "RoutingEligibilityFact": 640
+      }
+    },
+    {
+      "source": "SRC28",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC28/FULL_SUPPORTED",
+        "content_hash": "acf10f86334c2ee8654e43a8545f930b61295d7966c3a719c53c982723f02db7"
+      },
+      "fixture_questions": 315,
+      "fixture_response_slots": 315,
+      "counts": {
+        "AuthoritySnapshot": 7,
+        "EmpiricalCoordinateFact": 10,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 1575,
+        "RoutingEligibilityFact": 1575
+      }
+    },
+    {
+      "source": "SRC29",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC29/FULL_SUPPORTED",
+        "content_hash": "a0c2b88e92fa6121f0db9e07f14041bbfb01be2eb2c71b13fb1c33b2f0f84fb5"
+      },
+      "fixture_questions": 51,
+      "fixture_response_slots": 51,
+      "counts": {
+        "AuthoritySnapshot": 7,
+        "EmpiricalCoordinateFact": 20,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 255,
+        "RoutingEligibilityFact": 255
+      }
+    },
+    {
+      "source": "SRC30",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC30/FULL_SUPPORTED",
+        "content_hash": "887110e15de8a0be68eebf75ab91cc29dd9d5106ad4f5fafb0228873634683d1"
+      },
+      "fixture_questions": 313,
+      "fixture_response_slots": 313,
+      "counts": {
+        "AuthoritySnapshot": 7,
+        "EmpiricalCoordinateFact": 15,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 1565,
+        "RoutingEligibilityFact": 1565
+      }
+    }
+  ],
+  "scope": {
+    "supported_questions": [
+      128,
+      315,
+      51,
+      313
+    ],
+    "total_supported_questions": 807,
+    "prepared_routing_unknown_outside_declared_supported": 2253,
+    "p2_authority_gap_items": 1346,
+    "physical_slots": 4434,
+    "original_items": 4434
+  },
+  "limits": [
+    "Only807 declared-supported questions positively native validated;2253 prepared routing-unknown bindings and1346 P2 authority-gap items remain exact residuals",
+    "Original source/data execution and original workload not performed",
+    "Final all35 distinct review remains pending"
+  ]
 }

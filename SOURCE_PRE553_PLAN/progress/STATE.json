@@ -1,23 +1,7 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "28_SOURCES_SCOPED_INTEGRATED_LITS_WVS_AND_PORTABLE_IMPLEMENTATION_RUNNING",
+  "status": "32_SOURCES_SCOPED_INTEGRATED_WVS_AND_PORTABLE_DELIVERY_RUNNING",
   "active_workers": [
-    {
-      "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "LITS",
-      "source_ids": [
-        "SRC27",
-        "SRC28",
-        "SRC29",
-        "SRC30"
-      ],
-      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
-      "pid": 52782,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
-      "branch": "agent/pyat-pre553-r157-lits",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
-      "launch": "LANE_LAUNCHES.json"
-    },
     {
       "task": "WVS:SOURCE_CONFIGURATION_QUEUE",
       "lane": "WVS",
@@ -56,7 +40,8 @@
     "AFRO_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
     "ARAB_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
     "ASIAN_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
-    "SOUTH_ASIA_SOURCE_CONFIGURATION_PREPARATION_SCOPED"
+    "SOUTH_ASIA_SOURCE_CONFIGURATION_PREPARATION_SCOPED",
+    "LITS_SOURCE_CONFIGURATION_PREPARATION_SCOPED"
   ],
   "current_goal_anchor": "GOAL.md",
   "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
@@ -100,7 +85,7 @@
     {
       "id": "LITS:EVIDENCE",
       "lane": "LITS",
-      "state": "FULL_SCOPE_VALIDATION_REPAIR_RUNNING",
+      "state": "ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
       "process": 52782,
       "inputs": "91441c34ee58c4c3b13dae37db70a23bb4d4c2b8",
       "output": "source_pre553_validation/SRC27/LANE_RETURN.json",
@@ -258,5 +243,5 @@
     "targets": "DISK_RESUME_completion_event_targets.json"
   },
   "latin_intake": "LATIN_INTAKE.json",
-  "prepared_sources_scoped_integrated": 28
+  "prepared_sources_scoped_integrated": 32
 }
