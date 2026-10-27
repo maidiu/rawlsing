@@ -1533,41 +1533,6 @@
   "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
   "active_workers": [
     {
-      "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "LATIN",
-      "source_ids": [
-        "SRC24",
-        "SRC25",
-        "SRC26"
-      ],
-      "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
-      "pid": 39411,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin",
-      "branch": "agent/pyat-pre553-r157-latin",
-      "state": "RUNNING_SAME_OWNER_BINDING_REPAIR_MODEL_VERIFIED",
-      "launch": "LANE_LAUNCHES.json"
-    },
-    {
-      "task": "GSS:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "GSS",
-      "source_ids": [
-        "SRC16",
-        "SRC17",
-        "SRC18",
-        "SRC19",
-        "SRC20",
-        "SRC21",
-        "SRC22",
-        "SRC23"
-      ],
-      "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
-      "pid": 35732,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss",
-      "branch": "agent/pyat-pre553-r157-gss",
-      "state": "RUNNING_DISK_RESUME_MODEL_AND_PREFLIGHT_VERIFIED",
-      "launch": "LANE_LAUNCHES.json"
-    },
-    {
       "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
       "lane": "LITS",
       "source_ids": [
@@ -1577,24 +1542,53 @@
         "SRC30"
       ],
       "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
-      "pid": 35733,
+      "pid": 52782,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
       "branch": "agent/pyat-pre553-r157-lits",
-      "state": "RUNNING_DISK_RESUME_MODEL_AND_PREFLIGHT_VERIFIED",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     },
     {
-      "task": "AFRO:SOURCE_CONFIGURATION_QUEUE",
-      "lane": "AFRO",
+      "task": "ASIAN:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "ASIAN",
       "source_ids": [
-        "SRC01",
-        "SRC02",
-        "SRC03"
+        "SRC08",
+        "SRC09",
+        "SRC10"
       ],
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "pid": 42454,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-afro",
-      "branch": "agent/pyat-pre553-r157-afro",
+      "pid": 52637,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-asian",
+      "branch": "agent/pyat-pre553-r157-asian",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "LANE_LAUNCHES.json"
+    },
+    {
+      "task": "SOUTH_ASIA:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "SOUTH_ASIA",
+      "source_ids": [
+        "SRC31",
+        "SRC32"
+      ],
+      "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+      "pid": 52654,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-south-asia",
+      "branch": "agent/pyat-pre553-r157-south-asia",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "LANE_LAUNCHES.json"
+    },
+    {
+      "task": "WVS:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "WVS",
+      "source_ids": [
+        "SRC33",
+        "SRC34",
+        "SRC35"
+      ],
+      "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+      "pid": 52656,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-wvs",
+      "branch": "agent/pyat-pre553-r157-wvs",
       "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     }
@@ -3481,41 +3475,6 @@
     "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
     "active_workers": [
       {
-        "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
-        "lane": "LATIN",
-        "source_ids": [
-          "SRC24",
-          "SRC25",
-          "SRC26"
-        ],
-        "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
-        "pid": 39411,
-        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin",
-        "branch": "agent/pyat-pre553-r157-latin",
-        "state": "RUNNING_SAME_OWNER_BINDING_REPAIR_MODEL_VERIFIED",
-        "launch": "LANE_LAUNCHES.json"
-      },
-      {
-        "task": "GSS:SOURCE_CONFIGURATION_QUEUE",
-        "lane": "GSS",
-        "source_ids": [
-          "SRC16",
-          "SRC17",
-          "SRC18",
-          "SRC19",
-          "SRC20",
-          "SRC21",
-          "SRC22",
-          "SRC23"
-        ],
-        "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
-        "pid": 35732,
-        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss",
-        "branch": "agent/pyat-pre553-r157-gss",
-        "state": "RUNNING_DISK_RESUME_MODEL_AND_PREFLIGHT_VERIFIED",
-        "launch": "LANE_LAUNCHES.json"
-      },
-      {
         "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
         "lane": "LITS",
         "source_ids": [
@@ -3525,29 +3484,58 @@
           "SRC30"
         ],
         "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
-        "pid": 35733,
+        "pid": 52782,
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
         "branch": "agent/pyat-pre553-r157-lits",
-        "state": "RUNNING_DISK_RESUME_MODEL_AND_PREFLIGHT_VERIFIED",
+        "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
         "launch": "LANE_LAUNCHES.json"
       },
       {
-        "task": "AFRO:SOURCE_CONFIGURATION_QUEUE",
-        "lane": "AFRO",
+        "task": "ASIAN:SOURCE_CONFIGURATION_QUEUE",
+        "lane": "ASIAN",
         "source_ids": [
-          "SRC01",
-          "SRC02",
-          "SRC03"
+          "SRC08",
+          "SRC09",
+          "SRC10"
         ],
         "session": "ses_e98c905cbffekusoHURfKyEUKG",
-        "pid": 42454,
-        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-afro",
-        "branch": "agent/pyat-pre553-r157-afro",
+        "pid": 52637,
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-asian",
+        "branch": "agent/pyat-pre553-r157-asian",
+        "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+        "launch": "LANE_LAUNCHES.json"
+      },
+      {
+        "task": "SOUTH_ASIA:SOURCE_CONFIGURATION_QUEUE",
+        "lane": "SOUTH_ASIA",
+        "source_ids": [
+          "SRC31",
+          "SRC32"
+        ],
+        "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+        "pid": 52654,
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-south-asia",
+        "branch": "agent/pyat-pre553-r157-south-asia",
+        "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+        "launch": "LANE_LAUNCHES.json"
+      },
+      {
+        "task": "WVS:SOURCE_CONFIGURATION_QUEUE",
+        "lane": "WVS",
+        "source_ids": [
+          "SRC33",
+          "SRC34",
+          "SRC35"
+        ],
+        "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+        "pid": 52656,
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-wvs",
+        "branch": "agent/pyat-pre553-r157-wvs",
         "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
         "launch": "LANE_LAUNCHES.json"
       }
     ],
-    "state": "EVS_SCOPED_PREPARATION_INTEGRATED_AFRO_READY_QUEUE_RUNNING",
+    "state": "23_SOURCES_SCOPED_INTEGRATED_LITS_VALIDATION_REPAIR_AND_FINAL_THREE_FAMILIES_RUNNING",
     "goal_update": "LIVE_CONSOLIDATED_OBJECTIVE_VERIFIED_ACTIVE",
     "heartbeat": "PAUSED",
     "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
@@ -3591,10 +3579,21 @@
           "pid": 42516,
           "targets": "AFRO_completion_event_targets.json",
           "mode": "OS_EVENTS_NO_TIMED_POLLING"
+        },
+        {
+          "pid": 43834,
+          "targets": "ARAB_completion_event_targets.json",
+          "mode": "OS_EVENTS_NO_TIMED_POLLING"
+        },
+        {
+          "pid": 52893,
+          "targets": "FINAL_SOURCE_QUEUES_completion_event_targets.json",
+          "mode": "OS_EVENTS_NO_TIMED_POLLING"
         }
       ]
     },
-    "branch_head": "e2cfc49badbe52eb65f44561ccf6727ee53be60e",
-    "resume_evidence": "User go after disk cleanup; actual first tools/model readback verified"
+    "branch_head": "518de32eaa54b60695d07c1d588efdb679e373a7",
+    "resume_evidence": "User go after disk cleanup; actual first tools/model readback verified",
+    "prepared_sources_scoped_integrated": 23
   }
 }

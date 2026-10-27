@@ -1,7 +1,7 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 165,
+  "revision": 166,
   "r39_return_intake": {
     "status": "WORKER_AUTHOR_EVIDENCE_RECEIVED__NO_INDEPENDENT_ADOPTION",
     "startup": "2e6c189fd54b818556a44419b19691938ea76d5a",
@@ -23818,6 +23818,133 @@
           {
             "pid": 42516,
             "targets": "AFRO_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          }
+        ]
+      }
+    }
+  },
+  "r157_23_scoped_sources_final_queues": {
+    "checkpoint_id": "20261027-PYAT-R157-23-SOURCE-INTEGRATION-FINAL-QUEUES-R1",
+    "summary": "R157 scoped source preparation integrated for23/35 sources: EVS5 + corrected LATIN3 + GSS8 + AFRO3 + ARAB4. HQ actual native fixture replay confirmed all GSS/AFRO/ARAB release hashes; exact residuals retained. Latin f704de41db72578dd2c619506937fc741cd8be86 fixes ALL+UNKNOWN routing and47single-response topologies;571/1158/859checks replayed. Current main 518de32eaa54b60695d07c1d588efdb679e373a7 pushed/directremoteverified. LiTS941072526c831a992d21bffe5a0712f0f52b87f1 notaccepted: original prepared280/542/1165/1073questions but representativefixtures3/2/3/3; A11positive validation scope repair sameauthor52782. Ready independent finalfamilies launched existing sessions: ASIAN52637,SOUTH_ASIA52654,WVS52656; all actual preflight/GoDeepSeekMAXverified. Four-target OSobserver52893 ready. No original respondentexecution or originalworkload; final distinct all35reviewpending; heartbeatpaused.",
+    "updates": {
+      "active_workers": [
+        {
+          "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "LITS",
+          "source_ids": [
+            "SRC27",
+            "SRC28",
+            "SRC29",
+            "SRC30"
+          ],
+          "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+          "pid": 52782,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
+          "branch": "agent/pyat-pre553-r157-lits",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        },
+        {
+          "task": "ASIAN:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "ASIAN",
+          "source_ids": [
+            "SRC08",
+            "SRC09",
+            "SRC10"
+          ],
+          "session": "ses_e98c905cbffekusoHURfKyEUKG",
+          "pid": 52637,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-asian",
+          "branch": "agent/pyat-pre553-r157-asian",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        },
+        {
+          "task": "SOUTH_ASIA:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "SOUTH_ASIA",
+          "source_ids": [
+            "SRC31",
+            "SRC32"
+          ],
+          "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+          "pid": 52654,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-south-asia",
+          "branch": "agent/pyat-pre553-r157-south-asia",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        },
+        {
+          "task": "WVS:SOURCE_CONFIGURATION_QUEUE",
+          "lane": "WVS",
+          "source_ids": [
+            "SRC33",
+            "SRC34",
+            "SRC35"
+          ],
+          "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+          "pid": 52656,
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-wvs",
+          "branch": "agent/pyat-pre553-r157-wvs",
+          "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+          "launch": "LANE_LAUNCHES.json"
+        }
+      ],
+      "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
+      "r157_branch": "agent/pyat-source-pre553-r157",
+      "r157_branch_head": "518de32eaa54b60695d07c1d588efdb679e373a7",
+      "r157_state": "23_SOURCES_SCOPED_INTEGRATED_LITS_VALIDATION_REPAIR_AND_FINAL_THREE_FAMILIES_RUNNING",
+      "live_goal_update": "CONSOLIDATED_OBJECTIVE_VERIFIED_ACTIVE",
+      "heartbeat": "PAUSED",
+      "r157_frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
+      "r157_waiting_policy": {
+        "mechanism": "Finite kqueue OS file-event observer for four existing terminal receipts; ordinary installed codex queue wake to same HQ",
+        "observer_pid": 23206,
+        "observer_ready": true,
+        "periodic_status_checks": false,
+        "fallback_minimum_seconds": 180,
+        "no_model_or_effort_override": true,
+        "end_to_end_hq_notification": "PROVEN: actual P3 completion queue notice received in this same HQ; already-intaken return recognized, no duplicate effects.",
+        "heartbeat": "PAUSED",
+        "additional_finite_observers": [
+          {
+            "pid": 25842,
+            "targets": "EVS_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 28628,
+            "targets": "AUTH_RETRY_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 30263,
+            "targets": "EVS_REPAIR_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 35854,
+            "targets": "DISK_RESUME_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 39480,
+            "targets": "LATIN_BINDING_REPAIR_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 42516,
+            "targets": "AFRO_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 43834,
+            "targets": "ARAB_completion_event_targets.json",
+            "mode": "OS_EVENTS_NO_TIMED_POLLING"
+          },
+          {
+            "pid": 52893,
+            "targets": "FINAL_SOURCE_QUEUES_completion_event_targets.json",
             "mode": "OS_EVENTS_NO_TIMED_POLLING"
           }
         ]
