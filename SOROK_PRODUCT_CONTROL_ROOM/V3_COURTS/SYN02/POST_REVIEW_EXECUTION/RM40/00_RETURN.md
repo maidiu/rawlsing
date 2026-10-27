@@ -117,8 +117,8 @@ The validator checked row order, 12 cells per row, 480 unique cells, baseline/fi
 
 - **Branch:** `agent/sorok-syn02-rm40-source-patch-crosswalk-r1`.
 - **Sealed startup:** `07ebb10eac214ebc909b92f24b459caf2d37d730`.
-- **Content commit:** `PENDING_FIRST_PUSH`.
-- **Final remote head:** `PENDING_READBACK`.
+- **Content commit:** `1ecc62ef1bfab9015967002be8fdd8b8874de092` (the five-file RM40 patch/crosswalk evidence commit).
+- **Final remote head:** the branch tip after this metadata-only publication commit, verified with `git ls-remote origin refs/heads/agent/sorok-syn02-rm40-source-patch-crosswalk-r1`; the exact readback SHA is reported in the final handoff. No self-referential SHA is embedded here.
 - **Reviewer:** independent engineering/source reviewer required after exact remote SHA; this is not self-accepted.
 
 **No implementation. No scientific issuance. No native/source/actor grant. No production merge. STOP.**
