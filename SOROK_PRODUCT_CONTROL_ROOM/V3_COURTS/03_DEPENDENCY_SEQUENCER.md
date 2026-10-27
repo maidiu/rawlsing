@@ -1,27 +1,16 @@
-# V3 Courts dependency sequencer
+# Current developmental-theory and engineering dependency sequencer
 
-Dependencies are scoped prerequisites for adoption/implementation, not proof that human psychology progresses linearly. Source/needs research can occur concurrently.
+Dependencies here are **for evidence, adoption and engineering**, not chronological stages of a person's psychological development. Investigations can parallelize; source/scientific native adoption must respect authorities.
 
-## Critical conceptual path
+## Current gate flight
+- **S0 — Source investigation:** X01–X05 original V3 source investigated across 40 M, T01–T05 across all twelve N; all returns received. X05 branch custody reconciled. This does not grant science/native permissions.
+- **S1 — Independent code/science review:** RX01/RX02 and RS/RC returned, accepted scoped with corrections for 12 M, N01–N08 and static N12. **RX03/RX04/RX05/RT04 needed now** to independently verify remaining 28 historical and N09–N11.
+- **S2 — SYN01 R2 integration:** after reviewers, resolve exact present function→precise required operation→what stays/adapts/is removed/created, plus real owner and evidence. PREVIEW ONLY is in CROSSWALK/SYN01_R2_SECOND_WAVE_PRE_REVIEW_ADDENDUM.md.
+- **S3 — Scientific original-domain issuance:** one source-grounded actual actor E1 Rule A and CAN011 Rule T or legitimate NO_CHANGE; competing explanations and actor reception, positive history/outcome support, real independent other actor, source/clock/access. Never invent universal coefficients or treat lack of rule as NO_CHANGE.
+- **S4 — True present same-person source consumption:** only with proper C8/ADP/Pyat grants, C9/C12 semantic reading of E1-earned actor state at E2, positive/NO_CHANGE/severed formation edge and held/independent B negative.
+- **S5 — Full user 3–5 batch / fallible memory / lived history + A0–A5:** N11 timing, retrospective ADP016/017/SCI05, future new proposal, no extra ordinary LLM calls, actor-safe source/rights; native artifact/user assessment and real world/scientific gates.
 
-1. W0: independent material/social world, qualified activity/other actors, source and permission.
-2. N01 needs/motives/object constitution and N06 actual routines/participation/time can begin in parallel.
-3. N02 thick situated baseline requires N01 and N06 causal meanings.
-4. N03 challenge/complication/threat/repair uses N01+N02; N04 interpressure/recruitment also uses N02.
-5. N05 durable effects, contextual differentiation and altered relations require N03+N04+N06.
-6. N07 independent coactor interaction uses N04+N05 and W0; N08 impression/NO_CHANGE uses N03+N04+N07.
-7. N09 fallible memory/meaning depends on N08; N10 later ideological and cosmological rearticulation uses N09, N01, N06 and socially available concepts.
-8. N11 user-fixed 3–5 event recursion depends on N06/N07/N08/N09 for full operative claim; its scheduling/contract can be designed now separately.
-9. N12 actual person consumer C9/C12/C11/A0 depends on native exact owners/permissions and lawful coupled N11+others; no fixture is a native positive.
+## High-impact non-native source defects to adjudicate after independent review
+(1) narrator scene influencing metabolization/person (X03+X05); (2) state-mutating derived function and inconsistent stored/derived (X04+X05); (3) LLM events absent from canonical event ledger, premerged arbitrary psychological deltas (X04); (4) RNG not replayable and age-based rupture/striving (X03+X04); (5) coactor/real-care absent while labels or type-as-cause used (X05); (6) false code readiness via placeholders and degraded status (X05).
 
-## Five distinct gates
-- ONTOLOGY: meaning of need, expectation, challenge, real activity, relation, practical operation.
-- SCIENCE: differentiated history-dependent transitions and evidence/limits, competent original rule decision.
-- AUTHORITY/SOURCE: current CAN008/CAN011/ADP/Pyat/C8/C11 owners, rights, provenance, clocks.
-- ARCHITECTURE: one person; state/derived separation, event/interval scheduler and conditional action/memory.
-- ENGINEERING/EXECUTION: source symbols and consumers, accepted adapters, real positive and negative fault, independent review.
-
-## Parallel flight
-P0: as-built X01–X05 and needs-first T01–T03 in parallel, no conflicting write locations. P1: cross-track science adjudication and change/create architecture. P2: formal rules with alternatives/review. P3: source-permitted implementation and real downstream tests. P4: original native/person/world/user encounter tests. Separate readiness of research from adoption and full product.
-
-Use SEQUENCER/dependencies.json as revisable machine-readable directed graph. Gate status remains BLOCKED_UNKNOWN where a scientific rule is not issued, even when source review is green.
+Science, source rights, controller permission and engineering are independent gates; research or sourcefree prototyping of lawful interfaces may proceed while scientific rule issuance is held. No implementation is authorized from these research documents. See machine SEQUENCER/dependencies.json for detailed DAG and current source cuts.
