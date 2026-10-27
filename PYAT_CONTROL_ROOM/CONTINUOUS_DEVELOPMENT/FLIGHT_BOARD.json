@@ -1530,22 +1530,8 @@
     "approved_utc": "2026-10-24T14:10:45.118294+00:00",
     "canonical_prior": "8db787b2760e797e359b06cdbadbd5d050b6939a"
   },
-  "next_action": "Intake D1 and D2 independent reviews separately; preserve source-native descriptive/C11 scope and all broader holds.",
+  "next_action": "Intake exact D1 repair and independent D2 review; no scope or authority expansion.",
   "active_workers": [
-    {
-      "task": "D1_SRC04_TALLY_INDEPENDENT_REVIEW",
-      "session": "ses_e81fc42a8ffeAbvo6M8l4YG4nK",
-      "pid": 22582,
-      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review/.r61/d1-review/completion.json",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review",
-      "candidate": "b8f34be3b37bbc648e20b129d8f533c091206c32",
-      "state": "RUNNING_PREFLIGHT_PENDING",
-      "hq_artifact_hashes_verified": 13,
-      "hq_tests": "5 passed in0.27s",
-      "author_tally_ref": "87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022",
-      "scope": "Original SRC04 observed-sample description only; no originalSAV reread or I03issuance",
-      "heartbeat": "PAUSED"
-    },
     {
       "task": "D2_SRC17_C11_INDEPENDENT_REVIEW",
       "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
@@ -1569,6 +1555,24 @@
       },
       "disk_repair": "Reversibly sparse-thinned nine clean completed R157 lane checkouts; all commits and untracked evidence preserved; free space observed2.4GiB before sparse reviewer construction",
       "authority_observation": "Author disclosed early authorized-path ls metadata listing before admission; review must retain actual history",
+      "heartbeat": "PAUSED"
+    },
+    {
+      "task": "D1_SRC04_TALLY_THREE_DEFECT_REPAIR",
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "pid": 27664,
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-observed-tally/.r61/d1-repair/completion.json",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-observed-tally",
+      "review_commit": "ccc268b7c02d46e500bb81a9b2c16d800e2c8db1",
+      "review_remote_verified": true,
+      "decision": "REVISE_THREE_BOUNDARY_GAPS_REAL_TALLY_INDEPENDENTLY_REPRODUCED",
+      "defects": [
+        "D1-D01 missing held-authority negative",
+        "D1-D02 private grant/program paths break clean primary/replay",
+        "D1-D03 source-mutated receipt_override accepted"
+      ],
+      "preserved_tally_hash": "87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022",
+      "scope_unchanged": true,
       "heartbeat": "PAUSED"
     }
   ],
