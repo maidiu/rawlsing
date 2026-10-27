@@ -1,0 +1,58 @@
+{
+  "scope": "Unaccepted preserved partial work after terminal provider.auth403; same-session user-authorized retries",
+  "banked": [
+    {
+      "lane": "LATIN",
+      "commit": "d82f2fec4422ed23d6ffd3150d9887ffaa927d4e",
+      "not_accepted": true,
+      "error": {
+        "type": "provider.auth",
+        "message": "Upstream request failed: An active OpenCode Go subscription is required to use Go models.",
+        "status": 403,
+        "response": {
+          "body": "{\"error\":{\"type\":\"server_error\",\"message\":\"Upstream request failed: An active OpenCode Go subscription is required to use Go models.\"}}"
+        }
+      },
+      "remote_status": "Readback/push pending; no loss of local banked work",
+      "files": 29
+    },
+    {
+      "lane": "GSS",
+      "commit": "746f6811e3eb9d604af5e92a44e02a6470ff3bc1",
+      "not_accepted": true,
+      "error": {
+        "type": "provider.auth",
+        "message": "Upstream request failed: An active OpenCode Go subscription is required to use Go models.",
+        "status": 403,
+        "response": {
+          "body": "{\"error\":{\"type\":\"server_error\",\"message\":\"Upstream request failed: An active OpenCode Go subscription is required to use Go models.\"}}"
+        }
+      },
+      "remote_status": "Readback/push pending; no loss of local banked work",
+      "files": 66
+    },
+    {
+      "lane": "LITS",
+      "commit": "d33e9d479d32388a00d1af432c2ae0990bf5809f",
+      "not_accepted": true,
+      "error": {
+        "type": "provider.auth",
+        "message": "Upstream request failed: An active OpenCode Go subscription is required to use Go models.",
+        "status": 403,
+        "response": {
+          "body": "{\"error\":{\"type\":\"server_error\",\"message\":\"Upstream request failed: An active OpenCode Go subscription is required to use Go models.\"}}"
+        }
+      },
+      "remote_status": "Readback/push pending; no loss of local banked work",
+      "files": 26
+    }
+  ],
+  "publication_note": "LATIN d82f2fec4422ed23d6ffd3150d9887ffaa927d4e was directremoteverified. GSS stalled Gitpush was terminated; readback required before publication claim. Local bank commits preserved.",
+  "purchase_or_provider_switch": false,
+  "retry_authorized": "it should be logged in now",
+  "retry_lanes": [
+    "LATIN",
+    "GSS",
+    "LITS"
+  ]
+}

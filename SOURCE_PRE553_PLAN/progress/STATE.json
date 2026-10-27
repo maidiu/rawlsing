@@ -1,6 +1,6 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "FOUR_SOURCE_LANES_RUNNING_P3_ACCEPTED",
+  "status": "FOUR_SOURCE_LANES_RUNNING_AFTER_USER_AUTH_REPAIR",
   "active_workers": [
     {
       "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
@@ -11,10 +11,10 @@
         "SRC26"
       ],
       "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
-      "pid": 15088,
+      "pid": 27957,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin",
       "branch": "agent/pyat-pre553-r157-latin",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "state": "RUNNING_AUTH_RETRY_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     },
     {
@@ -31,10 +31,10 @@
         "SRC23"
       ],
       "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
-      "pid": 15095,
+      "pid": 27962,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss",
       "branch": "agent/pyat-pre553-r157-gss",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "state": "RUNNING_AUTH_RETRY_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     },
     {
@@ -47,10 +47,10 @@
         "SRC30"
       ],
       "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
-      "pid": 15101,
+      "pid": 27969,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
       "branch": "agent/pyat-pre553-r157-lits",
-      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "state": "RUNNING_AUTH_RETRY_PREFLIGHT_AND_MODEL_VERIFIED",
       "launch": "LANE_LAUNCHES.json"
     },
     {
@@ -78,7 +78,7 @@
     "P3_FACTORY_READY"
   ],
   "current_goal_anchor": "GOAL.md",
-  "next_action": "Intake actual terminal source-lane notifications; verify scope and advance remaining independent family lanes within max4. Native-bound all35/final review still required.",
+  "next_action": "Wait for actual current source-lane completion events, intake exact returns, repair only demonstrated defects and advance remaining ready families; max4, all35 scope retained.",
   "live_goal_objective_verified": true,
   "live_goal_tool_status": "active",
   "resume_authorization": {
@@ -156,7 +156,19 @@
         "pid": 25842,
         "targets": "EVS_completion_event_targets.json",
         "mode": "OS_EVENTS_NO_TIMED_POLLING"
+      },
+      {
+        "pid": 28628,
+        "targets": "AUTH_RETRY_completion_event_targets.json",
+        "mode": "OS_EVENTS_NO_TIMED_POLLING"
       }
     ]
+  },
+  "provider_auth_repair": {
+    "user_text": "it should be logged in now",
+    "same_account_provider_model": true,
+    "preserved_banked_partials": true,
+    "actual_retry_preflight_verified": true,
+    "no_purchase": true
   }
 }
