@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "R157_P0_RUNNING_GLOBAL_RETRY_VERIFIED",
-  "handoff_commit": "ef90448f6426f8b61b3703ba5940ab42592f8b23",
+  "checkpoint_id": "R157_P0_FROZEN_THREE_SOURCE_LANES",
+  "handoff_commit": "675e02e11639aeca13fd350ed36e1ad28cb65dc1",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/R157_P0_RUNNING_GLOBAL_RETRY_VERIFIED/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/R157_P0_RUNNING_GLOBAL_RETRY_VERIFIED/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/R157_P0_RUNNING_GLOBAL_RETRY_VERIFIED/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/R157_P0_FROZEN_THREE_SOURCE_LANES/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/R157_P0_FROZEN_THREE_SOURCE_LANES/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/R157_P0_FROZEN_THREE_SOURCE_LANES/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "ef90448f6426f8b61b3703ba5940ab42592f8b23",
+  "canonical_control_base": "675e02e11639aeca13fd350ed36e1ad28cb65dc1",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "ef90448f6426f8b61b3703ba5940ab42592f8b23",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/R157_P0_RUNNING_GLOBAL_RETRY_VERIFIED/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/R157_P0_RUNNING_GLOBAL_RETRY_VERIFIED/CURRENT.md",
+  "qualified_working_hq_commit": "675e02e11639aeca13fd350ed36e1ad28cb65dc1",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/R157_P0_FROZEN_THREE_SOURCE_LANES/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/R157_P0_FROZEN_THREE_SOURCE_LANES/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 159,
-    "canonical_report_commit": "ef90448f6426f8b61b3703ba5940ab42592f8b23",
+    "revision": 160,
+    "canonical_report_commit": "675e02e11639aeca13fd350ed36e1ad28cb65dc1",
     "counterpart": "Sorok rev34 independent; no Pyat actor grant"
   },
   "previous_handoff": {
-    "checkpoint_id": "R157_RESUMED_P0_PROVIDER_GLOBAL_HOLD",
-    "handoff_commit": "a718ebc0af4cb08feb4bac26e1cd1d48972626d3"
+    "checkpoint_id": "R157_P0_RUNNING_GLOBAL_RETRY_VERIFIED",
+    "handoff_commit": "ef90448f6426f8b61b3703ba5940ab42592f8b23"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "Intake terminal P0 actual executable interface and frozen schema; then launch ready independent source lanes and continue P3 integrator, max4 OpenCode authors. No duplicate live author; heartbeat PAUSED.",
-  "worker_state_truth": "P0 PID5095 live at readback with completed actual checkout preflight; terminal result not yet returned.",
+  "next_action": "Existing integrator finishes P0 return/corrections, then P3; intake ready source lane terminal returns and launch next independent lanes within max4.",
+  "worker_state_truth": "Existing integrator PID5095 live finishing return; source author PIDs15088,15095,15101 live with actual checkout/model/MAX preflight verified.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -356,11 +356,63 @@
   },
   "r61_actual_workers": [
     {
-      "task": "P0_FOUNDATION",
-      "pid": 5095,
+      "task": "P0_FINAL_RETURN",
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "pid": 5095,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
-      "state": "RUNNING_ACTUAL_PREFLIGHT_VERIFIED"
+      "state": "RUNNING_FINISHING_RETURN",
+      "launch": "P0_LAUNCH.json"
+    },
+    {
+      "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "LATIN",
+      "source_ids": [
+        "SRC24",
+        "SRC25",
+        "SRC26"
+      ],
+      "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+      "pid": 15088,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin",
+      "branch": "agent/pyat-pre553-r157-latin",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "LANE_LAUNCHES.json"
+    },
+    {
+      "task": "GSS:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "GSS",
+      "source_ids": [
+        "SRC16",
+        "SRC17",
+        "SRC18",
+        "SRC19",
+        "SRC20",
+        "SRC21",
+        "SRC22",
+        "SRC23"
+      ],
+      "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+      "pid": 15095,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss",
+      "branch": "agent/pyat-pre553-r157-gss",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "LANE_LAUNCHES.json"
+    },
+    {
+      "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "LITS",
+      "source_ids": [
+        "SRC27",
+        "SRC28",
+        "SRC29",
+        "SRC30"
+      ],
+      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+      "pid": 15101,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
+      "branch": "agent/pyat-pre553-r157-lits",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "LANE_LAUNCHES.json"
     }
   ],
   "r61_launch_evidence": "ae63a8c2da620d850cc974eb43c3e396abec30cb",
@@ -372,7 +424,7 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "ca67bbbb1ad574c06d218de3e4ff496fc6706d21",
+  "current_development_evidence": "c03bd5b08ac3b209e7f7ba684f0eb40ea71d78e4",
   "new_R87_operative_grants": false,
   "secondary_hq_status": "USER_APPOINTED_BROWSER_SECONDARY__PRIMARY_CODEX_NOT_REVOKED"
 }
