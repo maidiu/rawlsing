@@ -302,13 +302,26 @@
       ],
       "work": "Independent reviews RX03/RX04/RX05/RT04 and adjudicated SYN01 R2",
       "gate": "SOURCE_SCIENCE_REVIEW",
-      "status": "FOUR_VERIFIED_RETURNS__REVIEWS_NOT_YET_LAUNCHED",
+      "status": "RX03_RX04_RX05_VERIFIED__RT04_PENDING",
       "may_research_in_parallel": true,
       "unlocks": [
         "D1",
         "D2",
         "D3",
         "D5"
+      ]
+    },
+    {
+      "code": "D0R2",
+      "depends_on": [
+        "D0B"
+      ],
+      "work": "Source-reviewed SYN01 R2 40-M differential with N09–N11 scientific court still pending",
+      "gate": "SCIENCE_AND_AUTHORITY",
+      "status": "SCOPED_SOURCE_READY__RT04_NOT_RETURNED",
+      "unlocks": [
+        "D1",
+        "D2"
       ]
     }
   ],
@@ -317,5 +330,12 @@
     "X04": "b609986a3f635de7b7581e763e76d3496ed9ad7e",
     "X05": "4877afed497ccaa974ee092a0db7d6178ecac2a2",
     "T04": "76590e61e2c819ba2c9231e9f92dd9e6aa429fa4"
-  }
+  },
+  "second_wave_review_cut": {
+    "RX03": "10807fd633daab347a762727a4d837d54601d655",
+    "RX04": "c5db118c70057d3a276d1cacca20843cf01544ae",
+    "RX05": "fa2a98d61bd5919140c8cb426d14fb3351adc561"
+  },
+  "rt04_review_status": "NOT_RETURNED",
+  "historical_families_scoped_independent_review": 40
 }
