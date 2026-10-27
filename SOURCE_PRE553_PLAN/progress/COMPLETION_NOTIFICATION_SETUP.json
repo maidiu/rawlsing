@@ -13,5 +13,12 @@
   "controller_scope_limit": "R157 jobs not retroactively registered in controller or treated as adopted controller effects",
   "dispatch_limit": "One reserved attempt per terminal process receipt; timeout/error ambiguous HOLD, no retry",
   "no_new_periodic_automation": true,
-  "end_to_end_notification_observed": false
+  "end_to_end_notification_observed": false,
+  "first_actual_dispatch": {
+    "task": "P3_FACTORY_READY",
+    "queue_exit_code": 0,
+    "target_thread": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da",
+    "queued_message_id": "01a17b56-b172-7623-b6ce-77af2a1705bf",
+    "actual_hq_message_observed": false
+  }
 }
