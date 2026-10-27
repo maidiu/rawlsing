@@ -5,12 +5,15 @@ from copy import deepcopy
 from dataclasses import fields
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import jsonschema
 import pandas as pd
 import pytest
 
+from rawlsing_next.pre553_c11_integrity import TypedAbsence
 from rawlsing_next.pre553_c11_repository import C11LogicalRelease
+from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
 from rawlsing_next.pre553_physical_decoder import PhysicalSourceIncidence, PhysicalVariable
 from rawlsing_next.pre553_empirical_objects import (
     EmpiricalCoordinateFact,
@@ -22,9 +25,13 @@ from rawlsing_next.pre553_source_backed_c11_facade import (
     GovernedC11Projection,
     PhysicalSlot,
 )
-from rawlsing_next.source_configuration.errors import SourceConfigurationSchemaError
+from rawlsing_next.source_configuration.errors import (
+    SourceConfigurationBindingError,
+    SourceConfigurationSchemaError,
+)
 from rawlsing_next.source_configuration.evidence import lane_inputs, load_manifest, load_source_roster
 from rawlsing_next.source_configuration.factory import (
+    _respondents,
     build_governed_c11_projection,
     build_validated_c11_release_from_config,
 )
@@ -128,6 +135,30 @@ def test_fixture_stream_and_permitted_physical_incidence_agree():
     from_incidence = build_validated_c11_release_from_config(cfg, incidence=incidence)
     assert from_incidence.release_ref == from_stream.release_ref
     assert from_incidence.semantic_release_hash == from_stream.semantic_release_hash
+
+
+def test_configured_native_key_slot_requires_exact_row_keys():
+    universe = SimpleNamespace(ref=ExactRef(
+        "UNIVERSE", "urn:test:r157:key-slot", semantic_hash({"key_slot": True})))
+    doc = {
+        "binding": {},
+        "respondents": {
+            "respondent_key_pattern": "ROW-{row_ordinal}",
+            "identity_map_authority_ref": None,
+            "source_native_key_slot": {"ordinal": 1, "name": "native_id"},
+        },
+    }
+    with pytest.raises(SourceConfigurationBindingError, match="row_native_keys"):
+        _respondents(doc, active_rows=2, universes=(universe,))
+    observed = ExactRef(
+        "SOURCE_NATIVE_RESPONDENT_KEY", "urn:test:r157:key:1",
+        semantic_hash({"native_key": "one"}))
+    respondents = _respondents(
+        doc, active_rows=2, universes=(universe,),
+        row_native_keys={1: observed, 2: TypedAbsence("UNKNOWN")},
+    )
+    assert respondents[0].source_native_respondent_key_ref_or_typed_absence == observed
+    assert isinstance(respondents[1].source_native_respondent_key_ref_or_typed_absence, TypedAbsence)
 
 
 def test_wrong_source_sha_and_row_count_are_refused():

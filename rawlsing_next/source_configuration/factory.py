@@ -98,14 +98,20 @@ def _active_identity(doc: Mapping[str, Any], *, source_sha256: str | None,
     )
 
 
-def _respondents(doc: Mapping[str, Any], *, active_rows: int,
-                 universes: Sequence[EmpiricalUniverse]) -> tuple[Any, ...]:
+def _respondents(
+    doc: Mapping[str, Any],
+    *,
+    active_rows: int,
+    universes: Sequence[EmpiricalUniverse],
+    row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None,
+) -> tuple[Any, ...]:
     universe = universes[0]
     section = doc["respondents"]
     pattern = section["respondent_key_pattern"]
     identity_map = section.get("identity_map_authority_ref")
     identity_map_ref = None if identity_map is None else _authority_ref(identity_map)
     fixture = doc["binding"].get("fixture_provenance")
+    configured_key_slot = section.get("source_native_key_slot")
     respondents = []
     for row in range(1, active_rows + 1):
         if fixture is not None:
@@ -118,6 +124,14 @@ def _respondents(doc: Mapping[str, Any], *, active_rows: int,
                     "fixture_source_sha256": doc["binding"]["source_sha256"],
                 }),
             )
+        elif configured_key_slot is not None:
+            if row_native_keys is None or row not in row_native_keys:
+                raise SourceConfigurationBindingError(
+                    "configured source_native_key_slot requires row_native_keys after a permitted decode")
+            native_key = row_native_keys[row]
+            if not isinstance(native_key, (ExactRef, TypedAbsence)):
+                raise SourceConfigurationBindingError(
+                    "row_native_keys values must be exact ExactRef/TypedAbsence witnesses")
         else:
             native_key = TypedAbsence(
                 "UNKNOWN",
@@ -333,6 +347,7 @@ def build_governed_c11_projection(
     *,
     source_sha256: str | None = None,
     row_count: int | None = None,
+    row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None,
 ) -> GovernedC11Projection:
     """Construct the actual ``GovernedC11Projection`` from a validated config.
 
@@ -350,7 +365,8 @@ def build_governed_c11_projection(
     questions_by_id = {
         section["question_id"]: _question(section) for section in doc["questions"]
     }
-    respondents = _respondents(doc, active_rows=active_rows, universes=universes)
+    respondents = _respondents(
+        doc, active_rows=active_rows, universes=universes, row_native_keys=row_native_keys)
     row_bindings = tuple(
         RowRespondentBinding(row, respondent.ref)
         for row, respondent in enumerate(respondents, 1)
@@ -424,6 +440,7 @@ def build_validated_c11_release_from_config(
     incidence: PhysicalSourceIncidence | None = None,
     source_sha256: str | None = None,
     row_count: int | None = None,
+    row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None,
     batch_size: int = 10_000,
 ):
     """Build and validate a native C11 release through the existing owner."""
@@ -440,7 +457,8 @@ def build_validated_c11_release_from_config(
         active_sha = active_sha or incidence.source_sha256
         active_rows = active_rows or incidence.row_count
     projection = build_governed_c11_projection(
-        config, source_sha256=active_sha, row_count=active_rows)
+        config, source_sha256=active_sha, row_count=active_rows,
+        row_native_keys=row_native_keys)
     _verify_transport(projection, stream=stream, incidence=incidence)
     if stream is not None:
         return build_validated_source_backed_c11_release_from_stream(stream, projection)
@@ -451,6 +469,7 @@ def build_source_backed_c11_repository_from_config(
     config: SourceConfig | Mapping[str, Any],
     source: ExactPhysicalCellStream | PhysicalSourceIncidence,
     *,
+    row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None,
     cache: Any = None,
     batch_size: int = 10_000,
 ):
@@ -458,6 +477,7 @@ def build_source_backed_c11_repository_from_config(
     if not isinstance(source, (ExactPhysicalCellStream, PhysicalSourceIncidence)):
         raise SourceConfigurationFactoryError("existing physical transport is required")
     projection = build_governed_c11_projection(
-        config, source_sha256=source.source_sha256, row_count=source.row_count)
+        config, source_sha256=source.source_sha256, row_count=source.row_count,
+        row_native_keys=row_native_keys)
     return build_source_backed_c11_repository(
         source, projection, cache=cache, batch_size=batch_size)
