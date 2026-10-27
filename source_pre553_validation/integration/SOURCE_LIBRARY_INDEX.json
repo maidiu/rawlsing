@@ -1,0 +1,1311 @@
+{
+  "baseline": {
+    "exact_relation_matches": 18250,
+    "original_items": 18276,
+    "physical_columns": 18413,
+    "sources": 35,
+    "unmatched_relation_ids": 26
+  },
+  "counts": {
+    "available": 32,
+    "available_original_items": 17057,
+    "available_physical_slots": 17194,
+    "other_incomplete": 0,
+    "pending": 3
+  },
+  "frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
+  "frozen_p3": "519355ec2215409b40d566ef13c3b21f611e0726",
+  "pending_source_ids": [
+    "SRC33",
+    "SRC34",
+    "SRC35"
+  ],
+  "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+  "schema": "PYAT_R157_SOURCE_LIBRARY_INDEX@1.0.0",
+  "sources": [
+    {
+      "counts": {
+        "coordinate_slots": 5,
+        "original_items": 144,
+        "physical_slots": 144,
+        "questions": 129,
+        "response_slots": 129,
+        "routing_rules": 129,
+        "weight_slots": 5
+      },
+      "details": [],
+      "family": "Afrobarometer",
+      "fixture_config_file_sha256": "4eda3129dc2e893020069f970746d1cd09eb80c2d44bcfad1130cff1dacd1df8",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC01/SRC01.full.fixture.config.json",
+      "fixture_file_sha256": "f3c0f9b954011ed7a78127578d6fefe61a4209544544ad0399b8de0b1345909e",
+      "fixture_path": "source_pre553_validation/SRC01/SRC01.full.fixture.json",
+      "fixture_source_sha256": "0fd79157c8e215b4acd6e5cf1aeaa8233cb0568a76a18e5f2f930404b3a99254",
+      "held": {
+        "held_by_disposition": {
+          "HELD_RANKED_TOPOLOGY": 2,
+          "HELD_UNMATCHED_RELATION": 2
+        },
+        "held_slots": 4
+      },
+      "lane": "AFRO",
+      "native_results_file_sha256": "eadcc751cefe699586af29eb8f34d2ddd8433a643ada6f70627d5f67f54899cd",
+      "native_results_path": "source_pre553_validation/SRC01/FULL_NATIVE_RESULTS.json",
+      "original_config_canonical_sha256": "bd30e23139c3c7f4fc7162522bc595e977795f5c5edf3abb40fc3ae76b085ac5",
+      "original_config_file_sha256": "e3f9d1c4393357361dc8f601e3e89fc7d60f6da88156d58866dff628131ae584",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC01/SRC01.config.json",
+      "release_ref": {
+        "content_hash": "da262dcd4c5c19e0a74ad522d0e65673f41b1b27014ca3f0b624f0be0143db7e",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Afrobarometer/R1"
+      },
+      "source_id": "SRC01",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "R1"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 96,
+        "original_items": 348,
+        "physical_slots": 348,
+        "questions": 249,
+        "response_slots": 249,
+        "routing_rules": 249,
+        "weight_slots": 2
+      },
+      "details": [],
+      "family": "Afrobarometer",
+      "fixture_config_file_sha256": "4b312e9d09bbb764f807fb79fad289329b8d080aeb852f5a87ccc844e7174f13",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC02/SRC02.full.fixture.config.json",
+      "fixture_file_sha256": "a05f18461f4f5a50eeb1b7dd432074528ddaa9836f3e274e19ceb074546e1dd2",
+      "fixture_path": "source_pre553_validation/SRC02/SRC02.full.fixture.json",
+      "fixture_source_sha256": "8cc1b5a5b02a5284e94f693fe3e4ca63dbc2985b02621d9af4bc26418ad26755",
+      "held": {
+        "held_by_disposition": {},
+        "held_slots": 0
+      },
+      "lane": "AFRO",
+      "native_results_file_sha256": "ec3a824bb70723fab681836d880172c1105a33cc091e109e32be3c1198d303b1",
+      "native_results_path": "source_pre553_validation/SRC02/FULL_NATIVE_RESULTS.json",
+      "original_config_canonical_sha256": "18e09fe5c633db5ebc6cb6ff3ab1d748e2c3255cf8140f2cde2dcb134b12551d",
+      "original_config_file_sha256": "fa82ddc715e848a8faca8c7c2139b57d17914ddf8a24e11397db5becbe55e14a",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC02/SRC02.config.json",
+      "release_ref": {
+        "content_hash": "293e2a0884b205a18228f4f131c5b0627d333978c6a2017ffcced2c4aeb3a1db",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Afrobarometer/R5"
+      },
+      "source_id": "SRC02",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "R5"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 101,
+        "original_items": 421,
+        "physical_slots": 421,
+        "questions": 310,
+        "response_slots": 310,
+        "routing_rules": 310,
+        "weight_slots": 4
+      },
+      "details": [],
+      "family": "Afrobarometer",
+      "fixture_config_file_sha256": "c2baf46ecff7e4e2647e72521c86a7f0f734adee39dcc10b3326d43755409209",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC03/SRC03.full.fixture.config.json",
+      "fixture_file_sha256": "78f5882c54a3099c8a275d7c9b4b6109792b688f048ce7c407b83fc4377a3bf4",
+      "fixture_path": "source_pre553_validation/SRC03/SRC03.full.fixture.json",
+      "fixture_source_sha256": "a2afb31af8ea52739f15fb492c9fd5d609f9b7e1b4c162219fab4f478d2125f0",
+      "held": {
+        "held_by_disposition": {
+          "HELD_RANKED_TOPOLOGY": 5
+        },
+        "held_slots": 5
+      },
+      "lane": "AFRO",
+      "native_results_file_sha256": "39746fa88a4784694815fe7c9a9caf034ea108cac1e5da225d3abfcb4d64b98c",
+      "native_results_path": "source_pre553_validation/SRC03/FULL_NATIVE_RESULTS.json",
+      "original_config_canonical_sha256": "b5d2f5023c641786de398b6a178b43d7215d39a3ac3f104b7ec68ceb51235b15",
+      "original_config_file_sha256": "98f50b4a236345845ab034314a1820c56f1512820f5c5cc17a925df1fb86a80d",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC03/SRC03.config.json",
+      "release_ref": {
+        "content_hash": "b8f39c3d8905f5d87e55720b05d144cb24f4a60e91e72b9146877c0b87d60a7f",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Afrobarometer/R9"
+      },
+      "source_id": "SRC03",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "R9"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 3,
+        "original_items": 181,
+        "physical_slots": 181,
+        "questions": 178,
+        "response_slots": 178,
+        "routing_rules": 178,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "Arab Barometer",
+      "fixture_config_file_sha256": "7f69af5cfafe07123c211707df353b37da4e9375adfa6e55c5df42a930cfebaa",
+      "fixture_config_path": "source_pre553_validation/SRC04/fixture.config.json",
+      "fixture_file_sha256": "e02e85388de86aa0ce66fa37ac59a6d3071537ea514788a54baf3964cbb44353",
+      "fixture_path": "source_pre553_validation/SRC04/fixture.json",
+      "fixture_source_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b",
+      "held": {
+        "held_by_disposition": {},
+        "held_slots": 0
+      },
+      "lane": "ARAB",
+      "native_results_file_sha256": "c008704857b415e1a4515e55ae417097836fa37d628a0e521e9715d839fe5ee7",
+      "native_results_path": "source_pre553_validation/SRC04/VALIDATION_RESULTS.json",
+      "original_config_canonical_sha256": "0e86814b62eb51dc9da22793b6de3e3598c3415632accb80f33bac965185f284",
+      "original_config_file_sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC04/source.config.json",
+      "release_ref": {
+        "content_hash": "9026fa33bb5739b87b06309f12e1d31fe6fd21fb471237eda870d6d278d47f42",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC04"
+      },
+      "source_id": "SRC04",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "I"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 19,
+        "original_items": 468,
+        "physical_slots": 468,
+        "questions": 448,
+        "response_slots": 448,
+        "routing_rules": 448,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "Arab Barometer",
+      "fixture_config_file_sha256": "18dd97aa3de517f95b183ea34c801b3b72959462783a41443d067b53bfc3d5ed",
+      "fixture_config_path": "source_pre553_validation/SRC05/fixture.config.json",
+      "fixture_file_sha256": "defc83527e047a6fe4a3e285db75ff8a090f37b5b5405b652fe3fbc47e14c5ef",
+      "fixture_path": "source_pre553_validation/SRC05/fixture.json",
+      "fixture_source_sha256": "db0657f9d186a81e3850ed75d20a14a6690e0e7fc5e16499247e04b540d358ef",
+      "held": {
+        "held_by_disposition": {
+          "HELD_EXACT_SOURCE_LIMITATION": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "ARAB",
+      "native_results_file_sha256": "be31a24eeccc707088cae83dceb1ab1d0f1b483d7e0a40ad6b26c051ed3d196f",
+      "native_results_path": "source_pre553_validation/SRC05/VALIDATION_RESULTS.json",
+      "original_config_canonical_sha256": "007af72becf3142a8a4f6118eac599367f926e2d9a872db05dbf3222e99d1dae",
+      "original_config_file_sha256": "19f8fc058da1837d6183909587243abcb256fcc078ca367796eb0f31efa859a7",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC05/source.config.json",
+      "release_ref": {
+        "content_hash": "3a3c35f9611d54793fa3aa63ccbe921b7e6388deac55a8ea8ede50eb732b9f3f",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC05"
+      },
+      "source_id": "SRC05",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "II"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 17,
+        "original_items": 359,
+        "physical_slots": 359,
+        "questions": 337,
+        "response_slots": 337,
+        "routing_rules": 337,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "Arab Barometer",
+      "fixture_config_file_sha256": "ebde8c33031aac91f236dceccda076ccd1a0b39b03969b0bc7f6cf6c4ffff766",
+      "fixture_config_path": "source_pre553_validation/SRC06/fixture.config.json",
+      "fixture_file_sha256": "6120ace18f0a23dc6237d25a9e3d62aae56472f3aa51eb8580011216a1675b69",
+      "fixture_path": "source_pre553_validation/SRC06/fixture.json",
+      "fixture_source_sha256": "b8756d19f2fdef8b6b7b61c94e47248ba6624099eff6a4cc5310ada0ec128c8f",
+      "held": {
+        "held_by_disposition": {
+          "HELD_EXACT_SOURCE_LIMITATION": 5
+        },
+        "held_slots": 5
+      },
+      "lane": "ARAB",
+      "native_results_file_sha256": "f554d7d23bb45418bbf9f04dfcd901d82e9a26b0630603409690af5191d01b14",
+      "native_results_path": "source_pre553_validation/SRC06/VALIDATION_RESULTS.json",
+      "original_config_canonical_sha256": "4d576a468c4e3da41d804e0ab9180a4f9feedaca2b3c5a640ce8f02f873493c4",
+      "original_config_file_sha256": "41537ccb3c61bac057fd5c462ec2562de20988465f92a1d317f2ce01046e5114",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC06/source.config.json",
+      "release_ref": {
+        "content_hash": "774e48b41a70553ffdabfa8918d4d298eef4f84162432982aa14a59d15cd018d",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC06"
+      },
+      "source_id": "SRC06",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "V"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 38,
+        "original_items": 690,
+        "physical_slots": 690,
+        "questions": 651,
+        "response_slots": 651,
+        "routing_rules": 651,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "Arab Barometer",
+      "fixture_config_file_sha256": "3d99894746fac07aed655c571a6974ec48b46e27973fc98e7155fa826ba28c84",
+      "fixture_config_path": "source_pre553_validation/SRC07/fixture.config.json",
+      "fixture_file_sha256": "87f4aadeb08809f99c0ef18108a63e9db44b1b9c4a492bb5ba7f38c6714c6929",
+      "fixture_path": "source_pre553_validation/SRC07/fixture.json",
+      "fixture_source_sha256": "04c18324d294d6cb11e3693acde82bdf417b97c74ae39b5b115c27317405b57c",
+      "held": {
+        "held_by_disposition": {
+          "HELD_EXACT_SOURCE_LIMITATION": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "ARAB",
+      "native_results_file_sha256": "8c529480e54c3bdce9d2a3ad53d5de86fcccf6e132bb7f01955225f04ca33f2b",
+      "native_results_path": "source_pre553_validation/SRC07/VALIDATION_RESULTS.json",
+      "original_config_canonical_sha256": "9d93f5d85db3d7a92daeb536ade7ac01e465efb5bf0d5019d6f88f21dc340c97",
+      "original_config_file_sha256": "4252ec7146dd598ca90aa90c3bb7cd3bd5ca6b673817915189db3cf38ec70b9f",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC07/source.config.json",
+      "release_ref": {
+        "content_hash": "276c183d7cd9dfbb988285e85716b7d088624b9e7de53100423f3584b15cd10d",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC07"
+      },
+      "source_id": "SRC07",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "VIII"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 20,
+        "original_items": 217,
+        "physical_slots": 217,
+        "questions": 187,
+        "response_slots": 187,
+        "routing_rules": 187,
+        "weight_slots": 9
+      },
+      "details": [],
+      "family": "Asian Barometer",
+      "fixture_config_file_sha256": "cae9c4f42aaed2124cbbd91663e6815700513a243a37601e6cfd10ff4bf1a835",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC08/SRC08.full.fixture.config.json",
+      "fixture_file_sha256": "4baa5f46868d343cd59938e5ea2794540ed5efc423cd63f6f46b3707e8157e6d",
+      "fixture_path": "source_pre553_validation/SRC08/SRC08.full.fixture.json",
+      "fixture_source_sha256": "dc9f59cf5182f3c19a788cb0fe5b6d39e12693458e8d1436e9f2e086d2da2b89",
+      "held": {
+        "held_by_disposition": {},
+        "held_slots": 0
+      },
+      "lane": "ASIAN",
+      "native_results_file_sha256": "4ef2c4385cee6e8c6230a206b40a88c967efe99123a9142be61e7de096249494",
+      "native_results_path": "source_pre553_validation/SRC08/FULL_NATIVE_RESULTS.json",
+      "original_config_canonical_sha256": "cf13abcca13f2e3abde56ff7b875cb13eb4c1b7e710b4be364c9c348bc2fe89a",
+      "original_config_file_sha256": "80c4f34bcc6496a0b1152d35a0681d79d10963752d471a4df6aae43c4cd7a6a9",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC08/SRC08.config.json",
+      "release_ref": {
+        "content_hash": "66c53fef01cd318543c9addf1df382282efb650e7212b7ddfc6d6c7feb44f3e3",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Asian Barometer/W1"
+      },
+      "source_id": "SRC08",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "W1"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 46,
+        "original_items": 289,
+        "physical_slots": 289,
+        "questions": 240,
+        "response_slots": 240,
+        "routing_rules": 240,
+        "weight_slots": 2
+      },
+      "details": [],
+      "family": "Asian Barometer",
+      "fixture_config_file_sha256": "3c139f24a5ca511f65d16e5eff0135756136735ec60a6395c26ede7fea4e1895",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC09/SRC09.full.fixture.config.json",
+      "fixture_file_sha256": "9300c0364e2664db643ebbfb366d42d857b1df6fac7bcdcd249210c5167cac13",
+      "fixture_path": "source_pre553_validation/SRC09/SRC09.full.fixture.json",
+      "fixture_source_sha256": "fa0c989e71cce275316e307fdb5925f1a3c1a11952b3cbbce35e4822666b6d4b",
+      "held": {
+        "held_by_disposition": {},
+        "held_slots": 0
+      },
+      "lane": "ASIAN",
+      "native_results_file_sha256": "f3504b8fb33baedfc00b0d7288234a72ba82f247b81e183054b0026f142bd693",
+      "native_results_path": "source_pre553_validation/SRC09/FULL_NATIVE_RESULTS.json",
+      "original_config_canonical_sha256": "1cc204b6fd709247b0fa2423ec8f95de53a2c3c74a7b6d09d59394ce77e020cf",
+      "original_config_file_sha256": "d353ad11d8320a0d72bee4a61eb05cadc9c6b64725aab2453445d4a49e27fdc9",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC09/SRC09.config.json",
+      "release_ref": {
+        "content_hash": "15f65920ec025a02a67b1572c3ce43f343186322f7dd2c381f18733c2d58194b",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Asian Barometer/W4"
+      },
+      "source_id": "SRC09",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "W4"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 50,
+        "original_items": 308,
+        "physical_slots": 308,
+        "questions": 204,
+        "response_slots": 204,
+        "routing_rules": 204,
+        "weight_slots": 1
+      },
+      "details": [],
+      "family": "Asian Barometer",
+      "fixture_config_file_sha256": "e4e78992e24713381b463bf6e4386b84917b2c3aa04499f858f33e4a785ef1fe",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC10/SRC10.full.fixture.config.json",
+      "fixture_file_sha256": "89a067e7aeb9572dc9b06b964c4bab0eae0f513b683665d8c103550bb374194b",
+      "fixture_path": "source_pre553_validation/SRC10/SRC10.full.fixture.json",
+      "fixture_source_sha256": "0f098487c9446fd31fda2863ab736f058d354794eda656d865dcda42887d25da",
+      "held": {
+        "held_by_disposition": {
+          "HELD_BLOCKED_RESPONSE": 52
+        },
+        "held_slots": 52
+      },
+      "lane": "ASIAN",
+      "native_results_file_sha256": "3bccba6d9e0a610be0d57d9ffcf37ac056c1ac1e658b3bd3f6d83f7c1e76bfc8",
+      "native_results_path": "source_pre553_validation/SRC10/FULL_NATIVE_RESULTS.json",
+      "original_config_canonical_sha256": "61aed30d0cedd1279ab779b0a0985950a7710d394b5db590af2c6d2fb469c551",
+      "original_config_file_sha256": "18121525eeb8014b5cdc657d79e53433a5fd5761a071873fd46b5089b782c243",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC10/SRC10.config.json",
+      "release_ref": {
+        "content_hash": "bb844d2bbcac6ed6433ffffa453117c90fbf7ca620faece5aec8514f82d2a7d5",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Asian Barometer/W5"
+      },
+      "source_id": "SRC10",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "W5"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 25,
+        "original_items": 370,
+        "physical_slots": 370,
+        "questions": 331,
+        "response_slots": 331,
+        "routing_rules": 331,
+        "weight_slots": 1
+      },
+      "details": [],
+      "family": "EVS",
+      "fixture_config_file_sha256": "898efa85e5f1d2b4a009f54ec0c4a3aa083e88fafb0a94023c30c080ad6616ea",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC11/SRC11.full.fixture.config.json",
+      "fixture_file_sha256": "cfab25e73af6f909d4617dff6a6a40d8a53ba99cb313fe87075c079c161138a6",
+      "fixture_path": "source_pre553_validation/SRC11/SRC11.full.fixture.json",
+      "fixture_source_sha256": "223a8d9fd6995b8f1d23cc082873cb44fb0ac8f36a6c3702e7be9ce2084a2d8e",
+      "held": {
+        "held_by_disposition": {
+          "HELD_GENERATION_FORBIDDEN": 5,
+          "HELD_RANKED_TOPOLOGY": 1,
+          "HELD_UNKNOWN": 6
+        },
+        "held_slots": 12
+      },
+      "lane": "EVS",
+      "native_results_file_sha256": "d725e3e0abbf7203d1e907cd46017ac90187d4ddc68e2fa36376cddc30977008",
+      "native_results_path": "source_pre553_validation/SRC11/FULL_NATIVE_RESULTS.json",
+      "original_config_canonical_sha256": "f14a865284f248404b715c1ded52c20ae89e7d41d8bb4e30437da1772969b6d9",
+      "original_config_file_sha256": "1ef8a092cb3a2aaa2c50ec54b0af9b61f7fba346b36b50f3b6a731dd82eb4c2d",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC11/SRC11.config.json",
+      "release_ref": {
+        "content_hash": "ebaf9b541a1d63fe1367c3970de13aef82f53dcd5456a6bc94b459be2b10d67e",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/1981"
+      },
+      "source_id": "SRC11",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "1981"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 31,
+        "original_items": 390,
+        "physical_slots": 390,
+        "questions": 336,
+        "response_slots": 336,
+        "routing_rules": 336,
+        "weight_slots": 2
+      },
+      "details": [],
+      "family": "EVS",
+      "fixture_config_file_sha256": "086194acd1f9c8f38eb7d9cf4db2ad2c46b6768eb3fcdc5ad4c3741571e29722",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC12/SRC12.full.fixture.config.json",
+      "fixture_file_sha256": "c4e8d09d39728b75c2303679903800517a86fa7ecc841bf664a5f8cb07350a61",
+      "fixture_path": "source_pre553_validation/SRC12/SRC12.full.fixture.json",
+      "fixture_source_sha256": "ba17dc259a939b654dcea88323bd8c14c7765f98d81dd3fb8a4ca49b5e8a551b",
+      "held": {
+        "held_by_disposition": {
+          "HELD_GENERATION_FORBIDDEN": 7,
+          "HELD_RANKED_TOPOLOGY": 6,
+          "HELD_UNKNOWN": 7
+        },
+        "held_slots": 20
+      },
+      "lane": "EVS",
+      "native_results_file_sha256": "25e6777b814c232bce59a653791e8e4647a2129282b59c34fb327d02e1f4c804",
+      "native_results_path": "source_pre553_validation/SRC12/FULL_NATIVE_RESULTS.json",
+      "original_config_canonical_sha256": "8a409806c80aa67c878b30027a648d4a64c378d9897c9df9acb6acd895b80cb9",
+      "original_config_file_sha256": "e1750b124b4bc48bf4f9be4a065ec6f53f3c8c7d221b15fe5204ca6fba49be7c",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC12/SRC12.config.json",
+      "release_ref": {
+        "content_hash": "ef67c234b8def9654f280317b3bf9917f038ead98d07c31f7c82c1dd6f53eb81",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/1990"
+      },
+      "source_id": "SRC12",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "1990"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 45,
+        "original_items": 513,
+        "physical_slots": 513,
+        "questions": 359,
+        "response_slots": 359,
+        "routing_rules": 359,
+        "weight_slots": 2
+      },
+      "details": [],
+      "family": "EVS",
+      "fixture_config_file_sha256": "ad921008028a0d2fbbfd5703ca1f0fd3d51529e260c5f43eae5fb54384389a57",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC13/SRC13.full.fixture.config.json",
+      "fixture_file_sha256": "b87e52e9fe26eda14b33c6d4f03d1325fc264df61ae2ba7f30be7e462ba879d4",
+      "fixture_path": "source_pre553_validation/SRC13/SRC13.full.fixture.json",
+      "fixture_source_sha256": "ecfecea5cdc9f0a066a1ec63bc223c87d6e3d2014e7252df75e9da71999983d9",
+      "held": {
+        "held_by_disposition": {
+          "HELD_GENERATION_FORBIDDEN": 6,
+          "HELD_RANKED_TOPOLOGY": 9,
+          "HELD_UNKNOWN": 91
+        },
+        "held_slots": 106
+      },
+      "lane": "EVS",
+      "native_results_file_sha256": "bc38dd2bbfe1f3ed9a1598687d497027b310ec0a677f246abc59969eb1673c06",
+      "native_results_path": "source_pre553_validation/SRC13/FULL_NATIVE_RESULTS.json",
+      "original_config_canonical_sha256": "7aaf890c7654f542e0af25da503ed96fa76d9ff0a1067eb9d995820ac590e1c7",
+      "original_config_file_sha256": "c1994ad76ad118ebca9600b44aff24d3e197ff04b1b6c717ab6e5f3f235a366e",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC13/SRC13.config.json",
+      "release_ref": {
+        "content_hash": "52e51eb5948550d6d050a359eac0f6a04ea940bd707501910f724e4adf9a1c86",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/1999"
+      },
+      "source_id": "SRC13",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "1999"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 71,
+        "original_items": 477,
+        "physical_slots": 477,
+        "questions": 384,
+        "response_slots": 384,
+        "routing_rules": 384,
+        "weight_slots": 2
+      },
+      "details": [],
+      "family": "EVS",
+      "fixture_config_file_sha256": "a6e761867b00653b7f65a1947d2249c83aec8cf1834b8ae9b3c1eaf2c813a7d4",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC14/SRC14.full.fixture.config.json",
+      "fixture_file_sha256": "e2350a327ed692f2eb22dfcd431bc27ca0a17fee38a528a68e663efc7fb3b962",
+      "fixture_path": "source_pre553_validation/SRC14/SRC14.full.fixture.json",
+      "fixture_source_sha256": "a2664bfd1a6fd4ff300d64cc28296b9acd0e97a99c7305588737610fd8cfe3de",
+      "held": {
+        "held_by_disposition": {
+          "HELD_GENERATION_FORBIDDEN": 8,
+          "HELD_RANKED_TOPOLOGY": 4,
+          "HELD_UNKNOWN": 7
+        },
+        "held_slots": 19
+      },
+      "lane": "EVS",
+      "native_results_file_sha256": "16fcf5d908b2088a8057ce18f3394f0fb57df1fd1a8aac321b150b823928bf9e",
+      "native_results_path": "source_pre553_validation/SRC14/FULL_NATIVE_RESULTS.json",
+      "original_config_canonical_sha256": "579640288b5af397c6a2edf5761898b10d5d6203a5d4e133fc9071c3aed620f0",
+      "original_config_file_sha256": "a7bcd7cc30a5d985284b8232ef9a68b6c61ac9eed93afd95a41ba66851704e10",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC14/SRC14.config.json",
+      "release_ref": {
+        "content_hash": "990464d281caae853880e920b3269eff83e97c517c3ffbe561920a788d823dd3",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/2008"
+      },
+      "source_id": "SRC14",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2008"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 86,
+        "original_items": 474,
+        "physical_slots": 474,
+        "questions": 337,
+        "response_slots": 337,
+        "routing_rules": 337,
+        "weight_slots": 4
+      },
+      "details": [],
+      "family": "EVS",
+      "fixture_config_file_sha256": "027d3303e8e60ac1a1b9191b7bd2abe76729f0d3f1dfc82671398c35d6be4e78",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC15/SRC15.full.fixture.config.json",
+      "fixture_file_sha256": "16dc80f7d0b60c94f29b840cff12bff5052fb26b314705bb845f68d73cf6bfca",
+      "fixture_path": "source_pre553_validation/SRC15/SRC15.full.fixture.json",
+      "fixture_source_sha256": "c76e04b71e906a520fd93e2a2e175b63556a0391f91ebe6deb2ec198ef504f98",
+      "held": {
+        "held_by_disposition": {
+          "HELD_GENERATION_FORBIDDEN": 9,
+          "HELD_RANKED_TOPOLOGY": 3,
+          "HELD_UNKNOWN": 34
+        },
+        "held_slots": 46
+      },
+      "lane": "EVS",
+      "native_results_file_sha256": "549ed58f50c21869f147f9282d8868cbe4a585ab205c66ef613052cdb20c14b4",
+      "native_results_path": "source_pre553_validation/SRC15/FULL_NATIVE_RESULTS.json",
+      "original_config_canonical_sha256": "e5e792ffab59ef9929a51225780e5e8d91488d7a5e50f265a09f805cd5d56e93",
+      "original_config_file_sha256": "ab5a971ea33a387e9df4c70158e0c4d68dd69ed5ed684252e877826e642c089f",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC15/SRC15.config.json",
+      "release_ref": {
+        "content_hash": "abcec5d8ce73b3d923292b9e33f49821ffc27e05595825237067682c9411821f",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/2017"
+      },
+      "source_id": "SRC15",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2017"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 216,
+        "physical_slots": 216,
+        "questions": 216,
+        "response_slots": 157,
+        "routing_rules": 157,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "GSS",
+      "fixture_config_file_sha256": "8008f99c78f17d2d240266209a55a6a62033d41f84688b9af9c48ce82bdfafbe",
+      "fixture_config_path": "source_pre553_validation/SRC16/SRC16.fixture.config.json",
+      "fixture_file_sha256": "8abf59f4f8aa509f3ae0eee7a8335a7f25d5f5f90b60c9c2d9b566e2c579f062",
+      "fixture_path": "source_pre553_validation/SRC16/SRC16.fixture.json",
+      "fixture_source_sha256": "2aa59d44b87cd41059ddfa1b643228b423c3fb3d1aabbeef374ec77d58afc431",
+      "held": {
+        "held_by_disposition": {
+          "HELD_WEIGHT_DESIGN_UNRESOLVED": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "GSS",
+      "native_results_file_sha256": "7ac8461d5c32f11662cec888f0c4410a5a38103a615249585213a1b392ebd013",
+      "native_results_path": "source_pre553_validation/SRC16/SRC16.validation-results.json",
+      "original_config_canonical_sha256": "c26e8e71afbc629a9f19708cedb7b38cc2ba3cefb9ac53f11e0608044e64b534",
+      "original_config_file_sha256": "1106de3e086032f5ac0b26fee0b56a147722399c80ac2841b70f0b851dea93b7",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC16/SRC16.source.config.json",
+      "release_ref": {
+        "content_hash": "08e6f7d92a3546f8944b4a30054623b4318dda758e4fe64e649c6531b262543a",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC16"
+      },
+      "source_id": "SRC16",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "1972"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 339,
+        "physical_slots": 339,
+        "questions": 339,
+        "response_slots": 279,
+        "routing_rules": 279,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "GSS",
+      "fixture_config_file_sha256": "83d7810ef1bae288b3ba9a08c49708cf3986c1db059555a0088532dc0a7daf30",
+      "fixture_config_path": "source_pre553_validation/SRC17/SRC17.fixture.config.json",
+      "fixture_file_sha256": "b1dbe3e39524c78b479e202ae3d10deff83d58ea8dcb671e84f8966d9e135800",
+      "fixture_path": "source_pre553_validation/SRC17/SRC17.fixture.json",
+      "fixture_source_sha256": "e85b8fc3d9c11f14bf123f32fdfea5bda3b6d37a99a0f7225cd827638c517805",
+      "held": {
+        "held_by_disposition": {
+          "HELD_WEIGHT_DESIGN_UNRESOLVED": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "GSS",
+      "native_results_file_sha256": "fd3106c2c8bd35be02923eac107f43e678e77f60f621e3df32545a1d62d31963",
+      "native_results_path": "source_pre553_validation/SRC17/SRC17.validation-results.json",
+      "original_config_canonical_sha256": "3f1eb83abe61415e01b2f67bcfe34ee6fe61d69d3aef7161be5e6e41e2a7be07",
+      "original_config_file_sha256": "ca791189e208c9b311a7261ac254ce5ffea35e9c13b4d6e2ec87e9e55a1ecca8",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC17/SRC17.source.config.json",
+      "release_ref": {
+        "content_hash": "e379c0d70358c897544a4e9d12af5518f5ea4f3e4f9e43c3da86696e18249a64",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC17"
+      },
+      "source_id": "SRC17",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "1973"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 675,
+        "physical_slots": 675,
+        "questions": 675,
+        "response_slots": 592,
+        "routing_rules": 592,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "GSS",
+      "fixture_config_file_sha256": "d1eb4c68239d252e0ad545afd3e43af2f4540ef978a00797fa9d46a4f3aad998",
+      "fixture_config_path": "source_pre553_validation/SRC18/SRC18.fixture.config.json",
+      "fixture_file_sha256": "7532af633ed12b1ff5f3d1bc404aa02db930df38a7f1c5efdf49dbdb5aac2b9a",
+      "fixture_path": "source_pre553_validation/SRC18/SRC18.fixture.json",
+      "fixture_source_sha256": "5c78f7fc28b2df8a18da19578446e2776a8f0eea345febf8feb78010221475b4",
+      "held": {
+        "held_by_disposition": {
+          "HELD_WEIGHT_DESIGN_UNRESOLVED": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "GSS",
+      "native_results_file_sha256": "7e37ef02aaed5f83d7e8297a3745791af7c83882be30b86ecff4b00a95c16693",
+      "native_results_path": "source_pre553_validation/SRC18/SRC18.validation-results.json",
+      "original_config_canonical_sha256": "0f99c1d482d02a8c61358a51bd369cb3b992aaf389a889b0319aa8b295966fb3",
+      "original_config_file_sha256": "954692157d4e341110228f60f51de855c901a11b81878525f8f774c79b7cca5b",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC18/SRC18.source.config.json",
+      "release_ref": {
+        "content_hash": "ee0bc1fabff5106a1d04af5e64d5b06bcc019d7f02faf4e5e88b2ce74a7867d4",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC18"
+      },
+      "source_id": "SRC18",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "1984"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 752,
+        "physical_slots": 752,
+        "questions": 752,
+        "response_slots": 694,
+        "routing_rules": 694,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "GSS",
+      "fixture_config_file_sha256": "a3dc23fedfd80f8af2a99fa15b86550f0be6fe2041023810310dacac11717cd4",
+      "fixture_config_path": "source_pre553_validation/SRC19/SRC19.fixture.config.json",
+      "fixture_file_sha256": "0137f81e225e5408401cc8a40ad9ce1c0b815606f102803c0516724e1c26d258",
+      "fixture_path": "source_pre553_validation/SRC19/SRC19.fixture.json",
+      "fixture_source_sha256": "a72fb46d03d6d2cb93489a4c69afc61a75af5eb8c165e974c04432fa0834ff8e",
+      "held": {
+        "held_by_disposition": {
+          "HELD_WEIGHT_DESIGN_UNRESOLVED": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "GSS",
+      "native_results_file_sha256": "fa8b4bfc8375b3e868cb0db1d76d8fe008e359d7d50aa2650a60b9bfa5f11897",
+      "native_results_path": "source_pre553_validation/SRC19/SRC19.validation-results.json",
+      "original_config_canonical_sha256": "07471d6310939d9348bb4d74aaefd31dd833bcd01727022535d7d1148dceb55f",
+      "original_config_file_sha256": "90bb1812795eb1e18fe39d70d878bb35bd406bf904d9e713fd469b3096d60904",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC19/SRC19.source.config.json",
+      "release_ref": {
+        "content_hash": "84680af7ca37e3c8f012cd92702f07a53d2ca9daf89deb6212a49353d8f33fcf",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC19"
+      },
+      "source_id": "SRC19",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "1993"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 1119,
+        "physical_slots": 1119,
+        "questions": 1119,
+        "response_slots": 1021,
+        "routing_rules": 1021,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "GSS",
+      "fixture_config_file_sha256": "dfe0b987423f4945c5ca4cb954e29b0fa458faceab43d55659501b2ea18b4029",
+      "fixture_config_path": "source_pre553_validation/SRC20/SRC20.fixture.config.json",
+      "fixture_file_sha256": "6d47d0a89749c8922b9f7b54b4145bb122efbbe49274e2519f79e88f06a3e591",
+      "fixture_path": "source_pre553_validation/SRC20/SRC20.fixture.json",
+      "fixture_source_sha256": "c4e55d674e9445d6251f148971b5e6a80cded55865ab45e21d330b508e65dad1",
+      "held": {
+        "held_by_disposition": {
+          "HELD_WEIGHT_DESIGN_UNRESOLVED": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "GSS",
+      "native_results_file_sha256": "d8d3f972f386e99c70d832bd342fd433a75931dd06a96582b32eb7e6eca54584",
+      "native_results_path": "source_pre553_validation/SRC20/SRC20.validation-results.json",
+      "original_config_canonical_sha256": "e5e25188a819a8049c47698233329b83faa8dc05d6e0666778327efbea973ea2",
+      "original_config_file_sha256": "904f8076da807caa8d7698e9cc13052e0d99574ed4755b93acc2d4feceb6f035",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC20/SRC20.source.config.json",
+      "release_ref": {
+        "content_hash": "e2317ee077b3ae2ee7ba447a494c50c6bdf9bc3d3357b6c9ba0baa3c5901d2af",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC20"
+      },
+      "source_id": "SRC20",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2002"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 922,
+        "physical_slots": 922,
+        "questions": 922,
+        "response_slots": 592,
+        "routing_rules": 592,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "GSS",
+      "fixture_config_file_sha256": "9f153ce0529cc1216aaa2952b2e4dada81b9135566acfd8164a1178eeed04760",
+      "fixture_config_path": "source_pre553_validation/SRC21/SRC21.fixture.config.json",
+      "fixture_file_sha256": "5aafe0093a802152f08ee981f218ecc07e7ebef134ecda1326926f0e85a6831f",
+      "fixture_path": "source_pre553_validation/SRC21/SRC21.fixture.json",
+      "fixture_source_sha256": "0a5627c97153c95a3be57b0dc04718c578f964ace5288ad41f0c29c4663bfcb7",
+      "held": {
+        "held_by_disposition": {
+          "HELD_WEIGHT_DESIGN_UNRESOLVED": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "GSS",
+      "native_results_file_sha256": "f6483f43df636a4ca7a6c8ef4f5fb00cc0aea0cb848c50d97216c7d897902048",
+      "native_results_path": "source_pre553_validation/SRC21/SRC21.validation-results.json",
+      "original_config_canonical_sha256": "dd694fe4fda4b354c1ca97b9bc79e415b9c89215d15a0b142020b2868d7e9228",
+      "original_config_file_sha256": "f1bc95e5509179c33dabd9838f7eab2eb6f5c38013b66c57cf1c56a8361d7894",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC21/SRC21.source.config.json",
+      "release_ref": {
+        "content_hash": "231451b991512d77193ddfe60f5a6775c70882abc9235f884545c0c20b66ba0d",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC21"
+      },
+      "source_id": "SRC21",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2010"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 1018,
+        "physical_slots": 1018,
+        "questions": 1018,
+        "response_slots": 924,
+        "routing_rules": 924,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "GSS",
+      "fixture_config_file_sha256": "151e98d4f22c03becdce27b0588dcef79e72eb84efce0aa4c706afa0291f58fb",
+      "fixture_config_path": "source_pre553_validation/SRC22/SRC22.fixture.config.json",
+      "fixture_file_sha256": "80b25aa1b313ede55188dff1a0871b7ee8a8f3618d47faf6313d247bc23111c7",
+      "fixture_path": "source_pre553_validation/SRC22/SRC22.fixture.json",
+      "fixture_source_sha256": "df9809bca35b0fe1df3635536d3048b44414a46332eb23f9de85398746d84a53",
+      "held": {
+        "held_by_disposition": {
+          "HELD_WEIGHT_DESIGN_UNRESOLVED": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "GSS",
+      "native_results_file_sha256": "57a47763f495f93fd3b2fda7fb89afc076e77d180e704b7ab292ae57fa828099",
+      "native_results_path": "source_pre553_validation/SRC22/SRC22.validation-results.json",
+      "original_config_canonical_sha256": "18432df0bf82ceeecf82d047e76a6c60376dabc762be04ef7800a8e2f2987199",
+      "original_config_file_sha256": "65507f6d8462170f175b4bfaa1df2fbc17a7bcc3ca261d00a2c6aefbe5d23729",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC22/SRC22.source.config.json",
+      "release_ref": {
+        "content_hash": "22869e1c15b4165d2c1a45a374c7b994ad0333983e1b0231ec0c445e6375d513",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC22"
+      },
+      "source_id": "SRC22",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2016"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 980,
+        "physical_slots": 980,
+        "questions": 980,
+        "response_slots": 879,
+        "routing_rules": 879,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "GSS",
+      "fixture_config_file_sha256": "8eceb064886495cbf561dae5b3eeb7bdb84ec0474578c4c08a5598104887fb48",
+      "fixture_config_path": "source_pre553_validation/SRC23/SRC23.fixture.config.json",
+      "fixture_file_sha256": "9cec3d8fbdc40baf820d8c24dbed2dd4f587e75699fddbe2a1dfc15a72204f99",
+      "fixture_path": "source_pre553_validation/SRC23/SRC23.fixture.json",
+      "fixture_source_sha256": "cd92496de62cdd6a440919b7768bf6e89f20646534210d02b473c1f409966fc9",
+      "held": {
+        "held_by_disposition": {
+          "HELD_WEIGHT_DESIGN_UNRESOLVED": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "GSS",
+      "native_results_file_sha256": "582b07c875bdf22bef1245e05a43576984b094c53fa6533540a932cd08e67ad5",
+      "native_results_path": "source_pre553_validation/SRC23/SRC23.validation-results.json",
+      "original_config_canonical_sha256": "6df0a09d0edb51fc8588f377bcc0d14005f9db75a99164c4c8544ae28a37f28b",
+      "original_config_file_sha256": "7e29602e127b9369a7af327de727aa11e94378e51f580f14324ed0ccfab1135c",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC23/SRC23.source.config.json",
+      "release_ref": {
+        "content_hash": "010aa726ecc111ea2165824417ab1c8bcd4035b32fb00d120bd8b5abcbb915e6",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC23"
+      },
+      "source_id": "SRC23",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2024"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 6,
+        "original_items": 203,
+        "physical_slots": 203,
+        "questions": 183,
+        "response_slots": 183,
+        "routing_rules": 183,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "Latinobarómetro",
+      "fixture_config_file_sha256": "0f3114661100fa7b3c7b562007ab66c72d7d7f4bd7efc4e80a93435639d91368",
+      "fixture_config_path": "source_pre553_validation/SRC24/fixture.config.json",
+      "fixture_file_sha256": "055b478a1bf958fe595cba74867909d41893e1aa6cae87ec9a7648eef47360d2",
+      "fixture_path": "source_pre553_validation/SRC24/fixture.json",
+      "fixture_source_sha256": "c7e3cd4ce10c795c08b5c97a0bbc57d8ef4ffd7da0cf30e0e3845c4b4e0333b9",
+      "held": {
+        "held_by_disposition": {
+          "HELD_EXACT_SOURCE_LIMITATION": 14
+        },
+        "held_slots": 14
+      },
+      "lane": "LATIN",
+      "native_results_file_sha256": "5f686a840569b2d3102781697eb3bae49d4324a00e14e3cfb9864e6e72cf6b1f",
+      "native_results_path": "source_pre553_validation/SRC24/VALIDATION_RESULTS.json",
+      "original_config_canonical_sha256": "a2b532f624ad70a1e81a075befbf930ec1264123c6906df500353bb0dff8c930",
+      "original_config_file_sha256": "8108d40a813134c96b67b1571466ad5ada791385a1faa9d3e9ecded79066766f",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC24/source.config.json",
+      "release_ref": {
+        "content_hash": "214de015475f919dc17cad231b7de1dc085c66085d30ebf75fd0a65cba68995e",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC24"
+      },
+      "source_id": "SRC24",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "1995"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 41,
+        "original_items": 414,
+        "physical_slots": 414,
+        "questions": 370,
+        "response_slots": 370,
+        "routing_rules": 370,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "Latinobarómetro",
+      "fixture_config_file_sha256": "a7aaa2e69f2250ad9dd9a328440811681f620bbdaae1afd9ac073887590213e8",
+      "fixture_config_path": "source_pre553_validation/SRC25/fixture.config.json",
+      "fixture_file_sha256": "6342bb54bd118dba3314b5bc64f18cba0287aea76a5487b81fa41365d1fe57b3",
+      "fixture_path": "source_pre553_validation/SRC25/fixture.json",
+      "fixture_source_sha256": "23ad09c64ca19fbf290883b459c460344291be50f2fc2bb4a71ed67d48230682",
+      "held": {
+        "held_by_disposition": {
+          "HELD_EXACT_SOURCE_LIMITATION": 3
+        },
+        "held_slots": 3
+      },
+      "lane": "LATIN",
+      "native_results_file_sha256": "0a8f5f900b4a421c503c8048921f72efa178a4ed5df85f699ecdf8c387e356a7",
+      "native_results_path": "source_pre553_validation/SRC25/VALIDATION_RESULTS.json",
+      "original_config_canonical_sha256": "455f0f27e70da8f92c8876b4cde8d5f248cd4166dd12e02184eed3b4f47176d6",
+      "original_config_file_sha256": "57ddf04286ab24481238866b0d9cbb6a601c7bb2734ebbbf4cbda040bae72a06",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC25/source.config.json",
+      "release_ref": {
+        "content_hash": "0edcbcdce3efaa1eace617c455624a252ec6ab87b3bd5aa5a3f60e1c6771aa9c",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC25"
+      },
+      "source_id": "SRC25",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2011"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 49,
+        "original_items": 195,
+        "physical_slots": 332,
+        "questions": 178,
+        "response_slots": 275,
+        "routing_rules": 178,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "Latinobarómetro",
+      "fixture_config_file_sha256": "b32f3a46eaa1700568d9e6061f0335e0928565a90830e19640e835ee18a207fa",
+      "fixture_config_path": "source_pre553_validation/SRC26/fixture.config.json",
+      "fixture_file_sha256": "0fa867df31ca84ce5f9db65e8d9e1abe750f620c52081ff62eceba06b90557fc",
+      "fixture_path": "source_pre553_validation/SRC26/fixture.json",
+      "fixture_source_sha256": "82a03fb50a1e31d1e3bbf933835a0c67523095ecbe83c335240ca402672ec669",
+      "held": {
+        "held_by_disposition": {
+          "HELD_EXACT_SOURCE_LIMITATION": 8
+        },
+        "held_slots": 8
+      },
+      "lane": "LATIN",
+      "native_results_file_sha256": "391998cdc24f9b6890ce4cd3e8bbefcda98c052a4bab6ff6f0317d97e47ca037",
+      "native_results_path": "source_pre553_validation/SRC26/VALIDATION_RESULTS.json",
+      "original_config_canonical_sha256": "35039455c945c9992e3ae340eb94f77695978afaaca24112cc6a5c8fecf5ce14",
+      "original_config_file_sha256": "dcd99425da198ac68ddba3d816d8e2c3d070426bb4cba3e5a70c5c30588007af",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC26/source.config.json",
+      "release_ref": {
+        "content_hash": "528ca5c34f7d9fd3c92ae5832d7be0001fec001a1053a046ba899a1ceda3164f",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC26"
+      },
+      "source_id": "SRC26",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2024"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 3,
+        "original_items": 1198,
+        "physical_slots": 1198,
+        "questions": 280,
+        "response_slots": 280,
+        "routing_rules": 280,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "LiTS",
+      "fixture_config_file_sha256": "4f591cd6468e28bd055354e0d50254341f1316ef4ae32fdd595c01058c81758d",
+      "fixture_config_path": "source_pre553_validation/SRC27/fixture.config.json",
+      "fixture_file_sha256": "656dfce7763cbef2c649fa1fd1f9c4935163d4c2ae028e7364a3ccaaf5b07946",
+      "fixture_path": "source_pre553_validation/SRC27/fixture.json",
+      "fixture_source_sha256": "4b3379ca008b644933b97290248e7a75d18c6e627d8c647f22c9ceb6776c2743",
+      "held": {
+        "held_by_disposition": {
+          "HELD_RESPONSE_AUTHORITY_GAP": 911
+        },
+        "held_slots": 911
+      },
+      "lane": "LITS",
+      "native_results_file_sha256": "c4da190e5194e0106e76f0bf7538c476be23d693f3950844c3a0d7e79386c6c4",
+      "native_results_path": "source_pre553_validation/SRC27/VALIDATION_RESULTS.json",
+      "original_config_canonical_sha256": "15f2ae367c617d944f971a82f68d4e5bd9da674dc6f3ce27f94c5630fa99b49a",
+      "original_config_file_sha256": "03671a45d89ddf3bdaf84e3b74490479e4228ba8d9158fc6de237152658d416a",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC27/SRC27.config.json",
+      "release_ref": {
+        "content_hash": "607a9c8fd5859ec07153e1152e5d41c6ef5770c14df9890a5f0d11926f84d9d6",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC27/FULL_SUPPORTED"
+      },
+      "source_id": "SRC27",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2006"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 627,
+        "physical_slots": 627,
+        "questions": 542,
+        "response_slots": 542,
+        "routing_rules": 542,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "LiTS",
+      "fixture_config_file_sha256": "0cae2c823e762720f6b30d4c57a62a8cb2a08026211f7f284527fbeec458f6b5",
+      "fixture_config_path": "source_pre553_validation/SRC28/fixture.config.json",
+      "fixture_file_sha256": "5b9d864e0da0f2d1056f2ee549ccb8a1fcfbd6d07e49be35abb6c88920c67947",
+      "fixture_path": "source_pre553_validation/SRC28/fixture.json",
+      "fixture_source_sha256": "80143a0706a52a58a25e61dde51cd9f4784da7c52117221644eff4595fabc782",
+      "held": {
+        "held_by_disposition": {
+          "HELD_RESPONSE_AUTHORITY_GAP": 80
+        },
+        "held_slots": 80
+      },
+      "lane": "LITS",
+      "native_results_file_sha256": "2b31e5c695342c34e283be97596ced5a7761107adf906cf91dc43924e84d3491",
+      "native_results_path": "source_pre553_validation/SRC28/VALIDATION_RESULTS.json",
+      "original_config_canonical_sha256": "30c05d154d53a276573e74f816cb3cf3254b3071b222c510e080d7ac710f1743",
+      "original_config_file_sha256": "e690d57051db3f77369b71ae07b1792636deebaa43708675f6e478c94fa4ae7b",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC28/SRC28.config.json",
+      "release_ref": {
+        "content_hash": "acf10f86334c2ee8654e43a8545f930b61295d7966c3a719c53c982723f02db7",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC28/FULL_SUPPORTED"
+      },
+      "source_id": "SRC28",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "II"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 4,
+        "original_items": 1290,
+        "physical_slots": 1290,
+        "questions": 1165,
+        "response_slots": 1165,
+        "routing_rules": 1165,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "LiTS",
+      "fixture_config_file_sha256": "03f4bb56580d799111ed929384b46e2e94db819cc694162ad2a0680ba849a5ec",
+      "fixture_config_path": "source_pre553_validation/SRC29/fixture.config.json",
+      "fixture_file_sha256": "16966db8122c7b26f51d4d2b661104d48ed0d1451d08964b1ba9d750ed421313",
+      "fixture_path": "source_pre553_validation/SRC29/fixture.json",
+      "fixture_source_sha256": "77957c9022dd2ec2aca183d1c7ffc9697b122a223c65b61ce63e42da514f01dc",
+      "held": {
+        "held_by_disposition": {
+          "HELD_RESPONSE_AUTHORITY_GAP": 117
+        },
+        "held_slots": 117
+      },
+      "lane": "LITS",
+      "native_results_file_sha256": "0740b8156a9211b91714d39057fdf2b6206c2c92c22211ad1dc9d5a6fc1ca49f",
+      "native_results_path": "source_pre553_validation/SRC29/VALIDATION_RESULTS.json",
+      "original_config_canonical_sha256": "76358f1c28d383a6f630cc67048446ae071273c808db0e2437d9322ddb49c3ef",
+      "original_config_file_sha256": "0a097b45146e2b044321c16da9c7d7dc8cbc5578d34c0c22c1b03cc173418238",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC29/SRC29.config.json",
+      "release_ref": {
+        "content_hash": "a0c2b88e92fa6121f0db9e07f14041bbfb01be2eb2c71b13fb1c33b2f0f84fb5",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC29/FULL_SUPPORTED"
+      },
+      "source_id": "SRC29",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "III"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 3,
+        "original_items": 1319,
+        "physical_slots": 1319,
+        "questions": 1073,
+        "response_slots": 1073,
+        "routing_rules": 1073,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "LiTS",
+      "fixture_config_file_sha256": "a05bb9a071574d0abb10ab1580c737a6725fedecef859e8bf6ba0fccf0902638",
+      "fixture_config_path": "source_pre553_validation/SRC30/fixture.config.json",
+      "fixture_file_sha256": "2d62f08a216fa30fd58fddb71577e94ddfd0401190a559385b824a51d9998145",
+      "fixture_path": "source_pre553_validation/SRC30/fixture.json",
+      "fixture_source_sha256": "04f5e27e7df7ac684792a2321891a31a3ac38eb1a5c2e3b0e86497c13256028d",
+      "held": {
+        "held_by_disposition": {
+          "HELD_RESPONSE_AUTHORITY_GAP": 238
+        },
+        "held_slots": 238
+      },
+      "lane": "LITS",
+      "native_results_file_sha256": "b616ee4896ab79abc81960320b548fad5109420acc07814b472c04450dcdc557",
+      "native_results_path": "source_pre553_validation/SRC30/VALIDATION_RESULTS.json",
+      "original_config_canonical_sha256": "cd15b72261f9a2b3d1d7dac454465897537dbc6738291750885a1ce116c2eab0",
+      "original_config_file_sha256": "bb1a38396bb3f382e334987ff650a750a5a8d5a1eb34b76f00b1cb2fa76a9747",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC30/SRC30.config.json",
+      "release_ref": {
+        "content_hash": "887110e15de8a0be68eebf75ab91cc29dd9d5106ad4f5fafb0228873634683d1",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC30/FULL_SUPPORTED"
+      },
+      "source_id": "SRC30",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "IV"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 4,
+        "original_items": 68,
+        "physical_slots": 68,
+        "questions": 64,
+        "response_slots": 64,
+        "routing_rules": 64,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "South Asia",
+      "fixture_config_file_sha256": "463521e5322dfbb19f5f76eec25af4c13f31f598335d72ca0dca606ba6125efa",
+      "fixture_config_path": "source_pre553_validation/SRC31/fixture.config.json",
+      "fixture_file_sha256": "75eafd5f9676716899ccd734a416f3b55c95c2ae116c531926b9c1de2110f959",
+      "fixture_path": "source_pre553_validation/SRC31/fixture.json",
+      "fixture_source_sha256": "4b34b4145bdd16e70831fd3e0bb2a5453758e100d0d39d3a696c1f8eea3cfe15",
+      "held": {
+        "held_by_disposition": {},
+        "held_slots": 0
+      },
+      "lane": "SOUTH_ASIA",
+      "native_results_file_sha256": "b5000a7c52e7717a2e45b5aaf350b25158ea7a9de6d395597909ac968b420733",
+      "native_results_path": "source_pre553_validation/SRC31/VALIDATION_RESULTS.json",
+      "original_config_canonical_sha256": "9c00ebc83bf89c45dcde2ff375bd62155f7f2d65a683f013580e39ddd525a0d0",
+      "original_config_file_sha256": "ed403fb5900d9d5ab5d9eb90b1864d7b6a93f89fc6f9159461cf4ddd3b180687",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC31/source.config.json",
+      "release_ref": {
+        "content_hash": "85fc1d3ca2acffcf41244ac9e4f41a2664dd7d86fd6a4b53194baa8bf7702189",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC31"
+      },
+      "source_id": "SRC31",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "W1"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 4,
+        "original_items": 73,
+        "physical_slots": 73,
+        "questions": 69,
+        "response_slots": 69,
+        "routing_rules": 69,
+        "weight_slots": 0
+      },
+      "details": [],
+      "family": "South Asia",
+      "fixture_config_file_sha256": "e65a79c853ef4d139fba5352286657913d66ccbafb5f43729e9e0857842bbc33",
+      "fixture_config_path": "source_pre553_validation/SRC32/fixture.config.json",
+      "fixture_file_sha256": "185146f18fa89893b1d7d9fadd958b2cfee9a7b61100b51b9cb882c23dac12b2",
+      "fixture_path": "source_pre553_validation/SRC32/fixture.json",
+      "fixture_source_sha256": "5e60886ff23d4fea0b5f74dce276100e6f652e3d7783d9347aea5311a93607a2",
+      "held": {
+        "held_by_disposition": {},
+        "held_slots": 0
+      },
+      "lane": "SOUTH_ASIA",
+      "native_results_file_sha256": "75387da0e29381fae4e463640c69c0d9b96319a3917bc679bd3f0001cd45b632",
+      "native_results_path": "source_pre553_validation/SRC32/VALIDATION_RESULTS.json",
+      "original_config_canonical_sha256": "bbf94c042fd226012e16b7c2bd4d234c5ef7490755120c6b63d678a1b8814cc2",
+      "original_config_file_sha256": "377774a330115fade91bbfc0080da68fad62adfa41f289443adcb3992d52ab41",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC32/source.config.json",
+      "release_ref": {
+        "content_hash": "013a84680d5d186af305fdc4d40fedd34d453f65bff55c1e514f07ce6a0eb6e0",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC32"
+      },
+      "source_id": "SRC32",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "W2"
+    },
+    {
+      "counts": {},
+      "details": [
+        "No canonical SOURCE_PREPARATION config in this integration checkout."
+      ],
+      "family": "WVS",
+      "fixture_config_file_sha256": null,
+      "fixture_config_path": null,
+      "fixture_file_sha256": null,
+      "fixture_path": null,
+      "fixture_source_sha256": null,
+      "held": {},
+      "lane": "WVS",
+      "native_results_file_sha256": null,
+      "native_results_path": null,
+      "original_config_canonical_sha256": null,
+      "original_config_file_sha256": null,
+      "original_config_path": null,
+      "release_ref": null,
+      "source_id": "SRC33",
+      "status": "PENDING_ACCEPTED_RETURN",
+      "wave": "W1"
+    },
+    {
+      "counts": {},
+      "details": [
+        "No canonical SOURCE_PREPARATION config in this integration checkout."
+      ],
+      "family": "WVS",
+      "fixture_config_file_sha256": null,
+      "fixture_config_path": null,
+      "fixture_file_sha256": null,
+      "fixture_path": null,
+      "fixture_source_sha256": null,
+      "held": {},
+      "lane": "WVS",
+      "native_results_file_sha256": null,
+      "native_results_path": null,
+      "original_config_canonical_sha256": null,
+      "original_config_file_sha256": null,
+      "original_config_path": null,
+      "release_ref": null,
+      "source_id": "SRC34",
+      "status": "PENDING_ACCEPTED_RETURN",
+      "wave": "W4"
+    },
+    {
+      "counts": {},
+      "details": [
+        "No canonical SOURCE_PREPARATION config in this integration checkout."
+      ],
+      "family": "WVS",
+      "fixture_config_file_sha256": null,
+      "fixture_config_path": null,
+      "fixture_file_sha256": null,
+      "fixture_path": null,
+      "fixture_source_sha256": null,
+      "held": {},
+      "lane": "WVS",
+      "native_results_file_sha256": null,
+      "native_results_path": null,
+      "original_config_canonical_sha256": null,
+      "original_config_file_sha256": null,
+      "original_config_path": null,
+      "release_ref": null,
+      "source_id": "SRC35",
+      "status": "PENDING_ACCEPTED_RETURN",
+      "wave": "W7"
+    }
+  ]
+}

@@ -40,6 +40,13 @@ from .reader import (
     reader_configuration_from_config,
     source_read_request_from_config,
 )
+from .library import (
+    SourceArtifactError,
+    SourceConfigLibrary,
+    SourceLibraryError,
+    SourceNotPrepared,
+    build_index,
+)
 
 __all__ = [
     "SCHEMA_ID", "SourceConfig", "SourceConfigurationError",
@@ -52,5 +59,6 @@ __all__ = [
     "FIXTURE_SCHEMA_ID",
     "fixture_document_sha256", "fixture_stream_from_document", "load_fixture_stream",
     "reader_configuration_from_config", "source_read_request_from_config",
-    "decode_config_with_source_read_permission",
+    "decode_config_with_source_read_permission", "SourceConfigLibrary",
+    "SourceLibraryError", "SourceNotPrepared", "SourceArtifactError", "build_index",
 ]

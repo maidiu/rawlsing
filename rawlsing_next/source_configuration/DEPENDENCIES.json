@@ -1,0 +1,32 @@
+{
+  "schema": "PYAT_R157_SOURCE_CONFIGURATION_DEPENDENCIES@1.0.0",
+  "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+  "runtime": {
+    "python": "3.11.x",
+    "observed_python": "3.11.3",
+    "stdlib": ["hashlib", "json", "pathlib", "sqlite3", "argparse", "csv", "gzip"],
+    "required_python_packages": []
+  },
+  "optional": {
+    "pyreadstat": {
+      "version": "1.3.2",
+      "used_for": "separately authorized original source byte decode only",
+      "required_for_index_or_fixture_validation": false
+    },
+    "pytest": {
+      "version": "9.0.2",
+      "used_for": "focused checks only"
+    }
+  },
+  "network": "NONE_REQUIRED_FOR_COLD_LOAD_OR_FIXTURE_VALIDATION",
+  "source_bytes": "EXTERNAL_SEPARATELY_PERMITTED_NOT_BUNDLED",
+  "source_root": "R157_SOURCE_ROOT environment variable or explicit --source-path; no private author worktree path is used",
+  "package_data": "rawlsing_next/source_configuration/PACKAGE_DATA.json",
+  "generated_index": "source_pre553_validation/integration/SOURCE_LIBRARY_INDEX.json",
+  "generated_sqlite": "source_pre553_validation/integration/SOURCE_LIBRARY_INDEX.sqlite",
+  "bootstrap_commands": [
+    "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli build-index",
+    "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli status",
+    "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.cli fixture-call SRC01"
+  ]
+}

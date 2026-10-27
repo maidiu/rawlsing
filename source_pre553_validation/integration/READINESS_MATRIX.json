@@ -1,0 +1,1058 @@
+{
+  "baseline": {
+    "exact_relation_matches": 18250,
+    "original_items": 18276,
+    "physical_columns": 18413,
+    "sources": 35,
+    "unmatched_relation_ids": 26
+  },
+  "counts": {
+    "available": 32,
+    "available_original_items": 17057,
+    "available_physical_slots": 17194,
+    "other_incomplete": 0,
+    "pending": 3
+  },
+  "pending_source_ids": [
+    "SRC33",
+    "SRC34",
+    "SRC35"
+  ],
+  "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+  "schema": "PYAT_R157_P5_READINESS_MATRIX@1.0.0",
+  "sources": [
+    {
+      "counts": {
+        "coordinate_slots": 5,
+        "original_items": 144,
+        "physical_slots": 144,
+        "questions": 129,
+        "response_slots": 129,
+        "routing_rules": 129,
+        "weight_slots": 5
+      },
+      "family": "Afrobarometer",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC01/SRC01.full.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC01/SRC01.full.fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_RANKED_TOPOLOGY": 2,
+          "HELD_UNMATCHED_RELATION": 2
+        },
+        "held_slots": 4
+      },
+      "lane": "AFRO",
+      "native_results_path": "source_pre553_validation/SRC01/FULL_NATIVE_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC01/SRC01.config.json",
+      "release_ref": {
+        "content_hash": "da262dcd4c5c19e0a74ad522d0e65673f41b1b27014ca3f0b624f0be0143db7e",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Afrobarometer/R1"
+      },
+      "source_id": "SRC01",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "R1"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 96,
+        "original_items": 348,
+        "physical_slots": 348,
+        "questions": 249,
+        "response_slots": 249,
+        "routing_rules": 249,
+        "weight_slots": 2
+      },
+      "family": "Afrobarometer",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC02/SRC02.full.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC02/SRC02.full.fixture.json",
+      "held": {
+        "held_by_disposition": {},
+        "held_slots": 0
+      },
+      "lane": "AFRO",
+      "native_results_path": "source_pre553_validation/SRC02/FULL_NATIVE_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC02/SRC02.config.json",
+      "release_ref": {
+        "content_hash": "293e2a0884b205a18228f4f131c5b0627d333978c6a2017ffcced2c4aeb3a1db",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Afrobarometer/R5"
+      },
+      "source_id": "SRC02",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "R5"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 101,
+        "original_items": 421,
+        "physical_slots": 421,
+        "questions": 310,
+        "response_slots": 310,
+        "routing_rules": 310,
+        "weight_slots": 4
+      },
+      "family": "Afrobarometer",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC03/SRC03.full.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC03/SRC03.full.fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_RANKED_TOPOLOGY": 5
+        },
+        "held_slots": 5
+      },
+      "lane": "AFRO",
+      "native_results_path": "source_pre553_validation/SRC03/FULL_NATIVE_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC03/SRC03.config.json",
+      "release_ref": {
+        "content_hash": "b8f39c3d8905f5d87e55720b05d144cb24f4a60e91e72b9146877c0b87d60a7f",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Afrobarometer/R9"
+      },
+      "source_id": "SRC03",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "R9"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 3,
+        "original_items": 181,
+        "physical_slots": 181,
+        "questions": 178,
+        "response_slots": 178,
+        "routing_rules": 178,
+        "weight_slots": 0
+      },
+      "family": "Arab Barometer",
+      "fixture_config_path": "source_pre553_validation/SRC04/fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC04/fixture.json",
+      "held": {
+        "held_by_disposition": {},
+        "held_slots": 0
+      },
+      "lane": "ARAB",
+      "native_results_path": "source_pre553_validation/SRC04/VALIDATION_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC04/source.config.json",
+      "release_ref": {
+        "content_hash": "9026fa33bb5739b87b06309f12e1d31fe6fd21fb471237eda870d6d278d47f42",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC04"
+      },
+      "source_id": "SRC04",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "I"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 19,
+        "original_items": 468,
+        "physical_slots": 468,
+        "questions": 448,
+        "response_slots": 448,
+        "routing_rules": 448,
+        "weight_slots": 0
+      },
+      "family": "Arab Barometer",
+      "fixture_config_path": "source_pre553_validation/SRC05/fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC05/fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_EXACT_SOURCE_LIMITATION": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "ARAB",
+      "native_results_path": "source_pre553_validation/SRC05/VALIDATION_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC05/source.config.json",
+      "release_ref": {
+        "content_hash": "3a3c35f9611d54793fa3aa63ccbe921b7e6388deac55a8ea8ede50eb732b9f3f",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC05"
+      },
+      "source_id": "SRC05",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "II"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 17,
+        "original_items": 359,
+        "physical_slots": 359,
+        "questions": 337,
+        "response_slots": 337,
+        "routing_rules": 337,
+        "weight_slots": 0
+      },
+      "family": "Arab Barometer",
+      "fixture_config_path": "source_pre553_validation/SRC06/fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC06/fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_EXACT_SOURCE_LIMITATION": 5
+        },
+        "held_slots": 5
+      },
+      "lane": "ARAB",
+      "native_results_path": "source_pre553_validation/SRC06/VALIDATION_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC06/source.config.json",
+      "release_ref": {
+        "content_hash": "774e48b41a70553ffdabfa8918d4d298eef4f84162432982aa14a59d15cd018d",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC06"
+      },
+      "source_id": "SRC06",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "V"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 38,
+        "original_items": 690,
+        "physical_slots": 690,
+        "questions": 651,
+        "response_slots": 651,
+        "routing_rules": 651,
+        "weight_slots": 0
+      },
+      "family": "Arab Barometer",
+      "fixture_config_path": "source_pre553_validation/SRC07/fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC07/fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_EXACT_SOURCE_LIMITATION": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "ARAB",
+      "native_results_path": "source_pre553_validation/SRC07/VALIDATION_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC07/source.config.json",
+      "release_ref": {
+        "content_hash": "276c183d7cd9dfbb988285e85716b7d088624b9e7de53100423f3584b15cd10d",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC07"
+      },
+      "source_id": "SRC07",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "VIII"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 20,
+        "original_items": 217,
+        "physical_slots": 217,
+        "questions": 187,
+        "response_slots": 187,
+        "routing_rules": 187,
+        "weight_slots": 9
+      },
+      "family": "Asian Barometer",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC08/SRC08.full.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC08/SRC08.full.fixture.json",
+      "held": {
+        "held_by_disposition": {},
+        "held_slots": 0
+      },
+      "lane": "ASIAN",
+      "native_results_path": "source_pre553_validation/SRC08/FULL_NATIVE_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC08/SRC08.config.json",
+      "release_ref": {
+        "content_hash": "66c53fef01cd318543c9addf1df382282efb650e7212b7ddfc6d6c7feb44f3e3",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Asian Barometer/W1"
+      },
+      "source_id": "SRC08",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "W1"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 46,
+        "original_items": 289,
+        "physical_slots": 289,
+        "questions": 240,
+        "response_slots": 240,
+        "routing_rules": 240,
+        "weight_slots": 2
+      },
+      "family": "Asian Barometer",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC09/SRC09.full.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC09/SRC09.full.fixture.json",
+      "held": {
+        "held_by_disposition": {},
+        "held_slots": 0
+      },
+      "lane": "ASIAN",
+      "native_results_path": "source_pre553_validation/SRC09/FULL_NATIVE_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC09/SRC09.config.json",
+      "release_ref": {
+        "content_hash": "15f65920ec025a02a67b1572c3ce43f343186322f7dd2c381f18733c2d58194b",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Asian Barometer/W4"
+      },
+      "source_id": "SRC09",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "W4"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 50,
+        "original_items": 308,
+        "physical_slots": 308,
+        "questions": 204,
+        "response_slots": 204,
+        "routing_rules": 204,
+        "weight_slots": 1
+      },
+      "family": "Asian Barometer",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC10/SRC10.full.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC10/SRC10.full.fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_BLOCKED_RESPONSE": 52
+        },
+        "held_slots": 52
+      },
+      "lane": "ASIAN",
+      "native_results_path": "source_pre553_validation/SRC10/FULL_NATIVE_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC10/SRC10.config.json",
+      "release_ref": {
+        "content_hash": "bb844d2bbcac6ed6433ffffa453117c90fbf7ca620faece5aec8514f82d2a7d5",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Asian Barometer/W5"
+      },
+      "source_id": "SRC10",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "W5"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 25,
+        "original_items": 370,
+        "physical_slots": 370,
+        "questions": 331,
+        "response_slots": 331,
+        "routing_rules": 331,
+        "weight_slots": 1
+      },
+      "family": "EVS",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC11/SRC11.full.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC11/SRC11.full.fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_GENERATION_FORBIDDEN": 5,
+          "HELD_RANKED_TOPOLOGY": 1,
+          "HELD_UNKNOWN": 6
+        },
+        "held_slots": 12
+      },
+      "lane": "EVS",
+      "native_results_path": "source_pre553_validation/SRC11/FULL_NATIVE_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC11/SRC11.config.json",
+      "release_ref": {
+        "content_hash": "ebaf9b541a1d63fe1367c3970de13aef82f53dcd5456a6bc94b459be2b10d67e",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/1981"
+      },
+      "source_id": "SRC11",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "1981"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 31,
+        "original_items": 390,
+        "physical_slots": 390,
+        "questions": 336,
+        "response_slots": 336,
+        "routing_rules": 336,
+        "weight_slots": 2
+      },
+      "family": "EVS",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC12/SRC12.full.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC12/SRC12.full.fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_GENERATION_FORBIDDEN": 7,
+          "HELD_RANKED_TOPOLOGY": 6,
+          "HELD_UNKNOWN": 7
+        },
+        "held_slots": 20
+      },
+      "lane": "EVS",
+      "native_results_path": "source_pre553_validation/SRC12/FULL_NATIVE_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC12/SRC12.config.json",
+      "release_ref": {
+        "content_hash": "ef67c234b8def9654f280317b3bf9917f038ead98d07c31f7c82c1dd6f53eb81",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/1990"
+      },
+      "source_id": "SRC12",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "1990"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 45,
+        "original_items": 513,
+        "physical_slots": 513,
+        "questions": 359,
+        "response_slots": 359,
+        "routing_rules": 359,
+        "weight_slots": 2
+      },
+      "family": "EVS",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC13/SRC13.full.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC13/SRC13.full.fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_GENERATION_FORBIDDEN": 6,
+          "HELD_RANKED_TOPOLOGY": 9,
+          "HELD_UNKNOWN": 91
+        },
+        "held_slots": 106
+      },
+      "lane": "EVS",
+      "native_results_path": "source_pre553_validation/SRC13/FULL_NATIVE_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC13/SRC13.config.json",
+      "release_ref": {
+        "content_hash": "52e51eb5948550d6d050a359eac0f6a04ea940bd707501910f724e4adf9a1c86",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/1999"
+      },
+      "source_id": "SRC13",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "1999"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 71,
+        "original_items": 477,
+        "physical_slots": 477,
+        "questions": 384,
+        "response_slots": 384,
+        "routing_rules": 384,
+        "weight_slots": 2
+      },
+      "family": "EVS",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC14/SRC14.full.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC14/SRC14.full.fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_GENERATION_FORBIDDEN": 8,
+          "HELD_RANKED_TOPOLOGY": 4,
+          "HELD_UNKNOWN": 7
+        },
+        "held_slots": 19
+      },
+      "lane": "EVS",
+      "native_results_path": "source_pre553_validation/SRC14/FULL_NATIVE_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC14/SRC14.config.json",
+      "release_ref": {
+        "content_hash": "990464d281caae853880e920b3269eff83e97c517c3ffbe561920a788d823dd3",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/2008"
+      },
+      "source_id": "SRC14",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2008"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 86,
+        "original_items": 474,
+        "physical_slots": 474,
+        "questions": 337,
+        "response_slots": 337,
+        "routing_rules": 337,
+        "weight_slots": 4
+      },
+      "family": "EVS",
+      "fixture_config_path": "rawlsing_next/source_configuration/data/SRC15/SRC15.full.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC15/SRC15.full.fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_GENERATION_FORBIDDEN": 9,
+          "HELD_RANKED_TOPOLOGY": 3,
+          "HELD_UNKNOWN": 34
+        },
+        "held_slots": 46
+      },
+      "lane": "EVS",
+      "native_results_path": "source_pre553_validation/SRC15/FULL_NATIVE_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC15/SRC15.config.json",
+      "release_ref": {
+        "content_hash": "abcec5d8ce73b3d923292b9e33f49821ffc27e05595825237067682c9411821f",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/EVS/2017"
+      },
+      "source_id": "SRC15",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2017"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 216,
+        "physical_slots": 216,
+        "questions": 216,
+        "response_slots": 157,
+        "routing_rules": 157,
+        "weight_slots": 0
+      },
+      "family": "GSS",
+      "fixture_config_path": "source_pre553_validation/SRC16/SRC16.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC16/SRC16.fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_WEIGHT_DESIGN_UNRESOLVED": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "GSS",
+      "native_results_path": "source_pre553_validation/SRC16/SRC16.validation-results.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC16/SRC16.source.config.json",
+      "release_ref": {
+        "content_hash": "08e6f7d92a3546f8944b4a30054623b4318dda758e4fe64e649c6531b262543a",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC16"
+      },
+      "source_id": "SRC16",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "1972"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 339,
+        "physical_slots": 339,
+        "questions": 339,
+        "response_slots": 279,
+        "routing_rules": 279,
+        "weight_slots": 0
+      },
+      "family": "GSS",
+      "fixture_config_path": "source_pre553_validation/SRC17/SRC17.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC17/SRC17.fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_WEIGHT_DESIGN_UNRESOLVED": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "GSS",
+      "native_results_path": "source_pre553_validation/SRC17/SRC17.validation-results.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC17/SRC17.source.config.json",
+      "release_ref": {
+        "content_hash": "e379c0d70358c897544a4e9d12af5518f5ea4f3e4f9e43c3da86696e18249a64",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC17"
+      },
+      "source_id": "SRC17",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "1973"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 675,
+        "physical_slots": 675,
+        "questions": 675,
+        "response_slots": 592,
+        "routing_rules": 592,
+        "weight_slots": 0
+      },
+      "family": "GSS",
+      "fixture_config_path": "source_pre553_validation/SRC18/SRC18.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC18/SRC18.fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_WEIGHT_DESIGN_UNRESOLVED": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "GSS",
+      "native_results_path": "source_pre553_validation/SRC18/SRC18.validation-results.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC18/SRC18.source.config.json",
+      "release_ref": {
+        "content_hash": "ee0bc1fabff5106a1d04af5e64d5b06bcc019d7f02faf4e5e88b2ce74a7867d4",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC18"
+      },
+      "source_id": "SRC18",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "1984"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 752,
+        "physical_slots": 752,
+        "questions": 752,
+        "response_slots": 694,
+        "routing_rules": 694,
+        "weight_slots": 0
+      },
+      "family": "GSS",
+      "fixture_config_path": "source_pre553_validation/SRC19/SRC19.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC19/SRC19.fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_WEIGHT_DESIGN_UNRESOLVED": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "GSS",
+      "native_results_path": "source_pre553_validation/SRC19/SRC19.validation-results.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC19/SRC19.source.config.json",
+      "release_ref": {
+        "content_hash": "84680af7ca37e3c8f012cd92702f07a53d2ca9daf89deb6212a49353d8f33fcf",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC19"
+      },
+      "source_id": "SRC19",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "1993"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 1119,
+        "physical_slots": 1119,
+        "questions": 1119,
+        "response_slots": 1021,
+        "routing_rules": 1021,
+        "weight_slots": 0
+      },
+      "family": "GSS",
+      "fixture_config_path": "source_pre553_validation/SRC20/SRC20.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC20/SRC20.fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_WEIGHT_DESIGN_UNRESOLVED": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "GSS",
+      "native_results_path": "source_pre553_validation/SRC20/SRC20.validation-results.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC20/SRC20.source.config.json",
+      "release_ref": {
+        "content_hash": "e2317ee077b3ae2ee7ba447a494c50c6bdf9bc3d3357b6c9ba0baa3c5901d2af",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC20"
+      },
+      "source_id": "SRC20",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2002"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 922,
+        "physical_slots": 922,
+        "questions": 922,
+        "response_slots": 592,
+        "routing_rules": 592,
+        "weight_slots": 0
+      },
+      "family": "GSS",
+      "fixture_config_path": "source_pre553_validation/SRC21/SRC21.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC21/SRC21.fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_WEIGHT_DESIGN_UNRESOLVED": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "GSS",
+      "native_results_path": "source_pre553_validation/SRC21/SRC21.validation-results.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC21/SRC21.source.config.json",
+      "release_ref": {
+        "content_hash": "231451b991512d77193ddfe60f5a6775c70882abc9235f884545c0c20b66ba0d",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC21"
+      },
+      "source_id": "SRC21",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2010"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 1018,
+        "physical_slots": 1018,
+        "questions": 1018,
+        "response_slots": 924,
+        "routing_rules": 924,
+        "weight_slots": 0
+      },
+      "family": "GSS",
+      "fixture_config_path": "source_pre553_validation/SRC22/SRC22.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC22/SRC22.fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_WEIGHT_DESIGN_UNRESOLVED": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "GSS",
+      "native_results_path": "source_pre553_validation/SRC22/SRC22.validation-results.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC22/SRC22.source.config.json",
+      "release_ref": {
+        "content_hash": "22869e1c15b4165d2c1a45a374c7b994ad0333983e1b0231ec0c445e6375d513",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC22"
+      },
+      "source_id": "SRC22",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2016"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 980,
+        "physical_slots": 980,
+        "questions": 980,
+        "response_slots": 879,
+        "routing_rules": 879,
+        "weight_slots": 0
+      },
+      "family": "GSS",
+      "fixture_config_path": "source_pre553_validation/SRC23/SRC23.fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC23/SRC23.fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_WEIGHT_DESIGN_UNRESOLVED": 1
+        },
+        "held_slots": 1
+      },
+      "lane": "GSS",
+      "native_results_path": "source_pre553_validation/SRC23/SRC23.validation-results.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC23/SRC23.source.config.json",
+      "release_ref": {
+        "content_hash": "010aa726ecc111ea2165824417ab1c8bcd4035b32fb00d120bd8b5abcbb915e6",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_GSS_FIXTURE_RELEASE/SRC23"
+      },
+      "source_id": "SRC23",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2024"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 6,
+        "original_items": 203,
+        "physical_slots": 203,
+        "questions": 183,
+        "response_slots": 183,
+        "routing_rules": 183,
+        "weight_slots": 0
+      },
+      "family": "Latinobarómetro",
+      "fixture_config_path": "source_pre553_validation/SRC24/fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC24/fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_EXACT_SOURCE_LIMITATION": 14
+        },
+        "held_slots": 14
+      },
+      "lane": "LATIN",
+      "native_results_path": "source_pre553_validation/SRC24/VALIDATION_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC24/source.config.json",
+      "release_ref": {
+        "content_hash": "214de015475f919dc17cad231b7de1dc085c66085d30ebf75fd0a65cba68995e",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC24"
+      },
+      "source_id": "SRC24",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "1995"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 41,
+        "original_items": 414,
+        "physical_slots": 414,
+        "questions": 370,
+        "response_slots": 370,
+        "routing_rules": 370,
+        "weight_slots": 0
+      },
+      "family": "Latinobarómetro",
+      "fixture_config_path": "source_pre553_validation/SRC25/fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC25/fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_EXACT_SOURCE_LIMITATION": 3
+        },
+        "held_slots": 3
+      },
+      "lane": "LATIN",
+      "native_results_path": "source_pre553_validation/SRC25/VALIDATION_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC25/source.config.json",
+      "release_ref": {
+        "content_hash": "0edcbcdce3efaa1eace617c455624a252ec6ab87b3bd5aa5a3f60e1c6771aa9c",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC25"
+      },
+      "source_id": "SRC25",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2011"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 49,
+        "original_items": 195,
+        "physical_slots": 332,
+        "questions": 178,
+        "response_slots": 275,
+        "routing_rules": 178,
+        "weight_slots": 0
+      },
+      "family": "Latinobarómetro",
+      "fixture_config_path": "source_pre553_validation/SRC26/fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC26/fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_EXACT_SOURCE_LIMITATION": 8
+        },
+        "held_slots": 8
+      },
+      "lane": "LATIN",
+      "native_results_path": "source_pre553_validation/SRC26/VALIDATION_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC26/source.config.json",
+      "release_ref": {
+        "content_hash": "528ca5c34f7d9fd3c92ae5832d7be0001fec001a1053a046ba899a1ceda3164f",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC26"
+      },
+      "source_id": "SRC26",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2024"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 3,
+        "original_items": 1198,
+        "physical_slots": 1198,
+        "questions": 280,
+        "response_slots": 280,
+        "routing_rules": 280,
+        "weight_slots": 0
+      },
+      "family": "LiTS",
+      "fixture_config_path": "source_pre553_validation/SRC27/fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC27/fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_RESPONSE_AUTHORITY_GAP": 911
+        },
+        "held_slots": 911
+      },
+      "lane": "LITS",
+      "native_results_path": "source_pre553_validation/SRC27/VALIDATION_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC27/SRC27.config.json",
+      "release_ref": {
+        "content_hash": "607a9c8fd5859ec07153e1152e5d41c6ef5770c14df9890a5f0d11926f84d9d6",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC27/FULL_SUPPORTED"
+      },
+      "source_id": "SRC27",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "2006"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 2,
+        "original_items": 627,
+        "physical_slots": 627,
+        "questions": 542,
+        "response_slots": 542,
+        "routing_rules": 542,
+        "weight_slots": 0
+      },
+      "family": "LiTS",
+      "fixture_config_path": "source_pre553_validation/SRC28/fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC28/fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_RESPONSE_AUTHORITY_GAP": 80
+        },
+        "held_slots": 80
+      },
+      "lane": "LITS",
+      "native_results_path": "source_pre553_validation/SRC28/VALIDATION_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC28/SRC28.config.json",
+      "release_ref": {
+        "content_hash": "acf10f86334c2ee8654e43a8545f930b61295d7966c3a719c53c982723f02db7",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC28/FULL_SUPPORTED"
+      },
+      "source_id": "SRC28",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "II"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 4,
+        "original_items": 1290,
+        "physical_slots": 1290,
+        "questions": 1165,
+        "response_slots": 1165,
+        "routing_rules": 1165,
+        "weight_slots": 0
+      },
+      "family": "LiTS",
+      "fixture_config_path": "source_pre553_validation/SRC29/fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC29/fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_RESPONSE_AUTHORITY_GAP": 117
+        },
+        "held_slots": 117
+      },
+      "lane": "LITS",
+      "native_results_path": "source_pre553_validation/SRC29/VALIDATION_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC29/SRC29.config.json",
+      "release_ref": {
+        "content_hash": "a0c2b88e92fa6121f0db9e07f14041bbfb01be2eb2c71b13fb1c33b2f0f84fb5",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC29/FULL_SUPPORTED"
+      },
+      "source_id": "SRC29",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "III"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 3,
+        "original_items": 1319,
+        "physical_slots": 1319,
+        "questions": 1073,
+        "response_slots": 1073,
+        "routing_rules": 1073,
+        "weight_slots": 0
+      },
+      "family": "LiTS",
+      "fixture_config_path": "source_pre553_validation/SRC30/fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC30/fixture.json",
+      "held": {
+        "held_by_disposition": {
+          "HELD_RESPONSE_AUTHORITY_GAP": 238
+        },
+        "held_slots": 238
+      },
+      "lane": "LITS",
+      "native_results_path": "source_pre553_validation/SRC30/VALIDATION_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC30/SRC30.config.json",
+      "release_ref": {
+        "content_hash": "887110e15de8a0be68eebf75ab91cc29dd9d5106ad4f5fafb0228873634683d1",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC30/FULL_SUPPORTED"
+      },
+      "source_id": "SRC30",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "IV"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 4,
+        "original_items": 68,
+        "physical_slots": 68,
+        "questions": 64,
+        "response_slots": 64,
+        "routing_rules": 64,
+        "weight_slots": 0
+      },
+      "family": "South Asia",
+      "fixture_config_path": "source_pre553_validation/SRC31/fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC31/fixture.json",
+      "held": {
+        "held_by_disposition": {},
+        "held_slots": 0
+      },
+      "lane": "SOUTH_ASIA",
+      "native_results_path": "source_pre553_validation/SRC31/VALIDATION_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC31/source.config.json",
+      "release_ref": {
+        "content_hash": "85fc1d3ca2acffcf41244ac9e4f41a2664dd7d86fd6a4b53194baa8bf7702189",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC31"
+      },
+      "source_id": "SRC31",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "W1"
+    },
+    {
+      "counts": {
+        "coordinate_slots": 4,
+        "original_items": 73,
+        "physical_slots": 73,
+        "questions": 69,
+        "response_slots": 69,
+        "routing_rules": 69,
+        "weight_slots": 0
+      },
+      "family": "South Asia",
+      "fixture_config_path": "source_pre553_validation/SRC32/fixture.config.json",
+      "fixture_path": "source_pre553_validation/SRC32/fixture.json",
+      "held": {
+        "held_by_disposition": {},
+        "held_slots": 0
+      },
+      "lane": "SOUTH_ASIA",
+      "native_results_path": "source_pre553_validation/SRC32/VALIDATION_RESULTS.json",
+      "original_config_path": "rawlsing_next/source_configuration/data/SRC32/source.config.json",
+      "release_ref": {
+        "content_hash": "013a84680d5d186af305fdc4d40fedd34d453f65bff55c1e514f07ce6a0eb6e0",
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC32"
+      },
+      "source_id": "SRC32",
+      "status": "AVAILABLE_NATIVE_RECEIPT",
+      "wave": "W2"
+    },
+    {
+      "counts": {},
+      "family": "WVS",
+      "fixture_config_path": null,
+      "fixture_path": null,
+      "held": {},
+      "lane": "WVS",
+      "native_results_path": null,
+      "original_config_path": null,
+      "release_ref": null,
+      "source_id": "SRC33",
+      "status": "PENDING_ACCEPTED_RETURN",
+      "wave": "W1"
+    },
+    {
+      "counts": {},
+      "family": "WVS",
+      "fixture_config_path": null,
+      "fixture_path": null,
+      "held": {},
+      "lane": "WVS",
+      "native_results_path": null,
+      "original_config_path": null,
+      "release_ref": null,
+      "source_id": "SRC34",
+      "status": "PENDING_ACCEPTED_RETURN",
+      "wave": "W4"
+    },
+    {
+      "counts": {},
+      "family": "WVS",
+      "fixture_config_path": null,
+      "fixture_path": null,
+      "held": {},
+      "lane": "WVS",
+      "native_results_path": null,
+      "original_config_path": null,
+      "release_ref": null,
+      "source_id": "SRC35",
+      "status": "PENDING_ACCEPTED_RETURN",
+      "wave": "W7"
+    }
+  ]
+}

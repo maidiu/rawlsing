@@ -1,3 +1,11 @@
+# R157 P3/P5 integration return
+
+P5 portable delivery lives in `P5_RETURN.json`, `COMMANDS.md`,
+`SOURCE_LIBRARY_INDEX.json`, `SOURCE_LIBRARY_INDEX.sqlite`,
+`READINESS_MATRIX.json`, `EXCEPTION_AGGREGATE.json` and `DEPENDENCY_LOCK.json`.
+It indexes the current accepted sources and does not claim all35 completion
+while WVS SRC33-35 remain pending accepted returns.
+
 # R157 P3 integration return
 
 `P3_RETURN.json` records the shared-seam implementation and actual native
