@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "R157_RESUMED_P0_PROVIDER_GLOBAL_HOLD",
-  "handoff_commit": "a718ebc0af4cb08feb4bac26e1cd1d48972626d3",
+  "checkpoint_id": "R157_P0_RUNNING_GLOBAL_RETRY_VERIFIED",
+  "handoff_commit": "ef90448f6426f8b61b3703ba5940ab42592f8b23",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/R157_RESUMED_P0_PROVIDER_GLOBAL_HOLD/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/R157_RESUMED_P0_PROVIDER_GLOBAL_HOLD/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/R157_RESUMED_P0_PROVIDER_GLOBAL_HOLD/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/R157_P0_RUNNING_GLOBAL_RETRY_VERIFIED/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/R157_P0_RUNNING_GLOBAL_RETRY_VERIFIED/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/R157_P0_RUNNING_GLOBAL_RETRY_VERIFIED/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -14,28 +14,28 @@
   "pointer_law": "LATEST_IS_MUTABLE_POINTER_ONLY__CHECKPOINT_AT_HANDOFF_COMMIT_IS_IMMUTABLE_SEALED_HQ_AUTHORITY",
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
-  "canonical_control_base": "a718ebc0af4cb08feb4bac26e1cd1d48972626d3",
+  "canonical_control_base": "ef90448f6426f8b61b3703ba5940ab42592f8b23",
   "qualified_working_hq_branch": "integration/pre-main-reconciliation-r1",
-  "qualified_working_hq_commit": "a718ebc0af4cb08feb4bac26e1cd1d48972626d3",
-  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/R157_RESUMED_P0_PROVIDER_GLOBAL_HOLD/CURRENT.md",
-  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/R157_RESUMED_P0_PROVIDER_GLOBAL_HOLD/CURRENT.md",
+  "qualified_working_hq_commit": "ef90448f6426f8b61b3703ba5940ab42592f8b23",
+  "primary_succession_handoff_path": "HQ_HANDOFF/checkpoints/R157_P0_RUNNING_GLOBAL_RETRY_VERIFIED/CURRENT.md",
+  "pyat_current_handoff": "HQ_HANDOFF/checkpoints/R157_P0_RUNNING_GLOBAL_RETRY_VERIFIED/CURRENT.md",
   "current_progress": {
     "owner": "Pyat",
-    "revision": 158,
-    "canonical_report_commit": "a718ebc0af4cb08feb4bac26e1cd1d48972626d3",
+    "revision": 159,
+    "canonical_report_commit": "ef90448f6426f8b61b3703ba5940ab42592f8b23",
     "counterpart": "Sorok rev34 independent; no Pyat actor grant"
   },
   "previous_handoff": {
-    "checkpoint_id": "R157_SOURCE_PRE553_SEALED_PLAN",
-    "handoff_commit": "6ce5a0392f64143f6b0ee40d8755f5ff13172dbc"
+    "checkpoint_id": "R157_RESUMED_P0_PROVIDER_GLOBAL_HOLD",
+    "handoff_commit": "a718ebc0af4cb08feb4bac26e1cd1d48972626d3"
   },
   "full_legacy_pointer_archived": {
     "git_cut": "e1182c32cc40b7908304cecc5964193590bbb1cc",
     "blob_sha": "10f6ae095290cd5081c64af4de89acc45e6933db",
     "description": "Prior 135251-byte pointer and nested historical state preserved exactly at this immutable Git cut, not copied into new pointer; dereference previous_handoff as needed"
   },
-  "next_action": "User restore Global Privacy setting in existing OpenCode workspace; then same R154 session P0. No provider/model/account switch or blind retry. Heartbeat PAUSED.",
-  "worker_state_truth": "No live implementation workers. P0 launch terminal exit1 before author tools, exact Global region prerequisite awaiting user.",
+  "next_action": "Intake terminal P0 actual executable interface and frozen schema; then launch ready independent source lanes and continue P3 integrator, max4 OpenCode authors. No duplicate live author; heartbeat PAUSED.",
+  "worker_state_truth": "P0 PID5095 live at readback with completed actual checkout preflight; terminal result not yet returned.",
   "measured_execution_authorized": false,
   "measured_execution_authorized_via_warrant": false,
   "new_operative_grants": true,
@@ -354,7 +354,15 @@
     ],
     "acceptance": "Author result is candidate; distinct reviewer independently qualifies exact candidate, then HQ scoped disposition. R09 local is not deployed enforcement."
   },
-  "r61_actual_workers": [],
+  "r61_actual_workers": [
+    {
+      "task": "P0_FOUNDATION",
+      "pid": 5095,
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
+      "state": "RUNNING_ACTUAL_PREFLIGHT_VERIFIED"
+    }
+  ],
   "r61_launch_evidence": "ae63a8c2da620d850cc974eb43c3e396abec30cb",
   "active_goal": {
     "active": true,
@@ -364,7 +372,7 @@
     "goal_file_sha256": "009846489ad1a6b57d6ac6d90c223448657dda2bc2c45d45967874308687e921"
   },
   "r61b_director_evidence": "bd1dc9314443e858cef8a1f5bb0c0fb7c5f87966",
-  "current_development_evidence": "32dcda09a7de46500a73aabe77c8b9131fbccc2a",
+  "current_development_evidence": "ca67bbbb1ad574c06d218de3e4ff496fc6706d21",
   "new_R87_operative_grants": false,
   "secondary_hq_status": "USER_APPOINTED_BROWSER_SECONDARY__PRIMARY_CODEX_NOT_REVOKED"
 }
