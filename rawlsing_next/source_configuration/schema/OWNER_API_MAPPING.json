@@ -39,11 +39,11 @@
     "module": "rawlsing_next.source_configuration.factory",
     "callable": "build_governed_c11_projection",
     "alias": "construct_governed_c11_projection",
-    "signature": "(config: SourceConfig | Mapping[str, Any], *, source_sha256: str | None = None, row_count: int | None = None) -> GovernedC11Projection",
+    "signature": "(config: SourceConfig | Mapping[str, Any], *, source_sha256: str | None = None, row_count: int | None = None, row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None) -> GovernedC11Projection",
     "release_callable": "build_validated_c11_release_from_config",
-    "release_signature": "(config: SourceConfig | Mapping[str, Any], *, stream: ExactPhysicalCellStream | None = None, incidence: PhysicalSourceIncidence | None = None, source_sha256: str | None = None, row_count: int | None = None, batch_size: int = 10000)",
+    "release_signature": "(config: SourceConfig | Mapping[str, Any], *, stream: ExactPhysicalCellStream | None = None, incidence: PhysicalSourceIncidence | None = None, source_sha256: str | None = None, row_count: int | None = None, row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None, batch_size: int = 10000)",
     "repository_callable": "build_source_backed_c11_repository_from_config",
-    "repository_signature": "(config: SourceConfig | Mapping[str, Any], source: ExactPhysicalCellStream | PhysicalSourceIncidence, *, cache: Any = None, batch_size: int = 10000)"
+    "repository_signature": "(config: SourceConfig | Mapping[str, Any], source: ExactPhysicalCellStream | PhysicalSourceIncidence, *, row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None, cache: Any = None, batch_size: int = 10000)"
   },
   "projection_field_mapping": {
     "projection_identity_ref": "authority.projection_identity_ref",
@@ -55,7 +55,7 @@
     "instrument_release_id": "identity.instrument_release_id (original) / binding.fixture_provenance.fixture_instrument_release_id (fixture)",
     "source_snapshot_retention_ref": "identity.source_snapshot_retention_ref (original) / binding.source_snapshot_ref (fixture)",
     "universes": "universe.universes -> native EmpiricalUniverse constructors",
-    "respondents": "respondents.respondent_key_pattern + binding.row_count -> native RespondentIdentity constructors",
+    "respondents": "respondents.respondent_key_pattern + binding.row_count + optional row_native_keys -> native RespondentIdentity constructors; configured source_native_key_slot requires exact row keys after permitted decode, otherwise TypedAbsence(UNKNOWN)",
     "row_bindings": "generated 1..binding.row_count exact RowRespondentBinding values",
     "questions": "questions -> native QuestionVariableBinding constructors",
     "response_slots": "response_slots -> native ResponseSlotRule/ResponseValueRule/OccurrenceRule",
@@ -89,6 +89,7 @@
     "Original-source configs may not use a fixture universe, fixture authority, synthetic ZZ/TEST_ONLY/default universe or fixture SHA.",
     "Fixture configs require a distinct byte identity, explicit nonrespondent provenance and fixture-only authority snapshots.",
     "The factory constructs respondent/value witnesses only when the physical cell stream is projected; preparation does not pre-invent them.",
+    "A configured source_native_key_slot is not silently ignored: row_native_keys must carry exact observed key witnesses after a permitted decode, or the factory refuses.",
     "Native C11 validation remains the deciding validator; a loader, identity object, refusal or unexecuted recipe is not positive construction."
   ]
 }
