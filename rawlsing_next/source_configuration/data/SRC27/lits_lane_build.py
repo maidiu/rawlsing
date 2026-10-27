@@ -13,6 +13,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import re
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
@@ -62,6 +63,10 @@ RECIPES: dict[str, dict[str, Any]] = {
         "artifact": "LiTS_I.dta",
         "release_id": "LiTS_WAVE_2006",
         "country_slot": "country",
+        "key_slot": "id",
+        "key_values": [9001, 9002, 9003, 9004, 9005],
+        "coordinate_vars": ["country", "region", "city"],
+        "weight_vars": ["weight_0", "weight_1", "weight_2"],
         "country_kind": "NUMERIC_SOURCE_COUNTRY_CODE",
         "country_geography": (
             "MULTI_COUNTRY_LITS_2006__SOURCE_COUNTRY_SLOT_ORDINAL_98__"
@@ -181,6 +186,10 @@ RECIPES: dict[str, dict[str, Any]] = {
         "artifact": "LiTS_II.dta",
         "release_id": "LiTS_WAVE_II",
         "country_slot": "country",
+        "key_slot": "SerialID",
+        "key_values": [9001.0, 9002.0, 9003.0, 9004.0, 9005.0],
+        "coordinate_vars": ["country", "psu"],
+        "weight_vars": ["weight", "XCweight"],
         "country_kind": "NUMERIC_SOURCE_COUNTRY_CODE",
         "country_geography": (
             "MULTI_COUNTRY_LITS_II__SOURCE_COUNTRY_SLOT_ORDINAL_2__"
@@ -278,6 +287,10 @@ RECIPES: dict[str, dict[str, Any]] = {
         "artifact": "LiTS_III.dta",
         "release_id": "LiTS_WAVE_III",
         "country_slot": "country",
+        "key_slot": "ID",
+        "key_values": [9001.0, 9002.0, 9003.0, 9004.0, 9005.0],
+        "coordinate_vars": ["country", "PSU_number", "region_name", "urban"],
+        "weight_vars": ["weight_population", "weight_sample", "weight_one"],
         "country_kind": "STRING_SOURCE_COUNTRY_VALUE",
         "country_geography": (
             "MULTI_COUNTRY_LITS_III__SOURCE_COUNTRY_SLOT_ORDINAL_1_STRING__"
@@ -405,6 +418,16 @@ RECIPES: dict[str, dict[str, Any]] = {
         "artifact": "LiTS_IV.dta",
         "release_id": "LiTS_WAVE_IV",
         "country_slot": "country",
+        "key_slot": "hhid",
+        "key_values": [
+            "R157_FIXTURE_HH_001",
+            "R157_FIXTURE_HH_002",
+            "R157_FIXTURE_HH_003",
+            "R157_FIXTURE_HH_004",
+            "R157_FIXTURE_HH_005",
+        ],
+        "coordinate_vars": ["country", "psu", "region"],
+        "weight_vars": ["weight", "weight_pop", "weight_trt", "weight_pop_trt"],
         "country_kind": "NUMERIC_SOURCE_COUNTRY_CODE",
         "country_geography": (
             "MULTI_COUNTRY_LITS_IV__SOURCE_COUNTRY_SLOT_ORDINAL_2__"
@@ -770,6 +793,77 @@ def _ordered_codes(slot: Mapping[str, Any]) -> list[tuple[int | float, str, str]
     return result
 
 
+_ROSTER_JOINED = re.compile(r"^q10[1-5]_[a-z]?(\d+)$")
+_ROSTER_TRAILING = re.compile(r"^q10[1-5](\d{1,2})$")
+_RESPONDENT_BLOCK = re.compile(r"^(PR|SR)q")
+
+
+def _occurrence_shape(source_id: str, var: str, source_topology: str) -> tuple[str, str, dict[str, Any], str]:
+    """Return kind, occurrence key, fields and role for one source variable."""
+    match = _ROSTER_JOINED.match(var) or _ROSTER_TRAILING.match(var)
+    if match is not None:
+        position = int(match.group(1))
+        return (
+            "REPEATED_EVENT",
+            f"household_member_position_{position}_{var}",
+            {
+                "kind": "REPEATED_EVENT",
+                "source_topology": source_topology,
+                "repeat_axis": "household_roster",
+                "member_position": position,
+                "source_slot": var,
+            },
+            "repeated_response",
+        )
+    match = _RESPONDENT_BLOCK.match(var)
+    if match is not None:
+        block = match.group(1)
+        position = 1 if block == "PR" else 2
+        return (
+            "REPEATED_MEASUREMENT",
+            f"{block.lower()}_respondent_block_{var}",
+            {
+                "kind": "REPEATED_MEASUREMENT",
+                "source_topology": source_topology,
+                "respondent_block": "PRIMARY" if block == "PR" else "SECONDARY",
+                "position": position,
+                "source_slot": var,
+            },
+            "repeated_response",
+        )
+    return (
+        source_topology or "scalar",
+        f"source_{source_id}_{var}",
+        {
+            "kind": source_topology or "scalar",
+            "source_topology": source_topology or "scalar",
+            "position": 1,
+        },
+        "response",
+    )
+
+
+def _target_for_item(source_id: str, slot: Mapping[str, Any], item: Mapping[str, Any]) -> dict[str, Any]:
+    relation = item.get("relation") or {}
+    source_topology = relation.get("manual_response_topology") or "scalar"
+    kind, key, fields, role = _occurrence_shape(source_id, slot["name"], source_topology)
+    return {
+        "var": slot["name"],
+        "question_id": f"{source_id}_{slot['name']}",
+        "role": role,
+        "topology_kind": kind,
+        "occurrence_key": key,
+        "occurrence_fields": fields,
+        "canonical_substantive": True,
+        "semantic_role": relation.get("manual_semantic_role") or (item.get("p2") or {}).get("canonical_disposition") or "RESPONSE",
+        "routing_status": _routing_status(item),
+        "notes": (
+            "Source-bound value/topology rule derived from the exact P2/H48/full-relation row; "
+            "routing state is serialized explicitly and not inferred from storage missingness."
+        ),
+    }
+
+
 def _value_rule(
     *,
     raw_value: Any,
@@ -975,15 +1069,7 @@ def _question_payload(
             "physical_ordinal": slot["ordinal"],
             "physical_name": slot["name"],
             "p2_question_id": (item.get("p2") or {}).get("question_id"),
-            "p2_canonical_disposition": (item.get("p2") or {}).get("canonical_disposition"),
-            "p2_response_binding_status": (item.get("p2") or {}).get("response_binding_status"),
-            "relation_authority_status": relation.get("authority_status_final_or_current"),
-            "relation_mapping_status": relation.get("mapping_status"),
-            "manual_response_topology": relation.get("manual_response_topology"),
-            "manual_signed_polarity_status": relation.get("manual_signed_polarity_status"),
             "routing_status": routing,
-            "governed_row_payload_hash": relation.get("governed_row_payload_hash"),
-            "p2_exact_identity_sha256": relation.get("p2_exact_identity_sha256"),
             "fixture_identity_class": "NONRESPONDENT_FIXTURE" if fixture else "ORIGINAL_SOURCE",
         },
     }
@@ -1087,7 +1173,11 @@ def _coordinate_slot(
     slot: Mapping[str, Any],
     authority: Mapping[str, Any],
     fixture: bool,
+    coordinate_kind: str | None = None,
+    unit_taxonomy: str | None = None,
 ) -> dict[str, Any]:
+    coordinate_kind = coordinate_kind or recipe["country_kind"]
+    unit_taxonomy = unit_taxonomy or coordinate_kind
     return {
         "slot": {"ordinal": slot["ordinal"], "name": slot["name"]},
         "native_coordinate_ref": _exact_ref(
@@ -1096,25 +1186,23 @@ def _coordinate_slot(
             {
                 "source_id": source_id,
                 "slot": slot["name"],
-                "kind": recipe["country_kind"],
+                "kind": coordinate_kind,
                 "fixture": fixture,
             },
         ),
         "unit_taxonomy_ref": _exact_ref(
             "COORDINATE_UNIT_TAXONOMY",
             f"urn:rawlsing:r157:{source_id}:coordinate-unit:{slot['name']}",
-            {"source_id": source_id, "unit": recipe["country_kind"]},
+            {"source_id": source_id, "unit": unit_taxonomy},
         ),
         "effective_time": recipe["wave"],
         "source_semantic_authority_ref": _authority_ref(authority["by_tag"]["COORDINATE"]),
         "canonical_coordinate_ref": None,
-        "normalization_ref": {
-            "typed_absence_state": "NOT_APPLICABLE",
-            "detail": (
-                "No country crosswalk, default country, or canonical geography is asserted; "
-                "the raw source coordinate is copied only when observed."
-            ),
-        },
+        # Frozen-native limitation: EmpiricalCoordinateFact canonicalization does
+        # not accept TypedAbsence in normalization_ref.  Null is used here and the
+        # no-crosswalk fact is carried explicitly in notes/residuals, not invented
+        # as a canonical identity.
+        "normalization_ref": None,
         "values": [],
         "copy_observed_raw": True,
     }
@@ -1130,20 +1218,25 @@ def _routing_rules(
     rules = []
     for target in targets:
         var = target["var"]
+        routing_status = target.get("routing_status") or "UNCONDITIONAL_SOURCE_PROVEN"
+        typed_state = {
+            "UNCONDITIONAL_SOURCE_PROVEN": "ELIGIBLE_APPLICABLE",
+            "ADMIN_OR_NONRESPONDENT": "NOT_ASKED",
+        }.get(routing_status, "ROUTING_UNKNOWN")
         rules.append(
             {
                 "question_id": target["question_id"],
                 "row_selector": "ALL",
-                "typed_state": "ELIGIBLE_APPLICABLE",
+                "typed_state": typed_state,
                 "risk_set_ref": _exact_ref(
                     "RISK_SET",
                     f"urn:rawlsing:r157:{source_id}:risk-set:{var}",
-                    {"source_id": source_id, "var": var, "scope": "unconditional_source_proven"},
+                    {"source_id": source_id, "var": var, "routing_status": routing_status},
                 ),
                 "routing_rule_ref": _exact_ref(
                     "ROUTING_RULE",
                     f"urn:rawlsing:r157:{source_id}:routing-rule:{var}",
-                    {"source_id": source_id, "var": var, "routing_status": "UNCONDITIONAL_SOURCE_PROVEN"},
+                    {"source_id": source_id, "var": var, "routing_status": routing_status},
                 ),
                 "member_set_replay_ref": _exact_ref(
                     "MEMBER_SET_REPLAY",
@@ -1167,8 +1260,17 @@ def _physical_slot_payload(
     item: Mapping[str, Any],
     included: bool,
     target: Mapping[str, Any] | None,
+    key_slot_name: str | None = None,
+    disposition_override: str | None = None,
+    disposition_reason_override: str | None = None,
 ) -> dict[str, Any]:
-    if included and target is not None:
+    if disposition_override is not None:
+        disposition = disposition_override
+        disposition_reason = disposition_reason_override
+    elif included and key_slot_name == slot["name"]:
+        disposition = "INCLUDED_FIXTURE_KEY_SLOT"
+        disposition_reason = None
+    elif included and target is not None:
         if target["role"] == "coordinate":
             disposition = "INCLUDED_COORDINATE_SLOT"
         elif target["role"] == "repeated_response":
@@ -1223,11 +1325,18 @@ def _item_payload(
     target: Mapping[str, Any] | None,
     source_id: str,
     metadata_sha: str,
+    key_slot_name: str | None = None,
+    disposition_override: str | None = None,
+    include_relation: bool | None = None,
 ) -> dict[str, Any]:
     relation = item.get("relation") or {}
     p2 = item.get("p2") or {}
     routing = _routing_status(item)
-    if included and target is not None:
+    if disposition_override is not None:
+        disposition = disposition_override
+    elif included and key_slot_name == slot["name"]:
+        disposition = "INCLUDED_FIXTURE_KEY_SLOT"
+    elif included and target is not None:
         if target["role"] == "coordinate":
             disposition = "INCLUDED_COORDINATE_SLOT"
         elif target["role"] == "repeated_response":
@@ -1248,8 +1357,8 @@ def _item_payload(
         item=item,
         codebook=codebook,
         metadata_sha=metadata_sha,
-    )
-    limits = _item_limits(item)
+    )[:3]
+    limits = _item_limits(item)[:4]
     payload = {
         "implementation_id": item["implementation_id"],
         "source_variable_code": item["source_variable_code"],
@@ -1266,7 +1375,12 @@ def _item_payload(
         "evidence_refs": evidence_refs,
         "limits": limits,
     }
-    if included and target is not None:
+    emit_relation = (
+        include_relation
+        if include_relation is not None
+        else (included and target is not None)
+    )
+    if emit_relation:
         payload["relation"] = {
             "status": _nonempty_text(
                 relation.get("authority_status_final_or_current")
@@ -1555,6 +1669,7 @@ def _item_accounting_row(
     codebook: Mapping[str, Any],
     selected: bool,
     target: Mapping[str, Any] | None,
+    metadata_sha: str,
 ) -> dict[str, Any]:
     relation = item.get("relation") or {}
     h48 = item.get("h48") or {}
@@ -1624,7 +1739,7 @@ def _item_accounting_row(
             slot=slot,
             item=item,
             codebook=codebook,
-            metadata_sha="",
+            metadata_sha=metadata_sha,
         ),
         "limits": _item_limits(item),
     }
@@ -1718,6 +1833,7 @@ def build_source(source_id: str) -> dict[str, Any]:
             codebook=codebook[slot["name"]],
             selected=slot["name"] in included,
             target=selected.get(slot["name"]),
+            metadata_sha=metadata_sha,
         )
         for slot in slots
     ]
@@ -1793,9 +1909,23 @@ def _build_fixture_document(
     rows = len(fixture["country_values"])
     if any(len(values) != rows for values in fixture["cells"].values()):
         raise ValueError(f"{source_id}: fixture cell arrays must match row count")
+    key_values = recipe.get("key_values")
+    if not isinstance(key_values, list) or len(key_values) != rows:
+        raise ValueError(f"{source_id}: fixture key values must match row count")
     cells = []
     for index in range(rows):
         row = index + 1
+        key_slot = slot_by_name[recipe["key_slot"]]
+        cells.append(
+            {
+                "row_ordinal": row,
+                "variable_ordinal": key_slot["ordinal"],
+                "variable_name": key_slot["name"],
+                "raw_value": key_values[index],
+                "missing_state": "OBSERVED_STORAGE_VALUE",
+                "source_missing_declaration": None,
+            }
+        )
         country_slot = slot_by_name[recipe["country_slot"]]
         cells.append(
             {
@@ -1831,7 +1961,13 @@ def _build_fixture_document(
         "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
         "row_count": rows,
         "cells": cells,
-        "shape_coverage": fixture["shape_coverage"],
+        "shape_coverage": [
+            *fixture["shape_coverage"],
+            (
+                f"fixture-only exact row key slot {recipe['key_slot']} supplies one "
+                "nonrespondent key witness per row through the P3 keyed factory path"
+            ),
+        ],
         "expected_results_pending_oracle": True,
         "oracle_basis": (
             "Expected results are declared from the fixture cells and the serialized "
@@ -1932,12 +2068,17 @@ def _build_config(
             }
         )
 
+    key_slot_name = recipe["key_slot"] if fixture else None
+    effective_included = set(included)
+    if key_slot_name is not None:
+        effective_included.add(key_slot_name)
     physical_payload = [
         _physical_slot_payload(
             slot=slot,
             item=items[slot["name"]],
-            included=slot["name"] in included,
+            included=slot["name"] in effective_included,
             target=selected.get(slot["name"]),
+            key_slot_name=key_slot_name,
         )
         for slot in slots
     ]
@@ -1946,10 +2087,11 @@ def _build_config(
             slot=slot,
             item=items[slot["name"]],
             codebook=codebook[slot["name"]],
-            included=slot["name"] in included,
+            included=slot["name"] in effective_included,
             target=selected.get(slot["name"]),
             source_id=source_id,
             metadata_sha=metadata_sha,
+            key_slot_name=key_slot_name,
         )
         for slot in slots
     ]
@@ -2132,21 +2274,14 @@ def _build_config(
             "replay_protocol_version": "R157_SOURCE_CONFIGURATION@1.0.0",
         },
         "universe": {"universes": [universe_payload]},
-        "respondents": {
-            "subject_unit": (
-                "NONRESPONDENT_FIXTURE_ROW" if fixture else recipe["subject_unit"]
-            ),
-            "respondent_namespace": universe_payload["respondent_namespace"],
-            "respondent_key_pattern": (
-                f"r157:fixture:{source_id}:row:{{row_ordinal}}"
-                if fixture else f"lits:{recipe['wave']}:household_row:{{row_ordinal}}"
-            ),
-            "row_identity_grade": (
-                "FIXTURE_ROW_IDENTITY_ONLY"
-                if fixture else
-                "ROW_ORDINAL_REPLAY_KEY__SOURCE_NATIVE_KEY_SLOT_HELD_UNTIL_DECODE"
-            ),
-        },
+        "respondents": _respondents_section(
+            source_id=source_id,
+            recipe=recipe,
+            slots=slots,
+            universe_payload=universe_payload,
+            fixture=fixture,
+            key_slot_name=key_slot_name,
+        ),
         "questions": questions,
         "physical_slots": physical_payload,
         "items": item_payload,
@@ -2239,9 +2374,54 @@ def _build_config(
                 "No ALLOW original-source authority, default person/scalar, default form, "
                 "implicit weight or synthetic universe is asserted."
             ),
+            (
+                "Coordinate normalization_ref is null because the frozen native canonicalizer "
+                "does not accept a TypedAbsence there; no country crosswalk or canonical "
+                "geography is asserted, and the raw coordinate is copied only when observed."
+            ),
+            (
+                "The nonrespondent fixture config declares a fixture-scoped source key slot so "
+                "the P3 keyed factory path extracts exact per-row fixture key witnesses; the "
+                "ORIGINAL_SOURCE config does not claim decoded source-native row keys."
+                if fixture else
+                "The source-native key slot is inventoried but not configured because no "
+                "permitted decoded row witness exists; row identity remains a replay ordinal."
+            ),
         ],
     }
     return config
+
+
+def _respondents_section(
+    *,
+    source_id: str,
+    recipe: Mapping[str, Any],
+    slots: Sequence[Mapping[str, Any]],
+    universe_payload: Mapping[str, Any],
+    fixture: bool,
+    key_slot_name: str | None,
+) -> dict[str, Any]:
+    section = {
+        "subject_unit": (
+            "NONRESPONDENT_FIXTURE_ROW" if fixture else recipe["subject_unit"]
+        ),
+        "respondent_namespace": universe_payload["respondent_namespace"],
+        "respondent_key_pattern": (
+            f"r157:fixture:{source_id}:row:{{row_ordinal}}"
+            if fixture else f"lits:{recipe['wave']}:household_row:{{row_ordinal}}"
+        ),
+        "row_identity_grade": (
+            "FIXTURE_ROW_NATIVE_KEY_FROM_DECLARED_KEY_CELL"
+            if fixture else
+            "ROW_ORDINAL_REPLAY_KEY__SOURCE_NATIVE_KEY_SLOT_HELD_UNTIL_DECODE"
+        ),
+    }
+    if fixture:
+        if key_slot_name is None:
+            raise ValueError(f"{source_id}: fixture key slot is required")
+        slot = next(s for s in slots if s["name"] == key_slot_name)
+        section["source_native_key_slot"] = {"ordinal": slot["ordinal"], "name": slot["name"]}
+    return section
 
 
 def selected_targets_value(
@@ -2496,6 +2676,12 @@ def _expected_results(
         "routing_question_count": len(fixture_config["routing"]),
         "authority_snapshot_count": len(fixture_config["authority"]["snapshots"]),
         "respondent_count": fixture["row_count"],
+        "key_slot": fixture_config["respondents"].get("source_native_key_slot"),
+        "key_witness_count": (
+            fixture["row_count"]
+            if fixture_config["respondents"].get("source_native_key_slot") is not None
+            else 0
+        ),
         "response_event_count": response_events,
         "coordinate_fact_count": coordinate_facts,
         "routing_fact_count": routing_facts,
@@ -2527,7 +2713,10 @@ def _raw_key(raw_value: Any, missing_state: str) -> tuple[Any, str]:
 
 def _write_json(path: Path, document: Any) -> None:
     path.write_text(
-        json.dumps(document, indent=2, ensure_ascii=False, allow_nan=False) + "\n",
+        json.dumps(
+            document, ensure_ascii=False, allow_nan=False,
+            separators=(",", ":"),
+        ) + "\n",
         encoding="utf-8",
     )
 
