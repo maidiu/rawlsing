@@ -1,0 +1,73 @@
+{
+  "schema": "PYAT_R157_LITS_EXACT_NAME_CORRESPONDENCE@1.0.0",
+  "source_id": "SRC29",
+  "source_family": "LiTS",
+  "wave": "III",
+  "physical_columns": 1290,
+  "codebook_rows": 1290,
+  "original_items": 1290,
+  "physical_only": 0,
+  "codebook_only": 0,
+  "exact_relation_matches": 1290,
+  "name_set_relation": "EXACT_LITERAL_NAME_SET_MATCH__NO_ALIAS_REQUIRED",
+  "normalization_used": "NONE",
+  "selected_native_slice": [
+    {
+      "physical_ordinal": 310,
+      "physical_name": "PRq306",
+      "codebook_var_name": "PRq306",
+      "codebook_row_hash": "0fc6f1f973ef35cc022eaf6be8c64a8c49e49527d004ceae8ed206729775f9fc",
+      "implementation_id": "question_impl.phase0.0796a7dcc3c7ba6ab3f3",
+      "exact_identity_sha256": "0796a7dcc3c7ba6ab3f39b375e00397e0c8dcf4e82d5f561e9aec28508dd818d",
+      "relation_question_id": "LiTS_III_PRq306",
+      "relation_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "manual_response_topology": "ordinal_context",
+      "routing_status": "UNCONDITIONAL_SOURCE_PROVEN",
+      "correspondence": "EXACT_LITERAL_NAME_MATCH",
+      "alias_used": false
+    },
+    {
+      "physical_ordinal": 452,
+      "physical_name": "PRq315",
+      "codebook_var_name": "PRq315",
+      "codebook_row_hash": "0417dd96584dc35fdfbdafa1bb0571c3148a04cfc1d9ac0ad55558c2326d2976",
+      "implementation_id": "question_impl.phase0.b83277669af0d17f6b95",
+      "exact_identity_sha256": "b83277669af0d17f6b958d1eb8e9051daba77aa62fbd9f8aaeb244cb42881742",
+      "relation_question_id": "LiTS_III_PRq315",
+      "relation_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "manual_response_topology": "ordinal_context",
+      "routing_status": "UNCONDITIONAL_SOURCE_PROVEN",
+      "correspondence": "EXACT_LITERAL_NAME_MATCH",
+      "alias_used": false
+    },
+    {
+      "physical_ordinal": 1190,
+      "physical_name": "SRq315",
+      "codebook_var_name": "SRq315",
+      "codebook_row_hash": "596c3ec2c439199b1032d8d36d1fac02479e460820eb9d3155244ce76ae2a3d3",
+      "implementation_id": "question_impl.phase0.650d5c974b62eb1fe96d",
+      "exact_identity_sha256": "650d5c974b62eb1fe96d244140d6d0175c59f6987cd0a61e55339405c3acb926",
+      "relation_question_id": "LiTS_III_SRq315",
+      "relation_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "manual_response_topology": "ordinal_context",
+      "routing_status": "UNCONDITIONAL_SOURCE_PROVEN",
+      "correspondence": "EXACT_LITERAL_NAME_MATCH",
+      "alias_used": false
+    },
+    {
+      "physical_ordinal": 1,
+      "physical_name": "country",
+      "codebook_var_name": "country",
+      "codebook_row_hash": "381908b2c7e6ca3cc9b3237bee3c1cdb36b02d5b39373c1f7b42b458a9a95290",
+      "implementation_id": "question_impl.phase0.f453e3680275d95c1e40",
+      "exact_identity_sha256": "f453e3680275d95c1e402f4db2e80cf7670ca75590b851eb52c384ae4f29efcc",
+      "relation_question_id": "LiTS_III_country",
+      "relation_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "manual_response_topology": "nominal_choice",
+      "routing_status": "ADMIN_OR_NONRESPONDENT",
+      "correspondence": "EXACT_LITERAL_NAME_MATCH",
+      "alias_used": false
+    }
+  ],
+  "notes": "The four LITS sources already have exact literal physical/codebook name sets; this record reuses those exact names. No casefold, punctuation replacement, P<->Q prefix assumption, copied-edition mapping, nearest-label substitution or dynamic alias is applied. Only SRC25/SRC26 require exact correspondence work."
+}

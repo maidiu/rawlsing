@@ -1,0 +1,64 @@
+{
+  "schema": "PYAT_R157_LITS_NONRESPONDENT_ORACLE@1.0.0",
+  "source_id": "SRC28",
+  "fixture_id": "R157-LITS-SRC28-NONRESPONDENT",
+  "fixture_path": "source_pre553_validation/SRC28/fixture.json",
+  "fixture_sha256": "7c3c2251d704d291c3358e0191f24b751d42809be51c34cb316b48c458464ff2",
+  "fixture_config_path": "source_pre553_validation/SRC28/fixture.config.json",
+  "fixture_config_canonical_hash": "95ab3a048bd80008778384bfdcbcff1ae4959f4628a83e35a2cb0832ab2f0ac0",
+  "original_config_path": "rawlsing_next/source_configuration/data/SRC28/src28.config.json",
+  "original_source_id": "SRC28",
+  "original_source_sha256": "c43d0e1821c51398817d7dfdfad2c0a4a5bb0d492f6a58096670e623bb6130e9",
+  "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
+  "fixture_only": true,
+  "row_count": 5,
+  "question_count": 2,
+  "response_slot_count": 2,
+  "coordinate_slot_count": 1,
+  "routing_question_count": 2,
+  "authority_snapshot_count": 7,
+  "respondent_count": 5,
+  "response_event_count": 10,
+  "coordinate_fact_count": 5,
+  "routing_fact_count": 10,
+  "response_states_by_question": {
+    "SRC28_Q303F_TRUST_COURTS": [
+      "SUBSTANTIVE_RESPONSE",
+      "DK",
+      "REFUSAL",
+      "INAPPLICABLE",
+      "MISSING"
+    ],
+    "SRC28_Q708_MOVE_ABROAD_INTENTION": [
+      "SUBSTANTIVE_RESPONSE",
+      "SUBSTANTIVE_RESPONSE",
+      "MISSING",
+      "INAPPLICABLE",
+      "MISSING"
+    ]
+  },
+  "canonical_values_by_question": {
+    "SRC28_Q303F_TRUST_COURTS": [
+      "4",
+      null,
+      null,
+      null,
+      null
+    ],
+    "SRC28_Q708_MOVE_ABROAD_INTENTION": [
+      "1",
+      "2",
+      null,
+      null,
+      null
+    ]
+  },
+  "weight_section": "NOT_APPLICABLE",
+  "source_relation_section": "DISTINCT_BY_DEFAULT",
+  "oracle_basis": "Declared from the fixture cells and serialized source-code/state rules before the factory/native-validator call; not copied from the native result.",
+  "limits": [
+    "Nonrespondent fixture validation does not establish original-source scientific results.",
+    "Fixture authority is separate from original-source authority.",
+    "Original source execution is not performed or claimed."
+  ]
+}

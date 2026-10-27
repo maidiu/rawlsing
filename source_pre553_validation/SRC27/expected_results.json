@@ -1,0 +1,78 @@
+{
+  "schema": "PYAT_R157_LITS_NONRESPONDENT_ORACLE@1.0.0",
+  "source_id": "SRC27",
+  "fixture_id": "R157-LITS-SRC27-NONRESPONDENT",
+  "fixture_path": "source_pre553_validation/SRC27/fixture.json",
+  "fixture_sha256": "6399611e2ddd1d383048ba4ec2aafda72c5745a28a920804c753cd6a41c32860",
+  "fixture_config_path": "source_pre553_validation/SRC27/fixture.config.json",
+  "fixture_config_canonical_hash": "80e284f620c7471ea8a5d0471107d21b431ea0c1a4f6c096e96d1007dc8a83ac",
+  "original_config_path": "rawlsing_next/source_configuration/data/SRC27/src27.config.json",
+  "original_source_id": "SRC27",
+  "original_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+  "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
+  "fixture_only": true,
+  "row_count": 5,
+  "question_count": 3,
+  "response_slot_count": 3,
+  "coordinate_slot_count": 1,
+  "routing_question_count": 3,
+  "authority_snapshot_count": 7,
+  "respondent_count": 5,
+  "response_event_count": 15,
+  "coordinate_fact_count": 5,
+  "routing_fact_count": 15,
+  "response_states_by_question": {
+    "SRC27_Q103_1_HH_MEMBER_1_RELATION": [
+      "SUBSTANTIVE_RESPONSE",
+      "SUBSTANTIVE_RESPONSE",
+      "SUBSTANTIVE_RESPONSE",
+      "MISSING",
+      "SUBSTANTIVE_RESPONSE"
+    ],
+    "SRC27_Q102_1_HH_MEMBER_1_GENDER": [
+      "SUBSTANTIVE_RESPONSE",
+      "SUBSTANTIVE_RESPONSE",
+      "SUBSTANTIVE_RESPONSE",
+      "MISSING",
+      "SUBSTANTIVE_RESPONSE"
+    ],
+    "SRC27_Q303_3_TRUST_PARLIAMENT": [
+      "SUBSTANTIVE_RESPONSE",
+      "SUBSTANTIVE_RESPONSE",
+      "DK",
+      "MISSING",
+      "SUBSTANTIVE_RESPONSE"
+    ]
+  },
+  "canonical_values_by_question": {
+    "SRC27_Q103_1_HH_MEMBER_1_RELATION": [
+      "1",
+      "2",
+      "4",
+      null,
+      "98"
+    ],
+    "SRC27_Q102_1_HH_MEMBER_1_GENDER": [
+      "0",
+      "1",
+      "0",
+      null,
+      "1"
+    ],
+    "SRC27_Q303_3_TRUST_PARLIAMENT": [
+      "4",
+      "5",
+      null,
+      null,
+      "1"
+    ]
+  },
+  "weight_section": "NOT_APPLICABLE",
+  "source_relation_section": "DISTINCT_BY_DEFAULT",
+  "oracle_basis": "Declared from the fixture cells and serialized source-code/state rules before the factory/native-validator call; not copied from the native result.",
+  "limits": [
+    "Nonrespondent fixture validation does not establish original-source scientific results.",
+    "Fixture authority is separate from original-source authority.",
+    "Original source execution is not performed or claimed."
+  ]
+}
