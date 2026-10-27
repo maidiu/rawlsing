@@ -1,0 +1,34 @@
+{
+  "schema": "SOROK_SYN02_RB_REMOTE_READBACK_R1",
+  "date": "2026-10-27",
+  "reviewer": "RB",
+  "review_branch": "agent/sorok-syn02-review-rb-source-runtime-migration-r1",
+  "sealed_startup": "1ede5e7e814b22e6e652fb01549d4a10f5dec18c",
+  "targets": {
+    "SYN02-B": "d8f8b4f7610a4a28d86cf6d0c08f5d297d74d6e3",
+    "SYN02-D": "f904955e1c6f4db2d7fdebf8d2a6b78029274a5f"
+  },
+  "artifact_commit": "42af089f263e9a657157c5ec2149b43eda4d3cae",
+  "remote_head_after_artifact_push": "42af089f263e9a657157c5ec2149b43eda4d3cae",
+  "remote_readback_command": "git ls-remote --heads origin agent/sorok-syn02-review-rb-source-runtime-migration-r1",
+  "remote_readback_exact": "42af089f263e9a657157c5ec2149b43eda4d3cae\trefs/heads/agent/sorok-syn02-review-rb-source-runtime-migration-r1",
+  "target_readback_commands": [
+    "git ls-remote --heads origin agent/sorok-syn02-b-historical-v3-adaptation-r1",
+    "git ls-remote --heads origin agent/sorok-syn02-d-execution-architecture-owner-wiring-r1"
+  ],
+  "target_readback_exact": [
+    "d8f8b4f7610a4a28d86cf6d0c08f5d297d74d6e3\trefs/heads/agent/sorok-syn02-b-historical-v3-adaptation-r1",
+    "f904955e1c6f4db2d7fdebf8d2a6b78029274a5f\trefs/heads/agent/sorok-syn02-d-execution-architecture-owner-wiring-r1"
+  ],
+  "changed_paths": [
+    "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/REVIEW_COURTS/RETURNS/RB/00_REVIEW.md",
+    "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/REVIEW_COURTS/RETURNS/RB/INDEPENDENT_EVIDENCE.json",
+    "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/REVIEW_COURTS/RETURNS/RB/LOCAL_PROBES.md"
+  ],
+  "readback_added_by": "REMOTE_READBACK.json",
+  "notes": [
+    "The artifact commit is the immutable review content commit; this readback file is a follow-up custody record.",
+    "The review branch advanced from the sealed startup by fast-forward only; no force-push.",
+    "RB did not modify B/D author branches, original V3 source, current production/C9/C12, CAN/ADP/Pyat or PRE-MAIN."
+  ]
+}
