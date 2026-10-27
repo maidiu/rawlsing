@@ -1,7 +1,33 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "ALL35_P5_CANDIDATE_INTEGRATED_P6_SESSION_RECOVERY_PENDING",
-  "active_workers": [],
+  "status": "P6_DISTINCT_REVIEW_RUNNING",
+  "active_workers": [
+    {
+      "task": "P6_FINAL_INDEPENDENT_REVIEW",
+      "session": "ses_e81fc42a8ffeAbvo6M8l4YG4nK",
+      "replaces": "ses_e96304356ffeC8HSvwFluWOjG1",
+      "user_authorization": "okay, do that I guess",
+      "scope_change": false,
+      "candidate": "1384612bfed8d801140e00ace353779338599da3",
+      "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-final-review",
+      "branch": "agent/pyat-pre553-r157-final-review",
+      "provider": "opencode-go",
+      "model": "deepseek-v4.1-flash",
+      "variant": "max",
+      "actual_metadata_verified": true,
+      "pid": 80424,
+      "started_utc": "2026-10-27T15:39:32.715136+00:00",
+      "prompt_sha256": "dcaeea1d1bdc63c013159fbb83fa5245058a9569b89f678a691749d981b5d43b",
+      "write_paths": [
+        "SOURCE_PRE553_PLAN/review/",
+        ".r61/r157-p6/"
+      ],
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-final-review/.r61/r157-p6/completion.json",
+      "old_history_retained": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-final-review/.r61/r157-p6/prior-reviewer-history.json",
+      "state": "LAUNCHED_FIRST_TOOL_PREFLIGHT_PENDING"
+    }
+  ],
   "heartbeat": "PAUSED",
   "implementation_started": true,
   "completed_tasks": [
@@ -18,7 +44,7 @@
     "WVS_SOURCE_CONFIGURATION_PREPARATION_SCOPED"
   ],
   "current_goal_anchor": "GOAL.md",
-  "next_action": "Resume retained distinct P6 reviewer on coherent frozen integrated candidate; legacy session history retained but not yet migrated to current OpenCode API.",
+  "next_action": "Intake actual P6 final review; repair only demonstrated defects, then completion audit.",
   "live_goal_objective_verified": true,
   "live_goal_tool_status": "active",
   "resume_authorization": {
@@ -226,5 +252,6 @@
   },
   "latin_intake": "LATIN_INTAKE.json",
   "prepared_sources_scoped_integrated": 35,
-  "p5_intake": "P5_INTAKE.json"
+  "p5_intake": "P5_INTAKE.json",
+  "reviewer_replacement_user_authorized": true
 }
