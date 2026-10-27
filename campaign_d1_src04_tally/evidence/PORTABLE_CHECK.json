@@ -1,0 +1,28 @@
+{
+  "all_field_counts_match": true,
+  "archive_source": "git archive HEAD",
+  "clean_archive_no_private_r61": true,
+  "commands": [
+    "PYTHONPATH=. python3 campaign_d1_src04_tally/run.py --mode primary",
+    "PYTHONPATH=. python3 campaign_d1_src04_tally/run.py --mode replay"
+  ],
+  "field_count": 42,
+  "held_fields": [],
+  "original_sav_read": false,
+  "primary_status": "PRIMARY_TALLY_COMPLETE",
+  "product_ref": {
+    "content_hash": "87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022",
+    "kind": "D1_OBSERVED_SAMPLE_TALLY",
+    "object_id": "urn:rawlsing:d1:SRC04:observed-sample-tally:87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022"
+  },
+  "replay_ref": {
+    "content_hash": "8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f",
+    "kind": "D1_TALLY_REPLAY",
+    "object_id": "urn:rawlsing:d1:SRC04:observed-sample-replay:8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f"
+  },
+  "replay_ref_match": true,
+  "replay_status": "COLD_REPLAY_COMPLETE",
+  "schema": "PYAT_D1_SRC04_PORTABLE_CHECK@1.0.0",
+  "source": "LOCAL_ACCEPTED_C11_RELEASE",
+  "tally_ref_match": true
+}
