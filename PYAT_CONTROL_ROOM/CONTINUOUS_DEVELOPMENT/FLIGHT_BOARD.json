@@ -1558,21 +1558,18 @@
       "heartbeat": "PAUSED"
     },
     {
-      "task": "D1_SRC04_TALLY_THREE_DEFECT_REPAIR",
-      "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "pid": 27664,
-      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-observed-tally/.r61/d1-repair/completion.json",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-observed-tally",
-      "review_commit": "ccc268b7c02d46e500bb81a9b2c16d800e2c8db1",
-      "review_remote_verified": true,
-      "decision": "REVISE_THREE_BOUNDARY_GAPS_REAL_TALLY_INDEPENDENTLY_REPRODUCED",
-      "defects": [
-        "D1-D01 missing held-authority negative",
-        "D1-D02 private grant/program paths break clean primary/replay",
-        "D1-D03 source-mutated receipt_override accepted"
-      ],
-      "preserved_tally_hash": "87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022",
-      "scope_unchanged": true,
+      "task": "D1_SRC04_TALLY_FOCUSED_RECHECK",
+      "session": "ses_e81fc42a8ffeAbvo6M8l4YG4nK",
+      "pid": 30091,
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review/.r61/d1-focused-recheck/completion.json",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review",
+      "repair_candidate": "e1a57513196be0af1c68ae66d569e8c2d39a2fc1",
+      "review_join": "af18287a5a5c3a01f0ce993b43e6808aad701b6a",
+      "repair_remote_verified": true,
+      "hq_artifact_hashes_verified": 27,
+      "author_tests": "9 passed in102.84s",
+      "unchanged_product_sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+      "scope": "D1-D01/D02/D03 changed boundary only; prior independently recomputed counts preserved",
       "heartbeat": "PAUSED"
     }
   ],
