@@ -1,0 +1,257 @@
+{
+  "schema": "PYAT_CAMPAIGN_A_SRC04_DISPOSITION@1.0.0",
+  "campaign": "A1",
+  "review_type": "DISTINCT_INDEPENDENT_ACCEPTANCE_REVIEW",
+  "verdict": "REVISE",
+  "candidate": "92d4f793d0ef5de58f21e23b1ad0fa286fa74a01",
+  "candidate_branch": "agent/pyat-campaign-a-src04-review",
+  "candidate_author_branch": "agent/pyat-campaign-a-src04-original-c11",
+  "candidate_remote_sha": "92d4f793d0ef5de58f21e23b1ad0fa286fa74a01",
+  "repository": "maidiu/rawlsing",
+  "reviewer_session": "ses_e81fc42a8ffeAbvo6M8l4YG4nK",
+  "review_commit": "the commit containing this file on agent/pyat-campaign-a-src04-review; direct remote readback is recorded in the final review response",
+  "program_sha256": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50",
+  "user_grant_sha256": "feb8320a149315fdfe74ae97f0aa91a3720aa141e5a1d5cbd5e2b97746c594f1",
+  "control_commit": "2d2814df614018dbca5687839fe562d16bf900e7",
+  "source": {
+    "source_id": "SRC04",
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Arab Barometer Wave 1.sav",
+    "sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "rows": 7337,
+    "columns": 181,
+    "configured_response_slots": 178
+  },
+  "criteria": [
+    {
+      "id": "A1-R01",
+      "requirement": "Use only the expressly authorized SRC04 original file and no other original source",
+      "status": "PASS",
+      "evidence": [
+        ".r61/campaign-a-src04-review/independent_probe.json",
+        "campaign_a_src04/evidence/GRANT_AUTHENTICATION.json",
+        "campaign_a_src04/evidence/USER_GRANT.json"
+      ],
+      "result": "The independent probe read only the exact SRC04 path through decode_with_source_read_permission; no SRC17 or other original source bytes were read."
+    },
+    {
+      "id": "A1-R02",
+      "requirement": "All source I/O is gated by the authentic current grant/host/purpose and existing source-read admission",
+      "status": "REVISE",
+      "evidence": [
+        "campaign_a_src04/run_campaign_a_src04.py:181-185",
+        ".r61/campaign-a-src04-review/direct_read_probe.py",
+        "campaign_a_src04/evidence/GRANT_AUTHENTICATION.json"
+      ],
+      "result": "The actual decoder call is correctly made through decode_with_source_read_permission with host USER_LOCAL_MAC, purpose FIRST_ORIGINAL_SOURCE_C11_POSITIVE and two current resolver calls. However, load_grant() directly calls source_path.is_file() and sha_file(source_path) before constructing the resolver/admission. The direct-read probe recorded the original source path in the sha_file calls before admission. This is a direct source-byte read outside the existing admission and contradicts the stated zero-I/O-before-current-permission property. The GRANT_AUTHENTICATION evidence also records an author-worktree absolute grant copy."
+    },
+    {
+      "id": "A1-R03",
+      "requirement": "SHA-checked physical decoder and physical metadata/native-code agreement",
+      "status": "PASS",
+      "evidence": [
+        ".r61/campaign-a-src04-review/independent_probe.json",
+        ".r61/campaign-a-src04-review/physical_probe.json",
+        "campaign_a_src04/evidence/PHYSICAL_METADATA_AUDIT.json"
+      ],
+      "result": "Independent read returned source SHA 2a48ba4b..., 7,337 rows and 181 columns with content-bound custody. Independent comparison of all 181 config physical slots against the actual incidence and metadata witness passed names, ordinals, storage types, labels, value labels, missing declarations and source SHA; crosswalk and 181 item identities also matched."
+    },
+    {
+      "id": "A1-R04",
+      "requirement": "Construct an actual original-bound C11LogicalRelease over an eligible configured slice",
+      "status": "PASS",
+      "evidence": [
+        ".r61/campaign-a-src04-review/independent_probe.json",
+        "campaign_a_src04/evidence/RELEASE_RECEIPT.json",
+        "campaign_a_src04/evidence/LOCAL_RELEASE_RECEIPT.json"
+      ],
+      "result": "The independent fresh-process rebuild produced C11LogicalRelease fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec, source manifest 8f8015a1..., source SHA 2a48ba4b..., 42 response fields, 2 coordinates, 308,154 RespondentEvents, 308,154 routing facts, 14,674 coordinate facts and 630,990 public objects."
+    },
+    {
+      "id": "A1-R05",
+      "requirement": "Account every field and preserve exact eligible/held residuals",
+      "status": "PASS",
+      "evidence": [
+        "campaign_a_src04/evidence/SLICE_SELECTION.json",
+        ".r61/campaign-a-src04-review/independent_probe.json"
+      ],
+      "result": "All 178 configured response slots and all 181 physical slots are accounted. The selected slice is 42 response slots (ordinals 3..26 and 28..45; ordinal 27 is unbound) plus country/ser coordinates. The 15 unbound response slots are 27, 46-55, 175, 176, 179, 180; q701/ordinal 158 is the excluded coordinate; 121 complete response fields outside the first battery are explicitly not selected. The independent selection matched the author selection exactly."
+    },
+    {
+      "id": "A1-R06",
+      "requirement": "Wrong-source, full-config/unbound and canonical-authority negatives, then exact restoration",
+      "status": "PASS",
+      "evidence": [
+        "campaign_a_src04/evidence/NEGATIVE_WRONG_SOURCE.json",
+        "campaign_a_src04/evidence/NEGATIVE_FULL_CONFIG.json",
+        "campaign_a_src04/evidence/NEGATIVE_CANONICAL_AUTHORITY.json",
+        ".r61/campaign-a-src04-review/independent_probe.json"
+      ],
+      "result": "Independent checks reproduced: wrong decision refused with SOURCE_READ_SOURCE_SHA256_MISMATCH before opening the sentinel; full 178-response configured release refused with SourceBackedC11FacadeError unbound response value/state; canonical-retained q101 slice refused with C11IntegrityError because canonical mapping authority is DEFER; the positive slice then rebuilt to the exact release hash."
+    },
+    {
+      "id": "A1-R07",
+      "requirement": "Cold replay and durable local release resolution",
+      "status": "PASS",
+      "evidence": [
+        "campaign_a_src04/evidence/REPLAY_RECEIPT.json",
+        ".r61/campaign-a-src04-review/independent_probe.json",
+        "LOCAL_BUNDLE: ~/Library/Application Support/Rawlsing/campaign-a-src04/releases/SRC04-fc111cfa78d0fc23"
+      ],
+      "result": "The local bundle exists outside Git. Its public_objects hash a47957a1..., internal_records hash 2d9ea42a..., replay_manifest hash f13d893f... and receipt hash b1333a02... match the committed receipts. Independent parse counted 630,990 public objects (308,154 RespondentEvents, 308,154 routing facts, 14,674 coordinate facts, 7 authority snapshots, 1 universe), 7,379 internal records and no non-null canonical values or weight facts."
+    },
+    {
+      "id": "A1-R08",
+      "requirement": "Committed runner and focused evidence are reproducible in the review checkout",
+      "status": "REVISE",
+      "evidence": [
+        "campaign_a_src04/run_campaign_a_src04.py:70,157-161,269",
+        ".r61/campaign-a-src04-review/pytest.log",
+        ".r61/campaign-a-src04-review/pytest_with_review_program.log",
+        "campaign_a_src04/evidence/TEST_RESULTS.json"
+      ],
+      "result": "Exact committed command `PYTHONPATH=. python3 -m pytest campaign_a_src04/tests -q -o addopts=` in the review checkout returned `2 failed, 3 passed in 0.97s`: CampaignError `governing PROGRAM.txt is absent` from runner.load_grant because PROGRAM_PATH is hardcoded to `.r61/campaign-a-src04/PROGRAM.txt`, which is absent in the review worktree; the review worktree has the exact program at `.r61/campaign-a-src04-review/PROGRAM.txt`. The author/HQ claim of 5 passed is not reproducible from the committed checkout. When the same program path was supplied in-process, the tests passed 5/5 in 0.73s, confirming a path-resolution defect rather than test logic. Minimal responsible owner: Campaign A1 runner/evidence; repair the program resolution (committed/pinned program copy or verified review/control fallback) and rerun the exact command."
+    },
+    {
+      "id": "A1-R09",
+      "requirement": "Original identity/authority separate from fixtures; no synthetic universe or hidden semantic promotion",
+      "status": "PASS",
+      "evidence": [
+        "campaign_a_src04/evidence/RELEASE_RECEIPT.json",
+        "campaign_a_src04/evidence/NEGATIVE_CANONICAL_AUTHORITY.json",
+        ".r61/campaign-a-src04-review/independent_probe.json"
+      ],
+      "result": "Release source artifact hash is the original SRC04 SHA; the public universe is source-native (country SOURCE_OBSERVED_COUNTRY_CODES, instrument SRC04_INSTRUMENT_ARAB_BAROMETER_I, no fixture/ZZ/TEST_ONLY). Original authority remains 1 ALLOW replay protocol + 6 DEFER snapshots; canonical values were withheld, no canonical response/coordinate/question object was emitted; no weight or population claim."
+    },
+    {
+      "id": "A1-R10",
+      "requirement": "Claimed scope is a legitimate first eligible slice, not full original scientific readiness",
+      "status": "PASS",
+      "evidence": [
+        "campaign_a_src04/RETURN.json",
+        "campaign_a_src04/evidence/SLICE_SELECTION.json",
+        ".r61/campaign-a-src04-review/independent_probe.json"
+      ],
+      "result": "The 42-question selection is a structural first-battery slice: all configured response ordinals 3..45 with complete observed binding (excluding the one unbound ordinal), plus country/ser. It is not outcome-selected. The 121 complete fields outside the first battery and the 15 unbound fields are explicitly outside the claim. The return self-labels milestone NONE_SELF_CLAIMED and states full original-source scientific readiness is not established."
+    },
+    {
+      "id": "A1-R11",
+      "requirement": "Next I03/I05 consumer capability and precise held premise",
+      "status": "UNPROVEN",
+      "evidence": [
+        "rawlsing_next/pre553_runtime_authority.py",
+        "rawlsing_next/pre553_independent_parity_oracle.py",
+        "campaign_a_src04/RETURN.json"
+      ],
+      "result": "No I03 or I05 execution was performed. The C11 release is available for a separately authorized I03 consumer, but the existing I03 operation-successor owner requires an exact EmpiricalQuerySpec, an adopted positive predicate/operation-successor authority, runtime catalog identity and historical parent; none is established here. Canonical/directional I03 semantics remain unavailable under DEFER. I05 learned production is further downstream and was not attempted."
+    }
+  ],
+  "independent_evidence": {
+    "source_read": {
+      "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "rows": 7337,
+      "columns": 181,
+      "admission_owner": "rawlsing_next.pre553_source_read_admission.decode_with_source_read_permission",
+      "reader": "rawlsing_next.source_configuration.reader.decode_config_with_source_read_permission",
+      "resolver_calls": 2,
+      "source_custody": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+      "snapshot_unlinked": true
+    },
+    "release": {
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION",
+        "content_hash": "fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec"
+      },
+      "source_release_manifest_hash": "8f8015a1c7c13ac24609693551f51c964feeae9d2ff9097be9b9ca55c5b76d71",
+      "replay_manifest_hash": "ca70d58e2b2f4881dfe7809862d0c005c6e015753175fbcd937ff218546d22bb",
+      "public_objects": 630990,
+      "internal_records": 7379,
+      "respondent_events": 308154,
+      "routing_facts": 308154,
+      "coordinate_facts": 14674,
+      "canonical_values_emitted": 0,
+      "weight_facts": 0,
+      "slice_config_canonical_sha256": "be1af1c91ce8132c2106a226145a9c700e5f95a191e9a67b7cbbc09c9aa7e922",
+      "canonical_values_withheld": 210
+    },
+    "slice": {
+      "selected_response_slots": 42,
+      "selected_coordinate_slots": [1, 2],
+      "excluded_unbound_response_slots": 15,
+      "excluded_coordinate_slots": 1,
+      "eligible_complete_not_selected": 121,
+      "held_slots_in_source_config": 0,
+      "all_181_physical_slots_accounted": true,
+      "all_178_response_slots_accounted": true,
+      "all_3_coordinate_slots_accounted": true
+    },
+    "negative_results": {
+      "wrong_source": "SOURCE_READ_SOURCE_SHA256_MISMATCH before sentinel source I/O",
+      "full_config": "SourceBackedC11FacadeError unbound response value/state",
+      "canonical_authority": "C11IntegrityError canonical response/question material lacks exact positive mapping authority",
+      "restore": "positive release rebuilt to fc111cfa..."
+    },
+    "hashes": {
+      "candidate_artifact_commit": "4b1d407d54e4e7f035a10cbe252d4ca04652f4d7",
+      "candidate_head": "92d4f793d0ef5de58f21e23b1ad0fa286fa74a01",
+      "user_grant": "feb8320a149315fdfe74ae97f0aa91a3720aa141e5a1d5cbd5e2b97746c594f1",
+      "program": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50",
+      "source_config_file": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900",
+      "source_config_canonical": "0e86814b62eb51dc9da22793b6de3e3598c3415632accb80f33bac965185f284",
+      "grant_authentication": "172097abce7ade62a084130581c2af217fefe8918a99a2385db6284c2e3564c2",
+      "physical_metadata_audit": "c8cccbad4c0b711272d8683a7da05b06475e75dffa3d65dc17245b60b3bb65a4",
+      "slice_selection": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803",
+      "release_receipt": "0c5306df01a11881db5cd47e68d304e40ff54baf7d69bb96213d009217cd70ce",
+      "local_receipt": "b1333a021c28f0a4fe3a8272d469d9dab2ecb619cf08fcae3fdf18246fb9d8c9",
+      "replay_receipt": "8789280b9b1055622f6c23a118f97ab8217aee24e34a96e143a9daac8f39782d",
+      "primary_run": "fab5d7730d81dc0ef40ca3acc6320fad675f1b96d1c530f5c4fa71043fcd0c9e",
+      "author_test_results": "b07281e33d71e7ec18997da8cc1a506deb83c00a7e7d27bd165390dd8db101bc",
+      "local_public_objects": "a47957a1d0b4e6df29195f70b1c3d122cc69b1a8a484b60bbe072d9eff126edd",
+      "local_internal_records": "2d9ea42a36e9b326f65f3ed5219ddf84a9fdb7d634ff8e459cc3e8892bc89538",
+      "local_replay_manifest": "f13d893f363753ad0d17bbf58c5a8bd51fcb12334daf85232b4365d66f96d09e",
+      "independent_probe": "6f2fda133e988d77aac46923d93b741ee39e255194a2b32dd4499a579b45debc",
+      "physical_probe": "4b3075bfabe48a972dbe8cfecda369fbf2989e56620ab46599de2723a5324fb4",
+      "pytest_failure_log": "4d70e03f676c0efd9c37c12758c36ab1a1f6b782ae444ea9ea405aa08c411b74"
+    }
+  },
+  "demonstrated_failures": [
+    {
+      "id": "A1-D01",
+      "owner": "Campaign A1 runner/evidence (campaign_a_src04/run_campaign_a_src04.py and its focused tests)",
+      "severity": "BLOCKING_FOR_CLEAN_REVIEW_REPRODUCIBILITY",
+      "summary": "Committed focused test command fails in the clean review checkout because PROGRAM_PATH is hardcoded to the author-private .r61/campaign-a-src04/PROGRAM.txt. It is absent; the review worktree has the exact program at .r61/campaign-a-src04-review/PROGRAM.txt.",
+      "reproduction": "PYTHONPATH=. python3 -m pytest campaign_a_src04/tests -q -o addopts=",
+      "result": "2 failed, 3 passed in 0.97s; CampaignError: governing PROGRAM.txt is absent (run_campaign_a_src04.py:158); failing tests test_committed_grant_is_the_pinned_human_grant and test_wrong_source_refuses_before_source_open.",
+      "minimal_repair": "Resolve the governing program from a committed/pinned evidence copy or an explicit verified review/control path; do not require an author-private .r61 path. Re-run the exact command and update TEST_RESULTS/RETURN with a reproducible pass. With the review program supplied in-process, the same tests pass 5/5 in 0.73s."
+    },
+    {
+      "id": "A1-D02",
+      "owner": "Campaign A1 runner (campaign_a_src04/run_campaign_a_src04.py load_grant)",
+      "severity": "BLOCKING_FOR_CLEAN_SOURCE_CUSTODY_CLAIM",
+      "summary": "load_grant directly stats and SHA-hashes the original source file before constructing the source-read request/resolver. This is source-byte I/O outside the existing admission and breaks the zero-I/O-before-current-permission property claimed by the runner and by NEGATIVE_WRONG_SOURCE.before_source_io.",
+      "reproduction": "Direct-read probe monkeypatched sha_file and called runner.load_grant with the review program path; observed sha_file calls include the SRC04 source path before any decode_with_source_read_permission resolver call.",
+      "result": "sha_file_paths include /Users/matthewsmith/Desktop/Rawlsing/data/Data/Arab Barometer Wave 1.sav before admission; source_hash_call_before_admission=True.",
+      "minimal_repair": "Remove direct source is_file()/sha_file() from load_grant; let the existing SHA-checked decoder/admission verify the exact source after the current resolver. Re-run the primary/replay and wrong-source negative through the repaired path. The actual positive decoder call already uses the existing admission; the preflight direct hash is the defect."
+    }
+  ],
+  "scope_limits": {
+    "original_source_read_performed": true,
+    "original_source": "SRC04 only",
+    "other_original_sources_read": false,
+    "original_workload_issued": false,
+    "i03_executed": false,
+    "i05_executed": false,
+    "scientific_semantic_ALLOW_claimed": false,
+    "full_original_scientific_readiness_claimed": false,
+    "fixture_or_synthetic_original_authority_used": false,
+    "respondent_cells_in_git_or_reports": false,
+    "raw_release_location": "LOCAL_FILESYSTEM_OUTSIDE_GIT (~/Library/Application Support/Rawlsing/campaign-a-src04/releases/SRC04-fc111cfa78d0fc23)",
+    "next_consumer": "existing I03/I05 owner, only if separately authorized"
+  },
+  "next_consumer": {
+    "capability": "C11LogicalRelease is available at the source-native / raw-sample grade with 42 response fields, country/ser coordinates, routing typed ROUTING_UNKNOWN and original DEFER authority.",
+    "not_proven": "No I03 exact empirical query or I05 learned product was executed. The existing I03 operation-successor owner requires an exact EmpiricalQuerySpec, an adopted positive predicate/operation-successor authority, runtime catalog identity and a historical parent snapshot; canonical/directional semantics remain held under DEFER. I05 is further downstream.",
+    "indispensable_held_premise": "Separately authorized exact I03 query/operation authority (and any semantic ALLOW required by the chosen query); no such authority or downstream workload is issued by Campaign A1."
+  },
+  "next_action": "Author performs the two minimal repairs above, commits/pushes the bounded runner/evidence repair, and a focused independent re-check confirms the exact test command passes in the clean review checkout and source I/O is confined to the existing admission. The already reproduced C11 positive fc111cfa... need not be rebuilt unless the repair changes its path/identity."
+}
