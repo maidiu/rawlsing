@@ -194,10 +194,10 @@ No existing M-card `README.md`, top-level atlas, sequencer, other worker card, s
 
 ## 13. Return / commit / remote verification
 
-- **Return content commit:** `PENDING_FIRST_PUSH`
-- **Final remote head:** `PENDING_READBACK_AFTER_PUSH`
-- The return content commit contains this file, the per-M dossiers, source identities, test manifest, probe, logs and test wrapper.
-- After push, the final remote SHA must be read back from `origin/agent/v3court-x03-development-topology-r1` and recorded here. If a publication follow-up is needed to record that SHA, the final remote head is the later commit; both are identified explicitly rather than conflated.
+- **Return content commit:** `89b2fbb5abdf574d7637b7f00371398997a227df` (the 51-file evidence content commit; this file was introduced there).
+- **Final remote head:** the branch tip after this metadata-only publication is verified with `git ls-remote origin refs/heads/agent/v3court-x03-development-topology-r1`; the exact readback SHA is reported in the final return message. No self-referential SHA is embedded in the file.
+- The return content commit `89b2fbb5abdf574d7637b7f00371398997a227df` contains this file, the per-M dossiers, source identities, test manifest, probe, logs and test wrapper.
+- The content commit and the later metadata-only publication commit are distinct. The final remote head is the later commit and must be read back from `origin/agent/v3court-x03-development-topology-r1`; the readback is reported in the final return. They are not conflated.
 - No history rewrite, force-push, merge, production adoption, or self-review occurred.
 
 ## 14. Independent review requirement
