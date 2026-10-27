@@ -1,22 +1,74 @@
 {
   "schema": "PYAT_R157_PROGRESS_V1",
-  "status": "P0_RUNNING",
+  "status": "P0_FROZEN_THREE_SOURCE_LANES_RUNNING",
   "active_workers": [
     {
-      "task": "P0_FOUNDATION",
+      "task": "P0_FINAL_RETURN",
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
       "pid": 5095,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
-      "branch": "agent/pyat-pre553-r157-foundation",
-      "state": "RUNNING",
+      "state": "RUNNING_FINISHING_RETURN",
       "launch": "P0_LAUNCH.json"
+    },
+    {
+      "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "LATIN",
+      "source_ids": [
+        "SRC24",
+        "SRC25",
+        "SRC26"
+      ],
+      "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+      "pid": 15088,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin",
+      "branch": "agent/pyat-pre553-r157-latin",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "LANE_LAUNCHES.json"
+    },
+    {
+      "task": "GSS:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "GSS",
+      "source_ids": [
+        "SRC16",
+        "SRC17",
+        "SRC18",
+        "SRC19",
+        "SRC20",
+        "SRC21",
+        "SRC22",
+        "SRC23"
+      ],
+      "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+      "pid": 15095,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss",
+      "branch": "agent/pyat-pre553-r157-gss",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "LANE_LAUNCHES.json"
+    },
+    {
+      "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
+      "lane": "LITS",
+      "source_ids": [
+        "SRC27",
+        "SRC28",
+        "SRC29",
+        "SRC30"
+      ],
+      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+      "pid": 15101,
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
+      "branch": "agent/pyat-pre553-r157-lits",
+      "state": "RUNNING_PREFLIGHT_AND_MODEL_VERIFIED",
+      "launch": "LANE_LAUNCHES.json"
     }
   ],
   "heartbeat": "PAUSED",
   "implementation_started": true,
-  "completed_tasks": [],
+  "completed_tasks": [
+    "P0_FOUNDATION_SCOPED_INTERFACE"
+  ],
   "current_goal_anchor": "GOAL.md",
-  "next_action": "Intake terminal P0 return; verify actual executable frozen interface, then launch ready independent OpenCode lanes from exact P0 commit and continue integrator P3.",
+  "next_action": "Existing integrator finishes P0 return/corrections, then P3; intake ready source lane terminal returns and launch next independent lanes within max4.",
   "live_goal_objective_verified": true,
   "live_goal_tool_status": "active",
   "resume_authorization": {
@@ -28,14 +80,41 @@
   "tasks": [
     {
       "id": "P0_FOUNDATION",
-      "lane": "integration",
-      "phase": "P0",
+      "state": "ACCEPTED_SCOPED_INTERFACE",
+      "evidence": "P0_INTAKE.json",
+      "next_consumer": "source lanes and P3"
+    },
+    {
+      "id": "LATIN:EVIDENCE",
+      "lane": "LATIN",
       "state": "RUNNING",
-      "launch": "P0_LAUNCH.json",
-      "process": 5095,
-      "output": "source_pre553_validation/foundation/P0_RETURN.json",
-      "check": "Actual imports/config validator/serialized example/native API mapping/evidence manifest, not report-only; actual preflight verified",
-      "next_consumer": "parallel source lanes and P3 factory"
+      "process": 15088,
+      "inputs": "91441c34ee58c4c3b13dae37db70a23bb4d4c2b8",
+      "output": "source_pre553_validation/SRC24/LANE_RETURN.json",
+      "check": "Full prior source facts consumed; ordered source queue then actual native fixture positives; exact residuals",
+      "next_consumer": "integration/P3/final review"
+    },
+    {
+      "id": "GSS:EVIDENCE",
+      "lane": "GSS",
+      "state": "RUNNING",
+      "process": 15095,
+      "inputs": "91441c34ee58c4c3b13dae37db70a23bb4d4c2b8",
+      "output": "source_pre553_validation/SRC16/LANE_RETURN.json",
+      "check": "Full prior source facts consumed; ordered source queue then actual native fixture positives; exact residuals",
+      "next_consumer": "integration/P3/final review"
+    },
+    {
+      "id": "LITS:EVIDENCE",
+      "lane": "LITS",
+      "state": "RUNNING",
+      "process": 15101,
+      "inputs": "91441c34ee58c4c3b13dae37db70a23bb4d4c2b8",
+      "output": "source_pre553_validation/SRC27/LANE_RETURN.json",
+      "check": "Full prior source facts consumed; ordered source queue then actual native fixture positives; exact residuals",
+      "next_consumer": "integration/P3/final review"
     }
-  ]
+  ],
+  "frozen_p0": "328e394e871ea09289c7023d3fb54b3f030d8481",
+  "p0_intake": "P0_INTAKE.json"
 }
