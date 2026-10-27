@@ -1,0 +1,715 @@
+{
+  "schema": "PYAT_R157_P0_RETURN@1.0.0",
+  "task": "R157_P0_FOUNDATION",
+  "status": "COMPLETE",
+  "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+  "branch": "agent/pyat-pre553-r157-foundation",
+  "base_commit": "94c80cc7d59d0376a0405846074a2ae6523f05f1",
+  "artifact_commit": "2d303cf48ee7952217f3637b395c56fb88663ecc",
+  "integration_branch": "agent/pyat-source-pre553-r157",
+  "frozen_interface": {
+    "config_schema_id": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
+    "schema_path": "rawlsing_next/source_configuration/schema/source_configuration.schema.json",
+    "schema_module": "rawlsing_next/source_configuration/schema.py",
+    "validator_callable": "rawlsing_next.source_configuration.schema.validate_source_config",
+    "loader_callable": "rawlsing_next.source_configuration.schema.load_source_config",
+    "factory_callable": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "factory_alias": "rawlsing_next.source_configuration.factory.construct_governed_c11_projection",
+    "factory_signature": "(config: SourceConfig | Mapping[str, Any], *, source_sha256: str | None = None, row_count: int | None = None) -> GovernedC11Projection",
+    "release_callable": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+    "repository_callable": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config",
+    "fixture_stream_callable": "rawlsing_next.source_configuration.fixture.load_fixture_stream",
+    "owner_api_mapping_path": "rawlsing_next/source_configuration/schema/OWNER_API_MAPPING.json",
+    "native_owner": "rawlsing_next.pre553_source_backed_c11_facade.GovernedC11Projection",
+    "native_validator": "rawlsing_next.pre553_source_backed_c11_facade.build_validated_source_backed_c11_release_from_stream"
+  },
+  "evidence": {
+    "manifest_path": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json",
+    "manifest_sha256": "ef04e215b6d669123f355082bd15e0f4a3b38ed045a0e3e38cc2b5432727911a",
+    "source_roster_path": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+    "source_roster_sha256": "a0201dbd229c8fc6fddc95b5acbe289d05706eff718d5dfc34329ecdb1bf087d",
+    "item_evidence_path": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+    "item_evidence_sha256": "0093130efd3ddbeaf01616047864469b5910f7f936af1bc8bbf817bc1aa759d8",
+    "physical_slots_path": "rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz",
+    "codebook_rows_path": "rawlsing_next/source_configuration/evidence/CODEBOOK_ROWS.jsonl.gz",
+    "unmatched_relations_path": "rawlsing_next/source_configuration/evidence/UNMATCHED_RELATIONS.json",
+    "pinned_inputs": [
+      {
+        "commit": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+        "kind": "R157_PLAN_SEAL"
+      },
+      {
+        "bytes": 30912512,
+        "commit": "a02adc896264e1b46afd143cba9426182ec14802",
+        "kind": "R154_METADATA_SNAPSHOT",
+        "path": "WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/store/r154_all35.sqlite",
+        "sha256": "7d6421e6e50f7d249cf09e7ecf964757d6afa4a7926d7a31eb1aad3407a12a16"
+      },
+      {
+        "bytes": 3107463,
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "kind": "H48_ITEM_INDEX",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz",
+        "sha256": "35818e2cdd2b7e16e60788bef094eb117ef78fc63df3dc068ecb8b8948f728f5"
+      },
+      {
+        "bytes": 7709908,
+        "kind": "P2_PHASE0",
+        "rows": 18276,
+        "sha256": "d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6"
+      },
+      {
+        "bytes": 47874248,
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "kind": "FULL_RELATION_AUTHORITY",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "rows": 18518,
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13"
+      }
+    ],
+    "counts": {
+      "codebook_only": 401,
+      "codebook_rows": 18276,
+      "exact_relation_joins": 18250,
+      "original_items": 18276,
+      "physical_columns": 18413,
+      "physical_only": 538,
+      "relation_rows_not_imported": 268,
+      "relation_rows_total": 18518,
+      "sources": 35,
+      "unmatched_explicit_ids": 26
+    }
+  },
+  "validated_example": {
+    "config_path": "source_pre553_validation/foundation/examples/SRC09_q101_fixture.config.json",
+    "config_sha256": "17968eaf280aa2537ba2050e281f71be137e09ae387c52a6b82c9844732e3456",
+    "config_file_sha256": "f69e2ec3bf514da34f1d9e0d60b2cf51e8ac0879655d7a4ad7cec609877359d6",
+    "fixture_spec_path": "source_pre553_validation/foundation/FIXTURE_SPEC.json",
+    "fixture_path": "source_pre553_validation/foundation/fixtures/SRC09_q101_nonrespondent.json",
+    "fixture_file_sha256": "cc7a587a57943251acbef1679a8a4aff808c6c65ff399c06428026d3371efb1d",
+    "fixture_source_sha256": "a93b4dab00a2b7cbd559d8a0bb1ca498caaa87f27bd1bd73e9fceb0f2820a491",
+    "original_source_sha256": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200",
+    "identity_class": "NONRESPONDENT_FIXTURE",
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_P0_FIXTURE_RELEASE/SRC09",
+      "content_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f"
+    },
+    "semantic_release_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f",
+    "actual": {
+      "response_event_count": 9,
+      "coordinate_fact_count": 9,
+      "routing_fact_count": 9,
+      "response_states": [
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "SUBSTANTIVE_RESPONSE",
+        "MISSING",
+        "DK",
+        "SOURCE_SPECIFIC_SPECIAL",
+        "REFUSAL",
+        "MISSING"
+      ],
+      "canonical_values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "weight_section": "NOT_APPLICABLE",
+      "source_relation_section": "DISTINCT_BY_DEFAULT"
+    }
+  },
+  "lanes": [
+    {
+      "lane_id": "AFRO",
+      "source_ids": [
+        "SRC01",
+        "SRC02",
+        "SRC03"
+      ],
+      "branch": "agent/pyat-pre553-r157-afro",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC01/",
+        "source_pre553_validation/SRC01/",
+        "rawlsing_next/source_configuration/data/SRC02/",
+        "source_pre553_validation/SRC02/",
+        "rawlsing_next/source_configuration/data/SRC03/",
+        "source_pre553_validation/SRC03/"
+      ],
+      "inputs": {
+        "source_roster": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+        "physical_slots": "rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz",
+        "codebook_rows": "rawlsing_next/source_configuration/evidence/CODEBOOK_ROWS.jsonl.gz",
+        "item_evidence": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+        "unmatched_relations": "rawlsing_next/source_configuration/evidence/UNMATCHED_RELATIONS.json",
+        "manifest": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json"
+      },
+      "config_contract": {
+        "schema": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
+        "schema_module": "rawlsing_next.source_configuration.schema",
+        "validator": "rawlsing_next.source_configuration.schema.validate_source_config",
+        "loader": "rawlsing_next.source_configuration.schema.load_source_config",
+        "factory": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+        "release": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+        "repository": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config"
+      },
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "first_task": "EVIDENCE",
+      "next_consumer": "R157 integration owner / P3 factory"
+    },
+    {
+      "lane_id": "ARAB",
+      "source_ids": [
+        "SRC04",
+        "SRC05",
+        "SRC06",
+        "SRC07"
+      ],
+      "branch": "agent/pyat-pre553-r157-arab",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC04/",
+        "source_pre553_validation/SRC04/",
+        "rawlsing_next/source_configuration/data/SRC05/",
+        "source_pre553_validation/SRC05/",
+        "rawlsing_next/source_configuration/data/SRC06/",
+        "source_pre553_validation/SRC06/",
+        "rawlsing_next/source_configuration/data/SRC07/",
+        "source_pre553_validation/SRC07/"
+      ],
+      "inputs": {
+        "source_roster": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+        "physical_slots": "rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz",
+        "codebook_rows": "rawlsing_next/source_configuration/evidence/CODEBOOK_ROWS.jsonl.gz",
+        "item_evidence": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+        "unmatched_relations": "rawlsing_next/source_configuration/evidence/UNMATCHED_RELATIONS.json",
+        "manifest": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json"
+      },
+      "config_contract": {
+        "schema": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
+        "schema_module": "rawlsing_next.source_configuration.schema",
+        "validator": "rawlsing_next.source_configuration.schema.validate_source_config",
+        "loader": "rawlsing_next.source_configuration.schema.load_source_config",
+        "factory": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+        "release": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+        "repository": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config"
+      },
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "first_task": "EVIDENCE",
+      "next_consumer": "R157 integration owner / P3 factory"
+    },
+    {
+      "lane_id": "ASIAN",
+      "source_ids": [
+        "SRC08",
+        "SRC09",
+        "SRC10"
+      ],
+      "branch": "agent/pyat-pre553-r157-asian",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC08/",
+        "source_pre553_validation/SRC08/",
+        "rawlsing_next/source_configuration/data/SRC09/",
+        "source_pre553_validation/SRC09/",
+        "rawlsing_next/source_configuration/data/SRC10/",
+        "source_pre553_validation/SRC10/"
+      ],
+      "inputs": {
+        "source_roster": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+        "physical_slots": "rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz",
+        "codebook_rows": "rawlsing_next/source_configuration/evidence/CODEBOOK_ROWS.jsonl.gz",
+        "item_evidence": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+        "unmatched_relations": "rawlsing_next/source_configuration/evidence/UNMATCHED_RELATIONS.json",
+        "manifest": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json"
+      },
+      "config_contract": {
+        "schema": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
+        "schema_module": "rawlsing_next.source_configuration.schema",
+        "validator": "rawlsing_next.source_configuration.schema.validate_source_config",
+        "loader": "rawlsing_next.source_configuration.schema.load_source_config",
+        "factory": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+        "release": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+        "repository": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config"
+      },
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "first_task": "EVIDENCE",
+      "next_consumer": "R157 integration owner / P3 factory"
+    },
+    {
+      "lane_id": "EVS",
+      "source_ids": [
+        "SRC11",
+        "SRC12",
+        "SRC13",
+        "SRC14",
+        "SRC15"
+      ],
+      "branch": "agent/pyat-pre553-r157-evs",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC11/",
+        "source_pre553_validation/SRC11/",
+        "rawlsing_next/source_configuration/data/SRC12/",
+        "source_pre553_validation/SRC12/",
+        "rawlsing_next/source_configuration/data/SRC13/",
+        "source_pre553_validation/SRC13/",
+        "rawlsing_next/source_configuration/data/SRC14/",
+        "source_pre553_validation/SRC14/",
+        "rawlsing_next/source_configuration/data/SRC15/",
+        "source_pre553_validation/SRC15/"
+      ],
+      "inputs": {
+        "source_roster": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+        "physical_slots": "rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz",
+        "codebook_rows": "rawlsing_next/source_configuration/evidence/CODEBOOK_ROWS.jsonl.gz",
+        "item_evidence": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+        "unmatched_relations": "rawlsing_next/source_configuration/evidence/UNMATCHED_RELATIONS.json",
+        "manifest": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json"
+      },
+      "config_contract": {
+        "schema": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
+        "schema_module": "rawlsing_next.source_configuration.schema",
+        "validator": "rawlsing_next.source_configuration.schema.validate_source_config",
+        "loader": "rawlsing_next.source_configuration.schema.load_source_config",
+        "factory": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+        "release": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+        "repository": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config"
+      },
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "first_task": "EVIDENCE",
+      "next_consumer": "R157 integration owner / P3 factory"
+    },
+    {
+      "lane_id": "GSS",
+      "source_ids": [
+        "SRC16",
+        "SRC17",
+        "SRC18",
+        "SRC19",
+        "SRC20",
+        "SRC21",
+        "SRC22",
+        "SRC23"
+      ],
+      "branch": "agent/pyat-pre553-r157-gss",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC16/",
+        "source_pre553_validation/SRC16/",
+        "rawlsing_next/source_configuration/data/SRC17/",
+        "source_pre553_validation/SRC17/",
+        "rawlsing_next/source_configuration/data/SRC18/",
+        "source_pre553_validation/SRC18/",
+        "rawlsing_next/source_configuration/data/SRC19/",
+        "source_pre553_validation/SRC19/",
+        "rawlsing_next/source_configuration/data/SRC20/",
+        "source_pre553_validation/SRC20/",
+        "rawlsing_next/source_configuration/data/SRC21/",
+        "source_pre553_validation/SRC21/",
+        "rawlsing_next/source_configuration/data/SRC22/",
+        "source_pre553_validation/SRC22/",
+        "rawlsing_next/source_configuration/data/SRC23/",
+        "source_pre553_validation/SRC23/"
+      ],
+      "inputs": {
+        "source_roster": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+        "physical_slots": "rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz",
+        "codebook_rows": "rawlsing_next/source_configuration/evidence/CODEBOOK_ROWS.jsonl.gz",
+        "item_evidence": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+        "unmatched_relations": "rawlsing_next/source_configuration/evidence/UNMATCHED_RELATIONS.json",
+        "manifest": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json"
+      },
+      "config_contract": {
+        "schema": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
+        "schema_module": "rawlsing_next.source_configuration.schema",
+        "validator": "rawlsing_next.source_configuration.schema.validate_source_config",
+        "loader": "rawlsing_next.source_configuration.schema.load_source_config",
+        "factory": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+        "release": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+        "repository": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config"
+      },
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "first_task": "EVIDENCE",
+      "next_consumer": "R157 integration owner / P3 factory"
+    },
+    {
+      "lane_id": "LATIN",
+      "source_ids": [
+        "SRC24",
+        "SRC25",
+        "SRC26"
+      ],
+      "branch": "agent/pyat-pre553-r157-latin",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC24/",
+        "source_pre553_validation/SRC24/",
+        "rawlsing_next/source_configuration/data/SRC25/",
+        "source_pre553_validation/SRC25/",
+        "rawlsing_next/source_configuration/data/SRC26/",
+        "source_pre553_validation/SRC26/"
+      ],
+      "inputs": {
+        "source_roster": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+        "physical_slots": "rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz",
+        "codebook_rows": "rawlsing_next/source_configuration/evidence/CODEBOOK_ROWS.jsonl.gz",
+        "item_evidence": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+        "unmatched_relations": "rawlsing_next/source_configuration/evidence/UNMATCHED_RELATIONS.json",
+        "manifest": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json"
+      },
+      "config_contract": {
+        "schema": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
+        "schema_module": "rawlsing_next.source_configuration.schema",
+        "validator": "rawlsing_next.source_configuration.schema.validate_source_config",
+        "loader": "rawlsing_next.source_configuration.schema.load_source_config",
+        "factory": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+        "release": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+        "repository": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config"
+      },
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "first_task": "EVIDENCE",
+      "next_consumer": "R157 integration owner / P3 factory"
+    },
+    {
+      "lane_id": "LITS",
+      "source_ids": [
+        "SRC27",
+        "SRC28",
+        "SRC29",
+        "SRC30"
+      ],
+      "branch": "agent/pyat-pre553-r157-lits",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC27/",
+        "source_pre553_validation/SRC27/",
+        "rawlsing_next/source_configuration/data/SRC28/",
+        "source_pre553_validation/SRC28/",
+        "rawlsing_next/source_configuration/data/SRC29/",
+        "source_pre553_validation/SRC29/",
+        "rawlsing_next/source_configuration/data/SRC30/",
+        "source_pre553_validation/SRC30/"
+      ],
+      "inputs": {
+        "source_roster": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+        "physical_slots": "rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz",
+        "codebook_rows": "rawlsing_next/source_configuration/evidence/CODEBOOK_ROWS.jsonl.gz",
+        "item_evidence": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+        "unmatched_relations": "rawlsing_next/source_configuration/evidence/UNMATCHED_RELATIONS.json",
+        "manifest": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json"
+      },
+      "config_contract": {
+        "schema": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
+        "schema_module": "rawlsing_next.source_configuration.schema",
+        "validator": "rawlsing_next.source_configuration.schema.validate_source_config",
+        "loader": "rawlsing_next.source_configuration.schema.load_source_config",
+        "factory": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+        "release": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+        "repository": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config"
+      },
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "first_task": "EVIDENCE",
+      "next_consumer": "R157 integration owner / P3 factory"
+    },
+    {
+      "lane_id": "SOUTH_ASIA",
+      "source_ids": [
+        "SRC31",
+        "SRC32"
+      ],
+      "branch": "agent/pyat-pre553-r157-south-asia",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC31/",
+        "source_pre553_validation/SRC31/",
+        "rawlsing_next/source_configuration/data/SRC32/",
+        "source_pre553_validation/SRC32/"
+      ],
+      "inputs": {
+        "source_roster": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+        "physical_slots": "rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz",
+        "codebook_rows": "rawlsing_next/source_configuration/evidence/CODEBOOK_ROWS.jsonl.gz",
+        "item_evidence": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+        "unmatched_relations": "rawlsing_next/source_configuration/evidence/UNMATCHED_RELATIONS.json",
+        "manifest": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json"
+      },
+      "config_contract": {
+        "schema": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
+        "schema_module": "rawlsing_next.source_configuration.schema",
+        "validator": "rawlsing_next.source_configuration.schema.validate_source_config",
+        "loader": "rawlsing_next.source_configuration.schema.load_source_config",
+        "factory": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+        "release": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+        "repository": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config"
+      },
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "first_task": "EVIDENCE",
+      "next_consumer": "R157 integration owner / P3 factory"
+    },
+    {
+      "lane_id": "WVS",
+      "source_ids": [
+        "SRC33",
+        "SRC34",
+        "SRC35"
+      ],
+      "branch": "agent/pyat-pre553-r157-wvs",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC33/",
+        "source_pre553_validation/SRC33/",
+        "rawlsing_next/source_configuration/data/SRC34/",
+        "source_pre553_validation/SRC34/",
+        "rawlsing_next/source_configuration/data/SRC35/",
+        "source_pre553_validation/SRC35/"
+      ],
+      "inputs": {
+        "source_roster": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+        "physical_slots": "rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz",
+        "codebook_rows": "rawlsing_next/source_configuration/evidence/CODEBOOK_ROWS.jsonl.gz",
+        "item_evidence": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+        "unmatched_relations": "rawlsing_next/source_configuration/evidence/UNMATCHED_RELATIONS.json",
+        "manifest": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json"
+      },
+      "config_contract": {
+        "schema": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
+        "schema_module": "rawlsing_next.source_configuration.schema",
+        "validator": "rawlsing_next.source_configuration.schema.validate_source_config",
+        "loader": "rawlsing_next.source_configuration.schema.load_source_config",
+        "factory": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+        "release": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+        "repository": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config"
+      },
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "first_task": "EVIDENCE",
+      "next_consumer": "R157 integration owner / P3 factory"
+    }
+  ],
+  "remaining_factory_task": {
+    "id": "P3_READER_AND_ORIGINAL_BINDING",
+    "depends_on": "P0_RETURN",
+    "constructor_frozen": true,
+    "exact": "In P3, wire config.identity.reader through the existing source-read/decoder path without changing the frozen P0 projection factory signature, then bind original-source configs to the actual source-read owner. The only code seam is the qualified exact-SHA reader configuration (currently decode_with_source_read_permission does not accept the configured encoding) plus the lane configs that replace fixture-only snapshots/bindings with source-grounded authority and routing. Do not add a replacement engine or change the native validator.",
+    "required_code_changes": [
+      "Extend the existing pre553_source_read_admission transport with the validated exact-SHA encoding/config argument only; preserve zero-I/O-before-current-permission and post-decode decision/edition checks.",
+      "Use the frozen factory signature to construct original-source projections from lane configs and permitted PhysicalSourceIncidence.",
+      "Retain the fixture-only config as a distinct validation input; never promote fixture authority or fixture SHA into original identity."
+    ],
+    "done_check": "Original-source lane configs are schema-valid, all slot/item coverage is accounted, the qualified reader config is transported, and actual native C11 validation succeeds for the declared supported scope or records an exact dependent refusal.",
+    "not_required_now": [
+      "original respondent execution or scientific results",
+      "FieldForge/M1/N11 acceptance",
+      "all35 implementation in P0"
+    ]
+  },
+  "validation": {
+    "results_path": "source_pre553_validation/foundation/VALIDATION_RESULTS.json",
+    "results_sha256": "1c34d5de0952225ef384e7a5680e16f0b25da5d86cc5f5b2f87b9397bce1b065",
+    "focus_test_result": "11 passed focused; 55 passed focused+owner regression",
+    "commands": [
+      "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_foundation.py -q -o addopts=''",
+      "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_foundation.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_r1.py rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py rawlsing_next/tests/test_pre553_source_read_admission.py rawlsing_next/tests/test_pre553_c11_repository_ingest.py -q -o addopts=''",
+      "PYTHONPATH=. python3 -m rawlsing_next.source_configuration.tools.publish_p0"
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "rawlsing_next/source_configuration/README.md",
+      "sha256": "23e332829ec20267906854888d14af67b350bd9ed2f8d0227b4b33c64c6bc9e1",
+      "bytes": 3205
+    },
+    {
+      "path": "rawlsing_next/source_configuration/__init__.py",
+      "sha256": "8b20c4dd0b3f59fe2964300367249365d7cbe9c3323c8a56eda0c018cdfcf1ea",
+      "bytes": 1645
+    },
+    {
+      "path": "rawlsing_next/source_configuration/errors.py",
+      "sha256": "54fd41414e8905d3ea2026028af754064b108a7f94990c1871567348f312784e",
+      "bytes": 722
+    },
+    {
+      "path": "rawlsing_next/source_configuration/evidence/CODEBOOK_ROWS.jsonl.gz",
+      "sha256": "1e4830d2ca5c6a38e45929865bdaa3a61ca1b7c8526f58e30c43754a27823ea6",
+      "bytes": 2958501
+    },
+    {
+      "path": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json",
+      "sha256": "ef04e215b6d669123f355082bd15e0f4a3b38ed045a0e3e38cc2b5432727911a",
+      "bytes": 3068
+    },
+    {
+      "path": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+      "sha256": "0093130efd3ddbeaf01616047864469b5910f7f936af1bc8bbf817bc1aa759d8",
+      "bytes": 17433801
+    },
+    {
+      "path": "rawlsing_next/source_configuration/evidence/P2_PHASE0.csv.gz",
+      "sha256": "81ad76f1d76927020d70b1daff410c4b89b4defd522fc9edb22a4525a00ba45d",
+      "bytes": 1416424
+    },
+    {
+      "path": "rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz",
+      "sha256": "d6d67ec3472edbf86273a00812033a0d153d67baa807f7eab57234fa22d74031",
+      "bytes": 3071057
+    },
+    {
+      "path": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+      "sha256": "a0201dbd229c8fc6fddc95b5acbe289d05706eff718d5dfc34329ecdb1bf087d",
+      "bytes": 57924
+    },
+    {
+      "path": "rawlsing_next/source_configuration/evidence/UNMATCHED_RELATIONS.json",
+      "sha256": "56824bf8db2564420e6feb4b21b0ac341b39f9d33b72fa194cc6e4c7982dfd1b",
+      "bytes": 36823
+    },
+    {
+      "path": "rawlsing_next/source_configuration/evidence.py",
+      "sha256": "14ec456e9da717da7a19f787f9d75cd45bc7b01478e0fa1913da3e77fe91f109",
+      "bytes": 6349
+    },
+    {
+      "path": "rawlsing_next/source_configuration/factory.py",
+      "sha256": "28ba34cb953d6f41fd489ee69ca0e763ae8ad166b1e5c3fab90ddcf2ede9518d",
+      "bytes": 21355
+    },
+    {
+      "path": "rawlsing_next/source_configuration/fixture.py",
+      "sha256": "1d02278417dbb9a47c03dc8b8d7f29a8c9cd0cdcf0194602b34eb2c4eb079840",
+      "bytes": 6795
+    },
+    {
+      "path": "rawlsing_next/source_configuration/schema/OWNER_API_MAPPING.json",
+      "sha256": "9682fecb6142b3998cc91ed6ca2a0c4599f734c0f65630377d4c938c01c20998",
+      "bytes": 6367
+    },
+    {
+      "path": "rawlsing_next/source_configuration/schema/source_configuration.schema.json",
+      "sha256": "da2f50f93ea8199da73006820832a60972c42eb24e056f8c566fd65b263fb339",
+      "bytes": 22340
+    },
+    {
+      "path": "rawlsing_next/source_configuration/schema.py",
+      "sha256": "0b30669bc9fc994f35f0725b7842a077513bb05b17f406fbcad013b7def704ec",
+      "bytes": 3614
+    },
+    {
+      "path": "rawlsing_next/source_configuration/tools/__init__.py",
+      "sha256": "913b146f88682cdd172047c8f8969b5b7e350c82c4d3bf0ebf0fc0a77c0aad5b",
+      "bytes": 60
+    },
+    {
+      "path": "rawlsing_next/source_configuration/tools/build_evidence.py",
+      "sha256": "7af2b4ed7387172afaf7c2a9cf90cca82b48256d780f4c1f95144a610aff04f5",
+      "bytes": 18662
+    },
+    {
+      "path": "rawlsing_next/source_configuration/tools/build_p0_example.py",
+      "sha256": "be2871474a94c0e655456e34348f77a92e0b6f3c6cdfecd527bcbfd04f642568",
+      "bytes": 27431
+    },
+    {
+      "path": "rawlsing_next/source_configuration/tools/publish_p0.py",
+      "sha256": "22968228c388be3d2d56de3da0f3adf09b30e4d20139f321c9bf4129fc2b6c43",
+      "bytes": 19751
+    },
+    {
+      "path": "rawlsing_next/source_configuration/validator.py",
+      "sha256": "5bffd602bd9c309533b4a895f3372d0c2b08e57b7d0c4de1b58a920507356e71",
+      "bytes": 61134
+    },
+    {
+      "path": "rawlsing_next/tests/test_source_configuration_foundation.py",
+      "sha256": "0c2dc6d030af28f5487eb4e6c86eeb9af0372ba5498b58e31134e139499db9ac",
+      "bytes": 10909
+    },
+    {
+      "path": "source_pre553_validation/foundation/FIXTURE_SPEC.json",
+      "sha256": "6a3f152be87e8720fac80edd9a45bb81270ad3c735d44fd2a952d4d17f20451b",
+      "bytes": 6659
+    },
+    {
+      "path": "source_pre553_validation/foundation/README.md",
+      "sha256": "c69bd2c13be596c9f37ed0f89a4a67f00861f106dc5cdda3af7719446c110180",
+      "bytes": 1520
+    },
+    {
+      "path": "source_pre553_validation/foundation/VALIDATION_RESULTS.json",
+      "sha256": "1c34d5de0952225ef384e7a5680e16f0b25da5d86cc5f5b2f87b9397bce1b065",
+      "bytes": 5898
+    },
+    {
+      "path": "source_pre553_validation/foundation/examples/SRC09_q101_fixture.config.json",
+      "sha256": "f69e2ec3bf514da34f1d9e0d60b2cf51e8ac0879655d7a4ad7cec609877359d6",
+      "bytes": 41749
+    },
+    {
+      "path": "source_pre553_validation/foundation/fixtures/SRC09_q101_nonrespondent.json",
+      "sha256": "cc7a587a57943251acbef1679a8a4aff808c6c65ff399c06428026d3371efb1d",
+      "bytes": 4847
+    }
+  ],
+  "no_original_source_access": true,
+  "no_original_workload_issuance": true,
+  "respondent_rows_read": 0,
+  "limits": [
+    "P0 freezes a working constructor and validated nonrespondent example, not all35 source configurations.",
+    "The example is intentionally a P0 example, not a lane config; ASIAN lane owns complete SRC09 coverage.",
+    "Fixture authority is not original-source authority.",
+    "Original-source scientific execution is NOT performed or claimed."
+  ]
+}

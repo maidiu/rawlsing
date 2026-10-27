@@ -1,0 +1,83 @@
+{
+  "counts": {
+    "codebook_only": 401,
+    "codebook_rows": 18276,
+    "exact_relation_joins": 18250,
+    "original_items": 18276,
+    "physical_columns": 18413,
+    "physical_only": 538,
+    "relation_rows_not_imported": 268,
+    "relation_rows_total": 18518,
+    "sources": 35,
+    "unmatched_explicit_ids": 26
+  },
+  "files": {
+    "CODEBOOK_ROWS.jsonl.gz": {
+      "bytes": 2958501,
+      "sha256": "1e4830d2ca5c6a38e45929865bdaa3a61ca1b7c8526f58e30c43754a27823ea6"
+    },
+    "ITEM_EVIDENCE.jsonl.gz": {
+      "bytes": 17433801,
+      "sha256": "0093130efd3ddbeaf01616047864469b5910f7f936af1bc8bbf817bc1aa759d8"
+    },
+    "P2_PHASE0.csv.gz": {
+      "bytes": 1416424,
+      "sha256": "81ad76f1d76927020d70b1daff410c4b89b4defd522fc9edb22a4525a00ba45d"
+    },
+    "PHYSICAL_SLOTS.jsonl.gz": {
+      "bytes": 3071057,
+      "sha256": "d6d67ec3472edbf86273a00812033a0d153d67baa807f7eab57234fa22d74031"
+    },
+    "SOURCE_ROSTER.json": {
+      "bytes": 57924,
+      "sha256": "a0201dbd229c8fc6fddc95b5acbe289d05706eff718d5dfc34329ecdb1bf087d"
+    },
+    "UNMATCHED_RELATIONS.json": {
+      "bytes": 36823,
+      "sha256": "56824bf8db2564420e6feb4b21b0ac341b39f9d33b72fa194cc6e4c7982dfd1b"
+    }
+  },
+  "limits": [
+    "Prior row authority is recovered evidence with original grades, not current execution permission.",
+    "No respondent rows or original survey files were read.",
+    "The 268 relation rows outside the 18,250 exact implementation joins are intentionally not imported.",
+    "The 26 unmatched explicit implementation IDs are preserved in UNMATCHED_RELATIONS.json."
+  ],
+  "pinned_inputs": [
+    {
+      "commit": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+      "kind": "R157_PLAN_SEAL"
+    },
+    {
+      "bytes": 30912512,
+      "commit": "a02adc896264e1b46afd143cba9426182ec14802",
+      "kind": "R154_METADATA_SNAPSHOT",
+      "path": "WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/store/r154_all35.sqlite",
+      "sha256": "7d6421e6e50f7d249cf09e7ecf964757d6afa4a7926d7a31eb1aad3407a12a16"
+    },
+    {
+      "bytes": 3107463,
+      "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+      "kind": "H48_ITEM_INDEX",
+      "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz",
+      "sha256": "35818e2cdd2b7e16e60788bef094eb117ef78fc63df3dc068ecb8b8948f728f5"
+    },
+    {
+      "bytes": 7709908,
+      "kind": "P2_PHASE0",
+      "rows": 18276,
+      "sha256": "d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6"
+    },
+    {
+      "bytes": 47874248,
+      "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+      "kind": "FULL_RELATION_AUTHORITY",
+      "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+      "rows": 18518,
+      "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13"
+    }
+  ],
+  "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+  "portable": true,
+  "schema": "PYAT_R157_EVIDENCE_MANIFEST@1.0.0"
+}
