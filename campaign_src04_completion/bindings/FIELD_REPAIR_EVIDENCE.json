@@ -1,0 +1,886 @@
+{
+  "schema": "PYAT_SRC04_FIELD_REPAIR_EVIDENCE@1.0.0",
+  "source_id": "SRC04",
+  "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+  "entries": [
+    {
+      "field": "q235",
+      "physical": {
+        "ordinal": 46,
+        "label": "q235. using a 10-point scale, please give your opinion about the degree to which",
+        "storage_type": "double",
+        "original_type": "F8.0",
+        "value_labels": {
+          "1.0": "complete dictatorship",
+          "10.0": "complete democracy",
+          "95.0": "there is no democracy",
+          "96.0": "not important",
+          "97.0": "not clear",
+          "98.0": "can't choose/don't know",
+          "99.0": "decline to answer"
+        },
+        "missing_declarations": null
+      },
+      "codebook": {
+        "row_hash": "db7a81f19a938c8d2aaf65f3480d3bf1c5d260945852fcbe24306e518d470d80",
+        "question_text": "Perceived democracy: Iran",
+        "response_options_all": "1 = complete dictatorship | 2 = 2 | 3 = 3 | 4 = 4 | 5 = 5 | 6 = 6 | 7 = 7 | 8 = 8 | 9 = 9 | 10 = complete democracy | 95 = there is no democracy | 96 = not important | 97 = not clear | 98 = can't choose/don't know | 99 = decline to answer"
+      },
+      "campaign_a": {
+        "unbound_cells": 2988,
+        "nonobserved_cells": 7,
+        "status": "EXCLUDED_UNBOUND_OBSERVED_VALUES"
+      },
+      "repair_decision": {
+        "kind": "ADD_EXACT_SCALE_CODES",
+        "added": 8,
+        "codes": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "unresolved": false,
+      "evidence_basis": "codebook explicitly lists integer scale options 2-9; the physical slot labels only endpoints/specials",
+      "evidence_refs": [
+        {
+          "kind": "ACCEPTED_SRC04_CONFIG",
+          "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+        },
+        {
+          "kind": "CAMPAIGN_A_SLICE_SELECTION",
+          "sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "sha256": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ]
+    },
+    {
+      "field": "q236",
+      "physical": {
+        "ordinal": 47,
+        "label": "q236. using a 10-point scale, please give your opinion about the degree to which",
+        "storage_type": "double",
+        "original_type": "F8.0",
+        "value_labels": {
+          "1.0": "complete dictatorship",
+          "10.0": "complete democracy",
+          "95.0": "there is no democracy",
+          "96.0": "not important",
+          "97.0": "not clear",
+          "98.0": "can't choose/don't know",
+          "99.0": "decline to answer"
+        },
+        "missing_declarations": null
+      },
+      "codebook": {
+        "row_hash": "2d4e806d000e06b5d17e3e7ed6f148bbcfe8636e20cfa864856e6ca1aeb810dd",
+        "question_text": "Perceived democracy: Turkey",
+        "response_options_all": "1 = complete dictatorship | 2 = 2 | 3 = 3 | 4 = 4 | 5 = 5 | 6 = 6 | 7 = 7 | 8 = 8 | 9 = 9 | 10 = complete democracy | 95 = there is no democracy | 96 = not important | 97 = not clear | 98 = can't choose/don't know | 99 = decline to answer"
+      },
+      "campaign_a": {
+        "unbound_cells": 3276,
+        "nonobserved_cells": 10,
+        "status": "EXCLUDED_UNBOUND_OBSERVED_VALUES"
+      },
+      "repair_decision": {
+        "kind": "ADD_EXACT_SCALE_CODES",
+        "added": 8,
+        "codes": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "unresolved": false,
+      "evidence_basis": "codebook explicitly lists integer scale options 2-9; the physical slot labels only endpoints/specials",
+      "evidence_refs": [
+        {
+          "kind": "ACCEPTED_SRC04_CONFIG",
+          "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+        },
+        {
+          "kind": "CAMPAIGN_A_SLICE_SELECTION",
+          "sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "sha256": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ]
+    },
+    {
+      "field": "q237",
+      "physical": {
+        "ordinal": 48,
+        "label": "q237. using a 10-point scale, please give your opinion about the degree to which",
+        "storage_type": "double",
+        "original_type": "F8.0",
+        "value_labels": {
+          "1.0": "complete dictatorship",
+          "10.0": "complete democracy",
+          "95.0": "there is no democracy",
+          "96.0": "not important",
+          "97.0": "not clear",
+          "98.0": "can't choose/don't know",
+          "99.0": "decline to answer"
+        },
+        "missing_declarations": null
+      },
+      "codebook": {
+        "row_hash": "d5d68f5766f7c1db71bc426bd756e4e3c13e04644d8b3ec028dc1ec572191141",
+        "question_text": "Perceived democracy: Saudi Arabia",
+        "response_options_all": "1 = complete dictatorship | 2 = 2 | 3 = 3 | 4 = 4 | 5 = 5 | 6 = 6 | 7 = 7 | 8 = 8 | 9 = 9 | 10 = complete democracy | 95 = there is no democracy | 96 = not important | 97 = not clear | 98 = can't choose/don't know | 99 = decline to answer"
+      },
+      "campaign_a": {
+        "unbound_cells": 2804,
+        "nonobserved_cells": 10,
+        "status": "EXCLUDED_UNBOUND_OBSERVED_VALUES"
+      },
+      "repair_decision": {
+        "kind": "ADD_EXACT_SCALE_CODES",
+        "added": 8,
+        "codes": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "unresolved": false,
+      "evidence_basis": "codebook explicitly lists integer scale options 2-9; the physical slot labels only endpoints/specials",
+      "evidence_refs": [
+        {
+          "kind": "ACCEPTED_SRC04_CONFIG",
+          "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+        },
+        {
+          "kind": "CAMPAIGN_A_SLICE_SELECTION",
+          "sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "sha256": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ]
+    },
+    {
+      "field": "q238",
+      "physical": {
+        "ordinal": 49,
+        "label": "q238. using a 10-point scale, please give your opinion about the degree to which",
+        "storage_type": "double",
+        "original_type": "F8.0",
+        "value_labels": {
+          "1.0": "complete dictatorship",
+          "10.0": "complete democracy",
+          "95.0": "there is no democracy",
+          "96.0": "not important",
+          "97.0": "not clear",
+          "98.0": "can't choose/don't know",
+          "99.0": "decline to answer"
+        },
+        "missing_declarations": null
+      },
+      "codebook": {
+        "row_hash": "a82c3634102900d4c4bbc186da4cd72741be4020ead40b400aef5d546b53fc4a",
+        "question_text": "Perceived democracy: Japan",
+        "response_options_all": "1 = complete dictatorship | 2 = 2 | 3 = 3 | 4 = 4 | 5 = 5 | 6 = 6 | 7 = 7 | 8 = 8 | 9 = 9 | 10 = complete democracy | 95 = there is no democracy | 96 = not important | 97 = not clear | 98 = can't choose/don't know | 99 = decline to answer"
+      },
+      "campaign_a": {
+        "unbound_cells": 3025,
+        "nonobserved_cells": 10,
+        "status": "EXCLUDED_UNBOUND_OBSERVED_VALUES"
+      },
+      "repair_decision": {
+        "kind": "ADD_EXACT_SCALE_CODES",
+        "added": 8,
+        "codes": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "unresolved": false,
+      "evidence_basis": "codebook explicitly lists integer scale options 2-9; the physical slot labels only endpoints/specials",
+      "evidence_refs": [
+        {
+          "kind": "ACCEPTED_SRC04_CONFIG",
+          "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+        },
+        {
+          "kind": "CAMPAIGN_A_SLICE_SELECTION",
+          "sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "sha256": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ]
+    },
+    {
+      "field": "q239",
+      "physical": {
+        "ordinal": 50,
+        "label": "q239. using a 10-point scale, please give your opinion about the degree to which",
+        "storage_type": "double",
+        "original_type": "F8.0",
+        "value_labels": {
+          "1.0": "complete dictatorship",
+          "10.0": "complete democracy",
+          "95.0": "there is no democracy",
+          "96.0": "not important",
+          "97.0": "not clear",
+          "98.0": "can't choose/don't know",
+          "99.0": "decline to answer"
+        },
+        "missing_declarations": null
+      },
+      "codebook": {
+        "row_hash": "efedf0f6136b464707e25da9da6c788aee235750ed8cae5f1c583e9d011222ee",
+        "question_text": "Perceived democracy: United States",
+        "response_options_all": "1 = complete dictatorship | 2 = 2 | 3 = 3 | 4 = 4 | 5 = 5 | 6 = 6 | 7 = 7 | 8 = 8 | 9 = 9 | 10 = complete democracy | 95 = there is no democracy | 96 = not important | 97 = not clear | 98 = can't choose/don't know | 99 = decline to answer"
+      },
+      "campaign_a": {
+        "unbound_cells": 3136,
+        "nonobserved_cells": 9,
+        "status": "EXCLUDED_UNBOUND_OBSERVED_VALUES"
+      },
+      "repair_decision": {
+        "kind": "ADD_EXACT_SCALE_CODES",
+        "added": 8,
+        "codes": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "unresolved": false,
+      "evidence_basis": "codebook explicitly lists integer scale options 2-9; the physical slot labels only endpoints/specials",
+      "evidence_refs": [
+        {
+          "kind": "ACCEPTED_SRC04_CONFIG",
+          "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+        },
+        {
+          "kind": "CAMPAIGN_A_SLICE_SELECTION",
+          "sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "sha256": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ]
+    },
+    {
+      "field": "q240",
+      "physical": {
+        "ordinal": 51,
+        "label": "q240. using a 10-point scale, please give your opinion about the degree to which",
+        "storage_type": "double",
+        "original_type": "F8.0",
+        "value_labels": {
+          "1.0": "complete dictatorship",
+          "10.0": "complete democracy",
+          "95.0": "there is no democracy",
+          "96.0": "not important",
+          "97.0": "not clear",
+          "98.0": "can't choose/don't know",
+          "99.0": "decline to answer"
+        },
+        "missing_declarations": null
+      },
+      "codebook": {
+        "row_hash": "12130839c457ae069117fcbabb826459367ccf369903687858999a5b130a8684",
+        "question_text": "Perceived democracy: China",
+        "response_options_all": "1 = complete dictatorship | 2 = 2 | 3 = 3 | 4 = 4 | 5 = 5 | 6 = 6 | 7 = 7 | 8 = 8 | 9 = 9 | 10 = complete democracy | 95 = there is no democracy | 96 = not important | 97 = not clear | 98 = can't choose/don't know | 99 = decline to answer"
+      },
+      "campaign_a": {
+        "unbound_cells": 3126,
+        "nonobserved_cells": 9,
+        "status": "EXCLUDED_UNBOUND_OBSERVED_VALUES"
+      },
+      "repair_decision": {
+        "kind": "ADD_EXACT_SCALE_CODES",
+        "added": 8,
+        "codes": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "unresolved": false,
+      "evidence_basis": "codebook explicitly lists integer scale options 2-9; the physical slot labels only endpoints/specials",
+      "evidence_refs": [
+        {
+          "kind": "ACCEPTED_SRC04_CONFIG",
+          "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+        },
+        {
+          "kind": "CAMPAIGN_A_SLICE_SELECTION",
+          "sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "sha256": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ]
+    },
+    {
+      "field": "q241",
+      "physical": {
+        "ordinal": 52,
+        "label": "q241. using a 10-point scale, please give your opinion about the degree to which",
+        "storage_type": "double",
+        "original_type": "F8.0",
+        "value_labels": {
+          "1.0": "complete dictatorship",
+          "10.0": "complete democracy",
+          "95.0": "there is no democracy",
+          "96.0": "not important",
+          "97.0": "not clear",
+          "98.0": "can't choose/don't know",
+          "99.0": "decline to answer"
+        },
+        "missing_declarations": null
+      },
+      "codebook": {
+        "row_hash": "7e690283586d9ceb51e32f9de3c52a7dabed9f33c60e5368d14abc6dfe41bdc7",
+        "question_text": "Perceived democracy: Israel",
+        "response_options_all": "1 = complete dictatorship | 2 = 2 | 3 = 3 | 4 = 4 | 5 = 5 | 6 = 6 | 7 = 7 | 8 = 8 | 9 = 9 | 10 = complete democracy | 95 = there is no democracy | 96 = not important | 97 = not clear | 98 = can't choose/don't know | 99 = decline to answer"
+      },
+      "campaign_a": {
+        "unbound_cells": 2308,
+        "nonobserved_cells": 11,
+        "status": "EXCLUDED_UNBOUND_OBSERVED_VALUES"
+      },
+      "repair_decision": {
+        "kind": "ADD_EXACT_SCALE_CODES",
+        "added": 8,
+        "codes": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "unresolved": false,
+      "evidence_basis": "codebook explicitly lists integer scale options 2-9; the physical slot labels only endpoints/specials",
+      "evidence_refs": [
+        {
+          "kind": "ACCEPTED_SRC04_CONFIG",
+          "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+        },
+        {
+          "kind": "CAMPAIGN_A_SLICE_SELECTION",
+          "sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "sha256": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ]
+    },
+    {
+      "field": "q242",
+      "physical": {
+        "ordinal": 53,
+        "label": "q242. using a 10-point scale, please give your opinion about the degree to which",
+        "storage_type": "double",
+        "original_type": "F8.0",
+        "value_labels": {
+          "1.0": "complete dictatorship",
+          "10.0": "complete democracy",
+          "95.0": "there is no democracy",
+          "96.0": "not important",
+          "97.0": "not clear",
+          "98.0": "can't choose/don't know",
+          "99.0": "decline to answer"
+        },
+        "missing_declarations": null
+      },
+      "codebook": {
+        "row_hash": "3f151bda9b5e8cc493824e454a160193bfa8c991ba9a91209527687483520ee9",
+        "question_text": "Perceived democracy: [respondent's country]",
+        "response_options_all": "1 = complete dictatorship | 2 = 2 | 3 = 3 | 4 = 4 | 5 = 5 | 6 = 6 | 7 = 7 | 8 = 8 | 9 = 9 | 10 = complete democracy | 95 = there is no democracy | 96 = not important | 97 = not clear | 98 = can't choose/don't know | 99 = decline to answer"
+      },
+      "campaign_a": {
+        "unbound_cells": 4279,
+        "nonobserved_cells": 10,
+        "status": "EXCLUDED_UNBOUND_OBSERVED_VALUES"
+      },
+      "repair_decision": {
+        "kind": "ADD_EXACT_SCALE_CODES",
+        "added": 8,
+        "codes": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "unresolved": false,
+      "evidence_basis": "codebook explicitly lists integer scale options 2-9; the physical slot labels only endpoints/specials",
+      "evidence_refs": [
+        {
+          "kind": "ACCEPTED_SRC04_CONFIG",
+          "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+        },
+        {
+          "kind": "CAMPAIGN_A_SLICE_SELECTION",
+          "sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "sha256": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ]
+    },
+    {
+      "field": "q243",
+      "physical": {
+        "ordinal": 54,
+        "label": "q243. where would you place your opinion about the degree to which democracy is",
+        "storage_type": "double",
+        "original_type": "F8.0",
+        "value_labels": {
+          "1.0": "completely unsuitable",
+          "10.0": "completely suitable",
+          "95.0": "there is no democracy",
+          "96.0": "not important",
+          "97.0": "not clear",
+          "98.0": "can't choose/don't know",
+          "99.0": "decline to answer"
+        },
+        "missing_declarations": null
+      },
+      "codebook": {
+        "row_hash": "1681acec6e2f0ef9924365f0b9c63de9d8ade1b36c6f98a611a1b793a9946692",
+        "question_text": "Suitability of democracy for [respondent's country]",
+        "response_options_all": "1 = completely unsuitable | 2 = 2 | 3 = 3 | 4 = 4 | 5 = 5 | 6 = 6 | 7 = 7 | 8 = 8 | 9 = 9 | 10 = completely suitable | 95 = there is no democracy | 96 = not important | 97 = not clear | 98 = can't choose/don't know | 99 = decline to answer"
+      },
+      "campaign_a": {
+        "unbound_cells": 4032,
+        "nonobserved_cells": 9,
+        "status": "EXCLUDED_UNBOUND_OBSERVED_VALUES"
+      },
+      "repair_decision": {
+        "kind": "ADD_EXACT_SCALE_CODES",
+        "added": 8,
+        "codes": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "unresolved": false,
+      "evidence_basis": "codebook explicitly lists integer scale options 2-9; the physical slot labels only endpoints/specials",
+      "evidence_refs": [
+        {
+          "kind": "ACCEPTED_SRC04_CONFIG",
+          "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+        },
+        {
+          "kind": "CAMPAIGN_A_SLICE_SELECTION",
+          "sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "sha256": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ]
+    },
+    {
+      "field": "q244",
+      "physical": {
+        "ordinal": 55,
+        "label": "q244. using a similar 10-point scale, where 1 means very unsatisfied and 10 mean",
+        "storage_type": "double",
+        "original_type": "F8.0",
+        "value_labels": {
+          "1.0": "completely unsatisfied",
+          "10.0": "completely satisfied",
+          "96.0": "not important",
+          "97.0": "not clear",
+          "98.0": "can't choose/don't know",
+          "99.0": "decline to answer"
+        },
+        "missing_declarations": null
+      },
+      "codebook": {
+        "row_hash": "6fff287039240a25e8964cd4f217fb3758c813b621cfe9cbf0cadf8f752f52f2",
+        "question_text": "Satisfaction with current government performance",
+        "response_options_all": "1 = completely unsatisfied | 2 = 2 | 3 = 3 | 4 = 4 | 5 = 5 | 6 = 6 | 7 = 7 | 8 = 8 | 9 = 9 | 10 = completely satisfied | 96 = not important | 97 = not clear | 98 = can't choose/don't know | 99 = decline to answer"
+      },
+      "campaign_a": {
+        "unbound_cells": 4127,
+        "nonobserved_cells": 8,
+        "status": "EXCLUDED_UNBOUND_OBSERVED_VALUES"
+      },
+      "repair_decision": {
+        "kind": "ADD_EXACT_SCALE_CODES",
+        "added": 8,
+        "codes": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "unresolved": false,
+      "evidence_basis": "codebook explicitly lists integer scale options 2-9; the physical slot labels only endpoints/specials",
+      "evidence_refs": [
+        {
+          "kind": "ACCEPTED_SRC04_CONFIG",
+          "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+        },
+        {
+          "kind": "CAMPAIGN_A_SLICE_SELECTION",
+          "sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "sha256": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ]
+    },
+    {
+      "field": "q715incomedeciles",
+      "physical": {
+        "ordinal": 179,
+        "label": "q715incomedeciles. monthly individual income by approximated deciles",
+        "storage_type": "double",
+        "original_type": "F9.2",
+        "value_labels": {
+          "1.0": "1 first decile",
+          "10.0": "10 tenth decile"
+        },
+        "missing_declarations": null
+      },
+      "codebook": {
+        "row_hash": "92ad09f5d3c93e7e233292f5d88187acfe94a315bf0ce14a01ae268c590483f0",
+        "question_text": "Individual monthly-income decile",
+        "response_options_all": "1 = 1 first decile | 10 = 10 tenth decile"
+      },
+      "campaign_a": {
+        "unbound_cells": 4013,
+        "nonobserved_cells": 2552,
+        "status": "EXCLUDED_UNBOUND_OBSERVED_VALUES"
+      },
+      "repair_decision": {
+        "kind": "ADD_DECILE_CODES",
+        "added": 8,
+        "codes": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "unresolved": false,
+      "evidence_basis": "codebook declares approximated income deciles with first/tenth endpoint labels; intermediate integer deciles 2-9 are admitted by the decile construct",
+      "evidence_refs": [
+        {
+          "kind": "ACCEPTED_SRC04_CONFIG",
+          "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+        },
+        {
+          "kind": "CAMPAIGN_A_SLICE_SELECTION",
+          "sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "sha256": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ]
+    },
+    {
+      "field": "q716incomedeciles",
+      "physical": {
+        "ordinal": 180,
+        "label": "q716incomedeciles. monthly family income by approximated deciles",
+        "storage_type": "double",
+        "original_type": "F9.2",
+        "value_labels": {
+          "1.0": "1 first decile",
+          "10.0": "10 tenth decile"
+        },
+        "missing_declarations": null
+      },
+      "codebook": {
+        "row_hash": "df647152c83918bc85cd02e5a79643aecfadfa47c187261147e8582d6ededdc2",
+        "question_text": "Family monthly-income decile",
+        "response_options_all": "1 = 1 first decile | 10 = 10 tenth decile"
+      },
+      "campaign_a": {
+        "unbound_cells": 4640,
+        "nonobserved_cells": 1565,
+        "status": "EXCLUDED_UNBOUND_OBSERVED_VALUES"
+      },
+      "repair_decision": {
+        "kind": "ADD_DECILE_CODES",
+        "added": 8,
+        "codes": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "unresolved": false,
+      "evidence_basis": "codebook declares approximated income deciles with first/tenth endpoint labels; intermediate integer deciles 2-9 are admitted by the decile construct",
+      "evidence_refs": [
+        {
+          "kind": "ACCEPTED_SRC04_CONFIG",
+          "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+        },
+        {
+          "kind": "CAMPAIGN_A_SLICE_SELECTION",
+          "sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "sha256": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ]
+    },
+    {
+      "field": "q701",
+      "physical": {
+        "ordinal": 158,
+        "label": "Q701.Exact age without Morocco",
+        "storage_type": "double",
+        "original_type": "F8.0",
+        "value_labels": null,
+        "missing_declarations": null
+      },
+      "codebook": {
+        "row_hash": "01c8eead4b9828062061bd20e900b0af20c9b63b86e4f05c4a06113310485ed7",
+        "question_text": "Age in years",
+        "response_options_all": ""
+      },
+      "campaign_a": {
+        "unbound_cells": 7337,
+        "nonobserved_cells": 1311,
+        "status": "EXCLUDED_UNBOUND_OR_MISSING_COORDINATE"
+      },
+      "repair_decision": {
+        "kind": "ADD_SYSTEM_MISSING_COORDINATE_RULE",
+        "added": 1
+      },
+      "unresolved": false,
+      "evidence_basis": "age is a continuous coordinate; a system-missing coordinate rule is source-supported while raw observed ages remain copy-through",
+      "evidence_refs": [
+        {
+          "kind": "ACCEPTED_SRC04_CONFIG",
+          "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+        },
+        {
+          "kind": "CAMPAIGN_A_SLICE_SELECTION",
+          "sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "sha256": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ]
+    },
+    {
+      "field": "q217",
+      "physical": {
+        "ordinal": 27,
+        "label": "q217. what is your most important source of information about local politics and",
+        "storage_type": "double",
+        "original_type": "F8.0",
+        "value_labels": {
+          "1.0": "television",
+          "10.0": "others",
+          "2.0": "radio",
+          "3.0": "local newspaper",
+          "4.0": "weekly magazines and papers",
+          "5.0": "internet",
+          "6.0": "sms messages",
+          "97.0": "not clear",
+          "98.0": "can't choose/don't know",
+          "99.0": "decline to answer"
+        },
+        "missing_declarations": null
+      },
+      "codebook": {
+        "row_hash": "8ef1d33559b177028b5605661982a50185a4392df716d32dc8da1746fa812039",
+        "question_text": "Sources of local political and government information",
+        "response_options_all": "1 = television | 2 = radio | 3 = local newspaper | 4 = weekly magazines and papers | 5 = internet | 6 = sms messages | 10 = others | 97 = not clear | 98 = can't choose/don't know | 99 = decline to answer"
+      },
+      "campaign_a": {
+        "unbound_cells": 38,
+        "nonobserved_cells": 187,
+        "status": "EXCLUDED_UNBOUND_OBSERVED_VALUES"
+      },
+      "repair_decision": null,
+      "unresolved": true,
+      "evidence_basis": "declared codebook/physical labels do not cover the observed residual finite domain",
+      "evidence_refs": [
+        {
+          "kind": "ACCEPTED_SRC04_CONFIG",
+          "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+        },
+        {
+          "kind": "CAMPAIGN_A_SLICE_SELECTION",
+          "sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "sha256": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ]
+    },
+    {
+      "field": "q715withoutmorocco",
+      "physical": {
+        "ordinal": 175,
+        "label": "q715withoutmorocco. monthly income for individual in [country currency]",
+        "storage_type": "double",
+        "original_type": "F12.0",
+        "value_labels": {
+          "9999993.0": "unspecified",
+          "9999994.0": "not interested",
+          "9999997.0": "not clear",
+          "9999998.0": "can't choose/don't know",
+          "9999999.0": "decline to answer"
+        },
+        "missing_declarations": null
+      },
+      "codebook": {
+        "row_hash": "45f698053a14927cc17929f173174addb247ed908834d47202ce82ab592134c3",
+        "question_text": "Individual monthly income: excluding Morocco",
+        "response_options_all": "9999993 = unspecified | 9999994 = not interested | 9999997 = not clear | 9999998 = can't choose/don't know | 9999999 = decline to answer"
+      },
+      "campaign_a": {
+        "unbound_cells": 3529,
+        "nonobserved_cells": 2142,
+        "status": "EXCLUDED_UNBOUND_OBSERVED_VALUES"
+      },
+      "repair_decision": null,
+      "unresolved": true,
+      "evidence_basis": "declared codebook/physical labels do not cover the observed residual finite domain",
+      "evidence_refs": [
+        {
+          "kind": "ACCEPTED_SRC04_CONFIG",
+          "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+        },
+        {
+          "kind": "CAMPAIGN_A_SLICE_SELECTION",
+          "sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "sha256": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ]
+    },
+    {
+      "field": "q716withoutmorocco",
+      "physical": {
+        "ordinal": 176,
+        "label": "q716withoutmorocco. monthly income of family in [country currency]",
+        "storage_type": "double",
+        "original_type": "F12.0",
+        "value_labels": {
+          "9999993.0": "unspecified",
+          "9999994.0": "not interested",
+          "9999997.0": "not clear",
+          "9999998.0": "can't choose/don't know",
+          "9999999.0": "decline to answer"
+        },
+        "missing_declarations": null
+      },
+      "codebook": {
+        "row_hash": "cff16b7100cab62eb4645d792cfa0597996975cf1f284e089a83ce6dd1e261e3",
+        "question_text": "Family monthly income: excluding Morocco",
+        "response_options_all": "9999993 = unspecified | 9999994 = not interested | 9999997 = not clear | 9999998 = can't choose/don't know | 9999999 = decline to answer"
+      },
+      "campaign_a": {
+        "unbound_cells": 4547,
+        "nonobserved_cells": 1998,
+        "status": "EXCLUDED_UNBOUND_OBSERVED_VALUES"
+      },
+      "repair_decision": null,
+      "unresolved": true,
+      "evidence_basis": "declared codebook/physical labels do not cover the observed residual finite domain",
+      "evidence_refs": [
+        {
+          "kind": "ACCEPTED_SRC04_CONFIG",
+          "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+        },
+        {
+          "kind": "CAMPAIGN_A_SLICE_SELECTION",
+          "sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "sha256": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Nonidentifying declared labels/counts only; no respondent cells.",
+    "Campaign A counts are retained evidence, not re-derived source reads."
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "schema": "PYAT_SRC04_NUMERIC_DOMAIN_REPORT@1.0.0",
+  "source_id": "SRC04",
+  "status": "NUMERIC_DOMAIN_TRANSPORT_READY_AWAITING_FULL_SOURCE_GRANT",
+  "prior_evidence": {
+    "return": "campaign_src04_completion/bindings/RETURN.json",
+    "return_sha256": "e73f635edcc4b8e705028e7dc6bfdab23598ce78038ded700874cf0eba18c9e0",
+    "report_sha256": "6232a42bc793a77ba70bc18f33a94d50fd36bbe12bf00322a36a1ba24c4ff0fc",
+    "ledger_sha256": "6e6af3366904fa5f565fb4583e077f922b32139116185645e8c39b2f35cd222b"
+  },
+  "configs": {
+    "v1_repaired_path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.json",
+    "v1_repaired_canonical_sha256": "78c6b9fb7a7a2c67bd30ac0dd08abb0bf02120106d63bca3f89cee7f76408356",
+    "v1_repaired_file_sha256": "e260d4a00403a96cc965f9c5166a5d992fba2c85d578b6daa530ecbf1f45b21d",
+    "v2_path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json",
+    "v2_canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
+    "v2_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+    "old_accepted_path": "rawlsing_next/source_configuration/data/SRC04/source.config.json",
+    "old_accepted_canonical_sha256": "0e86814b62eb51dc9da22793b6de3e3598c3415632accb80f33bac965185f284",
+    "old_accepted_file_sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+  },
+  "preserved_field_repairs": {
+    "q235": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q236": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q237": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q238": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q239": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q240": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q241": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q242": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q243": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q244": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q715incomedeciles": {
+      "kind": "ADD_DECILE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q716incomedeciles": {
+      "kind": "ADD_DECILE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q701": {
+      "kind": "ADD_SYSTEM_MISSING_COORDINATE_RULE",
+      "added": 1
+    }
+  },
+  "special_state_corrections": {
+    "q715withoutmorocco": {
+      "9999993": "MISSING",
+      "9999994": "SOURCE_SPECIFIC_SPECIAL",
+      "9999997": "DK",
+      "9999998": "DK",
+      "9999999": "REFUSAL"
+    },
+    "q716withoutmorocco": {
+      "9999993": "MISSING",
+      "9999994": "SOURCE_SPECIFIC_SPECIAL",
+      "9999997": "DK",
+      "9999998": "DK",
+      "9999999": "REFUSAL"
+    }
+  },
+  "remaining_residuals": [
+    {
+      "field": "q217",
+      "status": "UNRESOLVED_EXACT_UNLABELED_CODES",
+      "unbound_cells": 38,
+      "reason": "exact unlabeled residual codes/meaning unknown; no labels guessed; admitted values/evidence required"
+    },
+    {
+      "field": "q715withoutmorocco",
+      "status": "PENDING_OBSERVED_DOMAIN_QUALIFICATION",
+      "unbound_cells": 3529,
+      "reason": "finite observed domain; exact literal rules are added by runtime builder from an admitted transport; no values read here"
+    },
+    {
+      "field": "q716withoutmorocco",
+      "status": "PENDING_OBSERVED_DOMAIN_QUALIFICATION",
+      "unbound_cells": 4547,
+      "reason": "finite observed domain; exact literal rules are added by runtime builder from an admitted transport; no values read here"
+    }
+  ],
+  "numeric_domain_builder": {
+    "path": "campaign_src04_completion/bindings/numeric_domain_binding.py",
+    "sha256": "e7ee55a78f5eb30936c3ff4d4e81348c46dabad627c10dd3b067ec5b6da8f633",
+    "input": "already admitted ExactPhysicalCellStream/PhysicalSourceIncidence + exact SRC04 config identity",
+    "refuses": "foreign source, wrong config hash, wrong/foreign transport, unbound missing state, unadmitted object",
+    "source_io": "none; never opens/stats/hashes/decodes original SAV",
+    "literal_values": "preserved exactly in raw_value; canonical mapping not claimed; source-country currency provenance recorded in notes"
+  },
+  "nonrespondent_fixture_proof": {
+    "purpose": "focused numeric value/state/identity discrimination only; not original proof",
+    "fixture_sha256": "46520d165077cb8a032eb49783df1bd19317900aae75eb38aa3ee82b6bbccd3b",
+    "fixture_config_canonical_sha256": "6eed6a74ba655e91ea28927db472d0f860bc61ab69945aafba97d52faf5945f9",
+    "runtime_config_canonical_sha256": "4762a1d8373d139e5afab7ca7be0a8cd1f34b2e1443c2161950dccafc15b9343",
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_FIXTURE_RELEASE/SRC04",
+      "content_hash": "7a4ff9034fb92602f9ee75be65fe660b32796648357ba6a193d65a51e84ec79c"
+    },
+    "response_events": 6,
+    "coordinate_facts": 3,
+    "states": [
+      "SUBSTANTIVE_RESPONSE",
+      "SUBSTANTIVE_RESPONSE",
+      "REFUSAL",
+      "SUBSTANTIVE_RESPONSE",
+      "DK",
+      "SUBSTANTIVE_RESPONSE"
+    ],
+    "note": "Fixture-only release; no original-source qualification claimed"
+  },
+  "native_original_qualification": {
+    "status": "NOT_RUN",
+    "reason": "full-source grant pending; no SAV stat/hash/open/decode performed"
+  },
+  "blocker": {
+    "kind": "FULL_SOURCE_READ_GRANT_PENDING",
+    "source_id": "SRC04",
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "host": "authorized local host",
+    "purpose": "full SRC04 C11 construction over 7337 rows and 181 slots using source.config.repaired.v2.json",
+    "required_issuer": "authenticated Pyat HQ full-source grant",
+    "intended_operation": "decode_config_with_source_read_permission + build_numeric_domain_runtime_config + build_validated_c11_release_from_config",
+    "missing_scope": "full-file SAV read/decode; not former first-slice grant"
+  },
+  "commands": [
+    "PYTHONPATH=. python3 campaign_src04_completion/bindings/numeric_domain_binding.py --write-v2",
+    "PYTHONPATH=. python3 -m pytest campaign_src04_completion/bindings/test_numeric_domain_binding.py -q -o addopts=''",
+    "PYTHONPATH=. python3 -m pytest campaign_src04_completion/bindings/test_source_config_repair.py -q -o addopts=''"
+  ],
+  "authority": {
+    "original_respondent_rows_read": 0,
+    "original_workload_issued": false,
+    "raw_cells_committed": false,
+    "fixture_used_as_original_proof": false,
+    "accepted_42_field_product_modified": false
+  },
+  "limits": [
+    "Portable config/builder/fixture evidence only; original native release NOT produced.",
+    "q217 remains exact unlabeled residual; q715/q716 observed-domain values pending grant.",
+    "Stored special codes corrected from exact source labels; no income categories/currency normalization invented."
+  ]
+}

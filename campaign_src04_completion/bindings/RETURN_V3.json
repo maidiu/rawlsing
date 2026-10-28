@@ -1,0 +1,145 @@
+{
+  "schema": "PYAT_SRC04_LANE_B_RETURN_V3@1.0.0",
+  "lane": "SRC04_FIELD_REPAIR_B",
+  "version": 3,
+  "branch": "agent/pyat-src04-field-repair-20261028",
+  "startup": "0b6571d900163ddd62ff6013647a1a7fd20f4cca",
+  "artifact_commit": "ecbcafdb18b2e6b19f587fd4ca01c95f8a4954d7",
+  "status": "ITERATOR_REPAIR_COMPLETE_AWAITING_FULL_SOURCE_GRANT",
+  "prior_returns_preserved": {
+    "RETURN.json": "e73f635edcc4b8e705028e7dc6bfdab23598ce78038ded700874cf0eba18c9e0",
+    "RETURN_V2.json": "499ae3add886c05d74a362f2c4b62ac450c421031dda9758d631c2b1fd822a37",
+    "NUMERIC_DOMAIN_REPORT.json": "3afd6928665ca87fb646c31441654e643520a9d4a56760558e0da14ac0b15de9"
+  },
+  "source": {
+    "source_id": "SRC04",
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "rows": 7337,
+    "physical_slots": 181,
+    "configured_responses": 178,
+    "configured_coordinates": 3
+  },
+  "coverage": {
+    "physical_slots_accounted": 181,
+    "responses": 178,
+    "coordinates": 3,
+    "preserved_field_repairs": 13,
+    "remaining_residuals": 3,
+    "v2_canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
+    "v2_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5"
+  },
+  "defect_and_repair": {
+    "defect": {
+      "observed": "apply_observed_domain looped target slots over one shared cells iterator; first field consumed it and second was silently skipped.",
+      "reproduction": {
+        "tuple": "q715:2,q716:2",
+        "iterator_before": "q715:2 only",
+        "iterator_after": "q715:2,q716:2"
+      }
+    },
+    "repair": {
+      "file": "campaign_src04_completion/bindings/numeric_domain_binding.py",
+      "sha256": "680346a23bd044b6332fdc661920d4457493f33981356066d54149578ccd48cd",
+      "approach": "single pass over cells, exact (variable_ordinal, variable_name) routing to prepared target slots; no materialization",
+      "preserved": [
+        "exact literal raw numeric tokens",
+        "physical missing-state/declaration",
+        "source/config/transport identity checks",
+        "country-specific currency provenance",
+        "13 prior field repairs"
+      ]
+    },
+    "regression": {
+      "file": "campaign_src04_completion/bindings/test_numeric_domain_binding.py",
+      "sha256": "7af9ffce0a2c3795aa7475bbc3777e79c5ad5b249fb68156c1e105daf59b99d1",
+      "test": "test_single_pass_iterator_covers_both_income_fields",
+      "native_fixture": "test_nonrespondent_numeric_domain_fixture_native_validation uses generator-backed ExactPhysicalCellStream",
+      "tests_result": "16 passed"
+    }
+  },
+  "nonrespondent_native_fixture": {
+    "fixture_sha256": "46520d165077cb8a032eb49783df1bd19317900aae75eb38aa3ee82b6bbccd3b",
+    "fixture_config_canonical_sha256": "6eed6a74ba655e91ea28927db472d0f860bc61ab69945aafba97d52faf5945f9",
+    "runtime_config_canonical_sha256": "4762a1d8373d139e5afab7ca7be0a8cd1f34b2e1443c2161950dccafc15b9343",
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_FIXTURE_RELEASE/SRC04",
+      "content_hash": "7a4ff9034fb92602f9ee75be65fe660b32796648357ba6a193d65a51e84ec79c"
+    },
+    "response_events": 6,
+    "coordinate_facts": 3,
+    "states": [
+      "SUBSTANTIVE_RESPONSE",
+      "SUBSTANTIVE_RESPONSE",
+      "REFUSAL",
+      "SUBSTANTIVE_RESPONSE",
+      "DK",
+      "SUBSTANTIVE_RESPONSE"
+    ],
+    "note": "Fixture-only; not original-source qualification"
+  },
+  "original_source_io": {
+    "status": "NONE",
+    "full_grant": "PENDING",
+    "sav_stat_hash_open_decode": false
+  },
+  "blocker": {
+    "kind": "FULL_SOURCE_READ_GRANT_PENDING",
+    "source_id": "SRC04",
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "host": "authorized local host",
+    "purpose": "full SRC04 C11 construction over 7337 rows and 181 slots using source.config.repaired.v2.json",
+    "required_issuer": "authenticated Pyat HQ full-source grant",
+    "intended_operation": "decode_config_with_source_read_permission + build_numeric_domain_runtime_config + build_validated_c11_release_from_config",
+    "missing_scope": "full-file SAV read/decode; not former first-slice grant"
+  },
+  "tests": {
+    "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/bindings/test_numeric_domain_binding.py campaign_src04_completion/bindings/test_source_config_repair.py -q -o addopts=''",
+    "result": "16 passed",
+    "status": "PASS"
+  },
+  "changed_artifacts": [
+    {
+      "path": "rawlsing_next/source_configuration/data/SRC04/source.config.json",
+      "sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+    },
+    {
+      "path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.json",
+      "sha256": "e260d4a00403a96cc965f9c5166a5d992fba2c85d578b6daa530ecbf1f45b21d"
+    },
+    {
+      "path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json",
+      "sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5"
+    },
+    {
+      "path": "campaign_src04_completion/bindings/numeric_domain_binding.py",
+      "sha256": "680346a23bd044b6332fdc661920d4457493f33981356066d54149578ccd48cd"
+    },
+    {
+      "path": "campaign_src04_completion/bindings/test_numeric_domain_binding.py",
+      "sha256": "7af9ffce0a2c3795aa7475bbc3777e79c5ad5b249fb68156c1e105daf59b99d1"
+    },
+    {
+      "path": "campaign_src04_completion/bindings/ITERATOR_REPAIR_REPORT.json",
+      "sha256": "83cba79174adeebb3880c66d8403f195761f67ad07d6a3ead0240bb4860c7b5d"
+    },
+    {
+      "path": "campaign_src04_completion/bindings/NUMERIC_DOMAIN_REPORT.json",
+      "sha256": "3afd6928665ca87fb646c31441654e643520a9d4a56760558e0da14ac0b15de9"
+    },
+    {
+      "path": "campaign_src04_completion/bindings/RETURN.json",
+      "sha256": "e73f635edcc4b8e705028e7dc6bfdab23598ce78038ded700874cf0eba18c9e0"
+    },
+    {
+      "path": "campaign_src04_completion/bindings/RETURN_V2.json",
+      "sha256": "499ae3add886c05d74a362f2c4b62ac450c421031dda9758d631c2b1fd822a37"
+    }
+  ],
+  "next_operation": "After the full-source grant, run full original SRC04 qualification with the single-pass builder and resolve q217 exact unlabeled codes and q715/q716 observed domains.",
+  "limits": [
+    "Iterator repair is executable and nonrespondent-fixture validated only; original native qualification NOT run.",
+    "q217 residual remains exact unlabeled; q715/q716 observed values require grant.",
+    "Prior V1/V2 returns and accepted 42-field product preserved."
+  ]
+}
