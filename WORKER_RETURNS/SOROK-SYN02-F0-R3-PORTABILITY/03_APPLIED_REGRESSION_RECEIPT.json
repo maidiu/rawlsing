@@ -1,0 +1,233 @@
+{
+  "status": "APPLIED_SOURCEFREE_REGRESSION_ACCEPTED",
+  "source_before": "f645c9227d7fd1bc1908bdce0f03667c9161980d",
+  "patch_sha256": "40b98b7b6f08016ffe69e4c7054bc7277944a5d06931c9dfa29864f9c80ffea9",
+  "external_trust_sha256": "edd1a6ef0e31e6cff5777ffdd412fbeac8f77ca612e327c863af255f520b7faa",
+  "join_e_commit": "68b058656254234f0af02df2a592aa6f8c6a8bd2",
+  "result": "86 passed from repository root; 86 passed from /tmp",
+  "execution": "deterministic sourcefree tests; fake subprocess/provider fixtures only",
+  "inspection": "Root inspected the exact patch independently of its OpenCode author, applied it, and executed the complete regressions. No new generic review commission.",
+  "tests": [
+    {
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3",
+      "suite": "s52",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3/WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/tests"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 53.0,
+      "log": "/tmp/f0-r3-applied-regression-r1/root-s52.log",
+      "summary": "18 passed in 52.74s"
+    },
+    {
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3",
+      "suite": "s48",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3/WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/tests"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 8.08,
+      "log": "/tmp/f0-r3-applied-regression-r1/root-s48.log",
+      "summary": "14 passed in 7.83s"
+    },
+    {
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3",
+      "suite": "s51",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3/WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/tests"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 20.95,
+      "log": "/tmp/f0-r3-applied-regression-r1/root-s51.log",
+      "summary": "13 passed in 20.69s"
+    },
+    {
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3",
+      "suite": "s49",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3/WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/tests"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 19.46,
+      "log": "/tmp/f0-r3-applied-regression-r1/root-s49.log",
+      "summary": "13 passed in 19.19s"
+    },
+    {
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3",
+      "suite": "r2",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3/WORKER_RETURNS/SOROK-SYN02-F0-R2-PORTABILITY/tests"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 13.47,
+      "log": "/tmp/f0-r3-applied-regression-r1/root-r2.log",
+      "summary": "21 passed in 13.21s"
+    },
+    {
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3",
+      "suite": "r3",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3/WORKER_RETURNS/SOROK-SYN02-F0-R3-PORTABILITY/tests"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 2.0,
+      "log": "/tmp/f0-r3-applied-regression-r1/root-r3.log",
+      "summary": "7 passed in 1.72s"
+    },
+    {
+      "cwd": "/tmp",
+      "suite": "s52",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3/WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/tests"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 53.98,
+      "log": "/tmp/f0-r3-applied-regression-r1/tmp-s52.log",
+      "summary": "18 passed in 53.71s"
+    },
+    {
+      "cwd": "/tmp",
+      "suite": "s48",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3/WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/tests"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 10.12,
+      "log": "/tmp/f0-r3-applied-regression-r1/tmp-s48.log",
+      "summary": "14 passed in 9.76s"
+    },
+    {
+      "cwd": "/tmp",
+      "suite": "s51",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3/WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/tests"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 21.72,
+      "log": "/tmp/f0-r3-applied-regression-r1/tmp-s51.log",
+      "summary": "13 passed in 21.46s"
+    },
+    {
+      "cwd": "/tmp",
+      "suite": "s49",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3/WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/tests"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 20.26,
+      "log": "/tmp/f0-r3-applied-regression-r1/tmp-s49.log",
+      "summary": "13 passed in 19.85s"
+    },
+    {
+      "cwd": "/tmp",
+      "suite": "r2",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3/WORKER_RETURNS/SOROK-SYN02-F0-R2-PORTABILITY/tests"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 13.56,
+      "log": "/tmp/f0-r3-applied-regression-r1/tmp-r2.log",
+      "summary": "21 passed in 13.29s"
+    },
+    {
+      "cwd": "/tmp",
+      "suite": "r3",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r3/WORKER_RETURNS/SOROK-SYN02-F0-R3-PORTABILITY/tests"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 2.09,
+      "log": "/tmp/f0-r3-applied-regression-r1/tmp-r3.log",
+      "summary": "7 passed in 1.73s"
+    }
+  ],
+  "limits": [
+    "no actual provider/account qualification",
+    "no scientific law or independent-world grant",
+    "no native-person or production activation"
+  ]
+}

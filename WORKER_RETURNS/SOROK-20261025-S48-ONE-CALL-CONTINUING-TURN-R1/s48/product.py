@@ -281,6 +281,13 @@ def run_product_cli(
     selection = select_product()
     work = Path(workdir)
     logs = Path(log_dir)
+    return_root = Path(RETURN).resolve()
+    logs_resolved = logs.resolve()
+    if logs_resolved != return_root and not logs_resolved.is_relative_to(return_root):
+        raise ProductCallError(
+            "S48_PRODUCT_LOG_DIR_OUTSIDE",
+            f"log_dir must remain inside the S48 return root: {logs_resolved}",
+        )
     work.mkdir(parents=True, exist_ok=True)
     logs.mkdir(parents=True, exist_ok=True)
     stamp = hashlib.sha256(prompt.encode()).hexdigest()[:16]
@@ -323,7 +330,11 @@ def run_product_cli(
     })
     receipt = {
         "schema": "S48_PRODUCT_CALL_RECEIPT@1",
-        "actual_provider_call": True,
+        "actual_provider_call": False,
+        "subprocess_completed": True,
+        "account_transport": "ALIAS_ONLY",
+        "provider_step_observed": bool(step_starts and step_finishes and text_parts),
+        "provider_call_evidence": "SOURCEFREE_SUBPROCESS_EVENTS_NOT_PROVIDER_PROOF",
         "provider": selection.provider,
         "model": selection.model,
         "variant": selection.variant,

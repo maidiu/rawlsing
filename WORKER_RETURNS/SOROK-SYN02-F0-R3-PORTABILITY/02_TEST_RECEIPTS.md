@@ -1,5 +1,9 @@
 # SYN02-F0-R3 — test receipts and replay
 
+## Applied source result — 2026-10-28
+
+The user's explicit execution override superseded the procedural original-source hold for this tested correctness patch. Root inspected and applied the exact SHA256 `40b98b7b6f08016ffe69e4c7054bc7277944a5d06931c9dfa29864f9c80ffea9` on the existing R3 branch. All prescribed suites passed against the actual patched source: **58 baseline + 21 R2 + 7 R3 = 86 tests from repository root, and the same 86 from `/tmp`**. The current external JOIN-E source is the repaired `68b058656` branch; no old source failure was concealed by a stale copy. The 141-file external trust inventory is unchanged. Exact commands, execution contexts, durations and summaries are recorded in `03_APPLIED_REGRESSION_RECEIPT.json`. These were local/fake-provider tests, not actual paid calls. Original receipt bodies below remain historical evidence of the prior isolated state.
+
 **Source-edit status:** HOLD (no R3 owner scope); no accepted source file edited.
 **Patch:** `patches/F0-R3-source-custody.patch`
 **Patch SHA-256:** `40b98b7b6f08016ffe69e4c7054bc7277944a5d06931c9dfa29864f9c80ffea9`

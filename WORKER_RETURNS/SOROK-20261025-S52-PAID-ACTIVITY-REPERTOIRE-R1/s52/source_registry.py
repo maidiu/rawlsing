@@ -7,6 +7,7 @@ bounded source manifest under the new F0-R2-owned directory.
 """
 from __future__ import annotations
 
+import hashlib
 import importlib.util
 import sys
 from pathlib import Path
@@ -18,8 +19,14 @@ BINDING = S51 / "s51" / "source_binding.py"
 
 
 def _binding():
+    """Load the canonical binding only; never trust an arbitrary preloaded module."""
     existing = sys.modules.get("s51.source_binding")
     if existing is not None:
+        filename = getattr(existing, "__file__", None)
+        if not filename or Path(filename).resolve() != BINDING.resolve():
+            raise RuntimeError(
+                f"SOURCE_BINDING_PRELOADED_FOREIGN: {filename!r}"
+            )
         return existing
     if not BINDING.is_file():
         raise RuntimeError(f"SOURCE_BINDING_MISSING: {BINDING}")
