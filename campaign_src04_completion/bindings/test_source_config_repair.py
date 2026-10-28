@@ -70,3 +70,13 @@ def test_ledger_covers_all_181_slots_and_preserves_old_hash():
     assert {e["ordinal"] for e in ledger["entries"]} == set(range(1, 182))
     assert ledger["counts"]["repaired_fields"] == 13
     assert ledger["counts"]["unresolved_fields"] == 3
+
+
+def test_field_evidence_covers_16_fields_and_declares_labels():
+    ev = json.loads((ROOT / "campaign_src04_completion/bindings/FIELD_REPAIR_EVIDENCE.json").read_text())
+    assert len(ev["entries"]) == 16
+    codes = {e["field"]: e["codebook"]["response_options_all"] for e in ev["entries"]}
+    assert "2 = 2" in codes["q235"] and "9 = 9" in codes["q244"]
+    assert "1 = 1 first decile" in codes["q715incomedeciles"]
+    unresolved = {e["field"] for e in ev["entries"] if e["unresolved"]}
+    assert unresolved == {"q217", "q715withoutmorocco", "q716withoutmorocco"}

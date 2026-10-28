@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 from rawlsing_next.source_configuration.schema import canonical_config_hash, validate_source_config  # noqa: E402
+from rawlsing_next.source_configuration import evidence as E  # noqa: E402
 
 ACCEPTED = ROOT / "rawlsing_next/source_configuration/data/SRC04/source.config.json"
 REPAIRED = ROOT / "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.json"
@@ -211,6 +212,52 @@ def ledger(old: Mapping[str, Any], config: Mapping[str, Any], repairs: Mapping[s
     }
 
 
+def evidence_record(old: Mapping[str, Any], config: Mapping[str, Any], repairs: Mapping[str, Any]) -> dict[str, Any]:
+    slice_data = json.loads(SLICE.read_text(encoding="utf-8"))
+    cb = {c["var_name"]: c for c in E.iter_codebook_rows("SRC04")}
+    phys = {p["name"]: p for p in old["physical_slots"]}
+    resp_unbound = {s["name"]: s for s in slice_data["response_slots"]}
+    coord_unbound = {s["name"]: s for s in slice_data["coordinate_slots"]}
+    fields = list(repairs) + UNRESOLVED_FIELDS
+    entries = []
+    for field in fields:
+        p = phys[field]
+        c = cb[field]
+        campaign = resp_unbound.get(field) or coord_unbound.get(field) or {}
+        decision = repairs.get(field)
+        if field in UNRESOLVED_FIELDS:
+            basis = "declared codebook/physical labels do not cover the observed residual finite domain"
+        elif field == AGE_FIELD:
+            basis = "age is a continuous coordinate; a system-missing coordinate rule is source-supported while raw observed ages remain copy-through"
+        elif field in DECILE_FIELDS:
+            basis = "codebook declares approximated income deciles with first/tenth endpoint labels; intermediate integer deciles 2-9 are admitted by the decile construct"
+        else:
+            basis = "codebook explicitly lists integer scale options 2-9; the physical slot labels only endpoints/specials"
+        entries.append({
+            "field": field,
+            "physical": {"ordinal": p["ordinal"], "label": p["label"], "storage_type": p["storage_type"],
+                         "original_type": p["original_type"], "value_labels": p["value_labels"],
+                         "missing_declarations": p["missing_declarations"]},
+            "codebook": {"row_hash": c["row_hash"], "question_text": c["question_text"],
+                         "response_options_all": c["response_options_all"]},
+            "campaign_a": {"unbound_cells": campaign.get("unbound_cells"),
+                           "nonobserved_cells": campaign.get("nonobserved_cells"),
+                           "status": campaign.get("status")},
+            "repair_decision": decision,
+            "unresolved": field in UNRESOLVED_FIELDS,
+            "evidence_basis": basis,
+            "evidence_refs": [{"kind": "ACCEPTED_SRC04_CONFIG", "sha256": sha(ACCEPTED)},
+                              {"kind": "CAMPAIGN_A_SLICE_SELECTION", "sha256": sha(SLICE)},
+                              {"kind": "R154_PHYSICAL_METADATA",
+                               "sha256": hashlib.sha256(METADATA.read_bytes()).hexdigest()}],
+        })
+    return {"schema": "PYAT_SRC04_FIELD_REPAIR_EVIDENCE@1.0.0", "source_id": "SRC04",
+            "source_sha256": old["identity"]["expected_source_sha256"],
+            "entries": entries,
+            "limits": ["Nonidentifying declared labels/counts only; no respondent cells.",
+                       "Campaign A counts are retained evidence, not re-derived source reads."]}
+
+
 def main() -> int:
     built = build()
     old, config, repairs = built["old"], built["config"], built["repairs"]
@@ -239,6 +286,11 @@ def main() -> int:
         ],
         "limits": led["limits"],
     }
+    ev = evidence_record(old, config, repairs)
+    EVIDENCE = ROOT / "campaign_src04_completion/bindings/FIELD_REPAIR_EVIDENCE.json"
+    EVIDENCE.write_text(json.dumps(ev, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    report["evidence_path"] = str(EVIDENCE.relative_to(ROOT))
+    report["evidence_sha256"] = sha(EVIDENCE)
     REPORT.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"old={report['old_config_canonical_sha256']}")
     print(f"new={report['repaired_config_canonical_sha256']}")
