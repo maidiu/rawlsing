@@ -59,9 +59,11 @@ class QualifiedC12Store(C12Store):
         counts["perception"] = len(perceptions)
         if [row[0] for row in perceptions] != list(range(len(perceptions))):
             errors.append("perception:seq_not_contiguous")
+        fork = self._fork_integrity(branch_id)
+        errors.extend(fork["errors"])
         return {"ok": not errors, "errors": errors, "counts": counts,
                 "branch_id": branch_id, "grade": TEST_ONLY_GRADE,
-                "verifier": "R26E_QUALIFIED_C12_PREIMAGE"}
+                "verifier": "R26E_QUALIFIED_C12_PREIMAGE", "fork": fork}
 
 
 def chain_digest(store: C12Store, branch_id: str) -> str:
