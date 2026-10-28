@@ -1,0 +1,270 @@
+--- a/WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/s48/product.py
++++ b/WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/s48/product.py
+@@ -281,6 +281,13 @@
+     selection = select_product()
+     work = Path(workdir)
+     logs = Path(log_dir)
++    return_root = Path(RETURN).resolve()
++    logs_resolved = logs.resolve()
++    if logs_resolved != return_root and not logs_resolved.is_relative_to(return_root):
++        raise ProductCallError(
++            "S48_PRODUCT_LOG_DIR_OUTSIDE",
++            f"log_dir must remain inside the S48 return root: {logs_resolved}",
++        )
+     work.mkdir(parents=True, exist_ok=True)
+     logs.mkdir(parents=True, exist_ok=True)
+     stamp = hashlib.sha256(prompt.encode()).hexdigest()[:16]
+@@ -323,7 +330,11 @@
+     })
+     receipt = {
+         "schema": "S48_PRODUCT_CALL_RECEIPT@1",
+-        "actual_provider_call": True,
++        "actual_provider_call": False,
++        "subprocess_completed": True,
++        "account_transport": "ALIAS_ONLY",
++        "provider_step_observed": bool(step_starts and step_finishes and text_parts),
++        "provider_call_evidence": "SOURCEFREE_SUBPROCESS_EVENTS_NOT_PROVIDER_PROOF",
+         "provider": selection.provider,
+         "model": selection.model,
+         "variant": selection.variant,
+--- a/WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/s51/source_binding.py
++++ b/WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/s51/source_binding.py
+@@ -40,6 +40,43 @@
+ # directory, not in any accepted author return.
+ MANIFEST_RELATIVE = Path(
+     "WORKER_RETURNS/SOROK-SYN02-F0-R2-PORTABILITY/source_manifest.json"
++)
++EXTERNAL_TRUST_RELATIVE = Path(
++    "WORKER_RETURNS/SOROK-SYN02-F0-R3-PORTABILITY/external_source_trust.json"
++)
++_MIN_SOURCES = 31
++REQUIRED_SOURCE_PATHS = (
++    'WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/s48/__init__.py',
++    'WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/s48/bootstrap.py',
++    'WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/s48/errors.py',
++    'WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/s48/product.py',
++    'WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/s48/session.py',
++    'WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/s48/sources.py',
++    'WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/s49/__init__.py',
++    'WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/s49/actor.py',
++    'WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/s49/bootstrap.py',
++    'WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/s49/errors.py',
++    'WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/s49/session.py',
++    'WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/s51/__init__.py',
++    'WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/s51/bootstrap.py',
++    'WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/s51/session.py',
++    'WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/s51/source_binding.py',
++    'WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/__init__.py',
++    'WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/bootstrap.py',
++    'WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/performer.py',
++    'WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/session.py',
++    'WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/source_registry.py',
++    'lab_sgi1/__init__.py',
++    'lab_sgi1/core.py',
++    'lab_sgi1/history.py',
++    'lab_sgi1/joint.py',
++    'lab_sgi1/proposal.py',
++    'r30a/__init__.py',
++    'r30a/bootstrap.py',
++    'r30a/cli.py',
++    'r30a/faults.py',
++    'r30a/first_session.py',
++    'r30a/phenomenal.py',
+ )
+
+ ROOT_PROVENANCE = {
+@@ -66,7 +103,9 @@
+     },
+ }
+ _ROOT_KEYS = ("role", "owner", "scope", "origin", "effective_from")
+-_MANAGED_PREFIXES = ("s48", "s49", "s51", "s52", "lab_sgi1", "r30a")
++_MANAGED_PREFIXES = (
++    "s48", "s49", "s51", "s52", "lab_sgi1", "r30a", "s39",
++)
+ _ENV_NAMES = ("S52_G18_SOURCE", "S51_G18_SOURCE", "G18_SOURCE", "M35_G18_SOURCE")
+
+
+@@ -351,6 +390,7 @@
+     roots: Mapping[str, str],
+     expected: Mapping[str, str],
+     sources: list[Any],
++    external_sources: list[Any] | None = None,
+ ) -> None:
+     prefix_root = {
+         "s48": "repo",
+@@ -359,19 +399,27 @@
+         "s52": "repo",
+         "lab_sgi1": "g18",
+         "r30a": "r30a",
++        "s39": "repo",
+     }
+     listed = {
+         (entry.get("root"), entry.get("path"))
+         for entry in sources
+         if isinstance(entry, Mapping)
+     }
++    listed.update(
++        (entry.get("root"), entry.get("path"))
++        for entry in (external_sources or [])
++        if isinstance(entry, Mapping)
++    )
+     for name, module in list(sys.modules.items()):
+         prefix = name.split(".", 1)[0]
+         if prefix not in _MANAGED_PREFIXES:
+             continue
+         filename = getattr(module, "__file__", None)
+         if not filename:
+-            continue
++            raise SourceBindingError(
++                "SOURCE_IMPORT_CACHE_UNBOUND", name
++            )
+         path = Path(filename).resolve()
+         label = prefix_root[prefix]
+         root = Path(expected[label]).resolve()
+@@ -415,6 +463,43 @@
+                 )
+
+
++def _load_external_trust(path: Path) -> dict[str, Any]:
++    if not path.is_file():
++        raise SourceBindingError("SOURCE_EXTERNAL_TRUST_MISSING", str(path))
++    try:
++        value = json.loads(path.read_text(encoding="utf8"))
++    except (OSError, ValueError) as exc:
++        raise SourceBindingError("SOURCE_EXTERNAL_TRUST_INVALID", str(exc)) from exc
++    if not isinstance(value, dict):
++        raise SourceBindingError("SOURCE_EXTERNAL_TRUST_INVALID", "object")
++    if value.get("schema") != "SOROK_F0_R3_EXTERNAL_SOURCE_TRUST@1":
++        raise SourceBindingError("SOURCE_EXTERNAL_TRUST_INVALID", "schema")
++    if not isinstance(value.get("sources"), list) or not value["sources"]:
++        raise SourceBindingError("SOURCE_EXTERNAL_TRUST_INVALID", "sources")
++    return value
++
++
++def _verify_external_trust(
++    trust: Mapping[str, Any],
++    roots: Mapping[str, Path],
++) -> int:
++    count = 0
++    for entry in trust["sources"]:
++        if not isinstance(entry, Mapping):
++            raise SourceBindingError("SOURCE_EXTERNAL_TRUST_INVALID", "entry")
++        label = entry.get("root")
++        relpath = entry.get("path")
++        digest = entry.get("sha256")
++        if label not in roots or not isinstance(relpath, str) or not isinstance(digest, str):
++            raise SourceBindingError("SOURCE_EXTERNAL_TRUST_INVALID", str(entry))
++        for key in ("owner", "role", "scope", "effective_from"):
++            if not isinstance(entry.get(key), str) or not entry.get(key):
++                raise SourceBindingError("SOURCE_EXTERNAL_TRUST_INVALID", key)
++        verify_expected(roots[label], {relpath: digest})
++        count += 1
++    return count
++
++
+ def verify_sources(
+     roots: Mapping[str, Any] | None = None,
+     *,
+@@ -426,14 +511,33 @@
+     manifest_file = Path(manifest_path).resolve() if manifest_path else Path(resolved["manifest"])
+     manifest = _load_manifest(manifest_file)
+     _validate_provenance(manifest)
++    if len(manifest["sources"]) < _MIN_SOURCES:
++        raise SourceBindingError(
++            "SOURCE_MANIFEST_TRUNCATED",
++            f"expected at least {_MIN_SOURCES} sources, got {len(manifest['sources'])}",
++        )
++    actual_paths = {
++        entry.get("path") for entry in manifest["sources"]
++        if isinstance(entry, Mapping)
++    }
++    missing_required = sorted(set(REQUIRED_SOURCE_PATHS) - actual_paths)
++    if missing_required:
++        raise SourceBindingError(
++            "SOURCE_MANIFEST_REQUIRED_PATH_MISSING",
++            ",".join(missing_required),
++        )
+     allowed = [Path(path) for path in resolved["allowed_roots"]]
+     root_paths = {
+         label: Path(resolved[label]).resolve() for label in ("repo", "g18", "r30a")
+     }
+     for label, root in root_paths.items():
+         _assert_allowed(root, allowed, label)
++    external = _load_external_trust(Path(resolved["repo"]) / EXTERNAL_TRUST_RELATIVE)
++    external_count = _verify_external_trust(external, root_paths)
+     if check_cache:
+-        _check_import_cache(resolved, root_paths, manifest["sources"])
++        _check_import_cache(
++            resolved, root_paths, manifest["sources"], external["sources"]
++        )
+     seen: set[str] = set()
+     count = 0
+     for entry in manifest["sources"]:
+@@ -454,11 +558,13 @@
+         "schema": "SOROK_F0_R2_SOURCE_VERIFICATION@1",
+         "manifest": str(manifest_file),
+         "verified": count,
++        "external_verified": external_count,
+         "roots": {key: str(value) for key, value in root_paths.items()},
+     }
+
+
+ __all__ = [
++    "EXTERNAL_TRUST_RELATIVE",
+     "G18_EXPECTED",
+     "G18_RELATIVE",
+     "MANIFEST_RELATIVE",
+--- a/WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/source_registry.py
++++ b/WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/source_registry.py
+@@ -7,6 +7,7 @@
+ """
+ from __future__ import annotations
+
++import hashlib
+ import importlib.util
+ import sys
+ from pathlib import Path
+@@ -18,8 +19,14 @@
+
+
+ def _binding():
++    """Load the canonical binding only; never trust an arbitrary preloaded module."""
+     existing = sys.modules.get("s51.source_binding")
+     if existing is not None:
++        filename = getattr(existing, "__file__", None)
++        if not filename or Path(filename).resolve() != BINDING.resolve():
++            raise RuntimeError(
++                f"SOURCE_BINDING_PRELOADED_FOREIGN: {filename!r}"
++            )
+         return existing
+     if not BINDING.is_file():
+         raise RuntimeError(f"SOURCE_BINDING_MISSING: {BINDING}")
+--- a/WORKER_RETURNS/SOROK-SYN02-F0-R2-PORTABILITY/source_manifest.json
++++ b/WORKER_RETURNS/SOROK-SYN02-F0-R2-PORTABILITY/source_manifest.json
+@@ -43,7 +43,7 @@
+     {
+       "path": "WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/s48/product.py",
+       "root": "repo",
+-      "sha256": "29fe4f70e9f3190e0f989ab9d3075b9a1d10138cf250b45964d712c234cf6d1d"
++      "sha256": "69c214ec17b280288671124c2e8cf76c3e97275a9d7f50a557934fd5421526b4"
+     },
+     {
+       "path": "WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/s48/session.py",
+@@ -98,7 +98,7 @@
+     {
+       "path": "WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/s51/source_binding.py",
+       "root": "repo",
+-      "sha256": "a5ecf0c60efd6aaa9dee279b4176cd72789b4573d4939186d361be3e4d6997cb"
++      "sha256": "4c83cf0a611fed8dc0f47062e0c0a8dd19b02b46e5b741b05cfcdd03963f778f"
+     },
+     {
+       "path": "WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/__init__.py",
+@@ -123,7 +123,7 @@
+     {
+       "path": "WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/source_registry.py",
+       "root": "repo",
+-      "sha256": "8881d97b83ef8bfd59c2cb9796881f58e39066a479a6d90a8158218a0692863d"
++      "sha256": "47dc9de2f613fd95316691b10ef65d24fd433c9cdad8fcf825be1eeea9162615"
+     },
+     {
+       "path": "lab_sgi1/__init__.py",
