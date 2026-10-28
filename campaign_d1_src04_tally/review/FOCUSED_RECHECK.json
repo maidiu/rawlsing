@@ -1,0 +1,195 @@
+{
+  "schema": "PYAT_D1_SRC04_FOCUSED_RECHECK@1.0.0",
+  "campaign": "D1",
+  "review_type": "FOCUSED_REPAIR_RECHECK_UNDER_EQUIVALENT_EXISTING_REVIEWER_SUBSTITUTION",
+  "verdict": "PASS",
+  "reviewer_session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+  "prior_reviewer_session": "ses_e81fc42a8ffeAbvo6M8l4YG4nK",
+  "reviewer_substitution": "QUALIFIED_EXISTING_INDEPENDENT_WORKER_UNDER_PROGRAM_SECTION_9",
+  "candidate": {
+    "head": "af18287a5a5c3a01f0ce993b43e6808aad701b6a",
+    "head_subject": "Merge commit 'e1a57513196be0af1c68ae66d569e8c2d39a2fc1' into agent/pyat-d1-src04-observed-tally-review",
+    "merge_parents": [
+      "ccc268b7c02d46e500bb81a9b2c16d800e2c8db1",
+      "e1a57513196be0af1c68ae66d569e8c2d39a2fc1"
+    ],
+    "author_branch": "agent/pyat-d1-src04-observed-tally",
+    "author_remote_sha": "e1a57513196be0af1c68ae66d569e8c2d39a2fc1",
+    "artifact_commit": "a0bf1919646bcc6f822be54ef90ebd2447569bfb",
+    "review_branch": "agent/pyat-d1-src04-observed-tally-review",
+    "control_commit": "3b703e878946a442b5c880f318b929365865ed00",
+    "grant_sha256": "f51de87818f8fd1365d347da3aee73005fe9ab8ae0c8d2a607487395016d48ae",
+    "program_sha256": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50"
+  },
+  "baseline_reuse_attribution": {
+    "status": "ACCEPTED_UNCHANGED_BASELINE_NOT_RECOMPUTED",
+    "prior_independent_scope": "All 42 fields, state/native-value partitions, event presence versus observed/substantive distinctions, and original C11 lineage were independently recomputed from all 630,990 local public objects by the prior independent reviewer.",
+    "prior_independent_tally_path": ".r61/d1-review/independent_tally.json",
+    "prior_independent_tally_sha256": "a601fcfc022c06a373a339a0e045466c70d644c1fc91736c66e7684b77d4e699",
+    "prior_source_mutation_probe_path": ".r61/d1-review/source_mutation_probe.json",
+    "prior_source_mutation_probe_sha256": "7d15b0783f30b03b2b6e10cd3702642283f7b01326a20f0ec2b1f2941a0342e9",
+    "prior_pytest_log_sha256": "3f2ea59ea3ff3b1f8ed8689f38597c7b6868acf5bbab9f1e2bf4e322510ff5ce",
+    "partial_recheck_stdout_path": ".r61/d1-focused-recheck/stdout.jsonl",
+    "partial_recheck_stdout_sha256": "ff59adcbd0d48f29ee12200ce7b6e5daf4c28b971d94d122ff603ff015b71fcd",
+    "partial_recheck_limit": "The prior focused-review CLI stopped after initial evidence reads; no final focused disposition was written. Those partial reads are reused as externally attributed evidence, not claimed as this reviewer's work.",
+    "unchanged_product_sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+    "unchanged_tally_ref": "87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022",
+    "unchanged_replay_ref": "8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f"
+  },
+  "affected_repairs": [
+    {
+      "id": "D1-D01",
+      "criterion": "D1-C08",
+      "status": "PASS",
+      "actual_check": "Independent call to rawlsing_next.pre553_empirical_authority.require_positive_authority on a materialized DEFER AuthoritySnapshot from the accepted local C11 bundle.",
+      "actual_result": {
+        "status": "REFUSED",
+        "error_type": "Pre553AuthorityError",
+        "error": "positive authority required; exact snapshot state is DEFER",
+        "authority_id": "R157-SRC04-R157_MAP_SOURCE_CODE_TOKEN_IDENTITY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "bafd64061920ba2d010e530eee3132f62b347a05190c38eaace2ff8c2bd6ae20",
+        "authority_kind": "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+        "decision_state": "DEFER",
+        "same_release": "fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec"
+      },
+      "existing_owner": "rawlsing_next.pre553_empirical_authority.require_positive_authority",
+      "materializer": "rawlsing_next.pre553_carrier_execution.materialize_public_object",
+      "matches_author_evidence": true,
+      "limitation": "Typed D1 tally only; no I03/I05 issuance or EmpiricalFact manufactured."
+    },
+    {
+      "id": "D1-D02",
+      "criterion": "D1-C12",
+      "status": "PASS",
+      "actual_check": "Clean Git archive of candidate HEAD, exact portable primary/replay commands, committed exact grant/program copies, no private .r61 runtime dependency.",
+      "clean_archive_source": "git archive HEAD",
+      "grant_sha256": "f51de87818f8fd1365d347da3aee73005fe9ab8ae0c8d2a607487395016d48ae",
+      "program_sha256": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50",
+      "primary": {
+        "command": "PYTHONPATH=. python3 campaign_d1_src04_tally/run.py --mode primary",
+        "exit": 0,
+        "status": "PRIMARY_TALLY_COMPLETE",
+        "product_sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+        "tally_ref": "87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022",
+        "replay_ref": "8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f"
+      },
+      "replay": {
+        "command": "PYTHONPATH=. python3 campaign_d1_src04_tally/run.py --mode replay",
+        "exit": 0,
+        "status": "COLD_REPLAY_COMPLETE",
+        "tally_ref_match": true,
+        "replay_ref_match": true,
+        "field_count_match": true,
+        "all_field_counts_match": true,
+        "passed": true
+      },
+      "tests": {
+        "command": "PYTHONPATH=. python3 -m pytest campaign_d1_src04_tally/tests -q -o addopts=",
+        "exit": 0,
+        "result": "9 passed in 114.56s"
+      }
+    },
+    {
+      "id": "D1-D03",
+      "criterion": "D1-C09",
+      "status": "PASS",
+      "actual_check": "Mutated receipt_override probes through Campaign D1 adapter, then normal restoration.",
+      "mutations": {
+        "source_sha256": {"status": "REFUSED", "actual_code": "SOURCE_IDENTITY_MISMATCH"},
+        "source_release_manifest_hash": {"status": "REFUSED", "actual_code": "SOURCE_RELEASE_MANIFEST_MISMATCH"},
+        "replay_manifest_ref": {"status": "REFUSED", "actual_code": "RELEASE_REPLAY_MANIFEST_MISMATCH"},
+        "release_ref": {"status": "REFUSED", "actual_code": "RELEASE_IDENTITY_MISMATCH"}
+      },
+      "restoration": {
+        "status": "PASS",
+        "tally_ref": "87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022",
+        "replay_ref": "8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f",
+        "product_file_sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+        "matches_product_document": true,
+        "matches_product_file": true
+      }
+    }
+  ],
+  "unchanged_criteria": {
+    "D1-C01": "PASS_BASELINE",
+    "D1-C02": "PASS_BASELINE",
+    "D1-C03": "PASS_BASELINE",
+    "D1-C04": "PASS_BASELINE",
+    "D1-C05": "PASS_BASELINE",
+    "D1-C06": "PASS_BASELINE",
+    "D1-C07": "PASS_BASELINE",
+    "D1-C10": "PASS_BASELINE",
+    "D1-C11": "PASS_BASELINE",
+    "D1-C13": "PASS_BASELINE"
+  },
+  "artifact_manifest_check": {
+    "return_path": "campaign_d1_src04_tally/RETURN.json",
+    "return_sha256": "f2597972e8ecff7491174aa2746cef53d05f03875a03920310ea96961dd34054",
+    "artifact_manifest_count": 27,
+    "artifact_hash_mismatches": 0
+  },
+  "product_identity": {
+    "tally_ref": "87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022",
+    "replay_ref": "8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f",
+    "product_sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "source_records": 7337,
+    "source_columns": 181,
+    "accepted_fields": 42,
+    "held_fields": [],
+    "event_presence_count": 308154,
+    "observed_response_denominator_total": 298819,
+    "answered_substantive_denominator_total": 277582,
+    "missing_or_unobserved_total": 9335,
+    "state_totals": {
+      "SUBSTANTIVE_RESPONSE": 277582,
+      "DK": 14784,
+      "SOURCE_SPECIFIC_SPECIAL": 6453,
+      "MISSING": 9335
+    },
+    "routing_state": "ROUTING_UNKNOWN",
+    "canonicalization": "WITHHELD_DEFER_NO_SCIENTIFIC_ALLOW",
+    "weight_facts": 0,
+    "typed_product": "PYAT_D1_SRC04_OBSERVED_SAMPLE_TALLY@1.0.0",
+    "not_issued_i03_empirical_fact": true
+  },
+  "acceptance": {
+    "bounded_grade": "D1_OBSERVED_SAMPLE_DESCRIPTIVE_TALLY_ACCEPTED",
+    "verdict": "PASS",
+    "affected_criteria": {
+      "D1-C08": "PASS",
+      "D1-C09": "PASS",
+      "D1-C12": "PASS"
+    },
+    "original_revise_history_preserved": true,
+    "original_red_files_modified": false
+  },
+  "scope_limits": {
+    "original_sav_reread": false,
+    "other_original_data_read": false,
+    "local_c11_bundle_consumed": true,
+    "respondent_cells_in_git_or_reports": false,
+    "i03_executed": false,
+    "i05_executed": false,
+    "canonical_semantic_ALLOW_claimed": false,
+    "weight_or_population_claim": false,
+    "m2_m3_f1_f4_claimed": false,
+    "routing_state": "ROUTING_UNKNOWN",
+    "authority_state": "DEFER"
+  },
+  "reused_partial_probe_hashes": {
+    "focused_probe_results_sha256": "7ce1c3a1f6d8f356bae75ac3803379fadd4b31b0063b1b162094cdcf4c937c64",
+    "clean_primary_stdout_sha256": "e7b4e7878bf78fae90170f28f0a544befe0aa127fe840aec47579ccd2064a9cf",
+    "clean_replay_stdout_sha256": "8c3eaa984050609c76d54d7decf5aa3d269620c26558cb1d751fac1c0b4aab57",
+    "clean_tests_stdout_sha256": "4f4067ad0c2db61225b4a53a096c03236239ff5cdf1aa93ac9273cfec6548c21"
+  },
+  "next_consumer": "Existing descriptive aggregate consumer; a separately issued I03 operation remains a future separate obligation, not a gate for this typed D1 observed-sample tally.",
+  "limits": [
+    "This is a bounded D1 observed-sample descriptive tally acceptance, not M2/M3 or F1-F4 completion.",
+    "The prior reviewer's 42-field/630,990-object recomputation is reused unchanged and attributed; it was not repeated.",
+    "No original SAV was reread by D1; only the accepted local SRC04 C11 bundle was consumed.",
+    "ROUTING_UNKNOWN and DEFER authority remain unchanged; event presence is distinct from observed response and substantive answer.",
+    "No I03 EmpiricalFact, I05, weights, population, canonical, directional or structural claim is issued."
+  ]
+}
