@@ -1,3 +1,8 @@
+# LIVE FLIGHT READ CUT — ORIGINAL V3 HISTORIC RESEARCH BOARD RETAINED BELOW
+
+Read the [current Sorok live flight and unknown-process/status ledger](../COMMAND/04_FLIGHT_AND_CURRENTNESS.md) and [command](../COMMAND/00_COMMAND.md). This historic 10/10 authored and 8/8 reviewed board covers the earlier M/N courts only, **not the subsequent SYN02, R3 code, actor/C12 repairs or any live Mac worker process**. A GitHub branch is not RUNNING. Keep scientific critical-path decisions and independent ready engineering visible without commissioning duplicate reviews.
+
+---
 # V3 Courts — all ten primary workers and all eight independent reviewers returned
 
 **10/10 authored returns; 8/8 reviewer returns.** Original historic M01–M40 independently source checked at selected-file grain. N01–N08 by RS, N09–N11 by RT04 reviewed conceptually, N12 by RC static consumer-source reviewed. No current native actor/person end-to-end pass or new concrete Rule A/T/SCI05 source grant.

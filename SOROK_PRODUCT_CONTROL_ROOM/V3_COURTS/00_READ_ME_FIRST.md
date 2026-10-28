@@ -1,3 +1,10 @@
+# CURRENT SCIENCE-TO-CAPABILITY COMMAND FOR V3 COURTS
+
+**First read the [Sorok command](../COMMAND/00_COMMAND.md) and [scientific decision frontier](../COMMAND/01_SCIENTIFIC_DECISION_FRONTIER.md), then use this V3 Courts original evidence/archive.** Prior 10/10 authored and 8/8 independent historic/theoretical research closures below are **not** current native implementation status. [Capability register](../COMMAND/02_CAPABILITY_REGISTER.json), [completion sequence](../COMMAND/03_COMPLETION_SEQUENCE.md), [actual flight cut](../COMMAND/04_FLIGHT_AND_CURRENTNESS.md).
+
+**Active decision order:** O03 CAN008 Rule A, O05/O07 CAN011 durable PRACTICE or evaluated nochange, O01/O09 need/activity, O08 independently real B; then O02/O04 scoped expectation and N09/SCI05, later event-batch policy, genealogy and Pyat weld. Full independent/source owner law retained, no artificial science issuance by old historic V3 mapping.
+
+---
 # Sorok V3 Courts — live evidence entrypoint after all reviews
 
 **Current status (2026-10-27):** TEN primary worker research returns; EIGHT independent reviewer reports verified remotely. 40/40 historic V3 families independently source-checked at bounded original selected-file/test grain; N01–N11 theoretical-developmental requirements independently scoped reviewed, and N12 current source architecture statically reviewed. No released concrete psychological formation science, living current C9/C12 person loop, source-owner permit or production merge. The isolated PR #509 remains draft.
