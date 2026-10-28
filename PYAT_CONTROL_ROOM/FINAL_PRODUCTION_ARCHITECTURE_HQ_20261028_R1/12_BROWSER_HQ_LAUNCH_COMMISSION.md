@@ -17,6 +17,10 @@
 
 HQ directly inspected accepted C11/ingest/facade exact Git blobs and packet author sources; completed `DESIGN/P01_S0_CURRENT_C11_CONSUMER_AND_IDENTITY_AUDIT_R1.md`, `DESIGN/P01_S0_CONTROL_SYMBOL_CENSUS.json` (15 current files/131 current positive hits), and `DESIGN/P01_S1_SEALED_SOURCE_EXECUTION_VIEW_CONTRACT_R1.md`. S1 decision is one I02-validated internal C11 source execution view registered with existing C11Repository, old sealed C11LogicalRelease kept as explicit legacy/equivalence path. It is **interface design only**; first next HQ P01 operation is S2 complete validator/replay streaming-proof specification, then S3/S4 implementation tickets and source-free identity parity. Do not reopen decision or delegate HQ semantic approval.
 
+## Current P01-S2 milestone (2026-10-28)
+
+HQ completed `DESIGN/P01_S2_EXACT_I02_VALIDATION_JOURNAL_AND_HASH_PROOF_R1.md`, line-grounded all original validation stages and designed an external-sortable bounded validation journal without changing public C11 identity. `DESIGN/P01_HIGH_RESOLUTION_RETURN_LEDGER.json` logs **36 exact unresolved deep-engineering acceptance questions** with source/owner/oracle, and `STATUS/P01_S2_SOURCEFREE_PROOF_RECEIPT.json` separates executed tiny sourcefree tests from the committed but NOT YET EXECUTED portable repo fixture oracle in `DESIGN/ORACLES/p01_s2_control_oracle.py`. A genuine negative test demonstrates I02 logical ingest alone can accept mismatched snapshot retention SHA when replay is resealed; new view MUST require source-admission byte/retention attestation. **Next task: P01-S3 exact function-level implementation tickets and sourcefree old-vs-new tests, not semantic relaxation or an A/B/C comparison.**
+
 ## Initial steps
 1. Read root 00_START_HERE.md through 11_DECISION_AND_OBLIGATION_LEDGER.json completely. This is the architectural constitution and active decision.
 2. Refresh private GitHub current control HEAD and HQ_HANDOFF/LATEST.json, its immutable checkpoint, live source/science/FF/actor rights and currently running Rabochiis; reconcile only exact later changes, never overwrite them from stale summaries.
