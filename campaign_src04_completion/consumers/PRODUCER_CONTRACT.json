@@ -1,5 +1,5 @@
 {
-  "schema": "PYAT_SRC04_LANE_D_PRODUCER_CONTRACT@1.1.0",
+  "schema": "PYAT_SRC04_LANE_D_PRODUCER_CONTRACT@1.2.0",
   "lane": "D",
   "target_source_id": "SRC04",
   "status": "PENDING_FULL_SOURCE_PRODUCT",
@@ -67,6 +67,18 @@
       "NONRESPONDENT_FIXTURE_ONLY",
       "SOURCE_LOCAL_CERTIFIED"
     ]
+  },
+  "required_observed_response_projection": {
+    "trigger": "query.requested_output_grain.observed_response_contract_ref is present",
+    "fact_field": "EmpiricalFact.target_topology.observed_response",
+    "required_status": "OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION",
+    "required_flag": "not_eligible_population_estimate is true",
+    "required_contract_ref": "exact contract_ref equal to the query grain observed_response_contract_ref",
+    "required_ledger": "full exact ledger, including contract_ref and not_eligible_population_estimate",
+    "product_field": "observed_response (unchanged _plain projection)",
+    "discovery_fact_field": "empirical_facts[].observed_response (unchanged _plain projection)",
+    "nonobserved_profiles": "unchanged; no observed_response field is added",
+    "forbidden": "synthesis, relabeling, population eligibility, or dropping the projection"
   },
   "loader_contract": {
     "spec": "python_module:function",

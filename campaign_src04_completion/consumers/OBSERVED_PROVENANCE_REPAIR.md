@@ -1,0 +1,10 @@
+# Exact D repair from independent C/D review
+
+Pinned C44aaf2be06e026547e9b32d880ac588e84acc9e4; independentreviewa65446a0f259bf84d26a6b3e04645eccd14d997f; oldD35bab35be55c80f90d9d0cfbc13fb6f555a0f8ce. HQimported exactC+review dependencies READ ONLY here. OriginalSRC04 construction remainsseparate, no Doriginalfileaccess. Cengineeredprofiles/44nativefixtureoperations positive; joinedREVISEonly D_OBSERVED_RESPONSE_PROVENANCE_DROPPED.
+
+Implement ONLY smallest demonstratedrepair from empirical/review/REVIEW.json.failure:
+- Capture fact.target_topology['observed_response'] in consume_native_producer. Forobservedprofilesrequire exactstatusOBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION, not_eligible_population_estimate true, contract_ref equalquerygrain andfullledger; emitunchanged _plainprojectiononproduct. Never synthesize/populationrelabel. Existingnonobservedprofileskeepunchangedbehavior.
+- Preserveeachdiscoveryfactobservedprojection in _run_downstream_discovery.empirical_facts, with exactcontract/status/ledger andprovenance.
+- Add one actualjoined C-observedprofile->D nativeconsumerregression asserting equality ofstatus,noteligibleflag,contractrefandentireledger forprimary/discoveryoutputs. Add discriminatingmissing/mutatedobservedprojectionrefusal where requiredbythisboundary; no unrelatedtests.
+
+Frozenreviewtest DEFECT intentionally asserts historicalomission: retainit unchanged asREDwitness, do noteditreview-ownedtesttoforcegreen. Reuse reviewerfixturehelper asreadonlytestinput ifuseful; productionmustnotimporttests. Authorregressioncanbe ownconsumers/tests only. Otherreviewpositivecasescanrerunproportionately; focusedindependentrecheckafterreturn. No Ccorewrites or newengine/weights/sourceauthority/strategy. Sameconsumers/**authorallowlist only; importedC/reviewfilesreadonly. Fullsourcegrantreceived butthisDtaskhasNOoriginalreadrights ororiginalempiricalissuance; exactnativeoperation/useapprovalpendinghuman. Do notwaitonthat tofixprovenance. PreservepriorreturninGit and publishversionedsuccessor/measuredrepairresults. Commit/push/directremoteverify.
