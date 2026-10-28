@@ -166,3 +166,55 @@ def test_cli_consumes_the_real_candidate_fixture_and_emits_only_surface(actor):
         {"text": "Remembered help", "epistemic_kind": "received_account"}]}
     assert "cli-visible" not in result.stdout
     assert "source_cut" not in result.stdout
+
+
+def test_pure_view_is_consumed_by_surface_and_preserves_full_snapshot(actor):
+    from dataclasses import asdict
+    from copy import deepcopy
+    from actor_reader import compute_view, DerivedViewRequestV1
+    c, a = actor
+    publish(c, a, "view", text="A received account")
+    snapshot = read(a)
+    before = deepcopy(asdict(snapshot))
+    result = compute_view(snapshot, DerivedViewRequestV1("ACTOR_RECEIVED_SURFACE_TESTONLY@1", "A", a.source_cut_hash))
+    assert result.status == "OK" and result.source_version_ref == snapshot.version_hash
+    assert result.source_fact_ids == ()  # No invented owner-frozen fact identifiers.
+    assert result.value.records == read_surface(snapshot).records
+    assert asdict(snapshot) == before
+
+
+@pytest.mark.parametrize("view_id,actor_id,cut,reason", [
+    ("unknown", "A", "TEST_ONLY_SOURCE_CUT", "UNKNOWN_VIEW"),
+    ("ACTOR_RECEIVED_SURFACE_TESTONLY@1", "B", "TEST_ONLY_SOURCE_CUT", "ACTOR_SCOPE_MISMATCH"),
+    ("ACTOR_RECEIVED_SURFACE_TESTONLY@1", "A", "other", "SOURCE_CUT_MISMATCH")])
+def test_pure_view_refuses_unknown_view_or_source_without_best_effort(actor, view_id, actor_id, cut, reason):
+    from actor_reader import compute_view, DerivedViewRequestV1
+    _, a = actor
+    result = compute_view(read(a), DerivedViewRequestV1(view_id, actor_id, cut))
+    assert result.status == "HELD" and result.value is None and result.warnings == (reason,)
+
+
+def test_unknown_observation_is_not_zero_or_hopeful_or_valid_empty(actor):
+    from dataclasses import replace
+    from actor_reader import compute_view, DerivedViewRequestV1
+    _, a = actor
+    unknown = replace(read(a), visible_records=None)
+    result = compute_view(unknown, DerivedViewRequestV1("ACTOR_RECEIVED_SURFACE_TESTONLY@1", "A", a.source_cut_hash))
+    assert result.status == "UNKNOWN" and result.value is None
+    with pytest.raises(ReaderHeld, match="DERIVED_VIEW_UNKNOWN"):
+        read_surface(unknown)
+
+
+def test_full_snapshot_guard_detects_hidden_write_and_preserves_original(actor, monkeypatch):
+    from dataclasses import asdict
+    import actor_reader
+    _, a = actor
+    snapshot = read(a)
+    before = asdict(snapshot)
+    def old_mutating_view(work):
+        object.__setattr__(work, "state_json", '{"registers":{"hidden_write":1},"metabolic_style":"changed"}')
+        return actor_reader.SurfacePacketV1(())
+    monkeypatch.setattr(actor_reader, "build_surface_packet", old_mutating_view)
+    with pytest.raises(ReaderHeld, match="DERIVED_VIEW_MUTATION:state_json"):
+        actor_reader.compute_view(snapshot, actor_reader.DerivedViewRequestV1("ACTOR_RECEIVED_SURFACE_TESTONLY@1", "A", a.source_cut_hash))
+    assert asdict(snapshot) == before

@@ -61,7 +61,7 @@ class ActorSnapshotReadV1:
     source_cut: str
     delivery_status: str
     # Filtered records only; no hidden receipt IDs/count/order enter actor JSON.
-    visible_records: tuple[SurfaceRecord, ...]
+    visible_records: tuple[SurfaceRecord, ...] | None
     grade: str = "SOURCEFREE_CANDIDATE_NOT_OWNER_FROZEN"
 
 
@@ -218,9 +218,58 @@ def actor_visible_surface(packet: SurfacePacketV1) -> ActorVisibleSurfaceV1:
     return ActorVisibleSurfaceV1(packet.records)
 
 
+@dataclass(frozen=True)
+class DerivedViewRequestV1:
+    view_id: str
+    actor_id: str
+    source_cut: str
+
+
+@dataclass(frozen=True)
+class DerivedViewValueV1:
+    view_id: str
+    value: SurfacePacketV1 | None
+    source_fact_ids: tuple[str, ...]
+    status: str
+    warnings: tuple[str, ...]
+    source_version_ref: str | None = None
+
+
+def compute_view(snapshot: ActorSnapshotReadV1, request: DerivedViewRequestV1) -> DerivedViewValueV1:
+    """Pure F1 view used by F2. No store, globals, legacy defaults or arithmetic law.
+
+    Only the implemented received-surface view is registered. The version frontier
+    is a technical reference; canonical fact IDs await an owner-frozen contract.
+    """
+    from copy import deepcopy
+    from dataclasses import asdict
+    def held(reason):
+        return DerivedViewValueV1(request.view_id, None, (), "HELD", (reason,))
+    if request.actor_id != snapshot.actor_id:
+        return held("ACTOR_SCOPE_MISMATCH")
+    if request.source_cut != snapshot.source_cut:
+        return held("SOURCE_CUT_MISMATCH")
+    if request.view_id != "ACTOR_RECEIVED_SURFACE_TESTONLY@1":
+        return held("UNKNOWN_VIEW")
+    if snapshot.visible_records is None:
+        return DerivedViewValueV1(request.view_id, None, (), "UNKNOWN", ("ACTOR_ACCESS_UNAVAILABLE",))
+    work = deepcopy(snapshot)
+    before = asdict(work)
+    value = build_surface_packet(work)
+    after = asdict(work)
+    if before != after:
+        changed = tuple(key for key in before if before[key] != after.get(key))
+        raise ReaderHeld("DERIVED_VIEW_MUTATION:" + ",".join(changed))
+    return DerivedViewValueV1(request.view_id, value, (), "OK",
+                              ("SOURCEFREE_NOT_OWNER_FROZEN",), snapshot.version_hash)
+
+
 def read_surface(snapshot: ActorSnapshotReadV1) -> ActorVisibleSurfaceV1:
-    """SurfaceRecord -> SurfacePacketV1 -> ActorVisibleSurfaceV1; no writer callback."""
-    return actor_visible_surface(build_surface_packet(snapshot))
+    """F1.compute_view -> SurfacePacketV1 -> ActorVisibleSurfaceV1; no writer."""
+    result = compute_view(snapshot, DerivedViewRequestV1("ACTOR_RECEIVED_SURFACE_TESTONLY@1", snapshot.actor_id, snapshot.source_cut))
+    if result.status != "OK":
+        raise ReaderHeld("DERIVED_VIEW_" + result.status)
+    return actor_visible_surface(result.value)
 
 
 def gate_second_half(first_half_status: str, proposals: tuple) -> tuple[str, ...]:
