@@ -1,0 +1,269 @@
+{
+  "schema": "PYAT_SRC04_LANE_C_RETURN@1.0.0",
+  "campaign": "SRC04_COMPLETION_LANE_C",
+  "status": "LANE_C_ENGINEERING_COMPLETE__ORIGINAL_SCIENTIFIC_ISSUANCE_PENDING_EXTERNAL_AUTHORITY",
+  "branch": "agent/pyat-src04-observed-empirical-20261028",
+  "startup_commit": "a9490793ad091d00f92886cff82e4dcedd578bd5",
+  "code_commit": "ce7b1706a94e39b93af9e4ff16245f0edee7afb8",
+  "return_commit": "commit containing this file; direct remote readback in final response",
+  "author_result_is_candidate": true,
+  "actual_code_artifacts": [
+    {
+      "path": "rawlsing_next/pre553_observed_response.py",
+      "bytes": 38139,
+      "sha256": "47df4b41a29a6c34667708d949ff77d1f563ec6cde6db88e84377d7a72ee62ff"
+    },
+    {
+      "path": "rawlsing_next/_pre553_query_common.py",
+      "bytes": 18721,
+      "sha256": "c6f1d41ad72a578cad73ab0570157217757d949f11fb92def7d364b776bafa72"
+    },
+    {
+      "path": "rawlsing_next/_pre553_query_eval.py",
+      "bytes": 40786,
+      "sha256": "7b9643288e5a2fead27210cd03e04c7151fa3e6fdf86eb49aee67b485c49129c"
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "bytes": 24279,
+      "sha256": "4d6b33405d477efefbc7f1274b7165c7ff530fb38efabdf324f2e81acd7228cd"
+    },
+    {
+      "path": "rawlsing_next/tests/test_observed_response.py",
+      "bytes": 21018,
+      "sha256": "abf7fe1c6348dae0e2d9cd6d57958fcf8495267fd57a933eda01f79855a0eb91"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/API.md",
+      "bytes": 4191,
+      "sha256": "ac3f996a135d4169efa0c57abbc223ced1786abb7bd6f0c339aa1dd09e59177d"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/CONTRACT_APPROVAL_READY.json",
+      "bytes": 251926,
+      "sha256": "4b756d33891ea3f0667704166e26965c744df82ac0962b823f9d10810ca2c53e"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/OPERATION_LEDGER.json",
+      "bytes": 160273,
+      "sha256": "c45aa0996e63b827b4e59af6e58a95e58c6216683cb2bcc5be3a37fbabc6a9f7"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/TEST_RESULTS.json",
+      "bytes": 2219,
+      "sha256": "1caa41ebe0fc68f7f8cd4cb3424e635d83d42ba895f90e8678106332ec0e9297"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/NEGATIVE_RESULTS.json",
+      "bytes": 2091,
+      "sha256": "be75bf7ac3ad75fd7234a598c867b7d78db7c34b10313b1294c2b50cb00c103f"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/build_lane_c_evidence.py",
+      "bytes": 19969,
+      "sha256": "e142d8c0fd90fd0c71ad5d771f66254450d658358328b6515189ab8aea34970d"
+    }
+  ],
+  "implemented_support": {
+    "risk_set_types": [
+      "OBSERVED_RESPONSE_RISK_SET",
+      "CO_OBSERVED_RESPONSE_RISK_SET"
+    ],
+    "public_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+    "public_output": "EmpiricalFact@1.0.0",
+    "new_contract_owner": "rawlsing_next/pre553_observed_response.py",
+    "unchanged_eligible_meaning": "_risk_membership retains ROUTING_UNKNOWN refusal and is not called for observed-response profiles",
+    "observed_output_ledger": "EmpiricalFact.target_topology.observed_response.ledger",
+    "api_document": "campaign_src04_completion/empirical/API.md"
+  },
+  "approval_ready_contract": {
+    "path": "campaign_src04_completion/empirical/CONTRACT_APPROVAL_READY.json",
+    "sha256": "4b756d33891ea3f0667704166e26965c744df82ac0962b823f9d10810ca2c53e",
+    "state": "APPROVAL_PENDING",
+    "status": "APPROVAL_READY_EXTERNAL_AUTHORITY_PENDING",
+    "contract_ref": {
+      "kind": "OBSERVED_RESPONSE_CONTRACT",
+      "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:42254d5b078e137784a10afb7797c3d8495659d56fbb93701053d746ee411fa1",
+      "content_hash": "42254d5b078e137784a10afb7797c3d8495659d56fbb93701053d746ee411fa1"
+    },
+    "contract_material_sha256": "42254d5b078e137784a10afb7797c3d8495659d56fbb93701053d746ee411fa1",
+    "targets": 163,
+    "topology_bindings": 163,
+    "operation": "PRE553_OBSERVED_RESPONSE_EMPIRICAL_OPERATIONS@1.0.0",
+    "operation_authority_ref": null,
+    "external_issuer_required": true
+  },
+  "operation_ledger": {
+    "path": "campaign_src04_completion/empirical/OPERATION_LEDGER.json",
+    "sha256": "c45aa0996e63b827b4e59af6e58a95e58c6216683cb2bcc5be3a37fbabc6a9f7",
+    "source_scope": {
+      "source_id": "SRC04",
+      "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "source_file_bytes": 1531099,
+      "records": 7337,
+      "physical_slots": 181,
+      "response_slots": 178,
+      "coordinate_slots": 3,
+      "available_response_fields": 163,
+      "held_response_fields": 15,
+      "available_condition_coordinates": 2,
+      "held_coordinates": 1,
+      "field_record_positions": 1305986,
+      "available_response_field_positions": 1195931,
+      "coordinate_positions": 22011,
+      "unaccounted_positions": 0
+    },
+    "operation_families": [
+      {
+        "family": "UNARY_OBSERVED_DISTRIBUTION",
+        "operation": "per response field, exact observed-state cell distribution",
+        "available_targets": 163,
+        "held_targets": 15,
+        "planned_operations": 163,
+        "status": "NOT_ISSUED_AUTHORITY_PENDING",
+        "denominator_policy": "PER_TARGET_OBSERVED",
+        "missingness": "MISSING excluded and counted; DK/special retained as observed typed response states"
+      },
+      {
+        "family": "BIDIRECTIONAL_CONDITIONAL_DISTRIBUTION",
+        "operation": "for every ordered pair (target, condition) among available response fields",
+        "available_targets": 163,
+        "ordered_pairs": 26406,
+        "planned_operations": 26406,
+        "status": "NOT_ISSUED_AUTHORITY_PENDING",
+        "denominator_policy": "PER_TARGET_OBSERVED_WITH_ALL_CONDITION_VARIABLES_CO_OBSERVED",
+        "missingness": "target or any referenced condition variable missing => excluded and counted"
+      },
+      {
+        "family": "SAME_RESPONDENT_JOINT_DISTRIBUTION",
+        "operation": "for every unordered pair of available response fields",
+        "available_targets": 163,
+        "unordered_pairs": 13203,
+        "planned_operations": 13203,
+        "status": "NOT_ISSUED_AUTHORITY_PENDING",
+        "denominator_policy": "CO_OBSERVED_TARGETS",
+        "missingness": "any target missing => excluded from denominator and counted"
+      },
+      {
+        "family": "HIGHER_ORDER_CO_OBSERVED_JOINT",
+        "operation": "same-respondent target sets of exact arity 3 over available response fields",
+        "max_arity": 3,
+        "planned_operations": 708561,
+        "status": "NOT_ISSUED_AUTHORITY_PENDING",
+        "denominator_policy": "CO_OBSERVED_TARGETS",
+        "missingness": "any target missing => excluded and counted"
+      },
+      {
+        "family": "MINORITY_ZERO_AND_SPARSE_CELLS",
+        "operation": "derived cell states from every issued distribution/joint; no separate query family",
+        "observed_zero_policy": "raw numerator == 0 and raw denominator > 0",
+        "sparse_policy": "0 < raw numerator <= issuer-approved exact threshold",
+        "sparse_threshold": null,
+        "status": "DERIVED_AFTER_AUTHORIZED_EXECUTION"
+      },
+      {
+        "family": "RECURSIVE_HIGHER_ORDER_BRANCHING",
+        "operation": "recursive target-set growth over the co-observed finite grammar, bounded at arity 3 for this contract",
+        "max_arity": 3,
+        "base_operations": 13203,
+        "branch_growth_rule": "extend only by exact available field refs not already in target set; no numeric-value crossproduct",
+        "status": "NOT_ISSUED_AUTHORITY_PENDING"
+      }
+    ],
+    "accounting": {
+      "planned_total": 748333,
+      "issued": 0,
+      "executed": 0,
+      "not_issued_authority_pending": 748333,
+      "held_field_bindings": 15,
+      "held_coordinate_bindings": 1,
+      "unsupported": 0,
+      "inapplicable": 0,
+      "unexplained_drops": 0,
+      "status": "AUTHORITY_PENDING_NO_ORIGINAL_WORKLOAD_ISSUED"
+    }
+  },
+  "tests": {
+    "path": "campaign_src04_completion/empirical/TEST_RESULTS.json",
+    "sha256": "1caa41ebe0fc68f7f8cd4cb3424e635d83d42ba895f90e8678106332ec0e9297",
+    "observed_response": "13 passed in 2.83s",
+    "i03_regression": "39 passed in 0.72s",
+    "consumer_regression": "17 passed in 3.44s",
+    "scope": "NONRESPONDENT_FIXTURE_ONLY"
+  },
+  "negatives": {
+    "path": "campaign_src04_completion/empirical/NEGATIVE_RESULTS.json",
+    "sha256": "be75bf7ac3ad75fd7234a598c867b7d78db7c34b10313b1294c2b50cb00c103f",
+    "count": 7,
+    "cases": [
+      "fixture-only authority promoted to original scientific grade",
+      "contract operation differs from exact query operation authority",
+      "contract release ref mismatch",
+      "routing/applicability leaf in observed-response condition",
+      "weighted observed-response profile",
+      "existing eligible-risk profile receives ROUTING_UNKNOWN",
+      "approval-pending contract executed as authorized"
+    ]
+  },
+  "source_identity": {
+    "source_id": "SRC04",
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "source_config_path": "rawlsing_next/source_configuration/data/SRC04/source.config.json",
+    "source_config_file_sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900",
+    "source_config_canonical_sha256": "0e86814b62eb51dc9da22793b6de3e3598c3415632accb80f33bac965185f284",
+    "records": 7337,
+    "physical_slots": 181,
+    "response_slots": 178,
+    "coordinate_slots": 3,
+    "available_response_fields": 163,
+    "held_response_fields": 15,
+    "available_condition_coordinates": 2,
+    "held_coordinates": 1
+  },
+  "measured_results": {
+    "fixture_unary_observed_denominator": 7,
+    "fixture_unary_target_unobserved": 1,
+    "fixture_unary_dk_cell_count": 2,
+    "fixture_pair_coobserved_denominator": 6,
+    "fixture_triple_coobserved_denominator": 6,
+    "fixture_conditional_denominator": 1,
+    "fixture_conditional_unobserved": 1,
+    "fixture_conditional_false": 5,
+    "fixture_scope": "R157 SRC04 NONRESPONDENT FIXTURE ONLY",
+    "original_workload_issued": false,
+    "original_query_executed": false
+  },
+  "minimal_indispensable_external_decisions": [
+    "Issue exact ALLOW PREDICATE_GRAMMAR operation authority for the adopted observed-response operation token, source universe, risk-set identity and EmpiricalPredicate/EmpiricalQuerySpec/EmpiricalFact families.",
+    "Bind the exact full SRC04 C11LogicalRelease ref and source release manifest hash from Lane A; the accepted 42-field release is not sufficient.",
+    "Issue exact positive SOURCE_SEMANTICS_TOPOLOGY authority for each proposed source-native topology binding (or supply corrected exact bindings).",
+    "If an EmpiricalFact is consumed downstream, issue exact TARGET_USE_PERMISSION ref/authority/operation.",
+    "If sparse/minority cell claims are required, approve the exact sparse threshold. Observed zero itself is exact and needs no threshold."
+  ],
+  "issuer_boundary": {
+    "lane_c_is_issuer": false,
+    "fixture_authority_not_promoted": true,
+    "defer_preserved": true,
+    "routing_unknown_preserved": true,
+    "no_new_authority_created": true
+  },
+  "next_consumer": {
+    "owner": "Lane D / existing empirical consumer",
+    "read": "EmpiricalFact plus target_topology.observed_response ledger",
+    "operation": "existing execute_empirical_query/replay_empirical_query once full release and exact authority are supplied",
+    "must_not_claim": [
+      "eligible population",
+      "weighted population",
+      "I03 issuance before authority",
+      "I05 before authority",
+      "structural/causal/adoption"
+    ]
+  },
+  "limits": [
+    "No original SAV stat/hash/open/decode/read was performed by Lane C.",
+    "No original observed-response workload was issued or executed.",
+    "The tests are nonrespondent fixture engineering discrimination, not an original SRC04 empirical result.",
+    "No canonical values, weights, population/eligibility estimates, I03 EmpiricalFact issuance, I05 product, actor/V3/V2 state, or M2/M3/F1-F4 completion is claimed.",
+    "The accepted 42-field D1 aggregate is immutable baseline evidence, not an I03 query."
+  ]
+}
