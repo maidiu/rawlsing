@@ -11,3 +11,5 @@
 **Current pinned refs:** PREMAIN `299f41e97a43c67be9cc76a79fa49b48f4e12e54`; Sorok derived command `5ea806bd0e3d4cb87b81cef7b159ebad06adda9d`; Sorok source foundation `b0dc1c25bc648b7bb4b90c4278d77c009dc52033`. The separate `maidiu/rawlsing-controller` repository and local Mac process state are not covered by the census.
 
 **Deliverable scope:** repository-wide index complete, selected high-impact code/acceptance inheritance located and evidenced, separate HQ handoffs published; no claim of exhaustive 2,831-branch code-review coverage. The two actual HQs decide adoption on their operative branches.
+
+**Separate controller estate now also indexed:** the private `maidiu/rawlsing-controller` has 27 branches / 25 unique tip SHAs in `CROSS_BRANCH_INHERITANCE/04_CONTROLLER_SECOND_REPO_BRANCH_CENSUS.json`; `05_CONTROLLER_INHERITANCE_NOTES_R1.md` preserves its qualified R62 worker/reviewer status and R63 High-routing HOLD. This is a separate repository, not part of the 2,831 main Rawlsing branch count. No remote branch proves a running service.
