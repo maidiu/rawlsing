@@ -77,6 +77,9 @@ This is the ordinary content of an accepted return and the ordinary HQ integrati
 Create/update `STATUS/CLAIM_INTAKE_LEDGER.json` as worker results arrive: worker SHA, exact source refs, claims, exclusions, HQ verification, independent oracle, receiving artifact, acceptance bounds. Keep source-free; no respondent values. This ledger must be available to successor HQ. A future HQ cannot promote raw worker prose directly to final design or source/semantic truth; previous evidence labels survive succession.
 
 ## First executive action
+
+P01-S0/S1/S2 are now personally investigated and documented by HQ. S2 validator/journal design and actual sourcefree oracles are in `DESIGN/P01_S2_EXACT_I02_VALIDATION_JOURNAL_AND_HASH_PROOF_R1.md`; the 36 high-resolution return issues in `DESIGN/P01_HIGH_RESOLUTION_RETURN_LEDGER.json` are **mandatory individual verification questions**, not worker-completed facts. The source-retention SHA seam (S2-HR-001) is a proved negative boundary for I02-only acceptance and must not be suppressed by any optimizer. Next HQ-direct job P01-S3 is exact code tickets and executable whole-legacy-vs-stream proof harness; worker attribution/assurances remain inadmissible. 
+
 Retain P01 S0/S1 as **HQ-owned direct work**. The earliest optional worker is only a bounded exact callsite/provenance census, not a delegate asked to design C11 architecture end-to-end. Until a commission is narrowed to this law, it is not dispatchable.
 
 **Terminal guarantee provided:** methodological non-contamination: uncertain worker assertions are not silently treated as verified facts. Not an impossible promise of human/agent infallibility or of no potential error.
