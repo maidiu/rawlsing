@@ -1,0 +1,26 @@
+{
+  "schema": "PYAT_SRC04_CHANGED_CARRIER_SCOPED_ACCEPTANCE_V1",
+  "disposition": "PASS_SCOPED_CHANGED_ISSUER_CARRIER_BOUNDARY",
+  "candidate": "d03a1d78d488807b6b946e000df10c1c88dc4bea",
+  "independent_review": "751fece9bf86bd3b1da54b2915876d3e73cea682",
+  "verified_artifacts": 4,
+  "tests": {
+    "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/actual_review/test_carrier_focused_recheck.py -q -o addopts=''",
+    "exit": 0,
+    "note": "Successor tests execute the required fixture end-to-end and repaired typed refusals; frozen prior DEFECT tests are not rewritten or used as acceptance.",
+    "path": "campaign_src04_completion/empirical/actual_review/test_carrier_focused_recheck.py",
+    "result": "5 passed in 21.98s",
+    "run_path": "campaign_src04_completion/empirical/actual_review/FOCUSED_RECHECK_TEST_RUN.txt",
+    "run_sha256": "980335dc8af51337f88ebd88eb2f464e2a77bf7ecda9c4f2de82cb74e621914c",
+    "sha256": "8a5b6ee49562fcdc9e9979b73061bff2819c07b196a6f828a91db95188c13380",
+    "skipped": 0
+  },
+  "fixture_operations": 44,
+  "limits": [
+    "Labelled SRC04 nonrespondent fixture only; not original-source qualification or source-local science.",
+    "Original accepted release 9ddec985... was not read, requalified, or executed.",
+    "Scoped engineering PASS only; no population/weighted/causal/structural/FF/N11/N12/actor claim.",
+    "Frozen historical RED tests and prior review artifacts remain unedited."
+  ],
+  "actual_original_execution_claimed": false
+}
