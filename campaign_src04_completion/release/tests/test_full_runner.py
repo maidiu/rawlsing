@@ -169,3 +169,22 @@ def test_native_pickle_stream_roundtrip_for_local_product(tmp_path):
     assert size == path.stat().st_size
     assert digest == hashlib.sha256(path.read_bytes()).hexdigest()
     assert sum(1 for _ in runner._iter_pickle_stream(path)) == count
+
+
+def test_numeric_binding_targets_actual_income_deciles_without_labels():
+    cfg = load_source_config(runner.B_CONFIG_PATH)
+    slots = {s["slot"]["name"]: s["slot"] for s in cfg.document["response_slots"]}
+    cells = [
+        PhysicalCell(1, slots["q715incomedeciles"]["ordinal"], "q715incomedeciles", 1.5, PhysicalMissingState.OBSERVED_STORAGE_VALUE, None),
+        PhysicalCell(1, slots["q716incomedeciles"]["ordinal"], "q716incomedeciles", 5.5, PhysicalMissingState.OBSERVED_STORAGE_VALUE, None),
+        PhysicalCell(2, slots["q715incomedeciles"]["ordinal"], "q715incomedeciles", 8.5, PhysicalMissingState.OBSERVED_STORAGE_VALUE, None),
+        PhysicalCell(2, slots["q716incomedeciles"]["ordinal"], "q716incomedeciles", 7.5, PhysicalMissingState.OBSERVED_STORAGE_VALUE, None),
+    ]
+    applied = apply_observed_domain(cfg, iter(cells), target_slots=runner.NUMERIC_TARGET_SLOTS)
+    assert applied["added_rule_counts"].get("q715incomedeciles", 0) >= 2
+    assert applied["added_rule_counts"].get("q716incomedeciles", 0) >= 2
+    for name in ("q715incomedeciles", "q716incomedeciles"):
+        slot = next(s for s in applied["config"]["response_slots"] if s["slot"]["name"] == name)
+        for value in slot["values"]:
+            if value["raw_value"] in (1.5, 8.5, 5.5, 7.5):
+                assert value["canonical_value"] is None

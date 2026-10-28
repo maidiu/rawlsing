@@ -112,6 +112,8 @@ TEST_PATH = EVIDENCE / "TEST_RESULTS.json"
 RETURN_PATH = CAMPAIGN / "RETURN.json"
 RETURN_V2_PATH = CAMPAIGN / "RETURN_V2.json"
 RETURN_V3_PATH = CAMPAIGN / "RETURN_V3.json"
+BINDING_AMENDMENT_PATH = EVIDENCE / "BINDING_AMENDMENT.json"
+GRANT_CLOSURE_PATH = EVIDENCE / "GRANT_CLOSURE.json"
 LOCAL_RECEIPT_PATH = EVIDENCE / "LOCAL_RELEASE_RECEIPT.json"
 RELEASE_RECEIPT_PATH = EVIDENCE / "RELEASE_RECEIPT.json"
 
@@ -966,6 +968,8 @@ def _manifest() -> list[dict[str, Any]]:
         "campaign_src04_completion/release/evidence/LOCAL_RELEASE_RECEIPT.json",
         "campaign_src04_completion/release/evidence/NEGATIVE_WRONG_SOURCE_GRANT.json",
         "campaign_src04_completion/release/evidence/NEGATIVE_HELD_AUTHORITY.json",
+        "campaign_src04_completion/release/evidence/BINDING_AMENDMENT.json",
+        "campaign_src04_completion/release/evidence/GRANT_CLOSURE.json",
     ]
     return [{"path": rel, "sha256": sha_file(ROOT / rel), "bytes": (ROOT / rel).stat().st_size} for rel in files if (ROOT / rel).is_file()]
 
@@ -1024,6 +1028,9 @@ def _full_return_result(artifact_commit: str) -> dict[str, Any]:
         "config_delta": release["config_delta"],
         "binding_join": release["binding_join"],
         "held_premises": release["held_premises"],
+        "held_response_details": release["source_field_accounting"].get("held_premises", []),
+        "binding_amendment": load_json(BINDING_AMENDMENT_PATH) if BINDING_AMENDMENT_PATH.is_file() else None,
+        "grant_closure": load_json(GRANT_CLOSURE_PATH) if GRANT_CLOSURE_PATH.is_file() else None,
         "terminal_negatives": release["terminal_negatives"],
         "negative_checks": negatives,
         "source_read_receipt": release["source_read_receipt"],

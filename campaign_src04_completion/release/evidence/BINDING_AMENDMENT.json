@@ -1,0 +1,45 @@
+{
+  "amended_sha256": "3889358a0659ec843b9c51d42c3498339eef7a0c161b78d6776e111eb5f27988",
+  "amendment": "Added explicit target-slot argument to the existing observed-domain builder; default targets unchanged; actual joined call targets the two without-Morocco income fields and the two income-decile fields.",
+  "builder": "campaign_src04_completion.bindings.numeric_domain_binding.build_numeric_domain_runtime_config",
+  "country_currency_distinction": "PRESERVED_NO_NORMALIZATION",
+  "observed_evidence": {
+    "q217": {
+      "labels_guessed": false,
+      "status": "HELD_EXACT_UNLABELED_RESIDUAL",
+      "unbound_cells": 38
+    },
+    "q715incomedeciles": {
+      "all_observed_numeric": true,
+      "canonical_values": false,
+      "distinct_literal_values": 4,
+      "invented_labels": false,
+      "max": 8.5,
+      "min": 1.5,
+      "unbound_observed_cells": 1027
+    },
+    "q716incomedeciles": {
+      "all_observed_numeric": true,
+      "canonical_values": false,
+      "distinct_literal_values": 2,
+      "invented_labels": false,
+      "max": 7.5,
+      "min": 5.5,
+      "unbound_observed_cells": 596
+    }
+  },
+  "preimage_sha256": "680346a23bd044b6332fdc661920d4457493f33981356066d54149578ccd48cd",
+  "raw_cells_published": false,
+  "reason": "Actual admitted selection held q715incomedeciles/q716incomedeciles because exact observed half-code literals were outside the static integer decile rules; q217 remains exact residual.",
+  "schema": "PYAT_SRC04_BINDING_AMENDMENT@1.0.0",
+  "source_id": "SRC04",
+  "source_read": "single admitted original read under pinned full-source grant; no ad-hoc source I/O",
+  "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+  "target_slots": [
+    "q715withoutmorocco",
+    "q716withoutmorocco",
+    "q715incomedeciles",
+    "q716incomedeciles"
+  ],
+  "task": "actual original joined construction"
+}
