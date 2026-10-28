@@ -4,7 +4,7 @@
   "status": "LANE_C_ENGINEERING_COMPLETE__ORIGINAL_SCIENTIFIC_ISSUANCE_PENDING_EXTERNAL_AUTHORITY",
   "branch": "agent/pyat-src04-observed-empirical-20261028",
   "startup_commit": "a9490793ad091d00f92886cff82e4dcedd578bd5",
-  "code_commit": "ce7b1706a94e39b93af9e4ff16245f0edee7afb8",
+  "code_commit": "3fa3b588d9323cc84128ca930313367906b57d7f",
   "return_commit": "commit containing this file; direct remote readback in final response",
   "author_result_is_candidate": true,
   "actual_code_artifacts": [
@@ -20,8 +20,8 @@
     },
     {
       "path": "rawlsing_next/_pre553_query_eval.py",
-      "bytes": 40786,
-      "sha256": "7b9643288e5a2fead27210cd03e04c7151fa3e6fdf86eb49aee67b485c49129c"
+      "bytes": 40832,
+      "sha256": "b8b64c7568ac49ed4c8c7e1489935403597b9a2b3faffb9e44efe75ae3261e8a"
     },
     {
       "path": "rawlsing_next/pre553_empirical_query.py",
@@ -51,7 +51,7 @@
     {
       "path": "campaign_src04_completion/empirical/TEST_RESULTS.json",
       "bytes": 2219,
-      "sha256": "1caa41ebe0fc68f7f8cd4cb3424e635d83d42ba895f90e8678106332ec0e9297"
+      "sha256": "41bc1f697ce405e7f6c6932f861d488b691ac2b6ecc1cccce35c57967147247e"
     },
     {
       "path": "campaign_src04_completion/empirical/NEGATIVE_RESULTS.json",
@@ -185,10 +185,10 @@
   },
   "tests": {
     "path": "campaign_src04_completion/empirical/TEST_RESULTS.json",
-    "sha256": "1caa41ebe0fc68f7f8cd4cb3424e635d83d42ba895f90e8678106332ec0e9297",
-    "observed_response": "13 passed in 2.83s",
-    "i03_regression": "39 passed in 0.72s",
-    "consumer_regression": "17 passed in 3.44s",
+    "sha256": "41bc1f697ce405e7f6c6932f861d488b691ac2b6ecc1cccce35c57967147247e",
+    "observed_response": "13 passed in 3.24s",
+    "i03_regression": "39 passed in 0.73s",
+    "consumer_regression": "17 passed in 1.34s",
     "scope": "NONRESPONDENT_FIXTURE_ONLY"
   },
   "negatives": {
@@ -265,5 +265,10 @@
     "The tests are nonrespondent fixture engineering discrimination, not an original SRC04 empirical result.",
     "No canonical values, weights, population/eligibility estimates, I03 EmpiricalFact issuance, I05 product, actor/V3/V2 state, or M2/M3/F1-F4 completion is claimed.",
     "The accepted 42-field D1 aggregate is immutable baseline evidence, not an I03 query."
-  ]
+  ],
+  "code_commit_sequence": [
+    "ce7b1706a94e39b93af9e4ff16245f0edee7afb8",
+    "3fa3b588d9323cc84128ca930313367906b57d7f"
+  ],
+  "corrective_note": "The code_commit sequence includes a follow-up that keeps non-observed I03 positive/negative fact and replay identities unchanged by omitting observed-response fields when the profile is absent."
 }
