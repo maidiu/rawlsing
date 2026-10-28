@@ -1,7 +1,7 @@
 {
   "schema": "SOROK08_FRESH_CANDIDATE_SOURCEGRADED_PROVENANCE_R1",
   "record_date": "2026-10-28",
-  "candidate_state": "SOROK_HQ_FULL_ACCESSION_GROK_INCOMPLETE__READ_ONLY_CORRECTIVE_WORK",
+  "candidate_state": "REVISE_PRECISE_DEFICIENCIES__CORRECTIVE_EVIDENCE_SUBMITTED__INDEPENDENT_REREVIEW_PENDING__READ_ONLY",
   "APPLICANT_BRANCH": "agent/vozhd-sorok-20261028-independent-sourcegraded-grok-candidate-r1",
   "SEALED_CANDIDATE_SHA": "5ea156a7fb734fb8317a634961ed01b5985fc3b4",
   "EXACT_PREMAIN_HEAD": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
@@ -55,5 +55,58 @@
     "head_510": "d2560368e10541905df84bafc7d3c64f63efc0d8"
   },
   "dossier_path": "SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261028_FRESH_SOURCEGRADED_GROK_CANDIDATE_R1/00_DOSSIER.md",
-  "recheck_required_on_future_action": true
+  "recheck_required_on_future_action": true,
+  "review": {
+    "branch": "review/sorok08-20261028-full-topview-accession-conditionals-r1",
+    "commit": "8fbf564788406bd8317e441e6f6c72c39b121f70",
+    "blob": "1715511b1cec316eabc5236e88d5851a01d8fcaf",
+    "pr_number": 513,
+    "disposition": "REVISE_PRECISE_DEFICIENCIES__NO_ACCREDITATION",
+    "conditions": [
+      "K01",
+      "K02",
+      "K03",
+      "K04",
+      "K05",
+      "K06",
+      "K07",
+      "K08",
+      "K09",
+      "K10",
+      "K11",
+      "K12",
+      "K13",
+      "K14",
+      "K15"
+    ],
+    "independent_second_review": "NOT_PERFORMED"
+  },
+  "corrective_application_paths": [
+    "SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261028_FRESH_SOURCEGRADED_GROK_CANDIDATE_R1/02_WHOLE_TRAJECTORY_EXECUTIVE_K01_K15_R2.md",
+    "SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261028_FRESH_SOURCEGRADED_GROK_CANDIDATE_R1/03_EXISTING_IDS_ATTENTION_CROSSWALK_R2.md",
+    "SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261028_FRESH_SOURCEGRADED_GROK_CANDIDATE_R1/04_PRIMARY_SOURCE_CODE_AND_REVIEW_SPOTCHECKS_R2.md",
+    "SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261028_FRESH_SOURCEGRADED_GROK_CANDIDATE_R1/05_K01_K15_INDEPENDENT_REVIEW_RESPONSE_R2.md"
+  ],
+  "source_grades": {
+    "Neo_requirements": "12/12 READMEs independently read at a47dca7; no adopted rule",
+    "Historic_mechanisms": "40/40 M READMEs independently read at a47dca7; original V3 source executed only historically by TD-R05",
+    "Top_view": "00 index + twelve companion files including both 09 and both 10, direct GitHub selected",
+    "Code": "BP2P4J product and severance; HQ300; B3AS independent review and repaired integration.py; S52 session and return; R15 static; TD-R05 historical audit",
+    "Theory": "SELECTIVE passages user supplied PDFs/texte; not complete monographs",
+    "Native": "NOT_RUN",
+    "Human": "NOT_RUN"
+  },
+  "priority_correction": {
+    "old_r1_section5": "WITHDRAWN_AS_PREMATURE_CAMPAIGN_RANKING",
+    "current_stage": "MAXIMUM_WHOLE_TRAJECTORY_TOP_VIEW_ADJUDICATION_BEFORE_CAMPAIGN",
+    "parked_SCI_P0_A": "NOT_LAUNCHED",
+    "parked_WORLD_P0_B": "NOT_LAUNCHED",
+    "worker_dispatch_by_candidate": 0
+  },
+  "signoff": {
+    "applicant": "NO_SELF_PASS",
+    "independent_review": "PENDING_R2_REVIEW",
+    "competent_human": "NOT_GRANTED",
+    "original_scientific_authorities": "UNMODIFIED"
+  }
 }
