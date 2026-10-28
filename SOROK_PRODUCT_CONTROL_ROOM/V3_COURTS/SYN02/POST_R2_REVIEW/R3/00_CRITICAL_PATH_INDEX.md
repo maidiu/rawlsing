@@ -8,6 +8,14 @@ After clarifying alternate trajectories versus copying current history, the user
 
 Root inspected the return and personally ran `PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests`: **21 passed in 8.76s**, including clock11 perception preservation, exact-field cold reopen, parent-suffix isolation, existing nested forks/rollback and manifest audit. Earlier statements below about no original edits, no model dispatch and pending authorization describe the preceding R2 checkpoint, not this newly authorized repair. Consumers pinned to original JOIN-E `7bf2da3` remain pinned; no silent source adoption occurred.
 
+## C12 remaining integrity repair candidate — 2026-10-28
+
+`C12_PATCH/c12-integrity-candidate-r1.patch`, SHA256 `8a4100cb4ca617a5e63136b6d3a015c6a0f3ddcaf842a3c04c169ee0fa6a84c6`, is an isolated two-file follow-up against JOIN-E `6022b1493`: J `bp4/store.py` and J `r26e/c12_integrity.py`. It binds new fork roots to exact inherited perception fields and row prefixes/parent root, rejects unverified legacy roots, and encloses parent snapshot capture plus copy in a nested-compatible SAVEPOINT. Existing original source, manifests, old receipts and consumer pins are unchanged. Applying it would also require truthful updates to those two original manifest entries, preserving prior blobs.
+
+Reused DeepSeek MAX session above. Initial external-directory tool permission refusal produced no artifact; a cross-directory continuation stalled with pending tools and was interrupted (exit130). Work then succeeded within a source-owned scratch directory. Root inspection required two corrections: capture reads moved inside SAVEPOINT, and injected copy failure moved after actual nonempty row insertion. Root personally ran the banked focused tests: **8 passed in 0.36s**. Cases include exact late perceptions, same-count substitution, root/parent tamper, legacy hold, nested/cold/suffix behavior, genuine partial-copy rollback, outer rollback and a second-connection append. `git apply --check` against unchanged `6022b1493` originals succeeds; all four base module hashes match. Full JOIN-E regression has not run against this candidate. No native/source-owner acceptance is claimed. Source application remains pending the exact owner scope; this artifact supplies a concrete reviewable patch rather than another abstract approval request.
+
+Current remote readback remains C9 `c0e5faa5`, alternate `1e99681f`, F0 `f645c922`, RM40 `6b31fd3b`; no returned/running commission was duplicated. F0, canonical actor/world source admission and irreversible batch-policy dependencies remain as listed below.
+
 ## Concise R2 handoff — preceding integration boundary
 
 Working sourcefree capability is banked on `agent/vozhd-sorok-20261026-v3-courts-foundation-r1`, implementation cut `2a38cd4ad86e33f15ac327dc199370f416b50a38`:
