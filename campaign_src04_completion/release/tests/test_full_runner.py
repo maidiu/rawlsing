@@ -152,3 +152,20 @@ def test_pinned_b_config_and_builder_are_exact():
     assert len(cfg.document["coordinate_slots"]) == 3
     assert runner.B_PINNED_COMMIT
     assert runner.B_BUILDER.endswith("build_numeric_domain_runtime_config")
+
+
+def test_native_pickle_stream_roundtrip_for_local_product(tmp_path):
+    cfg = load_source_config(runner.ROOT / "source_pre553_validation/SRC04/fixture.config.json")
+    stream = load_fixture_stream(runner.ROOT / "source_pre553_validation/SRC04/fixture.json")
+    selection = {
+        "selected_response_slots": runner._scope_from_accepted_selection()["accepted_complete_response_slots"][:3],
+        "selected_coordinate_slots": [1, 2],
+    }
+    slice_config, _ = runner._slice_config(cfg, selection)
+    release = build_validated_c11_release_from_config(slice_config, stream=stream)
+    path = tmp_path / "objects.pkl"
+    count, size, digest = runner._write_pickle_stream(path, release.public_objects)
+    assert count == len(release.public_objects)
+    assert size == path.stat().st_size
+    assert digest == hashlib.sha256(path.read_bytes()).hexdigest()
+    assert sum(1 for _ in runner._iter_pickle_stream(path)) == count

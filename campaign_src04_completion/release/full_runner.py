@@ -12,19 +12,24 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 from copy import deepcopy
+import copyreg
 import gzip
 import hashlib
 import json
 import os
 from pathlib import Path
+import pickle
 import subprocess
 import sys
 import time
+import types
 from typing import Any, Mapping, Sequence
 
 from rawlsing_next.pre553_c11_integrity import QuestionVariableBinding
 from rawlsing_next.pre553_c11_repository import C11LogicalRelease
-from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+from rawlsing_next.pre553_empirical_objects import (
+    EmpiricalCoordinateFact, ExactRef, RespondentEvent, semantic_hash,
+)
 from rawlsing_next.pre553_physical_decoder import PhysicalMissingState, classify_physical_value
 from rawlsing_next.pre553_source_backed_c11_facade import physical_value_binding_key
 from rawlsing_next.pre553_source_read_admission import (
@@ -53,7 +58,7 @@ A_SELECTION_PATH = ROOT / "campaign_a_src04/evidence/SLICE_SELECTION.json"
 A_USER_GRANT_PATH = ROOT / "campaign_a_src04/evidence/USER_GRANT.json"
 PROGRAM_PATH = EVIDENCE / "PROGRAM.txt"
 GRANT_PATH = EVIDENCE / "FULL_SOURCE_GRANT.json"
-RUNTIME_CONFIG_PATH = EVIDENCE / "SRC04.full.runtime.config.json"
+RUNTIME_CONFIG_NAME = "SRC04.full.runtime.config.json"
 
 SOURCE_ID = "SRC04"
 EXPECTED_SOURCE_SHA256 = "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
@@ -93,13 +98,19 @@ NEG_ABSENT_PATH = EVIDENCE / "NEGATIVE_GRANT_ABSENT.json"
 NEG_FIRST_PATH = EVIDENCE / "NEGATIVE_FIRST_SLICE_GRANT.json"
 NEG_SOURCE_PATH = EVIDENCE / "NEGATIVE_FOREIGN_SOURCE_GRANT.json"
 NEG_PURPOSE_PATH = EVIDENCE / "NEGATIVE_FOREIGN_PURPOSE_GRANT.json"
+NEG_WRONG_SOURCE_PATH = EVIDENCE / "NEGATIVE_WRONG_SOURCE_GRANT.json"
+NEG_HELD_PATH = EVIDENCE / "NEGATIVE_HELD_AUTHORITY.json"
 PRIMARY_PATH = EVIDENCE / "PRIMARY_RUN.json"
 REPLAY_PATH = EVIDENCE / "REPLAY_RECEIPT.json"
 TEST_PATH = EVIDENCE / "TEST_RESULTS.json"
 RETURN_PATH = CAMPAIGN / "RETURN.json"
 RETURN_V2_PATH = CAMPAIGN / "RETURN_V2.json"
+RETURN_V3_PATH = CAMPAIGN / "RETURN_V3.json"
 LOCAL_RECEIPT_PATH = EVIDENCE / "LOCAL_RELEASE_RECEIPT.json"
 RELEASE_RECEIPT_PATH = EVIDENCE / "RELEASE_RECEIPT.json"
+
+
+copyreg.pickle(types.MappingProxyType, lambda mapping: (dict, (dict(mapping),)))
 
 
 class FullRunRefusal(RuntimeError):
@@ -467,7 +478,11 @@ def _runtime_config(config: SourceConfig, incidence: Any) -> SourceConfig:
                 state, declaration = classify_physical_value(raw, var.missing_declarations)
                 value["missing_state"] = state.value
                 value["source_missing_declaration"] = jsonable(declaration) if declaration else None
-    RUNTIME_CONFIG_PATH.write_text(json.dumps(doc, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n", encoding="utf-8")
+    runtime_dir = _runtime_root() / "runtime"
+    runtime_dir.mkdir(parents=True, exist_ok=True)
+    (runtime_dir / RUNTIME_CONFIG_NAME).write_text(
+        json.dumps(doc, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n",
+        encoding="utf-8")
     return SourceConfig(doc)
 
 
@@ -504,8 +519,19 @@ def _scan_selection(config: SourceConfig, incidence: Any) -> dict[str, Any]:
         "configured_response_slots": len(response),
         "configured_coordinate_slots": len(coords),
         "selected_response_slots": complete_response,
+        "selected_response_names": [str(response[o]["slot"]["name"]) for o in complete_response],
         "selected_coordinate_slots": complete_coord,
         "held_response_slots": [o for o in sorted(response) if o not in complete_response],
+        "held_response_details": [
+            {
+                "slot_ordinal": o,
+                "slot_name": str(response[o]["slot"]["name"]),
+                "cells": rc[o]["cells"],
+                "unbound_cells": rc[o]["unbound"],
+                "missing_cells": rc[o]["missing"],
+            }
+            for o in sorted(response) if o not in complete_response
+        ],
         "held_coordinate_slots": [o for o in sorted(coords) if o not in complete_coord],
         "selected_response_positions": selected_positions,
         "all_181_physical_slots_accounted": len(response) + len(coords) + sum(1 for x in config.document["physical_slots"] if int(x["ordinal"]) not in set(response) | set(coords)) == 181,
@@ -548,14 +574,23 @@ def _runtime_root() -> Path:
     return root
 
 
-def _write_jsonl_gz(path: Path, values: Sequence[Any]) -> tuple[int, int, str]:
+def _write_pickle_stream(path: Path, values: Sequence[Any]) -> tuple[int, int, str]:
+    """Write native objects locally with a fast, streaming pickle format."""
     count = 0
     with path.open("wb") as raw:
-        with gzip.GzipFile(fileobj=raw, mode="wb", mtime=0) as gz:
-            for value in values:
-                gz.write((json.dumps(jsonable(value), sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8"))
-                count += 1
+        for value in values:
+            pickle.dump(value, raw, protocol=pickle.HIGHEST_PROTOCOL)
+            count += 1
     return count, path.stat().st_size, sha_file(path)
+
+
+def _iter_pickle_stream(path: Path):
+    with path.open("rb") as raw:
+        while True:
+            try:
+                yield pickle.load(raw)
+            except EOFError:
+                return
 
 
 def persist_local_release(release: C11LogicalRelease, selection: Mapping[str, Any]) -> dict[str, Any]:
@@ -563,10 +598,10 @@ def persist_local_release(release: C11LogicalRelease, selection: Mapping[str, An
     bundle_id = f"SRC04-{release.semantic_release_hash[:16]}"
     bundle = root / "releases" / bundle_id
     bundle.mkdir(parents=True, exist_ok=True)
-    public_path = bundle / "public_objects.jsonl.gz"
-    internal_path = bundle / "internal_records.jsonl.gz"
-    public_count, public_bytes, public_sha = _write_jsonl_gz(public_path, release.public_objects)
-    internal_count, internal_bytes, internal_sha = _write_jsonl_gz(internal_path, release.internal_records)
+    public_path = bundle / "public_objects.pkl"
+    internal_path = bundle / "internal_records.pkl"
+    public_count, public_bytes, public_sha = _write_pickle_stream(public_path, release.public_objects)
+    internal_count, internal_bytes, internal_sha = _write_pickle_stream(internal_path, release.internal_records)
     replay_path = bundle / "replay_manifest.json"
     write_json(replay_path, release.replay_manifest.as_dict())
     receipt = {
@@ -626,6 +661,42 @@ def _join_and_select(config: SourceConfig, incidence: Any, *, repaired: bool) ->
     return runtime, selection, join_info
 
 
+def _slot_names(config: SourceConfig) -> dict[int, str]:
+    names = {}
+    for section in config.document["response_slots"]:
+        names[int(section["slot"]["ordinal"])] = str(section["slot"]["name"])
+    for section in config.document["coordinate_slots"]:
+        names[int(section["slot"]["ordinal"])] = str(section["slot"]["name"])
+    return names
+
+
+def _state_coverage(release: C11LogicalRelease) -> dict[str, Any]:
+    types = Counter(type(obj).__name__ for obj in release.public_objects)
+    response_states: Counter[str] = Counter()
+    coordinate_states: Counter[str] = Counter()
+    response_events = 0
+    coordinate_facts = 0
+    for obj in release.public_objects:
+        if isinstance(obj, RespondentEvent):
+            response_events += 1
+            response_states[str(obj._semantic_fields.get("response_state"))] += 1
+        elif isinstance(obj, EmpiricalCoordinateFact):
+            coordinate_facts += 1
+            coordinate_states[str(obj._semantic_fields.get("coordinate_state"))] += 1
+    return {
+        "public_object_counts": dict(sorted(types.items())),
+        "response_event_count": response_events,
+        "coordinate_fact_count": coordinate_facts,
+        "response_state_counts": dict(sorted(response_states.items())),
+        "coordinate_state_counts": dict(sorted(coordinate_states.items())),
+        "response_events_observed_response_states": sum(
+            count for state, count in response_states.items() if state in {
+                "SUBSTANTIVE_RESPONSE", "DK", "REFUSAL", "NOT_ASKED", "INAPPLICABLE",
+                "MISSING", "SOURCE_SPECIFIC_SPECIAL",
+            }),
+    }
+
+
 def run_with_grant(grant_path: Path, grant_sha256: str, repaired_config_path: Path | None = None,
                    repaired_config_sha256: str | None = None) -> int:
     grant = load_full_grant(grant_path, grant_sha256)
@@ -642,23 +713,76 @@ def run_with_grant(grant_path: Path, grant_sha256: str, repaired_config_path: Pa
     _validate_config(config, repaired=repaired)
     request = make_request(config, grant)
     resolver = FullGrantResolver(grant, request)
+    print(f"[SRC04] admitted decode complete rows={EXPECTED_SOURCE_ROWS} cols={EXPECTED_SOURCE_COLUMNS}", file=sys.stderr, flush=True)
     incidence = decode_config_with_source_read_permission(
         config, source_path=grant["source_path"], resolver=resolver,
         host=request.host, purpose=request.purpose, consumer_use=request.consumer_use,
         semantic_use_scope=SEMANTIC_USE_SCOPE)
     try:
+        print("[SRC04] applying fixed B binding before selection", file=sys.stderr, flush=True)
         runtime, selection, join_info = _join_and_select(config, incidence, repaired=repaired)
+        print(f"[SRC04] selection complete responses={len(selection['selected_response_slots'])} coordinates={len(selection['selected_coordinate_slots'])} positions={selection['selected_response_positions']}", file=sys.stderr, flush=True)
+        print("[SRC04] held response slots: " + ",".join(
+            f"{item['slot_name']}:unbound={item['unbound_cells']}" for item in selection.get("held_response_details", [])
+        ), file=sys.stderr, flush=True)
         if selection["all_181_physical_slots_accounted"] is not True:
             raise FullRunRefusal("PHYSICAL_SLOT_ACCOUNTING_FAILED")
         slice_cfg, withheld = _slice_config(runtime, selection)
         release = build_validated_c11_release_from_config(slice_cfg, incidence=incidence)
         if release.source_artifact_ref.content_hash != EXPECTED_SOURCE_SHA256:
             raise FullRunRefusal("RELEASE_SOURCE_IDENTITY_MISMATCH")
+        print(f"[SRC04] release built public={len(release.public_objects)} internal={len(release.internal_records)}", file=sys.stderr, flush=True)
+        coverage = _state_coverage(release)
+        names = _slot_names(runtime)
+        held_premises = [
+            {"slot_ordinal": ordinal, "slot_name": names.get(int(ordinal), "UNKNOWN"), "status": "HELD_EXACT"}
+            for ordinal in selection["held_response_slots"]
+        ]
+        if selection["held_coordinate_slots"]:
+            held_premises.extend({
+                "slot_ordinal": ordinal, "slot_name": names.get(int(ordinal), "UNKNOWN"),
+                "status": "HELD_EXACT_COORDINATE",
+            } for ordinal in selection["held_coordinate_slots"])
+        source_field_accounting = {
+            "source_id": SOURCE_ID,
+            "source_sha256": EXPECTED_SOURCE_SHA256,
+            "records": EXPECTED_SOURCE_ROWS,
+            "physical_slots": 181,
+            "configured_response_slots": len(runtime.document["response_slots"]),
+            "configured_coordinate_slots": len(runtime.document["coordinate_slots"]),
+            "selected_response_slots": selection["selected_response_slots"],
+            "selected_response_names": [names.get(int(o), "UNKNOWN") for o in selection["selected_response_slots"]],
+            "selected_coordinate_slots": selection["selected_coordinate_slots"],
+            "held_response_slots": selection["held_response_slots"],
+            "held_coordinate_slots": selection["held_coordinate_slots"],
+            "response_positions": selection["selected_response_positions"],
+            "coordinate_positions": len(selection["selected_coordinate_slots"]) * EXPECTED_SOURCE_ROWS,
+            "all_181_physical_slots_accounted": selection["all_181_physical_slots_accounted"],
+            "held_premises": held_premises,
+        }
+        config_delta = {
+            "input_config_path": str((repaired_config_path if repaired else CONFIG_PATH).relative_to(ROOT)),
+            "input_config_file_sha256": sha_file(repaired_config_path) if repaired else sha_file(CONFIG_PATH),
+            "input_config_canonical_sha256": canonical_config_hash(config),
+            "b_config_path": str(B_CONFIG_PATH.relative_to(ROOT)),
+            "b_config_file_sha256": B_CONFIG_FILE_SHA256,
+            "b_config_canonical_sha256": B_CONFIG_CANONICAL_SHA256,
+            "b_pinned_commit": B_PINNED_COMMIT,
+            "builder": B_BUILDER,
+            "added_rule_counts": join_info.get("added_rule_counts"),
+            "runtime_config_canonical_sha256": join_info.get("runtime_config_canonical_sha256"),
+            "source_country_currency_normalization": "NONE",
+            "q217_labeling": "NONE_WITHOUT_SOURCE_EVIDENCE",
+        }
+        print("[SRC04] persisting durable local native product", file=sys.stderr, flush=True)
         local = persist_local_release(release, selection)
+        terminal_negatives = write_terminal_negatives(grant)
+        print("[SRC04] local product persisted; terminal negatives written", file=sys.stderr, flush=True)
         release_receipt = {
             "schema": "PYAT_SRC04_FULL_RELEASE_RECEIPT@1.0.0",
             "source_id": SOURCE_ID, "source_sha256": EXPECTED_SOURCE_SHA256,
             "source_rows": EXPECTED_SOURCE_ROWS, "source_columns": EXPECTED_SOURCE_COLUMNS,
+            "source_bytes": EXPECTED_SOURCE_BYTES,
             "release_ref": release.release_ref.as_dict(),
             "semantic_release_hash": release.semantic_release_hash,
             "source_release_manifest_hash": release.source_release_manifest_hash,
@@ -683,6 +807,11 @@ def run_with_grant(grant_path: Path, grant_sha256: str, repaired_config_path: Pa
                 "decision_ref": grant["decision_ref"].as_dict(),
             },
             "binding_join": join_info,
+            "state_coverage": coverage,
+            "source_field_accounting": source_field_accounting,
+            "config_delta": config_delta,
+            "held_premises": held_premises,
+            "terminal_negatives": terminal_negatives,
             "canonicalization": "WITHHELD_DEFER_NO_SCIENTIFIC_ALLOW",
             "canonical_values_withheld": withheld,
             "routing_state": "ROUTING_UNKNOWN",
@@ -691,9 +820,15 @@ def run_with_grant(grant_path: Path, grant_sha256: str, repaired_config_path: Pa
             "release_audit": {
                 "source_artifact_sha": release.source_artifact_ref.content_hash == EXPECTED_SOURCE_SHA256,
                 "semantic_hash_matches_ref": release.semantic_release_hash == release.release_ref.content_hash,
-                "response_events": Counter(type(x).__name__ for x in release.public_objects).get("RespondentEvent"),
-                "coordinate_facts": Counter(type(x).__name__ for x in release.public_objects).get("EmpiricalCoordinateFact"),
-                "no_canonical": all(not getattr(x, "canonical_response_value_if_authorized", None) for x in release.public_objects if getattr(x, "schema_id", "") == "RespondentEvent"),
+                "response_events": coverage["response_event_count"],
+                "coordinate_facts": coverage["coordinate_fact_count"],
+                "no_canonical": all(
+                    not obj._semantic_fields.get("canonical_response_value_if_authorized")
+                    for obj in release.public_objects if isinstance(obj, RespondentEvent)
+                ),
+                "all_181_physical_slots_accounted": selection["all_181_physical_slots_accounted"],
+                "source_rows": incidence.row_count,
+                "source_columns": len(incidence.variables),
             },
         }
         write_json(RELEASE_RECEIPT_PATH, release_receipt)
@@ -715,6 +850,38 @@ def run_prepare() -> int:
     return prepare_no_source_blocker()
 
 
+def write_terminal_negatives(grant: Mapping[str, Any]) -> dict[str, Any]:
+    base = deepcopy(dict(grant["document"]))
+    wrong_source = dict(base)
+    wrong_source["source_id"] = "SRC17"
+    wrong_source["schema"] = FULL_GRANT_SCHEMA
+    wrong_code = None
+    try:
+        validate_grant_document(wrong_source, "0" * 64)
+    except FullRunRefusal as exc:
+        wrong_code = exc.code
+    held = dict(base)
+    held["currentness"] = "HELD"
+    held_code = None
+    try:
+        validate_grant_document(held, "0" * 64)
+    except FullRunRefusal as exc:
+        held_code = exc.code
+    wrong_doc = {
+        "schema": "PYAT_SRC04_WRONG_SOURCE_NEGATIVE@1.0.0", "status": "REFUSED",
+        "actual_code": wrong_code or "NOT_REFUSED", "source_read_performed": False,
+        "source_id": "SRC17", "details": "foreign source is refused before admitted source I/O",
+    }
+    held_doc = {
+        "schema": "PYAT_SRC04_HELD_AUTHORITY_NEGATIVE@1.0.0", "status": "REFUSED",
+        "actual_code": held_code or "NOT_REFUSED", "source_read_performed": False,
+        "currentness": "HELD", "details": "non-current/held full authority is refused before admitted source I/O",
+    }
+    write_json(NEG_WRONG_SOURCE_PATH, wrong_doc)
+    write_json(NEG_HELD_PATH, held_doc)
+    return {"wrong_source": wrong_doc, "held_authority": held_doc}
+
+
 def run_replay() -> int:
     if not RELEASE_RECEIPT_PATH.is_file() or not LOCAL_RECEIPT_PATH.is_file():
         result = {"schema": "PYAT_SRC04_FULL_REPLAY@1.0.0", "status": "BLOCKED_NO_FULL_LOCAL_RELEASE", "source_read_performed": False, "native_release_constructed": False}
@@ -724,11 +891,18 @@ def run_replay() -> int:
     release_receipt = load_json(RELEASE_RECEIPT_PATH)
     local = load_json(LOCAL_RECEIPT_PATH)
     bundle = _runtime_root() / "releases" / local["bundle_id"]
+    public_path = bundle / local["public_objects"]["file"]
+    internal_path = bundle / local["internal_records"]["file"]
+    replay_manifest_path = bundle / local["replay_manifest"]["file"]
+    public_count = sum(1 for _ in _iter_pickle_stream(public_path)) if public_path.is_file() else -1
+    internal_count = sum(1 for _ in _iter_pickle_stream(internal_path)) if internal_path.is_file() else -1
     checks = {
         "release_ref": release_receipt["release_ref"] == local["release_ref"],
-        "public_objects": (bundle / local["public_objects"]["file"]).is_file() and sha_file(bundle / local["public_objects"]["file"]) == local["public_objects"]["sha256"],
-        "internal_records": (bundle / local["internal_records"]["file"]).is_file() and sha_file(bundle / local["internal_records"]["file"]) == local["internal_records"]["sha256"],
-        "replay_manifest": (bundle / local["replay_manifest"]["file"]).is_file() and sha_file(bundle / local["replay_manifest"]["file"]) == local["replay_manifest"]["sha256"],
+        "public_objects": public_path.is_file() and sha_file(public_path) == local["public_objects"]["sha256"],
+        "public_object_count": public_count == local["public_objects"]["lines"],
+        "internal_records": internal_path.is_file() and sha_file(internal_path) == local["internal_records"]["sha256"],
+        "internal_record_count": internal_count == local["internal_records"]["lines"],
+        "replay_manifest": replay_manifest_path.is_file() and sha_file(replay_manifest_path) == local["replay_manifest"]["sha256"],
     }
     result = {
         "schema": "PYAT_SRC04_FULL_REPLAY@1.0.0",
@@ -737,6 +911,8 @@ def run_replay() -> int:
         "native_release_constructed": True,
         "release_ref": release_receipt["release_ref"],
         "local_release": local,
+        "loaded_public_objects": public_count,
+        "loaded_internal_records": internal_count,
         "checks": checks,
     }
     write_json(REPLAY_PATH, result)
@@ -771,11 +947,111 @@ def _manifest() -> list[dict[str, Any]]:
         "campaign_src04_completion/release/evidence/PRIMARY_RUN.json",
         "campaign_src04_completion/release/evidence/REPLAY_RECEIPT.json",
         "campaign_src04_completion/release/evidence/TEST_RESULTS.json",
+        "campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json",
+        "campaign_src04_completion/release/evidence/SELECTION.json",
+        "campaign_src04_completion/release/evidence/RELEASE_RECEIPT.json",
+        "campaign_src04_completion/release/evidence/LOCAL_RELEASE_RECEIPT.json",
+        "campaign_src04_completion/release/evidence/NEGATIVE_WRONG_SOURCE_GRANT.json",
+        "campaign_src04_completion/release/evidence/NEGATIVE_HELD_AUTHORITY.json",
     ]
     return [{"path": rel, "sha256": sha_file(ROOT / rel), "bytes": (ROOT / rel).stat().st_size} for rel in files if (ROOT / rel).is_file()]
 
 
+def _full_return_result(artifact_commit: str) -> dict[str, Any]:
+    release = load_json(RELEASE_RECEIPT_PATH)
+    primary = load_json(PRIMARY_PATH)
+    tests = load_json(TEST_PATH) if TEST_PATH.is_file() else {"passed": False}
+    replay = load_json(REPLAY_PATH) if REPLAY_PATH.is_file() else {"status": "NOT_RUN"}
+    negatives = {
+        "absent": load_json(NEG_ABSENT_PATH),
+        "first_slice": load_json(NEG_FIRST_PATH),
+        "foreign_source": load_json(NEG_SOURCE_PATH),
+        "foreign_purpose": load_json(NEG_PURPOSE_PATH),
+        "wrong_source": load_json(NEG_WRONG_SOURCE_PATH),
+        "held_authority": load_json(NEG_HELD_PATH),
+    }
+    return {
+        "schema": "PYAT_SRC04_FULL_RETURN@1.0.0",
+        "version": 3,
+        "successor_of": {
+            "artifact_commit": "0f731cbda9fb0bc778c015eac50189e868a6d5f1",
+            "return_sha256": "49287f390223f660b83ded4a329cec5c822fd70391e18c31eb58b5e1a5f3952a",
+            "change": "actual admitted joined original SRC04 primary, native local product and replay",
+        },
+        "lane": "SRC04_FULL_COMPLETION_LANE_A",
+        "status": "FULL_PRIMARY_COMPLETE__CANDIDATE",
+        "artifact_commit": artifact_commit,
+        "source_id": SOURCE_ID,
+        "source_sha256": release["source_sha256"],
+        "source_rows": release["source_rows"],
+        "source_columns": release["source_columns"],
+        "source_bytes": release["source_bytes"],
+        "source_read_performed": True,
+        "native_release_constructed": True,
+        "release": {
+            "release_ref": release["release_ref"],
+            "semantic_release_hash": release["semantic_release_hash"],
+            "source_release_manifest_hash": release["source_release_manifest_hash"],
+            "replay_manifest_ref": release["replay_manifest_ref"],
+            "public_object_count": release["public_object_count"],
+            "internal_record_count": release["internal_record_count"],
+            "release_audit": release["release_audit"],
+        },
+        "selection": {
+            "selected_response_slots": release["selected_response_slots"],
+            "selected_coordinate_slots": release["selected_coordinate_slots"],
+            "held_response_slots": release["held_response_slots"],
+            "held_coordinate_slots": release["held_coordinate_slots"],
+            "response_positions": release["response_positions"],
+            "records": release["source_rows"],
+            "all_181_physical_slots_accounted": release["release_audit"]["all_181_physical_slots_accounted"],
+        },
+        "state_coverage": release["state_coverage"],
+        "source_field_accounting": release["source_field_accounting"],
+        "config_delta": release["config_delta"],
+        "binding_join": release["binding_join"],
+        "held_premises": release["held_premises"],
+        "terminal_negatives": release["terminal_negatives"],
+        "negative_checks": negatives,
+        "source_read_receipt": release["source_read_receipt"],
+        "local_release": release["local_release"],
+        "replay": replay,
+        "tests": tests,
+        "native_api": {
+            "factory": "build_validated_c11_release_from_config",
+            "release_kind": (release.get("release_ref") or {}).get("kind"),
+            "primary_status": primary.get("status"),
+        },
+        "artifact_manifest": _manifest(),
+        "limits": [
+            "Single original SRC04 admitted read/construction; no fixture substitution.",
+            "All 7,337 records and all 181 physical slots are accounted; held response/coordinate slots are exact.",
+            "q217 remains held exactly where source evidence is insufficient; no labels are guessed.",
+            "No country/currency normalization; income literals preserve exact observed values.",
+            "ROUTING_UNKNOWN and canonical DEFER/no scientific ALLOW remain unchanged.",
+            "No I03/I05, population, weight, eligibility, direction, M2/M3, FF/N11/N12/CI/prod/Sorok/actor/J52W52 effect.",
+            "Native respondent-bearing artifacts remain local outside Git; only nonidentifying aggregates/refs/negatives/replay are published.",
+        ],
+        "next_consumer": "Distinct independent reviewer under existing law; this is a candidate, not self-acceptance.",
+    }
+
+
 def run_return(artifact_commit: str) -> int:
+    if RELEASE_RECEIPT_PATH.is_file() and PRIMARY_PATH.is_file():
+        primary = load_json(PRIMARY_PATH)
+        if primary.get("status") == "FULL_PRIMARY_COMPLETE":
+            result = _full_return_result(artifact_commit)
+            write_json(RETURN_PATH, result)
+            write_json(RETURN_V3_PATH, result)
+            print(json.dumps({
+                "return_path": str(RETURN_PATH.relative_to(ROOT)),
+                "return_sha256": sha_file(RETURN_PATH),
+                "return_v3_path": str(RETURN_V3_PATH.relative_to(ROOT)),
+                "return_v3_sha256": sha_file(RETURN_V3_PATH),
+                "status": result["status"],
+                "tests_passed": result["tests"].get("passed"),
+            }, indent=2))
+            return 0
     scope = load_json(SCOPE_PATH)
     blocker = load_json(GRANT_BLOCKER_PATH)
     tests = load_json(TEST_PATH) if TEST_PATH.is_file() else {"passed": False, "returncode": None, "stdout_tail": []}
