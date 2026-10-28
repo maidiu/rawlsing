@@ -1,0 +1,34 @@
+{
+  "schema": "PYAT_SRC04_CONSUMER_D_INTAKE_V1",
+  "candidate": "b6be2c62064ce696d4f8f966c3bc64fd46d63b43",
+  "branch": "agent/pyat-src04-consumers-20261028",
+  "direct_remote_verified": true,
+  "manifest_hashes_bytes_verified": 24,
+  "write_terrain_verified": true,
+  "disposition": "REVISE_ACTUAL_NATIVE_CONSUMER_PATH_NOT_EXERCISED",
+  "demonstrated_scope": "Retained B0 SRC09 receipt-to-OC01 policy engineering only; no fresh native positive or SRC04 original empirical consumption",
+  "defects": [
+    {
+      "path": "campaign_src04_completion/consumers/consumer.py:363",
+      "finding": "fact_authority_values(fact) is undefined; declared helper is authority_fact_values. Native positive path raises NameError after source evaluation."
+    },
+    {
+      "path": "campaign_src04_completion/consumers/consumer.py:385",
+      "finding": "source_value_sensitive=True is unconditional; no input mutation/comparison evidence supports it."
+    },
+    {
+      "path": "campaign_src04_completion/consumers/consumer.py:295",
+      "finding": "Native branch re-executes I03 then invokes OC01 with refs; accepted evidence tests only retained receipt and fixture refusal. Existing actual value-consuming publication/resolution or other permitted recipient edge remains unproved and must be concretely wired; OC01 policy receipt alone is not the directive5 value-sensitive consumer result."
+    }
+  ],
+  "original_workload_issued": false,
+  "next": "Same D owner fixes exact native defects and exercises real code path under clearly nonrespondent engineering scope; original consumer proof remains pending lawful A/C products and applicable use authority. No new general inquiry/worker/source read.",
+  "heartbeat": "PAUSED",
+  "continuation": {
+    "pid": 70920,
+    "observer_pid": 71210,
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review/.r61/src04-d-native-repair",
+    "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+    "commission": "fb84dc98a594b1145ece3c6d1dfc9008e8e95ff4"
+  }
+}
