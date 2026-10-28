@@ -1,0 +1,49 @@
+{
+  "workers": [
+    {
+      "task": "D1_SRC04_TALLY_FOCUSED_RECHECK_RESUME",
+      "session": "ses_e81fc42a8ffeAbvo6M8l4YG4nK",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review",
+      "old_pid": 30091,
+      "old_log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review/.r61/d1-focused-recheck",
+      "log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review/.r61/d1-focused-resume-retry",
+      "supervisor": 45002,
+      "failed_resume": {
+        "log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review/.r61/d1-focused-resume",
+        "exit_code": 1,
+        "error": "UnexpectedStatus500",
+        "pid": 44684
+      },
+      "pid": 45003,
+      "started_utc": "2026-10-28T03:15:57.664728+00:00",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review/.r61/d1-focused-resume-retry/completion.json",
+      "model": "opencode-go/deepseek-v4.1-flash#max",
+      "state": "TERMINAL_OR_MISSING",
+      "terminal": {
+        "pid": 45003,
+        "exit_code": 1,
+        "finished_utc": "2026-10-28T03:15:57.932395+00:00"
+      }
+    },
+    {
+      "task": "D2_SRC17_C11_INDEPENDENT_REVIEW_RESUME",
+      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review",
+      "old_pid": 26488,
+      "old_log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review/.r61/d2-review-resume",
+      "log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review/.r61/d2-review-resume2",
+      "supervisor": 44681,
+      "pid": 44685,
+      "started_utc": "2026-10-28T03:15:16.193883+00:00",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review/.r61/d2-review-resume2/completion.json",
+      "model": "opencode-go/deepseek-v4.1-flash#max",
+      "state": "RUNNING"
+    }
+  ],
+  "free_space_observed": "10-11GiB",
+  "partial_evidence_preserved": true,
+  "old_handles_missing": true,
+  "no_surviving_old_cwd_processes": true,
+  "no_implementation_or_original_release_loss": true,
+  "heartbeat": "PAUSED"
+}

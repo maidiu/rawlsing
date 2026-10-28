@@ -1530,47 +1530,46 @@
     "approved_utc": "2026-10-24T14:10:45.118294+00:00",
     "canonical_prior": "8db787b2760e797e359b06cdbadbd5d050b6939a"
   },
-  "next_action": "Intake exact D1 repair and independent D2 review; no scope or authority expansion.",
+  "next_action": "Intake resumed review results; reuse partial evidence. Preserve original execution limits and separately typed D1 tally; no issued I03 claim.",
   "active_workers": [
     {
-      "task": "D2_SRC17_C11_INDEPENDENT_REVIEW",
-      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
-      "pid": 26488,
-      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review/.r61/d2-review-resume/completion.json",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review",
-      "candidate": "5b1b9bd5f04f0456eac319264a6f2b64d4e87038",
-      "hq_hashes_verified": 18,
-      "hq_tests": "6 passed in1.37s",
-      "qualification": "Existing LiTS source-native C11 worker; no D2 authorship; separate from D1 reviewer",
-      "author_release_hash": "2f81b527ba1a62ecb79c7cc858063d60a10826a91af7d689606ed83e6bbd039e",
-      "author_rows": 1504,
-      "author_response_fields": 258,
-      "author_coordinates": 2,
-      "state": "RUNNING_RESUMED_AFTER_ACTUAL_TERMINAL_CHECKOUT_FAILURE",
-      "failed_attempt": {
-        "pid": 25263,
-        "exit_code": 130,
-        "reason": "Fresh Git checkout failed ENOSPC; stopped before substantive review",
-        "evidence": "/private/tmp/d2-src17-review-failed-checkout-20261027"
+      "task": "D1_SRC04_TALLY_FOCUSED_RECHECK_RESUME",
+      "session": "ses_e81fc42a8ffeAbvo6M8l4YG4nK",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review",
+      "old_pid": 30091,
+      "old_log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review/.r61/d1-focused-recheck",
+      "log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review/.r61/d1-focused-resume-retry",
+      "supervisor": 45002,
+      "failed_resume": {
+        "log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review/.r61/d1-focused-resume",
+        "exit_code": 1,
+        "error": "UnexpectedStatus500",
+        "pid": 44684
       },
-      "disk_repair": "Reversibly sparse-thinned nine clean completed R157 lane checkouts; all commits and untracked evidence preserved; free space observed2.4GiB before sparse reviewer construction",
-      "authority_observation": "Author disclosed early authorized-path ls metadata listing before admission; review must retain actual history",
-      "heartbeat": "PAUSED"
+      "pid": 45003,
+      "started_utc": "2026-10-28T03:15:57.664728+00:00",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review/.r61/d1-focused-resume-retry/completion.json",
+      "model": "opencode-go/deepseek-v4.1-flash#max",
+      "state": "TERMINAL_OR_MISSING",
+      "terminal": {
+        "pid": 45003,
+        "exit_code": 1,
+        "finished_utc": "2026-10-28T03:15:57.932395+00:00"
+      }
     },
     {
-      "task": "D1_SRC04_TALLY_FOCUSED_RECHECK",
-      "session": "ses_e81fc42a8ffeAbvo6M8l4YG4nK",
-      "pid": 30091,
-      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review/.r61/d1-focused-recheck/completion.json",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review",
-      "repair_candidate": "e1a57513196be0af1c68ae66d569e8c2d39a2fc1",
-      "review_join": "af18287a5a5c3a01f0ce993b43e6808aad701b6a",
-      "repair_remote_verified": true,
-      "hq_artifact_hashes_verified": 27,
-      "author_tests": "9 passed in102.84s",
-      "unchanged_product_sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
-      "scope": "D1-D01/D02/D03 changed boundary only; prior independently recomputed counts preserved",
-      "heartbeat": "PAUSED"
+      "task": "D2_SRC17_C11_INDEPENDENT_REVIEW_RESUME",
+      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review",
+      "old_pid": 26488,
+      "old_log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review/.r61/d2-review-resume",
+      "log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review/.r61/d2-review-resume2",
+      "supervisor": 44681,
+      "pid": 44685,
+      "started_utc": "2026-10-28T03:15:16.193883+00:00",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review/.r61/d2-review-resume2/completion.json",
+      "model": "opencode-go/deepseek-v4.1-flash#max",
+      "state": "RUNNING"
     }
   ],
   "r98_browser_handoff": {
