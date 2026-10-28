@@ -1533,18 +1533,6 @@
   "next_action": "Intake finite SRC04 full-completion terminal events; authenticate full-source grant when user replies and supply exact grant to existing A/B sessions without duplicating work; C derives native observed-operation contract; D joins permitted native products. No timed polling.",
   "active_workers": [
     {
-      "task": "SRC04_FULL_QUALIFIED_RELEASE",
-      "lane": "A",
-      "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "pid": 64173,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-observed-tally",
-      "branch": "agent/pyat-src04-full-release-20261028",
-      "commission_tip": "40c0221f390b9fb169b52b9fb49953decd4b455a",
-      "state": "NATIVE_PROCESS_LAUNCHED_FIRST_TOOL_PENDING",
-      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-observed-tally/.r61/src04-full-20261028",
-      "first_tool_verified": false
-    },
-    {
       "task": "SRC04_REMAINING_NUMERIC_DOMAIN_BINDING",
       "lane": "B",
       "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
@@ -3555,5 +3543,15 @@
   "d1_tally_acceptance": "PYAT_CONTROL_ROOM/D1_SRC04_TALLY_SCOPED_ACCEPTANCE.json",
   "d1d2_next_edge_disposition": "PYAT_CONTROL_ROOM/D1D2_NEXT_EDGE_DISPOSITION.json",
   "src04_full_completion": "PYAT_CONTROL_ROOM/SRC04_FULL_COMPLETION_LAUNCHES.json",
-  "src04_binding_intake": "PYAT_CONTROL_ROOM/SRC04_FIELD_REPAIR_B_INTAKE.json"
+  "src04_binding_intake": "PYAT_CONTROL_ROOM/SRC04_FIELD_REPAIR_B_INTAKE.json",
+  "src04_full_release_candidate": "PYAT_CONTROL_ROOM/SRC04_FULL_RELEASE_A_INTAKE.json",
+  "waiting_lanes": {
+    "SRC04_A": {
+      "state": "WAITING_EXISTING_PENDING_USER_FULL_SOURCE_GRANT",
+      "candidate": "b5bfadc06ede692bd4b4d6fad94de5f4c6da351f",
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-observed-tally",
+      "next": "Sameauthor primary fullsource construction after exact grant; no activeprocess/no polling"
+    }
+  }
 }
