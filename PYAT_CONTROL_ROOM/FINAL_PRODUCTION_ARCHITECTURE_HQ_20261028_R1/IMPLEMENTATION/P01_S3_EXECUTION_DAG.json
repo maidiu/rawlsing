@@ -1,0 +1,247 @@
+{
+  "schema": "PYAT_P01_S3_EXECUTION_DAG@1.0.0",
+  "as_of": "2026-10-28",
+  "repo": "maidiu/rawlsing",
+  "control_sha": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "design_branch": "agent/pyat-final-production-architecture-hq-20261028-r1",
+  "engineering_execution_authorized": false,
+  "original_source_execution_authorized_by_this_design": false,
+  "selected_architecture": "SOURCE_AUTHORITATIVE_HYBRID_I02_CERTIFIED_COMPACT_EXECUTION_VIEW",
+  "decision_owner": "Browser Architecture HQ; code execution owner Codex PYAT HQ under actual permission",
+  "status": "CODE_READY_DESIGN_ONLY__NO_NEW_CODE",
+  "format_documents": [
+    "DESIGN/P01_S3_CODE_OWNER_AND_INTERFACE_SPEC_R1.md",
+    "DESIGN/P01_S3_VALIDATION_JOURNAL_PHYSICAL_SCHEMA_AND_ATOMICITY_R1.md",
+    "DESIGN/P01_S3_ACCEPTANCE_AND_DIFFERENTIAL_MATRIX_R1.md",
+    "CODEX_BUILD_ORDERS/P01_S3_BUILD_A_FOUNDATIONS.md",
+    "CODEX_BUILD_ORDERS/P01_S3_BUILD_B_CONSUMERS.md"
+  ],
+  "tickets": [
+    {
+      "id": "B00",
+      "name": "Goldens",
+      "files": [
+        "rawlsing_next/tests/test_pre553_c11_repository_ingest.py",
+        "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+        "rawlsing_next/tests/test_pre553_c11_streaming_parity.py"
+      ],
+      "hard_dependencies": [],
+      "tests": [
+        "T01",
+        "T06"
+      ],
+      "author": "Codex qualified engineering under one editor per collision group",
+      "reviewer": "Independent, not own reviewer",
+      "status": "DESIGN_SPEC_ONLY_NOT_IMPLEMENTED",
+      "source_grant": "NONE_FROM_DESIGN"
+    },
+    {
+      "id": "B01",
+      "name": "Journal",
+      "files": [
+        "rawlsing_next/_pre553_c11_journal.py"
+      ],
+      "hard_dependencies": [
+        "B00"
+      ],
+      "tests": [
+        "T02",
+        "T03",
+        "T23",
+        "T24"
+      ],
+      "author": "Codex qualified engineering under one editor per collision group",
+      "reviewer": "Independent, not own reviewer",
+      "status": "DESIGN_SPEC_ONLY_NOT_IMPLEMENTED",
+      "source_grant": "NONE_FROM_DESIGN"
+    },
+    {
+      "id": "B02",
+      "name": "Full I02",
+      "files": [
+        "rawlsing_next/_pre553_c11_stream_validation.py",
+        "rawlsing_next/pre553_c11_ingest.py",
+        "rawlsing_next/pre553_c11_integrity.py"
+      ],
+      "hard_dependencies": [
+        "B00",
+        "B01"
+      ],
+      "tests": [
+        "T04",
+        "T05",
+        "T07",
+        "T08",
+        "T09",
+        "T10",
+        "T11",
+        "T12",
+        "T13",
+        "T14",
+        "T15",
+        "T16",
+        "T17",
+        "T18",
+        "T19"
+      ],
+      "author": "Codex qualified engineering under one editor per collision group",
+      "reviewer": "Independent, not own reviewer",
+      "status": "DESIGN_SPEC_ONLY_NOT_IMPLEMENTED",
+      "source_grant": "NONE_FROM_DESIGN"
+    },
+    {
+      "id": "B03",
+      "name": "Source admission",
+      "files": [
+        "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "source_admission_exact_owner_to_verify"
+      ],
+      "hard_dependencies": [
+        "B02"
+      ],
+      "tests": [
+        "T20",
+        "T21",
+        "T22"
+      ],
+      "author": "Codex qualified engineering under one editor per collision group",
+      "reviewer": "Independent, not own reviewer",
+      "status": "DESIGN_SPEC_ONLY_NOT_IMPLEMENTED",
+      "source_grant": "NONE_FROM_DESIGN"
+    },
+    {
+      "id": "B04",
+      "name": "View repo transaction",
+      "files": [
+        "rawlsing_next/_pre553_c11_execution_view.py",
+        "rawlsing_next/pre553_c11_repository.py"
+      ],
+      "hard_dependencies": [
+        "B02",
+        "B03"
+      ],
+      "tests": [
+        "T25",
+        "T26",
+        "T27",
+        "T28"
+      ],
+      "author": "Codex qualified engineering under one editor per collision group",
+      "reviewer": "Independent, not own reviewer",
+      "status": "DESIGN_SPEC_ONLY_NOT_IMPLEMENTED",
+      "source_grant": "NONE_FROM_DESIGN"
+    },
+    {
+      "id": "B05",
+      "name": "Full legacy recovery",
+      "files": [
+        "rawlsing_next/_pre553_c11_execution_view.py",
+        "rawlsing_next/pre553_c11_repository.py"
+      ],
+      "hard_dependencies": [
+        "B04"
+      ],
+      "tests": [
+        "T29",
+        "T30",
+        "T31"
+      ],
+      "author": "Codex qualified engineering under one editor per collision group",
+      "reviewer": "Independent, not own reviewer",
+      "status": "DESIGN_SPEC_ONLY_NOT_IMPLEMENTED",
+      "source_grant": "NONE_FROM_DESIGN"
+    },
+    {
+      "id": "B06",
+      "name": "I03 native query consumers",
+      "files": [
+        "rawlsing_next/pre553_empirical_query.py",
+        "rawlsing_next/_pre553_query_predicate.py",
+        "rawlsing_next/_pre553_query_common.py",
+        "rawlsing_next/_pre553_query_eval.py"
+      ],
+      "hard_dependencies": [
+        "B05"
+      ],
+      "tests": [
+        "T32",
+        "T33",
+        "T34"
+      ],
+      "author": "Codex qualified engineering under one editor per collision group",
+      "reviewer": "Independent, not own reviewer",
+      "status": "DESIGN_SPEC_ONLY_NOT_IMPLEMENTED",
+      "source_grant": "NONE_FROM_DESIGN"
+    },
+    {
+      "id": "B07",
+      "name": "I05 recursive+batch+source-author consumers",
+      "files": [
+        "rawlsing_next/pre553_recursive_handoff.py",
+        "rawlsing_next/pre553_batch_runner.py",
+        "rawlsing_next/pre553_source_backed_c11_facade.py"
+      ],
+      "hard_dependencies": [
+        "B06"
+      ],
+      "tests": [
+        "T35",
+        "T36"
+      ],
+      "author": "Codex qualified engineering under one editor per collision group",
+      "reviewer": "Independent, not own reviewer",
+      "status": "DESIGN_SPEC_ONLY_NOT_IMPLEMENTED",
+      "source_grant": "NONE_FROM_DESIGN"
+    },
+    {
+      "id": "B08",
+      "name": "Independent review+original gate",
+      "files": [
+        "rawlsing_next/tests",
+        "source_owner_grants_and_original_run_under_separate_authority"
+      ],
+      "hard_dependencies": [
+        "B00",
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07"
+      ],
+      "tests": [
+        "T37",
+        "T38",
+        "T39",
+        "T40"
+      ],
+      "author": "Codex qualified engineering under one editor per collision group",
+      "reviewer": "Independent, not own reviewer",
+      "status": "DESIGN_SPEC_ONLY_NOT_IMPLEMENTED",
+      "source_grant": "NONE_FROM_DESIGN"
+    }
+  ],
+  "critical_new_interface": [
+    "C11ExecutionView",
+    "C11VerifiedReleaseHeader",
+    "I02VerifiedJournalReceipt",
+    "C11Repository.resolve_execution_view_exact",
+    "C11Repository.verify_release_ref_exact",
+    "C11Repository._commit_i02_verified_view"
+  ],
+  "never_change_without_owner": [
+    "C11LogicalRelease accepted semantic identity",
+    "ReplayManifest@1.0.0 complete closure semantics",
+    "IngestDisposition and existing I02 validation",
+    "EmpiricalFact@1.0.0 native result hash",
+    "source/FF/actor rights"
+  ],
+  "additional_dependencies": [
+    "source byte/retention independent attestation",
+    "full old/new I02 differential",
+    "direct old source equivalence/replay audit unchanged",
+    "current-control I03 vs SRC04 packet SHA resolution",
+    "host profiling before original source execution"
+  ]
+}
