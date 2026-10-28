@@ -1,0 +1,1351 @@
+{
+  "schema": "RAWLSING_GLOBAL_BRANCH_CENSUS_INDEX@1.0.0",
+  "date": "2026-10-28",
+  "repository": "maidiu/rawlsing",
+  "count": 2831,
+  "head_sha_unique": 2743,
+  "shared_tip_sha_count": 46,
+  "parts": [
+    "CENSUS_PART_01_10.json",
+    "CENSUS_PART_11_20.json",
+    "CENSUS_PART_21_29.json"
+  ],
+  "classification": "REF_AND_NAME_ONLY_NO_IMPLEMENTATION_OR_ACCEPTANCE_PROOF",
+  "families": {
+    "astra": 14,
+    "agent_other": 368,
+    "opencode": 102,
+    "rabochii": 1286,
+    "reviewer": 231,
+    "sorok": 58,
+    "verkhovod": 95,
+    "vozhd": 558,
+    "other": 86,
+    "integration": 30,
+    "main": 1,
+    "review": 2
+  },
+  "keywords": {
+    "fracture": 29,
+    "pre553": 51,
+    "pyat": 844,
+    "sorok": 294,
+    "v3": 380,
+    "controller": 3,
+    "pff": 8,
+    "field-forge": 113,
+    "recurs": 12,
+    "source": 143,
+    "memory": 16,
+    "person": 21,
+    "f8": 17,
+    "j3": 2,
+    "i03": 14,
+    "i05": 8,
+    "n11": 3,
+    "n12": 0,
+    "p0": 72,
+    "runtime": 61,
+    "branch": 3,
+    "r59": 1
+  },
+  "governing_integration_branches": [
+    {
+      "name": "integration/pre-main-fiabc-canonical-reintegration-r1",
+      "sha": "3206bad6419e02c3aa12fff38e288e4faf13d82d",
+      "protected": false
+    },
+    {
+      "name": "integration/pre-main-hq-pre-candidate-stop-20260923",
+      "sha": "de29f38c2a4da297ba1709092c038d03631e9504",
+      "protected": false
+    },
+    {
+      "name": "integration/pre-main-reconciliation-r1",
+      "sha": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+      "protected": false
+    },
+    {
+      "name": "integration/prev3-m3-r2-qualified-r1",
+      "sha": "7ab8c40b5f4281c458953526a46bbbbea95469f0",
+      "protected": false
+    },
+    {
+      "name": "integration/prev3-w5-qualified-fanin-r1",
+      "sha": "579ed550b1770f32c82f0e7a4a61a3620dde230c",
+      "protected": false
+    },
+    {
+      "name": "integration/pyat-hq130-c3-source-free-accepted-r1",
+      "sha": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+      "protected": false
+    },
+    {
+      "name": "integration/pyat-hq139-c1-01-source-free-accepted-r1",
+      "sha": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+      "protected": false
+    },
+    {
+      "name": "integration/pyat-hq145-c1-02-source-free-accepted-r1",
+      "sha": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
+      "protected": false
+    },
+    {
+      "name": "integration/pyat-hq147-n10e-at17-source-free-accepted-r1",
+      "sha": "52e41a41e8bc3b77390016a049095b5aea1721d0",
+      "protected": false
+    },
+    {
+      "name": "integration/pyat-hq151-c5-n5-source-free-accepted-r1",
+      "sha": "151d39260a803635f622323b14e42d96c7976d25",
+      "protected": false
+    },
+    {
+      "name": "integration/pyat-hq159-c1-03r-source-free-accepted-r1",
+      "sha": "9ec7eaff2646c1effd5192002967407a5c66bbef",
+      "protected": false
+    },
+    {
+      "name": "integration/pyat-hq162-c1-03a-source-free-accepted-r1",
+      "sha": "26976201b3cf14f4cf89a45a909c780591f54bcb",
+      "protected": false
+    },
+    {
+      "name": "integration/pyat-hq166-at07-successor-spine-accepted-r1",
+      "sha": "069ac61b5c90486e5b7bb633135b4743dfbd55df",
+      "protected": false
+    },
+    {
+      "name": "integration/pyat-hq168-c1-03-successor-join-accepted-r1",
+      "sha": "149c3d2636160d8de9b5a8be0c8b87195158077d",
+      "protected": false
+    },
+    {
+      "name": "integration/staging-pyat-hq263-return-intake-r1",
+      "sha": "01d560e3396af24d04adb6a57c3f8b26d948f289",
+      "protected": false
+    },
+    {
+      "name": "integration/staging-pyat-hq264-g01-repair-r1",
+      "sha": "5ef50745c36369e28e96dff6a6f8587adee4c0bf",
+      "protected": false
+    },
+    {
+      "name": "integration/staging-pyat-hq265-fixture-reground-r1",
+      "sha": "cd886bc59a16acc1c29efe7f1d9966654f91640b",
+      "protected": false
+    },
+    {
+      "name": "integration/staging-pyat-hq266-query-parity-r1",
+      "sha": "22d0b474c3b4d6808799f4b55c2d88313abde239",
+      "protected": false
+    },
+    {
+      "name": "integration/staging-pyat-hq267-g01-final-hostile-r1",
+      "sha": "10499013efc1033e33719146d4fa07f5c2d3b943",
+      "protected": false
+    },
+    {
+      "name": "integration/staging-pyat-hq268-independence-d1-d2-r1",
+      "sha": "a12f619d8cc109f1245824a3ef220d3b5beb0d9a",
+      "protected": false
+    },
+    {
+      "name": "integration/staging-pyat-hq269-e01-g1-fanin-and-qualification-r1",
+      "sha": "7c7fd2903383603a2e4103970c2c80dd9b8b05b0",
+      "protected": false
+    },
+    {
+      "name": "integration/staging-pyat-hq270-triple-return-science-g1-service-r1",
+      "sha": "8b02d85a2fcd8acb6fe266543821434ef63ccb07",
+      "protected": false
+    },
+    {
+      "name": "integration/staging-pyat-hq271-intake-r1",
+      "sha": "e3a2e7c5ae77ae2f085339a84340007762588bd3",
+      "protected": false
+    },
+    {
+      "name": "integration/staging-pyat-hq272-m01-f01-intake-r1",
+      "sha": "e82508091214d2543cfd1a2d8f7ff5ea4b5fe48f",
+      "protected": false
+    },
+    {
+      "name": "integration/staging-pyat-hq273-r01-f02-intake-conditional-and-structural-science-r1",
+      "sha": "df4e28b17e086d7ba72511f498aa306045bd090d",
+      "protected": false
+    },
+    {
+      "name": "integration/staging-pyat-hq274-c01-s01-intake-l01-unpushed-r1",
+      "sha": "ce6626bcc0789d5914c91bee375434f283a9a2b1",
+      "protected": false
+    },
+    {
+      "name": "integration/staging-pyat-hq275-full35-functional-realization-offensive-r1",
+      "sha": "b4e100e686442a03f426b1616ab4041a83d8a0c5",
+      "protected": false
+    },
+    {
+      "name": "integration/staging-pyat-hq276-whole-machine-automation-constitution-and-exhaustive-estate-matrix-r1",
+      "sha": "7c1adb6a3a8a49425208bb6a6d41856ce4811ede",
+      "protected": false
+    },
+    {
+      "name": "integration/staging-pyat-hq277-hostile-second-pass-grok-and-executable-completion-matrix-r1",
+      "sha": "75be67b7eb2b3837a938ebff4c58cba32490c703",
+      "protected": false
+    },
+    {
+      "name": "integration/staging-pyat-hq278-second-pass-audit-handoff-r1",
+      "sha": "288316c6d9ecac9a92f5fb1c9f1bc1e1c5d5f44c",
+      "protected": false
+    },
+    {
+      "name": "main",
+      "sha": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+      "protected": false
+    }
+  ],
+  "high_interest_name_only": [
+    {
+      "name": "agent/astra-pyat-r53-u53a-universal-execution-systemic-architecture-court-r1",
+      "sha": "d7988b3d5d313902d883d2d8c244fd2526058410"
+    },
+    {
+      "name": "agent/browser-pyat-r56-r00-independent-policy-r1",
+      "sha": "6d95a78bf6b7bcf70022e303a151255e65edc38a"
+    },
+    {
+      "name": "agent/codex-pyat-r59-full-hq-accession-eligibility-r1",
+      "sha": "e616b59dba774d72a0d5308150b1cbe9b69dbcaa"
+    },
+    {
+      "name": "agent/ff-recon-r07-v3-realized-person",
+      "sha": "4c3b844712279535ecf386baee26a3fd227e84e7"
+    },
+    {
+      "name": "agent/field-forge-architectural-recon-r1",
+      "sha": "163a562e7bef187d1b417c9c3130bf65deaa86b1"
+    },
+    {
+      "name": "agent/field-forge-r1-fixup",
+      "sha": "308708cf9c023b1265592b335aa3d5cd2d3a268a"
+    },
+    {
+      "name": "agent/field-forge-r1",
+      "sha": "3065c22ab03be56796399d266856cbc7fa22f933"
+    },
+    {
+      "name": "agent/field-forge-r2-grounded-continuation",
+      "sha": "ac88a482a3623b5c711999525c49bf7c1020e5fe"
+    },
+    {
+      "name": "agent/psychic-field-forge-prearchitecture-ideation-bank-r1-copy",
+      "sha": "9a971f1ee006db29e82211ad1d2dfcd77a1f7881"
+    },
+    {
+      "name": "agent/psychic-field-forge-prearchitecture-ideation-bank-r1-copy2",
+      "sha": "9a971f1ee006db29e82211ad1d2dfcd77a1f7881"
+    },
+    {
+      "name": "agent/psychic-field-forge-prearchitecture-ideation-bank-r1-copy3",
+      "sha": "9a971f1ee006db29e82211ad1d2dfcd77a1f7881"
+    },
+    {
+      "name": "agent/psychic-field-forge-prearchitecture-ideation-bank-r1",
+      "sha": "9cf9df5932c0826c028d95d4b0773e5264edd6c7"
+    },
+    {
+      "name": "agent/rabochii-astra-c04-field-forge-structural-coverage-r1",
+      "sha": "ae5666fa461f8baaa017fd0b4eff1d9ecfc1c0e5"
+    },
+    {
+      "name": "agent/rabochii-field-forge-c-obl005-independent-hostile-review-r1",
+      "sha": "f8442a98c24a6fff007148887cbeaca634fd8e2c"
+    },
+    {
+      "name": "agent/rabochii-field-forge-c-obl005-position-role-authority-r1",
+      "sha": "8e14d047d0ebd6d1055da83614b490a792fa1ba1"
+    },
+    {
+      "name": "agent/rabochii-field-forge-c-obl006-current-target-materiality-r1",
+      "sha": "95fd3086486f2acfa07e62ebdd641ebfad065bdf"
+    },
+    {
+      "name": "agent/rabochii-field-forge-c-obl006-external-political-group-crosswalk-authority-r1",
+      "sha": "381035fd84271c1887a2013531b0fb9e64d68fe0"
+    },
+    {
+      "name": "agent/rabochii-field-forge-c-obl040-independent-hostile-audit-r1",
+      "sha": "d8e62e73b9ebde9d2bf7d6618093a71cb99ed648"
+    },
+    {
+      "name": "agent/rabochii-field-forge-c-obl040-independent-hostile-review-r1",
+      "sha": "e208e6fc23a61112ffe4dad9e3782a1a922ad4b4"
+    },
+    {
+      "name": "agent/rabochii-field-forge-c-obl040-observability-routing-geometry-lawfulness-r1",
+      "sha": "14fa1b3e944fee81662ef840ad169693ef0df79c"
+    },
+    {
+      "name": "agent/rabochii-field-forge-c-obl041-geometry-family-authority-r1",
+      "sha": "b03309dbf65beb6c0a3ed07f330057a8b2cadc48"
+    },
+    {
+      "name": "agent/rabochii-field-forge-c-obl041-independent-hostile-review-r1",
+      "sha": "83154666b815e23cb70e41bcb774b1a6e35bd627"
+    },
+    {
+      "name": "agent/rabochii-field-forge-c-obl042-independent-hostile-review-r1",
+      "sha": "533046ec808e7602818076580eebc3b5f815c0c6"
+    },
+    {
+      "name": "agent/rabochii-field-forge-c-obl042-local-weight-estimand-r1",
+      "sha": "24f780107b9deee9cffe1699422cc18a755ead4a"
+    },
+    {
+      "name": "agent/rabochii-field-forge-c-obl043-independent-hostile-review-r1",
+      "sha": "1e70a7ab7d4195fbf49700f2a69b3ed11ef6670d"
+    },
+    {
+      "name": "agent/rabochii-field-forge-c-obl043-local-mode-form-association-capital-conversion-r1",
+      "sha": "1ee4cb3302f12900f68ce7d1332f105e7af6175d"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif001-multirepresentation-primitives-r1",
+      "sha": "ffc7e3ee81fedfba3e61125c77242044b7c0fdee"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif002-equivalence-authority-r1",
+      "sha": "7043eb0686cac766f19b1741c35de96462f70e1e"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif003-cross-context-transport-r1",
+      "sha": "e26af1cf8611355229cc68871d847cab74f8fe60"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif004-view-disagreement-r1",
+      "sha": "ce6c735f6a338d506fac370da25477be61b81f21"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif005-mapping-authority-r1",
+      "sha": "0c4798d48a5c6589b0f7ccb47cfcd4b561ee5767"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif006-claim-loss-authority-r1",
+      "sha": "787b02e8eed5e0b3079fbaed5624393443f3f652"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif007-admissible-object-closure-r1",
+      "sha": "2d4f455fff5d7e888e32a1618d40d27161d7a1be"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif008-first-canary-empirical-reideation-r1",
+      "sha": "da9795ac61ae18d2c70b9c79e0a50fbca4f9ec60"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif009-second-experiment-invariant-design-r1",
+      "sha": "86d52b524e9ca2b6b8959ab079cf88c7c5b3ab62"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif010-second-experiment-support-direction-preclosure-r1",
+      "sha": "dd7e154ec1b32afaef5da9324327a7dbc7c08bd9"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif011-second-canary-docket-robustness-r1",
+      "sha": "4702e279244fee13f5dccd2a28bf5a9c0b3bc0eb"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif012a-premain-seam-functional-succession-r1",
+      "sha": "98ff23320e22253b401de929122690364feec679"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif012b-postcanary-object-grammar-r1",
+      "sha": "5e88159bcacb3e4aeafbda661bb8ae059776e04d"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif012c-semantic-transform-authority-audit-r1",
+      "sha": "72c9eca7428c39e744f7da70b2e2f4fdb697dbe5"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif012d-downstream-consumer-value-stopping-r1",
+      "sha": "334b354c5494d41c3904e2d26f7a708d46aac403"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif012e-position-observability-geometry-stress-r1",
+      "sha": "3ee4e1f6503529f32930edc528d5f09c75dd3c2c"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif012f-disposition-motif-sparse-discovery-r1",
+      "sha": "2d5981127ce19125ffca6653cf21343acee1e4f1"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif012g-crosscontext-temporal-homology-docket-r1",
+      "sha": "752b7769ae139d046568de9ae7aedcadb539905a"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif012h-strong-noun-precursor-observability-r1",
+      "sha": "ea7478f718551bd315fac5f31e2649ce2c6db0d6"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffif013-discovery-followup-linkage-design-r1",
+      "sha": "45f4e8748231f79e13ad28f25331cfce85823d49"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp001-producer-authority-owners-r1",
+      "sha": "954ab630c6307cce2df7b5e0be99de45b0abdee6"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp002-respondent-current-carrier-recovery-r1",
+      "sha": "232f5996d7115d12e3a3c46cd44219bd6caed381"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp003-first-canary-pra-prep-r1",
+      "sha": "0b69ce72f0ead8c9dad3e89f9ca92993b6c5f8b5"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp004-first-canary-cim-prep-r1",
+      "sha": "0eaee36a8ecddfc221daf91e74f0663c801982fd"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp005-citc-outcome-blind-prep-r1",
+      "sha": "86a3e14a378934410cf2abbb0dac49bc884bf8a2"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp006-ffx002r2-execution-preflight-r1",
+      "sha": "9611a9067ab28e17eb45b565398c7e604a24e77b"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp007-first-genuine-canary-selection-r1",
+      "sha": "e5dc9f0af9cb069310cfe5f0b11b969bf46d4c0e"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp008-r5-respondent-pathb-rematerialization-r1",
+      "sha": "71530e83219c9fb5b201cae9eeb9c55750dcba79"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp009-ffx002r2-harness-r1",
+      "sha": "729c569f869f8f6c0dc0123f384cce2409e1c9b2"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp010-core-a-exact-configuration-r1",
+      "sha": "862279e95100bc1c57acb0ead0695eb8c27cbcd7"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp011-core-b-local-geometry-r1",
+      "sha": "db912242e0f6bfefa61a2a83e11f701d17947af4"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp012-core-c-direct-redistribution-r1",
+      "sha": "38bc815d3edc8d8c75c8d8240de1da24cc588e5b"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp013-ffx002r2-integrated-execution-stack-r1",
+      "sha": "433104a5bb1e7ada710c6243413e6061a4ca41cf"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp014-r5-current-respondent-admission-q73a-r1",
+      "sha": "34c0136840757d748c90d6733240ddb675d05c88"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp015-first-genuine-canary-q73d-free-r1",
+      "sha": "f1d4474c24a0127cf4e37719d2c857664db8b38a"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp016-first-genuine-canary-dispositive-pra-r1",
+      "sha": "04c604be2ee4e32367f2074fdad380c7c563b740"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp017-first-genuine-canary-coexposure-riskset-r1",
+      "sha": "97ad8148a5227e8be6d80e5beaccc4d80db8d5a8"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp018-first-genuine-canary-cim-freeze-r1",
+      "sha": "abf9ca848b25ba65e7183b14e86bb70e60c8d8d7"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp019-first-genuine-canary-citc-freeze-r1",
+      "sha": "04b3e361f900ad89d8d4d8562c00f6cdf20cf312"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp020-first-genuine-ffx002r2-empirical-execution-r1",
+      "sha": "b942acdf5055b72e7e3c337f326345de4f08f77d"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp021-core-b-genuine-scale-executability-repair-r1",
+      "sha": "88cd76e50329f6f15262eeb4869a4ca3d92b53c4"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp022-core-a-core-c-genuine-empirical-partial-r1",
+      "sha": "be2a4712018ad993a9ce2dabaa0dfd9b92237c88"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp023-core-b-exact-quotient-symmetric-eigen-r1",
+      "sha": "ebd1a6280232c006f07cc93c0da466872a539e8b"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp024-core-b-outcome-blind-method-instance-genuine-execution-r1",
+      "sha": "4874db1e47c9d57549fcd8e5701afd1cf5d1e45a"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp025-complete-genuine-p0-p3-ablation-r1",
+      "sha": "5ec39a6f91e921d3b7dcfeff2b21add1f124aa50"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp026-first-genuine-canary-cocr-completeness-r1",
+      "sha": "df33d3aaa75e4a7fc6139653f512f2a2fa510168"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp027-first-genuine-canary-cvcr-r1",
+      "sha": "42ef8c7d9163ce6d4559d3e26933efc12a0f5cc2"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp028-second-canary-outcome-blind-candidate-selection-r1",
+      "sha": "bb3ed7cd2c1121bfae019ea0a9de3ace50a26a8e"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp029-second-canary-dispositive-pra-r1",
+      "sha": "77624c24a2125545ee1005c7bb876c4528caf80d"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp030-second-canary-cim-support-citc-prep-r1",
+      "sha": "d67599cc36cec80702edfb3ccde4b9bd0c17493e"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp031-second-canary-final-preoutput-freeze-r1",
+      "sha": "ccfd3fb6f7be96c95bdded7eb6cd0a743e257c79"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp032-second-canary-genuine-execution-r1",
+      "sha": "0f6f74b74d990f9e18cc94b00341c2f110a81475"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp033-second-genuine-canary-cvcr-r1",
+      "sha": "8af4f0a8d2bf4b5cf18d7a431dfa5f922c2c8608"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp034-second-genuine-canary-cocr-r1",
+      "sha": "50aceddb41240d632d2f836666e3011e9f3fc88c"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp035-discovery-followup-current-preflight-r1",
+      "sha": "a2cf6b98a210d2ab457d12225ad3fcd70ad271c1"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffp036-discovery-followup-genuine-execution-r1",
+      "sha": "957628a3653e55757404ecf62822c4dd12f77430"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffx001b-respondent-binding-r1",
+      "sha": "9301a18ea28f8d89e43764e3d4cfd8784660a224"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffx001c-current-respondent-substrate-r1",
+      "sha": "be5e58aa253b31a5e9ab08a894573cc9f1b588f2"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffx001d-respondent-execution-contract-r1",
+      "sha": "d15e32398738a5b52ebede954b79278bd9f32fd2"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffx002-design-r1",
+      "sha": "a204fcd5ea4b3e949aabbc956cbe150a5b64ef31"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-ffx002-r2-multiview-redesign-r1",
+      "sha": "5343862783959a1455735c0a5eb7b330c76f42d5"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-terminal-independent-architecture-audit-r1",
+      "sha": "054657a8ed6ee4fb39461acb41d52089e0d89bdb"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-terminal-independent-evidence-seam-audit-r1",
+      "sha": "8652c7c480c568f655785f30c9211912c02573a7"
+    },
+    {
+      "name": "agent/rabochii-field-forge-r2-terminal-repair-independent-rereview-r1",
+      "sha": "98ad2d0ce5e7064c59d9ca836037465c4ed520de"
+    },
+    {
+      "name": "agent/rabochii-hq-pff-can008-r2-interface-freeze-binding-r1",
+      "sha": "57b71970e95b0fa7060598bf9268358fca7e78da"
+    },
+    {
+      "name": "agent/rabochii-hq-pff-u1-composition-court-r1",
+      "sha": "ffbed1646a8d4719f679d61feada3a99f5c1e281"
+    },
+    {
+      "name": "agent/rabochii-hq-pff-u1-hostile-scenario-court-r1",
+      "sha": "b3a343c096de5b97d97934d8456b7e270bb68ce4"
+    },
+    {
+      "name": "agent/rabochii-hq-unified-v3-pff-person-metabolism-reconciliation-r1",
+      "sha": "f4a61361ae9da371a0319594c297fbf93f0326ad"
+    },
+    {
+      "name": "agent/rabochii-premain-field-forge-r2-adopted-authority-capsule-independent-integration-audit-r1",
+      "sha": "887015b53fd939ca225759d06caa4525562a85f6"
+    },
+    {
+      "name": "agent/rabochii-premain-field-forge-r2-adopted-authority-capsule-r1",
+      "sha": "d15f8973ddeff46dbaa15f352fe5d7e59e1fe1a3"
+    },
+    {
+      "name": "agent/rabochii-premain-w1-field-forge-architecture-r1",
+      "sha": "b1d8a879d1d23b8724c2b5c1394088c5cc0af542"
+    },
+    {
+      "name": "agent/rabochii-premain-w3-preservation-field-forge-r1",
+      "sha": "071ede1268ded05c645459009f21470b35f02721"
+    },
+    {
+      "name": "agent/rabochii-premain-w4a-field-forge-forward-inheritance-r1",
+      "sha": "951c073f6a00c3b5c2e9e8a18a1a7e93862dad9b"
+    },
+    {
+      "name": "agent/rabochii-prev3-astra-ff01-d04-field-forge-ingress-r1-handoff-temp",
+      "sha": "345be19487ed0f4015723a88e5582dbc0cc11cfd"
+    },
+    {
+      "name": "agent/rabochii-prev3-astra-ff01-d04-field-forge-ingress-r1",
+      "sha": "d60c2a0218c39b35d28f163b969e1784ff0af31e"
+    },
+    {
+      "name": "agent/rabochii-prev3-w9-k02-source-state-target-production-integration-r1",
+      "sha": "639aec0e6b8310f07283922faf0afdc7e3dc7c48"
+    },
+    {
+      "name": "agent/rabochii-prev3-w15-q02-m10-causal-use-current-selection-r1",
+      "sha": "ff277902459cbf786e8f7d839b4f786546bd5610"
+    },
+    {
+      "name": "agent/rabochii-prev3-w16-r02-m10-causal-use-source-authority-r1",
+      "sha": "17320729b411f8e339d65c3491c1d30fe7364ea3"
+    },
+    {
+      "name": "agent/rabochii-pyat-hq120-c-field-forge-boundary-conservation-r1",
+      "sha": "a891e8a6f6c03e0ab76c29f6a77b1ae243a64d3f"
+    },
+    {
+      "name": "agent/rabochii-pyat-hq222-v555-field-forge-basis-authority-adjudication-r1",
+      "sha": "cb3fc85b71a8fcf57f353fc611c075ff41154e80"
+    },
+    {
+      "name": "agent/rabochii-pyat-hq271-f01-lits-field-forge-first-real-admission-edge-r1",
+      "sha": "6abcd7532c3ca6914a7e25dfdafce694614a4cef"
+    },
+    {
+      "name": "agent/rabochii-pyat-hq280-pv3-b01e-batch-durable-integration-r1",
+      "sha": "92cb25340c49fb51e2b8d6e00d5a4f471296fc8f"
+    },
+    {
+      "name": "agent/rabochii-pyat-r1-c-field-forge-succession-producer-map-r1",
+      "sha": "7dd3e760934cf3b30a5fc7d59d81be9eb730c53e"
+    },
+    {
+      "name": "agent/rabochii-pyat-r2-field-forge-current-ingress-audit-r1",
+      "sha": "a6e7a02132abe1bfc85f803292218cfa7ba525c0"
+    },
+    {
+      "name": "agent/rabochii-pyat-r48-h48-source-authority-producer-atlas-r1",
+      "sha": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11"
+    },
+    {
+      "name": "agent/rabochii-pyat-r49-b49-reuse-first-authority-native-adapter-r1",
+      "sha": "b5600da96358f8526471d635a1befa8daa3f098b"
+    },
+    {
+      "name": "agent/rabochii-pyat-r50-g50-governed-operation-grammar-native-producer-r1",
+      "sha": "d379bafe36b8d89da27ea5bf33614d33aca7f2d2"
+    },
+    {
+      "name": "agent/rabochii-pyat-r51-i51-b49-g50-real-native-joined-science-producer-r1",
+      "sha": "9bbf9e0509411beb210331d28160324b005a784e"
+    },
+    {
+      "name": "agent/rabochii-pyat-r53-p53e-u53f-corpus-browser-access-and-proof-r1",
+      "sha": "c54e0883af03394ab4df06159d205f6cfb775bb7"
+    },
+    {
+      "name": "agent/rabochii-pyat-r53-p53t-native-sourcefree-defect-reproduction-r1",
+      "sha": "463be0d340e7ebc7e5e7b0337142c0d63125a179"
+    },
+    {
+      "name": "agent/rabochii-pyat-r53-u53f-universal-execution-codebase-forensics-r1",
+      "sha": "fdc4d03537e649cd56c19a458ebeb3292298ff3f"
+    },
+    {
+      "name": "agent/rabochii-pyat-r56-c1-combined-sourcefree-qualification-r1",
+      "sha": "a54893657ba65e44c1049f763208b0b4b6ed5eb9"
+    },
+    {
+      "name": "agent/rabochii-pyat-r56-r00e-generic-claim-gate-r1",
+      "sha": "3d4d77e9b667a1cddac07c3bfdda7d8795de458d"
+    },
+    {
+      "name": "agent/rabochii-pyat-r56-r00v-independent-gate-review-r1",
+      "sha": "140c41d6a10a595ff5d80de4eb855bcd65e7a8f6"
+    },
+    {
+      "name": "agent/rabochii-pyat-r56-r00v-r2-gate-requalification-r1",
+      "sha": "d02ef32214c38af59ffb272a29ff4ffd7b30d394"
+    },
+    {
+      "name": "agent/rabochii-pyat-r56-r02-occurrence-projection-repair-r1",
+      "sha": "6f4be33854c0437a52e1c49b977104db111ac327"
+    },
+    {
+      "name": "agent/rabochii-pyat-r56-r02v-independent-projection-review-r1",
+      "sha": "a287674b97a2bbde4bf9acf3b6badf19b5ce72f5"
+    },
+    {
+      "name": "agent/rabochii-pyat-r56-r02v-r2-projection-requalification-r1",
+      "sha": "e1f0aeb65b0a9710b0e2bcf0bf3524f1a3d6ac6b"
+    },
+    {
+      "name": "agent/rabochii-pyat-r56-r04byte-consumed-byte-custody-r1",
+      "sha": "31a39c50cb5e8487968ab7b00386912fc5f1d6ca"
+    },
+    {
+      "name": "agent/rabochii-pyat-r56-r04bytev-independent-custody-review-r1",
+      "sha": "afbe6dd5f630f7e75a3fa004aad3467e113e0977"
+    },
+    {
+      "name": "agent/rabochii-pyat-r56-r04bytev-r2-custody-requalification-r1",
+      "sha": "228387c59b42590338636cd176feee3ccc9a6abc"
+    },
+    {
+      "name": "agent/rabochii-pyat-r56-r04bytev-r3-custody-requalification-r1",
+      "sha": "625f24a28ed8c567ca3d7bb330ddb91d6c7b2ce7"
+    },
+    {
+      "name": "agent/rabochii-sorok-20261019-pa0-v3-adp-pff-generator-authority-implementation-atlas-r1",
+      "sha": "3b39c86b376efff8c11833b8451c1791adddb9bc"
+    },
+    {
+      "name": "agent/rabochii-sorok-20261020-bp2p4j-joined-technical-alpha-r1",
+      "sha": "5b3e6577400ea1d88971ae6b48e41a118b8059ae"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq297-k3k5-causal-cell-court-r1",
+      "sha": "12c65e0ed0a82ebe6a843182990e8b8586b85341"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq298-sc0-value-bearing-port-r1",
+      "sha": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq298-sg-choice-authority-r1",
+      "sha": "a12d01c5f7d7ddad8be92c58afc97141b672dba0"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq298-sgi2-forward-generalization-r1",
+      "sha": "aa4d845736ff6208a988a3e70cb9f74e3104633e"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq298-sm-lab2-behavioral-r1",
+      "sha": "bf5fda102f4bced41a0f18f71c4c380d5d099462"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq298-sm-owner-effect-court-r1",
+      "sha": "9ba40aabea9773ba9d2f3cf32248347f2b0f7e18"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq298-sr-outbox-execution-r1",
+      "sha": "8da45605c267ea60b664d00fc8444d8c9b007628"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq299-g12-sgi1-direct-generalization-r1",
+      "sha": "27f2dbfea291a9fad2d0ad5a17e5b10aaacf3505"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq300-behavioral-assay-r2-reconstruction-r1",
+      "sha": "99b7c4cb16888c50f23c9b55e21f485ec172e6cb"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq300-c0-sc0-adapter-red-repair-r1",
+      "sha": "49992b28becfdbecbd41d9dbead47532bf0b6af9"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq300-can008-first-positive-sourcefree-r1",
+      "sha": "189da3b54307d8731132c9a7f7baf578fee8bc96"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq300-outbox-authority-cold-repair-r1",
+      "sha": "e09d6497b7e0118b063b3620729f59b47f88a819"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq302-out2-rto-red-repair-r1",
+      "sha": "b1004a43eb0309af99e1b7ce9d5290df3c07f3cd"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq304-c0-rsc0-31red-repair-r1",
+      "sha": "a25ba9ab4e1a0dc12d3764bea8854c8fbc2df227"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq306-oc1-custody-readiness-r1",
+      "sha": "19438890e43153e2bc4a1ad271b5e19bcef33e1e"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq308-can2-can008-law-causal-repair-r1",
+      "sha": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq308-oc2-custody-red-repair-r1",
+      "sha": "a61d5794271038fb20c94a75eaee401a66613ce9"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq308-out4-out3-red-repair-r1",
+      "sha": "2afa3022e5551df71b739cf8689e832db85e1196"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq310-m01-memory-mediation-causal-cell-r1",
+      "sha": "02187a14e75ff30dd953d3c7185d689b80e62304"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq310-oc4-custody-ten-red-repair-r1",
+      "sha": "0caaec590f6a8bf6744f22dc9c948c5fe233bc94"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq311-out6-out5-sourcefree-four-defect-repair-r1",
+      "sha": "673233571b7d899c309dd26f9b9cd2508404c0b6"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq313-m03-claim-selector-provenance-repair-r1",
+      "sha": "e1f7a74e51201b9614bcc578348b4e9db7be7bd3"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq313-oc6-native-input-contract-repair-r1",
+      "sha": "873ce1c749fbbf6e9ccb2902e4cb6ef021001a17"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq313-out8-restored-ack-ghost-repair-r1",
+      "sha": "0e05c7dab8334b96f2b2b79e935eeebb1c0f0d11"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq315-m05-m04-provenance-ancestry-repair-r1",
+      "sha": "8b7f3ed2ad095eee060fd040dcab88e59d4ca255"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq316-ms1-serial-memory-belief-feasibility-r1",
+      "sha": "d40cc32ecec8f681dcced6a482b6438a86080899"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq317-c07p-crossprocess-custody-r1",
+      "sha": "805d0a071db70bb37ec95df450b9429f46544fe9"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq317-out10-multiwriter-feasibility-r1",
+      "sha": "54eed50dcea538509baaaa52b68c9d5fef844a4d"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq318-ms3-ms2-provenance-repair-r1",
+      "sha": "48200cf0b8e9b69ce27bf0151cb43fde5133322f"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq318-out11-out9-multiwriter-recovery-r1",
+      "sha": "ecc0c5c86d0b6d4aab54ace63fb2af8fb3d784dc"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq319-c0p-generic-port-positive-r1",
+      "sha": "154a4dd5615d47f014ca90eb1234b16e983bf5c1"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq319-g12-genealogy-owner-bridge-r1",
+      "sha": "e5d356fd53e132565b1e0b66abb617085f4142ed"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq319-life1-world-relation-epochal-court-r1",
+      "sha": "7ffc20ddb30f71034abf8d02c224d13d6952e11f"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq319-out12-multiwriter-lock-cas-r1",
+      "sha": "c2fb389300b888b7addbe488cad30956a810094a"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq320-g13-k11-lab-mechanism-repair-r1",
+      "sha": "47bca2a56d34ed37186a436e7490cbaa417bfe5c"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq320-w01-actor-rule-owner-option-court-r1",
+      "sha": "5c79ca953d54ebaa12fa81f0f58611d3f7e43dcc"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-postastra-sc0-generic-port-r1",
+      "sha": "241d35fa8a13ea03c68fbe55554ce81c210b745f"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-postastra-sg-genealogy-k11-authority-r1",
+      "sha": "ca031ce1d5c56b58b18727f94f41571d6dd763fb"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-postastra-sm-situated-causal-cell-r1",
+      "sha": "7777a06dbd3a8f9dcf2b7ca3241e853dc485e505"
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-postastra-sr-occurrence-surface-r1",
+      "sha": "99f2e7128a8417dfeaa39468c45ba65f6958c061"
+    },
+    {
+      "name": "agent/rabochii-sorok-r15-rfa02-current-event-pff-target-r1",
+      "sha": "cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    },
+    {
+      "name": "agent/rabochii-warplan-c-field-forge-prev3-front-r1",
+      "sha": "dce2b2619751b166e08b4a82a8d6251f7d8b562a"
+    },
+    {
+      "name": "agent/rabochii-warplan-w1c-weakest-field-forge-relation-preflight-r1",
+      "sha": "e0f32d0777b7962be085442d13a28bddab9e57db"
+    },
+    {
+      "name": "agent/rabochii-wsc001b-preff-field-forge-ingress-r1",
+      "sha": "f891c4d8bd291f51e4a5d2a0095d3f11dc6bf916"
+    },
+    {
+      "name": "agent/rabochii-wsc001c-field-forge-prev3-contract-r1",
+      "sha": "d68557a372ec95f68b051f8e6f032f159520a86a"
+    },
+    {
+      "name": "agent/rabochii-wsc002c-gt0-field-forge-ingress-r1",
+      "sha": "c3a10cbeaecbd202f9def5dac3755f03bcfef56a"
+    },
+    {
+      "name": "agent/reviewer-pyat-r53-b53h-universality-acceptance-causal-court-r1",
+      "sha": "026a6ba3075817b7f0370619843ee7227967bc8e"
+    },
+    {
+      "name": "agent/reviewer-pyat-r53-b53r-universal-code-consumer-court-r1",
+      "sha": "39a06929f8ecc58f9854e156dcd04c32bc9a5ce3"
+    },
+    {
+      "name": "agent/reviewer-sorok-20261020-bp2p4ji-whole-product-custody-independent-r1",
+      "sha": "3212d716ce66586527c258632ef10c3ff4489803"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq297-genealogy-k11-construction-court-r1",
+      "sha": "0cb708bbfe522a6c6e359f36d99835d180d5a84d"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq299-rc0-sc0-pe-independent-r1",
+      "sha": "86bd2a54687b40401f7c4247607bd1873c585619"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq299-rg11-k11-authority-independent-r1",
+      "sha": "c28262641abae54e538db3994ba02983ab3ca04e"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq299-rmb-behavioral-harness-independent-r1",
+      "sha": "bf7518cff877ce108ef9c07f2e2eeaf990171d08"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq299-rsm-can008-owner-independent-r1",
+      "sha": "00f5d9a66f5f641c1f88376994272bc570a625ef"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq299-rsr-occurrence-outbox-independent-r1",
+      "sha": "5ac66779ab76575d0d145829073371d35197a457"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq301-rba-behavioral-r2-validity-r1",
+      "sha": "1e1546f9e6e1520ab48eb9a9cf5da8ded4f00599"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq301-rcp-can008-positive-court-r1",
+      "sha": "922e27181a6d32745cf388962742f01813648358"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq301-rto-outbox-cold-court-r1",
+      "sha": "767618db9fa01b83a461869c2ae06541684d18bf"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq302-rcp2-can008-clean-acceptance-r1",
+      "sha": "5509f02e6dbc963bc76f2b8efd497eaa4cf69ccd"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq302-rsc0-connected-port-independent-r1",
+      "sha": "385891d8da0c704875d877f77ef765fa86fbfa71"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq303-out3-outbox-independent-r1",
+      "sha": "0ab31e4198299708e700840c1b68e0d94a2ced06"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq303-rcp3-can008-completion-court-r1",
+      "sha": "a11982e6cf135a8ecc72b6152ec796b4a4707093"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq304-bl3-behavioral-design-court-r1",
+      "sha": "10b507af06973657f2d772b636fb6fbd2d6aff36"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq305-br3-synthetic-sensitivity-independent-r1",
+      "sha": "3551736293b81dfcec71d295424aedd923121a0f"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq307-ocr1-custody-hostile-r1",
+      "sha": "aba637265bea2358790fea50d0e7abc98141e472"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq309-can3-can008-independent-r1",
+      "sha": "ef12349defe22a50e053a7a8080a67ab45673417"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq309-oc3-custody-independent-r1",
+      "sha": "9cd47a829473a6e92392582b4f01f2c564aa5dce"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq309-out5-out4-independent-r1",
+      "sha": "e576e405e50e1bd91be5c839d8c33b69fa851fd9"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq311-oc5-oc4-independent-r1",
+      "sha": "8185d2ca41ac5c5711b3f3f528e6f644dbab185d"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq311-outp-legacy-ack-policy-court-r1",
+      "sha": "521edf0c8ef31f6248ed8d8b1fcc4fa5cd0dd687"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq312-m02-memory-mediation-independent-r1",
+      "sha": "0216d9036a87e2f60f42fd5b2870556027808419"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq312-oc5e-execution-recovery-r1",
+      "sha": "67a4f1561cdad40192f00797d66b24fc4cd91589"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq312-out7-out6-independent-r1",
+      "sha": "d3d0836d922dcb88eaf0a0591e66551aa6fb9f0a"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq314-m04-m03-independent-r1",
+      "sha": "3a993abcc0a9f6bd3a1bb003d298d293be199ea6"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq314-out9-out8-independent-r1",
+      "sha": "fd58957fceca250e86ed3b1a5d06fa45ffc9ec85"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq315-oc7-oc6-native-independent-r1",
+      "sha": "6e7d85d28f82729a06ede32d0440b63d0452a634"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq316-m06-m05-owner-ancestry-independent-r1",
+      "sha": "10a116f273c76095fca7255d4b6422a9ff3497a2"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq317-ms2-ms1-serial-independent-r1",
+      "sha": "34b96ea98de181ca5264f0eed3824cad2db7cfc0"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq318-c07i-c07p-independent-r1",
+      "sha": "2155a5352a1371648fb7cbec7cde91cea4d1a614"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq319-ms4-ms3-independent-r1",
+      "sha": "3863f5f0d87678b604b0401ed76d104980b78699"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq320-c0i-c0p-independent-r1",
+      "sha": "2dacd87636352a6c805e03b3d07581193a06264b"
+    },
+    {
+      "name": "agent/reviewer-sorok-r3-hq320-out13-out12-multiwriter-independent-r1",
+      "sha": "9b4392f86d942ba12eddc31c5b9ae33ba309597c"
+    },
+    {
+      "name": "agent/sorok-hq299-six-return-intake-courts-r1",
+      "sha": "5c59fb409d5f08312c19b936738eb4410dbd4f26"
+    },
+    {
+      "name": "agent/sorok-hq300-hq299-six-court-intake-r1",
+      "sha": "28d791df05b4d24ebe48b4298101af6951035a36"
+    },
+    {
+      "name": "agent/sorok-hq301-hq300-partial-fanin-r1",
+      "sha": "896d8bcbfb9257c190fc9e4241b3a0176594d08e"
+    },
+    {
+      "name": "agent/sorok-hq302-hq301-partial-return-fanin-r1",
+      "sha": "75341803ace63da30dfcd66273b6e3d75ad87132"
+    },
+    {
+      "name": "agent/sorok-hq303-hq302-partial-fanin-r1",
+      "sha": "63ba1d86c26632ed388fe0bcc46f92f910efb69e"
+    },
+    {
+      "name": "agent/sorok-hq304-rba-rsc0-return-fanin-r1",
+      "sha": "a25ba9ab4e1a0dc12d3764bea8854c8fbc2df227"
+    },
+    {
+      "name": "agent/sorok-hq305-bl3-sourcefree-sensitivity-fanin-r1",
+      "sha": "7df144ae498a280f0359eaa1c99e78f06bc9728f"
+    },
+    {
+      "name": "agent/sorok-hq306-br3-acceptance-fanin-r1",
+      "sha": "959d2d54fa31e27cead46cda912bd3976f0815db"
+    },
+    {
+      "name": "agent/sorok-hq307-oc1-return-fanin-r1",
+      "sha": "9ca0469b6ace374e52db308bb794b16e65f2a578"
+    },
+    {
+      "name": "agent/sorok-hq308-out3-rcp3-ocr1-fanin-r1",
+      "sha": "bea91e19ee77e2909bda700effb0ad358dff66e5"
+    },
+    {
+      "name": "agent/sorok-hq309-hq308-three-repair-fanin-r1",
+      "sha": "7dd4e05990eba8069aa02504777ddd3173524c01"
+    },
+    {
+      "name": "agent/sorok-hq310-can3-oc3-fanin-out5-pending-r1",
+      "sha": "6377927a0fd29a9a5d6a1f85f83ea1b44d484a76"
+    },
+    {
+      "name": "agent/sorok-hq311-out5-local-report-oc4-return-fanin-r1",
+      "sha": "95dc53cdc2d1adc7465d5e50915599dceddf9dde"
+    },
+    {
+      "name": "agent/sorok-hq312-out6-outp-oc5-m01-fanin-r1",
+      "sha": "50d9c762c48a99cd0d41bd811219087d96dc4bc0"
+    },
+    {
+      "name": "agent/sorok-hq313-out7-oc5e-m02-fanin-r1",
+      "sha": "d86309f96d41f913c5ecad37dc49a59f48bfbc7a"
+    },
+    {
+      "name": "agent/sorok-hq314-out8-m03-fanin-oc6-pending-r1",
+      "sha": "f9b4fd61eb64ad644b590b644450ac5563b6d151"
+    },
+    {
+      "name": "agent/sorok-hq315-out9-oc6-m04-fanin-r1",
+      "sha": "1565838242b43487bc249a73e0ca857638eb0df7"
+    },
+    {
+      "name": "agent/sorok-hq316-m05-return-oc7-pending-two-fronts-r1",
+      "sha": "8af50c539bd249d6aab76bea7cf81f61579906fa"
+    },
+    {
+      "name": "agent/sorok-hq317-m06-oc7-ms1-fanin-r1",
+      "sha": "c0d8d84d1c095720dfc570bf4e751a6854f7ccec"
+    },
+    {
+      "name": "agent/sorok-hq318-ms2-c07p-out10-fanin-r1",
+      "sha": "2b2fa4a555a61bfb855ca4fff462b42dbecca193"
+    },
+    {
+      "name": "agent/sorok-hq319-full-command-and-forward-science-r1",
+      "sha": "b1c0b474969b891c11da8f3a16b748568f395af5"
+    },
+    {
+      "name": "agent/sorok-hq320-five-return-fanin-product-decision-r1",
+      "sha": "3c423a0f74915a01911197b0023de9f85fd74aff"
+    },
+    {
+      "name": "agent/sorok-hq320-progress-rev3-report-pair-r1",
+      "sha": "5488616ab432eaf562c1abc97d6259a0c254b8ee"
+    },
+    {
+      "name": "agent/sorok-hq-r14-post-course-correct-reconciliation-r1",
+      "sha": "4b0730e3604bcbb60c404c9f5cc64347da227d2a"
+    },
+    {
+      "name": "agent/sorok-hq-r15-communicative-discipline-constitution-r1",
+      "sha": "da6f3c5e43f7f12c8c33f0109f2894e37b482e7d"
+    },
+    {
+      "name": "agent/sub-vozhd-field-forge-r1",
+      "sha": "6612a4cf193355d8fa321a0fee80856415f0e65c"
+    },
+    {
+      "name": "agent/userdirect-sorok-20261024-v3-pff-sdtf-developmental-inheritance-science-court-r1",
+      "sha": "d0319a28aa4bcd908665d8830ad7c45c5e978db7"
+    },
+    {
+      "name": "agent/v3court-t05-current-consumer-causality-r1",
+      "sha": "e5777f7f09d49e101d2762e2e73445218187db8c"
+    },
+    {
+      "name": "agent/verkhovod-a01-fracturemap-admission-r1",
+      "sha": "e003e6df0db06ff138dcbf2b12b16422d3eec5af"
+    },
+    {
+      "name": "agent/verkhovod-b01-fracturemap-admission-r2",
+      "sha": "a24e0082357f6d01425f0b12b63b121d6a36b7df"
+    },
+    {
+      "name": "agent/verkhovod-c01-fracturemap-selective-invalidation-r1",
+      "sha": "9d845a71c767addd45a106c00f13ff523ca3676c"
+    },
+    {
+      "name": "agent/verkhovod-c01r2-fracturemap-selective-invalidation",
+      "sha": "ab287dcb48a3133fd4c79c881996fdd01f778c79"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-d01-controller-composition-r1",
+      "sha": "125fe2ee118dcf51239528a9a15b66fe8a2ef402"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-d02-selection-law-r1",
+      "sha": "ead65727cf1f46e038b1fa8cf94b9a83a3245d88"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-d03-stop-retention-law-r1",
+      "sha": "d088d1b10e63084c61e1ed31f42cc55e53b0a2d9"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-d04-cosignature-composition-r1",
+      "sha": "a99596e2692a71379d09c352ccd6fcd622509573"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-fulljoin-r1",
+      "sha": "80843fc92b79bf591f57b22bae7ccc4db0db1ac3"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-g01-historical-implementation-r1",
+      "sha": "aaec62c51b7970658a4c19259a33e2523ecfef4c"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-g02-current-i05-audit-r1",
+      "sha": "191eaaad58d81fb440c8b55964028fcce27c6ad7"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-g03-cosignature-topology-audit-r1",
+      "sha": "a6eb9a89f17b1334f5772c72b2ff5d94251eeb4b"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-g04-hostile-oracle-r1",
+      "sha": "8620265b95f5b3bf8c210674a7735e0ce8dac88c"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-g05-autonomous-controller-audit-r1",
+      "sha": "21b4bfbe4f609aeca7a5850a738eff7f663f3ba4"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-i01-policy-objects-r1",
+      "sha": "dd3f3aca306e303d5aea7b7d732f291f4bff330e"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-i02-controller-composition-r1",
+      "sha": "9b6d6824739ba01ff9912fab20c740b05d6fef21"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-i03-j3-topology-r1",
+      "sha": "658dc1d610249eac97abf82a2bb61cb9ceb689b1"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-i04-cosignature-composition-r1",
+      "sha": "2474f8ef5907d5f5b70344e4a1c9ea9dbe14ecd8"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-i05-hostile-acceptance-prep-r1",
+      "sha": "030521d57e3fc5f4582d43f90efb0056aa69d8cd"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-i06-lebanon-parity-prep-r1",
+      "sha": "dc2d53d6176021e66098ba513fde1509f7621254"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-i07-realdata-cosignature-prep-r1",
+      "sha": "f8ec01cfdcadcfeb4001eeaf01b5ce09f46ccc80"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-i08-independent-validation-prep-r1",
+      "sha": "1d4b44c3b1fd8ccabccfb06f87fcd42140717eb1"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-implementation-wave-r1",
+      "sha": "80843fc92b79bf591f57b22bae7ccc4db0db1ac3"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-l01-originary-constitution-r1",
+      "sha": "b4bd8ef6e690f9df673183630bbcfc16d4ae2f67"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-l02-lebanon-realdata-r1",
+      "sha": "c9acd7e9ff887dd3a4a29d91f45688cb9c0705a3"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-l03-cosignature-realdata-r1",
+      "sha": "74834f5028cae0cdd3c525483494437f81c721e0"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-l04-multilabel-residual-stoplaw-r1",
+      "sha": "ece3edae0c70869867cce6f9435378d85d1e1ef3"
+    },
+    {
+      "name": "agent/verkhovod-fracturemap-l05-downstream-jurisdiction-r1",
+      "sha": "d64a09a5658d38c8e78ac5fbd153449689a64c83"
+    },
+    {
+      "name": "agent/verkhovod-z02-fracturemap-integration-r1",
+      "sha": "cf3b376710e61695ab37a24269728152bd58f53e"
+    },
+    {
+      "name": "agent/vozhd-dva-w0-adp-016-v3-causal-memory",
+      "sha": "1872eba1128ca3a8763126d37a6faa42f63f38ed"
+    },
+    {
+      "name": "agent/vozhd-dva-w0-adp-020-v3-causal-rng",
+      "sha": "c2bd6a6bc309702e1b76f1e73c7af2c1040c84f1"
+    },
+    {
+      "name": "agent/vozhd-field-forge-r2-ffif012-post-second-canary-central-reideation-r1",
+      "sha": "7afd7e7d8753797cd1327bce43817952d9891121"
+    },
+    {
+      "name": "agent/vozhd-field-forge-r2-ffif014-discovery-followup-preoutput-join-r1",
+      "sha": "ad2db7ece75fb6c2cd89260f8a70a153734895c9"
+    },
+    {
+      "name": "agent/vozhd-field-forge-r2-ffif015-post-linkage-terminal-readiness-r1",
+      "sha": "3bee933f0cb60c44711f5de4772ff50e7d7b800f"
+    },
+    {
+      "name": "agent/vozhd-field-forge-r2-terminal-synthesis-r1",
+      "sha": "e272ff7e1d7a828f1aff79e1bade5e07c8d64fd5"
+    },
+    {
+      "name": "agent/vozhd-field-forge-r2-terminal-synthesis-repair-r1",
+      "sha": "e1e41f67ba8f3c17f5cc7bd73b81caf90f0f79f6"
+    },
+    {
+      "name": "agent/vozhd-global-hq-field-forge-r2-second-canary-pra-commission-r1",
+      "sha": "4daad79e4e4fb5c56a220a553319e761ed71fe90"
+    },
+    {
+      "name": "agent/vozhd-global-hq-field-forge-r2-terminal-acceptance-r1",
+      "sha": "4483bee7c0b19d98f527d45fd06e481cede9d58a"
+    },
+    {
+      "name": "agent/vozhd-global-hq-premain-succession-adoption-field-forge-commission-r1",
+      "sha": "d3e93ab491dbbdc1763c019f44992b6884456b5b"
+    },
+    {
+      "name": "agent/vozhd-nonpff-application-build-spine-r1",
+      "sha": "c5bc5607760d8d9e65f391fe53e26de4a15def33"
+    },
+    {
+      "name": "agent/vozhd-psychic-field-forge-vision-war-plan-bank-r1",
+      "sha": "32a5db9ec97d8a5f94e745f46c1df01c68ecd603"
+    },
+    {
+      "name": "agent/vozhd-pyat-r48-m48-independent-scientific-requirements-r1",
+      "sha": "91f70358a7682e983276e79777bc591841162392"
+    },
+    {
+      "name": "agent/vozhd-pyat-r48-needs-first-source-prev3-architectural-recon-r1",
+      "sha": "485831d5f5eed9f64943d38c36ff818a2b3a8570"
+    },
+    {
+      "name": "agent/vozhd-sorok-hq321-four-return-fanin-candidate-r1",
+      "sha": "903bbc73cac90380a702bfa1f2f15ad9a43c20f7"
+    },
+    {
+      "name": "codex/sorok-hq-accession-candidate-20261022",
+      "sha": "778c69d1a520a2be9901961f5aaeeffda8de8261"
+    }
+  ]
+}
