@@ -54,11 +54,14 @@ class ActualCarrierRefusal(RuntimeError):
 
 
 def _sha_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
+    try:
+        with path.open("rb") as handle:
+            digest = hashlib.sha256()
+            for block in iter(lambda: handle.read(1024 * 1024), b""):
+                digest.update(block)
+            return digest.hexdigest()
+    except OSError as exc:
+        raise ActualCarrierRefusal("CARRIER_FILE_UNREADABLE", str(exc)) from exc
 
 
 def _load_json(path: Path) -> Any:
@@ -98,12 +101,20 @@ def _replay_manifest(path: Path) -> ReplayManifest:
 
 
 def _iter_pickle(path: Path):
-    with path.open("rb") as handle:
+    try:
+        handle = path.open("rb")
+    except OSError as exc:
+        raise ActualCarrierRefusal("CARRIER_STREAM_FILE_UNREADABLE", str(exc)) from exc
+    with handle:
         while True:
             try:
                 yield pickle.load(handle)
             except EOFError:
                 return
+            except (pickle.UnpicklingError, ValueError, TypeError) as exc:
+                raise ActualCarrierRefusal("CARRIER_STREAM_UNREADABLE", str(exc)) from exc
+            except OSError as exc:
+                raise ActualCarrierRefusal("CARRIER_STREAM_READ_FAILED", str(exc)) from exc
 
 
 def _validate_receipts(

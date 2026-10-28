@@ -37,14 +37,19 @@ class ConsumerBridgeResult:
 
 
 def _discovery_snapshot(grant: HumanGrant, issued: IssuedExecution) -> AuthoritySnapshot:
+    fixture_only = issued.fixture_only or issued.contract.authority_grade == "NONRESPONDENT_FIXTURE_ONLY"
+    operation = "FIXTURE_COMPONENT_OBSERVED_DISCOVERY@1.0.0" if fixture_only else "SOURCE_LOCAL_OBSERVED_DISCOVERY@1.0.0"
+    target_use_ref = issued.contract.target_use_ref or TARGET_USE_REF
     material = {
-        "authority_id": "SRC04-USER-EMPIRICAL-DISCOVERY",
+        "authority_id": "SRC04-FIXTURE-DISCOVERY" if fixture_only else "SRC04-USER-EMPIRICAL-DISCOVERY",
         "kind": "DISCOVERY_FRONTIER",
-        "operation": "SOURCE_LOCAL_OBSERVED_DISCOVERY@1.0.0",
-        "source_sha256": grant.sha256,
+        "operation": operation,
+        "source_sha256": grant.document["source_sha256"],
+        "grant_sha256": grant.sha256,
         "release_ref": issued.release.release_ref.as_dict(),
         "universe_ref": issued.contract.universe_ref.as_dict() if issued.contract.universe_ref else None,
         "risk_set_ref": issued.contract.risk_set_ref.as_dict(),
+        "fixture_only": fixture_only,
     }
     digest = semantic_hash(material)
     return AuthoritySnapshot(
@@ -53,12 +58,12 @@ def _discovery_snapshot(grant: HumanGrant, issued: IssuedExecution) -> Authority
         dependency_refs=(grant.ref,),
         producer_replay_locator_or_reference_root=ExactRef(
             "REPLAY_ROOT", f"urn:rawlsing:user-grant-replay:discovery:{digest}", digest),
-        authority_id="SRC04-USER-EMPIRICAL-DISCOVERY",
+        authority_id="SRC04-FIXTURE-DISCOVERY" if fixture_only else "SRC04-USER-EMPIRICAL-DISCOVERY",
         authority_version="1.0.0",
         authority_content_hash=digest,
         authority_kind="DISCOVERY_FRONTIER",
         decision_state="ALLOW",
-        governed_operations=("SOURCE_LOCAL_OBSERVED_DISCOVERY@1.0.0",),
+        governed_operations=(operation,),
         governed_object_families=("DiscoveryAuthority@1.0.0", "DiscoveryResultReceipt@1.0.0"),
         scope_envelope={
             "source_universe_refs": [issued.contract.universe_ref.as_dict()],
@@ -69,12 +74,12 @@ def _discovery_snapshot(grant: HumanGrant, issued: IssuedExecution) -> Authority
             "source_id": "SRC04",
             "source_sha256": grant.document["source_sha256"],
             "grant_sha256": grant.sha256,
-            "fixture_only": False,
-            "grade": "USER_EMPIRICAL_GRANT",
-            "canonical_adoption": "DENY",
-            "target_use_refs": [TARGET_USE_REF.as_dict()],
+            "fixture_only": fixture_only,
+            "grade": "NONRESPONDENT_FIXTURE_ONLY" if fixture_only else "USER_EMPIRICAL_GRANT",
+            "canonical_adoption": "NONRESPONDENT_FIXTURE_ONLY" if fixture_only else "DENY",
+            "target_use_refs": [target_use_ref.as_dict()],
         },
-        effective_time_or_interval="2026-10-28/USER_EMPIRICAL_GRANT",
+        effective_time_or_interval="2026-10-28/NONRESPONDENT_FIXTURE" if fixture_only else "2026-10-28/USER_EMPIRICAL_GRANT",
         parent_authority_refs=(),
         negative_limit_refs=(),
         supersession_refs=(),
@@ -124,9 +129,13 @@ def consume_with_lane_d(
     if base.fact_ref is None:
         raise AuthorizedExecutionRefusal("BASE_FACT_REF_MISSING")
     snapshot = _discovery_snapshot(grant, issued)
+    fixture_only = issued.fixture_only or issued.contract.authority_grade == "NONRESPONDENT_FIXTURE_ONLY"
+    claim_ceiling = "SUPPORTED_COMPONENT_ONLY" if fixture_only else "SOURCE_LOCAL_STATISTIC"
+    use_scope = "SUPPORTED_COMPONENT_ONLY" if fixture_only else "SOURCE_LOCAL_STATISTIC"
+    discovery_operation = "FIXTURE_COMPONENT_OBSERVED_DISCOVERY@1.0.0" if fixture_only else "SOURCE_LOCAL_OBSERVED_DISCOVERY@1.0.0"
     grammar = {
         "schema": CANDIDATE_GRAMMAR_SCHEMA,
-        "discovery_operation": "SOURCE_LOCAL_OBSERVED_DISCOVERY@1.0.0",
+        "discovery_operation": discovery_operation,
         "atoms": (
             {"atom_id": "BASELINE", "predicate_ref": base.predicate.ref.as_dict(),
              "kind": "BRANCH", "ancestry_refs": ()},
@@ -176,7 +185,7 @@ def consume_with_lane_d(
         authority_snapshot=snapshot,
         predicate_catalog=(base.predicate, condition.predicate),
         query_template_catalog=(base.query,),
-        scope="SRC04_SOURCE_LOCAL_OBSERVED_RESPONSE",
+        scope=("SRC04_NONRESPONDENT_FIXTURE_ONLY" if fixture_only else "SRC04_SOURCE_LOCAL_OBSERVED_RESPONSE"),
     )
     contract = ProducerContract(
         source_id="SRC04",
@@ -190,11 +199,11 @@ def consume_with_lane_d(
             "C11LogicalRelease", "EmpiricalQuerySpec@1.0.0",
             "EmpiricalPredicate@1.0.0", "EmpiricalFact@1.0.0",
         ),
-        evidence_tier="SOURCE_LOCAL_CERTIFIED",
-        claim_ceiling="SOURCE_LOCAL_STATISTIC",
-        use_scopes=("SOURCE_LOCAL_STATISTIC",),
+        evidence_tier="PARTIAL_AUTHORITY" if fixture_only else "SOURCE_LOCAL_CERTIFIED",
+        claim_ceiling=claim_ceiling,
+        use_scopes=(use_scope,),
         native_authority_refs=tuple(base.query.authority_snapshot_refs),
-        fixture_only=False,
+        fixture_only=fixture_only,
     )
     registry = AuthorityRegistry((*issued.authorities, snapshot))
     bundle = ProducerBundle(
@@ -209,8 +218,9 @@ def consume_with_lane_d(
     product = consume_native_producer(
         bundle,
         expected_source_id="SRC04",
-        requested_claim_ceiling="SOURCE_LOCAL_STATISTIC",
-        use_scope="SOURCE_LOCAL_STATISTIC",
+        requested_claim_ceiling=claim_ceiling,
+        use_scope=use_scope,
+        allow_fixture_engineering=fixture_only,
     )
     return ConsumerBridgeResult(status=product["status"], product=product, detail=product["downstream_value_effect"])
 

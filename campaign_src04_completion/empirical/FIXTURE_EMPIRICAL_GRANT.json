@@ -1,0 +1,39 @@
+{
+  "schema": "PYAT_SRC04_NONRESPONDENT_FIXTURE_GRANT@1.0.0",
+  "issuer": "EXISTING_PYAT_FIXTURE_AUTHORITY",
+  "authority_basis": "R157 SRC04 labelled nonrespondent fixture authority plus the existing accepted C/D fixture boundary; not original-source permission",
+  "source_id": "SRC04",
+  "source_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b",
+  "source_rows": 8,
+  "fixture_id": "R157-ARAB-SRC04-NONRESPONDENT",
+  "fixture_only": true,
+  "operation": "OBSERVED_RESPONSE_DISTRIBUTION@1.0.0",
+  "decision": "ALLOW_WITHIN_FIXTURE_SCOPE",
+  "currentness": "CURRENT_GRANTED",
+  "scope": {
+    "source_records": 8,
+    "methods": [
+      "UNARY_OBSERVED_DISTRIBUTION",
+      "BIDIRECTIONAL_CONDITIONAL_DISTRIBUTION",
+      "SAME_RESPONDENT_JOINT_DISTRIBUTION"
+    ],
+    "denominators": [
+      "PER_TARGET_OBSERVED",
+      "CO_OBSERVED_TARGETS"
+    ],
+    "condition_observation": "ALL_REFERENCED_RESPONSE_VARIABLES_OBSERVED",
+    "missingness": "Missing excluded and counted; DK, REFUSAL and SOURCE_SPECIFIC_SPECIAL remain separate observed states",
+    "source_local_use": [
+      "EXISTING_NATIVE_I03_FIXTURE_ONLY",
+      "SUPPORTED_COMPONENT_ONLY"
+    ],
+    "target_use": "SUPPORTED_COMPONENT_ONLY",
+    "canonical_adoption": "NONRESPONDENT_FIXTURE_ONLY",
+    "analytical_coordinates": 0
+  },
+  "limits": [
+    "Nonrespondent fixture only; never original SRC04 source-local science.",
+    "No original SAV access or original respondent data.",
+    "No population, weighted, causal, structural, FF, N11/N12 or actor claim."
+  ]
+}

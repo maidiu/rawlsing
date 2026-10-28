@@ -1,0 +1,96 @@
+{
+  "schema": "PYAT_SRC04_LANE_C_TEST_RESULTS@5.0.0",
+  "carrier_repair_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/test_authorized_execution.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      ".........s                                                               [100%]",
+      "9 passed, 1 skipped in 17.15s"
+    ],
+    "count": 9,
+    "skipped": 1,
+    "note": "The skipped D-pending test is skipped because the accepted D dependency is joined; the end-to-end fixture through adapter/issuer/executor/D passed."
+  },
+  "observed_response_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_observed_response.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      ".............                                                            [100%]",
+      "13 passed in 2.93s"
+    ],
+    "count": 13
+  },
+  "i03_regression_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_i03_scale_equivalence_repair.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      ".......................................                                  [100%]",
+      "39 passed in 0.88s"
+    ],
+    "count": 39
+  },
+  "consumer_regression_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_pre553_candidate_c_production_binding.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      ".................                                                        [100%]",
+      "17 passed in 1.63s"
+    ],
+    "count": 17
+  },
+  "frozen_review": {
+    "path": "campaign_src04_completion/empirical/actual_review",
+    "status": "PRESERVED_UNCHANGED_NOT_ACCEPTANCE_ORACLE",
+    "review_commit": "434211cc09cd8b57c3087319d5de878640890604"
+  },
+  "fixture_end_to_end": {
+    "test": "test_actual_carrier_fixture_issuer_executor_and_lane_d_end_to_end",
+    "adapter": "PASS",
+    "issuer": "PASS",
+    "executor_operations": 44,
+    "executed": 44,
+    "refused": 0,
+    "unary": 3,
+    "conditional": 38,
+    "joint": 3,
+    "d_status": "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE",
+    "d_effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED"
+  },
+  "carrier_refusals": {
+    "test": "test_actual_carrier_missing_malformed_and_truncated_refusals",
+    "missing_file_code": "CARRIER_FILE_UNREADABLE",
+    "malformed_or_truncated_codes": [
+      "CARRIER_STREAM_UNREADABLE",
+      "CARRIER_STREAM_FILE_UNREADABLE"
+    ],
+    "raw_exception_leak": false
+  },
+  "code_hashes": {
+    "campaign_src04_completion/empirical/actual_carrier.py": "18d5103d00594506d1c26070d90becff1102cf6ffbad812aeed3334fd12a6f85",
+    "campaign_src04_completion/empirical/authorized_execution.py": "f8bc8efce659995abc4c19bd3e95a7bbe378252dead8c65d4a261d1da0c8a76e",
+    "campaign_src04_completion/empirical/consumer_bridge.py": "4b02ef94373dbd1b01900ac744b07c84795935d2d904783533ca36030be6ab29",
+    "campaign_src04_completion/empirical/test_authorized_execution.py": "ffe8f6f32bcb27bd3a39f45ba1b4781a0f4a26039e380a6b58767670b0d39c1b",
+    "rawlsing_next/pre553_observed_response.py": "e2d3127fee643dfa1d165d281a870f7b1e2e74930cf9781516cad871db26c626"
+  },
+  "artifacts": {
+    "campaign_src04_completion/empirical/FIXTURE_EMPIRICAL_GRANT.json": "38e82f943bee3b2e649e91beb0dee97ca343538f6c903a286adda81c5df84f7f",
+    "campaign_src04_completion/empirical/NATIVE_WORKLOAD_PREFLIGHT.json": "6fe21a242b45b8332b1511c41eebfe9c02d636937bcbaaf7d7a985b541903a96",
+    "campaign_src04_completion/empirical/actual_review/REVIEW.json": "a9e8bd8756e81f05001249322b96dfeec0cb6e0b9abfbd70597e0c01bba53ce0",
+    "campaign_src04_completion/consumers/consumer.py": "728fbc9a09291ae9c9d578fbed7641acd4499a2ff4158b7588e1cc5afa18f8ae"
+  },
+  "original_source_io": {
+    "status": "NONE",
+    "source_read_performed": false
+  },
+  "original_workload": {
+    "issued": 0,
+    "executed": 0,
+    "reason": "fixture repair only; original source qualification separate and running"
+  },
+  "limits": [
+    "Labelled nonrespondent fixture only; not original SRC04 qualification.",
+    "No original SAV stat/hash/open/decode/read.",
+    "No original workload issued or executed.",
+    "No canonical/weight/population/structural/I05 claim."
+  ]
+}
