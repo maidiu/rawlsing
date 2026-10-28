@@ -772,9 +772,10 @@ def run_with_grant(grant_path: Path, grant_sha256: str, repaired_config_path: Pa
             "all_181_physical_slots_accounted": selection["all_181_physical_slots_accounted"],
             "held_premises": held_premises,
         }
+        input_config_path = (repaired_config_path if repaired else CONFIG_PATH).resolve()
         config_delta = {
-            "input_config_path": str((repaired_config_path if repaired else CONFIG_PATH).relative_to(ROOT)),
-            "input_config_file_sha256": sha_file(repaired_config_path) if repaired else sha_file(CONFIG_PATH),
+            "input_config_path": str(input_config_path.relative_to(ROOT)),
+            "input_config_file_sha256": sha_file(input_config_path),
             "input_config_canonical_sha256": canonical_config_hash(config),
             "b_config_path": str(B_CONFIG_PATH.relative_to(ROOT)),
             "b_config_file_sha256": B_CONFIG_FILE_SHA256,
