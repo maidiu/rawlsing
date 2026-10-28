@@ -46,6 +46,17 @@ from campaign_src04_completion.empirical.actual_carrier import load_actual_carri
 
 GRANT_SCHEMA = "PYAT_SRC04_NATIVE_EMPIRICAL_USER_GRANT@1.0.0"
 GRANT_SHA256 = "757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f"
+FIXTURE_GRANT_SCHEMA = "PYAT_SRC04_NONRESPONDENT_FIXTURE_GRANT@1.0.0"
+FIXTURE_GRANT_SHA256 = "38e82f943bee3b2e649e91beb0dee97ca343538f6c903a286adda81c5df84f7f"
+FIXTURE_SOURCE_SHA256 = "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b"
+FIXTURE_ROWS = 8
+FIXTURE_OPERATION = "OBSERVED_RESPONSE_DISTRIBUTION@1.0.0"
+FIXTURE_TARGET_USE_OPERATION = "SUPPORTED_COMPONENT_ONLY"
+FIXTURE_TARGET_USE_REF = ExactRef(
+    "TARGET_USE",
+    "urn:rawlsing:pre553:target-use:SRC04:nonrespondent-fixture-component",
+    "8f0e2b7f6c4d5a7c3b1e9d8a6f5c4b3a2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b",
+)
 GRANT_OPERATION = "PRE553_OBSERVED_RESPONSE_EMPIRICAL_OPERATIONS@1.0.0"
 SOURCE_LITERAL_OPERATION = "OBSERVED_RESPONSE_SOURCE_LITERAL_BINDING@1.0.0"
 TOPOLOGY_OPERATION = "R157_PREPARE_SOURCE_TOPOLOGY"
@@ -82,12 +93,13 @@ class HumanGrant:
     path: Path
     sha256: str
     document: Mapping[str, Any]
+    kind: str = "USER_EMPIRICAL_GRANT"
 
     @property
     def ref(self) -> ExactRef:
         return ExactRef(
-            "USER_EMPIRICAL_GRANT",
-            f"urn:rawlsing:user-empirical-grant:SRC04:{self.sha256}",
+            self.kind,
+            f"urn:rawlsing:{self.kind.lower()}:SRC04:{self.sha256}",
             self.sha256,
         )
 
@@ -105,6 +117,7 @@ class IssuedExecution:
     target_use_authority_ref: AuthorityRef
     held_targets: tuple[Mapping[str, Any], ...]
     authorities: tuple[AuthoritySnapshot, ...] = ()
+    fixture_only: bool = False
 
 
 def _sha_file(path: Path) -> str:
@@ -149,6 +162,31 @@ def authenticate_grant(path: str | Path, expected_sha256: str = GRANT_SHA256) ->
     return HumanGrant(path=path, sha256=actual, document=document)
 
 
+def authenticate_fixture_grant(
+    path: str | Path = ROOT / "campaign_src04_completion/empirical/FIXTURE_EMPIRICAL_GRANT.json",
+    expected_sha256: str = FIXTURE_GRANT_SHA256,
+) -> HumanGrant:
+    path = Path(path)
+    actual = _sha_file(path) if path.is_file() else ""
+    if actual != expected_sha256:
+        raise AuthorizedExecutionRefusal("FIXTURE_GRANT_SHA256_MISMATCH", actual)
+    document = json.loads(path.read_text(encoding="utf-8"))
+    if document.get("schema") != FIXTURE_GRANT_SCHEMA:
+        raise AuthorizedExecutionRefusal("FIXTURE_GRANT_SCHEMA_MISMATCH")
+    if document.get("fixture_only") is not True:
+        raise AuthorizedExecutionRefusal("FIXTURE_GRANT_NOT_FIXTURE_ONLY")
+    if document.get("source_id") != SOURCE_ID or document.get("source_sha256") != FIXTURE_SOURCE_SHA256:
+        raise AuthorizedExecutionRefusal("FIXTURE_GRANT_SOURCE_MISMATCH")
+    if int(document.get("source_rows", 0)) != FIXTURE_ROWS:
+        raise AuthorizedExecutionRefusal("FIXTURE_GRANT_ROW_COUNT_MISMATCH")
+    if document.get("operation") != FIXTURE_OPERATION or document.get("decision") != "ALLOW_WITHIN_FIXTURE_SCOPE":
+        raise AuthorizedExecutionRefusal("FIXTURE_GRANT_SCOPE_MISMATCH")
+    scope = document.get("scope", {})
+    if not REQUIRED_METHODS.issubset(set(scope.get("methods", ()))):
+        raise AuthorizedExecutionRefusal("FIXTURE_GRANT_METHOD_SCOPE_INCOMPLETE")
+    return HumanGrant(path=path, sha256=actual, document=document, kind="NONRESPONDENT_FIXTURE_GRANT")
+
+
 def load_parquet_release(
     *,
     root: str | Path,
@@ -188,6 +226,9 @@ def _target_events(release: C11LogicalRelease, target_ref: ExactRef) -> list[Any
 def _topology_valid_targets(
     release: C11LogicalRelease,
     contract: ObservedResponseContract,
+    *,
+    allow_fixture_canonical: bool = False,
+    extend_release_targets: bool = True,
 ) -> tuple[tuple[ObservedResponseTopologyBinding, ...], tuple[Mapping[str, Any], ...], tuple[AuthorityRef, ...]]:
     respondents = tuple(
         record for record in release.internal_records if isinstance(record, RespondentIdentity))
@@ -204,7 +245,7 @@ def _topology_valid_targets(
         key=lambda ref: ref.key,
     )
     all_bindings = list(contract.topology_bindings)
-    for target_ref in release_targets:
+    for target_ref in release_targets if extend_release_targets else ():
         if target_ref.key in contract_bindings:
             continue
         events = [e for e in _target_events(release, target_ref) if e.typed_state in contract.observed_states]
@@ -274,7 +315,7 @@ def _topology_valid_targets(
                 held.append({"target_ref": binding.target_ref.as_dict(),
                              "code": "NON_SCALAR_CONTRACT_TOPOLOGY"})
                 continue
-            if bad_canonical:
+            if bad_canonical and not allow_fixture_canonical:
                 held.append({"target_ref": binding.target_ref.as_dict(),
                              "code": "CANONICAL_VALUE_PRESENT_FOR_SOURCE_LITERAL"})
                 continue
@@ -335,7 +376,14 @@ def _snapshot(
     )
 
 
-def _base_scope(grant: HumanGrant, release: C11LogicalRelease, universe_ref: ExactRef, risk_set_ref: ExactRef) -> dict[str, Any]:
+def _base_scope(
+    grant: HumanGrant,
+    release: C11LogicalRelease,
+    universe_ref: ExactRef,
+    risk_set_ref: ExactRef,
+    *,
+    fixture_mode: bool = False,
+) -> dict[str, Any]:
     return {
         "source_universe_refs": [universe_ref.as_dict()],
         "predicate_or_risk_set_refs": [risk_set_ref.as_dict()],
@@ -343,12 +391,12 @@ def _base_scope(grant: HumanGrant, release: C11LogicalRelease, universe_ref: Exa
         "source_artifact_ref": release.source_artifact_ref.as_dict(),
         "source_release_manifest_hash": release.source_release_manifest_hash,
         "source_id": SOURCE_ID,
-        "source_sha256": SOURCE_SHA256,
+        "source_sha256": grant.document["source_sha256"],
         "grant_sha256": grant.sha256,
         "grant_ref": grant.ref.as_dict(),
-        "fixture_only": False,
-        "grade": "USER_EMPIRICAL_GRANT",
-        "canonical_adoption": "DENY",
+        "fixture_only": fixture_mode,
+        "grade": "NONRESPONDENT_FIXTURE_ONLY" if fixture_mode else "USER_EMPIRICAL_GRANT",
+        "canonical_adoption": "NONRESPONDENT_FIXTURE_ONLY" if fixture_mode else "DENY",
     }
 
 
@@ -358,8 +406,17 @@ def issue_authorized_execution(
     release: C11LogicalRelease,
     pending_contract: ObservedResponseContract,
     policy: WorkloadPolicy,
+    fixture_mode: bool = False,
 ) -> IssuedExecution:
-    if release.source_artifact_ref.content_hash != SOURCE_SHA256:
+    expected_source = grant.document.get("source_sha256")
+    expected_rows = int(grant.document.get("scope", {}).get("source_records", EXPECTED_ROWS))
+    if fixture_mode:
+        if pending_contract.authority_grade != "NONRESPONDENT_FIXTURE_ONLY":
+            raise AuthorizedExecutionRefusal("FIXTURE_CONTRACT_GRADE_REQUIRED")
+        if grant.document.get("fixture_only") is not True:
+            raise AuthorizedExecutionRefusal("FIXTURE_GRANT_REQUIRED")
+        expected_rows = FIXTURE_ROWS
+    if release.source_artifact_ref.content_hash != expected_source:
         raise AuthorizedExecutionRefusal("RELEASE_SOURCE_IDENTITY_MISMATCH")
     if release.source_release_manifest_hash in (None, ""):
         raise AuthorizedExecutionRefusal("RELEASE_MANIFEST_HASH_MISSING")
@@ -367,9 +424,13 @@ def issue_authorized_execution(
         raise AuthorizedExecutionRefusal("CONTRACT_UNIVERSE_REQUIRED")
     respondents = tuple(
         record for record in release.internal_records if isinstance(record, RespondentIdentity))
-    if len(respondents) != EXPECTED_ROWS:
+    if len(respondents) != expected_rows:
         raise AuthorizedExecutionRefusal("RELEASE_RESPONDENT_COUNT_MISMATCH", str(len(respondents)))
-    valid_bindings, held, event_authorities = _topology_valid_targets(release, pending_contract)
+    valid_bindings, held, event_authorities = _topology_valid_targets(
+        release, pending_contract,
+        allow_fixture_canonical=fixture_mode,
+        extend_release_targets=not fixture_mode,
+    )
     universe_obj = next(
         (obj for obj in release.public_objects if obj.ref == pending_contract.universe_ref), None)
     if universe_obj is None:
@@ -386,7 +447,9 @@ def issue_authorized_execution(
         exact_ref(obj.native_question_ref, "native_question_ref")
         for obj in release.public_objects if obj.schema_id == "RespondentEvent"
     }
-    base_scope = _base_scope(grant, release, pending_contract.universe_ref, pending_contract.risk_set_ref)
+    base_scope = _base_scope(
+        grant, release, pending_contract.universe_ref, pending_contract.risk_set_ref,
+        fixture_mode=fixture_mode)
     grammar_material = {
         "authority_id": "SRC04-USER-EMPIRICAL-PREDICATE-GRAMMAR",
         "kind": "PREDICATE_GRAMMAR",
@@ -408,7 +471,7 @@ def issue_authorized_execution(
         **base_scope,
         "historical_event_authority_refs": [ref.as_dict() for ref in event_authorities],
         "source_literal_only": True,
-        "canonical_adoption": "DENY",
+        "canonical_adoption": "NONRESPONDENT_FIXTURE_ONLY" if fixture_mode else "DENY",
     }
     literal_material = {
         "authority_id": "SRC04-USER-EMPIRICAL-SOURCE-LITERAL",
@@ -468,23 +531,25 @@ def issue_authorized_execution(
             topology_authority_ref=topology.authority_ref,
             response_semantic_authority_refs=(literal.authority_ref,),
         ))
+    use_ref = FIXTURE_TARGET_USE_REF if fixture_mode else TARGET_USE_REF
+    use_operation = FIXTURE_TARGET_USE_OPERATION if fixture_mode else TARGET_USE_OPERATION
     use_scope = {
         **base_scope,
-        "target_use_refs": [TARGET_USE_REF.as_dict()],
-        "source_local_use": "EXISTING_NATIVE_I03_EMPIRICALFACT",
+        "target_use_refs": [use_ref.as_dict()],
+        "source_local_use": "SUPPORTED_COMPONENT_ONLY" if fixture_mode else "EXISTING_NATIVE_I03_EMPIRICALFACT",
     }
     use_material = {
-        "authority_id": "SRC04-USER-EMPIRICAL-TARGET-USE",
+        "authority_id": "SRC04-FIXTURE-TARGET-USE" if fixture_mode else "SRC04-USER-EMPIRICAL-TARGET-USE",
         "kind": "TARGET_USE_PERMISSION",
-        "operation": TARGET_USE_OPERATION,
+        "operation": use_operation,
         "scope": use_scope,
-        "target_use_ref": TARGET_USE_REF.as_dict(),
+        "target_use_ref": use_ref.as_dict(),
         "grant_sha256": grant.sha256,
     }
     target_use = _snapshot(
-        authority_id="SRC04-USER-EMPIRICAL-TARGET-USE",
+        authority_id="SRC04-FIXTURE-TARGET-USE" if fixture_mode else "SRC04-USER-EMPIRICAL-TARGET-USE",
         kind="TARGET_USE_PERMISSION",
-        operations=(TARGET_USE_OPERATION,),
+        operations=(use_operation,),
         families=("EmpiricalFact@1.0.0",),
         scope=use_scope,
         material=use_material,
@@ -494,7 +559,8 @@ def issue_authorized_execution(
     authorized_contract = replace(
         pending_contract,
         contract_state="AUTHORIZED",
-        authority_grade="ORIGINAL_SCIENTIFIC",
+        authority_grade="NONRESPONDENT_FIXTURE_ONLY" if fixture_mode else "ORIGINAL_SCIENTIFIC",
+        source_sha256=expected_source if fixture_mode else pending_contract.source_sha256,
         release_ref=release.release_ref,
         source_release_manifest_hash=release.source_release_manifest_hash,
         universe_ref=pending_contract.universe_ref,
@@ -504,9 +570,9 @@ def issue_authorized_execution(
         source_literal_authority_ref=literal.authority_ref,
         source_literal_operation=SOURCE_LITERAL_OPERATION,
         source_event_authority_refs=event_authorities,
-        target_use_ref=TARGET_USE_REF,
+        target_use_ref=use_ref,
         target_use_authority_ref=target_use.authority_ref,
-        target_use_operation=TARGET_USE_OPERATION,
+        target_use_operation=use_operation,
     )
     release_authorities = tuple(
         obj for obj in release.public_objects if obj.schema_id == "AuthoritySnapshot")
@@ -525,6 +591,25 @@ def issue_authorized_execution(
         target_use_authority_ref=target_use.authority_ref,
         held_targets=held,
         authorities=tuple(release_authorities) + tuple(issued_authorities),
+        fixture_only=fixture_mode,
+    )
+
+
+def issue_fixture_execution(
+    *,
+    fixture_grant: HumanGrant,
+    release: C11LogicalRelease,
+    pending_contract: ObservedResponseContract,
+    policy: WorkloadPolicy,
+) -> IssuedExecution:
+    if fixture_grant.kind != "NONRESPONDENT_FIXTURE_GRANT":
+        raise AuthorizedExecutionRefusal("FIXTURE_GRANT_REQUIRED")
+    return issue_authorized_execution(
+        grant=fixture_grant,
+        release=release,
+        pending_contract=pending_contract,
+        policy=policy,
+        fixture_mode=True,
     )
 
 

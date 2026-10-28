@@ -632,8 +632,14 @@ def validate_contract_authority(
             source_universe_ref=contract.universe_ref.as_dict() if contract.universe_ref else None,
         )
         scope = literal.scope_envelope
-        if scope.get("canonical_adoption") != "DENY":
-            raise Pre553AuthorityError("source-literal authority must explicitly deny canonical adoption")
+        canonical_policy = scope.get("canonical_adoption")
+        if canonical_policy == "DENY":
+            pass
+        elif canonical_policy == "NONRESPONDENT_FIXTURE_ONLY" and contract.authority_grade == "NONRESPONDENT_FIXTURE_ONLY":
+            pass
+        else:
+            raise Pre553AuthorityError(
+                "source-literal authority canonical policy is not admissible for this contract grade")
         expected_refs = {ref.key for ref in contract.source_event_authority_refs}
         declared_refs = {
             _authority(item, "source_event_authority_refs").key
@@ -878,7 +884,10 @@ def validate_source_literal_event(
     if unexpected:
         raise Pre553AuthorityError(
             "event authority closure contains a ref outside the source-literal grant")
-    if getattr(event, "canonical_response_value_if_authorized", None) is not None:
+    if (
+        getattr(event, "canonical_response_value_if_authorized", None) is not None
+        and contract.authority_grade != "NONRESPONDENT_FIXTURE_ONLY"
+    ):
         raise Pre553AuthorityError(
             "observed source-literal operation cannot consume a canonical response value")
     return contract.source_literal_authority_ref
