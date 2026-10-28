@@ -1,0 +1,364 @@
+{
+  "artifacts": {
+    "FOCUSED_RECHECK.md": {
+      "path": "campaign_src04_completion/empirical/actual_review/FOCUSED_RECHECK.md",
+      "sha256": "a976c5af57d6b30dc31b0c47b63b9398da8f0287b7b241af6897278b24c6fd81"
+    },
+    "FOCUSED_RECHECK_MEASUREMENTS.json": {
+      "path": "campaign_src04_completion/empirical/actual_review/FOCUSED_RECHECK_MEASUREMENTS.json",
+      "sha256": "a10dc2f99b3e150cbb9b74bef3533fc2fc94d4a3c5fec30b7b499eef19c8a35a"
+    },
+    "FOCUSED_RECHECK_TEST_RUN.txt": {
+      "path": "campaign_src04_completion/empirical/actual_review/FOCUSED_RECHECK_TEST_RUN.txt",
+      "sha256": "980335dc8af51337f88ebd88eb2f464e2a77bf7ecda9c4f2de82cb74e621914c"
+    },
+    "test_carrier_focused_recheck.py": {
+      "path": "campaign_src04_completion/empirical/actual_review/test_carrier_focused_recheck.py",
+      "sha256": "8a5b6ee49562fcdc9e9979b73061bff2819c07b196a6f828a91db95188c13380"
+    }
+  },
+  "author_suite_supplementary": {
+    "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/test_authorized_execution.py -q -o addopts=''",
+    "note": "The skipped test is the dependency-pending branch because D is joined. The successor end-to-end test is not skipped and executed the required path.",
+    "result": "9 passed, 1 skipped in 17.30s"
+  },
+  "branch": "agent/pyat-src04-actual-carrier-review-20261028",
+  "candidate": "d03a1d78d488807b6b946e000df10c1c88dc4bea",
+  "carrier_refusals": {
+    "malformed": {
+      "code": "CARRIER_STREAM_UNREADABLE",
+      "detail": "CARRIER_STREAM_UNREADABLE: invalid load key, 'n'.",
+      "status": "EXCEPTION",
+      "type": "ActualCarrierRefusal"
+    },
+    "missing": {
+      "code": "CARRIER_FILE_UNREADABLE",
+      "detail": "CARRIER_FILE_UNREADABLE: [Errno 2] No such file or directory: '/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/tmp4xnivcip/missing.json'",
+      "status": "EXCEPTION",
+      "type": "ActualCarrierRefusal"
+    },
+    "truncated": {
+      "code": "CARRIER_STREAM_UNREADABLE",
+      "detail": "CARRIER_STREAM_UNREADABLE: pickle data was truncated",
+      "status": "EXCEPTION",
+      "type": "ActualCarrierRefusal"
+    }
+  },
+  "code_hashes": {
+    "campaign_src04_completion/consumers/consumer.py": "728fbc9a09291ae9c9d578fbed7641acd4499a2ff4158b7588e1cc5afa18f8ae",
+    "campaign_src04_completion/empirical/FIXTURE_EMPIRICAL_GRANT.json": "38e82f943bee3b2e649e91beb0dee97ca343538f6c903a286adda81c5df84f7f",
+    "campaign_src04_completion/empirical/actual_carrier.py": "18d5103d00594506d1c26070d90becff1102cf6ffbad812aeed3334fd12a6f85",
+    "campaign_src04_completion/empirical/authorized_execution.py": "f8bc8efce659995abc4c19bd3e95a7bbe378252dead8c65d4a261d1da0c8a76e",
+    "campaign_src04_completion/empirical/consumer_bridge.py": "4b02ef94373dbd1b01900ac744b07c84795935d2d904783533ca36030be6ab29",
+    "campaign_src04_completion/empirical/test_authorized_execution.py": "ffe8f6f32bcb27bd3a39f45ba1b4781a0f4a26039e380a6b58767670b0d39c1b",
+    "rawlsing_next/pre553_observed_response.py": "e2d3127fee643dfa1d165d281a870f7b1e2e74930cf9781516cad871db26c626"
+  },
+  "d_product": {
+    "discovery_fact_count": 2,
+    "discovery_facts": [
+      {
+        "fact_ref": {
+          "content_hash": "65021ceba381b433291bac84cd99637d9c5734e8bd2b51fa161340977bb460f6",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:65021ceba381b433291bac84cd99637d9c5734e8bd2b51fa161340977bb460f6"
+        },
+        "ledger_policy": "PER_TARGET_OBSERVED",
+        "not_eligible": true,
+        "observed_status": "OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION"
+      },
+      {
+        "fact_ref": {
+          "content_hash": "865b2d2a62ae382b9c8dc269e0c28bfcd407e498299cab054f0ae92c9e8c7e2d",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:865b2d2a62ae382b9c8dc269e0c28bfcd407e498299cab054f0ae92c9e8c7e2d"
+        },
+        "ledger_policy": "PER_TARGET_OBSERVED",
+        "not_eligible": true,
+        "observed_status": "OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION"
+      }
+    ],
+    "effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED",
+    "fact_ref": {
+      "content_hash": "ed4ae641a033a6847b3db5511ad3be4e99e7343e115f96cd2fe5fbb4486bebaa",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ed4ae641a033a6847b3db5511ad3be4e99e7343e115f96cd2fe5fbb4486bebaa"
+    },
+    "fixture_only": true,
+    "observed_response": {
+      "contract_ref": {
+        "content_hash": "7d8780332ba981f6baf55352b29f36a2af6656d553dc0a8c9c4cc9ee5425ef41",
+        "kind": "OBSERVED_RESPONSE_CONTRACT",
+        "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:7d8780332ba981f6baf55352b29f36a2af6656d553dc0a8c9c4cc9ee5425ef41"
+      },
+      "ledger": {
+        "condition_false": 0,
+        "condition_observation_policy": "ALL_REFERENCED_RESPONSE_VARIABLES_OBSERVED",
+        "condition_true_precomputed": 0,
+        "condition_unobserved": 0,
+        "contract_ref": {
+          "content_hash": "7d8780332ba981f6baf55352b29f36a2af6656d553dc0a8c9c4cc9ee5425ef41",
+          "kind": "OBSERVED_RESPONSE_CONTRACT",
+          "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:7d8780332ba981f6baf55352b29f36a2af6656d553dc0a8c9c4cc9ee5425ef41"
+        },
+        "denominator": 7,
+        "denominator_member_count": 7,
+        "denominator_policy": "PER_TARGET_OBSERVED",
+        "not_eligible_population_estimate": true,
+        "resolved_targets": 7,
+        "risk_member_count": 7,
+        "risk_set_type": "OBSERVED_RESPONSE_RISK_SET",
+        "scoped_respondents": 8,
+        "target_observed": 7,
+        "target_unobserved": 1,
+        "unresolved_after_denominator": 0
+      },
+      "not_eligible_population_estimate": true,
+      "status": "OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION"
+    },
+    "source_local_claim": false,
+    "status": "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE"
+  },
+  "fixture": {
+    "config_sha256": "7f69af5cfafe07123c211707df353b37da4e9375adfa6e55c5df42a930cfebaa",
+    "fixture_sha256": "e02e85388de86aa0ce66fa37ac59a6d3071537ea514788a54baf3964cbb44353",
+    "release_ref": {
+      "content_hash": "9026fa33bb5739b87b06309f12e1d31fe6fd21fb471237eda870d6d278d47f42",
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_FIXTURE_RELEASE/SRC04"
+    },
+    "rows": 8,
+    "stream_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b"
+  },
+  "fixture_grant": {
+    "path": "campaign_src04_completion/empirical/FIXTURE_EMPIRICAL_GRANT.json",
+    "rows": 8,
+    "sha256": "38e82f943bee3b2e649e91beb0dee97ca343538f6c903a286adda81c5df84f7f",
+    "source_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b"
+  },
+  "frozen_prior": {
+    "measurements_sha256": "85af81c7ce6de31f474a9d409edc058d5ff33cb9a3b7d2d9159307712b9e8c4a",
+    "path": "campaign_src04_completion/empirical/actual_review/test_actual_carrier_review.py",
+    "review_json_sha256": "a9e8bd8756e81f05001249322b96dfeec0cb6e0b9abfbd70597e0c01bba53ce0",
+    "sha256": "97278b24a8378674c7312b4d4f66972eedd18bb9ecec749ade797fdade69de67",
+    "status": "FROZEN_HISTORICAL_RED_PRESERVED_UNEDITED",
+    "test_run_sha256": "9314078b109ec98a1e2a10e1323b928acacf6a1de85e77f6dcd220f8b47429a4"
+  },
+  "head": "2d011ad450894b266c44b28cdabd93513df10718",
+  "issued": {
+    "authority_grade": "NONRESPONDENT_FIXTURE_ONLY",
+    "contract_ref": {
+      "content_hash": "7d8780332ba981f6baf55352b29f36a2af6656d553dc0a8c9c4cc9ee5425ef41",
+      "kind": "OBSERVED_RESPONSE_CONTRACT",
+      "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:7d8780332ba981f6baf55352b29f36a2af6656d553dc0a8c9c4cc9ee5425ef41"
+    },
+    "fixture_only": true,
+    "source_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b"
+  },
+  "limits": [
+    "Labelled SRC04 nonrespondent fixture only; not original-source qualification or source-local science.",
+    "Original accepted release 9ddec985... was not read, requalified, or executed.",
+    "Scoped engineering PASS only; no population/weighted/causal/structural/FF/N11/N12/actor claim.",
+    "Frozen historical RED tests and prior review artifacts remain unedited."
+  ],
+  "no_author_code_writes": true,
+  "no_duplicate_source_qualification": true,
+  "no_original_source_access": true,
+  "original_gates": {
+    "fixture_grant_as_original": {
+      "code": "NO_SOURCE_QUALIFIED_TARGETS",
+      "detail": "NO_SOURCE_QUALIFIED_TARGETS",
+      "status": "EXCEPTION",
+      "type": "AuthorizedExecutionRefusal"
+    },
+    "fixture_grant_wrong_sha": {
+      "code": "FIXTURE_GRANT_SHA256_MISMATCH",
+      "detail": "FIXTURE_GRANT_SHA256_MISMATCH: 38e82f943bee3b2e649e91beb0dee97ca343538f6c903a286adda81c5df84f7f",
+      "status": "EXCEPTION",
+      "type": "AuthorizedExecutionRefusal"
+    },
+    "original_grant_fixture_issuer": {
+      "code": "FIXTURE_GRANT_REQUIRED",
+      "detail": "FIXTURE_GRANT_REQUIRED",
+      "status": "EXCEPTION",
+      "type": "AuthorizedExecutionRefusal"
+    },
+    "original_grant_fixture_release": {
+      "code": "RELEASE_SOURCE_IDENTITY_MISMATCH",
+      "detail": "RELEASE_SOURCE_IDENTITY_MISMATCH",
+      "status": "EXCEPTION",
+      "type": "AuthorizedExecutionRefusal"
+    }
+  },
+  "prior_accepted_value_change_restoration": {
+    "changed": true,
+    "mutated_fact_ref": {
+      "content_hash": "c14eb16351b7428e8e27bd6acfde3dde716188e5d40e0353f621d00b54ce91ca",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c14eb16351b7428e8e27bd6acfde3dde716188e5d40e0353f621d00b54ce91ca"
+    },
+    "mutated_source_sha256": "ad5e0c05b9d659fdc7f08ad3a2be4399563136e15bd80721de26e0962b17e07b",
+    "original_fact_ref": {
+      "content_hash": "1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a"
+    },
+    "restored": true,
+    "restored_fact_ref": {
+      "content_hash": "1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a"
+    },
+    "source_commit": "9b66083f89a6881f296be7fd1a8ff04c9718951b",
+    "source_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b"
+  },
+  "prior_review_artifact": "434211cc09cd8b57c3087319d5de878640890604",
+  "prior_reviewed_candidate": "d48ddf93f6642b80e8d9f0399dbc0abd5ec66742",
+  "review_commit": "commit containing this file; direct remote readback in final response",
+  "reviewer_role": "SAME_DISTINCT_CD_REVIEWER_NOT_C_OR_D_AUTHOR",
+  "schema": "PYAT_SRC04_CARRIER_FOCUSED_RECHECK@1.0.0",
+  "scope": {
+    "fixture_only": true,
+    "not_reviewed": [
+      "original source qualification",
+      "original workload execution",
+      "unchanged accepted C/D core"
+    ],
+    "original_source_io": false,
+    "reviewed": [
+      "FIXTURE_ISSUER_EXECUTOR_D_PATH_MISSING",
+      "CARRIER_REFUSAL_TYPING_GAP"
+    ]
+  },
+  "source_io": {
+    "original_respondent_rows_read": 0,
+    "original_sav_stat_hash_open_decode": false,
+    "original_workload_issued": false
+  },
+  "source_literal_topology": {
+    "held": [
+      {
+        "code": "TOPOLOGY_REF_MISMATCH",
+        "target_ref": "q236"
+      }
+    ],
+    "valid_targets": 2,
+    "wrong_binding_exercised": true
+  },
+  "tests": {
+    "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/actual_review/test_carrier_focused_recheck.py -q -o addopts=''",
+    "exit": 0,
+    "note": "Successor tests execute the required fixture end-to-end and repaired typed refusals; frozen prior DEFECT tests are not rewritten or used as acceptance.",
+    "path": "campaign_src04_completion/empirical/actual_review/test_carrier_focused_recheck.py",
+    "result": "5 passed in 21.98s",
+    "run_path": "campaign_src04_completion/empirical/actual_review/FOCUSED_RECHECK_TEST_RUN.txt",
+    "run_sha256": "980335dc8af51337f88ebd88eb2f464e2a77bf7ecda9c4f2de82cb74e621914c",
+    "sha256": "8a5b6ee49562fcdc9e9979b73061bff2819c07b196a6f828a91db95188c13380",
+    "skipped": 0
+  },
+  "verdict": "PASS_SCOPED_CHANGED_ISSUER_CARRIER_BOUNDARY",
+  "version": 1,
+  "workload": {
+    "conditional_count": 38,
+    "conditional_directions": [
+      [
+        "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.04064b279e14d3d39123",
+        "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.15fa27e1be0fc30758f0"
+      ],
+      [
+        "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.04064b279e14d3d39123",
+        "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.b44503bdea5cce83bc79"
+      ],
+      [
+        "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.15fa27e1be0fc30758f0",
+        "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.04064b279e14d3d39123"
+      ],
+      [
+        "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.15fa27e1be0fc30758f0",
+        "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.b44503bdea5cce83bc79"
+      ],
+      [
+        "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.b44503bdea5cce83bc79",
+        "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.04064b279e14d3d39123"
+      ],
+      [
+        "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.b44503bdea5cce83bc79",
+        "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.15fa27e1be0fc30758f0"
+      ]
+    ],
+    "executed": 44,
+    "families": {
+      "BIDIRECTIONAL_CONDITIONAL_DISTRIBUTION": 38,
+      "SAME_RESPONDENT_JOINT_DISTRIBUTION": 3,
+      "UNARY_OBSERVED_DISTRIBUTION": 3
+    },
+    "joint": [
+      {
+        "d": 6,
+        "n": 6,
+        "policy": "CO_OBSERVED_TARGETS",
+        "state": "SUPPORTED",
+        "targets": [
+          "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.04064b279e14d3d39123",
+          "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.15fa27e1be0fc30758f0"
+        ]
+      },
+      {
+        "d": 7,
+        "n": 7,
+        "policy": "CO_OBSERVED_TARGETS",
+        "state": "SUPPORTED",
+        "targets": [
+          "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.04064b279e14d3d39123",
+          "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.b44503bdea5cce83bc79"
+        ]
+      },
+      {
+        "d": 6,
+        "n": 6,
+        "policy": "CO_OBSERVED_TARGETS",
+        "state": "SUPPORTED",
+        "targets": [
+          "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.15fa27e1be0fc30758f0",
+          "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.b44503bdea5cce83bc79"
+        ]
+      }
+    ],
+    "operations": 44,
+    "refused": 0,
+    "unary": [
+      {
+        "d": 7,
+        "ledger": {
+          "denominator_policy": "PER_TARGET_OBSERVED",
+          "not_eligible": true
+        },
+        "n": 7,
+        "state": "SUPPORTED",
+        "target": "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.04064b279e14d3d39123"
+      },
+      {
+        "d": 7,
+        "ledger": {
+          "denominator_policy": "PER_TARGET_OBSERVED",
+          "not_eligible": true
+        },
+        "n": 7,
+        "state": "SUPPORTED",
+        "target": "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.15fa27e1be0fc30758f0"
+      },
+      {
+        "d": 7,
+        "ledger": {
+          "denominator_policy": "PER_TARGET_OBSERVED",
+          "not_eligible": true
+        },
+        "n": 7,
+        "state": "SUPPORTED",
+        "target": "urn:rawlsing:r157:fixture:SRC04:item:question_impl.phase0.b44503bdea5cce83bc79"
+      }
+    ]
+  },
+  "write_scope": [
+    "campaign_src04_completion/empirical/actual_review/**"
+  ]
+}
