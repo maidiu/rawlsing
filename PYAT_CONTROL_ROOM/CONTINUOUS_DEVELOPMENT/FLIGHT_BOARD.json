@@ -1546,15 +1546,16 @@
       "actual_primary_prior_process": "GONE_NO_TERMINAL_PRODUCT_RECEIPT"
     },
     {
-      "lane": "D",
-      "task": "SRC04_D_OBSERVED_PROVENANCE_REPAIR",
-      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
-      "pid": 87630,
-      "state": "ACTUALLY_RESUMED_EXACT_REVIEW_DEFECT",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review",
-      "branch": "agent/pyat-src04-consumers-20261028",
-      "commission_tip": "73cc20c233f982daa6d58c0e0b3df934e8cb4ad5",
-      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review/.r61/src04-d-observed-provenance"
+      "lane": "CD_REVIEW",
+      "task": "SRC04_CD_PROVENANCE_FOCUSED_RECHECK",
+      "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+      "pid": 91246,
+      "state": "ACTUALLY_RESUMED_SAME_REVIEWER_FOCUSED_PROVENANCE_RECHECK",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-original-c11",
+      "branch": "agent/pyat-src04-cd-native-review-20261028",
+      "commission_tip": "c8bfdf9268e42727122595c8e6ca39a1ae1cef0a",
+      "D_candidate": "39c713a1396c7184afec5cb81519b151357c4a8e",
+      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-original-c11/.r61/src04-cd-provenance-recheck"
     }
   ],
   "r98_browser_handoff": {
@@ -3539,6 +3540,11 @@
       "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
       "originalissued": 0,
       "originalexecuted": 0
+    },
+    "SRC04_D": {
+      "state": "PROVENANCE_REPAIR_CANDIDATE_IN_FOCUSED_DISTINCT_RECHECK",
+      "candidate": "39c713a1396c7184afec5cb81519b151357c4a8e",
+      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg"
     }
   },
   "src04_consumer_intake": "PYAT_CONTROL_ROOM/SRC04_CONSUMER_D_INTAKE.json",
@@ -3551,5 +3557,6 @@
   "src04_empirical_v2_intake": "PYAT_CONTROL_ROOM/SRC04_EXPANDED_WORKLOAD_C_V2_INTAKE.json",
   "src04_cd_review_intake": "PYAT_CONTROL_ROOM/SRC04_CD_REVIEW_INTAKE.json",
   "native_empirical_approval": "Exactonehumanquestionpending forunweightedobserved/coobservedSRC04operations/source-localuse; fullreadalreadygranted, no reask.",
-  "src04_original_recovery": "PYAT_CONTROL_ROOM/SRC04_ORIGINAL_ATTEMPT_RECOVERY.json"
+  "src04_original_recovery": "PYAT_CONTROL_ROOM/SRC04_ORIGINAL_ATTEMPT_RECOVERY.json",
+  "src04_D_provenance_intake": "PYAT_CONTROL_ROOM/SRC04_D_PROVENANCE_REPAIR_INTAKE.json"
 }

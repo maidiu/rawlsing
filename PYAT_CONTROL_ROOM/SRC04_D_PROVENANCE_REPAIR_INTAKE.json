@@ -1,0 +1,70 @@
+{
+  "schema": "PYAT_SRC04_D_OBSERVED_PROVENANCE_REPAIR_INTAKE_V1",
+  "candidate": "39c713a1396c7184afec5cb81519b151357c4a8e",
+  "direct_remote_verified": true,
+  "manifest_hashes_bytes_verified": 41,
+  "author_write_terrain_verified": true,
+  "disposition": "BANK_EXACT_PROVENANCE_REPAIR_CANDIDATE__SAME_DISTINCT_REVIEWER_FOCUSED_RECHECK",
+  "author_evidence": {
+    "c_fact_ref": {
+      "content_hash": "1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a"
+    },
+    "c_or_review_write": false,
+    "contract_ref_equal": true,
+    "d_downstream_value_effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED",
+    "d_fact_ref": {
+      "content_hash": "1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a"
+    },
+    "d_status": "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE",
+    "discovery_facts_with_observed_projection": 2,
+    "entire_ledger_equal": true,
+    "joined_product_path": "campaign_src04_completion/consumers/evidence/C_OBSERVED_JOINED_PRODUCT.json",
+    "joined_product_sha256": "bc1367470a13ba0eafbeecb551f93076c39ecc8f18d31991b267447108ef0d9e",
+    "not_eligible_population_estimate": true,
+    "observed_contract_ref": {
+      "content_hash": "c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26",
+      "kind": "OBSERVED_RESPONSE_CONTRACT",
+      "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26"
+    },
+    "observed_status": "OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION",
+    "old_d": "35bab35be55c80f90d9d0cfbc13fb6f555a0f8ce",
+    "path": "campaign_src04_completion/consumers/evidence/OBSERVED_PROVENANCE_REPAIR_RESULTS.json",
+    "pinned_c_candidate": "44aaf2be06e026547e9b32d880ac588e84acc9e4",
+    "review_artifact_commit": "68eebdde117e10c22837a40254ccda508697fcd3",
+    "review_defect_test": {
+      "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/review/test_cd_boundary_review.py -q -o addopts=''",
+      "defect_test": "test_d_joined_path_is_positive_but_currently_omits_observed_ledger_DEFECT",
+      "exit": 1,
+      "failure": "assert \"observed_response\" not in product now fails because the repair preserves it",
+      "result": "1 failed, 7 passed in 17.01s",
+      "review_test_edited": false,
+      "review_test_path": "campaign_src04_completion/empirical/review/test_cd_boundary_review.py",
+      "review_test_sha256": "4385981dd616bf94e5af8df9dad6a07ff6f299ce29799a75558041645b2994c8",
+      "status": "RED_EXPECTED_HISTORICAL_WITNESS"
+    },
+    "sha256": "b177b26cceae198c323adce6fb4f7d63041ee5abe6690a81da26cfea4f25a991",
+    "status": "REPAIRED_MEASURED_SUCCESSOR",
+    "status_equal": true,
+    "wrong_projection_all_refused": true,
+    "wrong_projection_refusal_codes": {
+      "incomplete_ledger": "OBSERVED_RESPONSE_LEDGER_INCOMPLETE",
+      "missing_projection": "OBSERVED_RESPONSE_PROJECTION_MISSING",
+      "wrong_contract_ref": "OBSERVED_RESPONSE_CONTRACT_REF_MISMATCH",
+      "wrong_ledger_contract_ref": "OBSERVED_RESPONSE_LEDGER_CONTRACT_REF_MISMATCH",
+      "wrong_status": "OBSERVED_RESPONSE_STATUS_INVALID"
+    }
+  },
+  "original_claim": false,
+  "next": "Same existingreviewer verifies repairedprimary/discovery projection equality and wrongprojectionrefusal, retainingoldREDwitness; no generalnewreview/sourceaccess",
+  "heartbeat": "PAUSED",
+  "focused_recheck": {
+    "pid": 91246,
+    "observer_pid": 91557,
+    "commission": "c8bfdf9268e42727122595c8e6ca39a1ae1cef0a",
+    "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6"
+  }
+}
