@@ -1,0 +1,17 @@
+{
+  "blocker": "FULL_SRC04_SOURCE_PRODUCT_NOT_ISSUED",
+  "no_original_source_access": true,
+  "original_workload_issued": false,
+  "producer_contract": "campaign_src04_completion/consumers/PRODUCER_CONTRACT.json",
+  "producer_contract_sha256": "402f5e89eef1f5dfdb420e61bdce3f6cacee330c4428391f94d7a4321964e012",
+  "requires": [
+    "real original-bound C11LogicalRelease for the full SRC04 source product",
+    "exact EmpiricalQuerySpec@1.0.0 and EmpiricalPredicate@1.0.0",
+    "exact EmpiricalFact@1.0.0 fact ref from the existing empirical executor",
+    "exact source-local ALLOW authority refs and purpose/use scope",
+    "producer module implementing module:function returning ProducerBundle"
+  ],
+  "schema": "PYAT_SRC04_LANE_D_BLOCKER@1.0.0",
+  "source_read_performed": false,
+  "status": "BLOCKED_PENDING_FULL_SRC04_SOURCE_PRODUCER"
+}
