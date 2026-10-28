@@ -32,7 +32,7 @@ def evidence_fields(obj, fields, label):
     if not isinstance(obj, dict):
         return
     for f in fields:
-        check(bool(obj.get(f)), label + " missing " + f)
+        check(f in obj and obj.get(f) is not None and obj.get(f) != "", label + " missing " + f)
     check(sha40(obj.get("source_sha")), label + " source_sha must be exact")
 
 try:
