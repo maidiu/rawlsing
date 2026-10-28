@@ -1,0 +1,549 @@
+{
+  "branch": "agent/pyat-src04-cd-native-review-20261028",
+  "candidate_files_byte_identical_to_pins": true,
+  "candidate_identity_verified": true,
+  "failure": {
+    "affected_lines": [
+      "371-380",
+      "489-589",
+      "628-659"
+    ],
+    "falsifier": "The real D product and every discovery fact omit observed_response/observed_ledger, despite the source C fact carrying status, not-eligible status, contract ref and ledger.",
+    "id": "D_OBSERVED_RESPONSE_PROVENANCE_DROPPED",
+    "not_required": [
+      "C repair",
+      "new query engine",
+      "new weight/population claim",
+      "structural admission",
+      "new source authority"
+    ],
+    "owner": "campaign_src04_completion/consumers/consumer.py",
+    "owner_functions": [
+      "consume_native_producer",
+      "_run_downstream_discovery"
+    ],
+    "smallest_repair": [
+      "Capture fact.target_topology[\"observed_response\"] in consume_native_producer.",
+      "Require exact mapping status OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION, not_eligible_population_estimate true, exact contract_ref matching the query grain, and full ledger.",
+      "Emit the projection as observed_response on the product via _plain; do not relabel or synthesize authority.",
+      "Include each discovery fact observed projection in _run_downstream_discovery empirical_facts, preserving contract ref/provenance.",
+      "Add one joined-path regression asserting equality to the C status, contract ref, not-eligible flag and ledger."
+    ],
+    "status": "MEASURED_REVISE"
+  },
+  "inputs": {
+    "author_code_hashes": {
+      "campaign_src04_completion/consumers/consumer.py": "e915179cf8112ae5a5f821b5876c00baa528dbd50e3352d43163f28634d7cfc8",
+      "campaign_src04_completion/empirical/native_workload.py": "4e3d4b821720a406d7c403a29f4da9f55b775b6eeec1beb353b60c16fc14c5cd",
+      "rawlsing_next/pre553_observed_response.py": "47df4b41a29a6c34667708d949ff77d1f563ec6cde6db88e84377d7a72ee62ff"
+    },
+    "c_conditional": {
+      "condition_state": "SUBSTANTIVE_RESPONSE",
+      "fact_state": "SUPPORTED",
+      "observed_ledger": {
+        "condition_false": 5,
+        "condition_observation_policy": "ALL_REFERENCED_RESPONSE_VARIABLES_OBSERVED",
+        "condition_unobserved": 1,
+        "contract_ref": {
+          "content_hash": "c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26",
+          "kind": "OBSERVED_RESPONSE_CONTRACT",
+          "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26"
+        },
+        "denominator": 1,
+        "denominator_member_count": 1,
+        "denominator_policy": "PER_TARGET_OBSERVED",
+        "not_eligible_population_estimate": true,
+        "resolved_targets": 1,
+        "risk_member_count": 7,
+        "risk_set_type": "OBSERVED_RESPONSE_RISK_SET",
+        "scoped_respondents": 8,
+        "target_observed": 7,
+        "target_unobserved": 1,
+        "unresolved_after_denominator": 0
+      },
+      "raw_denominator": 1,
+      "raw_numerator": 1
+    },
+    "c_joint": {
+      "fact_state": "SUPPORTED",
+      "observed_ledger": {
+        "condition_false": 0,
+        "condition_observation_policy": "ALL_REFERENCED_RESPONSE_VARIABLES_OBSERVED",
+        "condition_unobserved": 0,
+        "contract_ref": {
+          "content_hash": "c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26",
+          "kind": "OBSERVED_RESPONSE_CONTRACT",
+          "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26"
+        },
+        "denominator": 6,
+        "denominator_member_count": 6,
+        "denominator_policy": "CO_OBSERVED_TARGETS",
+        "not_eligible_population_estimate": true,
+        "resolved_targets": 6,
+        "risk_member_count": 6,
+        "risk_set_type": "CO_OBSERVED_RESPONSE_RISK_SET",
+        "scoped_respondents": 8,
+        "target_observed": 6,
+        "target_unobserved": 2,
+        "unresolved_after_denominator": 0
+      },
+      "raw_denominator": 6,
+      "raw_numerator": 6
+    },
+    "c_observed_contract_ref": {
+      "content_hash": "c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26",
+      "kind": "OBSERVED_RESPONSE_CONTRACT",
+      "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26"
+    },
+    "c_operation_authority_ref": {
+      "authority_content_hash": "03324c8a8549c93b3a1d8cf8dc7242c13f9adc770fb463f75457f27196f8984e",
+      "authority_id": "FIXTURE-NATIVE-QUERY",
+      "authority_version": "1.0.0"
+    },
+    "c_unary": {
+      "fact_state": "SUPPORTED",
+      "observed_ledger": {
+        "condition_false": 0,
+        "condition_observation_policy": "ALL_REFERENCED_RESPONSE_VARIABLES_OBSERVED",
+        "condition_unobserved": 0,
+        "contract_ref": {
+          "content_hash": "c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26",
+          "kind": "OBSERVED_RESPONSE_CONTRACT",
+          "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26"
+        },
+        "denominator": 7,
+        "denominator_member_count": 7,
+        "denominator_policy": "PER_TARGET_OBSERVED",
+        "not_eligible_population_estimate": true,
+        "resolved_targets": 7,
+        "risk_member_count": 7,
+        "risk_set_type": "OBSERVED_RESPONSE_RISK_SET",
+        "scoped_respondents": 8,
+        "target_observed": 7,
+        "target_unobserved": 1,
+        "unresolved_after_denominator": 0
+      },
+      "raw_denominator": 7,
+      "raw_numerator": 7
+    },
+    "c_workload": {
+      "conditional_instances": 38,
+      "higher_order_requested_not_authorized": 1,
+      "operations_built": 44,
+      "operations_by_family": {
+        "BIDIRECTIONAL_CONDITIONAL_DISTRIBUTION": 38,
+        "SAME_RESPONDENT_JOINT_DISTRIBUTION": 3,
+        "UNARY_OBSERVED_DISTRIBUTION": 3
+      },
+      "operations_executed": 44,
+      "operations_refused": 0,
+      "ser_target_present": false
+    },
+    "d_joined": {
+      "c_fact_ledger": {
+        "condition_false": 0,
+        "condition_observation_policy": "ALL_REFERENCED_RESPONSE_VARIABLES_OBSERVED",
+        "condition_unobserved": 0,
+        "contract_ref": {
+          "content_hash": "c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26",
+          "kind": "OBSERVED_RESPONSE_CONTRACT",
+          "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26"
+        },
+        "denominator": 7,
+        "denominator_member_count": 7,
+        "denominator_policy": "PER_TARGET_OBSERVED",
+        "not_eligible_population_estimate": true,
+        "resolved_targets": 7,
+        "risk_member_count": 7,
+        "risk_set_type": "OBSERVED_RESPONSE_RISK_SET",
+        "scoped_respondents": 8,
+        "target_observed": 7,
+        "target_unobserved": 1,
+        "unresolved_after_denominator": 0
+      },
+      "c_fact_not_eligible_population": true,
+      "c_fact_observed_contract_ref": {
+        "content_hash": "c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26",
+        "kind": "OBSERVED_RESPONSE_CONTRACT",
+        "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26"
+      },
+      "c_fact_observed_status": "OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION",
+      "discovery_fact_observed_fields": [],
+      "discovery_fact_refs": [
+        {
+          "content_hash": "c8e6a4fa4813eab7321c5b5a381b611b41384fc00c262accbee13f139431a69e",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c8e6a4fa4813eab7321c5b5a381b611b41384fc00c262accbee13f139431a69e"
+        },
+        {
+          "content_hash": "ea80f68425503fadb775ea56f70164b1ff9415454a6859a4ecf4b5b13bf86d94",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ea80f68425503fadb775ea56f70164b1ff9415454a6859a4ecf4b5b13bf86d94"
+        }
+      ],
+      "discovery_status": "SUBSTANTIVE_DOWNSTREAM_DISCOVERY_POSITIVE",
+      "discovery_supported_candidate_count": 1,
+      "downstream_value_effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED",
+      "fact_ref": {
+        "content_hash": "1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a"
+      },
+      "observed_ledger_present": false,
+      "observed_response_present": false,
+      "product_top_level_observed_fields": [],
+      "status": "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE"
+    },
+    "d_negative_codes": {
+      "missing_authority": "MISSING_AUTHORITY",
+      "wrong_fact": "FACT_SET_MISMATCH",
+      "wrong_release": "WRONG_RELEASE_IDENTITY",
+      "wrong_source": "NATIVE_SOURCE_IDENTITY_MISMATCH"
+    },
+    "d_value_change_restoration": {
+      "changed": true,
+      "mutated_discovery_fact_refs": [
+        {
+          "content_hash": "1c71fa111dcf98c738c1c949ff78fcb02fed469b9d1df33420d0e42bb4f9a3c5",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1c71fa111dcf98c738c1c949ff78fcb02fed469b9d1df33420d0e42bb4f9a3c5"
+        },
+        {
+          "content_hash": "62d7002ea947e65d5bcd47a10e9cd5b3ce693f24057fe8231d8cda470d46485c",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:62d7002ea947e65d5bcd47a10e9cd5b3ce693f24057fe8231d8cda470d46485c"
+        }
+      ],
+      "mutated_fact_ref": {
+        "content_hash": "c14eb16351b7428e8e27bd6acfde3dde716188e5d40e0353f621d00b54ce91ca",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c14eb16351b7428e8e27bd6acfde3dde716188e5d40e0353f621d00b54ce91ca"
+      },
+      "mutated_source_sha256": "ad5e0c05b9d659fdc7f08ad3a2be4399563136e15bd80721de26e0962b17e07b",
+      "original_discovery_fact_refs": [
+        {
+          "content_hash": "c8e6a4fa4813eab7321c5b5a381b611b41384fc00c262accbee13f139431a69e",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c8e6a4fa4813eab7321c5b5a381b611b41384fc00c262accbee13f139431a69e"
+        },
+        {
+          "content_hash": "ea80f68425503fadb775ea56f70164b1ff9415454a6859a4ecf4b5b13bf86d94",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ea80f68425503fadb775ea56f70164b1ff9415454a6859a4ecf4b5b13bf86d94"
+        }
+      ],
+      "original_fact_ref": {
+        "content_hash": "1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a"
+      },
+      "original_source_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b",
+      "restored": true,
+      "restored_discovery_fact_refs": [
+        {
+          "content_hash": "c8e6a4fa4813eab7321c5b5a381b611b41384fc00c262accbee13f139431a69e",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c8e6a4fa4813eab7321c5b5a381b611b41384fc00c262accbee13f139431a69e"
+        },
+        {
+          "content_hash": "ea80f68425503fadb775ea56f70164b1ff9415454a6859a4ecf4b5b13bf86d94",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ea80f68425503fadb775ea56f70164b1ff9415454a6859a4ecf4b5b13bf86d94"
+        }
+      ],
+      "restored_fact_ref": {
+        "content_hash": "1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a"
+      },
+      "restored_source_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b"
+    },
+    "fixture_config_path": "source_pre553_validation/SRC04/fixture.config.json",
+    "fixture_config_sha256": "7f69af5cfafe07123c211707df353b37da4e9375adfa6e55c5df42a930cfebaa",
+    "fixture_path": "source_pre553_validation/SRC04/fixture.json",
+    "fixture_rows": 8,
+    "fixture_scope": "SRC04_NONRESPONDENT_FIXTURE_ONLY",
+    "fixture_sha256": "e02e85388de86aa0ce66fa37ac59a6d3071537ea514788a54baf3964cbb44353",
+    "fixture_stream_source_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b",
+    "pinned_c_candidate": "44aaf2be06e026547e9b32d880ac588e84acc9e4",
+    "pinned_d_consumer": "35bab35be55c80f90d9d0cfbc13fb6f555a0f8ce",
+    "release_ref": {
+      "content_hash": "9026fa33bb5739b87b06309f12e1d31fe6fd21fb471237eda870d6d278d47f42",
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_FIXTURE_RELEASE/SRC04"
+    },
+    "review_branch": "agent/pyat-src04-cd-native-review-20261028",
+    "review_head": "36f0addf281c3e9ad94b44f4e69a51d2441ef3a7",
+    "review_test": {
+      "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/review/test_cd_boundary_review.py -q -o addopts=''",
+      "defect_discriminator": "test_d_joined_path_is_positive_but_currently_omits_observed_ledger_DEFECT",
+      "exit": 0,
+      "note": "A passing discriminator records measured omission; it is not PASS_SCOPED acceptance.",
+      "path": "campaign_src04_completion/empirical/review/test_cd_boundary_review.py",
+      "result": "8 passed in 16.30s",
+      "sha256": "4385981dd616bf94e5af8df9dad6a07ff6f299ce29799a75558041645b2994c8",
+      "test_run_path": "campaign_src04_completion/empirical/review/TEST_RUN.txt",
+      "test_run_sha256": "f294e01cfa0a0576aa522af3ef840df757643f3098972ba3041326f39f90fc95"
+    },
+    "schema": "PYAT_SRC04_CD_NATIVE_REVIEW_MEASUREMENTS@1.0.0",
+    "source_artifact_ref": {
+      "content_hash": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b",
+      "kind": "SOURCE_ARTIFACT",
+      "object_id": "R157_FIXTURE:R157-ARAB-SRC04-NONRESPONDENT"
+    },
+    "source_io": {
+      "original_respondent_rows_read": 0,
+      "original_sav_stat_hash_open_decode": false,
+      "original_workload_issued": false
+    },
+    "write_scope": [
+      "campaign_src04_completion/empirical/review/"
+    ]
+  },
+  "limits": [
+    "NONRESPONDENT SRC04 fixture only; not original SRC04 qualification or source-local proof.",
+    "Fixture facts and values are engineering evidence; no original respondent rows or original workload issued.",
+    "D joined-path success is value-consuming but provenance-incomplete; do not adopt or call PASS_SCOPED.",
+    "No science/population/structural/weighted claim and no q217/q715/q716 observed-domain resolution."
+  ],
+  "measured_failure": {
+    "c_fact_ledger_present": true,
+    "c_fact_not_eligible_population": true,
+    "c_fact_observed_contract_ref": {
+      "content_hash": "c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26",
+      "kind": "OBSERVED_RESPONSE_CONTRACT",
+      "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26"
+    },
+    "c_fact_observed_status": "OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION",
+    "d_discovery_fact_observed_fields": [],
+    "d_product_observed_ledger_present": false,
+    "d_product_observed_response_present": false,
+    "d_product_top_level_observed_fields": []
+  },
+  "measured_positive_boundary": {
+    "c_conditional_ledger": {
+      "condition_false": 5,
+      "condition_observation_policy": "ALL_REFERENCED_RESPONSE_VARIABLES_OBSERVED",
+      "condition_unobserved": 1,
+      "contract_ref": {
+        "content_hash": "c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26",
+        "kind": "OBSERVED_RESPONSE_CONTRACT",
+        "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26"
+      },
+      "denominator": 1,
+      "denominator_member_count": 1,
+      "denominator_policy": "PER_TARGET_OBSERVED",
+      "not_eligible_population_estimate": true,
+      "resolved_targets": 1,
+      "risk_member_count": 7,
+      "risk_set_type": "OBSERVED_RESPONSE_RISK_SET",
+      "scoped_respondents": 8,
+      "target_observed": 7,
+      "target_unobserved": 1,
+      "unresolved_after_denominator": 0
+    },
+    "c_higher_order_built": false,
+    "c_higher_order_requested_not_authorized": 1,
+    "c_joint_ledger": {
+      "condition_false": 0,
+      "condition_observation_policy": "ALL_REFERENCED_RESPONSE_VARIABLES_OBSERVED",
+      "condition_unobserved": 0,
+      "contract_ref": {
+        "content_hash": "c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26",
+        "kind": "OBSERVED_RESPONSE_CONTRACT",
+        "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26"
+      },
+      "denominator": 6,
+      "denominator_member_count": 6,
+      "denominator_policy": "CO_OBSERVED_TARGETS",
+      "not_eligible_population_estimate": true,
+      "resolved_targets": 6,
+      "risk_member_count": 6,
+      "risk_set_type": "CO_OBSERVED_RESPONSE_RISK_SET",
+      "scoped_respondents": 8,
+      "target_observed": 6,
+      "target_unobserved": 2,
+      "unresolved_after_denominator": 0
+    },
+    "c_operations_executed": 44,
+    "c_operations_refused": 0,
+    "c_resume_after_first": 43,
+    "c_ser_target_present": false,
+    "c_unary_joint_conditional": {
+      "conditional": 38,
+      "joint": 3,
+      "unary": 3
+    },
+    "c_unary_ledger": {
+      "condition_false": 0,
+      "condition_observation_policy": "ALL_REFERENCED_RESPONSE_VARIABLES_OBSERVED",
+      "condition_unobserved": 0,
+      "contract_ref": {
+        "content_hash": "c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26",
+        "kind": "OBSERVED_RESPONSE_CONTRACT",
+        "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26"
+      },
+      "denominator": 7,
+      "denominator_member_count": 7,
+      "denominator_policy": "PER_TARGET_OBSERVED",
+      "not_eligible_population_estimate": true,
+      "resolved_targets": 7,
+      "risk_member_count": 7,
+      "risk_set_type": "OBSERVED_RESPONSE_RISK_SET",
+      "scoped_respondents": 8,
+      "target_observed": 7,
+      "target_unobserved": 1,
+      "unresolved_after_denominator": 0
+    },
+    "c_workload_operations_built": 44,
+    "d_discovery_fact_refs": [
+      {
+        "content_hash": "c8e6a4fa4813eab7321c5b5a381b611b41384fc00c262accbee13f139431a69e",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c8e6a4fa4813eab7321c5b5a381b611b41384fc00c262accbee13f139431a69e"
+      },
+      {
+        "content_hash": "ea80f68425503fadb775ea56f70164b1ff9415454a6859a4ecf4b5b13bf86d94",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ea80f68425503fadb775ea56f70164b1ff9415454a6859a4ecf4b5b13bf86d94"
+      }
+    ],
+    "d_downstream_value_effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED",
+    "d_joined_fact_ref": {
+      "content_hash": "1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a"
+    },
+    "d_joined_status": "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE",
+    "d_value_change_restoration": {
+      "changed": true,
+      "mutated_discovery_fact_refs": [
+        {
+          "content_hash": "1c71fa111dcf98c738c1c949ff78fcb02fed469b9d1df33420d0e42bb4f9a3c5",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1c71fa111dcf98c738c1c949ff78fcb02fed469b9d1df33420d0e42bb4f9a3c5"
+        },
+        {
+          "content_hash": "62d7002ea947e65d5bcd47a10e9cd5b3ce693f24057fe8231d8cda470d46485c",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:62d7002ea947e65d5bcd47a10e9cd5b3ce693f24057fe8231d8cda470d46485c"
+        }
+      ],
+      "mutated_fact_ref": {
+        "content_hash": "c14eb16351b7428e8e27bd6acfde3dde716188e5d40e0353f621d00b54ce91ca",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c14eb16351b7428e8e27bd6acfde3dde716188e5d40e0353f621d00b54ce91ca"
+      },
+      "mutated_source_sha256": "ad5e0c05b9d659fdc7f08ad3a2be4399563136e15bd80721de26e0962b17e07b",
+      "original_discovery_fact_refs": [
+        {
+          "content_hash": "c8e6a4fa4813eab7321c5b5a381b611b41384fc00c262accbee13f139431a69e",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c8e6a4fa4813eab7321c5b5a381b611b41384fc00c262accbee13f139431a69e"
+        },
+        {
+          "content_hash": "ea80f68425503fadb775ea56f70164b1ff9415454a6859a4ecf4b5b13bf86d94",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ea80f68425503fadb775ea56f70164b1ff9415454a6859a4ecf4b5b13bf86d94"
+        }
+      ],
+      "original_fact_ref": {
+        "content_hash": "1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a"
+      },
+      "original_source_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b",
+      "restored": true,
+      "restored_discovery_fact_refs": [
+        {
+          "content_hash": "c8e6a4fa4813eab7321c5b5a381b611b41384fc00c262accbee13f139431a69e",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c8e6a4fa4813eab7321c5b5a381b611b41384fc00c262accbee13f139431a69e"
+        },
+        {
+          "content_hash": "ea80f68425503fadb775ea56f70164b1ff9415454a6859a4ecf4b5b13bf86d94",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ea80f68425503fadb775ea56f70164b1ff9415454a6859a4ecf4b5b13bf86d94"
+        }
+      ],
+      "restored_fact_ref": {
+        "content_hash": "1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a"
+      },
+      "restored_source_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b"
+    }
+  },
+  "negative_and_authority_proof": {
+    "c_fixture_promotion_refused": true,
+    "c_wrong_operation_authority_refused": true,
+    "c_wrong_release_refused": true,
+    "c_wrong_source_artifact_refused": true,
+    "d_refusal_codes": {
+      "missing_authority": "MISSING_AUTHORITY",
+      "wrong_fact": "FACT_SET_MISMATCH",
+      "wrong_release": "WRONG_RELEASE_IDENTITY",
+      "wrong_source": "NATIVE_SOURCE_IDENTITY_MISMATCH"
+    },
+    "observed_profile_bypasses_eligible_risk_membership": true,
+    "replay": {
+      "c_exact_expected_fact_ref_succeeded": true,
+      "d_consume_replays": true
+    },
+    "unresolved_routing_refused_in_existing_eligible_path": true
+  },
+  "next_owner_action": "D owner applies the minimal observed-response projection repair in consumer.py and reruns this review test plus its joined-path regression; HQ re-reviews before adoption.",
+  "no_authority_invention": true,
+  "no_c_or_d_author_code_edits": true,
+  "original_respondent_rows_read": 0,
+  "original_workload_issued": false,
+  "pinned_c_candidate": "44aaf2be06e026547e9b32d880ac588e84acc9e4",
+  "pinned_d_consumer": "35bab35be55c80f90d9d0cfbc13fb6f555a0f8ce",
+  "review_artifacts": {
+    "REVIEW.md": {
+      "path": "campaign_src04_completion/empirical/review/REVIEW.md",
+      "sha256": "1541875c34de43b95f93c64de9ab6c7afc651de7081f9d23b76f3b7944afc026"
+    },
+    "REVIEW_MEASUREMENTS.json": {
+      "path": "campaign_src04_completion/empirical/review/REVIEW_MEASUREMENTS.json",
+      "sha256": "6c585d837716c497bd8530c28d9086ddfcf0b01db600b23ae856fc3763d420a9"
+    },
+    "TEST_RUN.txt": {
+      "path": "campaign_src04_completion/empirical/review/TEST_RUN.txt",
+      "sha256": "f294e01cfa0a0576aa522af3ef840df757643f3098972ba3041326f39f90fc95"
+    },
+    "test_cd_boundary_review.py": {
+      "path": "campaign_src04_completion/empirical/review/test_cd_boundary_review.py",
+      "sha256": "4385981dd616bf94e5af8df9dad6a07ff6f299ce29799a75558041645b2994c8"
+    }
+  },
+  "review_commit": "commit containing this file; direct remote readback in final response",
+  "review_startup_commit": "36f0addf281c3e9ad94b44f4e69a51d2441ef3a7",
+  "reviewer_role": "DISTINCT_CD_NATIVE_BOUNDARY_REVIEWER_NOT_C_OR_D_AUTHOR",
+  "schema": "PYAT_SRC04_CD_NATIVE_BOUNDARY_REVIEW@1.0.0",
+  "scope": {
+    "fixture_only": true,
+    "not_reviewed": "B original-source qualification, original C11 construction, population/structural adoption, q217/q715/q716 observed domains",
+    "original_source_io": false,
+    "original_source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "reviewed": "C observed/coobserved native profile and runtime workload; actual C profile -> pinned D native consumer joined path",
+    "source_id": "SRC04"
+  },
+  "source_read_performed": false,
+  "test": {
+    "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/review/test_cd_boundary_review.py -q -o addopts=''",
+    "defect_discriminator": "test_d_joined_path_is_positive_but_currently_omits_observed_ledger_DEFECT",
+    "exit": 0,
+    "note": "A passing discriminator records measured omission; it is not PASS_SCOPED acceptance.",
+    "path": "campaign_src04_completion/empirical/review/test_cd_boundary_review.py",
+    "result": "8 passed in 16.30s",
+    "run_path": "campaign_src04_completion/empirical/review/TEST_RUN.txt",
+    "run_sha256": "f294e01cfa0a0576aa522af3ef840df757643f3098972ba3041326f39f90fc95",
+    "sha256": "4385981dd616bf94e5af8df9dad6a07ff6f299ce29799a75558041645b2994c8"
+  },
+  "verdict": "REVISE",
+  "version": 1,
+  "write_scope": [
+    "campaign_src04_completion/empirical/review/**"
+  ]
+}
