@@ -8,3 +8,5 @@
 6. Keep the native Pyat C11 and Field Forge source/actor boundary intact. No automatic merge or person claim.
 
 The full accession rationale is in `20261028_BRANCH_INHERITANCE_RESOURCE_R1.md`. The repository-wide branch census is under `PYAT_CONTROL_ROOM/FINAL_PRODUCTION_ARCHITECTURE_HQ_20261028_R1/CROSS_BRANCH_INHERITANCE/` on the design branch.
+
+**Separate controller estate now also indexed:** the private `maidiu/rawlsing-controller` has 27 branches / 25 unique tip SHAs in `CROSS_BRANCH_INHERITANCE/04_CONTROLLER_SECOND_REPO_BRANCH_CENSUS.json`; `05_CONTROLLER_INHERITANCE_NOTES_R1.md` preserves its qualified R62 worker/reviewer status and R63 High-routing HOLD. This is a separate repository, not part of the 2,831 main Rawlsing branch count. No remote branch proves a running service.
