@@ -14,6 +14,10 @@ Implement a **source-authoritative hybrid empirical execution architecture**: cu
 
 **Mandatory task-allocation precedence:** `14_NONDELEGATION_AND_CLAIM_VERIFICATION_CONSTITUTION.md` governs every Pxx commission, worker return, HQ intake and Codex handoff. HQ owns the central design; independent rabochiis are never accepted as globally grokked or sovereign. The older `08_BROWSER_FLEET_AND_CODEX_HANDOFF.md` is a scope inventory, NOT unconditional permission to delegate each Pxx whole.
 
+## Current technical milestone (P01-S2, 2026-10-28)
+
+Browser Architecture HQ directly completed validator-by-validator S2 *design and source-free proof* on SHA-matched current I02 sources. Read `DESIGN/P01_S2_EXACT_I02_VALIDATION_JOURNAL_AND_HASH_PROOF_R1.md`, the 36-item `DESIGN/P01_HIGH_RESOLUTION_RETURN_LEDGER.json`, and `STATUS/P01_S2_SOURCEFREE_PROOF_RECEIPT.json`. S2 identified a mandatory **source-byte/retention attestation seam not proved by logical I02 seal alone**. The journal/view remains unimplemented: next is S3 exact coding/parity spec and then qualification, not another architecture choice. Original survey execution and work grants are unchanged.
+
 ## Read in order
 
 1. 01_EXECUTIVE_ADJUDICATION.md — actual selected architecture, why, and rejection of previous false choices.
