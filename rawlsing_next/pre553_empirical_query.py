@@ -149,6 +149,8 @@ def _failure_code(exc: Exception) -> tuple[str, str]:
     text = str(exc).lower()
     if isinstance(exc, UnsupportedResponseTopology):
         return "UNRESOLVED", "UNSUPPORTED_RESPONSE_TOPOLOGY"
+    if "observed-response" in text or "observed response" in text:
+        return "UNAVAILABLE", "OBSERVED_RESPONSE_AUTHORITY_UNAVAILABLE"
     if isinstance(exc, Pre553AuthorityError):
         if "weight" in text or "measure" in text:
             return "UNAVAILABLE", "MEASURE_UNAVAILABLE"

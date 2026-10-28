@@ -1,0 +1,47 @@
+{
+  "schema": "PYAT_SRC04_LANE_C_TEST_RESULTS@1.0.0",
+  "observed_response_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_observed_response.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      ".............                                                            [100%]",
+      "13 passed in 2.83s"
+    ],
+    "count": 13,
+    "scope": "NONRESPONDENT_FIXTURE_ONLY"
+  },
+  "i03_regression_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_i03_scale_equivalence_repair.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      ".......................................                                  [100%]",
+      "39 passed in 0.72s"
+    ],
+    "count": 39
+  },
+  "consumer_regression_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_pre553_candidate_c_production_binding.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py -q -o addopts=",
+    "exit": 0,
+    "result": "17 passed in 3.44s",
+    "count": 17
+  },
+  "fixture": {
+    "path": "source_pre553_validation/SRC04/fixture.config.json",
+    "fixture_path": "source_pre553_validation/SRC04/fixture.json",
+    "fixture_source_sha256": "a93b4dab00a2b7cbd559d8a0bb1ca498caaa87f27bd1bd73e9fceb0f2820a491",
+    "nonrespondent": true,
+    "original_sav_read": false
+  },
+  "code_hashes": {
+    "rawlsing_next/pre553_observed_response.py": "47df4b41a29a6c34667708d949ff77d1f563ec6cde6db88e84377d7a72ee62ff",
+    "rawlsing_next/_pre553_query_common.py": "c6f1d41ad72a578cad73ab0570157217757d949f11fb92def7d364b776bafa72",
+    "rawlsing_next/_pre553_query_eval.py": "7b9643288e5a2fead27210cd03e04c7151fa3e6fdf86eb49aee67b485c49129c",
+    "rawlsing_next/pre553_empirical_query.py": "4d6b33405d477efefbc7f1274b7165c7ff530fb38efabdf324f2e81acd7228cd",
+    "rawlsing_next/tests/test_observed_response.py": "abf7fe1c6348dae0e2d9cd6d57958fcf8495267fd57a933eda01f79855a0eb91"
+  },
+  "limits": [
+    "Fixture-only engineering discrimination; not an original SRC04 empirical result.",
+    "No original SAV stat/hash/open/decode/read.",
+    "No original observed-response query issued or executed."
+  ]
+}
