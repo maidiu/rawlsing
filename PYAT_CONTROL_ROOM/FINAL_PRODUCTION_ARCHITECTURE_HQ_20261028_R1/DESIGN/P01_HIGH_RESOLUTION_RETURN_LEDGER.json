@@ -1,0 +1,399 @@
+{
+  "schema": "PYAT_P01_HIGH_RESOLUTION_RETURN_LEDGER@1.0.0",
+  "title": "P01 S0/S1/S2 unresolved precision and follow-up details; no worker claims",
+  "created": "2026-10-28",
+  "control_commit": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "owner": "Browser Architecture HQ",
+  "decision": "SOURCE_AUTHORITATIVE_COMPACT_REGENERABLE_HYBRID_PRE553__NO_ROUTE_REDECISION",
+  "accepted_S2_own_findings": [
+    {
+      "claim": "P01-S2-O1",
+      "epistemic": "EXECUTED_SOURCEFREE_PROOF",
+      "meaning": "4 candidate/replay streaming canonical hash pilot cases PASS",
+      "limits": "synthetic hash-only fixture not full validation"
+    },
+    {
+      "claim": "P01-S2-O2",
+      "epistemic": "EXECUTED_SOURCEFREE_PROOF",
+      "meaning": "one complete I02 fixture accepted and reverse order same identity",
+      "limits": "tiny synthetic data, no new validator"
+    },
+    {
+      "claim": "P01-S2-O3",
+      "epistemic": "EXECUTED_SOURCEFREE_PROOF",
+      "meaning": "count and deep semantic invalid cases rejected (see S2 dossier)",
+      "limits": "old engine only; no new code"
+    },
+    {
+      "claim": "P01-S2-O4",
+      "epistemic": "EXECUTED_SOURCEFREE_PROOF",
+      "meaning": "old I02 logical ingest accepts inconsistent source_snapshot_retention_ref SHA after self-consistent reseal",
+      "limits": "upstream physical/source facade checks SHA; not an all-system exploit claim"
+    }
+  ],
+  "scope": "Current verified I02 core code plus sourcefree tests; this list is OPEN engineering attention, not evidence each point is unimplemented in every branch or scientifically undecided.",
+  "enforcement": "Before closing any item, attach exact current SHA, responsible code, independent positive/negative oracle and receiving consumer; never close by worker assertion or historical receipt alone.",
+  "total": 36,
+  "entries": [
+    {
+      "id": "S2-HR-001",
+      "title": "source SHA vs retention exact attestation",
+      "severity": "CRITICAL",
+      "owner": "HQ I02/source-admission",
+      "source": "ingest.py:87-159,451-482,683-721; facade.py:263-309,576-584",
+      "question": "Synthetic I02 accepted an internally consistent package whose snapshot-retention SHA differs from declared source artifact; which qualified upstream source-byte and source-retention receipt must new view require?",
+      "closure": "Reproduce full negative oracle: valid logical C11 fixture with discrepant retention; new source view MUST refuse, old I02 behavior documented; actual byte SHA independent attestation under source grant.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-002",
+      "title": "byte-exact candidate hash under full section grammar",
+      "severity": "CRITICAL",
+      "owner": "HQ I02",
+      "source": "ingest.py:238-351; empirical_objects.py:181-221",
+      "question": "Can stream canonical projection for every section, all typed absences, Unicode and numeric representations without byte drift?",
+      "closure": "Golden fixtures cover every section and old semantic_hash(_candidate_projection) vs new hash; sourcefree 4-case pilot PASS but not exhaustive.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-003",
+      "title": "ReplayManifest complete closure not digest proxy",
+      "severity": "CRITICAL",
+      "owner": "HQ I02+P04",
+      "source": "integrity.py:130-174,304-330; ingest.py:354-399,683-721",
+      "question": "What physical closure format permits byte-identical ReplayManifest@1.0.0 and read-only on-demand reconstruction without full resident tuple?",
+      "closure": "Sorted multiset identity incl source artifact + retention, duplicates, exact ref fields; old manifest full equality and identical hash from new implementation.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-004",
+      "title": "authority snapshot set comparison comparator",
+      "severity": "HIGH",
+      "owner": "HQ I02",
+      "source": "integrity.py:467-472; ingest.py:553-575,698-702",
+      "question": "Does source hash comparator use canonical_json sorted authority-ref dictionary, not ref.key?",
+      "closure": "Authority permutations and hostile alternative comparator test, exact authority_snapshot_set_hash.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-005",
+      "title": "multiplicity duplicate preservation until rejection",
+      "severity": "CRITICAL",
+      "owner": "HQ I02",
+      "source": "integrity.py:475-508; ingest.py:623-641",
+      "question": "How to detect duplicate occurrence keys independent of unique exact refs and avoid dedup by answer or question?",
+      "closure": "External sorted canonical occurrence key, hostile multiselect/order/rank/repeated values, duplicate with updated count+resealed replay rejected.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-006",
+      "title": "source identity and respondent scopes across universes",
+      "severity": "CRITICAL",
+      "owner": "HQ I02",
+      "source": "ingest.py:578-620; facade.py:264-315",
+      "question": "How are exact source-scoped respondent-ref and per-universe respondent_key pair indexed while preserving cross-universe refusal?",
+      "closure": "Independent respondent namespace and out-of-universe sourcefree tests, multi-universe real qualifying fixture.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-007",
+      "title": "declared record counts and optional declarations",
+      "severity": "HIGH",
+      "owner": "HQ I02",
+      "source": "ingest.py:209-235,451-482",
+      "question": "Which core count keys must exist and when do optional count declarations fail? Does sparse optional declaration differ from zero?",
+      "closure": "Exact legacy declared-count semantics tests, unknown family, absent mandatory and explicit zero, no false stricter post hoc rule.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-008",
+      "title": "section mandatory/nonempty and typed-absence semantics",
+      "severity": "CRITICAL",
+      "owner": "HQ I02/science if change needed",
+      "source": "ingest.py:485-550; integrity.py:69-84",
+      "question": "Exactly which absent sections may be TypedAbsence and which states, including mandatory nonempty coordinates? Is full all35 compatible?",
+      "closure": "Per-section policy matrix and required 35 configurations; no silent relaxation of mandatory EmpiricalCoordinateFact.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-009",
+      "title": "public object authority and semantic closure",
+      "severity": "CRITICAL",
+      "owner": "HQ I02",
+      "source": "ingest.py:553-575; integrity.py:343-464; empirical_authority.py",
+      "question": "Does every transiently reconstructed object run same content-hash projection, authority closure and canonical response/coordinate positive mapping checks?",
+      "closure": "Old helper invoked for every public object; altered canonical mapping and nested authority counterexamples rejected.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-010",
+      "title": "internal-record nested authority scans",
+      "severity": "HIGH",
+      "owner": "HQ I02",
+      "source": "ingest.py:433-449,553-575; integrity.py:130-167",
+      "question": "Are AuthorityRefs deeply nested inside all internal record semantic projections recursively resolved?",
+      "closure": "Deep nested map/list/typed absence and unknown authority; exact no-fallback registry.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-011",
+      "title": "question binding + normalization authority",
+      "severity": "CRITICAL",
+      "owner": "HQ I02",
+      "source": "ingest.py:623-661; facade.py:264-354",
+      "question": "Do question target keys and binding source/native/canonical refs preserve exact topology/crosswalk and no unapproved semantic promotion?",
+      "closure": "Missing binding, canonical mapping without authority, out-of-universe question and valid multi-binding tests.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-012",
+      "title": "risk and routing fact topology",
+      "severity": "CRITICAL",
+      "owner": "HQ I02/P03",
+      "source": "integrity.py:440-458; ingest.py:485-500,601-620",
+      "question": "How to ensure explicit routing eligibility/member-set refs and design/estimand weight authority aren't collapsed into observed-response counts?",
+      "closure": "Unknown routing, inapplicable, not asked, eligible and weight valid/invalid/unknown cases; original I03 denominators match.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-013",
+      "title": "source universe relation default vs pooling",
+      "severity": "HIGH",
+      "owner": "HQ I02/FF",
+      "source": "ingest.py:664-680; integrity.py:460-463",
+      "question": "Does DISTINCT_BY_DEFAULT remain explicit and source relations never imply equivalence/join/pooling?",
+      "closure": "Exact relation ref scope and negative unknown/noncomparable/multi-source tests.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-014",
+      "title": "M01-M18 exact historical presence semantics",
+      "severity": "HIGH",
+      "owner": "HQ I02",
+      "source": "integrity.py:510-553; ingest.py:755-776",
+      "question": "Does the new journal compute the same eighteen exact coverage tuples, with declared typed absence presence and no stronger empirical claim?",
+      "closure": "Old vs new full coverage mapping, zero/missing optional sections and replay missing failures.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-015",
+      "title": "I02 seal and importable reconstruction helper",
+      "severity": "CRITICAL",
+      "owner": "HQ I02+hostile P11",
+      "source": "repository.py:15,37-49,89-115; parquet_carrier.py:279-358",
+      "question": "The seal is module-private but _make_validated_release is importable; Parquet reopens via this factory after relation verification, not all original I02 passes. What trust boundary should new view registration enforce?",
+      "closure": "No cache/user-provided record can self-admit; private receipt from complete I02 validation plus source-admission attestation, and existing Parquet trusted path inspected in independent review.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-016",
+      "title": "mixed view/materialized repository release_id and ref collisions",
+      "severity": "CRITICAL",
+      "owner": "HQ I02",
+      "source": "repository.py:55-111",
+      "question": "How to prevent same release_id/different hash and cross-source object ExactRef conflict when both old materialized and new verified views coexist?",
+      "closure": "Atomic staged dual-index transactions; adversarial conflicting release and object refs; snapshot_identity unchanged, rollback exact.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-017",
+      "title": "exact legacy materialization resource contract",
+      "severity": "HIGH",
+      "owner": "HQ P01",
+      "source": "source_equivalence.py:392-417,568-649; replay_audit.py:170-201; parquet_carrier.py:249-358",
+      "question": "How do strict isinstance(C11LogicalRelease) consumers obtain old exact object format from a verified view, and how does 16GiB bound refusal work?",
+      "closure": "Explicit materialize_legacy_release_exact(resource_budget), full identity parity; failure clean and no fake C11 object.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-018",
+      "title": "source-to-C11 source-backed slot completeness",
+      "severity": "CRITICAL",
+      "owner": "HQ P01/source owner",
+      "source": "facade.py:498-574; source config/factory",
+      "question": "What row/slot coverage and source-cell-order checks occur before journal admission; what happens with q217's 38 unbound cells?",
+      "closure": "Source/row_count/physical slot checked; exact held q217 remains held; sibling valid fields can proceed; no invented missing-as-absence.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-019",
+      "title": "physical journal frames and deterministic external sort",
+      "severity": "HIGH",
+      "owner": "HQ P01/P02",
+      "source": "ingest.py:280-399,743-790; A69 pre553_r5_compact_carrier.py",
+      "question": "Define deterministic sortable records, ties, checksums, external merge, interruption recovery and disk bounds; can old R5 utilities be reused without semantics?",
+      "closure": "Independent sorted canonical byte oracle; simulated truncated frame, duplicate ref, partial write, crash and no unbounded scratch.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-020",
+      "title": "staged journal vs durable regenerable cache authorities",
+      "severity": "CRITICAL",
+      "owner": "HQ P01/P02",
+      "source": "facade.py:606-653; parquet_carrier.py:209-358",
+      "question": "How do journal, I02 proof, working view and optional Parquet/Zstd accelerator differ in retention and authority?",
+      "closure": "Delete all cache and rebuild same logical ref; stale/corrupt denies use, no authority from cache hashes.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-021",
+      "title": "native I03 hot-path hidden materialization",
+      "severity": "CRITICAL",
+      "owner": "HQ P03/P04",
+      "source": "empirical_query.py:56-108; _pre553_query_predicate.py:30-90; _pre553_query_eval.py",
+      "question": "What direct C11 object refs and used_objects/replay assembly still demand all-native object graph?",
+      "closure": "Complete sourcefree I03 fact/replay exact equality and full phase profiled; no claim speed from just replacing tuple access.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-022",
+      "title": "recursive handoff reads old release public_objects",
+      "severity": "HIGH",
+      "owner": "HQ P06",
+      "source": "pre553_recursive_handoff.py:572-613",
+      "question": "How to avoid recursion recreating full C11 index while preserving same-person branch membership?",
+      "closure": "I05 N+1 exact branch membership and lineage golden test from new view.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-023",
+      "title": "source equivalence and hostile replay audit acceptance",
+      "severity": "CRITICAL",
+      "owner": "HQ P01/P11",
+      "source": "source_equivalence.py:568-649,712+; replay_audit.py:143-201",
+      "question": "What exact full-audit requirement can stay cold/expensive without contaminating query hot path and how will new views qualify?",
+      "closure": "Existing certified I06/P05/replay-audit exact tests pass, no public substitutive attestations.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-024",
+      "title": "current control vs SRC04 packet I03 divergence",
+      "severity": "CRITICAL",
+      "owner": "HQ P01/P03",
+      "source": "current empirical_query.py blob 03facecf..., predicate 8590bacf...; packet differs (S0 census)",
+      "question": "Which exact author branch is the code integration target, and how does new view support events_by_target introduced in packet?",
+      "closure": "Patch for each exact accepted target commit with file/blob fingerprint and no accidental blend.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-025",
+      "title": "disposition/error ordering under multi-failure cases",
+      "severity": "HIGH",
+      "owner": "HQ P01",
+      "source": "ingest.py:67-85,451-790,724-740",
+      "question": "If validation physical pass order differs, which legacy rejection status takes precedence?",
+      "closure": "Multi-fault fixtures with expected disposition and atomic failure receipts matching accepted contract.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-026",
+      "title": "replay when source unavailable or access revoked",
+      "severity": "CRITICAL",
+      "owner": "HQ P01/source authority",
+      "source": "facade.py:248-261,576-603; source_equivalence.py; source-admission rules",
+      "question": "Which historical accepted outputs remain replayable and which new executions must fail when original snapshot or grant unavailable?",
+      "closure": "Source availability/grant matrix with cold-cache allowed/denied cases, no inferred permission from repository presence.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-027",
+      "title": "multi-source and all35 source topology applicability",
+      "severity": "CRITICAL",
+      "owner": "HQ all35/P09",
+      "source": "R157 all35 configs; atlas F1-F8/EE01-16",
+      "question": "Does new view support 35 heterogeneous sources, row count, duplicated questionnaire identity, rank/repetition, routing and all configs without source-specific hacks?",
+      "closure": "Horizontal exact fixture and selected authorized original two-family tests; no SRC04-only completion.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-028",
+      "title": "native operation and resumed consumer contract",
+      "severity": "HIGH",
+      "owner": "HQ P05",
+      "source": "SRC04 native_streaming.py:94+, actual_carrier.py:164+, run_original_execution.py",
+      "question": "What source-backed exact view access is needed for restored 177 unary+31 pairs and early real consumer without all-pair queue?",
+      "closure": "Existing complete consumer restored, cells not [], no duplicate or fabricated receipts.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-029",
+      "title": "R5 compact vs existing eager Parquet reuse boundary",
+      "severity": "MEDIUM",
+      "owner": "HQ P02",
+      "source": "A69 compact_carrier.py/c11.py; control pre553_parquet_carrier.py:209-358",
+      "question": "Which compression and integrity functions can be reused without persisting a canonical second science carrier or eagerly expanding rows?",
+      "closure": "Exact code-dependency diff and sample persisted structure, no new A/B/C decision.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-030",
+      "title": "physical economy and run safety on source Mac",
+      "severity": "HIGH",
+      "owner": "HQ P10",
+      "source": "SRC04 7,911,048,750 bytes; original SAV 1,531,099; 16GiB host",
+      "question": "What is cold build+validation peak RAM/scratch, sorting cost, host usage, and native query+replay time end-to-end?",
+      "closure": "Measured per-phase RSS, scratch, canonical hashing, source I/O, cache hit/rebuild, safe stop-before-disk-full; no claimed speedup from isolated hash or simple NumPy.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-031",
+      "title": "reference hash stability for numerics and Unicode",
+      "severity": "HIGH",
+      "owner": "HQ P01",
+      "source": "empirical_objects.py:181-221; ingest.py:280-351",
+      "question": "Canonical JSON uses ensure_ascii=False and forbids binary float; are Decimal/Fraction/exact strings and null typed absence preserved byte-exact?",
+      "closure": "Sourcefree oracle on all normalized source value representations, Unicode and escape chars, exact equality old/new.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-032",
+      "title": "full replay manifest materialization on exact object lookup",
+      "severity": "HIGH",
+      "owner": "HQ P01/P04",
+      "source": "integrity.py:304-330; repository.py:81-87; ingest.py:354-399",
+      "question": "Can exact ReplayManifest rehydration reconstruct full closure without all objects, within observable memory budget, while keeping replay ref unchanged?",
+      "closure": "Cold direct exact ref resolution and negative bad closure; compatibility full audit with bounded scratch.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-033",
+      "title": "source row-permutation and physical cell order",
+      "severity": "HIGH",
+      "owner": "HQ P01/source owner",
+      "source": "facade.py:248-261,498-574",
+      "question": "How do order-invariance of semantic section sorting and order-sensitivity of source row/ordinal identity coexist?",
+      "closure": "Shuffled feed same source row identities must preserve release; reassigned row ordinals must not be assumed equal.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-034",
+      "title": "sourcefree oracle portability and test coverage",
+      "severity": "HIGH",
+      "owner": "HQ P01",
+      "source": "rawlsing_next/tests/test_pre553_c11_repository_ingest.py; local sourcefree test scripts (listed in S2)",
+      "question": "This turn ran 4 synthetic hash cases and one fully accepted native fixture plus hostile negatives; how to port into source-controlled independent parity suite?",
+      "closure": "Commit test code under actual repo test ownership, multiple topologies/sources; compare old/new, independent test reviewer.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-035",
+      "title": "validator memory lower bound, not magical O(1)",
+      "severity": "HIGH",
+      "owner": "HQ P01/P10",
+      "source": "ingest.py:578-641; integrity.py:487-553",
+      "question": "Which exact authority/namespace and event index sets must be resident vs external; does bounded version respect 16GiB?",
+      "closure": "Complexity bound and real measured peak; O(N) object constructions may remain, only residency/duplication reduced.",
+      "status": "OPEN_NOT_PROVED"
+    },
+    {
+      "id": "S2-HR-036",
+      "title": "new source-view private receipt and trust semantics",
+      "severity": "CRITICAL",
+      "owner": "HQ P01/I02 issuer",
+      "source": "repository.py:15-115; ingest.py:743-831",
+      "question": "What exact immutable proof tuple attests all passes and source admission, and which code path mints and verifies it?",
+      "closure": "No method accepts untrusted digest alone; disallow partial I02 commit and maintain old sealed C11 compatibility.",
+      "status": "OPEN_NOT_PROVED"
+    }
+  ]
+}
