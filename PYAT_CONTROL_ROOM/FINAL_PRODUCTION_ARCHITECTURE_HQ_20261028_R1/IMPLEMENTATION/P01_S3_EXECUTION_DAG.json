@@ -14,7 +14,8 @@
     "DESIGN/P01_S3_VALIDATION_JOURNAL_PHYSICAL_SCHEMA_AND_ATOMICITY_R1.md",
     "DESIGN/P01_S3_ACCEPTANCE_AND_DIFFERENTIAL_MATRIX_R1.md",
     "CODEX_BUILD_ORDERS/P01_S3_BUILD_A_FOUNDATIONS.md",
-    "CODEX_BUILD_ORDERS/P01_S3_BUILD_B_CONSUMERS.md"
+    "CODEX_BUILD_ORDERS/P01_S3_BUILD_B_CONSUMERS.md",
+    "DESIGN/P01_S3_SOURCE_BYTE_ATTESTATION_AND_DECODER_R1.md"
   ],
   "tickets": [
     {
@@ -102,7 +103,8 @@
       "tests": [
         "T20",
         "T21",
-        "T22"
+        "T22",
+        "T41"
       ],
       "author": "Codex qualified engineering under one editor per collision group",
       "reviewer": "Independent, not own reviewer",
@@ -243,5 +245,8 @@
     "direct old source equivalence/replay audit unchanged",
     "current-control I03 vs SRC04 packet SHA resolution",
     "host profiling before original source execution"
-  ]
+  ],
+  "source_decoder_evidence": "rawlsing_next/pre553_physical_decoder.py blob d2a074a41fb556a1cd5928a5fe1421ef3672a4e5; _decode bytes SHA before later iter_batches pathname reopen; require immutable approved snapshot",
+  "existing_source_admission_module_status": "pre553_source_read_admission.py not present at current control path; exact external qualified receipt/grant unresolved",
+  "high_resolution_open": 37
 }
