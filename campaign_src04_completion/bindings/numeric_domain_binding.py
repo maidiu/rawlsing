@@ -34,6 +34,7 @@ from rawlsing_next.source_configuration.schema import (  # noqa: E402
 BASE_CONFIG = ROOT / "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json"
 SOURCE_SHA256 = "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
 TARGET_SLOTS = ("q715withoutmorocco", "q716withoutmorocco")
+INCOME_DECILE_SLOTS = ("q715incomedeciles", "q716incomedeciles")
 
 
 class NumericDomainBindingError(ValueError):
@@ -145,7 +146,8 @@ def write_v2_config() -> dict[str, Any]:
     return cfg
 
 
-def apply_observed_domain(config: SourceConfig | Mapping[str, Any], cells: Any) -> dict[str, Any]:
+def apply_observed_domain(config: SourceConfig | Mapping[str, Any], cells: Any,
+                          target_slots: tuple[str, ...] = TARGET_SLOTS) -> dict[str, Any]:
     """Apply exact observed numeric value rules to the two target income slots.
 
     Single pass over the supplied iterable; each cell is routed by its exact
@@ -154,9 +156,10 @@ def apply_observed_domain(config: SourceConfig | Mapping[str, Any], cells: Any) 
     doc = _doc(config)
     phys = {p["name"]: p for p in doc["physical_slots"]}
     counts: dict[str, int] = {}
-    states: dict[str, set[str]] = {slot: set() for slot in TARGET_SLOTS}
+    targets = tuple(target_slots)
+    states: dict[str, set[str]] = {slot: set() for slot in targets}
     prepared: dict[tuple[int, str], dict[str, Any]] = {}
-    for slot_name in TARGET_SLOTS:
+    for slot_name in targets:
         slot = next((s for s in doc["response_slots"] if s["slot"]["name"] == slot_name), None)
         if slot is None:
             raise NumericDomainBindingError(f"target response slot absent: {slot_name}")
@@ -213,6 +216,7 @@ def build_numeric_domain_runtime_config(
     expected_source_sha256: str | None = None,
     expected_config_canonical_sha256: str | None = None,
     batch_size: int = 10_000,
+    target_slots: tuple[str, ...] = TARGET_SLOTS,
 ) -> dict[str, Any]:
     """Build a runtime config with exact literal observed income rules.
 
@@ -236,17 +240,18 @@ def build_numeric_domain_runtime_config(
         raise NumericDomainBindingError("transport SHA differs from config binding")
     if transport.row_count != doc.get("binding", {}).get("row_count"):
         raise NumericDomainBindingError("transport row count differs from config binding")
-    if not all(any(s["slot"]["name"] == slot for s in doc["response_slots"]) for slot in TARGET_SLOTS):
+    targets = tuple(target_slots)
+    if not all(any(s["slot"]["name"] == slot for s in doc["response_slots"]) for slot in targets):
         raise NumericDomainBindingError("config lacks an exact target income response slot")
     cells = (transport.iter_cells() if isinstance(transport, ExactPhysicalCellStream)
              else transport.iter_cells(batch_size))
-    applied = apply_observed_domain(doc, cells)
+    applied = apply_observed_domain(doc, cells, target_slots=targets)
     out = applied["config"]
     out["config_id"] = f"{out['config_id']}-NUMERIC-DOMAIN-RUNTIME"
     out["config_revision"] = int(out["config_revision"]) + 1
     out.setdefault("notes", []).append(
         "NUMERIC_DOMAIN_RUNTIME: exact literal observed numeric values for "
-        + ",".join(TARGET_SLOTS)
+        + ",".join(targets)
         + f"; source_sha256={transport.source_sha256}; transport_rows={transport.row_count}; "
         + f"base_config={expected_config}; source-country currency literals preserved without normalization.")
     validate_source_config(out)
@@ -255,6 +260,7 @@ def build_numeric_domain_runtime_config(
         "base_config_canonical_sha256": expected_config,
         "transport_source_sha256": transport.source_sha256,
         "transport_row_count": transport.row_count,
+        "target_slots": list(targets),
         "added_rule_counts": applied["added_rule_counts"],
         "observed_missing_states": applied["observed_missing_states"],
         "runtime_config_canonical_sha256": canonical_config_hash(out),

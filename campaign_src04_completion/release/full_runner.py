@@ -79,6 +79,12 @@ B_CONFIG_FILE_SHA256 = "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d8
 B_CONFIG_CANONICAL_SHA256 = "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d"
 B_PINNED_COMMIT = "da23c65d1e211cb7e8ce416e98757f321b78d25e"
 B_BUILDER = "campaign_src04_completion.bindings.numeric_domain_binding.build_numeric_domain_runtime_config"
+B_CODE_PREIMAGE_SHA256 = "680346a23bd044b6332fdc661920d4457493f33981356066d54149578ccd48cd"
+B_CODE_AMENDED_SHA256 = "3889358a0659ec843b9c51d42c3498339eef7a0c161b78d6776e111eb5f27988"
+NUMERIC_TARGET_SLOTS = (
+    "q715withoutmorocco", "q716withoutmorocco",
+    "q715incomedeciles", "q716incomedeciles",
+)
 B_JOIN_INPUTS_PATH = CAMPAIGN / "JOIN_INPUTS.json"
 FULL_GRANT_SCHEMA = "PYAT_FULL_SOURCE_READ_GRANT@1.0.0"
 FULL_PURPOSE = "FULL_SRC04_ORIGINAL_C11_CONSTRUCTION"
@@ -643,13 +649,17 @@ def _apply_admitted_binding(config: SourceConfig, incidence: Any, *, repaired: b
             config, incidence,
             expected_source_sha256=EXPECTED_SOURCE_SHA256,
             expected_config_canonical_sha256=B_CONFIG_CANONICAL_SHA256,
+            target_slots=NUMERIC_TARGET_SLOTS,
         )
         config = SourceConfig(binding["config"])
         join_info.update({
             "base_config_canonical_sha256": binding["base_config_canonical_sha256"],
             "runtime_config_canonical_sha256": binding["runtime_config_canonical_sha256"],
+            "target_slots": list(NUMERIC_TARGET_SLOTS),
             "added_rule_counts": binding["added_rule_counts"],
             "observed_missing_states": binding["observed_missing_states"],
+            "binding_code_preimage_sha256": B_CODE_PREIMAGE_SHA256,
+            "binding_code_amended_sha256": B_CODE_AMENDED_SHA256,
         })
     return _runtime_config(config, incidence), join_info
 
@@ -769,6 +779,9 @@ def run_with_grant(grant_path: Path, grant_sha256: str, repaired_config_path: Pa
             "b_config_canonical_sha256": B_CONFIG_CANONICAL_SHA256,
             "b_pinned_commit": B_PINNED_COMMIT,
             "builder": B_BUILDER,
+            "binding_code_preimage_sha256": B_CODE_PREIMAGE_SHA256,
+            "binding_code_amended_sha256": B_CODE_AMENDED_SHA256,
+            "target_slots": list(NUMERIC_TARGET_SLOTS),
             "added_rule_counts": join_info.get("added_rule_counts"),
             "runtime_config_canonical_sha256": join_info.get("runtime_config_canonical_sha256"),
             "source_country_currency_normalization": "NONE",
