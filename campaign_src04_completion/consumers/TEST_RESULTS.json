@@ -1,0 +1,93 @@
+{
+  "schema": "PYAT_SRC04_LANE_D_TEST_RESULTS@1.2.0",
+  "lane": "D",
+  "commands": [
+    "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.generate_evidence",
+    "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native-fixture --value-sensitivity-evidence campaign_src04_completion/consumers/evidence/VALUE_SENSITIVITY.json --value-sensitivity-case original --out <out>",
+    "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native-fixture --mutate-q101-2-to-1 --value-sensitivity-evidence campaign_src04_completion/consumers/evidence/VALUE_SENSITIVITY.json --value-sensitivity-case mutated --out <out>",
+    "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native-fixture --value-sensitivity-evidence campaign_src04_completion/consumers/evidence/VALUE_SENSITIVITY.json --value-sensitivity-case restored --out <out>",
+    "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run b0-fixture --out <out>",
+    "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run refuse-d1-tally --out <out>",
+    "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native --out <out>",
+    "PYTHONPATH=. python3 -m pytest campaign_src04_completion/consumers/tests -q -o addopts=''",
+    "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/review/test_cd_boundary_review.py -q -o addopts=''"
+  ],
+  "results": [
+    {
+      "command": "generate_evidence",
+      "status": "PASS",
+      "detail": "Native B0 fixture value-consuming positive; mutation/restoration evidence; 11/11 negatives refused; exact source-local blocker V2 written."
+    },
+    {
+      "command": "native-fixture CLI original",
+      "status": "PASS",
+      "detail": "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE; OC01 SUPPORTED_OBJECTIVE_RESULT; discovery DISCOVERED_RESULT_SUPPORTED; effective-N NOT_APPLICABLE; 1/1 support."
+    },
+    {
+      "command": "native-fixture CLI mutated",
+      "status": "PASS",
+      "detail": "Consumed fact support 2/2; discovery empirical fact refs differ; fixture_value_sensitive=true; source_value_sensitive=false."
+    },
+    {
+      "command": "native-fixture CLI restored",
+      "status": "PASS",
+      "detail": "Restored consumed fact support 1/1 and exact fact/discovery refs equal original."
+    },
+    {
+      "command": "b0-fixture CLI",
+      "status": "PASS",
+      "detail": "Preserved retained receipt policy positive at SUPPORTED_COMPONENT_ONLY, fixture_only=true, source_value_sensitive=false; not native value proof."
+    },
+    {
+      "command": "refuse-d1-tally CLI",
+      "status": "PASS",
+      "detail": "REFUSED with PRODUCER_FAMILY_REFUSED__D1_TALLY_NOT_EMPIRICAL_FACT; consumer_invoked=false."
+    },
+    {
+      "command": "native CLI without producer",
+      "status": "PASS_BLOCKER",
+      "detail": "FULL_SRC04_SOURCE_PRODUCT_NOT_ISSUED; exit 2; no positive claimed."
+    },
+    {
+      "command": "focused consumer pytest",
+      "status": "PASS",
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "detail": "15 passed in 7.15s, including joined C observed-profile preservation and wrong-projection refusal tests."
+    },
+    {
+      "command": "frozen independent review pytest",
+      "status": "RED_EXPECTED_HISTORICAL_WITNESS",
+      "passed": 7,
+      "failed": 1,
+      "skipped": 0,
+      "defect_test": "test_d_joined_path_is_positive_but_currently_omits_observed_ledger_DEFECT",
+      "detail": "1 failed, 7 passed in 17.01s. The unchanged review-owned defect discriminator asserts historical omission and is intentionally RED after repair; it was not edited."
+    }
+  ],
+  "observed_provenance_repair": {
+    "result_path": "campaign_src04_completion/consumers/evidence/OBSERVED_PROVENANCE_REPAIR_RESULTS.json",
+    "joined_product_path": "campaign_src04_completion/consumers/evidence/C_OBSERVED_JOINED_PRODUCT.json",
+    "status_equal": true,
+    "contract_ref_equal": true,
+    "entire_ledger_equal": true,
+    "discovery_facts_with_observed_projection": 2,
+    "wrong_projection_refused": true
+  },
+  "no_original_source_access": true,
+  "original_respondent_rows_read": 0,
+  "original_workload_issued": false,
+  "no_c_or_review_write": true,
+  "no_d1_tally_conversion": true,
+  "no_ff_v553_adoption": true,
+  "committed_evidence_has_no_raw_cells": true,
+  "limits": [
+    "Native B0 fixture value-consuming positive is nonrespondent/test-only engineering evidence, not SRC04 source-local proof.",
+    "The joined C observed-profile artifact is SRC04 nonrespondent fixture-only; it is not original-source qualification or a population claim.",
+    "The fixture value mutation is an engineering probe, not a scientific edit or population claim.",
+    "The frozen review defect test remains RED as the historical witness of the repaired omission and was not edited.",
+    "The full SRC04 source-local producer is pending; no original SRC04 file was stat'ed, hashed, opened or decoded.",
+    "The D1 tally is refused as a producer family and never converted to EmpiricalFact."
+  ]
+}

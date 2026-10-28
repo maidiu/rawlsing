@@ -1,0 +1,28 @@
+{
+  "blocker": "FULL_SRC04_SOURCE_PRODUCT_NOT_ISSUED",
+  "downstream_value_consumer_contract": {
+    "accepted_owner_1": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+    "accepted_owner_2": "rawlsing_next.pre553_effective_n.compute_effective_n (SUPPORTED weighted state only)",
+    "policy_only_result_is_insufficient": true,
+    "ref_only_bundle_result": "DOWNSTREAM_VALUE_CONSUMER_REQUIRED"
+  },
+  "no_original_source_access": true,
+  "original_workload_issued": false,
+  "prior_blocker": {
+    "path": "campaign_src04_completion/consumers/evidence/LANE_D_BLOCKER.json",
+    "sha256": "10032d47143939f65c773f2e01a494295fb5e86adffd9c2a3d4faa6deafd2502"
+  },
+  "producer_contract": "campaign_src04_completion/consumers/PRODUCER_CONTRACT.json",
+  "producer_contract_sha256": "4a5c914123f5127b2dc42ddbd5786f8d5b874e2be2fd6f9d853e411c14dd62ed",
+  "requires": [
+    "real original-bound C11LogicalRelease for the full SRC04 source product",
+    "exact EmpiricalQuerySpec@1.0.0 and EmpiricalPredicate@1.0.0",
+    "exact EmpiricalFact@1.0.0 fact ref from the existing empirical executor",
+    "exact source-local ALLOW authority refs and purpose/use scope",
+    "a direct value-consuming downstream owner input: exact discovery authority/catalog, or exact weighted effective-N inputs; a raw ref-only bundle is refused",
+    "producer module implementing module:function returning ProducerBundle"
+  ],
+  "schema": "PYAT_SRC04_LANE_D_BLOCKER@1.1.0",
+  "source_read_performed": false,
+  "status": "BLOCKED_PENDING_FULL_SRC04_SOURCE_PRODUCER"
+}

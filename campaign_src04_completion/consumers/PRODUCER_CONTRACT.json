@@ -1,0 +1,133 @@
+{
+  "schema": "PYAT_SRC04_LANE_D_PRODUCER_CONTRACT@1.2.0",
+  "lane": "D",
+  "target_source_id": "SRC04",
+  "status": "PENDING_FULL_SOURCE_PRODUCT",
+  "required_source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+  "required_source_rows": 7337,
+  "required_producer_family": [
+    "C11LogicalRelease",
+    "EmpiricalQuerySpec@1.0.0",
+    "EmpiricalPredicate@1.0.0",
+    "EmpiricalFact@1.0.0"
+  ],
+  "required_release_fields": {
+    "release_ref.kind": "C11LogicalRelease",
+    "release_ref.object_id": "supplied exact source-local release id",
+    "release_ref.content_hash": "supplied exact release content hash",
+    "source_artifact_ref.content_hash": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
+  },
+  "required_query_fields": {
+    "query_ref.kind": "EmpiricalQuerySpec@1.0.0",
+    "predicate_ref.kind": "EmpiricalPredicate@1.0.0",
+    "condition_predicate_ref": "must equal predicate_ref",
+    "typed_state": "QUERY_AUTHORIZED_RESOLVABLE",
+    "predicate_typed_state": "PREDICATE_RESOLVED_AUTHORIZED"
+  },
+  "required_fact_fields": {
+    "fact_ref.kind": "EmpiricalFact@1.0.0",
+    "fact_ref.content_hash": "supplied exact fact content hash",
+    "typed_state": "SUPPORTED",
+    "empirical_query_spec_ref": "must equal query_ref",
+    "condition_predicate_ref": "must equal predicate_ref",
+    "source_empirical_provenance_refs": "must include exact release_ref",
+    "raw_numerator_support": "nonnegative exact integer",
+    "raw_denominator_support": "positive exact integer, numerator <= denominator"
+  },
+  "required_authority": {
+    "native_authority_refs": "nonempty exact source-local ALLOW authority refs; each must resolve in the supplied AuthorityRegistry and occur in the EmpiricalFact authority closure",
+    "fixture_or_test_only_authority": "FORBIDDEN_FOR_SOURCE_LOCAL_CLAIM"
+  },
+  "required_evidence_tier": "SOURCE_LOCAL_CERTIFIED",
+  "required_claim_ceiling": "SOURCE_LOCAL_STATISTIC",
+  "required_use_scope": "SOURCE_LOCAL_STATISTIC",
+  "required_downstream_value_consumer": {
+    "purpose": "Directive 5 requires an actual existing downstream owner to dereference the native EmpiricalFact values; OC01 policy admission or a ref hash alone is not sufficient.",
+    "accepted_owner_1": {
+      "owner": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+      "bundle_field": "discovery: DiscoveryConsumer",
+      "required": "exact DiscoveryAuthority, authority snapshot in the supplied registry, exact predicate catalog and query templates; at least one DISCOVERED_RESULT_SUPPORTED receipt"
+    },
+    "accepted_owner_2": {
+      "owner": "rawlsing_next.pre553_effective_n.compute_effective_n",
+      "bundle_fields": [
+        "weight_facts",
+        "authorized_weight_scope_ref"
+      ],
+      "required": "the owner returns a SUPPORTED effective-N product; RAW NOT_APPLICABLE alone is not a substantive value effect"
+    },
+    "if_absent": "DOWNSTREAM_VALUE_CONSUMER_REQUIRED",
+    "no_universal_m1_or_ff_v553_requirement": true
+  },
+  "required_value_sensitivity": {
+    "source_local": "explicit measured original-value -> consumed-result comparison with restoration; otherwise source_value_sensitive=false and value_sensitivity.status=NOT_DEMONSTRATED",
+    "fixture_only": "explicit measured fixture-value mutation/restoration may set fixture_value_sensitive=true, but source_value_sensitive remains false",
+    "no_hardcoded_true": true,
+    "scope_labels": [
+      "NONRESPONDENT_FIXTURE_ONLY",
+      "SOURCE_LOCAL_CERTIFIED"
+    ]
+  },
+  "required_observed_response_projection": {
+    "trigger": "query.requested_output_grain.observed_response_contract_ref is present",
+    "fact_field": "EmpiricalFact.target_topology.observed_response",
+    "required_status": "OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION",
+    "required_flag": "not_eligible_population_estimate is true",
+    "required_contract_ref": "exact contract_ref equal to the query grain observed_response_contract_ref",
+    "required_ledger": "full exact ledger, including contract_ref and not_eligible_population_estimate",
+    "product_field": "observed_response (unchanged _plain projection)",
+    "discovery_fact_field": "empirical_facts[].observed_response (unchanged _plain projection)",
+    "nonobserved_profiles": "unchanged; no observed_response field is added",
+    "forbidden": "synthesis, relabeling, population eligibility, or dropping the projection"
+  },
+  "loader_contract": {
+    "spec": "python_module:function",
+    "return_type": "campaign_src04_completion.consumers.consumer.ProducerBundle",
+    "fields": [
+      "release: C11LogicalRelease",
+      "query: EmpiricalQuerySpec",
+      "predicate: EmpiricalPredicate",
+      "repository: C11Repository",
+      "authority_registry: AuthorityRegistry",
+      "contract: ProducerContract",
+      "discovery: DiscoveryConsumer | None",
+      "weight_facts: tuple[WeightMeasureFact, ...]",
+      "authorized_weight_scope_ref: ExactRef | None"
+    ],
+    "command": "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native --producer-module MODULE:FUNCTION --expected-source-id SRC04 --claim-ceiling SOURCE_LOCAL_STATISTIC --use-scope SOURCE_LOCAL_STATISTIC --out campaign_src04_completion/consumers/evidence/SRC04_SOURCE_LOCAL_CONSUMER_PRODUCT.json"
+  },
+  "consumer_command_native_fixture": "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native-fixture --value-sensitivity-evidence campaign_src04_completion/consumers/evidence/VALUE_SENSITIVITY.json --value-sensitivity-case original --out campaign_src04_completion/consumers/evidence/B0_NATIVE_ORIGINAL_PRODUCT.json",
+  "consumer_command_fixture_only": "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run b0-fixture --out campaign_src04_completion/consumers/evidence/B0_FIXTURE_CONSUMER_PRODUCT.json",
+  "consumer_command_d1_refusal": "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run refuse-d1-tally --out campaign_src04_completion/consumers/evidence/NEGATIVE_D1_TALLY.json",
+  "forbidden": [
+    "D1_DESCRIPTIVE_TALLY_AS_EMPIRICAL_FACT",
+    "FIXTURE_OR_TEST_ONLY_AUTHORITY_AS_SOURCE_LOCAL",
+    "POPULATION_STATISTIC_WITHOUT_DESIGN_AND_WEIGHT_AUTHORITY",
+    "FF_V553_SEMANTIC_ADOPTION_WITHOUT_PURPOSE_USE_AUTHORITY",
+    "RESPONDENT_CELLS_IN_GIT_OR_STDOUT",
+    "ORIGINAL_SOURCE_READ_WITHOUT_EXACT_CURRENT_GRANT",
+    "POLICY_ADMISSION_OR_REF_HASH_AS_SUBSTANTIVE_DOWNSTREAM_EFFECT"
+  ],
+  "historical_baseline_not_full_producer": {
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION",
+      "content_hash": "fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec"
+    },
+    "scope": "42 accepted response fields only; preserved historical evidence",
+    "status": "NOT_SUFFICIENT_FOR_FULL_SRC04_PRODUCER",
+    "reason": "The directive requires the expanded 163/178-field source product; the 42-field release is immutable baseline evidence, not the full producer."
+  },
+  "expected_result": {
+    "status": "SOURCE_LOCAL_NATIVE_CONSUMER_POSITIVE",
+    "oc01_state": "SUPPORTED_OBJECTIVE_RESULT",
+    "claim_ceiling": "SOURCE_LOCAL_STATISTIC",
+    "downstream_value_effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED or EFFECTIVE_N_SUPPORTED",
+    "source_value_sensitive": "true only with measured SOURCE_LOCAL_CERTIFIED evidence; otherwise false/NOT_DEMONSTRATED",
+    "fixture_only": false
+  },
+  "blocker_if_absent": "FULL_SRC04_SOURCE_PRODUCT_NOT_ISSUED",
+  "source_read_performed": false,
+  "original_workload_issued": false,
+  "no_original_source_access": true
+}
