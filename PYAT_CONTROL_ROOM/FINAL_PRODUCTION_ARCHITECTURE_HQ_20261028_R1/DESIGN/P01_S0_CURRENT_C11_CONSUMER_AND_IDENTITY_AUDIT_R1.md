@@ -22,6 +22,10 @@ Git SHA-1 blob IDs of packet copies compared against *direct current-control* Gi
 All 15 source-free `04_CURRENT_EXECUTION/rawlsing_next` Python files were successfully `ast.parse`-checked (syntax only); no fixture/runtime semantics claimed.
 
 ## 2. Bounded direct code census — exactly what was searched
+
+**Machine-readable exact current-control companion:** `DESIGN/P01_S0_CONTROL_SYMBOL_CENSUS.json` directly fetched all 15 named current-control Python files at commit `299f41e97a43c67be9cc76a79fa49b48f4e12e54`, recorded their individual Git blob SHAs, line counts and **131 positive keyword/source occurrences**. It preserves the exact complete code lines for the matched API set, with explicit exclusion and nonexistence caveat. Together with packet-wide 21-file/156-hit census, this is a reproducible and bounded S0 inventory, not a fictional exhaustive search of all branches.
+
+## 2. Bounded direct code census — exactly what was searched
 Within all 112 extracted packet entries, a regex pass across every Python file on `C11LogicalRelease|C11Repository|resolve_release_exact|resolve_object_exact|.public_objects|.internal_records|.closure_refs|.replay_manifest|_make_validated_release|_build_release_index|validate_c11_source_release` found **21 Python files and 156 textual hits**. These are keyword hits, NOT 156 unique function callers, nor an exhaustive grep of the live private repo. GitHub search additionally found direct modern core code and tests on its default-branch search index; default-branch search is NOT proof of total absence on this control branch. All material current-core files below were also directly fetched against the exact control SHA. Other branches and unmounted locally running Macs are outside this census.
 
 ### Present production and SRC04 consumers — packet line locations
