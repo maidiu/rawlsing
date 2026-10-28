@@ -1,0 +1,42 @@
+{
+  "schema": "PYAT_SRC04_AUTHOR_FINAL_RECOVERY_INTAKE_V1",
+  "head": "303a57851785557fff8229e29a5554717168cbd1",
+  "direct_remote_verified": true,
+  "artifact_hashes_verified": 24,
+  "completion": {
+    "pid": 89513,
+    "exit_code": 0,
+    "finished_utc": "2026-10-28T08:25:08.010968+00:00"
+  },
+  "author_replay_status": "LOCAL_BUNDLE_REPLAY_VERIFIED",
+  "author_replay_checks": {
+    "internal_record_count": true,
+    "internal_records": true,
+    "public_object_count": true,
+    "public_objects": true,
+    "release_ref": true,
+    "replay_manifest": true
+  },
+  "replay_loaded_public_objects": 2619317,
+  "replay_loaded_internal_records": 7514,
+  "release_ref": {
+    "content_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+    "kind": "C11LogicalRelease",
+    "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION"
+  },
+  "author_tests": {
+    "command": "python3 -m pytest campaign_src04_completion/release/tests -q -o addopts=",
+    "passed": true,
+    "returncode": 0,
+    "schema": "PYAT_SRC04_FULL_TEST_RESULTS@1.0.0",
+    "stderr_tail": [],
+    "stdout_tail": [
+      "...........                                                              [100%]",
+      "11 passed in 3.67s"
+    ]
+  },
+  "disposition": "AUTHOR_COMPLETE_WITH_MEASURED_ORIGINAL_RELEASE_AND_LOCAL_REPLAY__DISTINCT_QUALIFICATION_RUNNING",
+  "review_already_frozen_at_exact_final_head": true,
+  "no_duplicate_launch_or_construction": true,
+  "heartbeat": "PAUSED"
+}
