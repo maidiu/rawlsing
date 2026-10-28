@@ -18,6 +18,10 @@ Implement a **source-authoritative hybrid empirical execution architecture**: cu
 
 Browser Architecture HQ directly completed validator-by-validator S2 *design and source-free proof* on SHA-matched current I02 sources. Read `DESIGN/P01_S2_EXACT_I02_VALIDATION_JOURNAL_AND_HASH_PROOF_R1.md`, the 36-item `DESIGN/P01_HIGH_RESOLUTION_RETURN_LEDGER.json`, and `STATUS/P01_S2_SOURCEFREE_PROOF_RECEIPT.json`. S2 identified a mandatory **source-byte/retention attestation seam not proved by logical I02 seal alone**. The journal/view remains unimplemented: next is S3 exact coding/parity spec and then qualification, not another architecture choice. Original survey execution and work grants are unchanged.
 
+## P01-S3 current handoff (2026-10-28)
+
+Browser HQ **personally** finished the exact file/function S3 implementation specification. Read `DESIGN/P01_S3_CODE_OWNER_AND_INTERFACE_SPEC_R1.md`, `DESIGN/P01_S3_VALIDATION_JOURNAL_PHYSICAL_SCHEMA_AND_ATOMICITY_R1.md`, `DESIGN/P01_S3_SOURCE_BYTE_ATTESTATION_AND_DECODER_R1.md`, `CODEX_BUILD_ORDERS/P01_S3_BUILD_A_FOUNDATIONS.md`, `CODEX_BUILD_ORDERS/P01_S3_BUILD_B_CONSUMERS.md`, `DESIGN/P01_S3_ACCEPTANCE_AND_DIFFERENTIAL_MATRIX_R1.md` and `IMPLEMENTATION/P01_S3_EXECUTION_DAG.json`. **Nine build tickets, 41 acceptance tests, 37 individually mapped high-resolution open questions.** `STATUS/P01_S3_HQ_IMPLEMENTATION_SPEC_RECEIPT.json` gives exact proof and limitation status. No replacement journal/view code is built, no new original-data/source permission and no speed measurement. S2 sourcefree baseline hash/negative oracles were independently re-run and passed. The real source decoder was found to hash file bytes before potentially reopening the pathname for streaming cells: require immutable source custody, not trust the early SHA alone.
+
 ## Read in order
 
 1. 01_EXECUTIVE_ADJUDICATION.md — actual selected architecture, why, and rejection of previous false choices.
