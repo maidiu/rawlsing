@@ -1,5 +1,5 @@
 # P01 — SOURCE→C11 EXACT LOGICAL VIRTUALIZATION / STREAMING SEAM
-**State:** R0 source-code-grounded design kickoff, not final code-ready adapter or running change.
+**State:** R0 source-code-grounded HQ DIRECT INVESTIGATION, not a worker assignment, final code-ready adapter or running change. 14_NONDELEGATION_AND_CLAIM_VERIFICATION_CONSTITUTION.md controls delegation: HQ itself must choose and validate the exact logical C11 seam; a worker may conduct only a bounded per-file callsite census or other corroborating proof.
 **Parent stages:** W02/W03; F1/EE01/EE02/EE03/EE04; N1/N4; dependent later W04/W05.
 **Purpose:** eradicate routine multi-GB physical/object duplication and preserve exact accepted C11, native I03, replay, source identity and later consumer guarantees. One selected hybrid architecture; no A/B/C design alternatives.
 
@@ -103,4 +103,4 @@ P01-S7: integrate P02 cache and P03 shared I03 kernel only after interface seam 
 A complete symbol-level source→candidate→C11 repository→I03 index + replay ledger, one exact chosen adapter shape, signature and types, pseudocode for streaming identity/validation and on-demand resolution, no source-read permissions assumed, a concrete module-by-module patch plan and regression suite, plus actual resource accounting design. This R0 is the starting docket: do NOT call P01 done until those details are returned and independently reviewed.
 
 ## 8. Owner and coordination
-Browser P01 investigative author owns design only; current source/repository semantic owners retain authority. P02 physical cache and P03 query-kernel authors may work in parallel but C11 view API is a shared contract dependency. Once P01 interfaces freeze, Codex assigns one source/ingest/repo integration editor and a distinct I03 interface editor; hostile P11 tests exact cross-boundary semantics. Source-free coding and original source execution remain separate scope grants.
+Browser HQ personally owns this design and must verify every decisive claim against original source; current source/repository semantic owners retain authority. Any worker is a limited fact-finder, not a replacement architect. P02 physical cache and P03 query-kernel authors may work in parallel but C11 view API is a shared contract dependency. Once P01 interfaces freeze, Codex assigns one source/ingest/repo integration editor and a distinct I03 interface editor; hostile P11 tests exact cross-boundary semantics. Source-free coding and original source execution remain separate scope grants.
