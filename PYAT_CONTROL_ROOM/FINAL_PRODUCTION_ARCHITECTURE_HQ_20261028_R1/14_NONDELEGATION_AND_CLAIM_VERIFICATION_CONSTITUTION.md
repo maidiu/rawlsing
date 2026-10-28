@@ -76,6 +76,10 @@ This is the ordinary content of an accepted return and the ordinary HQ integrati
 ## Evidence storage and succession
 Create/update `STATUS/CLAIM_INTAKE_LEDGER.json` as worker results arrive: worker SHA, exact source refs, claims, exclusions, HQ verification, independent oracle, receiving artifact, acceptance bounds. Keep source-free; no respondent values. This ledger must be available to successor HQ. A future HQ cannot promote raw worker prose directly to final design or source/semantic truth; previous evidence labels survive succession.
 
+## S3 HQ direct completion milestone
+
+P01-S3 file/function implementation specification, journal format, source-byte attestation, Codex B00–B08 orders and 41-case old-vs-new acceptance matrix are personally issued by HQ. Exact open high-resolution items numbered 001–037 remain **unproved** and mapped to code/tests. No rabochii was launched and no new streaming code exists. Follow `STATUS/P01_S3_HQ_IMPLEMENTATION_SPEC_RECEIPT.json`; never treat this as original-data/certified implementation receipt.
+
 ## First executive action
 
 P01-S0/S1/S2 are now personally investigated and documented by HQ. S2 validator/journal design and actual sourcefree oracles are in `DESIGN/P01_S2_EXACT_I02_VALIDATION_JOURNAL_AND_HASH_PROOF_R1.md`; the 36 high-resolution return issues in `DESIGN/P01_HIGH_RESOLUTION_RETURN_LEDGER.json` are **mandatory individual verification questions**, not worker-completed facts. The source-retention SHA seam (S2-HR-001) is a proved negative boundary for I02-only acceptance and must not be suppressed by any optimizer. Next HQ-direct job P01-S3 is exact code tickets and executable whole-legacy-vs-stream proof harness; worker attribution/assurances remain inadmissible. 
