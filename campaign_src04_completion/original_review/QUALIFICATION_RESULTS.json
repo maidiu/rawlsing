@@ -1,0 +1,1857 @@
+{
+  "author_code_writes": false,
+  "authority": {
+    "allow_nonreplay_count": 0,
+    "allow_replay_only": true,
+    "defer_count": 6,
+    "event_coordinate_routing_authority_refs_seen": 5238619,
+    "manifest_snapshot_set_hash": "9c7b0749c4b92345cb81e1578cd81ba92af1e77502d622820e82a2b4cb372530",
+    "missing_authority_refs": 0,
+    "no_heldscientific_allow_adoption": true,
+    "snapshot_count": 7,
+    "snapshot_set_hash": "9c7b0749c4b92345cb81e1578cd81ba92af1e77502d622820e82a2b4cb372530",
+    "states": {
+      "ALLOW": 1,
+      "DEFER": 6
+    }
+  },
+  "checks": {
+    "all": true,
+    "authority_closure": true,
+    "release_identity_semantics_replay": true,
+    "source_closure_and_values": true,
+    "source_identity_rows_columns": true
+  },
+  "limits": [
+    "Scoped to the actual local SRC04 full release and its exact source grant; no other original source.",
+    "Only aggregate counts, refs and digests are emitted; no respondent rows, income values or member lists.",
+    "Routing remains ROUTING_UNKNOWN; no eligibility population or canonical/currency meaning is inferred.",
+    "q217 remains held at exactly 38 source-unbound cells; no label or meaning was invented."
+  ],
+  "negative_checks": {
+    "held_authority": {
+      "error": "GRANT_NOT_CURRENT",
+      "error_type": "FullRunRefusal",
+      "status": "REFUSED"
+    },
+    "wrong_source": {
+      "error": "GRANT_SOURCE_MISMATCH",
+      "error_type": "FullRunRefusal",
+      "status": "REFUSED"
+    }
+  },
+  "original_respondent_rows_processed": 7337,
+  "original_respondent_rows_read": 7337,
+  "original_workload_issued": false,
+  "raw_respondent_values_emitted": 0,
+  "release": {
+    "closure_by_kind": {
+      "AuthoritySnapshot@1.0.0": 7,
+      "C11Internal:QuestionVariableBinding": 177,
+      "C11Internal:RespondentIdentity": 7337,
+      "EmpiricalCoordinateFact@1.0.0": 22011,
+      "EmpiricalUniverse@1.0.0": 1,
+      "RespondentEvent@1.0.0": 1298649,
+      "RoutingEligibilityFact@1.0.0": 1298649,
+      "SOURCE_ARTIFACT": 1,
+      "SOURCE_SNAPSHOT": 1
+    },
+    "closure_matches_objects_and_source": true,
+    "closure_ref_count": 2626833,
+    "expected_release_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+    "internal_file_sha256": "db9b4b9442488792713504d348cd8e421e64b74145ee354020ba2a9ffea1e60d",
+    "internal_record_count": 7514,
+    "internal_record_counts": {
+      "QuestionVariableBinding": 177,
+      "RespondentIdentity": 7337
+    },
+    "manifest_content_hash": "893f24ae10b297cd21422d154ec1649d522da4add006d1d3ac3da9a3da111a49",
+    "manifest_content_hash_valid": true,
+    "manifest_file_sha256": "ff84ea7b327ffc5d49b10ba53a4346eb7dc02fce3bce45bc0c4202264bc478e3",
+    "manifest_ref_valid": true,
+    "public_file_sha256": "873cef612c3c038901a77224e4ce98810a1f1798e0907534192c0da1defd4645",
+    "public_object_count": 2619317,
+    "public_object_counts": {
+      "AuthoritySnapshot": 7,
+      "EmpiricalCoordinateFact": 22011,
+      "EmpiricalUniverse": 1,
+      "RespondentEvent": 1298649,
+      "RoutingEligibilityFact": 1298649
+    },
+    "recomputed_release_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+    "release_hash_material": {
+      "candidate_projection_hash": "cf2b88d23145eb3f27fee7cdb390f11ebce0c9158bf0c01948d50543e0dc96ea",
+      "m01_m18": {
+        "M01": [
+          "EmpiricalUniverse"
+        ],
+        "M02": [
+          "RespondentIdentity"
+        ],
+        "M03": [
+          "QuestionVariableBinding"
+        ],
+        "M04": [
+          "RespondentEvent"
+        ],
+        "M05": [
+          "QuestionVariableBinding",
+          "RespondentEvent"
+        ],
+        "M06": [
+          "RespondentEvent.typed_state"
+        ],
+        "M07": [
+          "RoutingEligibilityFact"
+        ],
+        "M08": [
+          "EmpiricalCoordinateFact"
+        ],
+        "M09": [
+          "WeightMeasureFact|TypedAbsence"
+        ],
+        "M10": [
+          "AuthoritySnapshot"
+        ],
+        "M11": [
+          "SourceUniverseRelation|DISTINCT_BY_DEFAULT"
+        ],
+        "M12": [
+          "RoutingEligibilityFact",
+          "EmpiricalPredicateReplayBinding|TypedAbsence"
+        ],
+        "M13": [
+          "ComparatorReplayBinding|DEFERRED"
+        ],
+        "M14": [
+          "DiscoveryBranchReplayBinding|DEFERRED"
+        ],
+        "M15": [
+          "StructuralAdmissionReplayBinding|NOT_APPLICABLE"
+        ],
+        "M16": [
+          "ReplayManifest"
+        ],
+        "M17": [
+          "AuthoritySnapshot",
+          "ReplayManifest"
+        ],
+        "M18": [
+          "ReplayManifest"
+        ]
+      },
+      "replay_manifest_ref": {
+        "content_hash": "893f24ae10b297cd21422d154ec1649d522da4add006d1d3ac3da9a3da111a49",
+        "kind": "C11Internal:ReplayManifest",
+        "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:893f24ae10b297cd21422d154ec1649d522da4add006d1d3ac3da9a3da111a49"
+      }
+    },
+    "release_ref": {
+      "content_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+      "kind": "C11LogicalRelease",
+      "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION"
+    },
+    "replay_manifest_ref": {
+      "content_hash": "893f24ae10b297cd21422d154ec1649d522da4add006d1d3ac3da9a3da111a49",
+      "kind": "C11Internal:ReplayManifest",
+      "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:893f24ae10b297cd21422d154ec1649d522da4add006d1d3ac3da9a3da111a49"
+    },
+    "response_positions": 1298649,
+    "semantic_release_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+    "source_columns": 181,
+    "source_release_manifest_hash": "cf5b990ec740134b77a4acf34653be02640450110ae86bff1b23aa4ffca44472",
+    "source_rows": 7337
+  },
+  "replay": {
+    "counts_match_receipt": true,
+    "local_bundle_files_match_receipt": true,
+    "manifest_semantic_hash_valid": true,
+    "release_hash_recomputed": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+    "review_original_workload_issued": false,
+    "review_source_read_performed": true
+  },
+  "schema": "PYAT_SRC04_ORIGINAL_RELEASE_QUALIFICATION@1.0.0",
+  "source": {
+    "columns": 181,
+    "original_respondent_rows_emitted": 0,
+    "original_respondent_rows_processed": 7337,
+    "physical_slots": 181,
+    "public_source_read_required": true,
+    "raw_respondent_values_emitted": 0,
+    "resolver_calls": 2,
+    "rows": 7337,
+    "runtime_config_canonical_sha256": "ba886d87763fdeb4d91df784b9672d6604081c9eaf81fd9ef6b3d334d4a387e0",
+    "source_cells_processed": 1327997,
+    "source_custody": {
+      "content_bound": true,
+      "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+      "reader_access_mode": "O_RDONLY",
+      "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+      "snapshot_path_unlinked": true,
+      "snapshot_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "snapshot_size": 1531099,
+      "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
+    },
+    "source_grant_decision_ref": {
+      "content_hash": "63983453d1fc9edfc2b4452ca5f48177c1d1433be8006def1795b52d50922cec",
+      "kind": "FULL_SOURCE_READ_DECISION",
+      "object_id": "urn:rawlsing:full-source-decision:SRC04:d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139"
+    },
+    "source_grant_ref": {
+      "content_hash": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139",
+      "kind": "FULL_SOURCE_READ_GRANT",
+      "object_id": "urn:rawlsing:full-source-grant:SRC04:d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139"
+    },
+    "source_grant_sha256": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139",
+    "source_id": "SRC04",
+    "source_rows_seen": 7337,
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "source_slots_match_config": true
+  },
+  "source_correspondence": {
+    "all_181_physical_slots_accounted": true,
+    "all_coordinate_field_matches": true,
+    "all_response_field_matches": true,
+    "canonical_coordinate_values_present": 0,
+    "canonical_response_values_present": 0,
+    "coordinate_checks": {
+      "country": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "OBSERVED_COORDINATE": 7337
+        }
+      },
+      "q701": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "MISSING": 1311,
+          "OBSERVED_COORDINATE": 6026
+        }
+      },
+      "ser": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "OBSERVED_COORDINATE": 7337
+        }
+      }
+    },
+    "coordinate_field_mismatches": [],
+    "coordinate_state_counts": {
+      "MISSING": 1311,
+      "OBSERVED_COORDINATE": 20700
+    },
+    "field_checks": {
+      "V715onlymorocco": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "MISSING": 6060,
+          "SUBSTANTIVE_RESPONSE": 1277
+        }
+      },
+      "V716onlymorocco": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "MISSING": 6060,
+          "SUBSTANTIVE_RESPONSE": 1277
+        }
+      },
+      "q101": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 171,
+          "MISSING": 4,
+          "SUBSTANTIVE_RESPONSE": 7162
+        }
+      },
+      "q102": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 686,
+          "SUBSTANTIVE_RESPONSE": 6651
+        }
+      },
+      "q103": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 81,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 7255
+        }
+      },
+      "q2011": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 324,
+          "MISSING": 5,
+          "SUBSTANTIVE_RESPONSE": 7008
+        }
+      },
+      "q2012": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 399,
+          "MISSING": 6,
+          "SUBSTANTIVE_RESPONSE": 6932
+        }
+      },
+      "q2013": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 394,
+          "MISSING": 6,
+          "SUBSTANTIVE_RESPONSE": 6937
+        }
+      },
+      "q2014": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 273,
+          "MISSING": 6,
+          "SUBSTANTIVE_RESPONSE": 7058
+        }
+      },
+      "q2015": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 617,
+          "MISSING": 13,
+          "SUBSTANTIVE_RESPONSE": 6707
+        }
+      },
+      "q202": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "SUBSTANTIVE_RESPONSE": 7337
+        }
+      },
+      "q204": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 238,
+          "SUBSTANTIVE_RESPONSE": 7099
+        }
+      },
+      "q205": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 63,
+          "SUBSTANTIVE_RESPONSE": 7274
+        }
+      },
+      "q206": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 143,
+          "MISSING": 3,
+          "SUBSTANTIVE_RESPONSE": 7191
+        }
+      },
+      "q207": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 73,
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 7262
+        }
+      },
+      "q210": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 122,
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 7213
+        }
+      },
+      "q211": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 1266,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 6070
+        }
+      },
+      "q212": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 1587,
+          "MISSING": 6,
+          "SUBSTANTIVE_RESPONSE": 5744
+        }
+      },
+      "q2131": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 70,
+          "MISSING": 2,
+          "SUBSTANTIVE_RESPONSE": 7265
+        }
+      },
+      "q2132": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 185,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 7151
+        }
+      },
+      "q2133": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 85,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 7251
+        }
+      },
+      "q2134": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 190,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 7146
+        }
+      },
+      "q2135": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 278,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 7058
+        }
+      },
+      "q214": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 576,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 6760
+        }
+      },
+      "q215": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 157,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 7179
+        }
+      },
+      "q216": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 106,
+          "MISSING": 1,
+          "SUBSTANTIVE_RESPONSE": 7230
+        }
+      },
+      "q219": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 628,
+          "MISSING": 19,
+          "SUBSTANTIVE_RESPONSE": 6690
+        }
+      },
+      "q221": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 456,
+          "MISSING": 7,
+          "SUBSTANTIVE_RESPONSE": 6874
+        }
+      },
+      "q222": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 151,
+          "MISSING": 4,
+          "SUBSTANTIVE_RESPONSE": 7182
+        }
+      },
+      "q224": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 58,
+          "MISSING": 13,
+          "SOURCE_SPECIFIC_SPECIAL": 6453,
+          "SUBSTANTIVE_RESPONSE": 813
+        }
+      },
+      "q2251": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 696,
+          "MISSING": 9,
+          "SUBSTANTIVE_RESPONSE": 6632
+        }
+      },
+      "q2252": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 524,
+          "MISSING": 5,
+          "SUBSTANTIVE_RESPONSE": 6808
+        }
+      },
+      "q226": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 103,
+          "MISSING": 5,
+          "SUBSTANTIVE_RESPONSE": 7229
+        }
+      },
+      "q227": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "MISSING": 5093,
+          "SUBSTANTIVE_RESPONSE": 2244
+        }
+      },
+      "q228": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 348,
+          "MISSING": 13,
+          "SUBSTANTIVE_RESPONSE": 6976
+        }
+      },
+      "q2301": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 113,
+          "MISSING": 4,
+          "SUBSTANTIVE_RESPONSE": 7220
+        }
+      },
+      "q2302": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 86,
+          "MISSING": 7,
+          "SUBSTANTIVE_RESPONSE": 7244
+        }
+      },
+      "q2311": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 3,
+          "MISSING": 2014,
+          "SUBSTANTIVE_RESPONSE": 5320
+        }
+      },
+      "q2312": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 2,
+          "MISSING": 2032,
+          "SUBSTANTIVE_RESPONSE": 5303
+        }
+      },
+      "q2321": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 811,
+          "MISSING": 6,
+          "SUBSTANTIVE_RESPONSE": 6520
+        }
+      },
+      "q2322": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 824,
+          "MISSING": 6,
+          "SUBSTANTIVE_RESPONSE": 6507
+        }
+      },
+      "q2323": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 834,
+          "MISSING": 7,
+          "SUBSTANTIVE_RESPONSE": 6496
+        }
+      },
+      "q2324": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 619,
+          "MISSING": 9,
+          "SUBSTANTIVE_RESPONSE": 6709
+        }
+      },
+      "q234": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 444,
+          "MISSING": 18,
+          "SUBSTANTIVE_RESPONSE": 6875
+        }
+      },
+      "q235": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 2023,
+          "MISSING": 7,
+          "SUBSTANTIVE_RESPONSE": 5307
+        }
+      },
+      "q236": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 2489,
+          "MISSING": 10,
+          "SUBSTANTIVE_RESPONSE": 4838
+        }
+      },
+      "q237": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 1346,
+          "MISSING": 10,
+          "SUBSTANTIVE_RESPONSE": 5981
+        }
+      },
+      "q238": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 2397,
+          "MISSING": 10,
+          "SUBSTANTIVE_RESPONSE": 4930
+        }
+      },
+      "q239": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 1194,
+          "MISSING": 9,
+          "SUBSTANTIVE_RESPONSE": 6134
+        }
+      },
+      "q240": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 2386,
+          "MISSING": 9,
+          "SUBSTANTIVE_RESPONSE": 4942
+        }
+      },
+      "q241": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 1402,
+          "MISSING": 11,
+          "SUBSTANTIVE_RESPONSE": 5924
+        }
+      },
+      "q242": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 687,
+          "MISSING": 10,
+          "SUBSTANTIVE_RESPONSE": 6640
+        }
+      },
+      "q243": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 590,
+          "MISSING": 9,
+          "SUBSTANTIVE_RESPONSE": 6738
+        }
+      },
+      "q244": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 413,
+          "MISSING": 8,
+          "SUBSTANTIVE_RESPONSE": 6916
+        }
+      },
+      "q2451": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 575,
+          "MISSING": 14,
+          "SUBSTANTIVE_RESPONSE": 6748
+        }
+      },
+      "q2452": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 685,
+          "MISSING": 11,
+          "SUBSTANTIVE_RESPONSE": 6641
+        }
+      },
+      "q2453": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 873,
+          "MISSING": 12,
+          "SUBSTANTIVE_RESPONSE": 6452
+        }
+      },
+      "q2454": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 1135,
+          "MISSING": 13,
+          "SUBSTANTIVE_RESPONSE": 6189
+        }
+      },
+      "q2461": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 685,
+          "MISSING": 1291,
+          "SUBSTANTIVE_RESPONSE": 5361
+        }
+      },
+      "q2462": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 692,
+          "MISSING": 1292,
+          "SUBSTANTIVE_RESPONSE": 5353
+        }
+      },
+      "q2463": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 658,
+          "MISSING": 1290,
+          "SUBSTANTIVE_RESPONSE": 5389
+        }
+      },
+      "q2464": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 593,
+          "MISSING": 1294,
+          "SUBSTANTIVE_RESPONSE": 5450
+        }
+      },
+      "q2471": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 460,
+          "MISSING": 17,
+          "SUBSTANTIVE_RESPONSE": 6860
+        }
+      },
+      "q2472": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 291,
+          "MISSING": 16,
+          "SUBSTANTIVE_RESPONSE": 7030
+        }
+      },
+      "q2473": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 388,
+          "MISSING": 20,
+          "SUBSTANTIVE_RESPONSE": 6929
+        }
+      },
+      "q2474": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 288,
+          "MISSING": 19,
+          "SUBSTANTIVE_RESPONSE": 7030
+        }
+      },
+      "q2475": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 287,
+          "MISSING": 17,
+          "SUBSTANTIVE_RESPONSE": 7033
+        }
+      },
+      "q2476": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 517,
+          "MISSING": 19,
+          "SUBSTANTIVE_RESPONSE": 6801
+        }
+      },
+      "q248donlypalestine": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "MISSING": 6068,
+          "SUBSTANTIVE_RESPONSE": 1269
+        }
+      },
+      "q248withoutpalestine": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 243,
+          "MISSING": 1279,
+          "SUBSTANTIVE_RESPONSE": 5815
+        }
+      },
+      "q249onlypalestine": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "MISSING": 6068,
+          "SUBSTANTIVE_RESPONSE": 1269
+        }
+      },
+      "q249withoutpalestine": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 122,
+          "MISSING": 1570,
+          "SUBSTANTIVE_RESPONSE": 5645
+        }
+      },
+      "q2501": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 596,
+          "MISSING": 309,
+          "SUBSTANTIVE_RESPONSE": 6432
+        }
+      },
+      "q2502": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 325,
+          "MISSING": 4103,
+          "SUBSTANTIVE_RESPONSE": 2909
+        }
+      },
+      "q2511": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 448,
+          "MISSING": 18,
+          "SUBSTANTIVE_RESPONSE": 6871
+        }
+      },
+      "q2512": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 368,
+          "MISSING": 13,
+          "SUBSTANTIVE_RESPONSE": 6956
+        }
+      },
+      "q2513": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 430,
+          "MISSING": 15,
+          "SUBSTANTIVE_RESPONSE": 6892
+        }
+      },
+      "q2514": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 681,
+          "MISSING": 17,
+          "SUBSTANTIVE_RESPONSE": 6639
+        }
+      },
+      "q252": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 734,
+          "MISSING": 13,
+          "SUBSTANTIVE_RESPONSE": 6590
+        }
+      },
+      "q253": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 379,
+          "MISSING": 15,
+          "SUBSTANTIVE_RESPONSE": 6943
+        }
+      },
+      "q254": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 427,
+          "MISSING": 16,
+          "SUBSTANTIVE_RESPONSE": 6894
+        }
+      },
+      "q2551": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 226,
+          "MISSING": 14,
+          "SUBSTANTIVE_RESPONSE": 7097
+        }
+      },
+      "q2552": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 268,
+          "MISSING": 14,
+          "SUBSTANTIVE_RESPONSE": 7055
+        }
+      },
+      "q2553": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 172,
+          "MISSING": 14,
+          "SUBSTANTIVE_RESPONSE": 7151
+        }
+      },
+      "q2554": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 179,
+          "MISSING": 15,
+          "SUBSTANTIVE_RESPONSE": 7143
+        }
+      },
+      "q2561": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 159,
+          "MISSING": 13,
+          "SUBSTANTIVE_RESPONSE": 7165
+        }
+      },
+      "q2562": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 338,
+          "MISSING": 14,
+          "SUBSTANTIVE_RESPONSE": 6985
+        }
+      },
+      "q2563": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 165,
+          "MISSING": 13,
+          "SUBSTANTIVE_RESPONSE": 7159
+        }
+      },
+      "q2564": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 185,
+          "MISSING": 16,
+          "SUBSTANTIVE_RESPONSE": 7136
+        }
+      },
+      "q2565": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 303,
+          "MISSING": 29,
+          "SUBSTANTIVE_RESPONSE": 7005
+        }
+      },
+      "q2571": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 2731,
+          "MISSING": 20,
+          "SUBSTANTIVE_RESPONSE": 4586
+        }
+      },
+      "q2572": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 2285,
+          "MISSING": 22,
+          "SUBSTANTIVE_RESPONSE": 5030
+        }
+      },
+      "q301": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 187,
+          "MISSING": 17,
+          "SUBSTANTIVE_RESPONSE": 7133
+        }
+      },
+      "q3021": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 53,
+          "MISSING": 1998,
+          "SUBSTANTIVE_RESPONSE": 5286
+        }
+      },
+      "q3022": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 61,
+          "MISSING": 1997,
+          "SUBSTANTIVE_RESPONSE": 5279
+        }
+      },
+      "q3031": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 175,
+          "MISSING": 1281,
+          "SUBSTANTIVE_RESPONSE": 5881
+        }
+      },
+      "q3032": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 197,
+          "MISSING": 1284,
+          "SUBSTANTIVE_RESPONSE": 5856
+        }
+      },
+      "q3033": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 273,
+          "MISSING": 1284,
+          "SUBSTANTIVE_RESPONSE": 5780
+        }
+      },
+      "q304": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 384,
+          "MISSING": 19,
+          "SUBSTANTIVE_RESPONSE": 6934
+        }
+      },
+      "q305": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "MISSING": 21,
+          "SUBSTANTIVE_RESPONSE": 7316
+        }
+      },
+      "q306": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 85,
+          "MISSING": 28,
+          "SUBSTANTIVE_RESPONSE": 7224
+        }
+      },
+      "q4011": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 473,
+          "MISSING": 24,
+          "SUBSTANTIVE_RESPONSE": 6840
+        }
+      },
+      "q4012": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 536,
+          "MISSING": 25,
+          "SUBSTANTIVE_RESPONSE": 6776
+        }
+      },
+      "q4013": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 577,
+          "MISSING": 25,
+          "SUBSTANTIVE_RESPONSE": 6735
+        }
+      },
+      "q4014": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 543,
+          "MISSING": 25,
+          "SUBSTANTIVE_RESPONSE": 6769
+        }
+      },
+      "q4021": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 318,
+          "MISSING": 21,
+          "SUBSTANTIVE_RESPONSE": 6998
+        }
+      },
+      "q4022": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 330,
+          "MISSING": 20,
+          "SUBSTANTIVE_RESPONSE": 6987
+        }
+      },
+      "q4023": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 401,
+          "MISSING": 23,
+          "SUBSTANTIVE_RESPONSE": 6913
+        }
+      },
+      "q501": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 212,
+          "MISSING": 35,
+          "SUBSTANTIVE_RESPONSE": 7090
+        }
+      },
+      "q5021": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 64,
+          "MISSING": 20,
+          "SUBSTANTIVE_RESPONSE": 7253
+        }
+      },
+      "q5022": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 44,
+          "MISSING": 19,
+          "SUBSTANTIVE_RESPONSE": 7274
+        }
+      },
+      "q5023": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 90,
+          "MISSING": 21,
+          "SUBSTANTIVE_RESPONSE": 7226
+        }
+      },
+      "q5024": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 84,
+          "MISSING": 23,
+          "SUBSTANTIVE_RESPONSE": 7230
+        }
+      },
+      "q5025": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 77,
+          "MISSING": 21,
+          "SUBSTANTIVE_RESPONSE": 7239
+        }
+      },
+      "q5026": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 60,
+          "MISSING": 21,
+          "SUBSTANTIVE_RESPONSE": 7256
+        }
+      },
+      "q503": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "MISSING": 790,
+          "SUBSTANTIVE_RESPONSE": 6547
+        }
+      },
+      "q5041": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 1051,
+          "MISSING": 20,
+          "SUBSTANTIVE_RESPONSE": 6266
+        }
+      },
+      "q5042": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 640,
+          "MISSING": 20,
+          "SUBSTANTIVE_RESPONSE": 6677
+        }
+      },
+      "q5043": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 706,
+          "MISSING": 22,
+          "SUBSTANTIVE_RESPONSE": 6609
+        }
+      },
+      "q5044": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 401,
+          "MISSING": 29,
+          "SUBSTANTIVE_RESPONSE": 6907
+        }
+      },
+      "q5045": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 820,
+          "MISSING": 23,
+          "SUBSTANTIVE_RESPONSE": 6494
+        }
+      },
+      "q5046": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 280,
+          "MISSING": 22,
+          "SUBSTANTIVE_RESPONSE": 7035
+        }
+      },
+      "q5051": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 177,
+          "MISSING": 21,
+          "SUBSTANTIVE_RESPONSE": 7139
+        }
+      },
+      "q5052": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 80,
+          "MISSING": 22,
+          "SUBSTANTIVE_RESPONSE": 7235
+        }
+      },
+      "q5053": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 210,
+          "MISSING": 25,
+          "SUBSTANTIVE_RESPONSE": 7102
+        }
+      },
+      "q5054": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 127,
+          "MISSING": 24,
+          "SUBSTANTIVE_RESPONSE": 7186
+        }
+      },
+      "q5055": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 148,
+          "MISSING": 22,
+          "SUBSTANTIVE_RESPONSE": 7167
+        }
+      },
+      "q5056": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 120,
+          "MISSING": 22,
+          "SUBSTANTIVE_RESPONSE": 7195
+        }
+      },
+      "q5057": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 1,
+          "MISSING": 23,
+          "SUBSTANTIVE_RESPONSE": 7313
+        }
+      },
+      "q5061": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 630,
+          "MISSING": 24,
+          "SUBSTANTIVE_RESPONSE": 6683
+        }
+      },
+      "q5062": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 466,
+          "MISSING": 23,
+          "SUBSTANTIVE_RESPONSE": 6848
+        }
+      },
+      "q5063": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 453,
+          "MISSING": 23,
+          "SUBSTANTIVE_RESPONSE": 6861
+        }
+      },
+      "q5071": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 420,
+          "MISSING": 25,
+          "SUBSTANTIVE_RESPONSE": 6892
+        }
+      },
+      "q5072": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 438,
+          "MISSING": 25,
+          "SUBSTANTIVE_RESPONSE": 6874
+        }
+      },
+      "q5073": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 456,
+          "MISSING": 28,
+          "SUBSTANTIVE_RESPONSE": 6853
+        }
+      },
+      "q5074": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 425,
+          "MISSING": 26,
+          "SUBSTANTIVE_RESPONSE": 6886
+        }
+      },
+      "q5075": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 518,
+          "MISSING": 26,
+          "SUBSTANTIVE_RESPONSE": 6793
+        }
+      },
+      "q601": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 747,
+          "MISSING": 29,
+          "SUBSTANTIVE_RESPONSE": 6561
+        }
+      },
+      "q602": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 1114,
+          "MISSING": 27,
+          "SUBSTANTIVE_RESPONSE": 6196
+        }
+      },
+      "q6031": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 521,
+          "MISSING": 1721,
+          "SUBSTANTIVE_RESPONSE": 5095
+        }
+      },
+      "q6032": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 574,
+          "MISSING": 1300,
+          "SUBSTANTIVE_RESPONSE": 5463
+        }
+      },
+      "q6033": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 679,
+          "MISSING": 1303,
+          "SUBSTANTIVE_RESPONSE": 5355
+        }
+      },
+      "q6034": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 740,
+          "MISSING": 1303,
+          "SUBSTANTIVE_RESPONSE": 5294
+        }
+      },
+      "q6035": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 799,
+          "MISSING": 1306,
+          "SUBSTANTIVE_RESPONSE": 5232
+        }
+      },
+      "q604": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 497,
+          "MISSING": 2020,
+          "SUBSTANTIVE_RESPONSE": 4820
+        }
+      },
+      "q605": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 438,
+          "MISSING": 739,
+          "SUBSTANTIVE_RESPONSE": 6160
+        }
+      },
+      "q606": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 641,
+          "MISSING": 2016,
+          "SUBSTANTIVE_RESPONSE": 4680
+        }
+      },
+      "q607": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 784,
+          "MISSING": 2034,
+          "SUBSTANTIVE_RESPONSE": 4519
+        }
+      },
+      "q608": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 1001,
+          "MISSING": 30,
+          "SUBSTANTIVE_RESPONSE": 6306
+        }
+      },
+      "q609": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 555,
+          "MISSING": 740,
+          "SUBSTANTIVE_RESPONSE": 6042
+        }
+      },
+      "q610": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 471,
+          "MISSING": 27,
+          "SUBSTANTIVE_RESPONSE": 6839
+        }
+      },
+      "q611": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 131,
+          "MISSING": 2586,
+          "SUBSTANTIVE_RESPONSE": 4620
+        }
+      },
+      "q612": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 82,
+          "MISSING": 5037,
+          "SUBSTANTIVE_RESPONSE": 2218
+        }
+      },
+      "q6131": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 402,
+          "MISSING": 2586,
+          "SUBSTANTIVE_RESPONSE": 4349
+        }
+      },
+      "q6132": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 433,
+          "MISSING": 2586,
+          "SUBSTANTIVE_RESPONSE": 4318
+        }
+      },
+      "q6133": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 581,
+          "MISSING": 2586,
+          "SUBSTANTIVE_RESPONSE": 4170
+        }
+      },
+      "q701agecategories": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "MISSING": 36,
+          "SUBSTANTIVE_RESPONSE": 7301
+        }
+      },
+      "q702": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "MISSING": 9,
+          "SUBSTANTIVE_RESPONSE": 7328
+        }
+      },
+      "q703": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 6,
+          "MISSING": 23,
+          "SUBSTANTIVE_RESPONSE": 7308
+        }
+      },
+      "q703dichotomous": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "MISSING": 29,
+          "SUBSTANTIVE_RESPONSE": 7308
+        }
+      },
+      "q704": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 15,
+          "MISSING": 28,
+          "SUBSTANTIVE_RESPONSE": 7294
+        }
+      },
+      "q705": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 22,
+          "MISSING": 3554,
+          "SUBSTANTIVE_RESPONSE": 3761
+        }
+      },
+      "q706": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 28,
+          "MISSING": 3774,
+          "SUBSTANTIVE_RESPONSE": 3535
+        }
+      },
+      "q707": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 95,
+          "MISSING": 3653,
+          "SUBSTANTIVE_RESPONSE": 3589
+        }
+      },
+      "q708": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 29,
+          "MISSING": 3792,
+          "SUBSTANTIVE_RESPONSE": 3516
+        }
+      },
+      "q709": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 1,
+          "MISSING": 27,
+          "SUBSTANTIVE_RESPONSE": 7309
+        }
+      },
+      "q710": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 98,
+          "MISSING": 3113,
+          "SUBSTANTIVE_RESPONSE": 4126
+        }
+      },
+      "q711": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 1,
+          "MISSING": 2581,
+          "SUBSTANTIVE_RESPONSE": 4755
+        }
+      },
+      "q712": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 85,
+          "MISSING": 61,
+          "SUBSTANTIVE_RESPONSE": 7191
+        }
+      },
+      "q713": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "MISSING": 64,
+          "SUBSTANTIVE_RESPONSE": 7273
+        }
+      },
+      "q714": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 4,
+          "MISSING": 865,
+          "SUBSTANTIVE_RESPONSE": 6468
+        }
+      },
+      "q714a": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 23,
+          "MISSING": 23,
+          "SUBSTANTIVE_RESPONSE": 7291
+        }
+      },
+      "q715incomedeciles": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "MISSING": 2552,
+          "SUBSTANTIVE_RESPONSE": 4785
+        }
+      },
+      "q715withoutmorocco": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 727,
+          "MISSING": 2148,
+          "REFUSAL": 933,
+          "SUBSTANTIVE_RESPONSE": 3529
+        }
+      },
+      "q716incomedeciles": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "MISSING": 1565,
+          "SUBSTANTIVE_RESPONSE": 5772
+        }
+      },
+      "q716withoutmorocco": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "DK": 501,
+          "MISSING": 2022,
+          "REFUSAL": 267,
+          "SUBSTANTIVE_RESPONSE": 4547
+        }
+      },
+      "q717": {
+        "count": 7337,
+        "match": true,
+        "states": {
+          "MISSING": 5478,
+          "SUBSTANTIVE_RESPONSE": 1859
+        }
+      }
+    },
+    "q217_held": {
+      "count": 7337,
+      "matches_frozen_selection": true,
+      "missing": 187,
+      "state_counts": {
+        "DK": 407,
+        "MISSING": 187,
+        "SUBSTANTIVE_RESPONSE": 6705
+      },
+      "unbound": 38
+    },
+    "q217_release_events": 0,
+    "respondent_rows_distinct": true,
+    "response_field_mismatches": [],
+    "response_state_counts": {
+      "DK": 76218,
+      "MISSING": 121471,
+      "REFUSAL": 1200,
+      "SOURCE_SPECIFIC_SPECIAL": 6453,
+      "SUBSTANTIVE_RESPONSE": 1093307
+    },
+    "routing_state_counts": {
+      "ROUTING_UNKNOWN": 1298649
+    },
+    "selected_coordinate_fields": 3,
+    "selected_coordinate_positions": 22011,
+    "selected_response_fields": 177,
+    "selected_response_positions": 1298649
+  },
+  "source_read_performed": true,
+  "verdict": "PASS_SCOPED_ORIGINAL_SRC04_RELEASE",
+  "write_scope": "campaign_src04_completion/original_review/**"
+}
