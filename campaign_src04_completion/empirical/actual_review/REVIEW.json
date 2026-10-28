@@ -1,0 +1,242 @@
+{
+  "accepted_d_dependency": {
+    "expected": "728fbc9a09291ae9c9d578fbed7641acd4499a2ff4158b7588e1cc5afa18f8ae",
+    "path": "campaign_src04_completion/consumers/consumer.py",
+    "sha256": "728fbc9a09291ae9c9d578fbed7641acd4499a2ff4158b7588e1cc5afa18f8ae"
+  },
+  "artifacts": {
+    "MEASUREMENTS.json": {
+      "path": "campaign_src04_completion/empirical/actual_review/MEASUREMENTS.json",
+      "sha256": "85af81c7ce6de31f474a9d409edc058d5ff33cb9a3b7d2d9159307712b9e8c4a"
+    },
+    "REVIEW.md": {
+      "path": "campaign_src04_completion/empirical/actual_review/REVIEW.md",
+      "sha256": "dbb719e03bee5ce343a73242d776cd7da29dc46a3a4db610ece22e4121cd7c30"
+    },
+    "TEST_RUN.txt": {
+      "path": "campaign_src04_completion/empirical/actual_review/TEST_RUN.txt",
+      "sha256": "9314078b109ec98a1e2a10e1323b928acacf6a1de85e77f6dcd220f8b47429a4"
+    },
+    "test_actual_carrier_review.py": {
+      "path": "campaign_src04_completion/empirical/actual_review/test_actual_carrier_review.py",
+      "sha256": "97278b24a8378674c7312b4d4f66972eedd18bb9ecec749ade797fdade69de67"
+    }
+  },
+  "author_code_hashes": {
+    "campaign_src04_completion/consumers/consumer.py": "728fbc9a09291ae9c9d578fbed7641acd4499a2ff4158b7588e1cc5afa18f8ae",
+    "campaign_src04_completion/empirical/actual_carrier.py": "709792cadc04134b99fed958a870d22f7533b909bc278a915e028485a5c3dbb8",
+    "campaign_src04_completion/empirical/authorized_execution.py": "bacabd66f059c30c3e62377afbe5cd67e7d8eab0a9a83c823056ec9fe415fae7",
+    "campaign_src04_completion/empirical/consumer_bridge.py": "b15803487f7190f9c72bc69a833c715a38eab779c1be07a7690bcd652f297939",
+    "campaign_src04_completion/empirical/native_workload.py": "a410f9b0176f10ba16878f355f499b1e0b2cea1ede520aacd7ef80bc2bb6fa37",
+    "campaign_src04_completion/empirical/run_native_workload.py": "15c81e814ce9b69dbcbd716aa148de517e899b7e9deff34d67f353320f64de6a"
+  },
+  "author_tests_supplementary": {
+    "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/test_authorized_execution.py rawlsing_next/tests/test_observed_response.py -q -o addopts=''",
+    "note": "Candidate author suites do not exercise the required fixture issuer/executor/D path or malformed/truncated carrier typing; not independent acceptance.",
+    "result": "20 passed, 1 skipped"
+  },
+  "branch": "agent/pyat-src04-actual-carrier-review-20261028",
+  "candidate": "d48ddf93f6642b80e8d9f0399dbc0abd5ec66742",
+  "defects": [
+    {
+      "id": "FIXTURE_ISSUER_EXECUTOR_D_PATH_MISSING",
+      "measured": {
+        "adapter_positive": {
+          "status": "SUCCESS",
+          "value_type": "C11LogicalRelease"
+        },
+        "fixture_source_literal_topology": {
+          "code": "NO_SOURCE_QUALIFIED_TARGETS",
+          "detail": "NO_SOURCE_QUALIFIED_TARGETS",
+          "status": "EXCEPTION",
+          "type": "AuthorizedExecutionRefusal"
+        },
+        "issuer_fixture": {
+          "code": "RELEASE_SOURCE_IDENTITY_MISMATCH",
+          "detail": "RELEASE_SOURCE_IDENTITY_MISMATCH",
+          "status": "EXCEPTION",
+          "type": "AuthorizedExecutionRefusal"
+        }
+      },
+      "owner": "campaign_src04_completion/empirical/authorized_execution.py",
+      "required": "A labelled nonrespondent fixture must pass the new adapter, authenticated issuer, executor, and accepted D consumer with exact observed provenance.",
+      "secondary_owner": "campaign_src04_completion/empirical/consumer_bridge.py",
+      "severity": "BLOCKING_REQUIRED_POSITIVE",
+      "smallest_repair": [
+        "Add a separate explicit nonrespondent-fixture issuance mode/function, default off, requiring an authenticated fixture-scoped grant and exact fixture source/row/stream pins.",
+        "Construct NONRESPONDENT_FIXTURE_ONLY source-literal/topology/target-use authorities and a fixture-only authorized contract; do not weaken the original source/respondent gate.",
+        "Add a fixture-only D bridge mode (fixture_only=true, SUPPORTED_COMPONENT_ONLY) and one end-to-end fixture regression through adapter, issuer, executor, and D.",
+        "Validate fixture source-literal topology from actual event units/topology, not caller assertions; the fixture contract currently qualifies no target."
+      ]
+    },
+    {
+      "id": "CARRIER_REFUSAL_TYPING_GAP",
+      "measured": {
+        "malformed_carrier": {
+          "code": null,
+          "detail": "invalid load key, 'n'.",
+          "status": "EXCEPTION",
+          "type": "UnpicklingError"
+        },
+        "missing_receipt_with_pin": {
+          "code": null,
+          "detail": "[Errno 2] No such file or directory: '/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/tmpbtmm_k7b/missing.json'",
+          "status": "EXCEPTION",
+          "type": "FileNotFoundError"
+        },
+        "truncated_carrier": {
+          "code": null,
+          "detail": "pickle data was truncated",
+          "status": "EXCEPTION",
+          "type": "UnpicklingError"
+        },
+        "typed_controls": {
+          "mutated_stream": {
+            "code": "LOCAL_RECEIPT_PUBLIC_OBJECTS_SHA_MISMATCH",
+            "detail": "LOCAL_RECEIPT_PUBLIC_OBJECTS_SHA_MISMATCH",
+            "status": "EXCEPTION",
+            "type": "ActualCarrierRefusal"
+          },
+          "wrong_grant_sha": {
+            "code": "GRANT_SHA256_MISMATCH",
+            "detail": "GRANT_SHA256_MISMATCH: 757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f",
+            "status": "EXCEPTION",
+            "type": "AuthorizedExecutionRefusal"
+          },
+          "wrong_receipt_pin": {
+            "code": "LOCAL_RECEIPT_SHA256_MISMATCH",
+            "detail": "LOCAL_RECEIPT_SHA256_MISMATCH",
+            "status": "EXCEPTION",
+            "type": "ActualCarrierRefusal"
+          },
+          "wrong_source": {
+            "code": "LOCAL_SOURCE_MISMATCH",
+            "detail": "LOCAL_SOURCE_MISMATCH",
+            "status": "EXCEPTION",
+            "type": "ActualCarrierRefusal"
+          }
+        }
+      },
+      "owner": "campaign_src04_completion/empirical/actual_carrier.py",
+      "required": "Malformed/truncated carrier streams and missing pinned receipt/primary files must return typed CarrierRefusal codes, not raw FileNotFoundError/UnpicklingError.",
+      "severity": "BLOCKING_TYPED_REFUSAL_REQUIREMENT",
+      "smallest_repair": [
+        "Wrap receipt/stream file access in try/except OSError and raise ActualCarrierRefusal with a stable receipt/file code.",
+        "Wrap pickle loading in try/except (UnpicklingError, EOFError, ValueError) and raise ActualCarrierRefusal with a stable stream code.",
+        "Preserve SHA/source/count/type checks and add malformed, truncated, and missing-file regression tests."
+      ]
+    }
+  ],
+  "fixture": {
+    "config_sha256": "7f69af5cfafe07123c211707df353b37da4e9375adfa6e55c5df42a930cfebaa",
+    "fixture_sha256": "e02e85388de86aa0ce66fa37ac59a6d3071537ea514788a54baf3964cbb44353",
+    "release_ref": {
+      "content_hash": "9026fa33bb5739b87b06309f12e1d31fe6fd21fb471237eda870d6d278d47f42",
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_FIXTURE_RELEASE/SRC04"
+    },
+    "respondents": 8,
+    "rows": 8,
+    "stream_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b"
+  },
+  "implementation": "f704441a6594730de82da4596efd64df87a2a73d",
+  "limits": [
+    "SRC04 labelled nonrespondent fixture only.",
+    "No original product or SAV access in this review.",
+    "No population, weighted, structural, causal, FF, N11/N12, actor or original-execution claim.",
+    "Actual original release/product was not processed by this review.",
+    "The review does not claim PASS_SCOPED and does not enable original execution."
+  ],
+  "measured_positive": {
+    "adapter_fixture_rehydrate": {
+      "status": "SUCCESS",
+      "value_type": "C11LogicalRelease"
+    },
+    "grant_auth": {
+      "grant_sha256": "757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f",
+      "status": "SUCCESS"
+    },
+    "native_changed_condition_path": {
+      "condition_counts_equal": true,
+      "conditional": 38,
+      "executed": 44,
+      "ops": 44,
+      "refused": 0
+    },
+    "typed_controls": {
+      "mutated_stream": {
+        "code": "LOCAL_RECEIPT_PUBLIC_OBJECTS_SHA_MISMATCH",
+        "detail": "LOCAL_RECEIPT_PUBLIC_OBJECTS_SHA_MISMATCH",
+        "status": "EXCEPTION",
+        "type": "ActualCarrierRefusal"
+      },
+      "wrong_grant_sha": {
+        "code": "GRANT_SHA256_MISMATCH",
+        "detail": "GRANT_SHA256_MISMATCH: 757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f",
+        "status": "EXCEPTION",
+        "type": "AuthorizedExecutionRefusal"
+      },
+      "wrong_receipt_pin": {
+        "code": "LOCAL_RECEIPT_SHA256_MISMATCH",
+        "detail": "LOCAL_RECEIPT_SHA256_MISMATCH",
+        "status": "EXCEPTION",
+        "type": "ActualCarrierRefusal"
+      },
+      "wrong_source": {
+        "code": "LOCAL_SOURCE_MISMATCH",
+        "detail": "LOCAL_SOURCE_MISMATCH",
+        "status": "EXCEPTION",
+        "type": "ActualCarrierRefusal"
+      }
+    }
+  },
+  "no_author_code_writes": true,
+  "no_duplicate_source_qualification": true,
+  "no_original_source_access": true,
+  "prior_boundaries": {
+    "c1": "44aaf2be06e026547e9b32d880ac588e84acc9e4",
+    "d": "39c713a1396c7184afec5cb81519b151357c4a8e",
+    "focused_review": "9b66083f89a6881f296be7fd1a8ff04c9718951b"
+  },
+  "review_commit": "commit containing this file; direct remote readback in final response",
+  "review_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/actual_review/test_actual_carrier_review.py -q -o addopts=''",
+    "exit": 0,
+    "note": "Passing tests include DEFECT-named discriminator tests that assert the observed missing/refused behavior; the suite is not PASS_SCOPED acceptance.",
+    "path": "campaign_src04_completion/empirical/actual_review/test_actual_carrier_review.py",
+    "result": "10 passed in 17.85s",
+    "run_path": "campaign_src04_completion/empirical/actual_review/TEST_RUN.txt",
+    "run_sha256": "9314078b109ec98a1e2a10e1323b928acacf6a1de85e77f6dcd220f8b47429a4",
+    "sha256": "97278b24a8378674c7312b4d4f66972eedd18bb9ecec749ade797fdade69de67"
+  },
+  "reviewer_role": "EXISTING_DISTINCT_CD_REVIEWER_NOT_C_OR_D_AUTHOR",
+  "schema": "PYAT_SRC04_ACTUAL_CARRIER_INDEPENDENT_REVIEW@1.0.0",
+  "scope": {
+    "fixture_only": true,
+    "not_reviewed": [
+      "original source qualification",
+      "original product execution",
+      "unchanged accepted C/D core",
+      "unrelated sources"
+    ],
+    "original_source_io": false,
+    "reviewed": [
+      "changed authenticated grant issuer/executor",
+      "source-literal authority construction",
+      "actual_carrier receipt/pickle adapter",
+      "CLI assembly and accepted D bridge"
+    ],
+    "source_id": "SRC04"
+  },
+  "sealed_head": "91e267f11c91a89023c836a8667a99dca1a17019",
+  "source_io": {
+    "original_respondent_rows_read": 0,
+    "original_sav_stat_hash_open_decode": false,
+    "original_workload_issued": false
+  },
+  "verdict": "REVISE",
+  "version": 1,
+  "write_scope": [
+    "campaign_src04_completion/empirical/actual_review/**"
+  ]
+}
