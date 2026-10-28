@@ -17,6 +17,15 @@
 
 **Scope:** managerial command view, reconciled against private GitHub foundation b0dc1c25bc648b7bb4b90c4278d77c009dc52033 on 2026-10-28. This is NOT a replacement for the original source/scientific owners, Astra's specification, CURRENT_PROGRESS's historical receipts, the existing V3 court atlas, or an authority to execute unapproved source work. A saved branch is not a live worker. See README and exact evidence cut below.
 
+
+## R3 assurance: one machine state, evidence-gated promotions and explicit ready work
+
+The existing COMMAND register now exposes four ranked **execution_frontier.lanes**: original Rule A/T scientific decisions (highest causal unlock), independent sourcefree C9 writer→reader assembly, originally real B/material activity, and later memory/batch/genealogy/native preparation. Priority is by first actual product consumer, not worker count. Lanes 1–3 may progress in parallel within their distinct source/owner boundaries; rank is not a command to idle an executable independent lane. See 02_CAPABILITY_REGISTER.json execution_frontier and 06 coordination. These are baseline read-cut priorities, not claims that a Mac worker is currently active.
+
+**Measured progress at this evidence cut:** 19 whole C/A milestones: 11 at level 1, 8 at level 2, **0 at level 3+**; 12 scoped Neo requirement reviews, **0 verified concrete rules**, **0/16 original Oxx decisions verified settled**, **0/15 native consumer edges**. Exactly two consumer edges (E06 C12 fork, E07 F0 source custody) are accepted only as selected SOURCEFREE COMPONENTS—not complete milestone integrations. This is a floor based on verified records, not a global completion percentage; newly integrated work may be promoted only with an exact real producer→consumer test and owner/permission evidence where required. Progress-transition receipts begin from this observation cut; historical work is not fabricated into new grade-change events.
+
+**Command update invariant:** A technical test may change an edge's scoped proof without changing the enclosing C9/C12 milestone. A new grade 3 must supply integrated_consumer_evidence with exact source SHA, producer, first actual consumer, test command/result and evidence scope. Grade 4 adds positive/negative/held and severance evidence; grade 5 original owner and independent operative qualification; grade 6 continuing-product evidence. The read-only COMMAND/validate_command.py rejects unsupported promotions and stale counters. Source identifiers cannot by themselves certify a live process or permission. When nothing changed, execute or end; don't refresh the files for ceremony.
+
 ## READ THIS FIRST IN EVERY HQ RESUME
 
 1. **Terminal destination:** a continuing, historically constituted person generated from independent material-world possibilities, a real actor/coactor life course, concrete source-warranted developmental operations, persistent actor memory and future actions, eventually C11/C12 → A0–A5. A diagram, mock event, model-authored biography, sourcefree test or reviewed historic mechanism is NOT the product.

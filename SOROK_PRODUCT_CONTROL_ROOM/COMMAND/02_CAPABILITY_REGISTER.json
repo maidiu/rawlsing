@@ -2,7 +2,7 @@
   "schema": "SOROK_COMPLETION_COMMAND_READ_VIEW_R1",
   "read_cut_date": "2026-10-28",
   "generated_from_foundation_sha": "b0dc1c25bc648b7bb4b90c4278d77c009dc52033",
-  "publication_branch": "agent/sorok-control-room-current-command-consolidation-20261028-r1",
+  "publication_branch": "agent/vozhd-sorok-20261026-v3-courts-foundation-r1",
   "authority": "DERIVED_HQ_COMMAND_VIEW_NOT_ORIGINAL_RULE_OR_IMPLEMENTATION",
   "runtime_proof": "PRIVATE_GITHUB_FILES_AND_REMOTE_HEADS_ONLY__NOT_LOCAL_PROCESS",
   "maturity_scale": {
@@ -763,7 +763,11 @@
     "priority": "DECISION_AND_CONSUMER_UNBLOCKING_OVER_FIXTURE_COUNTS",
     "status_transitions": "See protocol; no grade/permission upgrade without exact positive evidence",
     "snapshot_health": "MACHINE_GRADE_COUNTS_19_12_AND_DECISION_IDS_16; running process UNKNOWN",
-    "next_action_source": "critical_consumer_edges[].next_authorized_operation"
+    "next_action_source": "critical_consumer_edges[].next_authorized_operation",
+    "view_created_on_branch": "agent/sorok-control-room-current-command-consolidation-20261028-r1",
+    "publication_base_is_observation_not_current_head": true,
+    "schema_assurance": "R3_EVIDENCE_GATED_PROMOTION_AND_MACHINE_FRONTIER",
+    "source_only_pinning_cannot_prove_live_worker": true
   },
   "measured_completion": {
     "basis": "19 terminal milestones and 12 Neo-V3 requirements, distinct from sourcefree component passes",
@@ -787,7 +791,11 @@
     "progress_event_rule": "Record a grade increment only when the whole row's capability meets its level, not when one subcomponent gains tests",
     "no_delta_reporting": "No new report, commission, or review on unchanged evidence",
     "critical_edges_total": 15,
-    "actual_native_critical_edges_accepted": 0
+    "actual_native_critical_edges_accepted": 0,
+    "critical_edges_accepted_at_component_sourcefree_only": 2,
+    "integrated_full_milestones_verified": 0,
+    "original_science_decisions_verified_settled": 0,
+    "executed_product_acceptance_requires_first_real_consumer": true
   },
   "decision_register": [
     {
@@ -1596,5 +1604,126 @@
       "next_action",
       "reported_by"
     ]
+  },
+  "execution_frontier": {
+    "schema": "SOROK_COMMAND_EXECUTION_FRONTIER_R1",
+    "evidence_cut_sha": "b0dc1c25bc648b7bb4b90c4278d77c009dc52033",
+    "caveat": "Observed GitHub science/source cut only; real current process/account/issuer state needs qualified verification at effect time.",
+    "ranking_rule": "Rank by first necessary whole-person consumer unlocked, not test count, volume or vacant workers.",
+    "lanes": [
+      {
+        "id": "SCIENCE_P0",
+        "priority_rank": 1,
+        "classification": "SUBSTANTIVE_ORIGINAL_DECISION",
+        "edge_ids": [
+          "E01",
+          "E02",
+          "E03"
+        ],
+        "decision_ids": [
+          "O03",
+          "O05",
+          "O07",
+          "O01",
+          "O09",
+          "O15"
+        ],
+        "current_status": "ORIGINAL_CONCRETE_RULES_NOT_VERIFIED_ISSUED",
+        "first_real_consumer": "C9 E2 CAN008 qualified actor response and earned PRACTICE selector",
+        "next_authorized_action": "Locate actual issued CAN008 Rule A and CAN010/011 Rule T; if absent resolve smallest source-warranted response/formation alternatives and exact original issuer decision, not another mock trial.",
+        "stop_only": "Do not perform dependent substantive actor development before competent Rule A/T source evidence; reversible typed carrier work is allowed.",
+        "can_parallelize_with": [
+          "ENGINEERING_P0",
+          "WORLD_P0"
+        ]
+      },
+      {
+        "id": "ENGINEERING_P0",
+        "priority_rank": 2,
+        "classification": "REVERSIBLE_SOURCEFREE_EXECUTION",
+        "edge_ids": [
+          "E05",
+          "E06",
+          "E07"
+        ],
+        "decision_ids": [
+          "O15"
+        ],
+        "current_status": "REPAIRED_COMPONENTS_AND_READER__CANONICAL_WRITER_READER_CHAIN_UNPROVEN",
+        "first_real_consumer": "C9 committed actor state read by the SAME later C9_READER E2, C12 projection remains subordinate",
+        "next_authorized_action": "Reuse repaired C12/F0 and select one C9 writer candidate, connect actual writer→receipt→cold reopen→reader with sourcefree positive, held and severed-edge proof.",
+        "stop_only": "Stop affected live/sourceowner edit if authorization or actor/writer contract missing; continue admitted sourcefree integration.",
+        "can_parallelize_with": [
+          "SCIENCE_P0",
+          "WORLD_P0"
+        ]
+      },
+      {
+        "id": "WORLD_P0",
+        "priority_rank": 3,
+        "classification": "ORIGINAL_SOURCE_AND_ACTIVITY",
+        "edge_ids": [
+          "E04",
+          "E03"
+        ],
+        "decision_ids": [
+          "O08",
+          "O01",
+          "O09"
+        ],
+        "current_status": "INDEPENDENT_B_SOURCE_NOT_VERIFIED_QUALIFIED",
+        "first_real_consumer": "Independent B/care/work objective world event → C8 occurrence → actor-accessible C9 reception",
+        "next_authorized_action": "Locate first actually independently owned B/material activity source and issued use/actor-access rules; if absent resolve exact source function and owner, not controlled S49 fixture.",
+        "stop_only": "No fictitious coactor action promoted to operative world; independent read-only source investigation may continue.",
+        "can_parallelize_with": [
+          "SCIENCE_P0",
+          "ENGINEERING_P0"
+        ]
+      },
+      {
+        "id": "CONTINUITY_NEXT",
+        "priority_rank": 4,
+        "classification": "DOWNSTREAM_PREPARATION_ONLY",
+        "edge_ids": [
+          "E08",
+          "E09",
+          "E10",
+          "E11",
+          "E12",
+          "E13",
+          "E14",
+          "E15"
+        ],
+        "decision_ids": [
+          "O02",
+          "O04",
+          "O06",
+          "O10",
+          "O11",
+          "O12",
+          "O13",
+          "O14",
+          "O16"
+        ],
+        "current_status": "TECHNICAL_INTERFACES_PARTIAL__ORIGINAL_SCIENCE_WORLD_NATIVE_HELD",
+        "first_real_consumer": "Later actor memory and sequential independent world events, then native C11/C12 A0–A5",
+        "next_authorized_action": "Prepare only already-settled reversible actor-safe memory, temporal and adaptor interfaces; identify first indispensable scientific/irreversible decision when its consumer becomes ready.",
+        "stop_only": "Do not realize irreversible 3–5 world events without batch policy; no native C11/C12 or SCI05 without original competent grants.",
+        "can_parallelize_with": [
+          "SCIENCE_P0",
+          "ENGINEERING_P0",
+          "WORLD_P0"
+        ]
+      }
+    ]
+  },
+  "progress_transition_ledger": {
+    "schema": "SOROK_COMMAND_GRADE_CHANGE_LOG_R1",
+    "baseline_as_of": "2026-10-28",
+    "baseline_source_sha": "b0dc1c25bc648b7bb4b90c4278d77c009dc52033",
+    "current_revision": 0,
+    "recorded_events": [],
+    "requirement": "Append one short exact source/test/consumer/owner receipt on any future capability level change; a reviewed design or a new file alone is not a level increase.",
+    "caveat": "The first cut is a baseline, not reconstructed historical grade transitions. No retrospective claims of new product completion."
   }
 }

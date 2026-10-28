@@ -27,6 +27,8 @@
 | World/B via S49 | S49 actor.py/session.py | natural B sources [] in reviewed source, controlled sourcefree test paths exist | original independent source/ADP019/C8 issue, not narration |
 | PRE-MAIN / Pyat | integration/pre-main-reconciliation-r1 | 299f41e97a43c67be9cc76a79fa49b48f4e12e54 at observed cut; R157 scoped configuration prep | source/native N11/N12/C11 remain separate Pyat authority |
 
+**Command baseline versus branch HEAD:** all candidate SHAs in this table are historical observations from the b0dc1c25 source review, not proof the corresponding branch, local process, or owner grant is still at that state. The command-level execution_frontier is a ranked decision/consumer scheduling index over this observed cut; refresh only affected source/issuer refs when actually acting. A newer COMMAND publication SHA does not automatically make these original code observations fresh.
+
 ## Current material dependency/parallelism
 
 **P0 science:** O03/O05/O01/O08 (Rule A, durable practice/nochange, need-object actual activity, independent B). Original scientific/actor/world owners. Do not pay an engineering worker to invent a coefficient or call a dummy trial human development.
