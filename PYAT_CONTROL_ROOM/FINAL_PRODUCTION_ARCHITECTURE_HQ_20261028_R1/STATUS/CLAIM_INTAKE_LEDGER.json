@@ -89,8 +89,32 @@
       "source": "PYAT_P04_HQ_S0_S1_S2_20261028.zip/P04_SYNTHETIC_RETENTION_RESULT.json",
       "claim": "Artificial 18K temporary-object memory probe 13.48 MB retained bodies vs 7.37MB exact refs",
       "limits": "Synthetic payload, no original Mac/native I03 performance measurement"
+    },
+    {
+      "id": "HQ-P05-01",
+      "epistemic": "DIRECT_SRC04_PACKET_CODE_NOT_PREMAIN",
+      "acceptance": "ACCEPT_BOUNDED",
+      "source": "DESIGN/P05_S0_SRC04_CONSUMER_RESUME_FORENSIC_AUDIT_R1.md",
+      "result": "Packet native_streaming issues all 177-target J2 pairs before one Lane D conditional; run_original_execution invokes consumer only afterward",
+      "exclusions": "Packet not PREMAIN; 208 original receipts don't prove actual consumer; no live Mac worker observed"
+    },
+    {
+      "id": "HQ-P05-02",
+      "epistemic": "EXECUTED_SOURCEFREE_ORIGINAL_AST_WITH_STUBS",
+      "acceptance": "ACCEPT_BOUNDED",
+      "source": "STATUS/P05_HQ_SOURCEFREE_PROOF_AND_HANDOFF_RECEIPT.json",
+      "result": "Four adapter-level counterexamples: empty restored cells, poisoned torn JSONL tail, refused-completed no retry, foreign context operation_id suppresses execution",
+      "exclusions": "Mocked I03/C11/authority; no complete native I03 or original consumer; no production fix."
+    },
+    {
+      "id": "HQ-P05-03",
+      "epistemic": "DIRECT_SRC04_PACKET_CODE",
+      "acceptance": "ACCEPT_BOUNDED",
+      "source": "DESIGN/P05_S0_SRC04_CONSUMER_RESUME_FORENSIC_AUDIT_R1.md",
+      "result": "Lane D consumer independently re-executes native I03 and exact replay; old fixture test checks consumer positive but not complete restored cells",
+      "exclusions": "No original SRC04 Lane D demonstrated"
     }
   ],
-  "HQ_direct_next": "P05 consumer-first and exact resume fidelity; source owner grants separate",
-  "further_high_resolution": "P01 37 open in Git, P03 33 open in archive, P04 35 open Git index and full archive"
+  "HQ_direct_next": "P06 original Authority-37 fracture-map direct science; P05 Codex B00–B07 under actual qualified handoff",
+  "further_high_resolution": "P01 37, P03 33, P04 35, P05 38 open and owner mapped; only sourcefree bounded defects proven"
 }
