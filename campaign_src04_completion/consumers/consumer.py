@@ -57,6 +57,24 @@ B0_SCOPE = "SRC09_P0_NONRESPONDENT_FIXTURE_ONLY__NOT_ORIGINAL_NOT_SRC04"
 D1_TALLY_SCHEMA_PREFIX = "PYAT_D1_SRC04_OBSERVED_SAMPLE_TALLY"
 SOURCE_LOCAL_CLAIM = "SOURCE_LOCAL_STATISTIC"
 SUPPORTED_COMPONENT_CLAIM = "SUPPORTED_COMPONENT_ONLY"
+OBSERVED_RESPONSE_STATUS = "OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION"
+OBSERVED_LEDGER_FIELDS = frozenset({
+    "contract_ref",
+    "risk_set_type",
+    "denominator_policy",
+    "condition_observation_policy",
+    "not_eligible_population_estimate",
+    "scoped_respondents",
+    "target_observed",
+    "target_unobserved",
+    "condition_unobserved",
+    "condition_false",
+    "denominator",
+    "resolved_targets",
+    "unresolved_after_denominator",
+    "risk_member_count",
+    "denominator_member_count",
+})
 
 
 class ConsumerRefusal(ValueError):
@@ -338,6 +356,102 @@ def _oc01_receipt(
     return payload
 
 
+def _query_observed_contract_ref(query: EmpiricalQuerySpec) -> ExactRef | None:
+    grain = query.requested_output_grain
+    if not isinstance(grain, Mapping):
+        return None
+    raw = grain.get("observed_response_contract_ref")
+    if raw is None:
+        return None
+    return _native_ref(raw, "query.observed_response_contract_ref")
+
+
+def _observed_response_projection(
+    fact: EmpiricalFact,
+    query: EmpiricalQuerySpec,
+) -> dict[str, Any] | None:
+    """Preserve the exact observed-response projection required by the query grain.
+
+    Non-observed profiles return ``None`` and keep their existing behavior.  An
+    observed profile must carry the exact status, non-population flag, contract
+    ref and full ledger produced by the existing C/I03 owner; this wrapper does
+    not synthesize or relabel any observed material.
+    """
+    expected_ref = _query_observed_contract_ref(query)
+    topology = getattr(fact, "target_topology", None)
+    projection = (
+        topology.get("observed_response")
+        if isinstance(topology, Mapping)
+        else None
+    )
+    if expected_ref is None:
+        if projection is not None:
+            raise ConsumerRefusal(
+                "OBSERVED_RESPONSE_PROJECTION_WITHOUT_QUERY_GRAIN",
+                "fact carries observed_response but query grain has no observed-response contract",
+            )
+        return None
+    if not isinstance(projection, Mapping):
+        raise ConsumerRefusal(
+            "OBSERVED_RESPONSE_PROJECTION_MISSING",
+            "observed-response query grain requires target_topology.observed_response",
+        )
+    if projection.get("status") != OBSERVED_RESPONSE_STATUS:
+        raise ConsumerRefusal(
+            "OBSERVED_RESPONSE_STATUS_INVALID",
+            str(projection.get("status")),
+        )
+    if projection.get("not_eligible_population_estimate") is not True:
+        raise ConsumerRefusal(
+            "OBSERVED_RESPONSE_POPULATION_CLAIM_REFUSED",
+            "observed-response projection must not be an eligible population estimate",
+        )
+    try:
+        projection_ref = _native_ref(
+            projection.get("contract_ref"), "observed_response.contract_ref"
+        )
+    except ConsumerRefusal as exc:
+        raise ConsumerRefusal(
+            "OBSERVED_RESPONSE_CONTRACT_REF_INVALID", exc.detail
+        ) from exc
+    if projection_ref.key != expected_ref.key:
+        raise ConsumerRefusal(
+            "OBSERVED_RESPONSE_CONTRACT_REF_MISMATCH",
+            f"{projection_ref.key}!={expected_ref.key}",
+        )
+    ledger = projection.get("ledger")
+    if not isinstance(ledger, Mapping):
+        raise ConsumerRefusal(
+            "OBSERVED_RESPONSE_LEDGER_MISSING",
+            "observed-response projection requires a full ledger",
+        )
+    missing = sorted(OBSERVED_LEDGER_FIELDS - set(ledger))
+    if missing:
+        raise ConsumerRefusal(
+            "OBSERVED_RESPONSE_LEDGER_INCOMPLETE",
+            f"missing {missing}",
+        )
+    try:
+        ledger_ref = _native_ref(
+            ledger.get("contract_ref"), "observed_response.ledger.contract_ref"
+        )
+    except ConsumerRefusal as exc:
+        raise ConsumerRefusal(
+            "OBSERVED_RESPONSE_LEDGER_CONTRACT_REF_INVALID", exc.detail
+        ) from exc
+    if ledger_ref.key != expected_ref.key:
+        raise ConsumerRefusal(
+            "OBSERVED_RESPONSE_LEDGER_CONTRACT_REF_MISMATCH",
+            f"{ledger_ref.key}!={expected_ref.key}",
+        )
+    if ledger.get("not_eligible_population_estimate") is not True:
+        raise ConsumerRefusal(
+            "OBSERVED_RESPONSE_LEDGER_POPULATION_CLAIM_REFUSED",
+            "observed-response ledger must not be an eligible population estimate",
+        )
+    return _plain(projection)
+
+
 def _run_downstream_discovery(
     bundle: ProducerBundle,
     contract: ProducerContract,
@@ -368,16 +482,27 @@ def _run_downstream_discovery(
             "DOWNSTREAM_DISCOVERY_NOT_POSITIVE",
             f"supported_candidates={supported}",
         )
+    queries = {query.ref.key: query for query in result.executed_queries}
     facts = []
     for fact in result.empirical_facts:
+        query = queries.get(exact_ref(fact.empirical_query_spec_ref).key)
+        if query is None:
+            raise ConsumerRefusal(
+                "DOWNSTREAM_DISCOVERY_QUERY_MISSING",
+                fact.ref.key,
+            )
         topology = fact.target_topology if isinstance(fact.target_topology, Mapping) else {}
-        facts.append({
+        observed_response = _observed_response_projection(fact, query)
+        item = {
             "fact_ref": fact.ref.as_dict(),
             "typed_state": fact.typed_state,
             "raw_numerator_support": fact.raw_numerator_support,
             "raw_denominator_support": fact.raw_denominator_support,
             "cells": _plain(topology.get("complete_cell_semantic_projection", ())),
-        })
+        }
+        if observed_response is not None:
+            item["observed_response"] = observed_response
+        facts.append(item)
     receipts = []
     for receipt in result.receipts:
         candidate = receipt.candidate_identity if isinstance(receipt.candidate_identity, Mapping) else {}
@@ -559,6 +684,7 @@ def consume_native_producer(
             release_refs=(contract.release_ref,),
             expected_fact_refs=(contract.fact_ref,),
         )
+    observed_response = _observed_response_projection(fact, bundle.query)
     try:
         effective_n = compute_effective_n(
             fact=fact,
@@ -625,7 +751,12 @@ def consume_native_producer(
         limits.append("Effective-N is NOT_APPLICABLE for the RAW fixture grain; discovery supplies the substantive value effect.")
     else:
         limits.append("Source-local claim remains pending actual original-source producer issuance and value-sensitivity proof.")
-    return {
+    if observed_response is not None:
+        limits.append(
+            "Observed-response status, contract ref and full ledger are preserved unchanged; "
+            "the projection is not an eligible population estimate."
+        )
+    product = {
         "schema": "PYAT_SRC04_LANE_D_CONSUMER_PRODUCT@1.1.0",
         "status": status,
         "source_id": contract.source_id,
@@ -657,6 +788,9 @@ def consume_native_producer(
         "ff_v553_adoption": False,
         "limits": limits,
     }
+    if observed_response is not None:
+        product["observed_response"] = observed_response
+    return product
 
 
 def authority_fact_values(fact: EmpiricalFact) -> tuple[AuthorityRef, ...]:

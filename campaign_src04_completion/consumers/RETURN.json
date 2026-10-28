@@ -1,93 +1,74 @@
 {
   "actual_commands": [
     "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.generate_evidence",
+    "PYTHONPATH=. python3 -m pytest campaign_src04_completion/consumers/tests -q -o addopts=''",
+    "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/review/test_cd_boundary_review.py -q -o addopts=''",
     "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native-fixture --value-sensitivity-evidence campaign_src04_completion/consumers/evidence/VALUE_SENSITIVITY.json --value-sensitivity-case original --out campaign_src04_completion/consumers/evidence/B0_NATIVE_ORIGINAL_PRODUCT.json",
     "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native-fixture --mutate-q101-2-to-1 --value-sensitivity-evidence campaign_src04_completion/consumers/evidence/VALUE_SENSITIVITY.json --value-sensitivity-case mutated --out campaign_src04_completion/consumers/evidence/B0_NATIVE_MUTATED_PRODUCT.json",
     "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native-fixture --value-sensitivity-evidence campaign_src04_completion/consumers/evidence/VALUE_SENSITIVITY.json --value-sensitivity-case restored --out campaign_src04_completion/consumers/evidence/B0_NATIVE_RESTORED_PRODUCT.json",
     "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run b0-fixture --out campaign_src04_completion/consumers/evidence/B0_FIXTURE_CONSUMER_PRODUCT.json",
     "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run refuse-d1-tally --out campaign_src04_completion/consumers/evidence/NEGATIVE_D1_TALLY.json",
-    "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native --out campaign_src04_completion/consumers/evidence/LANE_D_BLOCKER.json",
-    "PYTHONPATH=. python3 -m pytest campaign_src04_completion/consumers/tests -q -o addopts=''"
+    "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native --out campaign_src04_completion/consumers/evidence/LANE_D_BLOCKER.json"
   ],
   "actual_consumer_result": {
-    "b0_commit": "283ac1ecd2f60fed9df5b9bc923018562fe3796b",
-    "b0_original_source_or_release_read": false,
-    "b0_receipt_path": "campaign_src04_completion/consumers/evidence/B0_FIXTURE_POSITIVE.json",
-    "b0_receipt_sha256": "947b4950ade82dc7d1c5a80d5a2f2b54e7b918ce331e8e3ee1d64cbbd554c532",
-    "b0_scope": "SRC09_P0_NONRESPONDENT_FIXTURE_ONLY__NOT_ORIGINAL_NOT_SRC04",
-    "b0_test_only_query_authority_used": true,
-    "downstream_discovery": {
-      "candidate_count": 1,
-      "condition_baseline_support": [
-        [
-          1,
-          1
-        ],
-        [
-          4,
-          4
-        ]
-      ],
-      "covered_candidate_count": 1,
-      "empirical_fact_refs": [
-        {
-          "content_hash": "5d7f9badd24159736bb5a83c4d94504569a93d8e01702c5ce882bca22ce6463a",
-          "kind": "EmpiricalFact@1.0.0",
-          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:5d7f9badd24159736bb5a83c4d94504569a93d8e01702c5ce882bca22ce6463a"
-        },
-        {
-          "content_hash": "9705c59b8ac325169895d06a602355817359f47837c787b2a0c7c9b81358ae49",
-          "kind": "EmpiricalFact@1.0.0",
-          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:9705c59b8ac325169895d06a602355817359f47837c787b2a0c7c9b81358ae49"
-        }
-      ],
-      "owner": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
-      "receipt_states": [
-        "DISCOVERED_RESULT_SUPPORTED"
-      ],
-      "status": "SUBSTANTIVE_DOWNSTREAM_DISCOVERY_POSITIVE",
-      "supported_candidate_count": 1
-    },
-    "downstream_value_consumer": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
-    "downstream_value_effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED",
-    "effective_n_state": "NOT_APPLICABLE",
-    "fact_ref": {
+    "b0_native_fact_ref": {
       "content_hash": "a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc",
       "kind": "EmpiricalFact@1.0.0",
       "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
     },
+    "b0_native_oc01_state": "SUPPORTED_OBJECTIVE_RESULT",
+    "b0_native_product_path": "campaign_src04_completion/consumers/evidence/B0_NATIVE_ORIGINAL_PRODUCT.json",
+    "b0_native_product_sha256": "d190db392497c771d21332a978d85e8719aaf245eaa54e9baec93a95f8ceb5b7",
+    "b0_native_raw_support": [
+      1,
+      1
+    ],
+    "b0_native_status": "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE",
+    "c_observed_joined_effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED",
+    "c_observed_joined_fact_ref": {
+      "content_hash": "1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a"
+    },
+    "c_observed_joined_oc01_state": "SUPPORTED_OBJECTIVE_RESULT",
+    "c_observed_joined_product_path": "campaign_src04_completion/consumers/evidence/C_OBSERVED_JOINED_PRODUCT.json",
+    "c_observed_joined_product_sha256": "bc1367470a13ba0eafbeecb551f93076c39ecc8f18d31991b267447108ef0d9e",
+    "c_observed_joined_status": "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE",
     "fixture_only": true,
     "fixture_value_sensitive": true,
-    "mode": "NATIVE_B0_NONRESPONDENT_FIXTURE_VALUE_CONSUMING_ENGINEERING_POSITIVE",
-    "oc01_claim_ceiling": "SUPPORTED_COMPONENT_ONLY",
-    "oc01_positive_completion": true,
-    "oc01_state": "SUPPORTED_OBJECTIVE_RESULT",
-    "predicate_ref": {
-      "content_hash": "ff2b51391075df074e1ae76d8de5aa34c236cfabbabeae738227c87c2e7ef7e3",
-      "kind": "EmpiricalPredicate@1.0.0",
-      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:ff2b51391075df074e1ae76d8de5aa34c236cfabbabeae738227c87c2e7ef7e3"
+    "mode": "B0_FIXTURE_NATIVE_VALUE_CONSUMING_AND_C_OBSERVED_PROFILE_JOINED",
+    "observed_response": {
+      "contract_ref": {
+        "content_hash": "c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26",
+        "kind": "OBSERVED_RESPONSE_CONTRACT",
+        "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26"
+      },
+      "ledger": {
+        "condition_false": 0,
+        "condition_observation_policy": "ALL_REFERENCED_RESPONSE_VARIABLES_OBSERVED",
+        "condition_unobserved": 0,
+        "contract_ref": {
+          "content_hash": "c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26",
+          "kind": "OBSERVED_RESPONSE_CONTRACT",
+          "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26"
+        },
+        "denominator": 7,
+        "denominator_member_count": 7,
+        "denominator_policy": "PER_TARGET_OBSERVED",
+        "not_eligible_population_estimate": true,
+        "resolved_targets": 7,
+        "risk_member_count": 7,
+        "risk_set_type": "OBSERVED_RESPONSE_RISK_SET",
+        "scoped_respondents": 8,
+        "target_observed": 7,
+        "target_unobserved": 1,
+        "unresolved_after_denominator": 0
+      },
+      "not_eligible_population_estimate": true,
+      "status": "OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION"
     },
-    "product_path": "campaign_src04_completion/consumers/evidence/B0_NATIVE_ORIGINAL_PRODUCT.json",
-    "product_sha256": "d190db392497c771d21332a978d85e8719aaf245eaa54e9baec93a95f8ceb5b7",
-    "query_ref": {
-      "content_hash": "d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706",
-      "kind": "EmpiricalQuerySpec@1.0.0",
-      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706"
-    },
-    "raw_denominator_support": 1,
-    "raw_numerator_support": 1,
-    "release_ref": {
-      "content_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f",
-      "kind": "C11LogicalRelease",
-      "object_id": "R157_P0_FIXTURE_RELEASE/SRC09"
-    },
-    "schema": "PYAT_SRC04_LANE_D_CONSUMER_PRODUCT@1.1.0",
-    "source_id": "SRC09",
     "source_local_claim": false,
-    "source_rows": 9,
-    "source_sha256": "a93b4dab00a2b7cbd559d8a0bb1ca498caaa87f27bd1bd73e9fceb0f2820a491",
-    "source_value_sensitive": false,
-    "status": "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE"
+    "source_value_sensitive": false
   },
   "actual_existing_api_calls": [
     "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
@@ -99,81 +80,24 @@
     "rawlsing_next.pre553_effective_n.compute_effective_n",
     "rawlsing_next.objective_consumer_bounded_evidence.evaluate_oc01_pre553_source_local"
   ],
-  "artifact_commit": "616e380047ead703a4d3068fc05cd0521ae07fa2",
+  "artifact_commit": "PENDING_ARTIFACT_COMMIT",
   "branch": "agent/pyat-src04-consumers-20261028",
   "campaign": "SRC04_FULL_COMPLETION",
   "candidate_not_independently_accepted": true,
-  "continuation_start_head": "fb84dc98a594b1145ece3c6d1dfc9008e8e95ff4",
-  "fixture_value_sensitivity": {
-    "changed": true,
-    "measured": true,
-    "mutated": {
-      "discovery_empirical_fact_refs": [
-        "9813612c89952110c7b78a58fdf8701ff0d5569d4bb3930bb55e1fddeaf904ed",
-        "9cfbca06ad6ad9d0970ca481de12952154f9195199623009bb3ffc7687f579a7"
-      ],
-      "discovery_supported_candidate_count": 1,
-      "downstream_value_effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED",
-      "fact_ref": {
-        "content_hash": "e9188502d1eb7c54b7c84a4c74ceb32c5532cce627b9b3b03b9f2d0c4d4ea3ce",
-        "kind": "EmpiricalFact@1.0.0",
-        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:e9188502d1eb7c54b7c84a4c74ceb32c5532cce627b9b3b03b9f2d0c4d4ea3ce"
-      },
-      "raw_denominator_support": 2,
-      "raw_numerator_support": 2
-    },
-    "mutated_product_path": "campaign_src04_completion/consumers/evidence/B0_NATIVE_MUTATED_PRODUCT.json",
-    "mutated_product_sha256": "52256308c1ba000f4a335eec0c29a971a58f339a7f9b424fcc258a5693a3e8fe",
-    "original": {
-      "discovery_empirical_fact_refs": [
-        "5d7f9badd24159736bb5a83c4d94504569a93d8e01702c5ce882bca22ce6463a",
-        "9705c59b8ac325169895d06a602355817359f47837c787b2a0c7c9b81358ae49"
-      ],
-      "discovery_supported_candidate_count": 1,
-      "downstream_value_effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED",
-      "fact_ref": {
-        "content_hash": "a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc",
-        "kind": "EmpiricalFact@1.0.0",
-        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
-      },
-      "raw_denominator_support": 1,
-      "raw_numerator_support": 1
-    },
-    "path": "campaign_src04_completion/consumers/evidence/VALUE_SENSITIVITY.json",
-    "restored": true,
-    "restored_product_path": "campaign_src04_completion/consumers/evidence/B0_NATIVE_RESTORED_PRODUCT.json",
-    "restored_product_sha256": "8b60a6cbff25b0df76d522ee6ae979750ca145a8c21acfd74951769ed06be155",
-    "restored_result": {
-      "discovery_empirical_fact_refs": [
-        "5d7f9badd24159736bb5a83c4d94504569a93d8e01702c5ce882bca22ce6463a",
-        "9705c59b8ac325169895d06a602355817359f47837c787b2a0c7c9b81358ae49"
-      ],
-      "discovery_supported_candidate_count": 1,
-      "downstream_value_effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED",
-      "fact_ref": {
-        "content_hash": "a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc",
-        "kind": "EmpiricalFact@1.0.0",
-        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
-      },
-      "raw_denominator_support": 1,
-      "raw_numerator_support": 1
-    },
-    "scope": "NONRESPONDENT_FIXTURE_ONLY",
-    "sha256": "f3281e76c508a49af2ce23c04a979b6914682400b448b9c80c2f6fb03a1bf3d9",
-    "source_local_claim": false,
-    "status": "MEASURED_FIXTURE_ONLY"
-  },
+  "continuation_start_head": "73cc20c233f982daa6d58c0e0b3df934e8cb4ad5",
+  "frozen_review_defect_kept_red": true,
   "lane": "D",
   "limits": [
     "Lane D does not claim full SRC04 source coverage; it is a downstream consumer integration lane.",
-    "The native value-consuming positive is B0 SRC09 nonrespondent/test-only engineering evidence, not SRC04 source-local proof.",
-    "The fixture q101 mutation is an engineering value probe, not a scientific edit.",
+    "The joined C observed-profile product is SRC04 nonrespondent fixture-only engineering evidence, not original-source qualification or a population claim.",
+    "The observed projection remains not eligible for population estimation and is preserved unchanged.",
+    "The frozen review defect test remains RED and unedited as historical witness.",
     "Full SRC04 source-local producer and its downstream value input are pending; no original SRC04 file was stat'ed, hashed, opened or decoded.",
     "No D1 tally was converted to EmpiricalFact; no FF/V553 semantic adoption, population claim or invented weight was made."
   ],
   "manifest": {
     "path": "campaign_src04_completion/consumers/MANIFEST.json",
-    "sha256": "499ced7c20945c0109d9bd60f6aefa0578f73d713c7aef952e74258dfd09b08d"
+    "sha256": "ffa43845baf5300e1542cea86ef42c4fa494aff764a893061957721e2d7c4d93"
   },
   "negative_results": {
     "NEGATIVE_CLAIM_CEILING": {
@@ -243,16 +167,76 @@
       "status": "REFUSED"
     }
   },
-  "next_consumer": "Lane A/C must supply the exact full SRC04 ProducerBundle plus a substantive downstream discovery/effective-N input. Then run the native consumer command; distinct review follows at the integrated lane boundary.",
+  "next_consumer": "HQ/independent re-review may inspect the preserved observed projection and the intentionally RED frozen defect witness. Source-local work still requires the full SRC04 producer and downstream input.",
+  "no_c_or_review_write": true,
   "no_d1_tally_conversion": true,
   "no_ff_v553_adoption": true,
   "no_original_source_access": true,
+  "observed_provenance_repair": {
+    "c_fact_ref": {
+      "content_hash": "1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a"
+    },
+    "c_or_review_write": false,
+    "contract_ref_equal": true,
+    "d_downstream_value_effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED",
+    "d_fact_ref": {
+      "content_hash": "1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1754358a977d6112e2acddec188e65ac9ed8ec2a88cbb06ca2462c7ad47f149a"
+    },
+    "d_status": "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE",
+    "discovery_facts_with_observed_projection": 2,
+    "entire_ledger_equal": true,
+    "joined_product_path": "campaign_src04_completion/consumers/evidence/C_OBSERVED_JOINED_PRODUCT.json",
+    "joined_product_sha256": "bc1367470a13ba0eafbeecb551f93076c39ecc8f18d31991b267447108ef0d9e",
+    "not_eligible_population_estimate": true,
+    "observed_contract_ref": {
+      "content_hash": "c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26",
+      "kind": "OBSERVED_RESPONSE_CONTRACT",
+      "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:c2c8caa48b95e1833350ea5845943631cb37c39153ec987b743e3e27c8e0df26"
+    },
+    "observed_status": "OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION",
+    "old_d": "35bab35be55c80f90d9d0cfbc13fb6f555a0f8ce",
+    "path": "campaign_src04_completion/consumers/evidence/OBSERVED_PROVENANCE_REPAIR_RESULTS.json",
+    "pinned_c_candidate": "44aaf2be06e026547e9b32d880ac588e84acc9e4",
+    "review_artifact_commit": "68eebdde117e10c22837a40254ccda508697fcd3",
+    "review_defect_test": {
+      "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/review/test_cd_boundary_review.py -q -o addopts=''",
+      "defect_test": "test_d_joined_path_is_positive_but_currently_omits_observed_ledger_DEFECT",
+      "exit": 1,
+      "failure": "assert \"observed_response\" not in product now fails because the repair preserves it",
+      "result": "1 failed, 7 passed in 17.01s",
+      "review_test_edited": false,
+      "review_test_path": "campaign_src04_completion/empirical/review/test_cd_boundary_review.py",
+      "review_test_sha256": "4385981dd616bf94e5af8df9dad6a07ff6f299ce29799a75558041645b2994c8",
+      "status": "RED_EXPECTED_HISTORICAL_WITNESS"
+    },
+    "sha256": "b177b26cceae198c323adce6fb4f7d63041ee5abe6690a81da26cfea4f25a991",
+    "status": "REPAIRED_MEASURED_SUCCESSOR",
+    "status_equal": true,
+    "wrong_projection_all_refused": true,
+    "wrong_projection_refusal_codes": {
+      "incomplete_ledger": "OBSERVED_RESPONSE_LEDGER_INCOMPLETE",
+      "missing_projection": "OBSERVED_RESPONSE_PROJECTION_MISSING",
+      "wrong_contract_ref": "OBSERVED_RESPONSE_CONTRACT_REF_MISMATCH",
+      "wrong_ledger_contract_ref": "OBSERVED_RESPONSE_LEDGER_CONTRACT_REF_MISMATCH",
+      "wrong_status": "OBSERVED_RESPONSE_STATUS_INVALID"
+    }
+  },
   "original_respondent_rows_read": 0,
   "original_workload_issued": false,
-  "prior_artifact_commit": "3a5a55f2ff1f3045e70dce28ac7c819065186a4d",
-  "prior_candidate_commit": "b6be2c62064ce696d4f8f966c3bc64fd46d63b43",
+  "prior_artifact_commit": "616e380047ead703a4d3068fc05cd0521ae07fa2",
+  "prior_candidate_commit": "35bab35be55c80f90d9d0cfbc13fb6f555a0f8ce",
   "prior_evidence_preserved": {
-    "candidate_commit": "b6be2c62064ce696d4f8f966c3bc64fd46d63b43",
+    "all_prior_evidence_remains_in_git": true,
+    "b0_native_product": {
+      "path": "campaign_src04_completion/consumers/evidence/B0_NATIVE_ORIGINAL_PRODUCT.json",
+      "sha256": "d190db392497c771d21332a978d85e8719aaf245eaa54e9baec93a95f8ceb5b7",
+      "status": "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE"
+    },
+    "candidate_commit": "35bab35be55c80f90d9d0cfbc13fb6f555a0f8ce",
     "primary_consumer_run": {
       "path": "campaign_src04_completion/consumers/evidence/PRIMARY_CONSUMER_RUN.json",
       "sha256": "f211d1aa1955b59da4dfff58cfbb0da2b564e32dcc6070cfbada74e9dee00ac9"
@@ -269,9 +253,9 @@
       "status": "FIXTURE_ONLY_ENGINEERING_POSITIVE__NOT_SOURCE_LOCAL_PROOF"
     }
   },
+  "prior_return_sha256": "4cc1c569811153862c5571e54ae9bd2d119e02d05cb314cbd4fc4c3f0b54578f",
   "respondent_cells_committed": false,
-  "return_record": "VERSIONED_SUCCESSOR",
-  "schema": "PYAT_SRC04_LANE_D_RETURN@1.1.0",
+  "schema": "PYAT_SRC04_LANE_D_RETURN@1.2.0",
   "source_coverage": {
     "accepted_42_field_release": {
       "release_ref": {
@@ -292,6 +276,7 @@
     "full_163_178_source_product": "PENDING_LANE_A_C",
     "full_src04_source_coverage_claim": "NOT_MADE_BY_LANE_D",
     "lane_scope": "ACTUAL_DOWNSTREAM_VALUE_CONSUMER_INTEGRATION",
+    "observed_fixture_scope": "SRC04_NONRESPONDENT_FIXTURE_ONLY",
     "original_source_read": false
   },
   "source_local_blocker": {
@@ -299,7 +284,7 @@
     "consumer_command": "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native --producer-module MODULE:FUNCTION --expected-source-id SRC04 --claim-ceiling SOURCE_LOCAL_STATISTIC --use-scope SOURCE_LOCAL_STATISTIC --out <out>",
     "path": "campaign_src04_completion/consumers/evidence/LANE_D_BLOCKER_V2.json",
     "producer_contract_path": "campaign_src04_completion/consumers/PRODUCER_CONTRACT.json",
-    "producer_contract_sha256": "583025e2b52e984e553b6b15af6c07f7927f26173860769ea6ae3425ac03a7d0",
+    "producer_contract_sha256": "4a5c914123f5127b2dc42ddbd5786f8d5b874e2be2fd6f9d853e411c14dd62ed",
     "required_downstream_value_consumer": {
       "accepted_owner_1": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
       "accepted_owner_2": "rawlsing_next.pre553_effective_n.compute_effective_n (SUPPORTED weighted state only)",
@@ -312,18 +297,29 @@
       "EmpiricalPredicate@1.0.0",
       "EmpiricalFact@1.0.0"
     ],
-    "sha256": "f588559e1329e34b266610deb34eabc975e1c69febb19bfe78e78296f7d909a3"
+    "sha256": "7d682ca9e2c7e98881cfc6d4c9fa153fcd25e7d1d1cfd69db4af38278749de3a"
   },
   "source_local_positive": false,
   "source_read_performed": false,
   "startup": "08b31c9f088bee0d02da5a26b7c12ca9f183061e",
-  "status": "CANDIDATE_NATIVE_VALUE_CONSUMING_FIXTURE_POSITIVE__SOURCE_LOCAL_PENDING",
+  "status": "OBSERVED_PROVENANCE_REPAIRED_MEASURED_SUCCESSOR__SOURCE_LOCAL_PENDING",
   "tests": {
     "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/consumers/tests -q -o addopts=''",
     "failed": 0,
-    "passed": 12,
+    "frozen_review_defect": {
+      "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/review/test_cd_boundary_review.py -q -o addopts=''",
+      "defect_test": "test_d_joined_path_is_positive_but_currently_omits_observed_ledger_DEFECT",
+      "exit": 1,
+      "failure": "assert \"observed_response\" not in product now fails because the repair preserves it",
+      "result": "1 failed, 7 passed in 17.01s",
+      "review_test_edited": false,
+      "review_test_path": "campaign_src04_completion/empirical/review/test_cd_boundary_review.py",
+      "review_test_sha256": "4385981dd616bf94e5af8df9dad6a07ff6f299ce29799a75558041645b2994c8",
+      "status": "RED_EXPECTED_HISTORICAL_WITNESS"
+    },
+    "passed": 15,
     "results_path": "campaign_src04_completion/consumers/TEST_RESULTS.json",
-    "results_sha256": "ce25368baf51f5d10c6c684b051e2e88ebaf4730cf4940cf0c7dfa0c36181ab4",
+    "results_sha256": "c5f44a87c1cbdc87ce24f5576cf7690ccc1a4937312bc2d90c7168ad361dc7e4",
     "skipped": 0
   }
 }

@@ -49,6 +49,10 @@ PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native \
 
 # Focused tests.
 PYTHONPATH=. python3 -m pytest campaign_src04_completion/consumers/tests -q -o addopts=''
+
+# Frozen independent review witness.  The defect discriminator is intentionally
+# RED after the repair because it asserts the historical omission.  Do not edit it.
+PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/review/test_cd_boundary_review.py -q -o addopts=''
 ```
 
 Expected current results:
@@ -63,4 +67,8 @@ Expected current results:
   `PRODUCER_FAMILY_REFUSED__D1_TALLY_NOT_EMPIRICAL_FACT`.
 - Native command without a full producer: `BLOCKED` with
   `FULL_SRC04_SOURCE_PRODUCT_NOT_ISSUED`.
-- Focused tests: 12 passed.
+- Joined C observed profile: exact status/contract/entire ledger preserved on
+  the primary product and both discovery facts.
+- Frozen review defect discriminator: intentionally RED (`1 failed, 7 passed`);
+  the review-owned test is unchanged and remains the historical witness.
+- Focused consumer tests: 15 passed.

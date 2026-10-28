@@ -19,6 +19,13 @@ original SRC04 file.
       weighted effective-N product.
     A ref-only bundle with neither effect is refused with
     `DOWNSTREAM_VALUE_CONSUMER_REQUIRED`.
+  - Observed-response profiles preserve the exact C/I03 projection. When the
+    query grain names an observed-response contract, the product carries
+    `observed_response` with status `OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION`,
+    the non-population flag, the exact contract ref and the full ledger. Every
+    discovery fact preserves its own projection. Missing, mutated,
+    population-relabelled or incomplete projections are refused; non-observed
+    profiles are unchanged.
   - `source_value_sensitive` is no longer hardcoded. It is true only for exact
     measured `SOURCE_LOCAL_CERTIFIED` evidence. Fixture mutation/restoration
     evidence sets `fixture_value_sensitive=true` while source-local remains false.
@@ -42,6 +49,9 @@ was stat'ed, hashed, opened or decoded. The lane therefore returns:
   nonrespondent fixture: OC01 `SUPPORTED_COMPONENT_ONLY`, discovery candidate
   `DISCOVERED_RESULT_SUPPORTED` (condition `1/1` vs substantive baseline `4/4`),
   effective-N `NOT_APPLICABLE` for the RAW grain;
+- an actual joined C observed-profile → D product preserving status
+  `OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION`, the exact observed contract ref and
+  the entire ledger on both the primary and discovery facts;
 - measured fixture mutation `q101 row-2 2.0 -> 1.0`: consumed fact support changes
   `1/1 -> 2/2`, discovery facts change, and restoration reproduces the original;
 - all identity/authority/use negatives refused, plus fixture-label, fixture
