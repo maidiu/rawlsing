@@ -85,7 +85,7 @@
         "EE01",
         "EE02"
       ],
-      "status": "P01_S2_ALL_LEGACY_I02_CHECKS_MAPPED__SOURCE_ATTESTATION_BOUNDARY_EXPLICIT__ORIGINAL_SOURCE_NOT_RUN"
+      "status": "I02_LEGACY_VALIDATION_AND_SOURCE_BYTE_DECODER_SCOPED__SOURCE_CUSTODY_APPROVED_RECEIPT_UNVERIFIED__REAL_SOURCE_NOT_RUN"
     },
     {
       "id": "W03",
@@ -94,7 +94,7 @@
         "F1",
         "N1"
       ],
-      "status": "P01_S0_BOUNDED_COMPLETE__S1_SELECTED_INTERFACE__S2_VALIDATOR_DESIGN_AND_SOURCEFREE_BASELINE_PROOF_COMPLETE__STREAMING_CODE_NOT_IMPLEMENTED"
+      "status": "P01_S0_S1_S2_S3_HQ_DESIGNS_COMPLETE__9_CODE_BUILD_TICKETS__REPLACEMENT_NOT_IMPLEMENTED_OR_QUALIFIED"
     },
     {
       "id": "W04",
@@ -201,7 +201,7 @@
         "W02",
         "W03"
       ],
-      "state": "HQ_DIRECT_S0_S1_S2_DESIGN_COMPLETED__S3_S4_IMPLEMENTATION_SPEC_AND_PARITY_UNPROVED",
+      "state": "HQ_DIRECT_S0_S1_S2_S3_EXACT_BUILD_DESIGN_COMPLETE__NO_NEW_CODE_OR_REAL_EXECUTION",
       "required_return": "EXACT_CALL_GRAPH__INTERFACE__ALGORITHM__TESTS__OWNERS__CONSUMER__COST__PERMISSIONS",
       "hq_decision_owner": true,
       "worker_assignment_state": "NONE__HQ_OWNED",
@@ -211,16 +211,28 @@
         "DESIGN/P01_S0_CONTROL_SYMBOL_CENSUS.json",
         "DESIGN/P01_S1_SEALED_SOURCE_EXECUTION_VIEW_CONTRACT_R1.md"
       ],
-      "next_required": "P01-S3 every-symbol changes, golden sourcefree old-vs-new differential suite, source-attestation handshake, I02 no-shortcut private view transaction, compatibility/concrete-type and replay reconstruction; follow with P01-S4 code review/execution",
-      "proof_level": "DIRECT_CURRENT_CONTROL_I02_CODE__EXECUTED_TINY_SOURCEFREE_ORACLE__NO_NEW_STREAMING_EXECUTOR_OR_ORIGINAL_DATA_RUN",
+      "next_required": "Qualified Codex HQ starts B00 old native golden and B01 journal, completes B02–B08 with independent actual test receipts; Browser HQ next direct architecture P03/P04 without revisiting C11 route.",
+      "proof_level": "SOURCE_CODE_GROUNDED_HQ_SPEC__OLD_I02_FIXTURE_SOURCEFREE_RERUN_ONLY__NO_NEW_CODE",
       "s2_paths": [
         "DESIGN/P01_S2_EXACT_I02_VALIDATION_JOURNAL_AND_HASH_PROOF_R1.md",
         "DESIGN/P01_HIGH_RESOLUTION_RETURN_LEDGER.json",
         "STATUS/P01_S2_SOURCEFREE_PROOF_RECEIPT.json",
         "DESIGN/ORACLES/p01_s2_control_oracle.py"
       ],
-      "high_resolution_items": 36,
-      "source_retention_negative": "I02 accepted internally consistent synthetic fixture with source_snapshot_retention_ref SHA differing from source artifact; upstream source admission gate mandatory; not proof full source pipeline does so"
+      "high_resolution_items": 37,
+      "source_retention_negative": "I02 accepted internally consistent synthetic fixture with source_snapshot_retention_ref SHA differing from source artifact; upstream source admission gate mandatory; not proof full source pipeline does so",
+      "s3_paths": [
+        "DESIGN/P01_S3_CODE_OWNER_AND_INTERFACE_SPEC_R1.md",
+        "DESIGN/P01_S3_VALIDATION_JOURNAL_PHYSICAL_SCHEMA_AND_ATOMICITY_R1.md",
+        "DESIGN/P01_S3_SOURCE_BYTE_ATTESTATION_AND_DECODER_R1.md",
+        "DESIGN/P01_S3_ACCEPTANCE_AND_DIFFERENTIAL_MATRIX_R1.md",
+        "CODEX_BUILD_ORDERS/P01_S3_BUILD_A_FOUNDATIONS.md",
+        "CODEX_BUILD_ORDERS/P01_S3_BUILD_B_CONSUMERS.md",
+        "IMPLEMENTATION/P01_S3_EXECUTION_DAG.json",
+        "STATUS/P01_S3_HQ_IMPLEMENTATION_SPEC_RECEIPT.json"
+      ],
+      "acceptance_cases": 41,
+      "code_tickets": 9
     },
     {
       "id": "P02",
@@ -421,7 +433,7 @@
     "INDEPENDENT_HOSTILE": "P11",
     "no_autonomous_whole_machine_delegation": true
   },
-  "hq_direct_P01_next": "P01-S3 every-symbol changes, golden sourcefree old-vs-new differential suite, source-attestation handshake, I02 no-shortcut private view transaction, compatibility/concrete-type and replay reconstruction; follow with P01-S4 code review/execution",
+  "hq_direct_P01_next": "Qualified Codex HQ starts B00 old native golden and B01 journal, completes B02–B08 with independent actual test receipts; Browser HQ next direct architecture P03/P04 without revisiting C11 route.",
   "design_state": {
     "p01_s0": "SCOPED_COMPLETE",
     "p01_s1": "EXECUTIVE_INTERFACE_SELECTED_NO_CODE_ORIGINAL_PARITY",
@@ -435,6 +447,12 @@
     "p01_s2_oracles": "SOURCEFREE_BASELINE_ACTUALLY_EXECUTED; PORTABLE_REPO_ORACLE_COMMITTED_NOT_EXECUTED",
     "p01_s2_high_resolution_items": 36,
     "p01_s2_source_byte_identity_gap": "REPLAY_AND_I02_SEAL_ALONE_DO_NOT_ESTABLISH_UPSTREAM_SOURCE_RETENTION_SHA_CONGRUENCE",
-    "p01_s3": "PENDING_HQ_DIRECT"
+    "p01_s3": "CODE_READY_HQ_DESIGN_WITH_9_TICKETS__NOT_IMPLEMENTED",
+    "p01_s3_accepted_design_artifacts": 8,
+    "p01_high_resolution_count": 37,
+    "p01_acceptance_count": 41,
+    "p01_old_baseline_rerun": "2 sourcefree scripts PASS after correct PYTHONPATH",
+    "p01_new_validator_executed": false,
+    "p01_source_byte_toctou": "CURRENT_DECODER_SHA_BEFORE_PYREADSTAT_STREAMED_PATH_REOPEN__IMMUTABLE_SOURCE_LEASE_REQUIRED"
   }
 }
