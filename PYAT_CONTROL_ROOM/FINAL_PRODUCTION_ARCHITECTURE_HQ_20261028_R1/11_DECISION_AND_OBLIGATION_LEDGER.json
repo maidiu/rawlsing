@@ -85,7 +85,7 @@
         "EE01",
         "EE02"
       ],
-      "status": "INITIAL_DESIGN_ONLY"
+      "status": "P01_S0_SCOPED_CODE_IDENTITY_AUDIT_COMPLETE__S1_VIEW_DESIGN_SELECTED__NOT_IMPLEMENTED"
     },
     {
       "id": "W03",
@@ -94,7 +94,7 @@
         "F1",
         "N1"
       ],
-      "status": "P01_R0_INTERFACE_DOCKET_WRITTEN__NOT_VALIDATED_OR_CODED"
+      "status": "P01_S0_COMPLETE_SCOPED_15_CORE_CONTROL_FILES_131_POSITIVE_HITS_AND_PACKET_21_FILES_156_HITS__S1_INTERFACE_DECIDED_NOT_TEST_PROVEN"
     },
     {
       "id": "W04",
@@ -201,11 +201,18 @@
         "W02",
         "W03"
       ],
-      "state": "HQ_DIRECT_R0_CODE_DOCKET__WORKER_NOT_LAUNCHED",
+      "state": "HQ_DIRECT_S0_CLOSED_AT_EXPLICIT_SCOPE__S1_INTERFACE_DESIGN_SETTLED__NOT_CODED",
       "required_return": "EXACT_CALL_GRAPH__INTERFACE__ALGORITHM__TESTS__OWNERS__CONSUMER__COST__PERMISSIONS",
       "hq_decision_owner": true,
-      "worker_assignment_state": "NOT_DISPATCHABLE_UNTIL_BOUNDED_CORPUS_AND_EXCLUSIONS",
-      "source_claims_acceptance": "HQ_INDEPENDENT_VERIFY_EVERY_DESIGN_CRITICAL_CLAIM"
+      "worker_assignment_state": "NONE__HQ_OWNED",
+      "source_claims_acceptance": "HQ_INDEPENDENT_VERIFY_EVERY_DESIGN_CRITICAL_CLAIM",
+      "accepted_design_paths": [
+        "DESIGN/P01_S0_CURRENT_C11_CONSUMER_AND_IDENTITY_AUDIT_R1.md",
+        "DESIGN/P01_S0_CONTROL_SYMBOL_CENSUS.json",
+        "DESIGN/P01_S1_SEALED_SOURCE_EXECUTION_VIEW_CONTRACT_R1.md"
+      ],
+      "next_required": "S2 validator-by-validator streaming/replay exactness proof spec; S3/S4 precise interface/consumer patch plan; independent sourcefree golden oracle before any source run",
+      "proof_level": "DIRECT_REPOSITORY_CODE_AND_BOUNDED_STATIC_ANALYSIS__NO_ENGINEERING_RUNTIME_ORIGINAL_SOURCE_PARITY"
     },
     {
       "id": "P02",
@@ -406,5 +413,15 @@
     "INDEPENDENT_HOSTILE": "P11",
     "no_autonomous_whole_machine_delegation": true
   },
-  "hq_direct_P01_next": "Map all C11LogicalRelease, C11Repository, ReplayManifest, I03 and consumers exact code accesses; decide validated logical streaming/ref-resolution interface from directly inspected sources"
+  "hq_direct_P01_next": "S2 validator-by-validator streaming/replay exactness proof spec; S3/S4 precise interface/consumer patch plan; independent sourcefree golden oracle before any source run",
+  "design_state": {
+    "p01_s0": "SCOPED_COMPLETE",
+    "p01_s1": "EXECUTIVE_INTERFACE_SELECTED_NO_CODE_ORIGINAL_PARITY",
+    "p01_s0_control_files": 15,
+    "p01_s0_control_positive_occurrences": 131,
+    "p01_packet_files_with_refs": 21,
+    "p01_packet_positive_occurrences": 156,
+    "p01_current_code_sha": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "p01_s0_exclusions": "Not whole repo all branches/local Mac; actual host source files not provided; current I03 differs from packet"
+  }
 }
