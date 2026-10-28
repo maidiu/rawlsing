@@ -1,0 +1,163 @@
+{
+  "accepted_receipts": {
+    "actual_primary_run_sha256": "700475070365d7d526165cd6c741da31e605281fb17e47bfb43b9a1035e128a9",
+    "local_release_receipt_sha256": "dc085fb28d6ed2ed0ce3a2460484d6b532ac7ee6243be41e28abb30e952b099d",
+    "release_receipt_sha256": "eba37061a5642ee82c13f1759eba623572435d97968f4c10fb8a59b1999a0ede"
+  },
+  "actual_original_consumer_claimed": false,
+  "blocker": {
+    "code": "FULL_PAIRWISE_FRONTIER_NEEDS_BATCH_NATIVE_OWNER_OR_REDUCED_FRONTIER",
+    "detail": "After the target-event index and contract-projection cache, all 177 unary operations complete and the joint path runs at approximately 4.5-10 seconds per operation. The remaining 15,545 joint operations plus the consumer conditional still project to roughly 20-43 hours on the shared 16 GiB host, without a bounded batch native owner. A full run is therefore stopped rather than reported as complete; the durable receipts can resume only the completed 208 operations. The remaining work is a material batch-execution architecture change or an explicitly reduced declared pairwise frontier.",
+    "not_done": [
+      "No complete 15,576-pair joint frontier.",
+      "No separate full conditional value-instance issuance.",
+      "No accepted Lane D consumer run against the full native frontier.",
+      "No full original workload or adoption claim."
+    ],
+    "unaffected_completed_evidence": [
+      "All 177 unary observed distributions executed and supported.",
+      "31 same-person joint operations executed and supported.",
+      "208 aggregate operation receipts durable and resumable.",
+      "No I03 refusal occurred in the measured partial run.",
+      "Fixture/carrier/issuer regression suite remains green."
+    ]
+  },
+  "code_fixes_committed": [
+    "b112ea31a5fa966fd2ec4bd2edfcf9a35a4d0b77",
+    "c8e787b9a4b430d3c39219514871e4d7040f20b5",
+    "28f1bf427172351d51a643a70569b3ac7a547f1f"
+  ],
+  "full_frontier": {
+    "conditional_target_ordered_pairs": 31152,
+    "conditional_value_instances_represented_in_joint_cells": "QUANTIFIED_BY_EXACT_RELEASE_VIEW",
+    "full_operation_queue_after_partial": 15546,
+    "joint_operations_completed": 31,
+    "q217_held_outside_qualified_release": true,
+    "qualified_targets": 177,
+    "remaining_conditional_consumer_operations": 1,
+    "remaining_joint_operations": 15545,
+    "response_events": 1298649,
+    "same_respondent_joint_pairs": 15576,
+    "scoped_respondents": 7337,
+    "separate_conditional_operation_used_for_consumer": 1,
+    "unary_operations": 177,
+    "unary_operations_completed": 177
+  },
+  "full_success_claimed": false,
+  "full_workload_claimed": false,
+  "limits": [
+    "The 20 unary operations are a measured partial prefix only; they are not presented as the full applicable workload and do not establish a consumer product.",
+    "No population, weight, causal, structural, canonical, FF/V553, N11 or N12 claim is made.",
+    "The accepted release was consumed read-only; C did not stat/hash/open/decode/read the original SAV.",
+    "q217 remains held outside the qualified 177-response release; no q217 or residual-zero claim is made.",
+    "The prior 91 unary in-memory effects had no durable receipt and are not recoverable or counted.",
+    "Changed-boundary qualification remains required before adoption; source-release, issuer and carrier acceptances are preserved."
+  ],
+  "measured_scale": {
+    "basis": "Exact accepted release, exact I03 executor, target-indexed event lookup, bounded observed-response view; post-fix measured at 177 unary + 31 joint operations.",
+    "post_fix_incremental_seconds_per_operation": 4.54,
+    "post_fix_measured_progress": [
+      {
+        "elapsed_seconds": 1281.8,
+        "executed": 100,
+        "family": "UNARY_OBSERVED_DISTRIBUTION",
+        "operations_total": 100,
+        "refused": 0
+      },
+      {
+        "elapsed_seconds": 1735.9,
+        "executed": 200,
+        "family": "SAME_RESPONDENT_JOINT_DISTRIBUTION",
+        "operations_total": 200,
+        "refused": 0
+      }
+    ],
+    "post_fix_observed_seconds_per_operation_range": [
+      4.5,
+      10.0
+    ],
+    "projected_full_unary_plus_joint_hours": [
+      19.7,
+      43.8
+    ],
+    "projected_remaining_unary_plus_joint_hours": [
+      19.4,
+      43.2
+    ],
+    "projected_separate_full_conditional_value_instances_hours": [
+      320.0,
+      720.0
+    ],
+    "resources": {
+      "free_disk_gib": 4.6,
+      "host_memory_gib": 16,
+      "native_bundle_duplicated": false,
+      "observed_peak_physical_footprint_gib": 16.36,
+      "observed_physical_footprint_gib_at_stop": 7.25,
+      "source_copy_made": false
+    }
+  },
+  "partial_actual_execution": {
+    "aggregate_cells": 4427,
+    "fact_states": {
+      "SUPPORTED": 208
+    },
+    "local_execution_view_path": ".r61/src04-original-execution-full/receipts/execution_view.json",
+    "local_execution_view_sha256": "01dd5f7f7fab36ff23b576eecef5c54ffe5bfb431c71c1d2a7c0b18ef707d315",
+    "local_issued_contract_path": ".r61/src04-original-execution-full/receipts/issued_contract.json",
+    "local_issued_contract_sha256": "814709ebe403cb5a784dfa69f835baf7be2dff3d2032124724d60d8c1374f52c",
+    "local_operation_receipt_path": ".r61/src04-original-execution-full/receipts/operation_receipts.jsonl",
+    "local_operation_receipt_sha256": "fa498cdfa31b9de22e34a93f85605d068e6b6f30f3d4fe0cac46cee66dd7317a",
+    "operations_by_family": {
+      "SAME_RESPONDENT_JOINT_DISTRIBUTION": 31,
+      "UNARY_OBSERVED_DISTRIBUTION": 177
+    },
+    "operations_executed": 208,
+    "operations_issued": 208,
+    "operations_refused": 0,
+    "raw_denominator_max": 7337,
+    "raw_denominator_min": 1269,
+    "raw_respondent_values_committed": false,
+    "respondent_member_lists_committed": false,
+    "scope": "PARTIAL_FULL_UNARY_PLUS_JOINT_PREFIX_NOT_FULL_FRONTIER"
+  },
+  "release_ref": {
+    "content_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+    "kind": "C11LogicalRelease",
+    "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION"
+  },
+  "replay_note": "Resume skips only the 208 durable aggregate receipts; the 177 unary and 31 joint effects are recoverable. No full consumer effect exists.",
+  "required_next_owner_decision": {
+    "detail": "Either implement an exact bounded batch native owner under the existing empirical/native terrain that shares respondent/index/fact construction across the 15,576 pair operations, or explicitly reduce the declared pairwise frontier before full adoption. The existing per-operation path cannot complete the full frontier in a practical finite window on this host.",
+    "kind": "BATCH_EXECUTION_ARCHITECTURE_OR_EXACT_FRONTIER_REDUCTION",
+    "not_a_request_for_new_permission": true
+  },
+  "schema": "PYAT_SRC04_ORIGINAL_EXECUTION_SCALE_BLOCKER@1.0.0",
+  "source_id": "SRC04",
+  "source_release_manifest_hash": "cf5b990ec740134b77a4acf34653be02640450110ae86bff1b23aa4ffca44472",
+  "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+  "status": "BLOCKED_FULL_APPLICABLE_WORKLOAD_SCALE",
+  "terminal_cause_inspection": {
+    "current_operation_receipts_present": true,
+    "current_stop_reason": "Stopped by the author after 177 complete unary and 31 joint operations established the post-fix joint rate (~4.5-10 s/operation) and projected 20-44 hours for the full 15,754-operation unary+joint queue. Completed aggregate receipts were retained and are resumable.",
+    "current_supervisor_exit_code": -15,
+    "current_supervisor_terminal_receipt": ".r61/src04-original-execution-full/completion.json",
+    "current_supervisor_worker_pid": 29395,
+    "prior_unary_crash_report_present": false,
+    "prior_unary_exact_terminal_reason": "OS exit event observed with data 0; the process was launched only as a tool-owned background shell, had no operation-level durable receipt, and stopped after 91 successful operations without the final done record. No traceback, crash report, refusal, or OOM evidence survives; the 91 in-memory effects are not recoverable and are not claimed.",
+    "prior_unary_exit_event_data": 0,
+    "prior_unary_last_progress": {
+      "done_record_present": false,
+      "elapsed_seconds": 3904.3,
+      "executed": 91,
+      "index": 90,
+      "refused": 0
+    },
+    "prior_unary_log": ".r61/actual_unary_run.log",
+    "prior_unary_operation_receipts_present": false,
+    "prior_unary_process_pid": 15608,
+    "prior_unary_recoverable_effects": 0,
+    "prior_unary_stdout_stderr_traceback_present": false,
+    "prior_unary_terminal_receipt": ".r61/src04-live-unary-custody/completion.json"
+  }
+}
