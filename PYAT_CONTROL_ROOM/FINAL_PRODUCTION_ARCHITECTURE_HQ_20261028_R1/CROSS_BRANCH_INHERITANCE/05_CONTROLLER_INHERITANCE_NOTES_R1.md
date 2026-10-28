@@ -1,0 +1,11 @@
+# Second repository controller inheritance — both HQs
+
+**Separate repo:** private `maidiu/rawlsing-controller`. **Census:** 27 branches, 25 distinct tips, fully listed in `04_CONTROLLER_SECOND_REPO_BRANCH_CENSUS.json` on the main Rawlsing HQ design branch. This is in addition to the 2,831 branches of `maidiu/rawlsing` — never add it to that number without saying it is a second repository.
+
+Default controller branch `infra/r59-shared-controller-integrated-r2@4535d49af474ac3983d0a79f81df232cef401933`. Additional actual implementation branches include R59 mainmac `744f75138dafd535b3a37feb03e5cb8891fa262f`, R62 completion `132e8a5352fe179b5028d44ff79389e194533412`, R62 native service `0e8b747af2540611a914545f06a5f2b5865fd55f`, R63 intelligence routing `409f6c78e9d9ed77377c778476b2c23e9eb15e8a` and independent review `de68ef4b96951a9a776feee171af7caa68c63fb5`.
+
+**Observed code/evidence boundary:** `INTEGRATION/NATIVE_EXECUTION_STATUS.md` at R63 describes one real OpenCode worker that completed and was not redispatched after deliberate controller crash/restart, plus a separate reviewer run that remained `UNKNOWN` after timeout. The reviewer result was not accepted or silently retried. `INTEGRATION/FINAL_REVIEW/01_RETURN.md` reports `ACCEPT_SCOPED` for finite host/receipt/permit repairs, with 45 Pyat tests, 13 service tests, 5 finite and 8 repo-binding tests; explicitly no provider/model execution in that review. `CURRENT_STATUS.md` still documents historical fixture service holds and not activated service.
+
+**R63 High routing:** `INTEGRATION/INTELLIGENCE_ROUTING/RETURN.md` records a queued `gpt-6.1-sol/high` request, but the same HQ turn's actual metadata showed `low`. The route correctly remained `BLOCKED/HOLD`. No automatic low→high→low capability may be claimed and no workaround silently launched.
+
+**Required owner action:** Both HQs must inspect actual controller runtime/leases and exact accepted newer revisions before submitting jobs or automating high-effort changes. Remote refs alone cannot prove current Mac process or account access. Retain provider/credentials/OS isolation, independent review and original source grants as separate controls. A controller positive is not a Pyat original-data or Sorok actor-science positive.
