@@ -1,0 +1,303 @@
+{
+  "schema": "PYAT_D2_SRC17_INDEPENDENT_DISPOSITION@1.0.0",
+  "campaign": "D2",
+  "source_id": "SRC17",
+  "reviewer_session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+  "reviewer_relationship": "INDEPENDENT_D2_REVIEWER__NOT_SRC17_AUTHOR_OR_D1_TALLY_AUTHOR",
+  "candidate_branch": "agent/pyat-d2-src17-original-c11-review",
+  "candidate_commit": "5b1b9bd5f04f0456eac319264a6f2b64d4e87038",
+  "plan_grant": {
+    "true_hq_grant_sha256": "f51de87818f8fd1365d347da3aee73005fe9ab8ae0c8d2a607487395016d48ae",
+    "program_sha256": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50",
+    "control_commit": "3b703e878946a442b5c880f318b929365865ed00",
+    "control_grant_hash_match": true,
+    "control_program_hash_match": true,
+    "host": "USER_LOCAL_MAC",
+    "purpose": "SECOND_FAMILY_ORIGINAL_SOURCE_C11_POSITIVE",
+    "consumer": "EXISTING_PRE553_SOURCE_BACKED_C11"
+  },
+  "disposition": "PASS",
+  "grade": "SOURCE_NATIVE_C11_POSITIVE_QUALIFIED_WITH_RECORDED_HISTORICAL_PROCESS_DEVIATION",
+  "milestone_scope": "D2_SOURCE_NATIVE_C11_POSITIVE_ONLY__NO_M2_M3_F1_F4_I03_I05_CLAIM",
+  "source": {
+    "source_id": "SRC17",
+    "source_sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+    "rows": 1504,
+    "columns": 339,
+    "bytes": 1984639,
+    "custody_contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+    "custody_content_bound": true,
+    "custody_reader_access_mode": "O_RDONLY",
+    "custody_reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+    "custody_snapshot_unlinked": true,
+    "physical_metadata_digest": "c9876c34d59fb4f0fa09ad414df1fc4c9703d6a54768d811b464b561b7506752",
+    "physical_slot_agreement": "339_OF_339",
+    "physical_audit_checks_passed": true,
+    "physical_audit_issue_count": 0,
+    "reader": {
+      "reader": "pyreadstat",
+      "reader_version": "1.3.2",
+      "encoding": null,
+      "user_missing": true,
+      "apply_value_formats": false
+    }
+  },
+  "native_release": {
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "GSS_1973_SOURCE_ARTIFACT",
+      "content_hash": "2f81b527ba1a62ecb79c7cc858063d60a10826a91af7d689606ed83e6bbd039e"
+    },
+    "semantic_release_hash": "2f81b527ba1a62ecb79c7cc858063d60a10826a91af7d689606ed83e6bbd039e",
+    "release_identity_recomputed_independently": true,
+    "source_artifact_ref": {
+      "kind": "SOURCE_ARTIFACT",
+      "object_id": "GSS1973.sav",
+      "content_hash": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2"
+    },
+    "source_release_manifest_hash": "0b7c6af9cf8b391fc89bb2bed7ec18b92fd2f9b0654cbb0a364cb91d3e8a0678",
+    "replay_manifest_ref": {
+      "kind": "C11Internal:ReplayManifest",
+      "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:239f041db9bcfdfeabc2c012343dea33dd2f3b754219f2c91fc09ccf8326fbed",
+      "content_hash": "239f041db9bcfdfeabc2c012343dea33dd2f3b754219f2c91fc09ccf8326fbed"
+    },
+    "public_object_count": 779078,
+    "internal_record_count": 1762,
+    "public_counts": {
+      "RespondentEvent": 388032,
+      "RoutingEligibilityFact": 388032,
+      "EmpiricalCoordinateFact": 3008,
+      "EmpiricalUniverse": 1,
+      "AuthoritySnapshot": 5,
+      "WeightMeasureFact": 0
+    },
+    "internal_counts": {
+      "RespondentIdentity": 1504,
+      "QuestionVariableBinding": 258
+    },
+    "response_event_states": {
+      "SUBSTANTIVE_RESPONSE": 335183,
+      "INAPPLICABLE": 44449,
+      "MISSING": 2164,
+      "DK": 5281,
+      "INVALID_UNRESOLVED": 920,
+      "REFUSAL": 35
+    },
+    "routing_states": {
+      "ROUTING_UNKNOWN": 388032
+    },
+    "coordinate_states": {
+      "OBSERVED_COORDINATE": 3008
+    },
+    "authority_snapshot_states": {
+      "DEFER": 4,
+      "ALLOW": 1
+    },
+    "authority_allowed_kind": "REPLAY_PROTOCOL_ONLY",
+    "semantic_or_canonical_ALLOW_issued": false,
+    "canonical_response_values": 0,
+    "canonical_coordinate_values": 0,
+    "weight_facts": 0,
+    "source_native_key_witnesses": 1504,
+    "source_native_key_kind": "SOURCE_NATIVE_RESPONDENT_KEY",
+    "distinct_source_native_key_ids": 1504,
+    "question_bindings_semantic_authority_states": {
+      "DEFER": 258
+    },
+    "question_bindings_topology_authority_states": {
+      "DEFER": 258
+    },
+    "canonical_question_refs": {
+      "NOT_AUTHORIZED": 258
+    },
+    "m01_m18_complete": true
+  },
+  "selection": {
+    "configured_response_slots": 279,
+    "selected_response_slots": 258,
+    "held_response_slots": 21,
+    "selected_coordinate_slots": 2,
+    "held_coordinate_slots": 0,
+    "all_physical_slots_accounted": 339,
+    "all_items_accounted": 339,
+    "physical_cells": 509856,
+    "selected_slots_have_all_1504_cells": true,
+    "selected_slots_have_zero_unbound_cells": true,
+    "held_slots_have_positive_unbound_cells": true,
+    "selection_matches_author_receipt": true,
+    "held_ordinals": [
+      11,
+      12,
+      29,
+      32,
+      73,
+      74,
+      110,
+      113,
+      114,
+      123,
+      127,
+      183,
+      188,
+      222,
+      264,
+      282,
+      283,
+      284,
+      290,
+      317,
+      323
+    ],
+    "selected_coordinate_ordinals": [2, 237]
+  },
+  "independent_checks": {
+    "grant_and_program_hashes": "PASS",
+    "control_commit_hashes": "PASS",
+    "source_read_via_existing_admission": "PASS",
+    "source_custody_sha_checked_unlinked": "PASS",
+    "physical_metadata_native_code_agreement_339_of_339": "PASS",
+    "selection_maximality_and_held_accounting": "PASS",
+    "runtime_config_diff_minimal_transport_grounding": "PASS",
+    "runtime_authority_identity_routing_weights_canonical_unchanged": "PASS",
+    "release_public_internal_content_hashes_match_author_bundle": "PASS",
+    "release_identity_recomputed_from_manifest_and_m01_m18": "PASS",
+    "replay_manifest_record_hash_and_authority_set_hash": "PASS",
+    "replay_manifest_closure_covers_all_public_internal_objects_plus_source": "PASS",
+    "wrong_source_refusal_before_source_io": "PASS",
+    "held_slice_refusal": "PASS",
+    "canonical_authority_refusal": "PASS",
+    "negative_then_positive_restore": "PASS",
+    "local_bundle_files_exist_and_hashes_match": "PASS",
+    "cold_replay_receipt_and_bundle_manifest_consistency": "PASS",
+    "eighteen_committed_artifact_hashes": "PASS",
+    "no_raw_respondent_cells_in_committed_evidence": "PASS",
+    "focused_tests": "6_PASSED"
+  },
+  "runtime_config_diff": {
+    "accepted_config_file_sha256": "ca791189e208c9b311a7261ac254ce5ffea35e9c13b4d6e2ec87e9e55a1ecca8",
+    "accepted_config_canonical_sha256": "3f1eb83abe61415e01b2f67bcfe34ee6fe61d69d3aef7161be5e6e41e2a7be07",
+    "runtime_config_file_sha256": "ef461a364e9e0d1e956456ba7c676af925a38425d08aec0b2ab8f327f59728a6",
+    "runtime_config_canonical_sha256": "b865e4ba4402ae2e895c68d6c7553c1794f6bf3d3e56c4074798d6cf25cce049",
+    "diff_count": 6963,
+    "diff_categories": {
+      "missing_declarations": 339,
+      "missing_state": 3312,
+      "source_missing_declaration": 3312
+    },
+    "other_differences": 0,
+    "authority_equal": true,
+    "identity_equal": true,
+    "binding_equal": true,
+    "universe_equal": true,
+    "questions_equal": true,
+    "routing_equal": true,
+    "weight_slots_equal": true,
+    "canonical_values_unchanged": true,
+    "canonical_transform_refs_unchanged": true,
+    "classification": "LAWFUL_MINIMAL_PHYSICAL_MISSING_DECLARATION_GROUNDING_ONLY"
+  },
+  "negative_checks": {
+    "wrong_source": {
+      "status": "REFUSED",
+      "error_type": "SourceReadAdmissionRefusal",
+      "refusal_code": "SOURCE_READ_SOURCE_SHA256_MISMATCH",
+      "before_source_io": true,
+      "source_read_performed": false,
+      "resolver_calls": 1
+    },
+    "held_slice": {
+      "status": "REFUSED",
+      "error_type": "SourceBackedC11FacadeError",
+      "held_variable": "fileversion",
+      "held_disposition": "admin",
+      "release_created": false,
+      "error": "unbound response value/state; no label/frequency/missingness inference"
+    },
+    "canonical_authority": {
+      "status": "REFUSED",
+      "error_type": "C11IntegrityError",
+      "release_created": false,
+      "error": "canonical response/question material lacks exact mapping authority"
+    },
+    "restore": "POSITIVE_RELEASE_BUILT_AFTER_NEGATIVES__SAME_CONTENT_HASHES"
+  },
+  "local_durability": {
+    "bundle_id": "SRC17-2f81b527ba1a62ec",
+    "bundle_outside_git": true,
+    "public_objects_sha256": "03558bc8041f7e3e18587761753d53025a80ce672c29f79a5aafa9638e32232c",
+    "public_objects_bytes": 259939660,
+    "public_objects_lines": 779078,
+    "internal_records_sha256": "b13302503b3a5e72287485b92f1035de91773a9585298b59491d0b1b25308278",
+    "internal_records_bytes": 172623,
+    "internal_records_lines": 1762,
+    "replay_manifest_file_sha256": "7347234bbc37b343a143b4628fc2b5648bb200031322eb2ad7cd0d67aaa3fe21",
+    "replay_manifest_content_hash": "239f041db9bcfdfeabc2c012343dea33dd2f3b754219f2c91fc09ccf8326fbed",
+    "replay_closure_refs": 780842,
+    "replay_closure_equals_all_objects_plus_source_artifact_and_snapshot": true,
+    "authority_snapshot_set_hash": "ea357f7d054cdde61a952884264749d833a6c15ce32e5d48f5a3051ca6f88d5f",
+    "cold_replay_receipt_status": "COLD_REPLAY_COMPLETE",
+    "cold_replay_receipt_release_match": true,
+    "cold_replay_receipt_selection_match": true,
+    "cold_replay_receipt_local_bundle_hashes_match": true,
+    "independent_private_primary_content_reproduction": "PUBLIC_AND_INTERNAL_FILE_HASHES_EXACTLY_MATCH_AUTHOR_BUNDLE",
+    "independent_private_primary_manifest": "INTERRUPTED_BEFORE_LOCAL_MANIFEST_WRITE__ZERO_BYTE_PRIVATE_MANIFEST_NOT_USED",
+    "full_source_redecode_cold_replay_repeated": false,
+    "verification_depth_note": "The complete author cold-replay receipt and local bundle/manifest were independently hash/closure checked; an independent primary re-decode reproduced exact public/internal hashes and the release identity was recomputed. A third full source re-decode was not repeated after the private primary interruption, per the bounded no-blind-repeat instruction."
+  },
+  "historical_process_deviation": {
+    "id": "PRE_ADMISSION_METADATA_LISTING",
+    "recorded_in_commit": "5b1b9bd5f04f0456eac319264a6f2b64d4e87038",
+    "recorded_paths": [
+      "campaign_d2_src17/RETURN.json",
+      "campaign_d2_src17/run_d2_src17.py"
+    ],
+    "disclosed_command_text": "ls -la",
+    "exact_shell_transcript_committed": false,
+    "pre_admission_metadata_access": true,
+    "source_bytes_read_or_hashed_outside_admission": false,
+    "source_decode_outside_admission": false,
+    "material_effect_on_native_result": "NONE_OBSERVED__INDEPENDENT_PRIMARY_CONTENT_REPRODUCTION_EXACT",
+    "current_implemented_path": "RESOLVER_FIRST__DECODE_WITH_SOURCE_READ_PERMISSION__NO_SOURCE_STAT_OR_HASH_BEFORE_RESOLUTION",
+    "current_runner_source_access_review": "run_primary calls decode_original after grant authentication and wrong-source refusal; decode_with_source_read_permission resolves current permission before opening/stat/hash/decode; source_path is not inspected before resolver_current",
+    "grant_wording": "No unapproved direct-file preflight outside the permission boundary",
+    "classification": "HISTORICAL_PROCESS_DEVIATION__NON_MATERIAL_TO_NATIVE_C11_RELEASE__NOT_ZERO_IO_HISTORY",
+    "authority_effect": "NO_NEW_ALLOW_OR_SOURCE_AUTHORITY_ISSUED_BY_THIS_REVIEW; THE HISTORICAL METADATA ACCESS IS NOT RETROACTIVELY MADE ADMISSION-FIRST",
+    "smallest_decision_if_strict_reading_required": "The grant issuer may decide whether metadata-only `ls -la` is within or outside the exact D2 no-preflight clause. This is a governance interpretation, not an indispensable technical prerequisite for the independently reproduced C11 release. No release repair is possible or necessary for history; future reads must be admission-first."
+  },
+  "source_privacy_and_authority": {
+    "raw_respondent_cells_committed": false,
+    "raw_respondent_cells_stdout": false,
+    "raw_respondent_cells_git": false,
+    "local_bundle_only": true,
+    "additional_original_source_access": "NONE_OUTSIDE_EXACT_D2_GRANT",
+    "other_original_sources_accessed": false,
+    "semantic_ALLOW_claimed": false,
+    "canonical_ALLOW_claimed": false,
+    "routing_eligibility_claimed": false,
+    "population_estimate_claimed": false,
+    "weights_authorized": false,
+    "original_snapshot_states": {
+      "DEFER": 4,
+      "ALLOW": 1
+    },
+    "original_snapshot_DEFER_preserved": true,
+    "i03_i05_issued": false,
+    "m2_m3_f1_f4_claimed": false,
+    "ci_prod_n11_n12_sorok_actor_j52_w52_touched": false
+  },
+  "smallest_necessary_repair": {
+    "native_release": "NONE",
+    "source_config": "NONE",
+    "runtime_config": "NONE_BEYOND_RECORDED_TRANSPORT_GROUNDING",
+    "evidence_or_ledger": "NONE",
+    "historical_process_record": "The exact `ls -la` shell transcript is not committed; the disclosure names the command and records no source-byte/hash/decode outside admission. If governance requires the exact command transcript, add it as a historical process record only; do not alter the release or fabricate history.",
+    "authority_decision_required_for_native_result": false
+  },
+  "next_consumer": "D2 acceptance for the source-native C11 positive; then separate Campaign A2/C11 product consumers as separately authorized. No I03/I05 workload, population estimate, M2/M3/F1-F4, N11/N12, Sorok, actor, CI/prod or J52/W52 action is enabled by this disposition.",
+  "review_limits": [
+    "This review qualifies the SRC17 source-native C11 release and its local bundle; it does not qualify original I03/I05 scientific operations, population inference, weights, canonical semantics or cross-wave comparability.",
+    "ROUTING_UNKNOWN, DEFER semantic/coordinate/routing authority and weight-design held premises remain as declared.",
+    "The historical pre-admission metadata listing is recorded as a non-material process deviation; no zero-I/O uninterrupted history is claimed.",
+    "A full independent source-redecode cold replay was not repeated after the interrupted private primary; the complete author cold-replay receipt, local bundle hashes, manifest closure and independently reproduced public/internal content were verified."
+  ]
+}

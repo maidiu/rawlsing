@@ -1,0 +1,148 @@
+{
+  "decision": "ACCEPT_D2_SRC17_SOURCE_NATIVE_C11_POSITIVE_WITH_RECORDED_PROCESS_DEVIATION",
+  "review_commit": "24f2f3f22f05ed1f0d71dbdf61dbab62d7269358",
+  "candidate": "5b1b9bd5f04f0456eac319264a6f2b64d4e87038",
+  "review_remote_verified": true,
+  "independent_checks_passed": 21,
+  "release_ref": {
+    "kind": "C11LogicalRelease",
+    "object_id": "GSS_1973_SOURCE_ARTIFACT",
+    "content_hash": "2f81b527ba1a62ecb79c7cc858063d60a10826a91af7d689606ed83e6bbd039e"
+  },
+  "source": {
+    "source_id": "SRC17",
+    "source_sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+    "rows": 1504,
+    "columns": 339,
+    "bytes": 1984639,
+    "custody_contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+    "custody_content_bound": true,
+    "custody_reader_access_mode": "O_RDONLY",
+    "custody_reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+    "custody_snapshot_unlinked": true,
+    "physical_metadata_digest": "c9876c34d59fb4f0fa09ad414df1fc4c9703d6a54768d811b464b561b7506752",
+    "physical_slot_agreement": "339_OF_339",
+    "physical_audit_checks_passed": true,
+    "physical_audit_issue_count": 0,
+    "reader": {
+      "reader": "pyreadstat",
+      "reader_version": "1.3.2",
+      "encoding": null,
+      "user_missing": true,
+      "apply_value_formats": false
+    }
+  },
+  "selection": {
+    "configured_response_slots": 279,
+    "selected_response_slots": 258,
+    "held_response_slots": 21,
+    "selected_coordinate_slots": 2,
+    "held_coordinate_slots": 0,
+    "all_physical_slots_accounted": 339,
+    "all_items_accounted": 339,
+    "physical_cells": 509856,
+    "selected_slots_have_all_1504_cells": true,
+    "selected_slots_have_zero_unbound_cells": true,
+    "held_slots_have_positive_unbound_cells": true,
+    "selection_matches_author_receipt": true,
+    "held_ordinals": [
+      11,
+      12,
+      29,
+      32,
+      73,
+      74,
+      110,
+      113,
+      114,
+      123,
+      127,
+      183,
+      188,
+      222,
+      264,
+      282,
+      283,
+      284,
+      290,
+      317,
+      323
+    ],
+    "selected_coordinate_ordinals": [
+      2,
+      237
+    ]
+  },
+  "historical_process_deviation": {
+    "id": "PRE_ADMISSION_METADATA_LISTING",
+    "recorded_in_commit": "5b1b9bd5f04f0456eac319264a6f2b64d4e87038",
+    "recorded_paths": [
+      "campaign_d2_src17/RETURN.json",
+      "campaign_d2_src17/run_d2_src17.py"
+    ],
+    "disclosed_command_text": "ls -la",
+    "exact_shell_transcript_committed": false,
+    "pre_admission_metadata_access": true,
+    "source_bytes_read_or_hashed_outside_admission": false,
+    "source_decode_outside_admission": false,
+    "material_effect_on_native_result": "NONE_OBSERVED__INDEPENDENT_PRIMARY_CONTENT_REPRODUCTION_EXACT",
+    "current_implemented_path": "RESOLVER_FIRST__DECODE_WITH_SOURCE_READ_PERMISSION__NO_SOURCE_STAT_OR_HASH_BEFORE_RESOLUTION",
+    "current_runner_source_access_review": "run_primary calls decode_original after grant authentication and wrong-source refusal; decode_with_source_read_permission resolves current permission before opening/stat/hash/decode; source_path is not inspected before resolver_current",
+    "grant_wording": "No unapproved direct-file preflight outside the permission boundary",
+    "classification": "HISTORICAL_PROCESS_DEVIATION__NON_MATERIAL_TO_NATIVE_C11_RELEASE__NOT_ZERO_IO_HISTORY",
+    "authority_effect": "NO_NEW_ALLOW_OR_SOURCE_AUTHORITY_ISSUED_BY_THIS_REVIEW; THE HISTORICAL METADATA ACCESS IS NOT RETROACTIVELY MADE ADMISSION-FIRST",
+    "smallest_decision_if_strict_reading_required": "The grant issuer may decide whether metadata-only `ls -la` is within or outside the exact D2 no-preflight clause. This is a governance interpretation, not an indispensable technical prerequisite for the independently reproduced C11 release. No release repair is possible or necessary for history; future reads must be admission-first."
+  },
+  "verification_depth_limit": "The complete author cold-replay receipt and local bundle/manifest were independently hash/closure checked; an independent primary re-decode reproduced exact public/internal hashes and the release identity was recomputed. A third full source re-decode was not repeated after the private primary interruption, per the bounded no-blind-repeat instruction.",
+  "privacy_authority_limits": {
+    "raw_respondent_cells_committed": false,
+    "raw_respondent_cells_stdout": false,
+    "raw_respondent_cells_git": false,
+    "local_bundle_only": true,
+    "additional_original_source_access": "NONE_OUTSIDE_EXACT_D2_GRANT",
+    "other_original_sources_accessed": false,
+    "semantic_ALLOW_claimed": false,
+    "canonical_ALLOW_claimed": false,
+    "routing_eligibility_claimed": false,
+    "population_estimate_claimed": false,
+    "weights_authorized": false,
+    "original_snapshot_states": {
+      "DEFER": 4,
+      "ALLOW": 1
+    },
+    "original_snapshot_DEFER_preserved": true,
+    "i03_i05_issued": false,
+    "m2_m3_f1_f4_claimed": false,
+    "ci_prod_n11_n12_sorok_actor_j52_w52_touched": false
+  },
+  "retained_evidence": [
+    {
+      "path": "PYAT_CONTROL_ROOM/D2_SRC17_ACCEPTANCE/DISPOSITION.json",
+      "sha256": "5b42327b13cced09a61c5ee84f51fdd360ed379132ed25c3853e3eb602e877a0"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/D2_SRC17_ACCEPTANCE/REVIEW.md",
+      "sha256": "7fac9520ad41e456ae09097869e6c4fe2e335169790989e62530552e304dbaca"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/D2_SRC17_ACCEPTANCE/PHYSICAL_METADATA_AUDIT.json",
+      "sha256": "4c5f001751cc4b86c3f36e95380129ae5166ab901a87879f39076e42e64a73e8"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/D2_SRC17_ACCEPTANCE/NEGATIVE_WRONG_SOURCE.json",
+      "sha256": "c86942d361a343e962dd9ea90f2a69158ee0381f53bba8dc004ba7617286c0f8"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/D2_SRC17_ACCEPTANCE/NEGATIVE_HELD_SLICE.json",
+      "sha256": "151f248874252115ab2cdb2717019ca5bdbebf5a268d146d7db9dd8b91b3cece"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/D2_SRC17_ACCEPTANCE/NEGATIVE_CANONICAL_AUTHORITY.json",
+      "sha256": "11a39e83060144bbc425b8550abcd5ac006c01e14325d4853c4562a36e3a2d59"
+    }
+  ],
+  "highest_program_milestone": "M1; two original family C11 positives now qualified, NOT M2 empirical+learned products",
+  "new_original_I03_I05_grant": false,
+  "next_edge": "Complete D1 focused recheck; exact properly issued original empirical consumer operation remains subsequent, not authorized by D2.",
+  "heartbeat": "PAUSED"
+}
