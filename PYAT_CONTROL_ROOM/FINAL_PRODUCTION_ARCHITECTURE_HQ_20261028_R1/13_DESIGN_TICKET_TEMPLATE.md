@@ -1,7 +1,12 @@
 # Pxx / Wxx detailed implementation-spec template
 
 **Design ticket ID:**
-**Owning Browser investigation:**
+**HQ design-decision owner (must sign off):**
+**Worker evidence source (if any; no inherent decision authority):**
+**Bounded scope / excluded files, functions, waves and permissions:**
+**Source SHA and blob SHA for EVERY decisive claim:**
+**Epistemic labels: direct code / tested fixture / tested real / adopted authority / inference / not inspected:**
+**HQ independent re-read/oracle and per-claim intake disposition:**
 **Executive architecture:** source-authoritative compact regenerable hybrid ONLY.
 **Exact current control/feature SHA and last reviewed code cut:**
 **Parent N/F/EE and Authority-37/LongMemory, exact receiving application:**
@@ -47,10 +52,13 @@
 - Precise Codex copy-paste build order:
 
 ## 5. Decision and return
+- Worker report is evidence, not a decision; HQ personally integrates as defined in 14_NONDELEGATION_AND_CLAIM_VERIFICATION_CONSTITUTION.md.
+- Claim-by-claim citation/ref, scope and excluded territory, falsifier, measured vs estimated status.
+- Explicit **WHAT I HAVE NOT PROVEN**, and why not.
 - FINDINGS / INTERPRETATION / ACTION / OWNER:
 - Material questions genuinely unresolved by existing code/authority:
 - Concrete falsification trigger if design impossible:
 - Accepted/completed/held/failed state with evidence:
 - What exact next consumer can now run, and under whose grant:
 
-**FAIL CONDITIONS:** a generic strategy essay, multiple architectures, unsourced assertion that a function doesn't exist, no receiver, fixture-only closure misrepresented as original data, unverifiable performance claim, silent semantic identity change, source/FF/actor permission self-issuance.
+**FAIL CONDITIONS:** confidently unbounded 'fully grokked' conclusions, worker-accepted executive decisions, no independently verified claim ledger, whole-repository nonexistence claim from partial search, as well as a generic strategy essay, multiple architectures, unsourced assertion that a function doesn't exist, no receiver, fixture-only closure misrepresented as original data, unverifiable performance claim, silent semantic identity change, source/FF/actor permission self-issuance.
