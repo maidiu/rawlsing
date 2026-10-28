@@ -5,6 +5,10 @@
 **Predecessor:** `P01_S0_CURRENT_C11_CONSUMER_AND_IDENTITY_AUDIT_R1.md`.
 **One destination:** SOURCE-AUTHORITATIVE_COMPACT_REGENERABLE_HYBRID_PRE553. No A/B/C decision tree.
 
+## S2 authoritative engineering qualification (2026-10-28)
+
+The selected S1 interface remains; `P01_S2_EXACT_I02_VALIDATION_JOURNAL_AND_HASH_PROOF_R1.md` gives the complete validator/journal design. Its 36-item `P01_HIGH_RESOLUTION_RETURN_LEDGER.json` binds all unresolved deep subpieces. **CRITICAL:** sourcefree negative reproduction establishes original I02 logical acceptance alone does NOT check `source_snapshot_retention_ref.content_hash == source_artifact_content_hash`; the `GovernedC11Projection` facade and physical bridge implement separate source checks. Thus the proposed C11VerifiedSourceView issuance MUST bind separately verified source admission/retention to full I02 internal validation, not a self-consistent journal/manifest hash. This is an interface prerequisite; no original source or streaming validator was executed.
+
 ## 1. Binding decision (smallest coherent seam)
 **Keep existing `C11LogicalRelease` and its private validation seal unchanged as the exact public legacy materialized form. Keep `C11Repository` as the repository class. Add one PRIVATE, I02-validated `C11VerifiedSourceView` and one read-only `C11ExecutionView` interface, registered into the existing repository.** New hot-path I03/I05/recursive/workload code consumes the source-backed view and its exact-reference/columnar access. Existing materialized release/replay auditors can explicitly obtain the old `C11LogicalRelease` through a compatibility rehydration path. This is not another scientific/query engine, not a second canonical C11 publisher, and not a data model based on global dataframe uniqueness.
 
