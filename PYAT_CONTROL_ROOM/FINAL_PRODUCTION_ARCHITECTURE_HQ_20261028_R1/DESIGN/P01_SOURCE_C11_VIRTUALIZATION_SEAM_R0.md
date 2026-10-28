@@ -1,4 +1,6 @@
 # P01 — SOURCE→C11 EXACT LOGICAL VIRTUALIZATION / STREAMING SEAM
+
+**SUCCESSOR RECONCILIATION 2026-10-28:** This is a preliminary R0 kickoff docket. Actual HQ S0 bounded source/callsite audit is `DESIGN/P01_S0_CURRENT_C11_CONSUMER_AND_IDENTITY_AUDIT_R1.md`; exact control SHA 15-file/131-symbol register is `DESIGN/P01_S0_CONTROL_SYMBOL_CENSUS.json`; settled HQ S1 internal interface decision is `DESIGN/P01_S1_SEALED_SOURCE_EXECUTION_VIEW_CONTRACT_R1.md`. These three supersede R0 on verified source/callsite specifics. S0 scoped complete; S1 design chosen but not implemented/test-parity-proved. Continue to S2 validator proof, not an A/B/C discussion.
 **State:** R0 source-code-grounded HQ DIRECT INVESTIGATION, not a worker assignment, final code-ready adapter or running change. 14_NONDELEGATION_AND_CLAIM_VERIFICATION_CONSTITUTION.md controls delegation: HQ itself must choose and validate the exact logical C11 seam; a worker may conduct only a bounded per-file callsite census or other corroborating proof.
 **Parent stages:** W02/W03; F1/EE01/EE02/EE03/EE04; N1/N4; dependent later W04/W05.
 **Purpose:** eradicate routine multi-GB physical/object duplication and preserve exact accepted C11, native I03, replay, source identity and later consumer guarantees. One selected hybrid architecture; no A/B/C design alternatives.
