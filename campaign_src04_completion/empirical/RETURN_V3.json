@@ -1,0 +1,194 @@
+{
+  "schema": "PYAT_SRC04_LANE_C_RETURN@3.0.0",
+  "version": 3,
+  "campaign": "SRC04_COMPLETION_LANE_C",
+  "successor_of": {
+    "v2_return": "campaign_src04_completion/empirical/RETURN_V2.json",
+    "v2_return_sha256": "24f2623de9b3288ca21c2cf4797a6c5bf7299aeea1589aba40675fcf965865fc",
+    "v2_code_commit": "e153eca0439d7bbc5d1b8497c80101efafbcb447",
+    "v2_remote_tip": "44aaf2be06e026547e9b32d880ac588e84acc9e4",
+    "change": "replace unconditional execute refusal with authenticated human-grant issuer, source-literal native authority, dynamic release-bound contract, real execute CLI and read-only Lane D bridge"
+  },
+  "branch": "agent/pyat-src04-observed-empirical-20261028",
+  "startup_commit": "1f1794d3f7a04957dd7702f28c7841b9fe0a28aa",
+  "code_commit": "f74929baa6d1034307c6da75e539559891403c3e",
+  "return_commit": "commit containing this file; direct remote readback in final response",
+  "status": "AUTHENTICATED_GRANT_ISSUER_EXECUTOR_READY__FULL_RELEASE_INPUT_PENDING",
+  "author_result_is_candidate": true,
+  "human_grant": {
+    "path": "campaign_src04_completion/empirical/USER_EMPIRICAL_GRANT.json",
+    "sha256": "757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f",
+    "schema": "PYAT_SRC04_NATIVE_EMPIRICAL_USER_GRANT@1.0.0",
+    "issuer": "HUMAN_USER_VIA_EXISTING_PYAT_HQ",
+    "operation": "PRE553_OBSERVED_RESPONSE_EMPIRICAL_OPERATIONS@1.0.0",
+    "decision": "ALLOW_WITHIN_EXACT_SCOPE",
+    "currentness": "CURRENT_GRANTED",
+    "authenticated": true
+  },
+  "issuer_and_executor": {
+    "module": "campaign_src04_completion/empirical/authorized_execution.py",
+    "cli": "campaign_src04_completion/empirical/run_native_workload.py",
+    "api_document": "campaign_src04_completion/empirical/AUTHORIZED_EXECUTION_API.md",
+    "positive_snapshots_constructed": [
+      "PREDICATE_GRAMMAR for PRE553_OBSERVED_RESPONSE_EMPIRICAL_OPERATIONS@1.0.0",
+      "PHYSICAL_NATIVE_REPRESENTATION_BINDING source-literal, canonical_adoption=DENY",
+      "SOURCE_SEMANTICS_TOPOLOGY per validated one-event target",
+      "TARGET_USE_PERMISSION for SOURCE_LOCAL_STATISTIC"
+    ],
+    "dynamic_scope": "targets are derived from the actual native release and pending contract; extra source-qualified release targets are included, no fixed 163/175 cap",
+    "one_event_topology_guard": "multiple events, ambiguous topology, non-scalar or canonical-bearing targets remain in held_targets",
+    "unconditional_permission_refusal_removed": true,
+    "preflight_path": "campaign_src04_completion/empirical/NATIVE_WORKLOAD_PREFLIGHT.json",
+    "preflight_sha256": "81bcff2340318a251bd4bc60669cf39beb154a45ec02562a4c909a3df7901cf1",
+    "preflight_status": "AUTHENTICATED_GRANT_ISSUER_READY__RELEASE_INPUT_PENDING"
+  },
+  "release_input": {
+    "status": "PENDING_ACTUAL_FULL_SRC04_C11_PRODUCT",
+    "backend": "PRE553_PARQUET_C11_CARRIER",
+    "required_fields": [
+      "parquet_root",
+      "source_sha256",
+      "release_id",
+      "semantic_hash"
+    ],
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "accepted_42_field_release_is_sufficient": false,
+    "polling_performed": false,
+    "duplicate_source_read_performed": false,
+    "original_workload_issued": 0,
+    "original_workload_executed": 0,
+    "next_command": "PYTHONPATH=. python3 campaign_src04_completion/empirical/run_native_workload.py --mode execute --parquet-root <exact-parquet-root> --release-id <exact-release-id> --semantic-hash <exact-semantic-hash> --source-sha 2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18 --consumer"
+  },
+  "issuer_proposition": {
+    "path": "campaign_src04_completion/empirical/ISSUER_PROPOSITION_V2.json",
+    "sha256": "e149008f8c6e7fae7d9e4e85af84902d5d1954eaf7e777243125373c3abc5ebc",
+    "status": "HUMAN_GRANT_RECEIVED_AND_AUTHENTICATED",
+    "canonical_adoption": "DENY",
+    "observed_states": [
+      "SUBSTANTIVE_RESPONSE",
+      "DK",
+      "REFUSAL",
+      "SOURCE_SPECIFIC_SPECIAL"
+    ],
+    "missing_states": [
+      "MISSING"
+    ],
+    "routing": "ROUTING_UNKNOWN_NOT_USED",
+    "ser": "IDENTITY_ONLY",
+    "analytical_coordinates": 0
+  },
+  "consumer_path": {
+    "bridge": "campaign_src04_completion/empirical/consumer_bridge.py",
+    "owner": "campaign_src04_completion.consumers.consumer.consume_native_producer",
+    "status": "READ_ONLY_EXTERNAL_DEPENDENCY_NOT_JOINED",
+    "discovery_or_effective_n_required": true,
+    "note": "bridge is ready to call accepted Lane D when joined; no Lane D author files were written"
+  },
+  "tests": {
+    "path": "campaign_src04_completion/empirical/TEST_RESULTS_V3.json",
+    "sha256": "50186c5b4e16df91911c02cfd9cdfa16e87d7d6badf118e780880d953ecc94b2",
+    "authorized_execution": "6 passed in 2.61s",
+    "observed_response": "13 passed in 3.41s",
+    "i03_regression": "39 passed in 0.92s",
+    "consumer_regression": "17 passed in 1.89s",
+    "v2_native_fixture_evidence": "HISTORICAL_V2_ONLY_NOT_RERUN_IN_V3"
+  },
+  "preserved_history": {
+    "v1_return_sha256": "3fd0ec54b5021b78d33cf4dde67dedecd613a6f40a59c6a1c136543b93f3f072",
+    "v2_return_sha256": "24f2623de9b3288ca21c2cf4797a6c5bf7299aeea1589aba40675fcf965865fc",
+    "v2_remote_tip": "44aaf2be06e026547e9b32d880ac588e84acc9e4",
+    "v2_evidence_unchanged": "NATIVE_WORKLOAD_EVIDENCE.json preserved at 52a278200775fc56cb05a600e99782f329ec7f7834037ccea8ab8f68e9fc2783"
+  },
+  "actual_source_literal_core_check": {
+    "status": "PASS",
+    "scope": "private fixture-only probe of source-literal core; not original proof and not committed",
+    "operations": 3,
+    "executed": 3,
+    "refused": 0
+  },
+  "artifact_manifest": [
+    {
+      "path": "campaign_src04_completion/empirical/AUTHORIZED_ORIGINAL_EXECUTION.md",
+      "bytes": 3508,
+      "sha256": "5651a39144c8fe1fc1147328043c0e5fd330f87521612f3d6e22437c18032253"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/USER_EMPIRICAL_GRANT.json",
+      "bytes": 2992,
+      "sha256": "757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/AUTHORIZED_EXECUTION_API.md",
+      "bytes": 3641,
+      "sha256": "5e4501f26fa2bd52d0b6e82e892ec9e67581ea5af64220b1e22a516b80476c81"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/NATIVE_WORKLOAD_PREFLIGHT.json",
+      "bytes": 2590,
+      "sha256": "81bcff2340318a251bd4bc60669cf39beb154a45ec02562a4c909a3df7901cf1"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/TEST_RESULTS_V3.json",
+      "bytes": 4438,
+      "sha256": "50186c5b4e16df91911c02cfd9cdfa16e87d7d6badf118e780880d953ecc94b2"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/authorized_execution.py",
+      "bytes": 26029,
+      "sha256": "fc3fd5e10bf3f1bf84981cd514a856ab4b8204adb7f4236860abc83cd012153d"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/consumer_bridge.py",
+      "bytes": 9613,
+      "sha256": "b15803487f7190f9c72bc69a833c715a38eab779c1be07a7690bcd652f297939"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/native_workload.py",
+      "bytes": 36814,
+      "sha256": "a410f9b0176f10ba16878f355f499b1e0b2cea1ede520aacd7ef80bc2bb6fa37"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/run_native_workload.py",
+      "bytes": 10050,
+      "sha256": "a4b74c9079d4c46fe09557ceb87d07e64f158331cfe5eee730dd0e756a2f5694"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/test_authorized_execution.py",
+      "bytes": 4626,
+      "sha256": "3ba06a6f1280de85b9447bbbcfc640a1f72641af6c3cc118f3761515d70d9dfa"
+    },
+    {
+      "path": "rawlsing_next/pre553_observed_response.py",
+      "bytes": 44488,
+      "sha256": "a01f704168c13596f7ba36c2ad7cf4f993789fff16950d0ada33b0f958a6e55d"
+    },
+    {
+      "path": "rawlsing_next/_pre553_query_common.py",
+      "bytes": 19627,
+      "sha256": "37bcaed147f1503e967cccec18e22c73ff6a363e6599b98b6e0f724de00816c1"
+    },
+    {
+      "path": "rawlsing_next/_pre553_query_eval.py",
+      "bytes": 42704,
+      "sha256": "cd3bc1b46fe2f332fe498cb8b6f74b51ac9a01d519ca5e7b6e0b1555a4c782ad"
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "bytes": 24279,
+      "sha256": "4d6b33405d477efefbc7f1274b7165c7ff530fb38efabdf324f2e81acd7228cd"
+    },
+    {
+      "path": "rawlsing_next/tests/test_observed_response.py",
+      "bytes": 21018,
+      "sha256": "abf7fe1c6348dae0e2d9cd6d57958fcf8495267fd57a933eda01f79855a0eb91"
+    }
+  ],
+  "limits": [
+    "No original SAV stat/hash/open/decode/read by Lane C.",
+    "No original observed-response workload issued or executed; actual full native release is absent.",
+    "No canonical ALLOW, weight, population/eligibility, structural, causal, I05 or actor/V3/V2 claim.",
+    "The fixture/source-literal unit probe is engineering discrimination only, not original SRC04 qualification.",
+    "The 3 residual response fields and 3 coordinate roles remain explicit; ser is identity only."
+  ],
+  "next_consumer": "After the actual full native release exists, run the exact execute command with --consumer; then Lane D may consume exact facts and required discovery at SOURCE_LOCAL_STATISTIC grade."
+}
