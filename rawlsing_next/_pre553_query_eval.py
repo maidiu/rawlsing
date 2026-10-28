@@ -732,15 +732,13 @@ def _make_execution_replay_ref(
         "source_scope_mode": profile.source_scope_mode,
         "measure_kind": profile.measure_kind,
         "risk_set_type": profile.risk_set_type,
-        "observed_response_contract_ref": (
-            profile.observed_response_contract_ref.as_dict()
-            if profile.observed_response_contract_ref is not None else None
-        ),
         "target_domain_identity": plan.domain_identity,
         "risk_member_refs": [ref.as_dict() for ref in evaluation.risk_members],
         "denominator_member_refs": [ref.as_dict() for ref in evaluation.denominator_members],
         "complete_cells": list(_cell_projection(evaluation)),
     }
+    if profile.observed_response_contract_ref is not None:
+        material["observed_response_contract_ref"] = profile.observed_response_contract_ref.as_dict()
     digest = semantic_hash(material)
     return ExactRef(
         "PRE553_I03_QUERY_REPLAY",
@@ -813,6 +811,19 @@ def _build_fact(
     if evaluation.weighted_cells is not None:
         weighted_resolved = sum(evaluation.weighted_cells.values(), Fraction(0, 1))
 
+    target_topology = {
+        "arity": plan.arity,
+        "joint_order_semantics": plan.joint_order_semantics,
+        "target_domain_identity": plan.domain_identity,
+        "complete_cell_semantic_projection": list(_cell_projection(evaluation)),
+    }
+    if profile.observed_response_contract_ref is not None and evaluation.observed_response_ledger is not None:
+        target_topology["observed_response"] = {
+            "contract_ref": profile.observed_response_contract_ref.as_dict(),
+            "status": "OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION",
+            "not_eligible_population_estimate": True,
+            "ledger": dict(evaluation.observed_response_ledger),
+        }
     return EmpiricalFact(
         typed_state=evaluation.fact_state,
         authority_snapshot_refs=all_auth,
@@ -820,23 +831,7 @@ def _build_fact(
         producer_replay_locator_or_reference_root=replay_ref,
         empirical_query_spec_ref=query.ref,
         empirical_universe_refs=universe_refs,
-        target_topology={
-            "arity": plan.arity,
-            "joint_order_semantics": plan.joint_order_semantics,
-            "target_domain_identity": plan.domain_identity,
-            "complete_cell_semantic_projection": list(_cell_projection(evaluation)),
-            "observed_response": (
-                {
-                    "contract_ref": profile.observed_response_contract_ref.as_dict(),
-                    "status": "OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION",
-                    "not_eligible_population_estimate": True,
-                    "ledger": dict(evaluation.observed_response_ledger),
-                }
-                if profile.observed_response_contract_ref is not None
-                and evaluation.observed_response_ledger is not None
-                else None
-            ),
-        },
+        target_topology=target_topology,
         condition_predicate_ref=condition_ref,
         risk_set_ref=risk_ref,
         raw_numerator_support=evaluation.raw_resolved_target_support,
@@ -910,14 +905,18 @@ def _build_negative_fact(
         producer_replay_locator_or_reference_root=replay_ref,
         empirical_query_spec_ref=query.ref,
         empirical_universe_refs=universes,
-        target_topology={
-            "requested_target_arity_and_topology": query.target_arity_and_topology,
-            "p02_failure_state": p02_failure_state,
-            "observed_response_contract_ref": (
-                profile.observed_response_contract_ref.as_dict()
-                if profile.observed_response_contract_ref is not None else None
-            ),
-        },
+        target_topology=(
+            {
+                "requested_target_arity_and_topology": query.target_arity_and_topology,
+                "p02_failure_state": p02_failure_state,
+                "observed_response_contract_ref": profile.observed_response_contract_ref.as_dict(),
+            }
+            if profile.observed_response_contract_ref is not None
+            else {
+                "requested_target_arity_and_topology": query.target_arity_and_topology,
+                "p02_failure_state": p02_failure_state,
+            }
+        ),
         condition_predicate_ref=condition_ref,
         risk_set_ref=risk_ref,
         raw_numerator_support=0,
