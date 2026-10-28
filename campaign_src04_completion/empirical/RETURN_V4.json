@@ -1,0 +1,135 @@
+{
+  "schema": "PYAT_SRC04_LANE_C_RETURN@4.0.0",
+  "version": 4,
+  "campaign": "SRC04_COMPLETION_LANE_C",
+  "successor_of": {
+    "v3_return": "campaign_src04_completion/empirical/RETURN_V3.json",
+    "v3_return_sha256": "85a9e80280922b135b5c78982321439a63583dc558cc2553ac901c791c1d3bb9",
+    "v3_remote_tip": "7a766279c61a3a4f1139df16862c1584202a803c",
+    "change": "replace Parquet-only receiving input with actual Lane A native pickle receipt adapter; preserve grant/issuer/executor and D bridge"
+  },
+  "branch": "agent/pyat-src04-observed-empirical-20261028",
+  "startup_commit": "1edee1ed4221d6c98177b9c445a4583d8e3f95cc",
+  "code_commit": "f704441a6594730de82da4596efd64df87a2a73d",
+  "return_commit": "commit containing this file; direct remote readback in final response",
+  "status": "AUTHENTICATED_GRANT_ISSUER_ACTUAL_CARRIER_READY__FULL_A_PRODUCT_PENDING",
+  "author_result_is_candidate": true,
+  "human_grant": {
+    "path": "campaign_src04_completion/empirical/USER_EMPIRICAL_GRANT.json",
+    "sha256": "757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f",
+    "authenticated": true
+  },
+  "actual_carrier": {
+    "module": "campaign_src04_completion/empirical/actual_carrier.py",
+    "api": "campaign_src04_completion/empirical/ACTUAL_CARRIER_API.md",
+    "receipt_backend": "PYAT_SRC04_FULL_LOCAL_RELEASE@1.0.0 native pickle streams",
+    "validated_bindings": [
+      "exact local/release/primary receipt SHA-256 pins",
+      "source sha256=2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "release_ref and semantic_release_hash",
+      "source_release_manifest_hash",
+      "public/internal pickle stream hashes and line counts",
+      "replay manifest ref/hash",
+      "M01-M18 coverage and recomputed semantic release root",
+      "native public/internal carrier identity"
+    ],
+    "no_conversion_or_source_reread": true,
+    "partial_bundle_read": false
+  },
+  "actual_carrier_discrimination": {
+    "native_fixture_pickle_rehydrate": "PASS",
+    "mutated_public_stream_refusal": "PASS",
+    "receipt_sha_pins": "REQUIRED_BY_CLI",
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
+  },
+  "execution": {
+    "module": "campaign_src04_completion/empirical/authorized_execution.py",
+    "cli": "campaign_src04_completion/empirical/run_native_workload.py",
+    "preflight_path": "campaign_src04_completion/empirical/NATIVE_WORKLOAD_PREFLIGHT.json",
+    "preflight_sha256": "6fe21a242b45b8332b1511c41eebfe9c02d636937bcbaaf7d7a985b541903a96",
+    "preflight_status": "AUTHENTICATED_GRANT_ISSUER_READY__RELEASE_INPUT_PENDING",
+    "positive_snapshot_issuance": [
+      "PREDICATE_GRAMMAR",
+      "PHYSICAL_NATIVE_REPRESENTATION_BINDING source-literal canonical_adoption=DENY",
+      "SOURCE_SEMANTICS_TOPOLOGY per validated one-event target",
+      "TARGET_USE_PERMISSION"
+    ],
+    "dynamic_scope": "actual source-qualified release targets; extra release targets included; no fixed 163/175 cap",
+    "original_workload_issued": 0,
+    "original_workload_executed": 0,
+    "next_command": "PYTHONPATH=. python3 campaign_src04_completion/empirical/run_native_workload.py --mode execute --carrier-receipt <LOCAL_RELEASE_RECEIPT.json> --carrier-receipt-sha256 <exact> --release-receipt <RELEASE_RECEIPT.json> --release-receipt-sha256 <exact> --primary-run <PRIMARY_RUN.json> --primary-run-sha256 <exact> --source-sha 2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18 --consumer"
+  },
+  "consumer": {
+    "bridge": "campaign_src04_completion/empirical/consumer_bridge.py",
+    "status": "READ_ONLY_EXTERNAL_DEPENDENCY_NOT_JOINED",
+    "owner": "campaign_src04_completion.consumers.consumer.consume_native_producer"
+  },
+  "tests": {
+    "path": "campaign_src04_completion/empirical/TEST_RESULTS_V4.json",
+    "sha256": "7bf4ea2d79abc6b72693c188badc4a0f33a938e91d309315e9c8eab0b071b02c",
+    "authorized_and_carrier": "8 passed in 7.67s",
+    "observed_response": "13 passed in 3.31s",
+    "i03_regression": "39 passed in 0.85s",
+    "consumer_regression": "17 passed in 1.95s"
+  },
+  "preserved_history": {
+    "v1_return_sha256": "3fd0ec54b5021b78d33cf4dde67dedecd613a6f40a59c6a1c136543b93f3f072",
+    "v2_return_sha256": "24f2623de9b3288ca21c2cf4797a6c5bf7299aeea1589aba40675fcf965865fc",
+    "v3_return_sha256": "85a9e80280922b135b5c78982321439a63583dc558cc2553ac901c791c1d3bb9",
+    "v2_native_evidence_sha256": "52a278200775fc56cb05a600e99782f329ec7f7834037ccea8ab8f68e9fc2783"
+  },
+  "artifact_manifest": [
+    {
+      "path": "campaign_src04_completion/empirical/USER_EMPIRICAL_GRANT.json",
+      "bytes": 2992,
+      "sha256": "757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/ACTUAL_CARRIER_API.md",
+      "bytes": 2272,
+      "sha256": "216a06799e82bc7cbb229776a340054b32ae09634cfed4f39c6b3938d422678d"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/actual_carrier.py",
+      "bytes": 13006,
+      "sha256": "709792cadc04134b99fed958a870d22f7533b909bc278a915e028485a5c3dbb8"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/authorized_execution.py",
+      "bytes": 26365,
+      "sha256": "bacabd66f059c30c3e62377afbe5cd67e7d8eab0a9a83c823056ec9fe415fae7"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/run_native_workload.py",
+      "bytes": 12637,
+      "sha256": "15c81e814ce9b69dbcbd716aa148de517e899b7e9deff34d67f353320f64de6a"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/test_authorized_execution.py",
+      "bytes": 9278,
+      "sha256": "85e7589304221f705b9f295dae2ef8449ea4230894eca2b88bf4e21f99dc28d6"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/NATIVE_WORKLOAD_PREFLIGHT.json",
+      "bytes": 2884,
+      "sha256": "6fe21a242b45b8332b1511c41eebfe9c02d636937bcbaaf7d7a985b541903a96"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/TEST_RESULTS_V4.json",
+      "bytes": 4371,
+      "sha256": "7bf4ea2d79abc6b72693c188badc4a0f33a938e91d309315e9c8eab0b071b02c"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/AUTHORIZED_EXECUTION_API.md",
+      "bytes": 3641,
+      "sha256": "5e4501f26fa2bd52d0b6e82e892ec9e67581ea5af64220b1e22a516b80476c81"
+    }
+  ],
+  "limits": [
+    "No original SAV stat/hash/open/decode/read by Lane C.",
+    "No original workload issued or executed; actual A full product is still pending.",
+    "No storage conversion, duplicate source read or polling.",
+    "No canonical/weight/population/structural/I05 claim.",
+    "Actual carrier fixture discrimination is transport/identity only, not original qualification."
+  ]
+}
