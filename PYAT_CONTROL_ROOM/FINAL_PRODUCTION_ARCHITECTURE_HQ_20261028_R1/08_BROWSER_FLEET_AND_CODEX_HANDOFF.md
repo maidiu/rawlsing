@@ -1,5 +1,9 @@
 # Browser HQ fleet architecture: turn this decision into executable Codex commissions
 
+## Task ownership override — applies throughout this file
+
+**MANDATORY:** Read and obey `14_NONDELEGATION_AND_CLAIM_VERIFICATION_CONSTITUTION.md` first. The P01–P10 sections below enumerate *investigation domains*, not orders to outsource whole architectures. HQ personally owns P01, P03, P04, P06 and P12 judgments. Any worker on those topics performs only a named, closed, verifiable code/documentary subtask. All other Pxx workers are likewise bounded and cannot make adopted system-level decisions. An independent P11 attacks the integrated HQ decision. No worker is 'fully grokked' merely by receiving a document list. Use the 14 G0–G7 claim intake and mandatory exclusion/epistemic ledger; no global completeness or negative evidence from partial search. Nothing in the prior fleet language overrides 14.
+
 ## Mission and control
 This workspace is a **single-architecture, complete engineering-specification program**, not a design alternatives court. Browser HQ is the integrator and accountable designer; a fleet of scoped independent rabochiis investigates the exact present code and science contracts. Browser HQ receives, reconciles and seals a definitive implementation map. Codex PYAT HQ then commands code workers with a mechanically checkable objective graph; further principal decisions only for genuinely absent/contested external scientific/source rights or a proven material physical impossibility.
 
@@ -14,6 +18,10 @@ SCIENTIFIC_DECISION_REQUESTS/: only newly unresolved claims with exact decision 
 INTEGRATION/: runbook, qualification matrix, exact pointer/ledger change proposal, checkpoints.
 STATUS/: current live truth, host/resource probes, accepted/returned/failed worker outputs.
 Each artifact needs permanent exact SHA and status. The absence of these as of 2026-10-28 is honest: this branch is the initial organized executive decision, not a claim that fleets have returned.
+
+## Investigation domains — HQ-owned decisions; only narrowly bounded worker subcommissions
+
+The scope statements below are *maximum topics requiring HQ resolution*, NOT qualified single-agent assignments. Before any worker launch, rewrite that topic into an exact corpus, task, known limits, excluded scope, evidence/claim labels, falsifiers, tests, independent reviewer and receiving consumer according to 14. P01/P03/P04/P06 retain HQ signoff and direct reasoning.
 
 ## Independent investigation commissions — architecture to be specified, not re-decided
 
@@ -64,7 +72,7 @@ Attack the joined P01–P10 design for missing whole-machine products, hidden ca
 After P01–P11 scoped returns, synthesize one ordered IMPLEMENTATION_DAG.json + linked file/function tickets, stable APIs, pseudocode, tests and source/permission gates; map Codex/HQ build teams and independent reviewers. Verify not a new physical route or giant rearchitecture. Feed to Codex PYAT HQ as one coherent multi-wave completion objective. Browser HQ itself authors final judgment; worker cannot self-adopt.
 
 ## Flights and writer isolation
-Flight 0 immediate and parallel: P01 (C11), P03 (I03), P05 (consumer/scheduler), P06 (fracture science), P08 (FF receiving), P09 (all35), P10 (economics). These mainly read separate files; no cross-lane code edits.
+Flight 0: HQ personally investigates P01 C11, P03 I03 and P06 fracture science; optional parallel rabochiis cover only narrowly written source-callsite, consumer/scheduler, FF receiving, all35 inventory, and host economy evidence tasks. A domain assignment is NOT a launched worker or authority to settle a cross-system seam. These mainly read separate files; no cross-lane code edits.
 Flight 1 after interface sketches: P02 storage with P01 handshake; P04 evidence with P03 handshake; P07 learned consumers after P05/P06 edges; internal hostile review P11 may begin with already returned inputs.
 Flight 2: P12 synthesis, independent review P11 final, Browser HQ executive incorporation, code-ready work packets.
 Then qualified Codex builds in parallel only where writer- and authority-independent. P01/P03/P04 shared query/C11 files require one named integration owner; don't run conflicting mutators.
