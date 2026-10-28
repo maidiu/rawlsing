@@ -22,9 +22,8 @@
   },
   "limitations": [
     "candidate not applied to originals",
-    "manifest not updated",
-    "full JOIN-E suite not run at candidate stage",
-    "no external witness or source-owner acceptance claimed"
+    "no external witness or source-owner acceptance claimed",
+    "sourcefree regression qualification only; no canonical actor/world/native acceptance"
   ],
   "patch": {
     "path": "c12-integrity-candidate-r1.patch",
@@ -48,5 +47,16 @@
     "provider": "opencode-go",
     "model": "deepseek-v4.1-flash",
     "variant": "max"
+  },
+  "integration_tests": {
+    "base_commit": "6022b1493b5e7962e23dc4b77fa65be0c74b8319",
+    "isolation": "git archive of exact JOIN-E return and rawlsing_next, fresh local Git directory; source patch and truthful manifest changes applied only there",
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -p no:cacheprovider /tmp/c12-integrity-candidate-r1/integration-repo/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests",
+    "passed": 21,
+    "failed": 0,
+    "duration_seconds": 10.07,
+    "manifest_sha256": "30875aebff8429af9cbeb52cb1c49bd3b5e36dfb747da8b32fbed009e38d8972",
+    "manifest_patch_path": "c12-manifest-followup.patch",
+    "manifest_patch_sha256": "554de0feb1f30bdb1b3ea54ad4467743f788bc8eae868820a10a83cd9a13158f"
   }
 }
