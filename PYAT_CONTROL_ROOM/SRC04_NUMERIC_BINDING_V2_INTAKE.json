@@ -1,0 +1,20 @@
+{
+  "schema": "PYAT_SRC04_NUMERIC_BINDING_V2_INTAKE_V1",
+  "candidate": "6ffd821df21bbe296457831eb3941a0c38e04f0b",
+  "direct_remote_verified": true,
+  "manifest_hashes_verified": 8,
+  "write_terrain_verified": true,
+  "disposition": "REVISE_SINGLE_PASS_DECODER_ITERATOR_DROPS_SECOND_INCOME_FIELD",
+  "reproduction": "Existing nonrespondent _cells(): tuple -> q715:2,q716:2; iter(_cells()) -> q715:2 only",
+  "native_owner_evidence": "PhysicalSourceIncidence.iter_cells yields generator; ExactPhysicalCellStream.iter_cells may return iterator",
+  "defect": "apply_observed_domain loops target fields outside one shared cells iterator. First field consumes iterator, second never receives cells. Current nativefixture test factory returns tuple and misses real decoder shape.",
+  "next": "Same owner single-pass dispatch per cell to exact target slot; preserve literal/state/provenance; regression on iterator with both field values then native fixture construction; no source read",
+  "original_qualification": "NOT_RUN_FULL_SOURCE_GRANT_PENDING",
+  "heartbeat": "PAUSED",
+  "continuation": {
+    "pid": 73285,
+    "observer_pid": 73582,
+    "commission": "867fb7574bab4e37856e47a7780b8a497d71f440",
+    "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6"
+  }
+}
