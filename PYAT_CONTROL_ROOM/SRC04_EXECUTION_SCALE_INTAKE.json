@@ -1,0 +1,39 @@
+{
+  "schema": "PYAT_SRC04_EXECUTION_SCALE_INTAKE_V1",
+  "candidate": "b6be405899be7fc78a96680f22244aa5b50a2d1e",
+  "direct_remote_verified": true,
+  "partial_receipt_hashes_verified": 3,
+  "actual_scope": {
+    "aggregate_cells": 4427,
+    "fact_states": {
+      "SUPPORTED": 208
+    },
+    "local_execution_view_path": ".r61/src04-original-execution-full/receipts/execution_view.json",
+    "local_execution_view_sha256": "01dd5f7f7fab36ff23b576eecef5c54ffe5bfb431c71c1d2a7c0b18ef707d315",
+    "local_issued_contract_path": ".r61/src04-original-execution-full/receipts/issued_contract.json",
+    "local_issued_contract_sha256": "814709ebe403cb5a784dfa69f835baf7be2dff3d2032124724d60d8c1374f52c",
+    "local_operation_receipt_path": ".r61/src04-original-execution-full/receipts/operation_receipts.jsonl",
+    "local_operation_receipt_sha256": "fa498cdfa31b9de22e34a93f85605d068e6b6f30f3d4fe0cac46cee66dd7317a",
+    "operations_by_family": {
+      "SAME_RESPONDENT_JOINT_DISTRIBUTION": 31,
+      "UNARY_OBSERVED_DISTRIBUTION": 177
+    },
+    "operations_executed": 208,
+    "operations_issued": 208,
+    "operations_refused": 0,
+    "raw_denominator_max": 7337,
+    "raw_denominator_min": 1269,
+    "raw_respondent_values_committed": false,
+    "respondent_member_lists_committed": false,
+    "scope": "PARTIAL_FULL_UNARY_PLUS_JOINT_PREFIX_NOT_FULL_FRONTIER"
+  },
+  "author_stop": "Stopped by the author after 177 complete unary and 31 joint operations established the post-fix joint rate (~4.5-10 s/operation) and projected 20-44 hours for the full 15,754-operation unary+joint queue. Completed aggregate receipts were retained and are resumable.",
+  "full_success": false,
+  "decision": {
+    "detail": "Either implement an exact bounded batch native owner under the existing empirical/native terrain that shares respondent/index/fact construction across the 15,576 pair operations, or explicitly reduce the declared pairwise frontier before full adoption. The existing per-operation path cannot complete the full frontier in a practical finite window on this host.",
+    "kind": "BATCH_EXECUTION_ARCHITECTURE_OR_EXACT_FRONTIER_REDUCTION",
+    "not_a_request_for_new_permission": true
+  },
+  "qualification_status": "Changed native execution code not independently accepted; original release acceptance remains valid.",
+  "heartbeat": "PAUSED"
+}
