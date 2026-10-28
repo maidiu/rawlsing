@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from .b0_native_fixture import load_b0_native_bundle
 from .consumer import (
     ConsumerRefusal,
     ProducerBundle,
@@ -58,6 +59,22 @@ def main(argv: list[str] | None = None) -> int:
     p_native.add_argument("--use-scope", default="SOURCE_LOCAL_STATISTIC")
     p_native.add_argument("--out", required=True)
 
+    p_fixture_native = sub.add_parser(
+        "native-fixture",
+        help="execute the exact native value-consuming path on the retained B0 nonrespondent fixture",
+    )
+    p_fixture_native.add_argument("--mutate-q101-2-to-1", action="store_true")
+    p_fixture_native.add_argument("--expected-source-id", default="SRC09")
+    p_fixture_native.add_argument("--claim-ceiling", default="SUPPORTED_COMPONENT_ONLY")
+    p_fixture_native.add_argument("--use-scope", default="SUPPORTED_COMPONENT_ONLY")
+    p_fixture_native.add_argument("--value-sensitivity-evidence", default=None)
+    p_fixture_native.add_argument(
+        "--value-sensitivity-case",
+        choices=("original", "mutated", "restored"),
+        default=None,
+    )
+    p_fixture_native.add_argument("--out", required=True)
+
     p_d1 = sub.add_parser("refuse-d1-tally", help="prove the D1 tally is not accepted as EmpiricalFact")
     p_d1.add_argument("--tally", default=str(Path(__file__).resolve().parent / "evidence/D1_TALLY_REF.json"))
     p_d1.add_argument("--out", required=True)
@@ -73,6 +90,35 @@ def main(argv: list[str] | None = None) -> int:
             )
             _write(out, document)
             print(json.dumps({"status": document["status"], "out": str(out)}, indent=2))
+            return 0
+        if args.command == "native-fixture":
+            evidence = None
+            case = args.value_sensitivity_case
+            if args.value_sensitivity_evidence:
+                try:
+                    evidence = json.loads(
+                        Path(args.value_sensitivity_evidence).read_text(encoding="utf-8")
+                    )
+                except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+                    raise ConsumerRefusal("VALUE_SENSITIVITY_EVIDENCE_UNREADABLE", str(exc)) from exc
+                if case is None:
+                    case = "original"
+            bundle = load_b0_native_bundle(mutate_q101_2_to_1=args.mutate_q101_2_to_1)
+            document = consume_native_producer(
+                bundle,
+                expected_source_id=args.expected_source_id,
+                requested_claim_ceiling=args.claim_ceiling,
+                use_scope=args.use_scope,
+                allow_fixture_engineering=True,
+                value_sensitivity_evidence=evidence,
+                value_sensitivity_case=case,
+            )
+            _write(out, document)
+            print(json.dumps({
+                "status": document["status"],
+                "effect": document["downstream_value_effect"],
+                "out": str(out),
+            }, indent=2))
             return 0
         if args.command == "native":
             try:

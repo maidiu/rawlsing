@@ -1,0 +1,206 @@
+{
+  "actual_existing_api_calls_in_b0_evidence": [
+    "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+    "rawlsing_next.pre553_native_workload_binding.build_projection_catalog",
+    "rawlsing_next.pre553_empirical_query.execute_empirical_query"
+  ],
+  "b0_negative_evidence": "RETAINED_B0_ENGINEERING_ONLY",
+  "b0_receipt": {
+    "original_source_or_release_read": false,
+    "path": "campaign_src04_completion/consumers/evidence/B0_FIXTURE_POSITIVE.json",
+    "product_positive": true,
+    "scope": "SRC09_P0_NONRESPONDENT_FIXTURE_ONLY__NOT_ORIGINAL_NOT_SRC04",
+    "sha256": "947b4950ade82dc7d1c5a80d5a2f2b54e7b918ce331e8e3ee1d64cbbd554c532",
+    "test_only_query_authority_used": true
+  },
+  "fixture_only_positive": true,
+  "lane": "D",
+  "lane_actual_api_calls": [
+    "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+    "rawlsing_next.pre553_empirical_query.replay_empirical_query",
+    "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+    "rawlsing_next.pre553_effective_n.compute_effective_n",
+    "rawlsing_next.objective_consumer_bounded_evidence.evaluate_oc01_pre553_source_local"
+  ],
+  "limits": [
+    "Native product is a nonrespondent/test-only B0 SRC09 fixture; it is not original SRC04 and not source-local proof.",
+    "The fixture value mutation is an engineering probe, not a scientific edit or a population claim.",
+    "Source-local value-sensitivity proof remains pending the full SRC04 producer and its downstream owner inputs.",
+    "No original SRC04 file was stat'ed, hashed, opened or decoded by this lane.",
+    "No D1 tally was converted into EmpiricalFact and no FF/V553 semantic adoption was performed."
+  ],
+  "native_fixture_value_consuming_product": {
+    "downstream_discovery_state": "SUBSTANTIVE_DOWNSTREAM_DISCOVERY_POSITIVE",
+    "downstream_discovery_supported_candidates": 1,
+    "downstream_value_consumer": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+    "downstream_value_effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED",
+    "effective_n_state": "NOT_APPLICABLE",
+    "fact_ref": {
+      "content_hash": "a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
+    },
+    "fixture_only": true,
+    "fixture_value_sensitive": true,
+    "oc01_claim_ceiling": "SUPPORTED_COMPONENT_ONLY",
+    "oc01_state": "SUPPORTED_OBJECTIVE_RESULT",
+    "path": "campaign_src04_completion/consumers/evidence/B0_NATIVE_ORIGINAL_PRODUCT.json",
+    "predicate_ref": {
+      "content_hash": "ff2b51391075df074e1ae76d8de5aa34c236cfabbabeae738227c87c2e7ef7e3",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:ff2b51391075df074e1ae76d8de5aa34c236cfabbabeae738227c87c2e7ef7e3"
+    },
+    "query_ref": {
+      "content_hash": "d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706"
+    },
+    "raw_denominator_support": 1,
+    "raw_numerator_support": 1,
+    "release_ref": {
+      "content_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f",
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_P0_FIXTURE_RELEASE/SRC09"
+    },
+    "sha256": "d190db392497c771d21332a978d85e8719aaf245eaa54e9baec93a95f8ceb5b7",
+    "source_local_claim": false,
+    "source_value_sensitive": false,
+    "status": "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE"
+  },
+  "negative_results": {
+    "NEGATIVE_CLAIM_CEILING": {
+      "error_code": "CLAIM_CEILING_NOT_AUTHORIZED",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_CLAIM_CEILING.json",
+      "sha256": "8d03c4fa9bd6767a4c02852621aa9842916c76b0c9a462d918fdd7f0370db6e9",
+      "status": "REFUSED"
+    },
+    "NEGATIVE_D1_TALLY": {
+      "error_code": "PRODUCER_FAMILY_REFUSED__D1_TALLY_NOT_EMPIRICAL_FACT",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_D1_TALLY.json",
+      "sha256": "c745d8cd7cbf18d4d95b58a9c9715e6dbb45094e32c4c7fdaa2b4dfe17c21168",
+      "status": "REFUSED"
+    },
+    "NEGATIVE_FIXTURE_AS_SOURCE_LOCAL": {
+      "error_code": "NATIVE_AUTHORITY_REFS_REQUIRED",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_FIXTURE_AS_SOURCE_LOCAL.json",
+      "sha256": "176df881ee5df72d8ba34071390de340313264e959c1c1d9f61ef85bb2194622",
+      "status": "REFUSED"
+    },
+    "NEGATIVE_MISSING_AUTHORITY": {
+      "error_code": "MISSING_AUTHORITY",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_MISSING_AUTHORITY.json",
+      "sha256": "bada1476e81396bfa0c3510ac11648e984c63b5cde613b214abfa3580f26994c",
+      "status": "REFUSED"
+    },
+    "NEGATIVE_NATIVE_DOWNSTREAM_MISSING": {
+      "error_code": "DOWNSTREAM_VALUE_CONSUMER_REQUIRED",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_NATIVE_DOWNSTREAM_MISSING.json",
+      "sha256": "be0acd1c4a33eb870c0804551eaeb3a8e414ca7bb9cb4f33b708649ad55f838c",
+      "status": "REFUSED"
+    },
+    "NEGATIVE_NATIVE_FIXTURE_LABEL": {
+      "error_code": "FIXTURE_NATIVE_PATH_REQUIRES_ENGINEERING_LABEL",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_NATIVE_FIXTURE_LABEL.json",
+      "sha256": "68bb2cc3ef131c5ffeaddb5a8326b3d59d5514f7a1fa9bb4cdadecc11c085db6",
+      "status": "REFUSED"
+    },
+    "NEGATIVE_NATIVE_FIXTURE_PROMOTION": {
+      "error_code": "CLAIM_CEILING_NOT_AUTHORIZED",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_NATIVE_FIXTURE_PROMOTION.json",
+      "sha256": "ec9363901ecd67a5cfcd0b5fe3c60ae2d8e1ffef530269b69eb10f49875019d8",
+      "status": "REFUSED"
+    },
+    "NEGATIVE_WRONG_FACT": {
+      "error_code": "RETAINED_FACT_REF_MISMATCH",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_WRONG_FACT.json",
+      "sha256": "433be11dfa2341e4d31f90f9ac4d0b2e3177150c916407eb8c662da36732ecb7",
+      "status": "REFUSED"
+    },
+    "NEGATIVE_WRONG_RELEASE": {
+      "error_code": "RETAINED_RELEASE_REF_MISMATCH",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_WRONG_RELEASE.json",
+      "sha256": "41b3f5f9ed6fe07e2dd48dc2b7d39f9fc2f9c40d45439e24471b64e98d0fd8e5",
+      "status": "REFUSED"
+    },
+    "NEGATIVE_WRONG_SOURCE": {
+      "error_code": "WRONG_SOURCE_ID",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_WRONG_SOURCE.json",
+      "sha256": "3745aa0c575cb623c4cae305fff1dd22530e5b941d1d99fc883ceb5335e6bf09",
+      "status": "REFUSED"
+    },
+    "NEGATIVE_WRONG_USE": {
+      "error_code": "WRONG_USE_SCOPE",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_WRONG_USE.json",
+      "sha256": "1aea5e103c90a6ecb5998d7e7dbd7c74bb52cd20424709f3c8ccb728475a92cf",
+      "status": "REFUSED"
+    }
+  },
+  "no_d1_tally_conversion": true,
+  "no_ff_v553_adoption": true,
+  "no_original_source_access": true,
+  "original_workload_issued": false,
+  "retained_receipt_product": {
+    "fact_ref": {
+      "content_hash": "a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
+    },
+    "fixture_only": true,
+    "oc01_claim_ceiling": "SUPPORTED_COMPONENT_ONLY",
+    "oc01_state": "SUPPORTED_OBJECTIVE_RESULT",
+    "path": "campaign_src04_completion/consumers/evidence/B0_FIXTURE_CONSUMER_PRODUCT.json",
+    "raw_denominator_support": 1,
+    "raw_numerator_support": 1,
+    "sha256": "73a5ac91e5a9fa94dcd7931b2657af0201dd9c72cdf8742b564095ba5f0a1d3c",
+    "source_value_sensitive": false,
+    "status": "FIXTURE_ONLY_ENGINEERING_POSITIVE__NOT_SOURCE_LOCAL_PROOF"
+  },
+  "schema": "PYAT_SRC04_LANE_D_PRIMARY_CONSUMER_RUN@1.1.0",
+  "source_local_blocker": {
+    "blocker": "FULL_SRC04_SOURCE_PRODUCT_NOT_ISSUED",
+    "downstream_value_consumer_contract": {
+      "accepted_owner_1": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+      "accepted_owner_2": "rawlsing_next.pre553_effective_n.compute_effective_n (SUPPORTED weighted state only)",
+      "policy_only_result_is_insufficient": true,
+      "ref_only_bundle_result": "DOWNSTREAM_VALUE_CONSUMER_REQUIRED"
+    },
+    "no_original_source_access": true,
+    "original_workload_issued": false,
+    "path": "campaign_src04_completion/consumers/evidence/LANE_D_BLOCKER_V2.json",
+    "prior_blocker": {
+      "path": "campaign_src04_completion/consumers/evidence/LANE_D_BLOCKER.json",
+      "sha256": "10032d47143939f65c773f2e01a494295fb5e86adffd9c2a3d4faa6deafd2502"
+    },
+    "producer_contract": "campaign_src04_completion/consumers/PRODUCER_CONTRACT.json",
+    "producer_contract_sha256": "583025e2b52e984e553b6b15af6c07f7927f26173860769ea6ae3425ac03a7d0",
+    "requires": [
+      "real original-bound C11LogicalRelease for the full SRC04 source product",
+      "exact EmpiricalQuerySpec@1.0.0 and EmpiricalPredicate@1.0.0",
+      "exact EmpiricalFact@1.0.0 fact ref from the existing empirical executor",
+      "exact source-local ALLOW authority refs and purpose/use scope",
+      "a direct value-consuming downstream owner input: exact discovery authority/catalog, or exact weighted effective-N inputs; a raw ref-only bundle is refused",
+      "producer module implementing module:function returning ProducerBundle"
+    ],
+    "schema": "PYAT_SRC04_LANE_D_BLOCKER@1.1.0",
+    "sha256": "f588559e1329e34b266610deb34eabc975e1c69febb19bfe78e78296f7d909a3",
+    "source_read_performed": false,
+    "status": "BLOCKED_PENDING_FULL_SRC04_SOURCE_PRODUCER"
+  },
+  "source_local_positive": false,
+  "source_read_performed": false,
+  "status": "NATIVE_FIXTURE_VALUE_CONSUMING_POSITIVE__SOURCE_LOCAL_PENDING",
+  "value_sensitivity": {
+    "changed": true,
+    "measured": true,
+    "mutated_product_path": "campaign_src04_completion/consumers/evidence/B0_NATIVE_MUTATED_PRODUCT.json",
+    "mutated_product_sha256": "52256308c1ba000f4a335eec0c29a971a58f339a7f9b424fcc258a5693a3e8fe",
+    "path": "campaign_src04_completion/consumers/evidence/VALUE_SENSITIVITY.json",
+    "restored": true,
+    "restored_product_path": "campaign_src04_completion/consumers/evidence/B0_NATIVE_RESTORED_PRODUCT.json",
+    "restored_product_sha256": "8b60a6cbff25b0df76d522ee6ae979750ca145a8c21acfd74951769ed06be155",
+    "sha256": "f3281e76c508a49af2ce23c04a979b6914682400b448b9c80c2f6fb03a1bf3d9",
+    "source_local_claim": false,
+    "status": "MEASURED_FIXTURE_ONLY"
+  }
+}

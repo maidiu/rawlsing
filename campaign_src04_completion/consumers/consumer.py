@@ -19,6 +19,7 @@ Two modes are explicit:
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
+from fractions import Fraction
 import hashlib
 import json
 from pathlib import Path
@@ -33,9 +34,12 @@ from rawlsing_next.objective_consumer_bounded_evidence import (
     evaluate_oc01_pre553_source_local,
 )
 from rawlsing_next.pre553_c11_repository import C11LogicalRelease, C11Repository
+from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
+from rawlsing_next.pre553_effective_n import compute_effective_n
 from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
+    DiscoveryAuthority,
     EmpiricalFact,
     EmpiricalPredicate,
     EmpiricalQuerySpec,
@@ -83,6 +87,20 @@ def _canonical(value: Any) -> str:
 
 def _sha_material(value: Any) -> str:
     return hashlib.sha256(_canonical(value).encode("utf-8")).hexdigest()
+
+
+def _plain(value: Any) -> Any:
+    """Convert immutable owner objects into JSON-safe evidence material."""
+    if isinstance(value, Mapping):
+        return {str(key): _plain(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_plain(item) for item in value]
+    if isinstance(value, Fraction):
+        return {"numerator": value.numerator, "denominator": value.denominator}
+    as_dict = getattr(value, "as_dict", None)
+    if callable(as_dict):
+        return _plain(as_dict())
+    return value
 
 
 def _native_ref(value: Any, name: str) -> ExactRef:
@@ -187,6 +205,31 @@ class ProducerContract:
 
 
 @dataclass(frozen=True)
+class DiscoveryConsumer:
+    """Exact existing discovery owner inputs for substantive value consumption.
+
+    The wrapper does not implement discovery.  It invokes
+    ``rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery`` with
+    the exact authority, predicates and query templates supplied by the producer.
+    """
+
+    authority: DiscoveryAuthority
+    authority_snapshot: Any
+    predicate_catalog: tuple[EmpiricalPredicate, ...]
+    query_template_catalog: tuple[EmpiricalQuerySpec, ...]
+    scope: str
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.authority, DiscoveryAuthority):
+            raise ConsumerRefusal("DISCOVERY_AUTHORITY_REQUIRED")
+        if self.authority_snapshot is None:
+            raise ConsumerRefusal("DISCOVERY_AUTHORITY_SNAPSHOT_REQUIRED")
+        if not self.predicate_catalog or not self.query_template_catalog:
+            raise ConsumerRefusal("DISCOVERY_CATALOG_REQUIRED")
+        _text(self.scope, "discovery_scope")
+
+
+@dataclass(frozen=True)
 class ProducerBundle:
     release: C11LogicalRelease
     query: EmpiricalQuerySpec
@@ -194,6 +237,9 @@ class ProducerBundle:
     repository: C11Repository
     authority_registry: AuthorityRegistry
     contract: ProducerContract
+    discovery: DiscoveryConsumer | None = None
+    weight_facts: tuple[Any, ...] = ()
+    authorized_weight_scope_ref: ExactRef | None = None
 
 
 def _producer_family_refused(contract: ProducerContract) -> None:
@@ -292,6 +338,154 @@ def _oc01_receipt(
     return payload
 
 
+def _run_downstream_discovery(
+    bundle: ProducerBundle,
+    contract: ProducerContract,
+) -> dict[str, Any] | None:
+    discovery = bundle.discovery
+    if discovery is None:
+        return None
+    try:
+        result = execute_exact_bounded_discovery(
+            repository=bundle.repository,
+            discovery_authority=discovery.authority,
+            authority_registry=bundle.authority_registry,
+            release_refs=(contract.release_ref,),
+            predicate_catalog=discovery.predicate_catalog,
+            query_template_catalog=discovery.query_template_catalog,
+        )
+    except Exception as exc:  # noqa: BLE001 - report the exact owner failure
+        raise ConsumerRefusal(
+            "DOWNSTREAM_DISCOVERY_REFUSED",
+            f"{type(exc).__name__}: {exc}",
+        ) from exc
+    supported = sum(
+        1 for receipt in result.receipts
+        if receipt.typed_state == "DISCOVERED_RESULT_SUPPORTED"
+    )
+    if supported < 1:
+        raise ConsumerRefusal(
+            "DOWNSTREAM_DISCOVERY_NOT_POSITIVE",
+            f"supported_candidates={supported}",
+        )
+    facts = []
+    for fact in result.empirical_facts:
+        topology = fact.target_topology if isinstance(fact.target_topology, Mapping) else {}
+        facts.append({
+            "fact_ref": fact.ref.as_dict(),
+            "typed_state": fact.typed_state,
+            "raw_numerator_support": fact.raw_numerator_support,
+            "raw_denominator_support": fact.raw_denominator_support,
+            "cells": _plain(topology.get("complete_cell_semantic_projection", ())),
+        })
+    receipts = []
+    for receipt in result.receipts:
+        candidate = receipt.candidate_identity if isinstance(receipt.candidate_identity, Mapping) else {}
+        receipts.append({
+            "receipt_ref": receipt.ref.as_dict(),
+            "typed_state": receipt.typed_state,
+            "coverage_state": receipt.coverage_state,
+            "candidate_id": candidate.get("candidate_id"),
+            "candidate_hash": candidate.get("candidate_hash"),
+            "family": candidate.get("family"),
+            "rule_id": candidate.get("rule_id"),
+            "validation": _plain(candidate.get("validation")),
+            "empirical_fact_refs": [_plain(ref) for ref in receipt.empirical_fact_refs],
+            "support_uncertainty_state": _plain(receipt.support_uncertainty_state),
+        })
+    return {
+        "owner": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+        "status": "SUBSTANTIVE_DOWNSTREAM_DISCOVERY_POSITIVE",
+        "scope": discovery.scope,
+        "authority_ref": discovery.authority.ref.as_dict(),
+        "authority_snapshot_ref": discovery.authority_snapshot.authority_ref.as_dict(),
+        "candidate_count": result.candidate_count,
+        "covered_candidate_count": result.covered_candidate_count,
+        "coverage_claim": result.coverage_claim,
+        "supported_candidate_count": supported,
+        "valid_empty": result.valid_empty,
+        "empirical_fact_refs": [_plain(ref) for ref in result.empirical_fact_refs],
+        "empirical_facts": facts,
+        "receipts": receipts,
+        "effect": "DISTRIBUTION_DIFFERS_FROM_BASELINE",
+        "diagnostic_or_ranking_effect": False,
+        "structural_or_ff_adoption": False,
+    }
+
+
+def _validate_value_sensitivity(
+    evidence: Mapping[str, Any] | None,
+    *,
+    case: str | None,
+    fixture_only: bool,
+    contract: ProducerContract,
+    fact: EmpiricalFact,
+    discovery: Mapping[str, Any] | None,
+) -> dict[str, Any]:
+    expected_scope = "NONRESPONDENT_FIXTURE_ONLY" if fixture_only else "SOURCE_LOCAL_CERTIFIED"
+    if evidence is None:
+        return {
+            "schema": "PYAT_SRC04_LANE_D_VALUE_SENSITIVITY@1.0.0",
+            "status": "NOT_DEMONSTRATED",
+            "scope": expected_scope,
+            "measured": False,
+            "changed": False,
+            "restored": False,
+            "case": case,
+        }
+    if not isinstance(evidence, Mapping):
+        raise ConsumerRefusal("VALUE_SENSITIVITY_EVIDENCE_INVALID")
+    if evidence.get("schema") != "PYAT_SRC04_LANE_D_VALUE_SENSITIVITY@1.0.0":
+        raise ConsumerRefusal("VALUE_SENSITIVITY_SCHEMA_MISMATCH")
+    if evidence.get("scope") != expected_scope:
+        raise ConsumerRefusal("VALUE_SENSITIVITY_SCOPE_MISMATCH")
+    if evidence.get("measured") is not True or evidence.get("changed") is not True:
+        raise ConsumerRefusal("VALUE_SENSITIVITY_NOT_MEASURED_POSITIVE")
+    if evidence.get("restored") is not True:
+        raise ConsumerRefusal("VALUE_SENSITIVITY_RESTORE_NOT_PROVEN")
+    original = evidence.get("original")
+    mutated = evidence.get("mutated")
+    restored_result = evidence.get("restored_result")
+    if not all(isinstance(item, Mapping) for item in (original, mutated, restored_result)):
+        raise ConsumerRefusal("VALUE_SENSITIVITY_COMPARISON_REQUIRED")
+    if _plain(original) == _plain(mutated):
+        raise ConsumerRefusal("VALUE_SENSITIVITY_NO_CHANGE")
+    if _plain(restored_result) != _plain(original):
+        raise ConsumerRefusal("VALUE_SENSITIVITY_RESTORE_MISMATCH")
+    if case not in {"original", "mutated", "restored"}:
+        raise ConsumerRefusal("VALUE_SENSITIVITY_CASE_REQUIRED")
+    result_key = "restored_result" if case == "restored" else case
+    observed = evidence.get(result_key)
+    if not isinstance(observed, Mapping):
+        raise ConsumerRefusal("VALUE_SENSITIVITY_RESULT_MISSING", result_key)
+    if _plain(observed.get("fact_ref")) != contract.fact_ref.as_dict():
+        raise ConsumerRefusal("VALUE_SENSITIVITY_FACT_MISMATCH", result_key)
+    if observed.get("raw_numerator_support") != fact.raw_numerator_support:
+        raise ConsumerRefusal("VALUE_SENSITIVITY_NUMERATOR_MISMATCH", result_key)
+    if observed.get("raw_denominator_support") != fact.raw_denominator_support:
+        raise ConsumerRefusal("VALUE_SENSITIVITY_DENOMINATOR_MISMATCH", result_key)
+    if discovery is not None:
+        if observed.get("discovery_supported_candidate_count") != discovery["supported_candidate_count"]:
+            raise ConsumerRefusal("VALUE_SENSITIVITY_DISCOVERY_STATE_MISMATCH", result_key)
+        expected_refs = [ref["content_hash"] for ref in discovery["empirical_fact_refs"]]
+        observed_refs = observed.get("discovery_empirical_fact_refs")
+        if not isinstance(observed_refs, list) or observed_refs != expected_refs:
+            raise ConsumerRefusal("VALUE_SENSITIVITY_DISCOVERY_FACT_MISMATCH", result_key)
+    return {
+        "schema": "PYAT_SRC04_LANE_D_VALUE_SENSITIVITY@1.0.0",
+        "status": "MEASURED_FIXTURE_ONLY" if fixture_only else "MEASURED_SOURCE_LOCAL",
+        "scope": expected_scope,
+        "measured": True,
+        "changed": True,
+        "restored": True,
+        "case": case,
+        "upstream_change": evidence.get("upstream_change"),
+        "original": _plain(evidence.get("original")),
+        "mutated": _plain(evidence.get("mutated")),
+        "restored_result": _plain(evidence.get("restored_result")),
+    }
+
+
 def consume_native_producer(
     bundle: ProducerBundle,
     *,
@@ -299,6 +493,9 @@ def consume_native_producer(
     requested_claim_ceiling: str = SOURCE_LOCAL_CLAIM,
     use_scope: str = SOURCE_LOCAL_CLAIM,
     replay: bool = True,
+    allow_fixture_engineering: bool = False,
+    value_sensitivity_evidence: Mapping[str, Any] | None = None,
+    value_sensitivity_case: str | None = None,
 ) -> dict[str, Any]:
     if not isinstance(bundle, ProducerBundle):
         raise ConsumerRefusal("PRODUCER_BUNDLE_REQUIRED")
@@ -309,7 +506,12 @@ def consume_native_producer(
         requested_claim_ceiling=requested_claim_ceiling,
         use_scope=use_scope,
     )
-    if contract.fixture_only or bundle.release.source_artifact_ref.content_hash != contract.source_sha256:
+    if contract.fixture_only and not allow_fixture_engineering:
+        raise ConsumerRefusal(
+            "FIXTURE_NATIVE_PATH_REQUIRES_ENGINEERING_LABEL",
+            "fixture-native execution must be explicitly labelled engineering-only",
+        )
+    if bundle.release.source_artifact_ref.content_hash != contract.source_sha256:
         raise ConsumerRefusal("NATIVE_SOURCE_IDENTITY_MISMATCH")
     if bundle.release.release_ref.key != contract.release_ref.key:
         raise ConsumerRefusal("WRONG_RELEASE_IDENTITY")
@@ -357,16 +559,75 @@ def consume_native_producer(
             release_refs=(contract.release_ref,),
             expected_fact_refs=(contract.fact_ref,),
         )
+    try:
+        effective_n = compute_effective_n(
+            fact=fact,
+            query=bundle.query,
+            weight_facts=bundle.weight_facts,
+            authority_registry=bundle.authority_registry,
+            release_refs=(contract.release_ref,),
+            authorized_weight_scope_ref=bundle.authorized_weight_scope_ref,
+        )
+    except Exception as exc:  # noqa: BLE001 - report the exact owner failure
+        raise ConsumerRefusal(
+            "DOWNSTREAM_EFFECTIVE_N_REFUSED",
+            f"{type(exc).__name__}: {exc}",
+        ) from exc
+    effective_n_document = _plain(effective_n.as_dict())
+    discovery_document = _run_downstream_discovery(bundle, contract)
+    if discovery_document is not None:
+        downstream_owner = discovery_document["owner"]
+        downstream_effect = "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED"
+    elif effective_n.typed_state == "SUPPORTED":
+        downstream_owner = "rawlsing_next.pre553_effective_n.compute_effective_n"
+        downstream_effect = "EFFECTIVE_N_SUPPORTED"
+    else:
+        raise ConsumerRefusal(
+            "DOWNSTREAM_VALUE_CONSUMER_REQUIRED",
+            f"no discovery product and effective-N is {effective_n.typed_state}; "
+            "policy admission alone is not an empirical value effect",
+        )
+    if not contract.fixture_only and downstream_effect not in {
+        "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED",
+        "EFFECTIVE_N_SUPPORTED",
+    }:
+        raise ConsumerRefusal("DOWNSTREAM_VALUE_EFFECT_NOT_SUBSTANTIVE", downstream_effect)
+    sensitivity = _validate_value_sensitivity(
+        value_sensitivity_evidence,
+        case=value_sensitivity_case,
+        fixture_only=contract.fixture_only,
+        contract=contract,
+        fact=fact,
+        discovery=discovery_document,
+    )
+    measured = sensitivity.get("measured") is True and sensitivity.get("changed") is True
+    source_value_sensitive = bool(not contract.fixture_only and measured)
+    fixture_value_sensitive = bool(contract.fixture_only and measured)
     receipt = _oc01_receipt(
         contract=contract,
         producer_ref=fact.ref,
-        authority_refs=(_policy_authority(x) for x in fact_authority_values(fact)),
+        authority_refs=(_policy_authority(x) for x in authority_fact_values(fact)),
         requested_claim_ceiling=requested_claim_ceiling,
         partial_allowed=True,
     )
+    status = (
+        "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE"
+        if contract.fixture_only
+        else "SOURCE_LOCAL_NATIVE_CONSUMER_POSITIVE"
+    )
+    limits = [
+        "Native execution is through the existing I03 and value-consuming downstream owners.",
+        "No D1 tally was converted into EmpiricalFact.",
+        "No FF/V553 semantic adoption, population or weight claim was made.",
+    ]
+    if contract.fixture_only:
+        limits.insert(0, "Nonrespondent/test-only B0 SRC09 fixture; not original SRC04 and not source-local proof.")
+        limits.append("Effective-N is NOT_APPLICABLE for the RAW fixture grain; discovery supplies the substantive value effect.")
+    else:
+        limits.append("Source-local claim remains pending actual original-source producer issuance and value-sensitivity proof.")
     return {
-        "schema": "PYAT_SRC04_LANE_D_CONSUMER_PRODUCT@1.0.0",
-        "status": "SOURCE_LOCAL_NATIVE_CONSUMER_POSITIVE",
+        "schema": "PYAT_SRC04_LANE_D_CONSUMER_PRODUCT@1.1.0",
+        "status": status,
         "source_id": contract.source_id,
         "source_sha256": contract.source_sha256,
         "source_rows": contract.source_rows,
@@ -381,12 +642,20 @@ def consume_native_producer(
         "contract": contract.to_dict(),
         "oc01_receipt": receipt,
         "native_execution": True,
-        "fixture_only": False,
-        "source_value_sensitive": True,
+        "downstream_value_consumer": downstream_owner,
+        "downstream_value_effect": downstream_effect,
+        "downstream_discovery": discovery_document,
+        "effective_n_product": effective_n_document,
+        "fixture_only": contract.fixture_only,
+        "source_local_claim": not contract.fixture_only,
+        "source_value_sensitive": source_value_sensitive,
+        "fixture_value_sensitive": fixture_value_sensitive,
+        "value_sensitivity": sensitivity,
         "canonical_values_emitted": 0,
         "population_claim": False,
-        "weights_used": False,
+        "weights_used": bool(bundle.weight_facts),
         "ff_v553_adoption": False,
+        "limits": limits,
     }
 
 

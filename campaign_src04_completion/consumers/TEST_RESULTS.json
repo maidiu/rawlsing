@@ -1,8 +1,11 @@
 {
-  "schema": "PYAT_SRC04_LANE_D_TEST_RESULTS@1.0.0",
+  "schema": "PYAT_SRC04_LANE_D_TEST_RESULTS@1.1.0",
   "lane": "D",
   "commands": [
     "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.generate_evidence",
+    "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native-fixture --value-sensitivity-evidence campaign_src04_completion/consumers/evidence/VALUE_SENSITIVITY.json --value-sensitivity-case original --out <out>",
+    "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native-fixture --mutate-q101-2-to-1 --value-sensitivity-evidence campaign_src04_completion/consumers/evidence/VALUE_SENSITIVITY.json --value-sensitivity-case mutated --out <out>",
+    "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native-fixture --value-sensitivity-evidence campaign_src04_completion/consumers/evidence/VALUE_SENSITIVITY.json --value-sensitivity-case restored --out <out>",
     "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run b0-fixture --out <out>",
     "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run refuse-d1-tally --out <out>",
     "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native --out <out>",
@@ -12,12 +15,27 @@
     {
       "command": "generate_evidence",
       "status": "PASS",
-      "detail": "B0 fixture consumer positive; 8/8 identity/authority/use negatives refused; exact source-local blocker written."
+      "detail": "Native B0 fixture value-consuming positive; mutation/restoration evidence; 11/11 negatives refused; exact source-local blocker V2 written."
+    },
+    {
+      "command": "native-fixture CLI original",
+      "status": "PASS",
+      "detail": "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE; OC01 SUPPORTED_OBJECTIVE_RESULT; discovery DISCOVERED_RESULT_SUPPORTED; effective-N NOT_APPLICABLE; 1/1 support."
+    },
+    {
+      "command": "native-fixture CLI mutated",
+      "status": "PASS",
+      "detail": "Consumed fact support 2/2; discovery empirical fact refs differ; fixture_value_sensitive=true; source_value_sensitive=false."
+    },
+    {
+      "command": "native-fixture CLI restored",
+      "status": "PASS",
+      "detail": "Restored consumed fact support 1/1 and exact fact/discovery refs equal original."
     },
     {
       "command": "b0-fixture CLI",
       "status": "PASS",
-      "detail": "SUPPORTED_OBJECTIVE_RESULT at SUPPORTED_COMPONENT_ONLY, fixture_only=true, source_value_sensitive=false."
+      "detail": "Preserved retained receipt policy positive at SUPPORTED_COMPONENT_ONLY, fixture_only=true, source_value_sensitive=false; not native value proof."
     },
     {
       "command": "refuse-d1-tally CLI",
@@ -32,10 +50,10 @@
     {
       "command": "focused pytest",
       "status": "PASS",
-      "passed": 8,
+      "passed": 12,
       "failed": 0,
       "skipped": 0,
-      "detail": "8 passed in 0.06s."
+      "detail": "12 passed in 0.97s."
     }
   ],
   "no_original_source_access": true,
@@ -45,7 +63,8 @@
   "no_ff_v553_adoption": true,
   "committed_evidence_has_no_raw_cells": true,
   "limits": [
-    "B0 fixture consumer positive is nonrespondent/test-only engineering evidence, not SRC04 source-local proof.",
+    "Native B0 fixture value-consuming positive is nonrespondent/test-only engineering evidence, not SRC04 source-local proof.",
+    "The fixture value mutation is an engineering probe, not a scientific edit or population claim.",
     "The full SRC04 source-local producer is pending; no original SRC04 file was stat'ed, hashed, opened or decoded.",
     "The D1 tally is refused as a producer family and never converted to EmpiricalFact."
   ]

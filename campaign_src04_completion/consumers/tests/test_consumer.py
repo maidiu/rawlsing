@@ -8,6 +8,7 @@ import pytest
 
 from rawlsing_next.pre553_empirical_objects import ExactRef
 
+from campaign_src04_completion.consumers.b0_native_fixture import load_b0_native_bundle
 from campaign_src04_completion.consumers.consumer import (
     ConsumerRefusal,
     ProducerBundle,
@@ -120,7 +121,116 @@ def test_native_path_refuses_fixture_contract():
             requested_claim_ceiling="SUPPORTED_COMPONENT_ONLY",
             use_scope="SUPPORTED_COMPONENT_ONLY",
         )
-    assert exc.value.code == "NATIVE_SOURCE_IDENTITY_MISMATCH"
+    assert exc.value.code == "FIXTURE_NATIVE_PATH_REQUIRES_ENGINEERING_LABEL"
+
+
+def _native_fixture_product(*, mutate=False, evidence=None, case=None):
+    return consume_native_producer(
+        load_b0_native_bundle(mutate_q101_2_to_1=mutate),
+        expected_source_id="SRC09",
+        requested_claim_ceiling="SUPPORTED_COMPONENT_ONLY",
+        use_scope="SUPPORTED_COMPONENT_ONLY",
+        allow_fixture_engineering=True,
+        value_sensitivity_evidence=evidence,
+        value_sensitivity_case=case,
+    )
+
+
+def _sensitivity_result(product):
+    discovery = product["downstream_discovery"]
+    return {
+        "fact_ref": product["fact_ref"],
+        "raw_numerator_support": product["raw_numerator_support"],
+        "raw_denominator_support": product["raw_denominator_support"],
+        "downstream_value_effect": product["downstream_value_effect"],
+        "discovery_supported_candidate_count": discovery["supported_candidate_count"],
+        "discovery_empirical_fact_refs": [
+            ref["content_hash"] for ref in discovery["empirical_fact_refs"]
+        ],
+    }
+
+
+def test_native_fixture_executes_real_value_consuming_path():
+    product = _native_fixture_product()
+    assert product["schema"] == "PYAT_SRC04_LANE_D_CONSUMER_PRODUCT@1.1.0"
+    assert product["status"] == "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE"
+    assert product["native_execution"] is True
+    assert product["fixture_only"] is True
+    assert product["source_local_claim"] is False
+    assert product["fact_ref"]["content_hash"] == "a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
+    assert product["raw_numerator_support"] == 1
+    assert product["raw_denominator_support"] == 1
+    assert product["oc01_receipt"]["state"] == "SUPPORTED_OBJECTIVE_RESULT"
+    assert product["oc01_receipt"]["positive_completion"] is True
+    assert product["downstream_value_effect"] == "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED"
+    assert product["downstream_value_consumer"].endswith("execute_exact_bounded_discovery")
+    assert product["downstream_discovery"]["supported_candidate_count"] == 1
+    assert product["downstream_discovery"]["receipts"][0]["typed_state"] == "DISCOVERED_RESULT_SUPPORTED"
+    assert len(product["downstream_discovery"]["empirical_fact_refs"]) == 2
+    assert product["effective_n_product"]["typed_state"] == "NOT_APPLICABLE"
+    assert product["source_value_sensitive"] is False
+    assert product["fixture_value_sensitive"] is False
+    assert product["value_sensitivity"]["status"] == "NOT_DEMONSTRATED"
+
+
+def test_native_fixture_mutation_changes_values_and_restore():
+    original = _native_fixture_product()
+    mutated = _native_fixture_product(mutate=True)
+    restored = _native_fixture_product()
+    original_result = _sensitivity_result(original)
+    mutated_result = _sensitivity_result(mutated)
+    restored_result = _sensitivity_result(restored)
+    assert original_result["fact_ref"] != mutated_result["fact_ref"]
+    assert (original_result["raw_numerator_support"], original_result["raw_denominator_support"]) == (1, 1)
+    assert (mutated_result["raw_numerator_support"], mutated_result["raw_denominator_support"]) == (2, 2)
+    assert original_result["discovery_empirical_fact_refs"] != mutated_result["discovery_empirical_fact_refs"]
+    assert restored_result == original_result
+    evidence = {
+        "schema": "PYAT_SRC04_LANE_D_VALUE_SENSITIVITY@1.0.0",
+        "status": "MEASURED_FIXTURE_ONLY",
+        "scope": "NONRESPONDENT_FIXTURE_ONLY",
+        "measured": True,
+        "changed": True,
+        "restored": True,
+        "upstream_change": "q101 row-2 2.0 -> 1.0",
+        "original": original_result,
+        "mutated": mutated_result,
+        "restored_result": restored_result,
+    }
+    final_original = _native_fixture_product(evidence=evidence, case="original")
+    final_mutated = _native_fixture_product(mutate=True, evidence=evidence, case="mutated")
+    final_restored = _native_fixture_product(evidence=evidence, case="restored")
+    assert final_original["fixture_value_sensitive"] is True
+    assert final_mutated["fixture_value_sensitive"] is True
+    assert final_restored["fixture_value_sensitive"] is True
+    assert final_original["source_value_sensitive"] is False
+    assert final_original["value_sensitivity"]["status"] == "MEASURED_FIXTURE_ONLY"
+    assert final_original["status"] == "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE"
+
+
+def test_native_fixture_cannot_be_promoted_to_source_local():
+    with pytest.raises(ConsumerRefusal) as exc:
+        consume_native_producer(
+            load_b0_native_bundle(),
+            expected_source_id="SRC09",
+            requested_claim_ceiling="SOURCE_LOCAL_STATISTIC",
+            use_scope="SUPPORTED_COMPONENT_ONLY",
+            allow_fixture_engineering=True,
+        )
+    assert exc.value.code == "CLAIM_CEILING_NOT_AUTHORIZED"
+
+
+def test_native_fixture_requires_actual_downstream_value_consumer():
+    bundle = replace(load_b0_native_bundle(), discovery=None)
+    with pytest.raises(ConsumerRefusal) as exc:
+        consume_native_producer(
+            bundle,
+            expected_source_id="SRC09",
+            requested_claim_ceiling="SUPPORTED_COMPONENT_ONLY",
+            use_scope="SUPPORTED_COMPONENT_ONLY",
+            allow_fixture_engineering=True,
+        )
+    assert exc.value.code == "DOWNSTREAM_VALUE_CONSUMER_REQUIRED"
 
 
 def test_committed_consumer_evidence_has_no_respondent_cells():
