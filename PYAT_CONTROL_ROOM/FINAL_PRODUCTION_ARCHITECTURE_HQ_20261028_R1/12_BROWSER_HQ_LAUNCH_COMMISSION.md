@@ -13,6 +13,10 @@
 
 **First read `14_NONDELEGATION_AND_CLAIM_VERIFICATION_CONSTITUTION.md`.** The Browser HQ may not hand whole P01–P10 architecture questions to assumed omniscient workers. HQ itself owns C11 interface (P01), I03 design (P03), evidence/replay (P04), originary fracture-map preservation (P06), whole-system synthesis (P12). Workers may only investigate bounded evidence/implementation subsets with explicit uninspected areas and uncertainty. Independently read/check every design-critical claim in original code/authority, require independent counterexample/oracle, and classify per-claim ACCEPT/BOUNDED/HOLD/REJECT. P11 remains separate independent hostile review. The 08 list enumerates subject domains, not permission to launch a full delegate. No worker tasks are launched at this point. 14 takes precedence over conflicting older fleet wording.
 
+## Current P01-S0/S1 achievement (2026-10-28)
+
+HQ directly inspected accepted C11/ingest/facade exact Git blobs and packet author sources; completed `DESIGN/P01_S0_CURRENT_C11_CONSUMER_AND_IDENTITY_AUDIT_R1.md`, `DESIGN/P01_S0_CONTROL_SYMBOL_CENSUS.json` (15 current files/131 current positive hits), and `DESIGN/P01_S1_SEALED_SOURCE_EXECUTION_VIEW_CONTRACT_R1.md`. S1 decision is one I02-validated internal C11 source execution view registered with existing C11Repository, old sealed C11LogicalRelease kept as explicit legacy/equivalence path. It is **interface design only**; first next HQ P01 operation is S2 complete validator/replay streaming-proof specification, then S3/S4 implementation tickets and source-free identity parity. Do not reopen decision or delegate HQ semantic approval.
+
 ## Initial steps
 1. Read root 00_START_HERE.md through 11_DECISION_AND_OBLIGATION_LEDGER.json completely. This is the architectural constitution and active decision.
 2. Refresh private GitHub current control HEAD and HQ_HANDOFF/LATEST.json, its immutable checkpoint, live source/science/FF/actor rights and currently running Rabochiis; reconcile only exact later changes, never overwrite them from stale summaries.
