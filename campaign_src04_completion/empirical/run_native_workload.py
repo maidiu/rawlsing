@@ -112,6 +112,7 @@ def run_execute(
     parquet_root: Path | None,
     release_id: str | None,
     semantic_hash_value: str | None,
+    source_sha256: str,
     start_after_operation_id: str | None,
     run_consumer: bool,
 ) -> int:
@@ -144,9 +145,11 @@ def run_execute(
             "required_input": pending_record["release_input_required"],
         }, indent=2))
         return 0
+    if source_sha256 != SOURCE_SHA256:
+        raise NativeWorkloadRefusal("SOURCE_SHA_MISMATCH", source_sha256)
     release = load_parquet_release(
         root=parquet_root,
-        source_sha256=SOURCE_SHA256,
+        source_sha256=source_sha256,
         release_id=release_id,
         semantic_hash_value=semantic_hash_value,
     )
@@ -208,6 +211,7 @@ def main(argv=None) -> int:
     parser.add_argument("--parquet-root", default=None)
     parser.add_argument("--release-id", default=None)
     parser.add_argument("--semantic-hash", default=None)
+    parser.add_argument("--source-sha", default=SOURCE_SHA256)
     parser.add_argument("--start-after", default=None)
     parser.add_argument("--consumer", action="store_true")
     args = parser.parse_args(argv)
@@ -224,6 +228,7 @@ def main(argv=None) -> int:
             parquet_root=Path(args.parquet_root) if args.parquet_root else None,
             release_id=args.release_id,
             semantic_hash_value=args.semantic_hash,
+            source_sha256=args.source_sha,
             start_after_operation_id=args.start_after,
             run_consumer=args.consumer,
         )
