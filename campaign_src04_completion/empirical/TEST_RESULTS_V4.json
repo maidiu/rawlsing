@@ -1,0 +1,82 @@
+{
+  "schema": "PYAT_SRC04_LANE_C_TEST_RESULTS@4.0.0",
+  "authorized_execution_and_actual_carrier_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/test_authorized_execution.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      "........                                                                 [100%]",
+      "8 passed in 7.67s"
+    ],
+    "count": 8
+  },
+  "observed_response_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_observed_response.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      ".............                                                            [100%]",
+      "13 passed in 3.31s"
+    ],
+    "count": 13
+  },
+  "i03_regression_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_i03_scale_equivalence_repair.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      ".......................................                                  [100%]",
+      "39 passed in 0.85s"
+    ],
+    "count": 39
+  },
+  "consumer_regression_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_pre553_candidate_c_production_binding.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      ".................                                                        [100%]",
+      "17 passed in 1.95s"
+    ],
+    "count": 17
+  },
+  "code_hashes": {
+    "campaign_src04_completion/empirical/actual_carrier.py": "709792cadc04134b99fed958a870d22f7533b909bc278a915e028485a5c3dbb8",
+    "campaign_src04_completion/empirical/authorized_execution.py": "bacabd66f059c30c3e62377afbe5cd67e7d8eab0a9a83c823056ec9fe415fae7",
+    "campaign_src04_completion/empirical/run_native_workload.py": "15c81e814ce9b69dbcbd716aa148de517e899b7e9deff34d67f353320f64de6a",
+    "campaign_src04_completion/empirical/native_workload.py": "a410f9b0176f10ba16878f355f499b1e0b2cea1ede520aacd7ef80bc2bb6fa37",
+    "campaign_src04_completion/empirical/consumer_bridge.py": "b15803487f7190f9c72bc69a833c715a38eab779c1be07a7690bcd652f297939",
+    "campaign_src04_completion/empirical/test_authorized_execution.py": "85e7589304221f705b9f295dae2ef8449ea4230894eca2b88bf4e21f99dc28d6",
+    "rawlsing_next/pre553_observed_response.py": "a01f704168c13596f7ba36c2ad7cf4f993789fff16950d0ada33b0f958a6e55d",
+    "rawlsing_next/_pre553_query_common.py": "37bcaed147f1503e967cccec18e22c73ff6a363e6599b98b6e0f724de00816c1",
+    "rawlsing_next/_pre553_query_eval.py": "cd3bc1b46fe2f332fe498cb8b6f74b51ac9a01d519ca5e7b6e0b1555a4c782ad",
+    "rawlsing_next/pre553_empirical_query.py": "4d6b33405d477efefbc7f1274b7165c7ff530fb38efabdf324f2e81acd7228cd",
+    "rawlsing_next/tests/test_observed_response.py": "abf7fe1c6348dae0e2d9cd6d57958fcf8495267fd57a933eda01f79855a0eb91"
+  },
+  "artifacts": {
+    "campaign_src04_completion/empirical/USER_EMPIRICAL_GRANT.json": "757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f",
+    "campaign_src04_completion/empirical/NATIVE_WORKLOAD_PREFLIGHT.json": "6fe21a242b45b8332b1511c41eebfe9c02d636937bcbaaf7d7a985b541903a96",
+    "campaign_src04_completion/empirical/ACTUAL_CARRIER_API.md": "216a06799e82bc7cbb229776a340054b32ae09634cfed4f39c6b3938d422678d",
+    "campaign_src04_completion/empirical/AUTHORIZED_EXECUTION_API.md": "5e4501f26fa2bd52d0b6e82e892ec9e67581ea5af64220b1e22a516b80476c81"
+  },
+  "actual_carrier_discrimination": {
+    "native_fixture_pickle_rehydrate": "PASS",
+    "mutated_public_stream_refusal": "PASS",
+    "receipt_sha_pins": "REQUIRED_BY_CLI",
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
+  },
+  "preflight_status": "AUTHENTICATED_GRANT_ISSUER_READY__RELEASE_INPUT_PENDING",
+  "original_source_io": {
+    "status": "NONE",
+    "source_read_performed": false
+  },
+  "original_workload": {
+    "issued": 0,
+    "executed": 0,
+    "reason": "actual A full native product not yet complete/published"
+  },
+  "consumer_dependency": {
+    "status": "READ_ONLY_EXTERNAL_DEPENDENCY_NOT_JOINED"
+  },
+  "limits": [
+    "Actual carrier adapter is validated on a native nonrespondent fixture only; no original source read.",
+    "No original workload issued or executed.",
+    "No canonical/weight/population/structural/I05 claim."
+  ]
+}

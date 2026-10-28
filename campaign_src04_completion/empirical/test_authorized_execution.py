@@ -2,8 +2,11 @@
 from __future__ import annotations
 
 from dataclasses import replace
+import copyreg
 import json
+import pickle
 from pathlib import Path
+import types
 
 import pytest
 
@@ -12,6 +15,10 @@ from campaign_src04_completion.empirical.authorized_execution import (
     authenticate_grant,
     issue_authorized_execution,
     preflight,
+)
+from campaign_src04_completion.empirical.actual_carrier import (
+    ActualCarrierRefusal,
+    load_actual_carrier_release,
 )
 from campaign_src04_completion.empirical.consumer_bridge import consume_with_lane_d
 from campaign_src04_completion.empirical.native_workload import WorkloadPolicy
@@ -90,6 +97,99 @@ def test_source_literal_contract_material_round_trips_without_changing_old_contr
     roundtrip = ObservedResponseContract.from_mapping(authorized.as_dict())
     assert roundtrip.ref == authorized.ref
     assert contract.ref == old_ref
+
+
+def _write_pickle_stream(path, values):
+    count = 0
+    with path.open("wb") as handle:
+        for value in values:
+            pickle.dump(value, handle, protocol=pickle.HIGHEST_PROTOCOL)
+            count += 1
+    return count
+
+
+def _write_actual_bundle(tmp_path, release, source_sha):
+    copyreg.pickle(types.MappingProxyType, lambda mapping: (dict, (dict(mapping),)))
+    public = tmp_path / "public_objects.pkl"
+    internal = tmp_path / "internal_records.pkl"
+    public_count = _write_pickle_stream(public, release.public_objects)
+    internal_count = _write_pickle_stream(internal, release.internal_records)
+    replay = tmp_path / "replay_manifest.json"
+    replay.write_text(json.dumps(release.replay_manifest.as_dict(), indent=2) + "\n", encoding="utf-8")
+    import hashlib
+    sha = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
+    local = {
+        "schema": "PYAT_SRC04_FULL_LOCAL_RELEASE@1.0.0",
+        "bundle_id": "TEST-ACTUAL-CARRIER",
+        "runtime_scope": "LOCAL_FILESYSTEM_OUTSIDE_GIT",
+        "source_id": "SRC04",
+        "source_sha256": source_sha,
+        "release_ref": release.release_ref.as_dict(),
+        "semantic_release_hash": release.semantic_release_hash,
+        "source_release_manifest_hash": release.source_release_manifest_hash,
+        "replay_manifest_ref": release.replay_manifest.ref.as_dict(),
+        "selected_response_slots": [1],
+        "selected_coordinate_slots": [1],
+        "response_positions": 8,
+        "public_objects": {"file": public.name, "lines": public_count, "bytes": public.stat().st_size, "sha256": sha(public)},
+        "internal_records": {"file": internal.name, "lines": internal_count, "bytes": internal.stat().st_size, "sha256": sha(internal)},
+        "replay_manifest": {"file": replay.name, "sha256": sha(replay)},
+        "local_only": True,
+        "raw_respondent_cells_committed": False,
+    }
+    (tmp_path / "receipt.json").write_text(json.dumps(local), encoding="utf-8")
+    release_receipt = {
+        "schema": "PYAT_SRC04_FULL_RELEASE_RECEIPT@1.0.0",
+        "source_id": "SRC04", "source_sha256": source_sha,
+        "release_ref": release.release_ref.as_dict(),
+        "source_release_manifest_hash": release.source_release_manifest_hash,
+        "source_read_performed": True,
+        "release_audit": {
+            "source_artifact_sha": True,
+            "semantic_hash_matches_ref": True,
+            "no_canonical": True,
+        },
+    }
+    (tmp_path / "release_receipt.json").write_text(json.dumps(release_receipt), encoding="utf-8")
+    primary = {"schema": "PYAT_SRC04_FULL_PRIMARY_RUN@1.0.0", "status": "FULL_PRIMARY_COMPLETE"}
+    (tmp_path / "primary.json").write_text(json.dumps(primary), encoding="utf-8")
+    return local, public
+
+
+def test_actual_carrier_receipt_adapter_rehydrates_native_fixture_release(tmp_path):
+    config = load_source_config(FIXTURE_CONFIG)
+    stream = load_fixture_stream(FIXTURE)
+    release = build_validated_c11_release_from_config(config, stream=stream)
+    _write_actual_bundle(tmp_path, release, stream.source_sha256)
+    reopened = load_actual_carrier_release(
+        local_receipt_path=tmp_path / "receipt.json",
+        release_receipt_path=tmp_path / "release_receipt.json",
+        primary_run_path=tmp_path / "primary.json",
+        bundle_dir=tmp_path,
+        expected_source_sha256=stream.source_sha256,
+    )
+    assert reopened.release_ref == release.release_ref
+    assert reopened.source_artifact_ref.content_hash == stream.source_sha256
+    assert len(reopened.public_objects) == len(release.public_objects)
+    assert len(reopened.internal_records) == len(release.internal_records)
+
+
+def test_actual_carrier_receipt_adapter_rejects_mutated_stream(tmp_path):
+    config = load_source_config(FIXTURE_CONFIG)
+    stream = load_fixture_stream(FIXTURE)
+    release = build_validated_c11_release_from_config(config, stream=stream)
+    _, public = _write_actual_bundle(tmp_path, release, stream.source_sha256)
+    data = bytearray(public.read_bytes())
+    data[-1] ^= 0xFF
+    public.write_bytes(bytes(data))
+    with pytest.raises(ActualCarrierRefusal, match="PUBLIC_OBJECTS_SHA_MISMATCH"):
+        load_actual_carrier_release(
+            local_receipt_path=tmp_path / "receipt.json",
+            release_receipt_path=tmp_path / "release_receipt.json",
+            primary_run_path=tmp_path / "primary.json",
+            bundle_dir=tmp_path,
+            expected_source_sha256=stream.source_sha256,
+        )
 
 
 def test_consumer_bridge_reports_dependency_pending_when_lane_d_not_joined():

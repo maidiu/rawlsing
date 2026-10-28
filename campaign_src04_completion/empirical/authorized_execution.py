@@ -42,6 +42,7 @@ from rawlsing_next.pre553_observed_response import (
     validate_contract_authority,
 )
 from rawlsing_next.pre553_parquet_carrier import ParquetC11Carrier, ParquetCarrierError
+from campaign_src04_completion.empirical.actual_carrier import load_actual_carrier_release
 
 GRANT_SCHEMA = "PYAT_SRC04_NATIVE_EMPIRICAL_USER_GRANT@1.0.0"
 GRANT_SHA256 = "757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f"
@@ -573,11 +574,16 @@ def preflight(
             "authorized contract + AuthorityRegistry",
         ],
         "release_input_required": {
-            "backend": "PRE553_PARQUET_C11_CARRIER",
-            "required_fields": ["parquet_root", "source_sha256", "release_id", "semantic_hash"],
+            "backend": "ACTUAL_LANE_A_NATIVE_C11_PICKLE_RECEIPT",
+            "required_fields": [
+                "carrier_receipt", "carrier_receipt_sha256",
+                "release_receipt", "release_receipt_sha256",
+                "primary_run", "primary_run_sha256",
+                "optional_bundle_dir",
+            ],
             "source_sha256": SOURCE_SHA256,
             "accepted_42_field_release_is_not_sufficient": True,
-            "note": "A full-source construction candidate/replay format is not final; no polling or duplicate read is performed by Lane C.",
+            "note": "The actual A durable product is native pickle object streams plus receipt/manifest. No storage conversion, duplicate source read, polling or partial-bundle read is performed by Lane C.",
         },
         "original_workload_issued": False,
         "source_read_performed": False,

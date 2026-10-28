@@ -31,17 +31,20 @@
   },
   "release_input_required": {
     "accepted_42_field_release_is_not_sufficient": true,
-    "backend": "PRE553_PARQUET_C11_CARRIER",
-    "note": "A full-source construction candidate/replay format is not final; no polling or duplicate read is performed by Lane C.",
+    "backend": "ACTUAL_LANE_A_NATIVE_C11_PICKLE_RECEIPT",
+    "note": "The actual A durable product is native pickle object streams plus receipt/manifest. No storage conversion, duplicate source read, polling or partial-bundle read is performed by Lane C.",
     "required_fields": [
-      "parquet_root",
-      "source_sha256",
-      "release_id",
-      "semantic_hash"
+      "carrier_receipt",
+      "carrier_receipt_sha256",
+      "release_receipt",
+      "release_receipt_sha256",
+      "primary_run",
+      "primary_run_sha256",
+      "optional_bundle_dir"
     ],
     "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
   },
-  "required_command": "PYTHONPATH=. python3 campaign_src04_completion/empirical/run_native_workload.py --mode execute --parquet-root <exact-parquet-root> --release-id <exact-release-id> --semantic-hash <exact-semantic-hash> --source-sha 2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18 --consumer",
+  "required_command": "PYTHONPATH=. python3 campaign_src04_completion/empirical/run_native_workload.py --mode execute --carrier-receipt <LOCAL_RELEASE_RECEIPT.json> --carrier-receipt-sha256 <exact> --release-receipt <RELEASE_RECEIPT.json> --release-receipt-sha256 <exact> --primary-run <PRIMARY_RUN.json> --primary-run-sha256 <exact> --source-sha 2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18 --consumer",
   "schema": "PYAT_SRC04_AUTHORIZED_EXECUTION_PREFLIGHT@1.0.0",
   "scope": {
     "available_analytical_coordinates": 0,

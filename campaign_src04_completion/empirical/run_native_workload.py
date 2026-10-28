@@ -24,6 +24,10 @@ from campaign_src04_completion.empirical.authorized_execution import (
     load_parquet_release,
     preflight,
 )
+from campaign_src04_completion.empirical.actual_carrier import (
+    ActualCarrierRefusal,
+    load_actual_carrier_release,
+)
 from campaign_src04_completion.empirical.consumer_bridge import consume_with_lane_d
 from campaign_src04_completion.empirical.native_workload import (
     NativeWorkloadRefusal,
@@ -112,6 +116,13 @@ def run_execute(
     parquet_root: Path | None,
     release_id: str | None,
     semantic_hash_value: str | None,
+    carrier_receipt: Path | None,
+    release_receipt: Path | None,
+    primary_run: Path | None,
+    bundle_dir: Path | None,
+    carrier_receipt_sha256: str | None,
+    release_receipt_sha256: str | None,
+    primary_run_sha256: str | None,
     source_sha256: str,
     start_after_operation_id: str | None,
     run_consumer: bool,
@@ -122,13 +133,17 @@ def run_execute(
     if scope.get("contract_ref") != pending.ref.as_dict():
         raise NativeWorkloadRefusal("SCOPE_CONTRACT_REF_MISMATCH")
     policy = WorkloadPolicy.from_mapping(scope.get("workload_policy", {}))
-    if parquet_root is None or release_id is None or semantic_hash_value is None:
+    if carrier_receipt is None and (
+        parquet_root is None or release_id is None or semantic_hash_value is None
+    ):
         pending_record = preflight(grant=grant, pending_contract=pending, scope=scope)
         pending_record["required_command"] = (
             "PYTHONPATH=. python3 campaign_src04_completion/empirical/run_native_workload.py "
-            "--mode execute --parquet-root <exact-parquet-root> --release-id <exact-release-id> "
-            "--semantic-hash <exact-semantic-hash> --source-sha "
-            "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18 "
+            "--mode execute --carrier-receipt <LOCAL_RELEASE_RECEIPT.json> "
+            "--carrier-receipt-sha256 <exact> --release-receipt <RELEASE_RECEIPT.json> "
+            "--release-receipt-sha256 <exact> --primary-run <PRIMARY_RUN.json> "
+            "--primary-run-sha256 <exact> "
+            "--source-sha 2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18 "
             "--consumer"
         )
         pending_record["consumer_path"] = {
@@ -147,12 +162,28 @@ def run_execute(
         return 0
     if source_sha256 != SOURCE_SHA256:
         raise NativeWorkloadRefusal("SOURCE_SHA_MISMATCH", source_sha256)
-    release = load_parquet_release(
-        root=parquet_root,
-        source_sha256=source_sha256,
-        release_id=release_id,
-        semantic_hash_value=semantic_hash_value,
-    )
+    if carrier_receipt is not None:
+        if release_receipt is None or primary_run is None:
+            raise NativeWorkloadRefusal("ACTUAL_CARRIER_RECEIPT_SET_INCOMPLETE")
+        if not all((carrier_receipt_sha256, release_receipt_sha256, primary_run_sha256)):
+            raise NativeWorkloadRefusal("ACTUAL_CARRIER_RECEIPT_HASHES_REQUIRED")
+        release = load_actual_carrier_release(
+            local_receipt_path=carrier_receipt,
+            release_receipt_path=release_receipt,
+            primary_run_path=primary_run,
+            bundle_dir=bundle_dir,
+            expected_source_sha256=source_sha256,
+            local_receipt_sha256=carrier_receipt_sha256,
+            release_receipt_sha256=release_receipt_sha256,
+            primary_run_sha256=primary_run_sha256,
+        )
+    else:
+        release = load_parquet_release(
+            root=parquet_root,
+            source_sha256=source_sha256,
+            release_id=release_id,
+            semantic_hash_value=semantic_hash_value,
+        )
     issued = issue_authorized_execution(
         grant=grant, release=release, pending_contract=pending, policy=policy)
     workload = execute_issued(
@@ -211,6 +242,13 @@ def main(argv=None) -> int:
     parser.add_argument("--parquet-root", default=None)
     parser.add_argument("--release-id", default=None)
     parser.add_argument("--semantic-hash", default=None)
+    parser.add_argument("--carrier-receipt", default=None)
+    parser.add_argument("--carrier-receipt-sha256", default=None)
+    parser.add_argument("--release-receipt", default=None)
+    parser.add_argument("--release-receipt-sha256", default=None)
+    parser.add_argument("--primary-run", default=None)
+    parser.add_argument("--primary-run-sha256", default=None)
+    parser.add_argument("--bundle-dir", default=None)
     parser.add_argument("--source-sha", default=SOURCE_SHA256)
     parser.add_argument("--start-after", default=None)
     parser.add_argument("--consumer", action="store_true")
@@ -228,11 +266,18 @@ def main(argv=None) -> int:
             parquet_root=Path(args.parquet_root) if args.parquet_root else None,
             release_id=args.release_id,
             semantic_hash_value=args.semantic_hash,
+            carrier_receipt=Path(args.carrier_receipt) if args.carrier_receipt else None,
+            release_receipt=Path(args.release_receipt) if args.release_receipt else None,
+            primary_run=Path(args.primary_run) if args.primary_run else None,
+            bundle_dir=Path(args.bundle_dir) if args.bundle_dir else None,
+            carrier_receipt_sha256=args.carrier_receipt_sha256,
+            release_receipt_sha256=args.release_receipt_sha256,
+            primary_run_sha256=args.primary_run_sha256,
             source_sha256=args.source_sha,
             start_after_operation_id=args.start_after,
             run_consumer=args.consumer,
         )
-    except (NativeWorkloadRefusal, AuthorizedExecutionRefusal) as exc:
+    except (NativeWorkloadRefusal, AuthorizedExecutionRefusal, ActualCarrierRefusal) as exc:
         print(json.dumps({"status": "REFUSED", "actual_code": exc.code, "detail": exc.detail}, indent=2))
         return 2
 
