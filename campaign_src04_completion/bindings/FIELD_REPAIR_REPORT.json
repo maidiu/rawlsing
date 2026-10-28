@@ -1,0 +1,214 @@
+{
+  "schema": "PYAT_SRC04_FIELD_REPAIR_REPORT@1.0.0",
+  "source_id": "SRC04",
+  "status": "CONFIG_REPAIRED_AWAITING_FULL_SOURCE_GRANT",
+  "old_config_path": "rawlsing_next/source_configuration/data/SRC04/source.config.json",
+  "old_config_canonical_sha256": "0e86814b62eb51dc9da22793b6de3e3598c3415632accb80f33bac965185f284",
+  "old_config_file_sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900",
+  "repaired_config_path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.json",
+  "repaired_config_canonical_sha256": "78c6b9fb7a7a2c67bd30ac0dd08abb0bf02120106d63bca3f89cee7f76408356",
+  "repaired_config_file_sha256": "e260d4a00403a96cc965f9c5166a5d992fba2c85d578b6daa530ecbf1f45b21d",
+  "ledger_path": "campaign_src04_completion/bindings/FIELD_REPAIR_LEDGER.json",
+  "ledger_sha256": "6e6af3366904fa5f565fb4583e077f922b32139116185645e8c39b2f35cd222b",
+  "repairs": {
+    "q235": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q236": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q237": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q238": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q239": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q240": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q241": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q242": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q243": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q244": {
+      "kind": "ADD_EXACT_SCALE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q715incomedeciles": {
+      "kind": "ADD_DECILE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q716incomedeciles": {
+      "kind": "ADD_DECILE_CODES",
+      "added": 8,
+      "codes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "q701": {
+      "kind": "ADD_SYSTEM_MISSING_COORDINATE_RULE",
+      "added": 1
+    }
+  },
+  "unresolved_fields": [
+    "q217",
+    "q715withoutmorocco",
+    "q716withoutmorocco"
+  ],
+  "counts": {
+    "physical_slots": 181,
+    "old_responses": 178,
+    "new_responses": 178,
+    "old_coordinates": 3,
+    "new_coordinates": 3,
+    "repaired_fields": 13,
+    "unresolved_fields": 3
+  },
+  "validation": {
+    "schema_validation": "PASSED",
+    "native_original_qualification": "NOT_RUN_NO_FULL_SOURCE_GRANT"
+  },
+  "commands": [
+    "PYTHONPATH=. python3 campaign_src04_completion/bindings/source_config_repair.py",
+    "PYTHONPATH=. python3 -m pytest campaign_src04_completion/bindings/test_source_config_repair.py -q -o addopts=''"
+  ],
+  "limits": [
+    "No original SAV stat/hash/open/decode occurred in this lane; Campaign A retained metadata/selection evidence was used.",
+    "No respondent rows or raw unbound cells are present in this ledger.",
+    "Schema validation is not native original-source qualification; the full-source grant remains pending."
+  ]
+}
