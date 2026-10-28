@@ -1,0 +1,81 @@
+{
+  "schema": "PYAT_SRC04_LANE_C_TEST_RESULTS@2.0.0",
+  "native_workload_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/test_native_workload.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      ".....                                                                    [100%]",
+      "5 passed in 9.00s"
+    ],
+    "count": 5
+  },
+  "observed_response_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_observed_response.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      ".............                                                            [100%]",
+      "13 passed in 3.09s"
+    ],
+    "count": 13
+  },
+  "i03_regression_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_i03_scale_equivalence_repair.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      ".......................................                                  [100%]",
+      "39 passed in 0.85s"
+    ],
+    "count": 39
+  },
+  "consumer_regression_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_pre553_candidate_c_production_binding.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      ".................                                                        [100%]",
+      "17 passed in 1.61s"
+    ],
+    "count": 17
+  },
+  "code_hashes": {
+    "campaign_src04_completion/empirical/native_workload.py": "4e3d4b821720a406d7c403a29f4da9f55b775b6eeec1beb353b60c16fc14c5cd",
+    "campaign_src04_completion/empirical/run_native_workload.py": "82b694a4a24f056a9bfd2f3441a6d601b595d445b5c7a1ed4951cfa3060f3e6a",
+    "campaign_src04_completion/empirical/fixture_native_workload_evidence.py": "2acd192c7ce9233a33a36d37a34016b1394ce3c3342863fc78aa749053d10ed3",
+    "campaign_src04_completion/empirical/build_scope_and_contract_v2.py": "83f7c3c64511203fd9342bc4f88ff2d5451db4cf886824d0dbe91fc8bbfd1b55",
+    "campaign_src04_completion/empirical/test_native_workload.py": "a0c167cf2ffcfc3e7e6df4bbbec9ae5bfe2047ce74ae3fd6dcae32e2d76312d1",
+    "rawlsing_next/pre553_observed_response.py": "47df4b41a29a6c34667708d949ff77d1f563ec6cde6db88e84377d7a72ee62ff",
+    "rawlsing_next/_pre553_query_common.py": "c6f1d41ad72a578cad73ab0570157217757d949f11fb92def7d364b776bafa72",
+    "rawlsing_next/_pre553_query_eval.py": "b8b64c7568ac49ed4c8c7e1489935403597b9a2b3faffb9e44efe75ae3261e8a",
+    "rawlsing_next/pre553_empirical_query.py": "4d6b33405d477efefbc7f1274b7165c7ff530fb38efabdf324f2e81acd7228cd",
+    "rawlsing_next/tests/test_observed_response.py": "abf7fe1c6348dae0e2d9cd6d57958fcf8495267fd57a933eda01f79855a0eb91"
+  },
+  "artifacts": {
+    "campaign_src04_completion/empirical/SCOPE_LEDGER_V2.json": "0a57024ead261d8c9f26e2415eb6cd6ae9aaacf98ceb7600340fe3995533ee1e",
+    "campaign_src04_completion/empirical/CONTRACT_APPROVAL_READY_V2.json": "7cb4a1e7a3a96c588e33c2a231392014702ab39344ab8c6a77d69bbf9ff469e3",
+    "campaign_src04_completion/empirical/NATIVE_WORKLOAD_PLAN_V2.json": "efcdb4bfce9df11b6f230f01b81fc58dd25fb121a8e8a387ae4baa2d60161c40",
+    "campaign_src04_completion/empirical/NATIVE_WORKLOAD_EVIDENCE.json": "52a278200775fc56cb05a600e99782f329ec7f7834037ccea8ab8f68e9fc2783",
+    "campaign_src04_completion/empirical/NATIVE_WORKLOAD_REFUSAL.json": "c851473d5098272a2a1b2d26d9f03c949a5f63e6f94934a0bec5a50a55b35095",
+    "campaign_src04_completion/empirical/ISSUER_PROPOSITION_V2.json": "e149008f8c6e7fae7d9e4e85af84902d5d1954eaf7e777243125373c3abc5ebc",
+    "campaign_src04_completion/empirical/NATIVE_WORKLOAD_API.md": "be024fb8e697bc6557209c22681a535e749a634839f3745c6f4e3f475e298ba8"
+  },
+  "fixture": {
+    "scope": "SRC04_NONRESPONDENT_FIXTURE_ONLY",
+    "operations_built": 44,
+    "operations_executed": 44,
+    "operations_refused": 0,
+    "by_family": {
+      "BIDIRECTIONAL_CONDITIONAL_DISTRIBUTION": 38,
+      "SAME_RESPONDENT_JOINT_DISTRIBUTION": 3,
+      "UNARY_OBSERVED_DISTRIBUTION": 3
+    },
+    "resume_after_one": 43
+  },
+  "original_source_io": {
+    "status": "NONE",
+    "source_read_performed": false
+  },
+  "limits": [
+    "Nonrespondent engineering evidence only; original execution remains blocked on full release and exact authority.",
+    "No respondent rows or member lists are committed.",
+    "No canonical, weight, population, structural, I03 issuance or I05 product claim."
+  ]
+}
