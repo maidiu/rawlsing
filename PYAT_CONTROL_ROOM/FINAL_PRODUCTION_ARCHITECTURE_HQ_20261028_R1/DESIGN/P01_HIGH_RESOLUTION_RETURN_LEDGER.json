@@ -33,7 +33,7 @@
   ],
   "scope": "Current verified I02 core code plus sourcefree tests; this list is OPEN engineering attention, not evidence each point is unimplemented in every branch or scientifically undecided.",
   "enforcement": "Before closing any item, attach exact current SHA, responsible code, independent positive/negative oracle and receiving consumer; never close by worker assertion or historical receipt alone.",
-  "total": 36,
+  "total": 37,
   "entries": [
     {
       "id": "S2-HR-001",
@@ -646,11 +646,28 @@
         "DESIGN/P01_S3_ACCEPTANCE_AND_DIFFERENTIAL_MATRIX_R1.md"
       ],
       "s3_disposition": "NO_ACTUAL_NEW_PATH_TEST_OR_REVIEW; FOLLOW EXACT CLOSURE IN original ledger and B ticket"
+    },
+    {
+      "id": "S2-HR-037",
+      "title": "physical decoder pathname change between source SHA and streamed cells",
+      "severity": "CRITICAL",
+      "owner": "HQ P01 + qualified source byte custody owner",
+      "source": "rawlsing_next/pre553_physical_decoder.py:439–521 _decode verifies _sha at 451; PhysicalSourceIncidence.iter_batches 108–149 may reopen _source_path via pyreadstat later; blobs d2a074a41fb556a1cd5928a5fe1421ef3672a4e5",
+      "question": "What exact approved immutable source snapshot/lease binds the hashed file bytes to all subsequent iter_batches cells, even when compatibility reader reopens a pathname? Before/after hash alone is weaker than immutable custody.",
+      "closure": "Exact source owner grants approved immutable path/snapshot+source read, byte SHA and row/slot consistency; controlled mutation-after-_decode must refuse any qualified view; test-only synthetic modes distinct; no private data in repo.",
+      "status": "SPECIFIED_FOR_IMPLEMENTATION__EVIDENCE_REQUIRED",
+      "s3_owner_ticket": "B03",
+      "s3_dossier_paths": [
+        "DESIGN/P01_S3_SOURCE_BYTE_ATTESTATION_AND_DECODER_R1.md",
+        "CODEX_BUILD_ORDERS/P01_S3_BUILD_A_FOUNDATIONS.md"
+      ],
+      "s3_disposition": "Hard real-source source-admission seam, not proven/tested under original bytes"
     }
   ],
   "s3_mapping_completed": "2026-10-28",
   "s3_source_design_head_note": "Refresh design head; no code receipts",
   "s3_unmapped_items": [],
-  "s3_total_items": 36,
-  "s3_implementation_dag": "IMPLEMENTATION/P01_S3_EXECUTION_DAG.json"
+  "s3_total_items": 37,
+  "s3_implementation_dag": "IMPLEMENTATION/P01_S3_EXECUTION_DAG.json",
+  "source_decoder_addendum": "DESIGN/P01_S3_SOURCE_BYTE_ATTESTATION_AND_DECODER_R1.md"
 }
