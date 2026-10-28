@@ -11,7 +11,7 @@
   },
   "branch": "agent/pyat-src04-observed-empirical-20261028",
   "startup_commit": "1f1794d3f7a04957dd7702f28c7841b9fe0a28aa",
-  "code_commit": "f74929baa6d1034307c6da75e539559891403c3e",
+  "code_commit": "a3f13a23501158cb8b80f1e77f1b23141cd771da",
   "return_commit": "commit containing this file; direct remote readback in final response",
   "status": "AUTHENTICATED_GRANT_ISSUER_EXECUTOR_READY__FULL_RELEASE_INPUT_PENDING",
   "author_result_is_candidate": true,
@@ -86,8 +86,8 @@
   },
   "tests": {
     "path": "campaign_src04_completion/empirical/TEST_RESULTS_V3.json",
-    "sha256": "50186c5b4e16df91911c02cfd9cdfa16e87d7d6badf118e780880d953ecc94b2",
-    "authorized_execution": "6 passed in 2.61s",
+    "sha256": "67022dc592d4576a509c779548b9e79c12521aea1023b0394075c031976db983",
+    "authorized_execution": "6 passed in 2.19s",
     "observed_response": "13 passed in 3.41s",
     "i03_regression": "39 passed in 0.92s",
     "consumer_regression": "17 passed in 1.89s",
@@ -130,7 +130,7 @@
     {
       "path": "campaign_src04_completion/empirical/TEST_RESULTS_V3.json",
       "bytes": 4438,
-      "sha256": "50186c5b4e16df91911c02cfd9cdfa16e87d7d6badf118e780880d953ecc94b2"
+      "sha256": "67022dc592d4576a509c779548b9e79c12521aea1023b0394075c031976db983"
     },
     {
       "path": "campaign_src04_completion/empirical/authorized_execution.py",
@@ -149,8 +149,8 @@
     },
     {
       "path": "campaign_src04_completion/empirical/run_native_workload.py",
-      "bytes": 10050,
-      "sha256": "a4b74c9079d4c46fe09557ceb87d07e64f158331cfe5eee730dd0e756a2f5694"
+      "bytes": 10293,
+      "sha256": "79b186b84f45c9374b78b23f72225cbed992176071652c8e997e4d679d5a54fa"
     },
     {
       "path": "campaign_src04_completion/empirical/test_authorized_execution.py",
@@ -190,5 +190,9 @@
     "The fixture/source-literal unit probe is engineering discrimination only, not original SRC04 qualification.",
     "The 3 residual response fields and 3 coordinate roles remain explicit; ser is identity only."
   ],
-  "next_consumer": "After the actual full native release exists, run the exact execute command with --consumer; then Lane D may consume exact facts and required discovery at SOURCE_LOCAL_STATISTIC grade."
+  "next_consumer": "After the actual full native release exists, run the exact execute command with --consumer; then Lane D may consume exact facts and required discovery at SOURCE_LOCAL_STATISTIC grade.",
+  "code_commit_sequence": [
+    "f74929baa6d1034307c6da75e539559891403c3e",
+    "a3f13a23501158cb8b80f1e77f1b23141cd771da"
+  ]
 }
