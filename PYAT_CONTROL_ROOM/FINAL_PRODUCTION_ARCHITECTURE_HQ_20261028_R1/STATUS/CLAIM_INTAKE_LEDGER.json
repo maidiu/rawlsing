@@ -153,8 +153,40 @@
       "source": "STATUS/P06_HQ_DIRECT_EVIDENCE_AND_LIMITATIONS_RECEIPT.json; p06_authority37_independent_invariants_oracle.py SHA256 69c9ded...",
       "result": "Five independent mathematical fixtures PASS for J2/J3, multi-label patterns, branch roles, thresholds, and dependency-selective identity",
       "limits": "Not actual C01R2 or original SAV; no fresh independent admission"
+    },
+    {
+      "id": "HQ-CROSS-BRANCH-01",
+      "epistemic": "DIRECT_GITHUB_FULL_PAGINATED_HEAD_CENSUS",
+      "acceptance": "ACCEPT_HEADS_ONLY",
+      "source": "CROSS_BRANCH_INHERITANCE/CENSUS_PART_01_10.json; CENSUS_PART_11_20.json; CENSUS_PART_21_29.json",
+      "claim": "2831 remote branch names, 2743 distinct tip SHA heads; 29 paginated full result pages, page30 empty",
+      "limits": "Names and refs do not establish source/code/test/adoption/capability, not atomic across pages"
+    },
+    {
+      "id": "HQ-CROSS-BRANCH-02",
+      "epistemic": "DIRECT_GITHUB_COMPARE",
+      "acceptance": "ACCEPT_ANCESTRY_ONLY",
+      "source": "CROSS_BRANCH_INHERITANCE/INTEGRATION_COMPARE_01..04.json",
+      "claim": "31 integration/main compared to current PREMAIN: 20 behind, 1 identical, 10 diverged",
+      "limits": "Divergence does not prove functional changes missing; cherry picks/equivalent rewrites possible"
+    },
+    {
+      "id": "HQ-CROSS-BRANCH-03",
+      "epistemic": "DIRECT_CODE_AND_REVIEWED_RETURN",
+      "acceptance": "ACCEPT_SOURCEFREE_SCOPED",
+      "source": "WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/00_RETURN.md at branch 3f91dc22d2eb; independent review 73d45f3",
+      "claim": "Existing new V2 checkpoint+consumer candidate with 3 sourcefree FF consumers, full fixture replay and independent review at supported source-free scope",
+      "limits": "No original SRC04 streaming fix/source permission implied"
+    },
+    {
+      "id": "HQ-CROSS-BRANCH-04",
+      "epistemic": "DIRECT_SOROK_BRANCH_RETURN",
+      "acceptance": "ACCEPT_TEST_ONLY_SCOPE",
+      "source": "WORKER_RETURNS/SOROK-V2-HQ329-B3-COUPLED-INTERPRETATION-R1/00_RETURN.md",
+      "claim": "Sorok B3 runnable sourcefree multi-stage development, 71 new passes/42 F2 sourcefree cases",
+      "limits": "Original F1 17 red, M2 3 source-preimage red; test-only practice, unreviewed I2, no Rule A/T original issuance"
     }
   ],
-  "HQ_direct_next": "P06 fresh independent WaveVIII readmission is highest exact unproved P06 source gate; no duplicate controller. Other P07/P08 fronts only with their actual FF/native owner boundaries.",
+  "HQ_direct_next": "Cross-branch source/code inheritance currentness and P05 HQ282 reuse-first, P06 C01R2 fresh source admission; Sorok resource direct HQ.",
   "further_high_resolution": "P01 37; P03 33; P04 35; P05 38; P06 40 open, all separate owner/test scopes"
 }
