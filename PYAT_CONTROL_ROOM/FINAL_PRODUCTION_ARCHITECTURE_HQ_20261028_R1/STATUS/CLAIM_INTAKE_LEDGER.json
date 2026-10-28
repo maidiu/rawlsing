@@ -65,8 +65,32 @@
       "source": "STATUS/P01_S3_HQ_IMPLEMENTATION_SPEC_RECEIPT.json",
       "result": "Nine source-controlled coding tickets with all 37 deep-issue mappings and 41 planned differential tests",
       "limits": "No new I02 validator/view code, acceptance or host performance; sourcefree old baseline rechecked only."
+    },
+    {
+      "id": "HQ-P04-01",
+      "epistemic": "DIRECT_CURRENT_CONTROL_CODE",
+      "acceptance": "ACCEPT_BOUNDED",
+      "source": "DESIGN/P04_S1_HQ_PROVENANCE_REPLAY_DECISION_R1.md",
+      "claim": "Current I03 retains complete validated objects but downstream used-object access in native fact construction is by exact ref; full C11 replay object included in used provenance for ref",
+      "limits": "Full current-control runtime and every unlisted consumer not scanned"
+    },
+    {
+      "id": "HQ-P04-02",
+      "epistemic": "EXECUTED_SOURCEFREE_NATIVE_I01_AND_PACKET_HELPER",
+      "acceptance": "ACCEPT_BOUNDED",
+      "source": "PYAT_P04_HQ_S0_S1_S2_20261028.zip/P04_SOURCEFREE_PROBE_OUTPUT.json",
+      "claim": "64 duplicate/order native I01 Fact identity comparisons PASS; changed provenance, member refs and zero cells change fact identity",
+      "limits": "Not current-control full I03 or new engine test"
+    },
+    {
+      "id": "HQ-P04-03",
+      "epistemic": "SYNTHETIC_TRACEMALLOC",
+      "acceptance": "INFERENCE_ONLY_NO_PRODUCTION_ECONOMICS",
+      "source": "PYAT_P04_HQ_S0_S1_S2_20261028.zip/P04_SYNTHETIC_RETENTION_RESULT.json",
+      "claim": "Artificial 18K temporary-object memory probe 13.48 MB retained bodies vs 7.37MB exact refs",
+      "limits": "Synthetic payload, no original Mac/native I03 performance measurement"
     }
   ],
-  "HQ_direct_next": "P01 implementation by appropriately qualified Codex; Browser HQ direct architecture next P03/P04 with consumer and replay dependence.",
-  "further_high_resolution": "DESIGN/P01_HIGH_RESOLUTION_RETURN_LEDGER.json (37 unresolved items)"
+  "HQ_direct_next": "P05 consumer-first and exact resume fidelity; source owner grants separate",
+  "further_high_resolution": "P01 37 open in Git, P03 33 open in archive, P04 35 open Git index and full archive"
 }
