@@ -1,0 +1,89 @@
+{
+  "decision": "ACCEPT_D1_OBSERVED_SAMPLE_DESCRIPTIVE_TALLY",
+  "review_commit": "5f6e0349349534eee6e2f46fc18ceb5b4a1e7d82",
+  "review_remote_verified": true,
+  "candidate": {
+    "head": "af18287a5a5c3a01f0ce993b43e6808aad701b6a",
+    "head_subject": "Merge commit 'e1a57513196be0af1c68ae66d569e8c2d39a2fc1' into agent/pyat-d1-src04-observed-tally-review",
+    "merge_parents": [
+      "ccc268b7c02d46e500bb81a9b2c16d800e2c8db1",
+      "e1a57513196be0af1c68ae66d569e8c2d39a2fc1"
+    ],
+    "author_branch": "agent/pyat-d1-src04-observed-tally",
+    "author_remote_sha": "e1a57513196be0af1c68ae66d569e8c2d39a2fc1",
+    "artifact_commit": "a0bf1919646bcc6f822be54ef90ebd2447569bfb",
+    "review_branch": "agent/pyat-d1-src04-observed-tally-review",
+    "control_commit": "3b703e878946a442b5c880f318b929365865ed00",
+    "grant_sha256": "f51de87818f8fd1365d347da3aee73005fe9ab8ae0c8d2a607487395016d48ae",
+    "program_sha256": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50"
+  },
+  "product_identity": {
+    "tally_ref": "87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022",
+    "replay_ref": "8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f",
+    "product_sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "source_records": 7337,
+    "source_columns": 181,
+    "accepted_fields": 42,
+    "held_fields": [],
+    "event_presence_count": 308154,
+    "observed_response_denominator_total": 298819,
+    "answered_substantive_denominator_total": 277582,
+    "missing_or_unobserved_total": 9335,
+    "state_totals": {
+      "SUBSTANTIVE_RESPONSE": 277582,
+      "DK": 14784,
+      "SOURCE_SPECIFIC_SPECIAL": 6453,
+      "MISSING": 9335
+    },
+    "routing_state": "ROUTING_UNKNOWN",
+    "canonicalization": "WITHHELD_DEFER_NO_SCIENTIFIC_ALLOW",
+    "weight_facts": 0,
+    "typed_product": "PYAT_D1_SRC04_OBSERVED_SAMPLE_TALLY@1.0.0",
+    "not_issued_i03_empirical_fact": true
+  },
+  "affected_repairs_passed": [
+    "D1-D01",
+    "D1-D02",
+    "D1-D03"
+  ],
+  "independent_baseline_sha256_verified": "a601fcfc022c06a373a339a0e045466c70d644c1fc91736c66e7684b77d4e699",
+  "retained_evidence": [
+    {
+      "path": "PYAT_CONTROL_ROOM/D1_SRC04_TALLY_ACCEPTANCE/DISPOSITION.json",
+      "sha256": "0d480ea9f055768bf75f603d3db16709f666c1e1cfd5f7f696dbe7bb46598a0f"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/D1_SRC04_TALLY_ACCEPTANCE/REVIEW.md",
+      "sha256": "50c3cd4a5f97867badf72b2bd10bba15b1008903deac54c5bb7b179e1db4d20b"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/D1_SRC04_TALLY_ACCEPTANCE/FOCUSED_RECHECK.json",
+      "sha256": "3b2357fc07ee33125a0805dcd10d970493902afebeb8576b70f6059cb416ae79"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/D1_SRC04_TALLY_ACCEPTANCE/FOCUSED_RECHECK.md",
+      "sha256": "4d419e018ce575a5e0f4c1fb750660982ce894aa425b21dc590e089523e844fa"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/D1_SRC04_TALLY_ACCEPTANCE/independent_tally.json",
+      "sha256": "a601fcfc022c06a373a339a0e045466c70d644c1fc91736c66e7684b77d4e699"
+    }
+  ],
+  "limits": {
+    "original_sav_reread": false,
+    "other_original_data_read": false,
+    "local_c11_bundle_consumed": true,
+    "respondent_cells_in_git_or_reports": false,
+    "i03_executed": false,
+    "i05_executed": false,
+    "canonical_semantic_ALLOW_claimed": false,
+    "weight_or_population_claim": false,
+    "m2_m3_f1_f4_claimed": false,
+    "routing_state": "ROUTING_UNKNOWN",
+    "authority_state": "DEFER"
+  },
+  "highest_numbered_milestone": "M1; D1 descriptive output and two-familyC11 accepted, notM2/M3 or properI03positive",
+  "next_edge": "Bounded higher-level assessment of next already-authorized operation versus indispensable exact empirical issuance grant; no authority invented.",
+  "heartbeat": "PAUSED"
+}
