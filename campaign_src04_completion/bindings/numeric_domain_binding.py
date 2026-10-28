@@ -148,13 +148,14 @@ def write_v2_config() -> dict[str, Any]:
 def apply_observed_domain(config: SourceConfig | Mapping[str, Any], cells: Any) -> dict[str, Any]:
     """Apply exact observed numeric value rules to the two target income slots.
 
-    This is the transport-content step; public identity checks are in
-    build_numeric_domain_runtime_config.
+    Single pass over the supplied iterable; each cell is routed by its exact
+    physical slot key.  This is safe for generator/iterator transports.
     """
     doc = _doc(config)
     phys = {p["name"]: p for p in doc["physical_slots"]}
     counts: dict[str, int] = {}
     states: dict[str, set[str]] = {slot: set() for slot in TARGET_SLOTS}
+    prepared: dict[tuple[int, str], dict[str, Any]] = {}
     for slot_name in TARGET_SLOTS:
         slot = next((s for s in doc["response_slots"] if s["slot"]["name"] == slot_name), None)
         if slot is None:
@@ -162,37 +163,45 @@ def apply_observed_domain(config: SourceConfig | Mapping[str, Any], cells: Any) 
         existing = {physical_value_binding_key(v["raw_value"], PhysicalMissingState(v["missing_state"]),
                                                v.get("source_missing_declaration")):
                     v for v in slot["values"]}
-        template = deepcopy(slot["values"][0])
-        for cell in cells:
-            if (getattr(cell, "variable_ordinal", None), getattr(cell, "variable_name", None)) != (
-                    slot["slot"]["ordinal"], slot_name):
-                continue
-            state = getattr(cell, "missing_state", None)
-            declaration = getattr(cell, "source_missing_declaration", None)
-            raw = getattr(cell, "raw_value", None)
-            states[slot_name].add(str(state))
-            key = physical_value_binding_key(raw, state, declaration)
-            if key in existing:
-                continue
-            if state is not PhysicalMissingState.OBSERVED_STORAGE_VALUE:
-                raise NumericDomainBindingError(
-                    f"unbound missing state for {slot_name}: {state!r} declaration={declaration!r}")
-            label = _label_for(phys[slot_name], raw)
-            semantic = _state_for_label(label)
-            if semantic != "SUBSTANTIVE_RESPONSE":
-                raise NumericDomainBindingError(
-                    f"special stored value for {slot_name} lacks an existing rule: {raw!r} label={label!r}")
-            rule = deepcopy(template)
-            rule["raw_value"] = raw
-            rule["missing_state"] = "OBSERVED_STORAGE_VALUE"
-            rule["source_missing_declaration"] = declaration
-            rule["response_state"] = "SUBSTANTIVE_RESPONSE"
-            # Preserve the exact literal raw value; do not claim a canonical semantic mapping.
-            rule["canonical_value"] = None
-            rule["transform_authority_ref"] = None
-            slot["values"].append(rule)
-            existing[key] = rule
-            counts[slot_name] = counts.get(slot_name, 0) + 1
+        prepared[(slot["slot"]["ordinal"], slot_name)] = {
+            "slot": slot,
+            "existing": existing,
+            "template": deepcopy(slot["values"][0]),
+        }
+    for cell in cells:
+        key = (getattr(cell, "variable_ordinal", None), getattr(cell, "variable_name", None))
+        target = prepared.get(key)
+        if target is None:
+            continue
+        slot_name = key[1]
+        slot = target["slot"]
+        existing = target["existing"]
+        state = getattr(cell, "missing_state", None)
+        declaration = getattr(cell, "source_missing_declaration", None)
+        raw = getattr(cell, "raw_value", None)
+        states[slot_name].add(str(state))
+        physical_key = physical_value_binding_key(raw, state, declaration)
+        if physical_key in existing:
+            continue
+        if state is not PhysicalMissingState.OBSERVED_STORAGE_VALUE:
+            raise NumericDomainBindingError(
+                f"unbound missing state for {slot_name}: {state!r} declaration={declaration!r}")
+        label = _label_for(phys[slot_name], raw)
+        semantic = _state_for_label(label)
+        if semantic != "SUBSTANTIVE_RESPONSE":
+            raise NumericDomainBindingError(
+                f"special stored value for {slot_name} lacks an existing rule: {raw!r} label={label!r}")
+        rule = deepcopy(target["template"])
+        rule["raw_value"] = raw
+        rule["missing_state"] = "OBSERVED_STORAGE_VALUE"
+        rule["source_missing_declaration"] = declaration
+        rule["response_state"] = "SUBSTANTIVE_RESPONSE"
+        # Preserve the exact literal raw value; do not claim a canonical semantic mapping.
+        rule["canonical_value"] = None
+        rule["transform_authority_ref"] = None
+        slot["values"].append(rule)
+        existing[physical_key] = rule
+        counts[slot_name] = counts.get(slot_name, 0) + 1
     return {"config": doc, "added_rule_counts": counts,
             "observed_missing_states": {k: sorted(v) for k, v in states.items()}}
 

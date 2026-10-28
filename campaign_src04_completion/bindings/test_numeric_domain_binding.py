@@ -50,6 +50,12 @@ def test_apply_preserves_literal_values_and_existing_special_states():
     assert special["response_state"] == "REFUSAL"
 
 
+def test_single_pass_iterator_covers_both_income_fields():
+    applied = N.apply_observed_domain(BASE, iter(_cells()))
+    assert applied["added_rule_counts"].get("q715withoutmorocco", 0) >= 2
+    assert applied["added_rule_counts"].get("q716withoutmorocco", 0) >= 2
+
+
 def test_added_literal_values_have_distinct_physical_keys():
     applied = N.apply_observed_domain(BASE, _cells())
     for name in N.TARGET_SLOTS:
@@ -244,7 +250,7 @@ def test_nonrespondent_numeric_domain_fixture_native_validation():
     fixture_sha = fixture_document_sha256(doc)
     doc["fixture_source_sha256"] = fixture_sha
     cfg = _fixture_base(fixture_sha, rows)
-    stream = ExactPhysicalCellStream(source_sha256=fixture_sha, row_count=rows, cell_iter_factory=lambda: tuple(
+    stream = ExactPhysicalCellStream(source_sha256=fixture_sha, row_count=rows, cell_iter_factory=lambda: (
         PhysicalCell(c["row_ordinal"], c["variable_ordinal"], c["variable_name"], c["raw_value"],
                      PhysicalMissingState(c["missing_state"]), c["source_missing_declaration"]) for c in cells))
     from rawlsing_next.source_configuration.schema import canonical_config_hash
