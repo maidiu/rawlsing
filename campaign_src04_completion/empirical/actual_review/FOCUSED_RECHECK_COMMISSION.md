@@ -1,0 +1,9 @@
+# Focused recheck: exactly two repaired defects
+
+Same distinct reviewer, same review branch. Repair code d03a1d78d488807b6b946e000df10c1c88dc4bea; read CARRIER_REPAIR_RETURN.json for pinned full return. Candidate files joined, previous REVIEW/measurements/discriminator tests preserved unchanged. Verify closure of FIXTURE_ISSUER_EXECUTOR_D_PATH_MISSING and CARRIER_REFUSAL_TYPING_GAP only; no new general court.
+
+Independently execute the labelled fixture through actual adapter -> fixture-scoped issuer -> executor -> accepted D consumer and verify exact native distributions, both conditional directions and joint counts/denominators, observed provenance, fixture-only scope and changed-value/restoration. Verify malformed/truncated/missing pinned carrier/receipt files now have typed refusals, while intact carrier works and original-source identity/permission gates remain strict. Frozen DEFECT tests are historical witnesses and must not be rewritten; add successor checks proving repaired behavior. An intentional skip is not a passed requirement: inspect whether the required successor actually runs and supplies proof. No original source read or original workload in this recheck.
+
+Original source release is now independently accepted: control PYAT_CONTROL_ROOM/SRC04_ORIGINAL_NATIVE_RELEASE_SCOPED_ACCEPTANCE.json, release 9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1, 177 responses + 3 coordinates / 7337 rows, q217 held. Do not requalify it. Your scoped engineering PASS enables the existing author to execute the authorized original workload against that exact accepted release.
+
+Write only empirical/actual_review/**; author/consumer/native code read only. Return FOCUSED_RECHECK.json with measured PASS_SCOPED_CHANGED_ISSUER_CARRIER_BOUNDARY or precise remaining demonstrated defect, exact candidate hashes, actual commands/results and limits. Commit/push/direct-remote verify. Same model/provider/session, no new workers or polling.
