@@ -1,25 +1,25 @@
 {
-  "artifact_commit": "d119e0a860af5b934ccc83389773232d5f02a923",
+  "artifact_commit": "40e46b4ef949d9e615cb278712d54cec7a8198c6",
   "artifact_manifest": [
     {
-      "bytes": 42131,
+      "bytes": 46373,
       "path": "campaign_src04_completion/release/full_runner.py",
-      "sha256": "67d39392fbcf9040c3a7ef6454c81b2c3162f6d2748f642a8faf86a6743269f6"
+      "sha256": "97daae3d152bead8e3f39a95eae28bf691d53b716f2112eb85992701576b712d"
     },
     {
-      "bytes": 4285,
+      "bytes": 7780,
       "path": "campaign_src04_completion/release/tests/test_full_runner.py",
-      "sha256": "6c1d3bd6edca33313aa5093b25f549335d11b2ab8a3a65438800cacb7e78e7bb"
+      "sha256": "06962ec232785fad0885a0d93a0fc90006cb78668a731e8fc71700b1e92d6e80"
     },
     {
-      "bytes": 2675,
+      "bytes": 3735,
       "path": "campaign_src04_completion/release/README.md",
-      "sha256": "6a7389bae00cc954df015d53b4da23a198bc0796dddef7a9e72634cc4280448e"
+      "sha256": "ba2966e9b2b9a5a5048c29116ed4cbb6fe6f42edf1047835ab11fa5e1c2e5573"
     },
     {
-      "bytes": 1339,
+      "bytes": 1469,
       "path": "campaign_src04_completion/release/COMMANDS.md",
-      "sha256": "e7053277a826c1d68bbabcc6ba54f6ada28b429704dc40ba78cbf932673a55a6"
+      "sha256": "2d2ff0dd64d4cbe188fc7f36e7e0c61f73bc24f0a16ac2e5d046d0139359d5b8"
     },
     {
       "bytes": 26226,
@@ -27,9 +27,9 @@
       "sha256": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50"
     },
     {
-      "bytes": 3515,
+      "bytes": 4197,
       "path": "campaign_src04_completion/release/evidence/SCOPE_PREPARATION.json",
-      "sha256": "e221f1ee962e3ffc0e30c8afe273008dbb190af77d7ec41d49eba66188f4799e"
+      "sha256": "ed5b67c4c1728ddd8704d3ec33692979de296481582e4e0bb15431318c60173d"
     },
     {
       "bytes": 1679,
@@ -57,9 +57,9 @@
       "sha256": "5dabf7f929bcda57d9b0fde3186286b12b822c32c90d6eb90037469a1c1d43f8"
     },
     {
-      "bytes": 4606,
+      "bytes": 5308,
       "path": "campaign_src04_completion/release/evidence/PRIMARY_RUN.json",
-      "sha256": "72480722fe48e2b7996364bd6fb49c71254ac1354d027a8eb30ac03928bb2e27"
+      "sha256": "3dbe0064d58283fdfbaa11e8892dd5fa9d6928c23a0e6729412eb01e85b52ec9"
     },
     {
       "bytes": 165,
@@ -69,10 +69,26 @@
     {
       "bytes": 335,
       "path": "campaign_src04_completion/release/evidence/TEST_RESULTS.json",
-      "sha256": "84ed7eecb999de2ae668613841030de2c4aae1f8a46c77b04e82ad172a1d7b45"
+      "sha256": "ab8383f245d628850e981a1fc0081864f38e88b688f8d4c191e2358959a54255"
     }
   ],
+  "binding_join": {
+    "builder": "campaign_src04_completion.bindings.numeric_domain_binding.build_numeric_domain_runtime_config",
+    "config_canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
+    "config_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+    "config_path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json",
+    "expected_join_target": "178_RESPONSES_PLUS_3_COORDINATES_WHERE_SOURCE_QUALIFIED",
+    "pinned_commit": "da23c65d1e211cb7e8ce416e98757f321b78d25e",
+    "q217_remains_unresolved_if_source_facts_insufficient": true,
+    "source_read_performed": false
+  },
   "code": {
+    "binding_builder": "campaign_src04_completion.bindings.numeric_domain_binding.build_numeric_domain_runtime_config",
+    "binding_config_canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
+    "binding_config_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+    "binding_config_path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json",
+    "binding_join_wired": true,
+    "binding_pinned_commit": "da23c65d1e211cb7e8ce416e98757f321b78d25e",
     "full_grant_purpose": "FULL_SRC04_ORIGINAL_C11_CONSTRUCTION",
     "full_grant_schema": "PYAT_FULL_SOURCE_READ_GRANT@1.0.0",
     "full_grant_scope": "ALL_181_PHYSICAL_SLOTS__ALL_QUALIFIED_RESPONSE_FIELDS",
@@ -126,7 +142,8 @@
     "No first-slice grant was silently expanded.",
     "ROUTING_UNKNOWN and DEFER canonical authority remain unchanged.",
     "No I03/I05, population, weight, eligibility, canonical, direction, FF/N11/N12/CI/prod/Sorok/actor/J52W52 effect.",
-    "All 181 physical slots, 163 initial qualified responses, 15 held responses and 2 initial coordinates are accounted; future repaired 178+3 input is supported by explicit path/hash."
+    "All 181 physical slots, 163 initial qualified responses, 15 held responses and 2 initial coordinates are accounted; the pinned B repaired input path/hash is wired for 178+3 where source-qualified.",
+    "The fixed B observed-domain builder is invoked after admitted decode and before selection; q217 remains exact if source facts are insufficient."
   ],
   "native_release_constructed": false,
   "negative_checks": {
@@ -155,8 +172,8 @@
       "status": "REFUSED"
     }
   },
-  "next_consumer": "HQ must supply the exact competent full-source grant; then the same runner executes full 163 + 2 construction and can accept a separately qualified lane-B 178 + 3 repaired config by explicit path/hash.",
-  "next_executable_command": "PYTHONPATH=. python3 campaign_src04_completion/release/full_runner.py --mode primary --grant campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json --grant-sha256 <exact-sha256>",
+  "next_consumer": "HQ must supply the exact competent full-source grant; then the same runner executes the initial 163 + 2 path or the pinned B repaired 178 + 3 path by explicit immutable config path/hash.",
+  "next_executable_command": "PYTHONPATH=. python3 campaign_src04_completion/release/full_runner.py --mode primary --grant campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json --grant-sha256 <exact-sha256> --repaired-config rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json --repaired-config-sha256 5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
   "replay": {
     "native_release_constructed": false,
     "schema": "PYAT_SRC04_FULL_REPLAY@1.0.0",
@@ -386,6 +403,16 @@
     "all_163_qualified_responses_in_initial_target": true,
     "all_181_slots_accounted": true,
     "all_2_initial_coordinates_exact": true,
+    "binding_join": {
+      "builder": "campaign_src04_completion.bindings.numeric_domain_binding.build_numeric_domain_runtime_config",
+      "config_canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
+      "config_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+      "config_path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json",
+      "expected_join_target": "178_RESPONSES_PLUS_3_COORDINATES_WHERE_SOURCE_QUALIFIED",
+      "pinned_commit": "da23c65d1e211cb7e8ce416e98757f321b78d25e",
+      "q217_remains_unresolved_if_source_facts_insufficient": true,
+      "source_read_performed": false
+    },
     "config_canonical_sha256": "0e86814b62eb51dc9da22793b6de3e3598c3415632accb80f33bac965185f284",
     "config_file_sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900",
     "config_path": "rawlsing_next/source_configuration/data/SRC04/source.config.json",
@@ -428,6 +455,12 @@
   "source_rows": 7337,
   "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
   "status": "BLOCKED_MISSING_FULL_SOURCE_GRANT__CODE_READY",
+  "successor_of": {
+    "artifact_commit": "d119e0a860af5b934ccc83389773232d5f02a923",
+    "change": "wire fixed B observed-domain builder after admitted decode before all-slot selection",
+    "final_tip": "b5bfadc06ede692bd4b4d6fad94de5f4c6da351f",
+    "return_sha256": "371c2870314435948686756458a764b0197f0b52e03aefd2c6cab0b5e12f51fb"
+  },
   "tests": {
     "command": "python3 -m pytest campaign_src04_completion/release/tests -q -o addopts=",
     "passed": true,
@@ -435,8 +468,9 @@
     "schema": "PYAT_SRC04_FULL_TEST_RESULTS@1.0.0",
     "stderr_tail": [],
     "stdout_tail": [
-      "......                                                                   [100%]",
-      "6 passed in 2.06s"
+      ".........                                                                [100%]",
+      "9 passed in 2.92s"
     ]
-  }
+  },
+  "version": 2
 }
