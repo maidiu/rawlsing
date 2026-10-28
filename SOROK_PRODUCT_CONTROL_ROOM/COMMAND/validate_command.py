@@ -60,6 +60,10 @@ for dec in ds:
 for e in es:
     ensure(set(e.get("science_decision_ids", [])) <= real_ds, "invalid science ID in edge " + str(e.get("id")))
     ensure(set(e.get("unlocks_milestones", [])) <= real_ms, "invalid milestone in edge " + str(e.get("id")))
+    ensure(bool(e.get("next_authorized_operation")), "missing actionable next operation in edge " + str(e.get("id")))
+    ensure(bool(e.get("acceptance_test_or_issuer_condition")), "missing exit condition in edge " + str(e.get("id")))
+    ensure(bool(e.get("competent_owner_domain")), "missing owner in edge " + str(e.get("id")))
+    ensure(bool(e.get("priority")), "missing priority in edge " + str(e.get("id")))
 
 stat = d.get("measured_completion", {})
 ensure(stat.get("milestones_total") == 19, "wrong terminal denominator")
