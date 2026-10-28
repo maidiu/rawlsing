@@ -1,0 +1,91 @@
+{
+  "schema": "PYAT_P06_HQ_AUTH37_45_DIRECT_COURT_RECEIPT@1.0.0",
+  "date": "2026-10-28",
+  "owner": "Browser Architecture HQ; no rabochiis launched",
+  "controls": {
+    "premain": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "selected_historical_integrated_repaired_candidate": "ab287dcb48a3133fd4c79c881996fdd01f778c79",
+    "authority37_blob": "48c0860ff2d7548ff2fa98d20021149aa2049953",
+    "authority45_blob": "44edd0f87da778a2c08e33869a129e5a36830bbc",
+    "authority47_blob": "b48508492f58465c938ec480aa6a457bc6818586"
+  },
+  "evidence": [
+    {
+      "id": "P06-E01",
+      "class": "DIRECT_GITHUB_ACTIONS_STATUS",
+      "run_id": 33195098646,
+      "sha": "f62f1646e0c5db102bdb006e401a675e12946d84",
+      "status": "completed",
+      "conclusion": "success",
+      "evidence_scope": "I02 controller; author reported 46 tests PASS"
+    },
+    {
+      "id": "P06-E02",
+      "class": "DIRECT_GITHUB_ACTIONS_STATUS",
+      "run_id": 33195637429,
+      "sha": "3b5dece60b17bc774ea8de8829985eb62c5a23f3",
+      "status": "completed",
+      "conclusion": "success",
+      "evidence_scope": "I03 exact J3; author reported 126 tests PASS"
+    },
+    {
+      "id": "P06-E03",
+      "class": "DIRECT_GITHUB_ACTIONS_STATUS",
+      "run_id": 33203654968,
+      "sha": "d164f14dd6edd63a30b02639ed93cfb90c51ee92",
+      "status": "completed",
+      "conclusion": "success",
+      "evidence_scope": "Z02 I01-I04 integration; author reported 157 tests PASS"
+    },
+    {
+      "id": "P06-E04",
+      "class": "HISTORICAL_INDEPENDENT_SOURCE_REVIEW_AND_RETURN",
+      "sha": "a24e0082357f6d01425f0b12b63b121d6a36b7df",
+      "result": "I05 hostile+I06 Lebanon+I07 direct J3 PASS; I08 AC11 FAIL overinvalidates ROOT/P/Q/S/COSIG/J3 on R-only mutation",
+      "limits": "Prior code pre-repair, not fresh repaired acceptance"
+    },
+    {
+      "id": "P06-E05",
+      "class": "DIRECT_CODE_AND_WORKER_LOCAL_SOURCEFREE_RETURN",
+      "sha": "ab287dcb48a3133fd4c79c881996fdd01f778c79",
+      "production_blob": "56eb9883cd447fc3cc8431835ca20d23f2fa3712",
+      "test_blob": "85adaceb7a19f39a63848f44a3b33621bd95769d",
+      "reported": "6 focused AC11/AC12 sourcefree tests PASS",
+      "limits": "NOT independently re-executed by HQ; full ordered WaveVIII readmission BLOCKED source unavailable in C01R2 environment"
+    },
+    {
+      "id": "P06-E06",
+      "class": "EXECUTED_INDEPENDENT_SOURCEFREE_MATHEMATICAL_ORACLE",
+      "file": "p06_authority37_independent_invariants_oracle.py",
+      "sha256": "69c9ded0495028facd145b94304cda934c24a918dff93a61b6f12580fa560af9",
+      "tests": 5,
+      "result": "PASS",
+      "limits": "Not actual C01R2/Z02 code or original source; tests mathematical invariants only"
+    }
+  ],
+  "binding_statuses": {
+    "controller": "IMPLEMENTED_CANDIDATE_Z02_C01R2",
+    "direct_j3": "IMPLEMENTED_CANDIDATE_WITH_HOSTED_AND_B01_ORACLE_SUPPORT",
+    "full_controller_origin_source_readmission": "NOT_PROVED_ON_REPAIRED_C01R2",
+    "selective_invalidation": "LOCAL_FOCUSED_REPAIR_PASS__FULL_SOURCE_ADMISSION_PENDING",
+    "current_premain_adoption": "NOT_ADOPTED_BY_THIS_HQ_WORK",
+    "person_or_v3": "NO_DIRECT_EFFECT",
+    "mx04_mx05_economics": "HISTORICALLY_HELD_PENDING_PARITY"
+  },
+  "deliverables": [
+    "DESIGN/P06_S0_AUTHORITY37_AND_FULL_IMPLEMENTATION_LINEAGE_R1.md",
+    "DESIGN/P06_S1_FRESH_ADMISSION_AND_PREMAIN_INTEGRATION_CONTRACT_R1.md",
+    "DESIGN/P06_HIGH_RESOLUTION_RETURN_LEDGER.json",
+    "DESIGN/P06_S2_48_CASE_INDEPENDENT_ADMISSION_MATRIX.json",
+    "CODEX_BUILD_ORDERS/P06_A00_A07_EXISTING_C01R2_ADMISSION_R1.md"
+  ],
+  "high_resolution_open": 40,
+  "test_cases_specified": 48,
+  "build_gates": 8,
+  "new_production_code": false,
+  "independent_fresh_source_run": false,
+  "source_bytes_examined": false,
+  "workers_launched": false,
+  "next_hard_gate": "A00 exact active source/custody+reviewer then A01 focused code preflight and A05 fresh answer-blind WaveVIII I05-I08 ordered readmission on repaired C01R2; only after, qualified PREMAIN integration",
+  "nonpromotion": "B01 prior source successes and C01R2 focused repair are complementary evidence, never a fresh all-gates PASS."
+}
