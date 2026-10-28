@@ -1,0 +1,133 @@
+{
+  "schema": "PYAT_SRC04_CARRIER_REPAIR_RETURN@1.0.0",
+  "repair": "two demonstrated native carrier defects",
+  "author_session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+  "branch": "agent/pyat-src04-observed-empirical-20261028",
+  "startup_commit": "4fc2cac2ee3a11046485da18bf0ee99e071e45a4",
+  "candidate_commit": "d03a1d78d488807b6b946e000df10c1c88dc4bea",
+  "return_commit": "commit containing this file; direct remote readback in final response",
+  "status": "TWO_DEFECT_REPAIR_COMPLETE__CANDIDATE_FOR_DISTINCT_RECHECK",
+  "review_pins": {
+    "review_commit": "434211cc09cd8b57c3087319d5de878640890604",
+    "sealed_head": "91e267f11c91a89023c836a8667a99dca1a17019",
+    "candidate_reviewed": "d48ddf93f6642b80e8d9f0399dbc0abd5ec66742",
+    "defects": [
+      "FIXTURE_ISSUER_EXECUTOR_D_PATH_MISSING",
+      "CARRIER_REFUSAL_TYPING_GAP"
+    ],
+    "frozen_review_files_preserved": true,
+    "frozen_defect_tests_not_edited": true
+  },
+  "defect_1": {
+    "status": "REPAIRED_CANDIDATE",
+    "fixture_grant": "campaign_src04_completion/empirical/FIXTURE_EMPIRICAL_GRANT.json",
+    "fixture_grant_sha256": "38e82f943bee3b2e649e91beb0dee97ca343538f6c903a286adda81c5df84f7f",
+    "source_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b",
+    "rows": 8,
+    "marker": "NONRESPONDENT_FIXTURE_ONLY",
+    "path": "actual receipt/pickle adapter -> explicit fixture-scoped issuer -> native executor -> accepted D consumer",
+    "operations": 44,
+    "executed": 44,
+    "refused": 0,
+    "unary": 3,
+    "conditional": 38,
+    "joint": 3,
+    "d_dependency_sha256": "728fbc9a09291ae9c9d578fbed7641acd4499a2ff4158b7588e1cc5afa18f8ae",
+    "d_status": "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE",
+    "d_effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED",
+    "observed_projection_preserved": true,
+    "test": "campaign_src04_completion/empirical/test_authorized_execution.py::test_actual_carrier_fixture_issuer_executor_and_lane_d_end_to_end"
+  },
+  "defect_2": {
+    "status": "REPAIRED_CANDIDATE",
+    "missing_file_code": "CARRIER_FILE_UNREADABLE",
+    "malformed_stream_code": "CARRIER_STREAM_UNREADABLE",
+    "truncated_or_missing_stream_code": "CARRIER_STREAM_FILE_UNREADABLE",
+    "raw_exception_leak": false,
+    "existing_sha_source_count_type_checks_preserved": true,
+    "normal_eof_semantics_preserved": true,
+    "test": "campaign_src04_completion/empirical/test_authorized_execution.py::test_actual_carrier_missing_malformed_and_truncated_refusals"
+  },
+  "tests": {
+    "path": "campaign_src04_completion/empirical/TEST_RESULTS_V5.json",
+    "sha256": "cf8c4dacb332eb6ea88e5a6288aea7348489b15583283eb1847d37305f1aa68b",
+    "carrier_repair": "9 passed, 1 skipped in 17.15s",
+    "observed_response": "13 passed in 2.93s",
+    "i03_regression": "39 passed in 0.88s",
+    "consumer_regression": "17 passed in 1.63s"
+  },
+  "commands": [
+    "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/test_authorized_execution.py -q -o addopts=",
+    "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_observed_response.py -q -o addopts=",
+    "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_i03_scale_equivalence_repair.py -q -o addopts=",
+    "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_pre553_candidate_c_production_binding.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py -q -o addopts="
+  ],
+  "original_boundary": {
+    "original_source_release_pin": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+    "original_source_qualification_running_separately": true,
+    "original_workload_issued": false,
+    "original_workload_executed": false,
+    "original_sav_stat_hash_open_decode": false,
+    "duplicate_source_construction": false,
+    "polling": false
+  },
+  "artifact_manifest": [
+    {
+      "path": "campaign_src04_completion/empirical/actual_carrier.py",
+      "bytes": 13582,
+      "sha256": "18d5103d00594506d1c26070d90becff1102cf6ffbad812aeed3334fd12a6f85"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/authorized_execution.py",
+      "bytes": 30544,
+      "sha256": "f8bc8efce659995abc4c19bd3e95a7bbe378252dead8c65d4a261d1da0c8a76e"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/consumer_bridge.py",
+      "bytes": 10705,
+      "sha256": "4b02ef94373dbd1b01900ac744b07c84795935d2d904783533ca36030be6ab29"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/test_authorized_execution.py",
+      "bytes": 13722,
+      "sha256": "ffe8f6f32bcb27bd3a39f45ba1b4781a0f4a26039e380a6b58767670b0d39c1b"
+    },
+    {
+      "path": "rawlsing_next/pre553_observed_response.py",
+      "bytes": 44825,
+      "sha256": "e2d3127fee643dfa1d165d281a870f7b1e2e74930cf9781516cad871db26c626"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/FIXTURE_EMPIRICAL_GRANT.json",
+      "bytes": 1562,
+      "sha256": "38e82f943bee3b2e649e91beb0dee97ca343538f6c903a286adda81c5df84f7f"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/TEST_RESULTS_V5.json",
+      "bytes": 4328,
+      "sha256": "cf8c4dacb332eb6ea88e5a6288aea7348489b15583283eb1847d37305f1aa68b"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/CARRIER_REPAIR_COMMISSION.md",
+      "bytes": 2382,
+      "sha256": "a2aa88d43570060a365131207dbd98788fe21e02fd9815d2e1276f20a6251166"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/actual_review/REVIEW.json",
+      "bytes": 11190,
+      "sha256": "a9e8bd8756e81f05001249322b96dfeec0cb6e0b9abfbd70597e0c01bba53ce0"
+    },
+    {
+      "path": "campaign_src04_completion/consumers/consumer.py",
+      "bytes": 42351,
+      "sha256": "728fbc9a09291ae9c9d578fbed7641acd4499a2ff4158b7588e1cc5afa18f8ae"
+    }
+  ],
+  "remaining_limits": [
+    "Fixture-only repair evidence; not original SRC04 qualification or source-local science.",
+    "Actual original full product/release was not read or executed here; distinct source qualification remains separate.",
+    "No canonical, weight, population, structural, I05, FF, N11/N12 or actor claim.",
+    "Frozen actual_review defect tests remain unchanged as historical witnesses; distinct reviewer focused recheck is the next acceptance step."
+  ],
+  "next": "distinct existing reviewer focused recheck of the two repaired boundaries; then approved actual workload may proceed when the complete qualified original product is available."
+}
