@@ -85,7 +85,7 @@
         "EE01",
         "EE02"
       ],
-      "status": "P01_S0_SCOPED_CODE_IDENTITY_AUDIT_COMPLETE__S1_VIEW_DESIGN_SELECTED__NOT_IMPLEMENTED"
+      "status": "P01_S2_ALL_LEGACY_I02_CHECKS_MAPPED__SOURCE_ATTESTATION_BOUNDARY_EXPLICIT__ORIGINAL_SOURCE_NOT_RUN"
     },
     {
       "id": "W03",
@@ -94,7 +94,7 @@
         "F1",
         "N1"
       ],
-      "status": "P01_S0_COMPLETE_SCOPED_15_CORE_CONTROL_FILES_131_POSITIVE_HITS_AND_PACKET_21_FILES_156_HITS__S1_INTERFACE_DECIDED_NOT_TEST_PROVEN"
+      "status": "P01_S0_BOUNDED_COMPLETE__S1_SELECTED_INTERFACE__S2_VALIDATOR_DESIGN_AND_SOURCEFREE_BASELINE_PROOF_COMPLETE__STREAMING_CODE_NOT_IMPLEMENTED"
     },
     {
       "id": "W04",
@@ -201,7 +201,7 @@
         "W02",
         "W03"
       ],
-      "state": "HQ_DIRECT_S0_CLOSED_AT_EXPLICIT_SCOPE__S1_INTERFACE_DESIGN_SETTLED__NOT_CODED",
+      "state": "HQ_DIRECT_S0_S1_S2_DESIGN_COMPLETED__S3_S4_IMPLEMENTATION_SPEC_AND_PARITY_UNPROVED",
       "required_return": "EXACT_CALL_GRAPH__INTERFACE__ALGORITHM__TESTS__OWNERS__CONSUMER__COST__PERMISSIONS",
       "hq_decision_owner": true,
       "worker_assignment_state": "NONE__HQ_OWNED",
@@ -211,8 +211,16 @@
         "DESIGN/P01_S0_CONTROL_SYMBOL_CENSUS.json",
         "DESIGN/P01_S1_SEALED_SOURCE_EXECUTION_VIEW_CONTRACT_R1.md"
       ],
-      "next_required": "S2 validator-by-validator streaming/replay exactness proof spec; S3/S4 precise interface/consumer patch plan; independent sourcefree golden oracle before any source run",
-      "proof_level": "DIRECT_REPOSITORY_CODE_AND_BOUNDED_STATIC_ANALYSIS__NO_ENGINEERING_RUNTIME_ORIGINAL_SOURCE_PARITY"
+      "next_required": "P01-S3 every-symbol changes, golden sourcefree old-vs-new differential suite, source-attestation handshake, I02 no-shortcut private view transaction, compatibility/concrete-type and replay reconstruction; follow with P01-S4 code review/execution",
+      "proof_level": "DIRECT_CURRENT_CONTROL_I02_CODE__EXECUTED_TINY_SOURCEFREE_ORACLE__NO_NEW_STREAMING_EXECUTOR_OR_ORIGINAL_DATA_RUN",
+      "s2_paths": [
+        "DESIGN/P01_S2_EXACT_I02_VALIDATION_JOURNAL_AND_HASH_PROOF_R1.md",
+        "DESIGN/P01_HIGH_RESOLUTION_RETURN_LEDGER.json",
+        "STATUS/P01_S2_SOURCEFREE_PROOF_RECEIPT.json",
+        "DESIGN/ORACLES/p01_s2_control_oracle.py"
+      ],
+      "high_resolution_items": 36,
+      "source_retention_negative": "I02 accepted internally consistent synthetic fixture with source_snapshot_retention_ref SHA differing from source artifact; upstream source admission gate mandatory; not proof full source pipeline does so"
     },
     {
       "id": "P02",
@@ -413,7 +421,7 @@
     "INDEPENDENT_HOSTILE": "P11",
     "no_autonomous_whole_machine_delegation": true
   },
-  "hq_direct_P01_next": "S2 validator-by-validator streaming/replay exactness proof spec; S3/S4 precise interface/consumer patch plan; independent sourcefree golden oracle before any source run",
+  "hq_direct_P01_next": "P01-S3 every-symbol changes, golden sourcefree old-vs-new differential suite, source-attestation handshake, I02 no-shortcut private view transaction, compatibility/concrete-type and replay reconstruction; follow with P01-S4 code review/execution",
   "design_state": {
     "p01_s0": "SCOPED_COMPLETE",
     "p01_s1": "EXECUTIVE_INTERFACE_SELECTED_NO_CODE_ORIGINAL_PARITY",
@@ -422,6 +430,11 @@
     "p01_packet_files_with_refs": 21,
     "p01_packet_positive_occurrences": 156,
     "p01_current_code_sha": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
-    "p01_s0_exclusions": "Not whole repo all branches/local Mac; actual host source files not provided; current I03 differs from packet"
+    "p01_s0_exclusions": "Not whole repo all branches/local Mac; actual host source files not provided; current I03 differs from packet",
+    "p01_s2": "COMPLETE_AS_QA_GROUNDED_DESIGN_NOT_CODE",
+    "p01_s2_oracles": "SOURCEFREE_BASELINE_ACTUALLY_EXECUTED; PORTABLE_REPO_ORACLE_COMMITTED_NOT_EXECUTED",
+    "p01_s2_high_resolution_items": 36,
+    "p01_s2_source_byte_identity_gap": "REPLAY_AND_I02_SEAL_ALONE_DO_NOT_ESTABLISH_UPSTREAM_SOURCE_RETENTION_SHA_CONGRUENCE",
+    "p01_s3": "PENDING_HQ_DIRECT"
   }
 }
