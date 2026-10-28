@@ -2,7 +2,13 @@
 
 Controlling complete goal: [SOROK NIGHT SHIFT R2 — EXECUTION FIRST](../../../../HQ_GOALS/20261028_SOROK_NIGHT_SHIFT_R2_EXECUTION_FIRST.md), user source `/Users/matthewsmith/Desktop/SOROK_NIGHT_SHIFT_R2_EXECUTION_FIRST.txt`, SHA256 `d7a968abc0a768512ed190789fe9a809b616826b53560a6ee7ee0a86cdceda5a`. R1 procedural defaults superseded; original owner/science/model rights unchanged.
 
-## Concise R2 handoff — current integration boundary
+## C12 narrow repair — 2026-10-28
+
+After clarifying alternate trajectories versus copying current history, the user explicitly instructed: "okay, so fix this then". Reused OpenCode session `ses_e7d13a5e2ffeSfzMbvFySJsXv1` on the existing OpenCode Go / DeepSeek V4.1-Flash MAX setup with replacement scope limited to this bug. JOIN-E branch `codex/c12-perception-fork-repair-r1`, commit `6022b1493`, changes only J's actual imported `bp4/store.py` fork boundary, its manifest entry (original blob preserved), and three focused regression tests. The fork now uses the later of existing last_clock and latest recorded perception. Root scheme, Qualified verifier, ancestry checks, transaction design and old receipts are unchanged. This does not resolve the separate original C12 integrity findings or authorize native/production activation.
+
+Root inspected the return and personally ran `PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests`: **21 passed in 8.76s**, including clock11 perception preservation, exact-field cold reopen, parent-suffix isolation, existing nested forks/rollback and manifest audit. Earlier statements below about no original edits, no model dispatch and pending authorization describe the preceding R2 checkpoint, not this newly authorized repair. Consumers pinned to original JOIN-E `7bf2da3` remain pinned; no silent source adoption occurred.
+
+## Concise R2 handoff — preceding integration boundary
 
 Working sourcefree capability is banked on `agent/vozhd-sorok-20261026-v3-courts-foundation-r1`, implementation cut `2a38cd4ad86e33f15ac327dc199370f416b50a38`:
 
@@ -16,7 +22,7 @@ Current remote heads were read back again after these changes: C9 `c0e5faa5`, al
 
 **Next indispensable decisions / operations:**
 1. F0: user question is pending for the exact four-file hash-pinned R3 source scope. With approval, apply that same patch to its authorized R2 baseline and perform only its required integration checks/qualification. Until then original S48/S51/S52 edits stay held.
-2. C12: existing `LAUNCH_PACK_20261028/C12_OWNER_DECISION_REQUEST.md` remains a request, not an owner choice. Original owner must choose/authorize perception-preserving transactional fork repair or original fail-closed guard; the test-only guard has not fixed source. No original fork edit is authorized here.
+2. C12: the newly authorized narrow perception-boundary repair is banked above. Separate root/ancestry/perception-content verification and direct transaction findings remain unresolved; do not represent this small fix as complete C12 qualification or silently move existing source pins.
 3. Real C9 actor/world migration: joint original C9/C12 frozen writer/fact contract and source-specific admission are still absent. The prepared read/transport modules do not supply those rights. Historical numerical mechanisms beyond the implemented pure surface view are not adopted.
 4. Actual 3–5 world events: independent B/source/interval authority, SCI05 qualification and user-selected irreversible partial policy remain prerequisites. The dry run cannot execute that edge or fabricate a person-life suffix.
 
