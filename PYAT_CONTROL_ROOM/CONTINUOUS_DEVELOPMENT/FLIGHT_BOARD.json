@@ -1533,31 +1533,6 @@
   "next_action": "Intake resumed review results; reuse partial evidence. Preserve original execution limits and separately typed D1 tally; no issued I03 claim.",
   "active_workers": [
     {
-      "task": "D1_SRC04_TALLY_FOCUSED_RECHECK_RESUME",
-      "session": "ses_e81fc42a8ffeAbvo6M8l4YG4nK",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review",
-      "old_pid": 30091,
-      "old_log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review/.r61/d1-focused-recheck",
-      "log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review/.r61/d1-focused-resume-retry",
-      "supervisor": 45002,
-      "failed_resume": {
-        "log": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review/.r61/d1-focused-resume",
-        "exit_code": 1,
-        "error": "UnexpectedStatus500",
-        "pid": 44684
-      },
-      "pid": 45003,
-      "started_utc": "2026-10-28T03:15:57.664728+00:00",
-      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review/.r61/d1-focused-resume-retry/completion.json",
-      "model": "opencode-go/deepseek-v4.1-flash#max",
-      "state": "TERMINAL_OR_MISSING",
-      "terminal": {
-        "pid": 45003,
-        "exit_code": 1,
-        "finished_utc": "2026-10-28T03:15:57.932395+00:00"
-      }
-    },
-    {
       "task": "D2_SRC17_C11_INDEPENDENT_REVIEW_RESUME",
       "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review",
@@ -1570,6 +1545,22 @@
       "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review/.r61/d2-review-resume2/completion.json",
       "model": "opencode-go/deepseek-v4.1-flash#max",
       "state": "RUNNING"
+    },
+    {
+      "task": "D1_FOCUSED_RECHECK_EQUIVALENT_EXISTING_REVIEWER",
+      "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+      "pid": 45626,
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review/.r61/d1-focused-recovery-review/completion.json",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d1-src04-tally-review",
+      "original_reviewer_session": "ses_e81fc42a8ffeAbvo6M8l4YG4nK",
+      "reason": "Originalreviewer lost CLI; two actual terminal500 dispatch failures before tools; no more blind retries",
+      "qualification": "Existing GSS/SRC17 source-native C11 author, no D1 implementation authorship; independent of D1",
+      "authority": "Standing program section9 equivalent qualified existing worker substitution",
+      "model": "opencode-go/deepseek-v4.1-flash#max",
+      "candidate": "af18287a5a5c3a01f0ce993b43e6808aad701b6a",
+      "state": "RUNNING",
+      "heartbeat": "PAUSED",
+      "actual_model_verified": true
     }
   ],
   "r98_browser_handoff": {
