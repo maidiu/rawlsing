@@ -10,6 +10,12 @@ Controlling complete goal: [SOROK NIGHT SHIFT R2 — EXECUTION FIRST](../../../.
 
 No paid calls, worker starts, provider changes, source-owner edits or native/production grants in this checkpoint.
 
+## Next-consumer preparation — literal source and actor reader
+
+- `RM40/02_LITERAL_SYMBOL_REGISTRY.json` now provides 40 rows with 172 actual typed symbol/import/field/config/callsite entries. `02_CAPTURE_LITERAL_SYMBOLS.py` reproduces them by parsing hash-verified historical files without importing/executing that machine; capture/check PASS. M17 retains its actual function; M19/M26 hazards remain attached to their rows. Current adapters remain TO_BUILD and test IDs TEST_SPEC_ONLY; the 480-cell crosswalk was not changed. This is preparation for the existing RM40 commission, not its full return or a duplicate dispatch.
+- Reused the isolated C9 implementation's existing `ActorAuthority.read_semantic`, rather than creating a second raw reader. The disposable `C9_READER/check_reader_precondition.py` proves it returns a tampered head semantic hash while the separate verifier rejects `head_semantic_mismatch`. This identifies a concrete consuming-edge requirement: validation and data read must share a consistent read snapshot; no actor-visible packet may use an unchecked raw projection. All three imported source hashes are checked before import. No source patch or new memory consumer is claimed.
+- New model-backed consumer implementation remains dependent on confirmation of the existing launch record's host/account/quota requirement; one precise user question is pending for a bounded OpenCode Go / DeepSeek V4.1-Flash MAX run. No model was launched and no account/provider was substituted. Read-only preparation continued independently.
+
 ## Prior R3 index (preserved)
 
 Three independent reviews returned: RRP0-R2 8df1712b665917b1dbeb1c0d7526830e167b4833, RRM40-R2 29691846962cf2b302eff8a15baa6142f0d682cc (two commits ONE review), RF0-R2 5c9ac33aab23c75d35314ece57c30dc95a96aee7. C12 original source owner must approve perception-safe fork patch or hard FORK_HELD separately; no original edits authorized. Three bounded R3 commissions: F0-R3 sourcefree security, C9-R3 sourcefree SQL proof, RM40-R3 source machine typed contracts. No F1.1 build until C12/C9 owner freeze; no science/native grant.

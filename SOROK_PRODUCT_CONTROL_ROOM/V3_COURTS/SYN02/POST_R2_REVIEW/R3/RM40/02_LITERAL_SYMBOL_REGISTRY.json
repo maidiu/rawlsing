@@ -1,0 +1,2165 @@
+{
+  "schema": "RM40_R3_LITERAL_SOURCE_SYMBOL_ADDENDUM_V1",
+  "grade": "READ_ONLY_AST_SOURCE_PREPARATION",
+  "matrix_sha256": "e332787287b92b6efdfdb63eafd2fc68a69327807be310162b6e97f02f2cce0e",
+  "source_cut": "07ebb10eac214ebc909b92f24b459caf2d37d730",
+  "rows": [
+    {
+      "M": "M01",
+      "symbols": [
+        {
+          "name": "BackboneState",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 501,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "explicit snapshot, provenance, hash, integrity, JSON carrier",
+          "historical_hazard": "durable, derived, surface and diagnostic fields share one owner"
+        },
+        {
+          "name": "hash_jsonable",
+          "kind": "callable_definition",
+          "path": "v3/core/year_record.py",
+          "line": 15,
+          "sha256": "4bbd7518a6ec8bc8dd22758a2f9e876882253dfd59021a998a6d541b23e5cfc2",
+          "role": "explicit snapshot, provenance, hash, integrity, JSON carrier",
+          "historical_hazard": "durable, derived, surface and diagnostic fields share one owner"
+        },
+        {
+          "name": "GenerationIntegrityAccumulator",
+          "kind": "class",
+          "path": "v3/core/generation_integrity.py",
+          "line": 13,
+          "sha256": "5265aac2fda4d6e6ac62927353518045f215d7d1916930e19e980b6d77eff214",
+          "role": "explicit snapshot, provenance, hash, integrity, JSON carrier",
+          "historical_hazard": "durable, derived, surface and diagnostic fields share one owner"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.schema import ActorSnapshotV1, ActorSnapshotStore",
+        "signature": "def load_actor(actor_id: ActorId, source_cut: SourceCutRef) -> ActorSnapshotV1",
+        "output_type": "ActorSnapshotV1",
+        "path": "neo_v3/actor/schema.py"
+      },
+      "test_id": "T-M01-SNAPSHOT",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M02",
+      "symbols": [
+        {
+          "name": "Capacity",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 18,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "typed material carrier and bounded event delta",
+          "historical_hazard": "50 defaults; class/urban scalar substituted for real work/care/time"
+        },
+        {
+          "name": "update_capacity",
+          "kind": "callable_definition",
+          "path": "v3/systems/capacity.py",
+          "line": 55,
+          "sha256": "cae31ffd4006601aa860fbb011d1a23697a07a8cc1f0dc8e2897d5f2ed1531c3",
+          "role": "typed material carrier and bounded event delta",
+          "historical_hazard": "50 defaults; class/urban scalar substituted for real work/care/time"
+        },
+        {
+          "name": "update_health_drift",
+          "kind": "callable_definition",
+          "path": "v3/systems/health_drift.py",
+          "line": 15,
+          "sha256": "ba4608b7b9ab5dc758085ea90ed6eef64b4e40cc20790508e6623e51dc13995b",
+          "role": "typed material carrier and bounded event delta",
+          "historical_hazard": "50 defaults; class/urban scalar substituted for real work/care/time"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.material import MaterialState, MaterialFact; from neo_v3.runtime.event import CanonicalEventV1",
+        "signature": "def apply_material_event(state: ActorSnapshotV1, event: CanonicalEventV1, fact: MaterialFact) -> MaterialState",
+        "output_type": "MaterialState",
+        "path": "neo_v3/actor/material.py"
+      },
+      "test_id": "T-M02-MATERIAL",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M03",
+      "symbols": [
+        {
+          "name": "PsychologicalCapacity",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 41,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "typed regulation/availability carrier and provenance",
+          "historical_hazard": "one scalar family stands for fatigue, ability, power and assisted regulation"
+        },
+        {
+          "name": "update_framework_weights",
+          "kind": "callable_definition",
+          "path": "v3/systems/frameworks.py",
+          "line": 33,
+          "sha256": "0d59fc6e177009da92e39eb61ea729eace97f50392baa93999cb6513f81dd2cb",
+          "role": "typed regulation/availability carrier and provenance",
+          "historical_hazard": "one scalar family stands for fatigue, ability, power and assisted regulation"
+        },
+        {
+          "name": "derive_vitality_profile",
+          "kind": "callable_definition",
+          "path": "v3/psyche/vitality.py",
+          "line": 85,
+          "sha256": "56fed88e37299862774b2401c9a7e43363de6d6bb47a78f8f4744dcc6f91e912",
+          "role": "typed regulation/availability carrier and provenance",
+          "historical_hazard": "one scalar family stands for fatigue, ability, power and assisted regulation"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.regulation import RegulatoryState, record_regulation",
+        "signature": "def record_regulation(state: ActorSnapshotV1, event: CanonicalEventV1, support_refs: list[SupportRef]) -> RegulatoryState",
+        "output_type": "RegulatoryState",
+        "path": "neo_v3/actor/regulation.py"
+      },
+      "test_id": "T-M03-REGULATION",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M04",
+      "symbols": [
+        {
+          "name": "ReproductionConstraints",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 58,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "concrete constraint carrier; one support-load view",
+          "historical_hazard": "two hostage authorities (52.5 vs 100.0); 0/100 optimistic defaults"
+        },
+        {
+          "name": "update_reproduction_constraints",
+          "kind": "callable_definition",
+          "path": "v3/systems/reproduction.py",
+          "line": 60,
+          "sha256": "6f3a815d7ef6c5e7fd6003c4b4fd1b3bf1b2dc90cedcdcd332088737ee701916",
+          "role": "concrete constraint carrier; one support-load view",
+          "historical_hazard": "two hostage authorities (52.5 vs 100.0); 0/100 optimistic defaults"
+        },
+        {
+          "name": "compute_hostage_index",
+          "kind": "callable_definition",
+          "path": "v3/core/derived.py",
+          "line": 45,
+          "sha256": "e479fc3eba21734752c372742fb2ee247cbdde6a73ac42545dc30b5039301360",
+          "role": "concrete constraint carrier; one support-load view",
+          "historical_hazard": "two hostage authorities (52.5 vs 100.0); 0/100 optimistic defaults"
+        },
+        {
+          "name": "_derive_hostage_index",
+          "kind": "callable_definition",
+          "path": "v3/psyche/gating.py",
+          "line": 61,
+          "sha256": "4a82c7c91828b87bb61cd651c777159f04b5733e64158f8679a24efcec1ccfc6",
+          "role": "concrete constraint carrier; one support-load view",
+          "historical_hazard": "two hostage authorities (52.5 vs 100.0); 0/100 optimistic defaults"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.constraints import MaterialConstraintRecord, compute_support_load",
+        "signature": "def compute_support_load(constraints: MaterialConstraintRecord, access_refs: list[SupportRef]) -> SupportLoadView",
+        "output_type": "MaterialConstraintRecord",
+        "path": "neo_v3/actor/constraints.py"
+      },
+      "test_id": "T-M04-SUPPORT-LOAD",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M05",
+      "symbols": [
+        {
+          "name": "DomainState",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 72,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "pure appraisal projection and access-gated expression",
+          "historical_hazard": "fixed universal domains; one winning channel; stale expressed_aim"
+        },
+        {
+          "name": "update_domains",
+          "kind": "callable_definition",
+          "path": "v3/systems/domains.py",
+          "line": 50,
+          "sha256": "24e5215763a11e439075ea7a0f4ac32ae425856a9fd4624744d4a2a744758280",
+          "role": "pure appraisal projection and access-gated expression",
+          "historical_hazard": "fixed universal domains; one winning channel; stale expressed_aim"
+        },
+        {
+          "name": "compute_baseline_load",
+          "kind": "callable_definition",
+          "path": "v3/psyche/gating.py",
+          "line": 122,
+          "sha256": "4a82c7c91828b87bb61cd651c777159f04b5733e64158f8679a24efcec1ccfc6",
+          "role": "pure appraisal projection and access-gated expression",
+          "historical_hazard": "fixed universal domains; one winning channel; stale expressed_aim"
+        },
+        {
+          "name": "apply_expression_gating",
+          "kind": "callable_definition",
+          "path": "v3/psyche/gating.py",
+          "line": 152,
+          "sha256": "4a82c7c91828b87bb61cd651c777159f04b5733e64158f8679a24efcec1ccfc6",
+          "role": "pure appraisal projection and access-gated expression",
+          "historical_hazard": "fixed universal domains; one winning channel; stale expressed_aim"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.appraisal import AppraisalProjection, project_domain_appraisal",
+        "signature": "def project_domain_appraisal(state: ActorSnapshotV1, event: CanonicalEventV1, access: AccessEnvelope) -> AppraisalProjection",
+        "output_type": "AppraisalProjection",
+        "path": "neo_v3/actor/appraisal.py"
+      },
+      "test_id": "T-M05-APPRAISAL",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M06",
+      "symbols": [
+        {
+          "name": "AlienationVector",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 95,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "four-dimension estrangement carrier and derived view",
+          "historical_hazard": "active path does not update four real dimensions"
+        },
+        {
+          "name": "update_alienation",
+          "kind": "callable_definition",
+          "path": "v3/systems/alienation.py",
+          "line": 20,
+          "sha256": "2209d8171a14f18c252e847e2d0beb113d574e1378c49d2fb7e7f43513106207",
+          "role": "four-dimension estrangement carrier and derived view",
+          "historical_hazard": "active path does not update four real dimensions"
+        },
+        {
+          "name": "apply_deltas_to_state",
+          "kind": "callable_definition",
+          "path": "v3/engine/effects/delta_templates.py",
+          "line": 254,
+          "sha256": "7d99ddf26fd45b52e5e3c10074066ba5e06d17cdaf1fabad06298af3770815f0",
+          "role": "four-dimension estrangement carrier and derived view",
+          "historical_hazard": "active path does not update four real dimensions"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.estrangement import EstrangementRecord, record_estrangement",
+        "signature": "def record_estrangement(state: ActorSnapshotV1, episode: EpisodeV1, delta: EstrangementDelta) -> EstrangementRecord",
+        "output_type": "EstrangementRecord",
+        "path": "neo_v3/actor/estrangement.py"
+      },
+      "test_id": "T-M06-ESTRANGEMENT",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M07",
+      "symbols": [
+        {
+          "name": "Registers",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 114,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "graded access/expression envelope with ADP017 filtering",
+          "historical_hazard": "50/80 defaults; zero-as-missing; stale expression; no V2 access consumer"
+        },
+        {
+          "name": "apply_expression_gating",
+          "kind": "callable_definition",
+          "path": "v3/psyche/gating.py",
+          "line": 152,
+          "sha256": "4a82c7c91828b87bb61cd651c777159f04b5733e64158f8679a24efcec1ccfc6",
+          "role": "graded access/expression envelope with ADP017 filtering",
+          "historical_hazard": "50/80 defaults; zero-as-missing; stale expression; no V2 access consumer"
+        },
+        {
+          "name": "build_persona_sheet",
+          "kind": "callable_definition",
+          "path": "v3/io/persona_sheet.py",
+          "line": 579,
+          "sha256": "4a0009533443baef2786fc498c7f8db3ead7d133d8ee7e97e6d7128d4322a00e",
+          "role": "graded access/expression envelope with ADP017 filtering",
+          "historical_hazard": "50/80 defaults; zero-as-missing; stale expression; no V2 access consumer"
+        },
+        {
+          "name": "build_persona_sheet",
+          "kind": "import_alias",
+          "path": "v2/conversation_engine.py",
+          "line": 304,
+          "sha256": "766bee296379f0faadbede55106bcee0123e9563c965d0e28f8806cedea06135",
+          "role": "graded access/expression envelope with ADP017 filtering",
+          "historical_hazard": "50/80 defaults; zero-as-missing; stale expression; no V2 access consumer"
+        },
+        {
+          "name": "build_persona_sheet",
+          "kind": "import_alias",
+          "path": "v2/conversation_engine.py",
+          "line": 307,
+          "sha256": "766bee296379f0faadbede55106bcee0123e9563c965d0e28f8806cedea06135",
+          "role": "graded access/expression envelope with ADP017 filtering",
+          "historical_hazard": "50/80 defaults; zero-as-missing; stale expression; no V2 access consumer"
+        },
+        {
+          "name": "prepare_conversation_turn",
+          "kind": "callable_definition",
+          "path": "v2/conversation_engine.py",
+          "line": 2079,
+          "sha256": "766bee296379f0faadbede55106bcee0123e9563c965d0e28f8806cedea06135",
+          "role": "graded access/expression envelope with ADP017 filtering",
+          "historical_hazard": "50/80 defaults; zero-as-missing; stale expression; no V2 access consumer"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.surface.access import AccessEnvelope, project_expression_access",
+        "signature": "def project_expression_access(state: ActorSnapshotV1, relation_refs: list[RelationRef], audience: AudienceRef) -> AccessEnvelope",
+        "output_type": "AccessEnvelope",
+        "path": "neo_v3/surface/access.py"
+      },
+      "test_id": "T-M07-ACCESS",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M08",
+      "symbols": [
+        {
+          "name": "WoundVector",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 130,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "scoped persistent sensitivity carrier",
+          "historical_hazard": "class/minority/religion/age seeds; automatic rupture mapping"
+        },
+        {
+          "name": "seed_wound_vector_from_identity",
+          "kind": "callable_definition",
+          "path": "v3/psyche/channels.py",
+          "line": 36,
+          "sha256": "2d00bf6b8720879e610160e58455f983e1e63fbe8ceef1a93f46844de8a3f111",
+          "role": "scoped persistent sensitivity carrier",
+          "historical_hazard": "class/minority/religion/age seeds; automatic rupture mapping"
+        },
+        {
+          "name": "update_wound_vector_from_rupture",
+          "kind": "callable_definition",
+          "path": "v3/engine/effects/metabolization_effects.py",
+          "line": 239,
+          "sha256": "d4775271ca097e99e615cee19b381a478ad6d90a25051c5fce1b1e0e3c1adb1e",
+          "role": "scoped persistent sensitivity carrier",
+          "historical_hazard": "class/minority/religion/age seeds; automatic rupture mapping"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.sensitivity import SensitivityRecord, record_sensitivity",
+        "signature": "def record_sensitivity(state: ActorSnapshotV1, episode: EpisodeV1, basis_refs: list[EvidenceRef]) -> SensitivityRecord",
+        "output_type": "SensitivityRecord",
+        "path": "neo_v3/actor/sensitivity.py"
+      },
+      "test_id": "T-M08-SENSITIVITY",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M09",
+      "symbols": [
+        {
+          "name": "Crack",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 151,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "episode-linked tension carrier and bounded event delta",
+          "historical_hazard": "placeholder pathology; demographic/age seeds; no activation/deactivation"
+        },
+        {
+          "name": "Crack",
+          "kind": "import_alias",
+          "path": "v3/core/invariants.py",
+          "line": 13,
+          "sha256": "81298f3fc51b46cda8d72d0db914b672b17b9a35e13004fe59a9b0e29dada5e3",
+          "role": "episode-linked tension carrier and bounded event delta",
+          "historical_hazard": "placeholder pathology; demographic/age seeds; no activation/deactivation"
+        },
+        {
+          "name": "update_cracks",
+          "kind": "callable_definition",
+          "path": "v3/systems/cracks.py",
+          "line": 25,
+          "sha256": "b11a87e87be216d78c84f76ff645e26a39bb40512475558c95a279c78796bec3",
+          "role": "episode-linked tension carrier and bounded event delta",
+          "historical_hazard": "placeholder pathology; demographic/age seeds; no activation/deactivation"
+        },
+        {
+          "name": "ensure_min_cracks",
+          "kind": "callable_definition",
+          "path": "v3/core/invariants.py",
+          "line": 253,
+          "sha256": "81298f3fc51b46cda8d72d0db914b672b17b9a35e13004fe59a9b0e29dada5e3",
+          "role": "episode-linked tension carrier and bounded event delta",
+          "historical_hazard": "placeholder pathology; demographic/age seeds; no activation/deactivation"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.tension import TensionRecord, transition_tension",
+        "signature": "def transition_tension(state: ActorSnapshotV1, episode: EpisodeV1, operation: TensionOp) -> TensionRecord",
+        "output_type": "TensionRecord",
+        "path": "neo_v3/actor/tension.py"
+      },
+      "test_id": "T-M09-TENSION",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M10",
+      "symbols": [
+        {
+          "name": "Buffer",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 176,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "support-with-resource/cost carrier",
+          "historical_hazard": "support/cost has no actual provider, resource, relation or timing"
+        },
+        {
+          "name": "BufferCostProfile",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 164,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "support-with-resource/cost carrier",
+          "historical_hazard": "support/cost has no actual provider, resource, relation or timing"
+        },
+        {
+          "name": "update_buffers",
+          "kind": "callable_definition",
+          "path": "v3/systems/buffers.py",
+          "line": 73,
+          "sha256": "9c9ed09001dad364ab4011ee29e8ea2df3c332745db736b1a6e1dbe56e332b35",
+          "role": "support-with-resource/cost carrier",
+          "historical_hazard": "support/cost has no actual provider, resource, relation or timing"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.support import SupportRecord, apply_support",
+        "signature": "def apply_support(state: ActorSnapshotV1, support_ref: SupportRef, activity: ActivityRef) -> SupportRecord",
+        "output_type": "SupportRecord",
+        "path": "neo_v3/actor/support.py"
+      },
+      "test_id": "T-M10-SUPPORT",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M11",
+      "symbols": [
+        {
+          "name": "Framework",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 187,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "acute/chronic operator and stable mediator carrier",
+          "historical_hazard": "age/class/religion seeds; age-derived tenure; no acquisition/use"
+        },
+        {
+          "name": "update_framework_weights",
+          "kind": "callable_definition",
+          "path": "v3/systems/frameworks.py",
+          "line": 33,
+          "sha256": "0d59fc6e177009da92e39eb61ea729eace97f50392baa93999cb6513f81dd2cb",
+          "role": "acute/chronic operator and stable mediator carrier",
+          "historical_hazard": "age/class/religion seeds; age-derived tenure; no acquisition/use"
+        },
+        {
+          "name": "enforce_framework_caps",
+          "kind": "callable_definition",
+          "path": "v3/systems/frameworks.py",
+          "line": 104,
+          "sha256": "0d59fc6e177009da92e39eb61ea729eace97f50392baa93999cb6513f81dd2cb",
+          "role": "acute/chronic operator and stable mediator carrier",
+          "historical_hazard": "age/class/religion seeds; age-derived tenure; no acquisition/use"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.mediator import InterpretiveMediatorRecord, apply_mediator_use",
+        "signature": "def apply_mediator_use(state: ActorSnapshotV1, mediator_ref: MediatorRef, activity_ref: ActivityRef) -> InterpretiveMediatorRecord",
+        "output_type": "InterpretiveMediatorRecord",
+        "path": "neo_v3/actor/mediator.py"
+      },
+      "test_id": "T-M11-MEDIATOR",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M12",
+      "symbols": [
+        {
+          "name": "CollectiveInfrastructure",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 218,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "typed references to collective conditions",
+          "historical_hazard": "institutions/ties/power copied into actor; zero-as-unknown"
+        },
+        {
+          "name": "update_collective_infrastructure",
+          "kind": "callable_definition",
+          "path": "v3/systems/infrastructure.py",
+          "line": 25,
+          "sha256": "a062192707bb6697c6d38a1ef3a72ca0ac6daedb759a38fd2fcb2cf4e219c235",
+          "role": "typed references to collective conditions",
+          "historical_hazard": "institutions/ties/power copied into actor; zero-as-unknown"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.world.institution import InstitutionRef, ParticipationRef",
+        "signature": "def bind_institution(state: ActorSnapshotV1, institution_ref: InstitutionRef) -> ParticipationRef",
+        "output_type": "ParticipationRef",
+        "path": "neo_v3/world/institution.py"
+      },
+      "test_id": "T-M12-INSTITUTION",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M13",
+      "symbols": [
+        {
+          "name": "PracticeStack",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 231,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "persistent practice carrier and activity seam",
+          "historical_hazard": "SES/age/religiosity seeds; no actual activity/support/loss"
+        },
+        {
+          "name": "update_practice_stack",
+          "kind": "callable_definition",
+          "path": "v3/systems/practices.py",
+          "line": 19,
+          "sha256": "b984397e5e8c24b68d94a6ef06e7cdd7bb07513db45a5480b48f154ece79720d",
+          "role": "persistent practice carrier and activity seam",
+          "historical_hazard": "SES/age/religiosity seeds; no actual activity/support/loss"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.practice import PracticeRecord, transition_practice",
+        "signature": "def transition_practice(state: ActorSnapshotV1, activity_ref: ActivityRef, operation: PracticeOp) -> PracticeRecord",
+        "output_type": "PracticeRecord",
+        "path": "neo_v3/actor/practice.py"
+      },
+      "test_id": "T-M13-PRACTICE",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M14",
+      "symbols": [
+        {
+          "name": "PeakRouting",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 257,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "consecutive-year hysteresis and bounded reversal technique",
+          "historical_hazard": "global enum; event-label boundary; no relation edge"
+        },
+        {
+          "name": "update_loop_topology",
+          "kind": "callable_definition",
+          "path": "v3/systems/topology.py",
+          "line": 50,
+          "sha256": "4e3b9b64399dfcfad67a431729d9443767d5e074080ef6b51bc1c8df48711560",
+          "role": "consecutive-year hysteresis and bounded reversal technique",
+          "historical_hazard": "global enum; event-label boundary; no relation edge"
+        },
+        {
+          "name": "update_solidarity_boundary",
+          "kind": "callable_definition",
+          "path": "v3/systems/boundary.py",
+          "line": 43,
+          "sha256": "e8c2495f5bd0699f5737a9e137dd327ec3d8c6953af262460ab03998f249a9c4",
+          "role": "consecutive-year hysteresis and bounded reversal technique",
+          "historical_hazard": "global enum; event-label boundary; no relation edge"
+        },
+        {
+          "name": "update_coherence",
+          "kind": "callable_definition",
+          "path": "v3/systems/coherence.py",
+          "line": 18,
+          "sha256": "1bf8c1bee7a4197e3fb1eea34c89aed115edd3602c92c91888ada6790f575c4a",
+          "role": "consecutive-year hysteresis and bounded reversal technique",
+          "historical_hazard": "global enum; event-label boundary; no relation edge"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.orientation import FunctionalConnectionRecord, OrientationConfiguration, transition_orientation",
+        "signature": "def transition_orientation(state: ActorSnapshotV1, relation_refs: list[RelationRef], operation: OrientationOp) -> OrientationConfiguration",
+        "output_type": "OrientationConfiguration + FunctionalConnectionRecord",
+        "path": "neo_v3/actor/orientation.py"
+      },
+      "test_id": "T-M14-HYSTERESIS",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M15",
+      "symbols": [
+        {
+          "name": "NEED_AXES",
+          "kind": "assignment",
+          "path": "v3/core/state.py",
+          "line": 305,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "finite need vocabulary and scoped expectation carrier",
+          "historical_hazard": "unknown parent→hopeful; flat labels; no actual care"
+        },
+        {
+          "name": "NEED_AXES",
+          "kind": "import_alias",
+          "path": "v3/engine/expectation_baseline.py",
+          "line": 19,
+          "sha256": "632e1e608bfc674a241e57bafa24e91834a2b8bdc3e4ed326dae6fca4e695d43",
+          "role": "finite need vocabulary and scoped expectation carrier",
+          "historical_hazard": "unknown parent→hopeful; flat labels; no actual care"
+        },
+        {
+          "name": "NEED_AXES",
+          "kind": "import_alias",
+          "path": "v3/io/parent_baseline_from_behavior.py",
+          "line": 9,
+          "sha256": "4e5be6448a5b76c413492ec2a83b62d9e9a2247ce131a094727d974a17cf750b",
+          "role": "finite need vocabulary and scoped expectation carrier",
+          "historical_hazard": "unknown parent→hopeful; flat labels; no actual care"
+        },
+        {
+          "name": "derive_child_expectation_baseline",
+          "kind": "callable_definition",
+          "path": "v3/engine/expectation_baseline.py",
+          "line": 107,
+          "sha256": "632e1e608bfc674a241e57bafa24e91834a2b8bdc3e4ed326dae6fca4e695d43",
+          "role": "finite need vocabulary and scoped expectation carrier",
+          "historical_hazard": "unknown parent→hopeful; flat labels; no actual care"
+        },
+        {
+          "name": "infer_parent_baseline_and_regime",
+          "kind": "callable_definition",
+          "path": "v3/io/parent_baseline_from_behavior.py",
+          "line": 25,
+          "sha256": "4e5be6448a5b76c413492ec2a83b62d9e9a2247ce131a094727d974a17cf750b",
+          "role": "finite need vocabulary and scoped expectation carrier",
+          "historical_hazard": "unknown parent→hopeful; flat labels; no actual care"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.expectation import NeedAxis, ExpectationRecord, record_expectation",
+        "signature": "def record_expectation(state: ActorSnapshotV1, care_episode: EpisodeV1, axis: NeedAxis) -> ExpectationRecord",
+        "output_type": "ExpectationRecord",
+        "path": "neo_v3/actor/expectation.py"
+      },
+      "test_id": "T-M15-EXPECTATION",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M16",
+      "symbols": [
+        {
+          "name": "StrivingObject",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 313,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "stable object identity and exact event seam",
+          "historical_hazard": "age/proxy spawn; unnamed RNG; hopeful setdefault; retired history removed"
+        },
+        {
+          "name": "StrivingObject",
+          "kind": "import_alias",
+          "path": "v3/engine/striving_objects.py",
+          "line": 19,
+          "sha256": "78c79a9312b05aa51220d09bb63c91cafd6bb204f2c398ac1876b1ef3144c1c3",
+          "role": "stable object identity and exact event seam",
+          "historical_hazard": "age/proxy spawn; unnamed RNG; hopeful setdefault; retired history removed"
+        },
+        {
+          "name": "spawn_striving_objects_for_age",
+          "kind": "callable_definition",
+          "path": "v3/engine/striving_objects.py",
+          "line": 127,
+          "sha256": "78c79a9312b05aa51220d09bb63c91cafd6bb204f2c398ac1876b1ef3144c1c3",
+          "role": "stable object identity and exact event seam",
+          "historical_hazard": "age/proxy spawn; unnamed RNG; hopeful setdefault; retired history removed"
+        },
+        {
+          "name": "update_existing_objects",
+          "kind": "callable_definition",
+          "path": "v3/engine/striving_objects.py",
+          "line": 216,
+          "sha256": "78c79a9312b05aa51220d09bb63c91cafd6bb204f2c398ac1876b1ef3144c1c3",
+          "role": "stable object identity and exact event seam",
+          "historical_hazard": "age/proxy spawn; unnamed RNG; hopeful setdefault; retired history removed"
+        },
+        {
+          "name": "update_striving_step",
+          "kind": "callable_definition",
+          "path": "v3/engine/striving_objects.py",
+          "line": 242,
+          "sha256": "78c79a9312b05aa51220d09bb63c91cafd6bb204f2c398ac1876b1ef3144c1c3",
+          "role": "stable object identity and exact event seam",
+          "historical_hazard": "age/proxy spawn; unnamed RNG; hopeful setdefault; retired history removed"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.motive import MotiveTargetRecord, transition_motive",
+        "signature": "def transition_motive(state: ActorSnapshotV1, activity_ref: ActivityRef, object_ref: ObjectRef) -> MotiveTargetRecord",
+        "output_type": "MotiveTargetRecord",
+        "path": "neo_v3/actor/motive.py"
+      },
+      "test_id": "T-M16-MOTIVE",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M17",
+      "symbols": [
+        {
+          "name": "GiftShard",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 339,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "witnessed event shell and exact striving ID seam",
+          "historical_hazard": "nonexistent create_gift/disruption_shard functions; mono-valence; label authority"
+        },
+        {
+          "name": "GiftShard",
+          "kind": "import_alias",
+          "path": "v3/engine/expectation_events.py",
+          "line": 17,
+          "sha256": "307ae929a43935170a2f792b4a702a02ac54819a4fa897aa3fef4a099a96cb49",
+          "role": "witnessed event shell and exact striving ID seam",
+          "historical_hazard": "nonexistent create_gift/disruption_shard functions; mono-valence; label authority"
+        },
+        {
+          "name": "DisruptionShard",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 353,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "witnessed event shell and exact striving ID seam",
+          "historical_hazard": "nonexistent create_gift/disruption_shard functions; mono-valence; label authority"
+        },
+        {
+          "name": "DisruptionShard",
+          "kind": "import_alias",
+          "path": "v3/engine/expectation_events.py",
+          "line": 17,
+          "sha256": "307ae929a43935170a2f792b4a702a02ac54819a4fa897aa3fef4a099a96cb49",
+          "role": "witnessed event shell and exact striving ID seam",
+          "historical_hazard": "nonexistent create_gift/disruption_shard functions; mono-valence; label authority"
+        },
+        {
+          "name": "apply_gift_disruption_shards_from_events",
+          "kind": "callable_definition",
+          "path": "v3/engine/expectation_events.py",
+          "line": 103,
+          "sha256": "307ae929a43935170a2f792b4a702a02ac54819a4fa897aa3fef4a099a96cb49",
+          "role": "witnessed event shell and exact striving ID seam",
+          "historical_hazard": "nonexistent create_gift/disruption_shard functions; mono-valence; label authority"
+        },
+        {
+          "name": "apply_gift_disruption_shards_from_events",
+          "kind": "import_alias",
+          "path": "v3/engine/effects/delta_templates.py",
+          "line": 361,
+          "sha256": "7d99ddf26fd45b52e5e3c10074066ba5e06d17cdaf1fabad06298af3770815f0",
+          "role": "witnessed event shell and exact striving ID seam",
+          "historical_hazard": "nonexistent create_gift/disruption_shard functions; mono-valence; label authority"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.impression import ImpressionRecord, record_impression",
+        "signature": "def record_impression(state: ActorSnapshotV1, event: EpisodeV1, access: AccessEnvelope) -> ImpressionRecord",
+        "output_type": "ImpressionRecord",
+        "path": "neo_v3/actor/impression.py"
+      },
+      "test_id": "T-M17-IMPRESSION",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M18",
+      "symbols": [
+        {
+          "name": "RuptureShard",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 369,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "immutable rupture carrier and exact event seam",
+          "historical_hazard": "age/global RNG; malheur→micro; direct wound; no parents"
+        },
+        {
+          "name": "RuptureShard",
+          "kind": "import_alias",
+          "path": "v3/engine/effects/metabolization_effects.py",
+          "line": 18,
+          "sha256": "d4775271ca097e99e615cee19b381a478ad6d90a25051c5fce1b1e0e3c1adb1e",
+          "role": "immutable rupture carrier and exact event seam",
+          "historical_hazard": "age/global RNG; malheur→micro; direct wound; no parents"
+        },
+        {
+          "name": "create_rupture_shard_from_event",
+          "kind": "callable_definition",
+          "path": "v3/engine/effects/metabolization_effects.py",
+          "line": 144,
+          "sha256": "d4775271ca097e99e615cee19b381a478ad6d90a25051c5fce1b1e0e3c1adb1e",
+          "role": "immutable rupture carrier and exact event seam",
+          "historical_hazard": "age/global RNG; malheur→micro; direct wound; no parents"
+        },
+        {
+          "name": "update_wound_vector_from_rupture",
+          "kind": "callable_definition",
+          "path": "v3/engine/effects/metabolization_effects.py",
+          "line": 239,
+          "sha256": "d4775271ca097e99e615cee19b381a478ad6d90a25051c5fce1b1e0e3c1adb1e",
+          "role": "immutable rupture carrier and exact event seam",
+          "historical_hazard": "age/global RNG; malheur→micro; direct wound; no parents"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.rupture import RuptureRecord, admit_rupture",
+        "signature": "def admit_rupture(state: ActorSnapshotV1, event: CanonicalEventV1, basis: RuptureBasis, rule: RuleRef) -> RuptureRecord",
+        "output_type": "RuptureRecord",
+        "path": "neo_v3/actor/rupture.py"
+      },
+      "test_id": "T-M18-RUPTURE",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M19",
+      "symbols": [
+        {
+          "name": "MetabolizationProcess",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 392,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "process carrier and raw/working shell",
+          "historical_hazard": "rendered prose becomes support; no status/IRR producer; indefinite deltas"
+        },
+        {
+          "name": "MetabolizationProcess",
+          "kind": "import_alias",
+          "path": "v3/engine/effects/metabolization_effects.py",
+          "line": 18,
+          "sha256": "d4775271ca097e99e615cee19b381a478ad6d90a25051c5fce1b1e0e3c1adb1e",
+          "role": "process carrier and raw/working shell",
+          "historical_hazard": "rendered prose becomes support; no status/IRR producer; indefinite deltas"
+        },
+        {
+          "name": "compute_metabolization_delta",
+          "kind": "callable_definition",
+          "path": "v3/engine/effects/metabolization_effects.py",
+          "line": 358,
+          "sha256": "d4775271ca097e99e615cee19b381a478ad6d90a25051c5fce1b1e0e3c1adb1e",
+          "role": "process carrier and raw/working shell",
+          "historical_hazard": "rendered prose becomes support; no status/IRR producer; indefinite deltas"
+        },
+        {
+          "name": "update_metabolization_and_plasticity_step",
+          "kind": "callable_definition",
+          "path": "v3/engine/effects/metabolization_effects.py",
+          "line": 521,
+          "sha256": "d4775271ca097e99e615cee19b381a478ad6d90a25051c5fce1b1e0e3c1adb1e",
+          "role": "process carrier and raw/working shell",
+          "historical_hazard": "rendered prose becomes support; no status/IRR producer; indefinite deltas"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.metabolization import MetabolizationProcessRecord, transition_metabolization",
+        "signature": "def transition_metabolization(state: ActorSnapshotV1, process_ref: ProcessRef, support_refs: list[SupportRef], rule: RuleRef) -> MetabolizationProcessRecord",
+        "output_type": "MetabolizationProcessRecord",
+        "path": "neo_v3/actor/metabolization.py"
+      },
+      "test_id": "T-M19-PROCESS",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M20",
+      "symbols": [
+        {
+          "name": "Magnet",
+          "kind": "class",
+          "path": "v3/core/state.py",
+          "line": 205,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "entity/relation reference, decay and field projection shell",
+          "historical_hazard": "parent labels; who dropped; label-to-practice; secret origin"
+        },
+        {
+          "name": "Magnet",
+          "kind": "import_alias",
+          "path": "v3/engine/active_magnets.py",
+          "line": 7,
+          "sha256": "68a7b75aa4bb98f7251f72a05747425edb40d24edbe06611ce998e7b6c26a391",
+          "role": "entity/relation reference, decay and field projection shell",
+          "historical_hazard": "parent labels; who dropped; label-to-practice; secret origin"
+        },
+        {
+          "name": "apply_selected_magnets_to_state",
+          "kind": "callable_definition",
+          "path": "v3/engine/active_magnets.py",
+          "line": 25,
+          "sha256": "68a7b75aa4bb98f7251f72a05747425edb40d24edbe06611ce998e7b6c26a391",
+          "role": "entity/relation reference, decay and field projection shell",
+          "historical_hazard": "parent labels; who dropped; label-to-practice; secret origin"
+        },
+        {
+          "name": "update_active_magnets_step",
+          "kind": "callable_definition",
+          "path": "v3/engine/active_magnets.py",
+          "line": 58,
+          "sha256": "68a7b75aa4bb98f7251f72a05747425edb40d24edbe06611ce998e7b6c26a391",
+          "role": "entity/relation reference, decay and field projection shell",
+          "historical_hazard": "parent labels; who dropped; label-to-practice; secret origin"
+        },
+        {
+          "name": "build_relational_field_projection",
+          "kind": "callable_definition",
+          "path": "v3/systems/relational_field.py",
+          "line": 13,
+          "sha256": "75cfd5f27528ee00306de353b730d50ab3fc028970c11afcf84edea7eea7b8cd",
+          "role": "entity/relation reference, decay and field projection shell",
+          "historical_hazard": "parent labels; who dropped; label-to-practice; secret origin"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.relation import RelationRecord, ActorEntityRef, MagnetView",
+        "signature": "def record_relation(state: ActorSnapshotV1, entity_ref: ActorEntityRef, history: RelationHistory) -> RelationRecord",
+        "output_type": "RelationRecord",
+        "path": "neo_v3/actor/relation.py"
+      },
+      "test_id": "T-M20-RELATION",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M21",
+      "symbols": [
+        {
+          "name": "run_pressure_flow_cycle",
+          "kind": "callable_definition",
+          "path": "v3/psyche/flow.py",
+          "line": 753,
+          "sha256": "6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d",
+          "role": "route-scoped transaction, trace and conductance feedback",
+          "historical_hazard": "conserved-substance/one-winner ontology; pre-route writes"
+        },
+        {
+          "name": "_domain_charge_ledger",
+          "kind": "callable_definition",
+          "path": "v3/psyche/flow.py",
+          "line": 406,
+          "sha256": "6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d",
+          "role": "route-scoped transaction, trace and conductance feedback",
+          "historical_hazard": "conserved-substance/one-winner ontology; pre-route writes"
+        },
+        {
+          "name": "_channel_conductance",
+          "kind": "callable_definition",
+          "path": "v3/psyche/flow.py",
+          "line": 366,
+          "sha256": "6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d",
+          "role": "route-scoped transaction, trace and conductance feedback",
+          "historical_hazard": "conserved-substance/one-winner ontology; pre-route writes"
+        },
+        {
+          "name": "_update_memory",
+          "kind": "callable_definition",
+          "path": "v3/psyche/flow.py",
+          "line": 678,
+          "sha256": "6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d",
+          "role": "route-scoped transaction, trace and conductance feedback",
+          "historical_hazard": "conserved-substance/one-winner ontology; pre-route writes"
+        },
+        {
+          "name": "derive_vitality_profile",
+          "kind": "import_alias",
+          "path": "v3/psyche/flow.py",
+          "line": 37,
+          "sha256": "6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d",
+          "role": "route-scoped transaction, trace and conductance feedback",
+          "historical_hazard": "conserved-substance/one-winner ontology; pre-route writes"
+        },
+        {
+          "name": "derive_vitality_profile",
+          "kind": "callable_definition",
+          "path": "v3/psyche/vitality.py",
+          "line": 85,
+          "sha256": "56fed88e37299862774b2401c9a7e43363de6d6bb47a78f8f4744dcc6f91e912",
+          "role": "route-scoped transaction, trace and conductance feedback",
+          "historical_hazard": "conserved-substance/one-winner ontology; pre-route writes"
+        },
+        {
+          "name": "derive_insulation_profile",
+          "kind": "import_alias",
+          "path": "v3/psyche/flow.py",
+          "line": 36,
+          "sha256": "6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d",
+          "role": "route-scoped transaction, trace and conductance feedback",
+          "historical_hazard": "conserved-substance/one-winner ontology; pre-route writes"
+        },
+        {
+          "name": "derive_insulation_profile",
+          "kind": "callable_definition",
+          "path": "v3/psyche/insulation.py",
+          "line": 72,
+          "sha256": "c8dd5f96111d3b247ddcf27b876d09c05460b06d7961193bff039e39e5967d28",
+          "role": "route-scoped transaction, trace and conductance feedback",
+          "historical_hazard": "conserved-substance/one-winner ontology; pre-route writes"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.psyche.route import RouteTrace, run_route_cycle_transactional",
+        "signature": "def run_route_cycle_transactional(state: ActorSnapshotV1, pressure_refs: list[PressureRef]) -> RouteTrace",
+        "output_type": "RouteTrace",
+        "path": "neo_v3/psyche/route.py"
+      },
+      "test_id": "T-M21-ROUTE",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M22",
+      "symbols": [
+        {
+          "name": "child_model",
+          "kind": "annotated_field",
+          "path": "v3/core/state.py",
+          "line": 549,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "fallible orientation carrier and unknown-safe history",
+          "historical_hazard": "field/constant treated as a literal callable; infant adult theology"
+        },
+        {
+          "name": "PASS1_SYSTEM",
+          "kind": "assignment",
+          "path": "v3/engine/prompts.py",
+          "line": 11,
+          "sha256": "4702de20590579c3c4543dfa5139aa4a3ce6df47ed1aee2c92c800d5a3038d57",
+          "role": "fallible orientation carrier and unknown-safe history",
+          "historical_hazard": "field/constant treated as a literal callable; infant adult theology"
+        },
+        {
+          "name": "backbone_state_from_identity",
+          "kind": "callable_definition",
+          "path": "v3/io/identity_to_backbone.py",
+          "line": 209,
+          "sha256": "cb29c9595ac495c3b69b693d4c58a278e9ef1f63a7a8917d8e407920fbd3bdda",
+          "role": "fallible orientation carrier and unknown-safe history",
+          "historical_hazard": "field/constant treated as a literal callable; infant adult theology"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.development_orientation import DevelopmentalOrientation, record_developmental_orientation",
+        "signature": "def record_developmental_orientation(state: ActorSnapshotV1, care_history: CareHistoryRef) -> DevelopmentalOrientation",
+        "output_type": "DevelopmentalOrientation",
+        "path": "neo_v3/actor/development_orientation.py"
+      },
+      "test_id": "T-M22-DEVELOPMENT",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M23",
+      "symbols": [
+        {
+          "name": "autonomy_drive",
+          "kind": "annotated_field",
+          "path": "v3/core/state.py",
+          "line": 555,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "actual condition/gap trace",
+          "historical_hazard": "universal 65/68 drives; annual increments treated as evidence"
+        },
+        {
+          "name": "safety_drive",
+          "kind": "annotated_field",
+          "path": "v3/core/state.py",
+          "line": 556,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "actual condition/gap trace",
+          "historical_hazard": "universal 65/68 drives; annual increments treated as evidence"
+        },
+        {
+          "name": "autonomy_condition",
+          "kind": "annotated_field",
+          "path": "v3/core/state.py",
+          "line": 557,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "actual condition/gap trace",
+          "historical_hazard": "universal 65/68 drives; annual increments treated as evidence"
+        },
+        {
+          "name": "safety_condition",
+          "kind": "annotated_field",
+          "path": "v3/core/state.py",
+          "line": 558,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "actual condition/gap trace",
+          "historical_hazard": "universal 65/68 drives; annual increments treated as evidence"
+        },
+        {
+          "name": "autonomy_safety_micro_drift",
+          "kind": "callable_definition",
+          "path": "v3/systems/autonomy_safety.py",
+          "line": 27,
+          "sha256": "fdb6ae0d78bbb93041217e7cd98f16526c97d924393c9f6fd51aa56a128b0e56",
+          "role": "actual condition/gap trace",
+          "historical_hazard": "universal 65/68 drives; annual increments treated as evidence"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.conditions import ConditionRecord, record_safety_autonomy",
+        "signature": "def record_safety_autonomy(state: ActorSnapshotV1, event: EpisodeV1, access: AccessEnvelope) -> ConditionRecord",
+        "output_type": "ConditionRecord",
+        "path": "neo_v3/actor/conditions.py"
+      },
+      "test_id": "T-M23-CONDITION",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M24",
+      "symbols": [
+        {
+          "name": "stability_threshold_inertia",
+          "kind": "annotated_field",
+          "path": "v3/core/state.py",
+          "line": 560,
+          "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+          "role": "source-bounded residue/hysteresis carrier",
+          "historical_hazard": "universal drain/neutral point; unsupported status paths"
+        },
+        {
+          "name": "stability_inertia_dissipation",
+          "kind": "callable_definition",
+          "path": "v3/systems/stability_inertia.py",
+          "line": 17,
+          "sha256": "5a11c8b07eafe2b8f1d7e9864c9cb066a5c45f19c2c45a8d4223b3a64c394c78",
+          "role": "source-bounded residue/hysteresis carrier",
+          "historical_hazard": "universal drain/neutral point; unsupported status paths"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.residue import ResidueRecord, record_hysteresis",
+        "signature": "def record_hysteresis(state: ActorSnapshotV1, process_ref: ProcessRef, support_refs: list[SupportRef]) -> ResidueRecord",
+        "output_type": "ResidueRecord",
+        "path": "neo_v3/actor/residue.py"
+      },
+      "test_id": "T-M24-RESIDUE",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M25",
+      "symbols": [
+        {
+          "name": "derived_indices_schedule",
+          "kind": "config_key",
+          "path": "v3/v3_yearly_step_order.yaml",
+          "line": 21,
+          "sha256": "90496a2cc852ca00ef99c8bd4fcb2b41c9aa43c4aaa9108d3ac8cce0ebe22ffc",
+          "role": "historical derived-index scheduling configuration"
+        },
+        {
+          "name": "run_one_year",
+          "kind": "callable_definition",
+          "path": "v3/engine/yearly_step.py",
+          "line": 12,
+          "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+          "role": "explicit order, schedule assertions, hash/replay",
+          "historical_hazard": "year is causal unit; render/active magnets inside year; no event clock"
+        },
+        {
+          "name": "run_one_year",
+          "kind": "import_alias",
+          "path": "v3/engine/step_runner.py",
+          "line": 10,
+          "sha256": "5a737c1704eaa6dc2c67f6c2db3118a6daa8a213b44d559bc37eadbc9c09d95a",
+          "role": "explicit order, schedule assertions, hash/replay",
+          "historical_hazard": "year is causal unit; render/active magnets inside year; no event clock"
+        },
+        {
+          "name": "step_one_year",
+          "kind": "callable_definition",
+          "path": "v3/engine/yearly_step.py",
+          "line": 102,
+          "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+          "role": "explicit order, schedule assertions, hash/replay",
+          "historical_hazard": "year is causal unit; render/active magnets inside year; no event clock"
+        },
+        {
+          "name": "run_n_years",
+          "kind": "callable_definition",
+          "path": "v3/engine/step_runner.py",
+          "line": 13,
+          "sha256": "5a737c1704eaa6dc2c67f6c2db3118a6daa8a213b44d559bc37eadbc9c09d95a",
+          "role": "explicit order, schedule assertions, hash/replay",
+          "historical_hazard": "year is causal unit; render/active magnets inside year; no event clock"
+        },
+        {
+          "name": "test_step_order_immutable",
+          "kind": "callable_definition",
+          "path": "v3/tests/test_architecture_invariants.py",
+          "line": 89,
+          "sha256": "bb2baec1c57de169a2e1e05533b9721b4b05191403ff4993d61df17ac29d05fa",
+          "role": "explicit order, schedule assertions, hash/replay",
+          "historical_hazard": "year is causal unit; render/active magnets inside year; no event clock"
+        },
+        {
+          "name": "run_one_year",
+          "kind": "callsite",
+          "path": "v3/run_and_print.py",
+          "line": 123,
+          "sha256": "f2c1bbcbbdd39dda37e1334e035383535a8c04bfa6feb2d8253687576805eb60",
+          "role": "historical yearly simulation callsite"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.runtime.scheduler import advance_interval, run_event_sequence",
+        "signature": "def advance_interval(state: ActorSnapshotV1, interval: IntervalRef) -> list[CanonicalEventV1]",
+        "output_type": "CanonicalEventV1",
+        "path": "neo_v3/runtime/scheduler.py"
+      },
+      "test_id": "T-M25-SCHEDULER",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M26",
+      "symbols": [
+        {
+          "name": "DerivedIndices",
+          "kind": "class",
+          "path": "v3/core/derived.py",
+          "line": 14,
+          "sha256": "e479fc3eba21734752c372742fb2ee247cbdde6a73ac42545dc30b5039301360",
+          "role": "pure projection concept and exact dependency declaration",
+          "historical_hazard": "fixed-name invariant misses registers/metabolic_style"
+        },
+        {
+          "name": "compute_all_derived",
+          "kind": "callable_definition",
+          "path": "v3/core/derived.py",
+          "line": 322,
+          "sha256": "e479fc3eba21734752c372742fb2ee247cbdde6a73ac42545dc30b5039301360",
+          "role": "pure projection concept and exact dependency declaration",
+          "historical_hazard": "fixed-name invariant misses registers/metabolic_style"
+        },
+        {
+          "name": "compute_all_derived",
+          "kind": "import_alias",
+          "path": "v3/tests/test_architecture_invariants.py",
+          "line": 20,
+          "sha256": "bb2baec1c57de169a2e1e05533b9721b4b05191403ff4993d61df17ac29d05fa",
+          "role": "pure projection concept and exact dependency declaration",
+          "historical_hazard": "fixed-name invariant misses registers/metabolic_style"
+        },
+        {
+          "name": "assert_no_derived_fields_in_backbone",
+          "kind": "callable_definition",
+          "path": "v3/core/invariants.py",
+          "line": 346,
+          "sha256": "81298f3fc51b46cda8d72d0db914b672b17b9a35e13004fe59a9b0e29dada5e3",
+          "role": "pure projection concept and exact dependency declaration",
+          "historical_hazard": "fixed-name invariant misses registers/metabolic_style"
+        },
+        {
+          "name": "assert_no_derived_fields_in_backbone",
+          "kind": "import_alias",
+          "path": "v3/tests/test_architecture_invariants.py",
+          "line": 21,
+          "sha256": "bb2baec1c57de169a2e1e05533b9721b4b05191403ff4993d61df17ac29d05fa",
+          "role": "pure projection concept and exact dependency declaration",
+          "historical_hazard": "fixed-name invariant misses registers/metabolic_style"
+        },
+        {
+          "name": "test_no_derived_fields_in_backbone_state",
+          "kind": "callable_definition",
+          "path": "v3/tests/test_architecture_invariants.py",
+          "line": 123,
+          "sha256": "bb2baec1c57de169a2e1e05533b9721b4b05191403ff4993d61df17ac29d05fa",
+          "role": "pure projection concept and exact dependency declaration",
+          "historical_hazard": "fixed-name invariant misses registers/metabolic_style"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.derived.registry import DerivedViewRegistry, compute_view",
+        "signature": "def compute_view(snapshot: ActorSnapshotV1, view_id: ViewId) -> DerivedViewValue",
+        "output_type": "DerivedViewValue",
+        "path": "neo_v3/derived/registry.py"
+      },
+      "test_id": "T-M26-DERIVED",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M27",
+      "symbols": [
+        {
+          "name": "parse_candidate_packet",
+          "kind": "callable_definition",
+          "path": "v3/engine/llm_contract.py",
+          "line": 87,
+          "sha256": "f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf",
+          "role": "proposal-only/caps/provenance contract",
+          "historical_hazard": "selected proposals become backbone deltas; no canonical event"
+        },
+        {
+          "name": "build_pass1_prompt",
+          "kind": "callable_definition",
+          "path": "v3/engine/prompts.py",
+          "line": 107,
+          "sha256": "4702de20590579c3c4543dfa5139aa4a3ce6df47ed1aee2c92c800d5a3038d57",
+          "role": "proposal-only/caps/provenance contract",
+          "historical_hazard": "selected proposals become backbone deltas; no canonical event"
+        },
+        {
+          "name": "build_pass1_prompt",
+          "kind": "import_alias",
+          "path": "v3/engine/run_llm_band.py",
+          "line": 28,
+          "sha256": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38",
+          "role": "proposal-only/caps/provenance contract",
+          "historical_hazard": "selected proposals become backbone deltas; no canonical event"
+        },
+        {
+          "name": "run_llm_band_year",
+          "kind": "callable_definition",
+          "path": "v3/engine/run_llm_band.py",
+          "line": 146,
+          "sha256": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38",
+          "role": "proposal-only/caps/provenance contract",
+          "historical_hazard": "selected proposals become backbone deltas; no canonical event"
+        },
+        {
+          "name": "run_llm_band_year",
+          "kind": "callsite",
+          "path": "v3/run_and_print.py",
+          "line": 139,
+          "sha256": "f2c1bbcbbdd39dda37e1334e035383535a8c04bfa6feb2d8253687576805eb60",
+          "role": "historical yearly simulation callsite"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.llm.batch import BatchProposal, propose_batch",
+        "signature": "def propose_batch(state: ActorSnapshotV1, prompt: str) -> BatchProposal",
+        "output_type": "BatchProposal",
+        "path": "neo_v3/llm/batch.py"
+      },
+      "test_id": "T-M27-PROPOSAL",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M28",
+      "symbols": [
+        {
+          "name": "score_event_candidate",
+          "kind": "callable_definition",
+          "path": "v3/engine/scoring.py",
+          "line": 32,
+          "sha256": "36833287c72ffa40d0ece1ebc66fb0d685a92fc71aab1d211be9b21bfd0a82cb",
+          "role": "finite selection/caps/provenance shell",
+          "historical_hazard": "no hard admission; unseeded surprise; no event ledger; fallback"
+        },
+        {
+          "name": "select_candidates",
+          "kind": "callable_definition",
+          "path": "v3/engine/scoring.py",
+          "line": 197,
+          "sha256": "36833287c72ffa40d0ece1ebc66fb0d685a92fc71aab1d211be9b21bfd0a82cb",
+          "role": "finite selection/caps/provenance shell",
+          "historical_hazard": "no hard admission; unseeded surprise; no event ledger; fallback"
+        },
+        {
+          "name": "select_candidates",
+          "kind": "import_alias",
+          "path": "v3/engine/run_llm_band.py",
+          "line": 29,
+          "sha256": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38",
+          "role": "finite selection/caps/provenance shell",
+          "historical_hazard": "no hard admission; unseeded surprise; no event ledger; fallback"
+        },
+        {
+          "name": "run_llm_band_year",
+          "kind": "callable_definition",
+          "path": "v3/engine/run_llm_band.py",
+          "line": 146,
+          "sha256": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38",
+          "role": "finite selection/caps/provenance shell",
+          "historical_hazard": "no hard admission; unseeded surprise; no event ledger; fallback"
+        },
+        {
+          "name": "apply_deltas_to_state",
+          "kind": "import_alias",
+          "path": "v3/engine/run_llm_band.py",
+          "line": 15,
+          "sha256": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38",
+          "role": "finite selection/caps/provenance shell",
+          "historical_hazard": "no hard admission; unseeded surprise; no event ledger; fallback"
+        },
+        {
+          "name": "apply_deltas_to_state",
+          "kind": "callable_definition",
+          "path": "v3/engine/effects/delta_templates.py",
+          "line": 254,
+          "sha256": "7d99ddf26fd45b52e5e3c10074066ba5e06d17cdaf1fabad06298af3770815f0",
+          "role": "finite selection/caps/provenance shell",
+          "historical_hazard": "no hard admission; unseeded surprise; no event ledger; fallback"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.runtime.admission import CanonicalEventV1, admit_event, select_event",
+        "signature": "def admit_event(state: ActorSnapshotV1, proposal: ProspectiveSpec, source: SourceRef) -> CanonicalEventV1",
+        "output_type": "CanonicalEventV1",
+        "path": "neo_v3/runtime/admission.py"
+      },
+      "test_id": "T-M28-ADMISSION",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M29",
+      "symbols": [
+        {
+          "name": "build_render_packet",
+          "kind": "callable_definition",
+          "path": "v3/engine/llm_contract.py",
+          "line": 791,
+          "sha256": "f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf",
+          "role": "immediate render body and surface allowlist",
+          "historical_hazard": "full band not render-only; retry/callback; downstream prose feedback"
+        },
+        {
+          "name": "build_pass2_prompt",
+          "kind": "callable_definition",
+          "path": "v3/engine/prompts.py",
+          "line": 132,
+          "sha256": "4702de20590579c3c4543dfa5139aa4a3ce6df47ed1aee2c92c800d5a3038d57",
+          "role": "immediate render body and surface allowlist",
+          "historical_hazard": "full band not render-only; retry/callback; downstream prose feedback"
+        },
+        {
+          "name": "build_pass2_prompt",
+          "kind": "import_alias",
+          "path": "v3/render/phenomenology.py",
+          "line": 12,
+          "sha256": "f2f18c1d9ba705212846af41b33cb1dfd2ad986dae4b686873687c2e6d1a653d",
+          "role": "immediate render body and surface allowlist",
+          "historical_hazard": "full band not render-only; retry/callback; downstream prose feedback"
+        },
+        {
+          "name": "render_year",
+          "kind": "callable_definition",
+          "path": "v3/render/phenomenology.py",
+          "line": 55,
+          "sha256": "f2f18c1d9ba705212846af41b33cb1dfd2ad986dae4b686873687c2e6d1a653d",
+          "role": "immediate render body and surface allowlist",
+          "historical_hazard": "full band not render-only; retry/callback; downstream prose feedback"
+        },
+        {
+          "name": "render_year",
+          "kind": "import_alias",
+          "path": "v3/tests/test_architecture_invariants.py",
+          "line": 25,
+          "sha256": "bb2baec1c57de169a2e1e05533b9721b4b05191403ff4993d61df17ac29d05fa",
+          "role": "immediate render body and surface allowlist",
+          "historical_hazard": "full band not render-only; retry/callback; downstream prose feedback"
+        },
+        {
+          "name": "test_llm_no_backbone_mutation",
+          "kind": "callable_definition",
+          "path": "v3/tests/test_architecture_invariants.py",
+          "line": 51,
+          "sha256": "bb2baec1c57de169a2e1e05533b9721b4b05191403ff4993d61df17ac29d05fa",
+          "role": "immediate render body and surface allowlist",
+          "historical_hazard": "full band not render-only; retry/callback; downstream prose feedback"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.surface.render import SurfaceRecord, render_surface",
+        "signature": "def render_surface(input: RenderInput) -> SurfaceRecord",
+        "output_type": "SurfaceRecord",
+        "path": "neo_v3/surface/render.py"
+      },
+      "test_id": "T-M29-RENDER",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M30",
+      "symbols": [
+        {
+          "name": "build_persona_sheet",
+          "kind": "callable_definition",
+          "path": "v3/io/persona_sheet.py",
+          "line": 579,
+          "sha256": "4a0009533443baef2786fc498c7f8db3ead7d133d8ee7e97e6d7128d4322a00e",
+          "role": "one-person/read-only V2 jurisdiction",
+          "historical_hazard": "age<17→35; parent narrative; prose feedback"
+        },
+        {
+          "name": "build_persona_sheet",
+          "kind": "import_alias",
+          "path": "v2/conversation_engine.py",
+          "line": 304,
+          "sha256": "766bee296379f0faadbede55106bcee0123e9563c965d0e28f8806cedea06135",
+          "role": "one-person/read-only V2 jurisdiction",
+          "historical_hazard": "age<17→35; parent narrative; prose feedback"
+        },
+        {
+          "name": "build_persona_sheet",
+          "kind": "import_alias",
+          "path": "v2/conversation_engine.py",
+          "line": 307,
+          "sha256": "766bee296379f0faadbede55106bcee0123e9563c965d0e28f8806cedea06135",
+          "role": "one-person/read-only V2 jurisdiction",
+          "historical_hazard": "age<17→35; parent narrative; prose feedback"
+        },
+        {
+          "name": "prepare_conversation_turn",
+          "kind": "callable_definition",
+          "path": "v2/conversation_engine.py",
+          "line": 2079,
+          "sha256": "766bee296379f0faadbede55106bcee0123e9563c965d0e28f8806cedea06135",
+          "role": "one-person/read-only V2 jurisdiction",
+          "historical_hazard": "age<17→35; parent narrative; prose feedback"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.surface.read import ActorVisibleSurface, read_surface",
+        "signature": "def read_surface(state: ActorSnapshotV1, access: AccessEnvelope) -> ActorVisibleSurface",
+        "output_type": "ActorVisibleSurface",
+        "path": "neo_v3/surface/read.py"
+      },
+      "test_id": "T-M30-V2",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M31",
+      "symbols": [
+        {
+          "name": "match_life_course_to_type",
+          "kind": "callable_definition",
+          "path": "v2/enneagram_wisdom.py",
+          "line": 615,
+          "sha256": "95c018092eae44f319bead262c7d815c477df85ede4f7574e2b08aeff17ce34d",
+          "role": "optional forensic/noncausal label only",
+          "historical_hazard": "type-at-7, parent-type determinism"
+        },
+        {
+          "name": "infer_parent_type",
+          "kind": "callable_definition",
+          "path": "v2/parent_type_inference.py",
+          "line": 33,
+          "sha256": "b05632d01c48f52a5bed36b07b094ac770cada81f51951d78b7bea61e4e66cf3",
+          "role": "optional forensic/noncausal label only",
+          "historical_hazard": "type-at-7, parent-type determinism"
+        },
+        {
+          "name": "get_parent_type_effects_for_child",
+          "kind": "callable_definition",
+          "path": "v2/parent_type_inference.py",
+          "line": 143,
+          "sha256": "b05632d01c48f52a5bed36b07b094ac770cada81f51951d78b7bea61e4e66cf3",
+          "role": "optional forensic/noncausal label only",
+          "historical_hazard": "type-at-7, parent-type determinism"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.legacy.typology import OptionalTypologyView, archive_enneagram",
+        "signature": "def archive_enneagram(value: LegacyType) -> LegacyArtifact",
+        "output_type": "OptionalTypologyView",
+        "path": "neo_v3/legacy/typology.py"
+      },
+      "test_id": "T-M31-TYPE",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M32",
+      "symbols": [
+        {
+          "name": "normalize_v5_runtime_input_bundle",
+          "kind": "callable_definition",
+          "path": "v3/io/v5_bridge.py",
+          "line": 40,
+          "sha256": "31700b4031a62b0b5ff8257691e460ce47c983f86daaec72f1011bd6f2823baa",
+          "role": "inert SourceRef/status/provenance and fail-closed gate",
+          "historical_hazard": "hardcoded source; blocked values apply"
+        },
+        {
+          "name": "attach_v5_runtime_input_bundle",
+          "kind": "callable_definition",
+          "path": "v3/io/v5_bridge.py",
+          "line": 78,
+          "sha256": "31700b4031a62b0b5ff8257691e460ce47c983f86daaec72f1011bd6f2823baa",
+          "role": "inert SourceRef/status/provenance and fail-closed gate",
+          "historical_hazard": "hardcoded source; blocked values apply"
+        },
+        {
+          "name": "build_v5_field_bridge_injection",
+          "kind": "callable_definition",
+          "path": "v3/io/v5_field_bridge.py",
+          "line": 35,
+          "sha256": "444ed1e074439d006d341808386ca31e0616ac99ce11f5b99f9d101791ff9eea",
+          "role": "inert SourceRef/status/provenance and fail-closed gate",
+          "historical_hazard": "hardcoded source; blocked values apply"
+        },
+        {
+          "name": "build_v5_field_bridge_injection",
+          "kind": "import_alias",
+          "path": "v3/io/field_injection.py",
+          "line": 9,
+          "sha256": "d3750fdb61eb73471612cad5c7d7c530da9519c93469a17f4f70a9b2505df0aa",
+          "role": "inert SourceRef/status/provenance and fail-closed gate",
+          "historical_hazard": "hardcoded source; blocked values apply"
+        },
+        {
+          "name": "get_field_injection_for_year",
+          "kind": "callable_definition",
+          "path": "v3/io/field_injection.py",
+          "line": 273,
+          "sha256": "d3750fdb61eb73471612cad5c7d7c530da9519c93469a17f4f70a9b2505df0aa",
+          "role": "inert SourceRef/status/provenance and fail-closed gate",
+          "historical_hazard": "hardcoded source; blocked values apply"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.source.field import SourceEnvelope, field_injection_decision",
+        "signature": "def attach_source_envelope(state: ActorSnapshotV1, envelope: SourceEnvelope) -> None",
+        "output_type": "SourceEnvelope",
+        "path": "neo_v3/source/field.py"
+      },
+      "test_id": "T-M32-SOURCE",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M33",
+      "symbols": [
+        {
+          "name": "_pseudo_seed",
+          "kind": "callable_definition",
+          "path": "v3/engine/event_engine.py",
+          "line": 22,
+          "sha256": "b57e7ef4df5dabd996dc7de19c1c2c273ad90ee89d73570df1fd85674dd98ded",
+          "role": "event ID/label/conditioning serialization shell",
+          "historical_hazard": "mechanical random event causality"
+        },
+        {
+          "name": "_one_event",
+          "kind": "callable_definition",
+          "path": "v3/engine/event_engine.py",
+          "line": 31,
+          "sha256": "b57e7ef4df5dabd996dc7de19c1c2c273ad90ee89d73570df1fd85674dd98ded",
+          "role": "event ID/label/conditioning serialization shell",
+          "historical_hazard": "mechanical random event causality"
+        },
+        {
+          "name": "sample_events",
+          "kind": "callable_definition",
+          "path": "v3/engine/event_engine.py",
+          "line": 127,
+          "sha256": "b57e7ef4df5dabd996dc7de19c1c2c273ad90ee89d73570df1fd85674dd98ded",
+          "role": "event ID/label/conditioning serialization shell",
+          "historical_hazard": "mechanical random event causality"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.world.event_source import WorldEventSource, realize_world_event",
+        "signature": "def realize_world_event(source: SourceRef, proposal: ProspectiveSpec) -> CanonicalEventV1",
+        "output_type": "CanonicalEventV1",
+        "path": "neo_v3/world/event_source.py"
+      },
+      "test_id": "T-M33-WORLD-EVENT",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M34",
+      "symbols": [
+        {
+          "name": "parse_candidate_packet_with_fallback",
+          "kind": "callable_definition",
+          "path": "v3/engine/llm_contract.py",
+          "line": 159,
+          "sha256": "f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf",
+          "role": "integrity/degraded diagnostics only",
+          "historical_hazard": "fabricated event and psychic delta"
+        },
+        {
+          "name": "parse_candidate_packet_with_fallback",
+          "kind": "import_alias",
+          "path": "v3/engine/run_llm_band.py",
+          "line": 23,
+          "sha256": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38",
+          "role": "integrity/degraded diagnostics only",
+          "historical_hazard": "fabricated event and psychic delta"
+        },
+        {
+          "name": "make_fallback_event",
+          "kind": "callable_definition",
+          "path": "v3/engine/llm_contract.py",
+          "line": 173,
+          "sha256": "f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf",
+          "role": "integrity/degraded diagnostics only",
+          "historical_hazard": "fabricated event and psychic delta"
+        },
+        {
+          "name": "fallback_candidate_packet_if_empty",
+          "kind": "callable_definition",
+          "path": "v3/engine/llm_contract.py",
+          "line": 190,
+          "sha256": "f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf",
+          "role": "integrity/degraded diagnostics only",
+          "historical_hazard": "fabricated event and psychic delta"
+        },
+        {
+          "name": "run_llm_band_year",
+          "kind": "callable_definition",
+          "path": "v3/engine/run_llm_band.py",
+          "line": 146,
+          "sha256": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38",
+          "role": "integrity/degraded diagnostics only",
+          "historical_hazard": "fabricated event and psychic delta"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.runtime.no_event import NoEventRecord, hold_missing_proposal",
+        "signature": "def hold_missing_proposal(state: ActorSnapshotV1, reason: HoldReason) -> NoEventRecord",
+        "output_type": "NoEventRecord",
+        "path": "neo_v3/runtime/no_event.py"
+      },
+      "test_id": "T-M34-NO-EVENT",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M35",
+      "symbols": [
+        {
+          "name": "ensure_min_cracks",
+          "kind": "callable_definition",
+          "path": "v3/core/invariants.py",
+          "line": 253,
+          "sha256": "81298f3fc51b46cda8d72d0db914b672b17b9a35e13004fe59a9b0e29dada5e3",
+          "role": "degraded/diagnostic counts only",
+          "historical_hazard": "fabricated psychological content"
+        },
+        {
+          "name": "ensure_min_cracks",
+          "kind": "import_alias",
+          "path": "v3/engine/yearly_step.py",
+          "line": 28,
+          "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+          "role": "degraded/diagnostic counts only",
+          "historical_hazard": "fabricated psychological content"
+        },
+        {
+          "name": "ensure_min_frameworks",
+          "kind": "callable_definition",
+          "path": "v3/core/invariants.py",
+          "line": 277,
+          "sha256": "81298f3fc51b46cda8d72d0db914b672b17b9a35e13004fe59a9b0e29dada5e3",
+          "role": "degraded/diagnostic counts only",
+          "historical_hazard": "fabricated psychological content"
+        },
+        {
+          "name": "ensure_min_frameworks",
+          "kind": "import_alias",
+          "path": "v3/engine/yearly_step.py",
+          "line": 28,
+          "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+          "role": "degraded/diagnostic counts only",
+          "historical_hazard": "fabricated psychological content"
+        },
+        {
+          "name": "ensure_min_frameworks",
+          "kind": "import_alias",
+          "path": "v3/engine/yearly_step.py",
+          "line": 40,
+          "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+          "role": "degraded/diagnostic counts only",
+          "historical_hazard": "fabricated psychological content"
+        },
+        {
+          "name": "run_one_year",
+          "kind": "callable_definition",
+          "path": "v3/engine/yearly_step.py",
+          "line": 12,
+          "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+          "role": "degraded/diagnostic counts only",
+          "historical_hazard": "fabricated psychological content"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.valid_empty import ValidEmpty, diagnose_placeholder",
+        "signature": "def diagnose_placeholder(state: ActorSnapshotV1) -> ValidEmpty",
+        "output_type": "ValidEmpty",
+        "path": "neo_v3/actor/valid_empty.py"
+      },
+      "test_id": "T-M35-VALID-EMPTY",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M36",
+      "symbols": [
+        {
+          "name": "infer_parent_baseline_and_regime",
+          "kind": "callable_definition",
+          "path": "v3/io/parent_baseline_from_behavior.py",
+          "line": 25,
+          "sha256": "4e5be6448a5b76c413492ec2a83b62d9e9a2247ce131a094727d974a17cf750b",
+          "role": "typed unknown/absent and need-axis vocabulary",
+          "historical_hazard": "unknown parent becomes positive normal"
+        },
+        {
+          "name": "derive_child_expectation_baseline",
+          "kind": "callable_definition",
+          "path": "v3/engine/expectation_baseline.py",
+          "line": 107,
+          "sha256": "632e1e608bfc674a241e57bafa24e91834a2b8bdc3e4ed326dae6fca4e695d43",
+          "role": "typed unknown/absent and need-axis vocabulary",
+          "historical_hazard": "unknown parent becomes positive normal"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.unknown import UnknownExpectation",
+        "signature": "def unknown_expectation(axis: NeedAxis, reason: UnknownReason) -> UnknownExpectation",
+        "output_type": "UnknownExpectation",
+        "path": "neo_v3/actor/unknown.py"
+      },
+      "test_id": "T-M36-UNKNOWN",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M37",
+      "symbols": [
+        {
+          "name": "run_simulation_for_session",
+          "kind": "callable_definition",
+          "path": "server/generation/simulation.py",
+          "line": 71,
+          "sha256": "5d68ffe3bc6902dc60b90625443a03127cf0d04b4eed4327270a3a0226bc78d1",
+          "role": "interstitial accounting/annotation metadata separate",
+          "historical_hazard": "annotation as memory; final path overwrites"
+        },
+        {
+          "name": "build_persona_sheet",
+          "kind": "callable_definition",
+          "path": "v3/io/persona_sheet.py",
+          "line": 579,
+          "sha256": "4a0009533443baef2786fc498c7f8db3ead7d133d8ee7e97e6d7128d4322a00e",
+          "role": "interstitial accounting/annotation metadata separate",
+          "historical_hazard": "annotation as memory; final path overwrites"
+        },
+        {
+          "name": "_trajectory_backstory_from_snapshots",
+          "kind": "callable_definition",
+          "path": "v3/io/persona_sheet.py",
+          "line": 470,
+          "sha256": "4a0009533443baef2786fc498c7f8db3ead7d133d8ee7e97e6d7128d4322a00e",
+          "role": "interstitial accounting/annotation metadata separate",
+          "historical_hazard": "annotation as memory; final path overwrites"
+        },
+        {
+          "name": "distill_persona_sheet_backstory",
+          "kind": "callable_definition",
+          "path": "v3/tools/distill_memory.py",
+          "line": 218,
+          "sha256": "6bece5ef66029581b27fd9d813e32d7d9239d2cde2c243a3df220d58c47d7cc2",
+          "role": "interstitial accounting/annotation metadata separate",
+          "historical_hazard": "annotation as memory; final path overwrites"
+        },
+        {
+          "name": "_preprocess_backstory",
+          "kind": "callable_definition",
+          "path": "v3/tools/distill_memory.py",
+          "line": 72,
+          "sha256": "6bece5ef66029581b27fd9d813e32d7d9239d2cde2c243a3df220d58c47d7cc2",
+          "role": "interstitial accounting/annotation metadata separate",
+          "historical_hazard": "annotation as memory; final path overwrites"
+        },
+        {
+          "name": "render_year",
+          "kind": "callsite",
+          "path": "v3/run_and_print.py",
+          "line": 152,
+          "sha256": "f2c1bbcbbdd39dda37e1334e035383535a8c04bfa6feb2d8253687576805eb60",
+          "role": "final present-state render"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.surface.annotation import IntervalAnnotation, record_interval_annotation",
+        "signature": "def record_interval_annotation(interval: IntervalRef, material_facts: list[MaterialFact]) -> IntervalAnnotation",
+        "output_type": "IntervalAnnotation",
+        "path": "neo_v3/surface/annotation.py"
+      },
+      "test_id": "T-M37-ANNOTATION",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M38",
+      "symbols": [
+        {
+          "name": "derived_indices_schedule",
+          "kind": "config_key",
+          "path": "v3/v3_yearly_step_order.yaml",
+          "line": 21,
+          "sha256": "90496a2cc852ca00ef99c8bd4fcb2b41c9aa43c4aaa9108d3ac8cce0ebe22ffc",
+          "role": "historical derived-index scheduling configuration"
+        },
+        {
+          "name": "_compute_derived_after_step",
+          "kind": "callable_definition",
+          "path": "v3/engine/yearly_step.py",
+          "line": 173,
+          "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+          "role": "fail-fast equality and explicit dependency order",
+          "historical_hazard": "stale unscheduled fields; hidden writes"
+        },
+        {
+          "name": "get_derived_schedule",
+          "kind": "import_alias",
+          "path": "v3/engine/yearly_step.py",
+          "line": 9,
+          "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+          "role": "fail-fast equality and explicit dependency order",
+          "historical_hazard": "stale unscheduled fields; hidden writes"
+        },
+        {
+          "name": "get_derived_schedule",
+          "kind": "callable_definition",
+          "path": "v3/core/config_loader.py",
+          "line": 61,
+          "sha256": "5f953d9661f61081187898c3ad06b4567bc4fa99d3d7cd856d30cdd961f78577",
+          "role": "fail-fast equality and explicit dependency order",
+          "historical_hazard": "stale unscheduled fields; hidden writes"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.derived.schedule import DerivedRegistry, compute_view",
+        "signature": "def compute_view(snapshot: ActorSnapshotV1, view_id: ViewId) -> DerivedViewValue",
+        "output_type": "DerivedViewValue",
+        "path": "neo_v3/derived/schedule.py"
+      },
+      "test_id": "T-M38-SCHEDULE",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M39",
+      "symbols": [
+        {
+          "name": "maybe_inject_rupture_at_band_age",
+          "kind": "callable_definition",
+          "path": "v3/engine/effects/metabolization_effects.py",
+          "line": 273,
+          "sha256": "d4775271ca097e99e615cee19b381a478ad6d90a25051c5fce1b1e0e3c1adb1e",
+          "role": "only rupture/process archive shell",
+          "historical_hazard": "age/global RNG/outside ledger/wound"
+        },
+        {
+          "name": "_maybe_inject_rupture_at_band_age",
+          "kind": "import_alias",
+          "path": "server/generation/simulation.py",
+          "line": 13,
+          "sha256": "5d68ffe3bc6902dc60b90625443a03127cf0d04b4eed4327270a3a0226bc78d1",
+          "role": "only rupture/process archive shell",
+          "historical_hazard": "age/global RNG/outside ledger/wound"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.actor.admitted_disruption import AdmittedDisruption, admit_rupture_event",
+        "signature": "def admit_rupture_event(state: ActorSnapshotV1, event: CanonicalEventV1, rule: RuleRef) -> AdmittedDisruption",
+        "output_type": "AdmittedDisruption",
+        "path": "neo_v3/actor/admitted_disruption.py"
+      },
+      "test_id": "T-M39-DISRUPTION",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    },
+    {
+      "M": "M40",
+      "symbols": [
+        {
+          "name": "GenerationIntegrityAccumulator",
+          "kind": "import_alias",
+          "path": "server/generation/simulation.py",
+          "line": 83,
+          "sha256": "5d68ffe3bc6902dc60b90625443a03127cf0d04b4eed4327270a3a0226bc78d1",
+          "role": "graded integrity and multi-gate readiness concept",
+          "historical_hazard": "name/country-only and degraded accepted"
+        },
+        {
+          "name": "GenerationIntegrityAccumulator",
+          "kind": "class",
+          "path": "v3/core/generation_integrity.py",
+          "line": 13,
+          "sha256": "5265aac2fda4d6e6ac62927353518045f215d7d1916930e19e980b6d77eff214",
+          "role": "graded integrity and multi-gate readiness concept",
+          "historical_hazard": "name/country-only and degraded accepted"
+        },
+        {
+          "name": "_generation_state_is_ready",
+          "kind": "assignment",
+          "path": "server/generation/simulation.py",
+          "line": 18,
+          "sha256": "5d68ffe3bc6902dc60b90625443a03127cf0d04b4eed4327270a3a0226bc78d1",
+          "role": "graded integrity and multi-gate readiness concept",
+          "historical_hazard": "name/country-only and degraded accepted"
+        },
+        {
+          "name": "_generation_state_is_ready",
+          "kind": "callable_definition",
+          "path": "server/session_state.py",
+          "line": 53,
+          "sha256": "9c9c3b0e2b3bff700af127e03805166102920019d6acd099ee8270fbe63bc15a",
+          "role": "graded integrity and multi-gate readiness concept",
+          "historical_hazard": "name/country-only and degraded accepted"
+        },
+        {
+          "name": "_golden_eligibility_for_session_dir",
+          "kind": "callable_definition",
+          "path": "server/generation/store.py",
+          "line": 77,
+          "sha256": "eb592702327427a22b5d901337e6ee8b251b164ad41fe8848b165a14730a942c",
+          "role": "graded integrity and multi-gate readiness concept",
+          "historical_hazard": "name/country-only and degraded accepted"
+        },
+        {
+          "name": "_validate_stored_persona_for_live_use",
+          "kind": "callable_definition",
+          "path": "server/generation/store.py",
+          "line": 183,
+          "sha256": "eb592702327427a22b5d901337e6ee8b251b164ad41fe8848b165a14730a942c",
+          "role": "graded integrity and multi-gate readiness concept",
+          "historical_hazard": "name/country-only and degraded accepted"
+        },
+        {
+          "name": "_validate_persona_for_store_write",
+          "kind": "callable_definition",
+          "path": "server/generation/store.py",
+          "line": 245,
+          "sha256": "eb592702327427a22b5d901337e6ee8b251b164ad41fe8848b165a14730a942c",
+          "role": "graded integrity and multi-gate readiness concept",
+          "historical_hazard": "name/country-only and degraded accepted"
+        },
+        {
+          "name": "_validate_persona_for_store_write",
+          "kind": "assignment",
+          "path": "server/generation/simulation.py",
+          "line": 22,
+          "sha256": "5d68ffe3bc6902dc60b90625443a03127cf0d04b4eed4327270a3a0226bc78d1",
+          "role": "graded integrity and multi-gate readiness concept",
+          "historical_hazard": "name/country-only and degraded accepted"
+        }
+      ],
+      "current_adapter": "TO_BUILD",
+      "proposed_adapter": {
+        "import": "from neo_v3.runtime.readiness import ReadinessVector, assess_person_readiness",
+        "signature": "def assess_person_readiness(actor: ActorSnapshotV1, gates: ReadinessGates) -> ReadinessVector",
+        "output_type": "ReadinessVector",
+        "path": "neo_v3/runtime/readiness.py"
+      },
+      "test_id": "T-M40-READINESS",
+      "test_status": "TEST_SPEC_ONLY",
+      "source_status": "HISTORICAL_SOURCE_IDENTIFIED_NOT_NATIVE_ISSUANCE"
+    }
+  ],
+  "named_symbols": 172,
+  "source_files_verified_for_this_capture": 60,
+  "historical_matrix_unchanged": {
+    "cells": 480,
+    "marks": 124,
+    "unmarked": 356
+  },
+  "not_claimed": [
+    "RM40_R3_full_return",
+    "executable_F1_F2_F3_adapters",
+    "current_live_consumers",
+    "native_science",
+    "owner_source_permission"
+  ]
+}
