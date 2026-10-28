@@ -1,0 +1,130 @@
+{
+  "actual_existing_api_calls": [
+    "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+    "rawlsing_next.pre553_native_workload_binding.build_projection_catalog",
+    "rawlsing_next.pre553_empirical_query.execute_empirical_query"
+  ],
+  "authority_grades": [
+    {
+      "authority_id": "R157-P0-FIXTURE-ROUTING",
+      "authority_kind": "ROUTING_RISK_SET",
+      "decision_state": "ALLOW",
+      "grade": "NONRESPONDENT_FIXTURE_ONLY"
+    },
+    {
+      "authority_id": "R157-P0-FIXTURE-COORD",
+      "authority_kind": "COORDINATE_SEMANTICS",
+      "decision_state": "ALLOW",
+      "grade": "NONRESPONDENT_FIXTURE_ONLY"
+    },
+    {
+      "authority_id": "R157-P0-FIXTURE-MAPPING",
+      "authority_kind": "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+      "decision_state": "ALLOW",
+      "grade": "NONRESPONDENT_FIXTURE_ONLY"
+    },
+    {
+      "authority_id": "R157-P0-FIXTURE-PROJECTION",
+      "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+      "decision_state": "ALLOW",
+      "grade": "NONRESPONDENT_FIXTURE_ONLY"
+    },
+    {
+      "authority_id": "R157-P0-FIXTURE-TOPOLOGY",
+      "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+      "decision_state": "ALLOW",
+      "grade": "NONRESPONDENT_FIXTURE_ONLY"
+    },
+    {
+      "authority_id": "R157-P0-FIXTURE-SOURCE",
+      "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+      "decision_state": "ALLOW",
+      "grade": "NONRESPONDENT_FIXTURE_ONLY"
+    },
+    {
+      "authority_id": "R157-P0-FIXTURE-REPLAY",
+      "authority_kind": "REPLAY_PROTOCOL",
+      "decision_state": "ALLOW",
+      "grade": "NONRESPONDENT_FIXTURE_ONLY"
+    },
+    {
+      "authority_id": "B49-TEST-ONLY-QUERY-AUTH",
+      "authority_kind": "PREDICATE_GRAMMAR",
+      "decision_state": "ALLOW",
+      "grade": "TEST_ONLY_SOURCEFREE"
+    }
+  ],
+  "catalog_identity": "305d17e9a1b4c013e24bd1a145b17c659fd2e1b727dc8946a8dbf6ec051109de",
+  "execution": {
+    "fact_count": 1,
+    "fact_ref": {
+      "content_hash": "a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
+    },
+    "raw_denominator_support": [
+      1
+    ],
+    "raw_numerator_support": [
+      1
+    ],
+    "status": "EXECUTED_SUPPORTED",
+    "typed_states": [
+      "SUPPORTED"
+    ]
+  },
+  "fixture_config_file_sha256": "f69e2ec3bf514da34f1d9e0d60b2cf51e8ac0879655d7a4ad7cec609877359d6",
+  "fixture_config_path": "source_pre553_validation/foundation/examples/SRC09_q101_fixture.config.json",
+  "fixture_path": "source_pre553_validation/foundation/fixtures/SRC09_q101_nonrespondent.json",
+  "fixture_projection_identity": {
+    "content_hash": "264bf0e112d87edf3a5e8def4706944fe3b2a98549bc764f8d5474187e761af4",
+    "kind": "C11_SEMANTIC_PROJECTION",
+    "object_id": "urn:rawlsing:r157:p0:SRC09:q101:p0-fixture"
+  },
+  "fixture_release_ref": {
+    "content_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f",
+    "kind": "C11LogicalRelease",
+    "object_id": "R157_P0_FIXTURE_RELEASE/SRC09"
+  },
+  "fixture_source_sha256": "a93b4dab00a2b7cbd559d8a0bb1ca498caaa87f27bd1bd73e9fceb0f2820a491",
+  "independent_count_check": {
+    "expected_denominator": 1,
+    "expected_numerator": 1,
+    "matches_empirical_fact": true,
+    "source_fixture_rows": 9,
+    "target_raw_value": 1.0,
+    "target_variable": "q101"
+  },
+  "original_source_or_release_read": false,
+  "predicate_ref": {
+    "content_hash": "ff2b51391075df074e1ae76d8de5aa34c236cfabbabeae738227c87c2e7ef7e3",
+    "kind": "EmpiricalPredicate@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:ff2b51391075df074e1ae76d8de5aa34c236cfabbabeae738227c87c2e7ef7e3"
+  },
+  "product_positive": true,
+  "query_ref": {
+    "content_hash": "d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706",
+    "kind": "EmpiricalQuerySpec@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706"
+  },
+  "requested_output_grain": {
+    "measure_kind": "RAW",
+    "response_state_semantics_ref": {
+      "content_hash": "f417c1014b7dfd3a2986a53b7b8fe3ef4d1e6ed04f69b4293531fa65fc3788f2",
+      "kind": "RESPONSE_STATE_SEMANTICS",
+      "object_id": "urn:rawlsing:b49:response_state_semantics:SUBSTANTIVE"
+    },
+    "risk_set_type": "WHOLE_QUESTION_RISK_SET",
+    "source_scope_mode": "SINGLE_UNIVERSE",
+    "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED"
+  },
+  "schema": "PYAT_CAMPAIGN_B0_QUALIFIED_FIXTURE_POSITIVE@1.0.0",
+  "scope": "SRC09_P0_NONRESPONDENT_FIXTURE_ONLY__NOT_ORIGINAL_NOT_SRC04",
+  "target_ref": {
+    "content_hash": "86dbe8af836dc8562022d8cf6f24fcd8fefaaa0f74da0bf2b9d53eed2fcae9e0",
+    "kind": "NATIVE_QUESTION",
+    "object_id": "urn:rawlsing:r157:p0:SRC09:q101"
+  },
+  "test_only_query_authority_used": true
+}

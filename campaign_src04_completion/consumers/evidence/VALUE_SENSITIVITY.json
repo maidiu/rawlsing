@@ -1,0 +1,69 @@
+{
+  "actual_api_calls": [
+    "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+    "rawlsing_next.pre553_native_workload_binding.build_projection_catalog",
+    "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+    "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+    "rawlsing_next.pre553_effective_n.compute_effective_n",
+    "rawlsing_next.objective_consumer_bounded_evidence.evaluate_oc01_pre553_source_local"
+  ],
+  "changed": true,
+  "consumer_owner": "campaign_src04_completion.consumers.consumer.consume_native_producer",
+  "downstream_owner": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+  "fixture_only": true,
+  "fixture_scope": "NONRESPONDENT_FIXTURE_ONLY__NOT_ORIGINAL_NOT_SRC04",
+  "measured": true,
+  "mutated": {
+    "discovery_empirical_fact_refs": [
+      "9813612c89952110c7b78a58fdf8701ff0d5569d4bb3930bb55e1fddeaf904ed",
+      "9cfbca06ad6ad9d0970ca481de12952154f9195199623009bb3ffc7687f579a7"
+    ],
+    "discovery_supported_candidate_count": 1,
+    "downstream_value_effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED",
+    "fact_ref": {
+      "content_hash": "e9188502d1eb7c54b7c84a4c74ceb32c5532cce627b9b3b03b9f2d0c4d4ea3ce",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:e9188502d1eb7c54b7c84a4c74ceb32c5532cce627b9b3b03b9f2d0c4d4ea3ce"
+    },
+    "raw_denominator_support": 2,
+    "raw_numerator_support": 2
+  },
+  "original": {
+    "discovery_empirical_fact_refs": [
+      "5d7f9badd24159736bb5a83c4d94504569a93d8e01702c5ce882bca22ce6463a",
+      "9705c59b8ac325169895d06a602355817359f47837c787b2a0c7c9b81358ae49"
+    ],
+    "discovery_supported_candidate_count": 1,
+    "downstream_value_effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED",
+    "fact_ref": {
+      "content_hash": "a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
+    },
+    "raw_denominator_support": 1,
+    "raw_numerator_support": 1
+  },
+  "respondent_cells_emitted": false,
+  "restored": true,
+  "restored_result": {
+    "discovery_empirical_fact_refs": [
+      "5d7f9badd24159736bb5a83c4d94504569a93d8e01702c5ce882bca22ce6463a",
+      "9705c59b8ac325169895d06a602355817359f47837c787b2a0c7c9b81358ae49"
+    ],
+    "discovery_supported_candidate_count": 1,
+    "downstream_value_effect": "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED",
+    "fact_ref": {
+      "content_hash": "a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
+    },
+    "raw_denominator_support": 1,
+    "raw_numerator_support": 1
+  },
+  "schema": "PYAT_SRC04_LANE_D_VALUE_SENSITIVITY@1.0.0",
+  "scope": "NONRESPONDENT_FIXTURE_ONLY",
+  "source_local_claim": false,
+  "status": "MEASURED_FIXTURE_ONLY",
+  "upstream_change": "B0 synthetic nonrespondent fixture q101 row-2 raw_value 2.0 -> 1.0; original fixture SHA a93b4dab00a2b7cbd559d8a0bb1ca498caaa87f27bd1bd73e9fceb0f2820a491 -> 4349b4a104bba95c9a94b1b4a1e6281b1e49af2c8a53936d1e5ef4cd500cc753"
+}

@@ -1,0 +1,204 @@
+{
+  "canonical_values_emitted": 0,
+  "contract": {
+    "claim_ceiling": "SUPPORTED_COMPONENT_ONLY",
+    "evidence_tier": "PARTIAL_AUTHORITY",
+    "fact_ref": {
+      "content_hash": "a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
+    },
+    "fixture_only": true,
+    "native_authority_refs": [],
+    "policy_authority_refs": [
+      {
+        "content_hash": "71ffae6d8e6892b35bd856e6bab73849957f7dd62433ebd371d3948e1624ac57",
+        "kind": "AUTHORITY_GRADE_RECORD",
+        "object_id": "urn:rawlsing:campaign-b0:authority-grade:R157-P0-FIXTURE-ROUTING"
+      },
+      {
+        "content_hash": "3dc47e5e968b790a1bb446349f72286f835974fdbe5e1453ebbc8cb18e0827b7",
+        "kind": "AUTHORITY_GRADE_RECORD",
+        "object_id": "urn:rawlsing:campaign-b0:authority-grade:R157-P0-FIXTURE-COORD"
+      },
+      {
+        "content_hash": "530995111a41d036ca3a72c8f804ace3429979723cda2d7e579f70e3d4d4685c",
+        "kind": "AUTHORITY_GRADE_RECORD",
+        "object_id": "urn:rawlsing:campaign-b0:authority-grade:R157-P0-FIXTURE-MAPPING"
+      },
+      {
+        "content_hash": "f5ae32f8b0551bee48b8aedd088abdbb8380a068e270a612c9e0ea09dafffd54",
+        "kind": "AUTHORITY_GRADE_RECORD",
+        "object_id": "urn:rawlsing:campaign-b0:authority-grade:R157-P0-FIXTURE-PROJECTION"
+      },
+      {
+        "content_hash": "8d9b55821aa29ae5c5411bd07b4a53644d9b4faa2b60b1dea0ee9a3de4193fe5",
+        "kind": "AUTHORITY_GRADE_RECORD",
+        "object_id": "urn:rawlsing:campaign-b0:authority-grade:R157-P0-FIXTURE-TOPOLOGY"
+      },
+      {
+        "content_hash": "05d436cd56fcb560a5e0d7253ca317b6895fc238c0aef18f5e5e0e2b7aa28ab2",
+        "kind": "AUTHORITY_GRADE_RECORD",
+        "object_id": "urn:rawlsing:campaign-b0:authority-grade:R157-P0-FIXTURE-SOURCE"
+      },
+      {
+        "content_hash": "c432e5e27980b42df7890e48cf25a32f97b4cf31bb1c811cc132205c3499542c",
+        "kind": "AUTHORITY_GRADE_RECORD",
+        "object_id": "urn:rawlsing:campaign-b0:authority-grade:R157-P0-FIXTURE-REPLAY"
+      },
+      {
+        "content_hash": "319f23a05c001561027e3b91b078f1e0b16319610c5cf4901112ad551b4ebc4e",
+        "kind": "AUTHORITY_GRADE_RECORD",
+        "object_id": "urn:rawlsing:campaign-b0:authority-grade:B49-TEST-ONLY-QUERY-AUTH"
+      }
+    ],
+    "predicate_ref": {
+      "content_hash": "ff2b51391075df074e1ae76d8de5aa34c236cfabbabeae738227c87c2e7ef7e3",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:ff2b51391075df074e1ae76d8de5aa34c236cfabbabeae738227c87c2e7ef7e3"
+    },
+    "producer_family": [
+      "C11LogicalRelease",
+      "EmpiricalQuerySpec@1.0.0",
+      "EmpiricalPredicate@1.0.0",
+      "EmpiricalFact@1.0.0"
+    ],
+    "query_ref": {
+      "content_hash": "d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706"
+    },
+    "release_ref": {
+      "content_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f",
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_P0_FIXTURE_RELEASE/SRC09"
+    },
+    "source_id": "SRC09",
+    "source_rows": 9,
+    "source_sha256": "a93b4dab00a2b7cbd559d8a0bb1ca498caaa87f27bd1bd73e9fceb0f2820a491",
+    "use_scopes": [
+      "SUPPORTED_COMPONENT_ONLY"
+    ]
+  },
+  "fact_ref": {
+    "content_hash": "a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc",
+    "kind": "EmpiricalFact@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
+  },
+  "fact_typed_state": "SUPPORTED",
+  "ff_v553_adoption": false,
+  "fixture_only": true,
+  "limits": [
+    "Retained B0 SRC09 P0 nonrespondent/test-only fixture positive, used only for engineering wiring.",
+    "Not an SRC04 source-local product; no source-value-sensitive original proof is claimed.",
+    "No D1 tally was converted into EmpiricalFact."
+  ],
+  "native_execution": false,
+  "oc01_receipt": {
+    "coefficient_reallocated": false,
+    "consumer_seam": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+    "contract_id": "PREV3_OBJECTIVE_CONSUMER_BOUNDED_EVIDENCE@1.0.0",
+    "missing_required_input_ids": [],
+    "non_empirical_input_ids": [],
+    "omitted_optional_input_ids": [],
+    "operation_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706",
+    "policy_id": "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1",
+    "positive_completion": true,
+    "receipt_hash": "021186e554c9c2cd6945152d0a04f9534a21d3c91366b835a08a995bde2c63ed",
+    "refusal_reasons": [],
+    "relation_authority_refs": [],
+    "requested_claim_ceiling": "SUPPORTED_COMPONENT_ONLY",
+    "selected_input_authority_refs": [
+      {
+        "authority_refs": [
+          {
+            "content_hash": "319f23a05c001561027e3b91b078f1e0b16319610c5cf4901112ad551b4ebc4e",
+            "kind": "AUTHORITY_GRADE_RECORD",
+            "object_id": "urn:rawlsing:campaign-b0:authority-grade:B49-TEST-ONLY-QUERY-AUTH"
+          },
+          {
+            "content_hash": "3dc47e5e968b790a1bb446349f72286f835974fdbe5e1453ebbc8cb18e0827b7",
+            "kind": "AUTHORITY_GRADE_RECORD",
+            "object_id": "urn:rawlsing:campaign-b0:authority-grade:R157-P0-FIXTURE-COORD"
+          },
+          {
+            "content_hash": "530995111a41d036ca3a72c8f804ace3429979723cda2d7e579f70e3d4d4685c",
+            "kind": "AUTHORITY_GRADE_RECORD",
+            "object_id": "urn:rawlsing:campaign-b0:authority-grade:R157-P0-FIXTURE-MAPPING"
+          },
+          {
+            "content_hash": "f5ae32f8b0551bee48b8aedd088abdbb8380a068e270a612c9e0ea09dafffd54",
+            "kind": "AUTHORITY_GRADE_RECORD",
+            "object_id": "urn:rawlsing:campaign-b0:authority-grade:R157-P0-FIXTURE-PROJECTION"
+          },
+          {
+            "content_hash": "c432e5e27980b42df7890e48cf25a32f97b4cf31bb1c811cc132205c3499542c",
+            "kind": "AUTHORITY_GRADE_RECORD",
+            "object_id": "urn:rawlsing:campaign-b0:authority-grade:R157-P0-FIXTURE-REPLAY"
+          },
+          {
+            "content_hash": "71ffae6d8e6892b35bd856e6bab73849957f7dd62433ebd371d3948e1624ac57",
+            "kind": "AUTHORITY_GRADE_RECORD",
+            "object_id": "urn:rawlsing:campaign-b0:authority-grade:R157-P0-FIXTURE-ROUTING"
+          },
+          {
+            "content_hash": "05d436cd56fcb560a5e0d7253ca317b6895fc238c0aef18f5e5e0e2b7aa28ab2",
+            "kind": "AUTHORITY_GRADE_RECORD",
+            "object_id": "urn:rawlsing:campaign-b0:authority-grade:R157-P0-FIXTURE-SOURCE"
+          },
+          {
+            "content_hash": "8d9b55821aa29ae5c5411bd07b4a53644d9b4faa2b60b1dea0ee9a3de4193fe5",
+            "kind": "AUTHORITY_GRADE_RECORD",
+            "object_id": "urn:rawlsing:campaign-b0:authority-grade:R157-P0-FIXTURE-TOPOLOGY"
+          }
+        ],
+        "input_id": "SRC09:urn:rawlsing:pre553:EmpiricalFact:sha256:a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
+      }
+    ],
+    "selected_input_ids": [
+      "SRC09:urn:rawlsing:pre553:EmpiricalFact:sha256:a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
+    ],
+    "selected_producer_refs": [
+      {
+        "content_hash": "a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
+      }
+    ],
+    "state": "SUPPORTED_OBJECTIVE_RESULT",
+    "unavailable_input_omission_reasons": []
+  },
+  "population_claim": false,
+  "predicate_ref": {
+    "content_hash": "ff2b51391075df074e1ae76d8de5aa34c236cfabbabeae738227c87c2e7ef7e3",
+    "kind": "EmpiricalPredicate@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:ff2b51391075df074e1ae76d8de5aa34c236cfabbabeae738227c87c2e7ef7e3"
+  },
+  "query_ref": {
+    "content_hash": "d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706",
+    "kind": "EmpiricalQuerySpec@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706"
+  },
+  "raw_denominator_support": 1,
+  "raw_numerator_support": 1,
+  "release_ref": {
+    "content_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f",
+    "kind": "C11LogicalRelease",
+    "object_id": "R157_P0_FIXTURE_RELEASE/SRC09"
+  },
+  "retained_b0_receipt": true,
+  "retained_b0_receipt_sha256": "947b4950ade82dc7d1c5a80d5a2f2b54e7b918ce331e8e3ee1d64cbbd554c532",
+  "retained_b0_scope": "SRC09_P0_NONRESPONDENT_FIXTURE_ONLY__NOT_ORIGINAL_NOT_SRC04",
+  "schema": "PYAT_SRC04_LANE_D_CONSUMER_PRODUCT@1.0.0",
+  "source_id": "SRC09",
+  "source_local_claim": false,
+  "source_rows": 9,
+  "source_sha256": "a93b4dab00a2b7cbd559d8a0bb1ca498caaa87f27bd1bd73e9fceb0f2820a491",
+  "source_value_sensitive": false,
+  "status": "FIXTURE_ONLY_ENGINEERING_POSITIVE__NOT_SOURCE_LOCAL_PROOF",
+  "support_rate": {
+    "denominator": 1,
+    "numerator": 1
+  },
+  "weights_used": false
+}
