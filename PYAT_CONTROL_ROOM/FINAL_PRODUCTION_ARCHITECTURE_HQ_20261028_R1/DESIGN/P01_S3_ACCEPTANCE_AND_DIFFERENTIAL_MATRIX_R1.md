@@ -54,6 +54,8 @@
 | T38 | B08 | Optional cache miss/delete/corrupt/stale; cold fresh process | Same logical refs, refuse invalid state, no cache-derived grant | NEW negative/rebuild test needed |
 | T39 | B08 | Resource profile under original host capacity | Measure full lifecycle wall time, RSS, swap, scratch, persistent bytes, native fact cost | NOT MEASURED |
 | T40 | B08 | Qualified original source scope & all35 family diversity | Only permit and claim actual original outcomes at current grant scope; all35 full acceptance separate | NOT EXECUTED, separate source authority |
+| T41 | B03 | Source file mutation between _decode SHA and iter_batches pathname reopen | Approved immutable snapshot lease binds read cells to verified bytes; altered synthetic path never qualifies an original-source view | NEW negative/positive sourcefree test needed |
+
 
 ## Execution evidence ledger requirements
 
