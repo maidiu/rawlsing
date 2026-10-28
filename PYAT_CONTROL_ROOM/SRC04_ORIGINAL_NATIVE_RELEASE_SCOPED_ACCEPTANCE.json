@@ -1,0 +1,98 @@
+{
+  "schema": "PYAT_SRC04_ORIGINAL_NATIVE_RELEASE_SCOPED_ACCEPTANCE_V1",
+  "disposition": "ACCEPT_SCOPED_ORIGINAL_SRC04_C11_RELEASE",
+  "candidate": "303a57851785557fff8229e29a5554717168cbd1",
+  "independent_review": "0cdcab734796d4b007a7401d10872bdf5522ac8e",
+  "review_artifact_commit": "e21f28f2657027bfde37d27e5fe5dad2f7fd3908",
+  "review_manifest_verified_files": 12,
+  "direct_remote_verified": true,
+  "release_ref": {
+    "content_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+    "kind": "C11LogicalRelease",
+    "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION"
+  },
+  "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+  "source_release_manifest_hash": "cf5b990ec740134b77a4acf34653be02640450110ae86bff1b23aa4ffca44472",
+  "accepted_scope": {
+    "configured_response_fields": 178,
+    "coordinate_positions": 22011,
+    "fixture_only": false,
+    "full_source_grant": true,
+    "held_q217_unbound_cells": 38,
+    "held_response_slot": "q217",
+    "internal_records": 7514,
+    "n11_n12_claim": false,
+    "original_source": true,
+    "physical_slots": 181,
+    "population_or_weight_claim": false,
+    "public_objects": 2619317,
+    "qualified_response_fields": 177,
+    "response_positions": 1298649,
+    "rows": 7337,
+    "selected_coordinate_fields": 3
+  },
+  "measured_source_correspondence": {
+    "all_181_physical_slots_accounted": true,
+    "all_coordinate_field_matches": true,
+    "all_response_field_matches": true,
+    "canonical_coordinate_values_present": 0,
+    "canonical_response_values_present": 0,
+    "coordinate_state_counts": {
+      "MISSING": 1311,
+      "OBSERVED_COORDINATE": 20700
+    },
+    "q217_held": {
+      "count": 7337,
+      "matches_frozen_selection": true,
+      "missing": 187,
+      "state_counts": {
+        "DK": 407,
+        "MISSING": 187,
+        "SUBSTANTIVE_RESPONSE": 6705
+      },
+      "unbound": 38
+    },
+    "raw_value_and_row_digest_equal_all_fields": true,
+    "respondent_rows_distinct": true,
+    "response_state_counts": {
+      "DK": 76218,
+      "MISSING": 121471,
+      "REFUSAL": 1200,
+      "SOURCE_SPECIFIC_SPECIAL": 6453,
+      "SUBSTANTIVE_RESPONSE": 1093307
+    },
+    "selected_coordinate_fields": 3,
+    "selected_coordinate_positions": 22011,
+    "selected_response_fields": 177,
+    "selected_response_positions": 1298649
+  },
+  "authority_proof": {
+    "allow_nonreplay_count": 0,
+    "held_authority_grant": {
+      "error": "GRANT_NOT_CURRENT",
+      "error_type": "FullRunRefusal",
+      "status": "REFUSED"
+    },
+    "missing_object_authority_refs": 0,
+    "q217_release_events": 0,
+    "routing_state_counts": {
+      "ROUTING_UNKNOWN": 1298649
+    },
+    "wrong_source_grant": {
+      "error": "GRANT_SOURCE_MISMATCH",
+      "error_type": "FullRunRefusal",
+      "status": "REFUSED"
+    }
+  },
+  "limits": [
+    "PASS is scoped to the actual SRC04 original release at the asserted 177 response + 3 coordinate, 7,337-row full-source scope.",
+    "The source correspondence check compares all selected source cells to release events/coordinate facts by row, field, raw witness digest and state; it emits no row values.",
+    "q217 remains held at exactly 38 source-unbound cells; no semantic labeling or guessing was performed.",
+    "Routing remains ROUTING_UNKNOWN; no eligibility/population/weight claim or canonical/currency homogenization was made.",
+    "No N11/N12, actor, CI/prod, Sorok/J52W52 or broader estate claim is made.",
+    "Source access used only the existing full SRC04 grant and admitted decoder; no other original source was read."
+  ],
+  "original_empirical_workload_issued": false,
+  "remaining_next_dependency": "Changed issuer/carrier review two-defect repair already running through existing C author; focused independent recheck then actual approved empirical/consumer execution. Source release need not be rebuilt or requalified.",
+  "heartbeat": "PAUSED"
+}
