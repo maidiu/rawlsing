@@ -10,7 +10,9 @@ import pytest
 from campaign_src04_completion.release import full_runner as runner
 from rawlsing_next.source_configuration.factory import build_validated_c11_release_from_config
 from rawlsing_next.source_configuration.fixture import load_fixture_stream
-from rawlsing_next.source_configuration.schema import load_source_config
+from rawlsing_next.source_configuration.schema import load_source_config, validate_source_config
+from rawlsing_next.pre553_physical_decoder import PhysicalCell, PhysicalMissingState
+from campaign_src04_completion.bindings.numeric_domain_binding import apply_observed_domain, TARGET_SLOTS
 
 
 def test_scope_accounts_for_all_181_slots_and_163_complete_fields():
@@ -87,3 +89,66 @@ def test_full_163_fixture_construction_path_builds_release():
     assert release.source_artifact_ref.content_hash == stream.source_sha256
     assert release.release_ref.kind == "C11LogicalRelease"
     assert len(release.public_objects) > 0
+
+
+def test_fixed_b_builder_is_wired_after_admission_before_selection(monkeypatch):
+    cfg = load_source_config(runner.B_CONFIG_PATH)
+    calls = []
+
+    def fake_builder(config, transport, **kwargs):
+        calls.append("builder")
+        assert transport.source_sha256 == runner.EXPECTED_SOURCE_SHA256
+        assert kwargs["expected_config_canonical_sha256"] == runner.B_CONFIG_CANONICAL_SHA256
+        return {
+            "config": config.document,
+            "base_config_canonical_sha256": runner.B_CONFIG_CANONICAL_SHA256,
+            "runtime_config_canonical_sha256": runner.B_CONFIG_CANONICAL_SHA256,
+            "added_rule_counts": {"q715withoutmorocco": 2, "q716withoutmorocco": 2},
+            "observed_missing_states": {},
+        }
+
+    def fake_runtime(config, transport):
+        calls.append("runtime")
+        return config
+
+    def fake_selection(config, transport):
+        calls.append("selection")
+        return {"selected_response_slots": [], "selected_coordinate_slots": [],
+                "selected_response_positions": 0, "all_181_physical_slots_accounted": True}
+
+    class Admitted:
+        source_sha256 = runner.EXPECTED_SOURCE_SHA256
+        row_count = runner.EXPECTED_SOURCE_ROWS
+
+    monkeypatch.setattr(runner, "build_numeric_domain_runtime_config", fake_builder)
+    monkeypatch.setattr(runner, "_runtime_config", fake_runtime)
+    monkeypatch.setattr(runner, "_scan_selection", fake_selection)
+    runtime, selection, join = runner._join_and_select(cfg, Admitted(), repaired=True)
+    assert calls == ["builder", "runtime", "selection"]
+    assert join["builder_called_before_selection"] is True
+    assert join["selection_after_binding"] is True
+
+
+def test_fixed_b_observed_domain_covers_both_income_fields_on_nonrespondent_cells():
+    """Synthetic nonrespondent cells exercise the fixed B helper only; no original data."""
+    cfg = load_source_config(runner.B_CONFIG_PATH)
+    slots = {s["slot"]["name"]: s["slot"] for s in cfg.document["response_slots"]}
+    cells = [
+        PhysicalCell(1, slots["q715withoutmorocco"]["ordinal"], "q715withoutmorocco", 1234.5, PhysicalMissingState.OBSERVED_STORAGE_VALUE, None),
+        PhysicalCell(1, slots["q716withoutmorocco"]["ordinal"], "q716withoutmorocco", 2000.25, PhysicalMissingState.OBSERVED_STORAGE_VALUE, None),
+        PhysicalCell(2, slots["q715withoutmorocco"]["ordinal"], "q715withoutmorocco", 0.0, PhysicalMissingState.OBSERVED_STORAGE_VALUE, None),
+        PhysicalCell(2, slots["q716withoutmorocco"]["ordinal"], "q716withoutmorocco", 1500.0, PhysicalMissingState.OBSERVED_STORAGE_VALUE, None),
+    ]
+    applied = apply_observed_domain(cfg, iter(cells))
+    assert applied["added_rule_counts"].get("q715withoutmorocco", 0) >= 2
+    assert applied["added_rule_counts"].get("q716withoutmorocco", 0) >= 2
+    validate_source_config(applied["config"])
+
+
+def test_pinned_b_config_and_builder_are_exact():
+    assert hashlib.sha256(runner.B_CONFIG_PATH.read_bytes()).hexdigest() == runner.B_CONFIG_FILE_SHA256
+    cfg = load_source_config(runner.B_CONFIG_PATH)
+    assert len(cfg.document["response_slots"]) == 178
+    assert len(cfg.document["coordinate_slots"]) == 3
+    assert runner.B_PINNED_COMMIT
+    assert runner.B_BUILDER.endswith("build_numeric_domain_runtime_config")

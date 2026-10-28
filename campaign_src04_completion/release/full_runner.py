@@ -40,6 +40,10 @@ from rawlsing_next.source_configuration.reader import (
 from rawlsing_next.source_configuration.schema import (
     SourceConfig, canonical_config_hash, load_source_config,
 )
+from campaign_src04_completion.bindings.numeric_domain_binding import (
+    apply_observed_domain,
+    build_numeric_domain_runtime_config,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 CAMPAIGN = Path(__file__).resolve().parent
@@ -65,6 +69,12 @@ EXPECTED_HELD_RESPONSE_COUNT = 15
 EXPECTED_INITIAL_COORDINATE_COUNT = 2
 EXPECTED_HELD_COORDINATE_COUNT = 1
 EXPECTED_RESPONSE_POSITIONS = 1_195_931
+B_CONFIG_PATH = ROOT / "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json"
+B_CONFIG_FILE_SHA256 = "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5"
+B_CONFIG_CANONICAL_SHA256 = "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d"
+B_PINNED_COMMIT = "da23c65d1e211cb7e8ce416e98757f321b78d25e"
+B_BUILDER = "campaign_src04_completion.bindings.numeric_domain_binding.build_numeric_domain_runtime_config"
+B_JOIN_INPUTS_PATH = CAMPAIGN / "JOIN_INPUTS.json"
 FULL_GRANT_SCHEMA = "PYAT_FULL_SOURCE_READ_GRANT@1.0.0"
 FULL_PURPOSE = "FULL_SRC04_ORIGINAL_C11_CONSTRUCTION"
 FULL_CONSUMER = "EXISTING_PRE553_SOURCE_BACKED_C11"
@@ -87,6 +97,7 @@ PRIMARY_PATH = EVIDENCE / "PRIMARY_RUN.json"
 REPLAY_PATH = EVIDENCE / "REPLAY_RECEIPT.json"
 TEST_PATH = EVIDENCE / "TEST_RESULTS.json"
 RETURN_PATH = CAMPAIGN / "RETURN.json"
+RETURN_V2_PATH = CAMPAIGN / "RETURN_V2.json"
 LOCAL_RECEIPT_PATH = EVIDENCE / "LOCAL_RELEASE_RECEIPT.json"
 RELEASE_RECEIPT_PATH = EVIDENCE / "RELEASE_RECEIPT.json"
 
@@ -311,6 +322,16 @@ def _scope_from_accepted_selection() -> dict[str, Any]:
         "configured_coordinate_slots": 3,
         "initial_target": "163_RESPONSES_PLUS_2_COORDINATES",
         "future_repair_target": "178_RESPONSES_PLUS_3_COORDINATES_IF_QUALIFIED",
+        "binding_join": {
+            "pinned_commit": B_PINNED_COMMIT,
+            "config_path": str(B_CONFIG_PATH.relative_to(ROOT)),
+            "config_file_sha256": B_CONFIG_FILE_SHA256,
+            "config_canonical_sha256": B_CONFIG_CANONICAL_SHA256,
+            "builder": B_BUILDER,
+            "expected_join_target": "178_RESPONSES_PLUS_3_COORDINATES_WHERE_SOURCE_QUALIFIED",
+            "q217_remains_unresolved_if_source_facts_insufficient": True,
+            "source_read_performed": False,
+        },
         "source_read_performed": False,
     }
 
@@ -326,6 +347,8 @@ def _validate_config(config: SourceConfig, *, repaired: bool) -> dict[str, Any]:
         raise FullRunRefusal("CONFIG_COORDINATE_SCOPE_UNEXPECTED", str(len(config.document["coordinate_slots"])))
     if not repaired and canonical_config_hash(config) != EXPECTED_CONFIG_CANONICAL_SHA256:
         raise FullRunRefusal("CONFIG_CANONICAL_SHA_MISMATCH")
+    if repaired and canonical_config_hash(config) != B_CONFIG_CANONICAL_SHA256:
+        raise FullRunRefusal("B_CONFIG_CANONICAL_SHA_MISMATCH")
     return {
         "source_id": config.source_id,
         "source_sha256": config.active_source_sha256,
@@ -469,13 +492,11 @@ def _scan_selection(config: SourceConfig, incidence: Any) -> dict[str, Any]:
                 cc[o]["unbound"] += int(key not in ckeys[o])
     complete_response = [o for o in sorted(response) if rc[o]["unbound"] == 0]
     complete_coord = [o for o in sorted(coords) if cc[o]["unbound"] == 0 and (coords[o].get("values") or (coords[o].get("copy_observed_raw") and cc[o]["missing"] == 0))]
-    if len(complete_response) not in (163, 178):
+    if not 163 <= len(complete_response) <= 178:
         raise FullRunRefusal("UNEXPECTED_COMPLETE_RESPONSE_COUNT", str(len(complete_response)))
     if complete_coord not in ([1, 2], [1, 2, 158]):
         raise FullRunRefusal("UNEXPECTED_COMPLETE_COORDINATE_SCOPE", repr(complete_coord))
     selected_positions = len(complete_response) * EXPECTED_SOURCE_ROWS
-    if selected_positions not in (1_195_931, 1_305_986):
-        raise FullRunRefusal("UNEXPECTED_RESPONSE_POSITION_COUNT", str(selected_positions))
     return {
         "schema": "PYAT_SRC04_FULL_SELECTION@1.0.0",
         "source_sha256": incidence.source_sha256,
@@ -572,12 +593,47 @@ def persist_local_release(release: C11LogicalRelease, selection: Mapping[str, An
     return receipt
 
 
+def _apply_admitted_binding(config: SourceConfig, incidence: Any, *, repaired: bool) -> tuple[SourceConfig, dict[str, Any]]:
+    """Apply the fixed B binding after admitted decode, before selection."""
+    join_info: dict[str, Any] = {
+        "applied": bool(repaired),
+        "builder": B_BUILDER,
+        "pinned_commit": B_PINNED_COMMIT,
+        "admitted_transport_source_sha256": incidence.source_sha256,
+        "admitted_transport_rows": incidence.row_count,
+        "builder_called_before_selection": True,
+    }
+    if repaired:
+        binding = build_numeric_domain_runtime_config(
+            config, incidence,
+            expected_source_sha256=EXPECTED_SOURCE_SHA256,
+            expected_config_canonical_sha256=B_CONFIG_CANONICAL_SHA256,
+        )
+        config = SourceConfig(binding["config"])
+        join_info.update({
+            "base_config_canonical_sha256": binding["base_config_canonical_sha256"],
+            "runtime_config_canonical_sha256": binding["runtime_config_canonical_sha256"],
+            "added_rule_counts": binding["added_rule_counts"],
+            "observed_missing_states": binding["observed_missing_states"],
+        })
+    return _runtime_config(config, incidence), join_info
+
+
+def _join_and_select(config: SourceConfig, incidence: Any, *, repaired: bool) -> tuple[SourceConfig, dict[str, Any], dict[str, Any]]:
+    runtime, join_info = _apply_admitted_binding(config, incidence, repaired=repaired)
+    selection = _scan_selection(runtime, incidence)
+    join_info["selection_after_binding"] = True
+    return runtime, selection, join_info
+
+
 def run_with_grant(grant_path: Path, grant_sha256: str, repaired_config_path: Path | None = None,
                    repaired_config_sha256: str | None = None) -> int:
     grant = load_full_grant(grant_path, grant_sha256)
     if repaired_config_path is not None:
         if not repaired_config_sha256 or sha_file(repaired_config_path) != repaired_config_sha256:
             raise FullRunRefusal("REPAIRED_CONFIG_SHA_MISMATCH")
+        if repaired_config_sha256 != B_CONFIG_FILE_SHA256:
+            raise FullRunRefusal("REPAIRED_CONFIG_NOT_PINNED_B")
         config = load_source_config(repaired_config_path)
         repaired = True
     else:
@@ -591,8 +647,7 @@ def run_with_grant(grant_path: Path, grant_sha256: str, repaired_config_path: Pa
         host=request.host, purpose=request.purpose, consumer_use=request.consumer_use,
         semantic_use_scope=SEMANTIC_USE_SCOPE)
     try:
-        runtime = _runtime_config(config, incidence)
-        selection = _scan_selection(runtime, incidence)
+        runtime, selection, join_info = _join_and_select(config, incidence, repaired=repaired)
         if selection["all_181_physical_slots_accounted"] is not True:
             raise FullRunRefusal("PHYSICAL_SLOT_ACCOUNTING_FAILED")
         slice_cfg, withheld = _slice_config(runtime, selection)
@@ -627,6 +682,7 @@ def run_with_grant(grant_path: Path, grant_sha256: str, repaired_config_path: Pa
                 "grant_ref": grant["grant_ref"].as_dict(),
                 "decision_ref": grant["decision_ref"].as_dict(),
             },
+            "binding_join": join_info,
             "canonicalization": "WITHHELD_DEFER_NO_SCIENTIFIC_ALLOW",
             "canonical_values_withheld": withheld,
             "routing_state": "ROUTING_UNKNOWN",
@@ -729,6 +785,13 @@ def run_return(artifact_commit: str) -> int:
     replay = load_json(REPLAY_PATH) if REPLAY_PATH.is_file() else {"status": "NOT_RUN"}
     result = {
         "schema": "PYAT_SRC04_FULL_RETURN@1.0.0",
+        "version": 2,
+        "successor_of": {
+            "artifact_commit": "d119e0a860af5b934ccc83389773232d5f02a923",
+            "final_tip": "b5bfadc06ede692bd4b4d6fad94de5f4c6da351f",
+            "return_sha256": "371c2870314435948686756458a764b0197f0b52e03aefd2c6cab0b5e12f51fb",
+            "change": "wire fixed B observed-domain builder after admitted decode before all-slot selection",
+        },
         "lane": "SRC04_FULL_COMPLETION_LANE_A",
         "status": "BLOCKED_MISSING_FULL_SOURCE_GRANT__CODE_READY",
         "artifact_commit": artifact_commit,
@@ -738,6 +801,7 @@ def run_return(artifact_commit: str) -> int:
         "source_columns": EXPECTED_SOURCE_COLUMNS,
         "source_bytes": EXPECTED_SOURCE_BYTES,
         "scope": scope,
+        "binding_join": scope.get("binding_join"),
         "source_read_performed": False,
         "native_release_constructed": False,
         "grant_blocker": blocker,
@@ -751,6 +815,12 @@ def run_return(artifact_commit: str) -> int:
             "full_grant_scope": FULL_SCOPE,
             "source_free_authorization_path": True,
             "source_grant_path": str(GRANT_PATH.relative_to(ROOT)),
+            "binding_join_wired": True,
+            "binding_builder": B_BUILDER,
+            "binding_pinned_commit": B_PINNED_COMMIT,
+            "binding_config_path": str(B_CONFIG_PATH.relative_to(ROOT)),
+            "binding_config_file_sha256": B_CONFIG_FILE_SHA256,
+            "binding_config_canonical_sha256": B_CONFIG_CANONICAL_SHA256,
         },
         "required_next_input": {
             "missing": "A competent exact FULL SRC04 original-source read/C11 construction grant",
@@ -763,7 +833,7 @@ def run_return(artifact_commit: str) -> int:
             "required_document": _grant_requirement(),
             "no_source_io_until_valid_grant": True,
         },
-        "next_executable_command": "PYTHONPATH=. python3 campaign_src04_completion/release/full_runner.py --mode primary --grant campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json --grant-sha256 <exact-sha256>",
+        "next_executable_command": "PYTHONPATH=. python3 campaign_src04_completion/release/full_runner.py --mode primary --grant campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json --grant-sha256 <exact-sha256> --repaired-config rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json --repaired-config-sha256 5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
         "artifact_manifest": _manifest(),
         "limits": [
             "No original SRC04 SAV stat/hash/open/decode was performed.",
@@ -772,12 +842,14 @@ def run_return(artifact_commit: str) -> int:
             "No first-slice grant was silently expanded.",
             "ROUTING_UNKNOWN and DEFER canonical authority remain unchanged.",
             "No I03/I05, population, weight, eligibility, canonical, direction, FF/N11/N12/CI/prod/Sorok/actor/J52W52 effect.",
-            "All 181 physical slots, 163 initial qualified responses, 15 held responses and 2 initial coordinates are accounted; future repaired 178+3 input is supported by explicit path/hash.",
+            "All 181 physical slots, 163 initial qualified responses, 15 held responses and 2 initial coordinates are accounted; the pinned B repaired input path/hash is wired for 178+3 where source-qualified.",
+            "The fixed B observed-domain builder is invoked after admitted decode and before selection; q217 remains exact if source facts are insufficient.",
         ],
-        "next_consumer": "HQ must supply the exact competent full-source grant; then the same runner executes full 163 + 2 construction and can accept a separately qualified lane-B 178 + 3 repaired config by explicit path/hash.",
+        "next_consumer": "HQ must supply the exact competent full-source grant; then the same runner executes the initial 163 + 2 path or the pinned B repaired 178 + 3 path by explicit immutable config path/hash.",
     }
     write_json(RETURN_PATH, result)
-    print(json.dumps({"return_path": str(RETURN_PATH.relative_to(ROOT)), "return_sha256": sha_file(RETURN_PATH), "status": result["status"], "tests_passed": tests.get("passed")}, indent=2))
+    write_json(RETURN_V2_PATH, result)
+    print(json.dumps({"return_path": str(RETURN_PATH.relative_to(ROOT)), "return_sha256": sha_file(RETURN_PATH), "return_v2_path": str(RETURN_V2_PATH.relative_to(ROOT)), "return_v2_sha256": sha_file(RETURN_V2_PATH), "status": result["status"], "tests_passed": tests.get("passed")}, indent=2))
     return 0
 
 

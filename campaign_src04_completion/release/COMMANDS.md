@@ -18,14 +18,14 @@ PYTHONPATH=. python3 campaign_src04_completion/release/full_runner.py --mode pri
   --grant-sha256 <exact-sha256>
 ```
 
-For a separately qualified lane-B repaired config:
+For the pinned fixed-B v2 repaired input (178+3 only where source-qualified):
 
 ```sh
 PYTHONPATH=. python3 campaign_src04_completion/release/full_runner.py --mode primary \
   --grant campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json \
   --grant-sha256 <exact-sha256> \
-  --repaired-config <immutable-config-path> \
-  --repaired-config-sha256 <exact-sha256>
+  --repaired-config rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json \
+  --repaired-config-sha256 5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5
 ```
 
 Expected current output: `BLOCKED_MISSING_FULL_SOURCE_GRANT`; 163 complete

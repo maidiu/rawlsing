@@ -1,11 +1,13 @@
 # SRC04 full completion — lane A
 
-This lane implements the full SRC04 source-native C11 construction path for the
+This lane implements the full SRC04 source-native C11 construction path, now
+with the fixed lane-B observed-domain binding wired in. The initial target is
 **163 already-qualified response fields plus two coordinates** (1,195,931 response
-positions), while preserving all 181 physical slots and the exact 15 held
-responses / q701 coordinate. It also accepts a later repaired config from lane B
-by explicit immutable path/hash, allowing the qualified **178 responses + 3
-coordinates** scope.
+positions); after the pinned B v2 static repairs and stream-safe income-domain
+builder, the target is **178 responses + 3 coordinates where source-qualified**,
+not an arbitrary 163 cap. All 181 physical slots, the exact 15 held responses and
+the exact held q701 coordinate remain accounted; q217 remains precise and
+unresolved if the source facts are insufficient.
 
 ## Current status
 
@@ -31,6 +33,19 @@ The runner accepts only an exact full-source grant document with:
 - `full_source: true`, `first_slice_only: false`, currentness/revocation fields
 - exact file SHA-256 supplied separately
 
+The fixed B join uses the read-only pinned inputs:
+
+- B candidate commit `da23c65d1e211cb7e8ce416e98757f321b78d25e`
+- config `rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json`
+- config file SHA `5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5`
+- builder `campaign_src04_completion.bindings.numeric_domain_binding.build_numeric_domain_runtime_config`
+
+The builder is invoked only after the decoder admission has returned an admitted
+transport and before all-slot selection. It consumes the admitted transport
+without opening the source again, applies the exact observed income-domain
+rules for `q715withoutmorocco` and `q716withoutmorocco`, and preserves source
+country/currency literals and `ROUTING_UNKNOWN`.
+
 Absent, first-slice, foreign-source, and foreign-purpose grants are refused before
 any source I/O. The first-slice A grant is not expanded.
 
@@ -51,12 +66,12 @@ PYTHONPATH=. python3 campaign_src04_completion/release/full_runner.py --mode pri
   --grant campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json \
   --grant-sha256 <exact-grant-sha256>
 
-# Optional qualified lane-B repaired config
+# Pinned B v2 repaired input; 178 + 3 only where source-qualified
 PYTHONPATH=. python3 campaign_src04_completion/release/full_runner.py --mode primary \
   --grant campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json \
   --grant-sha256 <exact-grant-sha256> \
-  --repaired-config <immutable-lane-b-config> \
-  --repaired-config-sha256 <exact-config-sha256>
+  --repaired-config rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json \
+  --repaired-config-sha256 5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5
 ```
 
 The full-source read is **not** performed by these current commands because the
