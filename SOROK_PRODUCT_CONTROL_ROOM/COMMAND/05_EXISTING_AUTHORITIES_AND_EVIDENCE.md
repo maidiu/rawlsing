@@ -4,7 +4,7 @@ This is the access crosswalk for the CURRENT command, not an independent new aut
 
 ## Controlling and historic product plans
 
-- Original Sorok root and owner constitution: SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md, 00C_HQ_FULL_CONTROL_AND_RETURN_LAW.md (verify exact file), 00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md, 00E needs-first law. Read original precise law before any actor/model/source action.
+- Original Sorok root and owner constitution: SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md and 00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md at the present foundation; the root README itself links the working 00C routing constitution on branch agent/sorok-prea0-psyche-architecture-r1 at SOROK_PRODUCT_CONTROL_ROOM/00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md. A separate root 00C/00E file was NOT present in the inspected b0dc foundation tree; verify the effective separately pinned 00E source before claiming it governs a specific actor/model operation. These references are not newly issued rules.
 - Astra R3 joint C0–C12/A0–A5 completion: https://github.com/maidiu/rawlsing/blob/3b2d9a1b644a9fa024ed1bd895b67be5c8789531/WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/08_JOINT_PROGRAM.md
 - Astra specific Sorok scientific/engineering program: https://github.com/maidiu/rawlsing/blob/3b2d9a1b644a9fa024ed1bd895b67be5c8789531/WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/10_SOROK_PROGRAM.md
 - Astra N11/N12/C11/native requirements: https://github.com/maidiu/rawlsing/blob/3b2d9a1b644a9fa024ed1bd895b67be5c8789531/WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/19_WAKE_AND_WELD_CONDITIONS.md
