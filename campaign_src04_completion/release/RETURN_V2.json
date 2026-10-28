@@ -1,15 +1,15 @@
 {
-  "artifact_commit": "40e46b4ef949d9e615cb278712d54cec7a8198c6",
+  "artifact_commit": "8c214ed6b04be6cd1b3b4845cbc17cb4a055ba07",
   "artifact_manifest": [
     {
-      "bytes": 46373,
+      "bytes": 62128,
       "path": "campaign_src04_completion/release/full_runner.py",
-      "sha256": "97daae3d152bead8e3f39a95eae28bf691d53b716f2112eb85992701576b712d"
+      "sha256": "f61a2dec7e711772e111f6103b01dde097c3b18b287a5377762044f2fa5fa0ef"
     },
     {
-      "bytes": 7780,
+      "bytes": 10056,
       "path": "campaign_src04_completion/release/tests/test_full_runner.py",
-      "sha256": "06962ec232785fad0885a0d93a0fc90006cb78668a731e8fc71700b1e92d6e80"
+      "sha256": "5d1ca110c24f6bcb1b840518f8aec85dc6b5c1a87c291676e0e038bb1dda8200"
     },
     {
       "bytes": 3735,
@@ -62,14 +62,59 @@
       "sha256": "3dbe0064d58283fdfbaa11e8892dd5fa9d6928c23a0e6729412eb01e85b52ec9"
     },
     {
-      "bytes": 165,
+      "bytes": 4242,
       "path": "campaign_src04_completion/release/evidence/REPLAY_RECEIPT.json",
-      "sha256": "a6052512fb8c7a2fa1833a316baa68c77c951caeb5fec8e5e6953b0fe4797fdb"
+      "sha256": "d893ed7827ef53eabc38e782acfb9b11cee23e32a568acb9c16fcb13309a9a6a"
     },
     {
-      "bytes": 335,
+      "bytes": 336,
       "path": "campaign_src04_completion/release/evidence/TEST_RESULTS.json",
-      "sha256": "ab8383f245d628850e981a1fc0081864f38e88b688f8d4c191e2358959a54255"
+      "sha256": "671fba8d8dc15c6b2fc64fb3088a2a1018348fe757afb54053424cba73664db2"
+    },
+    {
+      "bytes": 1429,
+      "path": "campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json",
+      "sha256": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139"
+    },
+    {
+      "bytes": 4743,
+      "path": "campaign_src04_completion/release/evidence/SELECTION.json",
+      "sha256": "122f54326afaab430ec9f541930c2f7cae4bc9db67cccf20e44d635a6c6fb27c"
+    },
+    {
+      "bytes": 18482,
+      "path": "campaign_src04_completion/release/evidence/RELEASE_RECEIPT.json",
+      "sha256": "eba37061a5642ee82c13f1759eba623572435d97968f4c10fb8a59b1999a0ede"
+    },
+    {
+      "bytes": 3149,
+      "path": "campaign_src04_completion/release/evidence/LOCAL_RELEASE_RECEIPT.json",
+      "sha256": "dc085fb28d6ed2ed0ce3a2460484d6b532ac7ee6243be41e28abb30e952b099d"
+    },
+    {
+      "bytes": 249,
+      "path": "campaign_src04_completion/release/evidence/NEGATIVE_WRONG_SOURCE_GRANT.json",
+      "sha256": "c2b8dee3bdd6f6b2eea44ac948b4d7ddbecf1bdd9429bd7f920da132c947a15b"
+    },
+    {
+      "bytes": 265,
+      "path": "campaign_src04_completion/release/evidence/NEGATIVE_HELD_AUTHORITY.json",
+      "sha256": "a609acda9069444c187c28a776c3231306376de9720947567537c130e505dcb0"
+    },
+    {
+      "bytes": 1888,
+      "path": "campaign_src04_completion/release/evidence/BINDING_AMENDMENT.json",
+      "sha256": "1c068d3b5070fdc06b2ba4b04702516a1047ac6a906ecb433f35200dfb86275a"
+    },
+    {
+      "bytes": 364,
+      "path": "campaign_src04_completion/release/evidence/BINDING_TEST_RESULTS.json",
+      "sha256": "bedfbafd777e574ab7a265e34bc3e807c7b0b9440356f44f82362f870c4fd41b"
+    },
+    {
+      "bytes": 1433,
+      "path": "campaign_src04_completion/release/evidence/GRANT_CLOSURE.json",
+      "sha256": "79b09bbb97577133c3886c4196d562a4bfb136f581fe67b53360fd0a8c762fff"
     }
   ],
   "binding_join": {
@@ -175,10 +220,247 @@
   "next_consumer": "HQ must supply the exact competent full-source grant; then the same runner executes the initial 163 + 2 path or the pinned B repaired 178 + 3 path by explicit immutable config path/hash.",
   "next_executable_command": "PYTHONPATH=. python3 campaign_src04_completion/release/full_runner.py --mode primary --grant campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json --grant-sha256 <exact-sha256> --repaired-config rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json --repaired-config-sha256 5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
   "replay": {
-    "native_release_constructed": false,
+    "checks": {
+      "internal_record_count": true,
+      "internal_records": true,
+      "public_object_count": true,
+      "public_objects": true,
+      "release_ref": true,
+      "replay_manifest": true
+    },
+    "loaded_internal_records": 7514,
+    "loaded_public_objects": 2619317,
+    "local_release": {
+      "bundle_id": "SRC04-9ddec98561a0fc54",
+      "internal_records": {
+        "bytes": 7224242,
+        "file": "internal_records.pkl",
+        "lines": 7514,
+        "sha256": "db9b4b9442488792713504d348cd8e421e64b74145ee354020ba2a9ffea1e60d"
+      },
+      "local_only": true,
+      "public_objects": {
+        "bytes": 7147024739,
+        "file": "public_objects.pkl",
+        "lines": 2619317,
+        "sha256": "873cef612c3c038901a77224e4ce98810a1f1798e0907534192c0da1defd4645"
+      },
+      "raw_respondent_cells_committed": false,
+      "release_ref": {
+        "content_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+        "kind": "C11LogicalRelease",
+        "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION"
+      },
+      "replay_manifest": {
+        "file": "replay_manifest.json",
+        "sha256": "ff84ea7b327ffc5d49b10ba53a4346eb7dc02fce3bce45bc0c4202264bc478e3"
+      },
+      "replay_manifest_ref": {
+        "content_hash": "893f24ae10b297cd21422d154ec1649d522da4add006d1d3ac3da9a3da111a49",
+        "kind": "C11Internal:ReplayManifest",
+        "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:893f24ae10b297cd21422d154ec1649d522da4add006d1d3ac3da9a3da111a49"
+      },
+      "response_positions": 1298649,
+      "runtime_scope": "LOCAL_FILESYSTEM_OUTSIDE_GIT",
+      "schema": "PYAT_SRC04_FULL_LOCAL_RELEASE@1.0.0",
+      "selected_coordinate_slots": [
+        1,
+        2,
+        158
+      ],
+      "selected_response_slots": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181
+      ],
+      "semantic_release_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+      "source_id": "SRC04",
+      "source_release_manifest_hash": "cf5b990ec740134b77a4acf34653be02640450110ae86bff1b23aa4ffca44472",
+      "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
+    },
+    "native_release_constructed": true,
+    "release_ref": {
+      "content_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+      "kind": "C11LogicalRelease",
+      "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION"
+    },
     "schema": "PYAT_SRC04_FULL_REPLAY@1.0.0",
     "source_read_performed": false,
-    "status": "BLOCKED_NO_FULL_LOCAL_RELEASE"
+    "status": "LOCAL_BUNDLE_REPLAY_VERIFIED"
   },
   "required_next_input": {
     "consumer": "EXISTING_PRE553_SOURCE_BACKED_C11",
@@ -468,8 +750,8 @@
     "schema": "PYAT_SRC04_FULL_TEST_RESULTS@1.0.0",
     "stderr_tail": [],
     "stdout_tail": [
-      ".........                                                                [100%]",
-      "9 passed in 2.92s"
+      "...........                                                              [100%]",
+      "11 passed in 3.67s"
     ]
   },
   "version": 2
