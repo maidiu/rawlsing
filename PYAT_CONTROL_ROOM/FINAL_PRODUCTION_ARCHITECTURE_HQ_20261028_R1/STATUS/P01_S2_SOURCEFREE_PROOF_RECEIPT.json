@@ -1,0 +1,84 @@
+{
+  "schema": "PYAT_P01_S2_SOURCEFREE_EVIDENCE_RECEIPT@1.0.0",
+  "date": "2026-10-28",
+  "owner": "Browser Architecture HQ",
+  "worker": "NONE",
+  "control_cut": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "scope": "Original accepted I02 modules only; no production streaming code; no original respondent data",
+  "executable_core_blobs": {
+    "pre553_c11_ingest.py": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+    "pre553_c11_integrity.py": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+    "pre553_c11_repository.py": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+    "pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "pre553_empirical_authority.py": "ca65a7fd4d52f0c44447434559b1d09412e7aa39"
+  },
+  "local_oracles_executed": [
+    {
+      "name": "P01_S2_CANONICAL_HASH_STREAM",
+      "path": "/mnt/data/p01_s2_sourcefree_canonical_oracle.py",
+      "sha256": "070a596eee8e0e7f7b8836341e2151f433c631c5440b2b5e2af79a28ac933d53",
+      "cases": 4,
+      "status": "PASS",
+      "checks": [
+        "candidate reference projection hash equals existing _candidate_projection_semantic_hash and independent streaming hash",
+        "replay manifest full semantic projection hash equals chunk streamed hash",
+        "Unicode",
+        "typed absence",
+        "duplicate refs preserved",
+        "section ordering normalized"
+      ],
+      "limits": [
+        "synthetic not I02-valid fixture",
+        "no new streaming implementation"
+      ]
+    },
+    {
+      "name": "P01_S2_COMPLETE_NATIVE_VALIDITY_NEGATIVES",
+      "path": "/mnt/data/p01_s2_full_fixture_oracle.py",
+      "sha256": "60de307c865c6b9c66f38c370a770d92513ab76a107b51fadf5e947216137b25",
+      "status": "PASS",
+      "checks": [
+        "one native accepted full I02 fixture",
+        "same release and replay hash when event tuple reversed",
+        "all M01-M18 present",
+        "C11Repository exact release/object resolution",
+        "missing routing, coordinates, question, replay, universe, manifest count reject",
+        "duplicate respondent + new manifest/replay reject",
+        "duplicate event occurrence + new manifest/replay reject",
+        "unbound event, cross-universe event, unknown authority and bad closure reject"
+      ],
+      "limits": [
+        "synthetic 1 universe,1 respondent,2 events",
+        "no original source",
+        "no new validator"
+      ]
+    },
+    {
+      "name": "P01_S2_SOURCE_SNAPSHOT_NEGATIVE_BOUNDARY",
+      "status": "EXPECTED_I02_ACCEPT_OBSERVED",
+      "checks": [
+        "source_release_manifest source_snapshot_retention_ref changed to SHA different from source_artifact hash and replay rederived",
+        "I02 logical accepted fixture"
+      ],
+      "meaning": "Source-byte/retention congruence is NOT proved by I02 logical acceptance alone",
+      "limits": [
+        "facade and bridge have additional SHA checks",
+        "not a claim entire source pipeline accepts this mismatch"
+      ]
+    }
+  ],
+  "golden_identity": {
+    "synthetic_release_hash": "2418397e79c936502c17df873c14426cf2c083bd1d10d9febfef47338a8ee308",
+    "synthetic_replay_hash": "a1f37b4d1f74351619c842663314dfd1028c83d061113373ccdcd102d0419a43",
+    "mismatched_retention_i02_accepted_release_hash": "2e429f3b7ca2ae62454b2fa56874ea80a7bc28b2cd53a5f47d20ce9aa4596f32"
+  },
+  "portable_repository_oracle": {
+    "path": "DESIGN/ORACLES/p01_s2_control_oracle.py",
+    "status": "COMMITTED_NOT_EXECUTED_IN_REPOSITORY_CHECKOUT",
+    "depends_on": "rawlsing_next/tests/test_pre553_c11_repository_ingest.py::_candidate",
+    "note": "A source-free QA recipe, not the same as local executed scripts; keep evidence levels separate."
+  },
+  "authority_and_release": "NO_NEW_SOURCE_SCIENTIFIC_OR_ACTOR_GRANTS; no original source use; no new I02 source-view implementation; no native I03 facts generated.",
+  "further_high_resolution": "DESIGN/P01_HIGH_RESOLUTION_RETURN_LEDGER.json",
+  "disposition": "S2_EXACT_VALIDATION_DESIGN_AND_BOUNDED_SOURCEFREE_PROOF_COMPLETE__S3_PARITY_IMPLEMENTATION_PENDING"
+}
