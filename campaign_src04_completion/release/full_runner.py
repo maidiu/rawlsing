@@ -970,6 +970,7 @@ def _manifest() -> list[dict[str, Any]]:
         "campaign_src04_completion/release/evidence/NEGATIVE_WRONG_SOURCE_GRANT.json",
         "campaign_src04_completion/release/evidence/NEGATIVE_HELD_AUTHORITY.json",
         "campaign_src04_completion/release/evidence/BINDING_AMENDMENT.json",
+        "campaign_src04_completion/release/evidence/BINDING_TEST_RESULTS.json",
         "campaign_src04_completion/release/evidence/GRANT_CLOSURE.json",
     ]
     return [{"path": rel, "sha256": sha_file(ROOT / rel), "bytes": (ROOT / rel).stat().st_size} for rel in files if (ROOT / rel).is_file()]
@@ -1038,6 +1039,7 @@ def _full_return_result(artifact_commit: str) -> dict[str, Any]:
         "local_release": release["local_release"],
         "replay": replay,
         "tests": tests,
+        "binding_tests": load_json(EVIDENCE / "BINDING_TEST_RESULTS.json") if (EVIDENCE / "BINDING_TEST_RESULTS.json").is_file() else None,
         "native_api": {
             "factory": "build_validated_c11_release_from_config",
             "release_kind": (release.get("release_ref") or {}).get("kind"),
