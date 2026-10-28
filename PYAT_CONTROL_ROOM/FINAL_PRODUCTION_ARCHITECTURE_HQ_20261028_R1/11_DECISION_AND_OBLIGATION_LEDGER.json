@@ -114,7 +114,7 @@
         "EE04",
         "EE05"
       ],
-      "status": "INITIAL_DESIGN_ONLY"
+      "status": "P03_S0_GIT_AND_S1_S2_ARCHIVE_DESIGN_COMPLETE__P04_S0_S1_S2_DESIGN_GIT_AND_ARCHIVE_COMPLETE__NO_SHARED_KERNEL_OR_REF_ENGINE_CODE"
     },
     {
       "id": "W06",
@@ -252,11 +252,17 @@
       "stages": [
         "W05"
       ],
-      "state": "NOT_LAUNCHED",
+      "state": "HQ_DIRECT_S0_SOURCE_AUDIT_COMMITTED__S1_S2_BUNDLED_LOCALLY__NO_NEW_I03_CODE",
       "required_return": "EXACT_CALL_GRAPH__INTERFACE__ALGORITHM__TESTS__OWNERS__CONSUMER__COST__PERMISSIONS",
       "hq_decision_owner": true,
-      "worker_assignment_state": "NOT_DISPATCHABLE_UNTIL_BOUNDED_CORPUS_AND_EXCLUSIONS",
-      "source_claims_acceptance": "HQ_INDEPENDENT_VERIFY_EVERY_DESIGN_CRITICAL_CLAIM"
+      "worker_assignment_state": "NONE__HQ_OWNED",
+      "source_claims_acceptance": "HQ_DIRECT_SOURCE_AUDIT_AND_LIMITED_SOURCEFREE_HELPER_ONLY",
+      "design_archive": "PYAT_P03_HQ_S0_S1_S2_20261028.zip",
+      "design_archive_sha256": "dca78e01b25fe31fc1a231b41f9ec06ac7ff6a33504c55867538f19770da3552",
+      "code_tickets": 10,
+      "acceptance_cases": 41,
+      "high_resolution_items": 33,
+      "next_required": "Full current-control sourcefree old/new I03 golden and shared-flight implementation by qualified Codex after P01 verified view"
     },
     {
       "id": "P04",
@@ -264,11 +270,24 @@
       "stages": [
         "W05"
       ],
-      "state": "NOT_LAUNCHED",
+      "state": "HQ_DIRECT_S0_CURRENT_GIT__S1_DECISION_GIT__S2_PRECISION_AND_42_TEST_INDEX_GIT__FULL_BUNDLE_LOCAL__NO_NEW_CODE",
       "required_return": "EXACT_CALL_GRAPH__INTERFACE__ALGORITHM__TESTS__OWNERS__CONSUMER__COST__PERMISSIONS",
       "hq_decision_owner": true,
-      "worker_assignment_state": "NOT_DISPATCHABLE_UNTIL_BOUNDED_CORPUS_AND_EXCLUSIONS",
-      "source_claims_acceptance": "HQ_INDEPENDENT_VERIFY_EVERY_DESIGN_CRITICAL_CLAIM"
+      "worker_assignment_state": "NONE__HQ_OWNED",
+      "source_claims_acceptance": "DIRECT_CURRENT_CONTROL_CODE_PLUS_LIMITED_NATIVE_I01/PACKET_HELPER_PROOF__NOT_CURRENT_I03_NATIVE_EXECUTION",
+      "design_git_paths": [
+        "DESIGN/P04_S0_CURRENT_NATIVE_PROVENANCE_AUDIT_R1.md",
+        "DESIGN/P04_S1_HQ_PROVENANCE_REPLAY_DECISION_R1.md",
+        "DESIGN/P04_HIGH_RESOLUTION_RETURN_INDEX_R1.md",
+        "DESIGN/P04_S2_DIFFERENTIAL_TEST_INDEX_R1.md"
+      ],
+      "design_archive": "PYAT_P04_HQ_S0_S1_S2_20261028.zip",
+      "design_archive_sha256": "7b74b7cc8cf5bf0e3e02fdec23b6e45bf7199876cb32dfc229f9cf41e0d5fbf5",
+      "high_resolution_items": 35,
+      "code_tickets": 8,
+      "acceptance_cases": 42,
+      "next_required": "Codex B00 old native full golden and B01 exact-ref evidence ledger; P01 certified replay manifest ref, P03 shared-flight integration, independent hostile review; original source + host measurement independently permitted",
+      "proof_level": "S0_CODE_INSPECTED__S1_DESIGN_CHOSEN__S2_NATIVE_I01_SOURCEFREE_64_CASE_IDENTITY_AND_SYNTHETIC_RETENTION_ONLY__NO_NEW_I03"
     },
     {
       "id": "P05",
@@ -453,6 +472,17 @@
     "p01_acceptance_count": 41,
     "p01_old_baseline_rerun": "2 sourcefree scripts PASS after correct PYTHONPATH",
     "p01_new_validator_executed": false,
-    "p01_source_byte_toctou": "CURRENT_DECODER_SHA_BEFORE_PYREADSTAT_STREAMED_PATH_REOPEN__IMMUTABLE_SOURCE_LEASE_REQUIRED"
-  }
+    "p01_source_byte_toctou": "CURRENT_DECODER_SHA_BEFORE_PYREADSTAT_STREAMED_PATH_REOPEN__IMMUTABLE_SOURCE_LEASE_REQUIRED",
+    "p03_s1_s2": "ARCHIVE_DESIGN_NOT_IN_GIT_FULL__NO_CODE",
+    "p03_archive_sha256": "7b74b7cc8cf5bf0e3e02fdec23b6e45bf7199876cb32dfc229f9cf41e0d5fbf5",
+    "p04": "HQ_DIRECT_SOURCE_AUDIT_AND_DESIGN_COMPLETE__NO_CODE",
+    "p04_code_tickets": 8,
+    "p04_differential_tests": 42,
+    "p04_high_resolution_open": 35,
+    "p04_limited_sourcefree_native_i01_identity_cases": 64,
+    "p04_new_I03_engine_executed": false,
+    "p04_host_performance_measured": false
+  },
+  "hq_direct_P04_next": "Codex B00 old native full golden and B01 exact-ref evidence ledger; P01 certified replay manifest ref, P03 shared-flight integration, independent hostile review; original source + host measurement independently permitted",
+  "hq_direct_next": "P05 consumer-first exact real source resume design/forensics; preserve P06 science and P01/P03/P04 not implemented"
 }
