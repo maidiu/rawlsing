@@ -107,6 +107,7 @@ NEG_PURPOSE_PATH = EVIDENCE / "NEGATIVE_FOREIGN_PURPOSE_GRANT.json"
 NEG_WRONG_SOURCE_PATH = EVIDENCE / "NEGATIVE_WRONG_SOURCE_GRANT.json"
 NEG_HELD_PATH = EVIDENCE / "NEGATIVE_HELD_AUTHORITY.json"
 PRIMARY_PATH = EVIDENCE / "PRIMARY_RUN.json"
+ACTUAL_PRIMARY_PATH = EVIDENCE / "ACTUAL_PRIMARY_RUN.json"
 REPLAY_PATH = EVIDENCE / "REPLAY_RECEIPT.json"
 TEST_PATH = EVIDENCE / "TEST_RESULTS.json"
 RETURN_PATH = CAMPAIGN / "RETURN.json"
@@ -382,6 +383,10 @@ def _validate_config(config: SourceConfig, *, repaired: bool) -> dict[str, Any]:
 
 def prepare_no_source_blocker() -> int:
     EVIDENCE.mkdir(parents=True, exist_ok=True)
+    # Never reset terminal actual products/evidence by a later source-free prepare.
+    if RELEASE_RECEIPT_PATH.is_file() and LOCAL_RECEIPT_PATH.is_file():
+        print(json.dumps({"status": "ACTUAL_PRODUCT_PRESENT_NO_PREPARE_OVERWRITE"}, indent=2))
+        return 0
     config = load_source_config(CONFIG_PATH)
     if sha_file(CONFIG_PATH) != EXPECTED_CONFIG_FILE_SHA256:
         raise FullRunRefusal("CONFIG_FILE_SHA_MISMATCH")
@@ -848,13 +853,15 @@ def run_with_grant(grant_path: Path, grant_sha256: str, repaired_config_path: Pa
             },
         }
         write_json(RELEASE_RECEIPT_PATH, release_receipt)
-        write_json(PRIMARY_PATH, {
+        actual_primary = {
             "schema": "PYAT_SRC04_FULL_PRIMARY_RUN@1.0.0",
             "status": "FULL_PRIMARY_COMPLETE",
             "release_receipt_path": str(RELEASE_RECEIPT_PATH.relative_to(ROOT)),
             "selection_path": "campaign_src04_completion/release/evidence/SELECTION.json",
             "source_read_performed": True,
-        })
+        }
+        write_json(PRIMARY_PATH, actual_primary)
+        write_json(ACTUAL_PRIMARY_PATH, actual_primary)
         write_json(EVIDENCE / "SELECTION.json", selection)
         print(json.dumps({"status": "FULL_PRIMARY_COMPLETE", "release_ref": release.release_ref.as_dict(), "selected_response_slots": len(selection["selected_response_slots"]), "positions": selection["selected_response_positions"]}, indent=2))
         return 0
@@ -961,6 +968,7 @@ def _manifest() -> list[dict[str, Any]]:
         "campaign_src04_completion/release/evidence/NEGATIVE_FOREIGN_SOURCE_GRANT.json",
         "campaign_src04_completion/release/evidence/NEGATIVE_FOREIGN_PURPOSE_GRANT.json",
         "campaign_src04_completion/release/evidence/PRIMARY_RUN.json",
+        "campaign_src04_completion/release/evidence/ACTUAL_PRIMARY_RUN.json",
         "campaign_src04_completion/release/evidence/REPLAY_RECEIPT.json",
         "campaign_src04_completion/release/evidence/TEST_RESULTS.json",
         "campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json",
@@ -1060,8 +1068,9 @@ def _full_return_result(artifact_commit: str) -> dict[str, Any]:
 
 
 def run_return(artifact_commit: str) -> int:
-    if RELEASE_RECEIPT_PATH.is_file() and PRIMARY_PATH.is_file():
-        primary = load_json(PRIMARY_PATH)
+    primary_path = ACTUAL_PRIMARY_PATH if ACTUAL_PRIMARY_PATH.is_file() else PRIMARY_PATH
+    if RELEASE_RECEIPT_PATH.is_file() and primary_path.is_file():
+        primary = load_json(primary_path)
         if primary.get("status") == "FULL_PRIMARY_COMPLETE":
             result = _full_return_result(artifact_commit)
             write_json(RETURN_PATH, result)
