@@ -1,0 +1,23 @@
+# Existing authority and evidence navigation — NO duplicated atlas
+
+This is the access crosswalk for the CURRENT command, not an independent new authority or substitution for primary sources.
+
+## Controlling and historic product plans
+
+- Original Sorok root and owner constitution: SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md, 00C_HQ_FULL_CONTROL_AND_RETURN_LAW.md (verify exact file), 00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md, 00E needs-first law. Read original precise law before any actor/model/source action.
+- Astra R3 joint C0–C12/A0–A5 completion: https://github.com/maidiu/rawlsing/blob/3b2d9a1b644a9fa024ed1bd895b67be5c8789531/WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/08_JOINT_PROGRAM.md
+- Astra specific Sorok scientific/engineering program: https://github.com/maidiu/rawlsing/blob/3b2d9a1b644a9fa024ed1bd895b67be5c8789531/WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/10_SOROK_PROGRAM.md
+- Astra N11/N12/C11/native requirements: https://github.com/maidiu/rawlsing/blob/3b2d9a1b644a9fa024ed1bd895b67be5c8789531/WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/19_WAKE_AND_WELD_CONDITIONS.md
+- Sorok 19 original terminal milestones, immutable historic progress: SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md / CURRENT_PROGRESS.json. Read their own cut/revision dates; current MD36 and JSON35 differ. Existing JSON references SOROK_PRODUCT_CONTROL_ROOM/20261020_NEEDS_FIRST_PERSON_TO_ALPHA_COMPLETION_TRAJECTORY_R1.md at working_commit 17c8ac9e67dca39bc6dd347eee55aa010d8bc180 (path not present at present foundation cut; resolve via exact earlier ref if required, do not declare current without retrieval).
+- Historic V3 original 40 M and N01–N12 atlas: SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/02_ATLAS.md and ATLAS.json; current sequencer: V3_COURTS/SEQUENCER/dependencies.json.
+- Prior user settled science vs open questions: V3_COURTS/07_USER_DECISION_LEDGER.md; authority register V3_COURTS/06_SOURCE_AND_AUTHORITY_REGISTRY.md.
+- SYN01 original-source R2 reviewed outcome: V3_COURTS/15_SYN01_R2_EIGHT_COURT_EVIDENCE_CLOSEOUT_R1.md; exact original issuers/current E1/E2 consumer docket: V3_COURTS/14_POST_SYN01_RULE_SOURCE_AND_CONSUMER_DOCKET_R1.md.
+- SYN02 selected whole-person architecture, source/owner O01–O16 scientific docket and F0–F3 implementation plan at immutable commit 321fa29bb3e51849a43cb7caf1600625bf215539 under SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/REVIEWED_SYNTHESIS/S/{01_WHOLE_PERSON_CANONICAL_ARCHITECTURE_AND_ALTERNATIVES.md,06_ORIGINAL_SCIENCE_RULE_AND_SOURCE_PERMISSION_DOCKET.md,07_N_NPLUSONE_FULL_BATCH_RETROSPECTION_AND_SCI05.md,08_CURRENT_C12_BACKWARD_SOURCE_AND_MODULE_PLAN.md,09_MAXIMAL_LAWFUL_BUILD_MIGRATION_AND_TEST_TRANCHES.md}. These are source-graded designs; their absence on current foundation is not a finding of scientific cancellation.
+- Actual later sourcefree source and tests: V3_COURTS/SYN02/POST_R2_REVIEW/R3/00_CRITICAL_PATH_INDEX.md and C9_READER/{actor_reader.py, dry_sequence.py, legacy_migration.py}, C12_PATCH/results.json, RM40 machine symbol registry. Current source repair branch exact cut listed in 04_FLIGHT_AND_CURRENTNESS.md.
+- Cross-HQ terminal anti-microfocus, no fictional proof, qualified model economy: CROSS_HQ_CONTROL_ROOM/HQ_TERMINAL_DELIVERABLE_CONTINUITY_AND_ANTI_MICROFOCUS_LAW_R1.md, CROSS_HQ_CONTROL_ROOM/PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md, existing Sorok controller amendment. User's execution-first R2 goal is already banked in SOROK_PRODUCT_CONTROL_ROOM/HQ_GOALS/20261028_SOROK_NIGHT_SHIFT_R2_EXECUTION_FIRST.md, not an alternative completion ontology.
+
+## Ownership boundaries to keep explicit
+
+C0/Pyat/SDTF: original world/structural possibility and native N11/N12; C4/C6/C8/ADP019: independent people and activity/time/occurrence; CAN008: exact immediate Rule A; CAN009/010/011/012: needs/motive/activity and durable Rule T/relations; ADP016/017: accessible trace/memory/belief; SCI05: postcall internal-act admission; C9/C12 engineers: implemented receipt/state and sourcefree or native owner-scoped integration; V2: one-way expressive read; model/provider/account authorization by user. A reviewer of historic source cannot self-issue any of these.
+
+Every active question must trace from this indexed evidence to (i) actual unresolved source/science decision, (ii) actual product function blocked, (iii) named first consumer and (iv) executable next authorized action. An existing original reference is more authoritative than this view. Sourcefree tests are evidence at their runtime grain, not native human psychology.
