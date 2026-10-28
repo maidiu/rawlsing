@@ -36,6 +36,16 @@ The view runs against a full deep-copied snapshot and compares all fields before
 
 Combined reader/view/dry-run tests: **32 passed** via `python3 -B -m pytest -q -p no:cacheprovider .../C9_READER/test_actor_reader.py .../C9_READER/test_dry_sequence.py`. This advances the real first sourcefree surface consumer. It is not completion of all historical F1 derived computations, actor/world migration, original storage freeze, ADP/SCI05 issuance or a native person. F0 source application awaits the exact owner-scope question; independent local work did not wait on that lane.
 
+## Legacy actor/world migration preparation
+
+`C9_READER/legacy_migration.py` implements pure/idempotent `migrate_legacy_actor(LegacyActorSourceV1)` for explicit sourcefree bindings. It checks the input's exact byte hash, preserves each individually referenced material/time/event scalar without numerical clamping, and returns an immutable migration candidate. An unbound default 50 is not copied as a fact; an explicitly bound test observation valued 50 is preserved as 50. Missing requested observations stay unknown. A whole container cannot smuggle its nested defaults as one approved scalar.
+
+Actual BackboneState fields are sourced from `v3/core/state.py` SHA256 `19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2`, parsed read-only by the source-shape test. Narrator fields, age/type assumptions, analyst pressure memory/traces, placeholders, expectation defaults and derived caches stay outside retained candidates. Institutional/field/V5 material is explicitly world-owner-held rather than copied into actor authority. The original JSON is not put into an actor-facing packet, and the migrator does not instantiate old BackboneState or run its defaults, clamp methods or calculations.
+
+**Limit:** bindings and example event payload keys are SOURCEFREE_TEST_ONLY preparation, not an issued empirical/source qualification or proof of a live legacy archive import. The record always remains `PARTIAL_HELD_SOURCE_OWNER_ADMISSION`; it provides no C9/C12 writer or actor-memory admission API. No canonical fact ID, causal interpretation, Rule A/T/SCI05 or world grant is issued. This is the necessary transport/quarantine component for a later qualified migration consumer, not completion of historic numerical adaptation.
+
+`python3 -B -m pytest -q -p no:cacheprovider .../C9_READER/test_actor_reader.py .../C9_READER/test_dry_sequence.py .../C9_READER/test_legacy_migration.py`: **41 passed**. New cases cover exact scalar/event/time preservation, default quarantine, missing observations, source tamper, no claimed native source grade, world-owner separation, container smuggling refusal, idempotence and actual source field names. Original source and production state remain unchanged.
+
 ## Prior R3 index (preserved)
 
 Three independent reviews returned: RRP0-R2 8df1712b665917b1dbeb1c0d7526830e167b4833, RRM40-R2 29691846962cf2b302eff8a15baa6142f0d682cc (two commits ONE review), RF0-R2 5c9ac33aab23c75d35314ece57c30dc95a96aee7. C12 original source owner must approve perception-safe fork patch or hard FORK_HELD separately; no original edits authorized. Three bounded R3 commissions: F0-R3 sourcefree security, C9-R3 sourcefree SQL proof, RM40-R3 source machine typed contracts. No F1.1 build until C12/C9 owner freeze; no science/native grant.
