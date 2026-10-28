@@ -1,0 +1,447 @@
+{
+  "schema": "PYAT_P06_S2_AUTH37_45_FRESH_ADMISSION_TESTS@1.0.0",
+  "date": "2026-10-28",
+  "source_lineage": "Authority35/37 + Z02 + B01 + C01R2; provenance in P06 S0/S1",
+  "control_sha": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "candidate_sha": "ab287dcb48a3133fd4c79c881996fdd01f778c79",
+  "test_count": 48,
+  "sourcefree_executed_independent_math_cases": 5,
+  "production_old_new_rerun_this_turn": false,
+  "original_source_read_this_turn": false,
+  "independent_fresh_admission_current_status": "NOT_PROVED",
+  "test_proof_convention": "PLAN vs HISTORICAL_TESTED vs EXECUTED_INDEPENDENT_MATH distinct; no existing worker result self-adopts",
+  "tests": [
+    {
+      "id": "P06-T01",
+      "ticket": "A00",
+      "target": "SAV SHA exact a5e83a...f998 and authorized source read",
+      "expected": "HOLD if absent; no alternative SAV",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T02",
+      "ticket": "A00",
+      "target": "Questionnaire/codebook SHA exact d72c3a/328bbb",
+      "expected": "HOLD if absent or mismatched",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T03",
+      "ticket": "A00",
+      "target": "Decoder immutable source and complete row/cell custody",
+      "expected": "No SHA-before-stale-read; no false source authority",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T04",
+      "ticket": "A00",
+      "target": "C01R2 code and data cut pinned before runner",
+      "expected": "All actual file blobs and grants exact",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T05",
+      "ticket": "A01",
+      "target": "Z02 hosted 157-suite historical proof independently check Actions",
+      "expected": "Success bound to d164f14 tested SHA; not current adoption",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T06",
+      "ticket": "A01",
+      "target": "C01R2 AC11/12 six focused test regression",
+      "expected": "Exact local module and test sha plus executed command",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T07",
+      "ticket": "A01",
+      "target": "I05 fixed frontier all candidates evaluated and sealed before first query",
+      "expected": "No modification/pruning during open invocation",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T08",
+      "ticket": "A01",
+      "target": "MX01R2 exact cold child membership replay",
+      "expected": "Same respondent refs, parent lineage and source identity",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T09",
+      "ticket": "A01",
+      "target": "Adaptive-exploratory partial frontier cannot masquerade as Authority37",
+      "expected": "Reject partial-search global negatives",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T10",
+      "ticket": "A02",
+      "target": "One source full governed response distribution with multi-label patterns",
+      "expected": "Do not collapse SES+religion and SES-only",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T11",
+      "ticket": "A02",
+      "target": "Multi-label presence and complete pattern branch both emitted",
+      "expected": "All exact patterns, sources and typed response states",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T12",
+      "ticket": "A02",
+      "target": "Weighted modal only under exact positive weight authority",
+      "expected": "Otherwise raw; preserve both native supports",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T13",
+      "ticket": "A02",
+      "target": "Exact tied modal maximum remains unresolved set",
+      "expected": "No lexicographic forced winner",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T14",
+      "ticket": "A02",
+      "target": "Descriptive determinicity ranking cannot prune predictors",
+      "expected": "All governed candidates included",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T15",
+      "ticket": "A02",
+      "target": "All categorical/boolean coordinate conditions enumerated",
+      "expected": "No caller-supplied winning splitter",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T16",
+      "ticket": "A02",
+      "target": "Missing positional coordinate excluded from P and NOT P",
+      "expected": "CR(P) guards both complements",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T17",
+      "ticket": "A02",
+      "target": "DK/refusal/outside-domain excluded from substantive NM",
+      "expected": "Typed residual and category failure retained",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T18",
+      "ticket": "A02",
+      "target": "Four roles complete with correct resolved population partition",
+      "expected": "CONFORMER/DEVIANT_EXIT/ALT_CONVERGER/ALT_MINORITY",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T19",
+      "ticket": "A02",
+      "target": "Secondary frontier issued from each retained supported branch",
+      "expected": "No deviation-only or modal-only recursion",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T20",
+      "ticket": "A02",
+      "target": "Stop thresholds 24 25 49 50 and depth4",
+      "expected": "Retain stopped branch with typed reason, 50 conditional",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T21",
+      "ticket": "A02",
+      "target": "No unissued polarization/gradient/category-collapse classifier",
+      "expected": "Fail closed until versioned source authority",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T22",
+      "ticket": "A03",
+      "target": "J1/J2 old native query identity unchanged in new J3 engine",
+      "expected": "Byte-identical Fact/replay and typed negatives",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T23",
+      "ticket": "A03",
+      "target": "Exactly 3 distinct targets under positive J3 authority",
+      "expected": "J3 valid, duplicate/unsorted/unauthorized reject",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T24",
+      "ticket": "A03",
+      "target": "J4 request even claimed authority >3",
+      "expected": "Fail closed J>3",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T25",
+      "ticket": "A03",
+      "target": "Parity/anti-parity identical J2 and different J3",
+      "expected": "No pairwise reconstruction of triple",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T26",
+      "ticket": "A03",
+      "target": "Complete J1/J2/J3 catalog with no oracle winning pairs",
+      "expected": "All lawful target tuples visited",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T27",
+      "ticket": "A03",
+      "target": "Exact source/branch/per-target/joint denominators",
+      "expected": "No 1334 == 1265 substitution",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T28",
+      "ticket": "A03",
+      "target": "Native weight and raw tensor separate, typed specials exact",
+      "expected": "Q885=97 substantive, 98/99 handled according source",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T29",
+      "ticket": "A03",
+      "target": "Demographic coordinates absent from substantive target graph",
+      "expected": "No actor/position node emitted as attitude",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T30",
+      "ticket": "A03",
+      "target": "Cross-universe source relation/weight missing refuses",
+      "expected": "No silent pooling/invented denominator",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T31",
+      "ticket": "A04",
+      "target": "B01 old R-only AC11 over-invalidation reproducible",
+      "expected": "Old counterexample as frozen baseline",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T32",
+      "ticket": "A04",
+      "target": "C01R2 R-only mutation changes R_TOPO and no unrelated selective identities",
+      "expected": "Explicit expected/observed/stable set",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T33",
+      "ticket": "A04",
+      "target": "True TARGET upstream mutation invalidates all dependent artifacts",
+      "expected": "No under-invalidation",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T34",
+      "ticket": "A04",
+      "target": "Q_CHILD local mutation changes only Q_CHILD/S_CHILD/COSIG",
+      "expected": "No hidden broad release identity",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T35",
+      "ticket": "A04",
+      "target": "Provenance-only change keeps selective identity but audits content refs separately",
+      "expected": "Never equate selective identity with Fact/replay identity",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T36",
+      "ticket": "A04",
+      "target": "Graph cycle, unknown determinant, drift, forged source refs",
+      "expected": "Fail closed; no graph mutation between paired runs",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T37",
+      "ticket": "A05",
+      "target": "Freeze answer-blind generation input before oracle access",
+      "expected": "No known modal branch/target count injected",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T38",
+      "ticket": "A05",
+      "target": "Two cold autonomous run outputs identical",
+      "expected": "Exact map, replay, frontiers, facts, receipts",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T39",
+      "ticket": "A05",
+      "target": "G04 hostile minority/category-failure/typed states",
+      "expected": "No selected top-k partial masquerade",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T40",
+      "ticket": "A05",
+      "target": "L02 Wave-VIII routed weighted SES share 47.287269199071936%",
+      "expected": "Exact source/routing/denominator/weight",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T41",
+      "ticket": "A05",
+      "target": "Lebanon 2403 full scope vs 2339 substantive; 1334 SES",
+      "expected": "No denominator substitution/complement flattening",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T42",
+      "ticket": "A05",
+      "target": "L03 full pair witnesses, not single favored result",
+      "expected": "Five cases and query/denom/fact refs",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T43",
+      "ticket": "A05",
+      "target": "H01 direct J3 raw+weighted tensor exact match",
+      "expected": "SHA 734077.../02dee..., raw n1265",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T44",
+      "ticket": "A05",
+      "target": "H02/H03 corroborating triple witnesses",
+      "expected": "Direct joint/weighted raw independently",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T45",
+      "ticket": "A05",
+      "target": "I08 all validation modes complete on repaired code",
+      "expected": "AC11/AC12, replay, noninterference, answer-blind",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T46",
+      "ticket": "A06",
+      "target": "Qualified PREMAIN merge preserves C11/I03/I05 and P01–P04 seams",
+      "expected": "Old/new regression at exact merged code SHA",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T47",
+      "ticket": "A06",
+      "target": "Ref-only EmpiricalFractureMapReceipt and real empirical reader",
+      "expected": "No copied payload/actor belief or stage courier ontology",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    },
+    {
+      "id": "P06-T48",
+      "ticket": "A07",
+      "target": "Original source/independent reviewer grant and final status",
+      "expected": "Gate-by-gate PASS only if all G0–G7 fresh; HELD otherwise",
+      "result": "REQUIRED_NOT_RERUN_THIS_TURN",
+      "oracle": "Exact frozen source+code SHA, independent expected/counterexample, full native output with no pre-seeded answers",
+      "source_grant": "REQUIRES_ORIGINAL_OWNER_FOR_REAL_SOURCE"
+    }
+  ]
+}
