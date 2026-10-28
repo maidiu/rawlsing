@@ -1,3 +1,9 @@
+## COMPLETE BRANCH HEAD CENSUS + TWO-HQ INHERITANCE (2026-10-28)
+
+**Read `CROSS_BRANCH_INHERITANCE/00_READ_ME_FIRST_CROSS_HQ_ESTATE_R1.md` before commissioning replacement implementations.** Full GitHub name/SHA census: **2,831 heads / 2,743 distinct tip SHAs**; all three paginated JSON parts archived; 1,526 Pyat/shared and 462 Sorok/FF keyword-selected heads (heuristic name filter only, not implementation closure). The 31 `integration/`+main heads compared against operative PREMAIN: 20 behind/ancestral, 1 identical, 10 diverged. Function-by-function code/authority/readmission **not exhaustive yet**. Separate Pyat inheritance document `CROSS_BRANCH_INHERITANCE/01_PYAT_BRANCH_INHERITANCE_CODE_AND_AUTHORITY_COURT_R1.md`; dedicated Sorok HQ distribution resource `SOROK_PRODUCT_CONTROL_ROOM/RESOURCE_20261028_CROSS_BRANCH_ESTATE_AND_INHERITANCE_HQ_HANDOFF_R1.md` on this same design branch (Sorok current control NOT modified).
+
+**Corrections to earlier assumptions:** P06 Authority37/Z02/C01R2 full J3/controller already exists but full repaired original WaveVIII admission is still held. P05 has a separately independently reviewed **SOURCEFREE** V2 governed durable-consumer implementation `agent/rabochii-pyat-hq282-p01-v2-durable-consumer-integration-r1@3f91dc22d2eb`, reviewed code SHA `73d45f3...`, 25 integrated fixture tests and 3 true sourcefree Field Forge product consumers; it is NOT yet a qualified SRC04 original streaming bugfix. Next code ticket MUST be reuse/diff of HQ282 before new P05 B02 journal. Sorok has a runnable HQ329 B3 test-only developmental candidate with 42 F2 cases but original F1/M2 failures and separate qualified Rule A/T needed. No source permissions, actors or user-facing native product are minted by census.
+
 # PYAT FINAL PRODUCTION ARCHITECTURE — START HERE
 
 **Created 2026-10-28 by Browser executive-design agent at the user's express request.**
