@@ -1,0 +1,177 @@
+{
+  "schema": "PYAT_SRC04_LANE_D_RETURN@1.0.0",
+  "lane": "D",
+  "campaign": "SRC04_FULL_COMPLETION",
+  "branch": "agent/pyat-src04-consumers-20261028",
+  "startup": "08b31c9f088bee0d02da5a26b7c12ca9f183061e",
+  "artifact_commit": null,
+  "status": "CANDIDATE_CONSUMER_CODE_AND_FIXTURE_EVIDENCE__SOURCE_LOCAL_POSITIVE_PENDING",
+  "candidate_not_independently_accepted": true,
+  "source_coverage": {
+    "lane_scope": "ACTUAL_DOWNSTREAM_CONSUMER_INTEGRATION",
+    "full_src04_source_coverage_claim": "NOT_MADE_BY_LANE_D",
+    "full_163_178_source_product": "PENDING_LANE_A_C",
+    "accepted_42_field_release": {
+      "release_ref": {
+        "content_hash": "fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec",
+        "kind": "C11LogicalRelease",
+        "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION"
+      },
+      "status": "HISTORICAL_BASELINE_PRESERVED_NOT_FULL_PRODUCER"
+    },
+    "d1_descriptive_tally": {
+      "source_id": "SRC04",
+      "field_count": 42,
+      "artifact_commit": "e1a57513196be0af1c68ae66d569e8c2d39a2fc1",
+      "path": "campaign_d1_src04_tally/evidence/TALLY_PRODUCT.json",
+      "sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+      "conversion_to_empirical_fact": "FORBIDDEN_AND_REFUSED"
+    },
+    "original_source_read": false
+  },
+  "actual_consumer_result": {
+    "mode": "RETAINED_B0_FIXTURE_ONLY_ENGINEERING_POSITIVE",
+    "product_path": "campaign_src04_completion/consumers/evidence/B0_FIXTURE_CONSUMER_PRODUCT.json",
+    "product_sha256": "73a5ac91e5a9fa94dcd7931b2657af0201dd9c72cdf8742b564095ba5f0a1d3c",
+    "status": "FIXTURE_ONLY_ENGINEERING_POSITIVE__NOT_SOURCE_LOCAL_PROOF",
+    "oc01_state": "SUPPORTED_OBJECTIVE_RESULT",
+    "oc01_claim_ceiling": "SUPPORTED_COMPONENT_ONLY",
+    "oc01_positive_completion": true,
+    "fact_ref": {
+      "content_hash": "a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:a377bc42e15134ca8774fe5940ab537789cb5797bf3c2e72e8db981b4869cecc"
+    },
+    "release_ref": {
+      "content_hash": "9a6db7b4aa8b5d7bbd8d366dec55e60fd07cb956d2935f1d7d705ecf99f10e3f",
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_P0_FIXTURE_RELEASE/SRC09"
+    },
+    "query_ref": {
+      "content_hash": "d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:d7f9fefd9212b51eee3e7e092664478af7a91977970ad1520b940393bcb69706"
+    },
+    "predicate_ref": {
+      "content_hash": "ff2b51391075df074e1ae76d8de5aa34c236cfabbabeae738227c87c2e7ef7e3",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:ff2b51391075df074e1ae76d8de5aa34c236cfabbabeae738227c87c2e7ef7e3"
+    },
+    "source_id": "SRC09",
+    "source_rows": 9,
+    "raw_numerator_support": 1,
+    "raw_denominator_support": 1,
+    "fixture_only": true,
+    "source_value_sensitive": false,
+    "source_local_claim": false,
+    "b0_receipt_path": "campaign_src04_completion/consumers/evidence/B0_FIXTURE_POSITIVE.json",
+    "b0_receipt_sha256": "947b4950ade82dc7d1c5a80d5a2f2b54e7b918ce331e8e3ee1d64cbbd554c532",
+    "b0_commit": "283ac1ecd2f60fed9df5b9bc923018562fe3796b",
+    "b0_scope": "SRC09_P0_NONRESPONDENT_FIXTURE_ONLY__NOT_ORIGINAL_NOT_SRC04",
+    "b0_test_only_query_authority_used": true,
+    "b0_original_source_or_release_read": false,
+    "actual_existing_api_calls_in_b0_evidence": [
+      "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+      "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+      "rawlsing_next.pre553_native_workload_binding.build_projection_catalog",
+      "rawlsing_next.pre553_empirical_query.execute_empirical_query"
+    ]
+  },
+  "source_local_positive": false,
+  "source_local_blocker": {
+    "blocker": "FULL_SRC04_SOURCE_PRODUCT_NOT_ISSUED",
+    "path": "campaign_src04_completion/consumers/evidence/LANE_D_BLOCKER.json",
+    "sha256": "10032d47143939f65c773f2e01a494295fb5e86adffd9c2a3d4faa6deafd2502",
+    "required_producer_family": [
+      "C11LogicalRelease",
+      "EmpiricalQuerySpec@1.0.0",
+      "EmpiricalPredicate@1.0.0",
+      "EmpiricalFact@1.0.0"
+    ],
+    "producer_contract_path": "campaign_src04_completion/consumers/PRODUCER_CONTRACT.json",
+    "producer_contract_sha256": "402f5e89eef1f5dfdb420e61bdce3f6cacee330c4428391f94d7a4321964e012",
+    "consumer_command": "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native --producer-module MODULE:FUNCTION --expected-source-id SRC04 --claim-ceiling SOURCE_LOCAL_STATISTIC --use-scope SOURCE_LOCAL_STATISTIC --out <out>"
+  },
+  "negative_results": {
+    "NEGATIVE_CLAIM_CEILING": {
+      "status": "REFUSED",
+      "error_code": "CLAIM_CEILING_NOT_AUTHORIZED",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_CLAIM_CEILING.json",
+      "sha256": "8d03c4fa9bd6767a4c02852621aa9842916c76b0c9a462d918fdd7f0370db6e9"
+    },
+    "NEGATIVE_D1_TALLY": {
+      "status": "REFUSED",
+      "error_code": "PRODUCER_FAMILY_REFUSED__D1_TALLY_NOT_EMPIRICAL_FACT",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_D1_TALLY.json",
+      "sha256": "c745d8cd7cbf18d4d95b58a9c9715e6dbb45094e32c4c7fdaa2b4dfe17c21168"
+    },
+    "NEGATIVE_FIXTURE_AS_SOURCE_LOCAL": {
+      "status": "REFUSED",
+      "error_code": "NATIVE_AUTHORITY_REFS_REQUIRED",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_FIXTURE_AS_SOURCE_LOCAL.json",
+      "sha256": "176df881ee5df72d8ba34071390de340313264e959c1c1d9f61ef85bb2194622"
+    },
+    "NEGATIVE_MISSING_AUTHORITY": {
+      "status": "REFUSED",
+      "error_code": "MISSING_AUTHORITY",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_MISSING_AUTHORITY.json",
+      "sha256": "bada1476e81396bfa0c3510ac11648e984c63b5cde613b214abfa3580f26994c"
+    },
+    "NEGATIVE_WRONG_FACT": {
+      "status": "REFUSED",
+      "error_code": "RETAINED_FACT_REF_MISMATCH",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_WRONG_FACT.json",
+      "sha256": "433be11dfa2341e4d31f90f9ac4d0b2e3177150c916407eb8c662da36732ecb7"
+    },
+    "NEGATIVE_WRONG_RELEASE": {
+      "status": "REFUSED",
+      "error_code": "RETAINED_RELEASE_REF_MISMATCH",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_WRONG_RELEASE.json",
+      "sha256": "41b3f5f9ed6fe07e2dd48dc2b7d39f9fc2f9c40d45439e24471b64e98d0fd8e5"
+    },
+    "NEGATIVE_WRONG_SOURCE": {
+      "status": "REFUSED",
+      "error_code": "WRONG_SOURCE_ID",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_WRONG_SOURCE.json",
+      "sha256": "3745aa0c575cb623c4cae305fff1dd22530e5b941d1d99fc883ceb5335e6bf09"
+    },
+    "NEGATIVE_WRONG_USE": {
+      "status": "REFUSED",
+      "error_code": "WRONG_USE_SCOPE",
+      "path": "campaign_src04_completion/consumers/evidence/NEGATIVE_WRONG_USE.json",
+      "sha256": "1aea5e103c90a6ecb5998d7e7dbd7c74bb52cd20424709f3c8ccb728475a92cf"
+    }
+  },
+  "actual_commands": [
+    "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.generate_evidence",
+    "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run b0-fixture --out campaign_src04_completion/consumers/evidence/B0_FIXTURE_CONSUMER_PRODUCT.json",
+    "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run refuse-d1-tally --out campaign_src04_completion/consumers/evidence/NEGATIVE_D1_TALLY.json",
+    "PYTHONPATH=. python3 -m campaign_src04_completion.consumers.run native --out campaign_src04_completion/consumers/evidence/LANE_D_BLOCKER.json",
+    "PYTHONPATH=. python3 -m pytest campaign_src04_completion/consumers/tests -q -o addopts=''"
+  ],
+  "tests": {
+    "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/consumers/tests -q -o addopts=''",
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "results_path": "campaign_src04_completion/consumers/TEST_RESULTS.json",
+    "results_sha256": "7a1854dc3325faa30a89b10e838ee8121674ae6af3eb466abf08c9bea6eb003c"
+  },
+  "no_original_source_access": true,
+  "original_respondent_rows_read": 0,
+  "original_workload_issued": false,
+  "no_d1_tally_conversion": true,
+  "no_ff_v553_adoption": true,
+  "respondent_cells_committed": false,
+  "manifest": {
+    "path": "campaign_src04_completion/consumers/MANIFEST.json",
+    "sha256": "a6a4a57ba47387c36caab19ea739ceb33d9d8ece159f0132a635883679ab232e"
+  },
+  "next_consumer": "Lane A/C full SRC04 source-local producer must supply the exact ProducerBundle; then run the native consumer command. Distinct review follows at the integrated lane boundary.",
+  "limits": [
+    "Lane D does not claim full SRC04 source coverage; it is a downstream consumer integration lane.",
+    "B0 fixture consumer positive is nonrespondent/test-only engineering evidence, not SRC04 source-local proof.",
+    "Full SRC04 source-local producer is pending; no original SRC04 file was stat'ed, hashed, opened or decoded.",
+    "No D1 tally was converted to EmpiricalFact; no FF/V553 semantic adoption or population/weight claim was made."
+  ]
+}
