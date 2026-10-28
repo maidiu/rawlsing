@@ -1,0 +1,50 @@
+{
+  "schema": "PYAT_SRC04_CD_REVIEW_INTAKE_V1",
+  "review": "a65446a0f259bf84d26a6b3e04645eccd14d997f",
+  "direct_remote_verified": true,
+  "review_artifact_hashes_verified": 4,
+  "verdict": "REVISE_D_OBSERVED_RESPONSE_PROVENANCE_DROPPED",
+  "C_candidate": "44aaf2be06e026547e9b32d880ac588e84acc9e4",
+  "D_candidate": "35bab35be55c80f90d9d0cfbc13fb6f555a0f8ce",
+  "C_engineering_scope": "Independent fixture native44operations(3unary3joint38conditional),exactobserveddenominatorledger,replay/resumeandauthority/source/operationrefusals demonstrated; notoriginalscientificacceptance",
+  "D_defect": {
+    "affected_lines": [
+      "371-380",
+      "489-589",
+      "628-659"
+    ],
+    "falsifier": "The real D product and every discovery fact omit observed_response/observed_ledger, despite the source C fact carrying status, not-eligible status, contract ref and ledger.",
+    "id": "D_OBSERVED_RESPONSE_PROVENANCE_DROPPED",
+    "not_required": [
+      "C repair",
+      "new query engine",
+      "new weight/population claim",
+      "structural admission",
+      "new source authority"
+    ],
+    "owner": "campaign_src04_completion/consumers/consumer.py",
+    "owner_functions": [
+      "consume_native_producer",
+      "_run_downstream_discovery"
+    ],
+    "smallest_repair": [
+      "Capture fact.target_topology[\"observed_response\"] in consume_native_producer.",
+      "Require exact mapping status OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION, not_eligible_population_estimate true, exact contract_ref matching the query grain, and full ledger.",
+      "Emit the projection as observed_response on the product via _plain; do not relabel or synthesize authority.",
+      "Include each discovery fact observed projection in _run_downstream_discovery empirical_facts, preserving contract ref/provenance.",
+      "Add one joined-path regression asserting equality to the C status, contract ref, not-eligible flag and ledger."
+    ],
+    "status": "MEASURED_REVISE"
+  },
+  "next": "ExistingDauthor preserves exactobservedprojectiononprimaryanddiscoveryfacts; distinctsameexistingreviewerfocusedrecheck afterward, noCcorechanges/generalreview",
+  "original_construction": "Acontinuesseparately underreceivedfullreadgrant",
+  "native_issuance": "Exacthumanoperation/source-local-useapprovalrequested; no authorityinvented",
+  "heartbeat": "PAUSED",
+  "repair_launch": {
+    "pid": 87630,
+    "observer_pid": 87936,
+    "commission": "73cc20c233f982daa6d58c0e0b3df934e8cb4ad5",
+    "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review/.r61/src04-d-observed-provenance"
+  }
+}
