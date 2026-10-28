@@ -1546,19 +1546,6 @@
       "prior_candidate": "61aa72ebc95a2cc2ab5cc10b3330b03ac0a49df2"
     },
     {
-      "task": "SRC04_NATIVE_VALUE_CONSUMER_REPAIR",
-      "lane": "D",
-      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
-      "pid": 70920,
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review",
-      "branch": "agent/pyat-src04-consumers-20261028",
-      "commission_tip": "fb84dc98a594b1145ece3c6d1dfc9008e8e95ff4",
-      "state": "ACTUALLY_RESUMED_SAME_OWNER_NATIVE_PATH_REPAIR",
-      "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review/.r61/src04-d-native-repair",
-      "first_tool_verified": false,
-      "prior_candidate": "b6be2c62064ce696d4f8f966c3bc64fd46d63b43"
-    },
-    {
       "lane": "A",
       "task": "SRC04_FULL_ORIGINAL_AUTHORIZED_CONSTRUCTION",
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
@@ -3546,11 +3533,20 @@
   "src04_full_completion": "PYAT_CONTROL_ROOM/SRC04_FULL_COMPLETION_LAUNCHES.json",
   "src04_binding_intake": "PYAT_CONTROL_ROOM/SRC04_FIELD_REPAIR_B_INTAKE.json",
   "src04_full_release_candidate": "PYAT_CONTROL_ROOM/SRC04_FULL_RELEASE_A_INTAKE.json",
-  "waiting_lanes": {},
+  "waiting_lanes": {
+    "SRC04_D": {
+      "state": "NATIVE_CONSUMER_ENGINEERING_POSITIVE_BANKED__WAIT_QUALIFIED_SOURCE_PRODUCTS_AND_EXACT_ISSUANCE_USE",
+      "candidate": "35bab35be55c80f90d9d0cfbc13fb6f555a0f8ce",
+      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2-src17-c11-review",
+      "next": "Actualoriginalnativeproducer->consumerjoin and requiredindependentqualification; no activeDprocess/polling"
+    }
+  },
   "src04_consumer_intake": "PYAT_CONTROL_ROOM/SRC04_CONSUMER_D_INTAKE.json",
   "src04_numeric_v2_intake": "PYAT_CONTROL_ROOM/SRC04_NUMERIC_BINDING_V2_INTAKE.json",
   "src04_numeric_iterator_intake": "PYAT_CONTROL_ROOM/SRC04_NUMERIC_ITERATOR_REPAIR_INTAKE.json",
   "src04_full_release_join_intake": "PYAT_CONTROL_ROOM/SRC04_FULL_RELEASE_JOIN_INTAKE.json",
   "src04_empirical_intake": "PYAT_CONTROL_ROOM/SRC04_EMPIRICAL_C_INTAKE.json",
-  "src04_full_source_grant": "PYAT_CONTROL_ROOM/SRC04_FULL_SOURCE_USER_GRANT_20261028.json"
+  "src04_full_source_grant": "PYAT_CONTROL_ROOM/SRC04_FULL_SOURCE_USER_GRANT_20261028.json",
+  "src04_native_consumer_repair_intake": "PYAT_CONTROL_ROOM/SRC04_NATIVE_CONSUMER_REPAIR_INTAKE.json"
 }
