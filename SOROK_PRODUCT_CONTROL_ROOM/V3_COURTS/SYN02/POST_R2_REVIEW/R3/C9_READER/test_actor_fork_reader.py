@@ -267,6 +267,34 @@ def test_genesis_v0_cannot_replace_inherited_branch(tmp_path):
         _read(c9_path)
 
 
+def test_missing_child_in_valid_c12_database_is_typed_hold_and_cli_exit2(tmp_path):
+    import subprocess
+    import sys
+    candidate, c12, c12_path, c9_path, parent, fork, _ = _fixture(tmp_path)
+    _close(parent)
+    c12.close()
+    wrong_path = tmp_path / "wrong-valid-c12.sqlite"
+    wrong = load_c12_source(C12_SOURCE)["store"].C12Store(wrong_path)
+    wrong.create_root("c12-root", clock=0, actor_ids=["A", "B"],
+                      state={"clock": 0})
+    wrong.close()
+    with pytest.raises(ReaderHeld, match="C12_FORK_BRANCH_MISSING"):
+        read_actor_snapshot(
+            SOURCE, c9_path, actor_id="A", branch_id="alt", branch_epoch="e-alt",
+            source_cut="TEST_ONLY_SOURCE_CUT", c12_source=C12_SOURCE,
+            c12_database=wrong_path)
+    command = [
+        sys.executable, "-B", str(SCRATCH / "actor_reader.py"),
+        "--source", str(SOURCE), "--database", str(c9_path),
+        "--actor", "A", "--branch", "alt", "--epoch", "e-alt",
+        "--source-cut", "TEST_ONLY_SOURCE_CUT",
+        "--c12-source", str(C12_SOURCE), "--c12-database", str(wrong_path)]
+    result = subprocess.run(command, capture_output=True, text=True)
+    assert result.returncode == 2
+    assert result.stdout == ""
+    assert result.stderr == "ACTOR_SURFACE_HELD\n"
+
+
 def test_c12_source_hash_and_foreign_cache_refuse(tmp_path):
     candidate, c12, c12_path, c9_path, parent, fork, _ = _fixture(tmp_path)
     _close(parent)

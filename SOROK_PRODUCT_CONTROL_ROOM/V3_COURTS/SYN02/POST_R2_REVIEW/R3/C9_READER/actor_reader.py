@@ -124,6 +124,17 @@ def _perception_rows_hash(rows) -> str:
     return sha([dict(row) for row in rows])
 
 
+def _c12_branch(reader, branch_id: str):
+    try:
+        return reader.branch(branch_id)
+    except ReaderHeld:
+        raise
+    except Exception as error:
+        if getattr(error, "code", None) == "BRANCH_NOT_FOUND":
+            raise ReaderHeld("C12_FORK_BRANCH_MISSING:" + branch_id) from error
+        raise
+
+
 def _validate_c12_fork(c12: dict, branch, parent, source_cut: str) -> None:
     connection = c12["connection"]
     reader = c12["reader"]
@@ -136,8 +147,8 @@ def _validate_c12_fork(c12: dict, branch, parent, source_cut: str) -> None:
         raise ReaderHeld("C12_FORK_BRANCH_BINDING_MISMATCH")
     if branch["fork_source_cut_hash"] != source_cut or branch["source_cut_hash"] != source_cut:
         raise ReaderHeld("C12_FORK_SOURCE_CUT_MISMATCH")
-    child = reader.branch(child_id)
-    actual_parent = reader.branch(parent_id)
+    child = _c12_branch(reader, child_id)
+    actual_parent = _c12_branch(reader, parent_id)
     if child["parent_branch_id"] != parent_id:
         raise ReaderHeld("C12_FORK_PARENT_MISMATCH")
     if branch["fork_c12_root_hash"] != child["root_hash"]:
