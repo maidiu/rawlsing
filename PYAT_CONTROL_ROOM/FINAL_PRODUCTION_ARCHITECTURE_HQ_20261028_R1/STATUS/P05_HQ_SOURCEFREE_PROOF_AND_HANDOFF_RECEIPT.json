@@ -1,0 +1,86 @@
+{
+  "schema": "PYAT_P05_HQ_S0_S1_S2_SOURCEFREE_RECEIPT@1.0.0",
+  "created": "2026-10-28",
+  "owner": "Browser Architecture HQ; no rabochiis",
+  "control_sha": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "src04_packet_sha256": "94661c14548947bd1c540482841c7c81c7dfc4861b5907f18b91a9e34cd24a5b",
+  "src04_campaign_at_control_path": false,
+  "sourcefree_archive": "PYAT_P05_SOURCEFREE_RESUME_PROOF_20261028.zip",
+  "archive_sha256": "92f07e81356b326fbd9488339b6516c0f000878ed1fc40605fe534e6f8782da4",
+  "archive_integrity": "ZIP_TESTZIP_PASS_AND_MANIFEST_4_OF_4_HASHES_VERIFIED",
+  "sourcefree_executed_script": "p05_original_stream_resume_probe.py",
+  "script_sha256": "b4f708821b5622f181a1661ec9860c423ee631a70c3b9df322afde05c965ddaa",
+  "sourcefree_proof_class": "AST_EXTRACTED_ORIGINAL_STREAMING_FUNCTION_PLUS_STUBBED_NATIVE_I03_AND_C11",
+  "sourcefree_proofs": [
+    {
+      "id": "F02",
+      "status": "REPRODUCED",
+      "finding": "Original resume sets previously retained base/conditional cells to []",
+      "limits": "Original adapter function with mocked I03, not current actual consumer result"
+    },
+    {
+      "id": "F03",
+      "status": "REPRODUCED",
+      "finding": "Original resume appends new receipts after torn JSONL tail; subsequent parser cannot see appended valid records",
+      "limits": "Original adapter function, synthetic line tear"
+    },
+    {
+      "id": "F05",
+      "status": "REPRODUCED",
+      "finding": "Original resume treats refused operation as completed; no typed retry pathway",
+      "limits": "No claim which original refusals ought to retry"
+    },
+    {
+      "id": "F04",
+      "status": "REPRODUCED",
+      "finding": "Original resume suppresses same-operation-id execution despite different run_context, because no context validation",
+      "limits": "Synthetic malicious/mismatched record, original function only"
+    }
+  ],
+  "source_grounded_other_findings": [
+    {
+      "id": "F01",
+      "observation": "All joint pair loop precedes one normal conditional; Lane D called only after stream return",
+      "status": "DIRECT_PACKET_CODE"
+    },
+    {
+      "id": "F07",
+      "observation": "Lane D executes and replays native I03 itself; not merely reading JSONL",
+      "status": "DIRECT_PACKET_CODE"
+    },
+    {
+      "id": "F08",
+      "observation": "Original runner reopens huge materialized C11 on restart; progress.jsonl w mode",
+      "status": "DIRECT_PACKET_CODE"
+    }
+  ],
+  "historical_original_evidence": {
+    "status": "ATTRIBUTED_ACCEPTED_SOURCE_REVIEW_AND_PARTIAL_NATIVE_RETURNS",
+    "source": "PYAT_SRC04_BROWSER_HQ_REPORT_20261028.md",
+    "operations": 208,
+    "unary": 177,
+    "joint": 31,
+    "original_consumer_completed": false,
+    "warning": "SRC04 producer execution after last accepted carrier has separate engineering acceptance checks, current packet test targets older 175-field source"
+  },
+  "design_deliverables": [
+    "DESIGN/P05_S0_SRC04_CONSUMER_RESUME_FORENSIC_AUDIT_R1.md",
+    "DESIGN/P05_S1_CONSUMER_FIRST_EXACT_RESUME_CONTRACT_R1.md",
+    "DESIGN/P05_S2_48_CASE_DIFFERENTIAL_ACCEPTANCE.json",
+    "DESIGN/P05_HIGH_RESOLUTION_RETURN_LEDGER.json",
+    "CODEX_BUILD_ORDERS/P05_B00_B07_NATIVE_CONSUMER_FIRST_R1.md"
+  ],
+  "codex_tickets": 8,
+  "acceptance_cases": 48,
+  "high_resolution_items": 38,
+  "all_high_resolution_items_status": "OPEN_REQUIRES_CODE_AND_INDEPENDENT_TEST",
+  "unlaunched_code": true,
+  "new_original_source_run": false,
+  "new_original_consumer_run": false,
+  "real_runtime_replay_parity": false,
+  "host_benchmarked": false,
+  "independent_review": false,
+  "grants_from_this_work": "NONE",
+  "scientific_authority_from_this_work": "NONE",
+  "next": "Codex qualified actual author B00–B01 then B02 restart journal/B03 full record/B04 consumer-first/B05 genuine Lane D; Browser HQ directly next P06 Authority-37, unless user reprioritizes."
+}
