@@ -1,0 +1,71 @@
+{
+  "schema": "PYAT_SRC04_ITERATOR_REPAIR_REPORT@1.0.0",
+  "source_id": "SRC04",
+  "status": "ITERATOR_REPAIR_COMPLETE_AWAITING_FULL_SOURCE_GRANT",
+  "defect": {
+    "observed": "apply_observed_domain looped target slots over one shared cells iterator; first field consumed it and second was silently skipped.",
+    "reproduction": {
+      "tuple": "q715:2,q716:2",
+      "iterator_before": "q715:2 only",
+      "iterator_after": "q715:2,q716:2"
+    }
+  },
+  "repair": {
+    "file": "campaign_src04_completion/bindings/numeric_domain_binding.py",
+    "sha256": "680346a23bd044b6332fdc661920d4457493f33981356066d54149578ccd48cd",
+    "approach": "single pass over cells, exact (variable_ordinal, variable_name) routing to prepared target slots; no materialization",
+    "preserved": [
+      "exact literal raw numeric tokens",
+      "physical missing-state/declaration",
+      "source/config/transport identity checks",
+      "country-specific currency provenance",
+      "13 prior field repairs"
+    ]
+  },
+  "regression": {
+    "file": "campaign_src04_completion/bindings/test_numeric_domain_binding.py",
+    "sha256": "7af9ffce0a2c3795aa7475bbc3777e79c5ad5b249fb68156c1e105daf59b99d1",
+    "test": "test_single_pass_iterator_covers_both_income_fields",
+    "native_fixture": "test_nonrespondent_numeric_domain_fixture_native_validation uses generator-backed ExactPhysicalCellStream",
+    "tests_result": "16 passed"
+  },
+  "nonrespondent_native_fixture": {
+    "fixture_sha256": "46520d165077cb8a032eb49783df1bd19317900aae75eb38aa3ee82b6bbccd3b",
+    "fixture_config_canonical_sha256": "6eed6a74ba655e91ea28927db472d0f860bc61ab69945aafba97d52faf5945f9",
+    "runtime_config_canonical_sha256": "4762a1d8373d139e5afab7ca7be0a8cd1f34b2e1443c2161950dccafc15b9343",
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_FIXTURE_RELEASE/SRC04",
+      "content_hash": "7a4ff9034fb92602f9ee75be65fe660b32796648357ba6a193d65a51e84ec79c"
+    },
+    "response_events": 6,
+    "coordinate_facts": 3,
+    "states": [
+      "SUBSTANTIVE_RESPONSE",
+      "SUBSTANTIVE_RESPONSE",
+      "REFUSAL",
+      "SUBSTANTIVE_RESPONSE",
+      "DK",
+      "SUBSTANTIVE_RESPONSE"
+    ],
+    "note": "Fixture-only; not original-source qualification"
+  },
+  "original_source_io": {
+    "status": "NONE",
+    "full_grant": "PENDING",
+    "sav_stat_hash_open_decode": false
+  },
+  "prior_returns_preserved": {
+    "RETURN.json": "e73f635edcc4b8e705028e7dc6bfdab23598ce78038ded700874cf0eba18c9e0",
+    "RETURN_V2.json": "499ae3add886c05d74a362f2c4b62ac450c421031dda9758d631c2b1fd822a37",
+    "NUMERIC_DOMAIN_REPORT.json": "3afd6928665ca87fb646c31441654e643520a9d4a56760558e0da14ac0b15de9"
+  },
+  "commands": [
+    "PYTHONPATH=. python3 -m pytest campaign_src04_completion/bindings/test_numeric_domain_binding.py campaign_src04_completion/bindings/test_source_config_repair.py -q -o addopts=''"
+  ],
+  "config": {
+    "v2_path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json",
+    "v2_canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
+    "v2_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5"
+  }
+}
