@@ -140,35 +140,57 @@ def execute_native_workload_stream(
     refused = 0
     total = 0
     completed: set[str] = set()
-    prior_receipts: dict[str, Mapping[str, Any]] = {}
+    prior_base_record: Mapping[str, Any] | None = None
+    prior_condition_record: Mapping[str, Any] | None = None
     if resume and receipt_path.exists():
         with receipt_path.open("r", encoding="utf-8") as prior_handle:
             for line in prior_handle:
                 line = line.strip()
                 if not line:
                     continue
-                record = __import__("json").loads(line)
+                try:
+                    record = __import__("json").loads(line)
+                except ValueError:
+                    # A process kill can leave only the final receipt line
+                    # incomplete.  Prior complete lines remain the checkpoint.
+                    break
                 operation_id = str(record.get("operation_id") or "")
                 if not operation_id:
                     continue
-                prior_receipts[operation_id] = record
                 completed.add(operation_id)
-        for record in prior_receipts.values():
-            total += 1
-            status = str(record.get("status") or "")
-            counts[status] = counts.get(status, 0) + 1
-            family = str(record.get("family") or "")
-            family_counts[family] = family_counts.get(family, 0) + 1
-            if status == "EXECUTED":
-                executed += 1
-                fact_state = str(record.get("fact_state") or "")
-                states[fact_state] = states.get(fact_state, 0) + 1
-                denominator = record.get("raw_denominator")
-                if isinstance(denominator, int):
-                    denominators.append(denominator)
-                cells_total += len(record.get("cells") or ())
-            elif status == "REFUSED":
-                refused += 1
+                total += 1
+                status = str(record.get("status") or "")
+                counts[status] = counts.get(status, 0) + 1
+                family = str(record.get("family") or "")
+                family_counts[family] = family_counts.get(family, 0) + 1
+                if status == "EXECUTED":
+                    executed += 1
+                    fact_state = str(record.get("fact_state") or "")
+                    states[fact_state] = states.get(fact_state, 0) + 1
+                    denominator = record.get("raw_denominator")
+                    if isinstance(denominator, int):
+                        denominators.append(denominator)
+                    cells_total += len(record.get("cells") or ())
+                    if prior_base_record is None and family == "UNARY_OBSERVED_DISTRIBUTION" \
+                            and fact_state == "SUPPORTED":
+                        prior_base_record = {
+                            key: record.get(key) for key in (
+                                "operation_id", "target_refs", "fact_ref", "fact_state",
+                                "raw_denominator", "raw_numerator", "observed_ledger")
+                        }
+                        prior_base_record["cells"] = []
+                    if prior_condition_record is None and family == "BIDIRECTIONAL_CONDITIONAL_DISTRIBUTION" \
+                            and fact_state == "SUPPORTED":
+                        prior_condition_record = {
+                            key: record.get(key) for key in (
+                                "operation_id", "target_refs", "condition_ref", "condition_state",
+                                "condition_kind", "condition_value_ref", "condition_counts",
+                                "fact_ref", "fact_state", "raw_denominator", "raw_numerator",
+                                "observed_ledger")
+                        }
+                        prior_condition_record["cells"] = []
+                elif status == "REFUSED":
+                    refused += 1
         receipt_handle = receipt_path.open("a", encoding="utf-8")
     else:
         receipt_handle = receipt_path.open("w", encoding="utf-8")
@@ -315,16 +337,11 @@ def execute_native_workload_stream(
     # the durable receipt; reconstruct only their exact QuerySpec/Predicate
     # objects (without re-executing them) so the accepted Lane D consumer still
     # receives the original producer shape.
-    if base is None:
-        for record in prior_receipts.values():
-            if record.get("family") != "UNARY_OBSERVED_DISTRIBUTION" \
-                    or record.get("status") != "EXECUTED" \
-                    or record.get("fact_state") != "SUPPORTED":
-                continue
-            target_ref = exact_ref(record["target_refs"][0], "target_refs[0]")
-            view = next((item for item in selected if item.target_ref == target_ref), None)
-            if view is None:
-                continue
+    if base is None and prior_base_record is not None:
+        record = prior_base_record
+        target_ref = exact_ref(record["target_refs"][0], "target_refs[0]")
+        view = next((item for item in selected if item.target_ref == target_ref), None)
+        if view is not None:
             base = NativeOperation(
                 operation_id=str(record["operation_id"]),
                 family="UNARY_OBSERVED_DISTRIBUTION",
@@ -346,19 +363,13 @@ def execute_native_workload_stream(
                 contract=contract, views=(view,), predicate=shared_predicate,
                 risk_set_type=OBSERVED_RESPONSE_RISK_SET,
                 tag=f"unary:{base.operation_id}")
-            break
-    if condition_op is None and include_consumer_conditional:
-        for record in prior_receipts.values():
-            if record.get("family") != "BIDIRECTIONAL_CONDITIONAL_DISTRIBUTION" \
-                    or record.get("status") != "EXECUTED" \
-                    or record.get("fact_state") != "SUPPORTED":
-                continue
-            target_ref = exact_ref(record["target_refs"][0], "target_refs[0]")
-            condition_ref = exact_ref(record["condition_ref"], "condition_ref")
-            target = next((item for item in selected if item.target_ref == target_ref), None)
-            condition_target = next((item for item in selected if item.target_ref == condition_ref), None)
-            if target is None or condition_target is None:
-                continue
+    if condition_op is None and include_consumer_conditional and prior_condition_record is not None:
+        record = prior_condition_record
+        target_ref = exact_ref(record["target_refs"][0], "target_refs[0]")
+        condition_ref = exact_ref(record["condition_ref"], "condition_ref")
+        target = next((item for item in selected if item.target_ref == target_ref), None)
+        condition_target = next((item for item in selected if item.target_ref == condition_ref), None)
+        if target is not None and condition_target is not None:
             wanted_value_ref = record.get("condition_value_ref")
             wanted_state = record.get("condition_state")
             condition = None
@@ -372,38 +383,36 @@ def execute_native_workload_stream(
                 elif wanted_state is not None and candidate.get("state") == wanted_state:
                     condition = candidate
                     break
-            if condition is None:
-                continue
-            member_refs, condition_counts = _condition_members(
-                release, condition_target, condition, contract, target.target_ref)
-            operation = NativeOperation(
-                operation_id=str(record["operation_id"]),
-                family="BIDIRECTIONAL_CONDITIONAL_DISTRIBUTION",
-                target_refs=(target.target_ref,),
-                condition_ref=condition_target.target_ref,
-                condition_state=condition.get("state"),
-                condition_kind=condition.get("kind"),
-                condition_value_ref=condition.get("value_ref"),
-                condition_counts=condition_counts,
-                status="EXECUTED",
-                fact_ref=exact_ref(record["fact_ref"], "fact_ref"),
-                fact_state="SUPPORTED",
-                raw_denominator=record.get("raw_denominator"),
-                raw_numerator=record.get("raw_numerator"),
-                cells=list(record.get("cells") or ()),
-                observed_ledger=record.get("observed_ledger"),
-            )
-            operation.predicate = _make_predicate(
-                contract, release,
-                _condition_predicate_ast(contract, condition_target, condition, member_refs, target.target_ref),
-                tag=f"conditional:{operation.operation_id}")
-            operation.query = _make_query(
-                contract=contract, views=(target,), predicate=operation.predicate,
-                risk_set_type=OBSERVED_RESPONSE_RISK_SET,
-                tag=f"conditional:{operation.operation_id}",
-                condition_counts=condition_counts)
-            condition_op = operation
-            break
+            if condition is not None:
+                member_refs, condition_counts = _condition_members(
+                    release, condition_target, condition, contract, target.target_ref)
+                operation = NativeOperation(
+                    operation_id=str(record["operation_id"]),
+                    family="BIDIRECTIONAL_CONDITIONAL_DISTRIBUTION",
+                    target_refs=(target.target_ref,),
+                    condition_ref=condition_target.target_ref,
+                    condition_state=condition.get("state"),
+                    condition_kind=condition.get("kind"),
+                    condition_value_ref=condition.get("value_ref"),
+                    condition_counts=condition_counts,
+                    status="EXECUTED",
+                    fact_ref=exact_ref(record["fact_ref"], "fact_ref"),
+                    fact_state="SUPPORTED",
+                    raw_denominator=record.get("raw_denominator"),
+                    raw_numerator=record.get("raw_numerator"),
+                    cells=list(record.get("cells") or ()),
+                    observed_ledger=record.get("observed_ledger"),
+                )
+                operation.predicate = _make_predicate(
+                    contract, release,
+                    _condition_predicate_ast(contract, condition_target, condition, member_refs, target.target_ref),
+                    tag=f"conditional:{operation.operation_id}")
+                operation.query = _make_query(
+                    contract=contract, views=(target,), predicate=operation.predicate,
+                    risk_set_type=OBSERVED_RESPONSE_RISK_SET,
+                    tag=f"conditional:{operation.operation_id}",
+                    condition_counts=condition_counts)
+                condition_op = operation
     receipt_handle.close()
     import hashlib
     receipt_sha = hashlib.sha256(receipt_path.read_bytes()).hexdigest()
