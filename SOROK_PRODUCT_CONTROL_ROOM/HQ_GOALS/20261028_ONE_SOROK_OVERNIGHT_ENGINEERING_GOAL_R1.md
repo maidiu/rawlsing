@@ -1,3 +1,5 @@
+> Operating/scheduling defaults superseded by [20261028_SOROK_NIGHT_SHIFT_R2_EXECUTION_FIRST.md](20261028_SOROK_NIGHT_SHIFT_R2_EXECUTION_FIRST.md), source SHA256 `d7a968abc0a768512ed190789fe9a809b616826b53560a6ee7ee0a86cdceda5a`. Preserve R1 evidence and original authority constraints.
+
 # SOROK HQ — ONE-NIGHT BOUNDED SOURCEFREE-TO-PERSON ENGINEERING GOAL R1
 
 Status: user-requested overnight objective, NOT an automatically running worker, scientific grant, source-owner approval, product release or permanent controller activation. The user may deliver this entire goal to the existing authenticated Sorok Codex HQ. It is ONE mission with multiple substantive milestones, not three more micro-commissions. No automatic launch is claimed by the existence of this file.
