@@ -324,7 +324,11 @@ class C12Store:
         parent = self.branch(parent_branch_id)
         if self._branch(new_branch_id) is not None:
             raise StoreRefusal("BRANCH_EXISTS")
-        fork_clock = self.last_clock(parent_branch_id)
+        latest_perception = self.db.execute(
+            "SELECT coalesce(max(clock),0) FROM perception WHERE branch_id=?",
+            (parent_branch_id,),
+        ).fetchone()[0]
+        fork_clock = max(self.last_clock(parent_branch_id), int(latest_perception))
         self.db.execute(
             "INSERT INTO branch VALUES (?,?,?,?,?,?,?)",
             (new_branch_id, parent_branch_id, int(fork_clock), "", canonical({}),
