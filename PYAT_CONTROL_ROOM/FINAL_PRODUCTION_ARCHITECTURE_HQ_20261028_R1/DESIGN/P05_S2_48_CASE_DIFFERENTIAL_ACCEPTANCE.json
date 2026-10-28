@@ -1,0 +1,401 @@
+{
+  "schema": "PYAT_P05_S2_DIFFERENTIAL_ACCEPTANCE@1.0.0",
+  "as_of": "2026-10-28",
+  "scope": "SRC04 current packet source-free design; actual original run permission not implied",
+  "control_sha": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "packet_sha256": "94661c14548947bd1c540482841c7c81c7dfc4861b5907f18b91a9e34cd24a5b",
+  "run_context": "selected current source+native query+source grant; no version mixing",
+  "tests": [
+    {
+      "id": "P05-T01",
+      "owner_ticket": "B00",
+      "case": "Pin PRE-MAIN vs SRC04 author/ref and exact source/consumer module versions",
+      "expected": "No version-blended integration",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T02",
+      "owner_ticket": "B00",
+      "case": "177 actual response vs 175 older fixture and held q217",
+      "expected": "Choose only actually accepted source projection; no held field promotion",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T03",
+      "owner_ticket": "B01",
+      "case": "Old supported unary native complete receipt",
+      "expected": "Full NativeOperation.receipt including cells/fact/query/observed ledger",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T04",
+      "owner_ticket": "B01",
+      "case": "Old distinct supported conditional under qualified contract",
+      "expected": "Genuine I03 conditional, not inferred solely from joint pair",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T05",
+      "owner_ticket": "B01",
+      "case": "Old supported Lane D fixture actual Product + replay",
+      "expected": "Complete exact downstream product and provenance",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T06",
+      "owner_ticket": "B02",
+      "case": "Resume same exact run with all completed operations",
+      "expected": "No duplicate I03, output/event receipt parity",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T07",
+      "owner_ticket": "B03",
+      "case": "Existing full two-cell unary survives resume",
+      "expected": "Restored two original cells unchanged; currently PROVED FAILURE in adapter-only test",
+      "proof_state": "ORIGINAL_ADAPTER_FAULT_PROVED_UNDER_SOURCEFREE_STUBS__REPAIR_NOT_TESTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T08",
+      "owner_ticket": "B03",
+      "case": "Existing full two-cell conditional survives resume",
+      "expected": "Restored two original cells unchanged; currently PROVED FAILURE in adapter-only test",
+      "proof_state": "ORIGINAL_ADAPTER_FAULT_PROVED_UNDER_SOURCEFREE_STUBS__REPAIR_NOT_TESTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T09",
+      "owner_ticket": "B03",
+      "case": "Restored observed_ledger and condition_counts",
+      "expected": "Complete original fields byte/semantic equal",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T10",
+      "owner_ticket": "B02",
+      "case": "Torn final JSONL line then resume",
+      "expected": "Truncate/quarantine before append at last authenticated offset; currently PROVED FAILURE",
+      "proof_state": "ORIGINAL_ADAPTER_FAULT_PROVED_UNDER_SOURCEFREE_STUBS__REPAIR_NOT_TESTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T11",
+      "owner_ticket": "B02",
+      "case": "Malformed interior JSONL line",
+      "expected": "Fail closed, never skip ahead or accept later unreviewed receipts",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T12",
+      "owner_ticket": "B02",
+      "case": "Duplicate operation ID identical exact receipt",
+      "expected": "One completed unit and deterministic idempotent no double count",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T13",
+      "owner_ticket": "B02",
+      "case": "Duplicate operation ID conflicting fact/authority",
+      "expected": "Fail closed and preserve prior snapshot",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T14",
+      "owner_ticket": "B02",
+      "case": "Cross-source or cross-grant same operation ID",
+      "expected": "Refuse reuse; currently PROVED FAILURE",
+      "proof_state": "ORIGINAL_ADAPTER_FAULT_PROVED_UNDER_SOURCEFREE_STUBS__REPAIR_NOT_TESTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T15",
+      "owner_ticket": "B02",
+      "case": "Same run but changed code/runtime catalog/version",
+      "expected": "New run identity or hold, no cached scientific authority",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T16",
+      "owner_ticket": "B02",
+      "case": "REFUSED temporary failure under resume",
+      "expected": "Explicit owner-approved retry attempt; currently PROVED blanket no retry",
+      "proof_state": "ORIGINAL_ADAPTER_FAULT_PROVED_UNDER_SOURCEFREE_STUBS__REPAIR_NOT_TESTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T17",
+      "owner_ticket": "B02",
+      "case": "Permanent scientific refusal under resume",
+      "expected": "Remain refusal, not automatically rerun/promoted",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T18",
+      "owner_ticket": "B02",
+      "case": "Negative I03 result completed evaluation but unsupported Fact",
+      "expected": "No false supported consumer eligibility",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T19",
+      "owner_ticket": "B02",
+      "case": "Interrupted attempt without durable trailing newline",
+      "expected": "Only complete commit admitted; no receipt/fact ghost",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T20",
+      "owner_ticket": "B02",
+      "case": "Untrusted self-hashed receipt with fabricated source root",
+      "expected": "Never infer qualified source/semantic permission",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T21",
+      "owner_ticket": "B02",
+      "case": "Forged query_ref or predicate_ref in old receipt",
+      "expected": "Hard mismatch refusal or exact source reissue",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T22",
+      "owner_ticket": "B02",
+      "case": "Invalid denominator, cells, observed ledger, missing-zero",
+      "expected": "Reject or independently reissue; no fake count repair",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T23",
+      "owner_ticket": "B04",
+      "case": "After supported unary and conditional, no joints completed",
+      "expected": "Consumer readiness becomes true without all-pairs",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T24",
+      "owner_ticket": "B04",
+      "case": "Conditional cannot be supported under source scope",
+      "expected": "Honest HOLD/negative; no invented condition or forced positive",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T25",
+      "owner_ticket": "B04",
+      "case": "First candidate conditional refused, later valid alternative",
+      "expected": "Deterministic qualified selection and provenance of refused attempts",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T26",
+      "owner_ticket": "B04",
+      "case": "Selected pair identities unchanged by schedule reorder",
+      "expected": "Query/predicate/fact/replay/native receipt equal old builder",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T27",
+      "owner_ticket": "B04",
+      "case": "Interrupted after base, before condition",
+      "expected": "Resume only permitted missing condition; preserve base exact",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T28",
+      "owner_ticket": "B04",
+      "case": "Interrupted after microflight checkpoint, before Lane D",
+      "expected": "Cold resume Lane D from exact verified base/condition",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T29",
+      "owner_ticket": "B05",
+      "case": "Lane D module missing",
+      "expected": "D_CONSUMER_DEPENDENCY_NOT_JOINED, no success fabrication",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T30",
+      "owner_ticket": "B05",
+      "case": "Lane D reexecutes native query and replay",
+      "expected": "Exact fact/ref and full product accepted under owner authority",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T31",
+      "owner_ticket": "B05",
+      "case": "Lane D original source permission denied",
+      "expected": "Refuse; fixture prior evidence cannot promote",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T32",
+      "owner_ticket": "B05",
+      "case": "Lane D condition/query/predicate reconstructed mismatched",
+      "expected": "Fail closed rather than produce near-equivalent receipt",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T33",
+      "owner_ticket": "B05",
+      "case": "Lane D claim ceiling fixture vs actual",
+      "expected": "Exact SUPPORTED_COMPONENT_ONLY / SOURCE_LOCAL_STATISTIC limits preserved",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T34",
+      "owner_ticket": "B05",
+      "case": "Lane D altered native source values while preserving identity string",
+      "expected": "Actual source-integrity validation/refusal; no self-claimed digest",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T35",
+      "owner_ticket": "B06",
+      "case": "Broad J2 catalogue runs after consumer",
+      "expected": "Each authorized operation exact, no completion promotion",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T36",
+      "owner_ticket": "B06",
+      "case": "Whole workload restart at 31 completed pair receipts",
+      "expected": "No reissue completed units, no missing/duplicate facts",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T37",
+      "owner_ticket": "B06",
+      "case": "Persistent progress journal resumes not overwritten",
+      "expected": "Prior trusted operational progress recoverable",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T38",
+      "owner_ticket": "B06",
+      "case": "P01 lazy C11 view eventually becomes available",
+      "expected": "No old materialized whole release on hot path only after separate parity",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T39",
+      "owner_ticket": "B06",
+      "case": "P03 grouped/P04 provenance candidate integration",
+      "expected": "Native Fact/replay/negative parity, no inference from speed",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T40",
+      "owner_ticket": "B07",
+      "case": "Independent hostile review of torn tail, provenance and ref collisions",
+      "expected": "Counterexamples actually executed, not self-accepted",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T41",
+      "owner_ticket": "B07",
+      "case": "Actual original-source consumer complete product and value sensitivity",
+      "expected": "Under current source/FF/consumer grants with exact SHA evidence",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T42",
+      "owner_ticket": "B07",
+      "case": "Mac 16GiB full cold/warm crash/RSS/scratch/throughput",
+      "expected": "Actual measured, no estimated 20–43h reused as improvement",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T43",
+      "owner_ticket": "B07",
+      "case": "All35 and learned/FF/N11 receiving status",
+      "expected": "Separate qualification, no SRC04 result promotion",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T44",
+      "owner_ticket": "B07",
+      "case": "Held q217/3 older fields and 177 actual responses",
+      "expected": "No synthetic neutral defaults or residual zero",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T45",
+      "owner_ticket": "B07",
+      "case": "SOURCE_INDEXED vs COMPOSITE, weighted and routing unknown",
+      "expected": "No unauthorized reuse/population/weighted inference",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T46",
+      "owner_ticket": "B07",
+      "case": "A second consumer uses complete restored cells",
+      "expected": "No consumer-specific receipt projection loss",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T47",
+      "owner_ticket": "B05",
+      "case": "Zero-inclusive complete-cell projection retained by consumer",
+      "expected": "All zeros, exact numerator/denominator/member refs",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    },
+    {
+      "id": "P05-T48",
+      "owner_ticket": "B07",
+      "case": "Causal-severance: remove an authorized producer edge",
+      "expected": "Genuine consumer fails exact dependency, not fallback dummy values",
+      "proof_state": "REQUIRED_NOT_EXECUTED",
+      "oracle": "independent old native query+full receipt+consumer when applicable; exact SHA, negative/restore and current grant"
+    }
+  ],
+  "test_count": 48,
+  "notes": [
+    "Test IDs 07/08 collapse to one sourcefree cells-loss test; 10/torn tail, 14/context, 16/blanket-refusal skip separately proved by probe.",
+    "No test of new production P05 implementation has run.",
+    "T41 actual data/consumer requires separately qualified Mac/source owner and original-source permissions.",
+    "T43 all35 qualification is distinct from P05 SRC04 local acceptance."
+  ]
+}
