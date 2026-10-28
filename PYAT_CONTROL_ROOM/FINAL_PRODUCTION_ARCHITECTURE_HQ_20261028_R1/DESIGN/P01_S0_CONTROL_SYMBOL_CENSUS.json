@@ -1,0 +1,681 @@
+{
+  "schema": "PYAT_P01_CONTROL_SYMBOL_CENSUS@1.0.0",
+  "inspected_repo": "maidiu/rawlsing",
+  "inspected_control_ref": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "scope": "15 explicitly selected current core and adjacent C11 consumer Python files; NOT exhaustive whole-repo or all private worker branches",
+  "method": "full GitHub fetch at exact control commit; line-numbered text search on core API symbols, not AST semantic proof",
+  "files": [
+    {
+      "path": "rawlsing_next/pre553_c11_repository.py",
+      "blob_sha": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+      "lines": 119,
+      "status": "FETCHED_EXACT",
+      "hit_count": 18,
+      "positive_hits": [
+        {
+          "line": 19,
+          "source": "class C11LogicalRelease:"
+        },
+        {
+          "line": 39,
+          "source": "raise C11AtomicityError(\"C11LogicalRelease may be created only by complete I02 validation\")"
+        },
+        {
+          "line": 49,
+          "source": "return ExactRef(\"C11LogicalRelease\", self.release_id, self.semantic_release_hash)"
+        },
+        {
+          "line": 52,
+          "source": "class C11Repository:"
+        },
+        {
+          "line": 55,
+          "source": "def __init__(self, releases: Iterable[C11LogicalRelease] = ()) -> None:"
+        },
+        {
+          "line": 56,
+          "source": "self._by_ref: dict[str, C11LogicalRelease] = {}"
+        },
+        {
+          "line": 60,
+          "source": "self._commit_validated(release)"
+        },
+        {
+          "line": 73,
+          "source": "def resolve_release_exact(self, ref: ExactRef) -> C11LogicalRelease:"
+        },
+        {
+          "line": 74,
+          "source": "if not isinstance(ref, ExactRef) or ref.kind != \"C11LogicalRelease\":"
+        },
+        {
+          "line": 75,
+          "source": "raise KeyError(\"exact C11LogicalRelease ref required\")"
+        },
+        {
+          "line": 81,
+          "source": "def resolve_object_exact(self, ref: ExactRef) -> CanonicalSemanticObject | C11InternalRecord:"
+        },
+        {
+          "line": 89,
+          "source": "def _commit_validated(self, release: C11LogicalRelease) -> None:"
+        },
+        {
+          "line": 91,
+          "source": "if not isinstance(release, C11LogicalRelease) or release._validation_seal is not _C11_VALIDATION_SEAL:"
+        },
+        {
+          "line": 92,
+          "source": "raise C11AtomicityError(\"repository accepts only I02-validated sealed C11LogicalRelease\")"
+        },
+        {
+          "line": 102,
+          "source": "for obj in (*release.public_objects, *release.internal_records, release.replay_manifest):"
+        },
+        {
+          "line": 114,
+          "source": "def _make_validated_release(**kwargs: Any) -> C11LogicalRelease:"
+        },
+        {
+          "line": 115,
+          "source": "return C11LogicalRelease(_validation_seal=_C11_VALIDATION_SEAL, **kwargs)"
+        },
+        {
+          "line": 118,
+          "source": "__all__ = [\"C11LogicalRelease\", \"C11Repository\"]"
+        }
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_c11_ingest.py",
+      "blob_sha": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "lines": 836,
+      "status": "FETCHED_EXACT",
+      "hit_count": 12,
+      "positive_hits": [
+        {
+          "line": 57,
+          "source": "C11LogicalRelease, C11Repository, _make_validated_release,"
+        },
+        {
+          "line": 380,
+          "source": "def build_candidate_replay_manifest("
+        },
+        {
+          "line": 708,
+          "source": "if tuple(manifest.closure_refs) != _all_nonmanifest_refs(candidate):"
+        },
+        {
+          "line": 743,
+          "source": "def validate_c11_source_release(candidate: C11SourceReleaseCandidate) -> C11LogicalRelease:"
+        },
+        {
+          "line": 779,
+          "source": "return _make_validated_release("
+        },
+        {
+          "line": 793,
+          "source": "repository: C11Repository,"
+        },
+        {
+          "line": 796,
+          "source": "if not isinstance(repository, C11Repository):"
+        },
+        {
+          "line": 797,
+          "source": "raise TypeError(\"repository must be C11Repository\")"
+        },
+        {
+          "line": 800,
+          "source": "release = validate_c11_source_release(candidate)"
+        },
+        {
+          "line": 801,
+          "source": "repository._commit_validated(release)"
+        },
+        {
+          "line": 807,
+          "source": "replay_manifest_ref=release.replay_manifest.ref,"
+        },
+        {
+          "line": 834,
+          "source": "\"build_candidate_replay_manifest\", \"validate_c11_source_release\", \"ingest_c11_source_release\","
+        }
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_c11_integrity.py",
+      "blob_sha": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+      "lines": 565,
+      "status": "FETCHED_EXACT",
+      "hit_count": 1,
+      "positive_hits": [
+        {
+          "line": 329,
+          "source": "for ref in self.closure_refs:"
+        }
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "blob_sha": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "lines": 674,
+      "status": "FETCHED_EXACT",
+      "hit_count": 6,
+      "positive_hits": [
+        {
+          "line": 17,
+          "source": "build_candidate_replay_manifest, validate_c11_source_release,"
+        },
+        {
+          "line": 22,
+          "source": "from rawlsing_next.pre553_c11_repository import C11LogicalRelease, C11Repository"
+        },
+        {
+          "line": 571,
+          "source": "replay = build_candidate_replay_manifest(candidate, replay_protocol_authority_ref=projection.replay_authority_ref,"
+        },
+        {
+          "line": 603,
+          "source": "return validate_c11_source_release(candidate)"
+        },
+        {
+          "line": 626,
+          "source": "if not isinstance(release, C11LogicalRelease) or release.source_artifact_ref.content_hash != key.source_sha256:"
+        },
+        {
+          "line": 653,
+          "source": "return C11Repository((release,)), release"
+        }
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "blob_sha": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "lines": 575,
+      "status": "FETCHED_EXACT",
+      "hit_count": 12,
+      "positive_hits": [
+        {
+          "line": 13,
+          "source": "C11LogicalRelease,"
+        },
+        {
+          "line": 14,
+          "source": "C11Repository,"
+        },
+        {
+          "line": 42,
+          "source": "_build_release_index,"
+        },
+        {
+          "line": 56,
+          "source": "def _resolve_release_exact(repository: C11Repository, ref: ExactRef) -> C11LogicalRelease:"
+        },
+        {
+          "line": 58,
+          "source": "return repository.resolve_release_exact(ref)"
+        },
+        {
+          "line": 66,
+          "source": "repository: C11Repository,"
+        },
+        {
+          "line": 83,
+          "source": "if any(getattr(obj, \"ref\", None) == universe_ref for obj in release.public_objects):"
+        },
+        {
+          "line": 84,
+          "source": "matches.append((release.release_ref, _build_release_index(release, universe_ref)))"
+        },
+        {
+          "line": 375,
+          "source": "repository: C11Repository,"
+        },
+        {
+          "line": 386,
+          "source": "if not isinstance(repository, C11Repository):"
+        },
+        {
+          "line": 387,
+          "source": "raise EmpiricalQueryExecutionError(\"repository must be accepted I02 C11Repository\")"
+        },
+        {
+          "line": 544,
+          "source": "repository: C11Repository,"
+        }
+      ]
+    },
+    {
+      "path": "rawlsing_next/_pre553_query_predicate.py",
+      "blob_sha": "8590bacf464b2c61f319f581820a3af76ed1e60c",
+      "lines": 408,
+      "status": "FETCHED_EXACT",
+      "hit_count": 7,
+      "positive_hits": [
+        {
+          "line": 19,
+          "source": "def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> _ReleaseIndex:"
+        },
+        {
+          "line": 20,
+          "source": "universes = [o for o in release.public_objects if isinstance(o, EmpiricalUniverse) and o.ref == universe_ref]"
+        },
+        {
+          "line": 25,
+          "source": "for record in release.internal_records:"
+        },
+        {
+          "line": 39,
+          "source": "for obj in release.public_objects:"
+        },
+        {
+          "line": 129,
+          "source": "repository: C11Repository | None = None,"
+        },
+        {
+          "line": 197,
+          "source": "\"predicate dialect release realization requires exact C11Repository\")"
+        },
+        {
+          "line": 407,
+          "source": "__all__ = [\"_build_release_index\", \"_eval_predicate\", \"_question_matches\", \"_validate_public_object_authorities\"]"
+        }
+      ]
+    },
+    {
+      "path": "rawlsing_next/_pre553_query_eval.py",
+      "blob_sha": "f808dfcd2008cc71e9203de3cadf1abe14223974",
+      "lines": 727,
+      "status": "FETCHED_EXACT",
+      "hit_count": 3,
+      "positive_hits": [
+        {
+          "line": 357,
+          "source": "used.extend([index.universe, index.release.replay_manifest])"
+        },
+        {
+          "line": 535,
+          "source": "\"release_replay_refs\": [index.release.replay_manifest.ref.as_dict() for index in sorted(indices, key=lambda x: x.release.release_ref.key)],"
+        },
+        {
+          "line": 603,
+          "source": "*(index.release.replay_manifest.ref for index in indices),"
+        }
+      ]
+    },
+    {
+      "path": "rawlsing_next/_pre553_query_common.py",
+      "blob_sha": "938a6b03a63dd34ef4f0f63655ed8f11f65c5d92",
+      "lines": 412,
+      "status": "FETCHED_EXACT",
+      "hit_count": 3,
+      "positive_hits": [
+        {
+          "line": 26,
+          "source": "from rawlsing_next.pre553_c11_repository import C11LogicalRelease, C11Repository"
+        },
+        {
+          "line": 159,
+          "source": "release: C11LogicalRelease"
+        },
+        {
+          "line": 168,
+          "source": "runtime_repository: C11Repository | None = None"
+        }
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_recursive_handoff.py",
+      "blob_sha": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4",
+      "lines": 684,
+      "status": "FETCHED_EXACT",
+      "hit_count": 7,
+      "positive_hits": [
+        {
+          "line": 22,
+          "source": "from rawlsing_next._pre553_query_predicate import _build_release_index, _eval_predicate"
+        },
+        {
+          "line": 24,
+          "source": "from rawlsing_next.pre553_c11_repository import C11Repository"
+        },
+        {
+          "line": 518,
+          "source": "repository: C11Repository,"
+        },
+        {
+          "line": 574,
+          "source": "repository: C11Repository,"
+        },
+        {
+          "line": 593,
+          "source": "release = repository.resolve_release_exact(release_ref)"
+        },
+        {
+          "line": 595,
+          "source": "obj.ref.key for obj in release.public_objects if isinstance(obj, EmpiricalUniverse)"
+        },
+        {
+          "line": 600,
+          "source": "index = _build_release_index(release, universe_ref)"
+        }
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_batch_runner.py",
+      "blob_sha": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "lines": 691,
+      "status": "FETCHED_EXACT",
+      "hit_count": 7,
+      "positive_hits": [
+        {
+          "line": 18,
+          "source": "from rawlsing_next.pre553_c11_repository import C11Repository"
+        },
+        {
+          "line": 120,
+          "source": "if ref.kind != \"C11LogicalRelease\":"
+        },
+        {
+          "line": 121,
+          "source": "raise BatchIntegrityError(\"release_refs must be exact C11LogicalRelease refs\")"
+        },
+        {
+          "line": 397,
+          "source": "repository: C11Repository,"
+        },
+        {
+          "line": 402,
+          "source": "if not isinstance(repository, C11Repository):"
+        },
+        {
+          "line": 403,
+          "source": "raise BatchIntegrityError(\"repository must be accepted I02 C11Repository\")"
+        },
+        {
+          "line": 414,
+          "source": "repository.resolve_release_exact(release_ref)"
+        }
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_source_equivalence.py",
+      "blob_sha": "0e7f9f6d77ef6efe2c66b04f0527bb1ab99f4ef8",
+      "lines": 907,
+      "status": "FETCHED_EXACT",
+      "hit_count": 15,
+      "positive_hits": [
+        {
+          "line": 22,
+          "source": "from rawlsing_next.pre553_c11_repository import C11LogicalRelease"
+        },
+        {
+          "line": 392,
+          "source": "c11_release: C11LogicalRelease"
+        },
+        {
+          "line": 416,
+          "source": "if not isinstance(self.c11_release, C11LogicalRelease):"
+        },
+        {
+          "line": 417,
+          "source": "raise SourceEquivalenceIntegrityError(\"sealed C11LogicalRelease required\")"
+        },
+        {
+          "line": 578,
+          "source": "obj.ref.key for obj in release.public_objects if isinstance(obj, EmpiricalUniverse)"
+        },
+        {
+          "line": 587,
+          "source": "if release.replay_manifest.source_substrate_content_refs != (manifest.source_artifact_ref,):"
+        },
+        {
+          "line": 589,
+          "source": "closure_keys = {ref.key for ref in release.replay_manifest.closure_refs}"
+        },
+        {
+          "line": 594,
+          "source": "obj for obj in release.public_objects if isinstance(obj, AuthoritySnapshot)"
+        },
+        {
+          "line": 602,
+          "source": "if actual_authority_hash != release.replay_manifest.authority_snapshot_set_hash:"
+        },
+        {
+          "line": 613,
+          "source": "if request.replay_evidence.c11_replay_root_hash != release.replay_manifest.content_hash:"
+        },
+        {
+          "line": 617,
+          "source": "!= release.replay_manifest.replay_protocol_authority_ref.authority_content_hash"
+        },
+        {
+          "line": 623,
+          "source": "def _validate_c11_information_closure(release: C11LogicalRelease) -> tuple[str, ...]:"
+        },
+        {
+          "line": 629,
+          "source": "if release.replay_manifest.frontier_version != FRONTIER_VERSION:"
+        },
+        {
+          "line": 631,
+          "source": "if release.replay_manifest.semantic_projection_id != SEMANTIC_PROJECTION_ID:"
+        },
+        {
+          "line": 807,
+          "source": "\"c11_replay_manifest_ref\": request.c11_release.replay_manifest.ref.as_dict(),"
+        }
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_replay_audit.py",
+      "blob_sha": "86e0b9c518633735f2527b89fb72fca1a40dc2cc",
+      "lines": 290,
+      "status": "FETCHED_EXACT",
+      "hit_count": 16,
+      "positive_hits": [
+        {
+          "line": 33,
+          "source": "from rawlsing_next.pre553_c11_repository import C11LogicalRelease, C11Repository"
+        },
+        {
+          "line": 170,
+          "source": "release: C11LogicalRelease,"
+        },
+        {
+          "line": 175,
+          "source": ") -> C11LogicalRelease:"
+        },
+        {
+          "line": 177,
+          "source": "if not isinstance(release, C11LogicalRelease):"
+        },
+        {
+          "line": 178,
+          "source": "_fail(\"expected accepted I02 C11LogicalRelease\")"
+        },
+        {
+          "line": 181,
+          "source": "assert_replay_manifest_integrity(release.replay_manifest, expected_ref=expected_manifest_ref)"
+        },
+        {
+          "line": 184,
+          "source": "actual=release.replay_manifest.source_substrate_content_refs,"
+        },
+        {
+          "line": 187,
+          "source": "for obj in release.public_objects:"
+        },
+        {
+          "line": 193,
+          "source": "*, repository: C11Repository, release_ref: ExactRef"
+        },
+        {
+          "line": 194,
+          "source": ") -> C11LogicalRelease:"
+        },
+        {
+          "line": 195,
+          "source": "if not isinstance(repository, C11Repository):"
+        },
+        {
+          "line": 196,
+          "source": "_fail(\"expected accepted I02 C11Repository\")"
+        },
+        {
+          "line": 198,
+          "source": "release = repository.resolve_release_exact(release_ref)"
+        },
+        {
+          "line": 207,
+          "source": "*, repository: C11Repository, registry: AuthorityRegistry, required_ref: AuthorityRef"
+        },
+        {
+          "line": 209,
+          "source": "if not isinstance(repository, C11Repository):"
+        },
+        {
+          "line": 210,
+          "source": "_fail(\"expected accepted I02 C11Repository\")"
+        }
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_parquet_carrier.py",
+      "blob_sha": "9dad6713a3aae66717d4ab046e802a72c9b2aa90",
+      "lines": 360,
+      "status": "FETCHED_EXACT",
+      "hit_count": 14,
+      "positive_hits": [
+        {
+          "line": 15,
+          "source": "from rawlsing_next.pre553_c11_repository import C11LogicalRelease, _make_validated_release"
+        },
+        {
+          "line": 209,
+          "source": "def release_dir(self, release: C11LogicalRelease) -> Path:"
+        },
+        {
+          "line": 212,
+          "source": "def _relation_objects(self, release: C11LogicalRelease) -> dict[str, list[Any]]:"
+        },
+        {
+          "line": 214,
+          "source": "for obj in release.public_objects:"
+        },
+        {
+          "line": 222,
+          "source": "for obj in release.internal_records:"
+        },
+        {
+          "line": 225,
+          "source": "result[\"replay_manifest\"] = [release.replay_manifest]"
+        },
+        {
+          "line": 228,
+          "source": "def _write_tables(self, directory: Path, release: C11LogicalRelease) -> tuple[dict[str, str], dict[str, str]]:"
+        },
+        {
+          "line": 249,
+          "source": "def persist(self, release: C11LogicalRelease) -> Path:"
+        },
+        {
+          "line": 250,
+          "source": "if not isinstance(release, C11LogicalRelease):"
+        },
+        {
+          "line": 251,
+          "source": "raise ParquetCarrierError(\"only sealed C11LogicalRelease may be persisted\")"
+        },
+        {
+          "line": 279,
+          "source": "def reopen(self, source_sha256: str, release_id: str, semantic_hash: str) -> C11LogicalRelease:"
+        },
+        {
+          "line": 332,
+          "source": "release = _make_validated_release("
+        },
+        {
+          "line": 352,
+          "source": "closure = set(replay.closure_refs) | set(replay.source_substrate_content_refs)"
+        },
+        {
+          "line": 353,
+          "source": "persisted_refs = {obj.ref for obj in (*release.public_objects, *release.internal_records)} | {release.source_artifact_ref}"
+        }
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_source_relations.py",
+      "blob_sha": "5b67e3f98a5faf95a6c82700af2346fef6e306a5",
+      "lines": 1086,
+      "status": "FETCHED_EXACT",
+      "hit_count": 6,
+      "positive_hits": [
+        {
+          "line": 20,
+          "source": "from rawlsing_next.pre553_c11_repository import C11Repository"
+        },
+        {
+          "line": 464,
+          "source": "repository: C11Repository,"
+        },
+        {
+          "line": 468,
+          "source": "if not isinstance(repository, C11Repository):"
+        },
+        {
+          "line": 469,
+          "source": "raise SourceRelationIntegrityError(\"repository must be accepted I02 C11Repository\")"
+        },
+        {
+          "line": 474,
+          "source": "obj = repository.resolve_object_exact(ref)"
+        },
+        {
+          "line": 1054,
+          "source": "repository: C11Repository,"
+        }
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_physical_c11_bridge.py",
+      "blob_sha": "3e3497a6eb730524be33bb3d453f6cc63565052c",
+      "lines": 52,
+      "status": "FETCHED_EXACT",
+      "hit_count": 4,
+      "positive_hits": [
+        {
+          "line": 7,
+          "source": "from rawlsing_next.pre553_c11_ingest import C11SourceReleaseCandidate, validate_c11_source_release"
+        },
+        {
+          "line": 8,
+          "source": "from rawlsing_next.pre553_c11_repository import C11LogicalRelease"
+        },
+        {
+          "line": 28,
+          "source": ") -> C11LogicalRelease:"
+        },
+        {
+          "line": 48,
+          "source": "return validate_c11_source_release(candidate)"
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    "SRC04 author branch files not at same paths on integration ref",
+    "unlisted repo Python or SQL",
+    "other branches, local Mac runtime",
+    "dynamic/reflection call sites",
+    "original source respondent values"
+  ],
+  "claim": "Positive occurrences only; absence in this inventory is not proof no implementation exists.",
+  "totals": {
+    "files": 15,
+    "verified": 15,
+    "positive_hits": 131
+  }
+}
