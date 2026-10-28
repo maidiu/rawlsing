@@ -1,3 +1,8 @@
+# CURRENT COMMAND POINTER — THIS DOCUMENT RETAINS HISTORICAL OWNER REVISIONS
+
+**For the most recent reconciled October 28 GitHub sourcefree read cut, start at [Sorok COMMAND](COMMAND/00_COMMAND.md), [machine product register](COMMAND/02_CAPABILITY_REGISTER.json), [ranked science frontier](COMMAND/01_SCIENTIFIC_DECISION_FRONTIER.md) and [flight cut](COMMAND/04_FLIGHT_AND_CURRENTNESS.md) and [the shared Browser/Codex command update contract](COMMAND/06_HQ_COORDINATION_AND_UPDATE_PROTOCOL.md).** The original rev36 text immediately below and JSON rev35 (October 24) are preserved, not silently restated as current runtime/native status. The new read layer is a proposed branch-local HQ operating view, subject to competent adoption. No original source/scientific/production authority changed.
+
+---
 # Sorok current progress revision36 — two distinct material producer commissions banked, not launched
 
 **Source control cut:** PRE-MAIN parent `80b46884279f1bbf8f2dac9109c64046d73ab570`, Pyat revision89 independent. Human-appointed acting Browser Sorok HQ R3 authoritative receipt `28e4a576abea5933b34bb6933612d8f5175580d3`, reviewer `b9d5d945f3e1d6c2b2c0a271df141efa3217722c`. Current HQ commission owner branch `agent/vozhd-sorok-20261023-fresh-maximal-accession-candidate-r3@865b5b01e1a27e99020cf2bb389af8cd4c874b57`. Sorok36 does not alter that bounded grant or retire historical incumbent.

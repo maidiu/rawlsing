@@ -1,0 +1,25 @@
+LAUNCH — SOROK SYN02-RA — WHOLE-PERSON NEEDS-FIRST AND CONTINGENT INTER-WIRING SCIENTIFIC REVIEW
+
+REPOSITORY: `maidiu/rawlsing` (PRIVATE)
+ROLE: Independent I3 hostile developmental-scientific/whole-person architecture reviewer, NOT the SYN02 A/B/C/D authors, HQ, production editor, original native scientific/source issuer or own reviewer.
+PROPOSED_EDITOR_MODEL_PAIR: Browser / GPT-6 High (recommended, USER must select); USER_SELECTED_EDITOR_MODEL_PAIR: PENDING ACTUAL USER SELECTION.
+SINGLE_AGENT_FULL_DELIVERABLE: YES; NO_AUTONOMOUS_MODEL_OR_HARNESS_SWITCH: YES; POST_RETURN_INDEPENDENT_REVIEW_OWNER: separate synthesis/adjudication, not this reviewer.
+INTELLIGENCE / REASONING: I3/HIGH
+EXECUTION_SURFACE: S0–S1 documentary/private GitHub and directly available selected-page primary books
+HQ_ENVIRONMENT_VERDICT: BROWSER_NATIVE
+BROWSER_SUFFICIENCY: FULL documentary science, no Mac native executable claims
+SETUP_COST: LIGHT if environment really warm, otherwise record qualification gap. PRIMARY_MODEL_ECONOMICS: UNKNOWN; do not assume paid account/quota or auto-switch.
+WHY_NOT_ALTERNATIVE: Browser adequate for I3 theory and broad product architecture; DeepSeek V4.1-Flash MAX possible but not established on all contested primary theory; Codex High not necessary without heavy local tests; user-selected middle remains possible but not automatically chosen.
+PHASE_MODEL_ASSIGNMENT: one whole contested review, no new production build. ACTIVE_WORKER_NO_DISTURBANCE: verify original branch, independent author not active, no duplicate/live worker/worktree and no unrelated Sorok/Pyat intervention.
+REVIEW BRANCH: `agent/sorok-syn02-review-ra-whole-person-plasticity-science-r1`
+EXACT SEALED STARTUP: `1ede5e7e814b22e6e652fb01549d4a10f5dec18c`
+BINDING COMMISSION (MUST READ ENTIRELY): `SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/REVIEW_COURTS/COMMISSIONS/RA/00_COMMISSION.md`
+EXACT IMMUTABLE AUTHOR TARGETS: SYN02-A b47742b02b9ea1b969798f9e9655222a5deaf397 + SYN02-C d99ebb98aa875d79af023f1bfa11f3054ac49684
+READ PRIMARY EVIDENCE: entire pair of 00_RETURN.md files and ALL four substantive 01–04 original authored artifacts of EACH target at exact commits. Treat every claim as a testable hypothesis. Read original 00C/00D/00E, user settled N/N+1 and reviewed SYN01 R2, plus SYN02/02_FOUR_RETURN_EVIDENCE_INTAKE_R1.md and SYN02/03_ARCHITECTURE_CONFLICT_AND_COMPATIBILITY_LEDGER_R1.md at review seal.
+REVIEW MISSION: Challenge the complete A+C proposals and original source passages, especially Luria's interfunctional reorganization versus literal node-edge neuroplasticity; fixed contextual gating, novel composite practical operations, source-qualified sparse relations and distributed coactor/world support. Test empirical identifiability, possibility of coherent stable person, contingent contradiction, no automatic all-to-all Hebbian update, CAN011 only MEDIATOR/TENSION/PRACTICE states, N01–N12 comprehensive life and existing V3/PFF/CAN/ADP. Audit N/N+1 actor-safe memory and post-call SCI05 dependency rejection; recommend a *conditional representation* not original causal learning rules.
+WHY THIS MATTERS TO TERMINAL PRODUCT: C12 actual historically constituted continuing person, C11 separately owned Pyat weld, C9 actual admitted actor reception/durable value read, C8 independent other people and world, C4 histories, C0 real material life, truthful A0–A5. Architecture and adaptation before microtest.
+MANDATORY METHOD: independent ENGINEERING / SCIENCE / AUTHORITY verdicts AGREE_SCOPED / REVISE_PRECISE / HOLD for all substantive claims; explicit source grade and code lines/hashes, actual tests vs NOT_RUN; no private original code fabricated. Causal case including actor need, experience, external support alternative, genuine qualified NO_CHANGE, missing rule and *severed previously formed state→later semantic read*, only executed when lawful/available.
+PERMISSIONS: Read protected source only when actual host access and user account permit; sourcefree selected tests only if qualified. No raw respondent/survey source, no production edit, original science CAN/ADP/SCI05/Pyat issuing, V3 original mutation, native C11/C12 release, paid provider invocation, or user account/editor/model switch.
+EXCLUSIVE WRITE: `SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/REVIEW_COURTS/RETURNS/RA/00_REVIEW.md` and supporting evidence strictly under its reviewer-owned folder; DO NOT change authors' code/docs, common atlas, shared foundation or production.
+RETURN CONTRACT: full source and alternative adjudication, precise corrections, C12-backward input→decision function→typed output→first real consumer, actual source/actor/science owners and engineering next tranche, separate three-court judgments, FINDING→INTERPRETATION→ACTION→OWNER, test receipts, verified exact remote SHA. Source not available = scoped HOLD not fake run. No author self-adoption; SYN02-S integrator waits for both independent reviews.
+Execute the full commission as one investigator. No implementation, no new scientific rule, no merge. Push your exact reviewer branch and verify remote return.

@@ -1,0 +1,11 @@
+# V3 Courts — dependency sequence after all eight independent reviews
+
+**S0/S1 historical and documentary research complete at bounded grain:** all M01–M40 source checked by independent RX01/RX02/RX03/RX04/RX05; N01–N08 theoretical by RS, N09–N11 by RT04, N12 current static by RC. SYN01 R2 source+theory closeout banked; no new issuer laws nor current native C9/C12 person proof.
+
+**S2 original science / real actor-source:** first concrete CAN008 relevance, CAN010/011 historical capacity/formation decision, valid NO_CHANGE and actor epistemic permissions. Coactor independently constituted under C8/ADP019/world/SDTF with actual work, care, power and material intervals. The inability to issue a rule is HOLD, not NO_CHANGE; no point solving this by arbitrary weight or rewriting old Enneagram.
+
+**S3 current semantic consumer:** actual E1 admitted, CAN011 versioned state, later E2 same-person C9/CAN008 reads semantic value and scope, positive/NO_CHANGE and ablation with same world+B; current imported source and exact branch/provenance independently checked. Until that is achieved, C12 whole person native verification held.
+
+**S4 full event/memory recursion:** call N 3–5 conditional events and sequential independent resolution, honest suffix invalidation and actual intervals, N+1 retrospective with actor-access feature filtering and ADP016/017 no-positive-confabulation/false-belief distinction, next prospective half. SCI05 actor internal-act acceptance may occur only **after** full call: dependency invalidation for model proposals conditional on rejected act. Live person and A0–A5 testing only with qualified Pyat/C11/source grants.
+
+Research-only engineering design of transaction/ledger, no narrator-to-psyche hidden writes, fail-closed field/readiness, seed/source replay and actor-safe packager can proceed under lawful sourcefree grants, but design is not production adoption. See [machine sequencer](SEQUENCER/dependencies.json), [final SYN01](15_SYN01_R2_EIGHT_COURT_EVIDENCE_CLOSEOUT_R1.md), [specific owner docket](14_POST_SYN01_RULE_SOURCE_AND_CONSUMER_DOCKET_R1.md).

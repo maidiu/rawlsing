@@ -1,0 +1,2 @@
+# Worker commissions — banked only
+Each commission contains full binding Sorok 00C §9, exact sealed source/base, user-selected editor/model or pending explicit selection, research terrain, review/return. GitHub authoring is not agent launch. No autonomous provider/cost changes; no common central atlas writing by workers.

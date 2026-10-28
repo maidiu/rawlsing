@@ -1,0 +1,395 @@
+{
+  "schema": "SOROK_V3_DEPENDENCY_DAG_R1",
+  "nodes": [
+    {
+      "id": "N01",
+      "label": "Needs, desires, motives and practical objects",
+      "dependencies": [],
+      "kind": "ONTOLOGY_SCIENCE_ARCHITECTURE",
+      "gate": "RESEARCH_PARALLEL_ADOPTION_DEPENDENT",
+      "status": "REVIEWED_SCOPED_REQUIREMENT__EXACT_RULE_HELD",
+      "may_research_in_parallel": true,
+      "owner": "CAN010/ADP",
+      "evidence_to_unlock": "Competent CAN/ADP owner domain-specific evidenced rule and real actor/source input, independent review",
+      "review_sha": "dabbc0b038668e05cd723afc31f8b08411648b0a",
+      "gate_type": "SCIENCE"
+    },
+    {
+      "id": "N02",
+      "label": "Thick, scoped expectations and early care",
+      "dependencies": [
+        "N01",
+        "N06"
+      ],
+      "kind": "ONTOLOGY_SCIENCE_ARCHITECTURE",
+      "gate": "RESEARCH_PARALLEL_ADOPTION_DEPENDENT",
+      "status": "REVIEWED_SCOPED_REQUIREMENT__EXACT_RULE_HELD",
+      "may_research_in_parallel": true,
+      "owner": "CAN011/ADP016",
+      "evidence_to_unlock": "Competent CAN/ADP owner domain-specific evidenced rule and real actor/source input, independent review",
+      "review_sha": "dabbc0b038668e05cd723afc31f8b08411648b0a",
+      "gate_type": "SCIENCE"
+    },
+    {
+      "id": "N03",
+      "label": "Challenge, complication, threat and repair",
+      "dependencies": [
+        "N01",
+        "N02"
+      ],
+      "kind": "ONTOLOGY_SCIENCE_ARCHITECTURE",
+      "gate": "RESEARCH_PARALLEL_ADOPTION_DEPENDENT",
+      "status": "REVIEWED_SCOPED_REQUIREMENT__EXACT_RULE_HELD",
+      "may_research_in_parallel": true,
+      "owner": "CAN008",
+      "evidence_to_unlock": "Competent CAN/ADP owner domain-specific evidenced rule and real actor/source input, independent review",
+      "review_sha": "dabbc0b038668e05cd723afc31f8b08411648b0a",
+      "gate_type": "SCIENCE"
+    },
+    {
+      "id": "N04",
+      "label": "Simultaneous recruitment, tension and regulation",
+      "dependencies": [
+        "N01",
+        "N02"
+      ],
+      "kind": "ONTOLOGY_SCIENCE_ARCHITECTURE",
+      "gate": "RESEARCH_PARALLEL_ADOPTION_DEPENDENT",
+      "status": "REVIEWED_SCOPED_REQUIREMENT__EXACT_RULE_HELD",
+      "may_research_in_parallel": true,
+      "owner": "CAN008/PFF",
+      "evidence_to_unlock": "Competent CAN/ADP owner domain-specific evidenced rule and real actor/source input, independent review",
+      "review_sha": "dabbc0b038668e05cd723afc31f8b08411648b0a",
+      "gate_type": "SCIENCE"
+    },
+    {
+      "id": "N05",
+      "label": "Durable transition, changed relations and contradiction",
+      "dependencies": [
+        "N03",
+        "N04",
+        "N06"
+      ],
+      "kind": "ONTOLOGY_SCIENCE_ARCHITECTURE",
+      "gate": "RESEARCH_PARALLEL_ADOPTION_DEPENDENT",
+      "status": "REVIEWED_SCOPED_REQUIREMENT__EXACT_RULE_HELD",
+      "may_research_in_parallel": true,
+      "owner": "CAN011/ADP015",
+      "evidence_to_unlock": "Competent CAN/ADP owner domain-specific evidenced rule and real actor/source input, independent review",
+      "review_sha": "dabbc0b038668e05cd723afc31f8b08411648b0a",
+      "gate_type": "SCIENCE"
+    },
+    {
+      "id": "N06",
+      "label": "Interstitial activity, life-stages and social reproduction",
+      "dependencies": [],
+      "kind": "ONTOLOGY_SCIENCE_ARCHITECTURE",
+      "gate": "RESEARCH_PARALLEL_ADOPTION_DEPENDENT",
+      "status": "REVIEWED_SCOPED_REQUIREMENT__EXACT_RULE_HELD",
+      "may_research_in_parallel": true,
+      "owner": "SDTF/ADP",
+      "evidence_to_unlock": "Competent CAN/ADP owner domain-specific evidenced rule and real actor/source input, independent review",
+      "review_sha": "dabbc0b038668e05cd723afc31f8b08411648b0a",
+      "gate_type": "SCIENCE"
+    },
+    {
+      "id": "N07",
+      "label": "Independent others, power, care and relational feedback",
+      "dependencies": [
+        "N04",
+        "N05",
+        "N06"
+      ],
+      "kind": "ONTOLOGY_SCIENCE_ARCHITECTURE",
+      "gate": "RESEARCH_PARALLEL_ADOPTION_DEPENDENT",
+      "status": "REVIEWED_SCOPED_REQUIREMENT__EXACT_RULE_HELD",
+      "may_research_in_parallel": true,
+      "owner": "ADP019/C8/C9",
+      "evidence_to_unlock": "Competent CAN/ADP owner domain-specific evidenced rule and real actor/source input, independent review",
+      "review_sha": "dabbc0b038668e05cd723afc31f8b08411648b0a",
+      "gate_type": "SCIENCE"
+    },
+    {
+      "id": "N08",
+      "label": "Differentiated impression, intensity, salience and no-change",
+      "dependencies": [
+        "N03",
+        "N04",
+        "N07"
+      ],
+      "kind": "ONTOLOGY_SCIENCE_ARCHITECTURE",
+      "gate": "RESEARCH_PARALLEL_ADOPTION_DEPENDENT",
+      "status": "REVIEWED_SCOPED_REQUIREMENT__EXACT_RULE_HELD",
+      "may_research_in_parallel": true,
+      "owner": "CAN008/CAN011",
+      "evidence_to_unlock": "Competent CAN/ADP owner domain-specific evidenced rule and real actor/source input, independent review",
+      "review_sha": "dabbc0b038668e05cd723afc31f8b08411648b0a",
+      "gate_type": "SCIENCE"
+    },
+    {
+      "id": "N09",
+      "label": "Actor's fallible autobiographical memory and meaning",
+      "dependencies": [
+        "N08"
+      ],
+      "kind": "ONTOLOGY_SCIENCE_ARCHITECTURE",
+      "gate": "RESEARCH_PARALLEL_ADOPTION_DEPENDENT",
+      "status": "RT04_DOCUMENTARY_SCIENCE_REVIEW_SCOPED__CONCRETE_NATIVE_RULE_HELD",
+      "may_research_in_parallel": true,
+      "owner": "ADP016/017/V2",
+      "evidence_to_unlock": "Original competent CAN/ADP/SCI05 domain Rule A/T plus actor-safe ADP016/017 source and exact native C9/C12 semantic consumer, or lawful owner-qualified NO_CHANGE; executed false-event/no-source and batch-fault counterfactual",
+      "review_sha": "e298e830ef9cde6ba985267eae1edcd050ad0e50",
+      "gate_type": "SCIENCE_SOURCE_AUTHORITY_AND_NATIVE_ENGINEERING"
+    },
+    {
+      "id": "N10",
+      "label": "Later ideology, theology and cosmological rearticulation",
+      "dependencies": [
+        "N01",
+        "N06",
+        "N09"
+      ],
+      "kind": "ONTOLOGY_SCIENCE_ARCHITECTURE",
+      "gate": "RESEARCH_PARALLEL_ADOPTION_DEPENDENT",
+      "status": "RT04_DOCUMENTARY_SCIENCE_REVIEW_SCOPED__CONCRETE_NATIVE_RULE_HELD",
+      "may_research_in_parallel": true,
+      "owner": "ADP017/CAN011",
+      "evidence_to_unlock": "Original competent CAN/ADP/SCI05 domain Rule A/T plus actor-safe ADP016/017 source and exact native C9/C12 semantic consumer, or lawful owner-qualified NO_CHANGE; executed false-event/no-source and batch-fault counterfactual",
+      "review_sha": "e298e830ef9cde6ba985267eae1edcd050ad0e50",
+      "gate_type": "SCIENCE_SOURCE_AUTHORITY_AND_NATIVE_ENGINEERING"
+    },
+    {
+      "id": "N11",
+      "label": "User-settled event-batch temporal recursion",
+      "dependencies": [
+        "N06",
+        "N07",
+        "N08",
+        "N09"
+      ],
+      "kind": "ONTOLOGY_SCIENCE_ARCHITECTURE",
+      "gate": "RESEARCH_PARALLEL_ADOPTION_DEPENDENT",
+      "status": "RT04_DOCUMENTARY_SCIENCE_REVIEW_SCOPED__CONCRETE_NATIVE_RULE_HELD",
+      "may_research_in_parallel": true,
+      "owner": "V3/V2/C12",
+      "evidence_to_unlock": "Original competent CAN/ADP/SCI05 domain Rule A/T plus actor-safe ADP016/017 source and exact native C9/C12 semantic consumer, or lawful owner-qualified NO_CHANGE; executed false-event/no-source and batch-fault counterfactual",
+      "review_sha": "e298e830ef9cde6ba985267eae1edcd050ad0e50",
+      "gate_type": "SCIENCE_SOURCE_AUTHORITY_AND_NATIVE_ENGINEERING"
+    },
+    {
+      "id": "N12",
+      "label": "Actual C12 person, coupled world and human encounter",
+      "dependencies": [
+        "N05",
+        "N07",
+        "N08",
+        "N09",
+        "N10",
+        "N11"
+      ],
+      "kind": "ONTOLOGY_SCIENCE_ARCHITECTURE",
+      "gate": "RESEARCH_PARALLEL_ADOPTION_DEPENDENT",
+      "status": "STATIC_CURRENT_CONSUMER_REVIEWED__NO_NATIVE_EVENT_STATE_LOOP",
+      "may_research_in_parallel": true,
+      "owner": "C0-C12/A0-A5",
+      "evidence_to_unlock": "Current assembled qualified C9 state-value read and semantic counterfactual under actually issued CAN008/CAN011 actor/world/source grants",
+      "review_sha": "ddea75634c05bf89cf752da3813d17437b805767",
+      "gate_type": "SOURCE_AUTHORITY_ARCHITECTURE_EXECUTION"
+    }
+  ],
+  "entry_nodes": [
+    "N01",
+    "N06"
+  ],
+  "native_permission_gate": "N12 requires independent C0/C11/C9/CAN/ADP/source actors and owners",
+  "stage_gates": [
+    "P0_SOURCE_AND_THEORY_RESEARCH",
+    "P1_DIFFERENTIAL_SCIENCE",
+    "P2_CAUSAL_OPERATOR_AND_AUTHORITY",
+    "P3_IMPLEMENTATION_PROOF",
+    "P4_NATIVE_PERSON_CONSUMER"
+  ],
+  "ordered_not_automatically_active": true,
+  "last_reviewed_evidence_cut": {
+    "RX01": "481a5c62b6697e5df0e930a5dc615a8994aacddc",
+    "RX02": "69ddef93bfb1148f4d8868d5de2a5751a4674552",
+    "RS": "dabbc0b038668e05cd723afc31f8b08411648b0a",
+    "RC": "ddea75634c05bf89cf752da3813d17437b805767",
+    "pre_main": "b024b01e78c6a1e9295c946cb37a068f460ca720"
+  },
+  "sequenced_work": [
+    {
+      "code": "D0",
+      "work": "SYN01 reconcile 4 independently reviewed courts and 6 original author returns",
+      "gate": "DOCUMENTARY",
+      "status": "SCOPED_SYNTHESIS_BANKED",
+      "depends_on": [],
+      "unlocks": [
+        "D1",
+        "D2",
+        "D3"
+      ]
+    },
+    {
+      "code": "D1",
+      "work": "Qualify source-and-actor first real event with independent counterpart and material interval",
+      "gate": "SOURCE_AUTHORITY",
+      "status": "HELD_NATIVE_PERMISSION",
+      "depends_on": [
+        "D0",
+        "N06",
+        "N07"
+      ],
+      "unlocks": [
+        "D3"
+      ]
+    },
+    {
+      "code": "D2",
+      "work": "Source-reuse selection: baseline carrier/mixed record, multi-stream routing and partial transaction repair feasibility",
+      "gate": "ARCHITECTURE_PLUS_REVIEWED_HISTORICAL",
+      "status": "SCOPE_DEFINED__DESIGN_NOT_SELECTED",
+      "depends_on": [
+        "D0"
+      ],
+      "unlocks": [
+        "D3"
+      ]
+    },
+    {
+      "code": "D3",
+      "work": "Competent single concrete CAN008 Rule A/ CAN011 Rule T or NO_CHANGE with evidence and alternatives",
+      "gate": "SCIENTIFIC_ISSUER",
+      "status": "NOT_ISSUED",
+      "depends_on": [
+        "N01",
+        "N02",
+        "N03",
+        "N04",
+        "N05",
+        "N08",
+        "D1",
+        "D2"
+      ],
+      "unlocks": [
+        "D4"
+      ]
+    },
+    {
+      "code": "D4",
+      "work": "One full history E1→qualified formation→later identical-person E2 semantic CAN008 value consumption, plus NO_CHANGE and severed edge",
+      "gate": "ENGINEERING_AND_EXECUTION",
+      "status": "NOT_RUN_NATIVE",
+      "depends_on": [
+        "D3"
+      ],
+      "unlocks": [
+        "D5"
+      ]
+    },
+    {
+      "code": "D5",
+      "work": "Full 3–5 event memory-aware recursion and first person A0-A5/Pyat source rights",
+      "gate": "SCIENTIFIC_SOURCE_ENGINEERING_EXECUTION",
+      "status": "USER_ARCHITECTURE_SETTLED__NOT_NATIVE_COMPLETED",
+      "depends_on": [
+        "D4",
+        "N09",
+        "N10",
+        "N11",
+        "N12"
+      ],
+      "unlocks": []
+    },
+    {
+      "code": "D0B",
+      "depends_on": [
+        "D0"
+      ],
+      "work": "Complete and reconcile RX03/RX04/RX05 historic source and RT04 N09–N11 independent documentary theory; native formation remains held",
+      "gate": "SOURCE_SCIENCE_REVIEW",
+      "status": "FOUR_OF_FOUR_INDEPENDENT_RETURNS_VERIFIED_SCOPED",
+      "may_research_in_parallel": true,
+      "unlocks": [
+        "D1",
+        "D2",
+        "D3",
+        "D5"
+      ]
+    },
+    {
+      "code": "D0R2",
+      "depends_on": [
+        "D0B"
+      ],
+      "work": "SYN01 R2 final scoped source-and-theory evidence integration; substantive source/authority/current native person proof separate",
+      "gate": "SCIENCE_AND_AUTHORITY",
+      "status": "REVIEWED_EVIDENCE_SYNTHESIS_COMPLETE__NATIVE_ISSUANCE_NOT_PROVED",
+      "unlocks": [
+        "D1",
+        "D2"
+      ]
+    },
+    {
+      "code": "D1A",
+      "depends_on": [
+        "D0R2",
+        "N01",
+        "N02",
+        "N03",
+        "N06",
+        "N07"
+      ],
+      "gate": "COMPETENT_SCIENTIFIC_AND_SOURCE_OWNER",
+      "status": "ISSUER_DECISION_NOT_PRESENT",
+      "work": "Choose one concrete qualifying encounter E1 with true actor accessibility, objective material/independent B activity, accepted domain Rule A and qualified CAN011 Rule T / lawful NO_CHANGE; prove counterfactual alternatives",
+      "unlocks": [
+        "D4"
+      ]
+    },
+    {
+      "code": "D1B",
+      "depends_on": [
+        "D0R2",
+        "N09",
+        "N10",
+        "N11"
+      ],
+      "gate": "ADP016_ADP017_SCI05_SOURCE_AND_POLICY",
+      "status": "SAME_CALL_INTERNAL_ACT_AND_MEMORY_PERMISSION_HELD",
+      "work": "Define actor-safe retrospective model-visible features, no fabricated episode, false belief distinguished, prospective dependency invalidation after denied SCI05 admission, actual prefix/transaction policy",
+      "unlocks": [
+        "D5"
+      ]
+    },
+    {
+      "code": "D2A",
+      "depends_on": [
+        "D0R2",
+        "N12"
+      ],
+      "gate": "ENGINEERING_DESIGN_ONLY",
+      "status": "DESIGN_CANDIDATE__NO_CODE_AUTHORIZATION",
+      "work": "Function-level seam plan for source-qualified E1→CAN008→CAN011 actor middle-state, then later E2 C9 semantic-value consumer and independent coactor; positive/nochange/ablation tests without hash-only pseudo-proof",
+      "unlocks": [
+        "D4"
+      ]
+    }
+  ],
+  "last_second_wave_return_heads": {
+    "X03": "e81dd633b419d35619014bdf99f894ad4f98c5a5",
+    "X04": "b609986a3f635de7b7581e763e76d3496ed9ad7e",
+    "X05": "4877afed497ccaa974ee092a0db7d6178ecac2a2",
+    "T04": "76590e61e2c819ba2c9231e9f92dd9e6aa429fa4"
+  },
+  "second_wave_review_cut": {
+    "RX03": "10807fd633daab347a762727a4d837d54601d655",
+    "RX04": "c5db118c70057d3a276d1cacca20843cf01544ae",
+    "RX05": "fa2a98d61bd5919140c8cb426d14fb3351adc561"
+  },
+  "rt04_review_status": "RETURNED_VERIFIED_SCOPED__NO_NATIVE",
+  "historical_families_scoped_independent_review": 40,
+  "last_second_wave_independent_reviews": {
+    "RT04": "e298e830ef9cde6ba985267eae1edcd050ad0e50"
+  }
+}

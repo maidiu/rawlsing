@@ -1,0 +1,2 @@
+# Historical V3 as-built courts (M01–M40)
+One Mxx subdirectory per original TD-R05 family. Each card begins from exact historic symbol and audit behavior with INDEPENDENT current integration unknown. Qualified source examiner creates deeper 01_DIRECT_SOURCE_MAP, 02_PHENOMENON, 03_GAP, 04_OPERATORS, 05_IMPLEMENTATION, 06_RETURN in scope; no empty fake completed files. Old code is evidence, not a demanded new ontology.

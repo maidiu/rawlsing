@@ -1,0 +1,317 @@
+--- a/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/store.py
++++ b/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/store.py
+@@ -16,6 +16,17 @@
+ 
+ STORE_SCHEMA = "BP4_C12_STORE@1"
+ GRADE = "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE"
++FORK_ROOT_SCHEMA = "BP4_C12_FORK_ROOT@2"
++FORK_ROOT_PREFIX = FORK_ROOT_SCHEMA + ":"
++FORK_TABLES = ("episode", "world_event", "perception", "checkpoint")
++_FORK_IDENTITY = {
++    "episode": (1, 2, 3, 4, 5, 7),
++    "world_event": (1, 2, 3, 5),
++    "perception": (1, 2, 3, 4, 5),
++    "checkpoint": (1, 2, 4),
++}
++_FORK_CLOCK_INDEX = {"episode": 4, "world_event": 2, "perception": 3,
++                     "checkpoint": 1}
+ 
+ 
+ class StoreRefusal(ValueError):
+@@ -284,91 +295,211 @@
+     def last_clock(self, branch_id: str) -> int:
+         return self._last_clock(branch_id)
+ 
++    def _verify_rows(self, branch_id: str, errors: list[str]) -> None:
++        for table, column, drop_episode_id in (
++            ("episode", "body", True),
++            ("world_event", "body", False),
++            ("checkpoint", "state", False),
++        ):
++            rows = list(self.db.execute(
++                f"SELECT seq,{column},hash FROM {table} WHERE branch_id=? ORDER BY seq",
++                (branch_id,)))
++            for seq, body, stored_hash in rows:
++                parsed = json.loads(body)
++                body_hash = parsed.get("hash")
++                preimage = {key: value for key, value in parsed.items()
++                            if key != "hash"}
++                if drop_episode_id:
++                    preimage.pop("episode_id", None)
++                if body_hash != digest(preimage):
++                    errors.append(f"{table}:{seq}:body_hash_mismatch")
++                if stored_hash != body_hash:
++                    errors.append(f"{table}:{seq}:column_hash_mismatch")
++            if [row[0] for row in rows] != list(range(len(rows))):
++                errors.append(f"{table}:seq_not_contiguous")
++        perceptions = list(self.db.execute(
++            "SELECT seq FROM perception WHERE branch_id=? ORDER BY seq", (branch_id,)))
++        if [row[0] for row in perceptions] != list(range(len(perceptions))):
++            errors.append("perception:seq_not_contiguous")
++
++    def _fork_rows(self, branch_id: str, table: str,
++                   limit: int | None = None) -> list[tuple]:
++        sql = f"SELECT * FROM {table} WHERE branch_id=? ORDER BY seq"
++        values: tuple = (branch_id,)
++        if limit is not None:
++            sql += " LIMIT ?"
++            values += (int(limit),)
++        return [tuple(row) for row in self.db.execute(sql, values)]
++
++    @staticmethod
++    def _fork_identity(table: str, row: tuple) -> list:
++        return [row[index] for index in _FORK_IDENTITY[table]]
++
++    def _fork_payload(self, parent: dict, fork_clock: int, counts: dict[str, int],
++                      rows: dict[str, list[tuple]]) -> dict:
++        return {
++            "schema": FORK_ROOT_SCHEMA,
++            "parent_branch": parent["branch_id"],
++            "parent_root_hash": parent["root_hash"] or "",
++            "fork_clock": int(fork_clock),
++            "counts": {table: int(counts[table]) for table in FORK_TABLES},
++            "rows": {table: [self._fork_identity(table, row) for row in rows[table]]
++                     for table in FORK_TABLES},
++        }
++
++    def _fork_integrity(self, branch_id: str) -> dict:
++        errors: list[str] = []
++        status = "VERIFIED"
++        seen: set[str] = set()
++        current_id = branch_id
++        while True:
++            if current_id in seen:
++                errors.append(f"fork:{current_id}:ancestry_cycle")
++                status = "INVALID"
++                break
++            seen.add(current_id)
++            current = self._branch(current_id)
++            if current is None:
++                errors.append(f"fork:{current_id}:branch_missing")
++                status = "INVALID"
++                break
++            parent_id = current["parent_branch_id"]
++            if parent_id in (None, ""):
++                if current["root_hash"]:
++                    errors.append(f"fork:{current_id}:root_hash_on_root_branch")
++                if current["root_counts"]:
++                    errors.append(f"fork:{current_id}:root_counts_on_root_branch")
++                break
++            root_hash = current["root_hash"] or ""
++            if not root_hash.startswith(FORK_ROOT_PREFIX):
++                errors.append(f"fork:{current_id}:legacy_root_unverified")
++                status = "LEGACY_HELD"
++                break
++            parent = self._branch(parent_id)
++            if parent is None:
++                errors.append(f"fork:{current_id}:parent_missing")
++                status = "INVALID"
++                break
++            counts = current["root_counts"]
++            if (not isinstance(counts, dict)
++                    or set(counts) != set(FORK_TABLES)
++                    or any(type(counts[t]) is not int or counts[t] < 0
++                           for t in FORK_TABLES)):
++                errors.append(f"fork:{current_id}:root_counts_invalid")
++                status = "INVALID"
++                break
++            parent_rows: dict[str, list[tuple]] = {}
++            child_rows: dict[str, list[tuple]] = {}
++            for table in FORK_TABLES:
++                limit = counts[table]
++                parent_rows[table] = self._fork_rows(parent_id, table, limit)
++                child_rows[table] = self._fork_rows(current_id, table, limit)
++                if len(parent_rows[table]) != limit:
++                    errors.append(f"fork:{current_id}:{table}:parent_prefix_short")
++                if len(child_rows[table]) != limit:
++                    errors.append(f"fork:{current_id}:{table}:child_prefix_short")
++                if (len(parent_rows[table]) != limit
++                        or len(child_rows[table]) != limit
++                        or [self._fork_identity(table, row)
++                            for row in parent_rows[table]]
++                        != [self._fork_identity(table, row)
++                            for row in child_rows[table]]):
++                    errors.append(f"fork:{current_id}:{table}:prefix_mismatch")
++            if errors:
++                status = "INVALID"
++                break
++            clock_values = [
++                self._fork_identity(table, row)[_FORK_CLOCK_INDEX[table]]
++                for table in FORK_TABLES for row in parent_rows[table]
++            ]
++            expected_clock = max(clock_values, default=0)
++            if current["fork_clock"] != expected_clock:
++                errors.append(f"fork:{current_id}:fork_clock_mismatch")
++            if current["created_clock"] != current["fork_clock"]:
++                errors.append(f"fork:{current_id}:created_clock_mismatch")
++            expected = FORK_ROOT_PREFIX + digest(self._fork_payload(
++                parent, current["fork_clock"], counts, parent_rows))
++            if root_hash != expected:
++                errors.append(f"fork:{current_id}:root_hash_mismatch")
++            if errors:
++                status = "INVALID"
++                break
++            current_id = parent_id
++        if errors and status == "VERIFIED":
++            status = "INVALID"
++        return {"ok": not errors, "status": status, "errors": errors,
++                "branch_id": branch_id}
++
+     def verify(self, branch_id: str) -> dict:
+         self.branch(branch_id)
+         errors: list[str] = []
+-        for row in self.db.execute(
+-                "SELECT seq,body,hash FROM episode WHERE branch_id=? ORDER BY seq",
+-                (branch_id,)):
+-            if digest(json.loads(row[1])) != row[2]:
+-                errors.append(f"episode:{row[0]}")
+-        for row in self.db.execute(
+-                "SELECT seq,body,hash FROM world_event WHERE branch_id=? ORDER BY seq",
+-                (branch_id,)):
+-            if digest(json.loads(row[1])) != row[2]:
+-                errors.append(f"world_event:{row[0]}")
+-        for row in self.db.execute(
+-                "SELECT seq,state,hash FROM checkpoint WHERE branch_id=? ORDER BY seq",
+-                (branch_id,)):
+-            if digest(json.loads(row[1])) != row[2]:
+-                errors.append(f"checkpoint:{row[0]}")
++        self._verify_rows(branch_id, errors)
++        fork = self._fork_integrity(branch_id)
++        errors.extend(fork["errors"])
+         ep = [r[0] for r in self.db.execute(
+             "SELECT seq FROM episode WHERE branch_id=? ORDER BY seq", (branch_id,))]
+         we = [r[0] for r in self.db.execute(
+             "SELECT seq FROM world_event WHERE branch_id=? ORDER BY seq", (branch_id,))]
+         cp = [r[0] for r in self.db.execute(
+             "SELECT seq FROM checkpoint WHERE branch_id=? ORDER BY seq", (branch_id,))]
+-        if ep != list(range(len(ep))):
+-            errors.append("episode_seq_not_contiguous")
+-        if we != list(range(len(we))):
+-            errors.append("world_event_seq_not_contiguous")
+-        if cp != list(range(len(cp))):
+-            errors.append("checkpoint_seq_not_contiguous")
+         return {"ok": not errors, "errors": errors,
+                 "counts": {"episodes": len(ep), "world_events": len(we),
+                            "checkpoints": len(cp),
+-                           "perceptions": len(self.perceptions(branch_id))}}
++                           "perceptions": len(self.perceptions(branch_id))},
++                "fork": fork}
+ 
+     # ---------------- fork ----------------
++    def _copy_fork_rows(self, table: str, new_branch_id: str,
++                        rows: list[tuple]) -> None:
++        columns = {
++            "episode": 8, "world_event": 6, "perception": 6, "checkpoint": 5,
++        }[table]
++        placeholders = ",".join("?" for _ in range(columns))
++        for row in rows:
++            values = list(row)
++            values[0] = new_branch_id
++            self.db.execute(
++                f"INSERT INTO {table} VALUES ({placeholders})", tuple(values)
++            )
++
+     def fork(self, parent_branch_id: str, new_branch_id: str) -> dict:
+-        parent = self.branch(parent_branch_id)
+-        if self._branch(new_branch_id) is not None:
+-            raise StoreRefusal("BRANCH_EXISTS")
+-        latest_perception = self.db.execute(
+-            "SELECT coalesce(max(clock),0) FROM perception WHERE branch_id=?",
+-            (parent_branch_id,),
+-        ).fetchone()[0]
+-        fork_clock = max(self.last_clock(parent_branch_id), int(latest_perception))
+-        self.db.execute(
+-            "INSERT INTO branch VALUES (?,?,?,?,?,?,?)",
+-            (new_branch_id, parent_branch_id, int(fork_clock), "", canonical({}),
+-             int(fork_clock), canonical(parent["actor_ids"])),
+-        )
+-        copied_hashes: list[str] = []
+-        copied_counts: dict[str, int] = {}
+-        for table in ("episode", "world_event", "perception", "checkpoint"):
+-            rows = self.db.execute(
+-                f"SELECT * FROM {table} WHERE branch_id=? AND "
+-                + ("clock<=?" if table != "perception" else "clock<=?")
+-                + " ORDER BY seq",
+-                (parent_branch_id, int(fork_clock)),
+-            ).fetchall()
+-            columns = {
+-                "episode": 8, "world_event": 6, "perception": 6, "checkpoint": 5,
+-            }[table]
+-            copied_counts[table] = len(rows)
+-            for row in rows:
+-                values = list(row)
+-                values[0] = new_branch_id
+-                placeholders = ",".join("?" for _ in range(columns))
+-                self.db.execute(
+-                    f"INSERT INTO {table} VALUES ({placeholders})", tuple(values)
+-                )
+-                if table == "episode":
+-                    copied_hashes.append(str(row[7]))
+-                elif table == "world_event":
+-                    copied_hashes.append(str(row[5]))
+-                elif table == "checkpoint":
+-                    copied_hashes.append(str(row[4]))
+-        root_hash = digest({"parent": parent_branch_id, "fork_clock": int(fork_clock),
+-                            "hashes": sorted(copied_hashes)})
+-        self.db.execute(
+-            "UPDATE branch SET root_hash=?, root_counts=? WHERE branch_id=?",
+-            (root_hash, canonical(copied_counts), new_branch_id),
+-        )
+-        # The branch row update is metadata, not append-only history. Only the
+-        # branch table is mutable; episode/world/perception/checkpoint stay fixed.
+-        return self.branch(new_branch_id)
++        savepoint = "bp4_fork_atomic"
++        self.db.execute(f"SAVEPOINT {savepoint}")
++        try:
++            parent = self.branch(parent_branch_id)
++            if self._branch(new_branch_id) is not None:
++                raise StoreRefusal("BRANCH_EXISTS")
++            parent_fork = self._fork_integrity(parent_branch_id)
++            if not parent_fork["ok"]:
++                raise StoreRefusal("FORK_HELD", "parent_fork_integrity_unverified")
++            latest_perception = self.db.execute(
++                "SELECT coalesce(max(clock),0) FROM perception WHERE branch_id=?",
++                (parent_branch_id,),
++            ).fetchone()[0]
++            fork_clock = max(self.last_clock(parent_branch_id),
++                             int(latest_perception))
++            rows = {table: self._fork_rows(parent_branch_id, table)
++                    for table in FORK_TABLES}
++            counts = {table: len(rows[table]) for table in FORK_TABLES}
++            root_hash = FORK_ROOT_PREFIX + digest(
++                self._fork_payload(parent, fork_clock, counts, rows))
++            self.db.execute(
++                "INSERT INTO branch VALUES (?,?,?,?,?,?,?)",
++                (new_branch_id, parent_branch_id, int(fork_clock), root_hash,
++                 canonical(counts), int(fork_clock), canonical(parent["actor_ids"])),
++            )
++            for table in FORK_TABLES:
++                self._copy_fork_rows(table, new_branch_id, rows[table])
++            created = self.branch(new_branch_id)
++            self.db.execute(f"RELEASE {savepoint}")
++        except Exception:
++            try:
++                self.db.execute(f"ROLLBACK TO {savepoint}")
++                self.db.execute(f"RELEASE {savepoint}")
++            except Exception:  # noqa: BLE001 - preserve original fork failure
++                pass
++            raise
++        return created
+ 
+     def shared_root_equal(self, branch_a: str, branch_b: str) -> dict:
+         a = self.branch(branch_a)
+--- a/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/r26e/c12_integrity.py
++++ b/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/r26e/c12_integrity.py
+@@ -59,9 +59,11 @@
+         counts["perception"] = len(perceptions)
+         if [row[0] for row in perceptions] != list(range(len(perceptions))):
+             errors.append("perception:seq_not_contiguous")
++        fork = self._fork_integrity(branch_id)
++        errors.extend(fork["errors"])
+         return {"ok": not errors, "errors": errors, "counts": counts,
+                 "branch_id": branch_id, "grade": TEST_ONLY_GRADE,
+-                "verifier": "R26E_QUALIFIED_C12_PREIMAGE"}
++                "verifier": "R26E_QUALIFIED_C12_PREIMAGE", "fork": fork}
+ 
+ 
+ def chain_digest(store: C12Store, branch_id: str) -> str:

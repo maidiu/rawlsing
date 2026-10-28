@@ -1,0 +1,62 @@
+{
+  "coverage": [
+    "perception content and clock11 inherited",
+    "same-count perception substitution rejected",
+    "fork root and parent metadata tamper rejected",
+    "legacy fork root LEGACY_HELD and child fork FORK_HELD",
+    "nested and cold reopen",
+    "parent suffix isolation",
+    "injected partial-copy rollback after nonempty table",
+    "outer wrapper SAVEPOINT rollback",
+    "second-connection concurrent parent append coherence"
+  ],
+  "files": {
+    "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/store.py": {
+      "base_sha256": "ffc1af8c546994c711cfd046525c0fa7164acd0917650f2075dc91a33d8df5e4",
+      "candidate_sha256": "872df999b3e6ffcb4a168317cc2591ec6f79f73f9ce7fffc13b24caead7315d4"
+    },
+    "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/r26e/c12_integrity.py": {
+      "base_sha256": "534780fe4631caadacac73e457afbb86bcc207686b1ebb433087ad6270abf710",
+      "candidate_sha256": "7d046a5bf9d49cbce1f3e5e85aafee56715be712b576063b98bb78ed378e508d"
+    }
+  },
+  "limitations": [
+    "candidate not applied to originals",
+    "no external witness or source-owner acceptance claimed",
+    "sourcefree regression qualification only; no canonical actor/world/native acceptance"
+  ],
+  "patch": {
+    "path": "c12-integrity-candidate-r1.patch",
+    "sha256": "8a4100cb4ca617a5e63136b6d3a015c6a0f3ddcaf842a3c04c169ee0fa6a84c6"
+  },
+  "repairs": [
+    "fork savepoint opens before parent validation/clock/row capture",
+    "partial failure injected after nonempty world_event copy",
+    "fork status INVALID when root metadata errors exist"
+  ],
+  "scope": "sourcefree candidate only; no original-source approval or native acceptance",
+  "status": "CANDIDATE_READY_NOT_APPLIED",
+  "tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -p no:cacheprovider SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C12_PATCH/tests/test_candidate.py",
+    "failed": 0,
+    "passed": 8
+  },
+  "base_commit": "6022b1493b5e7962e23dc4b77fa65be0c74b8319",
+  "dispatch": {
+    "session_id": "ses_e7d13a5e2ffeSfzMbvFySJsXv1",
+    "provider": "opencode-go",
+    "model": "deepseek-v4.1-flash",
+    "variant": "max"
+  },
+  "integration_tests": {
+    "base_commit": "6022b1493b5e7962e23dc4b77fa65be0c74b8319",
+    "isolation": "git archive of exact JOIN-E return and rawlsing_next, fresh local Git directory; source patch and truthful manifest changes applied only there",
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -p no:cacheprovider /tmp/c12-integrity-candidate-r1/integration-repo/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests",
+    "passed": 21,
+    "failed": 0,
+    "duration_seconds": 10.07,
+    "manifest_sha256": "30875aebff8429af9cbeb52cb1c49bd3b5e36dfb747da8b32fbed009e38d8972",
+    "manifest_patch_path": "c12-manifest-followup.patch",
+    "manifest_patch_sha256": "554de0feb1f30bdb1b3ea54ad4467743f788bc8eae868820a10a83cd9a13158f"
+  }
+}

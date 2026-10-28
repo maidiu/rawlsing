@@ -1,0 +1,2 @@
+# Neo-V3 needs-first courts (N01–N12)
+Separate actual requirements from historical variable names. Each directory contains developmental phenomena, negative examples, competing theories, current explanatory deficits, material/social conditions, candidate causal operators, source-to-target links, testable contracts and disputed authority. No inventing numeric rules or automatically writing program code.

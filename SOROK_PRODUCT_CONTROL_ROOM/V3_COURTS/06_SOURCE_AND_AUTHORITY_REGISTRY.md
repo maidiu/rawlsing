@@ -1,0 +1,14 @@
+# Source and authority ledger — foundation read cut
+
+- TD-R05 historical full audit (40 rows), blob dfcc7e4fc7b6e907218d7a368ceb9d269a49206d; path data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/TD_R05_V3_DEVELOPMENTAL_RUNTIME/RESULT.md at 25830fe7462bb9e29bc4087e6ae14f3f84cec377. Original archive SHA256 953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086; TD-R05 reports full archive exact and 80 historical focused tests passed. Browser here DOES NOT HAVE original archive mounted.
+- Structured TD-R05 RESULT.json blob 77e0d242e1f8619650db6b1b5dd38d4b264c1b06; original audit: 3 REUSE, 31 ADAPT, 3 REPLACE, 3 REMOVE.
+- S50 source/fixture historical recovery WORKER_RETURNS/SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1/00_RETURN.md blob 375524584b8e54d3d1cc4e8216b23f6512c1656c; exact original 31/31 selected identities, isolated fixture, not actual S44 B person.
+- Codex source recovery SOROK_PRODUCT_CONTROL_ROOM/USER_DIRECTED_ARCHITECTURE/20261026_EXISTING_V3_MACHINE_RECOVERY_AND_ADAPTATION_DISPOSITION_R1.md blob 42fd51f3902c88589d9da7f2a7b005ab654bbbd3, branch codex/sorok-parallel-flight-20261022@3c5434a9a88122631ad7ca202fdf3e0003849d06.
+- User-settled recursion SOROK_PRODUCT_CONTROL_ROOM/USER_DIRECTED_ARCHITECTURE/20261026_USER_SETTLED_BATCH_RECURSION_IMPRESSION_MEMORY_R1.md blob 1a888b6a0eaa3d74e0a8afed715b4cd20785a5b2.
+- New full source-differential atlas at agent/vozhd-sorok-20261026-independent-accession-application-r1@5d5d4beaee63c0ac0b367a6f1e5ef399c8a3326e, 07 and 08 documents: needs-first provisional candidate, NOT semantic issuance.
+- CAN008 R2 adopted generic actor-event body b80dd6925066510ecbbfec7b427bf9f688475663, adoption a6bc1555489271e1adb2271ed02d46bb7f888170; concrete A/T still distinct. SDTF R4 objective classes adopted at PRE-MAIN 79659b352035f095b325181d4f35c259da6b79d0.
+- Binding Sorok 00C prompt constitution blob 0419261f09c79bb5d605ea9670e59fcdd87b2360; 00E needs-first person qualification blob c82c00af983b400b8710809ae45eb509eb5f66c7. Current PRE-MAIN base ec34b4f7a88feafe079fce4383d9ed5e8d1062d1, Browser incumbent 865b5b01e1a27e99020cf2bb389af8cd4c874b57, Codex Sorok 3c5434a9a88122631ad7ca202fdf3e0003849d06; THESE ARE HISTORICAL READ CUTS.
+- Astra R3 K1–K11 full exact-grain tests specified but not accepted passing. Original Pyat 35, N11/N12, C8/C9/C11, ADP019, CAN011 native grants remain separately owned.
+- User attached Leontiev, Luria, Sève, Lahire, Dreier, Elder, Archer, Kohn/Schooler, Wright, Mortimer and others in project; do not treat general theory as a quantified actor law.
+
+**Firewalls:** original archive source vs GitHub copy; current integration vs historic fixture; theory vs native issuer; research vs actual user/person product.
