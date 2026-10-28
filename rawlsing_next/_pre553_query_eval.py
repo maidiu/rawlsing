@@ -188,9 +188,9 @@ def _target_component_value(
     observed_contract: ObservedResponseContract | None = None,
 ) -> tuple[bool, Any]:
     events = [
-        event for event in index.events_by_respondent[respondent.ref.key]
-        if _event_matches_target(event, component.target_ref)
-        and event.typed_state in component.included_states
+        event for event in index.events_by_target.get(
+            (respondent.ref.key, component.target_ref.key), ())
+        if event.typed_state in component.included_states
     ]
     for event in events:
         if topology_binding is not None:
@@ -370,9 +370,9 @@ def _observed_target_observed(
     """Require at least one observed event per target before resolution."""
     for component in plan.components:
         observed_events = [
-            event for event in index.events_by_respondent[respondent.ref.key]
-            if _event_matches_target(event, component.target_ref)
-            and event.typed_state in contract.observed_states
+            event for event in index.events_by_target.get(
+                (respondent.ref.key, component.target_ref.key), ())
+            if event.typed_state in contract.observed_states
         ]
         if not observed_events:
             return False
@@ -406,9 +406,9 @@ def _condition_observed(
         if leaf_type in {"SURVEY_RESPONSE_EVENT", "TYPED_RESPONSE_STATE"}:
             question_ref = _exact(node.get("question_semantic_ref"), "question_semantic_ref")
             return any(
-                _question_matches(event, question_ref)
-                and event.typed_state in contract.observed_states
-                for event in index.events_by_respondent[respondent.ref.key]
+                event.typed_state in contract.observed_states
+                for event in index.events_by_target.get(
+                    (respondent.ref.key, question_ref.key), ())
             )
         if leaf_type == "EMPIRICAL_POSITION_COORDINATE":
             coordinate_ref = _exact(

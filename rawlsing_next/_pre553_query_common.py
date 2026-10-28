@@ -170,6 +170,7 @@ class _ReleaseIndex:
     universe: EmpiricalUniverse
     respondents: dict[str, RespondentIdentity]
     events_by_respondent: dict[str, list[RespondentEvent]]
+    events_by_target: dict[tuple[str, str], list[RespondentEvent]]
     coordinates_by_respondent: dict[str, list[EmpiricalCoordinateFact]]
     routing_by_respondent: dict[str, list[RoutingEligibilityFact]]
     weights_by_respondent: dict[str, list[WeightMeasureFact]]

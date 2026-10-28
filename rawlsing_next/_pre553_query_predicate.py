@@ -16,6 +16,17 @@ def _coordinate_matches(coordinate: EmpiricalCoordinateFact, ref: ExactRef) -> b
     return ref == native or (canonical is not None and ref == canonical)
 
 
+def _event_target_keys(event: RespondentEvent) -> tuple[str, ...]:
+    keys = [exact_ref(event.native_question_ref, "native_question_ref").key]
+    canonical = event.canonical_question_ref_if_authorized
+    if canonical is not None:
+        keys.append(exact_ref(canonical, "canonical_question_ref").key)
+    component = event.component_or_subitem_ref
+    if component is not None:
+        keys.append(exact_ref(component, "component_or_subitem_ref").key)
+    return tuple(dict.fromkeys(keys))
+
+
 def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> _ReleaseIndex:
     universes = [o for o in release.public_objects if isinstance(o, EmpiricalUniverse) and o.ref == universe_ref]
     if len(universes) != 1:
@@ -32,6 +43,7 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
         respondents = {}
 
     events: dict[str, list[RespondentEvent]] = {key: [] for key in respondents}
+    events_by_target: dict[tuple[str, str], list[RespondentEvent]] = {}
     coords: dict[str, list[EmpiricalCoordinateFact]] = {key: [] for key in respondents}
     routing: dict[str, list[RoutingEligibilityFact]] = {key: [] for key in respondents}
     weights: dict[str, list[WeightMeasureFact]] = {key: [] for key in respondents}
@@ -52,6 +64,8 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
                 "public respondent-grain object references respondent absent from C11 RespondentIdentity")
         if isinstance(obj, RespondentEvent):
             events[respondent_ref.key].append(obj)
+            for target_key in _event_target_keys(obj):
+                events_by_target.setdefault((respondent_ref.key, target_key), []).append(obj)
         elif isinstance(obj, EmpiricalCoordinateFact):
             coords[respondent_ref.key].append(obj)
         elif isinstance(obj, RoutingEligibilityFact):
@@ -61,11 +75,14 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
     for mapping in (events, coords, routing, weights):
         for key in mapping:
             mapping[key].sort(key=lambda obj: obj.ref.key)
+    for key in events_by_target:
+        events_by_target[key].sort(key=lambda obj: obj.ref.key)
     return _ReleaseIndex(
         release=release,
         universe=universe,
         respondents=respondents,
         events_by_respondent=events,
+        events_by_target=events_by_target,
         coordinates_by_respondent=coords,
         routing_by_respondent=routing,
         weights_by_respondent=weights,
@@ -246,7 +263,7 @@ def _leaf_match(
         if operator not in {"EQ", "IN", "STATE_EQ"}:
             raise EmpiricalQueryResolutionError("response predicate operator must be EQ/IN/STATE_EQ")
         values = _leaf_exact_values(node, exact_ref_field="response_value_or_state_ref") if operator != "STATE_EQ" else ()
-        events = [e for e in index.events_by_respondent[respondent_key] if _question_matches(e, question_ref)]
+        events = index.events_by_target.get((respondent_key, question_ref.key), ())
         result = False
         for event in events:
             if response_auth not in event.authority_snapshot_refs or topo_auth not in event.authority_snapshot_refs:
@@ -290,9 +307,7 @@ def _leaf_match(
         if desired is None:
             raise EmpiricalQueryResolutionError("typed response predicate requires typed_state")
         result = False
-        for event in index.events_by_respondent[respondent_key]:
-            if not _question_matches(event, question_ref):
-                continue
+        for event in index.events_by_target.get((respondent_key, question_ref.key), ()):
             if state_auth not in event.authority_snapshot_refs:
                 raise Pre553AuthorityError("typed-state authority does not bind matched C11 event")
             used.append(event)

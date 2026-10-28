@@ -418,6 +418,18 @@ def _make_predicate(
     )
 
 
+_CONTRACT_PROJECTION_CACHE: dict[str, dict[str, Any]] = {}
+
+
+def _contract_projection(contract: ObservedResponseContract) -> dict[str, Any]:
+    key = contract.ref.key
+    cached = _CONTRACT_PROJECTION_CACHE.get(key)
+    if cached is None:
+        cached = contract.semantic_projection()
+        _CONTRACT_PROJECTION_CACHE[key] = cached
+    return cached
+
+
 def _component(view: TargetView, contract: ObservedResponseContract) -> dict[str, Any]:
     if view.binding.topology_authority_ref is None:
         raise NativeWorkloadRefusal("TARGET_TOPOLOGY_AUTHORITY_REQUIRED")
@@ -490,7 +502,7 @@ def _make_query(
             "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED",
             "query_operation": contract.operation,
             "observed_response_contract_ref": contract.ref.as_dict(),
-            "observed_response_contract": contract.semantic_projection(),
+            "observed_response_contract": _contract_projection(contract),
             "observed_response_condition_counts": dict(condition_counts) if condition_counts is not None else None,
             **target_use,
         },
