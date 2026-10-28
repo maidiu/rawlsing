@@ -33,7 +33,7 @@ Do not say 'banked to ChatGPT memory'. Git branch is the durable archive and sou
 DECIDED: product goal, single target architecture, cache nonauthority, no global pair barrier, correct science/person distinctions, plan to leverage existing owners.
 GROUNDED_DOCUMENTARY: inspected source actor/renderer metadata, archive hotspots, old A/B/C decisions/capabilities, accepted SRC04 receipts.
 NOT YET BENCHMARKED: new physical Parquet/Zstd cache bytes, exact current native speed, 16-GiB end-to-end max scaling.
-NOT YET SCHEMATIZED TO CODING STANDARD: every adapter method/signature, all33? no — actual complete function call graph and per-module target diff, exact all35 batch mapping, independent code reviews, full negative tests, deployment instructions.
+NOT YET SCHEMATIZED TO CODING STANDARD: every adapter method/signature, the actual complete function call graph and per-module target diff, exact all35 batch mapping, independent code reviews, full negative tests, deployment instructions.
 NOT YET AUTHORIZED OR DONE: code changes, original respondent source re-read, long-run, original SRC04 discovery consumer, new FF/actor claims, all35 N11, N12 wake.
 
 ## Never silently substitute
