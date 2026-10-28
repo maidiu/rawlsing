@@ -1,0 +1,53 @@
+{
+  "consumer_path": {
+    "dependency": "accepted Lane D consumer module",
+    "discovery_or_effective_n_required": true,
+    "owner": "campaign_src04_completion.consumers.consumer.consume_native_producer",
+    "status": "READ_ONLY_EXTERNAL_DEPENDENCY_NOT_JOINED"
+  },
+  "grant": {
+    "issuer": "HUMAN_USER_VIA_EXISTING_PYAT_HQ",
+    "operation": "PRE553_OBSERVED_RESPONSE_EMPIRICAL_OPERATIONS@1.0.0",
+    "path": "campaign_src04_completion/empirical/USER_EMPIRICAL_GRANT.json",
+    "ref": {
+      "content_hash": "757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f",
+      "kind": "USER_EMPIRICAL_GRANT",
+      "object_id": "urn:rawlsing:user-empirical-grant:SRC04:757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f"
+    },
+    "sha256": "757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f"
+  },
+  "issuer_outputs_ready": [
+    "positive PREDICATE_GRAMMAR",
+    "positive PHYSICAL_NATIVE_REPRESENTATION_BINDING source-literal",
+    "positive SOURCE_SEMANTICS_TOPOLOGY per validated one-event target",
+    "positive TARGET_USE_PERMISSION for SOURCE_LOCAL_STATISTIC",
+    "authorized contract + AuthorityRegistry"
+  ],
+  "original_workload_issued": false,
+  "pending_contract_ref": {
+    "content_hash": "c6a2f9b2a6cc32c14df50ff72046f2e164ef6f375059f5352de2664dae638980",
+    "kind": "OBSERVED_RESPONSE_CONTRACT",
+    "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:c6a2f9b2a6cc32c14df50ff72046f2e164ef6f375059f5352de2664dae638980"
+  },
+  "release_input_required": {
+    "accepted_42_field_release_is_not_sufficient": true,
+    "backend": "PRE553_PARQUET_C11_CARRIER",
+    "note": "A full-source construction candidate/replay format is not final; no polling or duplicate read is performed by Lane C.",
+    "required_fields": [
+      "parquet_root",
+      "source_sha256",
+      "release_id",
+      "semantic_hash"
+    ],
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
+  },
+  "required_command": "PYTHONPATH=. python3 campaign_src04_completion/empirical/run_native_workload.py --mode execute --parquet-root <exact-parquet-root> --release-id <exact-release-id> --semantic-hash <exact-semantic-hash> --source-sha 2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18 --consumer",
+  "schema": "PYAT_SRC04_AUTHORIZED_EXECUTION_PREFLIGHT@1.0.0",
+  "scope": {
+    "available_analytical_coordinates": 0,
+    "available_response_fields": 175,
+    "held_response_fields": 3
+  },
+  "source_read_performed": false,
+  "status": "AUTHENTICATED_GRANT_ISSUER_READY__RELEASE_INPUT_PENDING"
+}

@@ -199,7 +199,7 @@ class ObservedResponseTopologyBinding:
         _text(self.topology_operation, "topology_binding.topology_operation")
         if self.topology_authority_ref is not None:
             _authority(self.topology_authority_ref, "topology_binding.topology_authority_ref")
-        if not self.response_semantic_authority_refs:
+        if not self.response_semantic_authority_refs and self.topology_authority_ref is not None:
             raise Pre553IntegrityError("topology binding requires response semantic authority refs")
         for ref in self.response_semantic_authority_refs:
             _authority(ref, "topology_binding.response_semantic_authority_refs")
@@ -272,6 +272,9 @@ class ObservedResponseContract:
     target_use_authority_ref: AuthorityRef | None = None
     target_use_operation: str | None = None
     source_config_ref: ExactRef | None = None
+    source_literal_authority_ref: AuthorityRef | None = None
+    source_literal_operation: str | None = None
+    source_event_authority_refs: tuple[AuthorityRef, ...] = ()
 
     def __post_init__(self) -> None:
         _text(self.contract_id, "contract_id")
@@ -341,6 +344,21 @@ class ObservedResponseContract:
             raise Pre553IntegrityError("target-use ref, authority and operation must be bound together")
         if self.target_use_operation is not None:
             _text(self.target_use_operation, "target_use_operation")
+        literal_fields = (
+            self.source_literal_authority_ref,
+            self.source_literal_operation,
+            self.source_event_authority_refs,
+        )
+        any_literal = any(value is not None for value in literal_fields) if not isinstance(literal_fields[2], tuple) else bool(literal_fields[0] or literal_fields[1] or literal_fields[2])
+        if any_literal:
+            if self.source_literal_authority_ref is None or self.source_literal_operation is None or not self.source_event_authority_refs:
+                raise Pre553IntegrityError("source-literal authority, operation and event authority refs must be bound together")
+            _authority(self.source_literal_authority_ref, "source_literal_authority_ref")
+            _text(self.source_literal_operation, "source_literal_operation")
+            for ref in self.source_event_authority_refs:
+                _authority(ref, "source_event_authority_refs")
+            if tuple(sorted(set(self.source_event_authority_refs), key=lambda ref: ref.key)) != self.source_event_authority_refs:
+                raise Pre553IntegrityError("source_event_authority_refs must be canonical sorted")
         if self.contract_state == "AUTHORIZED":
             if self.operation_authority_ref is None:
                 raise Pre553IntegrityError("AUTHORIZED observed-response contract requires operation authority")
@@ -380,6 +398,14 @@ class ObservedResponseContract:
                 self.target_use_authority_ref.as_dict() if self.target_use_authority_ref else None
             ),
             "target_use_operation": self.target_use_operation,
+            **(
+                {
+                    "source_literal_authority_ref": self.source_literal_authority_ref.as_dict(),
+                    "source_literal_operation": self.source_literal_operation,
+                    "source_event_authority_refs": [ref.as_dict() for ref in self.source_event_authority_refs],
+                }
+                if self.source_literal_authority_ref is not None else {}
+            ),
         }
 
     @property
@@ -446,7 +472,7 @@ class ObservedResponseContract:
     def from_mapping(cls, raw: Mapping[str, Any]) -> "ObservedResponseContract":
         if not isinstance(raw, Mapping):
             raise Pre553IntegrityError("observed-response contract must be a mapping")
-        expected = set(_CONTRACT_FIELDS) | {"contract_ref"}
+        expected = set(_CONTRACT_FIELDS) | set(_OPTIONAL_CONTRACT_FIELDS) | {"contract_ref"}
         unknown = set(raw) - expected
         if unknown:
             raise Pre553IntegrityError(f"unknown observed-response contract fields: {sorted(unknown)}")
@@ -496,6 +522,13 @@ class ObservedResponseContract:
             ),
             target_use_operation=raw.get("target_use_operation"),
             source_config_ref=_optional_exact(raw.get("source_config_ref"), "source_config_ref"),
+            source_literal_authority_ref=_optional_authority(
+                raw.get("source_literal_authority_ref"), "source_literal_authority_ref"),
+            source_literal_operation=raw.get("source_literal_operation"),
+            source_event_authority_refs=(
+                _authority_tuple(raw.get("source_event_authority_refs"), "source_event_authority_refs")
+                if raw.get("source_event_authority_refs") else ()
+            ),
         )
         provided_ref = raw.get("contract_ref")
         if provided_ref is not None:
@@ -505,6 +538,11 @@ class ObservedResponseContract:
         return contract
 
 
+_OPTIONAL_CONTRACT_FIELDS = (
+    "source_literal_authority_ref",
+    "source_literal_operation",
+    "source_event_authority_refs",
+)
 _CONTRACT_FIELDS = (
     "schema",
     "contract_id",
@@ -583,6 +621,30 @@ def validate_contract_authority(
         _require_snapshot_source_binding(topology, contract)
         if topology.scope_envelope.get("fixture_only") is True and contract.authority_grade != "NONRESPONDENT_FIXTURE_ONLY":
             raise Pre553AuthorityError("fixture-only topology authority cannot authorize original science")
+
+    if contract.source_literal_authority_ref is not None:
+        literal = registry.resolve_exact(contract.source_literal_authority_ref).snapshot
+        require_positive_authority(
+            literal,
+            authority_kind="PHYSICAL_NATIVE_REPRESENTATION_BINDING",
+            operation=contract.source_literal_operation,
+            object_family="RespondentEvent@1.0.0",
+            source_universe_ref=contract.universe_ref.as_dict() if contract.universe_ref else None,
+        )
+        scope = literal.scope_envelope
+        if scope.get("canonical_adoption") != "DENY":
+            raise Pre553AuthorityError("source-literal authority must explicitly deny canonical adoption")
+        expected_refs = {ref.key for ref in contract.source_event_authority_refs}
+        declared_refs = {
+            _authority(item, "source_event_authority_refs").key
+            for item in scope.get("historical_event_authority_refs", ())
+        }
+        if declared_refs != expected_refs:
+            raise Pre553AuthorityError("source-literal authority does not bind exact historical event refs")
+        if literal.scope_envelope.get("fixture_only") is True and contract.authority_grade != "NONRESPONDENT_FIXTURE_ONLY":
+            raise Pre553AuthorityError("fixture-only source-literal authority cannot authorize original science")
+    elif contract.source_literal_operation is not None or contract.source_event_authority_refs:
+        raise Pre553AuthorityError("source-literal binding is incomplete")
 
     if contract.target_use_authority_ref is None:
         if contract.target_use_ref is not None or contract.target_use_operation is not None:
@@ -712,6 +774,9 @@ def validate_contract_for_query(
             sorted(component.response_semantic_authority_refs, key=lambda ref: ref.key)
         ):
             raise Pre553AuthorityError("observed-response semantic authority is not bound to target")
+        if contract.source_literal_authority_ref is not None:
+            if tuple(binding.response_semantic_authority_refs) != (contract.source_literal_authority_ref,):
+                raise Pre553AuthorityError("source-literal contract requires source-literal response authority")
         if set(component.included_states) != set(contract.observed_states):
             raise Pre553AuthorityError("observed-response included states differ from contract")
 
@@ -776,6 +841,49 @@ def topology_binding_for(
     raise Pre553AuthorityError("observed-response target lacks exact topology binding")
 
 
+def validate_source_literal_object(
+    obj: Any,
+    contract: ObservedResponseContract,
+) -> AuthorityRef | None:
+    """Validate any source object whose historical authority refs are under the
+    explicit source-literal grant.  No canonical or semantic ALLOW is inferred."""
+    if contract.source_literal_authority_ref is None:
+        return None
+    allowed = {ref.key for ref in contract.source_event_authority_refs}
+    obj_refs = tuple(authority_ref(ref, "object.authority_snapshot_refs")
+                     for ref in obj.authority_snapshot_refs)
+    unexpected = [ref.key for ref in obj_refs if ref.key not in allowed]
+    if unexpected:
+        raise Pre553AuthorityError(
+            "object authority closure contains a ref outside the source-literal grant")
+    return contract.source_literal_authority_ref
+
+
+def validate_source_literal_event(
+    event: Any,
+    contract: ObservedResponseContract,
+) -> AuthorityRef | None:
+    """Validate a source-native event under an explicit source-literal authority.
+
+    The historical event authority refs may be preparation/DEFER refs: the positive
+    source-literal snapshot is the operation authority for using their raw values,
+    and it explicitly denies canonical adoption.  No canonical ALLOW is inferred.
+    """
+    if contract.source_literal_authority_ref is None:
+        return None
+    allowed = {ref.key for ref in contract.source_event_authority_refs}
+    event_refs = tuple(authority_ref(ref, "event.authority_snapshot_refs")
+                       for ref in event.authority_snapshot_refs)
+    unexpected = [ref.key for ref in event_refs if ref.key not in allowed]
+    if unexpected:
+        raise Pre553AuthorityError(
+            "event authority closure contains a ref outside the source-literal grant")
+    if getattr(event, "canonical_response_value_if_authorized", None) is not None:
+        raise Pre553AuthorityError(
+            "observed source-literal operation cannot consume a canonical response value")
+    return contract.source_literal_authority_ref
+
+
 __all__ = [
     "OBSERVED_RESPONSE_RISK_SET",
     "CO_OBSERVED_RESPONSE_RISK_SET",
@@ -792,4 +900,6 @@ __all__ = [
     "validate_contract_for_query",
     "contract_for_query",
     "topology_binding_for",
+    "validate_source_literal_object",
+    "validate_source_literal_event",
 ]

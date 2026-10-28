@@ -110,6 +110,7 @@ class NativeOperation:
     condition_state: str | None
     condition_kind: str | None
     condition_value_ref: ExactRef | None
+    condition_counts: Mapping[str, int] | None = None
     query: EmpiricalQuerySpec | None = None
     predicate: EmpiricalPredicate | None = None
     status: str = "CONSTRUCTED"
@@ -131,6 +132,7 @@ class NativeOperation:
             "condition_kind": self.condition_kind,
             "condition_state": self.condition_state,
             "condition_value_ref": self.condition_value_ref.as_dict() if self.condition_value_ref else None,
+            "condition_counts": dict(self.condition_counts) if self.condition_counts is not None else None,
             "query_ref": self.query.ref.as_dict() if self.query is not None else None,
             "status": self.status,
             "detail": self.detail,
@@ -302,29 +304,91 @@ def _branch_predicate_ast(contract: ObservedResponseContract, release: C11Logica
     }
 
 
+def _condition_members(
+    release: C11LogicalRelease,
+    view: TargetView,
+    condition: Mapping[str, Any],
+    contract: ObservedResponseContract,
+    target_ref: ExactRef,
+) -> tuple[tuple[ExactRef, ...], Mapping[str, int]]:
+    target_events: dict[str, list[Any]] = {}
+    condition_events: dict[str, list[Any]] = {}
+    for event in release.public_objects:
+        if event.schema_id != "RespondentEvent":
+            continue
+        respondent = exact_ref(event.scoped_respondent_ref, "scoped_respondent_ref")
+        if _event_matches(event, target_ref):
+            target_events.setdefault(respondent.key, []).append(event)
+        if _event_matches(event, view.target_ref):
+            condition_events.setdefault(respondent.key, []).append(event)
+    respondent_by_key = {
+        record.ref.key: record for record in release.internal_records
+        if isinstance(record, RespondentIdentity)
+    }
+    unobserved = 0
+    false = 0
+    matching_keys: set[str] = set()
+    for respondent_key, events in target_events.items():
+        if not any(event.typed_state in contract.observed_states for event in events):
+            continue
+        conditions = [
+            event for event in condition_events.get(respondent_key, [])
+            if event.typed_state in contract.observed_states
+        ]
+        if not conditions:
+            unobserved += 1
+            continue
+        matches = False
+        for event in conditions:
+            if condition["kind"] == "STATE":
+                matches = event.typed_state == condition.get("typed_state")
+            else:
+                matches = _event_cell(event) == canonicalize(condition.get("exact_value"))
+            if matches:
+                break
+        if matches:
+            matching_keys.add(respondent_key)
+        else:
+            false += 1
+    member_refs = tuple(sorted(
+        (respondent_by_key[key].ref for key in matching_keys if key in respondent_by_key),
+        key=lambda ref: ref.key,
+    ))
+    return member_refs, {
+        "condition_unobserved": unobserved,
+        "condition_false": false,
+        "condition_true": len(member_refs),
+    }
+
 def _condition_predicate_ast(
     contract: ObservedResponseContract,
     view: TargetView,
     condition: Mapping[str, Any],
+    member_refs: tuple[ExactRef, ...],
+    target_ref: ExactRef,
 ) -> dict[str, Any]:
+    if contract.operation_authority_ref is None or contract.universe_ref is None:
+        raise NativeWorkloadRefusal("CONTRACT_OPERATION_AUTHORITY_AND_UNIVERSE_REQUIRED")
+    material = {
+        "contract_ref": contract.ref.as_dict(),
+        "target_ref": target_ref.as_dict(),
+        "condition_ref": view.target_ref.as_dict(),
+        "condition_kind": condition["kind"],
+        "condition_state": condition.get("state"),
+        "condition_value_ref": condition["value_ref"].as_dict(),
+    }
     return {
         "op": "LEAF",
-        "leaf_type": "SURVEY_RESPONSE_EVENT",
-        "question_semantic_ref": view.target_ref.as_dict(),
-        "component_or_event_selector_ref": _replay_ref(
-            "EVENT_SELECTOR", {"target_ref": view.target_ref.as_dict(), "kind": condition["kind"]}).as_dict(),
-        "response_value_or_state_ref": condition["value_ref"].as_dict(),
-        "response_topology_authority_ref": view.binding.topology_authority_ref.as_dict(),
-        "response_semantic_authority_ref": (
-            view.binding.response_semantic_authority_refs[0].as_dict()
-            if view.binding.response_semantic_authority_refs
-            else None
-        ),
-        "operator": condition["operator"],
-        "typed_state": condition.get("typed_state"),
-        "exact_value": condition.get("exact_value"),
+        "leaf_type": "DERIVED_BRANCH_COHORT",
+        "branch_definition_id": "OBSERVED-CONDITION-COHORT",
+        "resolved_predicate_hash_or_exact_membership_ref": _replay_ref(
+            "BRANCH_MEMBERSHIP", material).as_dict(),
+        "parent_ancestry_ref": _replay_ref("BRANCH_PARENT", material).as_dict(),
+        "branch_algorithm_authority_ref": contract.operation_authority_ref.as_dict(),
+        "branch_membership_replay_ref": _replay_ref("BRANCH_REPLAY", material).as_dict(),
+        "branch_source_scope_ref": contract.universe_ref.as_dict(),
+        "exact_member_respondent_refs": [ref.as_dict() for ref in member_refs],
     }
-
 
 def _make_predicate(
     contract: ObservedResponseContract,
@@ -378,15 +442,29 @@ def _make_query(
     predicate: EmpiricalPredicate,
     risk_set_type: str,
     tag: str,
+    condition_counts: Mapping[str, int] | None = None,
 ) -> EmpiricalQuerySpec:
     if contract.operation_authority_ref is None:
         raise NativeWorkloadRefusal("CONTRACT_OPERATION_AUTHORITY_REQUIRED")
     if contract.universe_ref is None:
         raise NativeWorkloadRefusal("CONTRACT_UNIVERSE_REQUIRED")
+    target_use = {}
+    closure_authorities = [contract.operation_authority_ref]
+    query_dependencies = [predicate.ref, contract.ref]
+    if contract.target_use_authority_ref is not None:
+        if contract.target_use_ref is None or contract.target_use_operation is None:
+            raise NativeWorkloadRefusal("CONTRACT_TARGET_USE_INCOMPLETE")
+        target_use = {
+            "target_use_ref": contract.target_use_ref.as_dict(),
+            "target_use_authority_ref": contract.target_use_authority_ref.as_dict(),
+            "target_use_operation": contract.target_use_operation,
+        }
+        closure_authorities.append(contract.target_use_authority_ref)
+        query_dependencies.append(contract.target_use_ref)
     query = EmpiricalQuerySpec(
         typed_state="QUERY_AUTHORIZED_RESOLVABLE",
-        authority_snapshot_refs=(contract.operation_authority_ref,),
-        dependency_refs=(predicate.ref, contract.ref),
+        authority_snapshot_refs=tuple(dict.fromkeys(closure_authorities)),
+        dependency_refs=tuple(query_dependencies),
         producer_replay_locator_or_reference_root=_replay_ref(
             "REPLAY_ROOT", {"contract_ref": contract.ref.as_dict(), "tag": tag}),
         target_refs=tuple(view.target_ref for view in views),
@@ -413,6 +491,8 @@ def _make_query(
             "query_operation": contract.operation,
             "observed_response_contract_ref": contract.ref.as_dict(),
             "observed_response_contract": contract.semantic_projection(),
+            "observed_response_condition_counts": dict(condition_counts) if condition_counts is not None else None,
+            **target_use,
         },
         query_authority_refs=(contract.operation_authority_ref,),
     )
@@ -528,6 +608,8 @@ def build_native_workload(
                 if condition_target.target_ref == target.target_ref:
                     continue
                 for condition in condition_target.conditions:
+                    member_refs, condition_counts = _condition_members(
+                        release, condition_target, condition, contract, target.target_ref)
                     operation_id = _operation_id(
                         "BIDIRECTIONAL_CONDITIONAL_DISTRIBUTION",
                         (target.target_ref,),
@@ -541,16 +623,19 @@ def build_native_workload(
                         condition_state=condition.get("state"),
                         condition_kind=condition.get("kind"),
                         condition_value_ref=condition.get("value_ref"),
+                        condition_counts=condition_counts,
                         status="CONSTRUCTED" if authorized else "BLOCKED_CONTRACT_NOT_AUTHORIZED",
                     )
                     if authorized:
-                        ast = _condition_predicate_ast(contract, condition_target, condition)
+                        ast = _condition_predicate_ast(
+                            contract, condition_target, condition, member_refs, target.target_ref)
                         predicate = _make_predicate(contract, release, ast, tag=f"conditional:{operation_id}")
                         operation.predicate = predicate
                         operation.query = _make_query(
                             contract=contract, views=(target,), predicate=predicate,
                             risk_set_type=OBSERVED_RESPONSE_RISK_SET,
-                            tag=f"conditional:{operation_id}")
+                            tag=f"conditional:{operation_id}",
+                            condition_counts=condition_counts)
                     operations.append(operation)
 
     counts = Counter(operation.status for operation in operations)

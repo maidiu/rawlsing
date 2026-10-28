@@ -138,6 +138,7 @@ class _ExecutionProfile:
     uncertainty_method_or_typed_state: Any
     observed_response_contract_ref: ExactRef | None = None
     observed_response_contract: Mapping[str, Any] | None = None
+    observed_response_condition_counts: Mapping[str, int] | None = None
 
 
 @dataclass(frozen=True)
@@ -318,6 +319,7 @@ def _profile(query: EmpiricalQuerySpec) -> _ExecutionProfile:
     observed_material_raw = grain.get("observed_response_contract")
     observed_ref: ExactRef | None = None
     observed_material: Mapping[str, Any] | None = None
+    observed_condition_counts: Mapping[str, int] | None = None
     if risk in OBSERVED_RESPONSE_RISK_SET_TYPES:
         if measure != "RAW":
             raise EmpiricalQueryExecutionError(
@@ -332,6 +334,17 @@ def _profile(query: EmpiricalQuerySpec) -> _ExecutionProfile:
         if observed_material.get("contract_ref") is not None:
             raise EmpiricalQueryExecutionError(
                 "observed_response_contract material must not embed its own contract_ref")
+        raw_counts = grain.get("observed_response_condition_counts")
+        if raw_counts is not None:
+            counts = _require_mapping(raw_counts, "observed_response_condition_counts")
+            normalized_counts: dict[str, int] = {}
+            for key in ("condition_unobserved", "condition_false", "condition_true"):
+                value = counts.get(key, 0)
+                if not isinstance(value, int) or isinstance(value, bool) or value < 0:
+                    raise EmpiricalQueryExecutionError(
+                        "observed_response_condition_counts values must be nonnegative integers")
+                normalized_counts[key] = value
+            observed_condition_counts = MappingProxyType(normalized_counts)
     else:
         if observed_ref_raw is not None or observed_material_raw is not None:
             raise EmpiricalQueryExecutionError(
@@ -346,6 +359,7 @@ def _profile(query: EmpiricalQuerySpec) -> _ExecutionProfile:
         canonicalize(uncertainty),
         observed_ref,
         observed_material,
+        observed_condition_counts,
     )
 
 

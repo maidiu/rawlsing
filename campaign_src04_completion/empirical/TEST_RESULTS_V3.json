@@ -1,0 +1,83 @@
+{
+  "schema": "PYAT_SRC04_LANE_C_TEST_RESULTS@3.0.0",
+  "authorized_execution_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest campaign_src04_completion/empirical/test_authorized_execution.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      "......                                                                   [100%]",
+      "6 passed in 2.61s"
+    ],
+    "count": 6
+  },
+  "observed_response_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_observed_response.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      ".............                                                            [100%]",
+      "13 passed in 3.41s"
+    ],
+    "count": 13
+  },
+  "i03_regression_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_i03_scale_equivalence_repair.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      ".......................................                                  [100%]",
+      "39 passed in 0.92s"
+    ],
+    "count": 39
+  },
+  "consumer_regression_tests": {
+    "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_pre553_candidate_c_production_binding.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py -q -o addopts=",
+    "exit": 0,
+    "result": [
+      ".................                                                        [100%]",
+      "17 passed in 1.89s"
+    ],
+    "count": 17
+  },
+  "preserved_v2_native_fixture_evidence": {
+    "path": "campaign_src04_completion/empirical/NATIVE_WORKLOAD_EVIDENCE.json",
+    "sha256": "52a278200775fc56cb05a600e99782f329ec7f7834037ccea8ab8f68e9fc2783",
+    "status": "HISTORICAL_V2_ONLY_NOT_RERUN_IN_V3"
+  },
+  "code_hashes": {
+    "rawlsing_next/pre553_observed_response.py": "a01f704168c13596f7ba36c2ad7cf4f993789fff16950d0ada33b0f958a6e55d",
+    "rawlsing_next/_pre553_query_common.py": "37bcaed147f1503e967cccec18e22c73ff6a363e6599b98b6e0f724de00816c1",
+    "rawlsing_next/_pre553_query_eval.py": "cd3bc1b46fe2f332fe498cb8b6f74b51ac9a01d519ca5e7b6e0b1555a4c782ad",
+    "rawlsing_next/pre553_empirical_query.py": "4d6b33405d477efefbc7f1274b7165c7ff530fb38efabdf324f2e81acd7228cd",
+    "campaign_src04_completion/empirical/native_workload.py": "a410f9b0176f10ba16878f355f499b1e0b2cea1ede520aacd7ef80bc2bb6fa37",
+    "campaign_src04_completion/empirical/run_native_workload.py": "a4b74c9079d4c46fe09557ceb87d07e64f158331cfe5eee730dd0e756a2f5694",
+    "campaign_src04_completion/empirical/authorized_execution.py": "fc3fd5e10bf3f1bf84981cd514a856ab4b8204adb7f4236860abc83cd012153d",
+    "campaign_src04_completion/empirical/consumer_bridge.py": "b15803487f7190f9c72bc69a833c715a38eab779c1be07a7690bcd652f297939",
+    "campaign_src04_completion/empirical/test_authorized_execution.py": "3ba06a6f1280de85b9447bbbcfc640a1f72641af6c3cc118f3761515d70d9dfa",
+    "rawlsing_next/tests/test_observed_response.py": "abf7fe1c6348dae0e2d9cd6d57958fcf8495267fd57a933eda01f79855a0eb91"
+  },
+  "artifacts": {
+    "campaign_src04_completion/empirical/USER_EMPIRICAL_GRANT.json": "757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f",
+    "campaign_src04_completion/empirical/SCOPE_LEDGER_V2.json": "0a57024ead261d8c9f26e2415eb6cd6ae9aaacf98ceb7600340fe3995533ee1e",
+    "campaign_src04_completion/empirical/CONTRACT_APPROVAL_READY_V2.json": "7cb4a1e7a3a96c588e33c2a231392014702ab39344ab8c6a77d69bbf9ff469e3",
+    "campaign_src04_completion/empirical/NATIVE_WORKLOAD_PREFLIGHT.json": "81bcff2340318a251bd4bc60669cf39beb154a45ec02562a4c909a3df7901cf1",
+    "campaign_src04_completion/empirical/AUTHORIZED_EXECUTION_API.md": "5e4501f26fa2bd52d0b6e82e892ec9e67581ea5af64220b1e22a516b80476c81"
+  },
+  "grant": {
+    "sha256": "757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f",
+    "authenticated": true
+  },
+  "preflight_status": "AUTHENTICATED_GRANT_ISSUER_READY__RELEASE_INPUT_PENDING",
+  "original_source_io": {
+    "status": "NONE",
+    "source_read_performed": false
+  },
+  "original_workload": {
+    "issued": 0,
+    "executed": 0,
+    "reason": "exact full native C11 release input absent; A product not final"
+  },
+  "limits": [
+    "No original SAV stat/hash/open/decode/read by Lane C.",
+    "No original workload issued or executed.",
+    "V2 native fixture evidence preserved, not rerun as V3 original proof.",
+    "No canonical/weight/population/structural/I05 claim."
+  ]
+}

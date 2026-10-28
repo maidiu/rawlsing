@@ -12,6 +12,8 @@ from rawlsing_next.pre553_observed_response import (
     ObservedResponseContract,
     contract_for_query,
     topology_binding_for,
+    validate_source_literal_event,
+    validate_source_literal_object,
 )
 
 
@@ -183,6 +185,7 @@ def _target_component_value(
     used_auth: list[AuthorityRef],
     *,
     topology_binding=None,
+    observed_contract: ObservedResponseContract | None = None,
 ) -> tuple[bool, Any]:
     events = [
         event for event in index.events_by_respondent[respondent.ref.key]
@@ -206,16 +209,28 @@ def _target_component_value(
                 raise UnsupportedResponseTopology(
                     f"query target topology {component.topology!r} cannot collapse exact C11 carrier topology {carrier_topology!r}"
                 )
-        if not any(ref in event.authority_snapshot_refs for ref in component.topology_authority_refs):
-            raise Pre553AuthorityError(
-                "target topology authority bundle does not bind matched C11 response event"
-            )
-        if not any(ref in event.authority_snapshot_refs for ref in component.response_semantic_authority_refs):
-            raise Pre553AuthorityError(
-                "target response-semantic authority bundle does not bind matched C11 response event"
-            )
-        used.append(event)
-        used_auth.extend(_validate_public_object_authorities(event, registry))
+        source_literal = (
+            observed_contract is not None
+            and observed_contract.source_literal_authority_ref is not None
+        )
+        if source_literal:
+            literal_ref = validate_source_literal_event(event, observed_contract)
+            used.append(event)
+            if literal_ref is not None:
+                used_auth.append(literal_ref)
+            if component.topology_authority_refs:
+                used_auth.extend(component.topology_authority_refs)
+        else:
+            if not any(ref in event.authority_snapshot_refs for ref in component.topology_authority_refs):
+                raise Pre553AuthorityError(
+                    "target topology authority bundle does not bind matched C11 response event"
+                )
+            if not any(ref in event.authority_snapshot_refs for ref in component.response_semantic_authority_refs):
+                raise Pre553AuthorityError(
+                    "target response-semantic authority bundle does not bind matched C11 response event"
+                )
+            used.append(event)
+            used_auth.extend(_validate_public_object_authorities(event, registry))
 
     topology = component.topology
     if topology == "SCALAR_SINGULAR":
@@ -294,6 +309,7 @@ def _target_configuration(
         resolved, value = _target_component_value(
             respondent, index, component, registry, used, used_auth,
             topology_binding=binding,
+            observed_contract=observed_contract,
         )
         if not resolved:
             return False, None
@@ -364,6 +380,7 @@ def _observed_target_observed(
         resolved, _ = _target_component_value(
             respondent, index, component, registry, used, used_auth,
             topology_binding=binding,
+            observed_contract=contract,
         )
         if not resolved:
             return False
@@ -473,8 +490,18 @@ def _evaluate_index_group(
             "scoped_respondents": sum(len(index.respondents) for index in indices),
             "target_observed": 0,
             "target_unobserved": 0,
-            "condition_unobserved": 0,
-            "condition_false": 0,
+            "condition_unobserved": (
+                profile.observed_response_condition_counts.get("condition_unobserved", 0)
+                if profile.observed_response_condition_counts is not None else 0
+            ),
+            "condition_false": (
+                profile.observed_response_condition_counts.get("condition_false", 0)
+                if profile.observed_response_condition_counts is not None else 0
+            ),
+            "condition_true_precomputed": (
+                profile.observed_response_condition_counts.get("condition_true", 0)
+                if profile.observed_response_condition_counts is not None else 0
+            ),
             "denominator": 0,
             "resolved_targets": 0,
             "unresolved_after_denominator": 0,
@@ -493,7 +520,6 @@ def _evaluate_index_group(
 
     for index in sorted(indices, key=lambda item: item.universe.ref.key):
         used.extend([index.universe, index.release.replay_manifest])
-        used_auth.extend(_validate_public_object_authorities(index.universe, registry))
         observed_contract = None
         exact_risk_set_contract = None
         if profile.observed_response_contract_ref is not None:
@@ -506,7 +532,13 @@ def _evaluate_index_group(
                 universe=index.universe,
                 registry=registry,
             )
-        elif runtime_binding is not None:
+        if observed_contract is not None and observed_contract.source_literal_authority_ref is not None:
+            literal_ref = validate_source_literal_object(index.universe, observed_contract)
+            if literal_ref is not None:
+                used_auth.append(literal_ref)
+        else:
+            used_auth.extend(_validate_public_object_authorities(index.universe, registry))
+        if profile.observed_response_contract_ref is None and runtime_binding is not None:
             exact_risk_set_contract = (
                 runtime_binding.authorities.resolve_exact_risk_set_successor(
                     query=query,
@@ -538,7 +570,8 @@ def _evaluate_index_group(
                     index=index,
                     contract=observed_contract,
                 ):
-                    observed_ledger["condition_unobserved"] += 1
+                    if profile.observed_response_condition_counts is None:
+                        observed_ledger["condition_unobserved"] += 1
                     continue
                 condition = _eval_predicate(
                     predicate.predicate_ast,
@@ -550,7 +583,8 @@ def _evaluate_index_group(
                     derived_branch_memberships=derived_branch_memberships,
                 )
                 if not condition:
-                    observed_ledger["condition_false"] += 1
+                    if profile.observed_response_condition_counts is None:
+                        observed_ledger["condition_false"] += 1
                     continue
             else:
                 per_target_states: list[str] = []

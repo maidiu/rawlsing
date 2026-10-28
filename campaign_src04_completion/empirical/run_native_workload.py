@@ -14,6 +14,17 @@ import hashlib
 import json
 from pathlib import Path
 
+from campaign_src04_completion.empirical.authorized_execution import (
+    AuthorizedExecutionRefusal,
+    GRANT_SHA256,
+    SOURCE_SHA256,
+    authenticate_grant,
+    execute_issued,
+    issue_authorized_execution,
+    load_parquet_release,
+    preflight,
+)
+from campaign_src04_completion.empirical.consumer_bridge import consume_with_lane_d
 from campaign_src04_completion.empirical.native_workload import (
     NativeWorkloadRefusal,
     WorkloadPolicy,
@@ -28,6 +39,9 @@ DEFAULT_SCOPE = EMPIRICAL / "SCOPE_LEDGER_V2.json"
 DEFAULT_CONTRACT = EMPIRICAL / "CONTRACT_APPROVAL_READY_V2.json"
 PLAN_PATH = EMPIRICAL / "NATIVE_WORKLOAD_PLAN_V2.json"
 REFUSAL_PATH = EMPIRICAL / "NATIVE_WORKLOAD_REFUSAL.json"
+GRANT_PATH = EMPIRICAL / "USER_EMPIRICAL_GRANT.json"
+EXECUTION_PATH = EMPIRICAL / "NATIVE_WORKLOAD_EXECUTION.json"
+PREFLIGHT_PATH = EMPIRICAL / "NATIVE_WORKLOAD_PREFLIGHT.json"
 
 
 def _sha(path: Path) -> str:
@@ -89,19 +103,99 @@ def run_fixture() -> int:
     return 0
 
 
-def run_execute() -> int:
-    refusal = {
-        "schema": "PYAT_SRC04_NATIVE_WORKLOAD_REFUSAL@2.0.0",
-        "status": "REFUSED",
-        "actual_code": "ORIGINAL_EXECUTION_REQUIRES_FULL_RELEASE_AND_EXACT_AUTHORITY",
+def run_execute(
+    *,
+    grant_path: Path,
+    grant_sha256: str,
+    scope_path: Path,
+    contract_path: Path,
+    parquet_root: Path | None,
+    release_id: str | None,
+    semantic_hash_value: str | None,
+    start_after_operation_id: str | None,
+    run_consumer: bool,
+) -> int:
+    grant = authenticate_grant(grant_path, grant_sha256)
+    scope = _load(scope_path)
+    pending = _contract(contract_path)
+    if scope.get("contract_ref") != pending.ref.as_dict():
+        raise NativeWorkloadRefusal("SCOPE_CONTRACT_REF_MISMATCH")
+    policy = WorkloadPolicy.from_mapping(scope.get("workload_policy", {}))
+    if parquet_root is None or release_id is None or semantic_hash_value is None:
+        pending_record = preflight(grant=grant, pending_contract=pending, scope=scope)
+        pending_record["required_command"] = (
+            "PYTHONPATH=. python3 campaign_src04_completion/empirical/run_native_workload.py "
+            "--mode execute --parquet-root <exact-parquet-root> --release-id <exact-release-id> "
+            "--semantic-hash <exact-semantic-hash> --source-sha "
+            "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18 "
+            "--consumer"
+        )
+        pending_record["consumer_path"] = {
+            "owner": "campaign_src04_completion.consumers.consumer.consume_native_producer",
+            "status": "READ_ONLY_EXTERNAL_DEPENDENCY_NOT_JOINED",
+            "dependency": "accepted Lane D consumer module",
+            "discovery_or_effective_n_required": True,
+        }
+        _write(PREFLIGHT_PATH, pending_record)
+        print(json.dumps({
+            "status": pending_record["status"],
+            "grant_sha256": grant.sha256,
+            "preflight": str(PREFLIGHT_PATH.relative_to(ROOT)),
+            "required_input": pending_record["release_input_required"],
+        }, indent=2))
+        return 0
+    release = load_parquet_release(
+        root=parquet_root,
+        source_sha256=SOURCE_SHA256,
+        release_id=release_id,
+        semantic_hash_value=semantic_hash_value,
+    )
+    issued = issue_authorized_execution(
+        grant=grant, release=release, pending_contract=pending, policy=policy)
+    workload = execute_issued(
+        issued, start_after_operation_id=start_after_operation_id)
+    record = {
+        "schema": "PYAT_SRC04_AUTHORIZED_NATIVE_EXECUTION@1.0.0",
+        "status": "AUTHORIZED_NATIVE_EXECUTION_COMPLETE",
+        "grant": {"path": str(grant.path.relative_to(ROOT)) if grant.path.is_relative_to(ROOT) else str(grant.path), "sha256": grant.sha256, "ref": grant.ref.as_dict()},
+        "release_ref": release.release_ref.as_dict(),
+        "source_artifact_ref": release.source_artifact_ref.as_dict(),
+        "source_release_manifest_hash": release.source_release_manifest_hash,
+        "contract_ref": issued.contract.ref.as_dict(),
+        "authority_refs": {
+            "source_literal": issued.source_literal_authority_ref.as_dict(),
+            "target_use": issued.target_use_authority_ref.as_dict(),
+            "topology_count": len(issued.topology_authority_refs),
+        },
+        "held_targets": list(issued.held_targets),
+        "workload": workload.receipt(),
+        "original_workload_issued": True,
         "source_read_performed": False,
-        "original_workload_issued": False,
-        "reason": "Lane C has no full SRC04 release or positive observed-response operation/topology authority; source-free execution cannot be claimed.",
-        "allowed_modes": ["plan", "fixture-evidence"],
+        "raw_respondent_rows_committed": False,
+        "consumer_path": {
+            "owner": "campaign_src04_completion.consumers.consumer.consume_native_producer",
+            "required_dependency": "accepted Lane D consumer module joined as read-only dependency",
+            "command": "PYTHONPATH=. python3 campaign_src04_completion/empirical/run_native_workload.py --mode execute ... --consumer",
+            "discovery_or_effective_n_required": True,
+        },
     }
-    _write(REFUSAL_PATH, refusal)
-    print(json.dumps(refusal, indent=2))
-    return 2
+    if run_consumer:
+        bridge = consume_with_lane_d(grant=grant, issued=issued, workload=workload)
+        record["consumer"] = {
+            "status": bridge.status,
+            "detail": bridge.detail,
+            "product": canonicalize(bridge.product) if bridge.product is not None else None,
+        }
+    _write(EXECUTION_PATH, record)
+    print(json.dumps({
+        "status": record["status"],
+        "execution": str(EXECUTION_PATH.relative_to(ROOT)),
+        "contract_ref": record["contract_ref"],
+        "executed": workload.accounting.get("executed_operations"),
+        "refused": workload.accounting.get("refused_operations"),
+        "held_targets": len(issued.held_targets),
+    }, indent=2))
+    return 0
 
 
 def main(argv=None) -> int:
@@ -109,14 +203,31 @@ def main(argv=None) -> int:
     parser.add_argument("--mode", choices=("plan", "fixture-evidence", "execute"), default="plan")
     parser.add_argument("--scope", default=str(DEFAULT_SCOPE))
     parser.add_argument("--contract", default=str(DEFAULT_CONTRACT))
+    parser.add_argument("--grant", default=str(GRANT_PATH))
+    parser.add_argument("--grant-sha256", default=GRANT_SHA256)
+    parser.add_argument("--parquet-root", default=None)
+    parser.add_argument("--release-id", default=None)
+    parser.add_argument("--semantic-hash", default=None)
+    parser.add_argument("--start-after", default=None)
+    parser.add_argument("--consumer", action="store_true")
     args = parser.parse_args(argv)
     try:
         if args.mode == "plan":
             return run_plan(Path(args.scope), Path(args.contract))
         if args.mode == "fixture-evidence":
             return run_fixture()
-        return run_execute()
-    except NativeWorkloadRefusal as exc:
+        return run_execute(
+            grant_path=Path(args.grant),
+            grant_sha256=args.grant_sha256,
+            scope_path=Path(args.scope),
+            contract_path=Path(args.contract),
+            parquet_root=Path(args.parquet_root) if args.parquet_root else None,
+            release_id=args.release_id,
+            semantic_hash_value=args.semantic_hash,
+            start_after_operation_id=args.start_after,
+            run_consumer=args.consumer,
+        )
+    except (NativeWorkloadRefusal, AuthorizedExecutionRefusal) as exc:
         print(json.dumps({"status": "REFUSED", "actual_code": exc.code, "detail": exc.detail}, indent=2))
         return 2
 
