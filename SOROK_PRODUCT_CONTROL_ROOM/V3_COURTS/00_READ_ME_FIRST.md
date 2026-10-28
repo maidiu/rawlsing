@@ -1,6 +1,6 @@
 # CURRENT SCIENCE-TO-CAPABILITY COMMAND FOR V3 COURTS
 
-**First read the [Sorok command](../COMMAND/00_COMMAND.md) and [scientific decision frontier](../COMMAND/01_SCIENTIFIC_DECISION_FRONTIER.md), then use this V3 Courts original evidence/archive.** Prior 10/10 authored and 8/8 independent historic/theoretical research closures below are **not** current native implementation status. [Capability register](../COMMAND/02_CAPABILITY_REGISTER.json), [completion sequence](../COMMAND/03_COMPLETION_SEQUENCE.md), [actual flight cut](../COMMAND/04_FLIGHT_AND_CURRENTNESS.md).
+**First read the [Sorok command](../COMMAND/00_COMMAND.md) and [scientific decision frontier](../COMMAND/01_SCIENTIFIC_DECISION_FRONTIER.md), then use this V3 Courts original evidence/archive.** Prior 10/10 authored and 8/8 independent historic/theoretical research closures below are **not** current native implementation status. [Capability register](../COMMAND/02_CAPABILITY_REGISTER.json), [completion sequence](../COMMAND/03_COMPLETION_SEQUENCE.md), [actual flight cut](../COMMAND/04_FLIGHT_AND_CURRENTNESS.md), and the [common Browser/Codex update protocol](../COMMAND/06_HQ_COORDINATION_AND_UPDATE_PROTOCOL.md).
 
 **Active decision order:** O03 CAN008 Rule A, O05/O07 CAN011 durable PRACTICE or evaluated nochange, O01/O09 need/activity, O08 independently real B; then O02/O04 scoped expectation and N09/SCI05, later event-batch policy, genealogy and Pyat weld. Full independent/source owner law retained, no artificial science issuance by old historic V3 mapping.
 

@@ -1,5 +1,16 @@
 # Sorok from here to completion — single dependency-ordered product trajectory
 
+**How to prosecute this roadmap:** [command first page](00_COMMAND.md), [O01–O16 scientific frontier](01_SCIENTIFIC_DECISION_FRONTIER.md), [machine 19/12/16 capability and decision register](02_CAPABILITY_REGISTER.json), [06 HQ shared maintenance protocol](06_HQ_COORDINATION_AND_UPDATE_PROTOCOL.md). R0–R7 are **not** new milestone owners; they are the existing Astra/Sorok milestones regrouped into ordered actual consumer steps. A phase may be partially coded before upstream scientific issuance if its interface is safely specified. Do not declare a phase COMPLETE because a parallel submodule passed.
+
+### Critical closure chain (actual dependency, not historical commission order)
+1. Original O03/O05/O07 and actual O01/O09/O08 sources → qualified actor experience/response and earned practice or evaluated nochange (scientific critical path; must be decided to execute real causal development).
+2. Repaired C12 / selected C9 writer / existing C9_READER → one same-person, versioned receipt and actual later semantic read (engineering critical path; complete reversible sourcefree interface in parallel now).
+3. Original independently acting B + material intervals + lawful Rule A/T → first real E1→changed/stable actor→E2 with severance and external-help rivals, cold reopen (first *developmental* product capability).
+4. Reuse same machine to add scoped expectations, contradiction/stability, memory/SCI05, material/genealogy lives and user-settled 3–5 N/N+1; solve irreversible-batch O16 before real world effects.
+5. After Pyat N11/N12 service/owner and C11 physical weld, native C12 qualified individual→A0–A5 progressive accepted product evidence.
+
+**Measurable first exit:** ONE actually runnable sourcefree writer→receipt→cold reopen→E2 read with positive and held cases and ablation (R0/R1); separately record whether first concrete Rule A/T and independent B source have been lawfully issued (R2). Do not collapse the two into a fabricated human-learning demo. See individual phase exits below and machine consumer edges E01–E15.
+
 **Derived program combining Astra R3 C0–C12/A0–A5, the existing Sorok 19 milestones, SYN02 F0–F3 and N01–N12.** Not a new architecture and not a claim of native release. Structural scope pinned at parent b0dc1c25… (2026-10-28); see [evidence index](05_EXISTING_AUTHORITIES_AND_EVIDENCE.md). Steps below are actual product capabilities. Sequence causal prerequisites, not a mandate to idle independent work; sourcefree reversible preparation can proceed against sufficient frozen interfaces. Owner/science grants are specific and cannot be made by an engineer.
 
 ## Phase R0 — One canonical SOURCEFREE executable assembly (immediate; central engineering)

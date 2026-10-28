@@ -1,5 +1,11 @@
 # Sorok live evidence/flight cut — 2026-10-28
 
+**CURRENTNESS RULE:** This file records the verified b0dc1c25… evidence cut only. Its branch SHAs remain historical observations, not forever-live pointers. Before actual implementation or updating maturity, fetch the moving remote branch and affected owner state. The command projection itself is published on the HQ foundation; it never establishes whether local Codex/OpenCode processes are running. [Shared Browser/Codex coordination and change stewardship](06_HQ_COORDINATION_AND_UPDATE_PROTOCOL.md).
+
+**Next meaningful scheduling boundary:** (1) resolve one actual original-science O03/O05/O07 question with CAN owner evidence; (2) select/reuse C9 test-only writer and connect real sourcefree read→later E2; (3) pursue first lawful independent B/material encounter; (4) continue actor-safe memory and batch-interface work independently under existing grants. No duplicate RM40 court, no polling unchanged Mac sessions. Sourcefree repair status is not native qualification.
+
+**If a reviewer or worker returns:** identify exact branch+SHA and owned changed paths, verify source/test at the necessary scope, record first actual consumer and affected machine edge. If accepted at that scope, advance. If unchanged, do not regenerate the whole board. The command writer must CAS-refresh the current foundation HEAD before editing.
+
 **This is a time-stamped GitHub read-cut, not a process monitor or license to poll.** Do not call a branch RUNNING merely because it exists. Actual live Mac/OpenCode/Codex sessions were not observed from this GitHub connection. On HQ resumption, refresh only the named affected refs; update changes, not unchanged polling.
 
 **Control-room baseline:** agent/vozhd-sorok-20261026-v3-courts-foundation-r1 at b0dc1c25bc648b7bb4b90c4278d77c009dc52033 (draft PR #509, not merged). Existing human CURRENT_PROGRESS.md revision36 begins with 2026-10-24 material commissions; JSON revision35 remains dated 2026-10-24. They are historical owner attestations, NOT the latest executable capability cut. V3_COURTS original board 10/10 authored+8/8 reviewed tracks earlier science/history courts, not all later flights.

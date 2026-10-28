@@ -1,5 +1,9 @@
 # Existing authority and evidence navigation — NO duplicated atlas
 
+**Operating hierarchy and evidence-grade rules:** [command](00_COMMAND.md) is the current *derived* orientation; [machine register](02_CAPABILITY_REGISTER.json) alone holds command-level C0–A5/N01–N12/O01–O16/consumer-edge status; [shared Browser/Codex protocol](06_HQ_COORDINATION_AND_UPDATE_PROTOCOL.md) governs changed-outcome updates, not scientific issuance. [Original frontier](01_SCIENTIFIC_DECISION_FRONTIER.md), [full sequence](03_COMPLETION_SEQUENCE.md), [observed flight cut](04_FLIGHT_AND_CURRENTNESS.md) are views of the existing originals. Validate locally with validate_command.py before any revised machine grade. No stale-source promotion.
+
+**Provenance ceiling:** The source evidence cut was checked at b0dc1c25bc648b7bb4b90c4278d77c009dc52033, repairs C12 68b058656254234f0af02df2a592aa6f8c6a8bd2 and F0 70470a9fe3593f7561e716ec30e2a2ebcc61885b are sourcefree on separate branches, no native grant; the S06 original law remains unissued at inspected cut. Each new effective ref/owner action must be independently fetched and saved before upgrade.
+
 This is the access crosswalk for the CURRENT command, not an independent new authority or substitution for primary sources.
 
 ## Controlling and historic product plans

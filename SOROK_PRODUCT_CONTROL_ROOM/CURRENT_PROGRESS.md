@@ -1,6 +1,6 @@
 # CURRENT COMMAND POINTER — THIS DOCUMENT RETAINS HISTORICAL OWNER REVISIONS
 
-**For the most recent reconciled October 28 GitHub sourcefree read cut, start at [Sorok COMMAND](COMMAND/00_COMMAND.md), [machine product register](COMMAND/02_CAPABILITY_REGISTER.json), [ranked science frontier](COMMAND/01_SCIENTIFIC_DECISION_FRONTIER.md) and [flight cut](COMMAND/04_FLIGHT_AND_CURRENTNESS.md).** The original rev36 text immediately below and JSON rev35 (October 24) are preserved, not silently restated as current runtime/native status. The new read layer is a proposed branch-local HQ operating view, subject to competent adoption. No original source/scientific/production authority changed.
+**For the most recent reconciled October 28 GitHub sourcefree read cut, start at [Sorok COMMAND](COMMAND/00_COMMAND.md), [machine product register](COMMAND/02_CAPABILITY_REGISTER.json), [ranked science frontier](COMMAND/01_SCIENTIFIC_DECISION_FRONTIER.md) and [flight cut](COMMAND/04_FLIGHT_AND_CURRENTNESS.md) and [the shared Browser/Codex command update contract](COMMAND/06_HQ_COORDINATION_AND_UPDATE_PROTOCOL.md).** The original rev36 text immediately below and JSON rev35 (October 24) are preserved, not silently restated as current runtime/native status. The new read layer is a proposed branch-local HQ operating view, subject to competent adoption. No original source/scientific/production authority changed.
 
 ---
 # Sorok current progress revision36 — two distinct material producer commissions banked, not launched

@@ -1,5 +1,20 @@
 # SOROK COMMAND — completion and decision front door
 
+**OPERATIVE READ ORDER (both Browser HQ and Codex HQ, whenever substantive evidence changes):** this page → [machine capabilities/decisions/consumer edges](02_CAPABILITY_REGISTER.json) → [observed flight/source cut](04_FLIGHT_AND_CURRENTNESS.md) → affected [original-science frontier](01_SCIENTIFIC_DECISION_FRONTIER.md). **Binding shared update/coordination procedure:** [06 HQ coordination](06_HQ_COORDINATION_AND_UPDATE_PROTOCOL.md); run [read-only register validator](validate_command.py) on local checkout before publishing revised command data. Never treat a branch as an actual running process or stale sourcefree component as a native person.
+
+### Executive completion scoreboard — observed evidence cut 2026-10-28
+| Scope | Documented level / count | Proper interpretation |
+|---|---|---|
+| Whole C0–C12 + A0–A5 milestone register | 19 total: 11 level 1, 8 level 2, 0 levels 3–6 | Conservative WHOLE-milestone grades; local code integration has happened but no whole milestone's integrated acceptance is established |
+| Neo-V3 N01–N12 | 12 reviewed scoped requirements; 0 verified issued concrete formation-rule sets | Reviewed scientific requirements do not equal laws of development |
+| Original science O01–O16 | 16 source-owner questions explicitly cross-linked to milestones and 15 consumer edges | Prioritize O03+O05/O07 with O01/O09 and O08; do not substitute fixtures |
+| Native product | 0 terminal milestones accepted at native scope; A5 not operational | Neither sourcefree tests nor an unmerged PR can promote native completion |
+| Foundational components | Repaired sourcefree C12 fork and F0, C9 prototypes, semantic reader, dry-run | Reuse as inputs; canonical writer→reader and genuine Rule A/T remain incomplete |
+
+**One next scientific decision:** Which actor-accessible features and actual practice/activity evidence allow a scoped Rule A response (O03), and a genuinely acquired operation versus unchanged/external assistance (O05/O07)? The original competent CAN owners must issue/withhold a bounded causal rule with rival controls. **First current consumer:** later C9 E2 CAN008 practice-specific response, not narration. **Parallel engineering:** connect one existing C9 writer candidate to the sourcefree reader; integrate on the settled technical interface without pretending Rule T is issued. **Parallel world work:** O08 independently acting B + O01/O09 actual material/need inputs. Do not make a new broad review court.
+
+**Progress discipline:** Cross out a scientific question only on competent scoped issuance/withholding evidence, and a milestone only at its complete demonstrated grade. A sourcefree module repair is valuable engineering but is not another finished human capability. On a changed result, update affected machine row, Oxx decision, consumer edge, short flight cut and exact source SHA—nothing more. Both HQs must use live lease-protected Git source and not overwrite each other. If unchanged, execute or end quietly; no status narration.
+
 **Scope:** managerial command view, reconciled against private GitHub foundation b0dc1c25bc648b7bb4b90c4278d77c009dc52033 on 2026-10-28. This is NOT a replacement for the original source/scientific owners, Astra's specification, CURRENT_PROGRESS's historical receipts, the existing V3 court atlas, or an authority to execute unapproved source work. A saved branch is not a live worker. See README and exact evidence cut below.
 
 ## READ THIS FIRST IN EVERY HQ RESUME
