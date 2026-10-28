@@ -53,6 +53,11 @@ from rawlsing_next.pre553_empirical_objects import (
     exact_ref,
     semantic_hash,
 )
+from rawlsing_next.pre553_observed_response import (
+    CO_OBSERVED_RESPONSE_RISK_SET,
+    OBSERVED_RESPONSE_RISK_SET,
+    OBSERVED_RESPONSE_RISK_SET_TYPES,
+)
 
 QUERY_EXECUTION_CONTRACT_ID = "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0"
 
@@ -70,6 +75,8 @@ RISK_SET_TYPES = frozenset({
     "CANDIDATE_QUESTION_RISK_SET",
     "BRANCH_COHORT_RISK_SET",
     "CUSTOM_GOVERNED_RISK_SET",
+    OBSERVED_RESPONSE_RISK_SET,
+    CO_OBSERVED_RESPONSE_RISK_SET,
 })
 TARGET_TOPOLOGIES = frozenset({
     "SCALAR_SINGULAR",
@@ -129,6 +136,8 @@ class _ExecutionProfile:
     response_state_semantics_ref: ExactRef
     weight_basis_id: str | None
     uncertainty_method_or_typed_state: Any
+    observed_response_contract_ref: ExactRef | None = None
+    observed_response_contract: Mapping[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -183,6 +192,7 @@ class _Evaluation:
     weighted_cells: Mapping[str, Fraction] | None
     used_objects: tuple[CanonicalSemanticObject | C11InternalRecord, ...]
     used_authority_refs: tuple[AuthorityRef, ...]
+    observed_response_ledger: Mapping[str, Any] | None = None
 
 
 def _require_mapping(value: Any, name: str) -> Mapping[str, Any]:
@@ -304,8 +314,39 @@ def _profile(query: EmpiricalQuerySpec) -> _ExecutionProfile:
         weight_basis = weight_basis.strip()
     elif weight_basis is not None:
         raise EmpiricalQueryExecutionError("RAW query may not carry a weight_basis_id")
+    observed_ref_raw = grain.get("observed_response_contract_ref")
+    observed_material_raw = grain.get("observed_response_contract")
+    observed_ref: ExactRef | None = None
+    observed_material: Mapping[str, Any] | None = None
+    if risk in OBSERVED_RESPONSE_RISK_SET_TYPES:
+        if measure != "RAW":
+            raise EmpiricalQueryExecutionError(
+                "observed-response operations are not weighted population estimands")
+        if observed_ref_raw is None or observed_material_raw is None:
+            raise EmpiricalQueryExecutionError(
+                "observed-response risk set requires exact contract ref and material")
+        observed_ref = _exact(
+            observed_ref_raw, "requested_output_grain.observed_response_contract_ref")
+        observed_material = _require_mapping(
+            observed_material_raw, "requested_output_grain.observed_response_contract")
+        if observed_material.get("contract_ref") is not None:
+            raise EmpiricalQueryExecutionError(
+                "observed_response_contract material must not embed its own contract_ref")
+    else:
+        if observed_ref_raw is not None or observed_material_raw is not None:
+            raise EmpiricalQueryExecutionError(
+                "observed-response contract binding requires an observed-response risk set")
     uncertainty = grain.get("uncertainty_method_or_typed_state", "UNCERTAINTY_UNQUANTIFIED")
-    return _ExecutionProfile(mode, measure, risk, state_ref, weight_basis, canonicalize(uncertainty))
+    return _ExecutionProfile(
+        mode,
+        measure,
+        risk,
+        state_ref,
+        weight_basis,
+        canonicalize(uncertainty),
+        observed_ref,
+        observed_material,
+    )
 
 
 def _parse_target_plan(query: EmpiricalQuerySpec, registry: AuthorityRegistry) -> _TargetPlan:

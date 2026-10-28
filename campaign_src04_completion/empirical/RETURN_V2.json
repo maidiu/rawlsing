@@ -1,0 +1,277 @@
+{
+  "schema": "PYAT_SRC04_LANE_C_RETURN@2.0.0",
+  "version": 2,
+  "campaign": "SRC04_COMPLETION_LANE_C",
+  "successor_of": {
+    "prior_return": "campaign_src04_completion/empirical/RETURN.json",
+    "prior_return_sha256": "3fd0ec54b5021b78d33cf4dde67dedecd613a6f40a59c6a1c136543b93f3f072",
+    "prior_code_commit": "3fa3b588d9323cc84128ca930313367906b57d7f",
+    "prior_remote_tip": "61aa72ebc95a2cc2ab5cc10b3330b03ac0a49df2",
+    "change": "expanded runtime workload builder/CLI, B-repaired 175-field scope, residual and coordinate-role accounting, serial identity separation"
+  },
+  "branch": "agent/pyat-src04-observed-empirical-20261028",
+  "startup_commit": "d9e9935ec29ffebe7893af7b1a4d27f6562fd716",
+  "code_commit": "e153eca0439d7bbc5d1b8497c80101efafbcb447",
+  "return_commit": "commit containing this file; direct remote readback in final response",
+  "status": "LANE_C_NATIVE_WORKLOAD_CODE_COMPLETE__ORIGINAL_EXECUTION_PENDING_FULL_RELEASE_AND_AUTHORITY",
+  "author_result_is_candidate": true,
+  "scope_v2": {
+    "source_id": "SRC04",
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "physical_slots": 181,
+    "response_slots": 178,
+    "coordinate_slots": 3,
+    "initial_available_response_fields": 163,
+    "b_repaired_response_fields": 12,
+    "available_response_fields": 175,
+    "held_response_fields": 3,
+    "held_field_ids": [
+      "q217",
+      "q715withoutmorocco",
+      "q716withoutmorocco"
+    ],
+    "available_analytical_coordinates": 0,
+    "identity_only_coordinates": 1,
+    "held_coordinate_roles": 2,
+    "all_181_slots_accounted": true,
+    "unaccounted_slots": 0,
+    "coordinate_roles": [
+      {
+        "name": "country",
+        "ordinal": 2,
+        "native_coordinate_ref": {
+          "kind": "COORDINATE_NATIVE",
+          "object_id": "urn:rawlsing:r157:original:SRC04:country",
+          "content_hash": "c5a686330adb864f4b458a4d50b859a176f0cab621573f18a25c116bd031eb42"
+        },
+        "status": "SOURCE_CONTEXT_HELD_ROLE",
+        "analytical_eligible": false,
+        "reason": "coordinate presence does not adopt a demographic/social-position role"
+      },
+      {
+        "name": "ser",
+        "ordinal": 1,
+        "native_coordinate_ref": {
+          "kind": "COORDINATE_NATIVE",
+          "object_id": "urn:rawlsing:r157:original:SRC04:ser",
+          "content_hash": "539d7f0b3b6c5df1f8972c064334a44a4eccee65754dea17d92f3f9f12250b67"
+        },
+        "status": "IDENTITY_ONLY",
+        "analytical_eligible": false,
+        "reason": "respondent serial identity, never an analytical condition"
+      },
+      {
+        "name": "q701",
+        "ordinal": 158,
+        "native_coordinate_ref": {
+          "kind": "COORDINATE_NATIVE",
+          "object_id": "urn:rawlsing:r157:original:SRC04:q701",
+          "content_hash": "c8f38491e91b30ee6847cbcabc7480aaf9eab913440e6596e480e684a922cd89"
+        },
+        "status": "COORDINATE_REPAIRED_ROLE_NOT_ADOPTED",
+        "analytical_eligible": false,
+        "reason": "B repaired the coordinate binding, but exact native role/units/contract are not adopted"
+      }
+    ]
+  },
+  "contract_v2": {
+    "path": "campaign_src04_completion/empirical/CONTRACT_APPROVAL_READY_V2.json",
+    "sha256": "7cb4a1e7a3a96c588e33c2a231392014702ab39344ab8c6a77d69bbf9ff469e3",
+    "state": "APPROVAL_PENDING",
+    "contract_ref": {
+      "kind": "OBSERVED_RESPONSE_CONTRACT",
+      "object_id": "urn:rawlsing:pre553:observed-response-contract:sha256:c6a2f9b2a6cc32c14df50ff72046f2e164ef6f375059f5352de2664dae638980",
+      "content_hash": "c6a2f9b2a6cc32c14df50ff72046f2e164ef6f375059f5352de2664dae638980"
+    },
+    "targets": 175,
+    "topology_bindings": 175,
+    "observed_states": [
+      "DK",
+      "REFUSAL",
+      "SOURCE_SPECIFIC_SPECIAL",
+      "SUBSTANTIVE_RESPONSE"
+    ],
+    "missing_states": [
+      "MISSING"
+    ],
+    "operation_authority_ref": null,
+    "external_issuer_required": true
+  },
+  "native_workload_builder": {
+    "module": "campaign_src04_completion/empirical/native_workload.py",
+    "cli": "campaign_src04_completion/empirical/run_native_workload.py",
+    "api": "campaign_src04_completion/empirical/NATIVE_WORKLOAD_API.md",
+    "public_execution_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+    "plan_path": "campaign_src04_completion/empirical/NATIVE_WORKLOAD_PLAN_V2.json",
+    "plan_sha256": "efcdb4bfce9df11b6f230f01b81fc58dd25fb121a8e8a387ae4baa2d60161c40",
+    "planned": {
+      "conditional_operations": {
+        "planned_operations": 0,
+        "reason": "conditional operation instances require exact distinct observed condition values/states from the qualified release; no release-free value crossproduct is fabricated",
+        "status": "DEFERRED_REQUIRES_QUALIFIED_RELEASE_DISTINCT_OBSERVED_VALUES",
+        "target_ordered_pairs": 30450
+      },
+      "conditional_target_pairs_awaiting_release_values": 30450,
+      "constructible_with_qualified_release": "UNARY_AND_JOINT_NOW_PLUS_EXACT_CONDITIONAL_VALUES_FROM_RELEASE",
+      "constructible_without_release": 15400,
+      "higher_order_requested_not_authorized": 877975,
+      "joint_pair_operations": 15225,
+      "unary_operations": 175
+    },
+    "original_execution_refused": true,
+    "original_execution_issued": 0,
+    "original_execution_executed": 0
+  },
+  "fixture_native_execution": {
+    "path": "campaign_src04_completion/empirical/NATIVE_WORKLOAD_EVIDENCE.json",
+    "sha256": "52a278200775fc56cb05a600e99782f329ec7f7834037ccea8ab8f68e9fc2783",
+    "scope": "SRC04_NONRESPONDENT_FIXTURE_ONLY",
+    "operations_built": 44,
+    "operations_executed": 44,
+    "operations_refused": 0,
+    "operations_by_family": {
+      "BIDIRECTIONAL_CONDITIONAL_DISTRIBUTION": 38,
+      "SAME_RESPONDENT_JOINT_DISTRIBUTION": 3,
+      "UNARY_OBSERVED_DISTRIBUTION": 3
+    },
+    "operations_by_status": {
+      "EXECUTED": 44
+    },
+    "resume": {
+      "operations_built": 44,
+      "operations_executed_after_resume": 43,
+      "prefix_not_reexecuted": true,
+      "start_after_operation_id": "6d7206ece46e7cc7a6ec873d12402619efb1b1e6697e24f022b609f6b7fe1525"
+    },
+    "fact_receipts": 44,
+    "receipt_sha256": "271a4bbcd201608fd0dda3a4ecc9e9ba81a34bbc0e82484d905cfa4a19094fbb"
+  },
+  "tests": {
+    "path": "campaign_src04_completion/empirical/TEST_RESULTS_V2.json",
+    "sha256": "6e3813530b4746aa6d157bc38af4375a7d720c5d43b60880cd2ea434b1138fd4",
+    "native_workload": "5 passed in 9.00s",
+    "observed_response": "13 passed in 3.09s",
+    "i03_regression": "39 passed in 0.85s",
+    "consumer_regression": "17 passed in 1.61s"
+  },
+  "issuer_proposition": {
+    "path": "campaign_src04_completion/empirical/ISSUER_PROPOSITION_V2.json",
+    "sha256": "e149008f8c6e7fae7d9e4e85af84902d5d1954eaf7e777243125373c3abc5ebc",
+    "status": "PENDING_EXTERNAL_COMPETENT_ISSUER",
+    "summary": {
+      "method_adopted": "raw observed-response and same-respondent co-observed responses; no eligible-risk or weighted-population interpretation",
+      "response_states_included": [
+        "SUBSTANTIVE_RESPONSE",
+        "DK",
+        "REFUSAL",
+        "SOURCE_SPECIFIC_SPECIAL"
+      ],
+      "response_states_excluded": [
+        "MISSING"
+      ],
+      "denominators": [
+        "PER_TARGET_OBSERVED",
+        "CO_OBSERVED_TARGETS"
+      ],
+      "condition_policy": "ALL_REFERENCED_RESPONSE_VARIABLES_OBSERVED",
+      "permitted_source_local_use": "software/source-local observed-response operations over the exact SRC04 release; no cross-source pooling, canonical direction, weight, population, structural or actor claim",
+      "new_topology_premise": "one-event source-native SCALAR/ORDINAL_CONTEXT/NOMINAL_CHOICE/BINARY_FACTUAL/BINARY_CONTRAST/RANKED_CHOICE carriers map to existing I03 SCALAR_SINGULAR for this contract; issuer must adopt or correct exact bindings",
+      "not_requested_from_human": "individual hashes, 163-equivalent approvals, or per-field equivalent bindings"
+    }
+  },
+  "execution_refusal": {
+    "path": "campaign_src04_completion/empirical/NATIVE_WORKLOAD_REFUSAL.json",
+    "sha256": "c851473d5098272a2a1b2d26d9f03c949a5f63e6f94934a0bec5a50a55b35095",
+    "actual_code": "ORIGINAL_EXECUTION_REQUIRES_FULL_RELEASE_AND_EXACT_AUTHORITY",
+    "original_workload_issued": false
+  },
+  "minimal_indispensable_external_decisions": [
+    "Issue exact ALLOW PREDICATE_GRAMMAR operation authority for PRE553_OBSERVED_RESPONSE_EMPIRICAL_OPERATIONS@1.0.0, exact source universe/risk-set ref and EmpiricalPredicate/EmpiricalQuerySpec/EmpiricalFact families.",
+    "Bind exact full SRC04 C11LogicalRelease ref and source release manifest hash from Lane A; the accepted 42-field release is insufficient.",
+    "Issue positive SOURCE_SEMANTICS_TOPOLOGY authority for the exact source-native topology bindings; equivalent bindings are transported programmatically.",
+    "Issue exact TARGET_USE_PERMISSION only if an EmpiricalFact is consumed downstream.",
+    "Sparse/minority threshold remains a separate optional interpretation decision and does not block raw distributions or exact zeroes."
+  ],
+  "preserved_history": {
+    "v1_return": "campaign_src04_completion/empirical/RETURN.json",
+    "v1_return_sha256": "3fd0ec54b5021b78d33cf4dde67dedecd613a6f40a59c6a1c136543b93f3f072",
+    "v1_contract": "campaign_src04_completion/empirical/CONTRACT_APPROVAL_READY.json",
+    "v1_operation_ledger": "campaign_src04_completion/empirical/OPERATION_LEDGER.json",
+    "v1_files_preserved": true
+  },
+  "artifact_manifest": [
+    {
+      "path": "campaign_src04_completion/empirical/SCOPE_LEDGER_V2.json",
+      "bytes": 191689,
+      "sha256": "0a57024ead261d8c9f26e2415eb6cd6ae9aaacf98ceb7600340fe3995533ee1e"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/CONTRACT_APPROVAL_READY_V2.json",
+      "bytes": 270162,
+      "sha256": "7cb4a1e7a3a96c588e33c2a231392014702ab39344ab8c6a77d69bbf9ff469e3"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/ISSUER_PROPOSITION_V2.json",
+      "bytes": 3129,
+      "sha256": "e149008f8c6e7fae7d9e4e85af84902d5d1954eaf7e777243125373c3abc5ebc"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/NATIVE_WORKLOAD_API.md",
+      "bytes": 3067,
+      "sha256": "be024fb8e697bc6557209c22681a535e749a634839f3745c6f4e3f475e298ba8"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/NATIVE_WORKLOAD_EVIDENCE.json",
+      "bytes": 253143,
+      "sha256": "52a278200775fc56cb05a600e99782f329ec7f7834037ccea8ab8f68e9fc2783"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/NATIVE_WORKLOAD_PLAN_V2.json",
+      "bytes": 147003,
+      "sha256": "efcdb4bfce9df11b6f230f01b81fc58dd25fb121a8e8a387ae4baa2d60161c40"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/NATIVE_WORKLOAD_REFUSAL.json",
+      "bytes": 444,
+      "sha256": "c851473d5098272a2a1b2d26d9f03c949a5f63e6f94934a0bec5a50a55b35095"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/TEST_RESULTS_V2.json",
+      "bytes": 4473,
+      "sha256": "6e3813530b4746aa6d157bc38af4375a7d720c5d43b60880cd2ea434b1138fd4"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/build_scope_and_contract_v2.py",
+      "bytes": 16033,
+      "sha256": "83f7c3c64511203fd9342bc4f88ff2d5451db4cf886824d0dbe91fc8bbfd1b55"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/fixture_native_workload_evidence.py",
+      "bytes": 12697,
+      "sha256": "2acd192c7ce9233a33a36d37a34016b1394ce3c3342863fc78aa749053d10ed3"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/native_workload.py",
+      "bytes": 32828,
+      "sha256": "4e3d4b821720a406d7c403a29f4da9f55b775b6eeec1beb353b60c16fc14c5cd"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/run_native_workload.py",
+      "bytes": 4777,
+      "sha256": "82b694a4a24f056a9bfd2f3441a6d601b595d445b5c7a1ed4951cfa3060f3e6a"
+    },
+    {
+      "path": "campaign_src04_completion/empirical/test_native_workload.py",
+      "bytes": 4346,
+      "sha256": "a0c167cf2ffcfc3e7e6df4bbbec9ae5bfe2047ce74ae3fd6dcae32e2d76312d1"
+    }
+  ],
+  "limits": [
+    "No original SRC04 SAV stat/hash/open/decode/read was performed by Lane C.",
+    "No original observed-response workload was issued or executed.",
+    "The fixture evidence is nonrespondent engineering discrimination only, not original scientific qualification.",
+    "The 3 residual response fields and 3 coordinate roles remain explicit residuals; ser is identity only.",
+    "No canonical values, weights, population/eligibility estimates, I03 fact issuance, I05 product, actor/V3/V2 state, or M2/M3/F1-F4 completion is claimed."
+  ],
+  "next_consumer": "Lane D / existing empirical consumer reads the plan and future EmpiricalFact receipts; original execution starts only after full release binding and exact external authority."
+}

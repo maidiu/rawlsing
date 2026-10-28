@@ -2,9 +2,16 @@
 from rawlsing_next._pre553_query_common import *
 from rawlsing_next._pre553_query_predicate import (
     _compile_derived_branch_memberships,
+    _coordinate_matches,
     _eval_predicate,
     _question_matches,
     _validate_public_object_authorities,
+)
+from rawlsing_next.pre553_observed_response import (
+    OBSERVED_RESPONSE_RISK_SET_TYPES,
+    ObservedResponseContract,
+    contract_for_query,
+    topology_binding_for,
 )
 
 
@@ -174,6 +181,8 @@ def _target_component_value(
     registry: AuthorityRegistry,
     used: list[CanonicalSemanticObject | C11InternalRecord],
     used_auth: list[AuthorityRef],
+    *,
+    topology_binding=None,
 ) -> tuple[bool, Any]:
     events = [
         event for event in index.events_by_respondent[respondent.ref.key]
@@ -181,11 +190,22 @@ def _target_component_value(
         and event.typed_state in component.included_states
     ]
     for event in events:
-        carrier_topology = _carrier_topology_kind(event)
-        if not _topology_compatible(component.topology, carrier_topology):
-            raise UnsupportedResponseTopology(
-                f"query target topology {component.topology!r} cannot collapse exact C11 carrier topology {carrier_topology!r}"
-            )
+        if topology_binding is not None:
+            if _ref_field(event, "response_topology_ref") != topology_binding.source_native_topology_ref:
+                raise UnsupportedResponseTopology(
+                    "observed-response event response_topology_ref differs from exact contract binding")
+            if _carrier_topology_kind(event) != topology_binding.source_native_kind:
+                raise UnsupportedResponseTopology(
+                    "observed-response event carrier topology kind differs from exact contract binding")
+            if component.topology != topology_binding.i03_topology:
+                raise UnsupportedResponseTopology(
+                    "observed-response target topology differs from exact contract binding")
+        else:
+            carrier_topology = _carrier_topology_kind(event)
+            if not _topology_compatible(component.topology, carrier_topology):
+                raise UnsupportedResponseTopology(
+                    f"query target topology {component.topology!r} cannot collapse exact C11 carrier topology {carrier_topology!r}"
+                )
         if not any(ref in event.authority_snapshot_refs for ref in component.topology_authority_refs):
             raise Pre553AuthorityError(
                 "target topology authority bundle does not bind matched C11 response event"
@@ -263,11 +283,17 @@ def _target_configuration(
     registry: AuthorityRegistry,
     used: list[CanonicalSemanticObject | C11InternalRecord],
     used_auth: list[AuthorityRef],
+    observed_contract: ObservedResponseContract | None = None,
 ) -> tuple[bool, Any]:
     values: list[Any] = []
     for component in plan.components:
+        binding = (
+            topology_binding_for(observed_contract, component.target_ref)
+            if observed_contract is not None else None
+        )
         resolved, value = _target_component_value(
-            respondent, index, component, registry, used, used_auth
+            respondent, index, component, registry, used, used_auth,
+            topology_binding=binding,
         )
         if not resolved:
             return False, None
@@ -315,6 +341,97 @@ def _weight_for(
     return value
 
 
+def _observed_target_observed(
+    respondent: RespondentIdentity,
+    index: _ReleaseIndex,
+    *,
+    plan: _TargetPlan,
+    contract: ObservedResponseContract,
+    registry: AuthorityRegistry,
+    used: list[CanonicalSemanticObject | C11InternalRecord],
+    used_auth: list[AuthorityRef],
+) -> bool:
+    """Require at least one observed event per target before resolution."""
+    for component in plan.components:
+        observed_events = [
+            event for event in index.events_by_respondent[respondent.ref.key]
+            if _event_matches_target(event, component.target_ref)
+            and event.typed_state in contract.observed_states
+        ]
+        if not observed_events:
+            return False
+        binding = topology_binding_for(contract, component.target_ref)
+        resolved, _ = _target_component_value(
+            respondent, index, component, registry, used, used_auth,
+            topology_binding=binding,
+        )
+        if not resolved:
+            return False
+    return True
+
+
+def _condition_observed(
+    node: Mapping[str, Any],
+    *,
+    respondent: RespondentIdentity,
+    index: _ReleaseIndex,
+    contract: ObservedResponseContract,
+) -> bool:
+    """Conservative condition co-observation: every referenced position must be observed.
+
+    This deliberately does not apply three-valued shortcut logic for OR/AND.  The
+    contract policy is all referenced response/coordinate variables observed, so
+    a condition is evaluated only when every referenced position is observed.
+    """
+    op = node.get("op")
+    if op == "LEAF":
+        leaf_type = node.get("leaf_type")
+        if leaf_type in {"SURVEY_RESPONSE_EVENT", "TYPED_RESPONSE_STATE"}:
+            question_ref = _exact(node.get("question_semantic_ref"), "question_semantic_ref")
+            return any(
+                _question_matches(event, question_ref)
+                and event.typed_state in contract.observed_states
+                for event in index.events_by_respondent[respondent.ref.key]
+            )
+        if leaf_type == "EMPIRICAL_POSITION_COORDINATE":
+            coordinate_ref = _exact(
+                node.get("coordinate_semantic_ref"), "coordinate_semantic_ref")
+            effective_time = node.get("effective_or_reference_time")
+            matches = [
+                coordinate for coordinate in index.coordinates_by_respondent[respondent.ref.key]
+                if _coordinate_matches(coordinate, coordinate_ref)
+                and (
+                    effective_time is None
+                    or coordinate.effective_or_reference_time == canonicalize(effective_time)
+                )
+            ]
+            return bool(matches)
+        if leaf_type == "ROUTING_APPLICABILITY_STATE":
+            raise Pre553AuthorityError(
+                "observed-response condition may not use routing/applicability predicates")
+        if leaf_type == "DERIVED_BRANCH_COHORT":
+            return True
+        raise EmpiricalQueryResolutionError("unknown observed-response condition leaf")
+    if op == "NOT":
+        children = _require_sequence(node.get("children"), "NOT children")
+        if len(children) != 1:
+            raise EmpiricalQueryResolutionError("NOT requires exactly one child")
+        return _condition_observed(
+            _require_mapping(children[0], "NOT child"),
+            respondent=respondent, index=index, contract=contract,
+        )
+    if op in {"AND", "OR"}:
+        children = _require_sequence(node.get("children"), f"{op} children")
+        return all(
+            _condition_observed(
+                _require_mapping(child, f"{op} child"),
+                respondent=respondent, index=index, contract=contract,
+            )
+            for child in children
+        )
+    raise EmpiricalQueryResolutionError("predicate op must be AND/OR/NOT/LEAF")
+
+
 def _evaluate_index_group(
     indices: Sequence[_ReleaseIndex],
     *,
@@ -341,6 +458,27 @@ def _evaluate_index_group(
     inapplicable_count = 0
     component_positive = [False] * plan.arity
     derived_branch_memberships = _compile_derived_branch_memberships(predicate.predicate_ast)
+    observed_ledger: dict[str, Any] | None = None
+    if profile.observed_response_contract_ref is not None:
+        observed_ledger = {
+            "contract_ref": profile.observed_response_contract_ref.as_dict(),
+            "risk_set_type": profile.risk_set_type,
+            "denominator_policy": (
+                "PER_TARGET_OBSERVED"
+                if profile.risk_set_type == "OBSERVED_RESPONSE_RISK_SET"
+                else "CO_OBSERVED_TARGETS"
+            ),
+            "condition_observation_policy": "ALL_REFERENCED_RESPONSE_VARIABLES_OBSERVED",
+            "not_eligible_population_estimate": True,
+            "scoped_respondents": sum(len(index.respondents) for index in indices),
+            "target_observed": 0,
+            "target_unobserved": 0,
+            "condition_unobserved": 0,
+            "condition_false": 0,
+            "denominator": 0,
+            "resolved_targets": 0,
+            "unresolved_after_denominator": 0,
+        }
 
     try:
         from rawlsing_next.pre553_runtime_context import current_runtime_binding
@@ -356,8 +494,19 @@ def _evaluate_index_group(
     for index in sorted(indices, key=lambda item: item.universe.ref.key):
         used.extend([index.universe, index.release.replay_manifest])
         used_auth.extend(_validate_public_object_authorities(index.universe, registry))
+        observed_contract = None
         exact_risk_set_contract = None
-        if runtime_binding is not None:
+        if profile.observed_response_contract_ref is not None:
+            observed_contract = contract_for_query(
+                profile=profile,
+                query=query,
+                plan=plan,
+                predicate=predicate,
+                release=index.release,
+                universe=index.universe,
+                registry=registry,
+            )
+        elif runtime_binding is not None:
             exact_risk_set_contract = (
                 runtime_binding.authorities.resolve_exact_risk_set_successor(
                     query=query,
@@ -368,52 +517,88 @@ def _evaluate_index_group(
                 )
             )
         for respondent in sorted(index.respondents.values(), key=lambda item: item.ref.key):
-            per_target_states: list[str] = []
-            for i, component in enumerate(plan.components):
-                fact = _routing_fact_for(
+            if observed_contract is not None:
+                target_observed = _observed_target_observed(
                     respondent,
                     index,
-                    target_ref=component.target_ref,
-                    risk_set_ref=risk_set_ref,
+                    plan=plan,
+                    contract=observed_contract,
                     registry=registry,
                     used=used,
                     used_auth=used_auth,
                 )
-                per_target_states.append(str(fact.routing_state))
-                if fact.routing_state in ELIGIBLE_ROUTING_STATES:
-                    component_positive[i] = True
-            member, explicitly_inapplicable = _risk_membership(
-                per_target_states,
-                profile=profile,
-            )
-            if exact_risk_set_contract is not None:
-                exact_member = exact_risk_set_contract.is_member(
-                    respondent_key=respondent.respondent_key,
-                    target_refs=tuple(component.target_ref for component in plan.components),
+                if not target_observed:
+                    observed_ledger["target_unobserved"] += 1
+                    continue
+                observed_ledger["target_observed"] += 1
+                risk_members.append(respondent.ref)
+                if not _condition_observed(
+                    predicate.predicate_ast,
+                    respondent=respondent,
+                    index=index,
+                    contract=observed_contract,
+                ):
+                    observed_ledger["condition_unobserved"] += 1
+                    continue
+                condition = _eval_predicate(
+                    predicate.predicate_ast,
+                    respondent=respondent,
+                    index=index,
+                    registry=registry,
+                    used=used,
+                    used_auth=used_auth,
+                    derived_branch_memberships=derived_branch_memberships,
                 )
-                if exact_member and not member:
-                    raise Pre553AuthorityError(
-                        "exact adopted risk-set member conflicts with C11 routing authority"
+                if not condition:
+                    observed_ledger["condition_false"] += 1
+                    continue
+            else:
+                per_target_states: list[str] = []
+                for i, component in enumerate(plan.components):
+                    fact = _routing_fact_for(
+                        respondent,
+                        index,
+                        target_ref=component.target_ref,
+                        risk_set_ref=risk_set_ref,
+                        registry=registry,
+                        used=used,
+                        used_auth=used_auth,
                     )
-                member = exact_member
+                    per_target_states.append(str(fact.routing_state))
+                    if fact.routing_state in ELIGIBLE_ROUTING_STATES:
+                        component_positive[i] = True
+                member, explicitly_inapplicable = _risk_membership(
+                    per_target_states,
+                    profile=profile,
+                )
+                if exact_risk_set_contract is not None:
+                    exact_member = exact_risk_set_contract.is_member(
+                        respondent_key=respondent.respondent_key,
+                        target_refs=tuple(component.target_ref for component in plan.components),
+                    )
+                    if exact_member and not member:
+                        raise Pre553AuthorityError(
+                            "exact adopted risk-set member conflicts with C11 routing authority"
+                        )
+                    member = exact_member
+                    if not member:
+                        explicitly_inapplicable = False
+                if explicitly_inapplicable:
+                    inapplicable_count += 1
                 if not member:
-                    explicitly_inapplicable = False
-            if explicitly_inapplicable:
-                inapplicable_count += 1
-            if not member:
-                continue
-            risk_members.append(respondent.ref)
-            condition = _eval_predicate(
-                predicate.predicate_ast,
-                respondent=respondent,
-                index=index,
-                registry=registry,
-                used=used,
-                used_auth=used_auth,
-                derived_branch_memberships=derived_branch_memberships,
-            )
-            if not condition:
-                continue
+                    continue
+                risk_members.append(respondent.ref)
+                condition = _eval_predicate(
+                    predicate.predicate_ast,
+                    respondent=respondent,
+                    index=index,
+                    registry=registry,
+                    used=used,
+                    used_auth=used_auth,
+                    derived_branch_memberships=derived_branch_memberships,
+                )
+                if not condition:
+                    continue
             denominator_members.append(respondent.ref)
             weight = _weight_for(
                 respondent,
@@ -434,6 +619,7 @@ def _evaluate_index_group(
                 registry=registry,
                 used=used,
                 used_auth=used_auth,
+                observed_contract=observed_contract,
             )
             if not resolved:
                 continue
@@ -451,6 +637,12 @@ def _evaluate_index_group(
     risk_refs = _canonical_refs(risk_members)
     denominator_refs = _canonical_refs(denominator_members)
     raw_denominator = len(denominator_refs)
+    if observed_ledger is not None:
+        observed_ledger["denominator"] = raw_denominator
+        observed_ledger["resolved_targets"] = raw_resolved
+        observed_ledger["unresolved_after_denominator"] = raw_denominator - raw_resolved
+        observed_ledger["risk_member_count"] = len(risk_refs)
+        observed_ledger["denominator_member_count"] = len(denominator_refs)
 
     if not risk_refs:
         if profile.risk_set_type == "COMMON_ELIGIBLE_RISK_SET" and all(component_positive):
@@ -489,6 +681,10 @@ def _evaluate_index_group(
                         if weighted_cells is not None else None),
         used_objects=tuple(sorted({obj.ref.key: obj for obj in used}.values(), key=lambda obj: obj.ref.key)),
         used_authority_refs=_canonical_authorities(used_auth),
+        observed_response_ledger=(
+            MappingProxyType(dict(sorted(observed_ledger.items())))
+            if observed_ledger is not None else None
+        ),
     )
 
 
@@ -541,6 +737,8 @@ def _make_execution_replay_ref(
         "denominator_member_refs": [ref.as_dict() for ref in evaluation.denominator_members],
         "complete_cells": list(_cell_projection(evaluation)),
     }
+    if profile.observed_response_contract_ref is not None:
+        material["observed_response_contract_ref"] = profile.observed_response_contract_ref.as_dict()
     digest = semantic_hash(material)
     return ExactRef(
         "PRE553_I03_QUERY_REPLAY",
@@ -613,6 +811,19 @@ def _build_fact(
     if evaluation.weighted_cells is not None:
         weighted_resolved = sum(evaluation.weighted_cells.values(), Fraction(0, 1))
 
+    target_topology = {
+        "arity": plan.arity,
+        "joint_order_semantics": plan.joint_order_semantics,
+        "target_domain_identity": plan.domain_identity,
+        "complete_cell_semantic_projection": list(_cell_projection(evaluation)),
+    }
+    if profile.observed_response_contract_ref is not None and evaluation.observed_response_ledger is not None:
+        target_topology["observed_response"] = {
+            "contract_ref": profile.observed_response_contract_ref.as_dict(),
+            "status": "OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION",
+            "not_eligible_population_estimate": True,
+            "ledger": dict(evaluation.observed_response_ledger),
+        }
     return EmpiricalFact(
         typed_state=evaluation.fact_state,
         authority_snapshot_refs=all_auth,
@@ -620,12 +831,7 @@ def _build_fact(
         producer_replay_locator_or_reference_root=replay_ref,
         empirical_query_spec_ref=query.ref,
         empirical_universe_refs=universe_refs,
-        target_topology={
-            "arity": plan.arity,
-            "joint_order_semantics": plan.joint_order_semantics,
-            "target_domain_identity": plan.domain_identity,
-            "complete_cell_semantic_projection": list(_cell_projection(evaluation)),
-        },
+        target_topology=target_topology,
         condition_predicate_ref=condition_ref,
         risk_set_ref=risk_ref,
         raw_numerator_support=evaluation.raw_resolved_target_support,
@@ -699,10 +905,18 @@ def _build_negative_fact(
         producer_replay_locator_or_reference_root=replay_ref,
         empirical_query_spec_ref=query.ref,
         empirical_universe_refs=universes,
-        target_topology={
-            "requested_target_arity_and_topology": query.target_arity_and_topology,
-            "p02_failure_state": p02_failure_state,
-        },
+        target_topology=(
+            {
+                "requested_target_arity_and_topology": query.target_arity_and_topology,
+                "p02_failure_state": p02_failure_state,
+                "observed_response_contract_ref": profile.observed_response_contract_ref.as_dict(),
+            }
+            if profile.observed_response_contract_ref is not None
+            else {
+                "requested_target_arity_and_topology": query.target_arity_and_topology,
+                "p02_failure_state": p02_failure_state,
+            }
+        ),
         condition_predicate_ref=condition_ref,
         risk_set_ref=risk_ref,
         raw_numerator_support=0,

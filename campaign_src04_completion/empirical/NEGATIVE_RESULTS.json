@@ -1,0 +1,45 @@
+{
+  "schema": "PYAT_SRC04_LANE_C_NEGATIVE_RESULTS@1.0.0",
+  "scope": "FOCUSED_NONRESPONDENT_TESTS",
+  "negatives": [
+    {
+      "case": "fixture-only authority promoted to original scientific grade",
+      "actual": "Pre553AuthorityError: fixture-only authority cannot authorize original observed-response science",
+      "test": "test_fixture_authority_cannot_be_promoted_to_original_scientific_grade"
+    },
+    {
+      "case": "contract operation differs from exact query operation authority",
+      "actual": "EmpiricalFact typed UNAVAILABLE; p02 MISSING_REQUIRED_AUTHORITY",
+      "test": "test_contract_requires_exact_operation_authority"
+    },
+    {
+      "case": "contract release ref mismatch",
+      "actual": "EmpiricalFact typed UNAVAILABLE; p02 OBSERVED_RESPONSE_AUTHORITY_UNAVAILABLE",
+      "test": "test_contract_release_mismatch_refuses"
+    },
+    {
+      "case": "routing/applicability leaf in observed-response condition",
+      "actual": "EmpiricalFact typed UNAVAILABLE; p02 OBSERVED_RESPONSE_AUTHORITY_UNAVAILABLE",
+      "test": "test_routing_predicate_in_observed_condition_is_refused"
+    },
+    {
+      "case": "weighted observed-response profile",
+      "actual": "EmpiricalQueryExecutionError: observed-response operations are not weighted population estimands",
+      "test": "test_weighted_observed_operation_is_rejected"
+    },
+    {
+      "case": "existing eligible-risk profile receives ROUTING_UNKNOWN",
+      "actual": "EmpiricalQueryResolutionError from unchanged _risk_membership; unknown is not nonmembership",
+      "test": "test_unresolved_routing_still_refuses_existing_eligible_profile"
+    },
+    {
+      "case": "approval-pending contract executed as authorized",
+      "actual": "Pre553AuthorityError: observed-response contract is not authorized",
+      "test": "campaign_src04_completion/empirical pending-contract roundtrip check"
+    }
+  ],
+  "test_file_sha256": "abf7fe1c6348dae0e2d9cd6d57958fcf8495267fd57a933eda01f79855a0eb91",
+  "limits": [
+    "Fixture-only negative evidence; no original SAV read or original workload issued."
+  ]
+}

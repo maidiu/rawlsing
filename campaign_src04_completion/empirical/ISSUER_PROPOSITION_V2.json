@@ -1,0 +1,72 @@
+{
+  "schema": "PYAT_SRC04_OBSERVED_RESPONSE_ISSUER_PROPOSITION@2.0.0",
+  "proposition_id": "SRC04-OBSERVED-RESPONSE-SOURCE-LOCAL-USE-V2",
+  "status": "PENDING_EXTERNAL_COMPETENT_ISSUER",
+  "method_adopted": {
+    "estimand": "raw observed-response and same-respondent co-observed response distributions",
+    "denominators": [
+      "PER_TARGET_OBSERVED",
+      "CO_OBSERVED_TARGETS"
+    ],
+    "condition_policy": "ALL_REFERENCED_RESPONSE_VARIABLES_OBSERVED",
+    "not_claimed": [
+      "question-eligible risk set",
+      "weighted population",
+      "cross-source pooling",
+      "canonical direction",
+      "structural or causal interpretation",
+      "actor/V3/V2 state"
+    ],
+    "routing_state": "ROUTING_UNKNOWN_NOT_USED"
+  },
+  "response_state_policy": {
+    "observed_states_included": [
+      "SUBSTANTIVE_RESPONSE",
+      "DK",
+      "REFUSAL",
+      "SOURCE_SPECIFIC_SPECIAL"
+    ],
+    "missing_states_excluded": [
+      "MISSING"
+    ],
+    "note": "Response-state presence is not a substantive-answer or population claim; observed zero and missingness remain separate."
+  },
+  "permitted_source_local_use": {
+    "scope": "exact SRC04 source-local release operations only",
+    "allowed_after_contract": [
+      "unary observed distributions",
+      "same-respondent joint distributions",
+      "bidirectional conditional distributions with all referenced condition variables observed",
+      "exact observed-zero and cell-support accounting"
+    ],
+    "coordinate_analytical_targets": 0,
+    "ser": "IDENTITY_ONLY",
+    "country": "SOURCE_CONTEXT_ROLE_NOT_ADOPTED",
+    "q701": "COORDINATE_REPAIRED_ROLE_NOT_ADOPTED"
+  },
+  "truly_new_topology_premise": {
+    "premise": "one-event source-native SCALAR, ORDINAL_CONTEXT, NOMINAL_CHOICE, BINARY_FACTUAL, BINARY_CONTRAST and RANKED_CHOICE carriers bind to existing I03 SCALAR_SINGULAR for this contract",
+    "new_topology_family_created": false,
+    "issuer_action": "adopt or correct exact per-target bindings; equivalent bindings are transported programmatically, not approved one by one by a human"
+  },
+  "issuer_fields_required": [
+    "exact ALLOW PREDICATE_GRAMMAR operation authority for PRE553_OBSERVED_RESPONSE_EMPIRICAL_OPERATIONS@1.0.0, exact source universe, risk-set ref and EmpiricalPredicate/EmpiricalQuerySpec/EmpiricalFact families",
+    "exact full SRC04 C11LogicalRelease ref and source release manifest hash from Lane A",
+    "positive SOURCE_SEMANTICS_TOPOLOGY authority for the exact source-native topology bindings",
+    "exact TARGET_USE_PERMISSION only if an EmpiricalFact is consumed downstream"
+  ],
+  "not_requested_from_human": [
+    "individual hashes",
+    "163-equivalent per-field approvals",
+    "manual catalog/object preimages"
+  ],
+  "optional_separate_decision": {
+    "sparse_minority_threshold": null,
+    "blocking_raw_distributions_or_exact_zeroes": false
+  },
+  "limits": [
+    "This proposition does not itself grant authority or execute original science.",
+    "The 3 residual response fields and 3 coordinate roles remain explicit residuals.",
+    "No original SAV stat/hash/open/decode/read has occurred."
+  ]
+}
