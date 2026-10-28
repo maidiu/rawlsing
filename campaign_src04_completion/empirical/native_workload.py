@@ -538,6 +538,11 @@ def build_native_workload(
     selected = tuple(view for view in views if view.observed_event_count > 0)
     operations: list[NativeOperation] = []
     authorized = contract.contract_state == "AUTHORIZED" and contract.operation_authority_ref is not None
+    shared_scope_predicate = None
+    if authorized and (("UNARY_OBSERVED_DISTRIBUTION" in policy.families) or
+                       ("SAME_RESPONDENT_JOINT_DISTRIBUTION" in policy.families)):
+        shared_scope_predicate = _make_predicate(
+            contract, release, _branch_predicate_ast(contract, release), tag="release-scope")
 
     if "UNARY_OBSERVED_DISTRIBUTION" in policy.families:
         for view in selected:
@@ -553,8 +558,7 @@ def build_native_workload(
                 status="CONSTRUCTED" if authorized else "BLOCKED_CONTRACT_NOT_AUTHORIZED",
             )
             if authorized:
-                ast = _branch_predicate_ast(contract, release)
-                predicate = _make_predicate(contract, release, ast, tag=f"unary:{operation_id}")
+                predicate = shared_scope_predicate
                 operation.predicate = predicate
                 operation.query = _make_query(
                     contract=contract, views=(view,), predicate=predicate,
@@ -577,8 +581,7 @@ def build_native_workload(
                     status="CONSTRUCTED" if authorized else "BLOCKED_CONTRACT_NOT_AUTHORIZED",
                 )
                 if authorized:
-                    ast = _branch_predicate_ast(contract, release)
-                    predicate = _make_predicate(contract, release, ast, tag=f"joint:{operation_id}")
+                    predicate = shared_scope_predicate
                     operation.predicate = predicate
                     operation.query = _make_query(
                         contract=contract, views=(left, right), predicate=predicate,

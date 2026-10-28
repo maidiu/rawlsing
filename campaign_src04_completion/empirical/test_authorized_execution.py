@@ -22,9 +22,11 @@ from campaign_src04_completion.empirical.authorized_execution import (
 from campaign_src04_completion.empirical.actual_carrier import (
     ActualCarrierRefusal,
     load_actual_carrier_release,
+    load_actual_carrier_view,
 )
 from campaign_src04_completion.empirical.consumer_bridge import consume_with_lane_d
 from campaign_src04_completion.empirical.native_workload import WorkloadPolicy
+from campaign_src04_completion.empirical.native_streaming import execute_native_workload_stream
 from rawlsing_next.pre553_c11_repository import C11Repository
 from rawlsing_next.pre553_empirical_objects import AuthorityRef, ExactRef
 from rawlsing_next.pre553_observed_response import ObservedResponseContract
@@ -243,6 +245,92 @@ def test_actual_carrier_fixture_issuer_executor_and_lane_d_end_to_end(tmp_path):
     assert result.product["downstream_value_effect"] == "SUBSTANTIVE_DISCOVERY_RESULT_SUPPORTED"
     assert result.product["observed_response"]["status"] == "OBSERVED_RESPONSE_NOT_ELIGIBLE_POPULATION"
     assert result.product["observed_response"]["ledger"]["not_eligible_population_estimate"] is True
+
+
+def test_actual_carrier_fixture_streaming_executor_and_lane_d_end_to_end(tmp_path):
+    config = load_source_config(FIXTURE_CONFIG)
+    stream = load_fixture_stream(FIXTURE)
+    release = build_validated_c11_release_from_config(config, stream=stream)
+    local_path, release_path, primary_path, _, _ = _write_actual_bundle(
+        tmp_path, release, stream.source_sha256)
+    reopened = load_actual_carrier_release(
+        local_receipt_path=local_path,
+        release_receipt_path=release_path,
+        primary_run_path=primary_path,
+        bundle_dir=tmp_path,
+        expected_source_sha256=stream.source_sha256,
+        local_receipt_sha256=__import__("hashlib").sha256(local_path.read_bytes()).hexdigest(),
+        release_receipt_sha256=__import__("hashlib").sha256(release_path.read_bytes()).hexdigest(),
+        primary_run_sha256=__import__("hashlib").sha256(primary_path.read_bytes()).hexdigest(),
+    )
+    context = _Context()
+    grant = authenticate_fixture_grant()
+    policy = WorkloadPolicy.from_mapping(
+        json.loads(SCOPE.read_text(encoding="utf-8"))["workload_policy"])
+    issued = issue_fixture_execution(
+        fixture_grant=grant,
+        release=reopened,
+        pending_contract=context.contract,
+        policy=policy,
+    )
+    result = execute_native_workload_stream(
+        repository=issued.repository,
+        release_ref=reopened.release_ref,
+        contract=issued.contract,
+        authority_registry=issued.registry,
+        policy=policy,
+        receipt_path=tmp_path / "operations.jsonl",
+    )
+    assert result.accounting["executed_operations"] == 7
+    assert result.accounting["refused_operations"] == 0
+    assert result.accounting["operations_by_family"] == {
+        "UNARY_OBSERVED_DISTRIBUTION": 3,
+        "BIDIRECTIONAL_CONDITIONAL_DISTRIBUTION": 1,
+        "SAME_RESPONDENT_JOINT_DISTRIBUTION": 3,
+    }
+    assert result.accounting["conditional_representation"].startswith("BOTH_DIRECTIONS_EXACTLY")
+    consumer = consume_with_lane_d(
+        grant=grant, issued=issued, workload=result.workload)
+    assert consumer.status == "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE"
+    assert consumer.product is not None
+    assert consumer.product["fixture_only"] is True
+    resumed = execute_native_workload_stream(
+        repository=issued.repository,
+        release_ref=reopened.release_ref,
+        contract=issued.contract,
+        authority_registry=issued.registry,
+        policy=policy,
+        receipt_path=tmp_path / "operations.jsonl",
+        resume=True,
+    )
+    assert resumed.accounting["executed_operations"] == 7
+    assert resumed.accounting["operations_total"] == 7
+    resumed_consumer = consume_with_lane_d(
+        grant=grant, issued=issued, workload=resumed.workload)
+    assert resumed_consumer.status == "FIXTURE_ONLY_NATIVE_ENGINEERING_POSITIVE"
+
+
+def test_actual_carrier_fixture_bounded_observed_view_keeps_exact_events(tmp_path):
+    config = load_source_config(FIXTURE_CONFIG)
+    stream = load_fixture_stream(FIXTURE)
+    release = build_validated_c11_release_from_config(config, stream=stream)
+    local_path, release_path, primary_path, _, _ = _write_actual_bundle(
+        tmp_path, release, stream.source_sha256)
+    view, metadata = load_actual_carrier_view(
+        local_receipt_path=local_path,
+        release_receipt_path=release_path,
+        primary_run_path=primary_path,
+        bundle_dir=tmp_path,
+        expected_source_sha256=stream.source_sha256,
+        local_receipt_sha256=__import__("hashlib").sha256(local_path.read_bytes()).hexdigest(),
+        release_receipt_sha256=__import__("hashlib").sha256(release_path.read_bytes()).hexdigest(),
+        primary_run_sha256=__import__("hashlib").sha256(primary_path.read_bytes()).hexdigest(),
+    )
+    assert view.release_ref == release.release_ref
+    assert metadata["full_public_objects"] == len(release.public_objects)
+    assert {obj.schema_id for obj in view.public_objects} >= {
+        "EmpiricalUniverse", "RespondentEvent", "AuthoritySnapshot"}
+    assert metadata["retained_respondents"] == 8
 
 
 def test_actual_carrier_missing_malformed_and_truncated_refusals(tmp_path):

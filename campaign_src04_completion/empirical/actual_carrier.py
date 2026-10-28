@@ -282,3 +282,142 @@ __all__ = [
     "LOCAL_SCHEMA", "RELEASE_SCHEMA", "PRIMARY_SCHEMA",
     "ActualCarrierRefusal", "load_actual_carrier_release",
 ]
+
+
+def load_actual_carrier_view(
+    *,
+    local_receipt_path: str | Path,
+    release_receipt_path: str | Path,
+    primary_run_path: str | Path,
+    bundle_dir: str | Path | None = None,
+    expected_source_sha256: str = SOURCE_SHA256,
+    local_receipt_sha256: str | None = None,
+    release_receipt_sha256: str | None = None,
+    primary_run_sha256: str | None = None,
+) -> tuple[C11LogicalRelease, dict[str, Any]]:
+    """Reopen a bounded observed-response execution view of the actual product.
+
+    The accepted receipt and full stream hashes/counts are verified.  Public
+    routing/weight carriers that observed-response execution cannot use are
+    streamed and discarded instead of retained; every RespondentEvent,
+    RespondentIdentity, universe, authority and source relation is retained.
+    This is a transient query view, not a new/rebuilt release or a storage copy.
+    """
+    local_path = Path(local_receipt_path)
+    release_path = Path(release_receipt_path)
+    primary_path = Path(primary_run_path)
+    for path, expected, label in (
+        (local_path, local_receipt_sha256, "local receipt"),
+        (release_path, release_receipt_sha256, "release receipt"),
+        (primary_path, primary_run_sha256, "primary run"),
+    ):
+        if expected is not None and _sha_file(path) != expected:
+            raise ActualCarrierRefusal(f"{label.upper().replace(' ', '_')}_SHA256_MISMATCH")
+    local = _load_json(local_path); release_receipt = _load_json(release_path); primary = _load_json(primary_path)
+    if not isinstance(local, Mapping) or not isinstance(release_receipt, Mapping) or not isinstance(primary, Mapping):
+        raise ActualCarrierRefusal("ACTUAL_RECEIPT_NOT_MAPPING")
+    bundle = Path(bundle_dir) if bundle_dir is not None else local_path.parent
+    _validate_receipts(
+        local_receipt=local, release_receipt=release_receipt, primary=primary,
+        bundle=bundle, expected_source_sha256=expected_source_sha256,
+    )
+    public_path = bundle / local["public_objects"]["file"]
+    internal_path = bundle / local["internal_records"]["file"]
+    replay_path = bundle / local["replay_manifest"]["file"]
+    keep_schemas = {"EmpiricalUniverse", "RespondentEvent", "AuthoritySnapshot", "SourceUniverseRelation"}
+    present = {
+        "universes": False, "responses": False, "authorities": False,
+        "routing": False, "coordinates": False, "source_relations": False,
+    }
+    public_objects = []
+    public_count = 0
+    for obj in _iter_pickle(public_path):
+        public_count += 1
+        if not isinstance(obj, CanonicalSemanticObject):
+            raise ActualCarrierRefusal("PUBLIC_STREAM_TYPE_MISMATCH")
+        verify_public_object_integrity(obj)
+        schema = obj.schema_id
+        if schema == "EmpiricalUniverse":
+            present["universes"] = True
+        elif schema == "RespondentEvent":
+            present["responses"] = True
+        elif schema == "AuthoritySnapshot":
+            present["authorities"] = True
+        elif schema == "RoutingEligibilityFact":
+            present["routing"] = True
+        elif schema == "EmpiricalCoordinateFact":
+            present["coordinates"] = True
+        elif schema == "SourceUniverseRelation":
+            present["source_relations"] = True
+        if schema in keep_schemas:
+            public_objects.append(obj)
+    if public_count != local["public_objects"]["lines"]:
+        raise ActualCarrierRefusal("PUBLIC_STREAM_COUNT_MISMATCH")
+    internal_records = []
+    internal_count = 0
+    for record in _iter_pickle(internal_path):
+        internal_count += 1
+        assert_internal_carrier_record(record)
+        internal_records.append(record)
+    if internal_count != local["internal_records"]["lines"]:
+        raise ActualCarrierRefusal("INTERNAL_STREAM_COUNT_MISMATCH")
+    replay_manifest = _replay_manifest(replay_path)
+    if replay_manifest.ref.as_dict() != local.get("replay_manifest_ref"):
+        raise ActualCarrierRefusal("REPLAY_MANIFEST_REF_MISMATCH")
+    release_ref = exact_ref(local["release_ref"], "release_ref")
+    source_sha = local["source_sha256"]
+    if source_sha != expected_source_sha256:
+        raise ActualCarrierRefusal("ACTUAL_SOURCE_SHA_MISMATCH")
+    source_artifact_ref = exact_ref(
+        local.get("source_artifact_ref")
+        or {"kind": "SOURCE_ARTIFACT", "object_id": DEFAULT_SOURCE_ARTIFACT_ID, "content_hash": source_sha},
+        "source_artifact_ref",
+    )
+    respondents = [obj for obj in internal_records if obj.__class__.__name__ == "RespondentIdentity"]
+    questions = [obj for obj in internal_records if obj.__class__.__name__ == "QuestionVariableBinding"]
+    coverage = make_m01_m18_coverage(
+        universes=[None] if present["universes"] else [],
+        respondents=respondents,
+        questions=questions,
+        events=[None] if present["responses"] else [],
+        routing=[None] if present["routing"] else [],
+        coordinates=[None] if present["coordinates"] else [],
+        weight_section_explicit=True,
+        authority_snapshots=[None] if present["authorities"] else [],
+        source_relation_section_explicit=True,
+        predicate_replay_section_explicit=True,
+        comparator_section_explicit=True,
+        discovery_section_explicit=True,
+        structural_admission_section_explicit=True,
+        replay_manifest=replay_manifest,
+    )
+    try:
+        view = _make_validated_release(
+            release_id=release_ref.object_id,
+            source_artifact_ref=source_artifact_ref,
+            source_release_manifest_hash=local["source_release_manifest_hash"],
+            semantic_release_hash=local["semantic_release_hash"],
+            replay_manifest=replay_manifest,
+            public_objects=tuple(sorted(public_objects, key=lambda obj: obj.ref.key)),
+            internal_records=tuple(sorted(internal_records, key=lambda obj: obj.ref.key)),
+            m01_m18_coverage=coverage,
+        )
+    except Exception as exc:
+        raise ActualCarrierRefusal("NATIVE_RELEASE_VIEW_FAILED", str(exc)) from exc
+    metadata = {
+        "schema": "PYAT_SRC04_BOUNDED_EXECUTION_VIEW@1.0.0",
+        "full_public_objects": public_count,
+        "retained_public_objects": len(public_objects),
+        "retained_schemas": sorted(keep_schemas),
+        "omitted_non_observed_carriers": {
+            "routing": present["routing"],
+            "coordinates": present["coordinates"],
+            "weights": True,
+        },
+        "retained_respondents": len(respondents),
+        "retained_questions": len(questions),
+        "replay_manifest_ref": replay_manifest.ref.as_dict(),
+        "full_release_ref": release_ref.as_dict(),
+        "full_stream_hashes_verified": True,
+    }
+    return view, metadata

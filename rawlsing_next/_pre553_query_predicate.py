@@ -73,10 +73,17 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
     )
 
 
+_PUBLIC_AUTHORITY_VALIDATION_CACHE: dict[tuple[int, str], tuple[AuthorityRef, ...]] = {}
+
+
 def _validate_public_object_authorities(
     obj: CanonicalSemanticObject,
     registry: AuthorityRegistry,
 ) -> tuple[AuthorityRef, ...]:
+    cache_key = (id(registry), obj.ref.key)
+    cached = _PUBLIC_AUTHORITY_VALIDATION_CACHE.get(cache_key)
+    if cached is not None:
+        return cached
     runtime = None
     try:
         from rawlsing_next.pre553_runtime_context import current_runtime_authorities
@@ -100,7 +107,9 @@ def _validate_public_object_authorities(
         resolved.append(snapshot.authority_ref)
     if obj.schema_id != "AuthoritySnapshot" and not resolved:
         raise Pre553AuthorityError("public semantic object lacks authority closure")
-    return tuple(resolved)
+    result = tuple(resolved)
+    _PUBLIC_AUTHORITY_VALIDATION_CACHE[cache_key] = result
+    return result
 
 
 def _leaf_exact_values(
@@ -318,6 +327,9 @@ def _leaf_match(
     raise Pre553SemanticCollapseError("unknown or forbidden empirical predicate leaf")
 
 
+_COMPILED_BRANCH_MEMBERSHIP_CACHE: dict[int, tuple[Mapping[str, Any], dict[ExactRef, frozenset[ExactRef]]]] = {}
+
+
 def _compile_derived_branch_memberships(
     node: Mapping[str, Any],
 ) -> dict[ExactRef, frozenset[ExactRef]]:
@@ -325,8 +337,12 @@ def _compile_derived_branch_memberships(
 
     The predicate's semantic identity is verified before evaluation.  This cache is
     execution-local and nonauthoritative: it only avoids reparsing/re-sorting the
-    same immutable exact member refs for every respondent.
+    same immutable exact member refs for every respondent and every query that
+    shares one verified predicate object.
     """
+    cached = _COMPILED_BRANCH_MEMBERSHIP_CACHE.get(id(node))
+    if cached is not None and cached[0] is node:
+        return cached[1]
     compiled: dict[ExactRef, frozenset[ExactRef]] = {}
 
     def walk(raw: Mapping[str, Any]) -> None:
@@ -360,6 +376,7 @@ def _compile_derived_branch_memberships(
             walk(_require_mapping(child, f"{op} child"))
 
     walk(node)
+    _COMPILED_BRANCH_MEMBERSHIP_CACHE[id(node)] = (node, compiled)
     return compiled
 
 

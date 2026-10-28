@@ -62,6 +62,18 @@ def _resolve_release_exact(repository: C11Repository, ref: ExactRef) -> C11Logic
         ) from exc
 
 
+_INDEX_CACHE: dict[tuple[str, str], object] = {}
+
+
+def _cached_release_index(release, universe_ref):
+    key = (release.release_ref.key, universe_ref.key)
+    cached = _INDEX_CACHE.get(key)
+    if cached is None:
+        cached = _build_release_index(release, universe_ref)
+        _INDEX_CACHE[key] = cached
+    return cached
+
+
 def _resolve_release_indices(
     repository: C11Repository,
     *,
@@ -81,7 +93,7 @@ def _resolve_release_indices(
         matches = []
         for release in releases:
             if any(getattr(obj, "ref", None) == universe_ref for obj in release.public_objects):
-                matches.append((release.release_ref, _build_release_index(release, universe_ref)))
+                matches.append((release.release_ref, _cached_release_index(release, universe_ref)))
         if len(matches) != 1:
             raise EmpiricalQueryResolutionError(
                 "each exact query universe must resolve in exactly one supplied sealed C11 release"

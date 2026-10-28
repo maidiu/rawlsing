@@ -237,18 +237,27 @@ def _topology_valid_targets(
     held: list[Mapping[str, Any]] = []
     event_authorities: set[AuthorityRef] = set()
     contract_bindings = {binding.target_ref.key: binding for binding in contract.topology_bindings}
-    release_targets = sorted(
-        {
-            exact_ref(obj.native_question_ref, "native_question_ref")
-            for obj in release.public_objects if obj.schema_id == "RespondentEvent"
-        },
-        key=lambda ref: ref.key,
-    )
+    events_by_target: dict[str, list[Any]] = {}
+    target_refs_by_key: dict[str, ExactRef] = {}
+    for obj in release.public_objects:
+        if obj.schema_id != "RespondentEvent":
+            continue
+        native = exact_ref(obj.native_question_ref, "native_question_ref")
+        target_refs_by_key[native.key] = native
+        events_by_target.setdefault(native.key, []).append(obj)
+        canonical = obj.canonical_question_ref_if_authorized
+        if canonical is not None:
+            events_by_target.setdefault(exact_ref(canonical, "canonical_question_ref").key, []).append(obj)
+        component = obj.component_or_subitem_ref
+        if component is not None:
+            events_by_target.setdefault(exact_ref(component, "component_or_subitem_ref").key, []).append(obj)
+    release_targets = sorted(target_refs_by_key, key=lambda key: key)
     all_bindings = list(contract.topology_bindings)
-    for target_ref in release_targets if extend_release_targets else ():
+    for target_key in release_targets if extend_release_targets else ():
+        target_ref = target_refs_by_key[target_key]
         if target_ref.key in contract_bindings:
             continue
-        events = [e for e in _target_events(release, target_ref) if e.typed_state in contract.observed_states]
+        events = [e for e in events_by_target.get(target_ref.key, []) if e.typed_state in contract.observed_states]
         if not events:
             held.append({"target_ref": target_ref.as_dict(), "code": "NO_OBSERVED_EVENTS"})
             continue
@@ -265,7 +274,7 @@ def _topology_valid_targets(
             response_semantic_authority_refs=(),
         ))
     for binding in all_bindings:
-        events = _target_events(release, binding.target_ref)
+        events = events_by_target.get(binding.target_ref.key, [])
         observed = [event for event in events if event.typed_state in contract.observed_states]
         if not observed:
             held.append({"target_ref": binding.target_ref.as_dict(), "code": "NO_OBSERVED_EVENTS"})
