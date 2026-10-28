@@ -12,6 +12,8 @@ Implement a **source-authoritative hybrid empirical execution architecture**: cu
 
 **Primary implementation default:** preserve original SAV/DTA source bytes as source evidence; make in-memory typed columnar/event views and packed predicate masks; retain source/authority-keyed **Parquet+Zstandard** accelerators as nonauthoritative, reconstructible local cache; preserve exact source-native, topology, risk/denominator and authority semantics through existing native owners. Backend/dependency feasibility and exact physical fields still require bounded engineering verification; change of backend is a narrow technical amendment, NOT a revival of route selection. No new general empirical engine.
 
+**Mandatory task-allocation precedence:** `14_NONDELEGATION_AND_CLAIM_VERIFICATION_CONSTITUTION.md` governs every Pxx commission, worker return, HQ intake and Codex handoff. HQ owns the central design; independent rabochiis are never accepted as globally grokked or sovereign. The older `08_BROWSER_FLEET_AND_CODEX_HANDOFF.md` is a scope inventory, NOT unconditional permission to delegate each Pxx whole.
+
 ## Read in order
 
 1. 01_EXECUTIVE_ADJUDICATION.md — actual selected architecture, why, and rejection of previous false choices.
@@ -23,7 +25,8 @@ Implement a **source-authoritative hybrid empirical execution architecture**: cu
 7. 07_SCIENCE_TO_PERSON_TERMINAL_CONSERVATION.md — F1–F8, EE01–EE16, all35, N0–N13, source/FF/world/V3 semantics.
 8. 08_BROWSER_FLEET_AND_CODEX_HANDOFF.md — investigation commissions, isolation, no new design forks, packaging and transfer.
 9. 09_ACCEPTANCE_REDTEAM_AND_HARD_BLOCKERS.md — hostile positive/negative/restore, exact unresolved scientific decisions.
-10. 10_SUCCESSION_AND_STATE.md — portable HQ memory, continuation protocol, execution and authority statuses.
+10. 10_SUCCESSION_AND_STATE.md
+11. 14_NONDELEGATION_AND_CLAIM_VERIFICATION_CONSTITUTION.md — mandatory HQ judgment, bounded worker scopes and independent fact verification — portable HQ memory, continuation protocol, execution and authority statuses.
 11. 11_DECISION_AND_OBLIGATION_LEDGER.json — machine-readable exact selection and owner/closure states.
 
 ## Nonnegotiable instructions to any successor
