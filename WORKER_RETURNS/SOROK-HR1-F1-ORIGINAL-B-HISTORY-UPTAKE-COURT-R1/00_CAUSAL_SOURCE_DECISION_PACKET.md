@@ -1,0 +1,61 @@
+# F1 — Nonretroactive A/B history and situated uptake: causal-source decision packet
+**Disposition:** `DECISION_READY_NONISSUING__SOURCEFREE_REUSE_WITH_NONRETROACTIVE_CORRECTION_REQUIRED`. This is an independent engineering/scientific interpretation for incumbent HQ, not CAN/ADP/SCI05/Pyat issuance, production promotion, or self-review.
+
+## Finding 1 — the exact contradiction, not a missing feature invented by this court
+The original R31J `r31j/pre_c9.py` lines 16–25 makes `life = H.build_life(variant)`, deep-copies A's `a_snapshot`, then explicitly executes:
+```python
+snapshot["state"]["tools_remaining"] = 1 if gm01.get("material_feasible_after") else 0
+```
+It then recalculates `state_hash` and seals the snapshot. The `gm01` was already evaluated from `r31j/scenarios.py` lines 9–28, where B's `OTHER_PERFORMED` SHARE/REFUSE at test clock 5, E1 at 6, and optional A E2 at 9 are created by `TEST_ONLY_OWNER_` observations. Thus B's eventual action feeds **backward** into the actor's supposed pre-event history. This is not cured by the fact that `stage_world` (pre_c9.py lines 70–90) attaches `gm01_pre_c9_source` before `stage_c8`. Pre-C8 insertion and independent pre-event constitution are different claims. The `material_feasible_after` flag is also used in `run_without_e2` lines 92–109 to set C9 `material_access`; that use can be lawful as a *post-event* consequence only if its external provenance is established.
+
+JOIN-E `joined/session.py` lines 57–119 calls `evaluated(share=True,e2=...)`, calls `build_product`, then performs either `product.material_inspect()` or `record_omission()` and checks B's `SHARE_TOOL` source identity. This is a **genuine sourcefree consuming path** with source/provenance/cold-reopen checks, but it does not independently originate B's biography or action. `probe_refusal` is a typed `JOIN_REFUSAL_NO_TARGET__OWNER_CONTRACT_REQUIRED`, not an evaluated psychological `NO_CHANGE` or native alternative.
+
+**Interpretation:** a fixture can legitimately encode both world outcomes as experiments; it cannot certify that A's prehistory was independently fixed or that B autonomously acted. **Action:** retain original code and evidence, but require an owner-led revised **test adapter** (not an edit by F1) that sources the same sealed A baseline in both branches, separately freezes B's own history, admits B's performed event via its proper owner, and derives changing opportunity *after* the event. **Owner:** BP1/R31J historical-actor owner, independent B/ADP actor-event owner, C8 original admission owner and incumbent Sorok HQ for selection.
+
+## Proposed minimal causal contract
+```text
+H_A(t0) immutable, sealed, identical across SHARE and REFUSE
+H_B(t0) independently sourced, not A narrative or test script
+W(t0) material position/conditions, source-owned (non-event allowed)
+    | B actor's own need/object/activity and permitted material means
+E_B(t1) independently performed SHARE or REFUSE (not A-issued)
+    | world event source, owner, performer, hash, world/valid time, permission
+W(t2) actual opportunity/resource consequence; H_A(t0) unchanged
+    | C8 occurrence/admission when and only when event authority warrants
+Access_A(E_B,t3) from objective location/availability and ADP permissions
+    | G1 received meaning/appraisal only if lawful receivability; may be unknown
+Recruit_A(t3) exact CAN010 needs/strivings, CAN011 mediators/tensions/practices,
+              memory/relationship and organismic state (G2; no forced winner)
+    | original CAN008 bounded immediate response, valid LOW/EMPTY or HOLD
+    | separately authorized CAN011 durable transition or explicit no-change/deny/HOLD
+E2_A(t4) actually performed and independently witnessed (not option/intention)
+    | C9 durable receipt, cold reopen, actual subsequent E2/E3 consumer
+Observable consequence(t5) with no first-person claim until actor access/knowledge
+```
+Only the upper documentary representation is proposed. G1 and G2 are **semantic gaps**, not executors or issued rules. The actor can be materially helped even without perceiving B's action; material causation must not be conflated with actor appraisal. For ongoing care, work, play or obligations, typed `NON_EVENT_CONDITION`, `DIRECTED_RELATION` and `RECURRENT_ACTIVITY` must remain such, never fabricated into E1.
+
+## Decision-ready receiver selection
+**R31J → JOIN-E** is the most direct existing *pre-C8 binding* testbed if original owners can remove the retroactive A-snapshot coupling. **BP2P4J** supplies the most directly proven *performed E2 → lasting material effect → A0/A2* comparator. Its `bp2p4.assertion.joined_downstream_a0_a2_assertion` (blob `e7bc26aa...`) actually verifies the BP2 C8, target, response/grant, E2 admission, practice materialization, offscreen `completed_units=4`, and M6 nonrenderability before ATTEND. BP2P4JI independently reproduced 33 new + 50 BP2 + 15 BP4 tests and seven primary plus three supplementary severances at TEST_ONLY scope; **retain this positive**. A clean C12 positive cannot be certified from the delivered BP2P4J verifier: on valid `say` episodes it hashes `episode_id` post-preimage and reports `episode:0:body_hash_mismatch`. Correct it under BP2P4J/BP4 owner and re-review; do not weaken the assertion or erase the RED.
+
+**PFF** `f4a61361`, lines 489–612, names G1 `ACTOR_SPECIFIC_EVENT_UPTAKE_APPRAISAL` and G2 `SITUATED_RECRUITMENT_TO_RESPONSE_CONNECTIVE_CAUSATION`. A received event is not machine encoding, intention, objective correctness, belief or psychic effect. CAN008's response operator must consume multiple need/expectation/practice/relationship/memory parents without forcing durable change. **Typed world ingress** `78e6001f`, lines 97–216, distinguishes objective facts, positions, opportunity, non-events, directed relations, recurrent activity, events, witnesses and unknown/negative results, and explicitly forbids `OPPORTUNITY=OCCURRENCE`, `EVENT_EXISTS=ENCOUNTER` and `RESPONSE=DURABLE_CHANGE`. These are architectural *candidates* requiring competent owner adoption.
+
+**Pyat R95 R06R4** `b2cfe93` has an actual trusted R05 → P41 N9/N10W/E04 consumer with source/evidence/fact/step severances and cold replay, but its `CONTEXT` to `STRUCTURAL` FF authority is explicitly `CONTEXT_STRUCTURAL_AUTHORITY_HELD`. It cannot be relabeled Sorok's native B owner or used to invent a structural event. Source selection must bind issuer, release/root, time, permission, and intended downstream consumer before the Sorok transition.
+
+## First falsifier and counterfactual claim
+Named target: **a same-assertion later performed E2 and visible A2 consequence**, using `bp2p4.assertion.joined_downstream_a0_a2_assertion` as the existing precedent, with an owner-approved revised adapter/receiver for the new B source. (No assertion that the existing function accepts a new B packet unchanged.) Freeze **byte-identical** A history and pre-event world in SHARE and REFUSE. Vary **only B's independently signed/qualified action**; recompute authorized after-event world consequences, C8 receipt and downstream derivatives. Remove the real B source edge: the **same** final consumer must RED for `B_SOURCE_OR_OCCURRENCE_NOT_VERIFIABLE` or an owner-selected typed equivalent, not silently construct a replacement B action. Restore exact bytes: baseline should PASS. If A's snapshot changes, or the conclusion survives a B-source severance when it purports to depend on B, **historical independence fails**. Without actor access, there may be material consequence but not a licensed belief/first-person claim.
+
+## Proposed HQ decision
+Preserve two inherited positives, select a **single source- and clock-qualified receiver slice** rather than merging whole branches, assign the B-original event owner, nonretroactive actor-source owner, actor-access/uptake owner, CAN response/state issuers and compatible C9/C12 receiver. Require owner-approved source contract and independent hostile reproduction before any acceptance beyond sourcefree design. All native claims and human A5 remain HELD.
+
+### Findings / interpretation / action / owner
+- **Finding:** R31J pre-C8 and JOIN are present; A prehistory is contaminated by post-B feasibility. **Interpretation:** chronological inversion. **Action:** isolate baseline and independent B source, compare only post-event effects. **Owner:** BP1/R31J, ADP/C8, Sorok HQ.
+- **Finding:** BP2P4J's E2 affects A2, but its episode verifier has a reproduced defect. **Interpretation:** positive technical causation, bounded custody REVISE. **Action:** keep E2 precedent, repair verifier with fixed-old-RED replay. **Owner:** BP2P4J/BP4/C12, independent reviewer.
+- **Finding:** G1/G2 and typed ingress remain nonissuing, R95 native structural edge held. **Interpretation:** missing legal/epistemic transition, not proof of a new psyche store. **Action:** exact issuer and receiver qualification; no fake events. **Owner:** CAN/ADP/SCI05, PFF and Pyat original owners.
+## Court provenance, flight, and disposition
+- Repository: private `maidiu/rawlsing`. Sealed startup `3fd8dcb3df520806c7aee820e511092863545f4e`; commission/prompt HEAD `b2eef9de5086f6efbd7ba7e1d96660b264d798bf` (verified descendant by two commits); assigned branch `agent/sorok-hr1-world-b-history-uptake-source-decision-20261029-r1`.
+- Executor: connected GitHub documentary Browser session, GPT-6; **user-declared Browser/GPT-6 High pairing**, actual UI thinking-effort, independent Mac worktree/lease, and provider quota NOT independently inspectable. Permission: connected repository reports push=true. No other model, worker, or harness used.
+- Immutable primary evidence: RC1 `337896aa995d579e3525588b405d07216709ac15`; HR1 `40df1e61fb32f9210839d8ddfa9f8bf9a47d7621`; R31J `64fec28c374d8f77fb0b412d0c934d798ede03e8`; JOIN-E `7bf2da302996491ddf34b9a039fea47ac982d135`; BP2P4J `5b3e6577400ea1d88971ae6b48e41a118b8059ae`; BP2P4JI `3212d716ce66586527c258632ef10c3ff4489803`; PFF `f4a61361ae9da371a0319594c297fbf93f0326ad`; typed ingress `78e6001f6ac770d28fc210640c4815bf19a7f2b9`; Pyat R95 `b2cfe93cee854b7aff2081a7a223ada75295332a`.
+- Primary blob identities: R31J `pre_c9.py` `d56d81fdd7fb9ccd237289a09ac07f43de176655`, `scenarios.py` `7a24f9b638617d0fca008407b38929af4b19553e`; JOIN `session.py` `dc0894289e8b6a5e66148189e41d7efb563f25af`; BP2P4J `assertion.py` `e7bc26aaa2d91c5a5d7e7ae7698ed9f0687bbfaa`, `c12_verify.py` `b8e7cf397dbbbc37aa0a63ce9e0d7ba27a509cd3`; PFF G1/G2 reconciliation `329d9f628740a8e9d9af1ef8c24fcd589b476c4f`; typed ingress constitution `f07b113bbce0e1029bffe74ffe06cf7e0b671b1d`; R95 R4 return `037b72f09d5c463e941b71fd9b09b1ac0f3b18e2`.
+- Methods ACTUAL: authenticated immutable GitHub file/blob/commit read, private permission and branch ancestry checks, source-level comparison. Tests ACTUAL IN THIS COURT: **0**. Mac/native source execution **NOT_RUN**. BP2P4JI 98/98 tests and RC1 S2 tests are **attributed earlier execution**, not independently rerun here. No user raw sources, PRE-MAIN, other branches, PR514/516, original source, registries, or live workers changed.
+- **Engineering:** `ACCEPT_SCOPED_DOCUMENTARY_SOURCE_TRACE__REVISE_BEFORE_B_INDEPENDENCE_OR_COMPATIBILITY_ACCEPTANCE`. **Science:** `ACCEPT_SCOPED_CAUSAL_DISCRIMINATOR_DESIGN__HOLD_NATIVE_B_UPTAKE_AND_ACQUISITION`. **Authority:** `HOLD_ORIGINAL_OWNER_ISSUANCE_AND_HQ_ADOPTION`. No native person or A5.
+- **DONE:** isolated source/receiver and clock/admission court; proposed falsifier and owner handoff. **REMAINING:** actual owner-issued sources, implementation correction, executable B-only severance/replay, repaired C12 verifier and independent review. **CRITICAL BLOCKERS:** independently constituted B and immutable A source; original CAN/ADP/SCI05/Pyat grants; trusted C8 clock/access; compatible C9/C12 cut; human product evidence. **LARGEST_PRODUCTIVE_MOVE:** owner-qualified frozen-A B-only SHARE/REFUSE source cut through a *single named later performed-action assertion*. **FLIGHT:** no workers disturbed, no source write, no automatic review/dispatched agent. **DELTA:** converted a retrospective scenario confound and its existing receivers into an exact nonissuing producer/consumer decision; did not manufacture original historical evidence.

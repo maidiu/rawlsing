@@ -1,0 +1,182 @@
+{
+  "schema": "SOROK_HR1_F1_AB_CLOCK_RIVAL_MATRIX@1",
+  "status": "NONISSUING_TEST_SPECIFICATION_NOT_EXECUTED",
+  "source_grade": "TEST_ONLY_SOURCEFREE_DESIGN; native authority HOLD",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/sorok-hr1-world-b-history-uptake-source-decision-20261029-r1",
+  "startup": "3fd8dcb3df520806c7aee820e511092863545f4e",
+  "commission_head": "b2eef9de5086f6efbd7ba7e1d96660b264d798bf",
+  "invariants": [
+    "A_PRE_EVENT_SOURCE_AND_BYTES_IDENTICAL_ACROSS_BRANCHES",
+    "B_BIOGRAPHY_OWNER_DISTINCT_FROM_A_AND_TEST_SCENARIO",
+    "NO_FUTURE_MATERIAL_FEASIBILITY_IN_A_T0_SNAPSHOT",
+    "WORLD_EVENT_EXISTS_NEQ_ACTOR_ACCESS_NEQ_APPRAISAL",
+    "RESPONSE_NEQ_DURABLE_PRACTICE; MISSING_RULE_HELD_NEQ_EVALUATED_NOCHANGE",
+    "E2_ACTUALLY_PERFORMED_AND_OWNER_WITNESSED_NEQ_OPTION_PRESENTED",
+    "SOURCE_CUT_REDS_SAME_LATER_CONSUMER_AND_RESTORE_PASSES"
+  ],
+  "clocks": {
+    "historical_A_baseline": {
+      "name": "A_history_valid_time",
+      "relative": "strictly pre B event",
+      "assertion": "same actor source ref/hash and state hash for SHARE/REFUSE; no dependence on gm01.material_feasible_after"
+    },
+    "B_world_valid_time": {
+      "name": "B_performed_event_valid_time",
+      "test_only_example": "R31J test clock 5",
+      "assertion": "B performer, material operation and world occurrence valid time with separate original owner and immutable receipt"
+    },
+    "witness_admission_time": {
+      "name": "source_observer_recorded_or_admitted_at",
+      "assertion": "observation/witness capture and C8 admission timestamps separately; recorder may be later than occurrence; release/currentness/as-of immutable; no assumed globally comparable integer"
+    },
+    "A_access_time": {
+      "name": "actor_opportunity_and_receivability",
+      "assertion": "actor-specific position, sensory/social channels and valid permission, may be absent despite true B occurrence"
+    },
+    "A_perception_appraisal_time": {
+      "name": "actor_perceived_or_appraised_at",
+      "assertion": "must have lawful received basis; G1 output is not inferred from system knowledge or B intent; may be NULL/HELD"
+    },
+    "A_response_performance_time": {
+      "name": "response_then_performed_E2",
+      "test_only_example": "R31J E1 6 and E2 9",
+      "assertion": "response rule/access, grant and independently witnessed performed action separate; E2 must follow lawful trigger, not just test boolean"
+    },
+    "later_consumer_time": {
+      "name": "C9_commit_cold_reopen_and_A2_or_E3",
+      "assertion": "explicit clock-domain bridge; source hash read after commit and later performed consequence; do not compare BP2 logical time 202/217 numerically to BP4 world time 10/40"
+    }
+  },
+  "branch_rivals": [
+    {
+      "id": "SHARE_FROZEN_A",
+      "manipulation": "B owner-performed SHARE_TOOL, world opportunity updated after B only",
+      "held": "exact same sealed A H0 and prior objective material state; same receiver/permissions",
+      "expected": "A may gain tool opportunity; practice acquisition NOT inferred; E2 only if actually performed and lawful; access claim separate",
+      "falsifier": "A prehistory differs or B source removal has no effect on a B-dependent named assertion",
+      "grade": "NOT_RUN"
+    },
+    {
+      "id": "REFUSE_FROZEN_A",
+      "manipulation": "B owner-performed REFUSE_TOOL with quantity zero; no rewritten A history",
+      "held": "identical A H0 and prior world; same rule/actor identity",
+      "expected": "post-B opportunity may be denied and targetless HOLD lawful; no fabricated C9 CREATE; absence of E2 is not psychological NO_CHANGE",
+      "falsifier": "refusal creates a positive target without governed material/rule source",
+      "grade": "NOT_RUN"
+    },
+    {
+      "id": "B_SOURCE_SEVER_AND_RESTORE",
+      "manipulation": "delete/invalid B original event owner receipt only, preserve A historical bytes and other inputs",
+      "held": "same later named consumer assertion",
+      "expected": "consumer RED or typed HOLD; restoring exact receipt recovers baseline",
+      "falsifier": "same purported B-dependent consumer continues PASS after cut",
+      "grade": "NOT_RUN"
+    },
+    {
+      "id": "A_ACCESS_SEVER_AND_RESTORE",
+      "manipulation": "remove actor perception/encounter receipt but not B/world fact",
+      "held": "B event and material effects unchanged",
+      "expected": "no first-person claim or G1 based on B knowledge; M6 pre-ATTEND NONRENDERABLE precedent",
+      "falsifier": "actor still asserts private/access-unlicensed knowledge",
+      "grade": "NOT_RUN"
+    },
+    {
+      "id": "H0_PREEXISTING_ABILITY",
+      "manipulation": "identical post-B tool/opportunity, A had prior operation capable before B",
+      "held": "same E2 challenge and material means",
+      "expected": "successful E2 is activation/affordance not new practice; NO positive Rule T acquisition",
+      "falsifier": "acquisition classification despite evidenced prior independent competent performance",
+      "grade": "NOT_RUN"
+    },
+    {
+      "id": "H0_ASSISTED_OR_TOOL_EXECUTION",
+      "manipulation": "B/helper/tool performs decisive suboperation or supplies capability temporarily",
+      "held": "same observed task result",
+      "expected": "credit B/tool/opportunity; actor A cannot claim own durable ability without independent later unassisted transfer",
+      "falsifier": "A acquired practice declared from helper outcome alone",
+      "grade": "NOT_RUN"
+    },
+    {
+      "id": "H1_ACQUIRED_ORGANIZATION",
+      "manipulation": "A verified pre-state does not establish operation; A repeatedly performs relevant parts across conditions after practice, with controls excluding existing ability/tool/help",
+      "held": "objective task criteria, same owner-qualified event sources",
+      "expected": "candidate durable PRACTICE only after CAN011 issuer grants rule and evidence; later independent performed E2 confirms recruitable scope; may still HOLD if baseline inconclusive",
+      "falsifier": "later performance disappears with helper/tool or already existed in pre-B receipts",
+      "grade": "NOT_RUN"
+    },
+    {
+      "id": "ACTUAL_E2_VS_OPTION",
+      "manipulation": "withhold actor's performed-E2 receipt while retaining available option and target",
+      "held": "all prior source state equal",
+      "expected": "no acted E2 / practice materialization / downstream completed_units=4 attributable to performance; prior BP2P4J sourcefree no-E2 yields OFFSCREEN_NO_CHANGE and units=3",
+      "falsifier": "effect survives physical performed-E2 severance",
+      "grade": "ORIGINAL_BP2P4JI_REPRODUCED_TEST_ONLY; F1_NOT_RUN"
+    },
+    {
+      "id": "TRUE_EVALUATED_NOCHANGE",
+      "manipulation": "original issuer has actually evaluated complete readset, eligible current rule and valid conditions, then returns no durable mutation",
+      "held": "actor and world evidence complete",
+      "expected": "explicit evaluated NO_CHANGE with issuer/version; contrasted with missing Rule T=HELD, DENY and no target",
+      "falsifier": "unissued/missing rule stamped NO_CHANGE",
+      "grade": "NOT_RUN"
+    }
+  ],
+  "receiver": {
+    "source_producer": "A immutable BP1/R31J pre-event snapshot + independently sourced B actor event + Pyat/ADP/C8 qualified world ingress",
+    "first_candidate": "R31J PreC9Producer.stage_world -> stage_c8 -> stage_out9 -> stage_c9; JOIN-E JoinedSession.start -> product.material_inspect/record_omission",
+    "second_existing_tested": "bp2p4.assertion.joined_downstream_a0_a2_assertion",
+    "disclaimer": "second function does not automatically accept independent B inputs; receiver adapter and assertion revision belong to original owners",
+    "named_target_semantics": "actual performed E2, C9 committed target and readset, A2 world completed_units change, access-limited M6 claim; same assertion cut/restore",
+    "prior_review": "BP2P4JI 33+50+15 reproduced, 7 primary+3 supplementary cuts; delivered C12 verifier REVISE"
+  },
+  "acceptance": {
+    "engineering": "SOURCE_TRACE_PASS_SCOPED; B-independent receiver implementation NOT_RUN; C12 episode verifier REVISE",
+    "scientific": "CAUSAL_RIVAL_SPECIFIED; NATIVE_B_AND_PRACTICE_HOLD",
+    "authority": "ORIGINAL_CAN_ADP_SCI05_PYAT_HOLD; NO_ADOPTION"
+  },
+  "findings_interpretation_action_owner": [
+    {
+      "finding": "R31J A tools rewritten from future material_feasible_after",
+      "interpretation": "prehistory nonindependent",
+      "action": "freeze A source before B and re-derive only post-event opportunity",
+      "owner": "BP1/R31J source owner"
+    },
+    {
+      "finding": "B SHARE/REFUSE declared TEST_ONLY_OWNER scenario",
+      "interpretation": "sourcefree B not native independent B",
+      "action": "original B owner/performed receipt, valid clock, actor-access",
+      "owner": "ADP007/015/019, C8, Pyat original world owner"
+    },
+    {
+      "finding": "JOIN consumes J and BP2P4J performed E2 alters A2",
+      "interpretation": "real sourcefree receivers, native claim unavailable",
+      "action": "reuse exact cuts and retain negative+verifier RED",
+      "owner": "JOIN, BP2P4J/BP4, C9/C12 owners"
+    },
+    {
+      "finding": "G1/G2 and typed ingress nonissuing",
+      "interpretation": "actor uptake/recruitment unresolved",
+      "action": "owner-issued event-to-actor-receipt and causal rule",
+      "owner": "CAN008/010/011, ADP016/017 and PFF original owner"
+    }
+  ],
+  "execution": {
+    "actual_tests": 0,
+    "not_run": [
+      "sourcefree A/B counterfactual integration",
+      "native actor/world events",
+      "pytest/CI",
+      "Mac local worktree"
+    ],
+    "previous_reviewer_test_count_attributed": 98
+  },
+  "completed": {
+    "DONE": "source/clock/rival design",
+    "REMAINING": "issue and execute exact owner-qualified adapter/tests",
+    "CRITICAL_BLOCKERS": "B original authority, A immutable source, actor clocks/permission, CAN rules, compatible C9/C12",
+    "LARGEST_PRODUCTIVE_MOVE": "B-only severance of named later performed-action assertion",
+    "FLIGHT": "read-only source; assigned branch docs only",
+    "DELTA": "nonretroactive causal discrimination specified, not executed"
+  }
+}
