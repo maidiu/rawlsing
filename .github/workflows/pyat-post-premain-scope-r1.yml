@@ -35,6 +35,19 @@ jobs:
             --cutoff '2026-09-27T18:56:30Z' \
             --cutoff-sha 'ef46892f8e2752b62eef0778b1bdb53a86d80e70' \
             --output post-dense-integration-tip-date-cohort.json
+      - name: Emit exact conservative Pyat candidate refs for permanent HQ docket
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          d=json.load(open('post-dense-integration-tip-date-cohort.json',encoding='utf-8'))
+          rows=[r for r in d['post_cutoff_nonmain_heads'] if r['kind']!='SOROK_BOUNDARY']
+          assert len(rows)==d['post_cutoff_pyat_potential_including_unknown']
+          print('SCOPE_CANDIDATE_ROWS_BEGIN',len(rows))
+          for row in rows:
+              print('SCOPE_ROW_JSON',json.dumps(row,sort_keys=True,separators=(',',':')))
+          print('SCOPE_CANDIDATE_ROWS_END',len(rows))
+          PY
       - name: Retain exact branch-tip cohort evidence
         uses: actions/upload-artifact@v4
         with:
