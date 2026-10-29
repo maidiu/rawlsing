@@ -74,8 +74,8 @@
       ],
       "tests_executed_by_this_audit": false,
       "tested_commit": null,
-      "reviewer_commit": null,
-      "review_grade": "EXACT_INDEPENDENT_REVIEW_OF_FINAL_SOURCE_CUT_NOT_VALIDATED",
+      "reviewer_commit": "528e8cde0cff9e28f3c55d5d54a66e820d7401fa",
+      "review_grade": "REVISE_AT_EXACT_B3X_SHA__FIVE_ORIGINAL_REPAIRS_POSITIVE__TWO_SCHEMA_REDS",
       "exact_current_consumer_or_null": null,
       "reported_consumer_clues": [
         "The exact reviewed baseline is B3 `47b46a85b9ebb633754866f1e6f1b12db3bd2012`; X3 `d201985243fe15bc0da36e7cbc93707fec664acf`; S3 `2ca072e942be21b1c68e3abf32a133b3ed7435db`. The exact corrected B2 remai"
@@ -216,8 +216,8 @@
       ],
       "tests_executed_by_this_audit": false,
       "tested_commit": null,
-      "reviewer_commit": null,
-      "review_grade": "EXACT_INDEPENDENT_REVIEW_OF_FINAL_SOURCE_CUT_NOT_VALIDATED",
+      "reviewer_commit": "1a25b19dd01e8e7954e38c59ffc7e52c50739c9f",
+      "review_grade": "ACCEPT_SCOPED_SOURCEFREE_SCHEMA_READSET_ONLY__NO_NATIVE",
       "exact_current_consumer_or_null": null,
       "reported_consumer_clues": [],
       "already_in_premain": null,
@@ -688,8 +688,8 @@
       ],
       "tests_executed_by_this_audit": false,
       "tested_commit": null,
-      "reviewer_commit": null,
-      "review_grade": "EXACT_INDEPENDENT_REVIEW_OF_FINAL_SOURCE_CUT_NOT_VALIDATED",
+      "reviewer_commit": "8e74be26d14dae270ed6723d5e878f59446c94bd",
+      "review_grade": "HOLD_DOCUMENTARY_ONLY__R4_EXECUTION_NOT_PROVED",
       "exact_current_consumer_or_null": null,
       "reported_consumer_clues": [],
       "already_in_premain": null,
@@ -770,8 +770,8 @@
       ],
       "tests_executed_by_this_audit": false,
       "tested_commit": null,
-      "reviewer_commit": null,
-      "review_grade": "EXACT_INDEPENDENT_REVIEW_OF_FINAL_SOURCE_CUT_NOT_VALIDATED",
+      "reviewer_commit": "43328571f297c26e23a42a755ef306c1247b5032",
+      "review_grade": "ACCEPT_SCOPED_SOURCEFREE_TWO_OWNER_TRANSPORT_ONLY",
       "exact_current_consumer_or_null": null,
       "reported_consumer_clues": [
         "| Sealed startup | `0a0f8e99d9117a88a51d67b3b2b51f4f618cbaab` |",
@@ -1205,8 +1205,8 @@
       ],
       "tests_executed_by_this_audit": false,
       "tested_commit": null,
-      "reviewer_commit": null,
-      "review_grade": "EXACT_INDEPENDENT_REVIEW_OF_FINAL_SOURCE_CUT_NOT_VALIDATED",
+      "reviewer_commit": "5753d9b4f8fad9f2175b1e285733f95bb8387888",
+      "review_grade": "ACCEPT_SCOPED_C9R_C9PI_FROZEN_REPAIR__28_ORIGINAL_AUTHOR_DIVERGENCES_RETAINED",
       "exact_current_consumer_or_null": null,
       "reported_consumer_clues": [
         "- Role: bounded sourcefree C9 actor-boundary / semantic-target / durable-state / independently performed E2-consumer implementation worker. NOT HQ, C9PI reviewer, Pyat worker, CAN008/CAN011/ADP issuer. This ret",
@@ -1843,8 +1843,8 @@
       ],
       "tests_executed_by_this_audit": false,
       "tested_commit": null,
-      "reviewer_commit": null,
-      "review_grade": "EXACT_INDEPENDENT_REVIEW_OF_FINAL_SOURCE_CUT_NOT_VALIDATED",
+      "reviewer_commit": "3212d716ce66586527c258632ef10c3ff4489803",
+      "review_grade": "REVISE_C12_EPISODE_VERIFIER_PREIMAGE__OTHER_SOURCEFREE_JOINED_TESTS_REPRODUCED",
       "exact_current_consumer_or_null": null,
       "reported_consumer_clues": [
         "| Pinned BP4 input | `agent/rabochii-sorok-20261020-bp4-c10-c12-continuing-person-alpha-r1@d868e82c7c83def2df18295244d93af9706e647f` |",
@@ -4697,63 +4697,71 @@
       "pinned_sha": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
       "current_sha_or_null": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
       "head_match": true,
-      "content_grade": "COMMISSION_ONLY_AT_TIP",
-      "original_return_path": "WORKER_COMMISSIONS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/00_COMMISSION.md",
-      "original_return_blob_sha": "06435a0605b2a7e1ab295538ea6941714738a436",
-      "primary_source_path": null,
-      "primary_source_blob_sha": null,
-      "source_is_in_branch_return": false,
-      "code_functions": [],
-      "source_candidates": [],
-      "inspected_paths": [],
+      "content_grade": "CODE_PRESENT_REPRESENTATIVE_SOURCE_OR_PATCH_INSPECTED",
+      "original_return_path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/00_RETURN.md",
+      "original_return_blob_sha": "b604347f9a285d172d549ac4b69c0bc40b158fea",
+      "primary_source_path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+      "primary_source_blob_sha": "706475c927432c52599e6b603feb18ee9d716839",
+      "source_is_in_branch_return": true,
+      "code_functions": [
+        "TwoContractAdapter",
+        "_fail_closed_entry",
+        "_check_lane_support",
+        "run",
+        "round_trip_two_contracts",
+        "validate_receipts",
+        "test_adapter_run_calls_pinned_pe_c1_n10e",
+        "test_served_support_is_producer_derived_not_static_hint"
+      ],
+      "source_candidates": [
+        "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_connection.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py"
+      ],
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+          "inspection": "DIRECT_SOURCE_READ",
+          "blob_sha": "706475c927432c52599e6b603feb18ee9d716839"
+        },
+        {
+          "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_connection.py",
+          "inspection": "DIRECT_SOURCE_READ",
+          "blob_sha": "772817f6eb3e8f4a9aca01f99a197edfd13789d8"
+        },
+        {
+          "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/00_RETURN.md",
+          "inspection": "DIRECT_RETURN_READ",
+          "blob_sha": "b604347f9a285d172d549ac4b69c0bc40b158fea"
+        }
+      ],
       "commit_file_count": 1,
       "commit_view_truncated": false,
-      "author_test_evidence_path": "WORKER_COMMISSIONS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/00_COMMISSION.md",
+      "author_test_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/00_RETURN.md",
       "author_test_claims": [
-        "# SOROK HQ300 C0 — VALUE-BEARING SC0 ADAPTER RED REPAIR + ACTUAL PINNED CONSUMER CONNECTION",
-        "**BRANCH:** `agent/rabochii-sorok-r3-hq300-c0-sc0-adapter-red-repair-r1`",
-        "**COMMISSION:** `WORKER_COMMISSIONS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/00_COMMISSION.md`",
-        "**ALLOWED WRITES:** `WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/` and nothing else.",
-        "**MISSION / ONE OUTCOME:** Produce an actual sourcefree adapter candidate that survives independent RC0's 12 REDs while retaining K9 8/K10 28 and true A/B value consumer read, and demonstrate a newly executed call trace from candi",
-        "**ONE_WORKER_FULL_JOB:** ONE worker in the selected editor does the full commissioned task from investigation to published remote return. No sub-agent, helper, duplicate editor session or model handoff is required or authorized by",
-        "**MODEL/HARNESS NONCONFLATION:** The editor/runtime and underlying configured model are separate. `MiMo-V2.6 Pro` in `OpenCode` is not `DeepSeek-Harness`. This commission MUST NOT route the user to a different harness merely becau",
-        "**PRIMARY MODEL/HOST & MINIMUM INTELLIGENCE:** Primary MiMo-V2.6 Pro in the user's existing authorized OpenCode editor and local worktree. ONE OpenCode agent performs investigation, implementation, tests, documentation, commit/pus",
-        "**WHY PREFERRED:** Reviewer RC0 staged 61 blob-verified objects and ran sourcefree port, PE, N10E/C1 and hostile laws. Full import and repeated repair loops make local worktree decidedly more effective than Browser Python. MiMo ca",
-        "**WARM REUSE PLAN:** Use existing single canonical Git object store, a new governed sparse worktree, verified Python/pytest+PE/N10E/C1 closure. Never reuse reviewer RC0's live write tree. A warm local repo save matters for further",
-        "**OBJECTIVE FALLBACK TRIGGER:** If the existing OpenCode+MiMo configuration or authorized worktree cannot execute, return a precise environment/permission HOLD to HQ; do NOT autonomously move MiMo into DeepSeek-Harness, switch pro",
-        "**PRIMARY_MODEL_ECONOMICS:** Use the user's configured OpenCode+MiMo-V2.6 Pro as the already-chosen qualified local implementation route. Record actual use if visible; do not invoke another model or harness to optimize presumed ex",
-        "HQ298 SC0 b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59; independent RC0 86bd2a54687b40401f7c4247607bd1873c585619 (READ 01 independent expectations, 02 per-case, 03 nine PE REDs, 04 coverage, 05 owner action, 06 audit and exact reprodu",
-        "## Required actual work",
-        "Copy/extend candidate code only in worker terrain; freeze RC0 original 25 expectations and full 12 RED outcomes before changes. Fail-closed WORLD_READ at adapter entry even after revocation; demand-relative source closure rather t",
-        "Real per-family counts including all 12 independently failing RC0 attacks and one pinned PE/C1/N10E actual connected call trace; tests with both providers and negative controls, no waiver by rewriting RC0 oracle. HOLD if live N9/N",
-        "MUST_READ_NOW: `SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md`, `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md`, `00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md` (notably ",
-        "- Keep sourcefree fixture or pinned imports separate from adopted owner operation, independent reviewer vs author, published world authority vs a forged nonnull reference, and a true return vs a scoped PASS. Never change frozen ex"
+        "RC0 frozen 25: original 13 PASS / 12 RED; repaired candidate 25/25 PASS, reviewer source unchanged (author-run).",
+        "K9 8/8 and K10 28/28 PASS (author-run), 6/6 connection oracles PASS, N10E+C1 56/56 and PE 21/21 PASS (author-run).",
+        "sys.setprofile call trace shows real TEST_ONLY producer functions N10E provide_empirical_possibility_slice, C1 compose_positioned_subject_possibility and PE serve_generic_world_situated_possibility, not static fixture hint.",
+        "Original nine PE source/owner REDs not waived; no N9/N10W issuer, native science, adoption or wake."
       ],
       "tests_executed_by_this_audit": false,
-      "tested_commit": null,
+      "tested_commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
       "reviewer_commit": null,
       "review_grade": "EXACT_INDEPENDENT_REVIEW_OF_FINAL_SOURCE_CUT_NOT_VALIDATED",
       "exact_current_consumer_or_null": null,
       "reported_consumer_clues": [
-        "# SOROK HQ300 C0 — VALUE-BEARING SC0 ADAPTER RED REPAIR + ACTUAL PINNED CONSUMER CONNECTION",
-        "**MISSION / ONE OUTCOME:** Produce an actual sourcefree adapter candidate that survives independent RC0's 12 REDs while retaining K9 8/K10 28 and true A/B value consumer read, and demonstrate a newly ",
-        "HQ298 SC0 b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59; independent RC0 86bd2a54687b40401f7c4247607bd1873c585619 (READ 01 independent expectations, 02 per-case, 03 nine PE REDs, 04 coverage, 05 owner acti",
-        "Copy/extend candidate code only in worker terrain; freeze RC0 original 25 expectations and full 12 RED outcomes before changes. Fail-closed WORLD_READ at adapter entry even after revocation; demand-re"
+        "TEST_ONLY port.adapter.TwoContractAdapter.run -> pinned N10E provide_empirical_possibility_slice -> C1 compose_positioned_subject_possibility -> PE serve_generic_world_situated_possibility; author call-trace only, no native owner.",
+        "Independent post-repair reviewer not verified."
       ],
       "already_in_premain": null,
-      "real_stranded_work": "UNKNOWN_PENDING_PREMAIN_AND_REVIEW_RECONCILIATION",
+      "real_stranded_work": null,
       "red_or_hold": [
-        "# SOROK HQ300 C0 — VALUE-BEARING SC0 ADAPTER RED REPAIR + ACTUAL PINNED CONSUMER CONNECTION",
-        "**BRANCH:** `agent/rabochii-sorok-r3-hq300-c0-sc0-adapter-red-repair-r1`",
-        "**COMMISSION:** `WORKER_COMMISSIONS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/00_COMMISSION.md`",
-        "**ALLOWED WRITES:** `WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/` and nothing else.",
-        "**MISSION / ONE OUTCOME:** Produce an actual sourcefree adapter candidate that survives independent RC0's 12 REDs while retaining K9 8/K10 28 and true A/B value consumer read, and demonstrate a newly executed call trace from candi",
-        "**ONE_WORKER_FULL_JOB:** ONE worker in the selected editor does the full commissioned task from investigation to published remote return. No sub-agent, helper, duplicate editor session or model handoff is required or authorized by",
-        "**MODEL/HARNESS NONCONFLATION:** The editor/runtime and underlying configured model are separate. `MiMo-V2.6 Pro` in `OpenCode` is not `DeepSeek-Harness`. This commission MUST NOT route the user to a different harness merely becau",
-        "**WHY PREFERRED:** Reviewer RC0 staged 61 blob-verified objects and ran sourcefree port, PE, N10E/C1 and hostile laws. Full import and repeated repair loops make local worktree decidedly more effective than Browser Python. MiMo ca"
+        "RC0 12 frozen author-reported closed; exact post-repair independent review NOT_VERIFIED.",
+        "Original RC0 nine PE REDs retained (1 validation, 5 cross-owner, 3 expectation).",
+        "Native N9/N10W, Pyat N11/N12, source/actor rights, PRE-MAIN adoption and model use NOT_GRANTED."
       ],
       "native_rights": "NOT_GRANTED",
-      "next_proof_owner": "ACTING_SOROK_HQ_AND_SEPARATE_ORIGINAL_CAPABILITY_OWNERS"
+      "next_proof_owner": "INDEPENDENT_SC0_RC0_REVIEWER_AND_PYAT_N9_N10E_N10W_OWNER"
     },
     {
       "index": 57,
@@ -8090,6 +8098,22 @@
       "provenance_corrected": [
         74
       ]
+    },
+    {
+      "revision": "2026-10-29_SOURCE_TIP_ANCESTRY_CORRECTION_R2",
+      "index": 56,
+      "reason": "Last commit touched only a commission, but full branch tree contains implemented return, source, tests and author receipt",
+      "source_ref": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "verified_source_blob": "706475c927432c52599e6b603feb18ee9d716839",
+      "reviewer_pairings_updated": [
+        1,
+        2,
+        6,
+        7,
+        11,
+        18
+      ],
+      "write_scope": "A_IMPLEMENTERS return JSON only; zero production or branch-code writes"
     }
   ]
 }
