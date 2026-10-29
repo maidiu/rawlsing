@@ -1,0 +1,18 @@
+name: Cross-HQ branch custody structural gate (candidate)
+on:
+  pull_request:
+    paths:
+      - 'CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1/**'
+      - '.github/workflows/branch-custody-structural-r1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  custody-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test fail-closed gate (synthetic, source-free)
+        run: python3 -m unittest discover -s CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1 -p 'test_*.py' -v
+      - name: Structural audit of recovery queue; does not imply scientific acceptance
+        run: python3 CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1/validate_custody.py CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1/01_PRIORITY_RECOVERY_QUEUE.json --json
