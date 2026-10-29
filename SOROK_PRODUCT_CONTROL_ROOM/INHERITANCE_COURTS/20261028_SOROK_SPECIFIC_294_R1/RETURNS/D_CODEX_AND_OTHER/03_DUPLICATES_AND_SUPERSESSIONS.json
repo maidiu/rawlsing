@@ -1,0 +1,163 @@
+{
+  "schema": "SOROK_D_SHARD_DUPLICATES_SUPERSESSIONS_R1",
+  "scope": "60 D-assigned branches; inspected primary blob comparisons and documented lineage; NOT full tree deduplication",
+  "exact_primary_blob_matches": [
+    {
+      "source_blob_sha": "76bd3a6ea26fd72ef59816d62013fd694bf8e774",
+      "indices": [
+        17,
+        18
+      ],
+      "scope": "Inspected primary file only; NOT whole-tree equivalence"
+    }
+  ],
+  "exhaustive_whole_tree_deduplication": false,
+  "relationship_candidates": [
+    {
+      "group": "ONECALL_C0",
+      "members": [
+        15,
+        16,
+        17,
+        18,
+        25
+      ],
+      "relation": "C0 original→C0F preregistered RED→C0R repair→C0RI independent postfreeze RED→HQ fan-in",
+      "proof": "Original and repaired source/independent reproducer returns inspected",
+      "disposition": "REPAIR_AND_REVIEW__NO_NATIVE_ADOPTION",
+      "do_not_erase": [
+        "18 historical preregistered REDs on original C0",
+        "C0R source-only pin conflicts distinguished from substantive errors",
+        "I08/I10/I13/I14 newly preserved REDs"
+      ]
+    },
+    {
+      "group": "JOIN",
+      "members": [
+        38,
+        39,
+        59
+      ],
+      "relation": "13df preliminary same-person join; JOIN-E 7bf later exact fork-atomicity repair; JOIN-V independent scope acceptance",
+      "proof": "JOIN-V exact reviewer 4387dc818a96fda2d5271672505fbd9da1059703 with 30/30 + 5/5",
+      "disposition": "ADOPT_SCOPED_REVIEWED_CANDIDATE__NO_UNPROVED_FULL_CHAIN_PROMOTION",
+      "do_not_erase": [
+        "49022f6 empty fork post-refusal mutation",
+        "75a134e lineage clock/root metadata flaws",
+        "earlier c367/cc0ff/75a repairs not automatically accepted"
+      ]
+    },
+    {
+      "group": "M2_RELATION",
+      "members": [
+        3
+      ],
+      "relation": "Original experimental M2 then R2 consumed preimage repair under same branch",
+      "proof": "Original R2 00_RETURN and m2_patch/kernel inspected; 91 legacy and 14 new author claims",
+      "disposition": "REPAIRED_UNREVIEWED__INDEPENDENT_REVIEW_REQUIRED",
+      "do_not_erase": [
+        "Frozen M1/I2 original compatibility RED matrix: 14/9,18/19,13/10 reported for preserved inputs"
+      ]
+    },
+    {
+      "group": "SCIENCE_A_T",
+      "members": [
+        6,
+        10,
+        11,
+        12,
+        13,
+        36,
+        42,
+        44
+      ],
+      "relation": "Semantic owner search, conditional GM01, witnessed response S35 and constructive S38 are differentiated science questions, not duplicate positive rules",
+      "proof": "C9O/N1/R29M/S35/S38 primary scientific documents directly inspected",
+      "disposition": "OWNER_HOLD_CONCRETE_RULE_A_T__KEEP_NONISSUING_CANDIDATES",
+      "do_not_erase": [
+        "No competent concrete CAN008 A issuer verified",
+        "CAN011 acquired PRACTICE not inferred from response",
+        "S38 nonissuing and no runtime"
+      ]
+    },
+    {
+      "group": "S37_TO_S48",
+      "members": [
+        43,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54
+      ],
+      "relation": "Sourcefree continuing-person genealogy contains linked implementations with inherited seams and distinct source/cold/actor obligations",
+      "proof": "Direct modules inspected at pinned SHA; 300-file PRE-MAIN compare capped",
+      "disposition": "REUSE_AS_PROVENANCE_GRADED_CHAIN_NOT_SINGLE_ADOPTED_RELEASE",
+      "do_not_erase": [
+        "S37 old C9 row-status tamper reviewer RED",
+        "S48 must not fabricate current B event",
+        "synthetic source does not become native person"
+      ]
+    },
+    {
+      "group": "S49_TO_S52",
+      "members": [
+        55,
+        56,
+        57,
+        58
+      ],
+      "relation": "Independent B performer, V3 state projection, situated relevance, conditional paid repertoire are different producers/consumers; later branch must not silently replace independent owner",
+      "proof": "Actual actor/recovery/session source inspected; scoped author test/hold returns directly inspected",
+      "disposition": "SEPARATE_REUSE_CANDIDATES_WITH_ACTUAL_ROOT_HOLDS",
+      "do_not_erase": [
+        "S49 current B-owned context missing",
+        "S50 current V3 BackboneState missing",
+        "S52 independent counterpart and actual purpose unproved"
+      ]
+    },
+    {
+      "group": "HQ_DOCUMENTARY",
+      "members": [
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        37
+      ],
+      "relation": "Command and accession records; branch existence and dispatch ledgers are not code or signed HQ succession",
+      "proof": "Direct HQ document/probe inspection",
+      "disposition": "DOCUMENTARY_CONTROL_ONLY__NO_AGENT_LAUNCH_INFERENCE",
+      "do_not_erase": [
+        "No model lease or Mac process state inferred from Git",
+        "no independent HQ appointment created"
+      ]
+    },
+    {
+      "group": "LANGUAGE_UNRELATED_ROOT",
+      "members": [
+        2,
+        40,
+        46,
+        49
+      ],
+      "relation": "Language architecture, standalone consumer and S40/S43 generated speech paths; codex/sorok-language-consumer-r3 has NO_COMMON_ANCESTOR in GitHub compare with PRE-MAIN",
+      "proof": "Direct language_mediation/index.py inspected; compare reports no common ancestor",
+      "disposition": "RECONCILE_BY_EXACT_BLOB_AND_CONSUMER__DO_NOT_AUTO_MERGE",
+      "do_not_erase": [
+        "No shared Git ancestry established for index.py code"
+      ]
+    }
+  ],
+  "non_inference": "Same filenames, ancestral labels, test counts or later commit dates do not prove identical capability, legitimate supersession, current PRE-MAIN inclusion, or source authority"
+}
