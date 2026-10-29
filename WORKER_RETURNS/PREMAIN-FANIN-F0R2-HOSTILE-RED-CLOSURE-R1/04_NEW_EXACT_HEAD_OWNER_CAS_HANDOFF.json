@@ -1,0 +1,147 @@
+{
+  "schema": "PREMAIN_F0R2_CURRENT_EXACT_OWNER_CAS_HANDOFF@1",
+  "repo": "maidiu/rawlsing",
+  "reviewer_branch": "review/pre-main-fanin-f0r2-independent-red-closure-20261029-r1",
+  "reviewer_sealed_startup": "1725e8c845b7f6d8c476089a3c8b93acadc5d05e",
+  "reviewer_prompt_head": "35771168ce90d2ca86593f024caa8b9c78d899b1",
+  "review_target": {
+    "pr": 519,
+    "current_exact_head": "342164a09e10aa70812299c12386ed0923308228",
+    "previous_reviewed_head": "4513fcd3b4e0f58f1e1bf89bf6601d91634740df",
+    "base": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "draft": true,
+    "merged": false
+  },
+  "source_blobs": {
+    "validator": "6fa0ce132e68f1fea7d67321129a2af2627a5d94",
+    "seed": "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8",
+    "events": "2b899397bdac9c2e92d4db295278743e2499eca9",
+    "flight": "7c20af660ce6c323e99f5dd038abf4c4ac3b5891",
+    "workflow": "ce1ef40b5f2568c52a44d1ddc01a98647f3bf322"
+  },
+  "CI": {
+    "prior": {
+      "head": "4513fcd3b4e0f58f1e1bf89bf6601d91634740df",
+      "run": 40965404943,
+      "job": 123768512211,
+      "result": "success",
+      "witnesses": 13,
+      "events": 18,
+      "flights": 18
+    },
+    "current": {
+      "head": "342164a09e10aa70812299c12386ed0923308228",
+      "run": 40966454474,
+      "job": 123772078387,
+      "result": "cancelled",
+      "checkout": "cancelled",
+      "python": "SKIPPED",
+      "events_source_count": 19,
+      "flights_source_count": 19
+    },
+    "governed": {
+      "head": "342164a09e10aa70812299c12386ed0923308228",
+      "run": 40966454214,
+      "job": 123772077137,
+      "result": "failure"
+    }
+  },
+  "new_challenges": [
+    {
+      "id": "N1",
+      "mutation": "Alter post-seed F1-RETURN flight.source_authority to fabricated NATIVE_CAN_ADP_PYAT_FULL_GRANT with adoption false",
+      "mechanism": "validate() does not check new flight source_authority against issued owner grant",
+      "finding": "STATIC_SOURCE_PREDICATE_PROJECTION_ADMITTED",
+      "actual_python": "NOT_RUN",
+      "owner": "PR author; native source issuer"
+    },
+    {
+      "id": "N2",
+      "mutation": "Change post-seed F2-RETURN scientific HOLD to ACCEPT_SCOPED",
+      "mechanism": "recognized court enum only; first 11 seed frozen, not future seven/eight rows before first install",
+      "finding": "STATIC_SOURCE_PREDICATE_PROJECTION_ADMITTED",
+      "actual_python": "NOT_RUN",
+      "owner": "PR author; scientific issuer"
+    },
+    {
+      "id": "N3",
+      "mutation": "Append independent control review with invented reviewer SHA referencing prior SOROKHR1-F1_WORLD commissioned-only event",
+      "mechanism": "reviewer_of_sha checks prior non-review record, not actual returned author source, artifact existence or reviewer identity",
+      "finding": "STATIC_SOURCE_PREDICATE_PROJECTION_ADMITTED",
+      "actual_python": "NOT_RUN",
+      "owner": "PR author; original reviewer/author"
+    },
+    {
+      "id": "N4",
+      "mutation": "Edit fifth post-seed PR519 row from DRAFT_UNMERGED to arbitrary OWNER_REVIEWED_NO_REMOTE_PROOF",
+      "mechanism": "PR status parser rejects MERGED/ADOPTED_CAS_VERIFIED only; baseline historical comparison checks events/workers, not PR list",
+      "finding": "STATIC_SOURCE_PREDICATE_PROJECTION_ADMITTED",
+      "actual_python": "NOT_RUN",
+      "owner": "PR author; PRE-MAIN maintainer"
+    }
+  ],
+  "seed_approval": "PENDING",
+  "three_verdicts": {
+    "engineering": "HOLD_CURRENT_EXACT_HEAD_PYTHON__PRIOR_ACCEPT_SCOPED__REVISE_NEW_CUSTODY",
+    "scientific": "HOLD",
+    "authority": "RED"
+  },
+  "protection": {
+    "protected": false,
+    "rulesets": [],
+    "details": "403",
+    "required_check_verified": false
+  },
+  "progress": {
+    "sorok_md_revision": 36,
+    "sorok_json_revision": 35,
+    "pyat_json_verified": false,
+    "paired_CAS": false
+  },
+  "f4": {
+    "branch": "integration/pre-main-fanin-owner-cas-activation-20261029-r1",
+    "head": "9fb7caebc266f1e3a8315d87ff446d5db1634cc5",
+    "authorization": "STOP"
+  },
+  "owner_actions": [
+    {
+      "owner": "Control PR author/CI",
+      "action": "completed current exact 19/19 + 13 sourcefree Python and new N1-N4 regressions"
+    },
+    {
+      "owner": "Independent reviewer",
+      "action": "new immutable source-specific hostile review; no self-adoption"
+    },
+    {
+      "owner": "PRE-MAIN original maintainer",
+      "action": "approve protected initial 11-entry owner seed, actual provenance"
+    },
+    {
+      "owner": "Repo administrator",
+      "action": "required receipt-contract and progress CAS checks and reviewer protections, readback"
+    },
+    {
+      "owner": "FIABC/Pyat original owner",
+      "action": "3 failing tests source/base classification, Pyat progress evidence"
+    },
+    {
+      "owner": "Sorok original owner",
+      "action": "truthful paired progress CAS MD36 vs JSON35"
+    },
+    {
+      "owner": "Actual PRE-MAIN maintainer",
+      "action": "re-lock PR/F4, authorizes only protected merge after all gates"
+    }
+  ],
+  "no_merge": true,
+  "no_premain_write": true,
+  "no_f4_launch": true,
+  "no_source_grants": true,
+  "no_self_acceptance": true,
+  "DONE": "current PR re-lock, 19/19 direct source, prior real Python, current skipped Python, four bounded unexecuted source probes",
+  "REMAINING": "current-head Python, original source/custody tests, protected owner controls, progress/CI gaps",
+  "CRITICAL_BLOCKERS": "current receipt job canceled; target unprotected; owner PENDING; FIABC failing; Sorok pair mismatch",
+  "LARGEST_PRODUCTIVE_MOVE": "completed protected current-head receipt Python and original-custody source probes",
+  "FLIGHT": "no workers/other branch disturbed",
+  "DELTA": "avoided false acceptance on changed PR head"
+}

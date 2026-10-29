@@ -1,0 +1,180 @@
+{
+  "schema": "PREMAIN_F0R2_13_WITNESSES_AND_ADVERSARIAL_ADOPTION_MATRIX@1",
+  "repository": "maidiu/rawlsing",
+  "current_head": "342164a09e10aa70812299c12386ed0923308228",
+  "prior_green_head": "4513fcd3b4e0f58f1e1bf89bf6601d91634740df",
+  "actual_CI": {
+    "prior": {
+      "run": 40965404943,
+      "job": 123768512211,
+      "conclusion": "success",
+      "python_witnesses": 13,
+      "events": 18,
+      "flights": 18
+    },
+    "current": {
+      "run": 40966454474,
+      "job": 123772078387,
+      "conclusion": "cancelled",
+      "checkout": "cancelled",
+      "python_step": "SKIPPED",
+      "events_source_readback": 19,
+      "flights_source_readback": 19
+    }
+  },
+  "seed": {
+    "blob": "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8",
+    "owner_approval": "PENDING",
+    "initial_events": 11,
+    "initial_workers": 11,
+    "initial_prs": 4
+  },
+  "witnesses": [
+    {
+      "id": "W1",
+      "mutation": "duplicate event",
+      "expected": "DUPLICATE_ID",
+      "prior_head_python": "PASS_REJECTED",
+      "current_head_python": "NOT_RUN_CANCELLED"
+    },
+    {
+      "id": "W2",
+      "mutation": "fake adoption on initial event",
+      "expected": "ADOPTION_REQUIRES_EXTERNAL",
+      "prior_head_python": "PASS_REJECTED",
+      "current_head_python": "NOT_RUN_CANCELLED"
+    },
+    {
+      "id": "W3",
+      "mutation": "reviewer points at self",
+      "expected": "SELF_REVIEW",
+      "prior_head_python": "PASS_REJECTED",
+      "current_head_python": "NOT_RUN_CANCELLED"
+    },
+    {
+      "id": "W4",
+      "mutation": "flight exact SHA mismatch",
+      "expected": "FLIGHT_LOG_EXACT_SOURCE_MISMATCH",
+      "prior_head_python": "PASS_REJECTED",
+      "current_head_python": "NOT_RUN_CANCELLED"
+    },
+    {
+      "id": "W5",
+      "mutation": "invalid scientific PASS grade",
+      "expected": "COURT_INVALID",
+      "prior_head_python": "PASS_REJECTED",
+      "current_head_python": "NOT_RUN_CANCELLED"
+    },
+    {
+      "id": "B1",
+      "mutation": "frozen flight fake adopted state",
+      "expected": "FAKE_ADOPTED_STATUS",
+      "prior_head_python": "PASS_REJECTED",
+      "current_head_python": "NOT_RUN_CANCELLED"
+    },
+    {
+      "id": "B2",
+      "mutation": "initial flight wrong owner",
+      "expected": "INITIAL_WORKERS_REWRITTEN",
+      "prior_head_python": "PASS_REJECTED",
+      "current_head_python": "NOT_RUN_CANCELLED"
+    },
+    {
+      "id": "B3",
+      "mutation": "remove HR1 negatives",
+      "expected": "INITIAL_EVENTS_REWRITTEN",
+      "prior_head_python": "PASS_REJECTED",
+      "current_head_python": "NOT_RUN_CANCELLED"
+    },
+    {
+      "id": "B4",
+      "mutation": "initial scientific HOLD promoted",
+      "expected": "INITIAL_EVENTS_REWRITTEN",
+      "prior_head_python": "PASS_REJECTED",
+      "current_head_python": "NOT_RUN_CANCELLED"
+    },
+    {
+      "id": "B5",
+      "mutation": "unbound reviewer source SHA",
+      "expected": "REVIEW_TARGET_NOT_BOUND",
+      "prior_head_python": "PASS_REJECTED",
+      "current_head_python": "NOT_RUN_CANCELLED"
+    },
+    {
+      "id": "B6",
+      "mutation": "append forged CAS with fake reviewer, source grant, first consumer and paired worker",
+      "expected": "ADOPTION_REQUIRES_EXTERNAL",
+      "prior_head_python": "PASS_REJECTED",
+      "current_head_python": "NOT_RUN_CANCELLED"
+    },
+    {
+      "id": "B7",
+      "mutation": "rewrite initial event finding",
+      "expected": "INITIAL_EVENTS_REWRITTEN",
+      "prior_head_python": "PASS_REJECTED",
+      "current_head_python": "NOT_RUN_CANCELLED"
+    },
+    {
+      "id": "B8",
+      "mutation": "rewrite frozen first PR status",
+      "expected": "INITIAL_PRS_REWRITTEN",
+      "prior_head_python": "PASS_REJECTED",
+      "current_head_python": "NOT_RUN_CANCELLED"
+    }
+  ],
+  "valid_candidate": {
+    "state": "OWNER_ADOPTION_CANDIDATE",
+    "adoption": false,
+    "prior_python": "PASS_ALLOWED_NONADOPTED",
+    "current_python": "SKIPPED"
+  },
+  "novel_challenges": [
+    {
+      "id": "N1",
+      "mutation": "Alter post-seed F1-RETURN flight.source_authority to fabricated NATIVE_CAN_ADP_PYAT_FULL_GRANT with adoption false",
+      "mechanism": "validate() does not check new flight source_authority against issued owner grant",
+      "finding": "STATIC_SOURCE_PREDICATE_PROJECTION_ADMITTED",
+      "actual_python": "NOT_RUN",
+      "owner": "PR author; native source issuer"
+    },
+    {
+      "id": "N2",
+      "mutation": "Change post-seed F2-RETURN scientific HOLD to ACCEPT_SCOPED",
+      "mechanism": "recognized court enum only; first 11 seed frozen, not future seven/eight rows before first install",
+      "finding": "STATIC_SOURCE_PREDICATE_PROJECTION_ADMITTED",
+      "actual_python": "NOT_RUN",
+      "owner": "PR author; scientific issuer"
+    },
+    {
+      "id": "N3",
+      "mutation": "Append independent control review with invented reviewer SHA referencing prior SOROKHR1-F1_WORLD commissioned-only event",
+      "mechanism": "reviewer_of_sha checks prior non-review record, not actual returned author source, artifact existence or reviewer identity",
+      "finding": "STATIC_SOURCE_PREDICATE_PROJECTION_ADMITTED",
+      "actual_python": "NOT_RUN",
+      "owner": "PR author; original reviewer/author"
+    },
+    {
+      "id": "N4",
+      "mutation": "Edit fifth post-seed PR519 row from DRAFT_UNMERGED to arbitrary OWNER_REVIEWED_NO_REMOTE_PROOF",
+      "mechanism": "PR status parser rejects MERGED/ADOPTED_CAS_VERIFIED only; baseline historical comparison checks events/workers, not PR list",
+      "finding": "STATIC_SOURCE_PREDICATE_PROJECTION_ADMITTED",
+      "actual_python": "NOT_RUN",
+      "owner": "PR author; PRE-MAIN maintainer"
+    }
+  ],
+  "seed_and_validator_comutation": {
+    "risk": "shared editable PR tree; Git SHA pin not an independent signed root",
+    "python": "NOT_RUN"
+  },
+  "verdicts": {
+    "engineering": "PRIOR_ACCEPT_SCOPED__CURRENT_HOLD_CI__REVISE_NEW_CUSTODY",
+    "scientific": "HOLD",
+    "authority": "RED"
+  },
+  "DONE": "prior CI 13 witnesses and current head 19 source readback",
+  "REMAINING": "current exact-run 13 and N1-N4 Python",
+  "CRITICAL_BLOCKERS": "current job cancelled before Python; no source owner or required check",
+  "LARGEST_PRODUCTIVE_MOVE": "protected current-head Python and new source-custody witnesses",
+  "FLIGHT": "no disturbance",
+  "DELTA": "prevented stale CI promotion after PR moved"
+}

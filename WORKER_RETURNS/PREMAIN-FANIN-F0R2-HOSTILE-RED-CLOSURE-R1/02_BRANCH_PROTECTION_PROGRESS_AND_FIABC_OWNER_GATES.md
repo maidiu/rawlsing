@@ -1,0 +1,20 @@
+# PREMAIN F0R2 — Protection, progress, FIABC, F4 and owner-specific gates
+| Surface | Exact observed evidence | Owner gate |
+|---|---|---|
+| PR #519 | Current 342164a09e10aa70812299c12386ed0923308228, draft/unmerged, base 299f41e97a43c67be9cc76a79fa49b48f4e12e54; last two commits add F3 event and flight, now 19/19 | Owner re-lock exact changed head. |
+| PRE-MAIN protection | protected=false; rulesets=[]; branch protection 403 | Repo admin must configure and independently read required receipt-contract, independent PR review, no force/direct unauthorized bypass. |
+| Current receipt CI | run 40966454474 job 123772078387 CANCELLED during actions/checkout@v4; Python and statement steps SKIPPED | CI maintainer requires a completed exact-head run, no prior-head substitution. |
+| Prior receipt CI | previous 4513fcd3b4e0f58f1e1bf89bf6601d91634740df, run 40965404943 job 123768512211 SUCCESS, actual 18/18, 13 rejects + legal candidate | Scope remains previous immutable HEAD only. |
+| Governed CI | current run 40966454214 job 123772077137 FAILURE; previous run 40965404928 job 123768513709 144 passed / 3 failed | FIABC/Pyat original owner classify exact base-vs-PR tests; not all-green. |
+| Sorok progress | CURRENT_PROGRESS.md blob fd6ce00595e7b1ea9bb997cf7bd9fcb4e83eccbe rev36, .json blob c7fb05d8e5d0240959191041a73e76e2f14cb436 rev35 | Sorok incumbent/PRE-MAIN maintainer truthful same-revision paired CAS. |
+| Pyat progress | MD blob b4e3048f4318325fd369018af87de4bf9447e081; JSON blob 09ffa014bfeb38cf53d2e1962bb1bf65ff1d640f returned empty preview | Pyat original owner must retrieve full JSON; do not claim corrupt or matching. |
+| F4 | integration/pre-main-fanin-owner-cas-activation-20261029-r1 at 9fb7caebc266f1e3a8315d87ff446d5db1634cc5, divergence vs prior PR: ahead 2 / behind 14 | F4 held, new head also not automatically inherited. |
+
+Actual governed failures on predecessor run: test_fiabc_w3_i04_runtime_packaging_rebind.py::RuntimePackagingRebindTests::test_lits_authority_overlay_v2_pins_integrated_normalized_sourcebacked_scope (source mismatch b655d8b8... versus 1bb84723...); test_fiabc_final_preflight_fanin.py::test_live_candidate_c_and_packaging_bind_final_hq_state (lock c2451b1b... versus 47893688...); test_fiabc_final_preflight_fanin.py::test_t5_contract_binds_final_successor_and_lits_current_law (same lock reversed). We did not independently attribute these to PR changes versus inherited baseline.
+
+The receipt workflow paths cover CROSS_HQ_CONTROL_ROOM/BRANCH_FANIN/** and its workflow file, not Sorok/Pyat progress MD/JSON. Validator does not inspect actual progress pair and compares prior events/workers, not post-seed PR list. Initial PRE-MAIN baseline has no event/flight log; seed owner approval remains PENDING. Source blob pin inside editable validator is not a protected anchor.
+
+Ordered gates: (1) PR author add N1-N4 Python regressions and preserve original thirteen; (2) CI executor obtains completed new-head Python selftest with source/hash lock; (3) independent reviewer checks new immutable author source; (4) PRE-MAIN original owner authenticates historical 11/11 candidate seed; (5) repo admin enforces actual required check and independent approval; (6) FIABC/Pyat original owner resolves three failures and Pyat progress source; (7) Sorok original owner synchronizes MD/JSON via one truth-qualified CAS; (8) only authorized maintainer reconciles F4 and merges after currentness and grants, with real post-merge first-consumer readback. No step is undertaken by F0R2.
+
+Finding: current CI canceled; unprotected target and owner pair split. Interpretation: offline grammar cannot enforce institutional CAS. Action: executable current test + original owner/admin actions. Owner: PR author, admin, Sorok/Pyat/FIABC and PRE-MAIN maintainer separately.
+DONE: actual metadata and source. REMAINING: required checks, run and CAS. CRITICAL_BLOCKERS: unprotected, skipped Python, FIABC, pair. LARGEST_MOVE: accepted protected exact-head CI. FLIGHT: no worker touched. DELTA: current head correctly held.
