@@ -1,0 +1,102 @@
+{
+  "schema": "PYAT_POST_REGULAR_INTEGRATION_HEAD_ROSTER_MANIFEST@1",
+  "status": "COMPLETE_TEMPORAL_HEAD_ROSTER__CONTENT_INDEX_NOT_YET_EXECUTED",
+  "prepared_date_utc": "2026-10-29",
+  "main": "maidiu/rawlsing",
+  "parent_scope_document": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/10_POST_REGULAR_PREMAIN_INTEGRATION_CUTOFF_AND_SCOPE_R1.md",
+  "source_git_job": {
+    "workflow_run": 40803644398,
+    "job_id": 123217341006,
+    "commit_sha": "3b5ff992a8579d35285c63c98efa1b7dccfb6d96",
+    "retention": "Original full survey GitHub Actions artifact expires, but exact selected head rosters below persist in private repository"
+  },
+  "cutoffs": {
+    "last_dense_regular_integration": {
+      "time": "2026-09-27T18:56:30Z",
+      "commit": "ef46892f8e2752b62eef0778b1bdb53a86d80e70"
+    },
+    "last_implementation_tree_touch": {
+      "time": "2026-10-09T22:31:19Z",
+      "commit": "79e0e74e14d8e09cc2f3af061aa178a149cb1674"
+    }
+  },
+  "snapshot": {
+    "all_remote_heads": 2837,
+    "unique_all_head_commits": 2749,
+    "post_dense_all": 1133,
+    "post_dense_sorok_boundary": 287,
+    "post_dense_control": 1,
+    "post_dense_relevant": 845,
+    "post_dense_relevant_distinct_head_sha": 838,
+    "strict_core_relevant": 524,
+    "transitional_relevant": 321,
+    "post_dense_categories": {
+      "PYAT_OR_SHARED": 815,
+      "UNKNOWN_REQUIRES_CONTENT_TRIAGE": 30
+    }
+  },
+  "rosters": [
+    {
+      "worker": "S1",
+      "path": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/SCOPED_ROSTER/11_S1_HEAD_ONLY_ROSTER.json",
+      "git_blob_sha": "146b100e7f3456fabdec2e6ed8059adf0bf8a68d",
+      "branches": 175,
+      "unique_tip_sha_count": 175,
+      "unclassified": 5,
+      "tier": "STRICT_CORE_OCT09_PLUS"
+    },
+    {
+      "worker": "S2",
+      "path": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/SCOPED_ROSTER/11_S2_HEAD_ONLY_ROSTER.json",
+      "git_blob_sha": "879f1b400b0e1902bc2620c7f72b271a3c89f00b",
+      "branches": 175,
+      "unique_tip_sha_count": 175,
+      "unclassified": 1,
+      "tier": "STRICT_CORE_OCT09_PLUS"
+    },
+    {
+      "worker": "S3",
+      "path": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/SCOPED_ROSTER/11_S3_HEAD_ONLY_ROSTER.json",
+      "git_blob_sha": "a35942d685bc19c763245a675ca901965107018b",
+      "branches": 174,
+      "unique_tip_sha_count": 174,
+      "unclassified": 24,
+      "tier": "STRICT_CORE_OCT09_PLUS"
+    },
+    {
+      "worker": "S4",
+      "path": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/SCOPED_ROSTER/11_S4_HEAD_ONLY_ROSTER.json",
+      "git_blob_sha": "3161e325f450a3ba7ca5e66100d624fd98ba2876",
+      "branches": 161,
+      "unique_tip_sha_count": 160,
+      "unclassified": 0,
+      "tier": "TRANSITION_SEP27_TO_OCT09"
+    },
+    {
+      "worker": "S5",
+      "path": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/SCOPED_ROSTER/11_S5_HEAD_ONLY_ROSTER.json",
+      "git_blob_sha": "8987d18bfb5c93c2b0479f36c19b306f1c58ddfc",
+      "branches": 160,
+      "unique_tip_sha_count": 160,
+      "unclassified": 0,
+      "tier": "TRANSITION_SEP27_TO_OCT09"
+    }
+  ],
+  "scope_proof": {
+    "sum_roster_branches": 845,
+    "distinct_branch_names": 845,
+    "distinct_tip_sha": 838,
+    "unknown_tip_name_count": 30,
+    "core": 524,
+    "transition": 321,
+    "duplicate_heads": 7
+  },
+  "limits": [
+    "Commit tip date is not branch creation time. Reconcile old-tip/newly-created refs via PR/return/event chronology.",
+    "Head roster does not contain changed-path or functional code index.",
+    "PREMAIN and Sorok-only excluded from Pyat investigation, not from namespace boundary.",
+    "No review or code adoption follows from index date or names."
+  ],
+  "dispatch": "REVIEW_ONLY_NOT_LAUNCHED",
+  "index_gate": "HOLD_RECOVERY_UNTIL_CONTENT_INDEX_AND_INDEPENDENT_ACCEPTANCE"
+}
