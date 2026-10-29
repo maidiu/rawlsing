@@ -1,0 +1,1734 @@
+{
+  "schema": "SOROK_294_B_RECOVERED_PRIMARY_SOURCE_R1",
+  "rows": [
+    {
+      "index": 11,
+      "path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/00_RETURN.md",
+      "ref": "5753d9b4f8fad9f2175b1e285733f95bb8387888",
+      "blob": "f7fc31fad6383e11e55e701b4bc2177bfb255f18",
+      "url": "https://github.com/maidiu/rawlsing/blob/5753d9b4f8fad9f2175b1e285733f95bb8387888/WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/00_RETURN.md",
+      "head": "# SOROK C9RI — Independent productive-compatibility and E2-consumer court\n\n**Reviewer branch:** `agent/reviewer-sorok-20261019-c9ri-independent-positive-compatibility-e2-consumer-r1`\n**Exact sealed startup:** `85d78d928d03d33f80d59d259a6aad9c57967a98` (self-created branch; HEAD verified before work; no existing C9RI lane found).\n**Exact review target:** C9R `6fa2939972ce5a2c0cc4f2b033946b276f1c2934` (final return commit; parent `be3251f2af…`, the author's post-repair verification commit for remote SHA `ddcb448b…`).\n**Role/model:** single independent I2 reviewer in OpenCode, DeepSeek V4.1-Flash (user-routed), reasoning MAX requested; zero model/harness switches. Not C9R author, C9PI, HQ, CAN/ADP issuer, production integrator.\n**Write scope:** only `WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/**`. No frozen C9P/C9PI/C9R file, test, native module, CAN/ADP/Pyat/production artifact was edited (witness mutations ran on staged copies and were restored by the shared gate).\n\n---\n\n## FINDINGS\n\n### 1. Provenance and closure (independently verified)\n\n* The C9R return vendors the C9P target and C9PI oracle. I verified every staged origin file byte-for-byte against the origin commits **with my own git-blob comparison** (not the C9R manifest):\n  * C9P `38fba47614e82a86fc5a3fa3f50c27048493e808`: **42/42 files identical**.\n  * C9PI `df2382b8d9478f0a904dcff06ee45bb0119a1bda`: **132/132 files identical**.\n  * Receipt: `evidence/origin_closure_verification.json`.\n* Target tree provenance: `6fa29399` is a child of the author's return commit `be3251f2`; the only delta is the banked remote-verification record. No divergence between the author's pushed return and the commissioned review target.\n* Ambient workspace pytest config poisons the frozen `from conftest import …` court pattern; all runs used an external neutral ini. This is an environment artifact, not a return defect.\n\n### 2. Reproduction (all counts independently re-executed)\n\n| Court | My result | Expected | JUnit |\n|---|---|---|---|\n| C9P author baseline (exact target) | **90 PASS / 0 RED** | 90/90 | `evidence/c9ri-baseline-author-90.xml` |\n| C9PI baseline review (hostile 26 + custody 3 + edges 6) | **17 PASS / 29 RED** (26 hostile + 3 custody RED) | 11/26 + 0/3 + 6 edges | `evidence/c9ri-baseline-review.xml` |\n| C9R candidate vs frozen C9PI review | **46 PASS / 0 RED** | all repaired | `evidence/c9ri-repaired-review.xml` |\n| C9R candidate vs original author suite | **62 PASS / 28 RED** | 62/28 | `evidence/c9ri-repaired-author-90.xml` |\n| C9R direct consumer court | **10 PASS** | 10 | `evidence/c9ri-c9r-consumer.xml` |\n| C9R six same-test fault trials | **6/6 PASS→RED→PASS** (reproduced) | 6/6 | `evidence/c9ri-reproduced-c9r-fault-trials.json` |\n| C9R two-database cold replay | **logical snapshots equal; integrity ok; read HELD** | equal | `evidence/c9ri-reproduced-c9r-cold-replay.json` |\n| My independent court (below) | **17 PASS** | — | `evidence/c9ri-court.xml` |\n| My eight severance witnesses | **8/8 baseline PASS → assertion RED → restored** | — | `evidence/c9ri_proof_witness.json` |\n\n### 3. The 28 author-suite divergences — adjudicated case by case\n\nIndependent classification (full machine-readable trace per row:\n`evidence/c9ri_28_row_compatibility_ledger.json`):\n\n| Classification | Count |\n|---|---|",
+      "material_lines": [
+        {
+          "line": 1,
+          "text": "# SOROK C9RI — Independent productive-compatibility and E2-consumer court"
+        },
+        {
+          "line": 3,
+          "text": "**Reviewer branch:** `agent/reviewer-sorok-20261019-c9ri-independent-positive-compatibility-e2-consumer-r1`"
+        },
+        {
+          "line": 5,
+          "text": "**Exact review target:** C9R `6fa2939972ce5a2c0cc4f2b033946b276f1c2934` (final return commit; parent `be3251f2af…`, the author's post-repair verification commit for remote SHA `ddcb448b…`)."
+        },
+        {
+          "line": 6,
+          "text": "**Role/model:** single independent I2 reviewer in OpenCode, DeepSeek V4.1-Flash (user-routed), reasoning MAX requested; zero model/harness switches. Not C9R author, C9PI, HQ, CAN/ADP issuer, production integrator."
+        },
+        {
+          "line": 7,
+          "text": "**Write scope:** only `WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/**`. No frozen C9P/C9PI/C9R file, test, native module, CAN/ADP/Pyat/production artifact was edited (witness mutations ran on staged copies and were restored by the shared gate)."
+        },
+        {
+          "line": 13,
+          "text": "### 1. Provenance and closure (independently verified)"
+        },
+        {
+          "line": 19,
+          "text": "* Target tree provenance: `6fa29399` is a child of the author's return commit `be3251f2`; the only delta is the banked remote-verification record. No divergence between the author's pushed return and the commissioned review target."
+        },
+        {
+          "line": 22,
+          "text": "### 2. Reproduction (all counts independently re-executed)"
+        },
+        {
+          "line": 26,
+          "text": "| C9P author baseline (exact target) | **90 PASS / 0 RED** | 90/90 | `evidence/c9ri-baseline-author-90.xml` |"
+        },
+        {
+          "line": 27,
+          "text": "| C9PI baseline review (hostile 26 + custody 3 + edges 6) | **17 PASS / 29 RED** (26 hostile + 3 custody RED) | 11/26 + 0/3 + 6 edges | `evidence/c9ri-baseline-review.xml` |"
+        },
+        {
+          "line": 28,
+          "text": "| C9R candidate vs frozen C9PI review | **46 PASS / 0 RED** | all repaired | `evidence/c9ri-repaired-review.xml` |"
+        },
+        {
+          "line": 29,
+          "text": "| C9R candidate vs original author suite | **62 PASS / 28 RED** | 62/28 | `evidence/c9ri-repaired-author-90.xml` |"
+        },
+        {
+          "line": 30,
+          "text": "| C9R direct consumer court | **10 PASS** | 10 | `evidence/c9ri-c9r-consumer.xml` |"
+        },
+        {
+          "line": 31,
+          "text": "| C9R six same-test fault trials | **6/6 PASS→RED→PASS** (reproduced) | 6/6 | `evidence/c9ri-reproduced-c9r-fault-trials.json` |"
+        },
+        {
+          "line": 33,
+          "text": "| My independent court (below) | **17 PASS** | — | `evidence/c9ri-court.xml` |"
+        },
+        {
+          "line": 34,
+          "text": "| My eight severance witnesses | **8/8 baseline PASS → assertion RED → restored** | — | `evidence/c9ri_proof_witness.json` |"
+        },
+        {
+          "line": 36,
+          "text": "### 3. The 28 author-suite divergences — adjudicated case by case"
+        },
+        {
+          "line": 38,
+          "text": "Independent classification (full machine-readable trace per row:"
+        },
+        {
+          "line": 45,
+          "text": "| `NATIVE_AUTHORITY_PREVIOUSLY_UNISSUED` | 1 |"
+        },
+        {
+          "line": 53,
+          "text": "   actor is `actor-c9p-001`; the repaired `events.ingress_event` requires the"
+        },
+        {
+          "line": 57,
+          "text": "   fixtures (my independent differential and positive tests)."
+        },
+        {
+          "line": 59,
+          "text": "   `TargetDecision` by hand and call `commit`; the repaired transaction requires"
+        },
+        {
+          "line": 60,
+          "text": "   a sealed full record preimage plus authorization preimage"
+        },
+        {
+          "line": 63,
+          "text": "   read/consumer semantics are preserved on lawful commits (my positive)."
+        },
+        {
+          "line": 64,
+          "text": "3. **Under-bound grants (4 tests).** Grants declared arbitrary response hashes"
+        },
+        {
+          "line": 65,
+          "text": "   (`\"r1\"`, `\"resp-sev\"`) or none at all; the repaired gate enforces exact"
+        },
+        {
+          "line": 69,
+          "text": "4. **Label-only evidence (4 tests).** Author fixtures passed `\"h-a\",\"h-b\"`,"
+        },
+        {
+          "line": 70,
+          "text": "   `\"offer-1\"`, `\"world-1\"` without the TEST_ONLY declared-evidence namespace;"
+        },
+        {
+          "line": 71,
+          "text": "   the repaired response gate requires distinct TEST_ONLY_-namespaced enacted"
+        },
+        {
+          "line": 72,
+          "text": "   refs, an independent declared offer and material refs"
+        },
+        {
+          "line": 73,
+          "text": "   (`response_rules.py:241-270`). These were false positives under the accepted"
+        },
+        {
+          "line": 74,
+          "text": "   sourcefree adapter; the same semantics are preserved with declared evidence"
+        },
+        {
+          "line": 76,
+          "text": "5. **Boolean authority (3 release-gate tests).** Caller booleans no longer clear"
+        },
+        {
+          "line": 77,
+          "text": "   or reshape native holds (`release_gate.py`). The one test expecting a native"
+        },
+        {
+          "line": 78,
+          "text": "   `AUTHORIZED` from booleans could only ever have been"
+        },
+        {
+          "line": 79,
+          "text": "   `NATIVE_AUTHORITY_PREVIOUSLY_UNISSUED`; the other two relied on boolean-derived"
+        },
+        {
+          "line": 80,
+          "text": "   hold lists."
+        },
+        {
+          "line": 82,
+          "text": "   omitted `target_commit_time`; the repaired admission requires it"
+        },
+        {
+          "line": 86,
+          "text": "   Tests that already expected a non-positive outcome (DENY/abort/HELD/absence)"
+        },
+        {
+          "line": 89,
+          "text": "   non-positive semantic is preserved by the repaired path, my court, or a"
+        },
+        {
+          "line": 91,
+          "text": "   `AS_OF_BEFORE_COMMIT`, `CONSUMER_READSET_MISMATCH`, `NO_CHANGE` with exact"
+        },
+        {
+          "line": 95,
+          "text": "lawful positive mechanism survives and is exercised by three independent bodies"
+        },
+        {
+          "line": 98,
+          "text": "C9R's ten direct consumer cases, and my own reviewer-authored positive. No"
+        },
+        {
+          "line": 99,
+          "text": "legitimate previously-authorized positive was lost; the 29 hostile/custody REDs"
+        },
+        {
+          "line": 102,
+          "text": "### 4. My independent lawful positive / NO_CHANGE / DENY / adversarial court"
+        },
+        {
+          "line": 104,
+          "text": "Reviewer-authored fixtures (`TEST_ONLY_C9RI_*`), distinct from C9P/C9R:"
+        },
+        {
+          "line": 109,
+          "text": "  full sealed record + authorization preimage → SQLite atomic commit → cold"
+        },
+        {
+          "line": 110,
+          "text": "  reopen byte-equal → later E2 consumer read of exact committed state"
+        },
+        {
+          "line": 111,
+          "text": "  (`ACTION_ADMISSION_HELD` without an owner receipt) → independently performed"
+        },
+        {
+          "line": 113,
+          "text": "* **NO_CHANGE:** empty declared history → `NO_CHANGE`; occurrence preserved; no"
+        },
+        {
+          "line": 115,
+          "text": "* **DENY:** denied material access and a revoked grant both refuse CREATE;"
+        },
+        {
+          "line": 122,
+          "text": "  (`OCCURRENCE_NOT_INDEPENDENT`), counterfeit consumer body"
+        },
+        {
+          "line": 123,
+          "text": "  (`CONSUMER_READSET_MISMATCH`), manual fabricated decision (aborted"
+        },
+        {
+          "line": 127,
+          "text": "* **G17/C8 laundering:** a native-grade forged-material event is refused without"
+        },
+        {
+          "line": 129,
+          "text": "  refused by the TEST_ONLY namespace check; a `native_positive_claim` is"
+        },
+        {
+          "line": 130,
+          "text": "  `NATIVE_ADMISSIBILITY_HELD`; caller booleans cannot clear the release gate."
+        },
+        {
+          "line": 131,
+          "text": "  No synthetic actor source can become native."
+        },
+        {
+          "line": 132,
+          "text": "* **Eight severance witnesses** (shared gate, staged candidate mutated then"
+        },
+        {
+          "line": 133,
+          "text": "  restored): actor/clock, event source-owner readset, target record preimage,"
+        },
+        {
+          "line": 135,
+          "text": "  commit readset, declared-response binding. All baseline PASS → named assertion"
+        },
+        {
+          "line": 136,
+          "text": "  RED → restored (`evidence/c9ri_proof_witness.json`)."
+        },
+        {
+          "line": 143,
+          "text": "TEST_ONLY E1 event plus declared evidence conditions a response, a separately"
+        },
+        {
+          "line": 146,
+          "text": "consumer is admitted only from a receipt bound to the exact committed state"
+        },
+        {
+          "line": 147,
+          "text": "hash and to a post-commit independently declared action. Alternative branches"
+        },
+        {
+          "line": 148,
+          "text": "are genuinely preserved: insufficient declared history → `NO_CHANGE`; denied"
+        },
+        {
+          "line": 149,
+          "text": "material / revoked permission → refusal with occurrence preserved; native"
+        },
+        {
+          "line": 150,
+          "text": "claims → typed HOLD. Severing the record, response binding, permission, consumed"
+        },
+        {
+          "line": 151,
+          "text": "state, action ordering, actor clock or SQLite readset reddens the same named"
+        },
+        {
+          "line": 154,
+          "text": "**Alternative hypotheses considered.** (a) “The 28 REDs are simply a"
+        },
+        {
+          "line": 155,
+          "text": "denial-only hardening.” Rejected: C9PI's own positive edge and my independent"
+        },
+        {
+          "line": 167,
+          "text": "grain” (three independent bodies of positive evidence); the scientific reading"
+        },
+        {
+          "line": 168,
+          "text": "is bounded to declared TEST_ONLY semantics, not human practice."
+        },
+        {
+          "line": 172,
+          "text": "## THREE COURT VERDICTS"
+        },
+        {
+          "line": 174,
+          "text": "* **Engineering — `ACCEPT_SCOPED`.** 29/29 frozen C9PI REDs closed on unmodified"
+        },
+        {
+          "line": 175,
+          "text": "  files; 46/46 repaired review; 10/10 author consumer cases; 6/6 author fault"
+        },
+        {
+          "line": 177,
+          "text": "  severance witnesses pass; every one of the 28 divergences independently traced;"
+        },
+        {
+          "line": 179,
+          "text": "* **Scientific — `ACCEPT_SCOPED_TEST_ONLY_DECLARED_EVIDENCE_MECHANISM`.** A real"
+        },
+        {
+          "line": 180,
+          "text": "  finite differential mechanism with preserved alternatives (positive,"
+        },
+        {
+          "line": 181,
+          "text": "  NO_CHANGE, DENY, held native claim), not a human-population claim. Concrete"
+        },
+        {
+          "line": 183,
+          "text": "* **Authority — `HOLD`.** No native RULE_A/RULE_T, ADP019 occurrence, ADP010"
+        },
+        {
+          "line": 185,
+          "text": "  issued; no test/source hash/boolean/registry label can create native"
+        },
+        {
+          "line": 186,
+          "text": "  authority. Owners named below."
+        },
+        {
+          "line": 192,
+          "text": "**Question:** Is the native actual actor/response/target/performed-E2 producer"
+        },
+        {
+          "line": 200,
+          "text": "| Zero-positive firewall (consumed) | `rawlsing_next/v3_psepf_zero_positive_guard.py` (blob `e0528d65…` per C9P owner graph), `wsc_gt0_v3_runtime.py`, `wsc_gt0_protocol.py` | present, imported, diagnostic DENY_ZERO_EFFECT preserved |"
+        },
+        {
+          "line": 201,
+          "text": "| ADP-010 encounter/opportunity machinery | `rawlsing_next/v3_adp010_oee_executor_authenticated.py`, `v3_adp010_oee_executor.py` (bounded AVAILABLE→OPPORTUNITY→ENCOUNTER; consumes an already-owned subject ref; creates no subject/contact/exposure) | reusable; not invoked as positive authority |"
+        },
+        {
+          "line": 202,
+          "text": "| ADP-010 input-authority verifier | `rawlsing_next/gt34_adp010_input_authority_acceptance.py`, `v3_adp010_oee_executor_obl055_acceptance_bound.py` | verifier exists; **installed registry zero-positive → fails closed** |"
+        },
+        {
+          "line": 203,
+          "text": "| C9 transport/commit/consumer | C9R `candidate/` (event witness, rule registries, exact target record/preimage, SQLite readset, later-action consumer, performed-action admission) | present, tested at TEST_ONLY |"
+        },
+        {
+          "line": 205,
+          "text": "| Concrete CAN011 RULE_T + grant | canon exists; **concrete target rule, CREATE/NO_CHANGE/DENY grant, before/read/write sets, expiry/revocation unissued** | missing issuer decision |"
+        },
+        {
+          "line": 207,
+          "text": "| Independently performed E2 action | C9R admission logic exists; **no native actuator/occurrence owner receipt issued** | missing owner receipt |"
+        },
+        {
+          "line": 212,
+          "text": "consumer) → output (full target record + later-action read) → consumer (E2"
+        }
+      ],
+      "refs": [
+        "85d78d928d03d33f80d59d259a6aad9c57967a98",
+        "6fa2939972ce5a2c0cc4f2b033946b276f1c2934",
+        "38fba47614e82a86fc5a3fa3f50c27048493e808",
+        "df2382b8d9478f0a904dcff06ee45bb0119a1bda"
+      ],
+      "doc_kind": "REVIEW_DOCUMENT"
+    },
+    {
+      "index": 18,
+      "path": "WORKER_RETURNS/SOROK-20261026-RA-D-INDEPENDENT-EVIDENCE-REVIEW-R1/00_REVIEW.md",
+      "ref": "c02139257bbfb069155836e76254014e40df7718",
+      "blob": "fb3caf1607f3c2f4ffc2a758edb82e035466cf79",
+      "url": "https://github.com/maidiu/rawlsing/blob/c02139257bbfb069155836e76254014e40df7718/WORKER_RETURNS/SOROK-20261026-RA-D-INDEPENDENT-EVIDENCE-REVIEW-R1/00_REVIEW.md",
+      "head": "# SOROK RA-D — INDEPENDENT EXECUTABLE EVIDENCE AND V3 REUSE COURT R1\n\n**Reviewer branch:** `agent/reviewer-sorok-20261026-ra-d-independent-runtime-evidence-r1`\n**Sealed startup:** `007d94a155cd42a89de35b141fec5ca2139f6365`\n**Review target:** `6d3610c576dc0ef3ceccbf7ac122c197f22be6fa` (RA-D final)\n**Reviewer role:** independent hostile engineering/scientific-evidence reviewer; not RA-D, RA-A/B/C, S39–S52 author, Sorok HQ, accession applicant, production editor or native rule issuer.\n**Execution:** local macOS x86_64, Python 3.11.3, pytest 9.1.1, isolated worktree plus disposable `git archive` extraction of the exact source cuts.\n\n## 1. Verdict\n\n**RETURN DISPOSITION: `REVISE` — documentary/proof-path only; no re-execution required.**\n**ENGINEERING EVIDENCE: `ACCEPT_AT_SOURCEFREE_GRAIN` after one trace root-hash correction.**\n**SCIENTIFIC: `HOLD__NO_ACTOR_OWNED_CURRENT_PSYCHOLOGICAL_FORMATION_OR_CAN011_TRANSITION_PROVED`.**\n**AUTHORITY: `HOLD__NO_NATIVE_GRANT`.**\n**S52 VERIFIER DEFECT: `RED_REPRODUCED_WARM_AND_COLD`.**\n\nTerminal:\n\n`RA_D_INDEPENDENT_EXECUTION_REVIEW__EVIDENCE_ACCEPT_AT_SOURCEFREE_GRAIN__RETURN_REVISE_ROOT_HASH_PROOF_PATH__S52_RED_REPRODUCED__V3_EXISTING_CODE_ADAPTATION_SEAM_EVENT_SCOPED_PRESSURE_FLOW_CARRY_FORWARD__NO_NATIVE_GRANT`\n\nThe exact imported S52 source, the five recorded ancestor divergences, the 131 focused test results, the material S51/S52 causal trace and the S52 hostile verifier RED were independently reproduced. No wrong import version, source substitution, false K-test completion or unsafe side effect was found. The material chain is real at the grain RA-D declares. It is not a psychological chain.\n\nOne required trace artifact is not exact: `ACTUAL_CAUSAL_TRACE.md` §1 declares the S52 probe root as `84687e6f…`, but the actual S52 session root is `3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7` in RA-D’s own `causal_probe_result.json` and in the independent reproduction. `84687e6f…` is the S44 entrypoint root from `default_bundle(\"11\"*32)`, not the S52 probe root from `root_bundle(\"01\"*32)`. This is a proof-path/documentation defect, not an execution or material-chain failure; it is the formal reason for `REVISE`.\n\nThe historical G18 `STRIVING` object is recovered and its identity is copied into the S51 source and S52 candidate, but the current relation is computed only from current offer/access/free hours. The S52 candidate is a conditional option, not an actor-selected action. No CAN011 episode, actor-owned current psychological organization, durable transition or later psychological consumer is executed. The S52 controlled performer is an explicit test port and does not require the S39 actor selection at all.\n\nThe existing V3/PFF machinery is real and executable historically on its fixture, but it is annual, fixture-only and unwired to the S52 actor. The concrete CAN008/CAN011 rule and target-owner issuance remain unissued. RA-D's “first missing composer” wording is therefore directionally right but too strong if read as a blank-sheet machine: the missing work is an event-scoped adapter plus concrete owner-issued rules, not a new psyche.\n\n## 2. Claimed versus independently reproduced\n\n| Claim under review | Independent reviewer result | Grade |\n|---|---|---|\n| Exact RA-D file tree and `SHA256SUMS` are self-consistent. | `shasum -a 256 -c SHA256SUMS`: every committed file OK. | ACCEPT |\n| 131 focused sourcefree tests pass with the stated 10-suite split. | Independently ran all ten suites: 10, 10, 21, 17, 17, 12, 13, 5, 13, 13 = **131 passed**, 0 failed, 0 collection errors. Logs in `logs/independent_pytest/`. | ACCEPT |\n| S52 cut has 183 exact `.py` files; five ancestor files differ from accepted cuts. | Recomputed git blob SHA-1 for all **183/183** extracted `.py` files against `c821b488…`: all exact. The five recorded ancestor divergences (`s37/producer.py`, `s39/model.py`, `s49/actor.py`, `s49/session.py`, `s51/session.py`) independently differ from their accepted blobs. | ACCEPT |\n| S50 source identities are 31/31 exact and the fixture hash is exact. | `s50.recovery.verify_source()`: 31/31 exact; fixture SHA-256 `ef7008ac…`; S50 return archive bytes 18/18 exact against `515b9a8e…`. | ACCEPT |\n| G18, JOIN-E and language sources are the declared bytes and are actually imported. | G18 `history.py` SHA-256 `2d861d7a…`; JOIN-E `joined/session.py` `ea820ec3…`; language `session.py` `d6a1628c…`; S52/S51/S49/S39 modules loaded from the extracted `c821` archive, not the accepted ancestor returns. | ACCEPT |\n| G18 chain: 21 events, replay valid, unique STRIVING, two parents, witness and route usage. | Replay valid over 21 events; STRIVING `sha256:198b568b…`, value `fund_finishing_equipment`, parents `WORK_POSITION` `sha256:4de01226…` and `PROJECT` `sha256:bc48470f…`; witness and route-usage records present. | ACCEPT |\n| S52 trace declares the exact root hash of the executed session. | **REVISE:** `ACTUAL_CAUSAL_TRACE.md` declares `84687e6f…`, but the S52 probe root is `3bcb21fc…` in RA-D’s own JSON and in the independent run. `84687e6f…` is the S44 entrypoint root. Material chain unaffected; correct the trace. | REVISE (proof path) |\n| Current B state used by S52 is cash 54, free hours 11, completed units 5, material remaining 1, skill 6. | Reproduced exactly at the current S52 actor. | ACCEPT |\n| S51 hypothesis is a one-event declared test premise, not proved current purpose. | `scope=ONE_SUBSEQUENT_RECEIVED_EVENT`, `status=DECLARED_IMMUTABLE`, `actual_current_purpose_proved=false`, `psychology_claim=false`, `actor_testimony=false`, `native=false`. | ACCEPT |\n| S51 relation `FACILITATES` is computed from current offer/access/free hours, not historical object semantics. | Reproduced `RELEVANCE_WARRANTED/FACILITATES` with `actor_free_hours=11`. `_relation_for` signature is `(offer, access, actor_free_hours)`; it has no object parameter and no `striving` read. `object_striving` is copied into the relevance record but does not enter the relation. | ACCEPT WITH SCOPE NOTE |",
+      "material_lines": [
+        {
+          "line": 1,
+          "text": "# SOROK RA-D — INDEPENDENT EXECUTABLE EVIDENCE AND V3 REUSE COURT R1"
+        },
+        {
+          "line": 3,
+          "text": "**Reviewer branch:** `agent/reviewer-sorok-20261026-ra-d-independent-runtime-evidence-r1`"
+        },
+        {
+          "line": 5,
+          "text": "**Review target:** `6d3610c576dc0ef3ceccbf7ac122c197f22be6fa` (RA-D final)"
+        },
+        {
+          "line": 6,
+          "text": "**Reviewer role:** independent hostile engineering/scientific-evidence reviewer; not RA-D, RA-A/B/C, S39–S52 author, Sorok HQ, accession applicant, production editor or native rule issuer."
+        },
+        {
+          "line": 7,
+          "text": "**Execution:** local macOS x86_64, Python 3.11.3, pytest 9.1.1, isolated worktree plus disposable `git archive` extraction of the exact source cuts."
+        },
+        {
+          "line": 9,
+          "text": "## 1. Verdict"
+        },
+        {
+          "line": 11,
+          "text": "**RETURN DISPOSITION: `REVISE` — documentary/proof-path only; no re-execution required.**"
+        },
+        {
+          "line": 12,
+          "text": "**ENGINEERING EVIDENCE: `ACCEPT_AT_SOURCEFREE_GRAIN` after one trace root-hash correction.**"
+        },
+        {
+          "line": 13,
+          "text": "**SCIENTIFIC: `HOLD__NO_ACTOR_OWNED_CURRENT_PSYCHOLOGICAL_FORMATION_OR_CAN011_TRANSITION_PROVED`.**"
+        },
+        {
+          "line": 14,
+          "text": "**AUTHORITY: `HOLD__NO_NATIVE_GRANT`.**"
+        },
+        {
+          "line": 15,
+          "text": "**S52 VERIFIER DEFECT: `RED_REPRODUCED_WARM_AND_COLD`.**"
+        },
+        {
+          "line": 19,
+          "text": "`RA_D_INDEPENDENT_EXECUTION_REVIEW__EVIDENCE_ACCEPT_AT_SOURCEFREE_GRAIN__RETURN_REVISE_ROOT_HASH_PROOF_PATH__S52_RED_REPRODUCED__V3_EXISTING_CODE_ADAPTATION_SEAM_EVENT_SCOPED_PRESSURE_FLOW_CARRY_FORWARD__NO_NATIVE_GRANT`"
+        },
+        {
+          "line": 21,
+          "text": "The exact imported S52 source, the five recorded ancestor divergences, the 131 focused test results, the material S51/S52 causal trace and the S52 hostile verifier RED were independently reproduced. No wrong import version, source substitution, false K-test completion or unsafe side effect was found. The material chain is real at the grain RA-D declares. It is not a psychological chain."
+        },
+        {
+          "line": 23,
+          "text": "One required trace artifact is not exact: `ACTUAL_CAUSAL_TRACE.md` §1 declares the S52 probe root as `84687e6f…`, but the actual S52 session root is `3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7` in RA-D’s own `causal_probe_result.json` and in the independent reproduction. `84687e6f…` is the S44 entrypoint root from `default_bundle(\"11\"*32)`, not the S52 probe root from `root_bundle(\"01\"*32)`. This is a proof-path/documentation defect, not an execution or material-chain failure; it is the formal reason for `REVISE`."
+        },
+        {
+          "line": 25,
+          "text": "The historical G18 `STRIVING` object is recovered and its identity is copied into the S51 source and S52 candidate, but the current relation is computed only from current offer/access/free hours. The S52 candidate is a conditional option, not an actor-selected action. No CAN011 episode, actor-owned current psychological organization, durable transition or later psychological consumer is executed. The S52 controlled performer is an explicit test port and does not require the S39 actor selection at all."
+        },
+        {
+          "line": 27,
+          "text": "The existing V3/PFF machinery is real and executable historically on its fixture, but it is annual, fixture-only and unwired to the S52 actor. The concrete CAN008/CAN011 rule and target-owner issuance remain unissued. RA-D's “first missing composer” wording is therefore directionally right but too strong if read as a blank-sheet machine: the missing work is an event-scoped adapter plus concrete owner-issued rules, not a new psyche."
+        },
+        {
+          "line": 29,
+          "text": "## 2. Claimed versus independently reproduced"
+        },
+        {
+          "line": 31,
+          "text": "| Claim under review | Independent reviewer result | Grade |"
+        },
+        {
+          "line": 33,
+          "text": "| Exact RA-D file tree and `SHA256SUMS` are self-consistent. | `shasum -a 256 -c SHA256SUMS`: every committed file OK. | ACCEPT |"
+        },
+        {
+          "line": 34,
+          "text": "| 131 focused sourcefree tests pass with the stated 10-suite split. | Independently ran all ten suites: 10, 10, 21, 17, 17, 12, 13, 5, 13, 13 = **131 passed**, 0 failed, 0 collection errors. Logs in `logs/independent_pytest/`. | ACCEPT |"
+        },
+        {
+          "line": 35,
+          "text": "| S52 cut has 183 exact `.py` files; five ancestor files differ from accepted cuts. | Recomputed git blob SHA-1 for all **183/183** extracted `.py` files against `c821b488…`: all exact. The five recorded ancestor divergences (`s37/producer.py`, `s39/model.py`, `s49/actor.py`, `s49/session.py`, `s51/session.py`) independently differ from their accepted blobs. | ACCEPT |"
+        },
+        {
+          "line": 36,
+          "text": "| S50 source identities are 31/31 exact and the fixture hash is exact. | `s50.recovery.verify_source()`: 31/31 exact; fixture SHA-256 `ef7008ac…`; S50 return archive bytes 18/18 exact against `515b9a8e…`. | ACCEPT |"
+        },
+        {
+          "line": 37,
+          "text": "| G18, JOIN-E and language sources are the declared bytes and are actually imported. | G18 `history.py` SHA-256 `2d861d7a…`; JOIN-E `joined/session.py` `ea820ec3…`; language `session.py` `d6a1628c…`; S52/S51/S49/S39 modules loaded from the extracted `c821` archive, not the accepted ancestor returns. | ACCEPT |"
+        },
+        {
+          "line": 38,
+          "text": "| G18 chain: 21 events, replay valid, unique STRIVING, two parents, witness and route usage. | Replay valid over 21 events; STRIVING `sha256:198b568b…`, value `fund_finishing_equipment`, parents `WORK_POSITION` `sha256:4de01226…` and `PROJECT` `sha256:bc48470f…`; witness and route-usage records present. | ACCEPT |"
+        },
+        {
+          "line": 39,
+          "text": "| S52 trace declares the exact root hash of the executed session. | **REVISE:** `ACTUAL_CAUSAL_TRACE.md` declares `84687e6f…`, but the S52 probe root is `3bcb21fc…` in RA-D’s own JSON and in the independent run. `84687e6f…` is the S44 entrypoint root. Material chain unaffected; correct the trace. | REVISE (proof path) |"
+        },
+        {
+          "line": 40,
+          "text": "| Current B state used by S52 is cash 54, free hours 11, completed units 5, material remaining 1, skill 6. | Reproduced exactly at the current S52 actor. | ACCEPT |"
+        },
+        {
+          "line": 41,
+          "text": "| S51 hypothesis is a one-event declared test premise, not proved current purpose. | `scope=ONE_SUBSEQUENT_RECEIVED_EVENT`, `status=DECLARED_IMMUTABLE`, `actual_current_purpose_proved=false`, `psychology_claim=false`, `actor_testimony=false`, `native=false`. | ACCEPT |"
+        },
+        {
+          "line": 42,
+          "text": "| S51 relation `FACILITATES` is computed from current offer/access/free hours, not historical object semantics. | Reproduced `RELEVANCE_WARRANTED/FACILITATES` with `actor_free_hours=11`. `_relation_for` signature is `(offer, access, actor_free_hours)`; it has no object parameter and no `striving` read. `object_striving` is copied into the relevance record but does not enter the relation. | ACCEPT WITH SCOPE NOTE |"
+        },
+        {
+          "line": 43,
+          "text": "| S52 adds `PAID_PARTICIPATION` as a `CONDITIONAL_ON_INDEPENDENT_PARTICIPATION` option, with `recruited=true` and `performed=false`. | Reproduced. `recruited` here is relevance recruitment, not actor choice; `performed=false`, `earned_payment=0`, `prospective_payment=2`, counterpart not observed. | ACCEPT WITH FIELD NOTE |"
+        },
+        {
+          "line": 44,
+          "text": "| S39 leaves the paid option unselected: `OPEN_CHOICE_SET`, empty `selected_option`, all four options undominated and no comparison rule naming the paid option. | Reproduced exactly. `paid_comparison_rules=[]`; `defeated_pairs=[]`; `undominated_options` contains all four; `unresolved_reason=MULTIPLE_SURVIVORS`. | ACCEPT |"
+        },
+        {
+          "line": 45,
+          "text": "| Paid option requires both the S51 source and the S52 repertoire. | Reproduced source-cut controls: no source → paid absent; source only → paid absent; source + repertoire → paid present. | ACCEPT |"
+        },
+        {
+          "line": 46,
+          "text": "| Controlled paid port denies without a counterpart and performs with the explicit test flag. | Reproduced: deny returns `CONDITIONAL_ON_INDEPENDENT_PARTICIPATION` with no state change; perform returns `PERFORMED`, `controlled_counterpart=true`, `counterpart_status=EXPLICIT_CONTROLLED_TEST_ONLY`; cash 54→56, free hours 11→10, completed units 5→6. | ACCEPT |"
+        },
+        {
+          "line": 47,
+          "text": "| Later S52 event reads changed material state: free hours 0 → `OBSTRUCTS` → candidate `BLOCKED/S52_INSUFFICIENT_FREE_HOURS` → paid option absent. | Reproduced. This is a real same-actor material consumer edge, not a psychological one. | ACCEPT |"
+        },
+        {
+          "line": 48,
+          "text": "| No actor-owned current psychological organization, actor selection or durable CAN011 transition is computed. | Reproduced: no CAN011 episode exists in the S52 session; only `cash`, `free_hours` and `completed_units` changed on the performed step; the S39 selected option is empty; the performer does not require `selection_status=UNIQUE_SELECTED` or `selected_option=PAID_PARTICIPATION`; its capability readset is explicitly `CURRENT_ACTOR_STATE_ONLY_NOT_PAID_HISTORY`. | ACCEPT |"
+        },
+        {
+          "line": 49,
+          "text": "| S52 verifier RED: an unrelated later episode plus cash tamper 999 is accepted warm and cold; without the unrelated episode it is rejected. | Independently reproduced against the exact `c821` source cut: with note, warm `ok=true`, cold `ok=true`, `errors=[]`; without note, warm and cold `ok=false`, `S52_CURRENT_STATE_DIVERGES:cash`. | ACCEPT (defect confirmed) |"
+        },
+        {
+          "line": 50,
+          "text": "| No 3–5-event sequential batch, interconnected impression propagation, intervening-time loop or retrospective half-call is implemented in this closure. | Confirmed from source and focused tests: S48 is one-event transport with an empty allowed prospective-candidate set; S52 is a single offer/candidate experiment; the S50 V3 code is annual. No implementation of the user-settled recursion was found. | ACCEPT |"
+        },
+        {
+          "line": 51,
+          "text": "| Official Astra K1–K11 are NOT_EXECUTED and are not promoted by narrower results. | Confirmed. No official-grain K case was executed. The 131 tests contain no official Astra K intervention. The material free-hours consumer is not K8 at Astra grain. | ACCEPT |"
+        },
+        {
+          "line": 52,
+          "text": "| S50 recovered V3/PFF executes on its fixture but is not the current person. | Reproduced S50 entrypoint: 31/31 exact, pressure-flow history/memory present, roundtrip exact, cold reopen exact; actual root returns `SOURCE_OWNER_HOLD` with ten missing fields; `fixture_only=true`, `actual_person_commit=false`, `second_mind=false`. | ACCEPT |"
+        },
+        {
+          "line": 53,
+          "text": "| No native, actor, rule, source, C8/C9/C12, Pyat or human grant is asserted or used. | Confirmed: no provider call, no raw data, no accepted-source edit, no production write, no native claim. | ACCEPT |"
+        },
+        {
+          "line": 57,
+          "text": "### 3.1 Source identity"
+        },
+        {
+          "line": 60,
+          "text": "- S50 cut: `515b9a8ee45672c97051df4efef679117a679525`; 18 return files extracted and exact; 31 V3 selected source files exact against the commissioning identity manifest."
+        },
+        {
+          "line": 61,
+          "text": "- Five S52-cut ancestor divergences are real and are the ones RA-D names. The imported `s39/model.py` SHA-256 is `6afba4b77b71c40654986fed4eda40915c7a0cc454e07d8293e353f135f1c603`; it is the modified S52-cut blob, not the accepted `41fe95c1…` blob."
+        },
+        {
+          "line": 62,
+          "text": "- External G18/JOIN-E/language roots match the declared hashes. The S52/S51/S49/S39 chain was imported from the disposable `c821` extraction, not substituted from accepted ancestor returns."
+        },
+        {
+          "line": 63,
+          "text": "- Full hashes: `SOURCE_INDEX.json`; machine-readable checks: `logs/reviewer_source_identity.json`."
+        },
+        {
+          "line": 67,
+          "text": "The reviewer's `scripts/reviewer_probe.py` independently executed the following, against the exact extracted source:"
+        },
+        {
+          "line": 78,
+          "text": "Machine-readable result: `logs/reviewer_probe_result.json`. The committed RA-D result has the same root hash, event hashes, current state, relation, selection receipt, controlled deltas and later consumer values."
+        },
+        {
+          "line": 80,
+          "text": "### 3.3 S52 hostile verifier RED"
+        },
+        {
+          "line": 82,
+          "text": "Exact source cut used: `c821b488…`. Procedure and result:"
+        },
+        {
+          "line": 91,
+          "text": "Cause in source: `s52/session.py:299–311` only compares current B cash/free_hours/completed_units with the last performed paid result while that result is the last canonical episode. A later episode disables the postcondition check. This is an integrity defect in an unaccepted workshop component. It is not repaired, adopted or used as psychological evidence."
+        },
+        {
+          "line": 99,
+          "text": "- Historical `striving` appears only as copied identity/source content. The relevance function does not read it."
+        },
+        {
+          "line": 103,
+          "text": "RA-D’s required `ACTUAL_CAUSAL_TRACE.md` §1 states:"
+        },
+        {
+          "line": 109,
+          "text": "- RA-D’s committed `TEST_SOURCE_AND_LOGS/causal_probe_result.json` root hash: `3bcb21fc…`."
+        },
+        {
+          "line": 110,
+          "text": "- Reviewer’s independent S52 probe root hash: `3bcb21fc…`."
+        },
+        {
+          "line": 113,
+          "text": "The S44 entrypoint uses `default_bundle(root_seed=\"11\"*32)`; the S52 probe uses `root_bundle(\"01\"*32)`. The root hash in the trace belongs to the former, not the S52 trace. The material values, G18 object, S52 RED and 131 tests are unaffected. The trace must be corrected before the return is called exact. This is the formal `REVISE` reason; no re-execution is required."
+        },
+        {
+          "line": 115,
+          "text": "## 4. Scientific and authority separation"
+        },
+        {
+          "line": 117,
+          "text": "**Scientific status: HOLD.** The reviewed closure proves a material/history-identity chain and a conditional option, not actor-owned psychological formation. The S51 hypothesis is not current purpose; the S52 candidate is not selected action; the controlled performer is not an independent counterpart; no durable CAN011 transition is created. The concrete CAN008/CAN011 rule at current grain remains unissued by the competent scientific owner. No Astra K1–K11 result is claimed or implied."
+        },
+        {
+          "line": 119,
+          "text": "**Authority status: HOLD.** The reviewer issues no native/actor/rule/source/CAN/ADP/Pyat/human grant. G18/JOIN-E/language and V3 sources were read only. The S52 performer remains unaccepted and defective. No production or accepted-source edit was made."
+        },
+        {
+          "line": 123,
+          "text": "The recovered V3 machine is not a blank sheet. `BackboneState`, `compute_all_derived`, `run_pressure_flow_cycle`, `_derive_current_charge`, `_channel_conductance`, `_domain_charge_ledger`, `_simulate_domain_routes_transactionally`, `_commit_route_state`, `_update_memory`, `update_loop_topology`, `run_one_year`, `state_summary_from_backbone` and `build_render_packet` exist and execute on the historical fixture. The machine is annual and fixture-only, its event context counts event types rather than admitted event semantics, and it is unwired to the S52 actor. The correct next work is a **targeted event-scoped adapter** that reuses the existing pressure-flow composer for one admitted event and carries the result into a later event, while leaving durable CAN011 writes to the separately issued target rule. This is not a new psyche, universal re-specification or legacy-parameter adoption. Details, exact functions and falsifiers are in `V3_RECOVER_ADAPT_BOUNDARY.md`."
+        },
+        {
+          "line": 131,
+          "text": "3. “First missing composer” should read “missing current event-scoped binding/adapter plus unissued concrete CAN008/CAN011 rules.” A recovered V3 pressure-flow composer and a test-only M35 CAN008/CAN011 receiving port already exist."
+        },
+        {
+          "line": 138,
+          "text": "- `REVIEW_CLAIM_MATRIX.md` / `.json` — claim-by-claim grading."
+        },
+        {
+          "line": 142,
+          "text": "- `SOURCE_INDEX.json` — reviewer source identities and imported module hashes."
+        },
+        {
+          "line": 143,
+          "text": "- `logs/` — independent pytest logs, probe results, source-identity and V3 function evidence, entrypoint logs, environment."
+        },
+        {
+          "line": 144,
+          "text": "- `scripts/` — reviewer probe, source-identity checker and V3 function checker."
+        },
+        {
+          "line": 146,
+          "text": "- `SHA256SUMS` — hashes of committed review artifacts."
+        },
+        {
+          "line": 148,
+          "text": "**No self-adoption. No new workers. No native grant. STOP.**"
+        }
+      ],
+      "refs": [
+        "007d94a155cd42a89de35b141fec5ca2139f6365",
+        "6d3610c576dc0ef3ceccbf7ac122c197f22be6fa",
+        "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+        "515b9a8ee45672c97051df4efef679117a679525"
+      ],
+      "doc_kind": "REVIEW_DOCUMENT"
+    },
+    {
+      "index": 20,
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/RFA_R_RECONCILIATION_R1/UNRESOLVED_FUTURE_OWNER_GAPS_R1.md",
+      "ref": "e65846bbb1c38a366d79b54bb89be47da0f8502e",
+      "blob": "7cee0b5e4cf68562cd75eb859b0b6ad389d5b5de",
+      "url": "https://github.com/maidiu/rawlsing/blob/e65846bbb1c38a366d79b54bb89be47da0f8502e/SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/RFA_R_RECONCILIATION_R1/UNRESOLVED_FUTURE_OWNER_GAPS_R1.md",
+      "head": "# RFA-R — unresolved future owner / permission gaps\n\nThese are exact missing authorities or proof burdens, not invitations to invent new psychology.\n\n1. **Real human participant ↔ generated actor relational formation:** ADP-015 generated-actor relationship authority does not establish reciprocal user psyche, objective user beliefs, or person-stable Nadia model of a human user. Fixture status: `UNRESOLVED_FUTURE_OWNER`.\n2. **Relation-class generalization and internalized/absent-other projections:** source-scoped CAN-010 and CAN-011 records need an exact formation, transfer, and actor-expression crosswalk; D001/03 remains hypothesis.\n3. **Joint projects, learned competencies, language/register repertoires:** no inferred generic project or trait owner; trace to specific authority or mark unresolved.\n4. **MUST-018 attractor-transition rules:** CAN-012 or CAN-008 must not implicitly trigger or substitute for attractor movement.\n5. **CAN-022/ADP-019 versus Sorok 101 richer actor occurrence:** current narrow V2 wording-only renderer cannot introduce new physical particulars. Specify authorized realization slots, admission timing, retries and structured/prose equivalence through a future court.\n6. **Previously latent physical/world materialization:** lawful new ordinary detail versus unsupported retrospective invention, compatible seeds, permission/decline states and world writes need explicit authority.\n7. **Full-current-person actor-safe projection sufficiency:** no demonstrated minimal lossless-for-expression packing, retrieval gating or distributional multi-context identity invariance.\n8. **Exact CAN-008 / PFF implementation and narrowed formal freeze:** CAN-008 R2 has semantic adoption; formal PFF binding inspected as candidate. No unearned execution claim.\n9. **Cross-owner significance/promotion and post-act re-entry:** exact per-owner updates depend on admitted events; candidate effects alone cannot mutate CAN-010/011, ADP-015/016/017, CAN-009/012 or MUST-018.\n10. **User phenomenal compositor proof:** no measured low-leakage, naturalness, access/recognition correctness or attention-invariant objective actions; separately test.\n11. **Normal two-call reliability, latency/cost and long-horizon fidelity:** Sorok's intended topology is provisional F2, not empirical F3.\n12. **Actor expression constraints for deception, withholding and self-explanation:** distinguish known lie, false belief, inaccessible cause and no report; do not invent universal defense state.\n\n**Fail closed:** every unresolved slot is explicitly typed and denied causal/write permission unless a separately cited rule authorizes it. An intentionally synthetic fixture value is a lab oracle, never a retroactive owner grant.\n",
+      "material_lines": [
+        {
+          "line": 3,
+          "text": "These are exact missing authorities or proof burdens, not invitations to invent new psychology."
+        },
+        {
+          "line": 5,
+          "text": "1. **Real human participant ↔ generated actor relational formation:** ADP-015 generated-actor relationship authority does not establish reciprocal user psyche, objective user beliefs, or person-stable Nadia model of a human user. Fixture status: `UNRESOLVED_FUTURE_OWNER`."
+        },
+        {
+          "line": 6,
+          "text": "2. **Relation-class generalization and internalized/absent-other projections:** source-scoped CAN-010 and CAN-011 records need an exact formation, transfer, and actor-expression crosswalk; D001/03 remains hypothesis."
+        },
+        {
+          "line": 7,
+          "text": "3. **Joint projects, learned competencies, language/register repertoires:** no inferred generic project or trait owner; trace to specific authority or mark unresolved."
+        },
+        {
+          "line": 9,
+          "text": "5. **CAN-022/ADP-019 versus Sorok 101 richer actor occurrence:** current narrow V2 wording-only renderer cannot introduce new physical particulars. Specify authorized realization slots, admission timing, retries and structured/prose equivalence through a future court."
+        },
+        {
+          "line": 10,
+          "text": "6. **Previously latent physical/world materialization:** lawful new ordinary detail versus unsupported retrospective invention, compatible seeds, permission/decline states and world writes need explicit authority."
+        },
+        {
+          "line": 14,
+          "text": "10. **User phenomenal compositor proof:** no measured low-leakage, naturalness, access/recognition correctness or attention-invariant objective actions; separately test."
+        },
+        {
+          "line": 16,
+          "text": "12. **Actor expression constraints for deception, withholding and self-explanation:** distinguish known lie, false belief, inaccessible cause and no report; do not invent universal defense state."
+        },
+        {
+          "line": 18,
+          "text": "**Fail closed:** every unresolved slot is explicitly typed and denied causal/write permission unless a separately cited rule authorizes it. An intentionally synthetic fixture value is a lab oracle, never a retroactive owner grant."
+        }
+      ],
+      "refs": [],
+      "doc_kind": "NON_RETURN_RENDERER_GAP"
+    },
+    {
+      "index": 21,
+      "path": "WORKER_RETURNS/SOROK-R3-HQ297-GENEALOGY-K11-INDEPENDENT-COURT-R1/00_INDEPENDENT_COURT.md",
+      "ref": "0cb708bbfe522a6c6e359f36d99835d180d5a84d",
+      "blob": "05e4a60c1d6fc60014d51c1f65cc5b1682febe4b",
+      "url": "https://github.com/maidiu/rawlsing/blob/0cb708bbfe522a6c6e359f36d99835d180d5a84d/WORKER_RETURNS/SOROK-R3-HQ297-GENEALOGY-K11-INDEPENDENT-COURT-R1/00_INDEPENDENT_COURT.md",
+      "head": "# HQ297 G11 — independent K11 construction feasibility court\n\n**Reviewer:** G11 independent of SG author; **not HQ, original science issuer or actor runner**. **Verdict:** `FINITE_CONSTRAINT_FEASIBILITY_PASS__FULL_V3_PERSON_GENERATION_UNPROVEN__ADP_EXTENSION_UNISSUED__NO_ACTOR_WAKE`.\n\n**Sealed launch:** `a0faea0c106febc9a96a9f74d42ddfae6b218279`. Direct compare `sealed..assigned_branch`: **identical**, ahead 0, behind 0 before work. Both commission and executable-resource clarification read in full on that ref. Frozen independent synthetic constraints committed locally before SG expected-results file was read: SHA-256 `091b81c1604f856fb33d4b2da38d1aedf9d0e35b41e0831cdfad84f12fe2f055`. SG read cut: `ca031ce1d5c56b58b18727f94f41571d6dd763fb`; Astra controlling 16 blob `202e754aebc4e984fa84e5ab194ea5bb110dad3c`; ADP015 v1 blob `a4dab0a12102aaa0b584ef6ff4fdc9206a28d456`; ADP020 v1 blob `1911352f4bd5b04dfeaa0f26930e6702998bb76d`; V3 completion blob `49095f763c5c371d98bb57a01aaf5f47dc7b1ae1`.\n\n## Scientific decision\n\nA mother-first software *search dependency* with a provisional target can be acyclic and consistent with strictly forward represented causation. Retrospective **constraint planning** is not reverse causation, conditional selection is not yet true occurrence, and completed father prehistory must be independently forward-replayable through actual V3 owners. This is a **constructive satisfiability task** `find h: ForwardRules(h, world) meets endpoint`, NOT a posterior sample `P(h|endpoint)`; no prior, calibrated likelihood, selection normalization, dyadic risk-set distribution or issuer supplies a posterior. Under-determination is real: the same synthetic endpoint accommodates two distinct pre-written fathers, independent of any future child's desired trait. It does **not** demonstrate that either father is an actor generated through the future V3 developmental engine.\n\nSG correctly keeps ADP015's current two-parents-before-`CHILD_GENERATED` represented causality, rejects inferred reciprocity and parent averaging, preserves prior older-child lineage and makes failed-history retries visible. SG's K11 executable proposal and 4-history lab remain **unexecuted** as actor science. Our frozen court shows a sourcefree feasibility witness, not completion of SG K11's full 4 independently developed histories. Immediate mother pre-event anchors (rather than our coarse no-intervening-event January fixture), relationships, new conception/birth occurrence rules, and source/native model-use authorization remain absent.\n\n## Direct reproducible evidence\n\n- Host probes: `python --version` = Python 3.13.5; `python -m pytest --version` = pytest 9.0.2; `git --version` = 2.47.3; write/import probe PASS. Private repository raw `git ls-remote` network DNS failed (`Could not resolve host: github.com`); pinned files instead directly fetched and blob-identified through authorized GitHub connector. No full clone was asserted.\n- Sourcefree module `g11_solver.py`; predeclared JSON `01_FROZEN_INDEPENDENT_K11_EXPECTATIONS.json`; `test_g11_solver.py` (stdlib + pytest). Run: `PYTHONPATH=. python -m pytest -q --junitxml=06_PYTEST_JUNIT.xml`; 25 passed, 0 failed, exit 0 in 0.07s. `python g11_solver.py` produced 8 valid witness combinations, no rejected baseline. The actual import file was this local test return path; `PYTHONPATH` environment was initially unset, then local test invocation used `PYTHONPATH=.`. Standalone test only, **not** whole-repo pytest.\n- Test code Git blob hashes locally calculated by SHA-1 over Git blob header and UTF-8 bytes: solver `11443bd674d8b9ea14541d64d8946d2ca2aee47d`, tests `05afa5e70f0cb2a3a64dec613c678a831b23fd71`; frozen oracle Git blob `99a8c6e42d3a5d4926ab64cda9a3f0510f6318eb`. All three directly read back from GitHub connector as exact matches. No accepted modules changed.\n- Full case/class evidence in `02_CONSTRUCTION_DAG_CYCLE_ORACLE.json` and `03_COUNTEREXAMPLES_AND_BUDGET_CEILING.md`; authority and missing first owner producer in `04_ADP_OWNER_AND_LAB_GRANT_REQUIRED.md`.\n\n## Separate gate dispositions\n\n`FINITE_LOGICAL_FEASIBILITY=PASS`; `FORWARD_CHRONOLOGY_ON_SYNTHETIC_HISTORIES=PASS`; `DAG_CYCLE_AND_CHILD_EMBARGO_ORACLES=PASS`; `BOUND_COMPUTE=PASS_AT_FIXED_FIXTURE`; `GENUINE_PARENT_CONSTRUCTION=NOT_EXECUTED`; `ADP015/020_NEW_RULE_ISSUANCE=NO`; `ORIGINAL_EVIDENCE/CALIBRATION=NOT_EXECUTED`; `ACTOR_OR_MODEL_TRIAL=FORBIDDEN_NOT_EXECUTED`; `ACTUAL_CONCEPTION/CHILD_GENERATED/BIRTH=NONE`; `K11_FULL_PRODUCT_VALIDITY=UNRESOLVED`.\n\n**HQ action:** Accept only the limited nonadopted logical/test return if exact remote bytes verify; commission competent ADP015 scenario semantic issuance plus ADP020 stream/choice review, distinct occurrence/forward-owner/lab grants, then independently freeze and run the actual four developed-history K11. Never wake N12 or V3 because synthetic math passed.\n",
+      "material_lines": [
+        {
+          "line": 1,
+          "text": "# HQ297 G11 — independent K11 construction feasibility court"
+        },
+        {
+          "line": 3,
+          "text": "**Reviewer:** G11 independent of SG author; **not HQ, original science issuer or actor runner**. **Verdict:** `FINITE_CONSTRAINT_FEASIBILITY_PASS__FULL_V3_PERSON_GENERATION_UNPROVEN__ADP_EXTENSION_UNISSUED__NO_ACTOR_WAKE`."
+        },
+        {
+          "line": 5,
+          "text": "**Sealed launch:** `a0faea0c106febc9a96a9f74d42ddfae6b218279`. Direct compare `sealed..assigned_branch`: **identical**, ahead 0, behind 0 before work. Both commission and executable-resource clarification read in full on that ref. Frozen independent synthetic constraints committed locally before SG expected-results file was read: SHA-256 `091b81c1604f856fb33d4b2da38d1aedf9d0e35b41e0831cdfad84f12fe2f055`. SG read cut: `ca031ce1d5c56b58b18727f94f41571d6dd763fb`; Astra controlling 16 blob `202e754aebc4e984fa84e5ab194ea5bb110dad3c`; ADP015 v1 blob `a4dab0a12102aaa0b584ef6ff4fdc9206a28d456`; ADP020 v1 blob `1911352f4bd5b04dfeaa0f26930e6702998bb76d`; V3 completion blob `49095f763c5c371d98bb57a01aaf5f47dc7b1ae1`."
+        },
+        {
+          "line": 9,
+          "text": "A mother-first software *search dependency* with a provisional target can be acyclic and consistent with strictly forward represented causation. Retrospective **constraint planning** is not reverse causation, conditional selection is not yet true occurrence, and completed father prehistory must be independently forward-replayable through actual V3 owners. This is a **constructive satisfiability task** `find h: ForwardRules(h, world) meets endpoint`, NOT a posterior sample `P(h|endpoint)`; no prior, calibrated likelihood, selection normalization, dyadic risk-set distribution or issuer supplies a posterior. Under-determination is real: the same synthetic endpoint accommodates two distinct pre-written fathers, independent of any future child's desired trait. It does **not** demonstrate that either father is an actor generated through the future V3 developmental engine."
+        },
+        {
+          "line": 11,
+          "text": "SG correctly keeps ADP015's current two-parents-before-`CHILD_GENERATED` represented causality, rejects inferred reciprocity and parent averaging, preserves prior older-child lineage and makes failed-history retries visible. SG's K11 executable proposal and 4-history lab remain **unexecuted** as actor science. Our frozen court shows a sourcefree feasibility witness, not completion of SG K11's full 4 independently developed histories. Immediate mother pre-event anchors (rather than our coarse no-intervening-event January fixture), relationships, new conception/birth occurrence rules, and source/native model-use authorization remain absent."
+        },
+        {
+          "line": 15,
+          "text": "- Host probes: `python --version` = Python 3.13.5; `python -m pytest --version` = pytest 9.0.2; `git --version` = 2.47.3; write/import probe PASS. Private repository raw `git ls-remote` network DNS failed (`Could not resolve host: github.com`); pinned files instead directly fetched and blob-identified through authorized GitHub connector. No full clone was asserted."
+        },
+        {
+          "line": 16,
+          "text": "- Sourcefree module `g11_solver.py`; predeclared JSON `01_FROZEN_INDEPENDENT_K11_EXPECTATIONS.json`; `test_g11_solver.py` (stdlib + pytest). Run: `PYTHONPATH=. python -m pytest -q --junitxml=06_PYTEST_JUNIT.xml`; 25 passed, 0 failed, exit 0 in 0.07s. `python g11_solver.py` produced 8 valid witness combinations, no rejected baseline. The actual import file was this local test return path; `PYTHONPATH` environment was initially unset, then local test invocation used `PYTHONPATH=.`. Standalone test only, **not** whole-repo pytest."
+        },
+        {
+          "line": 17,
+          "text": "- Test code Git blob hashes locally calculated by SHA-1 over Git blob header and UTF-8 bytes: solver `11443bd674d8b9ea14541d64d8946d2ca2aee47d`, tests `05afa5e70f0cb2a3a64dec613c678a831b23fd71`; frozen oracle Git blob `99a8c6e42d3a5d4926ab64cda9a3f0510f6318eb`. All three directly read back from GitHub connector as exact matches. No accepted modules changed."
+        },
+        {
+          "line": 18,
+          "text": "- Full case/class evidence in `02_CONSTRUCTION_DAG_CYCLE_ORACLE.json` and `03_COUNTEREXAMPLES_AND_BUDGET_CEILING.md`; authority and missing first owner producer in `04_ADP_OWNER_AND_LAB_GRANT_REQUIRED.md`."
+        },
+        {
+          "line": 20,
+          "text": "## Separate gate dispositions"
+        },
+        {
+          "line": 24,
+          "text": "**HQ action:** Accept only the limited nonadopted logical/test return if exact remote bytes verify; commission competent ADP015 scenario semantic issuance plus ADP020 stream/choice review, distinct occurrence/forward-owner/lab grants, then independently freeze and run the actual four developed-history K11. Never wake N12 or V3 because synthetic math passed."
+        }
+      ],
+      "refs": [
+        "a0faea0c106febc9a96a9f74d42ddfae6b218279",
+        "ca031ce1d5c56b58b18727f94f41571d6dd763fb",
+        "202e754aebc4e984fa84e5ab194ea5bb110dad3c",
+        "a4dab0a12102aaa0b584ef6ff4fdc9206a28d456",
+        "1911352f4bd5b04dfeaa0f26930e6702998bb76d",
+        "49095f763c5c371d98bb57a01aaf5f47dc7b1ae1",
+        "11443bd674d8b9ea14541d64d8946d2ca2aee47d",
+        "05afa5e70f0cb2a3a64dec613c678a831b23fd71",
+        "99a8c6e42d3a5d4926ab64cda9a3f0510f6318eb"
+      ],
+      "doc_kind": "REVIEW_DOCUMENT"
+    },
+    {
+      "index": 28,
+      "path": "WORKER_RETURNS/SOROK-R3-HQ301-RCP-CAN008-POSITIVE-INDEPENDENT-R1/00_RETURN.md",
+      "ref": "922e27181a6d32745cf388962742f01813648358",
+      "blob": "f315dd71b8377a6e679a10e2548ce3f4367860e8",
+      "url": "https://github.com/maidiu/rawlsing/blob/922e27181a6d32745cf388962742f01813648358/WORKER_RETURNS/SOROK-R3-HQ301-RCP-CAN008-POSITIVE-INDEPENDENT-R1/00_RETURN.md",
+      "head": "# SOROK HQ301 RCP — Independent CAN008 positive owner-effect court\n\n**VERDICT:** `INDEPENDENT_REVIEW_INCOMPLETE__TYPED_BUDGET_HOLD__NO_SCIENTIFIC_ACCEPTANCE`\n**TERMINAL:** `SOROK_HQ301_RCP_CAN008_POSITIVE_INDEPENDENT_COURT_BUDGET_HOLD__GITHUB_PUSHED`\n**Branch:** `agent/reviewer-sorok-r3-hq301-rcp-can008-positive-court-r1` @ `a65514b209ece1778c4d0d2bf18f664062f20c07`\n**Role:** independent I2 reviewer, **NOT** candidate author, Sorok HQ, competent semantic issuer or V3 actor.\n**Environment:** local dominant worktree, Python 3.11.3, pytest 9.1.1, macOS 13.7.8 x86_64, shared object store. **No production semantic adoption, no real V3 actor operation, no additional agents, no editor/model switch.** Cost/quota: **not genuinely visible to this reviewer — no figure asserted.**\n\n## 1. Why this is a HOLD and not a REVIEW_PASS\n\nThe commission's acceptance criterion is explicit: `REVIEW_PASS` **only** for a *precisely reproduced and independently meaningful* SOURCEFREE_CANDIDATE_GRAIN verdict, and it directs me to **fail closed** rather than assert a false PASS. It also provides the correct escape: *\"If a genuine runner/environment/permission blocker occurs, return the exact typed HOLD and completed permitted subwork.\"*\n\n**My blocker is reviewer working-budget exhaustion, not a repository, permission or runner fault.** The repo, the pinned Python closure, pytest and the candidate tree were all reachable and **did** execute. I completed a bounded, real sub-court and I am returning that — with the uncompleted items named precisely rather than papered over. **I do not issue `REVIEW_PASS`. I do not claim scientific acceptance.**\n\n## 2. What I DID independently execute and verify\n\n### 2a. Candidate court independently reproduced — 37/37 accounted\n```\nPYTHONPATH=<root>:<candidate> python3.11 -m pytest \\\n  WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py -q\n  ->  36 passed, 1 skipped        EXIT 0      (37 collected, 0 failed)\n```\n**A diagnostic worth reporting:** run naively from the candidate subdirectory, the same file gives **33 passed / 3 failed / 1 skipped** — the three failures are `ModuleNotFoundError`-class **runner-path artifacts**, not candidate defects. With `rawlsing_next` importable from the worktree root they clear completely. I record both numbers because the distinction between *runner path* and *genuine failure* is exactly the kind this programme has been burned by; the candidate's \"37\" is **36 pass + 1 skip**.\n\n### 2b. Production zero-positive guard — EMPTY and BYTE-UNCHANGED (keystone)\n| check | result |\n|---|---|\n| `DEFAULT_ACCEPTED_POSITIVE_TRANSITION_AUTHORITIES` | `MappingProxyType({})` → **EMPTY** |\n| guard file | `rawlsing_next/v3_psepf_zero_positive_guard.py` |\n| blob at HEAD | `e0528d65215cb431196570c38bac4eae94217a1b` |\n| blob at sealed parent `896d8bcbfb9257c190fc9e4241b3a0176594d08e` | `e0528d65215cb431196570c38bac4eae94217a1b` |\n| `git diff --quiet` parent→HEAD | **BYTE-UNCHANGED** |\n\nThe production guard is genuinely separate from the non-adopted candidate registry: no production positive transition authority was minted, and the guard file was not touched. This is the single most important fail-closed property in the commission and it **holds**.\n\n### 2c. Candidate code identity located\nThe CAN008 candidate implementation is at `f578e0808` (\"first sourcefree positive owner-effect chain executed at candidate grain; K3/K5 separated; 9 hostiles refused; DISC_01 corrected; production guard preserved empty\"), not at `189da3b543` which is only a **remote-verification receipt** (`06_REMOTE_VERIFICATION.json`). Candidate modules: `adopted_contract.py`, `can008_candidate_rule.py`, `candidate_registry_fixture.py`, `owner_transitions.py`, `positive_chain.py`, `test_hq300_court.py`.\n\n## 3. What I did NOT complete — exact, named, unclaimed\n\n| # | required by the commission | status |\n|---|---|---|",
+      "material_lines": [
+        {
+          "line": 1,
+          "text": "# SOROK HQ301 RCP — Independent CAN008 positive owner-effect court"
+        },
+        {
+          "line": 3,
+          "text": "**VERDICT:** `INDEPENDENT_REVIEW_INCOMPLETE__TYPED_BUDGET_HOLD__NO_SCIENTIFIC_ACCEPTANCE`"
+        },
+        {
+          "line": 4,
+          "text": "**TERMINAL:** `SOROK_HQ301_RCP_CAN008_POSITIVE_INDEPENDENT_COURT_BUDGET_HOLD__GITHUB_PUSHED`"
+        },
+        {
+          "line": 5,
+          "text": "**Branch:** `agent/reviewer-sorok-r3-hq301-rcp-can008-positive-court-r1` @ `a65514b209ece1778c4d0d2bf18f664062f20c07`"
+        },
+        {
+          "line": 6,
+          "text": "**Role:** independent I2 reviewer, **NOT** candidate author, Sorok HQ, competent semantic issuer or V3 actor."
+        },
+        {
+          "line": 7,
+          "text": "**Environment:** local dominant worktree, Python 3.11.3, pytest 9.1.1, macOS 13.7.8 x86_64, shared object store. **No production semantic adoption, no real V3 actor operation, no additional agents, no editor/model switch.** Cost/quota: **not genuinely visible to this reviewer — no figure asserted.**"
+        },
+        {
+          "line": 9,
+          "text": "## 1. Why this is a HOLD and not a REVIEW_PASS"
+        },
+        {
+          "line": 11,
+          "text": "The commission's acceptance criterion is explicit: `REVIEW_PASS` **only** for a *precisely reproduced and independently meaningful* SOURCEFREE_CANDIDATE_GRAIN verdict, and it directs me to **fail closed** rather than assert a false PASS. It also provides the correct escape: *\"If a genuine runner/environment/permission blocker occurs, return the exact typed HOLD and completed permitted subwork.\"*"
+        },
+        {
+          "line": 13,
+          "text": "**My blocker is reviewer working-budget exhaustion, not a repository, permission or runner fault.** The repo, the pinned Python closure, pytest and the candidate tree were all reachable and **did** execute. I completed a bounded, real sub-court and I am returning that — with the uncompleted items named precisely rather than papered over. **I do not issue `REVIEW_PASS`. I do not claim scientific acceptance.**"
+        },
+        {
+          "line": 15,
+          "text": "## 2. What I DID independently execute and verify"
+        },
+        {
+          "line": 17,
+          "text": "### 2a. Candidate court independently reproduced — 37/37 accounted"
+        },
+        {
+          "line": 20,
+          "text": "  WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py -q"
+        },
+        {
+          "line": 28,
+          "text": "| `DEFAULT_ACCEPTED_POSITIVE_TRANSITION_AUTHORITIES` | `MappingProxyType({})` → **EMPTY** |"
+        },
+        {
+          "line": 34,
+          "text": "The production guard is genuinely separate from the non-adopted candidate registry: no production positive transition authority was minted, and the guard file was not touched. This is the single most important fail-closed property in the commission and it **holds**."
+        },
+        {
+          "line": 37,
+          "text": "The CAN008 candidate implementation is at `f578e0808` (\"first sourcefree positive owner-effect chain executed at candidate grain; K3/K5 separated; 9 hostiles refused; DISC_01 corrected; production guard preserved empty\"), not at `189da3b543` which is only a **remote-verification receipt** (`06_REMOTE_VERIFICATION.json`). Candidate modules: `adopted_contract.py`, `can008_candidate_rule.py`, `candidate_registry_fixture.py`, `owner_transitions.py`, `positive_chain.py`, `test_hq300_court.py`."
+        },
+        {
+          "line": 41,
+          "text": "| # | required by the commission | status |"
+        },
+        {
+          "line": 43,
+          "text": "| 1 | **Freeze an independent expected matrix BEFORE candidate test observation** | **NOT DONE — and now impossible to do honestly.** I read the commission, the candidate file inventory (`01_FROZEN_EXPECTED_MATRIX.json`, `03_EXECUTION_RECEIPTS.json`, `junit/*`) and ran the candidate court before freezing my own matrix. A matrix frozen now would be **post-observation** and would not be the independent prior the commission requires. I therefore do **not** present one. |"
+        },
+        {
+          "line": 45,
+          "text": "| 3 | **ADP016** source/legal-memory 7 gates | NOT DONE |"
+        },
+        {
+          "line": 48,
+          "text": "| 6 | New **adversarial falsification** suite (forged authority, cross-actor effect, stale world, hidden future, duplicate, unadmitted event, trace fabrication, origin self-explanation, public/private leakage, later-response bypass, registry leakage) | NOT DONE |"
+        },
+        {
+          "line": 49,
+          "text": "| 7 | Genuine **two-step causal event** with target-effect material stored and read by a later event, plus absent-effect control and replay | NOT DONE |"
+        },
+        {
+          "line": 52,
+          "text": "**Consequently the reported \"317/317\" is NOT independently confirmed by me.** I reproduced **37 of 317** and I explicitly do **not** extend that to the whole figure."
+        },
+        {
+          "line": 56,
+          "text": "- **No scientific acceptance is issued.** The CAN008 owner-effect chain is **not** verified by this return as true executed CAN008_R2→target owner effect→ADP016 trace→ADP017 epistemic change. I have not seen the causal production myself, only that the candidate's own court passes."
+        },
+        {
+          "line": 57,
+          "text": "- **This reviewer supplies no semantic issuance, no V3 actor operation and no production positive authority.**"
+        },
+        {
+          "line": 59,
+          "text": "- **Retained holds persist unchanged:** production issuance, competent-owner semantics and independent acceptance remain HQ's business, not mine."
+        },
+        {
+          "line": 61,
+          "text": "## 5. What a successor reviewer must do (minimal, ordered)"
+        },
+        {
+          "line": 64,
+          "text": "2. Validate the 23 §16 bindings **against pinned accepted law** (`b80dd692…` CAN008_R2, `c6619a28…` ADP016, `eece4f3f…` ADP017), not against candidate fixture vocabulary."
+        },
+        {
+          "line": 69,
+          "text": "**Terminal:** `SOROK_HQ301_RCP_CAN008_POSITIVE_INDEPENDENT_COURT_BUDGET_HOLD__GITHUB_PUSHED`."
+        }
+      ],
+      "refs": [
+        "a65514b209ece1778c4d0d2bf18f664062f20c07",
+        "e0528d65215cb431196570c38bac4eae94217a1b",
+        "896d8bcbfb9257c190fc9e4241b3a0176594d08e"
+      ],
+      "doc_kind": "REVIEW_DOCUMENT"
+    },
+    {
+      "index": 30,
+      "path": "WORKER_RETURNS/SOROK-R3-HQ302-RCP2-CAN008-CLEAN-ACCEPTANCE-R1/00_RETURN.md",
+      "ref": "5509f02e6dbc963bc76f2b8efd497eaa4cf69ccd",
+      "blob": "247edc7235b1d5dbc1655c6c002569a5b6e1389e",
+      "url": "https://github.com/maidiu/rawlsing/blob/5509f02e6dbc963bc76f2b8efd497eaa4cf69ccd/WORKER_RETURNS/SOROK-R3-HQ302-RCP2-CAN008-CLEAN-ACCEPTANCE-R1/00_RETURN.md",
+      "head": "# SOROK HQ302 RCP2 — Clean second independent CAN008 law-derived court\n\n**VERDICT:** `REVIEW_HOLD__SRC_FREE_PARTIAL__ORDERING_PRESERVED__NO_SEMANTIC_ADOPTION`\n**TERMINAL:** `SOROK_HQ302_RCP2_CAN008_CLEAN_ACCEPTANCE_HOLD__GITHUB_PUSHED`\n**Branch:** `agent/reviewer-sorok-r3-hq302-rcp2-can008-clean-acceptance-r1` @ `9ec98d5f7539e2093d516070df18224d35eb85c3`\n**Role:** fresh independent I2 reviewer; **NOT** HQ300 CAN author, **NOT** the HQ301 reviewer, **NOT** a semantic rule issuer, actor or HQ. **One agent, one editor, no model/harness switch, no helper.**\n**Cost:** measured usage **not genuinely visible to this reviewer — no figure asserted** (per §COST, a pricing table or advertised context length is not actual quota).\n\n## 1. ORDERING — corrected, and this is the headline\n\nHQ301 broke the independence ordering by observing candidate artifacts before freezing. **This court did it in the mandated order**:\n\n**FIRST — frozen law-derived prereg, committed before any candidate artefact was opened:**\n`00_FROZEN_LAW_DERIVED_PREREG.json` sha256 `056ebe78a4240a6123abcf4f1b390d90d1cf31c077e9085ddf9d0904dc473700`, commit **`ac64affeb4af922dea1b1d0088afe7acfeafaee9`**.\nAuthored from **adopted law only** — CAN008_R2 `b80dd6925066510ecbbfec7b427bf9f688475663` (`V3_ACTOR_RESPONSE_PRESSURE_FLOW_TRANSACTION_RULESET@2.0.0-CANDIDATE.R1`), ADP016 `c6619a286e115d060ab4830889e7fc23762167a5`, ADP017 `eece4f3f2f3f9288ab9bbc645dc81e20a99e1280`, guard `e0528d65215cb431196570c38bac4eae94217a1b`. It fixes the 7 positive expectations, 10 law-derived negative expectations and the fail-closed classes **before** any candidate expectation, test or result was read. **Ordering attested in the artifact itself and verifiable from the commit graph.**\n\n## 2. THE 36 PASS / 1 SKIP DISCREPANCY — fully resolved\n\n| configuration | result |\n|---|---|\n| correct `PYTHONPATH`, `HQ300_STAGE` **unset** | **36 passed, 1 skipped** |\n| same, `HQ300_STAGE` **set** | **37 passed, 0 skipped** |\n\nThe skip is **not a silent or suspicious skip**: `test_G_disc01_corrected_detector_production_surface_zero` explicitly calls `pytest.skip(\"HQ300_STAGE not set\")`, because it performs a **production implementation-surface scan** that requires the stage root. With the root supplied it **passes**. HQ301's \"36 PASS / 1 SKIP\" is therefore **exactly reproduced and fully explained** — an environment gate, not a candidate defect and not hidden coverage.\n\n## 3. The 317 figure — composition correct, my execution partial\n\nCommitted JUnit evidence (author-issued), read after the freeze:\n\n| suite | tests | failures | errors | skipped |\n|---|---:|---:|---:|---:|\n| `pinned_modules_junit.xml` | **220** | 0 | 0 | 0 |\n| `rsm_court_junit.xml` | **60** | 0 | 0 | 0 |\n| `court_junit.xml` | **37** | 0 | 0 | 0 |\n| **total** | **317** | 0 | 0 | 0 |\n\n**220 + 60 + 37 = 317 — the arithmetic is correct.** The only nuance against the phrase \"317/317\": one of the 37 is **environment-gated**, so absent `HQ300_STAGE` the true executed figure is **316 pass + 1 skip**. With the stage root present it is a genuine 317/317.\n\n**Crucial honesty cut:** I **independently executed only the candidate 37** (both gates, above). The **220 and 60 I have NOT executed** — I have read the author's committed JUnit XML. Author JUnit is **not** independent reproduction, and I do not present it as such.\n\n## 4. What I did NOT complete — named, unclaimed, no retroactive predeclaration\n",
+      "material_lines": [
+        {
+          "line": 1,
+          "text": "# SOROK HQ302 RCP2 — Clean second independent CAN008 law-derived court"
+        },
+        {
+          "line": 3,
+          "text": "**VERDICT:** `REVIEW_HOLD__SRC_FREE_PARTIAL__ORDERING_PRESERVED__NO_SEMANTIC_ADOPTION`"
+        },
+        {
+          "line": 4,
+          "text": "**TERMINAL:** `SOROK_HQ302_RCP2_CAN008_CLEAN_ACCEPTANCE_HOLD__GITHUB_PUSHED`"
+        },
+        {
+          "line": 5,
+          "text": "**Branch:** `agent/reviewer-sorok-r3-hq302-rcp2-can008-clean-acceptance-r1` @ `9ec98d5f7539e2093d516070df18224d35eb85c3`"
+        },
+        {
+          "line": 6,
+          "text": "**Role:** fresh independent I2 reviewer; **NOT** HQ300 CAN author, **NOT** the HQ301 reviewer, **NOT** a semantic rule issuer, actor or HQ. **One agent, one editor, no model/harness switch, no helper.**"
+        },
+        {
+          "line": 7,
+          "text": "**Cost:** measured usage **not genuinely visible to this reviewer — no figure asserted** (per §COST, a pricing table or advertised context length is not actual quota)."
+        },
+        {
+          "line": 15,
+          "text": "Authored from **adopted law only** — CAN008_R2 `b80dd6925066510ecbbfec7b427bf9f688475663` (`V3_ACTOR_RESPONSE_PRESSURE_FLOW_TRANSACTION_RULESET@2.0.0-CANDIDATE.R1`), ADP016 `c6619a286e115d060ab4830889e7fc23762167a5`, ADP017 `eece4f3f2f3f9288ab9bbc645dc81e20a99e1280`, guard `e0528d65215cb431196570c38bac4eae94217a1b`. It fixes the 7 positive expectations, 10 law-derived negative expectations and the fail-closed classes **before** any candidate expectation, test or result was read. **Ordering attested in the artifact itself and verifiable from the commit graph.**"
+        },
+        {
+          "line": 28,
+          "text": "Committed JUnit evidence (author-issued), read after the freeze:"
+        },
+        {
+          "line": 39,
+          "text": "**Crucial honesty cut:** I **independently executed only the candidate 37** (both gates, above). The **220 and 60 I have NOT executed** — I have read the author's committed JUnit XML. Author JUnit is **not** independent reproduction, and I do not present it as such."
+        },
+        {
+          "line": 41,
+          "text": "## 4. What I did NOT complete — named, unclaimed, no retroactive predeclaration"
+        },
+        {
+          "line": 43,
+          "text": "| # | required | status |"
+        },
+        {
+          "line": 47,
+          "text": "| 3 | **independently execute** the 220 pinned + 60 corrected RSM | ❌ **NOT DONE** — author JUnit read only |"
+        },
+        {
+          "line": 51,
+          "text": "| 7 | the **actual two-admitted-event chain**: first causes ordered target effect; second reads the **persisted** effect and emits a **distinct typed** response | ❌ NOT DONE |"
+        },
+        {
+          "line": 53,
+          "text": "| 9 | own hostility suite (forged issuer, hidden-future, wrong actor, stale as-of, duplicate, trace corruption, reverse chronology, registry contamination, unauthorized origin self-explanation, fake response) | ❌ NOT DONE |"
+        },
+        {
+          "line": 56,
+          "text": "**Therefore `REVIEW_PASS_SOURCEFREE_CANDIDATE_ONLY` is not available to me.** Its precondition — \"executed all scoped suites, independent law bindings and full adversarial evidence\" — is **not met**. The commission's own rule is that other outcomes are `REVIEW_REVISE` or `REVIEW_HOLD`, and that a finite budget must yield **an exact uncompleted HOLD, not a retroactive predeclaration**. That is what this is."
+        },
+        {
+          "line": 58,
+          "text": "## 5. What this HOLD does and does not say"
+        },
+        {
+          "line": 61,
+          "text": "- **Does not:** it does **not** accept that the CAN008 positive owner-effect chain is scientifically real. I have **not personally seen** the two-admitted-event causal production, the persisted owner effect being read by a later event, the absent-effect control, the 23 §16 bindings against law, the ADP016/017 gate enforcement, or any refusal under hostility."
+        },
+        {
+          "line": 62,
+          "text": "- **Candidate evidence ≠ authorized operation.** The candidate registry remains **fixture only**; nothing here issues semantic law, an actor, a live registry permit or production authority."
+        },
+        {
+          "line": 64,
+          "text": "## 6. Minimal successor path (ordered, unchanged from law)"
+        },
+        {
+          "line": 66,
+          "text": "1. Execute the **220 + 60** independently (not author JUnit) with correct import path and report true counts."
+        },
+        {
+          "line": 72,
+          "text": "**Terminal:** `SOROK_HQ302_RCP2_CAN008_CLEAN_ACCEPTANCE_HOLD__GITHUB_PUSHED`."
+        }
+      ],
+      "refs": [
+        "9ec98d5f7539e2093d516070df18224d35eb85c3",
+        "ac64affeb4af922dea1b1d0088afe7acfeafaee9",
+        "b80dd6925066510ecbbfec7b427bf9f688475663",
+        "c6619a286e115d060ab4830889e7fc23762167a5",
+        "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280",
+        "e0528d65215cb431196570c38bac4eae94217a1b"
+      ],
+      "doc_kind": "REVIEW_DOCUMENT"
+    },
+    {
+      "index": 39,
+      "path": "WORKER_COMMISSIONS/SOROK-R3-HQ309-OUT5-OUT4-INDEPENDENT-R1/00_COMMISSION.md",
+      "ref": "e576e405e50e1bd91be5c839d8c33b69fa851fd9",
+      "blob": "2be8f8c0db0350ed8df5724f7e605a05a9d0d2ff",
+      "url": "https://github.com/maidiu/rawlsing/blob/e576e405e50e1bd91be5c839d8c33b69fa851fd9/WORKER_COMMISSIONS/SOROK-R3-HQ309-OUT5-OUT4-INDEPENDENT-R1/00_COMMISSION.md",
+      "head": "# SOROK HQ309 OUT5 — INDEPENDENT OUT4 REPAIR AND EXACT OUT3 TEST RECOVERY COURT\n\n**REPOSITORY:** maidiu/rawlsing (private).\n**ROLE:** Independent I2 science/implementation reviewer, not HQ, candidate author, production authority, model-use issuer or adopter.\n**STATUS:** COMMISSION_BANKED__UNLAUNCHED__NO_ADOPTION.\n**BRANCH:** agent/reviewer-sorok-r3-hq309-out5-out4-independent-r1\n**EXACT HQ309 PARENT:** 7dd4e05990eba8069aa02504777ddd3173524c01\n**EXACT SEALED STARTUP:** New commission-creation Git SHA communicated by HQ and verified directly before work; cannot recursively embed future commit SHA here.\n**COMMISSION:** WORKER_COMMISSIONS/SOROK-R3-HQ309-OUT5-OUT4-INDEPENDENT-R1/00_COMMISSION.md\n**ALLOWED WRITES:** WORKER_RETURNS/SOROK-R3-HQ309-OUT5-OUT4-INDEPENDENT-R1/ and nothing else.\n\n## One editor + one model + one complete independent reviewer\n**MODEL:** GPT-6 High\n**EDITOR/HOST:** One Browser/GitHub Python+pytest+subprocess reviewer (BROWSER_NATIVE)\n**WHY QUALIFIED:** Independent OUT3 and author OUT4 already ran a compact sourcefree Python outbox with cold-process os._exit; Browser High is qualified for I2 hostile science if exact binary archive extraction succeeds. No large owner import tree required.\n**FALLBACK:** If exact model/editor or real authenticated source/runner absent, preserve completed permitted work and issue precise capability HOLD; no automatic different model, alternate editor, helper, self-reassignment or false executed court.\n\n## Pinned sources\nOUT4 repair 2afa3022e5551df71b739cf8689e832db85e1196; OUT2 b1004a43eb0309af99e1b7ce9d5290df3c07f3cd; independent OUT3 0ab31e4198299708e700840c1b68e0d94a2ced06 (its full 22-test tar blob a9c4ee7344526fa335605d76d08def2ac5dcba2a; sha256 fc876b665bd9af6328deec86aa66e93ec0eebf9048ca7a5a0d7d0630cd48bddd); OUT4 candidate blob c7bb4169d43c715de7dd113b24d3ce897e37beab; frozen S01–S28 oracle 782ba75ee94f24908100b1f3464e7035497d546c. Read entire reports and exact original suite sources/hashes.\n\n## Actual scientific work\nDetermine independently whether OUT4's 29 author PASS genuinely close the previous 17 OUT3 REDs without reopening the two intentionally retained original REDs, adding any viewer/perception or material-world authority.\nFirst recover the EXACT original 22 OUT3 reviewer test source from binary archive using authentic Git object and sha256, safe extraction with member checks; do NOT silently replace with rewritten lookalike tests. Report exact transport failure as HOLD if not actually materialized, and still execute all other available tests honestly. Independently rerun original 137 unmodified (expected135P/2RED: frozen S27 authority mismatch + single-writer concurrency non-goal), 22 OUT3 unchanged (previous5P/17RED against OUT2; actual OUT4 counts unknown), OUT4 29 author new, plus own hostile probes. Attack missing envelope_mode downgrade, mixed-case nested directives, null/blank refs, mutable projection 'perceived', revocation and viewer aggregate ACK/regrant, invalid persisted global/client counters and failure-atomic restore; true pre/post rename/fsync and cold crash. S27 original test still expects forbidden physical mug move, do NOT greenwash frozen oracle. Stale concurrent writers are outside expressly single-writer sourcefree candidate. Distinguish false human perceived/transport/ADP019 authenticated issuer from synthetic fixture callbacks and viewer opportunity. Verify source blob paths and real output. Separate semantic/oracle S27 and durable-store owner HOLDS. No production promotion.\n\n## Verdict grade\nREVIEW_PASS_SCOPED_SOURCEFREE_SINGLE_WRITER only if actual 22 unchanged recovered/reproduced, all in-scope authorization/perception and state invariants survive fresh hostiles, and two proper REDs transparently retained. Otherwise REVIEW_REVISE/HOLD with cases and authentic test-material blocker.\n\n## Protocol and non-issuance\nRead at exact HQ309 parent: SOROK_PRODUCT_CONTROL_ROOM/HQ309_OUT4_CAN2_OC2_RETURN_FANIN_AND_INDEPENDENT_REVIEW_DISPATCH_R1.md and Sorok 00_READ_ME_FIRST / 00B / 00C (§3A economical qualification, §3B editor-model nonconflation and one-agent full job, §5A host), 00D; read only named accepted-law/owner contracts as necessary. Verify commission-creation SHA from the direct remote branch before edits (file cannot contain its future own SHA).\nAn independent reviewer (not author or previous same-chat reviewer) performs whole assignment: stage exact Git blobs in isolated/ignored worktree, independently freeze evidence expectations with candid awareness of published results, execute unmodified original and independent tests, develop additional hostile cases, report science boundary, commit/push ONLY assigned reviewer return, verify direct remote SHA. No helper workers, model switches, other-return edits, xfail/skip or false green reinterpretation. Probe real Python/pytest/git/subprocess, exact native Git blob preimages, module.__file__, runtime/permissions and maintain full JUnit/stdout. A documentary baseline is not a real executed reproduction. Usage/price UNKNOWN unless measured.\nNo external provider/model trial, original survey/respondent source, V3 actor, new semantic or test issuer, positive production registry change, real custody/human perception assertion, protected CURRENT/PRE-MAIN, N12 wake or canonical merge. Authority/sourcefree/test-only ceilings always explicit. Distinct scientific review is not owner adoption.\n",
+      "material_lines": [
+        {
+          "line": 1,
+          "text": "# SOROK HQ309 OUT5 — INDEPENDENT OUT4 REPAIR AND EXACT OUT3 TEST RECOVERY COURT"
+        },
+        {
+          "line": 4,
+          "text": "**ROLE:** Independent I2 science/implementation reviewer, not HQ, candidate author, production authority, model-use issuer or adopter."
+        },
+        {
+          "line": 6,
+          "text": "**BRANCH:** agent/reviewer-sorok-r3-hq309-out5-out4-independent-r1"
+        },
+        {
+          "line": 9,
+          "text": "**COMMISSION:** WORKER_COMMISSIONS/SOROK-R3-HQ309-OUT5-OUT4-INDEPENDENT-R1/00_COMMISSION.md"
+        },
+        {
+          "line": 10,
+          "text": "**ALLOWED WRITES:** WORKER_RETURNS/SOROK-R3-HQ309-OUT5-OUT4-INDEPENDENT-R1/ and nothing else."
+        },
+        {
+          "line": 12,
+          "text": "## One editor + one model + one complete independent reviewer"
+        },
+        {
+          "line": 14,
+          "text": "**EDITOR/HOST:** One Browser/GitHub Python+pytest+subprocess reviewer (BROWSER_NATIVE)"
+        },
+        {
+          "line": 15,
+          "text": "**WHY QUALIFIED:** Independent OUT3 and author OUT4 already ran a compact sourcefree Python outbox with cold-process os._exit; Browser High is qualified for I2 hostile science if exact binary archive extraction succeeds. No large owner import tree required."
+        },
+        {
+          "line": 16,
+          "text": "**FALLBACK:** If exact model/editor or real authenticated source/runner absent, preserve completed permitted work and issue precise capability HOLD; no automatic different model, alternate editor, helper, self-reassignment or false executed court."
+        },
+        {
+          "line": 18,
+          "text": "## Pinned sources"
+        },
+        {
+          "line": 19,
+          "text": "OUT4 repair 2afa3022e5551df71b739cf8689e832db85e1196; OUT2 b1004a43eb0309af99e1b7ce9d5290df3c07f3cd; independent OUT3 0ab31e4198299708e700840c1b68e0d94a2ced06 (its full 22-test tar blob a9c4ee7344526fa335605d76d08def2ac5dcba2a; sha256 fc876b665bd9af6328deec86aa66e93ec0eebf9048ca7a5a0d7d0630cd48bddd); OUT4 candidate blob c7bb4169d43c715de7dd113b24d3ce897e37beab; frozen S01–S28 oracle 782ba75ee94f24908100b1f3464e7035497d546c. Read entire reports and exact original suite sources/hashes."
+        },
+        {
+          "line": 22,
+          "text": "Determine independently whether OUT4's 29 author PASS genuinely close the previous 17 OUT3 REDs without reopening the two intentionally retained original REDs, adding any viewer/perception or material-world authority."
+        },
+        {
+          "line": 23,
+          "text": "First recover the EXACT original 22 OUT3 reviewer test source from binary archive using authentic Git object and sha256, safe extraction with member checks; do NOT silently replace with rewritten lookalike tests. Report exact transport failure as HOLD if not actually materialized, and still execute all other available tests honestly. Independently rerun original 137 unmodified (expected135P/2RED: frozen S27 authority mismatch + single-writer concurrency non-goal), 22 OUT3 unchanged (previous5P/17RED against OUT2; actual OUT4 counts unknown), OUT4 29 author new, plus own hostile probes. Attack missing envelope_mode downgrade, mixed-case nested directives, null/blank refs, mutable projection 'perceived', revocation and viewer aggregate ACK/regrant, invalid persisted global/client counters and failure-atomic restore; true pre/post rename/fsync and cold crash. S27 original test still expects forbidden physical mug move, do NOT greenwash frozen oracle. Stale concurrent writers are outside expressly single-writer sourcefree candidate. Distinguish false human perceived/transport/ADP019 authenticated issuer from synthetic fixture callbacks and viewer opportunity. Verify source blob paths and real output. Separate semantic/oracle S27 and durable-store owner HOLDS. No production promotion."
+        },
+        {
+          "line": 25,
+          "text": "## Verdict grade"
+        },
+        {
+          "line": 26,
+          "text": "REVIEW_PASS_SCOPED_SOURCEFREE_SINGLE_WRITER only if actual 22 unchanged recovered/reproduced, all in-scope authorization/perception and state invariants survive fresh hostiles, and two proper REDs transparently retained. Otherwise REVIEW_REVISE/HOLD with cases and authentic test-material blocker."
+        },
+        {
+          "line": 29,
+          "text": "Read at exact HQ309 parent: SOROK_PRODUCT_CONTROL_ROOM/HQ309_OUT4_CAN2_OC2_RETURN_FANIN_AND_INDEPENDENT_REVIEW_DISPATCH_R1.md and Sorok 00_READ_ME_FIRST / 00B / 00C (§3A economical qualification, §3B editor-model nonconflation and one-agent full job, §5A host), 00D; read only named accepted-law/owner contracts as necessary. Verify commission-creation SHA from the direct remote branch before edits (file cannot contain its future own SHA)."
+        },
+        {
+          "line": 30,
+          "text": "An independent reviewer (not author or previous same-chat reviewer) performs whole assignment: stage exact Git blobs in isolated/ignored worktree, independently freeze evidence expectations with candid awareness of published results, execute unmodified original and independent tests, develop additional hostile cases, report science boundary, commit/push ONLY assigned reviewer return, verify direct remote SHA. No helper workers, model switches, other-return edits, xfail/skip or false green reinterpretation. Probe real Python/pytest/git/subprocess, exact native Git blob preimages, module.__file__, runtime/permissions and maintain full JUnit/stdout. A documentary baseline is not a real executed reproduction. Usage/price UNKNOWN unless measured."
+        },
+        {
+          "line": 31,
+          "text": "No external provider/model trial, original survey/respondent source, V3 actor, new semantic or test issuer, positive production registry change, real custody/human perception assertion, protected CURRENT/PRE-MAIN, N12 wake or canonical merge. Authority/sourcefree/test-only ceilings always explicit. Distinct scientific review is not owner adoption."
+        }
+      ],
+      "refs": [
+        "7dd4e05990eba8069aa02504777ddd3173524c01",
+        "2afa3022e5551df71b739cf8689e832db85e1196",
+        "b1004a43eb0309af99e1b7ce9d5290df3c07f3cd",
+        "0ab31e4198299708e700840c1b68e0d94a2ced06",
+        "a9c4ee7344526fa335605d76d08def2ac5dcba2a",
+        "c7bb4169d43c715de7dd113b24d3ce897e37beab",
+        "782ba75ee94f24908100b1f3464e7035497d546c"
+      ],
+      "doc_kind": "COMMISSION_ONLY_NOT_RETURN"
+    },
+    {
+      "index": 66,
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_REVIEWS/20261028_SOROK08_INDEPENDENT_WHOLE_TRAJECTORY_CONDITIONAL_REVIEW_R1.md",
+      "ref": "8fbf564788406bd8317e441e6f6c72c39b121f70",
+      "blob": "1715511b1cec316eabc5236e88d5851a01d8fcaf",
+      "url": "https://github.com/maidiu/rawlsing/blob/8fbf564788406bd8317e441e6f6c72c39b121f70/SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_REVIEWS/20261028_SOROK08_INDEPENDENT_WHOLE_TRAJECTORY_CONDITIONAL_REVIEW_R1.md",
+      "head": "# Independent conditional review of SOROK08 fresh successor accession — maximum whole-trajectory fidelity\n## R1 | REVIEW-ONLY | `REVISE_PRECISE_DEFICIENCIES__NOT_ACCESSION` | 2026-10-28\n\n**Target application:** `agent/vozhd-sorok-20261028-independent-sourcegraded-grok-candidate-r1@91dbd56649ae465169b9ce4d4dd5751cfd26466c`; `SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261028_FRESH_SOURCEGRADED_GROK_CANDIDATE_R1/00_DOSSIER.md` Git blob `502758912ce0f9c25d9daefd8fc24b144546a9bc`, structured provenance blob `f23dfd16a53b8028e2920590af23a7edf1c39e95`. The independent reviewer has read the entire dossier and receipt, portions/requirements of original controlling Sorok 08 blob `f1afe1e20d6a0a7100f4c0867e3de8ea4c22c01f`, 00A blob `41a874e803d7288c183780514605eb64fccd749e`, and 00E blob `c82c00af983b400b8710809ae45eb509eb5f66c7`, plus the source-graded strategic workspace below, selected original code/worker/reviewer returns and the current PR metadata. This is a documentary and program-scientific review; **NO new native, Python/Mac, empirical, product/provider or raw survey execution occurred**. It is not an adopted currentness ruling.\n\n**Controlled full-terrain source package to inherit, NOT automatically adopt:** `agent/vozhd-sorok-20261027-independent-maximal-accession-candidate-r1@d2560368e10541905df84bafc7d3c64f63efc0d8`, `SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261027_INDEPENDENT_SOROK_HQ_CANDIDATE_R1/TOTAL_TRAJECTORY_TOP_VIEW/00_START_HERE_TOP_VIEW_INHERITANCE_AND_COVERAGE_R1.md` and every linked 01–10 companion, including BOTH existing 09 and BOTH existing 10 filenames. Previous branch's PR #510 is a **different applicant/draft**, not Sorok08's HQ grant. Neo-V3/CMD foundation `a47dca7f29196b4da10451ca4f2dd047c99ed56a`, unmerged PR #509, is derivative source, not self-issued current canonical law. Exact controlling PRE-MAIN read cut `299f41e97a43c67be9cc76a79fa49b48f4e12e54`, incumbent Browser Sorok `865b5b01e1a27e99020cf2bb389af8cd4c874b57`, technical Codex `3c5434a9a88122631ad7ca202fdf3e0003849d06`, prior Oct26 dormant reserve `5d5d4beaee63c0ac0b367a6f1e5ef399c8a3326e` at this read. **Recheck actual HEAD on any consequential action**.\n\n## The central ruling, including what the applicant has earned\n\n**Do NOT issue `ACCEPT_EXISTING_SOROK_HQ_SCOPE` on this dossier.** Its explicit `SOROK_HQ_FULL_ACCESSION_GROK_INCOMPLETE__READ_ONLY_CORRECTIVE_WORK` is accurate; its applicant's own 15-category table marks categories #1, #3, #7, #8 (partial), #11, #13 and #14 for REVISION. It correctly preserves jurisdiction/authority, full sourcefree/native distinction, existing code capital, 3–5-event N/N+1 user decision and pre-existing work. Its relative success should be preserved rather than buried under a blanket refusal. A source-competent, genuinely independently reviewed revision can move towards **eligibility**, and **actual human/incumbent accreditation remains separate**.\n\n**The highest-risk substantive omission:** the successor's §5 has already framed “first scientific Rule A/T + canonical C9 writer + B-owned source” as immediate program work. In THIS user-directed phase, that is **not an adopted whole-program ranking**, and above all it is **not authorization to commission a campaign**. The user's controlling current instruction is **maximum overview of every important existing trajectory, identify the biggest/most impactful areas and all kinds of attention, then progressively refine WITHOUT yet diving into campaigns**. No narrow acquired-PRACTICE science, C9 engineering or independent-other research can substitute for completion of this *space*. The two detailed `SCI_P0_A` and `WORLD_P0_B` briefs were explicitly **PARKED**, not launched or selected. Do not silently reactivate them.\n\n**Review target:** demand demonstrable fidelity to this full program and inherited real code, **not a new duplicate atlas, 15-novel-category command, worker fleet or re-review of Neo-V3**. A user may reasonably say the top-view is strategically sufficient at its declared evidence level while still not believing every actual source/native/person/experience claim. Never convert strategic completeness into source execution or release approval.\n\n## Binding conditional corrections, with concrete demonstrations, not honor pledges\n\n### K01. Preserve the USER'S CURRENT STAGE: top-view over campaign selection (MAJOR REVISE)\n**Evidence:** successor §5 proposes immediate scientific and C9 “first actions”; top-view 00/02 and repeated user direction explicitly demand broad whole-trajectory identification before campaigns.\n\n**Required:** revise §5 to display **three different orders**: (a) terminal goals and constitutive problems ranked by human-product importance, (b) attention kinds and evidence/owner gaps, (c) *eventual* allowed dependency-constrained parallel candidate work, **NOT DISPATCHED**. Explain why old user-parked A/B science briefs cannot be revived merely because the candidate understands them. Rank C0/Pyat original world, C4 genealogy and independent B, C1–C7/N01–N10 developmental science, C8–C12 real life/transactions, and A0–A5 actual user/product, with anti-microfocus priority. The scientific effect of real learned practice is one representative falsifier, NOT the definition of the whole person. **PASS falsifier:** colleague reading only the revised executive statement could not reasonably conclude “go launch an A/T worker now”; no new worker or production action issued.\n\n### K02. Work OFF the governing canonical topology, never a competitor (MAJOR)\n**Sources:** `COMMAND/02_CAPABILITY_REGISTER.json` at `a47dca7...`: **19** C0–C12/A0–A5 milestones, **12** N01–N12 reviewed Neo requirements, **16** O01–O16 source/science decisions, **15** E01–E15 first consumers; historical **40** M01–M40 mechanism families, independent SYN02 S01–S09 and Astra D09/D11/D18/16 correction. Check governance priority and separate PR #509 DRAFT.\n\n**Required:** for every *important* top-level problem show `existing C/A | existing N | historic M | original O | consumer E | original owner/source | present code & grade | remaining type of attention`. No new milestone identifiers, renamed Neo dockets, parallel semantic author or 40 file-by-file repeated science courts. Identify actual adopted authority versus draft derived synthesis. If a real source disagreement appears, cite exact contradictory statements and owner that can resolve it; do not smooth it with the candidate's own interpretation.\n\n### K03. Inherit WHOLE first-party top-view, not just its headline (MAJOR)\n**Required read-back:** independently inspect 00 START HERE plus **01 source-exact 19/12/16/15 crosswalk**, **02 priorities/18 undercoverage hypotheses/11 attention types**, **03 all N01–N12 scientific phenomenon/open question source exact**, **04 M01–M40 historical function/disposition**, **05 cross-source collisions**, **06 full Pyat N0–N12/F1–F8**, **07 A0–A5/Sorok100/101 backward product**, **08 S39–S52/R3 actual code/sourcegraph**, original **09 BP2P4J joined code and sourcefree provenance**, original **10 150-name restricted roster**, expanded **09 228 seven-prefix branch-name/selected SHA roster**, expanded **10 B1/B2/B3A repair and independent reviewer lineage**. There are **12 companion artifact files** with duplicated 09/10 prefixes and a separate 00 index; do not silently choose a single 09 or 10. Record what you ACTUALLY read and what was inherited as testimony. Show substantive corrections/disagreements rather than certifying coverage by simply repeating 228 or claiming all 40 original runtime files were freshly executed.\n\n### K04. Expose the existing code, strongest producer/consumer positives, and exact ceilings (MAJOR)\nA table treating S39–S52 as the entire working Sorok code is a **fatal strategic undercount**. Inspect at least relevant positive/negative original returns and exact SHAs:\n\n| Existing capital | Source-grade fact (must preserve) | Cannot promote to |\n|---|---|---|\n| Original V3 **TD-R05** and Codex original-machine rehash | M01 BackboneState, M21 `run_pressure_flow_cycle` and historical transaction/history groove, M25 ordered `run_one_year`, proposal/select/render separation, **80** historical selected tests. Actual reusable executable code, not an ontology sketch. | Issued modern CAN learning coefficients, automatic psyche through year/typology/age |\n| **B1 / B2** | B1 `c0f4588...`, test-only E1→durable MEDIATOR→later conditional route **39 author PASS**; B2 `950ecf0...`, actual 4-return synthetic link, **81 connected / 249 inherited** separately reported. | Original human rule, unrelated inherited green tests pooled |\n| **B3** | `47b46a8...`, **71** new / **42** F2 controls, actual t2/t7 lock checks and t9 `CHECK_LOCK` **OPTION AVAILABLE, not performed t9 behavior**; S3 scientific `2ca072e...` conditional bounded software positive but human habit/selected meaning REVISE, M2 quarantined; X3 runtime `d201985...` positive reproduced, refused rows wrote durable ghosts, REVISE. | Lawful normal actor acquisition or all-green B3 |\n| **B3A/B3AS** | Atomic repair `8bd4d6b...` then schema/readset repair `16f15a1...`, independent B3AS-I2 `1a25b19d...` **ACCEPT_SCOPED** only for SQL schema/readset/selected test-only atomic custody; frozen original native F1 **17 RED**, M3 historical preimage RED and non-issued psychology remain. | Native C9/C11 or fully acquired habit |\n| **BP1/BP2/BP4/BP2P4J** | `5b3e657...` actual joined sourcefree C8→TEST_ONLY Rule A/T→C9 durable state→separately PERFORMED E2→C10/C12/A0–A3 reentry/offscreen, **98 author-reported PASS**, seven principal plus three supplemental same-consumer fault cuts, and independent B history inputs. Actual code `bp2p4/product.py::JoinedProduct`, `severance.py::run_all_severances`. | Independent full-native person/A4/A5, independent final accepted joined release; note C12 self-hash/SQLite guard residual |\n| **R3 HQ300** | `189da3b...` **317 author-reported test-only** response→trace/belief→later change; **production registry EMPTY**, no original issuance. | No need for a current adopted Rule A/T |\n| **R3 LIFE1 / W01 / M01 / G12/G13 / OUT12 / C0P** | LIFE1 16 original source/owner cases legitimately DEFER; W01 owner options **not issuer grant**; M01 memory conditional synthetic; G12 18 genealogy RED (seven defects), G13 real repair candidate; OUT12 multiwriter CAS candidate; C0P generic Pyat adapter. | Claim “no code exists” from LIFE1 HOLD, or claim native actor from any sourcefree branch |",
+      "material_lines": [
+        {
+          "line": 1,
+          "text": "# Independent conditional review of SOROK08 fresh successor accession — maximum whole-trajectory fidelity"
+        },
+        {
+          "line": 2,
+          "text": "## R1 | REVIEW-ONLY | `REVISE_PRECISE_DEFICIENCIES__NOT_ACCESSION` | 2026-10-28"
+        },
+        {
+          "line": 4,
+          "text": "**Target application:** `agent/vozhd-sorok-20261028-independent-sourcegraded-grok-candidate-r1@91dbd56649ae465169b9ce4d4dd5751cfd26466c`; `SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261028_FRESH_SOURCEGRADED_GROK_CANDIDATE_R1/00_DOSSIER.md` Git blob `502758912ce0f9c25d9daefd8fc24b144546a9bc`, structured provenance blob `f23dfd16a53b8028e2920590af23a7edf1c39e95`. The independent reviewer has read the entire dossier and receipt, portions/requirements of original controlling Sorok 08 blob `f1afe1e20d6a0a7100f4c0867e3de8ea4c22c01f`, 00A blob `41a874e803d7288c183780514605eb64fccd749e`, and 00E blob `c82c00af983b400b8710809ae45eb509eb5f66c7`, plus the source-graded strategic workspace below, selected original code/worker/reviewer returns and the current PR metadata. This is a documentary and program-scientific review; **NO new native, Python/Mac, empirical, product/provider or raw survey execution occurred**. It is not an adopted currentness ruling."
+        },
+        {
+          "line": 6,
+          "text": "**Controlled full-terrain source package to inherit, NOT automatically adopt:** `agent/vozhd-sorok-20261027-independent-maximal-accession-candidate-r1@d2560368e10541905df84bafc7d3c64f63efc0d8`, `SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261027_INDEPENDENT_SOROK_HQ_CANDIDATE_R1/TOTAL_TRAJECTORY_TOP_VIEW/00_START_HERE_TOP_VIEW_INHERITANCE_AND_COVERAGE_R1.md` and every linked 01–10 companion, including BOTH existing 09 and BOTH existing 10 filenames. Previous branch's PR #510 is a **different applicant/draft**, not Sorok08's HQ grant. Neo-V3/CMD foundation `a47dca7f29196b4da10451ca4f2dd047c99ed56a`, unmerged PR #509, is derivative source, not self-issued current canonical law. Exact controlling PRE-MAIN read cut `299f41e97a43c67be9cc76a79fa49b48f4e12e54`, incumbent Browser Sorok `865b5b01e1a27e99020cf2bb389af8cd4c874b57`, technical Codex `3c5434a9a88122631ad7ca202fdf3e0003849d06`, prior Oct26 dormant reserve `5d5d4beaee63c0ac0b367a6f1e5ef399c8a3326e` at this read. **Recheck actual HEAD on any consequential action**."
+        },
+        {
+          "line": 10,
+          "text": "**Do NOT issue `ACCEPT_EXISTING_SOROK_HQ_SCOPE` on this dossier.** Its explicit `SOROK_HQ_FULL_ACCESSION_GROK_INCOMPLETE__READ_ONLY_CORRECTIVE_WORK` is accurate; its applicant's own 15-category table marks categories #1, #3, #7, #8 (partial), #11, #13 and #14 for REVISION. It correctly preserves jurisdiction/authority, full sourcefree/native distinction, existing code capital, 3–5-event N/N+1 user decision and pre-existing work. Its relative success should be preserved rather than buried under a blanket refusal. A source-competent, genuinely independently reviewed revision can move towards **eligibility**, and **actual human/incumbent accreditation remains separate**."
+        },
+        {
+          "line": 12,
+          "text": "**The highest-risk substantive omission:** the successor's §5 has already framed “first scientific Rule A/T + canonical C9 writer + B-owned source” as immediate program work. In THIS user-directed phase, that is **not an adopted whole-program ranking**, and above all it is **not authorization to commission a campaign**. The user's controlling current instruction is **maximum overview of every important existing trajectory, identify the biggest/most impactful areas and all kinds of attention, then progressively refine WITHOUT yet diving into campaigns**. No narrow acquired-PRACTICE science, C9 engineering or independent-other research can substitute for completion of this *space*. The two detailed `SCI_P0_A` and `WORLD_P0_B` briefs were explicitly **PARKED**, not launched or selected. Do not silently reactivate them."
+        },
+        {
+          "line": 14,
+          "text": "**Review target:** demand demonstrable fidelity to this full program and inherited real code, **not a new duplicate atlas, 15-novel-category command, worker fleet or re-review of Neo-V3**. A user may reasonably say the top-view is strategically sufficient at its declared evidence level while still not believing every actual source/native/person/experience claim. Never convert strategic completeness into source execution or release approval."
+        },
+        {
+          "line": 18,
+          "text": "### K01. Preserve the USER'S CURRENT STAGE: top-view over campaign selection (MAJOR REVISE)"
+        },
+        {
+          "line": 21,
+          "text": "**Required:** revise §5 to display **three different orders**: (a) terminal goals and constitutive problems ranked by human-product importance, (b) attention kinds and evidence/owner gaps, (c) *eventual* allowed dependency-constrained parallel candidate work, **NOT DISPATCHED**. Explain why old user-parked A/B science briefs cannot be revived merely because the candidate understands them. Rank C0/Pyat original world, C4 genealogy and independent B, C1–C7/N01–N10 developmental science, C8–C12 real life/transactions, and A0–A5 actual user/product, with anti-microfocus priority. The scientific effect of real learned practice is one representative falsifier, NOT the definition of the whole person. **PASS falsifier:** colleague reading only the revised executive statement could not reasonably conclude “go launch an A/T worker now”; no new worker or production action issued."
+        },
+        {
+          "line": 24,
+          "text": "**Sources:** `COMMAND/02_CAPABILITY_REGISTER.json` at `a47dca7...`: **19** C0–C12/A0–A5 milestones, **12** N01–N12 reviewed Neo requirements, **16** O01–O16 source/science decisions, **15** E01–E15 first consumers; historical **40** M01–M40 mechanism families, independent SYN02 S01–S09 and Astra D09/D11/D18/16 correction. Check governance priority and separate PR #509 DRAFT."
+        },
+        {
+          "line": 26,
+          "text": "**Required:** for every *important* top-level problem show `existing C/A | existing N | historic M | original O | consumer E | original owner/source | present code & grade | remaining type of attention`. No new milestone identifiers, renamed Neo dockets, parallel semantic author or 40 file-by-file repeated science courts. Identify actual adopted authority versus draft derived synthesis. If a real source disagreement appears, cite exact contradictory statements and owner that can resolve it; do not smooth it with the candidate's own interpretation."
+        },
+        {
+          "line": 29,
+          "text": "**Required read-back:** independently inspect 00 START HERE plus **01 source-exact 19/12/16/15 crosswalk**, **02 priorities/18 undercoverage hypotheses/11 attention types**, **03 all N01–N12 scientific phenomenon/open question source exact**, **04 M01–M40 historical function/disposition**, **05 cross-source collisions**, **06 full Pyat N0–N12/F1–F8**, **07 A0–A5/Sorok100/101 backward product**, **08 S39–S52/R3 actual code/sourcegraph**, original **09 BP2P4J joined code and sourcefree provenance**, original **10 150-name restricted roster**, expanded **09 228 seven-prefix branch-name/selected SHA roster**, expanded **10 B1/B2/B3A repair and independent reviewer lineage**. There are **12 companion artifact files** with duplicated 09/10 prefixes and a separate 00 index; do not silently choose a single 09 or 10. Record what you ACTUALLY read and what was inherited as testimony. Show substantive corrections/disagreements rather than certifying coverage by simply repeating 228 or claiming all 40 original runtime files were freshly executed."
+        },
+        {
+          "line": 31,
+          "text": "### K04. Expose the existing code, strongest producer/consumer positives, and exact ceilings (MAJOR)"
+        },
+        {
+          "line": 34,
+          "text": "| Existing capital | Source-grade fact (must preserve) | Cannot promote to |"
+        },
+        {
+          "line": 36,
+          "text": "| Original V3 **TD-R05** and Codex original-machine rehash | M01 BackboneState, M21 `run_pressure_flow_cycle` and historical transaction/history groove, M25 ordered `run_one_year`, proposal/select/render separation, **80** historical selected tests. Actual reusable executable code, not an ontology sketch. | Issued modern CAN learning coefficients, automatic psyche through year/typology/age |"
+        },
+        {
+          "line": 37,
+          "text": "| **B1 / B2** | B1 `c0f4588...`, test-only E1→durable MEDIATOR→later conditional route **39 author PASS**; B2 `950ecf0...`, actual 4-return synthetic link, **81 connected / 249 inherited** separately reported. | Original human rule, unrelated inherited green tests pooled |"
+        },
+        {
+          "line": 38,
+          "text": "| **B3** | `47b46a8...`, **71** new / **42** F2 controls, actual t2/t7 lock checks and t9 `CHECK_LOCK` **OPTION AVAILABLE, not performed t9 behavior**; S3 scientific `2ca072e...` conditional bounded software positive but human habit/selected meaning REVISE, M2 quarantined; X3 runtime `d201985...` positive reproduced, refused rows wrote durable ghosts, REVISE. | Lawful normal actor acquisition or all-green B3 |"
+        },
+        {
+          "line": 39,
+          "text": "| **B3A/B3AS** | Atomic repair `8bd4d6b...` then schema/readset repair `16f15a1...`, independent B3AS-I2 `1a25b19d...` **ACCEPT_SCOPED** only for SQL schema/readset/selected test-only atomic custody; frozen original native F1 **17 RED**, M3 historical preimage RED and non-issued psychology remain. | Native C9/C11 or fully acquired habit |"
+        },
+        {
+          "line": 40,
+          "text": "| **BP1/BP2/BP4/BP2P4J** | `5b3e657...` actual joined sourcefree C8→TEST_ONLY Rule A/T→C9 durable state→separately PERFORMED E2→C10/C12/A0–A3 reentry/offscreen, **98 author-reported PASS**, seven principal plus three supplemental same-consumer fault cuts, and independent B history inputs. Actual code `bp2p4/product.py::JoinedProduct`, `severance.py::run_all_severances`. | Independent full-native person/A4/A5, independent final accepted joined release; note C12 self-hash/SQLite guard residual |"
+        },
+        {
+          "line": 41,
+          "text": "| **R3 HQ300** | `189da3b...` **317 author-reported test-only** response→trace/belief→later change; **production registry EMPTY**, no original issuance. | No need for a current adopted Rule A/T |"
+        },
+        {
+          "line": 42,
+          "text": "| **R3 LIFE1 / W01 / M01 / G12/G13 / OUT12 / C0P** | LIFE1 16 original source/owner cases legitimately DEFER; W01 owner options **not issuer grant**; M01 memory conditional synthetic; G12 18 genealogy RED (seven defects), G13 real repair candidate; OUT12 multiwriter CAS candidate; C0P generic Pyat adapter. | Claim “no code exists” from LIFE1 HOLD, or claim native actor from any sourcefree branch |"
+        },
+        {
+          "line": 43,
+          "text": "| **S39–S52 + R3 C9/F0/C12** | Sourcefree current actor options, C9 ingress/actor safe reader/fork; S39 psychological predicates caller-injected, S51 present purpose hypothesis not proved, S49 natural B root sources `[]`, S48 actual SCI05 and N/N+1 not executed. | Proof no earlier sourcefree positive; native generated actor |"
+        },
+        {
+          "line": 44,
+          "text": "| **R15 RFA01–06C2** | Actual Nadia fixed-lab fixture and compiler, paired whole/narrow prompt models, provider binding/quote smoke and RFA-R owner-gap court. Reported RFA R2 **PREPARED**, NOT provider-scored/current generated person. | Renderer F3/F5 or real human-person emotional evidence |"
+        },
+        {
+          "line": 45,
+          "text": "| **Pyat R157** | 35-wave source configuration prep, 18,276 IDs, 18,413 slots, 18,250 exact joins, 26 unmatched; P6 native-fixture 35/35 and 34 focused acceptance. | Full original source F1–F8, Pyat N11/N12, native C11 or person |"
+        },
+        {
+          "line": 47,
+          "text": "**PASS:** candidate explicitly distinguishes `CODE PRESENT` / `AUTHOR EXECUTED` / `INDEPENDENT SOURCEFREE ACCEPT_SCOPED` / `CURRENT ACTUAL INTEGRATED CONSUMER` / `ORIGINAL NATIVE SCIENCE/RIGHTS` / `HUMAN PRODUCT` separately. If one proof exists in another branch, do not create its functional twin because the chosen main branch lacks it. Identify relevant **accepted or repair-ready** import rather than recreating a cheap toy chain. The expanded 228-name roster across seven prefixes is *discovery*, not a 228-implementation audit, and its 150-name predecessor is valid narrower history, not contradictory proof."
+        },
+        {
+          "line": 49,
+          "text": "### K05. No reduction of the science of the whole person to practice acquisition (MAJOR)"
+        },
+        {
+          "line": 50,
+          "text": "**MUST articulate** the full complete relevant situation in actual operations: bodily AND socially reproduced needs and feasible need-objects, material constraints and time budgets, **prior capacities and scaffolding**, inherited family/context histories, **independently living others**, differential activity and purpose, exposure/receivability/subjective meaning versus objective event, multistream contradictory motivations, actual performance and consequences, later changed **or unchanged** person/activity, contextual portability and fallible memory/self-account. **Distinguish original source support from proposed inference.** Reconcile Leontiev activity/motive-object, Sève act/capacity/use-time, Dreier multiple life contexts, Lahire contextual repertoires, Archer actor reflexivity, Holzkamp, Luria, Kohn/Schooler/Elder/Mortimer time/work cohorts, social-reproduction/care and original Rawlsing governing spirit. These are PRIMARY theoretical and empirical *sources of competing mechanism families*, not algorithmic rate issuers."
+        },
+        {
+          "line": 52,
+          "text": "**Nonreductions to make explicit:** `need != desire != goal != means`, `world change != actor psyche change`, `new successful act != learned PRACTICE`, `B support != A skill`, `nonobservable != absent`, `suffering != emotional depth`, `accepted scientific architecture != source-issued domain operator`, `TRUE_NO_CHANGE_EVALUATED != HOLD_MISSING_RULE`, `historical groove != autobiographical memory`, `inner self-description != causally admitted reflection`, `culture/sex/class/ethnicity != assigned psyche`, `source-conditioned possibility != individually witnessed genesis`. Positive thick **ordinary baseline** development (care, love, routine, curiosity, craft, work/play, pleasure, stability, scarce material means with felt affection) is as essential as challenge, ambivalence, rupture, ideological identification/alienation, loss, conflict, coercion and resistance. No moral, liberation, mental-health or Enneagram attractor outcome is predetermined. Mother-first generation must include independent prior adulthood, second parent without reverse-from-child causation, early preverbal experience and non-dyadic networks."
+        },
+        {
+          "line": 57,
+          "text": "Original `RAWLSING_GOVERNING_SPIRIT.md` **not** a decorative values paragraph: person neither inevitable from conditions nor context-free, finite historical strata (planetary, imperial, national, regional, sect/ethno/class, movement, neighborhood/household, family, self) are structured context **not** psychological birth registers; Original caregiver and social formation; identification→naturalization→agent-of and alienation→objectification→agent-against are possible historically produced pathways with no compulsory emancipation; Absolute Horizon is actor-situated ultimate commitments, **not** stratum ten, type or morality score. Preserve Sorok 00A's `D total causation != C standing self != B activation != A expression`, historical relation-produced persistent self without reducing person to any single dyad. **PASS:** distinguish objectively unknown to actor, unavailable, inaccessible, suppressed/defended, deliberately concealed, and user-unknown, without omniscient renderer leakage."
+        },
+        {
+          "line": 59,
+          "text": "### K07. Pyat source estate is a full scientific program, not a “Pyat blocker” cell (MAJOR)"
+        },
+        {
+          "line": 60,
+          "text": "Preserve Pyat N0–N12/F1–F8 **as a separate namespace** from Sorok Neo N01–N12. Map original measured/joint/conditional/wave/temporal possibility and uncertainty into C0/C4/C8/C11 first readers, and explicit *non*production of parent’s lived biography, observed household/affection or individual ideology from structural statistics. R157 = 35 scoped PRE553 configurations, not native original full estate. Original Pyat host/source meaning, empirical denominator and temporal access, source/host/use rights, original N11/N12 wake and separately issued Sorok C11 must not collapse. Avoid “Pyat has to finish before any meaningful Sorok sourcefree build” AND “sourcefree Sorok prototype proves native Pyat”. **PASS:** exact boundary table with at least one genuinely useful generic Pyat world operation and one forbidden individualized inference, plus independent actual first consumer and owner."
+        },
+        {
+          "line": 63,
+          "text": "A0–A5 and Sorok charter **are part of what person-science must explain**. Review all of Sorok 100/101: bounded alpha 3–5 audited roots (lab, not automatically native A0/A4/A5), real SAY/DO/ATTEND, ongoing time and offscreen project activity, independent coactors, immutable world, actor-source history and user-specific fork, *user phenomenal compositing only after actor occurrence*, actor-specific whole-person speech/gesture/silence and fallible self-report. Distinguish **total actor cause → current actor knowledge → observable event → selected user-available phenomenon → user's uncertain interpretation**. Actor action and independent B must not be changed by personalized user presentation. Different people need different expression even if both generically “compatible”; anti-sycophancy, honesty of material consequence, capacity to leave/refuse, ethical user consent/privacy/attachment risk. Existing R15 is preparatory/harness—not F3 demonstrated matching, not F5 or human trials."
+        },
+        {
+          "line": 65,
+          "text": "**Collision to resolve at strategic level:** provisional **two-normal-model-call** 101 contract and 3–5 **N/N+1 sequential prospective material events** do not automatically share a call/turn clock. N+1 SCI05 aftercall must never insert an unauthorized new internal act. O16 irreversibility (middle event fails after world action) is a separate competent user/world policy choice. **PASS:** state distinct actor/world/user/renderer observation clocks, product evidence type and 100 bounded-vs-full fidelity gates, without inventing numeric budgets or user trial permissions."
+        },
+        {
+          "line": 67,
+          "text": "### K09. Original law, source and false-positive semantics—the three courts are independent (MANDATORY)"
+        },
+        {
+          "line": 68,
+          "text": "Every material claim gets **three separate grade reports**: engineering (actual imported/verified code, source/version/clock, writer→consumer, replay, cold/fork, source-edge fault), science (original mechanism/rivals and proper domain-specific evidence), authority (original CAN008 Rule A, CAN011 Rule T/grant, ADP015/016/017/019/020, protected C8 D1/D2/D3 writer/key/anchor, Pyat N11/N12 and C11, native actor/human). A checksum proves identity, not clinical/psychological meaning. A sourcefree green authored test does not turn into the right kind of human evidence. S3/X3/B3AS independent verdicts are scope-specific; B3AS `ACCEPT_SCOPED` does **not** retroactively turn original X3/M3/F1 into ALL_GREEN. A good HOLD has named owner, what is specifically missing, first future material consequence, AND work that can lawfully advance now. No endless “issuer missing” sidecars; original W01 decision options already exist."
+        },
+        {
+          "line": 70,
+          "text": "### K10. Currentness and competing HQ rights cannot be repaired by the applicant (MANDATORY)"
+        },
+        {
+          "line": 71,
+          "text": "The dossier has identified exact real discrepancies: Sorok progress MD revision **36** vs JSON revision **35** at same PRE-MAIN `299f...`; Pyat MD R157 and JSON revision **171** with stale R89 headline but nested newer history. Preserve both facts and request **competent owner CAS reconciliation** if consequential. Neither stale JSON nor higher MD number may be promoted silently. Verify actual PRE-MAIN/owner HEAD anew before decisions; preserve current Browser HQ's appointment, separate Codex technical HQ and dormant reserve. GitHub branch/return != live local process; review whether an agent is *actually* reported running before any future dispatch. No duplicate work, no automatic model/harness switch, no “latest” frozen from October 28."
+        },
+        {
+          "line": 73,
+          "text": "### K11. Make actual attention *types* explicit rather than redlining 16 missing rules (MAJOR)"
+        },
+        {
+          "line": 75,
+          "text": "`VISION_ALIGNMENT`, `CONCEPTUAL_RECONSTRUCTION`, `SCIENTIFIC_PRECISION`, `ORIGINAL_ISSUANCE`, `SOURCE_PERMISSION`, `HISTORIC_CODE_ADAPTATION`, `ENGINEERING_INTEGRATION`, `NATIVE_WELD`, `EXPERIENCE_DESIGN`, `ADVERSARIAL_PROOF`, `OPEN_POLICY_DECISION`, `FIDELITY_LATER`."
+        },
+        {
+          "line": 76,
+          "text": "These are crosswalk labels **not** new owners/milestones. Some functions are **LIVE_CONSUMED**, some **IMPLEMENTED_UNWIRED**, some **TEST_ONLY_REVIEWED**, some **GOVERNED_RESOURCE_TO_COMPILE**, some **SCIENTIFIC_RESOURCE_TO_CREATE**, others **AUTHORITY_HELD**, **UNKNOWN**, **NOT_NEEDED**. For major gaps include a first actual consumer and **not** a promise to make another inventory. Rank major strategic scientific/product/world problems before micro-code defects; note which narrower defects could be resolved cheaply in parallel **once user authorizes campaigns**."
+        },
+        {
+          "line": 79,
+          "text": "The top-view is **sufficiently covered at strategic grade** to evaluate relative importance *without another broad atlas*. It is **not** a 228-branch complete local execution survey, a full all-primary-books research demonstration or a native A5 acceptance. User seeks **maximum comprehensiveness**, not a performative infinite provenance hunt or “top-view complete” used to ignore unrepresented human needs. State plainly (1) verified inherited space, (2) contested scientific mechanisms, (3) original owner decisions, (4) exact existing code accepted/unwired/rejected, (5) counterfactual and product harms, (6) largest open material decisions, (7) which matters first and why, (8) what future level of detail is warranted. Do not immediately replace the top-view with commission briefs."
+        },
+        {
+          "line": 81,
+          "text": "### K13. Existing Rawlsing source literature and attachment provenance (MANDATORY TO HONESTY)"
+        },
+        {
+          "line": 82,
+          "text": "For philosophical/empirical claims, distinguish **direct original reading** from project synopsis, from model interpretation. The applicant admits whole relevant corpus has not been personally read at its current read-cut. A complete candidate needs accurate source-list/evidence-level accounting, not false “I read all.” Relevant primary supplied Leontiev, Sève, Dreier, Lahire, Archer, Holzkamp, Luria, Elder, Kohn/Schooler, Mortimer, Wright, social-reproduction texts, original framework PDFs and actual CAN/ADP/PFF owners must be considered when scientifically consequential. Read the relevant portions rather than summarize every book; no source-issued quantitative human-development parameter follows merely from the references."
+        },
+        {
+          "line": 84,
+          "text": "### K14. Independent competence demonstration, not copying the previous applicant (MANDATORY)"
+        },
+        {
+          "line": 85,
+          "text": "A revised successor should deliver **within its existing application only**:"
+        },
+        {
+          "line": 86,
+          "text": "(1) a one-page whole program problem/priority map from human terminal backwards, with source pointers;"
+        },
+        {
+          "line": 88,
+          "text": "(3) a small set of **actual file/line/function** spot checks independently selected across **BP2P4J, B3AS, R3 HQ300, S39–S52, historical TD-R05 and R15**, stating explicit evidence levels/remaining RED;"
+        },
+        {
+          "line": 89,
+          "text": "(4) one **multi-rival complete-lifetime case** including mother-first, independently acting others, material means, ordinary care, actor access, time, real activity, reception, possible changed/unchanged future, memory and ideology (no algorithmic invention);"
+        },
+        {
+          "line": 90,
+          "text": "(5) a bounded **top-level unresolved choice/owner register** and ranked alternative attention;"
+        },
+        {
+          "line": 93,
+          "text": "(8) source/engineering/science/authority/human product distinct verdicts."
+        },
+        {
+          "line": 94,
+          "text": "No demand to rewrite canonical Neo-V3, reread 228 branch files or prove native source that was not available. **Pass is judged on correct independent discrimination and whole-project adequacy, not report length or quantity of tests**."
+        },
+        {
+          "line": 96,
+          "text": "### K15. Independent acceptance and human decision remain two distinct events (FATAL IF COLLAPSED)"
+        },
+        {
+          "line": 97,
+          "text": "Sorok08 applicant may publish corrective documents only on its authorized isolated branch, then submit to a **separate qualified independent reviewer** for a precise grade. A later `ACCEPT_EXISTING_SOROK_HQ_SCOPE` requires the incumbent/competent succession path and user/human exact authorization when required, with active worker protection and existing command rights. No successor can self-issue HQ authority, original CAN/ADP/Pyat science, source respondent rights, C8 security or A5 participant release. This review is an independent **conditional assessment**, not such a human appointment."
+        },
+        {
+          "line": 101,
+          "text": "> **We are NOT now studying a fresh Neo-V3 theory, building a new psyche engine, or dispatching Rule A/T and B-world rabochii. We are, as instructed by the user, completing and adjudicating the maximum whole-program space off the already existing scientific/canonical architecture and every consequence-bearing implementation. The person is the historically conditioned, independently living other with whose actual life a user can interact—formed from mother-first lives, full original world possibility, bodily/social need, activity, independent coactors, time and constraints, relational history, subjective/nonconscious uptake, contextual stable or altered praxis, memory, ideological formation and whole-person fallible expression. The old V3 and new B1/B2/B3AS/BP2P4J/R3/S39–S52/R15 machines are substantial already-built engineering evidence, differing in grade and integration. Neo N01–N12, historic M01–M40, CAN/ADP/PFF, Astra, 19 C/A, O01–16, E01–15, Pyat F1–F8/N11–12, product 100/101 are inherited jurisdiction, NOT a reason to restart. We identify existing capability, its exact first reader, original scientific/source/actor permissions, contradictory evidence, legitimate nochange and holds, product sufficiency and the kind of needed attention, and rank complete problems by importance before choosing campaigns. We do not pretend raw surveys, original human psyche laws, completed native C11, or real human A5 have been granted. We do not claim every branch file has been executed or that a draft command has been adopted. We preserve the incumbent and already-running workers, and remain read-only until independent review and competent human scope grant.**"
+        },
+        {
+          "line": 103,
+          "text": "If any sentence of that read-back is lost or replaced by `first we need a skill update demo`, `we need another Neo science court`, `we need a whole new actor database`, `the existing code is mostly scaffolding`, `Pyat supplies a person's ideology`, `we have a native alpha because BP2P4J passed`, or `let us launch SCI-P0-A now`, the application **has not preserved the user-directed task**."
+        },
+        {
+          "line": 107,
+          "text": "**Credit:** legitimate source custody discipline; rigorous epistemic honesty; strong existing C12-backward machine; visible respect for user/owner boundaries; recognized BP2P4J, B3AS, R157, 3–5/N+1, actual old V3 and renderer; explicit 7 REVISION categories. These form a valuable base."
+        },
+        {
+          "line": 109,
+          "text": "**Remaining risks:** (i) acting as though its initial Rule A/T engineering sequence were already the adopted highest program priority; (ii) inheriting my conclusion without independently acquiring maximum causal/product breadth; (iii) underrepresenting ordinary living, early person genesis, multiple persistent contextual trajectories, independent B/social reproduction, actor/user phenomenal truth and ethical product adequacy; (iv) accidentally redoing expensive code/science already reviewed; (v) collapsing synthetic engineering success or GitHub branch existence into native acceptance; (vi) permitting canonical currentness MD/JSON inconsistency and overlapping HQs to be smoothed away."
+        },
+        {
+          "line": 111,
+          "text": "**Ruling:** `REVISE_PRECISE_DEFICIENCIES__CONDITIONAL_REVIEW_RETURNED__READ_ONLY__NO_OPERATIVE_DISPATCH`. This is a **finite**, inspectable route to maximum present rigor, not an infinitely deferred accession, not a no-delta review fleet, and not an approval of a new command. After correction, an independent qualified reviewer can assess the evidence and competent human can issue or withhold exact succession scope. **The user has not asked for campaign dispatch in this review.**"
+        },
+        {
+          "line": 113,
+          "text": "**Do not edit the applicant's existing submission, PR #510, PRE-MAIN, incumbent HQ/command, or any worker branch from this review branch.** Do not interpret the PR created to deliver this document as adoption/merge permission."
+        }
+      ],
+      "refs": [
+        "91dbd56649ae465169b9ce4d4dd5751cfd26466c",
+        "502758912ce0f9c25d9daefd8fc24b144546a9bc",
+        "f23dfd16a53b8028e2920590af23a7edf1c39e95",
+        "f1afe1e20d6a0a7100f4c0867e3de8ea4c22c01f",
+        "41a874e803d7288c183780514605eb64fccd749e",
+        "c82c00af983b400b8710809ae45eb509eb5f66c7",
+        "d2560368e10541905df84bafc7d3c64f63efc0d8",
+        "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+        "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+        "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+        "3c5434a9a88122631ad7ca202fdf3e0003849d06",
+        "5d5d4beaee63c0ac0b367a6f1e5ef399c8a3326e"
+      ],
+      "doc_kind": "ACCESSION_REVIEW"
+    },
+    {
+      "index": 67,
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261028_FRESH_SOURCEGRADED_GROK_CANDIDATE_R1/INDEPENDENT_REVIEW_RETURNS/00_INDEPENDENT_HQ_GROK_REVIEW_AND_20_CONDITIONAL_GATES_R1.md",
+      "ref": "e5d9b2f23a41e4107b3ce73c9e82181662cb9b80",
+      "blob": "8e7790cf507e94e9175734402805f70ef8ac8b5d",
+      "url": "https://github.com/maidiu/rawlsing/blob/e5d9b2f23a41e4107b3ce73c9e82181662cb9b80/SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261028_FRESH_SOURCEGRADED_GROK_CANDIDATE_R1/INDEPENDENT_REVIEW_RETURNS/00_INDEPENDENT_HQ_GROK_REVIEW_AND_20_CONDITIONAL_GATES_R1.md",
+      "head": "# SOROK 08 — INDEPENDENT HOSTILE ACCESSION REVIEW AND ZERO-REDUCTION TOP-VIEW CONTINUITY CONDITIONS R1\n\n**To:** New independent Sorok 08 HQ/VOZHD successor accession applicant, `agent/vozhd-sorok-20261028-independent-sourcegraded-grok-candidate-r1`  \n**Exact dossier reviewed:** `00_DOSSIER.md` blob `502758912ce0f9c25d9daefd8fc24b144546a9bc` and `01_PROVENANCE_AND_AUTHORITY.json` blob `f23dfd16a53b8028e2920590af23a7edf1c39e95`, applicant HEAD `91dbd56649ae465169b9ce4d4dd5751cfd26466c` (28 October 2026).  \n**Independent reference:** the completed, isolated October 27 total-trajectory top-view `https://github.com/maidiu/rawlsing/blob/d2560368e10541905df84bafc7d3c64f63efc0d8/SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261027_INDEPENDENT_SOROK_HQ_CANDIDATE_R1/TOTAL_TRAJECTORY_TOP_VIEW/00_START_HERE_TOP_VIEW_INHERITANCE_AND_COVERAGE_R1.md`, its 12 companion files, historic/Neo/CAN/ADP/PFF original sovereign authorities, PRE-MAIN `299f41e97a43c67be9cc76a79fa49b48f4e12e54`, incumbent HQ `865b5b01e1a27e99020cf2bb389af8cd4c874b57`, COMMAND `a47dca7f29196b4da10451ca4f2dd047c99ed56a` (draft PR509).  \n**Reviewer jurisdiction:** independent documentary/source-scientific and whole-project strategic review; **not** current HQ, Oct26 reserve, native CAN/ADP/science issuer, Pyat, C11 welder, original test executor, product release or user's accrediting authority. This branch is an independent proposed review addition; target applicant's original branch remains unmodified pending voluntary merge.  \n**Ruling:** `REVISE_PRECISE_DEFICIENCIES__CANDIDATE_READ_ONLY__NO_ACCESSION_RECOMMENDATION_YET`. The dossier's own `SOROK_HQ_FULL_ACCESSION_GROK_INCOMPLETE__READ_ONLY_CORRECTIVE_WORK` remains appropriate. No 15/15 PASS, command transfer, unissued rule, native execution or new worker is asserted.\n\n## 0. The top-priority problem is WHAT TASK you are inheriting, not which engineering campaign you would choose\n\nThe user has explicitly specified the operative task for this succession:\n\n> Build the **MAXIMUM TOP-VIEW** of the ENTIRE Rawlsing/Sorok/Pyat/historical V3/Neo-V3/product trajectory, identify **EVERY significant area needing attention, why and which KIND of attention**, rank the biggest fundamental things first, **THEN move to finer precision**. **DO NOT DIG INTO ACTUAL CAMPAIGNS YET**. Work **OFF** the already constructed 19 C/A milestones, 12 Neo requirements, 40 historical mechanisms, 16 original decision questions, 15 consumer edges, Astra joint program, Pyat N0–N12, Sorok 100/101, governing spirit, primary scientific sources and **all relevant existing code**. Do not neglect anything, recreate Neo-V3, waste time or invent an alternative authority/roadmap.\n\nThis is deliberately **upstream of choosing the first Rule A/T court, engineering writer, B-world commission or native wake**. A technically competent successor can fail succession by jumping from “the map exists” to the next attractive campaign. Your §5 begins “Largest next lawful program campaign” and recommends the C9 writer, actor original science and B-source work before independently proving the whole option-space/priority assessment. While **prospective and explicitly not dispatched**, it weakens the current *task separation*. \n\n**NONNEGOTIABLE conditional T0:** Refile §5 as `POST_TOPVIEW_ONLY__PARKED_POTENTIAL_FLIGHTS`. The immediate actionable intellectual objective for the successor is `TOTAL_TRAJECTORY_COVERAGE_AND_WHOLE_PRIORITY_ADJUDICATION`: use and interrogate the existing top view, check disputed coverage and alternatives, explain why different attention categories and causal dependencies outrank others, and **do not select or commission campaigns unless later directly authorized**. The existing INCUMBENT/COdex may continue separately already authorized work; the read-only candidate neither redirects nor idles it. THIS distinction is not paperwork. It prevents the precise repeated cul-de-sac the user identified.\n\n### General evidentiary rule for every condition below\n\nFor each claim give (1) exact source commit/file/line or symbol, (2) what that source *actually establishes* vs a proposed interpretation, (3) best counterargument/competing inherited capability, (4) owner/actor/read boundary, (5) genuine missing function if any, (6) effect on terminal product and current **rank** if proved, and (7) a falsifier or explicit uncertainty/HOLD. Use `DIRECT_READ / HISTORICAL_REPORT / REVIEWER_ACCEPTED_SCOPED / TEST_ONLY_EXECUTED / ORIGINAL_ISSUED / NATIVE_CONSUMER / UNVERIFIED` as non-substitutable evidence levels. Do not allow a citation count, labels or an extra 100 pages to substitute for comprehension.\n\n## I. What your submission genuinely gets RIGHT (preserve verbatim in substance)\n\n1. **Precise distinct applicant**: Sorok08 is neither incumbent Browser HQ, Codex HQ, Oct26 designated reserve nor PR510 applicant. You correctly leave command and human accreditation untouched.\n2. **Source freshness and contradictory reports**: at PRE-MAIN 299f, Sorok MD revision36 versus JSON revision35; Pyat MD R157 scoped P6 accepted config versus JSON revision171 with older top-level report text. You did not silently “fix” owner records; the caveat that Git head is not a running Mac process is sound.\n3. **Substantial already built sourcefree mechanisms**: historical TD-R05 M01–M40; V2 B1/B2/B3A; BP2P4J; R3 C9/F0/C12, R3 W01 and LIFE1; current S39–S52; R15 RFA. You do not claim “no E1→later E2 code exists,” nor “all green.”\n4. **Source/actor/science independence**: generic CAN008/010/011/012 competence is not original domain Rule A/T. Pyat R157 is 35-source prep, not native N11/N12, and C8 keys/C11 remain separate.\n5. **Relational and epistemic membranes**: D total causal person, C self, B activation, A expression; objective event versus actor experience versus user perception; independent B and non-scalar, non-teleological psyche.\n6. **Honest missing-source declaration**: you explicitly say you did not independently inspect all 40 historic actual code and all 12 Neo READMEs, full 100/101 and R15 local results. Acknowledging the shortfall matters; it must now be closed **selectively by importance without substituting inherited summaries for tested understanding**.\n7. **Appropriate current self-rating**: seven of 15 accession categories `REVISE`; your application requests no self-adoption. Do not erase this by saying the review itself proves competence.\n\n## II. Conditions required for ZERO LOSS of the current task and its sources\n\nAll conditions are **necessary** for a defensible *recommendation of full understanding*, not promised mathematically sufficient guarantees. Conditions are organized by scientific/product causality and original ownership; numbers below are **review gates, not new Sorok milestones or work campaigns**.\n\n### C01 — Exact authority, source precedence and 15-category independence\n\n**Evidence needed:** demonstrate cumulative read/accurate precedence of PRE-MAIN cross-HQ terminal and anti-microfocus law; Sorok `00_READ_ME_FIRST`, `00_FULL`, `00A`, `00B`, `00C`, `00D`, `00E`, `07`, `08_PERENNIAL_FRESH_HQ...`, original CAN/ADP/SCI05/Field Forge/Pyat, existing incumbent and human Oct26 reserve grant. List owner, issuer, reviewer, legal host, source-permission and adoption distinct from manuscript author.\n\n**Proof:** an executable-grain authority table with one actual approved reference, one historical unadopted candidate, one sourcefree executable return, one original science missing grant, one selected product participant permission, and consequences of conflicting claims. Show **who can actually decide**, not “original engine someday.”\n",
+      "material_lines": [
+        {
+          "line": 1,
+          "text": "# SOROK 08 — INDEPENDENT HOSTILE ACCESSION REVIEW AND ZERO-REDUCTION TOP-VIEW CONTINUITY CONDITIONS R1"
+        },
+        {
+          "line": 3,
+          "text": "**To:** New independent Sorok 08 HQ/VOZHD successor accession applicant, `agent/vozhd-sorok-20261028-independent-sourcegraded-grok-candidate-r1`  "
+        },
+        {
+          "line": 4,
+          "text": "**Exact dossier reviewed:** `00_DOSSIER.md` blob `502758912ce0f9c25d9daefd8fc24b144546a9bc` and `01_PROVENANCE_AND_AUTHORITY.json` blob `f23dfd16a53b8028e2920590af23a7edf1c39e95`, applicant HEAD `91dbd56649ae465169b9ce4d4dd5751cfd26466c` (28 October 2026).  "
+        },
+        {
+          "line": 5,
+          "text": "**Independent reference:** the completed, isolated October 27 total-trajectory top-view `https://github.com/maidiu/rawlsing/blob/d2560368e10541905df84bafc7d3c64f63efc0d8/SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261027_INDEPENDENT_SOROK_HQ_CANDIDATE_R1/TOTAL_TRAJECTORY_TOP_VIEW/00_START_HERE_TOP_VIEW_INHERITANCE_AND_COVERAGE_R1.md`, its 12 companion files, historic/Neo/CAN/ADP/PFF original sovereign authorities, PRE-MAIN `299f41e97a43c67be9cc76a79fa49b48f4e12e54`, incumbent HQ `865b5b01e1a27e99020cf2bb389af8cd4c874b57`, COMMAND `a47dca7f29196b4da10451ca4f2dd047c99ed56a` (draft PR509).  "
+        },
+        {
+          "line": 6,
+          "text": "**Reviewer jurisdiction:** independent documentary/source-scientific and whole-project strategic review; **not** current HQ, Oct26 reserve, native CAN/ADP/science issuer, Pyat, C11 welder, original test executor, product release or user's accrediting authority. This branch is an independent proposed review addition; target applicant's original branch remains unmodified pending voluntary merge.  "
+        },
+        {
+          "line": 7,
+          "text": "**Ruling:** `REVISE_PRECISE_DEFICIENCIES__CANDIDATE_READ_ONLY__NO_ACCESSION_RECOMMENDATION_YET`. The dossier's own `SOROK_HQ_FULL_ACCESSION_GROK_INCOMPLETE__READ_ONLY_CORRECTIVE_WORK` remains appropriate. No 15/15 PASS, command transfer, unissued rule, native execution or new worker is asserted."
+        },
+        {
+          "line": 13,
+          "text": "> Build the **MAXIMUM TOP-VIEW** of the ENTIRE Rawlsing/Sorok/Pyat/historical V3/Neo-V3/product trajectory, identify **EVERY significant area needing attention, why and which KIND of attention**, rank the biggest fundamental things first, **THEN move to finer precision**. **DO NOT DIG INTO ACTUAL CAMPAIGNS YET**. Work **OFF** the already constructed 19 C/A milestones, 12 Neo requirements, 40 historical mechanisms, 16 original decision questions, 15 consumer edges, Astra joint program, Pyat N0–N12, Sorok 100/101, governing spirit, primary scientific sources and **all relevant existing code**. Do not neglect anything, recreate Neo-V3, waste time or invent an alternative authority/roadmap."
+        },
+        {
+          "line": 15,
+          "text": "This is deliberately **upstream of choosing the first Rule A/T court, engineering writer, B-world commission or native wake**. A technically competent successor can fail succession by jumping from “the map exists” to the next attractive campaign. Your §5 begins “Largest next lawful program campaign” and recommends the C9 writer, actor original science and B-source work before independently proving the whole option-space/priority assessment. While **prospective and explicitly not dispatched**, it weakens the current *task separation*. "
+        },
+        {
+          "line": 17,
+          "text": "**NONNEGOTIABLE conditional T0:** Refile §5 as `POST_TOPVIEW_ONLY__PARKED_POTENTIAL_FLIGHTS`. The immediate actionable intellectual objective for the successor is `TOTAL_TRAJECTORY_COVERAGE_AND_WHOLE_PRIORITY_ADJUDICATION`: use and interrogate the existing top view, check disputed coverage and alternatives, explain why different attention categories and causal dependencies outrank others, and **do not select or commission campaigns unless later directly authorized**. The existing INCUMBENT/COdex may continue separately already authorized work; the read-only candidate neither redirects nor idles it. THIS distinction is not paperwork. It prevents the precise repeated cul-de-sac the user identified."
+        },
+        {
+          "line": 21,
+          "text": "For each claim give (1) exact source commit/file/line or symbol, (2) what that source *actually establishes* vs a proposed interpretation, (3) best counterargument/competing inherited capability, (4) owner/actor/read boundary, (5) genuine missing function if any, (6) effect on terminal product and current **rank** if proved, and (7) a falsifier or explicit uncertainty/HOLD. Use `DIRECT_READ / HISTORICAL_REPORT / REVIEWER_ACCEPTED_SCOPED / TEST_ONLY_EXECUTED / ORIGINAL_ISSUED / NATIVE_CONSUMER / UNVERIFIED` as non-substitutable evidence levels. Do not allow a citation count, labels or an extra 100 pages to substitute for comprehension."
+        },
+        {
+          "line": 25,
+          "text": "1. **Precise distinct applicant**: Sorok08 is neither incumbent Browser HQ, Codex HQ, Oct26 designated reserve nor PR510 applicant. You correctly leave command and human accreditation untouched."
+        },
+        {
+          "line": 26,
+          "text": "2. **Source freshness and contradictory reports**: at PRE-MAIN 299f, Sorok MD revision36 versus JSON revision35; Pyat MD R157 scoped P6 accepted config versus JSON revision171 with older top-level report text. You did not silently “fix” owner records; the caveat that Git head is not a running Mac process is sound."
+        },
+        {
+          "line": 27,
+          "text": "3. **Substantial already built sourcefree mechanisms**: historical TD-R05 M01–M40; V2 B1/B2/B3A; BP2P4J; R3 C9/F0/C12, R3 W01 and LIFE1; current S39–S52; R15 RFA. You do not claim “no E1→later E2 code exists,” nor “all green.”"
+        },
+        {
+          "line": 28,
+          "text": "4. **Source/actor/science independence**: generic CAN008/010/011/012 competence is not original domain Rule A/T. Pyat R157 is 35-source prep, not native N11/N12, and C8 keys/C11 remain separate."
+        },
+        {
+          "line": 29,
+          "text": "5. **Relational and epistemic membranes**: D total causal person, C self, B activation, A expression; objective event versus actor experience versus user perception; independent B and non-scalar, non-teleological psyche."
+        },
+        {
+          "line": 30,
+          "text": "6. **Honest missing-source declaration**: you explicitly say you did not independently inspect all 40 historic actual code and all 12 Neo READMEs, full 100/101 and R15 local results. Acknowledging the shortfall matters; it must now be closed **selectively by importance without substituting inherited summaries for tested understanding**."
+        },
+        {
+          "line": 31,
+          "text": "7. **Appropriate current self-rating**: seven of 15 accession categories `REVISE`; your application requests no self-adoption. Do not erase this by saying the review itself proves competence."
+        },
+        {
+          "line": 33,
+          "text": "## II. Conditions required for ZERO LOSS of the current task and its sources"
+        },
+        {
+          "line": 35,
+          "text": "All conditions are **necessary** for a defensible *recommendation of full understanding*, not promised mathematically sufficient guarantees. Conditions are organized by scientific/product causality and original ownership; numbers below are **review gates, not new Sorok milestones or work campaigns**."
+        },
+        {
+          "line": 37,
+          "text": "### C01 — Exact authority, source precedence and 15-category independence"
+        },
+        {
+          "line": 39,
+          "text": "**Evidence needed:** demonstrate cumulative read/accurate precedence of PRE-MAIN cross-HQ terminal and anti-microfocus law; Sorok `00_READ_ME_FIRST`, `00_FULL`, `00A`, `00B`, `00C`, `00D`, `00E`, `07`, `08_PERENNIAL_FRESH_HQ...`, original CAN/ADP/SCI05/Field Forge/Pyat, existing incumbent and human Oct26 reserve grant. List owner, issuer, reviewer, legal host, source-permission and adoption distinct from manuscript author."
+        },
+        {
+          "line": 41,
+          "text": "**Proof:** an executable-grain authority table with one actual approved reference, one historical unadopted candidate, one sourcefree executable return, one original science missing grant, one selected product participant permission, and consequences of conflicting claims. Show **who can actually decide**, not “original engine someday.”"
+        },
+        {
+          "line": 43,
+          "text": "**Fail:** appointing yourself on PR, treating GitHub push/branch or 15 documentary passes as HQ accreditation, allowing requester account/model eligibility to be inferred, or mutating incumbent/canonical records."
+        },
+        {
+          "line": 47,
+          "text": "**Evidence needed:** independently reconstruct the exact existing **19 C0–C12/A0–A5**, **12 N01–N12**, **40 M01–M40**, **16 O01–O16**, **15 E01–E15**, COMMAND grade/evidence semantics, SYN02 A/B/C/D/S and R3 post-court source, TD-R05 historic work, Astra D09/D11/D18 + mother-first amendment16, and Pyat's separately named N0–N12/F1–F8. Use existing source-exact files 01/03/04/05/06/07/08/09/10 of PR510 and their **original links**."
+        },
+        {
+          "line": 49,
+          "text": "**Proof:** for EACH consequential existing domain, state `WHAT IS ALREADY RESOLVED — WHAT IS IMPLEMENTED — WHERE ACTUALLY CONSUMED — WHICH ORIGINAL DECISION REMAINS — WHAT KIND OF ATTENTION — DOES IT CHANGE THE TOP-LEVEL RANKING?`. Reference source-grain exact preimages, not a 19-line recital."
+        },
+        {
+          "line": 51,
+          "text": "**Fail:** re-running/relabeling Neo-V3 analysis as if new; declaring 40 M source because an item has a README; reconstituting the old Enneagram/vector pipeline as native person generation; inventing a competing milestone or owner system. Do not reopen settled generic CAN008 R2."
+        },
+        {
+          "line": 55,
+          "text": "**Evidence needed:** original `RAWLSING_GOVERNING_SPIRIT.md`, Sorok product charter, 00A/00E, 100/101, V3/Leontiev/Sève/Dreier/Holzkamp/Lahire/Archer/Luria/Kohn-Schooler/Elder/Mortimer/social reproduction as relevant original *theoretical* sources. Explain the irreducible aim: a person backwards causally intelligible but not uniquely predictable forwards; **living need/vitality and where it goes** under independent historic conditions, care, love, craft, curiosity, play, pleasure, sorrow, ordinary work, power/coercion, alienation, agency, ideology, contradictory obligations."
+        },
+        {
+          "line": 65,
+          "text": "**Proof:** source-qualified longitudinal paths from living need and opportunity to *particular* object/relationship/activity, and actual response/scope/stability; show rivals actor ability already present versus changed means, caregiver tool or other labor, actual learning, merely new expectation, genuine evaluated nochange, insufficient actor access and missing-rule HOLD. Distinguish completed action, new operation, enduring practice, actor meaning, external world change. Provide two independent alternative mechanistic models and their different downstream demands without selecting one prematurely."
+        },
+        {
+          "line": 69,
+          "text": "### C05 — Relations, independent others, genealogy, care/work and lived social reproduction"
+        },
+        {
+          "line": 71,
+          "text": "**Evidence needed:** Sorok 00A, CAN/ADP material, G12/G13/G14/SGI, S44/M35/S49, original product 100, Astra corrected preconception mother-first amendment16, class/gender/power/social reproduction. Source and actor B are independent; mother must have a real preconception history and prospective/retrospective second-parent relation must not be reverse-authored by the child's eventual fate."
+        },
+        {
+          "line": 73,
+          "text": "**Proof:** trace independently generated B with its own needs, projects, obligations, material time/means and act/refusal/absence even if focal A and user never observe it. Separate objective benefit/material physiology from focal A's experienced meaning/learned expectation. Include non-dyadic others, household/class institutions and cost of care. Explain G12 18 overlapping RED across seven mechanisms, G13 residual RED and first actual reviewer acceptance; do not forget prior construction!"
+        },
+        {
+          "line": 75,
+          "text": "**Fail:** “independent B” is a separate JSON owner but still scripted for focal psychological outcome; `S49.root_b_sources()=[]` mistaken as positive native coactor; father/mother only demographic placeholders; unearned caregiver mind-reading."
+        },
+        {
+          "line": 79,
+          "text": "**Evidence needed:** direct code function-level crosswalk to 40 M READMEs, TD-R05 80 scoped historic tests, original `BackboneState`, `run_one_year`, `run_pressure_flow_cycle`, `_simulate_domain_routes_transactionally`, source/custody, plausible M21/M25/M26/M27/M29 usable mechanics. Show real source imported to chosen successor consumer where consequential."
+        },
+        {
+          "line": 81,
+          "text": "**Proof:** distinguish `PRESERVE` tested algorithm, `ADAPT` timing/owner semantics, `QUARANTINE` obsolete empirical/psychological ontology. Explain why year-by-year historic flow is **not** the user-settled actual N/N+1 sequence, and why historic pressure/health/Enneagram/country numeric mappings cannot be resurrected as actual human science."
+        },
+        {
+          "line": 83,
+          "text": "**Fail:** saying old V3 “does not run” because current Sorok branch lacks code or importing old type coefficients as laws, reimplementing tested state-flow from scratch without a negative source comparison."
+        },
+        {
+          "line": 85,
+          "text": "### C07 — ALL material existing executable sourcefree positive branches, exact reviewer disposition"
+        },
+        {
+          "line": 87,
+          "text": "Minimum irreducible already-built **different code lines** to cover:"
+        },
+        {
+          "line": 88,
+          "text": "- `V2 B1` `c0f4588c...`: actual `bfirst.py` `Store.commit`, test-only MEDIATOR and later E2 comparison; 39 author tests."
+        },
+        {
+          "line": 89,
+          "text": "- `V2 B2` `950ecf0b...`: `bridge.py::Bridge.advance`, independently observed synthetic event/P1/D1/B1, 81 connected; S2 independent `7e6ac81e...` says bounded software path but no real human label science."
+        },
+        {
+          "line": 90,
+          "text": "- `V2 B3` `47b46a85...`: `developmental_loop.py` test-only PRACTICE after t2/t7, later t9 **option** not performed act. S3 `2ca072e9...` limited science; X3 `d2019852...` actual positive execution **and** refused-event partial-write RED."
+        },
+        {
+          "line": 91,
+          "text": "- B3A `8bd4d6b0...` later schema repair `16f15a12...` with independent B3AS-I2 `1a25b19d...` `ACCEPT_SCOPED` **only logical SQLite readset/atomicity**, not F1 native/habit science. Four unchanged historical X3 RED not secretly made green; F1 17 RED, M3 3 RED maintained."
+        },
+        {
+          "line": 92,
+          "text": "- **BP2P4J** `5b3e6577400ea1d88971ae6b48e41a118b8059ae` **physically joined sourcefree A0–A3**: BP1 histories, BP2 keyed C8, test-only A/T to C9, independently performed E2, BP4 C10/C12/M6 offscreen A2, cold/fork, 98 reported author tests, 7+3 named same-user-product severances; `bp2p4/product.py::JoinedProduct`, `bp2p4/severance.py::run_all_severances`. Note random HMAC key and absolute journal path prevent literal receipt reproduction, fresh path-independent positive is distinct; BP4 self-hash/SQLite guard residual."
+        },
+        {
+          "line": 95,
+          "text": "- S39–S52 actual source symbols/reader as in PR510 08/09; current selected `codex/sorok-s52-paid-activity-repertoire@c821b488...` vs original predecessor bytes (not inferred equal)."
+        },
+        {
+          "line": 98,
+          "text": "**Proof:** for each, give `SOURCE_SHA, FROZEN_AUTHOR_TEST, INDEPENDENT_REVIEW_VERDICT, REAL_CALLSITE/CONSUMER, NATIVE_OWNER_LEVEL, REUSE/INTEGRATE/REPAIR/HOLD`; exact function where decision-critical. The expanded [09 228-prefix discovery](`https://github.com/maidiu/rawlsing/blob/d2560368e10541905df84bafc7d3c64f63efc0d8/SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261027_INDEPENDENT_SOROK_HQ_CANDIDATE_R1/TOTAL_TRAJECTORY_TOP_VIEW/09_EXISTING_BRANCH_CODE_DISCOVERY_CENSUS_R1.json`) includes 98 worker, 65 reviewer, 24 Codex, 25 SYN02, 10 Vozhd, 4 research and 2 Browser branch names. It is **228 discovered names, not 228 independently audited or accepted sources**. Another earlier roster covers 150 selected four-prefix names; both are valid at their own query scope."
+        },
+        {
+          "line": 100,
+          "text": "**Fail:** “C9 writer→E2 never demonstrated anywhere”; “B3 broken” ignoring accepted repair; “B3A proves native skill”; claiming R15 live provider results from GitHub-only static harness. The goal is to **save work**, not become a full-time cataloguer. Source-read remaining branches only when consequential to a specific priority/adoption."
+        },
+        {
+          "line": 102,
+          "text": "### C08 — True source/writer/reader/adoption frontier, not duplicate software campaign"
+        },
+        {
+          "line": 104,
+          "text": "**Evidence needed:** derive the *currently imported* authoritative C9/C12 writer/actor-reader status, distinct S36 vs R3 SQL candidates, BP2P4J/B3AS imported branches, F0/C12 repair, C8 actor event owner. Identify first actual consumer and sealed exact SHA for every claimed integration."
+        },
+        {
+          "line": 106,
+          "text": "**Proof:** existence, tested sourcefree positive, independent accept, original actor rule and native weld are **separate columns**. Show the cheapest reuse path for actual canonical owner plus the precise *missing difference* between BP2P4J already joined sourcefree chain and desired native selected C9–C12. A schematic E1→E2 already exists; don't propose another basic proof with new module."
+        },
+        {
+          "line": 108,
+          "text": "**Fail:** making “build first sourcefree E1→E2” the top priority as if BP2P4J/B3A did not exist; new shadow psychological state database; re-running author PASS as reviewer acceptance; committing after invalid event and advertising no mutation."
+        },
+        {
+          "line": 110,
+          "text": "### C09 — Source and calendar clocks, native Pyat upstream, family vs structural possibility"
+        },
+        {
+          "line": 112,
+          "text": "**Evidence needed:** Pyat N0–N12 and F1–F8/Astra D09/D11/D18 as THEIR program; R157 scoped all35 original-source CONFIG prep, not original respondent run; 18,276 IDs/18,413 slots/18,250 exact joins/26 unmatched, 35/35 fixture accepted, original native estate and source/host restrictions. The pipeline's generic joint conditionals do not become mother biography or actors' private minds."
+        },
+        {
+          "line": 114,
+          "text": "**Proof:** precise Pyat→C0 generic distribution/possibility, V3 independent woman/preconception history, B lived world, C8 objective event, actor reception and C11 effective original weld. Distinguish measured survey period, historical world time, age/life stage, actual actor activity time, recalled subjective time, and session time. Distinguish `PYAT_N11/N12` from Sorok `N11/N12` explicitly and always."
+        },
+        {
+          "line": 116,
+          "text": "**Fail:** 35-fixture acceptance→native N11/N12; source rate→individual motivation; one survey respondent→pregnant mother; reversing `P(A|D)` into `P(D|A)` without warranted denominator; calling R157 a C11 weld."
+        },
+        {
+          "line": 122,
+          "text": "**Proof:** one actual permitted-memory past actor E1 vs a physically causal but completely inaccessible event; permitted false claim versus objective fact; permitted reflection vs unsupported postcall reflection; a future action/commitment changed by actual admitted reflective act vs exact DENIED/HOLD. Explain difference `memory of action` ≠ `perception trace` ≠ `knowledge` ≠ `belief` ≠ `latent activation` ≠ `self-explanatory actor speech`."
+        },
+        {
+          "line": 124,
+          "text": "**Fail:** LLM writes actor private belief because it was emotionally plausible, SCI05 aftercall retroactively changes already occurred events, progressive politics or healed self made obligatory."
+        },
+        {
+          "line": 126,
+          "text": "### C11 — Longitudinal actual N/N+1 life and independent offscreen interval"
+        },
+        {
+          "line": 128,
+          "text": "**Evidence needed:** user-settled 3–5 sequential actual events in an N/N+1 life step, event-by-event requalification of world/B/actor, C8/C9 write/read, independently occurring offscreen act, clock/order, genuine no-event, ADP/SCI05 postcall, existing R3 F3 **dry zero-event** shell and historic year runner. Unresolved O16 policy for failed middle future: suffix refusal vs actual irreversible prefix vs atomic only where physical writes can be rolled back."
+        },
+        {
+          "line": 132,
+          "text": "**Fail:** 3–5 authored propositions called 3–5 performed world events; old yearly loop treated as same scheduler; whole batch full rollback after real irrevocable world event; external narration writes objective chronology."
+        },
+        {
+          "line": 136,
+          "text": "**Evidence needed:** Sorok 01/03, 35/38/39/60/61/63/74/80/87, 00A, 100/101 and R15 RFA product-target review; Astra A0→A5. Distinguish strict native pipeline-born A0, A1 lasting turn, A2 actor history and later action, A3 offscreen world, A4 broad different persons/ecologies, A5 actually authorized human encounter from provisional bounded **seed-lab Gates0–5**; no automatic grade promotion."
+        },
+        {
+          "line": 138,
+          "text": "**Proof:** ten Sorok100 bounded dimensions (person, world, user action, history, offscreen, supporting actors, present-world, user embodiment, phenomenal lens, social/game) each (bounded invariant, deferred fidelity, failure criterion); Sorok101 **two normal model-call** provisional architecture vs life batch 3–5 events (not assumed same cadence), speech/gesture occurrence before user attention, actor-safe opacity, no post hoc retcon; specific person voice *reasonably extrapolable from her*, not generic plausible pleasant text. Real user consent, dependency, privacy, refusal, humane/noncoercive interaction, participant release and economics distinct."
+        },
+        {
+          "line": 140,
+          "text": "**Fail:** Nadia fixed lab→actual native person; sourcefree A0–A3→A5; voice/LLM charisma→historical independent human; user attention changes actual actor outward occurrence; normal two-call latency/price proven by unrun harness; infinite fidelity used to delay lawful bounded product trial."
+        },
+        {
+          "line": 142,
+          "text": "### C13 — Original authority and evidence-level STOP conditions; no indefinite HOLD"
+        },
+        {
+          "line": 144,
+          "text": "**Evidence needed:** competent source-specific scientific issuer/decision procedure (W01 A/B/C actual options), CAN008/011/010/012 and ADP for actual actor change; C8 D1 original exclusive writer, D2 live KMS/external monotonic anchor, D3 ADP019 grant, Pyat N11/N12, C11 separately. Reviewer/author actor are never source permission. Identify the **minimal lawful positive**, evaluated NO_CHANGE, denied, unknown and missing-rule HOLD as mutually distinct."
+        },
+        {
+          "line": 146,
+          "text": "**Proof:** exact finite decision for original scoped A/T domains, rivals, operator, source evidence and acceptance owner; do not revive grand survey/typology rules or make user an unwitting scientist. If no competent empowered issuer exists, report the organizational/function gap with a decision-ready remedy and authorized decision maker, **not** another “need issuer” memo."
+        },
+        {
+          "line": 148,
+          "text": "**Fail:** a technical author publishes provisional Rule T as production; `NULL` evidence means `TRUE_NO_CHANGE`; no original source/custody means everything else must be idled."
+        },
+        {
+          "line": 150,
+          "text": "### C14 — Cross-source collision register and false synonyms"
+        },
+        {
+          "line": 152,
+          "text": "**Evidence needed:** read entire PR510 05 collision analysis with correct status: apparent alternative not necessarily inconsistent primary law. Explain at least:"
+        },
+        {
+          "line": 153,
+          "text": "- material condition ≠ observed event ≠ actor reception ≠ self-report ≠ durable change ≠ later sourceful behavior;"
+        },
+        {
+          "line": 156,
+          "text": "- Pyat original worlds≠V3 family experience, source population≠single person's ideology;"
+        },
+        {
+          "line": 157,
+          "text": "- R3 test PASS ≠ source issued native ≠ user product;"
+        },
+        {
+          "line": 158,
+          "text": "- B3AS ACCEPT_SCOPED ≠ B3/S3 native habit scientific acceptance;"
+        },
+        {
+          "line": 162,
+          "text": "- shared precontact root vs branch-local postcontact world;"
+        },
+        {
+          "line": 168,
+          "text": "### C15 — Full scientific **alternative and consequence** space, not merely preferred answer"
+        },
+        {
+          "line": 170,
+          "text": "**Evidence needed:** do not simply endorse “sparse activity-mediated developmental organization” because the prior reviewer did. Reconstruct and criticize competing scope-specific possibilities: inherited V3 pressure routing, activity/practice, context-conditional repertoires, relational expectations, socially reproduced positions/needs, embodied capacities, reflexive inner conversation, preconscious memory, sparse CAN011 types, potential dense/distributed networks *if justified*, pure externally changing-world/no-actor-update null. Also distinguish age/occupation/selection constraints, source supply/observational limitations, evidence for particular domain and cases where updating is impossible to identify."
+        },
+        {
+          "line": 172,
+          "text": "**Proof:** rank at least three materially distinct explanatory strategies across **infant care**, **adult work/craft learning**, **class/gender authority socialization**, **love/attachment and absence**, **institutional ideology/ethical horizon**, **ordinary joy with no disruptive event**, **independent B unseen aid**, and **nochange/HOLD**. State *which existing M code and CAN/ADP owner would be implicated under each*, not speculative single universal update probabilities. No predetermined political or relational endpoint."
+        },
+        {
+          "line": 174,
+          "text": "**Fail:** returning another huge philosophy survey with no linked existing source/consumer, or adopting one cute Rule T equation as entire psychogenesis."
+        },
+        {
+          "line": 178,
+          "text": "**Evidence needed:** independently assess, challenge and revise if warranted `02_TOP_LEVEL_PRIORITIES_AND_BLINDSPOTS_R1.md` under real primary source evidence. It already contains exactly **11 analysis-only kinds of attention**: `VISION_ALIGNMENT`, `SOURCE_PERMISSION`, `SCIENTIFIC_PRECISION`, `CONCEPTUAL_RECONSTRUCTION`, `HISTORIC_CODE_ADAPTATION`, `ENGINEERING_INTEGRATION`, `NATIVE_WELD`, `EXPERIENCE_DESIGN`, `ADVERSARIAL_PROOF`, `OPEN_POLICY_DECISION`, `FIDELITY_LATER`; and **18 explicit blind-spot hypotheses B01–B18**. Their presence isn't proof they're all unsettled; reconcile with real code/authority first."
+        },
+        {
+          "line": 180,
+          "text": "**Proof:** one existing-milestone-keyed priority/option ledger spanning at least (a) source/structural worlds; (b) genealogy/initial person formation; (c) need/object/activity, (d) independent social reproduction/care/others, (e) active and durable psyche/contradictions, (f) memory/consciousness/ideology, (g) time/event/world continuation, (h) renderer/subjective user access, (i) human product/ethics/fidelity and (j) governance/security/economy. EACH row: existing resolved work; code test/import; genuinely unresolved science; source/permitted owner; kinds of attention; causal dependency/parallelism; immediate priority & error cost; optional later fidelity; evidence ceiling. Challenge any inherited ordering you think wrong **with argument and original sources**. Show rank sensitivity if a domain is already implemented, source-held, or independently accepted."
+        },
+        {
+          "line": 186,
+          "text": "**Evidence needed:** current incumbent/Codex running process unknown, exact original branch ref and existing worker states, selected economical model/capability only on evidence. HQ may not silently change the user-selected Browser/DeepSeek/Codex/harness or credentials, relaunch active branch, run unauthorized source or assign source-exclusive writes. Revise §5: candidate SCI-P0-A and WORLD-P0-B **PARKED**, not first selected tasks; existing independent scientific W01/S35/T-courts, RFA and user priorities preserved. Any future worker commission, only after actual explicit user/qualified HQ authorization, must satisfy original 00C/00D full sealed commission, source/actor/negative proof, one accountable deliverable and independent review where consequential."
+        },
+        {
+          "line": 190,
+          "text": "### C18 — Scientific/source/engineering/product *different courts* and genuine release standards"
+        },
+        {
+          "line": 192,
+          "text": "**Evidence needed:** technical producer, scientific causal claim, original issuer/permissions, historically generated source-native person, real human alpha all need independent provenance. Preserve 19 current milestone command level 1/2 and zero native integrated level 3+ (at original cut), while recognising separately accepted B3AS engineering and the BP2P4J sourcefree executed chain. No blanket numerical progress claimed from author tests."
+        },
+        {
+          "line": 194,
+          "text": "**Proof:** adversarial acceptance with positive/negative/faulted/true unchanged and same later consumer; wrong world only, wrong memory only, wrong actor only, wrong source/epoch only, wrong C8 security/owner only. Show where a sourcefree result ends and genuine original permission begins. A product can fail naturalness/recognition even if actor causality is lawful; scientific claim can be wrong despite correct SQL and apparent humanity."
+        },
+        {
+          "line": 198,
+          "text": "**Evidence needed:** replace incomplete self-declarations #1/#3/#7/#8/#11/#13/#14 of your 15-category dossier with graded *source-supported and independently reproduced where required* findings. You do NOT need to execute a full native Mac world or all historical corpus during a Browser documentary accession merely to be able to reason; you DO need to state exactly how original current source, permitted executor and reviewer would establish them. Present a red-team self-attack: five most likely ways your own map could send HQ down a cul-de-sac, with falsifying observation and a stop/reroute criterion."
+        },
+        {
+          "line": 200,
+          "text": "**Proof:** exact corrected dossier and portable evidence bundle, no retroactive edits to this review, trace to the 19/12/40/16/15 and source/call graph. Independent reviewer must be able to audit your source reads and your *reasoning* rather than infer “fully grokked” from the length. If full current authority is inaccessible, keep HOLD and do not claim completion."
+        },
+        {
+          "line": 202,
+          "text": "### C20 — Consequential independent review + human accession, ONLY after C01–C19"
+        },
+        {
+          "line": 204,
+          "text": "**Evidence needed:** a distinct qualified Sorok incumbent/authorized reviewer must read successor revision and answer all C01–C19 with precise PASS, REVISE or HOLD per condition. User must make a separate explicit human determination, including earlier reserve, incumbent and command identity. Neither the reviewer's file nor a PR merge automatically confers office."
+        },
+        {
+          "line": 206,
+          "text": "**Proof:** reviewer source-level falsifiers, exact selected SHA, justified scoped grades and reasoned priority map; independent acceptance review plus human authorization separately. Full native actor/source/weld/production needs **its own original authority after** HQ accession and may remain held indefinitely without invalidating a genuinely comprehending HQ candidate."
+        },
+        {
+          "line": 208,
+          "text": "## III. Required adversarial oral/written TEACH-BACK (no second encyclopaedia required)"
+        },
+        {
+          "line": 210,
+          "text": "A successor who understands the actual causal and project distinctions can answer each **without inventing a new workflow or citing only PR510**. Submit **one answer matrix** with original citation/competing alternative and consequence:"
+        },
+        {
+          "line": 212,
+          "text": "1. Why is existing B3AS engineering acceptance compatible with an unresolved native Rule T? What did X3 find, what exact repair was scoped accepted, and which REDs survive?"
+        }
+      ],
+      "refs": [
+        "502758912ce0f9c25d9daefd8fc24b144546a9bc",
+        "f23dfd16a53b8028e2920590af23a7edf1c39e95",
+        "91dbd56649ae465169b9ce4d4dd5751cfd26466c",
+        "d2560368e10541905df84bafc7d3c64f63efc0d8",
+        "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+        "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+        "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+        "5b3e6577400ea1d88971ae6b48e41a118b8059ae"
+      ],
+      "doc_kind": "ACCESSION_REVIEW"
+    }
+  ]
+}
