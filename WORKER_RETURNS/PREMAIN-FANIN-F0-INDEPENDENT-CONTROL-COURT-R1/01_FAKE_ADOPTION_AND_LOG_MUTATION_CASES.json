@@ -1,0 +1,232 @@
+{
+  "schema": "PREMAIN_F0_HOSTILE_CONTROL_MUTATION_REPORT@1",
+  "date": "2026-10-29",
+  "repository": "maidiu/rawlsing",
+  "subject_pr": 519,
+  "subject_pr_head": "73f0b57da42e264617e51fe9c703c17aba15ff2a",
+  "subject_base": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "event_log_blob": "a8de934efc1e9172f814ca77b514dde5c76db028",
+  "flight_register_blob": "88b20831cc6bfa73d60b59da640306d5bddc5748",
+  "validator_blob": "2cc7de8da4630311d57a634b96ccfdd44d866042",
+  "workflow_blob": "ce1ef40b5f2568c52a44d1ddc01a98647f3bf322",
+  "test_scopes": {
+    "shipped_python_CI": "GH Actions 40959493042, job 123748214549, actual sourcefree Python --selftest with --baseline-ref 299f41e; job SUCCESS; output 11 event, 11 flight, 5 controlled mutation failures intended; baseline log absent on first installation",
+    "independent_bypass_probes": "Actual immutable JSON read from GitHub at same head. Independently executed JavaScript translation of relevant explicit Python validate() conditions, not execution of original Python; changes are in-memory only, no repository mutation.",
+    "not_run": [
+      "original Python on separate local checkout",
+      "post-merge historical append-only test against a true prior log",
+      "actual branch administration/ruleset change",
+      "original CAN/ADP/survey source/runtime tests",
+      "Mac session/process/worktree lease"
+    ]
+  },
+  "five_built_in_witnesses": [
+    {
+      "id": "W1",
+      "mutation": "append duplicate first event",
+      "expected": "DUPLICATE_ID",
+      "observed": "REJECTED",
+      "grade": "CI Python selftest PASS; independent semantic JS mirror REJECTED"
+    },
+    {
+      "id": "W2",
+      "mutation": "set adoption=true/state=ADOPTED_CAS_VERIFIED with mandatory evidence absent",
+      "expected": "UNPROVED_ADOPTION",
+      "observed": "REJECTED",
+      "grade": "CI Python selftest PASS; independent semantic JS mirror REJECTED"
+    },
+    {
+      "id": "W3",
+      "mutation": "independent review points reviewer_of_sha at own exact immutable_sha",
+      "expected": "SELF_REVIEW",
+      "observed": "REJECTED",
+      "grade": "CI Python selftest PASS; independent semantic JS mirror REJECTED"
+    },
+    {
+      "id": "W4",
+      "mutation": "flight first exact_return_sha replaced by 000...000",
+      "expected": "FLIGHT_LOG_REF_MISMATCH",
+      "observed": "REJECTED",
+      "grade": "CI Python selftest PASS; independent semantic JS mirror REJECTED"
+    },
+    {
+      "id": "W5",
+      "mutation": "scientific grade changed to unrecognized PASS enum",
+      "expected": "INVALID_COURT",
+      "observed": "REJECTED",
+      "grade": "CI Python selftest PASS; independent semantic JS mirror REJECTED"
+    }
+  ],
+  "eight_additional_bypass_cases": [
+    {
+      "id": "B1",
+      "mutation": "flight first worker status changed to ADOPTED_CAS_VERIFIED; first_consumer_adopted remains false",
+      "expected_required": "reject unmatched event/flight lifecycle",
+      "observed_semantic_mirror": "ADMITTED",
+      "reason": "validator compares exact id/SHA, not status parity; condition only checks first_consumer_adopted true with wrong status",
+      "severity": "RED",
+      "owner": "PR519 validator author"
+    },
+    {
+      "id": "B2",
+      "mutation": "flight first worker owner replaced by NOT_THE_OWNER",
+      "expected_required": "reject owner identity divergence",
+      "observed_semantic_mirror": "ADMITTED",
+      "reason": "no owner equality or recognized owner authorization constraint",
+      "severity": "RED",
+      "owner": "PR519 validator author; PRE-MAIN owner authority"
+    },
+    {
+      "id": "B3",
+      "mutation": "HR1 known_reds replaced with []",
+      "expected_required": "preserve original hostile negative list",
+      "observed_semantic_mirror": "ADMITTED",
+      "reason": "known_reds need only be a list; script does not compare to frozen HR1 reviewer content",
+      "severity": "RED",
+      "owner": "PR519 validator author; HR1 original negative custodian"
+    },
+    {
+      "id": "B4",
+      "mutation": "SOROK294-A scientific HOLD replaced with recognized ACCEPT_SCOPED",
+      "expected_required": "reject unsupported scientific elevation",
+      "observed_semantic_mirror": "ADMITTED",
+      "reason": "any recognized court grade passes, no qualified issuer/independent review proof",
+      "severity": "RED",
+      "owner": "competent original science owner and PR519 author"
+    },
+    {
+      "id": "B5",
+      "mutation": "HR1 reviewer_of_sha changed to different fabricated ffffffffffffffffffffffffffffffffffffffff",
+      "expected_required": "resolve reviewed_author_sha against exact RC1 event/source",
+      "observed_semantic_mirror": "ADMITTED",
+      "reason": "only 40-hex and not equal reviewer own SHA; no author link proof",
+      "severity": "RED",
+      "owner": "PR519 author; independent reviewer/RC1 source custodian"
+    },
+    {
+      "id": "B6",
+      "mutation": "A event adoption=true, state=ADOPTED_CAS_VERIFIED; invented CAS string, invented source owner grant/consumer, three ACCEPT_SCOPED grades, fabricated but syntactically valid SHA fields, progress revision=999 for both",
+      "expected_required": "reject unauthorized, nonexisting and unmerged adoption",
+      "observed_semantic_mirror": "ADMITTED",
+      "reason": "validator tests presence, syntactic SHA, matching user-supplied revision and grade enum, not actual CAS/review/source grants/target import",
+      "severity": "CRITICAL",
+      "owner": "PRE-MAIN owner, repo admin, PR519 author"
+    },
+    {
+      "id": "B7",
+      "mutation": "first historical event finding replaced by REWRITTEN, no identity fields changed",
+      "expected_required": "reject initial history rewrite and future nonappend mutation",
+      "observed_semantic_mirror": "ADMITTED",
+      "reason": "validate() has no source-history comparison; main() baseline requires prior log; frozen PRE-MAIN base has no log, documented first-install skip. A later PR with historical log would detect this change with --baseline-ref.",
+      "severity": "RED",
+      "owner": "PR519 author; original maintainer authenticates initial seed"
+    },
+    {
+      "id": "B8",
+      "mutation": "flight prs[0].status replaced by MERGED while adoption=false",
+      "expected_required": "reject PR lifecycle misstatement by remote PR status evidence",
+      "observed_semantic_mirror": "ADMITTED",
+      "reason": "PR check tests adoption===true and missing merged_commit only; does not verify declared PR status or source head against GitHub",
+      "severity": "RED",
+      "owner": "PR519 author; PRE-MAIN owner"
+    }
+  ],
+  "separate_static_findings": [
+    {
+      "id": "S1",
+      "name": "Missing law state enum",
+      "law_state": "OWNER_ADOPTION_CANDIDATE",
+      "validator_states": "not present",
+      "observed": "static source mismatch",
+      "action": "add intermediate state or amend law; test legitimate transition"
+    },
+    {
+      "id": "S2",
+      "name": "GitHub target protection",
+      "observed": "branch protected:false, checks enforcement_level:off, checks:[]; repo rulesets []",
+      "protection_details": "403 Resource not accessible by integration",
+      "action": "repo admin must actually enable required check and verify, do not claim policy enforced"
+    },
+    {
+      "id": "S3",
+      "name": "Sorok progress pair",
+      "markdown_revision": 36,
+      "json_revision": 35,
+      "markdown_blob": "fd6ce00595e7b1ea9bb997cf7bd9fcb4e83eccbe",
+      "json_blob": "c7fb05d8e5d0240959191041a73e76e2f14cb436",
+      "action": "rightful Sorok and PRE-MAIN owner reconcile pair by CAS on same canonical commit"
+    },
+    {
+      "id": "S4",
+      "name": "Separate failed suite",
+      "run_id": 40959493212,
+      "passed": 144,
+      "failed": 3,
+      "scope": "FIABC packaging/authority identity; independent of fan-in receipt job",
+      "action": "classify provenance and relationship before merge"
+    }
+  ],
+  "source_receipt_readback": [
+    {
+      "event_id": "SOROK294-A",
+      "commit": "ae31a41e2135483d43fa5d0ba97e708f33c7dece",
+      "receipt_blob": "fb7c17a63d16b1e7a035d8915d4b7b86d2161d09",
+      "rows": 98,
+      "grade": "UNADOPTED_SOURCE"
+    },
+    {
+      "event_id": "SOROK294-B",
+      "commit": "c1dab70f0b02c7d976c76ae48b6d7074decdf14f",
+      "receipt_blob": "7726765398041c5fefc394d91e654d45fe813528",
+      "rows": 67,
+      "grade": "UNADOPTED_SOURCE"
+    },
+    {
+      "event_id": "SOROK294-C",
+      "commit": "231d5abe9d94416d0aa9b20c04e0050e59fad172",
+      "receipt_blob": "a2b01f5ca5427a23dab33656d0cdf8838f11a578",
+      "rows": 69,
+      "grade": "UNADOPTED_SOURCE"
+    },
+    {
+      "event_id": "SOROK294-D",
+      "commit": "c243ba12945bea83c653c1a9d9cf32262d758d24",
+      "receipt_blob": "e442bfd5a4eb2beaff02ba869e2783a823df3433",
+      "rows": 60,
+      "grade": "UNADOPTED_SOURCE"
+    },
+    {
+      "event_id": "SOROK294-RC1",
+      "commit": "337896aa995d579e3525588b405d07216709ac15",
+      "receipt_blob": "8ee301d953589210a637e01cc81f8fccb88aebb4",
+      "grade": "AUTHOR_RETURN_UNADOPTED"
+    },
+    {
+      "event_id": "SOROK294-HR1",
+      "commit": "40df1e61fb32f9210839d8ddfa9f8bf9a47d7621",
+      "receipt_blob": "7c756a7c5dbe6f4b4a98134e9a08170837f8d940",
+      "grade": "REVISE_PRECISE_DEFICIENCIES__NOT_ADOPTED"
+    }
+  ],
+  "review_decision": "REVISE__DO_NOT_ACTIVATE_F4",
+  "three_courts": {
+    "engineering": "RED_ENFORCEABLE_CAS__ACCEPT_SCOPED_OFFLINE_SCHEMA_ONLY",
+    "scientific": "HOLD_NO_NATIVE_SCIENCE",
+    "authority": "RED_BRANCH_UNPROTECTED_AND_REAL_OWNER_CAS_UNPROVED"
+  },
+  "ownership": {
+    "finding": "Independent F0",
+    "interpretation": "Independent F0, contestable on exact evidence",
+    "action": "PR519 original author for code+tests; repo admin for rules; rightful Sorok owner for progress; incumbent PRE-MAIN owner for CAS",
+    "adoption": "INCUMBENT_HQ_ONLY_AFTER_DISTINCT_REVIEW"
+  },
+  "summary": {
+    "DONE": "source currentness, 6 receipts, 11/11 ledger IDs, live CI and rule metadata, 5 intended rejection witnesses, 8 admission bypass probes",
+    "REMAINING": "repair validator, protected required check, initial seed provenance, paired Sorok progress, independent rereview",
+    "CRITICAL_BLOCKERS": "branch protected=false; forged CAS admission; wrong reviewer/flight/negative sync; MD36/JSON35; owner rights",
+    "LARGEST_PRODUCTIVE_MOVE": "One cohesive PR519 source/control correction plus verified protection followed by distinct review and owner CAS",
+    "FLIGHT": "F0 return only; F1-F3 commissioned execution unknown; F4 conditional held; no workers disturbed",
+    "DELTA": "CI positive preserved, eight bypass admissions found, current branch check not required, no PRE-MAIN modification"
+  },
+  "original_science_or_lease_claim": false
+}
