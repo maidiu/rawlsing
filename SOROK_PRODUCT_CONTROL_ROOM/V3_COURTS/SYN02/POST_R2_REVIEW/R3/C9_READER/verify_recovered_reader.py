@@ -2,6 +2,7 @@
 
 Run from any cwd:
   python3 verify_recovered_reader.py
+  python3 verify_recovered_reader.py --portable-tests
   python3 verify_recovered_reader.py --actor-tests
   C12_READER_SOURCE=<exact supported C12 return root> python3 verify_recovered_reader.py --full-tests
 
@@ -51,7 +52,7 @@ def source_proof() -> dict:
     }
 
 
-def tests(full: bool) -> dict:
+def tests(full: bool, portable: bool = False) -> dict:
     if full:
         c12 = os.environ.get("C12_READER_SOURCE")
         if not c12 or not Path(c12).is_dir():
@@ -59,13 +60,18 @@ def tests(full: bool) -> dict:
     candidates = ["test_actor_reader.py", "test_dry_sequence.py", "test_legacy_migration.py"]
     if full:
         candidates.append("test_actor_fork_reader.py")
+    if portable and full:
+        raise RuntimeError("INVALID_PORTABLE_FULL_COMBINATION")
+    # Original legacy classification test binds to a historical absolute Mac path.
+    # Portable proof excludes it, explicitly retaining an original-source HOLD.
+    portable_filter = ["-k", "not test_classification_fields_match_the_pinned_actual_backbone_source"] if portable else []
     env = os.environ.copy()
     env["C9_READER_SOURCE"] = str(C9)
     with tempfile.TemporaryDirectory(prefix="sorok-r3-reader-") as temp:
         junit = Path(temp) / "reader.xml"
         result = subprocess.run(
             [sys.executable, "-m", "pytest", "-q", "--junitxml", str(junit)]
-            + [str(ROOT / x) for x in candidates],
+            + [str(ROOT / x) for x in candidates] + portable_filter,
             cwd=ROOT, env=env, capture_output=True, text=True, check=False,
         )
         print(result.stdout, end="")
@@ -76,9 +82,11 @@ def tests(full: bool) -> dict:
         suites = [tree] if tree.tag == "testsuite" else list(tree.findall(".//testsuite"))
         totals = {k: sum(int(x.get(k, "0")) for x in suites)
                   for k in ("tests", "failures", "errors", "skipped")}
-        receipt = {"mode": "FULL_SOURCEFREE_WITH_C12" if full else "PORTABLE_SOURCEFREE_ACTOR_DRY_MIGRATION",
+        receipt = {"mode": ("FULL_SOURCEFREE_WITH_C12" if full else ("PORTABLE_SOURCEFREE_EXCLUDING_ONE_HISTORICAL_MAC_SOURCE_TEST" if portable else "HOST_BOUND_SOURCEFREE_ACTOR_DRY_MIGRATION")),
                    "return_code": result.returncode, "totals": totals,
-                   "provenance": "NOT_AN_ORIGINAL_SOURCE_OR_NATIVE_ACTOR_ACCEPTANCE"}
+                   "provenance": "NOT_AN_ORIGINAL_SOURCE_OR_NATIVE_ACTOR_ACCEPTANCE",
+                   "held_original_source_test": "test_classification_fields_match_the_pinned_actual_backbone_source" if portable else None,
+                   "acceptance": "PARTIAL_PORTABLE__SOURCE_BOUND_COURT_REMAINS_HELD" if portable else "SOURCEFREE_ONLY__NOT_NATIVE"}
         if result.returncode != 0 or totals["tests"] == 0 or any(
             totals[x] for x in ("failures", "errors", "skipped")
         ):
@@ -89,11 +97,12 @@ def tests(full: bool) -> dict:
 def main() -> int:
     cli = argparse.ArgumentParser()
     cli.add_argument("--actor-tests", action="store_true")
+    cli.add_argument("--portable-tests", action="store_true")
     cli.add_argument("--full-tests", action="store_true")
     args = cli.parse_args()
     print(json.dumps(source_proof(), sort_keys=True))
-    if args.actor_tests or args.full_tests:
-        print(json.dumps(tests(args.full_tests), sort_keys=True))
+    if args.actor_tests or args.full_tests or args.portable_tests:
+        print(json.dumps(tests(args.full_tests, args.portable_tests), sort_keys=True))
     return 0
 
 
