@@ -20,6 +20,7 @@ Source: 98 pinned commits, source/return reads. This investigator ran **zero tes
 - **A48** SC0 K9 8P/K10 28P and PE boundary 9 RED
 - **A52** 280 owner tests but missing registered positive R2 effect
 - **A56** COMMISSION_ONLY
+- **A56** full-tree code correction: RC0 original 12 RED reported repaired in author run, but nine PE REDs retained; independent repair acceptance and native Pyat rights HOLD
 - **A58** S27 authored RED preserved
 - **A59** OUT2 135P/2RED
 - **A62** CAN2 8 candidate RED + 1 RCP3 RED
@@ -68,7 +69,6 @@ These rows are not automatically code-free: some are documentary courts, some us
 44 · `agent/rabochii-sorok-r15-rfa06b-renderer-court-identity-binding-r2` · DOCUMENTARY_OR_NEGATIVE_COURT
 49 · `agent/rabochii-sorok-r3-hq298-sg-choice-authority-r1` · DOCUMENTARY_OR_NEGATIVE_COURT
 50 · `agent/rabochii-sorok-r3-hq298-sgi2-forward-generalization-r1` · RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED
-56 · `agent/rabochii-sorok-r3-hq300-c0-sc0-adapter-red-repair-r1` · COMMISSION_ONLY_AT_TIP
 58 · `agent/rabochii-sorok-r3-hq300-outbox-authority-cold-repair-r1` · RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED
 59 · `agent/rabochii-sorok-r3-hq302-out2-rto-red-repair-r1` · RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED
 60 · `agent/rabochii-sorok-r3-hq304-c0-rsc0-31red-repair-r1` · DOCUMENTARY_OR_NEGATIVE_COURT
@@ -90,3 +90,11 @@ These rows are not automatically code-free: some are documentary courts, some us
 ## Invariants not waived
 
 No original CAN008/011 Rule A/T, ADP007/010/015/016/017/019/020, SCI05, Pyat N11/N12, C11/C12 custody or user A5 is granted here. Objective B action does not mean A perceived it. An available plan is not a selected or performed action. Synthetic acquired practice is not measured human psychological development. An inherited RED remains an inherited RED until the **same exact cut and oracle** is independently repaired and accepted.
+
+## Source-tree correction and independently attributed reviewer cuts
+
+A56 is **not** commission-only. Directly read `port/adapter.py` at `49992b28becfdbecbd41d9dbead47532bf0b6af9` (blob `706475c927432c52599e6b603feb18ee9d716839`), `port/test_connection.py` (blob `772817f6eb3e8f4a9aca01f99a197edfd13789d8`) and `00_RETURN.md` (blob `b604347f9a285d172d549ac4b69c0bc40b158fea`). The last commit diff showed a commission but the full branch tree contains an implementation. Do not repeat that false negative.
+
+Six exact reviewer return SHAs were authenticated and incorporated into the machine rows: A01 528e8cde (REVISE), A02 1a25b19d (scoped accept), A06 8e74be26 (documentary HOLD), A07 43328571 (scoped accept), A11 5753d9b4 (scoped accept but 28 divergent author tests retained), A18 3212d716 (REVISE C12 episode hash preimage). All verdicts remain review-cut-specific; none implies native issuance or PRE-MAIN adoption.
+
+Seven compressed-source closures are still not fully source-inspected at runnable-module grain: A50/A58/A59/A64/A67/A70/A94. A67's actual textual patch `repro/OUT6_EXACT_SOURCE.patch` blob `55e33c9b3334946260821e4f456a079deb2f13b2` was inspected, but this does not itself certify the full candidate archive or test import. No original survey, script, pytest, person, or model execution occurred in this audit.
