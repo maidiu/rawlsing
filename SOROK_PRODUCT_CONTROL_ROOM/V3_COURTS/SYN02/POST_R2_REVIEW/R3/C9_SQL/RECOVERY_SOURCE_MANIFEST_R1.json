@@ -1,6 +1,6 @@
 {
   "schema": "SOROK_C9_R3B_STRANDED_SOURCE_EXACT_RECOVERY@1",
-  "status": "BYTE_EXACT_STAGED_TEST_ONLY__NOT_CURRENT_CONTROL_ADOPTED",
+  "status": "SOURCEFREE_CODE_EXACT__TWO_TEST_FILES_PORTABLE_MODIFIED__NATIVE_HELD",
   "source_branch": "agent/sorok-syn02-c9-r3-testonly-idempotency-isolated-r2",
   "source_commit": "1e99681f58086f2784834df1186cfba71a2c50b9",
   "target_base_premain": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
@@ -8,7 +8,7 @@
     "c9_actor_r3.py": "67f34f699220ec1407e7e8f0d58ed328e88a36af",
     "schema_actor_r3.sql": "a5189ecd8f953952210dd3e6175a80e211b10647",
     "schema_mirror_r3.sql": "8e9d978b57740b3a5fb2ca4c42fb2c3365c594c1",
-    "tests/test_c9_r3.py": "c796524cde49306d4e7456b3e30f942323c0fd41",
+    "tests/test_c9_r3.py": "16775b656bef6ed66ca82ce4bbf0614ca79645b2",
     "00_RETURN.md": "2ce8e9d7a5284c44982edef1f0209ee8eebaea71",
     "probes/actual_sources.py": "06db989d4b407c26e31ea2ec3bff96a258fa8845",
     "evidence/actual_sources.json": "7c00e2824ac8ed8801700a2b34eb3971f92d6f1a"
@@ -23,5 +23,13 @@
   "c12_fork_perception": "SOURCE_RED_REMAINS_IN_UPSTREAM_COURT__NO_NATIVE",
   "activation": "NO_IMPORT_IN_PRODUCTION__NO_ENTRYPOINT_ADDED",
   "acceptance": "NOT_READY__REQUIRES_EXECUTABLE_GATE_AND_INDEPENDENT_REVIEW",
-  "review_requirement": "No skip treated as pass. Test all real S36/C12 source paths separately and ensure exact actor B reader under same cut."
+  "review_requirement": "No skip treated as pass. Test all real S36/C12 source paths separately and ensure exact actor B reader under same cut.",
+  "provenance_adjustments": {
+    "tests/test_c9_r3.py": {
+      "original_blob": "c796524cde49306d4e7456b3e30f942323c0fd41",
+      "current_blob": "16775b656bef6ed66ca82ce4bbf0614ca79645b2",
+      "reason": "Environment variables RAWLSING_S36_SOURCE_ROOT and RAWLSING_JOIN_E_VENDOR_J allow exact pinned source-checkout original 4 source-conditional tests to run in CI; default is historical Mac path; all named assertions preserved.",
+      "implementation_code_unchanged": true
+    }
+  }
 }
