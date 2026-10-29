@@ -1,0 +1,838 @@
+{
+  "schema": "SOROK_294_B_SOURCE_INSPECTION_BATCH_R1",
+  "rows": [
+    {
+      "index": 1,
+      "name": "agent/reviewer-sorok-20261018-b3a-atomic-repair-independent-i2-r1",
+      "pinned_sha": "528e8cde0cff9e28f3c55d5d54a66e820d7401fa",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 300,
+      "changed_paths_truncated": true,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/.gitignore",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/02_REQUIREMENTS_AND_LIMITATIONS.md",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/README.md",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/artifact_manifest.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/audit_review.py",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/build_evidence.py",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/changed_paths.txt",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/environment_passport_delta.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic.log",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic.xml",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_b3_preimage_insert_False_refusal.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_b3_preimage_insert_False_storage.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_b3_preimage_insert_False_unexpected.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_b3_preimage_insert_True_refusal.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_b3_preimage_insert_True_storage.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_b3_preimage_insert_True_unexpected.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_b3_source_insert_False_refusal.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_b3_source_insert_False_storage.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_b3_source_insert_False_unexpected.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_b3_source_insert_True_refusal.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_b3_source_insert_True_storage.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_b3_source_insert_True_unexpected.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_first_projection_False.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_first_projection_True.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_first_source_admission_False_refusal.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_first_source_admission_False_storage.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_first_source_admission_False_unexpected.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_first_source_admission_True_refusal.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_first_source_admission_True_storage.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_first_source_admission_True_unexpected.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_publication_before_commit_False_refusal.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_publication_before_commit_False_storage.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_publication_before_commit_False_unexpected.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_publication_before_commit_True_refusal.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_publication_before_commit_True_storage.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_publication_before_commit_True_unexpected.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_target_effect_before_commit_False_refusal.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_target_effect_before_commit_False_storage.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/evidence/atomic_sql/after_target_effect_before_commit_False_unexpected.json"
+      ],
+      "code_paths": [
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/audit_review.py",
+        "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/build_evidence.py"
+      ],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+        "blob": "d5e9c238f032c749b9818be5d482f7dddd5c6eb7",
+        "url": "https://github.com/maidiu/rawlsing/blob/528e8cde0cff9e28f3c55d5d54a66e820d7401fa/WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+        "lines": 64
+      },
+      "review_evidence": "# B3A-I2 independent atomicity return\n\n**Verdict: REVISE — the five original refused-event partial-write/cold-ghost assertions now pass, but the published full-schema/readset and mutation-receipt guarantees do not.** No candidate code or frozen expectation was repaired. The two new REDs are kept literal. They do not establish failure of the five repaired paths.\n\n## Custody and independence\n\nRepository: private `maidiu/rawlsing`. Assigned branch: `agent/reviewer-sorok-20261018-b3a-atomic-repair-independent-i2-r1`. Exact sealed startup: `87325cc7914dbbd77499f33190111589d5ed6d7c`, direct parent `68873526efe5a39a0849aa401666ac997870f156`. The seal adds only this commission. Its remote head and the author target were directly verified before execution. The containing final commit is this return's identity; its exact remote SHA is supplied after the ordinary non-force push.\n\nExact candidate `8bd4d6b01fd402e7e6a8d07903f2c3cada837f55`; original B3 `47b46a85b9ebb633754866f1e6f1b12db3bd2012`; original X3 `d201985243fe15bc0da36e7cbc93707fec664acf`; pre-repair commission `0632bc21f3b0453e55703f80ba3201816238d6cc`. Corrected B2 stays `8f7966d6d0bbb1ea2e57359de9defbcf552268bd`; M2 stays `5c2fbe14ccfa5027becfabc682206a1e61aaf986`; F2 stays `a24429906c93446f9d912e7054d48f9f51aee63d`; E3 stays `a16ba353f3bc471776d60ce198f267be4e9e5773`.\n\nOne accountable local Codex reviewer performed sourcefree execution and adjudication in a NEW sparse worktree using the existing object store. No author runner state or live database was reused. This conversation previously authored CLR research and read B3 as reference; it did not author B3, B3A or X3. Independence is documentary reviewer separation, not a provider/account attestation. Local session metadata records `gpt-6.1-sol / high`; no model/provider/harness switch, delegation, package installation, paid external model call or real actor/source run occurred. Actual cash/quota remain UNKNOWN. The current user launched this review in this existing High session; the older CLR2-only runtime override is not presented as B3A authority.\n\nPinned Sorok 00C/00B were retrieved at `7b091166ac31c0b538093007808cbbbdaccf8d6f`, not falsely attributed to PRE-MAIN. 00D/front door and HQ_HANDOFF/LATEST were read at the commission base; the immutable referenced checkpoint was read. Exact B2/E3, ADP019 and CAN008/CAN011 boundaries were inspected. No HQ role follows from those reads.\n\nAll 509 archived candidate source/receipt files match their Git blobs. All 228 selected Git/archive preimages were independently verified. Actual imports of 11 modules match verified source hashes. Only `integration.py` and `fixture_authority.py` differ among candidate Python files from original B3; target, B2/M2/F2 and historical test bytes are unchanged. The pinned source tar SHA-256 is `0c0801843ff023647c03293b20ee75a6a5911ff734bd0c07735e5d6b07000672`. Import/source/custody manifests give complete identities.\n\n## Actual independent execution\n\n| Court | PASS | RED |\n|---|---:|---:|\n| Original B3, unchanged | 71 | 0 |\n| Candidate B3, same suite | 71 | 0 |\n| Original X3 28 on original B3 | 20 | 8 |\n| Same frozen X3 28 on candidate | 24 | 4 |\n| B3A atomic controls, unchanged | 63 | 0 |\n| E3, unchanged corrected B2 | 26 | 0 |\n| F2 through candidate | 42 | 0 |\n| F2 blinded IDs/expectations | 42 | 0 |\n| New preregistered reviewer court | 18 | 2 |\n| New clean/seeded bad-origin/future controls on original | 0 | 4 |",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# B3A-I2 independent atomicity return"
+        },
+        {
+          "line": 3,
+          "text": "**Verdict: REVISE — the five original refused-event partial-write/cold-ghost assertions now pass, but the published full-schema/readset and mutation-receipt guarantees do not.** No candidate code or frozen expectation was repaired. The two new REDs are kept literal. They do not establish failure of the five repaired paths."
+        },
+        {
+          "line": 7,
+          "text": "Repository: private `maidiu/rawlsing`. Assigned branch: `agent/reviewer-sorok-20261018-b3a-atomic-repair-independent-i2-r1`. Exact sealed startup: `87325cc7914dbbd77499f33190111589d5ed6d7c`, direct parent `68873526efe5a39a0849aa401666ac997870f156`. The seal adds only this commission. Its remote head and the author target were directly verified before execution. The containing final commit is this return's identity; its exact remote SHA is supplied after the ordinary non-force push."
+        },
+        {
+          "line": 9,
+          "text": "Exact candidate `8bd4d6b01fd402e7e6a8d07903f2c3cada837f55`; original B3 `47b46a85b9ebb633754866f1e6f1b12db3bd2012`; original X3 `d201985243fe15bc0da36e7cbc93707fec664acf`; pre-repair commission `0632bc21f3b0453e55703f80ba3201816238d6cc`. Corrected B2 stays `8f7966d6d0bbb1ea2e57359de9defbcf552268bd`; M2 stays `5c2fbe14ccfa5027becfabc682206a1e61aaf986`; F2 stays `a24429906c93446f9d912e7054d48f9f51aee63d`; E3 stays `a16ba353f3bc471776d60ce198f267be4e9e5773`."
+        },
+        {
+          "line": 11,
+          "text": "One accountable local Codex reviewer performed sourcefree execution and adjudication in a NEW sparse worktree using the existing object store. No author runner state or live database was reused. This conversation previously authored CLR research and read B3 as reference; it did not author B3, B3A or X3. Independence is documentary reviewer separation, not a provider/account attestation. Local session metadata records `gpt-6.1-sol / high`; no model/provider/harness switch, delegation, package installation, paid external model call or real actor/source run occurred. Actual cash/quota remain UNKNOWN. The current user launched this review in this existing High session; the older CLR2-only runtime override is not presented as B3A authority."
+        },
+        {
+          "line": 15,
+          "text": "All 509 archived candidate source/receipt files match their Git blobs. All 228 selected Git/archive preimages were independently verified. Actual imports of 11 modules match verified source hashes. Only `integration.py` and `fixture_authority.py` differ among candidate Python files from original B3; target, B2/M2/F2 and historical test bytes are unchanged. The pinned source tar SHA-256 is `0c0801843ff023647c03293b20ee75a6a5911ff734bd0c07735e5d6b07000672`. Import/source/custody manifests give complete identities."
+        },
+        {
+          "line": 17,
+          "text": "## Actual independent execution"
+        },
+        {
+          "line": 19,
+          "text": "| Court | PASS | RED |"
+        },
+        {
+          "line": 21,
+          "text": "| Original B3, unchanged | 71 | 0 |"
+        },
+        {
+          "line": 23,
+          "text": "| Original X3 28 on original B3 | 20 | 8 |"
+        },
+        {
+          "line": 29,
+          "text": "| New preregistered reviewer court | 18 | 2 |"
+        },
+        {
+          "line": 30,
+          "text": "| New clean/seeded bad-origin/future controls on original | 0 | 4 |"
+        },
+        {
+          "line": 35,
+          "text": "Independently executed inherited checks, separate from the author's prior receipts: **249 PASS** (B1 39, P1 74, historical D1 22, corrected D1 17, F1 reference 97); B2 integration/accounting **81 PASS**; R1 **45 PASS**; repair regression **5 PASS**; E2 strict **2 PASS**; M2 **41 PASS**. Historical D1's known absence defect is not erased by its 22 passes. The 97 F1 reference passes and 36 applicability accounting checks confer no native positive qualification."
+        },
+        {
+          "line": 37,
+          "text": "Historical negatives reproduce unchanged: full E2 **42 PASS / 2 RED**; X2 **16 PASS / 1 RED**; M1-on-M2 **18 PASS / 19 RED**; strict I2-on-M2 **13 PASS / 10 RED**; M3 source-preimage **3 RED**; native F1 **17 RED**, exit 1. Their exact IDs and diagnostics remain in JUnit/raw logs. E2/X2's three assertions expect previously vulnerable behavior; M1/I2 retain their interface/contract incompatibility grain; M3 remains genuine source-preimage quarantine. Native F1 IDs remain F01 F02 F03 F04 F05 F06 F07 F08 F10 F11 F13 F15 F16 F17 F18 F19 F21. None was edited, skipped or xfailed."
+        },
+        {
+          "line": 39,
+          "text": "Both original and candidate positive/permission-absent loops ran, then reconstructed in fresh Python processes. Each exact receipt list and full final SQL snapshot matched its own cold reconstruction; all eight snapshot hashes also match the author's historical identities. SQLite integrity is `ok`. No aggregate all-green result is claimed. `evidence/commands.json` and nested inherited receipts identify the actual commands and exits."
+        },
+        {
+          "line": 43,
+          "text": "Five unchanged X3 failure identities turn PASS: missing-origin atomic refusal; late missing-parent refusal; late future-event refusal; and the two real cold persistence assertions. The other late-refusal controls remain PASS. On original B3, independently seeded and clean requests leave changes in occurrence, B2 ingress/identity, B3 source and audit tables; the repair leaves the entire cold schema/row snapshot unchanged. Old seed facts survive in both versions; the original defect adds invalid proposal rows rather than deleting the seed."
+        },
+        {
+          "line": 45,
+          "text": "The repair executes B2 unchanged in a private SQLite backup and publishes additive deltas under `BEGIN IMMEDIATE`; rollback discards proposal-only effects. A separate process admitted a new B2 objective fact during scratch evaluation: publication refused `PUBLICATION_READSET_CHANGED`, all independent rows survived, no candidate source/target rows published, and `no_mutation=False` was truthful. An externally added table was similarly preserved and refused. Qualified target DENIED and missing-permission EMPTY still allow lawful event admission."
+        },
+        {
+          "line": 47,
+          "text": "The unchanged X3 privileged row race now produces immediate REFUSED / PUBLICATION_READSET_CHANGED, preserves its external b3_preimage row and publishes no candidate rows. The old test expects ELIGIBLE followed by cold detection, so its new fourth RED is an obsolete expectation, not a residual partial-publication defect."
+        },
+        {
+          "line": 49,
+          "text": "The new 20-case court was frozen before execution. Ten real child processes were SIGKILLed at four precommit scratch/public boundaries and after successful return, each in clean and independently seeded strata. Exit was verified as -9, cold inspectors had distinct PIDs, precommit snapshots were unchanged, committed success survived, and cold replay did not recruit a discarded target. Late domain refusal after validated target effect left no occurrence/target publication. Origin binding, missing parent, reversed clock and renewed historical-source tampering refused with exact expected codes; unchanged replay remained lawful. This is process-death evidence, not power-loss proof."
+        },
+        {
+          "line": 51,
+          "text": "**Two new schema REDs:** a second SQLite connection creates an index between scratch validation and public publication. Because snapshot() contains table names/rows but no sqlite_master definitions, the request is accepted despite changed schema. Separately, a refusal after that external index creation reports `no_mutation=True` even though schema changed. Both full cold schema/row receipts are retained. These are privileged schema-writer tests, not unauthenticated B2 requests; they contradict the written full-schema/readset/whole-database receipt guarantee without claiming immunity to arbitrary DBA corruption. No independently admitted objective fact was lost in these tests. Required revision and a possible explicitly narrower claim are described in `02_REQUIREMENTS_AND_LIMITATIONS.md`; this reviewer makes neither change."
+        },
+        {
+          "line": 53,
+          "text": "Three persistent X3 topics remain separate: duplicate witness IDs are not proof of distinct enacted opportunities; a pre-loss threshold is stronger than the unmodified rule and is not a universal developmental requirement; standalone source_guard lacks complete historical-readset validation while integrated raw-source removal/rewrite negatives pass. They are evidence/helper limitations rather than the five transaction failures."
+        },
+        {
+          "line": 55,
+          "text": "## Disposition and handoff"
+        },
+        {
+          "line": 57,
+          "text": "REVISE the schema/readset and no_mutation claim or implementation before accepting that advertised scope. The tested fixed-schema public request envelope closes the five original manifestations and preserves independently committed B2 facts and target permissions. This is a bounded independent engineering finding, not semantic adoption."
+        },
+        {
+          "line": 59,
+          "text": "No human habit-acquisition law, third actual t9 check, selected durable belief/affect, independently developing Other, ADP016 memory, ADP017 access write, native ADP019 issuer, production feasibility, CAN008/CAN011 admission, M2 repair incorporation, newer R3/R4 or ONECALL is established. Exact remaining adapter/owner permissions are in `02_REQUIREMENTS_AND_LIMITATIONS.md`. No psychological labels, arbitrary trait scores or predetermined endings were added."
+        },
+        {
+          "line": 61,
+          "text": "All review changes are confined to the assigned return subtree. Original inputs are byte-identical; only new receipts have portable path/hostname sanitation. The scoped return_manifest is used because the commission authorizes only this subtree; the root beacon remains unchanged and automatic root certification is not claimed. The complete review result is FAIL/REVISE at qualification, with no required review execution remaining. No background work remains. Transport and exact remote-tip verification accompany handoff. No uncommissioned repair, integration, adoption or extra review was performed."
+        }
+      ],
+      "referenced_shas": [
+        "87325cc7914dbbd77499f33190111589d5ed6d7c",
+        "68873526efe5a39a0849aa401666ac997870f156",
+        "8bd4d6b01fd402e7e6a8d07903f2c3cada837f55",
+        "47b46a85b9ebb633754866f1e6f1b12db3bd2012",
+        "d201985243fe15bc0da36e7cbc93707fec664acf",
+        "0632bc21f3b0453e55703f80ba3201816238d6cc",
+        "8f7966d6d0bbb1ea2e57359de9defbcf552268bd",
+        "5c2fbe14ccfa5027becfabc682206a1e61aaf986",
+        "a24429906c93446f9d912e7054d48f9f51aee63d",
+        "a16ba353f3bc471776d60ce198f267be4e9e5773",
+        "7b091166ac31c0b538093007808cbbbdaccf8d6f"
+      ],
+      "reported_disposition": "Verdict: REVISE — the five original refused-event partial-write/cold-ghost assertions now pass, but the published full-schema/readset and mutation-receipt guarantees do not.** No candidate code or frozen expectation was repaired. The two new REDs are kept literal. Th",
+      "code_inspection": {
+        "path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/audit_review.py",
+        "blob": "ed6a415a59e353d8887813029b078fa0508d67fe",
+        "bytes": 9169,
+        "functions": [
+          "def sha(data):return hashlib.sha256(data).hexdigest()",
+          "def read(p):return json.loads((ROOT/p).read_text())",
+          "def git(*args):return subprocess.check_output(['git',*args],cwd=ROOT)",
+          "def main():",
+          " def checked(name,evidence):audit.append(dict(requirement=name,status='PROVEN',evidence=evidence))"
+        ],
+        "sample": "\"\"\"Requirement-level evidence audit. Verdict REDs are required preserved evidence.\"\"\"\nfrom pathlib import Path\nimport json,hashlib,subprocess,xml.etree.ElementTree as ET,re\nROOT=Path(__file__).resolve().parent;E=ROOT/'evidence';SEAL='87325cc7914dbbd77499f33190111589d5ed6d7c';BRANCH='agent/reviewer-sorok-20261018-b3a-atomic-repair-independent-i2-r1'\ndef sha(data):return hashlib.sha256(data).hexdigest()\ndef read(p):return json.loads((ROOT/p).read_text())\ndef git(*args):return subprocess.check_output(['git',*args],cwd=ROOT)\ndef main():\n assert git('branch','--show-current').decode().strip()==BRANCH\n assert git('merge-base','--is-ancestor',SEAL,'HEAD')==b''\n audit=[]\n def checked(name,evidence):audit.append(dict(requirement=name,status='PROVEN',evidence=evidence))\n for row in read('evidence/input_transport_manifest.json'):\n  data=(ROOT/row['local']).read_bytes();assert sha(data)==row['sha256'];assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\\0'+data).hexdigest()==row['git_blob_sha1']\n assert len(read('evidence/input_transport_manifest.json'))==509\n assert read('evidence/source_verification.json')['verified_source_count']==228\n assert len(read('evidence/loaded_modules.json'))==11"
+      }
+    },
+    {
+      "index": 2,
+      "name": "agent/reviewer-sorok-20261018-b3a-schema-readset-repair-independent-i2-r1",
+      "pinned_sha": "1a25b19dd01e8e7954e38c59ffc7e52c50739c9f",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 69,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/02_REQUIREMENTS_AND_LIMITATIONS.md",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/README.md",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/environment_passport.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/actual_imports.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/cold_replay_audit.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc1_index_False.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc1_index_True.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc2_table.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc2_trigger.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc2_userversion.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc2_view.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc3_refusal_trigger.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc4_fact_index_False.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc4_fact_index_True.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc5_kill_after_publication_before_commit_False.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc5_kill_after_publication_before_commit_True.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc5_kill_after_successful_return_False.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc5_kill_after_successful_return_True.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc5_kill_after_target_effect_before_commit_False.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc5_kill_after_target_effect_before_commit_True.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc6_retry_False.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc6_retry_True.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc7_semantics.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent/hc8_inside_immediate.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent_run1/hc1_index_False.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent_run1/hc1_index_True.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent_run1/hc2_table.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent_run1/hc2_trigger.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent_run1/hc2_userversion.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent_run1/hc2_view.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent_run1/hc3_refusal_trigger.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent_run1/hc4_fact_index_False.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent_run1/hc4_fact_index_True.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent_run1/hc5_kill_after_publication_before_commit_False.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent_run1/hc5_kill_after_publication_before_commit_True.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent_run1/hc5_kill_after_successful_return_False.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent_run1/hc5_kill_after_successful_return_True.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent_run1/hc5_kill_after_target_effect_before_commit_False.json",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/evidence/independent_run1/hc5_kill_after_target_effect_before_commit_True.json"
+      ],
+      "code_paths": [
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/independent_worker.py",
+        "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/test_independent_hostiles.py"
+      ],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+        "blob": "00c61b3f712721f2ea4dc74fd305f9213303fa52",
+        "url": "https://github.com/maidiu/rawlsing/blob/1a25b19dd01e8e7954e38c59ffc7e52c50739c9f/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+        "lines": 130
+      },
+      "review_evidence": "# B3AS-I2 independent schema/readset repair court\n\n**Verdict: ACCEPT_SCOPED — the exact local-authored repair `16f15a125ba54cdf17f5d41be2d851bbcd2240d7` closes both unchanged B3A-I2 schema REDs, and no frozen, atomicity, B3, F2, E3, X3, inherited or sourcefree expectation was weakened to do so.** The acceptance is scoped to the tested logical schema/readset contract, the sourcefree test-only grade and the preserved owner-permission boundaries. It is an engineering acceptance of a bounded SQLite custody candidate, not semantic adoption, not CAN008/CAN011 law, not M2 integration and not production adoption. No new repair commission is created; findings return to Sorok HQ for adjudication.\n\n## Custody and independence\n\nRepository: private `maidiu/rawlsing`. Assigned branch: `agent/reviewer-sorok-20261018-b3a-schema-readset-repair-independent-i2-r1`. Exact sealed startup `e18c41b5faa6cbb0ab393561833d850e1dd1e383`, direct parent `528e8cde0cff9e28f3c55d5d54a66e820d7401fa` (the complete previous B3A-I2 REVISE return). The seal changes exactly one path, this commission file; its remote head was verified before work (`git ls-remote` matched the local SHA).\n\nThis reviewer is a fresh independent source-free I2 reviewer: not the B3A/B3AS author, not the first B3A-I2 reviewer, not HQ and not a semantic issuer. One accountable OpenCode agent with MiMo-V2.6-Pro performed the complete commission in a new sparse worktree over the existing shared Git object store. No Codex, no model/provider switch, no delegation, no helper agents, no package installation, no external model call, no real actor/source run. Actual cash/quota remain UNKNOWN. Independence is documentary reviewer separation, not a provider/account attestation.\n\nPinned Sorok `00_READ_ME_FIRST`, `00D`, `00B/00C` and the accepted B2/ADP019 and CAN008/CAN011 jurisdiction boundaries were read from the commission base; no HQ role follows from those reads.\n\n### Phase 0 — custody-only publication of the exact local repair\n\nThe reported local repair `16f15a125ba54cdf17f5d41be2d851bbcd2240d7` was probed directly in the shared object store, not inferred from any message:\n\n- author `Maidiu` (identity exactly as recorded in the commit object), author date 2026-10-18, single parent `8bd4d6b01fd402e7e6a8d07903f2c3cada837f55` (the exact original B3A candidate reviewed by the first court). Ancestry confirmed with `merge-base --is-ancestor`.\n- 305 changed paths, **all** inside the authorized repair-author subtree `WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/`. Zero paths outside it. No secret-shaped filenames; a content scan for private-key, token and credential patterns returned nothing.\n- The repair's `candidate/` reproduces the original candidate byte-for-byte except one file: `candidate/integration.py`. Its Git blob is `d3a324bb93c17fdaf12670dd153aeb138d9c426a` and its SHA-256 is `6b0187c5dfa0a48928f78fb0c3979de6c35e49aa770c9d10f644f57eaed6a679`, exactly the identity the author's `00_RETURN.md` claims.\n- All frozen courts carried in the repair (`frozen_review/test_reviewer_hostiles.py`, `test_seeded_refusals.py`, `reviewer_worker.py`, `test_atomic.py`, `test_projected_atomic.py`, `frozen_x3/*`) are byte-identical to the first review's frozen inputs. No frozen expectation was edited.\n\nCustody-only publication was then performed as an ordinary non-force push of the exact unchanged commit and its ancestry to the previously absent branch `agent/rabochii-sorok-20261018-b3a-schema-readset-repair-r1`. `git ls-remote` and a fresh fetch both report remote SHA `16f15a125ba54cdf17f5d41be2d851bbcd2240d7`. No cherry-pick, amend, rebase or identity rewrite. The uploaded author commit is source-custody evidence only; it is not independent acceptance.\n\n## Source and import verification\n\nRuntime sources were independently materialized from pinned Git commits through the candidate's exact transport, verifying every blob SHA-1 against the object store: **199 staged entries, 0 mismatches**, with identical manifests for the pre-repair and repaired candidates. Only `integration.py` differs between the two runtimes. Eleven actually imported Python modules were hash-verified against those pinned identities (`evidence/actual_imports.json`); the imported `integration.py` is exactly the repaired SHA-256 above. Pre-repair contrast executions used the original blob `604e09986d87f404daa9857b25758ec2e1fe491d` in its own isolated runtime. No prior runner state, author database or author execution log was reused as proof.\n\n## The two unchanged B3A-I2 REDs, reproduced and re-tested\n\nThe two frozen falsifiers were executed **unmodified** (file SHA-256 `30baf690d09ac079d370f7730c06114481848403efd52629f279ec2aceb9246f`, matching the first court's preregistration) against the pre-repair candidate first:",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# B3AS-I2 independent schema/readset repair court"
+        },
+        {
+          "line": 3,
+          "text": "**Verdict: ACCEPT_SCOPED — the exact local-authored repair `16f15a125ba54cdf17f5d41be2d851bbcd2240d7` closes both unchanged B3A-I2 schema REDs, and no frozen, atomicity, B3, F2, E3, X3, inherited or sourcefree expectation was weakened to do so.** The acceptance is scoped to the tested logical schema/readset contract, the sourcefree test-only grade and the preserved owner-permission boundaries. It is an engineering acceptance of a bounded SQLite custody candidate, not semantic adoption, not CAN008/CAN011 law, not M2 integration and not production adoption. No new repair commission is created; findings return to Sorok HQ for adjudication."
+        },
+        {
+          "line": 7,
+          "text": "Repository: private `maidiu/rawlsing`. Assigned branch: `agent/reviewer-sorok-20261018-b3a-schema-readset-repair-independent-i2-r1`. Exact sealed startup `e18c41b5faa6cbb0ab393561833d850e1dd1e383`, direct parent `528e8cde0cff9e28f3c55d5d54a66e820d7401fa` (the complete previous B3A-I2 REVISE return). The seal changes exactly one path, this commission file; its remote head was verified before work (`git ls-remote` matched the local SHA)."
+        },
+        {
+          "line": 9,
+          "text": "This reviewer is a fresh independent source-free I2 reviewer: not the B3A/B3AS author, not the first B3A-I2 reviewer, not HQ and not a semantic issuer. One accountable OpenCode agent with MiMo-V2.6-Pro performed the complete commission in a new sparse worktree over the existing shared Git object store. No Codex, no model/provider switch, no delegation, no helper agents, no package installation, no external model call, no real actor/source run. Actual cash/quota remain UNKNOWN. Independence is documentary reviewer separation, not a provider/account attestation."
+        },
+        {
+          "line": 15,
+          "text": "The reported local repair `16f15a125ba54cdf17f5d41be2d851bbcd2240d7` was probed directly in the shared object store, not inferred from any message:"
+        },
+        {
+          "line": 17,
+          "text": "- author `Maidiu` (identity exactly as recorded in the commit object), author date 2026-10-18, single parent `8bd4d6b01fd402e7e6a8d07903f2c3cada837f55` (the exact original B3A candidate reviewed by the first court). Ancestry confirmed with `merge-base --is-ancestor`."
+        },
+        {
+          "line": 18,
+          "text": "- 305 changed paths, **all** inside the authorized repair-author subtree `WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/`. Zero paths outside it. No secret-shaped filenames; a content scan for private-key, token and credential patterns returned nothing."
+        },
+        {
+          "line": 19,
+          "text": "- The repair's `candidate/` reproduces the original candidate byte-for-byte except one file: `candidate/integration.py`. Its Git blob is `d3a324bb93c17fdaf12670dd153aeb138d9c426a` and its SHA-256 is `6b0187c5dfa0a48928f78fb0c3979de6c35e49aa770c9d10f644f57eaed6a679`, exactly the identity the author's `00_RETURN.md` claims."
+        },
+        {
+          "line": 22,
+          "text": "Custody-only publication was then performed as an ordinary non-force push of the exact unchanged commit and its ancestry to the previously absent branch `agent/rabochii-sorok-20261018-b3a-schema-readset-repair-r1`. `git ls-remote` and a fresh fetch both report remote SHA `16f15a125ba54cdf17f5d41be2d851bbcd2240d7`. No cherry-pick, amend, rebase or identity rewrite. The uploaded author commit is source-custody evidence only; it is not independent acceptance."
+        },
+        {
+          "line": 26,
+          "text": "Runtime sources were independently materialized from pinned Git commits through the candidate's exact transport, verifying every blob SHA-1 against the object store: **199 staged entries, 0 mismatches**, with identical manifests for the pre-repair and repaired candidates. Only `integration.py` differs between the two runtimes. Eleven actually imported Python modules were hash-verified against those pinned identities (`evidence/actual_imports.json`); the imported `integration.py` is exactly the repaired SHA-256 above. Pre-repair contrast executions used the original blob `604e09986d87f404daa9857b25758ec2e1fe491d` in its own isolated runtime. No prior runner state, author database or author execution log was reused as proof."
+        },
+        {
+          "line": 28,
+          "text": "## The two unchanged B3A-I2 REDs, reproduced and re-tested"
+        },
+        {
+          "line": 32,
+          "text": "1. `test_schema_only_race_is_rejected` — **RED reproduced.** A second connection's `CREATE INDEX` between scratch validation and public publication was accepted: expected `REFUSED`, observed `ELIGIBLE_NONCAUSAL`. The claimed full publication readset did not cover `sqlite_master` definitions."
+        },
+        {
+          "line": 33,
+          "text": "2. `test_schema_change_on_refusal_sets_no_mutation_false` — **RED reproduced.** After an external index plus a domain refusal, `no_mutation=True` was reported although the logical schema had changed."
+        },
+        {
+          "line": 35,
+          "text": "Against the repaired candidate both are **PASS** (`evidence/junit/repair_two_reds.xml`). The full frozen 20-case I2 hostile court moves from **18 PASS / 2 RED** to **20 PASS / 0 RED**; the pre-repair run is retained separately (`orig_hostiles.xml`). The clean/seeded bad-origin/future-event refusal controls pass on both B3A versions; on original B3 their four historical REDs are preserved unchanged (`origb3_seeded.xml`)."
+        },
+        {
+          "line": 37,
+          "text": "## Actual independent execution"
+        },
+        {
+          "line": 39,
+          "text": "| Court | PASS | RED |"
+        },
+        {
+          "line": 53,
+          "text": "| **This reviewer's independent hostile controls** | **19** | **0** |"
+        },
+        {
+          "line": 54,
+          "text": "| Same independent controls on pre-repair candidate | 13 | 6 |"
+        },
+        {
+          "line": 55,
+          "text": "| Original B3 seeded controls (historical) | 0 | 4 |"
+        },
+        {
+          "line": 57,
+          "text": "Zero errors, zero skips. Blinded F2 retains 20 eligible / 22 refusal-or-deferral with expectations removed and IDs replaced before the engine. The author's 33-case court is supplementary evidence from the author's own run, recounted here only after this reviewer reran it; it is not independent acceptance."
+        },
+        {
+          "line": 59,
+          "text": "### Independent hostile controls (preregistered before first execution)"
+        },
+        {
+          "line": 61,
+          "text": "Eight independently authored families, 19 cases, frozen in `preregistration_independent.json` and `test_independent_hostiles.py` before any control executed. Four reviewer-side fixture-mechanics amendments made during first execution are logged in `freeze_hashes.json`; none touches the candidate, a frozen court or a substantive requirement. First-run outputs are preserved under `evidence/independent_run1/`."
+        },
+        {
+          "line": 63,
+          "text": "- **HC1** an index created by an independent OS process between scratch validation and public `BEGIN IMMEDIATE` (clean and seeded): post-repair `REFUSED` with `PUBLICATION_READSET_CHANGED`, `no_mutation=False`, external index preserved, rows unchanged, no candidate rows. Pre-repair: **RED** (accepted)."
+        },
+        {
+          "line": 64,
+          "text": "- **HC2** trigger, view, table and `user_version` metadata mutations inside the documented schema contract: all four refuse post-repair with truthful `no_mutation=False` and preserved objects. Pre-repair: trigger/view/user_version **RED**; a new table was already caught by the old table-name key comparison."
+        },
+        {
+          "line": 65,
+          "text": "- **HC3** external trigger immediately before a late domain refusal: `REFUSED`, `no_mutation=False` (pre-repair **RED**, reported `True`), rows unchanged, trigger preserved."
+        },
+        {
+          "line": 66,
+          "text": "- **HC4** concurrent independent B2 fact **and** index in the late window (clean and seeded): refused, `no_mutation=False`, every pre-existing row preserved as a subset, the independent fact survives, no `b3_source`/`b3_transition` candidate rows. No deletion or rollback of foreign state."
+        },
+        {
+          "line": 67,
+          "text": "- **HC5** real SIGKILL at the scratch boundary, at the public publication boundary and after successful return (clean and seeded, 6 cases): exit verified as `-9`, cold inspectors run in distinct PIDs, cold schema **and** rows unchanged at precommit boundaries with `PRAGMA integrity_check = ok`; the after-return stratum keeps committed rows replayable. Process-death evidence only."
+        },
+        {
+          "line": 72,
+          "text": "### `no_mutation` semantics as measured"
+        },
+        {
+          "line": 77,
+          "text": "| refusal after external schema change | `False` | yes (this was the pre-repair RED) |"
+        },
+        {
+          "line": 81,
+          "text": "| repeat after a committed target | `False`, sole delta one appended `b3_response` | yes: the response record is computed over current middle and legitimately differs; `exact_replay` asserts source identity, not a write-free call |"
+        },
+        {
+          "line": 82,
+          "text": "| valid-empty target (missing permission) | `False`, transition `VALID_EMPTY` | yes: the objective event is still admitted |"
+        },
+        {
+          "line": 83,
+          "text": "| denied target (permission not registered) | transition `DENIED`, `owner_effect_committed=False`, no `independent_owner_receipt` | yes |"
+        },
+        {
+          "line": 85,
+          "text": "One structural boundary worth recording: scene projections are bound to event identity, so a **second** event that reuses the same utterance/exposure evidence is refused `SOURCE_PREIMAGE_IDENTITY_COLLISION`. Independent second-event probes therefore run on isolated databases. This is preimage identity protection, not a new defect."
+        },
+        {
+          "line": 87,
+          "text": "### Cold replay and SQL receipts"
+        },
+        {
+          "line": 89,
+          "text": "Both developmental loops (`positive`, `permission_absent`) were executed and then reconstructed in fresh Python processes against fresh SQLite files: exact `snapshot_hash` match, exact per-episode receipt list match, full `sqlite_master` definition and complete table-row match between live and cold copies, `PRAGMA integrity_check = ok` on all four files. A double replay into an already-populated file (this reviewer's own first verification mistake) is preserved in the transcript as a clock-guard observation: re-running an earlier episode is refused `B3_TIME_REVERSED` with no state change."
+        },
+        {
+          "line": 93,
+          "text": "249 inherited checks pass (B1 39, P1 74, historical D1 22, corrected D1 17, F1 reference 97), plus B2 integration/accounting 81, R1 45, repair regression 5, E2 strict 2 and M2 41. Historical negatives reproduce at their exact identities: full E2 42/2, X2 16/1, M1-on-M2 18/19, strict I2-on-M2 13/10, M3 source-preimage 3 RED, and native F1 **17 RED** with unchanged IDs F01 F02 F03 F04 F05 F06 F07 F08 F10 F11 F13 F15 F16 F17 F18 F19 F21. None was edited, skipped or xfailed."
+        },
+        {
+          "line": 95,
+          "text": "## Exact old-versus-new RED accounting"
+        },
+        {
+          "line": 99,
+          "text": "| `test_schema_only_race_is_rejected` | RED | **PASS** |"
+        },
+        {
+          "line": 100,
+          "text": "| `test_schema_change_on_refusal_sets_no_mutation_false` | RED | **PASS** |"
+        },
+        {
+          "line": 102,
+          "text": "| Independent controls HC1/HC2/HC3 (6 cases) | RED | **PASS** |"
+        },
+        {
+          "line": 103,
+          "text": "| X3 duplicate physical-check IDs | RED | RED (preserved) |"
+        },
+        {
+          "line": 104,
+          "text": "| X3 pre-loss threshold | RED | RED (preserved) |"
+        },
+        {
+          "line": 105,
+          "text": "| X3 standalone helper readset | RED | RED (preserved) |"
+        },
+        {
+          "line": 106,
+          "text": "| X3 obsolete delayed-detection race | RED | RED (preserved) |"
+        },
+        {
+          "line": 107,
+          "text": "| Original B3 seeded refusal controls | 4 RED | 4 RED (preserved) |"
+        },
+        {
+          "line": 108,
+          "text": "| Native F1 | 17 RED | 17 RED (preserved) |"
+        },
+        {
+          "line": 109,
+          "text": "| M3 source-preimage | 3 RED | 3 RED (preserved) |"
+        },
+        {
+          "line": 110,
+          "text": "| E2/X2 legacy assertions | 2+1 RED | 2+1 RED (preserved) |"
+        },
+        {
+          "line": 111,
+          "text": "| M1/I2-on-M2 interface grain | 19+10 RED | 19+10 RED (preserved) |"
+        },
+        {
+          "line": 113,
+          "text": "No legacy scientifically unsupported expectation was marked PASS; no target/practice rule was changed to turn anything green."
+        },
+        {
+          "line": 115,
+          "text": "## Why the repair works (independent reading of the diff)"
+        },
+        {
+          "line": 117,
+          "text": "The pre-repair `snapshot()` returned table names and rows only. `Integration.run` now captures one consistent logical readset — `sqlite_master` definitions for tables/indexes/triggers/views plus `schema_version`/`user_version`/`application_id` and all rows — via `_database_snapshot()`, and rechecks it under `BEGIN IMMEDIATE` (`PUBLICATION_READSET_CHANGED`). Schema identity and cross-file `user_version`/`application_id` are compared separately (`PUBLICATION_SCHEMA_CHANGED`), while `schema_version` is compared against the scratch copy's own post-backup baseline because SQLite backup legitimately advances the destination's schema cookie; this is a correct fix and the rollback-acceptance control in the author's development history caught the earlier cross-file mistake. Refusal receipts now compute `no_mutation` over the full logical snapshot. Table identifiers are quoted. Row publication remains strictly additive, and independent rows are preserved rather than deleted. No policy drift, trigger execution or schema mutation was introduced by the patch."
+        },
+        {
+          "line": 121,
+          "text": "Everything in `02_REQUIREMENTS_AND_LIMITATIONS.md` is preserved and in force. In particular: no human habit-acquisition law, no enacted third check at t9, no selected durable belief/affect, no independent other-actor development, no ADP016/017 grant, no native ADP019 issuer authority, no CAN008/CAN011 law admission, no M2 repair incorporation (frozen M2 `5c2fbe14ccfa5027becfabc682206a1e61aaf986` retains its three M3 preimage REDs and durable interpretation stays quarantined), no R3/R4 or ONECALL, no production feasibility, no power-loss/fsync durability claim, no immunity to arbitrary privileged SQL or DBA corruption, no whole-database physical-layout or connection-local-setting coverage (the readset is logical state; staging remains O(database size) with writer contention). External raw SQL here is a privileged schema-writer adversary, distinct from an unauthenticated B2 request; the finding was a missing promised schema/readset boundary, and nothing here shows unauthenticated request data can alter schema. A durable observed candidate is not evidence of practice formation or human psychology. No authorization is manufactured from review tests."
+        },
+        {
+          "line": 123,
+          "text": "## Disposition"
+        },
+        {
+          "line": 125,
+          "text": "**ACCEPT_SCOPED** at the tested grain, returned to Sorok HQ for adjudication. No automatic follow-on commission is created. If REDs had remained they would have been returned literally rather than repaired here; none remained in the commissioned scope."
+        }
+      ],
+      "referenced_shas": [
+        "16f15a125ba54cdf17f5d41be2d851bbcd2240d7",
+        "e18c41b5faa6cbb0ab393561833d850e1dd1e383",
+        "528e8cde0cff9e28f3c55d5d54a66e820d7401fa",
+        "8bd4d6b01fd402e7e6a8d07903f2c3cada837f55",
+        "d3a324bb93c17fdaf12670dd153aeb138d9c426a",
+        "604e09986d87f404daa9857b25758ec2e1fe491d",
+        "5c2fbe14ccfa5027becfabc682206a1e61aaf986"
+      ],
+      "reported_disposition": "Verdict: ACCEPT_SCOPED — the exact local-authored repair `16f15a125ba54cdf17f5d41be2d851bbcd2240d7` closes both unchanged B3A-I2 schema REDs, and no frozen, atomicity, B3, F2, E3, X3, inherited or sourcefree expectation was weakened to do so.** The acceptance is scop",
+      "code_inspection": {
+        "path": "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/independent_worker.py",
+        "blob": "884bd9161602d9fcf80ec8ed1d26b1843caf33dd",
+        "bytes": 3004,
+        "functions": [
+          "def snapshot(path):",
+          " def wait(at):"
+        ],
+        "sample": "\"\"\"B3AS-I2 reviewer-owned process worker. No candidate or frozen-test edits.\"\"\"\nfrom pathlib import Path\nimport os, sys, json, sqlite3\n\ndef snapshot(path):\n db = sqlite3.connect(path)\n schema = db.execute(\"SELECT type,name,tbl_name,sql FROM sqlite_master ORDER BY type,name\").fetchall()\n tables = {n: db.execute('SELECT * FROM \"' + n.replace('\"', '\"\"') + '\" ORDER BY 1').fetchall()\n           for typ, n, tbl, sql in schema if typ == 'table'}\n meta = {name: db.execute('PRAGMA ' + name).fetchone()[0] for name in ('schema_version', 'user_version', 'application_id')}\n integrity = db.execute('PRAGMA integrity_check').fetchone()[0]\n db.close()\n return dict(pid=os.getpid(), integrity=integrity, schema=schema, tables=tables, metadata=meta)\n\nif __name__ == '__main__':\n mode, path = sys.argv[1:3]\n if mode == 'inspect':\n  print(json.dumps(snapshot(path))); sys.exit(0)\n sys.path.insert(0, os.environ['I2_CANDIDATE_ROOT'])\n from integration import Integration\n from fixture_authority import FixtureAuthority\n from developmental_loop import permission_for\n from custody import prepare, admit, participant_from_records\n from sources import b2\n if mode == 'ddl':\n  conn = sqlite3.connect(path, timeout=0)\n "
+      }
+    },
+    {
+      "index": 3,
+      "name": "agent/reviewer-sorok-20261018-clr3-recursive-canon-science-i2-r1",
+      "pinned_sha": "de9a525c362bf58dbb620fcd7db336a4734e7db8",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 35,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/00_REPAIR_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/README.md",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/SHA256SUMS",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/candidate.patch",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/candidate/recursive_court.py",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/candidate_binding.py",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/environment_passport_delta.json",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/baseline_binding.json",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/before_repair.log",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/before_repair.xml",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/clr3_unchanged.log",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/clr3_unchanged.xml",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/cold_replay.json",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/completion_audit.json",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/execution_receipts.json",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/harness_initial_historical_import_failure.log",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/harness_initial_receipt_shape_failure.log",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/harness_initial_xml_redaction_failure.log",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/independent_unchanged.log",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/independent_unchanged.xml",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/original_six_red.log",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/original_six_red.xml",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/repair_controls.log",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/repair_controls.xml",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/repaired_suites.log",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/repaired_suites.xml",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/replay.log",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/replay_and_imports.json",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/runner.log",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/evidence/valid_trajectories.json.gz",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/replay_candidate.py",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/return_manifest.json",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/run_repair.py",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/seal_repair.py",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/test_repair_contracts.py"
+      ],
+      "code_paths": [
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/candidate/recursive_court.py",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/candidate_binding.py",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/replay_candidate.py",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/run_repair.py",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/seal_repair.py",
+        "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/test_repair_contracts.py"
+      ],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/00_REPAIR_RETURN.md",
+        "blob": "d43082863647c9d5c03ccda3d8219d4619a38dc3",
+        "url": "https://github.com/maidiu/rawlsing/blob/de9a525c362bf58dbb620fcd7db336a4734e7db8/WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/00_REPAIR_RETURN.md",
+        "lines": 53
+      },
+      "review_evidence": "# CLR3 — user-authorized repair of the two new I2 REDs\n\n**Both frozen independent counterexamples now pass against the repair candidate.** This follow-up is author repair and executable regression evidence, not independent acceptance of these changes or native adoption.\n\nAuthorization: the user's follow-up, “okay, can you fix them please”, after the explanation of I2-F01 and I2-F02. This authorizes a bounded sourcefree repair inside the existing reviewer return. Original CLR3 at `4076dcc7c944723b8eea449c0753e535b79d1aa5`, the independent review at `0a5da3542f9bb5dd442a2cc1bd605d8958388f13`, their evidence, all frozen tests, accepted laws, PRE-MAIN, source branch and current actor remain unchanged.\n\nThe repaired implementation is `candidate/recursive_court.py`. It is a copy of the reviewed wrapper with an explicit import-path binding to the unchanged 65-file legacy closure. The patch changes validation and commit ordering only; numerical evolution, coefficients, event selection, probability policy, narrative grammar and native-owner HOLD are preserved.\n\n## I2-F01: cross-entry canon consistency\n\nBefore accepting a new realization, the ledger compares it with already admitted realizations at the same clock in the same research-world ledger:\n\n- The same lock ID must have the same physical location.\n- For the same focal actor/time, the father-presence account must agree.\n\nConflicts raise `CANON_OBJECT_LOCATION_CONFLICT` or `CANON_ACTOR_FACT_CONFLICT`. `verify()` also checks these invariants over retained entries. Validation completes before either the source-preimage map or canon list changes. A refusal reserves no source ID, so a corrected compatible retry can succeed without rewriting earlier entries.\n\nCompatible same-time particulars and alternative wording remain legal. Separate counterfactual-world ledgers may select different locations. A later observation does not retroactively replace an earlier location: both immutable records remain, with their own clocks and exact references. This bounded observation check does not create a general movement/correction authority or a native world-history consistency engine.\n\n## I2-F02: encounter-source consistency\n\nThe repair chooses the small **ingress consistency-check** option rather than asserting a newly authenticated producer. Before admission, and on later verification, the source must consistently bind the existing fixture's:\n\n- Boolean father-presence flag;\n- presence or absence of exactly one `actual-shared-attention` selected event;\n- that event's existing `relationship` kind and `care` offer;\n- available-time/presence account when the optional material-response record is supplied.\n\nAn inconsistent account raises `SOURCE_ENCOUNTER_MISMATCH` before any canon/source write. Both false-to-true and true-to-false contradictions are exercised. Duplicate attention records, altered event kind, removed care offer and contradictory material time refuse as well. The material threshold is the original fixture's unchanged `>=10` predicate, not a new psychological coefficient or issued rule.\n",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# CLR3 — user-authorized repair of the two new I2 REDs"
+        },
+        {
+          "line": 3,
+          "text": "**Both frozen independent counterexamples now pass against the repair candidate.** This follow-up is author repair and executable regression evidence, not independent acceptance of these changes or native adoption."
+        },
+        {
+          "line": 5,
+          "text": "Authorization: the user's follow-up, “okay, can you fix them please”, after the explanation of I2-F01 and I2-F02. This authorizes a bounded sourcefree repair inside the existing reviewer return. Original CLR3 at `4076dcc7c944723b8eea449c0753e535b79d1aa5`, the independent review at `0a5da3542f9bb5dd442a2cc1bd605d8958388f13`, their evidence, all frozen tests, accepted laws, PRE-MAIN, source branch and current actor remain unchanged."
+        },
+        {
+          "line": 7,
+          "text": "The repaired implementation is `candidate/recursive_court.py`. It is a copy of the reviewed wrapper with an explicit import-path binding to the unchanged 65-file legacy closure. The patch changes validation and commit ordering only; numerical evolution, coefficients, event selection, probability policy, narrative grammar and native-owner HOLD are preserved."
+        },
+        {
+          "line": 18,
+          "text": "Compatible same-time particulars and alternative wording remain legal. Separate counterfactual-world ledgers may select different locations. A later observation does not retroactively replace an earlier location: both immutable records remain, with their own clocks and exact references. This bounded observation check does not create a general movement/correction authority or a native world-history consistency engine."
+        },
+        {
+          "line": 22,
+          "text": "The repair chooses the small **ingress consistency-check** option rather than asserting a newly authenticated producer. Before admission, and on later verification, the source must consistently bind the existing fixture's:"
+        },
+        {
+          "line": 25,
+          "text": "- presence or absence of exactly one `actual-shared-attention` selected event;"
+        },
+        {
+          "line": 29,
+          "text": "An inconsistent account raises `SOURCE_ENCOUNTER_MISMATCH` before any canon/source write. Both false-to-true and true-to-false contradictions are exercised. Duplicate attention records, altered event kind, removed care offer and contradictory material time refuse as well. The material threshold is the original fixture's unchanged `>=10` predicate, not a new psychological coefficient or issued rule."
+        },
+        {
+          "line": 31,
+          "text": "This fixes the reported contradiction between the narration's presence claim and the recorded encounter. It does not independently recompute every possible numerical transition, certify arbitrary producer data, authenticate an issuer, or validate human parenting/uptake. Those stronger claims remain outside this repair."
+        },
+        {
+          "line": 35,
+          "text": "| Suite | PASS | RED | Errors | Skips |"
+        },
+        {
+          "line": 37,
+          "text": "| Original unchanged CLR3 suite, bound to repaired wrapper | 38 | 0 | 0 | 0 |"
+        },
+        {
+          "line": 38,
+          "text": "| All six unchanged independent probes, bound to repaired wrapper | 6 | 0 | 0 | 0 |"
+        },
+        {
+          "line": 40,
+          "text": "| Original six historical assertions, on their frozen harness | 0 | 6 | 0 | 0 |"
+        },
+        {
+          "line": 42,
+          "text": "**55 PASS, six original REDs retained.** Before repair, the copied wrapper with only its source-path binding changed reproduced the same two independent REDs; `evidence/before_repair.*` retains that baseline. No expectation was edited, skipped or marked xfail. The explicit pytest plugin verifies that candidate tests import `repair_r1/candidate/recursive_court.py`; passing tests against the old wrapper are not misrepresented as repaired execution."
+        },
+        {
+          "line": 44,
+          "text": "All four complete valid trajectory records remain equal to the published CLR3 JSON, including numerical snapshots, draws, canon records, later task and whole-trace hashes. Three workplace trajectories also replay identically in four cold processes with hash seeds 0, 1, 71 and 123. Every observed legacy import stays in the unchanged frozen closure and matches its recorded SHA-256. The complete previous review's file hashes are checked before and after testing."
+        },
+        {
+          "line": 46,
+          "text": "The runner exits **1 deliberately** because it includes the preserved six-RED historical court. Actual per-suite exit codes, commands, logs and parseable JUnit are in `evidence/`. An initial runner failed while sanitizing paths into XML with angle-bracket placeholders; XML-safe placeholders fixed that packaging problem. The isolated historical court also required its frozen harness directory on its own Python path. Both harness diagnostics are retained; neither fix changed candidate behavior or test expectations."
+        },
+        {
+          "line": 50,
+          "text": "The archive-container mismatch, the historical-admission limit on 49 extra dependencies, all six original RED dispositions and all native-owner implementation/grant holds remain unchanged. No production mathematics, native psychology, CAN008/CAN011/ADP issuance, B3/M2 integration, actor use or migration was performed."
+        },
+        {
+          "line": 52,
+          "text": "HQ owns a distinct review/adoption decision for this repaired candidate. The same agent's repair tests do not constitute independent acceptance of its own changes. The earlier independent review remains a frozen historical result; this additive repair packet records the changed candidate and its evidence separately. Publication uses the existing commissioned branch, ordinary non-force push and direct remote SHA readback."
+        }
+      ],
+      "referenced_shas": [
+        "4076dcc7c944723b8eea449c0753e535b79d1aa5",
+        "0a5da3542f9bb5dd442a2cc1bd605d8958388f13"
+      ],
+      "reported_disposition": "dispositions and all native-owner implementation/grant holds remain unchanged. No production mathematics, native psychology, CAN008/CAN011/ADP issuance, B3/M2 integration, actor use or migration was performed.",
+      "code_inspection": {
+        "path": "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/candidate/recursive_court.py",
+        "blob": "e834cb2c726118df3053fcf8e2d88d94f454469e",
+        "bytes": 20219,
+        "functions": [
+          "def digest(value):",
+          "def require(condition,code):",
+          "def named_choice(seed,name,values):",
+          "def initial_state():",
+          "def config_and_order():",
+          "def changes(before,after):",
+          "def numeric_changes(before,after,prefix=''):",
+          "def recorded_engine_rng(year):",
+          "    class TracedRandom:",
+          "        def __init__(self,rng,namespace,instance):self.rng=rng;self.namespace=namespace;self.instance=instance",
+          "        def __getattr__(self,name):",
+          "            def draw(*args,**kwargs):",
+          "    def facade(namespace):",
+          "        def factory(seed=None):",
+          "def advance(state,config,order,clock,label):",
+          "def event(id,kind,**extra):",
+          "def admit_first_proposal(packet,state):",
+          "    def inspect(value):",
+          "def propose_situations(state):",
+          "def apply_existing_events(state,selected,config,clock):",
+          "def render_text(facts,variant):",
+          "def propose_realization(frame,location='hall_drawer',variant='plain'):",
+          "def validate_source_encounter(frame):",
+          "def validate_canon_consistency(prior,entry):",
+          "class CanonLedger:",
+          "    def __init__(self):self._entries=[];self._sources={}",
+          "    def entries(self):return deepcopy(self._entries)",
+          "    def verify(self):",
+          "    def admit(self,frame,candidate):",
+          "    def append_unrelated(self,clock=25):",
+          "    def later_consume(self,canon_id,clock=31,actor='child',busy=True):",
+          "def request_native_trajectory():",
+          "def run_trajectory(workplace='ROUTINE',seed=23,location=None,variant='plain',father=None,busy=True):"
+        ],
+        "sample": "\"\"\"CLR3: actual historical V3 recurrence + explicitly provisional canon contract.\n\nNo new numerical psychology. Existing legacy formulas remain unadopted. The\nclosed-grammar narrator and history/exposure policy are research mocks, not\nnative ADP owners or arbitrary-natural-language semantic validation.\n\"\"\"\nfrom __future__ import annotations\nfrom dataclasses import asdict\nfrom copy import deepcopy\nfrom pathlib import Path\nimport hashlib,json,random,sys\nfrom contextlib import contextmanager\nfrom types import SimpleNamespace\nfrom unittest.mock import patch\n\nROOT=Path(__file__).resolve().parent\n# Reuse the frozen reviewed source closure; only this research wrapper changes.\nSOURCE_ROOT=ROOT.parents[1]/'reconstructed/clr3'\nsys.path.insert(0,str(SOURCE_ROOT/'sources/legacy'))\nsys.path.insert(0,str(SOURCE_ROOT/'sources'))\nfrom v3.core.state import BackboneState,DomainState\nfrom v3.core.enums import DOMAIN_NAMES\nfrom v3.core.derived import compute_all_derived\nfrom v3.core.config_loader import load_v3config,load_step_order\nfrom v3.engine.yearly_step import run_one_year\nfrom v3.engine.effects.delta_templates import delta_from_event,merge_deltas,apply_deltas_to_state,build_state_deltas_applied"
+      }
+    },
+    {
+      "index": 4,
+      "name": "agent/reviewer-sorok-20261018-clr3r1-canon-repair-independent-i2-r1",
+      "pinned_sha": "f982580d43133b8641e7efe5d7219aa08307b57e",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 5,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-20261018-CLR3R1-CANON-REPAIR-INDEPENDENT-I2-R1/SHA256SUMS",
+        "WORKER_RETURNS/SOROK-20261018-CLR3R1-CANON-REPAIR-INDEPENDENT-I2-R1/environment_passport_delta.json",
+        "WORKER_RETURNS/SOROK-20261018-CLR3R1-CANON-REPAIR-INDEPENDENT-I2-R1/evidence/completion_audit.json",
+        "WORKER_RETURNS/SOROK-20261018-CLR3R1-CANON-REPAIR-INDEPENDENT-I2-R1/evidence/publication_receipt.json",
+        "WORKER_RETURNS/SOROK-20261018-CLR3R1-CANON-REPAIR-INDEPENDENT-I2-R1/return_manifest.json"
+      ],
+      "code_paths": [],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-20261018-CLR3R1-CANON-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+        "blob": "f02ad4b05658f3f5b61d7bfdb3cc13a50f0b090d",
+        "url": "https://github.com/maidiu/rawlsing/blob/f982580d43133b8641e7efe5d7219aa08307b57e/WORKER_RETURNS/SOROK-20261018-CLR3R1-CANON-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+        "lines": 76
+      },
+      "review_evidence": "# Fresh independent CLR3R1 canon-repair I2 return\n\n**Reviewer disposition: ACCEPT_SCOPED for the two local sourcefree repairs at `de9a525c362bf58dbb620fcd7db336a4734e7db8`. Historical container lineage, authenticated producer truth, and native V3/actor migration remain HOLD.** This is an independent review recommendation for HQ intake, not adoption or a semantic issue.\n\nThe reviewer began from the exact sealed startup `6cd39f339849d724c862a2a55af977dcb8e7e011`, whose parent is the commission base `68873526efe5a39a0849aa401666ac997870f156`. Its sole added path is the sealed commission. The remote assigned branch and PRE-MAIN both matched their stated pins when checked. All new files belong to this commissioned return subtree. No candidate, frozen expectation, accepted owner, PRE-MAIN, actor registry, B3 or M2 was changed.\n\nOne fresh Codex conversation and isolated sparse worktree performed staging, test design, execution and scientific adjudication. Current conversation metadata reports `gpt-6.1-sol / high`. No helper/subagent, model/provider switch, paid external model call, author runner or shared scratch database was used. Separate conversation/worktree and fresh analysis are established; distinct human account, physical machine or model weights are not asserted. The Git object store and package cache were reused. Actual dollar/quota advantage is UNKNOWN. No original35/raw survey source was executed.\n\n## Independent execution\n\n| Court | PASS | RED | Error / Skip | Exit |\n|---|---:|---:|---:|---:|\n| Unchanged CLR3, actual repaired wrapper | 38 | 0 | 0 / 0 | 0 |\n| Six unchanged original I2 probes, actual repaired wrapper | 6 | 0 | 0 / 0 | 0 |\n| Eleven authored repair controls, actual repaired wrapper | 11 | 0 | 0 / 0 | 0 |\n| Fresh independent cases, actual repaired wrapper | 34 | 0 | 0 / 0 | 0 |\n| Six unchanged historical R1 assertions, original harness | 0 | 6 | 0 / 0 | 1 |\n| Original I2 baseline, original CLR3 wrapper | 4 | 2 | 0 / 0 | 1 |\n\nThe repaired court is **89 PASS**, with no new local repair RED. Baseline executions are separately named historical observations, not failed repaired-candidate cases. The runner deliberately exits 1 because the historical RED assertions remain actual failures. The initial two-case discriminating run is an additional execution of N01 and is not added to the 89. No expectation was weakened, marked xfail, skipped or rewritten.\n\nThe 34 fresh cases implement the prospectively sealed N01–N13 registration in `evidence/preregistration.json` (SHA-256 `ada369b06e999d3a6a34bfdf85763326921db8e8dd95fe5ede8abd12dee9a368`). Registration preceded every fresh case outcome. They cover both location conflict orders, both consistent-source presence conflict orders, optional material records, missing/duplicate/wrong-kind/wrong-care events, exact Boolean presence, the existing 9/10-minute fixture boundary, atomic refusal and corrected retry, source identity/replacement/tampering, compatible narration, copied snapshots, actual later consumption, neutral state, convergence, separate worlds and cross-clock limits. Three malformed-input diagnostics confirm no partial write while preserving their untyped exception limitation.\n\n`run_court.py` uses separate subprocesses, an explicit frozen candidate-binding plugin, disabled plugin autoload/cache, and no ancestor pytest configuration. The plugin asserts the actual candidate `module.__file__`; `evidence/replay_imports.json` independently records the imported wrapper, legacy and world module paths, Git blob SHA-1 and content SHA-256. `evidence/execution_receipts.json` contains exact commands, environment path aliases, exits and JUnit totals. Logs/XML are new independent executions. Files under `frozen/` are exact predecessor evidence and are never presented as this review's execution.\n\n## Findings on the repairs\n\n**I2-F01 — locally closed.** Public admission cannot add the same lock at the same clock in different physical locations, even through different source IDs and with an unrelated intervening ledger entry. Individually consistent frames that disagree on father presence also conflict for the same child/time. Both orderings refuse. The source map and canon remain byte-equivalent to their pre-refusal state, and the refused ID can be reused for a corrected compatible admission. `verify()` independently revisits the consistency invariant; a diagnostic privileged rehash of a conflicting entry still fails it. This last probe is defense in depth, not the original public-admission threat model.\n\nThis check is precisely scoped. One ledger is treated as one research world; there is no world ID/authenticated world authority. Separate ledgers can choose different details. Later-clock observations can differ without a movement receipt, and earlier records remain readable by exact ID. Only the hardcoded child can admit; other actor admission or multi-actor physical consistency is not demonstrated. The source-effect lower time bound is checked, but general currentness, interval validity, latest-state selection, arbitrary corrections/retractions, source deletion, competing processes, durable transactions and rollback after process failure are not established. No such stronger claim is accepted.",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# Fresh independent CLR3R1 canon-repair I2 return"
+        },
+        {
+          "line": 3,
+          "text": "**Reviewer disposition: ACCEPT_SCOPED for the two local sourcefree repairs at `de9a525c362bf58dbb620fcd7db336a4734e7db8`. Historical container lineage, authenticated producer truth, and native V3/actor migration remain HOLD.** This is an independent review recommendation for HQ intake, not adoption or a semantic issue."
+        },
+        {
+          "line": 7,
+          "text": "One fresh Codex conversation and isolated sparse worktree performed staging, test design, execution and scientific adjudication. Current conversation metadata reports `gpt-6.1-sol / high`. No helper/subagent, model/provider switch, paid external model call, author runner or shared scratch database was used. Separate conversation/worktree and fresh analysis are established; distinct human account, physical machine or model weights are not asserted. The Git object store and package cache were reused. Actual dollar/quota advantage is UNKNOWN. No original35/raw survey source was executed."
+        },
+        {
+          "line": 9,
+          "text": "## Independent execution"
+        },
+        {
+          "line": 11,
+          "text": "| Court | PASS | RED | Error / Skip | Exit |"
+        },
+        {
+          "line": 13,
+          "text": "| Unchanged CLR3, actual repaired wrapper | 38 | 0 | 0 / 0 | 0 |"
+        },
+        {
+          "line": 14,
+          "text": "| Six unchanged original I2 probes, actual repaired wrapper | 6 | 0 | 0 / 0 | 0 |"
+        },
+        {
+          "line": 15,
+          "text": "| Eleven authored repair controls, actual repaired wrapper | 11 | 0 | 0 / 0 | 0 |"
+        },
+        {
+          "line": 16,
+          "text": "| Fresh independent cases, actual repaired wrapper | 34 | 0 | 0 / 0 | 0 |"
+        },
+        {
+          "line": 17,
+          "text": "| Six unchanged historical R1 assertions, original harness | 0 | 6 | 0 / 0 | 1 |"
+        },
+        {
+          "line": 18,
+          "text": "| Original I2 baseline, original CLR3 wrapper | 4 | 2 | 0 / 0 | 1 |"
+        },
+        {
+          "line": 20,
+          "text": "The repaired court is **89 PASS**, with no new local repair RED. Baseline executions are separately named historical observations, not failed repaired-candidate cases. The runner deliberately exits 1 because the historical RED assertions remain actual failures. The initial two-case discriminating run is an additional execution of N01 and is not added to the 89. No expectation was weakened, marked xfail, skipped or rewritten."
+        },
+        {
+          "line": 24,
+          "text": "`run_court.py` uses separate subprocesses, an explicit frozen candidate-binding plugin, disabled plugin autoload/cache, and no ancestor pytest configuration. The plugin asserts the actual candidate `module.__file__`; `evidence/replay_imports.json` independently records the imported wrapper, legacy and world module paths, Git blob SHA-1 and content SHA-256. `evidence/execution_receipts.json` contains exact commands, environment path aliases, exits and JUnit totals. Logs/XML are new independent executions. Files under `frozen/` are exact predecessor evidence and are never presented as this review's execution."
+        },
+        {
+          "line": 28,
+          "text": "**I2-F01 — locally closed.** Public admission cannot add the same lock at the same clock in different physical locations, even through different source IDs and with an unrelated intervening ledger entry. Individually consistent frames that disagree on father presence also conflict for the same child/time. Both orderings refuse. The source map and canon remain byte-equivalent to their pre-refusal state, and the refused ID can be reused for a corrected compatible admission. `verify()` independently revisits the consistency invariant; a diagnostic privileged rehash of a conflicting entry still fails it. This last probe is defense in depth, not the original public-admission threat model."
+        },
+        {
+          "line": 32,
+          "text": "**I2-F02 — the chosen fixture ingress-consistency repair is locally closed.** Presence must be Boolean and agree with zero/one selected `actual-shared-attention` events. A present event must retain relationship kind and care offer. When supplied, the material response must agree through the existing `available_minutes >= 10` predicate. Contradictions refuse before source reservation or canon append, including when the optional response is absent. A missing optional response is deliberately lawful when the remaining frame agrees."
+        },
+        {
+          "line": 34,
+          "text": "**Conditional producer-trust HOLD remains.** N10 changes presence, minutes and selected encounter together while retaining the old numerical after-snapshot. That mutually consistent fabrication enters. Thus the patch neither authenticates the producer nor verifies that every numeric transition was computed from its claimed selected events. This is the predicted boundary-control observation, not a new RED against the expressly bounded repair or evidence that the ordinary producer emits corrupt frames. A content-bound qualified producer receipt or independently qualified recomputation is still needed for stronger causal truth. The `>=10` threshold and relationship/care mapping remain old unissued fixture assumptions. They are not parenting or psychological laws."
+        },
+        {
+          "line": 40,
+          "text": "Independent audit dereferenced all 338 staged repair/review blobs and the 182 original reconstruction preimages against their exact original commits. The new-vs-original wrapper diff reproduces `candidate.patch` exactly. Original wrapper/test/world bytes and all 65 legacy/config files remain unchanged after execution. Source refs and content hashes are in `staging_manifest.json`, `evidence/source_audit.json` and `evidence/authority_audit.json`."
+        },
+        {
+          "line": 42,
+          "text": "One predecessor runner containing a personal host path is kept locally, ignored from this new return, and recoverable through its exact manifest Git pin using `materialize_frozen.py`. Its bytes were verified unchanged; it is not this review's runner. All required candidate/test/runtime/selected-source bytes are published. The 301-file original independent review seal also verifies unchanged, including locally retained predecessor material."
+        },
+        {
+          "line": 44,
+          "text": "| Question | Independent finding |"
+        },
+        {
+          "line": 47,
+          "text": "| Runtime/config closure | 65/65, 505,314 bytes; original Git blobs, inventory and available archive agree |"
+        },
+        {
+          "line": 51,
+          "text": "| Whole-container equality | FALSE; HOLD retained |"
+        },
+        {
+          "line": 52,
+          "text": "| Alternative essentials family | Only 15/31 selected members match; never imported |"
+        },
+        {
+          "line": 53,
+          "text": "| Observed execution closure | 54 legacy Python modules, r1_world, repaired wrapper, three YAML reads; all exact pinned bytes |"
+        },
+        {
+          "line": 55,
+          "text": "Only selected code/document members were read from the archive; no full extraction, substitute archive or unrelated data was imported. Member equality does not authenticate the whole archive, historically admit the 49 extras, or validate any coefficient. Historical authority documents that report their own exact archive match remain historical testimony; they do not change this independently observed container mismatch."
+        },
+        {
+          "line": 57,
+          "text": "All four complete trajectories, including every stored state, numeric delta, random output, source preimage, narration, canon record, later task and final state, equal the original CLR3 JSON. Three workplace trajectories also retain their full trace hashes in four cold interpreters with PYTHONHASHSEED 0, 1, 71 and 123. This proves deterministic bounded reconstruction. It supplies no ADP020 registration or live LLM reliability."
+        },
+        {
+          "line": 63,
+          "text": "Paired workplace fixtures hold initial person/world records and unrelated named draws fixed. Opaque workplace relabeling preserves the numerics while material overtime changes available father time from 35 to 3 minutes. A protected-care fixture moderates the material response with recorded displaced overtime. Routine and hours-cut converge; pressure-flow history and many individual fields can coincide even while another legacy field differs. This is code-level causal intervention under authored assumptions, not an identified human causal effect. No universal all-field variation requirement is imposed."
+        },
+        {
+          "line": 65,
+          "text": "Fresh instrumentation observes the actual `later_consume` call and its persisted entry. The selected lock field determines the later retrieval location and is copied into the delayed feedback's actual activity source; its state then feeds the next recurrence. Both compatible locations remain possible in separate worlds, while the numerical practice template can converge. This is source-dependent task construction. It does not demonstrate physical-world execution, native actor memory, spontaneous recall, location-dependent psychology or a general semantic renderer."
+        },
+        {
+          "line": 67,
+          "text": "The accepted claim reaches F3 only at this fixed computational-fixture grain. General longitudinal development, psychological calibration, persistent independent personhood, live model reliability and product feasibility remain unestablished. The held-fixed world, authored event taxonomy, default initialization, relation-to-care adapter, numeric formulas and access policy exclude major scientific and implementation problems. A falsifier of this scoped acceptance would be a well-typed public admission producing same-clock conflicting retained facts, a contradictory fixture encounter entering, a refused admission reserving state, a compatible detail no longer reaching the later task, or exact replay/source divergence. None occurred in this court."
+        },
+        {
+          "line": 71,
+          "text": "The accepted CAN008 R2 is the immutable producer blob `b80dd6925066510ecbbfec7b427bf9f688475663`, adopted by the HQ record, even though its literal contains CANDIDATE and its producer path is absent at the current base. The present v1 files do not demote R2. The inspected owner/adoption anchors and zero-positive boundary are identical at the commission base to the prior reviewed pins. `02_NATIVE_OWNER_GAPS.md` and its JSON identify 14 exact seams and minimum practical adjustments."
+        },
+        {
+          "line": 73,
+          "text": "CAN008's adopted grammar still requires concrete rule/issuer/body/effect/target bindings. CAN011's three durable kinds do not authorize legacy labels, defaults, passive healing or label-to-practice constants. ADP021 requires accepted process semantics and separate cadence, with no annual fallback. CAN014 also explicitly identifies legacy `compute_all_derived` causal-state writes as noncanonical impurity; successful legacy recomputation is not proof of native pure derivation. ADP010/015/019 occurrence/relationship ownership and ADP016/017 memory/access remain separate. The inspected production default positive-transition registry is empty; no native court was called here and no estate-wide absence is claimed."
+        },
+        {
+          "line": 75,
+          "text": "**No REVISE blocker remains for the two specified local repairs.** Historical container/extra-dependency qualification, authenticated producer truth and native implementation/permissions remain HOLD. HQ owns intake/adoption and any next owner assignment. No autonomous follow-on commission, V3 wake, actor use, coefficient adoption, B3/M2 integration or self-adoption was performed. The final remote SHA is supplied with direct remote verification in the delivery message; no committed document claims its own self-referential commit hash."
+        }
+      ],
+      "referenced_shas": [
+        "de9a525c362bf58dbb620fcd7db336a4734e7db8",
+        "6cd39f339849d724c862a2a55af977dcb8e7e011",
+        "68873526efe5a39a0849aa401666ac997870f156",
+        "b80dd6925066510ecbbfec7b427bf9f688475663"
+      ],
+      "reported_disposition": "disposition: ACCEPT_SCOPED for the two local sourcefree repairs at `de9a525c362bf58dbb620fcd7db336a4734e7db8`. Historical container lineage, authenticated producer truth, and native V3/actor migration remain HOLD.** This is an independent review recommendation for HQ int"
+    }
+  ]
+}
