@@ -1,0 +1,303 @@
+{
+  "schema": "SOROK_HR1_F3_EXACT_AUTHOR_TESTED_CUTS@1",
+  "generated_at_utc": "2026-10-29",
+  "repository": "maidiu/rawlsing",
+  "start_sha": "3fd8dcb3df520806c7aee820e511092863545f4e",
+  "prompt_head_sha": "1cc63e34ea2ebdf9391198b439c06c3e80e3668a",
+  "immutable_rc1": "337896aa995d579e3525588b405d07216709ac15",
+  "independent_hr1": "40df1e61fb32f9210839d8ddfa9f8bf9a47d7621",
+  "premain_pin": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "relationship_grade_legend": {
+    "ORIGINAL_DOCUMENT_NAMES_SOURCE_CUT__TEST_SCOPE_PER_VERDICT": "The reviewer document names the author source cut and the reviewer executed tests against it; this worker did not re-execute them.",
+    "CANDIDATE_TARGET_LINK__PRIMARY_DOC_DOES_NOT_STATE_EXACT_COMMIT__REQUIRES_SOURCE_MANIFEST": "The RC1/HR1 index links a candidate target commit, but the primary reviewer document does not itself state that commit; blob/evidence corroboration is required."
+  },
+  "test_execution_this_worker": "NOT_RUN__READ_ONLY_SOURCE_COMPARISON",
+  "native_science_acceptance": 0,
+  "adoption": "NONE",
+  "records": [
+    {
+      "id": "G17I",
+      "reviewer_branch": "agent/reviewer-sorok-20261019-g17i-material-historical-life-and-c9-consumer-independent-r1",
+      "reviewer_cut": "156b84cc8481b65c4196b42574010eb7920d6f44",
+      "reviewer_document": {
+        "path": "WORKER_RETURNS/SOROK-20261019-G17I-MATERIAL-HISTORY-INDEPENDENT-R1/00_RETURN.md",
+        "git_blob": "01f2db8920b441ba1456fc269537072e0b5a19d7",
+        "sha256": "b208dc74c0f108b487998f01340d1128cbed86e86f61402cea79270a7a7a3471",
+        "lines": 143
+      },
+      "reviewer_test": {
+        "path": "WORKER_RETURNS/SOROK-20261019-G17I-MATERIAL-HISTORY-INDEPENDENT-R1/tests/test_g17i_independent.py",
+        "git_blob": "83f17006b22271f17c87f4563608de08395d7a1c",
+        "sha256": "0e4535a708d83a85d763c592f3d206f0b21dbc599846d7ffcd89cd82f145a5e6"
+      },
+      "execution_evidence": {
+        "path": "WORKER_RETURNS/SOROK-20261019-G17I-MATERIAL-HISTORY-INDEPENDENT-R1/evidence/g17i_independent.xml",
+        "git_blob": "0dec3fafc23d9c19d1575ae960472ffdb5f82060",
+        "sha256": "9f7d8ad6283b9522f8b20dbead54afd2fc815b956cb6adf6620e214a7d794ca8",
+        "observed": "11 PASS / 3 RED / 0 ERROR / 0 SKIP"
+      },
+      "author_target": {
+        "branch": "agent/rabochii-sorok-20261019-g17-material-history-and-independent-lives-r1",
+        "cut": "90d0eb7925de54635559a879ee76fc1b97b9ff61",
+        "author_return": {
+          "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/00_RETURN.md",
+          "git_blob": "ebd0dabb5b48c86385ba1574dcc574646d20d87c",
+          "sha256": "e41ca272384efc87ffb59a522b8e5c8868cc9db6e92b8ef4e5cd3a77731d908a"
+        },
+        "target_cut_basis": "CANDIDATE_TARGET_LINK__PRIMARY_DOC_DOES_NOT_STATE_EXACT_COMMIT__REQUIRES_SOURCE_MANIFEST",
+        "source_files": [
+          {
+            "author_path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/continuation.py",
+            "reviewer_copy_path": "WORKER_RETURNS/SOROK-20261019-G17I-MATERIAL-HISTORY-INDEPENDENT-R1/target_candidate/lab_sgi1/continuation.py",
+            "git_blob": "c9318dcf33d041a673cfae15aff8fc51712f53e7",
+            "byte_identical_in_reviewer_copy": true
+          },
+          {
+            "author_path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/c9_handoff_consumer.py",
+            "reviewer_copy_path": "WORKER_RETURNS/SOROK-20261019-G17I-MATERIAL-HISTORY-INDEPENDENT-R1/target_candidate/c9_handoff_consumer.py",
+            "git_blob": "47e59c12b79c04b05c18e73ad76078a29d0d7b3c",
+            "byte_identical_in_reviewer_copy": true
+          },
+          {
+            "author_path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/pipeline.py",
+            "git_blob": "fc954993ef966d20d1915546e04a122daa93538f",
+            "reviewer_copy_blob": "fc954993ef966d20d1915546e04a122daa93538f"
+          }
+        ]
+      },
+      "tested_assertions": [
+        {
+          "test": "test_forged_material_event_supplying_cash_must_be_refused",
+          "assertion": "continue_person(e, participation=act, material_event=mat) is None",
+          "observed": "FAIL: returned a PARENT_CONTINUATION event; receipt cash 100058, material owner FAKE_SOURCE_OWNER, permission FAKE",
+          "source_pointer": "continuation.py:11-29 adds material_event['payment_per_actor'] without owner/permission authentication"
+        },
+        {
+          "test": "test_future_child_nested_alias_must_be_refused",
+          "assertion": "out['terminal']['status'] != 'COMMITTED'",
+          "observed": "FAIL: assert 'COMMITTED' != 'COMMITTED'",
+          "source_pointer": "pipeline.py:88-109 checks top-level packet keys only; nested metadata is not recursively partitioned"
+        },
+        {
+          "test": "test_c9_forged_material_event_must_be_refused",
+          "assertion": "pytest.raises(C9.C9Refusal) around C9.receive_handoff(hand, mat)",
+          "observed": "FAIL: DID NOT RAISE C9Refusal; receipt status ACCEPTED, cash 100055",
+          "source_pointer": "c9_handoff_consumer.py:48-78 checks parent/ref only, then adds material payment and emits ACCEPTED"
+        }
+      ],
+      "original_reds": [
+        "test_forged_material_event_supplying_cash_must_be_refused",
+        "test_future_child_nested_alias_must_be_refused",
+        "test_c9_forged_material_event_must_be_refused"
+      ],
+      "original_verdict": "REVISE / ENGINEERING RED",
+      "holds": [
+        "M2 grammar/coverage HOLD",
+        "MP known-counterpart coverage HOLD",
+        "C9 E1/RULE_A/RULE_T/E2 HOLD_UNISSUED"
+      ],
+      "code_present": true,
+      "semantics_validated_here": false,
+      "relationship_grade": "CANDIDATE_TARGET_LINK__PRIMARY_DOC_DOES_NOT_STATE_EXACT_COMMIT__REQUIRES_SOURCE_MANIFEST"
+    },
+    {
+      "id": "OC5E",
+      "reviewer_branch": "agent/reviewer-sorok-r3-hq312-oc5e-execution-recovery-r1",
+      "reviewer_cut": "67a4f1561cdad40192f00797d66b24fc4cd91589",
+      "reviewer_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/00_RETURN.md",
+        "git_blob": "9897d7bbbfaf8f6b0e05ab9d93c3eb9eff3b01ed",
+        "sha256": "552fca27553af2121c11c43aa7c1f0abd65343d61fd225a2c31920a30c9c5b2a",
+        "lines": 168
+      },
+      "reviewer_test": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/tests/test_oc5e_native_hostiles.py",
+        "git_blob": "9837579ebb5b2fbf3a41c967e584a166786e46b9",
+        "sha256": "a9faf7ace27d0f3f3cfd1102de5c6c8d6888c12f16c7bbdde8b32bb232b84512"
+      },
+      "execution_evidence": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/observations/oc5e_native_hostiles.xml",
+        "git_blob": "33efbc315cc424c377441b0f1f79ee31a5a185bc",
+        "sha256": "c941437ba3fabf86b150acd4b04b3d624a661cb1727d0c249c13a60528a1dad9",
+        "observed": "159 cases / 110 PASS / 49 RED / 0 ERROR / 0 SKIP; full court 349 / 283 PASS / 66 RED"
+      },
+      "author_target": {
+        "branch": "agent/rabochii-sorok-r3-hq310-oc4-custody-ten-red-repair-r1",
+        "cut": "0caaec590f6a8bf6744f22dc9c948c5fe233bc94",
+        "author_return": {
+          "path": "WORKER_RETURNS/SOROK-R3-HQ310-OC4-CUSTODY-TEN-RED-REPAIR-R1/00_RETURN.md",
+          "git_blob": "fde6c01d1dbd8ce8210eae48e2c1836aead246cc",
+          "sha256": "a92633c20fe9a9fee93959ca436d5d0eb135d5aa6bf67f9b8d7c02f488b84ce5"
+        },
+        "target_cut_basis": "CANDIDATE_TARGET_LINK__PRIMARY_DOC_DOES_NOT_STATE_EXACT_COMMIT__REQUIRES_SOURCE_MANIFEST",
+        "source_files": [
+          {
+            "author_path": "WORKER_RETURNS/SOROK-R3-HQ310-OC4-CUSTODY-TEN-RED-REPAIR-R1/repro/custody_protocol.py",
+            "git_blob": "af2b7e943018077cb36808b5af1cd67704624bec",
+            "reviewer_pinned_blob": "af2b7e943018077cb36808b5af1cd67704624bec",
+            "reviewer_pin_location": "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/freezes/01_STAGED_SOURCE_MANIFEST.json"
+          },
+          {
+            "author_path": "WORKER_RETURNS/SOROK-R3-HQ310-OC4-CUSTODY-TEN-RED-REPAIR-R1/repro/test_oc4_repair_controls.py",
+            "git_blob": "c139a877aa4586ec5ab729d333c40037840721d4",
+            "reviewer_pinned_blob": "c139a877aa4586ec5ab729d333c40037840721d4"
+          }
+        ]
+      },
+      "tested_assertions": [
+        {
+          "family": "A1 normalization-equivalent allowed-field alias",
+          "count": 10,
+          "test": "test_normalization_equivalent_allowed_field_alias_must_be_refused",
+          "assertion": "pytest.raises(LeakageError) for a packet containing both an allowed key and a normalization-equivalent alias",
+          "observed": "RED: detect_leakage() returned [] and no exception",
+          "source_pointer": "custody_protocol.py:265 detect_leakage; set/multiplicity loss in normalized allowlist"
+        },
+        {
+          "family": "A2 NFKC-invisible confusable leak token",
+          "count": 6,
+          "test": "test_confusable_leak_token_substitution_must_be_flagged",
+          "assertion": "pytest.raises(LeakageError) for visually present leak tokens using Cyrillic/Greek/Armenian homoglyphs",
+          "observed": "RED: token admitted",
+          "source_pointer": "custody_protocol.py:265-282 normalization-based value scan"
+        },
+        {
+          "family": "A3 malformed signature object untyped",
+          "count": 18,
+          "test": "test_malformed_signature_object_must_fail_typed",
+          "assertion": "pytest.raises(SignatureError) for nine malformed object types in primary/second position",
+          "observed": "RED: AttributeError instead of SignatureError",
+          "source_pointer": "custody_protocol.py:283 require_second_signature dereferences signer_person_id before isinstance"
+        },
+        {
+          "family": "A4 non-enum role string untyped",
+          "count": 1,
+          "test": "test_non_enum_role_string_must_fail_typed",
+          "assertion": "pytest.raises(SignatureError) for a plain str role on MockSignature",
+          "observed": "RED: AttributeError: 'str' object has no attribute 'value'",
+          "source_pointer": "custody_protocol.py:283-310 role re-derivation"
+        },
+        {
+          "family": "A5 unhashable unblind holder untyped",
+          "count": 3,
+          "test": "test_unblind_unhashable_holder_must_fail_typed",
+          "assertion": "pytest.raises(IdentityMismatchError) for list/dict/set holder",
+          "observed": "RED: TypeError: unhashable type",
+          "source_pointer": "custody_protocol.py:218 unblind holder_roles.get"
+        },
+        {
+          "family": "A6 capsule identity field types unvalidated",
+          "count": 11,
+          "test": "test_capsule_identity_field_types_must_be_validated",
+          "assertion": "pytest.raises((TypeError, ValueError)) for non-string/invalid capsule fields",
+          "observed": "RED: commit hashes invalid fields through default=str or raises untyped TypeError",
+          "source_pointer": "custody_protocol.py:212 commit and :374 capsule_envelope_commitment"
+        }
+      ],
+      "original_reds": {
+        "new_native_hostile_reds": 49,
+        "historical_original_reds": 10,
+        "oc5_predictions_confirmed_native": 7,
+        "historical_red_list_preserved": true
+      },
+      "original_verdict": "REVIEW_REVISE__NATIVE_EXECUTION_RECOVERED__49_NEW_NATIVE_HOSTILE_REDS__7_OF_7_OC5_PREDICTIONS_CONFIRMED_NATIVELY__NO_AUTHOR_REPAIR__TEST_ONLY_ONLY__NO_ADOPTION",
+      "holds": [
+        "C07 cross-process NOT_REACHED",
+        "real signer/institution NOT_CLAIMED",
+        "protected holdout/durable external journal NOT_CLAIMED"
+      ],
+      "code_present": true,
+      "semantics_validated_here": false,
+      "relationship_grade": "CANDIDATE_TARGET_LINK__PRIMARY_DOC_DOES_NOT_STATE_EXACT_COMMIT__REQUIRES_SOURCE_MANIFEST"
+    },
+    {
+      "id": "M04",
+      "reviewer_branch": "agent/reviewer-sorok-r3-hq314-m04-m03-independent-r1",
+      "reviewer_cut": "3a993abcc0a9f6bd3a1bb003d298d293be199ea6",
+      "reviewer_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/00_RETURN.md",
+        "git_blob": "5840b2f3f551903d61ce00654b8b964c0ea3a545",
+        "sha256": "da0386ebb565477f3ff304f732e866eeddb3466794930250d068d176e6b900b2",
+        "lines": 55
+      },
+      "reviewer_test": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py",
+        "git_blob": "8add06c66b347e324443c1263771755f6898c7e2",
+        "sha256": "ba81db3bae89f68108041b86399d0e09c4a88e33fc1527004779f18aecb44e24"
+      },
+      "execution_evidence": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/evidence/fresh/junit.xml",
+        "git_blob": "2f54f3e3bc1a750fe87d9e697e324ffe019ae59e",
+        "sha256": "8958f049582fda794bdc8611117561e484705c1ff2bda46e1745bd4ec7ccce2a",
+        "observed": "51 fresh cases / 41 PASS / 10 FAIL; unchanged published 587/587 PASS; 9 separate historical CAN3 FAILs"
+      },
+      "author_target": {
+        "branch": "agent/rabochii-sorok-r3-hq313-m03-claim-selector-provenance-repair-r1",
+        "cut": "e1f7a74e51201b9614bcc578348b4e9db7be7bd3",
+        "author_return": {
+          "path": "WORKER_RETURNS/SOROK-R3-HQ313-M03-CLAIM-SELECTOR-PROVENANCE-REPAIR-R1/00_RETURN.md",
+          "git_blob": "0dfa5d4bb4b5bec7384fc1d0c5d99e0bef6c7eb5",
+          "sha256": "02c354c3e60a6c13f251d5cfb22bf92aa46cc76fb582631dff838caa019dff0c"
+        },
+        "target_cut_basis": "CANDIDATE_TARGET_LINK__PRIMARY_DOC_DOES_NOT_STATE_EXACT_COMMIT__REQUIRES_SOURCE_MANIFEST",
+        "source_files": [
+          {
+            "author_path": "WORKER_RETURNS/SOROK-R3-HQ313-M03-CLAIM-SELECTOR-PROVENANCE-REPAIR-R1/candidate/cell.py",
+            "reviewer_copy_path": "WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/candidate/cell.py",
+            "git_blob": "3eb2d02aee8dc840e7cac1f99230d7c69adc2f58",
+            "byte_identical_in_reviewer_copy": true
+          },
+          {
+            "author_path": "WORKER_RETURNS/SOROK-R3-HQ313-M03-CLAIM-SELECTOR-PROVENANCE-REPAIR-R1/candidate/claim_provenance.py",
+            "reviewer_copy_path": "WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/candidate/claim_provenance.py",
+            "git_blob": "2434bda6f4b00e6ea5881291f5422227e8045e74",
+            "byte_identical_in_reviewer_copy": true
+          }
+        ]
+      },
+      "tested_assertions": [
+        {
+          "family": "cross-cell NONE owner substitution erases committed BELIEF",
+          "count": 4,
+          "test": "test_cross_cell_none_owner_cannot_erase_first_committed_belief",
+          "parameters": ["NONE", "CERTAIN", "UNCERTAIN", "UNAVAILABLE"],
+          "assertion": "restore/read refuses a checkpoint whose canonical claim remains committed BELIEF but whose owner checkpoint is replaced with a legitimate NONE donor",
+          "observed": "FAIL: unearned response accepted with epistemic AMPLIFY",
+          "source_pointer": "claim_provenance.py:123-126 canonical-state equality only; :286-291 missing state treated as lawful NONE"
+        },
+        {
+          "family": "partial rollback resurrects revoked/withdrawn permission",
+          "count": 4,
+          "test": "test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback",
+          "parameters": ["False/True x SUPERSEDE_EXACT_RECORD/WITHDRAW"],
+          "assertion": "restore/read refuses a checkpoint retaining both native transitions but restoring only old active stance/snapshot/permission fields",
+          "observed": "FAIL: unearned REROUTE accepted",
+          "source_pointer": "claim_provenance.py:339-349 last_transition_ref matched against any historical transition, not terminal applicable descent"
+        },
+        {
+          "family": "coherent digest validity substitutes for actual pre-state ancestry",
+          "count": 2,
+          "test": "test_fully_rehashed_transition_requires_actual_prestate_ancestry",
+          "parameters": ["False", "True"],
+          "assertion": "direct/transactional consumption refuses a coherently rehashed effect whose declared pre-state differs from the actual committed pre-state",
+          "observed": "FAIL: unearned response accepted",
+          "source_pointer": "claim_provenance.py:200-226 verifies internal IDs but not actual pre-state ancestry"
+        }
+      ],
+      "original_reds": {
+        "fresh_failures": 10,
+        "historical_can3_reds": 9,
+        "unchanged_published": "587/587 PASS"
+      },
+      "original_verdict": "REVIEW_REVISE",
+      "holds": [
+        "real operative owner authority HOLD",
+        "serial ADP016->ADP017 mediation HOLD",
+        "human calibration HOLD"
+      ],
+      "code_present": true,
+      "semantics_validated_here": false,
+      "relationship_grade": "CANDIDATE_TARGET_LINK__PRIMARY_DOC_DOES_NOT_STATE_EXACT_COMMIT__REQUIRES_SOURCE_MANIFEST"
+    }
+  ]
+}
