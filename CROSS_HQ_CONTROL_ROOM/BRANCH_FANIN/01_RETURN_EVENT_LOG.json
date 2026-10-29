@@ -299,6 +299,121 @@
       "supersedes_event_id": null,
       "verified_date": "2026-10-29",
       "intake_grade": "SEALED_CONDITIONAL_OWNER_ONLY__NOT_LAUNCHED"
+    },
+    {
+      "event_id": "PR519-FIRST-REVIEWED-CUT",
+      "role": "CONTROL_AUTHOR_SOURCE",
+      "subject_ref": "control/pre-main-cross-hq-branch-fanin-reinstatement-20261029-r1",
+      "immutable_sha": "73f0b57da42e264617e51fe9c703c17aba15ff2a",
+      "parent_source_sha": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+      "receipt_path": "CROSS_HQ_CONTROL_ROOM/BRANCH_FANIN/verify_branch_fanin.py",
+      "state": "PREMAIN_FANIN_STAGED",
+      "finding": "Initial F0-reviewed PR source cut, Green 11/11+5 mutation CI only, unprotected target",
+      "interpretation": "Candidate offline proof integrity does not establish enforceable CAS or adoption",
+      "action": "Retain reviewed historic cut; repair at new tip, independently re-review, require admin protections",
+      "owner": "Control PR author and qualified PRE-MAIN maintainer",
+      "three_courts": {
+        "engineering": "RED",
+        "scientific": "HOLD",
+        "authority": "RED"
+      },
+      "first_consumer": "Protected PRE-MAIN control once authorized",
+      "known_reds": [
+        "UNPROTECTED_PREMAIN",
+        "FAKE_ADOPTION_ALLOWED_INITIAL_CUT"
+      ],
+      "adoption": false,
+      "reviewer_of_sha": null,
+      "supersedes_event_id": null,
+      "verified_date": "2026-10-29",
+      "intake_grade": "EXACT_REMOTE_CUT_INSPECTED__NO_CANONICAL_ADOPTION"
+    },
+    {
+      "event_id": "F0-RETURN-20261029",
+      "role": "INDEPENDENT_CONTROL_REVIEW",
+      "subject_ref": "review/pre-main-fanin-control-independence-court-20261029-r1",
+      "immutable_sha": "e5089b7da29d3c290ad1447f7b7a45cc81f0eb6e",
+      "parent_source_sha": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+      "receipt_path": "WORKER_RETURNS/PREMAIN-FANIN-F0-INDEPENDENT-CONTROL-COURT-R1/00_HOSTILE_CONTROL_VERDICT.md",
+      "state": "REVISE",
+      "finding": "8 semantic validator bypass cases; first install not owner signed; PRE-MAIN unprotected; 144/3 separate FIABC global CI",
+      "interpretation": "Passing five Python mutation tests is narrower than authoritative control fan-in",
+      "action": "Fail closed on adoption, pin seed pending owner, re-review latest PR head, admin required check, reconcile progress",
+      "owner": "Independent F0 original reviewer / PRE-MAIN control author / actual repo administrator",
+      "three_courts": {
+        "engineering": "RED",
+        "scientific": "HOLD",
+        "authority": "RED"
+      },
+      "first_consumer": "Current PR519 control first consumer",
+      "known_reds": [
+        "B1_B8_FAKE_ADOPTION_AND_LOG_BYPASSES",
+        "PREMAIN_UNPROTECTED",
+        "SOROK_MD36_JSON35",
+        "FIABC_144_PASS_3_FAIL"
+      ],
+      "adoption": false,
+      "reviewer_of_sha": "73f0b57da42e264617e51fe9c703c17aba15ff2a",
+      "supersedes_event_id": "SOROKHR1-F0_CONTROL",
+      "verified_date": "2026-10-29",
+      "intake_grade": "EXACT_REMOTE_CUT_INSPECTED__NO_CANONICAL_ADOPTION"
+    },
+    {
+      "event_id": "F1-RETURN-20261029",
+      "role": "SCIENTIFIC_SOURCE_RETURN",
+      "subject_ref": "agent/sorok-hr1-world-b-history-uptake-source-decision-20261029-r1",
+      "immutable_sha": "8aad22736c9f488c92ed007128c1875075142839",
+      "parent_source_sha": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+      "receipt_path": "WORKER_RETURNS/SOROK-HR1-F1-ORIGINAL-B-HISTORY-UPTAKE-COURT-R1/00_CAUSAL_SOURCE_DECISION_PACKET.md",
+      "state": "RETURNED_UNADOPTED",
+      "finding": "R31J pre-C8 B TEST_ONLY producer with retroactively altered A preevent tools; nine rival controls and source-based causal contract",
+      "interpretation": "Early staging != independent historical B, G1/G2 uptake semantics remain unissued; actual BP2P4J E2 positive preserved",
+      "action": "Owner source decision and separate I3+ review; frozen A, independent B and same later performed consumer",
+      "owner": "Incumbent Sorok + original C8/ADP/Pyat/PFF/CAN source issuers",
+      "three_courts": {
+        "engineering": "ACCEPT_SCOPED",
+        "scientific": "HOLD",
+        "authority": "HOLD"
+      },
+      "first_consumer": "R31J→JOIN and BP2P4J later sourcefree acted-E2 rival",
+      "known_reds": [
+        "R31J_RETROCONDITIONED_A",
+        "B_TEST_ONLY_NOT_NATIVE",
+        "CAN_ADP_PYAT_HELD"
+      ],
+      "adoption": false,
+      "reviewer_of_sha": null,
+      "supersedes_event_id": "SOROKHR1-F1_WORLD",
+      "verified_date": "2026-10-29",
+      "intake_grade": "EXACT_REMOTE_CUT_INSPECTED__NO_CANONICAL_ADOPTION"
+    },
+    {
+      "event_id": "F2-RETURN-20261029",
+      "role": "SOURCEFREE_ENGINEERING_RETURN",
+      "subject_ref": "agent/sorok-hr1-bp2p4j-episode-verifier-sourcefree-repair-20261029-r1",
+      "immutable_sha": "0636d257f588f8874e65b2cb183d1d47c7f53327",
+      "parent_source_sha": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+      "receipt_path": "WORKER_RETURNS/SOROK-HR1-F2-BP2P4J-EPISODE-VERIFY-REPAIR-R1/00_RETURN.md",
+      "state": "RETURNED_UNADOPTED",
+      "finding": "Original valid SAY episode verifier RED reproduced; candidate overlay fixes post-hash episode_id preimage, 33 old PASS + 1 intended RED + 38 new PASS",
+      "interpretation": "Bounded sourcefree repair, C12 native/SQLite external anchor and original owner adoption remain unverified",
+      "action": "Separate I2 original-source replay and original BP4/C12 owner decision, no PR514/516/PRE-MAIN integration",
+      "owner": "Original BP2P4J/BP4 C12 owner and independent future I2 reviewer",
+      "three_courts": {
+        "engineering": "ACCEPT_SCOPED",
+        "scientific": "HOLD",
+        "authority": "HOLD"
+      },
+      "first_consumer": "BP2P4J joined security/audit first real test consumer",
+      "known_reds": [
+        "C12_RAW_SQLITE_DELETION_EXTERNAL_ANCHOR_HOLD",
+        "NO_NATIVE_PRACTICE_ACQUISITION"
+      ],
+      "adoption": false,
+      "reviewer_of_sha": null,
+      "supersedes_event_id": "SOROKHR1-F2_BP2",
+      "verified_date": "2026-10-29",
+      "intake_grade": "EXACT_REMOTE_CUT_INSPECTED__NO_CANONICAL_ADOPTION"
     }
   ]
 }
