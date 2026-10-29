@@ -19,5 +19,17 @@ jobs:
         run: python3 -m unittest discover -s PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1 -p 'test_*.py' -v
       - name: Cross-HQ seed historical comparison (not current authority)
         run: python3 CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1/validate_custody.py CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1/01_PRIORITY_RECOVERY_QUEUE.json --json
+      - name: Passive live ref census and unregistered delta (non-promotion)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/scan_unintaken_branch_deltas.py --live > pyat-branch-delta.json
+          python3 -c 'import json; d=json.load(open("pyat-branch-delta.json")); print("REF_CENSUS", d["current_size"], "UNINTAKEN", len(d["findings"]), "STATS", d["stats"])'
+      - name: Preserve name/head-delta receipt for qualified HQ intake
+        uses: actions/upload-artifact@v4
+        with:
+          name: pyat-branch-delta-name-head-only
+          path: pyat-branch-delta.json
+          retention-days: 30
       - name: Active Pyat and predecessor intake seed (no Sorok code triage)
         run: python3 CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1/validate_custody.py PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/01_PYAT_AND_PREDECESSOR_RECOVERY_QUEUE.json --json
