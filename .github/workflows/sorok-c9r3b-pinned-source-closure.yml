@@ -29,7 +29,7 @@ jobs:
       - name: Checkout exact historical JOIN-E return (separate, source-only)
         uses: actions/checkout@v4
         with:
-          ref: 7bf2da302996491ddf34b9a039fea47ac982d135
+          ref: 68b058656254234f0af02df2a592aa6f8c6a8bd2
           path: .source-closure/join-e
           persist-credentials: false
       - uses: actions/setup-python@v5
@@ -60,6 +60,22 @@ jobs:
           RAWLSING_JOIN_E_VENDOR_J: ${{ github.workspace }}/.source-closure/join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j
         run: |
           python SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/verify_recovered_source.py --pytest
+      - name: Verify C12 reader's four independently pinned source SHA256 values
+        env:
+          C12_READER_SOURCE: ${{ github.workspace }}/.source-closure/join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1
+        run: |
+          python - <<'PY'
+          import os, pathlib, hashlib, sys
+          sys.path.insert(0, "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER")
+          from actor_reader import C12_SOURCE_HASHES
+          base = pathlib.Path(os.environ["C12_READER_SOURCE"])
+          result = [(k, hashlib.sha256((base/k).read_bytes()).hexdigest(), expect)
+                    for k, expect in C12_SOURCE_HASHES.items()]
+          for key, actual, expected in result:
+              print(key, "MATCH" if actual == expected else "MISMATCH", actual, expected)
+          if any(actual != expected for _, actual, expected in result):
+              raise SystemExit("C12_READER_PINNED_SOURCE_MISMATCH__NO_FORK_COURT")
+          PY
       - name: Verified C9 reader cold/fork court against exact JOIN-E full source
         env:
           C9_READER_SOURCE: ${{ github.workspace }}/SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL
