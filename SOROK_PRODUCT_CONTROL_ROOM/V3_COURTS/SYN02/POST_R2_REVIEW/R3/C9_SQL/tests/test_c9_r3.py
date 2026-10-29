@@ -1,5 +1,6 @@
 import sqlite3
 import sys
+import os
 from pathlib import Path
 
 import pytest
@@ -70,11 +71,12 @@ def counts(a, event_key):
 
 
 def test_c0_s36_seven_table_readset_is_unchanged(tmp_path, monkeypatch):
-    s36_root = Path(
+    s36_root = Path(os.environ.get(
+        "RAWLSING_S36_SOURCE_ROOT",
         "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/"
         "syn02-s36-r2-wt/WORKER_RETURNS/"
         "SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1"
-    )
+    ))
     if not (s36_root / "candidate" / "transaction.py").exists():
         pytest.skip("S36 source unavailable")
     monkeypatch.syspath_prepend(str(s36_root))
@@ -316,10 +318,11 @@ def test_c5_mirror_projection_and_ack_are_idempotent(tmp_path):
 
 
 def test_c6_actual_c12_perception_suffix_stays_held(tmp_path):
-    j = Path(
+    j = Path(os.environ.get(
+        "RAWLSING_JOIN_E_VENDOR_J",
         "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/"
         "SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j"
-    )
+    ))
     needed = [
         j / "r26e" / "c12_integrity.py",
         j / "candidate" / "vendor" / "bp4" / "bp4" / "store.py",
@@ -412,10 +415,11 @@ def test_c6_missing_c12_source_fails_closed(tmp_path):
 
 
 def test_c6_same_count_perception_substitution_is_held(tmp_path):
-    j = Path(
+    j = Path(os.environ.get(
+        "RAWLSING_JOIN_E_VENDOR_J",
         "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/"
         "SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j"
-    )
+    ))
     if not (j / "candidate" / "vendor" / "bp4" / "bp4" / "store.py").exists():
         pytest.skip("C12 source unavailable")
     sys.path.insert(0, str(j / "candidate" / "vendor" / "bp4"))
@@ -756,10 +760,11 @@ def test_c7_two_actors_same_target_and_normal_fork_ready(tmp_path):
         ("B", "legacy-target"),
     ]
 
-    j = Path(
+    j = Path(os.environ.get(
+        "RAWLSING_JOIN_E_VENDOR_J",
         "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/"
         "SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j"
-    )
+    ))
     if not (j / "candidate" / "vendor" / "bp4" / "bp4" / "store.py").exists():
         pytest.skip("C12 source unavailable")
     sys.path.insert(0, str(j / "candidate" / "vendor" / "bp4"))
