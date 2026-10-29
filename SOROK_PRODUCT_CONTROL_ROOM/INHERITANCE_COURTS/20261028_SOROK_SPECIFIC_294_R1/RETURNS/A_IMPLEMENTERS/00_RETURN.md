@@ -5,7 +5,7 @@
 ## Accounted work
 
 - **98/98** manifest branch names uniquely covered; 98 pinned SHAs equal current refs at check time; no missing heads.
-- **66** rows have an exact representative directly read source blob; other rows retain document/patch evidence, and **7** are explicitly not cleared as fully source-inspected runnable algorithms. Documentary-only: 23; pinned tip commission-only: 2.
+- **67** rows have an exact representative directly read source blob; other rows retain document/patch evidence, and **7** are explicitly not cleared as fully source-inspected runnable algorithms. Documentary-only: 23; commission-only at entire pinned tree: 1 (A98). A56 has code and a complete returned sourcefree implementation despite its tip commit containing a commission.
 - Seven machine-mergeable files: `01_BRANCH_ROWS.json` (98), `02_CAPABILITY_FINDINGS.json` (98 evidence slots), `03_DUPLICATES_AND_SUPERSESSIONS.json` (nine families), `04_EVIDENCE_GAPS_AND_REDS.md`, `05_FRESH_BRANCH_TAIL.json`, `06_SOURCE_AND_TEST_RECEIPTS.md`, this return.
 
 ## FINDING | EVIDENCE | INTERPRETATION | HQ ACTION | OWNER
