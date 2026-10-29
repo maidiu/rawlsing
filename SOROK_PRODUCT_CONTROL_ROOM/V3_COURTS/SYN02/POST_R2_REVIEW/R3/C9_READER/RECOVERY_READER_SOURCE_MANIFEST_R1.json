@@ -3,7 +3,7 @@
   "origin_ref": "5ea806bd0e3d4cb87b81cef7b159ebad06adda9d",
   "origin_source": "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER",
   "target_premain_cut": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
-  "status": "BYTE_EXACT_TESTONLY_READ_CONSUMER_NOT_PRODUCTION",
+  "status": "NINE_ORIGINAL_READER_BLOBS_EXACT__ONE_STRENGTHENED_TEST__NOT_YET_ACCEPTED",
   "source_files": {
     "actor_reader.py": "5ef6a278a56968b8f9ccf700ae58e636a0999b5f",
     "check_reader_precondition.py": "f9413eb5166cfd3f7e79ee1335fff820779d8494",
@@ -14,7 +14,7 @@
     "test_actor_fork_reader.py": "f42e67b27d838b5ee0a77b8df21ebfcb6067da89",
     "test_actor_reader.py": "13175a42ea7eeb6f73763f2a59d81d9d227bd761",
     "test_dry_sequence.py": "c0aa72909eed803dae3c4e70ffce79529f7e4e3d",
-    "test_legacy_migration.py": "1fc116429a76e4a642401a56b44d529ebbdd0969"
+    "test_legacy_migration.py": "99e0a9e9f49a6a9b1ad1e66d5df9f6ca5e722660"
   },
   "expected_writer_orig_ref": "1e99681f58086f2784834df1186cfba71a2c50b9",
   "test_contracts": {
@@ -29,5 +29,15 @@
     "original_source_sha256": "check_reader_precondition.py HASHES expected exactly original B",
     "actor_access": "read-only, actor-visible, memory/SCI05 gated",
     "production": "NO_ADOPTION_NO_NATIVE_GRANT"
+  },
+  "provenance_adjustments": {
+    "test_legacy_migration.py": {
+      "original_blob": "1fc116429a76e4a642401a56b44d529ebbdd0969",
+      "current_blob": "99e0a9e9f49a6a9b1ad1e66d5df9f6ca5e722660",
+      "why": "GitHub governed proof-integrity gate rejected original self-comparison assertion; repaired to source-value exact, changed-value severance, missing-binding and pure-no-write checks",
+      "source_implementation_mutated": false,
+      "CI_run_caught": "40796264817",
+      "status": "SCOPE_CHANGED_TEST_ONLY_REQUIRES_NEW_EXECUTED_AND_REVIEWED_COURT"
+    }
   }
 }
