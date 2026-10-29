@@ -1,0 +1,510 @@
+{
+  "schema": "SOROK_294_B_SOURCE_INSPECTION_BATCH_R1",
+  "rows": [
+    {
+      "index": 20,
+      "name": "agent/reviewer-sorok-r15-rfar-renderer-state-reconciliation-r1",
+      "pinned_sha": "e65846bbb1c38a366d79b54bb89be47da0f8502e",
+      "inspection_state": "NOT_INSPECTED",
+      "notes": [
+        "RETURN NOT_FOUND: Error code: NOT_FOUND; Error: GitHub API error 404: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+      ],
+      "changed_paths_count": 1,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/RFA_R_RECONCILIATION_R1/UNRESOLVED_FUTURE_OWNER_GAPS_R1.md"
+      ],
+      "code_paths": []
+    },
+    {
+      "index": 21,
+      "name": "agent/reviewer-sorok-r3-hq297-genealogy-k11-construction-court-r1",
+      "pinned_sha": "0cb708bbfe522a6c6e359f36d99835d180d5a84d",
+      "inspection_state": "NOT_INSPECTED",
+      "notes": [
+        "RETURN NOT_FOUND: Error code: NOT_FOUND; Error: GitHub API error 404: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+      ],
+      "changed_paths_count": 1,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ297-GENEALOGY-K11-INDEPENDENT-COURT-R1/07_PYTEST_STDOUT.txt"
+      ],
+      "code_paths": []
+    },
+    {
+      "index": 22,
+      "name": "agent/reviewer-sorok-r3-hq299-rc0-sc0-pe-independent-r1",
+      "pinned_sha": "86bd2a54687b40401f7c4247607bd1873c585619",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 105,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/.gitignore",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/01_FROZEN_INDEPENDENT_EXPECTATIONS.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/02_EXECUTION_PER_CASE.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/03_NINE_PE_REDS_ADJUDICATED.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/04_FROZEN_CASE_COVERAGE.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/05_OWNER_ACTION_REGISTER.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/06_REQUIREMENT_AUDIT.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/07_ARTIFACT_MANIFEST.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/environment_passport_delta.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/build_results.py",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/changed_paths.txt",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/completion_audit.py",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/connection_probe.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/connection_probe.log",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/connection_probe.py",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/connection_probe_execution.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/environment_probe.log",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/environment_probe_execution.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/facade_probe.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/facade_probe.log",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/facade_probe.py",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/facade_probe_execution.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/hq297.log",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/hq297.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/hq297_execution.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/import_audits/connection_both_55739.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/import_audits/connection_probe_52857.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/import_audits/environment_probe_55423.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/import_audits/facade_probe_53781.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/import_audits/hq297_51514.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/import_audits/independent_52157.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/import_audits/independent_53179.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/import_audits/k10_51483.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/import_audits/k9_51481.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/import_audits/n10e_c1_51485.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/import_audits/n10e_c1_51491.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/import_audits/pe_51511.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/import_audits/probe_environment_57385.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/import_audits/smoke_50884.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/independent.log",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/independent.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/independent_execution.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/initial19_independent.log",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/initial19_independent.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/initial19_independent_execution.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/initialA_connection_probe.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/initialA_connection_probe.log",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/initialA_connection_probe_execution.json",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/k10.log"
+      ],
+      "code_paths": [
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/build_results.py",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/completion_audit.py",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/connection_probe.py",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/facade_probe.py",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/probe_environment.py",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/run.py",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/run_probe.py",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/run_required.py",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/sitecustomize.py",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/source_snapshots/connection_initialA.py",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/source_snapshots/independent_initial19.py",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/stage.py",
+        "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/reviewer_tests/test_rc0_hostile.py"
+      ],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "3e2129e3378050319347d57c4c1e99ccf13519f4",
+        "url": "https://github.com/maidiu/rawlsing/blob/86bd2a54687b40401f7c4247607bd1873c585619/WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 62
+      },
+      "review_evidence": "# HQ299 RC0 independent SC0 / PE court\n\n**Verdict: CHANGES_REQUIRED for strict SC0 interface acceptance.** The value-bearing sourcefree port works on its narrow fixture and the published test counts reproduce. Its passing suites do not establish full frozen-envelope conservation, safe adapter entrypoints, an operative N9/N10W service, or a connected imported-owner empirical port. No adoption is issued.\n\nSealed reviewer startup `e140beff621d91ca1092728badf00e538046e3b6` matched the direct private remote before work; parent `5c59fb409d5f08312c19b936738eb4410dbd4f26`. Candidate `b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59` remained fixed. Full commission and Sorok 00C/00D, bounded 00_READ_ME_FIRST/00B, HQ299 intake, candidate report/manifest/test contracts and relevant predecessor packets were read. Role is independent C0/N9/N10 reviewer, not HQ, SC0/PE/K9 author, source/model issuer or adopter. Earlier PV/V2R work in this chat is separate and not in this tested closure.\n\n## Actual results\n\n| Executed suite | PASS | RED | Skipped/errors |\n|---|---:|---:|---:|\n| First A/B equivalence + hostile n-ary smoke | 2 | 0 | 0 |\n| Candidate K9 | 8 | 0 | 0 |\n| Candidate K10 | 28 | 0 | 0 |\n| Pinned N10E 43 + C1 13 | 56 | 0 | 0 |\n| Pinned PE author suite | 21 | 0 | 0 |\n| Unchanged HQ297 PE-boundary suite | 4 | 9 | 0 |\n| RC0 independent adapter/source-contract tests | 13 | 12 | 0 |\n\nSmoke/repeats and common fixture machinery are not extra independent scientific evidence. An initial 19-case independent run was 7 PASS/12 RED; six source-aware adapter checks of original AH/n-ary/F2 mutation classes were then added, producing 13 PASS/12 RED over 25 cases. Its original logs/source snapshot remain. No xfail or skipped result was promoted. Every case, real exit status, minimal command, full failure and JUnit is in `02_EXECUTION_PER_CASE.json` and `repro/`; all 8+28 frozen case IDs/classes and coverage limits are retained in `04_FROZEN_CASE_COVERAGE.json`.\n\nThe independent matrix `01_FROZEN_INDEPENDENT_EXPECTATIONS.json` was frozen **before local test observation**, SHA256 `c9abb1c6fae3d32d7c0f725b107e9fb9169782785ac3ea36bfd40c0278413492`. Original K9/K10 oracle bytes/classes were not rewritten. This was a source-aware independent hostile review, not a code-blind experiment; it does not claim the candidate author's proposed blind-source review protocol was followed.\n\n## Positive evidence retained\n\nTwo distinct physical provider implementations produce equivalent complete world receipts modulo provider lineage. Both consumers actually read world values. Independently changing public minimum-age value 14→18 changes both consumer outputs and their read receipts, while the mutual-aid route and empirical support remain invariant. No person is generated. Three original AH/n-ary/F2 mutations are refused through the adapter for both providers using reviewer assertions independent of the candidate's expected-class table.\n\nF1 n-ary roles, F2 history references and explicit `DEFERRED_UNBOUND/not_satisfaction` survive. H3 remains caller-owned filter echo. Explicit H2 binding/publication refreshes produce distinct successors and leave prior receipts unchanged. The standalone freshness helper rejects unmarked binding drift; the adapter itself does not call that helper. Re-resolving after drift changes the selection digest, so this review **does not** allege stale-digest reuse in that probe. These are useful bounded mechanisms at sourcefree F3 grain, not general science or service acceptance.\n\n## New adversarial counterexamples\n\n1. **Denied use:** both adapters return world values and both consumer effects after WORLD_READ is revoked. The explicit `revoked_use` method refuses only when separately invoked; the real adapter path does not invoke it. Candidate K9_07/K10_20 therefore miss the integrated bypass.\n2. **Demand closure:** both providers label an unavailable foreign scope COMPLETE while serving the same municipality world. The adapter does not establish demand-relative source closure. K10_21 raises its own test-body error, not a candidate partial-selection gate.\n3. **Historical knowledge:** both baseline adapters consume a publication stamped 2010 under KNOWLEDGE_AS_OF=2009. Candidate clock validation checks unequal labels, not the frozen K10_15 availability-ordering requirement. No prior-knowledge exception is declared. This is fictional data; no real historical fact is asserted.\n4. **Reversal:** both providers hold an obvious foreign issuer but accept matching issuer strings with foreign scope or target. `scope` is not dereferenced; a returned `computed_from_forward=False` metadata flag is not an actual independently issued reverse calculation or grant.\n5. **Frozen envelope/negative algebra:** direct receipts fail the actual pinned draft-2020-12 schema under jsonschema 4.26.0. The implementation omits NO_CURRENT, PROXY_MODELLED, UNKNOWN_UNOBSERVED_GAP and UNBOUND_RUNTIME_BINDING scopes and changes DENIED_USE to DENIED. Eight hard-coded statuses are not the original twelve-state conservation.\n\nAll twelve new REDs are retained with exact A/B counterexamples and consumed values in `repro/observations/`. Candidate/owner bytes were not repaired. The two-receipt round-trip checker also accepts removal of outer facade consumer effects; this is recorded as a **checker-scope limit**, not proof that a method restricted to two receipts authenticates arbitrary application output. Separate full-carrier acceptance remains unproved.",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# HQ299 RC0 independent SC0 / PE court"
+        },
+        {
+          "line": 3,
+          "text": "**Verdict: CHANGES_REQUIRED for strict SC0 interface acceptance.** The value-bearing sourcefree port works on its narrow fixture and the published test counts reproduce. Its passing suites do not establish full frozen-envelope conservation, safe adapter entrypoints, an operative N9/N10W service, or a connected imported-owner empirical port. No adoption is issued."
+        },
+        {
+          "line": 5,
+          "text": "Sealed reviewer startup `e140beff621d91ca1092728badf00e538046e3b6` matched the direct private remote before work; parent `5c59fb409d5f08312c19b936738eb4410dbd4f26`. Candidate `b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59` remained fixed. Full commission and Sorok 00C/00D, bounded 00_READ_ME_FIRST/00B, HQ299 intake, candidate report/manifest/test contracts and relevant predecessor packets were read. Role is independent C0/N9/N10 reviewer, not HQ, SC0/PE/K9 author, source/model issuer or adopter. Earlier PV/V2R work in this chat is separate and not in this tested closure."
+        },
+        {
+          "line": 9,
+          "text": "| Executed suite | PASS | RED | Skipped/errors |"
+        },
+        {
+          "line": 17,
+          "text": "| RC0 independent adapter/source-contract tests | 13 | 12 | 0 |"
+        },
+        {
+          "line": 19,
+          "text": "Smoke/repeats and common fixture machinery are not extra independent scientific evidence. An initial 19-case independent run was 7 PASS/12 RED; six source-aware adapter checks of original AH/n-ary/F2 mutation classes were then added, producing 13 PASS/12 RED over 25 cases. Its original logs/source snapshot remain. No xfail or skipped result was promoted. Every case, real exit status, minimal command, full failure and JUnit is in `02_EXECUTION_PER_CASE.json` and `repro/`; all 8+28 frozen case IDs/classes and coverage limits are retained in `04_FROZEN_CASE_COVERAGE.json`."
+        },
+        {
+          "line": 21,
+          "text": "The independent matrix `01_FROZEN_INDEPENDENT_EXPECTATIONS.json` was frozen **before local test observation**, SHA256 `c9abb1c6fae3d32d7c0f725b107e9fb9169782785ac3ea36bfd40c0278413492`. Original K9/K10 oracle bytes/classes were not rewritten. This was a source-aware independent hostile review, not a code-blind experiment; it does not claim the candidate author's proposed blind-source review protocol was followed."
+        },
+        {
+          "line": 25,
+          "text": "Two distinct physical provider implementations produce equivalent complete world receipts modulo provider lineage. Both consumers actually read world values. Independently changing public minimum-age value 14→18 changes both consumer outputs and their read receipts, while the mutual-aid route and empirical support remain invariant. No person is generated. Three original AH/n-ary/F2 mutations are refused through the adapter for both providers using reviewer assertions independent of the candidate's expected-class table."
+        },
+        {
+          "line": 27,
+          "text": "F1 n-ary roles, F2 history references and explicit `DEFERRED_UNBOUND/not_satisfaction` survive. H3 remains caller-owned filter echo. Explicit H2 binding/publication refreshes produce distinct successors and leave prior receipts unchanged. The standalone freshness helper rejects unmarked binding drift; the adapter itself does not call that helper. Re-resolving after drift changes the selection digest, so this review **does not** allege stale-digest reuse in that probe. These are useful bounded mechanisms at sourcefree F3 grain, not general science or service acceptance."
+        },
+        {
+          "line": 31,
+          "text": "1. **Denied use:** both adapters return world values and both consumer effects after WORLD_READ is revoked. The explicit `revoked_use` method refuses only when separately invoked; the real adapter path does not invoke it. Candidate K9_07/K10_20 therefore miss the integrated bypass."
+        },
+        {
+          "line": 33,
+          "text": "3. **Historical knowledge:** both baseline adapters consume a publication stamped 2010 under KNOWLEDGE_AS_OF=2009. Candidate clock validation checks unequal labels, not the frozen K10_15 availability-ordering requirement. No prior-knowledge exception is declared. This is fictional data; no real historical fact is asserted."
+        },
+        {
+          "line": 34,
+          "text": "4. **Reversal:** both providers hold an obvious foreign issuer but accept matching issuer strings with foreign scope or target. `scope` is not dereferenced; a returned `computed_from_forward=False` metadata flag is not an actual independently issued reverse calculation or grant."
+        },
+        {
+          "line": 35,
+          "text": "5. **Frozen envelope/negative algebra:** direct receipts fail the actual pinned draft-2020-12 schema under jsonschema 4.26.0. The implementation omits NO_CURRENT, PROXY_MODELLED, UNKNOWN_UNOBSERVED_GAP and UNBOUND_RUNTIME_BINDING scopes and changes DENIED_USE to DENIED. Eight hard-coded statuses are not the original twelve-state conservation."
+        },
+        {
+          "line": 37,
+          "text": "All twelve new REDs are retained with exact A/B counterexamples and consumed values in `repro/observations/`. Candidate/owner bytes were not repaired. The two-receipt round-trip checker also accepts removal of outer facade consumer effects; this is recorded as a **checker-scope limit**, not proof that a method restricted to two receipts authenticates arbitrary application output. Separate full-carrier acceptance remains unproved."
+        },
+        {
+          "line": 39,
+          "text": "## All nine PE REDs adjudicated"
+        },
+        {
+          "line": 41,
+          "text": "`03_NINE_PE_REDS_ADJUDICATED.json` contains every actual failing assertion, scientific diagnosis and accountable owner action:"
+        },
+        {
+          "line": 44,
+          "text": "- **5 unproved cross-owner dependencies:** value-bearing N9 world, H3 echo, H2 dual-refresh receipts, complete clocks, and scoped negative/native-risk representation."
+        },
+        {
+          "line": 45,
+          "text": "- **3 reviewer expectation problems when labelled PE unit defects:** N9-specific values-read fields, apprenticeship consumer output map, and scenario-input output map are demanded inside PE's narrower public receipt. The full SC0 integration obligations remain unmet; they are not waived."
+        },
+        {
+          "line": 47,
+          "text": "PE really computes C1 empirical geometry: independent controls reproduce 27/30, 37/40 and reverse 48/64, 58/74 with the proper distinct denominators, plus invalidation and lawful null-control behavior. Missing N9 keys do not prove that those empirical outputs are opaque hashes, that generic nonparent computation is absent, or that an actor was created."
+        },
+        {
+          "line": 49,
+          "text": "A read-only call-trace probe ran both port providers and measured **zero calls into pinned PE/C1/N10E**, while a separate PE positive control called the actual C1 producer. The port uses static TEST_ONLY empirical hints. Running the 56/21 owner suites alongside it proves those imports and native functions, **not a port→N10E/C1 producer-to-consumer connection**. That remains an explicit cross-owner integration task."
+        },
+        {
+          "line": 53,
+          "text": "LOCAL_DOMINANT was followed: one existing canonical object store, a different clean reviewer worktree, new opaque runtime epoch, Python 3.11.3 / pytest 9.0.2 / Git 2.43.0. Own-session model telemetry is `gpt-6.1-sol`, High (I2). All original 27 selected objects were independently read from genuine exact Git commit:path blobs and verified with `SHA1(b\"blob \"+length+actual_NUL+raw_bytes)`, not trusted from copied GitHub presentation text. Port code and the minimal static transitive closure added 34 files: **61 verified source/data files total**. Actual module `__file__`, blob and SHA256 audit covers imported owners and helper subprocesses. Primary live imports and marker were separately re-probed. Data JSON has verified file custody, not a fictional module `__file__`."
+        },
+        {
+          "line": 55,
+          "text": "Portable `environment_passport_delta.json` records actual relative import locations, marker digest, versions, coverage, permissions, cost/quota observations and next affinity. Runtime source/dependencies remain on this host in ignored `runtime_root/`; source refs and reproduction scripts are committed. No personal home paths or credentials are in the passport. A returned passport is not future liveness: re-probe marker/imports/HEAD/permissions before reuse. The predecessor's author passport was not treated as access to its live environment."
+        },
+        {
+          "line": 57,
+          "text": "The first discriminating smoke and every required suite reached its test bodies. No MISSING_RUNNER/DEPENDENCY was encountered. Missing original scientific/source/model/actor authority remains distinct from implementation defects. Experimental model API calls, original survey reads and V3 actor calls were zero; authoring-model use is not a behavioral trial. No original SAV/DTA, private respondent data, paid overflow/reset, production owner/CURRENT, HQ control room, canonical/PRE-MAIN merge, N11/N12, V3 actor, physical weld or release was touched. The hard problems held fixed were the invented world, static empirical hint, fixture issuer labels and limited validator vocabulary; full-world generation, source issuance, calibrated N10W and product/persona quality are **unproved**."
+        },
+        {
+          "line": 59,
+          "text": "`05_OWNER_ACTION_REGISTER.json` assigns exact SC0, Pyat PE, N9/currentness and independent acceptance actions. Retain proven A/B/value-carriage and pinned owner positives; return the stronger interface claim for changes. No I3/Astra escalation is needed for these ordinary candidate defects or missing dependencies; no accepted-authority contradiction was demonstrated. All35/1,890/151→101/F1–F8, N11/N12, Dva/ADP/CAN008 and the actor firewall remain unchanged."
+        },
+        {
+          "line": 61,
+          "text": "Only this reviewer-return directory changes. Final assigned-branch commit, complete added paths, start-to-return ahead/behind and **direct remote SHA readback** are supplied outside the commit's own bytes to avoid a self-hash cycle. A RED scientific verdict completes the commissioned independent court; it does not adopt or repair the candidate."
+        }
+      ],
+      "referenced_shas": [
+        "e140beff621d91ca1092728badf00e538046e3b6",
+        "5c59fb409d5f08312c19b936738eb4410dbd4f26",
+        "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59"
+      ],
+      "reported_disposition": "Verdict: CHANGES_REQUIRED for strict SC0 interface acceptance.** The value-bearing sourcefree port works on its narrow fixture and the published test counts reproduce. Its passing suites do not establish full frozen-envelope conservation, safe adapter entrypoints, an ",
+      "code_inspection": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/build_results.py",
+        "blob": "731201821da6a3d5f66185015bc880a2f152f3da",
+        "bytes": 8740,
+        "functions": [
+          "def cases(suite):"
+        ],
+        "sample": "import pathlib,json,xml.etree.ElementTree as E,collections,hashlib\nRET=pathlib.Path(__file__).resolve().parents[1]\ndef cases(suite):\n out=[]\n for t in E.parse(RET/'repro'/f'{suite}.xml').getroot().iter('testcase'):\n  f=t.find('failure');err=t.find('error');skip=t.find('skipped')\n  out.append(dict(name=t.attrib['name'],classname=t.attrib.get('classname'),status='RED' if f is not None or err is not None else 'NOT_REACHED' if skip is not None else 'PASS',seconds=t.attrib.get('time'),failure_message=(f.attrib.get('message') if f is not None else err.attrib.get('message') if err is not None else None),full_failure=(f.text if f is not None else err.text if err is not None else None)))\n return out\nall_results={n:cases(n) for n in ['smoke','k9','k10','n10e_c1','pe','hq297','independent']}\nassert collections.Counter(x['status'] for x in all_results['hq297'])=={'PASS':4,'RED':9}\nassert collections.Counter(x['status'] for x in all_results['independent'])=={'PASS':13,'RED':12}\nfor n,num in [('k9',8),('k10',28),('n10e_c1',56),('pe',21)]:assert len(all_results[n])==num and all(x['status']=='PASS' for x in all_results[n])\n(RET/'02_EXECUTION_PER_CASE.json').write_text(json.dumps(dict(schema='RC0_INDEPENDENT_ACTUAL_EXECUTION_PER_CASE@1',results=all_results,initial19_independent=cases('initial19_independent'),no_xfail_or_skip=True,counts_overlap=True),indent=2)+'\\n')\nclassifications={\n 'test_strict_reverse_scoped_issuer_forgery_must_refuse':('VERIFIED_CANDIDATE_CODE_DEFECT','PE explicitly promises positively scoped reversal authority but checks non-null shape only. Forged issuer/version/hash"
+      }
+    },
+    {
+      "index": 23,
+      "name": "agent/reviewer-sorok-r3-hq299-rg11-k11-authority-independent-r1",
+      "pinned_sha": "c28262641abae54e538db3994ba02983ab3ca04e",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 1,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ299-RG11-K11-AUTHORITY-INDEPENDENT-R1/02_PORTABLE_FINITE_COUNTEREXAMPLES.py"
+      ],
+      "code_paths": [
+        "WORKER_RETURNS/SOROK-R3-HQ299-RG11-K11-AUTHORITY-INDEPENDENT-R1/02_PORTABLE_FINITE_COUNTEREXAMPLES.py"
+      ],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ299-RG11-K11-AUTHORITY-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "57f9a4714ab71d14182ee6c9df151f2388801c54",
+        "url": "https://github.com/maidiu/rawlsing/blob/c28262641abae54e538db3994ba02983ab3ca04e/WORKER_RETURNS/SOROK-R3-HQ299-RG11-K11-AUTHORITY-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 40
+      },
+      "review_evidence": "# HQ299 RG11 — independent genealogy authority, selection and K11 court\n\n**Disposition: ACCEPT_PROPOSED_DOCUMENTARY_NONCAUSAL_SEARCH_BOUNDARY_WITH_CONDITIONS; HOLD NEW ADP015/020 ISSUANCE AND ALL ACTUAL GENEALOGY EVENTS.** No adopted semantics, child generation or population posterior. Independent reviewer not SG, SGI1, G11 or SGI2 author; no self-adoption or authority issuer identity.\n\n**Exact worker startup:** e4ee4ac2b43196fc77c28262f60edb03f413ee9b; direct branch ref checked. Commission WORKER_COMMISSIONS/SOROK-R3-HQ299-RG11-K11-AUTHORITY-INDEPENDENT-R1/00_COMMISSION.md; Sorok 00C/00D/HQ299 intake were read. Only this return directory written.\n\n## Exact authority and evidence cut\n\nAccepted ADP015@1.0.0: data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W2_AUTHORITY_CONTRACT_COMPLETION/ADP_015_V3_RELATIONSHIP_GENEALOGY/AUTHORITY.md blob a4dab0a12102aaa0b584ef6ff4fdc9206a28d456. Accepted ADP020@1.0.0: W0_AUTHORITY_FOUNDATION/ADP_020_V3_CAUSAL_RNG/AUTHORITY.md blob 1911352f4bd5b04dfeaa0f26930e6702998bb76d. Both at SG's exact source cut. SG proposed amendment: a12d01c5f7d7ddad8be92c58afc97141b672dba0, 01_PROPOSED_ADP015_020_AMENDMENT_COURT.md blob 4b184f11296843c03214bdf0fc35ff8ea20e50a8. SG 02 issuer matrix blob 7828aaf1dc27bcff8287b4dfb477d2a93de0cfd7.\n\nPrior distinct executions, **not rerun in this authority court**:\n- G11 @ 0cb708bbfe522a6c6e359f36d99835d180d5a84d: separate 25/25 pure finite solver cases; 8 witnessed combinations of two fixed mother histories, two prewritten father histories and two proposed endpoints; no generated father person or empirical posterior.\n- S-GI1 @ 27ca1f2792a5213064c0b5ea2e27b89e8acce0c3: reported 24 K11 cases / 98 predicates, seven genuine *historical lab* LLM scenario proposal calls; sourcefree synthetic provisional lab and frozen replay, not accepted V3 actor/biological event, not independently imported here.\n- S-GI2 @ aa4d845736ff6208a988a3e70cb9f74e3104633e: 57/57 new synthetic surrogate tests over 12 families. Original S-GI1 implementation explicitly NOT imported; 57 is not a cross-implementation regression pass. A distinct G12 court is needed for direct original-module generalization.\n\n## Independent reviewer execution\nFresh bounded Browser Python 3.13.5 / pytest 9.0.2. Nine independent finite counterexample tests executed:\npython -m pytest -q test_independent_authority_controls.py --junitxml=reviewer_rg11_junit.xml => **9 passed, 0 failed in 0.04 s**. JUnit SHA256 e60690c0e25c2271b8e4fbd14cb47f25bae5847e423938c39b188ce543f8ad2b. Tests check posterior non-identifiability, silent-redraw attrition bias (0.5/0.5 becomes 0.8/0.2), no semantic grant/no draw, canonical class dedup, future-child embargo, construction/causal DAG separation, respondent-vs-dyad sampling and conception/birth non-aliasing. They are deliberately tiny logic controls, not tests of adopted V3 or reproductions of SGI1/G11/GI2 code.\n\n## Scientific decision\n\n- A **noncausal construction dependency** may run from a provisional endpoint toward a history-search constraint; representation's causal lineage must still run from independently anchored parent roots through lawful generated histories and real forming events to a separately admitted child-generation event. The planner must not create retrospective actual parent memories, erase an older child or invent a prior partner.\n- Feasible histories alone cannot specify a probability distribution over fathers. Both hA and hB may satisfy one endpoint; priors 0.9/0.1 and 0.1/0.9 give different posteriors under identical feasibility. Ordinal LLM scores, survey individual marginals, class popularity and text paraphrase counts are **not** a sampling/likelihood/assortment law.\n- Even if q(A)=q(B)=1/2 were adopted for a *hypothetical simulation*, successful-history rates a(A)=1, a(B)=1/4 yield survivor law 4/5 vs 1/5 under redraw-to-success. Correct required behavior is HOLD selected class and preserve selection and failure receipt, not silent replacement.\n- Original ADP015 relationship, household and child-generation are separate, with two stable generated actors and their pre-event causal histories and role-neutral PARENT_1/PARENT_2; objective/shared state does not entail actor-specific reciprocity; parenthood does not entail co-residence. CHILD_GENERATED is not conception or birth, and does not initialize child psyche (ADP007).\n- ADP020 RNG can sample only after domain rule issues exact eligible classes, weights (or fully stated test simulation policy), static stream/scope/operation and durable replay. It cannot issue choice semantics by recognizing stream names or drawing uniformly.\n- Future-child outcome metadata must be absent from all parent scenario/proposal/history construction inputs and caches, not merely absent from printed output. Frozen held-out label swap tests are useful but do not validate new LLM acquisition or blind future outcomes.\n- S-GI1's laboratory positives are real evidence at their declared fixture grade, not positive real source-calibrated parents. Need independent forward actual V3 developmental rules, source/grain permission, scene/world variation and blind scorer before stronger product feasibility. Model call/provider permissions and cost for a new lab remain unknown/ungranted.\n\n**No accepted-rule contradiction was found that forces I3.** But SG's new decision kind, pending-target record, construction-only dependency, RNG stream/scope and physical occurrence rules would become semantic changes if adopted. They require competent *separate* ADP015/020 and relevant world/reproduction owners, not unilateral reviewer ratification.\n\n## Exact required issuer/owner chain\n1. ADP015 registry issuer: versioned noncausal pending target and DAG edge; real mother anchor, immutable older-child/existing partner constraints, exact finite class identity/equivalence and eligibility/unknown/valid-empty taxonomy, selection purpose and failure/no-redraw receipts. No retroactive rewrite of accepted v1.\n2. ADP020 issuer after ADP015: whether GENEALOGY or JOINT scope, exact static stream (candidate v3.causal.adp015.conception_scenario_selection remains unregistered), canonical set and precise UNIFORM_CANDIDATE/WEIGHTED_CANDIDATE_INTEGER or deterministic no-draw rule with seed/coordinates/counter/replay identity.\n3. Pyat source/EE14/N9/N10E/C1/N10W scientific authorities: native universe/sample unit, dyad sampling if claimed, purpose, routing, risk, denominator, weights, forward/reverse direction, comparability, model/release/use, temporal/currentness and uncertainty. No father matching from same-respondent attitude marginals.\n4. Actual V3 history producers (ADP007/009/010/CAN008_R2, ADP021 and durable memory/access): verified immediate mother checkpoint and independently forward constructed, non-Mom-valid second-parent actor; shared encounter does not suffice for relation.\n5. Separate reproductive/organismic/conception/birth event issuer: condition, causal timing and occurrence before any CONCEPTION_OCCURRED claim; retained ADP015 CHILD_GENERATED and ADP007 initialization remain distinct. No ADP019 shortcut for reproductive physiology.",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# HQ299 RG11 — independent genealogy authority, selection and K11 court"
+        },
+        {
+          "line": 3,
+          "text": "**Disposition: ACCEPT_PROPOSED_DOCUMENTARY_NONCAUSAL_SEARCH_BOUNDARY_WITH_CONDITIONS; HOLD NEW ADP015/020 ISSUANCE AND ALL ACTUAL GENEALOGY EVENTS.** No adopted semantics, child generation or population posterior. Independent reviewer not SG, SGI1, G11 or SGI2 author; no self-adoption or authority issuer identity."
+        },
+        {
+          "line": 5,
+          "text": "**Exact worker startup:** e4ee4ac2b43196fc77c28262f60edb03f413ee9b; direct branch ref checked. Commission WORKER_COMMISSIONS/SOROK-R3-HQ299-RG11-K11-AUTHORITY-INDEPENDENT-R1/00_COMMISSION.md; Sorok 00C/00D/HQ299 intake were read. Only this return directory written."
+        },
+        {
+          "line": 13,
+          "text": "- S-GI1 @ 27ca1f2792a5213064c0b5ea2e27b89e8acce0c3: reported 24 K11 cases / 98 predicates, seven genuine *historical lab* LLM scenario proposal calls; sourcefree synthetic provisional lab and frozen replay, not accepted V3 actor/biological event, not independently imported here."
+        },
+        {
+          "line": 14,
+          "text": "- S-GI2 @ aa4d845736ff6208a988a3e70cb9f74e3104633e: 57/57 new synthetic surrogate tests over 12 families. Original S-GI1 implementation explicitly NOT imported; 57 is not a cross-implementation regression pass. A distinct G12 court is needed for direct original-module generalization."
+        },
+        {
+          "line": 16,
+          "text": "## Independent reviewer execution"
+        },
+        {
+          "line": 17,
+          "text": "Fresh bounded Browser Python 3.13.5 / pytest 9.0.2. Nine independent finite counterexample tests executed:"
+        },
+        {
+          "line": 18,
+          "text": "python -m pytest -q test_independent_authority_controls.py --junitxml=reviewer_rg11_junit.xml => **9 passed, 0 failed in 0.04 s**. JUnit SHA256 e60690c0e25c2271b8e4fbd14cb47f25bae5847e423938c39b188ce543f8ad2b. Tests check posterior non-identifiability, silent-redraw attrition bias (0.5/0.5 becomes 0.8/0.2), no semantic grant/no draw, canonical class dedup, future-child embargo, construction/causal DAG separation, respondent-vs-dyad sampling and conception/birth non-aliasing. They are deliberately tiny logic controls, not tests of adopted V3 or reproductions of SGI1/G11/GI2 code."
+        },
+        {
+          "line": 22,
+          "text": "- A **noncausal construction dependency** may run from a provisional endpoint toward a history-search constraint; representation's causal lineage must still run from independently anchored parent roots through lawful generated histories and real forming events to a separately admitted child-generation event. The planner must not create retrospective actual parent memories, erase an older child or invent a prior partner."
+        },
+        {
+          "line": 24,
+          "text": "- Even if q(A)=q(B)=1/2 were adopted for a *hypothetical simulation*, successful-history rates a(A)=1, a(B)=1/4 yield survivor law 4/5 vs 1/5 under redraw-to-success. Correct required behavior is HOLD selected class and preserve selection and failure receipt, not silent replacement."
+        },
+        {
+          "line": 25,
+          "text": "- Original ADP015 relationship, household and child-generation are separate, with two stable generated actors and their pre-event causal histories and role-neutral PARENT_1/PARENT_2; objective/shared state does not entail actor-specific reciprocity; parenthood does not entail co-residence. CHILD_GENERATED is not conception or birth, and does not initialize child psyche (ADP007)."
+        },
+        {
+          "line": 28,
+          "text": "- S-GI1's laboratory positives are real evidence at their declared fixture grade, not positive real source-calibrated parents. Need independent forward actual V3 developmental rules, source/grain permission, scene/world variation and blind scorer before stronger product feasibility. Model call/provider permissions and cost for a new lab remain unknown/ungranted."
+        },
+        {
+          "line": 30,
+          "text": "**No accepted-rule contradiction was found that forces I3.** But SG's new decision kind, pending-target record, construction-only dependency, RNG stream/scope and physical occurrence rules would become semantic changes if adopted. They require competent *separate* ADP015/020 and relevant world/reproduction owners, not unilateral reviewer ratification."
+        },
+        {
+          "line": 32,
+          "text": "## Exact required issuer/owner chain"
+        },
+        {
+          "line": 33,
+          "text": "1. ADP015 registry issuer: versioned noncausal pending target and DAG edge; real mother anchor, immutable older-child/existing partner constraints, exact finite class identity/equivalence and eligibility/unknown/valid-empty taxonomy, selection purpose and failure/no-redraw receipts. No retroactive rewrite of accepted v1."
+        },
+        {
+          "line": 34,
+          "text": "2. ADP020 issuer after ADP015: whether GENEALOGY or JOINT scope, exact static stream (candidate v3.causal.adp015.conception_scenario_selection remains unregistered), canonical set and precise UNIFORM_CANDIDATE/WEIGHTED_CANDIDATE_INTEGER or deterministic no-draw rule with seed/coordinates/counter/replay identity."
+        },
+        {
+          "line": 35,
+          "text": "3. Pyat source/EE14/N9/N10E/C1/N10W scientific authorities: native universe/sample unit, dyad sampling if claimed, purpose, routing, risk, denominator, weights, forward/reverse direction, comparability, model/release/use, temporal/currentness and uncertainty. No father matching from same-respondent attitude marginals."
+        },
+        {
+          "line": 36,
+          "text": "4. Actual V3 history producers (ADP007/009/010/CAN008_R2, ADP021 and durable memory/access): verified immediate mother checkpoint and independently forward constructed, non-Mom-valid second-parent actor; shared encounter does not suffice for relation."
+        },
+        {
+          "line": 37,
+          "text": "5. Separate reproductive/organismic/conception/birth event issuer: condition, causal timing and occurrence before any CONCEPTION_OCCURRED claim; retained ADP015 CHILD_GENERATED and ADP007 initialization remain distinct. No ADP019 shortcut for reproductive physiology."
+        },
+        {
+          "line": 38,
+          "text": "6. Independent blind expected-case custodian, source/model/privacy/budget grant and full owner-import G12 tests before any adoption or operational lab generalization."
+        },
+        {
+          "line": 40,
+          "text": "**Highest accepted-at-review grade proposed:** DOCUMENTARY_CONSERVATION_PLUS_TINY_EXECUTED_MATH_PROOF. **HOLD:** ADP signatures, actual conception, gestation, birth, live actor/parent, population posterior, G12 original-module suite, model calls, N12/V3 wake, protected canonical state. No original survey read, model API call or actor operation in this reviewer execution. Incremental cash/quota/price UNKNOWN."
+        }
+      ],
+      "referenced_shas": [
+        "e4ee4ac2b43196fc77c28262f60edb03f413ee9b",
+        "a4dab0a12102aaa0b584ef6ff4fdc9206a28d456",
+        "1911352f4bd5b04dfeaa0f26930e6702998bb76d",
+        "a12d01c5f7d7ddad8be92c58afc97141b672dba0",
+        "4b184f11296843c03214bdf0fc35ff8ea20e50a8",
+        "7828aaf1dc27bcff8287b4dfb477d2a93de0cfd7",
+        "0cb708bbfe522a6c6e359f36d99835d180d5a84d",
+        "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+        "aa4d845736ff6208a988a3e70cb9f74e3104633e"
+      ],
+      "reported_disposition": "Disposition: ACCEPT_PROPOSED_DOCUMENTARY_NONCAUSAL_SEARCH_BOUNDARY_WITH_CONDITIONS; HOLD NEW ADP015/020 ISSUANCE AND ALL ACTUAL GENEALOGY EVENTS.** No adopted semantics, child generation or population posterior. Independent reviewer not SG, SGI1, G11 or SGI2 author; no se",
+      "code_inspection": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ299-RG11-K11-AUTHORITY-INDEPENDENT-R1/02_PORTABLE_FINITE_COUNTEREXAMPLES.py",
+        "blob": "e486a8d8bb6554c5babad151a019b25974ad22e8",
+        "bytes": 3270,
+        "functions": [
+          "def posterior_from_boolean_feasibility(prior_a):",
+          "def survivor_weights(q_a,q_b,a_a,a_b):",
+          "def h(v):return hashlib.sha256(json.dumps(v,sort_keys=True).encode()).hexdigest()",
+          "def ordered_construction(mother, candidates, future_label=None):",
+          "def test_same_feasible_histories_nonunique_posterior():",
+          "def test_silent_retry_changes_simulation_law():",
+          "def test_selection_without_owner_rule_must_not_draw():",
+          "def test_qualified_singleton_has_no_draw():",
+          "def test_dedup_does_not_increase_selection_mass():",
+          "def test_child_embargo_changed_hidden_label():",
+          "def test_construction_edge_is_not_causal_ancestor():",
+          "def test_no_inferred_dyad_posterior_from_respondent_marginal():",
+          "def test_pending_conception_distinct_from_child_generated_and_birth():"
+        ],
+        "sample": "\"\"\"Independent finite counterexamples for RG11. NOT accepted ADP implementation.\"\"\"\nfrom fractions import Fraction\nimport hashlib, json\nimport pytest\n\ndef posterior_from_boolean_feasibility(prior_a):\n    assert 0 < prior_a < 1\n    like_a=like_b=Fraction(1)\n    return prior_a*like_a/(prior_a*like_a+(1-prior_a)*like_b)\n\ndef survivor_weights(q_a,q_b,a_a,a_b):\n    z=q_a*a_a+q_b*a_b\n    return q_a*a_a/z,q_b*a_b/z\n\ndef h(v):return hashlib.sha256(json.dumps(v,sort_keys=True).encode()).hexdigest()\n\ndef ordered_construction(mother, candidates, future_label=None):\n    # The frozen child label is NOT an input to the legitimate planning function.\n    del future_label\n    return {'mother_ref':h(mother),'candidates':tuple(sorted(set(candidates))),\n            'dag_edges':[('endpoint','history_search','NONCAUSAL')], 'draws':0}\n\ndef test_same_feasible_histories_nonunique_posterior():\n    assert posterior_from_boolean_feasibility(Fraction(9,10))==Fraction(9,10)\n    assert posterior_from_boolean_feasibility(Fraction(1,10))==Fraction(1,10)\n    assert posterior_from_boolean_feasibility(Fraction(9,10))!=posterior_from_boolean_feasibility(Fraction(1,10))\n\ndef test_silent_retry_changes_simulation_law():\n    assert survivor_weights(Fraction(1,2),Fraction(1,2),Fraction(1),Fraction(1,4))==(Fraction(4,5),Fraction(1,5))\n\ndef test_selection_without_owner_rule_must_not_draw():\n    policy=None; candidates=['A','B']; draws=[]\n    result='SELECTION_AUTHORITY_UNBOUND' if policy is None else 'ALLOW'\n    assert result=='SELECTION_AUTHORITY_UNBOUND' and draws==[] and len(candidates)==2\n\ndef test_qualified_sing"
+      }
+    },
+    {
+      "index": 24,
+      "name": "agent/reviewer-sorok-r3-hq299-rmb-behavioral-harness-independent-r1",
+      "pinned_sha": "bf7518cff877ce108ef9c07f2e2eeaf990171d08",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 1,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ299-RMB-BEHAVIORAL-HARNESS-INDEPENDENT-R1/remote_verification.json"
+      ],
+      "code_paths": [],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ299-RMB-BEHAVIORAL-HARNESS-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "cd66521df3b62e62176d67d56cbd100ab9925096",
+        "url": "https://github.com/maidiu/rawlsing/blob/bf7518cff877ce108ef9c07f2e2eeaf990171d08/WORKER_RETURNS/SOROK-R3-HQ299-RMB-BEHAVIORAL-HARNESS-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 78
+      },
+      "review_evidence": "# HQ299 RMB — independent behavioral protocol court\n\n**Decision: REVIEW_REVISE.** Recommend scoped receipt of the independently reproduced synthetic machine results. **Do not accept the current assay for architectural behavioral inference or authorize its execution merely by filling the eight grant fields.** No behavioral result was produced. Reviewer recommendation only; competent HQ/owners retain acceptance, grant and adoption decisions.\n\n## Identity, custody and environment\n\n- Repository: private `maidiu/rawlsing`.\n- Role: independent I2 experimental-validity reviewer, distinct from LAB1/LAB2 author; not HQ, model issuer, actor issuer or adopter.\n- Assigned branch: `agent/reviewer-sorok-r3-hq299-rmb-behavioral-harness-independent-r1`.\n- Exact sealed startup: `24173c46b4130bc080955087082cb4e864bcb70c`, independently read from the remote before work. Its immediate parent is HQ299 `5c59fb409d5f08312c19b936738eb4410dbd4f26`.\n- Candidate: LAB2 `bf5fda102f4bced41a0f18f71c4c380d5d099462`, independently read from its remote branch; LAB1 `d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09`; K35 `12c65e0ed0a82ebe6a843182990e8b8586b85341`.\n- Actual environment: separate existing Codex worktree, shared canonical Git object store, new independently verified epoch; Python 3.11.3, pytest 9.0.2. `LOCAL_DOMINANT` upheld. No qualified prior reviewer runtime was claimed. Other observed worktrees/jobs were left untouched.\n- Requested reviewer model: Codex GPT-6 High where available. Exact runtime model/version/effort is not exposed by this execution surface; no model switch or provider invocation was made or certified.\n- Entire commission, HQ299 intake, Sorok 00_READ/00B/00C/00D read at the required cut; candidate report, preregistration, manifest, tests and relevant predecessor contracts inspected. Governance blobs are unchanged between HQ299 parent and startup. Exact read/import identities: `read_cut.json`, `source_manifest.json`, `receipts/*_imports.json`.\n- Writes/commits confined to this return directory. No candidate, commission, protected owner, CURRENT or PRE-MAIN edits.\n\n## Actual execution and replication\n\n| Operation | Actual result | Receipt |\n|---|---|---|\n| LAB1 predecessor suite | **20 passed**, exit 0 | `receipts/lab1_suite.txt`, `lab1_junit.xml` |\n| Full LAB1 frozen trial plan | **576 trials**, hard invariants/replay/15 nulls/opacity pass | `receipts/lab1_machine.txt`, raw results archives |\n| Independent original/replay comparison | **576/576 deterministic receipts equal**, excluding only per-trial `latency_ms`; five claimed semantic sections exactly equal | `receipts/replication_diff.json` |\n| Full raw timed receipt byte comparison | **451/576 byte-identical** on final run; 125 differ only in latency. Full summary `cost` and `wall_seconds` also differ | same diff receipt; no blanket raw-byte identity claim |\n| LAB2 suite | **25 passed**, exit 0 | `receipts/lab2_suite.txt`, `lab2_junit.xml` |\n| LAB2 freeze/manifest/harness/HOLD | 576 packets, hashes match, six reported packet checks pass, dry run correctly labelled non-evidence, eight missing fields deny calls | `receipts/lab2_harness.txt`, `packet_and_scorer_audit.json` |\n| Independent hostile contracts | **13 passed, 23 failed**, exit 1, no skips/xfails | `test_independent.py`, `receipts/independent_junit.xml`, stdout |\n| Six vendored LAB1 modules vs originals | all six byte-identical with full Git blob identities | `source_manifest.json`, packet/scorer audit |\n\nPreserved machine scores: A=1.0 on K1–K6; B/C=1.0 except K2=0.0. This supports the stated bounded synthetic result: A carries these scripted distinctions, B's original ranking harms K2, C has a derived-cache interpretation. It supplies neither behavioral calibration nor accepted owner-runtime proof. The warranted machine claim is F3 **at this fixture grain**; architecture/product generality remains unproved.\n\nLAB1 preregistration SHA-256: `f36d2d31289a6f1544444193689778e352e2e903162f63a578185868e89f4981`.\n\nLAB2 preregistration SHA-256: `880fbde407654cf847e72f9cc58f7884470973072e99c0964b8d33e17e0bb330`.\n\nLAB2 manifest hash: `f9c4dc6af3c40b88453338a4510c5361c4475a59e775941f28bbf238800701df`.\n",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# HQ299 RMB — independent behavioral protocol court"
+        },
+        {
+          "line": 3,
+          "text": "**Decision: REVIEW_REVISE.** Recommend scoped receipt of the independently reproduced synthetic machine results. **Do not accept the current assay for architectural behavioral inference or authorize its execution merely by filling the eight grant fields.** No behavioral result was produced. Reviewer recommendation only; competent HQ/owners retain acceptance, grant and adoption decisions."
+        },
+        {
+          "line": 8,
+          "text": "- Role: independent I2 experimental-validity reviewer, distinct from LAB1/LAB2 author; not HQ, model issuer, actor issuer or adopter."
+        },
+        {
+          "line": 9,
+          "text": "- Assigned branch: `agent/reviewer-sorok-r3-hq299-rmb-behavioral-harness-independent-r1`."
+        },
+        {
+          "line": 10,
+          "text": "- Exact sealed startup: `24173c46b4130bc080955087082cb4e864bcb70c`, independently read from the remote before work. Its immediate parent is HQ299 `5c59fb409d5f08312c19b936738eb4410dbd4f26`."
+        },
+        {
+          "line": 11,
+          "text": "- Candidate: LAB2 `bf5fda102f4bced41a0f18f71c4c380d5d099462`, independently read from its remote branch; LAB1 `d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09`; K35 `12c65e0ed0a82ebe6a843182990e8b8586b85341`."
+        },
+        {
+          "line": 12,
+          "text": "- Actual environment: separate existing Codex worktree, shared canonical Git object store, new independently verified epoch; Python 3.11.3, pytest 9.0.2. `LOCAL_DOMINANT` upheld. No qualified prior reviewer runtime was claimed. Other observed worktrees/jobs were left untouched."
+        },
+        {
+          "line": 14,
+          "text": "- Entire commission, HQ299 intake, Sorok 00_READ/00B/00C/00D read at the required cut; candidate report, preregistration, manifest, tests and relevant predecessor contracts inspected. Governance blobs are unchanged between HQ299 parent and startup. Exact read/import identities: `read_cut.json`, `source_manifest.json`, `receipts/*_imports.json`."
+        },
+        {
+          "line": 21,
+          "text": "| LAB1 predecessor suite | **20 passed**, exit 0 | `receipts/lab1_suite.txt`, `lab1_junit.xml` |"
+        },
+        {
+          "line": 23,
+          "text": "| Independent original/replay comparison | **576/576 deterministic receipts equal**, excluding only per-trial `latency_ms`; five claimed semantic sections exactly equal | `receipts/replication_diff.json` |"
+        },
+        {
+          "line": 26,
+          "text": "| LAB2 freeze/manifest/harness/HOLD | 576 packets, hashes match, six reported packet checks pass, dry run correctly labelled non-evidence, eight missing fields deny calls | `receipts/lab2_harness.txt`, `packet_and_scorer_audit.json` |"
+        },
+        {
+          "line": 27,
+          "text": "| Independent hostile contracts | **13 passed, 23 failed**, exit 1, no skips/xfails | `test_independent.py`, `receipts/independent_junit.xml`, stdout |"
+        },
+        {
+          "line": 28,
+          "text": "| Six vendored LAB1 modules vs originals | all six byte-identical with full Git blob identities | `source_manifest.json`, packet/scorer audit |"
+        },
+        {
+          "line": 30,
+          "text": "Preserved machine scores: A=1.0 on K1–K6; B/C=1.0 except K2=0.0. This supports the stated bounded synthetic result: A carries these scripted distinctions, B's original ranking harms K2, C has a derived-cache interpretation. It supplies neither behavioral calibration nor accepted owner-runtime proof. The warranted machine claim is F3 **at this fixture grain**; architecture/product generality remains unproved."
+        },
+        {
+          "line": 38,
+          "text": "Freeze bytes/receipt match; no model captures exist in this reviewer run. Candidate freeze chronology is a documentary declaration, not an independently witnessed historical timestamp or enforced transport check."
+        },
+        {
+          "line": 42,
+          "text": "1. **No implemented granted experiment.** `BehavioralRunner.run_granted()` reaches `NotImplementedError` after a filled local test grant. Transport, raw capture, retry/cap enforcement, provider seed mapping, free-text validation and model N3/N7 execution are absent. The candidate's “grant is the single missing input / finished and executable” claim is withdrawn as a recommended disposition."
+        },
+        {
+          "line": 43,
+          "text": "2. **No arm manipulation beyond menu/presentation.** Independently compared all 192 matched blocks: A/B/C packet cores are identical. No implemented B descriptive compiler or C cache/rebuild interface drives behavioral input. A/B/C differences cannot identify architecture effects here."
+        },
+        {
+          "line": 47,
+          "text": "6. **K5 output score cannot establish the intended joint predicate.** Whole-packet visibility includes `PUBLIC_STANDING_CHANGE` owner effects; the narrow actor-info key-absence check misses it. Selecting `ACCEPT_CERTIFICATE` says nothing about whether private belief changed automatically or whether an unauthorized standing effect was committed. Those require separate owner and belief/testimony measurements."
+        },
+        {
+          "line": 50,
+          "text": "9. **No paired inference.** `compare_arms()` accepts disjoint IDs, computes marginal fractions and no paired intervals, and mixes contrasts/Ks. Twelve temperature-zero repeats are not twelve new scenarios. There are 16 contrast cells and only **14 distinct factual hashes**, including the K6 conflict. ±5pp equivalence is correctly labelled indeterminate, but no prospective power, multiplicity or valid promotion interval is implemented."
+        },
+        {
+          "line": 51,
+          "text": "10. **Gate is a presence checker.** All eight missing-field probes deny. Conversely nonempty `DENIED` privacy/use strings, mutable `latest`, negative monetary-cap text, Boolean True and floating call budgets pass the gate. The no-transport stub prevented any actual call; these are authorization-validation defects, not an observed unauthorized model execution. No competent-issuer identity, grant/freeze binding or consumption ledger is validated."
+        },
+        {
+          "line": 57,
+          "text": "**REVISE assay + implement and review bounded transport + obtain a competent eight-field grant. All are required.** Preserve R1; do not silently edit the old freeze. Before any behavioral capture, independently review a newly frozen R2 with opaque IDs, factual capacity evidence, actor-safe projection, actual arm liveness, held-out independently authored scenarios, complete owner/epistemic predicates, lawful outcome sets, full denominator, pair integrity/intervals and N1–N7/free-text budgets. Mock-only transport tests must prove cap/retry/raw-capture/freeze enforcement; they cannot prove provider behavior."
+        },
+        {
+          "line": 61,
+          "text": "**NOT_REACHED:** any real model/actor response, provider seed compliance, behavioral N3/N7, free-text behavior, power/equivalence certification, original scientific data, accepted owner integration, adoption, calibration, V3 wake, release or physical weld. Zero external experimental model calls; zero actor runs; zero original-source operations; zero accepted-owner edits. Authoring this review is distinct from experimental model calls. No packet/source was submitted to a provider. Public generic methodological lookup only; no private repository material exported."
+        },
+        {
+          "line": 63,
+          "text": "Stop/narrow condition: if an independently repaired, opaque-ID assay still cannot distinguish factual contrasts or responds through menu/label leakage, stop architectural interpretation and restrict it to a pinned-model instruction-following benchmark. No I3 trigger is established here: no collision of competent accepted authorities, and no semantic repair is self-adopted."
+        },
+        {
+          "line": 70,
+          "text": "python3 WORKER_RETURNS/SOROK-R3-HQ299-RMB-BEHAVIORAL-HARNESS-INDEPENDENT-R1/reproduce.py"
+        },
+        {
+          "line": 73,
+          "text": "This rehydrates only this return's ignored `imports/`, verifies 630 exact files using the NUL Git blob preimage, reruns 20+25/576, retains raw compressed captures and independent REDs. **Exit 1 is intentional while the hostile contracts fail.** All inputs are unmodified pinned synthetic packages; no fake source or surrogate PASS. Full raw original outputs remain at LAB1; all new 576 machine receipts and packets are retained here in `.json.gz` archives."
+        },
+        {
+          "line": 77,
+          "text": "Only the assigned worker branch is pushed. `remote_verification.json` records direct read-back of the preceding evidence commit; the final commit cannot contain its own hash. Exact **final remote SHA** is independently queried after the last push and delivered outside the hashed file in the chat. Changed-path inventory and ancestry are in the verification receipt. **No self-adoption.**"
+        }
+      ],
+      "referenced_shas": [
+        "24173c46b4130bc080955087082cb4e864bcb70c",
+        "5c59fb409d5f08312c19b936738eb4410dbd4f26",
+        "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+        "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+        "12c65e0ed0a82ebe6a843182990e8b8586b85341"
+      ],
+      "reported_disposition": null
+    }
+  ]
+}
