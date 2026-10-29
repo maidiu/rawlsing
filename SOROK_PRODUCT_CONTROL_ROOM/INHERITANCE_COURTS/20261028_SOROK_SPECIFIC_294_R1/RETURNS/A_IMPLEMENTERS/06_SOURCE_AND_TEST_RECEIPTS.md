@@ -82,3 +82,25 @@ B1 B-first response / CAN011 fixture → B2 sourcefree proposal and admitted wit
 C0 structural N9 and empirical N10E remain separate Pyat-owned contracts. C0P author connected two downstream sourcefree consumers without obtaining N11/N12 or native agency. SGI1 genealogy and renderer RFA work are sourcefree/design evidence, not independent actual persons or model assessment.
 
 Final correction: OUT10 final return Git blob `1383d79080846ae00c8717d1cbdae5c80173eb1a`, not inherited OUT8. Extra direct code cuts: G15, SM owner stub, R2 behavioral assay, HQ300 CAN008 candidate. No tests were executed during these source reads.
+
+## 2026-10-29 full-tree / independent review reconciliation
+
+| Row | Exact blob | Actual source file / evidence |
+|---|---|---|
+| A56 | `706475c927432c52599e6b603feb18ee9d716839` | `WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py` at branch `49992b28becfdbecbd41d9dbead47532bf0b6af9`. Actual `TwoContractAdapter.run` and fail-closed WORLD_READ gate; **not commission-only**. |
+| A56 test | `772817f6eb3e8f4a9aca01f99a197edfd13789d8` | `port/test_connection.py`, pinned PE/C1/N10E call-graph assertion; author reports 6/6 connection tests. |
+| A56 return | `b604347f9a285d172d549ac4b69c0bc40b158fea` | `00_RETURN.md`, author reports RC0 25/25 after earlier 13/25, K9 8/8, K10 28/28 and retained nine PE deficits; this audit did not execute them. |
+| A67 partial source | `55e33c9b3334946260821e4f456a079deb2f13b2` | `WORKER_RETURNS/SOROK-R3-HQ311-OUT6-OUT5-FOUR-DEFECT-REPAIR-R1/repro/OUT6_EXACT_SOURCE.patch`; reviewed specific ACK terminality, revoked viewer and retry gates; full archive still requires qualified materialization. |
+| A10 stronger executable source | `3ceabbaf0eaca3a5c01432a9967ad7edcd6760bf` | `WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/pipeline.py` exposes `run_candidate_path` and performed E2 admission; test-only only. |
+| A48 stronger executable source | `78ef0d4f9eff39192c52de5dcf3723ff6f8a8107` | `WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/adapter.py` exposes `TwoContractAdapter.run`; preserves two distinct N9-world and N10-possibility contracts. |
+
+### Independent review at exact target, not global adoption
+
+- A01 `528e8cde0cff9e28f3c55d5d54a66e820d7401fa` reviewed `8bd4d6b01fd402e7e6a8d07903f2c3cada837f55`: **REVISE**, five atomicity negatives repaired but two fresh schema/readset REDs.
+- A02 `1a25b19dd01e8e7954e38c59ffc7e52c50739c9f` reviewed `16f15a125ba54cdf17f5d41be2d851bbcd2240d7`: **ACCEPT_SCOPED** schema/readset, not native psychology.
+- A06 `8e74be26d14dae270ed6723d5e878f59446c94bd` reviewed `2001169089e97da7444dc8baa2df700aa56e9aca`: documentary **HOLD**, no actual assertion execution.
+- A07 `43328571f297c26e23a42a755ef306c1247b5032` reviewed `a0f7ab5ff9323a1db8a4c6c3b365283b0969de46`: **ACCEPT_SCOPED** two-owner transport and clock refusal only.
+- A11 `5753d9b4f8fad9f2175b1e285733f95bb8387888` reviewed `6fa2939972ce5a2c0cc4f2b033946b276f1c2934`: scoped sourcefree C9R engineering positive, frozen C9PI fixed; 28 original author-suite divergences classified and retained.
+- A18 `3212d716ce66586527c258632ef10c3ff4489803` reviewed `5b3e6577400ea1d88971ae6b48e41a118b8059ae`: 33 BP2P4J, 50 BP2 and 15 BP4 tests independently green, yet **REVISE** for exact C12 episode-verifier hash preimage; unkeyed witness custody remains HOLD.
+
+This is a retrospective, non-executing source audit, not the independent review of this amended A return. Underlying author/reviewer execution remains attributed, not rerun here; no sourceowner or PRE-MAIN authority has been assumed.
