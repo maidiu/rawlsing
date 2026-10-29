@@ -1,0 +1,143 @@
+{
+  "schema": "SOROK_HR1_F2I_OWNER_NEXT_ACCEPTANCE_CUT_AND_HANDOFF@1",
+  "generated_at_utc": "2026-10-29",
+  "identity": {
+    "repository": "maidiu/rawlsing",
+    "return_branch": "review/sorok-hr1-f2-episode-verifier-independent-replay-20261029-r1",
+    "sealed_startup": "2c45c58ccaaf5512795774d7690a1a6a320e2a66",
+    "sealed_prompt_head": "f37c02eca8f8f1f5664239cdd2ae919f1c800adf",
+    "immutable_author_return": "0636d257f588f8874e65b2cb183d1d47c7f53327",
+    "original_bp2p4j": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+    "original_bp2p4ji": "3212d716ce66586527c258632ef10c3ff4489803",
+    "hr1_prior": "40df1e61fb32f9210839d8ddfa9f8bf9a47d7621",
+    "premain_pin": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "author_remote_head_matched_at_launch": true,
+    "actual_editor_model": "OpenCode / DeepSeek V4.1-Flash",
+    "host": "macOS x86_64 13.7.8",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "sqlite": "3.40.1",
+    "bp2p4ji_review_document": {
+      "path": "WORKER_RETURNS/SOROK-20261020-BP2P4JI-WHOLE-PRODUCT-INDEPENDENT-R1/00_RETURN.md",
+      "git_blob": "39e42a1281563cc5ec36c884a8d17f0f63d7f08e",
+      "sha256": "fb70893704071f232702479e20bc1502471d86d38bdbae4ab18b0171c9bcab60"
+    },
+    "f2_author_return_document": {
+      "path": "WORKER_RETURNS/SOROK-HR1-F2-BP2P4J-EPISODE-VERIFY-REPAIR-R1/00_RETURN.md",
+      "git_blob": "551141657460eeb1fd369b33b57e8b2643337c94",
+      "sha256": "93274ce9aa404c36053df73b6541276e0dae35f41d0598a770b5d16dfe6a1076"
+    }
+  },
+  "grades": {
+    "engineering": "ACCEPT_SCOPED_BOUNDED_VERIFIER__RESIDUAL_SECURITY_HOLDS",
+    "science": "TEST_ONLY_E2_POSITIVE_ONLY__NO_NATIVE_PRACTICE_ACQUISITION",
+    "authority": "HOLD_NO_ADOPTION__ORIGINAL_OWNER_AND_EXTERNAL_ANCHOR_REQUIRED",
+    "original_bp2p4ji_review": "REVISE_PRESERVED",
+    "self_adoption": false
+  },
+  "acceptance_cut": {
+    "base_commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+    "only_overlay": [
+      {
+        "path": "bp2p4/c12_verify.py",
+        "git_blob": "c1699c8da5e944ed079708e272c3af50d5a30a44",
+        "sha256": "6ad07d75f3ebb785e847e761e2db65df37abf8eea72559df3a6c54f031141d20",
+        "original_blob": "b8e7cf397dbbbc37aa0a63ce9e0d7ba27a509cd3"
+      },
+      {
+        "path": "tests/test_episode_verifier_regression.py",
+        "git_blob": "ebe1e8287f9b8485b6c862b66b6c2a9dafcf59aa",
+        "sha256": "b55f148f5623458259c7fe3b05b340c19c3bc1a5f721a12145f50df7caa28c58",
+        "original_blob": null
+      }
+    ],
+    "exact_replay_command": "git worktree add --detach <owner-work> 5b3e6577400ea1d88971ae6b48e41a118b8059ae && cp <candidate>/bp2p4/c12_verify.py <owner-work>/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/c12_verify.py && cp <candidate>/tests/test_episode_verifier_regression.py <owner-work>/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/tests/ && cd <owner-work>/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1 && PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests -q",
+    "expected": "38 passed / 0 failed / 0 errors / 0 skipped",
+    "original_baseline": "33 passed / 0 failed / 0 errors / 0 skipped",
+    "original_focused_red": "1 failed with episode:0:body_hash_mismatch",
+    "independent_replay_result": "38 passed / 0 failed / 0 errors / 0 skipped; the same assertions were independently run"
+  },
+  "independent_findings": {
+    "original_red_reproduced": true,
+    "valid_say_green_after_repair": true,
+    "episode_body_tamper_red": true,
+    "episode_id_forgery_or_legacy_red": true,
+    "world_event_body_tamper_red": true,
+    "cold_reopen_green": true,
+    "seven_primary_severances_proved": true,
+    "three_supplementary_severances_proved": true,
+    "injected_world_event": "ACCEPTED_BY_VERIFIER__HOLD",
+    "raw_sqlite_deletion": "VERIFIER_GREEN__UNKEYED_CHAIN_DIGEST_CHANGED__HOLD",
+    "fully_rehashed_episode_forgery": "ACCEPTED_BY_VERIFIER__HOLD",
+    "upstream_bp4_verify": "SELF_REFERENTIAL__HOLD"
+  },
+  "owner_decisions_required": [
+    {
+      "priority": 1,
+      "decision": "Adopt or reject the exact c1699c8d verifier overlay and ebe1e828 test at base 5b3e657.",
+      "owner": "Original BP2P4J verifier owner and BP4 C12 store owner",
+      "acceptance": "Owner replay of the exact cut; no reliance on this reviewer's runtime."
+    },
+    {
+      "priority": 2,
+      "decision": "Repair upstream BP4 C12Store.verify or explicitly retain its self-referential failure as a separate HOLD.",
+      "owner": "BP4 C12 store owner",
+      "acceptance": "Upstream and independent verifier agree on all row types for a valid episode."
+    },
+    {
+      "priority": 3,
+      "decision": "Define the sole lawful episode-id derivation and whether any legacy writer form is supported.",
+      "owner": "BP2P4J schema/writer owner",
+      "acceptance": "Exact preimage contract plus writer migration or explicit refusal policy; test for legacy form."
+    },
+    {
+      "priority": 4,
+      "decision": "Provide or explicitly reject a signed/independently custodied external chain anchor covering episodes and world events.",
+      "owner": "BP4/C12 completeness and anchor custodian",
+      "acceptance": "Tamper test catches raw deletion, injection and fully rehashed rows; anchor trust boundary named."
+    },
+    {
+      "priority": 5,
+      "decision": "Keep the scientific claim at TEST_ONLY performed E2; do not promote to native practice.",
+      "owner": "Sorok HQ and native CAN/ADP/C11/C12 owners",
+      "acceptance": "No native practice acquisition or person claim on this evidence."
+    }
+  ],
+  "first_real_consumer": {
+    "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/tests/test_joined_security.py",
+    "plus": "new tests/test_episode_verifier_regression.py",
+    "kind": "branch-local sourcefree security/audit court",
+    "production_consumer": "NOT_PROVED"
+  },
+  "residual_holds": [
+    "Raw SQLite deletion is not detected by verify_branch_chain; only the unkeyed chain_digest changes.",
+    "A self-consistent injected world_event is accepted by verify_branch_chain.",
+    "A fully rehashed episode body/id/hash forgery is accepted by verify_branch_chain.",
+    "BP4 C12Store.verify remains self-referential and unpatched.",
+    "No signed external anchor or protected completeness witness exists.",
+    "No native C12/BP4, C8 authority, Rule A/T, C11 or production adoption is established."
+  ],
+  "negative_preservation": {
+    "original_bp2p4ji_revise": true,
+    "original_33_tests_unchanged": true,
+    "original_focused_red_preserved": true,
+    "no_test_disabled": true,
+    "no_assertion_weakened": true
+  },
+  "not_run": [
+    "original BP2 50-case suite",
+    "original BP4 15-case suite",
+    "native CAN/ADP/SCI05/C11/C12",
+    "production deployment",
+    "external signed anchor",
+    "original owner replay"
+  ],
+  "handoff": {
+    "post_return_review_owner": "Incumbent Sorok HQ plus a separate source-qualified I2 reviewer",
+    "adoption": "NONE",
+    "premain_mutation": false,
+    "pr_519_514_516_mutation": false,
+    "author_branch_mutation": false,
+    "final_remote_sha": "REPORTED_EXTERNALLY_AFTER_PUSH__NOT_EMBEDDED"
+  }
+}

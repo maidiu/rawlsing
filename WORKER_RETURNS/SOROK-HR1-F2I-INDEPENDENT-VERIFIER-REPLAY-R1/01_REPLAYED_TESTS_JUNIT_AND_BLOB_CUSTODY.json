@@ -1,0 +1,554 @@
+{
+  "schema": "SOROK_HR1_F2I_REPLAY_TESTS_JUNIT_AND_BLOB_CUSTODY@1",
+  "generated_at_utc": "2026-10-29",
+  "identity": {
+    "repository": "maidiu/rawlsing",
+    "return_branch": "review/sorok-hr1-f2-episode-verifier-independent-replay-20261029-r1",
+    "sealed_startup": "2c45c58ccaaf5512795774d7690a1a6a320e2a66",
+    "sealed_prompt_head": "f37c02eca8f8f1f5664239cdd2ae919f1c800adf",
+    "immutable_author_return": "0636d257f588f8874e65b2cb183d1d47c7f53327",
+    "original_bp2p4j": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+    "original_bp2p4ji": "3212d716ce66586527c258632ef10c3ff4489803",
+    "hr1_prior": "40df1e61fb32f9210839d8ddfa9f8bf9a47d7621",
+    "premain_pin": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "author_remote_head_matched_at_launch": true
+  },
+  "environment": {
+    "host": "macOS x86_64 13.7.8",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "sqlite": "3.40.1",
+    "editor_model": "OpenCode / DeepSeek V4.1-Flash",
+    "isolation": "detached base worktree at 5b3e657, separate return worktree"
+  },
+  "source_custody": {
+    "original_verifier": {
+      "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/c12_verify.py",
+      "git_blob": "b8e7cf397dbbbc37aa0a63ce9e0d7ba27a509cd3",
+      "sha256": "4456db64e88d234b0a774a6f3787c52472076cb62654959c160ac4b3d15317ce"
+    },
+    "candidate_verifier": {
+      "path": "WORKER_RETURNS/SOROK-HR1-F2-BP2P4J-EPISODE-VERIFY-REPAIR-R1/candidate/bp2p4/c12_verify.py",
+      "git_blob": "c1699c8da5e944ed079708e272c3af50d5a30a44",
+      "sha256": "6ad07d75f3ebb785e847e761e2db65df37abf8eea72559df3a6c54f031141d20"
+    },
+    "candidate_test": {
+      "path": "WORKER_RETURNS/SOROK-HR1-F2-BP2P4J-EPISODE-VERIFY-REPAIR-R1/candidate/tests/test_episode_verifier_regression.py",
+      "git_blob": "ebe1e8287f9b8485b6c862b66b6c2a9dafcf59aa",
+      "sha256": "b55f148f5623458259c7fe3b05b340c19c3bc1a5f721a12145f50df7caa28c58"
+    },
+    "original_test_files": {
+      "tests/conftest.py": {
+        "git_blob": "35c1e1c0cac69c6006f669201b018289348e619a",
+        "sha256": "698925e5c5414f340703077beed3c46f82f6396bd44e30f23d0cbb2ac6d3cfde"
+      },
+      "tests/test_joined_product.py": {
+        "git_blob": "f0e52ea3a2e39d29c4740ead7032c366cec19eeb",
+        "sha256": "d179e449d22b50b1d61ecc070e6df1790978ae8be380e2b1faae242d37bb4e76"
+      },
+      "tests/test_joined_security.py": {
+        "git_blob": "9cffe8a95d23492053f5ccd612128f0d02a96ed9",
+        "sha256": "99a16128e693eb547a82d4bdcf0867787ee5aa49d8b4aec2a68d912600719f5a"
+      },
+      "tests/test_joined_severance.py": {
+        "git_blob": "9e15af676d0ef3f33a345ebbc3ee0734e09ac63c",
+        "sha256": "d2f60b7c2ba83e2801bd010f2c7b841ae87741e03d028f5f5222c9efd4c5b977"
+      },
+      "tests/test_source_closure.py": {
+        "git_blob": "cfe1d1b4e155e0d12699280af6b071c320702e95",
+        "sha256": "3bfe5166693981c579f3ef4f949857af4cf0410872f86f7a675734d3cb1f3942"
+      }
+    },
+    "original_tests_byte_unchanged": true,
+    "candidate_overlay_only_two_blobs": true,
+    "prior_review_and_author_docs": {
+      "bp2p4ji_review": {
+        "path": "WORKER_RETURNS/SOROK-20261020-BP2P4JI-WHOLE-PRODUCT-INDEPENDENT-R1/00_RETURN.md",
+        "git_blob": "39e42a1281563cc5ec36c884a8d17f0f63d7f08e",
+        "sha256": "fb70893704071f232702479e20bc1502471d86d38bdbae4ab18b0171c9bcab60"
+      },
+      "f2_author_return": {
+        "path": "WORKER_RETURNS/SOROK-HR1-F2-BP2P4J-EPISODE-VERIFY-REPAIR-R1/00_RETURN.md",
+        "git_blob": "551141657460eeb1fd369b33b57e8b2643337c94",
+        "sha256": "93274ce9aa404c36053df73b6541276e0dae35f41d0598a770b5d16dfe6a1076"
+      },
+      "f2_candidate_manifest": {
+        "path": "WORKER_RETURNS/SOROK-HR1-F2-BP2P4J-EPISODE-VERIFY-REPAIR-R1/01_CANDIDATE_SOURCE_HASH_AND_CHANGED_PATHS.json",
+        "git_blob": "234733c423a8a98e369389998738586d4e11cf2c",
+        "sha256": "a95976df6bffc4f8d888f01bd5a820efe75a831b9a1871de8eb8a7268c2f73e9"
+      }
+    }
+  },
+  "commands": [
+    "cd <base>/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1 && PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests -q --junitxml=<runs>/01_baseline_33.xml",
+    "cd <base>/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1 && PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests/test_episode_verifier_regression.py::test_valid_say_episode_is_green_and_preserves_the_post_hash_id -q --junitxml=<runs>/02_original_red_say.xml",
+    "cd <base>/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1 && PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests -q --junitxml=<runs>/03_repaired_38.xml",
+    "PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 <runs>/adversarial_f2i.py",
+    "PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 <runs>/rehashed_forgery_f2i.py"
+  ],
+  "results": {
+    "baseline_original_33": {
+      "path": "01_baseline_33.xml",
+      "sha256": "c558bf1a70b1cf8093dbd9cd01c4214965f64e532fe06954adce028bb3a34385",
+      "tests": 33,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "classname": "test_joined_product",
+          "name": "test_joined_a0_a2_assertion_passes",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_product_exposes_the_real_bp2_source",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_practice_is_materialized_from_the_committed_target_and_e2",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_without_performed_e2_the_practice_and_world_effect_change",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_fork_shared_root_and_lawful_divergence",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_cold_reentry_in_a_new_process_keeps_the_bp2_target",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_literal_bp2_origin_target_is_actually_consumed",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_clock_domains_are_separate_and_never_numerically_ordered",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_time_coordinate_hold_without_a_join_binding",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_envelope_is_recomputed_from_artifacts",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_shape_valid_envelope_claiming_the_literal_target_is_refused",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_native_smuggling_in_a_shape_valid_envelope_is_refused",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_self_actuator_e2_is_refused",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_self_occurrence_e2_is_refused",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_forged_world_owner_receipt_is_refused",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_c12_append_only_and_future_child_guards",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_forged_actor_perception_is_caught_by_the_same_assertion",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_bp4_own_c10_refuses_a_tampered_target_preimage",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_raw_database_access_can_drop_the_append_only_trigger_is_a_residual",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_upstream_bp4_store_verify_is_self_referential",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_old_bp1_only_target_is_not_the_joined_consumer",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_joined_reconciliation_matches_bp2_committed_evidence",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_severance",
+          "name": "test_seven_load_bearing_edges_are_declared",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_severance",
+          "name": "test_every_trial_uses_the_same_named_assertion",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_severance",
+          "name": "test_every_primary_edge_reddens_then_restores",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_severance",
+          "name": "test_red_messages_are_the_actual_edge_codes",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_severance",
+          "name": "test_restoration_basis_is_explicit",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_severance",
+          "name": "test_supplementary_variations_also_redden_then_restore",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_severance",
+          "name": "test_severance_receipt_reports_ten_witnesses",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_source_closure",
+          "name": "test_manifest_verifies_against_origin_commits",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_source_closure",
+          "name": "test_loaded_upstream_modules_are_pinned",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_source_closure",
+          "name": "test_upstream_test_files_are_byte_identical",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_source_closure",
+          "name": "test_no_upstream_file_was_written_in_place",
+          "status": "PASS"
+        }
+      ],
+      "junit_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"0\" skipped=\"0\" tests=\"33\" time=\"19.237\" timestamp=\"2026-10-29T18:29:32.004102-04:00\" hostname=\"Matthews-MBP.lan\"><testcase classname=\"test_joined_product\" name=\"test_joined_a0_a2_assertion_passes\" time=\"0.445\" /><testcase classname=\"test_joined_product\" name=\"test_product_exposes_the_real_bp2_source\" time=\"0.049\" /><testcase classname=\"test_joined_product\" name=\"test_practice_is_materialized_from_the_committed_target_and_e2\" time=\"0.049\" /><testcase classname=\"test_joined_product\" name=\"test_without_performed_e2_the_practice_and_world_effect_change\" time=\"0.087\" /><testcase classname=\"test_joined_product\" name=\"test_fork_shared_root_and_lawful_divergence\" time=\"0.121\" /><testcase classname=\"test_joined_product\" name=\"test_cold_reentry_in_a_new_process_keeps_the_bp2_target\" time=\"1.128\" /><testcase classname=\"test_joined_product\" name=\"test_literal_bp2_origin_target_is_actually_consumed\" time=\"0.205\" /><testcase classname=\"test_joined_product\" name=\"test_clock_domains_are_separate_and_never_numerically_ordered\" time=\"0.120\" /><testcase classname=\"test_joined_product\" name=\"test_time_coordinate_hold_without_a_join_binding\" time=\"0.054\" /><testcase classname=\"test_joined_product\" name=\"test_envelope_is_recomputed_from_artifacts\" time=\"0.029\" /><testcase classname=\"test_joined_security\" name=\"test_shape_valid_envelope_claiming_the_literal_target_is_refused\" time=\"0.037\" /><testcase classname=\"test_joined_security\" name=\"test_native_smuggling_in_a_shape_valid_envelope_is_refused\" time=\"0.031\" /><testcase classname=\"test_joined_security\" name=\"test_self_actuator_e2_is_refused\" time=\"0.010\" /><testcase classname=\"test_joined_security\" name=\"test_self_occurrence_e2_is_refused\" time=\"0.010\" /><testcase classname=\"test_joined_security\" name=\"test_forged_world_owner_receipt_is_refused\" time=\"0.056\" /><testcase classname=\"test_joined_security\" name=\"test_c12_append_only_and_future_child_guards\" time=\"0.056\" /><testcase classname=\"test_joined_security\" name=\"test_forged_actor_perception_is_caught_by_the_same_assertion\" time=\"0.086\" /><testcase classname=\"test_joined_security\" name=\"test_bp4_own_c10_refuses_a_tampered_target_preimage\" time=\"0.133\" /><testcase classname=\"test_joined_security\" name=\"test_raw_database_access_can_drop_the_append_only_trigger_is_a_residual\" time=\"0.071\" /><testcase classname=\"test_joined_security\" name=\"test_upstream_bp4_store_verify_is_self_referential\" time=\"0.051\" /><testcase classname=\"test_joined_security\" name=\"test_old_bp1_only_target_is_not_the_joined_consumer\" time=\"0.213\" /><testcase classname=\"test_joined_security\" name=\"test_joined_reconciliation_matches_bp2_committed_evidence\" time=\"0.001\" /><testcase classname=\"test_joined_severance\" name=\"test_seven_load_bearing_edges_are_declared\" time=\"0.000\" /><testcase classname=\"test_joined_severance\" name=\"test_every_trial_uses_the_same_named_assertion\" time=\"4.286\" /><testcase classname=\"test_joined_severance\" name=\"test_every_primary_edge_reddens_then_restores\" time=\"0.001\" /><testcase classname=\"test_joined_severance\" name=\"test_red_messages_are_the_actual_edge_codes\" time=\"0.001\" /><testcase classname=\"test_joined_severance\" name=\"test_restoration_basis_is_explicit\" time=\"0.001\" /><testcase classname=\"test_joined_severance\" name=\"test_supplementary_variations_also_redden_then_restore\" time=\"0.000\" /><testcase classname=\"test_joined_severance\" name=\"test_severance_receipt_reports_ten_witnesses\" time=\"0.001\" /><testcase classname=\"test_source_closure\" name=\"test_manifest_verifies_against_origin_commits\" time=\"5.445\" /><testcase classname=\"test_source_closure\" name=\"test_loaded_upstream_modules_are_pinned\" time=\"0.020\" /><testcase classname=\"test_source_closure\" name=\"test_upstream_test_files_are_byte_identical\" time=\"5.982\" /><testcase classname=\"test_source_closure\" name=\"test_no_upstream_file_was_written_in_place\" time=\"0.010\" /></testsuite></testsuites>"
+    },
+    "original_focused_red": {
+      "path": "02_original_red_say.xml",
+      "sha256": "7aa7425ab92719f12cfb87cd30fe1918bc844b8289a9fd5ecea0816c793b9811",
+      "tests": 1,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "classname": "test_episode_verifier_regression",
+          "name": "test_valid_say_episode_is_green_and_preserves_the_post_hash_id",
+          "status": "FAIL"
+        }
+      ],
+      "junit_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"1\" skipped=\"0\" tests=\"1\" time=\"0.507\" timestamp=\"2026-10-29T18:30:07.468309-04:00\" hostname=\"Matthews-MBP.lan\"><testcase classname=\"test_episode_verifier_regression\" name=\"test_valid_say_episode_is_green_and_preserves_the_post_hash_id\" time=\"0.220\"><failure message=\"AssertionError: {'report': {'ok': False, 'errors': ['episode:0:body_hash_mismatch'], 'counts': {'episode': 1, 'world_event': 2, 'check...7b083328614be', 'episode_id': 'TEST_ONLY_BP4_EP_c75042dacaa6f4b1843c63f5840ed91f3573b17ce344483bd607b083328614be', ...}&#10;assert False is True\">intact = BP2Artifacts(mode='FRESH', root=PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthews...se, 'reason': 'OWNER_RECEIPT_MISSING'}]}, emission_order=('BP2_C8_COMMIT', 'BP2_C9_TARGET_COMMIT', 'BP2_E2_ADMISSION'))\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-69/test_valid_say_episode_is_gree0')\n\n    def test_valid_say_episode_is_green_and_preserves_the_post_hash_id(intact, tmp_path):\n        product = JoinedProduct(tmp_path / \"product\", artifacts=intact)\n        try:\n            spoken = product.say(\"a real episode before verification\")\n            row = product.store.db.execute(\n                \"SELECT seq, body, hash FROM episode WHERE branch_id='root' ORDER BY seq\"\n            ).fetchone()\n            body = json.loads(row[1])\n            report = verify_branch_chain(product.store, \"root\")\n&gt;           assert report[\"ok\"] is True, {\n                \"report\": report, \"seq\": row[0], \"stored_hash\": row[2],\n                \"episode_id\": body.get(\"episode_id\"), \"body\": body}\nE               AssertionError: {'report': {'ok': False, 'errors': ['episode:0:body_hash_mismatch'], 'counts': {'episode': 1, 'world_event': 2, 'check...7b083328614be', 'episode_id': 'TEST_ONLY_BP4_EP_c75042dacaa6f4b1843c63f5840ed91f3573b17ce344483bd607b083328614be', ...}\nE               assert False is True\n\ntests/test_episode_verifier_regression.py:25: AssertionError</failure></testcase></testsuite></testsuites>"
+    },
+    "repaired_38": {
+      "path": "03_repaired_38.xml",
+      "sha256": "e92e95fabd236e8b885cbc49e807d006c02a62a3c75e6c2c0697a99b8ac9a4c3",
+      "tests": 38,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "classname": "test_episode_verifier_regression",
+          "name": "test_valid_say_episode_is_green_and_preserves_the_post_hash_id",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_episode_verifier_regression",
+          "name": "test_tampered_episode_body_stays_red",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_episode_verifier_regression",
+          "name": "test_tampered_episode_id_is_refused_without_waiving_preimage",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_episode_verifier_regression",
+          "name": "test_tampered_world_event_body_stays_red",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_episode_verifier_regression",
+          "name": "test_cold_reopen_keeps_the_episode_chain_green",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_joined_a0_a2_assertion_passes",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_product_exposes_the_real_bp2_source",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_practice_is_materialized_from_the_committed_target_and_e2",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_without_performed_e2_the_practice_and_world_effect_change",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_fork_shared_root_and_lawful_divergence",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_cold_reentry_in_a_new_process_keeps_the_bp2_target",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_literal_bp2_origin_target_is_actually_consumed",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_clock_domains_are_separate_and_never_numerically_ordered",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_time_coordinate_hold_without_a_join_binding",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_product",
+          "name": "test_envelope_is_recomputed_from_artifacts",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_shape_valid_envelope_claiming_the_literal_target_is_refused",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_native_smuggling_in_a_shape_valid_envelope_is_refused",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_self_actuator_e2_is_refused",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_self_occurrence_e2_is_refused",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_forged_world_owner_receipt_is_refused",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_c12_append_only_and_future_child_guards",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_forged_actor_perception_is_caught_by_the_same_assertion",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_bp4_own_c10_refuses_a_tampered_target_preimage",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_raw_database_access_can_drop_the_append_only_trigger_is_a_residual",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_upstream_bp4_store_verify_is_self_referential",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_old_bp1_only_target_is_not_the_joined_consumer",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_security",
+          "name": "test_joined_reconciliation_matches_bp2_committed_evidence",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_severance",
+          "name": "test_seven_load_bearing_edges_are_declared",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_severance",
+          "name": "test_every_trial_uses_the_same_named_assertion",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_severance",
+          "name": "test_every_primary_edge_reddens_then_restores",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_severance",
+          "name": "test_red_messages_are_the_actual_edge_codes",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_severance",
+          "name": "test_restoration_basis_is_explicit",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_severance",
+          "name": "test_supplementary_variations_also_redden_then_restore",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_joined_severance",
+          "name": "test_severance_receipt_reports_ten_witnesses",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_source_closure",
+          "name": "test_manifest_verifies_against_origin_commits",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_source_closure",
+          "name": "test_loaded_upstream_modules_are_pinned",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_source_closure",
+          "name": "test_upstream_test_files_are_byte_identical",
+          "status": "PASS"
+        },
+        {
+          "classname": "test_source_closure",
+          "name": "test_no_upstream_file_was_written_in_place",
+          "status": "PASS"
+        }
+      ],
+      "junit_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"0\" skipped=\"0\" tests=\"38\" time=\"13.388\" timestamp=\"2026-10-29T18:30:26.009863-04:00\" hostname=\"Matthews-MBP.lan\"><testcase classname=\"test_episode_verifier_regression\" name=\"test_valid_say_episode_is_green_and_preserves_the_post_hash_id\" time=\"0.238\" /><testcase classname=\"test_episode_verifier_regression\" name=\"test_tampered_episode_body_stays_red\" time=\"0.075\" /><testcase classname=\"test_episode_verifier_regression\" name=\"test_tampered_episode_id_is_refused_without_waiving_preimage\" time=\"0.055\" /><testcase classname=\"test_episode_verifier_regression\" name=\"test_tampered_world_event_body_stays_red\" time=\"0.066\" /><testcase classname=\"test_episode_verifier_regression\" name=\"test_cold_reopen_keeps_the_episode_chain_green\" time=\"0.052\" /><testcase classname=\"test_joined_product\" name=\"test_joined_a0_a2_assertion_passes\" time=\"0.105\" /><testcase classname=\"test_joined_product\" name=\"test_product_exposes_the_real_bp2_source\" time=\"0.051\" /><testcase classname=\"test_joined_product\" name=\"test_practice_is_materialized_from_the_committed_target_and_e2\" time=\"0.054\" /><testcase classname=\"test_joined_product\" name=\"test_without_performed_e2_the_practice_and_world_effect_change\" time=\"0.084\" /><testcase classname=\"test_joined_product\" name=\"test_fork_shared_root_and_lawful_divergence\" time=\"0.096\" /><testcase classname=\"test_joined_product\" name=\"test_cold_reentry_in_a_new_process_keeps_the_bp2_target\" time=\"1.110\" /><testcase classname=\"test_joined_product\" name=\"test_literal_bp2_origin_target_is_actually_consumed\" time=\"0.187\" /><testcase classname=\"test_joined_product\" name=\"test_clock_domains_are_separate_and_never_numerically_ordered\" time=\"0.043\" /><testcase classname=\"test_joined_product\" name=\"test_time_coordinate_hold_without_a_join_binding\" time=\"0.042\" /><testcase classname=\"test_joined_product\" name=\"test_envelope_is_recomputed_from_artifacts\" time=\"0.021\" /><testcase classname=\"test_joined_security\" name=\"test_shape_valid_envelope_claiming_the_literal_target_is_refused\" time=\"0.030\" /><testcase classname=\"test_joined_security\" name=\"test_native_smuggling_in_a_shape_valid_envelope_is_refused\" time=\"0.030\" /><testcase classname=\"test_joined_security\" name=\"test_self_actuator_e2_is_refused\" time=\"0.009\" /><testcase classname=\"test_joined_security\" name=\"test_self_occurrence_e2_is_refused\" time=\"0.009\" /><testcase classname=\"test_joined_security\" name=\"test_forged_world_owner_receipt_is_refused\" time=\"0.054\" /><testcase classname=\"test_joined_security\" name=\"test_c12_append_only_and_future_child_guards\" time=\"0.049\" /><testcase classname=\"test_joined_security\" name=\"test_forged_actor_perception_is_caught_by_the_same_assertion\" time=\"0.077\" /><testcase classname=\"test_joined_security\" name=\"test_bp4_own_c10_refuses_a_tampered_target_preimage\" time=\"0.116\" /><testcase classname=\"test_joined_security\" name=\"test_raw_database_access_can_drop_the_append_only_trigger_is_a_residual\" time=\"0.056\" /><testcase classname=\"test_joined_security\" name=\"test_upstream_bp4_store_verify_is_self_referential\" time=\"0.044\" /><testcase classname=\"test_joined_security\" name=\"test_old_bp1_only_target_is_not_the_joined_consumer\" time=\"0.162\" /><testcase classname=\"test_joined_security\" name=\"test_joined_reconciliation_matches_bp2_committed_evidence\" time=\"0.001\" /><testcase classname=\"test_joined_severance\" name=\"test_seven_load_bearing_edges_are_declared\" time=\"0.000\" /><testcase classname=\"test_joined_severance\" name=\"test_every_trial_uses_the_same_named_assertion\" time=\"2.806\" /><testcase classname=\"test_joined_severance\" name=\"test_every_primary_edge_reddens_then_restores\" time=\"0.000\" /><testcase classname=\"test_joined_severance\" name=\"test_red_messages_are_the_actual_edge_codes\" time=\"0.001\" /><testcase classname=\"test_joined_severance\" name=\"test_restoration_basis_is_explicit\" time=\"0.001\" /><testcase classname=\"test_joined_severance\" name=\"test_supplementary_variations_also_redden_then_restore\" time=\"0.001\" /><testcase classname=\"test_joined_severance\" name=\"test_severance_receipt_reports_ten_witnesses\" time=\"0.001\" /><testcase classname=\"test_source_closure\" name=\"test_manifest_verifies_against_origin_commits\" time=\"3.434\" /><testcase classname=\"test_source_closure\" name=\"test_loaded_upstream_modules_are_pinned\" time=\"0.014\" /><testcase classname=\"test_source_closure\" name=\"test_upstream_test_files_are_byte_identical\" time=\"3.762\" /><testcase classname=\"test_source_closure\" name=\"test_no_upstream_file_was_written_in_place\" time=\"0.015\" /></testsuite></testsuites>"
+    }
+  },
+  "adversarial_probes": {
+    "episode_body_tamper": {
+      "ok": false,
+      "errors": [
+        "episode:0:body_hash_mismatch"
+      ]
+    },
+    "episode_id_forgery_or_legacy": {
+      "ok": false,
+      "errors": [
+        "episode:0:episode_id_mismatch"
+      ]
+    },
+    "world_event_body_tamper": {
+      "ok": false,
+      "errors": [
+        "world_event:0:body_hash_mismatch"
+      ]
+    },
+    "injected_self_consistent_world_event": {
+      "ok": true,
+      "errors": [],
+      "injected_seq": 4,
+      "grade": "HOLD_CONTENT_HASH_NOT_PROVENANCE"
+    },
+    "raw_sqlite_deletion": {
+      "ok_after_deletion": true,
+      "after_counts": {
+        "episode": 0,
+        "world_event": 2,
+        "checkpoint": 2,
+        "perception": 4
+      },
+      "chain_digest_changed": true,
+      "grade": "HOLD_UNKEYED_EXTERNAL_ANCHOR"
+    },
+    "fully_rehashed_episode_forgery": {
+      "ok": true,
+      "errors": [],
+      "chain_digest_changed": true,
+      "grade": "HOLD_CONTENT_HASH_NOT_AUTHENTICITY"
+    },
+    "upstream_bp4_verify_on_valid_episode": {
+      "upstream_ok": false,
+      "independent_ok": true,
+      "agrees": false,
+      "grade": "HOLD_UPSTREAM_BP4_SELF_REFERENTIAL"
+    },
+    "severance": {
+      "edge_count": 7,
+      "supplementary_count": 3,
+      "all_primary_proved": true,
+      "all_supplementary_proved": true,
+      "named_assertion": "bp2p4.assertion.joined_downstream_a0_a2_assertion"
+    }
+  },
+  "artifacts": {
+    "baseline_log_sha256": "cb27fd7f42b6d224dfa05db3fc71777af0a383bcb32d6cfe1be44ebfcab22739",
+    "repaired_log_sha256": "8e0dd3e259f68c193f05e3e04acef6407a9ed36e5124438d9f9a04fbd0db33db",
+    "adversarial_output_sha256": "b468cd147fc0dbf4bead56343d622d4ffaa931cad57fb32708061e8f62d9ac15",
+    "rehashed_output_sha256": "acce20028894612195e8a0733ae1e9d6e85540767f757d7c2c3aaec2415b1f05"
+  },
+  "not_run": [
+    "original BP2 50-case suite",
+    "original BP4 15-case suite",
+    "native CAN/ADP/SCI05/C11/C12",
+    "production deployment",
+    "external signed anchor"
+  ],
+  "final_remote_sha": "REPORTED_EXTERNALLY_AFTER_PUSH__NOT_EMBEDDED"
+}
