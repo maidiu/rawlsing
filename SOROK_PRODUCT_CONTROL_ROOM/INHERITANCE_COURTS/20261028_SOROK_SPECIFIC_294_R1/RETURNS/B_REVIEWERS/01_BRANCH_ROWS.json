@@ -27,7 +27,7 @@
         "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/audit_review.py",
         "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/build_evidence.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_REVISE_OR_RED",
       "original_review_verdict_line": "**Verdict: REVISE — the five original refused-event partial-write/cold-ghost assertions now pass, but the published full-schema/readset and mutation-receipt guarantees do not.** No candidate code or frozen expectation was repaired. The two new REDs are kept literal. They do not establish failure of the five repaired paths.",
       "original_review_claim_excerpt": "# B3A-I2 independent atomicity return\n\n**Verdict: REVISE — the five original refused-event partial-write/cold-ghost assertions now pass, but the published full-schema/readset and mutation-receipt guarantees do not.** No candidate code or frozen expectation was repaired. The two new REDs are kept literal. They do not establish failure of the five repaired paths.\n\n## Custody and independence\n\nRepository: private `maidiu/rawlsing`. Assigned branch: `agent/reviewer-sorok-20261018-b3a-atomic-repair-independent-i2-r1`. Exact sealed startup: `87325cc7914dbbd77499f33190111589d5ed6d7c`, direct parent `68873526efe5a39a0849aa401666ac997870f156`. The seal adds only this commission. Its remote head and t",
@@ -57,7 +57,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/528e8cde0cff9e28f3c55d5d54a66e820d7401fa",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/audit_review.py",
+      "code_inspected_blob_sha": "ed6a415a59e353d8887813029b078fa0508d67fe"
     },
     {
       "index": 1,
@@ -81,7 +83,7 @@
         "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/independent_worker.py",
         "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/test_independent_hostiles.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_SCOPED_ACCEPTANCE",
       "original_review_verdict_line": "**Verdict: ACCEPT_SCOPED — the exact local-authored repair `16f15a125ba54cdf17f5d41be2d851bbcd2240d7` closes both unchanged B3A-I2 schema REDs, and no frozen, atomicity, B3, F2, E3, X3, inherited or sourcefree expectation was weakened to do so.** The acceptance is scoped to the tested logical schema/readset contract, the sourcefree test-only grade and the preserved owner-permission boundaries. It is an engineering acceptance of a bounded SQLite custody candidate, not semantic adoption, not CAN00",
       "original_review_claim_excerpt": "# B3AS-I2 independent schema/readset repair court\n\n**Verdict: ACCEPT_SCOPED — the exact local-authored repair `16f15a125ba54cdf17f5d41be2d851bbcd2240d7` closes both unchanged B3A-I2 schema REDs, and no frozen, atomicity, B3, F2, E3, X3, inherited or sourcefree expectation was weakened to do so.** The acceptance is scoped to the tested logical schema/readset contract, the sourcefree test-only grade and the preserved owner-permission boundaries. It is an engineering acceptance of a bounded SQLite custody candidate, not semantic adoption, not CAN008/CAN011 law, not M2 integration and not production adoption. No new repair commission is created; findings return to Sorok HQ for adjudication.\n\n## ",
@@ -110,7 +112,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/1a25b19dd01e8e7954e38c59ffc7e52c50739c9f",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/test_independent_hostiles.py",
+      "code_inspected_blob_sha": "0f8af506913cc7e0f29d74c3fb9b764193242959"
     },
     {
       "index": 2,
@@ -142,7 +146,7 @@
         "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/seal_repair.py",
         "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/test_repair_contracts.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_REVISE_OR_RED",
       "original_review_verdict_line": "**Disposition: ACCEPT_SCOPED for the reproduced fixed-fixture computational mechanism; REVISE the general research canon-admission claim; HOLD historical container lineage and native-owner migration.** No legacy mathematics, human developmental claim, production psychology, CAN/ADP semantic issue, actor permission or adoption is granted.",
       "original_review_claim_excerpt": "# CLR3 independent developmental-science I2 return\n\n**Disposition: ACCEPT_SCOPED for the reproduced fixed-fixture computational mechanism; REVISE the general research canon-admission claim; HOLD historical container lineage and native-owner migration.** No legacy mathematics, human developmental claim, production psychology, CAN/ADP semantic issue, actor permission or adoption is granted.\n\nReview target: `4076dcc7c944723b8eea449c0753e535b79d1aa5`.\nReviewer sealed startup: `60acc908213d2ed6c310909016703c16d69dae47`.\nBranch: `agent/reviewer-sorok-20261018-clr3-recursive-canon-science-i2-r1`.\nCommission: `WORKER_COMMISSIONS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/00_COMMISSION.md`.\nPr",
@@ -167,7 +171,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/de9a525c362bf58dbb620fcd7db336a4734e7db8",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/repair_r1/candidate/recursive_court.py",
+      "code_inspected_blob_sha": "e834cb2c726118df3053fcf8e2d88d94f454469e"
     },
     {
       "index": 3,
@@ -211,7 +217,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/f982580d43133b8641e7efe5d7219aa08307b57e",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261018-CLR3R1-CANON-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261018-CLR3R1-CANON-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 4,
@@ -233,7 +241,7 @@
       "source_code_paths_in_head_commit": [
         "WORKER_RETURNS/SOROK-20261018-M2R2-FRESH-I2-EXECUTION-R1/test_heldout_actor_independence.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_REVISE_OR_RED",
       "original_review_verdict_line": "**DISPOSITION: REVISE_ACTOR_INDEPENDENCE__TARGETED_HISTORICAL_READSET_GREEN.**",
       "original_review_claim_excerpt": "# SOROK M2 R2 — fresh independent I2 execution return\n\n**DISPOSITION: REVISE_ACTOR_INDEPENDENCE__TARGETED_HISTORICAL_READSET_GREEN.**\n\nTarget R2 `e8f375e9feae187e8a1add2343100ca05d9fffc4`; HQ-issued sealed startup `c10323df1f9551eb08d63c8d2536bd34206afa7e`; reviewer branch `agent/reviewer-sorok-20261018-m2r2-sourcefree-i2-execution-r1`. This return is a fresh independent reviewer court, not M2/M3/R2 authorship, B3 implementation, HQ adoption, CAN/ADP issuance or original survey access. No R2 mutation.\n\n## Exact source custody and real execution\n\n- Python 3.13.5, pytest 9.0.2, Browser isolated filesystem and subprocess executed. GitHub private connector source was explicitly transported into ",
@@ -261,7 +269,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/e8b2d6be5ba243729f387cda4048cc30a52664d2",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261018-M2R2-FRESH-I2-EXECUTION-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261018-M2R2-FRESH-I2-EXECUTION-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-20261018-M2R2-FRESH-I2-EXECUTION-R1/test_heldout_actor_independence.py",
+      "code_inspected_blob_sha": "2d3b24f9281ac5625999b49f97396d4f6c2202aa"
     },
     {
       "index": 5,
@@ -308,7 +318,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/a4129eaf652b49a5ba629de32e2b7b0abd60d443",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261018-M2R3-FRESH-INDEPENDENT-I2-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261018-M2R3-FRESH-INDEPENDENT-I2-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 6,
@@ -352,7 +364,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/8e74be26d14dae270ed6723d5e878f59446c94bd",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261018-M2R4-RULE-WITNESS-INDEPENDENT-I2-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261018-M2R4-RULE-WITNESS-INDEPENDENT-I2-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 7,
@@ -397,7 +411,7 @@
         "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/conftest.py",
         "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/test_c0r3_endtoend.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_SCOPED_ACCEPTANCE",
       "original_review_verdict_line": "**Verdict: `ACCEPT_SCOPED__TWO_OWNER_LOSSLESS_TRANSPORT_AND_TYPED_TEMPORAL_REFUSAL`.** This is an independent I2 technical/scientific receiver court. It is not C0R3/C0R2/C0X author, HQ, Pyat producer, C11 welder or actor issuer. No repair was performed. No source was edited. No grant was issued.",
       "original_review_claim_excerpt": "# SOROK C0R3I — independent C0/C10 sourcefree two-owner transport and clock court R1\n\n**Verdict: `ACCEPT_SCOPED__TWO_OWNER_LOSSLESS_TRANSPORT_AND_TYPED_TEMPORAL_REFUSAL`.** This is an independent I2 technical/scientific receiver court. It is not C0R3/C0R2/C0X author, HQ, Pyat producer, C11 welder or actor issuer. No repair was performed. No source was edited. No grant was issued.\n\nRepository: private `maidiu/rawlsing`. Branch `agent/reviewer-sorok-20261019-c0r3i-transport-source-independent-r1` at sealed startup `38f1d5b07ad3bce4daa639415721246ffb668f1d`. Exact review target: C0R3 author `a0f7ab5ff9323a1db8a4c6c3b365283b0969de46`. Writes only to `WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDE",
@@ -426,7 +440,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/43328571f297c26e23a42a755ef306c1247b5032",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/c0x_world_receiver.py",
+      "code_inspected_blob_sha": "c698809ab61a82a6a865c229fe180c3657503ecc"
     },
     {
       "index": 8,
@@ -468,7 +484,7 @@
         "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/severance/proof_integrity_gate_r1.py",
         "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/tests/test_c8oi_independent_court.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_HOLD",
       "original_review_verdict_line": "## Three-court verdict",
       "original_review_claim_excerpt": "# SOROK C8OI — independent writer-security, occurrence-custody and receiving-consumer court R1\n\n## Three-court verdict\n\n| Court | Verdict | Scope |\n|---|---|---|\n| **Engineering** | `ACCEPT_SCOPED` | Complete C8O implementation executes as claimed: 270/2 inherited, OUT12 9/9, OUT13 23/23, OUT14 27/27, C8O 62/62, OUT13-under-OUT14 22/1 defect-oracle closed. Writer races, SIGKILL boundaries, cold reopen and no-ghost all confirmed. |\n| **Scientific** | `ACCEPT_SCOPED` with precise limits | OS tests demonstrate process-death recovery, not power-loss durability. Unkeyed digests detect accidental corruption, not writer authentication. Format-only capability is not trust. Detection ≠ prevention. |\n",
@@ -499,7 +515,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/f4200eb0938a1b74c8b738e0a344224edfb4d0eb",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/consumer/c8_readonly_consumer.py",
+      "code_inspected_blob_sha": "5ae9360963a98d7a715ea94ef8883e35d5f3442d"
     },
     {
       "index": 9,
@@ -544,7 +562,7 @@
         "WORKER_RETURNS/SOROK-20261019-C9PI-C9P-NATIVE-BOUNDARY-INDEPENDENT-R1/frozen/c9p/candidate/target_rules.py",
         "WORKER_RETURNS/SOROK-20261019-C9PI-C9P-NATIVE-BOUNDARY-INDEPENDENT-R1/frozen/c9p/candidate/transaction.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_REVISE_OR_RED",
       "original_review_verdict_line": "**Verdict: REVISE the candidate's claimed complete source/actor/target/action boundary. Native actor effects remain HOLD.** The exact C9P target is `38fba47614e82a86fc5a3fa3f50c27048493e808`. The unchanged 90 author tests pass, and all eight original shared proof witnesses reproduce. Those results establish useful TEST_ONLY mechanics, but do not establish authenticated sources, lawful practice formation, a complete persisted semantic record or a native later-action consumer.",
       "original_review_claim_excerpt": "# C9PI independent C9P court — REVISE\n\n**Verdict: REVISE the candidate's claimed complete source/actor/target/action boundary. Native actor effects remain HOLD.** The exact C9P target is `38fba47614e82a86fc5a3fa3f50c27048493e808`. The unchanged 90 author tests pass, and all eight original shared proof witnesses reproduce. Those results establish useful TEST_ONLY mechanics, but do not establish authenticated sources, lawful practice formation, a complete persisted semantic record or a native later-action consumer.\n\nThe independent preregistered court records **11 PASS / 26 assertion RED**; the supplemental semantic-record court records **0 PASS / 3 assertion RED**. There are no candidate-cour",
@@ -573,7 +591,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/df2382b8d9478f0a904dcff06ee45bb0119a1bda",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261019-C9PI-C9P-NATIVE-BOUNDARY-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261019-C9PI-C9P-NATIVE-BOUNDARY-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-20261019-C9PI-C9P-NATIVE-BOUNDARY-INDEPENDENT-R1/cold_replay.py",
+      "code_inspected_blob_sha": "979fbacb9841e57b6ebbb2a12f38e2cad887fc43"
     },
     {
       "index": 10,
@@ -623,7 +643,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/5753d9b4f8fad9f2175b1e285733f95bb8387888",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 11,
@@ -655,7 +677,7 @@
         "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/sources/g14/review_runner.py",
         "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/sources/g14/test_g14_science.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_REVISE_OR_RED",
       "original_review_verdict_line": "**Verdict: REVISE G15's joined sourcefree candidate; HOLD terminal scientific genealogy.** Independently accept only the finite reference methods identified below. This return does not adopt a candidate or issue a semantic, actor, source, biological or production grant.",
       "original_review_claim_excerpt": "# G16I independent scientific compatibility return\n\n**Verdict: REVISE G15's joined sourcefree candidate; HOLD terminal scientific genealogy.** Independently accept only the finite reference methods identified below. This return does not adopt a candidate or issue a semantic, actor, source, biological or production grant.\n\nOne accountable independent reviewer continued the assigned branch `agent/reviewer-sorok-20261019-g16i-g15-scientific-compatibility-independent-r1` from sealed startup **8fdced60b7162407b08d20247405cc39b8410fa2**, whose exact parent is **31f8339cfd1948fb5230181315da7a5ba1ddcde3** and whose sole change is the commission. The remote seal was verified before execution. Exact G",
@@ -680,7 +702,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/683aa56828cda76ea70792a2c8b39cf78624e8dc",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/review_runner.py",
+      "code_inspected_blob_sha": "cf8d00a57590c317d582ee6eb5f89231cc0b01c0"
     },
     {
       "index": 12,
@@ -730,7 +754,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/156b84cc8481b65c4196b42574010eb7920d6f44",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261019-G17I-MATERIAL-HISTORY-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261019-G17I-MATERIAL-HISTORY-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 13,
@@ -776,7 +802,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/d09aeab9067c983df2b77cd8ce693ce6a24a6b24",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261019-M2R4-EXECUTABLE-ASSERTION-CUSTODY-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261019-M2R4-EXECUTABLE-ASSERTION-CUSTODY-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 14,
@@ -831,7 +859,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/3212d716ce66586527c258632ef10c3ff4489803",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261020-BP2P4JI-WHOLE-PRODUCT-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261020-BP2P4JI-WHOLE-PRODUCT-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 15,
@@ -883,7 +913,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/90cdeaa13be8a4c7aaf723761385d3168de82467",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261021-R28S-SYNTHETIC-PERSON-SCIENCE-COURT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261021-R28S-SYNTHETIC-PERSON-SCIENCE-COURT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 16,
@@ -933,7 +965,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/b9d5d945f3e1d6c2b2c0a271df141efa3217722c",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261023-R3-INDEPENDENT-BROWSER-ACCESSION-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261023-R3-INDEPENDENT-BROWSER-ACCESSION-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 17,
@@ -983,7 +1017,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/c02139257bbfb069155836e76254014e40df7718",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261026-RA-D-INDEPENDENT-EVIDENCE-REVIEW-R1/00_REVIEW.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-20261026-RA-D-INDEPENDENT-EVIDENCE-REVIEW-R1/00_REVIEW.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 18,
@@ -1031,7 +1067,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/6ad748ea985897dc1e93680f0e859b61bf074ed2",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-PREA0-SM-SITUATED-TRANSITION-SCIENCE-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-PREA0-SM-SITUATED-TRANSITION-SCIENCE-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 19,
@@ -1074,7 +1112,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/e65846bbb1c38a366d79b54bb89be47da0f8502e",
-      "primary_evidence_path": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/RFA_R_RECONCILIATION_R1/UNRESOLVED_FUTURE_OWNER_GAPS_R1.md"
+      "primary_evidence_path": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/RFA_R_RECONCILIATION_R1/UNRESOLVED_FUTURE_OWNER_GAPS_R1.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 20,
@@ -1117,7 +1157,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/0cb708bbfe522a6c6e359f36d99835d180d5a84d",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ297-GENEALOGY-K11-INDEPENDENT-COURT-R1/00_INDEPENDENT_COURT.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ297-GENEALOGY-K11-INDEPENDENT-COURT-R1/00_INDEPENDENT_COURT.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 21,
@@ -1160,7 +1202,7 @@
         "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/stage.py",
         "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/reviewer_tests/test_rc0_hostile.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_REVISE_OR_RED",
       "original_review_verdict_line": "**Verdict: CHANGES_REQUIRED for strict SC0 interface acceptance.** The value-bearing sourcefree port works on its narrow fixture and the published test counts reproduce. Its passing suites do not establish full frozen-envelope conservation, safe adapter entrypoints, an operative N9/N10W service, or a connected imported-owner empirical port. No adoption is issued.",
       "original_review_claim_excerpt": "# HQ299 RC0 independent SC0 / PE court\n\n**Verdict: CHANGES_REQUIRED for strict SC0 interface acceptance.** The value-bearing sourcefree port works on its narrow fixture and the published test counts reproduce. Its passing suites do not establish full frozen-envelope conservation, safe adapter entrypoints, an operative N9/N10W service, or a connected imported-owner empirical port. No adoption is issued.\n\nSealed reviewer startup `e140beff621d91ca1092728badf00e538046e3b6` matched the direct private remote before work; parent `5c59fb409d5f08312c19b936738eb4410dbd4f26`. Candidate `b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59` remained fixed. Full commission and Sorok 00C/00D, bounded 00_READ_ME_FIRST",
@@ -1187,7 +1229,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/86bd2a54687b40401f7c4247607bd1873c585619",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/repro/completion_audit.py",
+      "code_inspected_blob_sha": "a425f323ec59dcb0322e6cb1e914ae84b2eb239a"
     },
     {
       "index": 22,
@@ -1209,7 +1253,7 @@
       "source_code_paths_in_head_commit": [
         "WORKER_RETURNS/SOROK-R3-HQ299-RG11-K11-AUTHORITY-INDEPENDENT-R1/02_PORTABLE_FINITE_COUNTEREXAMPLES.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_HOLD",
       "original_review_verdict_line": "**Disposition: ACCEPT_PROPOSED_DOCUMENTARY_NONCAUSAL_SEARCH_BOUNDARY_WITH_CONDITIONS; HOLD NEW ADP015/020 ISSUANCE AND ALL ACTUAL GENEALOGY EVENTS.** No adopted semantics, child generation or population posterior. Independent reviewer not SG, SGI1, G11 or SGI2 author; no self-adoption or authority issuer identity.",
       "original_review_claim_excerpt": "# HQ299 RG11 — independent genealogy authority, selection and K11 court\n\n**Disposition: ACCEPT_PROPOSED_DOCUMENTARY_NONCAUSAL_SEARCH_BOUNDARY_WITH_CONDITIONS; HOLD NEW ADP015/020 ISSUANCE AND ALL ACTUAL GENEALOGY EVENTS.** No adopted semantics, child generation or population posterior. Independent reviewer not SG, SGI1, G11 or SGI2 author; no self-adoption or authority issuer identity.\n\n**Exact worker startup:** e4ee4ac2b43196fc77c28262f60edb03f413ee9b; direct branch ref checked. Commission WORKER_COMMISSIONS/SOROK-R3-HQ299-RG11-K11-AUTHORITY-INDEPENDENT-R1/00_COMMISSION.md; Sorok 00C/00D/HQ299 intake were read. Only this return directory written.\n\n## Exact authority and evidence cut\n\nAccept",
@@ -1236,7 +1280,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/c28262641abae54e538db3994ba02983ab3ca04e",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ299-RG11-K11-AUTHORITY-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ299-RG11-K11-AUTHORITY-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-R3-HQ299-RG11-K11-AUTHORITY-INDEPENDENT-R1/02_PORTABLE_FINITE_COUNTEREXAMPLES.py",
+      "code_inspected_blob_sha": "e486a8d8bb6554c5babad151a019b25974ad22e8"
     },
     {
       "index": 23,
@@ -1280,7 +1326,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/bf7518cff877ce108ef9c07f2e2eeaf990171d08",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ299-RMB-BEHAVIORAL-HARNESS-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ299-RMB-BEHAVIORAL-HARNESS-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 24,
@@ -1304,7 +1352,7 @@
         "WORKER_RETURNS/SOROK-R3-HQ299-RSM-CAN008-OWNER-INDEPENDENT-R1/reproduction/owner_effect_stub_TEST_ONLY.py",
         "WORKER_RETURNS/SOROK-R3-HQ299-RSM-CAN008-OWNER-INDEPENDENT-R1/reproduction/test_owner_effect_court.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_HOLD",
       "original_review_verdict_line": "- `SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md`, `00B_…`, `00C_…` (incl. §5A environment verdict), `00D_…` @ `5c59fb409…`.",
       "original_review_claim_excerpt": "# HQ299 RSM — independent CAN008 positive owner-effect gap court — reviewer return\n\n**Terminal:** `HQ299_RSM_INDEPENDENT_CAN008_OWNER_EFFECT_COURT_REPRODUCED__280_CASES_279_PASS_1_TEST_SCOPE_DEFECT__POSITIVE_ABSENCE_CONFIRMED__EARLIEST_HOLD_MISSING_IMPLEMENTATION__NO_NEW_ACTOR_RULE__NO_ADOPTION`\n\nIndependent CAN008/GT0/SDTF owner-implementation reviewer return. I am NOT the\nHQ298 SM author, NOT a positive issuer, NOT HQ and NOT an actor. No self-adoption.\nNo new actor rule introduced. No canonical/production owner file touched.\n\n## Role, terrain, sealed startup\n\n- **Repository:** `maidiu/rawlsing` (private).\n- **Branch:** `agent/reviewer-sorok-r3-hq299-rsm-can008-owner-independent-r1`.\n- **E",
@@ -1331,7 +1379,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/00f5d9a66f5f641c1f88376994272bc570a625ef",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ299-RSM-CAN008-OWNER-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ299-RSM-CAN008-OWNER-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-R3-HQ299-RSM-CAN008-OWNER-INDEPENDENT-R1/reproduction/test_owner_effect_court.py",
+      "code_inspected_blob_sha": "65acd6be636198cf5ae5982f5ee594815fe06186"
     },
     {
       "index": 25,
@@ -1377,7 +1427,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/5ac66779ab76575d0d145829073371d35197a457",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ299-RSR-OCCURRENCE-OUTBOX-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ299-RSR-OCCURRENCE-OUTBOX-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 26,
@@ -1417,7 +1469,7 @@
         "WORKER_RETURNS/SOROK-R3-HQ301-RBA-BEHAVIORAL-R2-VALIDITY-R1/exec/lab1/lab/transition.py",
         "WORKER_RETURNS/SOROK-R3-HQ301-RBA-BEHAVIORAL-R2-VALIDITY-R1/exec/lab1/lab/world_fixtures.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_SCOPED_ACCEPTANCE",
       "original_review_verdict_line": "**Recommendation: `REVIEW_PASS_SCOPED_MOCK_PROTOCOL`.** Never `BEHAVIORAL_PASS`. No model-use permission, actor authority, semantic adoption, or production authority is issued by this review.",
       "original_review_claim_excerpt": "# HQ301 RBA — independent R2 behavioral assay validity review\n\n**Recommendation: `REVIEW_PASS_SCOPED_MOCK_PROTOCOL`.** Never `BEHAVIORAL_PASS`. No model-use permission, actor authority, semantic adoption, or production authority is issued by this review.\n\n**Terminal:** `RBA_R2_MOCK_PROTOCOL_VALIDATED__53PLUS4_SCOPES__ZERO_LEAKS__ZERO_BYPASS__ZERO_LIVE_CALLS__NO_ADOPTION`.\n\n## 1. Custody and identity\n\n- Repository: private `maidiu/rawlsing`. Review branch\n  `agent/reviewer-sorok-r3-hq301-rba-behavioral-r2-validity-r1`, created at sealed\n  startup `f035191192ed709b09209a7e2e629f7ac6ec54a7` (direct remote read matched\n  before any work). No reset or force-push at any point.\n- Role: independent ",
@@ -1442,7 +1494,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/1e1546f9e6e1520ab48eb9a9cf5da8ded4f00599",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ301-RBA-BEHAVIORAL-R2-VALIDITY-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ301-RBA-BEHAVIORAL-R2-VALIDITY-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-R3-HQ301-RBA-BEHAVIORAL-R2-VALIDITY-R1/exec/lab1/lab/test_lab.py",
+      "code_inspected_blob_sha": "fb456f7bf4f9796a34e4ddd96ac574ef2e548bfa"
     },
     {
       "index": 27,
@@ -1480,7 +1534,7 @@
         "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/rsm_court_reproduction/owner_effect_stub_TEST_ONLY.py",
         "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/rsm_court_reproduction/test_owner_effect_court.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_HOLD",
       "original_review_verdict_line": "**VERDICT:** `INDEPENDENT_REVIEW_INCOMPLETE__TYPED_BUDGET_HOLD__NO_SCIENTIFIC_ACCEPTANCE`",
       "original_review_claim_excerpt": "# SOROK HQ301 RCP — Independent CAN008 positive owner-effect court\n\n**VERDICT:** `INDEPENDENT_REVIEW_INCOMPLETE__TYPED_BUDGET_HOLD__NO_SCIENTIFIC_ACCEPTANCE`\n**TERMINAL:** `SOROK_HQ301_RCP_CAN008_POSITIVE_INDEPENDENT_COURT_BUDGET_HOLD__GITHUB_PUSHED`\n**Branch:** `agent/reviewer-sorok-r3-hq301-rcp-can008-positive-court-r1` @ `a65514b209ece1778c4d0d2bf18f664062f20c07`\n**Role:** independent I2 reviewer, **NOT** candidate author, Sorok HQ, competent semantic issuer or V3 actor.\n**Environment:** local dominant worktree, Python 3.11.3, pytest 9.1.1, macOS 13.7.8 x86_64, shared object store. **No production semantic adoption, no real V3 actor operation, no additional agents, no editor/model switch.",
@@ -1507,7 +1561,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/922e27181a6d32745cf388962742f01813648358",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ301-RCP-CAN008-POSITIVE-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ301-RCP-CAN008-POSITIVE-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py",
+      "code_inspected_blob_sha": "7c21eccad788f812ddb60c378502c662a2527cb2"
     },
     {
       "index": 28,
@@ -1553,7 +1609,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/767618db9fa01b83a461869c2ae06541684d18bf",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ301-RTO-OUTBOX-COLD-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ301-RTO-OUTBOX-COLD-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 29,
@@ -1591,7 +1649,7 @@
         "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/rsm_court_reproduction/owner_effect_stub_TEST_ONLY.py",
         "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/rsm_court_reproduction/test_owner_effect_court.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_HOLD",
       "original_review_verdict_line": "**VERDICT:** `REVIEW_HOLD__SRC_FREE_PARTIAL__ORDERING_PRESERVED__NO_SEMANTIC_ADOPTION`",
       "original_review_claim_excerpt": "# SOROK HQ302 RCP2 — Clean second independent CAN008 law-derived court\n\n**VERDICT:** `REVIEW_HOLD__SRC_FREE_PARTIAL__ORDERING_PRESERVED__NO_SEMANTIC_ADOPTION`\n**TERMINAL:** `SOROK_HQ302_RCP2_CAN008_CLEAN_ACCEPTANCE_HOLD__GITHUB_PUSHED`\n**Branch:** `agent/reviewer-sorok-r3-hq302-rcp2-can008-clean-acceptance-r1` @ `9ec98d5f7539e2093d516070df18224d35eb85c3`\n**Role:** fresh independent I2 reviewer; **NOT** HQ300 CAN author, **NOT** the HQ301 reviewer, **NOT** a semantic rule issuer, actor or HQ. **One agent, one editor, no model/harness switch, no helper.**\n**Cost:** measured usage **not genuinely visible to this reviewer — no figure asserted** (per §COST, a pricing table or advertised context l",
@@ -1618,7 +1676,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/5509f02e6dbc963bc76f2b8efd497eaa4cf69ccd",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ302-RCP2-CAN008-CLEAN-ACCEPTANCE-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ302-RCP2-CAN008-CLEAN-ACCEPTANCE-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py",
+      "code_inspected_blob_sha": "7c21eccad788f812ddb60c378502c662a2527cb2"
     },
     {
       "index": 30,
@@ -1656,7 +1716,7 @@
         "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/stage.py",
         "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/reviewer_tests/test_rsc0_hostile.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_REVISE_OR_RED",
       "original_review_verdict_line": "**Scientific verdict: REVIEW_REVISE.** C0 repairs all twelve executed RC0 failures under the unchanged 25-case RC0 test source and genuinely calls the pinned producers on its default fixture. The stronger conserved, source-qualified connected interface is not established: independent counterexamples remain in authorization, prior knowledge, reverse issuance, query binding, F1/F2 conservation and receipt identity. No adoption or operative N9/N10W recommendation is issued.",
       "original_review_claim_excerpt": "# HQ302 RSC0 — connected SC0 port court\n\n**Scientific verdict: REVIEW_REVISE.** C0 repairs all twelve executed RC0 failures under the unchanged 25-case RC0 test source and genuinely calls the pinned producers on its default fixture. The stronger conserved, source-qualified connected interface is not established: independent counterexamples remain in authorization, prior knowledge, reverse issuance, query binding, F1/F2 conservation and receipt identity. No adoption or operative N9/N10W recommendation is issued.\n\n**Reviewer separation limit:** this Codex chat performed the earlier RC0 review. It is distinct from C0, SC0 and the PE/C1/N10E authors, but it cannot satisfy the commission/request'",
@@ -1683,7 +1743,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/385891d8da0c704875d877f77ef765fa86fbfa71",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/completion_audit.py",
+      "code_inspected_blob_sha": "35c5f61924ae0ee8b6c6ae9a1e471df69b3e6594"
     },
     {
       "index": 31,
@@ -1729,7 +1791,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/0ab31e4198299708e700840c1b68e0d94a2ced06",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ303-OUT3-OUTBOX-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ303-OUT3-OUTBOX-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 32,
@@ -1775,7 +1839,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/a11982e6cf135a8ecc72b6152ec796b4a4707093",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 33,
@@ -1820,7 +1886,7 @@
         "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/sitecustomize.py",
         "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/stage.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_MIXED_OR_UNCLASSIFIED",
       "original_review_verdict_line": "The original126 cases retain their R2 source bytes. Twenty-eight additional, predeclared K3/K5/K6 template clones use two new surface settings. These are **implementation-visible heldout fixtures**, not independent scenario families. All154 cases preserve exactly equal lawful facts across A/B/C and distinct inherited representations: A linear scalar entries, B non-ranking descriptive groups, C replay-verified retrieved context/evidence index. No action recommendation is added by a representation",
       "original_review_claim_excerpt": "# HQ304 BL3 — R3 representation-sensitivity court\n\n**Terminal: `SOURCEFREE_R3_ARM_SENSITIVITY_PROVEN_WITH_SYNTHETIC_POLICY`.** The versioned assay detects a deliberately scripted response change caused by its lawful representation under a stated synthetic read budget. The representation-blind null stays exactly null; menu/position/metadata controls do not create accepted arm gains; K3/K5/K6 attacks are detected. This is measurement/plumbing sensitivity, **not BEHAVIORAL_PASS**, an observed LLM effect, psychological truth, model permission or adoption.\n\n## Custody, independence and freeze\n\nRepository `maidiu/rawlsing` (private); assigned branch `agent/reviewer-sorok-r3-hq304-bl3-behavioral-de",
@@ -1845,7 +1911,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/10b507af06973657f2d772b636fb6fbd2d6aff36",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/r3/audit.py",
+      "code_inspected_blob_sha": "97e22b74a045b2e8b70569b55d698bbd58fad681"
     },
     {
       "index": 34,
@@ -1869,7 +1937,7 @@
         "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/repro/stage_br3_runtime.py",
         "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/repro/test_br3_attacks.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_HOLD",
       "original_review_verdict_line": "**Verdict: REVIEW_PASS_SCOPED_R3_SYNTHETIC_SENSITIVITY**",
       "original_review_claim_excerpt": "# HQ305 BR3 — Independent R3 Synthetic Sensitivity Court\n\n**Verdict: REVIEW_PASS_SCOPED_R3_SYNTHETIC_SENSITIVITY**\n\nThe BL3 R3 assay correctly detects a deliberately scripted arm-aware synthetic\nresponse change under controlled read budgets, and correctly holds representation-blind,\nposition-only, metadata-only, menu-first, and ablation policies at zero. K3/K5/K6\nadversary detections work. This is sourcefree measurement/plumbing sensitivity\nevidence. It is NOT a behavioral treatment effect, LLM behavioral finding,\npsychological truth, model-use permission, oracle custody, or adoption.\n\n## Custody and independence\n\n- Repository: `maidiu/rawlsing` (private)\n- Branch: `agent/reviewer-sorok-r3-h",
@@ -1893,7 +1961,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/3551736293b81dfcec71d295424aedd923121a0f",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/repro/test_br3_attacks.py",
+      "code_inspected_blob_sha": "95970ebdd565806eaef9d840d72e2ee117b77ae2"
     },
     {
       "index": 35,
@@ -1937,7 +2007,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/aba637265bea2358790fea50d0e7abc98141e472",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ307-OCR1-CUSTODY-HOSTILE-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ307-OCR1-CUSTODY-HOSTILE-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 36,
@@ -1983,7 +2055,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/ef12349defe22a50e053a7a8080a67ab45673417",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 37,
@@ -2027,7 +2101,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/9cd47a829473a6e92392582b4f01f2c564aa5dce",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ309-OC3-CUSTODY-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ309-OC3-CUSTODY-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 38,
@@ -2073,7 +2149,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/e576e405e50e1bd91be5c839d8c33b69fa851fd9",
-      "primary_evidence_path": "WORKER_COMMISSIONS/SOROK-R3-HQ309-OUT5-OUT4-INDEPENDENT-R1/00_COMMISSION.md"
+      "primary_evidence_path": "WORKER_COMMISSIONS/SOROK-R3-HQ309-OUT5-OUT4-INDEPENDENT-R1/00_COMMISSION.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 39,
@@ -2095,7 +2173,7 @@
       "source_code_paths_in_head_commit": [
         "WORKER_RETURNS/SOROK-R3-HQ311-OC5-OC4-INDEPENDENT-R1/03_TESTS/test_oc5_candidate_hostiles.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_REVISE_OR_RED",
       "original_review_verdict_line": "**Disposition:** `REVIEW_REVISE__EXCERPT_REDS__FULL_167_CASE_EXECUTION_HOLD__NO_ADOPTION`.",
       "original_review_claim_excerpt": "# SOROK HQ311 OC5 — independent OC4 custody court: HOLD / REVISE\n**Disposition:** `REVIEW_REVISE__EXCERPT_REDS__FULL_167_CASE_EXECUTION_HOLD__NO_ADOPTION`.\nIndependent source-free I2 analysis, NOT OC4 author, HQ, institutional custodian or semantic issuer.\n\n## Exact identities\n- Repository: private `maidiu/rawlsing`.\n- Reviewer branch: `agent/reviewer-sorok-r3-hq311-oc5-oc4-independent-r1`.\n- Directly verified commissioned startup: `57fff604dd88836cfa6d929b02b20d68f6557cda`, parent `95dc53cdc2d1adc7465d5e50915599dceddf9dde`.\n- OC4 pinned return: `0caaec590f6a8bf6744f22dc9c948c5fe233bc94`.\n- OC4 candidate module native Git blob (connector-verified metadata): `af2b7e943018077cb36808b5af1cd6770",
@@ -2120,7 +2198,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/8185d2ca41ac5c5711b3f3f528e6f644dbab185d",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ311-OC5-OC4-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ311-OC5-OC4-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-R3-HQ311-OC5-OC4-INDEPENDENT-R1/03_TESTS/test_oc5_candidate_hostiles.py",
+      "code_inspected_blob_sha": "588f91c712fc4000cebf7b9fa7b05e36ab01a126"
     },
     {
       "index": 40,
@@ -2166,7 +2246,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/521edf0c8ef31f6248ed8d8b1fcc4fa5cd0dd687",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ311-OUTP-LEGACY-ACK-POLICY-COURT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ311-OUTP-LEGACY-ACK-POLICY-COURT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 41,
@@ -2204,7 +2286,7 @@
         "WORKER_RETURNS/SOROK-R3-HQ312-M02-MEMORY-MEDIATION-INDEPENDENT-R1/repro/stage.py",
         "WORKER_RETURNS/SOROK-R3-HQ312-M02-MEMORY-MEDIATION-INDEPENDENT-R1/repro/test_independent.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_REVISE_OR_RED",
       "original_review_verdict_line": "**Verdict: `REVIEW_REVISE`.** M01 demonstrates a finite, stipulated source-free parallel state-conditioning construction under its valid fixed-selector setup. Two new provenance tests fail: outer Cell claim selection can erase an existing BELIEF from response evaluation or select future epistemic state for an earlier response. These are two observed manifestations of an incompletely bound claim-selection/time boundary. They do not erase the valid controlled positives or establish a production se",
       "original_review_claim_excerpt": "# M02 independent causal-science court\n\n**Verdict: `REVIEW_REVISE`.** M01 demonstrates a finite, stipulated source-free parallel state-conditioning construction under its valid fixed-selector setup. Two new provenance tests fail: outer Cell claim selection can erase an existing BELIEF from response evaluation or select future epistemic state for an earlier response. These are two observed manifestations of an incompletely bound claim-selection/time boundary. They do not erase the valid controlled positives or establish a production security exploit.\n\nReviewed exact M01 `02187a14e75ff30dd953d3c7185d689b80e62304`, preregistration `845edf5d7c9c48b192b631dacf295afa6f587137`, from remote-verified",
@@ -2229,7 +2311,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/0216d9036a87e2f60f42fd5b2870556027808419",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ312-M02-MEMORY-MEDIATION-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ312-M02-MEMORY-MEDIATION-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-R3-HQ312-M02-MEMORY-MEDIATION-INDEPENDENT-R1/repro/audit.py",
+      "code_inspected_blob_sha": "0f02b8d14a491f0735870981fd9c7dbaeadff11c"
     },
     {
       "index": 42,
@@ -2257,7 +2341,7 @@
         "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/repro/stage_source.py",
         "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/tests/test_oc5e_native_hostiles.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_REVISE_OR_RED",
       "original_review_verdict_line": "**Model/host:** Muse Spark inside the existing Muse-configured OpenCode installation. One Muse agent completed staging, the whole native test court, the new hostiles, the verdict and the push. No Codex, DeepSeek-Harness, helper, model switch or paid calls.",
       "original_review_claim_excerpt": "# SOROK HQ312 OC5E — Independent native OC4 execution recovery\n\n**Repository:** `maidiu/rawlsing` (private) · **Role:** fresh independent I2 execution-recovery reviewer\n**Branch:** `agent/reviewer-sorok-r3-hq312-oc5e-execution-recovery-r1`\n**Exact sealed startup:** `146b1722a5568c1c96c3fb4f602ef750cf6d8518` (verified against direct remote HEAD before writing)\n**Model/host:** Muse Spark inside the existing Muse-configured OpenCode installation. One Muse agent completed staging, the whole native test court, the new hostiles, the verdict and the push. No Codex, DeepSeek-Harness, helper, model switch or paid calls.\n**Python/pytest:** 3.11.3 / 9.1.1, isolated local runtime, real `subprocess` and ",
@@ -2284,7 +2368,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/67a4f1561cdad40192f00797d66b24fc4cd91589",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/repro/run_court.py",
+      "code_inspected_blob_sha": "b0154bd2f3ba132a5072a24bcc10cbbcd6c36c33"
     },
     {
       "index": 43,
@@ -2332,7 +2418,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/d3d0836d922dcb88eaf0a0591e66551aa6fb9f0a",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ312-OUT7-OUT6-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ312-OUT7-OUT6-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 44,
@@ -2379,7 +2467,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/3a993abcc0a9f6bd3a1bb003d298d293be199ea6",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 45,
@@ -2425,7 +2515,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/fd58957fceca250e86ed3b1a5d06fa45ffc9ec85",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ314-OUT9-OUT8-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ314-OUT9-OUT8-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 46,
@@ -2449,7 +2541,7 @@
         "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/repro/oc7_extract_reds.py",
         "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/tests/test_oc7_adversarial_v2_amended.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_SCOPED_ACCEPTANCE",
       "original_review_verdict_line": "**VERDICT: `REVIEW_PASS_TESTONLY_CUSTODY_WITH_RETAINED_LITERAL_REDS`**",
       "original_review_claim_excerpt": "# SOROK HQ315 OC7 — independent OC6 native custody court\n\n**VERDICT: `REVIEW_PASS_TESTONLY_CUSTODY_WITH_RETAINED_LITERAL_REDS`**\n**Acceptance grain:** scoped `TEST_ONLY` sourcefree custody fixtures only.\n\n| | |\n|---|---|\n| **Reviewer** | Fresh independent I2 sourcefree custody reviewer. **NOT** the OC6 author, **NOT** the OC5E author, **NOT** HQ, **NOT** an institutional custodian or semantic oracle issuer. |\n| **Candidate under review** | OC6 `c6cb15d7417595c359571e4525dd0f0fd6c59d1f` |\n| **Sealed startup** | `2f9118cd5a0a920a6a4f729289ff2798ca8fbaa3`, verified against direct remote branch HEAD |\n| **Branch** | `agent/reviewer-sorok-r3-hq315-oc7-oc6-native-independent-r1` |\n| **Original OC5",
@@ -2480,7 +2572,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/6e7d85d28f82729a06ede32d0440b63d0452a634",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/tests/test_oc7_adversarial_v2_amended.py",
+      "code_inspected_blob_sha": "aa1c44779a2d5b121dc0acf73c46120df9610991"
     },
     {
       "index": 47,
@@ -2526,7 +2620,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/10a116f273c76095fca7255d4b6422a9ff3497a2",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ316-M06-M05-OWNER-ANCESTRY-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ316-M06-M05-OWNER-ANCESTRY-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 48,
@@ -2574,7 +2670,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/34b96ea98de181ca5264f0eed3824cad2db7cfc0",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ317-MS2-MS1-SERIAL-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ317-MS2-MS1-SERIAL-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 49,
@@ -2608,7 +2706,7 @@
         "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/repro/source/custody_protocol.py",
         "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/tests/test_c07i_independent.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_HOLD",
       "original_review_verdict_line": "## VERDICT: `REVIEW_PASS_SCOPED_SOURCEFREE_C07_CROSSPROCESS_WITH_HOLDS`",
       "original_review_claim_excerpt": "# SOROK HQ318 C07I — independent cross-process custody court\n\n## VERDICT: `REVIEW_PASS_SCOPED_SOURCEFREE_C07_CROSSPROCESS_WITH_HOLDS`\n\n**C07I is an independent acceptance of C07P's *scoped, source-free* cross-process result — with both\ntyped API holds still OPEN and the unkeyed anti-tamper ceiling PRESERVED and, in one respect, extended.**\n\n| | |\n|---|---|\n| **Reviewer** | Fresh independent I2 experimental custody reviewer. **NOT** the C07P author, **NOT** the OC7 reviewer, **NOT** HQ, **NOT** an institutional escrow authority or signer. |\n| **Branch** | `agent/reviewer-sorok-r3-hq318-c07i-c07p-independent-r1` |\n| **Sealed startup** | `76649a99f4e8353bc6edfff0e1972c6068d28564`, verified agai",
@@ -2633,7 +2731,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/2155a5352a1371648fb7cbec7cde91cea4d1a614",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/mutation/test_c07i_independent.py",
+      "code_inspected_blob_sha": "a05adab50c15ee15b5372d406877d166ff26a9e3"
     },
     {
       "index": 50,
@@ -2680,7 +2780,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/3863f5f0d87678b604b0401ed76d104980b78699",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ319-MS4-MS3-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ319-MS4-MS3-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 51,
@@ -2724,7 +2826,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/2dacd87636352a6c805e03b3d07581193a06264b",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 52,
@@ -2771,7 +2875,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/9b4392f86d942ba12eddc31c5b9ae33ba309597c",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ320-OUT13-OUT12-MULTIWRITER-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ320-OUT13-OUT12-MULTIWRITER-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 53,
@@ -2797,7 +2903,7 @@
         "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/review_runner.py",
         "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/test_g14_science.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_REVISE_OR_RED",
       "original_review_verdict_line": "**Disposition: REVIEW_REVISE.** G13 establishes useful source-free graph validation,",
       "original_review_claim_excerpt": "# G14 independent genealogy science court\n\n**Disposition: REVIEW_REVISE.** G13 establishes useful source-free graph validation,\nendpoint-claim refusal and payload-binding mechanisms at a bounded fixture grain.\nIt does not establish independent-person development or causally grounded child\ndevelopment. The independent court finds remaining implementation defects as well\nas scientific and authority limits. HQ owns intake and any adoption decision.\n\nRepository: `maidiu/rawlsing` (private). Continued existing branch:\n`agent/reviewer-sorok-v2-hq322-g14-g13-science-independent-r1`.\nExact startup: `f4e0d218997777d7975db9f35e7cfde9825f3b5f`.\nExact reviewed G13: `47bca2a56d34ed37186a436e7490cbaa417bf",
@@ -2822,7 +2928,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/d174ec79f561660a02a254cf9b7582595b43e215",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/audit_packet.py",
+      "code_inspected_blob_sha": "6616855a7f094bc4ddc059bb30fb08a758869aaa"
     },
     {
       "index": 54,
@@ -2870,7 +2978,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/ed367d96af66d816a01dd651b91f0af285762c82",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ324-F1-INDEPENDENT-DEVELOPMENTAL-FALSIFIERS-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ324-F1-INDEPENDENT-DEVELOPMENTAL-FALSIFIERS-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 55,
@@ -2919,7 +3029,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/0d47fe863671d1e1d57f26102462be6595c5d7ea",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ325-S1-INDEPENDENT-BFIRST-SCIENCE-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ325-S1-INDEPENDENT-BFIRST-SCIENCE-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 56,
@@ -2964,7 +3076,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/7e6ac81e85aa2c8dca0cea53349ad61f10fb6665",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ326-S2-B2-SCIENTIFIC-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ326-S2-B2-SCIENTIFIC-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 57,
@@ -2988,7 +3102,7 @@
         "WORKER_RETURNS/SOROK-V2-HQ326-X2-B2-INDEPENDENT-EXECUTABLE-R1/audit_x2.py",
         "WORKER_RETURNS/SOROK-V2-HQ326-X2-B2-INDEPENDENT-EXECUTABLE-R1/test_hostile_x2.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_REVISE_OR_RED",
       "original_review_verdict_line": "**Verdict: `REVIEW_REVISE` for B2 event-identity custody.** The narrow source-free software reproduction otherwise matches the B2 author receipt. This return is independent test custody, not High/I2 scientific adoption, production event authentication, CAN011 grant, actor wake, or calibrated psychology.",
       "original_review_claim_excerpt": "# HQ326 X2 independent executable return\n\n**Verdict: `REVIEW_REVISE` for B2 event-identity custody.** The narrow source-free software reproduction otherwise matches the B2 author receipt. This return is independent test custody, not High/I2 scientific adoption, production event authentication, CAN011 grant, actor wake, or calibrated psychology.\n\n## Exact custody and execution\n\n- Sealed checkout: `ce73009484d9cecd7b6217517e398c7bbe36cb87`; assigned reviewer branch only. B2 imported from `950ecf0b3816ea7d0dd3ab48b62c92cedfe0e883` into an isolated disposable workspace. B1, P1, D1, F1 pins are respectively `c0f4588c158b40c8903b4aae2f292eae5238b8a0`, `fb4fa049b6e3dd9df8d25a4f42a2b41e9d737c60`, `2",
@@ -3016,7 +3130,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/931aec3497c60114444806c375d1bb51ec7c0e7d",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ326-X2-B2-INDEPENDENT-EXECUTABLE-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ326-X2-B2-INDEPENDENT-EXECUTABLE-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-V2-HQ326-X2-B2-INDEPENDENT-EXECUTABLE-R1/audit_x2.py",
+      "code_inspected_blob_sha": "bb8ddac617bdaaea92c3c607aa3d51f3fa8e4967"
     },
     {
       "index": 58,
@@ -3042,7 +3158,7 @@
         "WORKER_RETURNS/SOROK-V2-HQ327-F2-HELDOUT-OTHERNESS-R1/reference_oracle.py",
         "WORKER_RETURNS/SOROK-V2-HQ327-F2-HELDOUT-OTHERNESS-R1/test_heldout.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_HOLD",
       "original_review_verdict_line": "**Return verdict:** `F2_42_FROZEN_CASES_66_PYTEST_PASS_5_OF_5_MUTANTS_KILLED__FUTURE_B3_NOT_RUN__F1_17_NATIVE_RED_PRESERVED__NO_ADOPTION`",
       "original_review_claim_excerpt": "# HQ327 F2 — independent held-out developmental Otherness falsification court\n\n**Return verdict:** `F2_42_FROZEN_CASES_66_PYTEST_PASS_5_OF_5_MUTANTS_KILLED__FUTURE_B3_NOT_RUN__F1_17_NATIVE_RED_PRESERVED__NO_ADOPTION`\n\n**Exact seal:** `9e1a1f8e0e9ceb21874389c13b19e1d8ce9a02ae`.\n**Assigned branch:** `agent/reviewer-sorok-v2-hq327-f2-heldout-developmental-court-r1`.\n**Role:** independent source-free heldout scientific falsifier and oracle author, not B2/M1 implementation, HQ, semantic issuer or future B3 native acceptance.\n\nThe F2 archive contains a **frozen** 42-case (`cases.json`) independent fixture library; a pure stdlib `reference_oracle.py`; `test_heldout.py` with 66 executable pytest ass",
@@ -3070,7 +3186,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/a24429906c93446f9d912e7054d48f9f51aee63d",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ327-F2-HELDOUT-OTHERNESS-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ327-F2-HELDOUT-OTHERNESS-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-V2-HQ327-F2-HELDOUT-OTHERNESS-R1/mutation_audit.py",
+      "code_inspected_blob_sha": "d458e6bce6ff4f1ece8a56a3102ca8efb8f08513"
     },
     {
       "index": 59,
@@ -3118,7 +3236,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/19f1e86ad2eab7226b59f84288dbbe4f970de77c",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ327-I2-M1-INDEPENDENT-SCIENCE-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ327-I2-M1-INDEPENDENT-SCIENCE-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 60,
@@ -3150,7 +3270,7 @@
         "WORKER_RETURNS/SOROK-V2-HQ328-E2-R1-INDEPENDENT-CUSTODY-R1/runtime_probe.py",
         "WORKER_RETURNS/SOROK-V2-HQ328-E2-R1-INDEPENDENT-CUSTODY-R1/test_e2.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_REVISE_OR_RED",
       "original_review_verdict_line": "**Verdict: `REVIEW_REVISE`.** R1 repairs X2's original collision at the B2 ingress boundary. The independent court nevertheless finds a specific failure of the commission's additional **legacy fail-closed under both insertion orders** gate: after B2 mapping, a conflicting direct B1 occurrence is not detected on subsequent B2 reentry. This does not show a second conflicting payload admitted through R1's wrapper, nor require R1 to prevent all privileged B1/SQL writes. It does prevent an unconditio",
       "original_review_claim_excerpt": "# HQ328 E2 independent event-custody review\n\n**Verdict: `REVIEW_REVISE`.** R1 repairs X2's original collision at the B2 ingress boundary. The independent court nevertheless finds a specific failure of the commission's additional **legacy fail-closed under both insertion orders** gate: after B2 mapping, a conflicting direct B1 occurrence is not detected on subsequent B2 reentry. This does not show a second conflicting payload admitted through R1's wrapper, nor require R1 to prevent all privileged B1/SQL writes. It does prevent an unconditional acceptance of the requested bidirectional legacy-state check.\n\nSealed reviewer startup and observed initial remote: `a85f2964dbaae907eefea3355d2ea41c91",
@@ -3177,7 +3297,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/8983315b3aee130e9446d43bd983c4a91c6f0437",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ328-E2-R1-INDEPENDENT-CUSTODY-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ328-E2-R1-INDEPENDENT-CUSTODY-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-V2-HQ328-E2-R1-INDEPENDENT-CUSTODY-R1/audit_e2.py",
+      "code_inspected_blob_sha": "dae192dcd2248af9bd00aebd213653181f5b70b2"
     },
     {
       "index": 61,
@@ -3207,7 +3329,7 @@
         "WORKER_RETURNS/SOROK-V2-HQ329-E3-LEGACY-REENTRY-INDEPENDENT-R1/test_independent.py",
         "WORKER_RETURNS/SOROK-V2-HQ329-E3-LEGACY-REENTRY-INDEPENDENT-R1/worker.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_SCOPED_ACCEPTANCE",
       "original_review_verdict_line": "**Verdict: `SOURCEFREE_BFIRST_EVENT_CUSTODY_ACCEPT_SCOPED`** for exact repair `8f7966d6d0bbb1ea2e57359de9defbcf552268bd`. The two original E2 strict failures reproduce on original R1 and both pass on this repair. Fresh hostile SQL, concurrent-writer, crash/recovery and cold-process execution qualifies the bounded synthetic SQLite B2 ingress mechanism. This is independent engineering acceptance at the commissioned grain, not HQ adoption, psychological science, production ADP019 authentication, CA",
       "original_review_claim_excerpt": "# HQ329 E3 independent post-repair legacy event-custody court\n\n**Verdict: `SOURCEFREE_BFIRST_EVENT_CUSTODY_ACCEPT_SCOPED`** for exact repair `8f7966d6d0bbb1ea2e57359de9defbcf552268bd`. The two original E2 strict failures reproduce on original R1 and both pass on this repair. Fresh hostile SQL, concurrent-writer, crash/recovery and cold-process execution qualifies the bounded synthetic SQLite B2 ingress mechanism. This is independent engineering acceptance at the commissioned grain, not HQ adoption, psychological science, production ADP019 authentication, CAN011 owner permission, or native F1 completion.\n\nThe assigned reviewer branch began at the exact remote-verified sealed startup `ccc84471",
@@ -3237,7 +3359,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/a16ba353f3bc471776d60ce198f267be4e9e5773",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ329-E3-LEGACY-REENTRY-INDEPENDENT-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ329-E3-LEGACY-REENTRY-INDEPENDENT-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-V2-HQ329-E3-LEGACY-REENTRY-INDEPENDENT-R1/audit_review.py",
+      "code_inspected_blob_sha": "b6d736c5500ccddf970cc9d6644646e61f0a771f"
     },
     {
       "index": 62,
@@ -3259,7 +3383,7 @@
       "source_code_paths_in_head_commit": [
         "WORKER_RETURNS/SOROK-V2-HQ329-M3-M2-INDEPENDENT-SCIENCE-R1/05_SOURCE_PREIMAGE_RED_REPRODUCER.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_REVISE_OR_RED",
       "original_review_verdict_line": "**DISPOSITION: `M2_REVISE_BEFORE_B3_SOURCE_CUSTODY_ADOPTION`; `REVIEWER_INDEPENDENCE_NOT_MET_IN_THIS_CONVERSATION`.** Exact pinned M2: `5c2fbe14ccfa5027becfabc682206a1e61aaf986`, standalone `kernel.py` blob `5530bd1152161e084f734b5ba518668763192c6b`. Assigned M3 seal: `700a75d81182d0bffc1ee970aff7389c28ea494b`. No production source, accepted semantic owner, CAN008/011 or ADP015/016/017/019/020 mutation.",
       "original_review_claim_excerpt": "# SOROK VOZHD-2 HQ329 M3 — M2 scientific / compatibility court\n\n**DISPOSITION: `M2_REVISE_BEFORE_B3_SOURCE_CUSTODY_ADOPTION`; `REVIEWER_INDEPENDENCE_NOT_MET_IN_THIS_CONVERSATION`.** Exact pinned M2: `5c2fbe14ccfa5027becfabc682206a1e61aaf986`, standalone `kernel.py` blob `5530bd1152161e084f734b5ba518668763192c6b`. Assigned M3 seal: `700a75d81182d0bffc1ee970aff7389c28ea494b`. No production source, accepted semantic owner, CAN008/011 or ADP015/016/017/019/020 mutation.\n\n## Independence qualification — mandatory honest disclosure\n\nThe current conversation previously implemented/published the M2 candidate. This review authored a **new prospective M3 test court** and actually executed it on pinned",
@@ -3287,7 +3411,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/49dfcb30971310756a12f659961600d9f2eb4a11",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ329-M3-M2-INDEPENDENT-SCIENCE-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ329-M3-M2-INDEPENDENT-SCIENCE-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-V2-HQ329-M3-M2-INDEPENDENT-SCIENCE-R1/05_SOURCE_PREIMAGE_RED_REPRODUCER.py",
+      "code_inspected_blob_sha": "9294f2cb3920f8af687d112f96ed556119977b77"
     },
     {
       "index": 63,
@@ -3335,7 +3461,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/2ca072e942be21b1c68e3abf32a133b3ed7435db",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ330-S3-B3-INDEPENDENT-SCIENCE-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ330-S3-B3-INDEPENDENT-SCIENCE-R1/00_RETURN.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 64,
@@ -3365,7 +3493,7 @@
         "WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/test_independent.py",
         "WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/verify_return.py"
       ],
-      "source_code_file_contents_inspected": false,
+      "source_code_file_contents_inspected": true,
       "original_review_verdict_reported": "REPORTED_REVISE_OR_RED",
       "original_review_verdict_line": "**Verdict: `B3_REVISE` for exact B3 `47b46a85b9ebb633754866f1e6f1b12db3bd2012`.** The positive executions reproduce, including blinded F2 and actual cold SQLite. Independent hostile execution finds a public-entrypoint refusal/partial-write defect. This return does not issue `B3_EXECUTABLE_TEST_ONLY_ACCEPT_SCOPED`.",
       "original_review_claim_excerpt": "# X3 independent executable court — B3_REVISE\n\n**Verdict: `B3_REVISE` for exact B3 `47b46a85b9ebb633754866f1e6f1b12db3bd2012`.** The positive executions reproduce, including blinded F2 and actual cold SQLite. Independent hostile execution finds a public-entrypoint refusal/partial-write defect. This return does not issue `B3_EXECUTABLE_TEST_ONLY_ACCEPT_SCOPED`.\n\nSealed startup `50349f2e90f8e9d0379040fdb7d3186dfe3b6c02` and target tip were directly verified against origin. Assigned branch: `agent/reviewer-sorok-v2-hq330-x3-b3-independent-executable-r1`. One fresh reviewer performed this work, with no B3/M2 authorship, subagents, paid/model API calls, package installs, candidate repair or froze",
@@ -3393,7 +3521,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/d201985243fe15bc0da36e7cbc93707fec664acf",
-      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/00_RETURN.md"
+      "primary_evidence_path": "WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/00_RETURN.md",
+      "code_inspected_path": "WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/audit_f2.py",
+      "code_inspected_blob_sha": "637d869d0ac2a7c71b2c17bdf1e96cc212d4793e"
     },
     {
       "index": 65,
@@ -3448,7 +3578,9 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/8fbf564788406bd8317e441e6f6c72c39b121f70",
-      "primary_evidence_path": "SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_REVIEWS/20261028_SOROK08_R2_EXACT_5D41A8_INDEPENDENT_REASSESSMENT_R1.md"
+      "primary_evidence_path": "SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_REVIEWS/20261028_SOROK08_R2_EXACT_5D41A8_INDEPENDENT_REASSESSMENT_R1.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     },
     {
       "index": 66,
@@ -3499,7 +3631,12 @@
       "next_proof_owner": "INCUMBENT_SOROK_HQ_PLUS_ORIGINAL_REVIEWED_CODE_OWNER",
       "code_and_consumer_limit": "Review-return and commit/diff scanned; complete reviewed author code-tree and PRE-MAIN blob equivalence not established",
       "source_branch_url": "https://github.com/maidiu/rawlsing/tree/e5d9b2f23a41e4107b3ce73c9e82181662cb9b80",
-      "primary_evidence_path": "SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261028_FRESH_SOURCEGRADED_GROK_CANDIDATE_R1/INDEPENDENT_REVIEW_RETURNS/00_INDEPENDENT_HQ_GROK_REVIEW_AND_20_CONDITIONAL_GATES_R1.md"
+      "primary_evidence_path": "SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261028_FRESH_SOURCEGRADED_GROK_CANDIDATE_R1/INDEPENDENT_REVIEW_RETURNS/00_INDEPENDENT_HQ_GROK_REVIEW_AND_20_CONDITIONAL_GATES_R1.md",
+      "code_inspected_path": null,
+      "code_inspected_blob_sha": null
     }
-  ]
+  ],
+  "code_files_read": 29,
+  "source_documents_read": 67,
+  "definition_of_source_read": "Reviewer-return text for every assigned ref; plus exact full pinned Python source for 29 heads carrying code changes; no whole author runtime closure verified"
 }
