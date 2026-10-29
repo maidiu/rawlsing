@@ -1,4 +1,6 @@
 # PYAT + PRE-PYAT STRANDED BRANCH COURT — CURRENT POSITIVE FINDINGS AND CLOSED-LOOP NEXT STEPS
+**R3 RECOVERY UPDATE — read this before the R1 body:** The current machine-readable queue has **17** cases after source-level direct reviews, not 14. `03_R2_HQ282_C01R2_V556_DIRECT_CODE_AND_CONSUMER_COURT.md` proves exact-source HQ282/P06 deltas and that the repaired V556 module is **already identical** in current PREMAIN (no reimport). `04_R3_DIVERGED_INTEGRATION_AND_TWO_UNRECOVERED_CANDIDATES_COURT.md` reviews all ten diverged integration branch changed-file sets, identifies several already-present exact modules, and locates two additional potentially useful absent-path units: HQ130 bounded SAV numeric physical representation authority and HQ151 GT2 structural context first-consumer glue. All consumer/original-source/scientific promotions remain held. The live drift scanner and its GitHub Actions receipt are structural name/head evidence, not executable semantic admission.
+
 **2026-10-28. Review-only candidate on \`proposal/pyat-stranded-branch-recovery-20261028-r1\`. No original source execution, canon mutation, actor grant or worker dispatch.**
 
 ## Mission and exact cutoff
