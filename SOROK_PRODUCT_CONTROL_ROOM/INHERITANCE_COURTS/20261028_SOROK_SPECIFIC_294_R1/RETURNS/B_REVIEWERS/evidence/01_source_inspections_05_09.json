@@ -1,0 +1,885 @@
+{
+  "schema": "SOROK_294_B_SOURCE_INSPECTION_BATCH_R1",
+  "rows": [
+    {
+      "index": 5,
+      "name": "agent/reviewer-sorok-20261018-m2r2-sourcefree-i2-execution-r1",
+      "pinned_sha": "e8b2d6be5ba243729f387cda4048cc30a52664d2",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 5,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-20261018-M2R2-FRESH-I2-EXECUTION-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261018-M2R2-FRESH-I2-EXECUTION-R1/environment_passport_delta.json",
+        "WORKER_RETURNS/SOROK-20261018-M2R2-FRESH-I2-EXECUTION-R1/evidence.tar.gz",
+        "WORKER_RETURNS/SOROK-20261018-M2R2-FRESH-I2-EXECUTION-R1/execution_summary.json",
+        "WORKER_RETURNS/SOROK-20261018-M2R2-FRESH-I2-EXECUTION-R1/test_heldout_actor_independence.py"
+      ],
+      "code_paths": [
+        "WORKER_RETURNS/SOROK-20261018-M2R2-FRESH-I2-EXECUTION-R1/test_heldout_actor_independence.py"
+      ],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-20261018-M2R2-FRESH-I2-EXECUTION-R1/00_RETURN.md",
+        "blob": "7cded74e2fa0f6166a0803676024ddfd4c92870a",
+        "url": "https://github.com/maidiu/rawlsing/blob/e8b2d6be5ba243729f387cda4048cc30a52664d2/WORKER_RETURNS/SOROK-20261018-M2R2-FRESH-I2-EXECUTION-R1/00_RETURN.md",
+        "lines": 40
+      },
+      "review_evidence": "# SOROK M2 R2 — fresh independent I2 execution return\n\n**DISPOSITION: REVISE_ACTOR_INDEPENDENCE__TARGETED_HISTORICAL_READSET_GREEN.**\n\nTarget R2 `e8f375e9feae187e8a1add2343100ca05d9fffc4`; HQ-issued sealed startup `c10323df1f9551eb08d63c8d2536bd34206afa7e`; reviewer branch `agent/reviewer-sorok-20261018-m2r2-sourcefree-i2-execution-r1`. This return is a fresh independent reviewer court, not M2/M3/R2 authorship, B3 implementation, HQ adoption, CAN/ADP issuance or original survey access. No R2 mutation.\n\n## Exact source custody and real execution\n\n- Python 3.13.5, pytest 9.0.2, Browser isolated filesystem and subprocess executed. GitHub private connector source was explicitly transported into the Python runtime (the connector itself does not mount it). Reconstructed target `kernel.py` is 27,303 bytes; **SHA-256 `88bb8c65dfd88efd1843f16e1bb6d51e1fa01a0dc1fdccb13e03a9b2b394d8d3`**, Git blob SHA-1 `534fdb6b75e692585ad763673faabbe8e138050f`. All seven inherited pytest test-file SHA-256 values were checked against the exact R2 manifest and original source. Each isolated pytest subprocess printed the imported kernel SHA, not merely a purported target path.\n- Unmodified original supplied M2 41/41 PASS, M3 lawful 32/32 PASS, packaged original M3 3/3 PASS, additional 15/15 PASS: **91/91 PASS**.\n- Distinct *exact historical original Git M3* three-source-preimage court: **3/3 PASS** against R2. The former R3-01 speech, R3-02 practice, R3-03 affect replacement REDs are closed under the tested sourcefree conditions.\n- R1 local hostile controls: **11/11 PASS**. R2 new relation-source custody controls: **14/14 PASS**.\n- Independent NEW heldout: valid independently acting `other_P` positive PASS; matched lawful child-self-owned event negative **RED**. Across the eight separate suite executions: **120 PASS, 1 RED; zero skip/error**. The failure is intentional discovery evidence, not flaky runner behavior.\n- Original M1/I2 binary archives **NOT_RERUN** on this review. Previous historical 37 M1, 23 I2 and frozen incompatibility matrices remain documentary-only. Their prior reported 19 M1-on-R2 and 10 I2-on-R2 failure names must remain frozen, not retrospectively called PASS.\n- Full fresh stdout and JUnit XML for every suite are in `evidence.tar.gz` (Git blob SHA-1 `a6638e4fe5da565c58f47f679c0c463f34876de1`, gzip SHA-256 `9360deaacd8ac7a912e41523155d435aca4ef89bd9f6447f1fe67c852333ba27`). Archive contains eight pairs `<suite>.log` and `<suite>.xml`; those JUnit files supply the exact testcase-level matrix and independently observable failure. `execution_summary.json` supplies the machine-readable index, statuses, hash receipts and command patterns.\n\nReproduce from an exact verified R2 source directory with `PYTHONPATH=.`:\n\n```sh\npython3 -m pytest -q --import-mode=importlib test_m2.py test_m3_independent.py test_m3_unresolved.py test_source_preimages.py\npython3 -m pytest -q --import-mode=importlib frozen_m3/test_original_preimage.py test_local_hostile.py test_relation_custody.py\npython3 -m pytest -q --import-mode=importlib test_heldout_actor_independence.py\n```\n\n## Newly executed material RED: child action laundered into independently acting counterpart\n\nA fresh t6 child state with genuine independently witnessed prior practical, speech and affect material reaches t9. The original `other_P`-owned ENCOUNTER with valid relevance and counterpart observation lawfully exposes the six relation modes. Positive PASS.\n\nThe matched negative retains the child's past interpretation. The t9 event is switched to **action_owner='child'** and the corresponding objective/relevance hashes recomputed. The child's `repair_bicycle` project is independently witnessed at t7 with an accepted fixture history operation, and the relevance observer is still another registered actor. `validate(scene)` succeeds: this is not an invalid scene. Yet `eligible(scene,state,'later')` admits `REATTRIBUTE`, `NARROW`, `GENERALIZE`, `REINFORCE`, `CONTRADICT`, `DIFFERENTIATE`, and `NO_CHANGE` when only `NO_CHANGE` should be offered. The pytest case `test_child_self_action_must_not_be_admitted_as_counterpart` is RED with marker `CHILD_SELF_ACTION_WRONGLY_ADMITTED_AS_COUNTERPART`.\n\n`_relation_sources()` checks `x.observer != actor_id` but only checks truth of `e.action_owner`, not `e.action_owner != actor_id`. **Observer independence is not independently acting other-person ownership.** Hashes can be perfectly retained for the wrong admitted evidence. Thus historical consumed-preimage integrity is materially improved, but the claimed qualified relation-source eligibility remains incomplete. No claim that native authenticated ADP or actor psychology was tested.\n\n## Exact scoped repair and B3 permission\n\n**REVISE**, separate R2 owner. Require distinct other-person `e.action_owner != state.actor` for a counterpart-conditioned mode, plus typed owner/event linkage of observed action to the actual other actor, rather than the unqualified string `observed_counterpart_action:<verb>`. Preserve genuine other-owned positive and self-owned negative, two-other-actors misattribution negative, missing/late witness, alternatives and consumed/unconsumed source snapshots, changed proposal-before-append, deterministic replay, NO_CHANGE, all 91+3+11+14 inherited PASS cases, and frozen M1/I2 incompatibility evidence. This reviewer may not repair R2.",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# SOROK M2 R2 — fresh independent I2 execution return"
+        },
+        {
+          "line": 3,
+          "text": "**DISPOSITION: REVISE_ACTOR_INDEPENDENCE__TARGETED_HISTORICAL_READSET_GREEN.**"
+        },
+        {
+          "line": 5,
+          "text": "Target R2 `e8f375e9feae187e8a1add2343100ca05d9fffc4`; HQ-issued sealed startup `c10323df1f9551eb08d63c8d2536bd34206afa7e`; reviewer branch `agent/reviewer-sorok-20261018-m2r2-sourcefree-i2-execution-r1`. This return is a fresh independent reviewer court, not M2/M3/R2 authorship, B3 implementation, HQ adoption, CAN/ADP issuance or original survey access. No R2 mutation."
+        },
+        {
+          "line": 9,
+          "text": "- Python 3.13.5, pytest 9.0.2, Browser isolated filesystem and subprocess executed. GitHub private connector source was explicitly transported into the Python runtime (the connector itself does not mount it). Reconstructed target `kernel.py` is 27,303 bytes; **SHA-256 `88bb8c65dfd88efd1843f16e1bb6d51e1fa01a0dc1fdccb13e03a9b2b394d8d3`**, Git blob SHA-1 `534fdb6b75e692585ad763673faabbe8e138050f`. All seven inherited pytest test-file SHA-256 values were checked against the exact R2 manifest and original source. Each isolated pytest subprocess printed the imported kernel SHA, not merely a purported target path."
+        },
+        {
+          "line": 10,
+          "text": "- Unmodified original supplied M2 41/41 PASS, M3 lawful 32/32 PASS, packaged original M3 3/3 PASS, additional 15/15 PASS: **91/91 PASS**."
+        },
+        {
+          "line": 11,
+          "text": "- Distinct *exact historical original Git M3* three-source-preimage court: **3/3 PASS** against R2. The former R3-01 speech, R3-02 practice, R3-03 affect replacement REDs are closed under the tested sourcefree conditions."
+        },
+        {
+          "line": 13,
+          "text": "- Independent NEW heldout: valid independently acting `other_P` positive PASS; matched lawful child-self-owned event negative **RED**. Across the eight separate suite executions: **120 PASS, 1 RED; zero skip/error**. The failure is intentional discovery evidence, not flaky runner behavior."
+        },
+        {
+          "line": 14,
+          "text": "- Original M1/I2 binary archives **NOT_RERUN** on this review. Previous historical 37 M1, 23 I2 and frozen incompatibility matrices remain documentary-only. Their prior reported 19 M1-on-R2 and 10 I2-on-R2 failure names must remain frozen, not retrospectively called PASS."
+        },
+        {
+          "line": 15,
+          "text": "- Full fresh stdout and JUnit XML for every suite are in `evidence.tar.gz` (Git blob SHA-1 `a6638e4fe5da565c58f47f679c0c463f34876de1`, gzip SHA-256 `9360deaacd8ac7a912e41523155d435aca4ef89bd9f6447f1fe67c852333ba27`). Archive contains eight pairs `<suite>.log` and `<suite>.xml`; those JUnit files supply the exact testcase-level matrix and independently observable failure. `execution_summary.json` supplies the machine-readable index, statuses, hash receipts and command patterns."
+        },
+        {
+          "line": 20,
+          "text": "python3 -m pytest -q --import-mode=importlib test_m2.py test_m3_independent.py test_m3_unresolved.py test_source_preimages.py"
+        },
+        {
+          "line": 21,
+          "text": "python3 -m pytest -q --import-mode=importlib frozen_m3/test_original_preimage.py test_local_hostile.py test_relation_custody.py"
+        },
+        {
+          "line": 25,
+          "text": "## Newly executed material RED: child action laundered into independently acting counterpart"
+        },
+        {
+          "line": 27,
+          "text": "A fresh t6 child state with genuine independently witnessed prior practical, speech and affect material reaches t9. The original `other_P`-owned ENCOUNTER with valid relevance and counterpart observation lawfully exposes the six relation modes. Positive PASS."
+        },
+        {
+          "line": 29,
+          "text": "The matched negative retains the child's past interpretation. The t9 event is switched to **action_owner='child'** and the corresponding objective/relevance hashes recomputed. The child's `repair_bicycle` project is independently witnessed at t7 with an accepted fixture history operation, and the relevance observer is still another registered actor. `validate(scene)` succeeds: this is not an invalid scene. Yet `eligible(scene,state,'later')` admits `REATTRIBUTE`, `NARROW`, `GENERALIZE`, `REINFORCE`, `CONTRADICT`, `DIFFERENTIATE`, and `NO_CHANGE` when only `NO_CHANGE` should be offered. The pytest case `test_child_self_action_must_not_be_admitted_as_counterpart` is RED with marker `CHILD_SELF_ACTION_WRONGLY_ADMITTED_AS_COUNTERPART`."
+        },
+        {
+          "line": 31,
+          "text": "`_relation_sources()` checks `x.observer != actor_id` but only checks truth of `e.action_owner`, not `e.action_owner != actor_id`. **Observer independence is not independently acting other-person ownership.** Hashes can be perfectly retained for the wrong admitted evidence. Thus historical consumed-preimage integrity is materially improved, but the claimed qualified relation-source eligibility remains incomplete. No claim that native authenticated ADP or actor psychology was tested."
+        },
+        {
+          "line": 35,
+          "text": "**REVISE**, separate R2 owner. Require distinct other-person `e.action_owner != state.actor` for a counterpart-conditioned mode, plus typed owner/event linkage of observed action to the actual other actor, rather than the unqualified string `observed_counterpart_action:<verb>`. Preserve genuine other-owned positive and self-owned negative, two-other-actors misattribution negative, missing/late witness, alternatives and consumed/unconsumed source snapshots, changed proposal-before-append, deterministic replay, NO_CHANGE, all 91+3+11+14 inherited PASS cases, and frozen M1/I2 incompatibility evidence. This reviewer may not repair R2."
+        },
+        {
+          "line": 37,
+          "text": "**B3 permission ceiling:** only read-only *quarantined research* using `validate/eligible/propose` as sourcefree noncausal possibility enumeration, treating later-relation modes as UNQUALIFIED until independent corrective court. NO durable interpretation append, psychological selection/owner effect, actor memory/access or cross-actor authority; no CAN008/CAN011 or ADP015/016/017/019/021 issuance; no B3 canonical merge, original 35-wave representation/empirical result, LLM person/actor grant, V3 wake or semantic adoption. Synthetic witness/grant hashes and `RULE_HASH` are not native owner signatures/accepted binaries."
+        },
+        {
+          "line": 39,
+          "text": "The 91 historical-positive tests cannot override an independently demonstrated contract RED. This return recommends no integration promotion."
+        }
+      ],
+      "referenced_shas": [
+        "e8f375e9feae187e8a1add2343100ca05d9fffc4",
+        "c10323df1f9551eb08d63c8d2536bd34206afa7e",
+        "534fdb6b75e692585ad763673faabbe8e138050f",
+        "a6638e4fe5da565c58f47f679c0c463f34876de1"
+      ],
+      "reported_disposition": "**DISPOSITION: REVISE_ACTOR_INDEPENDENCE__TARGETED_HISTORICAL_READSET_GREEN.**"
+    },
+    {
+      "index": 6,
+      "name": "agent/reviewer-sorok-20261018-m2r3-fresh-independent-i2-r1",
+      "pinned_sha": "a4129eaf652b49a5ba629de32e2b7b0abd60d443",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 1,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-20261018-M2R3-FRESH-INDEPENDENT-I2-R1/execution_receipts.json"
+      ],
+      "code_paths": [],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-20261018-M2R3-FRESH-INDEPENDENT-I2-R1/00_RETURN.md",
+        "blob": "fe1e55313e26be9e5e3f368bcdba25073d06eed6",
+        "url": "https://github.com/maidiu/rawlsing/blob/a4129eaf652b49a5ba629de32e2b7b0abd60d443/WORKER_RETURNS/SOROK-20261018-M2R3-FRESH-INDEPENDENT-I2-R1/00_RETURN.md",
+        "lines": 53
+      },
+      "review_evidence": "# SOROK M2 R3 — fresh independent I2 return\n\n**DISPOSITION: REVISE.** Original 135/135 author cases independently PASS; 6 NEW held-out cases yield 4 PASS and 2 RED. Reviewer did not repair the candidate, self-adopt, issue actor authority, or mutate production.\n\n## Custody\n\n- Private repository: `maidiu/rawlsing`\n- This reviewer branch sealed startup: `a9f2ca4ebac6067845e9821459a69e383931f5dd`, initially containing only the commission\n- Exact reviewed R3 commit: `9c1ab2fa172e41c7fb033b5f134b25255d65126c`\n- Reviewed kernel Git blob SHA-1: `645308250f54133c1f9d707a5851f689942f18ba`\n- Independently materialized and imported kernel SHA-256: `838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a`, 27,840 bytes\n- Original R2 commit: `e8f375e9feae187e8a1add2343100ca05d9fffc4`, reconstructed original kernel SHA-256 `88bb8c65dfd88efd1843f16e1bb6d51e1fa01a0dc1fdccb13e03a9b2b394d8d3`, 27,303 bytes\n- Independent preceding R2 hostile court: `e8b2d6be5ba243729f387cda4048cc30a52664d2`; historical M3 original source-preimage court: `49dfcb30971310756a12f659961600d9f2eb4a11`\n- Actual Python 3.13.5, pytest 9.0.2, isolated filesystem and subprocess; private GitHub connector supplied explicitly copied exact source; no automatic checkout mount.\n- Reviewer is not an R2/R3 author. The selected reasoning-effort setting was not independently visible through runtime tools.\n\n## Independent author closure\n\nOriginal M2 **41 PASS**; M3 lawful **32 PASS**; packaged M3 **3 PASS**; source-preimage **15 PASS**; original historical M3 **3 PASS**; prior hostile **11 PASS**; R2 relation **14 PASS**; earlier independent R2 I2 held-out **2 PASS**; new R3 author actor-owner cases **14 PASS**. **Total: 135 PASS, 0 failures/errors/skips**, unchanged original test bytes and SHA-256-verified R3 loaded kernel. Actual JUnit `author_135_R3.xml` SHA-256 `b7ce09b0ec327fd94a441605c8a41748256b70dda0912f658d59a79fc1c1b8e7`.\n\nExact original two-case I2 held-out against original R2: **1 PASS / 1 RED**, `CHILD_SELF_ACTION_WRONGLY_ADMITTED_AS_COUNTERPART`; JUnit `heldout_R2.xml` SHA-256 `47871e972992254fa4479bb5fd9350bb967103f775b695a4b1ddcd8badd15a1f`. Same unchanged held-out against R3: **2 PASS**, JUnit `heldout_R3.xml` SHA-256 `be3b5fd6ca7dca47b21ef0d928a5c793da7b7ab314dc9a9ada30f3bfed0db9af`. Both other_P and other_Q valid action-owner positives passed in author and earlier independent suites.\n\n## Six fresh adversarial cases (not R3 author cases)\n\nExact newly authored source `test_fresh_i2_adversarial.py` SHA-256 `b9c01d20fe6b2d771246fd7b1b36671b9dbda8bddae062fd6c96df8196c471de`, six actual pytest cases: **4 PASS, 2 RED**; JUnit `heldout_fresh_i2.xml` SHA-256 `c51902eb619f14039c441c103a0b482b528fc0be9875536d8bacc3260208453e`. Preserve REDs verbatim, do not modify candidate or expected assertions.\n\n**NEW RED 1: historical rule identity.** Take a genuinely committed t6 interpretation, replace its `rule_hash` with `DIFFERENT_UNISSUED_RULE_HASH`, recompute unkeyed content digest for internal consistency. `validate(scene)` passes and `eligible(scene,tampered,'later')` fails to refuse. `_lineage_integrity` checks rec hash/version/preimages but does not check admitted `rec.rule_hash` against historical rule identity. R2 0.4.0 → R3 0.4.1 requires explicit migration/authorization rather than accepting arbitrary re-hashed rule claims.\n\n**NEW RED 2: action-owner self-witness laundering.** At t9 keep genuine other_P action owner with independently witnessed earlier project; make `Event.observer`, `Relevance.observer`, and child's observed `HistoryWitness.observer` all `other_P` (refresh objective event reference). `validate()` passes and all six relation modes become eligible despite no immediate witness independent of the acting other_P. R3 repaired child-own-action eligibility, but its independent-witness checks compare against the child, not independently against the action owner. Either refuse such fixtures or obtain an explicit competent owner ruling accepting action-owner testimony; cannot claim native independent observation by test-only label.\n\n**Four new PASS:** (3) alternative unconsumed relation receipt can lapse after proposal while exact consumed readset is retained; (4) later t10 observation and clock cannot authorize t9 relevance; (5) consumed action-owner receipt replacement after append fails historical continuation with `SOURCE_PREIMAGE_IDENTITY_COLLISION`; (6) `NO_CHANGE` retains exact state, wrong synthetic grant refuses. No false positive acceptance implied by those four passes.\n\n## Frozen M1/I2 and native ceilings\n\nFrozen original M1 37 / I2 23 binary tar suites **NOT RERUN**. Keep historically reported **19 M1-on-R2 and 10 I2-on-R2** compatibility RED names unresolved; do not mark them green or erase historical 0.4.0 record schema differences. The three historically strict M3 source-preimage controls are 3/3 PASS in this bounded test only.",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# SOROK M2 R3 — fresh independent I2 return"
+        },
+        {
+          "line": 3,
+          "text": "**DISPOSITION: REVISE.** Original 135/135 author cases independently PASS; 6 NEW held-out cases yield 4 PASS and 2 RED. Reviewer did not repair the candidate, self-adopt, issue actor authority, or mutate production."
+        },
+        {
+          "line": 11,
+          "text": "- Independently materialized and imported kernel SHA-256: `838d0852e6b1b28bb733b1eda580b3dc53f5db3d47e3a0caefbd3072022ad45a`, 27,840 bytes"
+        },
+        {
+          "line": 12,
+          "text": "- Original R2 commit: `e8f375e9feae187e8a1add2343100ca05d9fffc4`, reconstructed original kernel SHA-256 `88bb8c65dfd88efd1843f16e1bb6d51e1fa01a0dc1fdccb13e03a9b2b394d8d3`, 27,303 bytes"
+        },
+        {
+          "line": 13,
+          "text": "- Independent preceding R2 hostile court: `e8b2d6be5ba243729f387cda4048cc30a52664d2`; historical M3 original source-preimage court: `49dfcb30971310756a12f659961600d9f2eb4a11`"
+        },
+        {
+          "line": 15,
+          "text": "- Reviewer is not an R2/R3 author. The selected reasoning-effort setting was not independently visible through runtime tools."
+        },
+        {
+          "line": 17,
+          "text": "## Independent author closure"
+        },
+        {
+          "line": 19,
+          "text": "Original M2 **41 PASS**; M3 lawful **32 PASS**; packaged M3 **3 PASS**; source-preimage **15 PASS**; original historical M3 **3 PASS**; prior hostile **11 PASS**; R2 relation **14 PASS**; earlier independent R2 I2 held-out **2 PASS**; new R3 author actor-owner cases **14 PASS**. **Total: 135 PASS, 0 failures/errors/skips**, unchanged original test bytes and SHA-256-verified R3 loaded kernel. Actual JUnit `author_135_R3.xml` SHA-256 `b7ce09b0ec327fd94a441605c8a41748256b70dda0912f658d59a79fc1c1b8e7`."
+        },
+        {
+          "line": 21,
+          "text": "Exact original two-case I2 held-out against original R2: **1 PASS / 1 RED**, `CHILD_SELF_ACTION_WRONGLY_ADMITTED_AS_COUNTERPART`; JUnit `heldout_R2.xml` SHA-256 `47871e972992254fa4479bb5fd9350bb967103f775b695a4b1ddcd8badd15a1f`. Same unchanged held-out against R3: **2 PASS**, JUnit `heldout_R3.xml` SHA-256 `be3b5fd6ca7dca47b21ef0d928a5c793da7b7ab314dc9a9ada30f3bfed0db9af`. Both other_P and other_Q valid action-owner positives passed in author and earlier independent suites."
+        },
+        {
+          "line": 25,
+          "text": "Exact newly authored source `test_fresh_i2_adversarial.py` SHA-256 `b9c01d20fe6b2d771246fd7b1b36671b9dbda8bddae062fd6c96df8196c471de`, six actual pytest cases: **4 PASS, 2 RED**; JUnit `heldout_fresh_i2.xml` SHA-256 `c51902eb619f14039c441c103a0b482b528fc0be9875536d8bacc3260208453e`. Preserve REDs verbatim, do not modify candidate or expected assertions."
+        },
+        {
+          "line": 27,
+          "text": "**NEW RED 1: historical rule identity.** Take a genuinely committed t6 interpretation, replace its `rule_hash` with `DIFFERENT_UNISSUED_RULE_HASH`, recompute unkeyed content digest for internal consistency. `validate(scene)` passes and `eligible(scene,tampered,'later')` fails to refuse. `_lineage_integrity` checks rec hash/version/preimages but does not check admitted `rec.rule_hash` against historical rule identity. R2 0.4.0 → R3 0.4.1 requires explicit migration/authorization rather than accepting arbitrary re-hashed rule claims."
+        },
+        {
+          "line": 29,
+          "text": "**NEW RED 2: action-owner self-witness laundering.** At t9 keep genuine other_P action owner with independently witnessed earlier project; make `Event.observer`, `Relevance.observer`, and child's observed `HistoryWitness.observer` all `other_P` (refresh objective event reference). `validate()` passes and all six relation modes become eligible despite no immediate witness independent of the acting other_P. R3 repaired child-own-action eligibility, but its independent-witness checks compare against the child, not independently against the action owner. Either refuse such fixtures or obtain an explicit competent owner ruling accepting action-owner testimony; cannot claim native independent observation by test-only label."
+        },
+        {
+          "line": 31,
+          "text": "**Four new PASS:** (3) alternative unconsumed relation receipt can lapse after proposal while exact consumed readset is retained; (4) later t10 observation and clock cannot authorize t9 relevance; (5) consumed action-owner receipt replacement after append fails historical continuation with `SOURCE_PREIMAGE_IDENTITY_COLLISION`; (6) `NO_CHANGE` retains exact state, wrong synthetic grant refuses. No false positive acceptance implied by those four passes."
+        },
+        {
+          "line": 33,
+          "text": "## Frozen M1/I2 and native ceilings"
+        },
+        {
+          "line": 35,
+          "text": "Frozen original M1 37 / I2 23 binary tar suites **NOT RERUN**. Keep historically reported **19 M1-on-R2 and 10 I2-on-R2** compatibility RED names unresolved; do not mark them green or erase historical 0.4.0 record schema differences. The three historically strict M3 source-preimage controls are 3/3 PASS in this bounded test only."
+        },
+        {
+          "line": 37,
+          "text": "B3 ceiling while REVISE stands: **read-only quarantined source-free `validate/eligible/propose` possibility research**, with relation admission defects flagged; no authoritative durable append, schema migration, actor adaptation, memory issuance, canonical integration, production use, or source35/empirical interpretation. Synthetic `fixture_grant()`, `RULE_HASH`, `TEST_ONLY` issuers and fixture hashes are NOT native ADP authorizations. Native ADP019/021 objective occurrence/time, ADP015 other-person relations, ADP016/017 memory/access, CAN008/011 psychological selection/owner effects require separately qualified competent source and actor owners. Neither native cryptographic signatures nor actual psychology was exercised."
+        },
+        {
+          "line": 39,
+          "text": "Disposition can advance only after separate R3-successor author repairs two REDs against unchanged heldout, records an explicit old schema/RULE_HASH migration contract, and a **new** independent scientific court adjudicates actor-owner vs observer rights. This reviewer may not do the repair or self-adopt."
+        },
+        {
+          "line": 44,
+          "text": "PYTHONPATH=. python3 -m pytest -q --import-mode=importlib test_m2.py test_m3_independent.py test_m3_unresolved.py test_source_preimages.py frozen_m3/test_original_preimage.py test_local_hostile.py test_relation_custody.py test_heldout_actor_independence.py test_r3_counterpart_actor_custody.py --junitxml=author_135_R3.xml"
+        },
+        {
+          "line": 46,
+          "text": "# From isolated r2_negative source tree, original R2 exact kernel:"
+        },
+        {
+          "line": 50,
+          "text": "The complete local standalone source/pytest/JUnit evidence archive is `sorok_m2r3_fresh_i2_evidence.zip` (delivered alongside this review), 74,011 bytes, SHA-256 `fd1969a5801331ca01ff34fca4526a1ffa9cebd991434629162486d89bedf0c9`. The archive contains full executed test suite, newly authored code and source hash manifest; remote connector metadata alone is not represented as execution. `execution_summary.json` and the sanitized 00D environment passport will accompany this return."
+        },
+        {
+          "line": 52,
+          "text": "**Terminal: `REVISE__R3_135_PASS__2_NEW_I2_RED__NATIVE_AUTHORITY_UNPROVEN__NO_ADOPTION`.**"
+        }
+      ],
+      "referenced_shas": [
+        "a9f2ca4ebac6067845e9821459a69e383931f5dd",
+        "9c1ab2fa172e41c7fb033b5f134b25255d65126c",
+        "645308250f54133c1f9d707a5851f689942f18ba",
+        "e8f375e9feae187e8a1add2343100ca05d9fffc4",
+        "e8b2d6be5ba243729f387cda4048cc30a52664d2",
+        "49dfcb30971310756a12f659961600d9f2eb4a11"
+      ],
+      "reported_disposition": "**DISPOSITION: REVISE.** Original 135/135 author cases independently PASS; 6 NEW held-out cases yield 4 PASS and 2 RED. Reviewer did not repair the candidate, self-adopt, issue actor authority, or mutate production."
+    },
+    {
+      "index": 7,
+      "name": "agent/reviewer-sorok-20261018-m2r4-rule-witness-independent-i2-r1",
+      "pinned_sha": "8e74be26d14dae270ed6723d5e878f59446c94bd",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 5,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-20261018-M2R4-RULE-WITNESS-INDEPENDENT-I2-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261018-M2R4-RULE-WITNESS-INDEPENDENT-I2-R1/environment_passport_delta.json",
+        "WORKER_RETURNS/SOROK-20261018-M2R4-RULE-WITNESS-INDEPENDENT-I2-R1/execution_receipts.json",
+        "WORKER_RETURNS/SOROK-20261018-M2R4-RULE-WITNESS-INDEPENDENT-I2-R1/source_manifest.json",
+        "WORKER_RETURNS/SOROK-20261018-M2R4-RULE-WITNESS-INDEPENDENT-I2-R1/test_plan_preregistered.json"
+      ],
+      "code_paths": [],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-20261018-M2R4-RULE-WITNESS-INDEPENDENT-I2-R1/00_RETURN.md",
+        "blob": "3cecf8feb977c54128926ca3b68031390ca38528",
+        "url": "https://github.com/maidiu/rawlsing/blob/8e74be26d14dae270ed6723d5e878f59446c94bd/WORKER_RETURNS/SOROK-20261018-M2R4-RULE-WITNESS-INDEPENDENT-I2-R1/00_RETURN.md",
+        "lines": 43
+      },
+      "review_evidence": "# SOROK M2R4-I2 — independent rule and witness court return\n\n**DISPOSITION: HOLD — EXECUTION CUSTODY / ASSERTION EFFICACY NOT PROVED.** This return is a genuinely distinct documentary source inspection, **not** R4 acceptance, not an R4 repair, not a second implementation, and not independent execution. No model, actor, B3, canonical PRE-MAIN, original35, ADP or CAN authority is granted.\n\n## Exact commission identity\n- Sealed reviewer startup: `d53b36a2e5b1f665061a736b26584806c4deaa6c` (remote branch verified before work).\n- Review target: `2001169089e97da7444dc8baa2df700aa56e9aca`.\n- Original R3: `9c1ab2fa172e41c7fb033b5f134b25255d65126c`.\n- Prior independent R3-I2: `a4129eaf652b49a5ba629de32e2b7b0abd60d443`.\n- Branch: `agent/reviewer-sorok-20261018-m2r4-rule-witness-independent-i2-r1`.\n- This return edits **only** `WORKER_RETURNS/SOROK-20261018-M2R4-RULE-WITNESS-INDEPENDENT-I2-R1/`.\n\n## Independently established (remote actual source; not implementer execution)\nUsing authenticated private GitHub connector text and a separate in-run JavaScript SHA-256 implementation, the exact R3 and R4 kernels and the two published hostile-test files match their advertised complete SHA-256 digests and GitHub blob identities; see `source_manifest.json`. The full source diff was independently computed by comparing the two complete kernel texts. Exactly six changed regions: contract version, two declarative rule fields, historical record rule-hash gate, and the Event/Relevance/HistoryWitness observer gates.\n\n### RED 1 — historical rehashed rule\nR3 does not inspect `rec.rule_hash` in `_lineage_integrity`, although it checks the unkeyed content digest. R4 adds `require(rec.rule_hash == RULE_HASH, 'HISTORICAL_RULE_IDENTITY_UNQUALIFIED')`. This is an **on-source candidate repair**, not evidence of a previously issued rule or independently reproduced PASS.\n\n### RED 2 — actor-own testimony\nR3's relation gate excludes self-action by interpreter but does not require the three immediate observer fields be independent of actual action owner. R4 checks (i) `e.observer != e.action_owner`, (ii) `x.observer != e.action_owner` and (iii) `_history_source(scene,witness).observer != e.action_owner`. The original R3-I2 expected nodes are unchanged in independently SHA-256 verified source, but their R3 RED / R4 PASS has **not been executed in this session**.\n\n## Exact execution limitation — do not conflate runner with imports\nThe execution surface has real Python 3.13.5, pytest 9.0.2 and Git 2.47.3. GitHub authenticated file reads work, but the connector **does not mount a repository**. A direct isolated `git ls-remote` attempted from the Python/shell container failed because github.com could not be resolved. The direct download attempt was refused by the download gate; the private GitHub blob was not accessible through unauthenticated web viewing. Consequently **no exact kernel was placed into the Python import tree**; no `module.__file__` or Python SHA checks are asserted and no eligible/propose/append node was actually executed. Neither paper reasoning nor implementer-owned XML is relabeled independent execution.\n\n- R3 I2 historical named nodes: **NOT_RUN 0/2** on both versions, not assertion-grade RED/PASS reproduction.\n- R4 author-claimed 153 suite: **153 NOT_RUN independently**; reported author 153 green remains third-party source evidence.\n- New independent prospective hostiles: **12 cases preregistered, 0 executed**.\n- Shared proof-integrity law: **NOT_PROVED**. No assertion-level positive/real severance is observed in separate processes; no linter witness claim is made.\n- Original R2 child-self negative: historically 1 PASS/1 RED; **NOT_RERUN**.\n- Frozen M1/I2 original incompatibilities: **19 + 10 historical REDs retained**, NOT_RERUN.\n\nSee `execution_receipts.json`, `test_plan_preregistered.json` and `environment_passport_delta.json`.\n\n## Preregistered assertion court\nThe twelve-case matrix freezes named consumers, positive requirements and directly severed dependencies before any new outcome. They include rehashed historical rule, each of three self-witness channels independently, an independent shared-observer positive, other_Q positive, future t10, consumed history altered between proposal and append, irrelevant alternative, old-rule migration refusal, NO_CHANGE state integrity and historical consumed-source replay. Each is individually `NOT_RUN`; fixture-label equality and author-designed contents are not treated as psychological or native witness truth.",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# SOROK M2R4-I2 — independent rule and witness court return"
+        },
+        {
+          "line": 3,
+          "text": "**DISPOSITION: HOLD — EXECUTION CUSTODY / ASSERTION EFFICACY NOT PROVED.** This return is a genuinely distinct documentary source inspection, **not** R4 acceptance, not an R4 repair, not a second implementation, and not independent execution. No model, actor, B3, canonical PRE-MAIN, original35, ADP or CAN authority is granted."
+        },
+        {
+          "line": 7,
+          "text": "- Review target: `2001169089e97da7444dc8baa2df700aa56e9aca`."
+        },
+        {
+          "line": 8,
+          "text": "- Original R3: `9c1ab2fa172e41c7fb033b5f134b25255d65126c`."
+        },
+        {
+          "line": 9,
+          "text": "- Prior independent R3-I2: `a4129eaf652b49a5ba629de32e2b7b0abd60d443`."
+        },
+        {
+          "line": 10,
+          "text": "- Branch: `agent/reviewer-sorok-20261018-m2r4-rule-witness-independent-i2-r1`."
+        },
+        {
+          "line": 11,
+          "text": "- This return edits **only** `WORKER_RETURNS/SOROK-20261018-M2R4-RULE-WITNESS-INDEPENDENT-I2-R1/`."
+        },
+        {
+          "line": 13,
+          "text": "## Independently established (remote actual source; not implementer execution)"
+        },
+        {
+          "line": 14,
+          "text": "Using authenticated private GitHub connector text and a separate in-run JavaScript SHA-256 implementation, the exact R3 and R4 kernels and the two published hostile-test files match their advertised complete SHA-256 digests and GitHub blob identities; see `source_manifest.json`. The full source diff was independently computed by comparing the two complete kernel texts. Exactly six changed regions: contract version, two declarative rule fields, historical record rule-hash gate, and the Event/Relevance/HistoryWitness observer gates."
+        },
+        {
+          "line": 16,
+          "text": "### RED 1 — historical rehashed rule"
+        },
+        {
+          "line": 17,
+          "text": "R3 does not inspect `rec.rule_hash` in `_lineage_integrity`, although it checks the unkeyed content digest. R4 adds `require(rec.rule_hash == RULE_HASH, 'HISTORICAL_RULE_IDENTITY_UNQUALIFIED')`. This is an **on-source candidate repair**, not evidence of a previously issued rule or independently reproduced PASS."
+        },
+        {
+          "line": 19,
+          "text": "### RED 2 — actor-own testimony"
+        },
+        {
+          "line": 20,
+          "text": "R3's relation gate excludes self-action by interpreter but does not require the three immediate observer fields be independent of actual action owner. R4 checks (i) `e.observer != e.action_owner`, (ii) `x.observer != e.action_owner` and (iii) `_history_source(scene,witness).observer != e.action_owner`. The original R3-I2 expected nodes are unchanged in independently SHA-256 verified source, but their R3 RED / R4 PASS has **not been executed in this session**."
+        },
+        {
+          "line": 23,
+          "text": "The execution surface has real Python 3.13.5, pytest 9.0.2 and Git 2.47.3. GitHub authenticated file reads work, but the connector **does not mount a repository**. A direct isolated `git ls-remote` attempted from the Python/shell container failed because github.com could not be resolved. The direct download attempt was refused by the download gate; the private GitHub blob was not accessible through unauthenticated web viewing. Consequently **no exact kernel was placed into the Python import tree**; no `module.__file__` or Python SHA checks are asserted and no eligible/propose/append node was actually executed. Neither paper reasoning nor implementer-owned XML is relabeled independent execution."
+        },
+        {
+          "line": 25,
+          "text": "- R3 I2 historical named nodes: **NOT_RUN 0/2** on both versions, not assertion-grade RED/PASS reproduction."
+        },
+        {
+          "line": 26,
+          "text": "- R4 author-claimed 153 suite: **153 NOT_RUN independently**; reported author 153 green remains third-party source evidence."
+        },
+        {
+          "line": 27,
+          "text": "- New independent prospective hostiles: **12 cases preregistered, 0 executed**."
+        },
+        {
+          "line": 28,
+          "text": "- Shared proof-integrity law: **NOT_PROVED**. No assertion-level positive/real severance is observed in separate processes; no linter witness claim is made."
+        },
+        {
+          "line": 29,
+          "text": "- Original R2 child-self negative: historically 1 PASS/1 RED; **NOT_RERUN**."
+        },
+        {
+          "line": 30,
+          "text": "- Frozen M1/I2 original incompatibilities: **19 + 10 historical REDs retained**, NOT_RERUN."
+        },
+        {
+          "line": 32,
+          "text": "See `execution_receipts.json`, `test_plan_preregistered.json` and `environment_passport_delta.json`."
+        },
+        {
+          "line": 34,
+          "text": "## Preregistered assertion court"
+        },
+        {
+          "line": 35,
+          "text": "The twelve-case matrix freezes named consumers, positive requirements and directly severed dependencies before any new outcome. They include rehashed historical rule, each of three self-witness channels independently, an independent shared-observer positive, other_Q positive, future t10, consumed history altered between proposal and append, irrelevant alternative, old-rule migration refusal, NO_CHANGE state integrity and historical consumed-source replay. Each is individually `NOT_RUN`; fixture-label equality and author-designed contents are not treated as psychological or native witness truth."
+        },
+        {
+          "line": 37,
+          "text": "## Scientific verdict and residual HOLDS"
+        },
+        {
+          "line": 38,
+          "text": "`HOLD_EXECUTION_CUSTODY__R4_SOURCE_DIFF_CONSISTENT_WITH_BOTH_REPAIRS__NO_ASSERTION_EFFICACY_PROOF`."
+        },
+        {
+          "line": 40,
+          "text": "At most: these exact R4 source changes are consistent with the proposed two fixes. **Not concluded:** no independently demonstrated 153 PASS, no two R3 historical assertion REDs reproduced, no same-assertion positive/severed effect proven, no valid old-schema migration, no external issuer authentication. An unkeyed `RULE_HASH` comparison is not source-issued authority; synthetic third-person observer fields do not authenticate an actual person's action."
+        },
+        {
+          "line": 42,
+          "text": "**Handoff to competent Sorok HQ:** keep R4 quarantine. A distinct qualified executor must materialize exactly pinned private source into one truly executable isolated environment, verify actual imports and hashes, preregister then execute original R3 failures against R3 and PASS against R4 without changing assertions, run 153 inherited cases and the twelve new hostiles, and execute assertion-effective fault injections with logs/JUnit. HQ alone may adjudicate acceptance after concrete results. No implementation repair or actor grant was performed here."
+        }
+      ],
+      "referenced_shas": [
+        "d53b36a2e5b1f665061a736b26584806c4deaa6c",
+        "2001169089e97da7444dc8baa2df700aa56e9aca",
+        "9c1ab2fa172e41c7fb033b5f134b25255d65126c",
+        "a4129eaf652b49a5ba629de32e2b7b0abd60d443"
+      ],
+      "reported_disposition": "**DISPOSITION: HOLD — EXECUTION CUSTODY / ASSERTION EFFICACY NOT PROVED.** This return is a genuinely distinct documentary source inspection, **not** R4 acceptance, not an R4 repair, not a second implementation, and not independent execution. No model, actor, B3, canonical "
+    },
+    {
+      "index": 8,
+      "name": "agent/reviewer-sorok-20261019-c0r3i-transport-source-independent-r1",
+      "pinned_sha": "43328571f297c26e23a42a755ef306c1247b5032",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 46,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/.gitignore",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/01_SOURCE_AND_IMPORT_CUSTODY.json",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/c0x_world_receiver.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/patches/facade_c0r3.patch",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/patches/receiver_c0r3.patch",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/tools/c0p_stage_runtime.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/tools/proof_integrity_gate_r1.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/upstream/c0p_two_contract_port.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/environment_passport.json",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0i50_corrected.log",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0i50_corrected.xml",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0i50_original.log",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0i50_original.xml",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0i50_repaired.log",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0i50_repaired.xml",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0p49_original.log",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0p49_original.xml",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0r2_23_corrected.log",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0r2_23_corrected.xml",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0r2_23_repaired.log",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0r2_23_repaired.xml",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0r3_cold_cold_a.log",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0r3_cold_cold_b.log",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0r3_new_13.log",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0r3_new_13.xml",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0x15_original.log",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/c0x15_original.xml",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/junit_full.xml",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/k9k10_36.log",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/k9k10_36.xml",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/evidence/proof_witness_receipt.json",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/original/c0p_first_author.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/original/c0p_repaired_author.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/original/c0x_world_receiver.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/runner/build_manifest.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/runner/import_probe.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/runner/prepare_historical.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/runner/reproduce_original_defect.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/runner/run_all.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/cold_probe.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/conftest.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/test_c0r3_endtoend.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/test_c0r3_endtoend.py.proof.json",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/test_c0r3i_independent_court.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/test_c0r3i_independent_court.py.proof.json"
+      ],
+      "code_paths": [
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/c0x_world_receiver.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/tools/c0p_stage_runtime.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/tools/proof_integrity_gate_r1.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/upstream/c0p_two_contract_port.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/original/c0p_first_author.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/original/c0p_repaired_author.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/original/c0x_world_receiver.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/runner/build_manifest.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/runner/import_probe.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/runner/prepare_historical.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/runner/reproduce_original_defect.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/runner/run_all.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/cold_probe.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/conftest.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/test_c0r3_endtoend.py",
+        "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/tests/test_c0r3i_independent_court.py"
+      ],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/00_RETURN.md",
+        "blob": "e1851f1020983cfcb4220174e4c072d4c61e7bf1",
+        "url": "https://github.com/maidiu/rawlsing/blob/43328571f297c26e23a42a755ef306c1247b5032/WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/00_RETURN.md",
+        "lines": 113
+      },
+      "review_evidence": "# SOROK C0R3I — independent C0/C10 sourcefree two-owner transport and clock court R1\n\n**Verdict: `ACCEPT_SCOPED__TWO_OWNER_LOSSLESS_TRANSPORT_AND_TYPED_TEMPORAL_REFUSAL`.** This is an independent I2 technical/scientific receiver court. It is not C0R3/C0R2/C0X author, HQ, Pyat producer, C11 welder or actor issuer. No repair was performed. No source was edited. No grant was issued.\n\nRepository: private `maidiu/rawlsing`. Branch `agent/reviewer-sorok-20261019-c0r3i-transport-source-independent-r1` at sealed startup `38f1d5b07ad3bce4daa639415721246ffb668f1d`. Exact review target: C0R3 author `a0f7ab5ff9323a1db8a4c6c3b365283b0969de46`. Writes only to `WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/`.\n\n## 1. Independent custody\n\nOne accountable worker, MiMo-V2.6-Pro via OpenCode. The 29-module native closure was staged from the actual local Git object store via the exact `c0p_stage_runtime.py` mechanism. All 29 modules verified `all_match=True` against Git blob SHA-1. Original returns staged from exact commits: C0P `55d2daa4…`, C0I `2dacd876…`, C0R2 `55d2daa4…`, C0X `b02deee1…`, K9/K10 `9831293f…`.\n\n## 2. Inherited defect independently reproduced\n\nAgainst the unmodified original facade (`c0p_repaired_author.py`):\n\n1. **Callable parent reference:** `ordered_steps[0].parent_receipt_ref` is a Python function object `TwoContractPort._possibility_receipt.<locals>.er0`, not an ExactRef. `json.dumps` → `TypeError: Object of type function is not JSON serializable`.\n2. **Pre-publication None TypeError:** `select(valid_at='2026-02-01', published_asof='2026-02-01')` → `TypeError: 'NoneType' object is not subscriptable` at the facade source-ref mapping, not a typed refusal.\n\nBoth reproduced independently by direct module import and call. Full evidence: `evidence/junit_full.xml` (tests `test_independent_original_callable_parent_ref_defect`, `test_independent_prepublication_none_type_error`).\n\n## 3. C0R3 fix verified\n\n1. **Materialized ExactRef:** root parent ref is `{kind:\"OrderedConditionStep\", id:\"urn:test:c0p:step:root\", hash:semantic_hash(\"root\")}` — an exact dict, never a callable. Child refs chain to previous `new_binding.hash`.\n2. **Typed temporal refusal:** pre-publication raises `TemporalSourceRefUnavailable` with code `TEMPORAL_SOURCE_REF_UNAVAILABLE_AT_ASOF` naming every unavailable structural/empirical field. No TypeError, no blank positive.\n3. **Lossless transport:** both owner contracts (17/17 N9 fields, 20/20 N10E/N10W fields) transport through JSON encode/decode and the actual C0X receiver as `LOSSLESS_TWO_CONTRACT_OBJECT`.\n\n## 4. Inherited suite accounting\n\n| Court | Tests | PASS | RED | Notes |\n|---|---:|---:|---:|---|\n| C0P author | 49 | 49 | 0 | |\n| C0I frozen (original facade) | 50 | 47 | **3** | historical REDs preserved |\n| C0I frozen (repaired facade) | 50 | 50 | 0 | |\n| C0I frozen (corrected candidate) | 50 | 50 | 0 | |\n| C0R2 author (repaired facade) | 23 | 23 | 0 | |\n| C0R2 author (corrected candidate) | 23 | 23 | 0 | |",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# SOROK C0R3I — independent C0/C10 sourcefree two-owner transport and clock court R1"
+        },
+        {
+          "line": 3,
+          "text": "**Verdict: `ACCEPT_SCOPED__TWO_OWNER_LOSSLESS_TRANSPORT_AND_TYPED_TEMPORAL_REFUSAL`.** This is an independent I2 technical/scientific receiver court. It is not C0R3/C0R2/C0X author, HQ, Pyat producer, C11 welder or actor issuer. No repair was performed. No source was edited. No grant was issued."
+        },
+        {
+          "line": 5,
+          "text": "Repository: private `maidiu/rawlsing`. Branch `agent/reviewer-sorok-20261019-c0r3i-transport-source-independent-r1` at sealed startup `38f1d5b07ad3bce4daa639415721246ffb668f1d`. Exact review target: C0R3 author `a0f7ab5ff9323a1db8a4c6c3b365283b0969de46`. Writes only to `WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/`."
+        },
+        {
+          "line": 7,
+          "text": "## 1. Independent custody"
+        },
+        {
+          "line": 9,
+          "text": "One accountable worker, MiMo-V2.6-Pro via OpenCode. The 29-module native closure was staged from the actual local Git object store via the exact `c0p_stage_runtime.py` mechanism. All 29 modules verified `all_match=True` against Git blob SHA-1. Original returns staged from exact commits: C0P `55d2daa4…`, C0I `2dacd876…`, C0R2 `55d2daa4…`, C0X `b02deee1…`, K9/K10 `9831293f…`."
+        },
+        {
+          "line": 11,
+          "text": "## 2. Inherited defect independently reproduced"
+        },
+        {
+          "line": 13,
+          "text": "Against the unmodified original facade (`c0p_repaired_author.py`):"
+        },
+        {
+          "line": 15,
+          "text": "1. **Callable parent reference:** `ordered_steps[0].parent_receipt_ref` is a Python function object `TwoContractPort._possibility_receipt.<locals>.er0`, not an ExactRef. `json.dumps` → `TypeError: Object of type function is not JSON serializable`."
+        },
+        {
+          "line": 18,
+          "text": "Both reproduced independently by direct module import and call. Full evidence: `evidence/junit_full.xml` (tests `test_independent_original_callable_parent_ref_defect`, `test_independent_prepublication_none_type_error`)."
+        },
+        {
+          "line": 22,
+          "text": "1. **Materialized ExactRef:** root parent ref is `{kind:\"OrderedConditionStep\", id:\"urn:test:c0p:step:root\", hash:semantic_hash(\"root\")}` — an exact dict, never a callable. Child refs chain to previous `new_binding.hash`."
+        },
+        {
+          "line": 28,
+          "text": "| Court | Tests | PASS | RED | Notes |"
+        },
+        {
+          "line": 31,
+          "text": "| C0I frozen (original facade) | 50 | 47 | **3** | historical REDs preserved |"
+        },
+        {
+          "line": 32,
+          "text": "| C0I frozen (repaired facade) | 50 | 50 | 0 | |"
+        },
+        {
+          "line": 34,
+          "text": "| C0R2 author (repaired facade) | 23 | 23 | 0 | |"
+        },
+        {
+          "line": 36,
+          "text": "| C0X original receiver | 15 | 15 | 0 | inherited transport HOLD preserved |"
+        },
+        {
+          "line": 37,
+          "text": "| K9/K10 sourcefree fixture | 36 | 36 | 0 | |"
+        },
+        {
+          "line": 39,
+          "text": "| **Independent C0R3I court** | **27** | **27** | **0** | |"
+        },
+        {
+          "line": 42,
+          "text": "Zero errors, zero skips. The 3 C0I REDs are the preserved original-facade failures. The original C0X 15/15 is green because it asserts the inherited transport HOLD; it is not evidence for the corrected transport."
+        },
+        {
+          "line": 46,
+          "text": "The literal `or True` in C0R2 `test_r1_relocation_changes_no_consumer_value` is preserved byte-exact and NEVER counted as proof. The new C0R3 relocation test is nonvacuous: no `or True`, real source-identity and values assertions."
+        },
+        {
+          "line": 48,
+          "text": "## 6. Independent hostile cases (12 preregistered)"
+        },
+        {
+          "line": 63,
+          "text": "| 12 | Reordered N9/N10 | `ReceiverRefusal` |"
+        },
+        {
+          "line": 67,
+          "text": "## 7. Source-consumer severance"
+        },
+        {
+          "line": 69,
+          "text": "Three claim-specific fault witnesses via the shared proof-integrity gate:"
+        },
+        {
+          "line": 73,
+          "text": "| `C0R3I_CONSUMER_READS_ACTUAL_VALUES_READ` | `test_consumer_reads_actual_values_not_mere_serialization` | `values_read` → `[]` | `TARGET_ASSERTION_FAILED` |"
+        },
+        {
+          "line": 74,
+          "text": "| `C0R3I_LOSSLESS_TWO_CONTRACT_TRANSPORT` | `test_complete_17_field_n9_and_20_field_n10_receipts` | transport state → always non-transportable | `TARGET_ASSERTION_FAILED` |"
+        },
+        {
+          "line": 75,
+          "text": "| `C0R3I_JSON_ROUNDTRIP_VERIFIED` | `test_consumer_reads_actual_values_not_mere_serialization` | roundtrip flag → `False` | `TARGET_ASSERTION_FAILED` |"
+        },
+        {
+          "line": 77,
+          "text": "Receipt: `evidence/proof_witness_receipt.json`. The same named consumer assertion turns RED under each severance, not an unrelated import error."
+        },
+        {
+          "line": 86,
+          "text": "| Consumer reads actual values_read | `EXECUTED_GREEN` |"
+        },
+        {
+          "line": 88,
+          "text": "| Original defect reproduction | `EXECUTED_GREEN` |"
+        },
+        {
+          "line": 90,
+          "text": "| Native Sorok C10 rollout | `NOT_GRANTED__WITHHELD` |"
+        },
+        {
+          "line": 96,
+          "text": "Before C0R3I: the corrected two-owner transport was author-claimed but not independently verified."
+        },
+        {
+          "line": 98,
+          "text": "After C0R3I: the corrected transport is independently confirmed at the exact owner-object grain. Both complete owner contracts (17-field N9, 20-field N10E/N10W) traverse the actual nonparent/scenario consumers, the C0X receiver, JSON encode/decode and cold processes with lossless fidelity. The typed temporal refusal replaces the inherited TypeError. The materialized ExactRef parent chain replaces the callable defect. Source-consumer edges are proven genuine by three independent severances."
+        },
+        {
+          "line": 100,
+          "text": "Remaining for C0/C10: operative N9/K9/K10 Pyat source permission (externally owned), semantic issuer, calibration, native Sorok C10 rollout, actor and C11. Reviewer cannot grant any of them."
+        },
+        {
+          "line": 104,
+          "text": "1. **Pyat N9/N10E/OC05 producer rights** — externally owned; no operative grant."
+        },
+        {
+          "line": 105,
+          "text": "2. **Operative N9/K9/K10 source permission** — required for native C0/C10; currently `SOURCEFREE_FIXTURE_PORT_NOT_OPERATIVE_N9`."
+        },
+        {
+          "line": 112,
+          "text": "**Final:** `ACCEPT_SCOPED__TWO_OWNER_LOSSLESS_TRANSPORT_AND_TYPED_TEMPORAL_REFUSAL__EXECUTED_GREEN__SEVERANCE_3_OF_3__OPERATIVE_SOURCE_WITHHELD__NO_ADOPTION`."
+        }
+      ],
+      "referenced_shas": [
+        "38f1d5b07ad3bce4daa639415721246ffb668f1d",
+        "a0f7ab5ff9323a1db8a4c6c3b365283b0969de46"
+      ],
+      "reported_disposition": "**Verdict: `ACCEPT_SCOPED__TWO_OWNER_LOSSLESS_TRANSPORT_AND_TYPED_TEMPORAL_REFUSAL`.** This is an independent I2 technical/scientific receiver court. It is not C0R3/C0R2/C0X author, HQ, Pyat producer, C11 welder or actor issuer. No repair was performed. No source was ed",
+      "code_inspection": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/candidate/c0x_world_receiver.py",
+        "blob": "c698809ab61a82a6a865c229fe180c3657503ecc",
+        "bytes": 18841,
+        "functions": [
+          "def _ensure_runtime():",
+          "class ReceiverRefusal(Exception):",
+          "    def __init__(self, code: str, detail: str = \"\"):",
+          "def _non_transportable(value, path=\"\"):",
+          "def _parent_ref_problem(possibility):",
+          "def _structural_state(routes):",
+          "def make_receipt(consumer, *, service_options=None, select_kwargs=None, proposals=None):",
+          "def _unavailable(demand, reason, detail=\"\"):",
+          "def receive_demand(consumer, *, demand=None, service_options=None,",
+          "def receive_receipt(receipt, demand=None):"
+        ],
+        "sample": "\"\"\"Sorok C0X — versioned read-only two-owner world receiver.\n\nThis is a receiving facade, not a producer, estimator, issuer or C11 weld. It\nconsumes the ACTUAL repaired C0P two-contract object (N9 selected-world receipt\nplus N10E/N10W ordered-possibility receipt) from the exact upstream blob and\nexposes the demand's material world opportunity with native units, source\npermission, values-read, four clocks, minority/unknown and no joint probability.\n\nTwo owner contracts are transported separately. They are never merged,\nsubstituted, averaged, or converted into a route probability or selection\nweight. A non-transportable owner field is preserved and typed, never silently\ndropped or fabricated.\n\"\"\"\nfrom __future__ import annotations\n\nimport hashlib\nimport importlib.util\nimport json\nimport os\nimport subprocess\nimport sys\nfrom pathlib import Path\n\nROOT = Path(__file__).resolve().parent\nRUNTIME = ROOT / \"stage/runtime\"\nUPSTREAM = ROOT / \"upstream/c0p_two_contract_port.py\"\n\n\ndef _ensure_runtime():\n    \"\"\"Materialize the exact 29-module closure from pinned Git objects.\n\n    The runtime is deliberately not duplicated into the committed tree: it is\n    staged on demand from the exact E03/E04T blob preimages and verified by the\n    stage script's 29/29 ledger. This keeps inherited native tests out of the\n    C0X changed-test surface while preserving exact bytes.\n    \"\"\"\n    ledger = RUNTIME.parent / \"_c0p_runtime_ledger.json\"\n    ready = (RUNTIME / \"product/nonparent.py\").is_file() and ledger.is_file()\n    if ready:\n        data = json.loads(ledger.read_text())\n        ready = (len(dat"
+      }
+    },
+    {
+      "index": 9,
+      "name": "agent/reviewer-sorok-20261019-c8oi-writer-authority-and-occurrence-independent-r1",
+      "pinned_sha": "f4200eb0938a1b74c8b738e0a344224edfb4d0eb",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 49,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/.gitignore",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/candidate/c8o_trusted_outbox.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/consumer/c8_readonly_consumer.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/c8o_court_support.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/c8o_worker.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/test_c8o_concurrency_court.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/test_c8o_consumer_severance.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/test_c8o_consumer_severance.py.proof.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/test_c8o_crash_custody.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/test_c8o_legacy_writer_bypass.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/test_c8o_rollback_and_capability.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/test_c8o_source_ledger.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/docket/OWNER_DECISION_DOCKET.md",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/environment_passport.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/capability_format_not_authentication.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/crash_boundary_AFTER_COMMIT.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/crash_boundary_BEFORE_RENAME.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/crash_boundary_SIGKILL_AFTER_COMMIT.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/crash_boundary_SIGKILL_BEFORE_RENAME.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/durability_limit_receipt.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/green_wrapper_then_bypass_erasure.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/history_rewrite_counterexample.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/interleaved_legacy_lost_event.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/kill_after_writer_race.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/legacy_receipt_rollback_without_anchor.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/legacy_writer_bypass_counterexample.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/proof_gate_scope.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/proof_witness_consumer.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/proof_witness_receipt.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/remote_verification.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/rollback_detected_only_by_external_anchor.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/source_import_ledger.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/unkeyed_digest_forgery_counterexample.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/write_entrypoint_enumeration.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/writer_race_2.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/writer_race_3.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/evidence/writer_race_5.json",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/junit/c8o_new_court.xml",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/junit/original_272.xml",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/junit/out12_author_9.xml",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/junit/out13_hostile_23.xml",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/junit/out14_new_court.xml",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/junit/regression_272_under_out14.xml",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/junit/regression_out12_9_under_out14.xml",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/junit/regression_out13_23_under_out14.xml",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/severance/proof_integrity_gate_r1.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/tests/test_c8oi_independent_court.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/tests/test_c8oi_independent_court.py.proof.json"
+      ],
+      "code_paths": [
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/candidate/c8o_trusted_outbox.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/consumer/c8_readonly_consumer.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/c8o_court_support.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/c8o_worker.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/test_c8o_concurrency_court.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/test_c8o_consumer_severance.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/test_c8o_crash_custody.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/test_c8o_legacy_writer_bypass.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/test_c8o_rollback_and_capability.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/court/test_c8o_source_ledger.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/severance/proof_integrity_gate_r1.py",
+        "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/tests/test_c8oi_independent_court.py"
+      ],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "28191b44f13348c7e4b782ad08cd29a317cc2004",
+        "url": "https://github.com/maidiu/rawlsing/blob/f4200eb0938a1b74c8b738e0a344224edfb4d0eb/WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 128
+      },
+      "review_evidence": "# SOROK C8OI — independent writer-security, occurrence-custody and receiving-consumer court R1\n\n## Three-court verdict\n\n| Court | Verdict | Scope |\n|---|---|---|\n| **Engineering** | `ACCEPT_SCOPED` | Complete C8O implementation executes as claimed: 270/2 inherited, OUT12 9/9, OUT13 23/23, OUT14 27/27, C8O 62/62, OUT13-under-OUT14 22/1 defect-oracle closed. Writer races, SIGKILL boundaries, cold reopen and no-ghost all confirmed. |\n| **Scientific** | `ACCEPT_SCOPED` with precise limits | OS tests demonstrate process-death recovery, not power-loss durability. Unkeyed digests detect accidental corruption, not writer authentication. Format-only capability is not trust. Detection ≠ prevention. |\n| **Authority** | `HOLD` | D1 (old-writer exclusivity), D2 (external anchor / keyed capability), D3 (ADP019 admitted occurrence + C9 E2 performer) all remain unissued. Reviewer cannot sign these. |\n\n**Overall: `ACCEPT_SCOPED__ENGINEERING_AND_SCIENTIFIC__AUTHORITY_HELD__SECURITY_NOT_PROVED`.**\n\nRepository: private `maidiu/rawlsing`. Branch `agent/reviewer-sorok-20261019-c8oi-writer-authority-and-occurrence-independent-r1` at sealed startup `f68512d05a0d10c7711ca7149f2e12bf891eb6de`. Exact review target: C8O author `9784bc1dbae0c9ac13670d5e442ed9cabb6be7fe`. Writes only to `WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/`.\n\n## 1. Inherited suite reproduction\n\n| Suite | Expected | Independently reproduced | JUnit |\n|---|---|---|---|\n| Original 272 (OUT9-era union) | 270 PASS / 2 historical RED | **270 PASS / 2 historical RED** | `evidence/ind_original_272.xml` |\n| OUT12 author | 9/9 | **9/9** | `evidence/ind_out12_9.xml` |\n| OUT13 frozen hostile | 23/23 | **23/23** | `evidence/ind_out13_23.xml` |\n| OUT14 new court | 27/27 | **27/27** | `evidence/ind_out14_27.xml` |\n| C8O author court | 62/62 | **62/62** | `junit/c8o_new_court.xml` |\n| OUT13 under OUT14 repair | 22 PASS / 1 defect-oracle RED | **22 PASS / 1 RED** | `evidence/ind_out13_under_out14.xml` |\n\nBoth historical REDs preserved unmodified:\n- `test_rto_hostile.py::test_replay_manual_two_writers_can_lose_first_committed_event`\n- `test_sr_28_falsifier_court.py::test_s27_material_move_needs_world_owner`\n\nThe OUT13 HP8 divergence (`test_hp8_corrupting_writer_version_resets_to_zero_and_defeats_the_CAS`) is `HP8_DEFECT_ORACLE_CLOSED_BY_OUT14_REPAIR`, not a safety regression.\n\n## 2. Independent adversarial court (17 tests)\n\n### Engineering findings\n",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# SOROK C8OI — independent writer-security, occurrence-custody and receiving-consumer court R1"
+        },
+        {
+          "line": 3,
+          "text": "## Three-court verdict"
+        },
+        {
+          "line": 5,
+          "text": "| Court | Verdict | Scope |"
+        },
+        {
+          "line": 7,
+          "text": "| **Engineering** | `ACCEPT_SCOPED` | Complete C8O implementation executes as claimed: 270/2 inherited, OUT12 9/9, OUT13 23/23, OUT14 27/27, C8O 62/62, OUT13-under-OUT14 22/1 defect-oracle closed. Writer races, SIGKILL boundaries, cold reopen and no-ghost all confirmed. |"
+        },
+        {
+          "line": 8,
+          "text": "| **Scientific** | `ACCEPT_SCOPED` with precise limits | OS tests demonstrate process-death recovery, not power-loss durability. Unkeyed digests detect accidental corruption, not writer authentication. Format-only capability is not trust. Detection ≠ prevention. |"
+        },
+        {
+          "line": 9,
+          "text": "| **Authority** | `HOLD` | D1 (old-writer exclusivity), D2 (external anchor / keyed capability), D3 (ADP019 admitted occurrence + C9 E2 performer) all remain unissued. Reviewer cannot sign these. |"
+        },
+        {
+          "line": 11,
+          "text": "**Overall: `ACCEPT_SCOPED__ENGINEERING_AND_SCIENTIFIC__AUTHORITY_HELD__SECURITY_NOT_PROVED`.**"
+        },
+        {
+          "line": 13,
+          "text": "Repository: private `maidiu/rawlsing`. Branch `agent/reviewer-sorok-20261019-c8oi-writer-authority-and-occurrence-independent-r1` at sealed startup `f68512d05a0d10c7711ca7149f2e12bf891eb6de`. Exact review target: C8O author `9784bc1dbae0c9ac13670d5e442ed9cabb6be7fe`. Writes only to `WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/`."
+        },
+        {
+          "line": 17,
+          "text": "| Suite | Expected | Independently reproduced | JUnit |"
+        },
+        {
+          "line": 19,
+          "text": "| Original 272 (OUT9-era union) | 270 PASS / 2 historical RED | **270 PASS / 2 historical RED** | `evidence/ind_original_272.xml` |"
+        },
+        {
+          "line": 24,
+          "text": "| OUT13 under OUT14 repair | 22 PASS / 1 defect-oracle RED | **22 PASS / 1 RED** | `evidence/ind_out13_under_out14.xml` |"
+        },
+        {
+          "line": 26,
+          "text": "Both historical REDs preserved unmodified:"
+        },
+        {
+          "line": 32,
+          "text": "## 2. Independent adversarial court (17 tests)"
+        },
+        {
+          "line": 43,
+          "text": "| `test_cold_reopen_sees_only_committed_state` | Cold reopen in fresh process sees only committed state |"
+        },
+        {
+          "line": 63,
+          "text": "### Consumer findings"
+        },
+        {
+          "line": 67,
+          "text": "| `test_committed_receipt_reaches_consumer_with_readset` | Committed receipt reaches `C8ReadOnlyConsumer` with full readset (state_digest, version_state_digest, ledger_prefix_digest, writer_version, commit_receipt_id) |"
+        },
+        {
+          "line": 68,
+          "text": "| `test_consumer_is_strictly_read_only` | Consumer never mutates journal bytes |"
+        },
+        {
+          "line": 78,
+          "text": "- Byte-exact read-only consumer binding to committed state"
+        },
+        {
+          "line": 85,
+          "text": "- SIGKILL evidence demonstrates process-death recovery only. Power-loss durability (fdatasync/syncfs media barriers) is **not tested**. Exactly-once delivery is **not claimed**."
+        },
+        {
+          "line": 89,
+          "text": "## 4. Source-consumer severance (3 claims)"
+        },
+        {
+          "line": 93,
+          "text": "| `C8OI_CONSUMER_READSET_BINDS_COMMITTED_RECEIPT` | `state_digest` → `\"SEVERED\"` | `TARGET_ASSERTION_FAILED` |"
+        },
+        {
+          "line": 94,
+          "text": "| `C8OI_CONSUMER_READSET_BINDS_VERSION_STATE_DIGEST` | `version_state_digest` → `\"SEVERED\"` | `TARGET_ASSERTION_FAILED` |"
+        },
+        {
+          "line": 95,
+          "text": "| `C8OI_CONSUMER_READSET_BINDS_LEDGER_PREFIX_DIGEST` | `ledger_prefix_digest` → `\"SEVERED\"` | `TARGET_ASSERTION_FAILED` |"
+        },
+        {
+          "line": 104,
+          "text": "| **D2** | Independently trusted capability/key custody and monotonic external anchor | Key/anchor custodian | **UNISSUED** |"
+        },
+        {
+          "line": 105,
+          "text": "| **D3** | ADP019 admitted occurrence receipt and independent C9 E2 performer | ADP019/C9 actor owners | **UNISSUED** |"
+        },
+        {
+          "line": 111,
+          "text": "C8 now provides: durable versioned occurrence custody, acknowledged prefix integrity, writer/capability separation (format-only), effective clock provenance, byte-exact committed readset receipts and an executed read-only consumer binding."
+        },
+        {
+          "line": 113,
+          "text": "C8→C9 interface request: bind `C8_COMMITTED_OCCURRENCE_RECEIPT` into an ADP019 admission decision. C9 native positive remains held."
+        },
+        {
+          "line": 120,
+          "text": "2. **D2:** Commission independent key/anchor custodian to issue a monotonic external anchor and keyed capability issuer."
+        },
+        {
+          "line": 127,
+          "text": "**Final:** `ACCEPT_SCOPED__ENGINEERING_AND_SCIENTIFIC__AUTHORITY_HELD__SECURITY_NOT_PROVED__D1_D2_D3_UNISSUED`."
+        }
+      ],
+      "referenced_shas": [
+        "f68512d05a0d10c7711ca7149f2e12bf891eb6de",
+        "9784bc1dbae0c9ac13670d5e442ed9cabb6be7fe"
+      ],
+      "reported_disposition": null,
+      "code_inspection": {
+        "path": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/candidate/c8o_trusted_outbox.py",
+        "blob": "7d785d35be09ab2ca5877a89a7880c70f2fe488c",
+        "bytes": 25884,
+        "functions": [
+          "class StaleJournalConflict(Exception):",
+          "    def __init__(self, expected: int, actual: int, path) -> None:",
+          "class VersionStateUnreadable(ValueError):",
+          "    def __init__(self, path, reason: str) -> None:",
+          "class LegacyWriterBypassDetected(VersionStateUnreadable):",
+          "    def __init__(self, path, reason: str = \"LEGACY_UNVERSIONED_OVERWRITE\") -> None:",
+          "class LockTimeoutError(Exception):",
+          "    def __init__(self, path, timeout) -> None:",
+          "class AcknowledgedPrefixRewriteRefused(ValueError):",
+          "    def __init__(self, path) -> None:",
+          "class GhostReplayRefused(ValueError):",
+          "    def __init__(self, path, reason: str) -> None:",
+          "class WriterCapabilityRequired(TypeError):",
+          "    def __init__(self, path) -> None:",
+          "class CapabilityTrustAnchorUnissued(Exception):",
+          "    def __init__(self) -> None:",
+          "class TrustedAnchorUnissued(Exception):",
+          "    def __init__(self) -> None:",
+          "class AnchorRollbackDetected(Exception):",
+          "    def __init__(self, observed, current) -> None:",
+          "class TrustedTimeSourceUnissued(Exception):",
+          "    def __init__(self) -> None:",
+          "class WriterCapability:",
+          "    def fingerprint(self) -> str:",
+          "class UnkeyedFormatCapabilityVerifier:",
+          "    def __init__(self, min_token_length: int = 16) -> None:",
+          "    def present(self, capability: WriterCapability) -> bool:",
+          "    def verify_trust(self, capability: WriterCapability) -> str:",
+          "class FileBackedMonotonicAnchor:",
+          "    def observe(self, writer_version: int, receipt_id: str) -> str:",
+          "    def latest(self) -> Optional[list]:",
+          "    def check(self, writer_version: int, receipt_id: str) -> None:",
+          "    def _rows(self) -> list:",
+          "def os_clock() -> dict:",
+          "def trusted_clock_or_refuse() -> dict:",
+          "def ledger_prefix_digest(state: dict) -> str:",
+          "def sealed_envelope(state: dict, writer_version: int, writer_id: str, effective_clock: dict) -> dict:",
+          "class C8CommitReceipt:",
+          "    def to_json(self) -> dict:",
+          "class EnvelopeCustody:",
+          "class C8OccurrenceJournal:",
+          "    def __init__(",
+          "    def _acquire(self) -> int:",
+          "    def _release(fd: int) -> None:",
+          "    def classify(self) -> EnvelopeCustody:",
+          "    def _read_version(self) -> int:",
+          "    def recover(self):",
+          "    def recover_custody(self):",
+          "    def commit(",
+          "    def admit_and_queue(",
+          "    def anti_rollback_check(self, writer_version: int, receipt_id: str) -> str:",
+          "    def detect_legacy_bypass(self) -> Optional[dict]:",
+          "def _receipt_id(receipt: dict) -> str:",
+          "def forged_receipt(receipt: dict, **overrides) -> str:"
+        ],
+        "sample": "\"\"\"SOROK C8O — maximal lawful source-free C8 occurrence/journal trusted-write boundary.\n\nTEST_ONLY owner-custody candidate over the ACCEPTED OUT9 `outbox_prototype.Journal`\nsource (blob 331840768ce0b5f6f73e5e93094ca0d217ddaebf). The accepted source is not\nmodified, subclass-monkeypatched or replaced. This module adds a separate,\nexplicitly-selected custody discipline on top of it:\n\n1. INTERPROCESS TRANSACTION LOCK - exclusive `fcntl.flock` on `<journal>.lock`\n   held across version check, validation and publication.\n2. VERSIONED COMPARE-AND-APPEND - `writer_version` is sealed together with the\n   state, the acknowledged ledger prefix, the writer identity and the effective\n   clock into `version_state_digest`; a stale holder is refused with typed\n   `StaleJournalConflict`.\n3. VERSION-STATE CUSTODY - a nonexistent file is the ONLY valid genesis version\n   zero. Missing, malformed, injected, noncanonical or legacy-overwritten\n   envelopes are typed refusals, never silent version-zero coercion.\n4. ACKNOWLEDGED LEDGER PREFIX INTEGRITY - a replacement may extend but never\n   rewrite the acknowledged prefix of committed occurrences.\n5. TRUE WRITER CAPABILITY SEPARATION - commits require a `WriterCapability`\n   object. The capability fingerprint recorded in the receipt is an UNKEYED\n   hash. Without a separately trusted issuer/verifier it is NOT writer\n   authentication and NOT a signature; a court case exists to falsify any\n   such reading.\n6. EXTERNAL VERSION ANCHOR INTERFACE - rollback to an earlier byte-valid\n   receipt is undetectable by any recomputable unkeyed digest. Detect"
+      }
+    }
+  ]
+}
