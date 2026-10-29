@@ -1,0 +1,116 @@
+{
+  "schema": "PYAT_H02_F1_ACTUAL_PRODUCT_AND_CONSUMER_RECEIPT@1",
+  "verdict": "F1_RETENTION_TO_CURRENT_CONSUMER_POSITIVE__SOURCE_SCIENCE_HELD",
+  "source_free": true,
+  "raw_sav_opened": false,
+  "retained_input": {
+    "loader": "rawlsing_next.pre553_repo_native_current_payload.load_current_gt2_query_fact_from_committed_transport",
+    "transport": "fixed committed Worker-A repo transport manifest and exact-ref hash shards",
+    "source_family": "Afrobarometer",
+    "source_wave": "R5",
+    "conditioner": "Q86B",
+    "target": "Q86A",
+    "query_hash": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+    "fact_hash": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+    "replay_hash": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f",
+    "predicate_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+    "risk_set_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+    "risk_set_member_set_hash": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+    "raw_denominator_support": 19210,
+    "typed_state": "SUPPORTED",
+    "target_order": [
+      "question_impl.phase0.2fb3a62609dad4c1306d",
+      "question_impl.phase0.67f036c0efb7fb98ff4a"
+    ],
+    "measure_kind": "RAW",
+    "source_scope_mode": "SINGLE_UNIVERSE"
+  },
+  "distribution_product": {
+    "producer_callable": "rawlsing_next.field_forge_conditional_support.produce_exact_conditional_support_profile",
+    "family": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+    "typed_state": "SUPPORTED",
+    "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19",
+    "content_hash": "1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19",
+    "conditioner_rows": 6,
+    "targets_per_conditioner": 6,
+    "joint_cells": 36,
+    "zero_cells": 23,
+    "total_support": 19210,
+    "observed_cell_anchors": {
+      "0|0": 2112,
+      "0|1": 4493,
+      "1|0": 491,
+      "1|1": 11232,
+      "DK|1": 250,
+      "DK|DK": 334,
+      "MISSING|1": 9,
+      "MISSING|MISSING": 6
+    },
+    "information_loss": "NONE__REFERENCE_PRESERVING",
+    "semantic_grade": "EXACT_CONDITIONAL_SUPPORT_COUNT_PROFILE_WITHIN_SCOPE"
+  },
+  "first_consumer": {
+    "callable": "rawlsing_next.wave1_ff_prev3_relation_admission / gt12_c_to_d_relation_bridge admission path",
+    "direct_admission_callable": "rawlsing_next.gt12_c_to_d_relation_bridge.admit_gt12_c_relation",
+    "decision": "ADMITTED",
+    "admission_ref": {
+      "kind": "PREV3_FIELD_FORGE_RELATION_ADMISSION",
+      "object_id": "PREV3_FIELD_FORGE_RELATION_ADMISSION@1.0.0",
+      "content_hash": "a445e43da99405e0f8181f7ab6c428d9b0dd14fefc7fc5091f21f2d21f00b08d"
+    },
+    "target_use": "STRUCTURAL_MEDIATION_INPUT",
+    "downstream_contract": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0"
+  },
+  "downstream_consumer": {
+    "callable": "rawlsing_next.tests.gt12_e2b_actual_object_consumer_harness.run_current_r1c_e2b_actual_objects",
+    "m1_decision": "ELIGIBLE",
+    "m1_contract_id": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+    "m1_f1_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d",
+    "m1_b1_allowed_v555_structural_use": true,
+    "v558_entry_producer_family": "V554",
+    "v558_entry_semantic_class": "F1",
+    "v558_entry_allowed_uses": [
+      "CONTEXT"
+    ],
+    "v558_entry_source_stage": "M1_RELATION_V554_TO_V557",
+    "v558_resolution_state": "RESOLUTION_COMPLETE",
+    "v3_outcome": "DENY_ZERO_EFFECT",
+    "v3_zero_effect": true,
+    "v555_consumer": null,
+    "v555_reason": "V555 relation route is not authorized; M2 accepts only the empirical M1 contract and the adopted ADP-002 first tranche excludes SIG-004. No relabel or bypass is claimed."
+  },
+  "replay": {
+    "equal_relation_content_hash": true,
+    "equal_admission_ref": true,
+    "equal_m1_f1_id": true,
+    "equal_v558_resolution": true,
+    "method": "two independent calls to run_current_r1c_e2b_actual_objects on the same retained query/fact"
+  },
+  "source_authority": {
+    "grade": "RETAINED_COMMITTED_TRANSPORT_ONLY__SOURCE_SCIENCE_HELD",
+    "original_source_qualification": null,
+    "original_source_qualification_reason": "No original survey execution, raw SAV read, respondent reopening, source-native qualification or new semantic issuance was performed. The loader takes no path argument and the committed transport records source_rows=false.",
+    "structural_authority": "CONTEXT_ONLY__V554_V557_V558_ADOPTED_CURRENT_BINDING",
+    "actor_or_person_authority": null,
+    "actor_or_person_authority_reason": "V3 outcome is DENY_ZERO_EFFECT; no actor or person state is created."
+  },
+  "analytical_f1_retained_consumer": null,
+  "analytical_f1_retained_consumer_reason": "The N10E analytical provider and positioned-subject consumer exist and pass synthetic AT07 tests (54/60 forward, 54/62 reverse), but no lawful retained GT2 binding to that analytical consumer was found. The positive above is the retained structural V554 lane, not a general analytical F1 owner.",
+  "dependency_identity": {
+    "query": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+    "fact": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+    "replay": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f",
+    "predicate": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+    "risk_set": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+    "relation": "1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19",
+    "admission": "a445e43da99405e0f8181f7ab6c428d9b0dd14fefc7fc5091f21f2d21f00b08d",
+    "v554_f1": "3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d"
+  },
+  "limits": [
+    "Retained-object execution only; original-source scientific qualification remains UNKNOWN/HELD.",
+    "The 19,210-row risk set and 36-cell joint product come from the fixed committed transport; no raw respondent values were read.",
+    "No causality, temporal direction, mechanism, mediation strength, portability, actor, person or production claim is made.",
+    "V555 relation route remains an authority/contract gap; no contract-ID relabel is presented as repair.",
+    "The general analytical distribution possibility lane is not proved on retained input; it remains a function-card item."
+  ]
+}

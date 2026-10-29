@@ -1,0 +1,81 @@
+{
+  "downstream": {
+    "admission_decision": "ADMITTED",
+    "admission_downstream_contract": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+    "admission_ref": {
+      "content_hash": "a445e43da99405e0f8181f7ab6c428d9b0dd14fefc7fc5091f21f2d21f00b08d",
+      "kind": "PREV3_FIELD_FORGE_RELATION_ADMISSION",
+      "object_id": "PREV3_FIELD_FORGE_RELATION_ADMISSION@1.0.0"
+    },
+    "admission_target_use": "STRUCTURAL_MEDIATION_INPUT",
+    "callable": "rawlsing_next.tests.gt12_e2b_actual_object_consumer_harness.run_current_r1c_e2b_actual_objects",
+    "m1_b1_allowed_v555": true,
+    "m1_contract_id": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+    "m1_decision": "ELIGIBLE",
+    "m1_f1_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d",
+    "v3_outcome": "DENY_ZERO_EFFECT",
+    "v3_zero_effect": true,
+    "v558_entry_allowed_uses": [
+      "CONTEXT"
+    ],
+    "v558_entry_producer_family": "V554",
+    "v558_entry_semantic_class": "F1",
+    "v558_entry_source_stage": "M1_RELATION_V554_TO_V557",
+    "v558_resolution_state": "RESOLUTION_COMPLETE"
+  },
+  "first_consumer": {
+    "anchors": {
+      "0|0": 2112,
+      "0|1": 4493,
+      "1|0": 491,
+      "1|1": 11232,
+      "DK|1": 250,
+      "DK|DK": 334,
+      "MISSING|1": 9,
+      "MISSING|MISSING": 6
+    },
+    "callable": "rawlsing_next.field_forge_conditional_support.produce_exact_conditional_support_profile",
+    "conditioner_rows": 6,
+    "content_hash": "1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19",
+    "family": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+    "joint_cells": 36,
+    "ref": {
+      "content_hash": "1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19",
+      "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+      "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19"
+    },
+    "targets_per_conditioner": 6,
+    "total_support": 19210,
+    "typed_state": "SUPPORTED",
+    "zero_cells": 23
+  },
+  "replay": {
+    "equal_admission_ref": true,
+    "equal_m1_f1_id": true,
+    "equal_relation_content_hash": true,
+    "equal_v558_resolution": true
+  },
+  "retained_input": {
+    "fact_hash": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+    "loader": "rawlsing_next.pre553_repo_native_current_payload.load_current_gt2_query_fact_from_committed_transport",
+    "measure_kind": "RAW",
+    "predicate_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+    "query_hash": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+    "raw_denominator_support": 19210,
+    "replay_hash": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f",
+    "risk_set_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+    "risk_set_member_set_hash": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+    "source_scope_mode": "SINGLE_UNIVERSE",
+    "target_order": [
+      "question_impl.phase0.2fb3a62609dad4c1306d",
+      "question_impl.phase0.67f036c0efb7fb98ff4a"
+    ],
+    "typed_state": "SUPPORTED"
+  },
+  "scope": {
+    "raw_sav_opened": false,
+    "source_free": true,
+    "source_qualification": "RETAINED_OBJECT_ONLY__NO_ORIGINAL_SOURCE_QUALIFICATION",
+    "structural_use": "CONTEXT_ONLY__V555_RELATION_ROUTE_NOT_AUTHORIZED"
+  }
+}
