@@ -1,0 +1,94 @@
+name: Sorok B3A Accepted-Scope SQLite Repair Recovery (TEST_ONLY)
+
+on:
+  pull_request:
+    paths:
+      - 'WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/**'
+      - '.github/workflows/sorok-b3a-scoped-repair-sourcefree.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recovered-source-and-hostile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout isolated PRE-MAIN-based staged B3A source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Checkout exact independently reviewed B3A source closure
+        uses: actions/checkout@v4
+        with:
+          ref: 16f15a125ba54cdf17f5d41be2d851bbcd2240d7
+          path: .source-closure/b3a-original
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install bounded test-only dependency
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Verify all recovered B3A source and frozen test files exact
+        env:
+          B3A_ORIGIN_SOURCE_ROOT: ${{ github.workspace }}/.source-closure/b3a-original/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1
+        run: |
+          python WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/verify_recovered_source.py
+      - name: Inspect and safely reconstruct pinned sourcefree B2/M2/F2 runtime closure
+        env:
+          B3A_ORIGIN_SOURCE_ROOT: ${{ github.workspace }}/.source-closure/b3a-original/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1
+        run: |
+          python - <<'PY'
+          import os, pathlib, tarfile
+          root = pathlib.Path("WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1")
+          archive = pathlib.Path(os.environ["B3A_ORIGIN_SOURCE_ROOT"])/"pinned_closure.tar.gz"
+          target = root/"candidate/.runtime"
+          allowed = {"b2","m2","f2","tests_after","repair","m3","e3","s2","i2",
+                     "original_b2","governance","m1_original","i2_strict"}
+          count = 0
+          with tarfile.open(archive,"r:gz") as tar:
+              members=tar.getmembers()
+              print("ARCHIVE_MEMBERS",len(members),"SAMPLE",[x.name for x in members[:22]])
+              for m in members:
+                  if m.issym() or m.islnk(): raise RuntimeError("ARCHIVE_LINK_FORBIDDEN")
+                  if not m.isfile(): continue
+                  parts=list(pathlib.PurePosixPath(m.name).parts)
+                  if ".runtime" in parts:
+                      parts=parts[parts.index(".runtime")+1:]
+                  elif parts and parts[0]=="candidate":
+                      parts=parts[1:]
+                  if not parts or parts[0] not in allowed or ".." in parts:
+                      raise RuntimeError("ARCHIVE_LAYOUT_NOT_PINNED:"+m.name)
+                  out=target.joinpath(*parts)
+                  if not out.resolve().is_relative_to(target.resolve()):
+                      raise RuntimeError("ARCHIVE_ESCAPE")
+                  out.parent.mkdir(parents=True,exist_ok=True)
+                  data=tar.extractfile(m).read()
+                  if out.is_file() and out.read_bytes()!=data:
+                      raise RuntimeError("PINNED_CLOSURE_COLLISION:"+str(out))
+                  out.write_bytes(data);count+=1
+          print("CLOSURE_FILES",count)
+          if count<60 or not (target/"b2/bridge.py").is_file():
+              raise RuntimeError("B3A_SOURCE_CLOSURE_INCOMPLETE")
+          PY
+      - name: Execute original frozen B3AS hostiles + author repair controls without rewriting source
+        run: |
+          cd WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1
+          python run_repair.py --targeted
+          python - <<'PY'
+          import pathlib, xml.etree.ElementTree as ET
+          path=pathlib.Path("evidence/schema_repair.xml")
+          if not path.is_file(): raise SystemExit("B3A_SCOPED_JUNIT_ABSENT")
+          tree=ET.parse(path).getroot()
+          suites=[tree] if tree.tag=="testsuite" else list(tree.iter("testsuite"))
+          results={k:sum(int(x.get(k,"0")) for x in suites)
+                   for k in ("tests","failures","errors","skipped")}
+          print("B3A_SCOPED_COURT",results)
+          if results!={"tests":33,"failures":0,"errors":0,"skipped":0}:
+              raise SystemExit("B3A_FROZEN_REPAIR_REPLAY_NOT_33_PASS")
+          PY
+
+# This staged core source needs separately pinned binary source closure for
+# execution and is not independently deployable or native. A scoped green
+# result is not F1/M2 psyche acceptance or PRE-MAIN owner adoption.
