@@ -1,0 +1,650 @@
+{
+  "schema": "SOROK_D_SHARD_RECON_V1",
+  "rows": [
+    {
+      "index": 40,
+      "name": "codex/sorok-language-consumer-r3",
+      "pinned_sha": "8d2920da951f98cd8246d7c34cac777928e0c732",
+      "current_sha_or_null": "8d2920da951f98cd8246d7c34cac777928e0c732",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": null,
+        "merge_base": null,
+        "ahead": null,
+        "behind": null,
+        "files_returned": null,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "LANGUAGE_MEDIATION_R1/language_mediation/index.py",
+          "blob_sha": "979cae35af0fe2d7c79bcc14b9a815d31838c687",
+          "lines": 334,
+          "kind": "code",
+          "symbols": [
+            "LanguageRefusal",
+            "event_hash_valid",
+            "_episodes",
+            "_receipts",
+            "_validate_source",
+            "_accessible",
+            "build_index",
+            "persist_index_cache",
+            "invalidate_index"
+          ],
+          "opening": "\"\"\"Derived actor+branch language-relation index over the real C12 store.\n\nThe index contains references and hashes only.  It never copies psychological\nstate, remembers for the actor, or turns an encounter into competence.  Every\nrelation must name an exact world SPEECH event, an explicit access receipt and\na real perception row on the same branch.  A bad hash or foreign branch is a\nhard refusal; missing/revoked access invalidates only that relation before any\nactor wording claim is admitted.\n\"\"\"\nfrom __future__ import annotations\n\nfrom . import bootstrap\n\nbootstrap.install()\n\nfrom bp1.canon import digest  # noqa: E402",
+          "key_lines": [
+            {
+              "line": 22,
+              "text": "GRADE = \"TEST_ONLY_DERIVED_LANGUAGE_CACHE_NOT_PSYCHOLOGY\""
+            },
+            {
+              "line": 39,
+              "text": "stored = event.get(\"hash\")"
+            },
+            {
+              "line": 40,
+              "text": "if not stored:"
+            },
+            {
+              "line": 43,
+              "text": "return digest(body) == stored"
+            },
+            {
+              "line": 62,
+              "text": "\"status\": \"GRANTED\","
+            },
+            {
+              "line": 68,
+              "text": "receipts[receipt_id][\"status\"] = \"REVOKED\""
+            },
+            {
+              "line": 71,
+              "text": "elif kind == \"LANGUAGE_ACCESS_RESTORED\":"
+            },
+            {
+              "line": 74,
+              "text": "receipts[receipt_id][\"status\"] = \"GRANTED\""
+            },
+            {
+              "line": 110,
+              "text": "and receipt.get(\"status\") == \"GRANTED\""
+            },
+            {
+              "line": 133,
+              "text": "declared_branch = body.get(\"branch_id\", \"\")"
+            },
+            {
+              "line": 134,
+              "text": "if declared_branch != branch_id:"
+            },
+            {
+              "line": 136,
+              "text": "f\"{encounter_id}:{declared_branch}\")"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [],
+      "code_path_count_in_partial_comparison": 0,
+      "return_receipt_candidates": [],
+      "source_read_ok": true,
+      "errors": [
+        "COMPARE:NOT_FOUND: Error code: NOT_FOUND; Error: GitHub API error 404: {\"message\":\"No common ancestor between 299f41e97a43c67be9cc76a79fa49b48f4e12e54 and 8d2920da951f98cd8246d7c34cac777928e0c732.\",\"documentation_url\":\"https://docs.github.com/rest/commits/commits#compare-two-commits\",\"status\":\"404\"}"
+      ],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 41,
+      "name": "codex/sorok-parallel-flight-20261022",
+      "pinned_sha": "3c5434a9a88122631ad7ca202fdf3e0003849d06",
+      "current_sha_or_null": "3c5434a9a88122631ad7ca202fdf3e0003849d06",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+        "ahead": 128,
+        "behind": 4925,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/USER_DIRECTED_ARCHITECTURE/20261026_EXISTING_V3_MACHINE_RECOVERY_AND_ADAPTATION_DISPOSITION_R1.md",
+          "blob_sha": "42fd51f3902c88589d9da7f2a7b005ab654bbbd3",
+          "lines": 40,
+          "kind": "document",
+          "symbols": [],
+          "opening": "# Existing V3 machine: recover and adapt the established organism\n\nDate2026-10-26. Direct user instruction: the developed V3 machine and its later reconciliation should already be in Sorok's GitHub control-room domain; recover and strip-mine/rework it against current priorities before proposing a fresh machine specification. Decision: **REUSE_EXISTING_SPECIFICATION_AND_CODE__TARGETED_ADAPTATION_REQUIRED**. This corrects HQ's overly broad suggestion that the interconnected person and its developmental machinery must first be delineated anew. Neither complete native implementation nor every concrete scientific rule is asserted.\n\n## Existing source and exact identity\n\n1. Original executable V3 source, supplied by Matthew: /Users/matthewsmith/Desktop/Rawlsing/Rawlsing_code_bundle_staging. TD-R05 selected-file identities are already banked in WORKER_COMMISSIONS/SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1/01_SOURCE_IDENTITIES.json. In this intake five directly inspected core files were freshly hashed and match exactly: psyche/flow.py, engine/yearly_step.py, engine/run_llm_band.py, systems/topology.py and FLOW_AND_WIRING.md. No archive-wide rehash or original-data execution is claimed.\n2. TD-R05 architecture/recovery result at49219b5ecee509ebff351e8a61b7743cfbdb6a20, RESULT.md blobdfcc7e4fc7b6e907218d7a368ceb9d269a49206d: prior actor state, pressure/history, developmental middle state, rupture/metabolization, scheduler and pass1/compute/pass2 recovery. It explicitly records preservation/adaptation rather than generic missing machine.\n3. Unified V3/PFF person-event metabolism reconciliation atf4a61361ae9da371a0319594c297fbf93f0326ad, 03_UNIFIED_V3_PFF_PERSON_EVENT_METABOLISM_RECONCILIATION_R1.md blob329d9f628740a8e9d9af1ef8c24fcd589b476c4f. Already banked full source identity in continuation37/SOURCE_IDENTITIES.json. Its actor/event/owner crosswalk and one-person constitution are reusable; no second PFF psyche.\n4. Later control-room inheritance/science court at9fece7a9f532603687235e6a645b2a0fc2309502, 20261024_V3_PFF_SDTF_PERSON_DEVELOPMENT_INHERITANCE_AND_SCIENCE_",
+          "key_lines": [
+            {
+              "line": 8,
+              "text": "2. TD-R05 architecture/recovery result at49219b5ecee509ebff351e8a61b7743cfbdb6a20, RESULT.md blobdfcc7e4fc7b6e907218d7a368ceb9d269a49206d: prior actor state, pressure/history, developmental middle state, rupture/metabolization, scheduler an"
+            },
+            {
+              "line": 16,
+              "text": "| Required function | Existing actual mechanism | Preserve / adapt / reject |"
+            },
+            {
+              "line": 18,
+              "text": "| Person organization | v3/core/state.py BackboneState; core/derived.py compute_all_derived; TD-R05/CAN010/011/ADP015/016/017 destination owners | Preserve interdependent actor and stored-versus-derived distinction; map into current owners."
+            },
+            {
+              "line": 24,
+              "text": "| Time and developmental stages | engine/yearly_step.py executes configured steps and re-derives; post-year run_pressure_flow_cycle; expectation/striving/rupture schedules | Preserve ordering/dependency and time-context capabilities. Adapt "
+            },
+            {
+              "line": 25,
+              "text": "| LLM event interface | engine/llm_contract.py state_summary_from_backbone/build_render_packet; engine/run_llm_band.py propose/select/compute/render | Reuse structured contracts and render separation. Original runner selects then merge_delt"
+            },
+            {
+              "line": 31,
+              "text": "The inherited machine, detailed architecture and subsequent reconciliation EXIST. There is no justified blank-sheet psychology/specification commission. The user is not being asked to redesign those foundations or select HQ's A/B learning d"
+            },
+            {
+              "line": 33,
+              "text": "S50's limited diagnostic extraction did not transplant the whole recovered computational core. Its five tests do not establish that the current ongoing-person runtime already executes the inter-pressure/history/development loop. The existin"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/28_S40_GENERATED_NATIVE_SPEECH_ACCEPTED/initial-review/oracles/s40_e1_plan_binding.py",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/32_S41_CONTINUING_EVENTS_ACCEPTED/review/S41/evidence/repro_bad_history_reader.py",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/32_S41_CONTINUING_EVENTS_ACCEPTED/review/S41_CLOSURE/evidence/repro_generation_readset.py",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/32_S41_CONTINUING_EVENTS_ACCEPTED/review/S41_FINAL_CLOSURE/evidence/repro_generation_input_source.py",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/33_S42_ONGOING_EVENTS_ACCEPTED/review/S42/evidence/repro_predecessor_binding.py",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/34_S43_HISTORICAL_LANGUAGE_ACCEPTED/review/S43/evidence/repro_s40_first_reader.py",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/34_S43_HISTORICAL_LANGUAGE_ACCEPTED/review/S43/evidence/repro_wrong_access_boundary.py",
+        "WORKER_COMMISSIONS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/04_REVIEW36_REVISE/independent-review/evidence/repro_adp020_contract.py",
+        "WORKER_COMMISSIONS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/03_REVIEW39_REVISE/independent-review/evidence/repro_encounter_tamper.py",
+        "WORKER_COMMISSIONS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/05_REVIEW40_NARROW_REVISE/independent-closure/evidence/repro_resealed_semantic_mismatch.py"
+      ],
+      "code_path_count_in_partial_comparison": 10,
+      "return_receipt_candidates": [
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/22_LANGUAGE_ACCEPTED_M35_REVISE_S35_RETURN/language-review/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/23_M35_SOURCE_BINDING_ACCEPTED/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/24_S36_SCENE_BINDING_ACCEPTED/independent-review/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/25_S37_INTEGRATED_CONSUMER_ACCEPTED/independent-review/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/27_S39_GENERATED_RESPONSE_ACCEPTED/independent-review/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/28_S40_GENERATED_NATIVE_SPEECH_ACCEPTED/closure-review/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/28_S40_GENERATED_NATIVE_SPEECH_ACCEPTED/initial-review/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/32_S41_CONTINUING_EVENTS_ACCEPTED/review/S41/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/32_S41_CONTINUING_EVENTS_ACCEPTED/review/S41_CLOSURE/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/32_S41_CONTINUING_EVENTS_ACCEPTED/review/S41_FINAL_CLOSURE/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/32_S41_CONTINUING_EVENTS_ACCEPTED/review/S41_INPUT_CLOSURE/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/33_S42_ONGOING_EVENTS_ACCEPTED/review/S42/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/33_S42_ONGOING_EVENTS_ACCEPTED/review/S42_CLOSURE/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/34_S43_HISTORICAL_LANGUAGE_ACCEPTED/review/S43/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/36_S44_SAMPLED_ROOT_ACCEPTED/independent-closure/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/48_DEVELOPMENTAL_CRITICAL_PATH/HQ_SCIENTIFIC_DISPOSITION.md",
+        "WORKER_COMMISSIONS/SOROK-20261024-S38-A-T-GENERATION-SCIENTIFIC-COURT-R1/inputs/S35_00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/04_REVIEW36_REVISE/independent-review/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/03_REVIEW39_REVISE/independent-review/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/05_REVIEW40_NARROW_REVISE/independent-closure/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 42,
+      "name": "codex/sorok-rule-a-t-inquiry-20261023",
+      "pinned_sha": "430cde9ddd075386979e6cc5b4e3812966c7c1b6",
+      "current_sha_or_null": "430cde9ddd075386979e6cc5b4e3812966c7c1b6",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+        "ahead": 22,
+        "behind": 4925,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "SOROK_SCIENCE_INQUIRIES/RULE_A_T_R1/THE_INQUIRY.md",
+          "blob_sha": "3da745df4a1821712541966e8b8f178e9ed4da29",
+          "lines": 79,
+          "kind": "document",
+          "symbols": [],
+          "opening": "# The substantive inquiry\n\n## 1. Why this matters to the product\n\nSorok aims to generate a historically constituted, independently continuing person and an encounter with that person. A replayable biography and lawful event ledger are necessary engineering ingredients; they do not by themselves establish the causal process by which a particular person develops. The question is what can warrant the transitions, while preserving ordinary life, agency, material constraints, relationships, contradiction and uncertainty.\n\nA chosen rule can produce qualitatively different lives: an event may merely alter objective options, enter a person's current understanding, recruit an existing concern, occasion action or refusal, or contribute to a lasting change. The implementation must not quietly choose among those meanings.\n\n## 2. The current worked mechanism\n\nA lacks access to a tool needed for an inspection. Independently acting B shares it, withholds it, or is absent. A may encounter the change and may separately perform the inspection or pursue something else. Later A faces another opportunity, perhaps alone or in a changed context.\n\nKeep separate:\n\n1. World resources and actual B transfer/refusal.\n2. A's objective opportunity and admitted event occurrence.",
+          "key_lines": [
+            {
+              "line": 5,
+              "text": "Sorok aims to generate a historically constituted, independently continuing person and an encounter with that person. A replayable biography and lawful event ledger are necessary engineering ingredients; they do not by themselves establish "
+            },
+            {
+              "line": 11,
+              "text": "A lacks access to a tool needed for an inspection. Independently acting B shares it, withholds it, or is absent. A may encounter the change and may separately perform the inspection or pursue something else. Later A faces another opportunit"
+            },
+            {
+              "line": 29,
+              "text": "A concrete Rule A would need to state which event/history/context evidence is admitted; what is evaluated; how different persons or histories can produce different results; what is unknown; valid-empty/no-effect/refusal behavior; and proven"
+            },
+            {
+              "line": 39,
+              "text": "The inspected R29M proposal leaves actor uptake UNKNOWN/valid-empty when unsupported. That is a current evidence disposition, not an eternal ontology requiring all generated people to remain psychologically empty."
+            },
+            {
+              "line": 43,
+              "text": "CAN011's canonical registry preserves distinct mediators, tensions and enacted practices. The worked proposed target is V3MS_PRACTICE c9p:coordinated_material_inspection. Current proposal: NO_CHANGE, grant=null."
+            },
+            {
+              "line": 45,
+              "text": "A concrete T must explain the specific transition: acquisition, revision, persistence, dormancy or another precisely owned operation. It must bind exact prior state, enacted history and causal parents, target identity, warranted predicate/m"
+            },
+            {
+              "line": 51,
+              "text": "- How can contrary projects or contradictory histories coexist without forcing one dominant disposition?"
+            },
+            {
+              "line": 53,
+              "text": "- Could a defensible narrower rule be issued now, or is NO_CHANGE required until a specified evidential contrast is supplied?"
+            },
+            {
+              "line": 59,
+              "text": "| Rival | What it predicts | Discriminating evidence / limit |"
+            },
+            {
+              "line": 63,
+              "text": "| H2 B changes material feasibility only | Tools/options change, while uptake and lasting practice may not | Hold A and world conditions fixed while varying actual B transfer; supports material causality, not psychological acquisition |"
+            },
+            {
+              "line": 78,
+              "text": "The packet's sourcefree tests are historical reports, not reruns. No native actor/world/person generation, original empirical source access or human A5 occurred in preparing this branch."
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/bootstrap.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/cli.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/expression.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/session.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/tests/conftest.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/tests/test_r31e_expression.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/tools/collect_meta.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/tools/run_evidence.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/tools/source_manifest.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/bootstrap.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/cli.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/faults.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/first_session.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/phenomenal.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/tests/conftest.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/tests/test_r30a_first_session.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/assertion.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/bootstrap.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/c12_verify.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/cli.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/envelope.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/product.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/reunion.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/seed.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/severance.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/historical_actor_producer.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/native_ports.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/stable_actor_binding.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/binding.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/bootstrap.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/ports.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/producer.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/scientific.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/severance.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/conftest.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/test_joined_alternatives.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/test_joined_positive.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/test_joined_security.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/test_joined_severance.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/test_native_ports.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tools/cold_probe.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tools/run_courts.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tools/stage_sources.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/c9_bridge.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/canon.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/composer.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/ledger.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/source.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp3/c8_exclusive_writer.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp3/c9_event_ingress.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp3/vendor/c8_readonly_consumer.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp3/vendor/c8o_trusted_outbox.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp3/vendor/outbox_prototype.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/transaction.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/g18/lab_sgi1/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/g18/lab_sgi1/core.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/g18/lab_sgi1/history.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/g18/lab_sgi1/joint.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/g18/lab_sgi1/proposal.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/native/rawlsing_next/v3_psepf_zero_positive_guard.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/bp4/__init__.py"
+      ],
+      "code_path_count_in_partial_comparison": 166,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 43,
+      "name": "codex/sorok-s37-integrated-source-response-language",
+      "pinned_sha": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+      "current_sha_or_null": "e1f3c1daef6e37fb93ddc04f25f2b8fffa6943f9",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "91ccd3ca29978c87555056f336e37348fcee2945",
+        "ahead": 802,
+        "behind": 1921,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/s37/reader.py",
+          "blob_sha": "8bbd8a93ee69def9e78ab343f007f58eb10dfcc4",
+          "lines": 234,
+          "kind": "code",
+          "symbols": [
+            "S37ReadRefusal",
+            "__init__",
+            "_loads",
+            "_validate_s35_consistency",
+            "_read_rows",
+            "read_committed_s36"
+          ],
+          "opening": "\"\"\"Read the actual committed S36 response/receipt from the persistent C9 DB.\n\nThe reader is shared by both lawful source histories. It does not return the\nC12 episode or sidecar summary as the primary result: it opens the committed C9\nSQLite database read-only, reads the exact response and receipt rows, validates\ntheir sealed hashes, and only then cross-checks the C12/session bindings.\n\"\"\"\nfrom __future__ import annotations\n\nimport json\nimport sqlite3\nfrom pathlib import Path\nfrom typing import Any, Mapping\n\nfrom .bootstrap import install\n",
+          "key_lines": [
+            {
+              "line": 3,
+              "text": "The reader is shared by both lawful source histories. It does not return the"
+            },
+            {
+              "line": 4,
+              "text": "C12 episode or sidecar summary as the primary result: it opens the committed C9"
+            },
+            {
+              "line": 30,
+              "text": "_OUTCOME_STATUS_ROUTE = {"
+            },
+            {
+              "line": 58,
+              "text": "is that sealed hash. A tampered body may be re-sealed with its own new hash;"
+            },
+            {
+              "line": 86,
+              "text": "expected = _OUTCOME_STATUS_ROUTE.get(outcome)"
+            },
+            {
+              "line": 89,
+              "text": "status, route = expected"
+            },
+            {
+              "line": 94,
+              "text": "if response.get(\"status\") != status:"
+            },
+            {
+              "line": 95,
+              "text": "raise S37ReadRefusal(\"C9_RESPONSE_STATUS_OUTCOME_MISMATCH\")"
+            },
+            {
+              "line": 156,
+              "text": "if receipt.get(\"target_branch\") != \"NO_CHANGE\":"
+            },
+            {
+              "line": 157,
+              "text": "raise S37ReadRefusal(\"C9_TARGET_NOT_NO_CHANGE\")"
+            },
+            {
+              "line": 204,
+              "text": "\"grade\": \"TEST_ONLY_SOURCEFREE_NOT_NATIVE\","
+            },
+            {
+              "line": 205,
+              "text": "\"status\": \"OK\","
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/transaction.py"
+      ],
+      "code_path_count_in_partial_comparison": 14,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 44,
+      "name": "codex/sorok-s38-a-t-generation-court",
+      "pinned_sha": "2d34e1310e51a5a4ff248baa4eb7f9e938d6880e",
+      "current_sha_or_null": "2d34e1310e51a5a4ff248baa4eb7f9e938d6880e",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+        "ahead": 35,
+        "behind": 4925,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_COMMISSIONS/SOROK-20261024-S38-A-T-GENERATION-SCIENTIFIC-COURT-R1/inputs/S35_00_RETURN.md",
+          "blob_sha": "e9da3a82e8cc14ffbc93ae5e1f47c1faf4313fb0",
+          "lines": 73,
+          "kind": "document",
+          "symbols": [],
+          "opening": "# SOROK S35 — Scientific CAN008 A / independent CAN011 T positive producer return\n\n**SCIENTIFIC RESULT:** `ACCEPT_SCOPED_WITNESSED_CURRENT_OBJECT_ORIENTATION_A_CANDIDATE__CAN011_PRACTICE_T_NO_CHANGE__ACQUISITION_H0_NOT_EXCLUDED__ORIGINAL_RULE_ISSUANCE_HELD`.\n\n**Actual new deliverable:** A versioned, scientific-source-graded, finite-rule `S35_SITUATED_COUPLING_AND_CONTEXTUAL_PRACTICE_RESOURCE_CANDIDATE@1`, including an operational positive immediate A predicate, negative/unknown/contradictory cases, separate T=NO_CHANGE, actual typed C9R consumer mapping, current code gap, six precise test vectors and independent science falsifiers. **It is not a native rule, issued grant, implemented override of C9R, or new code engine.** The S0 commission expressly authorizes documentary resource construction, not Python coding, sibling M35 edits, provider/subagent dispatch or real original-world data execution.\n\n## Seal, independent worker identity and inherited decisions\n\n- PRIVATE repository: `maidiu/rawlsing`.\n- Role: fresh I3 independent scientific producer, not HQ, DEV-R author, CAN008 or CAN011 native issuer, ADP actor or C8/Pyat owner, M35 engineer, C11 adopter or human study authority.\n- Exact sealed branch startup: `865b5b01e1a27e99020cf2bb389af8cd4c874b57`; branch `agent/scientist-sorok-20261024-s35-a-t-mechanism-resource-r1` initially fetched and verified at that exact SHA with no S35 prior return; no local active process state claimed from Git.\n- Complete commission exact Git blob `db8fa5741d3fbc14cb7d16093c5173f5ab3bbfc6` at `WORKER_COMMISSIONS/SOROK-20261024-S35-SCIENTIFIC-A-T-POSITIVE-PRODUCER-R1/00_COMMISSION.md`.\n- Scope exclusively `WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/**`.\n- Read controlling Sorok 08/00E and R35 canonical progress (Sorok revision 35), actual user-appointed bounded Browser HQ R3 receipt `28e4a576abea5933b34bb6933612d8f5175580d3`; science and original authority separate. Pyat R89 R03V / original N11/N12 are different owner's flight, not touched by S35.\n- **DEV-R** original worker `cea01931d3df1b0dd38e50f5d7288cd2b5658a30`, ",
+          "key_lines": [
+            {
+              "line": 3,
+              "text": "**SCIENTIFIC RESULT:** `ACCEPT_SCOPED_WITNESSED_CURRENT_OBJECT_ORIENTATION_A_CANDIDATE__CAN011_PRACTICE_T_NO_CHANGE__ACQUISITION_H0_NOT_EXCLUDED__ORIGINAL_RULE_ISSUANCE_HELD`."
+            },
+            {
+              "line": 5,
+              "text": "**Actual new deliverable:** A versioned, scientific-source-graded, finite-rule `S35_SITUATED_COUPLING_AND_CONTEXTUAL_PRACTICE_RESOURCE_CANDIDATE@1`, including an operational positive immediate A predicate, negative/unknown/contradictory cas"
+            },
+            {
+              "line": 17,
+              "text": "- Actual sourcefree **R31J** `64fec28c374d8f77fb0b412d0c934d798ede03e8` 00_RETURN Git blob `b65f28098d4eea4beaaeceb7c6d7c22c034d0afc`: independent B pre-C8 share/refusal affects available material, C9 NO_CHANGE/no target on refusal, A E2/om"
+            },
+            {
+              "line": 21,
+              "text": "| FINDING | INTERPRETATION, competing alternative and limit | HQ ACTION | COMPETENT OWNER + required next proof |"
+            },
+            {
+              "line": 25,
+              "text": "| **F3 — Existing C9R does NOT yet implement S35 A predicates.** Actual `response_rules.evaluate_response` receives material/offer/enacted refs, **not actor access or independently performed immediate response**, creates `declared_uptake` f"
+            },
+            {
+              "line": 26,
+              "text": "| **F4 — Acquired practice specifically lacks identified generalization.** Kohn/Schooler's 1964→1974 longitudinal program supports job-condition effects on orientations but also selection dynamics; Leontiev and Lahire specify plausible situ"
+            },
+            {
+              "line": 27,
+              "text": "| **F5 — C9R already supports honest absence of a target.** `target_rules.evaluate_target(...proposal=None...)` returns `NO_CHANGE/NO_PROPOSAL`; `PipelineResult` has independent `response`, `decision`, target commit, later target read and s"
+            },
+            {
+              "line": 34,
+              "text": "**Positive:** P1 actor-local E1 admission + admitted, time-ordered A-own performed `REQUEST_TOOL` gives one `OBSERVED_IMMEDIATE_OBJECT_ORIENTATION` **candidate** response with exact source ref, without any subjective motive or durable pract"
+            },
+            {
+              "line": 36,
+              "text": "**Separate T:** `S35_CAN011_PRACTICE_LEARNING_T_NO_CHANGE@1`, `state_kind=V3MS_PRACTICE`, `semantic_object=c9p:coordinated_material_inspection`, `operation=NO_CHANGE`, `target_proposal=null`, `grant=null`, `beforestate_mutation=false`. No H"
+            },
+            {
+              "line": 44,
+              "text": "- **H1 acquired practice**: sourcefree repeated enacted acts alone cannot identify genuine learning or later cross-context competence. Positive acquired T not warranted: `ORIGINAL_EMPIRICAL_NOT_ESTABLISHED`."
+            },
+            {
+              "line": 46,
+              "text": "- **H2 independent B mediation**: observed performed B changes objective feasible conditions, but no B act permits false inference that A witnessed, liked, remembered or reciprocated it."
+            },
+            {
+              "line": 49,
+              "text": "**Evidence grades:** `ADOPTED_SEMANTIC_CAN008_CAN011` only for owner ontology; `ACTUALLY_READ_CONCEPTUAL_LEONTIEV_LAHIRE`; `OBSERVED_LONGITUDINAL_GENERAL_JOB_ORIENTATION_KOHN_SCHOOLER` at published measured population; `TEST_ONLY_OPERATIONA"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/bootstrap.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/cli.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/expression.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/session.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/tests/conftest.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/tests/test_r31e_expression.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/tools/collect_meta.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/tools/run_evidence.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/tools/source_manifest.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/bootstrap.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/cli.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/faults.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/first_session.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/phenomenal.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/tests/conftest.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/tests/test_r30a_first_session.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/assertion.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/bootstrap.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/c12_verify.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/cli.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/envelope.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/product.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/reunion.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/seed.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/severance.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/historical_actor_producer.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/native_ports.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/stable_actor_binding.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/binding.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/bootstrap.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/ports.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/producer.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/scientific.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/severance.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/conftest.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/test_joined_alternatives.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/test_joined_positive.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/test_joined_security.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/test_joined_severance.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/test_native_ports.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tools/cold_probe.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tools/run_courts.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tools/stage_sources.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/c9_bridge.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/canon.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/composer.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/ledger.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/source.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp3/c8_exclusive_writer.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp3/c9_event_ingress.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp3/vendor/c8_readonly_consumer.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp3/vendor/c8o_trusted_outbox.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp3/vendor/outbox_prototype.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/transaction.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/g18/lab_sgi1/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/g18/lab_sgi1/core.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/g18/lab_sgi1/history.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/g18/lab_sgi1/joint.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/g18/lab_sgi1/proposal.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/native/rawlsing_next/v3_psepf_zero_positive_guard.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/bp4/__init__.py"
+      ],
+      "code_path_count_in_partial_comparison": 151,
+      "return_receipt_candidates": [
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/22_LANGUAGE_ACCEPTED_M35_REVISE_S35_RETURN/language-review/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/23_M35_SOURCE_BINDING_ACCEPTED/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261022-PARALLEL-PERSON-FLIGHT-R1/continuations/24_S36_SCENE_BINDING_ACCEPTED/independent-review/00_RETURN.md",
+        "WORKER_COMMISSIONS/SOROK-20261024-S38-A-T-GENERATION-SCIENTIFIC-COURT-R1/inputs/S35_00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    }
+  ]
+}
