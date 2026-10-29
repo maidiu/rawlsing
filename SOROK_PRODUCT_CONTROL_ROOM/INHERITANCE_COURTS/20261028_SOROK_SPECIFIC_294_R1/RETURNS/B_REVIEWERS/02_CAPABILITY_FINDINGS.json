@@ -17,7 +17,7 @@
         "| Court | PASS | RED |",
         "| New preregistered reviewer court | 18 | 2 |"
       ],
-      "reviewed_author_code_sha": null,
+      "reviewed_author_code_sha": "8bd4d6b01fd402e7e6a8d07903f2c3cada837f55",
       "reviewer_executed_test_source_sha": null,
       "exact_first_actual_consumer": null,
       "possible_consumers_lexically_mentioned": [
@@ -30,7 +30,9 @@
       "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
       "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
       "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
-      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT",
+      "reviewed_author_sha_basis": "EXPLICIT_PRIMARY_REVIEWER_TEXT__NOT_INDEPENDENTLY_RERUN_IN_B_COURT",
+      "reviewed_author_sha_evidence": "B3A original candidate explicitly named in first independent review"
     },
     {
       "capability_id": "B-REVIEW-002",
@@ -46,7 +48,7 @@
         "This reviewer is a fresh independent source-free I2 reviewer: not the B3A/B3AS author, not the first B3A-I2 reviewer, not HQ and not a semantic issuer. One accountable OpenCode agent with MiMo-V2.6-Pro performed the complete commission in a new sparse worktree over the existing shared Git object store. No Codex, no model/provide",
         "The reported local repair `16f15a125ba54cdf17f5d41be2d851bbcd2240d7` was probed directly in the shared object store, not inferred from any message:"
       ],
-      "reviewed_author_code_sha": null,
+      "reviewed_author_code_sha": "16f15a125ba54cdf17f5d41be2d851bbcd2240d7",
       "reviewer_executed_test_source_sha": null,
       "exact_first_actual_consumer": null,
       "possible_consumers_lexically_mentioned": [
@@ -58,7 +60,9 @@
       "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
       "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
       "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
-      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT",
+      "reviewed_author_sha_basis": "EXPLICIT_PRIMARY_REVIEWER_TEXT__NOT_INDEPENDENTLY_RERUN_IN_B_COURT",
+      "reviewed_author_sha_evidence": "B3AS repaired candidate explicitly named with scoped reproduced sourcefree review"
     },
     {
       "capability_id": "B-REVIEW-003",
@@ -176,7 +180,7 @@
         "### RED 2 — actor-own testimony",
         "R3's relation gate excludes self-action by interpreter but does not require the three immediate observer fields be independent of actual action owner. R4 checks (i) `e.observer != e.action_owner`, (ii) `x.observer != e.action_owner` and (iii) `_history_source(scene,witness).observer != e.action_owner`. The original R3-I2 expecte"
       ],
-      "reviewed_author_code_sha": null,
+      "reviewed_author_code_sha": "2001169089e97da7444dc8baa2df700aa56e9aca",
       "reviewer_executed_test_source_sha": null,
       "exact_first_actual_consumer": null,
       "possible_consumers_lexically_mentioned": [],
@@ -184,7 +188,9 @@
       "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
       "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
       "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
-      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT",
+      "reviewed_author_sha_basis": "EXPLICIT_PRIMARY_REVIEWER_TEXT__NOT_INDEPENDENTLY_RERUN_IN_B_COURT",
+      "reviewed_author_sha_evidence": "M2R4 documentary source diff target, not independently executed"
     },
     {
       "capability_id": "B-REVIEW-008",
@@ -370,7 +376,7 @@
         "The eleven inherited R4 test files match the exact blob list in the prior I2 `source_manifest.json`. Five fresh-process import receipts confirm the actual `kernel.py` file path and SHA-256: R2 `88bb8c65…`, R3 `838d0852…`, R4 `5b8ac91c…`. All imported paths are published return-relative; no host path, username or credential is pu",
         "| R3 `@0.4.1` | **4 PASS / 2 RED** | `test_i2_01` → `Failed: DID NOT RAISE Refusal`; `test_i2_02` → `AssertionError: SELF_ATTESTED_COUNTERPART_ACTION_ADMITTED: [CONTRADICT, DIFFERENTIATE, GENERALIZE, NARROW, NO_CHANGE, REATTRIBUTE, REINFORCE]` |"
       ],
-      "reviewed_author_code_sha": null,
+      "reviewed_author_code_sha": "2001169089e97da7444dc8baa2df700aa56e9aca",
       "reviewer_executed_test_source_sha": null,
       "exact_first_actual_consumer": null,
       "possible_consumers_lexically_mentioned": [
@@ -380,7 +386,9 @@
       "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
       "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
       "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
-      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT",
+      "reviewed_author_sha_basis": "EXPLICIT_PRIMARY_REVIEWER_TEXT__NOT_INDEPENDENTLY_RERUN_IN_B_COURT",
+      "reviewed_author_sha_evidence": "M2R4 executable review of same candidate with separate sourcefree scope"
     },
     {
       "capability_id": "B-REVIEW-015",
@@ -396,7 +404,7 @@
         "| Original BP4 court (byte-exact vendored copy, pinned live `rawlsing_next`) | **15/15 PASS** | `junit/original_bp4_15.xml` |",
         "### 3. MANDATORY C12 DISCREPANCY — RESOLVED: DELIVERED VERIFIER DEFECT, NOT C12 CORRUPTION"
       ],
-      "reviewed_author_code_sha": null,
+      "reviewed_author_code_sha": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
       "reviewer_executed_test_source_sha": null,
       "exact_first_actual_consumer": null,
       "possible_consumers_lexically_mentioned": [
@@ -415,7 +423,9 @@
       "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
       "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
       "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
-      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT",
+      "reviewed_author_sha_basis": "EXPLICIT_PRIMARY_REVIEWER_TEXT__NOT_INDEPENDENTLY_RERUN_IN_B_COURT",
+      "reviewed_author_sha_evidence": "BP2P4JI reviewer reports exact target"
     },
     {
       "capability_id": "B-REVIEW-016",
@@ -493,7 +503,7 @@
         "**AUTHORITY: `HOLD__NO_NATIVE_GRANT`.**",
         "**S52 VERIFIER DEFECT: `RED_REPRODUCED_WARM_AND_COLD`.**"
       ],
-      "reviewed_author_code_sha": null,
+      "reviewed_author_code_sha": "6d3610c576dc0ef3ceccbf7ac122c197f22be6fa",
       "reviewer_executed_test_source_sha": null,
       "exact_first_actual_consumer": null,
       "possible_consumers_lexically_mentioned": [
@@ -507,7 +517,9 @@
       "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
       "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
       "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
-      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT",
+      "reviewed_author_sha_basis": "EXPLICIT_PRIMARY_REVIEWER_TEXT__NOT_INDEPENDENTLY_RERUN_IN_B_COURT",
+      "reviewed_author_sha_evidence": "RA-D reviewed final candidate"
     },
     {
       "capability_id": "B-REVIEW-019",
@@ -1723,7 +1735,7 @@
         "| Frozen full E2 / X2 | **42 PASS + 2 FAIL / 16 PASS + 1 FAIL**; assertions of repaired old bugs remain literal failures |",
         "| Frozen M1 / I2 against M2 | **18 PASS + 19 FAIL / 13 PASS + 10 FAIL** |"
       ],
-      "reviewed_author_code_sha": null,
+      "reviewed_author_code_sha": "47b46a85b9ebb633754866f1e6f1b12db3bd2012",
       "reviewer_executed_test_source_sha": null,
       "exact_first_actual_consumer": null,
       "possible_consumers_lexically_mentioned": [
@@ -1734,7 +1746,9 @@
       "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
       "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
       "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
-      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT",
+      "reviewed_author_sha_basis": "EXPLICIT_PRIMARY_REVIEWER_TEXT__NOT_INDEPENDENTLY_RERUN_IN_B_COURT",
+      "reviewed_author_sha_evidence": "X3 independently reproduced original B3 and found partial-write RED"
     },
     {
       "capability_id": "B-REVIEW-066",
@@ -1750,7 +1764,7 @@
         "| **K03 whole prior top-view** | **SATISFIED — source-graded read-back** | 04 indexes 00 plus twelve companions including both 09 files and both 10 files; identifies 150-narrow vs 228-expanded branch *names* and distinguishes inherited historical TD-R05 from directly rerun original code. | All original raw archive functions/loca",
         "| **K05 whole person and causal rivals** | **SATISFIED — nonissuing conceptual demonstration** | 02 gives mother-first life, B independently acting, bodily/social needs, time/work/care/play, religious/class/ideology and **six same-case outcomes**: prior competence unlocked, B effective, acquired practice, temporary assisted perf"
       ],
-      "reviewed_author_code_sha": null,
+      "reviewed_author_code_sha": "91dbd56649ae465169b9ce4d4dd5751cfd26466c",
       "reviewer_executed_test_source_sha": null,
       "exact_first_actual_consumer": null,
       "possible_consumers_lexically_mentioned": [
@@ -1769,7 +1783,9 @@
       "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
       "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
       "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
-      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT",
+      "reviewed_author_sha_basis": "EXPLICIT_PRIMARY_REVIEWER_TEXT__NOT_INDEPENDENTLY_RERUN_IN_B_COURT",
+      "reviewed_author_sha_evidence": "Sorok08 preserved R1 review original applicant; R2 is separate 5d41a8…"
     },
     {
       "capability_id": "B-REVIEW-067",
@@ -1802,5 +1818,7 @@
       "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
       "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
     }
-  ]
+  ],
+  "known_explicit_target_shas_count": 8,
+  "limits_note": "All other null author-cut fields are intentionally unresolved; SHA mentions in review docs do not imply exact tested cut or current consumer"
 }
