@@ -27,3 +27,5 @@
 `01_BRANCH_ROWS.json` contains the exact original 67 names, no duplicates; `05_FRESH_BRANCH_TAIL.json` preserves the single R1→R2 movement with the original immutable source still accessible. Reviewer source changed-path lists ending at 300 are explicitly labeled potentially truncated. Full commit-level object/true merge-base equivalence, exact imported original author code and PRE-MAIN consumer closure remain unproved; they must not be silently inferred from the source inspection.
 
 **Meaning:** this is a qualified, complete **B-reviewer source retrieval and archival evidence ledger**, not a complete 67-function original-code acceptance court and not authorization to integrate code.
+
+**Final ancestry receipt:** see `10_PREMAIN_ANCESTRY_AND_DIFF.json`: 67 comparisons; 65 divergent; two ahead; 20 capped at 300 changed files. This is not evidence of implementation absence or current adoption.
