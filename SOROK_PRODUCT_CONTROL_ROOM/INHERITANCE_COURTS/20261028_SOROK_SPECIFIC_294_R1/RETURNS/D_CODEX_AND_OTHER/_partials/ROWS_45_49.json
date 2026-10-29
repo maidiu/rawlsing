@@ -1,0 +1,451 @@
+{
+  "schema": "SOROK_D_SHARD_RECON_V1",
+  "rows": [
+    {
+      "index": 45,
+      "name": "codex/sorok-s39-sourcebound-generated-response",
+      "pinned_sha": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+      "current_sha_or_null": "e41513fa65601a37e7b3b430d26c626ae0217d90",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "91ccd3ca29978c87555056f336e37348fcee2945",
+        "ahead": 803,
+        "behind": 1921,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/s39/model.py",
+          "blob_sha": "41fe95c107ed5a33dc2453640b38de73862fd483",
+          "lines": 364,
+          "kind": "code",
+          "symbols": [
+            "S39GenerationRefusal",
+            "__init__",
+            "GenerationOption",
+            "ComparisonRule",
+            "as_dict",
+            "content_hash",
+            "_flags",
+            "_conditions_ok",
+            "_has_cycle",
+            "visit",
+            "generate_choice"
+          ],
+          "opening": "\"\"\"Finite source-bound constructive response generation for S39.\"\"\"\nfrom __future__ import annotations\n\nfrom dataclasses import dataclass\nfrom typing import Any, Mapping\n\nfrom .bootstrap import install\n\ninstall()\n\nfrom candidate import digest, seal  # noqa: E402\n\nfrom .sources import (  # noqa: E402\n    CONTEXT_KINDS,\n    IGNORED_LABEL_KINDS,\n    validate_source,",
+          "key_lines": [
+            {
+              "line": 15,
+              "text": "IGNORED_LABEL_KINDS,"
+            },
+            {
+              "line": 19,
+              "text": "GRADE = \"TEST_ONLY_CONSTRUCTIVE_GENERATION\""
+            },
+            {
+              "line": 20,
+              "text": "PROVENANCE = \"TEST_ONLY_CONSTRUCTIVE_GENERATION_NOT_EXTERNALLY_OBSERVED\""
+            },
+            {
+              "line": 82,
+              "text": "\"schema\": \"S39_DECLARED_COMPARISON_RULE@1\","
+            },
+            {
+              "line": 119,
+              "text": "\"guarded pairwise comparisons are the declared finite constructive selection rule\","
+            },
+            {
+              "line": 131,
+              "text": "if kind in IGNORED_LABEL_KINDS:"
+            },
+            {
+              "line": 135,
+              "text": "predicate = str(record.get(\"predicate\", \"\"))"
+            },
+            {
+              "line": 136,
+              "text": "if predicate in flags and flags[predicate] != int(record.get(\"value\", 0)):"
+            },
+            {
+              "line": 137,
+              "text": "raise S39GenerationRefusal(\"S39_CONFLICTING_CONTEXT_SOURCE\", predicate)"
+            },
+            {
+              "line": 138,
+              "text": "flags[predicate] = int(record.get(\"value\", 0))"
+            },
+            {
+              "line": 218,
+              "text": "predicate = str(record.get(\"predicate\", \"\"))"
+            },
+            {
+              "line": 219,
+              "text": "for option_id, relation in REASON_MAP.get(predicate, ()):"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/transaction.py"
+      ],
+      "code_path_count_in_partial_comparison": 14,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 46,
+      "name": "codex/sorok-s40-generated-native-speech",
+      "pinned_sha": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+      "current_sha_or_null": "79b0357c7af9b66ad8a28f5b77b46b0348094a23",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "91ccd3ca29978c87555056f336e37348fcee2945",
+        "ahead": 805,
+        "behind": 1921,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261024-S40-GENERATED-NATIVE-SPEECH-R1/s40/language.py",
+          "blob_sha": "3b0c9159f1a662949a403c6ffcb924e872b45e72",
+          "lines": 342,
+          "kind": "code",
+          "symbols": [
+            "S40LanguageRefusal",
+            "__init__",
+            "registry_document",
+            "_ensure_competence",
+            "_source_for_intent",
+            "make_plan",
+            "realize_speaking"
+          ],
+          "opening": "\"\"\"S40-owned finite language registry and authorized generated-intent plan.\"\"\"\nfrom __future__ import annotations\n\nfrom typing import Any, Mapping\n\nfrom .bootstrap import install\n\ninstall()\n\nfrom candidate import digest, seal  # noqa: E402\nfrom language_mediation.artifacts import (  # noqa: E402\n    build_native_artifact,\n    build_translation_artifact,\n)\nfrom language_mediation.equivalence import evaluate_pair  # noqa: E402\nfrom language_mediation.plan import (  # noqa: E402",
+          "key_lines": [
+            {
+              "line": 21,
+              "text": "GRADE = \"TEST_ONLY_S40_GENERATED_INTENT_LANGUAGE_MODEL_PREMISE_NOT_GENERAL_TRANSLATION\""
+            },
+            {
+              "line": 224,
+              "text": "if receipt.get(\"status\") != \"ACCEPTED\":"
+            },
+            {
+              "line": 246,
+              "text": "\"cache_status\": \"S40_FINITE_REGISTRY\","
+            },
+            {
+              "line": 287,
+              "text": "\"provenance\": \"TEST_ONLY_CONSTRUCTIVE_GENERATION_NOT_EXTERNALLY_OBSERVED\","
+            },
+            {
+              "line": 299,
+              "text": "\"equivalence_status\": receipt[\"status\"],"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/transaction.py"
+      ],
+      "code_path_count_in_partial_comparison": 14,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 47,
+      "name": "codex/sorok-s41-continuing-person-events",
+      "pinned_sha": "c72a10d284f8869b990db3e6849ed174a51bd784",
+      "current_sha_or_null": "c72a10d284f8869b990db3e6849ed174a51bd784",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "91ccd3ca29978c87555056f336e37348fcee2945",
+        "ahead": 809,
+        "behind": 1921,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/s41/history.py",
+          "blob_sha": "2115b0000f5db1455e134c6bcca3d1d64923ee01",
+          "lines": 183,
+          "kind": "code",
+          "symbols": [
+            "S41HistoryRefusal",
+            "__init__",
+            "canonical_source_ref",
+            "validate_history_source",
+            "validate_generation_readset"
+          ],
+          "opening": "\"\"\"Canonical prior-history binding for the S41 continuation source.\"\"\"\nfrom __future__ import annotations\n\nfrom typing import Any, Mapping\n\nfrom .bootstrap import install\n\ninstall()\n\nfrom c8_readonly_consumer import C8ReadOnlyConsumer  # noqa: E402\nfrom candidate import valid  # noqa: E402\nfrom s39.sources import CONTEXT_KINDS, validate_source  # noqa: E402\n\nCANONICAL_PREFIX = \"TEST_ONLY_S41_HIST_\"\n\n",
+          "key_lines": [
+            {
+              "line": 14,
+              "text": "CANONICAL_PREFIX = \"TEST_ONLY_S41_HIST_\""
+            },
+            {
+              "line": 170,
+              "text": "or row.get(\"predicate\") != history.get(\"predicate\")"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/transaction.py"
+      ],
+      "code_path_count_in_partial_comparison": 14,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 48,
+      "name": "codex/sorok-s42-ongoing-event-consumer",
+      "pinned_sha": "2489f8cdfbb5c400c636f33c7cf8cdf0aa55dc91",
+      "current_sha_or_null": "2489f8cdfbb5c400c636f33c7cf8cdf0aa55dc91",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "91ccd3ca29978c87555056f336e37348fcee2945",
+        "ahead": 811,
+        "behind": 1921,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/event.py",
+          "blob_sha": "0cd8764f7f426d044b346ea61badb59ea530e410",
+          "lines": 172,
+          "kind": "code",
+          "symbols": [
+            "_current_snapshot",
+            "build_ongoing_occurrence",
+            "make_history_records"
+          ],
+          "opening": "\"\"\"Generic later-event admission over the same continuing person.\"\"\"\nfrom __future__ import annotations\n\nfrom copy import deepcopy\nfrom typing import Any, Mapping\n\nfrom .bootstrap import install\n\ninstall()\n\nfrom bp2_joined.binding import WorldOccurrence, validate_occurrence_payload  # noqa: E402\nfrom candidate import digest  # noqa: E402\nfrom s41.event import (  # noqa: E402\n    ContinuationProducer,\n    S41EventRefusal,\n    history_record_from_prior,",
+          "key_lines": [
+            {
+              "line": 21,
+              "text": "def _current_snapshot(session, predecessor: Mapping[str, Any],"
+            },
+            {
+              "line": 32,
+              "text": "prior_action = (predecessor.get(\"action\") or {}).get(\"event_id\", \"\")"
+            },
+            {
+              "line": 41,
+              "text": "\"predecessor\": predecessor[\"e1_event_hash\"],"
+            },
+            {
+              "line": 45,
+              "text": "\"event_head\": prior_action or predecessor[\"e1_event_hash\"],"
+            },
+            {
+              "line": 58,
+              "text": "predecessor: Mapping[str, Any],"
+            },
+            {
+              "line": 64,
+              "text": "snapshot = _current_snapshot(session, predecessor, history_bindings)"
+            },
+            {
+              "line": 85,
+              "text": "\"predecessor_e1_ref\": predecessor[\"e1_event_id\"],"
+            },
+            {
+              "line": 86,
+              "text": "\"predecessor_e1_event_hash\": predecessor[\"e1_event_hash\"],"
+            },
+            {
+              "line": 87,
+              "text": "\"predecessor_c8_occurrence_id\": predecessor[\"c8\"][\"occurrence_id\"],"
+            },
+            {
+              "line": 88,
+              "text": "\"predecessor_c8_content_hash\": predecessor[\"c8\"].get(\"c8_content_hash\", \"\"),"
+            },
+            {
+              "line": 95,
+              "text": "predecessor[\"e1_event_hash\"],"
+            },
+            {
+              "line": 96,
+              "text": "predecessor[\"c8\"].get(\"c8_content_hash\", \"\"),"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/transaction.py"
+      ],
+      "code_path_count_in_partial_comparison": 14,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 49,
+      "name": "codex/sorok-s43-historical-language-consumer",
+      "pinned_sha": "3edd631fb6c31751dfd2143ba2faa9fc31561e54",
+      "current_sha_or_null": "3edd631fb6c31751dfd2143ba2faa9fc31561e54",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "91ccd3ca29978c87555056f336e37348fcee2945",
+        "ahead": 813,
+        "behind": 1921,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261024-S43-HISTORICAL-LANGUAGE-CONSUMER-R1/s43/reader.py",
+          "blob_sha": "9f9e82790c5130ecbbc25e9b2f01b352de97f869",
+          "lines": 138,
+          "kind": "code",
+          "symbols": [
+            "S43ReadRefusal",
+            "__init__",
+            "_current_repertoire",
+            "read_s43_event"
+          ],
+          "opening": "\"\"\"Read S43 source-bound language provenance from the existing S42 event.\"\"\"\nfrom __future__ import annotations\n\nfrom .bootstrap import install\n\ninstall()\n\nfrom language_mediation.index import LanguageRefusal, build_index  # noqa: E402\nfrom s42.bindings import binding_episodes  # noqa: E402\n\nfrom .errors import S43Refusal  # noqa: E402\nfrom .repertoire import compile_repertoire  # noqa: E402\n\n\nclass S43ReadRefusal(ValueError):\n    def __init__(self, code: str, detail: str = \"\") -> None:",
+          "key_lines": [
+            {
+              "line": 41,
+              "text": "\"current_cache_status\": current.get(\"index_cache_status\", \"\"),"
+            },
+            {
+              "line": 56,
+              "text": "if base.get(\"status\") == \"OK\" and base.get(\"attempt_status\") == \"DENIED\":"
+            },
+            {
+              "line": 67,
+              "text": "base.get(\"status\") != \"OK\""
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/transaction.py"
+      ],
+      "code_path_count_in_partial_comparison": 14,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    }
+  ]
+}
