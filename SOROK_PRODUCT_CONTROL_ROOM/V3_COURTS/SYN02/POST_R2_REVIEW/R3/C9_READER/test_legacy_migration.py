@@ -61,8 +61,25 @@ def test_world_institution_values_remain_world_owned_not_actor_scalar_facts():
 
 
 def test_repeated_migration_is_idempotent_and_has_no_storage_api():
-    original = source({"year": 2001}, [LegacyFactBindingV1(("year",), "TEST_ONLY")])
-    assert migrate_legacy_actor(original) == migrate_legacy_actor(original)
+    binding = LegacyFactBindingV1(("year",), "TEST_ONLY")
+    original = source({"year": 2001}, [binding])
+    observed = migrate_legacy_actor(original)
+    # Independent reconstruction must preserve the exact bound value/source,
+    # not merely compare an expression with itself.
+    replay_source = source(dict(year=2001), [LegacyFactBindingV1(("year",), "TEST_ONLY")])
+    replayed = migrate_legacy_actor(replay_source)
+    assert observed.retained_candidates[0].value_json == "2001"
+    assert observed.retained_candidates[0].source_sha256 == original.source_sha256
+    assert replayed == observed
+    assert observed.status == "PARTIAL_HELD_SOURCE_OWNER_ADMISSION"
+    assert not hasattr(observed, "write") and not hasattr(observed, "commit")
+    # Causal/source severance: changed admitted scalar must change exact output;
+    # absence of a qualified binding must not manufacture an actor fact.
+    changed = migrate_legacy_actor(source({"year": 2002}, [binding]))
+    assert changed.retained_candidates[0].value_json == "2002"
+    assert changed.retained_candidates != observed.retained_candidates
+    unbound = migrate_legacy_actor(source({"year": 2001}))
+    assert unbound.retained_candidates == ()
 
 
 def test_source_tamper_refuses_and_no_native_proof_is_manufactured():
