@@ -69,5 +69,22 @@
   ],
   "same_blob_equivalence": "NOT_PROVED",
   "supersession_decisions": "OWNER_HOLD",
-  "rule": "One reviewed capability per exact author/test cut; no identity based on branch name alone"
+  "rule": "One reviewed capability per exact author/test cut; no identity based on branch name alone",
+  "proven_exact_reviewer_file_identity": [
+    {
+      "git_blob_sha": "7c21eccad788f812ddb60c378502c662a2527cb2",
+      "identical_paths_under_different_pinned_reviewer_cuts": [
+        {
+          "reviewer_index": 27,
+          "source_branch": "agent/reviewer-sorok-r3-hq301-rcp-can008-positive-court-r1"
+        },
+        {
+          "reviewer_index": 29,
+          "source_branch": "agent/reviewer-sorok-r3-hq302-rcp2-can008-clean-acceptance-r1"
+        }
+      ],
+      "file": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py",
+      "scope": "SAME_RETRIEVED_TEST_BLOB_ONLY__NOT_SAME_FULL_AUTHOR_TREE_OR_ACCEPTANCE"
+    }
+  ]
 }
