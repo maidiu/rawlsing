@@ -1,5 +1,8 @@
 # Sorok 08 R2 — independently read source, code and reviewer spot-checks; original-source limits
 
+> **Primary-text provenance correction (subsequent actual PDF verification):** Read `06_ACTUAL_PRIMARY_TEXT_VERIFICATION_AND_PROVENANCE_CORRECTION_R2.md` before using section C below. The original 04 text asserted independent extraction earlier than the recorded operations warrant. The attached sources were subsequently inspected directly, with documented PDF-page checks and corrections: Luria p38 = perception (not production), Kohn & Schooler p17 = acknowledgments, Elder cited pages = foreword, Mortimer p45 = sample context, Dreier p27 quotes other researchers; Kohn & Słomczyński / Palestine substantive pages remain unread. Do **not** attribute retrospective proof to the earlier R2 publication. No native or scientific issuance.
+
+
 **Purpose:** correct K03/K04/K06/K09/K10/K13/K14 WITHOUT inventing new science, rerunning courts, or claiming all source was locally executed. Source grade table: `DIRECT_FILE_READ` = exact current GitHub file/blob read; `HISTORICAL_AUDIT_READ` = original worker's direct execution evidence read, not rerun; `PROJECT_SYNOPSIS_READ` = prior strategic synthesis; `SELECTIVE_PRIMARY_TEXT_EXCERPT` = original supplied book passages extracted and checked (not entire work); `NOT_RUN` = no current applicant execution.
 
 ## A. Twelve existing top-view companion artifacts — what was actually accessed
