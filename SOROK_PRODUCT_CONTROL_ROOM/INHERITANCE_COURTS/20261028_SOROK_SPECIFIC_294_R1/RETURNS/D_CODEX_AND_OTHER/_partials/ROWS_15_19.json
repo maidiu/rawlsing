@@ -1,0 +1,521 @@
+{
+  "schema": "SOROK_D_SHARD_RECON_V1",
+  "rows": [
+    {
+      "index": 15,
+      "name": "agent/userdirect-sorok-20261018-onecall-c0-executable-scheduler-r1",
+      "pinned_sha": "66d012c469ee1791c61f1d623079520697508243",
+      "current_sha_or_null": "66d012c469ee1791c61f1d623079520697508243",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "15d677e9c3ac3c260ec18e72edb68c523085faee",
+        "ahead": 46,
+        "behind": 734,
+        "files_returned": 38,
+        "complete": true
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0-ORCHESTRATION-R1/onecall_c0.py",
+          "blob_sha": "f45e4f5573495f060503f92b7630ec83531ced4d",
+          "lines": 351,
+          "kind": "code",
+          "symbols": [
+            "canonical",
+            "digest",
+            "fact_id",
+            "candidate",
+            "fixed_candidates",
+            "initial_state",
+            "render_input",
+            "mocked_artifacts",
+            "InvocationMock",
+            "__init__",
+            "boundary",
+            "validate_render",
+            "validate_packet",
+            "evaluate",
+            "apply_admitted",
+            "slow_tick",
+            "run",
+            "mode_comparison",
+            "causal_equal",
+            "main"
+          ],
+          "opening": "\"\"\"ONECALL-C0: executable TEST-ONLY chronology and authority-boundary prototype.\n\nNo external LLM, Pyat source, CAN008/CAN011 rule or production actor is used.\nAll psychological inference is DEFERRED; all explicit owner effects here are\nsynthetic *objective* observation/material effects, never personal beliefs.\n\"\"\"\nfrom __future__ import annotations\nimport argparse\nfrom copy import deepcopy\nimport hashlib\nimport json\nfrom pathlib import Path\nfrom typing import Any\n\nGRADE = 'BOUNDED_MOCK_OWNER_ONLY__NOT_SOROK_ACTOR_RULE'\nSEED = 172901",
+          "key_lines": [
+            {
+              "line": 4,
+              "text": "All psychological inference is DEFERRED; all explicit owner effects here are"
+            },
+            {
+              "line": 44,
+              "text": "candidate(year, 180, 'old_friend', 'FRIEND_MEETING', required_region='old_town'),"
+            },
+            {
+              "line": 55,
+              "text": "candidate(year, 100, 'club', 'NEW_CLUB', required_region='new_town'),"
+            },
+            {
+              "line": 101,
+              "text": "future_fact_claims=([fact_id(year, 'future_unoccurred')]"
+            },
+            {
+              "line": 111,
+              "text": "uncertainty=['TEST_ONLY_NO_BEHAVIORAL_PROPENSITY'])"
+            },
+            {
+              "line": 148,
+              "text": "return dict(status='NONCAUSAL_VALIDATED' if not forbidden else 'RENDER_CLAIM_REJECTED',"
+            },
+            {
+              "line": 183,
+              "text": "rejected.append(dict(id=p['id'], status='REJECTED_PROPOSAL', reason=reason))"
+            },
+            {
+              "line": 186,
+              "text": "return dict(status='NONCAUSAL_CANDIDATES_VALIDATED', rejected=rejected,"
+            },
+            {
+              "line": 196,
+              "text": "if p.get('required_region') and p['required_region'] != state['world']['region']:"
+            },
+            {
+              "line": 199,
+              "text": "return 'DEFERRED_MISSING_OBSERVED_PRACTICE'"
+            },
+            {
+              "line": 203,
+              "text": "return 'DEFERRED_NO_ACTOR_EXPOSURE'"
+            },
+            {
+              "line": 205,
+              "text": "return 'DEFERRED_MISSING_OWNER_RULE'"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0-ORCHESTRATION-R1/onecall_c0.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0-ORCHESTRATION-R1/test_onecall_c0_part1.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0-ORCHESTRATION-R1/test_onecall_c0_part2.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0-ORCHESTRATION-R1/test_onecall_c0_part3.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0-ORCHESTRATION-R1/test_onecall_c0_part4.py"
+      ],
+      "code_path_count_in_partial_comparison": 5,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0-ORCHESTRATION-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 16,
+      "name": "agent/userdirect-sorok-20261018-onecall-c0f-preregistered-hostile-r1",
+      "pinned_sha": "df31181c22afe3f8ec178b02f0e769e3cb610c81",
+      "current_sha_or_null": "df31181c22afe3f8ec178b02f0e769e3cb610c81",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "15d677e9c3ac3c260ec18e72edb68c523085faee",
+        "ahead": 25,
+        "behind": 734,
+        "files_returned": 53,
+        "complete": true
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/repro/frozen/frozen_oracle.py",
+          "blob_sha": "baff94dde91d2849c66818b02d19b091557da002",
+          "lines": 128,
+          "kind": "code",
+          "symbols": [
+            "canon",
+            "digest",
+            "_initial",
+            "run",
+            "causal_projection"
+          ],
+          "opening": "\"\"\"Sorok ONECALL-C0F Phase-A independent source-free falsification reference.\n\nFrozen before access to C0 code, tests or returns. This is a *boundary oracle*,\nnot an implementation, a generator, a CAN008 psychology model, or an owner issuer.\nThe fixtures' expected outputs are never read by this reference evaluation.\n\"\"\"\nfrom __future__ import annotations\nimport copy\nimport hashlib\nimport json\n\nVERSION = 'SOROK_ONECALL_C0F_BLIND_REFERENCE@1'\n\n\ndef canon(x):\n    return json.dumps(x, sort_keys=True, separators=(',', ':'), ensure_ascii=False)",
+          "key_lines": [
+            {
+              "line": 33,
+              "text": "\"\"\"Compute an independent no-LLM mock boundary over asserted authored events."
+            },
+            {
+              "line": 53,
+              "text": "render_results = ['REJECT_UNCOMMITTED_RETRO_FACT:' + v for v in bad_retro]"
+            },
+            {
+              "line": 55,
+              "text": "render_results.append('REJECT_RENDER_TO_ACTOR_EFFECT')"
+            },
+            {
+              "line": 67,
+              "text": "status = 'REFUSE_EVENT_ID_REWRITE'"
+            },
+            {
+              "line": 69,
+              "text": "status = 'REFUSE_CLOCK_OUTSIDE_NEXT_INTERVAL'"
+            },
+            {
+              "line": 71,
+              "text": "status = 'REFUSE_UNGROUNDED_PREREQUISITE'"
+            },
+            {
+              "line": 72,
+              "text": "elif ev.get('actor_owner') not in (None, 'MOCK_OWNER_TEST_ONLY') or ev.get('external_issuer') == 'FORGED':"
+            },
+            {
+              "line": 73,
+              "text": "status = 'REFUSE_FORGED_OR_FOREIGN_OWNER'"
+            },
+            {
+              "line": 75,
+              "text": "status = 'DEFER_MISSING_OWNER_AUTHORITY'"
+            },
+            {
+              "line": 77,
+              "text": "status = 'DEFER_MISSING_RULE_OR_SOURCE_PERMISSION'"
+            },
+            {
+              "line": 79,
+              "text": "status = 'REFUSE_SCORE_INVALID_NO_RNG_OVERRIDE'"
+            },
+            {
+              "line": 81,
+              "text": "status = 'INVALIDATED_CURRENT_CONTEXT'"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/cold_replay_probe.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/frozen_oracle.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/materialize_frozen_matrix.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/preregistered_cases.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/repro/frozen/cold_replay_probe.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/repro/frozen/frozen_oracle.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/repro/frozen/materialize_frozen_matrix.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/repro/frozen/preregistered_cases.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/repro/frozen/test_phase_a_oracle.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/repro/onecall_c0.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/repro/test_onecall_c0_part1.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/repro/test_onecall_c0_part2.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/repro/test_onecall_c0_part3.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/repro/test_onecall_c0_part4.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/repro/test_phase_b_postfreeze_distinct_hostiles.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/repro/test_phase_b_preregistered_against_c0.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0F-PREREGISTERED-HOSTILES-R1/test_phase_a_oracle.py"
+      ],
+      "code_path_count_in_partial_comparison": 17,
+      "return_receipt_candidates": [],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 17,
+      "name": "agent/userdirect-sorok-20261018-onecall-c0r-authority-causality-repair-r1",
+      "pinned_sha": "98fdbdf0794da76485b40b155fa4396370a04025",
+      "current_sha_or_null": "98fdbdf0794da76485b40b155fa4396370a04025",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "15d677e9c3ac3c260ec18e72edb68c523085faee",
+        "ahead": 36,
+        "behind": 734,
+        "files_returned": 36,
+        "complete": true
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0R-AUTHORITY-CAUSALITY-REPAIR-R1/onecall_c0.py",
+          "blob_sha": "76bd3a6ea26fd72ef59816d62013fd694bf8e774",
+          "lines": 496,
+          "kind": "code",
+          "symbols": [
+            "guard",
+            "proper_str",
+            "listed_strings",
+            "canonical",
+            "digest",
+            "fact_id",
+            "candidate",
+            "fixed_candidates",
+            "initial_state",
+            "render_input",
+            "mocked_artifacts",
+            "InvocationMock",
+            "__init__",
+            "boundary",
+            "validate_render",
+            "validate_packet",
+            "evaluate",
+            "apply_admitted",
+            "slow_tick",
+            "run",
+            "mode_comparison",
+            "causal_equal",
+            "main"
+          ],
+          "opening": "\"\"\"ONECALL-C0: executable TEST-ONLY chronology and authority-boundary prototype.\n\nNo external LLM, Pyat source, CAN008/CAN011 rule or production actor is used.\nAll psychological inference is DEFERRED; all explicit owner effects here are\nsynthetic *objective* observation/material effects, never personal beliefs.\n\"\"\"\nfrom __future__ import annotations\nimport argparse\nfrom copy import deepcopy\nimport hashlib\nimport json\nfrom pathlib import Path\nfrom typing import Any\n\nGRADE = 'BOUNDED_MOCK_OWNER_ONLY__NOT_SOROK_ACTOR_RULE'\nSEED = 172901",
+          "key_lines": [
+            {
+              "line": 4,
+              "text": "All psychological inference is DEFERRED; all explicit owner effects here are"
+            },
+            {
+              "line": 21,
+              "text": "REQUIRED_GRANT = frozenset({'actor_owner','source_permission','rule_ref','objective_owner'})"
+            },
+            {
+              "line": 28,
+              "text": "'required_region','min_practice','counterpart','participants','listener_witness','speech_ref',"
+            },
+            {
+              "line": 76,
+              "text": "candidate(year, 180, 'old_friend', 'FRIEND_MEETING', required_region='old_town'),"
+            },
+            {
+              "line": 87,
+              "text": "candidate(year, 100, 'club', 'NEW_CLUB', required_region='new_town'),"
+            },
+            {
+              "line": 133,
+              "text": "future_fact_claims=([fact_id(year, 'future_unoccurred')]"
+            },
+            {
+              "line": 143,
+              "text": "uncertainty=['TEST_ONLY_NO_BEHAVIORAL_PROPENSITY'])"
+            },
+            {
+              "line": 182,
+              "text": "return dict(status='RENDER_SCHEMA_REFUSED', reason='UNISSUED_RENDER_FIELD_OR_PROVENANCE',"
+            },
+            {
+              "line": 193,
+              "text": "return dict(status='RENDER_SCHEMA_REFUSED', reason='FORGED_RENDER_PROVIDER',"
+            },
+            {
+              "line": 199,
+              "text": "return dict(status='NONCAUSAL_VALIDATED' if not forbidden else 'RENDER_CLAIM_REJECTED',"
+            },
+            {
+              "line": 229,
+              "text": "rejected=[dict(id=p.get('id','UNKNOWN') if isinstance(p,dict) else 'UNKNOWN',status='REJECTED_PROPOSAL',reason=packet_reason)"
+            },
+            {
+              "line": 231,
+              "text": "return dict(status='PACKET_REFUSED',rejected=rejected,candidate_ids=[],proposal_checkpoint=inp['checkpoint_ref'],"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0R-AUTHORITY-CAUSALITY-REPAIR-R1/onecall_c0.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0R-AUTHORITY-CAUSALITY-REPAIR-R1/test_c0r_hostiles.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0R-AUTHORITY-CAUSALITY-REPAIR-R1/test_onecall_c0_original_immutable.py"
+      ],
+      "code_path_count_in_partial_comparison": 3,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0R-AUTHORITY-CAUSALITY-REPAIR-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 18,
+      "name": "agent/userdirect-sorok-20261018-onecall-c0ri-independent-repair-court-r1",
+      "pinned_sha": "5abd3c5d243cd1a7415aa59874dd1f20c74361b2",
+      "current_sha_or_null": "5abd3c5d243cd1a7415aa59874dd1f20c74361b2",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "15d677e9c3ac3c260ec18e72edb68c523085faee",
+        "ahead": 23,
+        "behind": 734,
+        "files_returned": 56,
+        "complete": true
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/repro/repaired/onecall_c0.py",
+          "blob_sha": "76bd3a6ea26fd72ef59816d62013fd694bf8e774",
+          "lines": 496,
+          "kind": "code",
+          "symbols": [
+            "guard",
+            "proper_str",
+            "listed_strings",
+            "canonical",
+            "digest",
+            "fact_id",
+            "candidate",
+            "fixed_candidates",
+            "initial_state",
+            "render_input",
+            "mocked_artifacts",
+            "InvocationMock",
+            "__init__",
+            "boundary",
+            "validate_render",
+            "validate_packet",
+            "evaluate",
+            "apply_admitted",
+            "slow_tick",
+            "run",
+            "mode_comparison",
+            "causal_equal",
+            "main"
+          ],
+          "opening": "\"\"\"ONECALL-C0: executable TEST-ONLY chronology and authority-boundary prototype.\n\nNo external LLM, Pyat source, CAN008/CAN011 rule or production actor is used.\nAll psychological inference is DEFERRED; all explicit owner effects here are\nsynthetic *objective* observation/material effects, never personal beliefs.\n\"\"\"\nfrom __future__ import annotations\nimport argparse\nfrom copy import deepcopy\nimport hashlib\nimport json\nfrom pathlib import Path\nfrom typing import Any\n\nGRADE = 'BOUNDED_MOCK_OWNER_ONLY__NOT_SOROK_ACTOR_RULE'\nSEED = 172901",
+          "key_lines": [
+            {
+              "line": 4,
+              "text": "All psychological inference is DEFERRED; all explicit owner effects here are"
+            },
+            {
+              "line": 21,
+              "text": "REQUIRED_GRANT = frozenset({'actor_owner','source_permission','rule_ref','objective_owner'})"
+            },
+            {
+              "line": 28,
+              "text": "'required_region','min_practice','counterpart','participants','listener_witness','speech_ref',"
+            },
+            {
+              "line": 76,
+              "text": "candidate(year, 180, 'old_friend', 'FRIEND_MEETING', required_region='old_town'),"
+            },
+            {
+              "line": 87,
+              "text": "candidate(year, 100, 'club', 'NEW_CLUB', required_region='new_town'),"
+            },
+            {
+              "line": 133,
+              "text": "future_fact_claims=([fact_id(year, 'future_unoccurred')]"
+            },
+            {
+              "line": 143,
+              "text": "uncertainty=['TEST_ONLY_NO_BEHAVIORAL_PROPENSITY'])"
+            },
+            {
+              "line": 182,
+              "text": "return dict(status='RENDER_SCHEMA_REFUSED', reason='UNISSUED_RENDER_FIELD_OR_PROVENANCE',"
+            },
+            {
+              "line": 193,
+              "text": "return dict(status='RENDER_SCHEMA_REFUSED', reason='FORGED_RENDER_PROVIDER',"
+            },
+            {
+              "line": 199,
+              "text": "return dict(status='NONCAUSAL_VALIDATED' if not forbidden else 'RENDER_CLAIM_REJECTED',"
+            },
+            {
+              "line": 229,
+              "text": "rejected=[dict(id=p.get('id','UNKNOWN') if isinstance(p,dict) else 'UNKNOWN',status='REJECTED_PROPOSAL',reason=packet_reason)"
+            },
+            {
+              "line": 231,
+              "text": "return dict(status='PACKET_REFUSED',rejected=rejected,candidate_ids=[],proposal_checkpoint=inp['checkpoint_ref'],"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/onecall_c0.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/repro/repaired/frozen/materialize_frozen_matrix.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/repro/repaired/onecall_c0.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/repro/repaired/test_c0r_hostiles.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/repro/repaired/test_c0ri_blind_addendum.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/repro/repaired/test_c0ri_independent_postfreeze.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/repro/repaired/test_onecall_c0_part1.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/repro/repaired/test_onecall_c0_part2.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/repro/repaired/test_onecall_c0_part3.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/repro/repaired/test_onecall_c0_part4.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/repro/repaired/test_phase_b_postfreeze_distinct_hostiles.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/repro/repaired/test_phase_b_preregistered_against_c0.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/test_c0ri_blind_addendum.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/test_onecall_c0_part1.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/test_onecall_c0_part2.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/test_onecall_c0_part3.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/test_onecall_c0_part4.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/test_phase_b_postfreeze_distinct_hostiles.py",
+        "WORKER_RETURNS/USERDIRECT-SOROK-ONECALL-C0RI-INDEPENDENT-REPAIR-COURT-R1/test_phase_b_preregistered_against_c0.py"
+      ],
+      "code_path_count_in_partial_comparison": 19,
+      "return_receipt_candidates": [],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 19,
+      "name": "agent/userdirect-sorok-20261023-browser-opencode-essential-flight-r1",
+      "pinned_sha": "696271769dcee21adf40ac47a3102b1a209db458",
+      "current_sha_or_null": "696271769dcee21adf40ac47a3102b1a209db458",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "91ccd3ca29978c87555056f336e37348fcee2945",
+        "ahead": 794,
+        "behind": 1921,
+        "files_returned": 274,
+        "complete": true
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261024-USERDIRECT-TWO-RETURN-FANIN-R1/00_EXACT_SCOPED_INTAKE.md",
+          "blob_sha": "18f87be829744f24702ec555b39e9a53a27e3cdd",
+          "lines": 25,
+          "kind": "document",
+          "symbols": [],
+          "opening": "# Sorok 2026-10-24 — exact two-return fan-in (user-directed documentary intake)\n\n**STATUS:** `JOIN_E_7BF_ENGINEERING_ACCEPT_SCOPED__R3_HQ_ELIGIBLE_PENDING_EFFECTIVE_APPOINTMENT__NO_NEW_DISPATCH`.\n**This intake is NOT an operative HQ succession/adoption motion, original source/science approval, or modification of Sorok canonical PRE-MAIN.**\n\n## Evidence and independent decisions\n\n- R3 Browser succession applicant exact target `9be6045d8614c97fe581df9eda579ef3c1fb361f`: independent reviewer on `agent/reviewer-sorok-20261023-r3-accession-browser-r1@b9d5d945f3e1d6c2b2c0a271df141efa3217722c`, return `WORKER_RETURNS/SOROK-20261023-R3-INDEPENDENT-BROWSER-ACCESSION-R1/00_RETURN.md`, blob `c15c141aa8b0840594524df0a0ca9d6d6005abfd`. Verdict `ACCEPT_EXISTING_SOROK_HQ_SCOPE`, 15/15 candidate competence, no native grants. **This is independent eligibility, not competent human appointment or retirement of accepted incumbent.** Incumbent unchanged `agent/vozhd-sorok-20261020-accepted-successor-hq-r1@b206b085d09e25f7d4d188b6c09e9d2eab06dacc`.\n- JOIN-E candidate exact `7bf2da302996491ddf34b9a039fea47ac982d135`: JOIN-V independent reviewer `codex/sorok-join-v-20261022@4387dc818a96fda2d5271672505fbd9da1059703` (historical branch name; the commissioned review specified **OpenCode DeepSeek V4.1-Flash MAX, no Codex**). Return `WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/00_RETURN.md`, blob `52dfc715bed3ef14cc3dc4639132c409c4e99712`; evidence JSON blob `8c250684363d67b6a98baa2587ee4e984cdaf41c`. **Engineering `ACCEPT_SCOPED`**: 30/30 preserved reviewer tests; 5/5 shared-lineage tests; 2 lawful joined/targetless fork-cold checks; 1 postcreate failure rollback check; invalid empty forks refused and left store/branch/metadata/lineage unchanged in both sessions. Prior older JOIN-V RED is closed **only at L1 TEST_ONLY sourcefree grain**. No further fork fix or second hostile review.\n- GitHub latest PRE-MAIN `integration/pre-main-reconciliation-r1@0a7cd504aaaa684950c6f69e06d3693de4110729`: Pyat revision 88 and latest immutable R88 pointer to `9e687fbe353c11c1e4c3d8edd8767ac9969998eb`",
+          "key_lines": [
+            {
+              "line": 3,
+              "text": "**STATUS:** `JOIN_E_7BF_ENGINEERING_ACCEPT_SCOPED__R3_HQ_ELIGIBLE_PENDING_EFFECTIVE_APPOINTMENT__NO_NEW_DISPATCH`."
+            },
+            {
+              "line": 18,
+              "text": "| Real original actor-history/uptake and durable practice are not issued | DEV-R `cea01931d3df1b0dd38e50f5d7288cd2b5658a30` scientific docket proves CAN008 adopted semantic body, but no concrete RULE_A/issuer; CAN011 valid empty/NO_CHANGE, "
+            },
+            {
+              "line": 21,
+              "text": "**Three courts:** ENGINEERING accepted sourcefree L1 exact 7bf; SCIENCE H0 and real A/T original-source proof unresolved, no native acquired state; AUTHORITY accession reviewer eligible-only, original CAN/ADP/C8/Pyat/C11/native C12/A5 grant"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [],
+      "code_path_count_in_partial_comparison": 0,
+      "return_receipt_candidates": [],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    }
+  ]
+}
