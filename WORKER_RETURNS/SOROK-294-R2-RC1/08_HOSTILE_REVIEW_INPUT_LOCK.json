@@ -1,0 +1,184 @@
+{
+  "schema": "SOROK_RC1_HOSTILE_INPUT_LOCK@1",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-sorok-294-r2-full-capability-source-consumer-reconciliation-r1",
+  "prepared_commission_commit": "a5785b0a41353c1419cd2bde62df42a1255cfee8",
+  "exact_payload_commit": "acc8d4672442d242df4fa530dc1ee2385a449160",
+  "exact_payload_subtree": "5f495b8ad0d37f09629ec6dbe6f64147600ef3df",
+  "payload_artifacts": [
+    {
+      "path": "WORKER_RETURNS/SOROK-294-R2-RC1/00_RETURN.md",
+      "bytes": 7413,
+      "sha256": "6c385a35216eaaa1c08c1aed30e9cee5fdb24aaafd7f7563f02ff762af691c07",
+      "git_blob_sha1": "03694d04c83ce0050fd0a32744dbb723bc77daf6"
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-294-R2-RC1/01_ALL_294_BRANCH_CAPABILITY_RECONCILIATION.json",
+      "bytes": 10267949,
+      "sha256": "8e565c25f520e67ca163b944481b4ae33890335b2f676fd1ce616a3ff489f1bc",
+      "git_blob_sha1": "54801fe031df7a0f4251dfcdd430d439a4e33d93"
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-294-R2-RC1/02_DISTINCT_IMPLEMENTATIONS_LINEAGE_AND_DUPLICATES.json",
+      "bytes": 18389668,
+      "sha256": "29d89d90257faed60804836398dc4a42413ab149968268f212dc4778dcf0da49",
+      "git_blob_sha1": "5cb0cea83dd39eea100219e3fcf6d8c518b82a2f"
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-294-R2-RC1/03_67_REVIEWER_AUTHOR_EXACT_CUT_AND_NEGATIVES.json",
+      "bytes": 1373492,
+      "sha256": "5b2022469581de42b450bad203042e7984591e3bdbbb1ecddd5ab67f34908972",
+      "git_blob_sha1": "96906074587b689e877ee5727160ca8c5e2c20ef"
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-294-R2-RC1/04_ACTUAL_PREMAIN_EQUIVALENCE_AND_SOURCE_OWNER_MAP.json",
+      "bytes": 5964825,
+      "sha256": "33f4140652b63545158c140c2ddcb18a8e070776b0f5e3b83deb1482e92c027b",
+      "git_blob_sha1": "27812ef2805bf13b65492b2ce42eae5386a819bf"
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-294-R2-RC1/05_OUTSIDE_294_168_PLUS_2369_TRIAGE_AND_FRESHNESS.json",
+      "bytes": 11621591,
+      "sha256": "e6f6703b4547a7e97784a8b267da3d5d83ba5e7197246dcad568041e2b0a303c",
+      "git_blob_sha1": "aba70329cac9ab203f6ea3d7fb69a6dbe1ec482d"
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-294-R2-RC1/06_PROPOSED_PREMAIN_FANIN_ORDER_ONLY.md",
+      "bytes": 6532,
+      "sha256": "b9ece52c43efccb7c6fbd466cc0bde6e9a0b7e50c717f6343e9d9f1f767a0867",
+      "git_blob_sha1": "193014e4800185c98a2f1f565c55501e6db2d1f1"
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-294-R2-RC1/07_EXACT_COMMANDS_LOGS_MANIFEST_AND_COURT_GAPS.md",
+      "bytes": 1613824,
+      "sha256": "2d9880a36dc7dc124ca51034da2b591a56aa03debefe80d9220f8f13a3f5b40e",
+      "git_blob_sha1": "66402835278374eb8112f661eeba9496e103fc61"
+    }
+  ],
+  "payload_manifest_sha256": "5129986dd520d6454d403874c8a3f8e4d418bee9b88da70434ec81e835e521bb",
+  "final_nine_file_cut_rule": {
+    "required_parent": "acc8d4672442d242df4fa530dc1ee2385a449160",
+    "only_allowed_additional_change": "WORKER_RETURNS/SOROK-294-R2-RC1/08_HOSTILE_REVIEW_INPUT_LOCK.json",
+    "self_reference_exclusion": "A Git commit cannot include its own final SHA or its own content digest. This file locks the exact eight-file payload commit; final nine-file commit is its direct child adding this file and is reported and verified by full remote SHA outside the payload. Reject changes to any locked payload bytes.",
+    "review_target": "Final immutable nine-file remote SHA reported after ordinary non-force push; verify this lock and all eight payload blobs at that SHA. Never review a moving branch or substitute PR518."
+  },
+  "source_cuts": {
+    "initial_pack": "56329c6793568a73b4e49aadba6acf2c7c3ac9cd",
+    "preflight_correction": "548218f79405685fae65aee5add75e9f586a98b0",
+    "A": "ae31a41e2135483d43fa5d0ba97e708f33c7dece",
+    "B": "c1dab70f0b02c7d976c76ae48b6d7074decdf14f",
+    "C": "231d5abe9d94416d0aa9b20c04e0050e59fad172",
+    "D": "c243ba12945bea83c653c1a9d9cf32262d758d24",
+    "premain": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "census_and_Pyat_estate": "315251451a6d112fb312a6a2e80b096d345c5de6",
+    "contestable_first_pass_not_authority": "47e9c80a66027a8937c0c697ec82dba801c36b54"
+  },
+  "observed_statistics": {
+    "branch_count": 294,
+    "tree_comparisons": 294,
+    "source_root_packages_with_code": 168,
+    "unique_source_root_content_sets": 160,
+    "unique_source_blobs_parsed": 1311,
+    "archive_branches": 29,
+    "unique_archives": 32,
+    "archive_code_members": 176,
+    "scoped_file_occurrences": 6771,
+    "premain_exact_scoped_file_occurrences": 327,
+    "reviews": 67,
+    "reviews_with_target_links": 60,
+    "reviews_with_primary_document_target_context": 57,
+    "metadata_outside": 2537
+  },
+  "validation": {
+    "grade": "STRUCTURAL_AND_EXACT_BYTE_VALIDATION_ONLY__NOT_INDEPENDENT_SCIENTIFIC_ACCEPTANCE",
+    "assertions_passed": 43,
+    "exit": 0,
+    "original_source_or_branch_program_tests": "NOT_RUN"
+  },
+  "positive_claims_to_challenge": [
+    {
+      "claim": "294 exact input rows and uncapped tree comparisons; sole unrelated-history cut uses direct content comparison",
+      "falsifier": "Any manifest mismatch, incomplete raw diff, wrong merge base/source tree or hidden cap; reproduce fixed-cut Git commands from07."
+    },
+    {
+      "claim": "Content hashes separate shared source modules from wrappers, reviewers and substantive C9/C12 versions",
+      "falsifier": "Any inferred package/capability equivalence from one common file, test duplication counted independently, or semantic acceptance from AST/content-set equality."
+    },
+    {
+      "claim": "BP2P4J performed-E2 product positive and BP2P4JI engineering REVISE both survive",
+      "falsifier": "Show either erased/incorrect exact target or a claim that valid episode verification passed at original5b3; inspect3212 original receipt."
+    },
+    {
+      "claim": "R31J binds GM01 B source before C8 and is actually consumed by JOIN-E",
+      "falsifier": "Inspect r31j.pre_c9.stage_world and joined.session.JoinedSession.start/imports: show source not bound/called, or report misrepresents synthetic owner, snapshot conditioning or process-order clocks."
+    },
+    {
+      "claim": "Reader pins1e996 writer and68b repaired C12 bytes, not old7bf C12 bytes",
+      "falsifier": "Literal SHA256 dictionary/source byte comparison contradicts04/validation; no source program need execute."
+    },
+    {
+      "claim": "All168/2369 names accounted, with377 significant unselected path hits and only three detailed hidden cuts",
+      "falsifier": "Any omitted/overlapping original name, missing source slot, or claim all2369/377 were semantically reviewed."
+    }
+  ],
+  "explicitly_falsifiable_high_risk_adoption_claims": [
+    {
+      "proposition": "R31J B source is independently authenticated native B or acquired practice",
+      "asserted": false,
+      "reason": "scenarios construct TEST_ONLY owner/performed fields; original B pre-C8 severance and native issuer absent; H0/help/tool remain"
+    },
+    {
+      "proposition": "7bf JOIN-V acceptance authorizes68b C12 and current C9 reader as one accepted canonical runtime",
+      "asserted": false,
+      "reason": "different exact bytes and perception contract; owner/reviewer compatibility decision unresolved"
+    },
+    {
+      "proposition": "327 exact receiver file occurrences prove327 adopted capabilities or actual native first consumers",
+      "asserted": false,
+      "reason": "occurrence duplicates/test/inherited files, owner/semantic grants and running consumer unqualified"
+    },
+    {
+      "proposition": "First real native Rule A/T, evaluated native nochange or human A5 exists",
+      "asserted": false,
+      "reason": "concrete source/actor/scientific/participant authority remains held"
+    },
+    {
+      "proposition": "Estate is exhaustively source-adjudicated and final integration order definitive",
+      "asserted": false,
+      "reason": "HOLD_ESTATE_OUTSIDE_294; noncurated semantic/transitive-source closure and enumerated hidden/ancestral source slots remain"
+    }
+  ],
+  "preserved_engineering_courts": [
+    "X3 original refusal/ghost writes",
+    "B3A initial schema/readset REDs distinct from B3AS exact scoped repair",
+    "M2 consumed-source preimages and memory provenance",
+    "F1 17 native REDs",
+    "C0RI I08/I10/I13/I14 and C0 transport scoped repairs",
+    "OUT/C8 old-writer/external anchor/multiwriter limits",
+    "BP2P4JI valid-episode verifier REVISE",
+    "JOIN earlier fork REDs closed only at exact scoped7bf; changed68b perception source separate",
+    "Sorok08 R1 REVISE versus distinct fresh R2"
+  ],
+  "scientific_and_authority_holds": [
+    "CAN008 concrete A and CAN010/011 durable T/acquired operation",
+    "ADP015/016/017/019/020 actual actor/history/memory/access/event/performance",
+    "SCI05",
+    "C8 D1/D2/D3 protected exclusive writer/anchor",
+    "Pyat original source/N11/N12",
+    "C11 physical weld",
+    "native C12",
+    "human A5",
+    "independently authenticated B and coherent original time bridge",
+    "TENTATIVE_PLAN_HOLD__HOLD_ESTATE_OUTSIDE_294",
+    "HOLD_NONCURATED_SEMANTIC_AND_TRANSITIVE_SOURCE_CLOSURE"
+  ],
+  "adopt_reviewed_decisions": [],
+  "integration_performed": false,
+  "premain_mutation": false,
+  "original_source_execution": false,
+  "PR_514_516_changes": false,
+  "workers_interfered_with": false,
+  "review_status": "HR1_NOT_LAUNCHED_OR_UNSEALED_BY_THIS_RETURN__INDEPENDENT_INCUMBENT_USER_CONTROL_AFTER_IMMUTABLE_READBACK",
+  "self_acceptance": false,
+  "utc_lock_prepared": "2026-10-29T19:23:32.952991+00:00"
+}
