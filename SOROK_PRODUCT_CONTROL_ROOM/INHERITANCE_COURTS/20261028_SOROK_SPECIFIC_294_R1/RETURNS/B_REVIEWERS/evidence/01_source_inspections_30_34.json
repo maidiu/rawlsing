@@ -1,0 +1,858 @@
+{
+  "schema": "SOROK_294_B_SOURCE_INSPECTION_BATCH_R1",
+  "rows": [
+    {
+      "index": 30,
+      "name": "agent/reviewer-sorok-r3-hq302-rcp2-can008-clean-acceptance-r1",
+      "pinned_sha": "5509f02e6dbc963bc76f2b8efd497eaa4cf69ccd",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 25,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/01_FROZEN_EXPECTED_MATRIX.json",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/01_PREDECLARED_POSITIVE_CELL_AND_ARMS.json",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/02_ADOPTED_INTERFACE_DERIVATION.md",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/03_EXECUTION_RECEIPTS.json",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/04_DISC01_DETECTOR_CORRECTION.md",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/05_REVIEWER_REQUEST.md",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/06_REMOTE_VERIFICATION.json",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/adopted_contract.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/environment_passport_delta.json",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/junit/court_junit.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/junit/pinned_modules_junit.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/junit/rsm_court_junit.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/outputs/matrix_freeze.json",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/rsm_court_reproduction/owner_effect_stub_TEST_ONLY.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/rsm_court_reproduction/test_owner_effect_court.py",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RCP2-CAN008-CLEAN-ACCEPTANCE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RCP2-CAN008-CLEAN-ACCEPTANCE-R1/01_ACCEPTANCE_RESULT.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RCP2-CAN008-CLEAN-ACCEPTANCE-R1/repro/candidate37.log"
+      ],
+      "code_paths": [
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/adopted_contract.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/rsm_court_reproduction/owner_effect_stub_TEST_ONLY.py",
+        "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/rsm_court_reproduction/test_owner_effect_court.py"
+      ],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/00_RETURN.md",
+        "blob": "3ef4ccdbbb47704e96774e65849069bef4482c22",
+        "url": "https://github.com/maidiu/rawlsing/blob/5509f02e6dbc963bc76f2b8efd497eaa4cf69ccd/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/00_RETURN.md",
+        "lines": 119
+      },
+      "review_evidence": "# HQ300 CAN008 — first source-free positive owner effect — worker return\n\n**Terminal:** `HQ300_CAN008_FIRST_POSITIVE_SOURCEFREE_EXECUTED__POSITIVE_CHAIN_COMPLETE_AT_CANDIDATE_GRAIN__K3_K5_SEPARATED__9_HOSTILES_REFUSED__DISC01_CORRECTED__PRODUCTION_GUARD_PRESERVED_EMPTY__NO_ADOPTION__NO_PRODUCTION__NO_V3`\n\n## Role, terrain, sealed startup\n\n- **Role:** independent bounded CAN008 implementation worker. NOT accepted-law issuer, NOT actor, NOT HQ. No self-adoption.\n- **Repository:** `maidiu/rawlsing` (private). **Branch:** `agent/rabochii-sorok-r3-hq300-can008-first-positive-sourcefree-r1`.\n- **EXACT SEALED WORKER STARTUP (launch):** `d7d40270068d258600ee57f62bd27199f1689b92` — **verified at dispatch**: commission-creation commit AND direct remote branch tip (launch SHA and branch HEAD agreed at start).\n\n### Mid-flight commission routing erratum — recorded transparently\n\nAfter this worker had genuinely started, HQ pushed `bdec09f600bc33ac23c2293c00f4d380f70277a1` (\"correct editor/model pairing and single-agent full-job routing without delegation\", routing erratum R1) modifying only `00_COMMISSION.md`. Its own text governs this exact case: *\"Earlier launch SHA is an immutable ancestor; a worker genuinely already started may finish under the prior commission without reset\"* and *\"If the user already launched an agent from that original commit, do not reset/relaunch it; … the worker may complete its original sealed work unless directed otherwise.\"* The erratum's binding routing (PRIMARY EDITOR/HARNESS: OpenCode; PRIMARY MODEL: MiMo-V2.6 Pro; ONE_WORKER_FULL_JOB; independent I2 review = subsequent HQ action, not a launch prerequisite) matches this worker's actual execution. Per the no-reset/no-force-push rule, this return's commits are placed **on top of** `bdec09f6…` (fast-forward; `d7d40270…` preserved as immutable ancestor); the work products were authored under the original sealed commission. For a NEW launch the operative startup would be the revised HEAD — this is not a new launch.\n- **HQ300 parent:** `28d791df05b4d24ebe48b4298101af6951035a36`.\n- **Commission read in full:** `WORKER_COMMISSIONS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/00_COMMISSION.md`.\n- **MUST_READ_NOW honored:** `SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md`, `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md`, `00C…R1.md` (incl. §3A phase-model economics, §5A ranked host suitability), `00D_WARM_ENVIRONMENT_PASSPORT…R1.md`, `HQ300_HQ299_SIX_RETURN_ADJUDICATION_INTAKE_R1.md` — all at HQ300 parent. Frozen inputs read at exact commits: HQ298 SM candidate `9ba40aabea9773ba9d2f3cf32248347f2b0f7e18`; HQ299 RSM independent review `00f5d9a66f5f641c1f88376994272bc570a625ef` (00_RETURN, 02_REVIEWER_FINDINGS incl. DISC_01, 03_EXECUTION_RECEIPTS, 04_OWNER_ACTION_REGISTER, 01_PREDECLARED_POSITIVE_CELL_AND_ARMS).\n- **Write terrain (exclusive):** `WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/` only.\n\n## One coherent outcome\n\n**The MISSING_IMPLEMENTATION blocker is advanced from documentary memo to an executed sourcefree candidate positive chain.** For the first time in this program, the full sequence runs as code:\n\n```text\nadmitted synthetic world event\n  → CAN-008 R2 coupling (receivability → uptake projection → situated recruitment)\n  → registered candidate response rule (23/23 §16 obligations bound)\n  → effect BUFFER (adopted grammar) + target-owner effect REQUEST\n  → target-owner effect committed IN CAUSAL ORDER (hash-chained ledger)\n  → ADP-016 CAUSAL_TRACE_MEMORY committed from admitted basis (7 gates)\n  → ADP-017 ActorEpistemicEffect APPLIED (BELIEF/ADD) from actor-facing basis\n  → later admitted event READS the stored effect → typed response DEFLECT\n     (control without the prior effect: AMPLIFY) — typed difference, not prose\n```\n\nWall time: 0.5 ms; full replay exact (`full_replay_digest` identical across runs). Frozen expectations (`01_FROZEN_EXPECTED_MATRIX.json`, sha256 `38226170…`, frozen before any execution) are met item-for-item.\n\n## The decisive boundary: worker candidate registry ≠ accepted authorization",
+      "material_claim_lines": [
+        {
+          "line": 3,
+          "text": "**Terminal:** `HQ300_CAN008_FIRST_POSITIVE_SOURCEFREE_EXECUTED__POSITIVE_CHAIN_COMPLETE_AT_CANDIDATE_GRAIN__K3_K5_SEPARATED__9_HOSTILES_REFUSED__DISC01_CORRECTED__PRODUCTION_GUARD_PRESERVED_EMPTY__NO_ADOPTION__NO_PRODUCTION__NO_V3`"
+        },
+        {
+          "line": 7,
+          "text": "- **Role:** independent bounded CAN008 implementation worker. NOT accepted-law issuer, NOT actor, NOT HQ. No self-adoption."
+        },
+        {
+          "line": 8,
+          "text": "- **Repository:** `maidiu/rawlsing` (private). **Branch:** `agent/rabochii-sorok-r3-hq300-can008-first-positive-sourcefree-r1`."
+        },
+        {
+          "line": 13,
+          "text": "After this worker had genuinely started, HQ pushed `bdec09f600bc33ac23c2293c00f4d380f70277a1` (\"correct editor/model pairing and single-agent full-job routing without delegation\", routing erratum R1) modifying only `00_COMMISSION.md`. Its own text governs this exact case: *\"Earlier launch SHA is an immutable ancestor; a worker genuinely already started may finish under the prior commission without reset\"* and *\"If the user already launched an agent from that original commit, do not reset/relaunch it; … the worker may complete its original sealed work unless directed otherwise.\"* The erratum's binding routing (PRIMARY EDITOR/HARNESS: OpenCode; PRIMARY MODEL: MiMo-V2.6 Pro; ONE_WORKER_FULL_JOB; independent I2 review = subsequent HQ action, not a launch prerequisite) matches this worker's actual execution. Per the no-reset/no-force-push rule, this return's commits are placed **on top of** `bdec09f6…` (fast-forward; `d7d40270…` preserved as immutable ancestor); the work products were authored under the original sealed commission. For a NEW launch the operative startup would be the revised HEAD — this is not a new launch."
+        },
+        {
+          "line": 15,
+          "text": "- **Commission read in full:** `WORKER_COMMISSIONS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/00_COMMISSION.md`."
+        },
+        {
+          "line": 16,
+          "text": "- **MUST_READ_NOW honored:** `SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md`, `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md`, `00C…R1.md` (incl. §3A phase-model economics, §5A ranked host suitability), `00D_WARM_ENVIRONMENT_PASSPORT…R1.md`, `HQ300_HQ299_SIX_RETURN_ADJUDICATION_INTAKE_R1.md` — all at HQ300 parent. Frozen inputs read at exact commits: HQ298 SM candidate `9ba40aabea9773ba9d2f3cf32248347f2b0f7e18`; HQ299 RSM independent review `00f5d9a66f5f641c1f88376994272bc570a625ef` (00_RETURN, 02_REVIEWER_FINDINGS incl. DISC_01, 03_EXECUTION_RECEIPTS, 04_OWNER_ACTION_REGISTER, 01_PREDECLARED_POSITIVE_CELL_AND_ARMS)."
+        },
+        {
+          "line": 17,
+          "text": "- **Write terrain (exclusive):** `WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/` only."
+        },
+        {
+          "line": 21,
+          "text": "**The MISSING_IMPLEMENTATION blocker is advanced from documentary memo to an executed sourcefree candidate positive chain.** For the first time in this program, the full sequence runs as code:"
+        },
+        {
+          "line": 26,
+          "text": "  → registered candidate response rule (23/23 §16 obligations bound)"
+        },
+        {
+          "line": 27,
+          "text": "  → effect BUFFER (adopted grammar) + target-owner effect REQUEST"
+        },
+        {
+          "line": 28,
+          "text": "  → target-owner effect committed IN CAUSAL ORDER (hash-chained ledger)"
+        },
+        {
+          "line": 31,
+          "text": "  → later admitted event READS the stored effect → typed response DEFLECT"
+        },
+        {
+          "line": 39,
+          "text": "The commission forbids inventing permission to register a production positive authority. The adopted production registry (`DEFAULT_ACCEPTED_POSITIVE_TRANSITION_AUTHORITIES`) is **empty by design** and remains empty; the imported guard continues to answer `DENY_ZERO_EFFECT / ZERO_POSITIVE_REGISTRY` for the identical well-typed positive request. The candidate chain therefore runs against a **WORKER CANDIDATE REGISTRY FIXTURE** (`FIXTURE_GRAIN = SOURCEFREE_CANDIDATE_FIXTURE__NOT_ACCEPTED_AUTHORIZATION`), and the dual result is machine-asserted: **candidate chain `CHAIN_COMPLETE` AND production guard still `DENY_ZERO_EFFECT`** (`test_B_imported_production_guard_still_denies`, `test_H_no_production_registry_mutation`). The imported guard code is byte-unchanged."
+        },
+        {
+          "line": 43,
+          "text": "- **K3 (inaccessible origin ≠ self-explanation):** the ADP-016 trace commits as `CAUSAL_TRACE_MEMORY` with `content_first_person_readable: false`; ADP-017 first-person permission is `DENY_FIRST_PERSON_CLAIM` for any causal-trace basis (adopted `causal_trace_memory_first_person_basis=false`); self-explanation of the hidden origin is `BLOCKED`; recall of the trace is refused (`UNAUTHORIZED_RECALL_CUE`); when the sole accessibility basis dies, permission fails closed while the stance is not erased (`sole_memory_basis_rule`)."
+        },
+        {
+          "line": 44,
+          "text": "- **K5 (public status vs private belief do not collapse):** belief state is byte-identical across registrar/supervisor/peer witness-power arms; the knowledge gate holds objective truth **necessary and not sufficient** (truth-supported claim without actor-facing basis → `DEFERRED_MISSING_EPISTEMIC_BASIS`); the 8 adopted automatic implications are transcribed and forbidden; accessible memory never auto-creates a stance."
+        },
+        {
+          "line": 60,
+          "text": "## DISC_01 corrected (RSM finding honored)"
+        },
+        {
+          "line": 62,
+          "text": "HQ298's detector conflated string-constant mentions with implementation surface. Corrected per RSM: implementation-surface (`class`/`def`) scan only; the two estate string mentions (`PSEPF_V3_MUTATION_METABOLISM_CAN008_V2` denylist constant; `NO_CAN_008` rejection code) are classified as non-implementations; scope declared. Result: RSM's exact 60-case court now runs **60/60** (59/60 before correction); production implementation-surface hits = **0**; the only new implementation surface is the worker candidate package itself. Details: `04_DISC01_DETECTOR_CORRECTION.md`."
+        },
+        {
+          "line": 76,
+          "text": "**Owner jurisdiction (not created, not inferred):** (1) promotion of `CAND_R_CAN008_COUPLING_RESPONSE@1.0.0-candidate` to an accepted rule; (2) the production positive-transition-authority registry entry the zero-positive guard explicitly awaits (\"a later separately accepted authority change must update the production registry/binder\"); (3) real V3 actor operation / ADP019 admission producer / ADP020 stochastic binding."
+        },
+        {
+          "line": 81,
+          "text": "2. A shared registry singleton polluted cross-run replay → fixed by a fresh fixture registry per chain run."
+        },
+        {
+          "line": 84,
+          "text": "## Deliverables (`WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/`)"
+        },
+        {
+          "line": 93,
+          "text": "| `05_REVIEWER_REQUEST.md` | independent I2 acceptance request + hostile acceptance matrix |"
+        },
+        {
+          "line": 95,
+          "text": "| `rsm_court_reproduction/` | vendored RSM court (DISC_01 detector-only patch; stub unmodified) |"
+        },
+        {
+          "line": 96,
+          "text": "| `01_PREDECLARED_POSITIVE_CELL_AND_ARMS.json` | vendored frozen predeclaration (court dependency, blob `d96941c66cf9…`) |"
+        },
+        {
+          "line": 103,
+          "text": "Model calls **0**; actor runs **0**; original-survey operations **0**; billable operations **NONE_OBSERVED**; cash `UNKNOWN`. Chain 0.5 ms; all suites under 1.2 s combined."
+        },
+        {
+          "line": 109,
+          "text": "PRODUCTION_POSITIVE_REGISTRY   = EMPTY_UNCHANGED (DENY_ZERO_EFFECT preserved)"
+        },
+        {
+          "line": 115,
+          "text": "INDEPENDENT_REVIEW             = REQUIRED (05_REVIEWER_REQUEST.md)"
+        },
+        {
+          "line": 118,
+          "text": "**Suggested HQ disposition:** receive as the first **executed** sourcefree positive owner-effect candidate — the MISSING_IMPLEMENTATION edge now has a working, hostile-tested candidate implementation at the exact adopted semantics, with the production guard honestly preserved. The two owner decisions (candidate-rule promotion; production registry entry) are the remaining distance to an operative positive path."
+        }
+      ],
+      "referenced_shas": [
+        "d7d40270068d258600ee57f62bd27199f1689b92",
+        "bdec09f600bc33ac23c2293c00f4d380f70277a1",
+        "28d791df05b4d24ebe48b4298101af6951035a36",
+        "9ba40aabea9773ba9d2f3cf32248347f2b0f7e18",
+        "00f5d9a66f5f641c1f88376994272bc570a625ef"
+      ],
+      "reported_disposition": "disposition:** receive as the first **executed** sourcefree positive owner-effect candidate — the MISSING_IMPLEMENTATION edge now has a working, hostile-tested candidate implementation at the exact adopted semantics, with the production guard honestly preserved. The two o",
+      "code_inspection": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/__init__.py",
+        "blob": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+        "bytes": 72,
+        "functions": [],
+        "sample": "\"\"\"HQ300 candidate package — PROVISIONAL CANDIDATE, not adopted law.\"\"\"\n"
+      }
+    },
+    {
+      "index": 31,
+      "name": "agent/reviewer-sorok-r3-hq302-rsc0-connected-port-independent-r1",
+      "pinned_sha": "385891d8da0c704875d877f77ef765fa86fbfa71",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 293,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/.gitignore",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/01_FROZEN_INDEPENDENT_EXPECTATIONS.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/02_EXECUTION_PER_CASE.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/03_INHERITED_PE_RED_ADJUDICATION.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/04_AUTHORITY_AND_CLAIM_GRADE_MATRIX.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/05_OWNER_ACTION_REGISTER.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/06_REQUIREMENT_AUDIT.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/07_ARTIFACT_MANIFEST.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/environment_passport_delta.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/author_delta_test_k10_structural_conservation.py.diff",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/author_delta_test_k9_provider_swap.py.diff",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/baseline_rc0.log",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/baseline_rc0.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/baseline_rc0_execution.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/build_results.py",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/changed_paths.txt",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/completion_audit.py",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/connection.log",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/connection.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/connection_execution.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile.log",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_execution.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/calls_ProviderA.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/calls_ProviderB.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/f1_f2_mismatch_ProviderA.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/f1_f2_mismatch_ProviderB.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/facade_forged_ProviderA.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/facade_forged_ProviderB.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/fake_profile_ProviderA.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/fake_profile_ProviderB.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/h2_refs_ProviderA.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/h2_refs_ProviderB.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/negative_dereference_ProviderA.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/negative_dereference_ProviderB.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/operative_request_ProviderA.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/operative_request_ProviderB.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/pe_removed_ProviderA.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/pe_removed_ProviderB.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/prior_dropped_ProviderA.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/prior_dropped_ProviderB.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/prior_forgery_1.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/prior_forgery_3.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/producer_relabel_ProviderA_release.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/producer_relabel_ProviderA_target.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/producer_relabel_ProviderB_release.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/producer_relabel_ProviderB_target.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/query_deny_ProviderA_absent.json",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/hostile_observations/query_deny_ProviderA_revoked.json"
+      ],
+      "code_paths": [
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/build_results.py",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/completion_audit.py",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/probe.py",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/reverse_probe.py",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/run.py",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/sitecustomize.py",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/source_snapshots/initial41_hostile.py",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/stage.py",
+        "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/reviewer_tests/test_rsc0_hostile.py"
+      ],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "2b6670e46574c8c88c9fed194f024a754088e8d5",
+        "url": "https://github.com/maidiu/rawlsing/blob/385891d8da0c704875d877f77ef765fa86fbfa71/WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 90
+      },
+      "review_evidence": "# HQ302 RSC0 — connected SC0 port court\n\n**Scientific verdict: REVIEW_REVISE.** C0 repairs all twelve executed RC0 failures under the unchanged 25-case RC0 test source and genuinely calls the pinned producers on its default fixture. The stronger conserved, source-qualified connected interface is not established: independent counterexamples remain in authorization, prior knowledge, reverse issuance, query binding, F1/F2 conservation and receipt identity. No adoption or operative N9/N10W recommendation is issued.\n\n**Reviewer separation limit:** this Codex chat performed the earlier RC0 review. It is distinct from C0, SC0 and the PE/C1/N10E authors, but it cannot satisfy the commission/request's additional requirement of a reviewer distinct from the prior RC0 reviewer. That part is `REVIEW_INDEPENDENCE_HOLD`, disclosed during execution, rather than a fictional fresh-reviewer attestation. The user launched this job in this chat and required one agent to finish it; this agent completed the executable/scientific return without delegating. HQ owns any later distinct acceptance court.\n\n## Exact custody and execution\n\nAssigned branch: `agent/reviewer-sorok-r3-hq302-rsc0-connected-port-independent-r1`. Sealed startup `cdd1f1c9eb74b02abe2ed23ccc5278bcfaad684c` matched a direct authenticated private remote read before writes; parent `75341803ace63da30dfcd66273b6e3d75ad87132`. Reviewed candidate is fixed at `49992b28becfdbecbd41d9dbead47532bf0b6af9`, prior RC0 at `86bd2a54687b40401f7c4247607bd1873c585619`, original SC0 implementation at `b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59` and original schema/oracles at `241d35fa8a13ea03c68fbe55554ce81c210b745f`.\n\nFull commission, complete Sorok 00C/00D, 00B, bounded README and HQ302 intake were read at the specified cut. Exact candidate report, frozen ledger, receipts, review request, port source, original oracles, prior SC0/RC0 reports and nine-RED adjudications informed this court. This is a source-aware review, not a blind experiment or HQ takeover. No all-estate archaeology was substituted for the named executable work.\n\nAn isolated sparse reviewer worktree uses the existing shared object store. Candidate materialization is ignored inside this return's `runtime_root/`; no prior author's terrain is committed. Independent staging reads genuine Git blobs, checks `SHA1(b\"blob \"+length+bytes([0])+raw_bytes)` and SHA256, and checks all 29 author-selected copied objects against their actual original commit:path bytes. The complete bounded runtime has **85 source/data/metadata/layout files**, including the separate original RC0 baseline. Nine primary imports and 52 actual imported paths are audited, with exact `module.__file__`, source refs and hashes. Data JSON is file custody, not a claimed Python import.\n\nActual environment: Python **3.11.3**, pytest **9.0.2**, jsonschema **4.26.0**, Git **2.43.0**; own-session telemetry confirms **gpt-6.1-sol / High / Codex**. One agent, no editor/model/harness switch, no dependency installation, no helper. The portable sanitized passport records the opaque new runtime epoch, marker digest and live probe. A future worker must re-probe; the passport is not future liveness.\n\n`01_FROZEN_INDEPENDENT_EXPECTATIONS.json` was written before local candidate-test observations, SHA256 **`539b67e90cf46ab1dc4639f1f73c87db839d8ccf755678f2f2830950b0bad5e3`**. Candidate report claims were already read; the freeze does not pretend those claimed results were unknown. It includes exact original schema/K9/K10 objects, the prior RC0 baseline and twelve law-derived hostile obligations. That frozen artifact, RC0 test source and original oracle bytes were not changed to fit observations.\n\n## Actual full results\n\n| Executed suite | PASS | RED | Errors/skips |\n|---|---:|---:|---:|\n| First default A/B connection smoke | 2 | 0 | 0 |\n| Original SC0 against byte-identical RC0 25 | 13 | 12 | 0 |\n| C0 against the same RC0 25 | 25 | 0 | 0 |\n| C0 revised K9 8 + K10 28 | 36 | 0 | 0 |\n| Unchanged HQ298 K9 8 + K10 28 against C0 | 34 | 2 | 0 |\n| C0 connection oracle | 6 | 0 | 0 |\n| Pinned N10E 43 + C1 13 | 56 | 0 | 0 |\n| Pinned PE author suite | 21 | 0 | 0 |\n| Final RSC0 hostile court | 16 | 31 | 0 |\n\n`02_EXECUTION_PER_CASE.json` derives every case, actual command, exit status and diagnostic from retained JUnit/stdout. It joins the actual original twelve REDs to their repaired PASSes and separately verifies the thirteen preserved PASSes. Baseline/repair observations are isolated by suite. No skipped test or repeat is extra independent evidence.\n\nThe initial reviewer runner used the wrong RC0 return-path level, producing 23 PASS/two missing-file failures. These are retained as setup failures, corrected without editing tests, and superseded by the actual 25 PASS run. A later isolated rerun separated observation files that otherwise shared names. Initial hostile 41-case execution was 16 PASS/25 RED; its source/logs remain. Two assertions were made more precise before final execution: ref-only negative representation is schema-lawful, so the final test exercises actual dereference; a generation-only no-op is not a publication boundary, so the final H2 test changes publication/as-of. Six target/release/F1–F2 cases were added. The final 47-case source and outputs are retained; no candidate repairs occurred.\n\n### Unchanged-suite claim correction",
+      "material_claim_lines": [
+        {
+          "line": 3,
+          "text": "**Scientific verdict: REVIEW_REVISE.** C0 repairs all twelve executed RC0 failures under the unchanged 25-case RC0 test source and genuinely calls the pinned producers on its default fixture. The stronger conserved, source-qualified connected interface is not established: independent counterexamples remain in authorization, prior knowledge, reverse issuance, query binding, F1/F2 conservation and receipt identity. No adoption or operative N9/N10W recommendation is issued."
+        },
+        {
+          "line": 5,
+          "text": "**Reviewer separation limit:** this Codex chat performed the earlier RC0 review. It is distinct from C0, SC0 and the PE/C1/N10E authors, but it cannot satisfy the commission/request's additional requirement of a reviewer distinct from the prior RC0 reviewer. That part is `REVIEW_INDEPENDENCE_HOLD`, disclosed during execution, rather than a fictional fresh-reviewer attestation. The user launched this job in this chat and required one agent to finish it; this agent completed the executable/scientific return without delegating. HQ owns any later distinct acceptance court."
+        },
+        {
+          "line": 9,
+          "text": "Assigned branch: `agent/reviewer-sorok-r3-hq302-rsc0-connected-port-independent-r1`. Sealed startup `cdd1f1c9eb74b02abe2ed23ccc5278bcfaad684c` matched a direct authenticated private remote read before writes; parent `75341803ace63da30dfcd66273b6e3d75ad87132`. Reviewed candidate is fixed at `49992b28becfdbecbd41d9dbead47532bf0b6af9`, prior RC0 at `86bd2a54687b40401f7c4247607bd1873c585619`, original SC0 implementation at `b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59` and original schema/oracles at `241d35fa8a13ea03c68fbe55554ce81c210b745f`."
+        },
+        {
+          "line": 11,
+          "text": "Full commission, complete Sorok 00C/00D, 00B, bounded README and HQ302 intake were read at the specified cut. Exact candidate report, frozen ledger, receipts, review request, port source, original oracles, prior SC0/RC0 reports and nine-RED adjudications informed this court. This is a source-aware review, not a blind experiment or HQ takeover. No all-estate archaeology was substituted for the named executable work."
+        },
+        {
+          "line": 13,
+          "text": "An isolated sparse reviewer worktree uses the existing shared object store. Candidate materialization is ignored inside this return's `runtime_root/`; no prior author's terrain is committed. Independent staging reads genuine Git blobs, checks `SHA1(b\"blob \"+length+bytes([0])+raw_bytes)` and SHA256, and checks all 29 author-selected copied objects against their actual original commit:path bytes. The complete bounded runtime has **85 source/data/metadata/layout files**, including the separate original RC0 baseline. Nine primary imports and 52 actual imported paths are audited, with exact `module.__file__`, source refs and hashes. Data JSON is file custody, not a claimed Python import."
+        },
+        {
+          "line": 17,
+          "text": "`01_FROZEN_INDEPENDENT_EXPECTATIONS.json` was written before local candidate-test observations, SHA256 **`539b67e90cf46ab1dc4639f1f73c87db839d8ccf755678f2f2830950b0bad5e3`**. Candidate report claims were already read; the freeze does not pretend those claimed results were unknown. It includes exact original schema/K9/K10 objects, the prior RC0 baseline and twelve law-derived hostile obligations. That frozen artifact, RC0 test source and original oracle bytes were not changed to fit observations."
+        },
+        {
+          "line": 21,
+          "text": "| Executed suite | PASS | RED | Errors/skips |"
+        },
+        {
+          "line": 24,
+          "text": "| Original SC0 against byte-identical RC0 25 | 13 | 12 | 0 |"
+        },
+        {
+          "line": 26,
+          "text": "| C0 revised K9 8 + K10 28 | 36 | 0 | 0 |"
+        },
+        {
+          "line": 33,
+          "text": "`02_EXECUTION_PER_CASE.json` derives every case, actual command, exit status and diagnostic from retained JUnit/stdout. It joins the actual original twelve REDs to their repaired PASSes and separately verifies the thirteen preserved PASSes. Baseline/repair observations are isolated by suite. No skipped test or repeat is extra independent evidence."
+        },
+        {
+          "line": 35,
+          "text": "The initial reviewer runner used the wrong RC0 return-path level, producing 23 PASS/two missing-file failures. These are retained as setup failures, corrected without editing tests, and superseded by the actual 25 PASS run. A later isolated rerun separated observation files that otherwise shared names. Initial hostile 41-case execution was 16 PASS/25 RED; its source/logs remain. Two assertions were made more precise before final execution: ref-only negative representation is schema-lawful, so the final test exercises actual dereference; a generation-only no-op is not a publication boundary, so the final H2 test changes publication/as-of. Six target/release/F1–F2 cases were added. The final 47-case source and outputs are retained; no candidate repairs occurred."
+        },
+        {
+          "line": 39,
+          "text": "The author K9/K10 files are revised, although the original oracle files are byte-identical. Exact diffs are retained. Original K9_01 expects `LOSSLESS_TWO_CONTRACT_ROUNDTRIP`; C0 returns the longer `...WITH_CONSUMER_LINEAGE` state. Original K9_07 expects the denied adapter call to return before testing a separate permission helper; C0 correctly raises earlier. These cause the two actual unchanged-test REDs: a compatibility rename and an old procedural expectation incompatible with the desired fail-closed repair. **Do not restore the permission bypass to make the old test green.** Original K10 28 still passes; its revised K10_21 additionally replaces a test-body raise with the real candidate gate. Neither original RED is silently relabelled PASS, and the commission's literal unchanged-suite acceptance condition is not met."
+        },
+        {
+          "line": 43,
+          "text": "**Real default producer execution is proved.** Independent `sys.settrace` code-object identity checks, separate from the candidate profiler, measure N10E `provide_empirical_possibility_slice` **×1**, C1 `compose_positioned_subject_possibility` **×2**, PE `serve_generic_world_situated_possibility` **×1**, for both providers. Genuine N10E/C1 geometry yields 54/60 and 6/60 (exact fractions 9/10 and 1/10); returned support and the nonparent consumer's numeric output agree. The old wholly dead seam is repaired."
+        },
+        {
+          "line": 45,
+          "text": "The adapter computes that default lane independently of its incoming possibility query, checks five numeric fields against static fixture support, then passes the original static possibility to consumers. The serialized possibility `values_read_refs` is empty. Thus the baseline is a genuine computation plus equality guard, not a fully query-bound producer→consumer join. Changing the incoming target or release leaves the same producer evidence and consumed numbers under foreign labels: four REDs. Removing PE entirely still emits a connected result: two REDs. PE is currently a separate seam witness, whose successful output is not required or consumed."
+        },
+        {
+          "line": 47,
+          "text": "A monkeypatched `sys.setprofile` emitting fake frames plus a cached lane also passes the adapter gate with **zero actual N10E/C1/PE calls**, independently traced: two REDs. This falsifies the gate's sufficiency as provenance proof; it does **not** allege the observed baseline was fake or require a Python process to authenticate against arbitrary malicious code replacement. The genuine baseline trace remains positive evidence."
+        },
+        {
+          "line": 49,
+          "text": "Changing the real synthetic empirical law to 54/70 and 16/70 produces `INTEGRITY_FAILURE` for both providers rather than silently serving the old numbers. This is a useful mismatch control, not support for arbitrary-source operation: the world validator remains fixed to 54/6/60. The unchanged RC0 14→18 route-value intervention still changes both consumers and leaves the unaffected route and empirical counts invariant."
+        },
+        {
+          "line": 51,
+          "text": "The final 31 REDs divide into these eleven groups; they are **not thirty-one production-owner defects**:"
+        },
+        {
+          "line": 53,
+          "text": "| Group | Cases | Scientific disposition |"
+        },
+        {
+          "line": 55,
+          "text": "| POSSIBILITY_QUERY absent/revoked | 4 | Authorization defect: effective atoms still include the forbidden query, real producers run and consumer output is emitted. WORLD_READ denial itself now works before producer/value reads. |"
+        },
+        {
+          "line": 58,
+          "text": "| Reverse grant numbers/risk | 6 | Caller-authored 999/0, wrong-denominator and foreign-risk slices are labelled independently issued. Hash inequality is not issuance or empirical recomputation. |"
+        },
+        {
+          "line": 63,
+          "text": "| Facade integrity | 2 | Changed consumer output with copied old digest fields is accepted; the checker compares supplied digests without recomputing the promised effect binding. Scope limit of the claimed checker. |"
+        },
+        {
+          "line": 64,
+          "text": "| Foreign producer target/release | 4 | Fixed producer geometry can be relabelled without source-qualified query binding. |"
+        },
+        {
+          "line": 71,
+          "text": "The disclosed default knowledge cut **2009→2011** is acceptable as a new lawful synthetic baseline, not as historical evidence or an unchanged input. The original 2009/2010 hostile pair is explicitly exercised and refuses for both providers. The unchanged RC0 clock test alone would be weak proof because it reads the now-corrected default; the added explicit original-pair tests close that evidentiary gap. No oracle file was rewritten. Prior-knowledge bypass/carriage remains a real repair task."
+        },
+        {
+          "line": 73,
+          "text": "The scoped reverse fixture returns 54/62, matching a separately executed genuine N10E reverse positive control. But `repro/reverse_connection_probe.json` measures **zero** pinned-owner calls in either candidate reverse method, versus N10E×1/C1×1 in that positive control. The candidate copies grant counts and hashes a different-shaped object to set `independently_issued=true`. Matching baseline numbers and a false forward flag do not establish separately qualified reverse calculation or an issuer. No real statistical authority was issued here."
+        },
+        {
+          "line": 77,
+          "text": "Two forged operative demand probes remain visibly `TEST_FIXTURE_ONLY`, do not grant an effective actor atom and generate no person; two operative empirical model labels are refused. Non-null `MODEL_AUTHORITY_TEST_ONLY` / `USE_GRANT_TEST_ONLY` refs satisfy schema syntax only. An actual operative API/issuer path is `NOT_REACHED`, not accepted or activated. No accepted-authority collision between strict schema and no fabricated issuer was proved: retain explicit fixture labels and the operative HOLD."
+        },
+        {
+          "line": 79,
+          "text": "The inherited nine PE diagnoses remain **one validation defect, five unproved cross-owner dependencies, three overbroad PE-unit reviewer expectations**. They are retained in `03_INHERITED_PE_RED_ADJUDICATION.json`; PE bytes are unchanged and its 21 owner tests were rerun. This court does not claim a new execution of HQ297's thirteen boundary tests or waiver of PE's obligations."
+        },
+        {
+          "line": 83,
+          "text": "`04_AUTHORITY_AND_CLAIM_GRADE_MATRIX.json` maps all twelve frozen obligations to actual evidence, limits and competent owners. The action register requests bounded candidate repairs and later HQ-owned fresh acceptance. No I3/Astra escalation is triggered by these ordinary implementation, dependency and claim-scope issues. No accepted-authority contradiction was demonstrated."
+        },
+        {
+          "line": 85,
+          "text": "Cash and task-specific quota cost are **UNKNOWN**. Observed shared account use was 34%→48% in the five-hour window and 31%→33% weekly at the recorded cuts; these are account observations, not a bill or task-exclusive attribution. No paid overflow or reset was used."
+        },
+        {
+          "line": 87,
+          "text": "Reproduce with `bash repro/reproduce.sh` from this return in an authorized checkout with Python/pytest/jsonschema available. It stages exact refs, checks liveness, executes all suites including known REDs, preserves their actual exit statuses, and builds the ledger. It does not clone, install packages, alter owners or fetch original sources. `source_selector.json`, import audits, complete JUnit/stdout and the sanitized passport support replay."
+        },
+        {
+          "line": 89,
+          "text": "Only this assigned reviewer-return directory is committed. The host-local source capsule remains ignored. The final commit, exact complete changed paths, one-commit ancestry and direct remote SHA readback are reported after push outside self-hashed commit bytes. No candidate/production-owner edits, semantic adoption, canonical merge, protected CURRENT mutation, survey/respondent reads, experimental model calls, actor/generated person, V3/N12 wake or physical weld occurred. The claim ceiling is a bounded sourcefree baseline with genuine calls and executed falsifiers; operative N9/N10W, original-source science and product feasibility remain unproved."
+        }
+      ],
+      "referenced_shas": [
+        "cdd1f1c9eb74b02abe2ed23ccc5278bcfaad684c",
+        "75341803ace63da30dfcd66273b6e3d75ad87132",
+        "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+        "86bd2a54687b40401f7c4247607bd1873c585619",
+        "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+        "241d35fa8a13ea03c68fbe55554ce81c210b745f"
+      ],
+      "reported_disposition": "verdict: REVIEW_REVISE.** C0 repairs all twelve executed RC0 failures under the unchanged 25-case RC0 test source and genuinely calls the pinned producers on its default fixture. The stronger conserved, source-qualified connected interface is not established: independ",
+      "code_inspection": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/repro/build_results.py",
+        "blob": "ce3a8ef0fe701fd2cee5b5c59ce7a2215b1ca428",
+        "bytes": 3837,
+        "functions": [
+          "def read(suite):",
+          "def classify(name):"
+        ],
+        "sample": "\"\"\"Derive exact per-case results and before/after RC0 transitions from real JUnit.\"\"\"\nimport hashlib, json, pathlib, xml.etree.ElementTree as ET\nRET=pathlib.Path(__file__).resolve().parents[1]\nSUITES=['smoke','baseline_rc0','rc0','k9_k10','original_k9_k10','connection','n10e_c1','pe','hostile']\ndef read(suite):\n root=ET.parse(RET/'repro'/f'{suite}.xml').getroot(); cases=[]\n for case in root.iter('testcase'):\n  f=case.find('failure');e=case.find('error');skip=case.find('skipped')\n  status='RED' if f is not None else 'ERROR' if e is not None else 'SKIP' if skip is not None else 'PASS'\n  x=f if f is not None else e if e is not None else skip\n  cases.append(dict(name=case.attrib['name'],classname=case.attrib.get('classname'),seconds=case.attrib.get('time'),status=status,diagnostic=x.text if x is not None else None))\n receipt=json.loads((RET/'repro'/f'{suite}_execution.json').read_text())\n counts={k:sum(c['status']==k for c in cases) for k in ['PASS','RED','ERROR','SKIP']}\n return dict(suite=suite,counts=counts,total=len(cases),execution=receipt,cases=cases)\ndef classify(name):\n classes={\n 'test_possibility_query_permission':'CANDIDATE_AUTHORIZATION_DEFECT',\n 'test_prior_knowledge_requires':'CANDIDATE_VALIDATION_DEFECT',\n 'test_declared_prior_knowledge':'MISSING_DECLARATION_CARRIAGE',\n 'test_reverse_claim':'CANDIDATE_REVERSE_VALIDATION_AND_ISSUANCE_CLAIM_DEFECT',\n 'test_real_pe_producer':'INCOMPLETE_PE_CONNECTION_GATE',\n 'test_fake_profile':'PROVENANCE_CLAIM_FALSIFIER; NOT_MALICIOUS_RUNTIME_SECURITY_PROOF',\n 'test_schema_pass':'UNPROVED_NEGATIVE_REF_DEREFERENCE; SCHEMA_SYNTAX_PA"
+      }
+    },
+    {
+      "index": 32,
+      "name": "agent/reviewer-sorok-r3-hq303-out3-outbox-independent-r1",
+      "pinned_sha": "0ab31e4198299708e700840c1b68e0d94a2ced06",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 4,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ303-OUT3-OUTBOX-INDEPENDENT-R1/01_EXECUTION_MATRIX_INDEX.json",
+        "WORKER_RETURNS/SOROK-R3-HQ303-OUT3-OUTBOX-INDEPENDENT-R1/02_HASH_RECEIPTS.json",
+        "WORKER_RETURNS/SOROK-R3-HQ303-OUT3-OUTBOX-INDEPENDENT-R1/OUT3_EXECUTED_EVIDENCE.tar.xz",
+        "WORKER_RETURNS/SOROK-R3-HQ303-OUT3-OUTBOX-INDEPENDENT-R1/environment_passport_delta.json"
+      ],
+      "code_paths": [],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ303-OUT3-OUTBOX-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "5ccd1f4856ed61e8c3a55183df1037dd442eccf7",
+        "url": "https://github.com/maidiu/rawlsing/blob/0ab31e4198299708e700840c1b68e0d94a2ced06/WORKER_RETURNS/SOROK-R3-HQ303-OUT3-OUTBOX-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 32
+      },
+      "review_evidence": "# SOROK HQ303 OUT3 — Independent I2 sourcefree court\n\n**Disposition: REVIEW_REVISE. NO semantic adoption, owner issuance, V3 operation, or production claim.**\n\n## Verified custody and execution\n\nReviewer branch sealed at `65125e8c64aba28b79e49e64b24b2350f77a2f10`, confirmed identical to the direct remote ref before work. OUT2 author commit `b1004a43eb0309af99e1b7ce9d5290df3c07f3cd`. Its archive `OUT2_EXECUTED_EVIDENCE.tar.xz` independently fetched via authenticated GitHub, verified SHA-256 `812070f33567fbac5ebada32cfa18fdc190e855230f87cc6108bfc4941b5a2f5`, and safely extracted with all 16 original members and Git blob identity receipts. Imported candidate `outbox_prototype.py` Git blob `d40f532a2f9c4ee12a7f99f0ef37164fe997518b`. Frozen S01–S28 semantic specification independently read at exact Git blob `782ba75ee94f24908100b1f3464e7035497d546c`.\n\nObserved Python 3.13.5, pytest 9.0.2, filesystem and true subprocess/os._exit (79) operation. **Original 137-case court independently rerun, not inferred from author logs: 135 PASS, 2 FAIL, 0 SKIP, exit 1.** Suite counts: frozen authored S01–S28 27/28, RSR 17/17, RSR cold 2/2, HQ300 cold 9/9, independent RTO 56/57, OUT2 combinations 24/24. The historic 83 PASS/30 RED baseline is author evidence only; the current 28 previously failed RTO cases run green now, while prior RED provenance was not independently re-executed.\n\nBoth original FAILs **intentionally retained**: `test_s27_material_move_needs_world_owner` is an authored assertion demanding a mug move contradictory to frozen S27 `world_authority=MISSING` requiring HOLD, no material transition. `test_replay_manual_two_writers_can_lose_first_committed_event` reproduces lost updates in concurrent stale single-writer snapshots; no multiwriter guarantee is issued.\n\n## Independent new hostile evidence\n\n22 NEW hostile cases authored and actually executed: **5 PASS / 17 FAIL**. Combined 159-case court: **140 PASS / 19 FAIL, exit 1**. Full per-case matrix, original and hostile JUnit, full stdout, reviewer-authored executable test source and sanitized environment passport are in the evidence archive `OUT3_EXECUTED_EVIDENCE.tar.xz` (local SHA-256 `fc876b665bd9af6328deec86aa66e93ec0eebf9048ca7a5a0d7d0630cd48bddd`).\n\n- H02: omitted `envelope_mode` allows fully owner/issuer-shaped proposal to enter source-free legacy fixture path without a decider. H01 old minimal compatibility passes, but fixture privilege has no explicit boundary. Commission acceptance explicitly vetoes default legacy bypass.\n- H03 × 4: differently cased nested `WORLD_OWNER`, `worldOwner`, `MEMORY_DELTA`, `Client_Perceived` evade case-sensitive directive denylist and are admitted under positive synthetic decider. No real downstream world mutation asserted.\n- H04 × 3 and H05: whitespace source refs, empty or whitespace participant refs accepted in strict; `parent_refs=None` raises uncontrolled TypeError rather than typed refusal.\n- H06: while public `perceive()` refuses a claimed human, public mutability of `projection.perceived` allows `has_perceived` to immediately return True for a caller-injected event; persistence validator blocks that particular forged record, but live in-memory witness query is unprotected against caller mutation.\n- H07/H08: aggregate `deliver/ack` can advance without valid per-viewer opportunity and after sole viewer revocation. Per-viewer `offer` is still denied, so this is receipt-provenance confusion, **not** proof of genuine human perception.\n- H09/H10/H11: restore accepts nonsensical global receipt counts and client ACK state; independent cold process accepts rehashed journal with negative aggregate delivery attempts. This demonstrates inadequate state validation, **not** an authenticated hostile-disk threat claim.\n- H16/H17: empty viewer IDs can be authorized, and revoked viewer can be publicly regranted with no competent owner boundary on this sourcefree object. Does not establish actual production owner bypass.\n- GREEN controls: H01 minimal legacy compatibility; H12 unkeyed hostile disk-forgery exclusion as *negative control*, not a security PASS; H13 negative synthetic decider; H14 cold revoked viewer denial; H15 explicit V1-to-V2 incompatibility refusal.\n\n## Scientific grade and necessary action\n\n**Positive evidence at sourcefree single-writer grade only:** real independent 135/137 replication; exact frozen semantic oracle custody; true pre/post-rename crash replay; per-viewer opportunity/refusal under tested paths; reproducible RTO repairs. Distinguish opaque metadata DIGEST binding from ADP019 issuer authentication; reliable POSIX-like isolated single-writer save from multiwriter transactional durability; projected opportunity or ACK from actual human perception.\n\n**REVISE before scoped PASS:** isolate omitted legacy fixture capability; typed fail-closed nested admission schema, identity and parent-ref validation; immutable/query-authorized human-perception boundary; per-viewer-linked global receipts; strict global/client persisted-state invariants and failed-restore atomicity, followed by independent re-review. Competent S27 oracle custodian and multiwriter durable-store/ADP019 owner separately own the two retained original REDs. NO original respondent data, actual actor, client, human perception, production semantic or V3 grant was used. One reviewer, one isolated sourcefree workspace; no production files edited.\n\nRaw testing receipts, all per-case identities, commands and logs are in `OUT3_EXECUTED_EVIDENCE.tar.xz`. The source-free archive is evidence, not an owner/issuer proof.",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# SOROK HQ303 OUT3 — Independent I2 sourcefree court"
+        },
+        {
+          "line": 3,
+          "text": "**Disposition: REVIEW_REVISE. NO semantic adoption, owner issuance, V3 operation, or production claim.**"
+        },
+        {
+          "line": 7,
+          "text": "Reviewer branch sealed at `65125e8c64aba28b79e49e64b24b2350f77a2f10`, confirmed identical to the direct remote ref before work. OUT2 author commit `b1004a43eb0309af99e1b7ce9d5290df3c07f3cd`. Its archive `OUT2_EXECUTED_EVIDENCE.tar.xz` independently fetched via authenticated GitHub, verified SHA-256 `812070f33567fbac5ebada32cfa18fdc190e855230f87cc6108bfc4941b5a2f5`, and safely extracted with all 16 original members and Git blob identity receipts. Imported candidate `outbox_prototype.py` Git blob `d40f532a2f9c4ee12a7f99f0ef37164fe997518b`. Frozen S01–S28 semantic specification independently read at exact Git blob `782ba75ee94f24908100b1f3464e7035497d546c`."
+        },
+        {
+          "line": 9,
+          "text": "Observed Python 3.13.5, pytest 9.0.2, filesystem and true subprocess/os._exit (79) operation. **Original 137-case court independently rerun, not inferred from author logs: 135 PASS, 2 FAIL, 0 SKIP, exit 1.** Suite counts: frozen authored S01–S28 27/28, RSR 17/17, RSR cold 2/2, HQ300 cold 9/9, independent RTO 56/57, OUT2 combinations 24/24. The historic 83 PASS/30 RED baseline is author evidence only; the current 28 previously failed RTO cases run green now, while prior RED provenance was not independently re-executed."
+        },
+        {
+          "line": 11,
+          "text": "Both original FAILs **intentionally retained**: `test_s27_material_move_needs_world_owner` is an authored assertion demanding a mug move contradictory to frozen S27 `world_authority=MISSING` requiring HOLD, no material transition. `test_replay_manual_two_writers_can_lose_first_committed_event` reproduces lost updates in concurrent stale single-writer snapshots; no multiwriter guarantee is issued."
+        },
+        {
+          "line": 13,
+          "text": "## Independent new hostile evidence"
+        },
+        {
+          "line": 15,
+          "text": "22 NEW hostile cases authored and actually executed: **5 PASS / 17 FAIL**. Combined 159-case court: **140 PASS / 19 FAIL, exit 1**. Full per-case matrix, original and hostile JUnit, full stdout, reviewer-authored executable test source and sanitized environment passport are in the evidence archive `OUT3_EXECUTED_EVIDENCE.tar.xz` (local SHA-256 `fc876b665bd9af6328deec86aa66e93ec0eebf9048ca7a5a0d7d0630cd48bddd`)."
+        },
+        {
+          "line": 18,
+          "text": "- H03 × 4: differently cased nested `WORLD_OWNER`, `worldOwner`, `MEMORY_DELTA`, `Client_Perceived` evade case-sensitive directive denylist and are admitted under positive synthetic decider. No real downstream world mutation asserted."
+        },
+        {
+          "line": 22,
+          "text": "- H09/H10/H11: restore accepts nonsensical global receipt counts and client ACK state; independent cold process accepts rehashed journal with negative aggregate delivery attempts. This demonstrates inadequate state validation, **not** an authenticated hostile-disk threat claim."
+        },
+        {
+          "line": 23,
+          "text": "- H16/H17: empty viewer IDs can be authorized, and revoked viewer can be publicly regranted with no competent owner boundary on this sourcefree object. Does not establish actual production owner bypass."
+        },
+        {
+          "line": 24,
+          "text": "- GREEN controls: H01 minimal legacy compatibility; H12 unkeyed hostile disk-forgery exclusion as *negative control*, not a security PASS; H13 negative synthetic decider; H14 cold revoked viewer denial; H15 explicit V1-to-V2 incompatibility refusal."
+        },
+        {
+          "line": 28,
+          "text": "**Positive evidence at sourcefree single-writer grade only:** real independent 135/137 replication; exact frozen semantic oracle custody; true pre/post-rename crash replay; per-viewer opportunity/refusal under tested paths; reproducible RTO repairs. Distinguish opaque metadata DIGEST binding from ADP019 issuer authentication; reliable POSIX-like isolated single-writer save from multiwriter transactional durability; projected opportunity or ACK from actual human perception."
+        },
+        {
+          "line": 30,
+          "text": "**REVISE before scoped PASS:** isolate omitted legacy fixture capability; typed fail-closed nested admission schema, identity and parent-ref validation; immutable/query-authorized human-perception boundary; per-viewer-linked global receipts; strict global/client persisted-state invariants and failed-restore atomicity, followed by independent re-review. Competent S27 oracle custodian and multiwriter durable-store/ADP019 owner separately own the two retained original REDs. NO original respondent data, actual actor, client, human perception, production semantic or V3 grant was used. One reviewer, one isolated sourcefree workspace; no production files edited."
+        }
+      ],
+      "referenced_shas": [
+        "65125e8c64aba28b79e49e64b24b2350f77a2f10",
+        "b1004a43eb0309af99e1b7ce9d5290df3c07f3cd",
+        "d40f532a2f9c4ee12a7f99f0ef37164fe997518b",
+        "782ba75ee94f24908100b1f3464e7035497d546c"
+      ],
+      "reported_disposition": "Disposition: REVIEW_REVISE. NO semantic adoption, owner issuance, V3 operation, or production claim.**"
+    },
+    {
+      "index": 33,
+      "name": "agent/reviewer-sorok-r3-hq303-rcp3-can008-completion-court-r1",
+      "pinned_sha": "a11982e6cf135a8ecc72b6152ec796b4a4707093",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 1,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/remote_verification.json"
+      ],
+      "code_paths": [],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/00_RETURN.md",
+        "blob": "024bc9010c7c64ebd954c4186bc9a78b0a3df7a3",
+        "url": "https://github.com/maidiu/rawlsing/blob/a11982e6cf135a8ecc72b6152ec796b4a4707093/WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/00_RETURN.md",
+        "lines": 78
+      },
+      "review_evidence": "# RCP3 — independent CAN008 causal and semantic completion court\n\n**Verdict: REVIEW_REVISE.** The scientific review is completed. The candidate's 317 tests independently reproduce, but the requested law-complete positive owner-effect chain is not established. Concrete candidate defects, rather than an execution or working-budget HOLD, prevent acceptance. No semantic adoption, production registry entry or real V3 operation is issued.\n\nCandidate reviewed: `189da3b54307d8731132c9a7f7baf578fee8bc96`; implementation first committed at `f578e08081ca3159dd5391131aa516004174b81b`. Assigned reviewer startup `0f626834be2727e2e90161a1bdb76fbfaf4de9f2` matched direct remote before work and remains the ancestor. This reviewer did not author that candidate, RSM, RCP or RCP2. Earlier unrelated SC0F3 and behavioral work in this chat is not the CAN008 candidate under review.\n\n## Actual independent execution\n\n| Court | PASS | RED | ERROR | SKIP |\n|---|---:|---:|---:|---:|\n| Ten pinned owner modules | 220 | 0 | 0 | 0 |\n| Corrected RSM court | 60 | 0 | 0 | 0 |\n| Candidate court, `HQ300_STAGE` set | 37 | 0 | 0 | 0 |\n| Candidate stage-absence control | 36 | 0 | 0 | 1 |\n| Final independently authored scientific/hostile predicates | **37** | **45** | **0** | **0** |\n\nAll 220+60+37 were genuinely rerun in fresh processes, with exact imported source bytes, command, exit, stdout and JUnit. Reading the author's JUnit was used only to identify the ten requested test files. The unset-stage control is a repeated environmental diagnostic, not 36 additional independent successes. The initial staging closure missed `from rawlsing_next import render_bounded_expression`; its collection/import failures are retained. Exact Git staging closed that dependency, after which all 317 passed without changing candidate or owner bytes.\n\nThe 82 reviewer predicates are source-aware tests, not a new blind preregistration. Their assertions test law or the claimed mechanism; observed defects remain RED, never inverted or xfailed into PASS. They include five explicitly unused conditional §16 features; those are N/A observations, not proof of a general capability. Related failures are not 45 independent production bugs. Full cases and messages are in `04_EXECUTED_CASE_MATRIX.json`; an earlier 73-case and then 80-case run, and the 80-case reviewer sources, remain as diagnostic history.\n\n## What the causal experiment actually establishes\n\nThe unmodified `run_positive_chain` executes two synthetic `ADMITTED` event records, writes an in-memory `CAN008_CURRENT_RESPONSE_EFFECT` row containing BUFFER, and a later event actually calls `ChainEventLedger.read_effects`. It then invokes the real candidate response function with DEFLECT. Exact replay reproduces digest:\n\n`24e7e7f61334a64a628e8e0fca0fb65af0ed49263d1d0c8df72acd61be123240`.\n\nTwo independent interventions were executed without changing candidate source:\n\n- **Read ablation:** retain the first row but withhold it at the actual read. The later response becomes AMPLIFY.\n- **Physical absent-effect control:** suppress the first BUFFER commit, keep the admitted events and other operations, verify that no first current-effect row exists, and execute the actual later response. It becomes AMPLIFY and commits. This is an executed control, not a precomputed comparison constant.\n\nThat is useful bounded evidence of an in-memory history-dependent branch. It is not a verified whole-person or psychological mechanism, an accepted owner operation, or proof of persistent storage across processes. CAN008 law permits exact prior response history; reading a prior current-effect record is not intrinsically unlawful. It requires the concrete history predicate, scope and integrity binding, which this candidate does not enforce.\n\nThe **published** `run_control_without_prior_effect` is defective: it creates and reads the same BUFFER row and returns DEFLECT. Its claimed `control_without_prior_effect=\"AMPLIFY\"` is a literal comparison value, not that control's executed response. In the independent physical control the row is genuinely absent, yet the candidate still reports `prior_effect_read=True`; this metadata flag is not proof of a read.\n\nThe first response's destination-owner requests are explicitly `validated=False` and `committed=False`. The chain independently appends a current-response row and reports `target_owner_effect_committed=True`. It creates ADP016 and ADP017 return objects, but the later `OwnerPrestate` contains neither their memory nor epistemic refs. The ledger retains only summaries, not an applied/reloaded destination-owner state. Thus the mechanical history read is established; the stronger claimed target-owner→memory→epistemic→later-state causal integration is unproved. No universal requirement that every CAN008 response must depend on memory is invented here.\n",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# RCP3 — independent CAN008 causal and semantic completion court"
+        },
+        {
+          "line": 3,
+          "text": "**Verdict: REVIEW_REVISE.** The scientific review is completed. The candidate's 317 tests independently reproduce, but the requested law-complete positive owner-effect chain is not established. Concrete candidate defects, rather than an execution or working-budget HOLD, prevent acceptance. No semantic adoption, production registry entry or real V3 operation is issued."
+        },
+        {
+          "line": 7,
+          "text": "## Actual independent execution"
+        },
+        {
+          "line": 9,
+          "text": "| Court | PASS | RED | ERROR | SKIP |"
+        },
+        {
+          "line": 15,
+          "text": "| Final independently authored scientific/hostile predicates | **37** | **45** | **0** | **0** |"
+        },
+        {
+          "line": 17,
+          "text": "All 220+60+37 were genuinely rerun in fresh processes, with exact imported source bytes, command, exit, stdout and JUnit. Reading the author's JUnit was used only to identify the ten requested test files. The unset-stage control is a repeated environmental diagnostic, not 36 additional independent successes. The initial staging closure missed `from rawlsing_next import render_bounded_expression`; its collection/import failures are retained. Exact Git staging closed that dependency, after which all 317 passed without changing candidate or owner bytes."
+        },
+        {
+          "line": 19,
+          "text": "The 82 reviewer predicates are source-aware tests, not a new blind preregistration. Their assertions test law or the claimed mechanism; observed defects remain RED, never inverted or xfailed into PASS. They include five explicitly unused conditional §16 features; those are N/A observations, not proof of a general capability. Related failures are not 45 independent production bugs. Full cases and messages are in `04_EXECUTED_CASE_MATRIX.json`; an earlier 73-case and then 80-case run, and the 80-case reviewer sources, remain as diagnostic history."
+        },
+        {
+          "line": 27,
+          "text": "Two independent interventions were executed without changing candidate source:"
+        },
+        {
+          "line": 29,
+          "text": "- **Read ablation:** retain the first row but withhold it at the actual read. The later response becomes AMPLIFY."
+        },
+        {
+          "line": 32,
+          "text": "That is useful bounded evidence of an in-memory history-dependent branch. It is not a verified whole-person or psychological mechanism, an accepted owner operation, or proof of persistent storage across processes. CAN008 law permits exact prior response history; reading a prior current-effect record is not intrinsically unlawful. It requires the concrete history predicate, scope and integrity binding, which this candidate does not enforce."
+        },
+        {
+          "line": 34,
+          "text": "The **published** `run_control_without_prior_effect` is defective: it creates and reads the same BUFFER row and returns DEFLECT. Its claimed `control_without_prior_effect=\"AMPLIFY\"` is a literal comparison value, not that control's executed response. In the independent physical control the row is genuinely absent, yet the candidate still reports `prior_effect_read=True`; this metadata flag is not proof of a read."
+        },
+        {
+          "line": 36,
+          "text": "The first response's destination-owner requests are explicitly `validated=False` and `committed=False`. The chain independently appends a current-response row and reports `target_owner_effect_committed=True`. It creates ADP016 and ADP017 return objects, but the later `OwnerPrestate` contains neither their memory nor epistemic refs. The ledger retains only summaries, not an applied/reloaded destination-owner state. Thus the mechanical history read is established; the stronger claimed target-owner→memory→epistemic→later-state causal integration is unproved. No universal requirement that every CAN008 response must depend on memory is invented here."
+        },
+        {
+          "line": 43,
+          "text": "2. **Rule and owner authority are not dereferenced on the active path.** An empty fixture registry or a foreign rule still permits coupling. Registered actor scope can be rewritten, a foreign actor's prestate borrowed, and a 2099 event accepted under the 1998–2000 label. Membership of the event issuer ID is only a partial gate; authority version is neither checked nor included in the receipt hash."
+        },
+        {
+          "line": 44,
+          "text": "3. **§16 descriptors are mistaken for enforced semantics.** Independently testing all 23 items shows three omission paths refusing, fifteen accepting a positive response, and five unused conditional items. The presence-only `validate_complete` helper is not called by active evaluation. Even the three refusals do not prove the whole obligation: actor/time scope and exact issuer-version custody still fail. The full adopted-law mapping is `01_CAN008_23_LAW_BINDINGS.json`."
+        },
+        {
+          "line": 45,
+          "text": "4. **Persisted-effect integrity fails.** Corrupting the stored effect without updating its entry hash changes the later typed response and still completes. Commit stores caller payloads by reference. Later entry hashes are calculated before `prev_entry_hash` is added, so they do not bind the full chained entry. These are local candidate integrity defects, not an invented distributed-storage requirement."
+        },
+        {
+          "line": 47,
+          "text": "6. **ADP017 has permission and provenance gaps.** All 12 effect fields and four operation labels execute, but forged non-admitted basis strings can produce KNOWLEDGE; empty claim/rule/parents can produce BELIEF. Changing rule/parents leaves the effect ID unchanged. This is a returned-effect alias; a proper epistemic transition/state store is not demonstrated. An explicit trace-kind first-person check denies correctly, but the sole-memory helper permits a causal trace as BELIEF basis, and the direct helper permits a known inaccessible event memory. ACCESS_UNKNOWN becomes known DENY instead of DEFER."
+        },
+        {
+          "line": 49,
+          "text": "`05_REPAIR_AND_OWNER_ACTIONS.json` groups the required repairs and assigns them to the implementation/owner review route. No candidate code was repaired in this court. No accepted-law conflict requiring I3 was identified."
+        },
+        {
+          "line": 55,
+          "text": "K5's private BELIEF effect is byte-equal when objective status changes from SUPPORTED to CONTRADICTED. Objective truth and a nonempty basis are each insufficient in tested absence/contradiction controls. That supports a bounded noncollapse property; it does not verify an actual public-standing ratification owner or a persisted private stance system. The source's public-witness labels are not a separately implemented public-owner transition. Forged knowledge acquisition and missing exact basis validation remain RED."
+        },
+        {
+          "line": 57,
+          "text": "The RCP2 law-derived preregistration was inherited **unchanged**, not recreated. Its byte-identical copy is `00_INHERITED_FROZEN_PREREG.json`, SHA256 `056ebe78a4240a6123abcf4f1b390d90d1cf31c077e9085ddf9d0904dc473700`. Git verifies that `ac64affeb4af922dea1b1d0088afe7acfeafaee9` is the first descendant of the RCP2 startup and changes only that original prereg file. The prior's pre-observation ordering is inherited from its recorded attestation; Git proves commit chronology, not hidden reading behavior. This reviewer verified the prior before staging/opening candidate expectations."
+        },
+        {
+          "line": 59,
+          "text": "One discrepancy is explicitly adjudicated without editing that freeze: it says **16** ADP016 failure states and broadly requires typed raises. The exact adopted JSON has **17** entries, including RETENTION_UNKNOWN and ACCESS_UNKNOWN whose behavior is to remain unknown. Adopted law controls this review; those unknowns are not universally required to raise. All seven formation gates, all 17 entries and the epistemic/first-person boundaries are mapped in `02_ADP016_ADP017_LAW_GATES.json`."
+        },
+        {
+          "line": 67,
+          "text": "All candidate/owner copies are inside this review's **ignored** `runtime_root/`. None are committed into any other worker's return folder. Only reviewer tests, law/case matrices, observations, provenance, logs/JUnit, reproduction tools and passport are published in the authorized RCP3 return terrain. All source refs and actual relative `module.__file__`/Git blob/SHA256 receipts are retained; ignored sources can be rehydrated through `repro/stage.py` from exact Git objects. No candidate or production source, accepted law, CURRENT/PRE-MAIN, registry or other return was changed."
+        },
+        {
+          "line": 69,
+          "text": "Requested host/model is Codex GPT-6.1 High; Codex/local Python and private Git access were observed. Exact model/effort/billing/quota telemetry is unavailable and remains UNKNOWN. One agent completed the work, with no helper, model/editor switch or messages to other chats. All operations were synthetic/sourcefree; real model trials, original respondent data, real V3 actors, new semantic issuer, adoption, N12/weld and release are zero."
+        },
+        {
+          "line": 71,
+          "text": "Final verdict remains **REVIEW_REVISE**, not REVIEW_PASS_SCOPED. The successful deterministic suites and real branch dependency are retained. Repair the active authority/transaction/state/epistemic gates, then obtain a distinct independent rerun before HQ considers candidate promotion. Production zero-positive law remains in force."
+        },
+        {
+          "line": 75,
+          "text": "From the repository root with the pinned Git objects available, run `python3 WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/reproduce.py unique_run_id`. The runner preserves existing receipts, stages exact source bytes in the ignored workspace and executes all five suites. Expected reviewer exit is 1 with 37 PASS / 45 RED; it is a scientific rejection, not a runner failure. `repro/audit.py` checks the published evidence and exact source identities."
+        }
+      ],
+      "referenced_shas": [
+        "189da3b54307d8731132c9a7f7baf578fee8bc96",
+        "f578e08081ca3159dd5391131aa516004174b81b",
+        "0f626834be2727e2e90161a1bdb76fbfaf4de9f2",
+        "ac64affeb4af922dea1b1d0088afe7acfeafaee9",
+        "a6bc1555489271e1adb2271ed02d46bb7f888170",
+        "b80dd6925066510ecbbfec7b427bf9f688475663",
+        "e0528d65215cb431196570c38bac4eae94217a1b"
+      ],
+      "reported_disposition": "Verdict: REVIEW_REVISE.** The scientific review is completed. The candidate's 317 tests independently reproduce, but the requested law-complete positive owner-effect chain is not established. Concrete candidate defects, rather than an execution or working-budget HOLD,"
+    },
+    {
+      "index": 34,
+      "name": "agent/reviewer-sorok-r3-hq304-bl3-behavioral-design-court-r1",
+      "pinned_sha": "10b507af06973657f2d772b636fb6fbd2d6aff36",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 101,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/.gitignore",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/01_PREDECLARED_R3_DESIGN.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/02_ACTUAL_EXECUTION_AND_CASE_LEDGER.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/04_INDEPENDENT_ORACLE_AND_SCENARIO_CUSTODY.md",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/05_PROSPECTIVE_SAMPLING_POWER_AND_REAL_EXPERIMENT.md",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/06_OWNER_ACTIONS_AND_LATER_REVIEW.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/07_REQUIREMENT_AUDIT.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/08_ARTIFACT_MANIFEST.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/CURRENT_FREEZE",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/environment_passport_delta.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/fixtures/heldout_cases.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/fixtures/heldout_key.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/fixtures/heldout_prototype_custody.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/fixtures/schedule.json.gz",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/freezes/r3-v1.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/freezes/replay-auditor-v1.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/outputs/aware_captures.jsonl.gz",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/outputs/blind_captures.jsonl.gz",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/outputs/capacity_leak_captures.jsonl.gz",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/outputs/case_ledger.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/outputs/first_captures.jsonl.gz",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/outputs/metadata_captures.jsonl.gz",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/outputs/origin_leak_captures.jsonl.gz",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/outputs/original_R2_reaudited_raw_capture_audit.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/outputs/original_R2_schedule_stratified_audit.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/outputs/original_RBA_paired_recompute.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/outputs/position_captures.jsonl.gz",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/outputs/r3_results.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/outputs/raw_capture_audit.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/outputs/standing_leak_captures.jsonl.gz",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/r3/__init__.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/r3/analysis.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/r3/audit.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/r3/data.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/r3/experiment.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/r3/policies.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/r3/transport.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/audit_r3_captures.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/build_evidence.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/changed_paths.txt",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/completion_audit.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/evidence.log",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/evidence_execution.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/freeze_candidate.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/import_audits/evidence_15418.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/import_audits/lab1_11261.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/import_audits/lab2_11264.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/import_audits/lab2_13251.json",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/import_audits/mock_13584.json"
+      ],
+      "code_paths": [
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/r3/__init__.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/r3/analysis.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/r3/audit.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/r3/data.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/r3/experiment.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/r3/policies.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/r3/transport.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/audit_r3_captures.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/build_evidence.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/completion_audit.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/freeze_candidate.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/probe.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/run.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/sitecustomize.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/stage.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/repro/stage_archived_evidence.py",
+        "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/tests/test_r3.py"
+      ],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/00_RETURN.md",
+        "blob": "de1455d2a3bb227cdae40c2f0e2ab45967e74726",
+        "url": "https://github.com/maidiu/rawlsing/blob/10b507af06973657f2d772b636fb6fbd2d6aff36/WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/00_RETURN.md",
+        "lines": 86
+      },
+      "review_evidence": "# HQ304 BL3 — R3 representation-sensitivity court\n\n**Terminal: `SOURCEFREE_R3_ARM_SENSITIVITY_PROVEN_WITH_SYNTHETIC_POLICY`.** The versioned assay detects a deliberately scripted response change caused by its lawful representation under a stated synthetic read budget. The representation-blind null stays exactly null; menu/position/metadata controls do not create accepted arm gains; K3/K5/K6 attacks are detected. This is measurement/plumbing sensitivity, **not BEHAVIORAL_PASS**, an observed LLM effect, psychological truth, model permission or adoption.\n\n## Custody, independence and freeze\n\nRepository `maidiu/rawlsing` (private); assigned branch `agent/reviewer-sorok-r3-hq304-bl3-behavioral-design-court-r1`. Exact sealed startup **`e924b2d9327b636cdc91731dde9c2aad1f52d226`** matched a direct remote read before writes; parent **`a25ba9ab4e1a0dc12d3764bea8854c8fbc2df227`**. One isolated sparse worktree uses the existing canonical object store. All tracked changes are in this reviewer return; original imports/tests/captures stay in ignored `runtime_root/`.\n\nThe complete commission/HQ304 intake and exact pinned reports were read. Current Sorok README/00B/00C/00D hashes are byte-identical to the complete versions already read in this conversation; their exact current identities were verified and reused. RBA's full report, expectations, all19 hostile controls, deterministic sweep/audit and relevant R2/LAB1/LAB2/RMB contracts were inspected. No unrelated full-bank re-grok or other-worker restart occurred.\n\nActual authoring environment: **Codex, gpt-6.1-sol / High**, verified from this session's turn context before tests; Python3.11.3, pytest9.0.2, Git2.43.0. One agent completed design, implementation, tests, analysis and publication. No helper, model/editor/provider switch, dependency installation or experimental model call was used. BL3 is distinct from the original R2/RBA authors; it authors this new R3 candidate and cannot certify its own independent scenario custody or acceptance.\n\n`source_selector.json` verifies **100 exact original source/data/evidence/layout files**, including the actual49-entry RBA selector, with native Git `blob <length>` + actual NUL preimages and SHA256. The report's48-object shorthand omitted its added design document; the actual49 objects were checked against original commits and RBA's copies. Actual imported `__file__` and hashes are retained in import audits and the live passport.\n\nOriginal R2 `a7d2be9894bf92f81356adf14141136666e63bd1`, RBA `1e1546f9e6e1520ab48eb9a9cf5da8ded4f00599`, LAB1 `d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09`, LAB2 `bf5fda102f4bced41a0f18f71c4c380d5d099462`, RMB `bf7518cff877ce108ef9c07f2e2eeaf990171d08` remain pinned. Original R2 v6 SHA256 **`9a05efd9cc4060a7ae9b496f6fe71a5193912b228ac0d2e04577f80902384823`** belongs to `freezes/v6.json`, not `preregistration_v6.json`. Original R1 preregistration remains **`880fbde407654cf847e72f9cc58f7884470973072e99c0964b8d33e17e0bb330`**. Neither original source nor oracle was edited.\n\nBefore the first R3 responder/scorer execution, the new estimand, tests, source, heldout cases/key and schedule were frozen in **`freezes/r3-v1.json`**, SHA256 **`b0d44f663e2392a4207c28a331e5a7627cfef81bdc8b47e9240642161977f465`**. It passed on first execution; no R3 post-observation source/test/oracle repair occurred. A separate pre-sweep mechanical replay auditor was sealed before full capture. Its own seal binds the main freeze and does not replace the preregistration.\n\n## Exact execution\n\n| Court | Actual result |\n|---|---|\n| Original R2 entrypoint | **51 PASS** |\n| Original RBA hostile controls | **19 PASS** |\n| Original LAB1 unit suite | **20 PASS** |\n| Original LAB2 suite | **25 PASS** |\n| Unchanged original RMB | **13 PASS / 23 RED**, exact original failing set retained |\n| New R3 tests | **33 PASS** |\n| Archived R2 raw-capture re-audit | **21,600 exact requests/responses**, six phases and documentary chains verified |\n| Original RBA paired recompute | **3,600 blocks**, B−A=C−A=0, conditional intervals[-1,1] |\n| Complete new R3 sweep and separate raw replay | **75,456 synthetic request/response captures**, all planned IDs and frozen payloads verified |\n\nNo suite has skips or errors. Full stdout/JUnit, actual exit statuses, all original RMB failures and a3696-row policy×case×arm census are in `02_ACTUAL_EXECUTION_AND_CASE_LEDGER.json`, `repro/` and `outputs/case_ledger.json`. The original RMB exit1 is retained, not promoted. LAB1's576-trial machine result is historical retained evidence; this court reran its20 units, not a new576-trial machine experiment. The21,600 R2 captures were **re-audited from exact archived bytes**, not represented as newly sampled responses.\n\nTwo bootstrap assertions were corrected before R3 execution: actual selector49 rather than reported48, and the v6 hash's correct file path. Initial LAB2 execution was24PASS/one missing local layout alias; the exact original freeze receipt was materialized at its expected path, then unchanged25PASS reproduced. That initial JUnit/stdout remains. No original test or expected class was altered.\n\n## What the positive control measures",
+      "material_claim_lines": [
+        {
+          "line": 3,
+          "text": "**Terminal: `SOURCEFREE_R3_ARM_SENSITIVITY_PROVEN_WITH_SYNTHETIC_POLICY`.** The versioned assay detects a deliberately scripted response change caused by its lawful representation under a stated synthetic read budget. The representation-blind null stays exactly null; menu/position/metadata controls do not create accepted arm gains; K3/K5/K6 attacks are detected. This is measurement/plumbing sensitivity, **not BEHAVIORAL_PASS**, an observed LLM effect, psychological truth, model permission or adoption."
+        },
+        {
+          "line": 7,
+          "text": "Repository `maidiu/rawlsing` (private); assigned branch `agent/reviewer-sorok-r3-hq304-bl3-behavioral-design-court-r1`. Exact sealed startup **`e924b2d9327b636cdc91731dde9c2aad1f52d226`** matched a direct remote read before writes; parent **`a25ba9ab4e1a0dc12d3764bea8854c8fbc2df227`**. One isolated sparse worktree uses the existing canonical object store. All tracked changes are in this reviewer return; original imports/tests/captures stay in ignored `runtime_root/`."
+        },
+        {
+          "line": 9,
+          "text": "The complete commission/HQ304 intake and exact pinned reports were read. Current Sorok README/00B/00C/00D hashes are byte-identical to the complete versions already read in this conversation; their exact current identities were verified and reused. RBA's full report, expectations, all19 hostile controls, deterministic sweep/audit and relevant R2/LAB1/LAB2/RMB contracts were inspected. No unrelated full-bank re-grok or other-worker restart occurred."
+        },
+        {
+          "line": 11,
+          "text": "Actual authoring environment: **Codex, gpt-6.1-sol / High**, verified from this session's turn context before tests; Python3.11.3, pytest9.0.2, Git2.43.0. One agent completed design, implementation, tests, analysis and publication. No helper, model/editor/provider switch, dependency installation or experimental model call was used. BL3 is distinct from the original R2/RBA authors; it authors this new R3 candidate and cannot certify its own independent scenario custody or acceptance."
+        },
+        {
+          "line": 13,
+          "text": "`source_selector.json` verifies **100 exact original source/data/evidence/layout files**, including the actual49-entry RBA selector, with native Git `blob <length>` + actual NUL preimages and SHA256. The report's48-object shorthand omitted its added design document; the actual49 objects were checked against original commits and RBA's copies. Actual imported `__file__` and hashes are retained in import audits and the live passport."
+        },
+        {
+          "line": 15,
+          "text": "Original R2 `a7d2be9894bf92f81356adf14141136666e63bd1`, RBA `1e1546f9e6e1520ab48eb9a9cf5da8ded4f00599`, LAB1 `d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09`, LAB2 `bf5fda102f4bced41a0f18f71c4c380d5d099462`, RMB `bf7518cff877ce108ef9c07f2e2eeaf990171d08` remain pinned. Original R2 v6 SHA256 **`9a05efd9cc4060a7ae9b496f6fe71a5193912b228ac0d2e04577f80902384823`** belongs to `freezes/v6.json`, not `preregistration_v6.json`. Original R1 preregistration remains **`880fbde407654cf847e72f9cc58f7884470973072e99c0964b8d33e17e0bb330`**. Neither original source nor oracle was edited."
+        },
+        {
+          "line": 17,
+          "text": "Before the first R3 responder/scorer execution, the new estimand, tests, source, heldout cases/key and schedule were frozen in **`freezes/r3-v1.json`**, SHA256 **`b0d44f663e2392a4207c28a331e5a7627cfef81bdc8b47e9240642161977f465`**. It passed on first execution; no R3 post-observation source/test/oracle repair occurred. A separate pre-sweep mechanical replay auditor was sealed before full capture. Its own seal binds the main freeze and does not replace the preregistration."
+        },
+        {
+          "line": 23,
+          "text": "| Original R2 entrypoint | **51 PASS** |"
+        },
+        {
+          "line": 24,
+          "text": "| Original RBA hostile controls | **19 PASS** |"
+        },
+        {
+          "line": 25,
+          "text": "| Original LAB1 unit suite | **20 PASS** |"
+        },
+        {
+          "line": 26,
+          "text": "| Original LAB2 suite | **25 PASS** |"
+        },
+        {
+          "line": 27,
+          "text": "| Unchanged original RMB | **13 PASS / 23 RED**, exact original failing set retained |"
+        },
+        {
+          "line": 30,
+          "text": "| Original RBA paired recompute | **3,600 blocks**, B−A=C−A=0, conditional intervals[-1,1] |"
+        },
+        {
+          "line": 33,
+          "text": "No suite has skips or errors. Full stdout/JUnit, actual exit statuses, all original RMB failures and a3696-row policy×case×arm census are in `02_ACTUAL_EXECUTION_AND_CASE_LEDGER.json`, `repro/` and `outputs/case_ledger.json`. The original RMB exit1 is retained, not promoted. LAB1's576-trial machine result is historical retained evidence; this court reran its20 units, not a new576-trial machine experiment. The21,600 R2 captures were **re-audited from exact archived bytes**, not represented as newly sampled responses."
+        },
+        {
+          "line": 35,
+          "text": "Two bootstrap assertions were corrected before R3 execution: actual selector49 rather than reported48, and the v6 hash's correct file path. Initial LAB2 execution was24PASS/one missing local layout alias; the exact original freeze receipt was materialized at its expected path, then unchanged25PASS reproduced. That initial JUnit/stdout remains. No original test or expected class was altered."
+        },
+        {
+          "line": 39,
+          "text": "The original126 cases retain their R2 source bytes. Twenty-eight additional, predeclared K3/K5/K6 template clones use two new surface settings. These are **implementation-visible heldout fixtures**, not independent scenario families. All154 cases preserve exactly equal lawful facts across A/B/C and distinct inherited representations: A linear scalar entries, B non-ranking descriptive groups, C replay-verified retrieved context/evidence index. No action recommendation is added by a representation."
+        },
+        {
+          "line": 41,
+          "text": "The synthetic `aware` responder reads representation chunks with a **one-record budget**. It never reads `facts.organization`, an arm label, case ID, oracle or estimator answer. On the declared practiced+actual-capacity K6 contrast, A's first sorted scalar record exposes capacity but not practice; B's nonempty resource group and C's retrieved context expose both. The responder selects lawful **NO_SANCTION** if both conditions are not available, otherwise **POLICING_CANDIDATE**. Both remain in the lawful set. This intentionally scripted processing rule yields:"
+        },
+        {
+          "line": 43,
+          "text": "| Policy | Original B−A / C−A | Heldout B−A / C−A | Interpretation |"
+        },
+        {
+          "line": 45,
+          "text": "| Representation-aware, one record | **+1 / +1** | **+1 / +1** | Sensitivity on the predeclared action indicator |"
+        },
+        {
+          "line": 49,
+          "text": "| ID-bit/metadata action policy | **0 / 0** | **0 / 0** | Shared opaque block nonce prevents arm-ID association |"
+        },
+        {
+          "line": 53,
+          "text": "The finite reader also leaves some A/K4 responses OTHER_UNSCORABLE; they stay in the denominator. Its raw original-bank joint correctness is0.94444, versus1.0 for the fully informed blind policy. These descriptive script scores neither rank architectures nor calibrate an actor."
+        },
+        {
+          "line": 57,
+          "text": "The R3 schedule has **9432 trials /3144 matched blocks**, all six orders **524 each**. Every case crosses all menu rotations and all six orders; all arms share a menu and opaque public response nonce within each block. Unique evaluator trial IDs never enter provider payloads. Nuisance repetitions are averaged within case/family, not counted as independent families. Names, instruction and menu reversals preserve the aware response; metadata rerandomization detects the intentionally ID-dependent adversary."
+        },
+        {
+          "line": 59,
+          "text": "The replay auditor deliberately selects only ABC-order original blocks from the serial-position policy. That creates an apparent **B−A=+1/3** on the same predeclared K6 marker, despite no representation use. Exact schedule validation refuses that subset. Thus an observable false gain is shown and excluded by custody rather than called a treatment effect."
+        },
+        {
+          "line": 61,
+          "text": "**RBA order finding refined:** its pooled schedule has ABC1440 and other orders432, with78/96 rows per case. Its **primary stratum already has432 of every order** and54/72 rows per case. Fixed-ABC ancillary/null/free-text rows explain the pooled imbalance. `outputs/original_R2_schedule_stratified_audit.json` retains both counts. Do not misdescribe the original primary as unbalanced. R3 keeps strata explicit and does not pool ancillary repetitions into the primary estimand."
+        },
+        {
+          "line": 63,
+          "text": "K3 retains current alertness and conditioned self-testimony while hiding origin contents/IDs and evaluator “mistaken” labels. Replacing hidden origins leaves every tested payload identical. K5 public notices/recorded standing remain separate from private prior belief; certification never makes uncertainty confidence. K6 requires actual fixture capacity and practice for policing; optional NO_SANCTION survives. APPEAL and REMAIN_DOUBTFUL remain available in their lawful sets. No response writes an objective owner state."
+        },
+        {
+          "line": 67,
+          "text": "The policy module imports only JSON and has no oracle/file/network access. Exact local mock types, signed fixture scopes and internally rebuilt frozen payloads reject unissued/tampered privacy/cost/model permits, unknown policies, altered requests, redraw and overspend. LIVE mode and any provider adapter are unconditionally denied. One Python DNS-denial probe confirms the network guard before resolution; it does not make a model call. Local test signatures and mock counters are not money, provider usage or competent authority."
+        },
+        {
+          "line": 69,
+          "text": "## Independent custody, power and later experiment"
+        },
+        {
+          "line": 71,
+          "text": "`04_INDEPENDENT_ORACLE_AND_SCENARIO_CUSTODY.md` specifies distinct competent scenario/key/semantic roles, contribution/dependency disclosure, access-controlled holdout custody, role/purpose-bound externally trusted signatures, immutable raw capture, blind coding and adjudication before unblinding. Hashes alone do not prove independence; same-author dual code paths remain cross-validation. The current prototype/key correspondence is fully disclosed. No external custodian or trusted signature is fabricated."
+        },
+        {
+          "line": 73,
+          "text": "`05_PROSPECTIVE_SAMPLING_POWER_AND_REAL_EXPERIMENT.md` supplies the target/frame and family-level pairing proposal, case/family weights,12-comparison multiplicity, planned denominators, stopping rules, conditional bounded intervals and **separate precision and power requirements**. At alpha=.05,m=12, 5pp simultaneous precision needs4940 independent families under the conservative bound; an80%-power10pp superiority gap needs2818, while80%-power equivalence at true zero within±5pp needs12814. These are conditional worst-case planning calculations, not achieved power, approved sample sizes or permission to spend. Six convenience families and two template-clone contexts supply no population-power claim. Actual independent-family sampling, pilot variance/ICC, real model effects and provider cost remain UNKNOWN. Method sources and our derivations are linked in that document."
+        },
+        {
+          "line": 75,
+          "text": "A later real experiment requires all of: independent semantic/scenario custody and I2 review; prospective design/sample/power approval; a separately commissioned and validated real provider adapter; an actually issued competent eight-field model/use/privacy/spend/retention grant; immutable model/config/source/oracle/randomization identities; raw capture/cost/retry controls; and passed hard semantic and nuisance gates. An optional-action distribution shift alone is not an improvement or architectural adoption. Model-level N3/N7, arbitrary prose, provider seed/retention behavior and real actor/human results remain NOT_REACHED."
+        },
+        {
+          "line": 77,
+          "text": "All remaining owner HOLDs and the concrete later-review request are in `06_OWNER_ACTIONS_AND_LATER_REVIEW.json`. The prior RBA Muse/model-qualification disclosure is retained for HQ; this named Codex/GPT6.1High execution does not rewrite RBA's identity or self-adopt its qualitative verdict. No I3 accepted-authority collision was found."
+        },
+        {
+          "line": 81,
+          "text": "`bash repro/reproduce.sh` stages only exact authorized originals into ignored runtime, verifies the R1/R2/R3 freezes, reruns original and new tests, audits archived R2 data, runs the deterministic R3 sweep and replays all raw captures. It does not clone, install a provider SDK, request a credential, grant model use or edit owners. All original/R3 bytes, actual module paths, commands, JUnit/stdout, complete failures, case ledger and documentary capture chains are retained at their proper grade."
+        },
+        {
+          "line": 83,
+          "text": "The sanitized passport records the new opaque epoch, marker, actual imports/source hashes, quota observations and return affinity. The primary quota window reset naturally between observed58% and6%; those counters are not subtracted into task cost. Weekly34%→37% is shared-account observation, not task-exclusive attribution. Cash, token pricing/cache savings and incremental cost are UNKNOWN. No reset credit or paid overflow was used. Future reuse requires direct liveness/permissions re-probe."
+        },
+        {
+          "line": 85,
+          "text": "Only the assigned return is committed/pushed. The exact final SHA, one-commit ancestry, complete changed-path audit and direct remote readback are supplied after push outside self-hashed file bytes. ZERO external experimental model calls, actor/generated-person runs, original respondent/survey reads, operative N9/N10W, production/accepted-owner edits, semantic adoption, protected CURRENT/canonical merge, V3/N12 wake or physical weld occurred."
+        }
+      ],
+      "referenced_shas": [
+        "e924b2d9327b636cdc91731dde9c2aad1f52d226",
+        "a25ba9ab4e1a0dc12d3764bea8854c8fbc2df227",
+        "a7d2be9894bf92f81356adf14141136666e63bd1",
+        "1e1546f9e6e1520ab48eb9a9cf5da8ded4f00599",
+        "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+        "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+        "bf7518cff877ce108ef9c07f2e2eeaf990171d08"
+      ],
+      "reported_disposition": null,
+      "code_inspection": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/r3/__init__.py",
+        "blob": "ea1f74fbe8c8eb53caf31cc4080c1c3f127f5d2e",
+        "bytes": 79,
+        "functions": [],
+        "sample": "\"\"\"BL3 R3 synthetic assay, version1.0.0; no model/provider/actor authority.\"\"\"\n"
+      }
+    }
+  ]
+}
