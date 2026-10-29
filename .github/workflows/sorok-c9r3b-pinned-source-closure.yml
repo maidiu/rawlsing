@@ -89,6 +89,7 @@ jobs:
         run: |
           python SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER/verify_recovered_reader.py
           python -m pytest -q -p no:cacheprovider SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER/test_actor_fork_reader.py
+          python -m pytest -q -p no:cacheprovider SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER/test_repaired_c12_fork_equal_count.py
 
 # Deliberately does not run the Mac-only V3 BackboneState identity test, nor
 # claim native F1/M2, original CAN/ADP/SCI05, C11 or real performed E2.
