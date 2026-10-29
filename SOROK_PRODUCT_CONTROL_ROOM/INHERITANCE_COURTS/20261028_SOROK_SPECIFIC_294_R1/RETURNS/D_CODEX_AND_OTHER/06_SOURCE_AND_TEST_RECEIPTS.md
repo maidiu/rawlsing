@@ -112,6 +112,21 @@ For the 37 other sources, the original text/JSON receipt/proposal or command was
 | S51 `2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65` | Author 13/13; `00_RETURN.md` blob `798efe84d9cc1e3e34537329118b6b3b18871e42` | Relevance/checkpoint yes; real purpose/choice unproved |
 | S52 `c821b488b3a9a3f0fa01b1981989cc17af637dc1` | Author 13/13; `00_RETURN.md` blob `e0f3905c3a9e461becf7113d83fcebadef7de9b8` | Conditional paid opportunity and controlled port, no independently performed counterpart or wages |
 
+## Additional opened S40–S47 author-return receipts (sourcefree, not rerun)
+
+These eight original author returns were directly read in this court after the first-pass code inspection. They prove that specific claims were made at pinned cuts with versioned return sources, not that this independent investigator re-executed their tests or that native psychological meaning was issued.
+
+| Branch | Opened return blob | Reported focused tests | Actual mechanism and remaining ceiling |
+|---|---|---:|---|
+| S40 `79b0357c7af9b66ad8a28f5b77b46b0348094a23` | `1c716e064330c5e9caa4edc0735b1edbadf963cc` | 8 | Source-bound generated request/refusal speech, repaired E1 identity; synthetic language source |
+| S41 `c72a10d284f8869b990db3e6849ed174a51bd784` | `ef9c9b13d9b20b77cb076b0dfc216e8daa8d0ce6` | 19 | Two-event same person; canonical historical generation-input readset, repaired old substitution controls |
+| S42 `2489f8cdfbb5c400c636f33c7cf8cdf0aa55dc91` | `f01bbe5edb75c3d4d11dce258cf62f0e42971951` | 12 | Reusable event continuation and predecessor binding; no B source/person science |
+| S43 `3edd631fb6c31751dfd2143ba2faa9fc31561e54` | `755dfe6b80b8b13d25d9e1e8741fb02945bd386d` | 10 | Later language drawn from prior family/workshop source encounter, not new speech source at turn |
+| S44 `923278fbe6b030e2ffdd10fe42d7a18266344611` | `b69843a28bf30e2045358d70c8fb2ba1f35fc999` | 10 | Explicit seeded sampled pre-contact root; ADP020 claimed only at test scope |
+| S45 `f26a138e20d53c809d611cf8d834ec647b0804bf` | `403ba5398f7d6e9e205cd697dde5068aa271857b` | 21 | First-neighbor SAY/DO_HELP/ATTEND consumer on same root, no new psyche rule |
+| S46 `f0ef39b92ce2e4add5c0a699389e12f1d7ae434e` | `e97dd7d151640944a5708f5ab8ebfc170657574d` | 17 | Workshop interval actor/world performed material effect and S42 later read, not learned practice |
+| S47 `765a441f87292aa4c17794745b65cb54e6aaa83f` | `f95438bedb9d44a469d1aacde111f07a61bb6c9a` | 17 | S46 interval material source actually used by C9 at `run_candidate_path`, still T=NO_CHANGE |
+
 ## Comparator limitations and evidence preservation
 
 - PRE-MAIN comparison from GitHub is not a complete tree oracle: **26/60** have at least a 300-file cap or no common ancestor. Re-run **bounded exact `git diff --name-status`, `git merge-base`, `git rev-parse`, `git ls-tree`, direct `git cat-file` and matching `pytest`** only from a separately qualified execution host; the current documentary court must not invent their results.
