@@ -14,7 +14,7 @@ permissions:
 jobs:
   pinned-sourcefree:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 22
     steps:
       - name: Checkout proposed sourcefree fan-in
         uses: actions/checkout@v4
@@ -26,11 +26,17 @@ jobs:
           ref: 8da78d8031a06a4bd7e1297fd713e573299c0860
           path: .source-closure/s36
           persist-credentials: false
-      - name: Checkout exact historical JOIN-E return (separate, source-only)
+      - name: Checkout exact writer-era JOIN-E return (separate, source-only)
+        uses: actions/checkout@v4
+        with:
+          ref: 7bf2da302996491ddf34b9a039fea47ac982d135
+          path: .source-closure/join-e-writer
+          persist-credentials: false
+      - name: Checkout distinct later repaired JOIN-E for reader SHA contract
         uses: actions/checkout@v4
         with:
           ref: 68b058656254234f0af02df2a592aa6f8c6a8bd2
-          path: .source-closure/join-e
+          path: .source-closure/join-e-reader
           persist-credentials: false
       - uses: actions/setup-python@v5
         with:
@@ -40,7 +46,7 @@ jobs:
       - name: Pinned S36/JOIN-E source identity and external source preconditions
         env:
           RAWLSING_S36_SOURCE_ROOT: ${{ github.workspace }}/.source-closure/s36/WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1
-          RAWLSING_JOIN_E_VENDOR_J: ${{ github.workspace }}/.source-closure/join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j
+          RAWLSING_JOIN_E_VENDOR_J: ${{ github.workspace }}/.source-closure/join-e-writer/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j
         run: |
           python - <<'PY'
           import os
@@ -57,12 +63,12 @@ jobs:
       - name: Full 15-case C9 sourcefree writer court against pinned historical S36 and C12
         env:
           RAWLSING_S36_SOURCE_ROOT: ${{ github.workspace }}/.source-closure/s36/WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1
-          RAWLSING_JOIN_E_VENDOR_J: ${{ github.workspace }}/.source-closure/join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j
+          RAWLSING_JOIN_E_VENDOR_J: ${{ github.workspace }}/.source-closure/join-e-writer/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j
         run: |
           python SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/verify_recovered_source.py --pytest
       - name: Verify C12 reader's four independently pinned source SHA256 values
         env:
-          C12_READER_SOURCE: ${{ github.workspace }}/.source-closure/join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1
+          C12_READER_SOURCE: ${{ github.workspace }}/.source-closure/join-e-reader/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1
         run: |
           python - <<'PY'
           import os, pathlib, hashlib, sys
@@ -79,7 +85,7 @@ jobs:
       - name: Verified C9 reader cold/fork court against exact JOIN-E full source
         env:
           C9_READER_SOURCE: ${{ github.workspace }}/SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL
-          C12_READER_SOURCE: ${{ github.workspace }}/.source-closure/join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1
+          C12_READER_SOURCE: ${{ github.workspace }}/.source-closure/join-e-reader/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1
         run: |
           python SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER/verify_recovered_reader.py
           python -m pytest -q -p no:cacheprovider SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER/test_actor_fork_reader.py
