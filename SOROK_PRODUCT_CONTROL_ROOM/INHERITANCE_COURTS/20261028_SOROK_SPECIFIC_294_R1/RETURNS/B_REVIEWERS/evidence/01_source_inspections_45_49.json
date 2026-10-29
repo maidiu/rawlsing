@@ -1,0 +1,906 @@
+{
+  "schema": "SOROK_294_B_SOURCE_INSPECTION_BATCH_R1",
+  "rows": [
+    {
+      "index": 45,
+      "name": "agent/reviewer-sorok-r3-hq314-m04-m03-independent-r1",
+      "pinned_sha": "3a993abcc0a9f6bd3a1bb003d298d293be199ea6",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 1,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/16_REMOTE_CONTENT_VERIFICATION.json"
+      ],
+      "code_paths": [],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "5840b2f3f551903d61ce00654b8b964c0ea3a545",
+        "url": "https://github.com/maidiu/rawlsing/blob/3a993abcc0a9f6bd3a1bb003d298d293be199ea6/WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 56
+      },
+      "review_evidence": "# M04 independent M03 causal court\n\n**Verdict: REVIEW_REVISE.** The unchanged published expectation reproduces exactly: **587/587 PASS**. The **51 new independently frozen tests yield 41 PASS / 10 FAIL**, exposing three provenance failures. The original **nine CAN3 historical REDs execute as nine separate FAILs**. No skipped, xfailed or errored cases enter any denominator.\n\n## Independent custody and execution\n\nThis is a fresh reviewer conversation with no authorship of M01, M02 or M03. No author conversation history was imported or read. One reviewer completed source review, test design, execution, adjudication and return; no assistants, model switches, external model/actor calls, semantic issuance or V3 operation occurred. The administrative dispatch supplied no review findings.\n\nCheckout and direct `git ls-remote` both initially resolved the assigned branch to **2f4482ae23960037da4ebee84501916dc6e5b422**. The supplied worktree was detached and non-sparse; it was attached to the assigned branch and made sparse in place, reusing the existing Git object store. Writes are confined to this reviewer return. Exact source was reconstructed from Git, never from another author's live worktree.\n\nThe full commission, Sorok read-me, 00B, 00C §§3A/3B/5A, 00D, HQ314 intake, M01 preregistration, M03 return/source audit/all author test source, and accepted CAN008/ADP016/ADP017 source blobs informed the court. The exact immutable CAN008 candidate-named blob is accepted via its separate HQ adoption record; its historical label does not demote the adopted content.\n\nThe fresh expectations and executable source were committed at **3b529996ddd05c3c84225d2054428ff943091aef before their first execution**. Their SHA-256 identities remain unchanged. [Preregistration](02_FROZEN_EXPECTATIONS.md), [freeze manifest](03_FREEZE_MANIFEST.json), [frozen tests](review/test_falsifiers.py), [actual invocation](evidence/fresh/command.json) and [JUnit/stdout](evidence/fresh) preserve the falsification record. No failed expectation was edited, skipped or reclassified into a pass.\n\n## Reproduction\n\n| Court | Observed result |\n| --- | ---: |\n| M01 controls | 94 PASS |\n| CAN3 inherited controls | 97 PASS |\n| CAN2 inherited controls | 89 PASS |\n| Relevant owner controls | 133 PASS |\n| Unchanged M02 independent controls | 100 PASS |\n| M03 author controls | 74 PASS |\n| Published current denominator | **587 PASS** |\n| Fresh M04 controls | **41 PASS / 10 FAIL** |\n| Separate original historical CAN3 court | **9 FAIL** |\n\nBefore installing the M03 overlay, the same 413 tests passed and the unchanged M02 100 produced **98 PASS / 2 FAIL**. Both original M02 failures change to PASS under M03: unknown outer claim selection refuses as `CLAIM_SELECTION_UNKNOWN`, and the admitted 1999 claim selected for a 1998 response refuses as `CLAIM_SELECTION_AFTER_RESPONSE`. Those repairs are independently reproduced and remain accepted as bounded findings.\n\nThe [literal 587-case matrix](04_LITERAL_587_CASE_MATRIX.json), [fresh 51-case matrix](05_FRESH_51_CASE_MATRIX.json), [separate historical identities](06_SEPARATE_HISTORICAL_NINE.json), [execution totals](11_REVIEW_RESULTS.json), full stdout/JUnit, and actual native-state/function-source observations accompany this return. The historical nine are not part of either the 587 or the 51. The entire CAN3 585-case historical suite was not claimed rerun.\n\n## Blocking findings\n\n1. **P1 — coherent cross-cell owner substitution erases committed BELIEF (four failures).** Keep the original BELIEF cell's first-event journal and selection binding but replace its current owner checkpoint with the matching memory cell's legitimate NONE owner checkpoint. Restore accepts it; later evaluation emits epistemic **AMPLIFY**. The real first-event commitment still contains BELIEF, and no withdrawal occurred. `committed_binding` checks only equality of the canonical claim inside the committed and current owner states; `validate_consumption` treats missing snapshot/active/transition/permission together as lawful NONE without proving descent from the committed owner state. This is not the legitimate NONE positive control. [Four saved packet/response proofs](10_FAILURE_PROOFS.json); first concrete receipt: [CERTAIN owner splice](evidence/fresh/observations/erase_owner_CERTAIN.json). Relevant immutable source: `claim_provenance.py` lines 123–126 and 286–291.\n2. **P1 — partial rollback resurrects revoked or withdrawn permission (four failures).** Make a real native SUPERSEDE_EXACT_RECORD to inaccessible BELIEF or a real WITHDRAW. Keep both native transitions, then restore only old active stance/snapshot/permission fields. Public restore and direct read both accept it, returning **REROUTE** with `PERMIT_FIRST_PERSON_BELIEF`, despite the retained later transition. `last_transition_ref` is verified against any matching historical transition, without proving it is the terminal applicable transition. [Supersession proof](evidence/fresh/observations/resurrect_SUPERSEDE_EXACT_RECORD_False.json), [withdrawal proof](evidence/fresh/observations/resurrect_WITHDRAW_True.json). Source lines 339–349. This is a hybrid snapshot, not lawful full checkpoint rewind.\n3. **P1 — coherent digest validity substitutes for actual pre-state ancestry (two failures).** Replace a native effect's transition pre-state with an unrelated digest, then coherently recompute effect ID, stance map, transition ID, snapshot and permission binding. Leave the real ADP017 commit in the original journal. Both direct and transactional consumption accept **REROUTE** although the declared transition pre-state differs from the actual committed pre-state. Identity checks establish internal consistency but never compare the claimed ancestry to the real owner trajectory. [Outer response proof](evidence/fresh/observations/forged_ancestry_False.json), [direct read proof](evidence/fresh/observations/forged_ancestry_True.json). Source lines 206–226.",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# M04 independent M03 causal court"
+        },
+        {
+          "line": 3,
+          "text": "**Verdict: REVIEW_REVISE.** The unchanged published expectation reproduces exactly: **587/587 PASS**. The **51 new independently frozen tests yield 41 PASS / 10 FAIL**, exposing three provenance failures. The original **nine CAN3 historical REDs execute as nine separate FAILs**. No skipped, xfailed or errored cases enter any denominator."
+        },
+        {
+          "line": 5,
+          "text": "## Independent custody and execution"
+        },
+        {
+          "line": 7,
+          "text": "This is a fresh reviewer conversation with no authorship of M01, M02 or M03. No author conversation history was imported or read. One reviewer completed source review, test design, execution, adjudication and return; no assistants, model switches, external model/actor calls, semantic issuance or V3 operation occurred. The administrative dispatch supplied no review findings."
+        },
+        {
+          "line": 23,
+          "text": "| Unchanged M02 independent controls | 100 PASS |"
+        },
+        {
+          "line": 27,
+          "text": "| Separate original historical CAN3 court | **9 FAIL** |"
+        },
+        {
+          "line": 29,
+          "text": "Before installing the M03 overlay, the same 413 tests passed and the unchanged M02 100 produced **98 PASS / 2 FAIL**. Both original M02 failures change to PASS under M03: unknown outer claim selection refuses as `CLAIM_SELECTION_UNKNOWN`, and the admitted 1999 claim selected for a 1998 response refuses as `CLAIM_SELECTION_AFTER_RESPONSE`. Those repairs are independently reproduced and remain accepted as bounded findings."
+        },
+        {
+          "line": 31,
+          "text": "The [literal 587-case matrix](04_LITERAL_587_CASE_MATRIX.json), [fresh 51-case matrix](05_FRESH_51_CASE_MATRIX.json), [separate historical identities](06_SEPARATE_HISTORICAL_NINE.json), [execution totals](11_REVIEW_RESULTS.json), full stdout/JUnit, and actual native-state/function-source observations accompany this return. The historical nine are not part of either the 587 or the 51. The entire CAN3 585-case historical suite was not claimed rerun."
+        },
+        {
+          "line": 35,
+          "text": "1. **P1 — coherent cross-cell owner substitution erases committed BELIEF (four failures).** Keep the original BELIEF cell's first-event journal and selection binding but replace its current owner checkpoint with the matching memory cell's legitimate NONE owner checkpoint. Restore accepts it; later evaluation emits epistemic **AMPLIFY**. The real first-event commitment still contains BELIEF, and no withdrawal occurred. `committed_binding` checks only equality of the canonical claim inside the committed and current owner states; `validate_consumption` treats missing snapshot/active/transition/permission together as lawful NONE without proving descent from the committed owner state. This is not the legitimate NONE positive control. [Four saved packet/response proofs](10_FAILURE_PROOFS.json); first concrete receipt: [CERTAIN owner splice](evidence/fresh/observations/erase_owner_CERTAIN.json). Relevant immutable source: `claim_provenance.py` lines 123–126 and 286–291."
+        },
+        {
+          "line": 36,
+          "text": "2. **P1 — partial rollback resurrects revoked or withdrawn permission (four failures).** Make a real native SUPERSEDE_EXACT_RECORD to inaccessible BELIEF or a real WITHDRAW. Keep both native transitions, then restore only old active stance/snapshot/permission fields. Public restore and direct read both accept it, returning **REROUTE** with `PERMIT_FIRST_PERSON_BELIEF`, despite the retained later transition. `last_transition_ref` is verified against any matching historical transition, without proving it is the terminal applicable transition. [Supersession proof](evidence/fresh/observations/resurrect_SUPERSEDE_EXACT_RECORD_False.json), [withdrawal proof](evidence/fresh/observations/resurrect_WITHDRAW_True.json). Source lines 339–349. This is a hybrid snapshot, not lawful full checkpoint rewind."
+        },
+        {
+          "line": 37,
+          "text": "3. **P1 — coherent digest validity substitutes for actual pre-state ancestry (two failures).** Replace a native effect's transition pre-state with an unrelated digest, then coherently recompute effect ID, stance map, transition ID, snapshot and permission binding. Leave the real ADP017 commit in the original journal. Both direct and transactional consumption accept **REROUTE** although the declared transition pre-state differs from the actual committed pre-state. Identity checks establish internal consistency but never compare the claimed ancestry to the real owner trajectory. [Outer response proof](evidence/fresh/observations/forged_ancestry_False.json), [direct read proof](evidence/fresh/observations/forged_ancestry_True.json). Source lines 206–226."
+        },
+        {
+          "line": 39,
+          "text": "All ten failures reached an actual read; seven outer cases also committed a later response. These are executable finite checkpoint/restore counterexamples, not claims of OS-level compromise. Full valid same-contract checkpoint replay remains a passing control. [Independent evidence audit](review/audit_review.py) checks the original journal contradictions in the saved packets without replacing the failing assertions."
+        },
+        {
+          "line": 41,
+          "text": "Required correction belongs to the candidate implementer: validate current owner-state descent and terminal applicable transitions against authoritative first-state/transition provenance, including genuine absence, revocation/withdrawal and pre-state identity. Preserve legitimate native addition/supersession/withdrawal, NONE and complete replay. Rejection must occur before productive consumption and remain atomic. This reviewer supplies no implementation patch or new semantic rule."
+        },
+        {
+          "line": 45,
+          "text": "The unchanged **36-arm 4 memory × 3 epistemic × 3 history factorial** remains causally intact at the constructed sourcefree grain. Actual E1 admission, native owner commit, later E2 admission, actual owner checkpoint read and response commit are verified. Memory content changes Ym at fixed epistemic state; epistemic state/access changes Ye at fixed memory. History stored/omitted/withheld changes delivery receipts while leaving both M01 outputs unchanged. The original CAN3 history comparator remains a separate positive history mechanism: stored history DEFLECT versus omitted history AMPLIFY with identical native owner state. [Factorial and comparator audit](09_FACTORIAL_AND_COMPARATOR.json); [causal interpretation/DAG](12_CAUSAL_INTERPRETATION.md)."
+        },
+        {
+          "line": 47,
+          "text": "This supports **finite constructed parallel conditioning**, with a failed adversarial restoration boundary. It does not demonstrate serial ADP016→ADP017 mediation: factorial BELIEF formation uses direct actor-facing event basis and empty memory basis, and reference attachment does not constitute a content-sensitive causal rule. It does not calibrate human psychology, autonomous person development or open-world generalization. The hand-authored event family, synthetic actor/world, intervention grants and categorical response maps are held fixed. Warranted rung is F3 for reproduced finite behavior, not F4/F5 for the intended product."
+        },
+        {
+          "line": 49,
+          "text": "Lawful canonical claim without applied stance still yields NONE/AMPLIFY. BUFFER, DEFLECT, REROUTE, BLOCK and negative access-unknown/refusal remain executable. Naive/invalid/earlier/equal/source/outside-scope time cuts refuse, aware equivalent cuts pass, and genuinely later admitted response cuts in 1999/2000 pass. A future *unselected* native claim does not poison lawful NONE. No test demands a new future claim replace the fixed E1 claim under a rule that never grants that selection. Broader future content-sensitive revision remains outside this finite implementation's demonstrated scope."
+        },
+        {
+          "line": 51,
+          "text": "CAN008 R2 §§5.2/14/17 require exact owner state, effective-time validity and replayable source identity; ADP017 belief_gate, active-until-exact-transition, historical receipts and snapshot-bound permission require actual provenance. The three failures violate those requirements; they do not reveal a contradiction between accepted authorities. **I3 escalation: not triggered.** CAN008 retains response jurisdiction; ADP016 retains memory; ADP017 retains epistemic state/access/permission. Real operative owner authority, serial mediation and human calibration remain HOLD."
+        },
+        {
+          "line": 53,
+          "text": "The production EMPTY guard remains byte-identical at **e0528d65215cb431196570c38bac4eae94217a1b**, verified in actual imports and executions. All original test and law preimages remain exact. M03 effective cell blob **3eb2d02aee8dc840e7cac1f99230d7c69adc2f58**, helper blob **2434bda6f4b00e6ea5881291f5422227e8045e74**. [Test source identities](07_LITERAL_TEST_SOURCE_IDENTITIES.json), [actual imports](08_SOURCE_AND_IMPORT_AUDIT.json), [pinned source index](13_SOURCE_AND_AUTHORITY_INDEX.json)."
+        }
+      ],
+      "referenced_shas": [
+        "2f4482ae23960037da4ebee84501916dc6e5b422",
+        "3b529996ddd05c3c84225d2054428ff943091aef",
+        "e0528d65215cb431196570c38bac4eae94217a1b",
+        "3eb2d02aee8dc840e7cac1f99230d7c69adc2f58",
+        "2434bda6f4b00e6ea5881291f5422227e8045e74"
+      ],
+      "reported_disposition": "Verdict: REVIEW_REVISE.** The unchanged published expectation reproduces exactly: **587/587 PASS**. The **51 new independently frozen tests yield 41 PASS / 10 FAIL**, exposing three provenance failures. The original **nine CAN3 historical REDs execute as nine separate"
+    },
+    {
+      "index": 46,
+      "name": "agent/reviewer-sorok-r3-hq314-out9-out8-independent-r1",
+      "pinned_sha": "fd58957fceca250e86ed3b1a5d06fa45ffc9ec85",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 1,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ314-OUT9-OUT8-INDEPENDENT-R1/06_REMOTE_VERIFICATION.json"
+      ],
+      "code_paths": [],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ314-OUT9-OUT8-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "1b43399f848d9c7e380303336fb5d878e1e09949",
+        "url": "https://github.com/maidiu/rawlsing/blob/fd58957fceca250e86ed3b1a5d06fa45ffc9ec85/WORKER_RETURNS/SOROK-R3-HQ314-OUT9-OUT8-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 167
+      },
+      "review_evidence": "# HQ314 OUT9 — independent OUT8 restored-receipt court — reviewer return\n\n**Verdict:** `REVIEW_PASS_SCOPED_SINGLE_WRITER_SOURCEFREE`\n**Scope of verdict:** source-free single-writer outbox custody court only — no\nreal client perception, no real material world, no multiwriter proof, no\nADP-019 event authority, no semantic adoption, no V3 operation.\n\n## Role, branch, sealed startup\n\n- **Role:** fresh independent I2 source-free outbox reviewer. NOT author\n  OUT8/OUT6/OUT7, NOT HQ, NOT ADP019 issuer, NOT client-perception witness.\n- **Branch:** `agent/reviewer-sorok-r3-hq314-out9-out8-independent-r1`.\n- **EXACT SEALED STARTUP:** `f791d6881a465442ae6fc4a117b83e864ee8e426` — verified\n  equal to direct remote branch HEAD before any write (launch SHA and branch tip\n  agreed at start; no mid-flight commission revision occurred).\n- **HQ314 parent:** `f9b4fd61eb64ad644b590b644450ac5563b6d151`.\n- **Write terrain (exclusive):** `WORKER_RETURNS/SOROK-R3-HQ314-OUT9-OUT8-INDEPENDENT-R1/`.\n- **Commission + binding reads:** commission file at startup; Sorok\n  `00_READ_ME_FIRST`, `00B`, `00C` (§3A/§3B/§5A), `00D`; HQ314 intake\n  `HQ314_OUT8_M03_RETURN_FANIN_OC6_PENDING_AND_TWO_INDEPENDENT_COURTS_R1.md` and\n  HQ313 fan-in at parent; OUT8 author `0e05c7dab8334b96f2b2b79e935eeebb1c0f0d11`\n  (00_RETURN, 01_EXECUTION_INDEX, 02_OWNER_HOLDS, 03_REPRODUCE, source/test\n  archive); OUT7 independent `d3d0836d922dcb88eaf0a0591e66551aa6fb9f0a`; OUT6\n  author `673233571b7d899c309dd26f9b9cd2508404c0b6`; OUT4\n  `2afa3022e5551df71b739cf8689e832db85e1196`; OUT3 exact\n  `0ab31e4198299708e700840c1b68e0d94a2ced06`.\n\n## One coherent outcome\n\n**The author's repaired closure reproduces exactly, and the repairs hold under\nindependent attack.** The literal 247-case suite was reconstructed from pinned\nprovenance (not from author claims), executed unchanged, and reproduced\n**245 PASS / 2 retained historical REDs** — identical to the author expectation.\nThe two REDs are preserved untouched: `test_s27_material_move_needs_world_owner`\n(S27 forbidden/unissued mug physical movement) and\n`test_replay_manual_two_writers_can_lose_first_committed_event` (two-writer\nstale journal race). No skip, xfail, edit or relabel was applied.",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# HQ314 OUT9 — independent OUT8 restored-receipt court — reviewer return"
+        },
+        {
+          "line": 3,
+          "text": "**Verdict:** `REVIEW_PASS_SCOPED_SINGLE_WRITER_SOURCEFREE`"
+        },
+        {
+          "line": 4,
+          "text": "**Scope of verdict:** source-free single-writer outbox custody court only — no"
+        },
+        {
+          "line": 10,
+          "text": "- **Role:** fresh independent I2 source-free outbox reviewer. NOT author"
+        },
+        {
+          "line": 12,
+          "text": "- **Branch:** `agent/reviewer-sorok-r3-hq314-out9-out8-independent-r1`."
+        },
+        {
+          "line": 15,
+          "text": "  agreed at start; no mid-flight commission revision occurred)."
+        },
+        {
+          "line": 17,
+          "text": "- **Write terrain (exclusive):** `WORKER_RETURNS/SOROK-R3-HQ314-OUT9-OUT8-INDEPENDENT-R1/`."
+        },
+        {
+          "line": 20,
+          "text": "  `HQ314_OUT8_M03_RETURN_FANIN_OC6_PENDING_AND_TWO_INDEPENDENT_COURTS_R1.md` and"
+        },
+        {
+          "line": 22,
+          "text": "  (00_RETURN, 01_EXECUTION_INDEX, 02_OWNER_HOLDS, 03_REPRODUCE, source/test"
+        },
+        {
+          "line": 23,
+          "text": "  archive); OUT7 independent `d3d0836d922dcb88eaf0a0591e66551aa6fb9f0a`; OUT6"
+        },
+        {
+          "line": 30,
+          "text": "**The author's repaired closure reproduces exactly, and the repairs hold under"
+        },
+        {
+          "line": 31,
+          "text": "independent attack.** The literal 247-case suite was reconstructed from pinned"
+        },
+        {
+          "line": 33,
+          "text": "**245 PASS / 2 retained historical REDs** — identical to the author expectation."
+        },
+        {
+          "line": 34,
+          "text": "The two REDs are preserved untouched: `test_s27_material_move_needs_world_owner`"
+        },
+        {
+          "line": 39,
+          "text": "## Provenance reconstruction (independent, not author-trusted)"
+        },
+        {
+          "line": 43,
+          "text": "| original 137-suite closure | OUT4 archive `OUT4_EXECUTED_EVIDENCE.tar.xz` staged byte-exact (5 modules + 6 test files) |"
+        },
+        {
+          "line": 44,
+          "text": "| source lineage | original source `c7bb4169d43c715de7dd113b24d3ce897e37beab` → `patch OUT6_EXACT_SOURCE.patch` → verified `aa002cb634e81cb980820c14220a1ab55bc5e015` (sha256 `b58da0f5…`) → `patch OUT8_EXACT_SOURCE.patch` → verified `331840768ce0b5f6f73e5e93094ca0d217ddaebf` (sha256 `5c994f29…`) |"
+        },
+        {
+          "line": 45,
+          "text": "| test provenance | OUT3 `test_out3_independent_hostile.py` (`c1fce628…`), OUT4 harness (`337b1098…`), OUT6 `test_out6_receipt_repair.py` (`c1bbfddd…` from `.xz`), OUT7 `test_out7_independent_hostile.py` (`0a2bc82c…`), OUT8 `test_out8_restored_state_repair.py` (`d23e6cfc…`) |"
+        },
+        {
+          "line": 47,
+          "text": "| imports | real `module.__file__` resolves into the isolated staging dir (`candidate/outbox_prototype.py`); subprocess cold tests run real child processes |"
+        },
+        {
+          "line": 52,
+          "text": "| Module | Cases | Pass | RED |"
+        },
+        {
+          "line": 55,
+          "text": "| test_rsr_independent | 17 | 17 | 0 |"
+        },
+        {
+          "line": 56,
+          "text": "| test_rsr_cold_replay | 2 | 2 | 0 |"
+        },
+        {
+          "line": 57,
+          "text": "| test_cold_repair | 9 | 9 | 0 |"
+        },
+        {
+          "line": 60,
+          "text": "| test_out3_independent_hostile | 22 | 22 | 0 |"
+        },
+        {
+          "line": 61,
+          "text": "| test_out4_independent_harness | 29 | 29 | 0 |"
+        },
+        {
+          "line": 63,
+          "text": "| test_out7_independent_hostile | 21 | 21 | 0 |"
+        },
+        {
+          "line": 64,
+          "text": "| test_out8_restored_state_repair | 20 | 20 | 0 |"
+        },
+        {
+          "line": 67,
+          "text": "## Independently frozen expectations (before any new test)"
+        },
+        {
+          "line": 69,
+          "text": "`01_INDEPENDENT_FROZEN_EXPECTATIONS.json` — frozen before executing my own"
+        },
+        {
+          "line": 73,
+          "text": "## My new independent court — 25/25 at real entrypoints"
+        },
+        {
+          "line": 75,
+          "text": "`candidate/test_out9_independent_hostile.py` (JUnit `junit/out9_hostile_junit.xml`,"
+        },
+        {
+          "line": 81,
+          "text": "`NOT_SENT` zero-attempt placeholder remains lawful; N23 — complete lawful"
+        },
+        {
+          "line": 82,
+          "text": "multi-viewer chain survives cold reload and validates; N14 — a **valid** journal"
+        },
+        {
+          "line": 86,
+          "text": "across cold reload; N24 — duplicate admission returns the single deterministic"
+        },
+        {
+          "line": 96,
+          "text": "atomicity** (live snapshot byte-unchanged after refusal); N15 cold tampered"
+        },
+        {
+          "line": 100,
+          "text": "client receipt); N25 cold-forged revoked tombstone refused with"
+        },
+        {
+          "line": 103,
+          "text": "**Cold crash atomicity (real subprocess, `os._exit`, real files)** —"
+        },
+        {
+          "line": 104,
+          "text": "`evidence/cold_crash_evidence.json`: BEFORE_RENAME → child exit 79, prior"
+        },
+        {
+          "line": 105,
+          "text": "journal bytes **byte-identical**, only a pending temp file left, recovered prior"
+        },
+        {
+          "line": 107,
+          "text": "recovered and validated; tampered payload with recomputed unkeyed digest →"
+        },
+        {
+          "line": 110,
+          "text": "## What this verdict does and does not establish"
+        },
+        {
+          "line": 113,
+          "text": "historical REDs are preserved; the OUT7-repaired invariants — strict aggregate"
+        },
+        {
+          "line": 115,
+          "text": "forged zero-attempt revoked tombstones, detached-restore atomicity, cold"
+        },
+        {
+          "line": 117,
+          "text": "behavior and ACK terminal immutability — hold under my independent attacks; 25/25"
+        },
+        {
+          "line": 123,
+          "text": "never assert it); multiwriter safety (the two-writer RED is preserved, not"
+        },
+        {
+          "line": 124,
+          "text": "repaired); ADP-019 event authority; any population/psychology claim; OUTP policy"
+        },
+        {
+          "line": 127,
+          "text": "## Non-claims honored by construction"
+        },
+        {
+          "line": 129,
+          "text": "- Unkeyed journal hash is not independent external provenance (N14: recomputing"
+        },
+        {
+          "line": 132,
+          "text": "- No test reads OUT5's unpublished suite; OUT5 remains `NOT_RUN_UNPUBLISHED`."
+        },
+        {
+          "line": 136,
+          "text": "## Deliverables (`WORKER_RETURNS/SOROK-R3-HQ314-OUT9-OUT8-INDEPENDENT-R1/`)"
+        },
+        {
+          "line": 141,
+          "text": "| `01_INDEPENDENT_FROZEN_EXPECTATIONS.json` | my frozen expectations + falsifiers (pre-execution) |"
+        },
+        {
+          "line": 142,
+          "text": "| `candidate/` | the full pinned closure (11 test modules + 5 modules) + my new court + `cold_crash_evidence.py` |"
+        },
+        {
+          "line": 145,
+          "text": "| `evidence/` | `source_hash_ledger.json`, `case_by_case_matrix.json`, `per_module_247.json`, `cold_crash_evidence.json`, `final_run_summary.json` |"
+        },
+        {
+          "line": 146,
+          "text": "| `05_POLICY_AND_HOLDS.md` | OUTP L1/L2 + A1/A2 HOLDS, OUT5 NOT_RUN_UNPUBLISHED, model/privacy/usage HOLDs |"
+        },
+        {
+          "line": 152,
+          "text": "Python 3.11.3, pytest 9.0.2, git 2.43.0, real subprocess cold tests. **Model"
+        },
+        {
+          "line": 163,
+          "text": "2. Real ADP-019 admission producer and external anchor."
+        },
+        {
+          "line": 164,
+          "text": "3. The two preserved REDs remain separate scopes: S27 material-movement world"
+        }
+      ],
+      "referenced_shas": [
+        "f791d6881a465442ae6fc4a117b83e864ee8e426",
+        "f9b4fd61eb64ad644b590b644450ac5563b6d151",
+        "0e05c7dab8334b96f2b2b79e935eeebb1c0f0d11",
+        "d3d0836d922dcb88eaf0a0591e66551aa6fb9f0a",
+        "673233571b7d899c309dd26f9b9cd2508404c0b6",
+        "2afa3022e5551df71b739cf8689e832db85e1196",
+        "0ab31e4198299708e700840c1b68e0d94a2ced06",
+        "c7bb4169d43c715de7dd113b24d3ce897e37beab",
+        "aa002cb634e81cb980820c14220a1ab55bc5e015",
+        "331840768ce0b5f6f73e5e93094ca0d217ddaebf"
+      ],
+      "reported_disposition": "Verdict:** `REVIEW_PASS_SCOPED_SINGLE_WRITER_SOURCEFREE`"
+    },
+    {
+      "index": 47,
+      "name": "agent/reviewer-sorok-r3-hq315-oc7-oc6-native-independent-r1",
+      "pinned_sha": "6e7d85d28f82729a06ede32d0440b63d0452a634",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [
+        "CODE NOT_FOUND: Error code: NOT_FOUND; Error: GitHub API error 404: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+      ],
+      "changed_paths_count": 37,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/02_FROZEN_EXPECTATION_MATRIX.json",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/03_RED_ADJUDICATION.md",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/04_REVIEWER_SUITE_CORRECTION_LEDGER.json",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/05_OWNER_HOLD_TYPO_TOLERANT_LEAK_GATE_R1.md",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/environment_passport_delta.json",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/_stage_ledger.json",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/_stage_oc6_ledger.json",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/court_summary.json",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/import_ledger.jsonl",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/inherited_131.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/inherited_131.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc4_new_36.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc4_new_36.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc5_prior_23.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc5_prior_23.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc5e_native_159.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc5e_native_159.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc6_author_273.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc6_author_273.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc7_adversarial_v1.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc7_adversarial_v1.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc7_adversarial_v2.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc7_adversarial_v2.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/court_summary.json",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/import_ledger.jsonl",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/inherited_131.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/inherited_131.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/oc4_new_36.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/oc4_new_36.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/oc5_prior_23.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/oc5_prior_23.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/oc5e_native_159.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/oc5e_native_159.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/oc7_adversarial_v2_against_unrepaired.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/repro/oc7_extract_reds.py",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/tests/test_oc7_adversarial_v2_amended.py"
+      ],
+      "code_paths": [
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/repro/oc7_extract_reds.py",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/tests/test_oc7_adversarial_v2_amended.py"
+      ],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "dccd68ce928264f0de2af70f6686ae69b98ed438",
+        "url": "https://github.com/maidiu/rawlsing/blob/6e7d85d28f82729a06ede32d0440b63d0452a634/WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 181
+      },
+      "review_evidence": "# SOROK HQ315 OC7 — independent OC6 native custody court\n\n**VERDICT: `REVIEW_PASS_TESTONLY_CUSTODY_WITH_RETAINED_LITERAL_REDS`**\n**Acceptance grain:** scoped `TEST_ONLY` sourcefree custody fixtures only.\n\n| | |\n|---|---|\n| **Reviewer** | Fresh independent I2 sourcefree custody reviewer. **NOT** the OC6 author, **NOT** the OC5E author, **NOT** HQ, **NOT** an institutional custodian or semantic oracle issuer. |\n| **Candidate under review** | OC6 `c6cb15d7417595c359571e4525dd0f0fd6c59d1f` |\n| **Sealed startup** | `2f9118cd5a0a920a6a4f729289ff2798ca8fbaa3`, verified against direct remote branch HEAD |\n| **Branch** | `agent/reviewer-sorok-r3-hq315-oc7-oc6-native-independent-r1` |\n| **Original OC5E court** | `67a4f1561cdad40192f00797d66b24fc4cd91589` |\n| **Environment** | `LOCAL_DOMINANT` isolated sparse worktree, real Python 3.11.3 / pytest 9.1.1 / Git 2.39.1 |\n| **Model / editor** | Step 5 Preview in OpenCode (owner-selected pair). One agent, no helpers, no model or harness switch. |\n| **Write terrain** | `WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/` only |\n\n---\n\n## 1. Independent reproduction — every author number reproduced exactly\n\nNothing below is taken from the author return. Each figure comes from this reviewer's own JUnit XML,\ncounted from the XML rather than from pytest's exit code.\n\n| Phase | Module under test | Cases | PASS | RED | Author claimed |\n|---|---|---:|---:|---:|---|\n| BEFORE, 349 unchanged | `af2b7e94…` unrepaired OC4 | 349 | **283** | **66** | 283 / 66 ✔ |\n| AFTER, 349 unchanged | `4c185c18…` OC6 repaired | 349 | **328** | **21** | 328 / 21 ✔ |\n| AFTER + 273 author controls | `4c185c18…` OC6 repaired | 622 | **601** | **21** | 601 / 21 across 622 ✔ |\n\nPer suite (unchanged 349 splits 131 + 36 + 23 + 159):\n\n| Suite | Before | After |\n|---|---|---|\n| inherited 131 (OC1/OCR1/OC2/OC3) | 121 PASS / 10 RED | **121 PASS / 10 RED — unchanged, identical reason strings** |\n| OC4 author 36 | 36 PASS | **36 PASS** |\n| OC5 prior predictions 23 | 16 PASS / 7 RED | **23 PASS / 0 RED** |\n| OC5E native hostiles 159 | 110 PASS / 49 RED | 148 PASS / 11 RED |",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# SOROK HQ315 OC7 — independent OC6 native custody court"
+        },
+        {
+          "line": 3,
+          "text": "**VERDICT: `REVIEW_PASS_TESTONLY_CUSTODY_WITH_RETAINED_LITERAL_REDS`**"
+        },
+        {
+          "line": 4,
+          "text": "**Acceptance grain:** scoped `TEST_ONLY` sourcefree custody fixtures only."
+        },
+        {
+          "line": 8,
+          "text": "| **Reviewer** | Fresh independent I2 sourcefree custody reviewer. **NOT** the OC6 author, **NOT** the OC5E author, **NOT** HQ, **NOT** an institutional custodian or semantic oracle issuer. |"
+        },
+        {
+          "line": 11,
+          "text": "| **Branch** | `agent/reviewer-sorok-r3-hq315-oc7-oc6-native-independent-r1` |"
+        },
+        {
+          "line": 12,
+          "text": "| **Original OC5E court** | `67a4f1561cdad40192f00797d66b24fc4cd91589` |"
+        },
+        {
+          "line": 15,
+          "text": "| **Write terrain** | `WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/` only |"
+        },
+        {
+          "line": 19,
+          "text": "## 1. Independent reproduction — every author number reproduced exactly"
+        },
+        {
+          "line": 24,
+          "text": "| Phase | Module under test | Cases | PASS | RED | Author claimed |"
+        },
+        {
+          "line": 26,
+          "text": "| BEFORE, 349 unchanged | `af2b7e94…` unrepaired OC4 | 349 | **283** | **66** | 283 / 66 ✔ |"
+        },
+        {
+          "line": 27,
+          "text": "| AFTER, 349 unchanged | `4c185c18…` OC6 repaired | 349 | **328** | **21** | 328 / 21 ✔ |"
+        },
+        {
+          "line": 28,
+          "text": "| AFTER + 273 author controls | `4c185c18…` OC6 repaired | 622 | **601** | **21** | 601 / 21 across 622 ✔ |"
+        },
+        {
+          "line": 34,
+          "text": "| inherited 131 (OC1/OCR1/OC2/OC3) | 121 PASS / 10 RED | **121 PASS / 10 RED — unchanged, identical reason strings** |"
+        },
+        {
+          "line": 36,
+          "text": "| OC5 prior predictions 23 | 16 PASS / 7 RED | **23 PASS / 0 RED** |"
+        },
+        {
+          "line": 37,
+          "text": "| OC5E native hostiles 159 | 110 PASS / 49 RED | 148 PASS / 11 RED |"
+        },
+        {
+          "line": 48,
+          "text": "- A reviewer-authored `conftest.py` asserted, at **every pytest session start**, that the module"
+        },
+        {
+          "line": 55,
+          "text": "## 3. Adjudication of all 21 remaining literal REDs"
+        },
+        {
+          "line": 57,
+          "text": "Every case was classified individually from this reviewer's own evidence. **No RED was edited, xfailed,"
+        },
+        {
+          "line": 58,
+          "text": "suppressed or automatically excused, and no new oracle was issued.** Full table with original before"
+        },
+        {
+          "line": 59,
+          "text": "and after reason strings: `03_RED_ADJUDICATION.md` and `02_FROZEN_EXPECTATION_MATRIX.json`."
+        },
+        {
+          "line": 61,
+          "text": "| # | Classification | n | Disposition |"
+        },
+        {
+          "line": 63,
+          "text": "| 1 | Historical original contract / procedural RED | 10 | **OPEN** — unresolved upstream contract conflict, preserved byte-identically |"
+        },
+        {
+          "line": 64,
+          "text": "| 2 | OC5E self-invalidating hole / provenance witnesses | 9 | **SUPERSEDED** — the assertion *is* the vulnerability; closure independently re-attacked and confirmed |"
+        },
+        {
+          "line": 80,
+          "text": "four cases in that same parametrized test fold exactly onto their targets and are correctly denied."
+        },
+        {
+          "line": 89,
+          "text": "`OWNER_HOLD` in `05_OWNER_HOLD_TYPO_TOLERANT_LEAK_GATE_R1.md` with three costed options (`H1`/`H2`/`H3`)."
+        },
+        {
+          "line": 91,
+          "text": "## 4. Independent new adversarial court"
+        },
+        {
+          "line": 93,
+          "text": "Freshly authored by this reviewer from the module's public contract — not copied or derived from the OC6"
+        },
+        {
+          "line": 97,
+          "text": "  (61 test functions, blob `4ca9028d…`). Result **269 PASS / 5 RED**."
+        },
+        {
+          "line": 98,
+          "text": "- Those 5 REDs are **preserved** in `observations/after/oc7_adversarial_v1.{xml,log}` and individually"
+        },
+        {
+          "line": 102,
+          "text": "  declared. Only those 5 expectations changed, each to assert the **stronger** accurate contract."
+        },
+        {
+          "line": 103,
+          "text": "- **v2 amended: 276 PASS / 0 RED.**"
+        },
+        {
+          "line": 105,
+          "text": "**Discrimination proof.** The same v2 suite was run against the **unrepaired** OC4 blob:"
+        },
+        {
+          "line": 106,
+          "text": "**107 PASS / 169 RED**. It is not trivially green."
+        },
+        {
+          "line": 108,
+          "text": "| Group | Independent coverage |"
+        },
+        {
+          "line": 114,
+          "text": "| A5 | 11 holder shapes incl. dict/list/set; typed `IdentityMismatchError` never `TypeError` |"
+        },
+        {
+          "line": 122,
+          "text": "**Preserved positives:** OC4's original 36 stay 36/36; the authentic capsule-bound two-signer pair still"
+        },
+        {
+          "line": 123,
+          "text": "verifies; full 18-field envelope binding holds."
+        },
+        {
+          "line": 125,
+          "text": "## 5. Independent finding against the pinned candidate's evidence"
+        },
+        {
+          "line": 128,
+          "text": "carries `# phase: after` — `oc5e_native_hostiles.xml` records `failures=\"11\"`, not the BEFORE `49`. The"
+        },
+        {
+          "line": 132,
+          "text": "This does not change any verdict: this reviewer regenerated BEFORE evidence independently, and the"
+        },
+        {
+          "line": 136,
+          "text": "## 6. Scientific verdict"
+        },
+        {
+          "line": 138,
+          "text": "**`REVIEW_PASS_TESTONLY_CUSTODY_WITH_RETAINED_LITERAL_REDS`**, at the grain of bounded sourcefree"
+        },
+        {
+          "line": 142,
+          "text": "- All 54 demonstrated REDs closed by OC6 are independently confirmed closed (47 OC5E + 7 OC5)."
+        },
+        {
+          "line": 143,
+          "text": "- All six A1–A6 closures survive independent adversarial re-attack at true native entrypoints."
+        },
+        {
+          "line": 144,
+          "text": "- The ten historical REDs are preserved, byte-identical, with identical reason strings — not papered over."
+        },
+        {
+          "line": 150,
+          "text": "- An externally anchored ledger. `EscrowState._event_proofs` lives in the same Python process as the"
+        },
+        {
+          "line": 151,
+          "text": "  state it protects and is not an independent protected store; a process that can mutate state can"
+        },
+        {
+          "line": 154,
+          "text": "- Original respondent source, protected holdout, external model-use grant."
+        },
+        {
+          "line": 157,
+          "text": "**Open for the competent owner:** the 10 historical contract REDs, and the `OWNER_HOLD` on whether the"
+        },
+        {
+          "line": 160,
+          "text": "This reviewer does not adopt its own work. Any acceptance beyond this scoped TEST_ONLY verdict is the"
+        },
+        {
+          "line": 169,
+          "text": "| `02_FROZEN_EXPECTATION_MATRIX.json` | per-suite before/after tallies, all 21 REDs with original reason strings, reviewer verdicts |"
+        },
+        {
+          "line": 170,
+          "text": "| `03_RED_ADJUDICATION.md` | human-readable adjudication of all 21 |"
+        },
+        {
+          "line": 171,
+          "text": "| `04_REVIEWER_SUITE_CORRECTION_LEDGER.json` | the 5 corrections to my own preregistered suite, with reasoning |"
+        },
+        {
+          "line": 172,
+          "text": "| `05_OWNER_HOLD_TYPO_TOLERANT_LEAK_GATE_R1.md` | typed owner hold on leak-gate policy |"
+        },
+        {
+          "line": 174,
+          "text": "| `freezes/01_PREREGISTERED_EXPECTATIONS.json` | preregistration frozen **before** first execution |"
+        },
+        {
+          "line": 178,
+          "text": "| `tests/test_oc7_independent_adversarial.py` | frozen v1 suite, preserved unmodified |"
+        }
+      ],
+      "referenced_shas": [
+        "c6cb15d7417595c359571e4525dd0f0fd6c59d1f",
+        "2f9118cd5a0a920a6a4f729289ff2798ca8fbaa3",
+        "67a4f1561cdad40192f00797d66b24fc4cd91589",
+        "af2b7e943018077cb36808b5af1cd67704624bec",
+        "4c185c18dbee57603038e97886da8fc4aa834082",
+        "4475403ea366b7637fb22f3875efaf1e43b4919f"
+      ],
+      "reported_disposition": "VERDICT: `REVIEW_PASS_TESTONLY_CUSTODY_WITH_RETAINED_LITERAL_REDS`**"
+    },
+    {
+      "index": 48,
+      "name": "agent/reviewer-sorok-r3-hq316-m06-m05-owner-ancestry-independent-r1",
+      "pinned_sha": "10a116f273c76095fca7255d4b6422a9ff3497a2",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 1,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ316-M06-M05-OWNER-ANCESTRY-INDEPENDENT-R1/16_REMOTE_CONTENT_VERIFICATION.json"
+      ],
+      "code_paths": [],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ316-M06-M05-OWNER-ANCESTRY-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "cfc0ec95a8b4dbdbb33345a2f42ac33502cceb9a",
+        "url": "https://github.com/maidiu/rawlsing/blob/10a116f273c76095fca7255d4b6422a9ff3497a2/WORKER_RETURNS/SOROK-R3-HQ316-M06-M05-OWNER-ANCESTRY-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 50
+      },
+      "review_evidence": "# M06 independent review of M05\n\n**REVIEW_PASS_SOURCEFREE_FINITE_NATIVE_ANCESTRY — NO_ADOPTION.** Independently reproduced **686/686 original current cases PASS**, then **114/114 new frozen reviewer cases PASS**. The **nine historical CAN3 cases remain nine literal FAILs in a separate court**. No skips, xfails or oracle repairs; the full historical CAN3 585-case suite was not rerun.\n\n| Actual court | PASS | FAIL | Evidence |\n|---|---:|---:|---|\n| M01 and inherited | 413 | 0 | evidence/baseline638/inherited413 |\n| M02 independent | 100 | 0 | evidence/baseline638/m02_100 |\n| M03 author | 74 | 0 | evidence/baseline638/m03_74 |\n| M04 unchanged independent | 51 | 0 | evidence/baseline638/m04_51 |\n| M05 unchanged author | 48 | 0 | evidence/m05_author48 |\n| M06 new independent | 114 | 0 | evidence/new |\n| Historical CAN3, separate | 0 | 9 | evidence/historical_nine |\n\nThis is one fresh reviewer chat and one accountable Codex agent. No M01–M05 conversation history, prior-chat scientific assistance, helper, model switch, model API call, respondent source, production registry mutation or V3 operation was used. Repository return packets and frozen sources were read as review evidence. The author disclosed that M04 and M05 shared its prior conversation; that is why this independent court was required. The reviewer has no HQ, semantic issuer or adoption role.\n\nStartup checkout and direct remote branch both matched **3c685eb4734856b61f2d601e082eb325e3f6f1d1**, whose parent is **8af50c539bd249d6aab76bea7cf81f61579906fa**. M05's direct remote also matched the reviewed **8b7f3ed2ad095eee060fd040dcab88e59d4ca255**. The app provided this isolated checkout detached and initially non-sparse; it was clean, the pre-existing assigned branch was attached without reset, and worktree-local sparse checkout was enabled. Only this return was written. Sources were freshly reconstructed from authenticated shared-store Git objects; no other worker's warm files were used.\n\nSorok 00_READ_ME_FIRST, 00B, complete 00C, 00D, the complete commission and HQ316 intake were read. No HQ takeover or new dispatch occurred. The user-selected Codex/GPT-6.1 High pair was retained for the entire job; actual money and quota consumption remain UNKNOWN. Initial branch-creation encountered an already-existing assigned branch and then used it. Initial staging of the freeze encountered a sparse-path exclusion and added this return to the sparse set before committing. Neither caused test execution before the freeze.\n\nThe new test source and predictions were committed prospectively at **8f6d11c54f313665e9320d4d58af7b6d1825796e**, before collection/import/execution. [The freeze](03_REVIEWER_FREEZE.json), [preregistration](02_INDEPENDENT_PREREGISTRATION.md), [full case IDs](05_FULL_CASE_IDS.json) and [unchanged source audit](06_UNCHANGED_TEST_SOURCE_IDENTITIES.json) preserve custody. The first-run 114 tests passed unchanged. One post-execution metadata-auditor lookup used `.json` instead of M01's actual `.md` preregistration extension; the audit lookup was corrected, with no test or oracle change and no scientific rerun. [Audit correction receipt](evidence/AUDIT_HARNESS_CORRECTIONS.json).\n\n## Independent scientific findings\n\nThe cross-cell court combined twelve valid donor owner states with three entry routes, including substitution of their formation witnesses. Thirty-three inconsistent owner splices refused; three exactly equal same-contract controls replayed lawfully. The original E1 journal and binding could not be retained while changing the committed memory/BELIEF ancestry. Public restore refusals preserved the valid original checkpoint; direct-read and later-response refusals preserved the injected pre-consumption checkpoint, without adding a read, productive journal entry or E2 admission.\n\nRehashed effects, transition IDs, stance records, snapshot hashes and permission hashes did not rescue a false predecessor. The nine new predecessor cases used actual alternative native states, including the native empty root and another claim's valid state. Eighteen interleaved-claim attacks challenged partial permission rollback, another claim's terminal transition, swapped order, missing middle operations, repeated transitions and foreign exact targets. They all refused. Six independently rehashed E1 journal attacks also refused. These results support native re-execution and full-state congruence as the operative check, rather than mere agreement among caller-computed hashes.\n\nFourteen formation-witness substitutions challenged noninvertible identity input, predecessor, exact rule, authority, actor and source-event identity. All refused. Nine lawful alternative memory identity cases, including structured identity values, passed. Native ADD, exact supersession, withdrawal, re-addition and NO_CHANGE survived multi-claim interleaving, repeated cycles and complete replay. All three accessibility classes were exercised through reconstruction; unknown access remained an atomic hold. A consumed checkpoint replayed deterministically with a distinct third event. Faults at admission, read and emission rolled back the entire revised multi-claim checkpoint; retry committed once and duplicate E2 refused. Actual helper and cell source-body changes with the old grant refused; restoring bytes allowed a lawful retry.\n\nThe original K3 inaccessible causal-origin boundary, K5 private BELIEF/public-standing membrane, event/actor/world/rule controls and later response-time tests remain in the unchanged 686 court. The new tests additionally preserve bound NONE despite earlier and future unselected claims and allow genuine later response cuts. No blanket owner freeze was introduced.\n\nThe independently executed **36-arm factorial** records actual native owner state, actor, E1/E2 event identities, first journal/hash ancestry, live read and response streams. The before-state, read-state and after-state agree. Same memory ID with different content changes the memory stream while the epistemic stream stays fixed; direct private stance/access changes the epistemic stream while memory stays fixed. The separate CAN3 comparator retains **stored history → DEFLECT; omitted history → AMPLIFY** at equal owner state. [Native causal evidence](09_CAUSAL_NATIVE_EVIDENCE.json) and [paired counterfactuals](evidence/new/observations/independent_causal_contrasts.json).\n\nThis establishes **constructed parallel conditioning**, at sourcefree finite fixture grain. It does **not** establish serial ADP016→ADP017 mediation: the factorial stances still use direct actor-facing E1 basis and empty `memory_basis_refs`. Reconstructing both owners adds verification, not a causal edge. It also does not establish human psychological calibration, real actor modeling, autonomous formation, product experience or general Rawlsing feasibility.\n\n## Mechanism and limits",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# M06 independent review of M05"
+        },
+        {
+          "line": 3,
+          "text": "**REVIEW_PASS_SOURCEFREE_FINITE_NATIVE_ANCESTRY — NO_ADOPTION.** Independently reproduced **686/686 original current cases PASS**, then **114/114 new frozen reviewer cases PASS**. The **nine historical CAN3 cases remain nine literal FAILs in a separate court**. No skips, xfails or oracle repairs; the full historical CAN3 585-case suite was not rerun."
+        },
+        {
+          "line": 8,
+          "text": "| M02 independent | 100 | 0 | evidence/baseline638/m02_100 |"
+        },
+        {
+          "line": 10,
+          "text": "| M04 unchanged independent | 51 | 0 | evidence/baseline638/m04_51 |"
+        },
+        {
+          "line": 12,
+          "text": "| M06 new independent | 114 | 0 | evidence/new |"
+        },
+        {
+          "line": 15,
+          "text": "This is one fresh reviewer chat and one accountable Codex agent. No M01–M05 conversation history, prior-chat scientific assistance, helper, model switch, model API call, respondent source, production registry mutation or V3 operation was used. Repository return packets and frozen sources were read as review evidence. The author disclosed that M04 and M05 shared its prior conversation; that is why this independent court was required. The reviewer has no HQ, semantic issuer or adoption role."
+        },
+        {
+          "line": 17,
+          "text": "Startup checkout and direct remote branch both matched **3c685eb4734856b61f2d601e082eb325e3f6f1d1**, whose parent is **8af50c539bd249d6aab76bea7cf81f61579906fa**. M05's direct remote also matched the reviewed **8b7f3ed2ad095eee060fd040dcab88e59d4ca255**. The app provided this isolated checkout detached and initially non-sparse; it was clean, the pre-existing assigned branch was attached without reset, and worktree-local sparse checkout was enabled. Only this return was written. Sources were freshly reconstructed from authenticated shared-store Git objects; no other worker's warm files were used."
+        },
+        {
+          "line": 19,
+          "text": "Sorok 00_READ_ME_FIRST, 00B, complete 00C, 00D, the complete commission and HQ316 intake were read. No HQ takeover or new dispatch occurred. The user-selected Codex/GPT-6.1 High pair was retained for the entire job; actual money and quota consumption remain UNKNOWN. Initial branch-creation encountered an already-existing assigned branch and then used it. Initial staging of the freeze encountered a sparse-path exclusion and added this return to the sparse set before committing. Neither caused test execution before the freeze."
+        },
+        {
+          "line": 21,
+          "text": "The new test source and predictions were committed prospectively at **8f6d11c54f313665e9320d4d58af7b6d1825796e**, before collection/import/execution. [The freeze](03_REVIEWER_FREEZE.json), [preregistration](02_INDEPENDENT_PREREGISTRATION.md), [full case IDs](05_FULL_CASE_IDS.json) and [unchanged source audit](06_UNCHANGED_TEST_SOURCE_IDENTITIES.json) preserve custody. The first-run 114 tests passed unchanged. One post-execution metadata-auditor lookup used `.json` instead of M01's actual `.md` preregistration extension; the audit lookup was corrected, with no test or oracle change and no scientific rerun. [Audit correction receipt](evidence/AUDIT_HARNESS_CORRECTIONS.json)."
+        },
+        {
+          "line": 23,
+          "text": "## Independent scientific findings"
+        },
+        {
+          "line": 25,
+          "text": "The cross-cell court combined twelve valid donor owner states with three entry routes, including substitution of their formation witnesses. Thirty-three inconsistent owner splices refused; three exactly equal same-contract controls replayed lawfully. The original E1 journal and binding could not be retained while changing the committed memory/BELIEF ancestry. Public restore refusals preserved the valid original checkpoint; direct-read and later-response refusals preserved the injected pre-consumption checkpoint, without adding a read, productive journal entry or E2 admission."
+        },
+        {
+          "line": 27,
+          "text": "Rehashed effects, transition IDs, stance records, snapshot hashes and permission hashes did not rescue a false predecessor. The nine new predecessor cases used actual alternative native states, including the native empty root and another claim's valid state. Eighteen interleaved-claim attacks challenged partial permission rollback, another claim's terminal transition, swapped order, missing middle operations, repeated transitions and foreign exact targets. They all refused. Six independently rehashed E1 journal attacks also refused. These results support native re-execution and full-state congruence as the operative check, rather than mere agreement among caller-computed hashes."
+        },
+        {
+          "line": 29,
+          "text": "Fourteen formation-witness substitutions challenged noninvertible identity input, predecessor, exact rule, authority, actor and source-event identity. All refused. Nine lawful alternative memory identity cases, including structured identity values, passed. Native ADD, exact supersession, withdrawal, re-addition and NO_CHANGE survived multi-claim interleaving, repeated cycles and complete replay. All three accessibility classes were exercised through reconstruction; unknown access remained an atomic hold. A consumed checkpoint replayed deterministically with a distinct third event. Faults at admission, read and emission rolled back the entire revised multi-claim checkpoint; retry committed once and duplicate E2 refused. Actual helper and cell source-body changes with the old grant refused; restoring bytes allowed a lawful retry."
+        },
+        {
+          "line": 31,
+          "text": "The original K3 inaccessible causal-origin boundary, K5 private BELIEF/public-standing membrane, event/actor/world/rule controls and later response-time tests remain in the unchanged 686 court. The new tests additionally preserve bound NONE despite earlier and future unselected claims and allow genuine later response cuts. No blanket owner freeze was introduced."
+        },
+        {
+          "line": 33,
+          "text": "The independently executed **36-arm factorial** records actual native owner state, actor, E1/E2 event identities, first journal/hash ancestry, live read and response streams. The before-state, read-state and after-state agree. Same memory ID with different content changes the memory stream while the epistemic stream stays fixed; direct private stance/access changes the epistemic stream while memory stays fixed. The separate CAN3 comparator retains **stored history → DEFLECT; omitted history → AMPLIFY** at equal owner state. [Native causal evidence](09_CAUSAL_NATIVE_EVIDENCE.json) and [paired counterfactuals](evidence/new/observations/independent_causal_contrasts.json)."
+        },
+        {
+          "line": 35,
+          "text": "This establishes **constructed parallel conditioning**, at sourcefree finite fixture grain. It does **not** establish serial ADP016→ADP017 mediation: the factorial stances still use direct actor-facing E1 basis and empty `memory_basis_refs`. Reconstructing both owners adds verification, not a causal edge. It also does not establish human psychological calibration, real actor modeling, autonomous formation, product experience or general Rawlsing feasibility."
+        },
+        {
+          "line": 39,
+          "text": "The reviewed effective Git blobs are cell **7655867608c21eb7e40d6f51434491db380b7e4e** and provenance helper **c1e126fd2080ef78e5e77ed96861450a75355276**. Actual imports were captured in the executing pytest process, then matched to Git preimages and source commits. Native `owner_transitions.py` remains **ac943d07459f68ba2e27baf05b442d9ecbddefd5**. Accepted CAN008_R2, ADP016 and ADP017 law bytes match the commissioned blobs; production guard remains **e0528d65215cb431196570c38bac4eae94217a1b**, EMPTY and unchanged. [Import/law audit](08_ACTUAL_IMPORT_AND_LAW_AUDIT.json)."
+        },
+        {
+          "line": 41,
+          "text": "Shadow reconstruction proves an exact native path consistent with the retained finite checkpoint contract. The anchor, witness and registry are in the same in-process checkpoint; they are not independently protected historical testimony. A completely valid whole-contract checkpoint is deliberately accepted as replay. This court does not prove resistance to a fully reissued valid world, privileged Python mutation, compromised source loader or external signer forgery. No institutional issuer is invented."
+        },
+        {
+          "line": 43,
+          "text": "Accessibility recovery enumerates exactly the native API's three categories and compares complete returned transition and final state, including the committed snapshot hash. Formation reuses the separately retained exact original arguments and native commit validation. Neither is an empirical psychological inference or approximation to a broader access rule."
+        },
+        {
+          "line": 45,
+          "text": "The replay search is recursive over claim/memory insertion order and the retained epistemic sequence. It has no explicit history-size/time budget; large branching and Python recursion limits were not characterized. The new controls reach three claims, one consumed memory and eight epistemic transitions, not arbitrary histories. The consumer explicitly refuses more than one memory and more than one active selected stance. Selected-claim transitions remain tied to E1's admitted acquisition time; append-order revisions and later response cuts do not demonstrate a general historical as-of snapshot engine. No unbounded scaling, crash durability, multiprocess atomicity or production performance claim follows. Exceeding these limits requires a new owner-scoped implementation and review."
+        },
+        {
+          "line": 47,
+          "text": "No in-scope repair request remains for M05. HQ may intake this scoped independent evidence; any adoption remains a separate competent-owner decision. Before stronger claims, the owner should (1) establish protected custody/durable storage if required, (2) bound and test replay resources and general historical cuts, and (3) commission a genuinely content-sensitive serial mediation experiment under its own authority. A newly accepted inconsistent splice, wrong native predecessor, unearned permission, or failed rollback would falsify this scoped pass."
+        }
+      ],
+      "referenced_shas": [
+        "3c685eb4734856b61f2d601e082eb325e3f6f1d1",
+        "8af50c539bd249d6aab76bea7cf81f61579906fa",
+        "8b7f3ed2ad095eee060fd040dcab88e59d4ca255",
+        "8f6d11c54f313665e9320d4d58af7b6d1825796e",
+        "7655867608c21eb7e40d6f51434491db380b7e4e",
+        "c1e126fd2080ef78e5e77ed96861450a75355276",
+        "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+        "e0528d65215cb431196570c38bac4eae94217a1b"
+      ],
+      "reported_disposition": null
+    },
+    {
+      "index": 49,
+      "name": "agent/reviewer-sorok-r3-hq317-ms2-ms1-serial-independent-r1",
+      "pinned_sha": "34b96ea98de181ca5264f0eed3824cad2db7cfc0",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 1,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ317-MS2-MS1-SERIAL-INDEPENDENT-R1/16_REMOTE_CONTENT_VERIFICATION.json"
+      ],
+      "code_paths": [],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ317-MS2-MS1-SERIAL-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "0ed89038d64d24f9f93ad9da3aea96f5f771191f",
+        "url": "https://github.com/maidiu/rawlsing/blob/34b96ea98de181ca5264f0eed3824cad2db7cfc0/WORKER_RETURNS/SOROK-R3-HQ317-MS2-MS1-SERIAL-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 57
+      },
+      "review_evidence": "# MS2 independent serial mediation review\n\n**REVIEW_REVISE — NO_ADOPTION.** MS1's honest sourcefree serial construct is reproducible, but eight new frozen hostile expectations failed. Preserve the accessible-arm constructibility result, the original P3b falsification and all original REDs; revise the provenance and response-consumption checks before claiming the stronger integrity properties.\n\n| Actual court | PASS | FAIL | Meaning |\n|---|---:|---:|---|\n| Unchanged MS1 combined native/author court | 118 | 2 | Exactly reproduced original120, including both missing CAN2 law-map REDs |\n| New MS2 independent court | 43 | 8 | First execution of51 frozen cases; no oracle change or source repair |\n| Literal original prospective P3b | 0 | 1 | The original inequality fails; F_B remains fired |\n\nAll courts completed with zero errors/skips/xfails. Original suite source bytes, all120 case names/outcomes and actual native module files were independently verified. The original MS1 test that *reports* P3b falsified still passes unchanged; the separate literal P3b assertion deliberately remains a real failure. A green reporting test does not make the scientific prediction true. [Full case IDs](05_FULL_CASE_IDS.json), [JUnit/stdout](evidence), [source/import audit](08_ACTUAL_IMPORT_AND_SOURCE_AUDIT.json).\n\n## What was established\n\nNative ADP016 formed and committed different content under the **same memory ID**, with fixed E1/E2 hashes, actor, world, rule and canonical claim. MS1's hypothetical mediator read that content and stipulated CERTAIN→CLAIM_ACCESSIBLE versus UNCERTAIN→CLAIM_ACCESS_UNKNOWN. The real pinned candidate ADP017 applied BELIEF/access transitions. Its permission record then drove a hypothetical consumer through native CAN008 response application. This is executed **F3 constructibility at this finite TEST_ONLY fixture grain**, not an issued serial rule.\n\nThe reviewer rebuilt C1–C10 and C4b directly from native formation/commit/bind operations, without calling the author's `run_cell`. All eleven owner hashes, memory hashes, event identities, permission/transition results and decision/effect projections match the published per-cell records. Each response's recorded owner hash matches the independently captured pre-read owner; consumption leaves that owner unchanged. [Actual state/counterfactual ledger](09_CAUSAL_COUNTERFACTUAL_LEDGER.json).\n\n| Memory/condition | Active | Native withdrawal | Absent | Clamp to inaccessible |\n|---|---|---|---|---|\n| CERTAIN | REROUTE | BLOCK | EMPTY | BLOCK |\n| UNCERTAIN | DEFER | DEFER | EMPTY | BLOCK |\n\nDEFER is `DEFER_MISSING_AUTHORITY`, EMPTY is `RESPONSE_INPUTS_VALID_EMPTY`; neither is a productive response. Native accessible supersession/withdrawal/re-addition gave REROUTE→BLOCK→REROUTE with memory fixed. Inaccessible remained BLOCK; UNKNOWN remained DEFER. Genuine withdrawal was confirmed by deletion of the exact stance record and retained native transition history.\n\n**P3b is FALSIFIED and F_B FIRED.** At fixed UNKNOWN, deleting the stance does not change native permission or the decision/effect projection: C2=C4=(DEFER,None). This follows from the pinned permission function and was already implied by original preregistered F5. The original top candidate gate remains false. It must not be repaired by relabeling DEFER as a reaction or by substituting C4b. C4b also changes accessibility; it produces BLOCK but does not satisfy the original stance-only withdrawal prediction.\n\nThe UNKNOWN arm is not devoid of every observable contrast: absence changes the typed refusal from DEFER to EMPTY, and an accessibility intervention can produce BLOCK. Those are different interventions/estimands and do not establish a productive stance-withdrawal contrast at fixed UNKNOWN. A local flat response does not prove that the constructed graph has no mediated edge anywhere. The accessible-arm contrasts remain positive despite the failed global preregistration gate.\n\nThree clamp classes over both memory contents, native memory-reference placebos, reference-only mediator pairs and history controls separate the constructed channels. With the epistemic channel fixed, decision/effect stays fixed; full owner hashes and provenance-bearing responses still differ. Native ADP017 checks memory reference existence and does not implement the hypothetical content→access map. A reference-only mediator gives REROUTE for both contents and loses the content contrast. The separate native CAN3 comparator remains stored-history→DEFLECT versus omitted-history→AMPLIFY at equal owner state.\n\nThis is authored serial **choice dependence**, not general exclusion of every direct memory influence. The consumer has no explicit memory parameter but receives the entire `ctx`, including memory objects, uses memory reference keys and verifies/hashes the whole state. Its source deliberately chooses from epistemic permission. That is a restriction of this implementation, not type-enforced inability to inspect memory and not empirical identification against arbitrary direct-path models. MS1's `prior_history` is a tuple/count input, not an independently verified prior-response journal. [Authority/DAG limits](10_AUTHORITY_AND_DAG_LIMITS.json).\n\n## Why revision is required\n\n**Four formation-provenance REDs.** `_verify_memory_provenance` verifies current memory self-hash and transition presence/ID, but does not check the original formation transition's committed post-hash against current content or replay its native formation. Rehashed changed uncertainty, jointly changed source-feature content/uncertainty, corrupt formation post-hash and erased source-event refs all admitted an ADP017 transition. The two content changes produced REROUTE from originally UNCERTAIN memory while retaining contradictory original formation receipts. The empty-source check also passes vacuously. These are genuine integrity counterexamples within the mutable fixture state/restore surface, not evidence that any operating-system protection was defeated.\n",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# MS2 independent serial mediation review"
+        },
+        {
+          "line": 3,
+          "text": "**REVIEW_REVISE — NO_ADOPTION.** MS1's honest sourcefree serial construct is reproducible, but eight new frozen hostile expectations failed. Preserve the accessible-arm constructibility result, the original P3b falsification and all original REDs; revise the provenance and response-consumption checks before claiming the stronger integrity properties."
+        },
+        {
+          "line": 7,
+          "text": "| Unchanged MS1 combined native/author court | 118 | 2 | Exactly reproduced original120, including both missing CAN2 law-map REDs |"
+        },
+        {
+          "line": 8,
+          "text": "| New MS2 independent court | 43 | 8 | First execution of51 frozen cases; no oracle change or source repair |"
+        },
+        {
+          "line": 9,
+          "text": "| Literal original prospective P3b | 0 | 1 | The original inequality fails; F_B remains fired |"
+        },
+        {
+          "line": 11,
+          "text": "All courts completed with zero errors/skips/xfails. Original suite source bytes, all120 case names/outcomes and actual native module files were independently verified. The original MS1 test that *reports* P3b falsified still passes unchanged; the separate literal P3b assertion deliberately remains a real failure. A green reporting test does not make the scientific prediction true. [Full case IDs](05_FULL_CASE_IDS.json), [JUnit/stdout](evidence), [source/import audit](08_ACTUAL_IMPORT_AND_SOURCE_AUDIT.json)."
+        },
+        {
+          "line": 15,
+          "text": "Native ADP016 formed and committed different content under the **same memory ID**, with fixed E1/E2 hashes, actor, world, rule and canonical claim. MS1's hypothetical mediator read that content and stipulated CERTAIN→CLAIM_ACCESSIBLE versus UNCERTAIN→CLAIM_ACCESS_UNKNOWN. The real pinned candidate ADP017 applied BELIEF/access transitions. Its permission record then drove a hypothetical consumer through native CAN008 response application. This is executed **F3 constructibility at this finite TEST_ONLY fixture grain**, not an issued serial rule."
+        },
+        {
+          "line": 17,
+          "text": "The reviewer rebuilt C1–C10 and C4b directly from native formation/commit/bind operations, without calling the author's `run_cell`. All eleven owner hashes, memory hashes, event identities, permission/transition results and decision/effect projections match the published per-cell records. Each response's recorded owner hash matches the independently captured pre-read owner; consumption leaves that owner unchanged. [Actual state/counterfactual ledger](09_CAUSAL_COUNTERFACTUAL_LEDGER.json)."
+        },
+        {
+          "line": 19,
+          "text": "| Memory/condition | Active | Native withdrawal | Absent | Clamp to inaccessible |"
+        },
+        {
+          "line": 24,
+          "text": "DEFER is `DEFER_MISSING_AUTHORITY`, EMPTY is `RESPONSE_INPUTS_VALID_EMPTY`; neither is a productive response. Native accessible supersession/withdrawal/re-addition gave REROUTE→BLOCK→REROUTE with memory fixed. Inaccessible remained BLOCK; UNKNOWN remained DEFER. Genuine withdrawal was confirmed by deletion of the exact stance record and retained native transition history."
+        },
+        {
+          "line": 26,
+          "text": "**P3b is FALSIFIED and F_B FIRED.** At fixed UNKNOWN, deleting the stance does not change native permission or the decision/effect projection: C2=C4=(DEFER,None). This follows from the pinned permission function and was already implied by original preregistered F5. The original top candidate gate remains false. It must not be repaired by relabeling DEFER as a reaction or by substituting C4b. C4b also changes accessibility; it produces BLOCK but does not satisfy the original stance-only withdrawal prediction."
+        },
+        {
+          "line": 30,
+          "text": "Three clamp classes over both memory contents, native memory-reference placebos, reference-only mediator pairs and history controls separate the constructed channels. With the epistemic channel fixed, decision/effect stays fixed; full owner hashes and provenance-bearing responses still differ. Native ADP017 checks memory reference existence and does not implement the hypothetical content→access map. A reference-only mediator gives REROUTE for both contents and loses the content contrast. The separate native CAN3 comparator remains stored-history→DEFLECT versus omitted-history→AMPLIFY at equal owner state."
+        },
+        {
+          "line": 32,
+          "text": "This is authored serial **choice dependence**, not general exclusion of every direct memory influence. The consumer has no explicit memory parameter but receives the entire `ctx`, including memory objects, uses memory reference keys and verifies/hashes the whole state. Its source deliberately chooses from epistemic permission. That is a restriction of this implementation, not type-enforced inability to inspect memory and not empirical identification against arbitrary direct-path models. MS1's `prior_history` is a tuple/count input, not an independently verified prior-response journal. [Authority/DAG limits](10_AUTHORITY_AND_DAG_LIMITS.json)."
+        },
+        {
+          "line": 34,
+          "text": "## Why revision is required"
+        },
+        {
+          "line": 36,
+          "text": "**Four formation-provenance REDs.** `_verify_memory_provenance` verifies current memory self-hash and transition presence/ID, but does not check the original formation transition's committed post-hash against current content or replay its native formation. Rehashed changed uncertainty, jointly changed source-feature content/uncertainty, corrupt formation post-hash and erased source-event refs all admitted an ADP017 transition. The two content changes produced REROUTE from originally UNCERTAIN memory while retaining contradictory original formation receipts. The empty-source check also passes vacuously. These are genuine integrity counterexamples within the mutable fixture state/restore surface, not evidence that any operating-system protection was defeated."
+        },
+        {
+          "line": 38,
+          "text": "**Three terminal-permission REDs.** After real native withdrawal, inaccessible supersession or UNKNOWN supersession, a forged `PERMIT_FIRST_PERSON_BELIEF` value passed consumption when its snapshot-hash pointer was retained and the enclosing owner was resealed. All three produced REROUTE despite the terminal native stance/access state. The consumer checks pointer agreement, but does not recompute permission from the native terminal state or prove native ancestry."
+        },
+        {
+          "line": 40,
+          "text": "**One selector RED.** An unknown selected claim was classified as valid EMPTY while an authentic applied BELIEF remained present. Genuine bound absence and an unbound selector need different outcomes. This is a consumer-selection issue; the native ADP017 unknown-claim negative control passed."
+        },
+        {
+          "line": 42,
+          "text": "All eight expectations were frozen **before** collection/execution at **6a1e733cd92113b10ba85db4e93f13e9ef9861b5** and remain unchanged. The original native source and hypothetical implementation were not repaired. The failed atomic-refusal expectations are retained with before/after state and actual accepted transitions/responses. [Findings and exact next actions](13_FINDINGS_AND_OWNER_ACTIONS.md)."
+        },
+        {
+          "line": 44,
+          "text": "Two documentary corrections also matter. MS1's alleged accepted-ADP017 quote about trace refs conditioning a private update is actually a CAN2 **candidate-code comment**, absent from the pinned accepted JSON and MD. Accepted law instead requires an owning rule, exact actor-facing/causal basis and verified provenance; it does not issue this content map. Also, the preregistration describes a verified response-journal commit, but `consume` constructs a receipt with `committed=False`; no such journal commit occurs here. Native owner memory/epistemic state commits are real within the fixture, while the later response remains uncommitted. Neither correction erases the bounded construction."
+        },
+        {
+          "line": 48,
+          "text": "Checkout and direct remote both matched **f0362f849819583564bf42d40002d246657ad887**, parent **c0d8d84d1c095720dfc570bf4e751a6854f7ccec**. The new managed worktree was isolated and sparse; the completed M06 worktree stayed untouched. MS1's direct remote matched **d40cc32ecec8f681dcced6a482b6438a86080899**. All34 packet files were initially checked against Git; nine CAN2 native files plus the separate EMPTY guard were independently verified, including actual executing module paths. The commissioned accepted-law blobs were verified separately without inserting missing law maps into the original runtime."
+        },
+        {
+          "line": 50,
+          "text": "Original preregistration MD/JSON are byte-identical to commit **cc2f24a6837d007b0ba7ab5c40f39899e2d7b644**, timestamp **2026-10-16 15:16:43−04:00**. That tree lacks the new mediator and serial test source. Retained serial JUnit reports15:18:45−04:00; combined JUnit reports15:19:15−04:00; first published implementation/results commit67e14f12 follows the freeze. This supports the published chronology; Git/JUnit metadata is not independent attestation of the host's first write/execution clock. Native control execution preceded the preregistration as declared. [Freeze custody](07_ORIGINAL_AND_REVIEWER_FREEZE_CUSTODY.json)."
+        },
+        {
+          "line": 52,
+          "text": "This single reviewer previously conducted independent M06, never MS1 implementation, and retrieved no MS1 author chat or scientific assistance. A fresh Git-only runtime was reconstructed; no M06 implementation was installed into MS1. The complete commission/intake were read; Sorok read-me/00B/00C/00D were verified byte-identical to the complete prior readings in this chat. User-selected Codex/GPT-6.1 High remained fixed; no helpers/model switches, respondent data, actor/model calls, production/CURRENT/PRE-MAIN edits or V3/N12 operation occurred. Actual cash/quota remain UNKNOWN."
+        },
+        {
+          "line": 54,
+          "text": "The EMPTY production guard remains byte-identical at **e0528d65215cb431196570c38bac4eae94217a1b**. Both hypothetical MS1 rules stay **UNISSUED**. An operative content-conditioned rule requires competent-owner semantics, issuer/version/hash, source-memory/native-transition custody, actor-facing acquisition and canonical claim binding, exact access/uncertainty policy, terminal permission and temporal authority, destination-owner grant, and any required transaction/journal contract. Human psychological calibration, real actor modeling, production durability/performance and general serial mediation remain unproved. This review issues none of those authorities."
+        }
+      ],
+      "referenced_shas": [
+        "6a1e733cd92113b10ba85db4e93f13e9ef9861b5",
+        "f0362f849819583564bf42d40002d246657ad887",
+        "c0d8d84d1c095720dfc570bf4e751a6854f7ccec",
+        "d40cc32ecec8f681dcced6a482b6438a86080899",
+        "cc2f24a6837d007b0ba7ab5c40f39899e2d7b644",
+        "e0528d65215cb431196570c38bac4eae94217a1b"
+      ],
+      "reported_disposition": null
+    }
+  ]
+}
