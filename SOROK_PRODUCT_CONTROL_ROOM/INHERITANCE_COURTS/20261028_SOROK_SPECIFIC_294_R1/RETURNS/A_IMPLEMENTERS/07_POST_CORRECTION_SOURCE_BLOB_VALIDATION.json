@@ -1,0 +1,193 @@
+{
+  "schema": "SOROK294A_POST_CORRECTION_READ_ONLY_PROVENANCE_RECHECK@1",
+  "status": "DOCUMENTARY_PROVENANCE_VALIDATED__NO_TEST_EXECUTION__NO_NATIVE_ACCEPTANCE",
+  "branch": "agent/rabochii-sorok-20261028-294-a-implementers-r1",
+  "validated_parent_commit": "bd347858020fc96ae8e06b1e8898b463633a8519",
+  "validation_date": "2026-10-29",
+  "source_census_sha": "315251451a6d112fb312a6a2e80b096d345c5de6",
+  "manifest_rows": 98,
+  "branch_records": 98,
+  "capability_records": 98,
+  "exact_manifest_name_and_pinned_sha_alignment": true,
+  "exact_historical_and_current_sha_match": 98,
+  "classification_histogram": {
+    "CODE_PRESENT_REPRESENTATIVE_SOURCE_OR_PATCH_INSPECTED": 67,
+    "DOCUMENTARY_OR_NEGATIVE_COURT": 23,
+    "RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED": 7,
+    "COMMISSION_ONLY_AT_TIP": 1
+  },
+  "representative_code_file_recheck": {
+    "checked_count": 67,
+    "matching_blob_sha": 67,
+    "mismatched_blob_sha": 0,
+    "method": "Authenticated GitHub fetch_file at exact pinned commit; returned Git blob SHA checked against branch-row primary_source_blob_sha; small source excerpts, never arbitrary code import.",
+    "one_transport_retry": {
+      "index": 19,
+      "initial": "REMOTE_DISCONNECT",
+      "retry": "MATCHED"
+    },
+    "indices": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      30,
+      31,
+      41,
+      42,
+      45,
+      46,
+      47,
+      48,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      61,
+      62,
+      63,
+      65,
+      66,
+      68,
+      69,
+      71,
+      72,
+      73,
+      75,
+      76,
+      77,
+      80,
+      81,
+      87,
+      89,
+      90,
+      91,
+      92,
+      93,
+      95,
+      96,
+      97
+    ],
+    "scope_limit": "Checks one representative source file per row, not every imported module, archived source or executable closure."
+  },
+  "source_blob_duplicate_groups": [
+    {
+      "blob_sha": "6415054cbc36777772893f999af0fe398803549e",
+      "indices": [
+        3,
+        4
+      ]
+    },
+    {
+      "blob_sha": "e84f6cfd34d8b7811d29bcd91f1c04593065beb3",
+      "indices": [
+        22,
+        23,
+        24,
+        26,
+        28
+      ]
+    }
+  ],
+  "reviewed_exact_cut_pairs": [
+    {
+      "index": 1,
+      "author_sha": "8bd4d6b01fd402e7e6a8d07903f2c3cada837f55",
+      "reviewer_sha": "528e8cde0cff9e28f3c55d5d54a66e820d7401fa",
+      "grade": "REVISE_AT_EXACT_B3X_SHA__FIVE_ORIGINAL_REPAIRS_POSITIVE__TWO_SCHEMA_REDS"
+    },
+    {
+      "index": 2,
+      "author_sha": "16f15a125ba54cdf17f5d41be2d851bbcd2240d7",
+      "reviewer_sha": "1a25b19dd01e8e7954e38c59ffc7e52c50739c9f",
+      "grade": "ACCEPT_SCOPED_SOURCEFREE_SCHEMA_READSET_ONLY__NO_NATIVE"
+    },
+    {
+      "index": 6,
+      "author_sha": "2001169089e97da7444dc8baa2df700aa56e9aca",
+      "reviewer_sha": "8e74be26d14dae270ed6723d5e878f59446c94bd",
+      "grade": "HOLD_DOCUMENTARY_ONLY__R4_EXECUTION_NOT_PROVED"
+    },
+    {
+      "index": 7,
+      "author_sha": "a0f7ab5ff9323a1db8a4c6c3b365283b0969de46",
+      "reviewer_sha": "43328571f297c26e23a42a755ef306c1247b5032",
+      "grade": "ACCEPT_SCOPED_SOURCEFREE_TWO_OWNER_TRANSPORT_ONLY"
+    },
+    {
+      "index": 11,
+      "author_sha": "6fa2939972ce5a2c0cc4f2b033946b276f1c2934",
+      "reviewer_sha": "5753d9b4f8fad9f2175b1e285733f95bb8387888",
+      "grade": "ACCEPT_SCOPED_C9R_C9PI_FROZEN_REPAIR__28_ORIGINAL_AUTHOR_DIVERGENCES_RETAINED"
+    },
+    {
+      "index": 18,
+      "author_sha": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+      "reviewer_sha": "3212d716ce66586527c258632ef10c3ff4489803",
+      "grade": "REVISE_C12_EPISODE_VERIFIER_PREIMAGE__OTHER_SOURCEFREE_JOINED_TESTS_REPRODUCED"
+    }
+  ],
+  "actual_sourcefree_consumer_record_count": 46,
+  "unresolved_archived_algorithm_indices": [
+    50,
+    58,
+    59,
+    64,
+    67,
+    70,
+    94
+  ],
+  "archive_grain": "BINARY_SOURCE_BUNDLES_NOT_FULLY_MATERIALIZED_OR_EXECUTED",
+  "documentary_only": 23,
+  "commission_only": [
+    98
+  ],
+  "corrected_misclassification": {
+    "index": 56,
+    "initial": "COMMISSION_ONLY_FROM_LAST_COMMIT",
+    "final": "CODE_PRESENT_FULL_BRANCH_TREE",
+    "file": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+    "blob": "706475c927432c52599e6b603feb18ee9d716839",
+    "test_source": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_connection.py",
+    "test_blob": "772817f6eb3e8f4a9aca01f99a197edfd13789d8",
+    "grade": "AUTHOR_TESTED_SOURCEFREE_REPAIR__PENDING_EXACT_INDEPENDENT_I2"
+  },
+  "PREMAIN_original_source_and_native_adoption": "NOT_ADJUDICATED",
+  "work_executed_by_this_audit": {
+    "code_imports": 0,
+    "python_tests": 0,
+    "native_survey_or_actor": 0,
+    "renderer_model_calls": 0,
+    "production_edits": 0,
+    "PR514_516_edits": 0
+  },
+  "next_owner": "ACTING_SOROK_HQ_AND_INDEPENDENT_I2_PLUS_SOURCE_OWNER",
+  "warning": "Do not treat source identity or reviewer existence as native-science approval. Frozen independent failures remain frozen."
+}
