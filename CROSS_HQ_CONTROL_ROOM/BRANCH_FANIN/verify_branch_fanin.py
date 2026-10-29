@@ -5,6 +5,7 @@ import argparse
 import copy
 import json
 import re
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -88,6 +89,7 @@ def validate(log: dict, flight: dict) -> list[str]:
             registered[wid] = w
         bad(not isinstance(w.get("exact_return_sha"), str) or not SHA.fullmatch(w["exact_return_sha"]), f"FLIGHT_{i}_SHA")
         bad(w.get("first_consumer_adopted") is True and w.get("status") != "ADOPTED_CAS_VERIFIED", f"FLIGHT_{i}_UNAUTHORIZED_ADOPTION")
+    bad(set(registered) != {e.get("event_id") for e in events}, "FLIGHTS_AND_LOG_EVENTS_DO_NOT_MATCH")
     for e in events:
         key = e.get("event_id")
         if key in registered:
@@ -117,9 +119,30 @@ def selftest(log: dict, flight: dict):
 def main() -> int:
     ap=argparse.ArgumentParser()
     ap.add_argument("--selftest",action="store_true")
+    ap.add_argument("--baseline-ref", default=None, help="Actual immutable PRE-MAIN PR base SHA; verify strict append-only event prefix")
     args=ap.parse_args()
     log,flight=load()
     failures=validate(log,flight)
+    if args.baseline_ref:
+        if not SHA.fullmatch(args.baseline_ref):
+            failures.append("INVALID_BASELINE_SHA")
+        else:
+            p = subprocess.run(["git", "cat-file", "-e", args.baseline_ref + "^{commit}"], cwd=ROOT, capture_output=True)
+            if p.returncode:
+                failures.append("BASELINE_COMMIT_UNAVAILABLE__NO_APPEND_ONLY_PROOF")
+            else:
+                prior = subprocess.run(["git", "show", args.baseline_ref + ":CROSS_HQ_CONTROL_ROOM/BRANCH_FANIN/01_RETURN_EVENT_LOG.json"], cwd=ROOT, capture_output=True, text=True)
+                if prior.returncode == 0:
+                    try:
+                        previous = json.loads(prior.stdout)
+                        prefix = previous.get("events", [])
+                        if log.get("events", [])[:len(prefix)] != prefix:
+                            failures.append("HISTORICAL_EVENTS_REWRITTEN_OR_DELETED__APPEND_ONLY_BROKEN")
+                        print(f"Append-only baseline checked: {len(prefix)} immutable prior event(s)")
+                    except ValueError:
+                        failures.append("BASELINE_EVENT_LOG_UNPARSABLE")
+                else:
+                    print("Baseline does not contain log (first installation); new log seeded as candidate")
     if failures:
         for e in failures:
             print("FAIL:",e)
