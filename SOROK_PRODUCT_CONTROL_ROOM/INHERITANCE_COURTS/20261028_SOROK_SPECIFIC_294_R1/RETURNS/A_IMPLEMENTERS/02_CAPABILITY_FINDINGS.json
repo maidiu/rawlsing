@@ -475,10 +475,17 @@
       "branch_index": 12,
       "branch_name": "agent/rabochii-sorok-20261019-g15-g14-seven-family-genealogy-causal-repair-r1",
       "source_ref": "fbc84ba4b5ec8befcf7954357a2ba1c576f5d7a5",
-      "source_path": null,
-      "blob_sha": null,
-      "functions": [],
-      "kind": "RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED",
+      "source_path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/pipeline.py",
+      "blob_sha": "8ae8737b4f4c7f3cf4c9f9f0059b1ecdbeeb0104",
+      "functions": [
+        "FutureChildPartitionGuard",
+        "enter",
+        "assert_clean",
+        "run_pipeline",
+        "_finish",
+        "semantic"
+      ],
+      "kind": "CODE_PRESENT_REPRESENTATIVE_SOURCE_OR_PATCH_INSPECTED",
       "real_input": "ONLY_THOSE_EXPRESSLY_WITNESSED_IN_PINNED_SOURCE_OR_RETURN",
       "output": "SOURCEFREE_TEST_OR_DOCUMENTARY_NOT_NATIVE",
       "first_downstream_consumer": "G17 material-history consumer",
@@ -1965,10 +1972,17 @@
       "branch_index": 52,
       "branch_name": "agent/rabochii-sorok-r3-hq298-sm-owner-effect-court-r1",
       "source_ref": "9ba40aabea9773ba9d2f3cf32248347f2b0f7e18",
-      "source_path": null,
-      "blob_sha": null,
-      "functions": [],
-      "kind": "RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-OWNER-EFFECT-COURT-R1/court/owner_effect_stub_TEST_ONLY.py",
+      "blob_sha": "440eb1719553bf0a96fc4782ac9a432a0561b3c1",
+      "functions": [
+        "CouplingRule",
+        "event_custody_check",
+        "coupling_evaluate",
+        "adp016_trace_commit_request",
+        "adp017_first_person_claim_check",
+        "next_event_response"
+      ],
+      "kind": "CODE_PRESENT_REPRESENTATIVE_SOURCE_OR_PATCH_INSPECTED",
       "real_input": "ONLY_THOSE_EXPRESSLY_WITNESSED_IN_PINNED_SOURCE_OR_RETURN",
       "output": "SOURCEFREE_TEST_OR_DOCUMENTARY_NOT_NATIVE",
       "first_downstream_consumer": null,
@@ -2071,10 +2085,14 @@
       "branch_index": 55,
       "branch_name": "agent/rabochii-sorok-r3-hq300-behavioral-assay-r2-reconstruction-r1",
       "source_ref": "99b7c4cb16888c50f23c9b55e21f485ec172e6cb",
-      "source_path": null,
-      "blob_sha": null,
-      "functions": [],
-      "kind": "RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/assay/experiment.py",
+      "blob_sha": "2d35906633674595e04293ef6524141e5c0a3717",
+      "functions": [
+        "mock_permit",
+        "code_capture",
+        "run_mock"
+      ],
+      "kind": "CODE_PRESENT_REPRESENTATIVE_SOURCE_OR_PATCH_INSPECTED",
       "real_input": "ONLY_THOSE_EXPRESSLY_WITNESSED_IN_PINNED_SOURCE_OR_RETURN",
       "output": "SOURCEFREE_TEST_OR_DOCUMENTARY_NOT_NATIVE",
       "first_downstream_consumer": null,
@@ -2126,10 +2144,18 @@
       "branch_index": 57,
       "branch_name": "agent/rabochii-sorok-r3-hq300-can008-first-positive-sourcefree-r1",
       "source_ref": "189da3b54307d8731132c9a7f7baf578fee8bc96",
-      "source_path": null,
-      "blob_sha": null,
-      "functions": [],
-      "kind": "RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "blob_sha": "dde7d847212d9c6004a2818f3e2d2ee3b247af9a",
+      "functions": [
+        "CouplingRuleBinding",
+        "validate_complete",
+        "occurrence_gate",
+        "coupline_evaluate",
+        "response_rule_apply",
+        "build_response_receipt",
+        "register_default_rule"
+      ],
+      "kind": "CODE_PRESENT_REPRESENTATIVE_SOURCE_OR_PATCH_INSPECTED",
       "real_input": "ONLY_THOSE_EXPRESSLY_WITNESSED_IN_PINNED_SOURCE_OR_RETURN",
       "output": "SOURCEFREE_TEST_OR_DOCUMENTARY_NOT_NATIVE",
       "first_downstream_consumer": "test-only later CAN008 response read",
@@ -2792,7 +2818,7 @@
       "first_downstream_consumer": null,
       "consumer_proof_grade": "NONE_ACCEPTED_PERFORMED_CONSUMER_VERIFIED",
       "author_test_evidence": {
-        "path": "WORKER_RETURNS/SOROK-R3-HQ313-OUT8-RESTORED-ACK-GHOST-REPAIR-R1/00_RETURN.md",
+        "path": "WORKER_RETURNS/SOROK-R3-HQ317-OUT10-MULTIWITER-FEASIBILITY-R1/00_RETURN.md",
         "ref": "54eed50dcea538509baaaa52b68c9d5fef844a4d"
       },
       "reviewer_test_evidence": "NOT_RECONCILED_TO_EXACT_FINAL_SHA",
@@ -3616,5 +3642,14 @@
       "pre_main_adoption": null,
       "next_proof_owner": "ACTING_SOROK_HQ_AND_SEPARATE_ORIGINAL_CAPABILITY_OWNERS"
     }
-  ]
+  ],
+  "corrections": {
+    "source_blobs_read": [
+      12,
+      52,
+      55,
+      57
+    ],
+    "out10_return_path_fixed": 74
+  }
 }

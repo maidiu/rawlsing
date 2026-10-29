@@ -17,6 +17,7 @@
 | 9 | `331840768ce0b5f6f73e5e93094ca0d217ddaebf` | `WORKER_RETURNS/SOROK-20261019-C8O-OUT14-WRITER-AUTHORITY-EXECUTABLE-BOUNDARY-R1/runtime/stage_out12/outbox_prototype.py` |
 | 10 | `594e98fbe3db9e6dfeac9bac2d48320629d017e7` | `WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/__init__.py` |
 | 11 | `774d338cdbeea68ab09006807431cc8d17a22345` | `WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/severance/proof_integrity_gate_r1.py` |
+| 12 | `8ae8737b4f4c7f3cf4c9f9f0059b1ecdbeeb0104` | `WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/pipeline.py` |
 | 13 | `47e59c12b79c04b05c18e73ad76078a29d0d7b3c` | `WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/c9_handoff_consumer.py` |
 | 14 | `325c4eb738cd61b1803ddc8f7cb8ce97c41ba17f` | `WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/candidate/lab_sgi1/joint.py` |
 | 15 | `f7cd8db7d4efc8eeb1463ec3bf1ba52dcd199d0b` | `WORKER_RETURNS/SOROK-20261019-PA0-V3-ADP-PFF-GENERATOR-ATLAS-R1/smoke/smoke_consumer.py` |
@@ -42,8 +43,11 @@
 | 47 | `b44a5881859ae9fc896c6937f8d80a503d4c814c` | `WORKER_RETURNS/SOROK-R3-HQ297-K3K5-WORLD-CONDITIONED-CAUSAL-COURT-R1/test_k35_sourcefree_court.py` |
 | 48 | `73e25af07356d9707123274cdc28b080489d9622` | `WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/conftest.py` |
 | 51 | `4684ad42bf3e91fb34cc0f1c7c3a4c069e9fe45c` | `WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/model_gate.py` |
+| 52 | `440eb1719553bf0a96fc4782ac9a432a0561b3c1` | `WORKER_RETURNS/SOROK-R3-HQ298-SM-OWNER-EFFECT-COURT-R1/court/owner_effect_stub_TEST_ONLY.py` |
 | 53 | `fe429516e48f63035457bcff5431d2da4f26f8d3` | `WORKER_RETURNS/SOROK-R3-HQ298-SR-OUTBOX-EXECUTION-R1/outbox_prototype.py` |
 | 54 | `b9c61ec47e36906fe8299b675a254b34b169f504` | `WORKER_RETURNS/SOROK-R3-HQ299-G12-SGI1-DIRECT-GENERALIZATION-R1/conftest.py` |
+| 55 | `2d35906633674595e04293ef6524141e5c0a3717` | `WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/assay/experiment.py` |
+| 57 | `dde7d847212d9c6004a2818f3e2d2ee3b247af9a` | `WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py` |
 | 61 | `487a6e5bc40a1d366a375d4916eb759bb997eb2a` | `WORKER_RETURNS/SOROK-R3-HQ306-OC1-ORACLE-CUSTODY-READINESS-R1/repro/custody_protocol.py` |
 | 62 | `0d978f89fb3c5e836a52f25849240db360f97f8f` | `WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/candidate_registry_fixture.py` |
 | 63 | `f117f380c524db5b1eae0ce280be23f1c4bf2c23` | `WORKER_RETURNS/SOROK-R3-HQ308-OC2-CUSTODY-RED-REPAIR-R1/repro/custody_protocol.py` |
@@ -76,3 +80,5 @@ BP1 historical composer → BP2 JoinedProducer world/C8/OUT9/E1/C9/E2 → BP2P4J
 B1 B-first response / CAN011 fixture → B2 sourcefree proposal and admitted witnessed occurrence → R1 event identity repair → B3 developmental SQLite loop. Distinct M1→M2 and M2R3/M2R4→B3A SQLite repairs retain X3/M3 and other immutable negatives; no native child psychology is inferred.
 
 C0 structural N9 and empirical N10E remain separate Pyat-owned contracts. C0P author connected two downstream sourcefree consumers without obtaining N11/N12 or native agency. SGI1 genealogy and renderer RFA work are sourcefree/design evidence, not independent actual persons or model assessment.
+
+Final correction: OUT10 final return Git blob `1383d79080846ae00c8717d1cbdae5c80173eb1a`, not inherited OUT8. Extra direct code cuts: G15, SM owner stub, R2 behavioral assay, HQ300 CAN008 candidate. No tests were executed during these source reads.

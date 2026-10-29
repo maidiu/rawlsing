@@ -52,9 +52,8 @@ Source: 98 pinned commits, source/return reads. This investigator ran **zero tes
 
 ## Cases without a directly authenticated representative code blob
 
-These are **not** declared code-free; the specific direct-code step remains unverified, including binary archives, nested source trees and documentary designs.
+These rows are not automatically code-free: some are documentary courts, some use binary archives and some have unresolved nested source trees.
 
-12 · `agent/rabochii-sorok-20261019-g15-g14-seven-family-genealogy-causal-repair-r1` · RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED
 29 · `agent/rabochii-sorok-20261021-r32h-codex-hq-accession-evidence-binder-r1` · DOCUMENTARY_OR_NEGATIVE_COURT
 32 · `agent/rabochii-sorok-20261026-ra-a-person-callgraph-r1` · DOCUMENTARY_OR_NEGATIVE_COURT
 33 · `agent/rabochii-sorok-20261026-ra-b-astra-k1k11-evidence-r1` · DOCUMENTARY_OR_NEGATIVE_COURT
@@ -69,10 +68,7 @@ These are **not** declared code-free; the specific direct-code step remains unve
 44 · `agent/rabochii-sorok-r15-rfa06b-renderer-court-identity-binding-r2` · DOCUMENTARY_OR_NEGATIVE_COURT
 49 · `agent/rabochii-sorok-r3-hq298-sg-choice-authority-r1` · DOCUMENTARY_OR_NEGATIVE_COURT
 50 · `agent/rabochii-sorok-r3-hq298-sgi2-forward-generalization-r1` · RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED
-52 · `agent/rabochii-sorok-r3-hq298-sm-owner-effect-court-r1` · RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED
-55 · `agent/rabochii-sorok-r3-hq300-behavioral-assay-r2-reconstruction-r1` · RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED
 56 · `agent/rabochii-sorok-r3-hq300-c0-sc0-adapter-red-repair-r1` · COMMISSION_ONLY_AT_TIP
-57 · `agent/rabochii-sorok-r3-hq300-can008-first-positive-sourcefree-r1` · RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED
 58 · `agent/rabochii-sorok-r3-hq300-outbox-authority-cold-repair-r1` · RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED
 59 · `agent/rabochii-sorok-r3-hq302-out2-rto-red-repair-r1` · RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED
 60 · `agent/rabochii-sorok-r3-hq304-c0-rsc0-31red-repair-r1` · DOCUMENTARY_OR_NEGATIVE_COURT

@@ -1241,17 +1241,31 @@
       "pinned_sha": "fbc84ba4b5ec8befcf7954357a2ba1c576f5d7a5",
       "current_sha_or_null": "fbc84ba4b5ec8befcf7954357a2ba1c576f5d7a5",
       "head_match": true,
-      "content_grade": "RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED",
+      "content_grade": "CODE_PRESENT_REPRESENTATIVE_SOURCE_OR_PATCH_INSPECTED",
       "original_return_path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/00_RETURN.md",
       "original_return_blob_sha": "305569c91924936e0beea13cb2241c10c64d2b62",
-      "primary_source_path": null,
-      "primary_source_blob_sha": null,
-      "source_is_in_branch_return": false,
-      "code_functions": [],
+      "primary_source_path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/pipeline.py",
+      "primary_source_blob_sha": "8ae8737b4f4c7f3cf4c9f9f0059b1ecdbeeb0104",
+      "source_is_in_branch_return": true,
+      "code_functions": [
+        "FutureChildPartitionGuard",
+        "enter",
+        "assert_clean",
+        "run_pipeline",
+        "_finish",
+        "semantic"
+      ],
       "source_candidates": [
         "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/k11_runner.py"
       ],
-      "inspected_paths": [],
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/pipeline.py",
+          "blob_sha": "8ae8737b4f4c7f3cf4c9f9f0059b1ecdbeeb0104",
+          "inspection": "FULL_TEXT_FETCH_20261029",
+          "branch_owned": true
+        }
+      ],
       "commit_file_count": 3,
       "commit_view_truncated": false,
       "author_test_evidence_path": "WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/00_RETURN.md",
@@ -4302,17 +4316,31 @@
       "pinned_sha": "9ba40aabea9773ba9d2f3cf32248347f2b0f7e18",
       "current_sha_or_null": "9ba40aabea9773ba9d2f3cf32248347f2b0f7e18",
       "head_match": true,
-      "content_grade": "RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED",
+      "content_grade": "CODE_PRESENT_REPRESENTATIVE_SOURCE_OR_PATCH_INSPECTED",
       "original_return_path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-OWNER-EFFECT-COURT-R1/00_RETURN.md",
       "original_return_blob_sha": "4b8a9374629bcab09cfd8798311cde42bd693ec4",
-      "primary_source_path": null,
-      "primary_source_blob_sha": null,
-      "source_is_in_branch_return": false,
-      "code_functions": [],
+      "primary_source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-OWNER-EFFECT-COURT-R1/court/owner_effect_stub_TEST_ONLY.py",
+      "primary_source_blob_sha": "440eb1719553bf0a96fc4782ac9a432a0561b3c1",
+      "source_is_in_branch_return": true,
+      "code_functions": [
+        "CouplingRule",
+        "event_custody_check",
+        "coupling_evaluate",
+        "adp016_trace_commit_request",
+        "adp017_first_person_claim_check",
+        "next_event_response"
+      ],
       "source_candidates": [
         "WORKER_RETURNS/SOROK-R3-HQ298-SM-OWNER-EFFECT-COURT-R1/k35_sourcefree_court.py"
       ],
-      "inspected_paths": [],
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-OWNER-EFFECT-COURT-R1/court/owner_effect_stub_TEST_ONLY.py",
+          "blob_sha": "440eb1719553bf0a96fc4782ac9a432a0561b3c1",
+          "inspection": "FULL_TEXT_FETCH_20261029",
+          "branch_owned": true
+        }
+      ],
       "commit_file_count": 1,
       "commit_view_truncated": false,
       "author_test_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-OWNER-EFFECT-COURT-R1/00_RETURN.md",
@@ -4596,15 +4624,26 @@
       "pinned_sha": "99b7c4cb16888c50f23c9b55e21f485ec172e6cb",
       "current_sha_or_null": "99b7c4cb16888c50f23c9b55e21f485ec172e6cb",
       "head_match": true,
-      "content_grade": "RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED",
+      "content_grade": "CODE_PRESENT_REPRESENTATIVE_SOURCE_OR_PATCH_INSPECTED",
       "original_return_path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/00_RETURN.md",
       "original_return_blob_sha": "fd55b0a98d7eaf6c5efdbc9b58bea9b8b1569918",
-      "primary_source_path": null,
-      "primary_source_blob_sha": null,
-      "source_is_in_branch_return": false,
-      "code_functions": [],
+      "primary_source_path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/assay/experiment.py",
+      "primary_source_blob_sha": "2d35906633674595e04293ef6524141e5c0a3717",
+      "source_is_in_branch_return": true,
+      "code_functions": [
+        "mock_permit",
+        "code_capture",
+        "run_mock"
+      ],
       "source_candidates": [],
-      "inspected_paths": [],
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/assay/experiment.py",
+          "blob_sha": "2d35906633674595e04293ef6524141e5c0a3717",
+          "inspection": "FULL_TEXT_FETCH_20261029",
+          "branch_owned": true
+        }
+      ],
       "commit_file_count": 1,
       "commit_view_truncated": false,
       "author_test_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/00_RETURN.md",
@@ -4722,13 +4761,21 @@
       "pinned_sha": "189da3b54307d8731132c9a7f7baf578fee8bc96",
       "current_sha_or_null": "189da3b54307d8731132c9a7f7baf578fee8bc96",
       "head_match": true,
-      "content_grade": "RETURN_INSPECTED__SOURCE_CODE_NOT_DIRECTLY_VERIFIED",
+      "content_grade": "CODE_PRESENT_REPRESENTATIVE_SOURCE_OR_PATCH_INSPECTED",
       "original_return_path": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/00_RETURN.md",
       "original_return_blob_sha": "3ef4ccdbbb47704e96774e65849069bef4482c22",
-      "primary_source_path": null,
-      "primary_source_blob_sha": null,
-      "source_is_in_branch_return": false,
-      "code_functions": [],
+      "primary_source_path": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "primary_source_blob_sha": "dde7d847212d9c6004a2818f3e2d2ee3b247af9a",
+      "source_is_in_branch_return": true,
+      "code_functions": [
+        "CouplingRuleBinding",
+        "validate_complete",
+        "occurrence_gate",
+        "coupline_evaluate",
+        "response_rule_apply",
+        "build_response_receipt",
+        "register_default_rule"
+      ],
       "source_candidates": [
         "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/adopted_contract.py",
         "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate_registry_fixture.py",
@@ -4736,7 +4783,14 @@
         "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/owner_transitions.py",
         "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/positive_chain.py"
       ],
-      "inspected_paths": [],
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+          "blob_sha": "dde7d847212d9c6004a2818f3e2d2ee3b247af9a",
+          "inspection": "FULL_TEXT_FETCH_20261029",
+          "branch_owned": true
+        }
+      ],
       "commit_file_count": 1,
       "commit_view_truncated": false,
       "author_test_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/00_RETURN.md",
@@ -6091,8 +6145,8 @@
       "current_sha_or_null": "54eed50dcea538509baaaa52b68c9d5fef844a4d",
       "head_match": true,
       "content_grade": "DOCUMENTARY_OR_NEGATIVE_COURT",
-      "original_return_path": "WORKER_RETURNS/SOROK-R3-HQ313-OUT8-RESTORED-ACK-GHOST-REPAIR-R1/00_RETURN.md",
-      "original_return_blob_sha": "65fd56b9aba84609051eab430d11b268f1737611",
+      "original_return_path": "WORKER_RETURNS/SOROK-R3-HQ317-OUT10-MULTIWITER-FEASIBILITY-R1/00_RETURN.md",
+      "original_return_blob_sha": "1383d79080846ae00c8717d1cbdae5c80173eb1a",
       "primary_source_path": null,
       "primary_source_blob_sha": null,
       "source_is_in_branch_return": false,
@@ -6103,25 +6157,19 @@
           "path": "WORKER_RETURNS/SOROK-R3-HQ313-OUT8-RESTORED-ACK-GHOST-REPAIR-R1/00_RETURN.md",
           "inspection": "COMMIT_PATCH",
           "blob_sha": null
+        },
+        {
+          "path": "WORKER_RETURNS/SOROK-R3-HQ317-OUT10-MULTIWITER-FEASIBILITY-R1/00_RETURN.md",
+          "blob_sha": "1383d79080846ae00c8717d1cbdae5c80173eb1a",
+          "inspection": "DIRECT_FINAL_RETURN_READ",
+          "branch_owned": true
         }
       ],
       "commit_file_count": 10,
       "commit_view_truncated": false,
-      "author_test_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ313-OUT8-RESTORED-ACK-GHOST-REPAIR-R1/00_RETURN.md",
+      "author_test_evidence_path": "WORKER_RETURNS/SOROK-R3-HQ317-OUT10-MULTIWITER-FEASIBILITY-R1/00_RETURN.md",
       "author_test_claims": [
-        "# SOROK HQ313 OUT8 — restored ACK and revoked historical viewer repair",
-        "**Disposition:** `IMPLEMENTATION_RETURNED__TWO_OUT7_RESTORE_DEFECTS_REPAIRED__SOURCEFREE_ONLY__I2_REQUIRED__NO_ADOPTION`.",
-        "| Original 137 | 135P / 2 historical RED | 135P / 2 historical RED |",
-        "| Exact OUT7 independent 21 | **17P / 4 NEW RED** | **21P** |",
-        "| OUT8 new actual-entrypoint 20 | NOT_RUN | **20P** |",
-        "| **Combined** | **221P / 6RED / 227** | **245P / 2RED / 247** |",
-        "Actual complete combined pytest runs, zero errors/skips, exit 1 solely because two original REDs persist. Actual postrepair source Git blob `331840768ce0b5f6f73e5e93094ca0d217ddaebf`; actual new 20-test file Git blob `d2",
-        "## Two restored-state defects corrected",
-        "1. **Forged global terminal ACK** (OUT7 I08/I13): a viewer-bound aggregate `ACKNOWLEDGED` state now requires at least one historical `ACKNOWLEDGED` client receipt for **that same occurrence**, belonging to an active or f",
-        "2. **Forged revoked zero-attempt viewer receipt** (OUT7 I09/I14): a receipt for a revoked viewer must record at least one prior attempt, so a forged `revoked_viewers` tombstone cannot create an impossible `NOT_SENT`/atte",
-        "Failed restores remain failure-atomic through existing detached validation, and real new cold process tests exercised `Journal.recover()`, unkeyed digest rewrite, and `os._exit(79)` before/after rename. Twenty newly auth",
-        "Two untouched **historical REDs**: frozen S27 test demands unissued physical mug movement (owner MISSING), and stale multiwriter journal overwrite (outside single-writer grant). **OUT5's unpublished exact 14 tests were N",
-        "**Evidence custody:** Full local 247-case evidence archive, 227-case baseline JUnit/stdout, full per-case JSON matrix, original source bytes and recorded import path, source/test SHA receipts exist in the delivered conve"
+        "MULTIWITER_FEASIBILITY_HOLD: OUT8 archive lacks stage/baseline/evidence and outbox_prototype.py, pytest collection ModuleNotFoundError; no safe multiwriter candidate delivered"
       ],
       "tests_executed_by_this_audit": false,
       "tested_commit": null,
@@ -8028,6 +8076,20 @@
       ],
       "native_rights": "NOT_GRANTED",
       "next_proof_owner": "ACTING_SOROK_HQ_AND_SEPARATE_ORIGINAL_CAPABILITY_OWNERS"
+    }
+  ],
+  "corrections": [
+    {
+      "date": "2026-10-29",
+      "source_added": [
+        12,
+        52,
+        55,
+        57
+      ],
+      "provenance_corrected": [
+        74
+      ]
     }
   ]
 }
