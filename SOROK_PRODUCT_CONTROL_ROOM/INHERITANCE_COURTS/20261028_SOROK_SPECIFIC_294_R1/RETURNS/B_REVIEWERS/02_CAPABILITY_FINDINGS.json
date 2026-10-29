@@ -1,0 +1,1806 @@
+{
+  "schema": "SOROK294_B_CAPABILITY_FINDINGS_V1",
+  "scope": "Review and negative witness capabilities, not a count of 67 independently adopted author implementations",
+  "count": 67,
+  "capabilities": [
+    {
+      "capability_id": "B-REVIEW-001",
+      "branch": "agent/reviewer-sorok-20261018-b3a-atomic-repair-independent-i2-r1",
+      "reviewer_cut": "528e8cde0cff9e28f3c55d5d54a66e820d7401fa",
+      "source_path": "WORKER_RETURNS/SOROK-20261018-B3A-ATOMIC-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+      "source_blob": "d5e9c238f032c749b9818be5d482f7dddd5c6eb7",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Verdict: REVISE — the five original refused-event partial-write/cold-ghost assertions now pass, but the published full-schema/readset and mutation-receipt guarantees do not.** No candidate code or frozen expectation was repaired. The two new REDs are kept literal. They do not establish failure of the five repaired paths.",
+      "reported_negative_excerpt": [
+        "**Verdict: REVISE — the five original refused-event partial-write/cold-ghost assertions now pass, but the published full-schema/readset and mutation-receipt guarantees do not.** No candidate code or frozen expectation was repaired. The two new REDs are kept literal. They do not establish failure of the five repaired paths.",
+        "One accountable local Codex reviewer performed sourcefree execution and adjudication in a NEW sparse worktree using the existing object store. No author runner state or live database was reused. This conversation previously authored CLR research and read B3 as reference; it did not author B3, B3A or X3. Independence is documenta",
+        "| Court | PASS | RED |",
+        "| New preregistered reviewer court | 18 | 2 |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "ADP019",
+        "CAN008",
+        "CAN011",
+        "E2"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-002",
+      "branch": "agent/reviewer-sorok-20261018-b3a-schema-readset-repair-independent-i2-r1",
+      "reviewer_cut": "1a25b19dd01e8e7954e38c59ffc7e52c50739c9f",
+      "source_path": "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+      "source_blob": "00c61b3f712721f2ea4dc74fd305f9213303fa52",
+      "reported_disposition": "REPORTED_SCOPED_ACCEPTANCE",
+      "reported_verdict": "**Verdict: ACCEPT_SCOPED — the exact local-authored repair `16f15a125ba54cdf17f5d41be2d851bbcd2240d7` closes both unchanged B3A-I2 schema REDs, and no frozen, atomicity, B3, F2, E3, X3, inherited or sourcefree expectation was weakened to do so.** The acceptance is scoped to the tested logical schema/readset contract, the sourcefree test-only grade and the preserved owner-permission boundaries. It is an engineering acceptance of a bounded SQLite custody candidate, not semantic adoption, not CAN00",
+      "reported_negative_excerpt": [
+        "**Verdict: ACCEPT_SCOPED — the exact local-authored repair `16f15a125ba54cdf17f5d41be2d851bbcd2240d7` closes both unchanged B3A-I2 schema REDs, and no frozen, atomicity, B3, F2, E3, X3, inherited or sourcefree expectation was weakened to do so.** The acceptance is scoped to the tested logical schema/readset contract, the sourcef",
+        "Repository: private `maidiu/rawlsing`. Assigned branch: `agent/reviewer-sorok-20261018-b3a-schema-readset-repair-independent-i2-r1`. Exact sealed startup `e18c41b5faa6cbb0ab393561833d850e1dd1e383`, direct parent `528e8cde0cff9e28f3c55d5d54a66e820d7401fa` (the complete previous B3A-I2 REVISE return). The seal changes exactly one ",
+        "This reviewer is a fresh independent source-free I2 reviewer: not the B3A/B3AS author, not the first B3A-I2 reviewer, not HQ and not a semantic issuer. One accountable OpenCode agent with MiMo-V2.6-Pro performed the complete commission in a new sparse worktree over the existing shared Git object store. No Codex, no model/provide",
+        "The reported local repair `16f15a125ba54cdf17f5d41be2d851bbcd2240d7` was probed directly in the shared object store, not inferred from any message:"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "CAN008",
+        "CAN011",
+        "ADP019"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-003",
+      "branch": "agent/reviewer-sorok-20261018-clr3-recursive-canon-science-i2-r1",
+      "reviewer_cut": "de9a525c362bf58dbb620fcd7db336a4734e7db8",
+      "source_path": "WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-CANON-SCIENCE-I2-R1/00_RETURN.md",
+      "source_blob": "a776ee951f8b8176f1a7576723f972b0911b856f",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Disposition: ACCEPT_SCOPED for the reproduced fixed-fixture computational mechanism; REVISE the general research canon-admission claim; HOLD historical container lineage and native-owner migration.** No legacy mathematics, human developmental claim, production psychology, CAN/ADP semantic issue, actor permission or adoption is granted.",
+      "reported_negative_excerpt": [
+        "**Disposition: ACCEPT_SCOPED for the reproduced fixed-fixture computational mechanism; REVISE the general research canon-admission claim; HOLD historical container lineage and native-owner migration.** No legacy mathematics, human developmental claim, production psychology, CAN/ADP semantic issue, actor permission or adoption is",
+        "One distinct Codex reviewer conversation and new isolated sparse worktree performed the full assignment. Actual session metadata records `gpt-6.1-sol / high`. No helper, subagent, editor/model/provider switch, external model call or author-return repair occurred. Account independence from the author is not attested; independent ",
+        "| Suite | PASS | RED | Errors | Skips | Exit |",
+        "The combined runner exits **1 intentionally**, preserving both sets of RED evidence. These are 50 test cases: 42 PASS, 8 RED. The historical prior 47 PASS and 18 reassessment observations were read, preserved and not added to this independent count. The six old assertions have not been rewritten, skipped, marked xfail or claimed"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-004",
+      "branch": "agent/reviewer-sorok-20261018-clr3r1-canon-repair-independent-i2-r1",
+      "reviewer_cut": "f982580d43133b8641e7efe5d7219aa08307b57e",
+      "source_path": "WORKER_RETURNS/SOROK-20261018-CLR3R1-CANON-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+      "source_blob": "f02ad4b05658f3f5b61d7bfdb3cc13a50f0b090d",
+      "reported_disposition": "REPORTED_HOLD",
+      "reported_verdict": "**Reviewer disposition: ACCEPT_SCOPED for the two local sourcefree repairs at `de9a525c362bf58dbb620fcd7db336a4734e7db8`. Historical container lineage, authenticated producer truth, and native V3/actor migration remain HOLD.** This is an independent review recommendation for HQ intake, not adoption or a semantic issue.",
+      "reported_negative_excerpt": [
+        "**Reviewer disposition: ACCEPT_SCOPED for the two local sourcefree repairs at `de9a525c362bf58dbb620fcd7db336a4734e7db8`. Historical container lineage, authenticated producer truth, and native V3/actor migration remain HOLD.** This is an independent review recommendation for HQ intake, not adoption or a semantic issue.",
+        "One fresh Codex conversation and isolated sparse worktree performed staging, test design, execution and scientific adjudication. Current conversation metadata reports `gpt-6.1-sol / high`. No helper/subagent, model/provider switch, paid external model call, author runner or shared scratch database was used. Separate conversation",
+        "| Court | PASS | RED | Error / Skip | Exit |",
+        "| Unchanged CLR3, actual repaired wrapper | 38 | 0 | 0 / 0 | 0 |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-005",
+      "branch": "agent/reviewer-sorok-20261018-m2r2-sourcefree-i2-execution-r1",
+      "reviewer_cut": "e8b2d6be5ba243729f387cda4048cc30a52664d2",
+      "source_path": "WORKER_RETURNS/SOROK-20261018-M2R2-FRESH-I2-EXECUTION-R1/00_RETURN.md",
+      "source_blob": "7cded74e2fa0f6166a0803676024ddfd4c92870a",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**DISPOSITION: REVISE_ACTOR_INDEPENDENCE__TARGETED_HISTORICAL_READSET_GREEN.**",
+      "reported_negative_excerpt": [
+        "**DISPOSITION: REVISE_ACTOR_INDEPENDENCE__TARGETED_HISTORICAL_READSET_GREEN.**",
+        "- Distinct *exact historical original Git M3* three-source-preimage court: **3/3 PASS** against R2. The former R3-01 speech, R3-02 practice, R3-03 affect replacement REDs are closed under the tested sourcefree conditions.",
+        "- Independent NEW heldout: valid independently acting `other_P` positive PASS; matched lawful child-self-owned event negative **RED**. Across the eight separate suite executions: **120 PASS, 1 RED; zero skip/error**. The failure is intentional discovery evidence, not flaky runner behavior.",
+        "- Original M1/I2 binary archives **NOT_RERUN** on this review. Previous historical 37 M1, 23 I2 and frozen incompatibility matrices remain documentary-only. Their prior reported 19 M1-on-R2 and 10 I2-on-R2 failure names must remain frozen, not retrospectively called PASS."
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "CAN008",
+        "CAN011"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-006",
+      "branch": "agent/reviewer-sorok-20261018-m2r3-fresh-independent-i2-r1",
+      "reviewer_cut": "a4129eaf652b49a5ba629de32e2b7b0abd60d443",
+      "source_path": "WORKER_RETURNS/SOROK-20261018-M2R3-FRESH-INDEPENDENT-I2-R1/00_RETURN.md",
+      "source_blob": "fe1e55313e26be9e5e3f368bcdba25073d06eed6",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**DISPOSITION: REVISE.** Original 135/135 author cases independently PASS; 6 NEW held-out cases yield 4 PASS and 2 RED. Reviewer did not repair the candidate, self-adopt, issue actor authority, or mutate production.",
+      "reported_negative_excerpt": [
+        "**DISPOSITION: REVISE.** Original 135/135 author cases independently PASS; 6 NEW held-out cases yield 4 PASS and 2 RED. Reviewer did not repair the candidate, self-adopt, issue actor authority, or mutate production.",
+        "Original M2 **41 PASS**; M3 lawful **32 PASS**; packaged M3 **3 PASS**; source-preimage **15 PASS**; original historical M3 **3 PASS**; prior hostile **11 PASS**; R2 relation **14 PASS**; earlier independent R2 I2 held-out **2 PASS**; new R3 author actor-owner cases **14 PASS**. **Total: 135 PASS, 0 failures/errors/skips**, unch",
+        "Exact original two-case I2 held-out against original R2: **1 PASS / 1 RED**, `CHILD_SELF_ACTION_WRONGLY_ADMITTED_AS_COUNTERPART`; JUnit `heldout_R2.xml` SHA-256 `47871e972992254fa4479bb5fd9350bb967103f775b695a4b1ddcd8badd15a1f`. Same unchanged held-out against R3: **2 PASS**, JUnit `heldout_R3.xml` SHA-256 `be3b5fd6ca7dca47b21ef",
+        "Exact newly authored source `test_fresh_i2_adversarial.py` SHA-256 `b9c01d20fe6b2d771246fd7b1b36671b9dbda8bddae062fd6c96df8196c471de`, six actual pytest cases: **4 PASS, 2 RED**; JUnit `heldout_fresh_i2.xml` SHA-256 `c51902eb619f14039c441c103a0b482b528fc0be9875536d8bacc3260208453e`. Preserve REDs verbatim, do not modify candidat"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "ADP019",
+        "CAN008"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-007",
+      "branch": "agent/reviewer-sorok-20261018-m2r4-rule-witness-independent-i2-r1",
+      "reviewer_cut": "8e74be26d14dae270ed6723d5e878f59446c94bd",
+      "source_path": "WORKER_RETURNS/SOROK-20261018-M2R4-RULE-WITNESS-INDEPENDENT-I2-R1/00_RETURN.md",
+      "source_blob": "3cecf8feb977c54128926ca3b68031390ca38528",
+      "reported_disposition": "REPORTED_HOLD",
+      "reported_verdict": "**DISPOSITION: HOLD — EXECUTION CUSTODY / ASSERTION EFFICACY NOT PROVED.** This return is a genuinely distinct documentary source inspection, **not** R4 acceptance, not an R4 repair, not a second implementation, and not independent execution. No model, actor, B3, canonical PRE-MAIN, original35, ADP or CAN authority is granted.",
+      "reported_negative_excerpt": [
+        "**DISPOSITION: HOLD — EXECUTION CUSTODY / ASSERTION EFFICACY NOT PROVED.** This return is a genuinely distinct documentary source inspection, **not** R4 acceptance, not an R4 repair, not a second implementation, and not independent execution. No model, actor, B3, canonical PRE-MAIN, original35, ADP or CAN authority is granted.",
+        "### RED 1 — historical rehashed rule",
+        "### RED 2 — actor-own testimony",
+        "R3's relation gate excludes self-action by interpreter but does not require the three immediate observer fields be independent of actual action owner. R4 checks (i) `e.observer != e.action_owner`, (ii) `x.observer != e.action_owner` and (iii) `_history_source(scene,witness).observer != e.action_owner`. The original R3-I2 expecte"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-008",
+      "branch": "agent/reviewer-sorok-20261019-c0r3i-transport-source-independent-r1",
+      "reviewer_cut": "43328571f297c26e23a42a755ef306c1247b5032",
+      "source_path": "WORKER_RETURNS/SOROK-20261019-C0R3I-INDEPENDENT-TRANSPORT-CONSUMER-COURT-R1/00_RETURN.md",
+      "source_blob": "e1851f1020983cfcb4220174e4c072d4c61e7bf1",
+      "reported_disposition": "REPORTED_SCOPED_ACCEPTANCE",
+      "reported_verdict": "**Verdict: `ACCEPT_SCOPED__TWO_OWNER_LOSSLESS_TRANSPORT_AND_TYPED_TEMPORAL_REFUSAL`.** This is an independent I2 technical/scientific receiver court. It is not C0R3/C0R2/C0X author, HQ, Pyat producer, C11 welder or actor issuer. No repair was performed. No source was edited. No grant was issued.",
+      "reported_negative_excerpt": [
+        "Against the unmodified original facade (`c0p_repaired_author.py`):",
+        "1. **Callable parent reference:** `ordered_steps[0].parent_receipt_ref` is a Python function object `TwoContractPort._possibility_receipt.<locals>.er0`, not an ExactRef. `json.dumps` → `TypeError: Object of type function is not JSON serializable`.",
+        "1. **Materialized ExactRef:** root parent ref is `{kind:\"OrderedConditionStep\", id:\"urn:test:c0p:step:root\", hash:semantic_hash(\"root\")}` — an exact dict, never a callable. Child refs chain to previous `new_binding.hash`.",
+        "| Court | Tests | PASS | RED | Notes |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "C0",
+        "C10",
+        "C11"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-009",
+      "branch": "agent/reviewer-sorok-20261019-c8oi-writer-authority-and-occurrence-independent-r1",
+      "reviewer_cut": "f4200eb0938a1b74c8b738e0a344224edfb4d0eb",
+      "source_path": "WORKER_RETURNS/SOROK-20261019-C8OI-WRITER-OCCURRENCE-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "28191b44f13348c7e4b782ad08cd29a317cc2004",
+      "reported_disposition": "REPORTED_HOLD",
+      "reported_verdict": "## Three-court verdict",
+      "reported_negative_excerpt": [
+        "| **Authority** | `HOLD` | D1 (old-writer exclusivity), D2 (external anchor / keyed capability), D3 (ADP019 admitted occurrence + C9 E2 performer) all remain unissued. Reviewer cannot sign these. |",
+        "| Original 272 (OUT9-era union) | 270 PASS / 2 historical RED | **270 PASS / 2 historical RED** | `evidence/ind_original_272.xml` |",
+        "| OUT13 under OUT14 repair | 22 PASS / 1 defect-oracle RED | **22 PASS / 1 RED** | `evidence/ind_out13_under_out14.xml` |",
+        "Both historical REDs preserved unmodified:"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "ADP019",
+        "C9",
+        "E2",
+        "C8",
+        "C12"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-010",
+      "branch": "agent/reviewer-sorok-20261019-c9pi-c9p-native-boundary-independent-r1",
+      "reviewer_cut": "df2382b8d9478f0a904dcff06ee45bb0119a1bda",
+      "source_path": "WORKER_RETURNS/SOROK-20261019-C9PI-C9P-NATIVE-BOUNDARY-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "1c732d35f21f9d61359e8964a4976edfb44fa912",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Verdict: REVISE the candidate's claimed complete source/actor/target/action boundary. Native actor effects remain HOLD.** The exact C9P target is `38fba47614e82a86fc5a3fa3f50c27048493e808`. The unchanged 90 author tests pass, and all eight original shared proof witnesses reproduce. Those results establish useful TEST_ONLY mechanics, but do not establish authenticated sources, lawful practice formation, a complete persisted semantic record or a native later-action consumer.",
+      "reported_negative_excerpt": [
+        "# C9PI independent C9P court — REVISE",
+        "**Verdict: REVISE the candidate's claimed complete source/actor/target/action boundary. Native actor effects remain HOLD.** The exact C9P target is `38fba47614e82a86fc5a3fa3f50c27048493e808`. The unchanged 90 author tests pass, and all eight original shared proof witnesses reproduce. Those results establish useful TEST_ONLY mech",
+        "The independent preregistered court records **11 PASS / 26 assertion RED**; the supplemental semantic-record court records **0 PASS / 3 assertion RED**. There are no candidate-court errors or skips. Six independent technical edge controls pass. All original assertions and all new REDs are retained literally. No candidate, origin",
+        "The most decisive technical defects are that the store discards the qualified semantic object/effective time/causal parents when publishing a target; it commits an explicit target identity under a different key; and the later reader accepts a counterfeit returned record if it is paired with the real stored record's hash. These d"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "CAN011",
+        "CAN008",
+        "C11"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-011",
+      "branch": "agent/reviewer-sorok-20261019-c9ri-independent-positive-compatibility-e2-consumer-r1",
+      "reviewer_cut": "5753d9b4f8fad9f2175b1e285733f95bb8387888",
+      "source_path": "WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/00_RETURN.md",
+      "source_blob": "f7fc31fad6383e11e55e701b4bc2177bfb255f18",
+      "reported_disposition": "REPORTED_MIXED_OR_UNCLASSIFIED",
+      "reported_verdict": "(`transaction.py:191-196`), exactly the C9PI fabricated-decision requirement.",
+      "reported_negative_excerpt": [
+        "**Write scope:** only `WORKER_RETURNS/SOROK-20261019-C9RI-INDEPENDENT-PRODUCTIVE-COMPATIBILITY-R1/**`. No frozen C9P/C9PI/C9R file, test, native module, CAN/ADP/Pyat/production artifact was edited (witness mutations ran on staged copies and were restored by the shared gate).",
+        "| C9P author baseline (exact target) | **90 PASS / 0 RED** | 90/90 | `evidence/c9ri-baseline-author-90.xml` |",
+        "| C9PI baseline review (hostile 26 + custody 3 + edges 6) | **17 PASS / 29 RED** (26 hostile + 3 custody RED) | 11/26 + 0/3 + 6 edges | `evidence/c9ri-baseline-review.xml` |",
+        "| C9R candidate vs frozen C9PI review | **46 PASS / 0 RED** | all repaired | `evidence/c9ri-repaired-review.xml` |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "E2",
+        "C9R",
+        "CAN008",
+        "CAN011",
+        "C8"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-012",
+      "branch": "agent/reviewer-sorok-20261019-g16i-g15-scientific-compatibility-independent-r1",
+      "reviewer_cut": "683aa56828cda76ea70792a2c8b39cf78624e8dc",
+      "source_path": "WORKER_RETURNS/SOROK-20261019-G16I-G15-INDEPENDENT-SCIENTIFIC-COMPATIBILITY-COURT-R1/00_RETURN.md",
+      "source_blob": "72d845fdf072669588c200360dc9b427357c82df",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Verdict: REVISE G15's joined sourcefree candidate; HOLD terminal scientific genealogy.** Independently accept only the finite reference methods identified below. This return does not adopt a candidate or issue a semantic, actor, source, biological or production grant.",
+      "reported_negative_excerpt": [
+        "**Verdict: REVISE G15's joined sourcefree candidate; HOLD terminal scientific genealogy.** Independently accept only the finite reference methods identified below. This return does not adopt a candidate or issue a semantic, actor, source, biological or production grant.",
+        "One accountable independent reviewer continued the assigned branch `agent/reviewer-sorok-20261019-g16i-g15-scientific-compatibility-independent-r1` from sealed startup **8fdced60b7162407b08d20247405cc39b8410fa2**, whose exact parent is **31f8339cfd1948fb5230181315da7a5ba1ddcde3** and whose sole change is the commission. The remo",
+        "| Exact court independently executed | PASS | Literal RED | ERROR / SKIP |",
+        "| G15 author's source-fault witnesses reexecuted | 13 positive | 13 same-node assertion RED | 0 |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-013",
+      "branch": "agent/reviewer-sorok-20261019-g17i-material-historical-life-and-c9-consumer-independent-r1",
+      "reviewer_cut": "156b84cc8481b65c4196b42574010eb7920d6f44",
+      "source_path": "WORKER_RETURNS/SOROK-20261019-G17I-MATERIAL-HISTORY-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "01f2db8920b441ba1456fc269537072e0b5a19d7",
+      "reported_disposition": "REPORTED_MIXED_OR_UNCLASSIFIED",
+      "reported_verdict": "Sorok HQ for intake and scoped adoption decision; ADP015/020/CAN008/CAN011 for",
+      "reported_negative_excerpt": [
+        "These are literal engineering REDs under the commission's fake-cash /",
+        "is demonstrated. M2/MP remain exact coverage HOLDs.",
+        "| G13 historical 181, exact frozen IDs | **108 PASS / 73 RED** |",
+        "| G14 on G13 67 | **67 PASS / 0 RED** |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "C9",
+        "E2",
+        "C11",
+        "CAN008",
+        "CAN011"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-014",
+      "branch": "agent/reviewer-sorok-20261019-m2r4-executable-assertion-custody-r1",
+      "reviewer_cut": "d09aeab9067c983df2b77cd8ce693ce6a24a6b24",
+      "source_path": "WORKER_RETURNS/SOROK-20261019-M2R4-EXECUTABLE-ASSERTION-CUSTODY-R1/00_RETURN.md",
+      "source_blob": "4858cd2014cc744b464e454f45533de3f9360cc7",
+      "reported_disposition": "REPORTED_HOLD",
+      "reported_verdict": "**DISPOSITION: `EXECUTABLE_PASS_SCOPED__NO_SELF_ADOPTION__NO_NATIVE_AUTHORITY`.**",
+      "reported_negative_excerpt": [
+        "This is an independent executable custody/fault review of the already-written R4 candidate. It is **not** R4 authoring or repair, not R3-I2 authorship, not the prior documentary R4-I2 reviewer, not HQ acceptance, not B3/C9 integration, not CAN/ADP actor authority and not psychological development. The prior documentary High revi",
+        "| Authored write | only `WORKER_RETURNS/SOROK-20261019-M2R4-EXECUTABLE-ASSERTION-CUSTODY-R1/` |",
+        "The eleven inherited R4 test files match the exact blob list in the prior I2 `source_manifest.json`. Five fresh-process import receipts confirm the actual `kernel.py` file path and SHA-256: R2 `88bb8c65…`, R3 `838d0852…`, R4 `5b8ac91c…`. All imported paths are published return-relative; no host path, username or credential is pu",
+        "| R3 `@0.4.1` | **4 PASS / 2 RED** | `test_i2_01` → `Failed: DID NOT RAISE Refusal`; `test_i2_02` → `AssertionError: SELF_ATTESTED_COUNTERPART_ACTION_ADMITTED: [CONTRADICT, DIFFERENTIATE, GENERALIZE, NARROW, NO_CHANGE, REATTRIBUTE, REINFORCE]` |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "C9"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-015",
+      "branch": "agent/reviewer-sorok-20261020-bp2p4ji-whole-product-custody-independent-r1",
+      "reviewer_cut": "3212d716ce66586527c258632ef10c3ff4489803",
+      "source_path": "WORKER_RETURNS/SOROK-20261020-BP2P4JI-WHOLE-PRODUCT-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "39e42a1281563cc5ec36c884a8d17f0f63d7f08e",
+      "reported_disposition": "REPORTED_MIXED_OR_UNCLASSIFIED",
+      "reported_verdict": "- **Why the C12 verdict is REVISE, not RED:** the stored episode is intact and its true preimage verifies; the failure is in the delivered verifier's preimage selection (`episode_id` was appended after hashing). This is a minimal, exact repair, not a data-loss event. However, the candidate's C12 custody claim is not independently executable on a valid episode until that repair is applied, so scoped whole-product acceptance is not granted.",
+      "reported_negative_excerpt": [
+        "| BP2P4J new courts (product 10 + security 12 + severance 7 + source closure 4) | **33/33 PASS**, 0 failures, 0 errors, 0 skips | `junit/new_33.xml` |",
+        "| Original BP2 court (byte-exact vendored copy) | **50/50 PASS** | `junit/original_bp2_50.xml` |",
+        "| Original BP4 court (byte-exact vendored copy, pinned live `rawlsing_next`) | **15/15 PASS** | `junit/original_bp4_15.xml` |",
+        "### 3. MANDATORY C12 DISCREPANCY — RESOLVED: DELIVERED VERIFIER DEFECT, NOT C12 CORRUPTION"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "C12",
+        "BP2",
+        "BP4",
+        "C9R",
+        "C8",
+        "E2",
+        "C10",
+        "A0",
+        "A2",
+        "C11"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-016",
+      "branch": "agent/reviewer-sorok-20261021-r28s-independent-synthetic-person-scientific-source-court-r1",
+      "reviewer_cut": "90cdeaa13be8a4c7aaf723761385d3168de82467",
+      "source_path": "WORKER_RETURNS/SOROK-20261021-R28S-SYNTHETIC-PERSON-SCIENCE-COURT-R1/00_RETURN.md",
+      "source_blob": "dc58a945b237da9d103d43157070b9d89743a672",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**VERDICT: `REVISE_TO_CONDITIONAL_SOURCE_SCIENCE`.**",
+      "reported_negative_excerpt": [
+        "**VERDICT: `REVISE_TO_CONDITIONAL_SOURCE_SCIENCE`.**",
+        "**Scientific grade:** independently reasoned *requirements/authority interpretation for Sorok HQ*, NOT adopted scientific truth, concrete V3 CAN/ADP rule issuance, Pyat original source grant, C8 trust, C11 weld or native C12 release. **Engineering grade:** documentary/code-source audit and retained prior tested scope, no R28S na",
+        "**Qualification is conditional and substantive**: population distribution is not actor psyche; two simulated repetitions are not human acquisition evidence; a rule cannot be validated by replaying the events it itself generated; a hash is not an original source signature; independently generated B must have real independent *in-",
+        "- **ADP015** `a4dab0a12102aaa0b584ef6ff4fdc9206a28d456`: generated parents/other actors have distinct causal histories and household/relation sources; genealogy does not copy or average parents' psyches. Exact ADP015 original current rule and genealogy grants still govern."
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "C8",
+        "C11",
+        "C12",
+        "CAN008",
+        "CAN011",
+        "ADP019",
+        "C9R"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-017",
+      "branch": "agent/reviewer-sorok-20261023-r3-accession-browser-r1",
+      "reviewer_cut": "b9d5d945f3e1d6c2b2c0a271df141efa3217722c",
+      "source_path": "WORKER_RETURNS/SOROK-20261023-R3-INDEPENDENT-BROWSER-ACCESSION-R1/00_RETURN.md",
+      "source_blob": "c15c141aa8b0840594524df0a0ca9d6d6005abfd",
+      "reported_disposition": "REPORTED_SCOPED_ACCEPTANCE",
+      "reported_verdict": "**INDEPENDENT DISPOSITION: `ACCEPT_EXISTING_SOROK_HQ_SCOPE`.** This is a competent-review eligibility judgment for **existing bounded Sorok HQ command**, not an effective appointment, incumbent retirement, authority adoption, production cutover, scientific rule issuance or operative worker launch. **HUMAN ACCESSION AUTHORIZATION: NOT PROVIDED BY THIS REVIEW REQUEST; applicant remains `READ_ONLY__ELIGIBLE_AWAITING_HUMAN_AUTHORIZATION` until independently documented competent human/user accreditat",
+      "reported_negative_excerpt": [
+        "**INDEPENDENT DISPOSITION: `ACCEPT_EXISTING_SOROK_HQ_SCOPE`.** This is a competent-review eligibility judgment for **existing bounded Sorok HQ command**, not an effective appointment, incumbent retirement, authority adoption, production cutover, scientific rule issuance or operative worker launch. **HUMAN ACCESSION AUTHORIZATION",
+        "- **EXACT REVIEWED APPLICANT:** `agent/vozhd-sorok-20261023-fresh-maximal-accession-candidate-r3@9be6045d8614c97fe581df9eda579ef3c1fb361f`; two changed source files vs seal: `SOROK_PRODUCT_CONTROL_ROOM/HQ_ACCESSION_20261023_FRESH_MAXIMAL_R3/00_INDEPENDENT_FULL_GROK_DOSSIER.md`, Git blob `2c2c668be8d9e46ba700d7cb39f5cd876090ff3f`",
+        "- Accepted Sorok incumbent unchanged at read: `agent/vozhd-sorok-20261020-accepted-successor-hq-r1@b206b085d09e25f7d4d188b6c09e9d2eab06dacc`. Its **independent bounded accession review** `3de081023406a52ec23e1ae43ade77aea485a3f8` is stored in blob `fb94ac7286fe77cd568b3f0b5f37fc11851d96aa`, explicitly distinguished from **human-",
+        "- JOIN-E author final `7bf2da302996491ddf34b9a039fea47ac982d135` **exists**. JOIN-V `0c80354e2eb967a9ffdba40ec8b8ca308374e117` is the earlier independent reviewer; actual `00_RETURN.md` blob `f33796e27cc029a2ad718a141e80d9cc961a2c5f` explicitly reviews **OLDER JOIN-E `49022f693c99b6cb58226513f8bad71c26bdac3c`**. Current final sh"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "C8",
+        "C11",
+        "A5",
+        "CAN008",
+        "CAN011"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-018",
+      "branch": "agent/reviewer-sorok-20261026-ra-d-independent-runtime-evidence-r1",
+      "reviewer_cut": "c02139257bbfb069155836e76254014e40df7718",
+      "source_path": "WORKER_RETURNS/SOROK-20261026-RA-D-INDEPENDENT-EVIDENCE-REVIEW-R1/00_REVIEW.md",
+      "source_blob": "fb3caf1607f3c2f4ffc2a758edb82e035466cf79",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**RETURN DISPOSITION: `REVISE` — documentary/proof-path only; no re-execution required.**",
+      "reported_negative_excerpt": [
+        "**RETURN DISPOSITION: `REVISE` — documentary/proof-path only; no re-execution required.**",
+        "**SCIENTIFIC: `HOLD__NO_ACTOR_OWNED_CURRENT_PSYCHOLOGICAL_FORMATION_OR_CAN011_TRANSITION_PROVED`.**",
+        "**AUTHORITY: `HOLD__NO_NATIVE_GRANT`.**",
+        "**S52 VERIFIER DEFECT: `RED_REPRODUCED_WARM_AND_COLD`.**"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "CAN011",
+        "CAN008",
+        "C8",
+        "C9",
+        "C12"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-019",
+      "branch": "agent/reviewer-sorok-prea0-sm-situated-transition-science-r1",
+      "reviewer_cut": "6ad748ea985897dc1e93680f0e859b61bf074ed2",
+      "source_path": "WORKER_RETURNS/SOROK-PREA0-SM-SITUATED-TRANSITION-SCIENCE-R1/00_RETURN.md",
+      "source_blob": "94deec622954f963ec599fe3772f63667542ca8b",
+      "reported_disposition": "REPORTED_HOLD",
+      "reported_verdict": "**Provisional verdict:** A is the appropriate baseline; B is useful as a temporary event-local test of explicitly represented conative/recognition stakes; C can be examined as a typed relational candidate but has earned no durable owner. If held-out, equal-budget machine behavior is as good with A, delete/demote B/C. This verdict is **not** an observed A/B/C result and not a declaration that richer mechanisms are impossible.",
+      "reported_negative_excerpt": [
+        "**Worker terminal:** WORLD_SITUATED_SCIENCE_COURT_PREREGISTERED__SOURCEFREE_PREFLIGHT_PASS__ACTOR_TRANSITIONS_NOT_EXECUTED__SCIENTIFIC_HOLD_NO_SELF_ADOPTION.",
+        "| Required file | Git blob | Relevant scientific status |",
+        "**C — CONDITIONAL TYPED RELATIONAL TOPOLOGY**: B plus a sparse typed n-ary temporal relation with exact event parents and claimed causal intervention semantics; begin with COMPENSATES_FOR vs CONDITIONS_RECOGNITION in K2, evaluate against an A allowed to reconstruct the same history. Invalid unadmitted edge mutations fail. Even a",
+        "Nine proposed rule/gate entries T0–T8 in 02_K1_K6_SPEC.json: **T0** required historical-world/position/relationship/ancestry/opportunity/admitted-event gate; **T1** CAN008 actor receivability; **T2** CAN008 situated multi-stream recruitment; **T3** event-local conation; **T4** public recognition versus personal uptake with indep"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "CAN008",
+        "CAN011",
+        "ADP019"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-020",
+      "branch": "agent/reviewer-sorok-r15-rfar-renderer-state-reconciliation-r1",
+      "reviewer_cut": "e65846bbb1c38a366d79b54bb89be47da0f8502e",
+      "source_path": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/RFA_R_RECONCILIATION_R1/UNRESOLVED_FUTURE_OWNER_GAPS_R1.md",
+      "source_blob": "7cee0b5e4cf68562cd75eb859b0b6ad389d5b5de",
+      "reported_disposition": "REPORTED_MIXED_OR_UNCLASSIFIED",
+      "reported_verdict": null,
+      "reported_negative_excerpt": [
+        "3. **Joint projects, learned competencies, language/register repertoires:** no inferred generic project or trait owner; trace to specific authority or mark unresolved.",
+        "5. **CAN-022/ADP-019 versus Sorok 101 richer actor occurrence:** current narrow V2 wording-only renderer cannot introduce new physical particulars. Specify authorized realization slots, admission timing, retries and structured/prose equivalence through a future court.",
+        "10. **User phenomenal compositor proof:** no measured low-leakage, naturalness, access/recognition correctness or attention-invariant objective actions; separately test.",
+        "12. **Actor expression constraints for deception, withholding and self-explanation:** distinguish known lie, false belief, inaccessible cause and no report; do not invent universal defense state."
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-021",
+      "branch": "agent/reviewer-sorok-r3-hq297-genealogy-k11-construction-court-r1",
+      "reviewer_cut": "0cb708bbfe522a6c6e359f36d99835d180d5a84d",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ297-GENEALOGY-K11-INDEPENDENT-COURT-R1/00_INDEPENDENT_COURT.md",
+      "source_blob": "05e4a60c1d6fc60014d51c1f65cc5b1682febe4b",
+      "reported_disposition": "REPORTED_SCOPED_ACCEPTANCE",
+      "reported_verdict": "**Reviewer:** G11 independent of SG author; **not HQ, original science issuer or actor runner**. **Verdict:** `FINITE_CONSTRAINT_FEASIBILITY_PASS__FULL_V3_PERSON_GENERATION_UNPROVEN__ADP_EXTENSION_UNISSUED__NO_ACTOR_WAKE`.",
+      "reported_negative_excerpt": [
+        "A mother-first software *search dependency* with a provisional target can be acyclic and consistent with strictly forward represented causation. Retrospective **constraint planning** is not reverse causation, conditional selection is not yet true occurrence, and completed father prehistory must be independently forward-replayabl",
+        "SG correctly keeps ADP015's current two-parents-before-`CHILD_GENERATED` represented causality, rejects inferred reciprocity and parent averaging, preserves prior older-child lineage and makes failed-history retries visible. SG's K11 executable proposal and 4-history lab remain **unexecuted** as actor science. Our frozen court s",
+        "- Host probes: `python --version` = Python 3.13.5; `python -m pytest --version` = pytest 9.0.2; `git --version` = 2.47.3; write/import probe PASS. Private repository raw `git ls-remote` network DNS failed (`Could not resolve host: github.com`); pinned files instead directly fetched and blob-identified through authorized GitHub c",
+        "- Sourcefree module `g11_solver.py`; predeclared JSON `01_FROZEN_INDEPENDENT_K11_EXPECTATIONS.json`; `test_g11_solver.py` (stdlib + pytest). Run: `PYTHONPATH=. python -m pytest -q --junitxml=06_PYTEST_JUNIT.xml`; 25 passed, 0 failed, exit 0 in 0.07s. `python g11_solver.py` produced 8 valid witness combinations, no rejected basel"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-022",
+      "branch": "agent/reviewer-sorok-r3-hq299-rc0-sc0-pe-independent-r1",
+      "reviewer_cut": "86bd2a54687b40401f7c4247607bd1873c585619",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "3e2129e3378050319347d57c4c1e99ccf13519f4",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Verdict: CHANGES_REQUIRED for strict SC0 interface acceptance.** The value-bearing sourcefree port works on its narrow fixture and the published test counts reproduce. Its passing suites do not establish full frozen-envelope conservation, safe adapter entrypoints, an operative N9/N10W service, or a connected imported-owner empirical port. No adoption is issued.",
+      "reported_negative_excerpt": [
+        "**Verdict: CHANGES_REQUIRED for strict SC0 interface acceptance.** The value-bearing sourcefree port works on its narrow fixture and the published test counts reproduce. Its passing suites do not establish full frozen-envelope conservation, safe adapter entrypoints, an operative N9/N10W service, or a connected imported-owner emp",
+        "Sealed reviewer startup `e140beff621d91ca1092728badf00e538046e3b6` matched the direct private remote before work; parent `5c59fb409d5f08312c19b936738eb4410dbd4f26`. Candidate `b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59` remained fixed. Full commission and Sorok 00C/00D, bounded 00_READ_ME_FIRST/00B, HQ299 intake, candidate report/",
+        "| Executed suite | PASS | RED | Skipped/errors |",
+        "Smoke/repeats and common fixture machinery are not extra independent scientific evidence. An initial 19-case independent run was 7 PASS/12 RED; six source-aware adapter checks of original AH/n-ary/F2 mutation classes were then added, producing 13 PASS/12 RED over 25 cases. Its original logs/source snapshot remain. No xfail or sk"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "C0"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-023",
+      "branch": "agent/reviewer-sorok-r3-hq299-rg11-k11-authority-independent-r1",
+      "reviewer_cut": "c28262641abae54e538db3994ba02983ab3ca04e",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ299-RG11-K11-AUTHORITY-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "57f9a4714ab71d14182ee6c9df151f2388801c54",
+      "reported_disposition": "REPORTED_HOLD",
+      "reported_verdict": "**Disposition: ACCEPT_PROPOSED_DOCUMENTARY_NONCAUSAL_SEARCH_BOUNDARY_WITH_CONDITIONS; HOLD NEW ADP015/020 ISSUANCE AND ALL ACTUAL GENEALOGY EVENTS.** No adopted semantics, child generation or population posterior. Independent reviewer not SG, SGI1, G11 or SGI2 author; no self-adoption or authority issuer identity.",
+      "reported_negative_excerpt": [
+        "**Disposition: ACCEPT_PROPOSED_DOCUMENTARY_NONCAUSAL_SEARCH_BOUNDARY_WITH_CONDITIONS; HOLD NEW ADP015/020 ISSUANCE AND ALL ACTUAL GENEALOGY EVENTS.** No adopted semantics, child generation or population posterior. Independent reviewer not SG, SGI1, G11 or SGI2 author; no self-adoption or authority issuer identity.",
+        "- S-GI1 @ 27ca1f2792a5213064c0b5ea2e27b89e8acce0c3: reported 24 K11 cases / 98 predicates, seven genuine *historical lab* LLM scenario proposal calls; sourcefree synthetic provisional lab and frozen replay, not accepted V3 actor/biological event, not independently imported here.",
+        "Fresh bounded Browser Python 3.13.5 / pytest 9.0.2. Nine independent finite counterexample tests executed:",
+        "python -m pytest -q test_independent_authority_controls.py --junitxml=reviewer_rg11_junit.xml => **9 passed, 0 failed in 0.04 s**. JUnit SHA256 e60690c0e25c2271b8e4fbd14cb47f25bae5847e423938c39b188ce543f8ad2b. Tests check posterior non-identifiability, silent-redraw attrition bias (0.5/0.5 becomes 0.8/0.2), no semantic grant/no "
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "ADP019"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-024",
+      "branch": "agent/reviewer-sorok-r3-hq299-rmb-behavioral-harness-independent-r1",
+      "reviewer_cut": "bf7518cff877ce108ef9c07f2e2eeaf990171d08",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ299-RMB-BEHAVIORAL-HARNESS-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "cd66521df3b62e62176d67d56cbd100ab9925096",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Decision: REVIEW_REVISE.** Recommend scoped receipt of the independently reproduced synthetic machine results. **Do not accept the current assay for architectural behavioral inference or authorize its execution merely by filling the eight grant fields.** No behavioral result was produced. Reviewer recommendation only; competent HQ/owners retain acceptance, grant and adoption decisions.",
+      "reported_negative_excerpt": [
+        "**Decision: REVIEW_REVISE.** Recommend scoped receipt of the independently reproduced synthetic machine results. **Do not accept the current assay for architectural behavioral inference or authorize its execution merely by filling the eight grant fields.** No behavioral result was produced. Reviewer recommendation only; competen",
+        "- Actual environment: separate existing Codex worktree, shared canonical Git object store, new independently verified epoch; Python 3.11.3, pytest 9.0.2. `LOCAL_DOMINANT` upheld. No qualified prior reviewer runtime was claimed. Other observed worktrees/jobs were left untouched.",
+        "- Entire commission, HQ299 intake, Sorok 00_READ/00B/00C/00D read at the required cut; candidate report, preregistration, manifest, tests and relevant predecessor contracts inspected. Governance blobs are unchanged between HQ299 parent and startup. Exact read/import identities: `read_cut.json`, `source_manifest.json`, `receipts/",
+        "| LAB1 predecessor suite | **20 passed**, exit 0 | `receipts/lab1_suite.txt`, `lab1_junit.xml` |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-025",
+      "branch": "agent/reviewer-sorok-r3-hq299-rsm-can008-owner-independent-r1",
+      "reviewer_cut": "00f5d9a66f5f641c1f88376994272bc570a625ef",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ299-RSM-CAN008-OWNER-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "775120270f2eefa038b8de4780989ba632031cfd",
+      "reported_disposition": "REPORTED_HOLD",
+      "reported_verdict": "- `SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md`, `00B_…`, `00C_…` (incl. §5A environment verdict), `00D_…` @ `5c59fb409…`.",
+      "reported_negative_excerpt": [
+        "**Terminal:** `HQ299_RSM_INDEPENDENT_CAN008_OWNER_EFFECT_COURT_REPRODUCED__280_CASES_279_PASS_1_TEST_SCOPE_DEFECT__POSITIVE_ABSENCE_CONFIRMED__EARLIEST_HOLD_MISSING_IMPLEMENTATION__NO_NEW_ACTOR_RULE__NO_ADOPTION`",
+        "- **Write terrain (exclusive):** `WORKER_RETURNS/SOROK-R3-HQ299-RSM-CAN008-OWNER-INDEPENDENT-R1/`. No accepted source or shared HQ file mutated.",
+        "## MUST_READ_NOW honored",
+        "- Exact SM candidate return `9ba40aabea9773ba9d2f3cf32248347f2b0f7e18` (complete `00_RETURN.md`, `01_PREDECLARED…`, `02_SEAM_INVENTORY…`, `03_EXECUTION_RECEIPTS.json`, `court/*`, `logs/staging_receipts.json`, `junit/*`) and its named predecessors (SM documentary `7777a06d…`, K35 `12c65e0e…`, LAB1 `d7cc7ebf…`) at their exact comm"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "CAN008"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-026",
+      "branch": "agent/reviewer-sorok-r3-hq299-rsr-occurrence-outbox-independent-r1",
+      "reviewer_cut": "5ac66779ab76575d0d145829073371d35197a457",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ299-RSR-OCCURRENCE-OUTBOX-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "2f33d361f17f7f94b1b3a38d0009d55ab382c33f",
+      "reported_disposition": "REPORTED_HOLD",
+      "reported_verdict": "**Terminal decision:** `INDEPENDENT_F2_REPRODUCTION_COMPLETE__SCOPED_TEST_REPRODUCTION_ACCEPT__STRONGER_OUTBOX_AND_PERCEPTION_ACCEPTANCE_HOLD__12_EXECUTED_REDS__NO_ADOPTION`",
+      "reported_negative_excerpt": [
+        "**Terminal decision:** `INDEPENDENT_F2_REPRODUCTION_COMPLETE__SCOPED_TEST_REPRODUCTION_ACCEPT__STRONGER_OUTBOX_AND_PERCEPTION_ACCEPTANCE_HOLD__12_EXECUTED_REDS__NO_ADOPTION`",
+        "- Triggered accepted-owner read: `ADP-019 / V3_EXTERNAL_INTERACTION_EVENT_ADMISSION_RULE@1.0.0` blob `5c38772ea193e5a3f20da23c16df086a153ab2f2`, `CAN-022 / V2_RENDER_ADMISSION_PROMPT_CONTRACT@1.0.0` blob `5b85c67f74112c19fa72acf2cd4de226f73ecf47`, `CAN-025 / V2_TO_V3_EXTERNAL_EVENT_PACKAGING_CONTRACT@1.0.0` blob `7bf380f5e6cef1f",
+        "A **new**, independently verified Python/shell runtime was available, not merely a Browser tab or GitHub connector. `python --version` = **Python 3.13.5**; `python -m pytest --version` = **pytest 9.0.2**; `git --version` = 2.47.3; Node v22.16.0; Linux filesystem writable; `subprocess` and `os._exit(79)` verified by the cold test",
+        "| Original frozen authored suite | `python -m pytest -q test_sr_28_falsifier_court.py --junitxml=original_28_junit.xml` | **28 passed, exit 0** |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "ADP019"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-027",
+      "branch": "agent/reviewer-sorok-r3-hq301-rba-behavioral-r2-validity-r1",
+      "reviewer_cut": "1e1546f9e6e1520ab48eb9a9cf5da8ded4f00599",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ301-RBA-BEHAVIORAL-R2-VALIDITY-R1/00_RETURN.md",
+      "source_blob": "632dc0cc550fe020f031085a25418b2f1db6e7be",
+      "reported_disposition": "REPORTED_SCOPED_ACCEPTANCE",
+      "reported_verdict": "**Recommendation: `REVIEW_PASS_SCOPED_MOCK_PROTOCOL`.** Never `BEHAVIORAL_PASS`. No model-use permission, actor authority, semantic adoption, or production authority is issued by this review.",
+      "reported_negative_excerpt": [
+        "**Terminal:** `RBA_R2_MOCK_PROTOCOL_VALIDATED__53PLUS4_SCOPES__ZERO_LEAKS__ZERO_BYPASS__ZERO_LIVE_CALLS__NO_ADOPTION`.",
+        "| RMB original 36 | `pytest exec/rmb/test_independent.py -q --junitxml=../../repro/rmb_review.xml` | **13 PASS / 23 RED, exact original failing set** | `repro/rmb_review.xml` |",
+        "cells each with one shared menu and all three arms; all six arm-order",
+        "failure): permutation counts are unbalanced (1440 vs 432) and rows-per-case are"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-028",
+      "branch": "agent/reviewer-sorok-r3-hq301-rcp-can008-positive-court-r1",
+      "reviewer_cut": "922e27181a6d32745cf388962742f01813648358",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ301-RCP-CAN008-POSITIVE-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "f315dd71b8377a6e679a10e2548ce3f4367860e8",
+      "reported_disposition": "REPORTED_HOLD",
+      "reported_verdict": "**VERDICT:** `INDEPENDENT_REVIEW_INCOMPLETE__TYPED_BUDGET_HOLD__NO_SCIENTIFIC_ACCEPTANCE`",
+      "reported_negative_excerpt": [
+        "**VERDICT:** `INDEPENDENT_REVIEW_INCOMPLETE__TYPED_BUDGET_HOLD__NO_SCIENTIFIC_ACCEPTANCE`",
+        "**TERMINAL:** `SOROK_HQ301_RCP_CAN008_POSITIVE_INDEPENDENT_COURT_BUDGET_HOLD__GITHUB_PUSHED`",
+        "**Environment:** local dominant worktree, Python 3.11.3, pytest 9.1.1, macOS 13.7.8 x86_64, shared object store. **No production semantic adoption, no real V3 actor operation, no additional agents, no editor/model switch.** Cost/quota: **not genuinely visible to this reviewer — no figure asserted.**",
+        "## 1. Why this is a HOLD and not a REVIEW_PASS"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "CAN008"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-029",
+      "branch": "agent/reviewer-sorok-r3-hq301-rto-outbox-cold-court-r1",
+      "reviewer_cut": "767618db9fa01b83a461869c2ae06541684d18bf",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ301-RTO-OUTBOX-COLD-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "cee67eec0238c4ca4d2ff45256d37fbd90d975c8",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Terminal scientific recommendation: `REVIEW_REVISE__56_BASELINE_REPRODUCED_55_PASS_S27_RED__12_PRIOR_INDEPENDENT_REDS_CLOSED_AT_FIXTURE_GRAIN__29_NEW_HOSTILE_REDS__NO_ADOPTION`**.",
+      "reported_negative_excerpt": [
+        "**Terminal scientific recommendation: `REVIEW_REVISE__56_BASELINE_REPRODUCED_55_PASS_S27_RED__12_PRIOR_INDEPENDENT_REDS_CLOSED_AT_FIXTURE_GRAIN__29_NEW_HOSTILE_REDS__NO_ADOPTION`**.",
+        "- Frozen original S01–S28 semantic specification, exact Git blob `782ba75ee94f24908100b1f3464e7035497d546c`; original authored Python tests `a6263f8903f22da2b1cde3999d950328d19c9e21`; unchanged RSR strict 17 `044b9cb48c2e4e3d825e7a2cbb52bb412d1366d7`; original cold driver/test `0c8676aaa3ff6605f3fb7a987e29f88d26fafb03` / `ad132e",
+        "- Read exact HQ301 commission and Sorok HQ301 parent intake, `00_READ_ME_FIRST`, `00B`, `00C`, `00D`; compared accepted ADP019/CAN022/CAN025/CAN015 with RSR's pinned original authority identities. No accepted modules were imported or exercised.",
+        "## 2. Authentic executed suites (no rewritten oracles, skip, xfail or greenwashing)"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "ADP019"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-030",
+      "branch": "agent/reviewer-sorok-r3-hq302-rcp2-can008-clean-acceptance-r1",
+      "reviewer_cut": "5509f02e6dbc963bc76f2b8efd497eaa4cf69ccd",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ302-RCP2-CAN008-CLEAN-ACCEPTANCE-R1/00_RETURN.md",
+      "source_blob": "247edc7235b1d5dbc1655c6c002569a5b6e1389e",
+      "reported_disposition": "REPORTED_HOLD",
+      "reported_verdict": "**VERDICT:** `REVIEW_HOLD__SRC_FREE_PARTIAL__ORDERING_PRESERVED__NO_SEMANTIC_ADOPTION`",
+      "reported_negative_excerpt": [
+        "**VERDICT:** `REVIEW_HOLD__SRC_FREE_PARTIAL__ORDERING_PRESERVED__NO_SEMANTIC_ADOPTION`",
+        "**TERMINAL:** `SOROK_HQ302_RCP2_CAN008_CLEAN_ACCEPTANCE_HOLD__GITHUB_PUSHED`",
+        "**Cost:** measured usage **not genuinely visible to this reviewer — no figure asserted** (per §COST, a pricing table or advertised context length is not actual quota).",
+        "Authored from **adopted law only** — CAN008_R2 `b80dd6925066510ecbbfec7b427bf9f688475663` (`V3_ACTOR_RESPONSE_PRESSURE_FLOW_TRANSACTION_RULESET@2.0.0-CANDIDATE.R1`), ADP016 `c6619a286e115d060ab4830889e7fc23762167a5`, ADP017 `eece4f3f2f3f9288ab9bbc645dc81e20a99e1280`, guard `e0528d65215cb431196570c38bac4eae94217a1b`. It fixes the"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "CAN008"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-031",
+      "branch": "agent/reviewer-sorok-r3-hq302-rsc0-connected-port-independent-r1",
+      "reviewer_cut": "385891d8da0c704875d877f77ef765fa86fbfa71",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CONNECTED-PORT-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "2b6670e46574c8c88c9fed194f024a754088e8d5",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Scientific verdict: REVIEW_REVISE.** C0 repairs all twelve executed RC0 failures under the unchanged 25-case RC0 test source and genuinely calls the pinned producers on its default fixture. The stronger conserved, source-qualified connected interface is not established: independent counterexamples remain in authorization, prior knowledge, reverse issuance, query binding, F1/F2 conservation and receipt identity. No adoption or operative N9/N10W recommendation is issued.",
+      "reported_negative_excerpt": [
+        "**Scientific verdict: REVIEW_REVISE.** C0 repairs all twelve executed RC0 failures under the unchanged 25-case RC0 test source and genuinely calls the pinned producers on its default fixture. The stronger conserved, source-qualified connected interface is not established: independent counterexamples remain in authorization, prio",
+        "**Reviewer separation limit:** this Codex chat performed the earlier RC0 review. It is distinct from C0, SC0 and the PE/C1/N10E authors, but it cannot satisfy the commission/request's additional requirement of a reviewer distinct from the prior RC0 reviewer. That part is `REVIEW_INDEPENDENCE_HOLD`, disclosed during execution, ra",
+        "Full commission, complete Sorok 00C/00D, 00B, bounded README and HQ302 intake were read at the specified cut. Exact candidate report, frozen ledger, receipts, review request, port source, original oracles, prior SC0/RC0 reports and nine-RED adjudications informed this court. This is a source-aware review, not a blind experiment ",
+        "An isolated sparse reviewer worktree uses the existing shared object store. Candidate materialization is ignored inside this return's `runtime_root/`; no prior author's terrain is committed. Independent staging reads genuine Git blobs, checks `SHA1(b\"blob \"+length+bytes([0])+raw_bytes)` and SHA256, and checks all 29 author-selec"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "C0"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-032",
+      "branch": "agent/reviewer-sorok-r3-hq303-out3-outbox-independent-r1",
+      "reviewer_cut": "0ab31e4198299708e700840c1b68e0d94a2ced06",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ303-OUT3-OUTBOX-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "5ccd1f4856ed61e8c3a55183df1037dd442eccf7",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Disposition: REVIEW_REVISE. NO semantic adoption, owner issuance, V3 operation, or production claim.**",
+      "reported_negative_excerpt": [
+        "**Disposition: REVIEW_REVISE. NO semantic adoption, owner issuance, V3 operation, or production claim.**",
+        "Observed Python 3.13.5, pytest 9.0.2, filesystem and true subprocess/os._exit (79) operation. **Original 137-case court independently rerun, not inferred from author logs: 135 PASS, 2 FAIL, 0 SKIP, exit 1.** Suite counts: frozen authored S01–S28 27/28, RSR 17/17, RSR cold 2/2, HQ300 cold 9/9, independent RTO 56/57, OUT2 combinat",
+        "Both original FAILs **intentionally retained**: `test_s27_material_move_needs_world_owner` is an authored assertion demanding a mug move contradictory to frozen S27 `world_authority=MISSING` requiring HOLD, no material transition. `test_replay_manual_two_writers_can_lose_first_committed_event` reproduces lost updates in concurre",
+        "22 NEW hostile cases authored and actually executed: **5 PASS / 17 FAIL**. Combined 159-case court: **140 PASS / 19 FAIL, exit 1**. Full per-case matrix, original and hostile JUnit, full stdout, reviewer-authored executable test source and sanitized environment passport are in the evidence archive `OUT3_EXECUTED_EVIDENCE.tar.xz`"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "ADP019"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-033",
+      "branch": "agent/reviewer-sorok-r3-hq303-rcp3-can008-completion-court-r1",
+      "reviewer_cut": "a11982e6cf135a8ecc72b6152ec796b4a4707093",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/00_RETURN.md",
+      "source_blob": "024bc9010c7c64ebd954c4186bc9a78b0a3df7a3",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Verdict: REVIEW_REVISE.** The scientific review is completed. The candidate's 317 tests independently reproduce, but the requested law-complete positive owner-effect chain is not established. Concrete candidate defects, rather than an execution or working-budget HOLD, prevent acceptance. No semantic adoption, production registry entry or real V3 operation is issued.",
+      "reported_negative_excerpt": [
+        "**Verdict: REVIEW_REVISE.** The scientific review is completed. The candidate's 317 tests independently reproduce, but the requested law-complete positive owner-effect chain is not established. Concrete candidate defects, rather than an execution or working-budget HOLD, prevent acceptance. No semantic adoption, production regist",
+        "| Court | PASS | RED | ERROR | SKIP |",
+        "| Final independently authored scientific/hostile predicates | **37** | **45** | **0** | **0** |",
+        "All 220+60+37 were genuinely rerun in fresh processes, with exact imported source bytes, command, exit, stdout and JUnit. Reading the author's JUnit was used only to identify the ten requested test files. The unset-stage control is a repeated environmental diagnostic, not 36 additional independent successes. The initial staging "
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "CAN008"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-034",
+      "branch": "agent/reviewer-sorok-r3-hq304-bl3-behavioral-design-court-r1",
+      "reviewer_cut": "10b507af06973657f2d772b636fb6fbd2d6aff36",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ304-BL3-BEHAVIORAL-DESIGN-COURT-R1/00_RETURN.md",
+      "source_blob": "de1455d2a3bb227cdae40c2f0e2ab45967e74726",
+      "reported_disposition": "REPORTED_MIXED_OR_UNCLASSIFIED",
+      "reported_verdict": "The original126 cases retain their R2 source bytes. Twenty-eight additional, predeclared K3/K5/K6 template clones use two new surface settings. These are **implementation-visible heldout fixtures**, not independent scenario families. All154 cases preserve exactly equal lawful facts across A/B/C and distinct inherited representations: A linear scalar entries, B non-ranking descriptive groups, C replay-verified retrieved context/evidence index. No action recommendation is added by a representation",
+      "reported_negative_excerpt": [
+        "Repository `maidiu/rawlsing` (private); assigned branch `agent/reviewer-sorok-r3-hq304-bl3-behavioral-design-court-r1`. Exact sealed startup **`e924b2d9327b636cdc91731dde9c2aad1f52d226`** matched a direct remote read before writes; parent **`a25ba9ab4e1a0dc12d3764bea8854c8fbc2df227`**. One isolated sparse worktree uses the exist",
+        "The complete commission/HQ304 intake and exact pinned reports were read. Current Sorok README/00B/00C/00D hashes are byte-identical to the complete versions already read in this conversation; their exact current identities were verified and reused. RBA's full report, expectations, all19 hostile controls, deterministic sweep/audi",
+        "Before the first R3 responder/scorer execution, the new estimand, tests, source, heldout cases/key and schedule were frozen in **`freezes/r3-v1.json`**, SHA256 **`b0d44f663e2392a4207c28a331e5a7627cfef81bdc8b47e9240642161977f465`**. It passed on first execution; no R3 post-observation source/test/oracle repair occurred. A separat",
+        "| Unchanged original RMB | **13 PASS / 23 RED**, exact original failing set retained |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-035",
+      "branch": "agent/reviewer-sorok-r3-hq305-br3-synthetic-sensitivity-independent-r1",
+      "reviewer_cut": "3551736293b81dfcec71d295424aedd923121a0f",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "40d6ad8a487f4bc40ae65c0851eff724d2f9a9bd",
+      "reported_disposition": "REPORTED_HOLD",
+      "reported_verdict": "**Verdict: REVIEW_PASS_SCOPED_R3_SYNTHETIC_SENSITIVITY**",
+      "reported_negative_excerpt": [
+        "response change under controlled read budgets, and correctly holds representation-blind,",
+        "| RMB | 13 PASS / 23 RED | RBA `exec/rmb/test_independent.py` (original split preserved) |",
+        "returns HOLD with reasons. Same-author dual code paths are not independent",
+        "## Owner actions required"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-036",
+      "branch": "agent/reviewer-sorok-r3-hq307-ocr1-custody-hostile-r1",
+      "reviewer_cut": "aba637265bea2358790fea50d0e7abc98141e472",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ307-OCR1-CUSTODY-HOSTILE-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "b20b023d77277a68d942f6c1e66a937d37a34c7a",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Terminal disposition: `REVIEW_REVISE__30_INDEPENDENT_EXECUTED_HOSTILE_REDS__ORIGINAL_31_UNCHANGED_GREEN__REAL_ISSUANCE_HOLD`.** No semantic adoption, issuance, production deployment, model call, or human/institutional custody certification.",
+      "reported_negative_excerpt": [
+        "**Terminal disposition: `REVIEW_REVISE__30_INDEPENDENT_EXECUTED_HOSTILE_REDS__ORIGINAL_31_UNCHANGED_GREEN__REAL_ISSUANCE_HOLD`.** No semantic adoption, issuance, production deployment, model call, or human/institutional custody certification.",
+        "- **Independence limitation:** reviewer read HQ307's earlier source inspection before creating new expectations. `01_PREOBSERVATION_EXPECTATIONS.json` was frozen before running newly authored hostile tests, but is **not blind** to HQ's already exposed defects. It does not claim prior execution preregistration for the OC1 author'",
+        "| Actual command (`cd source`) | Tests | PASS | RED | Exit |",
+        "| **Actual combined evidence** | **76** | **46** | **30** | partial RED |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-037",
+      "branch": "agent/reviewer-sorok-r3-hq309-can3-can008-independent-r1",
+      "reviewer_cut": "ef12349defe22a50e053a7a8080a67ab45673417",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "2aec20b9022502a50862af1b472e9dcc6432b529",
+      "reported_disposition": "REPORTED_SCOPED_ACCEPTANCE",
+      "reported_verdict": "**Scientific verdict: `REVIEW_PASS_SOURCEFREE_FINITE_HISTORY_CANDIDATE`.**",
+      "reported_negative_excerpt": [
+        "Reviewed CAN2 `ee6a48b40247b113c614fe2099d4c443e8dd7bb7`, repair source seal `f9ff05197fb2837c733f8b453c678043e90c77d8`, from assigned startup `4605c939cba25addc5b888f07a33218891c0cd52`. Direct authenticated remote startup and CAN2 branch refs were verified. Sole fresh reviewer session, distinct from the RCP3/CAN2 author; no hel",
+        "| Executed unchanged suite | PASS | RED | Errors/skips |",
+        "| RCP3 predicates | 81 | 1 | 0 |",
+        "| Newly authored CAN3 controls | **97** | **0** | **0** |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "CAN008"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-038",
+      "branch": "agent/reviewer-sorok-r3-hq309-oc3-custody-independent-r1",
+      "reviewer_cut": "9cd47a829473a6e92392582b4f01f2c564aa5dce",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ309-OC3-CUSTODY-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "a422939386d2cfd5da703b0ad54ca3f28108fd09",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Verdict: `REVIEW_REVISE`.** This is an independent I2 source-free Python court, NOT HQ adoption, independent institutional custody, trusted signer/role issuance, protected holdout, model grant, population inference, or V3 operation.",
+      "reported_negative_excerpt": [
+        "**Verdict: `REVIEW_REVISE`.** This is an independent I2 source-free Python court, NOT HQ adoption, independent institutional custody, trusted signer/role issuance, protected holdout, model grant, population inference, or V3 operation.",
+        "- Reviewer read source and OCR1 known findings before independently freezing expectations *prior to new hostile execution*. Not blind, not externally preregistered. No model/provider calls or protected survey sources.",
+        "| Court | PASS | FAIL | Total |",
+        "All 131 executed; 0 skips, 0 xfails, pytest exit 1. The pushed `OC3_REMOTE_CORE_EVIDENCE.tar.xz` contains exact JUnit XML for the 131-case combined and 36-case new courts, new 36-case test source, frozen pre-execution expectations, SHA receipts and reproducer. A separate full local evidence bundle includes the three original 95/"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-039",
+      "branch": "agent/reviewer-sorok-r3-hq309-out5-out4-independent-r1",
+      "reviewer_cut": "e576e405e50e1bd91be5c839d8c33b69fa851fd9",
+      "source_path": "WORKER_COMMISSIONS/SOROK-R3-HQ309-OUT5-OUT4-INDEPENDENT-R1/00_COMMISSION.md",
+      "source_blob": "2be8f8c0db0350ed8df5724f7e605a05a9d0d2ff",
+      "reported_disposition": "REPORTED_MIXED_OR_UNCLASSIFIED",
+      "reported_verdict": null,
+      "reported_negative_excerpt": [
+        "**STATUS:** COMMISSION_BANKED__UNLAUNCHED__NO_ADOPTION.",
+        "**WHY QUALIFIED:** Independent OUT3 and author OUT4 already ran a compact sourcefree Python outbox with cold-process os._exit; Browser High is qualified for I2 hostile science if exact binary archive extraction succeeds. No large owner import tree required.",
+        "**FALLBACK:** If exact model/editor or real authenticated source/runner absent, preserve completed permitted work and issue precise capability HOLD; no automatic different model, alternate editor, helper, self-reassignment or false executed court.",
+        "Determine independently whether OUT4's 29 author PASS genuinely close the previous 17 OUT3 REDs without reopening the two intentionally retained original REDs, adding any viewer/perception or material-world authority."
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "ADP019"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-040",
+      "branch": "agent/reviewer-sorok-r3-hq311-oc5-oc4-independent-r1",
+      "reviewer_cut": "8185d2ca41ac5c5711b3f3f528e6f644dbab185d",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ311-OC5-OC4-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "15b6313d9bd5e17c689b03ec71a7b798b7f34726",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Disposition:** `REVIEW_REVISE__EXCERPT_REDS__FULL_167_CASE_EXECUTION_HOLD__NO_ADOPTION`.",
+      "reported_negative_excerpt": [
+        "# SOROK HQ311 OC5 — independent OC4 custody court: HOLD / REVISE",
+        "**Disposition:** `REVIEW_REVISE__EXCERPT_REDS__FULL_167_CASE_EXECUTION_HOLD__NO_ADOPTION`.",
+        "OC4's author reports **121 PASS / 10 FAIL** for the unchanged 131 inherited tests and **36/36 PASS** for OC4-authored controls. The original OC3 reporter provides a prior **115 PASS / 16 FAIL** at OC2. These are **source-derived claims, not independently reproduced OC5 pytest results**. Do NOT promote them to an OC5 verified mat",
+        "The current Browser environment has real Python 3.13.5, pytest 9.0.2, filesystem, subprocess and Git 2.47.3. GitHub connector read/write functions reach private pinned Git objects; Python shell network DNS does NOT reach github.com and the connector does NOT mount its return into the Python filesystem. The OC1/OCR1/OC2/OC3 sourc"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-041",
+      "branch": "agent/reviewer-sorok-r3-hq311-outp-legacy-ack-policy-court-r1",
+      "reviewer_cut": "521edf0c8ef31f6248ed8d8b1fcc4fa5cd0dd687",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ311-OUTP-LEGACY-ACK-POLICY-COURT-R1/00_RETURN.md",
+      "source_blob": "1b92003ae05172a3efe942393f3ca842020c9228",
+      "reported_disposition": "REPORTED_HOLD",
+      "reported_verdict": "**Disposition: `HOLD_COMPETENT_OWNER_POLICY_DECISION__SOURCEFREE_POLICY_WITNESSES_ONLY__NO_SEMANTIC_ISSUANCE`.** This court distinguishes an admissible test-fixture policy from accepted V3 admission authority, and a synthetic receipt from actual viewing or perception. It does not amend either.",
+      "reported_negative_excerpt": [
+        "**Disposition: `HOLD_COMPETENT_OWNER_POLICY_DECISION__SOURCEFREE_POLICY_WITNESSES_ONLY__NO_SEMANTIC_ISSUANCE`.** This court distinguishes an admissible test-fixture policy from accepted V3 admission authority, and a synthetic receipt from actual viewing or perception. It does not amend either.",
+        "- **Source-of-proof limit:** OUT2/OUT3/OUT4 compressed source bundles are available via authenticated private GitHub file metadata/content encodings, but their executable `outbox_prototype.py`/test modules were **not extracted into this fresh local runner**. The reports and test-name matrices are explicitly **author/reviewer acc",
+        "ADP019 §§6.1–6.4 defines a typed canonical V3 envelope including proposal/hash, producer, subject, event/participants/time/parent, payload and provenance; forbidden ingress authority fields include `admit`, event-ID allocation, causal/state/memory deltas and cursor-after. §§8–9 say malformed ingress is INVALID, missing required ",
+        "Frozen S01/S02/S03: unadmitted candidate/READY package makes no event; S08/S11 demand HOLD/rejection for unlicensed extra atoms; S14–S16 require exact artifact and replay identity. S27 with missing material owner mandates `HOLD_MISSING_MATERIALIZATION_OWNER`, mug unchanged, no emitted movement. Those cases constrain **causal eff"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "ADP019"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-042",
+      "branch": "agent/reviewer-sorok-r3-hq312-m02-memory-mediation-independent-r1",
+      "reviewer_cut": "0216d9036a87e2f60f42fd5b2870556027808419",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ312-M02-MEMORY-MEDIATION-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "06c31294821d34d42205041d0797c43b3d1554a5",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Verdict: `REVIEW_REVISE`.** M01 demonstrates a finite, stipulated source-free parallel state-conditioning construction under its valid fixed-selector setup. Two new provenance tests fail: outer Cell claim selection can erase an existing BELIEF from response evaluation or select future epistemic state for an earlier response. These are two observed manifestations of an incompletely bound claim-selection/time boundary. They do not erase the valid controlled positives or establish a production se",
+      "reported_negative_excerpt": [
+        "**Verdict: `REVIEW_REVISE`.** M01 demonstrates a finite, stipulated source-free parallel state-conditioning construction under its valid fixed-selector setup. Two new provenance tests fail: outer Cell claim selection can erase an existing BELIEF from response evaluation or select future epistemic state for an earlier response. T",
+        "| Reviewer-origin cases | **98 PASS / 2 RED** | 100 cases, no errors/skips/xfails |",
+        "| Fresh-process corroboration of new REDs | **2 RED** | Same two native cases, independent interpreter |",
+        "| Selected nine literal CAN3 historical REDs | **9 RED** | Original assertions retained; not the full CAN3 585 |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-043",
+      "branch": "agent/reviewer-sorok-r3-hq312-oc5e-execution-recovery-r1",
+      "reviewer_cut": "67a4f1561cdad40192f00797d66b24fc4cd91589",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/00_RETURN.md",
+      "source_blob": "9897d7bbbfaf8f6b0e05ab9d93c3eb9eff3b01ed",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Model/host:** Muse Spark inside the existing Muse-configured OpenCode installation. One Muse agent completed staging, the whole native test court, the new hostiles, the verdict and the push. No Codex, DeepSeek-Harness, helper, model switch or paid calls.",
+      "reported_negative_excerpt": [
+        "**Model/host:** Muse Spark inside the existing Muse-configured OpenCode installation. One Muse agent completed staging, the whole native test court, the new hostiles, the verdict and the push. No Codex, DeepSeek-Harness, helper, model switch or paid calls.",
+        "REVIEW_REVISE__NATIVE_EXECUTION_RECOVERED__49_NEW_NATIVE_HOSTILE_REDS__",
+        "7_OF_7_OC5_PREDICTIONS_CONFIRMED_NATIVELY__NO_AUTHOR_REPAIR__TEST_ONLY_ONLY__NO_ADOPTION",
+        "The OC5 staging HOLD is **lifted**: the complete sealed source closure was"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "A1"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-044",
+      "branch": "agent/reviewer-sorok-r3-hq312-out7-out6-independent-r1",
+      "reviewer_cut": "d3d0836d922dcb88eaf0a0591e66551aa6fb9f0a",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ312-OUT7-OUT6-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "35c4c9fc92165d8e444d501bfd1036b2a969da6b",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Verdict: REVIEW_REVISE — two distinct new restored-state integrity failures; no adoption.**",
+      "reported_negative_excerpt": [
+        "**Verdict: REVIEW_REVISE — two distinct new restored-state integrity failures; no adoption.**",
+        "| Suite | PASS | FAIL | TOTAL |",
+        "All 227 cases actually executed in the completed combined run in 24.52s; zero skips/errors; pytest exit 1. Complete per-case JUnit, raw stdout, source identities, independently authored 21-test Python source and expectation freezes retained in the committed core evidence archive.",
+        "## New independent RED 1 — Aggregate transport ACK forged on restore (I08, I13)"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "A1",
+        "A2",
+        "ADP019"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-045",
+      "branch": "agent/reviewer-sorok-r3-hq314-m04-m03-independent-r1",
+      "reviewer_cut": "3a993abcc0a9f6bd3a1bb003d298d293be199ea6",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "5840b2f3f551903d61ce00654b8b964c0ea3a545",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Verdict: REVIEW_REVISE.** The unchanged published expectation reproduces exactly: **587/587 PASS**. The **51 new independently frozen tests yield 41 PASS / 10 FAIL**, exposing three provenance failures. The original **nine CAN3 historical REDs execute as nine separate FAILs**. No skipped, xfailed or errored cases enter any denominator.",
+      "reported_negative_excerpt": [
+        "**Verdict: REVIEW_REVISE.** The unchanged published expectation reproduces exactly: **587/587 PASS**. The **51 new independently frozen tests yield 41 PASS / 10 FAIL**, exposing three provenance failures. The original **nine CAN3 historical REDs execute as nine separate FAILs**. No skipped, xfailed or errored cases enter any den",
+        "This is a fresh reviewer conversation with no authorship of M01, M02 or M03. No author conversation history was imported or read. One reviewer completed source review, test design, execution, adjudication and return; no assistants, model switches, external model/actor calls, semantic issuance or V3 operation occurred. The admini",
+        "The fresh expectations and executable source were committed at **3b529996ddd05c3c84225d2054428ff943091aef before their first execution**. Their SHA-256 identities remain unchanged. [Preregistration](02_FROZEN_EXPECTATIONS.md), [freeze manifest](03_FREEZE_MANIFEST.json), [frozen tests](review/test_falsifiers.py), [actual invocati",
+        "| Fresh M04 controls | **41 PASS / 10 FAIL** |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "CAN008",
+        "E2"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-046",
+      "branch": "agent/reviewer-sorok-r3-hq314-out9-out8-independent-r1",
+      "reviewer_cut": "fd58957fceca250e86ed3b1a5d06fa45ffc9ec85",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ314-OUT9-OUT8-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "1b43399f848d9c7e380303336fb5d878e1e09949",
+      "reported_disposition": "REPORTED_SCOPED_ACCEPTANCE",
+      "reported_verdict": "**Verdict:** `REVIEW_PASS_SCOPED_SINGLE_WRITER_SOURCEFREE`",
+      "reported_negative_excerpt": [
+        "# HQ314 OUT9 — independent OUT8 restored-receipt court — reviewer return",
+        "agreed at start; no mid-flight commission revision occurred).",
+        "(00_RETURN, 01_EXECUTION_INDEX, 02_OWNER_HOLDS, 03_REPRODUCE, source/test",
+        "**The author's repaired closure reproduces exactly, and the repairs hold under"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "ADP019"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-047",
+      "branch": "agent/reviewer-sorok-r3-hq315-oc7-oc6-native-independent-r1",
+      "reviewer_cut": "6e7d85d28f82729a06ede32d0440b63d0452a634",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "dccd68ce928264f0de2af70f6686ae69b98ed438",
+      "reported_disposition": "REPORTED_SCOPED_ACCEPTANCE",
+      "reported_verdict": "**VERDICT: `REVIEW_PASS_TESTONLY_CUSTODY_WITH_RETAINED_LITERAL_REDS`**",
+      "reported_negative_excerpt": [
+        "**VERDICT: `REVIEW_PASS_TESTONLY_CUSTODY_WITH_RETAINED_LITERAL_REDS`**",
+        "| Phase | Module under test | Cases | PASS | RED | Author claimed |",
+        "| BEFORE, 349 unchanged | `af2b7e94…` unrepaired OC4 | 349 | **283** | **66** | 283 / 66 ✔ |",
+        "| AFTER, 349 unchanged | `4c185c18…` OC6 repaired | 349 | **328** | **21** | 328 / 21 ✔ |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "A2",
+        "A1",
+        "A3",
+        "A4",
+        "A5"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-048",
+      "branch": "agent/reviewer-sorok-r3-hq316-m06-m05-owner-ancestry-independent-r1",
+      "reviewer_cut": "10a116f273c76095fca7255d4b6422a9ff3497a2",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ316-M06-M05-OWNER-ANCESTRY-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "cfc0ec95a8b4dbdbb33345a2f42ac33502cceb9a",
+      "reported_disposition": "REPORTED_SCOPED_ACCEPTANCE",
+      "reported_verdict": null,
+      "reported_negative_excerpt": [
+        "**REVIEW_PASS_SOURCEFREE_FINITE_NATIVE_ANCESTRY — NO_ADOPTION.** Independently reproduced **686/686 original current cases PASS**, then **114/114 new frozen reviewer cases PASS**. The **nine historical CAN3 cases remain nine literal FAILs in a separate court**. No skips, xfails or oracle repairs; the full historical CAN3 585-cas",
+        "| Actual court | PASS | FAIL | Evidence |",
+        "This is one fresh reviewer chat and one accountable Codex agent. No M01–M05 conversation history, prior-chat scientific assistance, helper, model switch, model API call, respondent source, production registry mutation or V3 operation was used. Repository return packets and frozen sources were read as review evidence. The author ",
+        "Startup checkout and direct remote branch both matched **3c685eb4734856b61f2d601e082eb325e3f6f1d1**, whose parent is **8af50c539bd249d6aab76bea7cf81f61579906fa**. M05's direct remote also matched the reviewed **8b7f3ed2ad095eee060fd040dcab88e59d4ca255**. The app provided this isolated checkout detached and initially non-sparse; "
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "E2"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-049",
+      "branch": "agent/reviewer-sorok-r3-hq317-ms2-ms1-serial-independent-r1",
+      "reviewer_cut": "34b96ea98de181ca5264f0eed3824cad2db7cfc0",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ317-MS2-MS1-SERIAL-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "0ed89038d64d24f9f93ad9da3aea96f5f771191f",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "The reviewer rebuilt C1–C10 and C4b directly from native formation/commit/bind operations, without calling the author's `run_cell`. All eleven owner hashes, memory hashes, event identities, permission/transition results and decision/effect projections match the published per-cell records. Each response's recorded owner hash matches the independently captured pre-read owner; consumption leaves that owner unchanged. [Actual state/counterfactual ledger](09_CAUSAL_COUNTERFACTUAL_LEDGER.json).",
+      "reported_negative_excerpt": [
+        "**REVIEW_REVISE — NO_ADOPTION.** MS1's honest sourcefree serial construct is reproducible, but eight new frozen hostile expectations failed. Preserve the accessible-arm constructibility result, the original P3b falsification and all original REDs; revise the provenance and response-consumption checks before claiming the stronger",
+        "| Actual court | PASS | FAIL | Meaning |",
+        "| Unchanged MS1 combined native/author court | 118 | 2 | Exactly reproduced original120, including both missing CAN2 law-map REDs |",
+        "| Literal original prospective P3b | 0 | 1 | The original inequality fails; F_B remains fired |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "E2",
+        "CAN008",
+        "C10"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-050",
+      "branch": "agent/reviewer-sorok-r3-hq318-c07i-c07p-independent-r1",
+      "reviewer_cut": "2155a5352a1371648fb7cbec7cde91cea4d1a614",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "dc8f684e9b6685bf643ab71fd349b1da25344337",
+      "reported_disposition": "REPORTED_HOLD",
+      "reported_verdict": "## VERDICT: `REVIEW_PASS_SCOPED_SOURCEFREE_C07_CROSSPROCESS_WITH_HOLDS`",
+      "reported_negative_excerpt": [
+        "## VERDICT: `REVIEW_PASS_SCOPED_SOURCEFREE_C07_CROSSPROCESS_WITH_HOLDS`",
+        "typed API holds still OPEN and the unkeyed anti-tamper ceiling PRESERVED and, in one respect, extended.**",
+        "| **Reviewer prereg** | `01_PREREGISTERED_REVIEWER_EXPECTATIONS_R1.md`, frozen at `536d90f88` **before any new adversarial execution** |",
+        "| C07P v2 suite | **30 PASS / 0 RED** | 30 PASS | ✔ |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-051",
+      "branch": "agent/reviewer-sorok-r3-hq319-ms4-ms3-independent-r1",
+      "reviewer_cut": "3863f5f0d87678b604b0401ed76d104980b78699",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ319-MS4-MS3-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "2a5372ee4de0b8eb2164e70b63b0a5d4e3901fc9",
+      "reported_disposition": "REPORTED_HOLD",
+      "reported_verdict": "**REVIEW_PASS_SCOPED_TESTONLY_SERIAL_PROVENANCE_WITH_P3B_FAIL — NO_ADOPTION.** The MS3 repair reproduces the required literal courts and closes the tested mutable-state provenance admissions. This verdict accepts only the finite synthetic integrity result described below. **Original prospective P3b remains FAIL; F_B FIRED; SERIAL_MECHANISM_IDENTIFICATION_HOLD remains.** It does not establish an accepted memory-to-belief law, committed response occurrence, psychological mediation or production fe",
+      "reported_negative_excerpt": [
+        "**REVIEW_PASS_SCOPED_TESTONLY_SERIAL_PROVENANCE_WITH_P3B_FAIL — NO_ADOPTION.** The MS3 repair reproduces the required literal courts and closes the tested mutable-state provenance admissions. This verdict accepts only the finite synthetic integrity result described below. **Original prospective P3b remains FAIL; F_B FIRED; SERIA",
+        "| Fresh execution | Original MS1 | Repaired MS3 |",
+        "| Unchanged MS1/native120 | 118 PASS / 2 FAIL | 118 PASS / 2 FAIL |",
+        "| Unchanged MS2 reviewer51 | 43 PASS / 8 FAIL | 51 PASS |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "E2",
+        "C10"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-052",
+      "branch": "agent/reviewer-sorok-r3-hq320-c0i-c0p-independent-r1",
+      "reviewer_cut": "2dacd87636352a6c805e03b3d07581193a06264b",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "f898f0b77e010ce8e613f278dde9c7ebe5b0ba14",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "One user-selected Codex/GPT-6 High reviewer performed the whole review. Both commission files, exact-parent HQ320 and Sorok00/00A–00D govern. The six mandatory Sorok files were verified byte-identical to their already completed full readings in this chat. Current Pyat R22 primary decision **ecb5de4f5f90015e5f10b9f3b12e76ee145fee58** and canonical progress **revision6 at646ac11ab8f1d49d56464c484ec5e0f4eba8f34e** were freshly read. Earlier R20/revision5 pending-review language is historical.",
+      "reported_negative_excerpt": [
+        "**REVIEW_REVISE — finite sourcefree two-contract interface incomplete; NO_ADOPTION.** The native world/possibility paths and both genuine named consumers reproduce. C0P's facade does not yet establish the claimed literal SC0 two-contract transport. Preserve the native positives; revise the owned facade/contract binding and its o",
+        "| Actual fresh C0I execution | PASS | FAIL | ERROR | SKIP |",
+        "| New independently preregistered court | **47** | **3** | 0 | 0 |",
+        "The50 new assertions were frozen before collection/execution at **72cc80eb93b4ddf55bb473db40aa3640ceb1e5b4**. All three REDs remain literal failures; no candidate, native module, original test or frozen oracle was repaired, skipped or xfailed. [Full case matrix](04_FULL_CASE_MATRIX.json), [full real JUnit/stdout/observations](ev"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-053",
+      "branch": "agent/reviewer-sorok-r3-hq320-out13-out12-multiwriter-independent-r1",
+      "reviewer_cut": "9b4392f86d942ba12eddc31c5b9ae33ba309597c",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ320-OUT13-OUT12-MULTIWRITER-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "8e3aaf022857a4d0fd9d5d543b7bc9bb12de0c52",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": null,
+      "reported_negative_excerpt": [
+        "# `REVIEW_REVISE_AT_SOURCEFREE_SCOPED_MULTIWRITER_GRAIN`",
+        "| Original 272 unchanged | **270 PASS / 2 historical REDs** (both preserved) |",
+        "I must not bury this. **In an earlier session of this same conversation I authored",
+        "- **OUT12 authorship independence: intact.** I have never authored, edited or run OUT12."
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "C0",
+        "ADP019"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-054",
+      "branch": "agent/reviewer-sorok-v2-hq322-g14-g13-science-independent-r1",
+      "reviewer_cut": "d174ec79f561660a02a254cf9b7582595b43e215",
+      "source_path": "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/00_RETURN.md",
+      "source_blob": "78a0ae307b94d45042aa67a7d03832c4733a6916",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Disposition: REVIEW_REVISE.** G13 establishes useful source-free graph validation,",
+      "reported_negative_excerpt": [
+        "**Disposition: REVIEW_REVISE.** G13 establishes useful source-free graph validation,",
+        "| Court | PASS | RED | ERROR / SKIP |",
+        "predicates are inside its 24 cases; its 25th pytest row checks denominators/offline",
+        "new RED assertions overlap seven families; they are not 27 independent mechanisms."
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-055",
+      "branch": "agent/reviewer-sorok-v2-hq324-f1-independent-developmental-falsifiers-r1",
+      "reviewer_cut": "ed367d96af66d816a01dd651b91f0af285762c82",
+      "source_path": "WORKER_RETURNS/SOROK-V2-HQ324-F1-INDEPENDENT-DEVELOPMENTAL-FALSIFIERS-R1/00_RETURN.md",
+      "source_blob": "5dc706e7709aac2f365e124a88ca8c4a1c0bb4e1",
+      "reported_disposition": "REPORTED_HOLD",
+      "reported_verdict": "**Disposition:** `SOURCEFREE_REFERENCE_COURT_PASS__NATIVE_B1_NOT_RUN__NO_SEMANTIC_OR_ACTOR_ACCEPTANCE`.",
+      "reported_negative_excerpt": [
+        "**Disposition:** `SOURCEFREE_REFERENCE_COURT_PASS__NATIVE_B1_NOT_RUN__NO_SEMANTIC_OR_ACTOR_ACCEPTANCE`.",
+        "`frozen_cases.json`: **36 cases** in 14 contrast groups. These include the shared theft under different parent histories, identical utterance under child recognition/estrangement differences, proposition/affect/public practice divergence, peer-group blame as attributed claim only, child-to-parent unowned-write refusal, procedura",
+        "`pytest -q --junitxml=pytest_junit.xml` → **97 PASS / 0 FAIL / 0 SKIP**, elapsed 0.21s, evidence in `pytest_stdout.txt` and `pytest_junit.xml`. An intermediate addition produced 1 RED/96 PASS because an overstrong metamorphic assertion incorrectly required two legitimately different hypothetical later outcomes to have different ",
+        "`python run_native_b1.py` without `F1_NATIVE_B1_ADAPTER` → `NOT_RUN_AGAINST_B1`, exit 3. Integration test count **0**, not SKIP/PASS. B1/P1 output was not imported and not accepted in this court."
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "A0",
+        "CAN008",
+        "CAN011",
+        "ADP019"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-056",
+      "branch": "agent/reviewer-sorok-v2-hq325-s1-bfirst-independent-scientific-court-r1",
+      "reviewer_cut": "0d47fe863671d1e1d57f26102462be6595c5d7ea",
+      "source_path": "WORKER_RETURNS/SOROK-V2-HQ325-S1-INDEPENDENT-BFIRST-SCIENCE-R1/00_RETURN.md",
+      "source_blob": "01b881ebd42cbd6fd8ee7454e2c264c5efbd15cf",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**VERDICT:** `REVISE_BEFORE_NATIVE_INTEGRATION` for a future owner-accepted B-first positive; `SCIENTIFICALLY_REVIEWABLE_BOUNDED_CANDIDATE` for the **four sourcefree research inputs**. These grades coexist: the empirical/architectural research is useful, but none is accepted actor psychology, production event admission or integrated B2 positive.",
+      "reported_negative_excerpt": [
+        "**VERDICT:** `REVISE_BEFORE_NATIVE_INTEGRATION` for a future owner-accepted B-first positive; `SCIENTIFICALLY_REVIEWABLE_BOUNDED_CANDIDATE` for the **four sourcefree research inputs**. These grades coexist: the empirical/architectural research is useful, but none is accepted actor psychology, production event admission or integr",
+        "- D1 `2e3f3e48293bdcd5774b9465909f16d537e48e35`: `01_CAPABILITIES.json`, `06_FINAL_CLOSEOUT_AND_CORRECTION.md`, `07_CORRECTED_ABSENCE_CONTRACT_COURT.js` blob `24de3e21a5dcaad18bc67427aad1373a170efca3`; 22 initial author JS tests plus **separate** 17 corrected author JS tests. These suites are NOT merged and were not S1 replayed.",
+        "- F1 `ed367d96af66d816a01dd651b91f0af285762c82`: `00_RETURN.md` read. Claimed 36 frozen cases in 14 groups, 97/97 reference-oracle pytest; `run_native_b1.py` = **NOT_RUN**, 0 B1-native cases. Connector returned base64 of the 16,974-byte `F1_frozen_court.tar.gz`, but archive was not unpacked, individual frozen JSON tests were not",
+        "- Operating/architectural reads: 00C working Sorok law, 00D; PRE-A0 bank §§3–6,8–14,16; Sorok relational correction 56; Sorok V3/PFF owner correction 74; source-graded B-first 03 and bike-theft 02 (exact sealed branch); accepted ADP008 v1.1.0 authority with empty optional phase registry. CAN008 R2 and CAN010/011, ADP015/016/017/"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "A0",
+        "CAN008",
+        "CAN011",
+        "ADP019"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-057",
+      "branch": "agent/reviewer-sorok-v2-hq326-s2-b2-integrated-scientific-r1",
+      "reviewer_cut": "7e6ac81e85aa2c8dca0cea53349ad61f10fb6665",
+      "source_path": "WORKER_RETURNS/SOROK-V2-HQ326-S2-B2-SCIENTIFIC-R1/00_RETURN.md",
+      "source_blob": "40273fbaf8595eed0e611dc1684cae135b73dcd9",
+      "reported_disposition": "REPORTED_MIXED_OR_UNCLASSIFIED",
+      "reported_verdict": "**Disposition:** recommend `SOURCEFREE_BFIRST_CONNECTED_ACCEPT_SCOPED` *only after fresh independent X2 runtime/custody checks*; preserve 17 unmet native F1 cells; do not promote binary label-conditioned uptake/affect to scientifically grounded personhood; no owner/semantic grant. Precise next experiment: history-conditioned plural interpretation lineage across CAN008/independently validated CAN011 with ADP016/017 jurisdictions preserved.",
+      "reported_negative_excerpt": [
+        "**Terminal:** `S2_B2_TRUE_BOUNDED_SOFTWARE_PATH_DEPENDENCE__LABEL_AUTHORED_MEANING_NOT_SCIENTIFICALLY_DERIVED__F1_17_NATIVE_RED__X2_EXECUTION_PENDING__NO_ACTOR_OR_OWNER_ADOPTION`.",
+        "**Executed:** authenticated exact-commit GitHub file retrieval; remote branch/seal reads; documentary source and code-line audit; parsed saved B2 positive/journal-only and F1 applicability receipts with structured extraction; exact report artifact publication.",
+        "**Not executed:** pytest; Node; SQLite/cold-process replay; F1 archive extraction; model API; real actor; original surveys; native ADP019/020 runtime. B2 author reports 249 inherited +81 new green with separate F1 native **17 RED**; those tests **were not rerun by S2** and X2 remains pending."
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "ADP019",
+        "CAN008",
+        "CAN011"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-058",
+      "branch": "agent/reviewer-sorok-v2-hq326-x2-b2-independent-executable-r1",
+      "reviewer_cut": "931aec3497c60114444806c375d1bb51ec7c0e7d",
+      "source_path": "WORKER_RETURNS/SOROK-V2-HQ326-X2-B2-INDEPENDENT-EXECUTABLE-R1/00_RETURN.md",
+      "source_blob": "e07acc9d5342945ba5e485d09f046cbe58e7a231",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Verdict: `REVIEW_REVISE` for B2 event-identity custody.** The narrow source-free software reproduction otherwise matches the B2 author receipt. This return is independent test custody, not High/I2 scientific adoption, production event authentication, CAN011 grant, actor wake, or calibrated psychology.",
+      "reported_negative_excerpt": [
+        "**Verdict: `REVIEW_REVISE` for B2 event-identity custody.** The narrow source-free software reproduction otherwise matches the B2 author receipt. This return is independent test custody, not High/I2 scientific adoption, production event authentication, CAN011 grant, actor wake, or calibrated psychology.",
+        "- `audit_x2.py` directly compared all 37 B2 Git file preimages. Eight B2 generated log/JUnit artifacts changed on local rerun; source, fixture, and non-output bytes stayed exact. B2's own materializer staged 69 pinned source files and F1 archive members. The independent audit then compared each staged byte sequence with its Git ",
+        "- Actual commands, in order: `python3 materialize.py`; `python3 run_courts.py` (with `GIT_DIR` pointed to the same authorized shared object store because the disposable staging directory itself is not a checkout); `python3 audit_x2.py`; `python3 -m pytest -q test_hostile_x2.py --junitxml=hostile.xml` with `B2_REVIEW_ROOT` pointi",
+        "| F1 native runner | **exit 1; 17 RED** | 0 native positives established |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "CAN011",
+        "ADP019"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-059",
+      "branch": "agent/reviewer-sorok-v2-hq327-f2-heldout-developmental-court-r1",
+      "reviewer_cut": "a24429906c93446f9d912e7054d48f9f51aee63d",
+      "source_path": "WORKER_RETURNS/SOROK-V2-HQ327-F2-HELDOUT-OTHERNESS-R1/00_RETURN.md",
+      "source_blob": "b30dc115c182fd2d3594d0cd4432b5b1501bf9c5",
+      "reported_disposition": "REPORTED_HOLD",
+      "reported_verdict": "**Return verdict:** `F2_42_FROZEN_CASES_66_PYTEST_PASS_5_OF_5_MUTANTS_KILLED__FUTURE_B3_NOT_RUN__F1_17_NATIVE_RED_PRESERVED__NO_ADOPTION`",
+      "reported_negative_excerpt": [
+        "**Return verdict:** `F2_42_FROZEN_CASES_66_PYTEST_PASS_5_OF_5_MUTANTS_KILLED__FUTURE_B3_NOT_RUN__F1_17_NATIVE_RED_PRESERVED__NO_ADOPTION`",
+        "- Python 3.13.5 / pytest 9.0.2 observed, filesystem and subprocess verified. `python -m pytest -q --junitxml=f2_junit.xml > f2_pytest_stdout.txt` → **66 passed / 0 failed / 0 skipped**. These include 42 individually executed frozen cases plus 24 independent cross-case, source/permission, mutation and metamorphic assertions.",
+        "- `python mutation_audit.py > mutation_stdout.txt` → **5/5 deliberate mutants killed**: constant respondent 42 RED, cosmetic-label respondent 20 RED, event-ID collision bypass 1 RED, ideological group-as-culprit 20 RED, self-authorized durable effect 20 RED. This sensitivity is to the specified **sourcefree evidence/authority co",
+        "- **Future B3 adapter, corrected B2×M1, native CAN008/CAN011/ADP016/017 and F1 native:** `NOT_RUN`. The existing F1 17 native REDs remain unresolved; F2 neither runs nor rewrites F1. X2's positive material-event identity collision is banked as F2-027 RED vs exact replay F2-028; it is NOT claimed fixed in original B2."
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "CAN008",
+        "CAN011"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-060",
+      "branch": "agent/reviewer-sorok-v2-hq327-i2-m1-independent-science-r1",
+      "reviewer_cut": "19f1e86ad2eab7226b59f84288dbbe4f970de77c",
+      "source_path": "WORKER_RETURNS/SOROK-V2-HQ327-I2-M1-INDEPENDENT-SCIENCE-R1/00_RETURN.md",
+      "source_blob": "c2a972149426d03ffb712085814bdbcaba9ec995",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**VERDICT: SCIENCE_SCOPE_CANDIDATE / REVIEW_REVISE_BEFORE_CAUSAL_INTEGRATION.** The research-only M1 mechanism is a genuine typed *proposal and append-only audit* prototype, independently reproduced, but not an independently determined developing psychology or owner-adopted V3 effect.",
+      "reported_negative_excerpt": [
+        "**VERDICT: SCIENCE_SCOPE_CANDIDATE / REVIEW_REVISE_BEFORE_CAUSAL_INTEGRATION.** The research-only M1 mechanism is a genuine typed *proposal and append-only audit* prototype, independently reproduced, but not an independently determined developing psychology or owner-adopted V3 effect.",
+        "**Actual independently executed suites**: unchanged author 37/37 PASS (0 FAIL/SKIP/ERROR); newly authored prospective strict 23 tests = 14 PASS, 9 RED (0 errors/skips). The 9 RED belong ONLY to I2 stronger contracts; they are not 9 failed author tests. Run stdout, both JUnit files and exact runnable 23-case test source are seale",
+        "The sourcefree eligible() function (kernel.py lines 132–165) emits ACCEPT/REJECT/SUSPEND for each child-accessible attributed account, a witnessed-prior candidate, and NO_CHANGE. Nothing automatically endorses the peer's prejudicial group-blame or parent's attribution. A parent private-history change without a changed child expo",
+        "Distinct fields store belief stance, affect witness, public action witness, retained procedural origin and explicit actor_memory_access=NOT_GRANTED (lines 82–97, 201–207). This represents contradictory private rejection/public performance and a retained old habit after conscious rejection without claiming the actor remembers an "
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "A0",
+        "CAN011",
+        "ADP019"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-061",
+      "branch": "agent/reviewer-sorok-v2-hq328-e2-r1-independent-event-custody-r1",
+      "reviewer_cut": "8983315b3aee130e9446d43bd983c4a91c6f0437",
+      "source_path": "WORKER_RETURNS/SOROK-V2-HQ328-E2-R1-INDEPENDENT-CUSTODY-R1/00_RETURN.md",
+      "source_blob": "0399309713b08a96b73a40d173e0761f93367f71",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Verdict: `REVIEW_REVISE`.** R1 repairs X2's original collision at the B2 ingress boundary. The independent court nevertheless finds a specific failure of the commission's additional **legacy fail-closed under both insertion orders** gate: after B2 mapping, a conflicting direct B1 occurrence is not detected on subsequent B2 reentry. This does not show a second conflicting payload admitted through R1's wrapper, nor require R1 to prevent all privileged B1/SQL writes. It does prevent an unconditio",
+      "reported_negative_excerpt": [
+        "**Verdict: `REVIEW_REVISE`.** R1 repairs X2's original collision at the B2 ingress boundary. The independent court nevertheless finds a specific failure of the commission's additional **legacy fail-closed under both insertion orders** gate: after B2 mapping, a conflicting direct B1 occurrence is not detected on subsequent B2 ree",
+        "## Blocking finding: mapped legacy collision is not fail-closed",
+        "1. Admit B2 witness `event1`; either deny the target grant or let its response commit.",
+        "3. Reenter B2 with the original exact, registered witness and readset."
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "E2"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-062",
+      "branch": "agent/reviewer-sorok-v2-hq329-e3-legacy-reentry-independent-r1",
+      "reviewer_cut": "a16ba353f3bc471776d60ce198f267be4e9e5773",
+      "source_path": "WORKER_RETURNS/SOROK-V2-HQ329-E3-LEGACY-REENTRY-INDEPENDENT-R1/00_RETURN.md",
+      "source_blob": "d3f7e8540383405989eadc2c22495cca3ace8f35",
+      "reported_disposition": "REPORTED_SCOPED_ACCEPTANCE",
+      "reported_verdict": "**Verdict: `SOURCEFREE_BFIRST_EVENT_CUSTODY_ACCEPT_SCOPED`** for exact repair `8f7966d6d0bbb1ea2e57359de9defbcf552268bd`. The two original E2 strict failures reproduce on original R1 and both pass on this repair. Fresh hostile SQL, concurrent-writer, crash/recovery and cold-process execution qualifies the bounded synthetic SQLite B2 ingress mechanism. This is independent engineering acceptance at the commissioned grain, not HQ adoption, psychological science, production ADP019 authentication, CA",
+      "reported_negative_excerpt": [
+        "**Verdict: `SOURCEFREE_BFIRST_EVENT_CUSTODY_ACCEPT_SCOPED`** for exact repair `8f7966d6d0bbb1ea2e57359de9defbcf552268bd`. The two original E2 strict failures reproduce on original R1 and both pass on this repair. Fresh hostile SQL, concurrent-writer, crash/recovery and cold-process execution qualifies the bounded synthetic SQLit",
+        "The assigned reviewer branch began at the exact remote-verified sealed startup `ccc84471c27b6dbe3ff1040dcaf78a3070746e99`. The preexisting app checkout initially pointed at unrelated `25830fe7462bb9e29bc4087e6ae14f3f84cec377`; it was clean. I fetched only the commissioned reviewer ref and created the assigned local branch at the",
+        "| E2 strict legacy fail-closed gate, unchanged | **2 FAIL**, exit 1 | **2 PASS**, exit 0 |",
+        "| Frozen full E2 | strict pair above | **42 PASS / 2 FAIL**, exit 1 |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "E2",
+        "ADP019",
+        "CAN011",
+        "CAN008"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-063",
+      "branch": "agent/reviewer-sorok-v2-hq329-m3-m2-science-independent-r1",
+      "reviewer_cut": "49dfcb30971310756a12f659961600d9f2eb4a11",
+      "source_path": "WORKER_RETURNS/SOROK-V2-HQ329-M3-M2-INDEPENDENT-SCIENCE-R1/00_RETURN.md",
+      "source_blob": "2b0c42916e846a23a504a7ced125e53e9aeb60fb",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**DISPOSITION: `M2_REVISE_BEFORE_B3_SOURCE_CUSTODY_ADOPTION`; `REVIEWER_INDEPENDENCE_NOT_MET_IN_THIS_CONVERSATION`.** Exact pinned M2: `5c2fbe14ccfa5027becfabc682206a1e61aaf986`, standalone `kernel.py` blob `5530bd1152161e084f734b5ba518668763192c6b`. Assigned M3 seal: `700a75d81182d0bffc1ee970aff7389c28ea494b`. No production source, accepted semantic owner, CAN008/011 or ADP015/016/017/019/020 mutation.",
+      "reported_negative_excerpt": [
+        "**DISPOSITION: `M2_REVISE_BEFORE_B3_SOURCE_CUSTODY_ADOPTION`; `REVIEWER_INDEPENDENCE_NOT_MET_IN_THIS_CONVERSATION`.** Exact pinned M2: `5c2fbe14ccfa5027becfabc682206a1e61aaf986`, standalone `kernel.py` blob `5530bd1152161e084f734b5ba518668763192c6b`. Assigned M3 seal: `700a75d81182d0bffc1ee970aff7389c28ea494b`. No production sou",
+        "The current conversation previously implemented/published the M2 candidate. This review authored a **new prospective M3 test court** and actually executed it on pinned, byte-verified code; nevertheless it is **not a fresh independent agent**. It must **not** serve as the final High/I2 independent acceptance signature. A distinct",
+        "| Pinned suite, unchanged source | PASS | RED |",
+        "The REDs are real executed failed assertions. Preserve all frozen original test bytes. None of the new M3 strict RED tests was added to or substituted for the M2 author 41."
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "CAN008",
+        "CAN011"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-064",
+      "branch": "agent/reviewer-sorok-v2-hq330-s3-b3-independent-science-r1",
+      "reviewer_cut": "2ca072e942be21b1c68e3abf32a133b3ed7435db",
+      "source_path": "WORKER_RETURNS/SOROK-V2-HQ330-S3-B3-INDEPENDENT-SCIENCE-R1/00_RETURN.md",
+      "source_blob": "10c129c13f61b8087fd4115a4f2f1e1696e5c623",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Verdict:** `B3_SCIENCE_SOURCEFREE_ACCEPT_LIMITED_CONDITIONAL_X3__HABIT_AND_SELECTED_MEANING_REVISE__M2_QUARANTINED__NO_ADOPTION`.",
+      "reported_negative_excerpt": [
+        "**Verdict:** `B3_SCIENCE_SOURCEFREE_ACCEPT_LIMITED_CONDITIONAL_X3__HABIT_AND_SELECTED_MEANING_REVISE__M2_QUARANTINED__NO_ADOPTION`.",
+        "- `01_INDEPENDENT_SCIENCE_AND_ONTOLOGY_COURT.md`: exact code-line causal audit, scientific claim ceiling, honest limited positive, M2 preimage quarantine, E3 bounded event custody scope, F2 sensitivity, original F1 17 REDs, CAN/ADP jurisdiction and next B4/M4 candidate mechanism.",
+        "- `03_ENVIRONMENT_PASSPORT_DELTA.json`: executable capability preflight, GitHub-source custody and **NOT_RUN** verdict for S3 private-source suites.",
+        "B3's source and frozen author traces support a real, conditioned **source-free** practical-state dependency: two authored completed lock-check witnesses -> separately validated test-only practice -> later `CHECK_LOCK` option, with permission/no-permission comparison. This is meaningful software feasibility, not validated human a"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "ADP019",
+        "CAN008",
+        "CAN011"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-065",
+      "branch": "agent/reviewer-sorok-v2-hq330-x3-b3-independent-executable-r1",
+      "reviewer_cut": "d201985243fe15bc0da36e7cbc93707fec664acf",
+      "source_path": "WORKER_RETURNS/SOROK-V2-HQ330-X3-B3-INDEPENDENT-EXECUTABLE-R1/00_RETURN.md",
+      "source_blob": "376fbbffbb285203b9fda5ec11d53f07a1bfd6c5",
+      "reported_disposition": "REPORTED_REVISE_OR_RED",
+      "reported_verdict": "**Verdict: `B3_REVISE` for exact B3 `47b46a85b9ebb633754866f1e6f1b12db3bd2012`.** The positive executions reproduce, including blinded F2 and actual cold SQLite. Independent hostile execution finds a public-entrypoint refusal/partial-write defect. This return does not issue `B3_EXECUTABLE_TEST_ONLY_ACCEPT_SCOPED`.",
+      "reported_negative_excerpt": [
+        "# X3 independent executable court — B3_REVISE",
+        "**Verdict: `B3_REVISE` for exact B3 `47b46a85b9ebb633754866f1e6f1b12db3bd2012`.** The positive executions reproduce, including blinded F2 and actual cold SQLite. Independent hostile execution finds a public-entrypoint refusal/partial-write defect. This return does not issue `B3_EXECUTABLE_TEST_ONLY_ACCEPT_SCOPED`.",
+        "| Frozen full E2 / X2 | **42 PASS + 2 FAIL / 16 PASS + 1 FAIL**; assertions of repaired old bugs remain literal failures |",
+        "| Frozen M1 / I2 against M2 | **18 PASS + 19 FAIL / 13 PASS + 10 FAIL** |"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "E2",
+        "CAN011"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-066",
+      "branch": "review/sorok08-20261028-full-topview-accession-conditionals-r1",
+      "reviewer_cut": "8fbf564788406bd8317e441e6f6c72c39b121f70",
+      "source_path": "SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_REVIEWS/20261028_SOROK08_R2_EXACT_5D41A8_INDEPENDENT_REASSESSMENT_R1.md",
+      "source_blob": "a574db23fa8ee0e357c657bcd6c9379de2c3a1bb",
+      "reported_disposition": "REPORTED_MIXED_OR_UNCLASSIFIED",
+      "reported_verdict": "## R2 verdict — positively adjudicated correction, no automatic HQ command",
+      "reported_negative_excerpt": [
+        "`00_DOSSIER.md` blob `053aa79bb7c3da598458594d2d530bd573f22e94`; `01_PROVENANCE_AND_AUTHORITY.json` blob `51235e25d7e2a140ae881f5a1ceb72f636c91d16`; `02_WHOLE_TRAJECTORY_EXECUTIVE_K01_K15_R2.md` blob `c3e215af91276710dfffd6ba53ef985d499a6b04`; `03_EXISTING_IDS_ATTENTION_CROSSWALK_R2.md` blob `065b83b68dd3725e2b6a4d43f6dbe16742c2",
+        "**`ACCEPT_SCOPED_DOCUMENTARY_WHOLE_TRAJECTORY_GROK_AND_R2_CORRECTIVE_EVIDENCE__NO_HQ_APPOINTMENT_OR_NATIVE_ACCEPTANCE`.** The applicant now *demonstrates* serious source-graded competence to conduct the user's present TOP-VIEW-FIRST problem-coverage/attention adjudication **working OFF Neo-V3, Astra, CAN/ADP/PFF, PRE-MAIN/Pyat a",
+        "| **K03 whole prior top-view** | **SATISFIED — source-graded read-back** | 04 indexes 00 plus twelve companions including both 09 files and both 10 files; identifies 150-narrow vs 228-expanded branch *names* and distinguishes inherited historical TD-R05 from directly rerun original code. | All original raw archive functions/loca",
+        "| **K05 whole person and causal rivals** | **SATISFIED — nonissuing conceptual demonstration** | 02 gives mother-first life, B independently acting, bodily/social needs, time/work/care/play, religious/class/ideology and **six same-case outcomes**: prior competence unlocked, B effective, acquired practice, temporary assisted perf"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "CAN008",
+        "CAN011",
+        "C8",
+        "C11",
+        "C12",
+        "A5",
+        "C9",
+        "E2",
+        "C0",
+        "A0"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    },
+    {
+      "capability_id": "B-REVIEW-067",
+      "branch": "review/sorok08-20261028-maximal-topview-accession-conditional-r1",
+      "reviewer_cut": "e5d9b2f23a41e4107b3ce73c9e82181662cb9b80",
+      "source_path": "SOROK_PRODUCT_CONTROL_ROOM/ACCESSION_APPLICATIONS/20261028_FRESH_SOURCEGRADED_GROK_CANDIDATE_R1/INDEPENDENT_REVIEW_RETURNS/00_INDEPENDENT_HQ_GROK_REVIEW_AND_20_CONDITIONAL_GATES_R1.md",
+      "source_blob": "8e7790cf507e94e9175734402805f70ef8ac8b5d",
+      "reported_disposition": "REPORTED_MIXED_OR_UNCLASSIFIED",
+      "reported_verdict": "> Build the **MAXIMUM TOP-VIEW** of the ENTIRE Rawlsing/Sorok/Pyat/historical V3/Neo-V3/product trajectory, identify **EVERY significant area needing attention, why and which KIND of attention**, rank the biggest fundamental things first, **THEN move to finer precision**. **DO NOT DIG INTO ACTUAL CAMPAIGNS YET**. Work **OFF** the already constructed 19 C/A milestones, 12 Neo requirements, 40 historical mechanisms, 16 original decision questions, 15 consumer edges, Astra joint program, Pyat N0–N1",
+      "reported_negative_excerpt": [
+        "# SOROK 08 — INDEPENDENT HOSTILE ACCESSION REVIEW AND ZERO-REDUCTION TOP-VIEW CONTINUITY CONDITIONS R1",
+        "**Reviewer jurisdiction:** independent documentary/source-scientific and whole-project strategic review; **not** current HQ, Oct26 reserve, native CAN/ADP/science issuer, Pyat, C11 welder, original test executor, product release or user's accrediting authority. This branch is an independent proposed review addition; target appli",
+        "**Ruling:** `REVISE_PRECISE_DEFICIENCIES__CANDIDATE_READ_ONLY__NO_ACCESSION_RECOMMENDATION_YET`. The dossier's own `SOROK_HQ_FULL_ACCESSION_GROK_INCOMPLETE__READ_ONLY_CORRECTIVE_WORK` remains appropriate. No 15/15 PASS, command transfer, unissued rule, native execution or new worker is asserted.",
+        "This is deliberately **upstream of choosing the first Rule A/T court, engineering writer, B-world commission or native wake**. A technically competent successor can fail succession by jumping from “the map exists” to the next attractive campaign. Your §5 begins “Largest next lawful program campaign” and recommends the C9 writer,"
+      ],
+      "reviewed_author_code_sha": null,
+      "reviewer_executed_test_source_sha": null,
+      "exact_first_actual_consumer": null,
+      "possible_consumers_lexically_mentioned": [
+        "C11",
+        "C9",
+        "C12",
+        "E2",
+        "CAN008",
+        "C8"
+      ],
+      "reader_executed_in_this_court": false,
+      "source_status": "REVIEW_SOURCE_READ__CODE_CUSTODY_INCOMPLETE",
+      "execution_grade": "ORIGINAL_RETURN_REPORT_ONLY__NOT_INDEPENDENTLY_RERUN",
+      "adoption_grade": "NO_AUTO_ADOPTION__INCUMBENT_OWNER_REQUIRED",
+      "rights": "READ_ONLY_NO_NATIVE_ADP_CAN_OR_PYAT_GRANT"
+    }
+  ]
+}
