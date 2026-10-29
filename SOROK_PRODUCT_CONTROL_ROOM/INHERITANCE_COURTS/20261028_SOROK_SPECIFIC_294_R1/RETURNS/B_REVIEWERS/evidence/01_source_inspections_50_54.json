@@ -1,0 +1,889 @@
+{
+  "schema": "SOROK_294_B_SOURCE_INSPECTION_BATCH_R1",
+  "rows": [
+    {
+      "index": 50,
+      "name": "agent/reviewer-sorok-r3-hq318-c07i-c07p-independent-r1",
+      "pinned_sha": "2155a5352a1371648fb7cbec7cde91cea4d1a614",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 20,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/02_THREAT_AND_NEGATIVE_ADJUDICATION_R1.md",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/03_CROSS_PROCESS_COLD_EVIDENCE.md",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/04_REVIEWER_CORRECTION_LEDGER.json",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/environment_passport_delta.json",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/_c07i_stage_ledger.json",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/c07i_independent_v1.log",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/c07i_independent_v1.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/c07i_independent_v2.log",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/c07i_independent_v2.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/mutation/c07_journal_MUTANT_ORIGINAL.py",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/mutation/c07_journal_mutant_A.py",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/mutation/c07_journal_mutant_B.py",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/mutation/c07_journal_mutant_C.py",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/mutation/mutant_A.log",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/mutation/mutant_B.log",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/mutation/mutant_C.log",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/mutation/test_c07i_independent.py",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/repro/source/custody_protocol.py",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/tests/test_c07i_independent.py"
+      ],
+      "code_paths": [
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/mutation/c07_journal_MUTANT_ORIGINAL.py",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/mutation/c07_journal_mutant_A.py",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/mutation/c07_journal_mutant_B.py",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/mutation/c07_journal_mutant_C.py",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/mutation/test_c07i_independent.py",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/repro/source/custody_protocol.py",
+        "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/tests/test_c07i_independent.py"
+      ],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "dc8f684e9b6685bf643ab71fd349b1da25344337",
+        "url": "https://github.com/maidiu/rawlsing/blob/2155a5352a1371648fb7cbec7cde91cea4d1a614/WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 171
+      },
+      "review_evidence": "# SOROK HQ318 C07I — independent cross-process custody court\n\n## VERDICT: `REVIEW_PASS_SCOPED_SOURCEFREE_C07_CROSSPROCESS_WITH_HOLDS`\n\n**C07I is an independent acceptance of C07P's *scoped, source-free* cross-process result — with both\ntyped API holds still OPEN and the unkeyed anti-tamper ceiling PRESERVED and, in one respect, extended.**\n\n| | |\n|---|---|\n| **Reviewer** | Fresh independent I2 experimental custody reviewer. **NOT** the C07P author, **NOT** the OC7 reviewer, **NOT** HQ, **NOT** an institutional escrow authority or signer. |\n| **Branch** | `agent/reviewer-sorok-r3-hq318-c07i-c07p-independent-r1` |\n| **Sealed startup** | `76649a99f4e8353bc6edfff0e1972c6068d28564`, verified against direct remote HEAD |\n| **Candidate reviewed** | C07P `805d0a071db70bb37ec95df450b9429f46544fe9` |\n| **Pinned native source** | OC6 blob `4c185c18dbee57603038e97886da8fc4aa834082`, SHA256 `ca85b844…` — **never edited** |\n| **Author prereg reviewed** | `82ba75680f7cf296918c6236ef7c0e8df1756dde` |\n| **Reviewer prereg** | `01_PREREGISTERED_REVIEWER_EXPECTATIONS_R1.md`, frozen at `536d90f88` **before any new adversarial execution** |\n| **Environment** | New isolated local sparse worktree; Python 3.11.3 / pytest 9.1.1 / Git 2.39.1; real subprocesses |\n| **Model / editor** | Step 5 Preview in OpenCode (owner-selected). One agent, no helpers, no switches. |\n\n---\n\n## 1. Unchanged reproduction\n\n| Court | Result | Author claimed | |\n|---|---|---|---|\n| C07P v2 suite | **30 PASS / 0 RED** | 30 PASS | ✔ |\n| inherited closure | **898 cases · 877 PASS · 21 RED · 0 skip** | 877 P / 21 RED | ✔ |\n\n16/16 closure objects blob-verified from the true binary preimage, two `.tar.xz` members extracted\nrather than transcribed. All **21 retained literal REDs** are recorded by name and suite in\n`observations/c07i_retained_red_identities.json` and are exactly the 21 OC7 adjudicated: 10 historical\ncontract REDs, 9 self-invalidating OC5E witnesses, 2 disputed malformed homoglyph cases. **No RED was\nedited, xfailed or suppressed.**\n\n## 2. The cross-process claim is independently confirmed\n\nRe-executed with **my own worker**, not the candidate's, so the claim does not rest on the author's",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# SOROK HQ318 C07I — independent cross-process custody court"
+        },
+        {
+          "line": 3,
+          "text": "## VERDICT: `REVIEW_PASS_SCOPED_SOURCEFREE_C07_CROSSPROCESS_WITH_HOLDS`"
+        },
+        {
+          "line": 5,
+          "text": "**C07I is an independent acceptance of C07P's *scoped, source-free* cross-process result — with both"
+        },
+        {
+          "line": 6,
+          "text": "typed API holds still OPEN and the unkeyed anti-tamper ceiling PRESERVED and, in one respect, extended.**"
+        },
+        {
+          "line": 10,
+          "text": "| **Reviewer** | Fresh independent I2 experimental custody reviewer. **NOT** the C07P author, **NOT** the OC7 reviewer, **NOT** HQ, **NOT** an institutional escrow authority or signer. |"
+        },
+        {
+          "line": 11,
+          "text": "| **Branch** | `agent/reviewer-sorok-r3-hq318-c07i-c07p-independent-r1` |"
+        },
+        {
+          "line": 14,
+          "text": "| **Pinned native source** | OC6 blob `4c185c18dbee57603038e97886da8fc4aa834082`, SHA256 `ca85b844…` — **never edited** |"
+        },
+        {
+          "line": 16,
+          "text": "| **Reviewer prereg** | `01_PREREGISTERED_REVIEWER_EXPECTATIONS_R1.md`, frozen at `536d90f88` **before any new adversarial execution** |"
+        },
+        {
+          "line": 26,
+          "text": "| C07P v2 suite | **30 PASS / 0 RED** | 30 PASS | ✔ |"
+        },
+        {
+          "line": 27,
+          "text": "| inherited closure | **898 cases · 877 PASS · 21 RED · 0 skip** | 877 P / 21 RED | ✔ |"
+        },
+        {
+          "line": 30,
+          "text": "rather than transcribed. All **21 retained literal REDs** are recorded by name and suite in"
+        },
+        {
+          "line": 31,
+          "text": "`observations/c07i_retained_red_identities.json` and are exactly the 21 OC7 adjudicated: 10 historical"
+        },
+        {
+          "line": 32,
+          "text": "contract REDs, 9 self-invalidating OC5E witnesses, 2 disputed malformed homoglyph cases. **No RED was"
+        },
+        {
+          "line": 35,
+          "text": "## 2. The cross-process claim is independently confirmed"
+        },
+        {
+          "line": 77,
+          "text": "**New route, preregistered in advance as ACCEPTED and then observed:** an attacker rewrites a COMMIT"
+        },
+        {
+          "line": 79,
+          "text": "chain. **Observed: accepted.** The restored escrow materialises `content_digest=\"attacker-digest\"` and"
+        },
+        {
+          "line": 95,
+          "text": "## 5. Both typed holds confirmed OPEN by direct measurement"
+        },
+        {
+          "line": 97,
+          "text": "| Hold | Measurement | Status |"
+        },
+        {
+          "line": 103,
+          "text": "I did not touch private dicts, did not mutate `holder_roles`, and did not force either expectation"
+        },
+        {
+          "line": 111,
+          "text": "| M-A — neuter per-record digest | `test_IH1_tampered_payload_is_refused` | 1 failed / 44 passed |"
+        },
+        {
+          "line": 115,
+          "text": "Adapter restored to blob `def46aed3288117903b961e66dc0259c1fa44d6b` and re-verified green."
+        },
+        {
+          "line": 120,
+          "text": "`observations/c07i_independent_v1.{xml,log}` and adjudicated in `04_REVIEWER_CORRECTION_LEDGER.json`."
+        },
+        {
+          "line": 124,
+          "text": "   accepted, while labelling that branch \"stronger than expected\". Acceptance is the preregistered"
+        },
+        {
+          "line": 135,
+          "text": "which predates C07P, and `805d0a07` is not an ancestor of this branch. This is not a C07P defect and"
+        },
+        {
+          "line": 136,
+          "text": "nothing of C07P's was altered. It is exactly why I staged the candidate **by pinned commit and"
+        },
+        {
+          "line": 149,
+          "text": "independently protected log. No signer authority issued. No holder-authority issuance or revocation."
+        },
+        {
+          "line": 151,
+          "text": "N12, CURRENT or PRE-MAIN privileges. No original respondent data, protected holdout or real experiment"
+        },
+        {
+          "line": 161,
+          "text": "| `01_PREREGISTERED_REVIEWER_EXPECTATIONS_R1.md` | reviewer expectations, frozen at `536d90f88` **before execution** |"
+        },
+        {
+          "line": 162,
+          "text": "| `02_THREAT_AND_NEGATIVE_ADJUDICATION_R1.md` | full threat adjudication, ceiling, holds, custody note |"
+        },
+        {
+          "line": 163,
+          "text": "| `03_CROSS_PROCESS_COLD_EVIDENCE.md` | real A/B/C transcripts and field-by-field comparison |"
+        },
+        {
+          "line": 166,
+          "text": "| `observations/` | JUnit + stdout for every court, 21 RED identities, staging ledger, mutation evidence |"
+        },
+        {
+          "line": 168,
+          "text": "| `repro/c07i_worker.py` | reviewer-authored process roles |"
+        },
+        {
+          "line": 170,
+          "text": "| `tests/test_c07i_independent.py` | 45 independent adversarial cases |"
+        }
+      ],
+      "referenced_shas": [
+        "76649a99f4e8353bc6edfff0e1972c6068d28564",
+        "805d0a071db70bb37ec95df450b9429f46544fe9",
+        "4c185c18dbee57603038e97886da8fc4aa834082",
+        "82ba75680f7cf296918c6236ef7c0e8df1756dde",
+        "def46aed3288117903b961e66dc0259c1fa44d6b",
+        "d0c5797afa6993d852f2e0c75efcbc2cdd491eca"
+      ],
+      "reported_disposition": "VERDICT: `REVIEW_PASS_SCOPED_SOURCEFREE_C07_CROSSPROCESS_WITH_HOLDS`",
+      "code_inspection": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ318-C07I-C07P-INDEPENDENT-R1/observations/mutation/c07_journal_MUTANT_ORIGINAL.py",
+        "blob": "def46aed3288117903b961e66dc0259c1fa44d6b",
+        "bytes": 13358,
+        "functions": [
+          "class JournalError(Exception):",
+          "class CrashPoint(Exception):",
+          "def canonical(obj: Any) -> str:",
+          "def _sha256(text: str) -> str:",
+          "def capsule_to_json(cap: CP.CustodyCapsule) -> Dict[str, Any]:",
+          "def capsule_from_json(data: Dict[str, Any]) -> CP.CustodyCapsule:",
+          "def build_record(seq: int, kind: str, payload: Dict[str, Any], prev: str) -> Dict[str, Any]:",
+          "def verify_chain(records: List[Dict[str, Any]]) -> Dict[str, Any]:",
+          "def append_records(path: Path, new_records: List[Dict[str, Any]],",
+          "    def die(point: str) -> None:",
+          "def read_records(path: Path) -> List[Dict[str, Any]]:",
+          "class EscrowJournal:",
+          "    def __init__(self, path: Path, state: Optional[CP.EscrowState] = None):",
+          "    def authorize_holder(self, person_id: str, role: CP.Role) -> None:",
+          "    def commit(self, capsule: CP.CustodyCapsule, crash: Optional[str] = None,",
+          "    def unblind(self, capsule_id: str, holder: str) -> Dict[str, Any]:",
+          "    def release(self, capsule_id: str) -> None:",
+          "    def record_exposure(self, capsule_id: str, exposed_to: str, purpose: str) -> None:",
+          "    def _persist(self, records: List[Dict[str, Any]], crash: Optional[str] = None,",
+          "    def restore(self) -> Dict[str, Any]:",
+          "def escrow_fingerprint(state: CP.EscrowState) -> Dict[str, Any]:"
+        ],
+        "sample": "#!/usr/bin/env python3\n\"\"\"C07P — TEST_ONLY cross-process custody journal adapter over the pinned OC6 source.\n\nThis module does NOT modify, wrap or replace `custody_protocol`. It imports the\npinned native module and persists an authorised escrow event stream to a\nfilesystem journal, then restores it in a *separate* OS process by replaying the\npublic `EscrowState` API only.\n\nDesign is frozen by 01_PREREGISTERED_PROTOCOL_R1.md at commit 82ba75680.\n\nTEST_ONLY. The journal is an ordinary local mutable file. It is NOT institutional\ncustody and NOT an externally anchored append-only record. See prereg §5.3.\n\"\"\"\nfrom __future__ import annotations\n\nimport hashlib\nimport json\nimport os\nfrom dataclasses import asdict, fields\nfrom pathlib import Path\nfrom typing import Any, Dict, List, Optional\n\nimport custody_protocol as CP\n\nSCHEMA_VERSION = 1\nZERO_PREV = \"0\" * 64\n\nCAPSULE_FIELDS = tuple(f.name for f in fields(CP.CustodyCapsule))\nassert len(CAPSULE_FIELDS) == 18, CAPSULE_FIELDS\n\nKINDS = (\"AUTHORIZE\", \"COMMIT\", \"UNBLIND\", \"RELEASE\", \"EXPOSURE\")\n\n\nclass JournalError(Exception):\n    \"\"\"Refusal to read or trust a journal. Never silently repaired.\"\"\"\n\n\nclass CrashPoint(Exception):\n    \"\"\"Raised by the injected crash hooks. Never caught by journal code.\"\"\"\n\n\ndef canonical(obj: Any) -> str:\n    return json.dumps(obj, sort_keys=True, separators=(\",\", \":\"), ensure_ascii=True)\n\n\ndef _sha256(text: str) -> str:\n    return hashlib.sha256(text.encode(\"utf-8\")).hexdigest()\n\n\ndef capsule_to_json(cap: CP.CustodyCapsule) -> Dict[str, Any]:\n    \"\"\"Plain-JSON the 18 declared fields. Never pickles a live "
+      }
+    },
+    {
+      "index": 51,
+      "name": "agent/reviewer-sorok-r3-hq319-ms4-ms3-independent-r1",
+      "pinned_sha": "3863f5f0d87678b604b0401ed76d104980b78699",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 1,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ319-MS4-MS3-INDEPENDENT-R1/16_REMOTE_CONTENT_VERIFICATION.json"
+      ],
+      "code_paths": [],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ319-MS4-MS3-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "2a5372ee4de0b8eb2164e70b63b0a5d4e3901fc9",
+        "url": "https://github.com/maidiu/rawlsing/blob/3863f5f0d87678b604b0401ed76d104980b78699/WORKER_RETURNS/SOROK-R3-HQ319-MS4-MS3-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 56
+      },
+      "review_evidence": "# MS4 independent serial provenance court\n\n**REVIEW_PASS_SCOPED_TESTONLY_SERIAL_PROVENANCE_WITH_P3B_FAIL — NO_ADOPTION.** The MS3 repair reproduces the required literal courts and closes the tested mutable-state provenance admissions. This verdict accepts only the finite synthetic integrity result described below. **Original prospective P3b remains FAIL; F_B FIRED; SERIAL_MECHANISM_IDENTIFICATION_HOLD remains.** It does not establish an accepted memory-to-belief law, committed response occurrence, psychological mediation or production feasibility.\n\nFresh, separately launched single reviewer session; never the MS1/MS2/MS3 author or reviewer. Target **48200cf0b8e9b69ce27bf0151cb43fde5133322f**, sealed startup **a5bd38dabd9e85cdede0d741335bf8d40b9070f1**. Both exact remote branch heads were checked before work. The new sparse worktree uses the existing authenticated object store and reconstructs all source from pinned Git bytes. No previous author/reviewer live runtime or chat was reused.\n\n| Fresh execution | Original MS1 | Repaired MS3 |\n|---|---:|---:|\n| Unchanged MS1/native120 | 118 PASS / 2 FAIL | 118 PASS / 2 FAIL |\n| Unchanged MS2 reviewer51 | 43 PASS / 8 FAIL | 51 PASS |\n| Required unchanged171 | **161 PASS / 10 FAIL** | **169 PASS / 2 FAIL** |\n| MS3 unchanged author47 + selector12 | — | **59 PASS** |\n| Literal original prospective P3b | **1 FAIL** | **1 FAIL** |\n| Fresh MS4 frozen85 | 27 PASS / 58 FAIL | **75 PASS / 10 FAIL** |\n| Separately frozen follow-up20 | 13 PASS / 7 FAIL | **20 PASS** |\n\nAll these runs have zero JUnit ERROR/SKIP and no xfail conversion. **The reviewer85 is not reported as fully green.** Its ten retained REDs and the reason for the follow-up are explained below. There are **55 exact reviewer cases that fail original MS1 and pass repaired MS3**, with identical assertions/source for each paired run. [Complete case matrix](04_FULL_EXECUTED_CASE_MATRIX.json), [paired hostile outcomes](05_PAIRED_HOSTILE_MATRIX.json), [full fresh JUnit/stdout/observations](evidence).\n\n## What the review independently established\n\nThe original171 and all59 author controls were executed byte-unchanged. Both retained historical CAN2 failures are literal missing `runtime_root/law/ADP017.txt` and `ADP016.txt` reads. Those files were deliberately not inserted into the original runtime. The two failures are separate from the positive native CAN3 history comparator and from the failed scientific P3b prediction.\n\nAll nine native CAN2 blobs and the separate EMPTY guard were checked against their exact source Git objects. The executing native owner module remains **ac943d07459f68ba2e27baf05b442d9ecbddefd5**. The executing MS3 wrapper/helper match target and tested source seal **96b568b0dcf592c2c9190bf94275f39388219d6c**: wrapper **b5867cd1301441054ef25f9e1e2bf0a4745abdfd**, helper **d172fe04788fcc33032b71eb6d083c15dd03ff7e**. Each court records actual imported `module.__file__` as a return-relative path with its Git blob and SHA-256. The actual final guard import is byte-identical **e0528d65215cb431196570c38bac4eae94217a1b** and has no accepted positive transition authorities. All15 MS3 author JUnit artifacts, including earlier failures, were separately parsed directly from the target Git objects. [Source/import audit](06_SOURCE_AND_IMPORT_AUDIT.json), [all target JUnit review](07_TARGET_ALL_JUNIT_AUDIT.json).\n\nThe new hostile controls challenge relinked formation post/feature hashes, cyclic predecessors, duplicate/orphan/missing formation records, jointly forged content and uncertainty, reordered source bindings, foreign actor/source refs, source-registry replacement, canonical claim/emission identity, invalid public selectors, stale terminal permits after actual native withdrawal and exact supersession, and actor/world/time/hash cuts. MS3 refuses those invalid owner trajectories atomically. Both mediation and consumption are tested where applicable; withdrawal also rejects invalid selectors. Missing required selectors raise TypeError before mutation. Unknown or foreign-bound selection is not accepted as genuine EMPTY.\n\nDiscriminating native positives preserve canonical bound NONE without fabricating NONKNOWLEDGE, real BELIEF, inaccessible access, and CLAIM_ACCESS_UNKNOWN. The finite candidate emits BELIEF only; memory uncertainty and unknown accessibility are not evidence that a native UNCERTAINTY stance was generated. Native ADD→WITHDRAW→ADD and ADD→SUPERSEDE trajectories reproduce REROUTE/BLOCK/DEFER across both content classes and both formation/binding orders. Full owner-plus-registry checkpoint replay reproduces exact receipt hashes. Faults call real native operations before raising; owner, registry and real pending proposals roll back. A distinct later-event read reaches its real receipt builder, rolls back after the injected fault, then retries successfully. Duplicate formation still refuses.\n\n## Ten original reviewer REDs retained, not relabeled PASS\n\nThe reviewer85 was frozen at **ed1c6954c5d2637d433883db740ba5e9e3fcd83f** before first collection/execution. Its first execution yielded75 PASS/10 RED. The earlier initial freeze **6bc2aa28ee444ffbb270ca00fdf1ae776bd284ae** had one static formation-fault setup correction before any hostile execution; both versions remain in Git.\n\nEight REDs attempted replay by cloning only the owner while reusing a registry already advanced by E2. Native `BLOCK_DUPLICATE_EVENT_IDENTITY` is correct for that mixed checkpoint; these were not valid full-replay experiments. One fault control likewise retried already-admitted E2 and never reached the receipt fault site: **NOT_REACHED at that injected stage**, despite a literal assertion FAIL. The tenth prediction demanded rejection of alien but nonempty public features. Native `coupline_evaluate`/`validate_event` accepts any nonempty string-feature tuple within its issuer/actor/world/time envelope. MS3 promises no exact fixed-E2 content filter. That was an over-specific reviewer hypothesis, not an accepted provenance requirement.\n\nNo original oracle or candidate source was changed. Follow-up expectations/code were frozen at **ca0ff2a84db13e0ccb2d8aabefe7b46c6bd608a1** before running20 new cases. They restore both owner and registry for12 replay cases, use two distinct later-event fault cases, contrast empty versus alien-nonempty E2 features, directly test terminal withdrawal at all three accessibility classes, and reject a future selected effect. All20 pass on MS3. The broader E2 input envelope remains an explicit limitation: **this review makes no event-content discrimination claim**. [Original preregistration](02_INDEPENDENT_PREREGISTRATION.md), [follow-up preregistration](02B_FOLLOWUP_PREREGISTRATION.md), [failure adjudication](09_REVIEWER_RED_ADJUDICATION.json).\n\n## Scientific verdict and ceiling",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# MS4 independent serial provenance court"
+        },
+        {
+          "line": 3,
+          "text": "**REVIEW_PASS_SCOPED_TESTONLY_SERIAL_PROVENANCE_WITH_P3B_FAIL — NO_ADOPTION.** The MS3 repair reproduces the required literal courts and closes the tested mutable-state provenance admissions. This verdict accepts only the finite synthetic integrity result described below. **Original prospective P3b remains FAIL; F_B FIRED; SERIAL_MECHANISM_IDENTIFICATION_HOLD remains.** It does not establish an accepted memory-to-belief law, committed response occurrence, psychological mediation or production feasibility."
+        },
+        {
+          "line": 5,
+          "text": "Fresh, separately launched single reviewer session; never the MS1/MS2/MS3 author or reviewer. Target **48200cf0b8e9b69ce27bf0151cb43fde5133322f**, sealed startup **a5bd38dabd9e85cdede0d741335bf8d40b9070f1**. Both exact remote branch heads were checked before work. The new sparse worktree uses the existing authenticated object store and reconstructs all source from pinned Git bytes. No previous author/reviewer live runtime or chat was reused."
+        },
+        {
+          "line": 7,
+          "text": "| Fresh execution | Original MS1 | Repaired MS3 |"
+        },
+        {
+          "line": 9,
+          "text": "| Unchanged MS1/native120 | 118 PASS / 2 FAIL | 118 PASS / 2 FAIL |"
+        },
+        {
+          "line": 11,
+          "text": "| Required unchanged171 | **161 PASS / 10 FAIL** | **169 PASS / 2 FAIL** |"
+        },
+        {
+          "line": 13,
+          "text": "| Literal original prospective P3b | **1 FAIL** | **1 FAIL** |"
+        },
+        {
+          "line": 17,
+          "text": "All these runs have zero JUnit ERROR/SKIP and no xfail conversion. **The reviewer85 is not reported as fully green.** Its ten retained REDs and the reason for the follow-up are explained below. There are **55 exact reviewer cases that fail original MS1 and pass repaired MS3**, with identical assertions/source for each paired run. [Complete case matrix](04_FULL_EXECUTED_CASE_MATRIX.json), [paired hostile outcomes](05_PAIRED_HOSTILE_MATRIX.json), [full fresh JUnit/stdout/observations](evidence)."
+        },
+        {
+          "line": 19,
+          "text": "## What the review independently established"
+        },
+        {
+          "line": 21,
+          "text": "The original171 and all59 author controls were executed byte-unchanged. Both retained historical CAN2 failures are literal missing `runtime_root/law/ADP017.txt` and `ADP016.txt` reads. Those files were deliberately not inserted into the original runtime. The two failures are separate from the positive native CAN3 history comparator and from the failed scientific P3b prediction."
+        },
+        {
+          "line": 23,
+          "text": "All nine native CAN2 blobs and the separate EMPTY guard were checked against their exact source Git objects. The executing native owner module remains **ac943d07459f68ba2e27baf05b442d9ecbddefd5**. The executing MS3 wrapper/helper match target and tested source seal **96b568b0dcf592c2c9190bf94275f39388219d6c**: wrapper **b5867cd1301441054ef25f9e1e2bf0a4745abdfd**, helper **d172fe04788fcc33032b71eb6d083c15dd03ff7e**. Each court records actual imported `module.__file__` as a return-relative path with its Git blob and SHA-256. The actual final guard import is byte-identical **e0528d65215cb431196570c38bac4eae94217a1b** and has no accepted positive transition authorities. All15 MS3 author JUnit artifacts, including earlier failures, were separately parsed directly from the target Git objects. [Source/import audit](06_SOURCE_AND_IMPORT_AUDIT.json), [all target JUnit review](07_TARGET_ALL_JUNIT_AUDIT.json)."
+        },
+        {
+          "line": 25,
+          "text": "The new hostile controls challenge relinked formation post/feature hashes, cyclic predecessors, duplicate/orphan/missing formation records, jointly forged content and uncertainty, reordered source bindings, foreign actor/source refs, source-registry replacement, canonical claim/emission identity, invalid public selectors, stale terminal permits after actual native withdrawal and exact supersession, and actor/world/time/hash cuts. MS3 refuses those invalid owner trajectories atomically. Both mediation and consumption are tested where applicable; withdrawal also rejects invalid selectors. Missing required selectors raise TypeError before mutation. Unknown or foreign-bound selection is not accepted as genuine EMPTY."
+        },
+        {
+          "line": 27,
+          "text": "Discriminating native positives preserve canonical bound NONE without fabricating NONKNOWLEDGE, real BELIEF, inaccessible access, and CLAIM_ACCESS_UNKNOWN. The finite candidate emits BELIEF only; memory uncertainty and unknown accessibility are not evidence that a native UNCERTAINTY stance was generated. Native ADD→WITHDRAW→ADD and ADD→SUPERSEDE trajectories reproduce REROUTE/BLOCK/DEFER across both content classes and both formation/binding orders. Full owner-plus-registry checkpoint replay reproduces exact receipt hashes. Faults call real native operations before raising; owner, registry and real pending proposals roll back. A distinct later-event read reaches its real receipt builder, rolls back after the injected fault, then retries successfully. Duplicate formation still refuses."
+        },
+        {
+          "line": 29,
+          "text": "## Ten original reviewer REDs retained, not relabeled PASS"
+        },
+        {
+          "line": 31,
+          "text": "The reviewer85 was frozen at **ed1c6954c5d2637d433883db740ba5e9e3fcd83f** before first collection/execution. Its first execution yielded75 PASS/10 RED. The earlier initial freeze **6bc2aa28ee444ffbb270ca00fdf1ae776bd284ae** had one static formation-fault setup correction before any hostile execution; both versions remain in Git."
+        },
+        {
+          "line": 33,
+          "text": "Eight REDs attempted replay by cloning only the owner while reusing a registry already advanced by E2. Native `BLOCK_DUPLICATE_EVENT_IDENTITY` is correct for that mixed checkpoint; these were not valid full-replay experiments. One fault control likewise retried already-admitted E2 and never reached the receipt fault site: **NOT_REACHED at that injected stage**, despite a literal assertion FAIL. The tenth prediction demanded rejection of alien but nonempty public features. Native `coupline_evaluate`/`validate_event` accepts any nonempty string-feature tuple within its issuer/actor/world/time envelope. MS3 promises no exact fixed-E2 content filter. That was an over-specific reviewer hypothesis, not an accepted provenance requirement."
+        },
+        {
+          "line": 35,
+          "text": "No original oracle or candidate source was changed. Follow-up expectations/code were frozen at **ca0ff2a84db13e0ccb2d8aabefe7b46c6bd608a1** before running20 new cases. They restore both owner and registry for12 replay cases, use two distinct later-event fault cases, contrast empty versus alien-nonempty E2 features, directly test terminal withdrawal at all three accessibility classes, and reject a future selected effect. All20 pass on MS3. The broader E2 input envelope remains an explicit limitation: **this review makes no event-content discrimination claim**. [Original preregistration](02_INDEPENDENT_PREREGISTRATION.md), [follow-up preregistration](02B_FOLLOWUP_PREREGISTRATION.md), [failure adjudication](09_REVIEWER_RED_ADJUDICATION.json)."
+        },
+        {
+          "line": 37,
+          "text": "## Scientific verdict and ceiling"
+        },
+        {
+          "line": 39,
+          "text": "All eleven C1–C10/C4b native owner states before consumption and their decision/effect projections agree with the original MS2 evidence. The captured response-read owner hash equals the actual native owner-state digest. CERTAIN active→REROUTE; native withdrawal→BLOCK; genuine absent state→EMPTY. UNCERTAIN active and withdrawal at fixed UNKNOWN both→DEFER. Clamps retain BLOCK. Full state/provenance hashes may still depend on memory even when decision/effect is clamped. The distinct native CAN3 control retains stored-history→DEFLECT versus omitted-history→AMPLIFY at equal owner state. [Causal ledger](08_CAUSAL_AND_SCIENTIFIC_LEDGER.json)."
+        },
+        {
+          "line": 41,
+          "text": "**P3b remains literally falsified:** C2=C4=(DEFER_MISSING_AUTHORITY,None). C4b changes accessibility as well as stance; absence produces EMPTY; neither substitutes for the original stance-only inequality. The positive test acknowledging falsification is not a pass of P3b. The original global prospective gate stays false while finite accessible-arm constructibility remains positive."
+        },
+        {
+          "line": 43,
+          "text": "MS3 reexecutes a native path consistent with retained state. It does not authenticate which fully valid history originally occurred. Native ADP017 omits accessibility from the effect receipt; the verifier tries its three finite supported categories and requires exact transition/final-state agreement. ADP016 reconstruction assumes the wrapper's fixed formation request/default identity. General rule histories, alternative identity overrides, resource bounds, crash durability, hostile processes, external anchors/signatures and production behavior are untested."
+        },
+        {
+          "line": 45,
+          "text": "The native memory/epistemic fixture mutations are real within that synthetic owner. The content→access map and permission→response map remain **UNISSUED hypotheses**. The consumer receives full `ctx`; its authored choice rule is not a structural exclusion of direct memory influence. Its receipt has **committed=false**: no serial response-journal occurrence was committed. The alleged accepted quote about trace refs conditioning a private update is a **CAN2 candidate-code comment**, absent from accepted ADP017. Accepted generic interfaces do not issue the hypothetical content map. No human calibration, original-source inference, real person, real psychological mediation or whole-product feasibility follows."
+        },
+        {
+          "line": 47,
+          "text": "At 00B claim grain, the tested bounded synthetic behavior is F3; broader composition, psychology and production remain unestablished. No percentage readiness estimate is warranted."
+        },
+        {
+          "line": 51,
+          "text": "Only `WORKER_RETURNS/SOROK-R3-HQ319-MS4-MS3-INDEPENDENT-R1/` changes. No protected source/owner/CURRENT/PRE-MAIN mutation, original survey access, external LLM/model calls, helpers, model/editor switch, V3/N12 wake or semantic adoption occurred. The full commission, exact-parent HQ319 and mandatory Sorok00/00A–00D were read; scoped grounding is recorded as **HOSTILE_INDEPENDENT_AUDIT**, not HQ takeover. Actual cash/quota/cache cost is UNKNOWN. [Sanitized00D passport](environment_passport_delta.json), [reproduction](14_REPRODUCTION.md), [scope/custody receipt](10_GROUNDING_SCOPE_AND_CUSTODY.json)."
+        }
+      ],
+      "referenced_shas": [
+        "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+        "a5bd38dabd9e85cdede0d741335bf8d40b9070f1",
+        "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+        "96b568b0dcf592c2c9190bf94275f39388219d6c",
+        "b5867cd1301441054ef25f9e1e2bf0a4745abdfd",
+        "d172fe04788fcc33032b71eb6d083c15dd03ff7e",
+        "e0528d65215cb431196570c38bac4eae94217a1b",
+        "ed1c6954c5d2637d433883db740ba5e9e3fcd83f",
+        "6bc2aa28ee444ffbb270ca00fdf1ae776bd284ae",
+        "ca0ff2a84db13e0ccb2d8aabefe7b46c6bd608a1"
+      ],
+      "reported_disposition": null
+    },
+    {
+      "index": 52,
+      "name": "agent/reviewer-sorok-r3-hq320-c0i-c0p-independent-r1",
+      "pinned_sha": "2dacd87636352a6c805e03b3d07581193a06264b",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 1,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/16_REMOTE_CONTENT_VERIFICATION.json"
+      ],
+      "code_paths": [],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "f898f0b77e010ce8e613f278dde9c7ebe5b0ba14",
+        "url": "https://github.com/maidiu/rawlsing/blob/2dacd87636352a6c805e03b3d07581193a06264b/WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 65
+      },
+      "review_evidence": "# C0I independent generic world port review\n\n**REVIEW_REVISE — finite sourcefree two-contract interface incomplete; NO_ADOPTION.** The native world/possibility paths and both genuine named consumers reproduce. C0P's facade does not yet establish the claimed literal SC0 two-contract transport. Preserve the native positives; revise the owned facade/contract binding and its overbroad interface statements before claiming that result.\n\n| Actual fresh C0I execution | PASS | FAIL | ERROR | SKIP |\n|---|---:|---:|---:|---:|\n| Unchanged C0P author court | **49** | 0 | 0 | 0 |\n| New independently preregistered court | **47** | **3** | 0 | 0 |\n\nThe50 new assertions were frozen before collection/execution at **72cc80eb93b4ddf55bb473db40aa3640ceb1e5b4**. All three REDs remain literal failures; no candidate, native module, original test or frozen oracle was repaired, skipped or xfailed. [Full case matrix](04_FULL_CASE_MATRIX.json), [full real JUnit/stdout/observations](evidence), [preregistration](02_PREREGISTRATION.md).\n\n## Identity and independence\n\nReview target **154a4dd5615d47f014ca90eb1234b16e983bf5c1**; exact startup **8ee67a94ed9617cd013e1c1f335e6d45362b2a9c**. The direct reviewer remote matched that seal before work, and the target remote still matched154a4dd at the return check. The reviewer is independent of C0P's OpenCode author and did not implement/review E06 or GF1. This chat previously conducted unrelated MS4 review; that is disclosed rather than claiming a never-used conversation. The C0I checkout/runtime is newly isolated and reconstructed from Git, not a reused C0P/MS4 runtime.\n\nOne user-selected Codex/GPT-6 High reviewer performed the whole review. Both commission files, exact-parent HQ320 and Sorok00/00A–00D govern. The six mandatory Sorok files were verified byte-identical to their already completed full readings in this chat. Current Pyat R22 primary decision **ecb5de4f5f90015e5f10b9f3b12e76ee145fee58** and canonical progress **revision6 at646ac11ab8f1d49d56464c484ec5e0f4eba8f34e** were freshly read. Earlier R20/revision5 pending-review language is historical.\n\nAll **29/29 staged native source modules** were independently imported and checked using actual `module.__file__`, true binary Git blob preimages and SHA-256 against their exact E03/E04T source commits. The two empty namespace package files created by staging are explicitly not counted as native modules. The executed nonparent and scenario functions are different genuine implementations: blobs **2181b832d3c4376d4b9428e13f4354f273be8f32** and **b7e568166cd277c1ba127374ea1a350d1b3841a2**. [Native29 import proof](06_NATIVE29_ACTUAL_IMPORT_IDENTITIES.json).\n\n## Positive science that survives revision\n\nThe exact original named calls reproduce both published native receipt hashes, not merely similar outputs:\n\n- NONPARENT institutional/apprenticeship: **52e10a2fd0ce21b30f535b2786d45d4bd88817f174caa006e5ba7f0589d851ec**.\n- Mother prospective scenario proposals S1/S2: **33251a740daff14a0920c4375b0b8577842cf812f5444e07b8313f5730fc3fde**.\n- Both bind selected snapshot **faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c**.\n\nThe nonparent routes are training/civil ELIGIBLE and exit WITHIN_MODELED_BUDGET at budget5. Both mother scenarios are FEASIBLE_MODELED_PREMISE. Route probability and scenario selection weights remain null. These are generic modeled institutional/civil feasibility reads, not an account of an actual mother, partner, conception or birth.\n\nThe real N10E→C1→F8 chain preserves forward denominators **32→16→8**, target counts **18→10→6** and minority counts **14→6→2**. Every positive step retains native source/release/risk, condition order, witness, evidence/provenance, model and uncertainty. Genuine support loss gives **ZERO_SUPPORT**, denominator0, cells[], geometryNone and no evidence; it is not an observed negative cell or a renormalized positive. Neither case invents a person probability.\n\nIndependent clock rectangles distinguish effective scene time from publication knowledge: a 2027 scene with 2026 knowledge retains original training eligibility; a 2026 scene with later knowledge still retains original; both later clocks select the published revision and training becomes false. Prepublication/out-of-effective-range reads retain typed partial/unknown outcomes. This is a finite two-clock candidate test, not proof that the SC0 four-clock envelope is implemented.\n\nRevoking training access removes its dependent route/feasibility while civil and empirical results remain unchanged. Empirical revocation yields REVOKED/no steps while structural channels remain. Actual native query-grant withdrawal, warm and cold, produces no fresh cells/evidence. Rehashed cached count/conditioner/permission/evidence/uncertainty substitutions and foreign release/model/rowhash/self-rehashed snapshot substitutions refuse. Changing the legitimate source version changes terminal support6→7 with new source/release identity while structural values remain invariant. Unsupported dyad/household/role requests refuse, and mother inputs smuggling father/partner/household/weight/psychology fail before service reads. [Actual named receipts, native traces and contrasting AS_OF receipts](evidence/positive/native_named_receipts.json).\n\n**Direction correction:** the native fixture already separately grants reverse **A|Y**, which executes **18/29**, distinct from forward **Y|A18/32**. Removing that reverse permit refuses A|Y while forward remains valid. SC0's reverse-without-new-authority HOLD is preserved; C0P's statement that reverse is never computed anywhere is too broad. Both probabilities describe the synthetic respondent source, not an individual, household or causal law.\n",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# C0I independent generic world port review"
+        },
+        {
+          "line": 3,
+          "text": "**REVIEW_REVISE — finite sourcefree two-contract interface incomplete; NO_ADOPTION.** The native world/possibility paths and both genuine named consumers reproduce. C0P's facade does not yet establish the claimed literal SC0 two-contract transport. Preserve the native positives; revise the owned facade/contract binding and its overbroad interface statements before claiming that result."
+        },
+        {
+          "line": 8,
+          "text": "| New independently preregistered court | **47** | **3** | 0 | 0 |"
+        },
+        {
+          "line": 10,
+          "text": "The50 new assertions were frozen before collection/execution at **72cc80eb93b4ddf55bb473db40aa3640ceb1e5b4**. All three REDs remain literal failures; no candidate, native module, original test or frozen oracle was repaired, skipped or xfailed. [Full case matrix](04_FULL_CASE_MATRIX.json), [full real JUnit/stdout/observations](evidence), [preregistration](02_PREREGISTRATION.md)."
+        },
+        {
+          "line": 14,
+          "text": "Review target **154a4dd5615d47f014ca90eb1234b16e983bf5c1**; exact startup **8ee67a94ed9617cd013e1c1f335e6d45362b2a9c**. The direct reviewer remote matched that seal before work, and the target remote still matched154a4dd at the return check. The reviewer is independent of C0P's OpenCode author and did not implement/review E06 or GF1. This chat previously conducted unrelated MS4 review; that is disclosed rather than claiming a never-used conversation. The C0I checkout/runtime is newly isolated and reconstructed from Git, not a reused C0P/MS4 runtime."
+        },
+        {
+          "line": 18,
+          "text": "All **29/29 staged native source modules** were independently imported and checked using actual `module.__file__`, true binary Git blob preimages and SHA-256 against their exact E03/E04T source commits. The two empty namespace package files created by staging are explicitly not counted as native modules. The executed nonparent and scenario functions are different genuine implementations: blobs **2181b832d3c4376d4b9428e13f4354f273be8f32** and **b7e568166cd277c1ba127374ea1a350d1b3841a2**. [Native29 import proof](06_NATIVE29_ACTUAL_IMPORT_IDENTITIES.json)."
+        },
+        {
+          "line": 22,
+          "text": "The exact original named calls reproduce both published native receipt hashes, not merely similar outputs:"
+        },
+        {
+          "line": 30,
+          "text": "The real N10E→C1→F8 chain preserves forward denominators **32→16→8**, target counts **18→10→6** and minority counts **14→6→2**. Every positive step retains native source/release/risk, condition order, witness, evidence/provenance, model and uncertainty. Genuine support loss gives **ZERO_SUPPORT**, denominator0, cells[], geometryNone and no evidence; it is not an observed negative cell or a renormalized positive. Neither case invents a person probability."
+        },
+        {
+          "line": 32,
+          "text": "Independent clock rectangles distinguish effective scene time from publication knowledge: a 2027 scene with 2026 knowledge retains original training eligibility; a 2026 scene with later knowledge still retains original; both later clocks select the published revision and training becomes false. Prepublication/out-of-effective-range reads retain typed partial/unknown outcomes. This is a finite two-clock candidate test, not proof that the SC0 four-clock envelope is implemented."
+        },
+        {
+          "line": 34,
+          "text": "Revoking training access removes its dependent route/feasibility while civil and empirical results remain unchanged. Empirical revocation yields REVOKED/no steps while structural channels remain. Actual native query-grant withdrawal, warm and cold, produces no fresh cells/evidence. Rehashed cached count/conditioner/permission/evidence/uncertainty substitutions and foreign release/model/rowhash/self-rehashed snapshot substitutions refuse. Changing the legitimate source version changes terminal support6→7 with new source/release identity while structural values remain invariant. Unsupported dyad/household/role requests refuse, and mother inputs smuggling father/partner/household/weight/psychology fail before service reads. [Actual named receipts, native traces and contrasting AS_OF receipts](evidence/positive/native_named_receipts.json)."
+        },
+        {
+          "line": 36,
+          "text": "**Direction correction:** the native fixture already separately grants reverse **A|Y**, which executes **18/29**, distinct from forward **Y|A18/32**. Removing that reverse permit refuses A|Y while forward remains valid. SC0's reverse-without-new-authority HOLD is preserved; C0P's statement that reverse is never computed anywhere is too broad. Both probabilities describe the synthetic respondent source, not an individual, household or causal law."
+        },
+        {
+          "line": 40,
+          "text": "**R1 — runtime/source binding.** The facade hardcodes `/tmp/c0p-runtime` for both import precedence and producer-blob reads. In the fresh isolated runtime this differs from the actual imported module tree. The frozen default-binding test fails. Other facade tests explicitly relocate only `RUNTIME` to the verified import tree after byte-exact loading; they do not turn default portability green. There was no read of an older temporary runtime. A portable bootstrap/configuration or actual imported-module path should determine provenance."
+        },
+        {
+          "line": 42,
+          "text": "**R2 — two clients are not two exported owner contracts.** Both `consume_nonparent` and `consume_conception_proposals` emit `contract='N9'`. `CONTRACT_N10='N10E_N10W'` is declared but no returned facade receipt uses it. Their `owner_receipt_hash` values are hashes of two downstream consumer materials, not evidence that the separate world-selection and ordered-possibility transport receipts were exposed. Native N9 selection and N10E evidence still exist internally; the failure concerns their claimed external contract/owner binding, not disappearance of all native evidence."
+        },
+        {
+          "line": 44,
+          "text": "**R3 — claimed literal SC0 round-trip absent.** The facade receipt omits16 required WorldReceipt fields, including clock, demand, native scopes, selection, dependency closure, refresh and issuer/use. Its contract label is not `GENERIC_WORLD_SELECTION@1.0.0`; there is no demonstrated separate `GENERIC_ORDERED_POSSIBILITY@1.0.0` round-trip. Distinct client hashes and nested evidence do not supply that envelope. SC0 is the commissioned proposed acceptance target, not newly adopted Pyat semantic law. R2/R3 are related manifestations of an incomplete transport claim, not two independent failures of the underlying empirical estimator."
+        },
+        {
+          "line": 46,
+          "text": "The source-only facade performs no new numerical estimation; its relocated path preserves the exact native consumer hashes and source identities. That positive finding does not cure the three REDs. [Scoped findings and next edge](07_FINDINGS_AND_OWNER_NEXT_EDGE.md)."
+        },
+        {
+          "line": 50,
+          "text": "**Full K9 provider swap: NOT_RUN. Full K10 upstream28-mutation court: NOT_RUN.** C0P uses a different native fixture (58 synthetic respondents and 2026–2027 modeled fields), not the frozen SC0 municipal2008/60-row dense fixture. Reading the oracle JSON and asserting four strings is not executing four mutations. The new C0I cases are genuine native consumer-boundary tests, explicitly mapped as PARTIAL or NOT_RUN for each inherited case; they do not upgrade full K9/K10. The minimum future comparator can be an independently encoded, owner-approved transport/read adapter over the same native receipts, preserving all semantic fields and both clients, without a rival estimator or new owner. It was not invented here. [Every-case ledger](05_K9_K10_EXECUTION_LEDGER.json)."
+        },
+        {
+          "line": 52,
+          "text": "**E06 import discrepancy:** reproduced against the C0P29 closure (`e04t_empirical` missing). The broader claim that the modules resolve nowhere in reachable Git is false. Exact declared source preimages exist for E04T alias **2fdae6e07d72b5840d437f130751e2e2ef66dd33**, E05R adapter **690790e81854cde363643edc64946ddc63c58dbf**, and qualified two-field reader **03eb46efccadd6880cb34b2e2ac609ffc9b16c59**. E06's own stage manifest names their source commits/paths. The final E06 bridge equals C0P's frozen earlier bridge byte-for-byte. C0P's49 H5 probes a bare reader name rather than the actual qualified import and does not test the complete E06 staging contract."
+        },
+        {
+          "line": 54,
+          "text": "**R22 E06I:** Pyat now accepts `SOURCEFREE_NONINSTALLING_JOINED_BRIDGE_METHOD_ONLY`, on independent E06I48/48 plus author40/40 regression at **b3ebd8a0ce49ba2b96e1adae5cff3f65a90b17a1**. Those exact JUnit artifacts and primary source/import proof were examined as external evidence, not counted as fresh C0I execution or an installation. Carry the same-ref integrity-error label, warm/cold refusal-label variation, ambient runtime-authority fallback, and nondurable synthetic revocation residuals."
+        },
+        {
+          "line": 56,
+          "text": "**GF1I:** R22 confirms a real missing `gf1_pair_support_consumer` artifact at candidate **9f4a23cef1482e0a81afb1e7a65df90879931465**. C0I independently searched its full tree, checked the exact unresolved source imports and reproduced the isolated missing-name import. GF1I's19 passing relation tests at **c6a55f0dd5b327c40d64f96e0705ab5485559e90** do not make original44 collection or separation_class/support_vectors consumer outputs reviewable. Its post-observation2→3 changed-relations oracle correction remains attached. C0I did not recreate that consumer or duplicate Pyat's full74-closure/44-collection assignment. E06I, GF1I and XSP remain distinct Pyat assignments. [Pyat interface packet](08_PYAT_INTERFACE_PACKET.json), [exact primary/source/API audit](evidence/pyat/source_api_audit.json)."
+        },
+        {
+          "line": 58,
+          "text": "**E03 correction independently confirmed:** the progressive module's real E03 Git preimage is **84d404147547767be8ecd4b6e1541f5fa3a8c8a2**. A missing macOS `timeout` command is an ENV failure, never a negative reachability result. C0P's29 closure has two native source commits, E03 and E04T; its discrepancy packet's inconsistent “three commits” wording is not the actual verified ledger."
+        },
+        {
+          "line": 62,
+          "text": "At the tested finite synthetic grain the native value-bearing behavior is F3. The generic two-contract interface remains incomplete; full K9/K10, general world fidelity, source/issuer rights, N9/N10W/OC05 installation, all35/N11/N12, generated actors and human/psychological claims remain unproved or ungranted. No new world estimator, parent, original survey data, model call, helper, protected code change or semantic adoption occurred."
+        },
+        {
+          "line": 64,
+          "text": "Only `WORKER_RETURNS/SOROK-R3-HQ320-C0I-C0P-INDEPENDENT-R1/` changes. [Sanitized00D passport](environment_passport_delta.json), [scope/grounding receipt](10_GROUNDING_AND_REQUIREMENT_AUDIT.json), [reproduction](14_REPRODUCTION.md) and [publication custody](16_REMOTE_CONTENT_VERIFICATION.json) accompany the return. HQ owns the next decision. A focused C0P-owned transport repair may preserve all reproduced native positives; any new Pyat producer/use right requires its competent owner. This reviewer starts no new assignment and issues no law."
+        }
+      ],
+      "referenced_shas": [
+        "72cc80eb93b4ddf55bb473db40aa3640ceb1e5b4",
+        "154a4dd5615d47f014ca90eb1234b16e983bf5c1",
+        "8ee67a94ed9617cd013e1c1f335e6d45362b2a9c",
+        "ecb5de4f5f90015e5f10b9f3b12e76ee145fee58",
+        "2181b832d3c4376d4b9428e13f4354f273be8f32",
+        "b7e568166cd277c1ba127374ea1a350d1b3841a2",
+        "2fdae6e07d72b5840d437f130751e2e2ef66dd33",
+        "690790e81854cde363643edc64946ddc63c58dbf",
+        "03eb46efccadd6880cb34b2e2ac609ffc9b16c59",
+        "b3ebd8a0ce49ba2b96e1adae5cff3f65a90b17a1",
+        "9f4a23cef1482e0a81afb1e7a65df90879931465",
+        "c6a55f0dd5b327c40d64f96e0705ab5485559e90",
+        "84d404147547767be8ecd4b6e1541f5fa3a8c8a2"
+      ],
+      "reported_disposition": null
+    },
+    {
+      "index": 53,
+      "name": "agent/reviewer-sorok-r3-hq320-out13-out12-multiwriter-independent-r1",
+      "pinned_sha": "9b4392f86d942ba12eddc31c5b9ae33ba309597c",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 1,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ320-OUT13-OUT12-MULTIWRITER-INDEPENDENT-R1/01_REMOTE_VERIFICATION.json"
+      ],
+      "code_paths": [],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ320-OUT13-OUT12-MULTIWRITER-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "8e3aaf022857a4d0fd9d5d543b7bc9bb12de0c52",
+        "url": "https://github.com/maidiu/rawlsing/blob/9b4392f86d942ba12eddc31c5b9ae33ba309597c/WORKER_RETURNS/SOROK-R3-HQ320-OUT13-OUT12-MULTIWRITER-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 142
+      },
+      "review_evidence": "# HQ320 OUT13 — INDEPENDENT MULTIWRITER TRANSACTION COURT\n\n## Verdict\n\n# `REVIEW_REVISE_AT_SOURCEFREE_SCOPED_MULTIWRITER_GRAIN`\n\nOUT12's mechanism **works at the tested cooperating-writer grain**, and its nine\nauthor tests reproduce unedited. But two structural defects in the candidate's\nintegrity model are **demonstrated, not theoretical**, and one evidentiary label\noverstates its method. The candidate should not be accepted as a safety property\nuntil the version-metadata design is fixed.\n\n| Suite | Result |\n|---|---|\n| Original 272 unchanged | **270 PASS / 2 historical REDs** (both preserved) |\n| OUT12 nine author tests, unedited | **9 passed** |\n| New OUT13 hostile court | **23 passed** |\n\n---\n\n## 1. MANDATORY INDEPENDENCE DISCLOSURE\n\nI must not bury this. **In an earlier session of this same conversation I authored\nthe OUT9 return** that produced the accepted single-writer source reviewed here\n(`fd58957f`, `outbox_prototype.py` blob `331840768…`).\n\n- **OUT12 authorship independence: intact.** I have never authored, edited or run OUT12.\n- **Baseline-reviewer independence: COMPROMISED.** I reviewed my own accepted baseline.\n\nThis is an **HQ-adjudicable defect that I do not resolve myself.** Mitigation: both\nsources are staged byte-exact and re-verified against their own commits, and no\naccepted or candidate source was edited, so a fully independent reviewer can\nreproduce every number here.\n\n## 2. My own error, disclosed and corrected\n\nMy first staging placed OUT9 and OUT12 in **separate directories**. OUT12's court",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# HQ320 OUT13 — INDEPENDENT MULTIWRITER TRANSACTION COURT"
+        },
+        {
+          "line": 3,
+          "text": "## Verdict"
+        },
+        {
+          "line": 5,
+          "text": "# `REVIEW_REVISE_AT_SOURCEFREE_SCOPED_MULTIWRITER_GRAIN`"
+        },
+        {
+          "line": 7,
+          "text": "OUT12's mechanism **works at the tested cooperating-writer grain**, and its nine"
+        },
+        {
+          "line": 15,
+          "text": "| Original 272 unchanged | **270 PASS / 2 historical REDs** (both preserved) |"
+        },
+        {
+          "line": 23,
+          "text": "I must not bury this. **In an earlier session of this same conversation I authored"
+        },
+        {
+          "line": 27,
+          "text": "- **OUT12 authorship independence: intact.** I have never authored, edited or run OUT12."
+        },
+        {
+          "line": 32,
+          "text": "accepted or candidate source was edited, so a fully independent reviewer can"
+        },
+        {
+          "line": 41,
+          "text": "OUT12 is **9/9**. I report this because an independent reader deserves to know the"
+        },
+        {
+          "line": 44,
+          "text": "## 3. What genuinely holds"
+        },
+        {
+          "line": 52,
+          "text": "**HP9 cold recovery:** interruption before rename leaves prior state **byte-identical**;"
+        },
+        {
+          "line": 55,
+          "text": "**HP5 starvation:** an external lock holder produces a typed `JOURNAL_LOCK_TIMEOUT`,"
+        },
+        {
+          "line": 71,
+          "text": "   corrupted version silently becomes **0**, and a holder expecting version 0 then"
+        },
+        {
+          "line": 77,
+          "text": "metadata**. Its monotone-version guarantee holds only against *cooperating* writers"
+        },
+        {
+          "line": 81,
+          "text": "## 5. DEFECT 2 — a safe wrapper does not make the original Journal safe (HP6)"
+        },
+        {
+          "line": 101,
+          "text": "OUT12 records C7 as **\"real SIGKILL\"** with **`rc=79`**. I measured it directly:"
+        },
+        {
+          "line": 105,
+          "text": "I preserve OUT12's original result and adjudicate the limit separately: `os._exit`"
+        },
+        {
+          "line": 108,
+          "text": "signal was delivered**, and the label claims more than was executed. The honest"
+        },
+        {
+          "line": 124,
+          "text": "## 9. Required repairs before any acceptance"
+        },
+        {
+          "line": 135,
+          "text": "   authorized writer is *required* to use it."
+        },
+        {
+          "line": 142,
+          "text": "historical RED was suppressed, xfailed or relabelled."
+        }
+      ],
+      "referenced_shas": [],
+      "reported_disposition": null
+    },
+    {
+      "index": 54,
+      "name": "agent/reviewer-sorok-v2-hq322-g14-g13-science-independent-r1",
+      "pinned_sha": "d174ec79f561660a02a254cf9b7582595b43e215",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 53,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/.gitignore",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/01_CASE_MATRIX.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/02_ORIGINAL_17_REDS.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/03_SEVEN_FAMILY_SCIENCE.md",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/artifact_manifest.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/audit_packet.py",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/custody/changed_paths.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/custody/module_preimages_and_imports.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/custody/publication_custody.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/custody/runtime_probe.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/custody/staged_objects.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/environment_passport_delta.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/audit_commands.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/audit_historical.txt",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/audit_target.txt",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/candidate_boundary.txt",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/candidate_boundary.xml",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g11.txt",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g11.xml",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g12_controls.txt",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g12_controls.xml",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g12_literal.txt",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g12_literal.xml",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g12_supplemental.txt",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g12_supplemental.xml",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g13_author.txt",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g13_author.xml",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g13_postrepair.txt",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g13_postrepair.xml",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g14_observations.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g14_science.txt",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g14_science.xml",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/generated_historical/full_replay_audit.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/generated_historical/sgi1_actual.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/generated_historical/sgi1_replay.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/generated_target/actual_endpoint_payload_mutation.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/generated_target/full_replay_audit.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/generated_target/g12_observations.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/generated_target/sgi1_actual.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/generated_target/sgi1_replay.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/generated_target/supplemental_actor_identity.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/generated_target/supplemental_asymmetry.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/generated_target/supplemental_empty_continuation.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/generated_target/supplemental_entropy_rejection.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/generated_target/supplemental_no_witness.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/reproduction.json",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/sgi1_historical.txt",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/sgi1_historical.xml",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/sgi1_target.txt"
+      ],
+      "code_paths": [
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/audit_packet.py",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/review_runner.py",
+        "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/test_g14_science.py"
+      ],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/00_RETURN.md",
+        "blob": "78a0ae307b94d45042aa67a7d03832c4733a6916",
+        "url": "https://github.com/maidiu/rawlsing/blob/d174ec79f561660a02a254cf9b7582595b43e215/WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/00_RETURN.md",
+        "lines": 165
+      },
+      "review_evidence": "# G14 independent genealogy science court\n\n**Disposition: REVIEW_REVISE.** G13 establishes useful source-free graph validation,\nendpoint-claim refusal and payload-binding mechanisms at a bounded fixture grain.\nIt does not establish independent-person development or causally grounded child\ndevelopment. The independent court finds remaining implementation defects as well\nas scientific and authority limits. HQ owns intake and any adoption decision.\n\nRepository: `maidiu/rawlsing` (private). Continued existing branch:\n`agent/reviewer-sorok-v2-hq322-g14-g13-science-independent-r1`.\nExact startup: `f4e0d218997777d7975db9f35e7cfde9825f3b5f`.\nExact reviewed G13: `47bca2a56d34ed37186a436e7490cbaa417bfe5c`.\nStartup was clean and directly remote-verified; target is an ancestor of startup.\nThis session did not author G13, SGI1, G11 or G12, issue ADP015/020, or act as HQ,\nbiology owner or actor owner. Review and all execution used one local Codex agent;\nno helper, harness/model switch or second genealogy lane was launched.\n\n## Executed courts\n\n| Court | PASS | RED | ERROR / SKIP |\n|---|---:|---:|---:|\n| SGI1 against G13 | 21 | 4 | 0 |\n| G11 baseline | 25 | 0 | 0 |\n| G12 characterization/native controls | 13 | 12 | 0 |\n| G12 literal contract | 11 | 1 | 0 |\n| G12 supplemental | 6 | 0 | 0 |\n| Concrete endpoint-payload mutation | 1 | 0 | 0 |\n| G13 author court | 59 | 0 | 0 |\n| G13 postrepair original court | 28 | 0 | 0 |\n| **G13 target total** | **164** | **17** | **0** |\n| Separate original SGI1 epoch | 25 | 0 | 0 |\n| **Independent G14** | **40** | **27** | **0** |\n\nThe 181 is **94 inherited pytest cases plus 87 author cases**. SGI1's 98 atomic\npredicates are inside its 24 cases; its 25th pytest row checks denominators/offline\nexecution. G13's 28 author checks overlap those cases. The separate historical\nepoch is a control, not 25 additional independent scientific discoveries. The 27",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# G14 independent genealogy science court"
+        },
+        {
+          "line": 3,
+          "text": "**Disposition: REVIEW_REVISE.** G13 establishes useful source-free graph validation,"
+        },
+        {
+          "line": 5,
+          "text": "It does not establish independent-person development or causally grounded child"
+        },
+        {
+          "line": 6,
+          "text": "development. The independent court finds remaining implementation defects as well"
+        },
+        {
+          "line": 10,
+          "text": "`agent/reviewer-sorok-v2-hq322-g14-g13-science-independent-r1`."
+        },
+        {
+          "line": 13,
+          "text": "Startup was clean and directly remote-verified; target is an ancestor of startup."
+        },
+        {
+          "line": 20,
+          "text": "| Court | PASS | RED | ERROR / SKIP |"
+        },
+        {
+          "line": 24,
+          "text": "| G12 characterization/native controls | 13 | 12 | 0 |"
+        },
+        {
+          "line": 29,
+          "text": "| G13 postrepair original court | 28 | 0 | 0 |"
+        },
+        {
+          "line": 30,
+          "text": "| **G13 target total** | **164** | **17** | **0** |"
+        },
+        {
+          "line": 31,
+          "text": "| Separate original SGI1 epoch | 25 | 0 | 0 |"
+        },
+        {
+          "line": 32,
+          "text": "| **Independent G14** | **40** | **27** | **0** |"
+        },
+        {
+          "line": 35,
+          "text": "predicates are inside its 24 cases; its 25th pytest row checks denominators/offline"
+        },
+        {
+          "line": 37,
+          "text": "epoch is a control, not 25 additional independent scientific discoveries. The 27"
+        },
+        {
+          "line": 38,
+          "text": "new RED assertions overlap seven families; they are not 27 independent mechanisms."
+        },
+        {
+          "line": 41,
+          "text": "the independent assertions. [execution/](execution/) contains executed JUnit,"
+        },
+        {
+          "line": 45,
+          "text": "## All seventeen historical REDs retained and adjudicated"
+        },
+        {
+          "line": 47,
+          "text": "[02_ORIGINAL_17_REDS.json](02_ORIGINAL_17_REDS.json) verifies that all 17 failing"
+        },
+        {
+          "line": 52,
+          "text": "  probe acceptance or unchanged tampered-payload identity). Their failure follows"
+        },
+        {
+          "line": 53,
+          "text": "  actual changed behavior, independently checked by G14 severances. These are"
+        },
+        {
+          "line": 56,
+          "text": "* One source-manifest test pins the unrepaired bytes and stops at its first"
+        },
+        {
+          "line": 57,
+          "text": "  mismatch. G14 independently verifies **all 14** actual imported modules against"
+        },
+        {
+          "line": 58,
+          "text": "  the exact target: six changed, eight unchanged, plus **104** historical/native"
+        },
+        {
+          "line": 59,
+          "text": "  source preimages. The original failure remains RED; no oracle was re-pinned."
+        },
+        {
+          "line": 62,
+          "text": "  Its failure says nothing about the live sampler. G14 independently tests live"
+        },
+        {
+          "line": 65,
+          "text": "  and DESIRED-WOUND-COUNTERFACTUAL. The exact 24 case IDs and 98 predicate verdicts"
+        },
+        {
+          "line": 69,
+          "text": "Both forensic audits execute. Historical SGI1 reproduces all 24 original observed"
+        },
+        {
+          "line": 71,
+          "text": "98/98 predicates. Against G13, 16/24 observed states and 20/24 fingerprints match;"
+        },
+        {
+          "line": 73,
+          "text": "match only 2/24 in this run and target receipts 0/24, because ledger/cost evidence"
+        },
+        {
+          "line": 76,
+          "text": "(seven historical calls, three declared interventions) replay exactly. Their"
+        },
+        {
+          "line": 83,
+          "text": "remaining counterexamples, scope and the required next repair edges. Principal"
+        },
+        {
+          "line": 86,
+          "text": "representatives under duplicate-key permutation; selected endpoint predicates"
+        },
+        {
+          "line": 90,
+          "text": "Actual dependency efficacy is partial: removing domain events or breaking declared"
+        },
+        {
+          "line": 93,
+          "text": "a nonempty denial string, or severing paternal projects still leaves the tested"
+        },
+        {
+          "line": 100,
+          "text": "detection **under the tested unique-candidate/fixture assumptions**. Whole-person"
+        },
+        {
+          "line": 107,
+          "text": "measured population rates. No prior, likelihood, dyadic risk set, exhaustive"
+        },
+        {
+          "line": 111,
+          "text": "## Permission and custody holds"
+        },
+        {
+          "line": 115,
+          "text": "diagnostic inputs, not invented/admitted people. No model transport, original"
+        },
+        {
+          "line": 116,
+          "text": "respondent/source execution, biological occurrence or native actor creation ran."
+        },
+        {
+          "line": 125,
+          "text": "* **Population/source science:** calibration, original data, reversed/joint queries,"
+        },
+        {
+          "line": 129,
+          "text": "* **Native development:** ADP007 initialization, forward developmental owners,"
+        },
+        {
+          "line": 132,
+          "text": "  denials reproduced; neither is native genealogy permission."
+        },
+        {
+          "line": 140,
+          "text": "python3 -B WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/review_runner.py"
+        },
+        {
+          "line": 141,
+          "text": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -B -m pytest -q -s -p no:cacheprovider --tb=short WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/test_g14_science.py --junitxml=WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/execution/g14_science.xml"
+        },
+        {
+          "line": 142,
+          "text": "python3 -B WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/audit_packet.py"
+        },
+        {
+          "line": 145,
+          "text": "The middle command must exit 1 with 27 RED / 40 PASS against this target. The first"
+        },
+        {
+          "line": 147,
+          "text": "Git-object staging is local/ignored and can be reconstructed from the target;"
+        },
+        {
+          "line": 155,
+          "text": "An initial packaging audit encountered five historical blob-only authority pins;"
+        },
+        {
+          "line": 156,
+          "text": "the corrected audit verifies their blob objects and target-commit custody while"
+        },
+        {
+          "line": 157,
+          "text": "retaining unknown original issuer commit/path. Missing nested authority evidence"
+        },
+        {
+          "line": 160,
+          "text": "represented as an independently precommitted blind preregistration."
+        },
+        {
+          "line": 163,
+          "text": "self-reference cycle. This is a completed independent review return requiring"
+        }
+      ],
+      "referenced_shas": [
+        "f4e0d218997777d7975db9f35e7cfde9825f3b5f",
+        "47bca2a56d34ed37186a436e7490cbaa417bfe5c"
+      ],
+      "reported_disposition": "Disposition: REVIEW_REVISE.** G13 establishes useful source-free graph validation,",
+      "code_inspection": {
+        "path": "WORKER_RETURNS/SOROK-V2-HQ322-G14-G13-INDEPENDENT-COURT-R1/audit_packet.py",
+        "blob": "6616855a7f094bc4ddc059bb30fb08a758869aaa",
+        "bytes": 8772,
+        "functions": [
+          "def blob(b): return hashlib.sha1(b'blob '+str(len(b)).encode()+b'\\0'+b).hexdigest()",
+          "def read(p): return json.loads((ROOT/p).read_text())",
+          "def counts(cases): return dict(collections.Counter(c['status'] for c in cases))",
+          "def main():"
+        ],
+        "sample": "\"\"\"Recompute custody and per-case matrices after the independent execution.\n\nThe exact source staging remains local and is reproducible with review_runner.py;\nonly new evidence is published. All provenance paths are repository-relative.\n\"\"\"\nfrom pathlib import Path\nimport ast, collections, hashlib, json, os, re, shutil, subprocess, sys\nimport xml.etree.ElementTree as ET\nfrom review_runner import ROOT, REPO, TARGET, G13, dump, git\n\nSTART='f4e0d218997777d7975db9f35e7cfde9825f3b5f'\ndef blob(b): return hashlib.sha1(b'blob '+str(len(b)).encode()+b'\\0'+b).hexdigest()\ndef read(p): return json.loads((ROOT/p).read_text())\ndef counts(cases): return dict(collections.Counter(c['status'] for c in cases))\n\ndef main():\n    obj=read('custody/staged_objects.json')\n    mismatches=[]\n    for row in obj:\n        p=ROOT/row['staged']\n        if not p.exists() or blob(p.read_bytes())!=row['blob_sha1']: mismatches.append(row['staged'])\n    assert not mismatches,mismatches\n    imported=read('execution/g14_observations.json')['imports']\n    authoritative=json.loads(git('show',TARGET+':'+G13+'06_CUSTODY/imported_blob_manifest.json'))['repaired_lab_modules']\n    modules=[]\n    source_manifest=read('reproduction/03_POSTREPAIR_COURT/source_manifest.json')\n    for row in authoritative:\n        module=row['module']\n        p=G13+'02_REPAIRED_LAB/'+module\n        b=git('show',TARGET+':'+p)\n        imp=next(x for x in imported if x['module_file'].endswith('/'+module))\n        orig=next(x for x in source_manifest if x['staged_path'].endswith('/'+module))\n        original=git('show',orig['commit']+':'+orig['"
+      }
+    }
+  ]
+}
