@@ -1,0 +1,41 @@
+name: Sorok C9-R3B Portable Sourcefree Recovery (PARTIAL)
+
+on:
+  pull_request:
+    paths:
+      - 'SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/**'
+      - 'SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER/**'
+      - '.github/workflows/sorok-c9r3b-recovery-sourcefree.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sourcefree-portable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install bounded sourcefree test dependency
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Exact C9 original implementation and provenance (no source execution claim)
+        run: |
+          python SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/verify_recovered_source.py
+          python SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER/verify_recovered_reader.py
+      - name: Writer sourcefree author tests (conditional original S36/C12 cases NOT accepted)
+        run: |
+          python SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/verify_recovered_source.py --pytest --allow-skips-for-recon-only
+      - name: Reader sourcefree actor, dry sequence and migration (historical Mac bound source HELD)
+        run: |
+          python SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER/verify_recovered_reader.py --portable-tests
+
+# A green run certifies only PORTABLE SOURCEFREE tests at the declared,
+# intentionally incomplete S36/C12/original-backbone-source test scope.
+# Do not interpret this job as native C9/ADP/CAN authority, original source,
+# actual performed E2, production C12, or full same-consumer acceptance.
