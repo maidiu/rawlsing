@@ -1,0 +1,38 @@
+name: Pyat post-regular-PREMAIN branch-date cohort (read-only)
+on:
+  pull_request:
+    paths:
+      - 'PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/09_POST_PREMAIN_HEAD_DATE_SCOPE_EXTRACTOR.py'
+      - '.github/workflows/pyat-post-premain-scope-r1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ref-scope:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: tree:0
+          persist-credentials: true
+      - name: Read-only fetch ALL branch tip commits only (no source blobs)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -c protocol.version=2 fetch --no-tags --depth=1 --filter=tree:0 origin '+refs/heads/*:refs/remotes/origin/*'
+      - name: Construct candidate cohort since the last observed normal code integration
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/09_POST_PREMAIN_HEAD_DATE_SCOPE_EXTRACTOR.py \
+            --cutoff '2026-10-09T22:31:19Z' \
+            --cutoff-sha '79e0e74e14d8e09cc2f3af061aa178a149cb1674' \
+            --output post-premain-tip-date-cohort.json
+      - name: Retain exact branch-tip cohort evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: pyat-post-integration-head-date-census
+          path: post-premain-tip-date-cohort.json
+          retention-days: 45
