@@ -1,0 +1,172 @@
+{
+  "schema": "SOROK_HR1_CLAIM_COURT@1",
+  "candidate_exact_sha": "337896aa995d579e3525588b405d07216709ac15",
+  "reviewer_grade": "REVISE_PRECISE_DEFICIENCIES",
+  "scope": "Authenticated private GitHub documentary/static-code. No S2 rerun or native issuer.",
+  "claim_count": 16,
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "All nine immutable RC1 artifacts at author SHA",
+      "disposition": "ACCEPT_SCOPED_EXACT_CONTENT_IDENTITY",
+      "author_source": "RC1 08 lock@337896aa; payload eight specified Git blobs; 08 8ee301d9",
+      "independent_source": "GitHub fetch_file returned all 9 exact expected blob IDs; no moving author branch used",
+      "effect": "Valid fixed review corpus, no automatic science grade",
+      "required_gate": "No rewrite of original payload. A new author cut requires new review.",
+      "owner": "HR1 + incumbent"
+    },
+    {
+      "id": "C02",
+      "claim": "294 A98/B67/C69/D60 branch identities and pinned cuts",
+      "disposition": "ACCEPT_SCOPED_MANIFEST_ONLY",
+      "author_source": "RC1 01 blob54801fe0",
+      "independent_source": "Original A/B/C/D RETURNS/*/01_BRANCH_ROWS.json at ae31a41e,c1dab70f,231d5abe,c243ba12; independently compared 294 name+SHA+shard tuples: 0 mismatch",
+      "effect": "Names/cuts verified; raw full-tree diff contents are RC1-attributed S2, not rerun HR1",
+      "required_gate": "Retain raw uncapped diff for each promoted lineage, never promote names to acceptance",
+      "owner": "incumbent/source owner"
+    },
+    {
+      "id": "C03",
+      "claim": "All 294 uncapped raw diffs executed",
+      "disposition": "ATTRIBUTED_RC1_LOCAL_EXECUTION_NOT_RERUN",
+      "author_source": "RC1 01 full_tree_comparison and 07 exact command ledger",
+      "independent_source": "Browser has no authenticated original S2 worktree; source metadata and a risk-stratified code sample reviewed",
+      "effect": "Local Git raw-diff proof is attributed, not an HR1 independent executable finding",
+      "required_gate": "For disputed material code require exact raw diff and original tree source before adoption",
+      "owner": "engineering owner"
+    },
+    {
+      "id": "C04",
+      "claim": "67 original reviewer document custody",
+      "disposition": "ACCEPT_SCOPED_DOCUMENT_SHA_ONLY",
+      "author_source": "RC1 03 blob96906074",
+      "independent_source": "67 independent pinned reviewer_cut/document.path GitHub readbacks matched 67 indexed document.blob IDs",
+      "effect": "All documents exist at right exact cuts; not 67 independent test executions or all 67 target mappings proved",
+      "required_gate": "Resolve G17I OC5E M04; no commission/policy/instrument verdict promoted as tested-author source",
+      "owner": "original reviewers"
+    },
+    {
+      "id": "C05",
+      "claim": "Sorok08 R1 and fresh R2 equivalent acceptance",
+      "disposition": "REJECT_EQUIVALENCE_NOT_RC1_CLAIM",
+      "author_source": "RC1 03 identity_anomalies",
+      "independent_source": "R1 pinned blob1715511b at8fbf564, fresh R2 blob a574db23 at857dfed",
+      "effect": "Keep R1 REVISE distinct from later R2; no HQ right from source blob",
+      "required_gate": "Original authorized HQ/user succession and separate scope review",
+      "owner": "Sorok08 incumbent/user"
+    },
+    {
+      "id": "C06",
+      "claim": "R31J binds material B source before C8",
+      "disposition": "ACCEPT_SCOPED_SOURCEFREE_CALLPATH",
+      "author_source": "RC1 02 04 06",
+      "independent_source": "R31J pre_c9.py d56d81fd lines70-97; JOIN joined/session.py dc089428 lines57-119",
+      "effect": "Actual stage_world payload is built before inherited stage_c8, and JOIN invokes J case via evaluated and build_product",
+      "required_gate": "Demonstrate independently custodied other B source and nonretroactive actor A history, C8 same-assertion severance",
+      "owner": "R31J/C8/ADP"
+    },
+    {
+      "id": "C07",
+      "claim": "R31J independent native B life",
+      "disposition": "HOLD_NATIVE_B_INDEPENDENCE_AND_RETROACTIVE_SNAPSHOT",
+      "author_source": "RC1 02 & 06 explicitly disclaims native B",
+      "independent_source": "R31J scenarios.py7a24f9b6 TEST_ONLY_OWNER B; pre_c9.py d56d81fd lines16-25 mutates historical A snapshot using gm01.material_feasible_after",
+      "effect": "Stronger boundary: B is synthetic; A history contingent on already evaluated B future material feasibility; three-clocks process ordering not historical chronology",
+      "required_gate": "Frozen pre-event A snapshot, distinct signed/custodied B event, actor access and time bridge, cut/restore same C8 consumer",
+      "owner": "independent world/B + ADP/CAN/Pyat"
+    },
+    {
+      "id": "C08",
+      "claim": "BP2P4J performed E2 and later A2 consequence",
+      "disposition": "ACCEPT_SCOPED_ORIGINAL_TEST_ONLY_REVIEW_POSITIVE_ATTRIBUTED",
+      "author_source": "RC1 02 BP2P4J lineage",
+      "independent_source": "bp2p4/assertion.py e7bc26aa actual A2 completed_units==4; BP2P4JI 3212d716 blob39e42a12 lines63-104 confirms E2 vs omission and 7+3 severances",
+      "effect": "Preserve positive real performed TEST_ONLY E2; not just option, no native acquired practice",
+      "required_gate": "Preserve original evidence, rerun after any code change; source-qualified original A/T required",
+      "owner": "BP2P4J product + CAN"
+    },
+    {
+      "id": "C09",
+      "claim": "BP2P4J delivered C12 verifier coherent on episodes",
+      "disposition": "REVISE_EXACT_VERIFIER",
+      "author_source": "RC1 02 preserves reviewer REVISE",
+      "independent_source": "bp2p4/c12_verify.py b8e7cf39 excludes hash only; original BP2P4JI lines47-61 shows episode_id posthash metadata",
+      "effect": "Every valid episode hash fails delivered verifier though row intact; raw deletion/anchor residuals also held",
+      "required_gate": "Only original owner repair exact preimage and valid say row test, new independent review and trusted completeness witness",
+      "owner": "BP2P4J/BP4/C12"
+    },
+    {
+      "id": "C10",
+      "claim": "C9 reader pins exact writer and perception-aware C12",
+      "disposition": "ACCEPT_SCOPED_STATIC_VERSION_COMPATIBILITY",
+      "author_source": "RC1 04 & 02",
+      "independent_source": "actor_reader.py5ef6a278 lines31-55,71-78 explicitly requires 1e996 writer pins and 68b repaired hashes 872df999/7d046a5b",
+      "effect": "Identity-compatible exact source candidate; not production or scientific acceptance",
+      "required_gate": "Owner choose code cut, full reader/writer C12 dynamic tests and no-change HELD",
+      "owner": "C9/C12 + source issuers"
+    },
+    {
+      "id": "C11",
+      "claim": "Older JOIN-V7bf review transfers to changed 68b perception C12",
+      "disposition": "REJECT_REVIEW_TRANSFERENCE",
+      "author_source": "RC1 02 04 correctly denies",
+      "independent_source": "old7bf store blob69a58f43, new68b store blob c94cd131, distinct bytes and C12 schema; JOIN-V source scope not changed",
+      "effect": "Old acceptance restricted to old source cut; changed contract needs review",
+      "required_gate": "Reopen perception-prefix/cold source severance, fork atomicity and authority at selected new SHA",
+      "owner": "C12/JOIN owner"
+    },
+    {
+      "id": "C12",
+      "claim": "Rival C9 writers are identical duplicates",
+      "disposition": "REJECT_DUPLICATE_IDENTITY",
+      "author_source": "RC1 02 04 correctly reports different",
+      "independent_source": "C9 SQL isolated1e996 c9_actor_r3.py blob67f34f69 (~1910 lines) vs c0e5faa5 blob511e923c (~409)",
+      "effect": "Not equivalent source; must not choose by timestamp or path name",
+      "required_gate": "Owner decide schema and imported dependency closure, technical acceptance",
+      "owner": "C9 owner"
+    },
+    {
+      "id": "C13",
+      "claim": "327 receiver exact blob occurrences are 327 adopted capabilities",
+      "disposition": "REJECT_PHYSICAL_OCCURRENCE_AS_ADOPTION",
+      "author_source": "RC1 04 explicitly denies",
+      "independent_source": "M6 rawlsing_next/m6_actor_safe_expression.py blob74d9701c physically at PRE-MAIN299f; other occurrences inherited/tests",
+      "effect": "One physical alias can be accepted, not scientific ownership/readers",
+      "required_gate": "Exact source+consumer and owner adoption per promoted capability",
+      "owner": "PRE-MAIN/source owner"
+    },
+    {
+      "id": "C14",
+      "claim": "Outside-294 fully source-adjudicated enough for final order",
+      "disposition": "REVISE_OUTSIDE_ESTATE",
+      "author_source": "RC1 05 06 grade HOLD_ESTATE_OUTSIDE_294",
+      "independent_source": "168 heuristic + 2369 others name/metadata, 377 unselected significant tip hits, only three detailed hidden reads, 2366 unselected not detailed",
+      "effect": "Semantically consequential PFF G1/G2, typed ingress, Pyat P41 found; definitive fanin order impossible",
+      "required_gate": "Risk-order remaining source slots and fresh heads, compare real first consumer dependencies",
+      "owner": "PFF/Pyat/FieldForge/Sorok"
+    },
+    {
+      "id": "C15",
+      "claim": "Native Rule A/T, evaluated NO_CHANGE, SCI05, independent B and A5 established",
+      "disposition": "HOLD_ORIGINAL_SCIENCE_AND_PRODUCT",
+      "author_source": "RC1 00,06,08 explicitly withhold",
+      "independent_source": "Original CAN008/010/011 ADP and Pyat jurisdiction; only synthetic actor/world/test-only observed",
+      "effect": "No native psyche or human terminal user proof; absent Rule T != evaluated NO_CHANGE",
+      "required_gate": "Competent native owner issued source and first actual later E2 + blind A5",
+      "owner": "CAN/ADP/SCI05/Pyat/C11/A5"
+    },
+    {
+      "id": "C16",
+      "claim": "RC1's tentative R31J→JOIN→E first inheritance order is adequately compelled",
+      "disposition": "REVISE_ORDER_DISCRIMINATOR",
+      "author_source": "RC1 06 TENTATIVE_PLAN_HOLD",
+      "independent_source": "Retroactive prepare_life A snapshot, unqualified B plus PFF G1/G2 and typed ingress alternatives; BP2 has stronger independent performed-E2 but verifier RED",
+      "effect": "Potential lead, not unique adoptable first source; C9-only local optimum also inadequate",
+      "required_gate": "Compare alternative source/consumer dependencies on common actor/B/time/permission baseline; isolate owner decision",
+      "owner": "incumbent + original owners"
+    }
+  ],
+  "never_adopt_reviewed": [],
+  "native_scientific_issues_created": 0,
+  "sourcefree_positive_preserved": true
+}
