@@ -42,3 +42,7 @@
 **DELTA:** Real inherited reviewer evidence is now indexed and historical negatives are harder to launder; **SOURCE_EVIDENCE_DELTA**, no terminal native product or scientifically issued rule accepted.
 
 **Final bounded verdict:** `B67_BRANCH_AND_REVIEW_SOURCE_INVENTORY_COMPLETE__CODE_CUT_CONSUMER_CLOSURE_PARTIAL__PRESERVE_REDS__NO_NATIVE_OR_HQ_ADOPTION`.
+
+## Final 67-way PRE-MAIN compare addendum
+
+The source-cut investigation subsequently compared **every one of the 67 pinned reviewer commits** against historical PRE-MAIN `299f41e97a43c67be9cc76a79fa49b48f4e12e54` using GitHub commit ancestry. **65 are diverged; two are ahead; twenty comparison file lists hit the 300-file ceiling.** Full records: `10_PREMAIN_ANCESTRY_AND_DIFF.json` and each `01_BRANCH_ROWS.json` row. These comparisons prove branch ancestry and bound file-list coverage, **not** absence of implementation in PRE-MAIN, full code-tree equivalence or first actual consumer. An exact reviewer test blob is duplicated across the HQ301 RCP and HQ302 RCP2 historical heads (`7c21eccad788f812ddb60c378502c662a2527cb2`); this does not make their independent review conclusions interchangeable. `03_DUPLICATES_AND_SUPERSESSIONS.json` records the scoped blob match.
