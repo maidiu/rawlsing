@@ -1,0 +1,516 @@
+{
+  "schema": "SOROK_294_B_SOURCE_INSPECTION_BATCH_R1",
+  "rows": [
+    {
+      "index": 35,
+      "name": "agent/reviewer-sorok-r3-hq305-br3-synthetic-sensitivity-independent-r1",
+      "pinned_sha": "3551736293b81dfcec71d295424aedd923121a0f",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 9,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/01_FROZEN_REQUIREMENTS_AND_BLOB_IDENTITIES.json",
+        "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/02_EXECUTION_AND_CASE_LEDGER.json",
+        "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/03_STATISTICAL_AND_CUSTODY_CRITIQUE.json",
+        "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/04_INDEPENDENT_ATTACKS.json",
+        "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/05_ARTIFACT_MANIFEST.json",
+        "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/environment_passport_delta.json",
+        "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/repro/stage_br3_runtime.py",
+        "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/repro/test_br3_attacks.py"
+      ],
+      "code_paths": [
+        "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/repro/stage_br3_runtime.py",
+        "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/repro/test_br3_attacks.py"
+      ],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "40d6ad8a487f4bc40ae65c0851eff724d2f9a9bd",
+        "url": "https://github.com/maidiu/rawlsing/blob/3551736293b81dfcec71d295424aedd923121a0f/WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 122
+      },
+      "review_evidence": "# HQ305 BR3 — Independent R3 Synthetic Sensitivity Court\n\n**Verdict: REVIEW_PASS_SCOPED_R3_SYNTHETIC_SENSITIVITY**\n\nThe BL3 R3 assay correctly detects a deliberately scripted arm-aware synthetic\nresponse change under controlled read budgets, and correctly holds representation-blind,\nposition-only, metadata-only, menu-first, and ablation policies at zero. K3/K5/K6\nadversary detections work. This is sourcefree measurement/plumbing sensitivity\nevidence. It is NOT a behavioral treatment effect, LLM behavioral finding,\npsychological truth, model-use permission, oracle custody, or adoption.\n\n## Custody and independence\n\n- Repository: `maidiu/rawlsing` (private)\n- Branch: `agent/reviewer-sorok-r3-hq305-br3-synthetic-sensitivity-independent-r1`\n- Sealed startup: `4085cb26be27977c0ec9afc5fc1b7ef96f400029`\n- Candidate BL3: `10b507af06973657f2d772b636fb6fbd2d6aff36`\n- This reviewer is distinct from BL3 author (Codex GPT-6.1 High) and RBA author\n  (Muse Spark). This reviewer (Muse Spark) has no channel correlation with either.\n- Runtime staged from pinned Git objects via independent staging script. All\n  70 staged entries verified by Git blob SHA-1 (NUL preimage). No author\n  staging code executed.\n\n## Freeze verification\n\n- R3 v1 SHA256: `b0d44f663e2392a4207c28a331e5a7627cfef81bdc8b47e9240642161977f465`\n  verified byte-identical at first read.\n- R2 v6 SHA256: `9a05efd9cc4060a7ae9b496f6fe71a5193912b228ac0d2e04577f80902384823`\n- R1 prereg: `880fbde407654cf847e72f9cc58f7884470973072e99c0964b8d33e17e0bb330`\n- No frozen oracles modified.\n\n## Exact execution\n\n| Suite | Result | Source |\n|---|---|---|\n| R3 tests | 33/33 PASS | BL3 `tests/test_r3.py` |\n| R2 suite | 51/51 PASS | RBA `exec/r2/test_r2.py` |",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# HQ305 BR3 — Independent R3 Synthetic Sensitivity Court"
+        },
+        {
+          "line": 3,
+          "text": "**Verdict: REVIEW_PASS_SCOPED_R3_SYNTHETIC_SENSITIVITY**"
+        },
+        {
+          "line": 6,
+          "text": "response change under controlled read budgets, and correctly holds representation-blind,"
+        },
+        {
+          "line": 8,
+          "text": "adversary detections work. This is sourcefree measurement/plumbing sensitivity"
+        },
+        {
+          "line": 15,
+          "text": "- Branch: `agent/reviewer-sorok-r3-hq305-br3-synthetic-sensitivity-independent-r1`"
+        },
+        {
+          "line": 20,
+          "text": "- Runtime staged from pinned Git objects via independent staging script. All"
+        },
+        {
+          "line": 41,
+          "text": "| RMB | 13 PASS / 23 RED | RBA `exec/rmb/test_independent.py` (original split preserved) |"
+        },
+        {
+          "line": 42,
+          "text": "| BR3 independent attacks | 15/15 PASS | `repro/test_br3_attacks.py` |"
+        },
+        {
+          "line": 46,
+          "text": "## Independent attacks (reviewer-origin)"
+        },
+        {
+          "line": 64,
+          "text": "| i15 | Two lawful response alternatives (menu-consistent) | PASS |"
+        },
+        {
+          "line": 84,
+          "text": "- 5pp simultaneous half-width: ~4,940 independent families"
+        },
+        {
+          "line": 88,
+          "text": "These are correct under stated assumptions (independent families, known"
+        },
+        {
+          "line": 90,
+          "text": "establish independent family sampling. No ICC, no variance estimates from"
+        },
+        {
+          "line": 92,
+          "text": "targets, budget recommendations, or achieved power. Multiplicity (12 contrasts)"
+        },
+        {
+          "line": 97,
+          "text": "BL3's proposed custody protocol is well-specified in structure (independent"
+        },
+        {
+          "line": 100,
+          "text": "returns HOLD with reasons. Same-author dual code paths are not independent"
+        },
+        {
+          "line": 104,
+          "text": "## Owner actions required"
+        },
+        {
+          "line": 106,
+          "text": "1. Independent oracle/scenario custodian appointment (separate from BL3 author)"
+        },
+        {
+          "line": 110,
+          "text": "4. Independent reviewer for any SC0F2 repair (distinct from both SC0F and SC0I)"
+        },
+        {
+          "line": 114,
+          "text": "`REVIEW_PASS_SCOPED_R3_SYNTHETIC_SENSITIVITY` — the sourcefree R3 assay"
+        }
+      ],
+      "referenced_shas": [
+        "4085cb26be27977c0ec9afc5fc1b7ef96f400029",
+        "10b507af06973657f2d772b636fb6fbd2d6aff36"
+      ],
+      "reported_disposition": "Verdict: REVIEW_PASS_SCOPED_R3_SYNTHETIC_SENSITIVITY**",
+      "code_inspection": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/repro/stage_br3_runtime.py",
+        "blob": "8cbcc3e89b088cf2e79a24163c3f8866ed659ff0",
+        "bytes": 4134,
+        "functions": [
+          "def git(*a):",
+          "def put(c, p, d, expected=None):",
+          "def main():"
+        ],
+        "sample": "\"\"\"BR3 independent staging of exact original sources; never executes author staging code.\n\nAdapts BL3 repro/stage.py: same pinned commits, same NUL-verified blob checks,\nsame 49-entry manifest. Stages into BR3's own ignored runtime dir, never into\nBL3's return terrain. Raises on any mismatch.\n\"\"\"\nimport datetime\nimport hashlib\nimport json\nimport pathlib\nimport subprocess\nimport uuid\n\nROOT = pathlib.Path(\"/tmp/wg0p\")\nRT = pathlib.Path(\"/tmp/wg0p/.br3_runtime/rt\")\nrows: list = []\nRBA = \"1e1546f9e6e1520ab48eb9a9cf5da8ded4f00599\"\nBP = \"WORKER_RETURNS/SOROK-R3-HQ301-RBA-BEHAVIORAL-R2-VALIDITY-R1\"\nR2 = \"a7d2be9894bf92f81356adf14141136666e63bd1\"\nR2P = \"WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1\"\n\n\ndef git(*a):\n    return subprocess.check_output([\"git\", \"-c\", \"gc.auto=0\", \"-C\", str(ROOT), *a])\n\n\ndef put(c, p, d, expected=None):\n    b = git(\"show\", c + \":\" + p)\n    blob = git(\"rev-parse\", c + \":\" + p).decode().strip()\n    assert hashlib.sha1(b\"blob \" + str(len(b)).encode() + bytes([0]) + b).hexdigest() == blob\n    assert expected is None or blob == expected\n    out = RT / d\n    out.parent.mkdir(parents=True, exist_ok=True)\n    if out.exists():\n        assert out.read_bytes() == b, (\"PARTIAL_STAGE_DIFFERS\", d)\n    else:\n        out.write_bytes(b)\n    rows.append(dict(commit=c, source_path=p, staging_path=d, git_blob_sha1=blob,\n                      sha256=hashlib.sha256(b).hexdigest(), bytes=len(b)))\n    return b\n\n\ndef main():\n    if (RT / \"runtime_marker.json\").exists():\n        raise SystemExit(\"EXISTING_VERIFIED_RUNTIME_REFUSE_OVERWRITE\")\n    RT.mkdir(exis"
+      }
+    },
+    {
+      "index": 36,
+      "name": "agent/reviewer-sorok-r3-hq307-ocr1-custody-hostile-r1",
+      "pinned_sha": "aba637265bea2358790fea50d0e7abc98141e472",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 8,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ307-OCR1-CUSTODY-HOSTILE-INDEPENDENT-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-R3-HQ307-OCR1-CUSTODY-HOSTILE-INDEPENDENT-R1/01_PREOBSERVATION_EXPECTATIONS.json",
+        "WORKER_RETURNS/SOROK-R3-HQ307-OCR1-CUSTODY-HOSTILE-INDEPENDENT-R1/02_EXECUTION_MATRIX.json",
+        "WORKER_RETURNS/SOROK-R3-HQ307-OCR1-CUSTODY-HOSTILE-INDEPENDENT-R1/03_OWNER_ACTIONS_AND_HOLDS.md",
+        "WORKER_RETURNS/SOROK-R3-HQ307-OCR1-CUSTODY-HOSTILE-INDEPENDENT-R1/04_REPRODUCE.md",
+        "WORKER_RETURNS/SOROK-R3-HQ307-OCR1-CUSTODY-HOSTILE-INDEPENDENT-R1/05_CHANGED_PATHS.json",
+        "WORKER_RETURNS/SOROK-R3-HQ307-OCR1-CUSTODY-HOSTILE-INDEPENDENT-R1/OCR1_EXECUTED_EVIDENCE.tar.xz",
+        "WORKER_RETURNS/SOROK-R3-HQ307-OCR1-CUSTODY-HOSTILE-INDEPENDENT-R1/environment_passport_delta.json"
+      ],
+      "code_paths": [],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ307-OCR1-CUSTODY-HOSTILE-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "b20b023d77277a68d942f6c1e66a937d37a34c7a",
+        "url": "https://github.com/maidiu/rawlsing/blob/aba637265bea2358790fea50d0e7abc98141e472/WORKER_RETURNS/SOROK-R3-HQ307-OCR1-CUSTODY-HOSTILE-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 68
+      },
+      "review_evidence": "# SOROK HQ307 OCR1 — independent source-free OC1 custody hostile court\n\n**Terminal disposition: `REVIEW_REVISE__30_INDEPENDENT_EXECUTED_HOSTILE_REDS__ORIGINAL_31_UNCHANGED_GREEN__REAL_ISSUANCE_HOLD`.** No semantic adoption, issuance, production deployment, model call, or human/institutional custody certification.\n\n## 1. Identity, independence, and actual execution\n\n- **Repository:** `maidiu/rawlsing` (private).\n- **Role:** one independent I2 Browser/GitHub reviewer, not HQ, OC1 author, semantic issuer, or signer.\n- **Reviewer branch:** `agent/reviewer-sorok-r3-hq307-ocr1-custody-hostile-r1`.\n- **Directly verified original commission HEAD:** `07130e9a96944dc852a7ddf38c11cc38cf14f75c`; HQ307 parent `9ca0469b6ace374e52db308bb794b16e65f2a578`.\n- **Exact OC1 candidate:** `19438890e43153e2bc4a1ad271b5e19bcef33e1e`; author original commission `3b0680c3b342137d334d55f6051b762715a63dd9`.\n- **Four unchanged source blobs, verified as Git native SHA-1 (`blob <length>\\\\0<bytes>`):** `custody_protocol.py` `487a6e5bc40a1d366a375d4916eb759bb997eb2a`; `dummy_corpus.py` `770efe72190e35d1bc34065b5a55c183bf1320f5`; `test_custody_hostiles.py` `94ad944997cb9d1a8d6527e91c17416120c5108d`; `test_positive_lifecycle.py` `4b665a2a9d6999071624d580f2d2ae193daf59f4`.\n- **Provenance:** sourcefree exact authorized source files staged in a fresh, isolated Python directory rather than modifying OC1 author's branch. `custody_protocol.__file__` and `dummy_corpus.__file__` resolved into that staged source directory (relative `source/`). Python 3.13.5 / pytest 9.0.2 / git 2.47.3 observed with real pytest and local filesystem. Earlier owner's Python 3.11.3 is *not* this reviewer runtime.\n- **Independence limitation:** reviewer read HQ307's earlier source inspection before creating new expectations. `01_PREOBSERVATION_EXPECTATIONS.json` was frozen before running newly authored hostile tests, but is **not blind** to HQ's already exposed defects. It does not claim prior execution preregistration for the OC1 author's one-commit `frozen_negative_expectations.json`.\n\n### Executed suite ledger\n\n| Actual command (`cd source`) | Tests | PASS | RED | Exit |\n|---|---:|---:|---:|---:|\n| `python -m pytest -q test_custody_hostiles.py test_positive_lifecycle.py --junitxml=../review/original_31_junit.xml` | 31 | 31 | 0 | 0 |\n| `python -m pytest -q test_ocr1_independent_hostile.py --junitxml=../review/independent_hostile_junit.xml` | 45 | 15 | 30 | 1 |\n| **Actual combined evidence** | **76** | **46** | **30** | partial RED |\n\nUnchanged original tests and source identities were verified **before** the independent tests. Full exact stdout, JUnit (each case and traceback), reviewer test source, first frozen expected matrix, source blob and SHA256 matrix, and reproduction instructions are preserved in `OCR1_EXECUTED_EVIDENCE.tar.xz`. No xfail, skip, test rewriting, test-generated refusal, or candidate repair. `C07` cross-process state restoration is separately **NOT_REACHED** because `EscrowState` exposes no serialization/persistence/reload implementation; it is *not* an executed PASS or RED.\n\n## 2. Decisive real entrypoint counterexamples\n\n**A — escrow, revocation, holder, release (10 RED / 2 PASS):** `EscrowState.unblind` admitted **already revoked, expired, and disallowed-purpose** committed capsules, arbitrary/forbidden-role/unrelated holders, even after an unrelated mock signing ceremony. `EscrowState.release` admitted a subsequently revoked/expired capsule. `record_exposure` admitted an uncommitted capsule and purpose `LIVE_MODEL_REQUEST`. Positive `release` without prior `unblind` and duplicate `release` were correctly refused. RoleAssignment/Person are data classes, not validated by escrow APIs; there is no authorization registry or holder grant. These are **actual sourcefree admission/refusal gaps**, not cryptographic or human-identity conclusions.\n\n**B — mock signature and capsule binding (4 RED / 4 PASS):** `require_second_signature(None, sig1, sig2, digest, ...)` returned `True` for two otherwise valid mock signatures. Changing `capsule.content_digest` to an unrelated value also returned `True`. Changing a signature object's declared `content_digest` while retaining the hash also returned `True` because `MockSigner.verify` reconstructs from caller content/context/nonce without comparing all self-describing signature fields. An arbitrary person can claim a mock role using a publicly derived fixture credential. Context/nonce mismatch, same signer and explicitly conflicting roles were correctly refused. **Real-person, trusted-key and role authority remain unissued; mock impersonation is especially a TEST_ONLY credential ceiling.** The original positive lifecycle signs a digest of `{capsule: capsule_id}`, not the capsule's `content_digest`, making the claimed signature-to-capsule semantics especially weak.\n\n**C — append-only ledger (5 RED / 1 PASS; 1 NOT_REACHED):** `rollback_ledger(1)` erased UNBLIND+RELEASE after a three-event lifecycle while leaving `released` true; `verify_ledger_integrity()` returned true. Deleting the final event and adjusting `_ledger_seq`, changing an op, duplicating a COMMIT event, or clearing history while retaining state also returned true. Untampered COMMIT→UNBLIND→RELEASE passed. Existing `verify_ledger_integrity` checks sequence ordinality *only*, not append-only history, state congruence, hash-linking, or externally anchored monotonicity. No persistence or cross-process recovery API was reached.\n\n**D — pairing and blind joins (6 RED / 2 PASS):** real `verify_blind_pairing` accepted four rows A,A,B,C under one nonce, unknown XYZ as the three arms, duplicate trial IDs, inconsistent per-block case and family joins, and zero trials. It correctly rejects missing one of three arms and accepts the normal ABC sequence. Set-cardinality is insufficient for the claimed exactly-one-per-arm block even at sourcefree grade. Family/case join validations need an issued schema; current API does not supply one.\n\n**E — leakage (4 RED / 2 PASS):** `assert_no_leakage` admitted zero-width-character variants of `answer_key` and `expected_answer`, and a nested `solution/truth` field carrying a lawful answer; `detect_leakage` falsely flagged benign `charming` solely because it contains `arm`. Literal `hidden_origin` was correctly rejected, and the generator's known model-visible packet was correctly accepted. Lexical denylisting cannot prove semantic noninterference. Nested semantic tests demonstrate the lack of schema validation but are not empirical proof a model can infer secret answers. Future real packet safety needs a strict approved output schema plus protected-source review.\n",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# SOROK HQ307 OCR1 — independent source-free OC1 custody hostile court"
+        },
+        {
+          "line": 3,
+          "text": "**Terminal disposition: `REVIEW_REVISE__30_INDEPENDENT_EXECUTED_HOSTILE_REDS__ORIGINAL_31_UNCHANGED_GREEN__REAL_ISSUANCE_HOLD`.** No semantic adoption, issuance, production deployment, model call, or human/institutional custody certification."
+        },
+        {
+          "line": 8,
+          "text": "- **Role:** one independent I2 Browser/GitHub reviewer, not HQ, OC1 author, semantic issuer, or signer."
+        },
+        {
+          "line": 10,
+          "text": "- **Directly verified original commission HEAD:** `07130e9a96944dc852a7ddf38c11cc38cf14f75c`; HQ307 parent `9ca0469b6ace374e52db308bb794b16e65f2a578`."
+        },
+        {
+          "line": 11,
+          "text": "- **Exact OC1 candidate:** `19438890e43153e2bc4a1ad271b5e19bcef33e1e`; author original commission `3b0680c3b342137d334d55f6051b762715a63dd9`."
+        },
+        {
+          "line": 12,
+          "text": "- **Four unchanged source blobs, verified as Git native SHA-1 (`blob <length>\\\\0<bytes>`):** `custody_protocol.py` `487a6e5bc40a1d366a375d4916eb759bb997eb2a`; `dummy_corpus.py` `770efe72190e35d1bc34065b5a55c183bf1320f5`; `test_custody_hostiles.py` `94ad944997cb9d1a8d6527e91c17416120c5108d`; `test_positive_lifecycle.py` `4b665a2a9d6999071624d580f2d2ae193daf59f4`."
+        },
+        {
+          "line": 13,
+          "text": "- **Provenance:** sourcefree exact authorized source files staged in a fresh, isolated Python directory rather than modifying OC1 author's branch. `custody_protocol.__file__` and `dummy_corpus.__file__` resolved into that staged source directory (relative `source/`). Python 3.13.5 / pytest 9.0.2 / git 2.47.3 observed with real pytest and local filesystem. Earlier owner's Python 3.11.3 is *not* this reviewer runtime."
+        },
+        {
+          "line": 14,
+          "text": "- **Independence limitation:** reviewer read HQ307's earlier source inspection before creating new expectations. `01_PREOBSERVATION_EXPECTATIONS.json` was frozen before running newly authored hostile tests, but is **not blind** to HQ's already exposed defects. It does not claim prior execution preregistration for the OC1 author's one-commit `frozen_negative_expectations.json`."
+        },
+        {
+          "line": 18,
+          "text": "| Actual command (`cd source`) | Tests | PASS | RED | Exit |"
+        },
+        {
+          "line": 20,
+          "text": "| `python -m pytest -q test_custody_hostiles.py test_positive_lifecycle.py --junitxml=../review/original_31_junit.xml` | 31 | 31 | 0 | 0 |"
+        },
+        {
+          "line": 21,
+          "text": "| `python -m pytest -q test_ocr1_independent_hostile.py --junitxml=../review/independent_hostile_junit.xml` | 45 | 15 | 30 | 1 |"
+        },
+        {
+          "line": 22,
+          "text": "| **Actual combined evidence** | **76** | **46** | **30** | partial RED |"
+        },
+        {
+          "line": 24,
+          "text": "Unchanged original tests and source identities were verified **before** the independent tests. Full exact stdout, JUnit (each case and traceback), reviewer test source, first frozen expected matrix, source blob and SHA256 matrix, and reproduction instructions are preserved in `OCR1_EXECUTED_EVIDENCE.tar.xz`. No xfail, skip, test rewriting, test-generated refusal, or candidate repair. `C07` cross-process state restoration is separately **NOT_REACHED** because `EscrowState` exposes no serialization/persistence/reload implementation; it is *not* an executed PASS or RED."
+        },
+        {
+          "line": 28,
+          "text": "**A — escrow, revocation, holder, release (10 RED / 2 PASS):** `EscrowState.unblind` admitted **already revoked, expired, and disallowed-purpose** committed capsules, arbitrary/forbidden-role/unrelated holders, even after an unrelated mock signing ceremony. `EscrowState.release` admitted a subsequently revoked/expired capsule. `record_exposure` admitted an uncommitted capsule and purpose `LIVE_MODEL_REQUEST`. Positive `release` without prior `unblind` and duplicate `release` were correctly refused. RoleAssignment/Person are data classes, not validated by escrow APIs; there is no authorization registry or holder grant. These are **actual sourcefree admission/refusal gaps**, not cryptographic or human-identity conclusions."
+        },
+        {
+          "line": 30,
+          "text": "**B — mock signature and capsule binding (4 RED / 4 PASS):** `require_second_signature(None, sig1, sig2, digest, ...)` returned `True` for two otherwise valid mock signatures. Changing `capsule.content_digest` to an unrelated value also returned `True`. Changing a signature object's declared `content_digest` while retaining the hash also returned `True` because `MockSigner.verify` reconstructs from caller content/context/nonce without comparing all self-describing signature fields. An arbitrary person can claim a mock role using a publicly derived fixture credential. Context/nonce mismatch, same signer and explicitly conflicting roles were correctly refused. **Real-person, trusted-key and role authority remain unissued; mock impersonation is especially a TEST_ONLY credential ceiling.** The original positive lifecycle signs a digest of `{capsule: capsule_id}`, not the capsule's `content_digest`, making the claimed signature-to-capsule semantics especially weak."
+        },
+        {
+          "line": 32,
+          "text": "**C — append-only ledger (5 RED / 1 PASS; 1 NOT_REACHED):** `rollback_ledger(1)` erased UNBLIND+RELEASE after a three-event lifecycle while leaving `released` true; `verify_ledger_integrity()` returned true. Deleting the final event and adjusting `_ledger_seq`, changing an op, duplicating a COMMIT event, or clearing history while retaining state also returned true. Untampered COMMIT→UNBLIND→RELEASE passed. Existing `verify_ledger_integrity` checks sequence ordinality *only*, not append-only history, state congruence, hash-linking, or externally anchored monotonicity. No persistence or cross-process recovery API was reached."
+        },
+        {
+          "line": 34,
+          "text": "**D — pairing and blind joins (6 RED / 2 PASS):** real `verify_blind_pairing` accepted four rows A,A,B,C under one nonce, unknown XYZ as the three arms, duplicate trial IDs, inconsistent per-block case and family joins, and zero trials. It correctly rejects missing one of three arms and accepts the normal ABC sequence. Set-cardinality is insufficient for the claimed exactly-one-per-arm block even at sourcefree grade. Family/case join validations need an issued schema; current API does not supply one."
+        },
+        {
+          "line": 36,
+          "text": "**E — leakage (4 RED / 2 PASS):** `assert_no_leakage` admitted zero-width-character variants of `answer_key` and `expected_answer`, and a nested `solution/truth` field carrying a lawful answer; `detect_leakage` falsely flagged benign `charming` solely because it contains `arm`. Literal `hidden_origin` was correctly rejected, and the generator's known model-visible packet was correctly accepted. Lexical denylisting cannot prove semantic noninterference. Nested semantic tests demonstrate the lack of schema validation but are not empirical proof a model can infer secret answers. Future real packet safety needs a strict approved output schema plus protected-source review."
+        },
+        {
+          "line": 38,
+          "text": "**F — freeze and family (1 RED / 4 PASS):** after `commit`, a caller can replace `escrow.committed[id]` with a capsule carrying a different content digest, and ledger integrity still passes. Duplicate commit for the same ID is correctly refused; exact duplicate family fingerprints are detected. Distinct wording does *not* prove independent family provenance; the positive paraphrase test records this epistemic limit, not a demonstrated semantic clone-detection achievement. The published `frozen_before_execution:true` flag is self-asserted in the author's single returned commit, not independent preregistration proof."
+        },
+        {
+          "line": 42,
+          "text": "The original `test_h05_stale_or_revoked_capsule_refused` unconditionally raises `RevocationError` inside the test when its own flag says revoked; it does not force `EscrowState.unblind` to reject. Original `test_h03` compares two digests and never asks escrow to verify source content. Original `test_h13` expressly calls ledger erasure a *legitimate rollback* and accepts `verify_ledger_integrity() == True`. The original suite's **31 PASS is real execution**, but neither that fact nor the author's descriptions establish those three claimed boundaries."
+        },
+        {
+          "line": 46,
+          "text": "| Claim | Evidence grade | Disposition |"
+        },
+        {
+          "line": 48,
+          "text": "| OC1 Python original authored suite executable | 31/31 independently reproduced with exact hashes | `PASS_TEST_ONLY_EXECUTION` |"
+        },
+        {
+          "line": 49,
+          "text": "| Existing denial for missing prior unblind, duplicate release, conflicting signatures, illegal purpose in builder | Actual sourcefree API checks | `PASS_BOUNDED` |"
+        },
+        {
+          "line": 50,
+          "text": "| Revocation/expiry/current role and holder enforcement | Direct unauthorized operations accepted | `RED_IMPLEMENTATION` |"
+        },
+        {
+          "line": 51,
+          "text": "| Two signatures bound to actual capsule | `None` and alien capsule accepted | `RED_IMPLEMENTATION` |"
+        },
+        {
+          "line": 52,
+          "text": "| Immutable, rollback-detecting append-only escrow | Local truncation/tamper passes sequence-only checker | `RED_IMPLEMENTATION` |"
+        },
+        {
+          "line": 53,
+          "text": "| Exact 1:1:1 blinded-pair multiplicity | A,A,B,C accepted | `RED_IMPLEMENTATION` |"
+        },
+        {
+          "line": 54,
+          "text": "| Leak-proof packet/coder firewall | Lexical bypass and false positive | `RED_CLAIM__NEEDS_SCHEMA` |"
+        },
+        {
+          "line": 55,
+          "text": "| Genuine independent signer/role registry, holdout custodian, cryptographic anchor | No such trusted system exists here | `HOLD_REAL_AUTHORITY_NOT_ISSUED` |"
+        },
+        {
+          "line": 57,
+          "text": "| Family population independence, actual behavioral effects, model-use grant | No real sources, provider, or sampling permission | `HOLD` |"
+        },
+        {
+          "line": 59,
+          "text": "### Verdict"
+        },
+        {
+          "line": 61,
+          "text": "**`REVIEW_REVISE`** for OC1's claimed working synthetic custody enforcement. Preserve 31 original PASS and limited positive helpers, but **do not accept fail-closed revocation, role permissions, actual capsule-signature binding, append-only custody, exact pairing, or leakage noninterference**. These are real defects or overclaims inside the prototype's sourcefree contract. Real external independence, cryptographic trust, protected sealed holdout, legal/semantic issuer rights, external spending/privacy/model grants, and live experiment permission all remain separately unissued, regardless of future synthetic PASS."
+        },
+        {
+          "line": 63,
+          "text": "**Independent-owner actions:** A separate bounded OC1 implementation worker can repair tests and synthetic gates; define role registry and capsule binding API only as *test fixture* with explicit denied default, forbid original-test rewrites, add held-out actual-entrypoint tests, preserve audit history or refuse rollback with typed error, and validate exactly A/B/C multiplicity/joins and an allowlisted packet schema. After repair HQ commissions a *new* independent I2 review. No direct production/weld/model grant. The competent semantic owner and independent human custodian must separately approve actual lawful sets, independent key custody, trusted signer registry, append-only external ledger and sampling/experiment grants."
+        },
+        {
+          "line": 67,
+          "text": "Only the assigned reviewer return directory may be committed; candidate and original oracles untouched. Do not promote the four accidentally tracked OC1 `__pycache__` binaries into signed semantic evidence. Full archive includes all sourcefree exact imported bytes, original+new JUnit/stdout and this report; an optional base64 text transport permits verifiable GitHub upload without altering archive bytes. The reviewer cannot embed its own future Git commit hash; verify branch HEAD after GitHub push."
+        }
+      ],
+      "referenced_shas": [
+        "07130e9a96944dc852a7ddf38c11cc38cf14f75c",
+        "9ca0469b6ace374e52db308bb794b16e65f2a578",
+        "19438890e43153e2bc4a1ad271b5e19bcef33e1e",
+        "3b0680c3b342137d334d55f6051b762715a63dd9",
+        "487a6e5bc40a1d366a375d4916eb759bb997eb2a",
+        "770efe72190e35d1bc34065b5a55c183bf1320f5",
+        "94ad944997cb9d1a8d6527e91c17416120c5108d",
+        "4b665a2a9d6999071624d580f2d2ae193daf59f4"
+      ],
+      "reported_disposition": "disposition: `REVIEW_REVISE__30_INDEPENDENT_EXECUTED_HOSTILE_REDS__ORIGINAL_31_UNCHANGED_GREEN__REAL_ISSUANCE_HOLD`.** No semantic adoption, issuance, production deployment, model call, or human/institutional custody certification."
+    },
+    {
+      "index": 37,
+      "name": "agent/reviewer-sorok-r3-hq309-can3-can008-independent-r1",
+      "pinned_sha": "ef12349defe22a50e053a7a8080a67ab45673417",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 1,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/11_REMOTE_VERIFICATION.json"
+      ],
+      "code_paths": [],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "2aec20b9022502a50862af1b472e9dcc6432b529",
+        "url": "https://github.com/maidiu/rawlsing/blob/ef12349defe22a50e053a7a8080a67ab45673417/WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 40
+      },
+      "review_evidence": "# CAN3 independent scientific return\n\n**Scientific verdict: `REVIEW_PASS_SOURCEFREE_FINITE_HISTORY_CANDIDATE`.**\n\nReviewed CAN2 `ee6a48b40247b113c614fe2099d4c443e8dd7bb7`, repair source seal `f9ff05197fb2837c733f8b453c678043e90c77d8`, from assigned startup `4605c939cba25addc5b888f07a33218891c0cd52`. Direct authenticated remote startup and CAN2 branch refs were verified. Sole fresh reviewer session, distinct from the RCP3/CAN2 author; no helpers, author messaging, model/harness switches or conversational author judgments. Published author results were known and are explicitly preregistered as expectations, not independent evidence.\n\n| Executed unchanged suite | PASS | RED | Errors/skips |\n|---|---:|---:|---:|\n| Ten pinned owner suites | 220 | 0 | 0 |\n| Corrected RSM | 60 | 0 | 0 |\n| Original candidate | 29 | 8 | 0 |\n| RCP3 predicates | 81 | 1 | 0 |\n| CAN2 author controls | 89 | 0 | 0 |\n| Historical subtotal | **479** | **9** | **0** |\n| Newly authored CAN3 controls | **97** | **0** | **0** |\n| Final combined | **576** | **9** | **0** |\n\nThis is 585 final cases, not “all green.” Nine historical test identities remain RED. Eight assume fabricated/unregistered event or formation material, or the obsolete request-kind shape; one requires a committed flag in a precommit deep copy. Accepted-law priority and valid sealed replacements independently justify their incompatibility. Per-case analysis is in `04_NINE_RED_ADJUDICATION.md`. No original test was edited, skipped, xfailed or inverted.\n\n**Prior-response-history causality is demonstrated. ADP016/ADP017 mediation is unproved.** Actual BUFFER history leads to DEFLECT; genuine absent-effect/read-withholding controls lead to AMPLIFY. Joint ADP016/017 state-ref withdrawal leaves DEFLECT. Single-family ref withdrawal produces a typed binding refusal, not an identified mediator effect. Full intervention records and inference limits are in `06_SCIENTIFIC_CAUSALITY.md`.\n\nIndependent hostility covers sealed issuer/rule/body/actor/world/time admission, actual effect calls/content, five full rollback points, later rollback, hash-chain/alias/corrupt-read refusal, deterministic replay, seven memory formation gates, all 17 adopted negative/unknown memory behaviors, exact private BELIEF provenance and K3/K5 protections. CAN008 §16 mapping explicitly scopes five unused conditional feature families; descriptive bindings are not broad functional proof. Detailed scope and owner actions are in `07_LAW_COVERAGE_AND_OWNER_HOLDS.md`.\n\nProduction `DEFAULT_ACCEPTED_POSITIVE_TRANSITION_AUTHORITIES` remains immutable and EMPTY. Imported and workspace guard bytes equal Git blob `e0528d65215cb431196570c38bac4eae94217a1b` before/after. All writes are under this assigned return; reviewed source lives only in ignored local reconstruction.\n\nTwo initial independent ablation predictions failed because single-family refs no longer matched the attached state. A later collision test measured before successful proposal staging. Initial logs and explicit corrections are retained; they are not hidden candidate defects or unchanged-test PASS claims. An initial missing-law/output-directory staging problem was corrected and the unchanged suites rerun. See `03_REVIEW_HYPOTHESIS_CORRECTIONS.json`.\n\nAn additional scope limit: identical ADP017 call replay safely rejects stale prestate without duplication, but supplies no general idempotent effect-replay receipt. This court certifies the finite history candidate, not full ADP016/ADP017 implementation. Broader owner work remains held.\n\nRemaining HOLDs: operative issuer/registry/conditioning/destination-owner authority; identified memory/epistemic mediation; memory lifecycle/cue/RNG rules; general epistemic replay, knowledge acquisition and safe envelopes; public-standing ratification; original-source/model/V3/PFF runtime permissions; HQ adoption. No new issuer, production registration, source/actor execution, V3 operation, canonical merge or semantic adoption occurred. No accepted-law collision requiring I3 was found.\n\nReproduction from this repository's existing Git object store (Python 3.11 + pytest):\n\n```sh\npython3 WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/repro/stage.py\npython3 WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/repro/run.py\n```",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# CAN3 independent scientific return"
+        },
+        {
+          "line": 3,
+          "text": "**Scientific verdict: `REVIEW_PASS_SOURCEFREE_FINITE_HISTORY_CANDIDATE`.**"
+        },
+        {
+          "line": 5,
+          "text": "Reviewed CAN2 `ee6a48b40247b113c614fe2099d4c443e8dd7bb7`, repair source seal `f9ff05197fb2837c733f8b453c678043e90c77d8`, from assigned startup `4605c939cba25addc5b888f07a33218891c0cd52`. Direct authenticated remote startup and CAN2 branch refs were verified. Sole fresh reviewer session, distinct from the RCP3/CAN2 author; no helpers, author messaging, model/harness switches or conversational author judgments. Published author results were known and are explicitly preregistered as expectations, not independent evidence."
+        },
+        {
+          "line": 7,
+          "text": "| Executed unchanged suite | PASS | RED | Errors/skips |"
+        },
+        {
+          "line": 11,
+          "text": "| Original candidate | 29 | 8 | 0 |"
+        },
+        {
+          "line": 12,
+          "text": "| RCP3 predicates | 81 | 1 | 0 |"
+        },
+        {
+          "line": 15,
+          "text": "| Newly authored CAN3 controls | **97** | **0** | **0** |"
+        },
+        {
+          "line": 18,
+          "text": "This is 585 final cases, not “all green.” Nine historical test identities remain RED. Eight assume fabricated/unregistered event or formation material, or the obsolete request-kind shape; one requires a committed flag in a precommit deep copy. Accepted-law priority and valid sealed replacements independently justify their incompatibility. Per-case analysis is in `04_NINE_RED_ADJUDICATION.md`. No original test was edited, skipped, xfailed or inverted."
+        },
+        {
+          "line": 20,
+          "text": "**Prior-response-history causality is demonstrated. ADP016/ADP017 mediation is unproved.** Actual BUFFER history leads to DEFLECT; genuine absent-effect/read-withholding controls lead to AMPLIFY. Joint ADP016/017 state-ref withdrawal leaves DEFLECT. Single-family ref withdrawal produces a typed binding refusal, not an identified mediator effect. Full intervention records and inference limits are in `06_SCIENTIFIC_CAUSALITY.md`."
+        },
+        {
+          "line": 22,
+          "text": "Independent hostility covers sealed issuer/rule/body/actor/world/time admission, actual effect calls/content, five full rollback points, later rollback, hash-chain/alias/corrupt-read refusal, deterministic replay, seven memory formation gates, all 17 adopted negative/unknown memory behaviors, exact private BELIEF provenance and K3/K5 protections. CAN008 §16 mapping explicitly scopes five unused conditional feature families; descriptive bindings are not broad functional proof. Detailed scope and owner actions are in `07_LAW_COVERAGE_AND_OWNER_HOLDS.md`."
+        },
+        {
+          "line": 24,
+          "text": "Production `DEFAULT_ACCEPTED_POSITIVE_TRANSITION_AUTHORITIES` remains immutable and EMPTY. Imported and workspace guard bytes equal Git blob `e0528d65215cb431196570c38bac4eae94217a1b` before/after. All writes are under this assigned return; reviewed source lives only in ignored local reconstruction."
+        },
+        {
+          "line": 26,
+          "text": "Two initial independent ablation predictions failed because single-family refs no longer matched the attached state. A later collision test measured before successful proposal staging. Initial logs and explicit corrections are retained; they are not hidden candidate defects or unchanged-test PASS claims. An initial missing-law/output-directory staging problem was corrected and the unchanged suites rerun. See `03_REVIEW_HYPOTHESIS_CORRECTIONS.json`."
+        },
+        {
+          "line": 30,
+          "text": "Remaining HOLDs: operative issuer/registry/conditioning/destination-owner authority; identified memory/epistemic mediation; memory lifecycle/cue/RNG rules; general epistemic replay, knowledge acquisition and safe envelopes; public-standing ratification; original-source/model/V3/PFF runtime permissions; HQ adoption. No new issuer, production registration, source/actor execution, V3 operation, canonical merge or semantic adoption occurred. No accepted-law collision requiring I3 was found."
+        },
+        {
+          "line": 35,
+          "text": "python3 WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/repro/stage.py"
+        },
+        {
+          "line": 36,
+          "text": "python3 WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/repro/run.py"
+        },
+        {
+          "line": 39,
+          "text": "`run.py` preserves suite exit codes in `02_RESULTS.json`; its orchestration completion is not an all-tests-pass signal. Full final JUnit/stdout/import receipts are under `evidence/<suite>/`. Native Git identities, authority/test custody, environment passport, evidence manifest and remote receipt accompany this return. The final containing metadata SHA is verified directly after push and reported in chat, avoiding a recursive self-SHA claim."
+        }
+      ],
+      "referenced_shas": [
+        "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+        "f9ff05197fb2837c733f8b453c678043e90c77d8",
+        "4605c939cba25addc5b888f07a33218891c0cd52",
+        "e0528d65215cb431196570c38bac4eae94217a1b"
+      ],
+      "reported_disposition": "verdict: `REVIEW_PASS_SOURCEFREE_FINITE_HISTORY_CANDIDATE`.**"
+    },
+    {
+      "index": 38,
+      "name": "agent/reviewer-sorok-r3-hq309-oc3-custody-independent-r1",
+      "pinned_sha": "9cd47a829473a6e92392582b4f01f2c564aa5dce",
+      "inspection_state": "REVIEW_DOCUMENT_SOURCE_READ",
+      "notes": [],
+      "changed_paths_count": 1,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ309-OC3-CUSTODY-INDEPENDENT-R1/00_RETURN.md"
+      ],
+      "code_paths": [],
+      "review_document": {
+        "path": "WORKER_RETURNS/SOROK-R3-HQ309-OC3-CUSTODY-INDEPENDENT-R1/00_RETURN.md",
+        "blob": "a422939386d2cfd5da703b0ad54ca3f28108fd09",
+        "url": "https://github.com/maidiu/rawlsing/blob/9cd47a829473a6e92392582b4f01f2c564aa5dce/WORKER_RETURNS/SOROK-R3-HQ309-OC3-CUSTODY-INDEPENDENT-R1/00_RETURN.md",
+        "lines": 50
+      },
+      "review_evidence": "# SOROK HQ309 OC3 — Independent OC2 test-only custody review\n\n**Verdict: `REVIEW_REVISE`.** This is an independent I2 source-free Python court, NOT HQ adoption, independent institutional custody, trusted signer/role issuance, protected holdout, model grant, population inference, or V3 operation.\n\n## Identity and executable provenance\n\n- Reviewer branch `agent/reviewer-sorok-r3-hq309-oc3-custody-independent-r1`, sealed startup `324d63070a47dea920c4fbca433d0177c16ce9cf`. Remote comparison before work: exactly identical, ahead 0/behind 0.\n- OC2 pinned author commit `a61d5794271038fb20c94a75eaee401a66613ce9`, verified candidate Git-native blob `f117f380c524db5b1eae0ce280be23f1c4bf2c23`. OC1 pinned `19438890e43153e2bc4a1ad271b5e19bcef33e1e`; OCR1 pinned `aba637265bea2358790fea50d0e7abc98141e472`. The 31+45+19 inherited test sources and modules were verified against their original exact native Git blob IDs. Independent new isolated Python staging; `custody_protocol.__file__` / `dummy_corpus.__file__` both resolved into staged source. Verified Python 3.13.5, pytest 9.0.2, git 2.47.3, actual subprocess and filesystem; direct Git CLI private-host DNS unavailable; authenticated GitHub connector works.\n- Reviewer read source and OCR1 known findings before independently freezing expectations *prior to new hostile execution*. Not blind, not externally preregistered. No model/provider calls or protected survey sources.\n\n## Independent real execution\n\n| Court | PASS | FAIL | Total |\n|---|---:|---:|---:|\n| Unchanged original OC1 | 28 | 3 | 31 |\n| Unchanged independent OCR1 | 42 | 3 | 45 |\n| Unchanged OC2 regression source | 19 | 0 | 19 |\n| **Inherited** | **89** | **6** | **95** |\n| **New OC3 actual-API hostiles** | **26** | **10** | **36** |\n| **Combined** | **115** | **16** | **131** |\n\nAll 131 executed; 0 skips, 0 xfails, pytest exit 1. The pushed `OC3_REMOTE_CORE_EVIDENCE.tar.xz` contains exact JUnit XML for the 131-case combined and 36-case new courts, new 36-case test source, frozen pre-execution expectations, SHA receipts and reproducer. A separate full local evidence bundle includes the three original 95/36/131 stdout and JUnit files, the 131-case JSON matrix and six pinned source files, available as a direct user download; it is NOT asserted to be present in the pushed compact archive. **No posthoc 95/95 green.**\n\n## Six historical REDs: correct refusal at the wrong old assertion\n\nThree unmodified OC1 tests have **unsafe/obsolete expected procedure**:\n1. `test_h13_ledger_rollback_detected` calls valid-range destructive rollback and asserts integrity true; OC2 correctly raises `LedgerRollbackError`, leaving ledger intact (OC3 C02).\n2. `test_h15_missing_signature_in_capsule_refused` calls `require_second_signature(None,...)` expecting success; OC2 rejects missing capsule with `SignatureError`.\n3. `test_positive_full_role_separated_lifecycle` signs a digest over the capsule **ID alone**, not its `content_digest`; OC2 correctly raises `SignatureError`. Actual content-bound positive verified in OC3 B01.\n\nThree unmodified OCR1 `A01/A02/A03` tests construct already revoked, expired or `LIVE_MODEL_REQUEST` purpose capsules, calling `EscrowState.commit()` outside the expected exception context; OC2 now refuses these at **commit**, before unblind, with respectively `RevocationError`, `RevocationError`, `PurposeViolationError`. OC3 A05 confirmed refusal at commit with zero ledger/state writes; A06 committed lawful capsules *first*, then made them revoked/expired/illegal-purpose and confirmed unblind refusal and no ledger progression. These are not admitted bypasses, but the original six remain FAILs in literal pytest.\n\n## Ten NEW independently observed failures — prohibit scoped acceptance\n\n**B02–B04 (material: signature/capsule authority identity).** Existing signatures are accepted on a second capsule with different `capsule_id` but same `content_digest` (B02), after changing purpose to another allowed purpose (B03), and after changing `lawful_set_digest` (B04). OC2's signer binds only content bytes, not capsule ID, purpose or frozen envelope. No human signer is implicated: credentials are openly derived **TEST_ONLY** fixtures.\n\n**C05–C06 (material: false in-process integrity).** After lawful COMMIT→UNBLIND→RELEASE, direct modification of `unblinded[ID]['unblinded_at']` or `unblinded[ID]['capsule_id']` leaves `verify_ledger_integrity()` returning `True`. The checker omits both materialized fields. Basic op tamper and released-state divergence controls still PASS. Neither local in-memory seals nor Git evidence constitute an external immutable journal or persistence proof.",
+      "material_claim_lines": [
+        {
+          "line": 1,
+          "text": "# SOROK HQ309 OC3 — Independent OC2 test-only custody review"
+        },
+        {
+          "line": 3,
+          "text": "**Verdict: `REVIEW_REVISE`.** This is an independent I2 source-free Python court, NOT HQ adoption, independent institutional custody, trusted signer/role issuance, protected holdout, model grant, population inference, or V3 operation."
+        },
+        {
+          "line": 7,
+          "text": "- Reviewer branch `agent/reviewer-sorok-r3-hq309-oc3-custody-independent-r1`, sealed startup `324d63070a47dea920c4fbca433d0177c16ce9cf`. Remote comparison before work: exactly identical, ahead 0/behind 0."
+        },
+        {
+          "line": 8,
+          "text": "- OC2 pinned author commit `a61d5794271038fb20c94a75eaee401a66613ce9`, verified candidate Git-native blob `f117f380c524db5b1eae0ce280be23f1c4bf2c23`. OC1 pinned `19438890e43153e2bc4a1ad271b5e19bcef33e1e`; OCR1 pinned `aba637265bea2358790fea50d0e7abc98141e472`. The 31+45+19 inherited test sources and modules were verified against their original exact native Git blob IDs. Independent new isolated Python staging; `custody_protocol.__file__` / `dummy_corpus.__file__` both resolved into staged source. Verified Python 3.13.5, pytest 9.0.2, git 2.47.3, actual subprocess and filesystem; direct Git CLI private-host DNS unavailable; authenticated GitHub connector works."
+        },
+        {
+          "line": 9,
+          "text": "- Reviewer read source and OCR1 known findings before independently freezing expectations *prior to new hostile execution*. Not blind, not externally preregistered. No model/provider calls or protected survey sources."
+        },
+        {
+          "line": 11,
+          "text": "## Independent real execution"
+        },
+        {
+          "line": 15,
+          "text": "| Unchanged original OC1 | 28 | 3 | 31 |"
+        },
+        {
+          "line": 16,
+          "text": "| Unchanged independent OCR1 | 42 | 3 | 45 |"
+        },
+        {
+          "line": 22,
+          "text": "All 131 executed; 0 skips, 0 xfails, pytest exit 1. The pushed `OC3_REMOTE_CORE_EVIDENCE.tar.xz` contains exact JUnit XML for the 131-case combined and 36-case new courts, new 36-case test source, frozen pre-execution expectations, SHA receipts and reproducer. A separate full local evidence bundle includes the three original 95/36/131 stdout and JUnit files, the 131-case JSON matrix and six pinned source files, available as a direct user download; it is NOT asserted to be present in the pushed compact archive. **No posthoc 95/95 green.**"
+        },
+        {
+          "line": 24,
+          "text": "## Six historical REDs: correct refusal at the wrong old assertion"
+        },
+        {
+          "line": 31,
+          "text": "Three unmodified OCR1 `A01/A02/A03` tests construct already revoked, expired or `LIVE_MODEL_REQUEST` purpose capsules, calling `EscrowState.commit()` outside the expected exception context; OC2 now refuses these at **commit**, before unblind, with respectively `RevocationError`, `RevocationError`, `PurposeViolationError`. OC3 A05 confirmed refusal at commit with zero ledger/state writes; A06 committed lawful capsules *first*, then made them revoked/expired/illegal-purpose and confirmed unblind refusal and no ledger progression. These are not admitted bypasses, but the original six remain FAILs in literal pytest."
+        },
+        {
+          "line": 33,
+          "text": "## Ten NEW independently observed failures — prohibit scoped acceptance"
+        },
+        {
+          "line": 35,
+          "text": "**B02–B04 (material: signature/capsule authority identity).** Existing signatures are accepted on a second capsule with different `capsule_id` but same `content_digest` (B02), after changing purpose to another allowed purpose (B03), and after changing `lawful_set_digest` (B04). OC2's signer binds only content bytes, not capsule ID, purpose or frozen envelope. No human signer is implicated: credentials are openly derived **TEST_ONLY** fixtures."
+        },
+        {
+          "line": 43,
+          "text": "The new court also includes **three PASS ceiling demonstrations**, not grant evidence: any local fixture caller can self-authorize a holder using `authorize_holder`, unsigned fixture capsules can reach release, and publicly generated signer strings produce valid mock signatures. These guarantee the review is not misread as institutional custody certification. Real signer registry, competent holder issuance and full signed-event gating are missing by design."
+        },
+        {
+          "line": 45,
+          "text": "## Review disposition and repair frontier"
+        },
+        {
+          "line": 47,
+          "text": "**`REVIEW_REVISE__TEN_EXECUTED_NEW_SOURCEFREE_REDS__SIX_HISTORICAL_CONFLICTS_PRESERVED__NO_ISSUANCE`.** In particular B02–B04, C05–C06, E05–E06 require test-only implementation repair before scoped scientific acceptance; D04–D05 and E07 belong in the same bounded repair. Do not edit, skip or xfail any inherited OC1 31, OCR1 45 or OC2 19. Preserve test-only mock disclaimers, no external calls or grants. Future OC4 reviewer must independently execute all 131 plus its own falsifiers, not self-adopt."
+        },
+        {
+          "line": 49,
+          "text": "C07 persisted/cold-process custody remains `NOT_REACHED` (no API); no external durable monotonic proof, semantic signer/role issuer, real holdout, population inference, provider/model-use/privacy/spend grant or V3 authorization. Remote independently reproducible core evidence and reproducer are in `OC3_REMOTE_CORE_EVIDENCE.tar.xz`; the separately downloadable full local archive also contains the baseline and all raw logs and the complete matrix. Return cannot contain its own future commit SHA; exact remote verification is performed after push."
+        }
+      ],
+      "referenced_shas": [
+        "324d63070a47dea920c4fbca433d0177c16ce9cf",
+        "a61d5794271038fb20c94a75eaee401a66613ce9",
+        "f117f380c524db5b1eae0ce280be23f1c4bf2c23",
+        "19438890e43153e2bc4a1ad271b5e19bcef33e1e",
+        "aba637265bea2358790fea50d0e7abc98141e472"
+      ],
+      "reported_disposition": "Verdict: `REVIEW_REVISE`.** This is an independent I2 source-free Python court, NOT HQ adoption, independent institutional custody, trusted signer/role issuance, protected holdout, model grant, population inference, or V3 operation."
+    },
+    {
+      "index": 39,
+      "name": "agent/reviewer-sorok-r3-hq309-out5-out4-independent-r1",
+      "pinned_sha": "e576e405e50e1bd91be5c839d8c33b69fa851fd9",
+      "inspection_state": "NOT_INSPECTED",
+      "notes": [
+        "RETURN NOT_FOUND: Error code: NOT_FOUND; Error: GitHub API error 404: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+      ],
+      "changed_paths_count": 1,
+      "changed_paths_truncated": false,
+      "changed_paths_sample": [
+        "WORKER_COMMISSIONS/SOROK-R3-HQ309-OUT5-OUT4-INDEPENDENT-R1/00_COMMISSION.md"
+      ],
+      "code_paths": []
+    }
+  ]
+}
