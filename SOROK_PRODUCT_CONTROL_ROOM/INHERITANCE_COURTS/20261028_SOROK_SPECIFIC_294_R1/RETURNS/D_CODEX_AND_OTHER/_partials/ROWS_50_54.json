@@ -1,0 +1,528 @@
+{
+  "schema": "SOROK_D_SHARD_RECON_V1",
+  "rows": [
+    {
+      "index": 50,
+      "name": "codex/sorok-s44-sampled-root-consumer",
+      "pinned_sha": "923278fbe6b030e2ffdd10fe42d7a18266344611",
+      "current_sha_or_null": "923278fbe6b030e2ffdd10fe42d7a18266344611",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "91ccd3ca29978c87555056f336e37348fcee2945",
+        "ahead": 816,
+        "behind": 1921,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/s44/bundle.py",
+          "blob_sha": "d3d7f7396ae254da89ae157eb81e3f5bf8183a18",
+          "lines": 285,
+          "kind": "code",
+          "symbols": [
+            "_cand",
+            "_rule",
+            "default_bundle",
+            "_forbidden",
+            "normalize_bundle",
+            "effective_probability"
+          ],
+          "opening": "\"\"\"Explicit immutable TEST_ONLY source/model bundle for S44 root sampling.\"\"\"\nfrom __future__ import annotations\n\nfrom copy import deepcopy\nfrom typing import Any, Mapping\n\nfrom .errors import S44Refusal\nfrom .rng import canonical_json, sha256_hex\n\nSCHEMA = \"S44_SOURCE_MODEL_BUNDLE@1\"\nGRADE = \"TEST_ONLY_S44_SYNTHETIC_SOURCE_MODEL_NOT_EMPIRICAL\"\nROOT_SEED_SOURCE = \"EXPLICIT_CALLER_SEED\"\nA_ID = \"TEST_ONLY_BP1_R26V_ACTOR_A\"\nB_ID = \"TEST_ONLY_BP1_R26V_ACTOR_B\"\nFORBIDDEN_KEYS = frozenset({\n    \"desired_action\", \"chosen_action\", \"response_witness\", \"biography\",",
+          "key_lines": [
+            {
+              "line": 1,
+              "text": "\"\"\"Explicit immutable TEST_ONLY source/model bundle for S44 root sampling.\"\"\""
+            },
+            {
+              "line": 11,
+              "text": "GRADE = \"TEST_ONLY_S44_SYNTHETIC_SOURCE_MODEL_NOT_EMPIRICAL\""
+            },
+            {
+              "line": 13,
+              "text": "A_ID = \"TEST_ONLY_BP1_R26V_ACTOR_A\""
+            },
+            {
+              "line": 14,
+              "text": "B_ID = \"TEST_ONLY_BP1_R26V_ACTOR_B\""
+            },
+            {
+              "line": 16,
+              "text": "\"desired_action\", \"chosen_action\", \"response_witness\", \"biography\","
+            },
+            {
+              "line": 24,
+              "text": "source_ref = source_ref or (\"TEST_ONLY_S44_CANDIDATE_\" + candidate_id.upper())"
+            },
+            {
+              "line": 26,
+              "text": "\"schema\": \"S44_TEST_ONLY_CANDIDATE_ELIGIBILITY@1\","
+            },
+            {
+              "line": 30,
+              "text": "\"candidate_authority_id\": \"TEST_ONLY_S44_ROOT_MODEL\","
+            },
+            {
+              "line": 38,
+              "text": "\"candidate_authority_id\": \"TEST_ONLY_S44_ROOT_MODEL\","
+            },
+            {
+              "line": 58,
+              "text": "\"candidate_owner_authority\": \"TEST_ONLY_S44_ROOT_MODEL\","
+            },
+            {
+              "line": 145,
+              "text": "\"condition_threshold\": 3,"
+            },
+            {
+              "line": 160,
+              "text": "\"condition_threshold\": 3,"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/transaction.py"
+      ],
+      "code_path_count_in_partial_comparison": 14,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 51,
+      "name": "codex/sorok-s45-generated-root-encounter",
+      "pinned_sha": "f26a138e20d53c809d611cf8d834ec647b0804bf",
+      "current_sha_or_null": "f26a138e20d53c809d611cf8d834ec647b0804bf",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "91ccd3ca29978c87555056f336e37348fcee2945",
+        "ahead": 819,
+        "behind": 1921,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/session.py",
+          "blob_sha": "5b5dc0238dcf9fa4e9f2635655d9e8dfdbf6678c",
+          "lines": 705,
+          "kind": "code",
+          "symbols": [
+            "S45ReadRefusal",
+            "__init__",
+            "S45Session",
+            "start",
+            "open",
+            "say",
+            "do_help",
+            "attend",
+            "_respond",
+            "_latest_user_event",
+            "_record_encounter",
+            "_c9_lineage",
+            "_root_evidence",
+            "_current_access",
+            "_validate_encounter",
+            "read_encounters",
+            "_encounter_summary",
+            "read_events",
+            "read_event",
+            "read_latest",
+            "_surface",
+            "_projection_verification",
+            "verify"
+          ],
+          "opening": "\"\"\"S45 user encounter over the actual generated S44 root.\"\"\"\nfrom __future__ import annotations\n\nimport json\nfrom pathlib import Path\nfrom typing import Any, Mapping\n\nfrom .bootstrap import install\n\ninstall()\n\nimport s40.session as s40_session  # noqa: E402\nfrom bp1.canon import digest  # noqa: E402\nfrom bp4.world import WorldRefusal, owner_receipt, repair_event  # noqa: E402\nfrom candidate import seal  # noqa: E402\nfrom r31e import expression  # noqa: E402",
+          "key_lines": [
+            {
+              "line": 28,
+              "text": "GRADE = \"TEST_ONLY_SOURCEBOUND_GENERATED_ROOT_ENCOUNTER_NOT_NATIVE\""
+            },
+            {
+              "line": 70,
+              "text": "result = super().say(text)"
+            },
+            {
+              "line": 72,
+              "text": "result = {"
+            },
+            {
+              "line": 73,
+              "text": "\"status\": \"UNSUPPORTED\","
+            },
+            {
+              "line": 85,
+              "text": "self._record_encounter(\"SAY\", result)"
+            },
+            {
+              "line": 86,
+              "text": "return result"
+            },
+            {
+              "line": 91,
+              "text": "result = super().do_help()"
+            },
+            {
+              "line": 93,
+              "text": "result = {"
+            },
+            {
+              "line": 94,
+              "text": "\"status\": \"UNSUPPORTED\","
+            },
+            {
+              "line": 103,
+              "text": "result[\"language\"] = result.get(\"language\") or self._last_language"
+            },
+            {
+              "line": 104,
+              "text": "self._record_encounter(\"DO_HELP\", result)"
+            },
+            {
+              "line": 105,
+              "text": "return result"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/transaction.py"
+      ],
+      "code_path_count_in_partial_comparison": 14,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 52,
+      "name": "codex/sorok-s46-interval-participation-consumer",
+      "pinned_sha": "f0ef39b92ce2e4add5c0a699389e12f1d7ae434e",
+      "current_sha_or_null": "f0ef39b92ce2e4add5c0a699389e12f1d7ae434e",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "91ccd3ca29978c87555056f336e37348fcee2945",
+        "ahead": 822,
+        "behind": 1921,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1/s46/producer.py",
+          "blob_sha": "1f5e99e8377cc9abdf3d8779158c7d602a4b3a15",
+          "lines": 481,
+          "kind": "code",
+          "symbols": [
+            "_seal",
+            "_attempt_receipt",
+            "_world_receipt",
+            "produce_interval",
+            "_validate_segment",
+            "validate_interval_state",
+            "read_interval_states"
+          ],
+          "opening": "\"\"\"Produce actual period-grain workshop participation in the S45 C12 person.\"\"\"\nfrom __future__ import annotations\n\nfrom copy import deepcopy\nfrom typing import Any\n\nfrom .bootstrap import install\n\ninstall()\n\nfrom candidate import digest, seal  # noqa: E402\nfrom s41.event import world_prerequisites  # noqa: E402\n\nfrom .errors import S46Refusal  # noqa: E402\nfrom .model import (\n    ACTOR_OWNER,",
+          "key_lines": [
+            {
+              "line": 31,
+              "text": "STATE_GRADE = \"TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE\""
+            },
+            {
+              "line": 32,
+              "text": "STATE_STATUSES = frozenset({"
+            },
+            {
+              "line": 44,
+              "text": "before: dict, predecessor: str = \"\") -> dict:"
+            },
+            {
+              "line": 89,
+              "text": "\"predecessor_world_receipt_hash\": predecessor,"
+            },
+            {
+              "line": 90,
+              "text": "\"actual_result_claimed\": False,"
+            },
+            {
+              "line": 96,
+              "text": "before: dict, after: dict, result: dict | None) -> dict:"
+            },
+            {
+              "line": 97,
+              "text": "actual = result or {}"
+            },
+            {
+              "line": 98,
+              "text": "confirmed = actual.get(\"status\") == \"OK\" and bool(actual.get(\"event_id\"))"
+            },
+            {
+              "line": 99,
+              "text": "status = \"CONFIRMED\" if confirmed else ("
+            },
+            {
+              "line": 105,
+              "text": "status = \"NOT_PERFORMED\""
+            },
+            {
+              "line": 116,
+              "text": "\"status\": status,"
+            },
+            {
+              "line": 131,
+              "text": "\"welfare_or_consent_inferred\": False,"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/transaction.py"
+      ],
+      "code_path_count_in_partial_comparison": 14,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 53,
+      "name": "codex/sorok-s47-interval-c9-conditioning",
+      "pinned_sha": "765a441f87292aa4c17794745b65cb54e6aaa83f",
+      "current_sha_or_null": "765a441f87292aa4c17794745b65cb54e6aaa83f",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "91ccd3ca29978c87555056f336e37348fcee2945",
+        "ahead": 825,
+        "behind": 1921,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/s47/conditioning.py",
+          "blob_sha": "08b4a3013e34c2bcef05a6491964736faf033663",
+          "lines": 184,
+          "kind": "code",
+          "symbols": [
+            "_source_for_state",
+            "current_interval_source",
+            "validate_event_source",
+            "qualify_source"
+          ],
+          "opening": "\"\"\"Compose one qualified S46 interval source for the real C9 conditioner.\"\"\"\nfrom __future__ import annotations\n\nfrom .bootstrap import install\n\ninstall()\n\nfrom candidate.conditioning import make_conditioning_source  # noqa: E402\n\nfrom .errors import S47Refusal  # noqa: E402\n\nSOURCE_CLASS = \"ResolvedStructuralContext\"\nSCHEMA = \"S47_INTERVAL_MATERIAL_CONDITION@1\"\n\n\ndef _source_for_state(session, state, *, access: str,",
+          "key_lines": [
+            {
+              "line": 20,
+              "text": "source_ref = \"TEST_ONLY_S47_INTERVAL_\" + state[\"state_id\"]"
+            },
+            {
+              "line": 23,
+              "text": "\"grade\": \"TEST_ONLY_S47_WORLD_MATERIAL_CONDITION_NOT_NATIVE\","
+            },
+            {
+              "line": 28,
+              "text": "\"source_grade\": \"TEST_ONLY_INSTALLED_SIMULATION_OWNER\","
+            },
+            {
+              "line": 42,
+              "text": "\"status\": state.get(\"status\"),"
+            },
+            {
+              "line": 49,
+              "text": "\"actor_knowledge_inferred\": False,"
+            },
+            {
+              "line": 132,
+              "text": "\"grade\": \"TEST_ONLY_S47_WORLD_MATERIAL_CONDITION_NOT_NATIVE\","
+            },
+            {
+              "line": 137,
+              "text": "\"source_grade\": \"TEST_ONLY_INSTALLED_SIMULATION_OWNER\","
+            },
+            {
+              "line": 150,
+              "text": "\"status\": state.get(\"status\"),"
+            },
+            {
+              "line": 155,
+              "text": "\"actor_knowledge_inferred\": False,"
+            },
+            {
+              "line": 162,
+              "text": "if source.get(\"source_ref\") != \"TEST_ONLY_S47_INTERVAL_\" + state[\"state_id\"]:"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/transaction.py"
+      ],
+      "code_path_count_in_partial_comparison": 14,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 54,
+      "name": "codex/sorok-s48-one-call-continuing-turn",
+      "pinned_sha": "9fe0d066e4bf61ab6819a1f56e42d6d07956c2f7",
+      "current_sha_or_null": "9fe0d066e4bf61ab6819a1f56e42d6d07956c2f7",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "91ccd3ca29978c87555056f336e37348fcee2945",
+        "ahead": 829,
+        "behind": 1921,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/s48/sources.py",
+          "blob_sha": "90775a9a2b5793542b3e8e31734f929fdc8e0a12",
+          "lines": 33,
+          "kind": "code",
+          "symbols": [
+            "candidate_specs",
+            "eligible_candidate_ids",
+            "issue_current_source"
+          ],
+          "opening": "\"\"\"Source-owner boundary for S48 prospective other-actor operations.\n\nNo independently owned/current B source or performer is present in the accepted\nsame-root S42/S47 consumer. S48 must not author a B refusal body or infer one\nfrom actor material state; this module therefore exposes no positive candidate\nand returns an explicit source-owner hold until an actual owner-issued source\nexists.\n\"\"\"\nfrom __future__ import annotations\n\nfrom .errors import S48Refusal\n\nMISSING_FUNCTION = \"S48_MISSING_INDEPENDENT_CURRENT_B_SOURCE_PERFORMER\"\nSOURCE_OWNER_HOLD = \"S48_SOURCE_OWNER_HOLD_NO_CURRENT_OWNER_ADMISSION\"\n\n",
+          "key_lines": [
+            {
+              "line": 6,
+              "text": "and returns an explicit source-owner hold until an actual owner-issued source"
+            },
+            {
+              "line": 14,
+              "text": "SOURCE_OWNER_HOLD = \"S48_SOURCE_OWNER_HOLD_NO_CURRENT_OWNER_ADMISSION\""
+            },
+            {
+              "line": 26,
+              "text": "raise S48Refusal(SOURCE_OWNER_HOLD, MISSING_FUNCTION)"
+            },
+            {
+              "line": 30,
+              "text": "\"MISSING_FUNCTION\", \"SOURCE_OWNER_HOLD\", \"candidate_specs\","
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/transaction.py"
+      ],
+      "code_path_count_in_partial_comparison": 14,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    }
+  ]
+}
