@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Offline intake-contract gate. Data integrity only; NEVER science or remote lease authority."""
+"""PRE-MAIN sourcefree control integrity. Fail closed on adoption. Not an authority issuer."""
 from __future__ import annotations
+
 import argparse
 import copy
+import hashlib
 import json
 import re
 import subprocess
@@ -10,145 +12,238 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SHA = re.compile(r"^[a-f0-9]{40}$")
+# Pin initial, historically unreviewed candidate seed to a precise Git blob.
+# Owner approval is NOT inferred from this constant. A changed seed requires a
+# new independent control review and protected owner CAS, not a silent rewrite.
+FROZEN_SEED_BLOB = "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8"
+SEED_FILE = ROOT / "00_FROZEN_INITIAL_SEED.json"
 EVENT_STATES = {
     "DISCOVERED", "COMMISSIONED_NOT_LAUNCHED", "ACTIVITY_UNKNOWN",
     "ACTIVE_VERIFIED", "RETURNED_PARTIAL_HOLD", "RETURNED_UNADOPTED",
     "UNDER_INDEPENDENT_REVIEW", "REVISE", "ACCEPT_SCOPED", "REJECT",
-    "HOLD", "PREMAIN_FANIN_STAGED", "ADOPTED_CAS_VERIFIED",
+    "HOLD", "OWNER_ADOPTION_CANDIDATE", "PREMAIN_FANIN_STAGED",
+    "ADOPTED_CAS_VERIFIED",
 }
-COURT_GRADES = {"ACCEPT_SCOPED", "RED", "HOLD", "NOT_RUN"}
-REQ_EVENT = ("event_id", "role", "subject_ref", "immutable_sha",
-    "parent_source_sha", "receipt_path", "state", "finding",
-    "interpretation", "action", "owner", "three_courts",
-    "first_consumer", "known_reds", "adoption", "reviewer_of_sha",
-    "verified_date", "intake_grade")
-REQ_ADOPTED = ("merged_premain_commit", "owner_cas_receipt",
-    "progress_json_revision", "progress_md_revision",
-    "exact_importing_consumer", "reviewed_author_sha",
-    "independent_reviewer_sha", "source_owner_grant")
+GRADES = {"ACCEPT_SCOPED", "RED", "HOLD", "NOT_RUN"}
+REQ = ("event_id", "role", "subject_ref", "immutable_sha",
+       "parent_source_sha", "receipt_path", "state", "finding",
+       "interpretation", "action", "owner", "three_courts", "first_consumer",
+       "known_reds", "adoption", "reviewer_of_sha", "verified_date",
+       "intake_grade")
+REVIEW_ROLES = {"INDEPENDENT_REVIEW", "INDEPENDENT_CONTROL_REVIEW"}
+UNTRUSTED_MERGE_STATES = {"MERGED", "ADOPTED_CAS_VERIFIED"}
 
-def validate(log: dict, flight: dict) -> list[str]:
-    errors: list[str] = []
-    def bad(condition: bool, msg: str):
-        if condition:
-            errors.append(msg)
+def load_seed() -> tuple[dict, list[str]]:
+    failures = []
+    try:
+        raw = SEED_FILE.read_bytes()
+        git_blob = hashlib.sha1(
+            b"blob " + str(len(raw)).encode("ascii") + b"\\x00" + raw
+        ).hexdigest()
+        if git_blob != FROZEN_SEED_BLOB:
+            failures.append("INITIAL_SEED_SOURCE_BLOB_CHANGED__NOT_REVIEWED")
+        seed = json.loads(raw)
+        if seed.get("owner_approval_status") != "PENDING":
+            failures.append("INITIAL_SEED_OWNER_APPROVAL_FABRICATED")
+        if seed.get("frozen_subject_sha") != "73f0b57da42e264617e51fe9c703c17aba15ff2a":
+            failures.append("INITIAL_SEED_SOURCE_CUT_MISMATCH")
+        if len(seed.get("events", [])) != 11 or len(seed.get("workers", [])) != 11:
+            failures.append("INITIAL_SEED_DENOMINATOR_CHANGED")
+        return seed, failures
+    except (ValueError, OSError) as exc:
+        return {}, ["INITIAL_SEED_UNREADABLE:" + type(exc).__name__]
+
+def validate(log: dict, flight: dict, seed: dict | None = None) -> list[str]:
+    if seed is None:
+        seed, errs = load_seed()
+    else:
+        errs = []
+    errors = list(errs)
+    def bad(test: bool, issue: str) -> None:
+        if test:
+            errors.append(issue)
 
     bad(log.get("schema") != "PREMAIN_CROSS_HQ_BRANCH_RETURN_EVENT_LOG@1", "LOG_SCHEMA")
     bad(flight.get("schema") != "PREMAIN_CROSS_HQ_BRANCH_FLIGHT_AND_PR_REGISTER@1", "FLIGHT_SCHEMA")
-    events = log.get("events")
-    workers = flight.get("workers")
+    events, workers = log.get("events"), flight.get("workers")
     if not isinstance(events, list) or not isinstance(workers, list):
-        return errors + ["EVENT_OR_WORKER_LIST_MISSING"]
-    known = {}
-    for index, e in enumerate(events):
-        pre = f"EVENT_{index}_"
-        for field in REQ_EVENT:
-            bad(field not in e, pre+"MISSING_"+field)
+        return errors + ["EVENT_OR_FLIGHT_LIST_MISSING"]
+    for key, rows in (("events", events), ("workers", workers), ("prs", flight.get("prs"))):
+        fixed = seed.get(key, [])
+        bad(not isinstance(rows, list) or rows[:len(fixed)] != fixed,
+            "INITIAL_" + key.upper() + "_REWRITTEN_OR_DELETED")
+    ids: dict[str, int] = {}
+    for n, e in enumerate(events):
+        mark = f"EVENT_{n}_"
+        if not isinstance(e, dict):
+            errors.append(mark + "NOT_OBJECT")
+            continue
+        for field in REQ:
+            bad(field not in e, mark + "MISSING_" + field)
         ident = e.get("event_id")
-        bad(not isinstance(ident, str) or not ident.strip(), pre+"INVALID_EVENT_ID")
-        bad(ident in known, pre+"DUPLICATE_ID")
+        bad(not isinstance(ident, str) or not ident.strip(), mark + "INVALID_ID")
+        bad(ident in ids, mark + "DUPLICATE_ID")
         if isinstance(ident, str):
-            known[ident] = index
-        bad(e.get("state") not in EVENT_STATES, pre+"ILLEGAL_STATUS")
-        for f in ("immutable_sha", "parent_source_sha"):
-            bad(not isinstance(e.get(f), str) or not SHA.fullmatch(e[f]), pre+"NOT_EXACT_SHA_"+f)
-        for f in ("subject_ref", "receipt_path", "finding", "interpretation", "action", "owner", "first_consumer"):
-            bad(not isinstance(e.get(f), str) or not e[f].strip(), pre+"MISSING_DETAIL_"+f)
-        bad(not isinstance(e.get("known_reds"), list), pre+"NO_NEGATIVE_LIST")
+            ids[ident] = n
+        bad(e.get("state") not in EVENT_STATES, mark + "ILLEGAL_STATUS")
+        for k in ("immutable_sha", "parent_source_sha"):
+            bad(not isinstance(e.get(k), str) or not SHA.fullmatch(e.get(k, "")), mark + "BAD_SHA_" + k)
+        for k in ("subject_ref", "receipt_path", "finding", "interpretation", "action", "owner", "first_consumer"):
+            bad(not isinstance(e.get(k), str) or not e.get(k, "").strip(), mark + "MISSING_DETAIL_" + k)
+        bad(not isinstance(e.get("known_reds"), list), mark + "NEGATIVES_NOT_LIST")
         courts = e.get("three_courts")
         if not isinstance(courts, dict):
-            errors.append(pre+"COURTS_MISSING")
+            errors.append(mark + "COURTS_MISSING")
         else:
-            for name in ("engineering", "scientific", "authority"):
-                bad(courts.get(name) not in COURT_GRADES, pre+"INVALID_COURT_"+name)
-        if e.get("role") == "INDEPENDENT_REVIEW":
+            for axis in ("engineering", "scientific", "authority"):
+                bad(courts.get(axis) not in GRADES, mark + "COURT_INVALID_" + axis)
+        # OFFLINE log cannot certify authority/protection/merged target or source grants.
+        # Even completely filled made-up CAS fields cannot pass. A later separately
+        # adopted owner-attestation verifier is needed to change this rule.
+        bad(e.get("adoption") is not False or e.get("state") == "ADOPTED_CAS_VERIFIED",
+            mark + "ADOPTION_REQUIRES_EXTERNAL_OWNER_CAS__FAIL_CLOSED")
+        if e.get("role") in REVIEW_ROLES:
             tested = e.get("reviewer_of_sha")
-            bad(not isinstance(tested, str) or not SHA.fullmatch(tested), pre+"REVIEWED_SHA_MISSING")
-            bad(tested == e.get("immutable_sha"), pre+"SELF_REVIEW")
-        if e.get("adoption") is True or e.get("state") == "ADOPTED_CAS_VERIFIED":
-            bad(e.get("adoption") is not True or e.get("state") != "ADOPTED_CAS_VERIFIED", pre+"ADOPTION_STATE_MISMATCH")
-            for f in REQ_ADOPTED:
-                bad(not e.get(f), pre+"UNPROVED_ADOPTION_"+f)
-            if e.get("progress_json_revision") != e.get("progress_md_revision"):
-                errors.append(pre+"PROGRESS_REVISION_DIVERGENCE")
-            for f in ("merged_premain_commit", "reviewed_author_sha", "independent_reviewer_sha"):
-                bad(not isinstance(e.get(f), str) or not SHA.fullmatch(e[f]), pre+"ADOPTION_SHA_"+f)
-            if isinstance(courts, dict):
-                bad(any(courts.get(k) != "ACCEPT_SCOPED" for k in ("engineering","scientific","authority")), pre+"UNQUALIFIED_COURT_AS_ADOPTED")
-        else:
-            bad(e.get("adoption") not in (False, None), pre+"FALSE_ADOPTION_FLAG")
+            bad(not isinstance(tested, str) or not SHA.fullmatch(tested), mark + "REVIEW_TARGET_SHA_INVALID")
+            bad(tested == e.get("immutable_sha"), mark + "SELF_REVIEW")
+            prior = events[:n]
+            bad(not any(isinstance(p, dict) and p.get("immutable_sha") == tested
+                        and p.get("role") not in REVIEW_ROLES for p in prior),
+                mark + "REVIEW_TARGET_NOT_BOUND_TO_PRIOR_SOURCE_EVENT")
         older = e.get("supersedes_event_id")
         if older is not None:
-            bad(older not in known or known.get(older, index)>=index, pre+"BAD_SUPERSESSION")
-        # A historical event cannot be changed in-place by this script. Git history must be reviewed by owner.
-    registered = {}
-    for i, w in enumerate(workers):
-        wid = w.get("id")
-        bad(not wid or wid in registered, f"FLIGHT_{i}_DUPLICATE_ID")
-        if wid:
-            registered[wid] = w
-        bad(not isinstance(w.get("exact_return_sha"), str) or not SHA.fullmatch(w["exact_return_sha"]), f"FLIGHT_{i}_SHA")
-        bad(w.get("first_consumer_adopted") is True and w.get("status") != "ADOPTED_CAS_VERIFIED", f"FLIGHT_{i}_UNAUTHORIZED_ADOPTION")
-    bad(set(registered) != {e.get("event_id") for e in events}, "FLIGHTS_AND_LOG_EVENTS_DO_NOT_MATCH")
+            bad(older not in ids or ids.get(older, n) >= n, mark + "INVALID_SUPERSESSION")
+    flights: dict[str, dict] = {}
+    for n, row in enumerate(workers):
+        if not isinstance(row, dict):
+            errors.append(f"FLIGHT_{n}_NOT_OBJECT")
+            continue
+        ident = row.get("id")
+        bad(not isinstance(ident, str) or not ident.strip() or ident in flights,
+            f"FLIGHT_{n}_DUPLICATE_OR_MISSING_ID")
+        if isinstance(ident, str):
+            flights[ident] = row
+        bad(not isinstance(row.get("exact_return_sha"), str)
+            or not SHA.fullmatch(row.get("exact_return_sha", "")), f"FLIGHT_{n}_BAD_SHA")
+        bad(row.get("first_consumer_adopted") is not False,
+            f"FLIGHT_{n}_ADOPTION_REQUIRES_EXTERNAL_OWNER_CAS")
+        bad(row.get("status") in UNTRUSTED_MERGE_STATES,
+            f"FLIGHT_{n}_FAKE_ADOPTED_STATUS")
+    bad(set(flights) != set(ids), "FLIGHTS_AND_EVENTS_NOT_ONE_TO_ONE")
     for e in events:
-        key = e.get("event_id")
-        if key in registered:
-            bad(registered[key].get("exact_return_sha") != e.get("immutable_sha"), "FLIGHT_LOG_REF_MISMATCH_"+str(key))
-    for pr in flight.get("prs", []):
-        bad(pr.get("adoption") is True and not pr.get("merged_commit"), "PR_FALSE_ADOPTION_"+str(pr.get("number")))
+        if not isinstance(e, dict):
+            continue
+        row = flights.get(e.get("event_id"))
+        if row:
+            bad(row.get("exact_return_sha") != e.get("immutable_sha"),
+                "FLIGHT_LOG_EXACT_SOURCE_MISMATCH_" + str(e.get("event_id")))
+            # Legacy exact original 11 rows are frozen (some had different owner labels
+            # and HR1's known REVISE status); new rows must be in the same lifecycle.
+            if ids[e.get("event_id")] >= len(seed.get("events", [])):
+                bad(row.get("status") != e.get("state"),
+                    "NEW_FLIGHT_LOG_STATUS_DIVERGENCE_" + str(e.get("event_id")))
+                bad(row.get("owner") != e.get("owner"),
+                    "NEW_FLIGHT_LOG_OWNER_DIVERGENCE_" + str(e.get("event_id")))
+    prs = flight.get("prs", [])
+    if not isinstance(prs, list):
+        errors.append("PRS_NOT_LIST")
+    else:
+        for pr in prs:
+            if not isinstance(pr, dict):
+                errors.append("PR_NOT_OBJECT")
+            else:
+                bad(pr.get("adoption") is not False or pr.get("status") in UNTRUSTED_MERGE_STATES,
+                    "PR_MERGE_OR_ADOPTION_REQUIRES_VERIFIED_REMOTE_PROOF_" + str(pr.get("number")))
     return errors
 
-def load():
+def load() -> tuple[dict, dict]:
     return (json.loads((ROOT/"01_RETURN_EVENT_LOG.json").read_text()),
-        json.loads((ROOT/"02_FLIGHT_AND_PR_REGISTER.json").read_text()))
+            json.loads((ROOT/"02_FLIGHT_AND_PR_REGISTER.json").read_text()))
 
-def selftest(log: dict, flight: dict):
-    assert not validate(log, flight), validate(log, flight)
-    def must_fail(edit, token):
-        a,b=copy.deepcopy((log,flight))
-        edit(a,b)
-        failures=validate(a,b)
-        assert any(token in e for e in failures),(token,failures)
-    must_fail(lambda a,b: a["events"].append(copy.deepcopy(a["events"][0])), "DUPLICATE_ID")
-    must_fail(lambda a,b: a["events"][0].update(adoption=True,state="ADOPTED_CAS_VERIFIED"), "UNPROVED_ADOPTION")
-    review_index = next(i for i, e in enumerate(log["events"]) if e.get("role") == "INDEPENDENT_REVIEW")
-    must_fail(lambda a,b: a["events"][review_index].update(reviewer_of_sha=a["events"][review_index]["immutable_sha"]), "SELF_REVIEW")
-    must_fail(lambda a,b: b["workers"][0].update(exact_return_sha="0"*40), "FLIGHT_LOG_REF_MISMATCH")
-    must_fail(lambda a,b: a["events"][-1]["three_courts"].update(scientific="PASS"), "INVALID_COURT")
-    print("PASS: 5 controlled mutation witnesses fail as intended")
+def selftest(log: dict, flight: dict) -> None:
+    seed, problems = load_seed()
+    assert not problems, problems
+    assert not validate(log, flight, seed), validate(log, flight, seed)
+    def reject(name, edit, expected):
+        a, b = copy.deepcopy((log, flight))
+        edit(a, b)
+        failures = validate(a, b, seed)
+        assert any(expected in x for x in failures), (name, expected, failures)
+    reject("W1",lambda a,b: a["events"].append(copy.deepcopy(a["events"][0])), "DUPLICATE_ID")
+    reject("W2",lambda a,b: a["events"][0].update(adoption=True,state="ADOPTED_CAS_VERIFIED"), "ADOPTION_REQUIRES_EXTERNAL")
+    ridx = next(i for i, e in enumerate(log["events"]) if e.get("role") == "INDEPENDENT_REVIEW")
+    reject("W3",lambda a,b: a["events"][ridx].update(reviewer_of_sha=a["events"][ridx]["immutable_sha"]), "SELF_REVIEW")
+    reject("W4",lambda a,b: b["workers"][0].update(exact_return_sha="0"*40), "FLIGHT_LOG_EXACT_SOURCE_MISMATCH")
+    reject("W5",lambda a,b: a["events"][-1]["three_courts"].update(scientific="PASS"), "COURT_INVALID")
+    reject("B1",lambda a,b: b["workers"][0].update(status="ADOPTED_CAS_VERIFIED"), "FAKE_ADOPTED_STATUS")
+    reject("B2",lambda a,b: b["workers"][0].update(owner="NOT_THE_OWNER"), "INITIAL_WORKERS_REWRITTEN")
+    reject("B3",lambda a,b: a["events"][ridx].update(known_reds=[]), "INITIAL_EVENTS_REWRITTEN")
+    reject("B4",lambda a,b: a["events"][0]["three_courts"].update(scientific="ACCEPT_SCOPED"), "INITIAL_EVENTS_REWRITTEN")
+    reject("B5",lambda a,b: a["events"][ridx].update(reviewer_of_sha="f"*40), "REVIEW_TARGET_NOT_BOUND")
+    def fake_adopt(a,b):
+        e=copy.deepcopy(a["events"][0]);w=copy.deepcopy(b["workers"][0])
+        e.update(event_id="FORGED_ADOPTION", immutable_sha="e"*40,
+                 parent_source_sha="f"*40, state="ADOPTED_CAS_VERIFIED", adoption=True,
+                 merged_premain_commit="c"*40,owner_cas_receipt="FAKE",
+                 progress_json_revision=999,progress_md_revision=999,
+                 reviewed_author_sha="b"*40, independent_reviewer_sha="d"*40,
+                 exact_importing_consumer="FAKE",source_owner_grant="FAKE",
+                 three_courts={x:"ACCEPT_SCOPED" for x in ("engineering","scientific","authority")})
+        w.update(id=e["event_id"],exact_return_sha=e["immutable_sha"],
+                 status="ADOPTED_CAS_VERIFIED",first_consumer_adopted=True)
+        a["events"].append(e);b["workers"].append(w)
+    reject("B6",fake_adopt,"ADOPTION_REQUIRES_EXTERNAL")
+    reject("B7",lambda a,b: a["events"][0].update(finding="REWRITTEN"), "INITIAL_EVENTS_REWRITTEN")
+    reject("B8",lambda a,b: b["prs"][0].update(status="MERGED"), "INITIAL_PRS_REWRITTEN")
+    # Legal owner candidate must NOT be a synonym for adoption.
+    a,b=copy.deepcopy((log,flight))
+    e=copy.deepcopy(a["events"][-1]);w=copy.deepcopy(b["workers"][-1])
+    e.update(event_id="FUTURE_OWNER_CANDIDATE_TEST",immutable_sha="1"*40,
+             state="OWNER_ADOPTION_CANDIDATE",adoption=False,reviewer_of_sha=None,
+             supersedes_event_id=None)
+    w.update(id=e["event_id"],exact_return_sha=e["immutable_sha"],
+             status=e["state"],owner=e["owner"],first_consumer_adopted=False)
+    a["events"].append(e);b["workers"].append(w)
+    assert not validate(a,b,seed), validate(a,b,seed)
+    print("PASS: 13 mutation witnesses rejected + valid nonadopted owner-candidate stage")
 
 def main() -> int:
     ap=argparse.ArgumentParser()
     ap.add_argument("--selftest",action="store_true")
-    ap.add_argument("--baseline-ref", default=None, help="Actual immutable PRE-MAIN PR base SHA; verify strict append-only event prefix")
+    ap.add_argument("--baseline-ref",default=None)
     args=ap.parse_args()
     log,flight=load()
-    failures=validate(log,flight)
+    errs=validate(log,flight)
     if args.baseline_ref:
         if not SHA.fullmatch(args.baseline_ref):
-            failures.append("INVALID_BASELINE_SHA")
+            errs.append("BAD_BASELINE_SHA")
+        elif subprocess.run(["git","cat-file","-e",args.baseline_ref+"^{commit}"],
+                             cwd=ROOT,capture_output=True).returncode:
+            errs.append("BASELINE_GIT_COMMIT_UNAVAILABLE")
         else:
-            p = subprocess.run(["git", "cat-file", "-e", args.baseline_ref + "^{commit}"], cwd=ROOT, capture_output=True)
-            if p.returncode:
-                failures.append("BASELINE_COMMIT_UNAVAILABLE__NO_APPEND_ONLY_PROOF")
-            else:
-                prior = subprocess.run(["git", "show", args.baseline_ref + ":CROSS_HQ_CONTROL_ROOM/BRANCH_FANIN/01_RETURN_EVENT_LOG.json"], cwd=ROOT, capture_output=True, text=True)
-                if prior.returncode == 0:
+            p=subprocess.run(["git","show",args.baseline_ref+
+                ":CROSS_HQ_CONTROL_ROOM/BRANCH_FANIN/01_RETURN_EVENT_LOG.json"],
+                cwd=ROOT,capture_output=True,text=True)
+            q=subprocess.run(["git","show",args.baseline_ref+
+                ":CROSS_HQ_CONTROL_ROOM/BRANCH_FANIN/02_FLIGHT_AND_PR_REGISTER.json"],
+                cwd=ROOT,capture_output=True,text=True)
+            for name,resp,current,key in (
+                ("EVENT",p,log,"events"),("FLIGHT",q,flight,"workers")
+            ):
+                if resp.returncode == 0:
                     try:
-                        previous = json.loads(prior.stdout)
-                        prefix = previous.get("events", [])
-                        if log.get("events", [])[:len(prefix)] != prefix:
-                            failures.append("HISTORICAL_EVENTS_REWRITTEN_OR_DELETED__APPEND_ONLY_BROKEN")
-                        print(f"Append-only baseline checked: {len(prefix)} immutable prior event(s)")
+                        prior=json.loads(resp.stdout).get(key,[])
+                        if current.get(key,[])[:len(prior)] != prior:
+                            errs.append("PREMAIN_"+name+"_HISTORY_REWRITTEN")
                     except ValueError:
-                        failures.append("BASELINE_EVENT_LOG_UNPARSABLE")
+                        errs.append("PREMAIN_"+name+"_UNPARSABLE")
                 else:
-                    print("Baseline does not contain log (first installation); new log seeded as candidate")
-    if failures:
-        for e in failures:
-            print("FAIL:",e)
+                    print("First install: "+name+" baseline missing; candidate seed source is separately frozen, owner approval still PENDING")
+    if errs:
+        for x in errs:
+            print("FAIL:",x)
         return 1
-    print(f"PASS: structural event intake {len(log['events'])}, flight workers {len(flight['workers'])}; NOT scientific/authority certification")
+    print(f"PASS sourcefree record integrity: {len(log['events'])} events and {len(flight['workers'])} flights; NO ADOPTION ALLOWED")
     if args.selftest:
         selftest(log,flight)
     return 0
