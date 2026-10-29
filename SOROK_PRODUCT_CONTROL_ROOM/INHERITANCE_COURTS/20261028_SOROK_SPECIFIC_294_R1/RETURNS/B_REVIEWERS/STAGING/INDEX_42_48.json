@@ -1,0 +1,414 @@
+{
+  "phase": "SOURCE_READ_COMPACT",
+  "start": 42,
+  "end": 49,
+  "count": 7,
+  "items": [
+    {
+      "index": 42,
+      "name": "agent/reviewer-sorok-r3-hq312-oc5e-execution-recovery-r1",
+      "pinned_sha": "67a4f1561cdad40192f00797d66b24fc4cd91589",
+      "commit_message": "SOROK HQ312 OC5E: independent native OC4 execution recovery, REVIEW_REVISE\n\nLifts OC5's staging HOLD: the complete sealed OC1/OCR1/OC2/OC3/OC4/OC5\nsource closure was materialised from named Git commit objects into one\nPython import closure, every Git blob SHA1 checked against the commission\npin, and every court executed natively with real pytest/JUnit.\n\n349 cases: 283 PASS / 66 RED / 0 errors / 0 skips.\n- Inherited 131 reproduced exactly as expected: 121 PASS / 10 RED. The ten\n  historical original REDs remain literally failing (six procedural /\n  early-refusal, four content-only mock-signature positives superseded by\n  OC4's stricter full-capsule commitment). No canonical capsule-signature\n  identity requirement is weakened; no edit, xfail or greenwashing.\n- OC4 new 36 controls: 36 PASS.\n- OC5E native hostiles: 110 PASS, 49 RED across six new families.\n- OC5's own committed falsifier bank: 7 of 7 predicted defects now RED\n  natively, 16 controls PASS.\n\nOC5's predictions were correct and its NATIVE_MODULE_NOT_EXECUTED marking was\ncorrect; this review turns them into per-case executable evidence.\n\nNew native REDs OC5 did not predict:\n- A1 10  normalization-equivalent aliases of allowed fields (fullwidth/\n        accented/combining spellings) admitted; the set comparison discards\n        multiplicity (4 predicted + 6 new)\n- A2  6  NFKC-invisible Cyrillic/Greek/Armenian confusable leak tokens\n        admitted (value scanning is normalization-based, not confusable-based)\n- A3 18  malformed signature objects raise AttributeError, not\n        SignatureError (no isinstance guard), for 9 types x 2 positions\n- A4  1  non-enum role string raises AttributeError during re-derivation\n- A5  3  unblind unhashable holder raises untyped TypeError\n- A6 11  capsule identity/purpose/digest/version/freeze/coder/split field\n        types are unvalidated before the envelope commitment is derived\n\nAuthor source NOT repaired inside this independent review; the 49 REDs are\nthe exact regression bank, fenced by 110 controls that must not be weakened.\nTEST_ONLY scope only.",
+      "changed_files_count": 19,
+      "changed_files_api_truncation_possible": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/02_RED_ADJUDICATION.json",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/03_HOSTILE_MATRIX_AND_REGRESSION_BANK.json",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/04_HOLDS_AND_INSTALLATION_RESIDUAL.md",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/environment_passport_delta.json",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/freezes/01_STAGED_SOURCE_MANIFEST.json",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/observations/inherited_131.log",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/observations/inherited_131.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/observations/oc4_new_36.log",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/observations/oc4_new_36.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/observations/oc5_prior_predictions.log",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/observations/oc5_prior_predictions.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/observations/oc5e_native_hostiles.log",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/observations/oc5e_native_hostiles.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/observations/stage_source.log",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/repro/adjudicate.py",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/repro/run_court.py",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/repro/stage_source.py",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/tests/test_oc5e_native_hostiles.py"
+      ],
+      "review_roots": [
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1"
+      ],
+      "inspected_path": "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/00_RETURN.md",
+      "inspected_blob": "9897d7bbbfaf8f6b0e05ab9d93c3eb9eff3b01ed",
+      "source_text_length": 13898,
+      "source_heading": [
+        "# SOROK HQ312 OC5E — Independent native OC4 execution recovery",
+        "",
+        "**Repository:** `maidiu/rawlsing` (private) · **Role:** fresh independent I2 execution-recovery reviewer",
+        "**Branch:** `agent/reviewer-sorok-r3-hq312-oc5e-execution-recovery-r1`",
+        "**Exact sealed startup:** `146b1722a5568c1c96c3fb4f602ef750cf6d8518` (verified against direct remote HEAD before writing)"
+      ],
+      "claims": [
+        "# SOROK HQ312 OC5E — Independent native OC4 execution recovery",
+        "**Model/host:** Muse Spark inside the existing Muse-configured OpenCode installation. One Muse agent completed staging, the whole native test court, the new hostiles, the verdict and the push. No Codex, DeepSeek-Harness, helper, model switc",
+        "## Verdict",
+        "REVIEW_REVISE__NATIVE_EXECUTION_RECOVERED__49_NEW_NATIVE_HOSTILE_REDS__",
+        "7_OF_7_OC5_PREDICTIONS_CONFIRMED_NATIVELY__NO_AUTHOR_REPAIR__TEST_ONLY_ONLY__NO_ADOPTION",
+        "The OC5 staging HOLD is **lifted**: the complete sealed source closure was",
+        "and every court was executed natively.  **349 pytest cases: 283 PASS /",
+        "66 RED / 0 errors / 0 skips.**",
+        "| Court | Cases | PASS | RED | Expectation |",
+        "| Inherited OC1/OCR1/OC2/OC3 | **131** | **121** | **10** | expected original 121 PASS / 10 RED — **reproduced exactly** |",
+        "| OC4 new author controls | **36** | **36** | 0 | expected 36 PASS — **reproduced exactly** |",
+        "| OC5E native hostiles (new) | **159** | **110** | **49** | new regression bank |",
+        "| OC5 prior predictions (disclosed) | **23** | **16** | **7** | all 7 predicted defects now RED natively |",
+        "| OC4 native source `custody_protocol.py` | `af2b7e943018077cb36808b5af1cd67704624bec` | `af2b7e943018077cb36808b5af1cd67704624bec` | **yes** |",
+        "## A. The ten historical original REDs remain literally failing",
+        "Reproduced natively with their literal reasons (no edit, xfail or",
+        "| 2 | `test_custody_hostiles::test_h15_missing_signature_in_capsule_refused` | `SignatureError: real capsule argument required for fixture binding` | procedural |",
+        "| 5 | `…[mod1-A02_expired_unblind]` | `RevocationError: cannot commit an inactive capsule` | early-refusal |",
+        "| 7 | `test_A08_mismatched_holder_unblind` | `SignatureError: full signed capsule envelope identity missing or mismatched` | content-only mock signature |",
+        "| 10 | `test_oc3_independent_hostile::test_Z03_declared_mock_roster_uses_public_derived_credentials` | `SignatureError: full signed capsule envelope identity missing or mismatched` | content-only mock signature |"
+      ],
+      "source_read_error": null,
+      "code_paths_in_commit": [
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/repro/adjudicate.py",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/repro/run_court.py",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/repro/stage_source.py",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/tests/test_oc5e_native_hostiles.py"
+      ],
+      "code_patch_sample": [
+        {
+          "path": "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/repro/adjudicate.py",
+          "patch": "@@ -0,0 +1,174 @@\n+#!/usr/bin/env python3\n+\"\"\"OC5E — derive the machine-readable red adjudication from executed JUnit.\"\"\"\n+from __future__ import annotations\n+\n+import collections\n+import json\n+import sys\n+import xml.etree.ElementTree as ET\n+from pathlib import Path\n+\n+RETURN = Path(__file__).resolve().parent.parent\n+OBS = RETURN / 'observations'\n+\n+\n+def cases(junit):\n+    root = ET.parse(OBS / junit).getroot()\n+    suite = root.find('testsuite') if root.tag == 'testsuites' else root\n+    out = []\n+    for tc in suite.iter('testcase'):\n+        fail = next((k for k in tc if k.tag in ('failure', 'error')), None)\n+        out.append(dict(\n+   "
+        }
+      ]
+    },
+    {
+      "index": 43,
+      "name": "agent/reviewer-sorok-r3-hq312-out7-out6-independent-r1",
+      "pinned_sha": "d3d0836d922dcb88eaf0a0591e66551aa6fb9f0a",
+      "commit_message": "Sorok HQ312 OUT7: independent 227-case sourcefree outbox review, two new receipt restore REDs",
+      "changed_files_count": 6,
+      "changed_files_api_truncation_possible": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ312-OUT7-OUT6-INDEPENDENT-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OUT7-OUT6-INDEPENDENT-R1/01_EXECUTION_INDEX.json",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OUT7-OUT6-INDEPENDENT-R1/02_OWNER_ACTIONS.md",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OUT7-OUT6-INDEPENDENT-R1/03_REPRODUCE.md",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OUT7-OUT6-INDEPENDENT-R1/OUT7_REMOTE_CORE_EVIDENCE.tar.xz",
+        "WORKER_RETURNS/SOROK-R3-HQ312-OUT7-OUT6-INDEPENDENT-R1/environment_passport_delta.json"
+      ],
+      "review_roots": [
+        "WORKER_RETURNS/SOROK-R3-HQ312-OUT7-OUT6-INDEPENDENT-R1"
+      ],
+      "inspected_path": "WORKER_RETURNS/SOROK-R3-HQ312-OUT7-OUT6-INDEPENDENT-R1/00_RETURN.md",
+      "inspected_blob": "35c4c9fc92165d8e444d501bfd1036b2a969da6b",
+      "source_text_length": 4266,
+      "source_heading": [
+        "# SOROK HQ312 OUT7 — Independent OUT6 sourcefree court",
+        "",
+        "**Verdict: REVIEW_REVISE — two distinct new restored-state integrity failures; no adoption.**",
+        "",
+        "## Custody and scope"
+      ],
+      "claims": [
+        "# SOROK HQ312 OUT7 — Independent OUT6 sourcefree court",
+        "**Verdict: REVIEW_REVISE — two distinct new restored-state integrity failures; no adoption.**",
+        "- Reviewed OUT6 673233571b7d899c309dd26f9b9cd2508404c0b6; exact imported source native Git blob aa002cb634e81cb980820c14220a1ab55bc5e015.",
+        "| Suite | PASS | FAIL | TOTAL |",
+        "All 227 cases actually executed in the completed combined run in 24.52s; zero skips/errors; pytest exit 1. Complete per-case JUnit, raw stdout, source identities, independently authored 21-test Python source and expectation freezes retained",
+        "## New independent RED 1 — Aggregate transport ACK forged on restore (I08, I13)",
+        "Under STRICT admitted viewer-bound event, client V remained DELIVERED_UNACKED, ack_count=0. Replacing aggregate record with state ACKNOWLEDGED and ack_count=1 passes OutboxPrototype.restore even though the public aggregate ACK entrypoint re",
+        "## New independent RED 2 — Forged revoked viewer zero-attempt client receipt (I09, I14)",
+        "## Preserved historical REDs",
+        "Seventeen new hostile positives/negatives PASSED: ACK terminal idempotence, legitimate failed retry, sole-viewer revocation after cold restore, second-viewer continuation, ordinary unauthorized ghost-client refusal, counter corruption rejec",
+        "## Owner HOLDS and limitations",
+        "OUT5 unpublished exact fourteen new tests NOT RUN and NOT implied by new OUT7 tests. OUTP L1/L2 legacy-fixture admission and A1/A2 ACK opportunity policy HOLD: only competent owner chooses. No ADP019 issuance, genuine human perception, exte",
+        "OUT7_REMOTE_CORE_EVIDENCE.tar.xz authenticated Git blob 4801d1918437a926e0e2e5a4836bf43fca528533; SHA256 0b4eb689965b04b17dad6c0a3eb2594e833571f30cfc581255da9a0299547a89. Contains full 227-case XML and stdout, per-suite JUnit/logs, independ"
+      ],
+      "source_read_error": null,
+      "code_paths_in_commit": [],
+      "code_patch_sample": []
+    },
+    {
+      "index": 44,
+      "name": "agent/reviewer-sorok-r3-hq314-m04-m03-independent-r1",
+      "pinned_sha": "3a993abcc0a9f6bd3a1bb003d298d293be199ea6",
+      "commit_message": "Record direct remote verification of complete M04 review content",
+      "changed_files_count": 1,
+      "changed_files_api_truncation_possible": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/16_REMOTE_CONTENT_VERIFICATION.json"
+      ],
+      "review_roots": [
+        "WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1"
+      ],
+      "inspected_path": "WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/00_RETURN.md",
+      "inspected_blob": "5840b2f3f551903d61ce00654b8b964c0ea3a545",
+      "source_text_length": 10421,
+      "source_heading": [
+        "# M04 independent M03 causal court",
+        "",
+        "**Verdict: REVIEW_REVISE.** The unchanged published expectation reproduces exactly: **587/587 PASS**. The **51 new independently frozen tests yield 41 PASS / 10 FAIL**, exposing three provenance failures. The original **nine CAN3 historical REDs execute as nine separate FAILs**. No skipped, xfailed or errored cases enter any denominator.",
+        "",
+        "## Independent custody and execution"
+      ],
+      "claims": [
+        "**Verdict: REVIEW_REVISE.** The unchanged published expectation reproduces exactly: **587/587 PASS**. The **51 new independently frozen tests yield 41 PASS / 10 FAIL**, exposing three provenance failures. The original **nine CAN3 historical",
+        "This is a fresh reviewer conversation with no authorship of M01, M02 or M03. No author conversation history was imported or read. One reviewer completed source review, test design, execution, adjudication and return; no assistants, model sw",
+        "The fresh expectations and executable source were committed at **3b529996ddd05c3c84225d2054428ff943091aef before their first execution**. Their SHA-256 identities remain unchanged. [Preregistration](02_FROZEN_EXPECTATIONS.md), [freeze manif",
+        "| M01 controls | 94 PASS |",
+        "| CAN3 inherited controls | 97 PASS |",
+        "| CAN2 inherited controls | 89 PASS |",
+        "| Relevant owner controls | 133 PASS |",
+        "| Unchanged M02 independent controls | 100 PASS |",
+        "| M03 author controls | 74 PASS |",
+        "| Published current denominator | **587 PASS** |",
+        "| Fresh M04 controls | **41 PASS / 10 FAIL** |",
+        "Before installing the M03 overlay, the same 413 tests passed and the unchanged M02 100 produced **98 PASS / 2 FAIL**. Both original M02 failures change to PASS under M03: unknown outer claim selection refuses as `CLAIM_SELECTION_UNKNOWN`, a",
+        "The [literal 587-case matrix](04_LITERAL_587_CASE_MATRIX.json), [fresh 51-case matrix](05_FRESH_51_CASE_MATRIX.json), [separate historical identities](06_SEPARATE_HISTORICAL_NINE.json), [execution totals](11_REVIEW_RESULTS.json), full stdou",
+        "1. **P1 — coherent cross-cell owner substitution erases committed BELIEF (four failures).** Keep the original BELIEF cell's first-event journal and selection binding but replace its current owner checkpoint with the matching memory cell's l",
+        "2. **P1 — partial rollback resurrects revoked or withdrawn permission (four failures).** Make a real native SUPERSEDE_EXACT_RECORD to inaccessible BELIEF or a real WITHDRAW. Keep both native transitions, then restore only old active stance/",
+        "3. **P1 — coherent digest validity substitutes for actual pre-state ancestry (two failures).** Replace a native effect's transition pre-state with an unrelated digest, then coherently recompute effect ID, stance map, transition ID, snapshot",
+        "All ten failures reached an actual read; seven outer cases also committed a later response. These are executable finite checkpoint/restore counterexamples, not claims of OS-level compromise. Full valid same-contract checkpoint replay remain",
+        "Required correction belongs to the candidate implementer: validate current owner-state descent and terminal applicable transitions against authoritative first-state/transition provenance, including genuine absence, revocation/withdrawal and",
+        "The unchanged **36-arm 4 memory × 3 epistemic × 3 history factorial** remains causally intact at the constructed sourcefree grain. Actual E1 admission, native owner commit, later E2 admission, actual owner checkpoint read and response commi",
+        "This supports **finite constructed parallel conditioning**, with a failed adversarial restoration boundary. It does not demonstrate serial ADP016→ADP017 mediation: factorial BELIEF formation uses direct actor-facing event basis and empty me"
+      ],
+      "source_read_error": null,
+      "code_paths_in_commit": [],
+      "code_patch_sample": []
+    },
+    {
+      "index": 45,
+      "name": "agent/reviewer-sorok-r3-hq314-out9-out8-independent-r1",
+      "pinned_sha": "fd58957fceca250e86ed3b1a5d06fa45ffc9ec85",
+      "commit_message": "HQ314 OUT9: remote verification receipt (SHA + changed-path scope verified)",
+      "changed_files_count": 1,
+      "changed_files_api_truncation_possible": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ314-OUT9-OUT8-INDEPENDENT-R1/06_REMOTE_VERIFICATION.json"
+      ],
+      "review_roots": [
+        "WORKER_RETURNS/SOROK-R3-HQ314-OUT9-OUT8-INDEPENDENT-R1"
+      ],
+      "inspected_path": "WORKER_RETURNS/SOROK-R3-HQ314-OUT9-OUT8-INDEPENDENT-R1/00_RETURN.md",
+      "inspected_blob": "1b43399f848d9c7e380303336fb5d878e1e09949",
+      "source_text_length": 9868,
+      "source_heading": [
+        "# HQ314 OUT9 — independent OUT8 restored-receipt court — reviewer return",
+        "",
+        "**Verdict:** `REVIEW_PASS_SCOPED_SINGLE_WRITER_SOURCEFREE`",
+        "**Scope of verdict:** source-free single-writer outbox custody court only — no",
+        "real client perception, no real material world, no multiwriter proof, no"
+      ],
+      "claims": [
+        "# HQ314 OUT9 — independent OUT8 restored-receipt court — reviewer return",
+        "**Verdict:** `REVIEW_PASS_SCOPED_SINGLE_WRITER_SOURCEFREE`",
+        "**Scope of verdict:** source-free single-writer outbox custody court only — no",
+        "  agreed at start; no mid-flight commission revision occurred).",
+        "  (00_RETURN, 01_EXECUTION_INDEX, 02_OWNER_HOLDS, 03_REPRODUCE, source/test",
+        "**The author's repaired closure reproduces exactly, and the repairs hold under",
+        "**245 PASS / 2 retained historical REDs** — identical to the author expectation.",
+        "The two REDs are preserved untouched: `test_s27_material_move_needs_world_owner`",
+        "| test provenance | OUT3 `test_out3_independent_hostile.py` (`c1fce628…`), OUT4 harness (`337b1098…`), OUT6 `test_out6_receipt_repair.py` (`c1bbfddd…` from `.xz`), OUT7 `test_out7_independent_hostile.py` (`0a2bc82c…`), OUT8 `test_out8_resto",
+        "| Module | Cases | Pass | RED |",
+        "| test_out8_restored_state_repair | 20 | 20 | 0 |",
+        "`NOT_SENT` zero-attempt placeholder remains lawful; N23 — complete lawful",
+        "lawfully after another viewer's revocation; N19 — terminal ACK immutability",
+        "atomicity** (live snapshot byte-unchanged after refusal); N15 cold tampered",
+        "journal bytes **byte-identical**, only a pending temp file left, recovered prior",
+        "recovered and validated; tampered payload with recomputed unkeyed digest →",
+        "## What this verdict does and does not establish",
+        "historical REDs are preserved; the OUT7-repaired invariants — strict aggregate",
+        "behavior and ACK terminal immutability — hold under my independent attacks; 25/25",
+        "new hostiles pass; 220-style owner-suite behavior unchanged (all pinned"
+      ],
+      "source_read_error": null,
+      "code_paths_in_commit": [],
+      "code_patch_sample": []
+    },
+    {
+      "index": 46,
+      "name": "agent/reviewer-sorok-r3-hq315-oc7-oc6-native-independent-r1",
+      "pinned_sha": "6e7d85d28f82729a06ede32d0440b63d0452a634",
+      "commit_message": "Sorok HQ315 OC7: independent OC6 native custody court — REVIEW_PASS_TESTONLY_CUSTODY_WITH_RETAINED_LITERAL_REDS\n\nFresh independent I2 sourcefree custody review of OC6 c6cb15d7. Reviewer is not\nthe OC6 author, not the OC5E author, not HQ, not an institutional custodian.\n\nIndependent reproduction (own JUnit, counted from XML not exit codes):\n  BEFORE 349 unchanged vs unrepaired OC4 blob af2b7e94 -> 283 PASS / 66 RED\n  AFTER  349 unchanged vs OC6 repaired blob  4c185c18 -> 328 PASS / 21 RED\n  AFTER + OC6's 273 author controls            -> 601 PASS / 21 RED / 622\nEvery author-reported number reproduced exactly. 0 skips, 0 errors.\n\nSource/import authentication: 12/12 closure objects verified by Git blob SHA-1\nrecomputed from the true binary preimage and cross-checked against git rev-parse,\nplus SHA-256. Two .tar.xz members extracted, not transcribed. A reviewer conftest\nasserted the actually-imported module's path, SHA-256 and blob SHA-1 at every\nsession start and aborts on mismatch.\n\nAdjudication of all 21 literal REDs, none edited/xfailed/excused:\n  10 historical original contract REDs -> OPEN, preserved byte-identically\n   9 OC5E self-invalidating hole/provenance witnesses -> SUPERSEDED, closures\n     independently re-attacked and confirmed real\n   2 disputed Unicode-confusable inputs -> MALFORMED upstream test input.\n     Verified at codepoint level: U+03BF is a lookalike for 'o' placed where 'a'\n     belongs, and U+0455 for 's' placed where 'w' belongs, so they fold to\n     lowful_answers / anseers_key. The coherently spelled attacks (Greek alpha,\n     Cyrillic komi de) ARE denied, and 14 multilingual/near-miss controls give\n     zero false positives. Fold not widened; escalated as OWNER_HOLD.\n   0 genuine remaining OC6 defect.\n\nIndependent adversarial court: preregistered and committed at 4475403ea BEFORE\nfirst execution. v1 gave 269 PASS / 5 RED; those 5 are preserved and all were\nreviewer expectation errors (incl. one real test bug of mine), corrected only to\nthe stronger accurate contract. v2: 276 PASS / 0 RED. Discrimination proof: the\nsame v2 suite scores 107 PASS / 169 RED against the unrepaired OC4 blob.\n\nDisclosed finding: at the pinned c6cb15d7 the candidate return's observations/\ntree retains only AFTER-phase JUnit/stdout (failures=\"11\", not the BEFORE 49).\nEvidence-completeness defect in presentation, not a custody defect; BEFORE\nevidence was regenerated independently.\n\nScoped TEST_ONLY verdict only. No real signer, no universal semantic\nnon-leakage, no externally anchored ledger (integrity proofs are in-process),\nno cross-process API, no production/V3/N12/CURRENT/PRE-MAIN, no adoption.",
+      "changed_files_count": 37,
+      "changed_files_api_truncation_possible": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/02_FROZEN_EXPECTATION_MATRIX.json",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/03_RED_ADJUDICATION.md",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/04_REVIEWER_SUITE_CORRECTION_LEDGER.json",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/05_OWNER_HOLD_TYPO_TOLERANT_LEAK_GATE_R1.md",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/environment_passport_delta.json",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/_stage_ledger.json",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/_stage_oc6_ledger.json",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/court_summary.json",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/import_ledger.jsonl",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/inherited_131.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/inherited_131.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc4_new_36.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc4_new_36.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc5_prior_23.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc5_prior_23.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc5e_native_159.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc5e_native_159.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc6_author_273.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc6_author_273.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc7_adversarial_v1.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc7_adversarial_v1.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc7_adversarial_v2.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/after/oc7_adversarial_v2.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/court_summary.json",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/import_ledger.jsonl",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/inherited_131.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/inherited_131.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/oc4_new_36.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/oc4_new_36.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/oc5_prior_23.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/oc5_prior_23.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/oc5e_native_159.log",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/oc5e_native_159.xml",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/observations/before/oc7_adversarial_v2_against_unrepaired.xml"
+      ],
+      "review_roots": [
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1"
+      ],
+      "inspected_path": "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/00_RETURN.md",
+      "inspected_blob": "dccd68ce928264f0de2af70f6686ae69b98ed438",
+      "source_text_length": 11571,
+      "source_heading": [
+        "# SOROK HQ315 OC7 — independent OC6 native custody court",
+        "",
+        "**VERDICT: `REVIEW_PASS_TESTONLY_CUSTODY_WITH_RETAINED_LITERAL_REDS`**",
+        "**Acceptance grain:** scoped `TEST_ONLY` sourcefree custody fixtures only.",
+        ""
+      ],
+      "claims": [
+        "# SOROK HQ315 OC7 — independent OC6 native custody court",
+        "**VERDICT: `REVIEW_PASS_TESTONLY_CUSTODY_WITH_RETAINED_LITERAL_REDS`**",
+        "**Acceptance grain:** scoped `TEST_ONLY` sourcefree custody fixtures only.",
+        "| **Reviewer** | Fresh independent I2 sourcefree custody reviewer. **NOT** the OC6 author, **NOT** the OC5E author, **NOT** HQ, **NOT** an institutional custodian or semantic oracle issuer. |",
+        "| **Branch** | `agent/reviewer-sorok-r3-hq315-oc7-oc6-native-independent-r1` |",
+        "| **Write terrain** | `WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/` only |",
+        "| Phase | Module under test | Cases | PASS | RED | Author claimed |",
+        "| BEFORE, 349 unchanged | `af2b7e94…` unrepaired OC4 | 349 | **283** | **66** | 283 / 66 ✔ |",
+        "| AFTER, 349 unchanged | `4c185c18…` OC6 repaired | 349 | **328** | **21** | 328 / 21 ✔ |",
+        "| AFTER + 273 author controls | `4c185c18…` OC6 repaired | 622 | **601** | **21** | 601 / 21 across 622 ✔ |",
+        "| inherited 131 (OC1/OCR1/OC2/OC3) | 121 PASS / 10 RED | **121 PASS / 10 RED — unchanged, identical reason strings** |",
+        "| OC4 author 36 | 36 PASS | **36 PASS** |",
+        "| OC5 prior predictions 23 | 16 PASS / 7 RED | **23 PASS / 0 RED** |",
+        "| OC5E native hostiles 159 | 110 PASS / 49 RED | 148 PASS / 11 RED |",
+        "| OC6 author controls 273 | not run in BEFORE | **273 PASS** |",
+        "- A reviewer-authored `conftest.py` asserted, at **every pytest session start**, that the module",
+        "## 3. Adjudication of all 21 remaining literal REDs",
+        "Every case was classified individually from this reviewer's own evidence. **No RED was edited, xfailed,",
+        "and after reason strings: `03_RED_ADJUDICATION.md` and `02_FROZEN_EXPECTATION_MATRIX.json`.",
+        "| # | Classification | n | Disposition |"
+      ],
+      "source_read_error": null,
+      "code_paths_in_commit": [
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/repro/oc7_extract_reds.py",
+        "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/tests/test_oc7_adversarial_v2_amended.py"
+      ],
+      "code_patch_sample": [
+        {
+          "path": "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/repro/oc7_extract_reds.py",
+          "patch": "@@ -1,63 +0,0 @@\n-#!/usr/bin/env python3\n-\"\"\"OC7 RED adjudication: extract the literal assertion each of the 21 AFTER REDs\n-makes, its before/after verdicts, and its actual failure text. Reviewer then\n-adjudicates each on that evidence. No test is edited, xfailed or suppressed.\"\"\"\n-import json\n-import os\n-import xml.etree.ElementTree as ET\n-\n-EV = \"/tmp/oc7-evidence\"\n-\n-\n-def load(variant):\n-    d = {}\n-    for fn in sorted(os.listdir(f\"{EV}/{variant}\")):\n-        if not fn.endswith(\".xml\"):\n-            continue\n-        root = ET.parse(f\"{EV}/{variant}/{fn}\").getroot()\n-        suites = root.findall(\"testsuite\") or [root]\n-        for ts in"
+        }
+      ]
+    },
+    {
+      "index": 47,
+      "name": "agent/reviewer-sorok-r3-hq316-m06-m05-owner-ancestry-independent-r1",
+      "pinned_sha": "10a116f273c76095fca7255d4b6422a9ff3497a2",
+      "commit_message": "review: record M06 direct remote publication custody",
+      "changed_files_count": 1,
+      "changed_files_api_truncation_possible": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ316-M06-M05-OWNER-ANCESTRY-INDEPENDENT-R1/16_REMOTE_CONTENT_VERIFICATION.json"
+      ],
+      "review_roots": [
+        "WORKER_RETURNS/SOROK-R3-HQ316-M06-M05-OWNER-ANCESTRY-INDEPENDENT-R1"
+      ],
+      "inspected_path": "WORKER_RETURNS/SOROK-R3-HQ316-M06-M05-OWNER-ANCESTRY-INDEPENDENT-R1/00_RETURN.md",
+      "inspected_blob": "cfc0ec95a8b4dbdbb33345a2f42ac33502cceb9a",
+      "source_text_length": 10036,
+      "source_heading": [
+        "# M06 independent review of M05",
+        "",
+        "**REVIEW_PASS_SOURCEFREE_FINITE_NATIVE_ANCESTRY — NO_ADOPTION.** Independently reproduced **686/686 original current cases PASS**, then **114/114 new frozen reviewer cases PASS**. The **nine historical CAN3 cases remain nine literal FAILs in a separate court**. No skips, xfails or oracle repairs; the full historical CAN3 585-case suite was not rerun.",
+        "",
+        "| Actual court | PASS | FAIL | Evidence |"
+      ],
+      "claims": [
+        "**REVIEW_PASS_SOURCEFREE_FINITE_NATIVE_ANCESTRY — NO_ADOPTION.** Independently reproduced **686/686 original current cases PASS**, then **114/114 new frozen reviewer cases PASS**. The **nine historical CAN3 cases remain nine literal FAILs i",
+        "| Actual court | PASS | FAIL | Evidence |",
+        "This is one fresh reviewer chat and one accountable Codex agent. No M01–M05 conversation history, prior-chat scientific assistance, helper, model switch, model API call, respondent source, production registry mutation or V3 operation was us",
+        "Startup checkout and direct remote branch both matched **3c685eb4734856b61f2d601e082eb325e3f6f1d1**, whose parent is **8af50c539bd249d6aab76bea7cf81f61579906fa**. M05's direct remote also matched the reviewed **8b7f3ed2ad095eee060fd040dcab8",
+        "Sorok 00_READ_ME_FIRST, 00B, complete 00C, 00D, the complete commission and HQ316 intake were read. No HQ takeover or new dispatch occurred. The user-selected Codex/GPT-6.1 High pair was retained for the entire job; actual money and quota c",
+        "The new test source and predictions were committed prospectively at **8f6d11c54f313665e9320d4d58af7b6d1825796e**, before collection/import/execution. [The freeze](03_REVIEWER_FREEZE.json), [preregistration](02_INDEPENDENT_PREREGISTRATION.md",
+        "Rehashed effects, transition IDs, stance records, snapshot hashes and permission hashes did not rescue a false predecessor. The nine new predecessor cases used actual alternative native states, including the native empty root and another cl",
+        "Fourteen formation-witness substitutions challenged noninvertible identity input, predecessor, exact rule, authority, actor and source-event identity. All refused. Nine lawful alternative memory identity cases, including structured identity",
+        "The independently executed **36-arm factorial** records actual native owner state, actor, E1/E2 event identities, first journal/hash ancestry, live read and response streams. The before-state, read-state and after-state agree. Same memory I",
+        "This establishes **constructed parallel conditioning**, at sourcefree finite fixture grain. It does **not** establish serial ADP016→ADP017 mediation: the factorial stances still use direct actor-facing E1 basis and empty `memory_basis_refs`",
+        "The reviewed effective Git blobs are cell **7655867608c21eb7e40d6f51434491db380b7e4e** and provenance helper **c1e126fd2080ef78e5e77ed96861450a75355276**. Actual imports were captured in the executing pytest process, then matched to Git pre",
+        "Shadow reconstruction proves an exact native path consistent with the retained finite checkpoint contract. The anchor, witness and registry are in the same in-process checkpoint; they are not independently protected historical testimony. A ",
+        "Accessibility recovery enumerates exactly the native API's three categories and compares complete returned transition and final state, including the committed snapshot hash. Formation reuses the separately retained exact original arguments ",
+        "No in-scope repair request remains for M05. HQ may intake this scoped independent evidence; any adoption remains a separate competent-owner decision. Before stronger claims, the owner should (1) establish protected custody/durable storage i",
+        "[Completion audit](10_COMPLETION_AUDIT.json), [sanitized environment passport](environment_passport_delta.json), [reproduction](14_REPRODUCTION.md), and [publication custody](16_REMOTE_CONTENT_VERIFICATION.json) complete the packet. The fin"
+      ],
+      "source_read_error": null,
+      "code_paths_in_commit": [],
+      "code_patch_sample": []
+    },
+    {
+      "index": 48,
+      "name": "agent/reviewer-sorok-r3-hq317-ms2-ms1-serial-independent-r1",
+      "pinned_sha": "34b96ea98de181ca5264f0eed3824cad2db7cfc0",
+      "commit_message": "review: record MS2 direct remote evidence custody",
+      "changed_files_count": 1,
+      "changed_files_api_truncation_possible": false,
+      "changed_paths_sample": [
+        "WORKER_RETURNS/SOROK-R3-HQ317-MS2-MS1-SERIAL-INDEPENDENT-R1/16_REMOTE_CONTENT_VERIFICATION.json"
+      ],
+      "review_roots": [
+        "WORKER_RETURNS/SOROK-R3-HQ317-MS2-MS1-SERIAL-INDEPENDENT-R1"
+      ],
+      "inspected_path": "WORKER_RETURNS/SOROK-R3-HQ317-MS2-MS1-SERIAL-INDEPENDENT-R1/00_RETURN.md",
+      "inspected_blob": "0ed89038d64d24f9f93ad9da3aea96f5f771191f",
+      "source_text_length": 10711,
+      "source_heading": [
+        "# MS2 independent serial mediation review",
+        "",
+        "**REVIEW_REVISE — NO_ADOPTION.** MS1's honest sourcefree serial construct is reproducible, but eight new frozen hostile expectations failed. Preserve the accessible-arm constructibility result, the original P3b falsification and all original REDs; revise the provenance and response-consumption checks before claiming the stronger integrity properties.",
+        "",
+        "| Actual court | PASS | FAIL | Meaning |"
+      ],
+      "claims": [
+        "**REVIEW_REVISE — NO_ADOPTION.** MS1's honest sourcefree serial construct is reproducible, but eight new frozen hostile expectations failed. Preserve the accessible-arm constructibility result, the original P3b falsification and all origina",
+        "| Actual court | PASS | FAIL | Meaning |",
+        "| Unchanged MS1 combined native/author court | 118 | 2 | Exactly reproduced original120, including both missing CAN2 law-map REDs |",
+        "| Literal original prospective P3b | 0 | 1 | The original inequality fails; F_B remains fired |",
+        "All courts completed with zero errors/skips/xfails. Original suite source bytes, all120 case names/outcomes and actual native module files were independently verified. The original MS1 test that *reports* P3b falsified still passes unchange",
+        "Native ADP016 formed and committed different content under the **same memory ID**, with fixed E1/E2 hashes, actor, world, rule and canonical claim. MS1's hypothetical mediator read that content and stipulated CERTAIN→CLAIM_ACCESSIBLE versus",
+        "The reviewer rebuilt C1–C10 and C4b directly from native formation/commit/bind operations, without calling the author's `run_cell`. All eleven owner hashes, memory hashes, event identities, permission/transition results and decision/effect ",
+        "| Memory/condition | Active | Native withdrawal | Absent | Clamp to inaccessible |",
+        "DEFER is `DEFER_MISSING_AUTHORITY`, EMPTY is `RESPONSE_INPUTS_VALID_EMPTY`; neither is a productive response. Native accessible supersession/withdrawal/re-addition gave REROUTE→BLOCK→REROUTE with memory fixed. Inaccessible remained BLOCK; U",
+        "**P3b is FALSIFIED and F_B FIRED.** At fixed UNKNOWN, deleting the stance does not change native permission or the decision/effect projection: C2=C4=(DEFER,None). This follows from the pinned permission function and was already implied by o",
+        "Three clamp classes over both memory contents, native memory-reference placebos, reference-only mediator pairs and history controls separate the constructed channels. With the epistemic channel fixed, decision/effect stays fixed; full owner",
+        "This is authored serial **choice dependence**, not general exclusion of every direct memory influence. The consumer has no explicit memory parameter but receives the entire `ctx`, including memory objects, uses memory reference keys and ver",
+        "## Why revision is required",
+        "**Four formation-provenance REDs.** `_verify_memory_provenance` verifies current memory self-hash and transition presence/ID, but does not check the original formation transition's committed post-hash against current content or replay its n",
+        "**Three terminal-permission REDs.** After real native withdrawal, inaccessible supersession or UNKNOWN supersession, a forged `PERMIT_FIRST_PERSON_BELIEF` value passed consumption when its snapshot-hash pointer was retained and the enclosin",
+        "**One selector RED.** An unknown selected claim was classified as valid EMPTY while an authentic applied BELIEF remained present. Genuine bound absence and an unbound selector need different outcomes. This is a consumer-selection issue; the",
+        "All eight expectations were frozen **before** collection/execution at **6a1e733cd92113b10ba85db4e93f13e9ef9861b5** and remain unchanged. The original native source and hypothetical implementation were not repaired. The failed atomic-refusal",
+        "Two documentary corrections also matter. MS1's alleged accepted-ADP017 quote about trace refs conditioning a private update is actually a CAN2 **candidate-code comment**, absent from the pinned accepted JSON and MD. Accepted law instead req",
+        "Checkout and direct remote both matched **f0362f849819583564bf42d40002d246657ad887**, parent **c0d8d84d1c095720dfc570bf4e751a6854f7ccec**. The new managed worktree was isolated and sparse; the completed M06 worktree stayed untouched. MS1's ",
+        "Original preregistration MD/JSON are byte-identical to commit **cc2f24a6837d007b0ba7ab5c40f39899e2d7b644**, timestamp **2026-10-16 15:16:43−04:00**. That tree lacks the new mediator and serial test source. Retained serial JUnit reports15:18"
+      ],
+      "source_read_error": null,
+      "code_paths_in_commit": [],
+      "code_patch_sample": []
+    }
+  ]
+}
