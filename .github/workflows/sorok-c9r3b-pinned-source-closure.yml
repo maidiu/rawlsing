@@ -1,0 +1,73 @@
+name: Sorok C9-R3B Pinned Historical Source Closure (TEST_ONLY)
+
+on:
+  pull_request:
+    paths:
+      - 'SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/**'
+      - 'SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER/**'
+      - '.github/workflows/sorok-c9r3b-pinned-source-closure.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pinned-sourcefree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout proposed sourcefree fan-in
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Checkout exact historical S36 return (separate, source-only)
+        uses: actions/checkout@v4
+        with:
+          ref: 8da78d8031a06a4bd7e1297fd713e573299c0860
+          path: .source-closure/s36
+          persist-credentials: false
+      - name: Checkout exact historical JOIN-E return (separate, source-only)
+        uses: actions/checkout@v4
+        with:
+          ref: 7bf2da302996491ddf34b9a039fea47ac982d135
+          path: .source-closure/join-e
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install sourcefree test runtime
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Pinned S36/JOIN-E source identity and external source preconditions
+        env:
+          RAWLSING_S36_SOURCE_ROOT: ${{ github.workspace }}/.source-closure/s36/WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1
+          RAWLSING_JOIN_E_VENDOR_J: ${{ github.workspace }}/.source-closure/join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          s = Path(os.environ["RAWLSING_S36_SOURCE_ROOT"])
+          j = Path(os.environ["RAWLSING_JOIN_E_VENDOR_J"])
+          for p in [s/"candidate/transaction.py", s/"candidate/canon.py",
+                    s/"s36_harness.py", j/"r26e/c12_integrity.py",
+                    j/"candidate/vendor/bp4/bp4/store.py"]:
+              if not p.is_file():
+                  raise SystemExit("PINNED_SOURCE_CLOSURE_MISSING:" + str(p))
+          print("PINNED_CHECKOUT_SOURCE_FILES_PRESENT__ORIGINAL_NATIVE_GRANT_NONE")
+          PY
+      - name: Full 15-case C9 sourcefree writer court against pinned historical S36 and C12
+        env:
+          RAWLSING_S36_SOURCE_ROOT: ${{ github.workspace }}/.source-closure/s36/WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1
+          RAWLSING_JOIN_E_VENDOR_J: ${{ github.workspace }}/.source-closure/join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j
+        run: |
+          python SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/verify_recovered_source.py --pytest
+      - name: Verified C9 reader cold/fork court against exact JOIN-E full source
+        env:
+          C9_READER_SOURCE: ${{ github.workspace }}/SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL
+          C12_READER_SOURCE: ${{ github.workspace }}/.source-closure/join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1
+        run: |
+          python SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER/verify_recovered_reader.py
+          python -m pytest -q -p no:cacheprovider SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER/test_actor_fork_reader.py
+
+# Deliberately does not run the Mac-only V3 BackboneState identity test, nor
+# claim native F1/M2, original CAN/ADP/SCI05, C11 or real performed E2.
+# Other dedicated partial portable and PRE-MAIN governed courts remain separate.
