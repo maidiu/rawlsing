@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "PYAT_CUSTODY_CONSUMER_CLOSURE__NO_RECEIPT_MUST_DENY",
+      "actual_consumer": "validate_custody.audit() closure disposition for an exact sourcefree implementation trying to enter ADOPTED_WITH_CONSUMER",
+      "claimed_dependency": "ADOPTED_WITH_CONSUMER depends on an actual qualified downstream consumer execution receipt and exact accepted target SHA; absence denies closure",
+      "positive_node": "CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1/test_validate_custody.py::CustodyTest::test_durable_sourcefree_positive_cannot_be_promoted_without_consumer",
+      "fault": {
+        "path": "CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1/validate_custody.py",
+        "old": "if not consumer.get(\"qualified_execution_receipt\") or not valid_sha(consumer.get(\"accepted_target_sha\")):",
+        "new": "if False:  # fault: sever real downstream consumer receipt requirement"
+      }
+    }
+  ]
+}
