@@ -38,7 +38,7 @@ def load_seed() -> tuple[dict, list[str]]:
     try:
         raw = SEED_FILE.read_bytes()
         git_blob = hashlib.sha1(
-            b"blob " + str(len(raw)).encode("ascii") + b"\\x00" + raw
+            b"blob " + str(len(raw)).encode("ascii") + bytes([0]) + raw
         ).hexdigest()
         if git_blob != FROZEN_SEED_BLOB:
             failures.append("INITIAL_SEED_SOURCE_BLOB_CHANGED__NOT_REVIEWED")
