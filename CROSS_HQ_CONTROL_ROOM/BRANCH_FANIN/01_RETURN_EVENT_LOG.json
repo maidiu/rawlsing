@@ -274,6 +274,31 @@
       "supersedes_event_id": null,
       "verified_date": "2026-10-29",
       "intake_grade": "SEALED_COMMISSION_ONLY__NO_EXECUTION"
+    },
+    {
+      "event_id": "PREMAIN-F4_OWNER_CAS",
+      "role": "CONDITIONAL_OWNER_CAS_COMMISSION_NOT_EXECUTED",
+      "subject_ref": "integration/pre-main-fanin-owner-cas-activation-20261029-r1",
+      "immutable_sha": "9fb7caebc266f1e3a8315d87ff446d5db1634cc5",
+      "parent_source_sha": "f21a0aae17d3e8ae3f3018bfaf3e4a5b04c0d035",
+      "receipt_path": "WORKER_COMMISSIONS/PREMAIN-FANIN-F4-OWNER-CAS-ACTIVATION-R1/01_COPY_PASTE_LAUNCH_PROMPT.md",
+      "state": "COMMISSIONED_NOT_LAUNCHED",
+      "finding": "Conditional rightful PRE-MAIN owner adoption/append-only CAS commission sealed; F0 independent acceptance and explicit owner permission NOT YET MET",
+      "interpretation": "A draft PR and CI success alone cannot instantiate canonical branch-protection or MD/JSON owner CAS",
+      "action": "After F0 accepted and actual owner permission, execute exact controlled fan-in; otherwise HOLD with merge-ready receipt",
+      "owner": "Authorized PRE-MAIN maintainer and independent F0 control reviewer",
+      "three_courts": {
+        "engineering": "NOT_RUN",
+        "scientific": "HOLD",
+        "authority": "HOLD"
+      },
+      "first_consumer": "Canonical PRE-MAIN immutable intake and paired Sorok/Pyat owner progress CAS, not native generated person",
+      "known_reds": [],
+      "adoption": false,
+      "reviewer_of_sha": null,
+      "supersedes_event_id": null,
+      "verified_date": "2026-10-29",
+      "intake_grade": "SEALED_CONDITIONAL_OWNER_ONLY__NOT_LAUNCHED"
     }
   ]
 }
