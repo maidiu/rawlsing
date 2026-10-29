@@ -1,0 +1,73 @@
+{
+  "schema": "SOROK294_B_LINEAGE_ATLAS_V1",
+  "status": "SOURCE_ONLY_NO_ADOPTION",
+  "groups": [
+    {
+      "family": "B3",
+      "refs": [
+        "B001",
+        "B002",
+        "B064",
+        "B065"
+      ],
+      "finding": "X3 refused-event partial-write failures; B3A atomicity partial repair; B3AS schema repairs accepted only in scoped tests"
+    },
+    {
+      "family": "M2",
+      "refs": [
+        "B005",
+        "B006",
+        "B007",
+        "B014",
+        "B063"
+      ],
+      "finding": "Preserve R3 witness identity failures, documentary R4 hold, later executable scoped court, M3 original preimage failures"
+    },
+    {
+      "family": "C9/C12",
+      "refs": [
+        "B010",
+        "B011",
+        "B015"
+      ],
+      "finding": "Positive sourcefree paths alongside independently found C9 semantic-record failures and C12 verifier defect"
+    },
+    {
+      "family": "CAN008",
+      "refs": [
+        "B025",
+        "B028",
+        "B030",
+        "B033",
+        "B037"
+      ],
+      "finding": "Separate positive/historical courts with different authority and review conclusions"
+    },
+    {
+      "family": "Outbox",
+      "refs": [
+        "B026",
+        "B029",
+        "B032",
+        "B038",
+        "B039",
+        "B041",
+        "B044",
+        "B046",
+        "B053"
+      ],
+      "finding": "Distinct recovery, readset, restored-ACK, outbox, and multiwriter cuts"
+    },
+    {
+      "family": "Sorok08",
+      "refs": [
+        "B066",
+        "B067"
+      ],
+      "finding": "Different accession reviews; R1 and subsequent R2 cannot be conflated"
+    }
+  ],
+  "same_blob_equivalence": "NOT_PROVED",
+  "supersession_decisions": "OWNER_HOLD",
+  "rule": "One reviewed capability per exact author/test cut; no identity based on branch name alone"
+}
