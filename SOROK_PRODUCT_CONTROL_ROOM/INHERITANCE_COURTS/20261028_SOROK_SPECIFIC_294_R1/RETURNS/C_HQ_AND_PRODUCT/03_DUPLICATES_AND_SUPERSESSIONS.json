@@ -1,0 +1,29 @@
+{
+  "cross_branch_identical_inspected_blobs": [],
+  "overlapping_code_paths": [
+    {
+      "path": "WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/s48/product.py",
+      "entries": [
+        {
+          "branch": "agent/sorok-syn02-f0-r2-source-custody-repair-r1",
+          "blob": "74ed1b371ef3bdae71bf8d779f78a44a00c9e937"
+        },
+        {
+          "branch": "agent/sorok-syn02-f0-r3-source-custody-repair-r1",
+          "blob": "c94befce6a8f0be8e87a2a66d5ab5e1c9ffffb49"
+        },
+        {
+          "branch": "agent/sorok-syn02-f0-source-portability-r1",
+          "blob": "2741955999047f05e815ffa329cf7218503232d1"
+        }
+      ]
+    }
+  ],
+  "known_lineage_hypotheses": [
+    "C9-R3 original vs isolated R2 are COMPETING sourcefree actor SQL variants, not automatically same implementation",
+    "F0 initial / F0-R2 / F0-R3 are evolving custody repairs; preserve prior hostile RED until exact reviewed repair",
+    "RM40 original / R2 / R3 are different source-mapping/documentation grains; RRM40-R2 two commits are ONE review",
+    "S and S-R distinct original synthesis versus independent hostile review; no double implementation count"
+  ],
+  "not_yet_proven": "FULL_BRANCH_TREE_DEDUP_AND_ANCESTRY_NOT_VERIFIED"
+}
