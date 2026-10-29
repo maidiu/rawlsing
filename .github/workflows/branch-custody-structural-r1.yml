@@ -1,8 +1,9 @@
-name: Cross-HQ branch custody structural gate (candidate)
+name: Cross-HQ branch custody structural gate (proposal)
 on:
   pull_request:
     paths:
       - 'CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1/**'
+      - 'PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/**'
       - '.github/workflows/branch-custody-structural-r1.yml'
   workflow_dispatch:
 permissions:
@@ -12,7 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Test fail-closed gate (synthetic, source-free)
+      - name: Fail-closed structural tests, source-free only
         run: python3 -m unittest discover -s CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1 -p 'test_*.py' -v
-      - name: Structural audit of recovery queue; does not imply scientific acceptance
+      - name: Cross-HQ seed historical comparison (not current authority)
         run: python3 CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1/validate_custody.py CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1/01_PRIORITY_RECOVERY_QUEUE.json --json
+      - name: Active Pyat and predecessor intake seed (no Sorok code triage)
+        run: python3 CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1/validate_custody.py PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/01_PYAT_AND_PREDECESSOR_RECOVERY_QUEUE.json --json
