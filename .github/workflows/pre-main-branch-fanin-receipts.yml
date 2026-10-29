@@ -1,0 +1,26 @@
+name: PRE-MAIN Branch Fan-in Receipt Integrity (sourcefree)
+on:
+  pull_request:
+    paths:
+      - 'CROSS_HQ_CONTROL_ROOM/BRANCH_FANIN/**'
+      - '.github/workflows/pre-main-branch-fanin-receipts.yml'
+  push:
+    branches:
+      - 'integration/pre-main-reconciliation-r1'
+    paths:
+      - 'CROSS_HQ_CONTROL_ROOM/BRANCH_FANIN/**'
+      - '.github/workflows/pre-main-branch-fanin-receipts.yml'
+permissions:
+  contents: read
+jobs:
+  receipt-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python provenance and adversarial receipt invariants
+        run: python3 CROSS_HQ_CONTROL_ROOM/BRANCH_FANIN/verify_branch_fanin.py --selftest
+      - name: Enforced scope statement
+        run: |
+          echo "This gate checks offline evidence/log STRUCTURE only."
+          echo "It does not grant reviewer independence, real source science, local lease or PRE-MAIN adoption."
