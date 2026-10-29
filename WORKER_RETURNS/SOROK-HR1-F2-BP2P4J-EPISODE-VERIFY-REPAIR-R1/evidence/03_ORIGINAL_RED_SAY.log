@@ -1,0 +1,25 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________ test_valid_say_episode_is_green_and_preserves_the_post_hash_id ________
+
+intact = BP2Artifacts(mode='FRESH', root=PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthews...se, 'reason': 'OWNER_RECEIPT_MISSING'}]}, emission_order=('BP2_C8_COMMIT', 'BP2_C9_TARGET_COMMIT', 'BP2_E2_ADMISSION'))
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-63/test_valid_say_episode_is_gree0')
+
+    def test_valid_say_episode_is_green_and_preserves_the_post_hash_id(intact, tmp_path):
+        product = JoinedProduct(tmp_path / "product", artifacts=intact)
+        try:
+            episode = product.say("a real episode before verification")
+            row = product.store.db.execute(
+                "SELECT seq, body, hash FROM episode WHERE branch_id='root' ORDER BY seq"
+            ).fetchone()
+            body = json.loads(row[1])
+            report = verify_branch_chain(product.store, "root")
+>           assert report["ok"] is True, {
+                "report": report, "seq": row[0], "stored_hash": row[2],
+                "episode_id": body.get("episode_id"), "body": body}
+E               AssertionError: {'report': {'ok': False, 'errors': ['episode:0:body_hash_mismatch'], 'counts': {'episode': 1, 'world_event': 2, 'check...7b083328614be', 'episode_id': 'TEST_ONLY_BP4_EP_c75042dacaa6f4b1843c63f5840ed91f3573b17ce344483bd607b083328614be', ...}
+E               assert False is True
+
+tests/test_episode_verifier_regression.py:27: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_episode_verifier_regression.py::test_valid_say_episode_is_green_and_preserves_the_post_hash_id

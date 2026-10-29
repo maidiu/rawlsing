@@ -1,0 +1,66 @@
+{
+  "schema": "SOROK_HR1_F2_BP2P4J_CANDIDATE@1",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/sorok-hr1-bp2p4j-episode-verifier-sourcefree-repair-20261029-r1",
+  "start_sha": "2c8da7fcbf721a0e04fb25735cd4bee58754969f",
+  "sealed_startup_sha": "3fd8dcb3df520806c7aee820e511092863545f4e",
+  "original_bp2p4j_commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+  "original_independent_bp2p4ji": "3212d716ce66586527c258632ef10c3ff4489803",
+  "hr1_source_counterexample": "40df1e61fb32f9210839d8ddfa9f8bf9a47d7621",
+  "pre_main_pinned": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "candidate_files": [
+    {
+      "overlay_path": "WORKER_RETURNS/SOROK-HR1-F2-BP2P4J-EPISODE-VERIFY-REPAIR-R1/candidate/bp2p4/c12_verify.py",
+      "applies_to": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/c12_verify.py",
+      "original_git_blob_sha1": "b8e7cf397dbbbc37aa0a63ce9e0d7ba27a509cd3",
+      "candidate_git_blob_sha1": "c1699c8da5e944ed079708e272c3af50d5a30a44",
+      "candidate_sha256": "6ad07d75f3ebb785e847e761e2db65df37abf8eea72559df3a6c54f031141d20",
+      "change": "Episode preimage excludes the post-hash episode_id; stored episode_id must equal TEST_ONLY_BP4_EP_ plus the body hash. Other table preimages, column hashes and sequence checks unchanged."
+    },
+    {
+      "overlay_path": "WORKER_RETURNS/SOROK-HR1-F2-BP2P4J-EPISODE-VERIFY-REPAIR-R1/candidate/tests/test_episode_verifier_regression.py",
+      "applies_to": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/tests/test_episode_verifier_regression.py",
+      "original_git_blob_sha1": null,
+      "candidate_git_blob_sha1": "ebe1e8287f9b8485b6c862b66b6c2a9dafcf59aa",
+      "candidate_sha256": "b55f148f5623458259c7fe3b05b340c19c3bc1a5f721a12145f50df7caa28c58",
+      "change": "ADDED focused regression: valid SAY positive; tampered episode body; tampered episode_id; tampered world event; cold reopen."
+    }
+  ],
+  "changed_original_paths": [
+    "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/c12_verify.py",
+    "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/tests/test_episode_verifier_regression.py"
+  ],
+  "unmodified_frozen_test_blobs": {
+    "tests/conftest.py": "35c1e1c0cac69c6006f669201b018289348e619a",
+    "tests/test_joined_product.py": "f0e52ea3a2e39d29c4740ead7032c366cec19eeb",
+    "tests/test_joined_security.py": "9cffe8a95d23492053f5ccd612128f0d02a96ed9",
+    "tests/test_joined_severance.py": "9e15af676d0ef3f33a345ebbc3ee0734e09ac63c",
+    "tests/test_source_closure.py": "cfe1d1b4e155e0d12699280af6b071c320702e95"
+  },
+  "red_observation": {
+    "test": "tests/test_episode_verifier_regression.py::test_valid_say_episode_is_green_and_preserves_the_post_hash_id",
+    "original_result": "FAIL episode:0:body_hash_mismatch",
+    "episode_seq": 0,
+    "episode_hash": "c75042dacaa6f4b1843c63f5840ed91f3573b17ce344483bd607b083328614be",
+    "episode_id": "TEST_ONLY_BP4_EP_c75042dacaa6f4b1843c63f5840ed91f3573b17ce344483bd607b083328614be",
+    "canonical_preimage_sha256_excluding_hash_and_episode_id": "c75042dacaa6f4b1843c63f5840ed91f3573b17ce344483bd607b083328614be",
+    "stored_body_sha256": "6a30f3c5e6b017c94a71e4139f2f68df1dfe3fa7552d1d6292d083f607744a27"
+  },
+  "test_results": {
+    "baseline_original_unchanged_suite": {"tests": 33, "failures": 0, "errors": 0, "skipped": 0},
+    "focused_new_test_on_original": {"tests": 1, "failures": 1, "errors": 0, "skipped": 0},
+    "repaired_full_suite": {"tests": 38, "failures": 0, "errors": 0, "skipped": 0}
+  },
+  "grades": {
+    "engineering": "PASS_BOUNDED_RED_TO_SAME_ASSERTION_GREEN",
+    "science": "TEST_ONLY_E2_POSITIVE_ONLY__NO_NATIVE_PRACTICE_ACQUISITION",
+    "authority": "HOLD_NO_ADOPTION__ORIGINAL_OWNER_AND_INDEPENDENT_REVIEW_REQUIRED"
+  },
+  "limitations": [
+    "Candidate overlay is not applied to the original branch; original BP2P4J files are unchanged in their own commit.",
+    "The repaired verifier is an add-on over BP4 C12; BP4 C12Store.verify remains self-referential and unpatched.",
+    "Raw SQLite deletion and the absence of an authenticated external anchor remain HOLD, not closed.",
+    "No native source, person, Rule T, C11/C12, production or adoption claim is made.",
+    "PRE-MAIN, PR #514 and PR #516 were not modified."
+  ]
+}
