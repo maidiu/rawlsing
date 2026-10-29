@@ -1,4 +1,4 @@
-name: Sorok C9-R3B vs PRE-MAIN FIABC RED Baseline Comparison (NON-ACCEPTANCE)
+name: Sorok C9-R3B SAME-ROOT PRE-MAIN FIABC Baseline (NON-ACCEPTANCE)
 
 on:
   pull_request:
@@ -14,63 +14,72 @@ permissions:
 jobs:
   baseline-comparison:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
-      - name: Checkout PR head
+      - name: Checkout PR source tree at canonical repository root
         uses: actions/checkout@v4
         with:
-          path: candidate
-          persist-credentials: false
-      - name: Checkout exact PRE-MAIN baseline (never update)
-        uses: actions/checkout@v4
-        with:
-          ref: 299f41e97a43c67be9cc76a79fa49b48f4e12e54
-          path: premain_baseline
+          fetch-depth: 1
           persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install controlled FIABC pytest dependency
+      - name: Install pytest
         run: python -m pip install --disable-pip-version-check pytest
-      - name: Execute EXACT original FIABC court on both code trees and compare failures
+      - name: Run exact bounded court twice with same root, same spec, original runner
         run: |
           python - <<'PY'
-          import json, os, pathlib, subprocess, sys, tempfile, xml.etree.ElementTree as ET
-          work = pathlib.Path.cwd()
-          tests = json.loads((work/"premain_baseline/.rabochii/court_spec.json").read_text())["tests"]
-          assert len(tests) == 8, "BASELINE_SPEC_CHANGED"
-          env = dict(os.environ, PYTHONHASHSEED="0", PYTEST_DISABLE_PLUGIN_AUTOLOAD="1")
-          def run(tree, xml):
-              result = subprocess.run(
-                  [sys.executable, "-m", "pytest", "-q", "--junitxml", str(xml), *tests],
-                  cwd=work/tree, env=env, text=True, capture_output=True, check=False,
-                  timeout=300)
-              print(tree, result.stdout[-2600:], result.stderr[-300:])
-              if not xml.is_file(): raise SystemExit(tree + ":NO_JUNIT")
-              root = ET.parse(xml).getroot()
-              cases = list(root.iter("testcase"))
-              failures = sorted((node.attrib.get("classname"), node.attrib.get("name"))
-                                for node in cases if node.find("failure") is not None or node.find("error") is not None)
-              skipped = sum(node.find("skipped") is not None for node in cases)
-              return {"return_code":result.returncode,"cases":len(cases),"failures":failures,"skipped":skipped}
-          with tempfile.TemporaryDirectory() as d:
-              baseline = run("premain_baseline", pathlib.Path(d)/"base.xml")
-              candidate = run("candidate", pathlib.Path(d)/"candidate.xml")
-          receipt = {"schema":"SOROK_FIABC_BASELINE_COMPARATOR_R1","premain":"299f41e97a43c67be9cc76a79fa49b48f4e12e54",
-                     "baseline":baseline,"candidate":candidate,
-                     "same_failures":baseline["failures"]==candidate["failures"],
-                     "state":"BASELINE_DIAGNOSTIC_NOT_FIABC_ACCEPTANCE"}
+          import json, os, pathlib, re, subprocess, sys, tempfile
+          root = pathlib.Path.cwd()
+          expected_base = "299f41e97a43c67be9cc76a79fa49b48f4e12e54"
+          def git(*args):
+              x = subprocess.run(["git", *args], cwd=root, capture_output=True,
+                                 text=True, check=True)
+              return x.stdout.strip()
+          candidate_sha = git("rev-parse","HEAD")
+          assert candidate_sha != expected_base
+          # One checkout root, two exact commits, two fresh Python processes.
+          with tempfile.TemporaryDirectory(prefix="sorok-fiabc-compare-") as d:
+              temp = pathlib.Path(d)
+              def court(label):
+                  spec = json.loads((root/".rabochii/court_spec.json").read_text())
+                  env = os.environ.copy()
+                  env["RABOCHII_EVIDENCE_EXECUTION_SHA"] = git("rev-parse","HEAD")
+                  receipt = temp / (label+".json")
+                  command = [sys.executable, "-m", "rawlsing_next.rabochii_bounded_court",
+                             ".rabochii/court_spec.json", "--receipt",str(receipt)]
+                  x = subprocess.run(command,cwd=root,env=env,capture_output=True,text=True,
+                                     check=False, timeout=300)
+                  log = x.stdout + x.stderr
+                  print(label,log[-3500:])
+                  if not receipt.is_file(): raise RuntimeError(label+":NO_COURT_RECEIPT")
+                  parsed = json.loads(receipt.read_text())
+                  if parsed.get("result") not in ("PASS","FAIL"):
+                      raise RuntimeError(label+":INVALID_COURT")
+                  fail_nodes = sorted(re.findall(r"^(?:FAILED|ERROR)\s+([^\n]+)",log,re.M))
+                  summary = re.findall(r"\d+ (?:failed|passed|error|errors|skipped)",log)
+                  return {"exit":x.returncode,"result":parsed["result"],
+                          "failure_labels":fail_nodes,"summary":summary,
+                          "spec_sha256":parsed["spec_sha256"]}
+              candidate = court("candidate")
+              git("fetch","--no-tags","--depth=1","origin",expected_base)
+              git("checkout","--detach","--force",expected_base)
+              assert git("rev-parse","HEAD")==expected_base
+              baseline = court("unchanged_premain")
+          same = (baseline["exit"]==candidate["exit"]
+                  and baseline["failure_labels"]==candidate["failure_labels"]
+                  and baseline["summary"]==candidate["summary"]
+                  and baseline["spec_sha256"]==candidate["spec_sha256"])
+          receipt={"schema":"SOROK_SAME_ROOT_FIABC_BASELINE_R2",
+                   "candidate_sha":candidate_sha,"premain_sha":expected_base,
+                   "candidate":candidate,"baseline":baseline,
+                   "same_failing_test_identities_and_counts":same,
+                   "disposition":"SOURCEFREE_C9_NO_INFERRED_FIABC_ACCEPTANCE"}
           print(json.dumps(receipt,indent=2,sort_keys=True))
-          if not (baseline["cases"]>=147 and candidate["cases"]==baseline["cases"]
-                  and baseline["skipped"]==candidate["skipped"] and
-                  baseline["return_code"]==candidate["return_code"] and
-                  baseline["failures"]==candidate["failures"]):
-              raise SystemExit("FIABC_BASELINE_REGRESSION_OR_COURT_DISCREPANCY__HOLD")
-          if baseline["failures"]:
-              print("FIABC_BASELINE_PREEXISTING_RED_AT_BOTH_CUTS__NOT_PRODUCT_PASS")
-          else:
-              print("FIABC_NO_RED_IN_BOTH_CUTS__NOT_SOROK_NATIVE_GRANT")
+          if not same or not baseline["failure_labels"] or baseline["result"]!="FAIL":
+              raise SystemExit("FIABC_BASELINE_CONTROL_CHANGED_OR_NOT_ESTABLISHED__HOLD")
+          print("FIABC_OLD_FAILURE_IDENTITIES_CONFIRMED_AT_SAME_REPO_ROOT__NOT_A_PASS")
           PY
 
-# Failure equivalence documents a baseline condition; it does not grant a
-# passing full PRE-MAIN governed court or permission to edit FIABC oracles.
+# A green baseline-comparison result means equal pre-existing RED, NOT a green
+# FIABC/Pyat governed court and NOT any original source or actor permission.
