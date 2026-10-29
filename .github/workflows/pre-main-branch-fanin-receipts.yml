@@ -18,8 +18,11 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Python provenance and adversarial receipt invariants
-        run: python3 CROSS_HQ_CONTROL_ROOM/BRANCH_FANIN/verify_branch_fanin.py --selftest
+        run: |
+          python3 CROSS_HQ_CONTROL_ROOM/BRANCH_FANIN/verify_branch_fanin.py --selftest --baseline-ref "${{ github.event.pull_request.base.sha || github.event.before }}"
       - name: Enforced scope statement
         run: |
           echo "This gate checks offline evidence/log STRUCTURE only."
