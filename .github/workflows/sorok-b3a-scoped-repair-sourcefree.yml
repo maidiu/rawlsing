@@ -13,7 +13,7 @@ permissions:
 jobs:
   recovered-source-and-hostile:
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 26
     steps:
       - name: Checkout isolated PRE-MAIN-based staged B3A source
         uses: actions/checkout@v4
@@ -72,10 +72,10 @@ jobs:
           if count<60 or not (target/"b2/bridge.py").is_file():
               raise RuntimeError("B3A_SOURCE_CLOSURE_INCOMPLETE")
           PY
-      - name: Execute original frozen B3AS hostiles + author repair controls without rewriting source
+      - name: Execute full inherited B3A sourcefree replay including frozen expected X3 RED and cold loops
         run: |
           cd WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1
-          python run_repair.py --targeted
+          python run_repair.py
           python - <<'PY'
           import pathlib, xml.etree.ElementTree as ET
           path=pathlib.Path("evidence/schema_repair.xml")
@@ -87,6 +87,27 @@ jobs:
           print("B3A_SCOPED_COURT",results)
           if results!={"tests":33,"failures":0,"errors":0,"skipped":0}:
               raise SystemExit("B3A_FROZEN_REPAIR_REPLAY_NOT_33_PASS")
+          additional = {
+              "seeded_refusals.xml":(4,0),
+              "b3.xml":(71,0),
+              "atomic.xml":(63,0),
+              "x3.xml":(28,4),
+          }
+          for name,(count,expected_fail) in additional.items():
+              q=pathlib.Path("evidence")/name
+              if not q.is_file(): raise SystemExit("B3A_MISSING_FROZEN_COURT:"+name)
+              t=ET.parse(q).getroot()
+              nodes=[t] if t.tag=="testsuite" else list(t.iter("testsuite"))
+              actual={k:sum(int(x.get(k,"0")) for x in nodes)
+                      for k in ("tests","failures","errors","skipped")}
+              print("B3A_FROZEN_COURT",name,actual)
+              if actual != {"tests":count,"failures":expected_fail,"errors":0,"skipped":0}:
+                  raise SystemExit("B3A_COURT_DEVIATED_FROM_FROZEN_EXPECTATIONS:"+name)
+          f2_log=pathlib.Path("evidence/f2.log")
+          blind_log=pathlib.Path("evidence/f2_blinded.log")
+          if not f2_log.is_file() or not blind_log.is_file():
+              raise SystemExit("B3A_F2_AND_BLIND_COURTS_NOT_EXECUTED")
+          print("B3A_FULL_SOURCEFREE_REGRESSION__FROZEN_EXPECTED_X3_RED_RETAINED")
           PY
 
 # This staged core source needs separately pinned binary source closure for
