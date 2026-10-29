@@ -1,0 +1,593 @@
+{
+  "schema": "SOROK_D_SHARD_RECON_V1",
+  "rows": [
+    {
+      "index": 55,
+      "name": "codex/sorok-s49-independent-actor-producer",
+      "pinned_sha": "6604f2d9ebeca47ab58c5e1f5fee1e6a34b1bb43",
+      "current_sha_or_null": "6604f2d9ebeca47ab58c5e1f5fee1e6a34b1bb43",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "91ccd3ca29978c87555056f336e37348fcee2945",
+        "ahead": 835,
+        "behind": 1921,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/s49/actor.py",
+          "blob_sha": "d5433c3b915d695091a4f1fee19deff39ad37589",
+          "lines": 669,
+          "kind": "code",
+          "symbols": [
+            "_current_event",
+            "_b_state",
+            "_b_access",
+            "record_b_observation",
+            "root_b_sources",
+            "controlled_b_sources",
+            "_world_for_b",
+            "_source_chain_hash",
+            "generate_b",
+            "_invalid_result",
+            "attempt_intent",
+            "canonical_attempt_intent",
+            "_canonical_generation",
+            "validate_b_generation",
+            "validate_normal_admission",
+            "perform_b_attempt"
+          ],
+          "opening": "\"\"\"Role-parameterized S39 generation and independent B performer.\"\"\"\nfrom __future__ import annotations\n\nfrom typing import Any, Mapping\n\nfrom .bootstrap import install\n\ninstall()\n\nfrom bp4.world import make_event  # noqa: E402\nfrom candidate import digest, seal, valid  # noqa: E402\nfrom candidate.actor_access_response import make_actor_local_access_witness  # noqa: E402\nfrom s39.model import FULL_RULE, generate_choice  # noqa: E402\nfrom s39.sources import make_source  # noqa: E402\n\nfrom .errors import S49Refusal",
+          "key_lines": [
+            {
+              "line": 19,
+              "text": "S49_GRADE = \"TEST_ONLY_S49_INDEPENDENT_ACTOR_PRODUCER\""
+            },
+            {
+              "line": 20,
+              "text": "CONTROLLED_GRADE = \"TEST_ONLY_S49_CONTROLLED_B_MODEL_PREMISE_NOT_OBSERVED\""
+            },
+            {
+              "line": 22,
+              "text": "SOURCE_OWNER_HOLD = \"S49_SOURCE_OWNER_HOLD\""
+            },
+            {
+              "line": 28,
+              "text": "raise S49Refusal(\"S49_OCCURRED_EVENT_MISSING\")"
+            },
+            {
+              "line": 61,
+              "text": "access_status=\"NOT_WITNESSED\","
+            },
+            {
+              "line": 74,
+              "text": "source_ref=\"TEST_ONLY_ADP017_S49_B_\" + action_event_id,"
+            },
+            {
+              "line": 75,
+              "text": "access_status=\"ACCESSIBLE\","
+            },
+            {
+              "line": 114,
+              "text": "The accepted root has no B-owned S39 predicate source; do not infer one"
+            },
+            {
+              "line": 126,
+              "text": "source_ref=\"TEST_ONLY_S49_B_OTHER_PARTY_PRIOR_REFUSAL\","
+            },
+            {
+              "line": 131,
+              "text": "predicate=\"PRIOR_B_REFUSAL\","
+            },
+            {
+              "line": 184,
+              "text": "if access.get(\"access_status\") != \"ACCESSIBLE\":"
+            },
+            {
+              "line": 215,
+              "text": "\"selection_status\": \"ACCESS_NOT_OBSERVED\","
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/transaction.py"
+      ],
+      "code_path_count_in_partial_comparison": 14,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 56,
+      "name": "codex/sorok-s50-historical-v3-actor-recovery",
+      "pinned_sha": "515b9a8ee45672c97051df4efef679117a679525",
+      "current_sha_or_null": "515b9a8ee45672c97051df4efef679117a679525",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "91ccd3ca29978c87555056f336e37348fcee2945",
+        "ahead": 836,
+        "behind": 1921,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1/s50/recovery.py",
+          "blob_sha": "71cbdcf9d5e6e97fcb5ecf1d3bf0d74c29303f0e",
+          "lines": 172,
+          "kind": "code",
+          "symbols": [
+            "_sha",
+            "verify_source",
+            "_jsonable",
+            "_projection",
+            "run_legacy_fixture"
+          ],
+          "opening": "\"\"\"Recover and execute the historical V3 actor state on an isolated fixture.\"\"\"\nfrom __future__ import annotations\n\nfrom copy import deepcopy\nfrom dataclasses import is_dataclass, asdict\nimport json\nfrom pathlib import Path\nfrom typing import Any, Mapping\n\nfrom .bootstrap import IDENTITIES, SOURCE_ROOT, install\n\ninstall()\n\nfrom candidate import digest, seal  # noqa: E402\n\nimport hashlib  # noqa: E402",
+          "key_lines": [
+            {
+              "line": 19,
+              "text": "RECOVERED_GRADE = \"RECOVERED_HISTORICAL_V3_LEGACY_REPRODUCTION_NOT_NATIVE\""
+            },
+            {
+              "line": 68,
+              "text": "\"grade\": RECOVERED_GRADE,"
+            },
+            {
+              "line": 93,
+              "text": "\"status\": \"UNKNOWN_NOT_INITIALIZED\","
+            },
+            {
+              "line": 135,
+              "text": "\"grade\": RECOVERED_GRADE,"
+            },
+            {
+              "line": 169,
+              "text": "\"MISSING_ACTUAL\", \"RECOVERED_GRADE\", \"V3_FIXTURE\", \"run_legacy_fixture\","
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/transaction.py"
+      ],
+      "code_path_count_in_partial_comparison": 14,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 57,
+      "name": "codex/sorok-s51-situated-object-relevance",
+      "pinned_sha": "2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65",
+      "current_sha_or_null": "2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "91ccd3ca29978c87555056f336e37348fcee2945",
+        "ahead": 838,
+        "behind": 1921,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/s51/session.py",
+          "blob_sha": "0f58b97192c4d30ed6f2c9f20db3131545eb184c",
+          "lines": 582,
+          "kind": "code",
+          "symbols": [
+            "S51Refusal",
+            "__init__",
+            "S51Session",
+            "_append",
+            "_append_event",
+            "_perceive_if_present",
+            "_note_b_received_event",
+            "_expire_hypothesis",
+            "_episodes",
+            "_episode",
+            "_latest_body",
+            "_hypothesis_status",
+            "_active_hypothesis",
+            "recover_object",
+            "_canonical_object",
+            "declare_hypothesis",
+            "_canonical_hypothesis",
+            "withdraw_hypothesis",
+            "_consume_hypothesis",
+            "_actor_access",
+            "issue_offer",
+            "_canonical_offer",
+            "_offer_access",
+            "_canonical_access",
+            "evaluate",
+            "_evaluate_canonical",
+            "_relation_for",
+            "_canonical_relevance",
+            "consume_generation",
+            "_consume_generation_canonical",
+            "run_experiment",
+            "verify"
+          ],
+          "opening": "\"\"\"S51 bounded retained-object relevance experiment over actual S49 root.\"\"\"\nfrom __future__ import annotations\n\nfrom pathlib import Path\nfrom typing import Any, Mapping\n\nfrom .bootstrap import install\ninstall()\n\nfrom bp4.world import make_event, owner_receipt, validate_owner_receipt  # noqa: E402\nfrom candidate import digest  # noqa: E402\nfrom candidate.actor_access_response import make_actor_local_access_witness  # noqa: E402\nfrom s49.session import S49Session  # noqa: E402\nfrom s49.actor import record_b_observation  # noqa: E402\nfrom s39.sources import make_source  # noqa: E402\nfrom lab_sgi1.history import replay_history  # noqa: E402",
+          "key_lines": [
+            {
+              "line": 27,
+              "text": "GRADE=\"TEST_ONLY_S51_RETAINED_OBJECT_HYPOTHESIS_NOT_NATIVE\""
+            },
+            {
+              "line": 28,
+              "text": "ACTUAL_HOLD=\"S51_ACTUAL_CURRENT_PURPOSE_STILL_UNPROVED\""
+            },
+            {
+              "line": 45,
+              "text": "result=super()._append_event(event,perceive=perceive)"
+            },
+            {
+              "line": 48,
+              "text": "return result"
+            },
+            {
+              "line": 63,
+              "text": "stored=self.event(event.get(\"event_id\",\"\")) or event"
+            },
+            {
+              "line": 64,
+              "text": "body=stored.get(\"body\") or {}"
+            },
+            {
+              "line": 67,
+              "text": "\"received_event_id\":stored.get(\"event_id\",\"\"),\"received_event_hash\":stored.get(\"hash\",\"\"),"
+            },
+            {
+              "line": 68,
+              "text": "\"received_event_clock\":stored.get(\"clock\"),\"native\":False}"
+            },
+            {
+              "line": 70,
+              "text": "common.update({\"status\":\"BOUND\",\"reason\":\"NEXT_RECEIVED_EVENT_IS_OFFER\","
+            },
+            {
+              "line": 71,
+              "text": "\"bound_event_id\":stored.get(\"event_id\",\"\")})"
+            },
+            {
+              "line": 73,
+              "text": "common.update({\"status\":\"EXPIRED\",\"reason\":\"NEXT_RECEIVED_EVENT_NOT_OFFER\"})"
+            },
+            {
+              "line": 80,
+              "text": "\"status\":\"EXPIRED\",\"reason\":reason,\"received_event_id\":event_id,\"native\":False})"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/transaction.py"
+      ],
+      "code_path_count_in_partial_comparison": 14,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 58,
+      "name": "codex/sorok-s52-paid-activity-repertoire",
+      "pinned_sha": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+      "current_sha_or_null": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "91ccd3ca29978c87555056f336e37348fcee2945",
+        "ahead": 841,
+        "behind": 1921,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/session.py",
+          "blob_sha": "c347d8a902f4f451852aca1054e9a3cd99d4c3f0",
+          "lines": 319,
+          "kind": "code",
+          "symbols": [
+            "candidate_digest",
+            "S52Session",
+            "open",
+            "_checkpoint_readset",
+            "_relevance_source",
+            "resolve_candidate",
+            "resolve_repertoire",
+            "resolve_generation",
+            "produce_b_turn",
+            "compile_candidate",
+            "consume_generation",
+            "run_experiment",
+            "perform_paid_participation",
+            "verify"
+          ],
+          "opening": "\"\"\"S52 paid-activity candidate over the accepted S51/S49 person.\"\"\"\nfrom __future__ import annotations\nfrom copy import deepcopy\nfrom typing import Any, Mapping\n\nfrom .bootstrap import install\ninstall()\n\nfrom candidate import digest  # noqa: E402\nfrom s39.sources import make_source  # noqa: E402\nfrom s51.session import S51Session, S51Refusal  # noqa: E402\n\nS52=\"SOROK_S52_PAID_ACTIVITY_REPERTOIRE@1\"\nCANDIDATE_KIND=\"S52_PAID_CANDIDATE\"\nPAID_OPTION=\"PAID_PARTICIPATION\"\nPAID_ACTION=\"PARTICIPATE_IN_PAID_TASK\"",
+          "key_lines": [
+            {
+              "line": 19,
+              "text": "GRADE=\"TEST_ONLY_S52_PAID_ACTIVITY_REPERTOIRE_NOT_NATIVE\""
+            },
+            {
+              "line": 20,
+              "text": "SOURCE_GRADE=\"TEST_ONLY_S52_PAID_ACTIVITY_PORT_NOT_NATIVE\""
+            },
+            {
+              "line": 62,
+              "text": "as_of=self.clock(),predicate=\"S51_OBJECT_RELEVANCE\",value=1,"
+            },
+            {
+              "line": 77,
+              "text": "stored=dict(rows[0].get(\"body\") or {})"
+            },
+            {
+              "line": 78,
+              "text": "if stored.get(\"candidate_hash\")!=candidate_digest(stored):"
+            },
+            {
+              "line": 81,
+              "text": "if ((row.get(\"body\") or {}).get(\"result\") or {}).get(\"relevance_hash\")==stored.get(\"relevance_hash\")]"
+            },
+            {
+              "line": 86,
+              "text": "\"relevance_hash\":(rel_body.get(\"result\") or {}).get(\"relevance_hash\")})"
+            },
+            {
+              "line": 96,
+              "text": "if expected.get(\"candidate_hash\")!=stored.get(\"candidate_hash\"):"
+            },
+            {
+              "line": 98,
+              "text": "if stored.get(\"actor_id\")!=expected.get(\"actor_id\") or stored.get(\"root_hash\")!=expected.get(\"root_hash\") or stored.get(\"branch_id\")!=expected.get(\"branch_id\"):"
+            },
+            {
+              "line": 100,
+              "text": "if stored.get(\"source_ref\")!=expected.get(\"source_ref\") or stored.get(\"source_hash\")!=expected.get(\"source_hash\"):"
+            },
+            {
+              "line": 106,
+              "text": "raise S51Refusal(\"S52_CANONICAL_REPERTOIRE_REQUIRED\")"
+            },
+            {
+              "line": 155,
+              "text": "status=\"\"; reason=\"\""
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/transaction.py"
+      ],
+      "code_path_count_in_partial_comparison": 14,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261024-S35-A-T-SCIENCE-CANDIDATE-R1/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    },
+    {
+      "index": 59,
+      "name": "codex/sorok-same-person-join-20261022",
+      "pinned_sha": "13dfd6bad54ec19b4bdf31159e54fb6052d5440d",
+      "current_sha_or_null": "13dfd6bad54ec19b4bdf31159e54fb6052d5440d",
+      "head_equal_pinned": true,
+      "premain_comparison": {
+        "status": "diverged",
+        "merge_base": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+        "ahead": 7,
+        "behind": 4925,
+        "files_returned": 300,
+        "complete": false
+      },
+      "inspected_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+          "blob_sha": "43c9d7cb9c7c3d929df08e9d6fec23363881e46b",
+          "lines": 74,
+          "kind": "code",
+          "symbols": [
+            "JoinedSession",
+            "start",
+            "_save_join_meta",
+            "open"
+          ],
+          "opening": "\"\"\"Sourcefree J product connected to E admission without a second product root.\"\"\"\nimport json\nimport sys\nfrom pathlib import Path\n\nROOT = Path(__file__).resolve().parents[1]\nJ = ROOT / 'vendor' / 'j'\nE = ROOT / 'vendor' / 'e'\nfor path in reversed((J, J/'r29m/source', J/'candidate', J/'candidate/vendor/bp2',\n                      J/'candidate/vendor/bp4', J/'r29p', J/'r26e', J/'n1')):\n    sys.path.insert(0, str(path))\nfrom r31j.build import product as build_product\nfrom r31j.product import R31JProduct\nfrom r31j.scenarios import evaluated\nsys.path.insert(0, str(E))\nfrom r31e.session import R31ESession",
+          "key_lines": [
+            {
+              "line": 42,
+              "text": "grade='TEST_ONLY_SOURCEFREE_NOT_NATIVE',"
+            }
+          ]
+        }
+      ],
+      "actual_code_paths": [
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/bootstrap.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/cli.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/expression.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/session.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/tests/conftest.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/tests/test_r31e_expression.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/tools/collect_meta.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/tools/run_evidence.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/tools/source_manifest.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/bootstrap.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/cli.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/faults.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/first_session.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/phenomenal.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/tests/conftest.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/tests/test_r30a_first_session.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/assertion.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/bootstrap.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/c12_verify.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/cli.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/envelope.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/product.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/reunion.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/seed.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/bp2p4/severance.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/historical_actor_producer.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/native_ports.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/stable_actor_binding.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/binding.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/bootstrap.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/ports.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/producer.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/scientific.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/bp2_joined/severance.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/conftest.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/test_joined_alternatives.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/test_joined_positive.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/test_joined_security.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/test_joined_severance.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tests/test_native_ports.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tools/cold_probe.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tools/run_courts.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/tools/stage_sources.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/c9_bridge.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/canon.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/composer.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/ledger.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp1/bp1/source.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp3/c8_exclusive_writer.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp3/c9_event_ingress.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp3/vendor/c8_readonly_consumer.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp3/vendor/c8o_trusted_outbox.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/bp3/vendor/outbox_prototype.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/action_admission.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/canon.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/conditioning.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/events.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/identity.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/later_action.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/native_custody.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/pipeline.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/release_gate.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/response_rules.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/target_rules.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/c9r/candidate/transaction.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/g18/lab_sgi1/__init__.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/g18/lab_sgi1/core.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/g18/lab_sgi1/history.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/g18/lab_sgi1/joint.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/g18/lab_sgi1/proposal.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/vendor/native/rawlsing_next/v3_psepf_zero_positive_guard.py",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/bp4/__init__.py"
+      ],
+      "code_path_count_in_partial_comparison": 176,
+      "return_receipt_candidates": [
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp2/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/00_RETURN.md",
+        "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp2/00_RETURN.md"
+      ],
+      "source_read_ok": true,
+      "errors": [],
+      "classification_status": "SOURCE_READ__FULL_REVIEW_NOT_ESTABLISHED",
+      "source_rights": "READ_ONLY__NATIVE_GRANTS_NOT_ESTABLISHED",
+      "first_real_consumer": "NOT_YET_ADJUDICATED",
+      "review_grade": "NOT_YET_ADJUDICATED",
+      "adoption_candidate_grade": "NOT_YET_ADJUDICATED"
+    }
+  ]
+}
