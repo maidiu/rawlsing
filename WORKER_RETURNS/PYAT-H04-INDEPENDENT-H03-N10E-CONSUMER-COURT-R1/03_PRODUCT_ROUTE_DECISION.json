@@ -1,0 +1,188 @@
+{
+  "schema": "PYAT_H04_PRODUCT_ROUTE_DECISION@1",
+  "repository": "maidiu/rawlsing",
+  "h03_reviewed_commit": "b26e4cab577bb33d0d80489322c0c4efebd2df17",
+  "receiving_control": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "terminal_verdict": "H03_PREPARATION_ACCEPT__EXACT_AUTHORITY_DECISION_REQUIRED",
+  "selected_route": "B",
+  "route_status": "SELECTED_PROPOSED__BLOCKED_ON_EXACT_OWNER_AUTHORITY_DECISION",
+  "one_line_decision": "Authorize a thin retained-fact analytical bridge from the exact GT2 Field Forge profile with an exact GT2 N10E model/walkback/query/pairing decision, or explicitly defer the analytical lane and preserve the structural positive.",
+  "predecessor": {
+    "retained_fact_ref": {
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+      "content_hash": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46"
+    },
+    "retained_query_ref": {
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+      "content_hash": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0"
+    },
+    "predicate_ref": {
+      "kind": "EmpiricalPredicate@1.0.0",
+      "content_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3"
+    },
+    "replay_ref": {
+      "kind": "PRE553_I03_QUERY_REPLAY",
+      "content_hash": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f"
+    },
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "R5_GT12_Q86A_Q86B_FROZEN",
+      "content_hash": "8315b104a94ae985a3ee3d77c8c365d5fcef6b6cb51a606df5bf141434668295"
+    },
+    "universe_ref": {
+      "kind": "EmpiricalUniverse@1.0.0",
+      "content_hash": "4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1"
+    },
+    "field_forge_relation_ref": {
+      "content_hash": "1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19",
+      "typed_state": "SUPPORTED",
+      "permission_ceiling": "STRUCTURAL_MEDIATION_INPUT"
+    },
+    "source": {
+      "family": "Afrobarometer",
+      "wave": "R5",
+      "source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "conditioner": "Q86B",
+      "target": "Q86A",
+      "risk_set": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+      "support": 19210,
+      "joint_cells": 36,
+      "zero_cells": 23,
+      "conditioner_denominators": [6784, 11787, 624, 0, 0, 15]
+    }
+  },
+  "required_transformation": {
+    "name": "RETAINED_GT2_FACT_TO_N10E_POSSIBILITY_BRIDGE",
+    "description": "Accept only the exact retained GT2 fact and exact Field Forge conditional-support profile; map the six conditioned rows to a PossibilitySliceEvidence for the exact owner-issued GT2 consumer query, model rule and condition-value witness. Do not re-execute I03, accept caller geometry/counts/probabilities, or reconstruct respondents.",
+    "input_contract": "fixed exact fact/profile identity + exact owner-issued GT2 model/query/pairing authority",
+    "output_contract": "PossibilitySliceEvidence -> PositionedSubjectPossibilityResult through the existing N10E consumer, with provider receipt and deterministic replay",
+    "forbidden_inputs": [
+      "caller-supplied geometry",
+      "caller-supplied probability",
+      "caller-supplied counts",
+      "respondent preimages",
+      "AT07 fixture rule",
+      "cross-universe or cross-release proxy",
+      "individualized prediction or actor-state request"
+    ]
+  },
+  "current_producer_implementation": {
+    "retained_loader": "rawlsing_next.pre553_repo_native_current_payload.load_current_gt2_query_fact_from_committed_transport",
+    "field_forge": "rawlsing_next.field_forge_conditional_support.produce_exact_conditional_support_profile",
+    "h03_preparation": "rawlsing_next.pre553_retained_gt2_analytical_preparation.load_retained_gt2_analytical_preparation",
+    "h03_preparation_state": "PREPARED_ONLY__N10E_PROVIDER_CONTRACT_BLOCKED",
+    "h03_preparation_ref": "0ef9fc9c1ce71f53c802a195584782ecb813d015b505c80bb4450bf4d119e101"
+  },
+  "actual_consuming_function": {
+    "provider": "rawlsing_next.pre553_empirical_possibility_provider.provide_empirical_possibility_slice",
+    "consumer": "rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
+    "composer": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility",
+    "existing_provider_inputs": [
+      "repository",
+      "empirical_query",
+      "predicate",
+      "authority_registry",
+      "release_refs",
+      "consumer_query",
+      "model_rule",
+      "condition_binding_witness"
+    ],
+    "does_not_accept": ["retained fact", "Field Forge profile", "executed fact", "producer result"]
+  },
+  "authority_present": {
+    "gt2_i03_query": "GT12-A3-GT2-I03-QUERY @ c0ec18e231c8b934acc1fd072b8cd26d59ee2d784c9fb5b29b345b944a757a16",
+    "gt2_target_use": "GT12-A3-GT2-TARGET-USE @ 8be1db868deb8b1d613495a2120d2092df2fe55aa5f8884830d7a7e85e221a0e",
+    "permission_ceiling": "EMPIRICAL_INPUT_TO_FROZEN_EXACT_CONDITIONAL_SUPPORT_ONLY__NO_CAUSAL_OR_ACTOR_PROMOTION",
+    "structural_positive": "HQ222 ACCEPT_C5_GT2_POSITIVE_REALIZATION__V555_CONTRACT_GAP_CONFIRMED"
+  },
+  "authority_absent": {
+    "gt2_n10e_model_rule": "ABSENT",
+    "gt2_n10e_walkback_policy": "ABSENT",
+    "gt2_positioned_subject_consumer_query": "ABSENT",
+    "gt2_condition_value_pairing_authority": "ABSENT",
+    "gt2_n10e_consumer_semantic_authority": "ABSENT",
+    "retained_fact_bridge_authorization": "ABSENT",
+    "sealed_c11_release_preimages": "NOT RECOVERABLE FROM CURRENT FIXED TRANSPORT",
+    "nearest_candidate": {
+      "authority_id": "C1-AT07-POSITIONED-SUBJECT-MODEL-RULE",
+      "status": "CANDIDATE_NOT_ADOPTED",
+      "scope": "AT07_BIDIRECTIONAL_100",
+      "real_source_effect": false,
+      "gt2_authorized": false
+    }
+  },
+  "minimum_executable_positive_witness": {
+    "setup": "Load the exact retained GT2 fact/profile and construct the exact owner-issued GT2 consumer query, model rule and condition-value witness from their immutable refs.",
+    "action": "Invoke the thin retained-fact bridge and the existing N10E consumer; emit a real PossibilitySliceEvidence, PositionedSubjectPossibilityResult, provider receipt and deterministic replay.",
+    "required_assertions": [
+      "predicate bd91b405... and relation 1ffdfe53... are preserved",
+      "36 cells, 19,210 support, six rows and denominators 6784/11787/624/0/0/15 are preserved",
+      "Q86B is conditioner and Q86A is target; order reversal refuses",
+      "no caller geometry/counts/probabilities/preimages are accepted",
+      "all authority refs are exact and in scope; AT07 substitution refuses",
+      "tampered counts, universe, release, target order or authority fail closed",
+      "no individualized prediction, causal claim or actor-state claim is emitted"
+    ],
+    "negative_witness": "Same bridge with any one exact determinant altered must refuse before producing evidence or a consumer result."
+  },
+  "required_permissions_and_changes": {
+    "owner_decision": "Pyat HQ + EE14 positioned-subject/model owner + C11/I03 source owner + Field Forge owner",
+    "must_issue": [
+      "positive operation-specific GT2 N10E analytical-use authorization",
+      "exact GT2 model rule and walkback policy",
+      "exact GT2 positioned-subject consumer query binding Q86B to Q86A",
+      "condition-value pairing authority and exact witness",
+      "explicit retained-fact bridge contract that does not re-execute I03",
+      "consumer-side semantic authority distinct from STRUCTURAL_MEDIATION_INPUT"
+    ],
+    "must_not": [
+      "widen HQ230 AT07 candidate to GT2",
+      "treat population conditional counts as individualized probabilities",
+      "reconstruct respondents or fabricate a sealed release",
+      "accept caller geometry as authority",
+      "merge or adopt without independent review"
+    ]
+  },
+  "source_science_and_actor_boundaries": {
+    "allowed": "population-level conditional-count computation within the exact retained source/universe/release and structural consumer grain",
+    "held": "positioned-subject possibility, individualized prediction, causal interpretation, actor cognition, biography and original-source qualification",
+    "no_new_native_authority": true
+  },
+  "downstream_n11_n12": {
+    "effect": "Advances the analytical N10E consumer seam if authorized; does not complete N11/N12.",
+    "does_not": [
+      "complete N11/N12",
+      "establish native actor/person science",
+      "replace the structural V554/V557/V558 positive",
+      "authorize V555 SIG-004 or contract relabel"
+    ]
+  },
+  "rejected_routes": {
+    "A": {
+      "name": "Recover an executable retained C11 release",
+      "rejected_because": "The fixed transport contains only the executed fact and hash-only refs; the historical 96,057/19,212 release bodies are not committed or present at the named Library path. Rebuilding requires governed source/respondent artifacts outside this grant.",
+      "evidence": "02_CONSTRUCTOR_COMPLETE_MANIFEST.json; A1/A2 returns; absent /Rawlsing/FIELD_FORGE_R2/"
+    },
+    "C": {
+      "name": "General empirical/world consumer rather than positioned subject",
+      "rejected_because": "The nearest actual structural consumer (V554/V557/V558 CONTEXT) is already positive and serves a different grain. It does not satisfy the N10E analytical lane and does not need a new preparation. It remains the lawful fallback if the analytical lane is deferred.",
+      "evidence": "HQ222 ACCEPT_C5_GT2_POSITIVE_REALIZATION; H02 retained structural positive"
+    },
+    "D": {
+      "name": "Exact authority/source hold",
+      "rejected_as_primary_because": "A pure hold would not select the shortest productive route. Its authority-decision component is retained inside Route B: the owner must issue the exact GT2 N10E decision before implementation.",
+      "remains_fallback": true
+    }
+  },
+  "first_consumer": "A real retained-GT2 N10E analytical consumer through the existing provider and positioned-subject consumer; not the structural V554/V557/V558 CONTEXT lane, and not an individual person.",
+  "expected_artifact": "A source-free bridge/test plus exact owner-issued authority refs that produces PossibilitySliceEvidence and PositionedSubjectPossibilityResult from the exact retained GT2 profile, with provider receipt and deterministic replay.",
+  "acceptance_witness": "The positive witness in minimum_executable_positive_witness plus every listed negative refusal, independently reviewed at the exact SHA.",
+  "limits": [
+    "No new scientific authority is issued by this decision.",
+    "No sealed C11 release is fabricated or claimed recovered.",
+    "No original survey/respondent corpus, native I03 execution, merge or adoption.",
+    "MAX reasoning effort remains UNVERIFIED."
+  ]
+}
