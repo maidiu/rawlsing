@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "R61_NATIVE_LOWERING_INVENTORY_CONSERVATION",
+      "actual_consumer": "LoweringPlan.coverage_report consumed by native I05 candidate/role construction",
+      "claimed_dependency": "Every governed eligible operation must remain accounted for across lowering disposition sets",
+      "positive_node": "rawlsing_next/tests/test_universal_grammar.py::test_conditioned_joint_and_cotravel_bind_condition_roles_natively",
+      "fault": {
+        "path": "rawlsing_next/universal_grammar/native_map.py",
+        "old": "\"no_drop_ok\": len(all_ids) == total,",
+        "new": "\"no_drop_ok\": len(all_ids) != total,"
+      }
+    }
+  ]
+}
