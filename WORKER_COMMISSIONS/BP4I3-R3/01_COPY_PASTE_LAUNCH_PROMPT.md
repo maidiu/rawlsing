@@ -9,7 +9,7 @@ BRANCH: review/sorok-r3-bp4-c12-authenticity-independent-court-20261030
 EXACT SEALED STARTUP: 187fdd11963163dab03c7b061e20067ea1f99134
 TARGET ORIGINAL RETURN: 790f793ea85c8aba914970b7d9c3c25f81bf8a01
 READ ENTIRE COMMISSION: WORKER_COMMISSIONS/BP4I3-R3/00_COMMISSION.md
-SESSION_CUSTODY REQUIRED: device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING BP4I3 | BP4/C12 independent hostile writ | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
+SESSION_CUSTODY REQUIRED: record AGENT_NAME, AGENT_ID (if exposed), AGENT_ROLE/mode explicitly and separately from harness/model.  device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING BP4I3 | BP4/C12 independent hostile writ | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
 MUST_READ_NOW: BP4 exact author 790f793ea85c8aba914970b7d9c3c25f81bf8a01 00–04 and source patch, scripts/test; F2 0636d257f588f8874e65b2cb183d1d47c7f53327 and F2I 26cf53526b7d290a712d1e2be5852e0ed5668b7a; Original BP2P4J 5b3e6577400ea1d88971ae6b48e41a118b8059ae, C9 R3, C12 68b source
 READ_IF_TRIGGERED: original source/owner and versioned first consumer, verified live Mac worktree/lease.
 BACKGROUND_LINK_ONLY: old census.
