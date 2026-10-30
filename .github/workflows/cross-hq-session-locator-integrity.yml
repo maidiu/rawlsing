@@ -5,12 +5,15 @@ on:
       - 'CROSS_HQ_CONTROL_ROOM/SESSION_LOCATORS.json'
       - 'CROSS_HQ_CONTROL_ROOM/verify_session_locators.py'
       - 'CROSS_HQ_CONTROL_ROOM/SESSION_LOCATOR_TEMPLATE.json'
+      - 'CROSS_HQ_CONTROL_ROOM/test_session_locator_integrity_r2.py'
+      - 'CROSS_HQ_CONTROL_ROOM/SESSION_LOCATOR_AND_RETURN_CUSTODY_LAW_R1.md'
       - '.github/workflows/cross-hq-session-locator-integrity.yml'
   push:
     branches: ['integration/pre-main-reconciliation-r1']
     paths:
       - 'CROSS_HQ_CONTROL_ROOM/SESSION_LOCATORS.json'
       - 'CROSS_HQ_CONTROL_ROOM/verify_session_locators.py'
+      - 'CROSS_HQ_CONTROL_ROOM/test_session_locator_integrity_r2.py'
 permissions:
   contents: read
 jobs:
@@ -19,7 +22,9 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Verify session locator registry and false-identity mutation witnesses
-        run: python3 CROSS_HQ_CONTROL_ROOM/verify_session_locators.py --selftest
+      - name: Verify session locator registry and G1-G6 mutation witnesses
+        run: python3 CROSS_HQ_CONTROL_ROOM/verify_session_locators.py --selftest --repo .
+      - name: Run sourcefree locator custody regressions
+        run: python3 -m unittest -v CROSS_HQ_CONTROL_ROOM/test_session_locator_integrity_r2.py
       - name: No false authority
-        run: echo "Offline schema checks only; no Mac identity, actual user session title, source grant or merge authority established."
+        run: echo "Offline schema/custody checks only; no Mac identity, actual user session title, source grant or merge authority established."
