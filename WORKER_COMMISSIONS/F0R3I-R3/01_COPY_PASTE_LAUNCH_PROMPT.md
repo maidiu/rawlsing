@@ -9,7 +9,7 @@ BRANCH: review/premain-r3-f0r3-and-session-custody-hostile-court-20261030
 EXACT SEALED STARTUP: 187fdd11963163dab03c7b061e20067ea1f99134
 TARGET ORIGINAL RETURN: 3057b2f5b87f04ff1737d88356edfe3568e1745f
 READ ENTIRE COMMISSION: WORKER_COMMISSIONS/F0R3I-R3/00_COMMISSION.md
-SESSION_CUSTODY REQUIRED: device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING F0R3I | PRE-MAIN F0R3 exact patch and cr | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
+SESSION_CUSTODY REQUIRED: record AGENT_NAME, AGENT_ID (if exposed), AGENT_ROLE/mode explicitly and separately from harness/model.  device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING F0R3I | PRE-MAIN F0R3 exact patch and cr | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
 MUST_READ_NOW: F0R3 3057b2f5b87f04ff1737d88356edfe3568e1745f candidate validator 20 witnesses and 32 row current cut; Original F0 e5089b7da29d3c290ad1447f7b7a45cc81f0eb6e, F0R2 53c4e16f5e402f452efb036878a58cd4258cd14a, draft PR519 exact live; New session locator draft PR521 with Cross/Pyat/Sorok grok requirements, historical unknown Mac vs verified harness
 READ_IF_TRIGGERED: original source/owner and versioned first consumer, verified live Mac worktree/lease.
 BACKGROUND_LINK_ONLY: old census.
