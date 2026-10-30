@@ -1,0 +1,19 @@
+LAUNCH — OC5OWNER — OC5 original custody policy decision packet and precise source-issuer handoff
+REPOSITORY: maidiu/rawlsing (PRIVATE)
+ROLE: Independent I3 source-policy analyst and original-owner decision facilitator; not lawful OC4/OC5 issuer, not patch author or own reviewer
+USER_SELECTED_EDITOR_MODEL_PAIR: Browser / GPT-6 High recommended; user explicitly selects real editor/model/machine.
+SINGLE_AGENT_FULL_DELIVERABLE=YES; NO_AUTONOMOUS_MODEL_OR_HARNESS_SWITCH=YES; POST_RETURN_INDEPENDENT_REVIEW_OWNER=incumbent HQ + separate reviewer.
+INTELLIGENCE=I3 HIGH; EXECUTION=S0–S1 documentary original source + test record; HQ_ENVIRONMENT_VERDICT=BROWSER_NATIVE; BROWSER_SUFFICIENCY=FULL documentary only; SETUP_COST=LIGHT; PRIMARY_MODEL_ECONOMICS=UNKNOWN.
+ROUTE Browser→DeepSeek V4.1-Flash MAX→Codex High if necessary→user-selected Middle, never silent switching. PHASE_MODEL_ASSIGNMENT=I0 exact custody then I3 HIGH whole assignment, independent later review. ACTIVE_WORKER_NO_DISTURBANCE=YES; REVIEW_INDEPENDENCE_AND_ESCALATION=separate author/reviewer and original source owners.
+BRANCH: research/sorok-r3-oc5-original-source-owner-policy-decision-20261030
+EXACT SEALED STARTUP: 187fdd11963163dab03c7b061e20067ea1f99134
+TARGET ORIGINAL RETURN: e8b127b68c18d05c4d40c059b3aecc00dafc7ce7
+READ ENTIRE COMMISSION: WORKER_COMMISSIONS/OC5OWNER-R3/00_COMMISSION.md
+SESSION_CUSTODY REQUIRED: device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING OC5OWNER | OC5 original custody policy deci | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
+MUST_READ_NOW: OC5 author e8b127b68c18d05c4d40c059b3aecc00dafc7ce7 49 classifications, original OC4 source 0caaec590f6a8bf6744f22dc9c948c5fe233bc94; Independent original reviewer 67a4f1561cdad40192f00797d66b24fc4cd91589, F3I 97dbe712e4cce8fedd1632d9ac64b4e57a0ac25e; Existing Pyat/C07 custody and any original owner policy signatures actually found, no invented signature
+READ_IF_TRIGGERED: original source/owner and versioned first consumer, verified live Mac worktree/lease.
+BACKGROUND_LINK_ONLY: old census.
+WORK: 1) Recover actual policy evidence, separate A6 11 identity field bypass, A1 alias multiplicity 10, A2 confusable 6, A3/A4/A5 22 fail-closed typing and 10 earlier REDs 2) For each A1–A6 identify original owner authority, exact lawful types/normalization/exception rules, first actual consumer, backwards compatibility; do not invent rule if absent 3) Prepare minimum five owner yes/no decision propositions and precise executable candidate patch acceptance tests; preserve 349-case 283/66 and 159 110/49 records 4) If original issuer authorized in session, record exact owner grant evidence or retain OWNER_DECISION_REQUIRED; no automatic policy issuance, implementer re-launch only after original owner chooses
+ACCEPTANCE: exact source/tests/reviewer/negative and separate ENGINEERING SCIENTIFIC AUTHORITY grades; original source scientific grant and canonical CAS held until authorized. Do not merge, original-source run, or self-review.
+STOP/HOLD: READY_DOC_OWNER_COURT__ISSUANCE_HELD, absent source/host/owner or QF2 preconditions => explicit named STOP and return, no production write.
+RETURN: WORKER_RETURNS/OC5OWNER-R3/00_OWNER_DECISION_RESEARCH.md; WORKER_RETURNS/OC5OWNER-R3/01_A1_A6_POLICY_AND_ORIGINAL_AUTHORITY_MATRIX.json; WORKER_RETURNS/OC5OWNER-R3/02_MINIMAL_REPAIR_CUT_AND_ORIGINAL_OWNER_APPROVAL.md; WORKER_RETURNS/OC5OWNER-R3/03_SESSION_AND_NEW_IMPLEMENTER_HANDOFF.md; SESSION_LOCATOR.json; FINDING/INTERPRETATION/ACTION/OWNER; DONE/REMAINING/BLOCKERS/LARGEST_MOVE/FLIGHT/DELTA; original source SHA/tests RUN & NOT_RUN; exact pushed remote SHA and readback.
