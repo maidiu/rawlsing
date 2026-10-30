@@ -35,7 +35,7 @@ The M04 target is a five-path return under `WORKER_RETURNS/SOROK-M04-PROVENANCE-
 
 ## What I actually reproduced
 
-Two independent cold reconstructions were created from pinned Git in separate scratch roots. Each reconstructed the reviewer/M02/M01 runtime from absent state, installed the original M03 candidate, ran the baseline, then installed the exact M04 patched helper.
+Two independent cold reconstructions were created from pinned Git in separate scratch roots. Each reconstructed the reviewer/M02/M01 runtime from absent state, installed the original M03 candidate, ran the 51-case baseline, then installed the exact M04 patched helper and ran the 51-case patched suite. Root 1 additionally ran the inherited 587/587 before and after the patch; root 2 ran the patched inherited 587/587. Both roots reproduced baseline 41/10 and patched 51/51.
 
 | Court | Baseline (original 2434) | Patched (5ba929) | Exit |
 |---|---:|---:|---:|
