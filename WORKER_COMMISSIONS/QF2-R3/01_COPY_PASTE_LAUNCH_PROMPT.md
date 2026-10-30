@@ -9,7 +9,7 @@ BRANCH: integration/sorok-r3-qf2-conditional-qualified-fanin-20261030
 EXACT SEALED STARTUP: 187fdd11963163dab03c7b061e20067ea1f99134
 TARGET ORIGINAL RETURN: 68e49f92d5b9f0859d08847ee108684ddfd193ca
 READ ENTIRE COMMISSION: WORKER_COMMISSIONS/QF2-R3/00_COMMISSION.md
-SESSION_CUSTODY REQUIRED: device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING QF2 | QF2 conditional review-qualified | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
+SESSION_CUSTODY REQUIRED: record AGENT_NAME, AGENT_ID (if exposed), AGENT_ROLE/mode explicitly and separately from harness/model.  device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING QF2 | QF2 conditional review-qualified | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
 MUST_READ_NOW: QF1 immutable STOP 68e49f92d5b9f0859d08847ee108684ddfd193ca exact reported gates; Independent new reviews of G17/M04/BP4/F1C/H358/F0R3 and original OC5/Pyat owner decisions at exact returned SHAs WHEN AVAILABLE; Current protected PRE-MAIN, PR519/521 independently accepted and admin required-check plus current Sorok/Pyat progress owner CAS, F4 proper activation
 READ_IF_TRIGGERED: original source/owner and versioned first consumer, verified live Mac worktree/lease.
 BACKGROUND_LINK_ONLY: old census.
