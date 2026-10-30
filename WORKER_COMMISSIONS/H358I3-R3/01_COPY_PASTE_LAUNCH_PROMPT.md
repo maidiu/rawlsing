@@ -9,7 +9,7 @@ BRANCH: review/sorok-r3-h358-world-candidates-and-first-consumer-court-20261030
 EXACT SEALED STARTUP: 187fdd11963163dab03c7b061e20067ea1f99134
 TARGET ORIGINAL RETURN: ea40306bacb899147799330898e9ab91a950205f
 READ ENTIRE COMMISSION: WORKER_COMMISSIONS/H358I3-R3/00_COMMISSION.md
-SESSION_CUSTODY REQUIRED: device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING H358I3 | H358 independent source screenin | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
+SESSION_CUSTODY REQUIRED: record AGENT_NAME, AGENT_ID (if exposed), AGENT_ROLE/mode explicitly and separately from harness/model.  device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING H358I3 | H358 independent source screenin | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
 MUST_READ_NOW: H358 ea40306bacb899147799330898e9ab91a950205f five return files and actual 358/2366 source signature rows; F3I 97dbe712e4cce8fedd1632d9ac64b4e57a0ac25e HQ292 false absence, F3 6477a89bb9160eba1dd10607c47534fa4dce6cc2; Original HQ284/HQ292/R95/R107/B5/F6/W3-E07 C9 R3B exact described source and PRE-MAIN 299f41e9
 READ_IF_TRIGGERED: original source/owner and versioned first consumer, verified live Mac worktree/lease.
 BACKGROUND_LINK_ONLY: old census.
