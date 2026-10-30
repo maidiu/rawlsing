@@ -1,0 +1,767 @@
+{
+  "schema": "SOROK_G17I2_ORIGINAL_NEGATIVES_AND_PATCH_REPLAY@1",
+  "generated_at_utc": "2026-10-30",
+  "identity": {
+    "repository": "maidiu/rawlsing",
+    "return_branch": "review/sorok-r3-g17-source-security-independent-replay-20261030",
+    "sealed_startup": "187fdd11963163dab03c7b061e20067ea1f99134",
+    "prompt_head": "c69369408e5fd410d89f717cdd4ae7b4520f097a",
+    "target_author_repair": "8b9a39da552a224bddf486603179f565003f38bb",
+    "original_g17_author": "90d0eb7925de54635559a879ee76fc1b97b9ff61",
+    "original_g17i_reviewer": "156b84cc8481b65c4196b42574010eb7920d6f44",
+    "f3i_prior": "97dbe712e4cce8fedd1632d9ac64b4e57a0ac25e",
+    "premain_pin": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "device": "oldMac",
+    "device_verification": "local-machine-name-verified",
+    "harness": "OpenCode",
+    "model_id": "opencode-go/deepseek-v4.1-flash",
+    "reasoning_effort_requested": "MAX",
+    "reasoning_effort_verified": "UNVERIFIED",
+    "worktree": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/g17i2-return"
+  },
+  "source_custody": {
+    "original_files": {
+      "continuation.py": {
+        "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/continuation.py",
+        "git_blob": "c9318dcf33d041a673cfae15aff8fc51712f53e7",
+        "sha256": "89921be043daed114d734550afb828d3b252d6a5ee3bf631cc669df4356736d1"
+      },
+      "pipeline.py": {
+        "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/pipeline.py",
+        "git_blob": "fc954993ef966d20d1915546e04a122daa93538f",
+        "sha256": "04c2f07ed435db19cbe14bb377c52d2be0f854eca4cc5985e0d6419272f209bb"
+      },
+      "c9_handoff_consumer.py": {
+        "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/c9_handoff_consumer.py",
+        "git_blob": "47e59c12b79c04b05c18e73ad76078a29d0d7b3c",
+        "sha256": "5ccfa3e230975b7507817fc96a2b4c4ccce16ee9ab9ffd1997c02d351a01164b"
+      }
+    },
+    "candidate_files": {
+      "continuation.py": {
+        "path": "WORKER_RETURNS/SOROK-G17-HOSTILE-MATERIAL-CUSTODY-REPAIR-R1/candidate/lab_sgi1/continuation.py",
+        "git_blob": "705ef1a4568ec84020638b3cf32d348066945e86",
+        "sha256": "80823bde776f09a2ae7bf02dd7458982625a318fb9248228a5df2401e88d9426"
+      },
+      "pipeline.py": {
+        "path": "WORKER_RETURNS/SOROK-G17-HOSTILE-MATERIAL-CUSTODY-REPAIR-R1/candidate/lab_sgi1/pipeline.py",
+        "git_blob": "d07bb06c7a44cd337a43c387f55a17906c5307e3",
+        "sha256": "b5d19758da9b8115642e832efff17343cebfab1987fb37cf5afbfc59b362376c"
+      },
+      "c9_handoff_consumer.py": {
+        "path": "WORKER_RETURNS/SOROK-G17-HOSTILE-MATERIAL-CUSTODY-REPAIR-R1/candidate/c9_handoff_consumer.py",
+        "git_blob": "bd7a179e846e4067e324360fc3411806b2a537d4",
+        "sha256": "2c0430340512b7c2447c73de019227481f43f7156ba3d1b19d1fd8e16f7f4c6d"
+      }
+    },
+    "reviewer_test": {
+      "path": "WORKER_RETURNS/SOROK-20261019-G17I-MATERIAL-HISTORY-INDEPENDENT-R1/tests/test_g17i_independent.py",
+      "git_blob": "83f17006b22271f17c87f4563608de08395d7a1c",
+      "sha256": "0e4535a708d83a85d763c592f3d206f0b21dbc599846d7ffcd89cd82f145a5e6"
+    },
+    "author_test": {
+      "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/tests/test_g17_material_history_consumer.py",
+      "git_blob": "ab422636ef4a0d51f58049275b0fc4d19a609448"
+    },
+    "additional_hostile_test": {
+      "sha256": "10f9250aa580ce66b9d093e8c479c2fea2cf1c0699456c2a8f657ef57b3fdb1b",
+      "bytes": 2360,
+      "source": "\"\"\"G17I2 independent additional hostiles against the patched candidate.\n\nThese are reviewer-authored, not original G17 or G17I tests. They use the same\npublic `run`, `receive_handoff` and material/owner canonical paths.\n\"\"\"\nfrom __future__ import annotations\n\nimport sys\nfrom copy import deepcopy\nfrom pathlib import Path\n\nimport pytest\n\nROOT = Path(__file__).resolve().parents[1]\nCAND = ROOT / \"target_candidate\"\nsys.path.insert(0, str(CAND / \"candidate\"))\nsys.path.insert(0, str(CAND))\nsys.path.insert(0, str(ROOT / \"tests\"))\nfrom lab_sgi1.history import h_obj\nfrom lab_sgi1.joint import material_joint_opportunity, observe_joint_actions\nfrom lab_sgi1.mother import build_mother_checkpoint\nfrom lab_sgi1.research import inputs, run\nfrom lab_sgi1.relation import reconcile\nimport c9_handoff_consumer as C9\nfrom test_g17i_independent import history, world, relation_packet\n\n\ndef _nested_packet():\n    data = inputs()\n    data[\"joint_material_opportunity\"][\"metadata\"] = {\n        \"nested\": [{\"future_child_personality\": \"DEEP_ALIAS\"}]}\n    data[\"joint_material_opportunity\"][\"event_id\"] = h_obj(\n        {k: v for k, v in data[\"joint_material_opportunity\"].items()\n         if k != \"event_id\"})\n    return data\n\n\ndef test_deep_nested_future_child_alias_refused():\n    out = run(_nested_packet())\n    assert out[\"terminal\"][\"status\"] == \"FUTURE_CHILD_INFORMATION_LEAK\"\n    assert out[\"terminal\"][\"leaks\"][0][\"component\"] == \"joint_material_opportunity\"\n    assert out[\"terminal\"][\"leaks\"][0][\"field\"] == \"future_child_personality\"\n\n\ndef test_c9_owner_canonical_material_forgery_refused():\n    _, _, witness, _ = relation_packet()\n    action = deepcopy(witness[\"actions\"][0])\n    canonical = deepcopy(witness[\"material\"])\n    handoff = C9.build_handoff(action, canonical)\n    forged = deepcopy(canonical)\n    forged[\"owner_id\"] = \"FAKE_CANONICAL_OWNER\"\n    with pytest.raises(C9.C9Refusal, match=\"MATERIAL_SOURCE_NOT_AUTHENTIC\"):\n        C9.receive_handoff(handoff, forged)\n\n\ndef test_c9_canonical_material_still_accepts():\n    _, _, witness, _ = relation_packet()\n    action = deepcopy(witness[\"actions\"][0])\n    canonical = deepcopy(witness[\"material\"])\n    handoff = C9.build_handoff(action, canonical)\n    receipt = C9.receive_handoff(handoff, canonical)\n    assert receipt[\"status\"] == \"ACCEPTED\"\n    assert receipt[\"e2_later_authority\"] == \"HOLD_UNISSUED\"\n"
+    },
+    "original_tests_byte_unchanged": true
+  },
+  "commands": [
+    "cd <reviewer-base>/WORKER_RETURNS/SOROK-20261019-G17I-MATERIAL-HISTORY-INDEPENDENT-R1 && PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests/test_g17i_independent.py -q -p no:cacheprovider --junitxml=.../01_original_reviewer_11p3r.xml",
+    "cp <candidate>/lab_sgi1/continuation.py target_candidate/lab_sgi1/continuation.py; cp <candidate>/lab_sgi1/pipeline.py target_candidate/lab_sgi1/pipeline.py; cp <candidate>/c9_handoff_consumer.py target_candidate/c9_handoff_consumer.py",
+    "cd <reviewer-patched> && PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests/test_g17i_independent.py -q -p no:cacheprovider --junitxml=.../02_patched_reviewer_14.xml",
+    "cd <author-patched> && PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests/test_g17_material_history_consumer.py -q -p no:cacheprovider --junitxml=.../04_author_patched_13.xml",
+    "cd <reviewer-patched> && PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests/test_g17i2_additional.py -q -p no:cacheprovider --junitxml=.../05_additional_3.xml",
+    "repeat patched reviewer/author/additional in fresh Python processes for cold-process evidence"
+  ],
+  "results": {
+    "original_reviewer": {
+      "file": "01_original_reviewer_11p3r.xml",
+      "sha256": "b9f30f7d4eab7071817f07ae5a31c03addabd22b55b98f87dd693ff872758b15",
+      "tests": 14,
+      "failures": 3,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_stock5_two_conflicting_claims_rejected_with_positive_alternative",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_double_schooling_rejected_with_current_free_hours",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_repeated_tool_return_rejected_with_current_tools",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_forged_afterstate_with_genuine_material_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_forged_material_event_supplying_cash_must_be_refused",
+          "status": "FAIL",
+          "failure_message": "AssertionError: assert {'event_id': 'sha256:ffd4691bb41ce780b58339580c00c9192d59e738cebac8eb15a9c8100a9496bf', 'kind': 'PARENT_CONTINUATION', 'actor': 'R', 'owner_id': 'R', ...} is None\n +  where {'event_id': 'sha256:ffd4691bb41ce780b58339580c00c9192d59e738cebac8eb15a9c8100a9496bf', 'kind': 'PARENT_CONTINUATION', 'actor': 'R', 'owner_id': 'R', ...} = continue_person([{'event_id': 'sha256:eb47c8c38ea36693103d812dd022de7e7d5f0cfdc22da4b1f91ca997e05f888e', 'effective_index': 0, 'kind':...8e427e6548623130e44ea4abc4a2d57250081d76c787e49c', 'effective_index': 5, 'kind': 'PROJECT', 'actors': ['R'], ...}, ...], participation={'event_id': 'sha256:3a95b7a8a2c2fcc92e90899390feb626ed3ec40481e02065623fc491afec2159', 'owner_id': 'R', 'kind': 'PARTICIPATION_ACTION', 'status': 'PERFORMED', ...}, material_event={'event_id': 'sha256:bbfb9d35d90851fa5e6b168b27baf612cc158ce54d7e9f2227fc42568ae862d6', 'owner_id': 'G15_INDEPENDENT_MATERIAL_OBSERVER', 'permission': 'RESEARCH_JOINT_WITNESS_ONLY', 'effective_index': 100, ...})"
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_late_effective_participation_cannot_parent_past_continuation",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_fake_second_participant_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_future_child_top_level_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_future_child_nested_alias_must_be_refused",
+          "status": "FAIL",
+          "failure_message": "AssertionError: assert 'COMMITTED' != 'COMMITTED'"
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_joined_terminal_6_from_5_not_committed",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_m2_mp_are_typed_holds_not_fake_positives",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_two_vs_five_material_lives_are_genuinely_distinct",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_c9_material_handoff_genuine_and_severed",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_c9_forged_material_event_must_be_refused",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE C9Refusal"
+        }
+      ],
+      "junit_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"3\" skipped=\"0\" tests=\"14\" time=\"1.142\" timestamp=\"2026-10-30T13:36:21.654030-04:00\" hostname=\"Matthews-MBP.lan\"><testcase classname=\"tests.test_g17i_independent\" name=\"test_stock5_two_conflicting_claims_rejected_with_positive_alternative\" time=\"0.015\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_double_schooling_rejected_with_current_free_hours\" time=\"0.014\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_repeated_tool_return_rejected_with_current_tools\" time=\"0.007\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_forged_afterstate_with_genuine_material_refused\" time=\"0.043\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_forged_material_event_supplying_cash_must_be_refused\" time=\"0.057\"><failure message=\"AssertionError: assert {'event_id': 'sha256:ffd4691bb41ce780b58339580c00c9192d59e738cebac8eb15a9c8100a9496bf', 'kind': 'PARENT_CONTINUATION', 'actor': 'R', 'owner_id': 'R', ...} is None&#10; +  where {'event_id': 'sha256:ffd4691bb41ce780b58339580c00c9192d59e738cebac8eb15a9c8100a9496bf', 'kind': 'PARENT_CONTINUATION', 'actor': 'R', 'owner_id': 'R', ...} = continue_person([{'event_id': 'sha256:eb47c8c38ea36693103d812dd022de7e7d5f0cfdc22da4b1f91ca997e05f888e', 'effective_index': 0, 'kind':...8e427e6548623130e44ea4abc4a2d57250081d76c787e49c', 'effective_index': 5, 'kind': 'PROJECT', 'actors': ['R'], ...}, ...], participation={'event_id': 'sha256:3a95b7a8a2c2fcc92e90899390feb626ed3ec40481e02065623fc491afec2159', 'owner_id': 'R', 'kind': 'PARTICIPATION_ACTION', 'status': 'PERFORMED', ...}, material_event={'event_id': 'sha256:bbfb9d35d90851fa5e6b168b27baf612cc158ce54d7e9f2227fc42568ae862d6', 'owner_id': 'G15_INDEPENDENT_MATERIAL_OBSERVER', 'permission': 'RESEARCH_JOINT_WITNESS_ONLY', 'effective_index': 100, ...})\">def test_forged_material_event_supplying_cash_must_be_refused():\n        a, e, w, rel = relation_packet()\n        act = deepcopy(w[\"actions\"][1])\n        mat = deepcopy(w[\"material\"])\n        mat[\"payment_per_actor\"] = 100000\n        mat[\"event_id\"] = h_obj({k: v for k, v in mat.items() if k != \"event_id\"})\n        act[\"material_event_ref\"] = mat[\"event_id\"]\n        act[\"causal_parent_event_ids\"] = list(act[\"causal_parent_event_ids\"]) + [mat[\"event_id\"]]\n        after = deepcopy(act[\"before\"])\n        after[\"cash\"] += mat[\"payment_per_actor\"]\n        after[\"free_hours\"] -= mat[\"task_hours\"]\n        after[\"completed_units\"] += mat[\"material_units\"]\n        act[\"after\"] = after\n        act[\"event_id\"] = h_obj({k: v for k, v in act.items() if k != \"event_id\"})\n&gt;       assert continue_person(e, participation=act, material_event=mat) is None\nE       AssertionError: assert {'event_id': 'sha256:ffd4691bb41ce780b58339580c00c9192d59e738cebac8eb15a9c8100a9496bf', 'kind': 'PARENT_CONTINUATION', 'actor': 'R', 'owner_id': 'R', ...} is None\nE        +  where {'event_id': 'sha256:ffd4691bb41ce780b58339580c00c9192d59e738cebac8eb15a9c8100a9496bf', 'kind': 'PARENT_CONTINUATION', 'actor': 'R', 'owner_id': 'R', ...} = continue_person([{'event_id': 'sha256:eb47c8c38ea36693103d812dd022de7e7d5f0cfdc22da4b1f91ca997e05f888e', 'effective_index': 0, 'kind':...8e427e6548623130e44ea4abc4a2d57250081d76c787e49c', 'effective_index': 5, 'kind': 'PROJECT', 'actors': ['R'], ...}, ...], participation={'event_id': 'sha256:3a95b7a8a2c2fcc92e90899390feb626ed3ec40481e02065623fc491afec2159', 'owner_id': 'R', 'kind': 'PARTICIPATION_ACTION', 'status': 'PERFORMED', ...}, material_event={'event_id': 'sha256:bbfb9d35d90851fa5e6b168b27baf612cc158ce54d7e9f2227fc42568ae862d6', 'owner_id': 'G15_INDEPENDENT_MATERIAL_OBSERVER', 'permission': 'RESEARCH_JOINT_WITNESS_ONLY', 'effective_index': 100, ...})\n\ntests/test_g17i_independent.py:119: AssertionError</failure></testcase><testcase classname=\"tests.test_g17i_independent\" name=\"test_late_effective_participation_cannot_parent_past_continuation\" time=\"0.144\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_fake_second_participant_refused\" time=\"0.029\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_future_child_top_level_refused\" time=\"0.004\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_future_child_nested_alias_must_be_refused\" time=\"0.169\"><failure message=\"AssertionError: assert 'COMMITTED' != 'COMMITTED'\">def test_future_child_nested_alias_must_be_refused():\n        data = inputs()\n        data[\"joint_material_opportunity\"][\"metadata\"] = {\n            \"future_child_personality\": \"NESTED_ALIAS\"}\n        data[\"joint_material_opportunity\"][\"event_id\"] = h_obj(\n            {k: v for k, v in data[\"joint_material_opportunity\"].items() if k != \"event_id\"})\n        out = run(data)\n&gt;       assert out[\"terminal\"][\"status\"] != \"COMMITTED\"\nE       AssertionError: assert 'COMMITTED' != 'COMMITTED'\n\ntests/test_g17i_independent.py:156: AssertionError</failure></testcase><testcase classname=\"tests.test_g17i_independent\" name=\"test_joined_terminal_6_from_5_not_committed\" time=\"0.176\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_m2_mp_are_typed_holds_not_fake_positives\" time=\"0.009\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_two_vs_five_material_lives_are_genuinely_distinct\" time=\"0.024\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_c9_material_handoff_genuine_and_severed\" time=\"0.037\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_c9_forged_material_event_must_be_refused\" time=\"0.038\"><failure message=\"Failed: DID NOT RAISE C9Refusal\">def test_c9_forged_material_event_must_be_refused():\n        a, e, w, rel = relation_packet()\n        act = deepcopy(w[\"actions\"][0])\n        mat = deepcopy(w[\"material\"])\n        mat[\"payment_per_actor\"] = 100000\n        mat[\"event_id\"] = h_obj({k: v for k, v in mat.items() if k != \"event_id\"})\n        act[\"material_event_ref\"] = mat[\"event_id\"]\n        act[\"causal_parent_event_ids\"] = list(act[\"causal_parent_event_ids\"]) + [mat[\"event_id\"]]\n        after = deepcopy(act[\"before\"])\n        after[\"cash\"] += mat[\"payment_per_actor\"]\n        after[\"free_hours\"] -= mat[\"task_hours\"]\n        after[\"completed_units\"] += mat[\"material_units\"]\n        act[\"after\"] = after\n        act[\"event_id\"] = h_obj({k: v for k, v in act.items() if k != \"event_id\"})\n&gt;       with pytest.raises(C9.C9Refusal):\nE       Failed: DID NOT RAISE C9Refusal\n\ntests/test_g17i_independent.py:241: Failed</failure></testcase></testsuite></testsuites>"
+    },
+    "patched_reviewer": {
+      "file": "02_patched_reviewer_14.xml",
+      "sha256": "a4ac44c01f7eeca3d3c0c75526163ee5d5911c009133ddc1ed1c0bff4048c7fc",
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_stock5_two_conflicting_claims_rejected_with_positive_alternative",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_double_schooling_rejected_with_current_free_hours",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_repeated_tool_return_rejected_with_current_tools",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_forged_afterstate_with_genuine_material_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_forged_material_event_supplying_cash_must_be_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_late_effective_participation_cannot_parent_past_continuation",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_fake_second_participant_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_future_child_top_level_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_future_child_nested_alias_must_be_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_joined_terminal_6_from_5_not_committed",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_m2_mp_are_typed_holds_not_fake_positives",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_two_vs_five_material_lives_are_genuinely_distinct",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_c9_material_handoff_genuine_and_severed",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_c9_forged_material_event_must_be_refused",
+          "status": "PASS",
+          "failure_message": null
+        }
+      ],
+      "junit_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"0\" skipped=\"0\" tests=\"14\" time=\"0.711\" timestamp=\"2026-10-30T13:36:22.505108-04:00\" hostname=\"Matthews-MBP.lan\"><testcase classname=\"tests.test_g17i_independent\" name=\"test_stock5_two_conflicting_claims_rejected_with_positive_alternative\" time=\"0.013\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_double_schooling_rejected_with_current_free_hours\" time=\"0.017\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_repeated_tool_return_rejected_with_current_tools\" time=\"0.009\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_forged_afterstate_with_genuine_material_refused\" time=\"0.044\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_forged_material_event_supplying_cash_must_be_refused\" time=\"0.043\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_late_effective_participation_cannot_parent_past_continuation\" time=\"0.166\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_fake_second_participant_refused\" time=\"0.026\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_future_child_top_level_refused\" time=\"0.005\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_future_child_nested_alias_must_be_refused\" time=\"0.001\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_joined_terminal_6_from_5_not_committed\" time=\"0.175\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_m2_mp_are_typed_holds_not_fake_positives\" time=\"0.009\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_two_vs_five_material_lives_are_genuinely_distinct\" time=\"0.022\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_c9_material_handoff_genuine_and_severed\" time=\"0.036\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_c9_forged_material_event_must_be_refused\" time=\"0.036\" /></testsuite></testsuites>"
+    },
+    "author_base": {
+      "file": "03_author_base_13.xml",
+      "sha256": "d2bd012ba78e92a8676d70873975c43f585ddca1519a30c5db3dec8d0f2d461d",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_repeated_project_cannot_spend_same_material_twice",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_repeated_training_cannot_overspend_current_time",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_repeated_peer_actions_cannot_return_nonexistent_tools",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_forged_participation_cannot_supply_unperformed_cash",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_late_participation_cannot_parent_earlier_continuation",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_singular_owned_event_cannot_silently_add_other_actor",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_future_child_material_cannot_enter_committed_causal_output",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_joined_terminal_refuses_material_overspend",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_m2_archive_is_exact_typed_coverage_hold",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_mp_known_counterpart_is_exact_typed_coverage_hold",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_positive_material_remainder_is_not_vacuous",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_c9_handoff_reads_material_afterstate",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_c9_handoff_refuses_severed_material_source",
+          "status": "PASS",
+          "failure_message": null
+        }
+      ],
+      "junit_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"0\" skipped=\"0\" tests=\"13\" time=\"0.537\" timestamp=\"2026-10-30T13:36:24.036734-04:00\" hostname=\"Matthews-MBP.lan\"><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_repeated_project_cannot_spend_same_material_twice\" time=\"0.007\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_repeated_training_cannot_overspend_current_time\" time=\"0.007\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_repeated_peer_actions_cannot_return_nonexistent_tools\" time=\"0.008\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_forged_participation_cannot_supply_unperformed_cash\" time=\"0.042\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_late_participation_cannot_parent_earlier_continuation\" time=\"0.070\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_singular_owned_event_cannot_silently_add_other_actor\" time=\"0.006\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_future_child_material_cannot_enter_committed_causal_output\" time=\"0.005\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_joined_terminal_refuses_material_overspend\" time=\"0.177\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_m2_archive_is_exact_typed_coverage_hold\" time=\"0.004\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_mp_known_counterpart_is_exact_typed_coverage_hold\" time=\"0.006\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_positive_material_remainder_is_not_vacuous\" time=\"0.012\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_c9_handoff_reads_material_afterstate\" time=\"0.036\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_c9_handoff_refuses_severed_material_source\" time=\"0.036\" /></testsuite></testsuites>"
+    },
+    "author_patched": {
+      "file": "04_author_patched_13.xml",
+      "sha256": "b09eae9bf2715dd866dcb6dd9e3350ada9aa33d3ea1f83368d87b1b57381c91e",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_repeated_project_cannot_spend_same_material_twice",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_repeated_training_cannot_overspend_current_time",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_repeated_peer_actions_cannot_return_nonexistent_tools",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_forged_participation_cannot_supply_unperformed_cash",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_late_participation_cannot_parent_earlier_continuation",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_singular_owned_event_cannot_silently_add_other_actor",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_future_child_material_cannot_enter_committed_causal_output",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_joined_terminal_refuses_material_overspend",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_m2_archive_is_exact_typed_coverage_hold",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_mp_known_counterpart_is_exact_typed_coverage_hold",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_positive_material_remainder_is_not_vacuous",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_c9_handoff_reads_material_afterstate",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_c9_handoff_refuses_severed_material_source",
+          "status": "PASS",
+          "failure_message": null
+        }
+      ],
+      "junit_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"0\" skipped=\"0\" tests=\"13\" time=\"0.571\" timestamp=\"2026-10-30T13:36:25.067091-04:00\" hostname=\"Matthews-MBP.lan\"><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_repeated_project_cannot_spend_same_material_twice\" time=\"0.007\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_repeated_training_cannot_overspend_current_time\" time=\"0.006\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_repeated_peer_actions_cannot_return_nonexistent_tools\" time=\"0.007\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_forged_participation_cannot_supply_unperformed_cash\" time=\"0.044\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_late_participation_cannot_parent_earlier_continuation\" time=\"0.077\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_singular_owned_event_cannot_silently_add_other_actor\" time=\"0.006\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_future_child_material_cannot_enter_committed_causal_output\" time=\"0.005\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_joined_terminal_refuses_material_overspend\" time=\"0.189\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_m2_archive_is_exact_typed_coverage_hold\" time=\"0.005\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_mp_known_counterpart_is_exact_typed_coverage_hold\" time=\"0.009\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_positive_material_remainder_is_not_vacuous\" time=\"0.015\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_c9_handoff_reads_material_afterstate\" time=\"0.047\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_c9_handoff_refuses_severed_material_source\" time=\"0.045\" /></testsuite></testsuites>"
+    },
+    "additional_hostiles": {
+      "file": "05_additional_3.xml",
+      "sha256": "e2b74743f7adf89180e6d5a06b2401314f645653b529901db363591058a69cb5",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "classname": "tests.test_g17i2_additional",
+          "name": "test_deep_nested_future_child_alias_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i2_additional",
+          "name": "test_c9_owner_canonical_material_forgery_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i2_additional",
+          "name": "test_c9_canonical_material_still_accepts",
+          "status": "PASS",
+          "failure_message": null
+        }
+      ],
+      "junit_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"0\" skipped=\"0\" tests=\"3\" time=\"0.199\" timestamp=\"2026-10-30T13:36:56.123868-04:00\" hostname=\"Matthews-MBP.lan\"><testcase classname=\"tests.test_g17i2_additional\" name=\"test_deep_nested_future_child_alias_refused\" time=\"0.005\" /><testcase classname=\"tests.test_g17i2_additional\" name=\"test_c9_owner_canonical_material_forgery_refused\" time=\"0.036\" /><testcase classname=\"tests.test_g17i2_additional\" name=\"test_c9_canonical_material_still_accepts\" time=\"0.037\" /></testsuite></testsuites>"
+    },
+    "patched_reviewer_cold": {
+      "file": "06_patched_reviewer_cold_14.xml",
+      "sha256": "8a3f049f0b9a32c2e2546e3fe0df842f0543b496720c5153e5e04b013b4eadb4",
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_stock5_two_conflicting_claims_rejected_with_positive_alternative",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_double_schooling_rejected_with_current_free_hours",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_repeated_tool_return_rejected_with_current_tools",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_forged_afterstate_with_genuine_material_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_forged_material_event_supplying_cash_must_be_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_late_effective_participation_cannot_parent_past_continuation",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_fake_second_participant_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_future_child_top_level_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_future_child_nested_alias_must_be_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_joined_terminal_6_from_5_not_committed",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_m2_mp_are_typed_holds_not_fake_positives",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_two_vs_five_material_lives_are_genuinely_distinct",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_c9_material_handoff_genuine_and_severed",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i_independent",
+          "name": "test_c9_forged_material_event_must_be_refused",
+          "status": "PASS",
+          "failure_message": null
+        }
+      ],
+      "junit_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"0\" skipped=\"0\" tests=\"14\" time=\"0.651\" timestamp=\"2026-10-30T13:37:03.297457-04:00\" hostname=\"Matthews-MBP.lan\"><testcase classname=\"tests.test_g17i_independent\" name=\"test_stock5_two_conflicting_claims_rejected_with_positive_alternative\" time=\"0.013\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_double_schooling_rejected_with_current_free_hours\" time=\"0.014\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_repeated_tool_return_rejected_with_current_tools\" time=\"0.007\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_forged_afterstate_with_genuine_material_refused\" time=\"0.040\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_forged_material_event_supplying_cash_must_be_refused\" time=\"0.039\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_late_effective_participation_cannot_parent_past_continuation\" time=\"0.136\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_fake_second_participant_refused\" time=\"0.027\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_future_child_top_level_refused\" time=\"0.004\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_future_child_nested_alias_must_be_refused\" time=\"0.001\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_joined_terminal_6_from_5_not_committed\" time=\"0.163\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_m2_mp_are_typed_holds_not_fake_positives\" time=\"0.009\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_two_vs_five_material_lives_are_genuinely_distinct\" time=\"0.021\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_c9_material_handoff_genuine_and_severed\" time=\"0.035\" /><testcase classname=\"tests.test_g17i_independent\" name=\"test_c9_forged_material_event_must_be_refused\" time=\"0.034\" /></testsuite></testsuites>"
+    },
+    "author_patched_cold": {
+      "file": "07_author_patched_cold_13.xml",
+      "sha256": "1ad2536e11de7db691388af3fd76fc0a48f9a162d9188e8d28feda7a7380e246",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_repeated_project_cannot_spend_same_material_twice",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_repeated_training_cannot_overspend_current_time",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_repeated_peer_actions_cannot_return_nonexistent_tools",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_forged_participation_cannot_supply_unperformed_cash",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_late_participation_cannot_parent_earlier_continuation",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_singular_owned_event_cannot_silently_add_other_actor",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_future_child_material_cannot_enter_committed_causal_output",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_joined_terminal_refuses_material_overspend",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_m2_archive_is_exact_typed_coverage_hold",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_mp_known_counterpart_is_exact_typed_coverage_hold",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_positive_material_remainder_is_not_vacuous",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_c9_handoff_reads_material_afterstate",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17_material_history_consumer",
+          "name": "test_c9_handoff_refuses_severed_material_source",
+          "status": "PASS",
+          "failure_message": null
+        }
+      ],
+      "junit_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"0\" skipped=\"0\" tests=\"13\" time=\"0.513\" timestamp=\"2026-10-30T13:37:04.567954-04:00\" hostname=\"Matthews-MBP.lan\"><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_repeated_project_cannot_spend_same_material_twice\" time=\"0.007\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_repeated_training_cannot_overspend_current_time\" time=\"0.006\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_repeated_peer_actions_cannot_return_nonexistent_tools\" time=\"0.007\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_forged_participation_cannot_supply_unperformed_cash\" time=\"0.040\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_late_participation_cannot_parent_earlier_continuation\" time=\"0.069\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_singular_owned_event_cannot_silently_add_other_actor\" time=\"0.005\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_future_child_material_cannot_enter_committed_causal_output\" time=\"0.004\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_joined_terminal_refuses_material_overspend\" time=\"0.170\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_m2_archive_is_exact_typed_coverage_hold\" time=\"0.003\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_mp_known_counterpart_is_exact_typed_coverage_hold\" time=\"0.006\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_positive_material_remainder_is_not_vacuous\" time=\"0.011\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_c9_handoff_reads_material_afterstate\" time=\"0.035\" /><testcase classname=\"tests.test_g17_material_history_consumer\" name=\"test_c9_handoff_refuses_severed_material_source\" time=\"0.053\" /></testsuite></testsuites>"
+    },
+    "additional_hostiles_cold": {
+      "file": "08_additional_cold_3.xml",
+      "sha256": "4ba51c9c214e3d3b82553c23e9606738a3e3c65494391c6f826b12f3f68633a6",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "classname": "tests.test_g17i2_additional",
+          "name": "test_deep_nested_future_child_alias_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i2_additional",
+          "name": "test_c9_owner_canonical_material_forgery_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "tests.test_g17i2_additional",
+          "name": "test_c9_canonical_material_still_accepts",
+          "status": "PASS",
+          "failure_message": null
+        }
+      ],
+      "junit_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"0\" skipped=\"0\" tests=\"3\" time=\"0.185\" timestamp=\"2026-10-30T13:37:05.909502-04:00\" hostname=\"Matthews-MBP.lan\"><testcase classname=\"tests.test_g17i2_additional\" name=\"test_deep_nested_future_child_alias_refused\" time=\"0.004\" /><testcase classname=\"tests.test_g17i2_additional\" name=\"test_c9_owner_canonical_material_forgery_refused\" time=\"0.037\" /><testcase classname=\"tests.test_g17i2_additional\" name=\"test_c9_canonical_material_still_accepts\" time=\"0.045\" /></testsuite></testsuites>"
+    }
+  },
+  "original_reds": [
+    {
+      "test": "test_forged_material_event_supplying_cash_must_be_refused",
+      "original": "FAIL; PARENT_CONTINUATION with cash 100058 for forged material",
+      "patched": "PASS; continue_person returns None"
+    },
+    {
+      "test": "test_future_child_nested_alias_must_be_refused",
+      "original": "FAIL; COMMITTED with nested metadata.future_child_personality",
+      "patched": "PASS; FUTURE_CHILD_INFORMATION_LEAK"
+    },
+    {
+      "test": "test_c9_forged_material_event_must_be_refused",
+      "original": "FAIL; no C9Refusal; ACCEPTED with cash 100055",
+      "patched": "PASS; C9Refusal MATERIAL_SOURCE_NOT_AUTHENTIC"
+    }
+  ],
+  "additional_hostiles": [
+    {
+      "test": "test_deep_nested_future_child_alias_refused",
+      "result": "PASS; nested list/dict alias refused"
+    },
+    {
+      "test": "test_c9_owner_canonical_material_forgery_refused",
+      "result": "PASS; MATERIAL_SOURCE_NOT_AUTHENTIC"
+    },
+    {
+      "test": "test_c9_canonical_material_still_accepts",
+      "result": "PASS; ACCEPTED with e2_later_authority HOLD_UNISSUED"
+    }
+  ],
+  "c9_r3b": {
+    "branch": "agent/rabochii-sorok-20261029-c9-r3b-recovered-writer-reader-real-fanin-r1",
+    "cut": "fac064c9c3370d598e9b7469af652ae3504bc4ba",
+    "status": "UNLAUNCHED_TEST_ONLY_ACTOR_MIRROR_HARNESS__NOT_A_G17_HANDOFF_CONSUMER",
+    "writer": {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/c9_actor_r3.py",
+      "git_blob": "67f34f699220ec1407e7e8f0d58ed328e88a36af",
+      "sha256": "ee4765e28d80531e6b5450296ed209ef4e3303b827910bbf20b73dfaba52725e"
+    },
+    "reader": {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER/actor_reader.py",
+      "git_blob": "5ef6a278a56968b8f9ccf700ae58e636a0999b5f",
+      "sha256": "331cdae8523fce84c2a531f735104d1ebefe93e371c7d8da2d91f806ee717e98"
+    },
+    "interface": "PublishRequest + actor SQLite + C12 fork/mirror; no SOROK_G17_C9_MATERIAL_HANDOFF@1 adapter",
+    "tests_run": "NOT_RUN__unlaunched_separate_source_closure"
+  },
+  "first_consumers": {
+    "material": "lab_sgi1.continuation.continue_person / forward_continuation",
+    "future_child": "lab_sgi1.pipeline.run_pipeline FutureChildPartitionGuard",
+    "c9": "c9_handoff_consumer.receive_handoff",
+    "durable": "NONE_PROVED; no C9/C12 persistent store in this cut"
+  },
+  "holds": [
+    "M2 grammar/coverage HOLD",
+    "MP known-counterpart HOLD",
+    "C9 E1/RULE_A/RULE_T/E2 HOLD_UNISSUED",
+    "C9/C12 durable reopen HOLD",
+    "native actor/practice/Rule A/T HOLD"
+  ],
+  "not_run": [
+    "native CAN/ADP/SCI05/C11/C12",
+    "original survey/respondent source",
+    "C9 R3B 15/12 runtime suite",
+    "durable C9/C12 cold reopen",
+    "production deployment"
+  ],
+  "grades": {
+    "engineering": "SOURCEFREE_ACCEPT_SCOPED__ORIGINAL_11P3R_REPRODUCED__PATCHED_14PASS__AUTHOR_13PASS__ADDITIONAL_3PASS",
+    "scientific": "TEST_ONLY_MATERIAL_METHOD__NATIVE_ACTOR_PRACTICE_RULE_HELD",
+    "authority": "HOLD_NO_MERGE_OR_ADOPTION__ORIGINAL_OWNERS_AND_SEPARATE_REVIEWER_REQUIRED"
+  },
+  "final_remote_sha": "REPORTED_EXTERNALLY_AFTER_PUSH__NOT_EMBEDDED"
+}
