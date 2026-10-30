@@ -1,5 +1,13 @@
 # Sorok PRE-MAIN grounding and reciprocal progress front door
 
+## PROGRAMMA SOROK — whole developmental-person and human-product mandate (user-named 2026-10-30)
+
+**Start with [Programma Sorok](PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md) and the [shared Programma Rawlsing constitution](../CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md).** This names the **entire** Sorok project, not just the stranded-branch exercise, nine commissions or a Rule A/T/C9 repair: **R** recover all historical Sorok developmental/actor source, scientific alternatives, code/reviewer/negative and actual current consuming functions; **O** maintain a recursively traversable scientific and implementation map from 19 C/A, 40 M, 12 N, 16 O, 15 E and independently authorized Pyat/CAN/ADP inputs to C0–C12/A0–A5 continuing human life; **I** produce, independently test, correctly authorize and integrate maximal coherent whole-person developmental campaigns, updating R/O after returns.
+
+The [Sorok 294 first-pass recovery](https://github.com/maidiu/rawlsing/pull/518) is *source-name/selected-source accounting, not wholesale adoption*; its hidden estate and the separate [PRE-MAIN fan-in control PR](https://github.com/maidiu/rawlsing/pull/519) retain explicit review/CAS holds. [Programma Pyat](../PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md) remains the distinct source/world producer. Neither a document nor proposed commission appoints a new HQ, activates agents or issues actor psychology, source permissions, Pyat N11/N12 or a real person.
+
+
+
 **CURRENT R2 SHARED CONTROLLER ROUTE (2026-10-22; planning not authority):** Read [R2 cross-HQ amendment](../CROSS_HQ_CONTROL_ROOM/CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_R2_SUCCESSION_RESUME_GRANT_ENFORCEMENT_AMENDMENT_20261022.md) before the R1 controller proposal. Already appointed Sorok Codex HQ remains independent and HQ-only; USER_MANUAL worker launch preserved until named activation. Do not duplicate the controller. P0.5 incumbent thread resume and actor/source firewall need proofs.
 
 
