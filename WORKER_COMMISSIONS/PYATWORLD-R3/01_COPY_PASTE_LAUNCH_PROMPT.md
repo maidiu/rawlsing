@@ -9,7 +9,7 @@ BRANCH: research/pyat-sorok-r3-hq284-hq292-r95-owner-receiver-decision-20261030
 EXACT SEALED STARTUP: 187fdd11963163dab03c7b061e20067ea1f99134
 TARGET ORIGINAL RETURN: ea40306bacb899147799330898e9ab91a950205f
 READ ENTIRE COMMISSION: WORKER_COMMISSIONS/PYATWORLD-R3/00_COMMISSION.md
-SESSION_CUSTODY REQUIRED: device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING PYATWORLD | Pyat/Sorok original-owner select | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
+SESSION_CUSTODY REQUIRED: record AGENT_NAME, AGENT_ID (if exposed), AGENT_ROLE/mode explicitly and separately from harness/model.  device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING PYATWORLD | Pyat/Sorok original-owner select | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
 MUST_READ_NOW: H358 ea40306bacb899147799330898e9ab91a950205f 18 family map and HQ292 7-pass case; F3I 97dbe712e4cce8fedd1632d9ac64b4e57a0ac25e HQ292 runtime blob 7899846394f079c14eae4864c8200697bd9dee4a; HQ284 selected-world runtime/source and R95/R107 world binding; Pyat original HQ289/292/B5/P41 and Sorok C8/C9/F1C production-owner boundary
 READ_IF_TRIGGERED: original source/owner and versioned first consumer, verified live Mac worktree/lease.
 BACKGROUND_LINK_ONLY: old census.
