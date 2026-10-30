@@ -1,0 +1,183 @@
+{
+  "schema": "SOROK_M04_10_RED_NINE_CAN3_DIFFERENTIATION@1",
+  "repository": "maidiu/rawlsing",
+  "source_identities": {
+    "m04_sealed_startup": "342164a09e10aa70812299c12386ed0923308228",
+    "assigned_branch_base": "187a9dcf69dc75b00c2875ee1fbe83d3524e0426",
+    "f3_cut": "6477a89bb9160eba1dd10607c47534fa4dce6cc2",
+    "m03_author_cut": "e1f7a74e51201b9614bcc578348b4e9db7be7bd3",
+    "m04_independent_reviewer": "3a993abcc0a9f6bd3a1bb003d298d293be199ea6",
+    "m04_reviewer_return_blob": "5840b2f3f551903d61ce00654b8b964c0ea3a545",
+    "candidate_cell_blob": "3eb2d02aee8dc840e7cac1f99230d7c69adc2f58",
+    "candidate_claim_provenance_blob": "2434bda6f4b00e6ea5881291f5422227e8045e74",
+    "frozen_reviewer_test_blob": "8add06c66b347e324443c1263771755f6898c7e2",
+    "premain_candidate_sha": "299f41e97a43c67be9cc76a79fa49b48f4e12e54"
+  },
+  "baseline": {
+    "inherited_587": {
+      "original_413": "413 PASS",
+      "m02_independent_100": "100 PASS",
+      "m03_author_74": "74 PASS",
+      "total": "587 PASS"
+    },
+    "fresh_51": {
+      "passed": 41,
+      "failed": 10,
+      "pytest_exit": 1
+    },
+    "historical_can3_nine": {
+      "failed": 9,
+      "pytest_exit": 1,
+      "classification": "SEPARATE_HISTORICAL_CAN3_SOURCE_FAILURES__NOT_REPAIRED_HERE"
+    }
+  },
+  "after_patch": {
+    "candidate_claim_provenance_sha1": "5ba929f51870b111ca54ca87fdf97338e4295625",
+    "candidate_claim_provenance_sha256": "d3ed279515e9349150d576cd52be4c958f26b8734842488bc508781bc663adab",
+    "inherited_587": "587 PASS",
+    "fresh_51": {
+      "passed": 51,
+      "failed": 0,
+      "pytest_exit": 0
+    },
+    "historical_can3_nine": {
+      "failed": 9,
+      "pytest_exit": 1,
+      "unchanged": true
+    }
+  },
+  "ten_fresh_red": [
+    {
+      "test": "test_cross_cell_none_owner_cannot_erase_first_committed_belief[NONE]",
+      "class": "P1_CROSS_CELL_OWNER_SUBSTITUTION",
+      "baseline": "FAIL: unearned response accepted with epistemic REROUTE",
+      "source_pointer": "candidate/claim_provenance.py validate_consumption snapshot-absent branch",
+      "after": "PASS"
+    },
+    {
+      "test": "test_cross_cell_none_owner_cannot_erase_first_committed_belief[CERTAIN]",
+      "class": "P1_CROSS_CELL_OWNER_SUBSTITUTION",
+      "baseline": "FAIL: unearned response accepted with epistemic REROUTE",
+      "source_pointer": "candidate/claim_provenance.py validate_consumption snapshot-absent branch",
+      "after": "PASS"
+    },
+    {
+      "test": "test_cross_cell_none_owner_cannot_erase_first_committed_belief[UNCERTAIN]",
+      "class": "P1_CROSS_CELL_OWNER_SUBSTITUTION",
+      "baseline": "FAIL: unearned response accepted with epistemic REROUTE",
+      "source_pointer": "candidate/claim_provenance.py validate_consumption snapshot-absent branch",
+      "after": "PASS"
+    },
+    {
+      "test": "test_cross_cell_none_owner_cannot_erase_first_committed_belief[UNAVAILABLE]",
+      "class": "P1_CROSS_CELL_OWNER_SUBSTITUTION",
+      "baseline": "FAIL: unearned response accepted with epistemic REROUTE",
+      "source_pointer": "candidate/claim_provenance.py validate_consumption snapshot-absent branch",
+      "after": "PASS"
+    },
+    {
+      "test": "test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[False-SUPERSEDE_EXACT_RECORD]",
+      "class": "P1_PARTIAL_ROLLBACK_NONTERMINAL_TRANSITION",
+      "baseline": "FAIL: unearned response accepted with epistemic REROUTE",
+      "source_pointer": "candidate/claim_provenance.py last_transition binding",
+      "after": "PASS"
+    },
+    {
+      "test": "test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[False-WITHDRAW]",
+      "class": "P1_PARTIAL_ROLLBACK_NONTERMINAL_TRANSITION",
+      "baseline": "FAIL: unearned response accepted with epistemic REROUTE",
+      "source_pointer": "candidate/claim_provenance.py last_transition binding",
+      "after": "PASS"
+    },
+    {
+      "test": "test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[True-SUPERSEDE_EXACT_RECORD]",
+      "class": "P1_PARTIAL_ROLLBACK_NONTERMINAL_TRANSITION",
+      "baseline": "FAIL: unearned response accepted with epistemic REROUTE",
+      "source_pointer": "candidate/claim_provenance.py last_transition binding",
+      "after": "PASS"
+    },
+    {
+      "test": "test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[True-WITHDRAW]",
+      "class": "P1_PARTIAL_ROLLBACK_NONTERMINAL_TRANSITION",
+      "baseline": "FAIL: unearned response accepted with epistemic REROUTE",
+      "source_pointer": "candidate/claim_provenance.py last_transition binding",
+      "after": "PASS"
+    },
+    {
+      "test": "test_fully_rehashed_transition_requires_actual_prestate_ancestry[False]",
+      "class": "P1_FORGED_PRESTATE_ANCESTRY",
+      "baseline": "FAIL: unearned response accepted with epistemic REROUTE",
+      "source_pointer": "candidate/claim_provenance.py effect_provenance pre_state_hash",
+      "after": "PASS"
+    },
+    {
+      "test": "test_fully_rehashed_transition_requires_actual_prestate_ancestry[True]",
+      "class": "P1_FORGED_PRESTATE_ANCESTRY",
+      "baseline": "FAIL: unearned response accepted with epistemic REROUTE",
+      "source_pointer": "candidate/claim_provenance.py effect_provenance pre_state_hash",
+      "after": "PASS"
+    }
+  ],
+  "nine_historical_can3": [
+    {
+      "test": "test_C_target_owner_effect_is_request_not_seizure",
+      "source_class": "runtime.m01.runtime.can3.runtime.author.runtime_root.court_repaired.runtime_root.source.WORKER_RETURNS.SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1.candidate.test_hq300_court",
+      "status": "FAIL",
+      "classification": "ORIGINAL_CAN3_HISTORICAL_SOURCE_CUT"
+    },
+    {
+      "test": "test_D_K3_hidden_origin_content_not_first_person_readable",
+      "source_class": "runtime.m01.runtime.can3.runtime.author.runtime_root.court_repaired.runtime_root.source.WORKER_RETURNS.SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1.candidate.test_hq300_court",
+      "status": "FAIL",
+      "classification": "ORIGINAL_CAN3_HISTORICAL_SOURCE_CUT"
+    },
+    {
+      "test": "test_D_K3_causal_trace_not_recallable",
+      "source_class": "runtime.m01.runtime.can3.runtime.author.runtime_root.court_repaired.runtime_root.source.WORKER_RETURNS.SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1.candidate.test_hq300_court",
+      "status": "FAIL",
+      "classification": "ORIGINAL_CAN3_HISTORICAL_SOURCE_CUT"
+    },
+    {
+      "test": "test_D_K3_sole_memory_basis_failclosed",
+      "source_class": "runtime.m01.runtime.can3.runtime.author.runtime_root.court_repaired.runtime_root.source.WORKER_RETURNS.SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1.candidate.test_hq300_court",
+      "status": "FAIL",
+      "classification": "ORIGINAL_CAN3_HISTORICAL_SOURCE_CUT"
+    },
+    {
+      "test": "test_F_H6_duplicate_event",
+      "source_class": "runtime.m01.runtime.can3.runtime.author.runtime_root.court_repaired.runtime_root.source.WORKER_RETURNS.SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1.candidate.test_hq300_court",
+      "status": "FAIL",
+      "classification": "ORIGINAL_CAN3_HISTORICAL_SOURCE_CUT"
+    },
+    {
+      "test": "test_F_H8_invalid_trace",
+      "source_class": "runtime.m01.runtime.can3.runtime.author.runtime_root.court_repaired.runtime_root.source.WORKER_RETURNS.SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1.candidate.test_hq300_court",
+      "status": "FAIL",
+      "classification": "ORIGINAL_CAN3_HISTORICAL_SOURCE_CUT"
+    },
+    {
+      "test": "test_H_delete_memory_forbidden",
+      "source_class": "runtime.m01.runtime.can3.runtime.author.runtime_root.court_repaired.runtime_root.source.WORKER_RETURNS.SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1.candidate.test_hq300_court",
+      "status": "FAIL",
+      "classification": "ORIGINAL_CAN3_HISTORICAL_SOURCE_CUT"
+    },
+    {
+      "test": "test_H_rehydration_forbidden",
+      "source_class": "runtime.m01.runtime.can3.runtime.author.runtime_root.court_repaired.runtime_root.source.WORKER_RETURNS.SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1.candidate.test_hq300_court",
+      "status": "FAIL",
+      "classification": "ORIGINAL_CAN3_HISTORICAL_SOURCE_CUT"
+    },
+    {
+      "test": "test_target_owner_validation_precedes_committed_effect",
+      "source_class": "runtime.m01.runtime.can3.runtime.author.runtime_root.court_repaired.repro.test_independent",
+      "status": "FAIL",
+      "classification": "ORIGINAL_CAN3_HISTORICAL_SOURCE_CUT"
+    }
+  ],
+  "differentiation": "The ten fresh RED are sourcefree M03 claim-provenance/cell failures at the exact original code/test SHA. They are closed by the bounded journal/terminal ancestry patch. The nine CAN3 failures are separate historical source-cut failures and remain nine failures after the patch; they are not repaired, reclassified or counted as passes.",
+  "limits": [
+    "No native CAN3/ADP/Pyat issuance, actor cognition or original world execution.",
+    "No independent reviewer acceptance or merge and no production adoption.",
+    "MAX reasoning effort unverified in this session."
+  ]
+}
