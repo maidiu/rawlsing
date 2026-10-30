@@ -1,0 +1,13 @@
+# Sorok HQ 08 — session provenance and original-worker resumption grok addendum (2026-10-30)
+
+**Mandatory Sorok fresh, incumbent and resumed HQ grok requirement.** Read this as part of Sorok 00C/00D/08 and all PRE-MAIN controls. The original 08 perennial succession protocol may remain on a distinct historical branch; this addendum is explicitly staged on the current PRE-MAIN-rooted control proposal and does **not** quietly replace that protocol or grant HQ accession.
+
+Authoritative shared policy: `CROSS_HQ_CONTROL_ROOM/SESSION_LOCATOR_AND_RETURN_CUSTODY_LAW_R1.md`. Before any agent return intake, new commission, reviewer routing, original-worker resumption or fan-in: search `CROSS_HQ_CONTROL_ROOM/SESSION_LOCATORS.json`; report verified `device=oldMac/mainMac/BROWSER/UNKNOWN`, `harness=Codex/OpenCode/DeepSeek-Harness/Browser`, exact model/effort evidence, `session_name`, `session_id` or `session_url` if actually available, exact original implementation branch/SHA, return, local worktree and independent review session. Never infer which Mac from architecture, path or macOS; do not treat OpenCode/DeepSeek as the DeepSeek-Harness app. An app-visible session title is a UI fact that may have to be supplied by the operator. Never fabricate a provider deep link.
+
+A new Sorok 00C full commission AND its separate copy/paste launch prompt MUST carry `SESSION_CUSTODY` fields and a unique `suggested_session_name`. At dispatch the operator should label the app session and confirm actual displayed title. The author returns `WORKER_RETURNS/<lane>/SESSION_LOCATOR.json` (with `UNKNOWN` when unsupported); HQ appends registry row resolving the exact remotely returned SHA. Same rule applies to scientific and RED/HOLD returns, not only green tests. A missing locator is a new dispatch compliance issue, never a retroactive rejection of historical tested code. Prior authors with unknown session names remain source-identifiable by exact SHA and can be operator-confirmed later.
+
+**Fresh-HQ grok acceptance:** Before announcing readiness, provide the return/session index for both user-renamed machines (`oldMac`, `mainMac`), explicitly label Browser/unknown, identify original author vs independent reviewer per current flight, and flag every `SESSION_NOT_FOUND__REQUIRES_OPERATOR_CONFIRMATION`. Confirm that the app session label is original, not a made-up suggested name. Treat caller identity and source authority separately.
+
+Token: `SOROK_SESSION_LOCATOR_GROK_COMPLETE__TWO_MAC_LABELS_VERIFIED_OR_UNKNOWN__AUTHOR_REVIEWER_SESSIONS_DISTINCT__NO_INVENTED_LOCATORS__ORIGINAL_SCIENCE_AND_OWNER_CAS_UNCHANGED`.
+
+This is *process* law only, not a new Rule A/T/C8/C11/C12/Pyat/ADP source permission, and does not overwrite the original Sorok 08/00C author line.
