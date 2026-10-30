@@ -12,6 +12,7 @@ The persistent single entrypoint is `CROSS_HQ_CONTROL_ROOM/SESSION_LOCATORS.json
 
 - `commission_id`, `branch`, `sealed_commission_sha`, `status` = `SEALED_NOT_LAUNCHED | ACTIVE_VERIFIED | RETURNED | HOLD`.
 - `device`: `oldMac | mainMac | BROWSER | OTHER_VERIFIED | UNKNOWN`; `device_evidence` describing whether confirmed by user, by local `scutil --get ComputerName`/`hostname` on the verified Mac, or unknown. Distinguish configured name from `hostname`; never silently rewrite old records.
+- `agent_name` and `agent_id`: exact app agent/profile/worker name and identifier where the editor exposes it (such as OpenCode's selected agent, Codex agent/session profile, or a named Browser agent). Do not confuse agent with harness, provider, model, session, commission role or process. Set `UNKNOWN` if not exposed; `agent_role` captures actual selected agent mode if exposed, otherwise `UNKNOWN`.
 - `harness`: **`Codex | OpenCode | DeepSeek-Harness | Browser | OTHER_VERIFIED | UNKNOWN`**. `model_provider`, `model_id`, `reasoning_effort_requested`, `reasoning_effort_verified` and `evidence_source` separate. A DeepSeek model within OpenCode is **OpenCode**, not automatically DeepSeek-Harness. An unexposed MAX selector is `UNVERIFIED`.
 - `session_name`: exact app-visible conversation/session title, **operator supplied or verified in actual interface**; `session_id` and `session_url` when exposed, with `session_locator_type = APP_TITLE | APP_SESSION_ID | APP_URL | WORKTREE_AND_OPERATOR_NOTE | UNKNOWN`; do not invent app deep links, hidden provider IDs, ticket handles, or machine endpoints. A local `window_ordinal` or `workspace_name` may supplement a repeated title, but is not a globally unique ID.
 - `worktree_path` (local only, diagnostic; never a shared-source authority claim), `editor_workspace`, `operating_account_label` (optional nonsensitive operator nickname, **no email/account ID/password/token**).
@@ -45,6 +46,7 @@ SESSION_CUSTODY (MANDATORY)
 DEVICE: oldMac | mainMac | BROWSER | OTHER_VERIFIED | UNKNOWN
 DEVICE_VERIFICATION: user-confirmed | local-machine-name-verified | self-reported | unverified
 HARNESS: Codex | OpenCode | DeepSeek-Harness | Browser | OTHER_VERIFIED | UNKNOWN
+AGENT_NAME / AGENT_ID / AGENT_ROLE: exact actual app agent/profile and mode | UNKNOWN
 MODEL_ID: exact actual model; EFFORT_REQUESTED / EFFORT_VERIFIED separately
 SESSION_NAME: exact app-visible title (verified/user-supplied) | UNKNOWN
 SESSION_ID_OR_URL: exact app locator if available | UNKNOWN
