@@ -1,0 +1,350 @@
+{
+  "schema": "F0R3I_INDEPENDENT_TWENTY_AND_SESSION_WITNESSES@1",
+  "date": "2026-10-30",
+  "repository": "maidiu/rawlsing",
+  "review_branch": "review/premain-r3-f0r3-and-session-custody-hostile-court-20261030",
+  "independence": "Reviewer of F0R3 and PR519/PR521, no own code mutation; no native source run",
+  "immutable_cuts": {
+    "startup": "187fdd11963163dab03c7b061e20067ea1f99134",
+    "original_return": "3057b2f5b87f04ff1737d88356edfe3568e1745f",
+    "pr519_head": "59c9a7a4a4fae60d809c1ef545ff4e48906d0dd0",
+    "pr521_head": "f246eaddbeeb86677c3ae67a075390501e233f38",
+    "premain": "299f41e97a43c67be9cc76a79fa49b48f4e12e54"
+  },
+  "source_blobs": {
+    "original_validator": "6fa0ce132e68f1fea7d67321129a2af2627a5d94",
+    "candidate_validator": "2fc1c3c7ae6113d12b70abb655ff123a6ae9c895",
+    "candidate_patch": "424d87370b0e5fdfad13705335558eff37be9257",
+    "candidate_test": "80eaf4feaaa34760129c7efe3a4019f67465052a",
+    "candidate_reproduction": "d5ce55cbfbecf8f8da264977e9c365cd15d4f388",
+    "seed": "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8",
+    "events": "60fd8e26b3d8c4bd66f27900b82c9359cf4ad652",
+    "flights": "9306df304a8f12029c8daacb2eb97c9fcb58df56",
+    "receipt_workflow": "ce1ef40b5f2568c52a44d1ddc01a98647f3bf322",
+    "locator_verifier": "1a43988267c589d2198c9f1b8b7faf92967481be",
+    "locator_registry": "be4965022a13729344f9723d958a1edc458000e2"
+  },
+  "seed_currentness": {
+    "owner_approval_status": "PENDING",
+    "seed_events": 11,
+    "seed_workers": 11,
+    "seed_prs": 4,
+    "live_events": 32,
+    "live_workers": 32,
+    "live_prs": 5,
+    "seed_prefix_events_equal": true,
+    "seed_prefix_workers_equal": true,
+    "seed_prefix_prs_equal": true,
+    "comparison": "Direct GitHub-fetched JSON in-memory equality at immutable PR519 head; does not prove owner approval"
+  },
+  "twenty": [
+    {
+      "id": "W1",
+      "mutation": "duplicate event id",
+      "expected": "DUPLICATE_ID",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "W2",
+      "mutation": "fake initial adoption",
+      "expected": "ADOPTION_REQUIRES_EXTERNAL",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "W3",
+      "mutation": "self-review",
+      "expected": "SELF_REVIEW",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "W4",
+      "mutation": "flight/log SHA mismatch",
+      "expected": "FLIGHT_LOG_EXACT_SOURCE_MISMATCH",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "W5",
+      "mutation": "illegal science grade PASS",
+      "expected": "COURT_INVALID",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "B1",
+      "mutation": "fake adopted flight status",
+      "expected": "FAKE_ADOPTED_STATUS",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "B2",
+      "mutation": "frozen flight owner rewrite",
+      "expected": "INITIAL_WORKERS_REWRITTEN",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "B3",
+      "mutation": "remove frozen HR1 negatives",
+      "expected": "INITIAL_EVENTS_REWRITTEN",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "B4",
+      "mutation": "frozen science promotion",
+      "expected": "INITIAL_EVENTS_REWRITTEN",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "B5",
+      "mutation": "review target unbound",
+      "expected": "REVIEW_TARGET_NOT_BOUND",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "B6",
+      "mutation": "fully filled fake CAS",
+      "expected": "ADOPTION_REQUIRES_EXTERNAL",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "B7",
+      "mutation": "frozen event finding rewrite",
+      "expected": "INITIAL_EVENTS_REWRITTEN",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "B8",
+      "mutation": "frozen PR marked MERGED",
+      "expected": "INITIAL_PRS_REWRITTEN",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "N1",
+      "mutation": "postseed fabricated source grant",
+      "expected": "UNVERIFIED_SOURCE_AUTHORITY",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "N2",
+      "mutation": "postseed scientific ACCEPT_SCOPED",
+      "expected": "SCIENCE_NONISSUER",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "N3",
+      "mutation": "review commissioned-only SHA",
+      "expected": "REVIEWER_TARGET_RETURNED_ONLY",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "N4",
+      "mutation": "postseed invented PR status",
+      "expected": "PR_REMOTE_STATE_UNVERIFIED",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "N5",
+      "mutation": "reuse prior event immutable SHA",
+      "expected": "APPEND_REUSES_PRIOR_IMMUTABLE_SHA",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "N6",
+      "mutation": "PR number 513 backfill",
+      "expected": "PR_APPEND_ORDER",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    },
+    {
+      "id": "N7",
+      "mutation": "postseed authority ACCEPT_SCOPED",
+      "expected": "AUTHORITY_NONISSUER",
+      "source_inspection": "MATCHED_IN_IMMUTABLE_CANDIDATE_PYTHON",
+      "author_reported_local": "PASS_REJECTED_19_AND_32_CUT",
+      "independent_exact_python": "NOT_RUN_BROWSER_DOCUMENTARY",
+      "independent_ci": "NOT_RUN_PATCH_NOT_IN_PR519"
+    }
+  ],
+  "original_thirteen_live_ci": {
+    "run_id": 41082520979,
+    "job_id": 124155062531,
+    "commit": "59c9a7a4a4fae60d809c1ef545ff4e48906d0dd0",
+    "conclusion": "success",
+    "executed_command": "python3 CROSS_HQ_CONTROL_ROOM/BRANCH_FANIN/verify_branch_fanin.py --selftest --baseline-ref 299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "observed": "PASS: 13 mutation witnesses rejected + valid nonadopted owner-candidate stage",
+    "not_equivalent_to": "F0R3 20 witness candidate CI"
+  },
+  "legal_nonadopted_candidate": {
+    "source": "candidate selftest last block",
+    "expected": "OWNER_ADOPTION_CANDIDATE; adoption=false",
+    "author_reported": "PASS",
+    "independent_exact_python": "NOT_RUN"
+  },
+  "locator_shipped_six": [
+    {
+      "id": "L1",
+      "mutation": "device oldMac without machine verification",
+      "expected": "MAC_GUESSED",
+      "source_inspection": "MATCHED_IN_PR521_VERIFY_SCRIPT",
+      "pr521_ci": "PASS_IN_SIX_CASE_SELFTEST",
+      "independent_exact_python": "NOT_RUN"
+    },
+    {
+      "id": "L2",
+      "mutation": "OpenCode model passed as DeepSeek-Harness",
+      "expected": "MODEL_CONFUSED_WITH_HARNESS",
+      "source_inspection": "MATCHED_IN_PR521_VERIFY_SCRIPT",
+      "pr521_ci": "PASS_IN_SIX_CASE_SELFTEST",
+      "independent_exact_python": "NOT_RUN"
+    },
+    {
+      "id": "L3",
+      "mutation": "duplicate commission revision",
+      "expected": "DUPLICATE_REVISION",
+      "source_inspection": "MATCHED_IN_PR521_VERIFY_SCRIPT",
+      "pr521_ci": "PASS_IN_SIX_CASE_SELFTEST",
+      "independent_exact_python": "NOT_RUN"
+    },
+    {
+      "id": "L4",
+      "mutation": "non-SHA return_sha=fake",
+      "expected": "RETURN_SHA",
+      "source_inspection": "MATCHED_IN_PR521_VERIFY_SCRIPT",
+      "pr521_ci": "PASS_IN_SIX_CASE_SELFTEST",
+      "independent_exact_python": "NOT_RUN"
+    },
+    {
+      "id": "L5",
+      "mutation": "unverified suggested title copied into session_name",
+      "expected": "UNVERIFIED_PROPOSED_TITLE_AS_OBSERVED",
+      "source_inspection": "MATCHED_IN_PR521_VERIFY_SCRIPT",
+      "pr521_ci": "PASS_IN_SIX_CASE_SELFTEST",
+      "independent_exact_python": "NOT_RUN"
+    },
+    {
+      "id": "L6",
+      "mutation": "blank agent_name",
+      "expected": "AGENT_NAME",
+      "source_inspection": "MATCHED_IN_PR521_VERIFY_SCRIPT",
+      "pr521_ci": "PASS_IN_SIX_CASE_SELFTEST",
+      "independent_exact_python": "NOT_RUN"
+    }
+  ],
+  "locator_ci": {
+    "run_id": 41097417408,
+    "job_id": 124206648787,
+    "commit": "f246eaddbeeb86677c3ae67a075390501e233f38",
+    "conclusion": "success",
+    "observed": [
+      "PASS 18 locators, no host/session identity or authority attested",
+      "PASS 6 adversarial locator integrity witnesses"
+    ],
+    "scope_discrepancy": "Commission says five; exact live source and CI ship six after AGENT_NAME addition"
+  },
+  "hostile_missing_witnesses": [
+    {
+      "case": "G1_HISTORICAL_REWRITE",
+      "mutation": "Change an existing record's status or session locator while leaving commission_id/revision untouched",
+      "inspection": "No prior immutable baseline/prefix or hash check in check(obj); current-array sequential revisions alone cannot prevent rewrite",
+      "expected": "SOURCE_STATIC_ADMITTED; exact Python mutant NOT_RUN",
+      "impact": "Declared append-only registry not enforced"
+    },
+    {
+      "case": "G2_FAKE_CONFIRMED_TITLE",
+      "mutation": "Set session_name equal suggested_session_name and confirmed_by='WORKER' without observed UI evidence",
+      "inspection": "Equality is rejected only if confirmed_by == 'UNVERIFIED'; no genuine evidence verification",
+      "expected": "SOURCE_STATIC_ADMITTED; exact Python mutant NOT_RUN",
+      "impact": "Can label proposed title as observed"
+    },
+    {
+      "case": "G3_INVALID_LOCATOR_TYPE",
+      "mutation": "session_locator_type='APP_URL' with session_url=null or arbitrary unrecognized type",
+      "inspection": "No enum or cross-field consistency predicate for session_locator_type/session_url/session_id",
+      "expected": "SOURCE_STATIC_ADMITTED; exact Python mutant NOT_RUN",
+      "impact": "Fake navigability claim"
+    },
+    {
+      "case": "G4_DUPLICATE_REGISTRY_ID",
+      "mutation": "Use same registry_id for different commission ids at revision 1",
+      "inspection": "Only (commission_id,revision) uniqueness enforced",
+      "expected": "SOURCE_STATIC_ADMITTED; exact Python mutant NOT_RUN",
+      "impact": "Ambiguous lookup"
+    },
+    {
+      "case": "G5_FAKE_CONFIRMER",
+      "mutation": "confirmed_by='SECURE_PROVIDER_ATTESTED' without evidence",
+      "inspection": "confirmed_by required by key presence but no allowed-value/attestation predicate",
+      "expected": "SOURCE_STATIC_ADMITTED; exact Python mutant NOT_RUN",
+      "impact": "False authority signifier"
+    },
+    {
+      "case": "G6_FORGED_VALID_SHA",
+      "mutation": "return_sha='a'*40 even if no GitHub commit/return exists",
+      "inspection": "Regex only; no authenticated branch/commit/contents lookup",
+      "expected": "SOURCE_STATIC_ADMITTED; exact Python mutant NOT_RUN",
+      "impact": "Provenance forgery remains external gate"
+    }
+  ],
+  "test_boundary": {
+    "this_reviewer_python": "NOT_RUN",
+    "source_native": "NOT_RUN",
+    "source_owner_grant": "NOT_VERIFIED",
+    "branch_protection_required_context": "NOT_INDEPENDENTLY_READABLE_WITH_AVAILABLE_AUTHENTICATED_CONNECTOR",
+    "browser_ui": "Private settings page signed out / 404; did not infer 404 means protection absent"
+  },
+  "conclusion": "20 F0R3 code-contained cases present and author-local receipts exist; green PR519 CI executes only 13. Six PR521 cases green but registry enforcement incomplete, revised scoped review required. No science or adoption grant."
+}
