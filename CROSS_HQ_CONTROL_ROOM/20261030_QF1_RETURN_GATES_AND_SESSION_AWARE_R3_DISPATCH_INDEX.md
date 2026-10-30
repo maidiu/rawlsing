@@ -10,15 +10,15 @@ Each exact branch contains **both** `WORKER_COMMISSIONS/<id>-R3/00_COMMISSION.md
 
 | Lane | Exact sealed branch SHA | Actor / urgency / dependency |
 |---|---|---|
-| **G17I2** | `review/sorok-r3-g17-source-security-independent-replay-20261030@30ab7c4e890510d92166ee6bdb6fd23c4fbcdca6` | Independent I2 local original 3 hostile RED→14 repaired, cold, original C9 owner, source grants held |
-| **M04I2** | `review/sorok-r3-m04-claim-ancestry-independent-replay-20261030@92d108c3e8ae3219646ad9fa8de978d39a5c84b7` | Independent I2 local 587/51/9 CAN3, terminal and unjournaled ancestry negative |
-| **BP4I3** | `review/sorok-r3-bp4-c12-authenticity-independent-court-20261030@12442ef6b7627593cb8ba3b0c60409d6a6647a64` | Independent I3 local security/SQLite/anchor and schema/perception/C9 writer-reader |
-| **F1CI3** | `review/sorok-r3-f1c-b-world-causal-independent-court-20261030@53159b4f2088bcebe632b82032a4bba2c3826611` | Independent I3 local frozen A/B, 13 cases, resource conservation, targetless receiver HOLD |
-| **H358I3** | `review/sorok-r3-h358-world-candidates-and-first-consumer-court-20261030@0259bbdf4ddbd56854b576232c588eb715fc852e` | Independent I3 Browser world-source/actual first consumer + H358 source caps, HQ292, R95 variants |
-| **F0R3I** | `review/premain-r3-f0r3-and-session-custody-hostile-court-20261030@106cc33ec14c9161eb1b35b5ef82049ca8d63543` | Independent I2 Browser control review F0R3 + PR519, PR521 session identity, branch protection |
-| **OC5OWNER** | `research/sorok-r3-oc5-original-source-owner-policy-decision-20261030@7fe6eff3144ae0aa2a80c33e588113fbd2d60d9f` | I3 source-owner decision facilitator, **cannot issue OC4/OC5 policy itself**, target six defect families |
-| **PYATWORLD** | `research/pyat-sorok-r3-hq284-hq292-r95-owner-receiver-decision-20261030@adbc77153df4fc5caae8395d50dccd86cc8e2ba6` | I3 independent Pyat selected-world HQ284/HQ292/R95 source→consumer and native source rights court |
-| **QF2 — CONDITIONAL ONLY** | `integration/sorok-r3-qf2-conditional-qualified-fanin-20261030@729fd62d13be2e0a99a2921247acdad2df03bbc5` | STOP until reviewed exact fixes, original owner grants, PRE-MAIN guarded CAS, actor/native warranted; no early launch |
+| **G17I2** | `review/sorok-r3-g17-source-security-independent-replay-20261030@c69369408e5fd410d89f717cdd4ae7b4520f097a` | Independent I2 local original 3 hostile RED→14 repaired, cold, original C9 owner, source grants held |
+| **M04I2** | `review/sorok-r3-m04-claim-ancestry-independent-replay-20261030@7e36cc1509016f8c654a5d8e3cf708656db0727f` | Independent I2 local 587/51/9 CAN3, terminal and unjournaled ancestry negative |
+| **BP4I3** | `review/sorok-r3-bp4-c12-authenticity-independent-court-20261030@15b1434b7f537fad02aa3b0c07a4c4a7741a8b8c` | Independent I3 local security/SQLite/anchor and schema/perception/C9 writer-reader |
+| **F1CI3** | `review/sorok-r3-f1c-b-world-causal-independent-court-20261030@e1b877f7dbc8da0ae85448fe367f301d7a639c1c` | Independent I3 local frozen A/B, 13 cases, resource conservation, targetless receiver HOLD |
+| **H358I3** | `review/sorok-r3-h358-world-candidates-and-first-consumer-court-20261030@3f632c6a5650177b67166aca461726259b5d9a1b` | Independent I3 Browser world-source/actual first consumer + H358 source caps, HQ292, R95 variants |
+| **F0R3I** | `review/premain-r3-f0r3-and-session-custody-hostile-court-20261030@2e7214024c5103e856db21015ffcec0790487bd6` | Independent I2 Browser control review F0R3 + PR519, PR521 session identity, branch protection |
+| **OC5OWNER** | `research/sorok-r3-oc5-original-source-owner-policy-decision-20261030@35b9c3cf1f774145d9387c21fe485b2a0f04e318` | I3 source-owner decision facilitator, **cannot issue OC4/OC5 policy itself**, target six defect families |
+| **PYATWORLD** | `research/pyat-sorok-r3-hq284-hq292-r95-owner-receiver-decision-20261030@41b1ba2eeb2eeff0903c238a52e990a1b0f7ce2b` | I3 independent Pyat selected-world HQ284/HQ292/R95 source→consumer and native source rights court |
+| **QF2 — CONDITIONAL ONLY** | `integration/sorok-r3-qf2-conditional-qualified-fanin-20261030@cba6b56ec76445a768c25e643d44f89040685f01` | STOP until reviewed exact fixes, original owner grants, PRE-MAIN guarded CAS, actor/native warranted; no early launch |
 
 All eight non-QF2 lanes can investigate in parallel **only** on actually verified noncolliding Mac worktrees/sessions and source scopes. Reviewer cannot use author's same session as purported independence. The QF2 gate is truly sequential; copy/paste only after external source grants and F4 owner PRE-MAIN correction, not as part of today's parallel eight.
 
