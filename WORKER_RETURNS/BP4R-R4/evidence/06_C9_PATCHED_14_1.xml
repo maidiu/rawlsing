@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="15" time="0.671" timestamp="2026-10-30T16:29:20.984674-04:00" hostname="MacBook-Pro.lan"><testcase classname="tests.test_c9_r3" name="test_c0_s36_seven_table_readset_is_unchanged" time="0.104" /><testcase classname="tests.test_c9_r3" name="test_c1_exact_replay_returns_original_receipt_without_extra_version" time="0.022" /><testcase classname="tests.test_c9_r3" name="test_c2_idempotency_conflict_is_typed_and_non_mutating" time="0.022" /><testcase classname="tests.test_c9_r3" name="test_c3_cas_and_fault_rollback_leave_no_ghost_state" time="0.033" /><testcase classname="tests.test_c9_r3" name="test_c4_c9_commit_precedes_clean_mirror_and_ack" time="0.030" /><testcase classname="tests.test_c9_r3" name="test_c5_mirror_projection_and_ack_are_idempotent" time="0.028" /><testcase classname="tests.test_c9_r3" name="test_c6_actual_c12_perception_suffix_stays_held" time="0.117" /><testcase classname="tests.test_c9_r3" name="test_c6_missing_c12_source_fails_closed" time="0.001" /><testcase classname="tests.test_c9_r3" name="test_c6_same_count_perception_substitution_is_held" time="0.025"><failure message="AssertionError: assert 2 == 3&#10; +  where 2 = len([{'actor_id': 'A', 'channel': 'test', 'clock': 10, 'event_id': 'ev1'}, {'actor_id': 'A', 'channel': 'test', 'clock': 11, 'event_id': 'ev2'}])&#10; +    where [{'actor_id': 'A', 'channel': 'test', 'clock': 10, 'event_id': 'ev1'}, {'actor_id': 'A', 'channel': 'test', 'clock': 11, 'event_id': 'ev2'}] = perceptions('root')&#10; +      where perceptions = &lt;r26e.c12_integrity.QualifiedC12Store object at 0x1108b5f90&gt;.perceptions&#10; +  and   3 = len([{'actor_id': 'A', 'channel': 'test', 'clock': 10, 'event_id': 'ev1'}, {'actor_id': 'A', 'channel': 'test', 'clock': 11, 'event_id': 'ev2'}, {'actor_id': 'A', 'channel': 'test', 'clock': 10, 'event_id': 'ev3'}])&#10; +    where [{'actor_id': 'A', 'channel': 'test', 'clock': 10, 'event_id': 'ev1'}, {'actor_id': 'A', 'channel': 'test', 'clock': 11, 'event_id': 'ev2'}, {'actor_id': 'A', 'channel': 'test', 'clock': 10, 'event_id': 'ev3'}] = perceptions('child')&#10; +      where perceptions = &lt;r26e.c12_integrity.QualifiedC12Store object at 0x1108b5f90&gt;.perceptions">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-48/test_c6_same_count_perception_0')
+
+    def test_c6_same_count_perception_substitution_is_held(tmp_path):
+        j = Path(
+            "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/"
+            "SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j"
+        )
+        if not (j / "candidate" / "vendor" / "bp4" / "bp4" / "store.py").exists():
+            pytest.skip("C12 source unavailable")
+        sys.path.insert(0, str(j / "candidate" / "vendor" / "bp4"))
+        sys.path.insert(0, str(j / "candidate" / "vendor" / "bp4" / "vendor" / "bp1"))
+        sys.path.insert(0, str(j))
+        from bp4.canon import seal
+        from bp4.store import C12Store, GRADE
+        from r26e.c12_integrity import QualifiedC12Store
+    
+        path = tmp_path / "substitution.db"
+        store = QualifiedC12Store(path)
+        store.create_root("root", clock=10, actor_ids=["A"], state={"world": 1})
+        first = seal(
+            {
+                "schema": "BP4_C12_WORLD_EVENT@1",
+                "branch_id": "root",
+                "event_id": "ev1",
+                "clock": 10,
+                "body": {},
+                "grade": GRADE,
+                "native": False,
+            }
+        )
+        second = seal(
+            {
+                "schema": "BP4_C12_WORLD_EVENT@1",
+                "branch_id": "root",
+                "event_id": "ev2",
+                "clock": 10,
+                "body": {},
+                "grade": GRADE,
+                "native": False,
+            }
+        )
+        store.append_world_event("root", first)
+        store.append_world_event("root", second)
+        store.record_perception("root", actor_id="A", event_id="ev1", clock=10, channel="test")
+        store.record_perception("root", actor_id="A", event_id="ev2", clock=11, channel="test")
+        parent = c9.c12_fork_guard(path, "root")
+        assert parent["state"] == "FORK_HELD"
+        assert store.verify("root")["ok"] is True
+    
+        store.fork("root", "child")
+        third = seal(
+            {
+                "schema": "BP4_C12_WORLD_EVENT@1",
+                "branch_id": "child",
+                "event_id": "ev3",
+                "clock": 10,
+                "body": {},
+                "grade": GRADE,
+                "native": False,
+            }
+        )
+        store.append_world_event("child", third)
+        store.record_perception("child", actor_id="A", event_id="ev3", clock=10, channel="test")
+        assert store.verify("child")["ok"] is True
+&gt;       assert len(store.perceptions("root")) == len(store.perceptions("child"))
+E       AssertionError: assert 2 == 3
+E        +  where 2 = len([{'actor_id': 'A', 'channel': 'test', 'clock': 10, 'event_id': 'ev1'}, {'actor_id': 'A', 'channel': 'test', 'clock': 11, 'event_id': 'ev2'}])
+E        +    where [{'actor_id': 'A', 'channel': 'test', 'clock': 10, 'event_id': 'ev1'}, {'actor_id': 'A', 'channel': 'test', 'clock': 11, 'event_id': 'ev2'}] = perceptions('root')
+E        +      where perceptions = &lt;r26e.c12_integrity.QualifiedC12Store object at 0x1108b5f90&gt;.perceptions
+E        +  and   3 = len([{'actor_id': 'A', 'channel': 'test', 'clock': 10, 'event_id': 'ev1'}, {'actor_id': 'A', 'channel': 'test', 'clock': 11, 'event_id': 'ev2'}, {'actor_id': 'A', 'channel': 'test', 'clock': 10, 'event_id': 'ev3'}])
+E        +    where [{'actor_id': 'A', 'channel': 'test', 'clock': 10, 'event_id': 'ev1'}, {'actor_id': 'A', 'channel': 'test', 'clock': 11, 'event_id': 'ev2'}, {'actor_id': 'A', 'channel': 'test', 'clock': 10, 'event_id': 'ev3'}] = perceptions('child')
+E        +      where perceptions = &lt;r26e.c12_integrity.QualifiedC12Store object at 0x1108b5f90&gt;.perceptions
+
+tests/test_c9_r3.py:476: AssertionError</failure></testcase><testcase classname="tests.test_c9_r3" name="test_c7_status_orthogonality_requalification_and_raw_guards" time="0.023" /><testcase classname="tests.test_c9_r3" name="test_c7_requalification_requires_fresh_grant_and_source_changes_use_fork" time="0.021" /><testcase classname="tests.test_c9_r3" name="test_c7_raw_mirror_watermark_requires_exact_receipt" time="0.009" /><testcase classname="tests.test_c9_r3" name="test_c7_final_requires_issued_rule_issuance" time="0.026" /><testcase classname="tests.test_c9_r3" name="test_c7_two_actors_same_target_and_normal_fork_ready" time="0.044" /><testcase classname="tests.test_c9_r3" name="test_c7_true_no_change_requires_issued_evaluation" time="0.020" /></testsuite></testsuites>

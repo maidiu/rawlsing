@@ -1,0 +1,47 @@
+--- a/SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/c9_actor_r3.py
++++ b/SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/c9_actor_r3.py
+@@ -21,6 +21,7 @@
+ NOW = 1_780_000_000_000_000
+ REQUEST_SCHEMA = "C9_R3_REQUEST@1"
+ RECEIPT_SCHEMA = "C9_R3_DECISION_RECEIPT@1"
++SUPPORTED_C12_WRITER_SCHEMAS = frozenset({"BP4_C12_STORE@1"})
+ 
+ FINAL_KINDS = {"COMMITTED_CHANGE", "TRUE_NO_CHANGE_EVALUATED"}
+ DECISIONS = {
+@@ -1811,6 +1812,36 @@
+     try:
+         conn = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
+         conn.row_factory = sqlite3.Row
++        try:
++            meta = dict(conn.execute("SELECT key,value FROM meta").fetchall())
++        except sqlite3.Error as error:
++            return {
++                "state": "FORK_HELD",
++                "code": "C12_SCHEMA_META_UNREADABLE",
++                "detail": str(error),
++            }
++        writer_schema = meta.get("schema")
++        if writer_schema not in SUPPORTED_C12_WRITER_SCHEMAS:
++            return {
++                "state": "FORK_HELD",
++                "code": "C12_WRITER_SCHEMA_UNSUPPORTED",
++                "writer_schema": writer_schema,
++                "supported_writer_schemas": sorted(SUPPORTED_C12_WRITER_SCHEMAS),
++            }
++        user_version = conn.execute("PRAGMA user_version").fetchone()[0]
++        application_id = conn.execute("PRAGMA application_id").fetchone()[0]
++        if user_version != 0:
++            return {
++                "state": "FORK_HELD",
++                "code": "C12_SQLITE_USER_VERSION_UNSUPPORTED",
++                "user_version": int(user_version),
++            }
++        if application_id != 0:
++            return {
++                "state": "FORK_HELD",
++                "code": "C12_SQLITE_APPLICATION_ID_UNSUPPORTED",
++                "application_id": int(application_id),
++            }
+         branch = conn.execute(
+             "SELECT * FROM branch WHERE branch_id=?", (parent_branch_id,)
+         ).fetchone()

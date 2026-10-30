@@ -1,0 +1,119 @@
+--- a/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/c12_guard.py
++++ b/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/c12_guard.py
+@@ -24,6 +24,7 @@
+ from bp4.store import C12Store, StoreRefusal
+ 
+ WRITER_SCHEMA = "BP4_C12_STORE@1"
++SUPPORTED_WRITER_SCHEMAS = frozenset({WRITER_SCHEMA})
+ READER_VERSION = "C12_GUARD_READER@1"
+ EPISODE_PREFIX = "TEST_ONLY_BP4_EP_"
+ FORK_ROOT_SCHEMA = "BP4_C12_FORK_ROOT@2"
+@@ -92,8 +93,39 @@
+     return EPISODE_PREFIX + str(body_hash)
+ 
+ 
++def _episode_origin_for_seq(store: C12Store, branch_id: str, seq: int,
++                            seen: frozenset[str] = frozenset()) -> str:
++    """Return the immutable branch that originally authored this episode row.
++
++    The SQL ``branch_id`` column is the current storage location. The sealed
++    episode body's ``branch_id`` is the immutable origin. A copied row keeps the
++    parent body's origin while its location changes to the child branch. Local
++    child rows have the child as origin. This function resolves that origin from
++    the exact fork prefix counts; it never rewrites the hashed body.
++    """
++    if branch_id in seen:
++        raise StoreRefusal("FORK_HELD", "episode_origin_ancestry_cycle")
++    branch = store._branch(branch_id)
++    if branch is None:
++        raise StoreRefusal("FORK_HELD", "episode_origin_branch_missing")
++    parent_id = branch["parent_branch_id"]
++    if parent_id in (None, ""):
++        return branch_id
++    counts = branch["root_counts"]
++    if not isinstance(counts, dict):
++        raise StoreRefusal("FORK_HELD", "episode_origin_root_counts_invalid")
++    copied = counts.get("episode", 0)
++    if type(copied) is not int or copied < 0:
++        raise StoreRefusal("FORK_HELD", "episode_origin_root_counts_invalid")
++    if seq < copied:
++        return _episode_origin_for_seq(
++            store, parent_id, seq, seen | {branch_id})
++    return branch_id
++
++
+ def _check_row_columns(table: str, row: dict, parsed: dict,
+-                       errors: list[str]) -> None:
++                       errors: list[str],
++                       *, expected_origin_branch_id: str | None = None) -> None:
+     seq = row["seq"]
+     if table == "episode":
+         expected = expected_episode_id(parsed.get("hash", ""))
+@@ -101,7 +133,20 @@
+             errors.append(f"episode:{seq}:episode_id_column_mismatch")
+         if parsed.get("episode_id") != expected:
+             errors.append(f"episode:{seq}:episode_id_body_mismatch")
+-        for column, key in (("branch_id", "branch_id"), ("actor_id", "actor_id"),
++        origin = parsed.get("branch_id")
++        expected_origin = (
++            expected_origin_branch_id
++            if expected_origin_branch_id is not None
++            else row["branch_id"]
++        )
++        if not isinstance(origin, str) or not origin:
++            errors.append(f"episode:{seq}:branch_id_origin_missing")
++        elif origin != expected_origin:
++            errors.append(f"episode:{seq}:branch_id_origin_mismatch")
++        # ``row["branch_id"]`` is the current storage location; the sealed
++        # body's branch_id is the immutable origin. Only the origin, actor,
++        # kind and clock are body/column identity constraints.
++        for column, key in (("actor_id", "actor_id"),
+                             ("kind", "kind"), ("clock", "clock")):
+             if parsed.get(key) != row[column]:
+                 errors.append(f"episode:{seq}:{column}_column_body_mismatch")
+@@ -135,7 +180,19 @@
+                 errors.append(f"{table}:{row['seq']}:body_hash_mismatch")
+             if row["hash"] != body_hash:
+                 errors.append(f"{table}:{row['seq']}:column_hash_mismatch")
+-            _check_row_columns(table, row, parsed, errors)
++            if table == "episode":
++                try:
++                    origin = _episode_origin_for_seq(
++                        store, branch_id, int(row["seq"]))
++                except StoreRefusal as error:
++                    errors.append(
++                        f"episode:{row['seq']}:origin_unresolved:{error.code}")
++                    origin = None
++                _check_row_columns(
++                    table, row, parsed, errors,
++                    expected_origin_branch_id=origin)
++            else:
++                _check_row_columns(table, row, parsed, errors)
+         if [row["seq"] for row in rows] != list(range(len(rows))):
+             errors.append(f"{table}:seq_not_contiguous")
+     perceptions = _row_dicts(store, branch_id, "perception")
+@@ -380,7 +437,13 @@
+     if mirror_meta.get("schema") != C9_MIRROR_SCHEMA:
+         errors.append("c9_mirror_schema_unsupported:" + str(
+             mirror_meta.get("schema")))
+-    if mirror_meta.get("c12_source_domain") != writer_schema:
++    if writer_schema not in SUPPORTED_WRITER_SCHEMAS:
++        errors.append("c12_writer_schema_unsupported:" + str(writer_schema))
++    declared_domain = mirror_meta.get("c12_source_domain")
++    if declared_domain not in SUPPORTED_WRITER_SCHEMAS:
++        errors.append("c9_mirror_c12_domain_unsupported:" + str(
++            declared_domain))
++    if declared_domain != writer_schema:
+         errors.append("c9_mirror_c12_domain_mismatch:" + str(
+             mirror_meta.get("c12_source_domain")))
+     return {"ok": not errors, "errors": errors,
+@@ -480,7 +543,8 @@
+ 
+ __all__ = [
+     "ANCHOR_SCHEMA", "EPISODE_PREFIX", "FORK_ROOT_PREFIX", "FORK_ROOT_SCHEMA",
+-    "GuardedC12Store", "READER_VERSION", "WRITER_SCHEMA", "anchor_payload",
++    "GuardedC12Store", "READER_VERSION", "SUPPORTED_WRITER_SCHEMAS",
++    "WRITER_SCHEMA", "anchor_payload",
+     "C9_MIRROR_SCHEMA", "C9_MIRROR_SOURCE_DOMAIN", "chain_digest",
+     "check_anchor", "check_c9_mirror_handshake", "check_schema",
+     "classify_episode_ids",

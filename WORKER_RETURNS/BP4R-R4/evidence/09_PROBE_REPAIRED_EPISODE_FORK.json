@@ -1,0 +1,91 @@
+{
+  "upstream_root_verify": {
+    "ok": false,
+    "errors": [
+      "episode:0",
+      "world_event:0",
+      "world_event:1",
+      "checkpoint:0",
+      "checkpoint:1"
+    ],
+    "counts": {
+      "episodes": 1,
+      "world_events": 2,
+      "checkpoints": 2,
+      "perceptions": 4
+    }
+  },
+  "fork_clock": 10,
+  "fork_root_hash_prefix": "BP4_C12_FORK_ROOT@2:2e479f3e6cbfe3a5c2c0",
+  "child_report": {
+    "ok": true,
+    "content_ok": true,
+    "fork_ok": true,
+    "schema_ok": true,
+    "errors": [],
+    "counts": {
+      "episode": 1,
+      "world_event": 2,
+      "checkpoint": 2,
+      "perception": 4
+    },
+    "fork": {
+      "ok": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "branch_id": "alt"
+    },
+    "branch_id": "alt",
+    "reader_version": "C12_GUARD_READER@1",
+    "authenticity": {
+      "state": "UNVERIFIED",
+      "code": "OWNER_ANCHOR_REQUIRED"
+    },
+    "completeness": {
+      "state": "UNVERIFIED",
+      "code": "OWNER_ANCHOR_REQUIRED"
+    }
+  },
+  "child_episodes": [
+    {
+      "actor_id": "A",
+      "body": {
+        "admitted": true,
+        "attempted": true,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_e2d2b743ec280a48e5de6117a8a37e2df02d24f1a95d6e195c77d920be847247"
+      },
+      "branch_id": "root",
+      "clock": 10,
+      "episode_id": "TEST_ONLY_BP4_EP_dfd3e4a16d7882d85d372da033fcbfea11862431aba30e361b3c75a911a8e24c",
+      "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+      "hash": "dfd3e4a16d7882d85d372da033fcbfea11862431aba30e361b3c75a911a8e24c",
+      "kind": "SAY",
+      "native": false,
+      "schema": "BP4_C12_EPISODE@1"
+    }
+  ],
+  "child_episode_count": 1,
+  "shared_root": {
+    "equal": true,
+    "fork_clock": 10,
+    "mode": "parent_child",
+    "detail": {
+      "episode": {
+        "equal": true,
+        "count": 1
+      },
+      "world_event": {
+        "equal": true,
+        "count": 2
+      },
+      "checkpoint": {
+        "equal": true,
+        "count": 2
+      },
+      "perception": {
+        "equal": true,
+        "count": 4
+      }
+    }
+  }
+}

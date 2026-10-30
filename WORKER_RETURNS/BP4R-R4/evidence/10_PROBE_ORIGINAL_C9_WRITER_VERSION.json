@@ -1,0 +1,43 @@
+{
+  "first_guard_no_expected": {
+    "state": "FORK_HELD",
+    "code": "C12_BASE_PERCEPTION_IDENTITY_UNPROVEN",
+    "fork_cut": 10,
+    "base_root_hash": "",
+    "base_perception_hash": "b3116caaa46f083563b2dfa0261704a384d7d9c193b476b675aa68a781f6eb5d",
+    "base_perception_count": 1
+  },
+  "second_guard_supported_schema": {
+    "state": "FORK_READY",
+    "code": "FORK_READY",
+    "fork_cut": 10,
+    "nonperception_last_clock": 10,
+    "perception_last_clock": 10,
+    "base_root_hash": "",
+    "base_perception_hash": "b3116caaa46f083563b2dfa0261704a384d7d9c193b476b675aa68a781f6eb5d",
+    "base_perception_count": 1
+  },
+  "third_guard_unsupported_schema_2": {
+    "state": "FORK_READY",
+    "code": "FORK_READY",
+    "fork_cut": 10,
+    "nonperception_last_clock": 10,
+    "perception_last_clock": 10,
+    "base_root_hash": "",
+    "base_perception_hash": "b3116caaa46f083563b2dfa0261704a384d7d9c193b476b675aa68a781f6eb5d",
+    "base_perception_count": 1
+  },
+  "helper_readiness_unsupported_2": {
+    "ok": true,
+    "state": "READY",
+    "errors": [],
+    "atomicity": "NO_CROSS_DATABASE_ACID__OUTBOX_AND_WATERMARK"
+  },
+  "helper_handshake_unsupported_2": {
+    "ok": true,
+    "errors": [],
+    "mirror_schema": "C12_ACTOR_MIRROR_R3@1",
+    "c12_source_domain": "BP4_C12_STORE@2",
+    "writer_schema": "BP4_C12_STORE@2"
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "schema": "BP4R_R4_EPISODE_FORK_WRITER_VERSION_FALSIFIERS@1",
+  "status": "CANDIDATE_REPAIR__NO_ADOPTION",
+  "worker": {
+    "device": "mainMac",
+    "harness": "OpenCode CLI 1.18.34",
+    "agent": "build",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "effort": "MAX",
+    "session_id": "ses_e7285576bffeqo0lE8N0HYK6gc",
+    "session_title_observed": "Retained GT2 \u2192 N10E analytical consumer (H03)",
+    "session_title_suggested": "SOROK BP4R | fork/version | mainMac | OpenCode",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-r4-bp4-c12-episode-fork-writer-version-repair-20261030"
+  },
+  "startup": {
+    "commission_head": "5677120c0048d168ce5fd98eed6663cc9531e8de",
+    "sealed_startup_ancestor": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "branch": "agent/sorok-r4-bp4-c12-episode-fork-writer-version-repair-20261030",
+    "remote_branch_existed_at_commission_head": true,
+    "remote_branch_content": "commission commit only; no prior worker changes"
+  },
+  "reviewed_cuts": {
+    "bp4i3_reviewer": "0aaf119f193637027571f18eb7478fb4e76746cc",
+    "bp4_author": "790f793ea85c8aba914970b7d9c3c25f81bf8a01",
+    "f2": "0636d257f588f8874e65b2cb183d1d47c7f53327",
+    "f2i": "26cf53526b7d290a712d1e2be5852e0ed5668b7a",
+    "c9_r3": "1e99681f58086f2784834df1186cfba71a2c50b9",
+    "c12_repair": "68b058656254234f0af02df2a592aa6f8c6a8bd2",
+    "qf2_stop": "a93db6bce4832270cf29727233dbfbc5f0312395"
+  },
+  "original_negative": {
+    "bp4i3_01_legitimate_episode_fork": {
+      "observed": {
+        "ok": false,
+        "content_ok": false,
+        "fork_ok": true,
+        "schema_ok": true,
+        "errors": [
+          "episode:0:branch_id_column_body_mismatch"
+        ],
+        "counts": {
+          "episode": 1,
+          "world_event": 2,
+          "checkpoint": 2,
+          "perception": 4
+        },
+        "fork": {
+          "ok": true,
+          "status": "VERIFIED",
+          "errors": [],
+          "branch_id": "alt"
+        },
+        "branch_id": "alt",
+        "reader_version": "C12_GUARD_READER@1",
+        "authenticity": {
+          "state": "UNVERIFIED",
+          "code": "OWNER_ANCHOR_REQUIRED"
+        },
+        "completeness": {
+          "state": "UNVERIFIED",
+          "code": "OWNER_ANCHOR_REQUIRED"
+        }
+      },
+      "fork_clock": 10,
+      "fork_root_prefix": "BP4_C12_FORK_ROOT@2:f3627c766130f9a5499e",
+      "child_episode_origin_body_branch_id": "root",
+      "shared_root_equal": true,
+      "interpretation": "the guard compared the sealed body origin (root) with the child SQL location (alt)"
+    },
+    "bp4i3_02_unsupported_c9_writer_version": {
+      "observed": {
+        "first_guard_no_expected": {
+          "state": "FORK_HELD",
+          "code": "C12_BASE_PERCEPTION_IDENTITY_UNPROVEN",
+          "fork_cut": 10,
+          "base_root_hash": "",
+          "base_perception_hash": "b3116caaa46f083563b2dfa0261704a384d7d9c193b476b675aa68a781f6eb5d",
+          "base_perception_count": 1
+        },
+        "second_guard_supported_schema": {
+          "state": "FORK_READY",
+          "code": "FORK_READY",
+          "fork_cut": 10,
+          "nonperception_last_clock": 10,
+          "perception_last_clock": 10,
+          "base_root_hash": "",
+          "base_perception_hash": "b3116caaa46f083563b2dfa0261704a384d7d9c193b476b675aa68a781f6eb5d",
+          "base_perception_count": 1
+        },
+        "third_guard_unsupported_schema_2": {
+          "state": "FORK_READY",
+          "code": "FORK_READY",
+          "fork_cut": 10,
+          "nonperception_last_clock": 10,
+          "perception_last_clock": 10,
+          "base_root_hash": "",
+          "base_perception_hash": "b3116caaa46f083563b2dfa0261704a384d7d9c193b476b675aa68a781f6eb5d",
+          "base_perception_count": 1
+        },
+        "helper_readiness_unsupported_2": {
+          "ok": true,
+          "state": "READY",
+          "errors": [],
+          "atomicity": "NO_CROSS_DATABASE_ACID__OUTBOX_AND_WATERMARK"
+        },
+        "helper_handshake_unsupported_2": {
+          "ok": true,
+          "errors": [],
+          "mirror_schema": "C12_ACTOR_MIRROR_R3@1",
+          "c12_source_domain": "BP4_C12_STORE@2",
+          "writer_schema": "BP4_C12_STORE@2"
+        }
+      },
+      "interpretation": "actual C9 c12_fork_guard and the two_store_readiness helper accepted matching @2 writer/domain strings without a supported-schema check"
+    },
+    "focused_valid_say_on_original_verifier": {
+      "result": "1 failed",
+      "error": "episode:0:body_hash_mismatch",
+      "exit": 1
+    }
+  },
+  "candidate_positive": {
+    "legitimate_episode_fork_after_repair": {
+      "observed": {
+        "ok": true,
+        "content_ok": true,
+        "fork_ok": true,
+        "schema_ok": true,
+        "errors": [],
+        "counts": {
+          "episode": 1,
+          "world_event": 2,
+          "checkpoint": 2,
+          "perception": 4
+        },
+        "fork": {
+          "ok": true,
+          "status": "VERIFIED",
+          "errors": [],
+          "branch_id": "alt"
+        },
+        "branch_id": "alt",
+        "reader_version": "C12_GUARD_READER@1",
+        "authenticity": {
+          "state": "UNVERIFIED",
+          "code": "OWNER_ANCHOR_REQUIRED"
+        },
+        "completeness": {
+          "state": "UNVERIFIED",
+          "code": "OWNER_ANCHOR_REQUIRED"
+        }
+      },
+      "fork_clock": 10,
+      "child_episode_origin_body_branch_id": "root",
+      "shared_root_equal": true,
+      "cold_reopen": "PASS in tests/test_bp4r_candidate.py::test_legitimate_episode_bearing_fork_passes"
+    },
+    "c9_writer_version_after_repair": {
+      "supported_c9_consumer": {
+        "state": "FORK_READY",
+        "code": "FORK_READY",
+        "fork_cut": 10,
+        "nonperception_last_clock": 10,
+        "perception_last_clock": 10,
+        "base_root_hash": "",
+        "base_perception_hash": "b3116caaa46f083563b2dfa0261704a384d7d9c193b476b675aa68a781f6eb5d",
+        "base_perception_count": 1
+      },
+      "unsupported_c9_consumer_after_repair": {
+        "state": "FORK_HELD",
+        "code": "C12_WRITER_SCHEMA_UNSUPPORTED",
+        "writer_schema": "BP4_C12_STORE@2",
+        "supported_writer_schemas": [
+          "BP4_C12_STORE@1"
+        ]
+      },
+      "unsupported_two_store_readiness_after_repair": {
+        "ok": false,
+        "state": "SYNC_HELD",
+        "errors": [
+          "c12_writer_schema_unsupported:BP4_C12_STORE@2",
+          "c9_mirror_c12_domain_unsupported:BP4_C12_STORE@2"
+        ],
+        "atomicity": "NO_CROSS_DATABASE_ACID__OUTBOX_AND_WATERMARK"
+      },
+      "unsupported_handshake_after_repair": {
+        "ok": false,
+        "errors": [
+          "c12_writer_schema_unsupported:BP4_C12_STORE@2",
+          "c9_mirror_c12_domain_unsupported:BP4_C12_STORE@2"
+        ],
+        "mirror_schema": "C12_ACTOR_MIRROR_R3@1",
+        "c12_source_domain": "BP4_C12_STORE@2",
+        "writer_schema": "BP4_C12_STORE@2"
+      }
+    },
+    "forged_branch_transplant": "PASS negative: tests/test_bp4r_candidate.py::test_forged_branch_transplant_fails_at_same_read",
+    "version_substitution": "PASS negative: @2 returns FORK_HELD at actual C9 consumer; @1 returns FORK_READY",
+    "source_severance": "PASS: severing the C9 schema gate returns FORK_READY on @2; restoring returns FORK_HELD"
+  },
+  "preserved_red_holds": {
+    "c9_old_count_c12_suffix_conflict": {
+      "status": "RED",
+      "test": "tests/test_c9_r3.py::test_c6_same_count_perception_substitution_is_held",
+      "line": 476,
+      "observed": "parent perceptions=2, child=3",
+      "action": "preserve old-writer fixture and separately version repaired-writer consumer; do not weaken"
+    },
+    "global_writer_clock": {
+      "episode_clock": 10,
+      "last_clock": 10,
+      "verify_ok": true
+    },
+    "anchor_actor_created_clock": {
+      "payload_unchanged": true,
+      "created_clock_after": 999,
+      "actor_ids_after": [
+        "A",
+        "C"
+      ]
+    },
+    "raw_deletion_injection_rehash": "content-green but anchor payload changes; no external anchor; existing guard court treats as UNVERIFIED",
+    "external_anchor": "OWNER_ANCHOR_REQUIRED; no key, signer, trust root or monotonic custodian"
+  },
+  "tests": [
+    {
+      "name": "original BP2P4J",
+      "result": "33 passed, 1 skipped",
+      "exit": 0,
+      "junit": "01_ORIGINAL_BP2_33_1.xml",
+      "sha256": "f8fcbfbefb2b328e026b135bc947b3bb3ed7868f19eb316add8026978026a96b"
+    },
+    {
+      "name": "F2 overlay",
+      "result": "37 passed, 1 skipped",
+      "exit": 0,
+      "junit": "02_F2_OVERLAY_37_1.xml",
+      "sha256": "aa10871ec80e4928c9b772c13fc965abb87490c56adb5e26d8226c037226a68b"
+    },
+    {
+      "name": "original guard",
+      "result": "11 passed, 0 skipped; exact C9 mirror schema path present and hash-matched",
+      "exit": 0,
+      "junit": "03_GUARD_ORIGINAL_11_0.xml",
+      "sha256": "a45fe906bfe53917756eda0f84c8f35e0ecfd77397c20336ae44f6f0536ef9e2"
+    },
+    {
+      "name": "original F2+guard combined",
+      "result": "48 passed, 1 skipped",
+      "exit": 0,
+      "junit": "04_COMBINED_ORIGINAL_48_1.xml",
+      "sha256": "d50b51b666e452854a5a544ee8aa5b75cc43000b9e87d24254a5b560b782f4d8"
+    },
+    {
+      "name": "repaired candidate combined",
+      "result": "57 passed, 1 skipped",
+      "exit": 0,
+      "junit": "05_CANDIDATE_COMBINED.xml",
+      "sha256": "4e7d73d552890a62ab9f32ab669f79b729395be2720f134240792cc83da4ac73"
+    },
+    {
+      "name": "new BP4R fork/version court",
+      "result": "9 passed",
+      "exit": 0,
+      "junit": "07_C9_GATE_AND_FORK_COURT.xml",
+      "sha256": "4e9eecac65277123d3a6cee112cb55c7448abdb52c3831938089acb1fc08f88a"
+    },
+    {
+      "name": "C9-R3 actual suite with exact staged C12/S36",
+      "result": "14 passed, 1 failed",
+      "exit": 1,
+      "junit": "06_C9_PATCHED_14_1.xml",
+      "sha256": "86cb152de4444cae79df0b6df9e902fa1444f5ee84ebf8372e460867c2de4012"
+    }
+  ],
+  "source_custody": {
+    "bp2p4_base": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+    "f2_verifier_blob": "c1699c8da5e944ed079708e272c3af50d5a30a44",
+    "f2_test_blob": "ebe1e8287f9b8485b6c862b66b6c2a9dafcf59aa",
+    "author_guard_blob": "a6a8de75ad92967e9fde354d76adce8b9572217e",
+    "author_guard_test_blob": "8ca11491af25b98825c88f1355e391ce82659ab7",
+    "c9_actor_blob": "67f34f699220ec1407e7e8f0d58ed328e88a36af",
+    "c12_candidate_store_blob": "c94cd131f6d24737e43a2f3dd192ac2a7569eb18",
+    "c12_integrity_blob": "402c2b02ad21ee03d9ca40ee58d8535e9ff183ac",
+    "s36_transaction_blob": "1a9c15b88f0dfc130e895f33ac536487f601aadd",
+    "s36_harness_blob": "2a20d04b465d4ca5b6daeae9db7fe5a31f850211",
+    "candidate_guard_sha256": "ebc969a82322c6ea0548dd95df545eeafa9c26c636653261c1b0005cb66eeb02",
+    "candidate_c9_sha256": "65da5b084c8db0547c1ced0e838a1f3d5214424b0471723ffa66369484fe0010",
+    "candidate_test_sha256": "49d4e0c997fe3f767bd58e2648d8833a88f500c2e9aa3a4a02a78d2690513c91"
+  },
+  "three_courts": {
+    "engineering": "PASS_SCOPED__REAL_EPISODE_FORK_AND_ACTUAL_C9_CONSUMER_GREEN",
+    "scientific": "HOLD__SOURCEFREE_TEST_ONLY__NO_NATIVE_WORLD_PERSON_OR_SOURCE",
+    "authority": "HOLD__NO_ADOPTION__ORIGINAL_OWNERS_AND_INDEPENDENT_REVIEW_REQUIRED"
+  },
+  "independent_review": {
+    "required": true,
+    "owner": "separate I3 C9/C12 security reviewer",
+    "self_adoption": false
+  },
+  "not_run": [
+    "real external anchor/signature/custodian",
+    "native C12/C11/CAN/ADP/Pyat/source execution",
+    "C9/C12 cross-database ACID",
+    "standalone historical BP2/BP4 suites outside the exact sourcefree cuts",
+    "QF2",
+    "PRE-MAIN CAS, merge or canonical registry update"
+  ],
+  "return_sha": null,
+  "return_sha_reason": "self-referential commit hash is reported externally after push"
+}

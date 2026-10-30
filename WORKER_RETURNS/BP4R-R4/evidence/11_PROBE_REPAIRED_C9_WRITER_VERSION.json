@@ -1,0 +1,39 @@
+{
+  "supported_c9_consumer": {
+    "state": "FORK_READY",
+    "code": "FORK_READY",
+    "fork_cut": 10,
+    "nonperception_last_clock": 10,
+    "perception_last_clock": 10,
+    "base_root_hash": "",
+    "base_perception_hash": "b3116caaa46f083563b2dfa0261704a384d7d9c193b476b675aa68a781f6eb5d",
+    "base_perception_count": 1
+  },
+  "unsupported_c9_consumer_after_repair": {
+    "state": "FORK_HELD",
+    "code": "C12_WRITER_SCHEMA_UNSUPPORTED",
+    "writer_schema": "BP4_C12_STORE@2",
+    "supported_writer_schemas": [
+      "BP4_C12_STORE@1"
+    ]
+  },
+  "unsupported_two_store_readiness_after_repair": {
+    "ok": false,
+    "state": "SYNC_HELD",
+    "errors": [
+      "c12_writer_schema_unsupported:BP4_C12_STORE@2",
+      "c9_mirror_c12_domain_unsupported:BP4_C12_STORE@2"
+    ],
+    "atomicity": "NO_CROSS_DATABASE_ACID__OUTBOX_AND_WATERMARK"
+  },
+  "unsupported_handshake_after_repair": {
+    "ok": false,
+    "errors": [
+      "c12_writer_schema_unsupported:BP4_C12_STORE@2",
+      "c9_mirror_c12_domain_unsupported:BP4_C12_STORE@2"
+    ],
+    "mirror_schema": "C12_ACTOR_MIRROR_R3@1",
+    "c12_source_domain": "BP4_C12_STORE@2",
+    "writer_schema": "BP4_C12_STORE@2"
+  }
+}
