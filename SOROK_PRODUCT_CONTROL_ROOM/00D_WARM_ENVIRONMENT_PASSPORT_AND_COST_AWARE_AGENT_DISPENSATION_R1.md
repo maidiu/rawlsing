@@ -1,5 +1,14 @@
 # SOROK 00D — Warm-environment passports and cost-aware agent dispensation R1
 
+## MANDATORY TWO-MAC AND AGENT SESSION-LOCATOR GROK (2026-10-30)
+
+**Binding:** `CROSS_HQ_CONTROL_ROOM/SESSION_LOCATOR_AND_RETURN_CUSTODY_LAW_R1.md`. Every new or resumed HQ, commission, dispatch, return and follow-up must identify the **actual machine** (`oldMac`, `mainMac`, `BROWSER` or explicit `UNKNOWN`); **harness** (`Codex`, `OpenCode`, `DeepSeek-Harness`, `Browser`); separate **agent/profile name, model and verified/requested effort**; exact **app-visible session name**, session ID/URL if available, local worktree, current branch/immutable SHA and original implementing/reviewer session. The model DeepSeek within OpenCode does not turn the harness into DeepSeek-Harness. A macOS platform or filesystem path alone cannot prove which Mac. Use a uniquely searchable session title and have the operator confirm it; no invented ID/link.
+
+Read central `CROSS_HQ_CONTROL_ROOM/SESSION_LOCATORS.json` before "use original implementing session". Every new commission adds `SESSION_LOCATOR_DISPATCH.json` and a `SESSION_CUSTODY` header to its full and copy-paste prompt. Every new worker return adds `SESSION_LOCATOR.json` and HQ appends its resolved return SHA to the shared registry with an attested locator. Missing machine/session is explicit `UNKNOWN` and `SESSION_NOT_FOUND__REQUIRES_OPERATOR_CONFIRMATION`, never false certainty. This is a dispatch/completion compliance requirement, not original scientific or PRE-MAIN adoption authority. Preserve existing owner/CAS, independence and live-worker noninterference.
+
+**Grok token:** `SESSION_REGISTRY_READ__BOTH_MAC_IDENTITIES_CHECKED_OR_UNKNOWN__HARNESS_AND_MODEL_SEPARATE__EXACT_ORIGINAL_SESSION_RESOLVED_OR_TYPED_UNKNOWN__NEW_RETURN_SESSION_LOCATOR_REQUIRED`.
+
+
 **USER-SPECIFIED REAL THREE-TIER MODEL ROUTE — 2026-10-19:** Read [shared judgment-bearing return and tri-court commission law](../CROSS_HQ_CONTROL_ROOM/HQ_JUDGMENT_BEARING_RETURNS_INTAKE_AND_DUAL_ECONOMY_COMMISSION_LAW_R1.md). NO TASK TOO WEAK / TOO STRONG: LOW **DeepSeek V4.1-Flash** only if independently adequate I0/I1; MIDDLE exact model selected **by user at dispatch** after live account status; HIGH **Codex** for serious novel technical/scientific work when cheaper class insufficient. `WHY_NOT_FLASH/MIDDLE/CODEX`; don't guess MiMo, model subscription balance, harness, or local active session. Three commission acceptance classes ENGINEERING/SCIENTIFIC/AUTHORITY separate with ACCEPT/RED/HOLD and named owner. In ordinary worker return preserve findings and causal interpretation; HQ records finding/interpretation/action/owner. Amend an unlaunched seal without restarting existing campaigns; no added process layers.
 
 
