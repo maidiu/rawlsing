@@ -1,0 +1,89 @@
+{
+  "schema": "SOROK_QF1_CANONICAL_DISTINCT_IMPLEMENTATION_SELECTION@1",
+  "status": "NOT_SELECTED__CONDITIONAL_GATE_NOT_MET",
+  "repository": "maidiu/rawlsing",
+  "branch": "integration/sorok-qualified-inheritance-fanin-owner-court-r1",
+  "return_base": "6ce7bb954c33e0a418f0abaa4531da82b5875135",
+  "sealed_startup": "342164a09e10aa70812299c12386ed0923308228",
+  "premain_pin": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "source_evidence": {
+    "hr1": "40df1e61fb32f9210839d8ddfa9f8bf9a47d7621",
+    "rc1": "337896aa995d579e3525588b405d07216709ac15",
+    "f3": "6477a89bb9160eba1dd10607c47534fa4dce6cc2",
+    "f3i": "97dbe712e4cce8fedd1632d9ac64b4e57a0ac25e",
+    "h358": "ea40306bacb899147799330898e9ab91a950205f",
+    "f2": "0636d257f588f8874e65b2cb183d1d47c7f53327",
+    "f2i": "26cf53526b7d290a712d1e2be5852e0ed5668b7a",
+    "f1": "8aad22736c9f488c92ed007128c1875075142839",
+    "f1i": "c48d3dff2b86e0da54ad3dbb09a34baf53d0273e"
+  },
+  "candidate_classifications": [
+    {
+      "family": "G17 material/future-child/C9",
+      "candidate_cut": "8b9a39da552a224bddf486603179f565003f38bb",
+      "original_author": "90d0eb7925de54635559a879ee76fc1b97b9ff61",
+      "original_reviewer": "156b84cc8481b65c4196b42574010eb7920d6f44",
+      "original_test_blob": "83f17006b22271f17c87f4563608de08395d7a1c",
+      "original_result": "11 PASS / 3 RED (forged cash 100058, nested future-child COMMITTED, C9 forged cash 100055)",
+      "candidate_result": "14/14 reviewer and 13/13 author from the separate G17 return",
+      "classification": "NEEDS_OWNER_REVIEW__RED_PRESERVED",
+      "reason": "The candidate is a separate author repair; original G17/C9 owner and a distinct reviewer have not accepted it. M2/MP and C9 E1/RULE_A/RULE_T/E2 remain HOLD."
+    },
+    {
+      "family": "OC5 custody forgeries",
+      "candidate_cut": "e8b127b68c18d05c4d40c059b3aecc00dafc7ce7",
+      "original_reviewer": "67a4f1561cdad40192f00797d66b24fc4cd91589",
+      "original_result": "110 PASS / 49 RED on the 159 court; 349-court 283/66 preserved",
+      "classification": "NEEDS_OWNER_REVIEW__RED_PRESERVED",
+      "reason": "Author repair return exists; no independent owner acceptance at exact bytes."
+    },
+    {
+      "family": "M04 provenance/ancestry",
+      "candidate_cut": "187a9dcf69dc75b00c2875ee1fbe83d3524e0426",
+      "original_reviewer": "3a993abcc0a9f6bd3a1bb003d298d293be199ea6",
+      "original_result": "41 PASS / 10 RED + 9 historical CAN3 FAIL",
+      "classification": "NEEDS_OWNER_REVIEW__RED_PRESERVED",
+      "reason": "Author repair return exists; no independent owner acceptance at exact bytes."
+    },
+    {
+      "family": "BP4 C12 / F1C",
+      "candidate_cut": null,
+      "original_result": "HOLD",
+      "classification": "HOLD_NATIVE__UNSELECTED",
+      "reason": "No exact owner-approved compatible C9/C12 writer/schema/reader/anchor or F1C B/receiver cut was verified. Old JOIN-V review cannot transfer to changed BP4 source."
+    },
+    {
+      "family": "F2 episode verifier",
+      "candidate_cut": "0636d257f588f8874e65b2cb183d1d47c7f53327",
+      "review": "26cf53526b7d290a712d1e2be5852e0ed5668b7a",
+      "classification": "REUSE_REVIEWED_SCOPED__SECURITY_ANCHOR_HOLD",
+      "reason": "F2I independently accepted only the bounded episode-preimage repair; raw deletion, injected/rehashed forgery, untrusted anchor and upstream BP4 verify remain HOLD."
+    },
+    {
+      "family": "F1 causal A/B",
+      "candidate_cut": "8aad22736c9f488c92ed007128c1875075142839",
+      "review": "c48d3dff2b86e0da54ad3dbb09a34baf53d0273e",
+      "classification": "RED__REVISE_CAUSAL_CONTRACT",
+      "reason": "F1I requires fixed pre-B A, conserved B material cost, B-only intervention semantics and separate G1/G2/C9/C12; no native psychogenesis or first person."
+    }
+  ],
+  "no_selection": {
+    "selected_implementation": null,
+    "selected_c9_writer": null,
+    "selected_c12_reader": null,
+    "selected_first_consumer": null,
+    "reason": "Launch gates 2–4 are not met; selecting would silently promote unreviewed code or borrow old review across changed bytes."
+  },
+  "preserved_reds": {
+    "g17": ["test_forged_material_event_supplying_cash_must_be_refused", "test_future_child_nested_alias_must_be_refused", "test_c9_forged_material_event_must_be_refused"],
+    "oc5": "49 original reviewer REDs on the 159 court; 283/66 full court",
+    "m04": "10 fresh + 9 historical CAN3 FAIL",
+    "f1": "REVISE causal contract; native G1/G2 HOLD",
+    "f2": "security/authenticated-anchor/upstream BP4 HOLD"
+  },
+  "grades": {
+    "engineering": "NOT_LAUNCHED__NO_SELECTION",
+    "scientific": "HOLD_NATIVE_SOURCE_PERSON",
+    "authority": "HOLD_OWNER_CAS_AND_ADOPTION"
+  }
+}
