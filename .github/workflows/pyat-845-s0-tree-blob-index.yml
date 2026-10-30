@@ -28,12 +28,12 @@ jobs:
           git -c protocol.version=2 fetch --unshallow --no-tags --filter=blob:none origin             '+refs/heads/integration/pre-main-reconciliation-r1:refs/remotes/origin/integration/pre-main-reconciliation-r1'
       - name: Exact pinned source-branch HEAD, merge-base and changed blob identity
         run: |
-          python3 PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/12_s0_exact_tree_blob_index.py             --shard "${{ matrix.shard }}" --out .pyat-s0-output
+          python3 PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/12_s0_exact_tree_blob_index.py             --shard "${{ matrix.shard }}" --out pyat-s0-output
       - name: Preserve exact branch-to-current comparison even if shard incomplete
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: pyat-s0-${{ matrix.shard }}-sourcefree-path-blob-index
-          path: .pyat-s0-output/
+          path: pyat-s0-output/
           if-no-files-found: warn
           retention-days: 30
