@@ -1,0 +1,90 @@
+{
+  "schema": "PYAT_H06_COMMITTED_FILES_AND_CHECKSUMS@1",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/pyat-h06-ddm-composition-real-consumer-r1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-h06-ddm-composition-real-consumer-r1",
+  "start_parent_h04": "084649fbf6587e5714db62a3df29003c7e319fcf",
+  "receiving_control": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "h03_reviewed_commit": "b26e4cab577bb33d0d80489322c0c4efebd2df17",
+  "terminal_verdict": "H06_EXISTING_DDM_CONSUMER_PROVED__NO_NEW_IMPLEMENTATION",
+  "production_code_changed": false,
+  "changed_files": [
+    {
+      "path": "WORKER_RETURNS/PYAT-H06-DDM-COMPOSITION-REAL-CONSUMER-R1/00_RETURN.md",
+      "git_blob": "124108868f101769aa9d4c1b8de007283be6b33a",
+      "sha256": "48921bfffa52aeff69b1d06da05d88435ead9a0945aaae66ac8c912310e45ef8"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-H06-DDM-COMPOSITION-REAL-CONSUMER-R1/01_COMPOSED_PRODUCT_AND_FIRST_CONSUMER.md",
+      "git_blob": "7044c43db31112c0ca36885dfa6ddd97a1d74244",
+      "sha256": "75cdd058d79b16172823293f7a12c463132c63682a65417c791e27abf6d8a00f"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-H06-DDM-COMPOSITION-REAL-CONSUMER-R1/02_EXECUTED_PRODUCT_RECEIPT.json",
+      "git_blob": "c994df2a077fd05fd8a9eaac3aed445ff21a398a",
+      "sha256": "ee999dc0a179c390a078854baae853305f5b838100a03472ec9df955e9d1756f"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-H06-DDM-COMPOSITION-REAL-CONSUMER-R1/03_HOSTILE_EXECUTION_AND_REPLAY.md",
+      "git_blob": "17110e0f33438c6f149f5677d8a9d84d187748f6",
+      "sha256": "fa3bce1fd1106e85692b556e302216ec26ed6c0a7220b9af0a22423dd1f219c0"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-H06-DDM-COMPOSITION-REAL-CONSUMER-R1/04_FUNCTION_CONSERVATION_AND_GAPS.md",
+      "git_blob": "5f5223197e9cb5e2636121b79eeb4bc2d2dfa428",
+      "sha256": "df1ad84d415b36519d32faa791ffec5084180d73d71d2685e460218223b4bf9c"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-H06-DDM-COMPOSITION-REAL-CONSUMER-R1/repro/run_receipt.py",
+      "git_blob": "8b68ebb1ae3061f5f3c242d5f0425c53b612586a",
+      "sha256": "1ddeeecc0540d246f1e79a7707e08686ebe80386724132377a071faff9a5f55b"
+    }
+  ],
+  "not_modified": {
+    "rawlsing_next_production_code": true,
+    "h03_source_and_return": true,
+    "h04_source_and_return": true,
+    "premain": true,
+    "pr_514_or_516": true,
+    "other_worker_worktrees": true,
+    "sorok_actor_or_person_state": true
+  },
+  "existing_owner_courts_used": {
+    "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py": {
+      "tests": 35,
+      "result": "35 passed"
+    },
+    "rawlsing_next/tests/test_pre553_analytical_composition.py": {
+      "role": "C1 analytical composition and exact consumer"
+    },
+    "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py": {
+      "role": "replay dependency invalidation"
+    },
+    "combined_second_court": {
+      "tests": 56,
+      "result": "56 passed"
+    }
+  },
+  "executed_commands": [
+    "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -m pytest rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py -q",
+    "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -m pytest rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_analytical_replay_dependency.py -q",
+    "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 WORKER_RETURNS/PYAT-H06-DDM-COMPOSITION-REAL-CONSUMER-R1/repro/run_receipt.py"
+  ],
+  "receipt_observations": {
+    "at10_branches": 3,
+    "at10_denominators": [2, 8, 10],
+    "at10_distinct_composed_identities": 3,
+    "at11_producer_route": "MX01R2_RECURSIVE_TO_POSITIONED_SUBJECT",
+    "at11_analytical_state": "SUPPORTED",
+    "at11_consumer_result_state": "EXACT_SUPPORTED",
+    "at11_denominator": 4,
+    "at11_fresh_process_equal": true
+  },
+  "final_remote_sha": "REPORTED_AFTER_PUSH_NOT_SELF_EMBEDDED",
+  "notes": [
+    "No production implementation was required; the existing C1-02 owner path already achieves the declared product/consumer objective.",
+    "The product grade is source-free synthetic fixture capability, not original survey occupancy.",
+    "The receipt script is a bounded verification harness under the return path, not production code.",
+    "The 05 file cannot contain its own final commit hash; the exact pushed branch head is reported in the final return message."
+  ]
+}
