@@ -1,0 +1,540 @@
+{
+  "schema": "PREMAIN_M04I2_INDEPENDENT_REPLAY_RECEIPT@1",
+  "date": "2026-10-30",
+  "repository": "maidiu/rawlsing",
+  "branch": "review/sorok-r3-m04-claim-ancestry-independent-replay-20261030",
+  "sealed_commission_sha": "187fdd11963163dab03c7b061e20067ea1f99134",
+  "work_start_head": "7e36cc1509016f8c654a5d8e3cf708656db0727f",
+  "target_original_return": "2309a73bcea1572f6545d5b26027ddc608bee271",
+  "original_m04_reviewer": "3a993abcc0a9f6bd3a1bb003d298d293be199ea6",
+  "original_m03_author": "e1f7a74e51201b9614bcc578348b4e9db7be7bd3",
+  "f3i_source_court": "97dbe712e4cce8fedd1632d9ac64b4e57a0ac25e",
+  "canonical_premain": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "session_locator": {
+    "path": "WORKER_RETURNS/M04I2-R3/SESSION_LOCATOR.json",
+    "blob": "e87de42686ee99faeecca1391822fbf97cd7e48e",
+    "sha256": "19ba12e0fd7af18eae5cb6fd400f4a72aa24ea2e285e260d3f5e595a2ef1dc49"
+  },
+  "source_identities": {
+    "m04_target_files": {
+      "00_RETURN.md": "dc32b1570cd3ad9ed611d6d1653d261555547e79",
+      "01_10_RED_NINE_CAN3_DIFFERENTIATION.json": "ec323a83766bb5c0979addd13defaef1d02c6782",
+      "02_SOURCE_PATCH_AND_REPRODUCED_TESTS.md": "366536d69187672d8167d23a99ca461f4d0750fd",
+      "03_ORIGINAL_M03_M04_OWNER_REVIEW_HANDOFF.md": "e174724d3bfdacd5aec75a251945749ca13bbe55",
+      "candidate/claim_provenance.py": "5ba929f51870b111ca54ca87fdf97338e4295625"
+    },
+    "m04_reviewer_files": {
+      "00_RETURN.md": "5840b2f3f551903d61ce00654b8b964c0ea3a545",
+      "candidate/claim_provenance.py": "2434bda6f4b00e6ea5881291f5422227e8045e74",
+      "candidate/cell.py": "3eb2d02aee8dc840e7cac1f99230d7c69adc2f58",
+      "review/test_falsifiers.py": "8add06c66b347e324443c1263771755f6898c7e2",
+      "03_FREEZE_MANIFEST.json": "115e7ccbd55c7a722aa233f05a63703b387fdbef"
+    },
+    "m03_author_files": {
+      "candidate/claim_provenance.py": "2434bda6f4b00e6ea5881291f5422227e8045e74",
+      "candidate/cell.py": "3eb2d02aee8dc840e7cac1f99230d7c69adc2f58",
+      "repro/test_author.py": "04954992ddd416bf5b2d27cc134109562d1d7df5"
+    },
+    "m02_review_commit": "0216d9036a87e2f60f42fd5b2870556027808419",
+    "m01_author_commit": "02187a14e75ff30dd953d3c7185d689b80e62304",
+    "can3_historical_commit": "ef12349defe22a50e053a7a8080a67ab45673417",
+    "reviewer_freeze_commit": "3b529996ddd05c3c84225d2054428ff943091aef",
+    "historical_nine_blob": "f4278b008cb6d29a65ebd6ac13c856eab9332f06"
+  },
+  "candidate_source": {
+    "original_claim_provenance": "2434bda6f4b00e6ea5881291f5422227e8045e74",
+    "patched_claim_provenance": "5ba929f51870b111ca54ca87fdf97338e4295625",
+    "cell": "3eb2d02aee8dc840e7cac1f99230d7c69adc2f58",
+    "frozen_reviewer_test": "8add06c66b347e324443c1263771755f6898c7e2",
+    "patched_sha256": "d3ed279515e9349150d576cd52be4c958f26b8734842488bc508781bc663adab"
+  },
+  "replay": {
+    "baseline_original_2434": {
+      "fresh": {
+        "command": "python3 review/run_fresh.py",
+        "exit": 1,
+        "path": "WORKER_RETURNS/M04I2-R3/evidence/fresh_baseline_junit.xml",
+        "blob": "c7ceaf7c93031e2ecb39610b63fc492ea5710351",
+        "sha256": "48da033d41161431dc8bb1232449939cf6b6d1d915ec857eeba46fb687bfd37f",
+        "counts": {
+          "tests": 51,
+          "failures": 10,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "inherited_413": {
+        "command": "python3 repro/run.py after original_413",
+        "exit": 0,
+        "components": [
+          {
+            "path": "WORKER_RETURNS/M04I2-R3/evidence/baseline_413_new_junit.xml",
+            "blob": "cd694df6a3987850786c1cb5aeb6200b1db5ec1d",
+            "sha256": "6bdebdcdf36f39e953af5604433840507c20e29fae20b158d71e0637b784c073",
+            "counts": {
+              "tests": 94,
+              "failures": 0,
+              "errors": 0,
+              "skipped": 0
+            }
+          },
+          {
+            "path": "WORKER_RETURNS/M04I2-R3/evidence/baseline_413_can3_junit.xml",
+            "blob": "680d01a2876e6d86d815359813b049ee71087596",
+            "sha256": "418703a415e3c2148e60ad6d67247800d25f68bb7799b44c4909e2deb6c06bee",
+            "counts": {
+              "tests": 97,
+              "failures": 0,
+              "errors": 0,
+              "skipped": 0
+            }
+          },
+          {
+            "path": "WORKER_RETURNS/M04I2-R3/evidence/baseline_413_author_junit.xml",
+            "blob": "06a8594feb4044a5d3a1eb8f4103e2728b62974e",
+            "sha256": "8091250a831bf2029c0ad24db41c3861441f85adcb99bef3505e3ccc75fb91f5",
+            "counts": {
+              "tests": 89,
+              "failures": 0,
+              "errors": 0,
+              "skipped": 0
+            }
+          },
+          {
+            "path": "WORKER_RETURNS/M04I2-R3/evidence/baseline_413_owners_junit.xml",
+            "blob": "021fc328387da881b4fb5b2c518084c4e67a49c0",
+            "sha256": "eafc99673fcae1e3698036843bedc6c19d41679a492a29c843f21c285fe0a8ac",
+            "counts": {
+              "tests": 133,
+              "failures": 0,
+              "errors": 0,
+              "skipped": 0
+            }
+          }
+        ]
+      },
+      "inherited_100": {
+        "command": "python3 repro/run.py after independent_100",
+        "exit": 0,
+        "path": "WORKER_RETURNS/M04I2-R3/evidence/baseline_100_junit.xml",
+        "blob": "839f96ee626dc23a12da307d4cc2c3b882ed3625",
+        "sha256": "cc7c9ec93598b859de0d3a3aa7d8af969469f4bd98a3762e9f2853c6e25a12b7",
+        "counts": {
+          "tests": 100,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "author_74": {
+        "command": "python3 repro/run_author.py",
+        "exit": 0,
+        "path": "WORKER_RETURNS/M04I2-R3/evidence/baseline_author_junit.xml",
+        "blob": "3407f29ed089d412e431e5d4e6df96cb5b6bc9fe",
+        "sha256": "a3d6ae1d07b32521eca194c3f384993fe1b4a28ebbae1b1d5b2b4cd78e761d55",
+        "counts": {
+          "tests": 74,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "inherited_total": 587,
+      "historical_nine": {
+        "command": "python3 repro/run_historical.py",
+        "exit": 0,
+        "asserts_expected_failure": true,
+        "path": "WORKER_RETURNS/M04I2-R3/evidence/baseline_historical_nine_junit.xml",
+        "blob": "c06816500463b9d45e33aa2c5c75e52e3127fbcd",
+        "sha256": "9e2d4ddd5664550a546f30f1551fa05934e774c4caf71e577e28d56feb37499d",
+        "counts": {
+          "tests": 9,
+          "failures": 9,
+          "errors": 0,
+          "skipped": 0
+        }
+      }
+    },
+    "patched_5ba929": {
+      "fresh": {
+        "command": "python3 review/run_fresh.py",
+        "exit": 0,
+        "path": "WORKER_RETURNS/M04I2-R3/evidence/fresh_patched_junit.xml",
+        "blob": "026c92de36536408968e34f2d0c2e6581b53f3dc",
+        "sha256": "ed0af6ea1933fd9dd5889b26189873151f9b8102289cb894f73eb08313db56c8",
+        "counts": {
+          "tests": 51,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "inherited_413": {
+        "command": "python3 repro/run.py after original_413",
+        "exit": 0,
+        "components": [
+          {
+            "path": "WORKER_RETURNS/M04I2-R3/evidence/patched_413_new_junit.xml",
+            "blob": "3b0e3b518ce56525c7650b1a79fffc41e3252a21",
+            "sha256": "972300f73f67ee2b9b50812c24a1586e9db039115b44f41515b717df034f8745",
+            "counts": {
+              "tests": 94,
+              "failures": 0,
+              "errors": 0,
+              "skipped": 0
+            }
+          },
+          {
+            "path": "WORKER_RETURNS/M04I2-R3/evidence/patched_413_can3_junit.xml",
+            "blob": "36513976d8f8c492ed37aa538c961e131cbad886",
+            "sha256": "61aaf24f3424cb1c394decfbbfc1a986652cfb46af0710deaf8ed4fe8c0aa8f9",
+            "counts": {
+              "tests": 97,
+              "failures": 0,
+              "errors": 0,
+              "skipped": 0
+            }
+          },
+          {
+            "path": "WORKER_RETURNS/M04I2-R3/evidence/patched_413_author_junit.xml",
+            "blob": "5f6ece49feb1d8efdf55e67c5c32f962d5ec91aa",
+            "sha256": "fedb380dde9ad79cb306bfb4012ea4f23c5d91a23288bc4c514b41bb9c646964",
+            "counts": {
+              "tests": 89,
+              "failures": 0,
+              "errors": 0,
+              "skipped": 0
+            }
+          },
+          {
+            "path": "WORKER_RETURNS/M04I2-R3/evidence/patched_413_owners_junit.xml",
+            "blob": "5a234484e164f466d5515385081a2605e9956a4a",
+            "sha256": "e3d7aeb8b77b04912424ae4268c33098725fbe175202669d0c72b505891b0ad0",
+            "counts": {
+              "tests": 133,
+              "failures": 0,
+              "errors": 0,
+              "skipped": 0
+            }
+          }
+        ]
+      },
+      "inherited_100": {
+        "command": "python3 repro/run.py after independent_100",
+        "exit": 0,
+        "path": "WORKER_RETURNS/M04I2-R3/evidence/patched_100_junit.xml",
+        "blob": "ea997b9922928871ddddd6f598a093c76619792d",
+        "sha256": "8d8fcb29439965b528ddd38145a109834a56fca490509936eb0eadb9095ff605",
+        "counts": {
+          "tests": 100,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "author_74": {
+        "command": "python3 repro/run_author.py",
+        "exit": 0,
+        "path": "WORKER_RETURNS/M04I2-R3/evidence/patched_author_junit.xml",
+        "blob": "6c1b2c31c752a3f5fa0cd3d12dc9e22f02ac3614",
+        "sha256": "b2f6d97bf4cd42525064ff4cdf8732d9cbdc842cafd8f954a671f8c583bb2f8b",
+        "counts": {
+          "tests": 74,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "inherited_total": 587,
+      "historical_nine": {
+        "command": "python3 repro/run_historical.py",
+        "exit": 0,
+        "asserts_expected_failure": true,
+        "path": "WORKER_RETURNS/M04I2-R3/evidence/historical_nine_junit.xml",
+        "blob": "2cc96f12a9f65d88c8067f6112ea08d3bb04ee07",
+        "sha256": "ee4919a707b2ac3454f2f64819406be9f9287038b88ea20a1f8d82a9bcc3cfe1",
+        "counts": {
+          "tests": 9,
+          "failures": 9,
+          "errors": 0,
+          "skipped": 0
+        }
+      }
+    },
+    "cold2_original_and_patched": {
+      "fresh_baseline": {
+        "exit": 1,
+        "path": "WORKER_RETURNS/M04I2-R3/evidence/cold2_fresh_baseline_junit.xml",
+        "blob": "665f9ebd8578a6ddc7c6307b76d2513dc2f659f1",
+        "sha256": "8eef367903a068ed0e163e0663ac80d846872df278ab7139e38fd8457a2b33f6",
+        "counts": {
+          "tests": 51,
+          "failures": 10,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "fresh_patched": {
+        "exit": 0,
+        "path": "WORKER_RETURNS/M04I2-R3/evidence/cold2_fresh_patched_junit.xml",
+        "blob": "dcb34607851ae985815d36408b33a5258f338fe2",
+        "sha256": "c6dc6329651eb39e8e82a65bef2ccdcf9a2087bedf312de620ff26af95a7e371",
+        "counts": {
+          "tests": 51,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "inherited_413": {
+        "exit": 0,
+        "counts": {
+          "tests": 413,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "inherited_100": {
+        "exit": 0,
+        "counts": {
+          "tests": 100,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "author_74": {
+        "exit": 0,
+        "counts": {
+          "tests": 74,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "historical_nine": {
+        "exit": 0,
+        "asserts_expected_failure": true,
+        "counts": {
+          "tests": 9,
+          "failures": 9,
+          "errors": 0,
+          "skipped": 0
+        }
+      }
+    },
+    "source_identity_manifest": {
+      "path": "WORKER_RETURNS/M04I2-R3/evidence/01_INPUT_SOURCE_IDENTITIES.json",
+      "blob": "243e4af341604a4be7b6c428d48c8dc1c2e39ecb",
+      "sha256": "2e9f857037cdd62435fcfddf59e9941fca887f5ff29470183f862049f6d769ab",
+      "counts": null
+    },
+    "staging_log": {
+      "path": "WORKER_RETURNS/M04I2-R3/evidence/staging_independent.log",
+      "blob": "a68b529d26acdf216ccfb7f9309f6de4fb43a56e",
+      "sha256": "dbff3baedb58dc24f93700f509ad3434ed91cecd9b51bf3fa3d68a2389ef0ec2",
+      "counts": null
+    },
+    "fresh_command": {
+      "path": "WORKER_RETURNS/M04I2-R3/evidence/fresh_command.json",
+      "blob": "4155a7184061c414504b6980c332e306208c8184",
+      "sha256": "39f1951f831842fe10fe5555e1cfadc54e0a30c69979a03a3c9aef6587492b2f",
+      "counts": null
+    }
+  },
+  "historical_nine": {
+    "names": [
+      "test_C_target_owner_effect_is_request_not_seizure",
+      "test_D_K3_hidden_origin_content_not_first_person_readable",
+      "test_D_K3_causal_trace_not_recallable",
+      "test_D_K3_sole_memory_basis_failclosed",
+      "test_F_H6_duplicate_event",
+      "test_F_H8_invalid_trace",
+      "test_H_delete_memory_forbidden",
+      "test_H_rehydration_forbidden",
+      "test_target_owner_validation_precedes_committed_effect"
+    ],
+    "classification": "SEPARATE_ORIGINAL_CAN3_HISTORICAL_SOURCE_CUT__NOT_REPAIRED_OR_RECLASSIFIED",
+    "execution_grade": "REPLAY_OF_RETAINED_JUNIT__ORIGINAL_CAN3_PYTEST_NOT_REEXECUTED"
+  },
+  "unjournaled_counterexample": {
+    "probe_path": "WORKER_RETURNS/M04I2-R3/candidate/m04i2_unjournaled_probe.py",
+    "probe_blob": "ab09694cf3c61cd4ce3e22b2ef27930a044e13ab",
+    "probe_sha256": "513e71be3ebc7531eb08631621d97c7e04910052e31533bf33b806ca58d285b4",
+    "direct": {
+      "original": {
+        "path": "WORKER_RETURNS/M04I2-R3/evidence/unjournaled_probe_original.json",
+        "blob": "3b0d02347ea557e9727674c5de779cd343ebef4a",
+        "sha256": "0c6bdefb7818ef5cd251fc37a0d7b4e582f65d57d3d45a1703d42ee3fc6c0e3c",
+        "counts": null
+      },
+      "patched": {
+        "path": "WORKER_RETURNS/M04I2-R3/evidence/unjournaled_probe_patched.json",
+        "blob": "3b0d02347ea557e9727674c5de779cd343ebef4a",
+        "sha256": "0c6bdefb7818ef5cd251fc37a0d7b4e582f65d57d3d45a1703d42ee3fc6c0e3c",
+        "counts": null
+      },
+      "patched_cold2": {
+        "path": "WORKER_RETURNS/M04I2-R3/evidence/unjournaled_probe_patched_cold2.json",
+        "blob": "9ca5a9aa7ef2639a04f953531abfad433a5c61ef",
+        "sha256": "3d32f632bc4123e66d9a2386589306df037b969dffdb8c1176c47d75d1be27ca",
+        "counts": null
+      }
+    },
+    "forged_prestate": {
+      "original": {
+        "path": "WORKER_RETURNS/M04I2-R3/evidence/forged_prestate_probe_original.json",
+        "blob": "8af9418ccf49d3c396425f9726f87e2c8f64d10e",
+        "sha256": "8e6dc23fea5dddcb5b2bdb9a1bad10ecbf47c2aa8017c897ca8d22d793777352",
+        "counts": null
+      },
+      "patched": {
+        "path": "WORKER_RETURNS/M04I2-R3/evidence/forged_prestate_probe_patched.json",
+        "blob": "8af9418ccf49d3c396425f9726f87e2c8f64d10e",
+        "sha256": "8e6dc23fea5dddcb5b2bdb9a1bad10ecbf47c2aa8017c897ca8d22d793777352",
+        "counts": null
+      },
+      "patched_cold2": {
+        "path": "WORKER_RETURNS/M04I2-R3/evidence/forged_prestate_probe_patched_cold2.json",
+        "blob": "8af9418ccf49d3c396425f9726f87e2c8f64d10e",
+        "sha256": "8e6dc23fea5dddcb5b2bdb9a1bad10ecbf47c2aa8017c897ca8d22d793777352",
+        "counts": null
+      }
+    },
+    "observed": {
+      "direct": {
+        "before_direct": {
+          "state_transitions": 2,
+          "journaled_adp017": 2,
+          "active_stances": 1,
+          "accessibility": "CLAIM_INACCESSIBLE"
+        },
+        "after_direct": {
+          "decision_state": "APPLIED_EPISTEMIC_TRANSITION",
+          "state_transitions": 3,
+          "journaled_adp017": 2,
+          "active_stances": 1,
+          "accessibility": "CLAIM_ACCESSIBLE"
+        },
+        "read": "ACCEPTED",
+        "streams": {
+          "memory": "BUFFER",
+          "epistemic": "REROUTE"
+        },
+        "disposition": "BOUND_CANONICAL_CLAIM_WITH_NATIVE_STATE",
+        "exit": 2
+      },
+      "forged_prestate": {
+        "before_direct": {
+          "state_transitions": 1,
+          "journaled_adp017": 1,
+          "active_stances": 1,
+          "accessibility": "CLAIM_ACCESSIBLE"
+        },
+        "after_direct": {
+          "state_transitions": 2,
+          "journaled_adp017": 1,
+          "active_stances": 1
+        },
+        "read": "ACCEPTED",
+        "streams": {
+          "memory": "BUFFER",
+          "epistemic": "REROUTE"
+        },
+        "disposition": "BOUND_CANONICAL_CLAIM_WITH_NATIVE_STATE",
+        "exit": 2
+      }
+    },
+    "conclusion": "UNJOURNALED_ADP017_TERMINAL_TRANSITION_ACCEPTED__MATERIAL_RESIDUAL_BYPASS"
+  },
+  "three_courts": {
+    "engineering": "REVISE_EXACT_CANDIDATE__ACCEPT_SCOPED_FOR_THREE_JOURNALED_CLASSES_AND_587_51__UNJOURNALED_ROUTE_RED",
+    "scientific": "HOLD",
+    "authority": "HOLD"
+  },
+  "original_owner_canonical_c9_compatibility": {
+    "test_only_m01_m02_m03_harness": "COMPATIBLE__PATCH_INSTALLS_AND_587_51_PASS",
+    "canonical_c9_can3_production": "NOT_ESTABLISHED__NO_ORIGINAL_SOURCE_MODIFIED__SOURCEFREE_OVERLAY_ONLY",
+    "original_can3_nine": "HOLD_WITH_ORIGINAL_ISSUER"
+  },
+  "commands_and_exits": [
+    {
+      "command": "python3 repro/stage_independent.py",
+      "exit": 0
+    },
+    {
+      "command": "python3 repro/install_candidate.py",
+      "exit": 0
+    },
+    {
+      "command": "python3 review/run_fresh.py (original 2434)",
+      "exit": 1,
+      "counts": "41 passed, 10 failed"
+    },
+    {
+      "command": "python3 repro/run.py after original_413 (original)",
+      "exit": 0,
+      "counts": "413 passed"
+    },
+    {
+      "command": "python3 repro/run.py after independent_100 (original)",
+      "exit": 0,
+      "counts": "100 passed"
+    },
+    {
+      "command": "python3 repro/run_author.py (original)",
+      "exit": 0,
+      "counts": "74 passed"
+    },
+    {
+      "command": "python3 repro/run_historical.py (original)",
+      "exit": 0,
+      "counts": "9 failed, expected assertion"
+    },
+    {
+      "command": "python3 review/run_fresh.py (patched 5ba929)",
+      "exit": 0,
+      "counts": "51 passed"
+    },
+    {
+      "command": "python3 repro/run.py after original_413 (patched)",
+      "exit": 0,
+      "counts": "413 passed"
+    },
+    {
+      "command": "python3 repro/run.py after independent_100 (patched)",
+      "exit": 0,
+      "counts": "100 passed"
+    },
+    {
+      "command": "python3 repro/run_author.py (patched)",
+      "exit": 0,
+      "counts": "74 passed"
+    },
+    {
+      "command": "python3 repro/run_historical.py (patched)",
+      "exit": 0,
+      "counts": "9 failed, expected assertion"
+    },
+    {
+      "command": "python3 candidate/m04i2_unjournaled_probe.py --variant direct (original and patched)",
+      "exit": 2,
+      "counts": "read ACCEPTED, REROUTE"
+    },
+    {
+      "command": "python3 candidate/m04i2_unjournaled_probe.py --variant forged (original and patched)",
+      "exit": 2,
+      "counts": "read ACCEPTED, REROUTE"
+    }
+  ],
+  "NOT_RUN": [
+    "original native CAN3/ADP016/ADP017/SCI05/Pyat actor, survey or production execution",
+    "fresh original CAN3 test execution (historical nine are retained-JUnit replay)",
+    "canonical C9/CAN3 production compatibility, merge, adoption or owner CAS",
+    "QF2 start, PR/PRE-MAIN mutation, protected fan-in",
+    "provider-side MAX effort attestation"
+  ],
+  "no_self_adoption": true,
+  "push_readback": "reported in final HQ message after push and git ls-remote; not embedded to avoid self-reference"
+}
