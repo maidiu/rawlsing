@@ -1,0 +1,112 @@
+{
+  "schema": "SOROK_G17_HOSTILE_MATERIAL_CUSTODY_REPAIR@1",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/sorok-g17-forged-material-future-child-c9-source-repair-r1",
+  "sealed_startup": "342164a09e10aa70812299c12386ed0923308228",
+  "branch_head_at_launch": "a9291cf6cd5a5d777c84bf5d20de914fa369402a",
+  "premain_pin": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "f3_cut": "6477a89bb9160eba1dd10607c47534fa4dce6cc2",
+  "original_author_cut": "90d0eb7925de54635559a879ee76fc1b97b9ff61",
+  "original_reviewer_cut": "156b84cc8481b65c4196b42574010eb7920d6f44",
+  "original_reviewer_test": {
+    "path": "WORKER_RETURNS/SOROK-20261019-G17I-MATERIAL-HISTORY-INDEPENDENT-R1/tests/test_g17i_independent.py",
+    "git_blob": "83f17006b22271f17c87f4563608de08395d7a1c",
+    "original_junit": "WORKER_RETURNS/SOROK-20261019-G17I-MATERIAL-HISTORY-INDEPENDENT-R1/evidence/g17i_independent.xml",
+    "original_junit_blob": "0dec3fafc23d9c19d1575ae960472ffdb5f82060",
+    "original_result": "11 PASS / 3 RED / 0 ERROR / 0 SKIP"
+  },
+  "original_files": [
+    {
+      "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/continuation.py",
+      "git_blob": "c9318dcf33d041a673cfae15aff8fc51712f53e7",
+      "defect": "caller material_event payment is accepted after only material_event_ref/after-state checks; owner/source preimage is not authenticated"
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/pipeline.py",
+      "git_blob": "fc954993ef966d20d1915546e04a122daa93538f",
+      "defect": "FutureChildPartitionGuard scans only top-level packet keys; nested metadata aliases bypass the embargo"
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/c9_handoff_consumer.py",
+      "git_blob": "47e59c12b79c04b05c18e73ad76078a29d0d7b3c",
+      "defect": "receive_handoff checks causal parent/ref and after-state but does not authenticate the material source preimage or its payload"
+    }
+  ],
+  "candidate_files": [
+    {
+      "overlay_path": "WORKER_RETURNS/SOROK-G17-HOSTILE-MATERIAL-CUSTODY-REPAIR-R1/candidate/lab_sgi1/continuation.py",
+      "applies_to": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/continuation.py",
+      "candidate_git_blob": "705ef1a4568ec84020638b3cf32d348066945e86",
+      "candidate_sha256": "80823bde776f09a2ae7bf02dd7458982625a318fb9248228a5df2401e88d9426",
+      "patch": "Requires material_event == canonical material_joint_opportunity(effective_index, permit, material_units); verifies participation event_id preimage and material causal-parent membership before recomputing the after-state."
+    },
+    {
+      "overlay_path": "WORKER_RETURNS/SOROK-G17-HOSTILE-MATERIAL-CUSTODY-REPAIR-R1/candidate/lab_sgi1/pipeline.py",
+      "applies_to": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/pipeline.py",
+      "candidate_git_blob": "d07bb06c7a44cd337a43c387f55a17906c5307e3",
+      "candidate_sha256": "b5d19758da9b8115642e832efff17343cebfab1987fb37cf5afbfc59b362376c",
+      "patch": "FutureChildPartitionGuard recursively traverses dict/list/string fields; joint material/context packets are passed whole, so nested embargo names are refused before proposal/selection/commit."
+    },
+    {
+      "overlay_path": "WORKER_RETURNS/SOROK-G17-HOSTILE-MATERIAL-CUSTODY-REPAIR-R1/candidate/c9_handoff_consumer.py",
+      "applies_to": "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/c9_handoff_consumer.py",
+      "candidate_git_blob": "bd7a179e846e4067e324360fc3411806b2a537d4",
+      "candidate_sha256": "2c0430340512b7c2447c73de019227481f43f7156ba3d1b19d1fd8e16f7f4c6d",
+      "patch": "receive_handoff authenticates the material event against the owner canonical material event and requires handoff material_payload to match before accepting the after-state."
+    }
+  ],
+  "changed_paths": [
+    "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/continuation.py",
+    "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/candidate/lab_sgi1/pipeline.py",
+    "WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/c9_handoff_consumer.py"
+  ],
+  "original_reds": [
+    {
+      "test": "test_forged_material_event_supplying_cash_must_be_refused",
+      "before": "FAIL: continue_person returned PARENT_CONTINUATION with cash 100058; forged material event sha256:bbfb9d35d90851fa5e6b168b27baf612cc158ce54d7e9f2227fc42568ae862d6; owner/permission accepted",
+      "after": "PASS: continue_person returns None; material source rejected as non-canonical",
+      "assertion_unchanged": true
+    },
+    {
+      "test": "test_future_child_nested_alias_must_be_refused",
+      "before": "FAIL: terminal status COMMITTED with nested metadata.future_child_personality=NESTED_ALIAS",
+      "after": "PASS: terminal status FUTURE_CHILD_INFORMATION_LEAK; leak component joint_material_opportunity, field future_child_personality",
+      "assertion_unchanged": true
+    },
+    {
+      "test": "test_c9_forged_material_event_must_be_refused",
+      "before": "FAIL: no C9Refusal; receipt ACCEPTED with cash 100055; handoff sha256:ed58fb443bc5409ee3dbd2bbd4fd1e96432fcadecc6631f94f7b11c8c924b33c",
+      "after": "PASS: C9Refusal MATERIAL_SOURCE_NOT_AUTHENTIC",
+      "assertion_unchanged": true
+    }
+  ],
+  "test_results": {
+    "original_reviewer_baseline": {"tests": 14, "passed": 11, "failed": 3, "errors": 0, "skipped": 0},
+    "patched_reviewer": {"tests": 14, "passed": 14, "failed": 0, "errors": 0, "skipped": 0},
+    "patched_reviewer_cold_process": {"tests": 14, "passed": 14, "failed": 0, "errors": 0, "skipped": 0},
+    "patched_author_positive": {"tests": 13, "passed": 13, "failed": 0, "errors": 0, "skipped": 0},
+    "patched_author_cold_process": {"tests": 13, "passed": 13, "failed": 0, "errors": 0, "skipped": 0}
+  },
+  "preserved_holds": [
+    "No native Rule A or Rule T issuance.",
+    "M2 archive grammar and MP known-counterpart history remain typed coverage HOLDs.",
+    "C9 full E1/RULE_A/RULE_T/E2 remains HOLD_UNISSUED; only the bounded material handoff is exercised.",
+    "No original survey/source, native person/child, C11 weld, V3 or production adoption.",
+    "No PRE-MAIN, PR514/516/519 or original G17 source branch was modified."
+  ],
+  "first_consumers": {
+    "material_continuation": "lab_sgi1.continuation.continue_person via forward_continuation",
+    "future_child_guard": "lab_sgi1.pipeline.run_pipeline FutureChildPartitionGuard before proposal/selection/commit",
+    "c9_material_handoff": "c9_handoff_consumer.receive_handoff"
+  },
+  "not_run": [
+    "Full C9 E1/RULE_A/RULE_T/E2 and durable C9 reopen.",
+    "Native Rule A/T, M2 archive replay, MP F_EXISTING history, C11/C12 weld and person/child creation.",
+    "Original survey/source corpus execution and production adoption."
+  ],
+  "grades": {
+    "engineering": "SOURCEFREE_ACCEPT_SCOPED__ORIGINAL_11PASS_3RED_REPRODUCED__PATCHED_14PASS_AND_AUTHOR_13PASS",
+    "scientific": "TEST_ONLY_MATERIAL_METHOD__NATIVE_AND_PERSON_HELD",
+    "authority": "HOLD_NO_MERGE_OR_ADOPTION__ORIGINAL_OWNER_AND_SEPARATE_REVIEWER_REQUIRED"
+  }
+}
