@@ -1,0 +1,232 @@
+{
+  "schema": "SOROK_HR1_F3I_THREE_ORIGINAL_REVIEWER_COUNTERCOURTS@1",
+  "reviewed_f3_sha": "6477a89bb9160eba1dd10607c47534fa4dce6cc2",
+  "source_method": "direct immutable GitHub reviewer+author files, original tests/JUnit readback, no execution",
+  "author_commit_identity_grade": "ALL_3_CORROBORATED_BY_SOURCE_BLOBS__PRIMARY_REVIEWER_PROSE_DOES_NOT_BIND_AUTHOR_COMMIT",
+  "current_court_tests_run": 0,
+  "three_courts": [
+    {
+      "id": "G17I",
+      "reviewer_commit": "156b84cc8481b65c4196b42574010eb7920d6f44",
+      "reviewer_document_blob": "01f2db8920b441ba1456fc269537072e0b5a19d7",
+      "author_commit": "90d0eb7925de54635559a879ee76fc1b97b9ff61",
+      "author_source_blobs": {
+        "candidate/lab_sgi1/continuation.py": "c9318dcf33d041a673cfae15aff8fc51712f53e7",
+        "candidate/lab_sgi1/pipeline.py": "fc954993ef966d20d1915546e04a122daa93538f",
+        "c9_handoff_consumer.py": "47e59c12b79c04b05c18e73ad76078a29d0d7b3c"
+      },
+      "reviewer_test_blob": "83f17006b22271f17c87f4563608de08395d7a1c",
+      "original_junit_blob": "0dec3fafc23d9c19d1575ae960472ffdb5f82060",
+      "junit": {
+        "cases": 14,
+        "passed": 11,
+        "failed": 3,
+        "errors": 0,
+        "skipped": 0
+      },
+      "negative_cases": [
+        {
+          "test": "test_forged_material_event_supplying_cash_must_be_refused",
+          "source_function": "lab_sgi1.continuation.continue_person",
+          "expected": "fake owner/permission refused",
+          "observed": "accepted fake material, cash 100058"
+        },
+        {
+          "test": "test_future_child_nested_alias_must_be_refused",
+          "source_function": "lab_sgi1.pipeline.run_pipeline",
+          "expected": "nested future child denied",
+          "observed": "terminal COMMITTED"
+        },
+        {
+          "test": "test_c9_forged_material_event_must_be_refused",
+          "source_function": "c9_handoff_consumer.receive_handoff",
+          "expected": "C9Refusal",
+          "observed": "status ACCEPTED, cash 100055"
+        }
+      ],
+      "historical_preservation": "G13 73 historical REDs, G16I M2/MP HOLD, G17 13 narrow author positives; none overridden",
+      "first_actual_consumer": "continue_person and receive_handoff sourcefree called by original reviewer tests; no real native A5 consumer",
+      "finding": "Exact reviewed author and reviewer-copy source coincide; three original negative JUnit failures witnessed",
+      "interpretation": "Missing original material-owner binding and recursive partition",
+      "action": "Original G17/C9 engineer repairs three REDs without weakening other tests",
+      "owner": "G17, C9/C9P, original actor ADP owner, separate reviewer",
+      "grade": "ENGINEERING_RED; NATIVE_SCIENCE_HOLD; AUTHORITY_HOLD"
+    },
+    {
+      "id": "OC5E",
+      "reviewer_commit": "67a4f1561cdad40192f00797d66b24fc4cd91589",
+      "reviewer_document_blob": "9897d7bbbfaf8f6b0e05ab9d93c3eb9eff3b01ed",
+      "author_commit": "0caaec590f6a8bf6744f22dc9c948c5fe233bc94",
+      "author_source_blobs": {
+        "repro/custody_protocol.py": "af2b7e943018077cb36808b5af1cd67704624bec",
+        "repro/test_oc4_repair_controls.py": "c139a877aa4586ec5ab729d333c40037840721d4"
+      },
+      "reviewer_test_blob": "9837579ebb5b2fbf3a41c967e584a166786e46b9",
+      "original_junit_blob": "33efbc315cc424c377441b0f1f79ee31a5a185bc",
+      "junit": {
+        "cases": 159,
+        "passed": 110,
+        "failed": 49,
+        "errors": 0,
+        "skipped": 0
+      },
+      "original_full_court_attributed": {
+        "cases": 349,
+        "passed": 283,
+        "failed": 66
+      },
+      "negative_families": [
+        {
+          "id": "A1",
+          "cases": 10,
+          "source_function": "detect_leakage",
+          "failure": "normalization-equivalent allowed field alias accepted"
+        },
+        {
+          "id": "A2",
+          "cases": 6,
+          "source_function": "detect_leakage",
+          "failure": "confusable leak token admitted"
+        },
+        {
+          "id": "A3",
+          "cases": 18,
+          "source_function": "require_second_signature",
+          "failure": "malformed primary/second signature AttributeError rather than typed SignatureError"
+        },
+        {
+          "id": "A4",
+          "cases": 1,
+          "source_function": "require_second_signature",
+          "failure": "invalid enum role AttributeError"
+        },
+        {
+          "id": "A5",
+          "cases": 3,
+          "source_function": "EscrowState.unblind",
+          "failure": "unhashable holder TypeError"
+        },
+        {
+          "id": "A6",
+          "cases": 11,
+          "source_function": "EscrowState.commit/capsule_envelope_commitment",
+          "failure": "invalid capsule field types accepted or untyped error"
+        }
+      ],
+      "historical_preservation": "10 original historical REDs include preexisting obsolete mock/content-only expectations and early refusals; seven OC5 predictions confirmed native; keep stricter full-envelope law, don't reclassify these as new defects",
+      "first_actual_consumer": "reviewer pytest invokes sourcefree custody_protocol functions; no independent real signer/institution or C07",
+      "finding": "49 new native-pytest recorded failures, 110 controls, 10 historical distinct",
+      "interpretation": "Six actual bounded mock-custody entrypoint failures",
+      "action": "Original OC4/OC5 author repairs A1–A6 preserving 10 historical tests and mock envelope",
+      "owner": "OC4/OC5 source owner and separate qualified reviewer",
+      "grade": "ENGINEERING_REVISE; SCIENCE_HOLD; AUTHORITY_HOLD"
+    },
+    {
+      "id": "M04",
+      "reviewer_commit": "3a993abcc0a9f6bd3a1bb003d298d293be199ea6",
+      "reviewer_document_blob": "5840b2f3f551903d61ce00654b8b964c0ea3a545",
+      "author_commit": "e1f7a74e51201b9614bcc578348b4e9db7be7bd3",
+      "author_source_blobs": {
+        "candidate/cell.py": "3eb2d02aee8dc840e7cac1f99230d7c69adc2f58",
+        "candidate/claim_provenance.py": "2434bda6f4b00e6ea5881291f5422227e8045e74"
+      },
+      "reviewer_test_blob": "8add06c66b347e324443c1263771755f6898c7e2",
+      "original_junit_blob": "2f54f3e3bc1a750fe87d9e697e324ffe019ae59e",
+      "junit": {
+        "cases": 51,
+        "passed": 41,
+        "failed": 10,
+        "errors": 0,
+        "skipped": 0
+      },
+      "published_attributed": {
+        "cases": 587,
+        "passed": 587,
+        "failed": 0
+      },
+      "historical_9": {
+        "cases": 9,
+        "failed": 9,
+        "blob": "f4278b008cb6d29a65ebd6ac13c856eab9332f06"
+      },
+      "negative_families": [
+        {
+          "id": "CROSS_CELL_NONE",
+          "cases": 4,
+          "parameter": [
+            "NONE",
+            "CERTAIN",
+            "UNCERTAIN",
+            "UNAVAILABLE"
+          ],
+          "test": "test_cross_cell_none_owner_cannot_erase_first_committed_belief",
+          "failure": "committed BELIEF bypassed with donor NONE and unearned AMPLIFY"
+        },
+        {
+          "id": "ROLLBACK",
+          "cases": 4,
+          "parameter": [
+            "False-SUPERSEDE_EXACT_RECORD",
+            "False-WITHDRAW",
+            "True-SUPERSEDE_EXACT_RECORD",
+            "True-WITHDRAW"
+          ],
+          "test": "test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback",
+          "failure": "old stance and permission resurrected"
+        },
+        {
+          "id": "ANCESTRY",
+          "cases": 2,
+          "parameter": [
+            "False",
+            "True"
+          ],
+          "test": "test_fully_rehashed_transition_requires_actual_prestate_ancestry",
+          "failure": "self-consistent rehash bypasses original pre-state"
+        }
+      ],
+      "separate_historical_nine_names": [
+        "test_C_target_owner_effect_is_request_not_seizure",
+        "test_D_K3_hidden_origin_content_not_first_person_readable",
+        "test_D_K3_causal_trace_not_recallable",
+        "test_D_K3_sole_memory_basis_failclosed",
+        "test_F_H6_duplicate_event",
+        "test_F_H8_invalid_trace",
+        "test_H_delete_memory_forbidden",
+        "test_H_rehydration_forbidden",
+        "test_target_owner_validation_precedes_committed_effect"
+      ],
+      "first_actual_consumer": "candidate/cell.py read_owner/later uses claim_provenance.validate_consumption after FIRST_EVENT_COMPLETE journal",
+      "finding": "10 literal negative JUnit cases plus separate nine CAN3 historical REDs",
+      "interpretation": "real owner-state ancestry/terminal transition not established by hash equality",
+      "action": "Original M03 owner fixes genuine NONE, current lineage and last applicable transition; replay 51+587+9",
+      "owner": "M03/M04, CAN008/ADP016/017 original source owners, separate reviewer",
+      "grade": "ENGINEERING_REVISE; SCIENCE_HOLD; AUTHORITY_HOLD"
+    }
+  ],
+  "reviewer_execution_counts": {
+    "G17I": "14=11+3",
+    "OC5E": "159=110+49",
+    "M04": "51=41+10",
+    "historical_M04_9": "SEPARATE",
+    "native_model": "NOT_RUN"
+  },
+  "reproduction": {
+    "M04": "/usr/local/bin/python3 -m pytest [RETURN]/review/test_falsifiers.py -vv --tb=short --import-mode=importlib -p no:cacheprovider --rootdir=[RETURN] --confcutdir=[RETURN] --basetemp=[RETURN]/runtime/tmp/m04 --junitxml=[RETURN]/evidence/fresh/junit.xml",
+    "OC5E": "Original reviewer repro/run_court.py staged exact source and called python -m pytest -q <files> --tb=line",
+    "G17I": "Original retained tests/test_g17i_independent.py and JUnit; exact reviewer command not independently established",
+    "F3I": "NOT_RUN"
+  },
+  "handoff": {
+    "FINDING": "Three original RED test courts traced to exact source and reviewer JUnit",
+    "INTERPRETATION": "Executed TEST_ONLY component review not native human science",
+    "ACTION": "Repair original source under author and re-review exact same negatives, no waiver",
+    "OWNER": "G17/C9, OC4/OC5, M03/M04, independent reviewers and incumbent HQ",
+    "DONE": "3/3 reviewer author-source test/JUnit relations source-checked",
+    "REMAINING": "actual original repairs and independent S2 reruns",
+    "CRITICAL_BLOCKERS": "3+49+10 original fresh failures and nine separate historical CAN3, original authority held",
+    "LARGEST_PRODUCTIVE_MOVE": "Bounded original-owner same-assertion repairs",
+    "FLIGHT": "F3I independent return, other original branches untouched",
+    "DELTA": "Reviewer custody positively corroborated; no new pytest claimed"
+  }
+}
