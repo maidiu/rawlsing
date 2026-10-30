@@ -1,0 +1,19 @@
+LAUNCH — QF2 — QF2 conditional review-qualified Sorok receiving and PRE-MAIN fan-in
+REPOSITORY: maidiu/rawlsing (PRIVATE)
+ROLE: Authorized PRE-MAIN/Sorok original-owner-delegate only after explicit permission; not prior author, new science issuer or own reviewer
+USER_SELECTED_EDITOR_MODEL_PAIR: Local Codex / GPT-6 High recommended; user explicitly selects real editor/model/machine.
+SINGLE_AGENT_FULL_DELIVERABLE=YES; NO_AUTONOMOUS_MODEL_OR_HARNESS_SWITCH=YES; POST_RETURN_INDEPENDENT_REVIEW_OWNER=incumbent HQ + separate reviewer.
+INTELLIGENCE=I3 HIGH; EXECUTION=S2 local Git and verified protected owner CAS; HQ_ENVIRONMENT_VERDICT=LOCAL_DOMINANT; BROWSER_SUFFICIENCY=SCOPED_ONLY; SETUP_COST=MATERIAL; PRIMARY_MODEL_ECONOMICS=UNKNOWN.
+ROUTE Browser→DeepSeek V4.1-Flash MAX→Codex High if necessary→user-selected Middle, never silent switching. PHASE_MODEL_ASSIGNMENT=I0 exact custody then I3 HIGH whole assignment, independent later review. ACTIVE_WORKER_NO_DISTURBANCE=YES; REVIEW_INDEPENDENCE_AND_ESCALATION=separate author/reviewer and original source owners.
+BRANCH: integration/sorok-r3-qf2-conditional-qualified-fanin-20261030
+EXACT SEALED STARTUP: 187fdd11963163dab03c7b061e20067ea1f99134
+TARGET ORIGINAL RETURN: 68e49f92d5b9f0859d08847ee108684ddfd193ca
+READ ENTIRE COMMISSION: WORKER_COMMISSIONS/QF2-R3/00_COMMISSION.md
+SESSION_CUSTODY REQUIRED: device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING QF2 | QF2 conditional review-qualified | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
+MUST_READ_NOW: QF1 immutable STOP 68e49f92d5b9f0859d08847ee108684ddfd193ca exact reported gates; Independent new reviews of G17/M04/BP4/F1C/H358/F0R3 and original OC5/Pyat owner decisions at exact returned SHAs WHEN AVAILABLE; Current protected PRE-MAIN, PR519/521 independently accepted and admin required-check plus current Sorok/Pyat progress owner CAS, F4 proper activation
+READ_IF_TRIGGERED: original source/owner and versioned first consumer, verified live Mac worktree/lease.
+BACKGROUND_LINK_ONLY: old census.
+WORK: 1) First verify actual authorization/review/recipient and original source issuer rights; if absent STOP without running any source integration or modifying canonical branches 2) For qualifying code only, choose compatible source→writer→reader→actually performed consumer and preserve separate project-native science HOLDs, no branch-level blanket acceptance 3) Verify new engine source against present PRE-MAIN/PR514/516 aliases, existing landed/drifted and original negative same-assertion tests; prepare owner-authorized receiving PR not merge without protected CAS 4) Return bounded exact merge-ready or NOT_MERGED decision and actual next source-person A0–A5 obligations, no infinite preflight theater
+ACCEPTANCE: exact source/tests/reviewer/negative and separate ENGINEERING SCIENTIFIC AUTHORITY grades; original source scientific grant and canonical CAS held until authorized. Do not merge, original-source run, or self-review.
+STOP/HOLD: SEALED_DO_NOT_LAUNCH_UNTIL_ALL_RELEVANT_REVIEWS_AND_OWNER_GRANTS, absent source/host/owner or QF2 preconditions => explicit named STOP and return, no production write.
+RETURN: WORKER_RETURNS/QF2-R3/00_CONDITIONAL_OWNER_GATE_RESULT.md; WORKER_RETURNS/QF2-R3/01_REVIEW_QUALIFIED_SOURCE_SELECTION.json; WORKER_RETURNS/QF2-R3/02_REAL_RECEIVING_CONSUMER_AND_ORIGINAL_NEGATIVES.md; WORKER_RETURNS/QF2-R3/03_PREMAIN_PROTECTED_CAS_OR_NOT_MERGED.md; WORKER_RETURNS/QF2-R3/04_SESSION_AND_OWNER_HANDOFF.md; SESSION_LOCATOR.json; FINDING/INTERPRETATION/ACTION/OWNER; DONE/REMAINING/BLOCKERS/LARGEST_MOVE/FLIGHT/DELTA; original source SHA/tests RUN & NOT_RUN; exact pushed remote SHA and readback.
