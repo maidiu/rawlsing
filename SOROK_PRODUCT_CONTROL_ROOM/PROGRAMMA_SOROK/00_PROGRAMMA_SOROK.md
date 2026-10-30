@@ -3,7 +3,7 @@
 
 **Full name:** **Programma Sorok — Objective World → Historical Development → Continuing Person**.
 **Parent constitution:** `../../CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md`. **Twin:** `../../PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md`.
-**Status:** user-named scoped orchestration articulation staged for rightful Sorok HQ integration. Not a new Sorok leader, Native CAN008/011/ADP/SCI05 issuer, Pyat source gate, production/actor activation, worker launch, C11 weld or merge right.
+**Status:** User-approved Programma Sorok scope/naming, canonically referenced when this document is merged into PRE-MAIN. Not a new Sorok leader, Native CAN008/011/ADP/SCI05 issuer, Pyat source gate, production/actor activation, worker launch, C11 weld or merge right.
 
 ### Terminal demand: a person who actually develops, not a tested simulation of tests
 Build the source/governance-appropriate **C0–C12 developmental machine** and actual A0–A5 continuing-person, interaction, reentry, independent life, generalization and alpha product. The person is bodily and socially formed in activities and relationships: needs, care, dependency, love, attachment, labor, power, struggle, harm, contradictory orientation, motive and learned practice, independent others, ordinary continuity, events and memory, culture and time. Original structural world is condition, not a personality label; V3's developmental state, actor-access truth and V2 expression remain separately governed. One actor voice or script cannot issue itself a lived event, cause or private memory.
