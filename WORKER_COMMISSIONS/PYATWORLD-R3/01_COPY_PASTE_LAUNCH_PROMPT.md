@@ -1,0 +1,19 @@
+LAUNCH — PYATWORLD — Pyat/Sorok original-owner selected world HQ284-HQ292/R95 source-to-receiver court
+REPOSITORY: maidiu/rawlsing (PRIVATE)
+ROLE: Independent I3 inter-HQ source architecture reconciler; not Pyat HQ original owner, source-native issuer, production adapter or own reviewer
+USER_SELECTED_EDITOR_MODEL_PAIR: Browser / GPT-6 High recommended; user explicitly selects real editor/model/machine.
+SINGLE_AGENT_FULL_DELIVERABLE=YES; NO_AUTONOMOUS_MODEL_OR_HARNESS_SWITCH=YES; POST_RETURN_INDEPENDENT_REVIEW_OWNER=incumbent HQ + separate reviewer.
+INTELLIGENCE=I3 HIGH; EXECUTION=S0–S1 source code and original Pyat HQ source law; HQ_ENVIRONMENT_VERDICT=BROWSER_NATIVE; BROWSER_SUFFICIENCY=FULL documentary only; SETUP_COST=LIGHT; PRIMARY_MODEL_ECONOMICS=UNKNOWN.
+ROUTE Browser→DeepSeek V4.1-Flash MAX→Codex High if necessary→user-selected Middle, never silent switching. PHASE_MODEL_ASSIGNMENT=I0 exact custody then I3 HIGH whole assignment, independent later review. ACTIVE_WORKER_NO_DISTURBANCE=YES; REVIEW_INDEPENDENCE_AND_ESCALATION=separate author/reviewer and original source owners.
+BRANCH: research/pyat-sorok-r3-hq284-hq292-r95-owner-receiver-decision-20261030
+EXACT SEALED STARTUP: 187fdd11963163dab03c7b061e20067ea1f99134
+TARGET ORIGINAL RETURN: ea40306bacb899147799330898e9ab91a950205f
+READ ENTIRE COMMISSION: WORKER_COMMISSIONS/PYATWORLD-R3/00_COMMISSION.md
+SESSION_CUSTODY REQUIRED: device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING PYATWORLD | Pyat/Sorok original-owner select | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
+MUST_READ_NOW: H358 ea40306bacb899147799330898e9ab91a950205f 18 family map and HQ292 7-pass case; F3I 97dbe712e4cce8fedd1632d9ac64b4e57a0ac25e HQ292 runtime blob 7899846394f079c14eae4864c8200697bd9dee4a; HQ284 selected-world runtime/source and R95/R107 world binding; Pyat original HQ289/292/B5/P41 and Sorok C8/C9/F1C production-owner boundary
+READ_IF_TRIGGERED: original source/owner and versioned first consumer, verified live Mac worktree/lease.
+BACKGROUND_LINK_ONLY: old census.
+WORK: 1) Trace exact HQ284 progressive selected-world→HQ287/HQ292 saved selection restore consumer including I01 identity mismatch source and tests; identify what actually runs 2) Compare R95/R107 seven source variants and required original P41/R05/R06 world rights, W11 objective topology and H358 B5 source denies; no substitute for native B 3) Specify minimal qualified first downstream non-test person/world consumer and exact original Pyat ownership/authority and adapted source test; hold absent issuer rather than create fake one 4) Return specific next Pyat owner engineering commission or source decision with exact code blobs/negative and consumer, no broad Pyat recensus
+ACCEPTANCE: exact source/tests/reviewer/negative and separate ENGINEERING SCIENTIFIC AUTHORITY grades; original source scientific grant and canonical CAS held until authorized. Do not merge, original-source run, or self-review.
+STOP/HOLD: READY_DOCUMENTARY__ORIGINAL_PYAT_OWNER_ADOPTION_HELD, absent source/host/owner or QF2 preconditions => explicit named STOP and return, no production write.
+RETURN: WORKER_RETURNS/PYATWORLD-R3/00_PYAT_WORLD_SOURCE_DECISION.md; WORKER_RETURNS/PYATWORLD-R3/01_HQ284_HQ292_R95_SOURCE_CONSUMER_GRAPH.json; WORKER_RETURNS/PYATWORLD-R3/02_OWNER_NATIVE_SOURCE_AND_NEXT_ADAPTER_GATES.md; WORKER_RETURNS/PYATWORLD-R3/03_SESSION_FANIN_AND_REVIEW_HANDOFF.md; SESSION_LOCATOR.json; FINDING/INTERPRETATION/ACTION/OWNER; DONE/REMAINING/BLOCKERS/LARGEST_MOVE/FLIGHT/DELTA; original source SHA/tests RUN & NOT_RUN; exact pushed remote SHA and readback.
