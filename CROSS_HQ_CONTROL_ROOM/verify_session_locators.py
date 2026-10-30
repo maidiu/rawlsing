@@ -6,7 +6,7 @@ SHA=re.compile(r"^[a-f0-9]{40}$")
 DEV={"oldMac","mainMac","BROWSER","OTHER_VERIFIED","UNKNOWN"}
 HAR={"Codex","OpenCode","DeepSeek-Harness","Browser","OTHER_VERIFIED","UNKNOWN"}
 STATUS={"SEALED_NOT_LAUNCHED","ACTIVE_VERIFIED","RETURNED","HOLD"}
-REQUIRED=("registry_id","revision","commission_id","branch","status","device","device_evidence","harness","model_id",
+REQUIRED=("registry_id","revision","commission_id","branch","status","device","device_evidence","harness","agent_name","agent_id","agent_role","model_id",
 "reasoning_effort_requested","reasoning_effort_verified","session_name","session_locator_type",
 "return_sha","return_directory","confirmed_by","machine_claim","locator_status")
 def check(obj):
@@ -20,6 +20,8 @@ def check(obj):
   if r.get("device") not in DEV:errors.append(pre+"DEVICE")
   if r.get("harness") not in HAR:errors.append(pre+"HARNESS")
   if r.get("status") not in STATUS:errors.append(pre+"STATUS")
+  if not isinstance(r.get("agent_name"),str) or not r["agent_name"].strip():errors.append(pre+"AGENT_NAME")
+  if not isinstance(r.get("agent_role"),str) or not r["agent_role"].strip():errors.append(pre+"AGENT_ROLE")
   if not isinstance(r.get("revision"),int) or r["revision"]<1:errors.append(pre+"REVISION")
   if r.get("return_sha") is not None and not SHA.fullmatch(str(r["return_sha"])):errors.append(pre+"RETURN_SHA")
   name=r.get("session_name"); proposed=r.get("suggested_session_name")
@@ -48,11 +50,12 @@ def main():
    ("MODEL_CONFUSED_WITH_HARNESS",lambda x:x["records"][1].update(harness="DeepSeek-Harness")),
    ("DUPLICATE_REVISION",lambda x:x["records"].append(copy.deepcopy(x["records"][0]))),
    ("RETURN_SHA",lambda x:x["records"][0].update(return_sha="fake")),
-   ("UNVERIFIED_PROPOSED_TITLE_AS_OBSERVED",lambda x:x["records"][0].update(session_name="same",suggested_session_name="same",confirmed_by="UNVERIFIED"))
+   ("UNVERIFIED_PROPOSED_TITLE_AS_OBSERVED",lambda x:x["records"][0].update(session_name="same",suggested_session_name="same",confirmed_by="UNVERIFIED")),
+   ("AGENT_NAME",lambda x:x["records"][0].update(agent_name=""))
   ]
   for required,mutator in trials:
    other=copy.deepcopy(obj);mutator(other);found=check(other)
    assert any(required in z for z in found),(required,found)
-  print("PASS 5 adversarial locator integrity witnesses")
+  print("PASS 6 adversarial locator integrity witnesses")
  return 0
 if __name__=="__main__":raise SystemExit(main())
