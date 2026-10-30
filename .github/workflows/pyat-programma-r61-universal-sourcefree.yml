@@ -1,0 +1,36 @@
+name: Pyat Programma R61 finite sourcefree workload
+on:
+  push:
+    branches: [agent/pyat-programma-hq-r61-universal-workload-integration-r1]
+  pull_request:
+    paths:
+      - 'rawlsing_next/pre553_universal_workload.py'
+      - 'rawlsing_next/pre553_issued_workload.py'
+      - 'rawlsing_next/pre553_native_workload_binding.py'
+      - 'rawlsing_next/pre553_source_native_preimage_adapter.py'
+      - 'rawlsing_next/universal_grammar/**'
+      - 'rawlsing_next/tests/test_universal_*.py'
+      - '.github/workflows/pyat-programma-r61-universal-sourcefree.yml'
+permissions:
+  contents: read
+jobs:
+  universal-sourcefree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pytest
+      - name: Recovered R61 automatic frontier/issuer/native binding and fault tests
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest rawlsing_next/tests/test_universal_grammar.py rawlsing_next/tests/test_universal_workload.py rawlsing_next/tests/test_universal_source_projection.py rawlsing_next/tests/test_universal_source_byte_custody.py -q -o addopts='' --junitxml=pyat-r61-sourcefree-junit.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-r61-sourcefree-tests
+          path: pyat-r61-sourcefree-junit.xml
+          if-no-files-found: ignore
