@@ -1,5 +1,13 @@
 # NEW PYAT HQ: INVALID UNTIL FULL PERSONA-FIRST + INHERITED-METHOD ACCESSION
 
+## PROGRAMMA PYAT — whole source-to-PRE-V3 mandate (user-named 2026-10-30)
+
+**Start with [Programma Pyat](PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md) and its [shared Programma Rawlsing constitution](../CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md).** This names the **entire** Pyat project, not an isolated recovery audit or new phase: **R** recover every valuable historical/scientific/implementation branch and original function; **O** maintain a zoomable whole empirical/world architecture and execution map using the existing 35-wave, 1,890-cell, 101-class, F1–F8/N0–N13 and actual function/review/authority ledgers; **I** implement and integrate maximal coherent source-native/learned/structural/temporal/selected-world/N11–N12 completion campaigns, feeding real results back into R/O.
+
+The current [845-branch Pyat recovery inventory](https://github.com/maidiu/rawlsing/pull/515) is *head-name coverage, not functional source integration*. Neither recent SRC04/GT2 test loops nor the accession process can substitute for the whole Programma. [Programma Sorok](../SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md) is the separate actor/person counterpart, not another Pyat owner. Original scientific/source permits, current HQ appointments, Codex execution, independent reviewer rulings and PRE-MAIN CAS still govern. A staged pointer alone issues no new authority.
+
+
+
 **CURRENT R2 CODEX HQ INFRA / ACCESSION ROUTE (2026-10-22; planning not authority):** Read [R2 cross-HQ successor program](../CROSS_HQ_CONTROL_ROOM/CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_R2_SUCCESSION_RESUME_GRANT_ENFORCEMENT_AMENDMENT_20261022.md) before the R1 transport program. Current mainMac Codex R57 director is a proposed **full Pyat HQ accession candidate**, not yet appointed; independent 00/13/full proof and human appointment required, R58 C1 first local sourcefree composition qualified. P0.5 actual thread resume, typed grant enforcement and sourcefree infrastructure may be prepared without auto-dispatch or expanding R56.
 
 
