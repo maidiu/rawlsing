@@ -13,14 +13,22 @@ from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum
 import hashlib
+try:
+    import fcntl
+except ImportError:
+    fcntl = None
 import json
 import math
+import os
 from pathlib import Path
+import stat
+import tempfile
 from typing import Any, Iterator, Mapping
 
 
 COMPATIBILITY_ONLY = "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
 PHYSICAL_METADATA_CONTRACT = "PRE553_PHYSICAL_METADATA@1.0.0"
+SOURCE_CUSTODY_CONTRACT = "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0"
 DECODER_IMPLEMENTATION_ID = "rawlsing_next/pre553_physical_decoder.py"
 COMPATIBILITY_ALLOWLIST: Mapping[str, str] = {
     "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a": "latin1",
@@ -78,6 +86,37 @@ class PhysicalSourceIncidence:
     _source_path: str | None = None
     _reader_kind: str | None = None
     _encoding: str | None = None
+    _source_snapshot: _SourceSnapshot | None = None
+
+    @property
+    def source_custody(self) -> Mapping[str, Any] | None:
+        if self._source_snapshot is None:
+            return None
+        return {
+            "contract": SOURCE_CUSTODY_CONTRACT,
+            "source_sha256": self.source_sha256,
+            "snapshot_sha256": self._source_snapshot.sha256,
+            "snapshot_size": self._source_snapshot.size,
+            "snapshot_path_unlinked": not self._source_snapshot.path.exists(),
+            "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+            "reader_access_mode": self._source_snapshot.access_mode,
+            "content_bound": True,
+        }
+
+    def verify_source_identity(self) -> str:
+        if self._source_snapshot is not None:
+            self._source_snapshot.verify()
+        return self.source_sha256
+
+    def close(self) -> None:
+        if self._source_snapshot is not None:
+            self._source_snapshot.close()
+
+    def __enter__(self) -> PhysicalSourceIncidence:
+        return self
+
+    def __exit__(self, exc_type: Any, exc: Any, traceback: Any) -> None:
+        self.close()
 
     @property
     def physical_metadata_digest(self) -> str:
@@ -134,18 +173,29 @@ class PhysicalSourceIncidence:
         if self._frame is not None:
             yield from emit(self._frame, 0)
             return
-        if self._source_path is None or self._reader_kind is None:
-            return
+        if self._reader_kind is None or self._source_snapshot is None:
+            raise DecoderError("physical source has no content-bound snapshot for lazy byte reads")
+        self.verify_source_identity()
         import pyreadstat
+        snapshot = self._source_snapshot
         reader = pyreadstat.read_sav if self._reader_kind == "SAV" else pyreadstat.read_dta
-        row_offset = 0
-        chunks = pyreadstat.read_file_in_chunks(
-            reader, self._source_path, chunksize=rows_per_chunk, encoding=self._encoding,
-            apply_value_formats=False, user_missing=True,
+        snapshot.rewind()
+        if self._reader_kind == "SAV":
+            row_offset = 0
+            chunks = pyreadstat.read_file_in_chunks(
+                reader, snapshot.reader_path, chunksize=rows_per_chunk, encoding=self._encoding,
+                apply_value_formats=False, user_missing=True,
+            )
+            for frame, _metadata in chunks:
+                snapshot.check_stable()
+                yield from emit(frame, row_offset)
+                row_offset += len(frame)
+            return
+        frame, _metadata = reader(
+            snapshot.reader_path, apply_value_formats=False, user_missing=True, encoding=self._encoding
         )
-        for frame, _metadata in chunks:
-            yield from emit(frame, row_offset)
-            row_offset += len(frame)
+        snapshot.verify()
+        yield from emit(frame, 0)
 
     def iter_cells(self, batch_size: int = 10_000) -> Iterator[PhysicalCell]:
         for batch in self.iter_batches(batch_size):
@@ -154,6 +204,195 @@ class PhysicalSourceIncidence:
 
 class DecoderError(ValueError):
     pass
+
+
+@dataclass
+class _SourceSnapshot:
+    sha256: str
+    path: Path
+    directory: Path
+    fd: int
+    size: int
+    stat_signature: tuple[int, int, int, int, int]
+    _closed: bool = False
+
+    def _ensure_read_only(self) -> None:
+        if self._closed:
+            raise DecoderError("source snapshot is closed")
+        if fcntl is None:
+            raise DecoderError("read-only descriptor capability requires POSIX fcntl")
+        flags = fcntl.fcntl(self.fd, fcntl.F_GETFL)
+        if flags & os.O_ACCMODE != os.O_RDONLY:
+            raise DecoderError("source snapshot reader is not read-only")
+        if not stat.S_ISREG(os.fstat(self.fd).st_mode):
+            raise DecoderError("source snapshot reader is not a regular file")
+
+    @property
+    def access_mode(self) -> str:
+        if self._closed:
+            return "CLOSED"
+        if fcntl is None:
+            return "UNKNOWN"
+        flags = fcntl.fcntl(self.fd, fcntl.F_GETFL)
+        return {
+            os.O_RDONLY: "O_RDONLY",
+            os.O_WRONLY: "O_WRONLY",
+            os.O_RDWR: "O_RDWR",
+        }.get(flags & os.O_ACCMODE, "UNKNOWN")
+
+    @property
+    def reader_path(self) -> str:
+        self._ensure_read_only()
+        return f"/dev/fd/{self.fd}"
+
+    def read_prefix(self, size: int) -> bytes:
+        self._ensure_read_only()
+        return os.pread(self.fd, size, 0)
+
+    def rewind(self) -> None:
+        self._ensure_read_only()
+        os.lseek(self.fd, 0, os.SEEK_SET)
+
+    def _current_signature(self) -> tuple[int, int, int, int, int]:
+        st = os.fstat(self.fd)
+        return (st.st_dev, st.st_ino, st.st_size, st.st_mtime_ns, st.st_ctime_ns)
+
+    def check_stable(self) -> None:
+        self._ensure_read_only()
+        if self._current_signature() != self.stat_signature:
+            raise DecoderError("source snapshot changed after identity acquisition")
+
+    def verify(self) -> None:
+        self._ensure_read_only()
+        self.check_stable()
+        if _sha_fd(self.fd) != self.sha256:
+            raise DecoderError("source snapshot bytes changed after identity acquisition")
+
+    def close(self) -> None:
+        if self._closed:
+            return
+        self._closed = True
+        try:
+            st = os.stat(self.path)
+            fst = os.fstat(self.fd)
+            if (st.st_dev, st.st_ino) == (fst.st_dev, fst.st_ino):
+                os.unlink(self.path)
+        except OSError:
+            pass
+        try:
+            os.close(self.fd)
+        finally:
+            try:
+                os.rmdir(self.directory)
+            except OSError:
+                pass
+
+    def __del__(self) -> None:
+        try:
+            self.close()
+        except Exception:
+            pass
+
+
+def _sha_fd(fd: int) -> str:
+    digest = hashlib.sha256()
+    offset = 0
+    while True:
+        block = os.pread(fd, 1024 * 1024, offset)
+        if not block:
+            return digest.hexdigest()
+        digest.update(block)
+        offset += len(block)
+
+
+def _acquire_source_snapshot(source: Path, expected_source_sha256: str | None = None) -> _SourceSnapshot:
+    try:
+        source_fd = os.open(source, os.O_RDONLY | getattr(os, "O_CLOEXEC", 0))
+    except OSError as exc:
+        raise DecoderError(f"source bytes unavailable: {source}") from exc
+    directory: Path | None = None
+    construction_fd: int | None = None
+    reader_fd: int | None = None
+    snapshot_identity: tuple[int, int] | None = None
+    try:
+        if not stat.S_ISREG(os.fstat(source_fd).st_mode):
+            raise DecoderError(f"source bytes unavailable: {source}")
+        if os.name != "posix" or not Path("/dev/fd").is_dir():
+            raise DecoderError("content-bound reader path requires POSIX /dev/fd")
+        directory = Path(tempfile.mkdtemp(prefix="rawlsing-source-custody-"))
+        snapshot_path = directory / "source.bin"
+        construction_fd = os.open(snapshot_path, os.O_RDWR | os.O_CREAT | os.O_EXCL, 0o600)
+        construction_stat = os.fstat(construction_fd)
+        snapshot_identity = (construction_stat.st_dev, construction_stat.st_ino)
+        digest = hashlib.sha256()
+        size = 0
+        while True:
+            block = os.read(source_fd, 1024 * 1024)
+            if not block:
+                break
+            digest.update(block)
+            size += len(block)
+            view = memoryview(block)
+            while view:
+                view = view[os.write(construction_fd, view):]
+        os.fchmod(construction_fd, 0o400)
+        actual = digest.hexdigest()
+        if expected_source_sha256 is not None and actual != expected_source_sha256:
+            raise DecoderError("source sha256 mismatch before governed decode")
+        reader_flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0)
+        reader_fd = os.open(snapshot_path, reader_flags)
+        reader_stat = os.fstat(reader_fd)
+        construction_stat = os.fstat(construction_fd)
+        if (
+            (reader_stat.st_dev, reader_stat.st_ino) != (construction_stat.st_dev, construction_stat.st_ino)
+            or reader_stat.st_size != size
+            or construction_stat.st_size != size
+        ):
+            raise DecoderError("source snapshot reader does not match the construction inode")
+        if fcntl is None:
+            raise DecoderError("read-only descriptor capability requires POSIX fcntl")
+        if fcntl.fcntl(reader_fd, fcntl.F_GETFL) & os.O_ACCMODE != os.O_RDONLY:
+            raise DecoderError("source snapshot reader is not read-only")
+        os.close(construction_fd)
+        construction_fd = None
+        path_stat = os.stat(snapshot_path)
+        if (path_stat.st_dev, path_stat.st_ino) != (reader_stat.st_dev, reader_stat.st_ino):
+            raise DecoderError("source snapshot pathname was replaced before unlink")
+        os.unlink(snapshot_path)
+        if os.fstat(reader_fd).st_nlink != 0:
+            raise DecoderError("source snapshot inode retains an acquisition link")
+        if _sha_fd(reader_fd) != actual:
+            raise DecoderError("source snapshot bytes changed before read-only handoff")
+        st = os.fstat(reader_fd)
+        signature = (st.st_dev, st.st_ino, st.st_size, st.st_mtime_ns, st.st_ctime_ns)
+        return _SourceSnapshot(actual, snapshot_path, directory, reader_fd, size, signature)
+    except Exception:
+        if reader_fd is not None:
+            try:
+                os.close(reader_fd)
+            except OSError:
+                pass
+        if construction_fd is not None:
+            try:
+                os.close(construction_fd)
+            except OSError:
+                pass
+        if directory is not None:
+            path = directory / "source.bin"
+            if snapshot_identity is not None:
+                try:
+                    st = os.stat(path)
+                    if (st.st_dev, st.st_ino) == snapshot_identity:
+                        os.unlink(path)
+                except OSError:
+                    pass
+            try:
+                os.rmdir(directory)
+            except OSError:
+                pass
+        raise
+    finally:
+        os.close(source_fd)
 
 
 def _jsonable(value: Any) -> Any:
@@ -369,11 +608,14 @@ def _sav_header_layout(prefix: bytes) -> Mapping[str, Any]:
     return out
 
 
-def _raw_layout_declarations(source: Path, source_format: str, metadata: Any) -> Mapping[str, Any]:
+def _raw_layout_declarations(
+    source: Path, source_format: str, metadata: Any, *, prefix: bytes | None = None
+) -> Mapping[str, Any]:
     """Preserve raw-format layout evidence without interpreting survey meaning."""
     prefix_size = 176 if source_format == "SAV" else 512
-    with source.open("rb") as handle:
-        prefix = handle.read(prefix_size)
+    if prefix is None:
+        with source.open("rb") as handle:
+            prefix = handle.read(prefix_size)
 
     if source_format == "SAV":
         native = _sav_header_layout(prefix)
@@ -397,6 +639,7 @@ def _file_metadata_contract(
     metadata: Any,
     variables: tuple[PhysicalVariable, ...],
     row_count: int,
+    prefix: bytes | None = None,
 ) -> Mapping[str, Any]:
     names = [variable.name for variable in variables]
     display = [
@@ -408,7 +651,7 @@ def _file_metadata_contract(
         }
         for variable in variables
     ]
-    raw_layout = _raw_layout_declarations(source, source_format, metadata)
+    raw_layout = _raw_layout_declarations(source, source_format, metadata, prefix=prefix)
     normalized_geometry = {
         "traversed_dictionary_variable_count": len(variables),
         "traversed_stream_cell_width": len(variables),
@@ -448,7 +691,6 @@ def _decode(
     source = Path(path)
     if not source.is_file():
         raise DecoderError(f"source bytes unavailable: {source}")
-    source_sha = _sha(source)
     if expected_source_sha256 is not None:
         if (
             not isinstance(expected_source_sha256, str)
@@ -457,67 +699,82 @@ def _decode(
             or any(char not in "0123456789abcdef" for char in expected_source_sha256)
         ):
             raise DecoderError("expected_source_sha256 must be lowercase sha256")
-        if source_sha != expected_source_sha256:
+        if _sha(source) != expected_source_sha256:
             raise DecoderError("source sha256 mismatch before governed decode")
-    compatibility = _compatibility_config(source_sha, encoding)
-    reader = pyreadstat.read_sav if expected_format == "sav" else pyreadstat.read_dta
-    _metadata_frame, metadata = reader(str(source), metadataonly=True, apply_value_formats=False,
-                                       user_missing=True, encoding=encoding)
-    source_format = expected_format.upper()
-    compatibility_full_read = encoding is not None
-    frame = None
-    if compatibility_full_read:
-        frame, metadata = reader(str(source), apply_value_formats=False, user_missing=True, encoding=encoding)
-    names = list(metadata.column_names)
-    variables: list[PhysicalVariable] = []
-    declarations: dict[str, tuple[Mapping[str, Any], ...]] = {}
-    for ordinal, name in enumerate(names, 1):
-        decl = _missing_declarations(metadata, name, source_format)
-        declarations[name] = decl
-        labels = (getattr(metadata, "variable_value_labels", {}) or {}).get(name, {}) or {}
-        display = {
-            "storage_width": (getattr(metadata, "variable_storage_width", {}) or {}).get(name),
-            "display_width": (getattr(metadata, "variable_display_width", {}) or {}).get(name),
-            "alignment": (getattr(metadata, "variable_alignment", {}) or {}).get(name),
-            "measure": (getattr(metadata, "variable_measure", {}) or {}).get(name),
-            "format": (getattr(metadata, "original_variable_types", {}) or {}).get(name),
+    snapshot = _acquire_source_snapshot(source, expected_source_sha256)
+    try:
+        snapshot.verify()
+        source_sha = snapshot.sha256
+        compatibility = _compatibility_config(source_sha, encoding)
+        reader = pyreadstat.read_sav if expected_format == "sav" else pyreadstat.read_dta
+        reader_source = snapshot.reader_path
+        snapshot.rewind()
+        _metadata_frame, metadata = reader(reader_source, metadataonly=True, apply_value_formats=False,
+                                           user_missing=True, encoding=encoding)
+        snapshot.verify()
+        source_format = expected_format.upper()
+        compatibility_full_read = encoding is not None
+        frame = None
+        if compatibility_full_read:
+            snapshot.rewind()
+            frame, metadata = reader(reader_source, apply_value_formats=False, user_missing=True, encoding=encoding)
+            snapshot.verify()
+        names = list(metadata.column_names)
+        variables: list[PhysicalVariable] = []
+        declarations: dict[str, tuple[Mapping[str, Any], ...]] = {}
+        for ordinal, name in enumerate(names, 1):
+            decl = _missing_declarations(metadata, name, source_format)
+            declarations[name] = decl
+            labels = (getattr(metadata, "variable_value_labels", {}) or {}).get(name, {}) or {}
+            display = {
+                "storage_width": (getattr(metadata, "variable_storage_width", {}) or {}).get(name),
+                "display_width": (getattr(metadata, "variable_display_width", {}) or {}).get(name),
+                "alignment": (getattr(metadata, "variable_alignment", {}) or {}).get(name),
+                "measure": (getattr(metadata, "variable_measure", {}) or {}).get(name),
+                "format": (getattr(metadata, "original_variable_types", {}) or {}).get(name),
+            }
+            variables.append(PhysicalVariable(
+                ordinal, name, (getattr(metadata, "readstat_variable_types", {}) or {}).get(name),
+                (getattr(metadata, "column_names_to_labels", {}) or {}).get(name),
+                {str(_jsonable(k)): _jsonable(v) for k, v in labels.items()}, decl, display,
+                {"multiple_response_sets": _jsonable((getattr(metadata, "mr_sets", {}) or {}))},
+            ))
+        row_count = int(getattr(metadata, "number_rows", 0) or 0)
+        variable_tuple = tuple(variables)
+        file_meta = _file_metadata_contract(
+            source=source,
+            source_format=source_format,
+            metadata=metadata,
+            variables=variable_tuple,
+            row_count=row_count,
+            prefix=snapshot.read_prefix(176 if source_format == "SAV" else 512),
+        )
+        snapshot.verify()
+        reader_config = {
+            "reader": "pyreadstat",
+            "reader_version": getattr(pyreadstat, "__version__", None),
+            "decoder_implementation": DECODER_IMPLEMENTATION_ID,
+            "physical_metadata_contract": PHYSICAL_METADATA_CONTRACT,
+            "user_missing": True,
+            "apply_value_formats": False,
+            **compatibility,
         }
-        variables.append(PhysicalVariable(
-            ordinal, name, (getattr(metadata, "readstat_variable_types", {}) or {}).get(name),
-            (getattr(metadata, "column_names_to_labels", {}) or {}).get(name),
-            {str(_jsonable(k)): _jsonable(v) for k, v in labels.items()}, decl, display,
-            {"multiple_response_sets": _jsonable((getattr(metadata, "mr_sets", {}) or {}))},
-        ))
-    row_count = int(getattr(metadata, "number_rows", 0) or 0)
-    variable_tuple = tuple(variables)
-    file_meta = _file_metadata_contract(
-        source=source,
-        source_format=source_format,
-        metadata=metadata,
-        variables=variable_tuple,
-        row_count=row_count,
-    )
-    reader_config = {
-        "reader": "pyreadstat",
-        "reader_version": getattr(pyreadstat, "__version__", None),
-        "decoder_implementation": DECODER_IMPLEMENTATION_ID,
-        "physical_metadata_contract": PHYSICAL_METADATA_CONTRACT,
-        "user_missing": True,
-        "apply_value_formats": False,
-        **compatibility,
-    }
-    return PhysicalSourceIncidence(
-        source_sha,
-        source_format,
-        row_count,
-        variable_tuple,
-        reader_config,
-        file_meta,
-        _frame=frame,
-        _source_path=str(source),
-        _reader_kind=source_format,
-        _encoding=encoding,
-    )
+        return PhysicalSourceIncidence(
+            source_sha,
+            source_format,
+            row_count,
+            variable_tuple,
+            reader_config,
+            file_meta,
+            _frame=frame,
+            _source_path=str(source),
+            _reader_kind=source_format,
+            _encoding=encoding,
+            _source_snapshot=snapshot,
+        )
+    except Exception:
+        snapshot.close()
+        raise
 
 
 def decode_sav(
@@ -553,6 +810,7 @@ __all__ = [
     "COMPATIBILITY_ONLY",
     "DECODER_IMPLEMENTATION_ID",
     "PHYSICAL_METADATA_CONTRACT",
+    "SOURCE_CUSTODY_CONTRACT",
     "DecoderError",
     "PhysicalMissingState",
     "PhysicalVariable",
