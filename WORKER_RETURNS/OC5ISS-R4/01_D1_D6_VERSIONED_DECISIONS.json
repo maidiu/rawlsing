@@ -1,0 +1,410 @@
+{
+  "schema": "OC5ISS_R4_D1_D6_VERSIONED_OWNER_RULINGS_OR_STOP@1",
+  "status": "STOP_NO_ORIGINAL_OWNER_AUTHORITY",
+  "repo": "maidiu/rawlsing",
+  "branch": "research/sorok-r4-oc5-d1-d6-original-owner-source-grant-20261030",
+  "base_immutable_oc5owner_sha": "b83f474fa04402dd270fd195ed9e49601b3301d1",
+  "decision_packet_blob": "1f6635a36c8e170f5f9d55058f042cb3845b7148",
+  "owner_matrix_blob": "c2acb87470411b5b3ae5510853cfc90f92c856f0",
+  "original_custody_source_commit": "0caaec590f6a8bf6744f22dc9c948c5fe233bc94",
+  "original_custody_source_blob": "af2b7e943018077cb36808b5af1cd67704624bec",
+  "original_oc5_return_sha": "e8b127b68c18d05c4d40c059b3aecc00dafc7ce7",
+  "oc5e_reviewer_sha": "67a4f1561cdad40192f00797d66b24fc4cd91589",
+  "oc5e_test_blob": "9837579ebb5b2fbf3a41c967e584a166786e46b9",
+  "qf2_stop_sha": "a93db6bce4832270cf29727233dbfbc5f0312395",
+  "source_authority": {
+    "issuer_identity": "UNKNOWN",
+    "qualified_delegation": "NOT_FOUND_IN_BOUNDED_SOURCES",
+    "immutable_original_owner_grant": null,
+    "policy_version": null,
+    "policy_effective_scope": null,
+    "post_return_original_source_reviewer": "UNASSIGNED",
+    "protected_premain_cas": "HELD"
+  },
+  "decision_interpretation": "These six choices are explicitly UNISSUED, not six NO rulings and not unobserved YES",
+  "sourcefree_native_ceiling": "TEST_ONLY_MOCK_CUSTODY_NO_REAL_SIGNER_C07_NOT_REACHED",
+  "historical_execution": {
+    "inherited": {
+      "tests": 131,
+      "passed": 121,
+      "failed": 10
+    },
+    "oc4_positive": {
+      "tests": 36,
+      "passed": 36,
+      "failed": 0
+    },
+    "oc5e_new": {
+      "tests": 159,
+      "passed": 110,
+      "failed": 49
+    },
+    "oc5_prior": {
+      "tests": 23,
+      "passed": 16,
+      "failed": 7
+    },
+    "total": {
+      "tests": 349,
+      "passed": 283,
+      "failed": 66,
+      "errors": 0,
+      "skipped": 0
+    },
+    "current_session_execution": "NOT_RUN",
+    "junit_git_blobs": {
+      "inherited": "51a09d112d5768f97f1b1b2cfe053d7af28357b2",
+      "oc4": "d402d58a0e49fa5ff7afb2d98560876767d136a0",
+      "oc5e": "33efbc315cc424c377441b0f1f79ee31a5a185bc",
+      "predictions": "36294268fe94d7e5c83155d58c0959922f1cc22b"
+    }
+  },
+  "post_policy_oracle_discipline": {
+    "preserve_original_all_tests": true,
+    "preserve_original_ten_red": true,
+    "preserve_prior_seven_predicted_red": true,
+    "observational_before_state_tests_may_flip": true,
+    "new_normative_suite_must_be_frozen_before_implementation": true,
+    "blind_159_349_green_forbidden": true
+  },
+  "decisions": [
+    {
+      "decision": "D1",
+      "family": "A6",
+      "count": 11,
+      "question": "Approve strict capsule identity field-type/range/canonical serializer validation at capsule_envelope_commitment AND EscrowState.commit before hashing or state mutation?",
+      "yes_candidate": "Nonempty string schema_version/digests; version positive non-bool integer; freeze_timestamp finite positive non-bool real; exact digest syntax/serializer still owner-defined",
+      "owner_choices_needed": [
+        "all 7 fields individually",
+        "18-field signed envelope commitment retention",
+        "strict type/range/freeze unit",
+        "digest syntax",
+        "canonical serializer/version and default=str prohibition",
+        "exception precedence TypeError/ValueError/IdentityMismatchError",
+        "legacy capsules/migration/replay"
+      ],
+      "source_entrypoints": [
+        "capsule_envelope_commitment",
+        "EscrowState.commit"
+      ],
+      "post_policy_test": "test_capsule_identity_field_types_must_be_validated",
+      "exact_original_negative_names": [
+        "test_capsule_identity_field_types_must_be_validated[version-str]",
+        "test_capsule_identity_field_types_must_be_validated[version-none]",
+        "test_capsule_identity_field_types_must_be_validated[version-injection]",
+        "test_capsule_identity_field_types_must_be_validated[freeze-none]",
+        "test_capsule_identity_field_types_must_be_validated[freeze-dict]",
+        "test_capsule_identity_field_types_must_be_validated[freeze-str]",
+        "test_capsule_identity_field_types_must_be_validated[schema-none]",
+        "test_capsule_identity_field_types_must_be_validated[content-none]",
+        "test_capsule_identity_field_types_must_be_validated[lawful-none]",
+        "test_capsule_identity_field_types_must_be_validated[rubric-none]",
+        "test_capsule_identity_field_types_must_be_validated[split-none]"
+      ],
+      "source_evidence": "CustodyCapsule/capsule_envelope_commitment/EscrowState.commit; original source lines 160-179,366-380,426-441",
+      "originally_observed": "Wrong types for version/freeze/schema/content/lawful/rubric/split digest commit; canonical JSON default=str coerces identities.",
+      "owner_approval": {
+        "authority_ruling": "UNISSUED_NOT_YES_OR_NO",
+        "yes": null,
+        "no": null,
+        "owner_identity": null,
+        "delegated_by": null,
+        "competence_document": null,
+        "grant_commit_sha": null,
+        "grant_blob_sha": null,
+        "versioned_policy_ref": null,
+        "policy_version": null,
+        "effective_at": null,
+        "exact_source_scope": null,
+        "exception_precedence": null,
+        "legacy_and_migration": null,
+        "reviewer_identity": null,
+        "reviewer_sha": null,
+        "hq_control_cas": null
+      },
+      "decision_status": "STOP_NO_ORIGINAL_OWNER_AUTHORITY",
+      "engineering_evidence": "ORIGINAL_OC5E_RETAINED_FAIL_NOT_RERUN",
+      "new_policy_test_status": "NOT_RUN__OWNER_NOT_ISSUED",
+      "no_implicit_default": true
+    },
+    {
+      "decision": "D2",
+      "family": "A1",
+      "count": 10,
+      "question": "Approve rejection of multiple raw keys normalizing to the same allowed top/public projection key?",
+      "yes_candidate": "Each normalized allowed key appears once; reject collisions with LeakageError while valid generated packets remain accepted",
+      "owner_choices_needed": [
+        "canonical-only vs lone alias",
+        "Unicode normalization version and exact transformation",
+        "nested versus top-level collision scope",
+        "exception precedence and error label",
+        "legacy accepted duplicate packets"
+      ],
+      "source_entrypoints": [
+        "detect_leakage",
+        "assert_no_leakage"
+      ],
+      "post_policy_test": "test_normalization_equivalent_allowed_field_alias_must_be_refused",
+      "exact_original_negative_names": [
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-context]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-context]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-context]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-note]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-menu]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-public-projection]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-note]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-request-id]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-response]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[double-context-alias]"
+      ],
+      "source_evidence": "detect_leakage/assert_no_leakage; original source lines 658-707",
+      "originally_observed": "Normalized allowed key multiplicity discarded by set(map(_normalized,value)); nested and top-level aliases survive.",
+      "owner_approval": {
+        "authority_ruling": "UNISSUED_NOT_YES_OR_NO",
+        "yes": null,
+        "no": null,
+        "owner_identity": null,
+        "delegated_by": null,
+        "competence_document": null,
+        "grant_commit_sha": null,
+        "grant_blob_sha": null,
+        "versioned_policy_ref": null,
+        "policy_version": null,
+        "effective_at": null,
+        "exact_source_scope": null,
+        "exception_precedence": null,
+        "legacy_and_migration": null,
+        "reviewer_identity": null,
+        "reviewer_sha": null,
+        "hq_control_cas": null
+      },
+      "decision_status": "STOP_NO_ORIGINAL_OWNER_AUTHORITY",
+      "engineering_evidence": "ORIGINAL_OC5E_RETAINED_FAIL_NOT_RERUN",
+      "new_policy_test_status": "NOT_RUN__OWNER_NOT_ISSUED",
+      "no_implicit_default": true
+    },
+    {
+      "decision": "D3",
+      "family": "A2",
+      "count": 6,
+      "question": "Approve a bounded explicit confusable-protected leak-token map for the six historical Cyrillic/Greek/Armenian variants?",
+      "yes_candidate": "Only owner-adopted version-pinned tokens/cases denied; preserve benign multilingual input",
+      "owner_choices_needed": [
+        "six exact tokens and codepoints",
+        "mixed-script and script-scope choice",
+        "case folding / confusable skeleton algorithm",
+        "token boundary and false-positive policy",
+        "benign examples and compatibility",
+        "denial exception and version"
+      ],
+      "source_entrypoints": [
+        "_normalized",
+        "detect_leakage"
+      ],
+      "post_policy_test": "test_confusable_leak_token_substitution_must_be_flagged",
+      "exact_original_negative_names": [
+        "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-a]",
+        "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-e]",
+        "test_confusable_leak_token_substitution_must_be_flagged[armenian-h]",
+        "test_confusable_leak_token_substitution_must_be_flagged[greek-o]",
+        "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-s]",
+        "test_confusable_leak_token_substitution_must_be_flagged[mixed-cyrillic]"
+      ],
+      "source_evidence": "_normalized/detect_leakage; original source lines 640-707",
+      "originally_observed": "NFKC/NFKD lexical scanner lacks a confusable skeleton; Cyrillic/Greek/Armenian substitutions evade token patterns.",
+      "owner_approval": {
+        "authority_ruling": "UNISSUED_NOT_YES_OR_NO",
+        "yes": null,
+        "no": null,
+        "owner_identity": null,
+        "delegated_by": null,
+        "competence_document": null,
+        "grant_commit_sha": null,
+        "grant_blob_sha": null,
+        "versioned_policy_ref": null,
+        "policy_version": null,
+        "effective_at": null,
+        "exact_source_scope": null,
+        "exception_precedence": null,
+        "legacy_and_migration": null,
+        "reviewer_identity": null,
+        "reviewer_sha": null,
+        "hq_control_cas": null
+      },
+      "decision_status": "STOP_NO_ORIGINAL_OWNER_AUTHORITY",
+      "engineering_evidence": "ORIGINAL_OC5E_RETAINED_FAIL_NOT_RERUN",
+      "new_policy_test_status": "NOT_RUN__OWNER_NOT_ISSUED",
+      "no_implicit_default": true
+    },
+    {
+      "decision": "D4",
+      "family": "A3",
+      "count": 18,
+      "question": "Approve type guard requiring actual MockSignature objects at dual gate before attribute dereference and typed SignatureError on foreign objects?",
+      "yes_candidate": "Nine malformed primary + nine malformed secondary inputs yield SignatureError; valid distinct signers and ConflictError ordering stay intact",
+      "owner_choices_needed": [
+        "MockSignature exact type versus external approved signer adapter",
+        "SignatureError versus owner alternative",
+        "ConflictError precedence for two valid signers",
+        "legacy duck-typed callers",
+        "signature/verifier scope and mock-only ceiling"
+      ],
+      "source_entrypoints": [
+        "require_second_signature"
+      ],
+      "post_policy_test": "test_malformed_signature_object_must_fail_typed",
+      "exact_original_negative_names": [
+        "test_malformed_signature_object_must_fail_typed[primary-object]",
+        "test_malformed_signature_object_must_fail_typed[primary-int]",
+        "test_malformed_signature_object_must_fail_typed[primary-dict]",
+        "test_malformed_signature_object_must_fail_typed[primary-list]",
+        "test_malformed_signature_object_must_fail_typed[primary-str]",
+        "test_malformed_signature_object_must_fail_typed[primary-bool]",
+        "test_malformed_signature_object_must_fail_typed[primary-bytes]",
+        "test_malformed_signature_object_must_fail_typed[primary-float]",
+        "test_malformed_signature_object_must_fail_typed[primary-tuple]",
+        "test_malformed_signature_object_must_fail_typed[second-object]",
+        "test_malformed_signature_object_must_fail_typed[second-int]",
+        "test_malformed_signature_object_must_fail_typed[second-dict]",
+        "test_malformed_signature_object_must_fail_typed[second-list]",
+        "test_malformed_signature_object_must_fail_typed[second-str]",
+        "test_malformed_signature_object_must_fail_typed[second-bool]",
+        "test_malformed_signature_object_must_fail_typed[second-bytes]",
+        "test_malformed_signature_object_must_fail_typed[second-float]",
+        "test_malformed_signature_object_must_fail_typed[second-tuple]"
+      ],
+      "source_evidence": "require_second_signature; original source lines 566-605",
+      "originally_observed": "Nine foreign primary and nine foreign second signature objects raise AttributeError before type checks.",
+      "owner_approval": {
+        "authority_ruling": "UNISSUED_NOT_YES_OR_NO",
+        "yes": null,
+        "no": null,
+        "owner_identity": null,
+        "delegated_by": null,
+        "competence_document": null,
+        "grant_commit_sha": null,
+        "grant_blob_sha": null,
+        "versioned_policy_ref": null,
+        "policy_version": null,
+        "effective_at": null,
+        "exact_source_scope": null,
+        "exception_precedence": null,
+        "legacy_and_migration": null,
+        "reviewer_identity": null,
+        "reviewer_sha": null,
+        "hq_control_cas": null
+      },
+      "decision_status": "STOP_NO_ORIGINAL_OWNER_AUTHORITY",
+      "engineering_evidence": "ORIGINAL_OC5E_RETAINED_FAIL_NOT_RERUN",
+      "new_policy_test_status": "NOT_RUN__OWNER_NOT_ISSUED",
+      "no_implicit_default": true
+    },
+    {
+      "decision": "D5",
+      "family": "A4",
+      "count": 1,
+      "question": "Approve Role enum requirement with SignatureError for plain-string role at require_second_signature?",
+      "yes_candidate": "No silent conversion of string 'CUSTODIAN' to Role.CUSTODIAN; valid enum signers still work",
+      "owner_choices_needed": [
+        "enum-only vs versioned legacy coercion",
+        "direct MockSigner constructor exception type",
+        "dual gate SignatureError and ConflictError order",
+        "old fixture compatibility"
+      ],
+      "source_entrypoints": [
+        "MockSigner",
+        "require_second_signature"
+      ],
+      "post_policy_test": "test_non_enum_role_string_must_fail_typed",
+      "exact_original_negative_names": [
+        "test_non_enum_role_string_must_fail_typed"
+      ],
+      "source_evidence": "require_second_signature/MockSigner.__init__; original source lines 113-121,566-605",
+      "originally_observed": "Plain string role on signature is dereferenced as .value by MockSigner and raises AttributeError.",
+      "owner_approval": {
+        "authority_ruling": "UNISSUED_NOT_YES_OR_NO",
+        "yes": null,
+        "no": null,
+        "owner_identity": null,
+        "delegated_by": null,
+        "competence_document": null,
+        "grant_commit_sha": null,
+        "grant_blob_sha": null,
+        "versioned_policy_ref": null,
+        "policy_version": null,
+        "effective_at": null,
+        "exact_source_scope": null,
+        "exception_precedence": null,
+        "legacy_and_migration": null,
+        "reviewer_identity": null,
+        "reviewer_sha": null,
+        "hq_control_cas": null
+      },
+      "decision_status": "STOP_NO_ORIGINAL_OWNER_AUTHORITY",
+      "engineering_evidence": "ORIGINAL_OC5E_RETAINED_FAIL_NOT_RERUN",
+      "new_policy_test_status": "NOT_RUN__OWNER_NOT_ISSUED",
+      "no_implicit_default": true
+    },
+    {
+      "decision": "D6",
+      "family": "A5",
+      "count": 3,
+      "question": "Approve rejection of non-string/blank/unhashable holder identifiers with IdentityMismatchError before holder_roles.get and without ledger mutation?",
+      "yes_candidate": "list/dict/set and other invalid holders typed-refused; valid authorized fixture holder remains permitted",
+      "owner_choices_needed": [
+        "holder identifier namespace",
+        "hashable scalar legacy policy",
+        "invalid capsule/ledger versus invalid holder exception precedence",
+        "empty string semantics",
+        "no-state-mutation evidence"
+      ],
+      "source_entrypoints": [
+        "EscrowState.unblind",
+        "EscrowState.authorize_holder"
+      ],
+      "post_policy_test": "test_unblind_unhashable_holder_must_fail_typed",
+      "exact_original_negative_names": [
+        "test_unblind_unhashable_holder_must_fail_typed[list]",
+        "test_unblind_unhashable_holder_must_fail_typed[dict]",
+        "test_unblind_unhashable_holder_must_fail_typed[set]"
+      ],
+      "source_evidence": "EscrowState.unblind/authorize_holder; original source lines 398-407,443-457",
+      "originally_observed": "list/dict/set holder IDs cause TypeError at holder_roles.get; other scalar holders already IdentityMismatchError.",
+      "owner_approval": {
+        "authority_ruling": "UNISSUED_NOT_YES_OR_NO",
+        "yes": null,
+        "no": null,
+        "owner_identity": null,
+        "delegated_by": null,
+        "competence_document": null,
+        "grant_commit_sha": null,
+        "grant_blob_sha": null,
+        "versioned_policy_ref": null,
+        "policy_version": null,
+        "effective_at": null,
+        "exact_source_scope": null,
+        "exception_precedence": null,
+        "legacy_and_migration": null,
+        "reviewer_identity": null,
+        "reviewer_sha": null,
+        "hq_control_cas": null
+      },
+      "decision_status": "STOP_NO_ORIGINAL_OWNER_AUTHORITY",
+      "engineering_evidence": "ORIGINAL_OC5E_RETAINED_FAIL_NOT_RERUN",
+      "new_policy_test_status": "NOT_RUN__OWNER_NOT_ISSUED",
+      "no_implicit_default": true
+    }
+  ],
+  "summary": {
+    "FINDING": "Six original policy rulings unissued; all 49 original OC5E failures retained",
+    "INTERPRETATION": "An original-owner YES/NO cannot be derived from analyst preference or test failures",
+    "ACTION": "Incumbent identifies original issuer/delegate, obtains versioned six rulings and separate reviewer, only then implementer",
+    "OWNER": "Competent original OC4/OC5 custody/projection/signature policy issuer via incumbent HQ",
+    "DONE": "Six exact owner questions and original negative names preserved",
+    "REMAINING": "Original identity/grant/policy decisions, implementation, independent review",
+    "CRITICAL_BLOCKERS": "No original owner authorization, QF2 STOP, 49 retained negative cases",
+    "LARGEST_PRODUCTIVE_MOVE": "Resolve D1 types and serialization first, then D2/D3 acceptance and D4-D6 typed exception contract",
+    "FLIGHT": "Single analyst/ChatGPT GitHub, isolated STOP branch, no other worker disturbance",
+    "DELTA": "No owner policy issued; exact typed owner decisions ready for authorized issuer"
+  }
+}
