@@ -1,0 +1,268 @@
+{
+  "schema": "OC5OWNER_A1_A6_SOURCE_POLICY_MATRIX@1",
+  "status": "READY_DOC_OWNER_COURT__ISSUANCE_HELD",
+  "exact_refs": {
+    "repo": "maidiu/rawlsing",
+    "seal": "187fdd11963163dab03c7b061e20067ea1f99134",
+    "commission_blob": "d91f5fb6b33a069d649836b2fc113c8af3da91e7",
+    "OC4_source_commit": "0caaec590f6a8bf6744f22dc9c948c5fe233bc94",
+    "OC4_source_path": "WORKER_RETURNS/SOROK-R3-HQ310-OC4-CUSTODY-TEN-RED-REPAIR-R1/repro/custody_protocol.py",
+    "OC4_source_blob": "af2b7e943018077cb36808b5af1cd67704624bec",
+    "OC4_source_sha256_reported": "447e5bb738fc49c946a39ca438126e9c2a69d93025600f053662e56f846f9e3a",
+    "OC5_author": "e8b127b68c18d05c4d40c059b3aecc00dafc7ce7",
+    "OC5E_reviewer": "67a4f1561cdad40192f00797d66b24fc4cd91589",
+    "OC5E_test_path": "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/tests/test_oc5e_native_hostiles.py",
+    "OC5E_test_blob": "9837579ebb5b2fbf3a41c967e584a166786e46b9",
+    "OC5E_test_sha256_reported": "a9faf7ace27d0f3f3cfd1102de5c6c8d6888c12f16c7bbdde8b32bb232b84512",
+    "F3I": "97dbe712e4cce8fedd1632d9ac64b4e57a0ac25e7"
+  },
+  "historical_native_execution_NOT_RERUN": {
+    "inherited": {
+      "cases": 131,
+      "pass": 121,
+      "red": 10
+    },
+    "OC4_controls": {
+      "cases": 36,
+      "pass": 36,
+      "red": 0
+    },
+    "OC5E": {
+      "cases": 159,
+      "pass": 110,
+      "red": 49
+    },
+    "OC5_predictions": {
+      "cases": 23,
+      "pass": 16,
+      "red": 7
+    },
+    "total": {
+      "cases": 349,
+      "pass": 283,
+      "red": 66,
+      "errors": 0,
+      "skips": 0
+    },
+    "original_junit_sha256": {
+      "inherited_131.xml": "659ed7f298fc4d78dd12df5678de08e7d62f624460d9b876da0c96f55f2c7588",
+      "oc4_new_36.xml": "1cee683d8b3ccbccf18821645540479d1c54c0c62d64a019cfd7e22b3cf87c99",
+      "oc5e_native_hostiles.xml": "ac727e498e573136c02f1a61ef76c8965212a7b74564d3fb1c444b136624a2e9",
+      "oc5_prior_predictions.xml": "9f6b9d879be4ce875005b3ecfc3909c9e916f403190cce4518bdec90abcd6724"
+    },
+    "original_ten_red_names": [
+      "test_h13_ledger_rollback_detected",
+      "test_h15_missing_signature_in_capsule_refused",
+      "test_positive_full_role_separated_lifecycle",
+      "test_A_capsule_unblind_permission[mod0-A01_revoked_unblind]",
+      "test_A_capsule_unblind_permission[mod1-A02_expired_unblind]",
+      "test_A_capsule_unblind_permission[mod2-A03_illegal_purpose_unblind]",
+      "test_A08_mismatched_holder_unblind",
+      "test_signature_binds_content_and_rejects_alien_capsule",
+      "test_B01_valid_countersignatures_bind_content",
+      "test_Z03_declared_mock_roster_uses_public_derived_credentials"
+    ],
+    "earlier_prediction_seven_red_names": [
+      "test_malformed_signature_fails_typed[bad0]",
+      "test_malformed_signature_fails_typed[12]",
+      "test_malformed_signature_fails_typed[bad2]",
+      "test_duplicate_normalized_keys_refused[packet0]",
+      "test_duplicate_normalized_keys_refused[packet1]",
+      "test_duplicate_normalized_keys_refused[packet2]",
+      "test_duplicate_normalized_keys_refused[packet3]"
+    ]
+  },
+  "original_policy_evidence_read": [
+    "OC1 original 19438890e43153e2bc4a1ad271b5e19bcef33e1e — roles proposed, no real external signer",
+    "OC2 a61d5794271038fb20c94a75eaee401a66613ce9 — six historical REDs, C07 NOT_REACHED",
+    "OC3 reviewer 9cd47a829473a6e92392582b4f01f2c564aa5dce — TEST_ONLY",
+    "OC4 commission blob c5d1b1e1a12cda58f484b365fed8fe614cad7053 — ten scope, not semantic/oracle issuer",
+    "OC5 author e8b127b68c18d05c4d40c059b3aecc00dafc7ce7 — owner HOLD",
+    "OC5E reviewer 67a4f1561cdad40192f00797d66b24fc4cd91589 — no adoption",
+    "F3I 97dbe712e4cce8fedd1632d9ac64b4e57a0ac25e — independent documentary readback",
+    "QF1 68e49f92d5b9f0859d08847ee108684ddfd193ca — owner and fan-in gates NOT MET"
+  ],
+  "actual_original_A1_A6_grant_found": false,
+  "bounded_search_not_exhaustive": true,
+  "counts": {
+    "new_red_total": 49,
+    "acceptance_bypass": 27,
+    "fail_closed_untyped": 22,
+    "family_check_sum": 49
+  },
+  "families": [
+    {
+      "id": "A1",
+      "red_count": 10,
+      "existing_failing_test_prefix": "test_normalization_equivalent_allowed_field_alias_must_be_refused",
+      "failing_case_names": [
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-context]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-context]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-context]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-note]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-menu]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-public-projection]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-note]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-request-id]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-response]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[double-context-alias]"
+      ],
+      "failure_grade": "ACCEPTANCE_BYPASS_PROJECTION",
+      "source_and_locus": "detect_leakage/assert_no_leakage; original source lines 658-707",
+      "observed_failure": "Normalized allowed key multiplicity discarded by set(map(_normalized,value)); nested and top-level aliases survive.",
+      "original_authority_gap": "Original OC4 normalization intent does not specify duplicate aliases, lone alias behavior, canonical encoding or exception precedence.",
+      "proposed_owner_yes_contract_NOT_ISSUED": "Owner D2 YES: deny second normalized-equivalent key at each allowed mapping with LeakageError; specify normalization version and lone alias policy.",
+      "patch_acceptance_positive_negative": "Canonical generated model/coder packet remains accepted; wrong-typed alias remains denied; duplicate alias must fail before model-visible release.",
+      "historical_observation_witness_that_may_flip": "test_alias_holes_are_observed_not_theorised",
+      "first_actual_consumer": "First demonstrated consumer is the sourcefree OC5E packet test court; no real model-facing product importer confirmed.",
+      "backward_compatibility": "Previously accepted duplicate aliases refuse; legacy single aliases require explicit owner choice.",
+      "decision_status": "OWNER_DECISION_REQUIRED",
+      "accountable_authority": "Competent original custody/projection/signature source-policy issuer, verified by incumbent Sorok HQ; not OC4/OC5 author or reviewer"
+    },
+    {
+      "id": "A2",
+      "red_count": 6,
+      "existing_failing_test_prefix": "test_confusable_leak_token_substitution_must_be_flagged",
+      "failing_case_names": [
+        "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-a]",
+        "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-e]",
+        "test_confusable_leak_token_substitution_must_be_flagged[armenian-h]",
+        "test_confusable_leak_token_substitution_must_be_flagged[greek-o]",
+        "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-s]",
+        "test_confusable_leak_token_substitution_must_be_flagged[mixed-cyrillic]"
+      ],
+      "failure_grade": "ACCEPTANCE_BYPASS_IF_THREAT_ADOPTED",
+      "source_and_locus": "_normalized/detect_leakage; original source lines 640-707",
+      "observed_failure": "NFKC/NFKD lexical scanner lacks a confusable skeleton; Cyrillic/Greek/Armenian substitutions evade token patterns.",
+      "original_authority_gap": "OC4 commission mentions U+034F, not a confusable threat map; no issued script/version/scope.",
+      "proposed_owner_yes_contract_NOT_ISSUED": "Owner D3 YES: finite version-pinned token skeleton for owner-selected cases, especially individually review mixed Cyrillic; choose exact codepoints and false-positive policy.",
+      "patch_acceptance_positive_negative": "Owner-adopted tokens fail with LeakageError; Ｙnswer_key, charming and benign multilingual controls remain allowed.",
+      "historical_observation_witness_that_may_flip": "test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts",
+      "first_actual_consumer": "Sourcefree OC5E leakage court only; real projection consumer not demonstrated.",
+      "backward_compatibility": "Potential extra language false positives; a NO/defer keeps frozen six RED, not synthetic green.",
+      "decision_status": "OWNER_DECISION_REQUIRED",
+      "accountable_authority": "Competent original custody/projection/signature source-policy issuer, verified by incumbent Sorok HQ; not OC4/OC5 author or reviewer"
+    },
+    {
+      "id": "A3",
+      "red_count": 18,
+      "existing_failing_test_prefix": "test_malformed_signature_object_must_fail_typed",
+      "failing_case_names": [
+        "test_malformed_signature_object_must_fail_typed[primary-object]",
+        "test_malformed_signature_object_must_fail_typed[primary-int]",
+        "test_malformed_signature_object_must_fail_typed[primary-dict]",
+        "test_malformed_signature_object_must_fail_typed[primary-list]",
+        "test_malformed_signature_object_must_fail_typed[primary-str]",
+        "test_malformed_signature_object_must_fail_typed[primary-bool]",
+        "test_malformed_signature_object_must_fail_typed[primary-bytes]",
+        "test_malformed_signature_object_must_fail_typed[primary-float]",
+        "test_malformed_signature_object_must_fail_typed[primary-tuple]",
+        "test_malformed_signature_object_must_fail_typed[second-object]",
+        "test_malformed_signature_object_must_fail_typed[second-int]",
+        "test_malformed_signature_object_must_fail_typed[second-dict]",
+        "test_malformed_signature_object_must_fail_typed[second-list]",
+        "test_malformed_signature_object_must_fail_typed[second-str]",
+        "test_malformed_signature_object_must_fail_typed[second-bool]",
+        "test_malformed_signature_object_must_fail_typed[second-bytes]",
+        "test_malformed_signature_object_must_fail_typed[second-float]",
+        "test_malformed_signature_object_must_fail_typed[second-tuple]"
+      ],
+      "failure_grade": "FAIL_CLOSED_UNTYPED_EXCEPTION",
+      "source_and_locus": "require_second_signature; original source lines 566-605",
+      "observed_failure": "Nine foreign primary and nine foreign second signature objects raise AttributeError before type checks.",
+      "original_authority_gap": "OC1 mock role separation is a prototype; no issued exact external structural signature or exception contract.",
+      "proposed_owner_yes_contract_NOT_ISSUED": "Owner D4 YES: isinstance(MockSignature) guard before attribute access; raise SignatureError; preserve ConflictError on two valid same-person/conflicting-role inputs.",
+      "patch_acceptance_positive_negative": "9x2 foreign object denials typed; full signed capsule two-person positive and context/nonce/purpose mismatch refusal remain.",
+      "historical_observation_witness_that_may_flip": "test_malformed_signature_holes_are_observed_as_attributeerror",
+      "first_actual_consumer": "First actual consumer is sourcefree require_second_signature tester; no real signer registry.",
+      "backward_compatibility": "Foreign duck-typed signature callers remain refused but get typed exception; content-only positives retain old RED.",
+      "decision_status": "OWNER_DECISION_REQUIRED",
+      "accountable_authority": "Competent original custody/projection/signature source-policy issuer, verified by incumbent Sorok HQ; not OC4/OC5 author or reviewer"
+    },
+    {
+      "id": "A4",
+      "red_count": 1,
+      "existing_failing_test_prefix": "test_non_enum_role_string_must_fail_typed",
+      "failing_case_names": [
+        "test_non_enum_role_string_must_fail_typed"
+      ],
+      "failure_grade": "FAIL_CLOSED_UNTYPED_EXCEPTION",
+      "source_and_locus": "require_second_signature/MockSigner.__init__; original source lines 113-121,566-605",
+      "observed_failure": "Plain string role on signature is dereferenced as .value by MockSigner and raises AttributeError.",
+      "original_authority_gap": "No owner-adopted role-coercion or public API exception contract.",
+      "proposed_owner_yes_contract_NOT_ISSUED": "Owner D5 YES: signature role must be Role enum and rejected as SignatureError at dual-signature boundary; separately approve constructor's exception type.",
+      "patch_acceptance_positive_negative": "String role refused typed; valid Role enum and fixture roster unchanged.",
+      "historical_observation_witness_that_may_flip": "test_non_enum_role_string_hole_is_observed_as_attributeerror",
+      "first_actual_consumer": "First actual consumer sourcefree mock-signature test only.",
+      "backward_compatibility": "No silent str-to-Role migration; constructor callers need explicit owner choice.",
+      "decision_status": "OWNER_DECISION_REQUIRED",
+      "accountable_authority": "Competent original custody/projection/signature source-policy issuer, verified by incumbent Sorok HQ; not OC4/OC5 author or reviewer"
+    },
+    {
+      "id": "A5",
+      "red_count": 3,
+      "existing_failing_test_prefix": "test_unblind_unhashable_holder_must_fail_typed",
+      "failing_case_names": [
+        "test_unblind_unhashable_holder_must_fail_typed[list]",
+        "test_unblind_unhashable_holder_must_fail_typed[dict]",
+        "test_unblind_unhashable_holder_must_fail_typed[set]"
+      ],
+      "failure_grade": "FAIL_CLOSED_UNTYPED_EXCEPTION",
+      "source_and_locus": "EscrowState.unblind/authorize_holder; original source lines 398-407,443-457",
+      "observed_failure": "list/dict/set holder IDs cause TypeError at holder_roles.get; other scalar holders already IdentityMismatchError.",
+      "original_authority_gap": "authorize_holder checks string but unblind input type contract not independently issued.",
+      "proposed_owner_yes_contract_NOT_ISSUED": "Owner D6 YES: after existing capsule/ledger checks, non-string/empty holder raises IdentityMismatchError before map lookup; preserve state and event order.",
+      "patch_acceptance_positive_negative": "All 3 unhashable inputs typed; scalar negatives, valid fixture custodian receipt, no state mutation.",
+      "historical_observation_witness_that_may_flip": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror",
+      "first_actual_consumer": "First consumer local unblind test; cross-process C07 not reached.",
+      "backward_compatibility": "Failure class changes only; broader hashable holder legacy policy requires owner decision.",
+      "decision_status": "OWNER_DECISION_REQUIRED",
+      "accountable_authority": "Competent original custody/projection/signature source-policy issuer, verified by incumbent Sorok HQ; not OC4/OC5 author or reviewer"
+    },
+    {
+      "id": "A6",
+      "red_count": 11,
+      "existing_failing_test_prefix": "test_capsule_identity_field_types_must_be_validated",
+      "failing_case_names": [
+        "test_capsule_identity_field_types_must_be_validated[version-str]",
+        "test_capsule_identity_field_types_must_be_validated[version-none]",
+        "test_capsule_identity_field_types_must_be_validated[version-injection]",
+        "test_capsule_identity_field_types_must_be_validated[freeze-none]",
+        "test_capsule_identity_field_types_must_be_validated[freeze-dict]",
+        "test_capsule_identity_field_types_must_be_validated[freeze-str]",
+        "test_capsule_identity_field_types_must_be_validated[schema-none]",
+        "test_capsule_identity_field_types_must_be_validated[content-none]",
+        "test_capsule_identity_field_types_must_be_validated[lawful-none]",
+        "test_capsule_identity_field_types_must_be_validated[rubric-none]",
+        "test_capsule_identity_field_types_must_be_validated[split-none]"
+      ],
+      "failure_grade": "HIGHEST_RISK_ACCEPTANCE_BYPASS",
+      "source_and_locus": "CustodyCapsule/capsule_envelope_commitment/EscrowState.commit; original source lines 160-179,366-380,426-441",
+      "observed_failure": "Wrong types for version/freeze/schema/content/lawful/rubric/split digest commit; canonical JSON default=str coerces identities.",
+      "original_authority_gap": "OC4 full capsule binding intent exists but no types, digest grammar, freeze range, canonical serializer version, exception or migration policy issued.",
+      "proposed_owner_yes_contract_NOT_ISSUED": "Owner D1 YES candidate: nonempty str identity digests/schema, exact non-bool int version >=1, finite positive non-bool real freeze; validate before hash and any state write; choose TypeError/ValueError and migration explicitly.",
+      "patch_acceptance_positive_negative": "All 11 invalid field cases typed-refused with zero committed/ledger/seal changes; valid 18-field envelope and full signer pair still bind; mixed-key dict fails typed.",
+      "historical_observation_witness_that_may_flip": "test_capsule_identity_field_type_hole_is_observed",
+      "first_actual_consumer": "Sourcefree commitment/commit court only; no real C12/BP4 consumer.",
+      "backward_compatibility": "Currently accepted arbitrary version/digest/timestamp types cease; historical weak content-only signature positives remain RED.",
+      "decision_status": "OWNER_DECISION_REQUIRED",
+      "accountable_authority": "Competent original custody/projection/signature source-policy issuer, verified by incumbent Sorok HQ; not OC4/OC5 author or reviewer"
+    }
+  ],
+  "receipt_interpretation": "Frozen OC5E 110 PASS includes observations of old defects that may turn RED under repair. Preserve bytes; author a separate versioned post-issuance normative suite, do not claim blanket 159/159 green.",
+  "first_actual_consumer": "Only sourcefree OC4/OC5E test import closure; production C12/BP4/C07/Pyat same-person consumer NOT_PROVED.",
+  "test_and_permission_status": {
+    "this_worker_pytest": "NOT_RUN",
+    "original_survey": "NOT_ACCESSED",
+    "live_mac_lease": "NOT_OBSERVABLE",
+    "cross_process_C07": "NOT_REACHED",
+    "original_owner_signature": "NONE_FOUND",
+    "canonical_CAS": "HELD",
+    "source_permission": "GITHUB_DOCUMENTARY_ONLY"
+  },
+  "grades": {
+    "ENGINEERING": "DOCUMENTARY_READBACK__HISTORICAL_NATIVE_RESULTS_ATTRIBUTED__PATCH_HELD",
+    "SCIENTIFIC": "TEST_ONLY__ORIGINAL_B_ACTOR_PRACTICE_HELD",
+    "AUTHORITY": "OWNER_DECISION_REQUIRED__NO_ADOPTION"
+  }
+}
