@@ -1,5 +1,7 @@
 # NEW PYAT HQ: INVALID UNTIL FULL PERSONA-FIRST + INHERITED-METHOD ACCESSION
 
+**USER DIRECTIVE 2026-10-30 — PRODUCT COMPLETION FIRST.** [Read the user's shared cross-HQ order](../CROSS_HQ_CONTROL_ROOM/20261030_USER_FINISH_THE_WORK_NO_ADMIN_THEATER_DIRECTIVE.md): stop spending the critical path on GitHub administrative protection and control-court recursion; finish Programma Pyat original35 → F1–F8 → N11/N12 with real consumers, exact tests and truthful remaining native/source holds. No new permission to fabricate original science or quietly break active work.
+
 ## PROGRAMMA PYAT — whole source-to-PRE-V3 mandate (user-named 2026-10-30)
 
 **Start with [Programma Pyat](PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md) and its [shared Programma Rawlsing constitution](../CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md).** This names the **entire** Pyat project, not an isolated recovery audit or new phase: **R** recover every valuable historical/scientific/implementation branch and original function; **O** maintain a zoomable whole empirical/world architecture and execution map using the existing 35-wave, 1,890-cell, 101-class, F1–F8/N0–N13 and actual function/review/authority ledgers; **I** implement and integrate maximal coherent source-native/learned/structural/temporal/selected-world/N11–N12 completion campaigns, feeding real results back into R/O.

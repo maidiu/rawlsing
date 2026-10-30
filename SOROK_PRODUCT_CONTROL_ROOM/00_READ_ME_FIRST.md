@@ -1,5 +1,7 @@
 # Sorok PRE-MAIN grounding and reciprocal progress front door
 
+**USER DIRECTIVE 2026-10-30 — PRODUCT COMPLETION FIRST.** [Read the user's shared cross-HQ order](../CROSS_HQ_CONTROL_ROOM/20261030_USER_FINISH_THE_WORK_NO_ADMIN_THEATER_DIRECTIVE.md): stop treating R4 GitHub admin protection, repeat reviews and process-court recursion as prerequisites; finish Programma Sorok world/actor → C0–C12 → A0–A5, including actual person-generation/real consumer evidence and honest scientific/source limits. No new actor/science authority or live-worker disturbance.
+
 ## PROGRAMMA SOROK — whole developmental-person and human-product mandate (user-named 2026-10-30)
 
 **Start with [Programma Sorok](PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md) and the [shared Programma Rawlsing constitution](../CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md).** This names the **entire** Sorok project, not just the stranded-branch exercise, nine commissions or a Rule A/T/C9 repair: **R** recover all historical Sorok developmental/actor source, scientific alternatives, code/reviewer/negative and actual current consuming functions; **O** maintain a recursively traversable scientific and implementation map from 19 C/A, 40 M, 12 N, 16 O, 15 E and independently authorized Pyat/CAN/ADP inputs to C0–C12/A0–A5 continuing human life; **I** produce, independently test, correctly authorize and integrate maximal coherent whole-person developmental campaigns, updating R/O after returns.
