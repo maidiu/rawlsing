@@ -9,7 +9,7 @@ BRANCH: review/sorok-r3-g17-source-security-independent-replay-20261030
 EXACT SEALED STARTUP: 187fdd11963163dab03c7b061e20067ea1f99134
 TARGET ORIGINAL RETURN: 8b9a39da552a224bddf486603179f565003f38bb
 READ ENTIRE COMMISSION: WORKER_COMMISSIONS/G17I2-R3/00_COMMISSION.md
-SESSION_CUSTODY REQUIRED: device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING G17I2 | G17 independent forged-material  | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
+SESSION_CUSTODY REQUIRED: record AGENT_NAME, AGENT_ID (if exposed), AGENT_ROLE/mode explicitly and separately from harness/model.  device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING G17I2 | G17 independent forged-material  | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
 MUST_READ_NOW: G17 exact returned tree at 8b9a39da552a224bddf486603179f565003f38bb and its candidate/evidence blobs; G17 original author 90d0eb7925de54635559a879ee76fc1b97b9ff61, G17I reviewer 156b84cc8481b65c4196b42574010eb7920d6f44, F3I 97dbe712e4cce8fedd1632d9ac64b4e57a0ac25e; PRE-MAIN 299f41e97a43c67be9cc76a79fa49b48f4e12e54; C9 owner source/first consumer
 READ_IF_TRIGGERED: original source/owner and versioned first consumer, verified live Mac worktree/lease.
 BACKGROUND_LINK_ONLY: old census.
