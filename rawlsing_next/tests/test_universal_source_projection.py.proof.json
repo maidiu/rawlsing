@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "R61_SOURCE_C11_ARTIFACT_IDENTITY_CUSTODY",
+      "actual_consumer": "NativePreimageBundle.release source_artifact_ref consumed by true repeated-respondent I03 query",
+      "claimed_dependency": "Selected source SHA256 in native bundle must equal actual source artifact identity used by C11 release",
+      "positive_node": "rawlsing_next/tests/test_universal_source_projection.py::test_s3_exact_respondent_occasion_value_tuples_and_repeated_consumer",
+      "fault": {
+        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "old": "schema=SCHEMA, source_sha256=source.declared_sha256,\n        package_hash=package.package_hash, projection=projection,",
+        "new": "schema=SCHEMA, source_sha256=\"tampered-\" + source.declared_sha256,\n        package_hash=package.package_hash, projection=projection,"
+      }
+    }
+  ]
+}
