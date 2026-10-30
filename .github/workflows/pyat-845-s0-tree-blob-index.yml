@@ -1,0 +1,39 @@
+name: PYAT S0 pinned 845 stranded branches — sourcefree Git tree and blob reconciliation
+on:
+  push:
+    branches:
+      - agent/pyat-stranded-s0-845-blob-census-20261030
+  pull_request:
+    paths:
+      - 'PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/12_s0_exact_tree_blob_index.py'
+      - '.github/workflows/pyat-845-s0-tree-blob-index.yml'
+permissions:
+  contents: read
+jobs:
+  exact-s0:
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        shard: [S1, S2, S3, S4, S5]
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+      - name: Fetch receiving PRE-MAIN commit ancestry without source-data blobs
+        run: |
+          git -c protocol.version=2 fetch --unshallow --no-tags --filter=blob:none origin             '+refs/heads/integration/pre-main-reconciliation-r1:refs/remotes/origin/integration/pre-main-reconciliation-r1'
+      - name: Exact pinned source-branch HEAD, merge-base and changed blob identity
+        run: |
+          python3 PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/12_s0_exact_tree_blob_index.py             --shard "${{ matrix.shard }}" --out .pyat-s0-output
+      - name: Preserve exact branch-to-current comparison even if shard incomplete
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pyat-s0-${{ matrix.shard }}-sourcefree-path-blob-index
+          path: .pyat-s0-output/
+          if-no-files-found: warn
+          retention-days: 30
