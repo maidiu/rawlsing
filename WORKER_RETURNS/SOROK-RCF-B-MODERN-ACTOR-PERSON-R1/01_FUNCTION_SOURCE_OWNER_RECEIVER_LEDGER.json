@@ -1,0 +1,187 @@
+{
+  "schema": "SOROK_RCF_B_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER@1",
+  "status": "PARTIAL_COMPATIBILITY__BP2P4J_C12_EPISODE_EDGE_SELECTED__C9_ACTOR_AND_PERSON_HOLD",
+  "premain": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "premain_previous": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "branch": "agent/sorok-rcf-b-actor-person-first-consumer-sourceclose-20261030-r1",
+  "edges": [
+    {
+      "id": "E1",
+      "edge": "R31J/F1CR B material owner + fixed A/B/shared history -> B event",
+      "source": [
+        "R31J 64fec28c374d8f77fb0b412d0c934d798ede03e8 r31j pre-C8 sources",
+        "F1C bcea367e7dc0f2e069de71b0fe5e481de094dad5 program blob 104f5bd7826c8676192eac96753d980e35d8a80a",
+        "F1CR 03be5c225b8ec5832c1c648b9c1799419f0c4066 patched program blob bf7e625e1f208908e583ea72ebb73992ad7d19ae (NOT PRESENT AT A TREE PATH)"
+      ],
+      "data_preimage": "frozen A/B ledgers+snapshots and shared material/witness/objective; p01 blob f53ad1bffb4dcd7fc0edc27ccbd3362d64ca1aa8",
+      "contract": "F1C sourcefree nonretroactive shared-world receiver; TEST_ONLY B intervention",
+      "source_authority": "original F1C/R31J owner; NOT native B/CAN008/011",
+      "evidence_scope": "13/13 attributed outcomes; live A/B/shared mutation checks attributed; executable not committed",
+      "selected": false,
+      "real_consumer": "R31JProduct / r31j.assertion.p01 (attributed); targetless JOIN refusal read-only",
+      "hold": "F1CR executable not in committed tree; REFUSE/SILENCE/C10 targetless continuation HOLD; no native B"
+    },
+    {
+      "id": "E2",
+      "edge": "A/B shared history -> C8 event owner/receipt/access",
+      "source": [
+        "BP2P4J 5b3e6577400ea1d88971ae6b48e41a118b8059ae vendor/bp2/bp2_joined/producer.py blob 0e923996dae5940bfc8d57a9f9ddc84b148bbea9",
+        "vendor/bp2/bp2_joined/binding.py blob ed6de083f043dd85066750d36a9e2b9211bd5762",
+        "vendor/bp2/bp2_joined/ports.py blob 38751f36785fd935a7817483e2ef019c746e818a"
+      ],
+      "data_preimage": "C8 keyed journal + external watermark; OUT9 readset; C8 occurrence OCC-0001; digest 058d006c…",
+      "contract": "BP2 joined producer TEST_ONLY C8; writer version 1",
+      "source_authority": "original BP2/C8 owner; no native grant",
+      "evidence_scope": "BP2P4J 33 pass/1 skip base; fresh and literal modes; no native source",
+      "selected": true,
+      "real_consumer": "bp2p4.reunion / candidate CandidateStore / bp4.c10.receive",
+      "hold": "C8 source-native/CAN008 owner grant absent; external anchor is test-only"
+    },
+    {
+      "id": "E3",
+      "edge": "C8 -> CAN008 test-only A -> CAN011 test-only T/no-change",
+      "source": [
+        "BP2P4J vendor/bp2/vendor/c9r/candidate/transaction.py blob 1a9c15b88f0dfc130e895f33ac536487f601aadd",
+        "BP2P4J bp2p4/reunion.py blob b89eba9bdc451f433a570d35909bde6b02b4ae40",
+        "BP2P4J vendor/bp2/bp2_joined/ports.py blob 38751f36785fd935a7817483e2ef019c746e818a"
+      ],
+      "data_preimage": "TEST_ONLY rule A/T hashes aa5033ca… and 457894cf…; response/grant hashes; target row",
+      "contract": "BP2 sourcefree Rule A/T ports; C9R CandidateStore target commit",
+      "source_authority": "original CAN008/CAN011/ADP owners; none issued natively",
+      "evidence_scope": "TEST_ONLY BP2P4J positive; no native rule issuance",
+      "selected": true,
+      "real_consumer": "JoinedProducer.stage_c9 / CandidateStore",
+      "hold": "native CAN008/CAN011/ADP/SCI05 HOLD"
+    },
+    {
+      "id": "E4",
+      "edge": "CAN011/T -> C9 selected writer -> performed E2 (not offered)",
+      "source": [
+        "BP2P4J bp2p4/seed.py blob 6a80a0624853fc717adcc39e99727807c56744fb",
+        "bp2p4/reunion.py b89eba9b…",
+        "C9 R3B fac064c9 c9_actor_r3.py blob 67f34f699220ec1407e7e8f0d58ed328e88a36af",
+        "C9 R3B reader actor_reader.py blob 5ef6a278a56968b8f9ccf700ae58e636a0999b5f"
+      ],
+      "data_preimage": "C9 target 950a4c79… / consumed 4907a662… in literal mode; fresh target/consumed recomputed; E2 receipt and act inspect_with_tool",
+      "contract": "BP2P4J C9R CandidateStore (BP2 target) vs C9 R3B actor SQLite (separate contract, TEST_ONLY @1)",
+      "source_authority": "original C9/C12 and BP2 owners; C9 R3B no owner freeze",
+      "evidence_scope": "BP2P4J E2->A2 positive; C9 R3B 15 tested cases / 14-1 historical conflict; no adapter between stores",
+      "selected": false,
+      "real_consumer": "BP2P4J seed/product for E2; C9 R3B reader only for its own actor DB",
+      "hold": "C9 R3B old-count 14/1 RED, C12 perception suffix RED, no G17 handoff adapter, no durable owner C9"
+    },
+    {
+      "id": "E5",
+      "edge": "C9 -> C10 timeline",
+      "source": [
+        "BP2P4J vendor/bp4/bp4/c10.py blob 94618b7a21ef71559e34778aec2315a30b5e09b9",
+        "bp2p4/product.py blob 8f7177a6b4e3ae0cae6316a13cf57adf363e0460"
+      ],
+      "data_preimage": "C9 target row + sealed target record + actor snapshots; C10State",
+      "contract": "BP4 C10 receive over BP2P4J seed",
+      "source_authority": "original BP4/C10 owner; TEST_ONLY",
+      "evidence_scope": "BP2P4J A0-A3 tests; no native C10 targetless route",
+      "selected": true,
+      "real_consumer": "bp4.c10.receive / JoinedProduct inherited A0-A3",
+      "hold": "targetless REFUSE/SILENCE C10 path absent; native C10 HOLD"
+    },
+    {
+      "id": "E6",
+      "edge": "C10 -> C12 append/fork/cold",
+      "source": [
+        "BP2P4J vendor/bp4/bp4/store.py blob 69a58f43dc70d320f2fc476eeac324c82c37ee59",
+        "BP4 original 68b058656254234f0af02df2a592aa6f8c6a8bd2 store.py blob c94cd131f6d24737e43a2f3dd192ac2a7569eb18",
+        "BP4R candidate c12_guard.py blob e0d9d90468a9d4d62ef38859b1c2762f92421022"
+      ],
+      "data_preimage": "episode body branch_id immutable origin; SQL branch_id current location; fork prefix counts; C12 schema @1",
+      "contract": "BP4 C12 store; BP4R immutable-origin/location guard; schema @2 unsupported",
+      "source_authority": "original BP4/C12 owner; BP4R candidate not adopted",
+      "evidence_scope": "BP4R 9/9 actual test court: legitimate fork, cold reopen, forged transplant refused, @2 refused, severance/restore",
+      "selected": true,
+      "real_consumer": "GuardedC12Store.verify_store/fork; JoinedProduct",
+      "hold": "external anchor/authenticity absent; raw SQLite deletion/injection HOLD"
+    },
+    {
+      "id": "E7",
+      "edge": "C12 -> actual A0-A3 product method/renderer",
+      "source": [
+        "BP2P4J vendor/bp4/bp4/product.py blob 69cb5d7416e36b6f100ab36ffda8a8d9a92db0a8",
+        "bp2p4/product.py blob 8f7177a6b4e3ae0cae6316a13cf57adf363e0460",
+        "JoinedProduct methods: observe/say/do/attend/wait/travel/reenter/fork/other"
+      ],
+      "data_preimage": "C12 state + seed practice/clock/world; A0-A3 result dicts",
+      "contract": "BP4Product inherited; TEST_ONLY sourcefree joined product",
+      "source_authority": "original BP4/A0-A3 and BP2 owners; no native C11/C12/person",
+      "evidence_scope": "BP2P4J tests; product positive and A2 consequence; no real human A0-A5",
+      "selected": true,
+      "real_consumer": "BP4Product/JoinedProduct methods; CLI/run_joined only",
+      "hold": "no actual renderer/native human A0-A5; no C11 weld"
+    },
+    {
+      "id": "E8",
+      "edge": "G17 material/C9 handoff component",
+      "source": [
+        "G17 90d0eb79 candidate continuation.py c9318dcf…, pipeline.py fc954993…, c9_handoff_consumer.py 47e59c12…",
+        "G17I2 95f15026 candidate 8b9a39da552a224bddf486603179f565003f38bb; original reviewer 156b84cc…; tests 83f17006…"
+      ],
+      "data_preimage": "sourcefree material joint/owner canonical event; C9 handoff material payload",
+      "contract": "G17 TEST_ONLY material handoff; no durable C9/C12",
+      "source_authority": "original G17/C9 owner; G17I2 scoped green, no adoption",
+      "evidence_scope": "14/14 reviewer, 13/13 author attributed; not integrated into BP2P4J",
+      "selected": false,
+      "real_consumer": "continue_person / c9_handoff_consumer.receive_handoff (component)",
+      "hold": "M2/MP, C9 E1/RULE_A/T/E2 HOLD; no durable C9 adopter"
+    },
+    {
+      "id": "E9",
+      "edge": "M04R journaled claim provenance component",
+      "source": [
+        "M04R 8f200fd6 candidate claim_provenance.py blob d9efd3f5ba0d06430ef99f114072ba91ef32f1fc",
+        "M04 original 2309a73b, M04I2 09497812, original reviewer 3a993abc"
+      ],
+      "data_preimage": "journal ADP017_COMMIT entries and live epistemic transitions/terminal snapshot",
+      "contract": "M03/M04 TEST_ONLY claim provenance; no native CAN3",
+      "source_authority": "original M03/M04/CAN3 owner; M04R not adopted",
+      "evidence_scope": "M04R 51/51 and 587/587; 9 CAN3 RED retained; independent review pending",
+      "selected": false,
+      "real_consumer": "cell.Cell.read_owner (component)",
+      "hold": "9 CAN3 RED; no native CAN3/C9, no integration"
+    },
+    {
+      "id": "E10",
+      "edge": "OC5/C8 provenance and capsule trust",
+      "source": [
+        "OC5E reviewer 67a4f1561cdad40192f00797d66b24fc4cd91589; 49 novel + 10 previous failures",
+        "OC5 owner docs b83f474fa04402dd270fd195ed9e49601b3301d1"
+      ],
+      "data_preimage": "C8C9 capsule/provenance objects and signature/holder typing",
+      "contract": "TEST_ONLY custody protocol; no native C8 trust",
+      "source_authority": "OC4/OC5 owner; issuance held",
+      "evidence_scope": "49 RED preserved; no repair adopted",
+      "selected": false,
+      "real_consumer": "none adopted",
+      "hold": "C8 provenance/capsule trust must be owner-issued, not self-issued"
+    }
+  ],
+  "selected_sourcefree_subset": {
+    "status": "SELECTED_FOR_BOUNDED_COMPATIBILITY_ONLY",
+    "components": [
+      "BP2P4J 5b3e657 base JoinedProduct",
+      "F2 verifier 0636d257 candidate c1699c8d (scoped)",
+      "BP4R C12 guard e0d9d904 and C9 writer gate b9000cdb"
+    ],
+    "actual_evidence": "9/9 BP4R candidate court on BP2P4J base",
+    "excluded": [
+      "C9 R3B actor SQLite as BP2P4J C9 (no adapter, old-count 14/1 RED, anchor HOLD)",
+      "G17/M04R/F1CR as integrated chain (component-only; F1CR executable not committed)",
+      "Any native C12/CAN/ADP/SCI05/person claim"
+    ]
+  },
+  "whole_person_receiver": null,
+  "whole_person_reason": "No single consumer currently binds BP2P4J C8/C9/C10/C12 to G17/M04R/F1CR with a durable performer and real A0-A5. The BP4R/B2P4J subset is a sourcefree test-only edge, not a person.",
+  "grades": {
+    "engineering": "PARTIAL_COMPATIBILITY__9_9_C12_EPISODE_EDGE__OTHER_COMPONENTS_NOT_INTEGRATED",
+    "scientific": "HOLD_NATIVE_B_WORLD_RULE_A_T_PRACTICE_AND_PERSON",
+    "authority": "HOLD_ORIGINAL_OWNERS_CAS_AND_ADOPTION"
+  }
+}
