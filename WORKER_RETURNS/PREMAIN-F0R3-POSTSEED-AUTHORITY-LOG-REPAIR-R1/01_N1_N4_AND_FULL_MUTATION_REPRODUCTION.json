@@ -1,0 +1,549 @@
+{
+  "schema": "PREMAIN_F0R3_N1_N4_AND_FULL_MUTATION_REPRODUCTION@1",
+  "date": "2026-10-30",
+  "repository": "maidiu/rawlsing",
+  "role": "independent sourcefree control repair author; not reviewer, maintainer, administrator or adopter",
+  "branch": "agent/pre-main-f0r3-repair-postseed-review-cas-witnesses-r1",
+  "work_start_head": "99ad7621cc9f2b1570b4a5bced89f0964c935daa",
+  "sealed_startup": "342164a09e10aa70812299c12386ed0923308228",
+  "actual_pr_head": {
+    "sha": "59c9a7a4a4fae60d809c1ef545ff4e48906d0dd0",
+    "state": "open_draft_unmerged",
+    "base": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "readback": "authenticated GitHub API, 2026-10-30",
+    "change_from_sealed": [
+      "event log 19->32 events",
+      "flight register 19->32 workers",
+      "validator/seed/workflow unchanged"
+    ]
+  },
+  "canonical_premain": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "f0_original_return": "e5089b7da29d3c290ad1447f7b7a45cc81f0eb6e",
+  "f0r2_review": "53c4e16f5e402f452efb036878a58cd4258cd14a",
+  "model_host": {
+    "editor_harness": "Local OpenCode",
+    "harness_reported_model": "opencode-go/deepseek-v4.1-flash",
+    "selected_reasoning": "DeepSeek V4.1-Flash MAX as dispatched",
+    "max_effort_independently_attested": false,
+    "host": "macOS Darwin x86_64 local",
+    "python": "3.11.3",
+    "worktree": "isolated sparse worktree; no other worker disturbed",
+    "model_switch": false
+  },
+  "source_identity": {
+    "sealed_342164": {
+      "validator_blob": "6fa0ce132e68f1fea7d67321129a2af2627a5d94",
+      "seed_blob": "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8",
+      "events_blob": "2b899397bdac9c2e92d4db295278743e2499eca9",
+      "flight_blob": "7c20af660ce6c323e99f5dd038abf4c4ac3b5891",
+      "workflow_blob": "ce1ef40b5f2568c52a44d1ddc01a98647f3bf322"
+    },
+    "current_59c9a7a4": {
+      "validator_blob": "6fa0ce132e68f1fea7d67321129a2af2627a5d94",
+      "seed_blob": "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8",
+      "events_blob": "60fd8e26b3d8c4bd66f27900b82c9359cf4ad652",
+      "flight_blob": "9306df304a8f12029c8daacb2eb97c9fcb58df56",
+      "workflow_blob": "ce1ef40b5f2568c52a44d1ddc01a98647f3bf322"
+    },
+    "candidate": {
+      "validator_blob": "2fc1c3c7ae6113d12b70abb655ff123a6ae9c895",
+      "validator_sha256": "ab26b3a014a16d5ec0f1c3edb5cfbbe284440b9a7a6580e4bd3631b971af1abb",
+      "patch_blob": "424d87370b0e5fdfad13705335558eff37be9257",
+      "patch_sha256": "4fb4f8401e0f73c5b2b39044a5b14c10e848df6f271f4ad76bfb828f23ce3c74",
+      "tests_blob": "80eaf4feaaa34760129c7efe3a4019f67465052a",
+      "reproduce_blob": "d5ce55cbfbecf8f8da264977e9c365cd15d4f388"
+    }
+  },
+  "baseline_original": {
+    "command": "python3 CROSS_HQ_CONTROL_ROOM/BRANCH_FANIN/verify_branch_fanin.py --selftest --baseline-ref 299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "exit": 0,
+    "stdout": [
+      "First install: EVENT baseline missing; candidate seed source is separately frozen, owner approval still PENDING",
+      "First install: FLIGHT baseline missing; candidate seed source is separately frozen, owner approval still PENDING",
+      "PASS sourcefree record integrity: 19 events and 19 flights; NO ADOPTION ALLOWED",
+      "PASS: 13 mutation witnesses rejected + valid nonadopted owner-candidate stage"
+    ],
+    "grade": "13 negative witnesses + legal nonadopted candidate; does not test N1-N4"
+  },
+  "candidate_selftest_sealed": {
+    "command": "cd WORKER_RETURNS/PREMAIN-F0R3-POSTSEED-AUTHORITY-LOG-REPAIR-R1/candidate && python3 verify_branch_fanin.py --selftest --baseline-ref 299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "exit": 0,
+    "stdout": [
+      "First install: EVENT baseline missing; candidate seed source is separately frozen, owner approval still PENDING",
+      "First install: FLIGHT baseline missing; candidate seed source is separately frozen, owner approval still PENDING",
+      "PASS sourcefree record integrity: 19 events and 19 flights; NO ADOPTION ALLOWED",
+      "PASS: 20 mutation witnesses rejected + valid nonadopted owner-candidate stage"
+    ]
+  },
+  "candidate_selftest_current_head": {
+    "command": "cd WORKER_RETURNS/PREMAIN-F0R3-POSTSEED-AUTHORITY-LOG-REPAIR-R1/candidate/current_head_59c9a7a4 && python3 verify_branch_fanin.py --selftest --baseline-ref 299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "exit": 0,
+    "stdout": [
+      "First install: EVENT baseline missing; candidate seed source is separately frozen, owner approval still PENDING",
+      "First install: FLIGHT baseline missing; candidate seed source is separately frozen, owner approval still PENDING",
+      "PASS sourcefree record integrity: 32 events and 32 flights; NO ADOPTION ALLOWED",
+      "PASS: 20 mutation witnesses rejected + valid nonadopted owner-candidate stage"
+    ]
+  },
+  "unittest": {
+    "command": "cd WORKER_RETURNS/PREMAIN-F0R3-POSTSEED-AUTHORITY-LOG-REPAIR-R1/candidate && python3 test_f0r3_postseed_witnesses.py",
+    "exit": 0,
+    "suite": "12 tests OK",
+    "tail": [
+      "Ran 12 tests in 0.028s",
+      "",
+      "OK",
+      "PASS: 20 mutation witnesses rejected + valid nonadopted owner-candidate stage"
+    ]
+  },
+  "patch_apply_check": {
+    "command": "git apply --check WORKER_RETURNS/PREMAIN-F0R3-POSTSEED-AUTHORITY-LOG-REPAIR-R1/candidate/verify_branch_fanin.py.patch",
+    "exit": 0
+  },
+  "runs": {
+    "sealed_342164": {
+      "schema": "PREMAIN_F0R3_LOCAL_REPRODUCTION@1",
+      "repository": "maidiu/rawlsing",
+      "branch": "agent/pre-main-f0r3-repair-postseed-review-cas-witnesses-r1",
+      "worktree_head": "99ad7621cc9f2b1570b4a5bced89f0964c935daa",
+      "python": "3.11.3",
+      "platform": "macOS-13.2.1-x86_64-i386-64bit",
+      "original_dir": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/premain-f0r3-repair-20261030-r1/CROSS_HQ_CONTROL_ROOM/BRANCH_FANIN",
+      "candidate_dir": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/premain-f0r3-repair-20261030-r1/WORKER_RETURNS/PREMAIN-F0R3-POSTSEED-AUTHORITY-LOG-REPAIR-R1/candidate",
+      "data_dir": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/premain-f0r3-repair-20261030-r1/WORKER_RETURNS/PREMAIN-F0R3-POSTSEED-AUTHORITY-LOG-REPAIR-R1/candidate",
+      "data_files": {
+        "00_FROZEN_INITIAL_SEED.json": {
+          "git_blob": "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8",
+          "sha256": "f4ba04c43636548695fd3ac35da7afc2124ddd59606e78570e0bd0541cff83e8"
+        },
+        "01_RETURN_EVENT_LOG.json": {
+          "git_blob": "2b899397bdac9c2e92d4db295278743e2499eca9",
+          "sha256": "5877d8f7f838dc1727ff021d1989c3826d4ca6d4b8b8bf5ea9e2877838d7c9a3"
+        },
+        "02_FLIGHT_AND_PR_REGISTER.json": {
+          "git_blob": "7c20af660ce6c323e99f5dd038abf4c4ac3b5891",
+          "sha256": "38da903c888b98ce249391942eb04605667fb63aa6416a387848eb7573668aa5"
+        }
+      },
+      "source_files": {
+        "verify_branch_fanin.py": {
+          "source_git_blob": "6fa0ce132e68f1fea7d67321129a2af2627a5d94",
+          "candidate_git_blob": "2fc1c3c7ae6113d12b70abb655ff123a6ae9c895",
+          "source_sha256": "e10f366d9ea24c2d84f11abdb55618f94ac246531cbd570f5656302ad07bebac",
+          "candidate_sha256": "ab26b3a014a16d5ec0f1c3edb5cfbbe284440b9a7a6580e4bd3631b971af1abb",
+          "identical": false
+        },
+        "00_FROZEN_INITIAL_SEED.json": {
+          "source_git_blob": "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8",
+          "candidate_git_blob": "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8",
+          "source_sha256": "f4ba04c43636548695fd3ac35da7afc2124ddd59606e78570e0bd0541cff83e8",
+          "candidate_sha256": "f4ba04c43636548695fd3ac35da7afc2124ddd59606e78570e0bd0541cff83e8",
+          "identical": true
+        },
+        "01_RETURN_EVENT_LOG.json": {
+          "source_git_blob": "2b899397bdac9c2e92d4db295278743e2499eca9",
+          "candidate_git_blob": "2b899397bdac9c2e92d4db295278743e2499eca9",
+          "source_sha256": "5877d8f7f838dc1727ff021d1989c3826d4ca6d4b8b8bf5ea9e2877838d7c9a3",
+          "candidate_sha256": "5877d8f7f838dc1727ff021d1989c3826d4ca6d4b8b8bf5ea9e2877838d7c9a3",
+          "identical": true
+        },
+        "02_FLIGHT_AND_PR_REGISTER.json": {
+          "source_git_blob": "7c20af660ce6c323e99f5dd038abf4c4ac3b5891",
+          "candidate_git_blob": "7c20af660ce6c323e99f5dd038abf4c4ac3b5891",
+          "source_sha256": "38da903c888b98ce249391942eb04605667fb63aa6416a387848eb7573668aa5",
+          "candidate_sha256": "38da903c888b98ce249391942eb04605667fb63aa6416a387848eb7573668aa5",
+          "identical": true
+        }
+      },
+      "seed": {
+        "owner_approval_status": "PENDING",
+        "events": 11,
+        "workers": 11,
+        "prs": 4
+      },
+      "current_head": {
+        "events": 19,
+        "flights": 19,
+        "prs": 5,
+        "original_errors": [],
+        "candidate_errors": []
+      },
+      "cases": {
+        "N1": {
+          "original": {
+            "mutation": "N1",
+            "admitted": true,
+            "errors": []
+          },
+          "candidate": {
+            "mutation": "N1",
+            "admitted": false,
+            "errors": [
+              "FLIGHT_13_UNVERIFIED_SOURCE_AUTHORITY"
+            ]
+          }
+        },
+        "N2": {
+          "original": {
+            "mutation": "N2",
+            "admitted": true,
+            "errors": []
+          },
+          "candidate": {
+            "mutation": "N2",
+            "admitted": false,
+            "errors": [
+              "EVENT_14_SCIENCE_NONISSUER"
+            ]
+          }
+        },
+        "N3": {
+          "original": {
+            "mutation": "N3",
+            "admitted": true,
+            "errors": []
+          },
+          "candidate": {
+            "mutation": "N3",
+            "admitted": false,
+            "errors": [
+              "EVENT_19_REVIEWER_TARGET_RETURNED_ONLY"
+            ]
+          }
+        },
+        "N4": {
+          "original": {
+            "mutation": "N4",
+            "admitted": true,
+            "errors": []
+          },
+          "candidate": {
+            "mutation": "N4",
+            "admitted": false,
+            "errors": [
+              "PR_REMOTE_STATE_UNVERIFIED_519"
+            ]
+          }
+        },
+        "N5": {
+          "original": {
+            "mutation": "N5",
+            "admitted": false,
+            "errors": [
+              "FLIGHT_LOG_EXACT_SOURCE_MISMATCH_F0-RETURN-20261029"
+            ]
+          },
+          "candidate": {
+            "mutation": "N5",
+            "admitted": false,
+            "errors": [
+              "EVENT_12_APPEND_REUSES_PRIOR_IMMUTABLE_SHA",
+              "FLIGHT_LOG_EXACT_SOURCE_MISMATCH_F0-RETURN-20261029"
+            ]
+          }
+        },
+        "N6": {
+          "original": {
+            "mutation": "N6",
+            "admitted": true,
+            "errors": []
+          },
+          "candidate": {
+            "mutation": "N6",
+            "admitted": false,
+            "errors": [
+              "PR_APPEND_ORDER_513"
+            ]
+          }
+        },
+        "N7": {
+          "original": {
+            "mutation": "N7",
+            "admitted": true,
+            "errors": []
+          },
+          "candidate": {
+            "mutation": "N7",
+            "admitted": false,
+            "errors": [
+              "EVENT_14_AUTHORITY_NONISSUER"
+            ]
+          }
+        }
+      },
+      "legal_nonadopted_candidate": {
+        "original_errors": [],
+        "candidate_errors": [],
+        "state": "OWNER_ADOPTION_CANDIDATE",
+        "adoption": false
+      },
+      "legacy_13_preserved_by_original_selftest": true,
+      "candidate_selftest_witness_count": 20
+    },
+    "current_59c9a7a4": {
+      "schema": "PREMAIN_F0R3_LOCAL_REPRODUCTION@1",
+      "repository": "maidiu/rawlsing",
+      "branch": "agent/pre-main-f0r3-repair-postseed-review-cas-witnesses-r1",
+      "worktree_head": "99ad7621cc9f2b1570b4a5bced89f0964c935daa",
+      "python": "3.11.3",
+      "platform": "macOS-13.2.1-x86_64-i386-64bit",
+      "original_dir": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/premain-f0r3-repair-20261030-r1/CROSS_HQ_CONTROL_ROOM/BRANCH_FANIN",
+      "candidate_dir": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/premain-f0r3-repair-20261030-r1/WORKER_RETURNS/PREMAIN-F0R3-POSTSEED-AUTHORITY-LOG-REPAIR-R1/candidate",
+      "data_dir": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/premain-f0r3-repair-20261030-r1/WORKER_RETURNS/PREMAIN-F0R3-POSTSEED-AUTHORITY-LOG-REPAIR-R1/candidate/current_head_59c9a7a4",
+      "data_files": {
+        "00_FROZEN_INITIAL_SEED.json": {
+          "git_blob": "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8",
+          "sha256": "f4ba04c43636548695fd3ac35da7afc2124ddd59606e78570e0bd0541cff83e8"
+        },
+        "01_RETURN_EVENT_LOG.json": {
+          "git_blob": "60fd8e26b3d8c4bd66f27900b82c9359cf4ad652",
+          "sha256": "0e85c49d128e923847570c9ec3546ba3e0e1fff0cf058e006bfcc62625ff1258"
+        },
+        "02_FLIGHT_AND_PR_REGISTER.json": {
+          "git_blob": "9306df304a8f12029c8daacb2eb97c9fcb58df56",
+          "sha256": "a63fdea307093cb9aaf2e345bd1edd1c8c611c59da9b56536ebe5a30729dd136"
+        }
+      },
+      "source_files": {
+        "verify_branch_fanin.py": {
+          "source_git_blob": "6fa0ce132e68f1fea7d67321129a2af2627a5d94",
+          "candidate_git_blob": "2fc1c3c7ae6113d12b70abb655ff123a6ae9c895",
+          "source_sha256": "e10f366d9ea24c2d84f11abdb55618f94ac246531cbd570f5656302ad07bebac",
+          "candidate_sha256": "ab26b3a014a16d5ec0f1c3edb5cfbbe284440b9a7a6580e4bd3631b971af1abb",
+          "identical": false
+        },
+        "00_FROZEN_INITIAL_SEED.json": {
+          "source_git_blob": "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8",
+          "candidate_git_blob": "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8",
+          "source_sha256": "f4ba04c43636548695fd3ac35da7afc2124ddd59606e78570e0bd0541cff83e8",
+          "candidate_sha256": "f4ba04c43636548695fd3ac35da7afc2124ddd59606e78570e0bd0541cff83e8",
+          "identical": true
+        },
+        "01_RETURN_EVENT_LOG.json": {
+          "source_git_blob": "2b899397bdac9c2e92d4db295278743e2499eca9",
+          "candidate_git_blob": "2b899397bdac9c2e92d4db295278743e2499eca9",
+          "source_sha256": "5877d8f7f838dc1727ff021d1989c3826d4ca6d4b8b8bf5ea9e2877838d7c9a3",
+          "candidate_sha256": "5877d8f7f838dc1727ff021d1989c3826d4ca6d4b8b8bf5ea9e2877838d7c9a3",
+          "identical": true
+        },
+        "02_FLIGHT_AND_PR_REGISTER.json": {
+          "source_git_blob": "7c20af660ce6c323e99f5dd038abf4c4ac3b5891",
+          "candidate_git_blob": "7c20af660ce6c323e99f5dd038abf4c4ac3b5891",
+          "source_sha256": "38da903c888b98ce249391942eb04605667fb63aa6416a387848eb7573668aa5",
+          "candidate_sha256": "38da903c888b98ce249391942eb04605667fb63aa6416a387848eb7573668aa5",
+          "identical": true
+        }
+      },
+      "seed": {
+        "owner_approval_status": "PENDING",
+        "events": 11,
+        "workers": 11,
+        "prs": 4
+      },
+      "current_head": {
+        "events": 32,
+        "flights": 32,
+        "prs": 5,
+        "original_errors": [],
+        "candidate_errors": []
+      },
+      "cases": {
+        "N1": {
+          "original": {
+            "mutation": "N1",
+            "admitted": true,
+            "errors": []
+          },
+          "candidate": {
+            "mutation": "N1",
+            "admitted": false,
+            "errors": [
+              "FLIGHT_13_UNVERIFIED_SOURCE_AUTHORITY"
+            ]
+          }
+        },
+        "N2": {
+          "original": {
+            "mutation": "N2",
+            "admitted": true,
+            "errors": []
+          },
+          "candidate": {
+            "mutation": "N2",
+            "admitted": false,
+            "errors": [
+              "EVENT_14_SCIENCE_NONISSUER"
+            ]
+          }
+        },
+        "N3": {
+          "original": {
+            "mutation": "N3",
+            "admitted": true,
+            "errors": []
+          },
+          "candidate": {
+            "mutation": "N3",
+            "admitted": false,
+            "errors": [
+              "EVENT_32_REVIEWER_TARGET_RETURNED_ONLY"
+            ]
+          }
+        },
+        "N4": {
+          "original": {
+            "mutation": "N4",
+            "admitted": true,
+            "errors": []
+          },
+          "candidate": {
+            "mutation": "N4",
+            "admitted": false,
+            "errors": [
+              "PR_REMOTE_STATE_UNVERIFIED_519"
+            ]
+          }
+        },
+        "N5": {
+          "original": {
+            "mutation": "N5",
+            "admitted": false,
+            "errors": [
+              "FLIGHT_LOG_EXACT_SOURCE_MISMATCH_F0-RETURN-20261029"
+            ]
+          },
+          "candidate": {
+            "mutation": "N5",
+            "admitted": false,
+            "errors": [
+              "EVENT_12_APPEND_REUSES_PRIOR_IMMUTABLE_SHA",
+              "FLIGHT_LOG_EXACT_SOURCE_MISMATCH_F0-RETURN-20261029"
+            ]
+          }
+        },
+        "N6": {
+          "original": {
+            "mutation": "N6",
+            "admitted": true,
+            "errors": []
+          },
+          "candidate": {
+            "mutation": "N6",
+            "admitted": false,
+            "errors": [
+              "PR_APPEND_ORDER_513"
+            ]
+          }
+        },
+        "N7": {
+          "original": {
+            "mutation": "N7",
+            "admitted": true,
+            "errors": []
+          },
+          "candidate": {
+            "mutation": "N7",
+            "admitted": false,
+            "errors": [
+              "EVENT_14_AUTHORITY_NONISSUER"
+            ]
+          }
+        }
+      },
+      "legal_nonadopted_candidate": {
+        "original_errors": [],
+        "candidate_errors": [],
+        "state": "OWNER_ADOPTION_CANDIDATE",
+        "adoption": false
+      },
+      "legacy_13_preserved_by_original_selftest": true,
+      "candidate_selftest_witness_count": 20
+    }
+  },
+  "old_green_false_positive": {
+    "actual_current_ci": {
+      "run": 41082520979,
+      "job": 124155062531,
+      "name": "PRE-MAIN Branch Fan-in Receipt Integrity (sourcefree) / receipt-contract",
+      "conclusion": "success",
+      "stdout": "PASS sourcefree record integrity: 32 events and 32 flights; NO ADOPTION ALLOWED; PASS: 13 mutation witnesses rejected + valid nonadopted owner-candidate stage"
+    },
+    "actual_local_original_python_on_same_current_data": {
+      "N1": "ADMITTED",
+      "N2": "ADMITTED",
+      "N3": "ADMITTED",
+      "N4": "ADMITTED",
+      "N6": "ADMITTED",
+      "N7": "ADMITTED",
+      "N5": "REJECTED_BY_OLD_FLIGHT_SHA_MISMATCH"
+    },
+    "interpretation": "current-head green is real for the old 13-witness suite but false-positive for the four post-seed custody claims; it is not evidence of N1-N4 closure."
+  },
+  "legal_nonadopted_candidate": {
+    "state": "OWNER_ADOPTION_CANDIDATE",
+    "adoption": false,
+    "original_validator": "ACCEPTED",
+    "candidate_validator": "ACCEPTED",
+    "seed_owner_approval_status": "PENDING",
+    "interpretation": "legal nonadoption preserved; adoption remains denied offline"
+  },
+  "seed_state": {
+    "blob": "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8",
+    "owner_approval_status": "PENDING",
+    "events": 11,
+    "workers": 11,
+    "prs": 4,
+    "frozen": true
+  },
+  "admin_state": {
+    "premain_protected": false,
+    "rulesets_count": 0,
+    "protection_endpoint": "404 Branch not protected",
+    "required_status_checks": "ABSENT",
+    "sorok_md_revision": 36,
+    "sorok_md_blob": "fd6ce00595e7b1ea9bb997cf7bd9fcb4e83eccbe",
+    "sorok_json_revision": 35,
+    "sorok_json_blob": "c7fb05d8e5d0240959191041a73e76e2f14cb436",
+    "fiabc_governed_run": 41082521136,
+    "fiabc_result": "3 failed, 144 passed; same FIABC identity/packaging assertions; separate owner"
+  },
+  "witnesses": {
+    "original_13": [
+      "W1 DUPLICATE_ID",
+      "W2 ADOPTION_REQUIRES_EXTERNAL",
+      "W3 SELF_REVIEW",
+      "W4 FLIGHT_LOG_EXACT_SOURCE_MISMATCH",
+      "W5 COURT_INVALID",
+      "B1 FAKE_ADOPTED_STATUS",
+      "B2 INITIAL_WORKERS_REWRITTEN",
+      "B3 INITIAL_EVENTS_REWRITTEN",
+      "B4 INITIAL_EVENTS_REWRITTEN",
+      "B5 REVIEW_TARGET_NOT_BOUND",
+      "B6 ADOPTION_REQUIRES_EXTERNAL",
+      "B7 INITIAL_EVENTS_REWRITTEN",
+      "B8 INITIAL_PRS_REWRITTEN"
+    ],
+    "new": {
+      "N1": "UNVERIFIED_SOURCE_AUTHORITY",
+      "N2": "SCIENCE_NONISSUER",
+      "N3": "REVIEWER_TARGET_RETURNED_ONLY",
+      "N4": "PR_REMOTE_STATE_UNVERIFIED",
+      "N5": "APPEND_REUSES_PRIOR_IMMUTABLE_SHA",
+      "N6": "PR_APPEND_ORDER",
+      "N7": "AUTHORITY_NONISSUER"
+    },
+    "candidate_total": 20,
+    "positive_nonadopted_candidate": 1
+  },
+  "NOT_RUN": [
+    "candidate-branch GitHub Actions (workflow has no workflow_dispatch and no candidate PR was opened)",
+    "PR519 edit/push/merge",
+    "PRE-MAIN or F4 mutation",
+    "branch protection installation",
+    "native science/source/actor/CAN/ADP/SCI05/Pyat run",
+    "actual owner CAS and post-merge first consumer",
+    "independent MAX-effort/provider attestation"
+  ],
+  "no_self_adoption": true,
+  "push_readback": "reported in final HQ message after push and git ls-remote"
+}
