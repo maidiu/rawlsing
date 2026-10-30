@@ -1,0 +1,255 @@
+{
+  "schema": "SOROK_BP4_C12_WRITER_VERIFIER_COMPATIBILITY_MATRIX@1",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/sorok-bp4-c12-chain-authenticity-writer-compatibility-r1",
+  "sealed_startup": "342164a09e10aa70812299c12386ed0923308228",
+  "commission_head": "37b3e62a6b30da028531e2d94e6f33aabd1dd72a",
+  "generated_for": "WORKER_RETURNS/SOROK-BP4-C12-CHAIN-AUTHENTICITY-OWNER-COURT-R1",
+  "identity": {
+    "actual_worker_model": "OpenCode / opencode-go/deepseek-v4.1-flash",
+    "model_switch": false,
+    "harness_switch": false,
+    "user_selected_local_codex_gpt6_high_verified": false,
+    "max_high_effort_independently_verified": false,
+    "host": "macOS x86_64",
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "sqlite": "3.40.1"
+  },
+  "source_cuts": {
+    "f2_author_return": "0636d257f588f8874e65b2cb183d1d47c7f53327",
+    "f2i_independent_review_branch_head": "26cf53526b7d290a712d1e2be5852e0ed5668b7a",
+    "original_bp2p4j": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+    "original_bp2p4ji": "3212d716ce66586527c258632ef10c3ff4489803",
+    "f2_verifier_candidate_blob": "c1699c8da5e944ed079708e272c3af50d5a30a44",
+    "f2_new_test_blob": "ebe1e8287f9b8485b6c862b66b6c2a9dafcf59aa",
+    "join_e_publication_commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+    "c9_writer_reader_commit": "1e99681f58086f2784834df1186cfba71a2c50b9",
+    "c9_citation_commit": "5ea806bd0e3d4cb87b81cef7b159ebad06adda9d",
+    "c12_perception_fork_repair": "68b058656254234f0af02df2a592aa6f8c6a8bd2",
+    "pre_main_read_only": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "hr1_conditional_handoff": "40df1e61fb32f9210839d8ddfa9f8bf9a47d7621",
+    "pre_main_has_c12_verifier": false,
+    "old_join_v_acceptance_transferred": false
+  },
+  "episode_id_law": {
+    "writer_schema": "BP4_C12_STORE@1",
+    "writer_source": "vendor/bp4/bp4/store.py::C12Store.append_episode at 5b3e657",
+    "hash_preimage": "episode body excluding top-level hash and excluding post-hash episode_id",
+    "hash_algorithm": "bp1.canon.digest over canonical JSON",
+    "lawful_episode_id": "TEST_ONLY_BP4_EP_ + stored body hash",
+    "column_and_body_requirement": "episode.episode_id column and body.episode_id must both equal the derivation; both are checked by C12_GUARD_READER@1",
+    "legacy_forms": "REFUSED by the F2 verifier and by this guard; classify_episode_ids reports them without rewriting",
+    "legacy_migration": "OWNER_ISSUED_MIGRATION_REQUIRED",
+    "v2_writer": "UNISSUED; no owner-issued schema change exists; reader fails closed on any meta schema other than BP4_C12_STORE@1"
+  },
+  "writer_reader_matrix": [
+    {
+      "id": "W1-R0",
+      "writer": "BP4_C12_STORE@1 original writer",
+      "reader": "BP4 C12Store.verify (original)",
+      "episode_preimage": "SELF_REFERENTIAL_RED",
+      "episode_id_column_check": false,
+      "schema_handshake": false,
+      "fork_perception_prefix": false,
+      "anchor": false,
+      "verdict": "INCOMPATIBLE_SELF_REFERENTIAL",
+      "evidence": "valid SAY: upstream ok=false, errors episode:0, world_event:0, world_event:1, checkpoint:0, checkpoint:1"
+    },
+    {
+      "id": "W1-R1",
+      "writer": "BP4_C12_STORE@1 original writer",
+      "reader": "bp2p4.c12_verify F2 candidate c1699c8d",
+      "episode_preimage": "PASS_EXCLUDES_HASH_AND_EPISODE_ID",
+      "episode_id_column_check": "BODY_ONLY; F2 checks body.episode_id derivation, not the episode_id column",
+      "schema_handshake": false,
+      "fork_perception_prefix": false,
+      "anchor": false,
+      "verdict": "COMPATIBLE_CONTENT_SCOPED__NO_AUTHENTICITY_OR_COMPLETENESS",
+      "evidence": "focused valid-SAY test RED on original, GREEN on F2; 5 new tests; 37 passed 1 typed skip with F2 in this checkout"
+    },
+    {
+      "id": "W1-R2",
+      "writer": "BP4_C12_STORE@1 original writer",
+      "reader": "68b058 QualifiedC12Store / candidate store.py",
+      "episode_preimage": "PASS_EXCLUDES_HASH_AND_EPISODE_ID",
+      "episode_id_column_check": "NO DERIVATION CHECK; any episode_id is accepted if body hash is self-consistent",
+      "schema_handshake": false,
+      "fork_perception_prefix": "PASS: BP4_C12_FORK_ROOT@2, all four tables, perception clocks, atomic savepoint",
+      "anchor": false,
+      "verdict": "COMPATIBLE_CONTENT_FORK_SCOPED__LEGACY_ID_AND_SCHEMA_UNCHECKED",
+      "evidence": "8/8 fork-integrity tests pass; source code inspected"
+    },
+    {
+      "id": "W1-R3",
+      "writer": "BP4_C12_STORE@1 original writer",
+      "reader": "C12_GUARD_READER@1 (this candidate)",
+      "episode_preimage": "PASS_EXCLUDES_HASH_AND_EPISODE_ID",
+      "episode_id_column_check": "PASS: column and body both equal TEST_ONLY_BP4_EP_ + hash",
+      "schema_handshake": "PASS for @1; unknown user_version/application_id/schema fail closed",
+      "fork_perception_prefix": "PASS: @2 prefix, counts, all four table identities, perception clocks, ancestry, atomic savepoint",
+      "anchor": "FAIL_CLOSED_HOLD until owner-issued anchor and monotonic counter",
+      "verdict": "COMPATIBLE_CONTENT_SCHEMA_FORK_SCOPED__AUTHENTICITY_COMPLETENESS_HOLD",
+      "evidence": "11 guard tests; 48 passed 1 typed skip in combined suite"
+    },
+    {
+      "id": "WLEG-R0",
+      "writer": "hypothetical legacy episode id prefix",
+      "reader": "BP4 original / 68b058",
+      "verdict": "ACCEPTED_OR_SELF_REFERENTIAL__UNSAFE",
+      "evidence": "original is self-referential; 68b058 does not validate the prefix"
+    },
+    {
+      "id": "WLEG-R1",
+      "writer": "hypothetical legacy episode id prefix",
+      "reader": "F2 c1699c8d / C12_GUARD_READER@1",
+      "verdict": "REFUSED",
+      "evidence": "F2: episode:0:episode_id_mismatch; guard: episode:0:episode_id_column_mismatch and OWNER_ISSUED_MIGRATION_REQUIRED"
+    },
+    {
+      "id": "W2-R0",
+      "writer": "hypothetical BP4_C12_STORE@2",
+      "reader": "BP4 original / F2 / 68b058",
+      "verdict": "UNKNOWN_SCHEMA_BLINDLY_READ__UNSAFE",
+      "evidence": "no reader checks meta.schema; this candidate is the only tested reader that refuses"
+    },
+    {
+      "id": "W2-R3",
+      "writer": "hypothetical BP4_C12_STORE@2",
+      "reader": "C12_GUARD_READER@1",
+      "verdict": "REFUSED_SCHEMA_VERSION_UNSUPPORTED",
+      "evidence": "check_schema returns schema_version_unsupported:BP4_C12_STORE@2; fork refuses SCHEMA_UNSUPPORTED"
+    },
+    {
+      "id": "C9ACTOR-C9MIRROR",
+      "writer": "C9_ACTOR_AUTHORITY_R3@1",
+      "reader": "C9-R3 ActorAuthority and MirrorStore",
+      "verdict": "SELF_CONSISTENT_TEST_ONLY__11 PASS 4 TYPED SKIP IN THIS CHECKOUT",
+      "evidence": "C9-R3 tests; skips are S36 source unavailable (1) and C12 source unavailable (3); 15-pass claim not reproducible"
+    },
+    {
+      "id": "C9MIRROR-C12V1",
+      "writer": "C12_ACTOR_MIRROR_R3@1 mirror projecting BP4_C12_STORE@1",
+      "reader": "C9 MirrorStore / c12_fork_guard",
+      "verdict": "DOMAIN_COMPATIBLE__NO_CROSS_DATABASE_ACID__PERCEPTION_SUFFIX_HELD",
+      "evidence": "mirror_meta c12_source_domain=BP4_C12_STORE@1; normal guard FORK_READY; perception-only suffix guard FORK_HELD/C12_PERCEPTION_ONLY_SUFFIX; guarded store forks at clock 11 with VERIFIED prefix"
+    },
+    {
+      "id": "C9MIRROR-C12V2",
+      "writer": "hypothetical BP4_C12_STORE@2",
+      "reader": "C9 mirror declared domain @1",
+      "verdict": "VERSION_INCOMPATIBLE",
+      "evidence": "check_c9_mirror_handshake refuses c9_mirror_c12_domain_mismatch; no owner migration issued"
+    }
+  ],
+  "fork_and_perception_law": {
+    "original_defect": "fork_clock used only episode/world/checkpoint last clock; rows copied with clock<=fork_clock; a perception row at clock 11 with non-perception last clock 10 is lost",
+    "reproduced": true,
+    "repair": "fork_clock = max(non-perception last clock, max perception clock); at the fork instant copy every existing row from all four tables; bind parent branch/root, fork clock, per-table counts and full row identities in BP4_C12_FORK_ROOT@2; copy inside a SQLite savepoint",
+    "verification": "walk the ancestry; require prefix equality for each table; require root hash, counts, fork clock and created clock to match; legacy/unknown root prefix => LEGACY_HELD; tampered prefix => INVALID",
+    "perception_clock_rule": "perception is part of the branch clock and fork cut; C9 c12_fork_guard may remain conservatively FORK_HELD for a perception-only suffix until the C9 owner decides",
+    "atomicity": "a failed copy rolls back the branch row and all copied rows; an outer savepoint may roll back the whole fork; a concurrent writer either commits before the captured cut or is refused"
+  },
+  "two_store_atomicity": {
+    "stores": ["C9_ACTOR_AUTHORITY_R3@1 (C9 actor database)", "C12_ACTOR_MIRROR_R3@1 (mirror database)", "BP4_C12_STORE@1 (C12 source database)"],
+    "cross_database_acid": false,
+    "commit_protocol": [
+      "C9 receipt and projection_outbox PENDING commit in the same C9 SQLite transaction",
+      "mirror projection is idempotent on (c12_branch_id, c9_seq) and (c12_branch_id, c9_receipt_hash)",
+      "a mirror watermark is CLEAN only when the exact receipt/projection matches and the outbox is ACKED",
+      "a crash after C9 commit leaves PENDING or PROJECTED plus SYNC_HELD; it must never be read as C12-materialized",
+      "C12 root hash and base perception identity must match the mirror branch before a fork is considered ready"
+    ],
+    "reader_rule": "two_store_readiness returns READY only for matching schema domains, watermark CLEAN and outbox ACKED; all other states are SYNC_HELD",
+    "owner_gate": "a production adapter must bind the frozen C9 actor domain, the separate C12 source and the mirror without claiming cross-database ACID"
+  },
+  "anchor_boundary": {
+    "status": "HELD_UNISSUED",
+    "schema": "SOROK_C12_EXTERNAL_ANCHOR@1",
+    "payload": {
+      "reader_version": "C12_GUARD_READER@1",
+      "branch_id": "exact branch",
+      "chain": "full ordered identity digest over episode/world_event/perception/checkpoint including perception clock and channel",
+      "counts": "per-table counts",
+      "fork_status": "VERIFIED/LEGACY_HELD/INVALID"
+    },
+    "issuer": "original BP4/C12 owner or an owner-designated independent anchor custodian; NOT this worker and NOT the C12 writer process",
+    "trust_root": "owner-issued public key/certificate or equivalent, pinned out of band; no key is present in the repository or database",
+    "signature": "detached signature over the exact anchor payload",
+    "rollback": "monotonic anchor sequence maintained outside the database by the owner/custodian; an older signed anchor is refused",
+    "coverage_limit": "an anchor proves the chain only up to the anchored point; later rows require a later anchor",
+    "same_user_hmac_witness": "NOT a security boundary; the 68b058 TEST_ONLY witness explicitly holds TRUST_CUSTODY_HOLD",
+    "fail_closed_codes": ["OWNER_ANCHOR_REQUIRED", "ANCHOR_MALFORMED", "ANCHOR_SCHEMA_UNSUPPORTED", "ANCHOR_PAYLOAD_MISMATCH", "ANCHOR_ROLLBACK_WINDOW_UNPROVEN", "ANCHOR_ROLLBACK", "OWNER_TRUST_ROOT_ABSENT", "ANCHOR_SIGNATURE_INVALID"]
+  },
+  "checkable_vs_authenticated": {
+    "content_hash": "proves only that a stored preimage matches a stored hash; an attacker who can write SQLite can supply both",
+    "derived_episode_id": "proves the row follows the pinned writer derivation; it does not prove the writer's authority",
+    "chain_digest": "detects a change only when compared to a trusted copy; unkeyed and not an anchor",
+    "fork_root": "proves a child prefix and perception set match its parent at the declared cut; does not prove the parent is authentic",
+    "external_anchor": "the only object that can authenticate a chain state and detect deletion/injection/rehash against an independent owner; currently UNISSUED"
+  },
+  "adversarial_probes": {
+    "valid_say": {
+      "episode_hash": "c75042dacaa6f4b1843c63f5840ed91f3573b17ce344483bd607b083328614be",
+      "episode_id": "TEST_ONLY_BP4_EP_c75042dacaa6f4b1843c63f5840ed91f3573b17ce344483bd607b083328614be",
+      "independent_verify_ok": true,
+      "upstream_verify_ok": false,
+      "upstream_errors": ["episode:0", "world_event:0", "world_event:1", "checkpoint:0", "checkpoint:1"]
+    },
+    "raw_deletion": {"deleted": 1, "content_verify_ok": true, "episode_count": 0, "chain_digest_changed": true, "anchor_payload_changed": true},
+    "injected_world_event": {"content_verify_ok": true, "errors": [], "anchor_payload_changed": true},
+    "fully_rehashed_episode": {"content_verify_ok": true, "errors": [], "new_event_id": "FORGED_EVENT_ID", "new_episode_id": "TEST_ONLY_BP4_EP_6810b0911571a53106253f365433f982ea13d0297a13867bb41db31484b269c8", "anchor_payload_changed": true},
+    "legacy_episode_id": {"f2_verify_ok": false, "f2_error": "episode:0:episode_id_mismatch", "guard_refused": true},
+    "perception_channel_substitution": {"content_verify_ok": true, "chain_digest_changed": true, "anchor_payload_changed": true},
+    "fork_perception_suffix": {"original_child_perceptions": 1, "guarded_child_perceptions": 2, "guarded_fork_clock": 11, "guarded_fork_status": "VERIFIED", "c9_guard_state": "FORK_HELD", "c9_guard_code": "C12_PERCEPTION_ONLY_SUFFIX"}
+  },
+  "owner_decisions": [
+    {
+      "priority": 1,
+      "decision": "Adopt or reject F2 blob c1699c8d and test ebe1e828 at base 5b3e657.",
+      "owner": "Original BP2P4J verifier owner and BP4/C12 store owner",
+      "acceptance": "owner replay; no reliance on this worker's runtime"
+    },
+    {
+      "priority": 2,
+      "decision": "Repair upstream BP4 C12Store.verify or retain its self-referential RED as a separate owner HOLD.",
+      "owner": "BP4/C12 store owner",
+      "acceptance": "upstream and independent verification agree on every row type for a valid episode"
+    },
+    {
+      "priority": 3,
+      "decision": "Confirm TEST_ONLY_BP4_EP_ + body hash as the sole lawful episode id; decide legacy refusal vs owner-issued migration.",
+      "owner": "BP2P4J schema/writer owner",
+      "acceptance": "exact derivation and writer migration/refusal policy with tests"
+    },
+    {
+      "priority": 4,
+      "decision": "Accept or reject BP4_C12_FORK_ROOT@2 and perception-inclusive fork clocks; decide C9 c12_fork_guard relaxation.",
+      "owner": "BP4/C12 and C9 owners",
+      "acceptance": "same perception-only suffix is either FORK_READY under the repaired store or permanently FORK_HELD"
+    },
+    {
+      "priority": 5,
+      "decision": "Issue a real anchor trust root, issuer, protected storage and monotonic counter; or explicitly keep C12 authenticity/completeness unissued.",
+      "owner": "Original BP4/C12 owner and independent anchor custodian",
+      "acceptance": "deletion, injection and full rehash fail against the anchored chain; rollback fails against the monotonic counter"
+    },
+    {
+      "priority": 6,
+      "decision": "Keep science at TEST_ONLY performed E2; issue no native practice, person, C11/C12 or production claim.",
+      "owner": "Sorok HQ and native CAN/ADP/Pyat/C11/C12 owners",
+      "acceptance": "no native grant on this evidence"
+    }
+  ],
+  "courts": {
+    "engineering": "PASS_SCOPED_CONTENT_SCHEMA_FORK__AUTHENTICITY_COMPLETENESS_HOLD__NO_NATIVE",
+    "science": "HOLD__TEST_ONLY_E2_ONLY__NO_NATIVE_PRACTICE_ACQUISITION",
+    "authority": "HOLD__NO_ADOPTION__ORIGINAL_OWNER_AND_INDEPENDENT_ANCHOR_REQUIRED"
+  },
+  "first_consumer": {
+    "f2": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/tests/test_joined_security.py plus the new focused test",
+    "candidate": "tests/test_c12_guard.py",
+    "c9_c12": "C9-R3 c12_fork_guard and MirrorStore court",
+    "native_production": "NOT_PROVED"
+  }
+}

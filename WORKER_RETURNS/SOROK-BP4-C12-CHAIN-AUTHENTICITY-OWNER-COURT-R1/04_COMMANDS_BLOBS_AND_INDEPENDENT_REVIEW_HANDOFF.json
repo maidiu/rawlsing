@@ -1,0 +1,345 @@
+{
+  "schema": "SOROK_BP4_C12_COMMANDS_BLOBS_AND_REVIEW_HANDOFF@1",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/sorok-bp4-c12-chain-authenticity-writer-compatibility-r1",
+  "sealed_startup": "342164a09e10aa70812299c12386ed0923308228",
+  "commission_head": "37b3e62a6b30da028531e2d94e6f33aabd1dd72a",
+  "return_commit": "REPORTED_AFTER_PUSH__A_COMMIT_CANNOT_CONTAIN_ITS_OWN_SHA",
+  "environment": {
+    "host": "macOS x86_64",
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "sqlite": "3.40.1",
+    "model": "OpenCode / opencode-go/deepseek-v4.1-flash",
+    "model_or_harness_switch": false,
+    "local_codex_gpt6_high_selected_and_proven": false,
+    "max_high_effort_independently_verified": false,
+    "notes": "No verified local Codex/GPT-6 High selection was supplied. The actual worker is the model above. Effort level is not independently verifiable from inside the session."
+  },
+  "source_blobs": [
+    {
+      "role": "original BP2P4J verifier",
+      "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+      "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/c12_verify.py",
+      "git_blob_sha1": "b8e7cf397dbbbc37aa0a63ce9e0d7ba27a509cd3",
+      "sha256": "4456db64e88d234b0a774a6f3787c52472076cb62654959c160ac4b3d15317ce"
+    },
+    {
+      "role": "original BP4 C12 store",
+      "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+      "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp4/bp4/store.py",
+      "git_blob_sha1": "69a58f43dc70d320f2fc476eeac324c82c37ee59",
+      "sha256": "bb7bd721fa6b021a5b5163427495fd308236788d1738b8326f9f1093159b3c8b"
+    },
+    {
+      "role": "original joined security court",
+      "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+      "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/tests/test_joined_security.py",
+      "git_blob_sha1": "9cffe8a95d23492053f5ccd612128f0d02a96ed9",
+      "sha256": "99a16128e693eb547a82d4bdcf0867787ee5aa49d8b4aec2a68d912600719f5a"
+    },
+    {
+      "role": "F2 preimage candidate",
+      "commit": "0636d257f588f8874e65b2cb183d1d47c7f53327",
+      "path": "WORKER_RETURNS/SOROK-HR1-F2-BP2P4J-EPISODE-VERIFY-REPAIR-R1/candidate/bp2p4/c12_verify.py",
+      "git_blob_sha1": "c1699c8da5e944ed079708e272c3af50d5a30a44",
+      "sha256": "6ad07d75f3ebb785e847e761e2db65df37abf8eea72559df3a6c54f031141d20"
+    },
+    {
+      "role": "F2 focused test",
+      "commit": "0636d257f588f8874e65b2cb183d1d47c7f53327",
+      "path": "WORKER_RETURNS/SOROK-HR1-F2-BP2P4J-EPISODE-VERIFY-REPAIR-R1/candidate/tests/test_episode_verifier_regression.py",
+      "git_blob_sha1": "ebe1e8287f9b8485b6c862b66b6c2a9dafcf59aa",
+      "sha256": "b55f148f5623458259c7fe3b05b340c19c3bc1a5f721a12145f50df7caa28c58"
+    },
+    {
+      "role": "F2 return",
+      "commit": "0636d257f588f8874e65b2cb183d1d47c7f53327",
+      "path": "WORKER_RETURNS/SOROK-HR1-F2-BP2P4J-EPISODE-VERIFY-REPAIR-R1/00_RETURN.md",
+      "git_blob_sha1": "551141657460eeb1fd369b33b57e8b2643337c94",
+      "sha256": "93274ce9aa404c36053df73b6541276e0dae35f41d0598a770b5d16dfe6a1076"
+    },
+    {
+      "role": "F2I hostile verdict",
+      "commit": "26cf53526b7d290a712d1e2be5852e0ed5668b7a",
+      "path": "WORKER_RETURNS/SOROK-HR1-F2I-INDEPENDENT-VERIFIER-REPLAY-R1/00_HOSTILE_VERIFIER_VERDICT.md",
+      "git_blob_sha1": "f2e343dd2f86c199eef7c752e38ddba7aac050c7",
+      "sha256": "89defc17bdd306497babc285cb22276266f6acbaf5265bf1f63260a8c1a2c45d"
+    },
+    {
+      "role": "F2I adversarial residuals",
+      "commit": "26cf53526b7d290a712d1e2be5852e0ed5668b7a",
+      "path": "WORKER_RETURNS/SOROK-HR1-F2I-INDEPENDENT-VERIFIER-REPLAY-R1/02_ADVERSARIAL_FORGERY_AND_RESIDUAL_HOLDS.md",
+      "git_blob_sha1": "d4c607ec498fa18ae6b36db14ee086780e6aaacd",
+      "sha256": "762f383015f0f02cce10cf1ec503c36b5c9a1eb5bd4ed59bd32b586aab40fe9f"
+    },
+    {
+      "role": "C9-R3 return",
+      "commit": "1e99681f58086f2784834df1186cfba71a2c50b9",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/00_RETURN.md",
+      "git_blob_sha1": "2ce8e9d7a5284c44982edef1f0209ee8eebaea71",
+      "sha256": "72dc37964d44e4c0758906278da6d88e7dd449fcb4febb1046030c48aa1d37e2"
+    },
+    {
+      "role": "C9-R3 actor helper",
+      "commit": "1e99681f58086f2784834df1186cfba71a2c50b9",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/c9_actor_r3.py",
+      "git_blob_sha1": "67f34f699220ec1407e7e8f0d58ed328e88a36af",
+      "sha256": "ee4765e28d80531e6b5450296ed209ef4e3303b827910bbf20b73dfaba52725e"
+    },
+    {
+      "role": "C9-R3 actor schema",
+      "commit": "1e99681f58086f2784834df1186cfba71a2c50b9",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/schema_actor_r3.sql",
+      "git_blob_sha1": "a5189ecd8f953952210dd3e6175a80e211b10647",
+      "sha256": "0ae69ef5b76177950c0b9c40e7bb20db11cf41d4697a5e4a1d6b08b459c82b90"
+    },
+    {
+      "role": "C9-R3 mirror schema",
+      "commit": "1e99681f58086f2784834df1186cfba71a2c50b9",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/schema_mirror_r3.sql",
+      "git_blob_sha1": "8e9d978b57740b3a5fb2ca4c42fb2c3365c594c1",
+      "sha256": "5f3f2895af2a5443dd87ade6714675677b96be23be15544714fdc16e12f58821"
+    },
+    {
+      "role": "C9-R3 tests",
+      "commit": "1e99681f58086f2784834df1186cfba71a2c50b9",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/tests/test_c9_r3.py",
+      "git_blob_sha1": "c796524cde49306d4e7456b3e30f942323c0fd41",
+      "sha256": "35b8affe9256314619d7695321b4d5562a1c0cc8631a5740516e013ceff69b46"
+    },
+    {
+      "role": "68b058 C12 fork repair store",
+      "commit": "68b058656254234f0af02df2a592aa6f8c6a8bd2",
+      "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/store.py",
+      "git_blob_sha1": "c94cd131f6d24737e43a2f3dd192ac2a7569eb18",
+      "sha256": "872df999b3e6ffcb4a168317cc2591ec6f79f73f9ce7fffc13b24caead7315d4"
+    },
+    {
+      "role": "68b058 C12 integrity witness",
+      "commit": "68b058656254234f0af02df2a592aa6f8c6a8bd2",
+      "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/r26e/c12_integrity.py",
+      "git_blob_sha1": "402c2b02ad21ee03d9ca40ee58d8535e9ff183ac",
+      "sha256": "7d046a5bf9d49cbce1f3e5e85aafee56715be712b576063b98bb78ed378e508d"
+    },
+    {
+      "role": "68b058 fork tests",
+      "commit": "68b058656254234f0af02df2a592aa6f8c6a8bd2",
+      "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_c12_fork_integrity.py",
+      "git_blob_sha1": "78626103ded66860663c5f9a1f83cd0765eab90e",
+      "sha256": "50431d790e34a4adf28df413cb1960b953bd75b905c0a29f3614287ee627af4f"
+    },
+    {
+      "role": "HR1 conditional handoff",
+      "commit": "40df1e61fb32f9210839d8ddfa9f8bf9a47d7621",
+      "path": "WORKER_RETURNS/SOROK-294-R2-HR1/06_CONDITIONAL_REVIEW_HANDOFF.json",
+      "git_blob_sha1": "9050883dac972ed516b41744cce8de98d7a81aa1",
+      "sha256": "3896f78db7e815ad565f2916d5b10c094ff06d5a21b339cc7c036e638e7acb63"
+    },
+    {
+      "role": "C12 guard candidate (not committed; exact patch in 03)",
+      "commit": "EXECUTED_AT_5b3e657_AS_PATCH",
+      "path": "bp2p4/c12_guard.py",
+      "git_blob_sha1": "a6a8de75ad92967e9fde354d76adce8b9572217e",
+      "sha256": "7fd5dd55912e5d8a16ece9eb47909728fc69ca5031064c809b6d2673232a8021"
+    },
+    {
+      "role": "C12 guard test (not committed; exact patch in 03)",
+      "commit": "EXECUTED_AT_5b3e657_AS_PATCH",
+      "path": "tests/test_c12_guard.py",
+      "git_blob_sha1": "8ca11491af25b98825c88f1355e391ce82659ab7",
+      "sha256": "fa4b6d8e347be254a40bdf9e0aaa8ee077c8a4ea3fdd11fb8bf5422df91ca82a"
+    },
+    {
+      "role": "combined candidate patch",
+      "commit": "EXECUTED_AT_5b3e657_AS_PATCH",
+      "path": "03_BOUNDED_SOURCEFREE_CODE_OR_EXACT_OWNER_HOLD.md code blocks",
+      "git_blob_sha1": "NOT_A_GIT_BLOB",
+      "sha256": "00b365d660a97957a28b684e5b8454b60cd7ec0fa94652074d8a9f1a452ac194"
+    },
+    {
+      "role": "F2I replay custody JSON",
+      "commit": "26cf53526b7d290a712d1e2be5852e0ed5668b7a",
+      "path": "WORKER_RETURNS/SOROK-HR1-F2I-INDEPENDENT-VERIFIER-REPLAY-R1/01_REPLAYED_TESTS_JUNIT_AND_BLOB_CUSTODY.json",
+      "git_blob_sha1": "009be30dbfdfafc3372b0fb84b3e00f667378223",
+      "sha256": "23cbed490c3d2bac5839c513a45e28882deb39bc3c56a402ae363adf02997cb7"
+    },
+    {
+      "role": "F2I owner handoff",
+      "commit": "26cf53526b7d290a712d1e2be5852e0ed5668b7a",
+      "path": "WORKER_RETURNS/SOROK-HR1-F2I-INDEPENDENT-VERIFIER-REPLAY-R1/03_OWNER_NEXT_ACCEPTANCE_CUT_AND_HANDOFF.json",
+      "git_blob_sha1": "f12dba668784f053dc9be2b01b4249efb6ac7f13",
+      "sha256": "6f878966a9940f1ff288d753f8c333d5d87db1d473d86d94f1b701d76fa040d3"
+    },
+    {
+      "role": "F2 candidate manifest",
+      "commit": "0636d257f588f8874e65b2cb183d1d47c7f53327",
+      "path": "WORKER_RETURNS/SOROK-HR1-F2-BP2P4J-EPISODE-VERIFY-REPAIR-R1/01_CANDIDATE_SOURCE_HASH_AND_CHANGED_PATHS.json",
+      "git_blob_sha1": "234733c423a8a98e369389998738586d4e11cf2c",
+      "sha256": "a95976df6bffc4f8d888f01bd5a820efe75a831b9a1871de8eb8a7268c2f73e9"
+    },
+    {
+      "role": "F2 regression commands",
+      "commit": "0636d257f588f8874e65b2cb183d1d47c7f53327",
+      "path": "WORKER_RETURNS/SOROK-HR1-F2-BP2P4J-EPISODE-VERIFY-REPAIR-R1/02_REGRESSION_COMMANDS_JUNIT_AND_FROZEN_NEGATIVES.md",
+      "git_blob_sha1": "fc4b2e89392cf97ac10f2b8823b1756fdcb52ea0",
+      "sha256": "dd18b3807962a2836dc7e3e710fae5c79c1828cad19fec60a04ec96b8eec464e"
+    },
+    {
+      "role": "F2 owner handoff",
+      "commit": "0636d257f588f8874e65b2cb183d1d47c7f53327",
+      "path": "WORKER_RETURNS/SOROK-HR1-F2-BP2P4J-EPISODE-VERIFY-REPAIR-R1/03_EXACT_C12_OWNER_AND_INDEPENDENT_REVIEW_HANDOFF.md",
+      "git_blob_sha1": "0571cc57cf0af98d2cc5549a1185c5683d399a31",
+      "sha256": "c08f629155c1a18468f9d85ac7b0bf47829bf462871b49765041fc747cf32235"
+    },
+    {
+      "role": "JOIN-E publication receipt",
+      "commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/PUBLICATION_RECEIPT.json",
+      "git_blob_sha1": "4120bf4281c56e22429eb674efde6b57c157e284",
+      "sha256": "a3cfcd404479fb4f6a3ae3aecd01f206d75ddb2aa7d55f379bf3056a6a26238b"
+    }
+  ],
+  "commands": [
+    {
+      "id": "C01",
+      "command": "git worktree add --detach /private/tmp/bp4c12-f2-base 5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+      "exit": 0,
+      "result": "isolated base checkout; original sources unchanged"
+    },
+    {
+      "id": "C02",
+      "command": "PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests -v",
+      "cwd": "/private/tmp/bp4c12-f2-base/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1",
+      "exit": 0,
+      "result": "32 passed, 1 skipped; skip = BP2_ORIGIN_RUNTIME_ABSENT (local-only literal cross-check); F2's 33-pass claim not reproduced"
+    },
+    {
+      "id": "C03",
+      "command": "PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests/test_episode_verifier_regression.py::test_valid_say_episode_is_green_and_preserves_the_post_hash_id -q",
+      "cwd": "same",
+      "exit": 1,
+      "result": "1 failed: episode:0:body_hash_mismatch on the unmodified verifier; exact RED reproduced"
+    },
+    {
+      "id": "C04",
+      "command": "git show 0636d257...:WORKER_RETURNS/SOROK-HR1-F2-BP2P4J-EPISODE-VERIFY-REPAIR-R1/candidate/tests/test_episode_verifier_regression.py > tests/test_episode_verifier_regression.py; apply F2 verifier; PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests -v",
+      "cwd": "same",
+      "exit": 0,
+      "result": "37 passed, 1 skipped"
+    },
+    {
+      "id": "C05",
+      "command": "git apply -p1 --directory=WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1 /private/tmp/c12_guard_candidate.patch; PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests/test_c12_guard.py -v",
+      "cwd": "same, with guard candidate",
+      "exit": 0,
+      "result": "11 passed"
+    },
+    {
+      "id": "C06",
+      "command": "PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests -v",
+      "cwd": "same, with F2 + guard",
+      "exit": 0,
+      "result": "48 passed, 1 skipped"
+    },
+    {
+      "id": "C07",
+      "command": "PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 /private/tmp/bp4c12-probe.py",
+      "cwd": "same, with F2 candidate",
+      "exit": 0,
+      "result": "valid SAY independent ok=true / upstream ok=false; raw deletion green; injected world event green; fully rehashed episode green; legacy id refused; chain digest changed in forgery cases"
+    },
+    {
+      "id": "C08",
+      "command": "PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 /private/tmp/bp4c12-sev-probe.py",
+      "cwd": "same",
+      "exit": 0,
+      "result": "10/10 severance trials proved; 7 primary + 3 supplementary; same named assertion"
+    },
+    {
+      "id": "C09",
+      "command": "PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 /private/tmp/bp4c12-c9-probe.py",
+      "cwd": "same, with guard candidate",
+      "exit": 0,
+      "result": "normal C9 guard FORK_READY; perception-only suffix FORK_HELD/C12_PERCEPTION_ONLY_SUFFIX; guarded store fork clock 11, VERIFIED, 2 perceptions; mirror domain BP4_C12_STORE@1 compatible"
+    },
+    {
+      "id": "C10",
+      "command": "PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests/test_c12_fork_integrity.py -q",
+      "cwd": "/private/tmp/bp4c12-join68/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1",
+      "exit": 0,
+      "result": "8 passed"
+    },
+    {
+      "id": "C11",
+      "command": "PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest tests/test_c9_r3.py -q -rs",
+      "cwd": "/private/tmp/bp4c12-c9r3/SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL",
+      "exit": 0,
+      "result": "11 passed, 4 skipped; skips: S36 source unavailable (1), C12 source unavailable (3); C9 return's 15-pass claim not reproduced"
+    },
+    {
+      "id": "C04b",
+      "command": "git apply -p1 --directory=WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1 /private/tmp/c12_guard_candidate.patch",
+      "cwd": "/private/tmp/bp4c12-f2-base",
+      "exit": 0,
+      "result": "guard files created in the BP2P4J return tree; applying the same patch from the nested return directory without --directory silently skips both new files, so the replay must use the repository-root --directory form"
+    }
+  ],
+  "mismatch_cases": [
+    "F2/F2I report 33 baseline and 38 repaired; this checkout reports 32+1 skip and 37+1 skip because the literal BP2 origin runtime is absent. The skip is typed and is not a pass.",
+    "C9-R3 reports 15 passed; this checkout reports 11 passed and 4 typed skips because the hard-coded S36 and C12 source paths are absent. The typed skips are HOLD, not PASS.",
+    "The F2 candidate checks body.episode_id derivation but not the episode_id column; C12_GUARD_READER@1 checks both.",
+    "68b058's QualifiedC12Store fixes episode preimage and fork but does not check the TEST_ONLY_BP4_EP_ derivation; a legacy id can pass content verification there.",
+    "Original BP4 C12Store.verify and the F2/guard readers disagree on a valid SAY; the upstream verifier remains self-referential and was not edited.",
+    "Raw deletion, injection, fully rehashed forgery and perception channel substitution are content-green in both the F2 and guard readers; only an external anchor can distinguish them.",
+    "C9 c12_fork_guard remains FORK_HELD for a perception-only suffix even though the guarded store forks it with a VERIFIED prefix; owner version choice is unresolved.",
+    "Replay hazard: `git apply` of the guard patch from inside the nested return directory reports exit 0 but skips both new files (observed 43 passed 1 skipped instead of 48). The exact replay uses `git apply -p1 --directory=WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1` from the repository root. This is recorded so the independent reviewer does not mistake a skipped patch for a passing candidate."
+  ],
+  "not_run": [
+    "owner replay and adoption",
+    "owner-issued anchor, trust root, signature, monotonic counter",
+    "legacy episode-id migration",
+    "upstream BP4 C12Store.verify repair",
+    "fresh C9 C6 actual-C12 tests at their hard-coded external paths (typed skip)",
+    "original BP2 50-case suite",
+    "original BP4 15-case suite",
+    "native CAN/ADP/SCI05/C11/C12/Pyat/RuleT/person acquisition",
+    "production deployment or real user receiver",
+    "PRE-MAIN, PR #514, PR #516, PR #519 mutation"
+  ],
+  "first_real_consumer": {
+    "f2": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/tests/test_joined_security.py and tests/test_episode_verifier_regression.py",
+    "candidate": "tests/test_c12_guard.py",
+    "c9_c12": "C9-R3 c12_fork_guard and MirrorStore court",
+    "production": "NOT_PROVED",
+    "native": "NOT_PROVED"
+  },
+  "independent_review_handoff": {
+    "required_reviewer": "distinct source-qualified I2/I3 reviewer appointed by incumbent HQ; not this worker, not the F2 author, not the original BP4/C12 owner",
+    "required_replay": [
+      "checkout 5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+      "apply the exact Part A and Part B patches in 03",
+      "run the guard suite and the 48-test combined suite",
+      "independently rerun raw deletion, world-event injection, full rehash and perception substitution",
+      "verify the C9 mirror domain handshake and the perception-only FORK_HELD",
+      "decide owner gates in 01"
+    ],
+    "owner_gates": [
+      "F2 adoption at base 5b3e657",
+      "upstream BP4 verify disposition",
+      "sole lawful episode id and legacy migration",
+      "fork@2 and C9 guard relaxation",
+      "real anchor issuer/trust root/monotonic counter",
+      "native/production receiver remains unissued"
+    ],
+    "self_adoption": false,
+    "post_return_review_owner": "incumbent HQ plus a separate source-qualified reviewer"
+  },
+  "courts": {
+    "engineering": "PASS_SCOPED_CONTENT_SCHEMA_FORK__AUTHENTICITY_COMPLETENESS_HOLD__NO_NATIVE",
+    "science": "HOLD__TEST_ONLY_E2_ONLY__NO_NATIVE_PRACTICE_ACQUISITION",
+    "authority": "HOLD__NO_ADOPTION__ORIGINAL_OWNER_AND_INDEPENDENT_ANCHOR_REQUIRED"
+  },
+  "final_remote_sha": "REPORTED_EXTERNALLY_AFTER_ORDINARY_PUSH",
+  "worktree_clean_and_unsent": "TO_BE_CONFIRMED_AFTER_COMMIT_AND_PUSH"
+}
