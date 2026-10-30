@@ -1,0 +1,102 @@
+{
+  "schema": "SOROK_M04R_JOURNAL_TERMINAL_COUNTEREXAMPLES@1",
+  "status": "M04R_BOUNDED_SOURCEFREE_REPAIR_CANDIDATE",
+  "source_base": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "m04_author_cut": "2309a73bcea1572f6545d5b26027ddc608bee271",
+  "m04i2_reviewer_cut": "09497812e417001657c40575e6476466cdddef1c",
+  "original_m04_reviewer": "3a993abcc0a9f6bd3a1bb003d298d293be199ea6",
+  "original_m03_author": "e1f7a74e51201b9614bcc578348b4e9db7be7bd3",
+  "original_m04_patch_blob": "5ba929f51870b111ca54ca87fdf97338e4295625",
+  "original_m03_helper_blob": "2434bda6f4b00e6ea5881291f5422227e8045e74",
+  "original_cell_blob": "3eb2d02aee8dc840e7cac1f99230d7c69adc2f58",
+  "reviewer_test_blob": "8add06c66b347e324443c1263771755f6898c7e2",
+  "candidate_patch_blob": "d9efd3f5ba0d06430ef99f114072ba91ef32f1fc",
+  "candidate_patch_sha256": "ef551f5ad0c927dffb37554d8aaf8c00a611877242b550fbc541ea5089151f4c",
+  "candidate_test_blob": "fa728cc89375e581c4c5ee326c940fa8562a58a1",
+  "candidate_test_sha256": "0f1bb3978657f402f54623f548776612f6ca73768e5764317f0b0805317424bc",
+  "direct_owner_api_counterexample": {
+    "variant": "direct",
+    "before_direct": {
+      "state_transitions": 2,
+      "journaled_adp017": 2,
+      "active_stances": 1,
+      "accessibility": "CLAIM_INACCESSIBLE"
+    },
+    "after_direct": {
+      "decision_state": "APPLIED_EPISTEMIC_TRANSITION",
+      "state_transitions": 3,
+      "journaled_adp017": 2,
+      "active_stances": 1,
+      "accessibility": "CLAIM_ACCESSIBLE"
+    },
+    "original_result": "read ACCEPTED, streams {memory: BUFFER, epistemic: REROUTE}, disposition BOUND_CANONICAL_CLAIM_WITH_NATIVE_STATE",
+    "repaired_result": "read REFUSED, code CLAIM_TRANSITION_UNJOURNALED, rollback_unchanged true",
+    "consumer": "cell.Cell.read_owner",
+    "defect": "one unjournaled terminal SUPERSEDE_EXACT_RECORD restored accessible BELIEF after a journaled revocation"
+  },
+  "forged_prestate_counterexample": {
+    "variant": "forged",
+    "before_direct": {
+      "state_transitions": 1,
+      "journaled_adp017": 1,
+      "active_stances": 1,
+      "accessibility": "CLAIM_ACCESSIBLE"
+    },
+    "after_direct": {
+      "state_transitions": 2,
+      "journaled_adp017": 1,
+      "active_stances": 1
+    },
+    "original_result": "read ACCEPTED with forged unjournaled trailing transition",
+    "repaired_result": "read REFUSED, code CLAIM_TRANSITION_PRESTATE_ANCESTRY, rollback_unchanged true",
+    "consumer": "cell.Cell.read_owner",
+    "defect": "unjournaled trailing transition used a forged pre-state and was not backed by a journal record"
+  },
+  "adversarial_cases": [
+    {
+      "case": "direct unjournaled terminal",
+      "expected": "CLAIM_TRANSITION_UNJOURNALED",
+      "observed": "REFUSED",
+      "test": "test_direct_unjournaled_terminal_is_refused"
+    },
+    {
+      "case": "orphan terminal journal entry",
+      "expected": "CLAIM_TRANSITION_ANCESTRY_MISSING",
+      "observed": "REFUSED",
+      "test": "test_orphan_terminal_journal_entry_is_refused"
+    },
+    {
+      "case": "duplicate journal coverage",
+      "expected": "CLAIM_TRANSITION_JOURNAL_DUPLICATE",
+      "observed": "REFUSED",
+      "test": "test_duplicate_journal_coverage_is_refused"
+    },
+    {
+      "case": "unjournaled forged pre-state",
+      "expected": "CLAIM_TRANSITION_UNJOURNALED or CLAIM_TRANSITION_PRESTATE_ANCESTRY",
+      "observed": "REFUSED with CLAIM_TRANSITION_PRESTATE_ANCESTRY",
+      "test": "test_unjournaled_forged_prestate_is_refused"
+    }
+  ],
+  "reproduced_courts": {
+    "original_inherited_587": {"tests": 587, "failures": 0, "errors": 0, "skipped": 0},
+    "original_fresh_51": {"tests": 51, "failures": 10, "errors": 0, "skipped": 0},
+    "m04_patched_51_baseline": {"tests": 51, "failures": 0, "errors": 0, "skipped": 0},
+    "m04r_candidate_51": {"tests": 51, "failures": 0, "errors": 0, "skipped": 0},
+    "m04r_candidate_inherited_587": {"tests": 587, "failures": 0, "errors": 0, "skipped": 0},
+    "historical_can3_nine": {"tests": 9, "failures": 9, "errors": 0, "skipped": 0, "status": "PRESERVED_EXPECTED_FAILURES"},
+    "m04r_adversarial": {"tests": 4, "failures": 0, "errors": 0, "skipped": 0}
+  },
+  "original_red_classes": {
+    "journaled_cross_cell_none_owner": 4,
+    "journaled_partial_rollback_nonterminal": 4,
+    "journaled_forged_prestate": 2,
+    "unjournaled_direct_terminal": 1,
+    "unjournaled_forged_prestate": 1
+  },
+  "preserved_holds": [
+    "Nine historical CAN3 cases remain 9 FAIL; not repaired, reclassified or counted in 51/587.",
+    "No native CAN3/ADP016/017/SCI05/Pyat/actor/world authority.",
+    "No canonical C9 integration, merge, adoption or PRE-MAIN write."
+  ]
+}
