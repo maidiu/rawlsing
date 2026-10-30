@@ -1,0 +1,636 @@
+{
+  "event_access_distinct_from_tool_access_metadata": true,
+  "full_frozen_input_equal": true,
+  "omission_distinct_from_silence": true,
+  "original_cases_compared": 13,
+  "physical_imports": [
+    {
+      "git_blob": "cfa8015e9726f5e9027a050c7956d6248ddce049",
+      "module": "__main__",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/independent_probes.py",
+      "sha256": "b2a748dcf00394d1846f96fb1aafd974623e379b9eaecfd2778bc3be748b6b6d"
+    },
+    {
+      "git_blob": "8f90ed692a8ae628aa2b51bedbea0fc2461650c3",
+      "module": "bp1",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/bp1/bp1/__init__.py",
+      "sha256": "d944805febc6045f7c947004f820869ea66c0a85cd052e617e4a1e0be95d99bb"
+    },
+    {
+      "git_blob": "3112125ccb25474ff827a648970fac700fcedac5",
+      "module": "bp1.c9_bridge",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/bp1/bp1/c9_bridge.py",
+      "sha256": "c954e7d9ac97796dd1a44be9bd1bc6eba5181e35fbb17e4085b22c93efe18a5f"
+    },
+    {
+      "git_blob": "e7022b088e7f3894786951d93c8725d21270b3f7",
+      "module": "bp1.canon",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/bp1/bp1/canon.py",
+      "sha256": "3d81b9d78765e24dfbbf80b496945d4768c1b5659f4fb69176e724a7d6f50482"
+    },
+    {
+      "git_blob": "a04ea4970e218a8be94bd53df00b4690eae3f307",
+      "module": "bp1.composer",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/bp1/bp1/composer.py",
+      "sha256": "358a3c6e2f187e21618ed56af17025e80d5153d29af003dcd9e8df9393b63c88"
+    },
+    {
+      "git_blob": "499b884097cf978492bff54d7d7462ca1faf434c",
+      "module": "bp1.ledger",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/bp1/bp1/ledger.py",
+      "sha256": "e68901da703462c8bd5b180722f0a763fe30c8e1c5abb733d878aba89f507b39"
+    },
+    {
+      "git_blob": "b5cb9265c80d725d6bac61805fcb1a437ce9512d",
+      "module": "bp1.source",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/bp1/bp1/source.py",
+      "sha256": "cbecd8647c64dbb92626d97a234dc245355de9f6935e55bcd64e485493a26372"
+    },
+    {
+      "git_blob": "66d60d686d6a75a8de738c9436eacdca61bc633e",
+      "module": "bp2_joined",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/bp2_joined/__init__.py",
+      "sha256": "26bdc999eff53159582370f8cebd897c3c58e8b5d5a5b304f2503a65d966133a"
+    },
+    {
+      "git_blob": "ed6de083f043dd85066750d36a9e2b9211bd5762",
+      "module": "bp2_joined.binding",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/bp2_joined/binding.py",
+      "sha256": "df55f706f9f16e9437e3b9ea8aef274f935ff866c5c36235f260eafe347e2de8"
+    },
+    {
+      "git_blob": "7172af19c5f1249c70b09f5f1e0d1354fdb374bf",
+      "module": "bp2_joined.bootstrap",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/bp2_joined/bootstrap.py",
+      "sha256": "e333efa267200e3b55644bf8b2ce291c6fd5b0306fa0d97dd3585ea39ab23e7d"
+    },
+    {
+      "git_blob": "38751f36785fd935a7817483e2ef019c746e818a",
+      "module": "bp2_joined.ports",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/bp2_joined/ports.py",
+      "sha256": "c8ae1c7d8b0e94370f893babb89272652613eadae11e1d8106f6e3d2a90532cb"
+    },
+    {
+      "git_blob": "0e923996dae5940bfc8d57a9f9ddc84b148bbea9",
+      "module": "bp2_joined.producer",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/bp2_joined/producer.py",
+      "sha256": "858bcd86d94c26c1d1ed69396b040c2b8f472ac19e0f2048d79b8224046e5a0d"
+    },
+    {
+      "git_blob": "2d3a0653d6898024df46cf46d2709d93fe8dbc18",
+      "module": "bp2_joined.scientific",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/bp2_joined/scientific.py",
+      "sha256": "7a837bc1d811d4985a64c33cfcbdda25aefe59d063d4294bb0bec839b462b1ea"
+    },
+    {
+      "git_blob": "799bfdb966f845b71e9a80a06475c3ac6848d908",
+      "module": "bp2_joined.severance",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/bp2_joined/severance.py",
+      "sha256": "a6b65becc865bce5badafc3049cfd4c97c3823e3854426c8aef1883fb214486e"
+    },
+    {
+      "git_blob": "d27deaf405c2bbdab66f0263843cc419a4daab68",
+      "module": "bp2p4",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/bp2p4/__init__.py",
+      "sha256": "a33c193903e9d8c9d8902919998198efdfabcb224a2fb4c85128362ff808a365"
+    },
+    {
+      "git_blob": "dec0030dd343cc516b97d85bc0143cff6c6a9fb7",
+      "module": "bp2p4.bootstrap",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/bp2p4/bootstrap.py",
+      "sha256": "876eaf62f7a5f1b2b8b6783853d527de3d20293ddb1c8a9092b6b3fc55c0d898"
+    },
+    {
+      "git_blob": "b8e7cf397dbbbc37aa0a63ce9e0d7ba27a509cd3",
+      "module": "bp2p4.c12_verify",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/bp2p4/c12_verify.py",
+      "sha256": "4456db64e88d234b0a774a6f3787c52472076cb62654959c160ac4b3d15317ce"
+    },
+    {
+      "git_blob": "e9cbb9d1f77572c2731c0a515b40f0b0080c011c",
+      "module": "bp2p4.envelope",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/bp2p4/envelope.py",
+      "sha256": "ccaa2d1c7029654649dd361f7b3a966ab51b3a88dd0d240b2523fa8c26749c48"
+    },
+    {
+      "git_blob": "8f7177a6b4e3ae0cae6316a13cf57adf363e0460",
+      "module": "bp2p4.product",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/bp2p4/product.py",
+      "sha256": "55c99dffb8cc7ab64e9fba4e15a353b41a984466a22e2cecf36f793a749a0a0f"
+    },
+    {
+      "git_blob": "b89eba9bdc451f433a570d35909bde6b02b4ae40",
+      "module": "bp2p4.reunion",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/bp2p4/reunion.py",
+      "sha256": "12cb1b0432316a925a1949419623c3890ae5febf08a2d4a39fd2172f1b9123e6"
+    },
+    {
+      "git_blob": "6a80a0624853fc717adcc39e99727807c56744fb",
+      "module": "bp2p4.seed",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/bp2p4/seed.py",
+      "sha256": "087748f6ca859214bda3d3f91c17ba2168bb3de683dffd079917dc946387e8c6"
+    },
+    {
+      "git_blob": "b64784eed1dd6621765e354ee70304ea854a5328",
+      "module": "bp4",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp4/bp4/__init__.py",
+      "sha256": "18de93276f6a35e0cc850c0cbfb71df73cee67d29944e37b51c36f760016929f"
+    },
+    {
+      "git_blob": "ac049e0adc1dfe4a774bdbd3233b4a24ea3cd41a",
+      "module": "bp4.bootstrap",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp4/bp4/bootstrap.py",
+      "sha256": "b6afdd1537942b41f1fb89d33a0c668230cf3c0b87b9ead79e2415b33789e6d3"
+    },
+    {
+      "git_blob": "889fa70091678ffe0951b704308cbc2ed4f8816d",
+      "module": "bp4.bp2_compat",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp4/bp4/bp2_compat.py",
+      "sha256": "dc8581c6adf8cb5905ac30dbc4310fe74a4da50cd8055c88ee48bc056c1342d8"
+    },
+    {
+      "git_blob": "94618b7a21ef71559e34778aec2315a30b5e09b9",
+      "module": "bp4.c10",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp4/bp4/c10.py",
+      "sha256": "97a0b288443ea14884b962d3ef1a7d6e98a72c36a922f37f7190565854557fcb"
+    },
+    {
+      "git_blob": "83e8075265f7f722f711d84c4c8e2451437d2d27",
+      "module": "bp4.canon",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp4/bp4/canon.py",
+      "sha256": "31e0ff2022000f0b721b9b0ceb6eb358295de4442bb044b14d3f4b60b79e4276"
+    },
+    {
+      "git_blob": "d4dbcc4f5c42709ba78a15ff8c3b2a41a679f2a5",
+      "module": "bp4.perception",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp4/bp4/perception.py",
+      "sha256": "1499e43853915a3fd836a7ee42e40c62d592938b3ef32e54309d652388b0f292"
+    },
+    {
+      "git_blob": "69cb5d7416e36b6f100ab36ffda8a8d9a92db0a8",
+      "module": "bp4.product",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp4/bp4/product.py",
+      "sha256": "a965b95fcd76d993c4fea5867b4c81af9b48f77f8023e34ad8d3e8222a2e46a7"
+    },
+    {
+      "git_blob": "69a58f43dc70d320f2fc476eeac324c82c37ee59",
+      "module": "bp4.store",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp4/bp4/store.py",
+      "sha256": "bb7bd721fa6b021a5b5163427495fd308236788d1738b8326f9f1093159b3c8b"
+    },
+    {
+      "git_blob": "802c2fce13ed2bf71a6daa1f12a631a9985820f1",
+      "module": "bp4.world",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp4/bp4/world.py",
+      "sha256": "848bb6d3e3e0375a11077a3cf6984509366863e81e9deb212fd30d7878782ddd"
+    },
+    {
+      "git_blob": "3632e1ef785041bc2612acbd31c3f01b7cff4341",
+      "module": "c8_exclusive_writer",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/bp3/c8_exclusive_writer.py",
+      "sha256": "334e591779dcd2f409f5afcf87cda26341ce4407da2a77b604c65c212d9c4263"
+    },
+    {
+      "git_blob": "5ae9360963a98d7a715ea94ef8883e35d5f3442d",
+      "module": "c8_readonly_consumer",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/bp3/vendor/c8_readonly_consumer.py",
+      "sha256": "d11b8d2007d0db1fd56e4bf7ee99dae2587f775985c302a90d7d9b0da590914a"
+    },
+    {
+      "git_blob": "7d785d35be09ab2ca5877a89a7880c70f2fe488c",
+      "module": "c8o_trusted_outbox",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/bp3/vendor/c8o_trusted_outbox.py",
+      "sha256": "e872862baf85d9508ee70eaf70492cbab65242e1ae98f251503a3ce7b708d691"
+    },
+    {
+      "git_blob": "ed9bed435d75e8232241a355efaefeaa3d93c9eb",
+      "module": "c9_event_ingress",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/bp3/c9_event_ingress.py",
+      "sha256": "d75c49e22ec78465c5703515d65bcb74706cb45d6893dc64cbc37a7f84a386cc"
+    },
+    {
+      "git_blob": "662df53497c8b1ced60455db2bdc20dae52fcff2",
+      "module": "candidate",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/c9r/candidate/__init__.py",
+      "sha256": "f176282b70d4c1c21831ab3d664a82919c5ea9583c425d527ee584c45be0cd3f"
+    },
+    {
+      "git_blob": "01220ba2ceea8e4c17a6228868db8df5cc3211a2",
+      "module": "candidate.action_admission",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/c9r/candidate/action_admission.py",
+      "sha256": "83cf0b3a2c7835db7581746d82c1fce87219c5817f541c6c9867a69ee5a856ff"
+    },
+    {
+      "git_blob": "4000bed5d309a1eb0e7a1963bba23133cf7bf04d",
+      "module": "candidate.canon",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/c9r/candidate/canon.py",
+      "sha256": "e0bd7ef4b3f0bb6d7ee659f45287c060888d595703ac2f37ba1b3e6f4f8db162"
+    },
+    {
+      "git_blob": "3a5c83ae35bb4d8ca26f40e00ca1fe10868deb23",
+      "module": "candidate.conditioning",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/c9r/candidate/conditioning.py",
+      "sha256": "edc3a5690c4ed281a41b877119af63397b6348c54a407276eee020005b849887"
+    },
+    {
+      "git_blob": "5d8ef2c440efbafef98502edb53216328a40c7f1",
+      "module": "candidate.events",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/c9r/candidate/events.py",
+      "sha256": "c1c6ad605fb38fef67dbc71cf59d5ee69d56325ecaf04b073b8856c3607d176e"
+    },
+    {
+      "git_blob": "ac87f640b58c00e2a2cfa178f4ac0eaf40d3fc5a",
+      "module": "candidate.identity",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/c9r/candidate/identity.py",
+      "sha256": "595b030b6e34f0a4bfcb2032a48d098803e0a9246344f572feb416d77214fb06"
+    },
+    {
+      "git_blob": "ed09b659ad6e53f347527feedee66522eac26523",
+      "module": "candidate.later_action",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/c9r/candidate/later_action.py",
+      "sha256": "ca11e6accb0b0e7e9884be7a62f7fd02e63711cc9a8d6556a017c4dfe2f1d967"
+    },
+    {
+      "git_blob": "27cebab679ec7a6d644170f0fc135bdd6b1eb944",
+      "module": "candidate.native_custody",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/c9r/candidate/native_custody.py",
+      "sha256": "3519a243c356636d5234f7048caacc50a3ab7dbacc742a7c0386b62edddb641e"
+    },
+    {
+      "git_blob": "cb0350909dedd9f7159dce145ba216b211a8185c",
+      "module": "candidate.pipeline",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/c9r/candidate/pipeline.py",
+      "sha256": "b5da655ca03cdc9dc6dad11b88dfadd22101836cffc7993f530e6148ded0695c"
+    },
+    {
+      "git_blob": "7c6870874f2ef13e295cd363df018c18e423b9cc",
+      "module": "candidate.release_gate",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/c9r/candidate/release_gate.py",
+      "sha256": "2e1acbb68509f0088b5318c5ca1ab9184295b88ce7c87bf9c8a969db9ed3803f"
+    },
+    {
+      "git_blob": "a5c30af336116863e2e6805299b772c89a2ad841",
+      "module": "candidate.response_rules",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/c9r/candidate/response_rules.py",
+      "sha256": "aa8d978f43bd14a11430371e68e2ce4e2ebf1adb385ee52230a4c23a16c49dfc"
+    },
+    {
+      "git_blob": "c33fc2a6a58efd422cb5289c080205b9e0183102",
+      "module": "candidate.target_rules",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/c9r/candidate/target_rules.py",
+      "sha256": "e5d38865d2a4d50a904a387b2a8770bda55567dcef670e97c0dd696c8f7475a5"
+    },
+    {
+      "git_blob": "1a9c15b88f0dfc130e895f33ac536487f601aadd",
+      "module": "candidate.transaction",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/c9r/candidate/transaction.py",
+      "sha256": "d8d5d36ff68a1fa254c829ffa07a8d19699533769791a6d49b0cdfdd23baa803"
+    },
+    {
+      "git_blob": "104f5bd7826c8676192eac96753d980e35d8a80a",
+      "module": "f1c",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/f1c.py",
+      "sha256": "7e3492a267acbc0fa11d8792158bdaa2acc9dfb6053f16141ed637dc1cd2881b"
+    },
+    {
+      "git_blob": "e84f6cfd34d8b7811d29bcd91f1c04593065beb3",
+      "module": "historical_actor_producer",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/historical_actor_producer.py",
+      "sha256": "3da4ff8d20069074714491286f74883424d4d5728a9d0ed606d5b24a7b218423"
+    },
+    {
+      "git_blob": "fbecbfae723bf5e72830b9a59788aab165747259",
+      "module": "lab_sgi1",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp4/vendor/lab_sgi1/__init__.py",
+      "sha256": "c9c5dbab3d2409f022df3794257418d0b85a14fe28a18a7c3652fbe86005ed92"
+    },
+    {
+      "git_blob": "d748cf32698434392bfed27050d4ddc92978812d",
+      "module": "lab_sgi1.core",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp4/vendor/lab_sgi1/core.py",
+      "sha256": "87f8e0554d467a6395ce1dfcc5a346b12074b85a39757e153bd975e2f9c4237d"
+    },
+    {
+      "git_blob": "d667448194a1e8eb7eeab874fa0937b6797b79c0",
+      "module": "lab_sgi1.history",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp4/vendor/lab_sgi1/history.py",
+      "sha256": "2d861d7a820168d443e23efb2403b7ed9c3e899a8a79aaa72fd859c46f47c1c1"
+    },
+    {
+      "git_blob": "325c4eb738cd61b1803ddc8f7cb8ce97c41ba17f",
+      "module": "lab_sgi1.joint",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp4/vendor/lab_sgi1/joint.py",
+      "sha256": "755820d7d703cd459aec8271a784c39a69e9374aae501da1cd9f37bbccc21ee9"
+    },
+    {
+      "git_blob": "3cb3a80a6c259c20a804ddfc5b8d7e8844845bd5",
+      "module": "lab_sgi1.proposal",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp4/vendor/lab_sgi1/proposal.py",
+      "sha256": "fe97a4166d52fcd6f21b8ab0c776edbfc5a0763747954a9e2e645e597713f0f5"
+    },
+    {
+      "git_blob": "331840768ce0b5f6f73e5e93094ca0d217ddaebf",
+      "module": "outbox_prototype",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/bp3/vendor/outbox_prototype.py",
+      "sha256": "5c994f29a8c3cf870cb8a18ce4c300fa51d9ab45c34caabc5f10a0f1973708ed"
+    },
+    {
+      "git_blob": "0be51e3077a2809c04908f7159974b8fb72f9bc2",
+      "module": "r26e",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/r26e/__init__.py",
+      "sha256": "3029f4670d4dae8ec73de975cc452204af109391afdf6fef96914c55e7b21062"
+    },
+    {
+      "git_blob": "0c51c9d13f1065c41b16813f9827a21338e2d6cf",
+      "module": "r26e.c12_integrity",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/r26e/c12_integrity.py",
+      "sha256": "534780fe4631caadacac73e457afbb86bcc207686b1ebb433087ad6270abf710"
+    },
+    {
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "module": "r29p",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/r29p/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "git_blob": "a44532ef3aa060bf04ec4d6de712ef303601ad62",
+      "module": "r29p.product",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/r29p/product.py",
+      "sha256": "cf1882ace97ef30dd6d8cb6c4a0e371960f1358b2430c98ee55cfe9fe97ba70a"
+    },
+    {
+      "git_blob": "f53ad1bffb4dcd7fc0edc27ccbd3362d64ca1aa8",
+      "module": "r31j.assertion",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/r31j/assertion.py",
+      "sha256": "31033628df09b734c54b471e7c1c59838a54d36bddade771a9fcc5b0b041411b"
+    },
+    {
+      "git_blob": "d56d81fdd7fb9ccd237289a09ac07f43de176655",
+      "module": "r31j.pre_c9",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/r31j/pre_c9.py",
+      "sha256": "16e318f5c54f55713f5d514efa39904231b0b0180e14a249b1302be00af4f84a"
+    },
+    {
+      "git_blob": "abb528501582c414bb79adaa1e0caea6c04d8e4b",
+      "module": "r31j.product",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/r31j/product.py",
+      "sha256": "578605c991fd0a33f486dd20d0c83e406aa3f5c9c913b8574dc737eed98e9394"
+    },
+    {
+      "git_blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "module": "rawlsing_next.m1_temporal_v554_admission_dedup",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "sha256": "5f6bf653d287dab8063696f2b81a79ab4083e44eaa9b901cfb5aa4589a098ec0"
+    },
+    {
+      "git_blob": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+      "module": "rawlsing_next.m2_v555_atomic_route",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/rawlsing_next/m2_v555_atomic_route.py",
+      "sha256": "71fcd8b2acb0f9ce4fbed470420b38131a3b9246028b7e764bfda8ca4d04582c"
+    },
+    {
+      "git_blob": "9a4b26b214686364a43d108dabf0d57dac0ed3b2",
+      "module": "rawlsing_next.m3_v556_higher_order_structural",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/rawlsing_next/m3_v556_higher_order_structural.py",
+      "sha256": "736c17d8d6b6792e9befd3792f3754f7b8153fb415a2070b5628a030d44b00ed"
+    },
+    {
+      "git_blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+      "module": "rawlsing_next.m4_v557_v558_publication_repository",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/rawlsing_next/m4_v557_v558_publication_repository.py",
+      "sha256": "b35581669d8a75d70972d9a6aecee9caa94e6bcef950595acc17a6c16e85f9e7"
+    },
+    {
+      "git_blob": "18735bdb31a220aed032aa722574d685e2bdddf5",
+      "module": "rawlsing_next.m5_runtime_rsc_peer_prior",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/rawlsing_next/m5_runtime_rsc_peer_prior.py",
+      "sha256": "ffac990688f3e4596c129787f236f1c26cf4f38f829c4f9a141fc05b1611e518"
+    },
+    {
+      "git_blob": "74d9701cdc7dabccf61eb5089498db290c1efd9c",
+      "module": "rawlsing_next.m6_actor_safe_expression",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/rawlsing_next/m6_actor_safe_expression.py",
+      "sha256": "b8df4e17fdcb4fbc51aae76524fdf3179f322b8ae38b5a52b799f748c64b9662"
+    },
+    {
+      "git_blob": "e0528d65215cb431196570c38bac4eae94217a1b",
+      "module": "rawlsing_next.v3_psepf_zero_positive_guard",
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/runtime/candidate/vendor/bp2/vendor/native/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "sha256": "12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac489a00cb5e42177"
+    }
+  ],
+  "probes": [
+    {
+      "id": "FULL_LIVE_PRIOR_BASELINE",
+      "preserved": true,
+      "roots": {
+        "A": "c71024e9b77e1ce1eed11b2628f3833717a83211fdb73a368a6c19cdd08c5bec",
+        "B": "f94ea0c447c2fa0fc215be774dc6e761b0fae7be89a3c7611b1ce21f825ccfe9",
+        "shared": "e7f9bb7d62dcddb99ada9c35f9cdf00ce58a3fb7e9791b21c6e1c77561d5f0b4"
+      }
+    },
+    {
+      "after_payload": {
+        "causal_basis": "NO_PSYCHIC_RELATION_OWNER_GRANT",
+        "perceived_state": "F1CI3_POST_FREEZE_DRIFT",
+        "perceiver": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "psychology_claim": false,
+        "target": "TEST_ONLY_BP1_R26V_ACTOR_B"
+      },
+      "before_payload": {
+        "causal_basis": "NO_PSYCHIC_RELATION_OWNER_GRANT",
+        "perceived_state": "UNKNOWN_OR_NONRECIPROCAL",
+        "perceiver": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "psychology_claim": false,
+        "target": "TEST_ONLY_BP1_R26V_ACTOR_B"
+      },
+      "cold_effect_equal": true,
+      "consumer": "ACCEPTED",
+      "frozen_root_unchanged": true,
+      "id": "LIVE_A_LEDGER_DRIFT",
+      "ledger_errors": [
+        "EVENT_HASH_INVALID"
+      ],
+      "ledger_valid": false,
+      "live_prior_matches_frozen": false,
+      "p01": true
+    },
+    {
+      "after_payload": {
+        "causal_basis": "NO_PSYCHIC_RELATION_OWNER_GRANT",
+        "perceived_state": "F1CI3_POST_FREEZE_DRIFT",
+        "perceiver": "TEST_ONLY_BP1_R26V_ACTOR_B",
+        "psychology_claim": false,
+        "target": "TEST_ONLY_BP1_R26V_ACTOR_A"
+      },
+      "before_payload": {
+        "causal_basis": "NO_PSYCHIC_RELATION_OWNER_GRANT",
+        "perceived_state": "UNKNOWN_OR_NONRECIPROCAL",
+        "perceiver": "TEST_ONLY_BP1_R26V_ACTOR_B",
+        "psychology_claim": false,
+        "target": "TEST_ONLY_BP1_R26V_ACTOR_A"
+      },
+      "cold_effect_equal": true,
+      "consumer": "ACCEPTED",
+      "frozen_root_unchanged": true,
+      "id": "LIVE_B_LEDGER_DRIFT",
+      "ledger_errors": [
+        "EVENT_HASH_INVALID"
+      ],
+      "ledger_valid": false,
+      "live_prior_matches_frozen": false,
+      "p01": true
+    },
+    {
+      "cold_effect_equal": true,
+      "consumer": "ACCEPTED",
+      "frozen_root_unchanged": true,
+      "id": "LIVE_SHARED_WITNESS_DRIFT",
+      "live_prior_matches_frozen": false,
+      "live_witness_status": "F1CI3_POST_FREEZE_NOT_WITNESSED",
+      "p01": true
+    },
+    {
+      "branch": "NO_CHANGE",
+      "c8_state_digest": "014dd90dd4cd3ca2a461cb9dd215b18b0ed903493bce434f72a11ae93e2336d2",
+      "committed": true,
+      "id": "TARGETLESS_C9_REFUSE",
+      "later_e2": "JoinedRefusal:later_e2:NO_PROPOSAL: branch=NO_CHANGE",
+      "original_c10_targetless_read": "C10Refusal:C9_TARGET_MISSING",
+      "reason": "NO_PROPOSAL",
+      "target_id": "",
+      "typed_intervention": {
+        "A_B_motive": "UNKNOWN",
+        "A_event_access": true,
+        "A_tool_access": false,
+        "action": "REFUSE",
+        "frozen_parent_hash": "30fc98b9babdbb089573eccb4790baf7886bee44b56314eb4cac932ba1aeee5d",
+        "grade": "TEST_ONLY_COUNTERFACTUAL_INTERVENTION_NOT_NATIVE_B",
+        "issuer": "TEST_ONLY_F1C_LAB_OPERATOR",
+        "kind": "TEST_ONLY_INTERVENTION",
+        "native": false,
+        "observed": {
+          "domain": "F1C_FIXTURE_WORLD",
+          "tick": 251
+        },
+        "performer": "B",
+        "receipt_hash": "85b804fa272fac5ace7cd110fce77462448bfc739c331248860ba69c7343765b",
+        "signature": null,
+        "valid": {
+          "domain": "F1C_FIXTURE_WORLD",
+          "tick": 250
+        },
+        "world_after_hash": "3298df531737a89615960a82f781a8a7cfc6f8af2979003d3c69def6667af9fd",
+        "world_before_hash": "3298df531737a89615960a82f781a8a7cfc6f8af2979003d3c69def6667af9fd"
+      },
+      "world_after": {
+        "B_competing_commitment": "scheduled_finishing_ledger_discipline",
+        "B_free_hours": 12,
+        "B_transfer_cost_hours": 1,
+        "custody_condition": "TEST_ONLY_RETURN_OF_SHARED_TASK_TOOL_TO_B_AT_242",
+        "encumbered": false,
+        "exclusive_holdings": {
+          "A": 0,
+          "B": 1,
+          "spent": 0
+        },
+        "grade": "TEST_ONLY_COUNTERFACTUAL_INTERVENTION_NOT_NATIVE_B",
+        "household_relation": "UNKNOWN_NOT_IN_SOURCE",
+        "material_units": {
+          "A": 4,
+          "B": 0
+        },
+        "parents": [
+          "c71024e9b77e1ce1eed11b2628f3833717a83211fdb73a368a6c19cdd08c5bec",
+          "f94ea0c447c2fa0fc215be774dc6e761b0fae7be89a3c7611b1ce21f825ccfe9",
+          "e7f9bb7d62dcddb99ada9c35f9cdf00ce58a3fb7e9791b21c6e1c77561d5f0b4"
+        ],
+        "tool_holder": "B",
+        "tool_id": "TEST_ONLY_F1C_FOCAL_TOOL_1",
+        "tool_owner": "B",
+        "transfer_right": {
+          "holder": "B",
+          "native_grant": false,
+          "scope": "TEST_ONLY_LAB_TRANSFER",
+          "signature": null
+        },
+        "valid_time": {
+          "domain": "F1C_FIXTURE_WORLD",
+          "tick": 242
+        }
+      }
+    },
+    {
+      "branch": "NO_CHANGE",
+      "c8_state_digest": "0c9cf9b45e4ffa9797008e5dcd5afda9376d73b65ca9527e08edbd941d444bcc",
+      "committed": true,
+      "id": "TARGETLESS_C9_SILENCE",
+      "later_e2": "JoinedRefusal:later_e2:NO_PROPOSAL: branch=NO_CHANGE",
+      "original_c10_targetless_read": "C10Refusal:C9_TARGET_MISSING",
+      "reason": "NO_PROPOSAL",
+      "target_id": "",
+      "typed_intervention": {
+        "A_B_motive": "UNKNOWN",
+        "A_event_access": false,
+        "A_tool_access": false,
+        "action": "SILENCE",
+        "frozen_parent_hash": "30fc98b9babdbb089573eccb4790baf7886bee44b56314eb4cac932ba1aeee5d",
+        "grade": "TEST_ONLY_COUNTERFACTUAL_INTERVENTION_NOT_NATIVE_B",
+        "issuer": "TEST_ONLY_F1C_LAB_OPERATOR",
+        "kind": "NON_EVENT_CONDITION",
+        "native": false,
+        "observed": {
+          "domain": "F1C_FIXTURE_WORLD",
+          "tick": 251
+        },
+        "performer": null,
+        "receipt_hash": "3f3a5bc45fb65e1c7a52cca453613634aea2dad967fab7e65ffe30e3e44a6a8a",
+        "signature": null,
+        "valid": {
+          "domain": "F1C_FIXTURE_WORLD",
+          "tick": 250
+        },
+        "world_after_hash": "3298df531737a89615960a82f781a8a7cfc6f8af2979003d3c69def6667af9fd",
+        "world_before_hash": "3298df531737a89615960a82f781a8a7cfc6f8af2979003d3c69def6667af9fd"
+      },
+      "world_after": {
+        "B_competing_commitment": "scheduled_finishing_ledger_discipline",
+        "B_free_hours": 12,
+        "B_transfer_cost_hours": 1,
+        "custody_condition": "TEST_ONLY_RETURN_OF_SHARED_TASK_TOOL_TO_B_AT_242",
+        "encumbered": false,
+        "exclusive_holdings": {
+          "A": 0,
+          "B": 1,
+          "spent": 0
+        },
+        "grade": "TEST_ONLY_COUNTERFACTUAL_INTERVENTION_NOT_NATIVE_B",
+        "household_relation": "UNKNOWN_NOT_IN_SOURCE",
+        "material_units": {
+          "A": 4,
+          "B": 0
+        },
+        "parents": [
+          "c71024e9b77e1ce1eed11b2628f3833717a83211fdb73a368a6c19cdd08c5bec",
+          "f94ea0c447c2fa0fc215be774dc6e761b0fae7be89a3c7611b1ce21f825ccfe9",
+          "e7f9bb7d62dcddb99ada9c35f9cdf00ce58a3fb7e9791b21c6e1c77561d5f0b4"
+        ],
+        "tool_holder": "B",
+        "tool_id": "TEST_ONLY_F1C_FOCAL_TOOL_1",
+        "tool_owner": "B",
+        "transfer_right": {
+          "holder": "B",
+          "native_grant": false,
+          "scope": "TEST_ONLY_LAB_TRANSFER",
+          "signature": null
+        },
+        "valid_time": {
+          "domain": "F1C_FIXTURE_WORLD",
+          "tick": 242
+        }
+      }
+    }
+  ],
+  "schema": "F1CI3_INDEPENDENT_PROBES@1",
+  "source_cut_physical_transfer_preserved": true
+}

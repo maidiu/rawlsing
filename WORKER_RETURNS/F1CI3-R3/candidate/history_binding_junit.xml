@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="3" time="1.945" timestamp="2026-10-30T13:44:07.804319-04:00" hostname="MacBook-Pro.lan"><testcase classname="WORKER_RETURNS.F1CI3-R3.candidate.test_full_history_binding" name="test_changed_live_prior_is_refused[A]" time="0.416"><failure message="Failed: DID NOT RAISE &lt;class 'f1c.Hold'&gt;">tmp_path = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/pytest_history_tmp/test_changed_live_prior_is_ref0')
+changed_input = 'A'
+
+    @pytest.mark.parametrize("changed_input", ["A", "B", "shared_witness"])
+    def test_changed_live_prior_is_refused(tmp_path, changed_input):
+        life, frozen, expected = F.freeze()
+        if changed_input in {"A", "B"}:
+            ledger = life.a_ledger if changed_input == "A" else life.b_ledger
+            event = next(e for e in ledger.events if e.kind == "RELATION_VIEW")
+            event.payload["perceived_state"] = "F1CI3_POST_FREEZE_DRIFT"
+            assert ledger.verify()[0] is False
+        else:
+            life.witness["status"] = "F1CI3_POST_FREEZE_NOT_WITNESSED"
+        # The accepted frozen bytes are unchanged. A consumer must refuse the
+        # independently changed live prehistory instead of proving a different one.
+        assert F.digest(frozen) == expected
+&gt;       with pytest.raises(F.Hold):
+E       Failed: DID NOT RAISE &lt;class 'f1c.Hold'&gt;
+
+WORKER_RETURNS/F1CI3-R3/candidate/test_full_history_binding.py:24: Failed</failure></testcase><testcase classname="WORKER_RETURNS.F1CI3-R3.candidate.test_full_history_binding" name="test_changed_live_prior_is_refused[B]" time="0.550"><failure message="Failed: DID NOT RAISE &lt;class 'f1c.Hold'&gt;">tmp_path = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/pytest_history_tmp/test_changed_live_prior_is_ref1')
+changed_input = 'B'
+
+    @pytest.mark.parametrize("changed_input", ["A", "B", "shared_witness"])
+    def test_changed_live_prior_is_refused(tmp_path, changed_input):
+        life, frozen, expected = F.freeze()
+        if changed_input in {"A", "B"}:
+            ledger = life.a_ledger if changed_input == "A" else life.b_ledger
+            event = next(e for e in ledger.events if e.kind == "RELATION_VIEW")
+            event.payload["perceived_state"] = "F1CI3_POST_FREEZE_DRIFT"
+            assert ledger.verify()[0] is False
+        else:
+            life.witness["status"] = "F1CI3_POST_FREEZE_NOT_WITNESSED"
+        # The accepted frozen bytes are unchanged. A consumer must refuse the
+        # independently changed live prehistory instead of proving a different one.
+        assert F.digest(frozen) == expected
+&gt;       with pytest.raises(F.Hold):
+E       Failed: DID NOT RAISE &lt;class 'f1c.Hold'&gt;
+
+WORKER_RETURNS/F1CI3-R3/candidate/test_full_history_binding.py:24: Failed</failure></testcase><testcase classname="WORKER_RETURNS.F1CI3-R3.candidate.test_full_history_binding" name="test_changed_live_prior_is_refused[shared_witness]" time="0.537"><failure message="Failed: DID NOT RAISE &lt;class 'f1c.Hold'&gt;">tmp_path = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f1ci3-r3-independent-court/WORKER_RETURNS/F1CI3-R3/candidate/pytest_history_tmp/test_changed_live_prior_is_ref2')
+changed_input = 'shared_witness'
+
+    @pytest.mark.parametrize("changed_input", ["A", "B", "shared_witness"])
+    def test_changed_live_prior_is_refused(tmp_path, changed_input):
+        life, frozen, expected = F.freeze()
+        if changed_input in {"A", "B"}:
+            ledger = life.a_ledger if changed_input == "A" else life.b_ledger
+            event = next(e for e in ledger.events if e.kind == "RELATION_VIEW")
+            event.payload["perceived_state"] = "F1CI3_POST_FREEZE_DRIFT"
+            assert ledger.verify()[0] is False
+        else:
+            life.witness["status"] = "F1CI3_POST_FREEZE_NOT_WITNESSED"
+        # The accepted frozen bytes are unchanged. A consumer must refuse the
+        # independently changed live prehistory instead of proving a different one.
+        assert F.digest(frozen) == expected
+&gt;       with pytest.raises(F.Hold):
+E       Failed: DID NOT RAISE &lt;class 'f1c.Hold'&gt;
+
+WORKER_RETURNS/F1CI3-R3/candidate/test_full_history_binding.py:24: Failed</failure></testcase></testsuite></testsuites>
