@@ -1,0 +1,43 @@
+# PROGRAMMA PYAT
+## Complete historical inheritance, source-native empirical world construction, recursively managed whole-machine completion
+
+**Full name:** **Programma Pyat — Source → Objective World → Selected Possibility**.
+**Parent constitution:** `../../CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md`. **Twin:** `../../SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md`.
+**Status:** proposed user-named scope/command articulation for current Pyat HQ entrypoint. It does not establish independent scientific/source authority, N11/N12 admission, local execution, new HQ appointment, dispatch, canonically integrated PRE-MAIN or Sorok actor permissions. Current governing files and full epistemic inherited code remain controlling.
+
+### Terminal demand: NOT a hand-selected analysis service
+Build and occupy the **generalized, automated, governed, all-35-wave source → full possible scientifically admissible empirical/learned/structural/temporal world → current/historical/as-of selected-world and N10E/N10W/F8 progressive possibility → N11 objectively accepted PRE-V3 product → N12 separately governed Sorok wake/defer** machine. World conditions can open and close historically contingent life possibilities; they do not prescribe an individual worldview, type, memory or action. The current producer-owned semantic DAG must preserve original V550/J and V553–V558, Dva, Trii, Chetiri, Long Memory, Field Forge, and later direct-reuse science without resurrecting serial historical stages.
+
+### R — Recovery: source, scientific and code inheritance
+- Full original valuable conceptual, methodological, semantic, architectural and implementation inheritance, including historical contrary/negative decisions, discarded alternatives and WHY-NOT; source-cite actual code and reviewer. Distinguish old accepted function from current adopted implementation, inherited sourcefree proof from new real original-source proof.
+- **Pyat stranded-branch campaign**: `proposal/pyat-stranded-branch-recovery-20261028-r1@becf0bfb04705b8fe0927dd56e7290e1dcd180a8`, PR #515: 845 candidate branch names/838 distinct tip SHAs at pinned cut; 524 strict-post-Oct9, 321 transition, 30 initially unclassified. **Not 845 recovered functions.** Reuse prepared S0 mechanical Git full tree/merge-base, S1–S5 exact source/function/review/consumer read, S6 cross-shard successor reconciliation and S7 independent hostile index. No automatic launch or blanket index acceptance. Recover extra old-tip branch/hidden cross-HQ/import evidence by first actual consumer and validated chronology.
+- Compare `H01–H06` and other actual returned/newer work against the WHOLE 845 program; old Browser HQ identified its own serial GT2→N10E overfocus. No further narrow GT2 or SRC04 loop may become the entire Programma by inadvertence.
+- Integrate, adapt or replace *only when proved*; keep original source/authority and explicit scientific negative states, reviewer scope, test executability and actual receiver. A Git PR marked DRAFT is not a source-owner adoption. Must reconcile persistent PRE-MAIN CAS and current receipts before saying "recovered".
+
+### O — Whole-system recursively decomposable command
+Use the ALREADY inherited program registers as the spine:
+- `PYAT_CONTROL_ROOM/00_WHOLE_MACHINE_AUTOMATION_DOCTRINE_R1.md`: purpose and generalized ALL35 automatic engine.
+- `PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/GLOBAL_WORK_REGISTER.md`: G/S/P/Q/L/F/T/W/A program families, source methodology, operation, analysis, learned, FF, temporal, world service and acceptance.
+- `PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/TASK_LEDGER_101_MACHINE.json`, `ESTATE_35X_REQUIREMENTS_MATRIX.json` (1,890 coverage axes, NOT actual admissible operation cardinality), `WAVE35_COMMON_EDGE_ACTION_QUEUE.json`, `GLOBAL_F6_F7_F8_RELATION_SCOPE_MATRIX.json`.
+- `PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1` (program, N0–N13 scope-conditioned dependency and 53 inherited/44 Long Memory/F1–F8/EE01–16/AT01–35). Match current existing code and original authorities. Fixed Astra R3 advisory first amendment16 remains advisory.
+- `PYAT_CONTROL_ROOM/20261017_LAST_CHAT_CONTINUITY_BANK_R1` historic decisions: no global wait for perfectly certified all35, no withdrawn SHIP0 cheap synthetic shortcut, best historical/scientific method successor after comparative proof.
+
+Organize L0 end-world/person consequence → L1 source/DDM/learned/FF/F6/F7/selected world/N11–N12 → L2 exact scientific method + alternatives → L3 current code/reviewer/science/authority/first consumer → L4 coherent worker deliverable → L5 original administered item/respondent/route/weight/eligible operation. Crosswalk all original35 configured source instances to lawful U_item/U_unit/U_app/E_pre without pretending prepared I03 queries or accepted C11 fields prove every prospective operation was generated. Reject fabricated 35×54=1,890 original jobs as denominator.
+
+For every macro organ record scientific assumptions and merits/detractions of alternatives, inherited capabilities and unique omissions, exact current owner/import, negative cases, source permissions, cost, actual first reader, real output and expected terminal effect. Provide zoom-in and rollup; never replace existing owner progress and flight board with rival command state.
+
+### I — Generalized implementation, not canary theater
+Complete large independent lawful macro obligations and constantly feed learned evidence into R/O:
+1. Original35 warranted source/data/design/semantic/eligible workload and scientifically governed prospective **automatic** U/E_pre generator, with exact no-drop/abstain audit; R157 all35 *configuration* acceptance is a bounded input, not the output. Source grants wave-scoped, not global.
+2. Actual source-native Route B/C11/I03/I05/Batch and F1–F4 real measured distributions, conditionals, heterogeneity, recursive branches, same-person joints, clouds, counterpatterns; retain all signed and negative source states. SRC04 scoped accepted native C11, SRC17 scoped C11, SRC04 177 unary+31 joint partial measured are inputs to further work, not the entire frontier.
+3. Learned-world empirical release/lifecycle and F5 real Field Forge relation/orientation/structure; source opinion correlations do NOT self-authorize causal material force.
+4. F6 multi-field and independent-survey comparable target-population synthesis without forged same-respondent joins; F7 actual temporal, cohort, comparable-wave and current-as-of historical truth with separately labeled approximations.
+5. N9/N10E/N10W/F8 real selected positioned world: altered source or qualified material pressure changes *possible lives* at the current consumer, not merely fixture prose. Cold restore, severance failure and negative source/data authority tests.
+6. N11 `f1_f8_acceptance_matrix.json`, `estate_acceptance_manifest.json`, `final_maturity_adjudication.md`; N12 `prev3_v3_wake_decision.md`, `downstream_interface_prerequisites.json`, only once owner/SCI/actor downstream requirements met.
+
+**Priority rule:** Source-qualified and reviewer-held work is named precisely, while independent viable sourcefree engineering/science-method improvements proceed in parallel where licensed. Priority to biggest coherent terminal completion, not count of individual questions or repeated blocker tests. Browser HQ scientifically tests and maps; separately authorized Codex/local worker handles implementation, and user selects editor/model/host; original issuers and independently accepted reviewer rulings remain sovereign for their scope.
+
+### The always-available Programma Pyat status
+At each material HQ cycle, provide: (i) whole L0–L5 objective, (ii) exact branch/function recovery delta and what is truly current, (iii) all35 original-source and no-drop E_pre progress by *different* evidence dimensions, (iv) F1–F8/N9–N12 actual consumer maturity, (v) scientific alternatives and owner authority, (vi) largest admissible productive parallel flight, (vii) real original source / first consumer positive and fault negatives, (viii) handoff/replay and remaining uncertainties. Log findings in the existing canonical current progress pair only through rightful CAS authority; an isolated draft annotates, not mutates, that progress.
+
+**Non-delegable Programma failure test:** If 845 branch names were inventoried but unique functions not inspected, if 1,890 cells exist without actual scientifically issued workload, if 177 unaries are represented as full original35, if an N10E GT2 canary substitutes for F6/F7, or if N11 is inferred from compilation, Pyat has lost the Programma even though local work might be good.
