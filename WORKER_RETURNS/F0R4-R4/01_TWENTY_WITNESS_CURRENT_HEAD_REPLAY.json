@@ -1,0 +1,353 @@
+{
+  "schema": "F0R4_TWENTY_WITNESS_CURRENT_HEAD_QUALIFICATION@1",
+  "date": "2026-10-30",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/premain-r4-f0r3-candidate-20-witness-ci-source-repair-20261030",
+  "source_base": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "live_pr519_head": "59c9a7a4a4fae60d809c1ef545ff4e48906d0dd0",
+  "f0r3_author_return": "3057b2f5b87f04ff1737d88356edfe3568e1745f",
+  "f0r3i_independent_return": "8f85ded9a62ed2ec64386ab91fef4399e84c30a1",
+  "original_f0_return": "e5089b7da29d3c290ad1447f7b7a45cc81f0eb6e",
+  "qf2_stop_return": "a93db6bce4832270cf29727233dbfbc5f0312395",
+  "session_locator": {
+    "path": "WORKER_RETURNS/F0R4-R4/SESSION_LOCATOR.json",
+    "blob": "85957e90a9143349226170451d57840831dcc8ef",
+    "sha256": "7409b38854487d8153ecb9d6fdbf9f1ee121a1b3ce6419e1d38213fda7549c61"
+  },
+  "source_blobs": {
+    "source_validator": "6fa0ce132e68f1fea7d67321129a2af2627a5d94",
+    "candidate_validator": "2fc1c3c7ae6113d12b70abb655ff123a6ae9c895",
+    "candidate_patch": "424d87370b0e5fdfad13705335558eff37be9257",
+    "seed": "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8",
+    "sealed_events": "2b899397bdac9c2e92d4db295278743e2499eca9",
+    "sealed_flight": "7c20af660ce6c323e99f5dd038abf4c4ac3b5891",
+    "current_events": "60fd8e26b3d8c4bd66f27900b82c9359cf4ad652",
+    "current_flight": "9306df304a8f12029c8daacb2eb97c9fcb58df56",
+    "workflow": "ce1ef40b5f2568c52a44d1ddc01a98647f3bf322"
+  },
+  "candidate_files": {
+    "validator": {
+      "path": "WORKER_RETURNS/F0R4-R4/candidate/verify_branch_fanin.py",
+      "blob": "2fc1c3c7ae6113d12b70abb655ff123a6ae9c895",
+      "sha256": "ab26b3a014a16d5ec0f1c3edb5cfbbe284440b9a7a6580e4bd3631b971af1abb"
+    },
+    "patch": {
+      "path": "WORKER_RETURNS/F0R4-R4/candidate/verify_branch_fanin.py.patch",
+      "blob": "424d87370b0e5fdfad13705335558eff37be9257",
+      "sha256": "4fb4f8401e0f73c5b2b39044a5b14c10e848df6f271f4ad76bfb828f23ce3c74"
+    },
+    "harness": {
+      "path": "WORKER_RETURNS/F0R4-R4/candidate/f0r4_twenty_witness_run.py",
+      "blob": "d1ed317cf684fc39d24466372f9587f72ef4ffbc",
+      "sha256": "fad9aa9d0bc6d7ed654867e4d4a0d6d080c54fa732ebc568a0e703d55ba3fd09"
+    },
+    "ci_script": {
+      "path": "WORKER_RETURNS/F0R4-R4/candidate/ci/run_f0r4_ci.sh",
+      "blob": "e4e61531703429e275cdc7952c61f572f5a0f6bd",
+      "sha256": "fece1d8a61726c9763dcc7bfd76d9937bcdc15a2f76972f7772d29dfe981ab59"
+    },
+    "current_validator_copy": {
+      "blob": "2fc1c3c7ae6113d12b70abb655ff123a6ae9c895",
+      "path": "WORKER_RETURNS/F0R4-R4/candidate/current_head_59c9a7a4/verify_branch_fanin.py"
+    },
+    "sealed_validator_copy": {
+      "blob": "2fc1c3c7ae6113d12b70abb655ff123a6ae9c895",
+      "path": "WORKER_RETURNS/F0R4-R4/candidate/sealed_342164/verify_branch_fanin.py"
+    }
+  },
+  "seed_currentness": {
+    "owner_approval_status": "PENDING",
+    "seed_events": 11,
+    "seed_workers": 11,
+    "seed_prs": 4,
+    "current_events": 32,
+    "current_workers": 32,
+    "current_prs": 5,
+    "sealed_events": 19,
+    "sealed_workers": 19,
+    "sealed_prs": 5,
+    "current_seed_prefix_events_equal": true,
+    "current_seed_prefix_workers_equal": true,
+    "current_seed_prefix_prs_equal": true,
+    "sealed_seed_prefix_events_equal": true,
+    "sealed_seed_prefix_workers_equal": true,
+    "sealed_seed_prefix_prs_equal": true
+  },
+  "patch_apply": {
+    "command": "git apply --check candidate/verify_branch_fanin.py.patch; git apply ...; git hash-object result",
+    "apply_check_exit": 0,
+    "apply_exit": 0,
+    "result_blob": "2fc1c3c7ae6113d12b70abb655ff123a6ae9c895"
+  },
+  "selftests": {
+    "candidate_current": {
+      "command": "cd candidate/current_head_59c9a7a4 && python3 verify_branch_fanin.py --selftest --baseline-ref 299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+      "exit": 0,
+      "stdout_log": {
+        "path": "WORKER_RETURNS/F0R4-R4/evidence/f0r4_candidate_current_selftest.log",
+        "blob": "bbac3415f3946c4a6bd275ccb9c0af14d7121944",
+        "sha256": "8ffc3d39c07a949a2bac82c3b68331bc6eab12167f1ebce5b14b17cb513c6101"
+      }
+    },
+    "candidate_sealed": {
+      "command": "cd candidate/sealed_342164 && python3 verify_branch_fanin.py --selftest --baseline-ref 299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+      "exit": 0,
+      "stdout_log": {
+        "path": "WORKER_RETURNS/F0R4-R4/evidence/f0r4_candidate_sealed_selftest.log",
+        "blob": "ae9c293348a90ea3e056b88d5c391b6bf49dcce7",
+        "sha256": "9afe3c6e0efa36c438933a799c2e1652a5da62cd6b1fa24a22821bed30b46731"
+      }
+    },
+    "original_current_13": {
+      "command": "original 6fa0ce validator selftest on current 32/32",
+      "exit": 0,
+      "stdout_log": {
+        "path": "WORKER_RETURNS/F0R4-R4/evidence/f0r4_original_current_selftest.log",
+        "blob": "13611e920e0e641d79225a43fbe6e6affe9f6309",
+        "sha256": "bbee62704c79441a5453d2a7f82310c1113e3db847c4bac2b43f7d9471d02cc3"
+      }
+    }
+  },
+  "independent_harness": {
+    "command": "python3 candidate/f0r4_twenty_witness_run.py --validator ... --control-dir ... --expect candidate|old",
+    "candidate_current": {
+      "exit": 0,
+      "path": "WORKER_RETURNS/F0R4-R4/evidence/f0r4_candidate_current_32.json",
+      "blob": "500dc9f82318382c7203c4c10f864b5849f0c6e0",
+      "sha256": "f390345ed7a3e28f8c5da43db518a7dc91ec4f5e4ec52d072439e74e6b7e0bbb",
+      "expected_rejected_ids": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "N1",
+        "N2",
+        "N3",
+        "N4",
+        "N5",
+        "N6",
+        "N7",
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5"
+      ],
+      "admitted_ids": [],
+      "other_error_ids": [],
+      "legal": {
+        "accepted": true,
+        "state": "OWNER_ADOPTION_CANDIDATE",
+        "adoption": false,
+        "errors": []
+      }
+    },
+    "candidate_sealed": {
+      "exit": 0,
+      "path": "WORKER_RETURNS/F0R4-R4/evidence/f0r4_candidate_sealed_19.json",
+      "blob": "a8666bd9357ffcd46b06683822e4522883041ad3",
+      "sha256": "5e533e98cfc35ac4a19dd73412397f3493af3c5f5c2024d5e1782a6516ff8429",
+      "expected_rejected_ids": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "N1",
+        "N2",
+        "N3",
+        "N4",
+        "N5",
+        "N6",
+        "N7",
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5"
+      ],
+      "admitted_ids": [],
+      "other_error_ids": [],
+      "legal": {
+        "accepted": true,
+        "state": "OWNER_ADOPTION_CANDIDATE",
+        "adoption": false,
+        "errors": []
+      }
+    },
+    "original_current": {
+      "exit": 0,
+      "path": "WORKER_RETURNS/F0R4-R4/evidence/f0r4_original_current_32.json",
+      "blob": "c14f74c0d4558b825c793ca51cc8f5bb1e819f70",
+      "sha256": "50f8b29cfdb5832d48eb5561a32e05f0e2ec2908e03c9224da61655e6168b43e",
+      "expected_rejected_ids": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5"
+      ],
+      "admitted_ids": [
+        "N1",
+        "N2",
+        "N3",
+        "N4",
+        "N6",
+        "N7"
+      ],
+      "other_error_ids": [
+        "N5"
+      ],
+      "legal": {
+        "accepted": true,
+        "state": "OWNER_ADOPTION_CANDIDATE",
+        "adoption": false,
+        "errors": []
+      }
+    },
+    "original_sealed": {
+      "exit": 0,
+      "path": "WORKER_RETURNS/F0R4-R4/evidence/f0r4_original_sealed_19.json",
+      "blob": "c7618c3bb165ee9077bfc838b6430fa425148278",
+      "sha256": "f5708ea1b4ca06cdf0c0480e95f179f3f5de3593eaf0b833ef92a35beda6d1cf",
+      "expected_rejected_ids": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5"
+      ],
+      "admitted_ids": [
+        "N1",
+        "N2",
+        "N3",
+        "N4",
+        "N6",
+        "N7"
+      ],
+      "other_error_ids": [
+        "N5"
+      ],
+      "legal": {
+        "accepted": true,
+        "state": "OWNER_ADOPTION_CANDIDATE",
+        "adoption": false,
+        "errors": []
+      }
+    }
+  },
+  "ci_source": {
+    "command": "WORKER_RETURNS/F0R4-R4/candidate/ci/run_f0r4_ci.sh",
+    "exit": 0,
+    "stdout_log": {
+      "path": "WORKER_RETURNS/F0R4-R4/evidence/f0r4_ci_run.log",
+      "blob": "c05e372eaddf6304d060620f85f025ca3f4a0f28",
+      "sha256": "7b4ea0f936e03bb58fee91273c8bad3ac5bec6d13094e1565f1f757289cda5c7"
+    },
+    "scope": "runs candidate selftest on current and sealed plus harness; asserts 20-witness text and all_expected true"
+  },
+  "live_ci": {
+    "receipt_13_run": 41082520979,
+    "receipt_13_job": 124155062531,
+    "receipt_13_conclusion": "success",
+    "receipt_13_scope": "old 13-witness validator; NOT F0R4 20-witness CI",
+    "governed_run": 41082521136,
+    "governed_result": "3 failed / 144 passed",
+    "governed_scope": "FIABC identity/packaging assertions; separate owner"
+  },
+  "admin_state": {
+    "premain_protected": false,
+    "rulesets_count": 0,
+    "required_status_checks": "ABSENT__404_BRANCH_NOT_PROTECTED",
+    "seed_owner_approval": "PENDING",
+    "sorok_md_revision": 36,
+    "sorok_md_blob": "fd6ce00595e7b1ea9bb997cf7bd9fcb4e83eccbe",
+    "sorok_json_revision": 35,
+    "sorok_json_blob": "c7fb05d8e5d0240959191041a73e76e2f14cb436",
+    "qf2_head": "a93db6bce4832270cf29727233dbfbc5f0312395",
+    "qf2_state": "STOP_NOT_MERGED_NOT_LAUNCHED",
+    "f4_head": "9fb7caebc266f1e3a8315d87ff446d5db1634cc5",
+    "f4_state": "STOP_NOT_ACTIVATED"
+  },
+  "three_courts": {
+    "engineering": "PASS_SCOPED__20_WITNESS_CANDIDATE_QUALIFIED__OLD_13_CI_NOT_EQUIVALENT",
+    "scientific": "HOLD",
+    "authority": "RED_HOLD__SEED_PENDING__UNPROTECTED__NO_OWNER_CAS__NO_INDEPENDENT_REVIEW"
+  },
+  "independence": {
+    "f0r4_executor_same_session_as_f0r3_author": true,
+    "f0r4_is_independent_review": false,
+    "new_source_qualified_reviewer_required": true
+  },
+  "NOT_RUN": [
+    "candidate-branch GitHub Actions on the patched source (patch not applied to PR519; no PR created)",
+    "direct PR519 edit/push/merge or protection change",
+    "PRE-MAIN/F4/QF2 activation or merge",
+    "native CAN/ADP/SCI05/Pyat source/science execution",
+    "owner seed approval, privileged verifier, first real consumer",
+    "provider-side MAX effort attestation"
+  ],
+  "no_self_approval": true,
+  "push_readback": "reported in final HQ message after push and git ls-remote; not embedded to avoid self-reference",
+  "data_snapshots": {
+    "current_head_59c9a7a4": {
+      "00_FROZEN_INITIAL_SEED.json": {
+        "path": "WORKER_RETURNS/F0R4-R4/candidate/current_head_59c9a7a4/00_FROZEN_INITIAL_SEED.json",
+        "blob": "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8"
+      },
+      "01_RETURN_EVENT_LOG.json": {
+        "path": "WORKER_RETURNS/F0R4-R4/candidate/current_head_59c9a7a4/01_RETURN_EVENT_LOG.json",
+        "blob": "60fd8e26b3d8c4bd66f27900b82c9359cf4ad652"
+      },
+      "02_FLIGHT_AND_PR_REGISTER.json": {
+        "path": "WORKER_RETURNS/F0R4-R4/candidate/current_head_59c9a7a4/02_FLIGHT_AND_PR_REGISTER.json",
+        "blob": "9306df304a8f12029c8daacb2eb97c9fcb58df56"
+      },
+      "verify_branch_fanin.py": {
+        "path": "WORKER_RETURNS/F0R4-R4/candidate/current_head_59c9a7a4/verify_branch_fanin.py",
+        "blob": "2fc1c3c7ae6113d12b70abb655ff123a6ae9c895"
+      }
+    },
+    "sealed_342164": {
+      "00_FROZEN_INITIAL_SEED.json": {
+        "path": "WORKER_RETURNS/F0R4-R4/candidate/sealed_342164/00_FROZEN_INITIAL_SEED.json",
+        "blob": "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8"
+      },
+      "01_RETURN_EVENT_LOG.json": {
+        "path": "WORKER_RETURNS/F0R4-R4/candidate/sealed_342164/01_RETURN_EVENT_LOG.json",
+        "blob": "2b899397bdac9c2e92d4db295278743e2499eca9"
+      },
+      "02_FLIGHT_AND_PR_REGISTER.json": {
+        "path": "WORKER_RETURNS/F0R4-R4/candidate/sealed_342164/02_FLIGHT_AND_PR_REGISTER.json",
+        "blob": "7c20af660ce6c323e99f5dd038abf4c4ac3b5891"
+      },
+      "verify_branch_fanin.py": {
+        "path": "WORKER_RETURNS/F0R4-R4/candidate/sealed_342164/verify_branch_fanin.py",
+        "blob": "2fc1c3c7ae6113d12b70abb655ff123a6ae9c895"
+      }
+    }
+  }
+}

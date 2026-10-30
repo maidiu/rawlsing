@@ -1,0 +1,251 @@
+{
+  "schema": "F0R4_TWENTY_WITNESS_REPLAY@1",
+  "validator_blob": "2fc1c3c7ae6113d12b70abb655ff123a6ae9c895",
+  "control_dir": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/f0r4-20w-20261030-r1/WORKER_RETURNS/F0R4-R4/candidate/sealed_342164",
+  "data_set": "sealed_342164_19",
+  "seed_blob": "4ffe5f95b84505431a928f7ef6d0e7b5931f63d8",
+  "log_blob": "2b899397bdac9c2e92d4db295278743e2499eca9",
+  "flight_blob": "7c20af660ce6c323e99f5dd038abf4c4ac3b5891",
+  "counts": {
+    "events": 19,
+    "workers": 19,
+    "prs": 5,
+    "seed_events": 11,
+    "seed_workers": 11,
+    "seed_prs": 4
+  },
+  "expect": "candidate",
+  "expected_rejected_ids": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7",
+    "B8",
+    "N1",
+    "N2",
+    "N3",
+    "N4",
+    "N5",
+    "N6",
+    "N7",
+    "W1",
+    "W2",
+    "W3",
+    "W4",
+    "W5"
+  ],
+  "admitted_ids": [],
+  "other_error_ids": [],
+  "witnesses": [
+    {
+      "id": "W1",
+      "expected": "DUPLICATE_ID",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "EVENT_19_DUPLICATE_ID",
+        "EVENT_19_APPEND_REUSES_PRIOR_IMMUTABLE_SHA",
+        "NEW_FLIGHT_LOG_OWNER_DIVERGENCE_SOROK294-A",
+        "NEW_FLIGHT_LOG_OWNER_DIVERGENCE_SOROK294-A"
+      ]
+    },
+    {
+      "id": "W2",
+      "expected": "ADOPTION_REQUIRES_EXTERNAL",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "INITIAL_EVENTS_REWRITTEN_OR_DELETED",
+        "EVENT_0_ADOPTION_REQUIRES_EXTERNAL_OWNER_CAS__FAIL_CLOSED"
+      ]
+    },
+    {
+      "id": "W3",
+      "expected": "SELF_REVIEW",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "INITIAL_EVENTS_REWRITTEN_OR_DELETED",
+        "EVENT_5_SELF_REVIEW",
+        "EVENT_5_REVIEW_TARGET_NOT_BOUND_TO_PRIOR_SOURCE_EVENT"
+      ]
+    },
+    {
+      "id": "W4",
+      "expected": "FLIGHT_LOG_EXACT_SOURCE_MISMATCH",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "INITIAL_WORKERS_REWRITTEN_OR_DELETED",
+        "FLIGHT_LOG_EXACT_SOURCE_MISMATCH_SOROK294-A"
+      ]
+    },
+    {
+      "id": "W5",
+      "expected": "COURT_INVALID",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "EVENT_18_COURT_INVALID_scientific"
+      ]
+    },
+    {
+      "id": "B1",
+      "expected": "FAKE_ADOPTED_STATUS",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "INITIAL_WORKERS_REWRITTEN_OR_DELETED",
+        "FLIGHT_0_FAKE_ADOPTED_STATUS"
+      ]
+    },
+    {
+      "id": "B2",
+      "expected": "INITIAL_WORKERS_REWRITTEN",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "INITIAL_WORKERS_REWRITTEN_OR_DELETED"
+      ]
+    },
+    {
+      "id": "B3",
+      "expected": "INITIAL_EVENTS_REWRITTEN",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "INITIAL_EVENTS_REWRITTEN_OR_DELETED"
+      ]
+    },
+    {
+      "id": "B4",
+      "expected": "INITIAL_EVENTS_REWRITTEN",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "INITIAL_EVENTS_REWRITTEN_OR_DELETED",
+        "EVENT_0_SCIENCE_NONISSUER"
+      ]
+    },
+    {
+      "id": "B5",
+      "expected": "REVIEW_TARGET_NOT_BOUND",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "INITIAL_EVENTS_REWRITTEN_OR_DELETED",
+        "EVENT_5_REVIEW_TARGET_NOT_BOUND_TO_PRIOR_SOURCE_EVENT"
+      ]
+    },
+    {
+      "id": "B6",
+      "expected": "ADOPTION_REQUIRES_EXTERNAL",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "EVENT_19_SCIENCE_NONISSUER",
+        "EVENT_19_AUTHORITY_NONISSUER",
+        "EVENT_19_ADOPTION_REQUIRES_EXTERNAL_OWNER_CAS__FAIL_CLOSED",
+        "FLIGHT_19_ADOPTION_REQUIRES_EXTERNAL_OWNER_CAS",
+        "FLIGHT_19_FAKE_ADOPTED_STATUS",
+        "NEW_FLIGHT_LOG_OWNER_DIVERGENCE_FORGED_ADOPTION"
+      ]
+    },
+    {
+      "id": "B7",
+      "expected": "INITIAL_EVENTS_REWRITTEN",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "INITIAL_EVENTS_REWRITTEN_OR_DELETED"
+      ]
+    },
+    {
+      "id": "B8",
+      "expected": "INITIAL_PRS_REWRITTEN",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "INITIAL_PRS_REWRITTEN_OR_DELETED",
+        "PR_MERGE_OR_ADOPTION_REQUIRES_VERIFIED_REMOTE_PROOF_514",
+        "PR_REMOTE_STATE_UNVERIFIED_514"
+      ]
+    },
+    {
+      "id": "N1",
+      "expected": "UNVERIFIED_SOURCE_AUTHORITY",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "FLIGHT_13_UNVERIFIED_SOURCE_AUTHORITY"
+      ]
+    },
+    {
+      "id": "N2",
+      "expected": "SCIENCE_NONISSUER",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "EVENT_14_SCIENCE_NONISSUER"
+      ]
+    },
+    {
+      "id": "N3",
+      "expected": "REVIEWER_TARGET_RETURNED_ONLY",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "EVENT_19_REVIEWER_TARGET_RETURNED_ONLY"
+      ]
+    },
+    {
+      "id": "N4",
+      "expected": "PR_REMOTE_STATE_UNVERIFIED",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "PR_REMOTE_STATE_UNVERIFIED_519"
+      ]
+    },
+    {
+      "id": "N5",
+      "expected": "APPEND_REUSES_PRIOR_IMMUTABLE_SHA",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "EVENT_12_APPEND_REUSES_PRIOR_IMMUTABLE_SHA",
+        "FLIGHT_LOG_EXACT_SOURCE_MISMATCH_F0-RETURN-20261029"
+      ]
+    },
+    {
+      "id": "N6",
+      "expected": "PR_APPEND_ORDER",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "PR_APPEND_ORDER_513"
+      ]
+    },
+    {
+      "id": "N7",
+      "expected": "AUTHORITY_NONISSUER",
+      "any_error": true,
+      "expected_rejection_observed": true,
+      "errors": [
+        "EVENT_14_AUTHORITY_NONISSUER"
+      ]
+    }
+  ],
+  "legal_nonadopted_candidate": {
+    "accepted": true,
+    "state": "OWNER_ADOPTION_CANDIDATE",
+    "adoption": false,
+    "errors": []
+  },
+  "baseline_errors": [],
+  "all_expected": true,
+  "exit": 0
+}
