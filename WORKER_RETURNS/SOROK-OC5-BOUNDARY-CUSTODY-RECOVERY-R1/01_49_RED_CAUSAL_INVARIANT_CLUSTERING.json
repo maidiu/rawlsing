@@ -1,0 +1,2941 @@
+{
+  "schema": "SOROK_OC5_49_RED_CAUSAL_INVARIANT_CLUSTERING@1",
+  "generated_at_utc": "2026-10-29",
+  "identity": {
+    "repository": "maidiu/rawlsing",
+    "return_branch": "agent/sorok-oc5-custody-49-hostile-defect-repair-r1",
+    "sealed_startup": "342164a09e10aa70812299c12386ed0923308228",
+    "prompt_head": "526c9a15f27809406d4f0a962673a7cc5afe3ded",
+    "f3_source": "6477a89bb9160eba1dd10607c47534fa4dce6cc2",
+    "oc5e_reviewer": "67a4f1561cdad40192f00797d66b24fc4cd91589",
+    "oc4_author": "0caaec590f6a8bf6744f22dc9c948c5fe233bc94",
+    "premain_pin": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "actual_model": "OpenCode / DeepSeek V4.1-Flash",
+    "host": "macOS x86_64 13.7.8",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "sqlite": "3.40.1"
+  },
+  "source_custody": {
+    "module": {
+      "path": "WORKER_RETURNS/SOROK-R3-HQ310-OC4-CUSTODY-TEN-RED-REPAIR-R1/repro/custody_protocol.py",
+      "git_blob": "af2b7e943018077cb36808b5af1cd67704624bec",
+      "sha256": "447e5bb738fc49c946a39ca438126e9c2a69d93025600f053662e56f846f9e3a"
+    },
+    "reviewer_test": {
+      "path": "WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/tests/test_oc5e_native_hostiles.py",
+      "git_blob": "9837579ebb5b2fbf3a41c967e584a166786e46b9",
+      "sha256": "a9faf7ace27d0f3f3cfd1102de5c6c8d6888c12f16c7bbdde8b32bb232b84512"
+    },
+    "inherited_tests": {
+      "test_custody_hostiles.py": "94ad944997cb9d1a8d6527e91c17416120c5108d",
+      "test_positive_lifecycle.py": "4b665a2a9d6999071624d580f2d2ae193daf59f4",
+      "test_ocr1_independent_hostile.py": "9725b39e0e7f5cf98f94c090bbf84428b29eed2c (archive)",
+      "test_oc2_regressions.py": "402f04ef7d6b8119f72df9355b554e797b9a501e",
+      "test_oc3_independent_hostile.py": "068b158363b96d5a7cdc03eb059efb8a8d159b26 (archive)",
+      "test_oc4_repair_controls.py": "c139a877aa4586ec5ab729d333c40037840721d4",
+      "test_oc5_prior_predictions.py": "588f91c712fc4000cebf7b9fa7b05e36ab01a126"
+    },
+    "premain_path": "ABSENT_AT_299F41E9"
+  },
+  "commands": [
+    "PYTHONPATH=<runtime>/source PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q <5 inherited files> --junitxml=<runs>/inherited_131.xml",
+    "PYTHONPATH=<runtime>/source PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q test_oc4_repair_controls.py --junitxml=<runs>/oc4_new_36.xml",
+    "PYTHONPATH=<runtime>/source PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q test_oc5e_native_hostiles.py --junitxml=<runs>/oc5e_native_hostiles.xml",
+    "PYTHONPATH=<runtime>/source PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q test_oc5_prior_predictions.py --junitxml=<runs>/oc5_prior_predictions.xml"
+  ],
+  "results": {
+    "inherited_131.xml": {
+      "file": "inherited_131.xml",
+      "sha256": "659ed7f298fc4d78dd12df5678de08e7d62f624460d9b876da0c96f55f2c7588",
+      "tests": 131,
+      "failures": 10,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h01_forged_custodian_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h02_same_person_cannot_hold_conflicting_roles",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h02b_same_person_second_signature_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h02c_conflicting_role_second_signature_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h03_scenario_oracle_identity_mismatch_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h04_wrong_purpose_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h05_stale_or_revoked_capsule_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h06_revised_answer_after_freeze_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h07_clone_family_detected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h08_blind_id_pairing_break_detected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h09_hidden_origin_leak_detected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h10_answer_key_leak_detected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h11_premature_reveal_detected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h12_null_signature_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h13_ledger_rollback_detected",
+          "status": "FAIL",
+          "failure_message": "custody_protocol.LedgerRollbackError: append-only: rollback requires a separate compensating event"
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h14_response_coding_leak_detected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h15_missing_signature_in_capsule_refused",
+          "status": "FAIL",
+          "failure_message": "custody_protocol.SignatureError: real capsule argument required for fixture binding"
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h16_capsule_wrong_purpose_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h17_model_visible_packet_no_leak",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h18_exposure_log_recorded",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h19_non_test_only_signature_rejected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_custody_hostiles",
+          "name": "test_h20_family_graph_digest_binds_families",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_positive_lifecycle",
+          "name": "test_positive_full_role_separated_lifecycle",
+          "status": "FAIL",
+          "failure_message": "custody_protocol.SignatureError: signature does not bind capsule content"
+        },
+        {
+          "classname": "test_positive_lifecycle",
+          "name": "test_positive_no_leakage_in_model_packets",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_positive_lifecycle",
+          "name": "test_positive_coder_input_no_arm_leak",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_positive_lifecycle",
+          "name": "test_positive_role_separation_enforced",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_positive_lifecycle",
+          "name": "test_positive_lawful_sets_contain_other_unscorable",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_positive_lifecycle",
+          "name": "test_positive_capsule_deterministic_digest",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_positive_lifecycle",
+          "name": "test_positive_verifiable_mock_signature",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_positive_lifecycle",
+          "name": "test_positive_purpose_gate",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_positive_lifecycle",
+          "name": "test_positive_blind_id_pairing_ok",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_A_capsule_unblind_permission[mod0-A01_revoked_unblind]",
+          "status": "FAIL",
+          "failure_message": "custody_protocol.RevocationError: cannot commit an inactive capsule"
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_A_capsule_unblind_permission[mod1-A02_expired_unblind]",
+          "status": "FAIL",
+          "failure_message": "custody_protocol.RevocationError: cannot commit an inactive capsule"
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_A_capsule_unblind_permission[mod2-A03_illegal_purpose_unblind]",
+          "status": "FAIL",
+          "failure_message": "custody_protocol.PurposeViolationError: unauthorized purpose: LIVE_MODEL_REQUEST"
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_A04_arbitrary_holder_unblind",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_A05_forbidden_role_unblind",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_A_release_after_revocation[A06_revoked_release]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_A_release_after_revocation[A07_expired_release]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_A08_mismatched_holder_unblind",
+          "status": "FAIL",
+          "failure_message": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched"
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_A09_uncommitted_release",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_A10_duplicate_release",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_A11_exposure_uncommitted",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_A12_exposure_illegal_purpose",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_B01_none_capsule",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_B02_unrelated_capsule_digest",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_B_wrong_context_or_nonce[B03_wrong_signature_context]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_B_wrong_context_or_nonce[B04_wrong_signature_nonce]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_B05_same_person_signatures",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_B06_conflicting_signatures",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_B07_inconsistent_signature_digest",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_B08_mock_role_impersonation",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_C01_valid_range_rollback_detected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_C02_ledger_history_deletion_detected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_C03_ledger_op_tampering_detected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_C04_ledger_duplicate_event_detected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_C05_state_ledger_divergence_detected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_C06_ledger_full_normal",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_D_invalid_arms[D01_duplicate_arm_AABC]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_D_invalid_arms[D02_unknown_arms_XYZ]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_D_invalid_arms[D06_missing_arm]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_D_invalid_arms[D08_empty_input]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_D03_duplicate_trial_id",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_D04_mixed_case_join",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_D05_mixed_family_join",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_D07_valid_ABC",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_E01_hidden_origin_token",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_E02_encoded_key_injection",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_E03_nested_semantic_answer_leak",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_E04_harmless_arm_substring",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_E05_safe_generated_packet",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_E06_coder_encoded_hint",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_F01_capsule_recommit_edit",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_F02_capsule_undetected_digest_corruption",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_F03_family_exact_clone",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_F04_family_semantic_paraphrase_is_not_proof",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_ocr1_independent_hostile",
+          "name": "test_F05_mock_signature_test_only",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_inactive_revoked_capsule_refused_at_commit",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_inactive_expired_capsule_refused_at_commit",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_unauthorized_purpose_refused_at_commit",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_unissued_holder_rejected_via_actual_unblind",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_explicit_mock_holder_grant_and_revocation_at_release",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_signature_binds_content_and_rejects_alien_capsule",
+          "status": "FAIL",
+          "failure_message": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched"
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_mock_signature_no_capsule_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_public_credential_not_a_role_assignment",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_no_rollback_even_with_valid_seq",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_ledger_op_tamper_visible",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_ledger_state_divergence_visible",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_committed_capsule_replaced_detection",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_exposure_uncommitted_is_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_exact_abc_and_duplicate_refusal",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_join_mismatch_refusal",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_encoded_hidden_origin_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_nested_unknown_packet_field_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_benign_substring_not_false_positive",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc2_regressions",
+          "name": "test_generator_public_packets_remain_safe",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_A01_unissued_holder_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_A02_forbidden_role_registration_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_A03_empty_holder_registration_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_A04_revoked_holder_cannot_release",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_A05_invalid_commits_refuse_at_entrypoint",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_A06_postcommit_inactivation_refused_at_unblind_without_ledger_change",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_B01_valid_countersignatures_bind_content",
+          "status": "FAIL",
+          "failure_message": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched"
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_B02_same_digest_distinct_capsule_id_replay",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_B03_signature_reuse_after_purpose_change",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_B04_signature_reuse_after_lawful_digest_change",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_B05_context_nonce_forgery_denied",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_B06_forged_signature_metadata_denied",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_C01_valid_append_only_ledger_coherent",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_C02_rollback_refused_without_state_damage",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_C03_ledger_mutation_detected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_C04_released_state_mutation_detected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_C05_unblind_timestamp_mutation_invisible",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_C06_unblind_capsule_field_mutation_invisible",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_D01_exact_ABC_and_coherent_joins",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_D02_duplicate_AABC_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_D03_duplicate_trial_ids_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_D04_whitespace_nonce_rejected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_D05_unhashable_arm_bad_exception",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_E01_generated_projection_allowed",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_E02_direct_hidden_field_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_E03_invisible_format_character_key_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_E04_benign_word_not_blocked",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_E05_menu_wrong_value_type_admitted",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_E06_context_wrong_value_type_admitted",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_E07_U034F_note_alias_bypass",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_F01_original_cap_deepcopy_after_commit",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_F02_internal_frozen_capsule_mutation_detected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_F03_recommit_same_id_rejected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_Z01_any_fixture_caller_can_self_grant_custodian",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_Z02_unsigned_fixture_capsule_can_be_released",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc3_independent_hostile",
+          "name": "test_Z03_declared_mock_roster_uses_public_derived_credentials",
+          "status": "FAIL",
+          "failure_message": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched"
+        }
+      ],
+      "junit_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"10\" skipped=\"0\" tests=\"131\" time=\"0.940\" timestamp=\"2026-10-30T11:41:06.185925-04:00\" hostname=\"Matthews-MBP.lan\"><testcase classname=\"test_custody_hostiles\" name=\"test_h01_forged_custodian_refused\" time=\"0.003\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h02_same_person_cannot_hold_conflicting_roles\" time=\"0.001\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h02b_same_person_second_signature_refused\" time=\"0.001\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h02c_conflicting_role_second_signature_refused\" time=\"0.001\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h03_scenario_oracle_identity_mismatch_refused\" time=\"0.004\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h04_wrong_purpose_refused\" time=\"0.001\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h05_stale_or_revoked_capsule_refused\" time=\"0.003\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h06_revised_answer_after_freeze_refused\" time=\"0.004\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h07_clone_family_detected\" time=\"0.001\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h08_blind_id_pairing_break_detected\" time=\"0.002\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h09_hidden_origin_leak_detected\" time=\"0.005\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h10_answer_key_leak_detected\" time=\"0.001\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h11_premature_reveal_detected\" time=\"0.007\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h12_null_signature_refused\" time=\"0.008\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h13_ledger_rollback_detected\" time=\"0.014\"><failure message=\"custody_protocol.LedgerRollbackError: append-only: rollback requires a separate compensating event\">E   custody_protocol.LedgerRollbackError: append-only: rollback requires a separate compensating event</failure></testcase><testcase classname=\"test_custody_hostiles\" name=\"test_h14_response_coding_leak_detected\" time=\"0.007\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h15_missing_signature_in_capsule_refused\" time=\"0.001\"><failure message=\"custody_protocol.SignatureError: real capsule argument required for fixture binding\">E   custody_protocol.SignatureError: real capsule argument required for fixture binding</failure></testcase><testcase classname=\"test_custody_hostiles\" name=\"test_h16_capsule_wrong_purpose_refused\" time=\"0.004\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h17_model_visible_packet_no_leak\" time=\"0.022\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h18_exposure_log_recorded\" time=\"0.005\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h19_non_test_only_signature_rejected\" time=\"0.001\" /><testcase classname=\"test_custody_hostiles\" name=\"test_h20_family_graph_digest_binds_families\" time=\"0.006\" /><testcase classname=\"test_positive_lifecycle\" name=\"test_positive_full_role_separated_lifecycle\" time=\"0.004\"><failure message=\"custody_protocol.SignatureError: signature does not bind capsule content\">E   custody_protocol.SignatureError: signature does not bind capsule content</failure></testcase><testcase classname=\"test_positive_lifecycle\" name=\"test_positive_no_leakage_in_model_packets\" time=\"0.011\" /><testcase classname=\"test_positive_lifecycle\" name=\"test_positive_coder_input_no_arm_leak\" time=\"0.003\" /><testcase classname=\"test_positive_lifecycle\" name=\"test_positive_role_separation_enforced\" time=\"0.001\" /><testcase classname=\"test_positive_lifecycle\" name=\"test_positive_lawful_sets_contain_other_unscorable\" time=\"0.002\" /><testcase classname=\"test_positive_lifecycle\" name=\"test_positive_capsule_deterministic_digest\" time=\"0.002\" /><testcase classname=\"test_positive_lifecycle\" name=\"test_positive_verifiable_mock_signature\" time=\"0.001\" /><testcase classname=\"test_positive_lifecycle\" name=\"test_positive_purpose_gate\" time=\"0.001\" /><testcase classname=\"test_positive_lifecycle\" name=\"test_positive_blind_id_pairing_ok\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_A_capsule_unblind_permission[mod0-A01_revoked_unblind]\" time=\"0.002\"><failure message=\"custody_protocol.RevocationError: cannot commit an inactive capsule\">E   custody_protocol.RevocationError: cannot commit an inactive capsule</failure></testcase><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_A_capsule_unblind_permission[mod1-A02_expired_unblind]\" time=\"0.003\"><failure message=\"custody_protocol.RevocationError: cannot commit an inactive capsule\">E   custody_protocol.RevocationError: cannot commit an inactive capsule</failure></testcase><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_A_capsule_unblind_permission[mod2-A03_illegal_purpose_unblind]\" time=\"0.003\"><failure message=\"custody_protocol.PurposeViolationError: unauthorized purpose: LIVE_MODEL_REQUEST\">E   custody_protocol.PurposeViolationError: unauthorized purpose: LIVE_MODEL_REQUEST</failure></testcase><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_A04_arbitrary_holder_unblind\" time=\"0.003\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_A05_forbidden_role_unblind\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_A_release_after_revocation[A06_revoked_release]\" time=\"0.003\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_A_release_after_revocation[A07_expired_release]\" time=\"0.004\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_A08_mismatched_holder_unblind\" time=\"0.003\"><failure message=\"custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched\">E   custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched</failure></testcase><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_A09_uncommitted_release\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_A10_duplicate_release\" time=\"0.004\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_A11_exposure_uncommitted\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_A12_exposure_illegal_purpose\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_B01_none_capsule\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_B02_unrelated_capsule_digest\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_B_wrong_context_or_nonce[B03_wrong_signature_context]\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_B_wrong_context_or_nonce[B04_wrong_signature_nonce]\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_B05_same_person_signatures\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_B06_conflicting_signatures\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_B07_inconsistent_signature_digest\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_B08_mock_role_impersonation\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_C01_valid_range_rollback_detected\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_C02_ledger_history_deletion_detected\" time=\"0.003\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_C03_ledger_op_tampering_detected\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_C04_ledger_duplicate_event_detected\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_C05_state_ledger_divergence_detected\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_C06_ledger_full_normal\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_D_invalid_arms[D01_duplicate_arm_AABC]\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_D_invalid_arms[D02_unknown_arms_XYZ]\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_D_invalid_arms[D06_missing_arm]\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_D_invalid_arms[D08_empty_input]\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_D03_duplicate_trial_id\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_D04_mixed_case_join\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_D05_mixed_family_join\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_D07_valid_ABC\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_E01_hidden_origin_token\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_E02_encoded_key_injection\" time=\"0.003\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_E03_nested_semantic_answer_leak\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_E04_harmless_arm_substring\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_E05_safe_generated_packet\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_E06_coder_encoded_hint\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_F01_capsule_recommit_edit\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_F02_capsule_undetected_digest_corruption\" time=\"0.002\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_F03_family_exact_clone\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_F04_family_semantic_paraphrase_is_not_proof\" time=\"0.001\" /><testcase classname=\"test_ocr1_independent_hostile\" name=\"test_F05_mock_signature_test_only\" time=\"0.002\" /><testcase classname=\"test_oc2_regressions\" name=\"test_inactive_revoked_capsule_refused_at_commit\" time=\"0.003\" /><testcase classname=\"test_oc2_regressions\" name=\"test_inactive_expired_capsule_refused_at_commit\" time=\"0.003\" /><testcase classname=\"test_oc2_regressions\" name=\"test_unauthorized_purpose_refused_at_commit\" time=\"0.002\" /><testcase classname=\"test_oc2_regressions\" name=\"test_unissued_holder_rejected_via_actual_unblind\" time=\"0.002\" /><testcase classname=\"test_oc2_regressions\" name=\"test_explicit_mock_holder_grant_and_revocation_at_release\" time=\"0.002\" /><testcase classname=\"test_oc2_regressions\" name=\"test_signature_binds_content_and_rejects_alien_capsule\" time=\"0.002\"><failure message=\"custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched\">E   custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched</failure></testcase><testcase classname=\"test_oc2_regressions\" name=\"test_mock_signature_no_capsule_refused\" time=\"0.002\" /><testcase classname=\"test_oc2_regressions\" name=\"test_public_credential_not_a_role_assignment\" time=\"0.002\" /><testcase classname=\"test_oc2_regressions\" name=\"test_no_rollback_even_with_valid_seq\" time=\"0.003\" /><testcase classname=\"test_oc2_regressions\" name=\"test_ledger_op_tamper_visible\" time=\"0.003\" /><testcase classname=\"test_oc2_regressions\" name=\"test_ledger_state_divergence_visible\" time=\"0.003\" /><testcase classname=\"test_oc2_regressions\" name=\"test_committed_capsule_replaced_detection\" time=\"0.002\" /><testcase classname=\"test_oc2_regressions\" name=\"test_exposure_uncommitted_is_refused\" time=\"0.001\" /><testcase classname=\"test_oc2_regressions\" name=\"test_exact_abc_and_duplicate_refusal\" time=\"0.001\" /><testcase classname=\"test_oc2_regressions\" name=\"test_join_mismatch_refusal\" time=\"0.001\" /><testcase classname=\"test_oc2_regressions\" name=\"test_encoded_hidden_origin_refused\" time=\"0.001\" /><testcase classname=\"test_oc2_regressions\" name=\"test_nested_unknown_packet_field_refused\" time=\"0.001\" /><testcase classname=\"test_oc2_regressions\" name=\"test_benign_substring_not_false_positive\" time=\"0.001\" /><testcase classname=\"test_oc2_regressions\" name=\"test_generator_public_packets_remain_safe\" time=\"0.008\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_A01_unissued_holder_refused\" time=\"0.003\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_A02_forbidden_role_registration_refused\" time=\"0.001\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_A03_empty_holder_registration_refused\" time=\"0.001\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_A04_revoked_holder_cannot_release\" time=\"0.002\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_A05_invalid_commits_refuse_at_entrypoint\" time=\"0.002\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_A06_postcommit_inactivation_refused_at_unblind_without_ledger_change\" time=\"0.004\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_B01_valid_countersignatures_bind_content\" time=\"0.002\"><failure message=\"custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched\">E   custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched</failure></testcase><testcase classname=\"test_oc3_independent_hostile\" name=\"test_B02_same_digest_distinct_capsule_id_replay\" time=\"0.002\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_B03_signature_reuse_after_purpose_change\" time=\"0.002\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_B04_signature_reuse_after_lawful_digest_change\" time=\"0.002\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_B05_context_nonce_forgery_denied\" time=\"0.002\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_B06_forged_signature_metadata_denied\" time=\"0.002\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_C01_valid_append_only_ledger_coherent\" time=\"0.003\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_C02_rollback_refused_without_state_damage\" time=\"0.003\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_C03_ledger_mutation_detected\" time=\"0.006\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_C04_released_state_mutation_detected\" time=\"0.005\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_C05_unblind_timestamp_mutation_invisible\" time=\"0.003\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_C06_unblind_capsule_field_mutation_invisible\" time=\"0.003\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_D01_exact_ABC_and_coherent_joins\" time=\"0.001\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_D02_duplicate_AABC_refused\" time=\"0.001\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_D03_duplicate_trial_ids_refused\" time=\"0.001\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_D04_whitespace_nonce_rejected\" time=\"0.001\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_D05_unhashable_arm_bad_exception\" time=\"0.001\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_E01_generated_projection_allowed\" time=\"0.014\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_E02_direct_hidden_field_refused\" time=\"0.002\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_E03_invisible_format_character_key_refused\" time=\"0.001\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_E04_benign_word_not_blocked\" time=\"0.001\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_E05_menu_wrong_value_type_admitted\" time=\"0.002\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_E06_context_wrong_value_type_admitted\" time=\"0.001\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_E07_U034F_note_alias_bypass\" time=\"0.001\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_F01_original_cap_deepcopy_after_commit\" time=\"0.002\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_F02_internal_frozen_capsule_mutation_detected\" time=\"0.002\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_F03_recommit_same_id_rejected\" time=\"0.004\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_Z01_any_fixture_caller_can_self_grant_custodian\" time=\"0.005\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_Z02_unsigned_fixture_capsule_can_be_released\" time=\"0.002\" /><testcase classname=\"test_oc3_independent_hostile\" name=\"test_Z03_declared_mock_roster_uses_public_derived_credentials\" time=\"0.003\"><failure message=\"custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched\">E   custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched</failure></testcase></testsuite></testsuites>"
+    },
+    "oc4_new_36.xml": {
+      "file": "oc4_new_36.xml",
+      "sha256": "1cee683d8b3ccbccf18821645540479d1c54c0c62d64a019cfd7e22b3cf87c99",
+      "tests": 36,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_bounded_full_capsule_pair_positive",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_original_full_capsule_signatures_reject_field_replay[capsule_id-other-id]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_original_full_capsule_signatures_reject_field_replay[purpose-PROSPECTIVE_DESIGN_REVIEW]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_original_full_capsule_signatures_reject_field_replay[lawful_set_digest-other-law]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_original_full_capsule_signatures_reject_field_replay[freeze_timestamp-42.0]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_original_full_capsule_signatures_reject_field_replay[version-2]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_original_full_capsule_signatures_reject_field_replay[content_digest-other-content]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_original_full_capsule_signatures_reject_field_replay[schema_version-NEW]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_original_full_capsule_signatures_reject_field_replay[scenario_frame-other-frame]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_original_full_capsule_signatures_reject_field_replay[family_graph_digest-different-family]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_original_full_capsule_signatures_reject_field_replay[public_projection_digest-changed-visible]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_original_full_capsule_signatures_reject_field_replay[hidden_projection_digest-changed-hidden]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_original_full_capsule_signatures_reject_field_replay[contribution_digest-changed-contrib]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_original_full_capsule_signatures_reject_field_replay[coder_rubric_digest-changed-rubric]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_original_full_capsule_signatures_reject_field_replay[split_assignment_digest-changed-split]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_original_full_capsule_signatures_reject_field_replay[generation_history_digest-changed-history]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_original_full_capsule_signatures_reject_field_replay[rejected_alternatives_digest-changed-rejected]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_raw_content_signature_cannot_claim_envelope",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_wrong_full_capsule_signer_nonce_rejected",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_materialized_unblind_changes_invisible_before_patch_now_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_unblind_return_alias_does_not_change_retained_integrity",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_no_blank_or_whitespace_nonce[]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_no_blank_or_whitespace_nonce[ ]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_no_blank_or_whitespace_nonce[\\t\\n]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_invalid_arm_typed_exception[arm0]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_invalid_arm_typed_exception[arm1]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_invalid_arm_typed_exception[42]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_invalid_arm_typed_exception[None]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_malformed_or_unicode_leaking_visible_projection_refused[packet0]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_malformed_or_unicode_leaking_visible_projection_refused[packet1]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_malformed_or_unicode_leaking_visible_projection_refused[packet2]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_malformed_or_unicode_leaking_visible_projection_refused[packet3]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_malformed_or_unicode_leaking_visible_projection_refused[packet4]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_malformed_or_unicode_leaking_visible_projection_refused[packet5]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_malformed_or_unicode_leaking_visible_projection_refused[packet6]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc4_repair_controls",
+          "name": "test_valid_generated_visible_and_coder_packets_stay_safe",
+          "status": "PASS",
+          "failure_message": null
+        }
+      ],
+      "junit_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"0\" skipped=\"0\" tests=\"36\" time=\"0.177\" timestamp=\"2026-10-30T11:41:07.298703-04:00\" hostname=\"Matthews-MBP.lan\"><testcase classname=\"test_oc4_repair_controls\" name=\"test_bounded_full_capsule_pair_positive\" time=\"0.002\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_original_full_capsule_signatures_reject_field_replay[capsule_id-other-id]\" time=\"0.002\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_original_full_capsule_signatures_reject_field_replay[purpose-PROSPECTIVE_DESIGN_REVIEW]\" time=\"0.002\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_original_full_capsule_signatures_reject_field_replay[lawful_set_digest-other-law]\" time=\"0.002\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_original_full_capsule_signatures_reject_field_replay[freeze_timestamp-42.0]\" time=\"0.003\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_original_full_capsule_signatures_reject_field_replay[version-2]\" time=\"0.003\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_original_full_capsule_signatures_reject_field_replay[content_digest-other-content]\" time=\"0.002\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_original_full_capsule_signatures_reject_field_replay[schema_version-NEW]\" time=\"0.003\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_original_full_capsule_signatures_reject_field_replay[scenario_frame-other-frame]\" time=\"0.002\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_original_full_capsule_signatures_reject_field_replay[family_graph_digest-different-family]\" time=\"0.003\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_original_full_capsule_signatures_reject_field_replay[public_projection_digest-changed-visible]\" time=\"0.003\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_original_full_capsule_signatures_reject_field_replay[hidden_projection_digest-changed-hidden]\" time=\"0.003\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_original_full_capsule_signatures_reject_field_replay[contribution_digest-changed-contrib]\" time=\"0.003\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_original_full_capsule_signatures_reject_field_replay[coder_rubric_digest-changed-rubric]\" time=\"0.002\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_original_full_capsule_signatures_reject_field_replay[split_assignment_digest-changed-split]\" time=\"0.003\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_original_full_capsule_signatures_reject_field_replay[generation_history_digest-changed-history]\" time=\"0.002\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_original_full_capsule_signatures_reject_field_replay[rejected_alternatives_digest-changed-rejected]\" time=\"0.004\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_raw_content_signature_cannot_claim_envelope\" time=\"0.001\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_wrong_full_capsule_signer_nonce_rejected\" time=\"0.001\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_materialized_unblind_changes_invisible_before_patch_now_refused\" time=\"0.002\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_unblind_return_alias_does_not_change_retained_integrity\" time=\"0.002\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_no_blank_or_whitespace_nonce[]\" time=\"0.001\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_no_blank_or_whitespace_nonce[ ]\" time=\"0.001\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_no_blank_or_whitespace_nonce[\\t\\n]\" time=\"0.001\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_invalid_arm_typed_exception[arm0]\" time=\"0.001\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_invalid_arm_typed_exception[arm1]\" time=\"0.001\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_invalid_arm_typed_exception[42]\" time=\"0.001\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_invalid_arm_typed_exception[None]\" time=\"0.001\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_malformed_or_unicode_leaking_visible_projection_refused[packet0]\" time=\"0.001\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_malformed_or_unicode_leaking_visible_projection_refused[packet1]\" time=\"0.001\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_malformed_or_unicode_leaking_visible_projection_refused[packet2]\" time=\"0.001\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_malformed_or_unicode_leaking_visible_projection_refused[packet3]\" time=\"0.001\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_malformed_or_unicode_leaking_visible_projection_refused[packet4]\" time=\"0.001\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_malformed_or_unicode_leaking_visible_projection_refused[packet5]\" time=\"0.001\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_malformed_or_unicode_leaking_visible_projection_refused[packet6]\" time=\"0.002\" /><testcase classname=\"test_oc4_repair_controls\" name=\"test_valid_generated_visible_and_coder_packets_stay_safe\" time=\"0.007\" /></testsuite></testsuites>"
+    },
+    "oc5e_native_hostiles.xml": {
+      "file": "oc5e_native_hostiles.xml",
+      "sha256": "ac727e498e573136c02f1a61ef76c8965212a7b74564d3fb1c444b136624a2e9",
+      "tests": 159,
+      "failures": 49,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_imported_module_is_the_pinned_oc4_blob",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-context]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-context]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-context]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-note]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-menu]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-public-projection]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-note]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-request-id]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-response]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[double-context-alias]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_alias_holes_are_observed_not_theorised",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_genuinely_other_or_invalid_packets_still_refused[alias-only-no-sibling]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_genuinely_other_or_invalid_packets_still_refused[acute-i-context]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_genuinely_other_or_invalid_packets_still_refused[underscore-differs]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_genuinely_other_or_invalid_packets_still_refused[note-non-str]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_genuinely_other_or_invalid_packets_still_refused[menu-non-list]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_genuinely_other_or_invalid_packets_still_refused[context-non-str]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_genuinely_other_or_invalid_packets_still_refused[extra-public-key]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_genuinely_other_or_invalid_packets_still_refused[value-cgj]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_genuinely_other_or_invalid_packets_still_refused[value-zwsp]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_genuinely_other_or_invalid_packets_still_refused[value-fullwidth]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_alias_values_are_still_type_checked_at_top_level",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_valid_generated_packets_still_pass",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-a]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-e]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_confusable_leak_token_substitution_must_be_flagged[armenian-h]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_confusable_leak_token_substitution_must_be_flagged[greek-o]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-s]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_confusable_leak_token_substitution_must_be_flagged[mixed-cyrillic]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_genuinely_different_confusable_string_is_correctly_admitted",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[primary-object]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'object' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[primary-int]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'int' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[primary-dict]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'dict' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[primary-list]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'list' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[primary-str]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'str' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[primary-bool]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'bool' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[primary-bytes]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'bytes' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[primary-float]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'float' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[primary-tuple]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'tuple' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[second-object]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'object' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[second-int]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'int' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[second-dict]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'dict' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[second-list]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'list' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[second-str]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'str' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[second-bool]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'bool' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[second-bytes]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'bytes' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[second-float]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'float' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_object_must_fail_typed[second-tuple]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'tuple' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_none_is_the_only_typed_malformed_signature",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_malformed_signature_holes_are_observed_as_attributeerror",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_non_enum_role_string_must_fail_typed",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'str' object has no attribute 'value'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_non_enum_role_string_hole_is_observed_as_attributeerror",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_unblind_unhashable_holder_must_fail_typed[list]",
+          "status": "FAIL",
+          "failure_message": "TypeError: unhashable type: 'list'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_unblind_unhashable_holder_must_fail_typed[dict]",
+          "status": "FAIL",
+          "failure_message": "TypeError: unhashable type: 'dict'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_unblind_unhashable_holder_must_fail_typed[set]",
+          "status": "FAIL",
+          "failure_message": "TypeError: unhashable type: 'set'"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[list]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[dict]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[set]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_unblind_scalar_holder_types_are_typed",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_capsule_identity_field_types_must_be_validated[version-str]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_capsule_identity_field_types_must_be_validated[version-none]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_capsule_identity_field_types_must_be_validated[version-injection]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_capsule_identity_field_types_must_be_validated[freeze-none]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_capsule_identity_field_types_must_be_validated[freeze-dict]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_capsule_identity_field_types_must_be_validated[freeze-str]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_capsule_identity_field_types_must_be_validated[schema-none]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_capsule_identity_field_types_must_be_validated[content-none]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_capsule_identity_field_types_must_be_validated[lawful-none]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_capsule_identity_field_types_must_be_validated[rubric-none]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_capsule_identity_field_types_must_be_validated[split-none]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_capsule_identity_field_type_hole_is_observed",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_mixed_type_capsule_digest_dict_must_fail_typed",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_mixed_type_capsule_digest_dict_hole_is_observed_as_typeerror",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_semantic_fingerprint_mixed_keys_must_fail_typed[mixed-int-str]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_semantic_fingerprint_mixed_keys_must_fail_typed[none-with-str]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_semantic_fingerprint_mixed_keys_must_fail_typed[tuple-key]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_semantic_fingerprint_hole_is_observed_as_typeerror[mixed-int-str]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_semantic_fingerprint_hole_is_observed_as_typeerror[none-with-str]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_semantic_fingerprint_hole_is_observed_as_typeerror[tuple-key]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[capsule_id]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[schema_version]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[purpose]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[scenario_frame]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[family_graph_digest]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[content_digest]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[contribution_digest]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[public_projection_digest]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[hidden_projection_digest]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[lawful_set_digest]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[coder_rubric_digest]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[split_assignment_digest]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[generation_history_digest]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[rejected_alternatives_digest]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[freeze_timestamp]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[version]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[expired]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_capsule_field_binds_the_envelope_commitment[revoked]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_full_capsule_pair_positive_still_holds",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_signature_context_and_nonce_binding[wrong-context]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_signature_context_and_nonce_binding[wrong-nonce]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_signature_context_and_nonce_binding[empty-nonce]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_signature_context_and_nonce_binding[blank-nonce]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_signature_payload_tampering_refused[test-only]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_signature_payload_tampering_refused[root]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_signature_payload_tampering_refused[signer]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_signature_payload_tampering_refused[content]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_signature_payload_tampering_refused[context]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_signature_payload_tampering_refused[nonce]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_signature_payload_tampering_refused[signature-hash]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_mock_verify_never_raises_and_fails_closed",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_escrow_event_mutation_is_detected[unblind-id]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_escrow_event_mutation_is_detected[unblind-at]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_escrow_event_mutation_is_detected[unblind-holder]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_escrow_event_mutation_is_detected[unblind-lawful]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_escrow_event_mutation_is_detected[committed-swap]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_escrow_event_mutation_is_detected[committed-key]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_escrow_event_mutation_is_detected[exposure]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_escrow_event_mutation_is_detected[ledger-add]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_escrow_event_mutation_is_detected[ledger-drop]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_escrow_event_mutation_is_detected[ledger-seq]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_escrow_event_mutation_is_detected[seals]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_every_escrow_event_mutation_is_detected[proofs]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_holder_grant_registry_is_outside_the_event_seal",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_unblind_receipt_alias_does_not_change_retained_integrity",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_escrow_lifecycle_early_refusals[revoked]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_escrow_lifecycle_early_refusals[expired]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_escrow_lifecycle_early_refusals[illegal-purpose]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_escrow_lifecycle_early_refusals[uncommitted]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_escrow_lifecycle_early_refusals[no-grant]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_escrow_lifecycle_early_refusals[double-commit]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_escrow_lifecycle_early_refusals[double-release]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_ledger_rollback_is_always_refused_typed",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_malformed_inputs_are_typed[two-A]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_malformed_inputs_are_typed[two-arms]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_malformed_inputs_are_typed[blank-nonce]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_malformed_inputs_are_typed[whitespace-nonce]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_malformed_inputs_are_typed[empty-list]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_malformed_inputs_are_typed[string]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_malformed_inputs_are_typed[unhashable-arm]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_malformed_inputs_are_typed[dict-arm]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_malformed_inputs_are_typed[int-arm]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_malformed_inputs_are_typed[none-arm]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_malformed_inputs_are_typed[extra-arm]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_malformed_inputs_are_typed[inconsistent-case-join]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_malformed_inputs_are_typed[int-case-join]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_malformed_inputs_are_typed[non-dict]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_block_size_must_be_three[b1]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_block_size_must_be_three[b2]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_block_size_must_be_three[b4]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_block_size_must_be_three[b0]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_blind_pairing_valid_three_arm_blocks_pass",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_unauthorized_purposes_refused_typed[live-model]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_unauthorized_purposes_refused_typed[source-use]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_unauthorized_purposes_refused_typed[empty]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_unauthorized_purposes_refused_typed[none]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_authorized_purposes_accepted",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5e_native_hostiles",
+          "name": "test_escrow_commit_refuses_inactive_capsule_before_any_state_change",
+          "status": "PASS",
+          "failure_message": null
+        }
+      ],
+      "junit_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"49\" skipped=\"0\" tests=\"159\" time=\"0.646\" timestamp=\"2026-10-30T11:41:15.792305-04:00\" hostname=\"Matthews-MBP.lan\"><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_imported_module_is_the_pinned_oc4_blob\" time=\"0.030\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-context]\" time=\"0.003\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-context]\" time=\"0.002\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-context]\" time=\"0.002\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-note]\" time=\"0.001\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-menu]\" time=\"0.001\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-public-projection]\" time=\"0.001\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-note]\" time=\"0.001\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-request-id]\" time=\"0.001\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-response]\" time=\"0.001\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_normalization_equivalent_allowed_field_alias_must_be_refused[double-context-alias]\" time=\"0.001\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_alias_holes_are_observed_not_theorised\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_genuinely_other_or_invalid_packets_still_refused[alias-only-no-sibling]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_genuinely_other_or_invalid_packets_still_refused[acute-i-context]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_genuinely_other_or_invalid_packets_still_refused[underscore-differs]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_genuinely_other_or_invalid_packets_still_refused[note-non-str]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_genuinely_other_or_invalid_packets_still_refused[menu-non-list]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_genuinely_other_or_invalid_packets_still_refused[context-non-str]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_genuinely_other_or_invalid_packets_still_refused[extra-public-key]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_genuinely_other_or_invalid_packets_still_refused[value-cgj]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_genuinely_other_or_invalid_packets_still_refused[value-zwsp]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_genuinely_other_or_invalid_packets_still_refused[value-fullwidth]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_alias_values_are_still_type_checked_at_top_level\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_valid_generated_packets_still_pass\" time=\"0.008\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_confusable_leak_token_substitution_must_be_flagged[cyrillic-a]\" time=\"0.004\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_confusable_leak_token_substitution_must_be_flagged[cyrillic-e]\" time=\"0.001\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_confusable_leak_token_substitution_must_be_flagged[armenian-h]\" time=\"0.001\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_confusable_leak_token_substitution_must_be_flagged[greek-o]\" time=\"0.001\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_confusable_leak_token_substitution_must_be_flagged[cyrillic-s]\" time=\"0.001\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_confusable_leak_token_substitution_must_be_flagged[mixed-cyrillic]\" time=\"0.002\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_genuinely_different_confusable_string_is_correctly_admitted\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[primary-object]\" time=\"0.003\"><failure message=\"AttributeError: 'object' object has no attribute 'signer_person_id'\">E   AttributeError: 'object' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[primary-int]\" time=\"0.003\"><failure message=\"AttributeError: 'int' object has no attribute 'signer_person_id'\">E   AttributeError: 'int' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[primary-dict]\" time=\"0.002\"><failure message=\"AttributeError: 'dict' object has no attribute 'signer_person_id'\">E   AttributeError: 'dict' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[primary-list]\" time=\"0.003\"><failure message=\"AttributeError: 'list' object has no attribute 'signer_person_id'\">E   AttributeError: 'list' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[primary-str]\" time=\"0.002\"><failure message=\"AttributeError: 'str' object has no attribute 'signer_person_id'\">E   AttributeError: 'str' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[primary-bool]\" time=\"0.002\"><failure message=\"AttributeError: 'bool' object has no attribute 'signer_person_id'\">E   AttributeError: 'bool' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[primary-bytes]\" time=\"0.002\"><failure message=\"AttributeError: 'bytes' object has no attribute 'signer_person_id'\">E   AttributeError: 'bytes' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[primary-float]\" time=\"0.002\"><failure message=\"AttributeError: 'float' object has no attribute 'signer_person_id'\">E   AttributeError: 'float' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[primary-tuple]\" time=\"0.002\"><failure message=\"AttributeError: 'tuple' object has no attribute 'signer_person_id'\">E   AttributeError: 'tuple' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[second-object]\" time=\"0.002\"><failure message=\"AttributeError: 'object' object has no attribute 'signer_person_id'\">E   AttributeError: 'object' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[second-int]\" time=\"0.002\"><failure message=\"AttributeError: 'int' object has no attribute 'signer_person_id'\">E   AttributeError: 'int' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[second-dict]\" time=\"0.003\"><failure message=\"AttributeError: 'dict' object has no attribute 'signer_person_id'\">E   AttributeError: 'dict' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[second-list]\" time=\"0.002\"><failure message=\"AttributeError: 'list' object has no attribute 'signer_person_id'\">E   AttributeError: 'list' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[second-str]\" time=\"0.002\"><failure message=\"AttributeError: 'str' object has no attribute 'signer_person_id'\">E   AttributeError: 'str' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[second-bool]\" time=\"0.002\"><failure message=\"AttributeError: 'bool' object has no attribute 'signer_person_id'\">E   AttributeError: 'bool' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[second-bytes]\" time=\"0.003\"><failure message=\"AttributeError: 'bytes' object has no attribute 'signer_person_id'\">E   AttributeError: 'bytes' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[second-float]\" time=\"0.002\"><failure message=\"AttributeError: 'float' object has no attribute 'signer_person_id'\">E   AttributeError: 'float' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_object_must_fail_typed[second-tuple]\" time=\"0.002\"><failure message=\"AttributeError: 'tuple' object has no attribute 'signer_person_id'\">E   AttributeError: 'tuple' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_none_is_the_only_typed_malformed_signature\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_malformed_signature_holes_are_observed_as_attributeerror\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_non_enum_role_string_must_fail_typed\" time=\"0.001\"><failure message=\"AttributeError: 'str' object has no attribute 'value'\">E   AttributeError: 'str' object has no attribute 'value'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_non_enum_role_string_hole_is_observed_as_attributeerror\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_unblind_unhashable_holder_must_fail_typed[list]\" time=\"0.002\"><failure message=\"TypeError: unhashable type: 'list'\">E   TypeError: unhashable type: 'list'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_unblind_unhashable_holder_must_fail_typed[dict]\" time=\"0.003\"><failure message=\"TypeError: unhashable type: 'dict'\">E   TypeError: unhashable type: 'dict'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_unblind_unhashable_holder_must_fail_typed[set]\" time=\"0.003\"><failure message=\"TypeError: unhashable type: 'set'\">E   TypeError: unhashable type: 'set'</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_unblind_unhashable_holder_hole_is_observed_as_typeerror[list]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_unblind_unhashable_holder_hole_is_observed_as_typeerror[dict]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_unblind_unhashable_holder_hole_is_observed_as_typeerror[set]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_unblind_scalar_holder_types_are_typed\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_capsule_identity_field_types_must_be_validated[version-str]\" time=\"0.003\"><failure message=\"Failed: DID NOT RAISE any of (TypeError, ValueError)\">E   Failed: DID NOT RAISE any of (TypeError, ValueError)</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_capsule_identity_field_types_must_be_validated[version-none]\" time=\"0.003\"><failure message=\"Failed: DID NOT RAISE any of (TypeError, ValueError)\">E   Failed: DID NOT RAISE any of (TypeError, ValueError)</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_capsule_identity_field_types_must_be_validated[version-injection]\" time=\"0.003\"><failure message=\"Failed: DID NOT RAISE any of (TypeError, ValueError)\">E   Failed: DID NOT RAISE any of (TypeError, ValueError)</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_capsule_identity_field_types_must_be_validated[freeze-none]\" time=\"0.004\"><failure message=\"Failed: DID NOT RAISE any of (TypeError, ValueError)\">E   Failed: DID NOT RAISE any of (TypeError, ValueError)</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_capsule_identity_field_types_must_be_validated[freeze-dict]\" time=\"0.002\"><failure message=\"Failed: DID NOT RAISE any of (TypeError, ValueError)\">E   Failed: DID NOT RAISE any of (TypeError, ValueError)</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_capsule_identity_field_types_must_be_validated[freeze-str]\" time=\"0.003\"><failure message=\"Failed: DID NOT RAISE any of (TypeError, ValueError)\">E   Failed: DID NOT RAISE any of (TypeError, ValueError)</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_capsule_identity_field_types_must_be_validated[schema-none]\" time=\"0.002\"><failure message=\"Failed: DID NOT RAISE any of (TypeError, ValueError)\">E   Failed: DID NOT RAISE any of (TypeError, ValueError)</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_capsule_identity_field_types_must_be_validated[content-none]\" time=\"0.002\"><failure message=\"Failed: DID NOT RAISE any of (TypeError, ValueError)\">E   Failed: DID NOT RAISE any of (TypeError, ValueError)</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_capsule_identity_field_types_must_be_validated[lawful-none]\" time=\"0.003\"><failure message=\"Failed: DID NOT RAISE any of (TypeError, ValueError)\">E   Failed: DID NOT RAISE any of (TypeError, ValueError)</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_capsule_identity_field_types_must_be_validated[rubric-none]\" time=\"0.003\"><failure message=\"Failed: DID NOT RAISE any of (TypeError, ValueError)\">E   Failed: DID NOT RAISE any of (TypeError, ValueError)</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_capsule_identity_field_types_must_be_validated[split-none]\" time=\"0.002\"><failure message=\"Failed: DID NOT RAISE any of (TypeError, ValueError)\">E   Failed: DID NOT RAISE any of (TypeError, ValueError)</failure></testcase><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_capsule_identity_field_type_hole_is_observed\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_mixed_type_capsule_digest_dict_must_fail_typed\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_mixed_type_capsule_digest_dict_hole_is_observed_as_typeerror\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_semantic_fingerprint_mixed_keys_must_fail_typed[mixed-int-str]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_semantic_fingerprint_mixed_keys_must_fail_typed[none-with-str]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_semantic_fingerprint_mixed_keys_must_fail_typed[tuple-key]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_semantic_fingerprint_hole_is_observed_as_typeerror[mixed-int-str]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_semantic_fingerprint_hole_is_observed_as_typeerror[none-with-str]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_semantic_fingerprint_hole_is_observed_as_typeerror[tuple-key]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[capsule_id]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[schema_version]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[purpose]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[scenario_frame]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[family_graph_digest]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[content_digest]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[contribution_digest]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[public_projection_digest]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[hidden_projection_digest]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[lawful_set_digest]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[coder_rubric_digest]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[split_assignment_digest]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[generation_history_digest]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[rejected_alternatives_digest]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[freeze_timestamp]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[version]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[expired]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_capsule_field_binds_the_envelope_commitment[revoked]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_full_capsule_pair_positive_still_holds\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_signature_context_and_nonce_binding[wrong-context]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_signature_context_and_nonce_binding[wrong-nonce]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_signature_context_and_nonce_binding[empty-nonce]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_signature_context_and_nonce_binding[blank-nonce]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_signature_payload_tampering_refused[test-only]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_signature_payload_tampering_refused[root]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_signature_payload_tampering_refused[signer]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_signature_payload_tampering_refused[content]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_signature_payload_tampering_refused[context]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_signature_payload_tampering_refused[nonce]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_signature_payload_tampering_refused[signature-hash]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_mock_verify_never_raises_and_fails_closed\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_escrow_event_mutation_is_detected[unblind-id]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_escrow_event_mutation_is_detected[unblind-at]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_escrow_event_mutation_is_detected[unblind-holder]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_escrow_event_mutation_is_detected[unblind-lawful]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_escrow_event_mutation_is_detected[committed-swap]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_escrow_event_mutation_is_detected[committed-key]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_escrow_event_mutation_is_detected[exposure]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_escrow_event_mutation_is_detected[ledger-add]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_escrow_event_mutation_is_detected[ledger-drop]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_escrow_event_mutation_is_detected[ledger-seq]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_escrow_event_mutation_is_detected[seals]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_every_escrow_event_mutation_is_detected[proofs]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_holder_grant_registry_is_outside_the_event_seal\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_unblind_receipt_alias_does_not_change_retained_integrity\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_escrow_lifecycle_early_refusals[revoked]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_escrow_lifecycle_early_refusals[expired]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_escrow_lifecycle_early_refusals[illegal-purpose]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_escrow_lifecycle_early_refusals[uncommitted]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_escrow_lifecycle_early_refusals[no-grant]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_escrow_lifecycle_early_refusals[double-commit]\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_escrow_lifecycle_early_refusals[double-release]\" time=\"0.003\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_ledger_rollback_is_always_refused_typed\" time=\"0.002\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_malformed_inputs_are_typed[two-A]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_malformed_inputs_are_typed[two-arms]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_malformed_inputs_are_typed[blank-nonce]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_malformed_inputs_are_typed[whitespace-nonce]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_malformed_inputs_are_typed[empty-list]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_malformed_inputs_are_typed[string]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_malformed_inputs_are_typed[unhashable-arm]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_malformed_inputs_are_typed[dict-arm]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_malformed_inputs_are_typed[int-arm]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_malformed_inputs_are_typed[none-arm]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_malformed_inputs_are_typed[extra-arm]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_malformed_inputs_are_typed[inconsistent-case-join]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_malformed_inputs_are_typed[int-case-join]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_malformed_inputs_are_typed[non-dict]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_block_size_must_be_three[b1]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_block_size_must_be_three[b2]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_block_size_must_be_three[b4]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_block_size_must_be_three[b0]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_blind_pairing_valid_three_arm_blocks_pass\" time=\"0.000\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_unauthorized_purposes_refused_typed[live-model]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_unauthorized_purposes_refused_typed[source-use]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_unauthorized_purposes_refused_typed[empty]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_unauthorized_purposes_refused_typed[none]\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_authorized_purposes_accepted\" time=\"0.001\" /><testcase classname=\"test_oc5e_native_hostiles\" name=\"test_escrow_commit_refuses_inactive_capsule_before_any_state_change\" time=\"0.001\" /></testsuite></testsuites>"
+    },
+    "oc5_prior_predictions.xml": {
+      "file": "oc5_prior_predictions.xml",
+      "sha256": "9f6b9d879be4ce875005b3ecfc3909c9e916f403190cce4518bdec90abcd6724",
+      "tests": 23,
+      "failures": 7,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_full_envelope_positive",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_full_envelope_replay_refused[capsule_id-other]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_full_envelope_replay_refused[purpose-PROSPECTIVE_DESIGN_REVIEW]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_full_envelope_replay_refused[lawful_set_digest-other]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_full_envelope_replay_refused[content_digest-other]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_full_envelope_replay_refused[version-2]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_full_envelope_replay_refused[schema_version-changed]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_full_envelope_replay_refused[freeze_timestamp-1.0]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_full_envelope_replay_refused[coder_rubric_digest-other]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_full_envelope_replay_refused[split_assignment_digest-other]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_full_envelope_replay_refused[hidden_projection_digest-other]",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_bare_digest_signatures_refused",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_malformed_signature_fails_typed[bad0]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'object' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_malformed_signature_fails_typed[12]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'int' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_malformed_signature_fails_typed[bad2]",
+          "status": "FAIL",
+          "failure_message": "AttributeError: 'dict' object has no attribute 'signer_person_id'"
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_duplicate_normalized_keys_refused[packet0]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_duplicate_normalized_keys_refused[packet1]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_duplicate_normalized_keys_refused[packet2]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_duplicate_normalized_keys_refused[packet3]",
+          "status": "FAIL",
+          "failure_message": "Failed: DID NOT RAISE LeakageError"
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_benign_and_unicode_positive",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_escrow_unblind_timestamp_and_holder_integrity",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_escrow_holder_revoked_before_release",
+          "status": "PASS",
+          "failure_message": null
+        },
+        {
+          "classname": "test_oc5_prior_predictions",
+          "name": "test_strict_blind_pairing",
+          "status": "PASS",
+          "failure_message": null
+        }
+      ],
+      "junit_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"7\" skipped=\"0\" tests=\"23\" time=\"0.131\" timestamp=\"2026-10-30T11:41:17.234806-04:00\" hostname=\"Matthews-MBP.lan\"><testcase classname=\"test_oc5_prior_predictions\" name=\"test_full_envelope_positive\" time=\"0.002\" /><testcase classname=\"test_oc5_prior_predictions\" name=\"test_full_envelope_replay_refused[capsule_id-other]\" time=\"0.002\" /><testcase classname=\"test_oc5_prior_predictions\" name=\"test_full_envelope_replay_refused[purpose-PROSPECTIVE_DESIGN_REVIEW]\" time=\"0.002\" /><testcase classname=\"test_oc5_prior_predictions\" name=\"test_full_envelope_replay_refused[lawful_set_digest-other]\" time=\"0.002\" /><testcase classname=\"test_oc5_prior_predictions\" name=\"test_full_envelope_replay_refused[content_digest-other]\" time=\"0.001\" /><testcase classname=\"test_oc5_prior_predictions\" name=\"test_full_envelope_replay_refused[version-2]\" time=\"0.002\" /><testcase classname=\"test_oc5_prior_predictions\" name=\"test_full_envelope_replay_refused[schema_version-changed]\" time=\"0.001\" /><testcase classname=\"test_oc5_prior_predictions\" name=\"test_full_envelope_replay_refused[freeze_timestamp-1.0]\" time=\"0.002\" /><testcase classname=\"test_oc5_prior_predictions\" name=\"test_full_envelope_replay_refused[coder_rubric_digest-other]\" time=\"0.002\" /><testcase classname=\"test_oc5_prior_predictions\" name=\"test_full_envelope_replay_refused[split_assignment_digest-other]\" time=\"0.001\" /><testcase classname=\"test_oc5_prior_predictions\" name=\"test_full_envelope_replay_refused[hidden_projection_digest-other]\" time=\"0.001\" /><testcase classname=\"test_oc5_prior_predictions\" name=\"test_bare_digest_signatures_refused\" time=\"0.001\" /><testcase classname=\"test_oc5_prior_predictions\" name=\"test_malformed_signature_fails_typed[bad0]\" time=\"0.002\"><failure message=\"AttributeError: 'object' object has no attribute 'signer_person_id'\">E   AttributeError: 'object' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5_prior_predictions\" name=\"test_malformed_signature_fails_typed[12]\" time=\"0.001\"><failure message=\"AttributeError: 'int' object has no attribute 'signer_person_id'\">E   AttributeError: 'int' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5_prior_predictions\" name=\"test_malformed_signature_fails_typed[bad2]\" time=\"0.002\"><failure message=\"AttributeError: 'dict' object has no attribute 'signer_person_id'\">E   AttributeError: 'dict' object has no attribute 'signer_person_id'</failure></testcase><testcase classname=\"test_oc5_prior_predictions\" name=\"test_duplicate_normalized_keys_refused[packet0]\" time=\"0.001\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5_prior_predictions\" name=\"test_duplicate_normalized_keys_refused[packet1]\" time=\"0.001\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5_prior_predictions\" name=\"test_duplicate_normalized_keys_refused[packet2]\" time=\"0.001\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5_prior_predictions\" name=\"test_duplicate_normalized_keys_refused[packet3]\" time=\"0.001\"><failure message=\"Failed: DID NOT RAISE LeakageError\">E   Failed: DID NOT RAISE LeakageError</failure></testcase><testcase classname=\"test_oc5_prior_predictions\" name=\"test_benign_and_unicode_positive\" time=\"0.001\" /><testcase classname=\"test_oc5_prior_predictions\" name=\"test_escrow_unblind_timestamp_and_holder_integrity\" time=\"0.003\" /><testcase classname=\"test_oc5_prior_predictions\" name=\"test_escrow_holder_revoked_before_release\" time=\"0.001\" /><testcase classname=\"test_oc5_prior_predictions\" name=\"test_strict_blind_pairing\" time=\"0.000\" /></testsuite></testsuites>"
+    }
+  },
+  "summary": {
+    "inherited_131": {
+      "tests": 131,
+      "pass": 121,
+      "fail": 10,
+      "historical_reds": [
+        "test_h13_ledger_rollback_detected",
+        "test_h15_missing_signature_in_capsule_refused",
+        "test_positive_full_role_separated_lifecycle",
+        "test_A_capsule_unblind_permission[mod0-A01_revoked_unblind]",
+        "test_A_capsule_unblind_permission[mod1-A02_expired_unblind]",
+        "test_A_capsule_unblind_permission[mod2-A03_illegal_purpose_unblind]",
+        "test_A08_mismatched_holder_unblind",
+        "test_signature_binds_content_and_rejects_alien_capsule",
+        "test_B01_valid_countersignatures_bind_content",
+        "test_Z03_declared_mock_roster_uses_public_derived_credentials"
+      ]
+    },
+    "oc4_new_36": {
+      "tests": 36,
+      "pass": 36,
+      "fail": 0
+    },
+    "oc5e_native_hostiles": {
+      "tests": 159,
+      "pass": 110,
+      "fail": 49,
+      "clusters": {
+        "A1_NORMALIZED_FIELD_ALIAS_MULTIPLICITY": 10,
+        "A2_CONFUSABLE_LEAK_TOKEN": 6,
+        "A3_MALFORMED_SIGNATURE_UNTYPED": 18,
+        "A4_NON_ENUM_ROLE_UNTYPED": 1,
+        "A5_UNHASHABLE_HOLDER_UNTYPED": 3,
+        "A6_CAPSULE_IDENTITY_FIELD_TYPES": 11
+      }
+    },
+    "oc5_prior_predictions": {
+      "tests": 23,
+      "pass": 16,
+      "fail": 7,
+      "reds": [
+        "test_malformed_signature_fails_typed[bad0]",
+        "test_malformed_signature_fails_typed[12]",
+        "test_malformed_signature_fails_typed[bad2]",
+        "test_duplicate_normalized_keys_refused[packet0]",
+        "test_duplicate_normalized_keys_refused[packet1]",
+        "test_duplicate_normalized_keys_refused[packet2]",
+        "test_duplicate_normalized_keys_refused[packet3]"
+      ]
+    },
+    "total": {
+      "tests": 349,
+      "pass": 283,
+      "fail": 66,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "clusters": {
+    "A1_NORMALIZED_FIELD_ALIAS_MULTIPLICITY": {
+      "count": 10,
+      "severity": "ACCEPTANCE_BYPASS_PROJECTION",
+      "materiality": "MUST_FIX_FOR_PACKET_LEAK_INVARIANT",
+      "owner_permission": "PARTIAL_INTENT__NOT_ISSUED"
+    },
+    "A2_CONFUSABLE_LEAK_TOKEN": {
+      "count": 6,
+      "severity": "ACCEPTANCE_BYPASS_LEAK_DETECTION",
+      "materiality": "MUST_FIX_IF_OWNER_ADOPTS_CONFUSABLE_THREAT_MODEL",
+      "owner_permission": "NO_POLICY"
+    },
+    "A3_MALFORMED_SIGNATURE_UNTYPED": {
+      "count": 18,
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_permission": "TYPED_CONTRACT_NEEDS_OWNER"
+    },
+    "A4_NON_ENUM_ROLE_UNTYPED": {
+      "count": 1,
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_permission": "TYPED_CONTRACT_NEEDS_OWNER"
+    },
+    "A5_UNHASHABLE_HOLDER_UNTYPED": {
+      "count": 3,
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_permission": "HOLDER_CONTRACT_NEEDS_OWNER"
+    },
+    "A6_CAPSULE_IDENTITY_FIELD_TYPES": {
+      "count": 11,
+      "severity": "ACCEPTANCE_BYPASS_CAPSULE_IDENTITY",
+      "materiality": "MUST_FIX_HIGHEST_CAPSULE_IDENTITY",
+      "owner_permission": "EXPLICIT_IDENTITY_INTENT__TYPE_POLICY_UNISSUED"
+    }
+  },
+  "rows": [
+    {
+      "test": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-context]",
+      "base_test": "test_normalization_equivalent_allowed_field_alias_must_be_refused",
+      "failure_message": "Failed: DID NOT RAISE LeakageError",
+      "cluster": "A1_NORMALIZED_FIELD_ALIAS_MULTIPLICITY",
+      "source": "custody_protocol.py:670,682-690",
+      "severity": "ACCEPTANCE_BYPASS_PROJECTION",
+      "must_fix": true,
+      "materiality": "MUST_FIX_FOR_PACKET_LEAK_INVARIANT",
+      "owner_status": "PARTIAL_NORMALIZATION_INTENT__ALIAS_MULTIPLICITY_NOT_ISSUED",
+      "proposed_repair": "Detect duplicate normalized keys and refuse aliases; preserve single allowed fields and valid generated packets.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-context]",
+      "base_test": "test_normalization_equivalent_allowed_field_alias_must_be_refused",
+      "failure_message": "Failed: DID NOT RAISE LeakageError",
+      "cluster": "A1_NORMALIZED_FIELD_ALIAS_MULTIPLICITY",
+      "source": "custody_protocol.py:670,682-690",
+      "severity": "ACCEPTANCE_BYPASS_PROJECTION",
+      "must_fix": true,
+      "materiality": "MUST_FIX_FOR_PACKET_LEAK_INVARIANT",
+      "owner_status": "PARTIAL_NORMALIZATION_INTENT__ALIAS_MULTIPLICITY_NOT_ISSUED",
+      "proposed_repair": "Detect duplicate normalized keys and refuse aliases; preserve single allowed fields and valid generated packets.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-context]",
+      "base_test": "test_normalization_equivalent_allowed_field_alias_must_be_refused",
+      "failure_message": "Failed: DID NOT RAISE LeakageError",
+      "cluster": "A1_NORMALIZED_FIELD_ALIAS_MULTIPLICITY",
+      "source": "custody_protocol.py:670,682-690",
+      "severity": "ACCEPTANCE_BYPASS_PROJECTION",
+      "must_fix": true,
+      "materiality": "MUST_FIX_FOR_PACKET_LEAK_INVARIANT",
+      "owner_status": "PARTIAL_NORMALIZATION_INTENT__ALIAS_MULTIPLICITY_NOT_ISSUED",
+      "proposed_repair": "Detect duplicate normalized keys and refuse aliases; preserve single allowed fields and valid generated packets.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-note]",
+      "base_test": "test_normalization_equivalent_allowed_field_alias_must_be_refused",
+      "failure_message": "Failed: DID NOT RAISE LeakageError",
+      "cluster": "A1_NORMALIZED_FIELD_ALIAS_MULTIPLICITY",
+      "source": "custody_protocol.py:670,682-690",
+      "severity": "ACCEPTANCE_BYPASS_PROJECTION",
+      "must_fix": true,
+      "materiality": "MUST_FIX_FOR_PACKET_LEAK_INVARIANT",
+      "owner_status": "PARTIAL_NORMALIZATION_INTENT__ALIAS_MULTIPLICITY_NOT_ISSUED",
+      "proposed_repair": "Detect duplicate normalized keys and refuse aliases; preserve single allowed fields and valid generated packets.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-menu]",
+      "base_test": "test_normalization_equivalent_allowed_field_alias_must_be_refused",
+      "failure_message": "Failed: DID NOT RAISE LeakageError",
+      "cluster": "A1_NORMALIZED_FIELD_ALIAS_MULTIPLICITY",
+      "source": "custody_protocol.py:670,682-690",
+      "severity": "ACCEPTANCE_BYPASS_PROJECTION",
+      "must_fix": true,
+      "materiality": "MUST_FIX_FOR_PACKET_LEAK_INVARIANT",
+      "owner_status": "PARTIAL_NORMALIZATION_INTENT__ALIAS_MULTIPLICITY_NOT_ISSUED",
+      "proposed_repair": "Detect duplicate normalized keys and refuse aliases; preserve single allowed fields and valid generated packets.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-public-projection]",
+      "base_test": "test_normalization_equivalent_allowed_field_alias_must_be_refused",
+      "failure_message": "Failed: DID NOT RAISE LeakageError",
+      "cluster": "A1_NORMALIZED_FIELD_ALIAS_MULTIPLICITY",
+      "source": "custody_protocol.py:670,682-690",
+      "severity": "ACCEPTANCE_BYPASS_PROJECTION",
+      "must_fix": true,
+      "materiality": "MUST_FIX_FOR_PACKET_LEAK_INVARIANT",
+      "owner_status": "PARTIAL_NORMALIZATION_INTENT__ALIAS_MULTIPLICITY_NOT_ISSUED",
+      "proposed_repair": "Detect duplicate normalized keys and refuse aliases; preserve single allowed fields and valid generated packets.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-note]",
+      "base_test": "test_normalization_equivalent_allowed_field_alias_must_be_refused",
+      "failure_message": "Failed: DID NOT RAISE LeakageError",
+      "cluster": "A1_NORMALIZED_FIELD_ALIAS_MULTIPLICITY",
+      "source": "custody_protocol.py:670,682-690",
+      "severity": "ACCEPTANCE_BYPASS_PROJECTION",
+      "must_fix": true,
+      "materiality": "MUST_FIX_FOR_PACKET_LEAK_INVARIANT",
+      "owner_status": "PARTIAL_NORMALIZATION_INTENT__ALIAS_MULTIPLICITY_NOT_ISSUED",
+      "proposed_repair": "Detect duplicate normalized keys and refuse aliases; preserve single allowed fields and valid generated packets.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-request-id]",
+      "base_test": "test_normalization_equivalent_allowed_field_alias_must_be_refused",
+      "failure_message": "Failed: DID NOT RAISE LeakageError",
+      "cluster": "A1_NORMALIZED_FIELD_ALIAS_MULTIPLICITY",
+      "source": "custody_protocol.py:670,682-690",
+      "severity": "ACCEPTANCE_BYPASS_PROJECTION",
+      "must_fix": true,
+      "materiality": "MUST_FIX_FOR_PACKET_LEAK_INVARIANT",
+      "owner_status": "PARTIAL_NORMALIZATION_INTENT__ALIAS_MULTIPLICITY_NOT_ISSUED",
+      "proposed_repair": "Detect duplicate normalized keys and refuse aliases; preserve single allowed fields and valid generated packets.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-response]",
+      "base_test": "test_normalization_equivalent_allowed_field_alias_must_be_refused",
+      "failure_message": "Failed: DID NOT RAISE LeakageError",
+      "cluster": "A1_NORMALIZED_FIELD_ALIAS_MULTIPLICITY",
+      "source": "custody_protocol.py:670,682-690",
+      "severity": "ACCEPTANCE_BYPASS_PROJECTION",
+      "must_fix": true,
+      "materiality": "MUST_FIX_FOR_PACKET_LEAK_INVARIANT",
+      "owner_status": "PARTIAL_NORMALIZATION_INTENT__ALIAS_MULTIPLICITY_NOT_ISSUED",
+      "proposed_repair": "Detect duplicate normalized keys and refuse aliases; preserve single allowed fields and valid generated packets.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_normalization_equivalent_allowed_field_alias_must_be_refused[double-context-alias]",
+      "base_test": "test_normalization_equivalent_allowed_field_alias_must_be_refused",
+      "failure_message": "Failed: DID NOT RAISE LeakageError",
+      "cluster": "A1_NORMALIZED_FIELD_ALIAS_MULTIPLICITY",
+      "source": "custody_protocol.py:670,682-690",
+      "severity": "ACCEPTANCE_BYPASS_PROJECTION",
+      "must_fix": true,
+      "materiality": "MUST_FIX_FOR_PACKET_LEAK_INVARIANT",
+      "owner_status": "PARTIAL_NORMALIZATION_INTENT__ALIAS_MULTIPLICITY_NOT_ISSUED",
+      "proposed_repair": "Detect duplicate normalized keys and refuse aliases; preserve single allowed fields and valid generated packets.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-a]",
+      "base_test": "test_confusable_leak_token_substitution_must_be_flagged",
+      "failure_message": "Failed: DID NOT RAISE LeakageError",
+      "cluster": "A2_CONFUSABLE_LEAK_TOKEN",
+      "source": "custody_protocol.py:652-655,695-698",
+      "severity": "ACCEPTANCE_BYPASS_LEAK_DETECTION",
+      "must_fix": true,
+      "materiality": "MUST_FIX_IF_OWNER_ADOPTS_CONFUSABLE_THREAT_MODEL",
+      "owner_status": "NO_OWNER_CONFUSABLE_POLICY",
+      "proposed_repair": "Add a scoped confusable/skeleton scan for leak tokens; owner must define script/threat scope so benign words are not flagged.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-e]",
+      "base_test": "test_confusable_leak_token_substitution_must_be_flagged",
+      "failure_message": "Failed: DID NOT RAISE LeakageError",
+      "cluster": "A2_CONFUSABLE_LEAK_TOKEN",
+      "source": "custody_protocol.py:652-655,695-698",
+      "severity": "ACCEPTANCE_BYPASS_LEAK_DETECTION",
+      "must_fix": true,
+      "materiality": "MUST_FIX_IF_OWNER_ADOPTS_CONFUSABLE_THREAT_MODEL",
+      "owner_status": "NO_OWNER_CONFUSABLE_POLICY",
+      "proposed_repair": "Add a scoped confusable/skeleton scan for leak tokens; owner must define script/threat scope so benign words are not flagged.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_confusable_leak_token_substitution_must_be_flagged[armenian-h]",
+      "base_test": "test_confusable_leak_token_substitution_must_be_flagged",
+      "failure_message": "Failed: DID NOT RAISE LeakageError",
+      "cluster": "A2_CONFUSABLE_LEAK_TOKEN",
+      "source": "custody_protocol.py:652-655,695-698",
+      "severity": "ACCEPTANCE_BYPASS_LEAK_DETECTION",
+      "must_fix": true,
+      "materiality": "MUST_FIX_IF_OWNER_ADOPTS_CONFUSABLE_THREAT_MODEL",
+      "owner_status": "NO_OWNER_CONFUSABLE_POLICY",
+      "proposed_repair": "Add a scoped confusable/skeleton scan for leak tokens; owner must define script/threat scope so benign words are not flagged.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_confusable_leak_token_substitution_must_be_flagged[greek-o]",
+      "base_test": "test_confusable_leak_token_substitution_must_be_flagged",
+      "failure_message": "Failed: DID NOT RAISE LeakageError",
+      "cluster": "A2_CONFUSABLE_LEAK_TOKEN",
+      "source": "custody_protocol.py:652-655,695-698",
+      "severity": "ACCEPTANCE_BYPASS_LEAK_DETECTION",
+      "must_fix": true,
+      "materiality": "MUST_FIX_IF_OWNER_ADOPTS_CONFUSABLE_THREAT_MODEL",
+      "owner_status": "NO_OWNER_CONFUSABLE_POLICY",
+      "proposed_repair": "Add a scoped confusable/skeleton scan for leak tokens; owner must define script/threat scope so benign words are not flagged.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-s]",
+      "base_test": "test_confusable_leak_token_substitution_must_be_flagged",
+      "failure_message": "Failed: DID NOT RAISE LeakageError",
+      "cluster": "A2_CONFUSABLE_LEAK_TOKEN",
+      "source": "custody_protocol.py:652-655,695-698",
+      "severity": "ACCEPTANCE_BYPASS_LEAK_DETECTION",
+      "must_fix": true,
+      "materiality": "MUST_FIX_IF_OWNER_ADOPTS_CONFUSABLE_THREAT_MODEL",
+      "owner_status": "NO_OWNER_CONFUSABLE_POLICY",
+      "proposed_repair": "Add a scoped confusable/skeleton scan for leak tokens; owner must define script/threat scope so benign words are not flagged.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_confusable_leak_token_substitution_must_be_flagged[mixed-cyrillic]",
+      "base_test": "test_confusable_leak_token_substitution_must_be_flagged",
+      "failure_message": "Failed: DID NOT RAISE LeakageError",
+      "cluster": "A2_CONFUSABLE_LEAK_TOKEN",
+      "source": "custody_protocol.py:652-655,695-698",
+      "severity": "ACCEPTANCE_BYPASS_LEAK_DETECTION",
+      "must_fix": true,
+      "materiality": "MUST_FIX_IF_OWNER_ADOPTS_CONFUSABLE_THREAT_MODEL",
+      "owner_status": "NO_OWNER_CONFUSABLE_POLICY",
+      "proposed_repair": "Add a scoped confusable/skeleton scan for leak tokens; owner must define script/threat scope so benign words are not flagged.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[primary-object]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'object' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[primary-int]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'int' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[primary-dict]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'dict' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[primary-list]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'list' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[primary-str]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'str' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[primary-bool]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'bool' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[primary-bytes]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'bytes' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[primary-float]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'float' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[primary-tuple]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'tuple' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[second-object]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'object' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[second-int]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'int' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[second-dict]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'dict' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[second-list]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'list' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[second-str]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'str' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[second-bool]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'bool' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[second-bytes]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'bytes' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[second-float]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'float' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_malformed_signature_object_must_fail_typed[second-tuple]",
+      "base_test": "test_malformed_signature_object_must_fail_typed",
+      "failure_message": "AttributeError: 'tuple' object has no attribute 'signer_person_id'",
+      "cluster": "A3_MALFORMED_SIGNATURE_UNTYPED",
+      "source": "custody_protocol.py:566-605,571-573",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Type-check primary/second signature objects before attribute access and raise SignatureError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_non_enum_role_string_must_fail_typed",
+      "base_test": "test_non_enum_role_string_must_fail_typed",
+      "failure_message": "AttributeError: 'str' object has no attribute 'value'",
+      "cluster": "A4_NON_ENUM_ROLE_UNTYPED",
+      "source": "custody_protocol.py:116-121,120",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "TYPED_API_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Validate Role enum before role.value in MockSigner/signature paths; raise SignatureError/ConflictError as owner defines.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_unblind_unhashable_holder_must_fail_typed[list]",
+      "base_test": "test_unblind_unhashable_holder_must_fail_typed",
+      "failure_message": "TypeError: unhashable type: 'list'",
+      "cluster": "A5_UNHASHABLE_HOLDER_UNTYPED",
+      "source": "custody_protocol.py:443-448,447",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "HOLDER_IDENTITY_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Reject non-hashable/non-string holder before holder_roles.get and raise IdentityMismatchError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_unblind_unhashable_holder_must_fail_typed[dict]",
+      "base_test": "test_unblind_unhashable_holder_must_fail_typed",
+      "failure_message": "TypeError: unhashable type: 'dict'",
+      "cluster": "A5_UNHASHABLE_HOLDER_UNTYPED",
+      "source": "custody_protocol.py:443-448,447",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "HOLDER_IDENTITY_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Reject non-hashable/non-string holder before holder_roles.get and raise IdentityMismatchError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_unblind_unhashable_holder_must_fail_typed[set]",
+      "base_test": "test_unblind_unhashable_holder_must_fail_typed",
+      "failure_message": "TypeError: unhashable type: 'set'",
+      "cluster": "A5_UNHASHABLE_HOLDER_UNTYPED",
+      "source": "custody_protocol.py:443-448,447",
+      "severity": "FAIL_CLOSED_UNTYPED_REFUSAL",
+      "must_fix": false,
+      "materiality": "CONTRACT_ONLY_FAIL_CLOSED",
+      "owner_status": "HOLDER_IDENTITY_CONTRACT_NEEDS_OWNER",
+      "proposed_repair": "Reject non-hashable/non-string holder before holder_roles.get and raise IdentityMismatchError.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_capsule_identity_field_types_must_be_validated[version-str]",
+      "base_test": "test_capsule_identity_field_types_must_be_validated",
+      "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)",
+      "cluster": "A6_CAPSULE_IDENTITY_FIELD_TYPES",
+      "source": "custody_protocol.py:160-180,374-382,426-441",
+      "severity": "ACCEPTANCE_BYPASS_CAPSULE_IDENTITY",
+      "must_fix": true,
+      "materiality": "MUST_FIX_HIGHEST_CAPSULE_IDENTITY",
+      "owner_status": "EXPLICIT_IDENTITY_INTENT__FIELD_TYPE_POLICY_UNISSUED",
+      "proposed_repair": "Validate capsule schema/version/content/lawful/rubric/split/freeze types before commit and envelope commitment; owner must define accepted types and legacy policy.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_capsule_identity_field_types_must_be_validated[version-none]",
+      "base_test": "test_capsule_identity_field_types_must_be_validated",
+      "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)",
+      "cluster": "A6_CAPSULE_IDENTITY_FIELD_TYPES",
+      "source": "custody_protocol.py:160-180,374-382,426-441",
+      "severity": "ACCEPTANCE_BYPASS_CAPSULE_IDENTITY",
+      "must_fix": true,
+      "materiality": "MUST_FIX_HIGHEST_CAPSULE_IDENTITY",
+      "owner_status": "EXPLICIT_IDENTITY_INTENT__FIELD_TYPE_POLICY_UNISSUED",
+      "proposed_repair": "Validate capsule schema/version/content/lawful/rubric/split/freeze types before commit and envelope commitment; owner must define accepted types and legacy policy.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_capsule_identity_field_types_must_be_validated[version-injection]",
+      "base_test": "test_capsule_identity_field_types_must_be_validated",
+      "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)",
+      "cluster": "A6_CAPSULE_IDENTITY_FIELD_TYPES",
+      "source": "custody_protocol.py:160-180,374-382,426-441",
+      "severity": "ACCEPTANCE_BYPASS_CAPSULE_IDENTITY",
+      "must_fix": true,
+      "materiality": "MUST_FIX_HIGHEST_CAPSULE_IDENTITY",
+      "owner_status": "EXPLICIT_IDENTITY_INTENT__FIELD_TYPE_POLICY_UNISSUED",
+      "proposed_repair": "Validate capsule schema/version/content/lawful/rubric/split/freeze types before commit and envelope commitment; owner must define accepted types and legacy policy.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_capsule_identity_field_types_must_be_validated[freeze-none]",
+      "base_test": "test_capsule_identity_field_types_must_be_validated",
+      "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)",
+      "cluster": "A6_CAPSULE_IDENTITY_FIELD_TYPES",
+      "source": "custody_protocol.py:160-180,374-382,426-441",
+      "severity": "ACCEPTANCE_BYPASS_CAPSULE_IDENTITY",
+      "must_fix": true,
+      "materiality": "MUST_FIX_HIGHEST_CAPSULE_IDENTITY",
+      "owner_status": "EXPLICIT_IDENTITY_INTENT__FIELD_TYPE_POLICY_UNISSUED",
+      "proposed_repair": "Validate capsule schema/version/content/lawful/rubric/split/freeze types before commit and envelope commitment; owner must define accepted types and legacy policy.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_capsule_identity_field_types_must_be_validated[freeze-dict]",
+      "base_test": "test_capsule_identity_field_types_must_be_validated",
+      "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)",
+      "cluster": "A6_CAPSULE_IDENTITY_FIELD_TYPES",
+      "source": "custody_protocol.py:160-180,374-382,426-441",
+      "severity": "ACCEPTANCE_BYPASS_CAPSULE_IDENTITY",
+      "must_fix": true,
+      "materiality": "MUST_FIX_HIGHEST_CAPSULE_IDENTITY",
+      "owner_status": "EXPLICIT_IDENTITY_INTENT__FIELD_TYPE_POLICY_UNISSUED",
+      "proposed_repair": "Validate capsule schema/version/content/lawful/rubric/split/freeze types before commit and envelope commitment; owner must define accepted types and legacy policy.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_capsule_identity_field_types_must_be_validated[freeze-str]",
+      "base_test": "test_capsule_identity_field_types_must_be_validated",
+      "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)",
+      "cluster": "A6_CAPSULE_IDENTITY_FIELD_TYPES",
+      "source": "custody_protocol.py:160-180,374-382,426-441",
+      "severity": "ACCEPTANCE_BYPASS_CAPSULE_IDENTITY",
+      "must_fix": true,
+      "materiality": "MUST_FIX_HIGHEST_CAPSULE_IDENTITY",
+      "owner_status": "EXPLICIT_IDENTITY_INTENT__FIELD_TYPE_POLICY_UNISSUED",
+      "proposed_repair": "Validate capsule schema/version/content/lawful/rubric/split/freeze types before commit and envelope commitment; owner must define accepted types and legacy policy.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_capsule_identity_field_types_must_be_validated[schema-none]",
+      "base_test": "test_capsule_identity_field_types_must_be_validated",
+      "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)",
+      "cluster": "A6_CAPSULE_IDENTITY_FIELD_TYPES",
+      "source": "custody_protocol.py:160-180,374-382,426-441",
+      "severity": "ACCEPTANCE_BYPASS_CAPSULE_IDENTITY",
+      "must_fix": true,
+      "materiality": "MUST_FIX_HIGHEST_CAPSULE_IDENTITY",
+      "owner_status": "EXPLICIT_IDENTITY_INTENT__FIELD_TYPE_POLICY_UNISSUED",
+      "proposed_repair": "Validate capsule schema/version/content/lawful/rubric/split/freeze types before commit and envelope commitment; owner must define accepted types and legacy policy.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_capsule_identity_field_types_must_be_validated[content-none]",
+      "base_test": "test_capsule_identity_field_types_must_be_validated",
+      "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)",
+      "cluster": "A6_CAPSULE_IDENTITY_FIELD_TYPES",
+      "source": "custody_protocol.py:160-180,374-382,426-441",
+      "severity": "ACCEPTANCE_BYPASS_CAPSULE_IDENTITY",
+      "must_fix": true,
+      "materiality": "MUST_FIX_HIGHEST_CAPSULE_IDENTITY",
+      "owner_status": "EXPLICIT_IDENTITY_INTENT__FIELD_TYPE_POLICY_UNISSUED",
+      "proposed_repair": "Validate capsule schema/version/content/lawful/rubric/split/freeze types before commit and envelope commitment; owner must define accepted types and legacy policy.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_capsule_identity_field_types_must_be_validated[lawful-none]",
+      "base_test": "test_capsule_identity_field_types_must_be_validated",
+      "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)",
+      "cluster": "A6_CAPSULE_IDENTITY_FIELD_TYPES",
+      "source": "custody_protocol.py:160-180,374-382,426-441",
+      "severity": "ACCEPTANCE_BYPASS_CAPSULE_IDENTITY",
+      "must_fix": true,
+      "materiality": "MUST_FIX_HIGHEST_CAPSULE_IDENTITY",
+      "owner_status": "EXPLICIT_IDENTITY_INTENT__FIELD_TYPE_POLICY_UNISSUED",
+      "proposed_repair": "Validate capsule schema/version/content/lawful/rubric/split/freeze types before commit and envelope commitment; owner must define accepted types and legacy policy.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_capsule_identity_field_types_must_be_validated[rubric-none]",
+      "base_test": "test_capsule_identity_field_types_must_be_validated",
+      "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)",
+      "cluster": "A6_CAPSULE_IDENTITY_FIELD_TYPES",
+      "source": "custody_protocol.py:160-180,374-382,426-441",
+      "severity": "ACCEPTANCE_BYPASS_CAPSULE_IDENTITY",
+      "must_fix": true,
+      "materiality": "MUST_FIX_HIGHEST_CAPSULE_IDENTITY",
+      "owner_status": "EXPLICIT_IDENTITY_INTENT__FIELD_TYPE_POLICY_UNISSUED",
+      "proposed_repair": "Validate capsule schema/version/content/lawful/rubric/split/freeze types before commit and envelope commitment; owner must define accepted types and legacy policy.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    },
+    {
+      "test": "test_capsule_identity_field_types_must_be_validated[split-none]",
+      "base_test": "test_capsule_identity_field_types_must_be_validated",
+      "failure_message": "Failed: DID NOT RAISE any of (TypeError, ValueError)",
+      "cluster": "A6_CAPSULE_IDENTITY_FIELD_TYPES",
+      "source": "custody_protocol.py:160-180,374-382,426-441",
+      "severity": "ACCEPTANCE_BYPASS_CAPSULE_IDENTITY",
+      "must_fix": true,
+      "materiality": "MUST_FIX_HIGHEST_CAPSULE_IDENTITY",
+      "owner_status": "EXPLICIT_IDENTITY_INTENT__FIELD_TYPE_POLICY_UNISSUED",
+      "proposed_repair": "Validate capsule schema/version/content/lawful/rubric/split/freeze types before commit and envelope commitment; owner must define accepted types and legacy policy.",
+      "original_oracle": "RED_PRESERVED__NO_PATCH"
+    }
+  ],
+  "patch_decision": {
+    "status": "NO_PATCH_APPLIED__OWNER_SCOPE_HOLD",
+    "reason": "Original OC4 commission authorizes the earlier ten-RED OC3 repair and disclaims semantic/oracle issuance; the 49 new hostiles are independent reviewer tests without an owner-issued alias/confusable/typed-error/field-type policy. PRE-MAIN has no custody path. No original owner signature rules are available for these 49.",
+    "preserved": "All 49 hostiles, 10 historical REDs, 7 prior predictions and original test blobs remain literal and unchanged."
+  },
+  "first_consumer": {
+    "evidence": "OC4/OC5 sourcefree custody test court (EscrowState/CustodyCapsule commit/unblind/release and the 159-case hostile bank)",
+    "production": "NOT_PROVED",
+    "future_material_consumer": "A source-qualified C12/BP4 custody integration with an owner-issued capsule/signature contract; not created here."
+  },
+  "not_run": [
+    "native CAN/ADP/SCI05/C11/C12",
+    "production deployment",
+    "real signer/institution",
+    "protected holdout",
+    "external durable anchor",
+    "C07 cross-process"
+  ],
+  "final_remote_sha": "REPORTED_EXTERNALLY_AFTER_PUSH__NOT_EMBEDDED"
+}
