@@ -1,0 +1,119 @@
+{
+  "schema": "PREMAIN_CASADMIN_R4_EFFECTIVE_PROTECTION_AND_REQUIRED_CHECKS@1",
+  "repository": "maidiu/rawlsing",
+  "checked_at": "2026-10-30",
+  "target_branch": "integration/pre-main-reconciliation-r1",
+  "target_sha": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "actual_observed": {
+    "protected": false,
+    "required_status_checks": {
+      "enforcement_level": "off",
+      "contexts": [],
+      "checks": []
+    },
+    "rulesets": [],
+    "protection_detail": "403 Resource not accessible by integration",
+    "pr_reviews": {
+      "519": 0,
+      "521": 0
+    },
+    "actual_admin_setting_writes": 0,
+    "admin_permission": "NOT_AVAILABLE_VIA_CONNECTED_GITHUB_ACTIONS",
+    "effective_enforcement": "NOT_INSTALLED"
+  },
+  "pr_source_lock": {
+    "pr519": {
+      "sha": "59c9a7a4a4fae60d809c1ef545ff4e48906d0dd0",
+      "draft": true,
+      "merged": false,
+      "receipt_ci": {
+        "run_id": 41082520979,
+        "job_id": 124155062531,
+        "conclusion": "success",
+        "witnesses": 13,
+        "events": 32,
+        "flights": 32
+      },
+      "governed": {
+        "run_id": 41082521136,
+        "job_id": 124155063140,
+        "conclusion": "failure",
+        "passed": 144,
+        "failed": 3
+      },
+      "twenty_patch_in_PR": false,
+      "twenty_candidate_blob": "2fc1c3c7ae6113d12b70abb655ff123a6ae9c895"
+    },
+    "pr521": {
+      "sha": "f246eaddbeeb86677c3ae67a075390501e233f38",
+      "draft": true,
+      "merged": false,
+      "locator_ci": {
+        "run_id": 41097417408,
+        "job_id": 124206648787,
+        "conclusion": "success",
+        "witnesses": 6,
+        "locators": 18
+      },
+      "governed": {
+        "run_id": 41097417528,
+        "job_id": 124206648573,
+        "conclusion": "failure",
+        "passed": 144,
+        "failed": 3
+      },
+      "six_independent_G1_G6_resolved": false
+    }
+  },
+  "requested_configuration_NOT_APPLIED": {
+    "intent": "admin applies after source and review preconditions; do not mark applied",
+    "branch": "integration/pre-main-reconciliation-r1",
+    "require_pull_request": true,
+    "independent_reviews": {
+      "minimum_approvals": 1,
+      "stale_reviews_dismissed": true,
+      "restrict_unapproved_pushes": true,
+      "owner_exclusion_from_self_review": true
+    },
+    "required_checks_eventual": [
+      "receipt-contract (patched 20 witness after legitimate install)",
+      "session-locator-integrity (G1-G6 fixed)",
+      "paired-progress-cas (to be implemented; verify actual context name)"
+    ],
+    "require_check_at_current_target_head": true,
+    "path_filter_guard": "Current PR519 CI only triggers on BRANCH_FANIN/** or own workflow; PR521 on locator/grok files. A mandatory check must not silently skip progress-only PRs: remove restrictive paths or add an unconditional required gate before enabling.",
+    "block_force_push": true,
+    "block_deletion": true,
+    "restrict_bypass_actors": "no unauthorized direct bypass; determine actual repo plan and personnel",
+    "required_initial_seed_signed_approval": true,
+    "allow_any_ADOPTED_CAS_VERIFIED_from_offline_validator": false
+  },
+  "configuration_execution": "NOT_RUN_CONNECTOR_NO_SETTINGS_WRITE_METHOD",
+  "admin_readback": "NOT_RUN_NO_INSTALLED_SETTINGS",
+  "owner_CAS": "NOT_RUN",
+  "source_integrity_limits": [
+    "SHA pin in editable code+seed is not protected authority",
+    "Current PR519 code runs 13 not 20",
+    "Current PR521 six test green not G1-G6 coverage",
+    "Existing required-check context absent and may be skipped by path filters",
+    "Existing FIABC governed 3 FAIL cannot be declared green"
+  ],
+  "three_courts": {
+    "engineering": "SCOPED_EXISTING_CI_ONLY_HOLD_NEW_PATCH",
+    "scientific": "HOLD",
+    "authority": "RED_STOP"
+  },
+  "responsible_parties": {
+    "admin": "genuine GitHub repository administrator",
+    "source": "PR519/521 original authors plus distinct reviewers",
+    "seed": "original PRE-MAIN seed owner",
+    "progress": "Sorok and Pyat separate owners",
+    "cas": "authorized PRE-MAIN maintainer"
+  },
+  "DONE": "metadata and administrative capabilities independently checked",
+  "REMAINING": "install/readback required checks and review gating; source patches/owner approvals",
+  "CRITICAL_BLOCKERS": "settings mutation not supported, no enforceable protection",
+  "LARGEST_PRODUCTIVE_MOVE": "authenticated admin settings action with independently verifiable required check names",
+  "FLIGHT": "R4 isolated return only",
+  "DELTA": "no administrative settings changed"
+}
