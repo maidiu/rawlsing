@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: python -m pip install pytest pandas pyreadstat
+      - run: python -m pip install pytest pandas pyreadstat pyarrow duckdb
       - name: Recovered R61 automatic frontier/issuer/native binding and fault tests
         env:
           PYTHONPATH: .
