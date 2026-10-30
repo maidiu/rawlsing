@@ -1,0 +1,41 @@
+name: Pyat 845 S1-S5 real source/symbol/return evidence (no candidate code execution)
+on:
+  push:
+    branches:
+      - agent/pyat-845-s1-s5-functions-review-consumer-index-20261030
+  pull_request:
+    paths:
+      - 'PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/13_s1_s5_source_symbol_evidence.py'
+      - '.github/workflows/pyat-845-s1-s5-source-function-index.yml'
+permissions:
+  contents: read
+jobs:
+  function-evidence:
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        shard: [S1, S2, S3, S4, S5]
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+      - name: Fetch full PRE-MAIN ancestry without executing source branch code
+        run: |
+          git -c protocol.version=2 fetch --unshallow --no-tags --filter=blob:none origin \
+            '+refs/heads/integration/pre-main-reconciliation-r1:refs/remotes/origin/integration/pre-main-reconciliation-r1'
+      - name: Verify pinned branch tips and source AST symbols against real PRE-MAIN
+        run: |
+          python3 PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/13_s1_s5_source_symbol_evidence.py \
+            --shard "${{ matrix.shard }}" --out pyat-function-evidence
+      - name: Upload exact source/return/AST index for human investigation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pyat-s1-s5-${{ matrix.shard }}-function-evidence
+          path: pyat-function-evidence/
+          if-no-files-found: error
+          retention-days: 30
