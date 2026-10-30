@@ -9,7 +9,7 @@ BRANCH: review/sorok-r3-f1c-b-world-causal-independent-court-20261030
 EXACT SEALED STARTUP: 187fdd11963163dab03c7b061e20067ea1f99134
 TARGET ORIGINAL RETURN: bcea367e7dc0f2e069de71b0fe5e481de094dad5
 READ ENTIRE COMMISSION: WORKER_COMMISSIONS/F1CI3-R3/00_COMMISSION.md
-SESSION_CUSTODY REQUIRED: device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING F1CI3 | F1C independent nonretroactive A | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
+SESSION_CUSTODY REQUIRED: record AGENT_NAME, AGENT_ID (if exposed), AGENT_ROLE/mode explicitly and separately from harness/model.  device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING F1CI3 | F1C independent nonretroactive A | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
 MUST_READ_NOW: F1C bcea367e7dc0f2e069de71b0fe5e481de094dad5 all five return artifacts, executable candidate and 13 cases; F1 8aad22736c9f488c92ed007128c1875075142839, F1I c48d3dff2b86e0da54ad3dbb09a34baf53d0273e; Original R31J 64fec28c374d8f77fb0b412d0c934d798ede03e8, JOIN, BP2P4J, PFF G1/G2, Pyat R95
 READ_IF_TRIGGERED: original source/owner and versioned first consumer, verified live Mac worktree/lease.
 BACKGROUND_LINK_ONLY: old census.
