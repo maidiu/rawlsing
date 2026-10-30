@@ -9,7 +9,7 @@ import re
 import subprocess
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = Path(__file__).resolve().parents[2]
 SCOPE = Path(__file__).resolve().parent / "SCOPED_ROSTER"
 BASE = "refs/remotes/origin/integration/pre-main-reconciliation-r1"
 SHA = re.compile(r"^[0-9a-f]{40}$")
