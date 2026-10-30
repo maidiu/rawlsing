@@ -1,0 +1,19 @@
+LAUNCH — F0R3I — PRE-MAIN F0R3 exact patch and cross-HQ session identity hostile control review
+REPOSITORY: maidiu/rawlsing (PRIVATE)
+ROLE: Independent I2 control/CI reviewer; not PR519/PR521 author, F0R3 author or canonical merger
+USER_SELECTED_EDITOR_MODEL_PAIR: Browser / GPT-6 High recommended; user explicitly selects real editor/model/machine.
+SINGLE_AGENT_FULL_DELIVERABLE=YES; NO_AUTONOMOUS_MODEL_OR_HARNESS_SWITCH=YES; POST_RETURN_INDEPENDENT_REVIEW_OWNER=incumbent HQ + separate reviewer.
+INTELLIGENCE=I2 HIGH; EXECUTION=S0–S1 authenticated GH+CI+source code; HQ_ENVIRONMENT_VERDICT=BROWSER_NATIVE; BROWSER_SUFFICIENCY=FULL documentary only; SETUP_COST=LIGHT; PRIMARY_MODEL_ECONOMICS=UNKNOWN.
+ROUTE Browser→DeepSeek V4.1-Flash MAX→Codex High if necessary→user-selected Middle, never silent switching. PHASE_MODEL_ASSIGNMENT=I0 exact custody then I2 HIGH whole assignment, independent later review. ACTIVE_WORKER_NO_DISTURBANCE=YES; REVIEW_INDEPENDENCE_AND_ESCALATION=separate author/reviewer and original source owners.
+BRANCH: review/premain-r3-f0r3-and-session-custody-hostile-court-20261030
+EXACT SEALED STARTUP: 187fdd11963163dab03c7b061e20067ea1f99134
+TARGET ORIGINAL RETURN: 3057b2f5b87f04ff1737d88356edfe3568e1745f
+READ ENTIRE COMMISSION: WORKER_COMMISSIONS/F0R3I-R3/00_COMMISSION.md
+SESSION_CUSTODY REQUIRED: device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING F0R3I | PRE-MAIN F0R3 exact patch and cr | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
+MUST_READ_NOW: F0R3 3057b2f5b87f04ff1737d88356edfe3568e1745f candidate validator 20 witnesses and 32 row current cut; Original F0 e5089b7da29d3c290ad1447f7b7a45cc81f0eb6e, F0R2 53c4e16f5e402f452efb036878a58cd4258cd14a, draft PR519 exact live; New session locator draft PR521 with Cross/Pyat/Sorok grok requirements, historical unknown Mac vs verified harness
+READ_IF_TRIGGERED: original source/owner and versioned first consumer, verified live Mac worktree/lease.
+BACKGROUND_LINK_ONLY: old census.
+WORK: 1) Independently check original 13, F0R3 N1–N7 20 mutation witnesses, seed prefix and current head true CI; do not transfer previous green to changed bytes 2) Review new session locator schema and five adversarial witnesses, detect false attribution of oldMac/mainMac, app title, DeepSeek model vs harness and provenance forgery 3) Distinguish offline validator from authenticated source owner grant/required GitHub check; original PRE-MAIN branch protection and MD36/JSON35 / FIABC 3-fail status must be read independently 4) Return exact approval scope or REVISE, administrator required check/capability status, rightful owner CAS, F4 STOP or eligible recommendation (never self-merge)
+ACCEPTANCE: exact source/tests/reviewer/negative and separate ENGINEERING SCIENTIFIC AUTHORITY grades; original source scientific grant and canonical CAS held until authorized. Do not merge, original-source run, or self-review.
+STOP/HOLD: READY_PARALLEL, absent source/host/owner or QF2 preconditions => explicit named STOP and return, no production write.
+RETURN: WORKER_RETURNS/F0R3I-R3/00_INDEPENDENT_CONTROL_VERDICT.md; WORKER_RETURNS/F0R3I-R3/01_TWENTY_AND_FIVE_WITNESSES.json; WORKER_RETURNS/F0R3I-R3/02_BRANCH_PROTECTION_PROGRESS_AND_SEED_HOLDS.md; WORKER_RETURNS/F0R3I-R3/03_SESSION_IDENTITY_COUNTEREXAMPLES_AND_HANDOFF.md; SESSION_LOCATOR.json; FINDING/INTERPRETATION/ACTION/OWNER; DONE/REMAINING/BLOCKERS/LARGEST_MOVE/FLIGHT/DELTA; original source SHA/tests RUN & NOT_RUN; exact pushed remote SHA and readback.
