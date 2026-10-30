@@ -1,7 +1,5 @@
 name: Pyat Programma R61 finite sourcefree workload
 on:
-  push:
-    branches: [agent/pyat-programma-hq-r61-universal-workload-integration-r1]
   pull_request:
     paths:
       - 'rawlsing_next/pre553_universal_workload.py'
@@ -28,9 +26,23 @@ jobs:
           PYTHONPATH: .
         run: |
           python -m pytest rawlsing_next/tests/test_universal_grammar.py rawlsing_next/tests/test_universal_workload.py rawlsing_next/tests/test_universal_source_projection.py rawlsing_next/tests/test_universal_source_byte_custody.py -q -o addopts='' --junitxml=pyat-r61-sourcefree-junit.xml
+      - name: Regression — existing physical decoder and C11 metadata contracts
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest rawlsing_next/tests/test_r35_i01_physical_metadata.py rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py rawlsing_next/tests/test_fiabc_r35_i03_physical_equivalence.py -q -o addopts='' --junitxml=pyat-r61-existing-decoder-junit.xml
+      - name: Real severance — R61 inventory, operation and original byte identity
+        env:
+          PYTHONPATH: .
+        run: |
+          python CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py witness rawlsing_next/tests/test_universal_grammar.py.proof.json --root .
+          python CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py witness rawlsing_next/tests/test_universal_workload.py.proof.json --root .
+          python CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py witness rawlsing_next/tests/test_universal_source_projection.py.proof.json --root .
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: pyat-r61-sourcefree-tests
-          path: pyat-r61-sourcefree-junit.xml
+          path: |
+            pyat-r61-sourcefree-junit.xml
+            pyat-r61-existing-decoder-junit.xml
           if-no-files-found: ignore
