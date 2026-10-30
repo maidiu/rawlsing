@@ -3,7 +3,7 @@
 
 **Full name:** **Programma Pyat — Source → Objective World → Selected Possibility**.
 **Parent constitution:** `../../CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md`. **Twin:** `../../SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md`.
-**Status:** proposed user-named scope/command articulation for current Pyat HQ entrypoint. It does not establish independent scientific/source authority, N11/N12 admission, local execution, new HQ appointment, dispatch, canonically integrated PRE-MAIN or Sorok actor permissions. Current governing files and full epistemic inherited code remain controlling.
+**Status:** User-approved Programma Pyat scope/naming, canonically referenced when this document is merged into PRE-MAIN. It does not establish independent scientific/source authority, N11/N12 admission, local execution, new HQ appointment, dispatch or Sorok actor permissions. Current governing files and full epistemic inherited code remain controlling.
 
 ### Terminal demand: NOT a hand-selected analysis service
 Build and occupy the **generalized, automated, governed, all-35-wave source → full possible scientifically admissible empirical/learned/structural/temporal world → current/historical/as-of selected-world and N10E/N10W/F8 progressive possibility → N11 objectively accepted PRE-V3 product → N12 separately governed Sorok wake/defer** machine. World conditions can open and close historically contingent life possibilities; they do not prescribe an individual worldview, type, memory or action. The current producer-owned semantic DAG must preserve original V550/J and V553–V558, Dva, Trii, Chetiri, Long Memory, Field Forge, and later direct-reuse science without resurrecting serial historical stages.
