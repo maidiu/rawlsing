@@ -9,7 +9,7 @@ BRANCH: research/sorok-r3-oc5-original-source-owner-policy-decision-20261030
 EXACT SEALED STARTUP: 187fdd11963163dab03c7b061e20067ea1f99134
 TARGET ORIGINAL RETURN: e8b127b68c18d05c4d40c059b3aecc00dafc7ce7
 READ ENTIRE COMMISSION: WORKER_COMMISSIONS/OC5OWNER-R3/00_COMMISSION.md
-SESSION_CUSTODY REQUIRED: device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING OC5OWNER | OC5 original custody policy deci | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
+SESSION_CUSTODY REQUIRED: record AGENT_NAME, AGENT_ID (if exposed), AGENT_ROLE/mode explicitly and separately from harness/model.  device oldMac/mainMac/BROWSER/UNKNOWN verified, harness Codex/OpenCode/DeepSeek-Harness/Browser distinct from model; exact session UI title/ID/URL if visible; worktree; original author session lookup; no invented link. Suggested app title: RAWLSING OC5OWNER | OC5 original custody policy deci | [device] | [harness]. Record SESSION_LOCATOR.json in own return tree.
 MUST_READ_NOW: OC5 author e8b127b68c18d05c4d40c059b3aecc00dafc7ce7 49 classifications, original OC4 source 0caaec590f6a8bf6744f22dc9c948c5fe233bc94; Independent original reviewer 67a4f1561cdad40192f00797d66b24fc4cd91589, F3I 97dbe712e4cce8fedd1632d9ac64b4e57a0ac25e; Existing Pyat/C07 custody and any original owner policy signatures actually found, no invented signature
 READ_IF_TRIGGERED: original source/owner and versioned first consumer, verified live Mac worktree/lease.
 BACKGROUND_LINK_ONLY: old census.
