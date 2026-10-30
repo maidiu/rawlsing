@@ -14,6 +14,7 @@ structural, actor, or V3/V2 promotion.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from types import SimpleNamespace
 from typing import Any, Iterable, Mapping
 
 from rawlsing_next.pre553_c11_integrity import RespondentIdentity
@@ -692,6 +693,88 @@ def build_gt2_q86a_q86b_i03_plan(
     return GT12BI03Plan(GT2_CLAIM_ID, binding.gt2_target_use, predicate, query, members)
 
 
+def reconstruct_gt2_risk_cohort_predicate(
+    *,
+    query: EmpiricalQuerySpec,
+    fact: EmpiricalFact,
+) -> EmpiricalPredicate:
+    """Rebuild the exact frozen GT2 risk-cohort predicate from retained refs.
+
+    The fixed committed transport carries the exact query/fact identities, the
+    exact 19,210 risk-member refs and the predicate *ref/hash*, but not the
+    predicate body.  This helper applies the owner's own frozen predicate law to
+    those exact retained refs and requires the reconstructed identity to equal
+    the query's and fact's condition-predicate identity.
+
+    It does not execute I03, open source material, or create any new authority.
+    """
+
+    if not isinstance(query, EmpiricalQuerySpec):
+        raise GT12BI03BindingError("query must be EmpiricalQuerySpec@1.0.0")
+    if not isinstance(fact, EmpiricalFact):
+        raise GT12BI03BindingError("fact must be EmpiricalFact@1.0.0")
+    if exact_ref(fact.empirical_query_spec_ref, "fact.empirical_query_spec_ref") != query.ref:
+        raise GT12BI03BindingError("fact does not bind the supplied exact query")
+    if exact_ref(fact.condition_predicate_ref, "fact.condition_predicate_ref") != exact_ref(
+        query.condition_predicate_ref, "query.condition_predicate_ref"
+    ):
+        raise GT12BI03BindingError("fact/query condition predicate identity differs")
+    if exact_ref(fact.risk_set_ref, "fact.risk_set_ref") != exact_ref(
+        query.risk_set_ref, "query.risk_set_ref"
+    ):
+        raise GT12BI03BindingError("fact/query risk-set identity differs")
+
+    targets = tuple(exact_ref(ref, "query.target_refs") for ref in query.target_refs)
+    if len(targets) != 2 or tuple(target.object_id for target in targets) != (
+        FROZEN_Q86B_QIMPL,
+        FROZEN_Q86A_QIMPL,
+    ):
+        raise GT12BI03BindingError(
+            "GT2 retained query must preserve exact [Q86B conditioner, Q86A target] order"
+        )
+    if len(query.query_authority_refs) != 1:
+        raise GT12BI03BindingError(
+            "GT2 retained query must carry exactly one query authority"
+        )
+    if len(query.empirical_universe_refs) != 1:
+        raise GT12BI03BindingError(
+            "GT2 retained query must bind exactly one empirical universe"
+        )
+
+    members = tuple(
+        exact_ref(ref, "fact.risk_set_member_refs")
+        for ref in fact.risk_set_member_refs
+    )
+    if len(members) != FROZEN_RISK_SET_MEMBER_COUNT:
+        raise GT12BI03BindingError("retained risk-set member count drift")
+    if fact.raw_denominator_support != FROZEN_RISK_SET_MEMBER_COUNT:
+        raise GT12BI03BindingError("retained denominator support drift")
+
+    binding_view = SimpleNamespace(
+        risk_set_ref=exact_ref(query.risk_set_ref, "query.risk_set_ref"),
+        query_authority_ref=authority_ref(
+            query.query_authority_refs[0], "query.query_authority_refs[0]"
+        ),
+        empirical_universe_ref=exact_ref(
+            query.empirical_universe_refs[0], "query.empirical_universe_refs[0]"
+        ),
+    )
+    predicate = _predicate_for_members(binding_view, members)
+    if predicate.ref != exact_ref(
+        query.condition_predicate_ref, "query.condition_predicate_ref"
+    ):
+        raise GT12BI03BindingError(
+            "reconstructed predicate did not reproduce the exact retained predicate identity"
+        )
+    if predicate.ref != exact_ref(
+        fact.condition_predicate_ref, "fact.condition_predicate_ref"
+    ):
+        raise GT12BI03BindingError(
+            "reconstructed predicate did not reproduce the exact retained fact predicate"
+        )
+    return predicate
+
+
 def execute_gt12b_i03_plan(
     *,
     release: C11LogicalRelease,
@@ -750,6 +833,7 @@ __all__ = [
     "GT12BI03Execution",
     "build_gt1_q86a_i03_plan",
     "build_gt2_q86a_q86b_i03_plan",
+    "reconstruct_gt2_risk_cohort_predicate",
     "execute_gt12b_i03_plan",
     "replay_gt12b_i03_execution",
 ]

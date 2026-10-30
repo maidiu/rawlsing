@@ -1,0 +1,985 @@
+{
+  "schema": "PYAT_H03_RETAINED_ANALYTICAL_PRODUCT_AND_CONSUMER@1",
+  "terminal_disposition": "H03_RETAINED_INPUT_NOT_REPRESENTABLE__FUNCTION_CARD_COMPLETE",
+  "source_free": true,
+  "raw_sav_opened": false,
+  "retained_input": {
+    "loader": "rawlsing_next.pre553_repo_native_current_payload.load_current_gt2_query_fact_from_committed_transport",
+    "transport": "fixed committed Worker-A constructor-complete manifest and exact-ref hash shards",
+    "source_family": "Afrobarometer",
+    "source_wave": "R5",
+    "source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "conditioner": "Q86B",
+    "target": "Q86A",
+    "query_ref": {
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+      "content_hash": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0"
+    },
+    "fact_ref": {
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+      "content_hash": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46"
+    },
+    "predicate_ref": {
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+      "content_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3"
+    },
+    "predicate_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+    "predicate_leaf_type": "DERIVED_BRANCH_COHORT",
+    "predicate_value_bearing_leaf_count": 0,
+    "replay_ref": {
+      "kind": "PRE553_I03_QUERY_REPLAY",
+      "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f",
+      "content_hash": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f"
+    },
+    "risk_set_ref": {
+      "kind": "RISK_SET",
+      "object_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+      "content_hash": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"
+    },
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "R5_GT12_Q86A_Q86B_FROZEN",
+      "content_hash": "8315b104a94ae985a3ee3d77c8c365d5fcef6b6cb51a606df5bf141434668295"
+    },
+    "universe_ref": {
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1",
+      "content_hash": "4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1"
+    },
+    "raw_denominator_support": 19210,
+    "joint_cells": 36,
+    "zero_cells": 23,
+    "target_order": [
+      "Q86B",
+      "Q86A"
+    ],
+    "measure_kind": "RAW",
+    "source_scope_mode": "SINGLE_UNIVERSE",
+    "typed_state": "SUPPORTED",
+    "target_component_order": [
+      {
+        "role": "CONDITIONER",
+        "source_native_variable": "Q86B",
+        "target_object_id": "question_impl.phase0.2fb3a62609dad4c1306d"
+      },
+      {
+        "role": "TARGET",
+        "source_native_variable": "Q86A",
+        "target_object_id": "question_impl.phase0.67f036c0efb7fb98ff4a"
+      }
+    ]
+  },
+  "retained_analytical_preparation": {
+    "schema": "RETAINED_GT2_N10E_ANALYTICAL_PREPARATION@1.0.0",
+    "preparation_state": "PREPARED_ONLY__N10E_PROVIDER_CONTRACT_BLOCKED",
+    "source_family": "Afrobarometer",
+    "source_wave": "R5",
+    "source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "query_ref": {
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+      "content_hash": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0"
+    },
+    "fact_ref": {
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+      "content_hash": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46"
+    },
+    "predicate_ref": {
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+      "content_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3"
+    },
+    "predicate_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+    "predicate_leaf_type": "DERIVED_BRANCH_COHORT",
+    "predicate_value_bearing_leaf_count": 0,
+    "replay_ref": {
+      "kind": "PRE553_I03_QUERY_REPLAY",
+      "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f",
+      "content_hash": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f"
+    },
+    "risk_set_ref": {
+      "kind": "RISK_SET",
+      "object_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+      "content_hash": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"
+    },
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "R5_GT12_Q86A_Q86B_FROZEN",
+      "content_hash": "8315b104a94ae985a3ee3d77c8c365d5fcef6b6cb51a606df5bf141434668295"
+    },
+    "universe_ref": {
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1",
+      "content_hash": "4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1"
+    },
+    "relation_ref": {
+      "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+      "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19",
+      "content_hash": "1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19"
+    },
+    "joint_cells": [
+      {
+        "cell": [
+          "0",
+          "0"
+        ],
+        "cell_state": "OBSERVED_POSITIVE",
+        "raw_numerator_support": 2112,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          "0",
+          "1"
+        ],
+        "cell_state": "OBSERVED_POSITIVE",
+        "raw_numerator_support": 4493,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          "0",
+          {
+            "typed_response_state": "DK"
+          }
+        ],
+        "cell_state": "OBSERVED_POSITIVE",
+        "raw_numerator_support": 178,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          "0",
+          {
+            "typed_response_state": "MISSING"
+          }
+        ],
+        "cell_state": "OBSERVED_POSITIVE",
+        "raw_numerator_support": 1,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          "0",
+          {
+            "typed_response_state": "NOT_ASKED"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          "0",
+          {
+            "typed_response_state": "REFUSAL"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          "1",
+          "0"
+        ],
+        "cell_state": "OBSERVED_POSITIVE",
+        "raw_numerator_support": 491,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          "1",
+          "1"
+        ],
+        "cell_state": "OBSERVED_POSITIVE",
+        "raw_numerator_support": 11232,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          "1",
+          {
+            "typed_response_state": "DK"
+          }
+        ],
+        "cell_state": "OBSERVED_POSITIVE",
+        "raw_numerator_support": 63,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          "1",
+          {
+            "typed_response_state": "MISSING"
+          }
+        ],
+        "cell_state": "OBSERVED_POSITIVE",
+        "raw_numerator_support": 1,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          "1",
+          {
+            "typed_response_state": "NOT_ASKED"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          "1",
+          {
+            "typed_response_state": "REFUSAL"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "DK"
+          },
+          "0"
+        ],
+        "cell_state": "OBSERVED_POSITIVE",
+        "raw_numerator_support": 40,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "DK"
+          },
+          "1"
+        ],
+        "cell_state": "OBSERVED_POSITIVE",
+        "raw_numerator_support": 250,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "DK"
+          },
+          {
+            "typed_response_state": "DK"
+          }
+        ],
+        "cell_state": "OBSERVED_POSITIVE",
+        "raw_numerator_support": 334,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "DK"
+          },
+          {
+            "typed_response_state": "MISSING"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "DK"
+          },
+          {
+            "typed_response_state": "NOT_ASKED"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "DK"
+          },
+          {
+            "typed_response_state": "REFUSAL"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "MISSING"
+          },
+          "0"
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "MISSING"
+          },
+          "1"
+        ],
+        "cell_state": "OBSERVED_POSITIVE",
+        "raw_numerator_support": 9,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "MISSING"
+          },
+          {
+            "typed_response_state": "DK"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "MISSING"
+          },
+          {
+            "typed_response_state": "MISSING"
+          }
+        ],
+        "cell_state": "OBSERVED_POSITIVE",
+        "raw_numerator_support": 6,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "MISSING"
+          },
+          {
+            "typed_response_state": "NOT_ASKED"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "MISSING"
+          },
+          {
+            "typed_response_state": "REFUSAL"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "NOT_ASKED"
+          },
+          "0"
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "NOT_ASKED"
+          },
+          "1"
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "NOT_ASKED"
+          },
+          {
+            "typed_response_state": "DK"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "NOT_ASKED"
+          },
+          {
+            "typed_response_state": "MISSING"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "NOT_ASKED"
+          },
+          {
+            "typed_response_state": "NOT_ASKED"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "NOT_ASKED"
+          },
+          {
+            "typed_response_state": "REFUSAL"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "REFUSAL"
+          },
+          "0"
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "REFUSAL"
+          },
+          "1"
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "REFUSAL"
+          },
+          {
+            "typed_response_state": "DK"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "REFUSAL"
+          },
+          {
+            "typed_response_state": "MISSING"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "REFUSAL"
+          },
+          {
+            "typed_response_state": "NOT_ASKED"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": [
+          {
+            "typed_response_state": "REFUSAL"
+          },
+          {
+            "typed_response_state": "REFUSAL"
+          }
+        ],
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      }
+    ],
+    "conditioned_rows": [
+      {
+        "conditioner_state": "0",
+        "conditioner_denominator_support": 6784,
+        "target_counts": [
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 2112,
+            "target_state": "0"
+          },
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 4493,
+            "target_state": "1"
+          },
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 178,
+            "target_state": {
+              "typed_response_state": "DK"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "NOT_ASKED"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "REFUSAL"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 1,
+            "target_state": {
+              "typed_response_state": "MISSING"
+            }
+          }
+        ]
+      },
+      {
+        "conditioner_state": "1",
+        "conditioner_denominator_support": 11787,
+        "target_counts": [
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 491,
+            "target_state": "0"
+          },
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 11232,
+            "target_state": "1"
+          },
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 63,
+            "target_state": {
+              "typed_response_state": "DK"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "NOT_ASKED"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "REFUSAL"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 1,
+            "target_state": {
+              "typed_response_state": "MISSING"
+            }
+          }
+        ]
+      },
+      {
+        "conditioner_state": {
+          "typed_response_state": "DK"
+        },
+        "conditioner_denominator_support": 624,
+        "target_counts": [
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 40,
+            "target_state": "0"
+          },
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 250,
+            "target_state": "1"
+          },
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 334,
+            "target_state": {
+              "typed_response_state": "DK"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "NOT_ASKED"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "REFUSAL"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "MISSING"
+            }
+          }
+        ]
+      },
+      {
+        "conditioner_state": {
+          "typed_response_state": "NOT_ASKED"
+        },
+        "conditioner_denominator_support": 0,
+        "target_counts": [
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": "0"
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": "1"
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "DK"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "NOT_ASKED"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "REFUSAL"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "MISSING"
+            }
+          }
+        ]
+      },
+      {
+        "conditioner_state": {
+          "typed_response_state": "REFUSAL"
+        },
+        "conditioner_denominator_support": 0,
+        "target_counts": [
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": "0"
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": "1"
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "DK"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "NOT_ASKED"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "REFUSAL"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "MISSING"
+            }
+          }
+        ]
+      },
+      {
+        "conditioner_state": {
+          "typed_response_state": "MISSING"
+        },
+        "conditioner_denominator_support": 15,
+        "target_counts": [
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": "0"
+          },
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 9,
+            "target_state": "1"
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "DK"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "NOT_ASKED"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": {
+              "typed_response_state": "REFUSAL"
+            }
+          },
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 6,
+            "target_state": {
+              "typed_response_state": "MISSING"
+            }
+          }
+        ]
+      }
+    ],
+    "producer_authority_refs": [
+      {
+        "authority_id": "GT12-A-R5-Q86-CARRIER-REEXPRESSION",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "a62630cdc2c81161bcce4c3be7f3757bb4a7e279c9cb334e0b9b013d7339a435"
+      },
+      {
+        "authority_id": "GT12-A-R5-Q86-COMMON-RISK-ROUTING",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "943fa2c44710480948f1dc7a5ae2fe512b806462776e89dcd6de761c5c956d0a"
+      },
+      {
+        "authority_id": "GT12-A-R5-Q86-SOURCE-SEMANTICS",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "c89c04fcaeb0742e5c6248f526082f90156af78f978f44023ab75eef53e830a4"
+      },
+      {
+        "authority_id": "GT12-A3-GT2-I03-QUERY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "c0ec18e231c8b934acc1fd072b8cd26d59ee2d784c9fb5b29b345b944a757a16"
+      },
+      {
+        "authority_id": "GT12-A3-GT2-TARGET-USE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "8be1db868deb8b1d613495a2120d2092df2fe55aa5f8884830d7a7e85e221a0e"
+      }
+    ],
+    "determinants": [
+      {
+        "name": "repository",
+        "state": "ABSENT_FROM_RETAINED_TRANSPORT",
+        "ref_or_null": null,
+        "reason": "the fixed transport contains the executed query/fact and hash-only respondent/routing/event refs, not a sealed C11LogicalRelease with respondent-level event preimages; a fresh I03 execution cannot be mounted without fabricating respondents or reopening source"
+      },
+      {
+        "name": "empirical_query",
+        "state": "EXACT_RETAINED",
+        "ref_or_null": {
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+          "content_hash": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0"
+        },
+        "reason": "exact retained EmpiricalQuerySpec identity"
+      },
+      {
+        "name": "predicate",
+        "state": "EXACT_RECONSTRUCTED_FROM_RETAINED_REFS",
+        "ref_or_null": {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+          "content_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3"
+        },
+        "reason": "exact retained predicate identity reconstructed from the query/fact refs and frozen risk-member closure; the predicate is a DERIVED_BRANCH_COHORT and contains 0 value-bearing conditioner leaf(s)"
+      },
+      {
+        "name": "authority_registry",
+        "state": "ABSENT_FROM_RETAINED_TRANSPORT",
+        "ref_or_null": null,
+        "reason": "the retained fact/query carry exact AuthorityRefs but not the authority snapshot bodies needed by the accepted AuthorityRegistry"
+      },
+      {
+        "name": "release_refs",
+        "state": "ABSENT_FROM_RETAINED_TRANSPORT",
+        "ref_or_null": {
+          "kind": "C11LogicalRelease",
+          "object_id": "R5_GT12_Q86A_Q86B_FROZEN",
+          "content_hash": "8315b104a94ae985a3ee3d77c8c365d5fcef6b6cb51a606df5bf141434668295"
+        },
+        "reason": "the exact C11LogicalRelease ref is retained, but the sealed release object/public_objects/internal_records are absent from the transport"
+      },
+      {
+        "name": "consumer_query",
+        "state": "UNAVAILABLE_OPERATION_SPECIFIC_AUTHORITY",
+        "ref_or_null": null,
+        "reason": "no accepted GT2 positioned-subject consumer query binds Q86B as a value-bearing conditioner and Q86A as target; the retained joint query is SEMANTIC_ORDERED [Q86B, Q86A] with a cohort predicate"
+      },
+      {
+        "name": "model_rule",
+        "state": "UNAVAILABLE_OPERATION_SPECIFIC_AUTHORITY",
+        "ref_or_null": null,
+        "reason": "no adopted operation-specific N10E model/walkback authority exists for GT2; the only nearby candidate (HQ230 C1-AT07) is CANDIDATE_NOT_ADOPTED and explicitly AT07-fixture-scoped"
+      },
+      {
+        "name": "condition_binding_witness",
+        "state": "UNAVAILABLE_OPERATION_SPECIFIC_AUTHORITY",
+        "ref_or_null": null,
+        "reason": "the current C1 witness contract requires a value-bearing producer predicate leaf and an operation-specific pairing authority; the retained GT2 predicate has no value-bearing leaves and the retained authority closure contains no condition-value pairing authority"
+      }
+    ],
+    "provider_receipt_or_null": null,
+    "consumer_result_or_null": null,
+    "replay_or_null": null,
+    "preparation_ref": {
+      "kind": "RETAINED_GT2_N10E_ANALYTICAL_PREPARATION@1.0.0",
+      "object_id": "urn:rawlsing:retained-gt2:n10e-preparation:sha256:0ef9fc9c1ce71f53c802a195584782ecb813d015b505c80bb4450bf4d119e101",
+      "content_hash": "0ef9fc9c1ce71f53c802a195584782ecb813d015b505c80bb4450bf4d119e101"
+    }
+  },
+  "n10e_provider_request_shape": {
+    "provider_callable": "rawlsing_next.pre553_empirical_possibility_provider.provide_empirical_possibility_slice",
+    "provider_input_mode": "EXACT_DETERMINANTS_ONLY__NO_PRECOMPUTED_SLICE_GEOMETRY",
+    "repository": null,
+    "repository_state": "ABSENT_FROM_RETAINED_TRANSPORT",
+    "empirical_query": {
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+      "content_hash": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0"
+    },
+    "predicate": {
+      "ref": {
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+        "content_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3"
+      },
+      "predicate_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+      "leaf_type": "DERIVED_BRANCH_COHORT",
+      "value_bearing_leaf_count": 0
+    },
+    "authority_registry": null,
+    "authority_registry_state": "ABSENT_FROM_RETAINED_TRANSPORT",
+    "release_refs": [
+      {
+        "kind": "C11LogicalRelease",
+        "object_id": "R5_GT12_Q86A_Q86B_FROZEN",
+        "content_hash": "8315b104a94ae985a3ee3d77c8c365d5fcef6b6cb51a606df5bf141434668295"
+      }
+    ],
+    "release_refs_state": "ABSENT_FROM_RETAINED_TRANSPORT",
+    "consumer_query": null,
+    "consumer_query_state": "UNAVAILABLE_OPERATION_SPECIFIC_AUTHORITY",
+    "model_rule": null,
+    "model_rule_state": "UNAVAILABLE_OPERATION_SPECIFIC_AUTHORITY",
+    "condition_binding_witness": null,
+    "condition_binding_witness_state": "UNAVAILABLE_OPERATION_SPECIFIC_AUTHORITY",
+    "missing_determinants": [
+      "repository",
+      "authority_registry",
+      "release_refs",
+      "consumer_query",
+      "model_rule",
+      "condition_binding_witness"
+    ]
+  },
+  "n10e_provider_receipt": null,
+  "n10e_provider_receipt_reason": "No sealed C11Repository, authority registry, value-bearing conditioner predicate, condition-value pairing witness, GT2 consumer query or adopted GT2 N10E model/walkback authority. The accepted provider route was refused with N10E_RETAINED_CONTRACT_GAP; no counterfeit receipt is created.",
+  "n10e_consumer_result": null,
+  "n10e_consumer_result_reason": "No lawful GT2 consumer query, model rule, walkback authority or condition-value witness exists; the preparation refuses the N10E route rather than calling the consumer with invented authority.",
+  "n10e_replay": null,
+  "n10e_replay_reason": "No provider product exists to replay.",
+  "engineering_grade": "PASS__EXACT_RETAINED_PREDICATE_AND_PREPARATION__NO_FINAL_N10E_CONSUMER",
+  "scientific_grade": "HELD__RETAINED_OBJECT_ONLY__NO_ORIGINAL_SOURCE_QUALIFICATION",
+  "authority_grade": "HOLD__NO_ADOPTED_GT2_N10E_MODEL_QUERY_WITNESS_AUTHORITY__NO_SEALED_C11_RELEASE",
+  "a2_red": {
+    "test": "rawlsing_next/tests/test_wave1_gt12_a2_real_gt1.py::test_a2_claim_scoped_authorities_bind_actual_release_universe_and_replay",
+    "status": "PRE_EXISTING_RED__OUTSIDE_H03_SELECTED_CONNECTION",
+    "detail_ref": "03_EXECUTION_NEGATIVES_AND_REPLAY.md"
+  },
+  "limits": [
+    "Retained-object preparation only; original-source science remains HELD.",
+    "No N10E PossibilitySliceEvidence, provider receipt, consumer result or replay is claimed.",
+    "The Field Forge structural permission ceiling is not widened into N10E analytical authority.",
+    "The 36-cell geometry and six conditioned count rows are exact retained counts; no probability ratios or smoothing are created here.",
+    "No V554 SIG-004 authority is carried into N10E or V555.",
+    "No actor/person, PRE-MAIN, estate-wide or production claim is made."
+  ]
+}

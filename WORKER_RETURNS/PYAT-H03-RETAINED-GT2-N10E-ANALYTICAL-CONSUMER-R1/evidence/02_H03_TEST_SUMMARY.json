@@ -1,0 +1,62 @@
+{
+  "schema": "PYAT_H03_TEST_SUMMARY@1",
+  "environment": {
+    "host": "macOS Darwin 22.3.0 x86_64",
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "sqlite": "3.40.1",
+    "hashseed": "0",
+    "dontwritebytecode": "1"
+  },
+  "courts": [
+    {
+      "name": "H03 retained GT2 preparation court",
+      "command": "pytest rawlsing_next/tests/test_pre553_retained_gt2_n10e_analytical_preparation.py -q",
+      "result": "18 passed",
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 67.24,
+      "junit_sha256": "5dc151a8eb40551cee0e67d8153d8a0a03a61bfbe8e29b30cf3ce9d5f239557c",
+      "log_sha256": "n/a__junit_only"
+    },
+    {
+      "name": "H02 structural positive court (reused)",
+      "command": "pytest rawlsing_next/tests/test_pre553_gt2_structural_positive_realization_court.py -q",
+      "result": "40 passed",
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 132.56,
+      "log_sha256": "058bc5582965c20c37d79403f0853d65023f263421643535644c9c90c25aef70"
+    },
+    {
+      "name": "Synthetic N10E provider court",
+      "command": "pytest rawlsing_next/tests/test_pre553_empirical_possibility_provider.py -q",
+      "result": "43 passed",
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 18.14,
+      "log_sha256": "0767873655951512e6e5a771c885b2d11503f6c5b4fe1bc1d028f28fbbc32ee9"
+    },
+    {
+      "name": "Supporting analytical route",
+      "command": "pytest test_pre553_repo_native_current_rehydration.py test_wave1_gt12_i03_positive_facts.py test_wave1_gt12_a2_real_gt1.py -q",
+      "result": "25 passed, 1 pre-existing RED",
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 15.64,
+      "log_sha256": "aba1726f7e32af8408124f041e544c7724f85e8e87c8973d3ea4885d4bac4f9f",
+      "red": "test_wave1_gt12_a2_real_gt1.py::test_a2_claim_scoped_authorities_bind_actual_release_universe_and_replay"
+    }
+  ],
+  "a2_red": {
+    "status": "PRE_EXISTING__OUTSIDE_H03_SELECTED_CONNECTION",
+    "error": "GT12BI03BindingError: validated projection domain omits an observed exact source-native response state",
+    "reproduced_at_parent": true,
+    "repair_performed": false,
+    "reason": "H03 uses the already-executed retained GT2 fact and Field Forge profile, not the tiny A2 source-backed fixture or a fresh I03 execution."
+  }
+}
