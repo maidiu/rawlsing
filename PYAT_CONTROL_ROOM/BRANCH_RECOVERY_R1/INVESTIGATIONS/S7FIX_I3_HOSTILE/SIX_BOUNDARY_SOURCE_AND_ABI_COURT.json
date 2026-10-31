@@ -1,0 +1,424 @@
+{
+  "schema": "PYAT_S7FIX_I3_SIX_BOUNDARY_COURT@1",
+  "session": {
+    "harness": "OpenCode CLI",
+    "agent": "build",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "opencode_pid": 21995,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-s7fix-i3-hostile-20261031-r1",
+    "fresh_worktree": true
+  },
+  "source_cuts": {
+    "startup": "d0342290b257f85c3e8931f9962e0aecabc84ed3",
+    "current_premain_rechecked": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+    "rawlsing_next_tree": "1d88d3fbb1d18dadfda946d9cd7f309d84afa479",
+    "s6": "2c5cf86beb12b7dbeda5532614784737ad30d89d",
+    "s7": "026ca72c24d564d4dc203f68385df8c75b4bd3a7",
+    "s7fix": "80bc5d9bf6624c2ea04027322947a41c347330aa",
+    "current_source_relations_blob": "5b67e3f98a5faf95a6c82700af2346fef6e306a5",
+    "current_physical_decoder_blob": "8732e34d0ea3f4cfffd7d33ee00f258dbc2d65dd"
+  },
+  "boundary_repair_count": {
+    "old_groups": 6,
+    "splits": 5,
+    "joins": 1,
+    "corrected_families": 11,
+    "member_rows": 18,
+    "old_total_groups": 1881,
+    "corrected_total_families": 1885
+  },
+  "boundary_members": [
+    {
+      "role": "OUTER",
+      "qualname": "SourceRelationResolver.__init__",
+      "historical_blob": "00f50ea547dd224221ed232f68cd84c1e4b7a463",
+      "historical_ast_sha1": "828fbc7fea7fdcaf419a79ea78c63c574e473f2d",
+      "introducing_commit": "61acee605d618ed4a0db11d893f6139593ae5780",
+      "corrected_family": "S7FAM-0869c56ad5e0c899",
+      "current_blob": "5b67e3f98a5faf95a6c82700af2346fef6e306a5",
+      "current_ast_sha1": "e1fcc98f31b1f1e24cb3cbc274b09cd3a7e26f48",
+      "current_matches_historical": false
+    },
+    {
+      "role": "OUTER",
+      "qualname": "SourceRelationResolver.require",
+      "historical_blob": "00f50ea547dd224221ed232f68cd84c1e4b7a463",
+      "historical_ast_sha1": "1d789a2f1ade746a79847ff1a8f6bf3a9eea97ee",
+      "introducing_commit": "61acee605d618ed4a0db11d893f6139593ae5780",
+      "corrected_family": "S7FAM-82686a98a4281425",
+      "current_blob": "5b67e3f98a5faf95a6c82700af2346fef6e306a5",
+      "current_ast_sha1": "47a40b20b4857db08a55c244d6281b7b1e532267",
+      "current_matches_historical": false
+    },
+    {
+      "role": "OUTER",
+      "qualname": "SourceRelationResolver._validate_positive",
+      "historical_blob": "00f50ea547dd224221ed232f68cd84c1e4b7a463",
+      "historical_ast_sha1": "52bf494350f4abe5c16149241da8506a82401345",
+      "introducing_commit": "61acee605d618ed4a0db11d893f6139593ae5780",
+      "corrected_family": "S7FAM-5823124c837704c1",
+      "current_blob": "5b67e3f98a5faf95a6c82700af2346fef6e306a5",
+      "current_ast_sha1": "20385e92762aebb9e02e15f4ab80a7a8d1e31f47",
+      "current_matches_historical": false
+    },
+    {
+      "role": "OUTER",
+      "qualname": "SourceRelationResolver.decide",
+      "historical_blob": "00f50ea547dd224221ed232f68cd84c1e4b7a463",
+      "historical_ast_sha1": "8dd873c436acfb407ad330294a910e2b082b197a",
+      "introducing_commit": "61acee605d618ed4a0db11d893f6139593ae5780",
+      "corrected_family": "S7FAM-6054813ba02c8e44",
+      "current_blob": "5b67e3f98a5faf95a6c82700af2346fef6e306a5",
+      "current_ast_sha1": "9024329508fc9dcec66cd4c0bec028d882e06a0f",
+      "current_matches_historical": false
+    },
+    {
+      "role": "OUTER",
+      "qualname": "SourceRelationResolver.resolve_exact",
+      "historical_blob": "00f50ea547dd224221ed232f68cd84c1e4b7a463",
+      "historical_ast_sha1": "7473e1e908d78e3a3f5bc9537dc922deaae81a6f",
+      "introducing_commit": "61acee605d618ed4a0db11d893f6139593ae5780",
+      "corrected_family": "S7FAM-a7fe27d3f45643c3",
+      "current_blob": "5b67e3f98a5faf95a6c82700af2346fef6e306a5",
+      "current_ast_sha1": "5c1d7f0bbe056b7c9bc2a929978a1ac1418f0e79",
+      "current_matches_historical": false
+    },
+    {
+      "role": "NESTED",
+      "qualname": "_make_sealed_source_relation_owner.SourceRelationResolver.__init__",
+      "historical_blob": "d9fb2c48ff6f2b68b2b8b06a47402c65cf6b7737",
+      "historical_ast_sha1": "d8a2f70fc0de05bfe0f0db6d42e207d8d915ee64",
+      "introducing_commit": "d5e6d6baa67ddf25a9864be6bb2564b535e0868f",
+      "corrected_family": "S7FAM-3ced5b9ab5b98431",
+      "current_blob": null,
+      "current_ast_sha1": null,
+      "current_present": false,
+      "current_candidate_in_corrected_artifact": "rawlsing_next/pre553_source_relations.py:SourceRelationResolver.__init__"
+    },
+    {
+      "role": "NESTED",
+      "qualname": "_make_sealed_source_relation_owner.SourceRelationResolver.require",
+      "historical_blob": "d9fb2c48ff6f2b68b2b8b06a47402c65cf6b7737",
+      "historical_ast_sha1": "0d719b06e1689c10095dfd9da701dbb02f28bb36",
+      "introducing_commit": "d5e6d6baa67ddf25a9864be6bb2564b535e0868f",
+      "corrected_family": "S7FAM-0808b82fba697141",
+      "current_blob": null,
+      "current_ast_sha1": null,
+      "current_present": false,
+      "current_candidate_in_corrected_artifact": "rawlsing_next/pre553_source_relations.py:SourceRelationResolver.require"
+    },
+    {
+      "role": "NESTED",
+      "qualname": "_make_sealed_source_relation_owner.SourceRelationResolver._validate_positive",
+      "historical_blob": "d9fb2c48ff6f2b68b2b8b06a47402c65cf6b7737",
+      "historical_ast_sha1": "8fcb028899610f219a6b85dc09ef67d429834376",
+      "introducing_commit": "d5e6d6baa67ddf25a9864be6bb2564b535e0868f",
+      "corrected_family": "S7FAM-739724b429c79765",
+      "current_blob": null,
+      "current_ast_sha1": null,
+      "current_present": false,
+      "current_candidate_in_corrected_artifact": "rawlsing_next/pre553_source_relations.py:SourceRelationResolver._validate_positive"
+    },
+    {
+      "role": "NESTED",
+      "qualname": "_make_sealed_source_relation_owner.SourceRelationResolver.decide",
+      "historical_blob": "d9fb2c48ff6f2b68b2b8b06a47402c65cf6b7737",
+      "historical_ast_sha1": "920b54cd009151c9c9b9fd7913201d14ce739511",
+      "introducing_commit": "d5e6d6baa67ddf25a9864be6bb2564b535e0868f",
+      "corrected_family": "S7FAM-dabfb5ad4dc9f0a4",
+      "current_blob": null,
+      "current_ast_sha1": null,
+      "current_present": false,
+      "current_candidate_in_corrected_artifact": "rawlsing_next/pre553_source_relations.py:SourceRelationResolver.decide"
+    },
+    {
+      "role": "NESTED",
+      "qualname": "_make_sealed_source_relation_owner.SourceRelationResolver.resolve_exact",
+      "historical_blob": "d9fb2c48ff6f2b68b2b8b06a47402c65cf6b7737",
+      "historical_ast_sha1": "1e88e2680b5d88f8115575c5b382dc9c0658dbb2",
+      "introducing_commit": "d5e6d6baa67ddf25a9864be6bb2564b535e0868f",
+      "corrected_family": "S7FAM-c7246db42c0322e0",
+      "current_blob": null,
+      "current_ast_sha1": null,
+      "current_present": false,
+      "current_candidate_in_corrected_artifact": "rawlsing_next/pre553_source_relations.py:SourceRelationResolver.resolve_exact"
+    },
+    {
+      "role": "S5_OUTER_REPRESENTATION",
+      "qualname": "SourceRelationResolver.__init__",
+      "historical_blob": "00f50ea547dd224221ed232f68cd84c1e4b7a463",
+      "historical_ast_sha1": "828fbc7fea7fdcaf419a79ea78c63c574e473f2d",
+      "introducing_commit": "61acee605d618ed4a0db11d893f6139593ae5780",
+      "corrected_family": "S7FAM-0869c56ad5e0c899",
+      "current_blob": "5b67e3f98a5faf95a6c82700af2346fef6e306a5",
+      "current_ast_sha1": "e1fcc98f31b1f1e24cb3cbc274b09cd3a7e26f48",
+      "current_matches_historical": false
+    },
+    {
+      "role": "S5_OUTER_REPRESENTATION",
+      "qualname": "SourceRelationResolver.require",
+      "historical_blob": "00f50ea547dd224221ed232f68cd84c1e4b7a463",
+      "historical_ast_sha1": "1d789a2f1ade746a79847ff1a8f6bf3a9eea97ee",
+      "introducing_commit": "61acee605d618ed4a0db11d893f6139593ae5780",
+      "corrected_family": "S7FAM-82686a98a4281425",
+      "current_blob": "5b67e3f98a5faf95a6c82700af2346fef6e306a5",
+      "current_ast_sha1": "47a40b20b4857db08a55c244d6281b7b1e532267",
+      "current_matches_historical": false
+    },
+    {
+      "role": "S5_OUTER_REPRESENTATION",
+      "qualname": "SourceRelationResolver._validate_positive",
+      "historical_blob": "00f50ea547dd224221ed232f68cd84c1e4b7a463",
+      "historical_ast_sha1": "52bf494350f4abe5c16149241da8506a82401345",
+      "introducing_commit": "61acee605d618ed4a0db11d893f6139593ae5780",
+      "corrected_family": "S7FAM-5823124c837704c1",
+      "current_blob": "5b67e3f98a5faf95a6c82700af2346fef6e306a5",
+      "current_ast_sha1": "20385e92762aebb9e02e15f4ab80a7a8d1e31f47",
+      "current_matches_historical": false
+    },
+    {
+      "role": "S5_OUTER_REPRESENTATION",
+      "qualname": "SourceRelationResolver.decide",
+      "historical_blob": "00f50ea547dd224221ed232f68cd84c1e4b7a463",
+      "historical_ast_sha1": "8dd873c436acfb407ad330294a910e2b082b197a",
+      "introducing_commit": "61acee605d618ed4a0db11d893f6139593ae5780",
+      "corrected_family": "S7FAM-6054813ba02c8e44",
+      "current_blob": "5b67e3f98a5faf95a6c82700af2346fef6e306a5",
+      "current_ast_sha1": "9024329508fc9dcec66cd4c0bec028d882e06a0f",
+      "current_matches_historical": false
+    },
+    {
+      "role": "S5_OUTER_REPRESENTATION",
+      "qualname": "SourceRelationResolver.resolve_exact",
+      "historical_blob": "00f50ea547dd224221ed232f68cd84c1e4b7a463",
+      "historical_ast_sha1": "7473e1e908d78e3a3f5bc9537dc922deaae81a6f",
+      "introducing_commit": "61acee605d618ed4a0db11d893f6139593ae5780",
+      "corrected_family": "S7FAM-a7fe27d3f45643c3",
+      "current_blob": "5b67e3f98a5faf95a6c82700af2346fef6e306a5",
+      "current_ast_sha1": "5c1d7f0bbe056b7c9bc2a929978a1ac1418f0e79",
+      "current_matches_historical": false
+    },
+    {
+      "role": "NESTED_VARIANT",
+      "qualname": "_make_sealed_source_relation_owner.SourceRelationResolver.__init__",
+      "historical_blob": "8053d30d306a3654ebf563043088311ff390bb2b",
+      "historical_ast_sha1": "733bdba8281c6cdf1fe5ce22cadd060627bd1b6c",
+      "introducing_commit": "c86ae335eaf70e82b5764c46754b16ca7e1587ce",
+      "corrected_family": "S7FAM-3ced5b9ab5b98431",
+      "current_blob": null,
+      "current_ast_sha1": null,
+      "current_present": false
+    },
+    {
+      "role": "JOIN_S4_REPRESENTATION",
+      "qualname": "PhysicalSourceIncidence.iter_batches.emit",
+      "historical_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "historical_ast_sha1": "4f7cd7ccb7a06b3d6a4f75f19c65dd16d6911445",
+      "introducing_commit": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
+      "corrected_family": "S7FAM-41da3f505673271b",
+      "current_blob": "8732e34d0ea3f4cfffd7d33ee00f258dbc2d65dd",
+      "current_ast_sha1": "77d9be6c955342b971b1f0393833e7e0c557c913",
+      "current_matches_historical": false
+    },
+    {
+      "role": "JOIN_S5_REPRESENTATION",
+      "qualname": "PhysicalSourceIncidence.iter_batches.emit",
+      "historical_blob": "5a21bdbf314f240a8718fe64b6db734e839a8581",
+      "historical_ast_sha1": "4f7cd7ccb7a06b3d6a4f75f19c65dd16d6911445",
+      "introducing_commit": "42ddc284f7a959797d864e6f8e656fbd94d82348",
+      "corrected_family": "S7FAM-41da3f505673271b",
+      "current_blob": "8732e34d0ea3f4cfffd7d33ee00f258dbc2d65dd",
+      "current_ast_sha1": "77d9be6c955342b971b1f0393833e7e0c557c913",
+      "current_matches_historical": false
+    }
+  ],
+  "ast_verification": {
+    "outer_historical": {
+      "blob": "00f50ea547dd224221ed232f68cd84c1e4b7a463",
+      "matches": 5,
+      "total": 5,
+      "status": "PASS"
+    },
+    "nested_historical": {
+      "blob": "d9fb2c48ff6f2b68b2b8b06a47402c65cf6b7737",
+      "matches": 5,
+      "total": 5,
+      "status": "PASS"
+    },
+    "nested_init_variant": {
+      "blob": "8053d30d306a3654ebf563043088311ff390bb2b",
+      "ast_sha1": "733bdba8281c6cdf1fe5ce22cadd060627bd1b6c",
+      "status": "PASS_SAME_NESTED_FAMILY_VARIANT"
+    },
+    "join_historical": {
+      "variants": 4,
+      "ast_sha1": "4f7cd7ccb7a06b3d6a4f75f19c65dd16d6911445",
+      "status": "PASS_HISTORICAL_JOIN"
+    },
+    "current_outer": {
+      "blob": "5b67e3f98a5faf95a6c82700af2346fef6e306a5",
+      "matches_historical": 0,
+      "total": 5,
+      "status": "DIFFERENT_IMPLEMENTATION_SAME_FUNCTION_UNPROVEN"
+    },
+    "current_nested": {
+      "present": false,
+      "status": "NO_CURRENT_NESTED_SOURCE_RELATION_RESOLVER"
+    },
+    "current_emit": {
+      "blob": "8732e34d0ea3f4cfffd7d33ee00f258dbc2d65dd",
+      "ast_sha1": "77d9be6c955342b971b1f0393833e7e0c557c913",
+      "matches_historical": false,
+      "status": "CURRENT_PR526_DIFFERENT_AST"
+    }
+  },
+  "sourcefree_validator": {
+    "baseline": "PASS 11 checks",
+    "self_test": "PASS 8/8 mutation capabilities",
+    "function_ids": 3135,
+    "old_groups": 1881,
+    "corrected_families": 1885,
+    "branches": 845,
+    "function_id_digest": "5917b3bd58bb56f101d0daa35a0259761234a58a6c4bf9adaf6f0586d3593a68",
+    "negative_digest": "93cdb8e28653e42aebc7fe2b2c511333e85320eecee2710a37fe833fb80122f7"
+  },
+  "negative_custody": {
+    "nested_defective": [
+      "S7FAM-739724b429c79765",
+      "S7FAM-dabfb5ad4dc9f0a4",
+      "S7FAM-c7246db42c0322e0"
+    ],
+    "nested_review_revise": [
+      "S7FAM-3ced5b9ab5b98431"
+    ],
+    "nested_positive_author_only": [
+      "S7FAM-0808b82fba697141"
+    ],
+    "outer_contextual_only": [
+      "S7FAM-0869c56ad5e0c899",
+      "S7FAM-82686a98a4281425",
+      "S7FAM-5823124c837704c1",
+      "S7FAM-6054813ba02c8e44",
+      "S7FAM-a7fe27d3f45643c3"
+    ],
+    "status": "PASS_AT_ARTIFACT_SCOPE__NESTED_F7_P07_DEFECTS_NOT_REATTRIBUTED_TO_OUTER"
+  },
+  "current_consumers": {
+    "source_relations_production_imports": [],
+    "source_relations_test_import": "rawlsing_next/tests/test_pre553_source_relations.py:13",
+    "source_relations_string_map_only": "rawlsing_next/fiabc_succession_producer.py:59",
+    "temporal_path_exists": false,
+    "decoder_production_imports": [
+      "pre553_source_native_preimage_adapter.py:30",
+      "wave1_r5_q86_c11_projection.py:17",
+      "fiabc_lits_common_representation.py:20",
+      "pre553_physical_c11_bridge.py:10",
+      "fiabc_lm2_r1e_common_c11.py:24",
+      "fiabc_final_oracle_freeze_producers.py:53/1247",
+      "ee_p2x_darwin_stage_backend.py:713",
+      "pre553_source_backed_c11_facade.py:35",
+      "pre553_route_b_production.py:53",
+      "fiabc_lits_i_representation_authority.py:20",
+      "runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py:23"
+    ],
+    "decoder_executed_path": "materialize_native_preimages -> PhysicalSourceIncidence.iter_cells -> iter_batches -> emit; current tests execute this path",
+    "source_relations_executed_path": "test_pre553_source_relations.py only; no production import",
+    "first_consumer_status": "HISTORICAL_OR_STATIC_ONLY__NO_CURRENT_PRODUCTION_CONSUMER"
+  },
+  "current_tests": [
+    {
+      "command": "pytest rawlsing_next/tests/test_pre553_source_relations.py",
+      "result": "24 passed",
+      "exit": 0,
+      "scope": "current outer source relations test-only"
+    },
+    {
+      "command": "pytest rawlsing_next/tests/test_universal_source_byte_custody.py",
+      "result": "26 passed",
+      "exit": 0,
+      "scope": "current PR526 byte custody"
+    },
+    {
+      "command": "pytest rawlsing_next/tests/test_universal_source_projection.py",
+      "result": "31 passed",
+      "exit": 0,
+      "scope": "current native preimage/decoder positive"
+    },
+    {
+      "command": "pytest rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py",
+      "result": "16 passed, 1 skipped",
+      "exit": 0,
+      "scope": "current decoder carrier"
+    }
+  ],
+  "findings": [
+    {
+      "id": "B1",
+      "status": "PASS",
+      "finding": "Six historical boundary corrections are internally consistent: five outer/nested splits and one emit join; 11 corrected families; 18 member rows; 1,881 old groups -> 1,885 families.",
+      "evidence": "validator PASS; exact ASTs; old map roles"
+    },
+    {
+      "id": "B2",
+      "status": "REVISE",
+      "finding": "Nested historical members are still candidate-mapped to outer SourceRelationResolver methods in current_source_ownership, while current source has no nested owner. This risks outer/nested conflation in any current consumer.",
+      "evidence": "S7FAM-3ced/0808/739/dabf/c724 member_current_ownership all name rawlsing_next/pre553_source_relations.py:SourceRelationResolver.<method>; current AST has no _make_sealed_source_relation_owner"
+    },
+    {
+      "id": "B3",
+      "status": "REVISE",
+      "finding": "S5 outer current receiver rows say EXACT_AST_SAME_PATH, but the current outer method AST hashes differ from the historical S4 outer blobs for all five methods. Current source is a different implementation; current ownership is path-level only.",
+      "evidence": "outer historical 828fbc/1d789a/52bf/8dd/7473 vs current e1fcc/47a40/20385/902432/5c1d7"
+    },
+    {
+      "id": "B4",
+      "status": "HOLD",
+      "finding": "Historical emit join is exact AST, but current PR526 emit is a different AST (77d9...) than historical 4f7...; no behavioral equivalence is proven. Current PR526 tests pass at their own scope.",
+      "evidence": "current 8732e34d emit 77d9be6c... vs historical 4f7cd7cc..."
+    },
+    {
+      "id": "B5",
+      "status": "REVISE",
+      "finding": "Source relations first-consumer evidence names rawlsing_next/pre553_temporal_comparability.py, which is absent at current; source relations has no production import. Current executed consumer is test-only.",
+      "evidence": "import audit; path ABSENT; only test import + string map"
+    },
+    {
+      "id": "B6",
+      "status": "PASS",
+      "finding": "Original nested F7/P07 defects remain under nested families; outer S5 rows are contextual-only; no nested adverse finding is counted as outer.",
+      "evidence": "mapping review refs + S7-FIX contextual note + validator negative digest"
+    },
+    {
+      "id": "B7",
+      "status": "NOT_TESTED",
+      "finding": "HQ240/HQ245-HQ248 and F7/P07 attacks are preserved as historical source/review evidence; no native C or original attack was executed.",
+      "evidence": "S7/S7-FIX negative custody; no native compilation/run"
+    },
+    {
+      "id": "B8",
+      "status": "PASS_SCOPED",
+      "finding": "Current sourcefree outer source relations and PR526 decoder tests pass at their actual test scope; this is not a production consumer or behavioral equivalence proof.",
+      "evidence": "24/26/31/16+1 tests"
+    }
+  ],
+  "verdicts": {
+    "boundary_identity": "PASS__SIX_HISTORICAL_BOUNDARIES__VALIDATOR_SELFTEST_PASS",
+    "engineering": "RED_ON_CURRENT_OWNER_MAPPING__SIX_HISTORICAL_REPAIRS_PASS__CURRENT_ABI_HOLD",
+    "scientific": "HOLD__NO_ORIGINAL_SOURCE_OR_SCIENTIFIC_ISSUANCE__STATIC_IDENTITY_ONLY",
+    "authority": "HOLD__SOURCEFREE_REVIEW_ONLY__NO_SOURCE_ACTOR_WORLD_N11_N12_OR_ADOPTION"
+  },
+  "limits": [
+    "No original survey/actor/native C execution",
+    "No production merge",
+    "No behavioral equivalence from AST",
+    "No claim that current source relations has a production consumer",
+    "No claim that current emit is historical emit"
+  ],
+  "emit_variant_blobs": [
+    "5a21bdbf314f240a8718fe64b6db734e839a8581",
+    "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+    "8e7a6a997f3f0a765dd7bac506a0c06af82555a0",
+    "b406d45fae419c0249b3e5c4955838542de88037"
+  ]
+}
