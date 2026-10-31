@@ -1,4 +1,32 @@
-# LAUNCH — SOROK O-INDEX R3-IR — INDEPENDENT REAL-GIT SOURCE PROOF AND FULL PRODUCT-PATH REVIEW
+AGENT TYPE: Independent I3 hostile Git source/evidence reviewer
+INTELLIGENCE LEVEL: I3 / MAX
+
+```text
+LAUNCH — SOROK O-INDEX R3-IR — INDEPENDENT REAL-GIT SOURCE PROOF AND FULL PRODUCT-PATH REVIEW
+REPOSITORY: maidiu/rawlsing (PRIVATE)
+AGENT_TYPE: Independent I3 hostile Git source/evidence reviewer; not original source issuer, incumbent HQ, integrator or own reviewer.
+INTELLIGENCE_LEVEL: I3
+SINGLE_AGENT_FULL_DELIVERABLE: YES
+EXECUTION_SURFACE: S2 local isolated Git/Python sourcefree with actual verified runtime; S0–S1 fallback accurately reported partial only.
+USER_SELECTED_EDITOR_MODEL_PAIR: Proposed local OpenCode / DeepSeek V4.1-Flash MAX; user must select and verify.
+MODEL: DeepSeek V4.1-Flash (proposed, not automatically selected)
+REASONING: MAX requested, actual selected harness effort UNKNOWN pending qualification
+PROVIDER/EDITOR_HARNESS: proposed OpenCode Go / local OpenCode, selected explicitly by user; no silent switch
+MODEL_MAX_AVAILABILITY: UNKNOWN until qualified selected harness
+HOST_ACCOUNT_QUOTA_COST: host and account selected by user; quotas, pricing and uptime UNKNOWN until verified
+BRANCH: review/sorok-oindex-r3-independent-source-and-map-acceptance-20261031
+STARTUP_SHA: e50d32eb6816578145d17dcd637a0b90b3a1ef40
+ACTIVE_WORKER_NO_DISTURBANCE: YES
+BROWSER?: S0/S1 static-only; cannot establish entire S2 execution
+DEEPSEEK?: proposed as economical I3/MAX S2 engine, verify capability not assumed
+CODEX_6_1_HIGH_NECESSARY?: NO, unless exact task failure shows necessity and user authorizes selection
+OTHERWISE_MIDDLE?: only user-selected fallback; do not autonomously switch or lower effort
+WHY_NOT_BROWSER: static Browser insufficient for required local actual Git/Python fault/restore and execution
+WHY_NOT_FLASH: Flash MAX has no established incapacity; test actual harness and escalate to user only if demonstrated
+WHY_NOT_CODEX_HIGH: high-cost alternative not evidenced necessary at assignment outset
+WHY_NOT_MIDDLE: full task I3/I3+ requires selected MAX; no automatic downgrade
+SCIENCE_SOURCE_ACTOR_AUTHORITY: no original semantic/source/actor/SCI05 grant; qualified owners and independent review separate
+POST_RETURN_INDEPENDENT_REVIEW: distinct competent owner/HQ independently examines final SHA, engineering/scientific/authority proofs before adoption
 
 AGENT_TYPE: Independent hostile source/code/evidence reviewer; not O-INDEX R1/R2/R3 author, not R6/R7 source owner, not incumbent Sorok/Pyat HQ, original science issuer, integrator, or own reviewer.
 INTELLIGENCE_LEVEL: I3; reasoning MAX.
@@ -34,3 +62,4 @@ DELIVER exact:
 `04_SCOPED_REVIEW_VERDICT_AND_LIVING_PROGRAMMA_INTERFACE.md`;
 `05_NOT_RUN_ROLLBACK_AND_PROVENANCE.json`.
 POST_RETURN_INDEPENDENT_REVIEW: incumbent qualified HQ/owner examines your exact returned SHA for bounded scoped adoption. This worker is reviewer, **not its own adopting authority**. Do not self-dispatch, self-merge or run future work.
+```
