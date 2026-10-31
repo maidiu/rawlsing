@@ -1,0 +1,27 @@
+name: PYAT 845 source-return independent roster and function-disposition verification
+on:
+  push:
+    branches: [agent/pyat-845-return-intake-independence-20261030-r1]
+permissions:
+  contents: read
+jobs:
+  court:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+      - name: Fetch exactly pinned return commits and frozen roster
+        run: |
+          git fetch --no-tags --filter=blob:none origin becf0bfb04705b8fe0927dd56e7290e1dcd180a8
+          git fetch --no-tags --filter=blob:none origin c85db39772a8ac09fd70c6bb94a39dd04274d2cb ab303ee446c87beca32dc2c322704f6cf0dc7b79 65b83dee3385fc85d5d283c19acd270dea50a27d 8f4ad92aa47b7ae53d625bc2587357092af96e27 1aa0407869620cd8ba2e8ca1f1533b99fd097162
+      - name: Actual complete 845 roster and return function JSONL validation
+        run: python3 PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/14_verify_five_return_rosters.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-845-five-return-intake-machine-receipt
+          path: pyat-return-intake/
+          if-no-files-found: warn
