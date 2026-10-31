@@ -81,6 +81,23 @@ def main():
             st=first(item,("corrected_disposition","corrected_primary_label","corrected_label","CORRECTED_OUTCOME","disposition"))
             if st:cf[str(st)]+=1
         status_suspicious=collections.Counter()
+        adoption_axis=collections.Counter()
+        presence_axis=collections.Counter()
+        contested_examples=[]
+        for k,item in enumerate(new_f):
+            axes=item.get("corrected_axes",{})
+            if isinstance(axes,dict):
+                for key in ("ADOPTION","CURRENT_FUNCTIONAL_PRESENCE"):
+                    v=axes.get(key)
+                    if isinstance(v,str):
+                        (adoption_axis if key=="ADOPTION" else presence_axis)[v]+=1
+                    elif isinstance(v,dict):
+                        for vv in v.values():
+                            if isinstance(vv,str) and ("CURRENT_PRODUCTION_ACCEPTED" in vv or "RENAMED_EQUIVALENT_PROVEN" in vv):
+                                contested_examples.append({"ordinal":k+1,"axis":key,"value":vv,"original_path":item.get("original_path"),"symbol":item.get("original_symbol") or item.get("symbol"),"proof_sources":item.get("proof_sources",[])[:2]})
+            if len(contested_examples)>8:
+                break
+        
         for item in new_f:
             t=json.dumps(item,sort_keys=True,ensure_ascii=True)
             for term in ("CURRENT_PRODUCTION_ACCEPTED_AT_NAMED_SCOPE","RENAMED_EQUIVALENT_PROVEN","READY_FOR_SOURCEFREE_INTEGRATION_COURT","SUPERSEDED_BETTER"):
@@ -91,6 +108,10 @@ def main():
                 "original_function_id_alignment":same_id,"misaligned_function_ids":key_mismatch,
                 "missing_original_row_hash":missing_hash,"hash_format_or_mismatch":hash_fails,
                 "bad_tip_count":bad_tips,"function_row_schema_first":list(new_f[0]) if new_f else [],
+                "original_row_schema_first":list(old_f[0]) if old_f else [],
+                "adoption_axis_actual_values":dict(adoption_axis),
+                "presence_axis_actual_values":dict(presence_axis),
+                "contested_axis_examples":contested_examples,
                 "branch_row_schema_first":list(new_b[0]) if new_b else [],
                 "corrected_labels":dict(cf),"potential_overclaim_string_occurrences":dict(status_suspicious),
                 "errors":fissues+bissues,
@@ -107,6 +128,6 @@ def main():
     dst=Path("pyat-regrade-acceptance")
     dst.mkdir(exist_ok=True)
     (dst/"REGRADES_VS_ORIGINAL_REPORT.json").write_text(json.dumps(artifact,indent=2),encoding="utf-8")
-    print(json.dumps({"schema":artifact["schema"],"branches":artifact["branch_rows"],"function_rows":artifact["actual_corrected_rows"],"pass":artifact["mechanical_custody_pass"],"rows":[{k:v for k,v in r.items() if k in ("shard","original_function_id_alignment","misaligned_function_ids","missing_original_row_hash","hash_format_or_mismatch","bad_tip_count","potential_overclaim_string_occurrences","errors","function_row_schema_first")} for r in out]},indent=2))
+    print(json.dumps({"schema":artifact["schema"],"branches":artifact["branch_rows"],"function_rows":artifact["actual_corrected_rows"],"pass":artifact["mechanical_custody_pass"],"rows":[{k:v for k,v in r.items() if k in ("shard","original_function_id_alignment","misaligned_function_ids","missing_original_row_hash","hash_format_or_mismatch","bad_tip_count","potential_overclaim_string_occurrences","adoption_axis_actual_values","presence_axis_actual_values","contested_axis_examples","original_row_schema_first","errors")} for r in out]},indent=2))
     raise SystemExit(2 if errors else 0)
 if __name__=="__main__":main()
