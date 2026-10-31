@@ -1,0 +1,205 @@
+{
+  "schema": "SOROK_RCF_D_PROVENANCE_AND_FRESHNESS@1",
+  "repository": "maidiu/rawlsing",
+  "generated_utc": "2026-10-30",
+  "current_premain": {
+    "branch": "integration/pre-main-reconciliation-r1",
+    "sha": "750548ddbb9b4392a16ce93097b856f349e16182",
+    "remote_readback": "750548ddbb9b4392a16ce93097b856f349e16182",
+    "note": "PR #526 R61 universal workload merge is current; former R61 files are present, not absent."
+  },
+  "original_premain": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "worker_branch": "agent/sorok-rcf-d-material-risk-residual-closure-20261030-r1",
+  "worker_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-rcf-d-material-risk-residual-closure-20261030-r1",
+  "authority_cuts": {
+    "rc1": "337896aa995d579e3525588b405d07216709ac15",
+    "f3": "6477a89bb9160eba1dd10607c47534fa4dce6cc2",
+    "f3i": "97dbe712e4cce8fedd1632d9ac64b4e57a0ac25e",
+    "h358": "ea40306bacb899147799330898e9ab91a950205f",
+    "h358i3": "724f257e64f22d15a2ee41d3c29972b78d983342"
+  },
+  "machine_inputs": {
+    "h358_01": {
+      "path": "WORKER_RETURNS/SOROK-H358-COMPLETION-RISK_358_SOURCE_AUDIT-R1/01_ALL_358_TIP_TREE_AND_CODE_SIGNATURE_SCREEN.json",
+      "git_blob": "0561219b15d9a222f5246a2c04488ca70243fdc8",
+      "sha256": "edded47ca2e90974ab5b3d4923ceaae864e0b4af9ee41437aeae75240a6e185f",
+      "rows": 358
+    },
+    "h358_02": {
+      "path": "WORKER_RETURNS/SOROK-H358-COMPLETION-RISK_358_SOURCE_AUDIT-R1/02_RELEVANT_2366_SOURCE_SIGNIFICANCE_AND_CURRENTNESS.json",
+      "git_blob": "5a64dadc35e884f53b33b6754c1a58127dab610d",
+      "sha256": "b9a75322c593ad24f6ba04b0752db819f9b929fa990c6f06bdfa9c327e1179d0",
+      "rows": 2366
+    },
+    "h358_03": {
+      "path": "WORKER_RETURNS/SOROK-H358-COMPLETION-RISK_358_SOURCE_AUDIT-R1/03_DISTINCT_RECOVERABLE_CAPABILITIES_AND_PREMAIN_EQUIVALENCE.md",
+      "git_blob": "7191225adfe83fc285fe1db1dc3ee7867c74a2ba",
+      "sha256": "ef8090b489264fc72c3574a7c38b38777cdc50d0c25645f19ae71cc7c1857921"
+    },
+    "h358_04": {
+      "path": "WORKER_RETURNS/SOROK-H358-COMPLETION-RISK_358_SOURCE_AUDIT-R1/04_SOURCE_GRADE_ADOPTION_HOLDS_AND_INDEPENDENT_REVIEW.md",
+      "git_blob": "922fb93c691a89ceeb6e0f4f3817a4227c520a6b",
+      "sha256": "46fe195c6f27e51647eacf8b3204389f0b11396ae6d3c3eddec986df32cf6b42"
+    },
+    "rc1_01": {
+      "path": "WORKER_RETURNS/SOROK-294-R2-RC1/01_ALL_294_BRANCH_CAPABILITY_RECONCILIATION.json",
+      "git_blob": "54801fe031df7a0f4251dfcdd430d439a4e33d93",
+      "sha256": "8e565c25f520e67ca163b944481b4ae33890335b2f676fd1ce616a3ff489f1bc",
+      "rows": 294
+    },
+    "rc1_05": {
+      "path": "WORKER_RETURNS/SOROK-294-R2-RC1/05_OUTSIDE_294_168_PLUS_2369_TRIAGE_AND_FRESHNESS.json",
+      "git_blob": "aba70329cac9ab203f6ea3d7fb69a6dbe1ec482d",
+      "sha256": "e6f6703b4547a7e97784a8b267da3d5d83ba5e7197246dcad568041e2b0a303c",
+      "triage_rows": 2537
+    }
+  },
+  "recomputed_denominators": {
+    "294": {
+      "count": 294,
+      "shards": {"A_IMPLEMENTERS": 98, "B_REVIEWERS": 67, "C_HQ_AND_PRODUCT": 69, "D_CODEX_AND_OTHER": 60},
+      "membership_sha256": "942926ce1850369b45151856783fc04b8313dc2c3f221f8788c27671a41b8dfb",
+      "constraint": "exact 294; disjoint from 2366/2537"
+    },
+    "168": {
+      "count": 168,
+      "source": "RC1 05 HEURISTIC_168",
+      "constraint": "outside-294 source-root candidates; 160 unique content sets; not accepted capabilities"
+    },
+    "2369": {"count": 2369, "source": "RC1 05 UNSELECTED_2369"},
+    "2537": {
+      "count": 2537,
+      "membership_sha256": "377a5a93418cadf8af1ac88a718d9a1fba509474e6fc174d2265e8d64a11d9b8",
+      "constraint": "168 + 2369; 294 disjoint"
+    },
+    "2366": {
+      "count": 2366,
+      "membership_sha256": "7b87a88dc2361b1d705c2881e45f3cff5e54a37e6d3af84f8077e2ac8ab7fc8b",
+      "constraint": "H358 outside-294; subset of 2537; contains 358"
+    },
+    "377": {"count": 377, "composition": "19 F3 selected + 358 remainder", "source": "F3/F3I"},
+    "358": {
+      "count": 358,
+      "membership_sha256": "0a2000ac0dbc9164fa59e244a100dd2971b2b5f6a0dc5116f6fd5de89a3fb8c2",
+      "constraint": "exact subset of 2366"
+    },
+    "171": {
+      "count": 171,
+      "source": "H358 02 MACHINE_SCREENED_CANDIDATE_HOLD",
+      "constraint": "candidate-hold rows inside 2366",
+      "distinct_from": "RC1 2537 - 2366 = 171 outside-H358 rows (168 heuristic + 3 unselected)"
+    }
+  },
+  "membership_checks": {
+    "294_intersect_2366": 0,
+    "358_subset_2366": true,
+    "2366_subset_2537": true,
+    "2537_minus_2366": 171,
+    "h358_candidate_hold": 171
+  },
+  "fresh_refs": [
+    {"sha": "fac064c9c3370d598e9b7469af652ae3504bc4ba", "branch": "agent/rabochii-sorok-20261029-c9-r3b-recovered-writer-reader-real-fanin-r1", "owner": "RCF-B / C9 SYN02", "rcf_d_adopted": false},
+    {"sha": "0636d257f588f8874e65b2cb183d1d47c7f53327", "branch": "agent/sorok-hr1-bp2p4j-episode-verifier-sourcefree-repair-20261029-r1", "owner": "RCF-B / BP2P4J C12", "rcf_d_adopted": false},
+    {"sha": "748752e688da23e0bb9ca3be92fad888d4736d5d", "branch": "integration/staging-sorok-b3a-accepted-sql-repair-20261029-r1", "owner": "RCF-B / B3AS", "rcf_d_adopted": false, "note": "also refs/pull/516/head; PR516 remains frozen"},
+    {"sha": "8b9a39da552a224bddf486603179f565003f38bb", "branch": "agent/sorok-g17-forged-material-future-child-c9-source-repair-r1", "owner": "RCF-B / G17 C9", "rcf_d_adopted": false},
+    {"sha": "8f200fd6ff6ce10e9effb017d2c265163e287105", "branch": "agent/sorok-r4-m04-unjournaled-adp017-terminal-repair-20261030", "owner": "RCF-B / M04R", "rcf_d_adopted": false},
+    {"sha": "693d25bf40f76b09ccf2cc1ec5218a262e201fcd", "branch": "agent/sorok-r4-bp4-c12-episode-fork-writer-version-repair-20261030", "owner": "RCF-B / BP4R C12", "rcf_d_adopted": false},
+    {"sha": "03be5c225b8ec5832c1c648b9c1799419f0c4066", "branch": "agent/sorok-r4-f1c-live-history-targetless-coverage-repair-20261030", "owner": "RCF-B / F1CR", "rcf_d_adopted": false}
+  ],
+  "sourcefree_tests": {
+    "co_signature_composition": {
+      "commit": "2474f8ef5907d5f5b70344e4a1c9ea9dbe14ecd8",
+      "source_path": "rawlsing_next/pre553_cosignature_composition.py",
+      "source_blob": "dee52dbcb7e60245cc51054f6c55544893f7ba67",
+      "test_path": "rawlsing_next/tests/test_pre553_cosignature_composition.py",
+      "test_blob": "98850d825e00c3bd6194ef2b271d85d7385d0e84",
+      "result": "8 passed",
+      "exit": 0,
+      "premain_importer": "none at 750548dd",
+      "premain_relation": "ABSENT"
+    },
+    "closed35_arab2": {
+      "commit": "87e72f0b5fe474caca9b82e19ec38351bfce3109",
+      "source_path": "rawlsing_next/closed35_arab2_realization.py",
+      "source_blob": "b2197255cbc9b6649e075405fd76aad990a75875",
+      "test_path": "rawlsing_next/tests/test_closed35_r2_arab2_realization.py",
+      "test_blob": "51e58765be4166972f99ca56f54b0ab46e51ecd6",
+      "result": "10 passed",
+      "exit": 0,
+      "premain_importer": "none at 750548dd",
+      "premain_relation": "ABSENT"
+    }
+  },
+  "inspected_residual_blobs": {
+    "prev3_objective_world_release_root.py": {"blob": "73c38f273adcad843d3ca95ddd387248ccb9aa76", "premain": "ABSENT", "importer": "none"},
+    "pre553_hq297_n9c_two_field_reader.py": {"blob": "03eb46efccadd6880cb34b2e2ac609ffc9b16c59", "premain": "ABSENT", "importer": "none"},
+    "pre553_as3r3_runtime_producer.py": {"blob": "d63370dbcadc043dd2f27f5383cf36f0e84d1235", "contract_blob": "26a7d123881513524e26f2342ab93dd1141fb5f6", "premain": "ABSENT", "importer": "none"},
+    "ee_w3_semantic_capital.py": {"blob": "91195bc387329fbe6d442f9ee8bd1994d7a0a28b", "premain": "ABSENT", "importer": "none"},
+    "closed35_lat2011_realization.py": {"blob": "81dc43c72ded1015850c1a9f4b03f31cd79320e3", "premain": "ABSENT", "importer": "none"},
+    "closed35_asian1_realization.py": {"blob": "f59818c97a3ae715c8631e0af3d2b3882049b7d7", "premain": "ABSENT", "importer": "none"},
+    "wsc_gt0_source_preff.py": {"branch_blob": "975e50db9b7cc70eda1b31c064413931211ad4fe", "premain_blob": "8c6d82b0e1c7dc3f5ba7354f64380231f72f82fb", "current_importer": "rawlsing_next/wsc_gt0_end_to_end.py"},
+    "wsc_gt0_v2_mediation.py": {"branch_blob": "7302a94fee5f69e0c396361c684e5964e1b0f615", "premain_blob": "8a040ffd27185aff17ad1e5e30176b6d864c235f", "current_importer": "rawlsing_next/wsc_gt0_end_to_end.py"},
+    "_pre553_query_predicate.py": {"branch_blob": "615f748e152a5ab43171c2eab6c10d39713458d4", "premain_blob": "8590bacf464b2c61f319f581820a3af76ed1e60c", "current_importers": ["gt12_c_to_d_relation_bridge.py", "gt12_d_to_m4_typed_bridge.py", "gt12_permission_translation_authority.py"]},
+    "m3_v556_higher_order_structural.py": {"branch_blob": "a4749541273c921ebe4ff7a0b91460bb1e016b87", "premain_blob": "9a4b26b214686364a43d108dabf0d57dac0ed3b2", "branch_ancestor_of_premain": true},
+    "m4_v557_v558_publication_repository.py": {"branch_blob": "9005308fb06686b593783666e77d06619645b2bb", "premain_blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360", "branch_ancestor_of_premain": true},
+    "pre553_v556_positive_substrate.py": {"branch_blob": "ff2219a73cf36ec11996db4434505f6172180cad", "premain_blob": "74c76257c0936f9761cc23007040b675eb438d46", "branch_ancestor_of_premain": true}
+  },
+  "classification_counts": {
+    "EXCLUDED_RCF_C__SELECTED_WORLD_F6_B5": 12,
+    "CLOSED_MECHANICALLY__TEST_EVIDENCE_PERF_OR_DOCUMENTARY": 37,
+    "EXCLUDED_RCF_C__PYAT_C1_SOURCE_DRIFT": 9,
+    "CLOSED_MECHANICALLY__SOURCE_PACKAGE_BINDING_NO_CONSUMER": 17,
+    "EXCLUDED_RCF_A_OR_B__DURABLE_BATCH_WORKLOAD": 9,
+    "SUPERSEDED_WITH_PROOF__ANCESTOR_OF_CURRENT_PREMAIN": 11,
+    "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER": 39,
+    "CLOSED_MECHANICALLY__TEST_OR_CUSTODY_HARNESS": 6,
+    "EXCLUDED_RCF_C__PYAT_SOURCE_OR_ORIGINAL_OWNER": 5,
+    "EXCLUDED_RCF_B__MODERN_AB_C8_C9_C12": 4,
+    "EXCLUDED_RCF_C__PYAT_SOURCE_DRIFT": 4,
+    "RESIDUAL_MATERIAL_INSPECTED__CLOSED35_SOURCE_LAW": 3,
+    "RCF_C_DEPENDENCY__CURRENT_PREMAIN_CONSUMER": 3,
+    "SOURCE_ISSUANCE_HOLD__NATIVE_SOURCE_OWNER": 3,
+    "RESIDUAL_MATERIAL_INSPECTED__AS3R3_PRODUCER": 2,
+    "RESIDUAL_MATERIAL_INSPECTED__SEMANTIC_CAPITAL_OBJECTIZER_NO_CONSUMER": 1,
+    "RESIDUAL_MATERIAL_INSPECTED__OBJECTIVE_WORLD_ROOT": 1,
+    "RCF_C_OR_H05_BOUNDARY__N10E_PROVIDER_LIFECYCLE": 1,
+    "RESIDUAL_MATERIAL_INSPECTED__N9_TEST_ONLY_VALUES_READER": 1,
+    "RESIDUAL_MATERIAL_INSPECTED__BRANCH_LOCAL_OBJECTIVE_WORLD_READONLY": 1,
+    "EXCLUDED_RCF_B__C8_SOURCE_CUSTODY": 1,
+    "RESIDUAL_MATERIAL_INSPECTED__CO_SIGNATURE_COMPOSITION": 1,
+    "STILL_UNINSPECTED__RCF_D_RESIDUAL": 0
+  },
+  "saturation": {
+    "status": "MATERIAL_PRODUCTION_MODULE_RISK_BOUNDED__NOT_TOTAL_HISTORICAL_SATURATION",
+    "candidate_hold_rows_classified": 171,
+    "rawlsing_next_production_modules_with_unknown_current_consumer": 0,
+    "branch_local_candidate_runtime_rows_not_source_read": 39,
+    "important_partial_rows": [
+      "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/objective_world.py"
+    ],
+    "o_final_selection": "May use exact current PRE-MAIN production modules and the explicit residual owner queue; must not treat the 39 branch-local scripts, R41 support modules, co-signature module, CLOSED35 laws, AS3R3 producer, N9 reader or objective-world root as adopted or source-cleared."
+  },
+  "original_reds_preserved": [
+    "G17I 3 literal failures",
+    "OC5E 49 native hostile REDs plus 10 historical REDs",
+    "M04 10 fresh provenance REDs plus 9 historical CAN3 REDs",
+    "C12 fork no PRE-MAIN reader",
+    "R95/R107 universal world binding CONTEXT_STRUCTURAL_AUTHORITY_HELD",
+    "WSC/GT12-D/W3-E07 drift",
+    "B5 boundary court 9 failed / 6 passed / 1 skipped"
+  ],
+  "review_output_sha256": {
+    "00_RETURN.md": "4dcd22a1d5060d9b9446d2b604ce27772e3f32e1a0a2d49cd86513478df460c1",
+    "01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json": "f84cc35a70c99ea14f8188501095a4eb060b546606efd6dec4fc611a521c0810",
+    "02_EXECUTION_AND_NEGATIVE_PROOF.md": "7ce0a9074f20af5a31090532278ad19596e3cc05875ecfc556e2e5e7b3489bdc",
+    "03_COMPATIBILITY_ARCHITECTURE_AND_PRIORITY.md": "0dc098b1d129b66bff7c0ccce20bb96a027761b1ad7659e9d6b21c1b43c7b597"
+  },
+  "final_remote_sha": "REPORTED_AFTER_PUSH_NOT_SELF_EMBEDDED",
+  "limits": [
+    "No original survey/respondent corpus, SAV, native source execution or unreviewed branch script was run.",
+    "No new CAN/ADP/SCI05/Pyat semantic, model-use, pairing or actor authority.",
+    "No PRE-MAIN mutation, merge, adoption or self-review.",
+    "RCF-A/B/C unresolved functionality is not cleared by this return.",
+    "39 branch-local candidate runtime/evidence scripts and R41 support modules remain not source-read; total historical saturation is not claimed."
+  ]
+}
