@@ -4,8 +4,8 @@
 **Branch:** `agent/sorok-rrif-r2-real-sourcefree-c9c12-join-recovered-function-fanin-20261031`
 **Startup:** `fa832d1fd54b44eebf4f0c09ed4eb2f8ce378abd`
 **Commission/worktree HEAD:** `f4f94e86c9679a48df62298730d99bdcce02de91`
-**Content commit SHA:** `PENDING_PUSH_READBACK`
-**Final remote SHA:** `PENDING_PUSH_READBACK`
+**Content commit SHA:** `1745fbb68dddfe150e93eb7789a02c4c0768bd66`
+**Final remote SHA:** reported after push readback; this return record is committed in a follow-up readback commit.
 
 ## 1. Three verdicts
 

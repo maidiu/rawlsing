@@ -1,34 +1,16 @@
 {
-  "schema": "SOROK_RRIF_R2_HARNESS_GIT_SOURCE_AND_TEST_RECEIPTS@1",
-  "host": "oldMac.lan",
-  "os": "macOS 13.7.8 (Darwin 22.6.0 x86_64)",
-  "python": "3.11.3",
-  "pytest": "9.1.1",
-  "git": "2.39.1",
-  "worktree": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/rrif-r2",
   "branch": "agent/sorok-rrif-r2-real-sourcefree-c9c12-join-recovered-function-fanin-20261031",
-  "startup": "fa832d1fd54b44eebf4f0c09ed4eb2f8ce378abd",
-  "commission_head": "f4f94e86c9679a48df62298730d99bdcce02de91",
-  "startup_ancestor": true,
   "candidate": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2",
-  "source_cut": {
-    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135",
-    "join_v": "4387dc818a96fda2d5271672505fbd9da1059703",
-    "source_manifest": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/SOURCE_MANIFEST.json",
-    "source_manifest_sha256": "7cfcb4679e36b522e83cc7120dbc166ce61dd220099c2aca8f5c9ddb5252c126",
-    "vendor_manifest_files": 444,
-    "candidate_source_manifest": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/RRIF_R2_CANDIDATE_SOURCE_PREIMAGE.json"
-  },
   "commands": [
     {
       "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=\"$PWD/SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2:$PWD\" python3 -m pytest -o addopts='' -q -p no:cacheprovider SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/tests/test_join.py SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/tests/test_rrif_r2_c12.py --junitxml=WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/evidence/rrif_r2_junit.xml",
       "exit": 0,
-      "result": "20 passed in 28.60s",
       "junit": "WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/evidence/rrif_r2_junit.xml",
-      "junit_tests": 20,
-      "junit_failures": 0,
       "junit_errors": 0,
-      "junit_skipped": 0
+      "junit_failures": 0,
+      "junit_skipped": 0,
+      "junit_tests": 20,
+      "result": "20 passed in 28.60s"
     },
     {
       "command": "python3 -m joined.cli start --state <tmp>/encounter --perform omit",
@@ -66,6 +48,48 @@
       "observed": "targetless=true; target_id=''; HELP_REFUSE; probe_code=JOIN_REFUSAL_NO_TARGET__OWNER_CONTRACT_REQUIRED; c9.target_branch=NO_CHANGE; c9.target_reason=NO_PROPOSAL"
     }
   ],
+  "commission_head": "f4f94e86c9679a48df62298730d99bdcce02de91",
+  "git": "2.39.1",
+  "host": "oldMac.lan",
+  "known_historical_negatives_preserved": {
+    "B3": "ghost/partial-write RED",
+    "BP4R": "7/2 RED diagnostics",
+    "C9_R3B": "14/1 RED",
+    "CAN3": "nine RED",
+    "F1CI3": "three RED",
+    "F1CR_original": "SOURCE_NOT_FOUND; R5 reconstruction distinct",
+    "G17I": "three RED",
+    "M04": "ten RED",
+    "OC5E": "49 RED"
+  },
+  "not_run": [
+    "No native C4/ADP/CAN008/CAN011/SCI05/Pyat N11/N12/C11 execution",
+    "No original survey or raw respondent data",
+    "No provider/model/OpenAI/Anthropic call",
+    "No production C9/C12 anchor, KMS, mirror/outbox or DB deployment",
+    "No human A5 participant",
+    "No PRE-MAIN merge, PR adoption, O-LIVE/Programma edit, or self-review"
+  ],
+  "os": "macOS 13.7.8 (Darwin 22.6.0 x86_64)",
+  "pytest": "9.1.1",
+  "python": "3.11.3",
+  "remote_commit": {
+    "candidate_content_commit": "1745fbb68dddfe150e93eb7789a02c4c0768bd66",
+    "final_remote_note": "Exact content commit readback; the readback record is a follow-up commit, final branch tip reported in the terminal response.",
+    "final_remote_sha": "1745fbb68dddfe150e93eb7789a02c4c0768bd66",
+    "readback_command": "git ls-remote origin refs/heads/agent/sorok-rrif-r2-real-sourcefree-c9c12-join-recovered-function-fanin-20261031"
+  },
+  "schema": "SOROK_RRIF_R2_HARNESS_GIT_SOURCE_AND_TEST_RECEIPTS@1",
+  "source_cut": {
+    "candidate_source_manifest": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/RRIF_R2_CANDIDATE_SOURCE_PREIMAGE.json",
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135",
+    "join_v": "4387dc818a96fda2d5271672505fbd9da1059703",
+    "source_manifest": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/SOURCE_MANIFEST.json",
+    "source_manifest_sha256": "7cfcb4679e36b522e83cc7120dbc166ce61dd220099c2aca8f5c9ddb5252c126",
+    "vendor_manifest_files": 444
+  },
+  "startup": "fa832d1fd54b44eebf4f0c09ed4eb2f8ce378abd",
+  "startup_ancestor": true,
   "test_files": [
     "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/tests/test_join.py",
     "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/tests/test_rrif_r2_c12.py"
@@ -75,28 +99,5 @@
     "RRIF C12 episode preimage tamper/restore",
     "RRIF independent C12 forged episode hash rejection"
   ],
-  "not_run": [
-    "No native C4/ADP/CAN008/CAN011/SCI05/Pyat N11/N12/C11 execution",
-    "No original survey or raw respondent data",
-    "No provider/model/OpenAI/Anthropic call",
-    "No production C9/C12 anchor, KMS, mirror/outbox or DB deployment",
-    "No human A5 participant",
-    "No PRE-MAIN merge, PR adoption, O-LIVE/Programma edit, or self-review"
-  ],
-  "known_historical_negatives_preserved": {
-    "C9_R3B": "14/1 RED",
-    "BP4R": "7/2 RED diagnostics",
-    "B3": "ghost/partial-write RED",
-    "F1CI3": "three RED",
-    "G17I": "three RED",
-    "CAN3": "nine RED",
-    "OC5E": "49 RED",
-    "M04": "ten RED",
-    "F1CR_original": "SOURCE_NOT_FOUND; R5 reconstruction distinct"
-  },
-  "remote_commit": {
-    "candidate_content_commit": "PENDING_PUSH_READBACK",
-    "final_remote_sha": "PENDING_PUSH_READBACK",
-    "readback_command": "git ls-remote origin refs/heads/agent/sorok-rrif-r2-real-sourcefree-c9c12-join-recovered-function-fanin-20261031"
-  }
+  "worktree": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/rrif-r2"
 }
