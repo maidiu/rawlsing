@@ -1,0 +1,38 @@
+name: Rawlsing commission copy-paste and agent/intelligence format preflight
+on:
+  push:
+    branches:
+      - agent/mandatory-copy-paste-agent-intelligence-prompt-contract-20261030-r1
+  pull_request:
+    paths:
+      - 'CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py'
+      - 'tests/test_copy_paste_commission_r1.py'
+      - '.github/workflows/rawlsing-commission-copy-paste-preflight.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: read
+jobs:
+  format-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Adversarial format-gate tests
+        run: python3 -m unittest discover -s tests -p test_copy_paste_commission_r1.py -v
+      - name: Verify every outstanding Pyat commission is completely copyable
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          for issue in 533 534 535 536 537 538 540 541 542 543 544; do
+            curl --fail --silent --show-error --retry 2 \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$issue" > "issue-$issue.json"
+            python3 CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py "issue-$issue.json" --json-issue
+            rm "issue-$issue.json"
+          done
