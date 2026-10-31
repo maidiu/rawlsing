@@ -44,6 +44,33 @@ class ValidatorTests(unittest.TestCase):
         finally:
             temp.cleanup()
 
+    def test_original_workstream_source_removed_fails(self) -> None:
+        """Source-presence must be proven, not just 17 S IDs or a hardcoded 0/17."""
+        temp, target = self._mutated_root()
+        try:
+            registry_path = target / "01_SOURCE_OF_TRUTH_REGISTRY.json"
+            registry = json.loads(registry_path.read_text(encoding="utf-8"))
+            original = next(row for row in registry["rows"] if row["id"] == "S0")
+            original["evidence_source"] = None
+            self._rewrite(registry_path, registry)
+            with self.assertRaises(ValidationError):
+                validate(target)
+        finally:
+            temp.cleanup()
+
+    def test_original_workstream_wrong_blob_fails(self) -> None:
+        temp, target = self._mutated_root()
+        try:
+            registry_path = target / "01_SOURCE_OF_TRUTH_REGISTRY.json"
+            registry = json.loads(registry_path.read_text(encoding="utf-8"))
+            original = next(row for row in registry["rows"] if row["id"] == "S16")
+            original["evidence_source"]["blob"] = "0" * 40
+            self._rewrite(registry_path, registry)
+            with self.assertRaises(ValidationError):
+                validate(target)
+        finally:
+            temp.cleanup()
+
     def test_native_promotion_fails(self) -> None:
         temp, target = self._mutated_root()
         try:
