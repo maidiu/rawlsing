@@ -18,6 +18,8 @@
 | Observed R3 review | `06f40a3eabb4acfc57f433144224695c2427c25f` (not the old `3f3d9ec2…` R2 negative) |
 | O-SCIENCE return | `45efe65f73475e6a815e5fe93c3ee5179de27f67` |
 
+**Scope hold acknowledged:** remote commit `1188186d57b0974b1c3a842c58b41fb91f517bc7` holds this prompt from false whole-Programma dispatch. This return is a bounded R3-derived substrate engineering repair plus O-SCIENCE candidate ingestion, not a successor whole Sorok Programma and not a substantive priority decree. Full Programma remains to be source-grounded against the complete Rawlsing/Astra/V3/Neo/Sorok 00–87+ estate.
+
 **Terminal:** `O_LIVE_R2_INTEGRATED_PERSISTENT_REFERENCE__OSCIENCE_17_102_14_226_CANDIDATE__ENGINEERING_GREEN_SCOPED__SCIENCE_AND_AUTHORITY_HELD`
 
 ## Three distinct verdicts

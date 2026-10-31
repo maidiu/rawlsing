@@ -2,7 +2,9 @@
 
 **Status:** `WORKING_CANDIDATE_NOT_HQ_ADJUDICATED` — persistent sourcefree
 Sorok-only operating map. It is not native person acceptance, science issuance,
-owner adoption or a priority decree.
+owner adoption or a priority decree. Scope hold: this is a bounded R3-derived
+substrate repair and O-SCIENCE candidate ingest, not a successor whole Sorok
+Programma; full Programma must be source-grounded against the complete estate.
 
 ## Current cut
 
