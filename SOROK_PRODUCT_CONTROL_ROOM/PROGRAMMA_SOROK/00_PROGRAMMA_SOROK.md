@@ -7,6 +7,9 @@
 
 ### One living reference and an actual operational completion system (proposed extension)
 
+**Jurisdiction clarification (user, 2026-10-31):** This is **PROGRAMMA SOROK's own** complete reference and orchestration. Pyat is visible only at its qualified upstream input/producer/permission/consumer interface. Sorok HQ **must not** map, administer, engineer or prioritize Programma Pyat's original-source/35-wave/Field Forge/F1–F8/eligible-operation work. These functions have their own Pyat HQ. The shared structural guidance does not fuse implementation portfolios or grant any one worker both jurisdictions.
+
+
 **Status of this section:** `PROPOSED__REQUIRES_AUTHORIZED_PREMAIN_ADOPTION`. Its detailed implementable contract is [01_LIVING_REFERENCE_AND_ORCHESTRATION_CONTRACT_R1.md](01_LIVING_REFERENCE_AND_ORCHESTRATION_CONTRACT_R1.md). It does not grant Sorok HQ succession, science/source/actor permission, native acceptance, or an implementation.
 
 **PROGRAMMA SOROK IS THE ONE LOGICAL, FULLY LINKED, CURRENT WHOLE-UNDERTAKING REFERENCE AND ORCHESTRATION MODEL**—not a succession of HQ syntheses, issue lists, modules, green fixtures or independent inventories. It must allow the user and qualified owners to view **the entire requisite science, theory, historical work, product, functions, code, dependencies, reviewers, active flights, competing alternatives, unknowns and original authority** in one place, descend recursively to actual source/producer/consumer, ascend from any implemented function to the real terminal human/product requirement, expose contradictions and missing edges, and identify the most consequential lawful next work.
