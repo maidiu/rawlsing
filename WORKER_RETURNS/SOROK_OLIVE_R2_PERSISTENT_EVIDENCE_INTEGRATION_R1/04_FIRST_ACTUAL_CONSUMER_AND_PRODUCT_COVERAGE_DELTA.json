@@ -1,0 +1,175 @@
+{
+  "actual_missing_consumers": [
+    {
+      "node": "C4",
+      "required": "C8 actual care/work encounter",
+      "status": "NONE_PROVEN_AT_PREMAIN"
+    },
+    {
+      "node": "C11",
+      "required": "native person / C12 consumer",
+      "status": "NONE_PROVEN_AT_PREMAIN"
+    },
+    {
+      "node": "C12",
+      "required": "durable continuing person",
+      "status": "NONE_PROVEN_AT_PREMAIN"
+    },
+    {
+      "human": "NOT_PROVEN",
+      "node": "A5",
+      "required": "human participant evaluation",
+      "status": "NONE_PROVEN_AT_PREMAIN"
+    },
+    {
+      "node": "PYAT_EXTERNAL_BOUNDARY",
+      "required": "qualified world/N11/N12/C11",
+      "status": "EXTERNAL_OWNER_HELD"
+    }
+  ],
+  "authority": {
+    "authority": "HOLD_NOT_ADOPTED",
+    "human": "NOT_PROVEN",
+    "native_person": false,
+    "owner_adoption": false,
+    "premain_merge": false,
+    "pyat_native_source": false,
+    "science": "HOLD_NOT_ISSUED",
+    "self_review": false
+  },
+  "baseline_to_current_delta": {
+    "edges": {
+      "baseline": 423,
+      "current": 649,
+      "delta": 226
+    },
+    "gaps": {
+      "baseline": 22,
+      "current": 38,
+      "delta": 16
+    },
+    "hypothesis_edges": 226,
+    "legacy_records": 102,
+    "missing_functions": 14,
+    "nodes": {
+      "baseline": 198,
+      "current": 212,
+      "delta": 14
+    },
+    "work_now_candidates": {
+      "baseline": 22,
+      "current": 38,
+      "delta": 16
+    },
+    "workstreams": 17
+  },
+  "evidence": {
+    "live_transaction": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/olive-r2-return/SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/r2_live_transaction.json",
+    "live_transaction_sha256": "eb4ece146061893061065a01dc85cfaf44fdcf7bc1ce09a454517ccafda4466f",
+    "tests": {
+      "exit_code": 0,
+      "stdout_tail": ".......................                                                  [100%]\n23 passed in 20.16s\n",
+      "summary": [
+        "23 passed in 20.16s"
+      ]
+    }
+  },
+  "first_actual_downstream_consumer": {
+    "also_available": [
+      "overview",
+      "zoom",
+      "source",
+      "consumer",
+      "alternatives",
+      "gaps",
+      "blocked-chain",
+      "work-now",
+      "workers",
+      "history"
+    ],
+    "cold_readback_equal": true,
+    "command": "python3 living_reference.py --state state.json export",
+    "consumer": "Sorok HQ reader over one persisted source-of-truth reference",
+    "edges": 649,
+    "gaps": 38,
+    "legacy_records": 102,
+    "missing_functions": 14,
+    "native_person_produced": false,
+    "nodes": 212,
+    "snapshot_sha256": "e54f6e6db1fe214c596899cdc26e40fa50c411a518ae772c139302717edb0e0b",
+    "state_digest": "3ec4423b6a093c39d6c57f544d66ae524b89425acb9ec75f8593668c714deea2",
+    "state_sha256": "e54f6e6db1fe214c596899cdc26e40fa50c411a518ae772c139302717edb0e0b",
+    "work_now_candidates": 38,
+    "workstreams": 17
+  },
+  "first_consumer_limits": [
+    "reads one persisted candidate reference; it does not produce a person",
+    "O-SCIENCE links are hypotheses and remain unreviewed candidate evidence",
+    "source exactness is not scientific issuance or owner adoption",
+    "Pyat boundary is external and immutable"
+  ],
+  "pending_owner_evidence": {
+    "authority_holds": [
+      {
+        "dimension": "authority",
+        "evidence_digest": "9ceea08244a0cf8cc2b8db9cebcbbb6bc80e69640eaa577a88f5017a9c2b235f",
+        "history_id": "H0008",
+        "manual_verification_required": true,
+        "node_id": "A5",
+        "reason": "local worker cannot verify an owner signature; owner evidence is preserved unadopted",
+        "requested_to": "OWNER_ADOPTED",
+        "status": "PENDING_MANUAL_VERIFICATION"
+      }
+    ],
+    "axes": {
+      "authority": "OWNER_EVIDENCE_PENDING_MANUAL_VERIFICATION",
+      "consumer": "NONE_PROVEN_AT_PREMAIN",
+      "engineering": "SOURCE_DEFINITION_RECOVERED",
+      "human": "NOT_PROVEN",
+      "operational": "RETURNED_SHA__INDEX_INPUT",
+      "review": "NOT_INDEPENDENTLY_REVIEWED",
+      "science": "NOT_ISSUED",
+      "source_recovery": "SOURCE_PRESENT"
+    },
+    "native_or_adopted": false,
+    "status": "PENDING_MANUAL_VERIFICATION"
+  },
+  "product_coverage_delta": {
+    "alpha": {
+      "after": "S15/A5/CP-A5 candidate only; human NOT_PROVEN",
+      "before": "no human A5",
+      "missing_consumer": false
+    },
+    "economics": {
+      "after": "S13 candidate evidence; no revenue decision",
+      "before": "unrepresented",
+      "missing_consumer": false
+    },
+    "native_person": {
+      "after": "still not proven",
+      "before": "not proven",
+      "missing_consumer": true
+    },
+    "safety": {
+      "after": "S14 candidate evidence plus C9C12-R2",
+      "before": "C9C12 sourcefree partial",
+      "missing_consumer": false
+    },
+    "science": {
+      "after": "still not issued",
+      "before": "not issued",
+      "missing_consumer": true
+    },
+    "user": {
+      "after": "candidate evidence from S7/S8/S11/S15",
+      "before": "source-name/partial",
+      "missing_consumer": false
+    },
+    "ux": {
+      "after": "candidate UX/opacity evidence plus CP-A5-R2",
+      "before": "CP-A5 reader only",
+      "missing_consumer": false
+    }
+  },
+  "schema": "SOROK_OLIVE_R2_FIRST_ACTUAL_CONSUMER_AND_PRODUCT_COVERAGE_DELTA@1"
+}

@@ -56,7 +56,7 @@ class LivingReferenceTests(unittest.TestCase):
             self.assertEqual(link["l2"], sid)
             for key in ("l0", "l1", "l3", "l4", "l5"):
                 self.assertIn(link[key], node_ids)
-            self.assertTrue(any(g["node"] in {link["l4"], link["l5"]} for g in state["gaps"]))
+            self.assertTrue(any(g["domain"] == sid for g in state["gaps"]))
             self.assertTrue(source["alternatives"])
 
     def test_arbitrary_source_has_terminal_or_explicit_gap(self):
@@ -70,16 +70,15 @@ class LivingReferenceTests(unittest.TestCase):
                 self.assertIn(sid, {"R6", "R7"})
         self.assertTrue(lr._critical_path(state, "L0_MATERIAL"))
 
-    def test_authorized_transition_updates_only_candidate_axis_and_invalidates_downstream(self):
+    def test_positive_candidate_transition_does_not_mass_invalidate(self):
         state = lr.build_state()
         before = copy.deepcopy(state["axes"]["B-F1CR-R2"])
-        lr._apply_transition(state, {"node_id": "B-F1CR-R2", "dimension": "engineering", "to": "INDEPENDENT_ACCEPT_SCOPED", "owner_evidence": "owner:test", "reviewer_evidence": "reviewer:test", "final": "not adopted"})
-        self.assertEqual(state["axes"]["B-F1CR-R2"]["engineering"], "INDEPENDENT_ACCEPT_SCOPED")
+        result = lr._apply_transition(state, {"node_id": "B-F1CR-R2", "dimension": "engineering", "to": "CANDIDATE_UPGRADED", "evidence": {"kind": "SYNTHETIC_DEMO", "note": "sourcefree candidate only"}})
+        self.assertEqual(state["axes"]["B-F1CR-R2"]["engineering"], "CANDIDATE_UPGRADED")
         self.assertEqual(state["axes"]["B-F1CR-R2"]["human"], before["human"])
         self.assertEqual(state["axes"]["B-F1CR-R2"]["authority"], before["authority"])
-        self.assertIn("INVALIDATED_BY_UPSTREAM", {v["consumer"] for v in state["axes"].values()})
+        self.assertEqual(result["invalidated"], [])
         self.assertEqual(state["pyat_boundary"]["status"], "EXTERNAL_OWNER_HELD")
-        self.assertFalse(state["pyat_boundary"].get("axes") and state["pyat_boundary"]["axes"].get("consumer") == "INVALIDATED_BY_UPSTREAM")
 
     def test_transition_without_owner_or_reviewer_is_refused(self):
         state = lr.build_state()
@@ -90,17 +89,18 @@ class LivingReferenceTests(unittest.TestCase):
 
     def test_returned_code_pass_does_not_make_human_a5_green(self):
         state = lr.build_state()
-        lr._apply_transition(state, {"node_id": "CP-A5-R2", "dimension": "engineering", "to": "AUTHOR_PASS_VERIFIED", "owner_evidence": "author:tests", "reviewer_evidence": "not-native-review", "final": "candidate"})
+        lr._apply_transition(state, {"node_id": "CP-A5-R2", "dimension": "engineering", "to": "CANDIDATE_UPGRADED", "evidence": {"kind": "SYNTHETIC_DEMO", "note": "author-test candidate only"}})
         self.assertNotEqual(state["axes"]["CP-A5-R2"]["human"], "PROVEN")
         self.assertNotEqual(state["axes"]["A5"]["human"], "PROVEN")
         self.assertEqual(state["axes"]["A5"]["authority"], "NOT_ADOPTED")
-        with self.assertRaises(ValueError):
-            lr._apply_transition(state, {"node_id": "A5", "dimension": "human", "to": "PROVEN", "owner_evidence": "author:test", "reviewer_evidence": "reviewer:test"})
+        result = lr._apply_transition(state, {"node_id": "A5", "dimension": "human", "to": "PROVEN", "evidence": {"kind": "HUMAN_PARTICIPANT", "participant_record_hash": "a" * 64, "consent_record": "c", "protocol": "p", "reviewer_role": "NOT_INDEPENDENT"}})
+        self.assertNotEqual(state["axes"]["A5"]["human"], "PROVEN")
+        self.assertIn(result["status"], {"SIMULATED_NOT_ADOPTED", "PENDING_MANUAL_VERIFICATION"})
 
     def test_source_withdrawal_invalidates_sorok_downstream_not_pyat_boundary(self):
         state = lr.build_state()
         unaffected = state["axes"]["M01"]["consumer"]
-        lr._apply_transition(state, {"node_id": "B-F1CR-R2", "dimension": "source_recovery", "to": "SOURCE_NOT_FOUND", "owner_evidence": "owner:test", "reviewer_evidence": "reviewer:test"})
+        lr._apply_transition(state, {"node_id": "B-F1CR-R2", "dimension": "source_recovery", "to": "SOURCE_NOT_FOUND", "evidence": {"kind": "SYNTHETIC_DEMO", "note": "source withdrawal simulation"}})
         self.assertEqual(state["axes"]["M01"]["consumer"], unaffected)
         self.assertEqual(state["pyat_boundary"]["status"], "EXTERNAL_OWNER_HELD")
         self.assertTrue(state["history"][-1]["invalidated"])
