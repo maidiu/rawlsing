@@ -1,0 +1,150 @@
+{
+  "schema": "SOROK_RCF_A_PROVENANCE_AND_FRESHNESS@1",
+  "generated_at_utc": "2026-10-30",
+  "repository": "maidiu/rawlsing",
+  "return_branch": "agent/sorok-rcf-a-v3-developmental-sourceclose-20261030-r1",
+  "current_premain_read_cut": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "historic_source_pin": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "source_archive": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_code_bundle_staging.zip",
+    "observed_container_sha256": "3f2c5ed925273153a4f300f75e54524729f0b4fef9974957be1f3cd887c91289",
+    "td_r05_expected_container_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "container_status": "MISMATCH__SELECTED_FILE_PROVENANCE_ONLY",
+    "td_r05_manifest_git_blob": "7bc6729e778a84e30ba0757ed52faecc28cdb42d",
+    "td_r05_manifest_path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/TD_R05_V3_DEVELOPMENTAL_RUNTIME/LATEST_EXTANT_V3_V2_SOURCE_MANIFEST.json",
+    "td_r05_manifest_selected_sources": 31,
+    "key_file_match": {
+      "v3/core/state.py": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+      "v3/core/derived.py": "e479fc3eba21734752c372742fb2ee247cbdde6a73ac42545dc30b5039301360",
+      "v3/core/invariants.py": "81298f3fc51b46cda8d72d0db914b672b17b9a35e13004fe59a9b0e29dada5e3",
+      "v3/engine/yearly_step.py": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+      "v3/engine/step_runner.py": "5a737c1704eaa6dc2c67f6c2db3118a6daa8a213b44d559bc37eadbc9c09d95a",
+      "v3/psyche/flow.py": "6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d",
+      "v3/engine/llm_contract.py": "f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf",
+      "v3/engine/run_llm_band.py": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38"
+    }
+  },
+  "ledger_counts": {
+    "M": 40,
+    "N": 12,
+    "CA": 19,
+    "M_with_td_manifest_file_match": 36,
+    "M_symbols_verified": 132,
+    "M_symbols_unverified": 0
+  },
+  "source_file_coverage": {
+    "files_total": 112,
+    "missing": [],
+    "M_without_td_selected_file_match": [
+      "M32",
+      "M37",
+      "M39",
+      "M40"
+    ],
+    "M_without_td_selected_file_match_count": 4
+  },
+  "execution": {
+    "environment": {
+      "host": "oldMac",
+      "harness": "OpenCode",
+      "python": "3.11.3",
+      "pytest": "9.1.1",
+      "yaml": "PyYAML-6.0.3 installed to temp target from requirements.app pyyaml>=6.0"
+    },
+    "commands": [
+      "cd <archive> && PYTHONPATH=<v3deps>:<archive> PYTHONDONTWRITEBYTECODE=1 python3 -m pytest v3/tests/test_architecture_invariants.py -q -p no:cacheprovider -o addopts=\"\"",
+      "PYTHONPATH=<v3deps>:<archive> python3 -m pytest v3/tests/test_step_logic.py -q -p no:cacheprovider -o addopts=\"\"",
+      "PYTHONPATH=<v3deps>:<archive> python3 -m pytest v3/tests/test_v5_pressure_flow.py v3/tests/test_v5_pressureflow_golden_run.py -q -p no:cacheprovider -o addopts=\"\"",
+      "copy v3/ to temp; move render_layer to front of steps in copied v3_yearly_step_order.yaml; run test_step_order_immutable"
+    ],
+    "results": {
+      "architecture_invariants": {
+        "tests": 4,
+        "passed": 4,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "step_logic": {
+        "tests": 12,
+        "passed": 12,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "pressure_flow": {
+        "tests": 24,
+        "passed": 24,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "selected_total": 40,
+      "mutation_severance": {
+        "test": "v3.tests.test_architecture_invariants.test_step_order_immutable",
+        "mutated": "render_layer moved before field_update in copied steps order",
+        "result": "FAILED with the named core-spine subsequence AssertionError, not import error",
+        "exit": 1
+      }
+    },
+    "not_run": [
+      "TD-R05 reported 80-test aggregate not rerun as a single current suite",
+      "full V3/V2 historical suite",
+      "native source/respondent data",
+      "LLM/provider calls",
+      "production/C12 integration"
+    ],
+    "source_archive_identity": {
+      "container_sha256_observed": "3f2c5ed925273153a4f300f75e54524729f0b4fef9974957be1f3cd887c91289",
+      "container_sha256_td_r05_expected": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+      "status": "CONTAINER_MISMATCH__SELECTED_FILE_HASHES_MATCH_TD_R05",
+      "selected_files_matching": 60
+    },
+    "invalid_mechanisms": {
+      "M08": "v3/psyche/channels.py:36 seed_wound_vector_from_identity uses class_origin/current_class/minority/religiosity/age to preseed wound dimensions; quarantine identity-seeded wound.",
+      "M15": "v3/engine/expectation_baseline.py:107-142 and v3/io/parent_baseline_from_behavior.py:25-67 default absent parent to 50/50/50 and axes to hopeful; deep rework.",
+      "M34": "v3/engine/llm_contract.py:173-207 manufactures fallback practice event; v3/engine/run_llm_band.py:242-252 takes first candidate when scoring empty; remove fallback.",
+      "M35": "v3/core/invariants.py:253-297 appends placeholder cracks/frameworks; yearly_step.py:24-30 calls repair before steps; quarantine placeholder repair.",
+      "M36": "v3/io/parent_baseline_from_behavior.py defaults missing warmth/authority/material to 50 and child axes to hopeful; remove.",
+      "M39": "v3/engine/effects/metabolization_effects.py:273-332 uses module-global random age-band rupture injection outside event ledger; replace with admitted C8 event.",
+      "M37": "server/generation/simulation.py structural placeholder years; v3/io/persona_sheet.py excludes stub scenes and v3/tools/distill_memory.py drops them; preserve quarantine.",
+      "M38": "v3/engine/yearly_step.py:120-135 fail-fast equality for step-local derived schedule; preserve.",
+      "M40": "server/generation/store.py:245-320 clean_ready/degraded_ready/blocked; preserve."
+    }
+  },
+  "science_anchors": {
+    "requested": [
+      "Leontiev",
+      "S\u00e8ve",
+      "Lahire",
+      "Dreier",
+      "Holzkamp",
+      "Archer",
+      "Kohn/Schooler",
+      "Elder",
+      "social reproduction"
+    ],
+    "primary_passages_read": [],
+    "status": "NOT_AVAILABLE_IN_ARCHIVE__NO_PRIMARY_READING_CLAIMED"
+  },
+  "session": {
+    "device": "oldMac",
+    "device_evidence": "scutil ComputerName=oldMac; LocalHostName=oldMac",
+    "harness": "OpenCode",
+    "model_id": "opencode-go/deepseek-v4.1-flash",
+    "reasoning_effort_requested": "MAX",
+    "reasoning_effort_verified": "UNVERIFIED",
+    "session_name": null,
+    "session_id": null,
+    "worktree": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/rcf-a-return",
+    "original_implementing_session": "UNKNOWN__HISTORICAL_ARCHIVE_NO_SESSION_ID"
+  },
+  "freshness": {
+    "current_premain_verified_remote": true,
+    "source_archive_read_only": true,
+    "native_source_opened": false,
+    "current_product_consumer": "NOT_PROVEN",
+    "return_sha": "PENDING_EXTERNAL_PUSH_READBACK"
+  },
+  "status": "SOURCEFREE_ARCHIVE_PROVENANCE_AND_FRESHNESS__NO_NATIVE_ADOPTION"
+}
