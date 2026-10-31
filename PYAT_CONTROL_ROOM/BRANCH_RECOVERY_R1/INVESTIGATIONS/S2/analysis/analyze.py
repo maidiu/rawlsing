@@ -362,6 +362,7 @@ def main() -> int:
                         "ast_no_identifier_sha256": rec["norm"],
                         "body_statements": rec["body"],
                         "doc": rec["doc"],
+                        "purpose": rec["doc"] or symbol,
                         "signature": rec["signature"],
                         "imports": rec["imports"],
                         "branches": [],
@@ -651,6 +652,16 @@ def main() -> int:
             "classification_counts": dict(cls_counts),
             "branch_disposition": disposition,
             "original_purpose_summary": ev.get("purpose") or branch,
+            "scientific_assumption": (
+                "STATED_OR_IMPLIED_IN_RETURN__NO_ORIGINAL_ISSUANCE_VERIFIED"
+                if ev.get("return_roots") and any(
+                    k in (ev.get("purpose", "") + " " + ev.get("snippet", "")).lower()
+                    for k in ("world", "actor", "person", "survey", "science", "empirical", "native", "causal", "calibration", "psycholog", "developmental", "practice", "human"))
+                else "NOT_STATED__SOURCEFREE_CONTROL_ONLY"
+            ),
+            "historical_review_verdict": ",".join(ev.get("verdict_tokens", [])) or "NO_VERDICT_TOKEN",
+            "compile_status": "STATIC_AST_ONLY__NOT_COMPILED_OR_EXECUTED",
+            "abi_schema_status": "NOT_APPLICABLE_PYTHON_OR_NOT_ASSESSED",
             "scientific_authority": "HOLD_ORIGINAL_CAN_ADP_PYAT_SCIENCE",
             "actor_permission_authority": "HOLD_ORIGINAL_PYAT_SOROK_OWNER",
             "source_authority": "HOLD_ORIGINAL_SOURCE_OWNER",
@@ -686,6 +697,24 @@ def main() -> int:
         fr["accountable_owner"] = "ORIGINAL_PYAT_SOURCE_OWNER_OR_CAN_ADP_ISSUER"
         fr["current_owner"] = "PREMAIN@750548" if fr["successor"] != "NONE_FOUND" else "NONE_IN_CURRENT_PREMAIN"
         fr["branch_signature"] = fr["signature"]
+        fr["historical_review_verdict"] = ",".join(sorted(set(
+            fr["historical_review"]["negative_tokens"] + fr["historical_review"]["positive_tokens"]
+        ))) or "NO_VERDICT_TOKEN"
+        evidence_text = " ".join(
+            (branch_evidence[b].get("purpose", "") + " " + branch_evidence[b].get("snippet", ""))
+            for b in fr["branches"]
+            if branch_evidence[b].get("return_roots")
+        )
+        fr["scientific_assumption"] = (
+            "STATED_OR_IMPLIED_IN_SOURCE_OR_RETURN__NO_ORIGINAL_ISSUANCE_VERIFIED"
+            if any(k in (fr.get("doc", "") + " " + evidence_text).lower()
+                   for k in ("world", "actor", "person", "survey", "science", "empirical", "native", "causal", "calibration", "psycholog", "developmental", "practice", "human"))
+            else "NOT_STATED__SOURCEFREE_CONTROL_ONLY"
+        )
+        fr["compile_status"] = "STATIC_AST_ONLY__NOT_COMPILED_OR_EXECUTED"
+        fr["abi_status"] = "NOT_APPLICABLE_PYTHON_OR_NOT_ASSESSED"
+        fr["schema_status"] = "NOT_ASSESSED"
+        fr["authority"] = f"SCIENTIFIC={fr['scientific_authority']}|ACTOR={fr['actor_permission_authority']}"
         fr["test_fault_witness_occurrences"] = sum(b["tests"]["fault_witness_count"] for b in brs)
         fr["tests_positive_negative"] = {
             "reported_test_counts": fr["tests_evidence"]["reported_test_counts"],
