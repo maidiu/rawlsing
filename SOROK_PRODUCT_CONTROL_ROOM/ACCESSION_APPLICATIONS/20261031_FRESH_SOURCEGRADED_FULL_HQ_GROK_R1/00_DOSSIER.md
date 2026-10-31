@@ -1,5 +1,5 @@
 # SOROK 08 — fresh successor accession dossier: whole-program source-grounded judgment
-**2026-10-31 source-session date; applicant status:** `SOROK_HQ_SUCCESSOR_CANDIDATE__GROKKED_READ_ONLY__INDEPENDENT_REVIEW_REQUESTED`.
+**2026-10-30 22:17 America/New_York verification; UTC-file/branch stamp 20261031; applicant status:** `SOROK_HQ_SUCCESSOR_CANDIDATE__GROKKED_READ_ONLY__INDEPENDENT_REVIEW_REQUESTED`.
 **IMPORTANT: not appointed, not incumbent, not independently qualified, no native grants.**
 **Repository:** private `maidiu/rawlsing`.
 **PRE-MAIN read cut:** `integration/pre-main-reconciliation-r1@5fc1d43e3d5412194d1f1eaa30ff448f84635e99`.
