@@ -1,0 +1,42 @@
+{
+  "schema": "RRIF_VALIDATION@1",
+  "result": "PASS",
+  "premain": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "s7fix": "80bc5d9bf6624c2ea04027322947a41c347330aa",
+  "s7fix_i3": "1b89fd49c330e4a2c976e6af8d6c1a5e6dbfb088",
+  "counts": {
+    "families": 1885,
+    "function_ids": 3135,
+    "negative_records": 2595,
+    "branch_names": 845,
+    "distinct_tips": 838,
+    "status_counts": {
+      "ALREADY_CURRENT": 101,
+      "AUTHORITY_HELD": 285,
+      "CANDIDATE_ADAPT": 9,
+      "CURRENT_DIFFERENT": 80,
+      "CURRENT_TEST_ONLY": 3,
+      "DUPLICATE_SUPERSEDED": 53,
+      "EVIDENCE_ONLY": 841,
+      "HISTORICAL_ONLY": 95,
+      "NOT_RESOLVED": 149,
+      "NO_REAL_RECEIVER_VERIFIED": 79,
+      "RETIRED_DEFECTIVE": 190
+    },
+    "six_boundary_families": 11,
+    "variant_comparisons": 3135,
+    "post_s7fix_negatives": 8,
+    "current_tree": "1d88d3fbb1d18dadfda946d9cd7f309d84afa479"
+  },
+  "checks": [
+    "1885 families / 3135 exact-once function IDs / 2595 negative records / 845 branches / 838 tips",
+    "11 corrected boundary families: 5 outer, 5 nested, 1 joined",
+    "no worker adoption, native acceptance or science issuance",
+    "current path blobs match PRE-MAIN 8e44ca9c",
+    "six boundary current-owner mapping remains RED",
+    "manifest has no integration-ready item; D01/D02/F7/R9/P07 decisions retained",
+    "all 2,595 S7FIX negative records preserve source and raw cause",
+    "8 post-S7FIX PE/R9/F7/P07/S7/V2K/R157 negatives preserved"
+  ],
+  "sourcefree_results": null
+}
