@@ -1,0 +1,3759 @@
+{
+  "classification_counts": {
+    "AUTHORITY_ONLY": 5,
+    "DUPLICATE_OR_SUPERSEDED": 2,
+    "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER": 8,
+    "MATERIAL_REUSABLE_WITH_CURRENT_CONSUMER": 0,
+    "TEST_EVIDENCE_ONLY": 24,
+    "UNRECOVERABLE_EXACT": 0
+  },
+  "current_premain": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+  "denominators_preserved": {
+    "168": {
+      "constraint": "outside-294 source-root heuristic; 160 unique content sets per RC1; not accepted capabilities",
+      "count": 168,
+      "source": "RC1 05 HEURISTIC_168 pool"
+    },
+    "171": {
+      "constraint": "exact 171 candidate-hold rows inside 2366; distinct from RC1 2537-2366=171 outside-H358 rows (168 heuristic + 3 unselected)",
+      "count": 171,
+      "source": "H358 02 MACHINE_SCREENED_CANDIDATE_HOLD"
+    },
+    "2366": {
+      "constraint": "subset of RC1 2537; 358 subset of 2366; 2008 outside 358",
+      "count": 2366,
+      "membership_sha256": "7b87a88dc2361b1d705c2881e45f3cff5e54a37e6d3af84f8077e2ac8ab7fc8b",
+      "source": "H358 02"
+    },
+    "2369": {
+      "constraint": "outside-294 unselected baseline",
+      "count": 2369,
+      "source": "RC1 05 UNSELECTED_2369 pool"
+    },
+    "2537": {
+      "constraint": "168+2369 triage rows; 294 disjoint",
+      "count": 2537,
+      "membership_sha256": "377a5a93418cadf8af1ac88a718d9a1fba509474e6fc174d2265e8d64a11d9b8"
+    },
+    "294": {
+      "constraint": "exact 294 names; disjoint from 2366/2537",
+      "count": 294,
+      "membership_sha256": "942926ce1850369b45151856783fc04b8313dc2c3f221f8788c27671a41b8dfb",
+      "membership_source": "SOROK-294-R2-RC1/01_ALL_294_BRANCH_CAPABILITY_RECONCILIATION.json",
+      "shards": {
+        "A_IMPLEMENTERS": 98,
+        "B_REVIEWERS": 67,
+        "C_HQ_AND_PRODUCT": 69,
+        "D_CODEX_AND_OTHER": 60
+      }
+    },
+    "358": {
+      "constraint": "exact subset of 2366",
+      "count": 358,
+      "membership_sha256": "0a2000ac0dbc9164fa59e244a100dd2971b2b5f6a0dc5116f6fd5de89a3fb8c2",
+      "source": "H358 01"
+    },
+    "377": {
+      "composition": "19 F3 selected + 358 remainder",
+      "count": 377,
+      "source": "F3/F3I; 358 = 377 - 19"
+    }
+  },
+  "file_classification_counts": {
+    "AUTHORITY_ONLY": 8,
+    "DUPLICATE_OR_SUPERSEDED": 3,
+    "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER": 9,
+    "TEST_EVIDENCE_ONLY": 74,
+    "UNRECOVERABLE_EXACT": 0
+  },
+  "file_count": 94,
+  "notes": [
+    "RCF-D calls the 39 rows \"branch-local candidate runtime/evidence scripts\"; the rows expose 94 candidate files. All 94 actual file bytes were read from the original cuts; 0 files are UNRECOVERABLE_EXACT.",
+    "No exact candidate path is present in current PRE-MAIN 5fc1d43e. No candidate is executed as a production importer.",
+    "Row 37 has a different current PRE-MAIN successor at section85/code; it is not the candidate path. Row 27 and row 18 WG0P10 are superseded by current R61 universal workload."
+  ],
+  "rcfd_cut": "5446395925996f4c2e4d3aabef2e06ba97d16fcd",
+  "repository": "maidiu/rawlsing",
+  "row_count": 39,
+  "rows": [
+    {
+      "branch": "agent/rabochii-prev3-astra-candidate-inputs-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "29a2301f0480c4fbc0029f9db9f8c12dcb9b7b30",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Replay D07 PKG-D exact refs from manifest + externalized payloads.",
+          "functions": [
+            "canon",
+            "digest",
+            "key",
+            "refok",
+            "main",
+            "nofloat",
+            "payload_for"
+          ],
+          "git_blob": "0c037b1dae3a248de4cb4860f0404c8d9cbb1a60",
+          "imports": [
+            "__future__",
+            "copy",
+            "hashlib",
+            "json",
+            "pathlib",
+            "re",
+            "sys"
+          ],
+          "lines": 174,
+          "path": "WORKER_COMMISSIONS/ASTRA-CANDIDATE-INPUTS/02_REPLAY_M10_M01_PKG_D_TRACE_EXACT_REF_LIFT.py",
+          "sha256": "ddff298aa7dda8b84dcafc99cc98016c19c1272f0a8f0f2a641f06eca4b41439",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 1,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "EE/PREV3",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-prev3-astra-position-input-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "beef158c7df27f61df69da530d1647619dc0369c",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "file_sha256"
+          ],
+          "git_blob": "593344862e340ded610f7b011e01e363d290df65",
+          "imports": [
+            "hashlib",
+            "json",
+            "pathlib"
+          ],
+          "lines": 112,
+          "path": "WORKER_COMMISSIONS/ASTRA-POSITION-INPUT/03_RUN.py",
+          "sha256": "9ccc4639e4942dda108bc4cf2b04b71519a3388268ea3d1397045ff098e46719",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 2,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "EE/PREV3",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-prev3-ee-p2f0-wvs7-preoutcome-program-freeze-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "520231f0b86ab93ae396a2e89ceb900ba54c6407",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Verify the source-free EE-P2F0 blocker receipt.",
+          "functions": [],
+          "git_blob": "a311b1661c8bb5b611b25f6756af44e22829b632",
+          "imports": [
+            "json",
+            "pathlib"
+          ],
+          "lines": 13,
+          "path": "WORKER_RETURNS/EE-P2F0/06_verify_ee_p2f0_blocker.py",
+          "sha256": "ef0a70b9db0558dac7e62f8438516bbffce0667771dc286002236e722223856e",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 3,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "EE/PREV3",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-prev3-ee-p2f1-wvs7-authority-requirements-possession-audit-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "00b86dcade82bc9efb6ea68a79062c6587d0de08",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [],
+          "git_blob": "ad95496e1d624a76d634a6ab4f52bd3b561df416",
+          "imports": [
+            "json",
+            "pathlib"
+          ],
+          "lines": 44,
+          "path": "WORKER_RETURNS/EE-P2F1/07_verify_ee_p2f1.py",
+          "sha256": "5bfdf3bb6a581a252e125c3de31bd8b5c3fea4b498b8b832c5865e2049b3bc3a",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 4,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "EE/PREV3",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-prev3-ee-r3a-response-selector-reseal-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "9a31f6ddd984a43076cb89043a70ab19195332f5",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "sha",
+            "build",
+            "main"
+          ],
+          "git_blob": "9e8723c0b807639a180a44337b146fda126f2c05",
+          "imports": [
+            "__future__",
+            "base64",
+            "collections",
+            "hashlib",
+            "json",
+            "pathlib",
+            "rawlsing_next",
+            "zlib"
+          ],
+          "lines": 77,
+          "path": "WORKER_COMMISSIONS/EE-R3A/05_REPLAY_EE_R3A.py",
+          "sha256": "22621419443e37d71355b8c16c953da4db20fd8e1cf3cf9fb81ae29101ce39e4",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 5,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "EE/PREV3",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-prev3-ee-r3d-wvs-routing-authority-court-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "fbd151af338c6b56c5d8072015425ab6cb05bbc3",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "git_show",
+            "sha256"
+          ],
+          "git_blob": "b3645730d2e9e24b9f600f044e1f7898be18c571",
+          "imports": [
+            "__future__",
+            "csv",
+            "hashlib",
+            "io",
+            "json",
+            "pathlib",
+            "subprocess"
+          ],
+          "lines": 90,
+          "path": "WORKER_RETURNS/EE-R3D/04_VERIFY_EE_R3D.py",
+          "sha256": "3ba08f1b5a36a2ccaf15ae4fdd920d96cd94588526b6d66e1fad3a831a7f37d3",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 6,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "EE/PREV3",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-prev3-ee-r4c-response-semantic-batch-partition-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "9348378fe6976dbc72a34d0e799b875e41073f34",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "sha",
+            "git_bytes",
+            "loadj",
+            "reconstruct_n01",
+            "main"
+          ],
+          "git_blob": "cc3d1d1838443e74b4b028d69f6be92551950dd3",
+          "imports": [
+            "__future__",
+            "base64",
+            "collections",
+            "csv",
+            "hashlib",
+            "io",
+            "json",
+            "lzma",
+            "pathlib",
+            "subprocess",
+            "zlib"
+          ],
+          "lines": 94,
+          "path": "WORKER_RETURNS/EE-R4C/03_REPLAY_EE_R4C.py",
+          "sha256": "5e081e9467e7e11a56855e9336a6892d514e7a3db53013b584b2289c56ac5e77",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 7,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "EE/PREV3",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-prev3-ee-r5b-abc-27cell-physical-requalification-r1",
+      "classification": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "02d32036db49c70ff137f1730d0ff95b571040d3",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "WORKER_RETURNS/EE-R5B/06_test_bounded_w4_adapter.py; no PRE-MAIN importer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 2,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [
+            "BridgeError"
+          ],
+          "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+          "doc": "EE-R5B bounded mechanical bridge from EE-W4 JSON envelopes to bound A/B/C owners.",
+          "functions": [
+            "_hex64",
+            "_canonical_bytes",
+            "_exact_owner_binding",
+            "validate_w4_request",
+            "_validate_owner_receipt",
+            "_validate_c_surface",
+            "normalize_owner_receipt",
+            "adapt_step",
+            "_load_provider",
+            "main"
+          ],
+          "git_blob": "d169be112f454732df161620743ea6332866255e",
+          "imports": [
+            "__future__",
+            "argparse",
+            "hashlib",
+            "importlib",
+            "json",
+            "pathlib",
+            "typing"
+          ],
+          "lines": 233,
+          "path": "WORKER_RETURNS/EE-R5B/05_BOUNDED_W4_ADAPTER.py",
+          "sha256": "ee25d2971f3fa2be147f16368460c88adb672173a62add489f1c9ff44b686611",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [
+            "BridgeTests"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "h",
+            "envelope",
+            "good_owner",
+            "test_exact_27_cell_surface_accepts_bound_owner_receipts",
+            "test_all_lifecycle_candidate_actions_translate",
+            "test_owner_pin_mismatch_rejected",
+            "test_candidate_c_extra_accelerator_rejected",
+            "test_a_b_accelerators_rejected",
+            "test_wrong_action_rejected",
+            "test_outside_operation_rejected",
+            "test_invalid_telemetry_rejected",
+            "test_ranking_field_rejected",
+            "bad",
+            "bad",
+            "bad",
+            "bad",
+            "bad"
+          ],
+          "git_blob": "5b44107afc4ed615fb4d1fd93b4d47ef0db70171",
+          "imports": [
+            "__future__",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "pathlib",
+            "tempfile",
+            "unittest"
+          ],
+          "lines": 126,
+          "path": "WORKER_RETURNS/EE-R5B/06_test_bounded_w4_adapter.py",
+          "sha256": "edd85515bfa9dd5a62af26910c105e7bcdf46b41860bed634a1c2f29a036d7a6",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 8,
+      "material_function": {
+        "alternative": "No current PRE-MAIN EE-R5B bridge; R5 source-backed adapters are referenced but not present at current PRE-MAIN",
+        "chain": "EE-W4 envelope + bound A/B/C owner executor -> owner-binding and action validation -> RAWLSING_EE_R5B_OWNER_BOUND_W4_BRIDGE@1.0.0 receipt -> EE-R5B test court",
+        "first_consumer": "WORKER_RETURNS/EE-R5B/06_test_bounded_w4_adapter.py; no PRE-MAIN importer",
+        "function": "validate_w4_request / normalize_owner_receipt / adapt_step",
+        "owner": "EE-R5B / EE-W4 owner; sourcefree test-only"
+      },
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "EE/PREV3",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-prev3-ee-r6a-wvs36-source-native-semantic-pair-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "4b141b8b5748175e34c9286eba36f53d8df1e9d5",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [],
+          "git_blob": "c7ba6b869e72829306008f3e1396f22a598fd91f",
+          "imports": [
+            "csv",
+            "hashlib",
+            "json",
+            "pathlib"
+          ],
+          "lines": 25,
+          "path": "WORKER_RETURNS/EE-R6A/05_VERIFY_EE_R6A.py",
+          "sha256": "b53a65ebbdc216a78cea5b4af8664d2fe4143bc01298d6e30e1e8d5c003c21c1",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 9,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "EE/PREV3",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-prev3-ee-r6b-final-bakeoff-assembly-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "fb10c6c79cd209396c043954d9c886ae820d30f0",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 2,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [
+            "ValidationError"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "fail",
+            "load",
+            "cbytes",
+            "hobj",
+            "validate_preassembly",
+            "validate_r6a_splice_payload"
+          ],
+          "git_blob": "c73f0b76187142cb487eec07589223284578eda5",
+          "imports": [
+            "__future__",
+            "argparse",
+            "hashlib",
+            "json",
+            "pathlib"
+          ],
+          "lines": 80,
+          "path": "WORKER_RETURNS/EE-R6B/05_validate_preassembly.py",
+          "sha256": "129a8131ebf139390d82a670dda634175153125a28ca8d91c3d1cbd613a730a3",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [
+            "TestEER6BPreassembly"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "read_json",
+            "write_fixture",
+            "setUp",
+            "mutate_and_fail",
+            "test_valid_preassembly",
+            "test_owner_substitution_rejected",
+            "test_candidate_c_extra_accelerator_rejected",
+            "test_missing_ready_cell_rejected",
+            "test_source_substitution_rejected",
+            "test_splice_qid_substitution_rejected",
+            "test_metric_law_mutation_rejected",
+            "test_candidate_order_mutation_rejected",
+            "test_candidate_specific_omission_surface_rejected",
+            "test_test_only_structurally_complete_r6a_splice_shape",
+            "test_splice_content_hash_mutation_rejected",
+            "mutate"
+          ],
+          "git_blob": "755ad727179f2edecf69255fb431ce9272b54bea",
+          "imports": [
+            "__future__",
+            "copy",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "pathlib",
+            "tempfile",
+            "unittest"
+          ],
+          "lines": 148,
+          "path": "WORKER_RETURNS/EE-R6B/06_test_validate_preassembly.py",
+          "sha256": "075ea25c00d4fb3281bf3365bc3e45f6ff7fe8f328cef35203e715c53be4acfa",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 10,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "EE/PREV3",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-prev3-ee-r7a-final-abc-bakeoff-execution-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "8968b4e2bb35cb453c633bd81c10c910240a122a",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "cbytes",
+            "sha_file"
+          ],
+          "git_blob": "957daf24d62a898206083d44856a5db19284fcfc",
+          "imports": [
+            "__future__",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "pathlib",
+            "platform"
+          ],
+          "lines": 31,
+          "path": "WORKER_RETURNS/EE-R7A/05_VERIFY_EE_R7A.py",
+          "sha256": "80f2d1a8c175cfc840c17bd51ac0da920aae0a3bb84fe9a37cebfea6ee282748",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 11,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "EE/PREV3",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-prev3-ee-r9l-lits-production-comparison-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "c88d2a92521de1f2ef85e41279194d7d4f5434cb",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Read-only verification for the bounded EE-R9L source and B16 evidence.",
+          "functions": [
+            "sha256_file",
+            "git_show",
+            "main"
+          ],
+          "git_blob": "d6ca8bf9c39bc62ddd80b2aa3518950cf4bbf927",
+          "imports": [
+            "__future__",
+            "argparse",
+            "base64",
+            "gzip",
+            "hashlib",
+            "pathlib",
+            "subprocess"
+          ],
+          "lines": 61,
+          "path": "WORKER_RETURNS/EE-R9L/02_verify_ee_r9l.py",
+          "sha256": "bcbd49172725d893f775abc4f1cd4fdb69a4cff065230370c4b7450ea518acee",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 12,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "EE/PREV3",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-prev3-ee-r10l-lits-banked-projection-production-court-r1",
+      "classification": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "1d01bd7a1763bea642947557b924a7cfc6d15db6",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "EE-R10L return/evidence; no PRE-MAIN importer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [
+            "Monitor"
+          ],
+          "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+          "doc": "Execute the measured Route-A R5 compact-carrier construction for EE-R10L.",
+          "functions": [
+            "canonical",
+            "file_sha",
+            "tree",
+            "load_builder",
+            "main",
+            "__init__",
+            "sample",
+            "run",
+            "start",
+            "close"
+          ],
+          "git_blob": "004874f371a8ed13070dfa6598cfc85b08d9cdc9",
+          "imports": [
+            "__future__",
+            "argparse",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "os",
+            "pathlib",
+            "platform",
+            "rawlsing_next.pre553_c11_ingest",
+            "rawlsing_next.pre553_c11_integrity",
+            "rawlsing_next.pre553_c11_repository",
+            "rawlsing_next.pre553_empirical_authority",
+            "rawlsing_next.pre553_empirical_objects",
+            "rawlsing_next.pre553_empirical_query",
+            "rawlsing_next.pre553_physical_decoder",
+            "rawlsing_next.pre553_r5_compact_carrier",
+            "rawlsing_next.pre553_r5_model",
+            "rawlsing_next.pre553_r5_seam",
+            "rawlsing_next.pre553_source_backed_c11_facade",
+            "resource",
+            "threading",
+            "time",
+            "typing"
+          ],
+          "lines": 224,
+          "path": "WORKER_RETURNS/EE-R10L/07_construct_candidate_a_r5_carrier.py",
+          "sha256": "507104ff54283170e5278a5fbe330c6ea4df5f2df9aa7ff33e85c159dc7c209b",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 13,
+      "material_function": {
+        "alternative": "pre553_r5_compact_carrier / pre553_r5_source_backed_adapter are referenced in historical docs but absent at current PRE-MAIN",
+        "chain": "LiTS source + banked AS2B builder -> R5CompactLongShardedBuilder construction -> RAWLSING_EE_R10L_CANDIDATE_A_R5_CONSTRUCTION_RECEIPT@1.0.0 -> EE-R10L return/evidence",
+        "first_consumer": "EE-R10L return/evidence; no PRE-MAIN importer",
+        "function": "load_builder / Monitor / main",
+        "owner": "EE-R10L / Pyat R5 source owner; test-only"
+      },
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "EE/PREV3",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-prev3-w17-s01-q03-position-occupant-split-repair-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "e5e1f53589f1947970591bf7358a6f9d2fee5a51",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "PREV3_REPLAY_QUALIFICATION",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [],
+          "git_blob": "3c8b75040c53337cb3db08a178f3615b65af0b1b",
+          "imports": [
+            "hashlib",
+            "json",
+            "pathlib"
+          ],
+          "lines": 46,
+          "path": "02_REPLAY_Q03_POSITION_SEMANTIC_IDENTITY.py",
+          "sha256": "307f551e11cee3d0375430c812e506483b646d7aced62638750470be492d3e9b",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 14,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "EE/PREV3",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-prev3-w18-t01-repaired-position-hostile-qualification-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "b577200b8eab79b02f88aeba0997482d21d3c4e7",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "PREV3_REPLAY_QUALIFICATION",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "canonical_bytes",
+            "digest"
+          ],
+          "git_blob": "a47c489bca215f0c57ec25320cf7fd55a02f415f",
+          "imports": [
+            "copy",
+            "hashlib",
+            "json",
+            "pathlib"
+          ],
+          "lines": 126,
+          "path": "02_REPLAY_T01_REPAIRED_POSITION_QUALIFICATION.py",
+          "sha256": "78800ae5cb45f761c00f54f56c1019d5efcd5d1c86ad324f158f1e567736c419",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 15,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "EE/PREV3",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-prev3-w19-u01-t02-r4-batch-adapter-hostile-qualification-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "4dc4d36f4f64d744a20259ec73e46f46c12c191b",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "PREV3_REPLAY_QUALIFICATION",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Reproduce U01's bounded T02 predecessor-lineage blocker.",
+          "functions": [
+            "_git",
+            "main"
+          ],
+          "git_blob": "a49a989a504a2e2a1c5fe69adfaeaad32041b6ed",
+          "imports": [
+            "__future__",
+            "argparse",
+            "pathlib",
+            "rawlsing_next.pre553_empirical_objects",
+            "rawlsing_next.sdtf_r4_generic_batch_adapter",
+            "rawlsing_next.tests",
+            "subprocess",
+            "sys"
+          ],
+          "lines": 99,
+          "path": "02_REPRO_U01_T02_PREDECESSOR_LINEAGE_BLOCKER.py",
+          "sha256": "e8f7da7eec9f03f863398f1e8946de7b39c549f1bab7a2eb750599bf554e01ba",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 16,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "EE/PREV3",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-pyat-r37-wg0r-current35-frontier-succession-r1",
+      "classification": "AUTHORITY_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "86c13ea6cea813fa2f87dca92396646305e3742c",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "R37_WG0R_CURRENT35",
+      "file_count": 4,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "AUTHORITY_ONLY",
+          "doc": "Lossless accounting projection of inherited authority, never new issuance.",
+          "functions": [
+            "decode_dispositions",
+            "pack_receipt",
+            "load",
+            "main"
+          ],
+          "git_blob": "4ea6c10fdc6753847698391ee3f3666d6560a311",
+          "imports": [
+            "base64",
+            "collections",
+            "csv",
+            "hashlib",
+            "io",
+            "json",
+            "pathlib"
+          ],
+          "lines": 139,
+          "path": "WORKER_RETURNS/PYAT-R37-WG0R-CURRENT35-FRONTIER-SUCCESSION-R1/account_current35.py",
+          "sha256": "6f0981b29d3934fa4717937d61c3e1f56f83f60f3e084fa065c285af7fdbe7ac",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "AUTHORITY_ONLY",
+          "doc": "Reproduce exact frozen bytes. Recall projections have no issuance authority.",
+          "functions": [
+            "recover",
+            "keyed"
+          ],
+          "git_blob": "3d747b5491acfcc45131a1f3f6d7da0407761f99",
+          "imports": [
+            "account_current35",
+            "csv",
+            "hashlib",
+            "io",
+            "json",
+            "pathlib"
+          ],
+          "lines": 64,
+          "path": "WORKER_RETURNS/PYAT-R37-WG0R-CURRENT35-FRONTIER-SUCCESSION-R1/recover_disposition_payload.py",
+          "sha256": "d36ccdccfa114d3bcfe8d00f43aeb04776b367142e48f843470654d543e17d48",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "test_exact_recovery_original_hash_and_surviving_shard",
+            "test_recovered_rows_and_independent_documented_counts",
+            "test_repaired_loader_rejects_corrupt_transport"
+          ],
+          "git_blob": "5b8dfc33e2a9af08fb042579fc140ae37288c078",
+          "imports": [
+            "account_current35",
+            "collections",
+            "csv",
+            "hashlib",
+            "pytest",
+            "recover_disposition_payload"
+          ],
+          "lines": 45,
+          "path": "WORKER_RETURNS/PYAT-R37-WG0R-CURRENT35-FRONTIER-SUCCESSION-R1/test_disposition_repair.py",
+          "sha256": "eebb615dc4dd03f413b7d88e2766c0f476725f5fc0e8d4f0ff01a3fdacfc9a20",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "output",
+            "test_enumeration_batch_native_parity_and_consumer",
+            "test_weight_absence_preserved_not_unit_default",
+            "test_pre_result_operation_antijoin",
+            "test_pre_result_authority_binding_substitution",
+            "test_all35_expected_registry_antijoin_and_no_drop",
+            "test_no_drop_omission_duplicate_and_swap_falsifiers",
+            "test_native_source_custody",
+            "test_retained_disposition_pack_rejected_without_rewriting_authority",
+            "test_frozen_plan_custody",
+            "test_fresh_process_replay"
+          ],
+          "git_blob": "6db2baa0845308b28c3484f2fde14341f88992cf",
+          "imports": [
+            "account_current35",
+            "dataclasses",
+            "hashlib",
+            "json",
+            "pathlib",
+            "pytest",
+            "rawlsing_next.pre553_source_backed_c11_facade",
+            "repro_fixture",
+            "subprocess",
+            "sys"
+          ],
+          "lines": 105,
+          "path": "WORKER_RETURNS/PYAT-R37-WG0R-CURRENT35-FRONTIER-SUCCESSION-R1/test_wg0r.py",
+          "sha256": "a1f08f8e39b460ddbd610481c3f614574d66f459173f19b4a6413f14b1bb5de9",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 17,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "Pyat/WG0",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-pyat-r38-wg0x-p2-o35e-owner-crosswalk-r1",
+      "classification": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "current_premain_successor": "rawlsing_next/pre553_universal_workload.py (R61) for WG0P10 source only",
+      "cut": "aeefaf7e7f32f094b72fbee1e62e98508a304482",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/test_wg0x.py; no PRE-MAIN importer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 11,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [],
+          "git_blob": "560e89b91d7bafb914018ed2628f15d569104da0",
+          "imports": [
+            "ast",
+            "hashlib",
+            "json",
+            "pathlib"
+          ],
+          "lines": 30,
+          "path": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/build_genealogy.py",
+          "sha256": "f7cd8b71ab14cd261508cef7f6a440045a9cd0e066a33e10ad4b2b524815db01",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Live local source-free runtime probe with portable sanitized import identity.",
+          "functions": [
+            "main"
+          ],
+          "git_blob": "1e3191f5a2e2443a004c895fe083d089b376ba91",
+          "imports": [
+            "datetime",
+            "experiment",
+            "hashlib",
+            "json",
+            "pathlib",
+            "platform",
+            "pytest",
+            "reused_wg0r_fixture",
+            "subprocess",
+            "sys",
+            "uuid"
+          ],
+          "lines": 26,
+          "path": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/capture_passport.py",
+          "sha256": "3d79356b9c1cec4dec4c6e69ce19d45bcadcff8c33c0963422e042990cea8e7b",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Relocate the self-contained source-free return; no Git or raw source reads.",
+          "functions": [
+            "main"
+          ],
+          "git_blob": "5b7f9487aba62dbca163a70ba87b0d7d14c6578f",
+          "imports": [
+            "hashlib",
+            "json",
+            "os",
+            "pathlib",
+            "shutil",
+            "subprocess",
+            "sys",
+            "tempfile"
+          ],
+          "lines": 25,
+          "path": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/cold_replay.py",
+          "sha256": "c35a1202ccd494fc883f83bec6d22c701b52de2b5bf5e4595df93ae922c8b41e",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Reuse exact WG0R transport; compare against separately frozen native fixtures.",
+          "functions": [
+            "material",
+            "snapshot",
+            "freeze",
+            "verify_fixture",
+            "verify_jobs",
+            "run"
+          ],
+          "git_blob": "d123af482e52c0062e4222fe2dd5255a9a756127",
+          "imports": [
+            "collections",
+            "collections.abc",
+            "dataclasses",
+            "hashlib",
+            "json",
+            "pathlib",
+            "rawlsing_next",
+            "rawlsing_next.pre553_empirical_objects",
+            "rawlsing_next.tests.test_pre553_route_b_production",
+            "reused_wg0r_fixture",
+            "sys"
+          ],
+          "lines": 75,
+          "path": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/experiment.py",
+          "sha256": "cba2e7c75e2895a5ac5df76b7895f0acdd51481b8f9ee78b76c7fe8ae3deb7cd",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Expected versus actual native receipts; does not trust echoed request lists.",
+          "functions": [
+            "reconcile"
+          ],
+          "git_blob": "ef2590cb5df6583def5b465bf80e0e6c6694700f",
+          "imports": [
+            "collections",
+            "json",
+            "pathlib",
+            "rawlsing_next.pre553_carrier_execution",
+            "rawlsing_next.pre553_empirical_objects",
+            "sys"
+          ],
+          "lines": 42,
+          "path": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/reconcile_execution.py",
+          "sha256": "3f6db44710521cb16b3d207468b5d093f61f22f338567880476bd132a29964da",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Redact host root/hostname from actual logs; record only raw/output digests.",
+          "functions": [],
+          "git_blob": "66c3a5c3f73da485d7ea27429fa004b0dcf359be",
+          "imports": [
+            "hashlib",
+            "json",
+            "pathlib",
+            "re"
+          ],
+          "lines": 19,
+          "path": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/sanitize_evidence.py",
+          "sha256": "308d7c58eac3720199c855c2b66ac5c4b9dd00d8508c270fd30a7c36fa432b18",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+          "doc": "Deterministic source-qualified research crosswalk, without identity issuance.",
+          "functions": [
+            "load",
+            "lines",
+            "digest",
+            "dump",
+            "build",
+            "main",
+            "matches"
+          ],
+          "git_blob": "e786eb1bd06628bef3a9322235c285a1fbec5e8e",
+          "imports": [
+            "collections",
+            "csv",
+            "hashlib",
+            "json",
+            "pathlib"
+          ],
+          "lines": 99,
+          "path": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/scientific_crosswalk.py",
+          "sha256": "c703f71fd6ebc8993f50fda421951196df62541cd91dc867631d409ae649bfcc",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [],
+          "git_blob": "1a1628076b913f33944cad4ea4da329b65bd2225",
+          "imports": [
+            "hashlib",
+            "json",
+            "pathlib"
+          ],
+          "lines": 10,
+          "path": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/seal_artifacts.py",
+          "sha256": "c480eb1391c30f2fa0cfa9f5814f100cbe9bcdca3127e73bb034afc174ae7bea",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [
+            "IdentityError",
+            "FrontierError",
+            "RevocationError",
+            "ColdRestartError",
+            "NativeDataError",
+            "WorkloadBuilder",
+            "FixtureOwner",
+            "Releases",
+            "BoundSpec",
+            "FactCustody"
+          ],
+          "disposition": "DUPLICATE_OR_SUPERSEDED",
+          "doc": "WG0P4 sourcefree compiler using unchanged accepted C11/I03/Batch owners.",
+          "functions": [
+            "frozen",
+            "_plain",
+            "canonical",
+            "digest",
+            "_h",
+            "_ref",
+            "ref",
+            "native_item",
+            "independent_oracle_items",
+            "conditional_items",
+            "receipt_row",
+            "original_rows",
+            "expected_rows",
+            "frontier_root",
+            "_mode",
+            "validate_frontier",
+            "validate_frontier_receipts",
+            "joint_risk_authority",
+            "admit_native_rows",
+            "validate_mr_native_sets"
+          ],
+          "git_blob": "554d4adebdff1659f7213eabd6db050858533ce5",
+          "imports": [
+            "__future__",
+            "collections",
+            "copy",
+            "dataclasses",
+            "hashlib",
+            "hmac",
+            "importlib.util",
+            "json",
+            "os",
+            "pathlib",
+            "rawlsing_next.pre553_batch_runner",
+            "rawlsing_next.pre553_c11_repository",
+            "rawlsing_next.pre553_empirical_objects",
+            "rawlsing_next.pre553_empirical_query",
+            "secrets",
+            "sys",
+            "types",
+            "typing"
+          ],
+          "lines": 508,
+          "path": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/sources/WG0P10_repaired_workload.py",
+          "sha256": "c74b34d14c5a79993e7b56908ac017b2e35a97df422460f4d62beb30b63821f8",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "research",
+            "expected",
+            "receipts",
+            "test_full_identity_multiset_and_all35",
+            "test_party_is_substantive_with_original_structure_witness",
+            "test_all_nine_blocked_rows_preserved_without_synthetic_identity",
+            "test_accepted_duplicate_q47st_assertions_are_not_last_row_deduplicated",
+            "test_v525b_and_later_driver_difference_is_retained",
+            "test_exact_physical_names_are_candidate_bindings_not_replacements",
+            "test_p46_and_entity_subitems_keep_multiplicity",
+            "test_research_is_not_original_permission_or_full_frontier",
+            "test_mutated_source_projection_refused",
+            "test_named_prefrozen_fixture_matches_input",
+            "test_preexecution_job_anti_join_refuses",
+            "test_full_source_binding_changes_refused",
+            "test_actual_receipts_and_consumers",
+            "test_actual_missing_weight_stays_unavailable",
+            "test_valid_empty_discovery_has_native_typed_receipt",
+            "test_postexecution_missing_substituted_or_hidden_results_refused",
+            "driver"
+          ],
+          "git_blob": "0e942a46053b38849bfff09435be829b39e556c7",
+          "imports": [
+            "collections",
+            "copy",
+            "dataclasses",
+            "experiment",
+            "hashlib",
+            "json",
+            "pathlib",
+            "pytest",
+            "rawlsing_next.pre553_route_b_production",
+            "reconcile_execution",
+            "reused_wg0r_fixture",
+            "scientific_crosswalk"
+          ],
+          "lines": 140,
+          "path": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/test_wg0x.py",
+          "sha256": "297d0fdef2afdb8a01f038385af3db2ff6dc359862e8801e1bc6ed3f38840980",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Verify retained code bytes and exact projected rows against pinned Git objects.",
+          "functions": [
+            "git_blob",
+            "main"
+          ],
+          "git_blob": "49f3362fb89a44081b9270edfe363308aacb6a0b",
+          "imports": [
+            "csv",
+            "hashlib",
+            "io",
+            "json",
+            "pathlib",
+            "subprocess",
+            "sys"
+          ],
+          "lines": 46,
+          "path": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/validate_custody.py",
+          "sha256": "e1cfd4df0172b40524bfa1d9fe1d0ccfeda63bb1451eea79db8df260fc11d63d",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 18,
+      "material_function": {
+        "alternative": "current PRE-MAIN rawlsing_next/pre553_universal_workload.py is the R61 successor producer; sources/WG0P10 is an older WG0P4 compiler",
+        "chain": "WG0X/WG0R sourcefree transport + frozen native fixtures -> deterministic crosswalk/compare -> research crosswalk JSON/receipts -> test_wg0x and R38 return",
+        "first_consumer": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/test_wg0x.py; no PRE-MAIN importer",
+        "function": "scientific_crosswalk.build / load / digest; sources/WG0P10 WorkloadBuilder",
+        "owner": "Pyat WG0X/WG0R; current R61 owner for successor"
+      },
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "Pyat/WG0",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-pyat-r40-o35b-original35-authority-binding-r1",
+      "classification": "AUTHORITY_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "c714af26a5a749706c6da06df40ac0ef026c6296",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "AUTHORITY_ONLY",
+          "doc": "Source/metadata audit of the retained C11 replay gap; never load survey rows.",
+          "functions": [
+            "source",
+            "audit"
+          ],
+          "git_blob": "35af8c3b27d75253f59c57a89dd8590b3914f02a",
+          "imports": [
+            "argparse",
+            "ast",
+            "hashlib",
+            "json",
+            "pathlib",
+            "subprocess"
+          ],
+          "lines": 88,
+          "path": "WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/audit_c11_retention_gap.py",
+          "sha256": "58f38a8d6fa9e8c20cde94640e973422738c19bfeb9b408d2c6282f5fdc382fa",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 19,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "Pyat/WG0",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/rabochii-pyat-r48-h48-source-authority-producer-atlas-r1",
+      "classification": "AUTHORITY_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 3,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "AUTHORITY_ONLY",
+          "doc": "Read the H48 indexes without opening original sources or granting authority.",
+          "functions": [],
+          "git_blob": "4c7bbc62499141184f4fcb5daeb6ec10227e28e5",
+          "imports": [
+            "argparse",
+            "csv",
+            "gzip",
+            "json",
+            "pathlib"
+          ],
+          "lines": 33,
+          "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/query_atlas.py",
+          "sha256": "b4c418453e0dac77656b1c36595d8003049951c8d107c2b508ac06626e28ab1c",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "AUTHORITY_ONLY",
+          "doc": "Portable integrity checks; --native adds seven nonrespondent hostile witnesses.",
+          "functions": [
+            "csvrows",
+            "verify",
+            "native",
+            "witness",
+            "denied",
+            "stale",
+            "frontier",
+            "prep",
+            "file_presence",
+            "scoped",
+            "lits",
+            "route"
+          ],
+          "git_blob": "f54fb5648936d73195c28d126f070c9bab426b3f",
+          "imports": [
+            "argparse",
+            "ast",
+            "collections",
+            "csv",
+            "gzip",
+            "hashlib",
+            "inspect",
+            "json",
+            "pathlib",
+            "rawlsing_next.pre553_discovery_exact",
+            "rawlsing_next.pre553_empirical_authority",
+            "rawlsing_next.pre553_empirical_objects",
+            "rawlsing_next.pre553_route_b_production",
+            "rawlsing_next.tests.test_pre553_empirical_query",
+            "subprocess",
+            "sys"
+          ],
+          "lines": 108,
+          "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/validate_atlas.py",
+          "sha256": "848de3f2bf31b3175306701d8ec1b6452bd43b706d49b860df9812a4d533eb30",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "AUTHORITY_ONLY",
+          "doc": "Reverify only the nonrespondent metadata/code preimages in the H48 manifest.",
+          "functions": [],
+          "git_blob": "ffa17d9bc56272300bb728a1119d1a151db1ef4f",
+          "imports": [
+            "argparse",
+            "hashlib",
+            "json",
+            "pathlib",
+            "subprocess",
+            "zipfile"
+          ],
+          "lines": 42,
+          "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/verify_preimages.py",
+          "sha256": "f09bf0434f657d9b1ff9595b9302fa6b69a5852c78c2585ae2014c1351362519",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 20,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "Pyat/WG0",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/reviewer-pyat-hq232-f7-sealed-owner-state-final-rereview-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "326262ee45d0cef440eb60b2c1639e63c068061c",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 3,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "HQ232/HQ234 F7-RR-04G hostile reproduction.",
+          "functions": [
+            "run_victim",
+            "describe"
+          ],
+          "git_blob": "710596908bedd4eb2e2149e9eda5ec27d5418253",
+          "imports": [
+            "__future__",
+            "json",
+            "rawlsing_next.pre553_source_relations",
+            "rawlsing_next.tests",
+            "sys",
+            "weakref"
+          ],
+          "lines": 157,
+          "path": "WORKER_RETURNS/PYAT-HQ232-F7-SEALED-OWNER-STATE-FINAL-REREVIEW-R1/artifacts/hq232_rr04g_attack.py",
+          "sha256": "e24be92ed23a0fa757e0be7575b44fbf16a4abe1a8227ad747207c55e0fe3ee6",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "HQ232 F7-RR-04G controls: isolate what is load-bearing and rule out confounds.",
+          "functions": [
+            "path",
+            "fresh_pair",
+            "loader_of",
+            "ledger_cell_of",
+            "forge"
+          ],
+          "git_blob": "53553f46911bb475c8ee95cb2a6f9e2a83a02c9b",
+          "imports": [
+            "__future__",
+            "json",
+            "rawlsing_next.pre553_source_relations",
+            "rawlsing_next.tests",
+            "sys",
+            "weakref"
+          ],
+          "lines": 147,
+          "path": "WORKER_RETURNS/PYAT-HQ232-F7-SEALED-OWNER-STATE-FINAL-REREVIEW-R1/artifacts/hq232_rr04g_controls.py",
+          "sha256": "c83de779d053c50883e7e9603029ba260ea022f48754f3a4e719ee5430ad5c1b",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Prove the victim's post-attack OWNER DECISION carries the SOURCE custody hash.",
+          "functions": [
+            "decide",
+            "safe"
+          ],
+          "git_blob": "725fa949515fbc864b6f5341f6aec5ea1a39e395",
+          "imports": [
+            "json",
+            "rawlsing_next.pre553_source_relations",
+            "rawlsing_next.tests",
+            "sys",
+            "weakref"
+          ],
+          "lines": 56,
+          "path": "WORKER_RETURNS/PYAT-HQ232-F7-SEALED-OWNER-STATE-FINAL-REREVIEW-R1/artifacts/hq232_rr04g_custody_proof.py",
+          "sha256": "ea969c7172e2cc61fea025cbedde493718cea7e78493e8ce485e76d529bd320e",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 21,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "F7/native reviewer",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/reviewer-pyat-hq236-f7-coordinated-hostile-evidence-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "ae5e140a378406888c94d099b7dd8e98dfeb1459",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 2,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "HQ236 narrowest-path focus: ledger-cell rebind WITHOUT any live-container replacement.",
+          "functions": [],
+          "git_blob": "3a4c3c466e942932c220b000c87aeeec91c45cf7",
+          "imports": [
+            "json",
+            "rawlsing_next.pre553_source_relations",
+            "rawlsing_next.tests",
+            "sys"
+          ],
+          "lines": 61,
+          "path": "WORKER_RETURNS/PYAT-HQ236-F7-COORDINATED-HOSTILE-EVIDENCE-R1/reproduction/hq236_attack3_focus.py",
+          "sha256": "ed255684c656a140765550e875ba6074bbfeb6c0d54bb21d3ca164f814f19c5a",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "HQ236 independent reproduction / falsification of HQ235 F7 coordinated custody substitution.",
+          "functions": [
+            "p07",
+            "f7",
+            "probe",
+            "find_ledger_cell",
+            "forge_state",
+            "rebind"
+          ],
+          "git_blob": "92dae2b081854349eb191b75e2fbf1446f565520",
+          "imports": [
+            "json",
+            "rawlsing_next.pre553_source_relations",
+            "rawlsing_next.tests",
+            "sys"
+          ],
+          "lines": 204,
+          "path": "WORKER_RETURNS/PYAT-HQ236-F7-COORDINATED-HOSTILE-EVIDENCE-R1/reproduction/hq236_independent_attack.py",
+          "sha256": "4b7f7898510c0f21eeaf6a547d60900d04125b576964a7f7025d21cac7e85fdc",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 22,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "F7/native reviewer",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/reviewer-pyat-hq245-f7-native-stage-a-independent-runtime-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "14432c2b21eaf87a8e92ecb75a6765cf3763ddc1",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 6,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [
+            "Ref",
+            "Rel",
+            "EvilList"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "__init__",
+            "__init__",
+            "__len__"
+          ],
+          "git_blob": "4d4f86920536fd2004f9705c8f50353453c05ee4",
+          "imports": [
+            "_p07_native_owner_stage_a",
+            "sys"
+          ],
+          "lines": 14,
+          "path": "WORKER_RETURNS/PYAT-HQ245-F7-NATIVE-STAGE-A-INDEPENDENT-HOSTILE-RUNTIME-REVIEW-R1/reproduction/hq245_asan_probe.py",
+          "sha256": "a194d55b4e2e033ba70eef6612a3f5e60b7a7cdccae428bc62c620d1c10b939f",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [
+            "Ref",
+            "Rel",
+            "EvilList"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "__init__",
+            "__init__",
+            "__len__"
+          ],
+          "git_blob": "c8f588b365340e79712f41d33e1034a3d00d5da6",
+          "imports": [
+            "rawlsing_next._p07_native_owner_stage_a",
+            "sys"
+          ],
+          "lines": 17,
+          "path": "WORKER_RETURNS/PYAT-HQ245-F7-NATIVE-STAGE-A-INDEPENDENT-HOSTILE-RUNTIME-REVIEW-R1/reproduction/hq245_crash_evil_list_len.py",
+          "sha256": "52414e3cbc3e11472a8bb817fe71b2d0c13b09e4b4251256ed19aa2ecca3eb5f",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [
+            "Ref",
+            "Standin"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "HQ245 independent hostile probes for F7 native Stage A.",
+          "functions": [
+            "mk",
+            "counting_semhash",
+            "__init__",
+            "key",
+            "as_dict",
+            "__init__",
+            "semantic_projection"
+          ],
+          "git_blob": "c59af94217d96df34cb9d737b1c2ecf33ff44f07",
+          "imports": [
+            "gc",
+            "json",
+            "rawlsing_next._p07_native_owner_stage_a",
+            "sys",
+            "weakref"
+          ],
+          "lines": 180,
+          "path": "WORKER_RETURNS/PYAT-HQ245-F7-NATIVE-STAGE-A-INDEPENDENT-HOSTILE-RUNTIME-REVIEW-R1/reproduction/hq245_hostile_probes.py",
+          "sha256": "40b4137aeadcfdd0d06d2a51b0107e7e724c0b3bb08f9e9e430714d035f6c26e",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [
+            "Ref",
+            "Rel",
+            "L",
+            "T",
+            "L"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "__init__",
+            "__init__",
+            "__len__",
+            "__len__",
+            "__len__"
+          ],
+          "git_blob": "830bde3b79f6ed6e4dc15cdbe3e5b0fb88035e77",
+          "imports": [
+            "rawlsing_next._p07_native_owner_stage_a",
+            "sys"
+          ],
+          "lines": 37,
+          "path": "WORKER_RETURNS/PYAT-HQ245-F7-NATIVE-STAGE-A-INDEPENDENT-HOSTILE-RUNTIME-REVIEW-R1/reproduction/hq245_len_lie_characterization.py",
+          "sha256": "552c4ef731a0327355f3605d8837e077dcfa14f48ac6160dfcaa54335f2337cd",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [
+            "Ref",
+            "Rel"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "__init__",
+            "__init__"
+          ],
+          "git_blob": "c00fc87ae3b080fa5a4b2d9b4e20f1982401f861",
+          "imports": [
+            "rawlsing_next._p07_native_owner_stage_a",
+            "resource",
+            "sys"
+          ],
+          "lines": 14,
+          "path": "WORKER_RETURNS/PYAT-HQ245-F7-NATIVE-STAGE-A-INDEPENDENT-HOSTILE-RUNTIME-REVIEW-R1/reproduction/hq245_resolve_leak_differential.py",
+          "sha256": "ff0cbd34cfee0de579c45459eda560e2729df96c278f17d1ba403c7ba87cba52",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [
+            "Ref",
+            "Rel"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "rss",
+            "__init__",
+            "__init__"
+          ],
+          "git_blob": "2be2426487fef9b70b994fbc7962ef62307a74aa",
+          "imports": [
+            "random",
+            "rawlsing_next._p07_native_owner_stage_a",
+            "resource",
+            "sys",
+            "traceback"
+          ],
+          "lines": 41,
+          "path": "WORKER_RETURNS/PYAT-HQ245-F7-NATIVE-STAGE-A-INDEPENDENT-HOSTILE-RUNTIME-REVIEW-R1/reproduction/hq245_stress_and_malformed.py",
+          "sha256": "6f31210d0a172bc7475852a4f9fa89c5787cc32ee82ae3dc3e40a267b60c149a",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 23,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "F7/native reviewer",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/reviewer-pyat-hq246-f7-native-stage-b-independent-hostile-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "38d0c011c951f17f7754e45a8bc280101332a1b3",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 5,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [
+            "Ref",
+            "ARef",
+            "FakeRel",
+            "FakeSnap",
+            "Evil",
+            "Evil",
+            "Evil",
+            "Evil",
+            "Evil",
+            "Evil"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "HQ246 independent reproduction of the inherited Stage B constructor bounds defect.",
+          "functions": [
+            "make_rel_list",
+            "make_snap_list",
+            "build",
+            "main",
+            "__init__",
+            "key",
+            "as_dict",
+            "__init__",
+            "key",
+            "as_dict",
+            "semantic_projection",
+            "semantic_projection",
+            "__len__",
+            "__len__",
+            "__len__",
+            "__len__",
+            "__len__",
+            "__len__",
+            "__len__"
+          ],
+          "git_blob": "a99de3068aa2724afec85db96f418f3000265a8e",
+          "imports": [
+            "json",
+            "rawlsing_next._p07_native_owner_stage_b",
+            "sys"
+          ],
+          "lines": 165,
+          "path": "WORKER_RETURNS/PYAT-HQ246-F7-NATIVE-STAGE-B-INDEPENDENT-HOSTILE-REVIEW-R1/reproduction/hq246_constructor_oob.py",
+          "sha256": "43ebf30fcbbe0e76caebd267ec9b5e6e2352f72e5aaa912a6afb34d26c9fb521",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [
+            "Ref",
+            "ARef",
+            "FR",
+            "FS",
+            "BadFS",
+            "Evil",
+            "Rel2"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "HQ246 independent hostile probes for frozen Stage B (reviewer-written).",
+          "functions": [
+            "build",
+            "main",
+            "__init__",
+            "key",
+            "as_dict",
+            "__init__",
+            "key",
+            "as_dict",
+            "semantic_projection",
+            "semantic_projection",
+            "__len__"
+          ],
+          "git_blob": "752ecd364e3b7bc86f00ea88944a6a68fcedcffd",
+          "imports": [
+            "gc",
+            "json",
+            "rawlsing_next",
+            "sys"
+          ],
+          "lines": 174,
+          "path": "WORKER_RETURNS/PYAT-HQ246-F7-NATIVE-STAGE-B-INDEPENDENT-HOSTILE-REVIEW-R1/reproduction/hq246_hostile_probes.py",
+          "sha256": "331711c8c11205d0f3dd394848d14c49ac6d0a321e4b140d329168263f6c97b3",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [
+            "Ref",
+            "ARef",
+            "FR",
+            "FS",
+            "Evil"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "build",
+            "__init__",
+            "key",
+            "as_dict",
+            "key",
+            "as_dict",
+            "semantic_projection",
+            "semantic_projection",
+            "__len__"
+          ],
+          "git_blob": "dab746a4f562a0c58fae5751a98d7d7e86a50342",
+          "imports": [
+            "_p07_native_owner_stage_b",
+            "os",
+            "rawlsing_next",
+            "sys"
+          ],
+          "lines": 48,
+          "path": "WORKER_RETURNS/PYAT-HQ246-F7-NATIVE-STAGE-B-INDEPENDENT-HOSTILE-REVIEW-R1/reproduction/hq246_oob_sweep.py",
+          "sha256": "d18b5a720850c5a6951ba1d4120357bc0f84e993d99b82e7ae17ba22cd6eae4f",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [
+            "ARef2",
+            "R2",
+            "AttackRel",
+            "AttackSnap"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "HQ246 parity probe: can native Stage B decide() select a genuine positive candidate?",
+          "functions": [
+            "build",
+            "main",
+            "_extra",
+            "key",
+            "as_dict",
+            "__init__",
+            "key",
+            "as_dict",
+            "semantic_projection",
+            "semantic_projection"
+          ],
+          "git_blob": "32e53c83bb84900fcdd1caa561e16a0eab86b19f",
+          "imports": [
+            "json",
+            "rawlsing_next",
+            "rawlsing_next.pre553_empirical_authority",
+            "rawlsing_next.pre553_empirical_objects",
+            "rawlsing_next.pre553_source_relations",
+            "rawlsing_next.tests.test_pre553_temporal_comparability",
+            "sys"
+          ],
+          "lines": 161,
+          "path": "WORKER_RETURNS/PYAT-HQ246-F7-NATIVE-STAGE-B-INDEPENDENT-HOSTILE-REVIEW-R1/reproduction/hq246_parity_probe.py",
+          "sha256": "160e553f65af3ac4c304a142179a11098462d9109e24ea6d3486603617788c31",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [
+            "Ref",
+            "ARef",
+            "FR",
+            "FS"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "__init__",
+            "key",
+            "as_dict",
+            "key",
+            "as_dict",
+            "semantic_projection",
+            "semantic_projection"
+          ],
+          "git_blob": "e5af7a85b682cb612c394230b265e4a6e5dc4233",
+          "imports": [
+            "hashlib",
+            "rawlsing_next",
+            "sys"
+          ],
+          "lines": 37,
+          "path": "WORKER_RETURNS/PYAT-HQ246-F7-NATIVE-STAGE-B-INDEPENDENT-HOSTILE-REVIEW-R1/reproduction/hq246_validate_replay_crash.py",
+          "sha256": "0484f74c1fc17f3778e8dccbea1ea2551fd189d35e5596fdf97308e734147f42",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 24,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "F7/native reviewer",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/reviewer-pyat-hq247-f7-f09-repair-independent-runtime-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "fa3c69b832d4649e046d84e4dde89897585aa4e3",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 3,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [
+            "Registry",
+            "Ref",
+            "ARef",
+            "ARel",
+            "BRel",
+            "BSnap",
+            "Lie",
+            "LieT"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "HQ247 independent D1 reproducer for the frozen f09 repair.",
+          "functions": [
+            "build_a",
+            "build_b",
+            "main",
+            "__init__",
+            "__init__",
+            "key",
+            "as_dict",
+            "key",
+            "as_dict",
+            "semantic_projection",
+            "semantic_projection",
+            "semantic_projection",
+            "__init__",
+            "__len__",
+            "__new__",
+            "__len__"
+          ],
+          "git_blob": "440dd082fa5a01d18ac0101a9dd351448ca2a941",
+          "imports": [
+            "json",
+            "rawlsing_next",
+            "sys"
+          ],
+          "lines": 184,
+          "path": "WORKER_RETURNS/PYAT-HQ247-F7-F09-REPAIR-INDEPENDENT-RUNTIME-REVIEW-R1/reproduction/hq247_d1_oob_probe.py",
+          "sha256": "dcdc58b00cec347bb4b4d05e3d65cb0d8f68859e6a81bc0e1a00835dd16df885",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [
+            "Registry",
+            "Ref",
+            "ARef",
+            "ARel",
+            "BRel",
+            "BSnap",
+            "Holder"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "HQ247 independent memory/refcount measurement for the frozen f09 repair.",
+          "functions": [
+            "sem",
+            "build_a",
+            "build_b",
+            "measure",
+            "main",
+            "__init__",
+            "__init__",
+            "key",
+            "as_dict",
+            "key",
+            "as_dict",
+            "semantic_projection",
+            "semantic_projection",
+            "semantic_projection",
+            "mk",
+            "f",
+            "live",
+            "make_cycle"
+          ],
+          "git_blob": "65ef06194a2f4b4a9ef76cb3c19592f9ac937192",
+          "imports": [
+            "gc",
+            "hashlib",
+            "json",
+            "rawlsing_next",
+            "rawlsing_next.pre553_empirical_authority",
+            "rawlsing_next.pre553_empirical_objects",
+            "rawlsing_next.pre553_source_relations",
+            "rawlsing_next.tests.test_pre553_temporal_comparability",
+            "sys"
+          ],
+          "lines": 236,
+          "path": "WORKER_RETURNS/PYAT-HQ247-F7-F09-REPAIR-INDEPENDENT-RUNTIME-REVIEW-R1/reproduction/hq247_leak_probe.py",
+          "sha256": "2ea9d9be00e0f8c4c2f8c324604313b2d969efa995410b32eb862e9bf0642695",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [
+            "R2",
+            "ARef2",
+            "AttackRel",
+            "AttackSnap"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "HQ247 mandatory independent probes for the frozen f09 repair.",
+          "functions": [
+            "genuine_owner",
+            "main",
+            "__init__",
+            "key",
+            "as_dict",
+            "key",
+            "as_dict",
+            "semantic_projection",
+            "semantic_projection"
+          ],
+          "git_blob": "0261f78ebf740a380ad13cac14a4f5aaf0938012",
+          "imports": [
+            "hashlib",
+            "json",
+            "rawlsing_next",
+            "rawlsing_next.pre553_empirical_authority",
+            "rawlsing_next.pre553_empirical_objects",
+            "rawlsing_next.pre553_source_relations",
+            "rawlsing_next.tests.test_pre553_temporal_comparability",
+            "sys"
+          ],
+          "lines": 132,
+          "path": "WORKER_RETURNS/PYAT-HQ247-F7-F09-REPAIR-INDEPENDENT-RUNTIME-REVIEW-R1/reproduction/hq247_positive_and_tcb_probe.py",
+          "sha256": "3b4e175d55f20bda41315a7058ca8a506eb070270984a35d51c55fec0e84071a",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 25,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "F7/native reviewer",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/reviewer-pyat-r3-hq286-s06gr-independent-native-atomic-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "d681f3516c847ecb89230272d3647d322e04d6ca",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "write",
+            "git"
+          ],
+          "git_blob": "c95ba97210fbf73f9a8aed30f6bf89dd849468f1",
+          "imports": [
+            "ast",
+            "collections",
+            "datetime",
+            "hashlib",
+            "json",
+            "pathlib",
+            "platform",
+            "subprocess",
+            "sys",
+            "xml.etree.ElementTree"
+          ],
+          "lines": 100,
+          "path": "WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/build_return.py",
+          "sha256": "30c5aaf051baf78dfbfcf0e09e15dae2fddb2305d88090b451cc2703908ff0c9",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 26,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "incumbent source owner",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/userdirect-pyat-20261014-wg0-original-item-workload-r1",
+      "classification": "DUPLICATE_OR_SUPERSEDED",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "current_premain_successor": "rawlsing_next/pre553_universal_workload.py (R61 universal workload)",
+      "cut": "5e11d186a5ccd74faa13687adafda3942834a475",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 2,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "PYAT WG0 -- Tests for source-free generic workload builder.",
+          "functions": [
+            "test_two_heterogeneous_items",
+            "test_original_response_options_preserved",
+            "test_operation_enumeration",
+            "test_no_drop_oracle",
+            "test_frontier_freeze",
+            "test_deterministic_sharding",
+            "test_resume",
+            "test_duplicate_item_rejected",
+            "test_missing_route_distinction",
+            "test_zero_null_minority_preserved",
+            "test_source_custody_hold_declared"
+          ],
+          "git_blob": "4a92efc84e2ef4d7387e68efdbd5844e07b89807",
+          "imports": [
+            "pathlib",
+            "sys",
+            "wg0_workload_builder"
+          ],
+          "lines": 158,
+          "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-WG0-ORIGINAL-ITEM-WORKLOAD-R1/test_wg0_workload_builder.py",
+          "sha256": "a660a8f0afa0cb1f0bfc9cd2188285bebded67fec7ce6d998a8753642ddc5517",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [
+            "Disposition",
+            "ResponseKind",
+            "NativeItem",
+            "OperationCandidate",
+            "WorkloadManifest",
+            "WorkloadBuilder"
+          ],
+          "disposition": "DUPLICATE_OR_SUPERSEDED",
+          "doc": "PYAT WG0 -- Source-free generic item-to-workload producer.",
+          "functions": [
+            "_hash",
+            "make_invented_items",
+            "freeze",
+            "__init__",
+            "add_item",
+            "add_operation",
+            "enumerate_operations",
+            "disposition_all",
+            "no_drop_oracle",
+            "shard",
+            "resume"
+          ],
+          "git_blob": "209bbf083cd50d16c06134f66288ef680cd2f377",
+          "imports": [
+            "__future__",
+            "dataclasses",
+            "enum",
+            "hashlib",
+            "json",
+            "typing"
+          ],
+          "lines": 205,
+          "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-WG0-ORIGINAL-ITEM-WORKLOAD-R1/wg0_workload_builder.py",
+          "sha256": "a146c6229cf8fcb518f79dea17df9c65598b06960a0d3b43bbc870a6b71c535e",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 27,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "Pyat/WG0",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/userdirect-pyat-20261017-gf1l-key-storage-repair-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "d97a5df8c03d02ca3c7433937550cdb6774537b5",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "GF1_PAIR_CONSUMER",
+      "file_count": 5,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Versioned successor oracle: derive expectations from explicit risk semantics.",
+          "functions": [
+            "expected_class",
+            "main"
+          ],
+          "git_blob": "1f085425a385d970cd32ed91458ae31586ca7065",
+          "imports": [
+            "copy",
+            "hashlib",
+            "json",
+            "pathlib",
+            "subprocess"
+          ],
+          "lines": 68,
+          "path": "WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/repair/current_qualification/build_current_oracle.py",
+          "sha256": "4029d3d8cdb3473dc911a060691709cbaa9a557f5fb99b35ce89837a45a430b1",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Current GF1I successor: the original 17 semantic checks are retained.",
+          "functions": [
+            "bundle",
+            "relations",
+            "cells",
+            "link_of",
+            "test_native_closure_reattested_74_of_74",
+            "test_accepted_field_forge_module_unmodified",
+            "test_eight_operations_two_ordered_held_preserved",
+            "test_baseline_pair_exact_cells_risk_and_per_condition_denominator",
+            "test_discovery_consumer_eligibility_absent_is_not_a_zero_cell",
+            "test_zero_cells_are_supported_risk_zeros_never_zero_support",
+            "test_role_binding_follows_native_component_order_not_a_hardcoded_label",
+            "test_generic_relation_is_distinct_from_accepted_specialized_material",
+            "test_r2_y1_reaches_frozen_cell_set_and_isolates_source_b",
+            "test_r1_y0_reaches_frozen_cell_set_and_isolates_source_b",
+            "test_relation_permission_ceiling_never_widens",
+            "_first_pair_link",
+            "test_reverse_swap_without_separate_grant_refused",
+            "test_forged_unknown_reverse_grant_refused",
+            "test_permission_widening_refused",
+            "test_non_native_role_ref_refused"
+          ],
+          "git_blob": "1831088e99ffae08d33cd1ea30fa2263b49e172d",
+          "imports": [
+            "__future__",
+            "generic_native_pair_relation",
+            "gf1_pair_support_consumer",
+            "gf1i_driver",
+            "hashlib",
+            "json",
+            "os",
+            "pathlib",
+            "pytest",
+            "rawlsing_next._pre553_query_common",
+            "rawlsing_next.field_forge_conditional_support",
+            "subprocess",
+            "sys",
+            "xml.etree.ElementTree"
+          ],
+          "lines": 304,
+          "path": "WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/repair/current_qualification/gf1i/test_current_gf1i.py",
+          "sha256": "2ba671f28b1b523a209d1f856c4f4175596defa949dc0bf0683a1f9ada33d1f6",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Current qualification entry point; legacy failures remain archival diagnostics.",
+          "functions": [
+            "execute",
+            "counts"
+          ],
+          "git_blob": "caa3146299915c4fd512283632a9d9446c413e7d",
+          "imports": [
+            "hashlib",
+            "json",
+            "os",
+            "pathlib",
+            "subprocess",
+            "sys",
+            "xml.etree.ElementTree"
+          ],
+          "lines": 93,
+          "path": "WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/repair/qualify.py",
+          "sha256": "7c29a0cf70d971981d8e0b23374ce181bbe21e84bacc1c49c480510910b5a90b",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Retained repair replay and historical diagnostics; use qualify.py for the current gate.",
+          "functions": [
+            "gitbytes",
+            "ids",
+            "archive",
+            "run",
+            "summary"
+          ],
+          "git_blob": "ef75d066b92d45824ab0cc035973ed718d444b31",
+          "imports": [
+            "hashlib",
+            "io",
+            "json",
+            "os",
+            "pathlib",
+            "shutil",
+            "staging",
+            "subprocess",
+            "sys",
+            "tarfile",
+            "xml.etree.ElementTree"
+          ],
+          "lines": 124,
+          "path": "WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/repair/reproduce.py",
+          "sha256": "e1c4418e81b3790ec0caaa533d3b52d9b19a5afc8e62fbbb352fe3ce72d42b1d",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Restore the parent metadata omitted when staging only the old GF1 court.",
+          "functions": [
+            "stage_gf1i_parent_metadata"
+          ],
+          "git_blob": "978605d1879bcd39198a54631c230d3892e0735d",
+          "imports": [
+            "hashlib",
+            "pathlib",
+            "subprocess"
+          ],
+          "lines": 34,
+          "path": "WORKER_RETURNS/PYAT-R33-GF1L-NATIVE-IDENTITY-I2-R1/repair/staging.py",
+          "sha256": "095fc5c596604e24c4dba589f7771ba50d1341fdf421b874b4fbc851a8431d77",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 28,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "incumbent source owner",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/userdirect-pyat-20261017-r32-gf1h-pair-consumer-integrity-repair-r1",
+      "classification": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "cc41ad4553d189a3c4c8152179b3d1977327c07f",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "WORKER_RETURNS/PYAT-R32-GF1H.../test_gf1h_adversarial.py; no PRE-MAIN importer",
+      "family": "GF1_PAIR_CONSUMER",
+      "file_count": 5,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Fresh-process import/identity and genuine relation replay for GF1H.",
+          "functions": [],
+          "git_blob": "ce7ead6974d49d973a81b2a705ec716f4080d76b",
+          "imports": [
+            "gf1_pair_support_consumer",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "os",
+            "pathlib",
+            "sys"
+          ],
+          "lines": 30,
+          "path": "WORKER_RETURNS/PYAT-R32-GF1H-PAIR-CONSUMER-INTEGRITY-REPAIR-R1/cold_child.py",
+          "sha256": "24b4e85e111dec4442fad887bf74374025f6f005f8a0e33ce8a2a21ee8176bf6",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+          "doc": "R32 GF1H \u2014 integrity-repaired test-only GF1 generic PAIR consumer.",
+          "functions": [
+            "_refusal",
+            "_verify_identity",
+            "_exact_count",
+            "_decode_profile",
+            "compute_pair_support_signature"
+          ],
+          "git_blob": "66658149fd7362e17c064a3fc1f9029d638f9ed9",
+          "imports": [
+            "__future__",
+            "generic_native_pair_relation",
+            "typing"
+          ],
+          "lines": 252,
+          "path": "WORKER_RETURNS/PYAT-R32-GF1H-PAIR-CONSUMER-INTEGRITY-REPAIR-R1/gf1_pair_support_consumer.py",
+          "sha256": "a4915b845853e70f9430190aebde298346ea5ad4472de8380e26182113f97c8a",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Package actual staged JUnit/logs and verify exact source/cold custody.",
+          "functions": [
+            "git",
+            "sha",
+            "check_git"
+          ],
+          "git_blob": "33462bb9f28365eef0e7c1c7c85e1f759fdbf8e1",
+          "imports": [
+            "hashlib",
+            "json",
+            "os",
+            "pathlib",
+            "shutil",
+            "subprocess",
+            "xml.etree.ElementTree"
+          ],
+          "lines": 96,
+          "path": "WORKER_RETURNS/PYAT-R32-GF1H-PAIR-CONSUMER-INTEGRITY-REPAIR-R1/package_evidence.py",
+          "sha256": "61360eff3418694279476e73a52f2e87a8c732a946f4aa141346c4d1f7add4ba",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Rebuild and run the exact GF1H source-free court in a fresh isolated stage.",
+          "functions": [
+            "archive",
+            "run"
+          ],
+          "git_blob": "a18d132556cbaab70f6b417fbf344c23e6c4ad11",
+          "imports": [
+            "io",
+            "os",
+            "pathlib",
+            "shutil",
+            "subprocess",
+            "sys",
+            "tarfile",
+            "tempfile"
+          ],
+          "lines": 70,
+          "path": "WORKER_RETURNS/PYAT-R32-GF1H-PAIR-CONSUMER-INTEGRITY-REPAIR-R1/reproduce.py",
+          "sha256": "7effba1f9a535a0d281654985527e1caeb15e8338c5b880b4a5e1c59bba801b7",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "GF1H independent hostile mutations of a genuine source-free 2\u00d72 relation.",
+          "functions": [
+            "mutation",
+            "cell",
+            "test_exact_nonnegative_counts_or_typed_refusal",
+            "test_conservation_and_cell_shape",
+            "test_blocking_typed_state_never_valid_empty",
+            "test_no_eligible_vs_eligible_zero_supported_are_distinct",
+            "test_blocked_relation_cannot_hide_invalid_risk_count",
+            "test_reverse_role_requires_separate_grant_and_is_noncopy",
+            "test_self_rehashed_forged_source_stays_test_only",
+            "change",
+            "change",
+            "change",
+            "change"
+          ],
+          "git_blob": "beee230f1becc054e5e1a23efb7eae6f6665c7c5",
+          "imports": [
+            "copy",
+            "importlib.util",
+            "json",
+            "os",
+            "pathlib",
+            "pytest",
+            "subprocess",
+            "sys"
+          ],
+          "lines": 159,
+          "path": "WORKER_RETURNS/PYAT-R32-GF1H-PAIR-CONSUMER-INTEGRITY-REPAIR-R1/test_gf1h_adversarial.py",
+          "sha256": "0137039c631fc5925bd050793a868e2c6f8be4747d5eb59e714c783118f67599",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 29,
+      "material_function": {
+        "alternative": "GF1K and GF1M successors refine the same family; no current PRE-MAIN generic pair consumer",
+        "chain": "GenericNativePairRelation -> exact 2x2 identity/conservation checks -> pair-support separation signature/result hash -> GF1H tests",
+        "first_consumer": "WORKER_RETURNS/PYAT-R32-GF1H.../test_gf1h_adversarial.py; no PRE-MAIN importer",
+        "function": "_refusal / _verify_identity / _decode_profile / compute_pair_support_signature",
+        "owner": "Field Forge/GF1; test-only candidate"
+      },
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "Field Forge/GF1",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/userdirect-pyat-20261017-r33-gf1k-exact-native-category-identity-repair-r1",
+      "classification": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "1399a475e54ea33355cf641979829424625c511d",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "WORKER_RETURNS/PYAT-R33-GF1K.../test_gf1k_native_identity.py; no PRE-MAIN importer",
+      "family": "GF1_PAIR_CONSUMER",
+      "file_count": 6,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "GF1K fresh-process import/identity and genuine relation replay.",
+          "functions": [],
+          "git_blob": "431d6f516aef05aebdd0386ddc5144d6596ff597",
+          "imports": [
+            "gf1_pair_support_consumer",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "os",
+            "pathlib"
+          ],
+          "lines": 30,
+          "path": "WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/cold_child.py",
+          "sha256": "12c335f33ae099ea40a06f41dcc3424a8fa8121d4e29416fb6b42835cb842477",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+          "doc": "R33 GF1K \u2014 exact native category identity repair (on the GF1H integrity core).",
+          "functions": [
+            "_refusal",
+            "_verify_identity",
+            "_exact_count",
+            "_same_native",
+            "_distinct_native_pair",
+            "_decode_profile",
+            "compute_pair_support_signature"
+          ],
+          "git_blob": "bbbda32facce0a3324498b88f4ba4bf0f79f18d2",
+          "imports": [
+            "__future__",
+            "generic_native_pair_relation",
+            "typing"
+          ],
+          "lines": 273,
+          "path": "WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/gf1_pair_support_consumer.py",
+          "sha256": "06bf4ea9e71b084b615deba50b6a0233e774b944cb7b463974006ccb8a8a2b40",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "GF1K reproduce.py \u2014 stage exact pinned Git sources and run every frozen court.",
+          "functions": [
+            "archive",
+            "run"
+          ],
+          "git_blob": "c580ce5ee0105a8654e5fb466948fb4cb5cfe462",
+          "imports": [
+            "io",
+            "os",
+            "pathlib",
+            "shutil",
+            "subprocess",
+            "sys",
+            "tarfile",
+            "tempfile"
+          ],
+          "lines": 110,
+          "path": "WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/reproduce.py",
+          "sha256": "6d894c477781b90bf970b2eea4fd64a654e8d6fbe01f2d419f396738b0cacdee",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "GF1H independent hostile mutations of a genuine source-free 2\u00d72 relation.",
+          "functions": [
+            "mutation",
+            "cell",
+            "test_exact_nonnegative_counts_or_typed_refusal",
+            "test_conservation_and_cell_shape",
+            "test_blocking_typed_state_never_valid_empty",
+            "test_no_eligible_vs_eligible_zero_supported_are_distinct",
+            "test_blocked_relation_cannot_hide_invalid_risk_count",
+            "test_reverse_role_requires_separate_grant_and_is_noncopy",
+            "test_self_rehashed_forged_source_stays_test_only",
+            "change",
+            "change",
+            "change",
+            "change"
+          ],
+          "git_blob": "beee230f1becc054e5e1a23efb7eae6f6665c7c5",
+          "imports": [
+            "copy",
+            "importlib.util",
+            "json",
+            "os",
+            "pathlib",
+            "pytest",
+            "subprocess",
+            "sys"
+          ],
+          "lines": 159,
+          "path": "WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/test_gf1h_adversarial.py",
+          "sha256": "0137039c631fc5925bd050793a868e2c6f8be4747d5eb59e714c783118f67599",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Two independently executed strict RED hostiles on exact GF1H code.",
+          "functions": [
+            "corrupt_role",
+            "test_no_native_category_coercion_into_false_exact"
+          ],
+          "git_blob": "3b69266033b723ea468a1f21a408abe1dc5865d9",
+          "imports": [
+            "generic_native_pair_relation",
+            "gf1_pair_support_consumer",
+            "pytest"
+          ],
+          "lines": 28,
+          "path": "WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/test_gf1j_exact_native_identity_red_isolated.py",
+          "sha256": "48fc89396dc376b6356bc3590fa6cf9d0b057f40f48e15bb838785c34c0a4372",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "GF1K exact native-category identity hostiles against the REAL 74-module producer.",
+          "functions": [
+            "rehash",
+            "clone",
+            "assert_integrity",
+            "test_gf1j_red1_conditioner_integer_spoofed",
+            "test_gf1j_red2_target_integer_spoofed",
+            "test_bool_float_none_spoofed_conditioner",
+            "test_bool_is_not_integer_in_integer_domain",
+            "test_swapped_condition_row_state_rejected",
+            "test_target_domain_ordering_rejected",
+            "test_valid_native_integer_domain_computed_without_recoding",
+            "test_spoofed_relations_are_legitimate_self_rehashed_instances",
+            "test_genuine_baseline_still_computes_exact"
+          ],
+          "git_blob": "869c93034f9fdc5244f97553bd654c6247c90ee5",
+          "imports": [
+            "__future__",
+            "copy",
+            "importlib.util",
+            "os",
+            "pathlib",
+            "pytest"
+          ],
+          "lines": 166,
+          "path": "WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/test_gf1k_native_identity.py",
+          "sha256": "0fc44a3f3186a833acd735977a7840b94eac7f1131e961a254e7313d4e5e4fc3",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 30,
+      "material_function": {
+        "alternative": "GF1M is the later nonfinite/key-identity repair; no current PRE-MAIN consumer",
+        "chain": "GenericNativePairRelation -> exact native category identity -> pair-support signature -> GF1K tests",
+        "first_consumer": "WORKER_RETURNS/PYAT-R33-GF1K.../test_gf1k_native_identity.py; no PRE-MAIN importer",
+        "function": "_refusal / _verify_identity / _same_native / _decode_profile / compute_pair_support_signature",
+        "owner": "Field Forge/GF1; test-only candidate"
+      },
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "Field Forge/GF1",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/userdirect-pyat-20261017-r33-wg0p11-independent-selfcontained-native-court-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "b9f2c4bf8f5f1d94c751c4f20d82b4666c03e6ee",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 2,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Independent completion audit of the actual replay files, not author tallies.",
+          "functions": [
+            "read",
+            "save",
+            "copy",
+            "junit",
+            "i03"
+          ],
+          "git_blob": "c73f4387e706ec46319ac4ce76146c7f83fc6799",
+          "imports": [
+            "collections",
+            "hashlib",
+            "json",
+            "os",
+            "pathlib",
+            "shutil",
+            "subprocess",
+            "sys",
+            "xml.etree.ElementTree"
+          ],
+          "lines": 176,
+          "path": "WORKER_RETURNS/PYAT-R33-WG0P11-INDEPENDENT-P10-COURT-R1/audit_phase_b.py",
+          "sha256": "e7cd2a5bf177614eac0d11a77f88321f110160a156c9bb253b88dfb16bdfe79d",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Actual source-custody attacks, supplementary to the immutable Phase A tests.",
+          "functions": [
+            "run",
+            "verify",
+            "main"
+          ],
+          "git_blob": "425827997201761773dca5f282a6885359b2319a",
+          "imports": [
+            "json",
+            "os",
+            "pathlib",
+            "subprocess",
+            "sys"
+          ],
+          "lines": 73,
+          "path": "WORKER_RETURNS/PYAT-R33-WG0P11-INDEPENDENT-P10-COURT-R1/phase_b_hostiles.py",
+          "sha256": "79c33fac21b4d4d363ba8d73a16eb970864e95c9112a151a81041efb3aaaa42b",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 31,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "Pyat/WG0",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/userdirect-pyat-20261017-r34-gf1m-independent-current-native-qualification-r1",
+      "classification": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "a8fcb6953f2795b7bc698f9f019f4782f80026c9",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "WORKER_RETURNS/PYAT-R34-GF1M.../test_nonfinite_refusal.py; no PRE-MAIN importer",
+      "family": "GF1_PAIR_CONSUMER",
+      "file_count": 6,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "ids",
+            "rec"
+          ],
+          "git_blob": "f150ad0f793651198f76fe0ad48eae01074d430e",
+          "imports": [
+            "hashlib",
+            "json",
+            "pathlib",
+            "subprocess",
+            "xml.etree.ElementTree"
+          ],
+          "lines": 35,
+          "path": "WORKER_RETURNS/PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1/author_followup_nonfinite/audit_repair.py",
+          "sha256": "0475f09f0264459c79feb98477b31a67cd926d348dcc47b3d9c6133e00f7d135",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Author follow-up cold proof; no changes to the frozen independent court.",
+          "functions": [],
+          "git_blob": "bfb44471eaf00d8872e7292a085052c9fafd53f0",
+          "imports": [
+            "hashlib",
+            "importlib.util",
+            "json",
+            "os",
+            "pathlib"
+          ],
+          "lines": 18,
+          "path": "WORKER_RETURNS/PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1/author_followup_nonfinite/cold_refusals.py",
+          "sha256": "1722eb802ca9f395c1586c5d5a67d48da5dc46c8a6625682e9e1dbaa5d0652bd",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+          "doc": "GF1L author repair \u2014 preserve native key identity at the result storage boundary.",
+          "functions": [
+            "_refusal",
+            "_verify_identity",
+            "_exact_count",
+            "_same_native",
+            "_distinct_native_pair",
+            "_require_lossless_mapping_keys",
+            "_decode_profile",
+            "compute_pair_support_signature"
+          ],
+          "git_blob": "c5dfb119ee730e968c54be9f085fd3a6d78fa787",
+          "imports": [
+            "__future__",
+            "generic_native_pair_relation",
+            "math",
+            "typing"
+          ],
+          "lines": 301,
+          "path": "WORKER_RETURNS/PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1/author_followup_nonfinite/gf1_pair_support_consumer.py",
+          "sha256": "7629749e61e1204c7f2b2098548a5c136c37ab22098cd8a3490082ee3e7021d2",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "User-authorized author follow-up. Does not change original review evidence.",
+          "functions": [
+            "archive",
+            "run"
+          ],
+          "git_blob": "4ffe94fd7edeacbedb9d8d37d39abcdb1a523f8d",
+          "imports": [
+            "ast",
+            "hashlib",
+            "io",
+            "json",
+            "os",
+            "pathlib",
+            "shutil",
+            "subprocess",
+            "sys",
+            "tarfile",
+            "xml.etree.ElementTree"
+          ],
+          "lines": 58,
+          "path": "WORKER_RETURNS/PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1/author_followup_nonfinite/run_repair.py",
+          "sha256": "4d0f043ef23267806059c05e15977bd943365edb5d21a9f28f80cc4608d0c52e",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Author follow-up tests. Original GF1M26 stays byte-identical and separate.",
+          "functions": [
+            "test_nonfinite_category_typed_refusal_has_no_scientific_fields",
+            "test_finite_native_controls_preserve_identity_support_and_serialization"
+          ],
+          "git_blob": "8bd484844735c118a00cd5a48b53b8ade2f969e9",
+          "imports": [
+            "importlib.util",
+            "json",
+            "os",
+            "pytest",
+            "sys"
+          ],
+          "lines": 35,
+          "path": "WORKER_RETURNS/PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1/author_followup_nonfinite/test_nonfinite_refusal.py",
+          "sha256": "5d88f78924a241df5a1801a162a55ceb2904d97a9e7c5b64c8602be1f51f600d",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [],
+          "git_blob": "f35ed7e4a99b85ce8d7c01ee2e24ff1e633d4465",
+          "imports": [
+            "hashlib",
+            "json",
+            "os",
+            "pathlib",
+            "subprocess",
+            "sys"
+          ],
+          "lines": 20,
+          "path": "WORKER_RETURNS/PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1/author_followup_nonfinite/verify_cold.py",
+          "sha256": "8ef58df83f144ce1f5613877a9dbcfaf45b16a0c6d24053002c4352f5c94f573",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 32,
+      "material_function": {
+        "alternative": "Current PRE-MAIN field_forge_conditional_support is specialized Q86B/Q86A; no generic pair consumer",
+        "chain": "GenericNativePairRelation -> exact category/key identity -> pair-support signature -> GF1M tests",
+        "first_consumer": "WORKER_RETURNS/PYAT-R34-GF1M.../test_nonfinite_refusal.py; no PRE-MAIN importer",
+        "function": "_refusal / _verify_identity / _same_native / _require_lossless_mapping_keys / compute_pair_support_signature",
+        "owner": "Field Forge/GF1; test-only candidate"
+      },
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "Field Forge/GF1",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/vozhd-fiabc-source-split-alternate-runner-r1",
+      "classification": "AUTHORITY_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "ed8dabf015d1fd4b4ade9b55816a420b0bc1811e",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [
+            "SplitR2GateError"
+          ],
+          "disposition": "AUTHORITY_ONLY",
+          "doc": "Source-free gates for FIABC source-split R2 work-root equivalence.",
+          "functions": [
+            "_canon",
+            "_semantic_hash",
+            "_sha256_bytes",
+            "_sha256_file",
+            "_blob_sha1",
+            "_atomic_json",
+            "_git",
+            "_git_text",
+            "_git_show_bytes",
+            "_sysctl",
+            "exact_repo_identity",
+            "verify_successor_binding",
+            "_control_binding_helper",
+            "_control_snapshot",
+            "worktree_lock_root",
+            "combined_import_abi_gate",
+            "_hardware",
+            "_assert_fresh_work_root",
+            "machine_readiness",
+            "_verify_self_identity"
+          ],
+          "git_blob": "3ffebe9a1de805be6da7e2ec4cf5aaa8ac321a68",
+          "imports": [
+            "__future__",
+            "argparse",
+            "hashlib",
+            "importlib",
+            "importlib.metadata",
+            "importlib.util",
+            "json",
+            "os",
+            "pathlib",
+            "platform",
+            "subprocess",
+            "sys",
+            "typing"
+          ],
+          "lines": 1179,
+          "path": "HQ_HANDOFF/launchers/FIABC_SPLIT_R2_WORKROOT_GATES.py",
+          "sha256": "edfd354e0b3fd3c94f985aeb59a7df55f7fc97a6020e3f9ba199de8822e069f5",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 33,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "incumbent source owner",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/vozhd-pyat-20261016-r18-est1-original-estate-critical-path-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "d800848bbff502658c9f1ed50fce73f1fc7dcad7",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 2,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "EST1 independent expected-operation/actual-receipt outer-join, SOURCEFREE only.",
+          "functions": [
+            "encoded",
+            "sha",
+            "signature",
+            "_issue",
+            "judge",
+            "main"
+          ],
+          "git_blob": "75880af76bec3733291273577546b82d5ee4f040",
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "hashlib",
+            "json",
+            "pathlib"
+          ],
+          "lines": 104,
+          "path": "WORKER_RETURNS/PYAT-R18-EST1-ORIGINAL-ESTATE-CRITICAL-PATH-R1/est1_omission_oracle.py",
+          "sha256": "a0430713a20802b585d202fda0da71465dc60a24a7d47d9fc823cf0f3617fdcc",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "",
+          "functions": [
+            "fixture",
+            "kinds",
+            "test_all_four_locally_reconcile",
+            "test_missing_eligible",
+            "test_swapped_same_cardinality",
+            "test_held_miscount",
+            "test_held_silent_drop",
+            "test_duplicate_reissue",
+            "test_forged_source_grant",
+            "test_source_swap_without_count_change",
+            "test_reason_swap_without_count_change",
+            "test_changed_expectation_root_refused",
+            "test_unverified_native_owner_receipt_not_counted_as_real",
+            "test_false_positive_for_inapplicable",
+            "test_wrong_edition",
+            "test_no_production_claim"
+          ],
+          "git_blob": "07f51b12ba6097bca65235c74411ac70ee0846fa",
+          "imports": [
+            "copy",
+            "est1_omission_oracle"
+          ],
+          "lines": 66,
+          "path": "WORKER_RETURNS/PYAT-R18-EST1-ORIGINAL-ESTATE-CRITICAL-PATH-R1/test_est1_omission_oracle.py",
+          "sha256": "017c558ecbfc8234f47404d828c618aec693f5848a047f0c096534bb3fff6194",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 34,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "incumbent source owner",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/vozhd-pyat-r18-gf1-role-reversal-repair-r1",
+      "classification": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "48d1c144ff4a8c503908d6b95b9e35374d4584e5",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "WORKER_RETURNS/PYAT-R33-GF1K.../gf1_pair_support_consumer.py; no PRE-MAIN importer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [
+            "GenericNativePairError",
+            "GenericPermissionWideningError",
+            "GenericNativePairRelation"
+          ],
+          "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+          "doc": "R17 GF1 \u2014 NEW NAMESPACED GENERIC NATIVE PAIR RELATION owner (TEST_ONLY candidate).",
+          "functions": [
+            "canonicalize",
+            "canonical_json",
+            "semantic_hash",
+            "_mapping",
+            "_sequence",
+            "_ref",
+            "_ref_seq",
+            "_authority_seq",
+            "_ref_dict",
+            "_auth_dict",
+            "_semantic_fields",
+            "_derive_native_variable_name",
+            "produce_generic_native_pair_relation",
+            "_projection",
+            "replay_generic_native_pair_relation",
+            "__post_init__",
+            "family",
+            "semantic_owner",
+            "ref",
+            "semantic_projection"
+          ],
+          "git_blob": "29ec2f96f148b5f371783f4f3abd34b78bc7a708",
+          "imports": [
+            "__future__",
+            "dataclasses",
+            "hashlib",
+            "itertools",
+            "json",
+            "rawlsing_next._pre553_query_common",
+            "typing"
+          ],
+          "lines": 597,
+          "path": "WORKER_RETURNS/PYAT-HQ-R18-GF1-REVERSE-SCIENCE-REPAIR-R1/generic_native_pair_relation.py",
+          "sha256": "e3bb9b092228239b38ba36f79c0c2ac910cc270c5ea580d3f8cdb4758cccf6cd",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 35,
+      "material_function": {
+        "alternative": "Specialized field_forge_conditional_support exists at PRE-MAIN; generic semantics remain unissued",
+        "chain": "native EmpiricalFact + EmpiricalQuerySpec -> generic role/domain/risk/permission validation -> GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0 -> GF1 pair-support consumer/tests",
+        "first_consumer": "WORKER_RETURNS/PYAT-R33-GF1K.../gf1_pair_support_consumer.py; no PRE-MAIN importer",
+        "function": "produce_generic_native_pair_relation / replay_generic_native_pair_relation / GenericNativePairRelation",
+        "owner": "Field Forge/GF1; test-only candidate"
+      },
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "Field Forge/GF1",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "agent/vozhd-pyat-r48-m48-independent-scientific-requirements-r1",
+      "classification": "TEST_EVIDENCE_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "91f70358a7682e983276e79777bc591841162392",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 3,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [
+            "Item",
+            "Operation"
+          ],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Executable sourcefree constitutional model; no native lowering or issuance.",
+          "functions": [
+            "eligibility",
+            "generate",
+            "synthetic_distribution",
+            "pending_estate",
+            "execution_admission"
+          ],
+          "git_blob": "0ea3d80855c4800cfae15a74fae2629669801dcb",
+          "imports": [
+            "dataclasses",
+            "fractions",
+            "itertools"
+          ],
+          "lines": 117,
+          "path": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/grammar_model.py",
+          "sha256": "8ff3c4220b54c566d0702171842c7bcf338365f9a0930e3e9c1b0cf5b8468fc8",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Frozen M48 oracles; model claims only, not I03/E04 integration claims.",
+          "functions": [
+            "catalog",
+            "xor_rows",
+            "test_invalid_meaning_denied",
+            "test_xor_reached_without_unary_screen",
+            "test_unlisted_minority_survives",
+            "test_frontier_values_independent_and_recursive_closure",
+            "test_routing_and_split_forms",
+            "test_topology_obligation_not_silent_scalar",
+            "test_sample_population_semantic_and_permission_are_separate",
+            "test_states_denominators_and_validation",
+            "test_source_scope_and_reverse_roles",
+            "test_equal_marginals_do_not_identify_joint",
+            "test_all35_unknown_counts_conserved",
+            "test_finite_grammar_invalid_bounds"
+          ],
+          "git_blob": "05720a9996456b5d5ecf5f0842bd909eb5e66441",
+          "imports": [
+            "dataclasses",
+            "fractions",
+            "grammar_model",
+            "json",
+            "pathlib",
+            "pytest"
+          ],
+          "lines": 147,
+          "path": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/test_constitution.py",
+          "sha256": "dc8e55e208b3a94d6ac07d00df6548977a103710e1bb689408739a60a910952d",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "TEST_EVIDENCE_ONLY",
+          "doc": "Verify exact documentary anchors and no production edits; no network/source reads.",
+          "functions": [
+            "git",
+            "check_anchor",
+            "main"
+          ],
+          "git_blob": "4a9397fb7874e489e285e205c90f612d88b942b5",
+          "imports": [
+            "csv",
+            "hashlib",
+            "json",
+            "pathlib",
+            "subprocess"
+          ],
+          "lines": 55,
+          "path": "WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/proof/verify_packet.py",
+          "sha256": "246d9e61b747b142f18ec10b5fd870cbbeef77a5b7868a49743a5cf84bd34085",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 36,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "Pyat/WG0",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "codex/m6-quc-blocker-explainer-20260813",
+      "classification": "DUPLICATE_OR_SUPERSEDED",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH__SUCCESSOR_SAME_BASENAME",
+      "current_premain_same_basename_successor": "section85/code/run_section85_diagnostic_smoke_matrix.py",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "868b3ab0fedf19f100dddc535a221972a564b37c",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "DUPLICATE_OR_SUPERSEDED",
+          "doc": "Run the bounded Section 85 nine-family diagnostic smoke matrix.",
+          "functions": [
+            "sha256_file",
+            "read_env_database_url",
+            "redacted",
+            "source_slug",
+            "load_json",
+            "load_binding_authority",
+            "write_json",
+            "write_csv",
+            "load_base",
+            "section85_inventory",
+            "_registry_response_role_rules",
+            "summarize_rows",
+            "current_v551j_gate",
+            "field_inventory",
+            "infer_grain",
+            "infer_destination",
+            "copy_nonrespondent",
+            "main"
+          ],
+          "git_blob": "c7dfe135b0927f69bbc9659e8292afe50ac7dc67",
+          "imports": [
+            "__future__",
+            "argparse",
+            "csv",
+            "datetime",
+            "hashlib",
+            "json",
+            "os",
+            "pandas",
+            "pathlib",
+            "pyarrow.parquet",
+            "re",
+            "run_20var_allwaves_v550_552j_smoke",
+            "shutil",
+            "subprocess",
+            "sys",
+            "typing",
+            "yaml"
+          ],
+          "lines": 489,
+          "path": "85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY/code/run_section85_diagnostic_smoke_matrix.py",
+          "sha256": "5ccb9e7cc354ac8618d567d2d6485f4e76c08249d6cc5b4b7fcd7332eb2b3472",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 37,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "incumbent source owner",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "vozhd/phase-d-empirical-semantic-independence-closeout-return-20260813",
+      "classification": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "350986521ebbc13b552d4b6542423a65c267041a",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "phase_d/successor_archetype_conformance/repro_capsule/.../validate_capsule.py; no PRE-MAIN importer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 2,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [
+            "RowEvidence"
+          ],
+          "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+          "doc": "Compile fail-closed Phase-D positioned-relational-evidence sidecars.",
+          "functions": [
+            "_clean",
+            "_json_list",
+            "_impls_from_row",
+            "_registry_maps",
+            "_first_numeric",
+            "_empirical_id",
+            "_lane",
+            "_read_frame",
+            "scan_scope",
+            "_make_id",
+            "_best_match",
+            "_base_row",
+            "compile_scope",
+            "main"
+          ],
+          "git_blob": "e8ab4192c9d6717091e880a296f1e51913b6c3b2",
+          "imports": [
+            "__future__",
+            "argparse",
+            "dataclasses",
+            "hashlib",
+            "json",
+            "pandas",
+            "pathlib",
+            "re",
+            "typing",
+            "yaml"
+          ],
+          "lines": 326,
+          "path": "phase_d/code/compile_positioned_relational_evidence.py",
+          "sha256": "57bcd0564317ddc0875ee3968387062a573056f2ee32925f059bf5b5431b6161",
+          "source_inspected": true,
+          "status": "READ"
+        },
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+          "doc": "",
+          "functions": [],
+          "git_blob": "888ee0b5c49ef33a6bfda1bccfe208b2b4289072",
+          "imports": [
+            "__future__",
+            "hashlib",
+            "json",
+            "pandas",
+            "pathlib",
+            "re"
+          ],
+          "lines": 34,
+          "path": "phase_d/successor_archetype_conformance/repro_capsule/rank1_v550_repro_r1/validate_capsule.py",
+          "sha256": "8c90f7fbd6a9c2773000f32b9f3aa7fcac04e63cd3c4e58041547576dfcd1539",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 38,
+      "material_function": {
+        "alternative": "No current PRE-MAIN phase_d compiler; older DDM data/build modules remain historical inputs",
+        "chain": "Phase-D scoped DDM/authority data -> positioned-relational evidence sidecars -> rank1 V550 repro capsule validation/evidence",
+        "first_consumer": "phase_d/successor_archetype_conformance/repro_capsule/.../validate_capsule.py; no PRE-MAIN importer",
+        "function": "scan_scope / compile_scope / compile positioned relational evidence",
+        "owner": "Phase-D / DDM source owner; test-only source"
+      },
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "DDM/Phase-D",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    },
+    {
+      "branch": "vozhd/rawlsing-engineering-control-plane-r1-20260813",
+      "classification": "AUTHORITY_ONLY",
+      "current_premain_exact_path_present": false,
+      "current_premain_importer": "NONE_EXACT_PATH",
+      "current_premain_sha": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+      "cut": "c764de7f112c36f493d306e3387321cc5a068e86",
+      "downstream_current_importer": "NONE_IN_CURRENT_PREMAIN",
+      "downstream_first_consumer": "branch-local return/test/evidence only; no PRE-MAIN consumer",
+      "family": "OTHER_CANDIDATE_CODE",
+      "file_count": 1,
+      "files": [
+        {
+          "ast": "OK",
+          "classes": [],
+          "disposition": "AUTHORITY_ONLY",
+          "doc": "Stdlib-only Rawlsing control-plane verifier and operator helper.",
+          "functions": [
+            "load",
+            "by_id",
+            "execution_edges",
+            "validate_dag",
+            "validate_repo",
+            "sha256",
+            "validate_trusted",
+            "cmd_verify",
+            "get_node",
+            "cmd_status",
+            "cmd_next",
+            "cmd_court",
+            "descendants",
+            "cmd_impact",
+            "cmd_task",
+            "main"
+          ],
+          "git_blob": "531c3796d6c739809c7041c46ccd53111b61ee2c",
+          "imports": [
+            "__future__",
+            "argparse",
+            "hashlib",
+            "json",
+            "pathlib",
+            "sys"
+          ],
+          "lines": 129,
+          "path": "control_plane/rawlsingctl.py",
+          "sha256": "1984f5e77d92b7a39aa090ee9ade6dd094781ab236575e111da6a96c0f4ca5ed",
+          "source_inspected": true,
+          "status": "READ"
+        }
+      ],
+      "index": 39,
+      "material_function": null,
+      "rcfd_classification": "CLOSED_MECHANICALLY__BRANCH_LOCAL_CANDIDATE_RUNTIME_NO_PREMAIN_IMPORTER",
+      "scientific_owner": "Rawlsing engineering control plane",
+      "source_inspected": true,
+      "source_owner": "incumbent HQ + original owner",
+      "verdict": "SOURCE_READ__CLASSIFIED__NO_CURRENT_PREMAIN_IMPORTER"
+    }
+  ],
+  "schema": "SOROK_R6_ALL_39_SOURCE_PATH_FUNCTION_CONSUMER_DISPOSITIONS@1",
+  "source_read_count": 94,
+  "source_unread_count": 0,
+  "unique_candidate_paths": 94
+}

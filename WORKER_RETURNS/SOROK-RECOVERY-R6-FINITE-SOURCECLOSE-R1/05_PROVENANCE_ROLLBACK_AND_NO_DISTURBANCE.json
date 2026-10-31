@@ -1,0 +1,99 @@
+{
+  "schema": "SOROK_R6_PROVENANCE_ROLLBACK_AND_NO_DISTURBANCE@1",
+  "repository": "maidiu/rawlsing",
+  "role": "independent I2/I3 source/code forensic investigator",
+  "branch": "agent/sorok-recovery-r6-39-scripts-r41-finite-sourceclose-20261030-r1",
+  "sealed_commission_head": "b0c6456a5ac75cfa7d5aeda635cf4bae870634f7",
+  "startup_premain": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+  "refreshed_premain": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+  "refreshed_remote_ref": "refs/heads/integration/pre-main-reconciliation-r1",
+  "premain_refresh_match": true,
+  "rcfd_read_cut": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "rcfd_new_premain_delta_files": 14,
+  "rcfd_new_premain_delta_scope": "14 workflow/control-room/commission files; no 39-row candidate path and no R41 objective_world path",
+  "source_cuts": {
+    "rcf_d": "5446395925996f4c2e4d3aabef2e06ba97d16fcd",
+    "rcf_c": "b512ee646ee088d52ac004873d670bdad4249810",
+    "rcf_a": "e66dc53a5d7eeb2b6b3259000eb04b8e79e1f6f7",
+    "rcf_b": "397c6d61d73825d83e1282753e254c39f4b5a80e",
+    "r41": "b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2"
+  },
+  "denominators_preserved": {
+    "294": {"count": 294, "shards": {"A_IMPLEMENTERS": 98, "B_REVIEWERS": 67, "C_HQ_AND_PRODUCT": 69, "D_CODEX_AND_OTHER": 60}, "membership_sha256": "942926ce1850369b45151856783fc04b8313dc2c3f221f8788c27671a41b8dfb"},
+    "168": {"count": 168},
+    "2369": {"count": 2369},
+    "2537": {"count": 2537, "membership_sha256": "377a5a93418cadf8af1ac88a718d9a1fba509474e6fc174d2265e8d64a11d9b8"},
+    "2366": {"count": 2366, "membership_sha256": "7b87a88dc2361b1d705c2881e45f3cff5e54a37e6d3af84f8077e2ac8ab7fc8b"},
+    "377": {"count": 377, "composition": "19 F3 selected + 358 remainder"},
+    "358": {"count": 358, "membership_sha256": "0a2000ac0dbc9164fa59e244a100dd2971b2b5f6a0dc5116f6fd5de89a3fb8c2"},
+    "171": {"count": 171, "constraint": "H358 candidate-hold rows inside 2366; distinct from 2537-2366=171"}
+  },
+  "worktree": {
+    "path": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/r6-return",
+    "isolated": true,
+    "base": "b0c6456a5ac75cfa7d5aeda635cf4bae870634f7",
+    "write_scope": "WORKER_RETURNS/SOROK-RECOVERY-R6-FINITE-SOURCECLOSE-R1/**",
+    "files_written": [
+      "00_RETURN.md",
+      "01_ALL_39_SOURCE_PATH_FUNCTION_CONSUMER_DISPOSITIONS.json",
+      "02_R41_DEPENDENCY_SOURCE_CLOSURE.md",
+      "03_MATERIAL_FUNCTIONS_FOR_LATER_PROGRAMMA_AND_UNRESOLVED.json",
+      "04_SAFE_TESTS_HASHES_AND_NOT_RUN.md",
+      "05_PROVENANCE_ROLLBACK_AND_NO_DISTURBANCE.json"
+    ],
+    "premain_modified": false,
+    "production_modified": false,
+    "original_source_branches_modified": false,
+    "other_worker_worktrees_modified": false,
+    "user_data_modified": false,
+    "gateway_ticket_contacted": false,
+    "pull_request_created": false,
+    "self_reviewed": false,
+    "self_adopted": false
+  },
+  "environment": {
+    "device": "oldMac",
+    "os": "macOS 13.7.8 x86_64",
+    "harness": "OpenCode 1.18.34",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "effort": "MAX requested; real model/effort is not independently observable from inside this session",
+    "model_switch": "none",
+    "provider_account_switch": "none",
+    "local_s2": {"git_worktree": true, "python_sqlite": true, "subprocess": true, "network_at_test_runtime": false},
+    "session_locator": "OpenCode local session; no stable public session id is exposed; branch and final pushed SHA are the durable locators"
+  },
+  "execution": {
+    "source_files_read": 94,
+    "source_rows": 39,
+    "source_unrecoverable": 0,
+    "r41_archive_members_verified": 133,
+    "r41_selected_tests": 26,
+    "selected_safe_tests_total": 74,
+    "selected_safe_test_failures": 0,
+    "full_historical_test_suites_run": false,
+    "native_source_or_provider_calls": false
+  },
+  "rollback": {
+    "action": "delete WORKER_RETURNS/SOROK-RECOVERY-R6-FINITE-SOURCECLOSE-R1/**; no source or PRE-MAIN change to revert",
+    "preserves": ["all original source blobs", "RCF-D 171-row ledger", "R41 source archive", "all historical REDs", "all denominator distinctions"],
+    "requires": "no database migration, no schema bump, no branch rewrite, no production rollback"
+  },
+  "commit_readback": {
+    "return_commit": "PENDING_PUSH_READBACK",
+    "remote_branch": "agent/sorok-recovery-r6-39-scripts-r41-finite-sourceclose-20261030-r1",
+    "remote_sha": "PENDING_PUSH_READBACK",
+    "readback_command": "git ls-remote origin refs/heads/agent/sorok-recovery-r6-39-scripts-r41-finite-sourceclose-20261030-r1",
+    "self_reference_note": "A file cannot contain the SHA of the commit that contains it; the exact final SHA is reported in the push readback and terminal response."
+  },
+  "authority": {
+    "engineering_grade": "SOURCE_READ__BOUNDED_SOURCEFREE_TESTS__NO_CURRENT_CONSUMER",
+    "science_grade": "NO_NATIVE_ISSUANCE__NO_ORIGINAL_SOURCE_GRANT",
+    "authority_grade": "HOLD__NO_ADOPTION__NO_REVIEWER_SELF_ACCEPTANCE",
+    "native_pyat": false,
+    "native_actor": false,
+    "native_c9_c12": false,
+    "native_can_adp": false,
+    "native_n11_n12": false,
+    "no_implicit_merge": true
+  }
+}

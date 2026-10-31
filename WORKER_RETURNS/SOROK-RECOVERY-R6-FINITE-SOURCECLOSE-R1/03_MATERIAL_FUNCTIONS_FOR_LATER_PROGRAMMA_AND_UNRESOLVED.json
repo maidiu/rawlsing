@@ -1,0 +1,247 @@
+{
+  "first_actual_consumer_summary": "All nine material functions are UNWIRED_SOURCE_PRESENT at current PRE-MAIN. Branch-local tests/returns are the only actual consumers; R41 has a future P41 handback, not an active PRE-MAIN consumer.",
+  "material_function_count": 9,
+  "material_functions": [
+    {
+      "competing": "No current PRE-MAIN EE-R5B bridge; R5 source-backed owner modules are historical/referenced, not present",
+      "cut": "02d32036db49c70ff137f1730d0ff95b571040d3",
+      "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+      "first_actual_consumer": "WORKER_RETURNS/EE-R5B/06_test_bounded_w4_adapter.py (9 selected tests); branch-local only",
+      "index": 8,
+      "input": "EE-W4 single-step JSON envelope plus an externally supplied bound A/B/C owner executor",
+      "missing_grant": "No owner-selected current EE-W4 transport or A/B/C executor grant",
+      "output": "RAWLSING_EE_R5B_OWNER_BOUND_W4_BRIDGE@1.0.0 receipt with semantic_output_sha256",
+      "owner": "EE-R5B / EE-W4 sourcefree owner",
+      "source_path": "WORKER_RETURNS/EE-R5B/05_BOUNDED_W4_ADAPTER.py",
+      "status": "UNWIRED_SOURCE_PRESENT",
+      "symbols": [
+        "validate_w4_request",
+        "normalize_owner_receipt",
+        "adapt_step"
+      ],
+      "test_evidence": "9 passed in temp copy; no PRE-MAIN importer",
+      "transform": "Validate the exact EE-W4 schema/operation/action/owner identity; invoke the bound executor; validate owner binding, telemetry, accelerator surface and forbidden ranking fields; normalize the result"
+    },
+    {
+      "competing": "pre553_r5_compact_carrier and source-backed adapter are referenced historically but absent at current PRE-MAIN",
+      "cut": "1d01bd7a1763bea642947557b924a7cfc6d15db6",
+      "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+      "first_actual_consumer": "EE-R10L return/evidence; branch-local only",
+      "index": 13,
+      "input": "Exact LiTS-I source and banked AS2B builder/authority package",
+      "missing_grant": "No current R5 source/builder authority or target consumer",
+      "output": "RAWLSING_EE_R10L_CANDIDATE_A_R5_CONSTRUCTION_RECEIPT@1.0.0",
+      "owner": "EE-R10L / Pyat R5 source owner",
+      "source_path": "WORKER_RETURNS/EE-R10L/07_construct_candidate_a_r5_carrier.py",
+      "status": "UNWIRED_SOURCE_PRESENT",
+      "symbols": [
+        "Monitor",
+        "load_builder",
+        "main"
+      ],
+      "test_evidence": "Source read; no standalone selected test run; no PRE-MAIN importer",
+      "transform": "Decode source, build projection, construct R5 compact long-sharded carrier, measure time/CPU/RSS/scratch/durable bytes"
+    },
+    {
+      "competing": "sources/WG0P10 is an older WG0P4 compiler; current rawlsing_next/pre553_universal_workload.py is the R61 successor",
+      "cut": "aeefaf7e7f32f094b72fbee1e62e98508a304482",
+      "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+      "first_actual_consumer": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/test_wg0x.py; branch-local only",
+      "index": 18,
+      "input": "Frozen WG0R/WG0X transport, native fixtures and captured research rows",
+      "missing_grant": "No current original35 source/operation grant or current crosswalk consumer",
+      "output": "R38 crosswalk JSON/receipts; no identity issuance",
+      "owner": "Pyat WG0X/WG0R; R61 current owner for successor workload compiler",
+      "source_path": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/scientific_crosswalk.py",
+      "status": "UNWIRED_SOURCE_PRESENT",
+      "symbols": [
+        "load",
+        "lines",
+        "digest",
+        "build",
+        "matches"
+      ],
+      "test_evidence": "Source read; no selected R38 test run; no PRE-MAIN importer",
+      "transform": "Build deterministic source-qualified research crosswalk and compare expected/actual multiset identities"
+    },
+    {
+      "competing": "GF1K and GF1M successors refine the same family; current PRE-MAIN has specialized field_forge_conditional_support only",
+      "cut": "cc41ad4553d189a3c4c8152179b3d1977327c07f",
+      "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+      "first_actual_consumer": "GF1H adversarial test; branch-local only",
+      "index": 29,
+      "input": "GenericNativePairRelation with exact 2x2 category profile",
+      "missing_grant": "No generic Field Forge semantics issuance or current consumer",
+      "output": "GF1 pair support signature/result hash; test-only",
+      "owner": "Field Forge/GF1; test-only candidate",
+      "source_path": "WORKER_RETURNS/PYAT-R32-GF1H-PAIR-CONSUMER-INTEGRITY-REPAIR-R1/gf1_pair_support_consumer.py",
+      "status": "UNWIRED_SOURCE_PRESENT",
+      "symbols": [
+        "compute_pair_support_signature",
+        "_verify_identity",
+        "_decode_profile"
+      ],
+      "test_evidence": "Source read; no selected GF1 test run; no PRE-MAIN importer",
+      "transform": "Verify relation identity/conservation and compute pair-support separation signature"
+    },
+    {
+      "competing": "GF1M later adds lossless key/nonfinite handling",
+      "cut": "1399a475e54ea33355cf641979829424625c511d",
+      "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+      "first_actual_consumer": "GF1K native identity tests; branch-local only",
+      "index": 30,
+      "input": "GenericNativePairRelation",
+      "missing_grant": "No generic Field Forge semantics issuance or current consumer",
+      "output": "GF1K pair-support signature/result hash",
+      "owner": "Field Forge/GF1; test-only candidate",
+      "source_path": "WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/gf1_pair_support_consumer.py",
+      "status": "UNWIRED_SOURCE_PRESENT",
+      "symbols": [
+        "compute_pair_support_signature",
+        "_same_native",
+        "_distinct_native_pair"
+      ],
+      "test_evidence": "Source read; no selected GF1 test run; no PRE-MAIN importer",
+      "transform": "Exact native category identity plus conserved 2x2 support computation"
+    },
+    {
+      "competing": "Specialized PRE-MAIN field_forge_conditional_support; generic consumer absent",
+      "cut": "a8fcb6953f2795b7bc698f9f019f4782f80026c9",
+      "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+      "first_actual_consumer": "R34 GF1M nonfinite/key-identity tests; branch-local only",
+      "index": 32,
+      "input": "GenericNativePairRelation",
+      "missing_grant": "No generic Field Forge semantics issuance or current consumer",
+      "output": "GF1M pair-support signature/result hash; test-only",
+      "owner": "Field Forge/GF1; test-only candidate",
+      "source_path": "WORKER_RETURNS/PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1/author_followup_nonfinite/gf1_pair_support_consumer.py",
+      "status": "UNWIRED_SOURCE_PRESENT",
+      "symbols": [
+        "compute_pair_support_signature",
+        "_require_lossless_mapping_keys",
+        "_same_native"
+      ],
+      "test_evidence": "Source read; no selected GF1 test run; no PRE-MAIN importer",
+      "transform": "Exact category identity, lossless mapping-key preservation, nonfinite refusal and conserved 2x2 support computation"
+    },
+    {
+      "competing": "Specialized field_forge_conditional_support at current PRE-MAIN; generic semantics unissued",
+      "cut": "48d1c144ff4a8c503908d6b95b9e35374d4584e5",
+      "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+      "first_actual_consumer": "GF1 pair-support consumer/tests; branch-local only",
+      "index": 35,
+      "input": "Native EmpiricalFact + EmpiricalQuerySpec and exact authority/risk/role refs",
+      "missing_grant": "No original Field Forge semantic issuance or current consumer",
+      "output": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+      "owner": "Field Forge/GF1; test-only candidate",
+      "source_path": "WORKER_RETURNS/PYAT-HQ-R18-GF1-REVERSE-SCIENCE-REPAIR-R1/generic_native_pair_relation.py",
+      "status": "UNWIRED_SOURCE_PRESENT",
+      "symbols": [
+        "produce_generic_native_pair_relation",
+        "replay_generic_native_pair_relation",
+        "GenericNativePairRelation"
+      ],
+      "test_evidence": "Source read; no selected GF1 test run; no PRE-MAIN importer",
+      "transform": "Validate roles, domains, permissions, risk, zero/support and semantic closure; produce namespaced generic pair relation"
+    },
+    {
+      "competing": "No current PRE-MAIN phase_d compiler; older DDM data/build modules remain historical inputs",
+      "cut": "350986521ebbc13b552d4b6542423a65c267041a",
+      "disposition": "MATERIAL_HISTORICAL_NO_CURRENT_CONSUMER",
+      "first_actual_consumer": "phase_d/successor_archetype_conformance/repro_capsule/.../validate_capsule.py; branch-local only",
+      "index": 38,
+      "input": "Phase-D scoped DDM/authority rows and implementation mappings",
+      "missing_grant": "No current Phase-D source/authority grant or consumer",
+      "output": "Phase-D positioned-relational evidence sidecars",
+      "owner": "Phase-D / DDM source owner",
+      "source_path": "phase_d/code/compile_positioned_relational_evidence.py",
+      "status": "UNWIRED_SOURCE_PRESENT",
+      "symbols": [
+        "scan_scope",
+        "compile_scope",
+        "compile positioned relational evidence"
+      ],
+      "test_evidence": "Source read; no selected Phase-D test run; no PRE-MAIN importer",
+      "transform": "Match positioned relational evidence and emit fail-closed sidecars"
+    },
+    {
+      "competing": "No current PRE-MAIN objective_world client; retained owner modules are reused in archive",
+      "cut": "b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2",
+      "disposition": "UNWIRED_SOURCE_PRESENT",
+      "first_actual_consumer": "capture_products.py (branch-local), tests/test_native_world.py; future P41 handback; no PRE-MAIN importer",
+      "index": "R41",
+      "input": "Retained GT2/J04 hash-only context, test-only N9C GSS/NCA fixtures, F6P evidence and selected modeled E04 rules",
+      "missing_grant": "H_SOURCE35, H_FF_STRONG, H_F6_WORLD, H_FIELDS_REAL, H_EE12_TIME, H_E04_PURPOSE, H_GT2_M5_CURRENT",
+      "output": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1; 84 original-client views; current_historical_asof_world_consumer_receipts.json",
+      "owner": "R41/W41 objective-world owner",
+      "source_path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/objective_world.py",
+      "status": "UNWIRED_SOURCE_PRESENT",
+      "symbols": [
+        "ObjectiveWorld.read",
+        "retained_context",
+        "position_context",
+        "independent_fields",
+        "f6_evidence",
+        "temporal_methods",
+        "purpose_refusals",
+        "product"
+      ],
+      "test_evidence": "reconstruct_owners --verify 133; selected test_native_world.py 26 passed; prior 94 core/33 EE1 not rerun",
+      "transform": "Load exact owner closure, resolve retained FF/M4, combine typed read-only views, F6 evidence, temporal method cases and purpose refusals"
+    }
+  ],
+  "missing_grant_summary": "No original source/native, CAN/ADP/SCI05, Field Forge generic semantics, C11/EE transport, N9/N10W, N11/N12 or C9/C12 grant was issued or implied.",
+  "non_overlap_residuals": [
+    {
+      "id": "co-signature composition",
+      "relation": "only GF1 adjacent method family; no code overlap",
+      "status": "RCF-D residual; not in 39/R41; no re-review"
+    },
+    {
+      "id": "PRE-V3 objective world root",
+      "relation": "R41 is a read-only client/harness, not the release root",
+      "status": "RCF-D residual; not in 39/R41; separate release root"
+    },
+    {
+      "id": "N9 two-field reader",
+      "relation": "no native N9 issuance or EE13 consumer",
+      "status": "RCF-D residual; N9C reader is in R41 archive as dependency"
+    },
+    {
+      "id": "CLOSED35",
+      "relation": "no source-law reuse",
+      "status": "RCF-D residual; no 39/R41 code overlap"
+    },
+    {
+      "id": "AS3R3",
+      "relation": "future 19+3 input absent",
+      "status": "RCF-D residual; no 39/R41 code overlap"
+    },
+    {
+      "id": "EE-W3",
+      "relation": "no semantic-capital objectizer imported",
+      "status": "RCF-D residual; no 39/R41 code overlap"
+    }
+  ],
+  "not_material": [
+    {
+      "classification": "DUPLICATE_OR_SUPERSEDED",
+      "index": 18,
+      "path": "sources/WG0P10_repaired_workload.py",
+      "successor": "current rawlsing_next/pre553_universal_workload.py"
+    },
+    {
+      "classification": "DUPLICATE_OR_SUPERSEDED",
+      "index": 27,
+      "path": "wg0_workload_builder.py",
+      "successor": "current rawlsing_next/pre553_universal_workload.py"
+    },
+    {
+      "classification": "DUPLICATE_OR_SUPERSEDED",
+      "index": 37,
+      "path": "85_V550J.../run_section85_diagnostic_smoke_matrix.py",
+      "successor": "current section85/code/run_section85_diagnostic_smoke_matrix.py"
+    }
+  ],
+  "schema": "SOROK_R6_MATERIAL_FUNCTIONS_AND_UNRESOLVED@1"
+}
