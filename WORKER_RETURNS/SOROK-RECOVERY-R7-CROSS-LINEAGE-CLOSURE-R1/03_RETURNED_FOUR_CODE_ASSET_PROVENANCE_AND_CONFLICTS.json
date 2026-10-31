@@ -1,0 +1,121 @@
+{
+  "schema": "SOROK_RECOVERY_R7_NEW_FOUR_CODE_ASSETS_AND_CONFLICTS@1",
+  "repository": "maidiu/rawlsing",
+  "grade": "STATIC_GITHUB_CODE_AND_RETURN_EVIDENCE__NO_R7_RUNTIME__NO_SELF_REVIEW",
+  "four": [
+    {
+      "id": "CP-A5-R2",
+      "commit": "913765328e4fab12b150ea01421ed6b445158184",
+      "evidence_path": "WORKER_RETURNS/SOROK-CP-A5-R2/01_ACTUAL_A3_A5_LIFE_AND_ENCOUNTER_TRACE.json",
+      "evidence_blob": "b52b0c9a9ff6b49acf5b3f648f33cd49ad7cebdb",
+      "entrypoint": "cp_a5.encounter.EncounterReader.ask; cp_a5.assertion.multicontext_encounter_assertion",
+      "first_consumer": "I1 GuardedJoinedProduct C12 same root → A sees tool-return but not B unperceived market commission",
+      "candidate_files": [
+        "candidate/cp_a5/encounter.py",
+        "candidate/cp_a5/events.py",
+        "candidate/cp_a5/assertion.py",
+        "candidate/tests/test_cp_a5_multicontext.py"
+      ],
+      "author_reported_test_count": 59,
+      "reported_positive": "59 local passing tests; distinct market/workshop observations, repeated inspections, coactor C test fixture, read-only encounter; no native A5/human participant",
+      "negative_preservation": "hidden B market action must yield UNKNOWN; restored tool access must not forge A knowledge",
+      "source_or_owner_hold": "owner C12 anchor, original coactor B/native life, no production A5, independent reviewer not observed",
+      "independent_later_review": "NOT_VERIFIED_IN_INSPECTED_EXACT_RETURNS",
+      "adoption": "UNADOPTED"
+    },
+    {
+      "id": "C9C12-R2",
+      "commit": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+      "evidence_path": "WORKER_RETURNS/SOROK-C9C12-R2/01_VERSIONED_WRITER_READER_AND_CLOCK_CONTRACT.json",
+      "evidence_blob": "a26de86acaeb812b88e19785e480e234d6df2cca",
+      "entrypoint": "c9c12_reader.read_composite -> read_actor_snapshot + guarded_c12_cold_read",
+      "first_consumer": "C9 actor R3B SQLite snapshot/outbox + BP4R C12 verified content under I1-compatible read-only composite",
+      "candidate_files": [
+        "candidate/c12_guard.py",
+        "candidate/c9_actor_r3.py",
+        "candidate/c9c12_reader.py",
+        "candidate/tests/test_c9c12_r2.py"
+      ],
+      "author_reported_test_count": 6,
+      "reported_positive": "6 candidate tests; reject global-clock inversion, @2 writer, forged actor/created clock; historical 14/1 C9 and 7/2 BP4R failures preserved",
+      "negative_preservation": "14/1 original same-count substitution RED; 7/2 BP4R historical clock and anchor diagnostics remain",
+      "source_or_owner_hold": "external anchor OWNER_ANCHOR_REQUIRED; mirror/outbox ACK and C9 E2 owner semantics not closed; no owner adoption",
+      "independent_later_review": "NOT_VERIFIED_IN_INSPECTED_EXACT_RETURNS",
+      "adoption": "UNADOPTED"
+    },
+    {
+      "id": "B-F1CR-R2",
+      "commit": "bf3273c294c704ad7c631559b9866d351bb4f103",
+      "evidence_path": "WORKER_RETURNS/SOROK-B-F1CR-R2/01_LIVE_B_AND_TARGETLESS_C10_CONSUMER_MAP.json",
+      "evidence_blob": "82d89cf3072bf0e1bd2c9851ad3649312b4f36ee",
+      "entrypoint": "targetless_c10_consumer.BWorld/BAction/TargetlessC10Ledger → targetless_i1_bridge.TargetlessGuardedJoinedProduct",
+      "first_consumer": "Same I1 root/store/branch; targetless REFUSE/SILENCE/NO_PROPOSAL/UNOBSERVED are consumed with A access and B material ledgers",
+      "candidate_files": [
+        "candidate/f1c_original_104f5bd.py",
+        "candidate/f1c_reconstructed_candidate.py",
+        "candidate/targetless_c10_consumer.py",
+        "candidate/targetless_i1_bridge.py"
+      ],
+      "author_reported_test_count": null,
+      "reported_positive": "R5 original/reconstructed 13/13; 3 original F1CI3 mutations RED vs 3/3 reconstruction; actual candidate targetless and cold material positive reported",
+      "negative_preservation": "NO_CHANGE requires competent evaluated receipt; no performed refusal without actor and source; no B cash exposed in A public view",
+      "source_or_owner_hold": "missing original patched F1CR bytes bf7e625e...; reconstruction not owner-approved; no native B or source granted",
+      "independent_later_review": "NOT_VERIFIED_IN_INSPECTED_EXACT_RETURNS",
+      "adoption": "UNADOPTED"
+    },
+    {
+      "id": "V3CORE-R1",
+      "commit": "b5cb3f917402b992d7cbe933af0b378d2b37cbfd",
+      "evidence_path": "WORKER_RETURNS/SOROK-V3CORE-R1/01_HISTORICAL_FUNCTION_TO_CURRENT_CONSUMER_CONTRACT.json",
+      "evidence_blob": "a4d8e870b2aa0210ac82ef45a8f464afcb3039ac",
+      "entrypoint": "v3core_adapter.i1_consumer.project_actual_market_event → I1 GuardedJoinedProduct",
+      "first_consumer": "Actual I1 market event 54→56 cash / workshop→market projected to restricted old V3 capacity; source clock domain verified",
+      "candidate_files": [
+        "candidate/v3core_adapter/i1_consumer.py",
+        "candidate/v3core_adapter/scheduler.py",
+        "candidate/v3core_adapter/quarantine.py",
+        "candidate/v3core_adapter/derived_scope.py"
+      ],
+      "author_reported_test_count": 46,
+      "reported_positive": "40 unchanged historic V3+46 adapter+8 unchanged I1 tests (independent R7 NOT_RUN); old 19-step mutation fails named invariant",
+      "negative_preservation": "identity/age typology/psyche defaults quarantined; PYAT_N11 and SOROK_N11 refused as V3 M25 year",
+      "source_or_owner_hold": "16 of 19 historical scheduler steps HELD; no actor-made psyche, true original owner approval, C9 native or A5",
+      "independent_later_review": "NOT_VERIFIED_IN_INSPECTED_EXACT_RETURNS",
+      "adoption": "UNADOPTED"
+    }
+  ],
+  "cross_return_collisions": [
+    {
+      "issue": "CP-A5 product grade",
+      "finding": "Named A5 encounter is test-only sourcefree read-only UI and a fixture coactor C, not authorized human A5",
+      "owner": "original Sorok A0–A5/C12 and participant owner"
+    },
+    {
+      "issue": "C9/C12 schema/version",
+      "finding": "BP2P4J C9 CandidateStore and C9 R3B SQLite are not interchangeable; @2 explicitly refused, mirror ACK unresolved",
+      "owner": "original C9/C12 owner"
+    },
+    {
+      "issue": "B/F1CR provenance",
+      "finding": "Original F1C recovered; historical patched F1CR missing; BF1 consumes R5 reconstruction in I1-derived same-root sourcefree adapter",
+      "owner": "F1C/F1CR and C10 original owners"
+    },
+    {
+      "issue": "V3 scheduler clocks",
+      "finding": "Historical annual 19-step ordering and current C12 event clock differ; year schedule quarantines 16 steps, never equate PYAT_N11 to SOROK_N11",
+      "owner": "V3 original owner/C12/Pyat owner"
+    },
+    {
+      "issue": "B material stock",
+      "finding": "I1 historical offscreen event material_delta -1 while stock remains zero by floor; BF1 introduces explicit sourcefree replenishment and rejects non-stock negative consumption rather than claim physical free materials",
+      "owner": "BP2/BP4/B material owner"
+    }
+  ],
+  "historical_rival_results": {
+    "C9_R3B": "14 passed / 1 failed original",
+    "BP4R": "7 passed / 2 failed original",
+    "F1CI3": "3 original live history mutation RED",
+    "BP2P4J": "generic exceptions can be coded RED without named assertion failure"
+  },
+  "scope": "no independent R7 local execution, no merge or original issuance"
+}
