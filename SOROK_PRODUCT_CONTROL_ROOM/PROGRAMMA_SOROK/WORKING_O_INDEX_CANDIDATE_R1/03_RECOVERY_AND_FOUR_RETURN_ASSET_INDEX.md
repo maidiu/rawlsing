@@ -1,3 +1,5 @@
+> **Source correction, 2026-10-30:** The O-INDEX original source-hold claim for S0–S16 was false. All 17 original Sorok program workstream definitions are documented at owner branch `865b5b01e1a27e99020cf2bb389af8cd4c874b57`, `SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md`, blob `2a0a3a42d66f566f92d5c333fbbea4a5adb383b2`. Historical exploratory source existence is distinct from current adopted priorities. Earlier validator results conditioned on 0/17 are superseded; source-corrected validator requires independent reexecution.
+
 # O-INDEX recovery and four-return asset index
 
 **Status:** WORKING CANDIDATE — NOT HQ-ADJUDICATED. This file indexes source, consumers, tests and holds; it does not issue science, adopt code or rank product work.
@@ -33,9 +35,9 @@ The registry preserves inherited identifiers. It does not add a new global numbe
 
 `N01`–`N12` are requirements, not issued laws. `O01`–`O16` are decision questions with owners, not decisions. `E01`–`E15` are required first-consumer edges, not proof those edges exist natively.
 
-### S0–S16 remain an exact register gap
+### S0–S16 original HQ program definitions are recovered — current adoption separate
 
-The 17 rows `S0`–`S16` are present and marked `RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED`. The inspected sources do **not** contain a unique 17-entry original S0–S16 definition table. `V3_COURTS/03_DEPENDENCY_SEQUENCER.md` uses S0/S1 as research stages; the later Codex series uses S39–S52. Neither is evidence for S0–S16. Do not backfill names.
+The source-exact 17 original exploratory workstreams S0–S16 are defined, with question and output each, in incumbent Sorok HQ `SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md@865b5b01e1a27e99020cf2bb389af8cd4c874b57` (blob `2a0a3a42d66f566f92d5c333fbbea4a5adb383b2`) and earlier original version `@3c423a0f74915a01911197b0023de9f85fd74aff` (blob `6271bb66b3cd2d92e2b814c4cd626220c2cdfe40`). These are distinct from V3 Courts S0/S1 stages and modern S39–S52 engineering worker series. Their scope is `ACTIVE_EXPLORATORY_PROGRAM_R1`, not proof of current canonical adoption or completed outputs.
 
 ### Separate Pyat namespace
 
@@ -70,7 +72,7 @@ R5’s selected-source reconciliation remains a separate receipt: 31/31 selected
 
 | Open class | R6/R7 closed at this grain | Still open | Owner |
 |---|---|---|---|
-| Exact source identity | 102 inherited definitions exact at documentary grain; R6 94/94 files; 0 exact-unrecoverable; R41 133/133 pinned | Original F1CR patch `bf7e625e…`; full V3 container hash; original S0–S16 table | Original source owners/custodians |
+| Exact source identity | 102 inherited definitions exact at documentary grain; R6 94/94 files; 0 exact-unrecoverable; R41 133/133 pinned | Original F1CR patch `bf7e625e…`; full V3 container hash (the S0–S16 table is recovered at exact historic source) | Original source owners/custodians |
 | Engineering integration | Sourcefree candidate consumers and selected tests exist | No current PRE-MAIN importer for the nine R6 families; no adopted four-return consumer | Component owners |
 | Trial/evaluation | Author-local and selected sourcefree receipts | No independent review of four returns; no native trial, alpha or human evaluation | Independent reviewer + product owner |
 | Original rule/permission | Questions, requirements and edges recovered | O01–O16 issuance; N01–N12 rule issuance; Pyat N11 acceptance; A5/B/C11 permissions | Science and native-product owners |
@@ -114,7 +116,7 @@ Every inherited row has a non-empty `first_consumer`. That is a **named/required
 | Current actual importer | `NONE_PROVEN_AT_PREMAIN` for inherited definitions; sourcefree candidate consumers only for the four returns |
 | Native issuance / adoption | `false` throughout; no native person, A5, B, C11 or E2 release |
 
-No row with a source function is left without a named consumer or an explicit source/authority hold. S0–S16 use `UNKNOWN` because their primary definitions are not established; they are not missing code modules.
+No row with a source function is left without a named consumer or an explicit source/authority hold. S0–S16 cite the original historical Sorok Program Map; adoption/completion of exploratory requirements is separate from historical source existence.
 
 ## 6. Preserved negative register
 
@@ -140,7 +142,7 @@ BP2P4J's `severance.py` at blob `1e5fc5237dd3b2d94bfa44842fb0dd2b41e20607` catch
 | Are the nine material families wired? | No; `UNWIRED_SOURCE_PRESENT` |
 | Is R41 the native objective world? | No; sourcefree read-only client/harness |
 | Are 102 inherited definitions exact? | At declared historical documentary grain; not native issuance |
-| Are S0–S16 exact? | No; 17-row definition hold |
+| Are S0–S16 exact? | Yes, 17/17 historical primary-source definitions; current adoption of exploratory workstreams remains HQ judgment |
 | Are four returned assets adopted? | No; author-tested sourcefree candidates |
 | Does this index choose priority? | No; `HQ_JUDGMENT_REQUIRED` |
 
