@@ -6,7 +6,8 @@
 **Startup PRE-MAIN:** `f40c26301d7d5b811c1bb92efa4934ad564ce5b3`
 **Refreshed PRE-MAIN:** `8e44ca9c751049d65e6def47600b5c073ee04b29`
 **Candidate:** `SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/`
-**Exact remote/head SHA:** `PENDING_PUSH_READBACK` (reported in the final push readback; a file cannot contain its own commit SHA)
+**Content commit SHA:** `0a86e8e796ddf8753ce9660b342d2d8327ac60d8`
+**Final remote tip:** reported in the final push readback; this readback record is a follow-up commit, so a file cannot contain its own final SHA.
 
 ## 1. Three verdicts
 
