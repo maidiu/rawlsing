@@ -1,0 +1,660 @@
+{
+  "schema": "SOROK_O1_PROVENANCE_LIMITS_AND_NEGATIVES@1",
+  "private_repo": "maidiu/rawlsing",
+  "source_read": {
+    "live_ref": "integration/pre-main-reconciliation-r1",
+    "verified_at_start_and_before_branch_creation": "750548ddbb9b4392a16ce93097b856f349e16182",
+    "historic_reference": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "execution_surface": "S0-S1 authenticated GitHub documentary/code/blob",
+    "local_s2_process": false,
+    "original_source_or_actor_native": false,
+    "github_write_scope": "WORKER_RETURNS/SOROK-O1-WHOLE-MACHINE-ARCHITECTURE-R1/**"
+  },
+  "primary_returns": {
+    "A": {
+      "commit": "e66dc53a5d7eeb2b6b3259000eb04b8e79e1f6f7",
+      "blob": "a5c417ccb579a54d88c42e4ea99ff67a233859d9",
+      "path": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/04_PROVENANCE_AND_FRESHNESS.json",
+      "schema": "SOROK_RCF_A_PROVENANCE_AND_FRESHNESS@1"
+    },
+    "B": {
+      "commit": "397c6d61d73825d83e1282753e254c39f4b5a80e",
+      "blob": "921bdf30326f87b96321e81595b2ca91fb0d96ee",
+      "path": "WORKER_RETURNS/SOROK-RCF-B-MODERN-ACTOR-PERSON-R1/04_PROVENANCE_AND_FRESHNESS.json",
+      "schema": "SOROK_RCF_B_PROVENANCE_AND_FRESHNESS@1"
+    },
+    "C": {
+      "commit": "b512ee646ee088d52ac004873d670bdad4249810",
+      "blob": "24036701ff043f750c7c8f64fc7bed883cf1f907",
+      "path": "WORKER_RETURNS/SOROK-RCF-C-PYAT-WORLD-SEAM-R1/04_PROVENANCE_AND_FRESHNESS.json",
+      "schema": "SOROK_RCF_C_PROVENANCE_FRESHNESS@1.0.0"
+    },
+    "D": {
+      "commit": "5446395925996f4c2e4d3aabef2e06ba97d16fcd",
+      "blob": "79927642d765cf0328f47e8e60d853840514cfeb",
+      "path": "WORKER_RETURNS/SOROK-RCF-D-RESIDUAL-ESTATE-R1/04_PROVENANCE_AND_FRESHNESS.json",
+      "schema": "SOROK_RCF_D_PROVENANCE_AND_FRESHNESS@1"
+    }
+  },
+  "scoped_independent": {
+    "B3AS": {
+      "commit": "1a25b19dd01e8e7954e38c59ffc7e52c50739c9f",
+      "grade": "ACCEPT_SCOPED_SOURCEFREE_SCHEMA_READSET_ONLY"
+    },
+    "G17I2": {
+      "commit": "95f15026cd95f6467455d0dfab4369d2cc7b427c",
+      "grade": "14/14 review, 13/13 author attributed, no durable C9 native"
+    },
+    "BP2P4J": {
+      "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+      "grade": "SOURCEFREE_JOINED_A0_A2_ONLY"
+    }
+  },
+  "direct_git_blobs_read_in_o1": {
+    "bp2p4/product.py": "8f7177a6b4e3ae0cae6316a13cf57adf363e0460",
+    "bp2p4/assertion.py": "e7bc26aaa2d91c5a5d7e7ae7698ed9f0687bbfaa",
+    "vendor/bp4/bp4/product.py": "69cb5d7416e36b6f100ab36ffda8a8d9a92db0a8",
+    "vendor/bp4/bp4/c10.py": "94618b7a21ef71559e34778aec2315a30b5e09b9",
+    "BP4R candidate c12_guard.py": "e0d9d90468a9d4d62ef38859b1c2762f92421022",
+    "BP4R candidate c9_actor_r3.py": "b9000cdb1a4e3e3be6de0dfb1690515f2984a122",
+    "C9 R3B c9_actor_r3.py": "67f34f699220ec1407e7e8f0d58ed328e88a36af",
+    "C9 R3B actor_reader.py": "5ef6a278a56968b8f9ccf700ae58e636a0999b5f",
+    "DDM pre553_cosignature_composition.py": "dee52dbcb7e60245cc51054f6c55544893f7ba67"
+  },
+  "current_program_documents": {
+    "Rawlsing Programma": "CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md@5cad28305a8f7c494d5d1840a0a4ce9286508366",
+    "Sorok Programma": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md@242ffb15be1eab70fd136b978003f59337bde6fe",
+    "Pyat Programma": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md@d5458a8203465b0987f85409e8e12281c3cb84e2",
+    "Sorok read me": "SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md@151f7557ed618bbc55b175e63cc3f217f9db0e0b",
+    "Pyat read me": "PYAT_CONTROL_ROOM/00_READ_ME_FIRST.md@1e7cf58a643145808ea815d985a237bbc4ecd048",
+    "finish-work directive": "CROSS_HQ_CONTROL_ROOM/20261030_USER_FINISH_THE_WORK_NO_ADMIN_THEATER_DIRECTIVE.md@6e3749fe314211f1c0ac5d5ae61718a8446ce463",
+    "Sorok progress": "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md@fd6ce00595e7b1ea9bb997cf7bd9fcb4e83eccbe",
+    "Pyat progress": "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md@b4e3048f4318325fd369018af87de4bf9447e081"
+  },
+  "source_read_theory": [
+    {
+      "author": "Leontiev",
+      "file": "Actividade Conscincia e Personalidade -- Alexei N_ Leontiev -- 101 -- ca55d151e7cf04f686b3e8a58ce04c87 -- Anna’s Archive.pdf",
+      "location": "Portuguese theoretical introduction, activity/consciousness/personality",
+      "read_status": "DIRECT_EXTRACT",
+      "scientific_limit": "activity not event-to-psyche rule"
+    },
+    {
+      "author": "Sève",
+      "file": "Man in marxist theory and the psychology of personality ... pdf",
+      "location": "printed pp. 193-194, living system of social relations between acts, labor/wages",
+      "read_status": "DIRECT_EXTRACT",
+      "scientific_limit": "no individual motive from class"
+    },
+    {
+      "author": "Lahire",
+      "file": "bernard-lahire-the-plural-actor_pdf ... pdf",
+      "location": "printed pp. 50-51, Conditional dispositions",
+      "read_status": "DIRECT_EXTRACT",
+      "scientific_limit": "unobservable disposition must be reconstructed from practice/situation/biography"
+    },
+    {
+      "author": "Dreier",
+      "file": "Psychotherapy in Everyday Life ... pdf",
+      "location": "Gathering, Adopting, and Pursuing Personal Stances; across contexts",
+      "read_status": "DIRECT_EXTRACT",
+      "scientific_limit": "no uniform cross-context transfer"
+    },
+    {
+      "author": "Holzkamp",
+      "file": "Grundlegung der Psychologie -- Klaus Holzk - Unknown.txt",
+      "location": "introductory cover statement on Handlungsfähigkeit; not full chapter analysis",
+      "read_status": "DIRECT_EXTRACT_LIMITED",
+      "scientific_limit": "do not quantify control without material possibilities"
+    },
+    {
+      "author": "Elder",
+      "file": "Children of the Great Depression ... pdf",
+      "location": "foreword printed xvii",
+      "read_status": "DIRECT_EXTRACT_LIMITED",
+      "scientific_limit": "historical time/place does not predict individual outcome"
+    },
+    {
+      "author": "Archer",
+      "file": "Structure, agency, and the internal conversation ... pdf",
+      "location": "opening publisher synopsis only",
+      "read_status": "DIRECT_EXTRACT_LIMITED",
+      "scientific_limit": "no native introspection implementation deduced"
+    },
+    {
+      "author": "Bhattacharya et al.",
+      "file": "Social Reproduction Theory_ Remapping Clas - Tithi Bhattacharya.txt",
+      "location": "Introduction; How Not to Skip Class passages on labor power and social reproduction",
+      "read_status": "DIRECT_EXTRACT",
+      "scientific_limit": "no gender/class deterministic individual psychology"
+    }
+  ],
+  "reported_only_evidence": {
+    "rcf_a_archive": {
+      "observed_sha256": "3f2c5ed925273153a4f300f75e54524729f0b4fef9974957be1f3cd887c91289",
+      "td_r05_expected": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+      "selected_file_source_sha256": [
+        {
+          "id": "M01",
+          "files": [
+            {
+              "path": "v3/core/state.py",
+              "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+              "td_match": true
+            },
+            {
+              "path": "v3/core/year_record.py",
+              "sha256": "4bbd7518a6ec8bc8dd22758a2f9e876882253dfd59021a998a6d541b23e5cfc2",
+              "td_match": true
+            },
+            {
+              "path": "v3/core/generation_integrity.py",
+              "sha256": "5265aac2fda4d6e6ac62927353518045f215d7d1916930e19e980b6d77eff214",
+              "td_match": false
+            }
+          ]
+        },
+        {
+          "id": "M08",
+          "files": [
+            {
+              "path": "v3/core/state.py",
+              "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+              "td_match": true
+            },
+            {
+              "path": "v3/psyche/channels.py",
+              "sha256": "2d00bf6b8720879e610160e58455f983e1e63fbe8ceef1a93f46844de8a3f111",
+              "td_match": false
+            },
+            {
+              "path": "v3/engine/effects/metabolization_effects.py",
+              "sha256": "d4775271ca097e99e615cee19b381a478ad6d90a25051c5fce1b1e0e3c1adb1e",
+              "td_match": false
+            }
+          ]
+        },
+        {
+          "id": "M15",
+          "files": [
+            {
+              "path": "v3/core/state.py",
+              "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+              "td_match": true
+            },
+            {
+              "path": "v3/engine/expectation_baseline.py",
+              "sha256": "632e1e608bfc674a241e57bafa24e91834a2b8bdc3e4ed326dae6fca4e695d43",
+              "td_match": true
+            },
+            {
+              "path": "v3/io/parent_baseline_from_behavior.py",
+              "sha256": "4e5be6448a5b76c413492ec2a83b62d9e9a2247ce131a094727d974a17cf750b",
+              "td_match": false
+            }
+          ]
+        },
+        {
+          "id": "M21",
+          "files": [
+            {
+              "path": "v3/psyche/flow.py",
+              "sha256": "6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d",
+              "td_match": true
+            },
+            {
+              "path": "v3/psyche/vitality.py",
+              "sha256": "56fed88e37299862774b2401c9a7e43363de6d6bb47a78f8f4744dcc6f91e912",
+              "td_match": true
+            },
+            {
+              "path": "v3/psyche/insulation.py",
+              "sha256": "c8dd5f96111d3b247ddcf27b876d09c05460b06d7961193bff039e39e5967d28",
+              "td_match": false
+            }
+          ]
+        },
+        {
+          "id": "M25",
+          "files": [
+            {
+              "path": "v3/v3_yearly_step_order.yaml",
+              "sha256": "90496a2cc852ca00ef99c8bd4fcb2b41c9aa43c4aaa9108d3ac8cce0ebe22ffc",
+              "td_match": true
+            },
+            {
+              "path": "v3/engine/yearly_step.py",
+              "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+              "td_match": true
+            },
+            {
+              "path": "v3/engine/step_runner.py",
+              "sha256": "5a737c1704eaa6dc2c67f6c2db3118a6daa8a213b44d559bc37eadbc9c09d95a",
+              "td_match": true
+            },
+            {
+              "path": "v3/tests/test_architecture_invariants.py",
+              "sha256": "bb2baec1c57de169a2e1e05533b9721b4b05191403ff4993d61df17ac29d05fa",
+              "td_match": false
+            }
+          ]
+        },
+        {
+          "id": "M26",
+          "files": [
+            {
+              "path": "v3/core/state.py",
+              "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2",
+              "td_match": true
+            },
+            {
+              "path": "v3/core/derived.py",
+              "sha256": "e479fc3eba21734752c372742fb2ee247cbdde6a73ac42545dc30b5039301360",
+              "td_match": true
+            },
+            {
+              "path": "v3/core/invariants.py",
+              "sha256": "81298f3fc51b46cda8d72d0db914b672b17b9a35e13004fe59a9b0e29dada5e3",
+              "td_match": true
+            },
+            {
+              "path": "v3/tests/test_architecture_invariants.py",
+              "sha256": "bb2baec1c57de169a2e1e05533b9721b4b05191403ff4993d61df17ac29d05fa",
+              "td_match": false
+            }
+          ]
+        },
+        {
+          "id": "M29",
+          "files": [
+            {
+              "path": "v3/engine/llm_contract.py",
+              "sha256": "f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf",
+              "td_match": true
+            },
+            {
+              "path": "v3/engine/prompts.py",
+              "sha256": "4702de20590579c3c4543dfa5139aa4a3ce6df47ed1aee2c92c800d5a3038d57",
+              "td_match": false
+            },
+            {
+              "path": "v3/render/phenomenology.py",
+              "sha256": "f2f18c1d9ba705212846af41b33cb1dfd2ad986dae4b686873687c2e6d1a653d",
+              "td_match": true
+            },
+            {
+              "path": "v3/tests/test_architecture_invariants.py",
+              "sha256": "bb2baec1c57de169a2e1e05533b9721b4b05191403ff4993d61df17ac29d05fa",
+              "td_match": false
+            }
+          ]
+        },
+        {
+          "id": "M30",
+          "files": [
+            {
+              "path": "v3/V3_UNDERLIES_V2_ARTICULATION.md",
+              "sha256": "5a0f11276a830b959df72653016ca77848dbd81de4adb9fa641bd4244c4f4ced",
+              "td_match": true
+            },
+            {
+              "path": "v3/io/persona_sheet.py",
+              "sha256": "4a0009533443baef2786fc498c7f8db3ead7d133d8ee7e97e6d7128d4322a00e",
+              "td_match": false
+            },
+            {
+              "path": "v2/conversation_engine.py",
+              "sha256": "766bee296379f0faadbede55106bcee0123e9563c965d0e28f8806cedea06135",
+              "td_match": true
+            }
+          ]
+        },
+        {
+          "id": "M31",
+          "files": [
+            {
+              "path": "v2/ENNEAGRAM_EMERGENCE_SYSTEM.md",
+              "sha256": "95f8876926dda96a33c36925aedacee65645c74863cff68241e6b67457f819ab",
+              "td_match": true
+            },
+            {
+              "path": "v2/PROBABILISTIC_ENNEAGRAM_SYSTEM.md",
+              "sha256": "3a63f8caa258b5d00c4baa5bbe064eacf4b3a0fed3a83560dd2469d1b5654106",
+              "td_match": false
+            },
+            {
+              "path": "v2/enneagram_wisdom.py",
+              "sha256": "95c018092eae44f319bead262c7d815c477df85ede4f7574e2b08aeff17ce34d",
+              "td_match": false
+            },
+            {
+              "path": "v2/parent_type_inference.py",
+              "sha256": "b05632d01c48f52a5bed36b07b094ac770cada81f51951d78b7bea61e4e66cf3",
+              "td_match": false
+            }
+          ]
+        },
+        {
+          "id": "M33",
+          "files": [
+            {
+              "path": "v3/engine/event_engine.py",
+              "sha256": "b57e7ef4df5dabd996dc7de19c1c2c273ad90ee89d73570df1fd85674dd98ded",
+              "td_match": true
+            }
+          ]
+        },
+        {
+          "id": "M34",
+          "files": [
+            {
+              "path": "v3/engine/llm_contract.py",
+              "sha256": "f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf",
+              "td_match": true
+            },
+            {
+              "path": "v3/engine/run_llm_band.py",
+              "sha256": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38",
+              "td_match": true
+            }
+          ]
+        },
+        {
+          "id": "M35",
+          "files": [
+            {
+              "path": "v3/core/invariants.py",
+              "sha256": "81298f3fc51b46cda8d72d0db914b672b17b9a35e13004fe59a9b0e29dada5e3",
+              "td_match": true
+            },
+            {
+              "path": "v3/engine/yearly_step.py",
+              "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+              "td_match": true
+            }
+          ]
+        },
+        {
+          "id": "M36",
+          "files": [
+            {
+              "path": "v3/io/parent_baseline_from_behavior.py",
+              "sha256": "4e5be6448a5b76c413492ec2a83b62d9e9a2247ce131a094727d974a17cf750b",
+              "td_match": false
+            },
+            {
+              "path": "v3/engine/expectation_baseline.py",
+              "sha256": "632e1e608bfc674a241e57bafa24e91834a2b8bdc3e4ed326dae6fca4e695d43",
+              "td_match": true
+            }
+          ]
+        },
+        {
+          "id": "M37",
+          "files": [
+            {
+              "path": "server/generation/simulation.py",
+              "sha256": "5d68ffe3bc6902dc60b90625443a03127cf0d04b4eed4327270a3a0226bc78d1",
+              "td_match": false
+            },
+            {
+              "path": "v3/io/persona_sheet.py",
+              "sha256": "4a0009533443baef2786fc498c7f8db3ead7d133d8ee7e97e6d7128d4322a00e",
+              "td_match": false
+            },
+            {
+              "path": "v3/tools/distill_memory.py",
+              "sha256": "6bece5ef66029581b27fd9d813e32d7d9239d2cde2c243a3df220d58c47d7cc2",
+              "td_match": false
+            }
+          ]
+        },
+        {
+          "id": "M38",
+          "files": [
+            {
+              "path": "v3/v3_yearly_step_order.yaml",
+              "sha256": "90496a2cc852ca00ef99c8bd4fcb2b41c9aa43c4aaa9108d3ac8cce0ebe22ffc",
+              "td_match": true
+            },
+            {
+              "path": "v3/engine/yearly_step.py",
+              "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+              "td_match": true
+            },
+            {
+              "path": "v3/core/config_loader.py",
+              "sha256": "5f953d9661f61081187898c3ad06b4567bc4fa99d3d7cd856d30cdd961f78577",
+              "td_match": false
+            }
+          ]
+        },
+        {
+          "id": "M39",
+          "files": [
+            {
+              "path": "server/generation/simulation.py",
+              "sha256": "5d68ffe3bc6902dc60b90625443a03127cf0d04b4eed4327270a3a0226bc78d1",
+              "td_match": false
+            },
+            {
+              "path": "v3/engine/effects/metabolization_effects.py",
+              "sha256": "d4775271ca097e99e615cee19b381a478ad6d90a25051c5fce1b1e0e3c1adb1e",
+              "td_match": false
+            }
+          ]
+        },
+        {
+          "id": "M40",
+          "files": [
+            {
+              "path": "server/generation/store.py",
+              "sha256": "eb592702327427a22b5d901337e6ee8b251b164ad41fe8848b165a14730a942c",
+              "td_match": false
+            },
+            {
+              "path": "server/generation/simulation.py",
+              "sha256": "5d68ffe3bc6902dc60b90625443a03127cf0d04b4eed4327270a3a0226bc78d1",
+              "td_match": false
+            },
+            {
+              "path": "server/session_state.py",
+              "sha256": "9c9c3b0e2b3bff700af127e03805166102920019d6acd099ee8270fbe63bc15a",
+              "td_match": false
+            },
+            {
+              "path": "v3/core/generation_integrity.py",
+              "sha256": "5265aac2fda4d6e6ac62927353518045f215d7d1916930e19e980b6d77eff214",
+              "td_match": false
+            }
+          ]
+        }
+      ],
+      "observed_tests": "4 + 12 + 24 = 40 passed at RCF-A sourcefree local; named render-before-field-update mutation failed historical test_step_order_immutable; no original source/native grant",
+      "caveat": "36 of 40 M rows match at least one TD-R05 manifest source file, not whole-container provenance; 80 historical TD-R05 aggregate was NOT rerun"
+    },
+    "rcf_b": {
+      "actual_9_9": "BP2P4J 5b3e6577400ea1d88971ae6b48e41a118b8059ae + BP4R 693d25bf40f76b09ccf2cc1ec5218a262e201fcd, JUnit sha256 69310122569c0feae971294065d4ed52ed36d6d2d6e3958f48447dc11af2d747",
+      "scoped_components": {
+        "bp2p4j": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+        "b3as": "1a25b19dd01e8e7954e38c59ffc7e52c50739c9f",
+        "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135",
+        "g17": "90d0eb7925de54635559a879ee76fc1b97b9ff61",
+        "g17i2": "95f15026cd95f6467455d0dfab4369d2cc7b427c",
+        "g17_candidate": "8b9a39da552a224bddf486603179f565003f38bb",
+        "m04": "2309a73bcea1572f6545d5b26027ddc608bee271",
+        "m04i2": "09497812e417001657c40575e6476466cdddef1c",
+        "m04r": "8f200fd6ff6ce10e9effb017d2c265163e287105",
+        "bp4i3": "0aaf119f193637027571f18eb7478fb4e76746cc",
+        "bp4r": "693d25bf40f76b09ccf2cc1ec5218a262e201fcd",
+        "f1c": "bcea367e7dc0f2e069de71b0fe5e481de094dad5",
+        "f1ci3": "0a884fd5af7ebb97f4cc0ef8c1251386641732f0",
+        "f1cr": "03be5c225b8ec5832c1c648b9c1799419f0c4066",
+        "c9_r3b": "fac064c9c3370d598e9b7469af652ae3504bc4ba",
+        "c9_staging": "b8923db14ef20d5c61c9b4495d7e4efa361e268b",
+        "c12_original": "68b058656254234f0af02df2a592aa6f8c6a8bd2",
+        "f2": "0636d257f588f8874e65b2cb183d1d47c7f53327",
+        "oc5e": "67a4f1561cdad40192f00797d66b24fc4cd91589"
+      },
+      "test_only_passing_expected_vulnerabilities": [
+        "global writer 11→10 accepted; unresolved",
+        "anchor actor+created_clock changed without anchored payload; unresolved"
+      ],
+      "attributed_only": [
+        "G17I2 14/14 reviewer +13/13 author",
+        "M04R 51/51 +587/587 with CAN3 9 RED",
+        "C9 R3B 15/15 + C9/C12 14 pass 1 fail",
+        "F1CR 13/13 + 3 mutation; patched executable not at any committed tree path"
+      ],
+      "not_joined": true
+    },
+    "rcf_c": {
+      "direct_static": "7 R95/R107/R151 world binding, 4 F6, 5 S02 variants; PR526 current production modules; no Pyat native source issued",
+      "unfixed": [
+        "B5 9 failures 6 passes 1 skip PerimeterTicket",
+        "S02 60 pass 1 fail missing staged fixture",
+        "P41 CONTEXT_STRUCTURAL_AUTHORITY_HELD",
+        "W3 old to current receipt drift",
+        "N11/N12 native world and Sorok C0 reader unproven"
+      ]
+    },
+    "rcf_d": {
+      "sourcefree_executed": [
+        "8/8 pre553_cosignature_composition at branch 2474f8ef...",
+        "10/10 CLOSED35 Arab2 at 87e72f0b..."
+      ],
+      "candidate_hold_rows_classified": 171,
+      "branch_local_not_source_read": 39,
+      "source_custody": "R41 world harness support modules head-read only; root/cosignature absent PRE-MAIN and no importer",
+      "not_native": true
+    }
+  },
+  "original_negatives": [
+    {
+      "id": "OC5E",
+      "count": 49,
+      "status": "RETAINED_HOSTILE_REDS",
+      "native": false,
+      "owner": "OC5/C8"
+    },
+    {
+      "id": "CAN3",
+      "count": 9,
+      "status": "RETAINED_REDS_AFTER_M04R",
+      "native": false,
+      "owner": "CAN008/CAN011/ADP"
+    },
+    {
+      "id": "C9_R3B",
+      "count": "14 PASS / 1 FAIL",
+      "status": "OLD_COUNT_C12_PERCEPTION_SUFFIX_FAIL",
+      "owner": "C9R"
+    },
+    {
+      "id": "B5",
+      "count": "9 FAIL / 6 PASS / 1 SKIP",
+      "status": "MANDATORY_PERIMETER_TICKET_POSITIVE_SKIPPED",
+      "owner": "Pyat B5/C02"
+    },
+    {
+      "id": "F1_NATIVE",
+      "count": 17,
+      "status": "NATIVE_HISTORICAL_REDS_NO_CLEARANCE",
+      "owner": "F1C/CAN/ADP"
+    },
+    {
+      "id": "G17I",
+      "count": 3,
+      "status": "HISTORICAL_REDS; later scoped component accepted, not full C9",
+      "owner": "G17/C9"
+    },
+    {
+      "id": "M04",
+      "count": "10 fresh + 9 historical",
+      "status": "RETAINED_OBSERVATIONS",
+      "owner": "M04/CAN3"
+    },
+    {
+      "id": "S02",
+      "count": "60 PASS / 1 FAIL",
+      "status": "MISSING_STAGED_FIXTURE_NOT_AUTO_GREEN",
+      "owner": "Pyat S00/S02"
+    },
+    {
+      "id": "BP4R_WRITER_CLOCK",
+      "count": 1,
+      "status": "NAMED_FAILING_VULNERABILITY DEMONSTRATED INSIDE PASSING TEST",
+      "owner": "C9/C12"
+    },
+    {
+      "id": "BP4R_ANCHOR_ACTOR_CLOCK",
+      "count": 1,
+      "status": "UNBOUND_ANCHOR DEMONSTRATED INSIDE PASSING TEST",
+      "owner": "C9/C12"
+    }
+  ],
+  "unresolved_specific": [
+    {
+      "scope": "Original V3 archive",
+      "state": "PARTIAL_FILE_IDENTITY_NOT_CONTAINER_IDENTITY",
+      "reason": "whole ZIP SHA mismatch; selected source SHA match doesn't certify all bytes"
+    },
+    {
+      "scope": "F1CR",
+      "state": "MISSING_COMMITTED_EXECUTABLE",
+      "reason": "patch bf7e625e... not at Git tree path; program loose blob only"
+    },
+    {
+      "scope": "C9R old writer versus BP2P4J",
+      "state": "NO_SHARED_READSET/SCHEMA_ISSUE",
+      "reason": "C9 R3B actor DB and C12 JoinedProduct store remain distinct"
+    },
+    {
+      "scope": "C12 source/custody",
+      "state": "OWNER_ANCHOR_REQUIRED",
+      "reason": "raw SQLite injection/deletion and actor created_clock binding unresolved"
+    },
+    {
+      "scope": "C10",
+      "state": "MISSING_TARGETLESS_REFUSE_SILENCE_REAL_RECURRENCE",
+      "reason": "read-only JOIN test not C10 writer"
+    },
+    {
+      "scope": "Pyat N11/N12",
+      "state": "MISSING_NATIVE_PRODUCER_OR_QUALIFIED_ADAPTER",
+      "reason": "R61 sourcefree compiler and OC01/02 do not issue native world"
+    },
+    {
+      "scope": "Sorok C0–A5",
+      "state": "NO_NATIVE_CURRENT_PERSON",
+      "reason": "no real source-qualified C0 and original CAN/ADP/C9 actor change and A5 consumer"
+    },
+    {
+      "scope": "39 branch-only scripts and R41 support",
+      "state": "EXPLICIT_BOUNDED_UNREAD",
+      "reason": "RCF-D classified absent current importer; not all source inspected"
+    }
+  ],
+  "return_generated_scope": {
+    "authored_program_not_executed": true,
+    "local_python_checkout": "NOT_VERIFIED_NOT_RUN",
+    "sourcefree_pytest": "NOT_RUN_O1",
+    "original_respondent": "NOT_RUN",
+    "native_actor": "NOT_RUN",
+    "git_mutations": "ONLY_EXCLUSIVE_WORKER_RETURNS_FILES_ON_NEW_O1_BRANCH",
+    "agent_launch": "NONE",
+    "sorok_hq_appointment": "NONE",
+    "scientific_law_issuance": "NONE",
+    "reviewer_adoption": "NONE",
+    "premain_cas": "NONE",
+    "caution": "Do not mistake standalone actual sourcefree product in future for native actor or actual-source world"
+  },
+  "files": [
+    "00_RETURN.md",
+    "01_L0_L5_EXISTING_FUNCTION_AND_EVIDENCE_ATLAS.json",
+    "02_SCIENTIFIC_ARCHITECTURE_ALTERNATIVES.md",
+    "03_PARALLEL_PRODUCTIVE_IMPLEMENTATION_FLIGHT_AND_LAUNCH_PROMPTS.md",
+    "04_PROVENANCE_LIMITS_AND_NEGATIVES.json"
+  ],
+  "final_remote_sha": "DETERMINED_EXTERNALLY_AFTER_FINAL_COMMIT__NOT_SELF_REFERENTIAL"
+}
