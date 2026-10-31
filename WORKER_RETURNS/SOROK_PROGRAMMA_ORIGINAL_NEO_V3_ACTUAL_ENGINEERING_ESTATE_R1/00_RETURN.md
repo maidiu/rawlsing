@@ -4,7 +4,8 @@
 **Branch:** `agent/sorok-programma-original-neo-v3-implementation-consumer-whole-estate-r1-20261031`
 **Startup:** `cee8a09b33ccfb08e5db7e0bc3be45fda8938766`
 **Commission/worktree HEAD:** `c061dc018e8a52a8a75ae7c82156100e04506418`
-**Exact final remote SHA:** `PENDING_PUSH_READBACK` (final push readback in the terminal response; a file cannot contain its own final SHA)
+**Content commit SHA:** `5fb240489a1d1d630a80e1de213d6fbc32bfb0fd`
+**Final remote tip:** reported in the terminal push readback; this readback record is a follow-up commit, so a file cannot contain its own final SHA.
 
 ## 1. Three verdicts
 
