@@ -93,10 +93,8 @@ def main():
                         (adoption_axis if key=="ADOPTION" else presence_axis)[v]+=1
                     elif isinstance(v,dict):
                         for vv in v.values():
-                            if isinstance(vv,str) and ("CURRENT_PRODUCTION_ACCEPTED" in vv or "RENAMED_EQUIVALENT_PROVEN" in vv):
+                            if isinstance(vv,str) and len(contested_examples)<8 and ("CURRENT_PRODUCTION_ACCEPTED" in vv or "RENAMED_EQUIVALENT_PROVEN" in vv):
                                 contested_examples.append({"ordinal":k+1,"axis":key,"value":vv,"original_path":item.get("original_path"),"symbol":item.get("original_symbol") or item.get("symbol"),"proof_sources":item.get("proof_sources",[])[:2]})
-            if len(contested_examples)>8:
-                break
         
         for item in new_f:
             t=json.dumps(item,sort_keys=True,ensure_ascii=True)
