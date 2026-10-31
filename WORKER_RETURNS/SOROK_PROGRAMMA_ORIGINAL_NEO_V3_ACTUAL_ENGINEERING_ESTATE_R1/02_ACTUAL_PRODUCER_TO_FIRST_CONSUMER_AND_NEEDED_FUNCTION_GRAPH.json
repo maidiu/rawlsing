@@ -1,0 +1,1384 @@
+{
+  "cut": "c061dc018e8a52a8a75ae7c82156100e04506418",
+  "edges": [
+    {
+      "evidence": "v3/run_and_print.py:95\u2192123",
+      "from": "ORIG_IDENTITY_TO_BACKBONE",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "ORIG_YEAR_ENGINE",
+      "type": "PRODUCES_INITIAL_STATE"
+    },
+    {
+      "evidence": "v3/run_and_print.py:123/130; server simulation 1268/1271",
+      "from": "ORIG_YEAR_ENGINE",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "ORIG_LLM_BAND",
+      "type": "OPTIONAL_LLM_BAND"
+    },
+    {
+      "evidence": "v3/run_and_print.py:170; server simulation 1341",
+      "from": "ORIG_YEAR_ENGINE",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "ORIG_PERSONA_SHEET",
+      "type": "SUPPLIES_STATE"
+    },
+    {
+      "evidence": "server simulation 1341",
+      "from": "ORIG_LLM_BAND",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "ORIG_PERSONA_SHEET",
+      "type": "SUPPLIES_NARRATIVE"
+    },
+    {
+      "evidence": "server simulation 429-438 \u2192 identity_to_backbone 515-560",
+      "from": "ORIG_FIELD_ENNEAGRAM",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "ORIG_IDENTITY_TO_BACKBONE",
+      "type": "WRITES_PARENT_BASELINE"
+    },
+    {
+      "evidence": "V2_V3_DIRECTORY_REQUIREMENTS legacy JS line 38",
+      "from": "ORIG_DRIVER_JS",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "ORIG_FIELD_ENNEAGRAM",
+      "type": "LEGACY_ANALOGUE_ONLY"
+    },
+    {
+      "evidence": "no human A5",
+      "from": "ORIG_PERSONA_SHEET",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "GAP_HUMAN_A5",
+      "type": "BLOCKED_BEFORE_HUMAN"
+    },
+    {
+      "evidence": "gt12 bridge",
+      "from": "PREV3_M1",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "PREV3_M2",
+      "type": "PRODUCES_ROUTE_INPUT"
+    },
+    {
+      "evidence": "gt12 bridge",
+      "from": "PREV3_M2",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "PREV3_M4",
+      "type": "PUBLISHABLE_ROUTE"
+    },
+    {
+      "evidence": "m5",
+      "from": "PREV3_M4",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "PREV3_M5",
+      "type": "RESOLVES_TO_RSC"
+    },
+    {
+      "evidence": "m6 import",
+      "from": "PREV3_M5",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "PREV3_M6",
+      "type": "SUPPLIES_RSC"
+    },
+    {
+      "evidence": "render contract",
+      "from": "PREV3_M6",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "CURRENT_RENDER",
+      "type": "ADMITTED_CLAIM_INPUT"
+    },
+    {
+      "evidence": "wsc_gt0_v2",
+      "from": "GT0_E2E",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "CURRENT_RENDER",
+      "type": "NEGATIVE_AUTHORITY_PROBE"
+    },
+    {
+      "evidence": "no app",
+      "from": "CURRENT_DDM_CHAIN",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "GAP_CURRENT_V3_RUNTIME",
+      "type": "BUILD_HARNESS_ONLY"
+    },
+    {
+      "evidence": "bp2 producer",
+      "from": "BP1_ACTORS",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "BP2_JOIN",
+      "type": "PRODUCES_ACTOR_LIFE"
+    },
+    {
+      "evidence": "bp2 producer",
+      "from": "BP3_C8",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "BP2_JOIN",
+      "type": "PRODUCES_C8_OCCURRENCE"
+    },
+    {
+      "evidence": "bp2p4 reunion",
+      "from": "BP2_JOIN",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "BP4_C10",
+      "type": "PRODUCES_JOINED_ARTIFACTS"
+    },
+    {
+      "evidence": "bp4 product",
+      "from": "BP4_C10",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "BP4_PRODUCT",
+      "type": "SUPPLIES_ACTOR_LIMITED_STATE"
+    },
+    {
+      "evidence": "bp4 product",
+      "from": "BP4_C12",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "BP4_PRODUCT",
+      "type": "SUPPLIES_DURABLE_HISTORY"
+    },
+    {
+      "evidence": "joined session",
+      "from": "BP2P4J_PRODUCT",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "JOIN_SESSION",
+      "type": "SUPPLIES_PRODUCT"
+    },
+    {
+      "evidence": "r31j product",
+      "from": "R31J_PRE_C9",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "R31J_PRODUCT",
+      "type": "SUPPLIES_PRE_C9_SOURCE"
+    },
+    {
+      "evidence": "joined session",
+      "from": "R31J_PRODUCT",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "JOIN_SESSION",
+      "type": "SUPPLIES_SAME_ROOT"
+    },
+    {
+      "evidence": "joined session",
+      "from": "R31E_SESSION",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "JOIN_SESSION",
+      "type": "SUPPLIES_ENCOUNTER"
+    },
+    {
+      "evidence": "bp2 producer",
+      "from": "CURRENT_C9_WRITER",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "BP2_JOIN",
+      "type": "SUPPLIES_C9_TRANSACTION"
+    },
+    {
+      "evidence": "joined session",
+      "from": "CURRENT_C9_READER",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "JOIN_SESSION",
+      "type": "SUPPLIES_ACTOR_SURFACE"
+    },
+    {
+      "evidence": "no native ADP",
+      "from": "GAP_NATIVE_C4_ADP",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "ORIG_YEAR_ENGINE",
+      "type": "BLOCKS_NATIVE_PERSON"
+    },
+    {
+      "evidence": "test-only rule",
+      "from": "GAP_CAN008_RULE_A",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "BP2_JOIN",
+      "type": "BLOCKS_NATIVE_RULE_A"
+    },
+    {
+      "evidence": "test-only rule",
+      "from": "GAP_CAN011_RULE_T",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "BP2_JOIN",
+      "type": "BLOCKS_NATIVE_RULE_T"
+    },
+    {
+      "evidence": "test-only key/anchor",
+      "from": "GAP_C8_D1_D2",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "BP3_C8",
+      "type": "BLOCKS_NATIVE_CUSTODY"
+    },
+    {
+      "evidence": "store/anchor",
+      "from": "GAP_C9_C12",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "BP4_C12",
+      "type": "BLOCKS_NATIVE_C12"
+    },
+    {
+      "evidence": "world/Pyat",
+      "from": "GAP_C11_PYAT",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "BP4_C10",
+      "type": "BLOCKS_LAWFUL_WELD"
+    },
+    {
+      "evidence": "authority blocked",
+      "from": "GAP_M6_RENDER",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "CURRENT_RENDER",
+      "type": "BLOCKS_POSITIVE_SURFACE"
+    },
+    {
+      "evidence": "no A5",
+      "from": "GAP_HUMAN_A5",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "JOIN_SESSION",
+      "type": "BLOCKS_HUMAN_PRODUCT"
+    },
+    {
+      "evidence": "numeric/enneagram/persona",
+      "from": "GAP_ORIGINAL_V3_SEMANTICS",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "ORIG_YEAR_ENGINE",
+      "type": "CONTRADICTS_CURRENT_LAW"
+    },
+    {
+      "evidence": "no v3 dir",
+      "from": "GAP_CURRENT_V3_RUNTIME",
+      "grade": "SOURCE_STATIC_OR_CODE_DECLARED",
+      "to": "ORIG_YEAR_ENGINE",
+      "type": "NO_CURRENT_IMPORT"
+    }
+  ],
+  "nodes": [
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "EXTERNAL_CODE_READ_STATIC",
+      "falsifiers": [
+        "remove parent baseline \u2192 child model changes",
+        "native source missing"
+      ],
+      "first_actual_consumer": "run_and_print/run_simulation_for_session",
+      "first_consumer_ref": "v3/run_and_print.py:95; server/generation/simulation.py:1248",
+      "holds": "old defaults/midpoints and parent-behavior heuristic are not current CAN/ADP authority",
+      "id": "ORIG_IDENTITY_TO_BACKBONE",
+      "input": "v2 identity dict, parent baseline/regime, optional v5 refs",
+      "kind": "producer",
+      "name": "identity \u2192 BackboneState",
+      "operation": "builds 0\u2013100 BackboneState and child_model",
+      "output": "BackboneState + child_model",
+      "source_end_line": 686,
+      "source_epoch": "Rawlsing_code_bundle_staging",
+      "source_file": "EXT:v3/io/identity_to_backbone.py",
+      "source_line": 209,
+      "source_object": {
+        "path": "Rawlsing_code_bundle_staging/v3/io/identity_to_backbone.py",
+        "sha256": "cb29c9595ac495c3b69b693d4c58a278e9ef1f63a7a8917d8e407920fbd3bdda",
+        "type": "external_archive_member"
+      },
+      "source_path": "v3/io/identity_to_backbone.py",
+      "source_symbol": "backbone_state_from_identity",
+      "status": "SOURCE_VERIFIED_CONNECTED__EXTERNAL_STAGING_ONLY"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "EXTERNAL_CODE_READ_STATIC",
+      "falsifiers": [
+        "step-order mutation changes invariants",
+        "no native owner"
+      ],
+      "first_actual_consumer": "run_and_print; server simulation",
+      "first_consumer_ref": "v3/run_and_print.py:123; server/generation/simulation.py:1268",
+      "holds": "old pseudo-random events, scalar defaults, and age heuristics lack current rule authority",
+      "id": "ORIG_YEAR_ENGINE",
+      "input": "BackboneState, derived, config, step order",
+      "kind": "producer",
+      "name": "V3 yearly developmental engine",
+      "operation": "bounded step dispatch through field/event/practice/boundary/render",
+      "output": "mutated backbone + rendered_output",
+      "source_end_line": 99,
+      "source_epoch": "Rawlsing_code_bundle_staging",
+      "source_file": "EXT:v3/engine/yearly_step.py",
+      "source_line": 12,
+      "source_object": {
+        "path": "Rawlsing_code_bundle_staging/v3/engine/yearly_step.py",
+        "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb",
+        "type": "external_archive_member"
+      },
+      "source_path": "v3/engine/yearly_step.py",
+      "source_symbol": "run_one_year",
+      "status": "SOURCE_VERIFIED_CONNECTED__EXTERNAL_STAGING_ONLY"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "EXTERNAL_CODE_READ_STATIC",
+      "falsifiers": [
+        "empty/parse fallback changes output",
+        "no native Rule/actor grant"
+      ],
+      "first_actual_consumer": "run_and_print --llm; server simulation band ages",
+      "first_consumer_ref": "v3/run_and_print.py:130; server/generation/simulation.py:1271",
+      "holds": "fallback_first_candidate and model-produced narrative are not current semantic authority",
+      "id": "ORIG_LLM_BAND",
+      "input": "state summary plus LLM callback",
+      "kind": "producer",
+      "name": "V3 Pass1\u2192select\u2192delta\u2192Pass2 band",
+      "operation": "parse/select/apply deltas/apply magnets/render",
+      "output": "LLM narrative + mutated state",
+      "source_end_line": 431,
+      "source_epoch": "Rawlsing_code_bundle_staging",
+      "source_file": "EXT:v3/engine/run_llm_band.py",
+      "source_line": 146,
+      "source_object": {
+        "path": "Rawlsing_code_bundle_staging/v3/engine/run_llm_band.py",
+        "sha256": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38",
+        "type": "external_archive_member"
+      },
+      "source_path": "v3/engine/run_llm_band.py",
+      "source_symbol": "run_llm_band_year",
+      "status": "SOURCE_VERIFIED_CONNECTED__EXTERNAL_STAGING_ONLY"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "EXTERNAL_CODE_READ_STATIC",
+      "falsifiers": [
+        "hide/alter backstory changes chat",
+        "human A5 absent"
+      ],
+      "first_actual_consumer": "server simulation; v2 chat loader",
+      "first_consumer_ref": "server/generation/simulation.py:1341; v2/run_conversation_chat.py:36; server/chat/turn.py:127",
+      "holds": "compiled surface is not a current M6 actor-safe claim envelope",
+      "id": "ORIG_PERSONA_SHEET",
+      "input": "BackboneState + derived + trajectory",
+      "kind": "producer",
+      "name": "V3 persona sheet surface",
+      "operation": "identity, state, voice, backstory, life snapshot",
+      "output": "persona_sheet JSON",
+      "source_end_line": 993,
+      "source_epoch": "Rawlsing_code_bundle_staging",
+      "source_file": "EXT:v3/io/persona_sheet.py",
+      "source_line": 579,
+      "source_object": {
+        "path": "Rawlsing_code_bundle_staging/v3/io/persona_sheet.py",
+        "sha256": "4a0009533443baef2786fc498c7f8db3ead7d133d8ee7e97e6d7128d4322a00e",
+        "type": "external_archive_member"
+      },
+      "source_path": "v3/io/persona_sheet.py",
+      "source_symbol": "build_persona_sheet",
+      "status": "SOURCE_VERIFIED_CONNECTED__EXTERNAL_STAGING_ONLY"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "EXTERNAL_CODE_READ_STATIC",
+      "falsifiers": [
+        "remove driver vector \u2192 parent type/narrative changes",
+        "current W1 rejects type causal authority"
+      ],
+      "first_actual_consumer": "server simulation parent flow",
+      "first_consumer_ref": "server/generation/simulation.py:429",
+      "holds": "Enneagram/driver\u2192person inference is not current CAN/ADP/SCI authority",
+      "id": "ORIG_FIELD_ENNEAGRAM",
+      "input": "WVS driver vector + warmth/authority/material support",
+      "kind": "producer",
+      "name": "Driver vector / Enneagram parent inference",
+      "operation": "nine-type softmax heuristic",
+      "output": "parent type \u2192 parent narrative",
+      "source_end_line": 140,
+      "source_epoch": "Rawlsing_code_bundle_staging",
+      "source_file": "EXT:v2/parent_type_inference.py",
+      "source_line": 129,
+      "source_object": {
+        "path": "Rawlsing_code_bundle_staging/v2/parent_type_inference.py",
+        "sha256": "b05632d01c48f52a5bed36b07b094ac770cada81f51951d78b7bea61e4e66cf3",
+        "type": "external_archive_member"
+      },
+      "source_path": "v2/parent_type_inference.py",
+      "source_symbol": "infer_parent_type_most_likely",
+      "status": "SOURCE_VERIFIED_CONNECTED__EXTERNAL_STAGING_ONLY"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "EXTERNAL_CODE_READ_STATIC",
+      "falsifiers": [
+        "init.js not run by v2/v3 runtime",
+        "legacy only"
+      ],
+      "first_actual_consumer": "init.js persona draw",
+      "first_consumer_ref": "init.js:868",
+      "holds": "V2/V3 directory requirements explicitly call this legacy JS unused",
+      "id": "ORIG_DRIVER_JS",
+      "input": "40 driver values",
+      "kind": "producer",
+      "name": "Legacy driver\u2192Enneagram JS stack",
+      "operation": "min-max + softmax-like type probabilities",
+      "output": "type probabilities/health",
+      "source_end_line": 102,
+      "source_epoch": "Rawlsing_code_bundle_staging",
+      "source_file": "EXT:enneagram.js",
+      "source_line": 11,
+      "source_object": {
+        "path": "Rawlsing_code_bundle_staging/enneagram.js",
+        "sha256": "88180c5bcfe07531b7e90d4f33337e245e8f90bcac4acf79e968c7b4dacca9d6",
+        "type": "external_archive_member"
+      },
+      "source_path": "enneagram.js",
+      "source_symbol": "computeEnneagramProfile",
+      "status": "EXTERNAL_LEGACY_NODE_SCRIPT__NOT_USED_BY_V2_V3"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "CURRENT_GIT_CODE_STATIC",
+      "falsifiers": [
+        "tamper/fault changes decision",
+        "native source missing"
+      ],
+      "first_actual_consumer": "f07/gt12/tests",
+      "first_consumer_ref": "rawlsing_next/f07_second_canary_prev3_admission.py:362; rawlsing_next/gt12_d_to_m4_typed_bridge.py:445",
+      "holds": [
+        "requires exact published current V553/V554 source"
+      ],
+      "id": "PREV3_M1",
+      "input": "V553 temporal/structural evidence",
+      "kind": "producer/consumer",
+      "name": "evaluate_m1_temporal_v554_admission_dedup",
+      "operation": "admission/dedup/blocking decision",
+      "output": "M1Evaluation",
+      "source_end_line": 335,
+      "source_epoch": "HEAD",
+      "source_file": "HEAD:rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "source_line": 291,
+      "source_object": {
+        "blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+        "commit": "c061dc018e8a52a8a75ae7c82156100e04506418",
+        "path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+        "type": "blob"
+      },
+      "source_path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "source_symbol": "evaluate_m1_temporal_v554_admission_dedup",
+      "status": "CURRENT_TEST_OR_SOURCEFREE"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "CURRENT_GIT_CODE_STATIC",
+      "falsifiers": [
+        "direct V557 handoff only with authority",
+        "no native route"
+      ],
+      "first_actual_consumer": "gt12/tests",
+      "first_consumer_ref": "rawlsing_next/gt12_d_to_m4_typed_bridge.py:445",
+      "holds": [
+        "route authority bounded; no actor traversal"
+      ],
+      "id": "PREV3_M2",
+      "input": "M1 result + route request",
+      "kind": "producer/consumer",
+      "name": "evaluate_m2_v555_atomic_route",
+      "operation": "atomic V555 route evaluation",
+      "output": "M2Evaluation",
+      "source_end_line": 190,
+      "source_epoch": "HEAD",
+      "source_file": "HEAD:rawlsing_next/m2_v555_atomic_route.py",
+      "source_line": 170,
+      "source_object": {
+        "blob": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+        "commit": "c061dc018e8a52a8a75ae7c82156100e04506418",
+        "path": "rawlsing_next/m2_v555_atomic_route.py",
+        "type": "blob"
+      },
+      "source_path": "rawlsing_next/m2_v555_atomic_route.py",
+      "source_symbol": "evaluate_m2_v555_atomic_route",
+      "status": "CURRENT_TEST_OR_SOURCEFREE"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "CURRENT_GIT_CODE_STATIC",
+      "falsifiers": [
+        "forged checksum/stale selection refuses",
+        "no native world"
+      ],
+      "first_actual_consumer": "m5/tests",
+      "first_consumer_ref": "rawlsing_next/m5_runtime_rsc_peer_prior.py:977",
+      "holds": [
+        "repository resolution is structural context, not biography"
+      ],
+      "id": "PREV3_M4",
+      "input": "V557 bundles + repository + query",
+      "kind": "producer/consumer",
+      "name": "resolve_v558",
+      "operation": "verify/select/resolve immutable repository",
+      "output": "ResolutionResult",
+      "source_end_line": 1486,
+      "source_epoch": "HEAD",
+      "source_file": "HEAD:rawlsing_next/m4_v557_v558_publication_repository.py",
+      "source_line": 1361,
+      "source_object": {
+        "blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+        "commit": "c061dc018e8a52a8a75ae7c82156100e04506418",
+        "path": "rawlsing_next/m4_v557_v558_publication_repository.py",
+        "type": "blob"
+      },
+      "source_path": "rawlsing_next/m4_v557_v558_publication_repository.py",
+      "source_symbol": "resolve_v558",
+      "status": "CURRENT_TEST_OR_SOURCEFREE"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "CURRENT_GIT_CODE_STATIC",
+      "falsifiers": [
+        "stale context refuses",
+        "no generated person"
+      ],
+      "first_actual_consumer": "m6/tests",
+      "first_consumer_ref": "rawlsing_next/m6_actor_safe_expression.py:24; tests",
+      "holds": [
+        "runtime context requires exact currentness"
+      ],
+      "id": "PREV3_M5",
+      "input": "M4 resolution + currentness/query",
+      "kind": "producer/consumer",
+      "name": "materialize_resolved_structural_context",
+      "operation": "materialize RSC/peer prior",
+      "output": "ResolvedStructuralContext",
+      "source_end_line": 989,
+      "source_epoch": "HEAD",
+      "source_file": "HEAD:rawlsing_next/m5_runtime_rsc_peer_prior.py",
+      "source_line": 977,
+      "source_object": {
+        "blob": "18735bdb31a220aed032aa722574d685e2bdddf5",
+        "commit": "c061dc018e8a52a8a75ae7c82156100e04506418",
+        "path": "rawlsing_next/m5_runtime_rsc_peer_prior.py",
+        "type": "blob"
+      },
+      "source_path": "rawlsing_next/m5_runtime_rsc_peer_prior.py",
+      "source_symbol": "materialize_resolved_structural_context",
+      "status": "CURRENT_TEST_OR_SOURCEFREE"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "CURRENT_GIT_CODE_STATIC",
+      "falsifiers": [
+        "unperceived event NONRENDERABLE",
+        "custom source rejected"
+      ],
+      "first_actual_consumer": "BP4 perception (historical sourcefree)",
+      "first_consumer_ref": "WORKER_RETURNS/SOROK-20261020-BP4.../bp4/perception.py",
+      "holds": [
+        "positive situated-expression owner blocked"
+      ],
+      "id": "PREV3_M6",
+      "input": "actor-safe claims + perceived event",
+      "kind": "producer/consumer",
+      "name": "evaluate_actor_safe_ingress",
+      "operation": "M6 admission/narrowing",
+      "output": "ActorSafeIngressDecision",
+      "source_end_line": 779,
+      "source_epoch": "HEAD",
+      "source_file": "HEAD:rawlsing_next/m6_actor_safe_expression.py",
+      "source_line": 730,
+      "source_object": {
+        "blob": "74d9701cdc7dabccf61eb5089498db290c1efd9c",
+        "commit": "c061dc018e8a52a8a75ae7c82156100e04506418",
+        "path": "rawlsing_next/m6_actor_safe_expression.py",
+        "type": "blob"
+      },
+      "source_path": "rawlsing_next/m6_actor_safe_expression.py",
+      "source_symbol": "evaluate_actor_safe_ingress",
+      "status": "EXACT_PREMAIN_MODULE_WITH_SOURCEFREE_USE__NO_CURRENT_APP"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "CURRENT_GIT_CODE_STATIC",
+      "falsifiers": [
+        "no authority plan \u2192 zero outcome",
+        "model renderer not run"
+      ],
+      "first_actual_consumer": "no positive current consumer",
+      "first_consumer_ref": "rawlsing_next/wsc_gt0_v2_mediation.py:97",
+      "holds": [
+        "positive plan authority status blocked"
+      ],
+      "id": "CURRENT_RENDER",
+      "input": "admitted plan + renderer candidate",
+      "kind": "producer/consumer",
+      "name": "realize_bounded_expression",
+      "operation": "validate wording-only conformance",
+      "output": "render artifact or zero outcome",
+      "source_end_line": 617,
+      "source_epoch": "HEAD",
+      "source_file": "HEAD:rawlsing_next/render_bounded_expression.py",
+      "source_line": 486,
+      "source_object": {
+        "blob": "eef88095d1d647b5332aa5186a3a5df218fcf9f8",
+        "commit": "c061dc018e8a52a8a75ae7c82156100e04506418",
+        "path": "rawlsing_next/render_bounded_expression.py",
+        "type": "blob"
+      },
+      "source_path": "rawlsing_next/render_bounded_expression.py",
+      "source_symbol": "realize_bounded_expression",
+      "status": "BLOCKED_NAMED_AUTHORITY_REQUIRED"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "CURRENT_GIT_CODE_STATIC",
+      "falsifiers": [
+        "positive authority appears \u2192 assertion fails",
+        "no product"
+      ],
+      "first_actual_consumer": "tests only",
+      "first_consumer_ref": "rawlsing_next/tests/test_wsc_gt0_end_to_end.py",
+      "holds": [
+        "V3 zero positive guard; V2 owner blocked"
+      ],
+      "id": "GT0_E2E",
+      "input": "F0\u2192PREFF\u2192FF\u2192PREV3\u2192V3\u2192V2 receipts",
+      "kind": "producer/consumer",
+      "name": "run_gt0_end_to_end",
+      "operation": "conservation/zero-effect wiring",
+      "output": "terminal BLOCKED_POSITIVE_ACTOR_PATH",
+      "source_end_line": 66,
+      "source_epoch": "HEAD",
+      "source_file": "HEAD:rawlsing_next/wsc_gt0_end_to_end.py",
+      "source_line": 34,
+      "source_object": {
+        "blob": "62b6ea39c605874af6d7aef85693472f88087f57",
+        "commit": "c061dc018e8a52a8a75ae7c82156100e04506418",
+        "path": "rawlsing_next/wsc_gt0_end_to_end.py",
+        "type": "blob"
+      },
+      "source_path": "rawlsing_next/wsc_gt0_end_to_end.py",
+      "source_symbol": "run_gt0_end_to_end",
+      "status": "CURRENT_TEST_ONLY_NEGATIVE_PATH"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "CURRENT_GIT_CODE_STATIC",
+      "falsifiers": [
+        "missing input blocks layer",
+        "no native actor"
+      ],
+      "first_actual_consumer": "build harness/tests only",
+      "first_consumer_ref": "data/ddm_build_copy/compile_v5_walking_skeleton.py",
+      "holds": [
+        "V554\u2013V558 are contracts/audits, not persona compiler"
+      ],
+      "id": "CURRENT_DDM_CHAIN",
+      "input": "V552j\u2013V558 build roots",
+      "kind": "producer/consumer",
+      "name": "build_v5_thin_end_to_end",
+      "operation": "thin layer artifacts/readiness/audits",
+      "output": "thin end-to-end bundle",
+      "source_end_line": 2068,
+      "source_epoch": "HEAD",
+      "source_file": "HEAD:data/ddm_build_copy/ddm_v5_thin_end_to_end.py",
+      "source_line": 1981,
+      "source_object": {
+        "blob": "dee9c4dd4321d45c88df6f2108a71afb3e0ec502",
+        "commit": "c061dc018e8a52a8a75ae7c82156100e04506418",
+        "path": "data/ddm_build_copy/ddm_v5_thin_end_to_end.py",
+        "type": "blob"
+      },
+      "source_path": "data/ddm_build_copy/ddm_v5_thin_end_to_end.py",
+      "source_symbol": "build_v5_thin_end_to_end",
+      "status": "BUILD_HARNESS_ONLY__NO_APP_CONSUMER"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "HISTORICAL_CODE_STATIC",
+      "falsifiers": [
+        "mutated target/readset fails",
+        "native missing"
+      ],
+      "first_actual_consumer": "BP2/BP4 vendors; reader",
+      "first_consumer_ref": "WORKER_RETURNS/SOROK-20261020-BP4.../bp4/c10.py:57",
+      "holds": [
+        "no native Rule A/T, external key/anchor; held/final only"
+      ],
+      "id": "CURRENT_C9_WRITER",
+      "input": "exact C9 request/actor/rule/world",
+      "kind": "producer/consumer",
+      "name": "publish",
+      "operation": "CAS/idempotent actor transaction",
+      "output": "receipt/held state",
+      "source_end_line": 319,
+      "source_epoch": "origin/agent/sorok-syn02-c9-r3-testonly-idempotency-r1",
+      "source_file": "origin/agent/sorok-syn02-c9-r3-testonly-idempotency-r1:SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/c9_actor_r3.py",
+      "source_line": 140,
+      "source_object": {
+        "blob": "511e923cab4bc75ae7f6a9e300a761698222fb1b",
+        "commit": "c0e5faa547c085be0ed1b07aba8a7ec21c8a22aa",
+        "path": "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/c9_actor_r3.py",
+        "type": "blob"
+      },
+      "source_path": "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/c9_actor_r3.py",
+      "source_symbol": "publish",
+      "status": "HISTORICAL_SOURCEFREE_CONNECTED"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "HISTORICAL_CODE_STATIC",
+      "falsifiers": [
+        "old C12 bytes refuse",
+        "no native C12"
+      ],
+      "first_actual_consumer": "JOIN/BP4 vendor",
+      "first_consumer_ref": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+      "holds": [
+        "C12 source hash pin; old bytes mismatch"
+      ],
+      "id": "CURRENT_C9_READER",
+      "input": "exact C9 candidate + C12 source",
+      "kind": "producer/consumer",
+      "name": "read_actor_snapshot",
+      "operation": "load/read actor surface",
+      "output": "ActorSnapshotReadV1/SurfacePacket",
+      "source_end_line": 411,
+      "source_epoch": "origin/agent/rabochii-sorok-20261029-c9-r3b-recovered-writer-reader-real-fanin-r1",
+      "source_file": "origin/agent/rabochii-sorok-20261029-c9-r3b-recovered-writer-reader-real-fanin-r1:SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER/actor_reader.py",
+      "source_line": 343,
+      "source_object": {
+        "blob": "5ef6a278a56968b8f9ccf700ae58e636a0999b5f",
+        "commit": "fac064c9c3370d598e9b7469af652ae3504bc4ba",
+        "path": "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER/actor_reader.py",
+        "type": "blob"
+      },
+      "source_path": "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_READER/actor_reader.py",
+      "source_symbol": "read_actor_snapshot",
+      "status": "HISTORICAL_SOURCEFREE_CONNECTED"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "HISTORICAL_CODE_STATIC",
+      "falsifiers": [
+        "source severance changes action",
+        "H0/no-effect remains"
+      ],
+      "first_actual_consumer": "BP2 producer",
+      "first_consumer_ref": "bp2_joined/producer.py",
+      "holds": [
+        "roles/seeds are TEST_ONLY; no psychology/native actor"
+      ],
+      "id": "BP1_ACTORS",
+      "input": "G18 material receipts + two sourcefree sources",
+      "kind": "producer/product",
+      "name": "build_two_actor_life",
+      "operation": "creates independent ledgers, shared objective, performed actions",
+      "output": "TwoActorLife",
+      "source_end_line": 201,
+      "source_epoch": "origin/agent/rabochii-sorok-20261020-bp1-historical-actor-production-c4-c9-positive-r1",
+      "source_file": "origin/agent/rabochii-sorok-20261020-bp1-historical-actor-production-c4-c9-positive-r1:WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/composer.py",
+      "source_line": 139,
+      "source_object": {
+        "blob": "a04ea4970e218a8be94bd53df00b4690eae3f307",
+        "commit": "be9f3a9e1bb4c61a8c3ec89a9a5d18b4a10762a2",
+        "path": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/composer.py",
+        "type": "blob"
+      },
+      "source_path": "WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/composer.py",
+      "source_symbol": "build_two_actor_life",
+      "status": "SOURCEFREE_CANDIDATE__NO_CURRENT_PREMAIN"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "HISTORICAL_CODE_STATIC",
+      "falsifiers": [
+        "withhold Rule A/self-issued T fails",
+        "native missing"
+      ],
+      "first_actual_consumer": "BP4/BP2P4J",
+      "first_consumer_ref": "bp2p4/reunion.py",
+      "holds": [
+        "Rule A/T/E2 are TEST_ONLY; no native admission"
+      ],
+      "id": "BP2_JOIN",
+      "input": "BP1 life + BP3 C8 + C9R + test Rule A/T + E2",
+      "kind": "producer/product",
+      "name": "JoinedProducer.run",
+      "operation": "stages occurrence\u2192C8\u2192OUT9\u2192E1\u2192C9\u2192E2",
+      "output": "target/E2 receipts",
+      "source_end_line": 996,
+      "source_epoch": "origin/agent/rabochii-sorok-20261020-bp2-joined-event-rule-action-positive-r1",
+      "source_file": "origin/agent/rabochii-sorok-20261020-bp2-joined-event-rule-action-positive-r1:WORKER_RETURNS/SOROK-20261020-BP2-JOINED-ACTOR-EVENT-RULE-ACTION-R1/bp2_joined/producer.py",
+      "source_line": 938,
+      "source_object": {
+        "blob": "0e923996dae5940bfc8d57a9f9ddc84b148bbea9",
+        "commit": "5065e2e6934e9d5bca800cbf88c79e461bcf2393",
+        "path": "WORKER_RETURNS/SOROK-20261020-BP2-JOINED-ACTOR-EVENT-RULE-ACTION-R1/bp2_joined/producer.py",
+        "type": "blob"
+      },
+      "source_path": "WORKER_RETURNS/SOROK-20261020-BP2-JOINED-ACTOR-EVENT-RULE-ACTION-R1/bp2_joined/producer.py",
+      "source_symbol": "JoinedProducer.run",
+      "status": "SOURCEFREE_CANDIDATE__AUTHOR_TESTED"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "HISTORICAL_CODE_STATIC",
+      "falsifiers": [
+        "legacy writer closed/rollback detected",
+        "native anchor missing"
+      ],
+      "first_actual_consumer": "BP2/BP4",
+      "first_consumer_ref": "bp2_joined/producer.py",
+      "holds": [
+        "D1/D2 and key custody held"
+      ],
+      "id": "BP3_C8",
+      "input": "C8 append + externally held key/anchor",
+      "kind": "producer/product",
+      "name": "ExclusiveJournal",
+      "operation": "keyed compare-and-append/journal proof",
+      "output": "committed readset",
+      "source_end_line": 387,
+      "source_epoch": "origin/agent/rabochii-sorok-20261020-bp3-c8-exclusive-writer-external-anchor-r1",
+      "source_file": "origin/agent/rabochii-sorok-20261020-bp3-c8-exclusive-writer-external-anchor-r1:WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/c8_exclusive_writer.py",
+      "source_line": 279,
+      "source_object": {
+        "blob": "3632e1ef785041bc2612acbd31c3f01b7cff4341",
+        "commit": "7faaa0722336231335d974bebc70c1282c79ce3e",
+        "path": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/c8_exclusive_writer.py",
+        "type": "blob"
+      },
+      "source_path": "WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/c8_exclusive_writer.py",
+      "source_symbol": "ExclusiveJournal",
+      "status": "SOURCEFREE_CANDIDATE__NO_NATIVE_CUSTODY"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "HISTORICAL_CODE_STATIC",
+      "falsifiers": [
+        "unseen event omitted",
+        "native missing"
+      ],
+      "first_actual_consumer": "BP4 product/BP2P4J",
+      "first_consumer_ref": "bp4/product.py:132",
+      "holds": [
+        "C10 sourcefree; no native C11"
+      ],
+      "id": "BP4_C10",
+      "input": "BP1 snapshots + C8/C9 + world",
+      "kind": "producer/product",
+      "name": "receive",
+      "operation": "re-verifies source then returns actor-limited state",
+      "output": "C10State",
+      "source_end_line": 173,
+      "source_epoch": "origin/agent/rabochii-sorok-20261020-bp4-c10-c12-continuing-person-alpha-r1",
+      "source_file": "origin/agent/rabochii-sorok-20261020-bp4-c10-c12-continuing-person-alpha-r1:WORKER_RETURNS/SOROK-20261020-BP4-C10-C12-A0-A3-CONSUMER-R1/bp4/c10.py",
+      "source_line": 112,
+      "source_object": {
+        "blob": "94618b7a21ef71559e34778aec2315a30b5e09b9",
+        "commit": "d868e82c7c83def2df18295244d93af9706e647f",
+        "path": "WORKER_RETURNS/SOROK-20261020-BP4-C10-C12-A0-A3-CONSUMER-R1/bp4/c10.py",
+        "type": "blob"
+      },
+      "source_path": "WORKER_RETURNS/SOROK-20261020-BP4-C10-C12-A0-A3-CONSUMER-R1/bp4/c10.py",
+      "source_symbol": "receive",
+      "status": "SOURCEFREE_CANDIDATE__AUTHOR_TESTED"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "HISTORICAL_CODE_STATIC",
+      "falsifiers": [
+        "retroactive/delete refused",
+        "no native C12"
+      ],
+      "first_actual_consumer": "BP4 product/BP2P4J verifier",
+      "first_consumer_ref": "bp4/product.py",
+      "holds": [
+        "store verify defect; external anchor held"
+      ],
+      "id": "BP4_C12",
+      "input": "append-only scenario events/checkpoints",
+      "kind": "producer/product",
+      "name": "C12Store",
+      "operation": "SQLite append-only branch/fork/read",
+      "output": "C12 rows",
+      "source_end_line": 407,
+      "source_epoch": "origin/agent/rabochii-sorok-20261020-bp4-c10-c12-continuing-person-alpha-r1",
+      "source_file": "origin/agent/rabochii-sorok-20261020-bp4-c10-c12-continuing-person-alpha-r1:WORKER_RETURNS/SOROK-20261020-BP4-C10-C12-A0-A3-CONSUMER-R1/bp4/store.py",
+      "source_line": 38,
+      "source_object": {
+        "blob": "69a58f43dc70d320f2fc476eeac324c82c37ee59",
+        "commit": "d868e82c7c83def2df18295244d93af9706e647f",
+        "path": "WORKER_RETURNS/SOROK-20261020-BP4-C10-C12-A0-A3-CONSUMER-R1/bp4/store.py",
+        "type": "blob"
+      },
+      "source_path": "WORKER_RETURNS/SOROK-20261020-BP4-C10-C12-A0-A3-CONSUMER-R1/bp4/store.py",
+      "source_symbol": "C12Store",
+      "status": "SOURCEFREE_CANDIDATE__AUTHOR_TESTED"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "HISTORICAL_CODE_STATIC",
+      "falsifiers": [
+        "without tool/owner receipt DENY",
+        "no native person"
+      ],
+      "first_actual_consumer": "BP2P4J and tests",
+      "first_consumer_ref": "bp2p4/product.py",
+      "holds": [
+        "no human A5/model"
+      ],
+      "id": "BP4_PRODUCT",
+      "input": "C10/C12/world/seed",
+      "kind": "producer/product",
+      "name": "BP4Product",
+      "operation": "A0 observe/A1 SAY/DO/A2 wait/A3 fork/reentry",
+      "output": "user product JSON/events",
+      "source_end_line": 399,
+      "source_epoch": "origin/agent/rabochii-sorok-20261020-bp4-c10-c12-continuing-person-alpha-r1",
+      "source_file": "origin/agent/rabochii-sorok-20261020-bp4-c10-c12-continuing-person-alpha-r1:WORKER_RETURNS/SOROK-20261020-BP4-C10-C12-A0-A3-CONSUMER-R1/bp4/product.py",
+      "source_line": 55,
+      "source_object": {
+        "blob": "69cb5d7416e36b6f100ab36ffda8a8d9a92db0a8",
+        "commit": "d868e82c7c83def2df18295244d93af9706e647f",
+        "path": "WORKER_RETURNS/SOROK-20261020-BP4-C10-C12-A0-A3-CONSUMER-R1/bp4/product.py",
+        "type": "blob"
+      },
+      "source_path": "WORKER_RETURNS/SOROK-20261020-BP4-C10-C12-A0-A3-CONSUMER-R1/bp4/product.py",
+      "source_symbol": "BP4Product",
+      "status": "SOURCEFREE_CANDIDATE__AUTHOR_TESTED"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "HISTORICAL_CODE_STATIC",
+      "falsifiers": [
+        "target/E2 substitution refuses",
+        "no human A5"
+      ],
+      "first_actual_consumer": "JOIN session/tests",
+      "first_consumer_ref": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+      "holds": [
+        "delivered C12 verifier defect; no native"
+      ],
+      "id": "BP2P4J_PRODUCT",
+      "input": "BP2 artifacts + BP4 inherited product",
+      "kind": "producer/product",
+      "name": "JoinedProduct",
+      "operation": "bind actual target/E2/practice into BP4",
+      "output": "joined product",
+      "source_end_line": 164,
+      "source_epoch": "origin/agent/rabochii-sorok-20261020-bp2p4j-joined-technical-alpha-r1",
+      "source_file": "origin/agent/rabochii-sorok-20261020-bp2p4j-joined-technical-alpha-r1:WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/product.py",
+      "source_line": 47,
+      "source_object": {
+        "blob": "8f7177a6b4e3ae0cae6316a13cf57adf363e0460",
+        "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+        "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/product.py",
+        "type": "blob"
+      },
+      "source_path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/product.py",
+      "source_symbol": "JoinedProduct",
+      "status": "SOURCEFREE_CANDIDATE__AUTHOR_TESTED"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "HISTORICAL_CODE_STATIC",
+      "falsifiers": [
+        "B source/severance RED",
+        "native B missing"
+      ],
+      "first_actual_consumer": "R31J product/JOIN",
+      "first_consumer_ref": "r31j/product.py; joined/session.py",
+      "holds": [
+        "B is synthetic, snapshot edit is fixture; clock process-order only"
+      ],
+      "id": "R31J_PRE_C9",
+      "input": "GM01 material + synthetic B offer + A E1/E2",
+      "kind": "producer/product",
+      "name": "PreC9Producer",
+      "operation": "binds B source before C8; material feasibility",
+      "output": "C8/C9 source",
+      "source_end_line": 110,
+      "source_epoch": "origin/agent/rabochii-sorok-20261021-r31j-gm01-pre-c9-owner-source-first-person-r1",
+      "source_file": "origin/agent/rabochii-sorok-20261021-r31j-gm01-pre-c9-owner-source-first-person-r1:WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1/r31j/pre_c9.py",
+      "source_line": 58,
+      "source_object": {
+        "blob": "d56d81fdd7fb9ccd237289a09ac07f43de176655",
+        "commit": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
+        "path": "WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1/r31j/pre_c9.py",
+        "type": "blob"
+      },
+      "source_path": "WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1/r31j/pre_c9.py",
+      "source_symbol": "PreC9Producer",
+      "status": "SOURCEFREE_CANDIDATE__AUTHOR_TESTED"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "HISTORICAL_CODE_STATIC",
+      "falsifiers": [
+        "omit keeps tool",
+        "no native source"
+      ],
+      "first_actual_consumer": "JOIN",
+      "first_consumer_ref": "joined/session.py",
+      "holds": [
+        "no native acquisition; tool from fixture"
+      ],
+      "id": "R31J_PRODUCT",
+      "input": "pre-C9 tool/material source",
+      "kind": "producer/product",
+      "name": "R31JProduct.material_inspect",
+      "operation": "inspect consumes tool/material, records episode",
+      "output": "world event/episode",
+      "source_end_line": 132,
+      "source_epoch": "origin/agent/rabochii-sorok-20261021-r31j-gm01-pre-c9-owner-source-first-person-r1",
+      "source_file": "origin/agent/rabochii-sorok-20261021-r31j-gm01-pre-c9-owner-source-first-person-r1:WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1/r31j/product.py",
+      "source_line": 103,
+      "source_object": {
+        "blob": "abb528501582c414bb79adaa1e0caea6c04d8e4b",
+        "commit": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
+        "path": "WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1/r31j/product.py",
+        "type": "blob"
+      },
+      "source_path": "WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1/r31j/product.py",
+      "source_symbol": "R31JProduct.material_inspect",
+      "status": "SOURCEFREE_CANDIDATE__AUTHOR_TESTED"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "HISTORICAL_CODE_STATIC",
+      "falsifiers": [
+        "unperceived event refuses",
+        "model not run"
+      ],
+      "first_actual_consumer": "JOIN",
+      "first_consumer_ref": "joined/session.py",
+      "holds": [
+        "deterministic template, not open language model; no A5"
+      ],
+      "id": "R31E_SESSION",
+      "input": "actor state/M6/world + user speech",
+      "kind": "producer/product",
+      "name": "R31ESession.say",
+      "operation": "propose/admit deterministic template, compose surface",
+      "output": "claim/event/surface",
+      "source_end_line": 89,
+      "source_epoch": "origin/agent/rabochii-sorok-20261021-r31e-actor-expression-binding-first-neighbor-r1",
+      "source_file": "origin/agent/rabochii-sorok-20261021-r31e-actor-expression-binding-first-neighbor-r1:WORKER_RETURNS/SOROK-20261021-R31E-ACTOR-EXPRESSION-FIRST-NEIGHBOR-R1/r31e/session.py",
+      "source_line": 56,
+      "source_object": {
+        "blob": "6d819b8a314a4cd8ed5836014a18b9f41c02d5d2",
+        "commit": "a2760d3687b063513fe0a5b9589c56c998d4ccb5",
+        "path": "WORKER_RETURNS/SOROK-20261021-R31E-ACTOR-EXPRESSION-FIRST-NEIGHBOR-R1/r31e/session.py",
+        "type": "blob"
+      },
+      "source_path": "WORKER_RETURNS/SOROK-20261021-R31E-ACTOR-EXPRESSION-FIRST-NEIGHBOR-R1/r31e/session.py",
+      "source_symbol": "R31ESession.say",
+      "status": "SOURCEFREE_CANDIDATE__AUTHOR_TESTED"
+    },
+    {
+      "authority": "NO_NATIVE",
+      "evidence_grade": "HISTORICAL_CODE_STATIC",
+      "falsifiers": [
+        "foreign root/empty fork refuses",
+        "no native A5"
+      ],
+      "first_actual_consumer": "tests/CLI",
+      "first_consumer_ref": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py",
+      "holds": [
+        "JOIN-V does not prove full B pre-C8 severance; no native"
+      ],
+      "id": "JOIN_SESSION",
+      "input": "R31J product + R31E encounter",
+      "kind": "producer/product",
+      "name": "JoinedSession.start",
+      "operation": "same root start/perform/omit/open",
+      "output": "one product root/session meta",
+      "source_end_line": 50,
+      "source_epoch": "origin/codex/sorok-same-person-join-20261022",
+      "source_file": "origin/codex/sorok-same-person-join-20261022:WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+      "source_line": 22,
+      "source_object": {
+        "blob": "43c9d7cb9c7c3d929df08e9d6fec23363881e46b",
+        "commit": "13dfd6bad54ec19b4bdf31159e54fb6052d5440d",
+        "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+        "type": "blob"
+      },
+      "source_path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+      "source_symbol": "JoinedSession.start",
+      "status": "SOURCEFREE_CANDIDATE__HOSTILE_REVIEW_SCOPED"
+    },
+    {
+      "authority": "OWNER_HELD",
+      "evidence_grade": "EXPLICIT_GAP",
+      "falsifiers": [
+        "source/owner evidence supplied and exact consumer exercised"
+      ],
+      "first_actual_consumer": null,
+      "first_consumer_ref": null,
+      "holds": [
+        "No native actor source, developmental rule, genealogy or C4 as-of state; original V3 and BP1 are historical/test-only."
+      ],
+      "id": "GAP_NATIVE_C4_ADP",
+      "input": null,
+      "kind": "gap",
+      "name": "Native C4 historically constituted person / ADP actor source",
+      "operation": null,
+      "output": null,
+      "owner": "ADP/C4 original owners",
+      "source_end_line": null,
+      "source_epoch": "c061dc018e8a52a8a75ae7c82156100e04506418",
+      "source_file": null,
+      "source_line": null,
+      "source_object": null,
+      "source_path": null,
+      "source_symbol": null,
+      "status": "MISSING_OR_HELD"
+    },
+    {
+      "authority": "OWNER_HELD",
+      "evidence_grade": "EXPLICIT_GAP",
+      "falsifiers": [
+        "source/owner evidence supplied and exact consumer exercised"
+      ],
+      "first_actual_consumer": null,
+      "first_consumer_ref": null,
+      "holds": [
+        "Only TEST_ONLY Rule A in BP2; no current issued native rule."
+      ],
+      "id": "GAP_CAN008_RULE_A",
+      "input": null,
+      "kind": "gap",
+      "name": "Qualified CAN008 Rule A response",
+      "operation": null,
+      "output": null,
+      "owner": "CAN008 issuer",
+      "source_end_line": null,
+      "source_epoch": "c061dc018e8a52a8a75ae7c82156100e04506418",
+      "source_file": null,
+      "source_line": null,
+      "source_object": null,
+      "source_path": null,
+      "source_symbol": null,
+      "status": "MISSING_OR_HELD"
+    },
+    {
+      "authority": "OWNER_HELD",
+      "evidence_grade": "EXPLICIT_GAP",
+      "falsifiers": [
+        "source/owner evidence supplied and exact consumer exercised"
+      ],
+      "first_actual_consumer": null,
+      "first_consumer_ref": null,
+      "holds": [
+        "Only TEST_ONLY Rule T/grant; no acquired practice; NO_CHANGE not native evaluated."
+      ],
+      "id": "GAP_CAN011_RULE_T",
+      "input": null,
+      "kind": "gap",
+      "name": "Qualified CAN011 Rule T durable practice/no-change",
+      "operation": null,
+      "output": null,
+      "owner": "CAN011 owner",
+      "source_end_line": null,
+      "source_epoch": "c061dc018e8a52a8a75ae7c82156100e04506418",
+      "source_file": null,
+      "source_line": null,
+      "source_object": null,
+      "source_path": null,
+      "source_symbol": null,
+      "status": "MISSING_OR_HELD"
+    },
+    {
+      "authority": "OWNER_HELD",
+      "evidence_grade": "EXPLICIT_GAP",
+      "falsifiers": [
+        "source/owner evidence supplied and exact consumer exercised"
+      ],
+      "first_actual_consumer": null,
+      "first_consumer_ref": null,
+      "holds": [
+        "BP3 key/anchor is TEST_ONLY; D1/D2 not native."
+      ],
+      "id": "GAP_C8_D1_D2",
+      "input": null,
+      "kind": "gap",
+      "name": "C8 original journal/external key+anchored writer",
+      "operation": null,
+      "output": null,
+      "owner": "C8 security/custodian owners",
+      "source_end_line": null,
+      "source_epoch": "c061dc018e8a52a8a75ae7c82156100e04506418",
+      "source_file": null,
+      "source_line": null,
+      "source_object": null,
+      "source_path": null,
+      "source_symbol": null,
+      "status": "MISSING_OR_HELD"
+    },
+    {
+      "authority": "OWNER_HELD",
+      "evidence_grade": "EXPLICIT_GAP",
+      "falsifiers": [
+        "source/owner evidence supplied and exact consumer exercised"
+      ],
+      "first_actual_consumer": null,
+      "first_consumer_ref": null,
+      "holds": [
+        "C9 writer/reader sourcefree; BP4 C12 store; external anchor/mirror/outbox and native C12 missing."
+      ],
+      "id": "GAP_C9_C12",
+      "input": null,
+      "kind": "gap",
+      "name": "C9 performer/target and durable C12 with external anchor",
+      "operation": null,
+      "output": null,
+      "owner": "C9/C12 owners",
+      "source_end_line": null,
+      "source_epoch": "c061dc018e8a52a8a75ae7c82156100e04506418",
+      "source_file": null,
+      "source_line": null,
+      "source_object": null,
+      "source_path": null,
+      "source_symbol": null,
+      "status": "MISSING_OR_HELD"
+    },
+    {
+      "authority": "OWNER_HELD",
+      "evidence_grade": "EXPLICIT_GAP",
+      "falsifiers": [
+        "source/owner evidence supplied and exact consumer exercised"
+      ],
+      "first_actual_consumer": null,
+      "first_consumer_ref": null,
+      "holds": [
+        "Pyat external; no N11/N12/C11 grant or real world."
+      ],
+      "id": "GAP_C11_PYAT",
+      "input": null,
+      "kind": "gap",
+      "name": "C10 world\u2192C11 lawful weld / Pyat N11/N12",
+      "operation": null,
+      "output": null,
+      "owner": "Pyat/C11 owners",
+      "source_end_line": null,
+      "source_epoch": "c061dc018e8a52a8a75ae7c82156100e04506418",
+      "source_file": null,
+      "source_line": null,
+      "source_object": null,
+      "source_path": null,
+      "source_symbol": null,
+      "status": "MISSING_OR_HELD"
+    },
+    {
+      "authority": "OWNER_HELD",
+      "evidence_grade": "EXPLICIT_GAP",
+      "falsifiers": [
+        "source/owner evidence supplied and exact consumer exercised"
+      ],
+      "first_actual_consumer": null,
+      "first_consumer_ref": null,
+      "holds": [
+        "Current positive plan authority blocked; BP4 uses sourcefree M6; no model-renderer/human A5."
+      ],
+      "id": "GAP_M6_RENDER",
+      "input": null,
+      "kind": "gap",
+      "name": "Positive M6/render plan and actor-safe first-person surface",
+      "operation": null,
+      "output": null,
+      "owner": "M6/CAN022 owners",
+      "source_end_line": null,
+      "source_epoch": "c061dc018e8a52a8a75ae7c82156100e04506418",
+      "source_file": null,
+      "source_line": null,
+      "source_object": null,
+      "source_path": null,
+      "source_symbol": null,
+      "status": "MISSING_OR_HELD"
+    },
+    {
+      "authority": "OWNER_HELD",
+      "evidence_grade": "EXPLICIT_GAP",
+      "falsifiers": [
+        "source/owner evidence supplied and exact consumer exercised"
+      ],
+      "first_actual_consumer": null,
+      "first_consumer_ref": null,
+      "holds": [
+        "No human participant, no real model flow, no user product."
+      ],
+      "id": "GAP_HUMAN_A5",
+      "input": null,
+      "kind": "gap",
+      "name": "Actual A0\u2013A5 human encounter",
+      "operation": null,
+      "output": null,
+      "owner": "Sorok alpha/research owner",
+      "source_end_line": null,
+      "source_epoch": "c061dc018e8a52a8a75ae7c82156100e04506418",
+      "source_file": null,
+      "source_line": null,
+      "source_object": null,
+      "source_path": null,
+      "source_symbol": null,
+      "status": "MISSING_OR_HELD"
+    },
+    {
+      "authority": "OWNER_HELD",
+      "evidence_grade": "EXPLICIT_GAP",
+      "falsifiers": [
+        "source/owner evidence supplied and exact consumer exercised"
+      ],
+      "first_actual_consumer": null,
+      "first_consumer_ref": null,
+      "holds": [
+        "Original V3 uses 0\u2013100 defaults, pseudo-random events, persona backstory and parent Enneagram; not current CAN/ADP/SCI issuance."
+      ],
+      "id": "GAP_ORIGINAL_V3_SEMANTICS",
+      "input": null,
+      "kind": "gap",
+      "name": "Current semantic authority for original V3 psychology/persona",
+      "operation": null,
+      "output": null,
+      "owner": "Sorok HQ/original V3 owners",
+      "source_end_line": null,
+      "source_epoch": "c061dc018e8a52a8a75ae7c82156100e04506418",
+      "source_file": null,
+      "source_line": null,
+      "source_object": null,
+      "source_path": null,
+      "source_symbol": null,
+      "status": "MISSING_OR_HELD"
+    },
+    {
+      "authority": "OWNER_HELD",
+      "evidence_grade": "EXPLICIT_GAP",
+      "falsifiers": [
+        "source/owner evidence supplied and exact consumer exercised"
+      ],
+      "first_actual_consumer": null,
+      "first_consumer_ref": null,
+      "holds": [
+        "No v3/ app directory or current importer; only external staging/historical worker code."
+      ],
+      "id": "GAP_CURRENT_V3_RUNTIME",
+      "input": null,
+      "kind": "gap",
+      "name": "Current PREMAIN V3 actor runtime",
+      "operation": null,
+      "output": null,
+      "owner": "Sorok engineering/owners",
+      "source_end_line": null,
+      "source_epoch": "c061dc018e8a52a8a75ae7c82156100e04506418",
+      "source_file": null,
+      "source_line": null,
+      "source_object": null,
+      "source_path": null,
+      "source_symbol": null,
+      "status": "MISSING_OR_HELD"
+    }
+  ],
+  "schema": "SOROK_ACTUAL_PRODUCER_TO_FIRST_CONSUMER_AND_NEEDED_FUNCTION_GRAPH@1",
+  "source_registry": "SOROK_ORIGINAL_NEO_V3_ENGINEERING_SOURCE_FUNCTION_REGISTRY@1",
+  "summary": {
+    "current_premain_v3_runtime": "NONE_PROVEN_CURRENT",
+    "edges": 35,
+    "native_person_consumer": "NONE_PROVEN_CURRENT",
+    "nodes": 37,
+    "original_v3_app": "EXTERNAL_STAGING_FIRST_CONSUMER_CONNECTED",
+    "sourcefree_historical_chain": "CONNECTED_BUT_UNADOPTED"
+  },
+  "warnings": [
+    "No native actor/source/CAN/ADP/SCI05/Pyat/A5.",
+    "No current PREMAIN v3/ app; external staging is historical app.",
+    "BP2P4J positive has an engineering REVISE on delivered C12 verifier; positive not erased.",
+    "C12 old 7bf bytes do not match new reader-pinned 68b bytes."
+  ]
+}
