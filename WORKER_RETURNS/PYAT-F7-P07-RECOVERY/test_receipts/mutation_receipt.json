@@ -1,0 +1,26 @@
+{
+  "baseline_exit": 0,
+  "candidate_sha256": "45b39f20cbdd9b515eb8deaac467ff37a9bf0417a8257c8fc35f8e655e65f544",
+  "failures": 0,
+  "mutations": [
+    {
+      "mutated_exit": 1,
+      "mutated_sha256": "4be03189ecc08d8adde3e7c109f7f890f369ad66d5591bba24d9dcfce5cc4f90",
+      "name": "disable_attestation_binding_check",
+      "restored_exit": 0,
+      "status": "RED_ON_MUTATION_GREEN_ON_RESTORE",
+      "test": "test_route_attestation_bound_to_wrong_refs_is_refused"
+    },
+    {
+      "mutated_exit": 1,
+      "mutated_sha256": "72dda3fc5aef7ca7fcd38d071ecfd1c594e1e7924458abedd28ef0ace3ed7f55",
+      "name": "accept_nonpositive_authority",
+      "restored_exit": 0,
+      "status": "RED_ON_MUTATION_GREEN_ON_RESTORE",
+      "test": "test_denied_temporal_evidence_authority_is_insufficient_authority"
+    }
+  ],
+  "schema": "PYAT_F7_P07_CANDIDATE_MUTATION_CHECK@1",
+  "status": "PASS",
+  "test_sha256": "b87e8bc6c5806e9c86eafce9a399aea34759c2f6eaf67431b429f1b06122246b"
+}
