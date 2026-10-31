@@ -85,7 +85,7 @@ No production change. Delivered source-exact comparison, current ABI/issuer grap
 4. No current consumer/importer for R9 broker/session/binding or G01 authority.
 5. Governing C4C3/R7 interpreter absent; pinned venv is a disclosed reconstruction, not a governed environment.
 6. all35 frontier producer and N9/N10W implementation absent.
-7. S2 runtime is unavailable. This is an accurate S0/S1 HOLD; no runtime, issuer, role, or source authority was invented.
+7. S2 was available and exercised locally. The S2 local isolated Git/sourcefree execution surface ran the C3 55/55, G01 9/9, R9 69/69, current 105/105, physical/custody 51/51 and fault-negative 9/9 courts. The authority HOLD is due to the absent raw-source/native issuer/role owner and absent production consumer, not to S2; no runtime, issuer, role, or source authority was invented.
 
 ## LARGEST_MOVE
 
@@ -107,7 +107,7 @@ Historical C3 sourcefree repair flight: 55/55 in its own tree. Historical R9 fli
 
 - **ENGINEERING: HOLD.** No candidate is warranted; current receiver was exercised with positive and causal fault negatives. Missing real issuer/role owner and missing production write permission are named. No ENGINEERING RED condition occurred: PR526 custody intact, no fake caller/issuer, no test-only mock called production, no compiler/decoder regression.
 - **SCIENCE: NO SOURCE MEANING ISSUED.** G01 numeric representation is distinguished from survey/estimand semantics. D01 encoding admission is physical decoding only, not text semantics. D02 date/time carriage is representation only, not date/time meaning. No U/E/SAV raw survey, CAN/ADP/SCI, N9/world/N11/N12/Sorok actor work.
-- **AUTHORITY: HELD.** S2 is unavailable, so this is an accurate S0/S1 HOLD. No raw survey access, no native C, no PRE-MAIN write/merge, no self-review, no warrant/issuer/role, no adoption. Candidate adoption, merge, and independent review remain outside this return.
+- **AUTHORITY: HELD.** The S2 local isolated Git/sourcefree execution surface was available and exercised. The HOLD is due to the absent raw-source/native issuer/role owner and absent production consumer, not to S2. No raw survey access, no native C, no PRE-MAIN write/merge, no self-review, no warrant/issuer/role, no adoption. Candidate adoption, merge, and independent review remain outside this return.
 
 ## DELIVERABLES
 
