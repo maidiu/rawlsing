@@ -1,0 +1,46 @@
+{
+  "schema": "PYAT_S2_INVESTIGATION_VALIDATION@1",
+  "baseline_premain": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "current_premain_readback": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "readback_at": "2026-10-31T00:08:38Z",
+  "roster_commit": "becf0bfb04705b8fe0927dd56e7290e1dcd180a8",
+  "roster_blob": "879f1b400b0e1902bc2620c7f72b271a3c89f00b",
+  "roster_name_count": 175,
+  "roster_branch_rows": 175,
+  "branch_rows": 175,
+  "unique_branch_rows": 175,
+  "branch_rows_missing_from_roster": 0,
+  "roster_branches_missing_from_rows": 0,
+  "tip_mismatches": 0,
+  "function_rows": 218,
+  "unique_function_ids": 218,
+  "missing_function_references": 0,
+  "branch_dispositions": {
+    "NO_CODE_NO_RETURN_EVIDENCE": 10,
+    "EVIDENCE_ONLY_RETURN": 106,
+    "UNIQUE_FUNCTIONS_PRESENT__HOLD_OR_ADAPT": 49,
+    "NO_UNIQUE_ACTION__CURRENT_EQUIVALENT_OR_SUPERSEDED": 10
+  },
+  "function_classes": {
+    "EVIDENCE_UNKNOWN": 105,
+    "UNIQUE_USEFUL_HELD_BY_ACTUAL_SOURCE_AUTHORITY": 67,
+    "UNIQUE_USEFUL_NEEDS_ADAPTATION": 22,
+    "EXACT_ALREADY_IN_PREMAIN": 14,
+    "SUPERSEDED_BETTER": 10
+  },
+  "files": {
+    "BRANCH_DISPOSITIONS.jsonl": "5fe325ec71413b54cf30634323c3b942ee3bf73f8be46785a40dd8d9f57ca58d",
+    "FUNCTION_COURT.jsonl": "e71d0de87f3f7da5778cf254c2880245b8fd082f3dbfc7e5eb0127048d1faf9d",
+    "FIRST_CONSUMER_AND_SUCCESSOR_MAP.json": "36457ad992dc5734f1db80522d6d9e623aa793400c37d2359ffadf0ce22df6a9",
+    "NEGATIVE_AND_UNVERIFIED.md": "456d32c343bcf26efe9164ecb272288a8bc1904457422fa6e1c08627bd791eb0",
+    "00_RETURN.md": "c1d3805dcfb0040479f07e554b18a26fffe9a40831206d22d5dcc311b12963d6"
+  },
+  "checks": {
+    "roster_175": true,
+    "branch_rows_175": true,
+    "unique_branches_175": true,
+    "no_missing_or_extra": true,
+    "tips_exact": true,
+    "function_refs_resolve": true
+  }
+}
