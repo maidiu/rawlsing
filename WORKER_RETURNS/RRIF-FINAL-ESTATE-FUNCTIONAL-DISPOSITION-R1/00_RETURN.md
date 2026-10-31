@@ -4,9 +4,9 @@
 **Repository:** `maidiu/rawlsing` private.
 **Phase:** RRIF only, not Programma; no all35 empirical/world/N9/actor campaign.
 **Branch:** `agent/pyat-rrif-final-estate-functional-disposition-20261031-r1`.
-**Commission/start head:** `f673fb615ec3e3d779c36dc6a70d02d6efc4d8d0`.
+**Dispatch/commission head:** `2d2eada4682cf8a2c3fa1550b829c860d0b32381`.
 **Startup/PRE-MAIN:** `8e44ca9c751049d65e6def47600b5c073ee04b29`.
-**Harness/model:** Local OpenCode / `opencode-go/deepseek-v4.1-flash`, MAX requested. Single-agent sourcefree Git/JSON/AST inspection; no model switch.
+**Harness/model:** Local OpenCode / `opencode-go/deepseek-v4.1-flash`, MAX requested. Single-agent sourcefree Git/JSON/AST inspection in the mandated exclusive worktree; no model switch.
 
 ## FINDING
 
