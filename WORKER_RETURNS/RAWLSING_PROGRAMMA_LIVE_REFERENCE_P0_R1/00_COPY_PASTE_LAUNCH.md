@@ -1,4 +1,32 @@
-# LAUNCH — PROGRAMMA RAWLSING LIVE-REF P0 — ONE ACTUAL WORKING, SOURCE-GRADED PYAT + SOROK PROGRAMMA REFERENCE
+AGENT TYPE: Independent I3+ sourcefree whole-machine architect and integrator
+INTELLIGENCE LEVEL: I3+ / MAX
+
+```text
+LAUNCH — PROGRAMMA RAWLSING LIVE-REF P0 — ONE ACTUAL WORKING, SOURCE-GRADED PYAT + SOROK PROGRAMMA REFERENCE
+REPOSITORY: maidiu/rawlsing (PRIVATE)
+AGENT_TYPE: Independent I3+ sourcefree whole-machine architect and integrator; not original source issuer, incumbent HQ, integrator or own reviewer.
+INTELLIGENCE_LEVEL: I3+
+SINGLE_AGENT_FULL_DELIVERABLE: YES
+EXECUTION_SURFACE: S2 local isolated Git/Python sourcefree with actual verified runtime; S0–S1 fallback accurately reported partial only.
+USER_SELECTED_EDITOR_MODEL_PAIR: Proposed local OpenCode / DeepSeek V4.1-Flash MAX; user must select and verify.
+MODEL: DeepSeek V4.1-Flash (proposed, not automatically selected)
+REASONING: MAX requested, actual selected harness effort UNKNOWN pending qualification
+PROVIDER/EDITOR_HARNESS: proposed OpenCode Go / local OpenCode, selected explicitly by user; no silent switch
+MODEL_MAX_AVAILABILITY: UNKNOWN until qualified selected harness
+HOST_ACCOUNT_QUOTA_COST: host and account selected by user; quotas, pricing and uptime UNKNOWN until verified
+BRANCH: agent/rawlsing-programma-living-reference-s2-composed-operating-build-20261031
+STARTUP_SHA: 93d44ddb51cbabf89e52e1e8c553c46205bad68d
+ACTIVE_WORKER_NO_DISTURBANCE: YES
+BROWSER?: S0/S1 static-only; cannot establish entire S2 execution
+DEEPSEEK?: proposed as economical I3/MAX S2 engine, verify capability not assumed
+CODEX_6_1_HIGH_NECESSARY?: NO, unless exact task failure shows necessity and user authorizes selection
+OTHERWISE_MIDDLE?: only user-selected fallback; do not autonomously switch or lower effort
+WHY_NOT_BROWSER: static Browser insufficient for required local actual Git/Python fault/restore and execution
+WHY_NOT_FLASH: Flash MAX has no established incapacity; test actual harness and escalate to user only if demonstrated
+WHY_NOT_CODEX_HIGH: high-cost alternative not evidenced necessary at assignment outset
+WHY_NOT_MIDDLE: full task I3/I3+ requires selected MAX; no automatic downgrade
+SCIENCE_SOURCE_ACTOR_AUTHORITY: no original semantic/source/actor/SCI05 grant; qualified owners and independent review separate
+POST_RETURN_INDEPENDENT_REVIEW: distinct competent owner/HQ independently examines final SHA, engineering/scientific/authority proofs before adoption
 
 AGENT_TYPE: Independent I3+ architecture/sourcefree-engineering implementer of the **Programma operating reference**, not Pyat or Sorok HQ, original source/semantic/psychological issuer, product/person engine implementer, original author/reviewer of R3, canonical integrator or own reviewer.
 INTELLIGENCE_LEVEL: I3+ / MAX; whole-machine qualified reasoning is required, not generic tracker construction.
@@ -43,3 +71,4 @@ REQUIRED FUNCTIONAL IMPLEMENTATION AND TESTS — NOT A WHITEPAPER:
 
 SINGLE_AGENT_COMPLETION: deliver under `WORKER_RETURNS/RAWLSING_PROGRAMMA_LIVE_REFERENCE_P0_R1/` `00_RETURN.md`, `01_SOURCE_INPUT_AND_VERSION_VECTOR.json`, `02_COVERAGE_GAPS_AND_REAL_FIRST_CONSUMERS.md`, `03_CLI_TEST_AND_END_TO_END_UPDATE_RECEIPTS.md`, `04_WORKERS_OWNER_AUTHORITY_AND_PRIORITIES.md`, `05_ROLLBACK_PROVENANCE_NOT_RUN.json`, exact remote final SHA, sourcefree test count, change-scope, three courts, four-column FINDING/INTERPRETATION/ACTION/OWNER and DONE/REMAINING/CRITICAL_BLOCKERS/LARGEST_PRODUCTIVE_MOVE/FLIGHT/DELTA.
 POST_RETURN_INDEPENDENT_REVIEW: separate I3+ hostile reviewer must audit exact implementation source, actual all35/whole-person scope and update/invalidations before any current-HQ adoption. Competent source/owner must grant scope and canonical CAS; worker is neither reviewer nor issuer nor adopter. This work is not an automatic merge into PRE-MAIN.
+```
