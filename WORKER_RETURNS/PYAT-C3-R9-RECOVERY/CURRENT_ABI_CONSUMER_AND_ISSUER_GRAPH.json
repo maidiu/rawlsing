@@ -1,0 +1,233 @@
+{
+  "schema": "PYAT_C3_R9_CURRENT_ABI_CONSUMER_AND_ISSUER_GRAPH@1.0.0",
+  "generated_at_utc": "2026-10-31T17:20:00Z",
+  "branch": "agent/pyat-recover-c3-r9-decoder-source-access-compatibility-20261030-r1",
+  "branch_tip_verified": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "pre_main_baseline_verified": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "receiving_tree_applicability": {
+    "branch_tip_is_ancestor_of_pre_main": true,
+    "rawlsing_next_diff_between_branch_tip_and_pre_main": "NONE",
+    "current_decoder_blob_same_at_both": "8732e34d0ea3f4cfffd7d33ee00f258dbc2d65dd",
+    "current_r5_codec_blob_same_at_both": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+    "only_non_rawlsing_diff": "tests/test_copy_paste_commission_r1.py added on PRE-MAIN; no rawlsing_next receiver change"
+  },
+  "current_producer_nodes": [
+    {
+      "id": "decoder",
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "blob": "8732e34d0ea3f4cfffd7d33ee00f258dbc2d65dd",
+      "role": "current physical SAV/DTA decoder with PR526 content-bound _SourceSnapshot custody",
+      "exports": ["decode_sav", "decode_dta", "PhysicalSourceIncidence", "PhysicalCell", "PhysicalVariable", "classify_physical_value", "SOURCE_CUSTODY_CONTRACT", "_SourceSnapshot", "_acquire_source_snapshot"],
+      "status": "CURRENT_PROTECTED"
+    },
+    {
+      "id": "r5_codec",
+      "path": "rawlsing_next/pre553_r5_codec.py",
+      "blob": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+      "role": "current typed-value representation codec; no date/time constructor/normalizer",
+      "exports": ["R5TypedValueCodec", "R5OpaqueValue", "CODEC_VERSION", "canonical_json", "canonical_bytes"],
+      "status": "CURRENT"
+    },
+    {
+      "id": "source_native_adapter",
+      "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "blob": "a6299c1a6e8b26bd055ced1f49e5b757f20ccd8c",
+      "role": "turns PhysicalSourceIncidence or ExactPhysicalCellStream into governed C11 projection and NativePreimageBundle",
+      "imports": ["pre553_physical_decoder.PhysicalCell", "pre553_physical_decoder.PhysicalSourceIncidence", "pre553_source_backed_c11_facade.physical_value_binding_key"],
+      "status": "CURRENT"
+    },
+    {
+      "id": "issued_workload",
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "blob": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "role": "R61 issuer-custodied request transport and admission; real issuer is external, module has none",
+      "exports": ["IssuedWorkloadRecord", "CurrentDecisionResolver", "NativeWorkload", "admit", "execute_issued_workload", "original35_roster", "reconcile_estate_workloads"],
+      "status": "CURRENT__REAL_ISSUER_ABSENT"
+    },
+    {
+      "id": "native_workload_binding",
+      "path": "rawlsing_next/pre553_native_workload_binding.py",
+      "blob": "dac73e484f8619088f5c6701b2b6991c07540f3b",
+      "role": "TEST_ONLY workload binder and TestOnlyDecisionResolver; explicitly not a production issuer",
+      "exports": ["TestOnlyIssuedWorkload", "TestOnlyDecisionResolver", "build_test_only_workload", "execute_test_only_workload", "WorkloadBindingRefusal"],
+      "status": "CURRENT__TEST_ONLY_ONLY"
+    },
+    {
+      "id": "universal_workload",
+      "path": "rawlsing_next/pre553_universal_workload.py",
+      "blob": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e",
+      "role": "R61 finite sourcefree universal workload compilation and execution transport",
+      "imports": ["pre553_native_workload_binding", "pre553_source_native_preimage_adapter", "universal_grammar"],
+      "status": "CURRENT"
+    },
+    {
+      "id": "c11_facade",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "role": "source-backed C11 release builder and physical value binding key owner",
+      "exports": ["build_source_backed_c11_repository", "build_validated_source_backed_c11_release", "physical_value_binding_key", "GovernedC11Projection"],
+      "status": "CURRENT"
+    },
+    {
+      "id": "route_b",
+      "path": "rawlsing_next/pre553_route_b_production.py",
+      "blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "role": "selected Route B owner: C11 release, I03 query, I05 discovery, replay receipt",
+      "imports": ["pre553_source_backed_c11_facade", "pre553_physical_decoder.PhysicalSourceIncidence"],
+      "status": "CURRENT"
+    },
+    {
+      "id": "batch_runner",
+      "path": "rawlsing_next/pre553_batch_runner.py",
+      "blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "role": "bounded batch execution owner",
+      "status": "CURRENT"
+    },
+    {
+      "id": "c11_repository",
+      "path": "rawlsing_next/pre553_c11_repository.py",
+      "blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+      "role": "C11 repository receipt/object custody",
+      "status": "CURRENT"
+    },
+    {
+      "id": "empirical_query",
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "role": "I03 empirical query execution",
+      "status": "CURRENT"
+    },
+    {
+      "id": "learned_world_composition",
+      "path": "rawlsing_next/pre553_learned_world_composition.py",
+      "blob": "4a8e27a226a9c06606f5ba493d2cc7356d491a7b",
+      "role": "I4 learned-world composition; consumes RouteBProductionResult; no source reader",
+      "status": "CURRENT__DOWNSTREAM_CONSUMER"
+    },
+    {
+      "id": "n9_n10w_candidate",
+      "path": "rawlsing_next/pre553_n9_n10w_progressive_candidate.py",
+      "blob": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+      "role": "sourcefree synthetic progressive N9/N10W development candidate; module docstring states N9 and N10W are not implemented",
+      "status": "CURRENT__SYNTHETIC_ONLY__NOT_PRODUCTION_N9"
+    },
+    {
+      "id": "physical_c11_bridge",
+      "path": "rawlsing_next/pre553_physical_c11_bridge.py",
+      "blob": "3e3497a6eb730524be33bb3d453f6cc63565052c",
+      "role": "PhysicalCell to C11 bridge",
+      "status": "CURRENT"
+    }
+  ],
+  "current_edges": [
+    {"from": "decoder", "to": "source_native_adapter", "evidence": "imports PhysicalCell, PhysicalMissingState, PhysicalSourceIncidence"},
+    {"from": "decoder", "to": "c11_facade", "evidence": "imports PhysicalCell, PhysicalMissingState, PhysicalSourceIncidence"},
+    {"from": "decoder", "to": "route_b", "evidence": "imports PhysicalSourceIncidence"},
+    {"from": "decoder", "to": "physical_c11_bridge", "evidence": "imports PhysicalCell, PhysicalSourceIncidence"},
+    {"from": "r5_codec", "to": "c11_facade", "evidence": "physical value/raw witness encoding is consumed by facade keys"},
+    {"from": "source_native_adapter", "to": "universal_workload", "evidence": "NativePreimageBundle consumed by compile_universal_workload"},
+    {"from": "native_workload_binding", "to": "issued_workload", "evidence": "imports IssuedWorkloadRecord, NativeWorkload, admit, execute_issued_workload"},
+    {"from": "universal_workload", "to": "native_workload_binding", "evidence": "imports build_test_only_workload and execute_test_only_workload"},
+    {"from": "issued_workload", "to": "route_b", "evidence": "imports I03ExecutionRequest and execute_route_b_production"},
+    {"from": "issued_workload", "to": "c11_facade", "evidence": "imports build_source_backed_c11_repository"},
+    {"from": "issued_workload", "to": "batch_runner", "evidence": "imports BatchExecutionRunner, BatchManifest, BatchUnitSpec, ExecutionOutcome, ExecutorBinding"},
+    {"from": "route_b", "to": "c11_facade", "evidence": "imports build_source_backed_c11_repository"},
+    {"from": "route_b", "to": "c11_repository", "evidence": "C11 release consumed by repository"},
+    {"from": "route_b", "to": "empirical_query", "evidence": "I03 request execution"},
+    {"from": "learned_world_composition", "to": "route_b", "evidence": "imports RouteBProductionResult"},
+    {"from": "n9_n10w_candidate", "to": "route_b family", "evidence": "uses current empirical possibility owners only; synthetic world; not a production N9/N10W consumer"}
+  ],
+  "issuer_graph": {
+    "current_record_owner": "rawlsing_next.pre553_issued_workload.IssuedWorkloadRecord",
+    "current_resolver_protocol": "rawlsing_next.pre553_issued_workload.CurrentDecisionResolver",
+    "real_current_issuer": null,
+    "real_current_issuer_status": "ABSENT_EXTERNAL_AUTHORITY",
+    "test_only_resolver": "rawlsing_next.pre553_native_workload_binding.TestOnlyDecisionResolver",
+    "test_only_resolver_status": "CURRENT_TEST_DOUBLE__NOT_PRODUCTION_ISSUER",
+    "role_identity": {
+      "field_present_in_current_record": false,
+      "role_owner": null,
+      "status": "HELD_EXTERNAL__NO_ROLE_CHANNEL_CAN_BE_SELF_ASSERTED"
+    },
+    "edition_identity": {
+      "current_field": "IssuedWorkloadRecord.source_sha256",
+      "gate": "ISSUED_SOURCE_EDITION_MISMATCH and SOURCE_FACTORY_RETURNED_WRONG_EDITION",
+      "status": "PRESENT"
+    },
+    "loaded_bytes_identity": {
+      "current_owner": "pre553_physical_decoder.PhysicalSourceIncidence.source_custody",
+      "fields": ["source_sha256", "snapshot_sha256", "snapshot_size", "snapshot_path_unlinked", "reader_access_mode", "content_bound"],
+      "status": "PRESENT_PR526"
+    },
+    "replay_or_session_switch_gate": {
+      "current_gate": "exact decision_ref equality plus TestOnlyDecisionResolver exact-record refusal",
+      "named_refusal": "UNKNOWN_DECISION_REF",
+      "r9_session_owner": null,
+      "status": "PARTIAL__NO_R9_SESSION_OWNER"
+    }
+  },
+  "all35_u_epre_n9_selected_world_consumers": {
+    "original35_roster": {
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "symbol": "original35_roster",
+      "status": "PRESENT",
+      "note": "requires exactly 35 exact atlas/wave identities; no source bytes"
+    },
+    "all35_frontier_reconciliation": {
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "symbol": "reconcile_estate_workloads",
+      "status": "PRESENT__REQUIRES_EXTERNAL_IssuedEstateFrontier",
+      "note": "no current all35 producer/frontier file or real issuer in tree; external competent issuer required"
+    },
+    "u_epre_consumer": {
+      "status": "EXTERNAL_AUTHORITY_HELD",
+      "note": "NativeWorkload carries original_u_root and expected_frontier_root; admission checks equality; no local U/E_pre producer"
+    },
+    "n9_consumer": {
+      "status": "NOT_IMPLEMENTED",
+      "evidence": "pre553_n9_n10w_progressive_candidate.py docstring: N9 and N10W are NOT implemented anywhere in the repository (E01 API graph implemented:false)"
+    },
+    "n10w_consumer": {
+      "status": "NOT_IMPLEMENTED",
+      "evidence": "same module docstring; synthetic progressive fixture only"
+    },
+    "selected_world_consumer": {
+      "status": "PARTIAL",
+      "evidence": "pre553_learned_world_composition consumes RouteBProductionResult; no actual selected-world all35 source binding present"
+    }
+  },
+  "missing_links": [
+    {"missing": "C3 G01 authority module", "would_connect": "C11 physical_value_binding_key / source-native adapter", "current_status": "ABSENT__NO_CURRENT_CALLER"},
+    {"missing": "C3 D01 declared-encoding decoder lane", "would_connect": "decode_sav for exact source SHAs ac0b8bc1/5b703173/66252a92", "current_status": "ABSENT__PRODUCTION_OWNER_REQUIRED"},
+    {"missing": "C3 D02 opaque date/time carrier", "would_connect": "decoder _physical_value -> R5 codec opaque lane -> C11 binding key", "current_status": "ABSENT__PRODUCTION_OWNER_REQUIRED"},
+    {"missing": "R9 source access broker", "would_connect": "source path -> reader accounts -> decoder", "current_status": "ABSENT__NO_CURRENT_CONSUMER__CONFLICTS_WITH_PR526"},
+    {"missing": "R9 governed source session", "would_connect": "one bound source entry -> broker -> aggregate receipt", "current_status": "ABSENT__NO_CURRENT_CONSUMER"},
+    {"missing": "R9 execution binding", "would_connect": "warrant plan -> bound source execution -> route-pass account", "current_status": "ABSENT__NO_CURRENT_CONSUMER"},
+    {"missing": "real current issuer/role owner", "would_connect": "IssuedWorkloadRecord -> admit -> execute_issued_workload", "current_status": "ABSENT_EXTERNAL_AUTHORITY__TEST_ONLY_ONLY"},
+    {"missing": "all35 frontier producer", "would_connect": "IssuedEstateFrontier -> reconcile_estate_workloads", "current_status": "ABSENT_EXTERNAL"},
+    {"missing": "N9 and N10W implementation", "would_connect": "RouteB/learned world -> N9/N10W serving", "current_status": "NOT_IMPLEMENTED"}
+  ],
+  "hostile_evidence_boundary": {
+    "S7": "026ca72c24d564d4dc203f68385df8c75b4bd3a7",
+    "S7FIX_source": "80bc5d9bf6624c2ea04027322947a41c347330aa",
+    "independent_I3": "1b89fd49c330e4a2c976e6af8d6c1a5e6dbfb088",
+    "s7fix_current_owner_mapping": "RED",
+    "use": "hostile evidence only; not a C3/R9 successor"
+  },
+  "scope_cautions": [
+    "S7FIX current-owner mapping is RED; this graph does not use S7FIX as a C3/R9 successor.",
+    "Historical nested _make_sealed_source_relation_owner.SourceRelationResolver is NOT the outer current resolver; they are not conflated here.",
+    "Historical PhysicalSourceIncidence.iter_batches.emit is NOT asserted equal to current PR526 emit.",
+    "AST identity is not behavioral equivalence; every CURRENT_BEHAVIOR_TESTED claim has a named executed test.",
+    "This return does not duplicate the R61 expected-work issuer; TestOnlyDecisionResolver remains a TEST_ONLY double and V2K historical exact-interface retirement remains at scoped current R61."
+  ],
+  "source_authority": {
+    "raw_survey_source_read": false,
+    "locator_discovery": false,
+    "warrant_issued": false,
+    "source_meaning_issued": false,
+    "u_epre_created": false,
+    "n9_world_created": false,
+    "real_issuer_claimed": false
+  }
+}
