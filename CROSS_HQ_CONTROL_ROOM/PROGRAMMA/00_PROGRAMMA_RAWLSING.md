@@ -12,6 +12,9 @@
 
 ### A single living whole-project reference (proposed, separately governed)
 
+**Non-fusion clarification (user, 2026-10-31):** "One place" is a navigational property of **each** complete Programma (Pyat **under Pyat HQ**, Sorok **under Sorok HQ**). A possible cross-program read-only composition is a future optional interface and **not a current required fused implementation or worker commission**. Structural guidance in Pyat's constitution belongs to Pyat HQ to execute. Sorok currently builds only its own reference, treating Pyat as an authoritative external world-provider with a narrow contract. No new third HQ or universal co-executor is implied.
+
+
 **Status:** `PROPOSED__PENDING_AUTHORIZED_PREMAIN_ADOPTION`. For the explicit two-jurisdiction source/owner/version/readback contract see [01_SHARED_LIVING_REFERENCE_CORRESPONDENCE_R1.md](01_SHARED_LIVING_REFERENCE_CORRESPONDENCE_R1.md), and the matching **living-reference operating contracts embedded directly in Programma Pyat and Programma Sorok**.
 
 The Programma scope is now required to produce and maintain **one logically coherent, source-exact, continuously reconciled view of the entire requisite Rawlsing undertaking**, with separately authoritative Pyat and Sorok subgraphs and a versioned world→person link. It must permit whole→part and part→whole recursive navigation, original source/consumer/owner and scientific alternative tracing, explicit missing requirements and negative evidence, real current workers and reviews, dependency-sensitive priority and qualified continuous completion. Every work/science/source return must propagate its actual grade-limited implications across the affected graph and current flight/dependency view, preserving old evidence and original jurisdiction. A list of recovered branch names, green fixtures, artifacts or disconnected ledgers cannot fulfill this.
