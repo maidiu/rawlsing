@@ -101,7 +101,7 @@ Hold reasons: HQ232 RR-04G open in P07 custody; HQ240 writable module-global ali
 
 ---
 
-## 4. Needs-adaptation functions (37)
+## 4. Needs-adaptation functions (101)
 
 ### 4.1 F7/P07 boundary
 
@@ -128,6 +128,16 @@ Grounds: useful decompositions of current resolver logic, but currently coupled 
 Grounds: these are real HQ225 repairs, but HQ226 finds authority overreach in the actual model-rule lifecycle: the runner seeds `AuthorityMaintenanceExecutor` with an unauthenticated model-authority snapshot, and the consumed model-rule identity is not represented/owner-authenticated in the dependency graph. The current PRE-MAIN accepted C1-03R blobs (`47e65aad5e0a…`) remain the accepted baseline; these N10E repairs require adaptation and a new authority court, not wholesale adoption.
 
 ---
+
+### 4.5 Native P07 Stage A/B C functions (64)
+
+Static C extraction found 64 meaningful functions across `rawlsing_next/_p07_native_owner_stage_a.c` and `_p07_native_owner_stage_b.c`. All are `UNIQUE_USEFUL_NEEDS_ADAPTATION` at the family level; early constructor variants are `INVALID/TRASH_WITH_GROUNDS` at variant level.
+
+Variant-level `INVALID/TRASH_WITH_GROUNDS` additionally appears on the early `StageAOwner_init`/`StageBOwner_init` C blobs; the family row is `NEEDS_ADAPTATION` because later variants repaired the constructor. Known grounds: HQ245-D1 constructor OOB/SIGSEGV (`StageAOwner_init`/`StageBOwner_init` early blobs); HQ246-B1 inherited OOB; B2 malformed `PyObject_Call`; B3 `PyErr_Fetch` NULL traceback; B4 non-str replay crash; P1 positive parity failure; T1 caller-selected trusted callables; HQ247 open `decide()` leak; HQ248 Stage B quarantined, production native ingress false. ABI is CPython 3.11 C extension; no build/import/ABI/hostile run was performed by this lane.
+
+### 4.6 Dispatcher JS — no needs-adaptation function
+
+The adopted dispatcher current blob is `2db72c887b032622e09da6a5bd7723f7fb7055ee`; HQ193 adoption; HQ192 `ACCEPT_UNATTENDED_WITH_BOUNDED_RESIDUAL_LIMITATIONS`; HQ190 supervised base only. The 40 JS functions are `EXACT_ALREADY_IN_PREMAIN` at current; older HQ190 variants are `SUPERSEDED_BETTER`. Residual limitations (seatbelt/egress/sandbox context) are retained and not re-run.
 
 ## 5. Unverified branches and evidence gaps
 
@@ -157,18 +167,18 @@ Review documents and quoted return text sometimes name predecessor/candidate bra
 
 - **Tests run: NONE.** No branch executable, test, import of branch code, pyreadstat read, raw survey read, response execution or model invocation was performed.
 - **No fresh runtime proof.** All test counts are reviewer-claimed prior evidence, not re-executed here.
-- **No semantic equivalence claim.** Exact equivalence means identical Git blob or identical AST at one path. Structural/no-identifier matches are candidate locators only.
+- **No semantic equivalence claim.** Exact equivalence means identical Git blob, identical Python AST, or identical lexical/body hash for the C/JS extraction at one path. Structural/no-identifier matches are candidate locators only.
 - **No hash inversion or fixture guessing.** Historical preimages were not reconstructed; C1-00 R5 preimage-specification failure is retained.
 - **No source or Sorok issuance.** Source scientific merit and Sorok actor permission are separate; neither is granted here.
 - **No N9–N12 completion.** N9, N10E, N10W, N11, N12 remain `PROPOSED_NOT_COMMISSIONED` in the PRE-MAIN atlas.
 - **PRE-MAIN may move.** The final comparison used `750548ddbb9b4392a16ce93097b856f349e16182`; a later PRE-MAIN head must be re-checked before any integration.
 - **Tip date is not creation date.** Branch names and tip dates were not used as equivalence evidence.
-- **Fixed function court.** `239` rows cover functions with at least one non-identical variant. Functions identical in every variant are enumerated in branch rows as `EXACT_ALREADY_IN_PREMAIN`; they are not duplicated as disputed court rows.
+- **Fixed function court.** `343` rows cover functions with at least one non-identical variant (239 Python, 40 adopted-dispatcher JS, 64 native C). Functions identical in every variant are enumerated in branch rows as `EXACT_ALREADY_IN_PREMAIN`; they are not duplicated as disputed court rows.
 
 ---
 
 ## 7. Exact `TESTS_NOT_RUN` reminder
 
-`rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py`, `test_closed35_d01_declared_encoding_admission.py`, `test_closed35_d02_opaque_datetime_carrier.py`, `test_current_gt2_structural_context.py`, `test_pre553_source_access_broker_court.py`, `test_pre553_source_session_court.py`, `test_pre553_execution_binding_court.py`, `test_pre553_temporal_comparability.py`, `test_pre553_source_relations.py`, and every required regression court were **not run**.
+`rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py`, `test_closed35_d01_declared_encoding_admission.py`, `test_closed35_d02_opaque_datetime_carrier.py`, `test_current_gt2_structural_context.py`, `test_pre553_source_access_broker_court.py`, `test_pre553_source_session_court.py`, `test_pre553_execution_binding_court.py`, `test_pre553_temporal_comparability.py`, `test_pre553_source_relations.py`, the native Stage A/B build/import/ABI/hostile courts, the dispatcher Node harnesses, and every required regression court were **not run**.
 
 Independent I2/I3 hostile adjudication at the exact SHAs in `FUNCTION_COURT.jsonl` is required before any integration decision.

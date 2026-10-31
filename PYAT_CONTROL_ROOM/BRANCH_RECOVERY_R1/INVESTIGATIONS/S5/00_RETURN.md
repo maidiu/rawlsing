@@ -42,31 +42,31 @@ No branch executable was run. No test suite was run. No survey/response source w
 |---|---:|
 | `UNIQUE_USEFUL_READY` | 14 |
 | `UNIQUE_USEFUL_NEEDS_ADAPTATION` | 17 |
-| `SUPERSEDED_BETTER` | 24 |
-| `EXACT_ALREADY_IN_PREMAIN` | 12 |
+| `SUPERSEDED_BETTER` | 25 |
+| `EXACT_ALREADY_IN_PREMAIN` | 13 |
 | `EXACT_ALREADY_IN_PREMAIN__NO_UNIQUE_CONTENT` | 31 |
-| `NO_MEANINGFUL_PRODUCTION_FUNCTION` | 62 |
+| `NO_MEANINGFUL_PRODUCTION_FUNCTION` | 60 |
 | **Total** | **160** |
 
 The role-prefixed branch dispositions (`REVIEW_ONLY__…`, `INTEGRATION_ONLY__…`, `HQ_INTAKE_ONLY__…`, `AUDIT_ONLY__…`) are preserved separately in the JSONL so a reviewer branch is not mistaken for the author/integrator of the code it carries.
 
 ### 2.2 Function rows
 
-`FUNCTION_COURT.jsonl` contains **239 meaningful production functions** with at least one non-identical variant. Functions whose every variant is byte/AST-identical to PRE-MAIN are recorded as `EXACT_ALREADY_IN_PREMAIN` in branch rows and are not duplicated as disputed court rows.
+`FUNCTION_COURT.jsonl` contains **343 meaningful production functions** with at least one non-identical variant: 239 Python, 40 adopted-dispatcher JS functions, and 64 native P07 Stage A/B C functions. Functions whose every variant is byte/AST/lexical-body-identical to PRE-MAIN are recorded as `EXACT_ALREADY_IN_PREMAIN` in branch rows and are not duplicated as disputed court rows.
 
 | Function disposition | Count |
 |---|---:|
 | `UNIQUE_USEFUL_READY` | 119 |
-| `UNIQUE_USEFUL_NEEDS_ADAPTATION` | 37 |
+| `UNIQUE_USEFUL_NEEDS_ADAPTATION` | 101 |
 | `UNIQUE_USEFUL_HELD_BY_ACTUAL_SOURCE_AUTHORITY` | 20 |
 | `INVALID/TRASH_WITH_GROUNDS` | 11 |
 | `SUPERSEDED_BETTER` | 6 |
-| `EXACT_ALREADY_IN_PREMAIN` | 46 |
+| `EXACT_ALREADY_IN_PREMAIN` | 86 |
 | `INDEPENDENTLY_REBUILT_EQUIVALENT` | 0 (no such case established) |
 | `EVIDENCE_UNKNOWN` | 0 function rows (25 branch-level evidence gaps) |
-| **Total** | **239** |
+| **Total** | **343** |
 
-`FIRST_CONSUMER_AND_SUCCESSOR_MAP.json` contains **239 entries** with current equivalent, owner, first consumer and successor state.
+`FIRST_CONSUMER_AND_SUCCESSOR_MAP.json` contains **343 entries** with current equivalent, owner, first consumer and successor state.
 
 ### 2.3 Evidence coverage
 
@@ -167,13 +167,23 @@ Disposition:
 
 Final blobs `pre553_analytical_composition.py` `604c8d591d…`, `pre553_analytical_state_and_route.py` `3a5e3db8a0…`, `pre553_analytical_replay_dependency.py` `47e65aad5e…`, `pre553_authority_maintenance.py` `547e6bf203…`, `pre553_empirical_possibility_provider.py` `23167aa252…`, and `pre553_ee14_c1_owner_authenticated_ingress.py` `74e6ee826e…` are **already exact in PRE-MAIN**. Earlier variants are `SUPERSEDED_BETTER`. No new C1/EE14/authority-maintenance unique-useful function survives beyond the current PRE-MAIN cut. Separately, later N10E owner-authentic lifecycle repairs (`e868aa27466c…`, `230bd7efed04…`) are real but rejected by HQ226 for model-rule authority overreach; they are classed `UNIQUE_USEFUL_NEEDS_ADAPTATION`, not accepted.
 
-### 3.6 Branch containment and no-code branches
+### 3.6 Dispatcher runtime JS — adopted current version, no unique dispatcher delta
+
+`PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/dispatcher.mjs` current PRE-MAIN blob is `2db72c887b032622e09da6a5bd7723f7fb7055ee`. HQ193 adopted the A2 dispatcher; HQ192 disposition is `ACCEPT_UNATTENDED_WITH_BOUNDED_RESIDUAL_LIMITATIONS`; HQ190 accepted only a supervised repair base (`ACCEPT_AS_SUPERVISED_REPAIR_BASE__UNATTENDED_NOT_QUALIFIED`). The older HQ190 dispatcher blob `f3067208f7a8b8ffc159bdc41c25309e9a14b5cb` is superseded by the adopted current blob. The 40 dispatcher JS functions are `EXACT_ALREADY_IN_PREMAIN` at the current blob; older variants are `SUPERSEDED_BETTER`. This is execution infrastructure, not N9-N12.
+
+### 3.7 Native P07 Stage A/B C — unique, quarantined, needs adaptation
+
+Exact native sources are `rawlsing_next/_p07_native_owner_stage_a.c` and `_p07_native_owner_stage_b.c` (variants across HQ244–HQ248). They are **absent from PRE-MAIN**. This lane statically extracted 64 meaningful C functions (476 branch-function occurrences across 11 branches) and did not build, import, compile or execute the extensions.
+
+Known grounds: HQ245-D1 constructor out-of-bounds read/SIGSEGV; HQ246-B1..B4 malformed `PyObject_Call`/`PyErr_Fetch`/non-str replay crash, P1 parity, T1 caller-selected trusted callables; HQ247 `decide()` leak; HQ248 proposal-only and Stage B quarantined. Early constructor variants are `INVALID/TRASH_WITH_GROUNDS`; later repaired variants are `UNIQUE_USEFUL_NEEDS_ADAPTATION`. ABI is CPython 3.11 C extension; no build/import/ABI qualification was performed by this lane.
+
+### 3.8 Branch containment and no-code branches
 
 - `31` roster tips are ancestors of PRE-MAIN and carry no unique content.
-- `62` branches have no meaningful production function; they are return/review/intake/documentary branches.
-- `93` branches have no changed production source file.
-- `67` branches carry production source changes.
-- Only `4` branches originated their changed production code in their own last commit; `12` are inherited-only implementation branches; `45` reviewer branches carry inherited candidate code; `5` integration branches carry inherited accepted code; `1` integration branch is mixed.
+- `60` branches have no meaningful production function; they are return/review/intake/documentary branches.
+- `91` branches have no changed production source of any indexed type; `67` carry Python production changes, `2` carry only the JS dispatcher, and `11` carry native C functions.
+- `69` branches carry production source of an indexed type (67 Python, 2 JS-only dispatcher; the native-C carriers overlap the Python/reviewer set).
+- For Python production code, only `4` branches originated their changed code in their own last commit; `12` are inherited-only implementation branches; `45` reviewer branches carry inherited candidate code; `5` integration branches carry inherited accepted code; `1` integration branch is mixed.
 
 ---
 
@@ -215,6 +225,8 @@ All tests are **not run by this lane**. The exact test files that a qualified in
 | F7 temporal | `rawlsing_next/tests/test_pre553_temporal_comparability.py` | HQ211 49 focused + 159 regression; later hostile rereviews; not accepted |
 | P07 sealed owner | `rawlsing_next/tests/test_pre553_source_relations.py` | hostile reproductions; do not integrate |
 | Physical broker decoder | C3 D01/D02 tests plus R9 broker/session/binding tests | C3 55/55 + R9 chain; current custody regression not run |
+| Dispatcher JS | HQ190/HQ192 Node harnesses under `PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/` | HQ192 accepted unattended with bounded residual limitations; not re-run |
+| Native P07 Stage A/B | Native build/import/ABI/hostile courts (HQ244–HQ248) | HQ245/HQ246/HQ247/HQ248 blocked/quarantined; no build or import run by this lane |
 
 No test result in this return is a fresh execution. `TESTS_NOT_RUN` is exact and global.
 
@@ -223,8 +235,8 @@ No test result in this return is a fresh execution. `TESTS_NOT_RUN` is exact and
 ## 7. Return artifacts
 
 1. `BRANCH_DISPOSITIONS.jsonl` — 160 branch rows: exact roster name/tip/tree, merge-base, changed source/test/evidence paths and blobs, function records with origin vs inherited repetition, source-origin commit, review evidence, branch role/containment, function-class counts and per-function current-equivalent pointers.
-2. `FUNCTION_COURT.jsonl` — 239 meaningful production function rows with variants, origin commits, classification, current equivalent/owner/signature/consumer, review evidence, import/symbol compatibility, FF/time/N9–N12 notes, integration steps and source-vs-Sorok separation.
-3. `FIRST_CONSUMER_AND_SUCCESSOR_MAP.json` — 239 candidate first-consumer/successor entries.
+2. `FUNCTION_COURT.jsonl` — 343 meaningful production function rows with variants, origin commits, classification, current equivalent/owner/signature/consumer, review evidence, import/symbol compatibility, FF/time/N9–N12 notes, integration steps and source-vs-Sorok separation.
+3. `FIRST_CONSUMER_AND_SUCCESSOR_MAP.json` — 343 candidate first-consumer/successor entries.
 4. `NEGATIVE_AND_UNVERIFIED.md` — reproduced negatives, invalid code, held code, unverified evidence and exact unknowns.
 5. `00_RETURN.md` — this return.
 
