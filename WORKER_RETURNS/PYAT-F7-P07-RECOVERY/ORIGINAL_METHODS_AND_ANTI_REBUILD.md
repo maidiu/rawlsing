@@ -228,4 +228,22 @@ Do not:
 | P07 native owner | Separate qualified native issuer/implementer plus independent hostile review; only if a protected future consumer requires it |
 | Measured EVS or other wave pair | Source custodian + source-use warrant + product producers + EE12 pair authority + independent methods review |
 
+### Conditional P07 prerequisite, not built here
+
+P07 is **not required** for this sourcefree method candidate. If, and only if, a
+future selected production consumer genuinely requires protected native
+cross-universe adjudication, the separate commission must name:
+
+- the exact selected consumer, operation, governed use and source-universe pair;
+- the exact source-relation kind/scope and the exact native P07 ABI/version;
+- a qualified native owner/issuer distinct from this worker, plus the production
+  trust-ingress owner;
+- an independent hostile runtime court covering constructor bounds, sequence
+  indexing, `PyObject_Call`/`PyErr_Fetch`, reference ownership, decide/receipt
+  lifetime, memory leaks, alias/receipt/ledger non-forgeability and positive
+  cross-universe parity;
+- a quarantine boundary, exact build provenance and no Python-override path.
+
+Without that commission and independent review, no P07 native path is authorized.
+
 **Anti-rebuild terminal:** `HISTORICAL_METHOD_IDENTITY_PRESERVED__CURRENT_OWNER_ABSENT__NO_NESTED_OWNER_PORT__NO_NATIVE_REVIVAL__SCIENCE_AUTHORITY_HOLD`.
