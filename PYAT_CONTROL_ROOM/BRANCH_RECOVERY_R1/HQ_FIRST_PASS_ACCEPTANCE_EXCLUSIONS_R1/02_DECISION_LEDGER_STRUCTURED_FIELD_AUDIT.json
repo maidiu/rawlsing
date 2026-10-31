@@ -1,0 +1,16 @@
+{
+  "schema": "RRIF_HQ_DECISION_LEDGER_FIELD_AUDIT@1",
+  "source": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
+  "source_premain": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "records_total": 444,
+  "records_explicit_code_adopted_field": 120,
+  "explicit_code_adopted_true": 0,
+  "explicit_code_adopted_false": 120,
+  "records_adopted_exact_blobs_field": 2,
+  "important_late_record": {
+    "id": "R157_ACCEPTED_PREPARATION",
+    "decision": "ACCEPT_R157_SOURCE_CONFIGURATION_PREPARATION_ONLY",
+    "code_adopted": false
+  },
+  "interpretation": "The code_adopted field belongs to a particular late ledger format and does not retroactively refute earlier true integration decisions. However it decisively forbids treating those late acceptance records as canonical PRE-MAIN code adoption solely from the label. Whole ledger heterogeneous: older HQ decisions use status/holding and code commits; must join exact current PRE-MAIN path/tree and source-specific scope before exclusion."
+}
