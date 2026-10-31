@@ -1,0 +1,66 @@
+diff --git a/dev/fd/63 b/WORKER_RETURNS/PYAT-R3-PE-V2K-SCOPED-RECOVERY/candidate/pre553_postastra_pe_generic_world_possibility.py
+index 000000000..31de8f21e 100644
+--- a/dev/fd/63
++++ b/WORKER_RETURNS/PYAT-R3-PE-V2K-SCOPED-RECOVERY/candidate/pre553_postastra_pe_generic_world_possibility.py
+@@ -213,6 +213,38 @@ def _auth(value: AuthorityRef | Mapping[str, Any], name: str) -> AuthorityRef:
+     raise GenericWorldRequestShapeError(f"{name} must be AuthorityRef or mapping")
+ 
+ 
++def _reversal_authority_competent(
++    authority_registry: Any,
++    ref: AuthorityRef,
++    *,
++    target_ref: ExactRef,
++    denominator_basis_ref: ExactRef,
++) -> bool:
++    """Dereference caller-supplied reversal authority against the issuer registry.
++
++    A non-null AuthorityRef is only a caller shape.  Competence requires the
++    exact authority snapshot to be present and positively scoped to the
++    reverse-direction operation, target use and denominator/risk set.
++    """
++    try:
++        snapshot = authority_registry.require(
++            ref,
++            authority_kind="TARGET_USE_PERMISSION",
++            operation=ROLE_REVERSE,
++            target_use_ref=target_ref,
++            predicate_or_risk_set_ref=denominator_basis_ref,
++        )
++    except Exception:
++        return False
++    return (
++        snapshot.typed_state == "ALLOW"
++        and snapshot.decision_state == "ALLOW"
++        and ROLE_REVERSE in snapshot.governed_operations
++        and "POSTASTRA_PE_GENERIC_WORLD_SITATED_POSSIBILITY@1.0.0"
++        in snapshot.governed_object_families
++    )
++
++
+ def _refs(values: Iterable[ExactRef], name: str) -> tuple[ExactRef, ...]:
+     out = tuple(_exact(v, name) for v in values)
+     return tuple(sorted(set(out), key=lambda v: v.key))
+@@ -660,7 +692,12 @@ def serve_generic_world_situated_possibility(
+     # --- role reversal authority law --------------------------------------
+     if request.role_direction == ROLE_REVERSE:
+         reversal = request.role_reversal_authority_ref
+-        if reversal is None:
++        if reversal is None or not _reversal_authority_competent(
++            authority_registry,
++            reversal,
++            target_ref=request.target_ref,
++            denominator_basis_ref=request.denominator_basis_ref,
++        ):
+             return _refusal(
+                 request=request,
+                 model_rule=model_rule,
+@@ -668,7 +705,7 @@ def serve_generic_world_situated_possibility(
+                 refusal_state=REFUSAL_REVERSED_UNAUTHORIZED_ROLE,
+                 refusal_reason=(
+                     "REVERSE_DIRECTION_REQUIRES_POSITIVELY_SCOPED_ROLE_REVERSAL_AUTHORITY__"
+-                    "P_A_GIVEN_D_IS_NOT_P_D_GIVEN_A"
++                    "P_A_GIVEN_D_IS_NOT_P_D_GIVEN_A__EXACT_ISSUER_DEREFERENCE_REQUIRED"
+                 ),
+             )
+ 

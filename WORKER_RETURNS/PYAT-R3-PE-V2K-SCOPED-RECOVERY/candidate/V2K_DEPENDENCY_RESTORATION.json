@@ -1,0 +1,43 @@
+{
+ "schema": "PYAT_R3_V2K_EXACT_DEPENDENCY_RESTORATION@1",
+ "v2k_original_tip": "694fb45085cd5e4891949921a44edb77c3f603f2",
+ "v2k_source_blob": "e3ef9a2469966b8ecfbcd178b971f54c687aef22",
+ "restored_historical_blobs": {
+  "pre553_original_workload_contract_v2_candidate.py": "08bb75c431d3352cb0d17e9a65f7d855b4d35e59",
+  "pre553_original_workload_binder_candidate.py": "7d8b3902c3f8f257637b7c07ad9feb5e096d48e5",
+  "pre553_v2_durable_consumer_integration_candidate.py": "dc146e920909c8577b5c3c316cd9a8631e96ffd8",
+  "pre553_original_workload_v2_verifier_candidate.py": "996c8e907f2befde93af09b60154b610c1ffeb63",
+  "pre553_batch_durable_checkpoint_candidate.py": "719c8d878bcfb3b6c61c844c9bf974ada8365929",
+  "tests/test_pre553_original_workload_contract_v2_candidate.py": "0b9f1addf2b28f2a8e489fe44f1567a137a166f2",
+  "tests/test_pre553_v2_durable_consumer_integration_candidate.py": "3218f2800ea6da63b3d5c87ed83747b84c0b5171"
+ },
+ "current_premain_head": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+ "current_issued_workload_blob": "31e84f49d624f5524906e9e7839d2873106f8249",
+ "current_abi_symbols_present": [
+  "NativeWorkload",
+  "IssuedWorkloadRecord",
+  "CurrentDecisionResolver",
+  "admit",
+  "execute_issued_workload",
+  "OriginalWaveIdentity"
+ ],
+ "v2_required_symbols_absent_current": [
+  "V2ExpectedWorkDeclaration",
+  "v2_bind_semantic_to_dispatch",
+  "V2_SCHEMA_VERSION",
+  "V2DispatchBinding",
+  "V2ExecutedWorkload"
+ ],
+ "decision": "EXACT_HISTORICAL_DEPENDENCY_RESTORED_ONLY_IN_ISOLATED_TEST_TREE__NO_TRANSPLANT_INTO_CURRENT_SOURCE__CURRENT_ISSUED_WORKLOAD_IS_DISTINCT_ABI",
+ "commands": [
+  "git show 5eb51c686:rawlsing_next/pre553_original_workload_contract_v2_candidate.py > <isolated>/rawlsing_next/...",
+  "git show 5eb51c686:rawlsing_next/pre553_original_workload_binder_candidate.py > <isolated>/rawlsing_next/...",
+  "git show 5eb51c686:rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py > <isolated>/rawlsing_next/...",
+  "git show 5eb51c686:rawlsing_next/pre553_original_workload_v2_verifier_candidate.py > <isolated>/rawlsing_next/...",
+  "git show 5eb51c686:rawlsing_next/pre553_batch_durable_checkpoint_candidate.py > <isolated>/rawlsing_next/...",
+  "git show 5eb51c686:rawlsing_next/tests/test_pre553_original_workload_contract_v2_candidate.py > <isolated>/rawlsing_next/tests/...",
+  "git show 5eb51c686:rawlsing_next/tests/test_pre553_v2_durable_consumer_integration_candidate.py > <isolated>/rawlsing_next/tests/...",
+  "git archive 694fb450 WORKER_RETURNS/PYAT-R3-POSTASTRA-PV-V2K-INDEPENDENT-COURT-R1 | tar -x -C <isolated>",
+  "PV_RETURN=<isolated>/WORKER_RETURNS/PYAT-R3-POSTASTRA-PV-V2K-INDEPENDENT-COURT-R1 PYTHONPATH=. pytest -q <four V2K suites>"
+ ]
+}
