@@ -1,0 +1,101 @@
+{
+  "schema": "SOROK_OINDEX_R2_INDEPENDENT_REVIEW_PROVENANCE_AND_NOT_RUN@1",
+  "repository": "maidiu/rawlsing",
+  "role": "independent I3 hostile source/code/evidence reviewer",
+  "review_branch": "review/sorok-programma-oindex-r2-source-correction-independent-test-20261030",
+  "commission_head": "bc8cfb77a8fbae1f37e7b2086839e19c71d07513",
+  "immutable_review_subject": "96af4f15c993c7a4f32da4cc31ef3175903a0d5c",
+  "original_o_index": "59b4d607697af8bba668122f42b53868fb2758bf",
+  "premain_at_issuance": "87755f02ec5c37499b09e80db6fbdcc9316a6b15",
+  "refreshed_premain": "87755f02ec5c37499b09e80db6fbdcc9316a6b15",
+  "candidate_launch_premain": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+  "premain_delta": {"count": 3, "files": [".github/workflows/pyat-s6-h1-pe-return-source-audit.yml", "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/16_verify_s6_h1_pe_return_custody.py", "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/INVESTIGATIONS/20261031_HQ_S6_H1_PEV2K_INTAKE.md"], "s0_s16_map_changed": false},
+  "primary_source": {
+    "current_hq_commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+    "current_hq_path": "SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md",
+    "current_hq_blob": "2a0a3a42d66f566f92d5c333fbbea4a5adb383b2",
+    "current_hq_status": "ACTIVE_EXPLORATORY_PROGRAM_R1",
+    "earlier_commit": "3c423a0f74915a01911197b0023de9f85fd74aff",
+    "earlier_blob": "6271bb66b3cd2d92e2b814c4cd626220c2cdfe40",
+    "earlier_status": "ACTIVE_EXPLORATORY_PROGRAM_R1",
+    "heading_count": 17,
+    "questions_outputs_exact": true
+  },
+  "candidate": {
+    "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1",
+    "registry_sha256": "e01207908cf2d9b3aecd8dff8d4706abc31a82cf8d4ae96ddc5760bd67d7657e",
+    "orchestration_sha256": "27c118e073343664e12d19e5a304689245904e87d99ce7843aeabd2895900a45",
+    "validator_sha256": "7caa5665ab3058762342fce79af8ce6b3952c2779d26935b78a36ead5a4ea5e6",
+    "test_sha256": "e35c9280ec12af0479ce8c6dd057b08444d6bbe4bc8b0758f01bd8fae93a0ecb",
+    "counts": {"sorok_rows": 144, "pyat_rows": 23, "four_assets": 4, "s0_s16": 17, "l3_nodes": 74, "edges": 431, "traversals": 3, "owner_slots": 40, "cycles": 66},
+    "current_revalidation": "PASS",
+    "candidate_modified_by_review": false
+  },
+  "review_execution": {
+    "validator_command": "PYTHONDONTWRITEBYTECODE=1 python3 validate_index.py --output <temp>",
+    "validator_exit": 0,
+    "validator_result": "PASS",
+    "pytest_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -o addopts='' -q test_validate_index.py",
+    "pytest_result": "9 passed",
+    "unittest_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v test_validate_index.py",
+    "unittest_result": "Ran 9 tests in 0.192s -- OK",
+    "required_mutations": 8,
+    "required_mutations_rejected_for_claimed_reason": 7,
+    "required_mutation_unexpected_pass": "claimed source-to-consumer path with fabricated non-S source",
+    "additional_unexpected_passes": ["non-empty forged source metadata timestamp", "forged PYAT_N11 source path/blob", "forged source metadata path"],
+    "source_rows_checked_against_git": 144,
+    "sorok_source_paths_absent": ["B3A", "B3AS", "S39_S52"],
+    "sorok_null_blobs": ["B1", "B2", "B3", "BP2P4J", "R15_V2"],
+    "pyat_source_paths_resolved": "23/23"
+  },
+  "worktree": {
+    "path": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/oindex-r2-review",
+    "isolated": true,
+    "write_scope": "WORKER_RETURNS/SOROK-OINDEX-R2-INDEPENDENT-REVIEW-R1/**",
+    "files_written": [
+      "00_RETURN.md",
+      "01_PRIMARY_S0_S16_EXACT_SOURCE_REVIEW.json",
+      "02_ACTUAL_PYTHON_TESTS_MUTATIONS_AND_RESTORE.md",
+      "03_WHOLE_PRODUCT_MAPPING_PATH_ADVERSARIAL_REVIEW.md",
+      "04_OINDEX_ACCEPTANCE_AND_PRECISE_MISSING_HQ_SYNTHESIS.md",
+      "05_PROVENANCE_AND_NOT_RUN.json"
+    ],
+    "candidate_modified": false,
+    "premain_modified": false,
+    "original_owner_or_worker_modified": false,
+    "pull_request_modified": false,
+    "self_adoption": false
+  },
+  "environment": {
+    "device": "oldMac",
+    "os": "macOS 13.7.8 x86_64",
+    "harness": "OpenCode 1.18.34",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "effort": "MAX requested; real model/effort is not independently observable from inside this session",
+    "model_switch": "none",
+    "provider_account_switch": "none",
+    "local_s2": {"git_worktree": true, "python": "3.11.3", "pytest": "9.1.1", "sqlite": "3.40.1", "network_at_test_runtime": false},
+    "session_locator": "OpenCode local session; no stable public session id is exposed; branch and final pushed SHA are durable locators"
+  },
+  "not_run": [
+    "Full original R6/R7 branch test suites; only their returns/ledgers were read.",
+    "Four returned asset test suites (CP-A5-R2, C9C12-R2, B-F1CR-R2, V3CORE-R1); author counts are cited unpooled only.",
+    "Any native source, original survey, provider/model call, native N11/N12, C9/C12 or C0 execution.",
+    "Any production import, PRE-MAIN mutation, branch rewrite, PR change or candidate code execution.",
+    "Old O-INDEX VALIDATION_RESULTS.json / VALIDATOR_TEST_RESULTS.txt as proof of the corrected candidate."
+  ],
+  "rollback": {
+    "action": "delete WORKER_RETURNS/SOROK-OINDEX-R2-INDEPENDENT-REVIEW-R1/**",
+    "source_or_premain_changes_to_revert": "none",
+    "candidate_files_changed": "none",
+    "requires_schema_migration": false
+  },
+  "acceptance_decision": "REVISE_PRECISE_DEFICIENCIES",
+  "commit_readback": {
+    "return_commit": "PENDING_PUSH_READBACK",
+    "remote_branch": "review/sorok-programma-oindex-r2-source-correction-independent-test-20261030",
+    "remote_sha": "PENDING_PUSH_READBACK",
+    "readback_command": "git ls-remote origin refs/heads/review/sorok-programma-oindex-r2-source-correction-independent-test-20261030",
+    "self_reference_note": "A file cannot contain the SHA of the commit that contains it; the exact final SHA is reported in the push readback and terminal response."
+  }
+}
