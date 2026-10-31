@@ -1,0 +1,305 @@
+{
+ "schema": "PYAT_845_H1_BRANCH_COUNT_AND_FUNCTION_CUSTODY_VERIFICATION@1",
+ "h1_reviewer_sha": null,
+ "shared_law": "f50651a2bb0758e9fe6d6a2852441dcc782344be",
+ "frozen_baseline": "750548ddbb9b4392a16ce93097b856f349e16182",
+ "actual_current_premain": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+ "total_branches": 845,
+ "total_function_rows": 3135,
+ "shards": {
+  "S1": {
+   "original_return_sha": "c85db39772a8ac09fd70c6bb94a39dd04274d2cb",
+   "corrected_return_sha": "6a658ad347ad0a714f40cbce04b5cd6d1f5b5ab5",
+   "function_rows_original": 1279,
+   "function_rows_corrected": 1279,
+   "original_order_preserved": true,
+   "branch_rows_corrected": 175,
+   "original_label_counts": {
+    "UNIQUE_USEFUL_NEEDS_ADAPTATION": 299,
+    "EXACT_ALREADY_IN_PREMAIN": 542,
+    "SUPERSEDED_BETTER": 73,
+    "EVIDENCE_UNKNOWN": 34,
+    "UNIQUE_USEFUL_HELD_BY_ACTUAL_SOURCE_AUTHORITY": 331
+   },
+   "branch_names_tips_preserved_expected": [
+    175,
+    175
+   ]
+  },
+  "S2": {
+   "original_return_sha": "ab303ee446c87beca32dc2c322704f6cf0dc7b79",
+   "corrected_return_sha": "3042fca8a2165e07871d408118e1741686020cdc",
+   "function_rows_original": 218,
+   "function_rows_corrected": 218,
+   "original_order_preserved": true,
+   "branch_rows_corrected": 175,
+   "original_label_counts": {
+    "EVIDENCE_UNKNOWN": 105,
+    "UNIQUE_USEFUL_HELD_BY_ACTUAL_SOURCE_AUTHORITY": 67,
+    "UNIQUE_USEFUL_NEEDS_ADAPTATION": 22,
+    "EXACT_ALREADY_IN_PREMAIN": 14,
+    "SUPERSEDED_BETTER": 10
+   },
+   "branch_names_tips_preserved_expected": [
+    175,
+    175
+   ]
+  },
+  "S3": {
+   "original_return_sha": "65b83dee3385fc85d5d283c19acd270dea50a27d",
+   "corrected_return_sha": "ebdb51a5c79209b2e552cfce648f7847b19386c2",
+   "function_rows_original": 398,
+   "function_rows_corrected": 398,
+   "original_order_preserved": true,
+   "branch_rows_corrected": 174,
+   "original_label_counts": {
+    "UNIQUE_USEFUL_NEEDS_ADAPTATION": 214,
+    "INVALID": 4,
+    "EXACT_ALREADY_IN_PREMAIN": 39,
+    "UNIQUE_USEFUL_HELD_BY_ACTUAL_SOURCE_AUTHORITY": 16,
+    "EVIDENCE_UNKNOWN": 124,
+    "TRASH_WITH_GROUNDS": 1
+   },
+   "branch_names_tips_preserved_expected": [
+    174,
+    174
+   ]
+  },
+  "S4": {
+   "original_return_sha": "8f4ad92aa47b7ae53d625bc2587357092af96e27",
+   "corrected_return_sha": "d93e8c2441dfa394e56fc1f5bcf43a0b4388adcb",
+   "function_rows_original": 897,
+   "function_rows_corrected": 897,
+   "original_order_preserved": true,
+   "branch_rows_corrected": 161,
+   "original_label_counts": {
+    "EVIDENCE_UNKNOWN": 202,
+    "INVALID/TRASH_WITH_GROUNDS": 171,
+    "UNIQUE_USEFUL_HELD_BY_ACTUAL_SOURCE_AUTHORITY": 121,
+    "UNIQUE_USEFUL_NEEDS_ADAPTATION": 77,
+    "EXACT_ALREADY_IN_PREMAIN": 326
+   },
+   "branch_names_tips_preserved_expected": [
+    161,
+    161
+   ]
+  },
+  "S5": {
+   "original_return_sha": "1aa0407869620cd8ba2e8ca1f1533b99fd097162",
+   "corrected_return_sha": "32dac59b3741dcc54f507321c7826e65174af372",
+   "function_rows_original": 343,
+   "function_rows_corrected": 343,
+   "original_order_preserved": true,
+   "branch_rows_corrected": 160,
+   "original_label_counts": {
+    "UNIQUE_USEFUL_READY": 119,
+    "EXACT_ALREADY_IN_PREMAIN": 86,
+    "SUPERSEDED_BETTER": 6,
+    "UNIQUE_USEFUL_NEEDS_ADAPTATION": 101,
+    "INVALID/TRASH_WITH_GROUNDS": 11,
+    "UNIQUE_USEFUL_HELD_BY_ACTUAL_SOURCE_AUTHORITY": 20
+   },
+   "branch_names_tips_preserved_expected": [
+    160,
+    160
+   ]
+  }
+ },
+ "s1_current_production_accepted_claims": {
+  "count": 150,
+  "checks": {
+   "e3_current_receiver_execution": 0,
+   "receipts": 0,
+   "positive_oracle_not_tested": 150,
+   "current_module_tests_run_by_h1": 105,
+   "rows_outside_h1_current_test_modules": 27,
+   "h1_verdict": "REVISE__ROW_SCOPE_ACCEPTANCE_UNPROVEN"
+  }
+ },
+ "s4_renamed_equivalent_claims": {
+  "count": 325,
+  "checks": {
+   "evidence_strength_E1_only": 325,
+   "first_consumer_empty": 325,
+   "positive_oracle_not_tested": 325,
+   "fault_negative_not_tested": 325,
+   "receipts": 0,
+   "original_paths_under_WORKER_RETURNS": 323,
+   "h1_verdict": "RED__RENAMED_EQUIVALENCE_UNPROVEN__E1_ONLY"
+  }
+ },
+ "s3_original_row_hash_gap": {
+  "rows": 398,
+  "original_row_sha256_present": 0,
+  "direct_attribute_fields_checked": [
+   "function_id",
+   "path",
+   "symbol",
+   "historical_blob",
+   "original_label",
+   "original_branch",
+   "tip_sha"
+  ],
+  "mismatches": 0,
+  "verdict": "CUSTODY_ACCEPT_WITH_SCHEMA_GAP"
+ },
+ "s4_original_row_hash_gap": {
+  "rows": 897,
+  "original_row_sha256_present": 0,
+  "direct_attribute_fields_checked": [
+   "function_id",
+   "name",
+   "primary_blob",
+   "primary_branch",
+   "primary_tip_sha",
+   "original_label"
+  ],
+  "mismatches": 0,
+  "original_path_in_original_occurrence_paths": 897,
+  "verdict": "CUSTODY_ACCEPT_WITH_SCHEMA_GAP"
+ },
+ "s5_original_row_hash": {
+  "rows": 343,
+  "original_row_sha256_present": 343
+ },
+ "original_adverse_findings": {
+  "s3_seam": "REPRODUCED_26_PASS_1_FAIL",
+  "s3_pe_strict": "REPRODUCED_4_PASS_9_FAIL",
+  "s3_v2k": "REPRODUCED_COLLECTION_ERROR_EXIT_2",
+  "s3_selected_world": "REPRODUCED_24_PASS",
+  "s3_e03": "REPRODUCED_18_PASS",
+  "s4_f7_p07_defective_blocks": 11,
+  "s5_f7_p07_invalid_preserved": 11,
+  "s3_defective_blocks": 6,
+  "note": "S4/S5 F7/P07 negatives are preserved historical evidence, not independently rerun by H1."
+ },
+ "tests_run_by_h1": [
+  {
+   "court": "S3 seam",
+   "tip": "ed34944e253b78714a28d72b8ca2a6521ce15930",
+   "command": "pytest rawlsing_next/tests/test_r3_s02_seam_witness.py",
+   "result": "26 passed, 1 failed",
+   "exit": 1,
+   "falsifier": "test_s00c_change_source_owned_synthetic_numeric_values_changes_result: KeyError exact_probabilities"
+  },
+  {
+   "court": "S3 PE strict",
+   "tip": "e61a26ce24f023a53d6b116bb9eca2fb7b6f8e65",
+   "command": "HQ297_EXACT_PE_ROOT=<exact tip> pytest rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py",
+   "result": "4 passed, 9 failed",
+   "exit": 1
+  },
+  {
+   "court": "S3 V2K",
+   "tip": "694fb45085cd5e4891949921a44edb77c3f603f2",
+   "command": "pytest test_hq295_v2k_original_identity_successor.py test_postastra_pv_v2k_independent.py",
+   "result": "collection error",
+   "exit": 2,
+   "falsifier": "missing rawlsing_next.pre553_original_workload_contract_v2_candidate"
+  },
+  {
+   "court": "S3 selected-world",
+   "tip": "ed34944e253b78714a28d72b8ca2a6521ce15930",
+   "command": "pytest rawlsing_next/tests/test_pre553_selected_world_progressive_contract.py",
+   "result": "24 passed",
+   "exit": 0
+  },
+  {
+   "court": "S3 E03",
+   "tip": "ed34944e253b78714a28d72b8ca2a6521ce15930",
+   "command": "pytest rawlsing_next/tests/test_pre553_n9_n10w_progressive_candidate.py",
+   "result": "18 passed",
+   "exit": 0
+  },
+  {
+   "court": "S1 current module coverage",
+   "tip": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+   "command": "pytest test_universal_grammar.py test_universal_workload.py test_universal_source_byte_custody.py test_universal_source_projection.py",
+   "result": "105 passed",
+   "exit": 0
+  }
+ ],
+ "cross_shard_uniqueness": "NOT_ADJUDICATED__S6_533_REQUIRED",
+ "no_premain_merge": true,
+ "no_source_or_actor_permission": true,
+ "h1_challenge_counts": {
+  "total": 2146,
+  "function_claims": 2138,
+  "court_receipts": 5,
+  "custody_schema": 2,
+  "current_receiver_partial": 1,
+  "by_verdict": {
+   "ENGINEERING_HOLD__UNIQUE_VALUE_AND_CURRENT_TESTS_UNPROVEN": 710,
+   "ENGINEERING_REVISE__ROW_SCOPE_CURRENT_ACCEPTANCE_UNPROVEN": 150,
+   "ENGINEERING_REVISE__SUPERIORITY_UNPROVEN": 88,
+   "ENGINEERING_REVISE__BLANKET_SOURCE_HOLD_UNSUPPORTED__OPERATION_AXIS_REQUIRED": 546,
+   "ENGINEERING_ACCEPT_NEGATIVE_PRESERVED__NOT_INDEPENDENTLY_RERUN": 29,
+   "ENGINEERING_REVISE__FLAT_TRASH_UNSUPPORTED__EVIDENCE_ONLY": 171,
+   "ENGINEERING_RED__RENAMED_EQUIVALENCE_UNPROVEN__E1_ONLY": 325,
+   "ENGINEERING_RED__READY_WITHOUT_CURRENT_TESTS": 119,
+   "ENGINEERING_ACCEPT_NEGATIVE__REPRODUCED_26_PASS_1_FAIL": 1,
+   "ENGINEERING_ACCEPT_NEGATIVE__REPRODUCED_4_PASS_9_FAIL": 1,
+   "ENGINEERING_ACCEPT_NEGATIVE__REPRODUCED_COLLECTION_ERROR_EXIT_2": 1,
+   "ENGINEERING_ACCEPT_SCOPED__24_PASS": 1,
+   "ENGINEERING_ACCEPT_SCOPED__18_PASS": 1,
+   "ENGINEERING_ACCEPT_SCOPED__105_CURRENT_TESTS_PASS__ROW_SCOPE_REVISE": 1,
+   "CUSTODY_ACCEPT_WITH_SCHEMA_GAP__398_OF_398_DIRECT_ATTRIBUTE_MATCH": 1,
+   "CUSTODY_ACCEPT_WITH_SCHEMA_GAP__897_OF_897_DIRECT_ATTRIBUTE_MATCH": 1
+  }
+ },
+ "original_claims_reviewed": {
+  "s1_current_production_accepted": 150,
+  "s1_superseded": 73,
+  "s1_held": 331,
+  "s1_adaptation": 299,
+  "s2_superseded": 10,
+  "s2_held": 67,
+  "s2_adaptation": 22,
+  "s3_adaptation": 214,
+  "s3_held": 16,
+  "s3_invalid_or_trash": 5,
+  "s4_renamed_equivalent": 325,
+  "s4_held": 121,
+  "s4_adaptation": 77,
+  "s4_trash": 171,
+  "s5_ready": 119,
+  "s5_adaptation": 101,
+  "s5_held": 20,
+  "s5_invalid_or_trash": 11,
+  "s5_superseded": 6
+ },
+ "preserved_specific_defects": {
+  "total": 28,
+  "s3": 6,
+  "s4": 11,
+  "s5": 11,
+  "note": "28 corrected defective blocks preserved; 16 carry original INVALID/TRASH labels and 12 are held/adaptation rows correctly reclassified as specific defects."
+ },
+ "flat_trash_downgraded": {
+  "count": 171,
+  "note": "187 original INVALID/TRASH labels; 16 specific defects preserved, 171 flat-trash labels downgraded to evidence-only/insufficient rather than treated as invalidity."
+ },
+ "s1_row_scope_challenge": {
+  "count": 150,
+  "checks": {
+   "e3_current_receiver_execution": 0,
+   "receipts": 0,
+   "positive_oracle_not_tested": 150,
+   "current_module_tests_run_by_h1": 105,
+   "rows_outside_h1_current_test_modules": 27,
+   "h1_verdict": "REVISE__ROW_SCOPE_ACCEPTANCE_UNPROVEN"
+  }
+ },
+ "s4_renamed_challenge": {
+  "count": 325,
+  "checks": {
+   "evidence_strength_E1_only": 325,
+   "first_consumer_empty": 325,
+   "positive_oracle_not_tested": 325,
+   "fault_negative_not_tested": 325,
+   "receipts": 0,
+   "original_paths_under_WORKER_RETURNS": 323,
+   "h1_verdict": "RED__RENAMED_EQUIVALENCE_UNPROVEN__E1_ONLY"
+  }
+ }
+}
