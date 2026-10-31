@@ -85,6 +85,23 @@ ALLOWED_CLAIM_EPOCHS = {
     "PRE_MAIN_ADVISORY_ATLAS",
 }
 GRADE_FIELDS = ("engineering_grade", "science_grade", "authority_grade", "human_grade")
+CONSUMER_STATES = {
+    "NONE_PROVEN_AT_PREMAIN",
+    "NOT_A_RUNTIME_MODULE",
+    "AUTHOR_TESTED_ONLY",
+    "HISTORICAL_SOURCE_ONLY",
+    "HISTORICAL_OR_AUTHOR_TESTED_ONLY",
+    "ACTUAL",
+}
+ALLOWED_SOURCE_METADATA_FIELDS = {"timestamp", "grade", "blob", "source_path", "read_status"}
+REQUIRED_PRODUCT_LINKS = {
+    "S5": ("L0_S5_FLOURISHING_AGENCY", "L1_S5_FLOURISHING", "L3_S5_NORMATIVE_MODEL", "L4_S5_FLOURISHING_OWNER", "L5_S5_HARMFUL_ATTACHMENT_COUNTEREXAMPLE"),
+    "S7": ("L0_S7_USER_PRAXIS", "L1_S7_USER_PRACTICE", "L3_S7_PRACTICE_INFERENCE", "L4_S7_PRAXIS_OWNER", "L5_S7_ONE_ACTION_DIAGNOSIS_FALSIFIER"),
+    "S11": ("L0_S11_TRUTHFUL_ENCOUNTER", "L1_S11_UX_SURFACE", "L3_S11_ENCOUNTER_SURFACE", "L4_S11_UX_OWNER", "L5_S11_OMNISCIENCE_AND_BLACKBOX_FALSIFIER"),
+    "S13": ("L0_S13_NEIGHBOR_AS_END", "L1_S13_ECONOMIC_CONSTRAINTS", "L3_S13_REVENUE_MODEL", "L4_S13_BUSINESS_OWNER", "L5_S13_EXTRACTIVE_INCENTIVE_FALSIFIER"),
+    "S14": ("L0_S14_NONPREDATORY_ENCOUNTER", "L1_S14_SAFETY_PRIVACY", "L3_S14_ABUSE_PRIVACY_BOUNDARY", "L4_S14_SAFETY_OWNER", "L5_S14_COERCION_AND_CROSS_USER_FALSIFIER"),
+    "S15": ("L0_S15_WITNESSED_HUMAN_EVIDENCE", "L1_S15_ALPHA_RESEARCH", "L3_S15_REFERENCE_AND_NATIVE_EVALUATION", "L4_S15_ALPHA_OWNER", "L5_S15_PERSUASIVE_LLM_FALSIFIER"),
+}
 
 
 class ValidationError(AssertionError):
@@ -94,6 +111,14 @@ class ValidationError(AssertionError):
 def _require(condition: bool, message: str) -> None:
     if not condition:
         raise ValidationError(message)
+
+
+def _same_commit_time(left: str, right: str) -> bool:
+    from datetime import datetime
+    try:
+        return datetime.fromisoformat(left.replace("Z", "+00:00")) == datetime.fromisoformat(right.replace("Z", "+00:00"))
+    except (TypeError, ValueError):
+        return False
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -138,6 +163,16 @@ def validate(root: Path) -> dict[str, Any]:
     registry = _load(root / "01_SOURCE_OF_TRUTH_REGISTRY.json")
     orchestration = _load(root / "02_L0_L5_LINKED_ORCHESTRATION_INDEX.json")
     slots = _load(root / "04_UNDECIDED_SCIENCE_DEPENDENCY_AND_OWNER_SLOTS.json")
+    source_manifest = _load(root / "source_manifest.json")
+    manifest_rows = source_manifest.get("rows", [])
+    _require(len(manifest_rows) == 167, f"source manifest expects 167 source rows, got {len(manifest_rows)}")
+    manifest_digest = hashlib.sha256(json.dumps(
+        manifest_rows + source_manifest.get("reference_sources", []),
+        sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    _require(source_manifest.get("manifest_digest") == manifest_digest,
+             "source manifest digest mismatch")
+    manifest_by_id = {(item["namespace"], item["id"]): item for item in manifest_rows}
+    _require(len(manifest_by_id) == 167, "source manifest duplicate identity")
     for name in (
         "00_START_HERE.md",
         "03_RECOVERY_AND_FOUR_RETURN_ASSET_INDEX.md",
@@ -187,6 +222,14 @@ def validate(root: Path) -> dict[str, Any]:
         _require(bool(HEX40.match(commit)), f"{row['id']}: source commit")
         _require(bool(source.get("path")), f"{row['id']}: source path")
         _require(commit in metadata and metadata[commit].get("timestamp"), f"{row['id']}: source time/currentness")
+        _require(set(metadata[commit]) <= ALLOWED_SOURCE_METADATA_FIELDS,
+                 f"{row['id']}: unknown source metadata field")
+        reference_meta = {item["commit"]: item for item in source_manifest.get("reference_sources", [])}
+        if commit in reference_meta:
+            _require(metadata[commit].get("source_path") == reference_meta[commit]["path"],
+                     f"{row['id']}: source metadata path mismatch")
+            _require(metadata[commit].get("blob") == reference_meta[commit]["object_id"],
+                     f"{row['id']}: source metadata blob mismatch")
         if row["kind"] == "DECLARED_S0_S16_WORKSTREAM":
             _require(commit == "865b5b01e1a27e99020cf2bb389af8cd4c874b57", f"{row['id']}: source commit")
             _require(source["path"] == "SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md", f"{row['id']}: original Program Map")
@@ -195,6 +238,49 @@ def validate(root: Path) -> dict[str, Any]:
             _require(bool(row.get("question")) and bool(row.get("output")), f"{row['id']}: original question/output")
             _require(row["native_product_accepted"] is False and row["source_science_issued"] is False, f"{row['id']}: prohibited source-to-native promotion")
     checks.append("no native/science promotion; every row has typed owner, grades, epoch and source time")
+
+    for row in rows:
+        key = ("SOROK", row["id"])
+        expected = manifest_by_id.get(key)
+        _require(expected is not None, f"{row['id']}: missing source manifest row")
+        source = row["evidence_source"]
+        for field in ("commit", "path", "object_type", "object_id", "source_kind",
+                      "source_timestamp"):
+            _require(source.get(field) == expected.get(field),
+                     f"{row['id']}: {field} manifest mismatch")
+        _require(source.get("blob") == (expected.get("object_id") if expected.get("object_type") == "blob" else None),
+                 f"{row['id']}: blob/object-type manifest mismatch")
+        _require(source.get("blob") == (expected.get("object_id") if expected.get("object_type") == "blob" else None),
+                 f"{row['id']}: blob/object-type manifest mismatch")
+        _require(row.get("source_timestamp") == expected.get("source_timestamp"),
+                 f"{row['id']}: source_timestamp manifest mismatch")
+        _require(row.get("first_consumer_required") == expected.get("required_consumer"),
+                 f"{row['id']}: required consumer manifest mismatch")
+        _require(row.get("first_consumer") == row.get("first_consumer_required"),
+                 f"{row['id']}: required consumer changed")
+        _require(row.get("actual_consumer_state") in CONSUMER_STATES,
+                 f"{row['id']}: untyped actual consumer state")
+        if row.get("actual_consumer_state") == "ACTUAL":
+            evidence = row.get("actual_consumer_evidence")
+            _require(isinstance(evidence, dict) and all(evidence.get(k) for k in
+                     ("commit", "path", "object_type", "object_id")),
+                     f"{row['id']}: ACTUAL consumer lacks source evidence")
+        _require(row.get("actual_consumer_state") == expected.get("actual_consumer_state"),
+                 f"{row['id']}: actual consumer state manifest mismatch")
+        if row.get("actual_consumer_state") == "ACTUAL":
+            evidence = row.get("actual_consumer_evidence")
+            _require(evidence == expected.get("actual_consumer_evidence"),
+                     f"{row['id']}: ACTUAL consumer evidence manifest mismatch")
+        _require(_same_commit_time(metadata.get(source["commit"], {}).get("timestamp"),
+                                   expected.get("source_timestamp")),
+                 f"{row['id']}: source metadata timestamp manifest mismatch")
+        for rowfield, manifest_field in (("owner", "source_owner"),
+                                          ("owner_type", "scientific_owner"),
+                                          ("authority_grade", "authority_status"),
+                                          ("status", "status")):
+            _require(row.get(rowfield) == expected.get(manifest_field),
+                     f"{row['id']}: {rowfield} manifest mismatch")
+    checks.append("144 Sorok rows match the frozen source manifest")
 
     four = {row["id"]: row for row in rows if row["kind"] == "NEW_FOUR_RETURN_CODE_ASSET"}
     _require(set(four) == set(FOUR), "four returned asset set")
@@ -235,6 +321,40 @@ def validate(root: Path) -> dict[str, Any]:
         for field in ("owner", "owner_type", "direct_consumer", "next_evidence", "science_grade", "authority_grade"):
             _require(isinstance(row.get(field), str) and bool(row[field]), f"{row['id']}: missing {field}")
     _require("PYAT_N11" in {row["id"] for row in pyat_rows} and "PYAT_N12" in {row["id"] for row in pyat_rows}, "Pyat N11/N12 missing")
+    for row in pyat_rows:
+        expected = manifest_by_id.get(("PYAT", row["id"]))
+        _require(expected is not None, f"{row['id']}: missing source manifest row")
+        source = row["source"]
+        for field in ("commit", "path", "object_type", "object_id", "source_kind",
+                      "source_timestamp"):
+            _require(source.get(field) == expected.get(field),
+                     f"{row['id']}: {field} manifest mismatch")
+        _require(row.get("first_consumer_required") == expected.get("required_consumer"),
+                 f"{row['id']}: required consumer manifest mismatch")
+        _require(row.get("actual_consumer_state") in CONSUMER_STATES,
+                 f"{row['id']}: untyped actual consumer state")
+        if row.get("actual_consumer_state") == "ACTUAL":
+            evidence = row.get("actual_consumer_evidence")
+            _require(isinstance(evidence, dict) and all(evidence.get(k) for k in
+                     ("commit", "path", "object_type", "object_id")),
+                     f"{row['id']}: ACTUAL consumer lacks source evidence")
+        _require(row.get("actual_consumer_state") == expected.get("actual_consumer_state"),
+                 f"{row['id']}: actual consumer state manifest mismatch")
+        if row.get("actual_consumer_state") == "ACTUAL":
+            evidence = row.get("actual_consumer_evidence")
+            _require(evidence == expected.get("actual_consumer_evidence"),
+                     f"{row['id']}: ACTUAL consumer evidence manifest mismatch")
+        _require(_same_commit_time(metadata.get(source["commit"], {}).get("timestamp"),
+                                   expected.get("source_timestamp")),
+                 f"{row['id']}: source metadata timestamp manifest mismatch")
+        for rowfield, manifest_field in (("owner", "source_owner"),
+                                          ("owner_type", "scientific_owner"),
+                                          ("authority_grade", "authority_status")):
+            _require(row.get(rowfield) == expected.get(manifest_field),
+                     f"{row['id']}: {rowfield} manifest mismatch")
+        _require(row.get("status_class") == expected.get("status"),
+                 f"{row['id']}: status manifest mismatch")
+    checks.append("23 Pyat rows match the frozen source manifest")
     checks.append("separate Pyat N0-N12/F1-F8 rows, no actor psyche, no id collision")
 
     nodes = orchestration["nodes"]
@@ -249,6 +369,26 @@ def validate(root: Path) -> dict[str, Any]:
     _require(not orphans, f"orphan L3 functions: {orphans}")
     for edge in edges:
         _require(edge["from"] in node_ids and edge["to"] in node_ids, f"dangling edge {edge}")
+    for sid, (l0, l1, link_l3, l4, l5) in REQUIRED_PRODUCT_LINKS.items():
+        row = next(item for item in rows if item["id"] == sid)
+        link = row.get("product_link")
+        _require(isinstance(link, dict), f"{sid}: missing product link")
+        _require(link.get("l0") == l0 and link.get("l1") == l1 and link.get("l2") == sid
+                 and link.get("l3") == link_l3 and link.get("l4") == l4 and link.get("l5") == l5,
+                 f"{sid}: product link identity mismatch")
+        _require(link.get("edge_status") == "CONCEPTUAL_HQ_CANDIDATE_EDGE",
+                 f"{sid}: product link not typed as HQ candidate")
+        _require(isinstance(row.get("alternatives"), list) and len(row["alternatives"]) >= 2,
+                 f"{sid}: source alternatives missing")
+        for node_id in (l0, l1, link_l3, l4, l5):
+            _require(node_id in node_ids, f"{sid}: missing product node {node_id}")
+        chain = ((l0, l1), (l1, sid), (sid, link_l3), (link_l3, l4), (l4, l5))
+        for left, right in chain:
+            _require(any(edge["from"] == left and edge["to"] == right for edge in edges),
+                     f"{sid}: missing product path {left}->{right}")
+        _require(any(node["id"] == sid and node.get("product_link") is None for node in nodes),
+                 f"{sid}: registry node identity changed")
+    checks.append("six S workstreams have specific L0-L5 product paths")
     checks.append("all Sorok/Pyat items linked; no orphan L3 function; no dangling edge")
 
     backward = orchestration.get("backward_paths", {})
@@ -282,11 +422,11 @@ def validate(root: Path) -> dict[str, Any]:
     checks.append(f"circular dependencies explicitly typed ({len(cycles)} index cycles)")
 
     _require(slots["counts"]["priority_decisions_made"] == 0, "priority decision made")
-    _require(len(slots["slots"]) == 40, f"expected 40 owner slots, got {len(slots['slots'])}")
-    for slot_id in ("S0_S16_SOURCE", "F1CR_PATCH", "V3_ZIP_CONTAINER", "PYAT_NAMESPACE", "PYAT_N11", "PYAT_N12", "JOINT_TEST", "PRIORITY"):
+    _require(len(slots["slots"]) == 46, f"expected 46 owner slots, got {len(slots['slots'])}")
+    for slot_id in ("S0_S16_SOURCE", "F1CR_PATCH", "V3_ZIP_CONTAINER", "PYAT_NAMESPACE", "PYAT_N11", "PYAT_N12", "JOINT_TEST", "PRIORITY", "S5_FLOURISHING_OWNER", "S7_PRAXIS_OWNER", "S11_UX_OWNER", "S13_MONETIZATION_OWNER", "S14_SAFETY_PRIVACY_OWNER", "S15_ALPHA_EVALUATION_OWNER"):
         _require(any(slot["slot"] == slot_id for slot in slots["slots"]), f"missing owner slot {slot_id}")
     _require(all(slot.get("priority_decision") == "NOT_MADE_BY_INDEX" for slot in slots["slots"]), "slot priority decision")
-    checks.append("40 owner slots retained; S0-S16 original source recovered, no priority decisions")
+    checks.append("46 owner slots retained; S0-S16 source recovered; six product owners explicit; no priority decisions")
 
     _require(orchestration["status"] == "WORKING_CANDIDATE_NOT_HQ_ADJUDICATED", "candidate status")
     _require(registry["o_index_status"] == "WORKING_CANDIDATE_NOT_HQ_ADJUDICATED", "registry candidate status")
@@ -298,6 +438,7 @@ def validate(root: Path) -> dict[str, Any]:
         "root": str(root),
         "registry_sha256": hashlib.sha256((root / "01_SOURCE_OF_TRUTH_REGISTRY.json").read_bytes()).hexdigest(),
         "orchestration_sha256": hashlib.sha256((root / "02_L0_L5_LINKED_ORCHESTRATION_INDEX.json").read_bytes()).hexdigest(),
+        "source_manifest_sha256": hashlib.sha256((root / "source_manifest.json").read_bytes()).hexdigest(),
         "checks": checks,
         "counts": {
             "sorok_rows": len(rows),

@@ -11,15 +11,15 @@ This work started only after both required inputs were published:
 - R6 `agent/sorok-recovery-r6-39-scripts-r41-finite-sourceclose-20261030-r1` at `28e38ebbf08bbfaeb152ae022046e1303d9a2e40`.
 - R7 `research/sorok-recovery-r7-full-source-closure-adjudication-20261030-r1` at `7f25fb9bfc48679a47ccc61b36354f20fef54f1c`.
 
-Current PRE-MAIN is `5fc1d43e3d5412194d1f1eaa30ff448f84635e99`. The candidate is built from the sealed O-INDEX branch head `b392140dbb00c77d9d580f64974e9d729f704645`; it does not edit PRE-MAIN, `00_PROGRAMMA_SOROK.md`, original owner source or another worker’s return.
+Build PRE-MAIN is `5fc1d43e3d5412194d1f1eaa30ff448f84635e99`; refreshed current PRE-MAIN at repair is `d0342290b257f85c3e8931f9962e0aecabc84ed3` (last verified `87755f02ec5c37499b09e80db6fbdcc9316a6b15`). The candidate is built from the sealed O-INDEX branch head `b392140dbb00c77d9d580f64974e9d729f704645`; it does not edit PRE-MAIN, `00_PROGRAMMA_SOROK.md`, original owner source or another worker’s return.
 
 ## What the O-INDEX covers
 
-- The full inherited denominator: 19 C/A, 40 M, 12 Sorok N, 16 O and 15 E = 102 definitions, plus 17 exact S0–S16 holds and 23 separate Pyat N/F rows.
+- The full inherited denominator: 19 C/A, 40 M, 12 Sorok N, 16 O and 15 E = 102 definitions, plus 17 source-defined S0–S16 workstreams and 23 separate Pyat N/F rows.
 - R6’s 39-row / 94-file finite source close and nine `UNWIRED_SOURCE_PRESENT` material families.
 - Four independently returned code assets: `CP-A5-R2`, `C9C12-R2`, `B-F1CR-R2` and `V3CORE-R1`.
-- L0–L5 linked orchestration (188 nodes, 414 edges), three example traversals, backward paths from A0–A5 and S0–S16, preserved negatives and 40 owner slots.
-- A sourcefree validator that checks counts, identifiers, links, traversal references, holds and authority fields.
+- L0–L5 linked orchestration (219 nodes, 461 edges), three example traversals, backward paths from A0–A5 and S0–S16, preserved negatives and 46 owner slots.
+- A sourcefree validator plus frozen source manifest and Git refresh verifier; it checks source-object identity, counts, links, product paths, holds and authority fields.
 
 ## What it does not prove
 
@@ -35,11 +35,12 @@ Current PRE-MAIN is `5fc1d43e3d5412194d1f1eaa30ff448f84635e99`. The candidate is
 ## Read in this order
 
 1. `01_SOURCE_OF_TRUTH_REGISTRY.json` — authoritative row-level source of truth. Read `coverage`, `r6_source_close`, `four_returned_assets`, `negative_register`, `pyat_namespace`, `source_cut_metadata` and rows.
-2. `02_L0_L5_LINKED_ORCHESTRATION_INDEX.json` — L0 outcomes, L1 organs, L2 science/holds, L3 functions, L4 consumers and L5 evidence; 414 edges, three traversals and backward paths.
+2. `02_L0_L5_LINKED_ORCHESTRATION_INDEX.json` — L0 outcomes, L1 organs, L2 science/holds, L3 functions, L4 consumers and L5 evidence; 461 edges, three traversals and backward paths.
 3. `03_RECOVERY_AND_FOUR_RETURN_ASSET_INDEX.md` — recovery narrative, R6/R7 details, four-asset table, preserved negatives and test-count discipline.
-4. `04_UNDECIDED_SCIENCE_DEPENDENCY_AND_OWNER_SLOTS.json` — 40 science/source/authority/HQ slots, including Pyat N11/N12. These are questions for owners, not inferred answers.
+4. `04_UNDECIDED_SCIENCE_DEPENDENCY_AND_OWNER_SLOTS.json` — 46 science/source/authority/HQ slots, including Pyat N11/N12. These are questions for owners, not inferred answers.
 5. `05_VALIDATOR_AND_READBACK.md` — what was executed and what it can and cannot prove.
-6. `validate_index.py` — rerun the sourcefree checks.
+6. `source_manifest.json` — 167 digest-bound exact source rows plus 3 reference sources.
+7. `validate_index.py` and `verify_source_manifest.py` — run offline consistency and real Git refresh verification; `test_validate_index.py` contains the 21-test fault suite.
 
 ## Three traversals for HQ
 

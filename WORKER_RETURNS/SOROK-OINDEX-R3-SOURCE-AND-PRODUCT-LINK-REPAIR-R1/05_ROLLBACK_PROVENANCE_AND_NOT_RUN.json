@@ -1,0 +1,90 @@
+{
+  "schema": "SOROK_OINDEX_R3_ROLLBACK_PROVENANCE_AND_NOT_RUN@1",
+  "repository": "maidiu/rawlsing",
+  "role": "independent I2/I3 source-index engineering repair author",
+  "branch": "agent/sorok-oindex-r3-exact-source-integrity-repair-20261031-r1",
+  "commission_head": "024f3b09b17ca5769c0bdee8d5eec459e31bb247",
+  "candidate_base": "96af4f15c993c7a4f32da4cc31ef3175903a0d5c",
+  "controlling_review": "3f3d9ec2fddc36bd4047bc6c730382c65a5e692a",
+  "original_o_index": "59b4d607697af8bba668122f42b53868fb2758bf",
+  "premain": {
+    "build": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+    "last_verified": "87755f02ec5c37499b09e80db6fbdcc9316a6b15",
+    "refreshed_current": "d0342290b257f85c3e8931f9962e0aecabc84ed3",
+    "delta_from_last_verified": {"count": 3, "files": [".github/workflows/pyat-s7-pe-v2k-return-custody.yml", "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/17_s7_pe_v2k_return_static_acceptance.py", "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/INVESTIGATIONS/20261031_HQ_S7_PE_V2K_RETURN_INTAKE.md"]},
+    "delta_from_build": {"count": 6, "note": "Pyat S6/H1/PE plus S7/PE/V2K intake; no S0-S16 map change; no rebase"}
+  },
+  "source_inputs": {
+    "program_map_current": {"commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57", "path": "SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md", "blob": "2a0a3a42d66f566f92d5c333fbbea4a5adb383b2"},
+    "program_map_earlier": {"commit": "3c423a0f74915a01911197b0023de9f85fd74aff", "path": "SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md", "blob": "6271bb66b3cd2d92e2b814c4cd626220c2cdfe40"},
+    "hq_whole_product_synthesis": {"commit": "36ddfd8b787543751d4b350a315af31924d95d6e", "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/HQ_WHOLE_PRODUCT_SCIENCE_AND_ORCHESTRATION_DRAFT_R1/00_WHOLE_PROGRAM_HQ_JUDGMENT.md", "object_id": "1ba39a965d30e63c5b6183e4af1aa84d95b4021b"},
+    "r6": "28e38ebbf08bbfaeb152ae022046e1303d9a2e40",
+    "r7": "7f25fb9bfc48679a47ccc61b36354f20fef54f1c",
+    "four_assets": {
+      "CP-A5-R2": "913765328e4fab12b150ea01421ed6b445158184",
+      "C9C12-R2": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+      "B-F1CR-R2": "bf3273c294c704ad7c631559b9866d351bb4f103",
+      "V3CORE-R1": "b5cb3f917402b992d7cbe933af0b378d2b37cbfd"
+    }
+  },
+  "repaired_candidate": {
+    "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1",
+    "source_manifest": "source_manifest.json",
+    "source_manifest_sha256": "b3d359f1bfe97a23b2c3fb356fde84c452ffe38ca874facbec7d5df086fdfa5c",
+    "manifest_digest": "ec223ad4b65650be556e0f28c05bf94936635baa7efb3c39d4efabfb5fa3d028",
+    "source_rows": 167,
+    "sorok_rows": 144,
+    "pyat_rows": 23,
+    "reference_sources": 3,
+    "nodes": 219,
+    "edges": 461,
+    "l3_nodes": 80,
+    "owner_slots": 46,
+    "tests": 21,
+    "subtests": 4,
+    "validator": "PASS",
+    "git_refresh_verifier": "PASS"
+  },
+  "environment": {
+    "device": "oldMac",
+    "os": "macOS 13.7.8 x86_64",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "sqlite": "3.40.1",
+    "harness": "OpenCode 1.18.34",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "effort": "MAX requested; real effort is not independently observable inside this session",
+    "model_switch": "none",
+    "provider_account_switch": "none",
+    "network_at_test_runtime": false
+  },
+  "write_scope": {
+    "candidate": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/**",
+    "return": "WORKER_RETURNS/SOROK-OINDEX-R3-SOURCE-AND-PRODUCT-LINK-REPAIR-R1/**",
+    "premain_modified": false,
+    "original_reviewer_modified": false,
+    "original_owner_branches_modified": false,
+    "active_workers_modified": false,
+    "pull_request_modified": false,
+    "self_reviewed_or_adopted": false
+  },
+  "rollback": {
+    "candidate": "restore the nine candidate files to 96af4f15c993c7a4f32da4cc31ef3175903a0d5c; the R3 repair is additive/editing only under the working candidate",
+    "return": "delete WORKER_RETURNS/SOROK-OINDEX-R3-SOURCE-AND-PRODUCT-LINK-REPAIR-R1/**",
+    "premain": "none; no PRE-MAIN or original branch change",
+    "data_migration": "none"
+  },
+  "not_run": [
+    "No native source, survey, provider/model call, native actor/world, C9/C12 adoption, Pyat C11 or human A5.",
+    "No full R6/R7 branch suite and no execution of the four asset test suites; their author receipts remain unpooled.",
+    "No PRE-MAIN merge, branch rewrite, PR edit, self-review or owner adoption.",
+    "No claim that offline validator PASS proves Git identity; only verify_source_manifest.py does that."
+  ],
+  "commit_readback": {
+    "return_commit": "PENDING_PUSH_READBACK",
+    "remote_branch": "agent/sorok-oindex-r3-exact-source-integrity-repair-20261031-r1",
+    "remote_sha": "PENDING_PUSH_READBACK",
+    "readback_command": "git ls-remote origin refs/heads/agent/sorok-oindex-r3-exact-source-integrity-repair-20261031-r1",
+    "self_reference_note": "A file cannot contain its own commit SHA; exact final SHA is reported in push readback."
+  }
+}
