@@ -1,0 +1,117 @@
+{
+  "schema": "SOROK_B_F1CR_R2_COLD_REPLAY_AND_ROLLBACK@1",
+  "status": "ENGINEERING_ACCEPT_SCOPED__SCIENCE_AUTHORITY_HOLD",
+  "repository": "maidiu/rawlsing",
+  "premain_reference_at_launch": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "premain_remote_at_return": "5ad805e52a4fd0dbaae3a6b91801164e74ebc6f3",
+  "branch_base": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "cold_replay": {
+    "main_processes": 2,
+    "main_equal": true,
+    "main_ledger_hash": "c61534ca6a295980e40fd711b4d59430dddca2b8a158d421a0c85f7b5c2eda5f",
+    "main_state": "TARGETLESS_REFUSE",
+    "main_read": {
+      "actor": "A",
+      "can_read_B_behavior": true,
+      "b_event_kinds": ["B_REFUSED_TOOL"],
+      "tool_access": 0,
+      "memory_observed": true
+    },
+    "i1_static_targetless_hash": "0483374b7da599b40a8d2a3003b71a41d9a2f07b926acadf9fcb8f2814396bb4",
+    "i1_cold_reopen": {
+      "reopened": true,
+      "same_targetless_hashes": true,
+      "state": "TARGETLESS_REFUSE",
+      "c12_ok": true
+    },
+    "method": "JSON state -> two fresh Python processes -> cold_replay_runner.py; I1 product close/reopen via TargetlessGuardedJoinedProduct.reopen"
+  },
+  "rollback_and_restore": {
+    "r5_original": {
+      "f1c_sha256": "7e3492a267acbc0fa11d8792158bdaa2acc9dfb6053f16141ed637dc1cd2881b",
+      "13_cases": 13,
+      "exit": 0,
+      "result_sha256": "830b2dc9309bdf3fe7f23f86f0270a6fc58a2c6fb7843d7c0bbff46b2c84a291",
+      "live_history_mutations": "3 failed (preserved original RED)"
+    },
+    "r5_reconstructed": {
+      "f1c_sha256": "12f183a379bd1fabf37433b0e3ac893221f78370cd73d2a7c173554a1db14871",
+      "13_cases": 13,
+      "exit": 0,
+      "result_sha256": "87fa57f6ec49234a5203bea3ec5182baa37768feed80d895800b02acd7b4b178",
+      "live_history_mutations": "3 passed",
+      "codes": ["LIVE_A_HISTORY_CHANGED", "LIVE_B_HISTORY_CHANGED", "LIVE_SHARED_HISTORY_CHANGED"]
+    },
+    "case_names": ["SHARE", "REFUSE", "SILENCE", "UNOBSERVED_SHARE", "UNOBSERVED_REFUSE", "B_SOURCE_SEVERED", "B_SOURCE_RESTORED", "E2_OMITTED", "NO_B_RESOURCE", "ENCUMBERED_B_TOOL", "DUPLICATE_TOOL", "NATIVE_SOURCE_SMUGGLED", "RETROACTIVE_A"],
+    "restore_preimages": "Fresh R5 freeze reproduces the same targetless ledger hash, B/shared roots and durable history.",
+    "historical_r5_hashes": {
+      "original_13": "5c3b91dd7fd7cb51d4efc0b7bf1bcf4b52ba7d861b1a2fc4f84abcc4b28201e3",
+      "reconstructed_13": "4de846b2795d18b7761e73b89f31a405d7982ec5f8f7f0a60007803b4fb5f697",
+      "note": "Local replay uses a different reconstructed runtime; case set and expected/observed outcomes are preserved."
+    }
+  },
+  "material_ledger": {
+    "inherited_i1_event": {
+      "kind": "OFFSCREEN_REPAIR",
+      "body": {"cash_delta": 2, "material_delta": -1, "completed_delta": 1, "source_owned": true},
+      "stock_after": 0,
+      "issue": "material_delta=-1 with stock 0"
+    },
+    "positive": {
+      "stock_before": 0,
+      "replenished": 1,
+      "consumed": 1,
+      "stock_after": 0,
+      "clamped": false,
+      "replenishment_ref": "TESTONLY_I1_PRIOR_STOCK",
+      "receipt_hash": "76282fd4b3645271a3dbe6ef6897846638b4891db2e6e906af3df8d970e60923"
+    },
+    "refusal": {"state": "REFUSED_MATERIAL_EXHAUSTED", "consumed": 0, "stock_after": 0, "reason": "MATERIAL_EXHAUSTED"},
+    "non_stock": {"consumed": 0, "stock_after": 0, "kind": "B_TOOL_ACTION_NO_MATERIAL"},
+    "main_b_material_receipt": "be2680093bf46b588ec92b8ed4d536be62ddd45ff98d93c42966f0e43395e0f4",
+    "no_clamp_rule": "stock_after == stock_before + replenished - consumed; overconsumption refuses; no max(0, negative) path"
+  },
+  "same_consumer_negatives": {
+    "severed_b_live_prehistory": "LIVE_B_HISTORY_CHANGED",
+    "forged_shared_digest": "SHARED_HISTORY_CHANGED",
+    "forged_b_digest": "B_HISTORY_CHANGED",
+    "no_b_tool": "B_HAS_NO_TRANSFERABLE_TOOL",
+    "no_b_time_or_encumbered": "B_TOOL_TRANSFER_RIGHT_DENIED",
+    "refuse_without_performed_event": "REFUSE_REQUIRES_PERFORMER",
+    "no_evaluation_receipt": "HELD_MISSING_RULE",
+    "malformed_no_change_receipt": "NO_CHANGE_RECEIPT",
+    "unobserved_event_in_a_memory": "UNOBSERVED_EVENT_IN_MEMORY",
+    "restored_preimages": "same targetless ledger/roots/durable state"
+  },
+  "executed": {
+    "targetless_c10": {"passed": 14, "failed": 0},
+    "i1_guarded_baseline": {"passed": 8, "failed": 0},
+    "i1_targetless_integration": {"passed": 5, "failed": 0},
+    "r5_reconstructed_mutation": {"passed": 3, "failed": 0},
+    "r5_original_mutation": {"passed": 0, "failed": 3, "preserved": true}
+  },
+  "candidate_files": {
+    "candidate/targetless_c10_consumer.py": "8817cf20450fea92f00b7b80edb855cf7f00086c43db8e95569039a7c1af08c3",
+    "candidate/targetless_i1_bridge.py": "2b8e60790520f91e04d15901d5422155531ba38b48f59faf6165d87fe48f9d12",
+    "candidate/test_targetless_c10.py": "f1bbc7328490912f13520b1f55880f380eec7cddfee478f27adda28caa2dab2c",
+    "candidate/test_targetless_i1_consumer.py": "a62798ae6822a387e0c9164093d5d0b358a1b3a56912dcbdb88ecf0b276ca6db",
+    "candidate/cold_replay_runner.py": "4c262b407b8fb2f116c2f3e5000ac614b0540e696b07372ca499e25d1d3cf824",
+    "candidate/f1c_original_104f5bd.py": "7e3492a267acbc0fa11d8792158bdaa2acc9dfb6053f16141ed637dc1cd2881b",
+    "candidate/f1c_reconstructed_candidate.py": "12f183a379bd1fabf37433b0e3ac893221f78370cd73d2a7c173554a1db14871",
+    "candidate/test_full_history_binding.py": "271e6aa15af8b2c3217ed2fdb94f2514e70c0bf9a9fa3122e3fe4d7f0aebdc6b"
+  },
+  "review_output_sha256": {
+    "00_RETURN.md": "e3d4fadebb10fbee95cfa5566bd1b8fd2877249ee4e65cddfe02f67c002f1b10",
+    "01_LIVE_B_AND_TARGETLESS_C10_CONSUMER_MAP.json": "cb46a3f353bc892fea1ba3cc304d82e10ee6025f5031625ed229646cc206d53b",
+    "02_EXECUTED_POSITIVES_NEGATIVES_MATERIAL_LEDGER.md": "527e8d4e3b7b41b494360d233f69322141c2a9475a67706c4c1ff6981a9ea5ad",
+    "03_F1CR_RECONSTRUCTION_PROVENANCE_AND_OWNER_HANDOFF.md": "09a87a44f89b5ffb20c53e10f12c26abdf34c4195f67878175950e4a42f9a1b5"
+  },
+  "limits": [
+    "TEST_ONLY sourcefree; no native B, actor, world, Rule A/T, practiced E2 or A0-A5.",
+    "F1CR patched bytes remain SOURCE_NOT_FOUND; reconstruction is clearly labeled.",
+    "Targetless C10 is not canonical C9/C10 adoption.",
+    "M35/S35 and original CAN/ADP/SCI05/Pyat grants remain separate HOLD.",
+    "No PRE-MAIN merge, self-adoption or authority issuance."
+  ],
+  "final_remote_sha": "REPORTED_AFTER_PUSH_NOT_SELF_EMBEDDED"
+}

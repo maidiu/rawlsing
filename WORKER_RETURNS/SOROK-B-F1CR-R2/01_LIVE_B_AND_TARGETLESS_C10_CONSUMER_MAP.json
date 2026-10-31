@@ -1,0 +1,115 @@
+{
+  "schema": "SOROK_B_F1CR_R2_LIVE_B_AND_TARGETLESS_C10_CONSUMER_MAP@1",
+  "status": "ENGINEERING_ACCEPT_SCOPED__LIVE_B_AND_TARGETLESS_C10_CONSUMER__SCIENCE_AUTHORITY_HOLD",
+  "repository": "maidiu/rawlsing",
+  "premain_reference_at_launch": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "premain_remote_at_return": "5ad805e52a4fd0dbaae3a6b91801164e74ebc6f3",
+  "branch_base": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "source_cuts": {
+    "r5": "aebb2452b277bfc91fc78dec8d6001f8a844cc8c",
+    "i1": "7d44e30064f8e873e1a3ff9cb05fe75456756b88",
+    "original_f1c": "bcea367e7dc0f2e069de71b0fe5e481de094dad5",
+    "f1cr_historical": "03be5c225b8ec5832c1c648b9c1799419f0c4066",
+    "bp2p4j": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+    "o1": "501ea1f5bf07468b2c0437f452a81f3515cfdb6f"
+  },
+  "f1c_reconstruction": {
+    "original_blob": "104f5bd7826c8676192eac96753d980e35d8a80a",
+    "original_sha256": "7e3492a267acbc0fa11d8792158bdaa2acc9dfb6053f16141ed637dc1cd2881b",
+    "test_blob": "b012e65eb92c21e8733bdd92f46ca4a88aa709e5",
+    "test_sha256": "271e6aa15af8b2c3217ed2fdb94f2514e70c0bf9a9fa3122e3fe4d7f0aebdc6b",
+    "claimed_patched_blob": "bf7e625e1f208908e583ea72ebb73992ad7d19ae",
+    "claimed_patched_sha256": "18c96f97eca5480893c0f38a06f21c0d985fe0c6c997e63e0898001157351dfb",
+    "patched_source_status": "SOURCE_NOT_FOUND",
+    "reconstructed_blob": "c6e64b5874938045d80aae348de94930539d5cd2",
+    "reconstructed_sha256": "12f183a379bd1fabf37433b0e3ac893221f78370cd73d2a7c173554a1db14871",
+    "reconstructed_grade": "RECONSTRUCTED_CANDIDATE__NOT_PATCHED_SOURCE",
+    "original_13": {"cases": 13, "exit": 0, "result_sha256": "830b2dc9309bdf3fe7f23f86f0270a6fc58a2c6fb7843d7c0bbff46b2c84a291"},
+    "reconstructed_13": {"cases": 13, "exit": 0, "result_sha256": "87fa57f6ec49234a5203bea3ec5182baa37768feed80d895800b02acd7b4b178"},
+    "original_live_history_mutations": {"tests": 3, "result": "3 failed", "codes": ["DID_NOT_RAISE"]},
+    "reconstructed_live_history_mutations": {"tests": 3, "result": "3 passed", "codes": ["LIVE_A_HISTORY_CHANGED", "LIVE_B_HISTORY_CHANGED", "LIVE_SHARED_HISTORY_CHANGED"]}
+  },
+  "call_graph": [
+    "R5 f1c.freeze() -> exact TEST_ONLY A/B/shared histories and focal-tool world",
+    "R5 f1c.intervene(...) -> B SHARE/REFUSE/SILENCE material/action record; no native grant",
+    "targetless_c10_consumer.BWorld -> verifies live A/B/shared roots before action",
+    "targetless_c10_consumer.BAction -> exact action/performer/access/material/time receipt",
+    "targetless_c10_consumer.TargetlessC10Ledger -> targetless C10 continuity state",
+    "targetless_i1_bridge.TargetlessGuardedJoinedProduct -> same I1 GuardedJoinedProduct store/branch",
+    "I1 GuardedJoinedProduct.other()/owner_material_readout() -> same A0-A3 person read",
+    "I1 TargetlessGuardedJoinedProduct.targetless_read() -> A access to B behavior and durable targetless history"
+  ],
+  "first_consumer": {
+    "class": "targetless_i1_bridge.TargetlessGuardedJoinedProduct",
+    "base": "bp2p4.i1_product.GuardedJoinedProduct",
+    "same_person_store": true,
+    "same_c12_store": true,
+    "durable_file": "targetless_c10.json under the same product root",
+    "not_a_second_actor_store": true,
+    "not_a_disconnected_refusal_session": true
+  },
+  "states": {
+    "TARGETLESS_REFUSE": {"performer": "B", "event_access_when_observed": true, "tool_access": false, "c9_target": null, "e2": false, "practice": false, "utterance": null},
+    "TARGETLESS_SILENCE": {"performer": null, "event_access": false, "tool_access": false, "c9_target": null, "e2": false, "practice": false, "utterance": null},
+    "TARGETLESS_NO_PROPOSAL": {"performer": null, "event_access": false, "tool_access": false, "c9_target": null, "e2": false, "practice": false, "utterance": null},
+    "TARGETLESS_UNOBSERVED": {"performer": "B", "event_access": false, "tool_access": "physical only", "c9_target": null, "e2": false, "practice": false, "utterance": null},
+    "HELD_MISSING_RULE": {"evaluated": false, "decision": "HELD not NO_CHANGE"},
+    "EVALUATED_NO_CHANGE": {"evaluated": true, "requires": "competent rule_ref and receipt_hash"},
+    "SHARE_OBSERVED": {"performer": "B", "event_access": true, "tool_access": true},
+    "SHARE_UNOBSERVED": {"performer": "B", "event_access": false, "tool_access": true}
+  },
+  "material_ledger": {
+    "inherited_i1_event": {"kind": "OFFSCREEN_REPAIR", "material_delta": -1, "stock_after": 0, "position": "market"},
+    "adapter_positive": {"stock_before": 0, "replenished": 1, "consumed": 1, "stock_after": 0, "clamped": false, "replenishment_ref": "TESTONLY_I1_PRIOR_STOCK"},
+    "adapter_refusal": {"state": "REFUSED_MATERIAL_EXHAUSTED", "consumed": 0, "stock_after": 0},
+    "adapter_non_stock": {"consumed": 0, "stock_after": 0, "kind": "B_TOOL_ACTION_NO_MATERIAL"},
+    "i1_static_material_receipt_hash": "76282fd4b3645271a3dbe6ef6897846638b4891db2e6e906af3df8d970e60923",
+    "main_b_action_material_receipt_hash": "be2680093bf46b588ec92b8ed4d536be62ddd45ff98d93c42966f0e43395e0f4",
+    "rule": "No negative material delta without prior stock/replenishment; no clamp; refusal is explicit."
+  },
+  "access_contrast": {
+    "observed_share": "A memory B_SHARED_TOOL; tool_access 1; can_read_B_behavior true",
+    "unobserved_share": "A memory no B event; tool_access 1; can_read_B_behavior false",
+    "observed_refuse": "A memory B_REFUSED_TOOL; tool_access 0; can_read_B_behavior true",
+    "unobserved_refuse": "A memory no B event; tool_access 0; can_read_B_behavior false",
+    "silence": "A memory no performed B event; tool_access 0"
+  },
+  "same_consumer_negatives": {
+    "sever_b_live_prehistory": "LIVE_B_HISTORY_CHANGED",
+    "forged_shared_digest": "SHARED_HISTORY_CHANGED",
+    "forged_b_digest": "B_HISTORY_CHANGED",
+    "remove_b_tool": "B_HAS_NO_TRANSFERABLE_TOOL",
+    "remove_b_time_or_encumber": "B_TOOL_TRANSFER_RIGHT_DENIED",
+    "refuse_without_performed_event": "REFUSE_REQUIRES_PERFORMER",
+    "no_evaluation_receipt": "HELD_MISSING_RULE",
+    "malformed_no_change_receipt": "NO_CHANGE_RECEIPT",
+    "unobserved_event_in_a_memory": "UNOBSERVED_EVENT_IN_MEMORY",
+    "restore_preimages": "same ledger/roots/durable history"
+  },
+  "executed": {
+    "targetless_c10_court": {"tests": 14, "passed": 14, "failed": 0},
+    "i1_guarded_baseline": {"tests": 8, "passed": 8, "failed": 0},
+    "i1_targetless_integration": {"tests": 5, "passed": 5, "failed": 0},
+    "r5_reconstructed_mutation": {"tests": 3, "passed": 3, "failed": 0},
+    "r5_original_mutation": {"tests": 3, "passed": 0, "failed": 3, "preserved": true},
+    "cold_replay": {"processes": 2, "equal": true, "ledger_hash": "c61534ca6a295980e40fd711b4d59430dddca2b8a158d421a0c85f7b5c2eda5f"},
+    "i1_static_targetless_hash": "0483374b7da599b40a8d2a3003b71a41d9a2f07b926acadf9fcb8f2814396bb4"
+  },
+  "candidate_files": {
+    "targetless_c10_consumer.py": "8817cf20450fea92f00b7b80edb855cf7f00086c43db8e95569039a7c1af08c3",
+    "targetless_i1_bridge.py": "2b8e60790520f91e04d15901d5422155531ba38b48f59faf6165d87fe48f9d12",
+    "test_targetless_c10.py": "f1bbc7328490912f13520b1f55880f380eec7cddfee478f27adda28caa2dab2c",
+    "test_targetless_i1_consumer.py": "a62798ae6822a387e0c9164093d5d0b358a1b3a56912dcbdb88ecf0b276ca6db",
+    "cold_replay_runner.py": "4c262b407b8fb2f116c2f3e5000ac614b0540e696b07372ca499e25d1d3cf824",
+    "f1c_original_104f5bd.py": "7e3492a267acbc0fa11d8792158bdaa2acc9dfb6053f16141ed637dc1cd2881b",
+    "f1c_reconstructed_candidate.py": "12f183a379bd1fabf37433b0e3ac893221f78370cd73d2a7c173554a1db14871",
+    "test_full_history_binding.py": "271e6aa15af8b2c3217ed2fdb94f2514e70c0bf9a9fa3122e3fe4d7f0aebdc6b"
+  },
+  "limits": [
+    "TEST_ONLY sourcefree; no native B, actor, world, Rule A/T, practice or A0-A5.",
+    "Reconstructed candidate is not the missing F1CR patched bytes.",
+    "Targetless C10 is an adjunct, not canonical C9/C10 adoption.",
+    "M35/S35 and original CAN/ADP/SCI05/Pyat grants remain separate HOLD.",
+    "No PRE-MAIN merge, self-adoption or authority issuance."
+  ]
+}
