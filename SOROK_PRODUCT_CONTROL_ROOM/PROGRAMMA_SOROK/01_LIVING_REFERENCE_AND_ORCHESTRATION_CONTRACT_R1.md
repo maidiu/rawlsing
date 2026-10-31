@@ -1,5 +1,7 @@
 # PROGRAMMA SOROK — Living Whole-Undertaking Reference and Orchestration Contract R1
 
+> **NONNEGOTIABLE PRECEDENCE:** [00A — SOROK FULL-ESTATE ANTI-DRIFT GATE](00A_NONNEGOTIABLE_FULL_ESTATE_AND_ANTI_DRIFT_GATE_R1.md). Entire original Rawlsing vision, Sorok 00–87+ design/product corpus, Astra, original and Neo-V3, and all actual engineering/science/current work are Programma's foundation; recovery is only a narrow supplemental audit. If any major family remains unread/unconnected or title-only, label **WHOLE_PROGRAMMA_SCOPE_FAIL** regardless of CLI tests. User's O-LIVE R2 is running; do not disturb it. No Pyat work.
+
 **Status:** `PROPOSED_OPERATING_CONTRACT__NOT_CANONICAL_UNTIL_AUTHORIZED_PREMAIN_ADOPTION`  
 **Parent:** `00_PROGRAMMA_SOROK.md`; common parent `CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md`.  
 **Purpose:** make the user's actual **one-place, zoomable, current, complete, source-graded, priority-bearing overview of every requisite piece** an executable acceptance and update obligation, rather than a document aspiration, disconnected inventories, a list of green tests, or a sequence of HQ pronouncements.
