@@ -1,0 +1,29 @@
+name: PYAT actual five returned regrades against 845 immutable roster / 3135 original rows
+on:
+  push:
+    branches:
+      - agent/pyat-hq-five-regrade-source-proof-intake-20261031-r1
+permissions:
+  contents: read
+jobs:
+  original-vs-corrected:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+      - name: Fetch exactly original and actual five evidence-repair commits as inert Git objects
+        run: |
+          git fetch --no-tags --filter=blob:none origin becf0bfb04705b8fe0927dd56e7290e1dcd180a8
+          git fetch --no-tags --filter=blob:none origin c85db39772a8ac09fd70c6bb94a39dd04274d2cb ab303ee446c87beca32dc2c322704f6cf0dc7b79 65b83dee3385fc85d5d283c19acd270dea50a27d 8f4ad92aa47b7ae53d625bc2587357092af96e27 1aa0407869620cd8ba2e8ca1f1533b99fd097162
+          git fetch --no-tags --filter=blob:none origin 6a658ad347ad0a714f40cbce04b5cd6d1f5b5ab5 3042fca8a2165e07871d408118e1741686020cdc ebdb51a5c79209b2e552cfce648f7847b19386c2 d93e8c2441dfa394e56fc1f5bcf43a0b4388adcb 32dac59b3741dcc54f507321c7826e65174af372
+      - name: Verify original function and branch rows independently
+        run: python3 PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/15_verify_five_evidence_regrades.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-845-five-regrade-source-custody
+          path: pyat-regrade-acceptance/
+          if-no-files-found: warn
