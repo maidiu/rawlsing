@@ -1,4 +1,6 @@
 # PROGRAMMA SOROK
+> **MANDATORY FIRST READ / STOP-ON-DRIFT:** [00A — NONNEGOTIABLE FULL-ESTATE AND ANTI-DRIFT GATE](00A_NONNEGOTIABLE_FULL_ESTATE_AND_ANTI_DRIFT_GATE_R1.md). **PROGRAMMA SOROK = entire vision + Astra + original V3 + Neo-V3 + full Sorok design/engineering/product/worker inheritance, backward and forward to real human experience. RECOVERY = small auxiliary loss-check, NEVER the Programma organizing spine or completeness denominator.** A perfectly running R3-based reference still FAILS whole-program coverage without these foundations. **O-LIVE R2 is reported running: DO NOT TOUCH that branch/worktree or alter its assignment.** Pyat work belongs ONLY to Pyat HQ.
+
 ## Complete psychological-developmental and human-product science, historical inheritance and source-qualified lived person
 
 **Full name:** **Programma Sorok — Objective World → Historical Development → Continuing Person**.
