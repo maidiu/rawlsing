@@ -1,0 +1,197 @@
+{
+  "candidate": {
+    "manifest_digest": "8bbde425f4369b7945a82680f3f730b804c325ce61ba3ef6e1a6697d697b64c1",
+    "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1",
+    "snapshot_sha256": "62a76516871443e8e5f05fa5f83b52dcc628f79e5353eb49d659716aca43c5a1",
+    "source_manifest_sha256": "7715c193b8307f03ed3de4088436bdff2d1fab56d7fe49de16b6d99ac947a086",
+    "state_digest": "95aeda5578983ae3ea8ec313d6154e656121646f6590cac8a1bc07db0139c03d",
+    "state_sha256": "62a76516871443e8e5f05fa5f83b52dcc628f79e5353eb49d659716aca43c5a1"
+  },
+  "coverage": {
+    "edges": 423,
+    "gaps": 12,
+    "nodes": 198,
+    "pyat_boundary_nodes": 1,
+    "sectors": 22,
+    "unmapped": [
+      "GAP_S5_NORMATIVE_OUTPUT",
+      "GAP_S7_PRAXIS_OUTPUT",
+      "GAP_S11_HUMAN_UX",
+      "GAP_S13_REVENUE_MODEL",
+      "GAP_S14_SOCIAL_SAFETY",
+      "GAP_S15_HUMAN_ALPHA",
+      "GAP_NATIVE_C4_C11_PERSON",
+      "GAP_C9_C12_ANCHOR",
+      "GAP_B_F1CR_ORIGINAL",
+      "GAP_NATIVE_SCIENCE_CAN_ADP",
+      "GAP_PYAT_BOUNDARY",
+      "GAP_NATIVE_A5"
+    ],
+    "workers": 6
+  },
+  "direct_source_reads": [
+    {
+      "blob": "2a0a3a42d66f566f92d5c333fbbea4a5adb383b2",
+      "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+      "id": "S0_S16_PRIMARY_MAP_CURRENT",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md"
+    },
+    {
+      "blob": "6271bb66b3cd2d92e2b814c4cd626220c2cdfe40",
+      "commit": "3c423a0f74915a01911197b0023de9f85fd74aff",
+      "id": "S0_S16_PRIMARY_MAP_EARLIER",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md"
+    },
+    {
+      "commit": "36ddfd8b787543751d4b350a315af31924d95d6e",
+      "id": "HQ_WHOLE_PRODUCT_SYNTHESIS",
+      "object_id": "1ba39a965d30e63c5b6183e4af1aa84d95b4021b",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/HQ_WHOLE_PRODUCT_SCIENCE_AND_ORCHESTRATION_DRAFT_R1/00_WHOLE_PROGRAM_HQ_JUDGMENT.md"
+    },
+    {
+      "commit": "28e38ebbf08bbfaeb152ae022046e1303d9a2e40",
+      "id": "R6",
+      "path": "WORKER_RETURNS/SOROK-RECOVERY-R6-FINITE-SOURCECLOSE-R1/00_RETURN.md"
+    },
+    {
+      "commit": "7f25fb9bfc48679a47ccc61b36354f20fef54f1c",
+      "id": "R7",
+      "path": "WORKER_RETURNS/SOROK-RECOVERY-R7-CROSS-LINEAGE-CLOSURE-R1/00_RETURN.md"
+    },
+    {
+      "commit": "e50d32eb6816578145d17dcd637a0b90b3a1ef40",
+      "id": "R3",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/",
+      "role": "source registry/graph/manifest seed"
+    },
+    {
+      "cut": "4caf69cf20a27df61a0e888e2a5ea51cb7c5bb0b",
+      "id": "ORIGINAL_PRODUCT_CHARTER",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/01_PRODUCT_CHARTER.md",
+      "read": "direct primary text; purpose/product distinctions, anti-goals, success condition",
+      "source_root": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-r27s"
+    },
+    {
+      "cut": "4caf69cf20a27df61a0e888e2a5ea51cb7c5bb0b",
+      "id": "ORIGINAL_RELATIONAL_ONTOLOGY",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/02_PROVISIONAL_RELATIONAL_ONTOLOGY.md",
+      "read": "direct primary text; world\u2192relational field\u2192person, noncollapse, dyadic/network distinctions",
+      "source_root": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-r27s"
+    },
+    {
+      "cut": "4caf69cf20a27df61a0e888e2a5ea51cb7c5bb0b",
+      "id": "ORIGINAL_REAL_ALPHA_SPINE",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/03_REAL_ALPHA_SPINE.md",
+      "read": "direct primary text; kernel unresolved, organism compartments, independent life and partial phenomenal surface",
+      "source_root": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-r27s"
+    },
+    {
+      "cut": "4caf69cf20a27df61a0e888e2a5ea51cb7c5bb0b",
+      "id": "ORIGINAL_PRE_A0",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PRE_A0_PSYCHIC_ARCHITECTURE_R1/00_PRE_A0_ARCHITECTURAL_BANK_R1.md",
+      "read": "direct primary text; vertical depth/bounded surface, canon vs lived artifact vs memory, monotonic history",
+      "source_root": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-r27s"
+    },
+    {
+      "cut": "4caf69cf20a27df61a0e888e2a5ea51cb7c5bb0b",
+      "id": "ORIGINAL_100_ALPHA",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md",
+      "read": "direct primary text; bounded alpha/fidelity frontier, shared root, anti-white-whale",
+      "source_root": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-r27s"
+    },
+    {
+      "cut": "4caf69cf20a27df61a0e888e2a5ea51cb7c5bb0b",
+      "id": "ORIGINAL_101_SURFACE",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md",
+      "read": "direct primary text; causal/observable/experienced noncollapse, anti-mirror wall, actor-limited surface",
+      "source_root": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-r27s"
+    },
+    {
+      "cut": "5e2675d5e4ef635dc73755b48b8685716ae8c783",
+      "id": "00C",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md",
+      "read": "latest available historical object; 00E gate, MAX routing, three courts, no self-adoption",
+      "source_root": "local git object"
+    },
+    {
+      "cut": "03a2f3fe643573dd9731d8dbc40764d7b5f4cc91",
+      "id": "00E",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/00E_NEEDS_FIRST_PERSON_PRODUCTION_HQ_GROK_QUALIFICATION_R1.md",
+      "read": "direct; C12\u2192C0 needs-first rows, architecture/disposition/falsifier requirements, build-vs-reuse",
+      "source_root": "local git object"
+    },
+    {
+      "cut": "bfb484698d52c35125c1b8ee3fc7d7e582c9264c",
+      "id": "08",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/08_PERENNIAL_FRESH_HQ_FULL_ACCESSION_AND_GROK_PROTOCOL_R1.md",
+      "read": "direct; 15-category accession, no self-adoption, three courts, worker/branch separation",
+      "source_root": "local git object"
+    },
+    {
+      "cut": "a358c31c33b1148c80ab20571c3944a9610cfdb4",
+      "id": "08_SESSION_LOCATOR_ADDENDUM",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/08_SESSION_LOCATOR_MANDATORY_HQ_GROK_ADDENDUM_R1.md",
+      "read": "direct; session custody and original/reviewer separation",
+      "source_root": "local git object"
+    }
+  ],
+  "schema": "SOROK_PROGRAMMA_LIVING_REFERENCE_SOURCE_INPUT_VERSION_VECTOR@1",
+  "source_coverage_note": "Every living node source row has a frozen manifest object identity; R6/R7/four assets are retained at author-tested/source-close grain. A Git blob hash is not scientific issuance or a native consumer.",
+  "source_inputs": {
+    "manifest_scope": "Sorok-only; Pyat program sources are intentionally not ingested; one external boundary contract.",
+    "primary_source_status": "Read current startup control docs and original rawlsing-r27s primary texts; 00C/00E/08 only exist in historical Git objects and were read there, not from current PREMAIN tree.",
+    "pyat_rows_ingested": 0,
+    "reference_sources": 3,
+    "sorok_rows": 144,
+    "source_kinds": {
+      "definition_or_evidence_json": 112,
+      "documentary_definition": 17,
+      "evidence_document": 1,
+      "executable_source": 9,
+      "return_evidence_not_code": 4,
+      "source_tree": 1
+    },
+    "source_manifest_rows": 144,
+    "source_object_types": {
+      "blob": 143,
+      "tree": 1
+    },
+    "unavailable_or_unread": [
+      "00C/00E/08 are absent from the current PREMAIN tree; historical objects were read and exact cuts are recorded.",
+      "No separate original 100/101 file exists in current PREMAIN; primary text read from rawlsing-r27s cut.",
+      "No native/original Pyat source or actor permission attempted."
+    ]
+  },
+  "version_vector": {
+    "four_assets": {
+      "B-F1CR-R2": "bf3273c294c704ad7c631559b9866d351bb4f103",
+      "C9C12-R2": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+      "CP-A5-R2": "913765328e4fab12b150ea01421ed6b445158184",
+      "V3CORE-R1": "b5cb3f917402b992d7cbe933af0b378d2b37cbfd"
+    },
+    "hq_synthesis": "36ddfd8b787543751d4b350a315af31924d95d6e:1ba39a965d30e63c5b6183e4af1aa84d95b4021b",
+    "premain_delta_from_startup": {
+      "count": 11,
+      "files": [
+        ".github/workflows/pyat-s7fix-independent-custody.yml",
+        "CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md",
+        "CROSS_HQ_CONTROL_ROOM/PROGRAMMA/01_SHARED_LIVING_REFERENCE_CORRESPONDENCE_R1.md",
+        "CROSS_HQ_CONTROL_ROOM/PROGRAMMA/02_CURRENT_RETURN_DELTA_SOROK_OINDEX_R3_20261031.md",
+        "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/18_s7fix_independent_group_check.py",
+        "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/INVESTIGATIONS/20261031_HQ_S7FIX_PEV2K_HOSTILE_INTAKE.md",
+        "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md",
+        "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/01_LIVING_REFERENCE_AND_ORCHESTRATION_CONTRACT_R1.md",
+        "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md",
+        "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/01_LIVING_REFERENCE_AND_ORCHESTRATION_CONTRACT_R1.md",
+        "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/02_SCOPE_CORRECTION_SOROK_ONLY_EXECUTION_R1.md"
+      ]
+    },
+    "program_map": "865b5b01e1a27e99020cf2bb389af8cd4c874b57:2a0a3a42d66f566f92d5c333fbbea4a5adb383b2",
+    "r3_index": "e50d32eb6816578145d17dcd637a0b90b3a1ef40",
+    "r3_review": "3f3d9ec2fddc36bd4047bc6c730382c65a5e692a",
+    "r6": "28e38ebbf08bbfaeb152ae022046e1303d9a2e40",
+    "r7": "7f25fb9bfc48679a47ccc61b36354f20fef54f1c",
+    "sorok_current_refreshed": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+    "sorok_startup": "f40c26301d7d5b811c1bb92efa4934ad564ce5b3"
+  }
+}
