@@ -1,0 +1,362 @@
+{
+  "schema": "PYAT_PE_SC0_CURRENT_PROVIDER_FIRST_CONSUMER_AND_ISSUER_MAP@1",
+  "session": {
+    "harness": "OpenCode CLI 1.18.34",
+    "agent": "build",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "variant_evidence": "running process argv contains --variant max",
+    "session_id": "ses_e6f557010ffeVc8ejV937G5Ii9",
+    "pid": 28096,
+    "term_session_id": "DD7A2E8F-1277-4BB4-8EDD-27F566D94660",
+    "fresh_session": true,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pe-sc0-owner-bound-secure-successor-20261031-r1"
+  },
+  "source_cuts": {
+    "branch_startup": "d0342290b257f85c3e8931f9962e0aecabc84ed3",
+    "current_premain": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+    "current_premain_rawlsing_next_tree": "1d88d3fbb1d18dadfda946d9cd7f309d84afa479",
+    "startup_rawlsing_next_tree": "1d88d3fbb1d18dadfda946d9cd7f309d84afa479",
+    "original_pe": "e61a26ce24f023a53d6b116bb9eca2fb7b6f8e65",
+    "pe_issuer_repair": "9647d851a2d9b6e93e6711eec7a65325fb83aaa1",
+    "fixture_overlay": "9c030bf4c239d2e14f2b5a8a02ff7b44906cd0c7",
+    "hostile_review": "33b5363a20d44cfb42b3d1e86fdb9615710adb23",
+    "p41_branch": "agent/rabochii-pyat-r41-p41-generic-progressive-n10w-service-r1",
+    "p41_tip": "f27d1101048638bba395143a48efb7ef00bfcda4",
+    "issue_536_branch": "agent/pyat-recover-p41-r08-world-evidence-consumer-20261030-r1",
+    "issue_536_branch_tip": "750548ddbb9b4392a16ce93097b856f349e16182"
+  },
+  "premain_delta": {
+    "dispatch_current_premain": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+    "actual_origin_integration_pre_main_reconciliation_r1": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+    "delta_commits": [
+      "8e44ca9c7 Accept scoped S7FIX structural source identity, preserve hostile PE RED and V2K R61 retirement (#563)",
+      "91a854a91 Adjudicate verified S7FIX 1885 identities, hostile PE integrity RED, V2K scoped retirement and real successor requirements",
+      "2fc5db64c CI source-data verifier for 47MB S7FIX return, no historical branch code execution",
+      "fbd5d1d37 Independently join 3135 original S6 function IDs against 1885 S7FIX families, split/join qualnames and preserve untouched groups"
+    ],
+    "rawlsing_next_tree_delta": "NONE",
+    "merged": false
+  },
+  "current_source_free_producers": [
+    {
+      "surface": "N10E empirical possibility provider",
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "contract": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER@1.0.0",
+      "route": "EMPIRICAL_QUERY__C1_ANALYTICAL_COMPOSITION__GENERATED_EVIDENCE",
+      "public_entrypoint": "provide_empirical_possibility_slice",
+      "replay_entrypoint": "replay_empirical_possibility_slice",
+      "source_free_positive_test": "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+      "source_free_positive_test_blob": "f776cc2b26be222132d86abbcb1ad429991fa61d",
+      "successor_use": "actual producer invoked through SOURCEFREE_CANDIDATE_AND_VERSIONED_API/n10e_adapter.py"
+    },
+    {
+      "surface": "C1 analytical composition",
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "contract": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+      "public_entrypoint": "compose_positioned_subject_possibility",
+      "owner": "accepted C1 analytical producer; N10E is a seam over it"
+    },
+    {
+      "surface": "E03 progressive N9/N10E/N10W adapter",
+      "path": "rawlsing_next/pre553_n9_n10w_progressive_candidate.py",
+      "blob": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+      "source_free_test": "rawlsing_next/tests/test_pre553_n9_n10w_progressive_candidate.py",
+      "source_free_test_blob": "2161c0fff86ecb7a2c9a40b29852075e802841fd",
+      "status": "separate current sourcefree producer; not used as the successor's value-bearing world issuer"
+    },
+    {
+      "surface": "P41 generic progressive service",
+      "path": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/runtime/p41_service.py",
+      "blob": "7d428106c79bcc56973f7c0044fc273a2b354554",
+      "branch": "origin/agent/rabochii-pyat-r41-p41-generic-progressive-n10w-service-r1",
+      "tip": "f27d1101048638bba395143a48efb7ef00bfcda4",
+      "contract": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+      "status": "branch-local sourcefree service; not merged and not used by the successor"
+    },
+    {
+      "surface": "E04L release read-through",
+      "path": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/runtime/readthrough.py",
+      "blob": "f8e73a6a65713c968c1427381c62ced54de9150c",
+      "contract": "E04L_M1_M2_B5_READTHROUGH@1",
+      "status": "branch-local sourcefree read-through; not merged and not used by the successor"
+    }
+  ],
+  "current_owners": [
+    {
+      "owner": "N10E provider seam",
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "owns": "provider input shape, producer/consumer identity carriage, refusal state, no precomputed geometry"
+    },
+    {
+      "owner": "C1 analytical composition",
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "owns": "positioned slice evidence, exact numerator/denominator and exact fractions at declared grain"
+    },
+    {
+      "owner": "F8 positioned-subject consumer",
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "contract": "SOURCE_BACKED_POSITIONED_SUBJECT_POSSIBILITY@1.0.0",
+      "owns": "exact_geometry consumption and result identity"
+    },
+    {
+      "owner": "F8 source-scope binding",
+      "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+      "blob": "848d2d0eedb04b792747e9d6aaa49bb39d108a2c",
+      "contract": "SERVICE_APPLICABILITY_TO_F8_SOURCE_SCOPE_BINDING@1.0.0"
+    },
+    {
+      "owner": "selected current/as-of lifecycle",
+      "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+      "blob": "a11c9eb73abab9be118ef4f0b6e325e676059f27",
+      "class": "LearnedProductLifecycleExecutor",
+      "methods": [
+        "selection_key",
+        "select_current",
+        "supersede_current",
+        "declare_invalidation",
+        "resolve_current_as_of",
+        "export_checkpoint",
+        "from_checkpoint"
+      ],
+      "source_free_court": "rawlsing_next/tests/test_pre553_ee14_selected_current_asof_hq260.py",
+      "source_free_court_blob": "a1ec3dba504ff866b681d6bbe942d12a9e238257",
+      "status": "current selected/as-of owner; no operative N9/world permission issued"
+    },
+    {
+      "owner": "exact empirical authority registry",
+      "path": "rawlsing_next/pre553_empirical_authority.py",
+      "blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "class": "AuthorityRegistry",
+      "property": "exact-key only; no latest/default lookup",
+      "successor_note": "the successor uses its own ExactIssuerRegistry because the accepted registry can accept EXPLICIT_UNRESTRICTED scopes that are not competent for a narrow role-reversal grant"
+    },
+    {
+      "owner": "owner-only selected ingress",
+      "path": "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py",
+      "blob": "74e6ee826e8b6a2adebe84969fedcea5716d5b63",
+      "contract": "HQ266_G01_OWNER_ONLY_C1_G2_F8_SELECTED_INGRESS@1",
+      "status": "current owner-only C1/G2/F8 ingress; distinct from this successor and not modified"
+    }
+  ],
+  "current_consumers": [
+    {
+      "consumer": "F8 positioned-subject exact-geometry consumer",
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "entrypoint": "evaluate_positioned_subject_possibility",
+      "status": "accepted current consumer of generated slice evidence; exercised by N10E provider"
+    },
+    {
+      "consumer": "F8 bound source-scope consumer",
+      "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+      "entrypoint": "evaluate_bound_positioned_subject_possibility",
+      "status": "current bound consumer; not modified"
+    },
+    {
+      "consumer": "N10E provider aggregate consumer result",
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "entrypoint": "consumer_result_or_null",
+      "status": "actual consumer result carried into successor ProducerEvidence"
+    },
+    {
+      "consumer": "E03 progressive F8 consumer",
+      "path": "rawlsing_next/pre553_n9_n10w_progressive_candidate.py",
+      "entrypoint": "consume_step_with_f8",
+      "status": "separate sourcefree consumer; not used as the successor's production receiver"
+    },
+    {
+      "consumer": "P41 branch-local service consumers",
+      "path": "WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-N10E-N10W-SERVING-R1/runtime/vendor/product/",
+      "status": "branch-local only; not merged; not a current PRE-MAIN receiver"
+    }
+  ],
+  "current_issuer_registry": {
+    "accepted_empirical_registry": {
+      "path": "rawlsing_next/pre553_empirical_authority.py",
+      "blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "exact_key_only": true,
+      "risk": "scope containment can treat EXPLICIT_UNRESTRICTED as sufficient; not competent for a narrow reversal grant in this successor"
+    },
+    "successor_test_registry": {
+      "path": "SOURCEFREE_CANDIDATE_AND_VERSIONED_API/owner_bound_successor.py",
+      "class": "ExactIssuerRegistry",
+      "grant_contract": "ScopedGrant",
+      "required_scope": [
+        "issuer id and version",
+        "operation",
+        "target ref",
+        "risk set ref",
+        "world owner",
+        "validity interval"
+      ],
+      "all_time_behavior": "valid_until=None removes only expiry; it does not remove target, risk, world-owner or operation scope",
+      "source_promotion": "only COMPETENT_SOURCE with explicit SOURCE_PROMOTION, never TEST_ONLY_SOURCEFREE",
+      "status": "test-only; no competent source/N9/world/model/actor issuer exists"
+    },
+    "named_missing_issuer": "competent original N9/world/source owner (not present in this worktree and not self-issued)"
+  },
+  "version_clock_contracts": {
+    "successor_contract": "PYAT_PE_SC0_OWNER_BOUND_SOURCEFREE_SUCCESSOR@1.0.0",
+    "request_schema": "PYAT_PE_SC0_OWNER_BOUND_REQUEST@1",
+    "receipt_schema": "PYAT_PE_SC0_OWNER_BOUND_RECEIPT@1",
+    "n10e_contract": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER@1.0.0",
+    "clocks": [
+      "observation_effective",
+      "publication_knowledge",
+      "actor_event",
+      "request_currentness"
+    ],
+    "time_laws": [
+      "as-of must strictly precede request time",
+      "publication_knowledge must strictly precede request time",
+      "observation_effective must be at or before publication_knowledge",
+      "request_currentness must equal request_time",
+      "request_time must be inside exact issuer validity"
+    ],
+    "currentness_states": [
+      "SELECTED_IMMUTABLE",
+      "INVALIDATED"
+    ],
+    "revision_law": "provider revision must equal requested revision; refresh generation must be the next revision"
+  },
+  "c1_n10e_geometry": {
+    "forward_fixture": {
+      "direction": "POSITION_P1_TO_ANSWER",
+      "denominator": 60,
+      "cells": {
+        "yes": 54,
+        "no": 6
+      },
+      "yes_fraction": "9/10"
+    },
+    "reverse_fixture": {
+      "direction": "ANSWER_YES_TO_POSITION",
+      "denominator": 62,
+      "cells": {
+        "P1": 54,
+        "P2": 8
+      },
+      "P1_fraction": "27/31"
+    },
+    "successor_validation": [
+      "denominator is a positive exact integer",
+      "each numerator is a nonnegative exact integer or refused (null/negative/bool)",
+      "cell names are unique and nonempty",
+      "sum of numerators equals denominator",
+      "reduced exact fraction equals numerator/denominator",
+      "declared target value is an actual cell",
+      "declared condition value is not a target cell",
+      "reverse geometry has its own target domain and role direction"
+    ],
+    "source": "source-free synthetic AT07 fixture through actual N10E/C1 provider; not original respondent evidence"
+  },
+  "p41_e04l_comparison": {
+    "p41": {
+      "surface": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+      "provider_versions": {
+        "n9_world": "E04_TEST_ONLY_SELECTED_WORLD_M4_M5@1",
+        "n10e_empirical": "N10E_PUBLIC_SINGLE|C1_PUBLIC_MULTI_BINDING",
+        "learned_release": "E04L_M1_M2_B5_READTHROUGH@1"
+      },
+      "status": "branch-local 19-pass sourcefree service; not a PRE-MAIN current interface",
+      "relationship_to_successor": "the successor uses the same current N10E/C1 producer directly, not the P41 branch-local service"
+    },
+    "e04l": {
+      "surface": "E04L release read-through",
+      "blob": "f8e73a6a65713c968c1427381c62ced54de9150c",
+      "status": "branch-local selected-release read-through; not used as an issuer or world owner"
+    },
+    "comparison": "P41/E04L are larger progressive/selected-world apparatuses. They do not supply an owner-bound, digest-bound SC0 value world or a competent reversal issuer. The successor deliberately implements the smallest explicit-dependency envelope instead of transplanting them."
+  },
+  "issue_536_p41_r08": {
+    "number": 536,
+    "title": "[PYAT RECOVERY P41/R08] Reconcile larger historical positioned-world service and evidence binder with N10E/C1/F8; implement missing consumer",
+    "state": "OPEN",
+    "url": "https://github.com/maidiu/rawlsing/issues/536",
+    "dispatch_branch": "agent/pyat-recover-p41-r08-world-evidence-consumer-20261030-r1",
+    "branch_tip": "750548ddbb9b4392a16ce93097b856f349e16182",
+    "base_tip": "750548ddbb9b4392a16ce93097b856f349e16182",
+    "worker_return_present": false,
+    "worker_suite_present": false,
+    "action": "inspected without disturbance; no worker work existed to modify"
+  },
+  "successor_provider_dependencies": {
+    "producer": "actual N10E provider through n10e_adapter.N10EProducer",
+    "world": "explicit SourceFreeWorldProvider fixture world; no operative N9",
+    "issuer": "exact ExactIssuerRegistry test-only grant",
+    "consumer": "explicit SourceFreeWorldRouteConsumer",
+    "network": "none",
+    "sitecustomize": "absent",
+    "global_monkeypatch": "absent",
+    "production_import": "none"
+  },
+  "successor_first_consumer": {
+    "consumer_id": "TEST_ONLY_SOURCEFREE_WORLD_ROUTE_CONSUMER@1",
+    "path": "SOURCEFREE_CANDIDATE_AND_VERSIONED_API/first_consumer.py",
+    "exercised": true,
+    "output_fields": [
+      "world_owner",
+      "world_revision",
+      "world_selection_digest",
+      "target_cell",
+      "target_fraction",
+      "route_constraints",
+      "no_person_generation",
+      "no_actor_state",
+      "consumer_grade"
+    ],
+    "production_receiver_present": false,
+    "hold": "no lawfully available production current receiver of PYAT_PE_SC0_OWNER_BOUND_RECEIPT@1"
+  },
+  "missing_or_absent": [
+    "competent N9/world/source issuer",
+    "operative N9 selected-world owner grant",
+    "original respondent/source evidence",
+    "model-use permission",
+    "Sorok actor or person state",
+    "N11/N12 permission",
+    "production current receiver",
+    "independent post-return reviewer",
+    "P41/E04L production adoption",
+    "sitecustomize installation"
+  ],
+  "holds": {
+    "engineering": "scoped accept at TEST_ONLY_SOURCEFREE scope; production adopter absent",
+    "scientific": "synthetic C1/N10E arithmetic only; original U/E/source/SC0/N9 issuance ungranted",
+    "authority": "test-only sourcefree issuer only; no source, N9, world, model, actor, N11/N12 or production grant"
+  },
+  "not_run": [
+    "P41/E04L historical suite under the successor contract: NOT_RUN",
+    "#536 P41/R08 worker suite: NOT_RUN; no worker return present",
+    "original survey/actor/N9/model-use/N11/N12/Sorok operations: NOT_RUN",
+    "production merge/adoption/deployment: NOT_RUN",
+    "independent post-return review: NOT_RUN"
+  ],
+  "commands_outcomes": {
+    "candidate_all_33": "33 passed, exit 0",
+    "candidate_positive_19": "19 passed, exit 0",
+    "candidate_hostile_14": "14 passed (12 commissioned + 2 extra), exit 0",
+    "candidate_at_premain_8e44ca9": "33 passed, exit 0",
+    "original_author_21": "21 passed, exit 0",
+    "original_strict_13": "4 passed / 9 failed, exit 1",
+    "overlay_author_strict_faults": "21 passed + 13 passed + 9 passed, exit 0",
+    "hostile_predecessor_12": "12 passed as attacks, exit 0"
+  },
+  "verdicts": {
+    "engineering": "ACCEPT_AT_TEST_ONLY_SOURCEFREE_SCOPE__POSITIVE_AND_FAULT_NEGATIVE_EXITS_GREEN__TWELVE_HOSTILE_ATTACKS_FAIL_CLOSED__FIRST_CONSUMER_EXERCISED_IN_CANDIDATE__PRODUCTION_ADOPTER_ABSENT",
+    "scientific": "HOLD__SYNTHETIC_C1_N10E_GEOMETRY_ONLY__NO_ORIGINAL_RESPONDENT_SOURCE_OR_SCIENTIFIC_ISSUANCE",
+    "authority": "HOLD__TEST_ONLY_SOURCEFREE_ISSUER_ONLY__NO_COMPETENT_SOURCE_N9_WORLD_MODEL_ACTOR_OR_PRODUCTION_GRANT__NO_ADOPTION__NO_MERGE"
+  },
+  "candidate_implementation_blobs": {
+    "owner_bound_successor.py": "08f0bea429a8f35223db8acf757ef7b714805603",
+    "sourcefree_world.py": "264c6092b5a151960779d0e610f2d964474da920",
+    "n10e_adapter.py": "3c9f34fd4f629ccebd8e9efeb485f3a2d7c1c2c5",
+    "first_consumer.py": "145977129dcacad6f8a7ec3d2888783a6ed0652c",
+    "fixtures.py": "6f3233945aadcf92730a7e77ad301e1a07c52414",
+    "tests/test_owner_bound_successor.py": "5a3558f7e60b1afc70210ef5cb1c69fd459049b1",
+    "tests/test_twelve_hostile_attacks.py": "37ad5b63ed2be6fa6b87ee4e93483e51de5b2865"
+  }
+}

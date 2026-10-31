@@ -1,0 +1,110 @@
+{
+  "schema": "PYAT_PE_SC0_OWNER_BOUND_TEST_SUMMARY@1",
+  "session": {
+    "opencode_version": "1.18.34",
+    "agent": "build",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "process_argv_verified": "opencode run --model opencode-go/deepseek-v4.1-flash --variant max --agent build",
+    "session_id": "ses_e6f557010ffeVc8ejV937G5Ii9",
+    "pid": 28096,
+    "term_session_id": "DD7A2E8F-1277-4BB4-8EDD-27F566D94660",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pe-sc0-owner-bound-secure-successor-20261031-r1"
+  },
+  "source_cuts": {
+    "branch_startup": "d0342290b257f85c3e8931f9962e0aecabc84ed3",
+    "current_premain": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+    "current_premain_rawlsing_next_tree": "1d88d3fbb1d18dadfda946d9cd7f309d84afa479",
+    "startup_rawlsing_next_tree": "1d88d3fbb1d18dadfda946d9cd7f309d84afa479",
+    "original_pe": "e61a26ce24f023a53d6b116bb9eca2fb7b6f8e65",
+    "pe_issuer_repair": "9647d851a2d9b6e93e6711eec7a65325fb83aaa1",
+    "fixture_overlay": "9c030bf4c239d2e14f2b5a8a02ff7b44906cd0c7",
+    "hostile_review": "33b5363a20d44cfb42b3d1e86fdb9615710adb23",
+    "pe_module_blob": "58484f4c3d9aae148d4116dcf00420c432aefcbd",
+    "pe_author_blob": "92f59875583bf513c6fdbcd3ad7fe2b49e45e212",
+    "pe_strict_blob": "d2fe653dadf94893b0fdfd268f36683f8dfed9af",
+    "fixture_original_blob": "c9674d5fe9d01621eda0fdb4a999391eba422d92",
+    "fixture_patched_blob": "83984e7b3719f350cb735a9d80b0a83560576a47",
+    "overlay_blob": "1e4c0e63b34192f77bf6554d43afb3c56828b29c",
+    "sitecustomize_blob": "3bac38dde1cc49d3a2f85a21ba7984410688d3ff",
+    "overlay_fixture_patch_blob": "50eb18e5d2272f13b9cb41cad14464a8b5378e3e"
+  },
+  "tests": {
+    "original_author_21": {
+      "command": "HQ297_EXACT_PE_ROOT=$PWD PYTHONPATH=. python3 -m pytest -q -p no:cacheprovider rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py",
+      "tree": "e61a26ce24f023a53d6b116bb9eca2fb7b6f8e65",
+      "passed": 21,
+      "failed": 0,
+      "exit": 0,
+      "receipt": "evidence/original_author_21.log; evidence/original_author_21.junit.xml"
+    },
+    "original_strict_13": {
+      "command": "HQ297_EXACT_PE_ROOT=$PWD PYTHONPATH=. python3 -m pytest -q -p no:cacheprovider rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py",
+      "tree": "e61a26ce24f023a53d6b116bb9eca2fb7b6f8e65",
+      "passed": 4,
+      "failed": 9,
+      "exit": 1,
+      "receipt": "evidence/original_strict_13.log; evidence/original_strict_13.junit.xml"
+    },
+    "fixture_overlay": {
+      "command": "WORK=/tmp/opencode/pe-sc0-successor-20261031-r1/overlay-court KEEP_WORK=1 ./WORKER_RETURNS/PYAT-R3-PE-SC0-EIGHT-STRICT-REPAIR/repro/run_overlay_courts.sh",
+      "tree": "9c030bf4c239d2e14f2b5a8a02ff7b44906cd0c7",
+      "author_passed": 21,
+      "strict_passed": 13,
+      "faults_passed": 9,
+      "exit": 0,
+      "receipt": "evidence/author_21.log; evidence/strict_13.log; evidence/overlay_faults.log; matching JUnit XML"
+    },
+    "hostile_predecessor_12": {
+      "command": "HQ297_EXACT_PE_ROOT=$PWD PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q -p no:cacheprovider /tmp/opencode/pe-hostile-review/hostile_pe_tests.py",
+      "tree": "overlay court tree derived from 9c030bf4c239d2e14f2b5a8a02ff7b44906cd0c7",
+      "passed": 12,
+      "failed": 0,
+      "exit": 0,
+      "meaning": "all twelve predecessor attacks reproduced as successful attacks; this is hostile evidence, not successor acceptance",
+      "receipt": "evidence/hostile_predecessor_12.log"
+    },
+    "candidate_positive_19": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q -p no:cacheprovider WORKER_RETURNS/PYAT-PE-SC0-OWNER-BOUND-SUCCESSOR/SOURCEFREE_CANDIDATE_AND_VERSIONED_API/tests/test_owner_bound_successor.py",
+      "passed": 19,
+      "failed": 0,
+      "exit": 0,
+      "receipt": "evidence/candidate_positive_19.log; evidence/candidate_positive_19.junit.xml"
+    },
+    "candidate_hostile_14": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q -p no:cacheprovider WORKER_RETURNS/PYAT-PE-SC0-OWNER-BOUND-SUCCESSOR/SOURCEFREE_CANDIDATE_AND_VERSIONED_API/tests/test_twelve_hostile_attacks.py",
+      "passed": 14,
+      "failed": 0,
+      "exit": 0,
+      "meaning": "twelve commissioned attacks plus two additional geometry/issuer-scope oracles; every attack fails closed",
+      "receipt": "evidence/candidate_hostile_12.log; evidence/candidate_hostile_12.junit.xml"
+    },
+    "candidate_all_33": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q -p no:cacheprovider WORKER_RETURNS/PYAT-PE-SC0-OWNER-BOUND-SUCCESSOR/SOURCEFREE_CANDIDATE_AND_VERSIONED_API/tests",
+      "passed": 33,
+      "failed": 0,
+      "exit": 0,
+      "receipt": "evidence/candidate_all_33.log; evidence/candidate_all_33.junit.xml"
+    },
+    "candidate_at_current_premain_8e44ca9": {
+      "command": "PYTHONPATH=$CANDIDATE_DIR python3 -m pytest -q -p no:cacheprovider $CANDIDATE_DIR/tests",
+      "tree": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+      "passed": 33,
+      "failed": 0,
+      "exit": 0,
+      "receipt": "evidence/candidate_at_premain_8e44ca9.log; evidence/candidate_at_premain_8e44ca9.junit.xml"
+    }
+  },
+  "not_run": [
+    "P41/E04L historical suite under the successor contract: NOT_RUN; only source/contract inspection was performed.",
+    "#536 P41/R08 worker suite: NOT_RUN; issue 536 is OPEN and the dispatch branch tip equals its base 750548ddbb9b4392a16ce93097b856f349e16182 with no worker returns to inspect.",
+    "Original survey, respondent, actor, N9, model-use, N11/N12 or Sorok operations: NOT_RUN and not authorized.",
+    "Production integration, PRE-MAIN merge, deployment and independent post-return review: NOT_RUN.",
+    "Fresh-process MAX-variant capability probe beyond the verified process argv: NOT_AVAILABLE; the running process argv records --variant max."
+  ],
+  "verdicts": {
+    "engineering": "ACCEPT_AT_TEST_ONLY_SOURCEFREE_SCOPE__POSITIVE_AND_FAULT_NEGATIVE_EXITS_GREEN__TWELVE_HOSTILE_ATTACKS_FAIL_CLOSED__FIRST_CONSUMER_EXERCISED_IN_CANDIDATE__PRODUCTION_ADOPTER_ABSENT",
+    "scientific": "HOLD__SYNTHETIC_C1_N10E_GEOMETRY_ONLY__NO_ORIGINAL_RESPONDENT_SOURCE_OR_SCIENTIFIC_ISSUANCE",
+    "authority": "HOLD__TEST_ONLY_SOURCEFREE_ISSUER_ONLY__NO_COMPETENT_SOURCE_N9_WORLD_MODEL_ACTOR_OR_PRODUCTION_GRANT__NO_ADOPTION__NO_MERGE"
+  }
+}
