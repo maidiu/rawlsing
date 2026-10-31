@@ -1,0 +1,132 @@
+{
+  "schema": "SOROK_RRIF_R2_INDEPENDENT_SOURCE_CUT_NOT_RUN_AND_OWNER_HOLDS@1",
+  "review_subject": "598d9e9eaba5143950c63317705fd09104fbf463",
+  "review_branch": "review/sorok-rrif-r2-real-code-independent-hostile-first-consumer-20261031",
+  "source_cut_comparison": {
+    "r2_join_e_cut": {
+      "join_e_commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "vendor_tree": "72ff9d0b3af0dc3f4dd33ac2135fcb039a754dcc",
+      "joined_tree": "ea123a84cd5ba97b7fe9666a1581bd3236462184",
+      "c12_store_path": "vendor/j/candidate/vendor/bp4/bp4/store.py",
+      "c12_store_blob": "69a58f43dc70d320f2fc476eeac324c82c37ee59",
+      "c12_store_sha256": "bb7bd721fa6b021a5b5163427495fd308236788d1738b8326f9f1093159b3c8b",
+      "qualified_verifier_path": "vendor/j/r26e/c12_integrity.py",
+      "qualified_verifier_blob": "0c51c9d13f1065c41b16813f9827a21338e2d6cf",
+      "qualified_verifier_sha256": "534780fe4631caadacac73e457afbb86bcc207686b1ebb433087ad6270abf710",
+      "second_verifier_path": "vendor/j/candidate/bp2p4/c12_verify.py",
+      "second_verifier_blob": "b8e7cf397dbbbc37aa0a63ce9e0d7ba27a509cd3",
+      "second_verifier_sha256": "4456db64e88d234b0a774a6f3787c52472076cb62654959c160ac4b3d15317ce",
+      "c12_schema": "BP4_C12_STORE@1",
+      "c12_sqlite_pragmas": {"application_id": 0, "user_version": 0},
+      "fork_root": "plain 64-hex branch root_hash; old 7bf2 fork clock uses last_clock, not max(last_clock, latest_perception)",
+      "cold_reopen": "JoinedSession.open is non-mutating and green in tests; CLI separate-process return/verify green",
+      "external_anchor": "NONE used by joined/cli. ExternalCheckpointWitness is defined at vendor/j/r26e/c12_integrity.py:83 but not imported; its own docstring says same-user can rewrite DB+witness -> TRUST_CUSTODY_HOLD.",
+      "c9_schema": "BP2P4J CandidateStore: occurrence/event_identity/response/target_state/target_journal/receipt/clock; no C9_ACTOR_AUTHORITY_R3 actor_meta"
+    },
+    "c9_r3b_alternate": {
+      "review_cut": "fac064c9c3370d598e9b7469af652ae3504bc4ba",
+      "review_cut_content": "C9 R3B commission/amendments; original source blob 67f34f699220ec1407e7e8f0d58ed328e88a36af",
+      "original_writer_blob": "67f34f699220ec1407e7e8f0d58ed328e88a36af",
+      "original_writer_size": 78899,
+      "original_writer_sha256": "ee4765e28d80531e6b5450296ed209ef4e3303b827910bbf20b73dfaba52725e",
+      "reader_repaired_cut": "68b058656254234f0af02df2a592aa6f8c6a8bd2",
+      "historical_fork_clock": "old 7bf2 uses last_clock and copies perceptions <= last_clock; repaired 68b uses max(last_clock, latest_perception) and BP4_C12_FORK_ROOT@2 prefix",
+      "historical_red": "14 passed / 1 failed at writer-era 7bf2; old same-count perception test remains RED on repaired 68b, preserved not rewritten",
+      "imported_by_r2": false
+    },
+    "c9c12_r2_alternate": {
+      "commit": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+      "c12_guard_path": "WORKER_RETURNS/SOROK-C9C12-R2/candidate/c12_guard.py",
+      "c12_guard_blob": "8f629c29228cfc736c195db501dd100f2ac30f75",
+      "c12_guard_sha256": "104dc91c6abde69b42a2b180bbbc3c904dbf3d91ffeae4871f9299e0f6986685",
+      "reader_path": "WORKER_RETURNS/SOROK-C9C12-R2/candidate/c9c12_reader.py",
+      "reader_blob": "db38d05d",
+      "reader_sha256": "9621cae0280c63386fa29e379e28f3ccb7af368813ef322317f86ba6f0a19442",
+      "patched_c9_writer_blob": "b9000cdb1a4e3e3be6de0dfb1690515f2984a122",
+      "patched_c9_writer_size": 80214,
+      "patched_c9_writer_sha256": "65da5b084c8db0547c1ced0e838a1f3d5214424b0471723ffa66369484fe0010",
+      "base_bp4r_guard_blob": "e0d9d90468a9d4d62ef38859b1c2762f92421022",
+      "base_bp4r_guard_sha256": "ebc969a82322c6ea0548dd95df545eeafa9c26c636653261c1b0005cb66eeb02",
+      "c12_writer_schema": "BP4_C12_STORE@1",
+      "reader_version": "C12_GUARD_READER@1",
+      "fork_root_schema": "BP4_C12_FORK_ROOT@2",
+      "anchor_schema": "SOROK_C12_EXTERNAL_ANCHOR@1",
+      "anchor_state": "OWNER_ANCHOR_REQUIRED; local test key not accepted; security_boundary=false",
+      "c9_schema": "C9_ACTOR_AUTHORITY_R3@1 (actor_meta/actor_branch/actor_head/actor_version/decision_receipt/projection_outbox); mirror C12_ACTOR_MIRROR_R3@1",
+      "r2_root_cold_read": "c12_guard check_schema ok; verify_store content_ok=true, fork_ok=true; anchor_status OWNER_ANCHOR_REQUIRED",
+      "r2_fork_cold_read": "verify_store alt/first_session fails with fork:<branch>:legacy_root_unverified",
+      "r2_c9_read": "c9c12_reader.read_actor_snapshot on R2 bp2/c9.sqlite raises OperationalError: no such table: actor_meta",
+      "imported_by_r2": false
+    },
+    "exact_incompatibilities": [
+      "R2 C12 is old 7bf2 plain-root fork semantics; C9C12-R2 guard expects repaired 68b/BP4_C12_FORK_ROOT@2 and refuses R2 fork as legacy_root_unverified.",
+      "R2 C9 is BP2P4J CandidateStore, not C9_ACTOR_AUTHORITY_R3@1; C9C12-R2 reader cannot read it and R2 cannot read C9 R3B actor_meta.",
+      "R2 QualifiedC12Store does not check episode_id/actor_id/clock columns, perception content or branch rows; C9C12-R2 guard does. Same column-tampered DB: R2 ok=true; guard ok=false with episode_id_column_mismatch/actor_id_column_body_mismatch/clock_column_body_mismatch.",
+      "R2 has no external anchor. C9C12-R2 returns OWNER_ANCHOR_REQUIRED and refuses to treat a local key as owner evidence.",
+      "C9 R3B writer 67f34f69 (14/1 historical RED) and C9C12 patched b9000cdb are not imported by R2; no C9 R3B reader/consumer exists in the R2 root."
+    ],
+    "actionable_rrif_r3_input": [
+      "Use C9C12-R2 C12_GUARD_READER@1 for any C12 consumer that needs column/origin/fork checks; do not equate R2 QualifiedC12Store with it.",
+      "Select a C9 cut explicitly: BP2P4J CandidateStore vs C9 R3B/C9C12 actor store are not interchangeable.",
+      "Require an owner-issued external C12 anchor; a local test key or recomputed self-hash is not acceptance evidence.",
+      "If migrating, fork/version the C12 root schema (BP4_C12_FORK_ROOT@2); do not rewrite old 7bf2 fork roots in place."
+    ]
+  },
+  "not_run": {
+    "tests": [
+      "C9 R3B original-version court 14 passed / 1 failed (preserved, not rerun)",
+      "C9C12-R2 candidate 6/6 suite (read only; not rerun)",
+      "BP4R diagnostics 7 passed / 2 failed (preserved, not rerun)",
+      "CP-A5-R2 suite (not run)",
+      "B-F1CR-R2 suite (not run)",
+      "V3CORE-R1 suite (not run)",
+      "24 vendored test_*.py files in the R2 vendor tree (not collected by the two-file command)",
+      "Any native C4/ADP/CAN008/CAN011/SCI05/Pyat N11/N12/C11 execution",
+      "Any original survey/respondent data, provider/model call, browser or human A5",
+      "Any production C9/C12 anchor/KMS/mirror/outbox or PREMAIN merge"
+    ],
+    "reason": "S2 local sourcefree Git/Python/SQLite/pytest only; the task does not authorize original/sourcefull/native/survey/provider execution."
+  },
+  "preserved_historical_negatives": {
+    "C9_R3B": "14 passed / 1 failed; old same-count perception oracle unchanged",
+    "BP4R": "7 passed / 2 failed; old writer-clock and anchor-coverage diagnostics preserved",
+    "G17I": "3 RED preserved",
+    "OC5E": "49 RED preserved",
+    "CAN3": "9 RED preserved",
+    "B3": "ghost/partial-write RED preserved",
+    "F1CI3": "3 RED preserved",
+    "M04": "10 original RED preserved",
+    "F1CR_original": "SOURCE_NOT_FOUND; R5 reconstruction is distinct",
+    "C9_old_new_reader_writer": "version constraint preserved; recency is not selection"
+  },
+  "assets_not_imported": {
+    "CP_A5_R2": {"cut": "913765328e4fab12b150ea01421ed6b445158184", "status": "COMPATIBLE_SOURCEFREE_CANDIDATE_UNINTEGRATED__NAMED_FUTURE_A5", "evidence": "no CP-A5 path/module/symbol in R2"},
+    "C9C12_R2": {"cut": "c78404724052496fdec8608c8b0e833c0f7c4ecc", "status": "INCOMPATIBLE_WITHOUT_OWNER_MIGRATION__ROOT_COLD_READ_ONLY_UNDER_OWNER_ANCHOR_HOLD__FORK_LEGACY_ROOT_UNVERIFIED", "evidence": "no c12_guard/c9_actor_r3/c9c12_reader in R2; exact guard comparison above"},
+    "B_F1CR_R2": {"cut": "bf3273c294c704ad7c631559b9866d351bb4f103", "status": "EXACT_SOURCE_UNAVAILABLE_WITH_WARRANTED_RECONSTRUCTION_PENDING_OWNER", "evidence": "no B-F1CR path/module/symbol in R2; original F1CR bytes absent"},
+    "V3CORE_R1": {"cut": "b5cb3f917402b992d7cbe933af0b378d2b37cbfd", "status": "HISTORICAL_ADAPTER_PARTIALLY_ADMISSIBLE__NOT_IMPORTED__FAKE_PSYCHE_EXCLUDED", "evidence": "no V3CORE path/module/symbol in R2"},
+    "R6_nine_and_R41": {"status": "SOURCE_PRESENT_UNWIRED__OUTSIDE_THIS_JOIN__R41_PYAT_EXTERNAL", "evidence": "not in the two source commits; no R6/R41 path in R2"}
+  },
+  "native_holds": [
+    "ADP007/009/015/019/020 actor/genealogy/memory/access",
+    "CAN008 concrete Rule A",
+    "CAN011 separate Rule T/grant",
+    "SCI05",
+    "C8 D1/D2 protected writer/anchor",
+    "C9 native CAS/mirror/outbox",
+    "C12 production anchor/custody",
+    "C11 physical weld",
+    "Pyat N11/N12/C11/world",
+    "human A5",
+    "PREMAIN adoption and original source-owner permission"
+  ],
+  "owner_holds": {
+    "receiver": "Sorok/PREMAIN qualified receiving owner, not this reviewer or R2 author",
+    "c12_cut": "C9R/BP4/C12 owner must select 7bf2 vs 68b vs C9C12-R2 guard and the external anchor preimage/custodian",
+    "c9_cut": "C9R owner must select BP2P4J CandidateStore vs C9 R3B/C9C12 actor store; version split is not recency",
+    "f1cr": "F1C/C10 owner must decide original missing bytes vs R5 reconstruction",
+    "v3": "V3/CAN/ADP/I1 owner must keep fake psyche/annual-step exclusions",
+    "pyat": "Pyat HQ owns external world/N11/N12/C11; no Sorok rewrite",
+    "authority": "No self-adoption, self-merge, PR/PREMAIN alteration, force push or future-work dispatch from this review"
+  },
+  "final_note": "This file records what was read and what was not run. It does not convert a historical receipt, an author test count, or a self-hash into owner acceptance."
+}

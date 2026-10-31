@@ -1,0 +1,320 @@
+{
+  "schema": "SOROK_RRIF_R2_INDEPENDENT_C12_C9_B_SOURCE_TAMPER_AND_RESTORE@1",
+  "review_subject": "598d9e9eaba5143950c63317705fd09104fbf463",
+  "candidate_root": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2",
+  "method": {
+    "execution": "S2 clean detached local worktree, Python 3.11.3, pytest 9.0.2, SQLite 3.39.5, macOS 13.2.1 x86_64",
+    "db": "product/c12.sqlite from a real JoinedSession.start(perform='omit')",
+    "direct_sql": "sqlite3.connect on the real DB; DROP TRIGGER <table>_no_update to model a raw-DB writer; UPDATE; commit",
+    "restore": "restore exact original DB (and sidecar/meta/journal/proof where mutated) from byte backups; reopen/verify",
+    "raw_preimage_rule": "episode: digest(body without hash and without post-hash episode_id); world_event/checkpoint: digest(body/state without hash); perception has no hash",
+    "not_run": "No native C4/ADP/CAN008/CAN011/SCI05/Pyat, no production anchor/KMS, no human A5"
+  },
+  "intact_verifier_comparison": {
+    "root_branch": {
+      "QualifiedC12Store.verify": {
+        "ok": true,
+        "errors": [],
+        "counts": {"episode": 2, "world_event": 1, "checkpoint": 4, "perception": 2},
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      },
+      "bp2p4.c12_verify.verify_branch_chain": {
+        "ok": false,
+        "errors": ["episode:0:body_hash_mismatch", "episode:1:body_hash_mismatch"],
+        "cause": "verify_branch_chain recomputes the episode preimage without dropping the post-hash episode_id; every valid episode row fails. It is not a positive-control independent verifier."
+      },
+      "upstream_bp4_C12Store.verify": {
+        "ok": false,
+        "errors": ["episode:0", "episode:1", "world_event:0", "checkpoint:0", "checkpoint:1", "checkpoint:2", "checkpoint:3"],
+        "cause": "known upstream self-referential body hash; documented by the candidate"
+      },
+      "test_rrif_r2_c12.py_test_20": {
+        "file": "tests/test_rrif_r2_c12.py",
+        "lines": "66-92",
+        "observed": "It asserts verify_branch_chain(...)[ok] is false after forging an episode. That assertion passes for the wrong reason because the same function is already false on the intact store. It has no positive control."
+      }
+    },
+    "fork_alt": {
+      "QualifiedC12Store.verify": {"ok": true, "errors": []},
+      "C9C12_R2_C12_GUARD_READER": {
+        "ok": false,
+        "errors": ["fork:alt:legacy_root_unverified"],
+        "cause": "R2 uses the old 7bf2 C12 store/plain branch root hash; the C9C12-R2 guard expects BP4_C12_FORK_ROOT@2 prefix/semantics. R2's fork is not accepted by the newer guard."
+      }
+    },
+    "fork_first_session": {
+      "QualifiedC12Store.verify": {"ok": true, "errors": []},
+      "C9C12_R2_C12_GUARD_READER": {"ok": false, "errors": ["fork:first_session:legacy_root_unverified"]}
+    }
+  },
+  "raw_hash_recompute": {
+    "omit_cli_state": {
+      "episode": {"rows": 20, "self_consistent": 20, "bad": []},
+      "world_event": {"rows": 9, "self_consistent": 9, "bad": []},
+      "checkpoint": {"rows": 20, "self_consistent": 20, "bad": []},
+      "perception": {"rows": 20, "hash_column": false, "only_seq_checked_by_R2": true}
+    },
+    "e2_cli_state": {
+      "episode": {"rows": 8, "self_consistent": 8, "bad": []},
+      "world_event": {"rows": 6, "self_consistent": 6, "bad": []},
+      "checkpoint": {"rows": 12, "self_consistent": 12, "bad": []},
+      "perception": {"rows": 13, "hash_column": false, "only_seq_checked_by_R2": true}
+    },
+    "conclusion": "All persisted episode/world_event/checkpoint rows recompute to their stored body hash and column hash. Perception has no hash and is only sequence-checked. These are self-consistency checks, not an external owner anchor."
+  },
+  "tamper_cases": [
+    {
+      "id": "episode_body_uncoordinated",
+      "mutation": "Drop episode_no_update; add body.tampered_for_rrif_proof=true to root GM01_SOURCE episode; do not recompute hash.",
+      "witness": "QualifiedC12Store.verify + JoinedSession.open + C9C12 guard",
+      "expected": "RED",
+      "observed": {
+        "QualifiedC12Store": {"ok": false, "errors": ["episode:0:body_hash_mismatch"]},
+        "JoinedSession.open": {"opened": false, "code": "ROOT_C12_VERIFY_FAILED", "detail": "[\"episode:0:body_hash_mismatch\"]"}
+      },
+      "restore": {"exact_db_sha256_match": true, "QualifiedC12Store.ok": true, "JoinedSession.open.ok": true},
+      "verdict": "C12 catches uncoordinated episode-body tampering."
+    },
+    {
+      "id": "episode_body_coordinated_rehash",
+      "mutation": "Drop episode_no_update; add body.coordinated_note='attacker-authored-and-rehashed'; recompute episode body hash excluding episode_id and update column hash.",
+      "witness": "QualifiedC12Store.verify + JoinedSession.open",
+      "expected": "This is exactly the self-hash wall: a raw writer with SQLite and the public digest function can re-author a preimage.",
+      "observed": {
+        "QualifiedC12Store": {"ok": true, "errors": []},
+        "JoinedSession.open": {"opened": true, "verify_ok": true, "root_verify_ok": true},
+        "bp2p4.c12_verify": {"ok": false, "errors": ["episode:0:body_hash_mismatch", "episode:1:body_hash_mismatch"]}
+      },
+      "restore": {"exact_db_sha256_match": true, "QualifiedC12Store.ok": true, "JoinedSession.open.ok": true},
+      "verdict": "Coordinated rehash passes. A recomputed self-hash is not independent owner attestation."
+    },
+    {
+      "id": "episode_actor_column_only",
+      "mutation": "Drop episode_no_update; change episode.actor_id column to TEST_ONLY_FOREIGN_ACTOR for root GM01_SOURCE; leave body and hashes untouched.",
+      "witness": "QualifiedC12Store.verify + JoinedSession.open + C9C12 guard",
+      "expected": "C12 verifier should bind row columns to the hashed body if column actor identity is material.",
+      "observed": {
+        "QualifiedC12Store": {"ok": true, "errors": []},
+        "JoinedSession.open": {"opened": true, "verify_ok": true},
+        "C9C12_R2_C12_GUARD_READER": {"ok": false, "errors": ["episode:0:actor_id_column_body_mismatch"]}
+      },
+      "restore": {"exact_db_sha256_match": true, "QualifiedC12Store.ok": true, "JoinedSession.open.ok": true},
+      "verdict": "R2 does not bind actor_id column; C9C12-R2's guard does."
+    },
+    {
+      "id": "episode_clock_column_only",
+      "mutation": "Drop episode_no_update; change episode.clock column to 999 for root GM01_SOURCE; leave body and hashes untouched.",
+      "witness": "QualifiedC12Store.verify + JoinedSession.open + C9C12 guard",
+      "expected": "Clock metadata mutation should be RED if C12 binds row clock.",
+      "observed": {
+        "QualifiedC12Store": {"ok": true, "errors": []},
+        "JoinedSession.open": {"opened": true, "verify_ok": true},
+        "C9C12_R2_C12_GUARD_READER": {"ok": false, "errors": ["episode:0:clock_column_body_mismatch"]}
+      },
+      "restore": {"exact_db_sha256_match": true, "QualifiedC12Store.ok": true, "JoinedSession.open.ok": true},
+      "verdict": "R2 does not bind clock column; C9C12-R2's guard does."
+    },
+    {
+      "id": "episode_id_column_only",
+      "mutation": "Drop episode_no_update; change episode.episode_id column to TEST_ONLY_FOREIGN_EPISODE_ID; leave body and hashes untouched.",
+      "witness": "QualifiedC12Store.verify + JoinedSession.open + C9C12 guard",
+      "expected": "The verifier deliberately drops body episode_id from the preimage; the column still needs an identity check.",
+      "observed": {
+        "QualifiedC12Store": {"ok": true, "errors": []},
+        "JoinedSession.open": {"opened": true, "verify_ok": true},
+        "C9C12_R2_C12_GUARD_READER": {"ok": false, "errors": ["episode:0:episode_id_column_mismatch"]}
+      },
+      "restore": {"exact_db_sha256_match": true, "QualifiedC12Store.ok": true, "JoinedSession.open.ok": true},
+      "verdict": "R2's episode_id column is unbound and unverified; C9C12-R2 rejects it."
+    },
+    {
+      "id": "episode_kind_column_only",
+      "mutation": "Drop episode_no_update; change episode.kind column from GM01_SOURCE to DO; body.kind stays GM01_SOURCE.",
+      "witness": "QualifiedC12Store.verify + JoinedSession.open",
+      "expected": "Column metadata divergence should be detectable.",
+      "observed": {
+        "QualifiedC12Store": {"ok": true, "errors": []},
+        "JoinedSession.open": {"opened": true, "verify_ok": true},
+        "note": "The consumer reads body.kind, so this column divergence had no observed behavior here; it remains unverified metadata."
+      },
+      "restore": {"exact_db_sha256_match": true, "QualifiedC12Store.ok": true, "JoinedSession.open.ok": true},
+      "verdict": "Column kind is not covered."
+    },
+    {
+      "id": "world_event_coordinated_rehash",
+      "mutation": "Drop world_event_no_update; add body.coordinated_note to root world_event; recompute body hash and update column hash.",
+      "witness": "QualifiedC12Store.verify + JoinedSession.open",
+      "expected": "C12 catches only uncoordinated world-event edits.",
+      "observed": {
+        "QualifiedC12Store": {"ok": true, "errors": []},
+        "JoinedSession.open": {"opened": true, "verify_ok": true},
+        "bp2p4.c12_verify": {"ok": false, "errors": ["episode:0:body_hash_mismatch", "episode:1:body_hash_mismatch"]}
+      },
+      "restore": {"exact_db_sha256_match": true, "QualifiedC12Store.ok": true, "JoinedSession.open.ok": true},
+      "verdict": "Self-hash-only; no external anchor."
+    },
+    {
+      "id": "perception_fields_no_hash",
+      "mutation": "Drop perception_no_update; change perception actor_id to TEST_ONLY_FOREIGN_ACTOR, clock to 999, channel to FORGED_CHANNEL on root seq 0.",
+      "witness": "QualifiedC12Store.verify + JoinedSession.open",
+      "expected": "A perception row with no hash cannot be integrity-checked by content.",
+      "observed": {
+        "QualifiedC12Store": {"ok": true, "errors": []},
+        "JoinedSession.open": {"opened": true, "verify_ok": true},
+        "counts": {"perception": 2},
+        "note": "Only seq contiguity is checked; the schema has no hash column."
+      },
+      "restore": {"exact_db_sha256_match": true, "QualifiedC12Store.ok": true, "JoinedSession.open.ok": true},
+      "verdict": "Perception content is not tamper-evident. The R2 return correctly says 'perception: sequence integrity'; it must not be read as hashed perception."
+    },
+    {
+      "id": "checkpoint_coordinated_rehash",
+      "mutation": "Drop checkpoint_no_update; add state.coordinated_note to root checkpoint seq 0; recompute state hash and update column hash.",
+      "witness": "QualifiedC12Store.verify + JoinedSession.open",
+      "expected": "Coordinated checkpoint rehash passes the self-consistency verifier.",
+      "observed": {
+        "QualifiedC12Store": {"ok": true, "errors": []},
+        "JoinedSession.open": {"opened": true, "verify_ok": true}
+      },
+      "restore": {"exact_db_sha256_match": true, "QualifiedC12Store.ok": true, "JoinedSession.open.ok": true},
+      "verdict": "Self-hash-only; world/checkpoint material can be re-authored consistently without an external anchor."
+    },
+    {
+      "id": "branch_row_only_created_clock_root_hash",
+      "mutation": "Change branch.created_clock and fork_clock to 999 and branch.root_hash to 64 'f' characters for first_session; do not touch C12 row hashes or session meta.",
+      "witness": "QualifiedC12Store.verify + JoinedSession.open/validate_lineage",
+      "expected": "Branch/parent metadata must be bound by the branch verifier or an anchor.",
+      "observed": {
+        "QualifiedC12Store": {"ok": true, "errors": []},
+        "JoinedSession.open": {"opened": true, "verify_ok": true, "root_verify_ok": true},
+        "note": "No-lineage validation checks only that the selected branch exists and its parent is root/empty; branch root_hash/created_clock are not hashed by C12."
+      },
+      "restore": {"exact_db_sha256_match": true, "QualifiedC12Store.ok": true, "JoinedSession.open.ok": true},
+      "verdict": "Branch rows are not covered by the R2 C12 verifier; C9C12-R2's guard rejects the old fork root."
+    },
+    {
+      "id": "c12_source_substitution_rehashed_no_sidecar",
+      "mutation": "Use a lawful refusal source object (REFUSE_TOOL, b_quantity=0, b_event_hash=3e00199d533b793897cd8b9bdc0639830252c60588de732b46dfcec3cc3b9421) from a real RefusalSession; replace gm01_source in root/first_session GM01_SOURCE rows; recompute episode hashes; leave bp2_join/session meta original.",
+      "witness": "QualifiedC12Store.verify + JoinedSession.open/provenance",
+      "expected": "C12 self-hash passes; provenance must compare against C8/sidecar/meta.",
+      "observed": {
+        "QualifiedC12Store": {"ok": true, "errors": []},
+        "JoinedSession.open": {"opened": false, "code": "J_PROVENANCE_MISMATCH", "detail": "meta_matches_c12=false; meta_matches_c8=true"}
+      },
+      "restore": {"exact_db_sha256_match": true, "QualifiedC12Store.ok": true, "JoinedSession.open.ok": true},
+      "verdict": "C12 alone cannot bind the source; C8/sidecar/meta is the next layer."
+    },
+    {
+      "id": "c12_source_plus_sidecar_meta_c8_unchanged",
+      "mutation": "As above, plus rewrite bp2_join.json r31j_source and session.json j_source to the same lawful refusal source.",
+      "witness": "QualifiedC12Store.verify + JoinedSession.open/provenance",
+      "expected": "C12/sidecar/meta agree, but C8 remains the outer source witness.",
+      "observed": {
+        "QualifiedC12Store": {"ok": true, "errors": []},
+        "JoinedSession.open": {"opened": false, "code": "J_PROVENANCE_MISMATCH", "detail": "meta_matches_c12=true; meta_matches_c8=false"}
+      },
+      "restore": {
+        "db_sidecar_meta_exact_sha256_match": true,
+        "restored_open": {"opened": true, "verify_ok": true, "b_operation": "SHARE_TOOL"}
+      },
+      "verdict": "C8 is the effective local source anchor; the C12/sidecar/meta set is not independently anchored."
+    },
+    {
+      "id": "c8_journal_coordinated_rewrite",
+      "mutation": "Rewrite the C8 journal gm01_pre_c9_source to REFUSE_TOOL; update event content_hash, identity_preimage/identity_digest, state_digest, ledger_prefix_digest, version_state_digest and commit_receipt_id; leave the .bp3proof sidecar original.",
+      "witness": "JoinedSession.open -> KeyedProofInvalid -> C8 proof sidecar",
+      "expected": "The keyed proof must bind receipt/state.",
+      "observed": {
+        "opened": false,
+        "code": "COLD_REOPEN_REFUSED",
+        "detail": "ReunionRefusal:BP2_C8_PROOF_INVALID: KeyedProofInvalid:PROOF_RECEIPT_MISMATCH"
+      },
+      "restore": {"journal_and_proof_exact_sha256_match": true, "opened": true, "verify_ok": true},
+      "verdict": "The keyed C8 proof catches a coordinated journal rewrite without re-signing. The key and anchor live in the same user's local fixture tree; this is not an independent owner custodian."
+    },
+    {
+      "id": "c9_target_uncoordinated_body_tamper",
+      "mutation": "Directly UPDATE bp2/c9.sqlite target_state.body adding tampered_for_proof=true; leave persisted target/consumed hashes original.",
+      "witness": "cold_positive / JoinedSession.open",
+      "expected": "RED",
+      "observed": {
+        "cold_positive": {
+          "ok": false,
+          "error": "SessionRefusal:COLD_REOPEN_REFUSED: ReunionRefusal:BP2_C9_CONSUMED_HASH_MISMATCH"
+        }
+      },
+      "restore": {"cold_positive.ok": true, "cold_positive.verify": true},
+      "verdict": "C9 target body is cross-bound by consumed state hash."
+    },
+    {
+      "id": "c9_target_coordinated_top_level_note",
+      "mutation": "Add coordinated_note to target_state.body and update bp2_join.json persisted.consumed_state_hash and artifacts.consumed_state_hash to the recomputed target digest.",
+      "witness": "JoinedSession.open -> BP2 E2 receipt",
+      "expected": "If E2 receipt binds the target, a coordinated top-level note should still be rejected.",
+      "observed": {
+        "old_consumed_hash": "13413e89f4cdec622355292f97e3f38ca2c6e0a0e2dcbb39a7b64c5f2bc98bf8",
+        "new_consumed_hash": "4f7620860440a627fbde0f2f7a5b29c7b9ba1d431585de7fefcd1c27e9d3178f",
+        "opened": false,
+        "code": "COLD_REOPEN_REFUSED",
+        "detail": "ReunionRefusal:BP2_E2_NOT_ADMITTED: CONSUMED_STATE_MISMATCH"
+      },
+      "restore": {"opened": true, "verify_ok": true, "b_operation": "SHARE_TOOL"},
+      "verdict": "C9 is more cross-linked than C12: the E2 receipt catches this coordinated note. That is still a self-hash/receipt chain, not owner attestation."
+    }
+  ],
+  "b_share_refuse_and_privacy": {
+    "share_omit": {
+      "source_b_operation": "SHARE_TOOL",
+      "tools_remaining": 1,
+      "help_accepted": true,
+      "help_strategy": "HELP_ACCEPT",
+      "verify": true
+    },
+    "share_e2": {
+      "source_b_operation": "SHARE_TOOL",
+      "tools_remaining": 0,
+      "help_accepted": false,
+      "help_strategy": "HELP_REFUSE",
+      "verify": true
+    },
+    "refusal": {
+      "source_b_operation": "REFUSE_TOOL",
+      "target_id": "",
+      "targetless": true,
+      "help_accepted": false,
+      "help_strategy": "HELP_REFUSE",
+      "c9_target_branch": "NO_CHANGE",
+      "c9_target_reason": "NO_PROPOSAL",
+      "material_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+      "adp019_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+      "cold_verify": true
+    },
+    "privacy_and_actor_ignorance": {
+      "unknown_b_strategy": "UNKNOWN_B",
+      "unknown_b_speech": "I've been at this bench. Ask the finisher.",
+      "private_strategy": "PRIVATE_BOUNDARY",
+      "private_speech": "I don't talk about that at work.",
+      "forbidden_tokens_present": {
+        "free_hours": false,
+        "material_remaining": false,
+        "debt_units": false,
+        "TEST_ONLY_BP1_R26V_ACTOR_A": false,
+        "source_hash": false
+      },
+      "verify": true
+    },
+    "source_sidecar_meta_mutation": {
+      "mutation": "Set b_operation=REFUSE_TOOL, b_quantity=0, b_actor=TEST_ONLY_FOREIGN_B, b_to_actor=TEST_ONLY_FOREIGN_A in bp2_join.json and session.json.",
+      "observed": {"opened": false, "code": "J_PROVENANCE_MISMATCH", "detail": "meta_matches_c12=false; meta_matches_c8=false"},
+      "restore": {"exact_sha256_match": true, "opened": true, "verify_ok": true}
+    }
+  },
+  "external_anchor_ceiling": {
+    "qualified_c12": "QualifiedC12Store.verify recomputes each row's stored body self-hash and column hash, plus contiguous seq. It does not hash all row columns, perception, branch rows, or a chain across rows, and it has no key, signature, monotonic anchor or independent custodian.",
+    "witness_class": "ExternalCheckpointWitness is defined at vendor/j/r26e/c12_integrity.py:83 but is not imported or used by joined/cli or the two tests. Its own docstring states the same-user attacker can rewrite DB and witness key; security_boundary=false; residual TRUST_CUSTODY_HOLD.",
+    "c8_keyed_proof": "The C8 journal proof is keyed and rejects a rewritten receipt without re-signing, but key_path and anchor_log are local fixture files in the same user's bp2 tree. This is a local write-capability/consistency boundary, not an owner-issued external attestation.",
+    "c9_cross_link": "The C9 target is additionally bound by the E2 receipt; a coordinated target note was refused at BP2_E2_NOT_ADMITTED. This is stronger than C12 but still a self-hash/receipt chain.",
+    "conclusion": "A recomputed self-hash or a locally re-signed keyed proof is NOT cryptographic independent owner attestation. The R2 return correctly stops at TEST_ONLY; any receiving owner must treat C12 as self-consistency evidence only."
+  },
+  "verdict": "R2 catches uncoordinated tampering and restores exactly, but its C12 verifier is self-hash-only and its new independent-verifier test is vacuous. The external anchor remains absent and explicitly owner-held."
+}

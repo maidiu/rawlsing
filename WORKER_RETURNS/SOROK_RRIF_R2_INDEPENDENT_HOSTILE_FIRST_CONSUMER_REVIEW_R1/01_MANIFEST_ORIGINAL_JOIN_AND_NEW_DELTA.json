@@ -1,0 +1,137 @@
+{
+  "schema": "SOROK_RRIF_R2_INDEPENDENT_MANIFEST_ORIGINAL_JOIN_AND_NEW_DELTA@1",
+  "review_subject": "598d9e9eaba5143950c63317705fd09104fbf463",
+  "candidate_content_commit": "1745fbb68dddfe150e93eb7789a02c4c0768bd66",
+  "candidate_root": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2",
+  "return_root": "WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN",
+  "candidate_file_counts": {
+    "total_manifest_files": 459,
+    "vendor_files": 444,
+    "joined_modules": 10,
+    "candidate_test_files": 2,
+    "top_level_files": 3
+  },
+  "candidate_preimage_audit": {
+    "manifest_path": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/RRIF_R2_CANDIDATE_SOURCE_PREIMAGE.json",
+    "listed_entries": 459,
+    "entries_exactly_recomputed": 458,
+    "entries_mismatched": 1,
+    "mismatches": [
+      {
+        "path": "RRIF_R2_CANDIDATE_SOURCE_PREIMAGE.json",
+        "declared_sha256": "9b045ac423533c21143d06caafd88a692dfcb8ea87531e4c8aa0de33e249f381",
+        "actual_sha256": "641165d2987da460104101accea983afb32050e81b15986eb49ae92f434a53b2",
+        "declared_size": 89022,
+        "actual_size": 89341,
+        "interpretation": "Stale self-referential entry. The preimage file cannot contain its own final hash; this entry is not the hash of the returned bytes. The other 458 entries, including all 444 vendor files, exactly match."
+      }
+    ],
+    "all_444_vendor_rows_exact": true,
+    "candidate_return_reference": {
+      "path": "WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/01_SOURCE_PREIMAGE_MODULE_AND_FIRST_REAL_CONSUMER.json",
+      "reported_candidate_audit_sha256": "9b045ac423533c21143d06caafd88a692dfcb8ea87531e4c8aa0de33e249f381",
+      "matches_actual_returned_preimage": false
+    }
+  },
+  "source_manifest_audit": {
+    "manifest_path": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/SOURCE_MANIFEST.json",
+    "manifest_sha256_declared_by_author": "7cfcb4679e36b522e83cc7120dbc166ce61dd220099c2aca8f5c9ddb5252c126",
+    "manifest_sha256_actual": "7cfcb4679e36b522e83cc7120dbc166ce61dd220099c2aca8f5c9ddb5252c126",
+    "manifest_sha256_matches": true,
+    "rows": 444,
+    "unique_paths": 444,
+    "git_blob_recomputed_and_matched": 444,
+    "source_commit_and_path_bytes_recomputed_and_matched": 444,
+    "source_commits": {
+      "64fec28c374d8f77fb0b412d0c934d798ede03e8": {
+        "count": 217,
+        "source_return": "WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1",
+        "role": "R31J pre-C9 source/material/B-operation"
+      },
+      "a2760d3687b063513fe0a5b9589c56c998d4ccb5": {
+        "count": 227,
+        "source_return": "WORKER_RETURNS/SOROK-20261021-R31E-ACTOR-EXPRESSION-FIRST-NEIGHBOR-R1",
+        "role": "R31E actor-expression first neighbor"
+      }
+    },
+    "result": "All 444 vendor files are exact preimages of two real source returns. No third source commit is present."
+  },
+  "original_join_e_comparison": {
+    "join_e_commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+    "join_v_review_commit": "4387dc818a96fda2d5271672505fbd9da1059703",
+    "vendor_tree": {
+      "join_e_tree": "72ff9d0b3af0dc3f4dd33ac2135fcb039a754dcc",
+      "candidate_tree": "72ff9d0b3af0dc3f4dd33ac2135fcb039a754dcc",
+      "byte_identical": true,
+      "files": 444
+    },
+    "joined_tree": {
+      "join_e_tree": "ea123a84cd5ba97b7fe9666a1581bd3236462184",
+      "candidate_tree": "ea123a84cd5ba97b7fe9666a1581bd3236462184",
+      "byte_identical": true,
+      "modules": 10
+    },
+    "tests_tree": {
+      "join_e_tree": "710dd2574dd83b90aaaa5cc6b48d741a1163fdc0",
+      "candidate_tree": "ce15f8e23a3a683d0e1ce8d1c3d375f46e8e69b4",
+      "diff": [
+        "conftest.py removed (7 lines)",
+        "test_join.py.proof.json removed (28 lines)",
+        "test_join.py path-resolution-only diff (4 lines changed)",
+        "test_rrif_r2_c12.py added (92 lines)"
+      ]
+    },
+    "production_logic_delta": {
+      "new_production_lines": 0,
+      "modified_production_files": 0,
+      "joined_package_byte_identical_to_join_e": true,
+      "vendor_package_byte_identical_to_join_e": true,
+      "genuinely_new_r2_code": [
+        "tests/test_rrif_r2_c12.py (92 lines, test only)"
+      ],
+      "non_code_additions": [
+        ".gitattributes whitespace policy",
+        "RRIF_R2_CANDIDATE_SOURCE_PREIMAGE.json",
+        "SOURCE_MANIFEST.json"
+      ]
+    },
+    "conclusion": "RRIF-R2 contains no new production C9/C12/JOIN logic. It republishes the exact JOIN-E vendor and joined closure (444 + 10 files) and adds one focused C12 test file plus path adaptation. Existing JOIN-E is not a novel four-asset RRIF fan-in."
+  },
+  "four_asset_import_status": {
+    "C9C12_R2": {
+      "cut": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+      "imported_by_r2": false,
+      "evidence": "No c12_guard.py, c9_actor_r3.py or c9c12_reader.py path or symbol in the candidate; SOURCE_MANIFEST has only 64fec28 and a2760d3."
+    },
+    "CP_A5_R2": {
+      "cut": "913765328e4fab12b150ea01421ed6b445158184",
+      "imported_by_r2": false,
+      "evidence": "No CP-A5 source/module/path in the candidate."
+    },
+    "B_F1CR_R2": {
+      "cut": "bf3273c294c704ad7c631559b9866d351bb4f103",
+      "imported_by_r2": false,
+      "evidence": "No B-F1CR source/module/path in the candidate; original F1CR bytes remain SOURCE_NOT_FOUND."
+    },
+    "V3CORE_R1": {
+      "cut": "b5cb3f917402b992d7cbe933af0b378d2b37cbfd",
+      "imported_by_r2": false,
+      "evidence": "No V3CORE source/module/path in the candidate."
+    },
+    "C9_R3B": {
+      "cut": "fac064c9c3370d598e9b7469af652ae3504bc4ba",
+      "original_writer_blob": "67f34f699220ec1407e7e8f0d58ed328e88a36af",
+      "imported_by_r2": false,
+      "evidence": "R2 C9 is the BP2P4J CandidateStore with occurrence/target_state tables; no C9_ACTOR_AUTHORITY_R3@1 actor_meta schema and no c9_actor_r3.py."
+    }
+  },
+  "first_consumer_identity": {
+    "consumer": "joined.cli / JoinedSession.start/open",
+    "sourcefree": true,
+    "native_grade": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+    "loaded_closure": "J modules from vendor/j, E modules from vendor/e, m6 from rawlsing_next; audit_loaded ok true",
+    "actual_material_consumer": "R31E do_help reads persisted actor tool state and produces HELP_ACCEPT for omit / HELP_REFUSE for e2; CLI is a separate process on cold reopen.",
+    "not_promoted_native": true
+  },
+  "finding": "The 444-file source identity is exact and independently reproducible. The only new R2 logic is a 92-line test file; all production code is byte-identical JOIN-E. The candidate preimage's self-entry is stale, so the returned preimage is 458/459 exact, not 459/459."
+}
