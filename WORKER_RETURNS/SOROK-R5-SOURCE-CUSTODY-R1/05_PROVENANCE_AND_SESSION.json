@@ -1,0 +1,73 @@
+{
+  "schema": "SOROK_R5_PROVENANCE_AND_SESSION@1",
+  "status": "RETURNED_SOURCE_RECOVERABILITY_CORRECTION__NO_MERGE",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/sorok-r5-f1cr-executable-and-v3-archive-source-custody-20261030-r1",
+  "premain_current": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "source_cuts": {
+    "f1c": "bcea367e7dc0f2e069de71b0fe5e481de094dad5",
+    "f1ci3": "0a884fd5af7ebb97f4cc0ef8c1251386641732f0",
+    "f1cr": "03be5c225b8ec5832c1c648b9c1799419f0c4066",
+    "rcf_b": "397c6d61d73825d83e1282753e254c39f4b5a80e",
+    "rcf_a": "e66dc53a5d7eeb2b6b3259000eb04b8e79e1f6f7",
+    "td_r05_manifest": "7bc6729e778a84e30ba0757ed52faecc28cdb42d"
+  },
+  "f1cr_source": {
+    "original_f1c_blob": "104f5bd7826c8676192eac96753d980e35d8a80a",
+    "original_f1c_sha256": "7e3492a267acbc0fa11d8792158bdaa2acc9dfb6053f16141ed637dc1cd2881b",
+    "original_test_blob": "b012e65eb92c21e8733bdd92f46ca4a88aa709e5",
+    "original_test_sha256": "271e6aa15af8b2c3217ed2fdb94f2514e70c0bf9a9fa3122e3fe4d7f0aebdc6b",
+    "claimed_patched_sha256": "18c96f97eca5480893c0f38a06f21c0d985fe0c6c997e63e0898001157351dfb",
+    "claimed_patched_blob": "bf7e625e1f208908e583ea72ebb73992ad7d19ae",
+    "reconstructed_blob": "c6e64b5874938045d80aae348de94930539d5cd2",
+    "reconstructed_sha256": "12f183a379bd1fabf37433b0e3ac893221f78370cd73d2a7c173554a1db14871",
+    "status": "ORIGINAL_EXACT_RECOVERED__PATCHED_SOURCE_NOT_FOUND__RECONSTRUCTED_CANDIDATE"
+  },
+  "archive": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_code_bundle_staging.zip",
+    "bytes": 21967177,
+    "sha256": "3f2c5ed925273153a4f300f75e54524729f0b4fef9974957be1f3cd887c91289",
+    "td_r05_expected_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "status": "CONTAINER_MISMATCH__SELECTED_AND_CODE_MEMBERS_MATCH"
+  },
+  "tests": {
+    "original_13": {"exit": 0, "cases": 13, "result_sha256": "5c3b91dd7fd7cb51d4efc0b7bf1bcf4b52ba7d861b1a2fc4f84abcc4b28201e3"},
+    "reconstructed_13": {"exit": 0, "cases": 13, "result_sha256": "4de846b2795d18b7761e73b89f31a405d7982ec5f8f7f0a60007803b4fb5f697"},
+    "original_mutation": {"exit": 1, "tests": 3, "failures": 3, "junit_sha256": "d7daf29799baffa14d5a976dedb4c29d6d502ea836e6f5a18e97b67a6eb94775"},
+    "reconstructed_mutation": {"exit": 0, "tests": 3, "failures": 0, "junit_sha256": "62bec3f640f777f71f4d5441e69d182796f70df99181dba72fe64ffd860bfc1b"}
+  },
+  "archive_comparison": {
+    "selected_rows": 31,
+    "selected_matches": 31,
+    "python_members": 488,
+    "python_identical": 488,
+    "common_files": 4520,
+    "common_identical": 4515,
+    "differing": 5,
+    "differing_scope": "four .DS_Store and one .pytest_cache entry; no source module",
+    "only_zip": "8 mojibake reference documents, content equal to directory em-dash files",
+    "only_directory": "same 8 reference documents plus 34 generated .pyc",
+    "container_conclusion": "Packaging/metadata differences only; whole-container provenance remains unresolved."
+  },
+  "session": {
+    "device": "oldMac",
+    "device_evidence": "scutil ComputerName=oldMac; hostname=oldMac.lan",
+    "harness": "OpenCode",
+    "harness_version": "1.18.34",
+    "model_provider": "opencode-go",
+    "model_id": "deepseek-v4.1-flash",
+    "reasoning_effort_requested": "MAX",
+    "reasoning_effort_verified": "LOCAL_SESSION_DB_VARIANT_MAX__PROVIDER_SIDE_UNVERIFIED",
+    "session_name": "INDEX_B 282-branch indexing commission",
+    "session_id": "ses_e77c423e1ffealQLzYonSQTRRf",
+    "session_title_status": "ACTUAL_APP_TITLE_STALE_FROM_EARLIER_COMMISSION__SUGGESTED_TITLE_NOT_APPLIED",
+    "suggested_session_name": "SOROK R5 | F1CR executable and V3 archive custody | oldMac | OpenCode",
+    "terminal_program": "Apple_Terminal",
+    "terminal_session_id": "EC37E1BA-C442-4AAD-80F9-32A17D7A7A85",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-r5-f1cr-executable-and-v3-archive-source-custody-20261030-r1",
+    "agent_name": "build",
+    "agent_id": null
+  },
+  "write_scope": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/** only; archive read-only; no PRE-MAIN/PR/original branch/edit",
+  "return_sha": null
+}

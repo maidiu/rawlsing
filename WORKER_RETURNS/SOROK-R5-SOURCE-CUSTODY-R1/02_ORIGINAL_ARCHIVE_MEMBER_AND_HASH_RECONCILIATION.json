@@ -1,0 +1,108 @@
+{
+  "schema": "SOROK_R5_ORIGINAL_ARCHIVE_MEMBER_AND_HASH_RECONCILIATION@1",
+  "status": "CONTAINER_MISMATCH__SELECTED_AND_CODE_MEMBERS_MATCH__PACKAGING_METADATA_DIFFERENCE__WHOLE_CONTAINER_UNVERIFIED",
+  "archive": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_code_bundle_staging.zip",
+    "bytes": 21967177,
+    "observed_sha256": "3f2c5ed925273153a4f300f75e54524729f0b4fef9974957be1f3cd887c91289",
+    "td_r05_expected_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "container_status": "MISMATCH",
+    "td_r05_manifest_path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/TD_R05_V3_DEVELOPMENTAL_RUNTIME/LATEST_EXTANT_V3_V2_SOURCE_MANIFEST.json",
+    "td_r05_manifest_git_blob": "7bc6729e778a84e30ba0757ed52faecc28cdb42d",
+    "td_r05_selected_sources": 31,
+    "td_r05_reported_M_rows_matching": 36,
+    "td_r05_reported_selected_files_matching": 60
+  },
+  "zip_structure": {
+    "total_members": 9808,
+    "directories": 376,
+    "non_apple_file_members": 4528,
+    "apple_double_file_members": 4904,
+    "duplicate_member_names": 0,
+    "duplicate_content_pairs": 1285,
+    "uncompressed_bytes": 63330789,
+    "compressed_bytes": 18300295,
+    "top_level": {"Rawlsing_code_bundle_staging": 4904, "__MACOSX": 4904},
+    "date_month_top": ["2026-05 (8472 entries)", "2026-02 (682)", "2025-11 (330)", "2026-01 (80)", "2025-12 (72)"],
+    "extension_counts_non_apple": {"json": 1848, "txt": 1049, "py": 488, "md": 481, "yaml": 267, "pyc": 202, "csv": 45, "ds_store": 39, "js": 33, "tsx": 11}
+  },
+  "td_r05_selected_comparison": {
+    "manifest_rows": 31,
+    "path_present": 31,
+    "sha256_and_bytes_match": 31,
+    "missing": 0,
+    "mismatched": 0,
+    "selected_paths": [
+      "v3/core/state.py", "v3/core/derived.py", "v3/core/invariants.py",
+      "v3/core/year_record.py", "v3/v3_yearly_step_order.yaml",
+      "v3/engine/yearly_step.py", "v3/engine/step_runner.py",
+      "v3/engine/llm_contract.py", "v3/engine/run_llm_band.py",
+      "v3/engine/event_engine.py", "v3/psyche/flow.py",
+      "v3/render/phenomenology.py", "v2/conversation_engine.py",
+      "v3/core/generation_integrity.py", "server/generation/store.py"
+    ],
+    "additional_manifest_rows_not_relisted_but_matched": "all remaining TD-R05 selected sources; exact manifest comparison count 31/31"
+  },
+  "full_member_comparison_to_extracted_directory": {
+    "archive_non_apple_files": 4528,
+    "extracted_directory_files": 4562,
+    "common_files_compared": 4520,
+    "byte_identical_common_files": 4515,
+    "differing_common_files": 5,
+    "only_in_zip": 8,
+    "only_in_directory": 42,
+    "python_members_zip": 488,
+    "python_members_directory": 488,
+    "python_members_identical": 488,
+    "differing_files": [
+      ".DS_Store (metadata)",
+      "rawlsing_essentials_bundle/.DS_Store (metadata)",
+      "v3/.DS_Store (metadata)",
+      "repair_replacement_pack/.DS_Store (metadata)",
+      ".pytest_cache/v/cache/lastfailed (generated cache)"
+    ],
+    "only_in_zip_files": [
+      "references/01ΓÇöreconfiguration.md",
+      "references/02ΓÇönew_spec.md",
+      "references/03ΓÇöwith_enneagram.md",
+      "references/04ΓÇöRawlsing_v4.0.md",
+      "references/04ΓÇöRawlsling_v4.1.md",
+      "references/05ΓÇöimplementation.md",
+      "references/06ΓÇöintegration.md",
+      "references/07ΓÇösupplement.md"
+    ],
+    "only_in_directory_files": [
+      "references/01—reconfiguration.md",
+      "references/02—new_spec.md",
+      "references/03—with_enneagram.md",
+      "references/04—Rawlsing_v4.0.md",
+      "references/04—Rawlsling_v4.1.md",
+      "references/05—implementation.md",
+      "references/06—integration.md",
+      "references/07—supplement.md",
+      "34 generated v3/tests/__pycache__ *.pyc files"
+    ],
+    "filename_encoding_check": "All eight mojibake reference names have byte-identical content to their em-dash directory counterparts.",
+    "code_change_check": "No .py or YAML source module is only-in-zip or only-in-directory; all 488 Python members and the selected manifest are byte-identical. The differences are metadata/generated cache/filename encoding, not changed source code."
+  },
+  "provenance_conclusion": {
+    "container": "UNKNOWN_WHOLE_ARCHIVE_PROVENANCE__SHA_MISMATCH__DO_NOT_DECLARE_GREEN",
+    "internal_source": "SELECTED_TD_R05_SOURCE_AND_ALL_PY_MEMBERS_BYTE_IDENTICAL",
+    "cause": "Consistent with repackaging/metadata differences: AppleDouble members, .DS_Store, pycache pyc version differences, pytest cache, and Unicode filename encoding; no source .py module difference was found.",
+    "unproven": "The exact TD-R05 ZIP container and its full original member manifest are not present/available; container-level custody remains unresolved."
+  },
+  "safe_now": [
+    "TD-R05 selected source files that match 31/31 manifest rows (subject to RCF-A invalid-mechanism quarantine).",
+    "All 488 Python archive members that are byte-identical to the extracted source tree.",
+    "v3/core/state.py BackboneState; v3/core/derived.py compute_all_derived; v3/core/invariants.py; v3/v3_yearly_step_order.yaml; v3/engine/yearly_step.py run_one_year; v3/engine/step_runner.py run_n_years; v3/psyche/flow.py run_pressure_flow_cycle; v3/render/phenomenology.py render_year; server/generation/store.py readiness functions."
+  ],
+  "owner_clarification_required": [
+    "M08 identity-seeded wound in v3/psyche/channels.py:36 (class/minority/religiosity/age preseed).",
+    "M15/M36 missing-parent 50/50/50 and hopeful defaults in v3/io/parent_baseline_from_behavior.py.",
+    "M34 fabricated fallback practice in v3/engine/llm_contract.py:173-207 and run_llm_band.py first-candidate fallback.",
+    "M35 placeholder cracks/frameworks in v3/core/invariants.py:253-297 and yearly_step.py repair call.",
+    "M39 module-global random age-band rupture in v3/engine/effects/metabolization_effects.py:273-332.",
+    "M37 structural stub scenes; M31 Enneagram/type-determines-person; M38/M40 only with quarantine/readiness semantics preserved.",
+    "Whole-container TD-R05 archive identity and full member manifest."
+  ]
+}

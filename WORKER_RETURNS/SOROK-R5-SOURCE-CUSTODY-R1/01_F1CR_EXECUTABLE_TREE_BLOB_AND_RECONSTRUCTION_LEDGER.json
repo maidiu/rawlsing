@@ -1,0 +1,65 @@
+{
+  "schema": "SOROK_R5_F1CR_EXECUTABLE_RECOVERY_LEDGER@1",
+  "status": "EXACT_ORIGINAL_RECOVERED__PATCHED_EXECUTABLE_SOURCE_NOT_FOUND__RECONSTRUCTED_CANDIDATE_PROVIDED",
+  "repository": "maidiu/rawlsing",
+  "premain": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "ancestry": {
+    "f1c_author": "bcea367e7dc0f2e069de71b0fe5e481de094dad5",
+    "f1ci3_reviewer": "0a884fd5af7ebb97f4cc0ef8c1251386641732f0",
+    "f1cr_return": "03be5c225b8ec5832c1c648b9c1799419f0c4066",
+    "rcf_b_recovery": "397c6d61d73825d83e1282753e254c39f4b5a80e",
+    "f1c_program_blob": "104f5bd7826c8676192eac96753d980e35d8a80a",
+    "f1c_program_sha256": "7e3492a267acbc0fa11d8792158bdaa2acc9dfb6053f16141ed637dc1cd2881b",
+    "f1c_test_blob": "b012e65eb92c21e8733bdd92f46ca4a88aa709e5",
+    "f1c_test_sha256": "271e6aa15af8b2c3217ed2fdb94f2514e70c0bf9a9fa3122e3fe4d7f0aebdc6b",
+    "f1cr_claimed_patched_sha256": "18c96f97eca5480893c0f38a06f21c0d985fe0c6c997e63e0898001157351dfb",
+    "f1cr_claimed_patched_blob": "bf7e625e1f208908e583ea72ebb73992ad7d19ae"
+  },
+  "recovery_findings": [
+    "The original F1C executable is exact and recoverable as loose blob 104f5bd7826c8676192eac96753d980e35d8a80a; it is also the byte-identical f1c.py at F1CI3 candidate.",
+    "The F1CR reported patched executable SHA-256 18c96f97… / blob bf7e625e… is absent from all local objects and every commit/tree path; it cannot be produced as an exact original.",
+    "F1CR worktrees /private/var/.../opencode/f1cr-return, f1cr-base and f1cr contain only the original executable, frozen tests and patched run logs; no patched source file remains.",
+    "Original F1C source was recovered exactly; patched source is a newly labeled reconstruction, not the F1CR author's missing bytes."
+  ],
+  "candidate_files": [
+    {
+      "path": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/candidate/f1c_original_104f5bd.py",
+      "status": "EXACT_ORIGINAL_RECOVERED",
+      "git_blob": "104f5bd7826c8676192eac96753d980e35d8a80a",
+      "sha256": "7e3492a267acbc0fa11d8792158bdaa2acc9dfb6053f16141ed637dc1cd2881b",
+      "provenance": "F1C bcea367 / F1CI3 candidate f1c.py loose blob; exact original author source"
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/candidate/f1c_reconstructed_candidate.py",
+      "status": "RECONSTRUCTED_CANDIDATE",
+      "git_blob": "c6e64b5874938045d80aae348de94930539d5cd2",
+      "sha256": "12f183a379bd1fabf37433b0e3ac893221f78370cd73d2a7c173554a1db14871",
+      "provenance": "Newly labeled reconstruction from exact F1C source plus the documented live_prior/A/B/shared digest checks; not the missing F1CR byte identity."
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/candidate/test_full_history_binding.py",
+      "status": "EXACT_TEST_INPUT_RECOVERED",
+      "git_blob": "b012e65eb92c21e8733bdd92f46ca4a88aa709e5",
+      "sha256": "271e6aa15af8b2c3217ed2fdb94f2514e70c0bf9a9fa3122e3fe4d7f0aebdc6b",
+      "provenance": "F1CI3-R3 frozen reviewer test; unchanged"
+    }
+  ],
+  "actual_tests": {
+    "original_13_cases": {"cases": 13, "exit": 0, "frozen_hash": "30fc98b9babdbb089573eccb4790baf7886bee44b56314eb4cac932ba1aeee5d", "result_json_sha256": "5c3b91dd7fd7cb51d4efc0b7bf1bcf4b52ba7d861b1a2fc4f84abcc4b28201e3"},
+    "reconstructed_13_cases": {"cases": 13, "exit": 0, "frozen_hash": "30fc98b9babdbb089573eccb4790baf7886bee44b56314eb4cac932ba1aeee5d", "result_json_sha256": "4de846b2795d18b7761e73b89f31a405d7982ec5f8f7f0a60007803b4fb5f697"},
+    "original_live_history_mutations": {"tests": 3, "failures": 3, "exit": 1, "junit_sha256": "d7daf29799baffa14d5a976dedb4c29d6d502ea836e6f5a18e97b67a6eb94775"},
+    "reconstructed_live_history_mutations": {"tests": 3, "failures": 0, "exit": 0, "junit_sha256": "62bec3f640f777f71f4d5441e69d182796f70df99181dba72fe64ffd860bfc1b"},
+    "outcome_equality": "All 13 case names, expected p01 values, exact holds, frozen object and frozen hash are identical between original and reconstructed candidate."
+  },
+  "required_callable": {
+    "name": "f1c.same_receiver_assertion",
+    "signature": "(root, life, frozen, expected_hash, action='SHARE', *, observed=True, cut_source=False, omit_e2=False, no_resource=False, encumbered=False, duplicate=False, native=False)",
+    "actual_receiver": "R31JProduct / r31j.assertion.p01; BP4 C10 receives the committed C9 target in the SHARE path",
+    "targetless": "REFUSE/SILENCE/UNOBSERVED_REFUSE stop at C9_RECEIVER_HOLD:later_e2:NO_PROPOSAL; joined.refusal.RefusalSession is a separate read-only carrier, not an F1C adapter",
+    "handoff_to_Sorok_I1": "Consume the returned p01/artifacts and C9 target through the existing R31J/BP4 C10 path; do not treat targetless as a C10 target. No durable C9/C12 adapter is supplied."
+  },
+  "source_not_found": {
+    "exact_f1cr_patched_executable": true,
+    "reason": "bf7e625e… absent from batch-all-objects and trees; no surviving worktree/temp file; reconstruction is not byte-identical to 18c96f97…"
+  }
+}
