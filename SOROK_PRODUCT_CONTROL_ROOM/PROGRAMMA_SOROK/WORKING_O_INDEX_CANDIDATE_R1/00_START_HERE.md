@@ -1,3 +1,5 @@
+> **Source correction, 2026-10-30:** The O-INDEX original source-hold claim for S0–S16 was false. All 17 original Sorok program workstream definitions are documented at owner branch `865b5b01e1a27e99020cf2bb389af8cd4c874b57`, `SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md`, blob `2a0a3a42d66f566f92d5c333fbbea4a5adb383b2`. Historical exploratory source existence is distinct from current adopted priorities. Earlier validator results conditioned on 0/17 are superseded; source-corrected validator requires independent reexecution.
+
 # SOROK PROGRAMMA — O-INDEX working candidate
 
 **Status:** WORKING CANDIDATE — NOT HQ-ADJUDICATED. Start here to navigate inherited source, the four returned code assets, exact unknowns and owner slots. This is an index, not a product acceptance, science issuance or priority decision.
@@ -23,7 +25,7 @@ Current PRE-MAIN is `5fc1d43e3d5412194d1f1eaa30ff448f84635e99`. The candidate is
 
 - No native continuing person, authorized human A5, native B, native Pyat C11 world weld, C9/C12 release or E2 semantic issuance.
 - No adoption of the four returned candidates; each is author-tested sourcefree evidence with explicit holds.
-- No recovery of the original 17-entry S0–S16 definition table; no filling in names from S0/S1 research stages or S39–S52.
+- The 17 original S0–S16 exploratory workstream definitions ARE source-recovered from Sorok HQ `05_PROGRAM_MAP.md` at `865b5b01e1a27e99020cf2bb389af8cd4c874b57` (blob `2a0a3a42d66f566f92d5c333fbbea4a5adb383b2`). Current canonical adoption and workstream-output completion remain HQ decisions; these are not later S39–S52 or V3-court S0/S1 stages.
 - No recovery of the original F1CR patched bytes; R5’s reconstruction is not the original.
 - No whole V3 archive identity; only selected source functions and 31/31 selected SHA256 + 488/488 `.py` members are supported.
 - No priority ranking, roadmap or claim that one engineering recovery is more important than other Sorok work.
@@ -53,7 +55,7 @@ The three are examples of navigation, not a priority order.
 
 - `first_consumer` in the registry is a named/required consumer unless explicitly marked as a candidate. It is not proof of a current PRE-MAIN importer.
 - `native_product_accepted` and `source_science_issued` are `false` across all indexed rows.
-- `S0`–`S16` are 17 identity holds. They are not assumed missing code modules and must not be replaced by S39–S52.
+- `S0`–`S16` are 17 verified original exploratory PRODUCT workstream definitions. Their existence is not an accepted native implementation, and they must not be replaced by S39–S52.
 - Sorok `N11`/`N12`, Pyat `N11`/`N12` and V3 `M25` are separate namespaces. Same-looking numbers never imply equivalence.
 - Test counts are never pooled across assets or historical cuts. R6’s 74 selected tests, R7’s author-local tests and the four assets’ tests are separate receipts.
 - The index deliberately does not choose whether recovery, science issuance, native-product work or another Sorok task should come next. That is `HQ_JUDGMENT_REQUIRED`.
@@ -75,4 +77,4 @@ The three are examples of navigation, not a priority order.
 
 ## Claim ceiling
 
-The index supports this statement only: **102 inherited identifiers have exact source-definition evidence at the declared historical documentary grain; 17 S0–S16 definitions and the original F1CR patch remain exact holds; R6 closes its finite source queue without a current importer; four returned assets are author-tested candidates, not adopted native functions.** It does not support a claim that Programma Sorok has a native person, an authorized A5 alpha, a native B/C11/E2 world, or an issued science of care, ideology or theology.
+The index supports this statement only: **102 C/A/M/N/O/E plus 17 original S0–S16 definitions have historical source-definition evidence; the original F1CR patched executable remains an exact source hold; R6 closes its finite source queue without a current importer; four returned assets are author-tested candidates, not adopted native functions.** It does not support a claim that Programma Sorok has a native person, an authorized A5 alpha, a native B/C11/E2 world, or an issued science of care, ideology or theology.
