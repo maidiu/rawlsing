@@ -1,0 +1,146 @@
+{
+  "authority": {
+    "adoption": "NONE",
+    "c12_authenticity": "OWNER_ANCHOR_REQUIRED",
+    "c12_completeness": "OWNER_ANCHOR_REQUIRED",
+    "can_adp_issuer": "ABSENT",
+    "durable_c9_handoff": "HELD",
+    "external_c12_anchor": "ABSENT",
+    "grade": "TEST_ONLY_SOURCEFREE_CP_A5_NOT_NATIVE",
+    "native_actor": false,
+    "native_c11": false,
+    "native_c12": false,
+    "native_c8_trust": false,
+    "native_person": false,
+    "native_rule": false,
+    "native_world": false,
+    "pyat_structural_position": "ABSENT",
+    "self_review": false
+  },
+  "base": {
+    "pre_main": "750548ddbb9b4392a16ce93097b856f349e16182",
+    "pre_main_refreshed": true,
+    "remote_pre_main_match": true,
+    "remote_pre_main_ref": "refs/heads/integration/pre-main-reconciliation-r1"
+  },
+  "branch": "agent/sorok-cp-a5-r2-multicontext-encounter-20261030",
+  "candidate": {
+    "inventory_count": 187,
+    "inventory_digest": "812f45834660c221b770def099a79532b0247653f718ff7c5a81d0211a43d98c",
+    "inventory_digest_scope": "sha256(canonical JSON of sorted relative path and sha256 entries)",
+    "junit": {
+      "errors": 0,
+      "failures": 0,
+      "path": "candidate/evidence/cp_a5_junit.xml",
+      "sha256": "1aa80cf292b35a711f1f7a699e564730fb72e831f2447268aa7b3bde03959541",
+      "skipped": 0,
+      "tests": 59
+    },
+    "root": "candidate",
+    "total_bytes": 1901001
+  },
+  "commit_readback": {
+    "head_before_return_commit": "750548ddbb9b4392a16ce93097b856f349e16182",
+    "readback_command": "git ls-remote origin refs/heads/agent/sorok-cp-a5-r2-multicontext-encounter-20261030",
+    "remote_branch": "agent/sorok-cp-a5-r2-multicontext-encounter-20261030",
+    "remote_sha": "PENDING_PUSH_READBACK",
+    "return_commit": "PENDING_PUSH_READBACK",
+    "self_reference_note": "A file cannot contain the SHA of the commit that contains it; the exact final SHA is reported in the push readback and terminal response."
+  },
+  "date": "2026-10-30",
+  "environment": {
+    "device": "oldMac",
+    "effort": "MAX requested; no separate runtime effort indicator is exposed",
+    "harness": "OpenCode 1.18.34",
+    "host": "Darwin oldMac.lan 22.6.0 x86_64",
+    "local_s2": {
+      "browser_required": false,
+      "git_worktree": true,
+      "network_at_test_runtime": false,
+      "python_sqlite_runtime": true,
+      "subprocess_execution": true
+    },
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "model_switch": "none",
+    "os": "macOS 13.7.8 (22H730)",
+    "provider_account_switch": "none",
+    "pytest": "9.1.1",
+    "python": "3.11.3",
+    "session_locator": "OpenCode local session; no stable public session id is exposed in this environment; branch and pushed commit are the durable locators",
+    "sqlite": "3.40.1"
+  },
+  "execution": {
+    "cold_process_cli": true,
+    "combined_command": "BP4R_C9_DIR=$PWD PYTHONPATH=$PWD PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -o addopts='' -q tests --junitxml=evidence/cp_a5_junit.xml",
+    "combined_exit": 0,
+    "combined_result": "59 passed in 30.50s",
+    "exact_restore": true,
+    "new_cp_a5": "9 passed",
+    "old_i1_regression": "50 passed",
+    "old_ten_severances": true
+  },
+  "limits": [
+    "No native A3-A5 person, native B source, native C source, or original-source issuance.",
+    "No C12 owner anchor or completeness proof; the guard reports OWNER_ANCHOR_REQUIRED.",
+    "No durable C9 actor readset, C9 R3B integration, or C9 mirror/outbox claim.",
+    "No F1CR patched executable or original B/M35 producer is used or claimed.",
+    "The C coactor is a test-only sourcefree fixture and requires owner review before adoption.",
+    "The custody decision rule is test-only and emits HELD when absent or when evidence does not meet 3 inspections across 2 contexts.",
+    "The BP2P4J c12_verify.py self-referential residual is unchanged and is not used as an authorization source.",
+    "The I1 zero-stock material_delta event remains an old event; CP-A5 records the new B commission with material_delta 0.",
+    "No PRE-MAIN, original branch, production source, user data, pull request, or foreign worktree was modified."
+  ],
+  "material_evidence": {
+    "coactor_c": {
+      "actor_id": "TEST_ONLY_CP_A5_ACTOR_C",
+      "native": false,
+      "relation": "REQUEST_UNMET",
+      "source_grade": "TEST_ONLY_SOURCEFREE_COACTOR",
+      "source_ref": "TEST_ONLY_CP_A5_COACTOR_SOURCE_C"
+    },
+    "cp_a5_context": {
+      "a_completed_after": 5,
+      "a_material_after": 1,
+      "a_repair_blocked_clock": 80,
+      "a_repair_succeeded_clock": 100,
+      "b_cash_after_commission": 58,
+      "b_completed_after_commission": 5,
+      "b_material_delta": 0,
+      "tool_returned": true,
+      "workshop_tool_held_by_b": true
+    },
+    "i1_context": {
+      "b_after_i1_offscreen": 4,
+      "b_initial_cash": 54,
+      "b_initial_completed": 3
+    },
+    "new_consequence": "B's independent tool-taking and market commission block A's later repair; after B returns the tool, A repairs. The old I1 zero-stock material_delta event is not reused as new consumption."
+  },
+  "return": "WORKER_RETURNS/SOROK-CP-A5-R2",
+  "role": "independent I3 developmental-person implementation engineer",
+  "schema": "SOROK_CP_A5_R2_PROVENANCE_AND_LIMITS@1",
+  "source_cuts": {
+    "bp2p4j": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+    "bp4r": "693d25bf40f76b09ccf2cc1ec5218a262e201fcd",
+    "i1": "7d44e30064f8e873e1a3ff9cb05fe75456756b88",
+    "o1": "501ea1f5bf07468b2c0437f452a81f3515cfdb6f",
+    "r5": "aebb2452b277bfc91fc78dec8d6001f8a844cc8c"
+  },
+  "write_scope": {
+    "allowed": "WORKER_RETURNS/SOROK-CP-A5-R2/**",
+    "original_branches_modified": false,
+    "other_worker_worktrees_modified": false,
+    "pre_main_modified": false,
+    "production_source_modified": false,
+    "pull_request_created": false,
+    "self_reviewed": false,
+    "written": [
+      "00_RETURN.md",
+      "candidate/**",
+      "01_ACTUAL_A3_A5_LIFE_AND_ENCOUNTER_TRACE.json",
+      "02_EXECUTED_TESTS_SEVERANCE_AND_JUNIT.md",
+      "03_SOURCE_OWNER_INTEGRATION_AND_ROLLBACK.md",
+      "04_PROVENANCE_AND_LIMITS.json"
+    ]
+  }
+}

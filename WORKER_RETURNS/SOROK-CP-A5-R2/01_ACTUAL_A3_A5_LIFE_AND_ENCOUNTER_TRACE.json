@@ -1,0 +1,530 @@
+{
+  "assertion": {
+    "actor": "A",
+    "assertion": "cp_a5.assertion.multicontext_encounter_assertion",
+    "branch_id": "root",
+    "canonical_digest": "6c51b177d083d53aeae3c745a7c7ef1ff0283697ca0912c7732acbcd9d81acb3",
+    "clock": 100,
+    "coactor_relation": {
+      "clock": 66,
+      "coactor": "C",
+      "event_id": "TEST_ONLY_CP_A5_EVT_f2d8a14986e7f7f74111e273865f862dbd9a838dd0e860f11478845b69cfba83",
+      "kind": "C_LEAVE",
+      "relation": "UNSPECIFIED",
+      "summary": "The carrier leaves for the market."
+    },
+    "decision": "RETAIN_TOOL",
+    "encounter": {
+      "market": {
+        "actor": "A",
+        "answer": "UNKNOWN: A did not perceive B's market commission.",
+        "branch_id": "root",
+        "canonical_digest": "6c51b177d083d53aeae3c745a7c7ef1ff0283697ca0912c7732acbcd9d81acb3",
+        "evidence_event_ids": [],
+        "grade": "TEST_ONLY_SOURCEFREE_CP_A5_NOT_NATIVE",
+        "native": false,
+        "question": "What did B do at the market?",
+        "read_only": true,
+        "schema": "SOROK_CP_A5_ENCOUNTER_ANSWER@1",
+        "status": "UNKNOWN"
+      },
+      "tool": {
+        "actor": "A",
+        "answer": "A perceived B take the workshop tool, could not repair while it was away, and perceived its return.",
+        "branch_id": "root",
+        "canonical_digest": "6c51b177d083d53aeae3c745a7c7ef1ff0283697ca0912c7732acbcd9d81acb3",
+        "evidence_event_ids": [
+          "TEST_ONLY_CP_A5_EVT_4c125f8d9e3c39820e3018bf7a51dd421f0022236c8a1afff0073be36bb643c2",
+          "TEST_ONLY_CP_A5_EVT_0322dfcf4a1013c37297490cf0f2ab31fade8d429102fcac5afc09affa6d19e4",
+          "TEST_ONLY_CP_A5_EVT_1f8a60853959a1c10d5d43d2aed74c0d81de2bfdc878ec67ce1d65455290d6f8"
+        ],
+        "grade": "TEST_ONLY_SOURCEFREE_CP_A5_NOT_NATIVE",
+        "native": false,
+        "question": "What happened to the workshop tool?",
+        "read_only": true,
+        "schema": "SOROK_CP_A5_ENCOUNTER_ANSWER@1",
+        "status": "OK"
+      }
+    },
+    "evidence": {
+      "contexts": [
+        "market",
+        "workshop"
+      ],
+      "event_ids": [
+        "TEST_ONLY_BP4_WORLD_EVT_be43d9f0b254bc0c4ef266fc451f580316d3a7864152a05a3a6e104dfd2fe425",
+        "TEST_ONLY_BP4_WORLD_EVT_02e604f50e61be524f3569f0f4e366310329fa31ad3f3008c1ba7466e3f212ce",
+        "TEST_ONLY_BP4_WORLD_EVT_fc6c1768e381a5af4a71eb8ab428e98d101b157e961bd2da3805ca475a70ccc0"
+      ],
+      "grade": "TEST_ONLY_SOURCEFREE_DERIVED_DISPOSITION",
+      "inspection_count": 3,
+      "name": "cross_context_material_verification",
+      "native": false,
+      "note": "This is repeated performed inspection evidence, not a personality trait.",
+      "state": "ESTABLISHED"
+    },
+    "grade": "TEST_ONLY_SOURCEFREE_CP_A5_NOT_NATIVE",
+    "known_event_ids": [
+      "TEST_ONLY_BP4_WORLD_EVT_02e604f50e61be524f3569f0f4e366310329fa31ad3f3008c1ba7466e3f212ce",
+      "TEST_ONLY_BP4_WORLD_EVT_3f3f62a0786bf747878bd4ea8a300f8340aa2fa723b347e14bb4d74db55661a7",
+      "TEST_ONLY_BP4_WORLD_EVT_68b0bdd9387dd2b8e1317d54fa5095beabaa3075661b743ff9e139ea95b0ad02",
+      "TEST_ONLY_BP4_WORLD_EVT_be43d9f0b254bc0c4ef266fc451f580316d3a7864152a05a3a6e104dfd2fe425",
+      "TEST_ONLY_BP4_WORLD_EVT_de1226a933f20956bbc10d5948899cf95f71271b24c91fde73b33b8ebb43b896",
+      "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+      "TEST_ONLY_BP4_WORLD_EVT_fc6c1768e381a5af4a71eb8ab428e98d101b157e961bd2da3805ca475a70ccc0",
+      "TEST_ONLY_CP_A5_EVT_0322dfcf4a1013c37297490cf0f2ab31fade8d429102fcac5afc09affa6d19e4",
+      "TEST_ONLY_CP_A5_EVT_1f8a60853959a1c10d5d43d2aed74c0d81de2bfdc878ec67ce1d65455290d6f8",
+      "TEST_ONLY_CP_A5_EVT_2f9e335c455725ece23a0bf07e866e79362b2fd8c9a71b6160435bbd4ad45229",
+      "TEST_ONLY_CP_A5_EVT_34a4ba1475f740eec2d52dd2930f33d36438db35b816f2407f7c732157adb540",
+      "TEST_ONLY_CP_A5_EVT_4c125f8d9e3c39820e3018bf7a51dd421f0022236c8a1afff0073be36bb643c2",
+      "TEST_ONLY_CP_A5_EVT_54221834602d2555a2dd86a6f83b712ed0c76df06b85d5fc7632f918a754e499",
+      "TEST_ONLY_CP_A5_EVT_df98023d433b09743ebb19f4cbcebb4da7298e3a5e73e02ed415ffb213fee927",
+      "TEST_ONLY_CP_A5_EVT_e9e29f4768c7fb3d7849872e42e668d5bcad474383807e15cd6de8416d97114f",
+      "TEST_ONLY_CP_A5_EVT_f2d8a14986e7f7f74111e273865f862dbd9a838dd0e860f11478845b69cfba83"
+    ],
+    "material": {
+      "a_cash": 57,
+      "a_completed_units": 5,
+      "a_material_remaining": 1,
+      "b_cash": 58,
+      "b_completed_units": 5,
+      "tool_available": true
+    },
+    "native": false,
+    "native_claims": {
+      "actor": false,
+      "anchor": false,
+      "c12": false,
+      "c9": false,
+      "person": false
+    },
+    "read_only": true,
+    "receipt_hash": "9bdde2b4289204deb7b7f0329a2ec8b282bc9763e70883ab49340967929442af",
+    "schema": "SOROK_CP_A5_ASSERTION_RECEIPT@1",
+    "status": "PASS",
+    "unperceived_event_count": 4
+  },
+  "cold_reentry": {
+    "c12_ok": true,
+    "c12_sha256_after_all_reads": "0a6b71b68bef2285d72d0f8c490938436a7ce7db4b70bac31765a3694492750f",
+    "process": "separate Python process after scenario/assert",
+    "read_only_hash_unchanged": true
+  },
+  "commands": [
+    "python3 run_cp_a5.py --root <ROOT> scenario",
+    "python3 run_cp_a5.py --root <ROOT> encounter \"What happened to the workshop tool?\"",
+    "python3 run_cp_a5.py --root <ROOT> encounter \"What did B do at the market?\"",
+    "python3 run_cp_a5.py --root <ROOT> assert",
+    "python3 run_cp_a5.py --root <ROOT> verify"
+  ],
+  "encounter_market": {
+    "actor": "A",
+    "answer": "UNKNOWN: A did not perceive B's market commission.",
+    "branch_id": "root",
+    "canonical_digest": "6c51b177d083d53aeae3c745a7c7ef1ff0283697ca0912c7732acbcd9d81acb3",
+    "evidence_event_ids": [],
+    "grade": "TEST_ONLY_SOURCEFREE_CP_A5_NOT_NATIVE",
+    "native": false,
+    "question": "What did B do at the market?",
+    "read_only": true,
+    "schema": "SOROK_CP_A5_ENCOUNTER_ANSWER@1",
+    "status": "UNKNOWN"
+  },
+  "encounter_tool": {
+    "actor": "A",
+    "answer": "A perceived B take the workshop tool, could not repair while it was away, and perceived its return.",
+    "branch_id": "root",
+    "canonical_digest": "6c51b177d083d53aeae3c745a7c7ef1ff0283697ca0912c7732acbcd9d81acb3",
+    "evidence_event_ids": [
+      "TEST_ONLY_CP_A5_EVT_4c125f8d9e3c39820e3018bf7a51dd421f0022236c8a1afff0073be36bb643c2",
+      "TEST_ONLY_CP_A5_EVT_0322dfcf4a1013c37297490cf0f2ab31fade8d429102fcac5afc09affa6d19e4",
+      "TEST_ONLY_CP_A5_EVT_1f8a60853959a1c10d5d43d2aed74c0d81de2bfdc878ec67ce1d65455290d6f8"
+    ],
+    "grade": "TEST_ONLY_SOURCEFREE_CP_A5_NOT_NATIVE",
+    "native": false,
+    "question": "What happened to the workshop tool?",
+    "read_only": true,
+    "schema": "SOROK_CP_A5_ENCOUNTER_ANSWER@1",
+    "status": "OK"
+  },
+  "generated_at": "2026-10-30",
+  "grade": "TEST_ONLY_SOURCEFREE_CP_A5_NOT_NATIVE",
+  "interpretation": {
+    "A3": "Three performed inspections across workshop and market contexts qualify a test-only derived disposition; no personality trait is stored.",
+    "A4": "C has a separate source snapshot and withdraws independently; B independently takes the workshop tool, completes a market commission, and returns it.",
+    "A5": "The read-only encounter reports B_TAKE_TOOL and A_REPAIR_BLOCKED, but leaves B_MARKET_COMMISSION UNKNOWN because A did not perceive it.",
+    "limits": "SOURCEFREE/TEST_ONLY; no native person, C9/C12 anchor, CAN/ADP issuance, Pyat position or original-source grant.",
+    "material": "B cash 54 -> 58 and completed 3 -> 5; A is blocked from repair while the tool is away, then repairs successfully after its return."
+  },
+  "native": false,
+  "root_kind": "temporary sourcefree run outside the return tree",
+  "scenario": {
+    "actor": "A",
+    "actors": {
+      "A": {
+        "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+        "attitudes": [
+          "reciprocity_in_work_obligations"
+        ],
+        "availability_status": "available_for_encounter",
+        "cash": 57,
+        "completed_units": 5,
+        "debt_units": 2,
+        "free_hours": 11,
+        "health": "recovered",
+        "material_position": "waged_repair",
+        "material_remaining": 1,
+        "nonmother_relations": [
+          "G15_NONKIN_e284ae4306e43444d26d0646abf5076fa63ba096b1db426b84f20628c9a1b87a"
+        ],
+        "place": "INST_WORKSHOP_A",
+        "practices": [
+          "scheduled_repair_ledger_discipline"
+        ],
+        "projects": [
+          {
+            "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+            "e2_receipt_hash": "b9d2d9629006f9accc2af7c3f5dd146b3ac92408bfa81801b28f3f6f1c91a778",
+            "effective_from": 202,
+            "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+            "native": false,
+            "performed_act": "inspect_with_tool",
+            "practice_label": "coordinated_material_inspection",
+            "source_target_ref": "0371af965281d82bf776c71d7e2dc80050c597f2d5ab6061e52b011892198be6"
+          }
+        ],
+        "role": "repair",
+        "skill": 6,
+        "tools_remaining": 1
+      },
+      "B": {
+        "actor_id": "TEST_ONLY_BP1_ACTOR_B",
+        "attitudes": [
+          "reciprocity_in_work_obligations"
+        ],
+        "availability_status": "available_for_encounter",
+        "cash": 58,
+        "completed_units": 5,
+        "debt_units": 2,
+        "free_hours": 13,
+        "health": "recovered",
+        "material_position": "waged_finishing",
+        "material_remaining": 0,
+        "nonmother_relations": [
+          "G15_NONKIN_b45807ec00772f81e963723ca68f2caba499a5f075dd5036343eb2b2b55de990"
+        ],
+        "place": "INST_WORKSHOP_A",
+        "practices": [
+          "scheduled_finishing_ledger_discipline"
+        ],
+        "projects": [
+          "communal_irrigation_pump_repair"
+        ],
+        "role": "finishing",
+        "skill": 6,
+        "tools_remaining": 1
+      }
+    },
+    "branch": "root",
+    "clock": 100,
+    "coactor_c": {
+      "actor_id": "TEST_ONLY_CP_A5_ACTOR_C",
+      "native": false,
+      "snapshot": {
+        "cash": 41,
+        "completed_units": 0,
+        "free_hours": 8,
+        "material_remaining": 1,
+        "position": "workshop",
+        "role": "carrier"
+      },
+      "snapshot_hash": "77aef2bd47ee5633fa144112874cfc6a50add25a92a32170383ec851554215d7",
+      "source_grade": "TEST_ONLY_SOURCEFREE_COACTOR",
+      "source_hash": "c3e49f2ed0b6a73345c6c234d4342b791eb32eaca3e8d0de6c33d4ab5e761af3",
+      "source_ref": "TEST_ONLY_CP_A5_COACTOR_SOURCE_C"
+    },
+    "custody_rule": {
+      "decision": "RETAIN_TOOL",
+      "grade": "TEST_ONLY_SOURCEFREE_TRANSITION_RULE",
+      "hash": "62ef71fe052f3c797ce3f3ca8dd27636c294d3aeb3ce84405b4f7c9dae188f1e",
+      "minimum_contexts": 2,
+      "minimum_inspections": 3,
+      "name": "cp_a5.test_only.cross_context_material_custody",
+      "native": false
+    },
+    "decision_body": {
+      "decision": "RETAIN_TOOL",
+      "evidence": {
+        "contexts": [
+          "market",
+          "workshop"
+        ],
+        "event_ids": [
+          "TEST_ONLY_BP4_WORLD_EVT_be43d9f0b254bc0c4ef266fc451f580316d3a7864152a05a3a6e104dfd2fe425",
+          "TEST_ONLY_BP4_WORLD_EVT_02e604f50e61be524f3569f0f4e366310329fa31ad3f3008c1ba7466e3f212ce",
+          "TEST_ONLY_BP4_WORLD_EVT_fc6c1768e381a5af4a71eb8ab428e98d101b157e961bd2da3805ca475a70ccc0"
+        ],
+        "inspection_count": 3,
+        "qualified": true
+      },
+      "request_id": "TEST_ONLY_CP_A5_EVT_54221834602d2555a2dd86a6f83b712ed0c76df06b85d5fc7632f918a754e499",
+      "rule": "cp_a5.test_only.cross_context_material_custody",
+      "rule_hash": "62ef71fe052f3c797ce3f3ca8dd27636c294d3aeb3ce84405b4f7c9dae188f1e",
+      "state": "DECIDED"
+    },
+    "decision_event": "TEST_ONLY_CP_A5_EVT_e9e29f4768c7fb3d7849872e42e668d5bcad474383807e15cd6de8416d97114f",
+    "event_count": 20,
+    "event_ids": {
+      "A4_CUSTODY_DECISION": [
+        "TEST_ONLY_CP_A5_EVT_e9e29f4768c7fb3d7849872e42e668d5bcad474383807e15cd6de8416d97114f"
+      ],
+      "ARRIVAL": [
+        "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787"
+      ],
+      "A_REPAIR_BLOCKED": [
+        "TEST_ONLY_CP_A5_EVT_0322dfcf4a1013c37297490cf0f2ab31fade8d429102fcac5afc09affa6d19e4"
+      ],
+      "B_GO_MARKET": [
+        "TEST_ONLY_CP_A5_EVT_3f07d0e036ed7617d8dfd3c6149cafe73893795727399a9de325c4f939a2ba3d"
+      ],
+      "B_MARKET_COMMISSION": [
+        "TEST_ONLY_CP_A5_EVT_6de329f8b50dba849806ec4a15e0f9c8c01e581dd2ee7d522212f28470804f69"
+      ],
+      "B_RETURN_TOOL": [
+        "TEST_ONLY_CP_A5_EVT_1f8a60853959a1c10d5d43d2aed74c0d81de2bfdc878ec67ce1d65455290d6f8"
+      ],
+      "B_RETURN_WORKSHOP": [
+        "TEST_ONLY_CP_A5_EVT_2f9e335c455725ece23a0bf07e866e79362b2fd8c9a71b6160435bbd4ad45229"
+      ],
+      "B_TAKE_TOOL": [
+        "TEST_ONLY_CP_A5_EVT_4c125f8d9e3c39820e3018bf7a51dd421f0022236c8a1afff0073be36bb643c2"
+      ],
+      "C_ARRIVE": [
+        "TEST_ONLY_CP_A5_EVT_34a4ba1475f740eec2d52dd2930f33d36438db35b816f2407f7c732157adb540"
+      ],
+      "C_LEAVE": [
+        "TEST_ONLY_CP_A5_EVT_f2d8a14986e7f7f74111e273865f862dbd9a838dd0e860f11478845b69cfba83"
+      ],
+      "C_TOOL_REQUEST": [
+        "TEST_ONLY_CP_A5_EVT_54221834602d2555a2dd86a6f83b712ed0c76df06b85d5fc7632f918a754e499"
+      ],
+      "C_WITHDRAW": [
+        "TEST_ONLY_CP_A5_EVT_df98023d433b09743ebb19f4cbcebb4da7298e3a5e73e02ed415ffb213fee927"
+      ],
+      "INSPECT": [
+        "TEST_ONLY_BP4_WORLD_EVT_be43d9f0b254bc0c4ef266fc451f580316d3a7864152a05a3a6e104dfd2fe425",
+        "TEST_ONLY_BP4_WORLD_EVT_02e604f50e61be524f3569f0f4e366310329fa31ad3f3008c1ba7466e3f212ce",
+        "TEST_ONLY_BP4_WORLD_EVT_fc6c1768e381a5af4a71eb8ab428e98d101b157e961bd2da3805ca475a70ccc0"
+      ],
+      "MOVE": [
+        "TEST_ONLY_BP4_WORLD_EVT_a1944f2e39b13bab15901fd458c5452adbda63eed108258ed91daabbca7f797d",
+        "TEST_ONLY_BP4_WORLD_EVT_68b0bdd9387dd2b8e1317d54fa5095beabaa3075661b743ff9e139ea95b0ad02",
+        "TEST_ONLY_BP4_WORLD_EVT_de1226a933f20956bbc10d5948899cf95f71271b24c91fde73b33b8ebb43b896"
+      ],
+      "OFFSCREEN_REPAIR": [
+        "TEST_ONLY_BP4_WORLD_EVT_3da61c63ecdb310fb4f1962e636594992b8b34d1b2099624594cfdb79bf7c93c"
+      ],
+      "REPAIR": [
+        "TEST_ONLY_BP4_WORLD_EVT_3f3f62a0786bf747878bd4ea8a300f8340aa2fa723b347e14bb4d74db55661a7"
+      ]
+    },
+    "grade": "TEST_ONLY_SOURCEFREE_CP_A5_LIFE_NOT_NATIVE",
+    "inspection_evidence": {
+      "contexts": [
+        "market",
+        "workshop"
+      ],
+      "event_ids": [
+        "TEST_ONLY_BP4_WORLD_EVT_be43d9f0b254bc0c4ef266fc451f580316d3a7864152a05a3a6e104dfd2fe425",
+        "TEST_ONLY_BP4_WORLD_EVT_02e604f50e61be524f3569f0f4e366310329fa31ad3f3008c1ba7466e3f212ce",
+        "TEST_ONLY_BP4_WORLD_EVT_fc6c1768e381a5af4a71eb8ab428e98d101b157e961bd2da3805ca475a70ccc0"
+      ],
+      "inspection_count": 3,
+      "qualified": true
+    },
+    "inspections": [
+      {
+        "changed": false,
+        "clock": 40,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_be43d9f0b254bc0c4ef266fc451f580316d3a7864152a05a3a6e104dfd2fe425",
+        "status": "NO_CHANGE"
+      },
+      {
+        "changed": false,
+        "clock": 45,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_02e604f50e61be524f3569f0f4e366310329fa31ad3f3008c1ba7466e3f212ce",
+        "status": "NO_CHANGE"
+      },
+      {
+        "changed": false,
+        "clock": 50,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_fc6c1768e381a5af4a71eb8ab428e98d101b157e961bd2da3805ca475a70ccc0",
+        "status": "NO_CHANGE"
+      }
+    ],
+    "known_a_event_ids": [
+      "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+      "TEST_ONLY_BP4_WORLD_EVT_be43d9f0b254bc0c4ef266fc451f580316d3a7864152a05a3a6e104dfd2fe425",
+      "TEST_ONLY_BP4_WORLD_EVT_68b0bdd9387dd2b8e1317d54fa5095beabaa3075661b743ff9e139ea95b0ad02",
+      "TEST_ONLY_BP4_WORLD_EVT_02e604f50e61be524f3569f0f4e366310329fa31ad3f3008c1ba7466e3f212ce",
+      "TEST_ONLY_BP4_WORLD_EVT_de1226a933f20956bbc10d5948899cf95f71271b24c91fde73b33b8ebb43b896",
+      "TEST_ONLY_BP4_WORLD_EVT_fc6c1768e381a5af4a71eb8ab428e98d101b157e961bd2da3805ca475a70ccc0",
+      "TEST_ONLY_CP_A5_EVT_34a4ba1475f740eec2d52dd2930f33d36438db35b816f2407f7c732157adb540",
+      "TEST_ONLY_CP_A5_EVT_54221834602d2555a2dd86a6f83b712ed0c76df06b85d5fc7632f918a754e499",
+      "TEST_ONLY_CP_A5_EVT_e9e29f4768c7fb3d7849872e42e668d5bcad474383807e15cd6de8416d97114f",
+      "TEST_ONLY_CP_A5_EVT_df98023d433b09743ebb19f4cbcebb4da7298e3a5e73e02ed415ffb213fee927",
+      "TEST_ONLY_CP_A5_EVT_f2d8a14986e7f7f74111e273865f862dbd9a838dd0e860f11478845b69cfba83",
+      "TEST_ONLY_CP_A5_EVT_2f9e335c455725ece23a0bf07e866e79362b2fd8c9a71b6160435bbd4ad45229",
+      "TEST_ONLY_CP_A5_EVT_4c125f8d9e3c39820e3018bf7a51dd421f0022236c8a1afff0073be36bb643c2",
+      "TEST_ONLY_CP_A5_EVT_0322dfcf4a1013c37297490cf0f2ab31fade8d429102fcac5afc09affa6d19e4",
+      "TEST_ONLY_CP_A5_EVT_1f8a60853959a1c10d5d43d2aed74c0d81de2bfdc878ec67ce1d65455290d6f8",
+      "TEST_ONLY_BP4_WORLD_EVT_3f3f62a0786bf747878bd4ea8a300f8340aa2fa723b347e14bb4d74db55661a7"
+    ],
+    "native": false,
+    "repair_after_return": {
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_3f3f62a0786bf747878bd4ea8a300f8340aa2fa723b347e14bb4d74db55661a7",
+      "result": {
+        "actor_state": {
+          "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+          "attitudes": [
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "available_for_encounter",
+          "cash": 57,
+          "completed_units": 5,
+          "debt_units": 2,
+          "free_hours": 11,
+          "health": "recovered",
+          "material_position": "waged_repair",
+          "material_remaining": 1,
+          "nonmother_relations": [
+            "G15_NONKIN_e284ae4306e43444d26d0646abf5076fa63ba096b1db426b84f20628c9a1b87a"
+          ],
+          "place": "INST_WORKSHOP_A",
+          "practices": [
+            "scheduled_repair_ledger_discipline"
+          ],
+          "projects": [
+            {
+              "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+              "e2_receipt_hash": "b9d2d9629006f9accc2af7c3f5dd146b3ac92408bfa81801b28f3f6f1c91a778",
+              "effective_from": 202,
+              "grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+              "native": false,
+              "performed_act": "inspect_with_tool",
+              "practice_label": "coordinated_material_inspection",
+              "source_target_ref": "0371af965281d82bf776c71d7e2dc80050c597f2d5ab6061e52b011892198be6"
+            }
+          ],
+          "role": "repair",
+          "skill": 6,
+          "tools_remaining": 1
+        },
+        "admitted": true,
+        "attempted": true,
+        "clock": 100,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_3f3f62a0786bf747878bd4ea8a300f8340aa2fa723b347e14bb4d74db55661a7",
+        "status": "OK"
+      }
+    },
+    "schema": "SOROK_CP_A5_SCENARIO_TRACE@1",
+    "tool_available": true
+  },
+  "schema": "SOROK_CP_A5_ACTUAL_A3_A5_LIFE_AND_ENCOUNTER_TRACE@1",
+  "verify": {
+    "c12": {
+      "authenticity": {
+        "code": "OWNER_ANCHOR_REQUIRED",
+        "state": "UNVERIFIED"
+      },
+      "branch_id": "root",
+      "completeness": {
+        "code": "OWNER_ANCHOR_REQUIRED",
+        "state": "UNVERIFIED"
+      },
+      "content_ok": true,
+      "counts": {
+        "checkpoint": 23,
+        "episode": 13,
+        "perception": 25,
+        "world_event": 20
+      },
+      "errors": [],
+      "fork": {
+        "branch_id": "root",
+        "errors": [],
+        "ok": true,
+        "status": "VERIFIED"
+      },
+      "fork_ok": true,
+      "ok": true,
+      "reader_version": "C12_GUARD_READER@1",
+      "schema_ok": true
+    },
+    "view": {
+      "accessed_event_count": 16,
+      "actor": "A",
+      "as_of_clock": 100,
+      "branch_id": "root",
+      "canonical_digest": "6c51b177d083d53aeae3c745a7c7ef1ff0283697ca0912c7732acbcd9d81acb3",
+      "disposition": {
+        "contexts": [
+          "market",
+          "workshop"
+        ],
+        "event_ids": [
+          "TEST_ONLY_BP4_WORLD_EVT_be43d9f0b254bc0c4ef266fc451f580316d3a7864152a05a3a6e104dfd2fe425",
+          "TEST_ONLY_BP4_WORLD_EVT_02e604f50e61be524f3569f0f4e366310329fa31ad3f3008c1ba7466e3f212ce",
+          "TEST_ONLY_BP4_WORLD_EVT_fc6c1768e381a5af4a71eb8ab428e98d101b157e961bd2da3805ca475a70ccc0"
+        ],
+        "grade": "TEST_ONLY_SOURCEFREE_DERIVED_DISPOSITION",
+        "inspection_count": 3,
+        "name": "cross_context_material_verification",
+        "native": false,
+        "note": "This is repeated performed inspection evidence, not a personality trait.",
+        "state": "ESTABLISHED"
+      },
+      "observed_event_count": 20,
+      "position": "workshop",
+      "relations": [
+        {
+          "clock": 60,
+          "coactor": "C",
+          "event_id": "TEST_ONLY_CP_A5_EVT_34a4ba1475f740eec2d52dd2930f33d36438db35b816f2407f7c732157adb540",
+          "kind": "C_ARRIVE",
+          "relation": "UNSPECIFIED",
+          "summary": "A carrier arrives at the workshop with a separate source."
+        },
+        {
+          "clock": 60,
+          "coactor": "C",
+          "event_id": "TEST_ONLY_CP_A5_EVT_54221834602d2555a2dd86a6f83b712ed0c76df06b85d5fc7632f918a754e499",
+          "kind": "C_TOOL_REQUEST",
+          "relation": "REQUESTED",
+          "summary": "The carrier asks A to borrow the workshop tool."
+        },
+        {
+          "clock": 65,
+          "coactor": "C",
+          "event_id": "TEST_ONLY_CP_A5_EVT_df98023d433b09743ebb19f4cbcebb4da7298e3a5e73e02ed415ffb213fee927",
+          "kind": "C_WITHDRAW",
+          "relation": "REQUEST_UNMET",
+          "summary": "The carrier withdraws the request and leaves the workshop."
+        },
+        {
+          "clock": 66,
+          "coactor": "C",
+          "event_id": "TEST_ONLY_CP_A5_EVT_f2d8a14986e7f7f74111e273865f862dbd9a838dd0e860f11478845b69cfba83",
+          "kind": "C_LEAVE",
+          "relation": "UNSPECIFIED",
+          "summary": "The carrier leaves for the market."
+        }
+      ],
+      "remembered_event_count": 16,
+      "schema": "SOROK_CP_A5_ENCOUNTER_VIEW@1",
+      "status": "OK",
+      "tool_available": true,
+      "unperceived_event_count": 4
+    }
+  }
+}

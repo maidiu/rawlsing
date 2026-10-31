@@ -1,0 +1,47 @@
+{
+  "all_pass": true,
+  "schema": "SOROK_BP4_SEVERANCE_TRIALS@1",
+  "trials": [
+    {
+      "baseline": "OK",
+      "edge": "C9_TARGET_E2_READ",
+      "fault": "HELD",
+      "fault_code": "C9_TARGET_MISSING",
+      "pass": true,
+      "restored": "OK",
+      "same_observation": "product.observe c9.target_id/state_hash"
+    },
+    {
+      "baseline": "OK",
+      "edge": "BP1_ACTOR_HISTORICAL_SOURCE",
+      "fault": "BP1_ACTOR_SOURCE_NOT_AUTHENTICATED",
+      "pass": true,
+      "restored": "OK",
+      "same_observation": "C10 receive actor snapshot authentication"
+    },
+    {
+      "baseline": "OK",
+      "edge": "BP3_VERIFIED_C8_RECEIPT",
+      "fault": "BP3_PROOF_INVALID",
+      "pass": true,
+      "restored": "OK",
+      "same_observation": "C10 receive BP3 proof/anchor verification"
+    },
+    {
+      "baseline": "READY",
+      "edge": "ACTOR_KNOWLEDGE_PERCEPTION_BOUNDARY",
+      "fault": "NONRENDERABLE",
+      "pass": true,
+      "restored": "READY",
+      "same_observation": "render_requested_event"
+    },
+    {
+      "baseline": "OK:40",
+      "edge": "INDEPENDENT_OFFSCREEN_PERFORMER",
+      "fault": "WORLD_OWNER_RECEIPT_INVALID",
+      "pass": true,
+      "restored": "OK:40",
+      "same_observation": "C10 _verify_world owner receipt"
+    }
+  ]
+}
