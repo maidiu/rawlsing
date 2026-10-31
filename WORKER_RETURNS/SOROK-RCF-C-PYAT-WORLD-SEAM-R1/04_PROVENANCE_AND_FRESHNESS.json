@@ -1,0 +1,146 @@
+{
+  "schema": "SOROK_RCF_C_PROVENANCE_FRESHNESS@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "visibility": "PRIVATE",
+  "branch": "research/sorok-rcf-c-pyat-world-variants-sorok-consumer-20261030-r1",
+  "write_prefix": "WORKER_RETURNS/SOROK-RCF-C-PYAT-WORLD-SEAM-R1/",
+  "premain_ref": "integration/pre-main-reconciliation-r1",
+  "live_premain_initial_and_prewrite": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "historical_premain": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "immutable_input_commits": {
+    "RC1": "337896aa995d579e3525588b405d07216709ac15",
+    "F3": "6477a89bb9160eba1dd10607c47534fa4dce6cc2",
+    "F3I": "97dbe712e4cce8fedd1632d9ac64b4e57a0ac25e",
+    "H358": "ea40306bacb899147799330898e9ab91a950205f",
+    "H358I3": "724f257e64f22d15a2ee41d3c29972b78d983342",
+    "S02_fixture_commit": "208bca30471710d48124a6b69ba467f240d8834b",
+    "HQ292_I01": "a1dc59411faaee01b3acb1c4f08b2e6f09d56028"
+  },
+  "documentary_h358i3": {
+    "queue_path": "WORKER_RETURNS/H358I3-R3/02_DISTINCT_CANDIDATE_OWNER_DECISION_QUEUE.md",
+    "queue_blob": "3f19e35c26337e97ebd555232f0c679da09ee806",
+    "cuts_path": "WORKER_RETURNS/H358I3-R3/01_WORLD_SOURCE_AND_CONSUMER_CUTS.json",
+    "cuts_blob": "120d6d5a5f3c8f983ed3cfcd889221022ef96ad0",
+    "verdict_blob": "8536ebd353fba291ca8330b18e8b6e1c3c1aae3e",
+    "grade": "INHERITED_SOURCE_CUT_AND_INDEPENDENT_ROW_RECOUNT_NOT_RCF_C_EXECUTION"
+  },
+  "pr526": {
+    "number": 526,
+    "merged": true,
+    "merge_commit": "750548ddbb9b4392a16ce93097b856f349e16182",
+    "original_reported_tests": {
+      "universal": 105,
+      "physical_decoder_pass": 37,
+      "physical_decoder_skips": 1
+    },
+    "test_grade": "HISTORICAL_REPORTED_CURRENT_CI_NOT_RCF_C_EXECUTED",
+    "native_grant": false
+  },
+  "source_verified_in_current_premain": {
+    "rawlsing_next/pre553_universal_workload.py": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e",
+    "rawlsing_next/universal_grammar/native_map.py": "3db04a006802276f131442f299009b1402cb42c9",
+    "rawlsing_next/pre553_native_workload_binding.py": "dac73e484f8619088f5c6701b2b6991c07540f3b",
+    "rawlsing_next/pre553_source_native_preimage_adapter.py": "a6299c1a6e8b26bd055ced1f49e5b757f20ccd8c",
+    "rawlsing_next/objective_consumer_bounded_evidence.py": "f30fca20e7b56e00348e82765d95f974b4b6a195",
+    "rawlsing_next/wsc_gt0_prev3_bridge.py": "8f237bd55151c3adfc8e5dfd8f110fa34a8d18be",
+    "rawlsing_next/objective_non_event_publication_serving_adapter.py": "9baa6e73f683cea723de5ac56889ef6e5a7b5dee",
+    "rawlsing_next/objective_non_event_publication_serving_adapter_legacy.py": "a1e2ae8775707eb30097279cde91f30271b6d243",
+    "rawlsing_next/source_backed_positioned_subject_possibility.py": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+    "rawlsing_next/pre553_source_backed_c11_facade.py": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "rawlsing_next/pre553_n9_n10w_progressive_candidate.py": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+    "rawlsing_next/gt12_d_to_m4_typed_bridge.py": "ca3d6b8d832d7ca8d959bd19e19a23b08cabde76"
+  },
+  "direct_git_blob_read_groups": {
+    "world_bindings": [
+      "d5429c470ae6c2d1912207638b3a6a5e8e341360",
+      "f695d8974c1b5cf617213a9976620defc91fb270",
+      "44ac11c9b7f5809e06b22fb9afee11ca8bc0dee5",
+      "c6d33e4780b61668bf7fbbc2b82aec31a9144a0d",
+      "fe167820246ace0881d33870442064f85a04da10",
+      "7519667ee6f085163d72789ad406ba5f9a472e3a",
+      "dfb1e9fb72f1ee4b50fd7138fe978ce50db49f37"
+    ],
+    "f6": [
+      "182cc7970d7624f6614015f5a51d0602e1630d52",
+      "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+      "b1b05e7d60f92357fb31cbea99e5b432415cc7b0",
+      "2df811d76db258d98d89ffb43c830cb221ff9a7d"
+    ],
+    "s02": [
+      "739c70d6802baf5f6d6498b3daa39d0688a41840",
+      "4b80d4d9bbe39775ffc804ebe4c9227902338b2f",
+      "b1ec1814c4616f61a1e3fc8bbc0b102d690a577f",
+      "60bdaee9fc4dae2d0e98b33d26309ef229554fe3",
+      "408c4700aee7a63db43f1e01c22ab6e1371e3568"
+    ],
+    "i01": [
+      "e9caea543bcc4e1418905f1442d2c7c97eef04b2",
+      "1e26a60d985ef489e62d01cf4020f3202f2f774f",
+      "7899846394f079c14eae4864c8200697bd9dee4a"
+    ],
+    "b5": [
+      "e0f5a7d7ab33be70b48176961689243a85138b52",
+      "540d4cacce80fbd08ecee8d5c6ec1cfcd23aaa77"
+    ],
+    "s02_fixture": [
+      "9be28b2e2df93d1b9c207a207866be1595f22aeb"
+    ],
+    "w3_old_current": [
+      "9738399d5e454808235a91b10a2d473cdd851d97",
+      "f30fca20e7b56e00348e82765d95f974b4b6a195"
+    ]
+  },
+  "unverified_full_source_comparisons": {
+    "gt12_d_old": "f6d02bf...",
+    "gt12_d_reported_premain": "c5fb675...",
+    "wsc002d_old": "0f3dfcc...",
+    "c02e_g_h": "UNVERIFIED_PER_VARIANT",
+    "package_binders": "R135/R140/R141/R145-R154 UNVERIFIED_PER_VARIANT",
+    "n11_n12_positive_artifacts": "NOT_VERIFIED"
+  },
+  "source_grades": {
+    "direct_read": "GitHub blob or exact path fetched and function body structurally inspected",
+    "documentary": "H358I3 source inventory/test reports credited explicitly as historical",
+    "not_run": "No Python code or source-native runtime invoked; not a claim about historical reviewers"
+  },
+  "local_host_verification": {
+    "browser_static_source": true,
+    "local_mac_worktrees": false,
+    "opencode_deepseek_effort": "NOT_SELECTED_NOT_CHECKED",
+    "python_checkout": false,
+    "original_respondent_corpus": false,
+    "sourcefree_pytest": 0,
+    "source_native_execution": 0,
+    "actor_mutation": 0,
+    "independent_reviewer": false
+  },
+  "test_receipts_inherited_only": {
+    "s02": "60 PASS / 1 FAIL staging fixture missing",
+    "b5": "9 FAIL / 6 PASS / 1 SKIP ticket absent",
+    "h358_i3_pytest": 0,
+    "independent_risks": [
+      "G17I 3 retained RED",
+      "OC5E 49 hostile RED",
+      "M04 10 fresh + 9 historical"
+    ]
+  },
+  "authorization": {
+    "pyat_source_issuer": false,
+    "ff_f6_issuer": false,
+    "pyat_n11": false,
+    "pyat_n12": false,
+    "sorok_c0_actor": false,
+    "pre_main_mutation": false,
+    "autonomous_worker_start": false
+  },
+  "files": {
+    "00_RETURN.md": "source-grade four-column decision, consumer and product claims",
+    "01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json": "40 entries with 7 binding, 4 F6, 5 seam, 18 comparative and 6 explicit residuals",
+    "02_EXECUTION_AND_NEGATIVE_PROOF.md": "reported test versus NOT_RUN and exact S2 negative proof",
+    "03_COMPATIBILITY_ARCHITECTURE_AND_PRIORITY.md": "three alternatives and conditional first C0 interface",
+    "04_PROVENANCE_AND_FRESHNESS.json": "immutable source/archive/read cuts and execution attestations"
+  },
+  "branch_creation_from_live_ref": true,
+  "pre_final_commit_formation": "The file cannot quote its own final commit SHA without self-reference. Query the remote branch ref after all five writes for immutable final SHA.",
+  "audit_caveat": "Source exact selected families; not exhaustive all-845 Pyat branch equivalence; source metadata and historical summaries do not substitute per-case run/issuer"
+}
