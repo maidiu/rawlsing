@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate the sourcefree Programma Sorok O-INDEX candidate.
 
-The validator checks the Sorok denominator, exact S0-S16 holds, the separate
+The validator checks the Sorok denominator, exact historical S0-S16 workstream source, the separate
 Pyat N0-N12/F1-F8 namespace, four returned assets, L0-L5 link closure, backward
 paths, three traversals, owner slots and the no-native/no-priority ceiling. It
 reads JSON and Markdown only; it does not import, execute or adopt candidate
@@ -79,6 +79,7 @@ ALLOWED_STATUS = {
 ALLOWED_CLAIM_EPOCHS = {
     "R7_HISTORICAL_BASELINE",
     "R7_EXACT_HOLD",
+    "POST_SOURCE_CORRECTION",
     "POST_R6",
     "POST_R7_INTAKE",
     "PRE_MAIN_ADVISORY_ATLAS",
@@ -162,8 +163,8 @@ def validate(root: Path) -> dict[str, Any]:
     coverage = registry["coverage"]
     for key, expected in (("C_A", "19/19"), ("M", "40/40"), ("Neo_N", "12/12"), ("O", "16/16"), ("E", "15/15")):
         _require(coverage.get(key) == expected, f"coverage {key} is {coverage.get(key)}")
-    _require("0/17" in coverage.get("S0_S16", ""), "S0-S16 coverage must state the exact 0/17 hold")
-    checks.append("declared coverage and exact S0-S16 hold")
+    _require("17/17" in coverage.get("S0_S16", ""), "S0-S16 must cite original 17/17 source-defined workstreams")
+    checks.append("declared coverage and historically sourced 17/17 S workstreams")
 
     metadata = registry.get("source_cut_metadata", {})
     _require(len(metadata) >= 10, "source cut metadata incomplete")
@@ -181,17 +182,18 @@ def validate(root: Path) -> dict[str, Any]:
         _require(row["status_class"] != "NATIVE_ISSUED", f"{row['id']}: native-issued claim without native acceptance")
         _require(row["science_grade"] not in ("ISSUED", "NATIVE_ISSUED"), f"{row['id']}: contradictory science grade")
         source = row.get("evidence_source")
+        _require(isinstance(source, dict), f"{row['id']}: missing evidence source")
+        commit = source.get("commit", "")
+        _require(bool(HEX40.match(commit)), f"{row['id']}: source commit")
+        _require(bool(source.get("path")), f"{row['id']}: source path")
+        _require(commit in metadata and metadata[commit].get("timestamp"), f"{row['id']}: source time/currentness")
         if row["kind"] == "DECLARED_S0_S16_WORKSTREAM":
-            _require(source is None, f"{row['id']}: S hold must not fabricate source")
-            _require(row["status"].startswith("RECOVERY_EXACT_HOLD"), f"{row['id']}: S hold status")
-            _require(row["first_consumer"] == "UNKNOWN", f"{row['id']}: S hold consumer")
-            _require(row["status_class"] == "UNKNOWN", f"{row['id']}: S status class")
-        else:
-            _require(isinstance(source, dict), f"{row['id']}: missing evidence source")
-            commit = source.get("commit", "")
-            _require(bool(HEX40.match(commit)), f"{row['id']}: source commit")
-            _require(bool(source.get("path")), f"{row['id']}: source path")
-            _require(commit in metadata and metadata[commit].get("timestamp"), f"{row['id']}: source time/currentness")
+            _require(commit == "865b5b01e1a27e99020cf2bb389af8cd4c874b57", f"{row['id']}: source commit")
+            _require(source["path"] == "SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md", f"{row['id']}: original Program Map")
+            _require(source.get("blob") == "2a0a3a42d66f566f92d5c333fbbea4a5adb383b2", f"{row['id']}: exact program-map blob")
+            _require(row["status_class"] == "SOURCE_PRESENT" and row["claim_epoch"] == "POST_SOURCE_CORRECTION", f"{row['id']}: exact source identity/status")
+            _require(bool(row.get("question")) and bool(row.get("output")), f"{row['id']}: original question/output")
+            _require(row["native_product_accepted"] is False and row["source_science_issued"] is False, f"{row['id']}: prohibited source-to-native promotion")
     checks.append("no native/science promotion; every row has typed owner, grades, epoch and source time")
 
     four = {row["id"]: row for row in rows if row["kind"] == "NEW_FOUR_RETURN_CODE_ASSET"}
@@ -256,9 +258,9 @@ def validate(root: Path) -> dict[str, Any]:
         _require(all(item in node_ids for item in backward[key]), f"{key}: unknown backward node")
     for index in range(17):
         key = f"S{index}"
-        _require(key in backward and backward[key][-1] == "L5_SOURCE_HOLD", f"{key}: backward hold path")
+        _require(key in backward and backward[key][-1] == "L5_S_WORKSTREAM_PRIMARY_SOURCE", f"{key}: backward hold path")
         _require(all(item in node_ids for item in backward[key]), f"{key}: unknown hold node")
-    checks.append("backward paths resolve for A0-A5 and S0-S16")
+    checks.append("backward paths resolve for A0-A5 and source-defined S0-S16")
 
     traversals = orchestration["traversals"]
     _require(len(traversals) == 3, "three traversals")
@@ -284,7 +286,7 @@ def validate(root: Path) -> dict[str, Any]:
     for slot_id in ("S0_S16_SOURCE", "F1CR_PATCH", "V3_ZIP_CONTAINER", "PYAT_NAMESPACE", "PYAT_N11", "PYAT_N12", "JOINT_TEST", "PRIORITY"):
         _require(any(slot["slot"] == slot_id for slot in slots["slots"]), f"missing owner slot {slot_id}")
     _require(all(slot.get("priority_decision") == "NOT_MADE_BY_INDEX" for slot in slots["slots"]), "slot priority decision")
-    checks.append("40 owner slots; zero priority decisions; Pyat/F1CR/V3/S0-S16 slots")
+    checks.append("40 owner slots retained; S0-S16 original source recovered, no priority decisions")
 
     _require(orchestration["status"] == "WORKING_CANDIDATE_NOT_HQ_ADJUDICATED", "candidate status")
     _require(registry["o_index_status"] == "WORKING_CANDIDATE_NOT_HQ_ADJUDICATED", "registry candidate status")
