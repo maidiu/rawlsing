@@ -1,0 +1,347 @@
+{
+  "schema": "PYAT_PE_SC0_HOSTILE_REPRO@1",
+  "session": {
+    "harness": "OpenCode CLI",
+    "agent": "build",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "opencode_pid": 21995,
+    "term_session_id": "D259FC1D-3D1A-43E0-83F2-9AAE934EAF86",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pe-sc0-v2k-hostile-20261031-r1",
+    "fresh_worktree": true
+  },
+  "source_cuts": {
+    "startup": "87755f02ec5c37499b09e80db6fbdcc9316a6b15",
+    "current_premain_rechecked": "d0342290b257f85c3e8931f9962e0aecabc84ed3",
+    "pe_source_commit": "e61a26ce24f023a53d6b116bb9eca2fb7b6f8e65",
+    "overlay_commit": "9c030bf4c239d2e14f2b5a8a02ff7b44906cd0c7",
+    "pe_blob": "58484f4c3d9aae148d4116dcf00420c432aefcbd",
+    "strict_blob": "d2fe653dadf94893b0fdfd268f36683f8dfed9af",
+    "author_blob": "92f59875583bf513c6fdbcd3ad7fe2b49e45e212",
+    "fixture_original_blob": "c9674d5fe9d01621eda0fdb4a999391eba422d92",
+    "fixture_patched_blob": "83984e7b3719f350cb735a9d80b0a83560576a47",
+    "overlay_blob": "1e4c0e63b34192f77bf6554d43afb3c56828b29c",
+    "sitecustomize_blob": "3bac38dde1cc49d3a2f85a21ba7984410688d3ff",
+    "fixture_patch_blob": "50eb18e5d2272f13b9cb41cad14464a8b5378e3e"
+  },
+  "commands": {
+    "original": "HQ297_EXACT_PE_ROOT=$PWD PYTHONPATH=. python3 -m pytest -q -p no:cacheprovider rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py",
+    "overlay": "HQ297_EXACT_PE_ROOT=$PWD PYTHONPATH=. python3 -m pytest -q -p no:cacheprovider rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py /tmp/opencode/pe-hostile-review/ret/WORKER_RETURNS/PYAT-R3-PE-SC0-EIGHT-STRICT-REPAIR/tests/test_pe_sc0_overlay_court.py",
+    "hostile": "HQ297_EXACT_PE_ROOT=$PWD PYTHONPATH=. python3 -m pytest -q -p no:cacheprovider /tmp/opencode/pe-hostile-review/hostile_pe_tests.py"
+  },
+  "results": {
+    "original": {
+      "author": {
+        "tests": 21,
+        "passed": 21,
+        "failed": 0,
+        "exit": 0
+      },
+      "strict": {
+        "tests": 13,
+        "passed": 4,
+        "failed": 9,
+        "exit": 1
+      }
+    },
+    "overlay": {
+      "author": {
+        "tests": 21,
+        "passed": 21,
+        "failed": 0,
+        "exit": 0
+      },
+      "strict": {
+        "tests": 13,
+        "passed": 13,
+        "failed": 0,
+        "exit": 0
+      },
+      "faults": {
+        "tests": 9,
+        "passed": 9,
+        "failed": 0,
+        "exit": 0
+      }
+    },
+    "hostile": {
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "exit": 0
+    }
+  },
+  "strict_results": [
+    {
+      "test": "test_independent_pe_multi_condition_n100_n110_and_null_control",
+      "original": "PASS",
+      "overlay": "PASS"
+    },
+    {
+      "test": "test_independent_nonparent_reverse_has_its_own_denominator",
+      "original": "PASS",
+      "overlay": "PASS"
+    },
+    {
+      "test": "test_world_ref_change_is_only_carry_not_joint_computation",
+      "original": "PASS",
+      "overlay": "PASS"
+    },
+    {
+      "test": "test_invalidated_snapshot_refuses_without_reusing_cached_geometry",
+      "original": "PASS",
+      "overlay": "PASS"
+    },
+    {
+      "test": "test_strict_reverse_scoped_issuer_forgery_must_refuse",
+      "original": "FAIL",
+      "overlay": "PASS"
+    },
+    {
+      "test": "test_strict_selected_world_nary_F2_AH_strata_roundtrip",
+      "original": "FAIL",
+      "overlay": "PASS"
+    },
+    {
+      "test": "test_strict_generated_runtime_fact_echo_not_source_promotion",
+      "original": "FAIL",
+      "overlay": "PASS"
+    },
+    {
+      "test": "test_strict_two_distinct_world_refresh_receipts",
+      "original": "FAIL",
+      "overlay": "PASS"
+    },
+    {
+      "test": "test_strict_four_clocks_historical_knowledge",
+      "original": "FAIL",
+      "overlay": "PASS"
+    },
+    {
+      "test": "test_strict_negative_status_algebra_and_source_risk",
+      "original": "FAIL",
+      "overlay": "PASS"
+    },
+    {
+      "test": "test_strict_values_read_not_only_hash_or_inferred_label",
+      "original": "FAIL",
+      "overlay": "PASS"
+    },
+    {
+      "test": "test_strict_nonparent_apprenticeship_world_effect",
+      "original": "FAIL",
+      "overlay": "PASS"
+    },
+    {
+      "test": "test_strict_parent_scenario_remains_input_only",
+      "original": "FAIL",
+      "overlay": "PASS"
+    }
+  ],
+  "author_fault_tests": [
+    {
+      "test": "test_pinned_pe_module_stays_byte_identical",
+      "status": "PASS"
+    },
+    {
+      "test": "test_positive_overlay_uses_pe_reverse_geometry_not_world_baseline",
+      "status": "PASS"
+    },
+    {
+      "test": "test_positive_overlay_keeps_conception_pe_denominator",
+      "status": "PASS"
+    },
+    {
+      "test": "test_wrong_issuer_refuses_before_enrichment",
+      "status": "PASS"
+    },
+    {
+      "test": "test_invalidated_snapshot_gets_no_stale_clock_or_value_enrichment",
+      "status": "PASS"
+    },
+    {
+      "test": "test_missing_producer_fails_closed",
+      "status": "PASS"
+    },
+    {
+      "test": "test_consumer_severance_fails_closed",
+      "status": "PASS"
+    },
+    {
+      "test": "test_generated_binding_echo_source_promotion_fails_closed",
+      "status": "PASS"
+    },
+    {
+      "test": "test_missing_publication_clock_fails_closed",
+      "status": "PASS"
+    }
+  ],
+  "hostile_tests": [
+    {
+      "test": "test_sitecustomize_auto_injects_without_explicit_import",
+      "court_interpretation": "RISK_REPRODUCED",
+      "effect": "sitecustomize auto-installs overlay in ordinary Python process when candidate dir is on PYTHONPATH"
+    },
+    {
+      "test": "test_altered_world_is_accepted_without_selection_digest_binding",
+      "court_interpretation": "RED",
+      "effect": "altered absolute_horizon and public_sanctions accepted while selection_digest unchanged"
+    },
+    {
+      "test": "test_inconsistent_denominator_is_accepted",
+      "court_interpretation": "RED",
+      "effect": "cells 1+1 accepted with denominator 100; no cell-sum/denominator validation"
+    },
+    {
+      "test": "test_replay_returns_identical_positive_receipt",
+      "court_interpretation": "HOLD",
+      "effect": "same request returns identical enriched receipt; no replay/nonce guard"
+    },
+    {
+      "test": "test_result_hash_does_not_cover_enriched_receipt",
+      "court_interpretation": "RED",
+      "effect": "result_hash hashes original receipt identity, not enriched receipt identity"
+    },
+    {
+      "test": "test_removed_negative_status_fails_closed",
+      "court_interpretation": "PASS_CONTROL",
+      "effect": "removing HELD_AUTHORITY triggers MISSING_NEGATIVE_STATUS_ALGEBRA"
+    },
+    {
+      "test": "test_refresh_receipts_do_not_require_executed_refresh",
+      "court_interpretation": "RED",
+      "effect": "H2 receipts synthesized from selection digest/world without calling provider refresh"
+    },
+    {
+      "test": "test_test_fixture_authority_is_unrestricted_for_target_and_time",
+      "court_interpretation": "AUTHORITY_HOLD",
+      "effect": "fixture snapshot has EXPLICIT_UNRESTRICTED target/risk scopes and ALL_TIME; _competent accepts attacker target/risk"
+    },
+    {
+      "test": "test_source_promotion_flag_is_overwritten_not_refused",
+      "court_interpretation": "REVISE",
+      "effect": "provider may_use_as_source_observation=True is overwritten false instead of refused"
+    },
+    {
+      "test": "test_forged_reversal_authority_refused",
+      "court_interpretation": "PASS_CONTROL",
+      "effect": "forged unissued reversal ref yields TYPED_REFUSAL with no geometry/overlay"
+    },
+    {
+      "test": "test_asof_at_request_time_refused_without_overlay",
+      "court_interpretation": "PASS_CONTROL",
+      "effect": "as-of at request time yields FUTURE_TIME_AVAILABILITY_REFUSED with no overlay"
+    },
+    {
+      "test": "test_negative_status_scope_can_be_nulled_without_refusal",
+      "court_interpretation": "REVISE",
+      "effect": "HELD_AUTHORITY row with scope=None is accepted and copied"
+    }
+  ],
+  "findings": [
+    {
+      "id": "PE-H01",
+      "severity": "ENGINEERING_RED_IF_MERGED",
+      "finding": "sitecustomize auto-injects overlay without an environment/test-mode guard",
+      "evidence": "ordinary subprocess with candidate dir on PYTHONPATH printed True and sc0_pe_overlay",
+      "impact": "if copied near production import path, PE is monkeypatched globally",
+      "recommendation": "never merge sitecustomize; require explicit installer/plugin and fail-closed environment guard"
+    },
+    {
+      "id": "PE-H02",
+      "severity": "ENGINEERING_RED",
+      "finding": "altered fixture world accepted without selection-digest binding",
+      "evidence": "absolute_horizon=fx:ATTACKER_AH and public_sanctions=fx:sanction:attacker copied to receipt with original selection_digest",
+      "impact": "invented world data can be represented as enriched world data",
+      "recommendation": "pin provider/source digest and require value digest match to selection digest"
+    },
+    {
+      "id": "PE-H03",
+      "severity": "ENGINEERING_RED",
+      "finding": "inconsistent denominator accepted",
+      "evidence": "cells 1+1 with denominator 100 passed _validate_geometry and was emitted as n10e exact denominator",
+      "impact": "numeric integrity failure can be published as exact geometry",
+      "recommendation": "validate cell sums, probabilities and denominator record consistency"
+    },
+    {
+      "id": "PE-H04",
+      "severity": "ENGINEERING_RED",
+      "finding": "EnrichedResult.result_hash does not cover enriched receipt",
+      "evidence": "result.result_hash != explicit hash(request_ref,result.receipt.ref,result_state)",
+      "impact": "downstream identity/replay may bind original receipt while material carries extra fields",
+      "recommendation": "define enriched result_hash over enriched receipt.ref"
+    },
+    {
+      "id": "PE-H05",
+      "severity": "ENGINEERING_RED",
+      "finding": "H2 refresh receipts are synthesized, not executed",
+      "evidence": "NoRefreshProvider raises on refresh methods yet _refresh_receipts returns channel receipts at generation 0",
+      "impact": "fabricated refresh receipts satisfy strict field presence without H2 event evidence",
+      "recommendation": "require executed provider refresh records or label field as fixture-only and do not claim refresh"
+    },
+    {
+      "id": "PE-H06",
+      "severity": "AUTHORITY_HOLD",
+      "finding": "test fixture reversal authority is unrestricted",
+      "evidence": "EXPLICIT_UNRESTRICTED target/risk scopes and ALL_TIME; _competent accepts attacker target/risk with same ref",
+      "impact": "if applied to a production registry, test snapshot impersonates a broad issuer",
+      "recommendation": "keep test-only; real integration requires exact issuer/target/risk/time scopes"
+    },
+    {
+      "id": "PE-H07",
+      "severity": "ENGINEERING_REVISE",
+      "finding": "source-promotion flag is overwritten rather than refused",
+      "evidence": "input may_use_as_source_observation=True yields output False without error",
+      "impact": "bad producer state is hidden",
+      "recommendation": "fail closed on contradictory echo state"
+    },
+    {
+      "id": "PE-H08",
+      "severity": "ENGINEERING_REVISE",
+      "finding": "negative-status scope is not validated",
+      "evidence": "HELD_AUTHORITY row with scope=None is accepted and copied",
+      "impact": "negative status algebra can lose its source/risk coordinate",
+      "recommendation": "require scope/measure consistency for each status"
+    },
+    {
+      "id": "PE-H09",
+      "severity": "ENGINEERING_HOLD",
+      "finding": "no replay/nonce guard",
+      "evidence": "identical request returns identical receipt hash",
+      "impact": "replay is possible in a pure service boundary; PE is not a current issuer",
+      "recommendation": "keep as sourcefree limitation or add explicit replay custody if currentized"
+    },
+    {
+      "id": "PE-H10",
+      "severity": "PASS_CONTROL",
+      "finding": "forged issuer and temporal invalidation are refused",
+      "evidence": "forged reversal -> TYPED_REFUSAL/REVERSED_UNAUTHORIZED_ROLE; as-of at request -> FUTURE_TIME_AVAILABILITY_REFUSED; invalidated -> INVALIDATED_CURRENT_REFUSED",
+      "impact": "positive control",
+      "recommendation": "preserve"
+    },
+    {
+      "id": "PE-H11",
+      "severity": "PASS_CONTROL",
+      "finding": "missing producer/consumer and removed negative status fail closed",
+      "evidence": "Sc0OverlayContractError codes MISSING_WORLD_SELECTION_DIGEST, MISSING_CONSUMER_EFFECT, MISSING_NEGATIVE_STATUS_ALGEBRA",
+      "impact": "positive control",
+      "recommendation": "preserve"
+    }
+  ],
+  "engineering_verdict": "ENGINEERING_RED__PE_OVERLAY_INTEGRITY_AND_SITECUSTOMIZE_DEFECTS__13_STRICT_FIXTURE_REPRODUCED__NO_PRODUCTION_INTEGRATION",
+  "scientific_verdict": "HOLD__SYNTHETIC_HQ298_FIXTURE_VALUES_NOT_ORIGINAL_N9_OR_SOURCE_SCIENCE",
+  "authority_verdict": "HOLD__TEST_ONLY_UNRESTRICTED_REVERSAL_GRANT_NOT_A_REAL_ISSUER__NO_ADOPTION",
+  "recoverable_into_current_sourcefree_successor": [
+    "PE request/refusal law for forged reversal, future as-of and invalidated current",
+    "C1/N10E exact cell/denominator arithmetic from the original PE receipt",
+    "Value-carrying receipt fields if and only if bound to an owner provider digest and source values",
+    "Generic consumer values-read/effects if produced by real consumers, not fixture copies"
+  ],
+  "not_recoverable_from_this_overlay": [
+    "operative N9 world values, source release, source/actor authority",
+    "H2 refresh events (currently synthesized)",
+    "real negative-status source determinations and scopes",
+    "production result identity covering enriched fields",
+    "a real reversal issuer (test snapshot is unrestricted)"
+  ]
+}
