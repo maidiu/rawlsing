@@ -1,0 +1,65 @@
+# PROGRAMMA SOROK VISION–ASTRA — whole-estate coverage, REDs, precise unknowns and useful completion flights
+
+**Verdict:** `WHOLE_PROGRAMMA_SCOPE_FAIL` for exhaustive semantic/source-currentness closure. **Not** “source absent,” “Astra absent,” or “engine empty.” This return supplies a substantive source-linked original vision/Astra layer that an existing Sorok living reference did not get by counting R3 recovery rows. The front-door 00A anti-drift rule disallows calling even a working O-LIVE CLI the whole product if whole vision, original V3/Neo, Astra, human outcomes and historical questions are only inventory headings.
+
+## Whole-estate front table
+
+| Source family | Grade | Exact evidence and connected function | Remaining hold |
+|---|---|---|---|
+| Original vision and early models | SOURCE_READ_HISTORICAL | Three locally mounted originals: Full Rawlsing Vector Pipeline PDF 3p, Cross Cultural Enneagram Model PDF 5p, Personality Generator 3.4 PDF 8p; historic world→life→symbolic personality intention | Enneagram/type/health country→individual inference has NO native causal authority |
+| Original Sorok 00–87+ | PARTIAL | 106 exact Git top-level objects at `4f2ce6f9bdfdd2232a23d839905cb386cde96dcd`; selected primary texts, many opening/source scans, actor/user material and role/phenomenal/ethics links | Not every 00–87 text read exhaustively or current successor decided |
+| Later owner 96–103 | PARTIAL | 129 later top-level objects at `865b5b01e1a27e99020cf2bb389af8cd4c874b57`, +23 added, 10 changed; R15 100/101 read conceptually | Later full author decision and actual implementation are not certified |
+| Astra original game/architecture | SOURCE_VERIFIED_AND_CONNECTED_AT_DOCUMENTARY_GRAIN | Original nine-file Astra return, 17 gameplay M, A–H scales, G1–G6 questions, P1–P3 proposed tests, 6 N candidates, hostile controls | No actor native playtest; no adopted game/kernel |
+| Astra R3 later joint advice | PARTIAL | `865b5b01e1a27e99020cf2bb389af8cd4c874b57:SOROK_PRODUCT_CONTROL_ROOM/ASTRA_R3_JOINT_WELD_ADVISORY_HANDOFF_20261014_R1.md` blob `a5a016a718f1bc30819f26a0cff1e59e217b9f1c` | 18 underlying deliverables, joint source and owner rulings NOT completely re-read |
+| Original V3/V2/PFF/CAN | PARTIAL | Selected V3 files byte-matched 31/31; R5/R7 mechanics; D001/PFF and `74` old-v3.4 authority correction | Native initial psyche/actor transition and current imported consumer NOT PROVEN |
+| Neo/current sourcefree S39–S52 and recovery | PARTIAL | R6 39/39, 94/94 source read, 9 material unwired; R7 partial historic and four sourcefree returns | R6 source presence not current importer; no full native C12/A5 |
+| Question/decision/risk/dockets | PARTIAL | 123 QUESTIONS, 248 DECISIONS, 204 RISKS parsed from exact historic register; D001, D002, D003, D007 concept documents read; 229 asserted links | Latest owner amendment across all rows not checked; historic status is not current issue/adoption |
+| O-LIVE R2 living reference | NOT_ACCESSED | User reports active local worker; intentionally not inspected, contacted or disturbed | Future actual return and qualified owner adoption only |
+| Current human A5 | MISSING_REAL_EVIDENCE | Charter/100/101 and scenarios define meaningful actor/user consequence | No human participant study, native life/product or real long-term benefit evidence |
+| Pyat external source interface | BOUNDARY_ONLY | `04_CURRENT_SYSTEM_TO_PRODUCT_CROSSWALK.md`, Sorok C0/C11 input from qualified world/source/positions/as-of/material/N11-N12 | No Pyat research, source probe, permission or worker issued |
+
+
+## Actual material/functional status
+**Already existent at bounded sourcefree/code grain:** B1/B2/B3AS E1→practical-state→later changed potential; BP2P4J JoinedProduct; I1 same-root guarded C12, offscreen B/material action; CP-A5 actor-limited perception; C9C12 read-only snapshot/clock; B-F1CR reconstructed targetless C10; V3CORE old functional source → I1 market projection; old V3 stored/derived + pressure flow and render-only machinery. These are not a native actor/person and, for the four later returns, original independent accepting review is not asserted.
+
+**Existing source without verified current importer:** R6’s nine material families including EE-R5B bound transport, GF1 generic relational pair, Phase-D positioned relational compiler, and R41 objective-world branch-local client. Its 39-row/94-file estate source-read and 133 pinned R41 dependencies are meaningful recovery, but an unconsumed candidate is not a working PRE-MAIN service. The original patched F1CR source is missing even though an author-tested reconstruction exists; original V3 ZIP hash differs although 31 selected and 488 Python members match. Negative histories G17I3, OC5E49, CAN3 nine, C9 original 14/1, BP4R7/2, F1CI3 three and B3 X3 ghost writes remain valid at their old cuts.
+
+**Source-native genuinely unissued or unavailable:** actual original CAN008 Rule A person×event, CAN011 Rule T acquired practice/NOCHANGE, source-qualified independent B life and maternal/other care, ADP016/017 actor memory/false belief and SCI05 appropriate interpretation, Pyat original selected-world/N11/N12 at external C0/C11 receiving boundary, qualified C9/C12 owner anchor/writer mirror/clock, full C11 actual composition. Never solve by defaulting parent warmth or category-derived wounds.
+
+**Human-facing genuinely untested:** Ordinary interest in unchosen stranger, usefulness of mundane work/explanation, perceptual fairness and user comprehension, whether independent noncompliant actor can retain voluntary engagement, meaningful later return, preservation of human external relationships, care/benefit distinction, user/reflection privacy, nonextractive revenue and abuse experience. No actual A5 trial or provider-scored R15 renderer series.
+
+## Material conceptual additions beyond O-SCIENCE 17/102 and a recovery-first graph
+1. Early original world/typology design **as two-sided evidence**: historically ambitious cross-cultural lived person, with an epistemic prohibition on deriving individual psychological essence from country/class/type.
+2. A diegetic user whose external actual psychology cannot be read; a portaled embodiment with real resources and constraints. Article 22E corrects 22D: optional profile should not become compulsory self-curation. Medium-native capacities (explain, judge, ask, notice) must actually be exercised, not declared.
+3. D002's ordinary task/scene specifics: shopping bags, medicine cabinet, homework, theft, no scripted “correct relation” and control returned before a user-important contribution; article 29 corrects premature auto-execution in 28.
+4. Astra G1–G6 ground prerequisites, *eight* A–H experience scales and 17 M gameplay derivations with six N candidate modes: solo viable without social spread, no level ladder, no engagement guarantee.
+5. Historical four-source fact distinction: admitted world event, current computable actor, actor memory/knowledge, actor self narrative; user phenomenal view separate again. Article 87 adds recognition-gated object labels.
+6. Relational meaning development: articles 53/54 show object/relationship semantics; 55/56 correct towards thin adapters and historical actor/world spine; 74/76 demote unsupported new psychological engines.
+7. Life-clock ecology: actor/world independent work, care, absences, elastic rendezvous and user no-autopilot; protect against platform guilt. Actual actor-initiated contact may occur even if not engagement-maximizing.
+8. Shared pre-contact person roots and private post-contact forks, externally bounded human invitation/compare, no prestige or cross-branch secret disclosure.
+9. R15 100/101's **two distinct fleshes**: actor/world exact observable occurrence then actor-private-safe user phenomenal projection, with whole-person expressive fidelity beyond mere logical consistency. Explicit same-turn binding/latency/cost gaps.
+10. S5 flourishing, S7 user praxis, S11 UX/accessibility, S13 anti-extractive economics, S14 privacy/abuse and S15 human evaluation are not mere governance side notes. Their original question/decision/risk roots and ethical consequences are separately retrievable.
+
+## Four bounded parallel candidate fronts, NOT imposed HQ priority
+| Candidate | Exact input → operation → output → first consumer | Falsifier / no-change control | Responsible owner |
+|---|---|---|---|
+| P1 ordinary action/attention | Actual independent person/work/resource/agenda and lawful scene → user SAY/DO/ATTEND with time/actor uptake/control return → objective event and actor-limited response → C8/C9 then S11 visible surface | User says “I help” and gets fabricated competence, or parser incoherence masquerades as meaningful uncertainty | Sorok D002/action and CAN008/C8/C9; product human examiner |
+| P2 historical consequence | Real eligible event and CAN011 proof/nochange → acquired operation or held receipt → later independently performed E2 and changing convention → C9/C12 reentry | With practice/receipt causally severed, later behavior still credited to learning; sourcefree script exception classified RED without named cause | CAN011 science and C9/C12 owner, independent later reviewer |
+| P3 humane absence | B/world projects, time, schedule, independently caused obligations → ordinary offscreen evolution or none → humane reconnect/quiet ending → C10/C12 and S11/A5 | Offline user churn triggers crisis, jealousy or notification from platform rather than actor; absence always interpreted as moral loss | Sorok C6/C10, S11/S13/S14 |
+| R15 lawful binding surface | Historical V3/CAN/PFF/V2 actor envelope + world → exact externally observable speech/action → later bounded user attention/recognition filter → S11/A5 surface | User preference alters actor act, secret motives leak, or all “Nadias” sound generically eloquent despite old facts | V3/CAN/PFF/V2 original owners; Sorok UX/human evaluator |
+| Work/care/activity source | Source-qualified adult/mother/coactor material history + roles/means → practiced opportunities and context-based dispositions → later actor event → C4/C9/C12 | Changing wage/care history with country label held fixed has no causal effect, while class label directly sets wound | Sorok C4 original source/actor science; Pyat world remains external |
+| Human ethical/UX trial | Honest bounded simulated life with refusal and nondrama → consented participant exercises choices/attention and can exit → bounded benefit/accuracy/agency/adverse observation → S15 report | User expresses attachment but no actual autonomy/recognition or harm grows; pleasure/retention scored as health | Sorok S5/S7/S11/S13/S14/S15 product evaluators |
+
+## Precisely unfinished investigation
+- Complete per-document *deep* semantic read and historical → later owner resolution across all 00–87 and 96–103, not merely the exact 106/129 tree coverage and dozens of substantive opening reads.
+- Exact genealogical source and adoption of the entire later Astra R3 18-report joint weld advisory (not its already-read handoff alone).
+- Actual contemporaneous (not old sourcefree) V3/Neo CAN/ADP/PFF/V2 importer graph and cold production consumer, with correct independent reviewer and original source authority.
+- Full latest Q/SPD/RISK successor decisions and every S0–S16 docket output/UX; historical parsed 123/248/204 remain source-true **only at Astra cut**.
+- Human and provider live tests, moral-economic viable product study, accessibility and actual A5.
+- 88–95 as individual historical source paths **not present at root at the two exact examined cuts**; no claim they never existed on another branch.
+- Exact O-LIVE R2 graph current intake is purposely not examined because the worker is active, user forbids disturbance.
+
+## Completion/operating handoff
+A qualified Sorok HQ/living-reference owner should **compare the eight-file return against O-LIVE R2's eventual immutable delivered head**, retain source-derived nodes and correct old product source-epochs/contradictions, and then use a tiny number of real cross-functional tests to establish whether actual consumer behavior and human encounter changes. Do not create a second architecture dashboard or new permanent “completion court.” New reviews only where materially needed; no invented source grants.
+
+**DONE:** direct historical tree, Astra originals, Q/SPD/RISK actual records, primary human-product/scene/epistemics/meaning, original PDFs and explicit R15 correction. **REMAINING:** the finite deep-source/actual-native/human source statuses above. **CRITICAL_BLOCKERS:** native original science and source, actor worlds, current imported consumer, human trial, permitted external Pyat source, review/owner adoption. **LARGEST_PRODUCTIVE_MOVE:** Integrate the actual source-derived concept nodes and their falsifiers into the single existing living reference after O-LIVE R2 returns and execute bounded P1/P2/P3/R15 human/product experiments. **FLIGHT:** no active worker disturbed, no Pyat task. **DELTA:** whole-vision source content becomes inspectable rather than hidden behind 17/102 recovery counts.
