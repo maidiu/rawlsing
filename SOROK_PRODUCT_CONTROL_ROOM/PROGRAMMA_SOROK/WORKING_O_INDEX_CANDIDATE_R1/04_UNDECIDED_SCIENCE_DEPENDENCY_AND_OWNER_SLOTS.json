@@ -313,13 +313,13 @@
     },
     {
       "slot": "S0_S16_SOURCE",
-      "kind": "SOURCE_GAP",
-      "question": "Where is the original 17-entry S0-S16 workstream definition with exact names, paths and interpretation?",
-      "required_owner": "Sorok original ontology/workstream source owner",
-      "status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
-      "blocks": "blocks any claim that S0-S16 are recovered; do not map S39-S52 or S0/S1 stage to S0-S16",
-      "depends_on": "R7 05",
-      "evidence": "R7 05 outstanding_exact_sources",
+      "kind": "RECOVERED_PRIMARY_SOURCE_CURRENT_ADOPTION_QUESTION",
+      "question": "The 17 original exploratory Sorok HQ workstreams are source-defined. What current scope, completion and priority does the incumbent adopt for S0–S16?",
+      "required_owner": "Competent current Sorok HQ for product/Programma adjudication; original S0–S16 historic source proven",
+      "status": "PRIMARY_HISTORICAL_SOURCE_FOUND_17_OF_17__CURRENT_ADOPTION_HQ_JUDGMENT_REQUIRED",
+      "blocks": "Does NOT block source recovery; prevents asserting original exploratory workstreams adopted or their outputs completed without review",
+      "depends_on": "865b5b01e1a27e99020cf2bb389af8cd4c874b57 SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md blob 2a0a3a42d66f566f92d5c333fbbea4a5adb383b2",
+      "evidence": "865b5b01e1a27e99020cf2bb389af8cd4c874b57 SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md blob 2a0a3a42d66f566f92d5c333fbbea4a5adb383b2",
       "priority_decision": "NOT_MADE_BY_INDEX"
     },
     {
@@ -446,8 +446,9 @@
   ],
   "counts": {
     "science_owner_questions": 40,
-    "explicit_holds": 5,
-    "priority_decisions_made": 0
+    "explicit_holds": 4,
+    "priority_decisions_made": 0,
+    "source_recovery_corrected_workstreams": 17
   },
   "hq_joint_test_requirement": "HQ must name the joint test across caregiving/person, B material/refusal and historical transformation, plus separate owners for source, science, native product and Pyat.",
   "dependency_rule": "A slot can be closed only by its required owner with exact source/issuance evidence; an implementation pass cannot close a science or native-authority slot.",
