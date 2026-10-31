@@ -1,0 +1,34 @@
+{
+  "crash_after_rename_before_proof": {
+    "observed": "journal bytes are visible and byte-valid to a raw OUT9 read; verify_journal refuses with PROOF_SIDECAR_MISSING; no acknowledged state is claimed",
+    "required_action": "typed recover-or-HOLD by the C8 owner; this candidate refuses and does not acknowledge",
+    "test": "tests/test_joined_security.py::test_crash_after_journal_rename_before_proof_sidecar_is_not_acknowledged"
+  },
+  "d1_writer_cutover": {
+    "closed_in_gated_process": [
+      "accepted OUT9 Journal.commit refused with LEGACY_WRITER_ROUTE_CLOSED",
+      "accepted OUT9 Journal.admit_and_queue refused"
+    ],
+    "owner": "C8 writer owner (D1)",
+    "residual": "a process that imports outbox_prototype without importing the BP3 candidate can still call the old writer; direct filesystem writes are not prevented",
+    "test": "tests/test_joined_security.py::test_old_writer_still_callable_outside_the_gated_import_is_a_typed_residual"
+  },
+  "d2_key_and_anchor": {
+    "closed_in_candidate": [
+      "forged capability refused",
+      "unkeyed receipt forgery refused by keyed proof",
+      "withheld/tampered anchor refused",
+      "byte-valid rollback with old proof detected"
+    ],
+    "owner": "key/anchor custodian (D2)",
+    "residual": "possession of the TEST_ONLY key file mints a valid capability; anchor log+watermark rolled back together defeat detection; no production KMS/HSM",
+    "test": "tests/test_joined_security.py::test_leaked_test_key_can_forge_a_valid_capability_is_a_typed_residual"
+  },
+  "d3_native_event": {
+    "current": "ADP019_ADMISSION_RECEIPT_ABSENT",
+    "owner": "ADP019 owner (D3)",
+    "residual": "no ADP019 admission, no native actor occurrence and no native E2"
+  },
+  "durability": "fsync+rename is not a power-failure guarantee on exotic filesystems; no production FS assumption is made",
+  "schema": "BP2_D1_D2_D3_RESIDUALS@1"
+}

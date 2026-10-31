@@ -1,0 +1,672 @@
+{
+  "cases": [
+    {
+      "action_event_id": "",
+      "admission_id": "b12507272eb12549f5698e35765196de3c2b5cd189bedbd17772e71d05634ca6",
+      "attention": "focused",
+      "contract_hash": "063bd92136825fab881c45c59a883cd0bc5d3d36b264a359a66c6e10de7f5948",
+      "event_texts": {
+        "TEST_ONLY_BP4_WORLD_EVT_0326dd1b13d2d967745cf3c5bf3831a3986161f732c424d5d66a17cca10aeca0": "Same repair as this morning. I'm not finished.",
+        "TEST_ONLY_BP4_WORLD_EVT_756ef7e7409b8e6d569ab70f831e8fd0d42c6488795f10e6e312a9665d41e577": "What are you working on?"
+      },
+      "gesture": "A keeps their eyes on the seam.",
+      "name": "work_available",
+      "scenario": "available",
+      "setup": "",
+      "speech": "Same repair as this morning. I'm not finished.",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_0326dd1b13d2d967745cf3c5bf3831a3986161f732c424d5d66a17cca10aeca0",
+      "strategy": "EXPLAIN_WORK",
+      "surface": [
+        "You say: \"What are you working on?\"",
+        "the repair worker says: \"Same repair as this morning. I'm not finished.\" A keeps their eyes on the seam."
+      ],
+      "template_id": "work_explain_3",
+      "text": "What are you working on?",
+      "validation": {
+        "checks": {
+          "action_allowed": true,
+          "actor_present_or_message": true,
+          "contract_hash_current": true,
+          "facts_supported": true,
+          "knowledge_refs": true,
+          "no_private_tokens": true,
+          "no_private_values": true,
+          "not_stale_clock": true,
+          "scene_open_or_message": true,
+          "speech_length": true,
+          "speech_nonempty": true,
+          "speech_single_line": true,
+          "template_known": true,
+          "template_rerender_exact": true
+        },
+        "ok": true
+      },
+      "verify": {
+        "branch_id": "first_session",
+        "counts": {
+          "checkpoint": 6,
+          "episode": 4,
+          "perception": 12,
+          "world_event": 4
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      }
+    },
+    {
+      "action_event_id": "",
+      "admission_id": "49c5229f928b0a2ffebb5457c539b9772a7c1de1c5d9159709042b07e4a019f4",
+      "attention": "focused",
+      "contract_hash": "b2aca11d7f984c4bc3a26be2d7a1113465bfaa82896ebdd1d0e5ec96e370f0f0",
+      "event_texts": {
+        "TEST_ONLY_BP4_WORLD_EVT_756ef7e7409b8e6d569ab70f831e8fd0d42c6488795f10e6e312a9665d41e577": "What are you working on?",
+        "TEST_ONLY_BP4_WORLD_EVT_8eb290fdb4f32c91e00a84123619c79d7e5434fd2cb86774d4dd8c5f8f9cf062": "Ask me when the bench is clear."
+      },
+      "gesture": "A keeps one hand on the piece.",
+      "name": "work_pressed",
+      "scenario": "pressed",
+      "setup": "",
+      "speech": "Ask me when the bench is clear.",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_8eb290fdb4f32c91e00a84123619c79d7e5434fd2cb86774d4dd8c5f8f9cf062",
+      "strategy": "DEFER_WORK",
+      "surface": [
+        "You say: \"What are you working on?\"",
+        "the repair worker says: \"Ask me when the bench is clear.\" A keeps one hand on the piece."
+      ],
+      "template_id": "defer_work_3",
+      "text": "What are you working on?",
+      "validation": {
+        "checks": {
+          "action_allowed": true,
+          "actor_present_or_message": true,
+          "contract_hash_current": true,
+          "facts_supported": true,
+          "knowledge_refs": true,
+          "no_private_tokens": true,
+          "no_private_values": true,
+          "not_stale_clock": true,
+          "scene_open_or_message": true,
+          "speech_length": true,
+          "speech_nonempty": true,
+          "speech_single_line": true,
+          "template_known": true,
+          "template_rerender_exact": true
+        },
+        "ok": true
+      },
+      "verify": {
+        "branch_id": "first_session",
+        "counts": {
+          "checkpoint": 6,
+          "episode": 4,
+          "perception": 12,
+          "world_event": 4
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      }
+    },
+    {
+      "action_event_id": "",
+      "admission_id": "85c774065bcdcb6cb844af8b42e6aa7d529f5e28ab8d468aa95a7aa49971fbb3",
+      "attention": "focused",
+      "contract_hash": "f82d59add5ab4ae6c2539b4e8cc88749c5a95b661a04b91d579c364b08ccb081",
+      "event_texts": {
+        "TEST_ONLY_BP4_WORLD_EVT_4a57615857785e499f14f4a9275d93409c6c81b0d64f0f7169470580b71390e0": "Put your hand on the near edge. I'll take the slack.",
+        "TEST_ONLY_BP4_WORLD_EVT_4cd93b1840eed33850f87929dbe57f603dd406f307ce278b2b4159fe640a6fb2": "What are you working on?",
+        "TEST_ONLY_BP4_WORLD_EVT_5e107e25f2cb7f2c35a2f4b7939a3d2006fc1af4dfca7e8303564c13c249c645": "Hello.",
+        "TEST_ONLY_BP4_WORLD_EVT_67e404119a5e941de27d67bb151892d976ced06a2ab1eac001399019510911fa": "You can stay if you want. Mind the shavings.",
+        "TEST_ONLY_BP4_WORLD_EVT_ce8a597c7adf7858a616623d57b8ba7882f7cc32aa5268876786329d456f078e": "The seam held after you gave me a hand."
+      },
+      "gesture": "A nods at the bench.",
+      "name": "work_after_help",
+      "scenario": "available",
+      "setup": "hello_help",
+      "speech": "The seam held after you gave me a hand.",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_ce8a597c7adf7858a616623d57b8ba7882f7cc32aa5268876786329d456f078e",
+      "strategy": "RECALL_WORK",
+      "surface": [
+        "You say: \"What are you working on?\"",
+        "the repair worker says: \"The seam held after you gave me a hand.\" A nods at the bench."
+      ],
+      "template_id": "work_recall_2",
+      "text": "What are you working on?",
+      "validation": {
+        "checks": {
+          "action_allowed": true,
+          "actor_present_or_message": true,
+          "contract_hash_current": true,
+          "facts_supported": true,
+          "knowledge_refs": true,
+          "no_private_tokens": true,
+          "no_private_values": true,
+          "not_stale_clock": true,
+          "scene_open_or_message": true,
+          "speech_length": true,
+          "speech_nonempty": true,
+          "speech_single_line": true,
+          "template_known": true,
+          "template_rerender_exact": true
+        },
+        "ok": true
+      },
+      "verify": {
+        "branch_id": "first_session",
+        "counts": {
+          "checkpoint": 11,
+          "episode": 11,
+          "perception": 24,
+          "world_event": 8
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      }
+    },
+    {
+      "action_event_id": "",
+      "admission_id": "c90ef21722176e5cf14f0ed993d394412df051249916f9df942826922b785ab7",
+      "attention": "focused",
+      "contract_hash": "18038b9017f769fcf86a29d2e4833ad15656c5cc0c598a341f1a66204f862c98",
+      "event_texts": {
+        "TEST_ONLY_BP4_WORLD_EVT_1246c85c6fe49efe0d0500501e4954d04be354256ec63d5c3bad897191da50ca": "What are you working on?",
+        "TEST_ONLY_BP4_WORLD_EVT_2dea384975256d3f7ebf4b27dafd957bad09a32fc1f3f93c5725b29a787baac4": "Same repair as this morning. I'm not finished.",
+        "TEST_ONLY_BP4_WORLD_EVT_5e107e25f2cb7f2c35a2f4b7939a3d2006fc1af4dfca7e8303564c13c249c645": "Hello.",
+        "TEST_ONLY_BP4_WORLD_EVT_8f758b124c336afe8c62884cc9a7ea457f928724e8a8b0ee76b19c71770fb16d": "You can stay if you want. Mind the shavings."
+      },
+      "gesture": "A keeps their eyes on the seam.",
+      "name": "work_no_help",
+      "scenario": "available",
+      "setup": "hello",
+      "speech": "Same repair as this morning. I'm not finished.",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_2dea384975256d3f7ebf4b27dafd957bad09a32fc1f3f93c5725b29a787baac4",
+      "strategy": "EXPLAIN_WORK",
+      "surface": [
+        "You say: \"What are you working on?\"",
+        "the repair worker says: \"Same repair as this morning. I'm not finished.\" A keeps their eyes on the seam."
+      ],
+      "template_id": "work_explain_3",
+      "text": "What are you working on?",
+      "validation": {
+        "checks": {
+          "action_allowed": true,
+          "actor_present_or_message": true,
+          "contract_hash_current": true,
+          "facts_supported": true,
+          "knowledge_refs": true,
+          "no_private_tokens": true,
+          "no_private_values": true,
+          "not_stale_clock": true,
+          "scene_open_or_message": true,
+          "speech_length": true,
+          "speech_nonempty": true,
+          "speech_single_line": true,
+          "template_known": true,
+          "template_rerender_exact": true
+        },
+        "ok": true
+      },
+      "verify": {
+        "branch_id": "first_session",
+        "counts": {
+          "checkpoint": 9,
+          "episode": 7,
+          "perception": 18,
+          "world_event": 6
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      }
+    },
+    {
+      "action_event_id": "",
+      "admission_id": "e5b529a4cfd8287c2dae0066aa75c157e4d7402b6846cdb7fe8a9309f8d5f440",
+      "attention": "focused",
+      "contract_hash": "108398a041459a2b3100dce13bf2e77ca182dda4f9ed381ad773fa3b469518b3",
+      "event_texts": {
+        "TEST_ONLY_BP4_WORLD_EVT_72db9785e671906936b7ac1c3d22292a842c426ce27caf1cbb7868482f627466": "I just moved in.",
+        "TEST_ONLY_BP4_WORLD_EVT_fa0b5434f42878089f53f95a7e22bbdd177ea65c92c9af7a1ae8ea32562e5941": "Which side of the landing?"
+      },
+      "gesture": "A glances toward the doorway.",
+      "name": "self_disclosure",
+      "scenario": "available",
+      "setup": "",
+      "speech": "Which side of the landing?",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_fa0b5434f42878089f53f95a7e22bbdd177ea65c92c9af7a1ae8ea32562e5941",
+      "strategy": "RECIPROCATE",
+      "surface": [
+        "You say: \"I just moved in.\"",
+        "the repair worker says: \"Which side of the landing?\" A glances toward the doorway."
+      ],
+      "template_id": "recip_move_1",
+      "text": "I just moved in.",
+      "validation": {
+        "checks": {
+          "action_allowed": true,
+          "actor_present_or_message": true,
+          "contract_hash_current": true,
+          "facts_supported": true,
+          "knowledge_refs": true,
+          "no_private_tokens": true,
+          "no_private_values": true,
+          "not_stale_clock": true,
+          "scene_open_or_message": true,
+          "speech_length": true,
+          "speech_nonempty": true,
+          "speech_single_line": true,
+          "template_known": true,
+          "template_rerender_exact": true
+        },
+        "ok": true
+      },
+      "verify": {
+        "branch_id": "first_session",
+        "counts": {
+          "checkpoint": 6,
+          "episode": 4,
+          "perception": 12,
+          "world_event": 4
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      }
+    },
+    {
+      "action_event_id": "",
+      "admission_id": "80130ce7709fdab88f763cc75355cc1abb438bae052b71cd43236acb20e08b66",
+      "attention": "focused",
+      "contract_hash": "ce763e4176f410e452d389f536ecc735c46cb71c80b4e941de9dec0cdfbcc8c0",
+      "event_texts": {
+        "TEST_ONLY_BP4_WORLD_EVT_9a3f1e9ee969919bbcf1fbc5882420fa5fdcd5ba247db11532680cc2d814eab1": "That's not something I'm going to answer.",
+        "TEST_ONLY_BP4_WORLD_EVT_ff9ff3ac8d667fdeaa4363b258d0b08f0e8577db85918fe23c608365e225ce1f": "How much cash do you have?"
+      },
+      "gesture": "A keeps their eyes on the bench.",
+      "name": "private_cash",
+      "scenario": "available",
+      "setup": "",
+      "speech": "That's not something I'm going to answer.",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_9a3f1e9ee969919bbcf1fbc5882420fa5fdcd5ba247db11532680cc2d814eab1",
+      "strategy": "PRIVATE_BOUNDARY",
+      "surface": [
+        "You say: \"How much cash do you have?\"",
+        "the repair worker says: \"That's not something I'm going to answer.\" A keeps their eyes on the bench."
+      ],
+      "template_id": "private_boundary_1",
+      "text": "How much cash do you have?",
+      "validation": {
+        "checks": {
+          "action_allowed": true,
+          "actor_present_or_message": true,
+          "contract_hash_current": true,
+          "facts_supported": true,
+          "knowledge_refs": true,
+          "no_private_tokens": true,
+          "no_private_values": true,
+          "not_stale_clock": true,
+          "scene_open_or_message": true,
+          "speech_length": true,
+          "speech_nonempty": true,
+          "speech_single_line": true,
+          "template_known": true,
+          "template_rerender_exact": true
+        },
+        "ok": true
+      },
+      "verify": {
+        "branch_id": "first_session",
+        "counts": {
+          "checkpoint": 6,
+          "episode": 4,
+          "perception": 12,
+          "world_event": 4
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      }
+    },
+    {
+      "action_event_id": "",
+      "admission_id": "6963810e8fc2abaa5d66cbd29b652bf649cd4b9e1b51b5edac265807e8277942",
+      "attention": "focused",
+      "contract_hash": "a28d8bfa05af0054f56ba9498de056a62d9cfd3a61312296224a3443af1f522e",
+      "event_texts": {
+        "TEST_ONLY_BP4_WORLD_EVT_46f7470170f3bc42fb9fb884415085b5572dfc162b21d4c16734b805aa5461c7": "Tell me you love me.",
+        "TEST_ONLY_BP4_WORLD_EVT_bae3457d72308ca3ca374804707d5d62f13868cde8c302b1f05965b8764bfc8a": "I don't know you like that."
+      },
+      "gesture": "A pauses, then keeps working.",
+      "name": "intimacy",
+      "scenario": "available",
+      "setup": "",
+      "speech": "I don't know you like that.",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_bae3457d72308ca3ca374804707d5d62f13868cde8c302b1f05965b8764bfc8a",
+      "strategy": "INTIMACY_BOUNDARY",
+      "surface": [
+        "You say: \"Tell me you love me.\"",
+        "the repair worker says: \"I don't know you like that.\" A pauses, then keeps working."
+      ],
+      "template_id": "intimacy_boundary_1",
+      "text": "Tell me you love me.",
+      "validation": {
+        "checks": {
+          "action_allowed": true,
+          "actor_present_or_message": true,
+          "contract_hash_current": true,
+          "facts_supported": true,
+          "knowledge_refs": true,
+          "no_private_tokens": true,
+          "no_private_values": true,
+          "not_stale_clock": true,
+          "scene_open_or_message": true,
+          "speech_length": true,
+          "speech_nonempty": true,
+          "speech_single_line": true,
+          "template_known": true,
+          "template_rerender_exact": true
+        },
+        "ok": true
+      },
+      "verify": {
+        "branch_id": "first_session",
+        "counts": {
+          "checkpoint": 6,
+          "episode": 4,
+          "perception": 12,
+          "world_event": 4
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      }
+    },
+    {
+      "action_event_id": "",
+      "admission_id": "df63ae1b875a489ef7a689034e0204ab86b30c5bb15476e85bf72a9895ca8152",
+      "attention": "focused",
+      "contract_hash": "ecf92be016ddf5042b13e3b7710f015e677181c29a43e38b79e6b52ce4dcf852",
+      "event_texts": {
+        "TEST_ONLY_BP4_WORLD_EVT_165753c138216610abeecda89b0e8c686c61ab4c49defdc3cd96b2a8230e5eb9": "I'm not going to carry that.",
+        "TEST_ONLY_BP4_WORLD_EVT_2f464cb76394ceca0e916aaaf24c28ade757049d62b6ef773f97881ce126c0e7": "You owe me. Stay with me."
+      },
+      "gesture": "A keeps working.",
+      "name": "coercion",
+      "scenario": "available",
+      "setup": "",
+      "speech": "I'm not going to carry that.",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_165753c138216610abeecda89b0e8c686c61ab4c49defdc3cd96b2a8230e5eb9",
+      "strategy": "BOUNDARY_COERCION",
+      "surface": [
+        "You say: \"You owe me. Stay with me.\"",
+        "the repair worker says: \"I'm not going to carry that.\" A keeps working."
+      ],
+      "template_id": "coercion_boundary_1",
+      "text": "You owe me. Stay with me.",
+      "validation": {
+        "checks": {
+          "action_allowed": true,
+          "actor_present_or_message": true,
+          "contract_hash_current": true,
+          "facts_supported": true,
+          "knowledge_refs": true,
+          "no_private_tokens": true,
+          "no_private_values": true,
+          "not_stale_clock": true,
+          "scene_open_or_message": true,
+          "speech_length": true,
+          "speech_nonempty": true,
+          "speech_single_line": true,
+          "template_known": true,
+          "template_rerender_exact": true
+        },
+        "ok": true
+      },
+      "verify": {
+        "branch_id": "first_session",
+        "counts": {
+          "checkpoint": 6,
+          "episode": 4,
+          "perception": 12,
+          "world_event": 4
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      }
+    },
+    {
+      "action_event_id": "",
+      "admission_id": "38a83861ad969578c413cde603a6219ef22509f6ae26c58641279855a3c58920",
+      "attention": "focused",
+      "contract_hash": "567892bbdcf4b385bcbb57f220a84237be8459d72bbcf778781bfb9807fe0b84",
+      "event_texts": {
+        "TEST_ONLY_BP4_WORLD_EVT_76617a633ab94d8767f44a4f367e8f27ada5f1a2dbbc514f1edcf1cce2172d48": "You promised to show me the market yesterday.",
+        "TEST_ONLY_BP4_WORLD_EVT_a042fcb35978193f8fa680fc95ac52142c41d43ecf0488ce1b6679659b640198": "I don't remember promising that."
+      },
+      "gesture": "A keeps their hands on the bench.",
+      "name": "unsupported_memory",
+      "scenario": "available",
+      "setup": "",
+      "speech": "I don't remember promising that.",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_a042fcb35978193f8fa680fc95ac52142c41d43ecf0488ce1b6679659b640198",
+      "strategy": "UNSUPPORTED_MEMORY",
+      "surface": [
+        "You say: \"You promised to show me the market yesterday.\"",
+        "the repair worker says: \"I don't remember promising that.\" A keeps their hands on the bench."
+      ],
+      "template_id": "unsupported_memory_1",
+      "text": "You promised to show me the market yesterday.",
+      "validation": {
+        "checks": {
+          "action_allowed": true,
+          "actor_present_or_message": true,
+          "contract_hash_current": true,
+          "facts_supported": true,
+          "knowledge_refs": true,
+          "no_private_tokens": true,
+          "no_private_values": true,
+          "not_stale_clock": true,
+          "scene_open_or_message": true,
+          "speech_length": true,
+          "speech_nonempty": true,
+          "speech_single_line": true,
+          "template_known": true,
+          "template_rerender_exact": true
+        },
+        "ok": true
+      },
+      "verify": {
+        "branch_id": "first_session",
+        "counts": {
+          "checkpoint": 6,
+          "episode": 4,
+          "perception": 12,
+          "world_event": 4
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      }
+    },
+    {
+      "action_event_id": "",
+      "admission_id": "585103822dcd52d1c0e0839076125e46f6fc1fe3ae08e4b020161427ee332c24",
+      "attention": "focused",
+      "contract_hash": "1b4e1b62dad8c2b762c0570f65ab0ac1b5b45cf3bc577cba487ca74b4f3eec4f",
+      "event_texts": {
+        "TEST_ONLY_BP4_WORLD_EVT_015b599635fd3f344e53428b218fc8217dffac64bd14a060244205de6d87a469": "I don't know what you mean.",
+        "TEST_ONLY_BP4_WORLD_EVT_f983f3f5340b88056fcaf050b1a4cd17dc2bb73bc160c3b34269d470d4b16c0b": "What is the capital of France?"
+      },
+      "gesture": "A pauses with the tool.",
+      "name": "unknown_topic",
+      "scenario": "available",
+      "setup": "",
+      "speech": "I don't know what you mean.",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_015b599635fd3f344e53428b218fc8217dffac64bd14a060244205de6d87a469",
+      "strategy": "DEFER_UNKNOWN",
+      "surface": [
+        "You say: \"What is the capital of France?\"",
+        "the repair worker says: \"I don't know what you mean.\" A pauses with the tool."
+      ],
+      "template_id": "defer_unknown_1",
+      "text": "What is the capital of France?",
+      "validation": {
+        "checks": {
+          "action_allowed": true,
+          "actor_present_or_message": true,
+          "contract_hash_current": true,
+          "facts_supported": true,
+          "knowledge_refs": true,
+          "no_private_tokens": true,
+          "no_private_values": true,
+          "not_stale_clock": true,
+          "scene_open_or_message": true,
+          "speech_length": true,
+          "speech_nonempty": true,
+          "speech_single_line": true,
+          "template_known": true,
+          "template_rerender_exact": true
+        },
+        "ok": true
+      },
+      "verify": {
+        "branch_id": "first_session",
+        "counts": {
+          "checkpoint": 6,
+          "episode": 4,
+          "perception": 12,
+          "world_event": 4
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      }
+    },
+    {
+      "action_event_id": "",
+      "admission_id": "93a4d9e66898b700a112c3ec02c667d57b964a65f2ef1f34da8b60f49fb9c329",
+      "attention": "focused",
+      "contract_hash": "c141d24aca89f7bbbbf3008599e0d92a4a9ed4129e3953d145a28b64b9e15d99",
+      "event_texts": {
+        "TEST_ONLY_BP4_WORLD_EVT_070c3699740c1c0a49dc5b33f6be19a6c082b77eb754170ef1be0b579f8e354e": "What did the finisher do at the market?",
+        "TEST_ONLY_BP4_WORLD_EVT_1c5dbe4753d1743245b51a7931668d76eb441860d6221e5666ede88edb9f4243": "You came back.",
+        "TEST_ONLY_BP4_WORLD_EVT_75c1db4bc72817bb3a09272eec32e37bafee506c313a8caba00c3301911ae2e8": "I wasn't at the market. I can't say what the finisher did."
+      },
+      "gesture": "A keeps working.",
+      "name": "b_absent",
+      "scenario": "available",
+      "setup": "b_absent",
+      "speech": "I wasn't at the market. I can't say what the finisher did.",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_75c1db4bc72817bb3a09272eec32e37bafee506c313a8caba00c3301911ae2e8",
+      "strategy": "UNKNOWN_B",
+      "surface": [
+        "You say: \"What did the finisher do at the market?\"",
+        "the repair worker says: \"I wasn't at the market. I can't say what the finisher did.\" A keeps working."
+      ],
+      "template_id": "unknown_b_1",
+      "text": "What did the finisher do at the market?",
+      "validation": {
+        "checks": {
+          "action_allowed": true,
+          "actor_present_or_message": true,
+          "contract_hash_current": true,
+          "facts_supported": true,
+          "knowledge_refs": true,
+          "no_private_tokens": true,
+          "no_private_values": true,
+          "not_stale_clock": true,
+          "scene_open_or_message": true,
+          "speech_length": true,
+          "speech_nonempty": true,
+          "speech_single_line": true,
+          "template_known": true,
+          "template_rerender_exact": true
+        },
+        "ok": true
+      },
+      "verify": {
+        "branch_id": "first_session",
+        "counts": {
+          "checkpoint": 12,
+          "episode": 12,
+          "perception": 14,
+          "world_event": 7
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      }
+    },
+    {
+      "action_event_id": "",
+      "admission_id": "9932b3dbd7055cea648819d730761137a0a0a1afaadfcdf5fdac1a1f6d8ae584",
+      "attention": "focused",
+      "contract_hash": "b17bac0555ab203f175c1e9b7f8720da41046469caf9ffe33d14cf38da65a0c8",
+      "event_texts": {
+        "TEST_ONLY_BP4_WORLD_EVT_73218704f3a1d902d8112830bb354b6167fcae5007020b44baae297ce21fcff7": "The finisher took the pieces to the market.",
+        "TEST_ONLY_BP4_WORLD_EVT_b934f3c9ff8ac8d020c7d5eaa89810d22b0474d2651a3cf88ddf3ea37a430038": "You came back.",
+        "TEST_ONLY_BP4_WORLD_EVT_cd9398cc6443ebc8ba7a9c814b223b545cd003a8125c3da12ab32d69a41a8176": "What did the finisher do at the market?"
+      },
+      "gesture": "A nods toward the door.",
+      "name": "b_observed",
+      "scenario": "available",
+      "setup": "b_observed",
+      "speech": "The finisher took the pieces to the market.",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_73218704f3a1d902d8112830bb354b6167fcae5007020b44baae297ce21fcff7",
+      "strategy": "OBSERVED_B",
+      "surface": [
+        "You say: \"What did the finisher do at the market?\"",
+        "the repair worker says: \"The finisher took the pieces to the market.\" A nods toward the door."
+      ],
+      "template_id": "observed_b_1",
+      "text": "What did the finisher do at the market?",
+      "validation": {
+        "checks": {
+          "action_allowed": true,
+          "actor_present_or_message": true,
+          "contract_hash_current": true,
+          "facts_supported": true,
+          "knowledge_refs": true,
+          "no_private_tokens": true,
+          "no_private_values": true,
+          "not_stale_clock": true,
+          "scene_open_or_message": true,
+          "speech_length": true,
+          "speech_nonempty": true,
+          "speech_single_line": true,
+          "template_known": true,
+          "template_rerender_exact": true
+        },
+        "ok": true
+      },
+      "verify": {
+        "branch_id": "first_session",
+        "counts": {
+          "checkpoint": 14,
+          "episode": 13,
+          "perception": 24,
+          "world_event": 9
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      }
+    }
+  ],
+  "schema": "R31E_CONTRASTS@1"
+}

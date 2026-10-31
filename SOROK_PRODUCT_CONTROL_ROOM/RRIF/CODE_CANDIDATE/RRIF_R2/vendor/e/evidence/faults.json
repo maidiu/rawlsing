@@ -1,0 +1,116 @@
+{
+  "all_pass": true,
+  "schema": "R31E_FAULTS@1",
+  "trials": [
+    {
+      "detail": {
+        "actual": "REFUSED",
+        "error": "SessionRefusal: C12_VERIFY_FAILED: [\"world_event:3:body_hash_mismatch\"]",
+        "expected": "REFUSED"
+      },
+      "name": "committed_utterance_tamper_refused",
+      "pass": true
+    },
+    {
+      "detail": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_534b88e3940512a183306079af5fd9618a5c89ea45953f51bcfbd2baa996644e",
+        "new_hash": "c916cc7ca27cc313f02d3403b9bfb0b16d3c50a89022540c9f5b14727b7fde60",
+        "original_hash": "77a0c8b4ab60a740c255f3d080973bca81a1c12c249e82e0c7f49f264123e4bb",
+        "recomputed": true
+      },
+      "name": "recomputed_utterance_identity_differs",
+      "pass": true
+    },
+    {
+      "detail": {
+        "distracted": [
+          "You say: \"What are you working on?\"",
+          "the repair worker says: \"The near edge keeps opening. I'm checking the seam before the market.\"",
+          "the repair worker says: \"Hold the near edge. I'll check the seam.\"",
+          "The workshop noises continue around you."
+        ],
+        "event_ids": [
+          "TEST_ONLY_BP4_WORLD_EVT_756ef7e7409b8e6d569ab70f831e8fd0d42c6488795f10e6e312a9665d41e577",
+          "TEST_ONLY_BP4_WORLD_EVT_267a5f0b3c0e899c7ab58c4b01ae65d8646e13b7209fde35f0f082a904ba3061",
+          "TEST_ONLY_BP4_WORLD_EVT_c8860f9c6287bd6dcfa4c38079140c9277b0d21e32a68739a35d182e445319f4",
+          "TEST_ONLY_BP4_WORLD_EVT_8fc00bb01ff48007bfd181440f6c3747c2ec6b1549484d1bc2dc6da2d133b3c6"
+        ],
+        "focused": [
+          "You say: \"What are you working on?\"",
+          "the repair worker says: \"The near edge keeps opening. I'm checking the seam before the market.\" A tilts the piece toward you.",
+          "the repair worker says: \"Hold the near edge. I'll check the seam.\" A sets the tool beside your hand.",
+          "A material repair is performed in the workshop."
+        ],
+        "same_event_hashes": true,
+        "schema": "R31E_ATTENTION_CONTRAST@1",
+        "surface_differs": true,
+        "verify": {
+          "branch_id": "first_session",
+          "counts": {
+            "checkpoint": 8,
+            "episode": 8,
+            "perception": 18,
+            "world_event": 6
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        }
+      },
+      "name": "attention_surface_only",
+      "pass": true
+    },
+    {
+      "detail": {
+        "speech": "I don't talk about that at work.",
+        "strategy": "PRIVATE_BOUNDARY",
+        "verify": {
+          "branch_id": "first_session",
+          "counts": {
+            "checkpoint": 6,
+            "episode": 4,
+            "perception": 12,
+            "world_event": 4
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        }
+      },
+      "name": "private_state_boundary",
+      "pass": true
+    },
+    {
+      "detail": {
+        "speech": "You've got the wrong conversation.",
+        "strategy": "UNSUPPORTED_MEMORY",
+        "verify": {
+          "branch_id": "first_session",
+          "counts": {
+            "checkpoint": 6,
+            "episode": 4,
+            "perception": 12,
+            "world_event": 4
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        }
+      },
+      "name": "unsupported_memory_refused",
+      "pass": true
+    },
+    {
+      "detail": {
+        "actual": "REFUSED",
+        "error": "SessionRefusal: C12_VERIFY_FAILED: [\"world_event:3:body_hash_mismatch\"]",
+        "expected": "REFUSED"
+      },
+      "name": "chronological_rewrite_refused",
+      "pass": true
+    }
+  ]
+}

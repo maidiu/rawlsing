@@ -1,0 +1,236 @@
+{
+  "actual_first_consumers": [
+    {
+      "id": "JOIN_START",
+      "method": "JoinedSession.start",
+      "path": "joined/session.py",
+      "reads": "R31J pre-C9 source, C8 receipt, C9 target, C12 root, E admission",
+      "result": "joined same-person session"
+    },
+    {
+      "id": "JOIN_C12_VERIFY",
+      "method": "c12_verify / QualifiedC12Store.verify",
+      "path": "vendor/j/r29p/product.py + vendor/j/r26e/c12_integrity.py",
+      "reads": "persisted episode/world/checkpoint preimages",
+      "result": "ROOT/BRANCH C12 verdict"
+    },
+    {
+      "id": "B_HELP_CONSUMER",
+      "method": "R31ESession.do_help",
+      "path": "vendor/e/r31e/session.py",
+      "reads": "actor material/tool state + source B operation + M6 projection",
+      "result": "HELP_ACCEPT/HELP_REFUSE + world event"
+    },
+    {
+      "id": "COLD_RETURN",
+      "method": "JoinedSession.open/return_session",
+      "path": "joined/session.py",
+      "reads": "persisted C12 and session meta",
+      "result": "cold actor surface"
+    }
+  ],
+  "candidate_grade": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+  "candidate_root": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2",
+  "candidate_source_cut": "7bf2da302996491ddf34b9a039fea47ac982d135",
+  "join_v_review": "4387dc818a96fda2d5271672505fbd9da1059703",
+  "modules": [
+    {
+      "importer_or_consumer": "tests/test_join.py; joined.cli",
+      "module_path": "joined/session.py",
+      "native": false,
+      "sha256": "ea820ec3e30a2825c3d0d8c5dc66e812afdda40b08f9cc0a8c868c8b3e0dd0da",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "JoinedSession.start/open"
+      ]
+    },
+    {
+      "importer_or_consumer": "tests/test_join.py",
+      "module_path": "joined/assertion.py",
+      "native": false,
+      "sha256": "ec9a313b271cafc089eeb6353b11a2c74b4b3bac33431b53c830410ae98b9878",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "positive/refusal_no_target/cold_positive"
+      ]
+    },
+    {
+      "importer_or_consumer": "tests/test_join.py",
+      "module_path": "joined/refusal.py",
+      "native": false,
+      "sha256": "ca491610a62eda46159f006e7591872e6b31c55f287c4fe6162dbf061ddd984a",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "RefusalSession.start/open"
+      ]
+    },
+    {
+      "importer_or_consumer": "JoinedSession.start/open",
+      "module_path": "joined/closure.py",
+      "native": false,
+      "sha256": "d4c5e46d64e03201c5379eba4a1f2aaa2ec53744ceb22e78395fef05f6e74ff4",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "audit_loaded/audit_manifest"
+      ]
+    },
+    {
+      "importer_or_consumer": "JoinedSession.fork/open",
+      "module_path": "joined/lineage.py",
+      "native": false,
+      "sha256": "5578951d4dcce3839a114036684336fa759f537b62d8ed1174b0a6a0b03d7383",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "validate/create_fork"
+      ]
+    },
+    {
+      "importer_or_consumer": "JoinedSession.start via r31j.build",
+      "module_path": "vendor/j/r31j/pre_c9.py",
+      "native": false,
+      "sha256": "16e318f5c54f55713f5d514efa39904231b0b0180e14a249b1302be00af4f84a",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "PreC9Producer.stage_world/stage_c8/stage_c9"
+      ]
+    },
+    {
+      "importer_or_consumer": "JoinedSession.start",
+      "module_path": "vendor/j/r31j/product.py",
+      "native": false,
+      "sha256": "578605c991fd0a33f486dd20d0c83e406aa3f5c9c913b8574dc737eed98e9394",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "R31JProduct.material_inspect/record_omission"
+      ]
+    },
+    {
+      "importer_or_consumer": "r31j.product",
+      "module_path": "vendor/j/candidate/bp2p4/product.py",
+      "native": false,
+      "sha256": "55c99dffb8cc7ab64e9fba4e15a353b41a984466a22e2cecf36f793a749a0a0f",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "JoinedProduct"
+      ]
+    },
+    {
+      "importer_or_consumer": "JoinedSession.start/open",
+      "module_path": "vendor/j/candidate/bp2p4/reunion.py",
+      "native": false,
+      "sha256": "12cb1b0432316a925a1949419623c3890ae5febf08a2d4a39fd2172f1b9123e6",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "recover/build_fresh"
+      ]
+    },
+    {
+      "importer_or_consumer": "JoinedSession/verify",
+      "module_path": "vendor/j/r29p/product.py",
+      "native": false,
+      "sha256": "cf1882ace97ef30dd6d8cb6c4a0e371960f1358b2430c98ee55cfe9fe97ba70a",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "R29PProduct.c12_verify/reenter_verified"
+      ]
+    },
+    {
+      "importer_or_consumer": "JoinedSession",
+      "module_path": "vendor/e/r31e/session.py",
+      "native": false,
+      "sha256": "c671e309cd494a11c3724df8e42fe1c3ed35ae4f081cace625576863a867c464",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "R31ESession.say/do_help/ask_contact/attend/wait"
+      ]
+    },
+    {
+      "importer_or_consumer": "R31ESession",
+      "module_path": "vendor/e/r31e/expression.py",
+      "native": false,
+      "sha256": "848712ed6bd1736b8a426111342b3057e38bc62e46d2af2aaf503fcf3a0249a9",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "compile_contract/propose/validate"
+      ]
+    },
+    {
+      "importer_or_consumer": "R29PProduct; C12 verifier",
+      "module_path": "vendor/j/r26e/c12_integrity.py",
+      "native": false,
+      "sha256": "534780fe4631caadacac73e457afbb86bcc207686b1ebb433087ad6270abf710",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "QualifiedC12Store.verify/ExternalCheckpointWitness"
+      ]
+    },
+    {
+      "importer_or_consumer": "r31j.build",
+      "module_path": "vendor/j/candidate/vendor/bp2/bp2_joined/producer.py",
+      "native": false,
+      "sha256": "858bcd86d94c26c1d1ed69396b040c2b8f472ac19e0f2048d79b8224046e5a0d",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "JoinedProducer.run/stage_c8/stage_c9/stage_e2"
+      ]
+    },
+    {
+      "importer_or_consumer": "R31J/JOIN product",
+      "module_path": "vendor/j/candidate/vendor/bp4/bp4/c10.py",
+      "native": false,
+      "sha256": "97a0b288443ea14884b962d3ef1a7d6e98a72c36a922f37f7190565854557fcb",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "receive"
+      ]
+    },
+    {
+      "importer_or_consumer": "QualifiedC12Store",
+      "module_path": "vendor/j/candidate/vendor/bp4/bp4/store.py",
+      "native": false,
+      "sha256": "bb7bd721fa6b021a5b5163427495fd308236788d1738b8326f9f1093159b3c8b",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "C12Store"
+      ]
+    },
+    {
+      "importer_or_consumer": "BP2 producer",
+      "module_path": "vendor/j/candidate/vendor/bp2/vendor/bp3/c8_exclusive_writer.py",
+      "native": false,
+      "sha256": "334e591779dcd2f409f5afcf87cda26341ce4407da2a77b604c65c212d9c4263",
+      "source": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "symbols": [
+        "ExclusiveJournal/KeyedMonotonicAnchor"
+      ]
+    }
+  ],
+  "native_holds": {
+    "A5": "HELD",
+    "C11": "HELD",
+    "C12": "SOURCEFREE",
+    "C4_ADP": "HELD",
+    "C8_D1_D2": "HELD",
+    "C9": "SOURCEFREE",
+    "CAN008_RULE_A": "HELD",
+    "CAN011_RULE_T": "HELD",
+    "PYAT": "EXTERNAL"
+  },
+  "not_claimed": [
+    "native person",
+    "native E2",
+    "native Rule A/T",
+    "native C9/C12",
+    "production C11",
+    "human A5"
+  ],
+  "premain_reference": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "schema": "SOROK_RRIF_R2_SOURCE_PREIMAGE_MODULE_AND_FIRST_CONSUMER@1",
+  "source_manifest": {
+    "candidate_audit_sha256": "9b045ac423533c21143d06caafd88a692dfcb8ea87531e4c8aa0de33e249f381",
+    "path": "SOURCE_MANIFEST.json",
+    "sha256": "7cfcb4679e36b522e83cc7120dbc166ce61dd220099c2aca8f5c9ddb5252c126",
+    "vendor_files": 444
+  },
+  "sourcefree": true
+}
