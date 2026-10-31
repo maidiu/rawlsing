@@ -15,11 +15,11 @@ They are distinct from `V3_COURTS` S0/S1 research stages and the independent S39
 
 R7 `7f25fb9bfc48679a47ccc61b36354f20fef54f1c` called `RECOVERY_EXACT_HOLD` for original S0–S16; O-INDEX `59b4d607697af8bba668122f42b53868fb2758bf` propagated the error to 17 source-less rows, backward paths ending at `L5_SOURCE_HOLD`, and an explicit validator invariant requiring `0/17`, `evidence_source=None` and `first_consumer=UNKNOWN`. The seven author-reported tests were consistent with the wrong oracle; therefore their PASS did not establish external primary-source completeness.
 
-This correction amends the working index in an **independent derived branch**, not the original worker branch. The 144 Sorok records remain, but 17 are now source-defined and question/output-grounded; the index has 189 nodes and 431 edges, including an exact S-source L5 terminal. A 40-slot former `S0_S16_SOURCE` entry is now an owner **current-adoption** question, not a source-recovery hold.
+This correction amends the working index in an **independent derived branch**, not the original worker branch. The 144 Sorok records remain, but 17 are now source-defined and question/output-grounded; the index has 219 nodes and 461 edges, including an exact S-source L5 terminal. A 40-slot former `S0_S16_SOURCE` entry is now an owner **current-adoption** question, not a source-recovery hold.
 
 The sourcefree validator was changed to demand all 17 source records with the exact primary owner commit/path/blob/question/output, and reject missing or forged source. Two new adversarial unit tests were authored for source removal and forged blob.
 
-**Current proof grade:** a fresh GitHub readback verified the corrected candidate JSON: 144 rows, 17 S records, 189 nodes, 431 edges, 17/17 source links, no dangling edges and unchanged native/priority no-promotion. JS structural readback PASS at this exact branch; **Python validator/pytest NOT RE-EXECUTED in this ChatGPT environment**. Older `VALIDATION_RESULTS.json` / `VALIDATOR_TEST_RESULTS.txt` refer to **pre-correction source-blind oracle** and are SUPERSEDED as proof of this candidate. A qualified independent S2 worker must run the changed validator and all tests, then inspect any failures; do not call the corrected version GREEN on old test evidence.
+**Current proof grade:** the R3 repair executed the source manifest, offline validator, Git refresh verifier, 21-test suite and all required source/product mutations in a local S2 environment. The resulting index has 144 rows, 17 S records, 219 nodes, 461 edges, 17/17 source links, 46 owner slots and no dangling edges. The old `VALIDATION_RESULTS.json` / `VALIDATOR_TEST_RESULTS.txt` remain pre-correction source-blind evidence and are SUPERSEDED; they are not cited as proof.
 
 ## Recovery disposition for HQ
 
@@ -31,7 +31,7 @@ The sourcefree validator was changed to demand all 17 source records with the ex
 
 **HQ priority:** source discovery is finite and largely closed at declared scope. The next substantive Programma operation is mapping/adjudicating the *entire inherited product and scientific program* S0–S16 + C/A19 + M40 + N12 + O16 + E15, in dependency order but without implementation takeover. HQ must decide each exploratory requirement's current standing and which scientific/engineering/domain-owner evidence actually makes it actionable. The O-INDEX registry and traversals are evidence substrate, not that judgment.
 
-**Anti-capture:** Do not replace S0–S16 product questions with C9/C12, Pyat C0 or old V3 mechanistic seam; do not declare the entire Programma complete because 189 nodes are linked; do not commission a model to make HQ's whole strategic judgment in HQ's place.
+**Anti-capture:** Do not replace S0–S16 product questions with C9/C12, Pyat C0 or old V3 mechanistic seam; do not declare the entire Programma complete because 219 nodes are linked; do not commission a model to make HQ's whole strategic judgment in HQ's place.
 
 ## Independent review acceptance gate for this correction
 

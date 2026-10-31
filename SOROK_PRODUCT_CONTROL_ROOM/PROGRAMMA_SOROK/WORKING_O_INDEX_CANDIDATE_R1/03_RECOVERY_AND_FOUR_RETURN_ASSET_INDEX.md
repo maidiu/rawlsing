@@ -9,7 +9,7 @@
 | Input | Exact cut | Use here |
 |---|---|---|
 | PRE-MAIN | `5fc1d43e3d5412194d1f1eaa30ff448f84635e99` | Current-equivalence checks only |
-| R7 inherited register | `7f25fb9bfc48679a47ccc61b36354f20fef54f1c` | 144 Sorok rows: 102 inherited definitions, 17 S0–S16 holds, 10 later edges, 3 F1C/F1CR rows, 8 pre-existing lineages, 4 returned assets; plus 23 separate Pyat N/F rows |
+| R7 inherited register | `7f25fb9bfc48679a47ccc61b36354f20fef54f1c` | 144 Sorok rows: 102 inherited definitions, 17 source-defined S0–S16 workstreams, 10 later edges, 3 F1C/F1CR rows, 8 pre-existing lineages, 4 returned assets; plus 23 separate Pyat N/F rows |
 | R7 registry blob | `90ff6ce7b8410809867e6122094c63659b62887d` | Exact source copied as `01_SOURCE_OF_TRUTH_REGISTRY.json` |
 | R6 finite source close | `28e38ebbf08bbfaeb152ae022046e1303d9a2e40` | 39 rows / 94 files / R41 133-file closure |
 | RCF-A | `e66dc53a5d7eeb2b6b3259000eb04b8e79e1f6f7` | 19 C/A, 40 M, 12 Sorok-N; historical source/test rows |
@@ -150,7 +150,7 @@ BP2P4J's `severance.py` at blob `1e5fc5237dd3b2d94bfa44842fb0dd2b41e20607` catch
 
 - `00_START_HERE.md` — navigation and authority limits.
 - `01_SOURCE_OF_TRUTH_REGISTRY.json` — 144 Sorok rows plus 23 Pyat rows, R6/four-asset summaries and source metadata.
-- `02_L0_L5_LINKED_ORCHESTRATION_INDEX.json` — 188 L0–L5 nodes, 414 edges, three traversals and backward paths.
-- `04_UNDECIDED_SCIENCE_DEPENDENCY_AND_OWNER_SLOTS.json` — 40 owner/science/source slots, including Pyat N11/N12.
+- `02_L0_L5_LINKED_ORCHESTRATION_INDEX.json` — 219 L0–L5 nodes, 461 edges, three traversals and backward paths.
+- `04_UNDECIDED_SCIENCE_DEPENDENCY_AND_OWNER_SLOTS.json` — 46 owner/science/source slots, including Pyat N11/N12.
 - `05_VALIDATOR_AND_READBACK.md` — executed validator and readback.
 - `validate_index.py` — sourcefree validator.

@@ -1,0 +1,311 @@
+{
+  "candidate_base": "96af4f15c993c7a4f32da4cc31ef3175903a0d5c",
+  "graph": {
+    "edges": 461,
+    "l3_nodes": 80,
+    "nodes": 219,
+    "slots": 46
+  },
+  "refreshed_premain": {
+    "build_premain": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99",
+    "current": "d0342290b257f85c3e8931f9962e0aecabc84ed3",
+    "delta_from_build": {
+      "count": 6,
+      "note": "three Pyat S6/H1/PE files plus three Pyat S7/PE/V2K files; no S0-S16 map change"
+    },
+    "delta_from_last_verified": {
+      "count": 3,
+      "files": [
+        ".github/workflows/pyat-s7-pe-v2k-return-custody.yml",
+        "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/17_s7_pe_v2k_return_static_acceptance.py",
+        "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/INVESTIGATIONS/20261031_HQ_S7_PE_V2K_RETURN_INTAKE.md"
+      ]
+    },
+    "last_verified": "87755f02ec5c37499b09e80db6fbdcc9316a6b15"
+  },
+  "repair_commission_head": "024f3b09b17ca5769c0bdee8d5eec459e31bb247",
+  "resolved_defects": [
+    {
+      "id": "B3A",
+      "object_id": "604e09986d87f404daa9857b25758ec2e1fe491d",
+      "object_type": "blob",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/candidate/integration.py",
+      "resolution": "actual path and blob"
+    },
+    {
+      "id": "B3AS",
+      "object_id": "d3a324bb93c17fdaf12670dd153aeb138d9c426a",
+      "object_type": "blob",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/candidate/integration.py",
+      "resolution": "actual path and blob"
+    },
+    {
+      "id": "S39_S52",
+      "object_id": "c347d8a902f4f451852aca1054e9a3cd99d4c3f0",
+      "object_type": "blob",
+      "path": "WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/session.py",
+      "resolution": "actual path and blob"
+    },
+    {
+      "id": "B1",
+      "object_id": "94ffc52847e4c8ae760212d1bc8543594ba793fa",
+      "object_type": "blob",
+      "path": "WORKER_RETURNS/SOROK-V2-HQ324-B1-COUPLED-DEVELOPMENT-R1/bfirst.py",
+      "resolution": "filled actual blob"
+    },
+    {
+      "id": "B2",
+      "object_id": "5c84ace202d04076e829461afee98dd0ae8ba5b7",
+      "object_type": "blob",
+      "path": "WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py",
+      "resolution": "filled actual blob"
+    },
+    {
+      "id": "B3",
+      "object_id": "a8fc1bf2247072e8530e20635cdb575873cf484a",
+      "object_type": "blob",
+      "path": "WORKER_RETURNS/SOROK-V2-HQ329-B3-COUPLED-INTERPRETATION-R1/developmental_loop.py",
+      "resolution": "filled actual blob"
+    },
+    {
+      "id": "BP2P4J",
+      "object_id": "8f7177a6b4e3ae0cae6316a13cf57adf363e0460",
+      "object_type": "blob",
+      "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/product.py",
+      "resolution": "filled actual blob"
+    },
+    {
+      "id": "R15_V2",
+      "object_id": "9237abd31cdadfd6888d2114a534c2f0a536e1b9",
+      "object_type": "tree",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1",
+      "resolution": "typed tree identity plus named source files",
+      "tree_files": [
+        "anthropic_court_r1/.gitignore",
+        "anthropic_court_r1/ANTHROPIC_BINDING_RECEIPT_R1.md",
+        "anthropic_court_r1/BLINDED_SCORING_MANIFEST_R1.json",
+        "anthropic_court_r1/EXECUTION_MANIFEST_PRIVATE_R1.json",
+        "anthropic_court_r1/EXPERIMENT_CONFIG_R1.json",
+        "anthropic_court_r1/LOCAL_EXECUTION_INSTRUCTIONS_R1.md",
+        "anthropic_court_r1/README.md",
+        "anthropic_court_r1/STATIC_VERIFICATION_RECEIPT_R1.md",
+        "anthropic_court_r1/court_common.py",
+        "anthropic_court_r1/requirements.txt",
+        "anthropic_court_r1/results/blinded/.gitkeep",
+        "anthropic_court_r1/results/raw/.gitkeep",
+        "anthropic_court_r1/results/receipts/.gitkeep",
+        "anthropic_court_r1/run_anthropic_renderer_court.py",
+        "anthropic_court_r1/validate_renderer_court.py",
+        "anthropic_court_r2/.gitignore",
+        "anthropic_court_r2/ANTHROPIC_BINDING_RECEIPT_R2.md",
+        "anthropic_court_r2/BLINDED_SCORING_MANIFEST_R2.json",
+        "anthropic_court_r2/EXECUTION_MANIFEST_PRIVATE_R2.json",
+        "anthropic_court_r2/EXPERIMENT_CONFIG_R2.json",
+        "anthropic_court_r2/LOCAL_EXECUTION_INSTRUCTIONS_R2.md",
+        "anthropic_court_r2/OUTPUT_REQUIREMENT_AUDIT_R2.md",
+        "anthropic_court_r2/R1_ABORT_AND_DEFECT_RECEIPT_R1.md",
+        "anthropic_court_r2/README.md",
+        "anthropic_court_r2/STATIC_VERIFICATION_RECEIPT_R2.md",
+        "anthropic_court_r2/court_common_r2.py",
+        "anthropic_court_r2/requirements.txt",
+        "anthropic_court_r2/results/blinded/.gitkeep",
+        "anthropic_court_r2/results/raw/.gitkeep",
+        "anthropic_court_r2/results/receipts/.gitkeep",
+        "anthropic_court_r2/run_anthropic_renderer_court_r2.py",
+        "anthropic_court_r2/validate_renderer_court_r2.py",
+        "lab_fixture/CLAUDE_ACTOR_REALIZATION_CONTRACT_R1.md",
+        "lab_fixture/NADIA_LAB_CANON_R1.json",
+        "lab_fixture/NADIA_LAB_FIELD_PROVENANCE_R1.json",
+        "lab_fixture/NADIA_LAB_RELATION_USER_R1.json",
+        "lab_fixture/NADIA_LAB_WHOLE_PERSON_RENDER_SUBSTRATE_R1.json",
+        "lab_fixture/NADIA_LAB_WORLD_STATE_R1.json",
+        "lab_fixture/OBJECTIVE_OCCURRENCE_OUTPUT_SCHEMA_R1.json",
+        "lab_fixture/README.md",
+        "lab_fixture/RENDERER_SCORING_RUBRIC_R1.md",
+        "lab_fixture/RF001.json",
+        "lab_fixture/RF002.json",
+        "lab_fixture/RF003.json",
+        "lab_fixture/RF004.json",
+        "lab_fixture/RF005.json",
+        "lab_fixture/RF006.json",
+        "lab_fixture/RF007.json",
+        "lab_fixture/RF008.json",
+        "lab_fixture/RF009.json",
+        "lab_fixture/RF010.json",
+        "lab_fixture/VALIDATE_LAB_FIXTURES_R1.js",
+        "render_inputs_r1/ABLATION_DESIGN_R1.md",
+        "render_inputs_r1/INPUT_PARITY_MANIFEST_R1.json",
+        "render_inputs_r1/NARROW_INPUT_COMPILATION_RULE_R1.md",
+        "render_inputs_r1/README.md",
+        "render_inputs_r1/RENDER_INPUT_SCHEMA_R1.json",
+        "render_inputs_r1/RF001_N.json",
+        "render_inputs_r1/RF001_WP.json",
+        "render_inputs_r1/RF002_N.json",
+        "render_inputs_r1/RF002_WP.json",
+        "render_inputs_r1/RF003_N.json",
+        "render_inputs_r1/RF003_WP.json",
+        "render_inputs_r1/RF004_N.json",
+        "render_inputs_r1/RF004_WP.json",
+        "render_inputs_r1/RF005_N.json",
+        "render_inputs_r1/RF005_WP.json",
+        "render_inputs_r1/RF006_N.json",
+        "render_inputs_r1/RF006_WP.json",
+        "render_inputs_r1/RF007_N.json",
+        "render_inputs_r1/RF007_WP.json",
+        "render_inputs_r1/RF008_N.json",
+        "render_inputs_r1/RF008_WP.json",
+        "render_inputs_r1/RF009_N.json",
+        "render_inputs_r1/RF009_WP.json",
+        "render_inputs_r1/RF010_N.json",
+        "render_inputs_r1/RF010_WP.json",
+        "render_inputs_r1/VALIDATE_RENDER_INPUTS_R1.js",
+        "render_inputs_r1/WHOLE_PERSON_INPUT_COMPILATION_RULE_R1.md"
+      ]
+    }
+  ],
+  "s0_s16": {
+    "all_current_questions_outputs_exact": true,
+    "all_earlier_questions_outputs_exact": true,
+    "count": 17,
+    "current_map_blob": "2a0a3a42d66f566f92d5c333fbbea4a5adb383b2",
+    "earlier_map_blob": "6271bb66b3cd2d92e2b814c4cd626220c2cdfe40"
+  },
+  "schema": "SOROK_OINDEX_R3_GIT_OBJECT_SOURCE_MANIFEST_AND_RESOLVED_8@1",
+  "six_product_links": [
+    {
+      "link": {
+        "edge_status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
+        "hq_judgment_required": true,
+        "implementation_status": "SPEC_REQUIRED_NOT_IMPLEMENTED",
+        "l0": "L0_S5_FLOURISHING_AGENCY",
+        "l1": "L1_S5_FLOURISHING",
+        "l2": "S5",
+        "l3": "L3_S5_NORMATIVE_MODEL",
+        "l4": "L4_S5_FLOURISHING_OWNER",
+        "l5": "L5_S5_HARMFUL_ATTACHMENT_COUNTEREXAMPLE",
+        "source_refs": [
+          "865b5b01e1a27e99020cf2bb389af8cd4c874b57:SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md",
+          "36ddfd8b787543751d4b350a315af31924d95d6e:SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/HQ_WHOLE_PRODUCT_SCIENCE_AND_ORCHESTRATION_DRAFT_R1/00_WHOLE_PROGRAM_HQ_JUDGMENT.md"
+        ],
+        "workstream": "S5"
+      },
+      "workstream": "S5"
+    },
+    {
+      "link": {
+        "edge_status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
+        "hq_judgment_required": true,
+        "implementation_status": "SPEC_REQUIRED_NOT_IMPLEMENTED",
+        "l0": "L0_S7_USER_PRAXIS",
+        "l1": "L1_S7_USER_PRACTICE",
+        "l2": "S7",
+        "l3": "L3_S7_PRACTICE_INFERENCE",
+        "l4": "L4_S7_PRAXIS_OWNER",
+        "l5": "L5_S7_ONE_ACTION_DIAGNOSIS_FALSIFIER",
+        "source_refs": [
+          "865b5b01e1a27e99020cf2bb389af8cd4c874b57:SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md",
+          "36ddfd8b787543751d4b350a315af31924d95d6e:SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/HQ_WHOLE_PRODUCT_SCIENCE_AND_ORCHESTRATION_DRAFT_R1/00_WHOLE_PROGRAM_HQ_JUDGMENT.md"
+        ],
+        "workstream": "S7"
+      },
+      "workstream": "S7"
+    },
+    {
+      "link": {
+        "edge_status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
+        "hq_judgment_required": true,
+        "implementation_status": "EXISTING_SOURCEFREE_PARTIAL",
+        "l0": "L0_S11_TRUTHFUL_ENCOUNTER",
+        "l1": "L1_S11_UX_SURFACE",
+        "l2": "S11",
+        "l3": "L3_S11_ENCOUNTER_SURFACE",
+        "l4": "L4_S11_UX_OWNER",
+        "l5": "L5_S11_OMNISCIENCE_AND_BLACKBOX_FALSIFIER",
+        "source_refs": [
+          "865b5b01e1a27e99020cf2bb389af8cd4c874b57:SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md",
+          "36ddfd8b787543751d4b350a315af31924d95d6e:SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/HQ_WHOLE_PRODUCT_SCIENCE_AND_ORCHESTRATION_DRAFT_R1/00_WHOLE_PROGRAM_HQ_JUDGMENT.md"
+        ],
+        "workstream": "S11"
+      },
+      "workstream": "S11"
+    },
+    {
+      "link": {
+        "edge_status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
+        "hq_judgment_required": true,
+        "implementation_status": "SPEC_REQUIRED_NOT_IMPLEMENTED",
+        "l0": "L0_S13_NEIGHBOR_AS_END",
+        "l1": "L1_S13_ECONOMIC_CONSTRAINTS",
+        "l2": "S13",
+        "l3": "L3_S13_REVENUE_MODEL",
+        "l4": "L4_S13_BUSINESS_OWNER",
+        "l5": "L5_S13_EXTRACTIVE_INCENTIVE_FALSIFIER",
+        "source_refs": [
+          "865b5b01e1a27e99020cf2bb389af8cd4c874b57:SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md",
+          "36ddfd8b787543751d4b350a315af31924d95d6e:SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/HQ_WHOLE_PRODUCT_SCIENCE_AND_ORCHESTRATION_DRAFT_R1/00_WHOLE_PROGRAM_HQ_JUDGMENT.md"
+        ],
+        "workstream": "S13"
+      },
+      "workstream": "S13"
+    },
+    {
+      "link": {
+        "edge_status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
+        "hq_judgment_required": true,
+        "implementation_status": "EXISTING_SOURCEFREE_PARTIAL",
+        "l0": "L0_S14_NONPREDATORY_ENCOUNTER",
+        "l1": "L1_S14_SAFETY_PRIVACY",
+        "l2": "S14",
+        "l3": "L3_S14_ABUSE_PRIVACY_BOUNDARY",
+        "l4": "L4_S14_SAFETY_OWNER",
+        "l5": "L5_S14_COERCION_AND_CROSS_USER_FALSIFIER",
+        "source_refs": [
+          "865b5b01e1a27e99020cf2bb389af8cd4c874b57:SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md",
+          "36ddfd8b787543751d4b350a315af31924d95d6e:SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/HQ_WHOLE_PRODUCT_SCIENCE_AND_ORCHESTRATION_DRAFT_R1/00_WHOLE_PROGRAM_HQ_JUDGMENT.md"
+        ],
+        "workstream": "S14"
+      },
+      "workstream": "S14"
+    },
+    {
+      "link": {
+        "edge_status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
+        "hq_judgment_required": true,
+        "implementation_status": "EXISTING_SOURCEFREE_PARTIAL",
+        "l0": "L0_S15_WITNESSED_HUMAN_EVIDENCE",
+        "l1": "L1_S15_ALPHA_RESEARCH",
+        "l2": "S15",
+        "l3": "L3_S15_REFERENCE_AND_NATIVE_EVALUATION",
+        "l4": "L4_S15_ALPHA_OWNER",
+        "l5": "L5_S15_PERSUASIVE_LLM_FALSIFIER",
+        "source_refs": [
+          "865b5b01e1a27e99020cf2bb389af8cd4c874b57:SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md",
+          "36ddfd8b787543751d4b350a315af31924d95d6e:SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/HQ_WHOLE_PRODUCT_SCIENCE_AND_ORCHESTRATION_DRAFT_R1/00_WHOLE_PROGRAM_HQ_JUDGMENT.md"
+        ],
+        "workstream": "S15"
+      },
+      "workstream": "S15"
+    }
+  ],
+  "source_identity_note": "The offline validator checks registry/manifest consistency. Only verify_source_manifest.py proves the manifest against real Git objects; an unchecked manifest is not proof.",
+  "source_manifest": {
+    "actual_consumer_states": {
+      "AUTHOR_TESTED_ONLY": 4,
+      "HISTORICAL_OR_AUTHOR_TESTED_ONLY": 8,
+      "HISTORICAL_SOURCE_ONLY": 3,
+      "NONE_PROVEN_AT_PREMAIN": 135,
+      "NOT_A_RUNTIME_MODULE": 17
+    },
+    "manifest_digest": "ec223ad4b65650be556e0f28c05bf94936635baa7efb3c39d4efabfb5fa3d028",
+    "object_types": {
+      "blob": 166,
+      "tree": 1
+    },
+    "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/source_manifest.json",
+    "pyat_rows": 23,
+    "reference_sources": 3,
+    "rows": 167,
+    "sha256": "b3d359f1bfe97a23b2c3fb356fde84c452ffe38ca874facbec7d5df086fdfa5c",
+    "sorok_rows": 144
+  }
+}
