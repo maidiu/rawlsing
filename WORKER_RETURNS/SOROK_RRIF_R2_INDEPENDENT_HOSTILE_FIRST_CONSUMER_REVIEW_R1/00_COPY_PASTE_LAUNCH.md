@@ -39,6 +39,8 @@ TASKS:
 5. Compare precise alternate C9-R3B @ fac064c9c3370d598e9b7469af652ae3504bc4ba and C9C12-R2 @ c78404724052496fdec8608c8b0e833c0f7c4ecc: exact version/digest/cold/anchor incompatibility; provide actionable RRIF-R3 compatibility input, do not implement it. Record CP-A5/B-F1CR/V3CORE still NOT imported by R2. Retain historical old REDs C9 14/1, BP4R 7/2, G17I, OC5E, CAN3, B3, F1CI3 and M04.
 6. Decide ACCEPT_SCOPED_SOURCEFREE_FANIN / REVISE_MATERIAL_DEFECTS / HOLD_NO_S2, engineering/science/authority separately. A passed test suite is NOT an accepted owner grant, no PREMAIN merge, no original native person.
 
+THREE ACCEPTANCE COURTS: ENGINEERING = independently rerun code, source and C12 integrity plus specific new/delta consumer, not author receipt; SCIENTIFIC = sourcefree material/actor knowledge only, original Rule A/T/ADP/SCI05 and human-person claims held; AUTHORITY = no owner acceptance, original signer, Pyat input grant, PREMAIN integration or human A5. The verdict is independent scoped review only.
+
 RETURN EXACT folder files:
 00_RETURN.md — FINDING/INTERPRETATION/ACTION/OWNER, 3 court verdicts, DONE/REMAINING/BLOCKERS/LARGEST_MOVE/FLIGHT/DELTA and final exact remote SHA.
 01_MANIFEST_ORIGINAL_JOIN_AND_NEW_DELTA.json — independent source identity and what's genuinely new.
