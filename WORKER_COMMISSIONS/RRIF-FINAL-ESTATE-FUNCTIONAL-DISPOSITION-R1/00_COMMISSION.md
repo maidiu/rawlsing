@@ -1,3 +1,9 @@
+# REQUIRED FIRST ACTION — SELF-CREATE EXCLUSIVE WORKTREE
+
+Before this commission's substantive work, the assigned local agent MUST read and EXECUTE the shell bootstrap in `WORKER_COMMISSIONS/RRIF-FINAL-ESTATE-FUNCTIONAL-DISPOSITION-R1/01_EXCLUSIVE_WORKTREE_BOOTSTRAP.md` at the same exact branch/issue #573 revised dispatch SHA. The agent itself must fetch the branch, verify the 40-hex dispatch commit against the issue, inspect existing leases/worktrees, create its own uniquely named clean Git worktree, and conduct the whole mission ONLY there. Merely saying a worktree is isolated is insufficient. On collision/unknown host STOP rather than reuse or reset another worker. Full fixed starting phase remains RRIF; no PROGRAMMA, no PRE-MAIN mutation, no force push and no self-review. The worktree-creation instruction is part of this launch's binding execution contract. The user selects editor/model/host; no autonomous change.
+
+---
+
 LAUNCH — RRIF E8 — WHOLE-ESTATE FUNCTIONAL RECONCILIATION AND DISPOSITION
 
 REPOSITORY: maidiu/rawlsing PRIVATE. PHASE: RRIF ONLY, NOT PROGRAMMA. Recover historical branch/function inheritance, reconcile original/current capabilities, independently adjudicate, integrate only warranted survivors, close RRIF. Do not start living L0-L5 PROGRAMMA PYAT #566 or new all35 empirical/world/N9/actor product campaigns.
