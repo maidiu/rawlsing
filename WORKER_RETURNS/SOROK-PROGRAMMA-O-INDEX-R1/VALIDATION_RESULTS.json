@@ -1,0 +1,40 @@
+{
+  "schema": "SOROK_PROGRAMMA_O_INDEX_VALIDATION@1",
+  "result": "PASS",
+  "root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-programma-o-index-inheritance-consolidation-20261030-r1/SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1",
+  "registry_sha256": "e5a1d0d7d0f1618083e429969b84172a0a93a244f3fd2bb337cac6fead6b1ff3",
+  "orchestration_sha256": "67eb5bcbc69572ee9bf5bfa58f6e594a38e50b59f303813cfe3594ddb42898a9",
+  "checks": [
+    "144 unique Sorok rows with exact inherited id set",
+    "19 C/A + 40 M + 12 N + 16 O + 15 E + 17 S + 4 returned assets",
+    "declared coverage and exact S0-S16 hold",
+    "no native/science promotion; every row has typed owner, grades, epoch and source time",
+    "four returned assets pinned, post-R7, candidate-only and unadopted",
+    "R6 39 rows / 94 files / 9 material families / R41 133 and 26",
+    "separate Pyat N0-N12/F1-F8 rows, no actor psyche, no id collision",
+    "all Sorok/Pyat items linked; no orphan L3 function; no dangling edge",
+    "backward paths resolve for A0-A5 and S0-S16",
+    "three traversals resolve and retain answer limits",
+    "Sorok/Pyat/V3 namespace separation recorded",
+    "circular dependencies explicitly typed (60 index cycles)",
+    "40 owner slots; zero priority decisions; Pyat/F1CR/V3/S0-S16 slots",
+    "candidate-only authority status"
+  ],
+  "counts": {
+    "sorok_rows": 144,
+    "pyat_rows": 23,
+    "pyat_f_gates": 8,
+    "four_assets": 4,
+    "l3_nodes": 74,
+    "edges": 414,
+    "traversals": 3,
+    "owner_slots": 40,
+    "priority_decisions_made": 0,
+    "typed_index_cycles": 60
+  },
+  "limits": [
+    "PASS means the index is internally complete and honest about holds; it does not mean native product or science acceptance.",
+    "The validator never executes candidate code and never reads a private source archive.",
+    "Pyat N rows use top-view 06 as a read-only lens with the original Pyat owner authoritative; atlas nodes are advisory, and F gates are HQD-125 law, not whole-estate implementation."
+  ]
+}

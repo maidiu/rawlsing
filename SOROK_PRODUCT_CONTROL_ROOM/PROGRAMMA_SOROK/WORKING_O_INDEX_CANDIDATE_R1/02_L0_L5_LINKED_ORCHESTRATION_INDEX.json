@@ -1,0 +1,5832 @@
+{
+  "schema": "SOROK_PROGRAMMA_O_INDEX_L0_L5_LINKED_ORCHESTRATION@1",
+  "status": "WORKING_CANDIDATE_NOT_HQ_ADJUDICATED",
+  "source_registry": "01_SOURCE_OF_TRUTH_REGISTRY.json",
+  "layers": {
+    "L0": {
+      "name": "Product/human outcome obligations",
+      "nodes": [
+        "L0_PERSON",
+        "L0_MATERIAL",
+        "L0_HISTORY",
+        "L0_GOVERNANCE"
+      ]
+    },
+    "L1": {
+      "name": "Developmental and governance organs",
+      "nodes": [
+        "L1_WORLD",
+        "L1_ACTOR",
+        "L1_PERSON",
+        "L1_GOVERNANCE",
+        "L1_RECOVERY",
+        "L1_PYAT_SEPARATE"
+      ]
+    },
+    "L2": {
+      "name": "Scientific requirements, owner decisions and holds",
+      "nodes": [
+        "N01",
+        "N02",
+        "N03",
+        "N04",
+        "N05",
+        "N06",
+        "N07",
+        "N08",
+        "N09",
+        "N10",
+        "N11",
+        "N12",
+        "O01",
+        "O02",
+        "O03",
+        "O04",
+        "O05",
+        "O06",
+        "O07",
+        "O08",
+        "O09",
+        "O10",
+        "O11",
+        "O12",
+        "O13",
+        "O14",
+        "O15",
+        "O16",
+        "S0",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "PYAT_N0",
+        "PYAT_N1",
+        "PYAT_N2",
+        "PYAT_N3",
+        "PYAT_N4",
+        "PYAT_N5",
+        "PYAT_N6",
+        "PYAT_N7",
+        "PYAT_N8E",
+        "PYAT_N8S",
+        "PYAT_N9",
+        "PYAT_N10E",
+        "PYAT_N10W",
+        "PYAT_N11",
+        "PYAT_N12"
+      ]
+    },
+    "L3": {
+      "name": "Source functions, definitions and returned code",
+      "nodes": [
+        "C0",
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "A0",
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M08",
+        "M09",
+        "M10",
+        "M11",
+        "M12",
+        "M13",
+        "M14",
+        "M15",
+        "M16",
+        "M17",
+        "M18",
+        "M19",
+        "M20",
+        "M21",
+        "M22",
+        "M23",
+        "M24",
+        "M25",
+        "M26",
+        "M27",
+        "M28",
+        "M29",
+        "M30",
+        "M31",
+        "M32",
+        "M33",
+        "M34",
+        "M35",
+        "M36",
+        "M37",
+        "M38",
+        "M39",
+        "M40",
+        "F1C_ORIGINAL",
+        "F1CR_CLAIMED_PATCH",
+        "F1CR_R5_RECONSTRUCTION",
+        "B1",
+        "B2",
+        "B3",
+        "B3A",
+        "B3AS",
+        "BP2P4J",
+        "S39_S52",
+        "R15_V2",
+        "CP-A5-R2",
+        "C9C12-R2",
+        "B-F1CR-R2",
+        "V3CORE-R1"
+      ]
+    },
+    "L4": {
+      "name": "Named consumers, candidate consumers and cross-component edges",
+      "nodes": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06",
+        "E07",
+        "E08",
+        "E09",
+        "E10",
+        "E11",
+        "E12",
+        "E13",
+        "E14",
+        "E15",
+        "RCFB_E1",
+        "RCFB_E2",
+        "RCFB_E3",
+        "RCFB_E4",
+        "RCFB_E5",
+        "RCFB_E6",
+        "RCFB_E7",
+        "RCFB_E8",
+        "RCFB_E9",
+        "RCFB_E10",
+        "L4_NAMED_FIRST_CONSUMER",
+        "L4_I1_CANDIDATE",
+        "L4_I1_TARGETLESS",
+        "L4_I1_V3_PROJECTION",
+        "L4_C9_C12_READ"
+      ]
+    },
+    "L5": {
+      "name": "Tests, falsifiers, preserved negatives and readback",
+      "nodes": [
+        "L5_R7_REGISTRY",
+        "L5_R6_CLOSE",
+        "L5_FOUR_AUTHOR_TESTS",
+        "L5_HISTORICAL_NEGATIVES",
+        "L5_VALIDATOR",
+        "L5_SOURCE_HOLD",
+        "PYAT_F1",
+        "PYAT_F2",
+        "PYAT_F3",
+        "PYAT_F4",
+        "PYAT_F5",
+        "PYAT_F6",
+        "PYAT_F7",
+        "PYAT_F8"
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "L0_PERSON",
+      "layer": "L0",
+      "kind": "PRODUCT_OUTCOME",
+      "title": "A continuing person can live, remember, act and be encountered without collapsing the world into one perspective",
+      "status": "CANDIDATE_OBLIGATION",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "L0_MATERIAL",
+      "layer": "L0",
+      "kind": "PRODUCT_OUTCOME",
+      "title": "Independent material activity, care and refusal remain real even when unobserved by the actor",
+      "status": "CANDIDATE_OBLIGATION",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "L0_HISTORY",
+      "layer": "L0",
+      "kind": "PRODUCT_OUTCOME",
+      "title": "Historical formation can change interpretation, ideology or theology, or remain unchanged, without substituting a later story for the earlier actor",
+      "status": "CANDIDATE_OBLIGATION",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "L0_GOVERNANCE",
+      "layer": "L0",
+      "kind": "PRODUCT_OUTCOME",
+      "title": "Every inherited capability, unresolved science and owner slot is discoverable without false native or priority claims",
+      "status": "CANDIDATE_OBLIGATION",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "L1_WORLD",
+      "layer": "L1",
+      "kind": "DEVELOPMENTAL_ORGAN",
+      "title": "Independent world, material activity and care",
+      "member_ids": [
+        "C0",
+        "C4",
+        "C6",
+        "C8",
+        "O08",
+        "O09",
+        "E04",
+        "E09",
+        "O16"
+      ],
+      "status": "CANDIDATE_ORCHESTRATION_NOT_HQ_ADJUDICATED",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "L1_ACTOR",
+      "layer": "L1",
+      "kind": "DEVELOPMENTAL_ORGAN",
+      "title": "Actor regulation, interpretation and memory",
+      "member_ids": [
+        "C1",
+        "C2",
+        "C3",
+        "C5",
+        "C7",
+        "C9",
+        "N01",
+        "N02",
+        "N03",
+        "N04",
+        "N05",
+        "N06",
+        "N07",
+        "N08",
+        "N09",
+        "N10",
+        "O01",
+        "O03",
+        "O04",
+        "O05",
+        "O07",
+        "O10",
+        "O11",
+        "O12",
+        "O13",
+        "E01",
+        "E02",
+        "E03",
+        "E08",
+        "E13",
+        "E14",
+        "E15"
+      ],
+      "status": "CANDIDATE_ORCHESTRATION_NOT_HQ_ADJUDICATED",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "L1_PERSON",
+      "layer": "L1",
+      "kind": "DEVELOPMENTAL_ORGAN",
+      "title": "Continuing person, reentry and human-facing life",
+      "member_ids": [
+        "C10",
+        "C11",
+        "C12",
+        "A0",
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "N12",
+        "O14",
+        "O15",
+        "E05",
+        "E06",
+        "E07",
+        "E10",
+        "E11",
+        "E12"
+      ],
+      "status": "CANDIDATE_ORCHESTRATION_NOT_HQ_ADJUDICATED",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "L1_GOVERNANCE",
+      "layer": "L1",
+      "kind": "DEVELOPMENTAL_ORGAN",
+      "title": "Science issuance, source custody and owner slots",
+      "member_ids": [
+        "O01",
+        "O02",
+        "O03",
+        "O04",
+        "O05",
+        "O06",
+        "O07",
+        "O08",
+        "O09",
+        "O10",
+        "O11",
+        "O12",
+        "O13",
+        "O14",
+        "O15",
+        "O16",
+        "S0",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16"
+      ],
+      "status": "CANDIDATE_ORCHESTRATION_NOT_HQ_ADJUDICATED",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "L1_RECOVERY",
+      "layer": "L1",
+      "kind": "DEVELOPMENTAL_ORGAN",
+      "title": "Recovery, preserved negatives and evidence custody",
+      "member_ids": [
+        "F1C_ORIGINAL",
+        "F1CR_CLAIMED_PATCH",
+        "F1CR_R5_RECONSTRUCTION",
+        "B1",
+        "B2",
+        "B3",
+        "B3A",
+        "B3AS",
+        "BP2P4J",
+        "S39_S52",
+        "R15_V2",
+        "CP-A5-R2",
+        "C9C12-R2",
+        "B-F1CR-R2",
+        "V3CORE-R1"
+      ],
+      "status": "CANDIDATE_ORCHESTRATION_NOT_HQ_ADJUDICATED",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "C0",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Source-qualified historical world and possibility",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "C4/C8 world and material possibility",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "C1",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Situated subject and actual activity",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "CAN008 E1 actor relevance",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "C2",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Needs, objects and motives",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "CAN008 action feasibility and later motive",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "C3",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Individual organization, practice, mediation",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "C9 semantic version and E2 selection",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "C4",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Material social lives and generation",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "C8 actual care/work encounter",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "C5",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Differentiated expectations and relational history",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "Later actor-relative interpretation/action",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "C6",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Real time, activity and interstitial continuity",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "CAN008 event feasibility, N/N+1 sequence",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "C7",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Historical differentiated response under social powers",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "C9 actor action and later interpretation",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "C8",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Independent world occurrence and access",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "C9 event candidate and actor access",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "C9",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Canonical actor decision/version and later semantic reader",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "E2 actual semantic response, C12 actor mirror",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "C10",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Event/model call and life recursion",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "C12 continuing person, N+1",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "C11",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Actual PRE-V3/Pyat physical weld",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "C12 world-to-actor source admission",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "C12",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Pipeline-produced continuing person and forks",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "A0 person life and reentry",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "A0",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Existing pipeline-generated individual",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "A1 living interaction",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "A1",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Bounded live continuing life engine",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "A2 historical reentry",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "A2",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Historical reentry and changed later action",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "A3 independent unfolding",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "A3",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Independent ongoing life",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "A4 multiple lives",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "A4",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Generalized persons and ecologies",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "A5 human alpha",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "A5",
+      "layer": "L3",
+      "kind": "TERMINAL_C_A",
+      "title": "Authorized human-facing alpha",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "first_required_consumer": "Human participant evaluation",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M01",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "persistent BackboneState pattern",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "v3/engine/yearly_step.py::run_one_year, v3/core/derived.py::compute_all_derived",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M02",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "material capacity",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M03",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "psychological/regulatory capacity vector",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M04",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "reproduction constraints",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M05",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "A/S/V/Aim domains and latent/expressed Aim",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M06",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "multidimensional alienation",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M07",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "public/private/inner registers",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M08",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "wound/sensitivity state",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M09",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "cracks",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M10",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "buffers and costs",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M11",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "frameworks as metabolic operators",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M12",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "collective infrastructure",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M13",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "practice stack",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M14",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "PeakRouting / loop topology / solidarity boundary",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M15",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "need axes / expectation baseline",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M16",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "StrivingObject",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M17",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "Gift/Disruption shards / expectation events",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M18",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "RuptureShard",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M19",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "multi-year MetabolizationProcess",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M20",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "magnets / relational field",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M21",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "pressure-flow history / memory / grooves / conductance",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "v3/engine/yearly_step.py::run_one_year post-year pressure flow; v3/psyche/flow.py::run_pressure_flow_cycle",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M22",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "child model / assumed rules / taboos / possible-world boundary",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M23",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "autonomy/safety drives and conditions",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M24",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "stability-threshold inertia",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M25",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "yearly ordered causal spine",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "v3/engine/step_runner.py::run_n_years \u2192 v3/engine/yearly_step.py::run_one_year",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M26",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "stored-versus-derived separation",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "v3/core/derived.py::compute_all_derived and original step invariant",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M27",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "Pass 1 LLM proposal",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "v3/engine/run_llm_band.py Pass 1",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M28",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "score/select/apply boundary",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "v3/engine/run_llm_band.py selection",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M29",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "Pass 2 render-only role",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "v3/render/phenomenology.py::render_year; V2 surface",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M30",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "V3-under-V2 nonmutation architecture",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "v2/conversation_engine.py::prepare_conversation_turn",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M31",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "life-course Enneagram emergence / end matcher",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M32",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "old V5 runtime-input / field-injection bridge",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M33",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "generic pseudo-random mechanical event sampler",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M34",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "fallback concretization when Pass 1/selection yields nothing",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M35",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "placeholder crack/framework invariant repair",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M36",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "hopeful/medium parent defaults",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M37",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "structural placeholder scene / annotation for non-LLM years",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M38",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "dual derived-schedule declaration",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "v3/engine/yearly_step.py::_compute_derived_after_step",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M39",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "server-side/manual rupture injection",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "M40",
+      "layer": "L3",
+      "kind": "HISTORIC_V3_MECHANISM",
+      "title": "generation readiness / global ready surface",
+      "registry_status": "EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED",
+      "first_required_consumer": "server/generation/store.py::readiness",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "N01",
+      "layer": "L2",
+      "kind": "SOROK_NEO_REQUIREMENT",
+      "title": "Needs, desires, motives and practical objects",
+      "registry_status": "REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW",
+      "first_required_consumer": "ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "N02",
+      "layer": "L2",
+      "kind": "SOROK_NEO_REQUIREMENT",
+      "title": "Thick, scoped expectations and early care",
+      "registry_status": "REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW",
+      "first_required_consumer": "ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "N03",
+      "layer": "L2",
+      "kind": "SOROK_NEO_REQUIREMENT",
+      "title": "Challenge, complication, threat and repair",
+      "registry_status": "REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW",
+      "first_required_consumer": "ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "N04",
+      "layer": "L2",
+      "kind": "SOROK_NEO_REQUIREMENT",
+      "title": "Simultaneous recruitment, tension and regulation",
+      "registry_status": "REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW",
+      "first_required_consumer": "ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "N05",
+      "layer": "L2",
+      "kind": "SOROK_NEO_REQUIREMENT",
+      "title": "Durable transition, changed relations and contradiction",
+      "registry_status": "REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW",
+      "first_required_consumer": "ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "N06",
+      "layer": "L2",
+      "kind": "SOROK_NEO_REQUIREMENT",
+      "title": "Interstitial activity, life-stages and social reproduction",
+      "registry_status": "REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW",
+      "first_required_consumer": "ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "N07",
+      "layer": "L2",
+      "kind": "SOROK_NEO_REQUIREMENT",
+      "title": "Independent others, power, care and relational feedback",
+      "registry_status": "REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW",
+      "first_required_consumer": "ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "N08",
+      "layer": "L2",
+      "kind": "SOROK_NEO_REQUIREMENT",
+      "title": "Differentiated impression, intensity, salience and no-change",
+      "registry_status": "REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW",
+      "first_required_consumer": "ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "N09",
+      "layer": "L2",
+      "kind": "SOROK_NEO_REQUIREMENT",
+      "title": "Actor's fallible autobiographical memory and meaning",
+      "registry_status": "REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW",
+      "first_required_consumer": "ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "N10",
+      "layer": "L2",
+      "kind": "SOROK_NEO_REQUIREMENT",
+      "title": "Later ideology, theology and cosmological rearticulation",
+      "registry_status": "REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW",
+      "first_required_consumer": "ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "N11",
+      "layer": "L2",
+      "kind": "SOROK_NEO_REQUIREMENT",
+      "title": "User-settled event-batch temporal recursion",
+      "registry_status": "REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW",
+      "first_required_consumer": "ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "N12",
+      "layer": "L2",
+      "kind": "SOROK_NEO_REQUIREMENT",
+      "title": "Actual C12 person, coupled world and human encounter",
+      "registry_status": "REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW",
+      "first_required_consumer": "ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "O01",
+      "layer": "L2",
+      "kind": "ORIGINAL_SCIENCE_OWNER_DECISION",
+      "title": "Need-object-motive",
+      "registry_status": "DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED",
+      "first_required_consumer": "C8/C9 action feasibility and later actor motive",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "O02",
+      "layer": "L2",
+      "kind": "ORIGINAL_SCIENCE_OWNER_DECISION",
+      "title": "Care and early scoped expectations",
+      "registry_status": "DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED",
+      "first_required_consumer": "Later actor anticipation/response",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "O03",
+      "layer": "L2",
+      "kind": "ORIGINAL_SCIENCE_OWNER_DECISION",
+      "title": "Situated multistream Rule A",
+      "registry_status": "DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED",
+      "first_required_consumer": "C9 later CAN008 E2 response",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "O04",
+      "layer": "L2",
+      "kind": "ORIGINAL_SCIENCE_OWNER_DECISION",
+      "title": "Challenge and repair",
+      "registry_status": "DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED",
+      "first_required_consumer": "Later C9 context-sensitive response",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "O05",
+      "layer": "L2",
+      "kind": "ORIGINAL_SCIENCE_OWNER_DECISION",
+      "title": "Acquired practical operation",
+      "registry_status": "DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED",
+      "first_required_consumer": "Persisted PRACTICE to later E2 task performer",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "O06",
+      "layer": "L2",
+      "kind": "ORIGINAL_SCIENCE_OWNER_DECISION",
+      "title": "New functional relation",
+      "registry_status": "DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED",
+      "first_required_consumer": "Later C9 semantic selector",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "O07",
+      "layer": "L2",
+      "kind": "ORIGINAL_SCIENCE_OWNER_DECISION",
+      "title": "Persistence, dormancy and nochange",
+      "registry_status": "DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED",
+      "first_required_consumer": "C9 version receipt to later E2",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "O08",
+      "layer": "L2",
+      "kind": "ORIGINAL_SCIENCE_OWNER_DECISION",
+      "title": "Independent coactor and material labor",
+      "registry_status": "DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED",
+      "first_required_consumer": "C8 objective world journal and actor-accessible event",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "O09",
+      "layer": "L2",
+      "kind": "ORIGINAL_SCIENCE_OWNER_DECISION",
+      "title": "Material activity and intervals",
+      "registry_status": "DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED",
+      "first_required_consumer": "C6/C8 interval and C9 condition read",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "O10",
+      "layer": "L2",
+      "kind": "ORIGINAL_SCIENCE_OWNER_DECISION",
+      "title": "Trace versus remembered episode",
+      "registry_status": "DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED",
+      "first_required_consumer": "ADP016 actor-safe N+1 retrospective",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "O11",
+      "layer": "L2",
+      "kind": "ORIGINAL_SCIENCE_OWNER_DECISION",
+      "title": "Sourced mistaken belief",
+      "registry_status": "DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED",
+      "first_required_consumer": "ADP017 N+1 and later CAN008",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "O12",
+      "layer": "L2",
+      "kind": "ORIGINAL_SCIENCE_OWNER_DECISION",
+      "title": "Reflection/SCI05",
+      "registry_status": "DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED",
+      "first_required_consumer": "N+1 second-half batch authorization",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "O13",
+      "layer": "L2",
+      "kind": "ORIGINAL_SCIENCE_OWNER_DECISION",
+      "title": "Socially learned concepts",
+      "registry_status": "DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED",
+      "first_required_consumer": "C9 later interpretation/action",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "O14",
+      "layer": "L2",
+      "kind": "ORIGINAL_SCIENCE_OWNER_DECISION",
+      "title": "Native Pyat C11 world weld",
+      "registry_status": "DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED",
+      "first_required_consumer": "C11 to C12 native person",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "O15",
+      "layer": "L2",
+      "kind": "ORIGINAL_SCIENCE_OWNER_DECISION",
+      "title": "Actual semantic E2 consumer",
+      "registry_status": "DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED",
+      "first_required_consumer": "C9 E2 actor-relative operation selector",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "O16",
+      "layer": "L2",
+      "kind": "ORIGINAL_SCIENCE_OWNER_DECISION",
+      "title": "Irreversible event batch policy",
+      "registry_status": "DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED",
+      "first_required_consumer": "C8/C9/C12 world-executing F3",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "E01",
+      "layer": "L4",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Rule A response",
+      "registry_status": "SPECIFIED_CARRIER_ONLY",
+      "first_required_consumer": "C9 E2 CAN008 actor-relative source read",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "blocking_authority": "SCIENCE_UNISSUED",
+      "decision_ids": [
+        "O03"
+      ],
+      "hq_judgment_required": true
+    },
+    {
+      "id": "E02",
+      "layer": "L4",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Acquired practice and qualified nochange",
+      "registry_status": "SPECIFIED_CARRIER_ONLY",
+      "first_required_consumer": "C9 Rule T receipt\u2192later E2 earned-operation selector",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "blocking_authority": "SCIENCE_UNISSUED",
+      "decision_ids": [
+        "O05",
+        "O07"
+      ],
+      "hq_judgment_required": true
+    },
+    {
+      "id": "E03",
+      "layer": "L4",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Needs/material motive and activity",
+      "registry_status": "PARTIAL_SOURCEFREE",
+      "first_required_consumer": "C6/C8 reality constraints\u2192C9 actor feasible action",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "blocking_authority": "SCIENCE_AND_SOURCE_HELD",
+      "decision_ids": [
+        "O01",
+        "O09"
+      ],
+      "hq_judgment_required": true
+    },
+    {
+      "id": "E04",
+      "layer": "L4",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Independent B real encounter",
+      "registry_status": "CONTROLLED_SOURCEFREE_ONLY",
+      "first_required_consumer": "B owner\u2192C8 world occurrence\u2192actor access",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "blocking_authority": "ORIGINAL_SOURCE_HELD",
+      "decision_ids": [
+        "O08"
+      ],
+      "hq_judgment_required": true
+    },
+    {
+      "id": "E05",
+      "layer": "L4",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Canonical actor writer to reader",
+      "registry_status": "TESTONLY_COMPONENTS_NOT_ASSEMBLED",
+      "first_required_consumer": "C9 actor version+receipt+outbox\u2192C9_READER E2 snapshot",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "blocking_authority": "ENGINEERING_INCOMPLETE",
+      "decision_ids": [
+        "O15"
+      ],
+      "hq_judgment_required": true
+    },
+    {
+      "id": "E06",
+      "layer": "L4",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Perception-preserving C12 fork",
+      "registry_status": "SOURCEFREE_REPAIRED_FORK_CURRENT_C9_READER_PROVEN_AT_SELECTED_TEST_SCOPE__NOT_NATIVE",
+      "first_required_consumer": "JOIN-E C12 fork\u2192C9 inherited history reader",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "blocking_authority": "NATIVE_C12_OWNER_HELD",
+      "decision_ids": [
+        "O14"
+      ],
+      "hq_judgment_required": true
+    },
+    {
+      "id": "E07",
+      "layer": "L4",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "F0 transport/source custody",
+      "registry_status": "REPAIRED_SOURCEFREE_COMPONENT",
+      "first_required_consumer": "F0 verified source import\u2192future canonical runtime",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "blocking_authority": "ORIGINAL_USE_PERMISSION_UNVERIFIED",
+      "decision_ids": [
+        "O14"
+      ],
+      "hq_judgment_required": true
+    },
+    {
+      "id": "E08",
+      "layer": "L4",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Actor-safe memory and SCI05",
+      "registry_status": "SOURCEFREE_PACKET_ONLY",
+      "first_required_consumer": "C9 actor access\u2192ADP016/017\u2192postcall SCI05\u2192N+1",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "blocking_authority": "SCIENCE_HELD",
+      "decision_ids": [
+        "O10",
+        "O11",
+        "O12"
+      ],
+      "hq_judgment_required": true
+    },
+    {
+      "id": "E09",
+      "layer": "L4",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Irreversible 3\u20135 world event batch",
+      "registry_status": "DRYRUN_ONLY",
+      "first_required_consumer": "F3 conditional proposals\u2192real C8/B execution\u2192C9 durable state",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "blocking_authority": "USER_OR_WORLD_POLICY_UNSETTLED",
+      "decision_ids": [
+        "O16"
+      ],
+      "hq_judgment_required": true
+    },
+    {
+      "id": "E10",
+      "layer": "L4",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Mother-first genealogy",
+      "registry_status": "DOCUMENTARY_DESIGN_ONLY",
+      "first_required_consumer": "C4 antecedent life and material world\u2192C8 child life",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "blocking_authority": "SCOPED_SCIENCE_SOURCE_HELD",
+      "decision_ids": [
+        "O08",
+        "O09"
+      ],
+      "hq_judgment_required": true
+    },
+    {
+      "id": "E11",
+      "layer": "L4",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Pyat original world weld",
+      "registry_status": "SOURCEFREE_PREPARATION",
+      "first_required_consumer": "Pyat N11/N12 world service\u2192C11 actual C12 person",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "blocking_authority": "SOURCE_NATIVE_GRANT_HELD",
+      "decision_ids": [
+        "O14"
+      ],
+      "hq_judgment_required": true
+    },
+    {
+      "id": "E12",
+      "layer": "L4",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Complete person living/reentry/alpha",
+      "registry_status": "NOT_PROVEN",
+      "first_required_consumer": "C12 same actual person\u2192A0\u2013A5",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "blocking_authority": "NATIVE_AND_PARTICIPANT_HELD",
+      "decision_ids": [
+        "O15"
+      ],
+      "hq_judgment_required": true
+    },
+    {
+      "id": "E13",
+      "layer": "L4",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Scoped care and challenge expectations",
+      "registry_status": "REVIEWED_REQUIREMENT_ONLY",
+      "first_required_consumer": "C9 received care/challenge\u2192later scoped response",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "blocking_authority": "SCIENTIFIC_RULE_UNISSUED",
+      "decision_ids": [
+        "O02",
+        "O04"
+      ],
+      "hq_judgment_required": true
+    },
+    {
+      "id": "E14",
+      "layer": "L4",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Causally necessary interfunctional relation",
+      "registry_status": "REVIEWED_REQUIREMENT_ONLY",
+      "first_required_consumer": "CAN011 qualified composed operation/relation\u2192E2 semantic selector",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "blocking_authority": "SCIENTIFIC_RULE_UNISSUED",
+      "decision_ids": [
+        "O06"
+      ],
+      "hq_judgment_required": true
+    },
+    {
+      "id": "E15",
+      "layer": "L4",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Socially learned conceptual life",
+      "registry_status": "REVIEWED_REQUIREMENT_ONLY",
+      "first_required_consumer": "Qualified educational/institutional history\u2192actor interpretation/action",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "blocking_authority": "SCIENTIFIC_SOURCE_UNISSUED",
+      "decision_ids": [
+        "O13"
+      ],
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S0",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S1",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S2",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S3",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S4",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S5",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S6",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S7",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S8",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S9",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S10",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S11",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S12",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S13",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S14",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S15",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "S16",
+      "layer": "L2",
+      "kind": "DECLARED_S0_S16_WORKSTREAM",
+      "title": "DEFINITION_NOT_RECONCILED_TO_UNIQUE_ORIGINAL_SOROK_SOURCE",
+      "registry_status": "RECOVERY_EXACT_HOLD__PRIMARY_17_ITEM_DEFINITION_NOT_ESTABLISHED",
+      "first_required_consumer": "UNKNOWN",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "source_ref": null,
+      "hq_judgment_required": true
+    },
+    {
+      "id": "RCFB_E1",
+      "layer": "L4",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "R31J/F1CR B material owner + fixed A/B/shared history -> B event",
+      "registry_status": "SOURCE_CANDIDATE_OR_UNJOINED",
+      "first_required_consumer": "R31JProduct / r31j.assertion.p01 (attributed); targetless JOIN refusal read-only",
+      "actual_current_importer": "SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "RCFB_E2",
+      "layer": "L4",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "A/B shared history -> C8 event owner/receipt/access",
+      "registry_status": "SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT",
+      "first_required_consumer": "bp2p4.reunion / candidate CandidateStore / bp4.c10.receive",
+      "actual_current_importer": "SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "RCFB_E3",
+      "layer": "L4",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "C8 -> CAN008 test-only A -> CAN011 test-only T/no-change",
+      "registry_status": "SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT",
+      "first_required_consumer": "JoinedProducer.stage_c9 / CandidateStore",
+      "actual_current_importer": "SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "RCFB_E4",
+      "layer": "L4",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "CAN011/T -> C9 selected writer -> performed E2 (not offered)",
+      "registry_status": "SOURCE_CANDIDATE_OR_UNJOINED",
+      "first_required_consumer": "BP2P4J seed/product for E2; C9 R3B reader only for its own actor DB",
+      "actual_current_importer": "SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "RCFB_E5",
+      "layer": "L4",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "C9 -> C10 timeline",
+      "registry_status": "SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT",
+      "first_required_consumer": "bp4.c10.receive / JoinedProduct inherited A0-A3",
+      "actual_current_importer": "SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "RCFB_E6",
+      "layer": "L4",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "C10 -> C12 append/fork/cold",
+      "registry_status": "SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT",
+      "first_required_consumer": "GuardedC12Store.verify_store/fork; JoinedProduct",
+      "actual_current_importer": "SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "RCFB_E7",
+      "layer": "L4",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "C12 -> actual A0-A3 product method/renderer",
+      "registry_status": "SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT",
+      "first_required_consumer": "BP4Product/JoinedProduct methods; CLI/run_joined only",
+      "actual_current_importer": "SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "RCFB_E8",
+      "layer": "L4",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "G17 material/C9 handoff component",
+      "registry_status": "SOURCE_CANDIDATE_OR_UNJOINED",
+      "first_required_consumer": "continue_person / c9_handoff_consumer.receive_handoff (component)",
+      "actual_current_importer": "SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "RCFB_E9",
+      "layer": "L4",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "M04R journaled claim provenance component",
+      "registry_status": "SOURCE_CANDIDATE_OR_UNJOINED",
+      "first_required_consumer": "cell.Cell.read_owner (component)",
+      "actual_current_importer": "SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "RCFB_E10",
+      "layer": "L4",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "OC5/C8 provenance and capsule trust",
+      "registry_status": "SOURCE_CANDIDATE_OR_UNJOINED",
+      "first_required_consumer": "none adopted",
+      "actual_current_importer": "SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "F1C_ORIGINAL",
+      "layer": "L3",
+      "kind": "RECOVERED_ORIGINAL_CODE",
+      "title": "Original F1C executable exact loose Git blob 104f5bd7826c8676192eac96753d980e35d8a80a",
+      "registry_status": "EXACT_SOURCE_FOUND_AND_READ__13_HISTORICAL_TEST_CASES_AUTHOR_EXECUTED",
+      "first_required_consumer": "R31JProduct/r31j.assertion.p01; F1C same_receiver_assertion",
+      "actual_current_importer": "SOURCE_READ_OR_AUTHOR_TESTED__UNADOPTED",
+      "source_ref": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/candidate/f1c_original_104f5bd.py",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "F1CR_CLAIMED_PATCH",
+      "layer": "L3",
+      "kind": "HISTORIC_PATCH",
+      "title": "Claimed historical F1CR patched executable bf7e625e1f208908e583ea72ebb73992ad7d19ae",
+      "registry_status": "EXACT_PATCH_MISSING__SOURCE_NOT_FOUND",
+      "first_required_consumer": "NONE_VERIFIABLE",
+      "actual_current_importer": "EXACT_PATCH_MISSING",
+      "source_ref": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/02_ORIGINAL_ARCHIVE_MEMBER_AND_HASH_RECONCILIATION.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "F1CR_R5_RECONSTRUCTION",
+      "layer": "L3",
+      "kind": "RECONSTRUCTED_CODE",
+      "title": "R5 reconstructed F1CR live history verifier",
+      "registry_status": "RECONSTRUCTED_CANDIDATE__AUTHOR_TESTED_NOT_ORIGINAL_PATCH",
+      "first_required_consumer": "BF1 targetless_c10_consumer.BWorld \u2192 TargetlessGuardedJoinedProduct",
+      "actual_current_importer": "SOURCE_READ_OR_AUTHOR_TESTED__UNADOPTED",
+      "source_ref": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/candidate/f1c_reconstructed_candidate.py",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "B1",
+      "layer": "L3",
+      "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
+      "title": "B1 test-only E1\u2192mediator\u2192later E2",
+      "registry_status": "AUTHOR_39_PASS__I2_PENDING__NO_NATIVE",
+      "first_required_consumer": "Store.commit \u2192 execute second event",
+      "actual_current_importer": "SOURCEFREE_OR_TEST_ONLY__NO_NATIVE",
+      "source_ref": "WORKER_RETURNS/SOROK-V2-HQ324-B1-COUPLED-DEVELOPMENT-R1/bfirst.py",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "B2",
+      "layer": "L3",
+      "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
+      "title": "B2 four-return physical developmental bridge",
+      "registry_status": "AUTHOR_81_CONNECTED__249_INHERITED__INDEPENDENT_S2_SCOPED",
+      "first_required_consumer": "Bridge.advance \u2192 d1_gate",
+      "actual_current_importer": "SOURCEFREE_OR_TEST_ONLY__NO_NATIVE",
+      "source_ref": "WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "B3",
+      "layer": "L3",
+      "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
+      "title": "B3 coupled synthetic event/meaning",
+      "registry_status": "AUTHOR_71__42_F2__S3_REVISE__X3_PARTIAL_WRITE_RED",
+      "first_required_consumer": "World.execute and later T9 CHECK_LOCK eligibility only",
+      "actual_current_importer": "SOURCEFREE_OR_TEST_ONLY__NO_NATIVE",
+      "source_ref": "WORKER_RETURNS/SOROK-V2-HQ329-B3-COUPLED-INTERPRETATION-R1/developmental_loop.py",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "B3A",
+      "layer": "L3",
+      "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
+      "title": "B3A X3 atomic repair",
+      "registry_status": "SCOPED_ATOMIC_REPAIR__FOLLOWUP_SCHEMA_RED",
+      "first_required_consumer": "later E3 sourcefree integration",
+      "actual_current_importer": "SOURCEFREE_OR_TEST_ONLY__NO_NATIVE",
+      "source_ref": "candidate/integration.py",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "B3AS",
+      "layer": "L3",
+      "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
+      "title": "B3AS schema/readset corrected",
+      "registry_status": "INDEPENDENT_I2_ACCEPT_SCOPED_SQL_READSET__NO_NATIVE",
+      "first_required_consumer": "historical same sourcefree E3 readset and later consumer",
+      "actual_current_importer": "SOURCEFREE_OR_TEST_ONLY__NO_NATIVE",
+      "source_ref": "candidate/integration.py",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "BP2P4J",
+      "layer": "L3",
+      "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
+      "title": "BP2P4J JoinedProduct sourcefree actual consumer",
+      "registry_status": "AUTHOR_98__10_SEVERANCES__INDEPENDENT_FULL_RELEASE_NOT_PROVEN",
+      "first_required_consumer": "JoinedProduct \u2192 joined_downstream_a0_a2_assertion and C12 episode store",
+      "actual_current_importer": "SOURCEFREE_OR_TEST_ONLY__NO_NATIVE",
+      "source_ref": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/product.py",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "S39_S52",
+      "layer": "L3",
+      "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
+      "title": "modern Codex S39\u2013S52 series",
+      "registry_status": "SOURCEFREE__S39_PREMISES_CALLER_SUPPLIED__S49_NATURAL_B_EMPTY",
+      "first_required_consumer": "compile_candidate \u2192 produce_b_turn \u2192 perform_paid_participation",
+      "actual_current_importer": "SOURCEFREE_OR_TEST_ONLY__NO_NATIVE",
+      "source_ref": "s52/session.py",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "R15_V2",
+      "layer": "L3",
+      "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
+      "title": "R15 RFA model-renderer feasibility",
+      "registry_status": "R2_PREPARED_NOT_PROVIDER_SCORED",
+      "first_required_consumer": "RFA renderer lab / Nadia inputs",
+      "actual_current_importer": "SOURCEFREE_OR_TEST_ONLY__NO_NATIVE",
+      "source_ref": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "CP-A5-R2",
+      "layer": "L3",
+      "kind": "NEW_FOUR_RETURN_CODE_ASSET",
+      "title": "cp_a5.encounter.EncounterReader.ask; cp_a5.assertion.multicontext_encounter_assertion",
+      "registry_status": "SOURCE_FOUND_ADAPTER_AUTHOR_TESTED__UNADOPTED",
+      "first_required_consumer": "I1 GuardedJoinedProduct C12 same root \u2192 A sees tool-return but not B unperceived market commission",
+      "actual_current_importer": "AUTHOR_TESTED_SOURCEFREE_CANDIDATE__UNADOPTED",
+      "source_ref": "WORKER_RETURNS/SOROK-CP-A5-R2/01_ACTUAL_A3_A5_LIFE_AND_ENCOUNTER_TRACE.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "C9C12-R2",
+      "layer": "L3",
+      "kind": "NEW_FOUR_RETURN_CODE_ASSET",
+      "title": "c9c12_reader.read_composite -> read_actor_snapshot + guarded_c12_cold_read",
+      "registry_status": "SOURCE_FOUND_ADAPTER_AUTHOR_TESTED__UNADOPTED",
+      "first_required_consumer": "C9 actor R3B SQLite snapshot/outbox + BP4R C12 verified content under I1-compatible read-only composite",
+      "actual_current_importer": "AUTHOR_TESTED_SOURCEFREE_CANDIDATE__UNADOPTED",
+      "source_ref": "WORKER_RETURNS/SOROK-C9C12-R2/01_VERSIONED_WRITER_READER_AND_CLOCK_CONTRACT.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "B-F1CR-R2",
+      "layer": "L3",
+      "kind": "NEW_FOUR_RETURN_CODE_ASSET",
+      "title": "targetless_c10_consumer.BWorld/BAction/TargetlessC10Ledger \u2192 targetless_i1_bridge.TargetlessGuardedJoinedProduct",
+      "registry_status": "SOURCE_FOUND_ADAPTER_AUTHOR_TESTED__UNADOPTED",
+      "first_required_consumer": "Same I1 root/store/branch; targetless REFUSE/SILENCE/NO_PROPOSAL/UNOBSERVED are consumed with A access and B material ledgers",
+      "actual_current_importer": "AUTHOR_TESTED_SOURCEFREE_CANDIDATE__UNADOPTED",
+      "source_ref": "WORKER_RETURNS/SOROK-B-F1CR-R2/01_LIVE_B_AND_TARGETLESS_C10_CONSUMER_MAP.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "V3CORE-R1",
+      "layer": "L3",
+      "kind": "NEW_FOUR_RETURN_CODE_ASSET",
+      "title": "v3core_adapter.i1_consumer.project_actual_market_event \u2192 I1 GuardedJoinedProduct",
+      "registry_status": "SOURCE_FOUND_ADAPTER_AUTHOR_TESTED__UNADOPTED",
+      "first_required_consumer": "Actual I1 market event 54\u219256 cash / workshop\u2192market projected to restricted old V3 capacity; source clock domain verified",
+      "actual_current_importer": "AUTHOR_TESTED_SOURCEFREE_CANDIDATE__UNADOPTED",
+      "source_ref": "WORKER_RETURNS/SOROK-V3CORE-R1/01_HISTORICAL_FUNCTION_TO_CURRENT_CONSUMER_CONTRACT.json",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "L4_NAMED_FIRST_CONSUMER",
+      "layer": "L4",
+      "kind": "ORCHESTRATION_OR_EVIDENCE",
+      "title": "Named required consumer (not proof of actual import)",
+      "status": "INDEX_SUPPORT",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "L4_I1_CANDIDATE",
+      "layer": "L4",
+      "kind": "ORCHESTRATION_OR_EVIDENCE",
+      "title": "I1 GuardedJoinedProduct same-root sourcefree consumer",
+      "status": "INDEX_SUPPORT",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "L4_I1_TARGETLESS",
+      "layer": "L4",
+      "kind": "ORCHESTRATION_OR_EVIDENCE",
+      "title": "I1 targetless B/C10 consumer",
+      "status": "INDEX_SUPPORT",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "L4_I1_V3_PROJECTION",
+      "layer": "L4",
+      "kind": "ORCHESTRATION_OR_EVIDENCE",
+      "title": "I1 restricted V3 capacity market projection",
+      "status": "INDEX_SUPPORT",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "L4_C9_C12_READ",
+      "layer": "L4",
+      "kind": "ORCHESTRATION_OR_EVIDENCE",
+      "title": "C9/C12 read-only composite reader",
+      "status": "INDEX_SUPPORT",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "L5_R7_REGISTRY",
+      "layer": "L5",
+      "kind": "ORCHESTRATION_OR_EVIDENCE",
+      "title": "R7 full source register and 102-definition close",
+      "status": "INDEX_SUPPORT",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "L5_R6_CLOSE",
+      "layer": "L5",
+      "kind": "ORCHESTRATION_OR_EVIDENCE",
+      "title": "R6 39-script/94-file closer",
+      "status": "INDEX_SUPPORT",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "L5_FOUR_AUTHOR_TESTS",
+      "layer": "L5",
+      "kind": "ORCHESTRATION_OR_EVIDENCE",
+      "title": "Four returned-asset author tests",
+      "status": "INDEX_SUPPORT",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "L5_HISTORICAL_NEGATIVES",
+      "layer": "L5",
+      "kind": "ORCHESTRATION_OR_EVIDENCE",
+      "title": "Preserved historical REDs and gaps",
+      "status": "INDEX_SUPPORT",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "L5_VALIDATOR",
+      "layer": "L5",
+      "kind": "ORCHESTRATION_OR_EVIDENCE",
+      "title": "O-INDEX validator/readback",
+      "status": "INDEX_SUPPORT",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "L1_PYAT_SEPARATE",
+      "layer": "L1",
+      "kind": "DEVELOPMENTAL_ORGAN",
+      "title": "Separate Pyat governed world/F1-F8 program",
+      "member_ids": [
+        "PYAT_N0",
+        "PYAT_N1",
+        "PYAT_N2",
+        "PYAT_N3",
+        "PYAT_N4",
+        "PYAT_N5",
+        "PYAT_N6",
+        "PYAT_N7",
+        "PYAT_N8E",
+        "PYAT_N8S",
+        "PYAT_N9",
+        "PYAT_N10E",
+        "PYAT_N10W",
+        "PYAT_N11",
+        "PYAT_N12",
+        "PYAT_F1",
+        "PYAT_F2",
+        "PYAT_F3",
+        "PYAT_F4",
+        "PYAT_F5",
+        "PYAT_F6",
+        "PYAT_F7",
+        "PYAT_F8"
+      ],
+      "status": "SEPARATE_NAMESPACE_OR_SOURCE_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "L5_SOURCE_HOLD",
+      "layer": "L5",
+      "kind": "ORCHESTRATION_OR_EVIDENCE",
+      "title": "S0-S16 and exact-source owner holds",
+      "member_ids": [
+        "S0_S16_SOURCE",
+        "F1CR_PATCH",
+        "V3_ZIP_CONTAINER"
+      ],
+      "status": "SEPARATE_NAMESPACE_OR_SOURCE_HOLD",
+      "hq_judgment_required": false
+    },
+    {
+      "id": "PYAT_N0",
+      "layer": "L2",
+      "kind": "PYAT_GOVERNED_WORLD_NODE",
+      "title": "N0 \u2014 Current authority succession and estate coverage",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11/N12 and downstream Pyat program",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "Source-semantic, measurement, routing and comparison owners",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N0.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_N1",
+      "layer": "L2",
+      "kind": "PYAT_GOVERNED_WORLD_NODE",
+      "title": "N1 \u2014 Accept and integrate current representation repairs",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11/N12 and downstream Pyat program",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "Physical decoder, codec and governed-facade owners",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N1.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_N2",
+      "layer": "L2",
+      "kind": "PYAT_GOVERNED_WORLD_NODE",
+      "title": "N2 \u2014 Compose generic predictors, recursive forks and empirical clouds",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11/N12 and downstream Pyat program",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "EE04/06/07/08 analytical producers and exact query/discovery owners",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N2.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_N3",
+      "layer": "L2",
+      "kind": "PYAT_GOVERNED_WORLD_NODE",
+      "title": "N3 \u2014 Bind required family adjudication, release and lifecycle",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11/N12 and downstream Pyat program",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "M1 substantive-rule owners, M2, B5 and I4",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N3.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_N4",
+      "layer": "L2",
+      "kind": "PYAT_GOVERNED_WORLD_NODE",
+      "title": "N4 \u2014 Current scoped empirical production and horizontal proof",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11/N12 and downstream Pyat program",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "Route-B production and competent empirical owners",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N4.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_N5",
+      "layer": "L2",
+      "kind": "PYAT_GOVERNED_WORLD_NODE",
+      "title": "N5 \u2014 Admit DDM products into actor-independent structural meaning",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11/N12 and downstream Pyat program",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "Field Forge and exact structural-rule owners",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N5.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_N6",
+      "layer": "L2",
+      "kind": "PYAT_GOVERNED_WORLD_NODE",
+      "title": "N6 \u2014 Populate only demanded objective PRE-V3 functions",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11/N12 and downstream Pyat program",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "Position, context, opportunity, mediation, topology and consequence producers",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N6.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_N7",
+      "layer": "L2",
+      "kind": "PYAT_GOVERNED_WORLD_NODE",
+      "title": "N7 \u2014 Compose multiple lawful structural fields",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11/N12 and downstream Pyat program",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "EE12/13, field composition and objective-world owners",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N7.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_N8E",
+      "layer": "L2",
+      "kind": "PYAT_GOVERNED_WORLD_NODE",
+      "title": "N8E \u2014 Produce lawful empirical temporal comparison",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11/N12 and downstream Pyat program",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "EE12 comparison and empirical analytical owners",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N8E.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_N8S",
+      "layer": "L2",
+      "kind": "PYAT_GOVERNED_WORLD_NODE",
+      "title": "N8S \u2014 Produce structural temporal pressure",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11/N12 and downstream Pyat program",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "Objective temporal and structural-rule owners",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N8S.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_N9",
+      "layer": "L2",
+      "kind": "PYAT_GOVERNED_WORLD_NODE",
+      "title": "N9 \u2014 Serve coherent objective-world snapshots",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11/N12 and downstream Pyat program",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "Publication, resolution, lifecycle and world-serving owners",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N9.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_N10E",
+      "layer": "L2",
+      "kind": "PYAT_GOVERNED_WORLD_NODE",
+      "title": "N10E \u2014 Compute empirical possibility slices",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11/N12 and downstream Pyat program",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "EE08/14 analytical and possibility-rule producers",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N10E.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_N10W",
+      "layer": "L2",
+      "kind": "PYAT_GOVERNED_WORLD_NODE",
+      "title": "N10W \u2014 Expose world-conditioned parent/coparent possibility",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11/N12 and downstream Pyat program",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "EE14 positioned-subject service and competent model/use owners",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N10W.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_N11",
+      "layer": "L2",
+      "kind": "PYAT_GOVERNED_WORLD_NODE",
+      "title": "N11 \u2014 Join full declared-estate F1-F8 acceptance",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11/N12 and downstream Pyat program",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "Competent HQ acceptance court",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N11.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_N12",
+      "layer": "L2",
+      "kind": "PYAT_GOVERNED_WORLD_NODE",
+      "title": "N12 \u2014 Decide whether to wake PRE-V3 to V3",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11/N12 and downstream Pyat program",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "Competent downstream/HQ authority",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N12.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_F1",
+      "layer": "L5",
+      "kind": "PYAT_FUNCTIONAL_GATE",
+      "title": "F1 \u2014 Exact governed empirical substrate",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11 full-estate acceptance",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "PYAT HQ / HQD125 FUNCTIONAL GATE OWNER",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/gates/F1.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_F2",
+      "layer": "L5",
+      "kind": "PYAT_FUNCTIONAL_GATE",
+      "title": "F2 \u2014 Bidirectional conditional predictor realization",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11 full-estate acceptance",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "PYAT HQ / HQD125 FUNCTIONAL GATE OWNER",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/gates/F2.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_F3",
+      "layer": "L5",
+      "kind": "PYAT_FUNCTIONAL_GATE",
+      "title": "F3 \u2014 Majority, minority, outlier and recursive forks",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11 full-estate acceptance",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "PYAT HQ / HQD125 FUNCTIONAL GATE OWNER",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/gates/F3.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_F4",
+      "layer": "L5",
+      "kind": "PYAT_FUNCTIONAL_GATE",
+      "title": "F4 \u2014 Empirical clouds and same-respondent configurations",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11 full-estate acceptance",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "PYAT HQ / HQD125 FUNCTIONAL GATE OWNER",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/gates/F4.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_F5",
+      "layer": "L5",
+      "kind": "PYAT_FUNCTIONAL_GATE",
+      "title": "F5 \u2014 Actor-independent structural pressure and world contribution",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11 full-estate acceptance",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "PYAT HQ / HQD125 FUNCTIONAL GATE OWNER",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/gates/F5.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_F6",
+      "layer": "L5",
+      "kind": "PYAT_FUNCTIONAL_GATE",
+      "title": "F6 \u2014 Multiple fields without false pooling",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11 full-estate acceptance",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "PYAT HQ / HQD125 FUNCTIONAL GATE OWNER",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/gates/F6.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_F7",
+      "layer": "L5",
+      "kind": "PYAT_FUNCTIONAL_GATE",
+      "title": "F7 \u2014 Comparable-wave movement and temporal pressure",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11 full-estate acceptance",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "PYAT HQ / HQD125 FUNCTIONAL GATE OWNER",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/gates/F7.md",
+      "hq_judgment_required": true
+    },
+    {
+      "id": "PYAT_F8",
+      "layer": "L5",
+      "kind": "PYAT_FUNCTIONAL_GATE",
+      "title": "F8 \u2014 Positioned-subject and parent/coparent possibility usability",
+      "registry_status": "ORIGINAL_PENDING",
+      "first_required_consumer": "Pyat N11 full-estate acceptance",
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "owner": "PYAT HQ / HQD125 FUNCTIONAL GATE OWNER",
+      "source_ref": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/gates/F8.md",
+      "hq_judgment_required": true
+    }
+  ],
+  "edges": [
+    {
+      "from": "L0_PERSON",
+      "to": "L1_PERSON",
+      "relation": "outcome_requires_person_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L0_PERSON",
+      "to": "L1_ACTOR",
+      "relation": "outcome_requires_actor_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L0_MATERIAL",
+      "to": "L1_WORLD",
+      "relation": "outcome_requires_world_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L0_HISTORY",
+      "to": "L1_ACTOR",
+      "relation": "outcome_requires_historical_actor",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L0_HISTORY",
+      "to": "L1_GOVERNANCE",
+      "relation": "outcome_requires_issuance_and_owner_slots",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L0_GOVERNANCE",
+      "to": "L1_GOVERNANCE",
+      "relation": "outcome_requires_discoverable_authority",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L0_GOVERNANCE",
+      "to": "L1_RECOVERY",
+      "relation": "outcome_requires_preserved_evidence",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L1_WORLD",
+      "to": "C0",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_WORLD",
+      "to": "C4",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_WORLD",
+      "to": "C6",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_WORLD",
+      "to": "C8",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_WORLD",
+      "to": "O08",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_WORLD",
+      "to": "O09",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_WORLD",
+      "to": "E04",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_WORLD",
+      "to": "E09",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_WORLD",
+      "to": "O16",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "C1",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "C2",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "C3",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "C5",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "C7",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "C9",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "N01",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "N02",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "N03",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "N04",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "N05",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "N06",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "N07",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "N08",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "N09",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "N10",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "O01",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "O03",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "O04",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "O05",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "O07",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "O10",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "O11",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "O12",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "O13",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "E01",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "E02",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "E03",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "E08",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "E13",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "E14",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_ACTOR",
+      "to": "E15",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "C10",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "C11",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "C12",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "A0",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "A1",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "A2",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "A3",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "A4",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "A5",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "N12",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "O14",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "O15",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "E05",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "E06",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "E07",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "E10",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "E11",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_PERSON",
+      "to": "E12",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "O01",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "O02",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "O03",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "O04",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "O05",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "O06",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "O07",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "O08",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "O09",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "O10",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "O11",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "O12",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "O13",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "O14",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "O15",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "O16",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S0",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S1",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S2",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S3",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S4",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S5",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S6",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S7",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S8",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S9",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S10",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S11",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S12",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S13",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S14",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S15",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_GOVERNANCE",
+      "to": "S16",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_RECOVERY",
+      "to": "F1C_ORIGINAL",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_RECOVERY",
+      "to": "F1CR_CLAIMED_PATCH",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_RECOVERY",
+      "to": "F1CR_R5_RECONSTRUCTION",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_RECOVERY",
+      "to": "B1",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_RECOVERY",
+      "to": "B2",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_RECOVERY",
+      "to": "B3",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_RECOVERY",
+      "to": "B3A",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_RECOVERY",
+      "to": "B3AS",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_RECOVERY",
+      "to": "BP2P4J",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_RECOVERY",
+      "to": "S39_S52",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_RECOVERY",
+      "to": "R15_V2",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_RECOVERY",
+      "to": "CP-A5-R2",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_RECOVERY",
+      "to": "C9C12-R2",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_RECOVERY",
+      "to": "B-F1CR-R2",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "L1_RECOVERY",
+      "to": "V3CORE-R1",
+      "relation": "organ_contains_registry_item",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "C0",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C1",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C2",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C3",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C4",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C5",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C6",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C7",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C8",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C9",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C10",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C11",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C12",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "A0",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "A1",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "A2",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "A3",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "A4",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "A5",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M01",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M02",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M03",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M04",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M05",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M06",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M07",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M08",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M09",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M10",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M11",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M12",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M13",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M14",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M15",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M16",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M17",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M18",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M19",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M20",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M21",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M22",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M23",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M24",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M25",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M26",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M27",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M28",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M29",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M30",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M31",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M32",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M33",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M34",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M35",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M36",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M37",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M38",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M39",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "M40",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "N01",
+      "to": "L1_ACTOR",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "N02",
+      "to": "L1_ACTOR",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "N03",
+      "to": "L1_ACTOR",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "N04",
+      "to": "L1_ACTOR",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "N05",
+      "to": "L1_ACTOR",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "N06",
+      "to": "L1_ACTOR",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "N07",
+      "to": "L1_ACTOR",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "N08",
+      "to": "L1_ACTOR",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "N09",
+      "to": "L1_ACTOR",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "N10",
+      "to": "L1_ACTOR",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "N11",
+      "to": "L1_ACTOR",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "N12",
+      "to": "L1_ACTOR",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O01",
+      "to": "L1_GOVERNANCE",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O02",
+      "to": "L1_GOVERNANCE",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O03",
+      "to": "L1_GOVERNANCE",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O04",
+      "to": "L1_GOVERNANCE",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O05",
+      "to": "L1_GOVERNANCE",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O06",
+      "to": "L1_GOVERNANCE",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O07",
+      "to": "L1_GOVERNANCE",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O08",
+      "to": "L1_WORLD",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O09",
+      "to": "L1_WORLD",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O10",
+      "to": "L1_GOVERNANCE",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O11",
+      "to": "L1_GOVERNANCE",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O12",
+      "to": "L1_GOVERNANCE",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O13",
+      "to": "L1_GOVERNANCE",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O14",
+      "to": "L1_PERSON",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O15",
+      "to": "L1_PERSON",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O16",
+      "to": "L1_GOVERNANCE",
+      "relation": "decision_or_requirement_governs_organ",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "O03",
+      "to": "E01",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E01",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "named_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E01",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "edge_negative_and_blocker_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "O05",
+      "to": "E02",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "O07",
+      "to": "E02",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E02",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "named_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E02",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "edge_negative_and_blocker_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "O01",
+      "to": "E03",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "O09",
+      "to": "E03",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E03",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "named_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E03",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "edge_negative_and_blocker_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "O08",
+      "to": "E04",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E04",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "named_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E04",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "edge_negative_and_blocker_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "O15",
+      "to": "E05",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E05",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "named_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E05",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "edge_negative_and_blocker_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "O14",
+      "to": "E06",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E06",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "named_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E06",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "edge_negative_and_blocker_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "O14",
+      "to": "E07",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E07",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "named_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E07",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "edge_negative_and_blocker_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "O10",
+      "to": "E08",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "O11",
+      "to": "E08",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "O12",
+      "to": "E08",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E08",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "named_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E08",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "edge_negative_and_blocker_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "O16",
+      "to": "E09",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E09",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "named_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E09",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "edge_negative_and_blocker_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "O08",
+      "to": "E10",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "O09",
+      "to": "E10",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E10",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "named_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E10",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "edge_negative_and_blocker_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "O14",
+      "to": "E11",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E11",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "named_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E11",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "edge_negative_and_blocker_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "O15",
+      "to": "E12",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E12",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "named_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E12",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "edge_negative_and_blocker_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "O02",
+      "to": "E13",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "O04",
+      "to": "E13",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E13",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "named_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E13",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "edge_negative_and_blocker_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "O06",
+      "to": "E14",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E14",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "named_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E14",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "edge_negative_and_blocker_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "O13",
+      "to": "E15",
+      "relation": "decision_blocks_named_edge",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E15",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "named_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "E15",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "edge_negative_and_blocker_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "S0",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S1",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S2",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S3",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S4",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S5",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S6",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S7",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S8",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S9",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S10",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S11",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S12",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S13",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S14",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S15",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S16",
+      "to": "L1_GOVERNANCE",
+      "relation": "hold_blocks_governance_claim",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "RCFB_E1",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "modern_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "RCFB_E1",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "modern_edge_negative_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "RCFB_E2",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "modern_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "RCFB_E2",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "modern_edge_negative_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "RCFB_E3",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "modern_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "RCFB_E3",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "modern_edge_negative_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "RCFB_E4",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "modern_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "RCFB_E4",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "modern_edge_negative_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "RCFB_E5",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "modern_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "RCFB_E5",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "modern_edge_negative_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "RCFB_E6",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "modern_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "RCFB_E6",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "modern_edge_negative_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "RCFB_E7",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "modern_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "RCFB_E7",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "modern_edge_negative_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "RCFB_E8",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "modern_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "RCFB_E8",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "modern_edge_negative_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "RCFB_E9",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "modern_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "RCFB_E9",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "modern_edge_negative_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "RCFB_E10",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "modern_edge_requires_actual_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "RCFB_E10",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "modern_edge_negative_preserved",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "F1C_ORIGINAL",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "F1CR_CLAIMED_PATCH",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "F1CR_R5_RECONSTRUCTION",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "B1",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "B2",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "B3",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "B3A",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "B3AS",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "BP2P4J",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S39_S52",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "R15_V2",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "CP-A5-R2",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C9C12-R2",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "B-F1CR-R2",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "V3CORE-R1",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "function_has_named_first_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "CP-A5-R2",
+      "to": "L4_I1_CANDIDATE",
+      "relation": "author_tested_same_root_encounter",
+      "status": "AUTHOR_TESTED__UNADOPTED",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "CP-A5-R2",
+      "to": "L5_FOUR_AUTHOR_TESTS",
+      "relation": "author_test_evidence_not_independent_acceptance",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "C9C12-R2",
+      "to": "L4_C9_C12_READ",
+      "relation": "author_tested_read_only_composite",
+      "status": "AUTHOR_TESTED__UNADOPTED",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C9C12-R2",
+      "to": "L5_FOUR_AUTHOR_TESTS",
+      "relation": "author_test_evidence_not_independent_acceptance",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "B-F1CR-R2",
+      "to": "L4_I1_TARGETLESS",
+      "relation": "author_tested_targetless_material_consumer",
+      "status": "AUTHOR_TESTED__UNADOPTED",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "B-F1CR-R2",
+      "to": "L5_FOUR_AUTHOR_TESTS",
+      "relation": "author_test_evidence_not_independent_acceptance",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "V3CORE-R1",
+      "to": "L4_I1_V3_PROJECTION",
+      "relation": "author_tested_market_projection",
+      "status": "AUTHOR_TESTED__UNADOPTED",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "V3CORE-R1",
+      "to": "L5_FOUR_AUTHOR_TESTS",
+      "relation": "author_test_evidence_not_independent_acceptance",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "L4_I1_CANDIDATE",
+      "to": "L5_FOUR_AUTHOR_TESTS",
+      "relation": "candidate_consumes_four_asset_evidence",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "L4_I1_CANDIDATE",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "candidate_does_not_replace_named_native_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L4_C9_C12_READ",
+      "to": "L5_FOUR_AUTHOR_TESTS",
+      "relation": "candidate_consumes_four_asset_evidence",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "L4_C9_C12_READ",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "candidate_does_not_replace_named_native_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L4_I1_TARGETLESS",
+      "to": "L5_FOUR_AUTHOR_TESTS",
+      "relation": "candidate_consumes_four_asset_evidence",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "L4_I1_TARGETLESS",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "candidate_does_not_replace_named_native_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L4_I1_V3_PROJECTION",
+      "to": "L5_FOUR_AUTHOR_TESTS",
+      "relation": "candidate_consumes_four_asset_evidence",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "L4_I1_V3_PROJECTION",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "candidate_does_not_replace_named_native_consumer",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L5_R7_REGISTRY",
+      "to": "L1_RECOVERY",
+      "relation": "establishes_inherited_rows",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "L5_R6_CLOSE",
+      "to": "L1_RECOVERY",
+      "relation": "closes_39_script_94_file_source_scope",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "L5_R7_REGISTRY",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "preserves_r7_unknowns",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "L5_R6_CLOSE",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "preserves_r6_unwired_status",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "L5_VALIDATOR",
+      "to": "L5_R7_REGISTRY",
+      "relation": "checks_registry",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "L5_VALIDATOR",
+      "to": "L5_R6_CLOSE",
+      "relation": "checks_r6_summary",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "L5_VALIDATOR",
+      "to": "L5_FOUR_AUTHOR_TESTS",
+      "relation": "checks_four_assets",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "L5_VALIDATOR",
+      "to": "L5_HISTORICAL_NEGATIVES",
+      "relation": "checks_negative_register",
+      "status": "INDEX_LINK",
+      "hq_judgment_required": false
+    },
+    {
+      "from": "L1_PYAT_SEPARATE",
+      "to": "L1_GOVERNANCE",
+      "relation": "separate_program_interface_not_merge",
+      "status": "SEPARATE_NAMESPACE",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N0",
+      "to": "L1_PYAT_SEPARATE",
+      "relation": "pyat_node_belongs_to_separate_program",
+      "status": "ADVISORY_OR_LAW",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N0",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "pyat_node_requires_real_first_consumer",
+      "status": "NOT_PROVEN",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N1",
+      "to": "L1_PYAT_SEPARATE",
+      "relation": "pyat_node_belongs_to_separate_program",
+      "status": "ADVISORY_OR_LAW",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N1",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "pyat_node_requires_real_first_consumer",
+      "status": "NOT_PROVEN",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N2",
+      "to": "L1_PYAT_SEPARATE",
+      "relation": "pyat_node_belongs_to_separate_program",
+      "status": "ADVISORY_OR_LAW",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N2",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "pyat_node_requires_real_first_consumer",
+      "status": "NOT_PROVEN",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N3",
+      "to": "L1_PYAT_SEPARATE",
+      "relation": "pyat_node_belongs_to_separate_program",
+      "status": "ADVISORY_OR_LAW",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N3",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "pyat_node_requires_real_first_consumer",
+      "status": "NOT_PROVEN",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N4",
+      "to": "L1_PYAT_SEPARATE",
+      "relation": "pyat_node_belongs_to_separate_program",
+      "status": "ADVISORY_OR_LAW",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N4",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "pyat_node_requires_real_first_consumer",
+      "status": "NOT_PROVEN",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N5",
+      "to": "L1_PYAT_SEPARATE",
+      "relation": "pyat_node_belongs_to_separate_program",
+      "status": "ADVISORY_OR_LAW",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N5",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "pyat_node_requires_real_first_consumer",
+      "status": "NOT_PROVEN",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N6",
+      "to": "L1_PYAT_SEPARATE",
+      "relation": "pyat_node_belongs_to_separate_program",
+      "status": "ADVISORY_OR_LAW",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N6",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "pyat_node_requires_real_first_consumer",
+      "status": "NOT_PROVEN",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N7",
+      "to": "L1_PYAT_SEPARATE",
+      "relation": "pyat_node_belongs_to_separate_program",
+      "status": "ADVISORY_OR_LAW",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N7",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "pyat_node_requires_real_first_consumer",
+      "status": "NOT_PROVEN",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N8E",
+      "to": "L1_PYAT_SEPARATE",
+      "relation": "pyat_node_belongs_to_separate_program",
+      "status": "ADVISORY_OR_LAW",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N8E",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "pyat_node_requires_real_first_consumer",
+      "status": "NOT_PROVEN",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N8S",
+      "to": "L1_PYAT_SEPARATE",
+      "relation": "pyat_node_belongs_to_separate_program",
+      "status": "ADVISORY_OR_LAW",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N8S",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "pyat_node_requires_real_first_consumer",
+      "status": "NOT_PROVEN",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N9",
+      "to": "L1_PYAT_SEPARATE",
+      "relation": "pyat_node_belongs_to_separate_program",
+      "status": "ADVISORY_OR_LAW",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N9",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "pyat_node_requires_real_first_consumer",
+      "status": "NOT_PROVEN",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N10E",
+      "to": "L1_PYAT_SEPARATE",
+      "relation": "pyat_node_belongs_to_separate_program",
+      "status": "ADVISORY_OR_LAW",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N10E",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "pyat_node_requires_real_first_consumer",
+      "status": "NOT_PROVEN",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N10W",
+      "to": "L1_PYAT_SEPARATE",
+      "relation": "pyat_node_belongs_to_separate_program",
+      "status": "ADVISORY_OR_LAW",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N10W",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "pyat_node_requires_real_first_consumer",
+      "status": "NOT_PROVEN",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N11",
+      "to": "L1_PYAT_SEPARATE",
+      "relation": "pyat_node_belongs_to_separate_program",
+      "status": "ADVISORY_OR_LAW",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N11",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "pyat_node_requires_real_first_consumer",
+      "status": "NOT_PROVEN",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N12",
+      "to": "L1_PYAT_SEPARATE",
+      "relation": "pyat_node_belongs_to_separate_program",
+      "status": "ADVISORY_OR_LAW",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N12",
+      "to": "L4_NAMED_FIRST_CONSUMER",
+      "relation": "pyat_node_requires_real_first_consumer",
+      "status": "NOT_PROVEN",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_F1",
+      "to": "PYAT_N11",
+      "relation": "functional_gate_required_for_estate_acceptance",
+      "status": "ADOPTED_LAW__IMPLEMENTATION_UNPROVED",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_F2",
+      "to": "PYAT_N11",
+      "relation": "functional_gate_required_for_estate_acceptance",
+      "status": "ADOPTED_LAW__IMPLEMENTATION_UNPROVED",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_F3",
+      "to": "PYAT_N11",
+      "relation": "functional_gate_required_for_estate_acceptance",
+      "status": "ADOPTED_LAW__IMPLEMENTATION_UNPROVED",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_F4",
+      "to": "PYAT_N11",
+      "relation": "functional_gate_required_for_estate_acceptance",
+      "status": "ADOPTED_LAW__IMPLEMENTATION_UNPROVED",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_F5",
+      "to": "PYAT_N11",
+      "relation": "functional_gate_required_for_estate_acceptance",
+      "status": "ADOPTED_LAW__IMPLEMENTATION_UNPROVED",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_F6",
+      "to": "PYAT_N11",
+      "relation": "functional_gate_required_for_estate_acceptance",
+      "status": "ADOPTED_LAW__IMPLEMENTATION_UNPROVED",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_F7",
+      "to": "PYAT_N11",
+      "relation": "functional_gate_required_for_estate_acceptance",
+      "status": "ADOPTED_LAW__IMPLEMENTATION_UNPROVED",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_F8",
+      "to": "PYAT_N11",
+      "relation": "functional_gate_required_for_estate_acceptance",
+      "status": "ADOPTED_LAW__IMPLEMENTATION_UNPROVED",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N11",
+      "to": "PYAT_N12",
+      "relation": "n11_precedes_separate_n12_wake_decision",
+      "status": "HELD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "PYAT_N12",
+      "to": "L1_PERSON",
+      "relation": "separate_pyat_to_sorok_seam_not_merge",
+      "status": "DEFERRED__NO_WAKE",
+      "hq_judgment_required": true,
+      "cycle_class": "EXTERNAL_SEAM_NOT_MERGE"
+    },
+    {
+      "from": "S0",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S1",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S2",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S3",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S4",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S5",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S6",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S7",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S8",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S9",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S10",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S11",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S12",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S13",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S14",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S15",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S16",
+      "to": "L5_SOURCE_HOLD",
+      "relation": "s0_s16_requires_exact_original_source",
+      "status": "RECOVERY_EXACT_HOLD",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "A0",
+      "to": "C12",
+      "relation": "backward_person_source_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "A1",
+      "to": "A0",
+      "relation": "backward_person_source_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "A2",
+      "to": "A1",
+      "relation": "backward_person_source_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "A3",
+      "to": "A2",
+      "relation": "backward_person_source_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "A4",
+      "to": "A3",
+      "relation": "backward_person_source_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "A5",
+      "to": "A4",
+      "relation": "backward_person_source_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C12",
+      "to": "C10",
+      "relation": "backward_person_source_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C10",
+      "to": "C9",
+      "relation": "backward_person_source_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C9",
+      "to": "C8",
+      "relation": "backward_person_source_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C8",
+      "to": "C4",
+      "relation": "backward_person_source_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "C4",
+      "to": "C0",
+      "relation": "backward_person_source_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "S0",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S1",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S2",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S3",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S4",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S5",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S6",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S7",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S8",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S9",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S10",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S11",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S12",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S13",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S14",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S15",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    },
+    {
+      "from": "S16",
+      "to": "L1_GOVERNANCE",
+      "relation": "backward_s_hold_path",
+      "status": "NAVIGATION_ONLY",
+      "hq_judgment_required": true,
+      "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE"
+    }
+  ],
+  "traversals": [
+    {
+      "id": "T1_CAREGIVING_PERSON",
+      "title": "Ordinary caregiving and person formation",
+      "question": "How can care and challenge form a continuing person without proving native A5?",
+      "path": [
+        "L0_PERSON",
+        "L1_PERSON",
+        "L1_ACTOR",
+        "N02",
+        "N04",
+        "N05",
+        "N12",
+        "O02",
+        "O04",
+        "O16",
+        "C4",
+        "C5",
+        "C6",
+        "C12",
+        "A0",
+        "A1",
+        "A2",
+        "A3",
+        "M19",
+        "M25",
+        "CP-A5-R2",
+        "C9C12-R2",
+        "L4_I1_CANDIDATE",
+        "L4_C9_C12_READ",
+        "E10",
+        "E12",
+        "E13",
+        "L5_FOUR_AUTHOR_TESTS",
+        "L5_HISTORICAL_NEGATIVES"
+      ],
+      "answer_limits": [
+        "caregiving encounter is not authorized A5 human alpha",
+        "C12/A0-A3 sourcefree same-root candidates do not prove native person",
+        "N02/N04/N05/N12 remain theory-reviewed requirements",
+        "O02/O04/O16 remain owner decisions"
+      ]
+    },
+    {
+      "id": "T2_MATERIAL_REFUSAL",
+      "title": "Independent B material activity and refusal",
+      "question": "Can A remain ignorant of B material action while B activity, refusal and A access stay consistent?",
+      "path": [
+        "L0_MATERIAL",
+        "L1_WORLD",
+        "N07",
+        "O08",
+        "O09",
+        "O16",
+        "C4",
+        "C6",
+        "C8",
+        "C9",
+        "C10",
+        "M02",
+        "M21",
+        "M25",
+        "F1C_ORIGINAL",
+        "F1CR_CLAIMED_PATCH",
+        "F1CR_R5_RECONSTRUCTION",
+        "B-F1CR-R2",
+        "V3CORE-R1",
+        "E04",
+        "E05",
+        "E09",
+        "E12",
+        "L4_I1_TARGETLESS",
+        "L4_I1_V3_PROJECTION",
+        "L5_FOUR_AUTHOR_TESTS",
+        "L5_HISTORICAL_NEGATIVES"
+      ],
+      "answer_limits": [
+        "F1CR original patch bytes remain missing; R5 reconstruction is not adopted",
+        "targetless REFUSE/SILENCE/NO_PROPOSAL does not prove native B person or material stock",
+        "V3 annual clock is not Sorok N11 event recursion",
+        "no B cash may enter A public view"
+      ]
+    },
+    {
+      "id": "T3_HISTORICAL_TRANSFORMATION",
+      "title": "Historical ideological/theological transformation or non-transformation",
+      "question": "When can changed ideology/theology be attributed to this actor history, and when must the index answer UNKNOWN?",
+      "path": [
+        "L0_HISTORY",
+        "L1_ACTOR",
+        "N08",
+        "N09",
+        "N10",
+        "O07",
+        "O10",
+        "O11",
+        "O12",
+        "O13",
+        "O16",
+        "C5",
+        "C6",
+        "C7",
+        "C9",
+        "M19",
+        "M21",
+        "M26",
+        "C9C12-R2",
+        "E02",
+        "E08",
+        "E14",
+        "E15",
+        "L4_C9_C12_READ",
+        "L5_FOUR_AUTHOR_TESTS",
+        "L5_HISTORICAL_NEGATIVES"
+      ],
+      "answer_limits": [
+        "no native issuer or causal law for N10/O11/O12/O13",
+        "same-count perception substitution remains historical RED",
+        "missing source, access or actor-relative read yields UNKNOWN, not invented change",
+        "no-change requires qualified evaluated receipt"
+      ]
+    }
+  ],
+  "pyat_namespace_separation": {
+    "SOROK_N11": "user-settled event-batch temporal recursion; not PYAT_N11 objective-world acceptance",
+    "SOROK_N12": "actual C12 person/coupled world/human encounter; not a Pyat release or authority gate",
+    "PYAT_N11": "Pyat objective-world acceptance; separate owner and program",
+    "PYAT_N12": "Pyat N12; separate governed namespace, not merged",
+    "V3_M25": "historical annual 19-step scheduler; neither Sorok N11 nor Pyat N11",
+    "rule": "Never equate same-looking N11/N12 identifiers across namespaces."
+  },
+  "orphan_policy": {
+    "rule": "Every inherited function must have a named first consumer or an explicit recovery/authority hold. Source presence is not current import.",
+    "source_presence_without_consumer": "There are 0 inherited rows with empty first_consumer; unresolved S0-S16 rows use UNKNOWN and are holds, not missing code modules."
+  },
+  "hq_slots": [
+    "selection of priorities",
+    "acceptance of reconstructed F1CR",
+    "acceptance of candidate A5/C9/B/V3 consumers",
+    "issuance of O/N science",
+    "native person/alpha claims",
+    "Pyat namespace merge"
+  ],
+  "hq_joint_test_requirement": {
+    "required": true,
+    "raised_by": "T1/T2/T3 and four candidate consumers",
+    "reason": "No single owner can accept all domains; HQ must name the joint test and separate owner slots before any adoption."
+  },
+  "backward_paths": {
+    "A0": [
+      "A0",
+      "C12",
+      "C10",
+      "C9",
+      "C8",
+      "C4",
+      "C0"
+    ],
+    "A1": [
+      "A1",
+      "A0",
+      "C12",
+      "C10",
+      "C9",
+      "C8",
+      "C4",
+      "C0"
+    ],
+    "A2": [
+      "A2",
+      "A1",
+      "A0",
+      "C12",
+      "C10",
+      "C9",
+      "C8",
+      "C4",
+      "C0"
+    ],
+    "A3": [
+      "A3",
+      "A2",
+      "A1",
+      "A0",
+      "C12",
+      "C10",
+      "C9",
+      "C8",
+      "C4",
+      "C0"
+    ],
+    "A4": [
+      "A4",
+      "A3",
+      "A2",
+      "A1",
+      "A0",
+      "C12",
+      "C10",
+      "C9",
+      "C8",
+      "C4",
+      "C0"
+    ],
+    "A5": [
+      "A5",
+      "A4",
+      "A3",
+      "A2",
+      "A1",
+      "A0",
+      "C12",
+      "C10",
+      "C9",
+      "C8",
+      "C4",
+      "C0"
+    ],
+    "S0": [
+      "S0",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "S1": [
+      "S1",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "S2": [
+      "S2",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "S3": [
+      "S3",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "S4": [
+      "S4",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "S5": [
+      "S5",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "S6": [
+      "S6",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "S7": [
+      "S7",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "S8": [
+      "S8",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "S9": [
+      "S9",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "S10": [
+      "S10",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "S11": [
+      "S11",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "S12": [
+      "S12",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "S13": [
+      "S13",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "S14": [
+      "S14",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "S15": [
+      "S15",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "S16": [
+      "S16",
+      "L1_GOVERNANCE",
+      "L5_SOURCE_HOLD"
+    ],
+    "*_limits": "Paths are navigation/backward index links, not claims of scientific sufficiency. A0-A5 remain sourcefree candidates; S0-S16 end at an exact source hold, not a recovered module."
+  },
+  "pyat_separation": "SOROK_N11 user-settled event-batch temporal recursion; PYAT_N11 objective-world/F1-F8 acceptance; V3_M25 annual 19-step ordering; SOROK_N12 person/coupled-world/human encounter; PYAT_N12 separate wake decision. Never equate.",
+  "pyat_coverage": {
+    "N0_N12_core_plus_splits": 15,
+    "F1_F8": 8,
+    "total": 23
+  },
+  "claim_epochs": {
+    "inherited_rows": "R7_HISTORICAL_BASELINE",
+    "r6_source_close": "POST_R6",
+    "four_returns": "POST_R7_INTAKE",
+    "s0_s16": "R7_EXACT_HOLD",
+    "pyat_atlas": "PRE_MAIN_ADVISORY_ATLAS",
+    "rule": "Do not present a pre-R6/R7 claim as post-R6/R7 source closure."
+  }
+}
