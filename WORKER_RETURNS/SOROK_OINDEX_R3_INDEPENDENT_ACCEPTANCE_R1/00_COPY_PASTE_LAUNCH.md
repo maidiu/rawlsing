@@ -62,4 +62,6 @@ DELIVER exact:
 `04_SCOPED_REVIEW_VERDICT_AND_LIVING_PROGRAMMA_INTERFACE.md`;
 `05_NOT_RUN_ROLLBACK_AND_PROVENANCE.json`.
 POST_RETURN_INDEPENDENT_REVIEW: incumbent qualified HQ/owner examines your exact returned SHA for bounded scoped adoption. This worker is reviewer, **not its own adopting authority**. Do not self-dispatch, self-merge or run future work.
+THREE SEPARATE ACCEPTANCE COURTS: ENGINEERING = actual independent source-object identity, 21+4 tests and six source/product path negatives; SCIENTIFIC = original S0–S16 definitions and hypotheses only, no original CAN/ADP/SCI05 or person issued; AUTHORITY = no self-adoption, Pyat grant, PRE-MAIN merge, human A5 or owner issuance. Scope the return only to R3 static index, not entire RRIF or Programma. This is an EXISTING previously sealed independent reviewer, not a newly started worker.
+
 ```
