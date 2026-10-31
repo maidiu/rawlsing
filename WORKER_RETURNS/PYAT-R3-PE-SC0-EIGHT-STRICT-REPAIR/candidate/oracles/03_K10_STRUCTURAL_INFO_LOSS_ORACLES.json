@@ -1,0 +1,478 @@
+{
+  "meta": {
+    "schema": "SC0_K10_MAXIMAL_DISTINCTION_ORACLES@1.0.0",
+    "status": "FROZEN_SPEC_NOT_EXECUTED",
+    "grade": "TEST_FIXTURE_ONLY",
+    "scope": "One intentionally dense fictional world with explicit sourcefree evidence and unrelated nonparent consumer; not a claim to all35 coverage or actual science.",
+    "test_execution": "NOT_EXECUTED"
+  },
+  "baseline": {
+    "world_scope": "fx:municipal:2008:respondent-universe",
+    "source_ref": "fx:source:synthetic",
+    "source_release_ref": "fx:release:fixture1",
+    "native_unit": "RESPONDENT",
+    "native_strata": [
+      "fx:stratum:A",
+      "fx:stratum:B"
+    ],
+    "absolute_horizon": "fx:AH",
+    "nary": {
+      "id": "fx:f1:three-party",
+      "roles": [
+        [
+          "institution",
+          "inst:1"
+        ],
+        [
+          "applicant",
+          "selector:opaque"
+        ],
+        [
+          "third-party",
+          "mutual_aid:3"
+        ]
+      ],
+      "order": [
+        0,
+        1,
+        2
+      ],
+      "route_refs": [
+        "fx:r:public",
+        "fx:r:mutual"
+      ],
+      "cardinality": 3
+    },
+    "f2": {
+      "id": "fx:f2:separate",
+      "v555_routes": [
+        "fx:r:public",
+        "fx:r:mutual"
+      ],
+      "f1": [
+        "fx:f1:three-party"
+      ],
+      "motif": "ORIGINAL_NARY_TOPOLOGY",
+      "predicate": "fx:pred:historical_sponsorship",
+      "history_requirement": "fx:runtime-requirement:unbound",
+      "selection": "DEFERRED_UNBOUND",
+      "not_satisfaction": true
+    },
+    "public_categories": [
+      "fx:category:license",
+      "fx:category:recognized-club"
+    ],
+    "public_sanctions": [
+      "fx:sanction:fine",
+      "fx:sanction:exclusion"
+    ],
+    "authority_ref": "fx:issuer:fixture_only",
+    "clocks": {
+      "observation_valid": "2008",
+      "published": "2010",
+      "as_of": "2009",
+      "actor_event": "2008",
+      "requested": "2026"
+    },
+    "clock_mode": "KNOWLEDGE_AS_OF",
+    "contradictory_alternatives": [
+      {
+        "id": "route_open",
+        "witness": "public rule A",
+        "state": "POSSIBLE"
+      },
+      {
+        "id": "route_closed",
+        "witness": "public rule B",
+        "state": "CONTRADICTORY_SOURCE_SCOPE"
+      }
+    ],
+    "support": {
+      "target_yes": 54,
+      "target_no": 6,
+      "denominator": 60,
+      "base_ratio": "54/60",
+      "minority_ratio": "6/60",
+      "risk_set": "fx:risk:asked_eligible",
+      "routing": "fx:routing:asked",
+      "weight": "fx:design_weight:unit",
+      "uncertainty": "fx:u:fixture_no_real_inference"
+    },
+    "status_rows": [
+      {
+        "scope": "fx:scope:measured-zero",
+        "state": "OBSERVED_ZERO",
+        "measure": 0
+      },
+      {
+        "scope": "fx:scope:complete-empty",
+        "state": "VALID_EMPTY",
+        "observed_complete": true
+      },
+      {
+        "scope": "fx:scope:missing",
+        "state": "MISSING",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:power",
+        "state": "UNDERPOWERED",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:notasked",
+        "state": "NOT_ASKED",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:incomparable",
+        "state": "NONCOMPARABLE",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:held",
+        "state": "HELD_AUTHORITY",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:denied",
+        "state": "DENIED_USE",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:nocurrent",
+        "state": "NO_CURRENT",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:proxy",
+        "state": "PROXY_MODELLED",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:unknown-gap",
+        "state": "UNKNOWN_UNOBSERVED_GAP",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:unbound",
+        "state": "UNBOUND_RUNTIME_BINDING",
+        "measure": null
+      }
+    ],
+    "binding_echo": {
+      "tag": "GENERATED_RUNTIME_FACT_REF",
+      "kind": "LOCATION",
+      "fact": "fx:caller:location-change",
+      "origin": "CALLER_RUNTIME",
+      "may_use_as_filter": true,
+      "may_use_as_source_observation": false
+    },
+    "conditioning_chain": [
+      {
+        "step": 0,
+        "condition": "fx:cond:municipal",
+        "raw_n": 60,
+        "denom": 60,
+        "source": "SOURCE_FACT"
+      },
+      {
+        "step": 1,
+        "condition": "fx:cond:education",
+        "raw_n": 24,
+        "denom": 30,
+        "source": "SOURCE_FACT"
+      },
+      {
+        "step": 2,
+        "condition": "fx:cond:location",
+        "raw_n": 7,
+        "denom": 12,
+        "source": "GENERATED_RUNTIME_FACT_REF"
+      }
+    ],
+    "read_set": [
+      "fx:r:public",
+      "fx:r:mutual",
+      "fx:f1:three-party",
+      "fx:f2:separate",
+      "fx:response:no",
+      "fx:status:incomparable",
+      "fx:source:synthetic"
+    ],
+    "downstream_consumers": [
+      "CONCEPTION_SCENARIO_PROPOSAL_INPUT_ONLY",
+      "NONPARENT_APPRENTICESHIP_ENTRY"
+    ],
+    "active_use": [
+      "FIXTURE_ONLY"
+    ],
+    "revoked_use": "MODEL_FORBIDDEN",
+    "snapshot_closure": "fx:closure:explicit",
+    "no_actor_fields": [
+      "desire",
+      "pressure",
+      "felt_recognition",
+      "psychological_memory",
+      "enneagram",
+      "personality",
+      "partner_actor",
+      "family_history"
+    ]
+  },
+  "runner_contract": {
+    "steps": [
+      "instantiate baseline with named refs and result claims under TEST_FIXTURE_ONLY",
+      "round-trip through proposed facade and separately exposed two contracts",
+      "dereference native payloads and read-set",
+      "apply mutation one at a time",
+      "classify exact changed descendants and invariant unrelated consumer fields",
+      "deny output when no issuer/model permission",
+      "record status for EVERY case, including skips"
+    ],
+    "normalization": "No loss of semantic information; allowable storage/reference encoding changes only. Compare authoritative semantic IDs, structured values, clocks, source grade and selected-read receipts."
+  },
+  "cases": [
+    {
+      "id": "K10_01",
+      "mutation": "DROP_AH",
+      "procedure": "Remove AH ref or rewrite as last finite stratum",
+      "expected": "REJECT_SEMANTIC_LOSS",
+      "oracle": "AH remains distinct; finite native strata still exact",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_02",
+      "mutation": "STRATUM_TRANSLATION",
+      "procedure": "Replace native-stratum ID with display label",
+      "expected": "REJECT_NONINJECTIVE_COORDINATE",
+      "oracle": "original native ID remains retrievable",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_03",
+      "mutation": "DYADIZE_NARY",
+      "procedure": "Flatten third party into pairwise edges",
+      "expected": "REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS",
+      "oracle": "triad ref, ordered roles and participant cardinality survive",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_04",
+      "mutation": "DROP_F2_HISTORY_REQUIREMENT",
+      "procedure": "Omit F2 predicate or caller history requirement",
+      "expected": "REJECT_F2_PREREQUISITE_LOSS",
+      "oracle": "F2 remains producer topology; no upstream satisfaction",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_05",
+      "mutation": "PREDICATE_BECOMES_EXPERIENCE",
+      "procedure": "Treat structural F2 requirement as actor experience",
+      "expected": "REJECT_ACTOR_FIREWALL",
+      "oracle": "producer supplies requirement only",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_06",
+      "mutation": "CONTRADICTION_DOMINANT_ONLY",
+      "procedure": "Retain modal route and discard conflicting alternative",
+      "expected": "REJECT_ALTERNATIVE_ERASURE",
+      "oracle": "contradiction/group/minority sources preserved",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_07",
+      "mutation": "MINORITY_ERASE",
+      "procedure": "Drop NO=6 when YES=54",
+      "expected": "REJECT_SUPPORT_ERASURE",
+      "oracle": "minority fraction 6/60 still present",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_08",
+      "mutation": "ZERO_MISSING_COLLAPSE",
+      "procedure": "Coalesce measured 0, valid-empty and missing",
+      "expected": "REJECT_NEGATIVE_ALGEBRA_COLLAPSE",
+      "oracle": "three distinct exact scoped states",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_09",
+      "mutation": "UNDERPOWERED_AS_EMPTY",
+      "procedure": "Coerce underpowered into no observations",
+      "expected": "REJECT_UNDERPOWERED_ERASURE",
+      "oracle": "uncertainty/recoverability survive",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_10",
+      "mutation": "NOT_ASKED_AS_NO",
+      "procedure": "Coerce unasked respondent to NO",
+      "expected": "REJECT_ROUTING_NONRESPONSE_LOSS",
+      "oracle": "risk/routing and ask-state remain",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_11",
+      "mutation": "CROSS_UNIT_POOL",
+      "procedure": "Join respondent with household probability without sampling authority",
+      "expected": "REFUSE_SAMPLING_UNIT_JOINT",
+      "oracle": "lawful individual results still usable",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_12",
+      "mutation": "DIRECTION_REVERSE",
+      "procedure": "Swap target and condition without new risk/denom/authority",
+      "expected": "HELD_AUTHORITY",
+      "oracle": "forward evidence preserved; reverse not invented",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_13",
+      "mutation": "CONDITION_SET_SORT",
+      "procedure": "Sort unordered conditioners and erase actual progressive step ancestry",
+      "expected": "REJECT_ORDERED_PATH_LOSS",
+      "oracle": "step 0/1/2 and changed denominators retained",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_14",
+      "mutation": "UNCERTAIN_TO_POINT",
+      "procedure": "Replace uncertainty with exact confident numeric estimate",
+      "expected": "REJECT_MODEL_PRECISION_INVENTION",
+      "oracle": "uncertainty and method refs survive",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_15",
+      "mutation": "CLOCK_CONFLATION",
+      "procedure": "As-of 2009 uses evidence published 2010 as known 2009 fact",
+      "expected": "NO_CURRENT_OR_NOT_KNOWN_ASOF",
+      "oracle": "historical scene not rewritten by 2010 publication",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_16",
+      "mutation": "LAG_INTERPOLATION",
+      "procedure": "Interpolate missing historical year without proxy authority",
+      "expected": "HELD_AUTHORITY",
+      "oracle": "source anchors and unknown gap preserved",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_17",
+      "mutation": "BINDING_AS_OBSERVATION",
+      "procedure": "Promote caller location to source observed respondent",
+      "expected": "REJECT_GENERATED_FACT_PROMOTION",
+      "oracle": "echo stays query only",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_18",
+      "mutation": "CHANGE_BINDING_NO_REFRESH",
+      "procedure": "Change location fingerprint at same time; reuse old context",
+      "expected": "REJECT_STALE_BINDING_CONTEXT",
+      "oracle": "successor world selection required",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_19",
+      "mutation": "PUBLISH_BOUNDARY_NO_REFRESH",
+      "procedure": "Cross source effective/release boundary; reuse old context",
+      "expected": "REJECT_STALE_REPOSITORY_CONTEXT",
+      "oracle": "channel A successor distinct from channel B",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_20",
+      "mutation": "PERMISSION_REVOKED",
+      "procedure": "Remove use permission from transitive dependency; serve cached derived result",
+      "expected": "DENIED_USE",
+      "oracle": "specific descendant invalidated; unrelated permitted item may remain",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_21",
+      "mutation": "PARTIAL_AS_COMPLETE",
+      "procedure": "Drop one demanded source and mark closure complete",
+      "expected": "PARTIAL_DEFERRED",
+      "oracle": "no positive full-demand snapshot; lawful other subscopes retained",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_22",
+      "mutation": "PROXY_AS_OBSERVED",
+      "procedure": "Upgrade TEST_FIXTURE_ONLY or modeled proxy to observed",
+      "expected": "REJECT_EPISTEMIC_PROMOTION",
+      "oracle": "grade remains fixture or modeled",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_23",
+      "mutation": "OPAQUE_HASH_NO_VALUES",
+      "procedure": "Publish digest but no dereference or values-read receipt",
+      "expected": "REJECT_UNVERIFIABLE_CONSUMER_USE",
+      "oracle": "exact values-read path required",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_24",
+      "mutation": "IMPLICIT_MODEL_CROSSPRODUCT",
+      "procedure": "Multiply 54/60 by unrelated marginal to infer dyad",
+      "expected": "REFUSE_UNAUTHORIZED_COMPOSITION",
+      "oracle": "no invented joint, household or event probability",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_25",
+      "mutation": "UPSTREAM_PSYCHIC_FIELDS",
+      "procedure": "Add pressure/desire/recognition experience/actor memory/Enneagram to N9 payload",
+      "expected": "REJECT_ACTOR_JURISDICTION",
+      "oracle": "structural public authority/category allowed, actor psyche forbidden",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_26",
+      "mutation": "F2_PUBLIC_SANCTION",
+      "procedure": "Erase rule issuer or public sanction and treat sanction as felt guilt",
+      "expected": "REJECT_PUBLIC_RULE_AND_OWNER_LOSS",
+      "oracle": "public objective rule retained, private response not inferred",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_27",
+      "mutation": "NONPARENT_CONSUMER",
+      "procedure": "Serve nonparent apprenticeship query from same two contracts",
+      "expected": "PRODUCE_GENERIC_OBJECTIVE_POSSIBILITY_ONLY",
+      "oracle": "same raw contract grammar; no genealogy tags",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    },
+    {
+      "id": "K10_28",
+      "mutation": "NO_ACTOR_WELD",
+      "procedure": "Attempt to trigger V3 actor/N12 wake from passing sourcefree case",
+      "expected": "REFUSE_UNGRANTED_ACTOR_USE",
+      "oracle": "all actor calls remain absent",
+      "baseline_unrelated_readset_must_remain_invariant": true
+    }
+  ],
+  "required_evidence": [
+    "baseline_semantic_projected_output",
+    "mutated_semantic_projected_output",
+    "reversible_dereference_receipt",
+    "selected_values_read_receipt",
+    "exact_affected_descendants",
+    "unaffected_nonparent_consumer_projection",
+    "permission_and_provenance_receipt",
+    "case_status_EXECUTED_or_NOT_EXECUTED"
+  ],
+  "acceptance": {
+    "no_lost_declared_distinction": true,
+    "no_unlicensed_actor": true,
+    "no_unlicensed_grade_promotion": true,
+    "every_case_must_run_before_physical_freeze": true,
+    "not_universal_future_sufficiency": true
+  }
+}

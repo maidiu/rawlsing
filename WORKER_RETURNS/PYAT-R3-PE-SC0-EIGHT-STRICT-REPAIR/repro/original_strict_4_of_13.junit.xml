@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="9" skipped="0" tests="13" time="2.278" timestamp="2026-10-30T23:23:57.873518-04:00" hostname="mainMac.lan"><testcase classname="rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent" name="test_independent_pe_multi_condition_n100_n110_and_null_control" time="1.024" /><testcase classname="rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent" name="test_independent_nonparent_reverse_has_its_own_denominator" time="0.125" /><testcase classname="rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent" name="test_world_ref_change_is_only_carry_not_joint_computation" time="0.138" /><testcase classname="rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent" name="test_invalidated_snapshot_refuses_without_reusing_cached_geometry" time="0.001" /><testcase classname="rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent" name="test_strict_reverse_scoped_issuer_forgery_must_refuse" time="0.064"><failure message="AssertionError: STATIC_EXPECTED_FAILURE__PE_ACCEPTS_ANY_NON_NULL_REVERSAL_AUTHORITY&#10;assert 'EXACT_SUPPORTED' == 'TYPED_REFUSAL'&#10;  &#10;  - TYPED_REFUSAL&#10;  + EXACT_SUPPORTED">worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}
+
+    def test_strict_reverse_scoped_issuer_forgery_must_refuse(worlds):
+        """Expected SC0 rejection: merely non-null *caller* authority is not science."""
+        case = worlds["A"]["nonparent_reverse"]
+        old = case["request"].role_reversal_authority_ref
+        false = type(old)(authority_id="urn:test:unissued:reversal:WRONG_TOPOLOGY",
+            authority_version="999.0.0",
+            authority_content_hash="f" * 64)
+        req = replace(case["request"], role_reversal_authority_ref=false)
+        result = _serve(case, request=req)
+&gt;       assert result.result_state == "TYPED_REFUSAL", (
+            "STATIC_EXPECTED_FAILURE__PE_ACCEPTS_ANY_NON_NULL_REVERSAL_AUTHORITY"
+        )
+E       AssertionError: STATIC_EXPECTED_FAILURE__PE_ACCEPTS_ANY_NON_NULL_REVERSAL_AUTHORITY
+E       assert 'EXACT_SUPPORTED' == 'TYPED_REFUSAL'
+E         
+E         - TYPED_REFUSAL
+E         + EXACT_SUPPORTED
+
+rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:139: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent" name="test_strict_selected_world_nary_F2_AH_strata_roundtrip" time="0.069"><failure message="AssertionError: SC0_REQUIRED_N9_VALUE_ABSENT:absolute_horizon&#10;assert 'absolute_horizon' in {'asof_dependency_refs': [{'content_hash': '7cde192bc586d22ec992e859292cc27c0aaf0ac44ae1632a08a0ce6294371b30', 'kind':...ra_pe_n9_test_snapshot@1:law-a-snapshot:sha256:1832ab88f652c4c8d0a1384f88eea941c82b8c34018a33c2f43d44f78aed53bf'}, ...}">worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}
+
+    def test_strict_selected_world_nary_F2_AH_strata_roundtrip(worlds):
+        """SC0 two-owner world contract, NOT a claim generic PE already implements it."""
+        receipt = _serve(worlds["A"]["multi_binding_parent_context"]).receipt
+        world = receipt.material()["n9_world"]
+        for name in (
+            "absolute_horizon", "native_strata", "nary", "f2",
+            "public_sanctions", "public_categories", "contradictory_alternatives",
+        ):
+&gt;           assert name in world, "SC0_REQUIRED_N9_VALUE_ABSENT:" + name
+E           AssertionError: SC0_REQUIRED_N9_VALUE_ABSENT:absolute_horizon
+E           assert 'absolute_horizon' in {'asof_dependency_refs': [{'content_hash': '7cde192bc586d22ec992e859292cc27c0aaf0ac44ae1632a08a0ce6294371b30', 'kind':...ra_pe_n9_test_snapshot@1:law-a-snapshot:sha256:1832ab88f652c4c8d0a1384f88eea941c82b8c34018a33c2f43d44f78aed53bf'}, ...}
+
+rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:153: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent" name="test_strict_generated_runtime_fact_echo_not_source_promotion" time="0.069"><failure message="KeyError: 'binding_echo'">worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}
+
+    def test_strict_generated_runtime_fact_echo_not_source_promotion(worlds):
+        receipt = _serve(worlds["A"]["multi_binding_parent_context"]).receipt
+        world = receipt.material()["n9_world"]
+&gt;       assert world["binding_echo"]["tag"] == "GENERATED_RUNTIME_FACT_REF"
+               ^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'binding_echo'
+
+rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:159: KeyError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent" name="test_strict_two_distinct_world_refresh_receipts" time="0.070"><failure message="KeyError: 'structural_publication_refresh_receipt'">worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}
+
+    def test_strict_two_distinct_world_refresh_receipts(worlds):
+        receipt = _serve(worlds["A"]["multi_binding_parent_context"]).receipt
+        mat = receipt.material()
+&gt;       assert mat["structural_publication_refresh_receipt"]["world_result_ref"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'structural_publication_refresh_receipt'
+
+rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:166: KeyError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent" name="test_strict_four_clocks_historical_knowledge" time="0.068"><failure message="KeyError: 'clocks'">worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}
+
+    def test_strict_four_clocks_historical_knowledge(worlds):
+        receipt = _serve(worlds["A"]["multi_binding_parent_context"]).receipt
+&gt;       c = receipt.material()["n9_world"]["clocks"]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'clocks'
+
+rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:174: KeyError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent" name="test_strict_negative_status_algebra_and_source_risk" time="0.069"><failure message="KeyError: 'scoped_status_rows'">worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}
+
+    def test_strict_negative_status_algebra_and_source_risk(worlds):
+        mat = _serve(worlds["A"]["conception_scenario"]).receipt.material()
+        world = mat["n9_world"]
+&gt;       statuses = {s["state"] for s in world["scoped_status_rows"]}
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'scoped_status_rows'
+
+rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:183: KeyError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent" name="test_strict_values_read_not_only_hash_or_inferred_label" time="0.061"><failure message="KeyError: 'n9_values_read_receipt'">worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}
+
+    def test_strict_values_read_not_only_hash_or_inferred_label(worlds):
+        mat = _serve(worlds["A"]["nonparent_reverse"]).receipt.material()
+&gt;       assert mat["n9_values_read_receipt"]["exact_owner_value_refs"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'n9_values_read_receipt'
+
+rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:193: KeyError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent" name="test_strict_nonparent_apprenticeship_world_effect" time="0.061"><failure message="KeyError: 'generic_consumers'">worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}
+
+    def test_strict_nonparent_apprenticeship_world_effect(worlds):
+        mat = _serve(worlds["A"]["nonparent_reverse"]).receipt.material()
+&gt;       effects = mat["generic_consumers"]["NONPARENT_APPRENTICESHIP_ENTRY"]
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'generic_consumers'
+
+rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:200: KeyError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent" name="test_strict_parent_scenario_remains_input_only" time="0.069"><failure message="KeyError: 'generic_consumers'">worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}
+
+    def test_strict_parent_scenario_remains_input_only(worlds):
+        mat = _serve(worlds["A"]["conception_scenario"]).receipt.material()
+&gt;       effects = mat["generic_consumers"]["CONCEPTION_SCENARIO_PROPOSAL_INPUT_ONLY"]
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'generic_consumers'
+
+rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:207: KeyError</failure></testcase></testsuite></testsuites>

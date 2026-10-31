@@ -1,0 +1,280 @@
+{
+  "meta": {
+    "schema": "SC0_K9_PROVIDER_SWAP_ORACLES@1.0.0",
+    "status": "FROZEN_SPEC_NOT_EXECUTED",
+    "grade": "TEST_FIXTURE_ONLY",
+    "fixture_only": true,
+    "independent_providers_required": true,
+    "shared_authority_ceiling": "NONE_OPERATIVE",
+    "runner_contract": "For each case: run providers A and B through the two proposed envelope interfaces and consumers; validate against 01 schema; normalize only explicitly listed physical provenance fields; reverse-dereference all semantic payloads; compare stable semantic path/value and consumer effect; report every mismatch/skip."
+  },
+  "fixture": {
+    "semantic_world_id": "fx:world:municipal:2008",
+    "physical_A": {
+      "provider_id": "fx:A:tuple-store",
+      "serialization": "single tagged object map",
+      "stage_names": [
+        "stage_one",
+        "stage_two"
+      ],
+      "physical_blob_id": "phys-A"
+    },
+    "physical_B": {
+      "provider_id": "fx:B:normalized-multifile",
+      "serialization": "normalized rows with split temporal and n-ary tables",
+      "stage_names": [
+        "renamed_data",
+        "join_index"
+      ],
+      "physical_blob_id": "phys-B"
+    },
+    "shared_semantic_ids": [
+      "fx:scope:town2008",
+      "fx:AH:collective-horizon",
+      "fx:route:school_access",
+      "fx:f1:triad_1",
+      "fx:f2:history_prior_1",
+      "fx:predicate:prior_service",
+      "fx:neg:unknown_access"
+    ],
+    "native_coordinates": {
+      "scope": "fictional district X / 2008 / native respondent-unit",
+      "strata": [
+        "native:municipal-role",
+        "native:regional-role"
+      ],
+      "absolute_horizon": "fx:AH:collective-horizon"
+    },
+    "nary": {
+      "relation_id": "fx:f1:triad_1",
+      "participant_roles": [
+        [
+          "authority",
+          0,
+          "institution:school"
+        ],
+        [
+          "applicant",
+          1,
+          "subject:generic"
+        ],
+        [
+          "sponsor",
+          2,
+          "collective:mutual-aid"
+        ]
+      ],
+      "ordered": true,
+      "cardinality": 3,
+      "not_three_independent_dyads": true
+    },
+    "f2": {
+      "id": "fx:f2:history_prior_1",
+      "route_refs": [
+        "fx:route:school_access"
+      ],
+      "f1_refs": [
+        "fx:f1:triad_1"
+      ],
+      "predicate_refs": [
+        "fx:predicate:prior_service"
+      ],
+      "actor_history_requirement_refs": [
+        "fx:req:prior-history"
+      ],
+      "status": "DEFERRED_UNBOUND"
+    },
+    "clocks": {
+      "observation_effective": "2008-01-01/2008-12-31",
+      "publication": "2010-02-01",
+      "knowledge_as_of": "2010-12-31",
+      "actor_event": "2008-07-01",
+      "request": "2026-10-14"
+    },
+    "empirical": {
+      "universe": "fx:universe:single_source",
+      "sampling_unit": "RESPONDENT",
+      "release": "fx:release:v1",
+      "target": "fx:response:access_yes",
+      "direction": "FORWARD_CONDITIONAL",
+      "base_n": 60,
+      "cells": [
+        {
+          "value": "YES",
+          "n": 54
+        },
+        {
+          "value": "NO",
+          "n": 6
+        }
+      ],
+      "condition_chain": [
+        {
+          "index": 0,
+          "ref": "fx:cond:area",
+          "n": 60
+        },
+        {
+          "index": 1,
+          "ref": "fx:cond:school",
+          "n": 30
+        },
+        {
+          "index": 2,
+          "ref": "fx:cond:caretime",
+          "n": 12
+        }
+      ],
+      "minority": "fx:response:access_no",
+      "uncertainty": "fx:uncertainty:sourcefree-not-real",
+      "model_use": "TEST_ONLY"
+    },
+    "consumers": [
+      {
+        "id": "CONCEPTION_SCENARIO_PROPOSAL_INPUT_ONLY",
+        "input": "generic world conditions and distribution",
+        "output": "eligible scenario constraints and minority alternatives; no parent object, partner selection or biography"
+      },
+      {
+        "id": "NONPARENT_APPRENTICESHIP_ENTRY",
+        "input": "same generic world and distribution",
+        "output": "possible apprenticeship/education access routes and restrictions; no generated learner psyche"
+      }
+    ]
+  },
+  "normalization_policy": {
+    "allowed_provider_variant_paths": [
+      "physical_provider_id",
+      "physical_storage_locator",
+      "physical_serialization",
+      "physical_lineage_blob",
+      "nonsemantic_cache_ids"
+    ],
+    "not_allowed_to_normalize": [
+      "source_object_semantic_id",
+      "native_response_value",
+      "native_unit",
+      "absolute_horizon",
+      "roles_order",
+      "nary_participants",
+      "f2_requirement_ref",
+      "time_axes",
+      "permission_ceiling",
+      "query_conditioner_order",
+      "universe",
+      "denominator",
+      "support",
+      "negative_state",
+      "consumer_effect",
+      "replay_semantic_digest"
+    ]
+  },
+  "cases": [
+    {
+      "id": "K9_01_TWO_PROVIDERS_SAME_MEANING",
+      "procedure": [
+        "load A then B under identical use ceiling",
+        "resolve same world demand with same four clocks",
+        "query three ordered empirical steps",
+        "dereference all semantic objects",
+        "invoke each of two consumers under same rule version"
+      ],
+      "assertions": [
+        "schema_valid(A) && schema_valid(B)",
+        "semantic_world_projection(A)==semantic_world_projection(B)",
+        "ordered_possibility_projection(A)==ordered_possibility_projection(B)",
+        "both_consumer_effects(A)==both_consumer_effects(B)",
+        "physical_provider_id(A)!=physical_provider_id(B)"
+      ],
+      "expected": "EQUIVALENT_EXCEPT_DECLARED_PHYSICAL_LINEAGE"
+    },
+    {
+      "id": "K9_02_INDEPENDENT_NONPARENT",
+      "procedure": [
+        "use NONPARENT_APPRENTICESHIP_ENTRY",
+        "exclude genealogical selectors from request"
+      ],
+      "assertions": [
+        "requires_no_parent_or_coparent_tag",
+        "selected_apprenticeship_routes_equal",
+        "no_person_generation"
+      ],
+      "expected": "GENERIC_API_CONSUMED_WITHOUT_GENEALOGY"
+    },
+    {
+      "id": "K9_03_ID_REORDER_AND_STAGE_RENAME",
+      "procedure": [
+        "B shuffles physical record order and renames all stage-shaped files",
+        "semantic refs and values preserved"
+      ],
+      "assertions": [
+        "no_stage_name_dependency",
+        "all roles/order unchanged",
+        "semantic projections equal"
+      ],
+      "expected": "EQUIVALENT"
+    },
+    {
+      "id": "K9_04_NOT_EQUIVALENT_CONTRAST",
+      "procedure": [
+        "B omits sponsor participant or converts triad into dyads"
+      ],
+      "assertions": [
+        "world_projection_inequality_detected",
+        "port must reject lost role"
+      ],
+      "expected": "FAIL_NON_EQUIVALENT_PROVIDER_NOT_PERMITTED_NORMALIZATION"
+    },
+    {
+      "id": "K9_05_MODELLED_VS_OBSERVED",
+      "procedure": [
+        "B marks fixture synthetic route as observed source fact"
+      ],
+      "assertions": [
+        "epistemic_grade_difference_detected",
+        "reject promotion"
+      ],
+      "expected": "REFUSE_GRADE_PROMOTION"
+    },
+    {
+      "id": "K9_06_FORWARD_REVERSE",
+      "procedure": [
+        "request reversal from B without separate target risk-set issuer"
+      ],
+      "assertions": [
+        "no_calculation_of_reverse_from_forward",
+        "forward_legal_slice_preserved"
+      ],
+      "expected": "HELD_AUTHORITY_REVERSE_ROLE"
+    },
+    {
+      "id": "K9_07_PERMISSIONS",
+      "procedure": [
+        "B drops dependency use atom while preserving bytes"
+      ],
+      "assertions": [
+        "denied_requested_slice",
+        "no cached A bypass"
+      ],
+      "expected": "DENIED_USE"
+    },
+    {
+      "id": "K9_08_TWO_CHANNEL_REFRESH",
+      "procedure": [
+        "same timestamp, generated location binding changes",
+        "next run crosses publication boundary independently"
+      ],
+      "assertions": [
+        "binding_change_causes_new_query",
+        "publication_boundary_causes_separate_successor",
+        "prior_receipts_immutable"
+      ],
+      "expected": "TWO_INDEPENDENT_SUCCESSORS"
+    }
+  ],
+  "acceptance": {
+    "strict": "zero undeclared semantic/consumer differences across both providers and both consumers on the equivalent case",
+    "failure": "any conserved field difference blocks physical C0 freeze; no universal proof beyond listed fixture",
+    "test_execution": "NOT_EXECUTED"
+  }
+}

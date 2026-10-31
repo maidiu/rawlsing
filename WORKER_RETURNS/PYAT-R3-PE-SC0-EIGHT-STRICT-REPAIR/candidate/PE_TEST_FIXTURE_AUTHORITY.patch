@@ -1,0 +1,57 @@
+--- a/rawlsing_next/tests/test_postastra_pe_fixture.py
++++ b/rawlsing_next/tests/test_postastra_pe_fixture.py
+@@ -24,6 +24,7 @@
+ 
+ from rawlsing_next.pre553_empirical_objects import (
+     AuthorityRef,
++    AuthoritySnapshot,
+     ExactRef,
+     semantic_hash,
+ )
+@@ -294,6 +295,37 @@
+     )
+ 
+ 
++def make_role_reversal_snapshot(tag: str = "reverse") -> AuthoritySnapshot:
++    content = {"schema": "POSTASTRA_PE_ROLE_REVERSAL_AUTHORITY@1", "tag": tag, "scope": "ANSWER_TO_POSITION"}
++    digest = semantic_hash(content)
++    return AuthoritySnapshot(
++        typed_state="ALLOW",
++        authority_snapshot_refs=(),
++        dependency_refs=(),
++        producer_replay_locator_or_reference_root=ExactRef(
++            "REPLAY_ROOT", f"urn:test:postastra-pe:role-reversal-replay-root:{tag}", digest
++        ),
++        authority_id=f"urn:test:postastra-pe:role-reversal-authority:{tag}",
++        authority_version="1.0.0",
++        authority_content_hash=digest,
++        authority_kind="TARGET_USE_PERMISSION",
++        decision_state="ALLOW",
++        governed_operations=(ROLE_REVERSE,),
++        governed_object_families=("POSTASTRA_PE_GENERIC_WORLD_SITATED_POSSIBILITY@1.0.0",),
++        scope_envelope={
++            "source_universe_refs": "EXPLICIT_UNRESTRICTED",
++            "target_use_refs": "EXPLICIT_UNRESTRICTED",
++            "predicate_or_risk_set_refs": "EXPLICIT_UNRESTRICTED",
++        },
++        effective_time_or_interval="ALL_TIME",
++        parent_authority_refs=(),
++        negative_limit_refs=(),
++        supersession_refs=(),
++        interpretation_semantics_fingerprint=semantic_hash({"role-reversal": tag}),
++        replay_protocol_ref=ExactRef("REPLAY_PROTOCOL", f"urn:test:postastra-pe:role-reversal-replay:{tag}", digest),
++    )
++
++
+ def build_three_consumer_cases(
+     *, law_rows: list[dict[str, Any]], law_tag: str
+ ) -> dict[str, dict[str, Any]]:
+@@ -319,7 +351,7 @@
+     query_auth = i03._query_authority(f"postastra-pe-{law_tag}")
+     from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
+ 
+-    registry = AuthorityRegistry((*source["authorities"], query_auth))
++    registry = AuthorityRegistry((*source["authorities"], query_auth, make_role_reversal_snapshot(f"postastra-pe-{law_tag}")))
+     pairing = make_pairing_authority(f"postastra-pe-{law_tag}")
+     model_rule = _pe_model_rule(source["universe"].ref, law_tag)
+     risk_ref = source["risk_refs"]["R"]
