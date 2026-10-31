@@ -45,6 +45,11 @@ def main():
   for k,v in g.items():
    if isinstance(v,list) and any(word in k for word in ("member","function","row")):
     ident[k]+=1
+ expected_all=collections.Counter(str(v) for arr in expected.values() for v in arr)
+ actual_all=collections.Counter(str(v) for g in groups for v in g.get("member_function_ids", []))
+ missing_ids=sorted(set(expected_all)-set(actual_all))
+ extra_ids=sorted(set(actual_all)-set(expected_all))
+ duplicate_ids={k:v for k,v in actual_all.items() if v>1}
  grade=collections.Counter();source=collections.Counter()
  for row in challenges:
   for k in ("verdict","grade","classification","challenged_label","challenge_type","row_type","kind","type"):
@@ -54,6 +59,7 @@ def main():
  "S6":case("s6",groups),"H1":case("h1",challenges),"PE_V2K":case("pe",lineage),
  "original_corrected_ids_count":{k:len(v) for k,v in expected.items()},
  "S6_member_like_field_counts":dict(ident),
+ "S6_exact_membership":{"total":sum(actual_all.values()),"unique":len(actual_all),"expected":len(expected_all),"missing":missing_ids[:20],"extra":extra_ids[:20],"duplicate_count":len(duplicate_ids),"member_count_disagreement":sum(g.get("member_count")!=len(g.get("member_function_ids",[])) for g in groups)},
  "H1_grade_fields_top":{f"{k}:{v}":n for (k,v),n in grade.most_common(28)},
  "data_shapes":matrices,
  "H1_SESSION_COLLISION_WITH_S1_DECLARED":True,
@@ -61,6 +67,6 @@ def main():
  Path("pyat-s6-h1-receipts").mkdir(exist_ok=True)
  Path("pyat-s6-h1-receipts/INITIAL_RETURN_INDEX.json").write_text(json.dumps(result,indent=2),encoding="utf-8")
  print(json.dumps(result,indent=2)[:19000])
- if len(groups)!=1881 or len(challenges)!=2146 or len(lineage)==0:
+ if len(groups)!=1881 or len(challenges)!=2146 or len(lineage)==0 or missing_ids or extra_ids or duplicate_ids:
   raise SystemExit(2)
 if __name__=="__main__":main()
