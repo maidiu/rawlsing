@@ -1,0 +1,26 @@
+name: PYAT independently verify S7-FIX 1885 families against original 3135 S6 function IDs
+on:
+  push:
+    branches: [agent/pyat-hq-s7fix-pev2k-hostile-source-acceptance-20261031-r1]
+permissions:
+  contents: read
+jobs:
+  source-court:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+      - name: Fetch exact historical objects, never execute worker source
+        run: |
+          git fetch --no-tags --filter=blob:none origin 2c5cf86beb12b7dbeda5532614784737ad30d89d 80bc5d9bf6624c2ea04027322947a41c347330aa
+      - name: Independent source/lineage check for all original IDs and boundary repairs
+        run: python3 PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/18_s7fix_independent_group_check.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-hq-s7fix-source-custody
+          path: pyat-hq-s7fix-receipts/
+          if-no-files-found: warn
