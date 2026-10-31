@@ -1,0 +1,68 @@
+{
+  "schema": "SOROK_C9C12_R2_ROLLBACK_AND_PROVENANCE@1",
+  "status": "RETURNED_SOURCEFREE_CANDIDATE__NO_CANONICAL_MUTATION",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/sorok-c9c12-r2-durable-clock-actor-integrity-20261030",
+  "premain": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "source_cuts": {
+    "i1": "7d44e30064f8e873e1a3ff9cb05fe75456756b88",
+    "o1": "501ea1f5bf07468b2c0437f452a81f3515cfdb6f",
+    "rcf_b": "397c6d61d73825d83e1282753e254c39f4b5a80e",
+    "bp2p4j": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+    "bp4r": "693d25bf40f76b09ccf2cc1ec5218a262e201fcd",
+    "c9_r3b": "fac064c9c3370d598e9b7469af652ae3504bc4ba"
+  },
+  "candidate": {
+    "base_bp4r_guard_blob": "e0d9d90468a9d4d62ef38859b1c2762f92421022",
+    "candidate_guard_blob": "8f629c29228cfc736c195db501dd100f2ac30f75",
+    "candidate_guard_sha256": "104dc91c6abde69b42a2b180bbbc3c904dbf3d91ffeae4871f9299e0f6986685",
+    "original_c9_writer_blob": "67f34f699220ec1407e7e8f0d58ed328e88a36af",
+    "candidate_c9_writer_blob": "b9000cdb1a4e3e3be6de0dfb1690515f2984a122",
+    "candidate_c9_writer_sha256": "65da5b084c8db0547c1ced0e838a1f3d5214424b0471723ffa66369484fe0010",
+    "candidate_reader_blob": "db38d05d5edab7ad72cc003807945e056f2b0779",
+    "candidate_reader_sha256": "9621cae0280c63386fa29e379e28f3ccb7af368813ef322317f86ba6f0a19442",
+    "schema_actor_blob": "a5189ecd8f953952210dd3e6175a80e211b10647",
+    "schema_actor_sha256": "0ae69ef5b76177950c0b9c40e7bb20db11cf41d4697a5e4a1d6b08b459c82b90",
+    "schema_mirror_blob": "8e9d978b57740b3a5fb2ca4c42fb2c3365c594c1",
+    "schema_mirror_sha256": "5f3f2895af2a5443dd87ade6714675677b96be23be15544714fdc16e12f58821",
+    "test_blob": "4249cb865bce288634f7250b5a11dcf834cb40d7",
+    "test_sha256": "e70bbc3e45a3547c822cacf2143101ec04302eefef7d0cbd55f16c29e00dac55",
+    "original_c12_store_blob": "c94cd131f6d24737e43a2f3dd192ac2a7569eb18"
+  },
+  "tests": {
+    "candidate_6": {"tests": 6, "failures": 0, "errors": 0, "skipped": 0, "junit_sha256": "91e314874ce0bd9645019f3f413c5df1bc686ed784e50ce55128ab67c5233bd2"},
+    "c9_historical_14_1": {"tests": 15, "failures": 1, "errors": 0, "skipped": 0, "junit_sha256": "8bfa25e487841650fa847e7d932a54609bf826fd4a50d51b9fec57c207c58737", "failure": "test_c6_same_count_perception_substitution_is_held"},
+    "bp4r_historical_7_2": {"tests": 9, "failures": 2, "errors": 0, "skipped": 0, "junit_sha256": "8cf5bfb59869ab55b9ceb6dd8e706eb07364deacca1736ef751912868ba856f8", "failures_expected": ["test_residual_global_writer_clock_is_still_accepted_red", "test_residual_anchor_actor_clock_coverage_remains_unbound_red"]},
+    "bp2p4j_e2_pair": {"tests": 2, "failures": 0, "errors": 0, "skipped": 0, "junit_sha256": "64b095b3380bb5c9526bb0e1a89bb323e9e300e4aa549fd448aac21e1677a8a8"}
+  },
+  "rollback": {
+    "original_branch_modified": false,
+    "original_database_modified": false,
+    "premain_write": false,
+    "pr_write": false,
+    "temp_databases": "all candidate tests used pytest tmp_path or private worktree; no live DB opened for write",
+    "c12_restore": "forged child row restored exactly and same reader returned green",
+    "c9_restore": "outbox row restored exactly; restored PENDING remains typed C9_OUTBOX_HELD, no fabricated ACK",
+    "candidate_rollback": "delete WORKER_RETURNS/SOROK-C9C12-R2/candidate and no canonical state changes remain"
+  },
+  "session": {
+    "device": "oldMac",
+    "device_evidence": "scutil ComputerName=oldMac; hostname=oldMac.lan",
+    "harness": "OpenCode",
+    "harness_version": "1.18.34",
+    "model_provider": "opencode-go",
+    "model_id": "deepseek-v4.1-flash",
+    "reasoning_effort_requested": "MAX",
+    "reasoning_effort_verified": "LOCAL_SESSION_DB_VARIANT_MAX__PROVIDER_SIDE_UNVERIFIED",
+    "session_name": "INDEX_B 282-branch indexing commission",
+    "session_id": "ses_e77c423e1ffealQLzYonSQTRRf",
+    "session_title_status": "ACTUAL_APP_TITLE_STALE_FROM_EARLIER_COMMISSION__SUGGESTED_TITLE_NOT_APPLIED",
+    "suggested_session_name": "SOROK C9C12-R2 | durable clock/actor integrity | oldMac | OpenCode",
+    "terminal_program": "Apple_Terminal",
+    "terminal_session_id": "EC37E1BA-C442-4AAD-80F9-32A17D7A7A85",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-c9c12-r2-durable-clock-actor-integrity-20261030",
+    "agent_name": "build",
+    "agent_id": null
+  },
+  "return_sha": null
+}

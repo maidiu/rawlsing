@@ -1,0 +1,65 @@
+{
+  "schema": "SOROK_C9C12_R2_VERSIONED_WRITER_READER_CLOCK_CONTRACT@1",
+  "status": "SOURCEFREE_CANDIDATE__C12_CLOCK_ANCHOR_FIXED__C9_SNAPSHOT_READER__OWNER_ANCHOR_AND_CANONICAL_CAS_HOLD",
+  "premain": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "branch": "agent/sorok-c9c12-r2-durable-clock-actor-integrity-20261030",
+  "selected_c9_writer": {
+    "role": "C9 actor writer/reader/mirror test-only schema",
+    "source": "BP4R patched C9 candidate b9000cdb1a4e3e3be6de0dfb1690515f2984a122; derived from C9 R3B 67f34f699220ec1407e7e8f0d58ed328e88a36af plus actual-consumer writer-version gate",
+    "schema": "C9_ACTOR_AUTHORITY_R3@1; SQLite application_id 1129533491; user_version 1",
+    "supported_c12_writer_schemas": ["BP4_C12_STORE@1"],
+    "rejected": ["BP4_C12_STORE@2 without owner-issued migration decision"],
+    "mirror_schema": "C12_ACTOR_MIRROR_R3@1; application_id 1129533492",
+    "owner_frozen": false
+  },
+  "selected_c12_reader": {
+    "role": "BP4R guarded C12 origin/location/cold reader",
+    "source": "candidate/c12_guard.py blob 8f629c29228cfc736c195db501dd100f2ac30f75; base BP4R guard e0d9d90468a9d4d62ef38859b1c2762f92421022",
+    "writer_schema": "BP4_C12_STORE@1",
+    "immutable_origin": "sealed episode body branch_id",
+    "physical_location": "SQL branch_id column",
+    "fork_prefix": "fork leaf/ancestor prefix counts; prefixed root hash",
+    "content_checks": "episode id/hash, actor, body origin, post/pre state, contiguous seq",
+    "cold_read": "same GuardedC12Store.verify_store after close/reopen",
+    "owner_anchor": "OWNER_ANCHOR_REQUIRED; no local key accepted"
+  },
+  "clock_contract": {
+    "domain": "BP4_C12_APPEND_ONLY_ROW_CLOCK",
+    "writer_rule": "append_episode(clock) must be >= max(last non-perception clock, last perception clock)",
+    "new_code": "NON_MONOTONIC_GLOBAL_CLOCK",
+    "historical_defect": "perception 11 followed by episode 10 was accepted by the original writer and remains the BP4R diagnostic test",
+    "cold_clock": "fork clock is max(last_clock, perception max); branch created_clock/fork_clock retained"
+  },
+  "anchor_contract": {
+    "schema": "BP4_C12_ANCHOR_PAYLOAD@1",
+    "payload_fields": ["branch_id", "branch_identity(actor_ids,created_clock,fork_clock,root_hash)", "chain", "counts", "fork_status"],
+    "external_custody": "OWNER_ANCHOR_REQUIRED; check_anchor(None) is HOLD",
+    "historical_defect": "old payload omitted actor_ids/created_clock; raw branch mutation did not change it and remains the BP4R diagnostic test",
+    "test_key": "not supplied and not accepted as proof"
+  },
+  "c9_snapshot_reader": {
+    "callable": "c9c12_reader.read_actor_snapshot",
+    "inputs": "exact C9 R3B actor DB; actor_id/branch_id/branch_epoch; optional mirror DB",
+    "checks": ["actor_meta schema", "actor_branch", "actor_head", "head version hash/semantic hash", "held vs final receipt binding", "projection_outbox state", "optional mirror schema/branch"],
+    "return_states": ["ACTOR_SNAPSHOT_OK", "C9_WRITER_SCHEMA_UNSUPPORTED", "C9_OUTBOX_HELD", "C9_OUTBOX_MISSING", "C9_MIRROR_HELD", "C9_VERSION_KIND_HELD"],
+    "write_behavior": "read-only SQLite; no writes"
+  },
+  "first_consumer_composite": {
+    "callable": "c9c12_reader.read_composite",
+    "status": "COMPOSITE_OK__EXTERNAL_ANCHOR_REQUIRED",
+    "consumer": "I1 / subsequent CP-A5 actor-snapshot plus guarded C12 cold-read",
+    "not_native": true
+  },
+  "known_incompatibilities": [
+    "C9 R3B actor SQLite is not interchangeable with BP2P4J C9R CandidateStore.",
+    "C9 R3B c12_fork_guard supports @1 only; @2 is refused until owner migration.",
+    "C9 R3B actor snapshot reader has no native E2 field; E2 performed/offered distinction remains in BP2P4J/R31J, not C9 R3B.",
+    "Mirror/outbox ACK cross-database identity is not proven; only PENDING/missing typed behavior tested.",
+    "External anchor/custodian not issued; no local key."
+  ],
+  "grades": {
+    "engineering": "SOURCEFREE_CANDIDATE_PASS_SCOPED",
+    "scientific": "HOLD_NATIVE_ACTOR_RULE_PRACTICE_PERSON",
+    "authority": "HOLD_OWNER_ADOPTION_ANCHOR_AND_CANONICAL_CAS"
+  }
+}
