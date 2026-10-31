@@ -1,0 +1,311 @@
+{
+  "c12_authenticity": {
+    "code": "OWNER_ANCHOR_REQUIRED",
+    "state": "UNVERIFIED"
+  },
+  "c12_counts_after": {
+    "checkpoint": 2,
+    "episode": 3,
+    "perception": 4,
+    "world_event": 3
+  },
+  "c12_counts_before": {
+    "checkpoint": 2,
+    "episode": 3,
+    "perception": 4,
+    "world_event": 3
+  },
+  "canonical_c9_claimed": false,
+  "cash_after": 56.0,
+  "cash_before": 54.0,
+  "completed_units_after": 4.0,
+  "completed_units_before": 3.0,
+  "event_id": "TEST_ONLY_BP4_WORLD_EVT_3da61c63ecdb310fb4f1962e636594992b8b34d1b2099624594cfdb79bf7c93c",
+  "material_index_after": 11.6,
+  "material_index_before": 11.3,
+  "material_index_delta": 0.3,
+  "observed_world_hash": "feea68abbac685d639603d2bece2b627b4bf4c84c998a85c2a19069db3b11e17",
+  "position_after": "market",
+  "position_before": "workshop",
+  "projection_cold_equal": true,
+  "projection_ledger_sha256": "056ff04d2d756a649308352e9507a5cac6cb99c8ce0467ded608c395bd220ab1",
+  "projection_reloaded_hash": "5255a4691ed0fe959cb071706087f077bb7f84faa2abaa9984e024f8b3c4bc50",
+  "projection_source_metadata": {
+    "c12_verify_before": {
+      "authenticity": {
+        "code": "OWNER_ANCHOR_REQUIRED",
+        "state": "UNVERIFIED"
+      },
+      "branch_id": "root",
+      "completeness": {
+        "code": "OWNER_ANCHOR_REQUIRED",
+        "state": "UNVERIFIED"
+      },
+      "content_ok": true,
+      "counts": {
+        "checkpoint": 2,
+        "episode": 3,
+        "perception": 4,
+        "world_event": 3
+      },
+      "errors": [],
+      "fork": {
+        "branch_id": "root",
+        "errors": [],
+        "ok": true,
+        "status": "VERIFIED"
+      },
+      "fork_ok": true,
+      "ok": true,
+      "reader_version": "C12_GUARD_READER@1",
+      "schema_ok": true
+    },
+    "event_id": "TEST_ONLY_BP4_WORLD_EVT_3da61c63ecdb310fb4f1962e636594992b8b34d1b2099624594cfdb79bf7c93c",
+    "observed_world_hash": "feea68abbac685d639603d2bece2b627b4bf4c84c998a85c2a19069db3b11e17"
+  },
+  "rival_store_created": false,
+  "schema": "SOROK_V3CORE_R1_FIRST_CONSUMER_PROBE@1",
+  "source_clock": 40,
+  "source_clock_domain": "CURRENT_C12_ACTOR_WORLD_CLOCK",
+  "state_hash_after": "5255a4691ed0fe959cb071706087f077bb7f84faa2abaa9984e024f8b3c4bc50",
+  "state_hash_before": "1a42e424d2ca0709fe06c8b56f42191a6cc7ca74522d56e894812505be5a526c",
+  "status": "APPLIED_TEST_ONLY_SOURCEFREE",
+  "year_record": {
+    "age": null,
+    "annual_year": 1,
+    "authority": "TEST_ONLY_SOURCEFREE_NO_SCIENCE_ISSUANCE",
+    "canonical_c9_claimed": false,
+    "derived_diagnostic_hash": "823aef73156a6ef67f522bfd0711681d844e63eb42fa4d8d392f426252248ec0",
+    "event_dispositions": [
+      {
+        "details": {
+          "accounting_verified_against_consumer": true,
+          "cash_delta": 2.0,
+          "event_kind": "OFFSCREEN_REPAIR",
+          "material_delta": -1.0,
+          "response_kind": "PERFORMED_OFFSCREEN_WORK"
+        },
+        "durable_mutation": true,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_3da61c63ecdb310fb4f1962e636594992b8b34d1b2099624594cfdb79bf7c93c",
+        "reason": "",
+        "rule_id": "TEST_ONLY_MATERIAL_ACCOUNTING_OFFSCREEN_WORK@1",
+        "source_fact_hash": "b55f7084e026eb1e70e812d14f8259437c6709e5ac7ad1743f0ba5a8f4c4783c",
+        "status": "APPLIED_TEST_ONLY_SOURCEFREE"
+      }
+    ],
+    "generation_status": "degraded",
+    "material_deltas": [
+      {
+        "after": 56.0,
+        "authority": "TEST_ONLY_MATERIAL_ACCOUNTING_POLICY",
+        "before": 54.0,
+        "delta": 2.0,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_3da61c63ecdb310fb4f1962e636594992b8b34d1b2099624594cfdb79bf7c93c",
+        "field": "capacity.money",
+        "source_fact_hash": "b55f7084e026eb1e70e812d14f8259437c6709e5ac7ad1743f0ba5a8f4c4783c"
+      }
+    ],
+    "published_material_index_after": 11.6,
+    "published_material_index_before": 11.3,
+    "readiness": "DEGRADED_READY_TEST_ONLY",
+    "schedule_clock_domain": "V3_M25_ANNUAL_SCHEDULE",
+    "schema": "SOROK_V3CORE_R1_YEAR_RECORD@1",
+    "source_event_ids": [
+      "TEST_ONLY_BP4_WORLD_EVT_3da61c63ecdb310fb4f1962e636594992b8b34d1b2099624594cfdb79bf7c93c"
+    ],
+    "state_after_hash": "5255a4691ed0fe959cb071706087f077bb7f84faa2abaa9984e024f8b3c4bc50",
+    "state_before_hash": "1a42e424d2ca0709fe06c8b56f42191a6cc7ca74522d56e894812505be5a526c",
+    "step_outcomes": [
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "field_update"
+      },
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "autonomy_safety_micro_drift"
+      },
+      {
+        "details": {
+          "admitted_event_ids": [
+            "TEST_ONLY_BP4_WORLD_EVT_3da61c63ecdb310fb4f1962e636594992b8b34d1b2099624594cfdb79bf7c93c"
+          ],
+          "sampled": false
+        },
+        "rule_id": "",
+        "status": "APPLIED_TEST_ONLY_SOURCEFREE",
+        "step_id": "event_sampling"
+      },
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "reproduction_constraints_update"
+      },
+      {
+        "details": {
+          "delta_count": 1
+        },
+        "rule_id": "",
+        "status": "APPLIED_TEST_ONLY_SOURCEFREE",
+        "step_id": "capacity_update"
+      },
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "health_drift_update"
+      },
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "buffers_update"
+      },
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "frameworks_update"
+      },
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "domains_update"
+      },
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "cracks_and_alienation_update"
+      },
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "plasticity_and_metabolization_update"
+      },
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "stability_inertia_dissipation"
+      },
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "striving_update"
+      },
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "practice_and_infrastructure_update"
+      },
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "topology_and_boundary_update"
+      },
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "attention_and_capture_update"
+      },
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "strategy_and_signal_effects"
+      },
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "style_trait_drift"
+      },
+      {
+        "details": {
+          "backbone_hash_after": "95df30c6407dbdee345792059a095155b497cfd0804af71e2a51aca53f5b3d63",
+          "backbone_hash_before": "95df30c6407dbdee345792059a095155b497cfd0804af71e2a51aca53f5b3d63",
+          "reason": ""
+        },
+        "rule_id": "",
+        "status": "DERIVED_EVALUATED_SCOPED",
+        "step_id": "render_layer"
+      },
+      {
+        "details": {
+          "admitted": false,
+          "reason": "no_issued_transition_rule"
+        },
+        "rule_id": "",
+        "status": "HELD_MISSING_ISSUED_RULE",
+        "step_id": "active_magnets_update"
+      },
+      {
+        "details": {
+          "conserved_charge_assumed": false
+        },
+        "rule_id": "",
+        "status": "HELD_CONSERVED_CHARGE_MODEL",
+        "step_id": "post_year_pressure_flow"
+      }
+    ]
+  }
+}

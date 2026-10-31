@@ -1,0 +1,249 @@
+{
+  "authority": {
+    "canonical_c9_claimed": false,
+    "merge_or_premain_mutated": false,
+    "native_person_claimed": false,
+    "original_author_claimed": false,
+    "rival_store_created": false,
+    "science_issued": false,
+    "self_reviewed": false
+  },
+  "base_commit": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "branch": "agent/sorok-v3core-r1-sourcefree-activity-time-adapter-20261030",
+  "clock_domains": {
+    "CURRENT_C12_ACTOR_WORLD": "Actual I1/BP4 C12 world clock. Accepted only through an explicit M25 annual binding.",
+    "PYAT_N11_OBJECTIVE_WORLD_ACCEPTANCE": "Pyat objective-world N11 acceptance. Refused as an M25 year event.",
+    "SOROK_NEO_N11_EVENT_RECURSION": "Neo N11 event recursion. Refused as an M25 year event.",
+    "V3_M25_ANNUAL_SCHEDULE": "Historical 19-step annual scheduler. Never treated as an event multiplier."
+  },
+  "contract_version": "1",
+  "courts": {
+    "adapter_tests": "46 passed in 6.31s",
+    "i1_unchanged_tests": "8 passed in 6.25s",
+    "mutated_19_step_order": "1 failed in 0.18s",
+    "unchanged_v3_source_tests": "40 passed in 1.77s"
+  },
+  "current_consumer": {
+    "actual_event_id": "TEST_ONLY_BP4_WORLD_EVT_3da61c63ecdb310fb4f1962e636594992b8b34d1b2099624594cfdb79bf7c93c",
+    "c12_authenticity": {
+      "code": "OWNER_ANCHOR_REQUIRED",
+      "state": "UNVERIFIED"
+    },
+    "c12_counts_after": {
+      "checkpoint": 2,
+      "episode": 3,
+      "perception": 4,
+      "world_event": 3
+    },
+    "c12_counts_before": {
+      "checkpoint": 2,
+      "episode": 3,
+      "perception": 4,
+      "world_event": 3
+    },
+    "canonical_c9_claimed": false,
+    "cash_after": 56.0,
+    "cash_before": 54.0,
+    "completed_units_after": 4.0,
+    "completed_units_before": 3.0,
+    "consumer": "I1 GuardedJoinedProduct -> v3core_adapter.i1_consumer.project_actual_market_event",
+    "i1_commit": "7d44e30064f8e873e1a3ff9cb05fe75456756b88",
+    "material_index_after": 11.6,
+    "material_index_before": 11.3,
+    "material_index_delta": 0.3,
+    "not_a_trait": "no class, identity, ethnicity, religion, Enneagram or typographic value is read or written",
+    "observed_world_hash": "feea68abbac685d639603d2bece2b627b4bf4c84c998a85c2a19069db3b11e17",
+    "position_after": "market",
+    "position_before": "workshop",
+    "projection_cold_equal": true,
+    "projection_ledger_sha256": "056ff04d2d756a649308352e9507a5cac6cb99c8ce0467ded608c395bd220ab1",
+    "real_difference": "material_capacity_index 11.3 -> 11.6 (+0.3) and durable cash 54 -> 56 from the actual I1 OFFSCREEN_REPAIR event",
+    "rival_store_created": false,
+    "source_clock": 40,
+    "source_clock_domain": "CURRENT_C12_ACTOR_WORLD_CLOCK",
+    "state_hash_after": "5255a4691ed0fe959cb071706087f077bb7f84faa2abaa9984e024f8b3c4bc50",
+    "state_hash_before": "1a42e424d2ca0709fe06c8b56f42191a6cc7ca74522d56e894812505be5a526c"
+  },
+  "historical_function_map": [
+    {
+      "adapter_path": "v3core_adapter/quarantine.py",
+      "adapter_sha256": "4a9022db1fb36340d5ccd5a41f967af18d9faa2a02449530ea78bf0c640200d9",
+      "adapter_unit": "quarantine.build_projection_state / ledger.HistoricalProjection",
+      "fit": "REUSED_EXACT_DATACLASS_WITH_EXPLICIT_UNSET_ZEROING",
+      "historical_function": "BackboneState stored state and clamp",
+      "id": "M01/M26",
+      "notes": "All defaulted psychological fields are emptied; only source-grounded material capacity is populated.",
+      "source_path": "vendor/v3/core/state.py",
+      "source_sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2"
+    },
+    {
+      "adapter_path": "v3core_adapter/derived_scope.py",
+      "adapter_sha256": "1532db4168ef55af1861a01f19492b770043e7af3ca229ab7a89321013b11313",
+      "adapter_unit": "derived_scope.derive_scoped",
+      "fit": "REUSED_EXACT_ON_COPY_ONLY",
+      "historical_function": "compute_all_derived",
+      "id": "M01/M26",
+      "notes": "Executed on a deep copy for diagnostics and scoped publication; live state is never given metabolic_style/registers.",
+      "source_path": "vendor/v3/core/derived.py",
+      "source_sha256": "e479fc3eba21734752c372742fb2ee247cbdde6a73ac42545dc30b5039301360"
+    },
+    {
+      "adapter_path": "v3core_adapter/scheduler.py",
+      "adapter_sha256": "73b9e868fa03b4fe63ffb72ea4a4c6f0ebba44b2fb28938816d2219978e31435",
+      "adapter_unit": "scheduler.validate_step_order / scheduler.load_plan",
+      "fit": "REUSED_EXACT_CONFIG_WITH_STRICT_SUBSEQUENCE_CHECK",
+      "historical_function": "immutable 19-step yearly step order",
+      "id": "M25",
+      "notes": "Core 19 ids, append-only extensions, and derived schedule equality are enforced; mutation court fails.",
+      "source_path": "vendor/v3/v3_yearly_step_order.yaml",
+      "source_sha256": "90496a2cc852ca00ef99c8bd4fcb2b41c9aa43c4aaa9108d3ac8cce0ebe22ffc"
+    },
+    {
+      "adapter_path": "v3core_adapter/scheduler.py",
+      "adapter_sha256": "73b9e868fa03b4fe63ffb72ea4a4c6f0ebba44b2fb28938816d2219978e31435",
+      "adapter_unit": "scheduler.run_year",
+      "fit": "ADAPTED_RESTRICTED_REGISTRY",
+      "historical_function": "run_one_year",
+      "id": "M25",
+      "notes": "Only event_sampling (actual ingress), capacity_update (material accounting) and render_layer are admitted. The other 16 steps are typed HELD with no mutation.",
+      "source_path": "vendor/v3/engine/yearly_step.py",
+      "source_sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb"
+    },
+    {
+      "adapter_path": "v3core_adapter/scheduler.py",
+      "adapter_sha256": "73b9e868fa03b4fe63ffb72ea4a4c6f0ebba44b2fb28938816d2219978e31435",
+      "adapter_unit": "scheduler.validate_step_order / run_year derived schedule check",
+      "fit": "REUSED_EXACT_INVARIANT",
+      "historical_function": "derived schedule fail-fast",
+      "id": "M38",
+      "notes": "Declared derived_compute and schedule compute_after_step must match exactly or SchedulerRefusal is raised.",
+      "source_path": "vendor/v3/engine/yearly_step.py",
+      "source_sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb"
+    },
+    {
+      "adapter_path": "v3core_adapter/flow_quarantine.py",
+      "adapter_sha256": "2870577ce9c7204ac056d3229d3b342e028263f59b068476dc018bfa7025c214",
+      "adapter_unit": "flow_quarantine.run_conserved_charge_flow_probe / memory.update_material_memory",
+      "fit": "QUARANTINED_TEST_ONLY_ON_COPY",
+      "historical_function": "run_pressure_flow_cycle",
+      "id": "M21",
+      "notes": "Conserved-charge routing is not assumed. The probe is opt-in, runs on a copy and never mutates live state. Material memory tracks recorded deltas, not charge.",
+      "source_path": "vendor/v3/psyche/flow.py",
+      "source_sha256": "6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d"
+    },
+    {
+      "adapter_path": "v3core_adapter/render.py",
+      "adapter_sha256": "b5f0b20d6fa84949e79f798bca4276f29ff90752ba478b628347808e0c59b5c8",
+      "adapter_unit": "render.render_readonly",
+      "fit": "REUSED_EXACT_WITH_NONMUTATION_COURT",
+      "historical_function": "render_year",
+      "id": "M29/M30",
+      "notes": "The exact renderer is used without an LLM callback; any backbone mutation is rolled back as HELD_RENDERER_MUTATION.",
+      "source_path": "vendor/v3/render/phenomenology.py",
+      "source_sha256": "f2f18c1d9ba705212846af41b33cb1dfd2ad986dae4b686873687c2e6d1a653d"
+    },
+    {
+      "adapter_path": "v3core_adapter/readiness.py",
+      "adapter_sha256": "3836e44066b53a52fee8d2b0c904c526734f2e9d63aabf0e99387ad0f2526799",
+      "adapter_unit": "readiness.HistoricalReadiness",
+      "fit": "REUSED_EXACT_ACCUMULATOR",
+      "historical_function": "GenerationIntegrityAccumulator and readiness",
+      "id": "M40",
+      "notes": "clean/degraded/blocked semantics are preserved; readiness is labeled TEST_ONLY and is not native or science authority.",
+      "source_path": "vendor/v3/core/generation_integrity.py",
+      "source_sha256": "5265aac2fda4d6e6ac62927353518045f215d7d1916930e19e980b6d77eff214"
+    },
+    {
+      "adapter_path": "v3core_adapter/contracts.py",
+      "adapter_sha256": "bac8837cf6720578783ac67647f58ca7eb04abfa2dbfa1cfcd4e7bb2ab6a863c",
+      "adapter_unit": "contracts.YearRecord / ledger.HistoricalProjection",
+      "fit": "ADAPTED_TYPED_RECORD",
+      "historical_function": "YearRecord snapshot persistence",
+      "id": "M02",
+      "notes": "The archive helper normalizes YearRecord dicts; the runtime year dict is produced by server/generation/simulation.py. The typed record mirrors state/derived hashes, event ledger, micro-trace, integrity and readiness.",
+      "source_path": "vendor/v3/core/year_record.py",
+      "source_sha256": "4bbd7518a6ec8bc8dd22758a2f9e876882253dfd59021a998a6d541b23e5cfc2"
+    },
+    {
+      "adapter_path": "v3core_adapter/derived_scope.py",
+      "adapter_sha256": "1532db4168ef55af1861a01f19492b770043e7af3ca229ab7a89321013b11313",
+      "adapter_unit": "tests/test_render_and_derived.py / derived_scope",
+      "fit": "REUSED_EXACT_ASSERTION",
+      "historical_function": "stored/derived separation and derived field prohibition",
+      "id": "M37/M38",
+      "notes": "assert_no_derived_fields_in_backbone passes; PublishedDerived is frozen and diagnostic output is not stored in BackboneState.",
+      "source_path": "vendor/v3/core/invariants.py",
+      "source_sha256": "81298f3fc51b46cda8d72d0db914b672b17b9a35e13004fe59a9b0e29dada5e3"
+    }
+  ],
+  "inputs": {
+    "I1": {
+      "commit": "7d44e30064f8e873e1a3ff9cb05fe75456756b88",
+      "subject": "SOROK I1: integrate guarded joined consumer and material continuation"
+    },
+    "O1": {
+      "commit": "501ea1f5bf07468b2c0437f452a81f3515cfdb6f",
+      "subject": "Sorok O1: final source-grade whole developmental architecture and productive construction verdict"
+    },
+    "R5": {
+      "commit": "aebb2452b277bfc91fc78dec8d6001f8a844cc8c",
+      "subject": "SOROK R5: recover exact F1C source, reconstruct F1CR candidate, reconcile V3 archive"
+    },
+    "RCF_A": {
+      "commit": "e66dc53a5d7eeb2b6b3259000eb04b8e79e1f6f7",
+      "subject": "SOROK RCF-A: recover 40 V3 mechanisms with exact source and negative proof"
+    }
+  },
+  "not_run": [
+    "full historical V3/V2 suite (TD-R05 80-test aggregate)",
+    "native source/respondent data and any CAN/ADP/SCI05 issuance",
+    "I1 durable C9 handoff, external C12 anchor and native A5 person",
+    "Pyat N11/N12 native world acceptance",
+    "production or PRE-MAIN integration"
+  ],
+  "quarantine": {
+    "enforcement": [
+      "fresh projection state zeroes every ungrounded field and records QUARANTINED_UNSET",
+      "forbidden_default_reasons blocks the year before commit",
+      "module-level import scan forbids active adapter imports of the quarantined mechanisms"
+    ],
+    "manifest_path": "v3core_adapter/quarantine.py",
+    "manifest_sha256": "4a9022db1fb36340d5ccd5a41f967af18d9faa2a02449530ea78bf0c640200d9",
+    "mechanisms": [
+      "M08 identity-seeded wound",
+      "M15/M36 missing-parent 50/50/50 and hopeful defaults",
+      "M31 Enneagram/type determinism",
+      "M34 synthetic fallback practice / first-candidate fallback",
+      "M35 placeholder cracks/frameworks",
+      "M39 random age-band rupture"
+    ]
+  },
+  "reference_sources_outside_candidate": {
+    "server/generation/simulation.py": {
+      "note": "runtime YearRecord dict fields",
+      "sha256": "5d68ffe3bc6902dc60b90625443a03127cf0d04b4eed4327270a3a0226bc78d1"
+    },
+    "server/generation/store.py": {
+      "note": "clean_ready/degraded_ready/blocked readiness",
+      "sha256": "eb592702327427a22b5d901337e6ee8b251b164ad41fe8848b165a14730a942c"
+    },
+    "server/session_state.py": {
+      "note": "_generation_state_is_ready",
+      "sha256": "9c9c3b0e2b3bff700af127e03805166102920019d6acd099ee8270fbe63bc15a"
+    }
+  },
+  "repository": "maidiu/rawlsing",
+  "schema": "SOROK_V3CORE_R1_HISTORICAL_FUNCTION_TO_CURRENT_CONSUMER_CONTRACT@1",
+  "source_record_contract": {
+    "access": "ActorAccess(event_id, actor_id, channel, perceived, source_clock_domain, source_clock, provenance)",
+    "annual_binding": "AnnualBinding(event_id, schedule_clock_domain=V3_M25_ANNUAL, annual_year, bound_by, provenance)",
+    "event": "ActorWorldEvent(event_id, actor_id, world_id, kind, location, source_clock_domain, source_clock, body, provenance, owner_receipt_hash, source_owned)",
+    "response": "ActorResponse(event_id, actor_id, kind, performed, body, source_clock_domain, source_clock, provenance)",
+    "separation": [
+      "source facts: ledger.source_events/accesses/responses and BackboneState.events_this_year",
+      "durable actor state: BackboneState material fields only",
+      "derived computation: PublishedDerived plus a diagnostic-only compute_all_derived result",
+      "readable expression: BackboneState.rendered_output only"
+    ]
+  }
+}

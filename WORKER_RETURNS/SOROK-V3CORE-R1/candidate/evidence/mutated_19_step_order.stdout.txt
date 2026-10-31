@@ -1,0 +1,50 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________________________ test_step_order_immutable ___________________________
+
+    def test_step_order_immutable() -> None:
+        """Core step ids must appear in order as a subsequence of steps. Extensions allowed per extension_policy."""
+        step_order = load_step_order()
+        core_ids = get_core_step_ids(step_order)
+        steps = get_step_list(step_order)
+        ids = [s.get("id") for s in steps if s.get("id")]
+        assert core_ids == list(CANONICAL_STEP_IDS), (
+            f"config core_steps must match canonical spine. Got {core_ids}."
+        )
+        # Subsequence: core ids must appear in this order (gaps from extensions allowed).
+        idx = 0
+        for cid in core_ids:
+            try:
+>               pos = ids.index(cid, idx)
+                      ^^^^^^^^^^^^^^^^^^^
+E               ValueError: 'render_layer' is not in list
+
+v3/tests/test_architecture_invariants.py:102: ValueError
+
+During handling of the above exception, another exception occurred:
+
+    def test_step_order_immutable() -> None:
+        """Core step ids must appear in order as a subsequence of steps. Extensions allowed per extension_policy."""
+        step_order = load_step_order()
+        core_ids = get_core_step_ids(step_order)
+        steps = get_step_list(step_order)
+        ids = [s.get("id") for s in steps if s.get("id")]
+        assert core_ids == list(CANONICAL_STEP_IDS), (
+            f"config core_steps must match canonical spine. Got {core_ids}."
+        )
+        # Subsequence: core ids must appear in this order (gaps from extensions allowed).
+        idx = 0
+        for cid in core_ids:
+            try:
+                pos = ids.index(cid, idx)
+            except ValueError:
+>               raise AssertionError(
+                    f"Core step id {cid!r} missing or out of order in steps. "
+                    f"Expected core spine as subsequence; got ids={ids}."
+                )
+E               AssertionError: Core step id 'render_layer' missing or out of order in steps. Expected core spine as subsequence; got ids=['render_layer', 'field_update', 'autonomy_safety_micro_drift', 'event_sampling', 'reproduction_constraints_update', 'capacity_update', 'health_drift_update', 'buffers_update', 'frameworks_update', 'domains_update', 'cracks_and_alienation_update', 'plasticity_and_metabolization_update', 'stability_inertia_dissipation', 'striving_update', 'practice_and_infrastructure_update', 'topology_and_boundary_update', 'attention_and_capture_update', 'strategy_and_signal_effects', 'style_trait_drift', 'active_magnets_update'].
+
+v3/tests/test_architecture_invariants.py:104: AssertionError
+=========================== short test summary info ============================
+FAILED v3/tests/test_architecture_invariants.py::test_step_order_immutable - ...
+1 failed in 0.18s

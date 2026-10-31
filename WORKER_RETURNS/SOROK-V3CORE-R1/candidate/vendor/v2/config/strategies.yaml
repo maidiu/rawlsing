@@ -1,0 +1,483 @@
+# Strategies Configuration (Rawlsing v4.1)
+# Defines compensatory strategies: what needs they regulate, when they're triggered, structural availability
+
+strategies:
+  humor_play:
+    description: "Using wit, jokes, and playfulness to bond, deflect tension, and manage shame/fear"
+    scale: "0-100"
+    primarily_regulates:
+      - "recognition_status"
+      - "belonging_group"
+      - "coherence_meaning"
+    typical_triggers:
+      - "moderate threat but intact social context"
+      - "families where direct conflict is risky but not lethal"
+      - "peer groups that value wit"
+    structural_availability:
+      requires:
+        - "age >= 0"
+      blocks:
+        - "world_slice.conflict_intensity > 85"  # Humor doesn't work in war zones
+        - "world_slice.state_repression > 90"  # Too dangerous
+        - "world_slice.regime_instability > 80"  # GDELT: regime crumbling, no stability to joke about
+        - "world_slice.media_valence < 25"  # GDELT: very negative news environment, no room for play
+    update_rules:
+      increase_when:
+        # Require deficit + viable context (not war zone)
+        - "needs.recognition_status < 50 AND needs.belonging_group > 20 AND needs.belonging_group < 65 AND world_slice.conflict_intensity < 65"
+        - "needs.coherence_meaning < 50 AND needs.play_pleasure < 50 AND world_slice.conflict_intensity < 55"
+        - "needs.play_pleasure < 45 AND world_slice.conflict_intensity < 60"
+      decrease_when:
+        - "world_slice.conflict_intensity > 70"
+        - "needs.safety < 30"
+
+  aggression_outward:
+    description: "Confronting or dominating others to assert power or ward off vulnerability"
+    scale: "0-100"
+    primarily_regulates:
+      - "safety"
+      - "recognition_status"
+      - "autonomy_agency"
+    typical_triggers:
+      - "low safety + weak/hostile institutions"
+      - "street cultures where force is rewarded"
+      - "low recognition + male + violent neighborhood"
+      - "high DRTS + low transgression_threshold"
+    structural_availability:
+      requires:
+        - "physical_capacity"  # Age/gender/ability
+        - "cultural_permission"  # Some cultures more permissive
+      blocks:
+        - "strategies.compliance_obedience > 85"  # Only block when very high (allow coexistence)
+        - "world_slice.state_repression > 85"  # Repressed by state
+    update_rules:
+      increase_when:
+        - "needs.safety < 45 AND world_slice.conflict_intensity > 40"
+        - "needs.recognition_status < 45 AND identity.gender == 'male' AND world_slice.conflict_intensity > 50"
+        - "indices.drts > 50 AND indices.transgression_threshold < 50"
+        - "needs.autonomy_agency < 40 AND age >= 14"
+      decrease_when:
+        - "strategies.compliance_obedience > 70"
+        - "world_slice.state_repression > 80"
+
+  aggression_inward:
+    description: "Self-attack, self-sabotage, self-punishment"
+    scale: "0-100"
+    primarily_regulates:
+      - "coherence_meaning"  # "I deserve this" makes world make sense
+      - "recognition_status"  # Pre-emptive self-criticism
+    typical_triggers:
+      - "high authority + low warmth from caregivers"
+      - "high compliance_obedience + low recognition"
+      - "religious contexts emphasizing sin/shame"
+    structural_availability:
+      requires:
+        # Internalized authority proxy: either strong caregivers early, or existing compliance habit
+        - "age >= 7 AND (relations.caregiver_authority > 60 OR strategies.compliance_obedience > 40)"
+      blocks:
+        - "strategies.aggression_outward > 75"  # Conflicting
+    update_rules:
+      increase_when:
+        - "needs.warmth_bonding < 30 AND relations.caregiver_authority > 70"
+        - "strategies.compliance_obedience > 60 AND needs.recognition_status < 40"
+        - "identity.religiosity_level > 70 AND needs.coherence_meaning < 50"
+      decrease_when:
+        - "needs.warmth_bonding > 70"
+        - "strategies.aggression_outward > 50"
+
+  compliance_obedience:
+    description: "Submission to authority/rules to avoid trouble and secure safety"
+    scale: "0-100"
+    primarily_regulates:
+      - "safety"
+      - "recognition_status"  # Approval from authority
+      - "belonging_group"  # Membership through obedience
+    typical_triggers:
+      - "high authority + high harshness"
+      - "high state_repression"
+      - "religious contexts emphasizing obedience"
+    structural_availability:
+      requires:
+        # Authority proxy: caregiver authority, state repression, or legitimated hierarchy
+        - "relations.caregiver_authority > 60 OR world_slice.state_repression > 50 OR civic_soul.hierarchy_legitimacy > 40"
+      blocks:
+        - "strategies.aggression_outward > 75"
+        - "strategies.activism_justice > 75"
+        - "world_slice.regime_instability > 85"  # GDELT: regime crumbling, no stable order to comply with
+    update_rules:
+      increase_when:
+        - "world_slice.state_repression > 60"
+        - "relations.caregiver_authority > 70 AND relations.caregiver_harshness > 50"
+        - "needs.safety < 40 AND civic_soul.hierarchy_legitimacy > 50"
+      decrease_when:
+        - "indices.drts > 70"
+        - "civic_soul.hierarchy_legitimacy < 30"
+
+  people_pleasing:
+    description: "Appeasement, fawning, over-accommodating to secure connection"
+    scale: "0-100"
+    primarily_regulates:
+      - "warmth_bonding"
+      - "recognition_status"
+      - "belonging_group"
+    typical_triggers:
+      - "low warmth_bonding + high need for connection"
+      - "unpredictable caregivers (need to constantly adjust)"
+    structural_availability:
+      requires:
+        - "age >= 0"  # Social context develops early
+      blocks:
+        - "strategies.aggression_outward > 70"  # Conflicting
+    update_rules:
+      increase_when:
+        # Require deficit in connection needs
+        - "needs.warmth_bonding < 50 AND needs.belonging_group < 50"
+        - "needs.recognition_status < 50 AND needs.belonging_group < 55"
+        - "needs.belonging_group < 45 AND needs.warmth_bonding < 55"
+      decrease_when:
+        - "needs.warmth_bonding > 70"
+        - "strategies.aggression_outward > 50"
+
+  caretaking_rescue:
+    description: "Fixing/helping others to feel needed/secure"
+    scale: "0-100"
+    primarily_regulates:
+      - "warmth_bonding"  # Give to receive
+      - "recognition_status"  # "I'm useful"
+      - "competence_effectiveness"
+    typical_triggers:
+      - "low warmth_bonding + opportunity to care for others"
+      - "gender scripts (especially female)"
+      - "religious contexts emphasizing service"
+    structural_availability:
+      requires:
+        - "age >= 5"
+        - "relations.has_dependents OR needs.warmth_bonding < 55 OR needs.belonging_group < 55"
+      blocks:
+        - "needs.belonging_group < 10"
+    update_rules:
+      increase_when:
+        - "needs.warmth_bonding < 50 AND (relations.has_dependents OR age >= 18)"
+        - "identity.gender == 'female' AND needs.belonging_group < 55"
+        - "strategies.piety_ideology > 45"
+      decrease_when:
+        - "needs.warmth_bonding > 70"
+        - "strategies.aggression_outward > 60"
+
+  achievement_striving:
+    description: "Work, success, status-chasing as primary regulation"
+    scale: "0-100"
+    primarily_regulates:
+      - "recognition_status"
+      - "competence_effectiveness"
+      - "autonomy_agency"
+    typical_triggers:
+      - "low recognition + access to achievement pathways"
+      - "high parental expectations"
+      - "meritocratic cultural context"
+    structural_availability:
+      requires:
+        - "age >= 6"  # School age
+        - "world_slice.unemployment_level < 90"
+        - "civic_soul.perceived_justice_order > 15"
+      blocks:
+        - "world_slice.unemployment_level > 85"
+        - "civic_soul.perceived_justice_order < 15"
+    update_rules:
+      increase_when:
+        - "needs.recognition_status < 50 AND civic_soul.perceived_justice_order > 45"
+        - "civic_soul.perceived_justice_order > 55 AND needs.competence_effectiveness < 55"
+        - "relations.caregiver_expectations > 60 AND age >= 10"
+      decrease_when:
+        - "civic_soul.perceived_justice_order < 30"  # Meritocracy doesn't work
+        - "world_slice.unemployment_level > 70"
+
+  perfectionism_control:
+    description: "Tight control, order, self-critique to manage anxiety"
+    scale: "0-100"
+    primarily_regulates:
+      - "coherence_meaning"  # Order makes sense
+      - "competence_effectiveness"  # "If I'm perfect, I'm safe"
+      - "safety"  # Control = safety
+    typical_triggers:
+      - "high anxiety + low control over environment"
+      - "high authority + high expectations"
+    structural_availability:
+      requires:
+        # Some-control-possible proxy: environment not total war/chaos
+        - "world_slice.conflict_intensity < 85"
+      blocks:
+        - "world_slice.conflict_intensity > 90"
+    update_rules:
+      increase_when:
+        - "needs.safety < 50 AND needs.coherence_meaning < 50"
+        - "relations.caregiver_authority > 70 AND relations.caregiver_harshness > 50"
+        - "strategies.compliance_obedience > 60"
+      decrease_when:
+        - "world_slice.conflict_intensity > 80"  # Too chaotic
+        - "needs.safety > 70"
+
+  piety_ideology:
+    description: "Religious/sect/party alignment as anchor for meaning and belonging"
+    scale: "0-100"
+    primarily_regulates:
+      - "coherence_meaning"
+      - "belonging_group"
+      - "transcendence_sacred"
+      - "warmth_bonding"  # God/church as parent substitute
+    typical_triggers:
+      - "low coherence + high propaganda_saturation"
+      - "low warmth_bonding + strong local religious presence"
+      - "low belonging_group + accessible religious community"
+    structural_availability:
+      requires:
+        # Religious availability: personal OR cultural religiosity
+        - "identity.religiosity_level > 40"
+      blocks:
+        - "identity.religiosity_level < 20"  # Secular context
+        - "world_slice.state_repression > 95 AND identity.religiosity_level > 70"
+    update_rules:
+      increase_when:
+        # Require deficit + religious context
+        - "needs.coherence_meaning < 40 AND world_slice.propaganda_saturation > 40 AND identity.religiosity_level > 50"
+        - "needs.warmth_bonding < 40 AND civic_soul.rootedness > 35 AND identity.religiosity_level > 45"
+        - "needs.belonging_group < 35 AND identity.religiosity_level > 55"
+      decrease_when:
+        - "indices.permeability_index > 80"  # Exposure to alternatives
+        - "relations.norm_conflicts includes 'religious'"
+
+  intimacy_seeking:
+    description: "Romance/sex as main regulation/validation"
+    scale: "0-100"
+    primarily_regulates:
+      - "warmth_bonding"
+      - "recognition_status"
+      - "belonging_group"
+    typical_triggers:
+      - "low warmth_bonding + age > 14"
+      - "low belonging_group + peer pressure"
+    structural_availability:
+      requires:
+        - "age >= 14"
+        - "world_slice.state_repression < 92"
+      blocks:
+        - "identity.religiosity_level > 90"
+        - "age < 14"
+    update_rules:
+      increase_when:
+        - "needs.warmth_bonding < 50 AND age >= 14"
+        - "needs.belonging_group < 55 AND (relations.peer_pressure > 40 OR age >= 16)"
+      decrease_when:
+        - "strategies.piety_ideology > 70"
+        - "identity.religiosity_level > 80"
+
+  withdrawal_avoidance:
+    description: "Emotional retreat, isolation, non-engagement"
+    scale: "0-100"
+    primarily_regulates:
+      - "safety"  # Avoid danger by hiding
+      - "coherence_meaning"  # Avoid confusion by not engaging
+    typical_triggers:
+      - "high threat + no effective response available"
+      - "low warmth_bonding + repeated rejection"
+      - "high anxiety + low control"
+    structural_availability:
+      requires:
+        # Withdrawal is mostly internal; assume available unless context forces constant exposure
+        - "age >= 0"
+      blocks:
+        # Forced proximity isn't modeled directly; approximate via extreme crowding/repression
+        - "world_slice.state_repression > 98 AND world_slice.conflict_intensity > 80"
+    update_rules:
+      increase_when:
+        - "needs.safety < 30 AND world_slice.conflict_intensity > 70"
+        - "needs.warmth_bonding < 30 AND relations.repeated_rejection"
+        - "needs.competence_effectiveness < 30"
+      decrease_when:
+        - "needs.belonging_group > 70"
+        - "strategies.piety_ideology > 60"  # Religion pulls out
+
+  dissociation_numbing:
+    description: "Zoning out, numbing, 'checking out' to escape pain"
+    scale: "0-100"
+    primarily_regulates:
+      - "bodily_comfort"  # Numb physical pain
+      - "coherence_meaning"  # Numb emotional pain
+    typical_triggers:
+      - "extreme trauma"
+      - "chronic pain (physical or emotional)"
+      - "no escape possible"
+    structural_availability:
+      always_available: true  # Internal mechanism
+    update_rules:
+      increase_when:
+        - "needs.bodily_comfort < 20"
+        - "needs.safety < 20 AND no_escape_possible"
+        - "indices.recursive_madness_threshold > 80"
+      decrease_when:
+        - "needs.safety > 70"
+        - "needs.warmth_bonding > 70"
+
+  fantasy_immersion:
+    description: "Imagined worlds, idealization, daydreams as primary refuge"
+    scale: "0-100"
+    primarily_regulates:
+      - "play_pleasure"
+      - "coherence_meaning"  # Coherent imagined world
+      - "belonging_group"  # Imagined belonging
+      - "competence_effectiveness"  # Imagined competence
+    typical_triggers:
+      - "low play_pleasure + media access (books, TV, games)"
+      - "low belonging_group + high media_saturation"
+      - "low competence_effectiveness + escape needed"
+    structural_availability:
+      requires:
+        - "age >= 5"  # Can engage with stories
+      blocks:
+        - "world_slice.conflict_intensity > 90"  # No mental space
+    update_rules:
+      increase_when:
+        # Require at least one deficit + not total chaos
+        - "needs.play_pleasure < 50 AND (needs.belonging_group < 55 OR needs.competence_effectiveness < 50)"
+        - "needs.belonging_group < 50 AND needs.coherence_meaning < 55 AND world_slice.conflict_intensity < 75"
+        - "needs.competence_effectiveness < 50 AND needs.play_pleasure < 55"
+      decrease_when:
+        - "needs.belonging_group > 70"
+        - "strategies.piety_ideology > 70"  # Religion competes
+
+  substance_use:
+    description: "Alcohol/drugs as regulation/escape"
+    scale: "0-100"
+    primarily_regulates:
+      - "bodily_comfort"  # Numb pain
+      - "play_pleasure"  # Artificial pleasure
+      - "coherence_meaning"  # Numb confusion
+    typical_triggers:
+      - "chronic unmet needs + substance availability"
+      - "peer pressure + age > 14"
+      - "cultural norms (some cultures more permissive)"
+    structural_availability:
+      requires:
+        - "age >= 14"
+        - "world_slice.gdp_per_capita > 15 OR world_slice.media_saturation > 5"
+      blocks:
+        - "identity.religiosity_level > 90"
+        - "strategies.compliance_obedience > 88"
+    update_rules:
+      increase_when:
+        - "needs.bodily_comfort < 40 AND age >= 14"
+        - "needs.play_pleasure < 45 AND (relations.peer_pressure > 40 OR age >= 16)"
+        - "strategies.dissociation_numbing > 45"
+      decrease_when:
+        - "strategies.piety_ideology > 70"
+        - "identity.religiosity_level > 80"
+
+  risk_seeking_thrill:
+    description: "Stunts, crime, gambling, thrill-chasing"
+    scale: "0-100"
+    primarily_regulates:
+      - "recognition_status"  # Dangerous recognition
+      - "play_pleasure"  # Thrill
+      - "autonomy_agency"  # "I choose danger"
+    typical_triggers:
+      - "low recognition + male + violent neighborhood"
+      - "low play_pleasure + high conflict"
+      - "low autonomy + need to assert control"
+    structural_availability:
+      requires:
+        - "age >= 11"
+        - "world_slice.conflict_intensity > 20 OR indices.drts > 40 OR world_slice.state_repression < 80"
+      blocks:
+        - "strategies.compliance_obedience > 85"
+        - "needs.belonging_group < 10"
+    update_rules:
+      increase_when:
+        - "needs.recognition_status < 45 AND identity.gender == 'male' AND world_slice.conflict_intensity > 40"
+        - "needs.play_pleasure < 45 AND world_slice.conflict_intensity > 35"
+        - "needs.autonomy_agency < 45 AND age >= 11"
+      decrease_when:
+        - "needs.safety > 70"
+        - "strategies.compliance_obedience > 70"
+
+  activism_justice:
+    description: "Political/moral struggle as channel for unmet needs"
+    scale: "0-100"
+    primarily_regulates:
+      - "autonomy_agency"
+      - "belonging_group"  # Movement membership
+      - "coherence_meaning"  # "I understand the system"
+      - "recognition_status"  # Recognition from movement
+    typical_triggers:
+      - "high DRTS + accessible movement"
+      - "low autonomy + high perceived injustice"
+      - "low belonging_group + movement available"
+    structural_availability:
+      requires:
+        - "age >= 14"
+        - "world_slice.media_saturation > 5 OR indices.permeability_index > 25 OR world_slice.state_repression < 85"
+        - "civic_soul.perceived_justice_order < 70 OR indices.drts > 40"
+      blocks:
+        - "world_slice.state_repression > 92"
+        - "strategies.compliance_obedience > 85"
+    update_rules:
+      increase_when:
+        - "indices.drts > 50 AND needs.autonomy_agency < 55"
+        - "civic_soul.perceived_justice_order < 45 AND age >= 14"
+        - "needs.belonging_group < 45 AND needs.autonomy_agency < 55"
+      decrease_when:
+        - "world_slice.state_repression > 80"
+        - "strategies.compliance_obedience > 70"
+
+  creative_expression:
+    description: "Art, music, writing, performance as channel"
+    scale: "0-100"
+    primarily_regulates:
+      - "transcendence_sacred"
+      - "recognition_status"
+      - "coherence_meaning"
+      - "play_pleasure"
+    typical_triggers:
+      - "high aesthetic_amplification"
+      - "low recognition + artistic talent/opportunity"
+      - "high transcendence needs + artistic culture"
+    structural_availability:
+      requires:
+        - "age >= 5"
+        - "world_slice.media_saturation > 5 OR indices.aesthetic_amplification > 30 OR world_slice.gdp_per_capita > 25"
+      blocks:
+        - "world_slice.gdp_per_capita < 15"
+        - "world_slice.state_repression > 95"
+    update_rules:
+      increase_when:
+        - "indices.aesthetic_amplification > 40"
+        - "needs.transcendence_sacred < 60 AND needs.play_pleasure < 55"
+        - "needs.recognition_status < 50 AND needs.coherence_meaning < 55"
+      decrease_when:
+        - "world_slice.conflict_intensity > 80"  # Survival priority
+        - "extreme_poverty"
+
+# Strategy interactions (conflicts and synergies)
+interactions:
+  conflicts:
+    - ["aggression_outward", "compliance_obedience"]  # Can't be both aggressive and compliant
+    - ["aggression_outward", "people_pleasing"]  # Conflicting
+    - ["piety_ideology", "substance_use"]  # Usually conflicting
+    - ["compliance_obedience", "activism_justice"]  # Conflicting
+  
+  synergies:
+    - ["piety_ideology", "caretaking_rescue"]  # Religious service
+    - ["achievement_striving", "perfectionism_control"]  # Achievement + perfectionism
+    - ["humor_play", "belonging_group"]  # Humor builds belonging
+    - ["fantasy_immersion", "creative_expression"]  # Fantasy feeds creativity
+
+# Strategy decay rates (how quickly unused strategies fade)
+decay_rates:
+  humor_play: 0.92  # Slower decay - allow play to accumulate
+  aggression_outward: 0.88  # Moderate decay
+  compliance_obedience: 0.92  # Slightly faster - allow other strategies to compete
+  piety_ideology: 0.92  # Slow decay (meaningful)
+  fantasy_immersion: 0.90  # Slower - allow fantasy to develop
+  substance_use: 0.80  # Fast decay (needs regular use)
+  people_pleasing: 0.90  # Moderate decay
+  achievement_striving: 0.90  # Moderate decay
+

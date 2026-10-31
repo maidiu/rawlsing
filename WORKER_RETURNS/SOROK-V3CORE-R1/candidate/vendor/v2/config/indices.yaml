@@ -1,0 +1,181 @@
+# Indices Configuration (Rawlsing v4.1)
+# Defines how core indices (PI, DRTS, IAI, TT, AAF, RMT) are updated
+
+indices:
+  permeability_index:
+    description: "Media + info exposure volume, 0-100"
+    abbreviation: "PI"
+    update_rules:
+      increase_when:
+        - condition: "world_slice.media_saturation increases"
+          weight: 0.2
+        - condition: "identity.urbanicity == 'city' OR identity.urbanicity == 'megacity'"
+          weight: 0.15
+        - condition: "identity.education_level increases"
+          weight: 0.1
+        - condition: "world_slice.gdp_per_capita > 60"
+          weight: 0.05
+      decrease_when:
+        - condition: "world_slice.propaganda_saturation > 80"
+          weight: -0.1  # High propaganda can reduce actual permeability
+      decay_rate: 0.95  # Very slow decay (exposure is sticky)
+      min: 0
+      max: 100
+
+  drts:
+    description: "Defiance / Revolutionary Tendencies System"
+    abbreviation: "DRTS"
+    update_rules:
+      increase_when:
+        - condition: "world_slice.inequality_index > 60 AND driver_vec.authoritarian_vs_egalitarian > 60"
+          weight: 0.3
+        - condition: "local_modifiers.ethnic_power_status == 'minoritized' AND driver_vec.authoritarian_vs_egalitarian > 50"
+          weight: 0.25
+        - condition: "civic_soul.perceived_justice_order < 30 AND needs.autonomy_agency < 50"
+          weight: 0.2
+        - condition: "repeated_injustice_events"  # Tracked in events
+          weight: 0.15
+      decrease_when:
+        - condition: "world_slice.inequality_index > 60 AND driver_vec.fatalism_vs_agency < 40"
+          weight: -0.2  # High inequality + fatalism → nihilism, not revolution
+        - condition: "world_slice.state_repression > 80"
+          weight: -0.15  # Extreme repression can crush DRTS
+        - condition: "strategies.compliance_obedience > 70"
+          weight: -0.1
+      decay_rate: 0.90  # Moderate decay (defiance needs reinforcement)
+      min: 0
+      max: 100
+      trajectory_based: true  # Increases or flattens based on repeated experiences
+
+  iai:
+    description: "Ideological Architecture Index - coherence of ideological packages"
+    abbreviation: "IAI"
+    update_rules:
+      increase_when:
+        - condition: "strategies.piety_ideology > 50"
+          weight: 0.2
+        - condition: "relations.institution_alignment includes strong ideological package"
+          weight: 0.15
+        - condition: "driver_vec.ritual_centrality > 60"
+          weight: 0.1
+        - condition: "world_slice.propaganda_saturation > 70"
+          weight: 0.15  # Propaganda provides coherent package
+      decrease_when:
+        - condition: "relations.norm_conflicts includes ideological conflicts"
+          weight: -0.2
+        - condition: "indices.permeability_index > 80 AND world_slice.propaganda_saturation < 30"
+          weight: -0.1  # High exposure to alternatives reduces coherence
+      decay_rate: 0.92  # Slow decay (ideology is sticky)
+      min: 0
+      max: 100
+
+  transgression_threshold:
+    description: "How hard it is to cross moral-legal lines"
+    abbreviation: "TT"
+    update_rules:
+      increase_when:
+        - condition: "world_slice.conflict_intensity < 30"
+          weight: 0.15
+        - condition: "civic_soul.rehabilitative_punishment_norms > 70"
+          weight: 0.1
+        - condition: "strategies.piety_ideology > 70"
+          weight: 0.1
+        - condition: "driver_vec.ritual_centrality > 70"
+          weight: 0.05
+      decrease_when:
+        - condition: "world_slice.conflict_intensity > 70"
+          weight: -0.2
+        - condition: "world_slice.state_repression > 70 AND civic_soul.hierarchy_legitimacy < 30"
+          weight: -0.15  # Illegitimate authority → lower threshold
+        - condition: "repeated_exposure_to_violence"  # Tracked in events
+          weight: -0.1
+        - condition: "strategies.aggression_outward > 60"
+          weight: -0.1
+      decay_rate: 0.93  # Slow decay (moral boundaries are sticky)
+      min: 0
+      max: 100
+
+  aesthetic_amplification:
+    description: "How strongly aesthetics move them"
+    abbreviation: "AAF"
+    update_rules:
+      increase_when:
+        - condition: "world_slice.media_saturation > 50"
+          weight: 0.2
+        - condition: "identity.urbanicity == 'city' OR identity.urbanicity == 'megacity'"
+          weight: 0.15
+        - condition: "strategies.creative_expression > 50"
+          weight: 0.15
+        - condition: "driver_vec.individualism_vs_collectivism > 60"
+          weight: 0.1  # Individualism → more aesthetic focus
+      decrease_when:
+        - condition: "world_slice.conflict_intensity > 80"
+          weight: -0.2  # Survival priority
+        - condition: "needs.bodily_comfort < 30"
+          weight: -0.15  # Can't appreciate beauty when in pain
+      decay_rate: 0.88  # Moderate decay
+      min: 0
+      max: 100
+
+  recursive_madness_threshold:
+    description: "How close to breakdown / 'snapping'"
+    abbreviation: "RMT"
+    update_rules:
+      increase_when:
+        - condition: "mismatch between driver_vec.fatalism_vs_agency and world_slice.gdp_per_capita"
+          weight: 0.3
+          formula: "abs(driver_vec.fatalism_vs_agency - world_slice.gdp_per_capita) * 0.3"
+        - condition: "needs.safety < 30"
+          weight: 0.2
+        - condition: "needs.warmth_bonding < 30 AND needs.belonging_group < 30"
+          weight: 0.15  # Double isolation
+        - condition: "repeated_trauma_events"  # Tracked in events
+          weight: 0.1
+        - condition: "world_slice.conflict_intensity > 70"
+          weight: 0.1
+      decrease_when:
+        - condition: "needs.warmth_bonding > 70"
+          weight: -0.2  # Attachment buffers
+        - condition: "needs.belonging_group > 70"
+          weight: -0.15  # Community buffers
+        - condition: "needs.coherence_meaning > 70"
+          weight: -0.1  # Meaning buffers
+        - condition: "strategies.piety_ideology > 70"
+          weight: -0.1  # Religion buffers
+      decay_rate: 0.85  # Faster decay (can recover with buffers)
+      min: 0
+      max: 100
+      health_implications:
+        "0-30": "stable"
+        "30-50": "moderate_stress"
+        "50-70": "high_stress"
+        "70-85": "near_breaking"
+        "85-100": "breaking_or_broken"
+
+# Cross-index interactions
+interactions:
+  # High PI + High DRTS → more likely to act on defiance
+  pi_drts_synergy:
+    condition: "indices.permeability_index > 70 AND indices.drts > 60"
+    effect_on_activism_justice: 0.15
+  
+  # High RMT + Low buffers → breakdown risk
+  rmt_breakdown_risk:
+    condition: "indices.recursive_madness_threshold > 80 AND needs.warmth_bonding < 30 AND needs.belonging_group < 30"
+    breakdown_probability: 0.3  # 30% chance of major breakdown event
+  
+  # Low TT + High DRTS → dangerous combination
+  low_tt_high_drts:
+    condition: "indices.transgression_threshold < 40 AND indices.drts > 70"
+    effect_on_aggression_outward: 0.2
+    effect_on_risk_seeking_thrill: 0.15
+
+# Index initialization at birth
+birth_values:
+  permeability_index: 0
+  drts: 0
+  iai: 0
+  transgression_threshold: 50  # Start neutral
+  aesthetic_amplification: 0
+  recursive_madness_threshold: 0
+

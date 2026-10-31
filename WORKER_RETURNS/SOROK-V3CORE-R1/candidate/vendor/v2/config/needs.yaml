@@ -1,0 +1,273 @@
+# Needs Configuration (Rawlsing v4.1)
+# Defines how individual needs are updated and what strategies they trigger when unmet
+
+needs:
+  safety:
+    description: "Physical security and freedom from chronic threat of violence, destitution, or arbitrary harm"
+    scale: "0-100"
+    neutral: 50
+    main_inputs:
+      - "world_slice.conflict_intensity"
+      - "world_slice.state_repression"
+      - "world_slice.policy_turbulence"
+      - "world_slice.military_posture"
+      - "world_slice.media_valence"
+      - "world_slice.rhetoric_saturation"
+      - "civic_soul.risk_band"
+      - "relations.caregiver_warmth"  # Higher warmth → safer feeling
+      - "relations.material_support"  # Economic security
+    update_formula:
+      base_weight: 0.7
+      conflict_contribution: -0.2  # Negative: higher conflict → lower safety
+      policy_turbulence_contribution: -0.1  # GDELT: political pressure → lower safety
+      military_posture_contribution: -0.1  # GDELT: militarization → lower safety
+      media_valence_contribution: 0.05  # GDELT: positive news → higher safety
+      rhetoric_saturation_contribution: -0.05  # GDELT: state-in-news → lower safety
+      caregiver_warmth_contribution: 0.1
+    typical_consequences_when_low:
+      - "hypervigilance"
+      - "risk_seeking_thrill"  # Paradoxical: seeking control through risk
+      - "withdrawal_avoidance"
+      - "aggression_outward"  # Preemptive defense
+    typical_consequences_when_high:
+      - "compliance_obedience"  # Trust in system
+      - "play_pleasure"  # Can relax
+
+  bodily_comfort:
+    description: "Food, sleep, pain, physical ease, freedom from hunger/exhaustion"
+    scale: "0-100"
+    neutral: 50
+    main_inputs:
+      - "world_slice.gdp_per_capita"
+      - "identity.current_class"
+      - "world_slice.unemployment_level"
+      - "relations.material_support"
+    update_formula:
+      base_weight: 0.8
+      gdp_contribution: 0.15
+      class_penalty: -0.05  # Lower class → lower comfort
+    typical_consequences_when_low:
+      - "dissociation_numbing"  # Numb the pain
+      - "fantasy_immersion"  # Escape into imagination
+      - "substance_use"  # Self-medication
+    typical_consequences_when_high:
+      - "play_pleasure"
+      - "competence_effectiveness"  # Can focus on growth
+
+  warmth_bonding:
+    description: "Tender, reliable affection and attachment from caregivers / close others"
+    scale: "0-100"
+    neutral: 50
+    main_inputs:
+      - "relations.caregiver_warmth"  # Primary input
+      - "relations.caregiver_reliability"
+      - "relations.peer_warmth"
+      - "civic_soul.rootedness"  # Community warmth
+    update_formula:
+      base_weight: 0.8
+      caregiver_warmth_contribution: 0.2
+    typical_consequences_when_low:
+      - "intimacy_seeking"  # Desperate search for connection
+      - "caretaking_rescue"  # Give to receive
+      - "piety_ideology"  # God as parent substitute
+      - "people_pleasing"  # Buy affection
+      - "withdrawal_avoidance"  # Give up on connection
+    typical_consequences_when_high:
+      - "belonging_group"
+      - "competence_effectiveness"  # Secure base for exploration
+
+  belonging_group:
+    description: "Felt membership in a 'we' (family, gang, church, party, nation)"
+    scale: "0-100"
+    neutral: 50
+    main_inputs:
+      - "relations.peer_warmth"
+      - "relations.institution_alignment"  # Church, school, gang; family warmth when no institutions
+      - "civic_soul.rootedness"
+      - "identity.minority_status"  # Minorities may have stronger in-group bonds
+      - "strategies.piety_ideology"  # Religious groups provide belonging
+    update_formula:
+      base_weight: 0.7
+      peer_contribution: 0.15
+      institution_contribution: 0.2
+    typical_consequences_when_low:
+      - "piety_ideology"  # Join a group
+      - "aggression_outward"  # Defend group boundaries
+      - "fantasy_immersion"  # Imagined belonging
+      - "risk_seeking_thrill"  # Join dangerous groups
+    typical_consequences_when_high:
+      - "compliance_obedience"  # Loyalty to group
+      - "caretaking_rescue"  # Protect the group
+
+  recognition_status:
+    description: "Being seen, respected, not being humiliated/erased"
+    scale: "0-100"
+    neutral: 50
+    main_inputs:
+      - "relations.peer_centrality"  # Status in peer group
+      - "relations.institution_recognition"  # School, work recognition
+      - "identity.current_class"  # Class position affects recognition
+      - "strategies.achievement_striving"  # Achievement → recognition
+    update_formula:
+      base_weight: 0.7
+      peer_status_contribution: 0.2
+      achievement_contribution: 0.1
+    typical_consequences_when_low:
+      - "achievement_striving"  # Prove worth
+      - "aggression_outward"  # Demand respect
+      - "people_pleasing"  # Earn recognition
+      - "risk_seeking_thrill"  # Dangerous recognition
+      - "humor_play"  # Attention through humor
+    typical_consequences_when_high:
+      - "competence_effectiveness"
+      - "autonomy_agency"  # Can assert self
+
+  competence_effectiveness:
+    description: "Feeling capable/useful vs helpless"
+    scale: "0-100"
+    neutral: 50
+    main_inputs:
+      - "identity.education_level"  # Education → competence
+      - "relations.institution_support"  # School, work support
+      - "needs.recognition_status"  # Recognition reinforces competence
+      - "world_slice.unemployment_level"  # Unemployment → helplessness
+    update_formula:
+      base_weight: 0.7
+      education_contribution: 0.2
+      recognition_contribution: 0.1
+    typical_consequences_when_low:
+      - "withdrawal_avoidance"  # Avoid situations that expose incompetence
+      - "perfectionism_control"  # Overcompensate
+      - "aggression_inward"  # Self-blame
+      - "fantasy_immersion"  # Imagined competence
+    typical_consequences_when_high:
+      - "achievement_striving"
+      - "autonomy_agency"
+
+  autonomy_agency:
+    description: "Room to choose, act, say no vs coercion/impotence"
+    scale: "0-100"
+    neutral: 50
+    main_inputs:
+      - "world_slice.state_repression"
+      - "relations.authority"  # High authority → low autonomy
+      - "identity.gender"  # Gender affects autonomy in many contexts
+      - "identity.current_class"  # Class affects agency
+      - "civic_soul.hierarchy_legitimacy"  # Legitimate hierarchy vs arbitrary
+    update_formula:
+      base_weight: 0.7
+      repression_penalty: -0.2
+      authority_penalty: -0.1
+    typical_consequences_when_low:
+      - "compliance_obedience"  # Submit
+      - "aggression_outward"  # Rebel
+      - "withdrawal_avoidance"  # Opt out
+      - "fantasy_immersion"  # Imagined agency
+      - "activism_justice"  # Fight for agency
+    typical_consequences_when_high:
+      - "achievement_striving"
+      - "risk_seeking_thrill"
+
+  coherence_meaning:
+    description: "Story of self/world that hangs together, makes sense"
+    scale: "0-100"
+    neutral: 50
+    main_inputs:
+      - "civic_soul.perceived_justice_order"
+      - "thought_rails.fairness_schema"  # Coherent fairness schema
+      - "strategies.piety_ideology"  # Religion provides meaning
+      - "relations.norm_conflicts"  # Conflicts reduce coherence
+      - "world_slice.propaganda_saturation"  # Can increase or decrease coherence
+    update_formula:
+      base_weight: 0.7
+      justice_contribution: 0.15
+      piety_contribution: 0.15
+      scrutiny_level_contribution: 0.05  # GDELT: accountability → coherence
+    typical_consequences_when_low:
+      - "piety_ideology"  # Strong meaning system
+      - "dissociation_numbing"  # Numb the confusion
+      - "fantasy_immersion"  # Coherent imagined world
+      - "withdrawal_avoidance"  # Avoid thinking about it
+    typical_consequences_when_high:
+      - "competence_effectiveness"
+      - "transcendence_sacred"
+
+  play_pleasure:
+    description: "Fun, curiosity, exploration, sensory joy"
+    scale: "0-100"
+    neutral: 50
+    main_inputs:
+      - "needs.safety"  # Can't play if unsafe
+      - "needs.bodily_comfort"  # Can't play if in pain/hungry
+      - "world_slice.media_saturation"  # Media provides play
+      - "relations.peer_warmth"  # Play with others
+      - "age"  # More play in childhood
+    update_formula:
+      base_weight: 0.8
+      safety_contribution: 0.1
+      media_contribution: 0.1
+    typical_consequences_when_low:
+      - "fantasy_immersion"  # Imagined play
+      - "substance_use"  # Artificial pleasure
+      - "risk_seeking_thrill"  # Dangerous play
+    typical_consequences_when_high:
+      - "humor_play"
+      - "creative_expression"
+
+  transcendence_sacred:
+    description: "Contact with 'beyond-me' (God, art, nature, cause, awe)"
+    scale: "0-100"
+    neutral: 50
+    main_inputs:
+      - "identity.religiosity_level"
+      - "strategies.piety_ideology"
+      - "relations.institution_alignment.religious"
+      - "indices.aesthetic_amplification"
+      - "civic_soul.rootedness"  # Connection to place/tradition
+    update_formula:
+      base_weight: 0.7
+      religiosity_contribution: 0.2
+      piety_contribution: 0.1
+    typical_consequences_when_low:
+      - "piety_ideology"  # Seek transcendence
+      - "fantasy_immersion"  # Imagined transcendence
+      - "substance_use"  # Altered states
+    typical_consequences_when_high:
+      - "coherence_meaning"
+      - "belonging_group"  # Sacred community
+
+# Cross-need interactions
+# These are pattern-based interactions that create complex psychological dynamics
+interactions:
+  # When warmth is low but belonging is high (e.g., church provides belonging but not warmth)
+  low_warmth_high_belonging:
+    condition: "needs.warmth_bonding < 50 AND needs.belonging_group > 50"
+    effect_on_coherence: -0.1  # Creates tension: two moral worlds
+    effect_on_transcendence: 0.05  # But can increase transcendence
+  
+  # When recognition is low but peer group offers status via risk
+  low_recognition_high_risk_peer:
+    condition: "needs.recognition_status < 40 AND strategies.risk_seeking_thrill > 50"
+    effect_on_recognition: 0.15  # Recognition from peers
+    effect_on_coherence: -0.1  # But conflicts with safety
+    effect_on_safety: -0.1
+  
+  # When safety is low but competence is high (control through achievement)
+  low_safety_high_competence:
+    condition: "needs.safety < 40 AND needs.competence_effectiveness > 60"
+    effect_on_coherence: 0.05  # Achievement provides meaning
+    effect_on_safety: 0.05  # Slight boost (illusion of control)
+  
+  # When belonging is low but recognition is high (status without connection)
+  low_belonging_high_recognition:
+    condition: "needs.belonging_group < 40 AND needs.recognition_status > 60"
+    effect_on_warmth_bonding: -0.05  # Can reduce warmth (transactional relationships)
+    effect_on_transcendence: 0.03  # But may seek spiritual connection
+
+# Need decay rates (how quickly needs return to baseline without inputs)
+decay_rates:
+  safety: 0.95  # Very slow decay (safety is sticky)
+  warmth_bonding: 0.90  # Moderate decay
+  recognition_status: 0.85  # Faster decay (status is fleeting)
+  play_pleasure: 0.80  # Fast decay (pleasure is momentary)
+

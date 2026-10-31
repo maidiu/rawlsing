@@ -1,0 +1,281 @@
+# Civic Soul Conditions Configuration (Rawlsing v4.1)
+# Defines mapping from world/driver/local data to CivicSoulConditions (Weil-style civic atmosphere)
+
+civic_soul:
+  rootedness:
+    description: "Depth of transgenerational and place-embedded belonging"
+    scale: "0-100"
+    inputs:
+      - name: "rural_vs_urban"
+        source: "identity.urbanicity"
+        mapping:
+          rural: 20  # Positive contribution
+          town: 10
+          city: -10
+          megacity: -20
+      - name: "migration_rate"
+        source: "world_slice.migration_data.rural_to_urban_rate"
+        mapping: "inverse"  # Higher migration → lower rootedness
+        weight: -0.3
+      - name: "displacement_events"
+        source: "world_slice.migration_data.conflict_displacement"
+        mapping:
+          true: -30
+          false: 0
+      - name: "conflict_intensity"
+        source: "world_slice.conflict_intensity"
+        mapping: "inverse"
+        weight: -0.5
+      - name: "policy_turbulence"
+        source: "world_slice.policy_turbulence"
+        mapping: "inverse"
+        weight: -0.3
+      - name: "regime_instability"
+        source: "world_slice.regime_instability"
+        mapping: "inverse"
+        weight: -0.4
+      - name: "diplomatic_cooperation"
+        source: "world_slice.diplomatic_cooperation"
+        mapping: "direct"
+        weight: 0.2
+      - name: "continuity_of_local_culture"
+        source: "driver_vec.ritual_centrality"  # Proxy for cultural continuity
+        mapping: "direct"
+        weight: 0.2
+    formula:
+      base: 50
+      contributions: "sum of weighted inputs"
+      clamp: [0, 100]
+
+  perceived_justice_order:
+    description: "Felt fairness/legitimacy of the order"
+    scale: "0-100"
+    inputs:
+      - name: "objective_inequality"
+        source: "world_slice.inequality_index"
+        mapping: "inverse"
+        weight: -0.5
+      - name: "corruption_index"
+        source: "world_slice.metadata.corruption_index"  # If available
+        mapping: "inverse"
+        weight: -0.3
+      - name: "trust_in_institutions"
+        source: "driver_vec.trust_vs_distrust"
+        mapping: "direct"
+        weight: 0.3
+      - name: "meritocracy_belief"
+        source: "driver_vec.meritocracy_belief"
+        mapping: "direct"
+        weight: 0.2
+      - name: "state_repression"
+        source: "world_slice.state_repression"
+        mapping: "inverse"
+        weight: -0.4
+      - name: "policy_turbulence"
+        source: "world_slice.policy_turbulence"
+        mapping: "inverse"
+        weight: -0.2
+      - name: "diplomatic_isolation"
+        source: "world_slice.diplomatic_isolation"
+        mapping: "inverse"
+        weight: -0.2
+      - name: "scrutiny_level"
+        source: "world_slice.scrutiny_level"
+        mapping: "direct"
+        weight: 0.2
+      - name: "rhetoric_saturation"
+        source: "world_slice.rhetoric_saturation"
+        mapping: "inverse"
+        weight: -0.15
+      - name: "gender_inequality"
+        source: "world_slice.metadata.gender_inequality_index"
+        mapping: "direct"
+        weight: -0.4
+    formula:
+      base: 50
+      contributions: "sum of weighted inputs"
+      clamp: [0, 100]
+
+  obligation_symmetry:
+    description: "Do 'people like me' carry more or less than our share of burdens and risks?"
+    scale: "0-100"
+    inputs:
+      - name: "ethnic_power_status"
+        source: "local_modifiers.ethnic_power_status"
+        mapping:
+          dominant: 10
+          minoritized: -30
+          mixed: -10
+          unclear: 0
+      - name: "class_position"
+        source: "local_modifiers.class_position"
+        mapping: "inverse_decile"  # Lower class → lower symmetry
+        weight: -3  # Each decile down = -3 points
+      - name: "gender_status"
+        source: "identity.gender"
+        mapping:
+          male: 5  # Slight advantage in most contexts
+          female: -5
+          nonbinary: -10
+          other: 0
+      - name: "labor_exploitation_indicators"
+        source: "world_slice.unemployment_level"
+        mapping: "inverse"
+        weight: -0.2
+      - name: "inequality"
+        source: "world_slice.inequality_index"
+        mapping: "inverse"
+        weight: -0.3
+    formula:
+      base: 50
+      contributions: "sum of weighted inputs"
+      clamp: [0, 100]
+
+  rehabilitative_punishment_norms:
+    description: "Whether transgression is followed by repair vs permanent branding"
+    scale: "0-100"
+    inputs:
+      - name: "religious_doctrines_on_forgiveness"
+        source: "driver_vec.religiosity"
+        mapping: "direct"
+        weight: 0.4
+      - name: "recidivism_policy"
+        source: "world_slice.metadata.recidivism_policy"  # If available
+        mapping:
+          rehabilitative: 20
+          punitive: -20
+          mixed: 0
+      - name: "criminal_record_stigma"
+        source: "world_slice.metadata.criminal_record_stigma"  # If available
+        mapping: "inverse"
+        weight: -0.3
+      - name: "state_repression"
+        source: "world_slice.state_repression"
+        mapping: "inverse"
+        weight: -0.2
+    formula:
+      base: 50
+      contributions: "sum of weighted inputs"
+      clamp: [0, 100]
+
+  hierarchy_legitimacy:
+    description: "Does authority appear earned/accountable, or arbitrary/corrupt?"
+    scale: "0-100"
+    inputs:
+      - name: "democracy_index"
+        source: "world_slice.metadata.democracy_index"  # If available
+        mapping: "direct"
+        weight: 0.4
+      - name: "corruption_index"
+        source: "world_slice.metadata.corruption_index"  # If available
+        mapping: "inverse"
+        weight: -0.4
+      - name: "confidence_in_institutions"
+        source: "driver_vec.trust_vs_distrust"
+        mapping: "direct"
+        weight: 0.3
+      - name: "state_repression"
+        source: "world_slice.state_repression"
+        mapping: "inverse"
+        weight: -0.5
+      - name: "perceived_justice_order"
+        source: "civic_soul.perceived_justice_order"  # Recursive: justice → legitimacy
+        mapping: "direct"
+        weight: 0.2
+    formula:
+      base: 50
+      contributions: "sum of weighted inputs"
+      clamp: [0, 100]
+
+  shared_stake_in_common_goods:
+    description: "Does the world feel like a common home, or someone else's property?"
+    scale: "0-100"
+    inputs:
+      - name: "public_service_quality"
+        source: "world_slice.welfare_support"
+        mapping: "direct"
+        weight: 0.3
+      - name: "privatization_level"
+        source: "world_slice.metadata.privatization_level"  # If available
+        mapping: "inverse"
+        weight: -0.2
+      - name: "segregation_indices"
+        source: "world_slice.metadata.segregation_index"  # If available
+        mapping: "inverse"
+        weight: -0.3
+      - name: "inequality"
+        source: "world_slice.inequality_index"
+        mapping: "inverse"
+        weight: -0.4
+      - name: "class_position"
+        source: "local_modifiers.class_position"
+        mapping: "direct_decile"  # Higher class → more stake
+        weight: 2  # Each decile up = +2 points
+      - name: "ethnic_power_status"
+        source: "local_modifiers.ethnic_power_status"
+        mapping:
+          dominant: 10
+          minoritized: -20
+          mixed: -10
+          unclear: 0
+    formula:
+      base: 50
+      contributions: "sum of weighted inputs"
+      clamp: [0, 100]
+
+  risk_band:
+    description: "Overall experiential risk: numb safety → bounded risk → chronic terror"
+    scale: "0-100"
+    inputs:
+      - name: "conflict_intensity"
+        source: "world_slice.conflict_intensity"
+        mapping: "direct"
+        weight: 0.6
+      - name: "crime_rate"
+        source: "world_slice.metadata.crime_rate"  # If available
+        mapping: "direct"
+        weight: 0.2
+      - name: "job_security"
+        source: "world_slice.unemployment_level"
+        mapping: "direct"
+        weight: 0.4
+      - name: "state_repression"
+        source: "world_slice.state_repression"
+        mapping: "direct"
+        weight: 0.3
+      - name: "gender_inequality"
+        source: "world_slice.metadata.gender_inequality_index"
+        mapping: "direct"
+        weight: 0.25
+    formula:
+      base: 0
+      contributions: "weighted sum"
+      clamp: [0, 100]
+    interpretation:
+      "0-30": "deadened routine, numb safety"
+      "30-50": "bounded risk, healthy challenge"
+      "50-70": "elevated risk, chronic stress"
+      "70-100": "chronic terror, survival mode"
+
+# Cross-condition interactions
+interactions:
+  # High inequality + low perceived justice → lower hierarchy legitimacy
+  inequality_justice_legitimacy:
+    condition: "world_slice.inequality_index > 70 AND civic_soul.perceived_justice_order < 30"
+    effect_on_hierarchy_legitimacy: -0.2
+  
+  # High state repression → lower shared stake
+  repression_stake:
+    condition: "world_slice.state_repression > 70"
+    effect_on_shared_stake: -0.15
+
+# Default values when data is missing
+defaults:
+  rootedness: 50
+  perceived_justice_order: 50
+  obligation_symmetry: 50
+  rehabilitative_punishment_norms: 50
+  hierarchy_legitimacy: 50
+  shared_stake_in_common_goods: 50
+  risk_band: 30
+

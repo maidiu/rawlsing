@@ -1,0 +1,249 @@
+# Life Snapshot — data-governed derivation for Life Container / Life Season
+# Used at "present" year: compute from identity, world_slice, state; LLM only confirms or picks from constrained options.
+# See LIFE_SIMULATION_LAYER.md and life_simulation_schema.py.
+
+# --- Option sets (valid values for each field) ---
+# job_type: globally relevant categories; narrow_by (urbanicity, country) restricts to plausible subset per persona
+job_type:
+  values:
+    - informal_vendor
+    - street_trader
+    - day_labor
+    - gig_platform
+    - small_family_business
+    - domestic
+    - care_work_paid
+    - care_work_unpaid
+    - agriculture_smallholder
+    - agriculture_plantation
+    - farm_labor
+    - pastoral
+    - fishing
+    - extractive_mines_oil
+    - factory
+    - construction
+    - driver_transport
+    - logistics_warehouse
+    - back_office
+    - call_center
+    - private_office_clerical
+    - public_sector_clerical
+    - ngo_staff
+    - retail
+    - hospitality
+    - security_guard
+    - security_police_military
+    - education_worker
+    - healthcare_worker
+    - religious_worker
+    - legal_administrative
+    - tech_media
+    - student_secondary
+    - student_university
+    - unemployed_searching
+    - unemployed_discouraged
+    - other
+  by_ses:
+    underclass:
+      informal_vendor: 0.18
+      day_labor: 0.15
+      unemployed_searching: 0.12
+      unemployed_discouraged: 0.08
+      farm_labor: 0.10
+      domestic: 0.08
+      street_trader: 0.07
+      agriculture_smallholder: 0.06
+      care_work_unpaid: 0.05
+      construction: 0.04
+      gig_platform: 0.03
+      retail: 0.02
+      other: 0.02
+    working:
+      factory: 0.14
+      retail: 0.12
+      call_center: 0.10
+      construction: 0.10
+      driver_transport: 0.09
+      back_office: 0.08
+      informal_vendor: 0.07
+      logistics_warehouse: 0.06
+      domestic: 0.05
+      hospitality: 0.05
+      care_work_paid: 0.04
+      small_family_business: 0.04
+      security_guard: 0.03
+      day_labor: 0.02
+      other: 0.01
+    lower_middle:
+      back_office: 0.20
+      call_center: 0.18
+      retail: 0.12
+      public_sector_clerical: 0.12
+      private_office_clerical: 0.10
+      education_worker: 0.08
+      healthcare_worker: 0.06
+      driver_transport: 0.05
+      ngo_staff: 0.04
+      small_family_business: 0.03
+      other: 0.02
+    middle:
+      back_office: 0.22
+      private_office_clerical: 0.18
+      public_sector_clerical: 0.15
+      education_worker: 0.12
+      healthcare_worker: 0.10
+      call_center: 0.08
+      ngo_staff: 0.06
+      retail: 0.04
+      legal_administrative: 0.03
+      tech_media: 0.02
+      other: 0.02
+    upper_middle:
+      private_office_clerical: 0.28
+      public_sector_clerical: 0.18
+      education_worker: 0.15
+      healthcare_worker: 0.12
+      legal_administrative: 0.10
+      ngo_staff: 0.08
+      tech_media: 0.06
+      back_office: 0.03
+      other: 0.00
+    elite:
+      legal_administrative: 0.22
+      private_office_clerical: 0.20
+      public_sector_clerical: 0.18
+      tech_media: 0.12
+      education_worker: 0.10
+      healthcare_worker: 0.08
+      ngo_staff: 0.06
+      religious_worker: 0.02
+      other: 0.02
+  # Plausibly narrow allowed job types by context (identity + world_slice)
+  narrow_by:
+    # For rural: only these job types are allowed (others dropped from weights before sampling)
+    urbanicity_allowed:
+      rural:
+        - agriculture_smallholder
+        - agriculture_plantation
+        - farm_labor
+        - pastoral
+        - fishing
+        - extractive_mines_oil
+        - informal_vendor
+        - street_trader
+        - day_labor
+        - domestic
+        - care_work_paid
+        - care_work_unpaid
+        - small_family_business
+        - driver_transport
+        - construction
+        - retail
+        - education_worker
+        - healthcare_worker
+        - religious_worker
+        - student_secondary
+        - student_university
+        - unemployed_searching
+        - unemployed_discouraged
+        - other
+      town:
+        null   # null = no filter (allow all that appear in by_ses)
+      city:
+        null
+      megacity:
+        null
+    # Optional: per-country allowed subset. If present for identity.country_code, intersect with job_weights.
+    country_allowed:
+      # Example: JOR — exclude pastoral, fishing; add common regional types if needed
+      # JOR: [retail, back_office, ...]
+      # UZB: [ ... ]
+      # Leave empty or omit to use only urbanicity + by_ses
+
+commute_style:
+  values: [none, walk, bus, motorcycle, car, long_commute]
+  # Derive from job_type + urbanicity (and optionally country_region for motorcycle prevalence)
+  by_job_urban:
+    unemployed: { none: 0.7, walk: 0.3 }
+    student:    { bus: 0.4, walk: 0.3, none: 0.2, motorcycle: 0.1 }
+    # default for employed: urban → bus/car; rural → motorcycle/car; megacity → bus/long_commute
+  urban_default: { bus: 0.35, car: 0.25, walk: 0.2, motorcycle: 0.1, long_commute: 0.1 }
+  rural_default: { motorcycle: 0.3, car: 0.25, bus: 0.2, walk: 0.15, none: 0.1 }
+
+living_arrangement:
+  values: [with_family, with_roommates, alone, with_partner, unstable]
+  # Rough priors by age band (conversation persona is typically adult)
+  by_age_band:
+    "17-24": { with_family: 0.5, with_roommates: 0.25, alone: 0.1, with_partner: 0.1, unstable: 0.05 }
+    "25-34": { with_family: 0.25, with_partner: 0.35, alone: 0.2, with_roommates: 0.15, unstable: 0.05 }
+    "35-49": { with_partner: 0.45, with_family: 0.25, alone: 0.2, with_roommates: 0.05, unstable: 0.05 }
+    "50+":   { with_partner: 0.4, alone: 0.25, with_family: 0.25, unstable: 0.1 }
+
+family_obligations:
+  values: [none, light, primary_supporter, eldercare, childcare]
+  # Derive from age + narrative/events; data can give priors
+  by_age_band:
+    "17-24": { light: 0.4, none: 0.3, primary_supporter: 0.2, childcare: 0.05, eldercare: 0.05 }
+    "25-34": { primary_supporter: 0.3, childcare: 0.25, light: 0.25, eldercare: 0.1, none: 0.1 }
+    "35-49": { childcare: 0.3, eldercare: 0.25, primary_supporter: 0.2, light: 0.15, none: 0.1 }
+    "50+":   { eldercare: 0.3, light: 0.3, none: 0.2, primary_supporter: 0.1, childcare: 0.1 }
+
+income_stress:
+  values: [low, medium, high, crisis]
+  # Formula from pipeline data (no LLM): gdp_per_capita, inequality_index, current_class, needs.safety
+  formula:
+    # Score 0-100: higher = more stress. Components:
+    # - Low GDP → +stress; high inequality → +stress; working/underclass → +stress; low needs.safety → +stress
+    gdp_weight: 0.3      # (100 - gdp_per_capita) / 100
+    inequality_weight: 0.25
+    class_weight: 0.25  # underclass=1, working=0.8, lower_middle=0.5, middle=0.2, upper_middle=0.1, elite=0
+    safety_weight: 0.2  # (100 - needs.safety) / 100
+  bands:
+    low:    [0, 25]
+    medium: [25, 50]
+    high:   [50, 75]
+    crisis: [75, 100]
+
+internet_access_patterns:
+  values: [home_only, phone_only, work_and_phone, unreliable, abundant]
+  # From world_slice.media_saturation (internet %), identity.urbanicity, identity.current_class
+  formula:
+    # media_saturation = country internet %; modulate by SES and urban
+    # Low country % → unreliable or phone_only; high + city + middle → abundant or work_and_phone
+    bands:
+      - { max_country_pct: 15, default: unreliable }
+      - { max_country_pct: 40, default: phone_only }
+      - { max_country_pct: 70, default: work_and_phone }
+      - { max_country_pct: 100, default: abundant }
+    ses_modifier: true   # lower SES → shift down (abundant→work_and_phone, etc.)
+    urban_modifier: true # rural → shift down
+
+social_circle_density:
+  values: [isolated, thin, moderate, dense]
+  # From needs.belonging_group (and optionally palimpsest.roles_in_systems)
+  formula:
+    # belonging_group 0-100 → isolated (0-25), thin (25-50), moderate (50-75), dense (75-100)
+    bands:
+      isolated: [0, 25]
+      thin:     [25, 50]
+      moderate: [50, 75]
+      dense:    [75, 100]
+
+sleep_debt_baseline:
+  values: [none, light, chronic, severe]
+  # From indices.recursive_madness_threshold, strategies (dissociation, withdrawal), routines
+  formula:
+    # RMT high + dissociation/withdrawal high → chronic or severe; else light/none
+    rmt_weight: 0.5   # RMT > 60 → +debt
+    strategy_weight: 0.3  # dissociation_numbing, withdrawal_avoidance
+  bands:
+    none:    [0, 20]
+    light:   [20, 45]
+    chronic: [45, 70]
+    severe:  [70, 100]
+
+# --- Life Season (current phase): LLM picks from taxonomy given narrative ---
+current_life_phase:
+  values: [job_hunt_phase, relationship_phase, burnout_phase, caring_for_parent_phase, saving_money_phase, spiritual_recommitment_phase, activism_surge_phase, stable_routine_phase, other]
+  # Data hints: events (parent_illness → caring_for_parent), unemployment → job_hunt; strategies (withdrawal high → burnout_phase)
+  # LLM selects one given narrative; data can suggest candidates from events/strategies

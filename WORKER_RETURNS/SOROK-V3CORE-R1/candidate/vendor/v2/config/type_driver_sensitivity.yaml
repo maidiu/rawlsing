@@ -1,0 +1,83 @@
+# Type × Driver Sensitivity (Enneagram × Culture)
+# Types are differentially sensitive to cultural drivers. When a driver is "sensitive" for a type,
+# its effect on needs/strategies is amplified. When a driver is "mismatched" (wrong for the type),
+# health level is penalized.
+#
+# Derivation: Ichazo/Naranjo etiology + Riso/Chestnut type patterns
+# - Type 6: anxiety, trust, authority → sensitive to trust, hierarchy
+# - Type 4: meaning, aesthetic, transcendence → sensitive to ritual, religiosity
+# - Type 1: order, rules, perfection → sensitive to hierarchy, ritual
+# - Type 5: withdrawal, invasion → sensitive to trust (low = threat)
+# - Type 8: injustice, dominance → sensitive to authority, trust
+# etc.
+
+type_sensitivity:
+  1:  # Perfectionist - order, rules, hierarchy
+    sensitive_drivers:
+      authoritarian_vs_egalitarian: 1.3
+      ritual_centrality: 1.2
+    mismatch_penalty:
+      ritual_centrality: 0.35   # Low ritual/order → harder
+      authoritarian_vs_egalitarian: 0.2  # Chaos (low hierarchy) when 1 needs structure
+  2:  # Helper - warmth, belonging, need to be needed
+    sensitive_drivers:
+      trust_vs_distrust: 1.2
+      religiosity: 1.1
+    mismatch_penalty:
+      trust_vs_distrust: 0.3   # Low trust → harder to give/receive
+  3:  # Achiever - recognition, competence, agency
+    sensitive_drivers:
+      fatalism_vs_agency: 1.4
+      individualism_vs_collectivism: 1.2
+    mismatch_penalty:
+      fatalism_vs_agency: 0.4   # High fatalism → can't achieve
+  4:  # Individualist - meaning, aesthetic, transcendence
+    sensitive_drivers:
+      ritual_centrality: 1.4
+      religiosity: 1.2
+    mismatch_penalty:
+      ritual_centrality: 0.5   # Low meaning/ritual → existential void
+      religiosity: 0.3
+  5:  # Investigator - withdrawal, boundaries, invasion
+    sensitive_drivers:
+      trust_vs_distrust: 1.3
+      individualism_vs_collectivism: 1.2
+    mismatch_penalty:
+      trust_vs_distrust: 0.4   # Low trust → more withdrawal
+  6:  # Loyalist - trust, safety, authority
+    sensitive_drivers:
+      trust_vs_distrust: 1.5
+      authoritarian_vs_egalitarian: 1.3
+    mismatch_penalty:
+      trust_vs_distrust: 0.6   # Low trust → anxiety amplified
+      authoritarian_vs_egalitarian: 0.25  # Unclear authority = harder
+  7:  # Enthusiast - play, agency, deprivation
+    sensitive_drivers:
+      fatalism_vs_agency: 1.3
+      ritual_centrality: 1.0   # Low ritual = freedom (positive for 7)
+    mismatch_penalty:
+      fatalism_vs_agency: 0.5   # High fatalism → can't plan, deprived
+  8:  # Challenger - justice, dominance, trust
+    sensitive_drivers:
+      authoritarian_vs_egalitarian: 1.3
+      trust_vs_distrust: 1.2
+    mismatch_penalty:
+      trust_vs_distrust: 0.35  # Low trust → more defensive
+  9:  # Peacemaker - harmony, belonging, conflict
+    sensitive_drivers:
+      individualism_vs_collectivism: 1.3
+      ritual_centrality: 1.1
+    mismatch_penalty:
+      ritual_centrality: 0.25  # Low ritual/harmony → harder to merge
+
+# Primary need each type modulates when sensitive drivers shift (driver_val - 50) * 0.12
+primary_need_modulation:
+  1: { need: "coherence_meaning", driver: "ritual_centrality" }
+  2: { need: "warmth_bonding", driver: "trust_vs_distrust" }
+  3: { need: "competence_effectiveness", driver: "fatalism_vs_agency" }
+  4: { need: "coherence_meaning", driver: "ritual_centrality" }
+  5: { need: "safety", driver: "trust_vs_distrust" }
+  6: { need: "safety", driver: "trust_vs_distrust" }
+  7: { need: "play_pleasure", driver: "fatalism_vs_agency" }
+  8: { need: "autonomy_agency", driver: "authoritarian_vs_egalitarian" }
+  9: { need: "belonging_group", driver: "ritual_centrality" }

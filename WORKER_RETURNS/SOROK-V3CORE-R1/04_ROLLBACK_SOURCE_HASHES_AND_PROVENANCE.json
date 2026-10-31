@@ -1,0 +1,181 @@
+{
+  "adapter_source_files": {
+    "v3core_adapter/__init__.py": "97a8313c5a06503a59237e516cf2641d89ca8f89563e3910391570ebfa43c3fb",
+    "v3core_adapter/contracts.py": "bac8837cf6720578783ac67647f58ca7eb04abfa2dbfa1cfcd4e7bb2ab6a863c",
+    "v3core_adapter/derived_scope.py": "1532db4168ef55af1861a01f19492b770043e7af3ca229ab7a89321013b11313",
+    "v3core_adapter/flow_quarantine.py": "2870577ce9c7204ac056d3229d3b342e028263f59b068476dc018bfa7025c214",
+    "v3core_adapter/i1_consumer.py": "25b29e9fac4ba74a8097872b01f2232a11c574a43e59b459fe7894f59730a708",
+    "v3core_adapter/ledger.py": "71bf61c4f19875478c763b74a9c656d490aec626e489210993faf03825dc0a85",
+    "v3core_adapter/memory.py": "d643408a5f59a89047d1420f117ce456bfc0147e991988793764f0d9283a31a1",
+    "v3core_adapter/provenance.py": "6c067b2a0522ad9684bef6c373a63938798f950d9fdf5a20f3b4571958384ea2",
+    "v3core_adapter/quarantine.py": "4a9022db1fb36340d5ccd5a41f967af18d9faa2a02449530ea78bf0c640200d9",
+    "v3core_adapter/readiness.py": "3836e44066b53a52fee8d2b0c904c526734f2e9d63aabf0e99387ad0f2526799",
+    "v3core_adapter/render.py": "b5f0b20d6fa84949e79f798bca4276f29ff90752ba478b628347808e0c59b5c8",
+    "v3core_adapter/scheduler.py": "73b9e868fa03b4fe63ffb72ea4a4c6f0ebba44b2fb28938816d2219978e31435",
+    "v3core_adapter/transitions.py": "01297a4d65302239ff73760c113fa4ef89526a2494c2fd9c0d8b23b041538542"
+  },
+  "archive": {
+    "container_status": "MISMATCH_PRESERVED",
+    "expected_td_r05_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "observed_sha256": "3f2c5ed925273153a4f300f75e54524729f0b4fef9974957be1f3cd887c91289",
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_code_bundle_staging.zip"
+  },
+  "authority": {
+    "canonical_c9_claimed": false,
+    "native_person_claimed": false,
+    "rival_store_created": false,
+    "science_issued": false,
+    "self_reviewed": false
+  },
+  "base_commit": "750548ddbb9b4392a16ce93097b856f349e16182",
+  "base_subject": "Recover R61 finite universal workload and source-byte custody into PRE-MAIN (#526)",
+  "branch": "agent/sorok-v3core-r1-sourcefree-activity-time-adapter-20261030",
+  "candidate_test_files": {
+    "tests/conftest.py": "85bd9649669f77640169765e62a7e05768f7d1267adcc30d2165fd65fc182466",
+    "tests/test_cold_reload_and_restore.py": "30906faf20eb48116425bb015c5230f93c6675f711396aa40a287ce52f2224d0",
+    "tests/test_flow_and_memory.py": "f3d7c4d22450de03f86e934db9ce070e718e8769d0df6a8e29eb9701a65f0288",
+    "tests/test_i1_first_consumer.py": "115a856402f75b191c6870ef3d22f6467eddd846e7bf989c0a9404bf916c2c5f",
+    "tests/test_ingress_faults.py": "6640275d66fd6c01ce137d036631493eb5a4aa2b15dd98b6d08a9aaef288af39",
+    "tests/test_original_source_tests.py": "aec470a8700116d8a4c00d01ef629c123df10eea2ce4b46639b881338603233d",
+    "tests/test_quarantine_and_defaults.py": "51a7d43eab002ce11e5600756c801fce33d199e83e3e3ace008872c6a0c9e260",
+    "tests/test_render_and_derived.py": "f838874f1b3e339e7ac2a05929f430b6f32f3948e8988f0999c62f1ba362bdf9",
+    "tests/test_scheduler_order.py": "ecbeae3b22879459dc9f23d54fee27991519c8e69b70bafea6515273001d22b2",
+    "tests/test_year_record.py": "d9acfce9d178825b974cb2e909dcd7cc49eedd52ed4059071ff74085f232e7a1"
+  },
+  "candidate_tool_files": {
+    "tools/cold_probe.py": "89f1b7ddf63979e1a3de8c8d28f00e7cc10995845ab516f44b63e714d31f606b",
+    "tools/first_consumer_probe.py": "29ab066009415670c37bd687a7213381cc64371a639a5f0ea42c6b820d82084b",
+    "tools/hash_inventory.py": "11cc64167a6323e4a4cfac5bb8b8a97d1e92aeefb7431e857b60e0565b2eb6d5",
+    "tools/make_contract.py": "ef61c01990d3b96d6185895f370cfb436f5c5cdafb62b8c2522a77535998f44a",
+    "tools/run_courts.py": "b9f69ade1809927d5e8e52799f2552015b5db4a83276ff0483cbcf7feb3442d5"
+  },
+  "evidence_files": {
+    "evidence/court_results.json": "6f2b1378961549cfa7b5ff17ca4505959f86b8d277d7e5627bc2db38cbb0e3aa",
+    "evidence/first_consumer_probe.json": "d075f2c5fd6017b3980762239c6d46c9290b3bc14e56ee92fe8777772214e2a4",
+    "evidence/first_consumer_probe.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/i1_unchanged_consumer_tests.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/i1_unchanged_consumer_tests.stdout.txt": "53078488288924002b54b37816843ffcb39490b5a9b66d904434faa9cd019061",
+    "evidence/i1_unchanged_junit.xml": "e58c6b28e3992be29ac74b5573ad507a0f54521c0c455638e6db31254c43af34",
+    "evidence/mutated_19_step_order.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/mutated_19_step_order.stdout.txt": "b587e7753d7d953d51fe71df60a820c7c824ebb8cdba19fe567aeeed9def49f3",
+    "evidence/unchanged_v3_source_junit.xml": "71738a0d442eeeaab957b9450e0e8ee6d75163b5d045b838972b829f1e3875f6",
+    "evidence/unchanged_v3_source_tests.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/unchanged_v3_source_tests.stdout.txt": "cc78ed2e1263fe94519afc24cfee11c48181b9b86bce5761f4103900a34786c7",
+    "evidence/v3core_adapter_junit.xml": "3715c9b54ce946070803e38b89526840e775d9081790b7262c595f32d0e9f156",
+    "evidence/v3core_adapter_tests.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/v3core_adapter_tests.stdout.txt": "9c166a713c24b99ce2c50ab9efa543860e06f51251b00347bfe98185b7e1f2db"
+  },
+  "historical_source_files": {
+    "vendor/i1/bp2p4/i1_product.py": {
+      "sha256": "679c9bcbef0ddc54316f18c0152abfaced0ed9ad10ecf0755b025b60f79dda60"
+    },
+    "vendor/i1/bp2p4/product.py": {
+      "sha256": "55c99dffb8cc7ab64e9fba4e15a353b41a984466a22e2cecf36f793a749a0a0f"
+    },
+    "vendor/i1/vendor/bp4/bp4/product.py": {
+      "sha256": "a965b95fcd76d993c4fea5867b4c81af9b48f77f8023e34ad8d3e8222a2e46a7"
+    },
+    "vendor/i1/vendor/bp4/bp4/store.py": {
+      "sha256": "bb7bd721fa6b021a5b5163427495fd308236788d1738b8326f9f1093159b3c8b"
+    },
+    "vendor/v2/parent_type_inference.py": {
+      "sha256": "b05632d01c48f52a5bed36b07b094ac770cada81f51951d78b7bea61e4e66cf3"
+    },
+    "vendor/v3/core/config_loader.py": {
+      "sha256": "5f953d9661f61081187898c3ad06b4567bc4fa99d3d7cd856d30cdd961f78577"
+    },
+    "vendor/v3/core/derived.py": {
+      "sha256": "e479fc3eba21734752c372742fb2ee247cbdde6a73ac42545dc30b5039301360"
+    },
+    "vendor/v3/core/generation_integrity.py": {
+      "sha256": "5265aac2fda4d6e6ac62927353518045f215d7d1916930e19e980b6d77eff214"
+    },
+    "vendor/v3/core/invariants.py": {
+      "sha256": "81298f3fc51b46cda8d72d0db914b672b17b9a35e13004fe59a9b0e29dada5e3"
+    },
+    "vendor/v3/core/state.py": {
+      "sha256": "19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2"
+    },
+    "vendor/v3/core/year_record.py": {
+      "sha256": "4bbd7518a6ec8bc8dd22758a2f9e876882253dfd59021a998a6d541b23e5cfc2"
+    },
+    "vendor/v3/engine/effects/metabolization_effects.py": {
+      "sha256": "d4775271ca097e99e615cee19b381a478ad6d90a25051c5fce1b1e0e3c1adb1e"
+    },
+    "vendor/v3/engine/expectation_baseline.py": {
+      "sha256": "632e1e608bfc674a241e57bafa24e91834a2b8bdc3e4ed326dae6fca4e695d43"
+    },
+    "vendor/v3/engine/llm_contract.py": {
+      "sha256": "f024debf7b8a637e91c546689a0bed31baff55d98f1378b06cb82ebb4c0fe9cf"
+    },
+    "vendor/v3/engine/run_llm_band.py": {
+      "sha256": "120e177462219e8ccd5d5e0d7fdb23de993639f5af8be6c40a06db36e0b37a38"
+    },
+    "vendor/v3/engine/step_runner.py": {
+      "sha256": "5a737c1704eaa6dc2c67f6c2db3118a6daa8a213b44d559bc37eadbc9c09d95a"
+    },
+    "vendor/v3/engine/yearly_step.py": {
+      "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb"
+    },
+    "vendor/v3/io/parent_baseline_from_behavior.py": {
+      "sha256": "4e5be6448a5b76c413492ec2a83b62d9e9a2247ce131a094727d974a17cf750b"
+    },
+    "vendor/v3/psyche/channels.py": {
+      "sha256": "2d00bf6b8720879e610160e58455f983e1e63fbe8ceef1a93f46844de8a3f111"
+    },
+    "vendor/v3/psyche/flow.py": {
+      "sha256": "6da4effde2b1ccb7c346f73b17632ceee3a7a8c37a63a10f096753d070ab1d3d"
+    },
+    "vendor/v3/render/phenomenology.py": {
+      "sha256": "f2f18c1d9ba705212846af41b33cb1dfd2ad986dae4b686873687c2e6d1a653d"
+    },
+    "vendor/v3/v3_yearly_step_order.yaml": {
+      "sha256": "90496a2cc852ca00ef99c8bd4fcb2b41c9aa43c4aaa9108d3ac8cce0ebe22ffc"
+    },
+    "vendor/v3/v3config.yaml": {
+      "sha256": "5efc71e3f1b6f6a188df8b650a16bb16db099db8448655816e10989129221ba9"
+    }
+  },
+  "inputs": {
+    "I1": {
+      "commit": "7d44e30064f8e873e1a3ff9cb05fe75456756b88",
+      "subject": "SOROK I1: integrate guarded joined consumer and material continuation"
+    },
+    "O1": {
+      "commit": "501ea1f5bf07468b2c0437f452a81f3515cfdb6f",
+      "subject": "Sorok O1: final source-grade whole developmental architecture and productive construction verdict"
+    },
+    "R5": {
+      "commit": "aebb2452b277bfc91fc78dec8d6001f8a844cc8c",
+      "subject": "SOROK R5: recover exact F1C source, reconstruct F1CR candidate, reconcile V3 archive"
+    },
+    "RCF_A": {
+      "commit": "e66dc53a5d7eeb2b6b3259000eb04b8e79e1f6f7",
+      "subject": "SOROK RCF-A: recover 40 V3 mechanisms with exact source and negative proof"
+    }
+  },
+  "reference_sources_outside_candidate": {
+    "server/generation/simulation.py": {
+      "note": "runtime YearRecord dict fields",
+      "sha256": "5d68ffe3bc6902dc60b90625443a03127cf0d04b4eed4327270a3a0226bc78d1"
+    },
+    "server/generation/store.py": {
+      "note": "clean_ready/degraded_ready/blocked readiness",
+      "sha256": "eb592702327427a22b5d901337e6ee8b251b164ad41fe8848b165a14730a942c"
+    },
+    "server/session_state.py": {
+      "note": "_generation_state_is_ready",
+      "sha256": "9c9c3b0e2b3bff700af127e03805166102920019d6acd099ee8270fbe63bc15a"
+    }
+  },
+  "repository": "maidiu/rawlsing",
+  "rollback": {
+    "candidate_path": "WORKER_RETURNS/SOROK-V3CORE-R1/candidate",
+    "delete_branch_command": "git -C /Users/matthewsmith/Desktop/Rawlsing branch -D agent/sorok-v3core-r1-sourcefree-activity-time-adapter-20261030",
+    "pre_main_base": "750548ddbb9b4392a16ce93097b856f349e16182",
+    "remove_worktree_command": "git -C /Users/matthewsmith/Desktop/Rawlsing worktree remove /private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/v3core-return --force",
+    "restore_source_rule": "Every vendored historical file is identified by SHA-256 above; restore by checking out the pinned input commit and re-reading the exact path. The adapter never edits vendor files.",
+    "return_path": "WORKER_RETURNS/SOROK-V3CORE-R1"
+  },
+  "schema": "SOROK_V3CORE_R1_ROLLBACK_AND_PROVENANCE@1"
+}

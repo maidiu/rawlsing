@@ -1,0 +1,373 @@
+# Rawlsing v2 — Full trajectory (Python pipeline)
+# Keep this file updated as v2 evolves. Vision: PIPELINE_VISION.md
+# Legacy full trajectory (pre-v2, 37 steps): references/progress_tracker.yaml
+
+project: Rawlsing v2
+version: "4.1"
+last_updated: 2025-01-24
+
+pipeline_flow:
+  - country_and_region    # 1) Random-probabilistic: country → region
+  - birth_moment          # 2) At birth: ethnic/religious group + SES/power-proximity
+  - parent_survey_matches # 3) Closest WVS/EVS/Barometer matches for parents → swirl → fully-emotive atmosphere
+  - life_course           # 4) Personality unfolds: run sim every few years (future: + disruptive events DB)
+  - enneagram             # 5) Re-inflected periodically; tempered by regional/ethnic/religion/SES norms
+  - persona_output        # 6) Persona sheet for LLM / downstream
+
+sections:
+  - id: DATA_AND_DB
+    name: Data & database (v2 dependencies)
+    modules:
+      - step: 1
+        name: GeoNames
+        description: Regions and cities for identity sampling (country → region → city).
+        inputs: etl load scripts
+        outputs: geo.admin_regions, geo.admin_cities
+        files: [etl/load_geonames.py, etl/load_vi_geonames.py]
+        status: complete
+        next_action: null
+
+      - step: 2
+        name: WVS driver_aggregates
+        description: WVS microdata aggregated to demographic slices × drivers; used for parent matching.
+        inputs: WVS cube / microdata
+        outputs: driver_aggregates table (~1.3M records, 66 countries × 38 drivers × slices)
+        files: [etl/aggregate_wvs_drivers.py, etl/aggregate_wvs_drivers_from_cube.py, etl/rebuild_driver_aggregates.py]
+        status: complete
+        next_action: null
+
+      - step: 3
+        name: EPR & people_groups
+        description: Ethnic power relations, Joshua Project people_groups; ethnicity/religion/language by region.
+        inputs: EPR, JP, GeoEPR
+        outputs: eth.EPR-2021, jp.people_groups, eth.geoepr_admin_bridge
+        files: [etl/build_geoepr_bridge.py, data/ETH_*.sql]
+        status: complete
+        next_action: null
+
+      - step: 4
+        name: WID / GDL / SES data
+        description: Income distributions, subnational SES; used for SES sampling in identity.
+        inputs: WID, GDL loaders
+        outputs: wid_income_series/deciles, GDL-derived tables
+        files: [etl/load_gdl_wealth.py, etl/load_gdl_education.py, etl/load_gdl_hdi.py]
+        status: complete
+        next_action: null
+
+      - step: 5
+        name: world_state (OWID)
+        description: Time-series economic/social for get_world_slice (GDP, Gini, conflict, unemployment, internet, welfare, V-Dem repression/propaganda).
+        inputs: OWID CSVs (data/OWID/*), optional WDI/V-Dem/UNData
+        outputs: world_state table; get_world_slice queries it with resampling, normalizes GDP 0-100, falls back to defaults if DB/table missing
+        files: [etl/load_world_state.py, v2/data_access.py, data/OWID/README.md]
+        status: complete
+        next_action: null
+
+  - id: IDENTITY
+    name: Identity generation (at birth: place, group, SES)
+    modules:
+      - step: 6
+        name: Identity pipeline
+        description: Country → region → city; ethnicity (EPR, region-constrained); SES (WID + regional + urbanicity + power); religion/language from people_groups.
+        inputs: country_code, year, age, gender (optional)
+        outputs: IdentitySkeleton, context dict (WVS mappings, demographics)
+        files: [v2/identity_generator.py, v2/epr_to_jp_mapping.py, v2/ethnicity_mapping.py, v2/factbook_parser.py]
+        status: complete
+        next_action: null
+
+  - id: PARENT_AND_DRIVERS
+    name: Parent cohort & driver vectors
+    modules:
+      - step: 7
+        name: get_driver_vec
+        description: Query WVS driver_aggregates for parent cohort (country, year, age, gender, religion, education, income, urbanicity); resampling (exact → nearest neighbor → era).
+        inputs: identity / parent demographics
+        outputs: Driver vector for parent; used to sample parent behavior (warmth, authority, material_support).
+        files: [v2/data_access.py]
+        status: complete
+        next_action: null
+
+      - step: 8
+        name: get_world_slice
+        description: Country/year world conditions (GDP, inequality, conflict, etc.) for life-course updates. Queries world_state with resampling; falls back to defaults if DB/table missing.
+        inputs: country_code, year
+        outputs: WorldSlice (from world_state when ETL run; else defaults)
+        files: [v2/data_access.py]
+        status: complete
+        next_action: null
+
+      - step: 9
+        name: get_local_modifiers
+        description: Local context (e.g. EPR power status) for identity.
+        inputs: identity
+        outputs: LocalModifiers
+        files: [v2/data_access.py]
+        status: complete_basic
+        next_action: Optional EPR query refinement
+
+  - id: LIFE_COURSE
+    name: Life-course simulation
+    modules:
+      - step: 10
+        name: simulate_life_course
+        description: Year-by-year from birth to current age: world_slice, driver_vec, local_modifiers → update needs/strategies/indices; apply events (if any).
+        inputs: identity, adjusters, get_world_slice, get_driver_vec, get_local_modifiers
+        outputs: List of yearly states (NeedsStrategiesIndicesState)
+        files: [v2/spec.py]
+        status: complete
+        next_action: null
+
+      - step: 11
+        name: Event generation (internal)
+        description: Life events (migration, loss, etc.) from config; affects needs/indices.
+        inputs: config/events.yaml, world_slice, state
+        outputs: Events applied in sim
+        files: [v2/spec.py, v2/config/events.yaml]
+        status: partial
+        next_action: Full config/events.yaml integration; optional disruptive-events DB (external)
+
+      - step: 12
+        name: Run every few years (re-inflection)
+        description: Design goal: re-run personality generator every few years with events DB input so trajectory unfolds.
+        inputs: (future) major world/national/regional disruptive events DB
+        outputs: Re-inflected trajectory
+        files: []
+        status: planned
+        next_action: Design API; build or source events DB; wire into sim loop
+
+  - id: ENNEAGRAM
+    name: Enneagram inference & norms
+    modules:
+      - step: 13
+        name: Enneagram from life-course
+        description: Infer Enneagram type from life-course patterns (needs, strategies, indices).
+        inputs: Life-course state history
+        outputs: Type probabilities / sampled type; health level
+        files: [v2/spec.py, v2/enneagram_wisdom.py]
+        status: complete
+        next_action: null
+
+      - step: 14
+        name: Enneagram tempered by norms
+        description: Re-inflect type with regional/ethnic/religion/SES norms (norms shape how type expresses).
+        inputs: Type, identity, world_slice
+        outputs: Contextualized type expression
+        files: [v2/enneagram_wisdom.py]
+        status: partial
+        next_action: Make norms tempering explicit in logic and docs
+
+  - id: OUTPUT
+    name: Persona output
+    modules:
+      - step: 15
+        name: build_persona_sheet
+        description: Generate persona sheet (band summaries, key events, strategies, type) for LLM or downstream.
+        inputs: Life-course history, config (LLM options)
+        outputs: Persona sheet (JSON/YAML)
+        files: [v2/spec.py]
+        status: complete
+        next_action: null
+
+      - step: 16
+        name: run_minimal / test entrypoints
+        description: Minimal run: generate_identity_context → simulate_life_course → build_persona_sheet.
+        inputs: CLI or test params (e.g. country, year, age)
+        outputs: Persona sheet to stdout or file
+        files: [v2/run_minimal.py, v2/test_vietnam_1960.py]
+        status: complete
+        next_action: null
+
+  - id: CONFIG
+    name: v2 configuration
+    modules:
+      - step: 17
+        name: Config loader & YAMLs
+        description: Central config (age_bands, DB, simulation, enneagram); needs, strategies, civic_soul, relational_roles, indices, events.
+        inputs: v2/config/*.yaml
+        outputs: Loaded config for spec and data_access
+        files: [v2/config_loader.py, v2/config/config.yaml, v2/config/needs.yaml, v2/config/strategies.yaml, v2/config/civic_soul.yaml, v2/config/relational_roles.yaml, v2/config/indices.yaml, v2/config/events.yaml, v2/config/driver_age_schema.yaml]
+        status: complete
+        next_action: null
+
+  - id: DETERMINANTS
+    name: Most deterministic elements (Phase 1A/1B)
+    modules:
+      - step: 18
+        name: Phase 1A — Mutual information
+        description: Per WVS question × demographic: how much does knowing this demographic reduce uncertainty about the answer? Output: empirical ranking of demographics.
+        inputs: WVS respondents/responses, question_set, demographics_catalog
+        outputs: mi_results, mi_demographic_summary (e.g. religion vs education vs country)
+        files: [v2/phase1a_mi_pipeline.py]
+        status: implemented_ready_to_run
+        next_action: Run pipeline; review rankings; feed into Phase 2 weights
+
+      - step: 19
+        name: Phase 1B — Multivariate importance
+        description: Net effect of each demographic when others held constant (regression or tree importance).
+        inputs: Same as Phase 1A
+        outputs: model_importance_results, model_demographic_summary
+        files: []
+        status: not_started
+        next_action: Implement; cross-check with Phase 1A
+
+      - step: 20
+        name: Driver weights from determinants
+        description: Re-build driver_aggregates / similarity weights using Phase 1A (and 1B) so parent matching uses “most deterministic” dimensions.
+        inputs: Phase 1A/1B results, driver schema
+        outputs: Updated weights or aggregation logic
+        files: [v2/data_access.py, etl/rebuild_driver_aggregates.py, v2/PARENT_WVS_DRIVER_WEIGHTING_GUIDE.md]
+        status: partial
+        next_action: Run Phase 1A; integrate rankings into get_driver_vec weighting
+
+  - id: CODEBOOKS_AND_BAROMETERS
+    name: Codebooks & barometers (data expansion)
+    modules:
+      - step: 21
+        name: FINAL CODEBOOKS / questions_master
+        description: First & last wave + EVS trend codebooks → unified questions_master; content_keys; item_content_map for trajectories/cubes.
+        inputs: data/FINAL CODEBOOKS/*.csv
+        outputs: data/final_codebooks/questions_master.csv, codebook_index.json, content_keys.csv, item_content_map.csv
+        files: [data/FINAL CODEBOOKS/build_final_codebooks.py, data/final_codebooks/trajectory_slice.py]
+        status: complete
+        next_action: Populate item_content_map (item_id → content_id); add content_keys
+
+      - step: 22
+        name: Barometer integration into driver layer
+        description: Use EVS/Barometer microdata (where harmonized) for parent matching and driver vectors; fallback hierarchy WVS → EVS → regional barometers.
+        inputs: Harmonized codebooks, microdata (when loaded)
+        outputs: get_driver_vec (or equivalent) over multiple sources
+        files: [v2/data_access.py, data/final_codebooks/]
+        status: planned
+        next_action: Define fact table (source, wave, country, item_id, response); aggregate by content_id; wire into data_access
+
+  - id: LIFE_SIMULATION
+    name: Life Simulation Layer (conversation realism)
+    description: Engine between persona and response. Life Container and Life Season are derived from simulation results, not generated at conversation time. Spec LIFE_SIMULATION_LAYER.md; schema v2/life_simulation_schema.py.
+    modules:
+      - step: 26
+        name: Simulation produces life-container and life-season data
+        description: By the time we reach present age, recursions must have generated and stored what populates Life Container and Life Season. Add RecursionDelta.life_snapshot (job_type, living_arrangement, family_obligations, income_stress, internet_access_patterns, social_circle_density, sleep_debt_baseline, current_life_phase). Recursion prompt for present year (or 17+ band) asks for / outputs these.
+        inputs: Present-year recursion (or last N years); world_slice, state, narrative
+        outputs: life_snapshot in RecursionDelta; Palimpsest stores present-life snapshot
+        files: [v2/recursion_schema.py, v2/spec.py (build_recursion_prompt_delta), v2/life_snapshot_from_data.py, v2/config/life_snapshot.yaml]
+        status: complete
+        next_action: null
+
+      - step: 27
+        name: Derive Life Container and Life Season from simulation
+        description: At conversation time, derive Life Container and Life Season from stored simulation output — derive_life_container_from_simulation(persona_history), derive_life_season_from_simulation(persona_history). No separate generation; populate from recursion deltas and/or persona sheet.
+        inputs: PersonaHistory (palimpsest.life_snapshot), persona sheet present-life block
+        outputs: LifeContainer, LifeSeason
+        files: [v2/life_simulation_schema.py]
+        status: complete
+        next_action: null
+
+      - step: 28
+        name: instantiate_today(container, season, date)
+        description: Generate Today State per conversation — sleep_hours, mood_baseline, current_stressor, open_loops, next_obligation_minutes, physical_state, location, interruptions_risk.
+        inputs: LifeContainer, LifeSeason, date
+        outputs: TodayState
+        files: [v2/life_simulation_schema.py]
+        status: complete
+        next_action: null
+
+      - step: 29
+        name: instantiate_interaction_context
+        description: Generate why persona is in this chat (paid_microtask, language_exchange, boredom_scrolling, lonely_evening, etc.).
+        inputs: Scenario or random draw
+        outputs: InteractionContext
+        files: [v2/life_simulation_schema.py]
+        status: complete
+        next_action: null
+
+      - step: 30
+        name: Wire Life Simulation into response path
+        description: Before generating reply, build LifeSimulationState (container + season + today + interaction); compute_attention_budget; pass to conversation engine. Gate max reply length and depth by attention_available, effort_willingness, social_energy.
+        inputs: Persona, LifeSimulationState, AttentionBudget
+        outputs: Reply gated by attention
+        files: [v2/life_simulation_schema.py, v2/spec.py (build_conversation_persona_context)]
+        status: complete
+        next_action: null
+
+  - id: CONVERSATION_ENGINE
+    name: Conversation engine (hooks, salience, effort)
+    description: Standpoint-driven salience, effort budget from attention, LLM as renderer. Spec PERSONA_CONVERSATION_ENGINE_SPEC.md.
+    modules:
+      - step: 31
+        name: Conversation runtime (analyze → hooks → salience → appraisal → move → render)
+        description: Implement or confirm path that loads persona + LifeSimulationState; analyze_message, extract_hooks; select_salient_hooks (standpoint-driven); appraise; choose_response_move using attention budget; LLM render with length/depth limits.
+        inputs: User message, persona, LifeSimulationState
+        outputs: Persona reply (length/depth gated by attention)
+        files: [v2/conversation_engine.py]
+        status: complete
+        next_action: null
+
+  - id: FLOW_MODEL_INDICES
+    name: Flow model → pipeline (indices)
+    description: Drive update_indices from impingement × processing and routing. Spec INDICES_FLOW_MODEL.md Sections 1–10.
+    modules:
+      - step: 32
+        name: Parent/community processing context
+        description: Add relational field, narrative coherence, collective bonding, authority perception (for parents/caregivers) to recursion or inputs to update_indices.
+        inputs: Recursion/persona data
+        outputs: Processing context usable in flow computation
+        files: [v2/spec.py, v2/recursion_schema.py]
+        status: not_started
+        next_action: Define schema; populate from recursion or world/identity
+
+      - step: 33
+        name: Impingement and processing capacity
+        description: Implement impingement (world, events, structural pressure; optional timing/buffer). Implement processing capacity from parent/community context. Flow = impingement × (1 − processing).
+        inputs: World, events, structural pressure, processing context
+        outputs: Flow scalar (0–100)
+        files: [v2/spec.py]
+        status: not_started
+        next_action: Implement compute_impingement, compute_processing_capacity; replace or blend with current update_indices
+
+      - step: 34
+        name: Flow routing to DRTS, IAI, RMT, TT
+        description: Route flow to indices by type-dependent weights and blockage (e.g. compliance suppresses DRTS, redirects to IAI/RMT).
+        inputs: Flow scalar, Enneagram type, strategies
+        outputs: Index deltas (DRTS, IAI, RMT, TT)
+        files: [v2/spec.py]
+        status: not_started
+        next_action: Implement route_flow_to_indices; wire into update_indices
+
+      - step: 35
+        name: (Optional) Strata for absorption and DRTS
+        description: Track where flow is absorbed (household, community, hegemonic). DRTS by target (vs_household, vs_community, vs_hegemonic); anti-household + pro-hegemony → flight/IAI not DRTS. Residual values from rejected stratum.
+        inputs: Flow, alignment/target by stratum
+        outputs: Stratified absorption and DRTS
+        files: [v2/spec.py, v2/INDICES_FLOW_MODEL.md]
+        status: planned
+        next_action: After 32–34; add strata and DRTS logic if needed
+
+  - id: FUTURE
+    name: Future (GPT, UI, meta)
+    modules:
+      - step: 23
+        name: GPT persona dialogue / export
+        description: Persona sheet → GPT prompt; dialogue as persona; export to GPT memory.
+        inputs: Persona sheet, API config
+        outputs: Prompt template, conversation, exported context
+        files: []
+        status: planned
+        next_action: Build prompt template; optional reflection loop
+
+      - step: 24
+        name: Disruptive events DB
+        description: Major world/national/regional impactful events for re-inflection every few years.
+        inputs: Sourced or hand-built events DB
+        outputs: Events feed into sim at chosen years
+        files: []
+        status: planned
+        next_action: Design schema; source or build events; wire into sim
+
+      - step: 25
+        name: Progress tracker (this file)
+        description: Single v2 trajectory YAML; update regularly.
+        inputs: Changes to v2 pipeline and docs
+        outputs: trajectory_v2.yaml
+        files: [v2/trajectory_v2.yaml]
+        status: operational
+        next_action: Update last_updated and step statuses as work progresses

@@ -1,0 +1,345 @@
+# Country default labels for identity fallback
+# Used when EPR, Joshua Project, and Factbook all have no data for a country.
+# Each entry provides ethnicity, language, religion, and region for display.
+# Note: These are coarse defaults — the identity pipeline prefers
+# EPR for ethnicity, Joshua Project for religion/language, and Factbook
+# for demographic shares. This file is the last-resort label surface.
+
+# Fallback when country not in map (use empty strings so the gap is detectable)
+_fallback:
+  region: ""
+  ethnicity: ""
+  language: ""
+  religion: ""
+
+countries:
+  KOR:
+    region: "South Korea"
+    ethnicity: "Korean"
+    language: "Korean"
+    religion: "Buddhism/Christianity"
+  Korea:
+    region: "South Korea"
+    ethnicity: "Korean"
+    language: "Korean"
+    religion: "Buddhism/Christianity"
+  USA:
+    region: "United States"
+    ethnicity: "American"
+    language: "English"
+    religion: "Various"
+  US:
+    region: "United States"
+    ethnicity: "American"
+    language: "English"
+    religion: "Various"
+  BRA:
+    region: "Brazil"
+    ethnicity: "Brazilian"
+    language: "Portuguese"
+    religion: "Christianity"
+  DEU:
+    region: "Germany"
+    ethnicity: "German"
+    language: "German"
+    religion: "Christianity"
+  CHN:
+    region: "China"
+    ethnicity: "Chinese"
+    language: "Mandarin"
+    religion: "Buddhism/Folk"
+  IDN:
+    region: "Indonesia"
+    ethnicity: "Indonesian"
+    language: "Indonesian"
+    religion: "Islam"
+  IND:
+    region: "India"
+    ethnicity: "Indian"
+    language: "Hindi"
+    religion: "Hinduism"
+  JPN:
+    region: "Japan"
+    ethnicity: "Japanese"
+    language: "Japanese"
+    religion: "Buddhism/Shinto"
+  MEX:
+    region: "Mexico"
+    ethnicity: "Mexican"
+    language: "Spanish"
+    religion: "Christianity"
+  GBR:
+    region: "United Kingdom"
+    ethnicity: "British"
+    language: "English"
+    religion: "Christianity"
+  FRA:
+    region: "France"
+    ethnicity: "French"
+    language: "French"
+    religion: "Christianity"
+  VNM:
+    region: "Vietnam"
+    ethnicity: "Vietnamese"
+    language: "Vietnamese"
+    religion: "Buddhism/Folk"
+  THA:
+    region: "Thailand"
+    ethnicity: "Thai"
+    language: "Thai"
+    religion: "Buddhism"
+  PHL:
+    region: "Philippines"
+    ethnicity: "Filipino"
+    language: "Filipino"
+    religion: "Christianity"
+  ZAF:
+    region: "South Africa"
+    ethnicity: "South African"
+    language: "English"
+    religion: "Christianity"
+  TUR:
+    region: "Turkey"
+    ethnicity: "Turkish"
+    language: "Turkish"
+    religion: "Islam"
+  EGY:
+    region: "Egypt"
+    ethnicity: "Egyptian"
+    language: "Arabic"
+    religion: "Islam"
+  NGA:
+    region: "Nigeria"
+    ethnicity: "Nigerian"
+    language: "English"
+    religion: "Christianity/Islam"
+  KAZ:
+    region: "Kazakhstan"
+    ethnicity: "Kazakh"
+    language: "Russian"
+    religion: "Islam/Christianity"
+  ECU:
+    region: "Ecuador"
+    ethnicity: "Mestizo"
+    language: "Spanish"
+    religion: "Christianity"
+  COL:
+    region: "Colombia"
+    ethnicity: "Mestizo"
+    language: "Spanish"
+    religion: "Christianity"
+  PER:
+    region: "Peru"
+    ethnicity: "Mestizo"
+    language: "Spanish"
+    religion: "Christianity"
+  CHL:
+    region: "Chile"
+    ethnicity: "Chilean"
+    language: "Spanish"
+    religion: "Christianity"
+  ARG:
+    region: "Argentina"
+    ethnicity: "Argentine"
+    language: "Spanish"
+    religion: "Christianity"
+  VEN:
+    region: "Venezuela"
+    ethnicity: "Mestizo"
+    language: "Spanish"
+    religion: "Christianity"
+  BOL:
+    region: "Bolivia"
+    ethnicity: "Mestizo"
+    language: "Spanish"
+    religion: "Christianity"
+  GTM:
+    region: "Guatemala"
+    ethnicity: "Mestizo"
+    language: "Spanish"
+    religion: "Christianity"
+  CAN:
+    region: "Canada"
+    ethnicity: "Canadian"
+    language: "English"
+    religion: "Christianity"
+  AUS:
+    region: "Australia"
+    ethnicity: "Australian"
+    language: "English"
+    religion: "Christianity"
+  ESP:
+    region: "Spain"
+    ethnicity: "Spanish"
+    language: "Spanish"
+    religion: "Christianity"
+  ITA:
+    region: "Italy"
+    ethnicity: "Italian"
+    language: "Italian"
+    religion: "Christianity"
+  NLD:
+    region: "Netherlands"
+    ethnicity: "Dutch"
+    language: "Dutch"
+    religion: "Christianity"
+  POL:
+    region: "Poland"
+    ethnicity: "Polish"
+    language: "Polish"
+    religion: "Christianity"
+  ROU:
+    region: "Romania"
+    ethnicity: "Romanian"
+    language: "Romanian"
+    religion: "Christianity"
+  HUN:
+    region: "Hungary"
+    ethnicity: "Hungarian"
+    language: "Hungarian"
+    religion: "Christianity"
+  RUS:
+    region: "Russia"
+    ethnicity: "Russian"
+    language: "Russian"
+    religion: "Christianity"
+  UKR:
+    region: "Ukraine"
+    ethnicity: "Ukrainian"
+    language: "Ukrainian"
+    religion: "Christianity"
+  PAK:
+    region: "Pakistan"
+    ethnicity: "Punjabi"
+    language: "Urdu"
+    religion: "Islam"
+  BGD:
+    region: "Bangladesh"
+    ethnicity: "Bengali"
+    language: "Bengali"
+    religion: "Islam"
+  MAR:
+    region: "Morocco"
+    ethnicity: "Arab"
+    language: "Arabic"
+    religion: "Islam"
+  DZA:
+    region: "Algeria"
+    ethnicity: "Arab"
+    language: "Arabic"
+    religion: "Islam"
+  IRQ:
+    region: "Iraq"
+    ethnicity: "Arab"
+    language: "Arabic"
+    religion: "Islam"
+  SAU:
+    region: "Saudi Arabia"
+    ethnicity: "Arab"
+    language: "Arabic"
+    religion: "Islam"
+  IRN:
+    region: "Iran"
+    ethnicity: "Persian"
+    language: "Persian"
+    religion: "Islam"
+  MYS:
+    region: "Malaysia"
+    ethnicity: "Malay"
+    language: "Malay"
+    religion: "Islam"
+  SGP:
+    region: "Singapore"
+    ethnicity: "Chinese"
+    language: "English"
+    religion: "Buddhism/Christianity"
+  NZL:
+    region: "New Zealand"
+    ethnicity: "New Zealander"
+    language: "English"
+    religion: "Christianity"
+  AND:
+    region: "Andorra"
+    ethnicity: "Catalan"
+    language: "Catalan"
+    religion: "Christianity"
+  LUX:
+    region: "Luxembourg"
+    ethnicity: "Luxembourger"
+    language: "Luxembourgish"
+    religion: "Christianity"
+  MLT:
+    region: "Malta"
+    ethnicity: "Maltese"
+    language: "Maltese"
+    religion: "Christianity"
+  CYP:
+    region: "Cyprus"
+    ethnicity: "Greek Cypriot"
+    language: "Greek"
+    religion: "Christianity"
+  EST:
+    region: "Estonia"
+    ethnicity: "Estonian"
+    language: "Estonian"
+    religion: "Christianity"
+  LVA:
+    region: "Latvia"
+    ethnicity: "Latvian"
+    language: "Latvian"
+    religion: "Christianity"
+  LTU:
+    region: "Lithuania"
+    ethnicity: "Lithuanian"
+    language: "Lithuanian"
+    religion: "Christianity"
+  SVN:
+    region: "Slovenia"
+    ethnicity: "Slovene"
+    language: "Slovenian"
+    religion: "Christianity"
+  SVK:
+    region: "Slovakia"
+    ethnicity: "Slovak"
+    language: "Slovak"
+    religion: "Christianity"
+  HRV:
+    region: "Croatia"
+    ethnicity: "Croat"
+    language: "Croatian"
+    religion: "Christianity"
+  BIH:
+    region: "Bosnia and Herzegovina"
+    ethnicity: "Bosniak"
+    language: "Bosnian"
+    religion: "Islam/Christianity"
+  SRB:
+    region: "Serbia"
+    ethnicity: "Serb"
+    language: "Serbian"
+    religion: "Christianity"
+  MDA:
+    region: "Moldova"
+    ethnicity: "Moldovan"
+    language: "Romanian"
+    religion: "Christianity"
+  MDV:
+    region: "Maldives"
+    ethnicity: "Maldivian"
+    language: "Dhivehi"
+    religion: "Islam"
+  SUR:
+    region: "Suriname"
+    ethnicity: "Surinamese"
+    language: "Dutch"
+    religion: "Christianity/Hinduism/Islam"
+  PRI:
+    region: "Puerto Rico"
+    ethnicity: "Puerto Rican"
+    language: "Spanish"
+    religion: "Christianity"
+  PR:
+    region: "Puerto Rico"
+    ethnicity: "Puerto Rican"
+    language: "Spanish"
+    religion: "Christianity"

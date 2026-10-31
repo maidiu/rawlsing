@@ -1,0 +1,26 @@
+# Riso-Hudson Health Levels (from ENNEAGRAM_HEALTH_LEVELS.md)
+# Maps health_level (1-99) to Level 1-9; provides Key Terms per type×level
+
+# Health bands: [lo, hi] -> level (1=healthy liberation, 9=pathological)
+health_bands:
+  - { lo: 85, hi: 99, level: 1 }
+  - { lo: 75, hi: 84, level: 2 }
+  - { lo: 65, hi: 74, level: 3 }
+  - { lo: 55, hi: 64, level: 4 }
+  - { lo: 45, hi: 54, level: 5 }
+  - { lo: 35, hi: 44, level: 6 }
+  - { lo: 25, hi: 34, level: 7 }
+  - { lo: 15, hi: 24, level: 8 }
+  - { lo: 1, hi: 14, level: 9 }
+
+# Key terms per type per level (Riso-Hudson)
+key_terms:
+  1: { 1: "Accepting, Wise", 2: "Evaluating, Reasonable", 3: "Principled, Responsible", 4: "Obligated, Striving", 5: "Self-Controlled, Orderly", 6: "Judgmental, Critical", 7: "Self-Righteous, Inflexible", 8: "Obsessive, Contradictory", 9: "Condemnatory, Punitive" }
+  2: { 1: "Self-Nurturing, Unconditionally Loving", 2: "Empathetic, Caring", 3: "Principled, Responsible", 4: "Well-Intentioned, People-Pleasing", 5: "Possessive, Intrusive", 6: "Self-Important, Overbearing", 7: "Self-Justifying, Manipulative", 8: "Entitled, Coercive", 9: "Feel Victimized, Burdensome" }
+  3: { 1: "Inner-Directed, Authentic", 2: "Adaptable, Admirable", 3: "Goal-Oriented, Self-Improving", 4: "Success-Oriented, Performing", 5: "Image-Conscious, Expedient", 6: "Self-Promoting, Grandiose", 7: "Unprincipled, Deceptive", 8: "Duplicitous, Opportunistic", 9: "Monomaniacal, Relentless" }
+  4: { 1: "Life-Embracing, Life-Enhancing", 2: "Introspective, Sensitive", 3: "Self-Revealing, Creative", 4: "Romanticizing, Individualistic", 5: "Self-Absorbed, Temperamental", 6: "Self-Indulgent, Decadent", 7: "Hateful, Alienated", 8: "Self-Rejecting, Clinically Depressed", 9: "Despairing, Life-Denying" }
+  5: { 1: "Participating, Visionary", 2: "Observant, Perceptive", 3: "Focused, Innovative", 4: "Conceptualizing, Preparing", 5: "Detached, Preoccupied", 6: "Extreme, Provocative", 7: "Nihilistic, Eccentric", 8: "Horrified, Delirious", 9: "Seeking Oblivion, Self-Annihilating" }
+  6: { 1: "Self-Reliant, Courageous", 2: "Engaging, Reliable", 3: "Committed, Cooperative", 4: "Dutiful, Loyal", 5: "Ambivalent, Defensive", 6: "Authoritarian, Blaming", 7: "Panicky, Unreliable", 8: "Paranoid, Lashing Out", 9: "Self-Abasing, Self-Destructive" }
+  7: { 1: "Joyful, Satisfied", 2: "Anticipating, Enthusiastic", 3: "Realistic, Productive", 4: "Acquisitive, Consuming", 5: "Distracted, Scattered", 6: "Self-Centered, Excessive", 7: "Insatiable, Escaping", 8: "Manic (Depressive), Reckless", 9: "Overwhelmed, Paralyzed" }
+  8: { 1: "Self-Surrendering, Heroic", 2: "Self-Reliant, Strong", 3: "Self-Confident, Leading", 4: "Pragmatic, Enterprising", 5: "Self-Glorifying, Dominating", 6: "Confrontational, Intimidating", 7: "Ruthless, Dictatorial", 8: "Megalomaniacal, Terrorizing", 9: "Sociopathic, Destructive" }
+  9: { 1: "Self-Possessed, Indomitable", 2: "Unself-conscious, Peaceful", 3: "Unselfish, Comforting", 4: "Self-Effacing, Agreeable", 5: "Disengaged, Complacent", 6: "Resigned, Appeasing", 7: "Repressed, Neglectful", 8: "Dissociating, Disoriented", 9: "Self-Abandoning, Disappearing" }

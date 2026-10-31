@@ -1,0 +1,285 @@
+# Driver Age Introduction Schema
+# Defines which drivers are active at which ages
+# Drivers are introduced gradually as the persona develops
+
+# Age bands (inclusive start, exclusive end)
+age_bands:
+  birth: [0, 0]  # Age 0 only
+  early_childhood: [0, 7]  # Ages 0-6
+  school_age: [6, 12]  # Ages 6-11
+  adolescence: [12, 18]  # Ages 12-17
+  young_adult: [18, 30]  # Ages 18-29
+  adulthood: [30, 1000]  # Ages 30+
+
+# Drivers by age introduction
+# Format: driver_name: [start_age, end_age] or [start_age] (active until end)
+drivers:
+  # BIRTH (Age 0) - Core cultural-psychic field
+  # These shape the initial state and are most fundamental
+  trustEcology:
+    active_from: 0
+    description: "Trust/distrust baseline - fundamental to safety and belonging"
+    maps_to: "trust_vs_distrust"
+  
+  trustEcologyExtended:
+    active_from: 0
+    description: "Extended trust ecology (maps to trust_vs_distrust)"
+    maps_to: "trust_vs_distrust"
+  
+  ritualDensity:
+    active_from: 0
+    description: "Ritual centrality - affects transcendence and coherence"
+    maps_to: "ritual_centrality"
+  
+  hierarchy:
+    active_from: 0
+    description: "Authority structure - affects safety, compliance, autonomy"
+    maps_to: "authoritarian_vs_egalitarian"
+  
+  authorityStyle:
+    active_from: 0
+    description: "Authority style (maps to authoritarian_vs_egalitarian)"
+    maps_to: "authoritarian_vs_egalitarian"
+  
+  collectivism:
+    active_from: 0
+    description: "Individual vs group orientation - affects belonging"
+    maps_to: "individualism_vs_collectivism"
+    inverse: true
+  
+  fatalism:
+    active_from: 0
+    description: "Agency vs fate - affects autonomy and competence"
+    maps_to: "fatalism_vs_agency"
+    inverse: true
+  
+  existentialLocus:
+    active_from: 0
+    description: "Existential locus (maps to fatalism_vs_agency)"
+    maps_to: "fatalism_vs_agency"
+    inverse: true
+  
+  collectiveAffectTone:
+    active_from: 0
+    description: "Emotional atmosphere - affects warmth, belonging, safety"
+    maps_to: "collective_affect_tone"
+  
+  materialSecurity:
+    active_from: 0
+    description: "Material conditions - affects safety, play/pleasure"
+    maps_to: "material_security"
+  
+  tightness:
+    active_from: 0
+    description: "Cultural tightness/looseness - affects safety, compliance, autonomy"
+    maps_to: "tightness"
+  
+  politicalStability:
+    active_from: 0
+    description: "Political conditions - affects safety, coherence"
+    maps_to: "political_stability"
+  
+  # EARLY CHILDHOOD (Ages 0-7) - Imprint period
+  # These shape lasting psychological patterns
+  intergenerationalReciprocity:
+    active_from: 0
+    description: "Family obligations - affects belonging, compliance, warmth"
+    maps_to: "intergenerational_reciprocity"
+  
+  shameAesthetics:
+    active_from: 0
+    description: "Shame culture - affects recognition, belonging (Type 2,3,4 patterns)"
+    maps_to: "shame_aesthetics"
+  
+  emotionalLiteracy:
+    active_from: 0
+    description: "Emotional expression - affects warmth, belonging"
+    maps_to: "emotional_literacy"
+  
+  conflictExpression:
+    active_from: 0
+    description: "Conflict handling - affects safety, aggression strategies"
+    maps_to: "conflict_expression"
+  
+  hospitality:
+    active_from: 0
+    description: "Welcoming culture - affects belonging, warmth"
+    maps_to: "hospitality"
+  
+  playfulness:
+    active_from: 0
+    description: "Play culture - affects belonging, warmth, autonomy, play/pleasure"
+    maps_to: "playfulness"
+  
+  moralGrammar:
+    active_from: 0
+    description: "Moral structure - affects coherence, belonging, compliance"
+    maps_to: "moral_grammar"
+  
+  genderSystemCoherence:
+    active_from: 0
+    description: "Gender role coherence - affects belonging, autonomy"
+    maps_to: "gender_system_coherence"
+  
+  economicInequality:
+    active_from: 0
+    description: "Material inequality - affects safety, belonging, recognition"
+    maps_to: "economic_inequality"
+  
+  # SCHOOL AGE (Ages 6-12) - Cognitive development
+  # These become relevant as children enter formal education
+  education:
+    active_from: 6
+    description: "Educational values - affects competence, achievement"
+    maps_to: "education"
+  
+  narrativeCoherence:
+    active_from: 6
+    description: "Storytelling culture - affects coherence, meaning"
+    maps_to: "narrative_coherence"
+  
+  humorOrientation:
+    active_from: 6
+    description: "Humor culture - affects belonging, warmth"
+    maps_to: "humor_orientation"
+  
+  culturalPlasticity:
+    active_from: 6
+    description: "Rigidity/flexibility - affects autonomy, compliance"
+    maps_to: "cultural_plasticity"
+  
+  thresholdManagement:
+    active_from: 6
+    description: "Boundary management - affects safety, compliance"
+    maps_to: "threshold_management"
+  
+  secularization:
+    active_from: 6
+    description: "Religious/secular balance - affects transcendence, ritual"
+    maps_to: "secularization"
+  
+  # ADOLESCENCE (Ages 12-18) - Identity formation
+  # These become relevant as abstract thinking develops
+  aestheticOrientation:
+    active_from: 12
+    description: "Art/beauty values - affects Type 4 patterns, creative expression"
+    maps_to: "aesthetic_orientation"
+  
+  genderEquality:
+    active_from: 12
+    description: "Gender norms - affects belonging, autonomy"
+    maps_to: "gender_equality"
+  
+  moralElasticity:
+    active_from: 12
+    description: "Moral flexibility - affects coherence, compliance"
+    maps_to: "moral_elasticity"
+  
+  symbolicSubstitution:
+    active_from: 12
+    description: "Symbolic thinking - affects coherence, meaning"
+    maps_to: "symbolic_substitution"
+  
+  temporalOrientation:
+    active_from: 12
+    description: "Time orientation - affects coherence, planning"
+    maps_to: "temporal_orientation"
+  
+  postColonialIdentity:
+    active_from: 12
+    description: "Historical identity - affects belonging, coherence"
+    maps_to: "post_colonial_identity"
+  
+  # YOUNG ADULT (Ages 18-30) - Adult responsibilities
+  # These become relevant as personas take on adult roles
+  timePressure:
+    active_from: 18
+    description: "Time pressure - affects stress, competence"
+    maps_to: "time_pressure"
+  
+  environmentalRelation:
+    active_from: 18
+    description: "Nature/environment relationship - affects transcendence, coherence"
+    maps_to: "environmental_relation"
+  
+  eschatologicalMood:
+    active_from: 18
+    description: "End-times beliefs - affects transcendence, coherence"
+    maps_to: "eschatological_mood"
+  
+  institutionalMemory:
+    active_from: 18
+    description: "Historical memory - affects coherence, belonging"
+    maps_to: "institutional_memory"
+  
+  # ADULTHOOD (Ages 30+) - Full cultural context
+  # These become relevant as personas process complex historical/cultural patterns
+  memoryOfCatastrophe:
+    active_from: 30
+    description: "Trauma memory - affects safety, coherence, meaning"
+    maps_to: "memory_of_catastrophe"
+
+# Driver groups by developmental stage
+stages:
+  birth:
+    drivers:
+      - trustEcology
+      - trustEcologyExtended
+      - ritualDensity
+      - hierarchy
+      - authorityStyle
+      - collectivism
+      - fatalism
+      - existentialLocus
+      - collectiveAffectTone
+      - materialSecurity
+      - tightness
+      - politicalStability
+    description: "Core cultural-psychic field that shapes initial state"
+  
+  early_childhood:
+    drivers:
+      - intergenerationalReciprocity
+      - shameAesthetics
+      - emotionalLiteracy
+      - conflictExpression
+      - hospitality
+      - playfulness
+      - moralGrammar
+      - genderSystemCoherence
+      - economicInequality
+    description: "Imprint period - shapes lasting psychological patterns"
+  
+  school_age:
+    drivers:
+      - education
+      - narrativeCoherence
+      - humorOrientation
+      - culturalPlasticity
+      - thresholdManagement
+      - secularization
+    description: "Cognitive development, education, social learning"
+  
+  adolescence:
+    drivers:
+      - aestheticOrientation
+      - genderEquality
+      - moralElasticity
+      - symbolicSubstitution
+      - temporalOrientation
+      - postColonialIdentity
+    description: "Identity formation, abstract thinking, historical awareness"
+  
+  young_adult:
+    drivers:
+      - timePressure
+      - environmentalRelation
+      - eschatologicalMood
+      - institutionalMemory
+    description: "Adult responsibilities, abstract concerns"
+  
+  adulthood:
+    drivers:
+      - memoryOfCatastrophe
+    description: "Full cultural context - complex historical/cultural patterns"
+

@@ -1,0 +1,373 @@
+# Life Events Configuration (Rawlsing v4.1)
+# Defines probabilities and types of life events that occur during simulation
+
+events:
+  migration:
+    description: "Family or individual migration (rural→urban, international, displacement)"
+    types:
+      - type: "rural_to_urban"
+        base_probability: 0.05  # Per year, conditional on conditions
+        conditions:
+          - "identity.urbanicity == 'rural'"
+          - "world_slice.migration_data.rural_to_urban_rate > 0.1"
+        age_factors:
+          "0-3": 1.0  # Migrate with family
+          "3-7": 1.0
+          "7-11": 0.8
+          "11-14": 0.6
+          "14-17": 0.4
+          "17+": 0.3  # Less likely as adult (unless forced)
+        effects:
+          needs:
+            rootedness: -20
+            belonging_group: -15
+            safety: -10
+          strategies:
+            withdrawal_avoidance: 10
+            piety_ideology: 5  # Religion provides continuity
+      
+      - type: "international_migration"
+        base_probability: 0.02
+        conditions:
+          - "world_slice.migration_data.international_migration_prob > 0.15"
+          - "world_slice.conflict_intensity > 60 OR world_slice.unemployment_level > 70 OR world_slice.regime_instability > 50"
+        effects:
+          needs:
+            rootedness: -30
+            belonging_group: -20
+            coherence_meaning: -15
+            recognition_status: -10
+          strategies:
+            withdrawal_avoidance: 15
+            compliance_obedience: 10  # Need to adapt
+      
+      - type: "conflict_displacement"
+        base_probability: 0.03
+        conditions:
+          - "world_slice.migration_data.conflict_displacement == true"
+          - "world_slice.conflict_intensity > 70 OR world_slice.regime_instability > 60"
+        effects:
+          needs:
+            safety: -30
+            rootedness: -25
+            belonging_group: -20
+          strategies:
+            dissociation_numbing: 15
+            withdrawal_avoidance: 10
+
+  loss:
+    description: "Significant losses (death of family member, divorce, job loss, etc.)"
+    types:
+      - type: "death_of_caregiver"
+        base_probability: 0.02
+        conditions:
+          - "identity.age >= 0"
+        age_factors:
+          "0-3": 0.5  # Less aware
+          "3-7": 1.0
+          "7-11": 1.2
+          "11-14": 1.5  # More aware, more impact
+          "14+": 1.0
+        effects:
+          needs:
+            warmth_bonding: -30
+            safety: -20
+            coherence_meaning: -15
+          strategies:
+            withdrawal_avoidance: 15
+            dissociation_numbing: 10
+            caretaking_rescue: 5  # May take on caregiver role
+      
+      - type: "death_of_sibling"
+        base_probability: 0.015
+        conditions:
+          - "identity.age >= 3"
+        effects:
+          needs:
+            belonging_group: -20
+            warmth_bonding: -15
+          strategies:
+            withdrawal_avoidance: 10
+      
+      - type: "parental_divorce"
+        base_probability: 0.03
+        conditions:
+          - "identity.age >= 0"
+          - "world_slice.gdp_per_capita > 40"  # More common in higher-income contexts
+        age_factors:
+          "0-7": 1.5  # More impact when younger
+          "7-14": 1.2
+          "14+": 1.0
+        effects:
+          needs:
+            warmth_bonding: -20
+            safety: -15
+            coherence_meaning: -10
+          strategies:
+            people_pleasing: 10
+            withdrawal_avoidance: 8
+      
+      - type: "job_loss_caregiver"
+        base_probability: 0.04
+        conditions:
+          - "identity.age >= 0"
+          - "world_slice.unemployment_level > 50"
+        effects:
+          needs:
+            bodily_comfort: -25
+            safety: -20
+            recognition_status: -15  # Parent's status affects child
+          strategies:
+            compliance_obedience: 10  # Try harder
+            withdrawal_avoidance: 8
+
+  illness:
+    description: "Serious illness (self or family member)"
+    types:
+      - type: "serious_illness_self"
+        base_probability: 0.02
+        conditions:
+          - "identity.age >= 0"
+        age_factors:
+          "0-3": 1.5  # More vulnerable
+          "3-7": 1.2
+          "7+": 1.0
+        effects:
+          needs:
+            bodily_comfort: -30
+            competence_effectiveness: -20
+          strategies:
+            dissociation_numbing: 10
+            fantasy_immersion: 8
+      
+      - type: "serious_illness_caregiver"
+        base_probability: 0.015
+        conditions:
+          - "identity.age >= 0"
+        effects:
+          needs:
+            warmth_bonding: -20
+            safety: -15
+          strategies:
+            caretaking_rescue: 15  # Child takes on care role
+            withdrawal_avoidance: 10
+
+  conversion:
+    description: "Religious conversion or deconversion"
+    types:
+      - type: "religious_conversion"
+        base_probability: 0.01
+        conditions:
+          - "identity.age >= 11"
+          - "world_slice.propaganda_saturation > 50 OR relations.peer_pressure > 50"
+        age_factors:
+          "11-14": 1.5  # Adolescence: identity formation
+          "14-17": 1.2
+          "17+": 1.0
+        effects:
+          needs:
+            belonging_group: 20
+            coherence_meaning: 15
+            transcendence_sacred: 20
+          strategies:
+            piety_ideology: 25
+            compliance_obedience: 10
+      
+      - type: "religious_deconversion"
+        base_probability: 0.005
+        conditions:
+          - "identity.religiosity_level > 60"
+          - "indices.permeability_index > 70"
+          - "relations.norm_conflicts includes 'religious'"
+        age_factors:
+          "17+": 1.5  # More common in adulthood
+        effects:
+          needs:
+            coherence_meaning: -20
+            belonging_group: -15
+          strategies:
+            withdrawal_avoidance: 15
+            fantasy_immersion: 10
+
+  organizing:
+    description: "Joining political/social movements, gangs, or organized groups"
+    types:
+      - type: "join_gang"
+        base_probability: 0.02
+        conditions:
+          - "identity.age >= 11"
+          - "world_slice.conflict_intensity > 60"
+          - "needs.belonging_group < 40"
+          - "needs.recognition_status < 40"
+        age_factors:
+          "11-14": 1.5
+          "14-17": 1.8
+          "17+": 1.0
+        effects:
+          needs:
+            belonging_group: 25
+            recognition_status: 20
+            safety: -15  # More dangerous
+          strategies:
+            aggression_outward: 20
+            risk_seeking_thrill: 15
+            compliance_obedience: 10  # To gang
+      
+      - type: "join_political_movement"
+        base_probability: 0.01
+        conditions:
+          - "identity.age >= 14"
+          - "indices.drts > 60"
+          - "civic_soul.perceived_justice_order < 40"
+        effects:
+          needs:
+            belonging_group: 20
+            autonomy_agency: 15
+            coherence_meaning: 15
+          strategies:
+            activism_justice: 25
+            aggression_outward: 10
+      
+      - type: "join_religious_group"
+        base_probability: 0.015
+        conditions:
+          - "identity.age >= 11"
+          - "identity.religiosity_level > 50"
+          - "needs.belonging_group < 50"
+        effects:
+          needs:
+            belonging_group: 20
+            coherence_meaning: 15
+            transcendence_sacred: 20
+          strategies:
+            piety_ideology: 20
+            compliance_obedience: 10
+
+  achievement:
+    description: "Positive achievement events"
+    types:
+      - type: "educational_achievement"
+        base_probability: 0.03
+        conditions:
+          - "identity.education_level >= 'primary'"
+          - "needs.competence_effectiveness > 40"
+        effects:
+          needs:
+            recognition_status: 20
+            competence_effectiveness: 15
+          strategies:
+            achievement_striving: 10
+            perfectionism_control: 5
+      
+      - type: "job_success"
+        base_probability: 0.02
+        conditions:
+          - "identity.age >= 18"
+          - "world_slice.unemployment_level < 60"
+        effects:
+          needs:
+            recognition_status: 15
+            competence_effectiveness: 15
+            autonomy_agency: 10
+          strategies:
+            achievement_striving: 10
+
+  trauma:
+    description: "Traumatic events (violence, abuse, etc.)"
+    types:
+      - type: "witness_violence"
+        base_probability: 0.01
+        conditions:
+          - "world_slice.conflict_intensity > 60"
+        age_factors:
+          "0-7": 1.5  # More impact when younger
+          "7-14": 1.2
+          "14+": 1.0
+        effects:
+          needs:
+            safety: -30
+            coherence_meaning: -20
+          strategies:
+            dissociation_numbing: 20
+            withdrawal_avoidance: 15
+            aggression_outward: 10  # Or aggression
+          indices:
+            recursive_madness_threshold: 15
+            transgression_threshold: -10
+      
+      - type: "direct_violence"
+        base_probability: 0.005
+        conditions:
+          - "world_slice.conflict_intensity > 70 OR world_slice.state_repression > 70"
+        effects:
+          needs:
+            safety: -40
+            bodily_comfort: -30
+            coherence_meaning: -25
+          strategies:
+            dissociation_numbing: 25
+            withdrawal_avoidance: 20
+            aggression_outward: 15  # Fight response
+          indices:
+            recursive_madness_threshold: 20
+            transgression_threshold: -15
+
+# Event probability modifiers
+probability_modifiers:
+  # Class affects event probabilities
+  class_modifiers:
+    underclass:
+      migration: 1.5
+      loss: 1.3
+      illness: 1.4
+      trauma: 1.5
+      achievement: 0.7
+    working:
+      migration: 1.2
+      loss: 1.1
+      illness: 1.2
+      trauma: 1.2
+      achievement: 0.9
+    middle:
+      migration: 1.0
+      loss: 1.0
+      illness: 1.0
+      trauma: 1.0
+      achievement: 1.0
+    upper_middle:
+      migration: 0.8
+      loss: 0.9
+      illness: 0.9
+      trauma: 0.8
+      achievement: 1.2
+    elite:
+      migration: 0.6
+      loss: 0.8
+      illness: 0.8
+      trauma: 0.6
+      achievement: 1.5
+  
+  # Conflict increases certain events
+  conflict_modifiers:
+    migration: 2.0  # Double migration probability in conflict
+    trauma: 3.0  # Triple trauma probability
+    loss: 1.5
+    organizing: 1.5  # More likely to join groups
+
+# Event sequencing (some events make others more likely)
+sequencing:
+  # Migration → loss (leave family behind)
+  migration_followed_by_loss:
+    probability_increase: 0.1
+    time_window_years: 2
+  
+  # Loss → conversion (seek meaning)
+  loss_followed_by_conversion:
+    probability_increase: 0.15
+    time_window_years: 3
+  
+  # Trauma → dissociation
+  trauma_followed_by_dissociation:
+    probability_increase: 0.2
+    time_window_years: 1
+

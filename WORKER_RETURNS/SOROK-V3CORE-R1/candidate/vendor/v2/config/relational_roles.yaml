@@ -1,0 +1,420 @@
+# Relational Roles Configuration (Rawlsing v4.1)
+# Defines which relational roles appear at which ages and how to sample them
+
+relational_roles:
+  primary_caregivers:
+    description: "Primary caregivers present at birth and early childhood"
+    default:
+      roles:
+        - role: "mother"
+          probability: 0.85
+          conditions: []
+        - role: "father"
+          probability: 0.70
+          conditions: []
+        - role: "grandmother"
+          probability: 0.30
+          conditions:
+            - "identity.class_origin == 'underclass' OR identity.class_origin == 'working'"
+            - "identity.urbanicity == 'rural'"
+    
+    high_migration:
+      roles:
+        - role: "mother"
+          probability: 0.90
+        - role: "grandmother"
+          probability: 0.60
+        - role: "aunt_as_mother"
+          probability: 0.40
+      conditions:
+        - "world_slice.migration_data.international_migration_prob > 0.3"
+    
+    war_or_prison:
+      roles:
+        - role: "grandmother"
+          probability: 0.80
+        - role: "older_sibling"
+          probability: 0.50
+        - role: "aunt_as_mother"
+          probability: 0.60
+      conditions:
+        - "world_slice.conflict_intensity > 70"
+        - "world_slice.state_repression > 70"
+    
+    single_parent:
+      roles:
+        - role: "mother"
+          probability: 0.95
+        - role: "grandmother"
+          probability: 0.50
+      conditions:
+        - "identity.class_origin == 'underclass'"
+        - "world_slice.unemployment_level > 60"
+
+  secondary_caregivers:
+    description: "Secondary caregivers who may be present"
+    roles:
+      - role: "stepfather"
+        probability: 0.15
+        conditions:
+          - "single_parent_context"
+      - role: "uncle"
+        probability: 0.25
+        conditions:
+          - "extended_family_context"
+      - role: "older_cousin"
+        probability: 0.20
+        conditions:
+          - "extended_family_context"
+          - "identity.age >= 3"
+
+  siblings:
+    description: "Sibling relationships"
+    roles:
+      - role: "older_brother"
+        probability: 0.30
+        conditions:
+          - "identity.age >= 0"
+      - role: "younger_brother"
+        probability: 0.25
+        conditions:
+          - "identity.age >= 3"
+      - role: "older_sister"
+        probability: 0.30
+        conditions:
+          - "identity.age >= 0"
+      - role: "younger_sister"
+        probability: 0.25
+        conditions:
+          - "identity.age >= 3"
+    
+    sampling_rules:
+      min_siblings: 0
+      max_siblings: 6
+      average_by_class:
+        underclass: 3.5
+        working: 2.5
+        lower_middle: 2.0
+        middle: 1.5
+        upper_middle: 1.2
+        elite: 1.0
+
+  peers:
+    description: "Peer relationships that emerge with age"
+    roles:
+      - role: "close_friend"
+        probability: 0.60
+        conditions:
+          - "identity.age >= 3"
+        age_bands:
+          "3-7": 0.40
+          "7-11": 0.70
+          "11-14": 0.80
+          "14-17": 0.90
+          "17+": 0.85
+      
+      - role: "bully"
+        probability: 0.20
+        conditions:
+          - "identity.age >= 7"
+          - "world_slice.conflict_intensity > 40"
+        age_bands:
+          "7-11": 0.25
+          "11-14": 0.30
+          "14-17": 0.20
+          "17+": 0.10
+      
+      - role: "peer_leader"
+        probability: 0.15
+        conditions:
+          - "identity.age >= 11"
+        age_bands:
+          "11-14": 0.20
+          "14-17": 0.25
+          "17+": 0.15
+      
+      - role: "classmate"
+        probability: 0.50
+        conditions:
+          - "identity.education_level >= 'primary'"
+        age_bands:
+          "7-11": 0.60
+          "11-14": 0.70
+          "14-17": 0.50
+          "17+": 0.30
+
+  institutions:
+    school:
+      description: "School-related roles"
+      roles:
+        - role: "homeroom_teacher"
+          probability: 0.90
+          conditions:
+            - "identity.education_level >= 'primary'"
+          age_bands:
+            "7-11": 0.95
+            "11-14": 0.90
+            "14-17": 0.70
+            "17+": 0.30
+        
+        - role: "principal"
+          probability: 0.30
+          conditions:
+            - "identity.education_level >= 'primary'"
+          age_bands:
+            "7-11": 0.20
+            "11-14": 0.40
+            "14-17": 0.30
+            "17+": 0.10
+        
+        - role: "coach"
+          probability: 0.25
+          conditions:
+            - "identity.education_level >= 'primary'"
+            - "identity.gender == 'male'"
+          age_bands:
+            "11-14": 0.30
+            "14-17": 0.40
+            "17+": 0.20
+    
+    religious:
+      description: "Religious authority figures"
+      roles:
+        - role: "imam"
+          probability: 0.40
+          conditions:
+            - "identity.current_religion contains 'Muslim' OR identity.current_religion contains 'Islam'"
+            - "identity.religiosity_level > 40"
+        
+        - role: "pastor"
+          probability: 0.50
+          conditions:
+            - "identity.current_religion contains 'Christian'"
+            - "identity.religiosity_level > 40"
+        
+        - role: "priest"
+          probability: 0.45
+          conditions:
+            - "identity.current_religion == 'Catholic'"
+            - "identity.religiosity_level > 40"
+        
+        - role: "youth_pastor"
+          probability: 0.30
+          conditions:
+            - "identity.current_religion contains 'Christian'"
+            - "identity.religiosity_level > 50"
+            - "identity.age >= 11 AND identity.age <= 24"
+    
+    state:
+      description: "State agents (police, soldiers, bureaucrats)"
+      roles:
+        - role: "police_officer"
+          probability: 0.40
+          conditions:
+            - "world_slice.state_repression > 30"
+            - "identity.minority_status == 'minoritized'"
+          age_bands:
+            "11-14": 0.30
+            "14-17": 0.50
+            "17+": 0.60
+        
+        - role: "soldier"
+          probability: 0.25
+          conditions:
+            - "world_slice.conflict_intensity > 50"
+          age_bands:
+            "14-17": 0.20
+            "17+": 0.30
+        
+        - role: "border_guard"
+          probability: 0.15
+          conditions:
+            - "world_slice.migration_data.international_migration_prob > 0.2"
+          age_bands:
+            "17+": 0.25
+        
+        - role: "bureaucrat"
+          probability: 0.20
+          conditions:
+            - "identity.age >= 18"
+          age_bands:
+            "17+": 0.30
+    
+    labor:
+      description: "Work-related roles"
+      roles:
+        - role: "factory_boss"
+          probability: 0.25
+          conditions:
+            - "identity.age >= 16"
+            - "identity.current_class == 'working'"
+        
+        - role: "foreman"
+          probability: 0.30
+          conditions:
+            - "identity.age >= 16"
+            - "identity.current_class == 'working'"
+        
+        - role: "union_organizer"
+          probability: 0.15
+          conditions:
+            - "identity.age >= 18"
+            - "identity.current_class == 'working'"
+            - "indices.drts > 50"
+    
+    ngo:
+      description: "NGO and social service roles"
+      roles:
+        - role: "social_worker"
+          probability: 0.20
+          conditions:
+            - "world_slice.welfare_support > 30"
+            - "identity.class_origin == 'underclass'"
+        
+        - role: "ngo_volunteer"
+          probability: 0.15
+          conditions:
+            - "world_slice.welfare_support > 40"
+            - "identity.age >= 14"
+
+  media_figures:
+    description: "Media figures that influence the persona"
+    roles:
+      - role: "pop_star"
+        probability: 0.40
+        conditions:
+          - "world_slice.media_saturation > 30"
+          - "identity.age >= 7"
+        age_bands:
+          "7-11": 0.30
+          "11-14": 0.60
+          "14-17": 0.70
+          "17+": 0.40
+      
+      - role: "news_anchor"
+        probability: 0.30
+        conditions:
+          - "world_slice.media_saturation > 40"
+          - "identity.age >= 11"
+        age_bands:
+          "11-14": 0.20
+          "14-17": 0.40
+          "17+": 0.50
+      
+      - role: "influencer"
+        probability: 0.25
+        conditions:
+          - "world_slice.media_saturation > 60"  # Internet/social media
+          - "identity.age >= 14"
+        age_bands:
+          "14-17": 0.30
+          "17+": 0.40
+
+# Role attribute sampling rules
+attribute_rules:
+  warmth:
+    base_range: [30, 70]
+    modifiers:
+      primary_caregiver:
+        base_range: [40, 80]
+        class_penalty:
+          underclass: -10
+          working: -5
+          middle: 0
+          upper_middle: 5
+          elite: 10
+      peer:
+        base_range: [20, 60]
+        age_factor: 0.1  # Older peers slightly warmer
+      institution:
+        base_range: [10, 40]
+        type_modifiers:
+          religious: +20
+          school: +10
+          state: -20
+  
+  harshness:
+    base_range: [0, 30]
+    modifiers:
+      primary_caregiver:
+        base_range: [10, 50]
+        stress_factors:
+          unemployment: +15
+          conflict: +20
+          migration: +10
+      institution:
+        base_range: [20, 60]
+        type_modifiers:
+          state: +30
+          school: +20
+          religious: +10
+  
+  authority:
+    base_range: [30, 70]
+    modifiers:
+      primary_caregiver:
+        base_range: [50, 90]
+        gender_modifiers:
+          male: +10
+          female: -5
+      institution:
+        base_range: [60, 100]
+        type_modifiers:
+          state: 100
+          religious: 80
+          school: 70
+  
+  reliability:
+    base_range: [40, 80]
+    modifiers:
+      primary_caregiver:
+        base_range: [50, 90]
+        stress_penalty:
+          unemployment: -15
+          conflict: -20
+          migration: -10
+      institution:
+        base_range: [30, 70]
+        type_modifiers:
+          state: -20
+          religious: +10
+          school: +5
+
+# Alignment field sampling
+alignment_rules:
+  # Alignment values indicate how much a node aligns with different "orders"
+  orders:
+    - "religious"
+    - "state"
+    - "school"
+    - "street"
+    - "family"
+    - "peer_culture"
+  
+  sampling:
+    primary_caregiver:
+      family: [80, 100]
+      religious: [0, 100]  # Based on identity.religiosity_level
+      state: [0, 60]
+      school: [20, 80]
+    
+    institution:
+      religious:
+        religious: [90, 100]
+        state: [0, 50]
+        school: [0, 40]
+      state:
+        state: [90, 100]
+        religious: [0, 70]
+        school: [0, 50]
+      school:
+        school: [90, 100]
+        state: [50, 90]
+        religious: [0, 60]
+    
+    peer:
+      peer_culture: [70, 100]
+      street: [0, 80]  # Higher if conflict/urban
+      school: [20, 70]
+      family: [0, 50]
+

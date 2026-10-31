@@ -1,0 +1,122 @@
+{
+  "all_expected": true,
+  "courts": [
+    {
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-o",
+        "addopts=",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml",
+        "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/v3core-return/WORKER_RETURNS/SOROK-V3CORE-R1/candidate/evidence/unchanged_v3_source_junit.xml",
+        "vendor/v3/tests/test_architecture_invariants.py",
+        "vendor/v3/tests/test_step_logic.py",
+        "vendor/v3/tests/test_v5_pressure_flow.py",
+        "vendor/v3/tests/test_v5_pressureflow_golden_run.py"
+      ],
+      "cwd": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/v3core-return/WORKER_RETURNS/SOROK-V3CORE-R1/candidate",
+      "duration_seconds": 2.212,
+      "env_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/v3core-return/WORKER_RETURNS/SOROK-V3CORE-R1/candidate:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/v3core-return/WORKER_RETURNS/SOROK-V3CORE-R1/candidate/vendor:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/v3core-return/WORKER_RETURNS/SOROK-V3CORE-R1/candidate/vendor/py3deps"
+      },
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "unchanged_v3_source_tests",
+      "passed_expectation": true,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "cc78ed2e1263fe94519afc24cfee11c48181b9b86bce5761f4103900a34786c7",
+      "summary": "40 passed in 1.77s"
+    },
+    {
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-o",
+        "addopts=",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml",
+        "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/v3core-return/WORKER_RETURNS/SOROK-V3CORE-R1/candidate/evidence/v3core_adapter_junit.xml",
+        "tests"
+      ],
+      "cwd": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/v3core-return/WORKER_RETURNS/SOROK-V3CORE-R1/candidate",
+      "duration_seconds": 6.781,
+      "env_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/v3core-return/WORKER_RETURNS/SOROK-V3CORE-R1/candidate:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/v3core-return/WORKER_RETURNS/SOROK-V3CORE-R1/candidate/vendor:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/v3core-return/WORKER_RETURNS/SOROK-V3CORE-R1/candidate/vendor/py3deps"
+      },
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "v3core_adapter_tests",
+      "passed_expectation": true,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "9c166a713c24b99ce2c50ab9efa543860e06f51251b00347bfe98185b7e1f2db",
+      "summary": "46 passed in 6.31s"
+    },
+    {
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-o",
+        "addopts=",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml",
+        "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/v3core-return/WORKER_RETURNS/SOROK-V3CORE-R1/candidate/evidence/i1_unchanged_junit.xml",
+        "tests/test_i1_guarded_consumer.py"
+      ],
+      "cwd": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/v3core-return/WORKER_RETURNS/SOROK-V3CORE-R1/candidate/vendor/i1",
+      "duration_seconds": 9.263,
+      "env_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/v3core-return/WORKER_RETURNS/SOROK-V3CORE-R1/candidate/vendor/i1"
+      },
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "i1_unchanged_consumer_tests",
+      "passed_expectation": true,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "53078488288924002b54b37816843ffcb39490b5a9b66d904434faa9cd019061",
+      "summary": "8 passed in 6.25s"
+    },
+    {
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-o",
+        "addopts=",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "v3/tests/test_architecture_invariants.py::test_step_order_immutable"
+      ],
+      "cwd": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/v3core-order-7o3l67ch/mutated-order",
+      "duration_seconds": 0.424,
+      "env_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/v3core-order-7o3l67ch/mutated-order:/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/v3core-return/WORKER_RETURNS/SOROK-V3CORE-R1/candidate/vendor/py3deps"
+      },
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "name": "mutated_19_step_order",
+      "passed_expectation": true,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "b587e7753d7d953d51fe71df60a820c7c824ebb8cdba19fe567aeeed9def49f3",
+      "summary": "1 failed in 0.18s"
+    }
+  ],
+  "platform": "darwin",
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "root": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/v3core-return/WORKER_RETURNS/SOROK-V3CORE-R1/candidate",
+  "schema": "SOROK_V3CORE_R1_COURT_RESULTS@1"
+}

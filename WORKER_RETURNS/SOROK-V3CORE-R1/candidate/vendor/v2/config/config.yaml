@@ -1,0 +1,161 @@
+# Main Configuration File (Rawlsing v4.1)
+# Central configuration that references other config files
+
+project:
+  name: "Rawlsing"
+  version: "4.1"
+  anchor_year: 2025
+  time_step_years: 1
+
+# Age bands for life-course simulation
+age_bands:
+  - label: "0-3"
+    start: 0
+    end: 3
+    description: "Infancy and early toddlerhood"
+  
+  - label: "3-7"
+    start: 3
+    end: 7
+    description: "Early childhood, pre-school"
+  
+  - label: "7-11"
+    start: 7
+    end: 11
+    description: "Middle childhood, primary school"
+  
+  - label: "11-14"
+    start: 11
+    end: 14
+    description: "Early adolescence, puberty"
+  
+  - label: "14-17"
+    start: 14
+    end: 17
+    description: "Mid-adolescence, high school"
+  
+  - label: "17-24"
+    start: 17
+    end: 24
+    description: "Late adolescence and early adulthood"
+  
+  - label: "24-35"
+    start: 24
+    end: 35
+    description: "Young adulthood"
+  
+  - label: "35+"
+    start: 35
+    end: null
+    description: "Mature adulthood"
+
+# Data resampling configuration
+resampling:
+  exact_year_priority: true
+  nearest_neighbor_window: 5  # ±5 years
+  era_profile_fallback: true
+  era_profiles_path: "data/era_profiles/"
+
+# Validation bounds
+validation:
+  needs:
+    min: 0
+    max: 100
+  strategies:
+    min: 0
+    max: 100
+  indices:
+    min: 0
+    max: 100
+  continuity_max_delta: 10  # Max change per year without event
+
+# Database configuration
+database:
+  host: "localhost"
+  port: 5432
+  database: "Rawlsing—WVS"
+  user: "postgres"
+  # password from environment variable
+  
+  tables:
+    world_state: "world_state"
+    driver_aggregates: "driver_aggregates"
+    wvs_cube: "wvs_cube"
+    geo_regions: "geo.admin_regions"
+    geo_cities: "geo.admin_cities"
+    epr_groups: "eth.\"EPR-2021\""
+    people_groups: "jp.people_groups"
+
+# Config file paths (relative to config/ directory)
+config_files:
+  needs: "needs.yaml"
+  strategies: "strategies.yaml"
+  civic_soul: "civic_soul.yaml"
+  relational_roles: "relational_roles.yaml"
+  indices: "indices.yaml"
+  events: "events.yaml"
+
+# Simulation parameters
+simulation:
+  # Random seed for reproducibility (set to null for random)
+  random_seed: null
+  
+  # Batch processing
+  batch_size: 100
+  parallel_workers: 4
+  
+  # Caching
+  cache_world_slices: true
+  cache_driver_vectors: true
+  cache_ttl_hours: 24
+
+# Enneagram inference parameters
+enneagram:
+  # Minimum states required for inference
+  min_states_for_inference: 10
+  
+  # Weight factors for different life stages
+  early_childhood_weight: 1.5  # Ages 0-7 weighted more heavily
+  adolescence_weight: 1.2  # Ages 11-17
+  adulthood_weight: 1.0  # Ages 18+
+  
+  # Health level calculation
+  rmt_weight: 0.4
+  buffer_weight: 0.3  # Attachment, community, meaning
+  base_health: 50
+
+# LLM interface configuration
+llm_interface:
+  # Persona sheet generation
+  include_all_bands: true
+  max_key_events_per_band: 5
+  max_norm_conflicts_per_band: 3
+  top_strategies_count: 3
+  
+  # Narrative snapshot
+  generate_narrative_snapshots: true
+  snapshot_length: "short"  # "short", "medium", "long"
+  
+  # Symbolic state
+  max_symbols: 20
+  symbol_decay_rate: 0.95
+
+# Logging and debugging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  log_simulation_steps: false  # Very verbose if true
+  log_validation_errors: true
+  log_event_generation: true
+
+# Output configuration
+output:
+  # Persona sheet format
+  format: "json"  # "json", "yaml"
+  include_metadata: true
+  include_yearly_states: false  # Usually only include band summaries
+  include_idea_history: true
+  
+  # Export paths
+  output_directory: "output/personas/"
+  persona_sheet_filename: "persona_{internal_id}.json"
+
