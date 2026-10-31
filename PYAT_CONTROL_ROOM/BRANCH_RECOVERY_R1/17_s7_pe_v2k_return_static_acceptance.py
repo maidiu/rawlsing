@@ -53,12 +53,12 @@ def main():
         if suite is None:errors.append("MISSING_SUITE_"+name);continue
         for prop,val in zip(("tests","failures","errors","skipped"),counts):
             if int(suite.get(prop,"-1"))!=val:errors.append("XML_SUMMARY_MISMATCH_"+name+"_"+prop)
-    state=collections.Counter(str(x.get("status") or x.get("disposition") or x.get("current_functional_status") or "?") for x in v2k)
+    state=collections.Counter(str(x.get("decision") or x.get("current_status") or "?") for x in v2k)
     out={"schema":"PYAT_S7_PE_V2K_SOURCE_RETURN_CUSTODY@1","refs":{"S7":S7,"PE":PE,"V2K":V2K},
     "S7_disposition_rows":len(family),"S7_blocker_rows":len(blockers),"S7_blocker_ids":ids,
     "S7_accounting_keys":list(account)[:32],
     "PE_eight_assertion_rows":len(pe),"PE_original_and_overlay_junit_counts":junit_checks,
-    "V2K_function_rows":len(v2k),"V2K_status_counter":dict(state),"errors":errors,
+    "V2K_function_rows":len(v2k),"V2K_decision_counter":dict(state),"errors":errors,
     "actual_code_or_runtime_integration_tested_by_this_audit":False,
     "sourcefree_test_receipts_are_from_returned_branch_not_independently_reexecuted":True}
     path=Path("pyat-return-s7-pe-v2k")
