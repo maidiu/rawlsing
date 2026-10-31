@@ -1,0 +1,151 @@
+{
+  "authority": {
+    "adoption": "NONE",
+    "c12_authenticity": "OWNER_ANCHOR_REQUIRED",
+    "c12_completeness": "OWNER_ANCHOR_REQUIRED",
+    "can_adp_issuer": "ABSENT",
+    "external_c12_anchor": "ABSENT",
+    "grade": "TEST_ONLY_SOURCEFREE_JOINED_CONSUMER_NOT_NATIVE",
+    "native_a0_a5_participant": "ABSENT",
+    "native_actor": false,
+    "native_c11": false,
+    "native_c12": false,
+    "native_c8_trust": false,
+    "native_rule": false,
+    "native_world": false,
+    "pyat_structural_position": "ABSENT",
+    "self_review": false
+  },
+  "base": {
+    "pre_main": "750548ddbb9b4392a16ce93097b856f349e16182",
+    "remote_pre_main": "refs/heads/integration/pre-main-reconciliation-r1",
+    "source_pin": "299f41e97a43c67be9cc76a79fa49b48f4e12e54"
+  },
+  "branch": "agent/sorok-i1-sourcefree-continuing-person-joined-implementation-20261030-r1",
+  "candidate": {
+    "inventory_count": 179,
+    "inventory_digest": "95b995de8764204a4f3cd841cd1dbe5f6e503c3567ee05b1c053e2ee05565652",
+    "inventory_digest_scope": "sha256(canonical JSON of sorted relative path and sha256 entries)",
+    "root": "candidate",
+    "source_manifest": "01_JOINED_CONSUMER_SOURCE_AND_DEPENDENCY_MANIFEST.json",
+    "total_bytes": 1850055
+  },
+  "commit_readback": {
+    "head_before_return_commit": "750548ddbb9b4392a16ce93097b856f349e16182",
+    "readback_command": "git ls-remote origin refs/heads/agent/sorok-i1-sourcefree-continuing-person-joined-implementation-20261030-r1",
+    "remote_branch": "agent/sorok-i1-sourcefree-continuing-person-joined-implementation-20261030-r1",
+    "remote_sha": "PENDING_PUSH_READBACK",
+    "return_commit": "PENDING_PUSH_READBACK",
+    "self_reference_note": "A file cannot contain the SHA of the commit that contains it; the exact final SHA is reported in the push readback and final response."
+  },
+  "date": "2026-10-30",
+  "environment": {
+    "device": "oldMac",
+    "effort": "MAX requested; runtime effort indicator not exposed",
+    "harness": "OpenCode",
+    "host": "Darwin oldMac.lan 22.6.0 Darwin Kernel Version 22.6.0 x86_64",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "network_at_test_runtime": false,
+    "os": "macOS 13.7.8 (22H730)",
+    "pytest": "9.1.1",
+    "python": "3.11.3",
+    "session_locator": "OpenCode local session; no stable public session id is exposed in this environment; branch and pushed commit are the durable locators",
+    "sqlite": "3.40.1",
+    "third_party_test_dependency": "none beyond Python standard library and local pytest"
+  },
+  "first_real_sourcefree_consumer": {
+    "assertion_mode": "same checks with product_cls=GuardedJoinedProduct",
+    "class": "bp2p4.i1_product.GuardedJoinedProduct",
+    "cold_cli": "run_guarded.py",
+    "named_assertion": "bp2p4.assertion.joined_downstream_a0_a2_assertion",
+    "store": "bp2p4.c12_guard.GuardedC12Store",
+    "superclass": "bp2p4.product.JoinedProduct"
+  },
+  "limits": [
+    "No durable C9/C12 cold reopen is claimed beyond the bounded G17I2/BP4R evidence.",
+    "C9 R3B actor durability and its interface mismatch remain unresolved.",
+    "F1CR's repaired executable is not a committed tree source; no targetless REFUSE/SILENCE adapter is claimed.",
+    "The BP2P4J c12_verify.py self-referential residual is unchanged and is not used by the guard path.",
+    "No original B childhood, casual relation, complete life history, native person, or native A0-A5 participant was produced.",
+    "No owner anchor, signer, key, CAN/ADP issuance, or Pyat structural position was invented."
+  ],
+  "new_material_evidence": {
+    "a_repair_path": {
+      "cash": "55 -> 59",
+      "completed": "4 -> 6",
+      "free_hours": "12 -> 10",
+      "material": "2 -> 0",
+      "third_repair": "DENY MATERIAL_EXHAUSTED"
+    },
+    "actor": "B",
+    "cash": "54 -> 56",
+    "completed_units": "3 -> 4",
+    "event_body": {
+      "cash_delta": 2,
+      "completed_delta": 1,
+      "material_delta": -1,
+      "source_owned": true,
+      "tool_used": true
+    },
+    "free_hours": "13 -> 13",
+    "material_floor_caveat": "The existing BP4 offscreen rule records material_delta -1 while flooring material_remaining at 0; I1 does not reinterpret the event as consumed stock.",
+    "material_remaining": "0 -> 0",
+    "position": "workshop -> market",
+    "privacy": "B cash/material/free-hours are owner-only readout; A public other() hides them.",
+    "source_event": "existing source-owned BP4 OFFSCREEN_REPAIR at clock 40"
+  },
+  "return": "WORKER_RETURNS/SOROK-I1-CONTINUING-PERSON-R1",
+  "role": "independent I3 sourcefree developmental-person integration engineer",
+  "schema": "SOROK_I1_PROVENANCE_SESSION_AND_LIMITS@1",
+  "source_cuts": {
+    "b3as": "1a25b19dd01e8e7954e38c59ffc7e52c50739c9f",
+    "bp2p4j": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+    "bp4r": "693d25bf40f76b09ccf2cc1ec5218a262e201fcd",
+    "f1cr_return": "03be5c225b8ec5832c1c648b9c1799419f0c4066",
+    "g17i2": "95f15026cd95f6467455d0dfab4369d2cc7b427c",
+    "rcf_b": "397c6d61d73825d83e1282753e254c39f4b5a80e"
+  },
+  "test_evidence": {
+    "bp4r_guard": {
+      "command": "BP4R_C9_DIR=$PWD PYTHONPATH=$PWD python3 -m pytest -o addopts='' -q tests/test_bp4r_candidate.py",
+      "exit": 0,
+      "passed": 9
+    },
+    "combined": {
+      "command": "BP4R_C9_DIR=$PWD PYTHONPATH=$PWD PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -o addopts='' -q tests",
+      "exit": 0,
+      "passed": 50
+    },
+    "i1_guarded_consumer": {
+      "command": "PYTHONPATH=$PWD python3 -m pytest -o addopts='' -q tests/test_i1_guarded_consumer.py",
+      "exit": 0,
+      "passed": 8
+    },
+    "severance": {
+      "baseline_pass_red_restore_pass": true,
+      "primary_edges": 7,
+      "same_named_assertion": true,
+      "supplementary_edges": 3
+    },
+    "unchanged_bp2p4j": {
+      "command": "PYTHONPATH=$PWD python3 -m pytest -o addopts='' -q tests/test_joined_product.py tests/test_joined_security.py tests/test_joined_severance.py tests/test_source_closure.py",
+      "exit": 0,
+      "passed": 33
+    }
+  },
+  "write_scope": {
+    "allowed": "WORKER_RETURNS/SOROK-I1-CONTINUING-PERSON-R1/**",
+    "original_owner_branches_modified": false,
+    "pre_main_modified": false,
+    "pull_request_created": false,
+    "self_adopted": false,
+    "written": [
+      "00_RETURN.md",
+      "candidate/**",
+      "01_JOINED_CONSUMER_SOURCE_AND_DEPENDENCY_MANIFEST.json",
+      "02_EXECUTED_POSITIVES_NEGATIVES_AND_COLD_REPLAY.md",
+      "03_ORIGINAL_OWNER_COMPATIBILITY_AND_INTEGRATION_HANDOFF.md",
+      "04_PROVENANCE_SESSION_AND_LIMITS.json"
+    ]
+  }
+}
