@@ -61,8 +61,9 @@ Receiving decision: qualified **Sorok/PREMAIN** owner (not the R2 author, not th
 
 ## EXACT REMOTE SHA
 
-**Return content commit:** `__CONTENT_COMMIT__`
+**Return content commit:** `d047b388b4b3598157b60eeda188e8714bb77565`
 **Readback command:** `git ls-remote origin refs/heads/review/sorok-rrif-r2-real-code-independent-hostile-first-consumer-20261031`
-**Readback result:** `__FINAL_REMOTE_SHA__`
+**Readback at content commit:** `d047b388b4b3598157b60eeda188e8714bb77565`
+**Final exact remote SHA:** the no-force readback commit that contains this complete return; its exact 40-hex is reported in the terminal response of this review.
 
-The final branch tip is the no-force readback commit containing these six outputs. No owner adoption or PREMAIN merge is claimed.
+No force push, no owner adoption, no PREMAIN merge and no self-adoption are claimed.
