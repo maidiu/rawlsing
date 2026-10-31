@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import shutil
 import tempfile
@@ -37,7 +38,7 @@ class ValidatorTests(unittest.TestCase):
             self._rewrite(path, registry)
             with self.assertRaises(ValidationError) as error:
                 validate(target)
-            self.assertIn("manifest mismatch", str(error.exception))
+            self.assertIn("ACTUAL consumer forbidden", str(error.exception))
         finally:
             temp.cleanup()
 
@@ -131,7 +132,141 @@ class ValidatorTests(unittest.TestCase):
             self._rewrite(path, registry)
             with self.assertRaises(ValidationError) as error:
                 validate(target)
-            self.assertIn("ACTUAL consumer lacks source evidence", str(error.exception))
+            self.assertIn("ACTUAL consumer forbidden", str(error.exception))
+        finally:
+            temp.cleanup()
+
+    def _rewrite_manifest_digest(self, target: Path) -> None:
+        path = target / "source_manifest.json"
+        manifest = json.loads(path.read_text(encoding="utf-8"))
+        manifest["manifest_digest"] = hashlib.sha256(json.dumps(
+            manifest["rows"] + manifest["reference_sources"],
+            sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+        self._rewrite(path, manifest)
+
+    def _make_actual(self, target: Path, evidence: dict) -> None:
+        rpath = target / "01_SOURCE_OF_TRUTH_REGISTRY.json"
+        mpath = target / "source_manifest.json"
+        registry = json.loads(rpath.read_text(encoding="utf-8"))
+        manifest = json.loads(mpath.read_text(encoding="utf-8"))
+        row = next(item for item in registry["rows"] if item["id"] == "A5")
+        mrow = next(item for item in manifest["rows"]
+                    if item["namespace"] == "SOROK" and item["id"] == "A5")
+        for item in (row, mrow):
+            item["actual_consumer_state"] = "ACTUAL"
+            item["actual_consumer_evidence"] = evidence
+            item["consumer_claim_grade"] = "ACTUAL"
+        self._rewrite(rpath, registry)
+        self._rewrite(mpath, manifest)
+        self._rewrite_manifest_digest(target)
+
+    def test_joint_fake_actual_consumer_fails(self) -> None:
+        temp, target = self._mutated_root()
+        try:
+            self._make_actual(target, {"commit": "5fc1d43e3d5412194d1f1eaa30ff448f84635e99", "path": "FORGED/FAKE_CONSUMER.py", "object_type": "blob", "object_id": "3" * 40})
+            with self.assertRaises(ValidationError) as error:
+                validate(target)
+            self.assertIn("ACTUAL consumer forbidden", str(error.exception))
+            report = verify_git_source_manifest(target, ROOT.parents[2])
+            self.assertEqual(report["result"], "FAIL")
+            self.assertTrue(any("actual_consumer" in item for item in report["errors"]))
+        finally:
+            temp.cleanup()
+
+    def test_joint_real_unrelated_actual_consumer_fails(self) -> None:
+        temp, target = self._mutated_root()
+        try:
+            self._make_actual(target, {"commit": "c0f4588c158b40c8903b4aae2f292eae5238b8a0", "path": "WORKER_RETURNS/SOROK-V2-HQ324-B1-COUPLED-DEVELOPMENT-R1/bfirst.py", "object_type": "blob", "object_id": "94ffc52847e4c8ae760212d1bc8543594ba793fa"})
+            with self.assertRaises(ValidationError) as error:
+                validate(target)
+            self.assertIn("ACTUAL consumer forbidden", str(error.exception))
+        finally:
+            temp.cleanup()
+
+    def test_joint_source_kind_relabel_fails(self) -> None:
+        temp, target = self._mutated_root()
+        try:
+            rpath = target / "01_SOURCE_OF_TRUTH_REGISTRY.json"
+            mpath = target / "source_manifest.json"
+            registry = json.loads(rpath.read_text(encoding="utf-8"))
+            manifest = json.loads(mpath.read_text(encoding="utf-8"))
+            next(item for item in registry["rows"] if item["id"] == "A5")["evidence_source"]["source_kind"] = "OWNER_ANCHORED_SOURCE"
+            next(item for item in manifest["rows"] if item["namespace"] == "SOROK" and item["id"] == "A5")["source_kind"] = "OWNER_ANCHORED_SOURCE"
+            self._rewrite(rpath, registry)
+            self._rewrite(mpath, manifest)
+            self._rewrite_manifest_digest(target)
+            with self.assertRaises(ValidationError) as error:
+                validate(target)
+            self.assertIn("source_kind is not derived", str(error.exception))
+        finally:
+            temp.cleanup()
+
+    def test_joint_owner_anchor_promotion_fails(self) -> None:
+        temp, target = self._mutated_root()
+        try:
+            rpath = target / "01_SOURCE_OF_TRUTH_REGISTRY.json"
+            mpath = target / "source_manifest.json"
+            registry = json.loads(rpath.read_text(encoding="utf-8"))
+            manifest = json.loads(mpath.read_text(encoding="utf-8"))
+            for item in (next(item for item in registry["rows"] if item["id"] == "A5"),
+                         next(item for item in manifest["rows"] if item["namespace"] == "SOROK" and item["id"] == "A5")):
+                item["source_semantic_grade"] = "OWNER_ANCHORED"
+                item["source_owner_anchor"] = "OWNER_ANCHORED"
+            self._rewrite(rpath, registry)
+            self._rewrite(mpath, manifest)
+            self._rewrite_manifest_digest(target)
+            with self.assertRaises(ValidationError) as error:
+                validate(target)
+            self.assertIn("source semantic grade", str(error.exception))
+        finally:
+            temp.cleanup()
+
+    def test_none_proven_count_drift_fails(self) -> None:
+        temp, target = self._mutated_root()
+        try:
+            rpath = target / "01_SOURCE_OF_TRUTH_REGISTRY.json"
+            mpath = target / "source_manifest.json"
+            registry = json.loads(rpath.read_text(encoding="utf-8"))
+            manifest = json.loads(mpath.read_text(encoding="utf-8"))
+            registry_row = next(item for item in registry["rows"] if item["id"] == "A5")
+            manifest_row = next(item for item in manifest["rows"] if item["namespace"] == "SOROK" and item["id"] == "A5")
+            for item in (registry_row, manifest_row):
+                item["actual_consumer_state"] = "NOT_A_RUNTIME_MODULE"
+                item["consumer_claim_grade"] = "NOT_A_RUNTIME_MODULE"
+            self._rewrite(rpath, registry)
+            self._rewrite(mpath, manifest)
+            self._rewrite_manifest_digest(target)
+            with self.assertRaises(ValidationError) as error:
+                validate(target)
+            self.assertIn("expected 112 Sorok NONE_PROVEN", str(error.exception))
+        finally:
+            temp.cleanup()
+
+    def test_missing_product_reverse_edge_fails(self) -> None:
+        temp, target = self._mutated_root()
+        try:
+            path = target / "02_L0_L5_LINKED_ORCHESTRATION_INDEX.json"
+            index = json.loads(path.read_text(encoding="utf-8"))
+            index["edges"] = [edge for edge in index["edges"]
+                              if not (edge["from"] == "L5_S5_HARMFUL_ATTACHMENT_COUNTEREXAMPLE"
+                                      and edge["to"] == "L4_S5_FLOURISHING_OWNER")]
+            self._rewrite(path, index)
+            with self.assertRaises(ValidationError) as error:
+                validate(target)
+            self.assertIn("missing reverse edge", str(error.exception))
+        finally:
+            temp.cleanup()
+
+    def test_missing_product_reverse_path_fails(self) -> None:
+        temp, target = self._mutated_root()
+        try:
+            path = target / "02_L0_L5_LINKED_ORCHESTRATION_INDEX.json"
+            index = json.loads(path.read_text(encoding="utf-8"))
+            index["reverse_product_paths"].pop("S5")
+            self._rewrite(path, index)
+            with self.assertRaises(ValidationError) as error:
+                validate(target)
+            self.assertIn("specific reverse product path", str(error.exception))
         finally:
             temp.cleanup()
 
@@ -203,7 +338,7 @@ class ValidatorTests(unittest.TestCase):
         report = validate(ROOT)
         self.assertEqual(report["result"], "PASS")
         self.assertEqual(report["counts"]["owner_slots"], 46)
-        self.assertEqual(report["counts"]["edges"], 461)
+        self.assertEqual(report["counts"]["edges"], 485)
 
     def test_refresh_verifier_rejects_forged_manifest_blob(self) -> None:
         temp, target = self._mutated_root()

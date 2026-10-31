@@ -1,0 +1,46 @@
+{
+  "schema": "SOROK_PROGRAMMA_O_INDEX_VALIDATION@1",
+  "result": "PASS",
+  "root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-oindex-r4-consumer-provenance-and-backward-path-fix-20261031/SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1",
+  "registry_sha256": "8b54941df6b1d823b593cbd8dc0ad436062be283e58eaf45924a705bbe725504",
+  "orchestration_sha256": "d75dac59287444f370d02b6dddfc9e498af2400adb8b89b79f8c5b565f5041dd",
+  "source_manifest_sha256": "d3f1069784717ef2b4909d3f9d3fac0e55d4df61dd42a6b784629928bc4e83e8",
+  "checks": [
+    "144 unique Sorok rows with exact inherited id set",
+    "19 C/A + 40 M + 12 N + 16 O + 15 E + 17 S + 4 returned assets",
+    "declared coverage and historically sourced 17/17 S workstreams",
+    "no native/science promotion; every row has typed owner, grades, epoch and source time",
+    "Sorok consumers: 112 NONE_PROVEN_AT_PREMAIN / 0 ACTUAL; ACTUAL hard-rejected",
+    "144 Sorok rows match the frozen source manifest",
+    "four returned assets pinned, post-R7, candidate-only and unadopted",
+    "R6 39 rows / 94 files / 9 material families / R41 133 and 26",
+    "23 Pyat rows match the frozen source manifest",
+    "total 135 NONE_PROVEN_AT_PREMAIN / 0 ACTUAL hard count",
+    "separate Pyat N0-N12/F1-F8 rows, no actor psyche, no id collision",
+    "six S workstreams have specific L0-L5 product paths",
+    "all Sorok/Pyat items linked; no orphan L3 function; no dangling edge",
+    "A0-A5 and S0-S16 backward paths resolve; six product reverse paths are specific",
+    "three traversals resolve and retain answer limits",
+    "Sorok/Pyat/V3 namespace separation recorded",
+    "circular dependencies explicitly typed (90 index cycles)",
+    "46 owner slots retained; S0-S16 source recovered; six product owners explicit; no priority decisions",
+    "candidate-only authority status"
+  ],
+  "counts": {
+    "sorok_rows": 144,
+    "pyat_rows": 23,
+    "pyat_f_gates": 8,
+    "four_assets": 4,
+    "l3_nodes": 38,
+    "edges": 485,
+    "traversals": 3,
+    "owner_slots": 46,
+    "priority_decisions_made": 0,
+    "typed_index_cycles": 90
+  },
+  "limits": [
+    "PASS means the index is internally complete and honest about holds; it does not mean native product or science acceptance.",
+    "The validator never executes candidate code and never reads a private source archive.",
+    "Pyat N rows use top-view 06 as a read-only lens with the original Pyat owner authoritative; atlas nodes are advisory, and F gates are HQD-125 law, not whole-estate implementation."
+  ]
+}

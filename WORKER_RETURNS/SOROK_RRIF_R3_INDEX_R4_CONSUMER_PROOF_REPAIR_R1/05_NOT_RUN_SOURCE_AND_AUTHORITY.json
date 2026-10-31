@@ -1,0 +1,65 @@
+{
+  "schema": "SOROK_OINDEX_R4_NOT_RUN_SOURCE_AND_AUTHORITY@1",
+  "status": "R4_LOCAL_S2_SOURCEFREE_STATIC_VALIDATION_ONLY",
+  "not_run": [
+    {
+      "item": "original source-owner signature or authenticity anchor",
+      "reason": "No owner signature/anchor is available in this lane; source_semantic_grade remains SOURCE_ASSERTED and source_owner_anchor UNVERIFIED.",
+      "owner": "original source owner/custodian"
+    },
+    {
+      "item": "new 845-branch census or 47 MB S7FIX transplant",
+      "reason": "R4 is a bounded index repair; the R3 source-object manifest is retained.",
+      "owner": "none"
+    },
+    {
+      "item": "original survey/respondent/native source execution",
+      "reason": "No source-native or respondent authority was granted.",
+      "owner": "original source/rights owner"
+    },
+    {
+      "item": "CAN/ADP/SCI05 or N9/N10W/N11/N12 issuance",
+      "reason": "R4 repairs static index engineering only.",
+      "owner": "original science/Pyat owners"
+    },
+    {
+      "item": "native C9/C12, actor, world, B or A5 human run",
+      "reason": "No actor/world/human authority; no candidate code executed.",
+      "owner": "Sorok/Pyat native owners"
+    },
+    {
+      "item": "PREMAIN/PR merge, O-LIVE edit, Programma adoption",
+      "reason": "Existing PR519 governance is separate; this worker cannot self-CAS.",
+      "owner": "incumbent HQ/PREMAIN authority"
+    },
+    {
+      "item": "independent review of this R4 return",
+      "reason": "Reserved for a distinct qualified reviewer after return; worker does not self-accept.",
+      "owner": "appointed independent I2/I3 reviewer"
+    },
+    {
+      "item": "actual production consumer proof",
+      "reason": "No consumer manifest, owner anchor, caller or fault-negative at a real consumer exists in this cut; ACTUAL is hard-rejected.",
+      "owner": "consumer owner + independent reviewer"
+    }
+  ],
+  "execution_surface": {
+    "S2": "available and exercised for Git/JSON/JSONL/pytest",
+    "native": "NOT_RUN",
+    "provider_model": "NOT_RUN",
+    "source": "NOT_RUN"
+  },
+  "positive_limits": {
+    "static_index_engineering": "R4 may be scoped-accepted only after independent re-execution",
+    "science": "HOLD",
+    "authority": "HOLD",
+    "native_product": "HOLD"
+  },
+  "pr_notes": {
+    "#568": "superseded stale R->O intake",
+    "#572": "three-return RRIF evidence intake only",
+    "#566": "PROGRAMMA DEFERRED",
+    "#559": "living-reference proposed; untouched",
+    "PR519": "separate PREMAIN fan-in governance; no self-CAS"
+  }
+}

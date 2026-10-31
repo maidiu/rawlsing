@@ -1,0 +1,527 @@
+{
+  "schema": "SOROK_OINDEX_R4_SIX_PRODUCT_BACKWARD_PATHS_AND_NEGATIVES@1",
+  "status": "WORKING_CANDIDATE_NOT_HQ_ADJUDICATED",
+  "graph": {
+    "nodes": 219,
+    "edges": 485,
+    "node_count_field": 219,
+    "edge_count_field": 485
+  },
+  "six": [
+    {
+      "id": "S5",
+      "source_row_node": "S5",
+      "forward_chain": [
+        "L0_S5_FLOURISHING_AGENCY",
+        "L1_S5_FLOURISHING",
+        "S5",
+        "L3_S5_NORMATIVE_MODEL",
+        "L4_S5_FLOURISHING_OWNER",
+        "L5_S5_HARMFUL_ATTACHMENT_COUNTEREXAMPLE"
+      ],
+      "forward_edges": [
+        {
+          "from": "L0_S5_FLOURISHING_AGENCY",
+          "to": "L1_S5_FLOURISHING",
+          "present": true
+        },
+        {
+          "from": "L1_S5_FLOURISHING",
+          "to": "S5",
+          "present": true
+        },
+        {
+          "from": "S5",
+          "to": "L3_S5_NORMATIVE_MODEL",
+          "present": true
+        },
+        {
+          "from": "L3_S5_NORMATIVE_MODEL",
+          "to": "L4_S5_FLOURISHING_OWNER",
+          "present": true
+        },
+        {
+          "from": "L4_S5_FLOURISHING_OWNER",
+          "to": "L5_S5_HARMFUL_ATTACHMENT_COUNTEREXAMPLE",
+          "present": true
+        }
+      ],
+      "backward_path": [
+        "S5",
+        "L1_S5_FLOURISHING",
+        "L3_S5_NORMATIVE_MODEL",
+        "L4_S5_FLOURISHING_OWNER",
+        "L5_S5_HARMFUL_ATTACHMENT_COUNTEREXAMPLE",
+        "L0_S5_FLOURISHING_AGENCY"
+      ],
+      "reverse_product_path": [
+        "L5_S5_HARMFUL_ATTACHMENT_COUNTEREXAMPLE",
+        "L4_S5_FLOURISHING_OWNER",
+        "L3_S5_NORMATIVE_MODEL",
+        "L1_S5_FLOURISHING",
+        "L0_S5_FLOURISHING_AGENCY"
+      ],
+      "reverse_edges": [
+        {
+          "from": "L5_S5_HARMFUL_ATTACHMENT_COUNTEREXAMPLE",
+          "to": "L4_S5_FLOURISHING_OWNER",
+          "present": true
+        },
+        {
+          "from": "L4_S5_FLOURISHING_OWNER",
+          "to": "L3_S5_NORMATIVE_MODEL",
+          "present": true
+        },
+        {
+          "from": "L3_S5_NORMATIVE_MODEL",
+          "to": "L1_S5_FLOURISHING",
+          "present": true
+        },
+        {
+          "from": "L1_S5_FLOURISHING",
+          "to": "L0_S5_FLOURISHING_AGENCY",
+          "present": true
+        }
+      ],
+      "all_reverse_edges_present": true,
+      "generic_governance_only": false,
+      "falsifier_node": "L5_S5_HARMFUL_ATTACHMENT_COUNTEREXAMPLE",
+      "falsifier_title": "A user gains intimacy while damaging independent B relations, or the other resists while their independent functioning improves; increased affection must not prove health",
+      "negative_tests": [
+        "test_missing_product_reverse_edge_fails",
+        "test_missing_product_reverse_path_fails"
+      ]
+    },
+    {
+      "id": "S7",
+      "source_row_node": "S7",
+      "forward_chain": [
+        "L0_S7_USER_PRAXIS",
+        "L1_S7_USER_PRACTICE",
+        "S7",
+        "L3_S7_PRACTICE_INFERENCE",
+        "L4_S7_PRAXIS_OWNER",
+        "L5_S7_ONE_ACTION_DIAGNOSIS_FALSIFIER"
+      ],
+      "forward_edges": [
+        {
+          "from": "L0_S7_USER_PRAXIS",
+          "to": "L1_S7_USER_PRACTICE",
+          "present": true
+        },
+        {
+          "from": "L1_S7_USER_PRACTICE",
+          "to": "S7",
+          "present": true
+        },
+        {
+          "from": "S7",
+          "to": "L3_S7_PRACTICE_INFERENCE",
+          "present": true
+        },
+        {
+          "from": "L3_S7_PRACTICE_INFERENCE",
+          "to": "L4_S7_PRAXIS_OWNER",
+          "present": true
+        },
+        {
+          "from": "L4_S7_PRAXIS_OWNER",
+          "to": "L5_S7_ONE_ACTION_DIAGNOSIS_FALSIFIER",
+          "present": true
+        }
+      ],
+      "backward_path": [
+        "S7",
+        "L1_S7_USER_PRACTICE",
+        "L3_S7_PRACTICE_INFERENCE",
+        "L4_S7_PRAXIS_OWNER",
+        "L5_S7_ONE_ACTION_DIAGNOSIS_FALSIFIER",
+        "L0_S7_USER_PRAXIS"
+      ],
+      "reverse_product_path": [
+        "L5_S7_ONE_ACTION_DIAGNOSIS_FALSIFIER",
+        "L4_S7_PRAXIS_OWNER",
+        "L3_S7_PRACTICE_INFERENCE",
+        "L1_S7_USER_PRACTICE",
+        "L0_S7_USER_PRAXIS"
+      ],
+      "reverse_edges": [
+        {
+          "from": "L5_S7_ONE_ACTION_DIAGNOSIS_FALSIFIER",
+          "to": "L4_S7_PRAXIS_OWNER",
+          "present": true
+        },
+        {
+          "from": "L4_S7_PRAXIS_OWNER",
+          "to": "L3_S7_PRACTICE_INFERENCE",
+          "present": true
+        },
+        {
+          "from": "L3_S7_PRACTICE_INFERENCE",
+          "to": "L1_S7_USER_PRACTICE",
+          "present": true
+        },
+        {
+          "from": "L1_S7_USER_PRACTICE",
+          "to": "L0_S7_USER_PRAXIS",
+          "present": true
+        }
+      ],
+      "all_reverse_edges_present": true,
+      "generic_governance_only": false,
+      "falsifier_node": "L5_S7_ONE_ACTION_DIAGNOSIS_FALSIFIER",
+      "falsifier_title": "One helpful act under abundance versus repeated refusal override: record actual actions but not a generalized diagnosis",
+      "negative_tests": [
+        "test_missing_product_reverse_edge_fails",
+        "test_missing_product_reverse_path_fails"
+      ]
+    },
+    {
+      "id": "S11",
+      "source_row_node": "S11",
+      "forward_chain": [
+        "L0_S11_TRUTHFUL_ENCOUNTER",
+        "L1_S11_UX_SURFACE",
+        "S11",
+        "L3_S11_ENCOUNTER_SURFACE",
+        "L4_S11_UX_OWNER",
+        "L5_S11_OMNISCIENCE_AND_BLACKBOX_FALSIFIER"
+      ],
+      "forward_edges": [
+        {
+          "from": "L0_S11_TRUTHFUL_ENCOUNTER",
+          "to": "L1_S11_UX_SURFACE",
+          "present": true
+        },
+        {
+          "from": "L1_S11_UX_SURFACE",
+          "to": "S11",
+          "present": true
+        },
+        {
+          "from": "S11",
+          "to": "L3_S11_ENCOUNTER_SURFACE",
+          "present": true
+        },
+        {
+          "from": "L3_S11_ENCOUNTER_SURFACE",
+          "to": "L4_S11_UX_OWNER",
+          "present": true
+        },
+        {
+          "from": "L4_S11_UX_OWNER",
+          "to": "L5_S11_OMNISCIENCE_AND_BLACKBOX_FALSIFIER",
+          "present": true
+        }
+      ],
+      "backward_path": [
+        "S11",
+        "L1_S11_UX_SURFACE",
+        "L3_S11_ENCOUNTER_SURFACE",
+        "L4_S11_UX_OWNER",
+        "L5_S11_OMNISCIENCE_AND_BLACKBOX_FALSIFIER",
+        "L0_S11_TRUTHFUL_ENCOUNTER"
+      ],
+      "reverse_product_path": [
+        "L5_S11_OMNISCIENCE_AND_BLACKBOX_FALSIFIER",
+        "L4_S11_UX_OWNER",
+        "L3_S11_ENCOUNTER_SURFACE",
+        "L1_S11_UX_SURFACE",
+        "L0_S11_TRUTHFUL_ENCOUNTER"
+      ],
+      "reverse_edges": [
+        {
+          "from": "L5_S11_OMNISCIENCE_AND_BLACKBOX_FALSIFIER",
+          "to": "L4_S11_UX_OWNER",
+          "present": true
+        },
+        {
+          "from": "L4_S11_UX_OWNER",
+          "to": "L3_S11_ENCOUNTER_SURFACE",
+          "present": true
+        },
+        {
+          "from": "L3_S11_ENCOUNTER_SURFACE",
+          "to": "L1_S11_UX_SURFACE",
+          "present": true
+        },
+        {
+          "from": "L1_S11_UX_SURFACE",
+          "to": "L0_S11_TRUTHFUL_ENCOUNTER",
+          "present": true
+        }
+      ],
+      "all_reverse_edges_present": true,
+      "generic_governance_only": false,
+      "falsifier_node": "L5_S11_OMNISCIENCE_AND_BLACKBOX_FALSIFIER",
+      "falsifier_title": "User sees blocked repair and only perceived tool-taking while independently completed B market work stays absent; omniscience and black-box unintelligibility both fail",
+      "negative_tests": [
+        "test_missing_product_reverse_edge_fails",
+        "test_missing_product_reverse_path_fails"
+      ]
+    },
+    {
+      "id": "S13",
+      "source_row_node": "S13",
+      "forward_chain": [
+        "L0_S13_NEIGHBOR_AS_END",
+        "L1_S13_ECONOMIC_CONSTRAINTS",
+        "S13",
+        "L3_S13_REVENUE_MODEL",
+        "L4_S13_BUSINESS_OWNER",
+        "L5_S13_EXTRACTIVE_INCENTIVE_FALSIFIER"
+      ],
+      "forward_edges": [
+        {
+          "from": "L0_S13_NEIGHBOR_AS_END",
+          "to": "L1_S13_ECONOMIC_CONSTRAINTS",
+          "present": true
+        },
+        {
+          "from": "L1_S13_ECONOMIC_CONSTRAINTS",
+          "to": "S13",
+          "present": true
+        },
+        {
+          "from": "S13",
+          "to": "L3_S13_REVENUE_MODEL",
+          "present": true
+        },
+        {
+          "from": "L3_S13_REVENUE_MODEL",
+          "to": "L4_S13_BUSINESS_OWNER",
+          "present": true
+        },
+        {
+          "from": "L4_S13_BUSINESS_OWNER",
+          "to": "L5_S13_EXTRACTIVE_INCENTIVE_FALSIFIER",
+          "present": true
+        }
+      ],
+      "backward_path": [
+        "S13",
+        "L1_S13_ECONOMIC_CONSTRAINTS",
+        "L3_S13_REVENUE_MODEL",
+        "L4_S13_BUSINESS_OWNER",
+        "L5_S13_EXTRACTIVE_INCENTIVE_FALSIFIER",
+        "L0_S13_NEIGHBOR_AS_END"
+      ],
+      "reverse_product_path": [
+        "L5_S13_EXTRACTIVE_INCENTIVE_FALSIFIER",
+        "L4_S13_BUSINESS_OWNER",
+        "L3_S13_REVENUE_MODEL",
+        "L1_S13_ECONOMIC_CONSTRAINTS",
+        "L0_S13_NEIGHBOR_AS_END"
+      ],
+      "reverse_edges": [
+        {
+          "from": "L5_S13_EXTRACTIVE_INCENTIVE_FALSIFIER",
+          "to": "L4_S13_BUSINESS_OWNER",
+          "present": true
+        },
+        {
+          "from": "L4_S13_BUSINESS_OWNER",
+          "to": "L3_S13_REVENUE_MODEL",
+          "present": true
+        },
+        {
+          "from": "L3_S13_REVENUE_MODEL",
+          "to": "L1_S13_ECONOMIC_CONSTRAINTS",
+          "present": true
+        },
+        {
+          "from": "L1_S13_ECONOMIC_CONSTRAINTS",
+          "to": "L0_S13_NEIGHBOR_AS_END",
+          "present": true
+        }
+      ],
+      "all_reverse_edges_present": true,
+      "generic_governance_only": false,
+      "falsifier_node": "L5_S13_EXTRACTIVE_INCENTIVE_FALSIFIER",
+      "falsifier_title": "A model succeeds only by intensifying dependence, hiding the other behind payment, punishing absence or selling rescue/intimacy",
+      "negative_tests": [
+        "test_missing_product_reverse_edge_fails",
+        "test_missing_product_reverse_path_fails"
+      ]
+    },
+    {
+      "id": "S14",
+      "source_row_node": "S14",
+      "forward_chain": [
+        "L0_S14_NONPREDATORY_ENCOUNTER",
+        "L1_S14_SAFETY_PRIVACY",
+        "S14",
+        "L3_S14_ABUSE_PRIVACY_BOUNDARY",
+        "L4_S14_SAFETY_OWNER",
+        "L5_S14_COERCION_AND_CROSS_USER_FALSIFIER"
+      ],
+      "forward_edges": [
+        {
+          "from": "L0_S14_NONPREDATORY_ENCOUNTER",
+          "to": "L1_S14_SAFETY_PRIVACY",
+          "present": true
+        },
+        {
+          "from": "L1_S14_SAFETY_PRIVACY",
+          "to": "S14",
+          "present": true
+        },
+        {
+          "from": "S14",
+          "to": "L3_S14_ABUSE_PRIVACY_BOUNDARY",
+          "present": true
+        },
+        {
+          "from": "L3_S14_ABUSE_PRIVACY_BOUNDARY",
+          "to": "L4_S14_SAFETY_OWNER",
+          "present": true
+        },
+        {
+          "from": "L4_S14_SAFETY_OWNER",
+          "to": "L5_S14_COERCION_AND_CROSS_USER_FALSIFIER",
+          "present": true
+        }
+      ],
+      "backward_path": [
+        "S14",
+        "L1_S14_SAFETY_PRIVACY",
+        "L3_S14_ABUSE_PRIVACY_BOUNDARY",
+        "L4_S14_SAFETY_OWNER",
+        "L5_S14_COERCION_AND_CROSS_USER_FALSIFIER",
+        "L0_S14_NONPREDATORY_ENCOUNTER"
+      ],
+      "reverse_product_path": [
+        "L5_S14_COERCION_AND_CROSS_USER_FALSIFIER",
+        "L4_S14_SAFETY_OWNER",
+        "L3_S14_ABUSE_PRIVACY_BOUNDARY",
+        "L1_S14_SAFETY_PRIVACY",
+        "L0_S14_NONPREDATORY_ENCOUNTER"
+      ],
+      "reverse_edges": [
+        {
+          "from": "L5_S14_COERCION_AND_CROSS_USER_FALSIFIER",
+          "to": "L4_S14_SAFETY_OWNER",
+          "present": true
+        },
+        {
+          "from": "L4_S14_SAFETY_OWNER",
+          "to": "L3_S14_ABUSE_PRIVACY_BOUNDARY",
+          "present": true
+        },
+        {
+          "from": "L3_S14_ABUSE_PRIVACY_BOUNDARY",
+          "to": "L1_S14_SAFETY_PRIVACY",
+          "present": true
+        },
+        {
+          "from": "L1_S14_SAFETY_PRIVACY",
+          "to": "L0_S14_NONPREDATORY_ENCOUNTER",
+          "present": true
+        }
+      ],
+      "all_reverse_edges_present": true,
+      "generic_governance_only": false,
+      "falsifier_node": "L5_S14_COERCION_AND_CROSS_USER_FALSIFIER",
+      "falsifier_title": "Forced sexual intimacy, actor memory stalking or another user\u2019s branch recovery must fail while actor can refuse without coercion being rewarded",
+      "negative_tests": [
+        "test_missing_product_reverse_edge_fails",
+        "test_missing_product_reverse_path_fails"
+      ]
+    },
+    {
+      "id": "S15",
+      "source_row_node": "S15",
+      "forward_chain": [
+        "L0_S15_WITNESSED_HUMAN_EVIDENCE",
+        "L1_S15_ALPHA_RESEARCH",
+        "S15",
+        "L3_S15_REFERENCE_AND_NATIVE_EVALUATION",
+        "L4_S15_ALPHA_OWNER",
+        "L5_S15_PERSUASIVE_LLM_FALSIFIER"
+      ],
+      "forward_edges": [
+        {
+          "from": "L0_S15_WITNESSED_HUMAN_EVIDENCE",
+          "to": "L1_S15_ALPHA_RESEARCH",
+          "present": true
+        },
+        {
+          "from": "L1_S15_ALPHA_RESEARCH",
+          "to": "S15",
+          "present": true
+        },
+        {
+          "from": "S15",
+          "to": "L3_S15_REFERENCE_AND_NATIVE_EVALUATION",
+          "present": true
+        },
+        {
+          "from": "L3_S15_REFERENCE_AND_NATIVE_EVALUATION",
+          "to": "L4_S15_ALPHA_OWNER",
+          "present": true
+        },
+        {
+          "from": "L4_S15_ALPHA_OWNER",
+          "to": "L5_S15_PERSUASIVE_LLM_FALSIFIER",
+          "present": true
+        }
+      ],
+      "backward_path": [
+        "S15",
+        "L1_S15_ALPHA_RESEARCH",
+        "L3_S15_REFERENCE_AND_NATIVE_EVALUATION",
+        "L4_S15_ALPHA_OWNER",
+        "L5_S15_PERSUASIVE_LLM_FALSIFIER",
+        "L0_S15_WITNESSED_HUMAN_EVIDENCE"
+      ],
+      "reverse_product_path": [
+        "L5_S15_PERSUASIVE_LLM_FALSIFIER",
+        "L4_S15_ALPHA_OWNER",
+        "L3_S15_REFERENCE_AND_NATIVE_EVALUATION",
+        "L1_S15_ALPHA_RESEARCH",
+        "L0_S15_WITNESSED_HUMAN_EVIDENCE"
+      ],
+      "reverse_edges": [
+        {
+          "from": "L5_S15_PERSUASIVE_LLM_FALSIFIER",
+          "to": "L4_S15_ALPHA_OWNER",
+          "present": true
+        },
+        {
+          "from": "L4_S15_ALPHA_OWNER",
+          "to": "L3_S15_REFERENCE_AND_NATIVE_EVALUATION",
+          "present": true
+        },
+        {
+          "from": "L3_S15_REFERENCE_AND_NATIVE_EVALUATION",
+          "to": "L1_S15_ALPHA_RESEARCH",
+          "present": true
+        },
+        {
+          "from": "L1_S15_ALPHA_RESEARCH",
+          "to": "L0_S15_WITNESSED_HUMAN_EVIDENCE",
+          "present": true
+        }
+      ],
+      "all_reverse_edges_present": true,
+      "generic_governance_only": false,
+      "falsifier_node": "L5_S15_PERSUASIVE_LLM_FALSIFIER",
+      "falsifier_title": "Different histories produce lawful different reactions; same history allows divergent user branches; unseen activity stays unseen; a persuasive voice that cannot survive source severance fails",
+      "negative_tests": [
+        "test_missing_product_reverse_edge_fails",
+        "test_missing_product_reverse_path_fails"
+      ]
+    }
+  ],
+  "source_terminal": {
+    "generic_S_terminal": "L5_S_WORKSTREAM_PRIMARY_SOURCE",
+    "L5_SOURCE_HOLD_role": "legacy generic governance node, not S source terminal",
+    "remaining_11_source_rows_end_correctly": true
+  },
+  "negative_contract": {
+    "missing_forward_edge": "test_generic_only_product_path_fails",
+    "missing_reverse_edge": "test_missing_product_reverse_edge_fails",
+    "missing_reverse_path": "test_missing_product_reverse_path_fails",
+    "generic_only_backward": "validate_index.py rejects L1_GOVERNANCE-only six paths"
+  }
+}

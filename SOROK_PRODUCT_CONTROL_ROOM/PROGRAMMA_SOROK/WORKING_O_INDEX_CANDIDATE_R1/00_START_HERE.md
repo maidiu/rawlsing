@@ -18,7 +18,7 @@ Build PRE-MAIN is `5fc1d43e3d5412194d1f1eaa30ff448f84635e99`; refreshed current 
 - The full inherited denominator: 19 C/A, 40 M, 12 Sorok N, 16 O and 15 E = 102 definitions, plus 17 source-defined S0–S16 workstreams and 23 separate Pyat N/F rows.
 - R6’s 39-row / 94-file finite source close and nine `UNWIRED_SOURCE_PRESENT` material families.
 - Four independently returned code assets: `CP-A5-R2`, `C9C12-R2`, `B-F1CR-R2` and `V3CORE-R1`.
-- L0–L5 linked orchestration (219 nodes, 461 edges), three example traversals, backward paths from A0–A5 and S0–S16, preserved negatives and 46 owner slots.
+- L0–L5 linked orchestration (219 nodes, 485 edges), three example traversals, backward paths from A0–A5 and S0–S16, preserved negatives and 46 owner slots.
 - A sourcefree validator plus frozen source manifest and Git refresh verifier; it checks source-object identity, counts, links, product paths, holds and authority fields.
 
 ## What it does not prove
@@ -35,12 +35,12 @@ Build PRE-MAIN is `5fc1d43e3d5412194d1f1eaa30ff448f84635e99`; refreshed current 
 ## Read in this order
 
 1. `01_SOURCE_OF_TRUTH_REGISTRY.json` — authoritative row-level source of truth. Read `coverage`, `r6_source_close`, `four_returned_assets`, `negative_register`, `pyat_namespace`, `source_cut_metadata` and rows.
-2. `02_L0_L5_LINKED_ORCHESTRATION_INDEX.json` — L0 outcomes, L1 organs, L2 science/holds, L3 functions, L4 consumers and L5 evidence; 461 edges, three traversals and backward paths.
+2. `02_L0_L5_LINKED_ORCHESTRATION_INDEX.json` — L0 outcomes, L1 organs, L2 science/holds, L3 functions, L4 consumers and L5 evidence; 485 edges, three traversals and backward paths.
 3. `03_RECOVERY_AND_FOUR_RETURN_ASSET_INDEX.md` — recovery narrative, R6/R7 details, four-asset table, preserved negatives and test-count discipline.
 4. `04_UNDECIDED_SCIENCE_DEPENDENCY_AND_OWNER_SLOTS.json` — 46 science/source/authority/HQ slots, including Pyat N11/N12. These are questions for owners, not inferred answers.
 5. `05_VALIDATOR_AND_READBACK.md` — what was executed and what it can and cannot prove.
 6. `source_manifest.json` — 167 digest-bound exact source rows plus 3 reference sources.
-7. `validate_index.py` and `verify_source_manifest.py` — run offline consistency and real Git refresh verification; `test_validate_index.py` contains the 21-test fault suite.
+7. `validate_index.py` and `verify_source_manifest.py` — run offline consistency and real Git refresh verification; `test_validate_index.py` contains the 28-test fault suite.
 
 ## Three traversals for HQ
 

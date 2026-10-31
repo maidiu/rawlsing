@@ -1,0 +1,124 @@
+{
+  "schema": "SOROK_OINDEX_R4_SOURCE_MANIFEST_PREIMAGE_AND_CONSUMER_CONTRACT@1",
+  "repository": "maidiu/rawlsing",
+  "subject": {
+    "startup": "e50d32eb6816578145d17dcd637a0b90b3a1ef40",
+    "r4_commission_head": "4f9214a798b753092d35430f354c2a593658ce8a"
+  },
+  "source_manifest": {
+    "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/source_manifest.json",
+    "old_sha256": "b3d359f1bfe97a23b2c3fb356fde84c452ffe38ca874facbec7d5df086fdfa5c",
+    "new_sha256": "d3f1069784717ef2b4909d3f9d3fac0e55d4df61dd42a6b784629928bc4e83e8",
+    "old_manifest_digest": "ec223ad4b65650be556e0f28c05bf94936635baa7efb3c39d4efabfb5fa3d028",
+    "new_manifest_digest": "f8dc9d608afc78c0a13a5a63f411047a01160114d590bd095350b18ca286e1ea",
+    "rows": 167,
+    "references": 3,
+    "object_types": {
+      "blob": 166,
+      "tree": 1
+    },
+    "distinct_commits": 21,
+    "source_object_ids_unchanged": true,
+    "source_object_ids": 30
+  },
+  "claim_grades": {
+    "source_object_grade": "VERIFIED_OBJECT: Git object identity can be refreshed by verify_source_manifest.py",
+    "source_semantic_grade": "SOURCE_ASSERTED: source_kind and required/current-consumer prose are authored metadata, not externally signed",
+    "source_owner_anchor": "UNVERIFIED_NO_EXTERNAL_OWNER_ANCHOR: no original owner signature is present in this static cut",
+    "consumer_semantic_grade": "SOURCE_ASSERTED__NOT_VERIFIED: required consumer labels do not prove import",
+    "source_kind_rule": "DERIVED_FROM_OBJECT_TYPE_AND_PATH",
+    "source_kind_counts": {
+      "json_definition_or_evidence": 117,
+      "documentary_definition": 40,
+      "executable_source": 9,
+      "source_tree": 1
+    }
+  },
+  "consumer_counts": {
+    "sorok_none_proven_at_premain": 112,
+    "pyat_none_proven_at_premain": 23,
+    "total_none_proven_at_premain": 135,
+    "actual": 0,
+    "other_nonactual_sorok": 32,
+    "state_note": "Non-ACTUAL states are author/historical/test/not-runtime labels, never current consumer proof."
+  },
+  "actual_consumer_policy": {
+    "schema": "SOROK_OINDEX_CONSUMER_EVIDENCE_POLICY@1",
+    "actual_consumer_admissible": false,
+    "reason": "This static sourcefree index cut has no independently verifiable explicit approved consumer authority/owner evidence; ACTUAL is hard-rejected until a separate consumer manifest, Git-resolvable consumer object/edge, named owner and independent review exist.",
+    "expected_counts": {
+      "SOROK_NONE_PROVEN_AT_PREMAIN": 112,
+      "PYAT_NONE_PROVEN_AT_PREMAIN": 23,
+      "TOTAL_NONE_PROVEN_AT_PREMAIN": 135,
+      "ACTUAL": 0
+    },
+    "future_actual_requirements": [
+      "distinct consumer manifest row keyed by namespace,id,edge",
+      "Git-resolvable consumer commit/path/object_type/object_id/commit_time",
+      "named consumer owner or approved authority anchor independent of source_manifest.json",
+      "positive and same-consumer fault-negative evidence",
+      "independent reviewer acceptance"
+    ],
+    "forbidden_states": [
+      "ACTUAL"
+    ]
+  },
+  "seven_required_only_labels": [
+    {
+      "id": "C4",
+      "first_consumer": "REQUIRED_ONLY: C8 actual care/work encounter",
+      "required_consumer": "REQUIRED_ONLY: C8 actual care/work encounter",
+      "placeholder_meaning": "Required/named consumer only; no current ACTUAL importer."
+    },
+    {
+      "id": "C9",
+      "first_consumer": "REQUIRED_ONLY: E2 actual semantic response, C12 actor mirror",
+      "required_consumer": "REQUIRED_ONLY: E2 actual semantic response, C12 actor mirror",
+      "placeholder_meaning": "Required/named consumer only; no current ACTUAL importer."
+    },
+    {
+      "id": "O15",
+      "first_consumer": "REQUIRED_ONLY: C9 E2 actor-relative operation selector",
+      "required_consumer": "REQUIRED_ONLY: C9 E2 actor-relative operation selector",
+      "placeholder_meaning": "Required/named consumer only; no current ACTUAL importer."
+    },
+    {
+      "id": "E02",
+      "first_consumer": "REQUIRED_ONLY: C9 Rule T receipt\u2192later E2 earned-operation selector",
+      "required_consumer": "REQUIRED_ONLY: C9 Rule T receipt\u2192later E2 earned-operation selector",
+      "placeholder_meaning": "Required/named consumer only; no current ACTUAL importer."
+    },
+    {
+      "id": "E11",
+      "first_consumer": "REQUIRED_ONLY: Pyat N11/N12 world service\u2192C11 actual C12 person",
+      "required_consumer": "REQUIRED_ONLY: Pyat N11/N12 world service\u2192C11 actual C12 person",
+      "placeholder_meaning": "Required/named consumer only; no current ACTUAL importer."
+    },
+    {
+      "id": "E12",
+      "first_consumer": "REQUIRED_ONLY: C12 same actual person\u2192A0\u2013A5",
+      "required_consumer": "REQUIRED_ONLY: C12 same actual person\u2192A0\u2013A5",
+      "placeholder_meaning": "Required/named consumer only; no current ACTUAL importer."
+    },
+    {
+      "id": "E14",
+      "first_consumer": "REQUIRED_ONLY: CAN011 qualified composed operation/relation\u2192E2 semantic selector",
+      "required_consumer": "REQUIRED_ONLY: CAN011 qualified composed operation/relation\u2192E2 semantic selector",
+      "placeholder_meaning": "Required/named consumer only; no current ACTUAL importer."
+    }
+  ],
+  "readback": {
+    "validator": "PASS",
+    "git_refresh": "PASS, 167 rows + 3 references, 0 errors",
+    "pytest": "28 passed, 4 subtests passed",
+    "unittest": "28 tests OK",
+    "actual_consumer_hard_reject": true,
+    "source_manifest_identity": "166 blobs + 1 tree, 21 distinct commits including references; source object IDs unchanged from R3 subject"
+  },
+  "limits": [
+    "Object existence is not semantic authenticity.",
+    "Required-only labels are not current imports.",
+    "No original owner signature or native consumer is claimed.",
+    "No source recensus or source transplant."
+  ]
+}

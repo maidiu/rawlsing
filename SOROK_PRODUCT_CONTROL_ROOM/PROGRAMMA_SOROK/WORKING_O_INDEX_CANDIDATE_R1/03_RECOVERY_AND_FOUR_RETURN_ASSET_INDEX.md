@@ -150,7 +150,7 @@ BP2P4J's `severance.py` at blob `1e5fc5237dd3b2d94bfa44842fb0dd2b41e20607` catch
 
 - `00_START_HERE.md` — navigation and authority limits.
 - `01_SOURCE_OF_TRUTH_REGISTRY.json` — 144 Sorok rows plus 23 Pyat rows, R6/four-asset summaries and source metadata.
-- `02_L0_L5_LINKED_ORCHESTRATION_INDEX.json` — 219 L0–L5 nodes, 461 edges, three traversals and backward paths.
+- `02_L0_L5_LINKED_ORCHESTRATION_INDEX.json` — 219 L0–L5 nodes, 485 edges, three traversals and backward paths.
 - `04_UNDECIDED_SCIENCE_DEPENDENCY_AND_OWNER_SLOTS.json` — 46 owner/science/source slots, including Pyat N11/N12.
 - `05_VALIDATOR_AND_READBACK.md` — executed validator and readback.
 - `validate_index.py` — sourcefree validator.

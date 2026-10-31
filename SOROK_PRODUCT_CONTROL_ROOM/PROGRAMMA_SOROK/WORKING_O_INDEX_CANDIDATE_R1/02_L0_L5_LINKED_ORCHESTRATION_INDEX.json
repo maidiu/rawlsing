@@ -1,6 +1,6 @@
 {
   "backward_paths": {
-    "*_limits": "Paths are navigation/backward index links, not claims of scientific sufficiency. A0-A5 remain sourcefree candidates; S0-S16 end at an exact source hold, not a recovered module.",
+    "*_limits": "Paths are navigation/backward index links, not claims of scientific sufficiency. A0-A5 remain sourcefree candidates; the six product S5/S7/S11/S13/S14/S15 reverse paths end at their specific L0 product outcomes; S0-S16 source rows end at L5_S_WORKSTREAM_PRIMARY_SOURCE, not L5_SOURCE_HOLD.",
     "A0": [
       "A0",
       "C12",
@@ -87,8 +87,11 @@
     ],
     "S11": [
       "S11",
-      "L1_GOVERNANCE",
-      "L5_S_WORKSTREAM_PRIMARY_SOURCE"
+      "L1_S11_UX_SURFACE",
+      "L3_S11_ENCOUNTER_SURFACE",
+      "L4_S11_UX_OWNER",
+      "L5_S11_OMNISCIENCE_AND_BLACKBOX_FALSIFIER",
+      "L0_S11_TRUTHFUL_ENCOUNTER"
     ],
     "S12": [
       "S12",
@@ -97,18 +100,27 @@
     ],
     "S13": [
       "S13",
-      "L1_GOVERNANCE",
-      "L5_S_WORKSTREAM_PRIMARY_SOURCE"
+      "L1_S13_ECONOMIC_CONSTRAINTS",
+      "L3_S13_REVENUE_MODEL",
+      "L4_S13_BUSINESS_OWNER",
+      "L5_S13_EXTRACTIVE_INCENTIVE_FALSIFIER",
+      "L0_S13_NEIGHBOR_AS_END"
     ],
     "S14": [
       "S14",
-      "L1_GOVERNANCE",
-      "L5_S_WORKSTREAM_PRIMARY_SOURCE"
+      "L1_S14_SAFETY_PRIVACY",
+      "L3_S14_ABUSE_PRIVACY_BOUNDARY",
+      "L4_S14_SAFETY_OWNER",
+      "L5_S14_COERCION_AND_CROSS_USER_FALSIFIER",
+      "L0_S14_NONPREDATORY_ENCOUNTER"
     ],
     "S15": [
       "S15",
-      "L1_GOVERNANCE",
-      "L5_S_WORKSTREAM_PRIMARY_SOURCE"
+      "L1_S15_ALPHA_RESEARCH",
+      "L3_S15_REFERENCE_AND_NATIVE_EVALUATION",
+      "L4_S15_ALPHA_OWNER",
+      "L5_S15_PERSUASIVE_LLM_FALSIFIER",
+      "L0_S15_WITNESSED_HUMAN_EVIDENCE"
     ],
     "S16": [
       "S16",
@@ -132,8 +144,11 @@
     ],
     "S5": [
       "S5",
-      "L1_GOVERNANCE",
-      "L5_S_WORKSTREAM_PRIMARY_SOURCE"
+      "L1_S5_FLOURISHING",
+      "L3_S5_NORMATIVE_MODEL",
+      "L4_S5_FLOURISHING_OWNER",
+      "L5_S5_HARMFUL_ATTACHMENT_COUNTEREXAMPLE",
+      "L0_S5_FLOURISHING_AGENCY"
     ],
     "S6": [
       "S6",
@@ -142,8 +157,11 @@
     ],
     "S7": [
       "S7",
-      "L1_GOVERNANCE",
-      "L5_S_WORKSTREAM_PRIMARY_SOURCE"
+      "L1_S7_USER_PRACTICE",
+      "L3_S7_PRACTICE_INFERENCE",
+      "L4_S7_PRAXIS_OWNER",
+      "L5_S7_ONE_ACTION_DIAGNOSIS_FALSIFIER",
+      "L0_S7_USER_PRAXIS"
     ],
     "S8": [
       "S8",
@@ -164,7 +182,7 @@
     "rule": "Do not present a pre-R6/R7 claim as post-R6/R7 source closure.",
     "s0_s16": "R7_EXACT_HOLD"
   },
-  "edge_count": 461,
+  "edge_count": 485,
   "edges": [
     {
       "from": "L0_PERSON",
@@ -3392,210 +3410,432 @@
       "hq_judgment_required": true,
       "relation": "product_outcome_requires_specific_organ",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L1_S5_FLOURISHING"
+      "to": "L1_S5_FLOURISHING",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L1_S5_FLOURISHING",
       "hq_judgment_required": true,
       "relation": "specific_organ_poses_original_question",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "S5"
+      "to": "S5",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "S5",
       "hq_judgment_required": true,
       "relation": "question_requires_specified_function_or_hold",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L3_S5_NORMATIVE_MODEL"
+      "to": "L3_S5_NORMATIVE_MODEL",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L3_S5_NORMATIVE_MODEL",
       "hq_judgment_required": true,
       "relation": "function_or_spec_requires_owner_output",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L4_S5_FLOURISHING_OWNER"
+      "to": "L4_S5_FLOURISHING_OWNER",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L4_S5_FLOURISHING_OWNER",
       "hq_judgment_required": true,
       "relation": "owner_output_requires_material_user_falsifier",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L5_S5_HARMFUL_ATTACHMENT_COUNTEREXAMPLE"
+      "to": "L5_S5_HARMFUL_ATTACHMENT_COUNTEREXAMPLE",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L0_S7_USER_PRAXIS",
       "hq_judgment_required": true,
       "relation": "product_outcome_requires_specific_organ",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L1_S7_USER_PRACTICE"
+      "to": "L1_S7_USER_PRACTICE",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L1_S7_USER_PRACTICE",
       "hq_judgment_required": true,
       "relation": "specific_organ_poses_original_question",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "S7"
+      "to": "S7",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "S7",
       "hq_judgment_required": true,
       "relation": "question_requires_specified_function_or_hold",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L3_S7_PRACTICE_INFERENCE"
+      "to": "L3_S7_PRACTICE_INFERENCE",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L3_S7_PRACTICE_INFERENCE",
       "hq_judgment_required": true,
       "relation": "function_or_spec_requires_owner_output",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L4_S7_PRAXIS_OWNER"
+      "to": "L4_S7_PRAXIS_OWNER",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L4_S7_PRAXIS_OWNER",
       "hq_judgment_required": true,
       "relation": "owner_output_requires_material_user_falsifier",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L5_S7_ONE_ACTION_DIAGNOSIS_FALSIFIER"
+      "to": "L5_S7_ONE_ACTION_DIAGNOSIS_FALSIFIER",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L0_S11_TRUTHFUL_ENCOUNTER",
       "hq_judgment_required": true,
       "relation": "product_outcome_requires_specific_organ",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L1_S11_UX_SURFACE"
+      "to": "L1_S11_UX_SURFACE",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L1_S11_UX_SURFACE",
       "hq_judgment_required": true,
       "relation": "specific_organ_poses_original_question",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "S11"
+      "to": "S11",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "S11",
       "hq_judgment_required": true,
       "relation": "question_requires_specified_function_or_hold",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L3_S11_ENCOUNTER_SURFACE"
+      "to": "L3_S11_ENCOUNTER_SURFACE",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L3_S11_ENCOUNTER_SURFACE",
       "hq_judgment_required": true,
       "relation": "function_or_spec_requires_owner_output",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L4_S11_UX_OWNER"
+      "to": "L4_S11_UX_OWNER",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L4_S11_UX_OWNER",
       "hq_judgment_required": true,
       "relation": "owner_output_requires_material_user_falsifier",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L5_S11_OMNISCIENCE_AND_BLACKBOX_FALSIFIER"
+      "to": "L5_S11_OMNISCIENCE_AND_BLACKBOX_FALSIFIER",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L0_S13_NEIGHBOR_AS_END",
       "hq_judgment_required": true,
       "relation": "product_outcome_requires_specific_organ",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L1_S13_ECONOMIC_CONSTRAINTS"
+      "to": "L1_S13_ECONOMIC_CONSTRAINTS",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L1_S13_ECONOMIC_CONSTRAINTS",
       "hq_judgment_required": true,
       "relation": "specific_organ_poses_original_question",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "S13"
+      "to": "S13",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "S13",
       "hq_judgment_required": true,
       "relation": "question_requires_specified_function_or_hold",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L3_S13_REVENUE_MODEL"
+      "to": "L3_S13_REVENUE_MODEL",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L3_S13_REVENUE_MODEL",
       "hq_judgment_required": true,
       "relation": "function_or_spec_requires_owner_output",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L4_S13_BUSINESS_OWNER"
+      "to": "L4_S13_BUSINESS_OWNER",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L4_S13_BUSINESS_OWNER",
       "hq_judgment_required": true,
       "relation": "owner_output_requires_material_user_falsifier",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L5_S13_EXTRACTIVE_INCENTIVE_FALSIFIER"
+      "to": "L5_S13_EXTRACTIVE_INCENTIVE_FALSIFIER",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L0_S14_NONPREDATORY_ENCOUNTER",
       "hq_judgment_required": true,
       "relation": "product_outcome_requires_specific_organ",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L1_S14_SAFETY_PRIVACY"
+      "to": "L1_S14_SAFETY_PRIVACY",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L1_S14_SAFETY_PRIVACY",
       "hq_judgment_required": true,
       "relation": "specific_organ_poses_original_question",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "S14"
+      "to": "S14",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "S14",
       "hq_judgment_required": true,
       "relation": "question_requires_specified_function_or_hold",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L3_S14_ABUSE_PRIVACY_BOUNDARY"
+      "to": "L3_S14_ABUSE_PRIVACY_BOUNDARY",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L3_S14_ABUSE_PRIVACY_BOUNDARY",
       "hq_judgment_required": true,
       "relation": "function_or_spec_requires_owner_output",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L4_S14_SAFETY_OWNER"
+      "to": "L4_S14_SAFETY_OWNER",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L4_S14_SAFETY_OWNER",
       "hq_judgment_required": true,
       "relation": "owner_output_requires_material_user_falsifier",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L5_S14_COERCION_AND_CROSS_USER_FALSIFIER"
+      "to": "L5_S14_COERCION_AND_CROSS_USER_FALSIFIER",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L0_S15_WITNESSED_HUMAN_EVIDENCE",
       "hq_judgment_required": true,
       "relation": "product_outcome_requires_specific_organ",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L1_S15_ALPHA_RESEARCH"
+      "to": "L1_S15_ALPHA_RESEARCH",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L1_S15_ALPHA_RESEARCH",
       "hq_judgment_required": true,
       "relation": "specific_organ_poses_original_question",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "S15"
+      "to": "S15",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "S15",
       "hq_judgment_required": true,
       "relation": "question_requires_specified_function_or_hold",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L3_S15_REFERENCE_AND_NATIVE_EVALUATION"
+      "to": "L3_S15_REFERENCE_AND_NATIVE_EVALUATION",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L3_S15_REFERENCE_AND_NATIVE_EVALUATION",
       "hq_judgment_required": true,
       "relation": "function_or_spec_requires_owner_output",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L4_S15_ALPHA_OWNER"
+      "to": "L4_S15_ALPHA_OWNER",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
     },
     {
       "from": "L4_S15_ALPHA_OWNER",
       "hq_judgment_required": true,
       "relation": "owner_output_requires_material_user_falsifier",
       "status": "CONCEPTUAL_HQ_CANDIDATE_EDGE",
-      "to": "L5_S15_PERSUASIVE_LLM_FALSIFIER"
+      "to": "L5_S15_PERSUASIVE_LLM_FALSIFIER",
+      "cycle_class": "PRODUCT_FORWARD_LINK"
+    },
+    {
+      "from": "L5_S5_HARMFUL_ATTACHMENT_COUNTEREXAMPLE",
+      "to": "L4_S5_FLOURISHING_OWNER",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L4_S5_FLOURISHING_OWNER",
+      "to": "L3_S5_NORMATIVE_MODEL",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L3_S5_NORMATIVE_MODEL",
+      "to": "L1_S5_FLOURISHING",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L1_S5_FLOURISHING",
+      "to": "L0_S5_FLOURISHING_AGENCY",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L5_S7_ONE_ACTION_DIAGNOSIS_FALSIFIER",
+      "to": "L4_S7_PRAXIS_OWNER",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L4_S7_PRAXIS_OWNER",
+      "to": "L3_S7_PRACTICE_INFERENCE",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L3_S7_PRACTICE_INFERENCE",
+      "to": "L1_S7_USER_PRACTICE",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L1_S7_USER_PRACTICE",
+      "to": "L0_S7_USER_PRAXIS",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L5_S11_OMNISCIENCE_AND_BLACKBOX_FALSIFIER",
+      "to": "L4_S11_UX_OWNER",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L4_S11_UX_OWNER",
+      "to": "L3_S11_ENCOUNTER_SURFACE",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L3_S11_ENCOUNTER_SURFACE",
+      "to": "L1_S11_UX_SURFACE",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L1_S11_UX_SURFACE",
+      "to": "L0_S11_TRUTHFUL_ENCOUNTER",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L5_S13_EXTRACTIVE_INCENTIVE_FALSIFIER",
+      "to": "L4_S13_BUSINESS_OWNER",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L4_S13_BUSINESS_OWNER",
+      "to": "L3_S13_REVENUE_MODEL",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L3_S13_REVENUE_MODEL",
+      "to": "L1_S13_ECONOMIC_CONSTRAINTS",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L1_S13_ECONOMIC_CONSTRAINTS",
+      "to": "L0_S13_NEIGHBOR_AS_END",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L5_S14_COERCION_AND_CROSS_USER_FALSIFIER",
+      "to": "L4_S14_SAFETY_OWNER",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L4_S14_SAFETY_OWNER",
+      "to": "L3_S14_ABUSE_PRIVACY_BOUNDARY",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L3_S14_ABUSE_PRIVACY_BOUNDARY",
+      "to": "L1_S14_SAFETY_PRIVACY",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L1_S14_SAFETY_PRIVACY",
+      "to": "L0_S14_NONPREDATORY_ENCOUNTER",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L5_S15_PERSUASIVE_LLM_FALSIFIER",
+      "to": "L4_S15_ALPHA_OWNER",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L4_S15_ALPHA_OWNER",
+      "to": "L3_S15_REFERENCE_AND_NATIVE_EVALUATION",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L3_S15_REFERENCE_AND_NATIVE_EVALUATION",
+      "to": "L1_S15_ALPHA_RESEARCH",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
+    },
+    {
+      "from": "L1_S15_ALPHA_RESEARCH",
+      "to": "L0_S15_WITNESSED_HUMAN_EVIDENCE",
+      "relation": "PRODUCT_REVERSE_LINK",
+      "status": "NAVIGATION_ONLY",
+      "cycle_class": "PRODUCT_BACKWARD_LINK",
+      "hq_judgment_required": true
     }
   ],
   "hq_joint_test_requirement": {
@@ -6554,7 +6794,7 @@
     "blob": "2a0a3a42d66f566f92d5c333fbbea4a5adb383b2",
     "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
     "exact_17": true,
-    "note": "Current adopted/issued workstream dispositions still require HQ; L5_SOURCE_HOLD remains generic governance/review terminal; S entries no longer absent source.",
+    "note": "Current adopted/issued workstream dispositions still require HQ. S0-S16 source rows end at L5_S_WORKSTREAM_PRIMARY_SOURCE; L5_SOURCE_HOLD remains a legacy generic governance node, not the S source terminal.",
     "path": "SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md",
     "status": "SOURCE_FOUND_HISTORICAL_ACTIVE_EXPLORATORY"
   },
@@ -6683,5 +6923,49 @@
       "question": "When can changed ideology/theology be attributed to this actor history, and when must the index answer UNKNOWN?",
       "title": "Historical ideological/theological transformation or non-transformation"
     }
-  ]
+  ],
+  "reverse_product_paths": {
+    "S5": [
+      "L5_S5_HARMFUL_ATTACHMENT_COUNTEREXAMPLE",
+      "L4_S5_FLOURISHING_OWNER",
+      "L3_S5_NORMATIVE_MODEL",
+      "L1_S5_FLOURISHING",
+      "L0_S5_FLOURISHING_AGENCY"
+    ],
+    "S7": [
+      "L5_S7_ONE_ACTION_DIAGNOSIS_FALSIFIER",
+      "L4_S7_PRAXIS_OWNER",
+      "L3_S7_PRACTICE_INFERENCE",
+      "L1_S7_USER_PRACTICE",
+      "L0_S7_USER_PRAXIS"
+    ],
+    "S11": [
+      "L5_S11_OMNISCIENCE_AND_BLACKBOX_FALSIFIER",
+      "L4_S11_UX_OWNER",
+      "L3_S11_ENCOUNTER_SURFACE",
+      "L1_S11_UX_SURFACE",
+      "L0_S11_TRUTHFUL_ENCOUNTER"
+    ],
+    "S13": [
+      "L5_S13_EXTRACTIVE_INCENTIVE_FALSIFIER",
+      "L4_S13_BUSINESS_OWNER",
+      "L3_S13_REVENUE_MODEL",
+      "L1_S13_ECONOMIC_CONSTRAINTS",
+      "L0_S13_NEIGHBOR_AS_END"
+    ],
+    "S14": [
+      "L5_S14_COERCION_AND_CROSS_USER_FALSIFIER",
+      "L4_S14_SAFETY_OWNER",
+      "L3_S14_ABUSE_PRIVACY_BOUNDARY",
+      "L1_S14_SAFETY_PRIVACY",
+      "L0_S14_NONPREDATORY_ENCOUNTER"
+    ],
+    "S15": [
+      "L5_S15_PERSUASIVE_LLM_FALSIFIER",
+      "L4_S15_ALPHA_OWNER",
+      "L3_S15_REFERENCE_AND_NATIVE_EVALUATION",
+      "L1_S15_ALPHA_RESEARCH",
+      "L0_S15_WITNESSED_HUMAN_EVIDENCE"
+    ]
+  }
 }

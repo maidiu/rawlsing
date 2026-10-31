@@ -27,6 +27,19 @@ def _git(repo: Path, *args: str) -> str:
     return result.stdout.strip()
 
 
+def _derive_source_kind(object_type: str, path: str) -> str:
+    if object_type == "tree":
+        return "source_tree"
+    extension = path.rsplit(".", 1)[-1].lower() if "." in path.rsplit("/", 1)[-1] else ""
+    if extension == "py":
+        return "executable_source"
+    if extension == "md":
+        return "documentary_definition"
+    if extension in ("json", "jsonl"):
+        return "json_definition_or_evidence"
+    return "opaque_blob"
+
+
 def _same_time(left: str, right: str) -> bool:
     try:
         return (datetime.fromisoformat(left.replace("Z", "+00:00"))
@@ -46,6 +59,18 @@ def verify(root: Path, repo: Path) -> dict[str, Any]:
         errors.append("manifest_digest_mismatch")
     if len(rows) != 167:
         errors.append(f"row_count:{len(rows)}")
+    policy = manifest.get("consumer_evidence_policy", {})
+    if policy.get("actual_consumer_admissible") is not False:
+        errors.append("actual_consumer_policy_not_forbidden")
+    expected_counts = policy.get("expected_counts", {})
+    if expected_counts.get("TOTAL_NONE_PROVEN_AT_PREMAIN") != 135 or expected_counts.get("ACTUAL") != 0:
+        errors.append("consumer_evidence_denominator_policy_mismatch")
+    none_proven = sum(1 for row in rows if row.get("actual_consumer_state") == "NONE_PROVEN_AT_PREMAIN")
+    actual = sum(1 for row in rows if row.get("actual_consumer_state") == "ACTUAL")
+    if none_proven != 135:
+        errors.append(f"none_proven_count:{none_proven}")
+    if actual != 0:
+        errors.append(f"actual_consumer_count:{actual}")
     for item in rows + references:
         label = item.get("namespace", "REF") + ":" + str(item.get("id", item.get("label")))
         commit = item.get("commit", "")
@@ -66,6 +91,12 @@ def verify(root: Path, repo: Path) -> dict[str, Any]:
             errors.append(f"{label}:object_id:{actual_id}!={object_id}")
         if not _same_time(actual_time, timestamp):
             errors.append(f"{label}:timestamp:{actual_time}!={timestamp}")
+        if item.get("source_kind") != _derive_source_kind(object_type, path):
+            errors.append(f"{label}:source_kind_not_derived")
+        if item.get("actual_consumer_evidence") is not None:
+            errors.append(f"{label}:forbidden_actual_consumer_evidence")
+        if item.get("actual_consumer_state") == "ACTUAL":
+            errors.append(f"{label}:actual_consumer_forbidden")
         if object_type == "tree":
             tree_files = item.get("tree_files", [])
             actual_files = _git(repo, "ls-tree", "-r", "--name-only", f"{commit}:{path}").splitlines()

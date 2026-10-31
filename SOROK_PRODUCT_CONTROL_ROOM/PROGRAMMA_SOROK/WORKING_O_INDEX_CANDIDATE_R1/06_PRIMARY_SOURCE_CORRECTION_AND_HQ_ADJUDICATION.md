@@ -15,11 +15,11 @@ They are distinct from `V3_COURTS` S0/S1 research stages and the independent S39
 
 R7 `7f25fb9bfc48679a47ccc61b36354f20fef54f1c` called `RECOVERY_EXACT_HOLD` for original S0–S16; O-INDEX `59b4d607697af8bba668122f42b53868fb2758bf` propagated the error to 17 source-less rows, backward paths ending at `L5_SOURCE_HOLD`, and an explicit validator invariant requiring `0/17`, `evidence_source=None` and `first_consumer=UNKNOWN`. The seven author-reported tests were consistent with the wrong oracle; therefore their PASS did not establish external primary-source completeness.
 
-This correction amends the working index in an **independent derived branch**, not the original worker branch. The 144 Sorok records remain, but 17 are now source-defined and question/output-grounded; the index has 219 nodes and 461 edges, including an exact S-source L5 terminal. A 40-slot former `S0_S16_SOURCE` entry is now an owner **current-adoption** question, not a source-recovery hold.
+This correction amends the working index in an **independent derived branch**, not the original worker branch. The 144 Sorok records remain, but 17 are now source-defined and question/output-grounded; the index has 219 nodes and 485 edges, including an exact S-source L5 terminal. A 40-slot former `S0_S16_SOURCE` entry is now an owner **current-adoption** question, not a source-recovery hold.
 
 The sourcefree validator was changed to demand all 17 source records with the exact primary owner commit/path/blob/question/output, and reject missing or forged source. Two new adversarial unit tests were authored for source removal and forged blob.
 
-**Current proof grade:** the R3 repair executed the source manifest, offline validator, Git refresh verifier, 21-test suite and all required source/product mutations in a local S2 environment. The resulting index has 144 rows, 17 S records, 219 nodes, 461 edges, 17/17 source links, 46 owner slots and no dangling edges. The old `VALIDATION_RESULTS.json` / `VALIDATOR_TEST_RESULTS.txt` remain pre-correction source-blind evidence and are SUPERSEDED; they are not cited as proof.
+**Current proof grade:** the R3 repair executed the source manifest, offline validator, Git refresh verifier, 28-test suite and all required source/product mutations in a local S2 environment. The resulting index has 144 rows, 17 S records, 219 nodes, 485 edges, 17/17 source links, 46 owner slots and no dangling edges. The old `VALIDATION_RESULTS.json` / `VALIDATOR_TEST_RESULTS.txt` remain pre-correction source-blind evidence and are SUPERSEDED; they are not cited as proof.
 
 ## Recovery disposition for HQ
 

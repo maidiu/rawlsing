@@ -94,6 +94,14 @@ CONSUMER_STATES = {
     "ACTUAL",
 }
 ALLOWED_SOURCE_METADATA_FIELDS = {"timestamp", "grade", "blob", "source_path", "read_status"}
+CONSUMER_CLAIM_GRADES = {
+    "NONE_PROVEN_AT_PREMAIN": "NONE_PROVEN_AT_PREMAIN",
+    "NOT_A_RUNTIME_MODULE": "NOT_A_RUNTIME_MODULE",
+    "AUTHOR_TESTED_ONLY": "AUTHOR_TESTED_ONLY__NOT_ACTUAL",
+    "HISTORICAL_SOURCE_ONLY": "HISTORICAL_SOURCE_ONLY__NOT_ACTUAL",
+    "HISTORICAL_OR_AUTHOR_TESTED_ONLY": "HISTORICAL_OR_AUTHOR_TESTED_ONLY__NOT_ACTUAL",
+}
+EXPECTED_NONE_PROVEN = {"SOROK": 112, "PYAT": 23, "TOTAL": 135}
 REQUIRED_PRODUCT_LINKS = {
     "S5": ("L0_S5_FLOURISHING_AGENCY", "L1_S5_FLOURISHING", "L3_S5_NORMATIVE_MODEL", "L4_S5_FLOURISHING_OWNER", "L5_S5_HARMFUL_ATTACHMENT_COUNTEREXAMPLE"),
     "S7": ("L0_S7_USER_PRAXIS", "L1_S7_USER_PRACTICE", "L3_S7_PRACTICE_INFERENCE", "L4_S7_PRAXIS_OWNER", "L5_S7_ONE_ACTION_DIAGNOSIS_FALSIFIER"),
@@ -111,6 +119,19 @@ class ValidationError(AssertionError):
 def _require(condition: bool, message: str) -> None:
     if not condition:
         raise ValidationError(message)
+
+
+def _derive_source_kind(object_type: str, path: str) -> str:
+    if object_type == "tree":
+        return "source_tree"
+    extension = path.rsplit(".", 1)[-1].lower() if "." in path.rsplit("/", 1)[-1] else ""
+    if extension == "py":
+        return "executable_source"
+    if extension == "md":
+        return "documentary_definition"
+    if extension in ("json", "jsonl"):
+        return "json_definition_or_evidence"
+    return "opaque_blob"
 
 
 def _same_commit_time(left: str, right: str) -> bool:
@@ -173,6 +194,22 @@ def validate(root: Path) -> dict[str, Any]:
              "source manifest digest mismatch")
     manifest_by_id = {(item["namespace"], item["id"]): item for item in manifest_rows}
     _require(len(manifest_by_id) == 167, "source manifest duplicate identity")
+    policy = registry.get("consumer_evidence_policy", {})
+    _require(policy.get("actual_consumer_admissible") is False,
+             "actual consumer evidence must remain inadmissible in this static index cut")
+    _require(policy.get("expected_counts") == {
+        "SOROK_NONE_PROVEN_AT_PREMAIN": 112,
+        "PYAT_NONE_PROVEN_AT_PREMAIN": 23,
+        "TOTAL_NONE_PROVEN_AT_PREMAIN": 135,
+        "ACTUAL": 0,
+    }, "consumer evidence denominator policy mismatch")
+    _require(source_manifest.get("consumer_evidence_policy") == policy,
+             "source manifest consumer evidence policy mismatch")
+    claim_policy = registry.get("source_claim_policy", {})
+    _require(claim_policy.get("source_object_grade") == "VERIFIED_OBJECT", "source object grade policy")
+    _require(claim_policy.get("source_semantic_grade") == "SOURCE_ASSERTED", "source semantic grade policy")
+    _require(claim_policy.get("source_owner_anchor") == "UNVERIFIED_NO_EXTERNAL_OWNER_ANCHOR", "source owner anchor policy")
+    _require(source_manifest.get("source_claim_policy") == claim_policy, "source manifest claim policy mismatch")
     for name in (
         "00_START_HERE.md",
         "03_RECOVERY_AND_FOUR_RETURN_ASSET_INDEX.md",
@@ -230,6 +267,25 @@ def validate(root: Path) -> dict[str, Any]:
                      f"{row['id']}: source metadata path mismatch")
             _require(metadata[commit].get("blob") == reference_meta[commit]["object_id"],
                      f"{row['id']}: source metadata blob mismatch")
+        _require(row.get("actual_consumer_state") != "ACTUAL",
+                 f"{row['id']}: ACTUAL consumer forbidden in static index cut")
+        _require(row.get("actual_consumer_evidence") is None,
+                 f"{row['id']}: forbidden actual consumer evidence")
+        _require(row.get("consumer_semantic_grade") == "SOURCE_ASSERTED__NOT_VERIFIED",
+                 f"{row['id']}: consumer semantic grade")
+        _require(row.get("consumer_claim_grade") == CONSUMER_CLAIM_GRADES.get(row.get("actual_consumer_state")),
+                 f"{row['id']}: consumer claim grade")
+        _require(row.get("source_kind_basis") == "DERIVED_FROM_OBJECT_TYPE_AND_PATH",
+                 f"{row['id']}: source kind basis")
+        _require(row.get("source_object_grade") == "VERIFIED_OBJECT",
+                 f"{row['id']}: source object grade")
+        _require(row.get("source_semantic_grade") == "SOURCE_ASSERTED",
+                 f"{row['id']}: source semantic grade")
+        _require(row.get("source_owner_anchor") == "UNVERIFIED_NO_EXTERNAL_OWNER_ANCHOR",
+                 f"{row['id']}: source owner anchor")
+        if row.get("actual_consumer_state") == "NONE_PROVEN_AT_PREMAIN" and "actual" in row.get("first_consumer", "").lower():
+            _require(row.get("first_consumer", "").startswith("REQUIRED_ONLY:"),
+                     f"{row['id']}: NONE_PROVEN prose label must be REQUIRED_ONLY")
         if row["kind"] == "DECLARED_S0_S16_WORKSTREAM":
             _require(commit == "865b5b01e1a27e99020cf2bb389af8cd4c874b57", f"{row['id']}: source commit")
             _require(source["path"] == "SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md", f"{row['id']}: original Program Map")
@@ -237,7 +293,12 @@ def validate(root: Path) -> dict[str, Any]:
             _require(row["status_class"] == "SOURCE_PRESENT" and row["claim_epoch"] == "POST_SOURCE_CORRECTION", f"{row['id']}: exact source identity/status")
             _require(bool(row.get("question")) and bool(row.get("output")), f"{row['id']}: original question/output")
             _require(row["native_product_accepted"] is False and row["source_science_issued"] is False, f"{row['id']}: prohibited source-to-native promotion")
+    none_sorok = sum(1 for row in rows if row.get("actual_consumer_state") == "NONE_PROVEN_AT_PREMAIN")
+    actual_sorok = sum(1 for row in rows if row.get("actual_consumer_state") == "ACTUAL")
+    _require(none_sorok == EXPECTED_NONE_PROVEN["SOROK"], f"expected 112 Sorok NONE_PROVEN, got {none_sorok}")
+    _require(actual_sorok == 0, f"expected 0 Sorok ACTUAL, got {actual_sorok}")
     checks.append("no native/science promotion; every row has typed owner, grades, epoch and source time")
+    checks.append("Sorok consumers: 112 NONE_PROVEN_AT_PREMAIN / 0 ACTUAL; ACTUAL hard-rejected")
 
     for row in rows:
         key = ("SOROK", row["id"])
@@ -252,6 +313,15 @@ def validate(root: Path) -> dict[str, Any]:
                  f"{row['id']}: blob/object-type manifest mismatch")
         _require(source.get("blob") == (expected.get("object_id") if expected.get("object_type") == "blob" else None),
                  f"{row['id']}: blob/object-type manifest mismatch")
+        _require(expected.get("source_kind") == _derive_source_kind(expected.get("object_type", ""), expected.get("path", "")),
+                 f"{row['id']}: manifest source_kind is not derived")
+        for field in ("source_kind_basis", "source_object_grade", "source_semantic_grade",
+                      "source_owner_anchor", "consumer_semantic_grade", "consumer_claim_grade"):
+            _require(row.get(field) == expected.get(field), f"{row['id']}: {field} manifest mismatch")
+        _require(row.get("actual_consumer_state") != "ACTUAL",
+                 f"{row['id']}: ACTUAL consumer forbidden in manifest")
+        _require(row.get("actual_consumer_evidence") is None,
+                 f"{row['id']}: forbidden actual consumer evidence in manifest")
         _require(row.get("source_timestamp") == expected.get("source_timestamp"),
                  f"{row['id']}: source_timestamp manifest mismatch")
         _require(row.get("first_consumer_required") == expected.get("required_consumer"),
@@ -260,17 +330,8 @@ def validate(root: Path) -> dict[str, Any]:
                  f"{row['id']}: required consumer changed")
         _require(row.get("actual_consumer_state") in CONSUMER_STATES,
                  f"{row['id']}: untyped actual consumer state")
-        if row.get("actual_consumer_state") == "ACTUAL":
-            evidence = row.get("actual_consumer_evidence")
-            _require(isinstance(evidence, dict) and all(evidence.get(k) for k in
-                     ("commit", "path", "object_type", "object_id")),
-                     f"{row['id']}: ACTUAL consumer lacks source evidence")
         _require(row.get("actual_consumer_state") == expected.get("actual_consumer_state"),
                  f"{row['id']}: actual consumer state manifest mismatch")
-        if row.get("actual_consumer_state") == "ACTUAL":
-            evidence = row.get("actual_consumer_evidence")
-            _require(evidence == expected.get("actual_consumer_evidence"),
-                     f"{row['id']}: ACTUAL consumer evidence manifest mismatch")
         _require(_same_commit_time(metadata.get(source["commit"], {}).get("timestamp"),
                                    expected.get("source_timestamp")),
                  f"{row['id']}: source metadata timestamp manifest mismatch")
@@ -320,6 +381,14 @@ def validate(root: Path) -> dict[str, Any]:
         _require(row.get("native_product_accepted") is not True and row.get("source_science_issued") is not True, f"{row['id']}: native/science promotion")
         for field in ("owner", "owner_type", "direct_consumer", "next_evidence", "science_grade", "authority_grade"):
             _require(isinstance(row.get(field), str) and bool(row[field]), f"{row['id']}: missing {field}")
+        _require(row.get("actual_consumer_state") != "ACTUAL", f"{row['id']}: ACTUAL consumer forbidden")
+        _require(row.get("actual_consumer_evidence") is None, f"{row['id']}: forbidden actual consumer evidence")
+        _require(row.get("consumer_semantic_grade") == "SOURCE_ASSERTED__NOT_VERIFIED", f"{row['id']}: consumer semantic grade")
+        _require(row.get("consumer_claim_grade") == CONSUMER_CLAIM_GRADES.get(row.get("actual_consumer_state")), f"{row['id']}: consumer claim grade")
+        _require(row.get("source_kind_basis") == "DERIVED_FROM_OBJECT_TYPE_AND_PATH", f"{row['id']}: source kind basis")
+        _require(row.get("source_object_grade") == "VERIFIED_OBJECT", f"{row['id']}: source object grade")
+        _require(row.get("source_semantic_grade") == "SOURCE_ASSERTED", f"{row['id']}: source semantic grade")
+        _require(row.get("source_owner_anchor") == "UNVERIFIED_NO_EXTERNAL_OWNER_ANCHOR", f"{row['id']}: source owner anchor")
     _require("PYAT_N11" in {row["id"] for row in pyat_rows} and "PYAT_N12" in {row["id"] for row in pyat_rows}, "Pyat N11/N12 missing")
     for row in pyat_rows:
         expected = manifest_by_id.get(("PYAT", row["id"]))
@@ -329,21 +398,17 @@ def validate(root: Path) -> dict[str, Any]:
                       "source_timestamp"):
             _require(source.get(field) == expected.get(field),
                      f"{row['id']}: {field} manifest mismatch")
+        _require(expected.get("source_kind") == _derive_source_kind(expected.get("object_type", ""), expected.get("path", "")),
+                 f"{row['id']}: manifest source_kind is not derived")
+        for field in ("source_kind_basis", "source_object_grade", "source_semantic_grade",
+                      "source_owner_anchor", "consumer_semantic_grade", "consumer_claim_grade"):
+            _require(row.get(field) == expected.get(field), f"{row['id']}: {field} manifest mismatch")
         _require(row.get("first_consumer_required") == expected.get("required_consumer"),
                  f"{row['id']}: required consumer manifest mismatch")
         _require(row.get("actual_consumer_state") in CONSUMER_STATES,
                  f"{row['id']}: untyped actual consumer state")
-        if row.get("actual_consumer_state") == "ACTUAL":
-            evidence = row.get("actual_consumer_evidence")
-            _require(isinstance(evidence, dict) and all(evidence.get(k) for k in
-                     ("commit", "path", "object_type", "object_id")),
-                     f"{row['id']}: ACTUAL consumer lacks source evidence")
         _require(row.get("actual_consumer_state") == expected.get("actual_consumer_state"),
                  f"{row['id']}: actual consumer state manifest mismatch")
-        if row.get("actual_consumer_state") == "ACTUAL":
-            evidence = row.get("actual_consumer_evidence")
-            _require(evidence == expected.get("actual_consumer_evidence"),
-                     f"{row['id']}: ACTUAL consumer evidence manifest mismatch")
         _require(_same_commit_time(metadata.get(source["commit"], {}).get("timestamp"),
                                    expected.get("source_timestamp")),
                  f"{row['id']}: source metadata timestamp manifest mismatch")
@@ -354,7 +419,12 @@ def validate(root: Path) -> dict[str, Any]:
                      f"{row['id']}: {rowfield} manifest mismatch")
         _require(row.get("status_class") == expected.get("status"),
                  f"{row['id']}: status manifest mismatch")
+    none_pyat = sum(1 for row in pyat_rows if row.get("actual_consumer_state") == "NONE_PROVEN_AT_PREMAIN")
+    actual_pyat = sum(1 for row in pyat_rows if row.get("actual_consumer_state") == "ACTUAL")
+    _require(none_pyat == EXPECTED_NONE_PROVEN["PYAT"], f"expected 23 Pyat NONE_PROVEN, got {none_pyat}")
+    _require(actual_pyat == 0, f"expected 0 Pyat ACTUAL, got {actual_pyat}")
     checks.append("23 Pyat rows match the frozen source manifest")
+    checks.append("total 135 NONE_PROVEN_AT_PREMAIN / 0 ACTUAL hard count")
     checks.append("separate Pyat N0-N12/F1-F8 rows, no actor psyche, no id collision")
 
     nodes = orchestration["nodes"]
@@ -396,11 +466,20 @@ def validate(root: Path) -> dict[str, Any]:
         key = f"A{index}"
         _require(key in backward and backward[key][0] == key and backward[key][-1] == "C0", f"{key}: backward path")
         _require(all(item in node_ids for item in backward[key]), f"{key}: unknown backward node")
+    reverse_paths = orchestration.get("reverse_product_paths", {})
     for index in range(17):
         key = f"S{index}"
-        _require(key in backward and backward[key][-1] == "L5_S_WORKSTREAM_PRIMARY_SOURCE", f"{key}: backward hold path")
-        _require(all(item in node_ids for item in backward[key]), f"{key}: unknown hold node")
-    checks.append("backward paths resolve for A0-A5 and source-defined S0-S16")
+        _require(key in backward and all(item in node_ids for item in backward[key]), f"{key}: backward path nodes")
+        if key in REQUIRED_PRODUCT_LINKS:
+            l0, l1, l3, l4, l5 = REQUIRED_PRODUCT_LINKS[key]
+            _require(backward[key] == [key, l1, l3, l4, l5, l0], f"{key}: specific backward path")
+            _require(reverse_paths.get(key) == [l5, l4, l3, l1, l0], f"{key}: specific reverse product path")
+            _require("L1_GOVERNANCE" not in backward[key], f"{key}: generic backward path forbidden")
+            for left, right in ((l5, l4), (l4, l3), (l3, l1), (l1, l0)):
+                _require(any(edge["from"] == left and edge["to"] == right and edge.get("relation") == "PRODUCT_REVERSE_LINK" for edge in edges), f"{key}: missing reverse edge {left}->{right}")
+        else:
+            _require(backward[key][-1] == "L5_S_WORKSTREAM_PRIMARY_SOURCE", f"{key}: source terminal")
+    checks.append("A0-A5 and S0-S16 backward paths resolve; six product reverse paths are specific")
 
     traversals = orchestration["traversals"]
     _require(len(traversals) == 3, "three traversals")
