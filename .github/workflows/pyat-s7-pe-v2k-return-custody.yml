@@ -1,0 +1,26 @@
+name: PYAT S7 PE V2K real return source and JUnit custody
+on:
+  push:
+    branches: [agent/pyat-hq-s7-pe-v2k-return-intake-20261031-r1]
+permissions:
+  contents: read
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+      - name: Pin exact original returns as data, not execution
+        run: |
+          git fetch --no-tags --filter=blob:none origin 026ca72c24d564d4dc203f68385df8c75b4bd3a7 9c030bf4c239d2e14f2b5a8a02ff7b44906cd0c7 dd1c15063672787eaf6834161c03008fd62a0b0a
+      - name: Check S7 1881 grouping, PE JUnit XML, and V2K 38 function decisions
+        run: python3 PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/17_s7_pe_v2k_return_static_acceptance.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-s7-pe-v2k-return-custody
+          path: pyat-return-s7-pe-v2k/
+          if-no-files-found: warn
