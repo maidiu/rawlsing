@@ -1,0 +1,298 @@
+{
+  "schema": "SOROK_RRIF_R3_OLD_NEW_FUNCTION_CODE_IMPORT_AND_CONSUMER_DELTA@1",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/sorok-rrif-r3-four-unintegrated-assets-genuine-consumer-fanin-20261031",
+  "startup_sha": "598d9e9eaba5143950c63317705fd09104fbf463",
+  "branch_base_sha": "c895c40ea6f2ca1f383a6841c908e139749e8e60",
+  "date": "2026-10-31",
+  "r2_baseline": {
+    "commit": "598d9e9eaba5143950c63317705fd09104fbf463",
+    "code_root": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2",
+    "status": "UNCHANGED_SOURCEFREE_R2_JOIN_E_BASELINE",
+    "author_tests": "20 passed, exit 0",
+    "review_status": "SEPARATE_REVIEW_NOT_ACCEPTED_BY_THIS_RETURN",
+    "files_modified_by_this_return": false
+  },
+  "consumer_entrypoints": [
+    {
+      "module": "rrif_r3_extension.cp_a5_consumer",
+      "functions": ["run_cp_a5_consumer", "ask_cp_a5", "view_cp_a5"],
+      "new_file": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/rrif_r3_extension/cp_a5_consumer.py",
+      "sha256": "ce835f2e855baf103904fb50933d6474d4302a46c7d775e88d02a3c67b773961",
+      "actual_output": {
+        "status": "PASS",
+        "decision": "RETAIN_TOOL",
+        "tool_status": "OK",
+        "market_status": "UNKNOWN",
+        "observed_event_count": 20,
+        "accessed_event_count": 16,
+        "unperceived_event_count": 4,
+        "read_only": true
+      }
+    },
+    {
+      "module": "rrif_r3_extension.c9c12_consumer",
+      "functions": ["read_r2_c12", "read_r2_c9_snapshot"],
+      "new_file": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/rrif_r3_extension/c9c12_consumer.py",
+      "sha256": "b739389cefc4fc93817927031e9d29d539b78e8d114b70411017c584b49fca87",
+      "actual_output": {
+        "c12_status": "C12_COLD_READ_OK",
+        "fork_status": "VERIFIED",
+        "content_ok": true,
+        "schema_ok": true,
+        "anchor_status": "OWNER_ANCHOR_REQUIRED",
+        "c9_actor_status": "C9_SOURCE_MISSING",
+        "c9_actor_reason": "OperationalError:no such table: actor_meta"
+      }
+    }
+  ],
+  "assets": [
+    {
+      "asset": "CP-A5-R2",
+      "source_commit": "913765328e4fab12b150ea01421ed6b445158184",
+      "source_kind": "commit",
+      "status": "SOURCEFREE_CONSUMED_VERIFIED",
+      "status_scope": "CP-A5's own sourcefree life/encounter root",
+      "secondary_status": {
+        "status": "INCOMPATIBLE_EXACT_SOURCECUT",
+        "scope": "R2 same-root product",
+        "code": "BP2_ORIGIN_INVARIANT_MISMATCH",
+        "expected_actor": "TEST_ONLY_BP1_ACTOR_A",
+        "actual_actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "first_incompatible_surface": "BP2 origin actor identity and dependent C8 digests"
+      },
+      "source_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-CP-A5-R2/candidate/cp_a5/encounter.py",
+          "blob": "8d388c2f10eec6b6d6ab0f3e5f1566b0053098e6",
+          "module": "cp_a5.encounter",
+          "function": "EncounterReader.ask / EncounterReader.view"
+        },
+        {
+          "path": "WORKER_RETURNS/SOROK-CP-A5-R2/candidate/cp_a5/scenario.py",
+          "blob": "09969ea3459530f09c60a9eb04a2d6c6f5b6ed5e",
+          "module": "cp_a5.scenario",
+          "function": "build_cp_life"
+        },
+        {
+          "path": "WORKER_RETURNS/SOROK-CP-A5-R2/candidate/cp_a5/assertion.py",
+          "blob": "ffc06ab0a932989ada0379cb9fe78600d495237f",
+          "module": "cp_a5.assertion",
+          "function": "run_a5_assertion"
+        },
+        {
+          "path": "WORKER_RETURNS/SOROK-CP-A5-R2/candidate/bp2p4/reunion.py",
+          "blob": "b89eba9bdc451f433a570d35909bde6b02b4ae40",
+          "module": "bp2p4.reunion",
+          "function": "build_fresh"
+        }
+      ],
+      "actual_importer": "rrif_r3_extension.cp_a5_consumer",
+      "runtime": {
+        "copied_path": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/rrif_r3_extension/cp_a5_runtime",
+        "files": 168,
+        "note": "bp2p4, cp_a5 and exact vendor closure copied from CP-A5-R2; no original source edited"
+      },
+      "author_suite": {
+        "result": "57 passed, 1 skipped, 1 failed; exit 1",
+        "failure": "test_loaded_upstream_modules_are_pinned: live rawlsing_next.m6_actor_safe_expression hash not pinned",
+        "interpretation": "Source-closure limitation in the staged CP-A5 candidate, not a failure of the new encounter consumer's scenario"
+      },
+      "tests": [
+        "test_cp_a5_real_encounter_consumer_grounds_tool_and_keeps_market_unknown",
+        "test_cp_a5_severed_b_activity_reddens_then_exact_restore_greens",
+        "test_cp_a5_same_root_r2_cut_conflict_is_exact",
+        "test_cp_a5_actor_swap_is_refused",
+        "test_cp_a5_consumer_survives_r2_joined_import"
+      ]
+    },
+    {
+      "asset": "C9C12-R2",
+      "source_commit": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+      "source_kind": "commit",
+      "status": "INCOMPATIBLE_EXACT_SOURCECUT",
+      "status_scope": "R2 same-root composite C9 actor + C12",
+      "subcomponent_status": {
+        "status": "SOURCEFREE_CONSUMED_VERIFIED",
+        "scope": "C12 root read on actual R2 C12 SQLite",
+        "read_status": "C12_COLD_READ_OK",
+        "fork_status": "VERIFIED",
+        "anchor_status": "OWNER_ANCHOR_REQUIRED"
+      },
+      "source_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-C9C12-R2/candidate/c9c12_reader.py",
+          "blob": "db38d05d5edab7ad72cc003807945e056f2b0779",
+          "module": "c9c12_reader",
+          "function": "read_actor_snapshot / guarded_c12_cold_read / read_composite"
+        },
+        {
+          "path": "WORKER_RETURNS/SOROK-C9C12-R2/candidate/c12_guard.py",
+          "blob": "8f629c29228cfc736c195db501dd100f2ac30f75",
+          "module": "c12_guard",
+          "function": "GuardedC12Store / verify_store"
+        },
+        {
+          "path": "WORKER_RETURNS/SOROK-C9C12-R2/candidate/c9_actor_r3.py",
+          "blob": "b9000cdb1a4e3e3be6de0dfb1690515f2984a122",
+          "module": "c9_actor_r3",
+          "function": "C9 R3B actor writer/reader patched C12 schema guard"
+        },
+        {
+          "path": "WORKER_RETURNS/SOROK-C9C12-R2/candidate/tests/test_c9c12_r2.py",
+          "blob": "4249cb865bce288634f7250b5a11dcf834cb40d7",
+          "module": "tests.test_c9c12_r2",
+          "function": "6 candidate tests"
+        }
+      ],
+      "actual_importer": "rrif_r3_extension.c9c12_consumer",
+      "old_writer_probe": {
+        "old_source": "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/c9_actor_r3.py",
+        "old_blob": "67f34f6992",
+        "schema_blob": "0ae69ef5b76177950c0b9c40e7bb20db11cf41d4697a5e4a1d6b08b459c82b90",
+        "reader_result": "ACTOR_SNAPSHOT_OK for genesis",
+        "version_kind": "GENESIS_VALID_EMPTY",
+        "head_version_no": 0,
+        "writer_schema": "C9_ACTOR_AUTHORITY_R3@1"
+      },
+      "author_suite": "6 passed, exit 0",
+      "first_incompatible_surface": "R2 product has C12 SQLite only; first C9 read fails at missing SQLite table actor_meta",
+      "legacy_branch": {
+        "branch_id": "first_session",
+        "status": "C12_HELD",
+        "fork_status": "LEGACY_HELD",
+        "code": "legacy_root_unverified"
+      }
+    },
+    {
+      "asset": "B-F1CR-R2",
+      "source_commit": "bf3273c294c704ad7c631559b9866d351bb4f103",
+      "source_kind": "commit",
+      "status": "ORIGINAL_SOURCE_MISSING_WITH_WARRANTED_RECONSTRUCTION",
+      "status_scope": "Original patched F1CR and targetless C10 chain",
+      "source_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-B-F1CR-R2/candidate/f1c_original_104f5bd.py",
+          "blob": "104f5bd7826c8676192eac96753d980e35d8a80a",
+          "module": "f1c_original_104f5bd",
+          "function": "embedded original candidate"
+        },
+        {
+          "path": "WORKER_RETURNS/SOROK-B-F1CR-R2/candidate/f1c_reconstructed_candidate.py",
+          "blob": "c6e64b5874938045d80aae348de94930539d5cd2",
+          "module": "f1c_reconstructed_candidate",
+          "function": "live_prior / reconstructed receiver"
+        },
+        {
+          "path": "WORKER_RETURNS/SOROK-B-F1CR-R2/candidate/targetless_c10_consumer.py",
+          "blob": "45997b198e6c0f65b54e523d9b1d6fda09e45ac2",
+          "module": "targetless_c10_consumer",
+          "function": "TargetlessC10Ledger / MaterialLedger / BAction"
+        },
+        {
+          "path": "WORKER_RETURNS/SOROK-B-F1CR-R2/candidate/targetless_i1_bridge.py",
+          "blob": "202478dc65a64c14aad20a305968984056732629",
+          "module": "targetless_i1_bridge",
+          "function": "TargetlessGuardedJoinedProduct"
+        }
+      ],
+      "original_patched_blob": "bf7e625e1f208908e583ea72ebb73992ad7d19ae",
+      "original_patched_status": "MISSING_FROM_CANONICAL_OBJECT_GRAPH",
+      "reconstruction_tests": {
+        "targetless_c10": "14 passed, exit 0 with f1c_reconstructed_candidate.py and R2 vendor/j runtime",
+        "targetless_i1_bridge": "5 setup errors: missing pytest fixture intact",
+        "original_as_f1c": "13 failed, 1 passed: reconstructed-only live_prior absent from original"
+      },
+      "actual_importer": null,
+      "integration_decision": "HOLD; source present in candidate, original source missing, no owner adoption"
+    },
+    {
+      "asset": "V3CORE-R1",
+      "source_commit": "b5cb3f917402b992d7cbe933af0b378d2b37cbfd",
+      "source_kind": "commit",
+      "status": "SOURCE_PRESENT_UNWIRED",
+      "status_scope": "Material-only project_actual_market_event I1 adapter",
+      "source_paths": [
+        {
+          "path": "WORKER_RETURNS/SOROK-V3CORE-R1/candidate/v3core_adapter/i1_consumer.py",
+          "blob": "e5ea15db51b46ce4932770eb6a7defc4dadf897e",
+          "module": "v3core_adapter.i1_consumer",
+          "function": "material-only I1 consumer"
+        },
+        {
+          "path": "WORKER_RETURNS/SOROK-V3CORE-R1/candidate/v3core_adapter/contracts.py",
+          "blob": "b94875e92a072cb33488edbf2b4766209c17c8df",
+          "module": "v3core_adapter.contracts",
+          "function": "project_actual_market_event contract"
+        },
+        {
+          "path": "WORKER_RETURNS/SOROK-V3CORE-R1/candidate/tests/test_i1_first_consumer.py",
+          "blob": "c855453a4516971bbab448c1eeee3a2dca07631d",
+          "module": "tests.test_i1_first_consumer",
+          "function": "first-consumer test"
+        }
+      ],
+      "actual_importer": null,
+      "material_only": true,
+      "annual_steps": {
+        "admissible": 3,
+        "held": 16,
+        "total": 19
+      },
+      "quarantine": [
+        "0-100/Enneagram private mental states",
+        "pseudo-random biography",
+        "arbitrary rupture",
+        "inferred motive",
+        "unissued Rule A/T",
+        "native person/actor/world"
+      ],
+      "integration_decision": "HOLD; no source-compatible material feed and private-state quarantine"
+    }
+  ],
+  "new_files": [
+    {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/rrif_r3_extension/cp_a5_consumer.py",
+      "sha256": "ce835f2e855baf103904fb50933d6474d4302a46c7d775e88d02a3c67b773961",
+      "role": "CP-A5 actual read-only encounter consumer"
+    },
+    {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/rrif_r3_extension/c9c12_consumer.py",
+      "sha256": "b739389cefc4fc93817927031e9d29d539b78e8d114b70411017c584b49fca87",
+      "role": "C9C12-R2 C12/actor consumer over actual R2 C12"
+    },
+    {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/rrif_r3_extension/c9c12_reader.py",
+      "sha256": "9621cae0280c63386fa29e379e28f3ccb7af368813ef322317f86ba6f0a19442",
+      "role": "copied C9C12-R2 candidate reader"
+    },
+    {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/rrif_r3_extension/c12_guard.py",
+      "sha256": "104dc91c6abde69b42a2b180bbbc3c904dbf3d91ffeae4871f9299e0f6986685",
+      "role": "copied C9C12-R2 C12 guard"
+    },
+    {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/rrif_r3_extension/tests/test_rrif_r3_extension.py",
+      "sha256": "6f48739bf409ba7c3b55de8e36b29f14730a1c9dcf14e2aeae8d093be2492e57",
+      "role": "9 actual consumer and fault/restore tests"
+    },
+    {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/rrif_r3_extension/.gitignore",
+      "role": "ignore local Python bytecode"
+    },
+    {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2/rrif_r3_extension/cp_a5_runtime/",
+      "role": "exact CP-A5 sourcefree runtime, 168 files"
+    }
+  ],
+  "native_claims": {
+    "actor": false,
+    "person": false,
+    "c9": false,
+    "c12": false,
+    "anchor": false,
+    "human_a5": false,
+    "b_motive": false,
+    "v3_private_state": false
+  }
+}

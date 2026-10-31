@@ -1,0 +1,121 @@
+{
+  "schema": "SOROK_RRIF_R3_C9_R3B_C9C12_R2_JOIN_VERSION_NEGATIVE_COURT@1",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/sorok-rrif-r3-four-unintegrated-assets-genuine-consumer-fanin-20261031",
+  "r2_baseline": "598d9e9eaba5143950c63317705fd09104fbf463",
+  "c9c12_cut": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+  "old_c9_r3b_cut": "fac064c9c3370d598e9b7469af652ae3504bc4ba",
+  "status": "C9C12_CUT_CONFLICT",
+  "composite_status": "HELD_SOURCE_MISSING_C9_ACTOR",
+  "c12_status": "SOURCEFREE_CONSUMED_VERIFIED",
+  "first_incompatible_surface": {
+    "surface": "R2 same-root product C9 SQLite",
+    "exact_failure": "OperationalError: no such table: actor_meta",
+    "meaning": "The R2 product contains C12 SQLite but no C9 actor database. The C9C12-R2 composite requires both; it must not fabricate an actor snapshot.",
+    "r2_c12_path": "state/product/c12.sqlite",
+    "expected_c9_schema": "C9_ACTOR_AUTHORITY_R3@1",
+    "expected_c9_table": "actor_meta"
+  },
+  "writer_cut_compatibility": {
+    "old_actor_writer": {
+      "commit": "fac064c9c3370d598e9b7469af652ae3504bc4ba",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/V3_COURTS/SYN02/POST_R2_REVIEW/R3/C9_SQL/c9_actor_r3.py",
+      "blob": "67f34f699220ec1407e7e8f0d58ed328e88a36af",
+      "schema_git_blob": "a5189ecd8f953952210dd3e6175a80e211b10647",
+      "schema_sha256": "0ae69ef5b76177950c0b9c40e7bb20db11cf41d4697a5e4a1d6b08b459c82b90",
+      "schema": "C9_ACTOR_AUTHORITY_R3@1"
+    },
+    "c9c12_patched_actor_writer": {
+      "commit": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+      "path": "WORKER_RETURNS/SOROK-C9C12-R2/candidate/c9_actor_r3.py",
+      "blob": "b9000cdb1a4e3e3be6de0dfb1690515f2984a122",
+      "schema_git_blob": "a5189ecd8f953952210dd3e6175a80e211b10647",
+      "schema_sha256": "0ae69ef5b76177950c0b9c40e7bb20db11cf41d4697a5e4a1d6b08b459c82b90",
+      "schema": "C9_ACTOR_AUTHORITY_R3@1",
+      "delta": "Only the C12 writer-schema guard was patched; actor schema is byte-identical to the old C9 R3B schema"
+    },
+    "actual_old_writer_probe": {
+      "procedure": "Created an actor DB with the old C9 R3B ActorAuthority, closed it, and read it with C9C12-R2 read_actor_snapshot",
+      "reader_result": "ACTOR_SNAPSHOT_OK",
+      "actor_id": "A",
+      "branch_id": "b0",
+      "branch_epoch": "e0",
+      "head_version_no": 0,
+      "head_version_hash": "8109ff48b359ae433d79491e91286c2dacc10b02e62e735f34199f6453764147",
+      "version_kind": "GENESIS_VALID_EMPTY",
+      "writer_schema": "C9_ACTOR_AUTHORITY_R3@1",
+      "conclusion": "Old writer genesis is readable by C9C12-R2; there is no invented version translation"
+    },
+    "historical_red_preserved": {
+      "c9_r3b": "14 passed / 1 failed",
+      "c9_r3b_failure": "test_c6_same_count_perception_substitution_is_held",
+      "bp4r": "7 passed / 2 failed",
+      "bp4r_failures": "old writer-clock and anchor-coverage diagnostics",
+      "action": "No old failure was repaired by recomputing self-hashes or by rewriting the historical tests"
+    }
+  },
+  "c12_court": {
+    "writer_schema": "BP4_C12_STORE@1",
+    "reader": "C9_GUARD_READER@1",
+    "r2_root": {
+      "status": "C12_COLD_READ_OK",
+      "content_ok": true,
+      "fork_ok": true,
+      "schema_ok": true,
+      "fork_status": "VERIFIED",
+      "counts": {
+        "episode": 2,
+        "world_event": 1,
+        "checkpoint": 4,
+        "perception": 2
+      },
+      "anchor_status": "OWNER_ANCHOR_REQUIRED",
+      "grade": "SOURCEFREE_CANDIDATE_READER_NOT_OWNER_ADOPTED"
+    },
+    "legacy_first_session": {
+      "status": "C12_HELD",
+      "fork_status": "LEGACY_HELD",
+      "errors": ["episode_origin:legacy_root_unverified"],
+      "action": "HOLD; no migration and no forced green"
+    },
+    "writer_v2_or_unknown": {
+      "status": "HELD",
+      "codes": ["C12_WRITER_SCHEMA_UNSUPPORTED"],
+      "action": "Refuse; no @2 compatibility claim"
+    },
+    "tamper_restore": {
+      "tamper": "Overwrite a root episode body without changing its stored hash",
+      "damaged": "ok=false; body_hash_mismatch",
+      "restore": "Copy exact clean SQLite back; C12_COLD_READ_OK / VERIFIED",
+      "action": "Fault detection and exact rollback demonstrated"
+    },
+    "clock_inversion": {
+      "test": "Perception clock 11 followed by episode clock 10",
+      "status": "REFUSED",
+      "code": "NON_MONOTONIC_GLOBAL_CLOCK"
+    }
+  },
+  "cross_asset_note": {
+    "cp_a5_same_root_r2": {
+      "status": "INCOMPATIBLE_EXACT_SOURCECUT",
+      "code": "BP2_ORIGIN_INVARIANT_MISMATCH",
+      "expected_actor": "TEST_ONLY_BP1_ACTOR_A",
+      "actual_actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "consequence": "CP-A5 own life/EncounterReader is consumed green, but it is not attached to the R2 same-root C9/C12 product"
+    }
+  },
+  "owner_decision_required": [
+    "C9 actor store placement and durable writer/mirror ACK contract",
+    "External C12 anchor issuer/key/sequence/rollback window",
+    "BP2 origin actor identity for any CP-A5 same-root attachment",
+    "Whether the legacy first_session branch is migrated or permanently held"
+  ],
+  "not_claimed": [
+    "native C9/C12",
+    "owner-frozen contract",
+    "external anchor",
+    "full C9C12 composite on R2 same-root",
+    "R2 review acceptance",
+    "CP-A5 human A5"
+  ]
+}

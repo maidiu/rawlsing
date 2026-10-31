@@ -1,0 +1,142 @@
+{
+  "schema": "SOROK_RRIF_R3_NOT_RUN_SOURCE_AUTHORITY_AND_HOST_RECEIPTS@1",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/sorok-rrif-r3-four-unintegrated-assets-genuine-consumer-fanin-20261031",
+  "startup_sha": "598d9e9eaba5143950c63317705fd09104fbf463",
+  "branch_base_sha": "c895c40ea6f2ca1f383a6841c908e139749e8e60",
+  "final_sha": "REPORTED_BY_FINAL_PUSH_READBACK",
+  "return_commit": "The commit containing this file is the return commit; the exact branch tip is the push readback reported in the final response",
+  "tests": {
+    "r2_regression": {
+      "result": "20 passed",
+      "exit": 0
+    },
+    "rrif_r3_extension": {
+      "result": "9 passed",
+      "exit": 0
+    },
+    "c9c12_candidate": {
+      "result": "6 passed",
+      "exit": 0
+    },
+    "cp_a5_candidate": {
+      "result": "57 passed, 1 skipped, 1 failed",
+      "exit": 1,
+      "failure": "test_loaded_upstream_modules_are_pinned: live rawlsing_next.m6_actor_safe_expression hash not pinned"
+    },
+    "bf1_targetless_c10": {
+      "result": "14 passed",
+      "exit": 0,
+      "source": "f1c_reconstructed_candidate.py blob c6e64b58... plus R2 vendor/j runtime"
+    },
+    "bf1_targetless_i1_bridge": {
+      "result": "5 setup errors",
+      "reason": "missing pytest fixture intact"
+    },
+    "bf1_original_as_f1c": {
+      "result": "13 failed, 1 passed",
+      "reason": "original has no reconstructed live_prior API"
+    },
+    "old_c9_writer_genesis_probe": {
+      "result": "ACTOR_SNAPSHOT_OK; GENESIS_VALID_EMPTY; head_version_no 0",
+      "source": "old C9 R3B fac064c9..."
+    },
+    "old_c9_historical_suite": "NOT RERUN THIS SESSION; preserved historical 14 passed / 1 failed",
+    "bp4r_historical_suite": "NOT RERUN THIS SESSION; preserved historical 7 passed / 2 failed"
+  },
+  "not_run": [
+    {
+      "item": "native C9/C12 production writer/mirror/anchor",
+      "reason": "no owner grant, external custodian, or production DB"
+    },
+    {
+      "item": "C9C12 full composite on R2 same-root",
+      "reason": "R2 C12-only product has no actor_meta table"
+    },
+    {
+      "item": "CP-A5 human A5 or same-root R2 attachment",
+      "reason": "human grant absent; exact BP2 origin actor mismatch"
+    },
+    {
+      "item": "B-F1CR targetless I1 bridge product",
+      "reason": "5 setup errors: missing intact fixture; original bf7e... absent"
+    },
+    {
+      "item": "B-F1CR original source adoption",
+      "reason": "claimed original patched blob bf7e625e1f208908e583ea72ebb73992ad7d19ae missing"
+    },
+    {
+      "item": "V3CORE adapter execution/integration",
+      "reason": "source present but unwired; no compatible material feed; private states and 16/19 annual steps held"
+    },
+    {
+      "item": "Pyat N11/N12/C11, Programma, CAN008/011/ADP/SCI05",
+      "reason": "outside this sourcefree RRIF task and not granted"
+    },
+    {
+      "item": "PREMAIN merge or owner adoption",
+      "reason": "this worker is not the owner or independent reviewer"
+    }
+  ],
+  "source_checks": {
+    "C9C12-R2": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+    "CP-A5-R2": "913765328e4fab12b150ea01421ed6b445158184",
+    "B-F1CR-R2": "bf3273c294c704ad7c631559b9866d351bb4f103",
+    "V3CORE-R1": "b5cb3f917402b992d7cbe933af0b378d2b37cbfd",
+    "b_f1cr_reconstructed_blob": {
+      "id": "c6e64b5874938045d80aae348de94930539d5cd2",
+      "type": "blob",
+      "path": "WORKER_RETURNS/SOROK-B-F1CR-R2/candidate/f1c_reconstructed_candidate.py",
+      "present": true
+    },
+    "b_f1cr_original_patched_blob": {
+      "id": "bf7e625e1f208908e583ea72ebb73992ad7d19ae",
+      "present": false,
+      "error": "remote upload-pack: not our ref; git cat-file could not get object info"
+    }
+  },
+  "authority": {
+    "original_actor_private_motive": false,
+    "can008_011_adp_sci05": false,
+    "native_b_world": false,
+    "pyat_n11_n12_c11": false,
+    "c9_c12_production": false,
+    "c12_external_anchor": false,
+    "human_a5": false,
+    "v3_private_mental_state": false,
+    "b_f1cr_original_adoption": false,
+    "owner_merge": false,
+    "premain_change": false,
+    "programma_change": false
+  },
+  "interference": {
+    "separate_worktree": true,
+    "r2_review_worktree_touched": false,
+    "r2_author_branch_touched": false,
+    "original_owner_branches_touched": false,
+    "premain_touched": false,
+    "pyat_touched": false,
+    "programma_touched": false,
+    "other_worker_spawned": false,
+    "automatic_merge_performed": false,
+    "production_sqlite_written": false
+  },
+  "host": {
+    "platform": "darwin",
+    "editor_harness": "OpenCode",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "provider_effort": "UNKNOWN",
+    "host_account_quota_cost": "UNKNOWN",
+    "browser_used": false
+  },
+  "native_claims": {
+    "actor": false,
+    "person": false,
+    "c9": false,
+    "c12": false,
+    "anchor": false,
+    "human_a5": false,
+    "b_motive": false,
+    "v3_private_state": false
+  }
+}
