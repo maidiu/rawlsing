@@ -1,0 +1,332 @@
+{
+  "schema": "SOROK_RRIF_R1_NINE_R6_UNWIRED_OWNER_HANDOFF@1",
+  "cut": "28e38ebbf08bbfaeb152ae022046e1303d9a2e40",
+  "premain_read": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "denominators": {
+    "R6_rows_sourceclosed": 39,
+    "R6_files_sourceclosed": 94,
+    "R41_archive_verified": 133,
+    "material_families": 9,
+    "proven_current_importers": 0
+  },
+  "families": [
+    {
+      "id": "R6_EE_R5B_W4_OWNER_BOUND",
+      "disposition": "OWNER_HELD",
+      "source": {
+        "cut": "02d32036db49c70ff137f1730d0ff95b571040d3",
+        "path": "WORKER_RETURNS/EE-R5B/05_BOUNDED_W4_ADAPTER.py",
+        "git_blob": "d169be112f454732df161620743ea6332866255e",
+        "sha256": "ee25d2971f3fa2be147f16368460c88adb672173a62add489f1c9ff44b686611",
+        "lines": 233,
+        "symbols": [
+          "_hex64",
+          "_canonical_bytes",
+          "_exact_owner_binding",
+          "validate_w4_request",
+          "_validate_owner_receipt",
+          "_validate_c_surface",
+          "normalize_owner_receipt",
+          "adapt_step",
+          "_load_provider",
+          "main"
+        ]
+      },
+      "sorok_owner_role": "NONE; read-only external boundary annotation",
+      "pyat_or_external_owner": "Pyat EE-R5B / EE-W4 A/B/C owners",
+      "function": "EE-W4 envelope + bound A/B/C owner executor -> owner-binding and action validation -> RAWLSING_EE_R5B_OWNER_BOUND_W4_BRIDGE@1.0.0 receipt -> EE-R5B test court",
+      "actual_first_consumer": "EE-R5B/06_test_bounded_w4_adapter.py (9 historic selected), no current canonical importer proved",
+      "proven_current_importer": "NONE_PROVEN",
+      "alternative": "No current PRE-MAIN EE-R5B bridge; R5 source-backed adapters are referenced but not present at current PRE-MAIN",
+      "negative": [
+        "owner pin mismatch",
+        "wrong operation/lifecycle action",
+        "forbidden ranking/accelerator fields",
+        "unqualified 27-cell result"
+      ],
+      "owner_action": "EE owner selects current EE-W4 transport/executor and accepts strict envelope; independent first actual EE consumer test; Sorok may receive only qualified published world fact.",
+      "scientific_hold": "No native EE-W4 scientific/transport grant"
+    },
+    {
+      "id": "R6_EE_R10L_R5_CARRIER",
+      "disposition": "HISTORICAL_ONLY",
+      "source": {
+        "cut": "1d01bd7a1763bea642947557b924a7cfc6d15db6",
+        "path": "WORKER_RETURNS/EE-R10L/07_construct_candidate_a_r5_carrier.py",
+        "git_blob": "004874f371a8ed13070dfa6598cfc85b08d9cdc9",
+        "sha256": "507104ff54283170e5278a5fbe330c6ea4df5f2df9aa7ff33e85c159dc7c209b",
+        "lines": 224,
+        "symbols": [
+          "canonical",
+          "file_sha",
+          "tree",
+          "load_builder",
+          "main",
+          "__init__",
+          "sample",
+          "run",
+          "start",
+          "close"
+        ]
+      },
+      "sorok_owner_role": "NONE; read-only external boundary annotation",
+      "pyat_or_external_owner": "Pyat R5 source/EE-R10L and LiTS original owner",
+      "function": "LiTS source + banked AS2B builder -> R5CompactLongShardedBuilder construction -> RAWLSING_EE_R10L_CANDIDATE_A_R5_CONSTRUCTION_RECEIPT@1.0.0 -> EE-R10L return/evidence",
+      "actual_first_consumer": "EE-R10L/07_construct_candidate_a_r5_carrier.py return only; no native consumer",
+      "proven_current_importer": "NONE_PROVEN",
+      "alternative": "pre553_r5_compact_carrier / pre553_r5_source_backed_adapter are referenced in historical docs but absent at current PRE-MAIN",
+      "negative": [
+        "source/preimage mismatch",
+        "old builder or statistics reclassified as native issuer",
+        "stale LiTS identity"
+      ],
+      "owner_action": "Check current R5 equivalent and source-backed AS2B builder; only if still needed validate reproducible memory/CPU/durable bytes and first selected source consumer.",
+      "scientific_hold": "No source native accepted carrier construction"
+    },
+    {
+      "id": "R6_PYAT_R38_WG0X_CROSSWALK",
+      "disposition": "OWNER_HELD",
+      "source": {
+        "cut": "aeefaf7e7f32f094b72fbee1e62e98508a304482",
+        "path": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/scientific_crosswalk.py",
+        "git_blob": "e786eb1bd06628bef3a9322235c285a1fbec5e8e",
+        "sha256": "c703f71fd6ebc8993f50fda421951196df62541cd91dc867631d409ae649bfcc",
+        "lines": 99,
+        "symbols": [
+          "load",
+          "lines",
+          "digest",
+          "dump",
+          "build",
+          "main",
+          "matches"
+        ]
+      },
+      "sorok_owner_role": "NONE; read-only external boundary annotation",
+      "pyat_or_external_owner": "Pyat WG0X/WG0R and R61 original workload owner",
+      "function": "WG0X/WG0R sourcefree transport + frozen native fixtures -> deterministic crosswalk/compare -> research crosswalk JSON/receipts -> test_wg0x and R38 return",
+      "actual_first_consumer": "PYAT-R38.../test_wg0x.py historical only",
+      "proven_current_importer": "NONE_PROVEN",
+      "alternative": "current PRE-MAIN rawlsing_next/pre553_universal_workload.py is the R61 successor producer; sources/WG0P10 is an older WG0P4 compiler",
+      "negative": [
+        "compare expected multiset to echoed request instead of actual receipts",
+        "original35 authority absent",
+        "WG0P10 obsolete code recopy"
+      ],
+      "owner_action": "Owner either accepts bounded diagnostic against original35 frozen research receipts or closes as superseded with exact equivalent; refuse to assign R61 source-builder equivalence to R38 semantic crosswalk.",
+      "scientific_hold": "Original35 source and scientific crosswalk original authority held"
+    },
+    {
+      "id": "R6_GF1H_PAIR_SIGNATURE",
+      "disposition": "HISTORICAL_ONLY",
+      "source": {
+        "cut": "cc41ad4553d189a3c4c8152179b3d1977327c07f",
+        "path": "WORKER_RETURNS/PYAT-R32-GF1H-PAIR-CONSUMER-INTEGRITY-REPAIR-R1/gf1_pair_support_consumer.py",
+        "git_blob": "66658149fd7362e17c064a3fc1f9029d638f9ed9",
+        "sha256": "a4915b845853e70f9430190aebde298346ea5ad4472de8380e26182113f97c8a",
+        "lines": 252,
+        "symbols": [
+          "_refusal",
+          "_verify_identity",
+          "_exact_count",
+          "_decode_profile",
+          "compute_pair_support_signature"
+        ]
+      },
+      "sorok_owner_role": "NONE; read-only external boundary annotation",
+      "pyat_or_external_owner": "Pyat Field Forge/GF1 generic relation source owner",
+      "function": "GenericNativePairRelation -> exact 2x2 identity/conservation checks -> pair-support separation signature/result hash -> GF1H tests",
+      "actual_first_consumer": "GF1H adversarial tests; no PREMAIN generic Field Forge consumer",
+      "proven_current_importer": "NONE_PROVEN",
+      "alternative": "GF1K and GF1M successors refine the same family; no current PRE-MAIN generic pair consumer",
+      "negative": [
+        "wrong conserved count",
+        "blocked typed state falsely VALID_EMPTY",
+        "reversed role without new grant"
+      ],
+      "owner_action": "Only original Field Forge issuer may choose generic relation use; maintain earlier GF1H tests when evaluating most recent compatible revision.",
+      "scientific_hold": "Generic native field support is TEST_ONLY"
+    },
+    {
+      "id": "R6_GF1K_NATIVE_CATEGORY",
+      "disposition": "HISTORICAL_ONLY",
+      "source": {
+        "cut": "1399a475e54ea33355cf641979829424625c511d",
+        "path": "WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/gf1_pair_support_consumer.py",
+        "git_blob": "bbbda32facce0a3324498b88f4ba4bf0f79f18d2",
+        "sha256": "06bf4ea9e71b084b615deba50b6a0233e774b944cb7b463974006ccb8a8a2b40",
+        "lines": 273,
+        "symbols": [
+          "_refusal",
+          "_verify_identity",
+          "_exact_count",
+          "_same_native",
+          "_distinct_native_pair",
+          "_decode_profile",
+          "compute_pair_support_signature"
+        ]
+      },
+      "sorok_owner_role": "NONE; read-only external boundary annotation",
+      "pyat_or_external_owner": "Pyat GF1 author and original native semantic issuer",
+      "function": "GenericNativePairRelation -> exact native category identity -> pair-support signature -> GF1K tests",
+      "actual_first_consumer": "GF1K cold identity tests historical",
+      "proven_current_importer": "NONE_PROVEN",
+      "alternative": "GF1M is the later nonfinite/key-identity repair; no current PRE-MAIN consumer",
+      "negative": [
+        "category identity normalization loss",
+        "reverse-domain role copy",
+        "hash-only source self-qualification"
+      ],
+      "owner_action": "If current GF1 generic use is required, diff GF1K to GF1M actual output and previous test oracle, avoid claiming @1 source-native permission.",
+      "scientific_hold": "Test-only identity validation, no actual generic semantics"
+    },
+    {
+      "id": "R6_GF1M_NONFINITE_KEY",
+      "disposition": "OWNER_HELD",
+      "source": {
+        "cut": "a8fcb6953f2795b7bc698f9f019f4782f80026c9",
+        "path": "WORKER_RETURNS/PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1/author_followup_nonfinite/gf1_pair_support_consumer.py",
+        "git_blob": "c5dfb119ee730e968c54be9f085fd3a6d78fa787",
+        "sha256": "7629749e61e1204c7f2b2098548a5c136c37ab22098cd8a3490082ee3e7021d2",
+        "lines": 301,
+        "symbols": [
+          "_refusal",
+          "_verify_identity",
+          "_exact_count",
+          "_same_native",
+          "_distinct_native_pair",
+          "_require_lossless_mapping_keys",
+          "_decode_profile",
+          "compute_pair_support_signature"
+        ]
+      },
+      "sorok_owner_role": "NONE; read-only external boundary annotation",
+      "pyat_or_external_owner": "Pyat Field Forge/GF1 and generic semantic owner",
+      "function": "GenericNativePairRelation -> exact category/key identity -> pair-support signature -> GF1M tests",
+      "actual_first_consumer": "GF1M follow-up nonfinite/key tests only",
+      "proven_current_importer": "NONE_PROVEN",
+      "alternative": "Current PRE-MAIN field_forge_conditional_support is specialized Q86B/Q86A; no generic pair consumer",
+      "negative": [
+        "NaN/Infinity coerced into support",
+        "mapping key stringification alias",
+        "unsupported risk count accepted"
+      ],
+      "owner_action": "Owner may compare to current specialized field_forge_conditional_support and explicitly accept/reject a generic scope; prove exact native roles, lossless mapping keys, typed nonfinite refusal and consumer.",
+      "scientific_hold": "No generic Field Forge semantic issuance"
+    },
+    {
+      "id": "R6_GF1_GENERIC_NATIVE_PAIR",
+      "disposition": "OWNER_HELD",
+      "source": {
+        "cut": "48d1c144ff4a8c503908d6b95b9e35374d4584e5",
+        "path": "WORKER_RETURNS/PYAT-HQ-R18-GF1-REVERSE-SCIENCE-REPAIR-R1/generic_native_pair_relation.py",
+        "git_blob": "29ec2f96f148b5f371783f4f3abd34b78bc7a708",
+        "sha256": "e3bb9b092228239b38ba36f79c0c2ac910cc270c5ea580d3f8cdb4758cccf6cd",
+        "lines": 597,
+        "symbols": [
+          "canonicalize",
+          "canonical_json",
+          "semantic_hash",
+          "_mapping",
+          "_sequence",
+          "_ref",
+          "_ref_seq",
+          "_authority_seq",
+          "_ref_dict",
+          "_auth_dict",
+          "_semantic_fields",
+          "_derive_native_variable_name",
+          "produce_generic_native_pair_relation",
+          "_projection"
+        ]
+      },
+      "sorok_owner_role": "NONE; read-only external boundary annotation",
+      "pyat_or_external_owner": "Pyat Field Forge/GF1 original role/domain/permission issuer",
+      "function": "native EmpiricalFact + EmpiricalQuerySpec -> generic role/domain/risk/permission validation -> GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0 -> GF1 pair-support consumer/tests",
+      "actual_first_consumer": "GF1K/GF1M pair consumer branch-local, not present PREMAIN importer",
+      "proven_current_importer": "NONE_PROVEN",
+      "alternative": "Specialized field_forge_conditional_support exists at PRE-MAIN; generic semantics remain unissued",
+      "negative": [
+        "wrong role/denominator",
+        "permission-widening through reverse pair",
+        "zero support confused with no eligible",
+        "unissued semantic hash accepted"
+      ],
+      "owner_action": "Issuer decides whether a native domain-neutral pair relation is needed and grants actual current source consumer; otherwise historical-only producer.",
+      "scientific_hold": "Native generic relation not issued"
+    },
+    {
+      "id": "R6_PHASE_D_POSITIONED_RELATIONAL",
+      "disposition": "OWNER_HELD",
+      "source": {
+        "cut": "350986521ebbc13b552d4b6542423a65c267041a",
+        "path": "phase_d/code/compile_positioned_relational_evidence.py",
+        "git_blob": "e8ab4192c9d6717091e880a296f1e51913b6c3b2",
+        "sha256": "57bcd0564317ddc0875ee3968387062a573056f2ee32925f059bf5b5431b6161",
+        "lines": 326,
+        "symbols": [
+          "_clean",
+          "_json_list",
+          "_impls_from_row",
+          "_registry_maps",
+          "_first_numeric",
+          "_empirical_id",
+          "_lane",
+          "_read_frame",
+          "scan_scope",
+          "_make_id",
+          "_best_match",
+          "_base_row",
+          "compile_scope",
+          "main"
+        ]
+      },
+      "sorok_owner_role": "NONE; read-only external boundary annotation",
+      "pyat_or_external_owner": "Pyat/DDM Phase-D original semantic source owner",
+      "function": "Phase-D scoped DDM/authority data -> positioned-relational evidence sidecars -> rank1 V550 repro capsule validation/evidence",
+      "actual_first_consumer": "phase_d/.../validate_capsule.py historical reproduction",
+      "proven_current_importer": "NONE_PROVEN",
+      "alternative": "No current PRE-MAIN phase_d compiler; older DDM data/build modules remain historical inputs",
+      "negative": [
+        "scope file substitution",
+        "unmatched authority row promoted",
+        "rank1 capsule treated as current actor-source law"
+      ],
+      "owner_action": "Compare scoped positioned mappings and contemporary source-backed DDM, retain output sidecar only with exact scope and tracked empirical identities.",
+      "scientific_hold": "Native empirical positioned semantic construction unissued"
+    },
+    {
+      "id": "R6_R41_W41_WORLD_CLIENT",
+      "disposition": "OWNER_HELD",
+      "source": {
+        "cut": "b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2",
+        "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/objective_world.py",
+        "git_blob": "79a91fc027d4be5428e19ef7a14cac0c19e96e4d",
+        "function": [
+          "ObjectiveWorld.read",
+          "retained_context",
+          "position_context",
+          "f6_evidence",
+          "temporal_methods"
+        ]
+      },
+      "sorok_owner_role": "C0/C11 downstream qualified input only",
+      "pyat_or_external_owner": "Pyat R41/W41 objective-world owner; Sorok C0/C11 is receiving boundary only",
+      "function": "Readonly owner-resolved empirical/institutional/temporal views, branch-local W41 product",
+      "actual_first_consumer": "R41 capture_products.py and tests/test_native_world.py 26 historical selected passes; P41 handback future only",
+      "proven_current_importer": "NONE_PROVEN",
+      "alternative": "Pyat native N11/N12 or current objective source release NOT verified",
+      "negative": [
+        "GT2 context rebranded M5 CURRENT",
+        "F6 evidence treated as world probability",
+        "N9C test-only fixture treated native",
+        "unspecified E04 purpose or EE12 time allowed"
+      ],
+      "owner_action": "Pyat owner qualifies exact N9/N10W/N11/N12/as-of/positions/world products and source licenses; Sorok owner then pins a typed published world-input adapter if authorized.",
+      "scientific_hold": "H_SOURCE35,H_FF_STRONG,H_F6_WORLD,H_FIELDS_REAL,H_EE12_TIME,H_E04_PURPOSE,H_GT2_M5_CURRENT held"
+    }
+  ],
+  "grouping": "Nine material entries form EE-R5B, EE-R10L, Pyat WG0X, GF1H/K/M+GF1 generic, DDM Phase-D and R41. Not nine distinct Sorok actor components.",
+  "no_transfer_authority": true,
+  "closeout_path": "Precise Pyat/EE/GF1/DDM/R41 owner packet; native source permission and future published world product returned to Sorok C0/C11 only."
+}
