@@ -1,0 +1,125 @@
+{
+  "schema": "RRIF_C_DENOMINATOR_AND_DEDUP_VALIDATION@1",
+  "canonical_premain": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "source_a": "84182f9fa7044d67689ea4f80eabf7e9337f15c2",
+  "decision_b": "59e6e62600814d82cfefd1a2137b7aa63316bc95",
+  "hq_join": "f5a9facd189af6756c2b15c8daebe680016f658a",
+  "e8": "e95d6edb9300b2cc8b0ad2c70dff3953c8afe1ba",
+  "retention_overlay": "00489a8b2e8e04ed2264d87371f6b0ec4a2d9347",
+  "counts": {
+    "frozen_branch_names": 845,
+    "distinct_frozen_tips": 838,
+    "code_delta_branches": 321,
+    "code_exact_present": 45,
+    "code_stranded_or_diverged": 276,
+    "accounted_code_branches": 321,
+    "unique_lineage_rows": 34,
+    "implementation_lineages": 33,
+    "integration_test_lineages": 1,
+    "code_introducing_branches": 155,
+    "inherited_test_review_or_copy_branches": 166,
+    "genuinely_unresolved_lineages": 30,
+    "original_function_ids": 3135,
+    "original_families": 1885
+  },
+  "checks": {
+    "845_names_exact_once": true,
+    "845_tips_match_roster": true,
+    "321_code_branches_exact_once": true,
+    "321_accounted_exact_once": true,
+    "every_code_branch_mapped": true,
+    "lineage_ids_unique": true,
+    "every_accounted_has_lineage": true,
+    "lineage_branch_sum": true,
+    "3135_function_ids_unique": true,
+    "1885_family_ids_unique": true,
+    "code_branch_denominator_45_plus_276": true,
+    "exact_once_321": true
+  },
+  "mutation_tests": [
+    {
+      "name": "drop_one_accounted_branch",
+      "applied": "remove last of 321 rows",
+      "observed": "320 rows; missing=1",
+      "result": "PASS_REJECTED"
+    },
+    {
+      "name": "duplicate_accounted_branch",
+      "applied": "append first branch again",
+      "observed": "322 rows; duplicate_names=1",
+      "result": "PASS_REJECTED"
+    },
+    {
+      "name": "drop_one_lineage",
+      "applied": "remove one of 34 lineage rows",
+      "observed": "33 lineages; accounted_lineage_refs_missing=14",
+      "result": "PASS_REJECTED"
+    },
+    {
+      "name": "duplicate_function_id",
+      "applied": "duplicate first 3135 function ID",
+      "observed": "3136 rows; unique=3135",
+      "result": "PASS_REJECTED"
+    },
+    {
+      "name": "mutate_one_tip",
+      "applied": "replace one frozen tip with 40 zeroes",
+      "observed": "tip_mismatches=1",
+      "result": "PASS_REJECTED"
+    },
+    {
+      "name": "drop_one_family",
+      "applied": "remove one of 1885 family IDs",
+      "observed": "1884 rows; unique=1884",
+      "result": "PASS_REJECTED"
+    },
+    {
+      "name": "duplicate_family_id",
+      "applied": "duplicate first family ID",
+      "observed": "1886 rows; unique=1885",
+      "result": "PASS_REJECTED"
+    },
+    {
+      "name": "drop_one_845_branch",
+      "applied": "remove last of 845 join rows",
+      "observed": "844 rows; missing_names=844",
+      "result": "PASS_REJECTED"
+    },
+    {
+      "name": "duplicate_845_branch",
+      "applied": "append first join row again",
+      "observed": "846 rows; duplicate_names=1",
+      "result": "PASS_REJECTED"
+    }
+  ],
+  "lineage_basis": {
+    "method": "Deduplicate by introduced code state: (path, exact blob) at branch tip minus the union of all ancestor code states among the 321 code branches; cluster by path/capability; assign inherited/test/review branches to the nearest ancestor lineage. 155 branches introduce code; 166 are inherited/test/review copies. The 276 stranded/diverged branches reduce to 33 implementation lineages plus one C1-03 integration/test lineage.",
+    "not_used": "Branch names, author counts, test counts, E8 mechanical RETIRE/HOLD labels and reviewer ACCEPT text are not treated as independent implementation evidence."
+  },
+  "exceptions": [
+    "C1_03_JOIN has no introduced code delta; it is an integration/test lineage with 4 branch names and one exact-current accepted join.",
+    "AT07/HQ166 has no code delta and is treated only in ACCEPTED_BUT_NOT_RETAINED.md.",
+    "The 45 exact-present branches retain exact source bytes but their transfer/cherry-pick method and adoption scope are not inferred.",
+    "Branch creation time is unavailable; tip dates are not creation proof."
+  ],
+  "limitations": [
+    "No source-native survey or actor execution.",
+    "GitHub issue/PR/review API returned 403; PR descriptions and comments were not read.",
+    "Exact blob identity is not behavioral or semantic equivalence.",
+    "Static receiver search is not an executed consumer proof."
+  ],
+  "commands": [
+    "git diff <merge_base> <tip> --name-only for 321 code branches",
+    "git cat-file --batch-check for exact blobs",
+    "git rev-list <tip> for 321-tip ancestry",
+    "E8 uniqueness count: 3135 function IDs / 1885 family IDs",
+    "Python JSONL exact-once and mutation checks"
+  ],
+  "coverage": {
+    "join_names_sha256": "c781d59aafff7154726f8d6d4c0c61e9f2ae409df7643ad4b2d3cbea3063ca0e",
+    "join_tips_sha256": "5f7fe08942cc90831509ea23e221f9897a0386f73595ad9ddb730a3dd7d20837",
+    "function_ids_sha256": "2d7fbe3e6102e9aa2cf01f3a795c716026c38c00c09bc42bffe39af14801d1e6",
+    "family_ids_sha256": "58704270ac57a9e0186687d0c139d683768c01fef6fb1c2a8489b4ea89ca4ae8",
+    "lineage_ids_sha256": "8da0b9e5524e0ab22986905204aebc9d4abc286499b7e430612319d0bf83d0fc"
+  }
+}
