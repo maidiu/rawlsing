@@ -1,0 +1,57 @@
+{
+  "base_prerequisite": {
+    "commit": "598d9e9eaba5143950c63317705fd09104fbf463",
+    "files": 459,
+    "source_manifest_sha256": "7cfcb4679e36b522e83cc7120dbc166ce61dd220099c2aca8f5c9ddb5252c126",
+    "vendor_manifest_rows": 444
+  },
+  "candidate": {
+    "files": 640,
+    "first_consumer_cli_listed": false,
+    "first_consumer_cli_sha256": "a15c101dd6737aa4124bb6c7e7d71d7807cb9f6e71632d701bfbe8f67b11d229",
+    "preimage_rows": 638,
+    "preimage_self_excluded": true,
+    "rrif_r3_extension_files": 174,
+    "source_manifest_sha256": "7cfcb4679e36b522e83cc7120dbc166ce61dd220099c2aca8f5c9ddb5252c126"
+  },
+  "candidate_commit": "8d9585296ff264b947559f4a78f49f73ca45e53a",
+  "current_premain_path": "ABSENT__NO_SOROK_PRODUCT_CONTROL_ROOM_RRIF",
+  "eligible_target_use": "SOURCEFREE_TEST_ONLY_HISTORICAL_ARCHIVE__NO_CURRENT_PREMAIN_CALLER__OWNER_HELD",
+  "native": false,
+  "native_holds": [
+    "CAN008 concrete Rule A",
+    "CAN011 concrete Rule T/grant",
+    "ADP/SCI05 actor/memory",
+    "native C8/C9/C12",
+    "Pyat N11/N12/C11",
+    "human A5",
+    "production adoption"
+  ],
+  "not_adopted": [
+    "444-file R2 vendor closure is prerequisite, not a live merge",
+    "RRIF-E additive files are sourcefree candidate, not production",
+    "CP-A5 separate-root is not a same-root A5 weld"
+  ],
+  "owner": "Sorok/PREMAIN receiving owner after repair and independent review",
+  "premain_read_cut": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "receiving_packet": {
+    "patch_files": 9,
+    "patch_sha256": "11d4cf23fcb57d79e33a79511cf3c57d3ea53e63f4f5aeb3573608892a20bbb5",
+    "staged_e_tests": "FAIL_MODULE_NOT_FOUND_c12_guard",
+    "staged_extension_present": false,
+    "staged_files_after_patch": 466,
+    "staged_first_consumer": "FAIL_MODULE_NOT_FOUND_c12_guard",
+    "staged_r2_tests": "20 passed",
+    "staged_r3_tests": "FAIL_PATH_MISSING"
+  },
+  "required_for_repair": [
+    "Add complete rrif_r3_extension closure (174 files) or remove all dependencies and re-scope tests; required R3 tests need the closure.",
+    "Regenerate RRIF_R2_CANDIDATE_SOURCE_PREIMAGE.json after full staged tree; include first_consumer_cli.py and every extension file; make count match actual files.",
+    "Apply.sh must verify exact R2 SOURCE_MANIFEST SHA-256 and 444 rows before patching.",
+    "Replace git checkout -- plus git clean -fd with removal limited to review-created files in an isolated worktree.",
+    "Rerun 20 R2 + 9 R3 + 6 E + first consumer on the clean stage."
+  ],
+  "rollback": "Remove only SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2 in the isolated receiving worktree; no git clean/reset in shared trees.",
+  "schema": "SOROK_RRIF_FINAL_E_RECEIVING_SCOPE@1",
+  "sourcefree": true
+}
