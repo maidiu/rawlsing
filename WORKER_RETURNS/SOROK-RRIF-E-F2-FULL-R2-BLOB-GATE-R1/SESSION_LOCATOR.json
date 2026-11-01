@@ -1,0 +1,66 @@
+{
+  "schema": "SOROK_RRIF_E_F2_FULL_R2_BLOB_GATE_LOCATOR@1",
+  "host": {
+    "hostname": "oldMac.lan",
+    "platform": "macOS 13.7.8 (22H730)",
+    "architecture": "x86_64",
+    "python": "3.11.3",
+    "git": "2.39.1"
+  },
+  "harness": {
+    "name": "OpenCode",
+    "pid": 27700,
+    "model": "deepseek-v4.1-flash",
+    "model_id": "opencode-go/deepseek-v4.1-flash",
+    "requested_effort": "MAX",
+    "actual_effort": "UNVERIFIED_BY_HARNESS"
+  },
+  "exclusive_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-rrif-e-f2-full-r2-blob-check-20261101-r1",
+  "f2_branch": "agent/sorok-rrif-e-f2-full-r2-blob-check-20261101-r1",
+  "f2_launch_sha": "83be0a8c676242c920e0c414695f9dcda1c476e3",
+  "f1_base": {
+    "branch": "agent/sorok-rrif-e-exact-receiver-packet-fix-20261031-r1",
+    "commit": "1973d28ed4ba4c9e58c9d96fbe358445dddc929c",
+    "immutable": true
+  },
+  "independent_review": {
+    "branch": "review/sorok-rrif-e-f1-packet-delta-terminal-20261101-r1",
+    "commit": "86afe1845022fcf3cdd9e8b5ca4136ddb661336c",
+    "verdict": "REVISE_ONE_EXACT_PACKET_DEFECT"
+  },
+  "premain": {
+    "branch": "integration/pre-main-reconciliation-r1",
+    "commit": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+    "unchanged_start_end": true
+  },
+  "r2_base": {
+    "commit": "598d9e9eaba5143950c63317705fd09104fbf463",
+    "tree": "1161ce3d990ca78fe1b97c915dc86e559f17236b",
+    "files": 459,
+    "vendor_rows": 444,
+    "source_manifest_sha256": "7cfcb4679e36b522e83cc7120dbc166ce61dd220099c2aca8f5c9ddb5252c126"
+  },
+  "full_candidate": {
+    "commit": "8d9585296ff264b947559f4a78f49f73ca45e53a",
+    "tree": "5394e33ec81766a4ee891b0d58007f24ac1d1303",
+    "files": 640,
+    "preimage_entries": 639,
+    "r3_extension_files": 174,
+    "modified": false
+  },
+  "corrected_receiving_file": {
+    "path": "WORKER_RETURNS/SOROK-RRIF-E-RECEIVER-PACKET-FIX-F1-R1/candidate/receiving_packet/verify_r2_base.py",
+    "sha256": "029fd404a96388a2c3b74d2f38858916f8ad8ba2c66013a4f453c8c7784f1cc3",
+    "diff_sha256": "d8bde48671fadff0201929c6a0d9519297dbd902ebae31b06b61dab8849aa0fa"
+  },
+  "test_worktree": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/rrif-e-f2-premain",
+  "results": {
+    "f2_blob_gate_test": "1 passed",
+    "r2_tests": "20 passed",
+    "r3_tests": "9 passed",
+    "e_tests": "6 passed",
+    "first_consumer": "PASS_PARTIAL_SAME_ROOT_C9_C12__C9_ACTOR_OWNER_HELD__CP_A5_SEPARATE_ROOT",
+    "engineering": "ALL_459_R2_BLOBS_VERIFIED_BEFORE_WRITE__NONVENDOR_TAMPER_FAILS_CLOSED__35_CLEAN_STAGE_TESTS_GREEN__FIRST_CONSUMER_PARTIAL"
+  },
+  "final_remote_sha": "PENDING_POST_PUSH_READBACK"
+}
