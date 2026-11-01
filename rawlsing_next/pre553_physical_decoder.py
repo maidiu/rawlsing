@@ -426,9 +426,16 @@ def _jsonable(value: Any) -> Any:
 
 
 def _physical_value(value: Any) -> Any:
-    """Preserve exact decoder-native naive date/time through the opaque R5 seam only."""
+    """Preserve supported decoder-native naive date/time through the opaque R5 seam.
+
+    Exact built-ins and naive subclasses (for example pandas.Timestamp) are
+    canonicalized by the codec.  Timezone-aware values and date-like subclasses
+    that cannot preserve civil-field identity refuse explicitly; they never
+    fall through to the string lane.  A single item wrapper is unwrapped, but
+    recursive item chasing is deliberately not performed here.
+    """
     import datetime as _dt
-    if type(value) in {_dt.datetime, _dt.date, _dt.time}:
+    if isinstance(value, (_dt.datetime, _dt.date, _dt.time)):
         return normalize_decoder_physical_value(value)
     if hasattr(value, "item"):
         try:
@@ -436,7 +443,7 @@ def _physical_value(value: Any) -> Any:
         except Exception:
             pass
         else:
-            if type(item) in {_dt.datetime, _dt.date, _dt.time}:
+            if isinstance(item, (_dt.datetime, _dt.date, _dt.time)):
                 return normalize_decoder_physical_value(item)
     return _jsonable(value)
 
@@ -567,8 +574,18 @@ def classify_physical_value(value: Any, declarations: tuple[Mapping[str, Any], .
             return PhysicalMissingState.FORMAT_EXTENDED_MISSING, declaration
         if declaration["kind"] == "discrete" and value == declaration.get("value"):
             return PhysicalMissingState.FORMAT_USER_MISSING_VALUE, declaration
-        if declaration["kind"] == "range" and declaration.get("lo") <= value <= declaration.get("hi"):
-            return PhysicalMissingState.FORMAT_USER_MISSING_RANGE, declaration
+        if declaration["kind"] == "range":
+            lo = declaration.get("lo")
+            hi = declaration.get("hi")
+            try:
+                in_range = lo <= value <= hi
+            except TypeError as exc:
+                raise DecoderError(
+                    "physical value cannot be compared with a declared missing range "
+                    f"(value_type={type(value).__name__})"
+                ) from exc
+            if in_range:
+                return PhysicalMissingState.FORMAT_USER_MISSING_RANGE, declaration
     return PhysicalMissingState.OBSERVED_STORAGE_VALUE, None
 
 
@@ -849,7 +866,6 @@ __all__ = [
     "build_physical_metadata_payload",
     "compute_physical_metadata_digest",
     "classify_physical_value",
-    "_physical_value",
     "decode_sav",
     "decode_dta",
 ]
