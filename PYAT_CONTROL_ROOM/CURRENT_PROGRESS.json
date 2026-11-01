@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 1,
+  "revision": 2,
   "revision_note": "First structured JSON initialization from zero-byte PRE-MAIN progress file; no claim prior owner revisions never occurred",
-  "report_status": "RRIF_C3_INDEPENDENT_APPROVAL_AND_RECEIVING_EVIDENCE__PR602_PRE_MERGE__M2_OWNER_HOLD",
+  "report_status": "RRIF_C3_PR602_MERGED_PREMAIN__B5M2_M2_OWNER_DECISION_HOLD",
   "activity_mode": "RRIF_ONLY__PROGRAMMA_STOPPED_BY_USER",
   "publication_branch": "integration/pyat-rrif-c3-e4f-selective-receiving-20261101-r1",
-  "canonical_read_cut": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "canonical_read_cut": "0075c15fdfb1ca7dea3c5cb54ace3652e0201441",
   "working_hq": {
     "branch": "research/pyat-rrif-hq-d1d5-intake-20261031-r1",
     "verification_scope": "RRIF documentary adjudication and exact isolated C3 receiving only; no original native source/scientific or protected owner grant"
@@ -16,19 +16,23 @@
     "pr_branch": "integration/pyat-rrif-c3-e4f-selective-receiving-20261101-r1",
     "author_cut": "f2c0af3273d612bff0a7bd2407532b52caf4348b",
     "independent_accept": "7cd2206fd976606d3816589e2fce03c03c827f39",
-    "status": "PRE_MERGE__NEEDS_OWNER_CAS",
+    "status": "C3_MERGED_SOURCEFREE",
     "reviewed_payload_paths": 6,
     "proof_witnesses": 2,
     "sourcefree_selected_tests": "45 PASS; selected 194 PASS 1 SKIP; G01 two historical RED unchanged",
     "ci_proof_integrity": "PASS at 6fee2384136253243aea3569eac10e05b816f7a9",
-    "ci_governed_court": "144 PASS / 3 FAIL at 6fee2384136253243aea3569eac10e05b816f7a9; all three historical pinned test/backend blobs unchanged from PRE-MAIN"
+    "ci_governed_court": "144 PASS / 3 FAIL at 6fee2384136253243aea3569eac10e05b816f7a9; all three historical pinned test/backend blobs unchanged from PRE-MAIN",
+    "merge_commit": "0075c15fdfb1ca7dea3c5cb54ace3652e0201441",
+    "sourcefree_tests": "45 PASS + selected 194 PASS/1 SKIP, G01 baseline 2 RED unchanged",
+    "proof_integrity": "2 named assertion-severance witnesses PASS",
+    "broad_governed_court": "144 PASS/3 FAIL unchanged historical F I A B C pinned blobs; preserved as negative"
   },
   "rrif": {
     "lineages_accounted": 34,
     "code_branch_identities": 321,
     "code_introducing": 155,
-    "terminal": "NOT_CLOSED",
-    "b5m2": "E6 confirms scoped sourcefree merit; original HQ118 M2 owner decision on test17/test18 NOT_ISSUED",
+    "terminal": "NOT_CLOSED__M2_OWNER_VERSIONED_FIXTURE_DECISION_PENDING",
+    "b5m2": "NOT_ADOPTED__E6 confirms scoped sourcefree merits; qualified M2 fixture owner signature missing",
     "owner_proposal": "9a47ebf65971016da464360335342977b061ff43",
     "programme": "HOLD_UNTIL_RRIF_TERMINAL_AND_USER_RELEASE"
   },

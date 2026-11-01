@@ -1,3 +1,13 @@
+# RRIF C3 — VERIFIED MERGED SOURCEFREE RECEIVING — 2026-11-01
+
+Owner-CAS PRE-MAIN merge commit: `0075c15fdfb1ca7dea3c5cb54ace3652e0201441` from PR #602. E4F corrected D01/D02 real SAV/DTA Timestamp and aware subclass handling independently accepted by E4FR. Original E1 33 + E4F 12 PASS, selected 194 PASS/1 SKIP; mandatory executable proof-integrity witnesses 2 PASS, independent sourcefree receiving exact six blobs PASS. Broader historical governed court remains **144 PASS/3 FAIL** on Git blobs unchanged between PRE-MAIN before PR and PR head; its old fiabc pin mismatches are retained, not called green or silently waived as new C3 changes. G01 two original hostile RED and source/native science/actor/right HOLD untouched.
+
+B5/M2 E5 sourcefree hardening reviewed by E6 and NOT ADOPTED: 179 PASS/14 FAIL unfiltered, including 2 accepted original test 17/18 fixture setups plus 12 historical defect-presence negatives. Browser proposed original HQ118 fixture versioning (branch `9a47ebf6`) but did not sign/possess owner authority. Require actual current qualified owner decision, then scoped versioned tests, tests/independent review/receiving or explicit preserved candidate HOLD. The 34-lineage RRIF historical ledger remains accounted; finite RRIF closure not yet issued. ALL PROGRAMMA WORK user-stopped until RRIF terminal and explicit release.
+
+**This summary is a factual after-merge update and not a new source/semantic/actor grant.** Earlier progress retained below.
+
+---
+
 # PYAT RRIF exclusive receiving — current update, 2026-11-01
 
 **Current status at this PR:** independent E4FR reviewed C3/D01+D02 sourcefree repair `f2c0af3273d612bff0a7bd2407532b52caf4348b` and approved scoped fan-in `7cd2206fd976606d3816589e2fce03c03c827f39`. PR #602 selective receiving is **not declared merged by this pre-merge record**; live PRE-MAIN was `8e44ca9c751049d65e6def47600b5c073ee04b29` at preparation. Two independent sourcefree 45/45 and selected 194 pass/1 skip receipts at C3 PR head; two historical G01 RED persist unchanged. Current GitHub Actions proof-integrity checker **passed** on head `6fee2384136253243aea3569eac10e05b816f7a9` after two executable witnesses and the required pandas/pyreadstat CI dependencies; the broader governed court on that cut reported **144 passed / 3 failed**, all three failures from unchanged historical provenance pins: `test_fiabc_w3_i04_runtime_packaging_rebind` and two `test_fiabc_final_preflight_fanin`. Their implementation and original test blobs match PRE-MAIN; never describe broad court as green. These existing faults do not constitute a newly introduced C3 regression; preserve as named negative owner work.
