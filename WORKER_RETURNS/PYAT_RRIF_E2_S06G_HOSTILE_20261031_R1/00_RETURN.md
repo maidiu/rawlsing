@@ -2,8 +2,8 @@
 
 **Branch:** `review/pyat-rrif-e2-s06g-integrity-hostile-20261031-r1`
 **Startup / PRE-MAIN:** `8e44ca9c751049d65e6def47600b5c073ee04b29`
-**Content commit:** `TO_BE_RECORDED_AFTER_COMMIT`
-**Final returned content SHA:** `TO_BE_RECORDED_AFTER_PUSH` (direct `ls-remote` readback to follow)
+**Content commit:** `7a9a8dc360119bd2d4a9c8176561f9330c243159`
+**Final returned content SHA:** `7a9a8dc360119bd2d4a9c8176561f9330c243159` (direct `ls-remote` readback verified)
 **Role:** independent I3 hostile reviewer. Not S06F/S06G author, not D4 reviewer, not HQ, not PRE-MAIN integrator, not scientific issuer, not own final reviewer.
 
 ## Bottom line
