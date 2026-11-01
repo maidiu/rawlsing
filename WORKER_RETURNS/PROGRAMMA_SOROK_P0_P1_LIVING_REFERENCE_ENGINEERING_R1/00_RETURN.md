@@ -11,7 +11,7 @@
 | Engineering branch | `codex/programma-sorok-p0-p1-engineering-20261101` |
 | Verified initial HEAD | `a89e5ccbe67400168aaea8367f7aa00ca0de7625` |
 | Verified remote initial HEAD | same; branch was not advanced |
-| Implementation commit | reported in `PUSH_RECEIPT.json` and terminal push readback |
+| Implementation commit | `93945e4b4539fd5d5e39805d7d1f35d2325a2cbd` |
 | Final remote SHA | reported by terminal push readback; a file cannot contain the SHA of the commit that contains it |
 
 No force-push, reset of another checkout or PRE-MAIN mutation occurred. Other
