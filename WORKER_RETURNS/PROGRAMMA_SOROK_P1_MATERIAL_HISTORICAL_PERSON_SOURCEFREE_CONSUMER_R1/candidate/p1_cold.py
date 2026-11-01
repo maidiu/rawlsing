@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 DEPS = ROOT / "deps"
 os.environ.setdefault("M35_JOIN_E_RETURN", str(DEPS / "join_e"))
+os.environ.setdefault("M35_BP2_VENDOR", str(DEPS / "m35_vendor"))
 if str(DEPS / "m35") not in sys.path:
     sys.path.insert(0, str(DEPS / "m35"))
 import install  # noqa: E402

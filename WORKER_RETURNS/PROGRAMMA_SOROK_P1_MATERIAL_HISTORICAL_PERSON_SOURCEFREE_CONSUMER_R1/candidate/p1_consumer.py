@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 DEPS = ROOT / "deps"
 os.environ.setdefault("M35_JOIN_E_RETURN", str(DEPS / "join_e"))
+os.environ.setdefault("M35_BP2_VENDOR", str(DEPS / "m35_vendor"))
 if str(DEPS / "m35") not in sys.path:
     sys.path.insert(0, str(DEPS / "m35"))
 import install  # noqa: E402
@@ -46,6 +47,7 @@ def _open(kind: str, state_root) -> dict:
     """Read a persisted history in a genuinely separate Python interpreter."""
     env = dict(os.environ)
     env["M35_JOIN_E_RETURN"] = str(DEPS / "join_e")
+    env["M35_BP2_VENDOR"] = str(DEPS / "m35_vendor")
     cp = subprocess.run(
         [sys.executable, str(ROOT / "p1_cold.py"), "--kind", kind,
          "--state", str(state_root)],

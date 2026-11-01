@@ -24,7 +24,7 @@ Every life has a real persisted C12 record and a separately executed cold Python
 
 Caller: `candidate/p1_consumer.py::run_trajectories`, executed from `candidate/tools/run_p1.sh`. Receiver: JOIN-E `JoinedSession` for A/D, `RefusalSession` for C, and `NoAccessProduct` for B. The later A0/A2 first-neighbor encounter is the existing `R31ESession.do_help` path inherited by `JoinedSession`; the cold reader is `candidate/p1_cold.py` in a separate interpreter. `candidate/p1_s35.py` is an isolated TEST_ONLY A/T classifier and never installs the C9R two-act automatic route. `candidate/p1_no_access.py` keeps B's share in a targetless C12 root without asserting A saw it.
 
-The implementation reuses M35 `@4170fbf` and JOIN-E `@7bf2da30` copied under `candidate/deps/`. S35 `@888ccae5` is copied as a nonissuing scientific resource. F1 `@1973d28` and the full RRIF candidate `@8d958529` were read only as pending handoff, not imported or treated as accepted.
+The implementation reuses M35 `@4170fbf` and JOIN-E `@7bf2da30` copied under `candidate/deps/`, with the exact 48-file BP2 vendor closure under `candidate/deps/m35_vendor/`. S35 `@888ccae5` is copied as a nonissuing scientific resource. F1 `@1973d28` and the full RRIF candidate `@8d958529` were read only as pending handoff, not imported or treated as accepted.
 
 ## Sourcefree evidence
 

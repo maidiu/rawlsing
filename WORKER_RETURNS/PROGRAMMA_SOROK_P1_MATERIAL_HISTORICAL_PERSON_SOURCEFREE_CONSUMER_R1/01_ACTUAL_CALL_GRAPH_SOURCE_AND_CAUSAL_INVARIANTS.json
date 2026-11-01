@@ -5,7 +5,7 @@
       "edge": "p1_consumer.run_trajectories -> install.install",
       "import_path": "candidate/p1_consumer.py -> candidate/deps/m35/install.py",
       "native": false,
-      "observed": "bp2_joined loaded before JOIN-E",
+      "observed": "bp2_joined loaded from bundled candidate/deps/m35_vendor via M35_BP2_VENDOR before JOIN-E",
       "producer": "M35",
       "provenance": "TEST_ONLY_SOURCEFREE",
       "time": "boot"
@@ -716,7 +716,8 @@
     "M35 source is copied exactly under candidate/deps/m35; oracle cut metadata is frozen at 55377b/2d11e32 but the accepted P1 cut is 4170fbf.",
     "JOIN-E is copied from 7bf2da30; no JOIN-E file edited.",
     "S35 is a resource, not a native rule; P1 adapter is TEST_ONLY and does not install C9R two-act auto-route.",
-    "F1 @1973/8d958 not imported; verdict pending and not used as authority."
+    "F1 @1973/8d958 not imported; verdict pending and not used as authority.",
+    "The 48-file BP2 vendor closure is copied byte-exact from M35 declared warm R31J path under candidate/deps/m35_vendor; M35_BP2_VENDOR pins it. The source manifest verifies 30/30 files at import."
   ],
   "schema": "SOROK_P1_ACTUAL_CALL_GRAPH_SOURCE_AND_CAUSAL_INVARIANTS@1",
   "source_files": {
@@ -794,6 +795,18 @@
         "time": "pre-C8/C8"
       }
     ],
+    "m35_vendor": [
+      {
+        "blob_sha1": "906dada9bac86a0bd0a8ba0161ecbc275a626e90",
+        "native": false,
+        "owner": "M35/BP2 vendor closure",
+        "path": "candidate/deps/m35_vendor/source_manifest.json",
+        "provenance": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+        "sha256": "1f624513d7f5591eb7418002871c9717ca430606e1205531e9f0d1d6025414da",
+        "source_commit": "R31J_WARM_VENDOR__M35_DECLARED_CLOSURE",
+        "time": "pre-C8 import"
+      }
+    ],
     "s35": [
       {
         "blob_sha1": "f1109c000aae7a55cb80198ab4ce77fd41a5f56b",
@@ -816,32 +829,32 @@
         "time": "A/T classification"
       },
       {
-        "blob_sha1": "a573bd28f11031b0f5aa91c1ccd34c96315f9fe3",
+        "blob_sha1": "da80fed44c1581314602d895aab86733731e1785",
         "native": false,
         "owner": "P1 sourcefree integration",
         "path": "candidate/p1_no_access.py",
         "provenance": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
-        "sha256": "a4660be7e41c61d344661fa83b66c216c54d848033ac3c3147b0d1123272c395",
+        "sha256": "99b7f94dd82aade8785285f715fed3ea12f4a0db085cbe861bc7d9dac0b705d4",
         "source_commit": "THIS_RETURN",
         "time": "B share/no A access"
       },
       {
-        "blob_sha1": "13de26da30429f5fbcc345e9bb5186318d44538d",
+        "blob_sha1": "6b8b9a38b7deaf1b43100b5662d34d03f67ec5e4",
         "native": false,
         "owner": "P1 sourcefree integration",
         "path": "candidate/p1_consumer.py",
         "provenance": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
-        "sha256": "97e1d99b46495ff42726b1431ec377c79bb9443010203077817260d5db0ba77f",
+        "sha256": "ee4ddcbffeddfc198947458ad040f424d910bbd9cf4adb1f3b334a784b60d7bc",
         "source_commit": "THIS_RETURN",
         "time": "four trajectories"
       },
       {
-        "blob_sha1": "55ba815feae58841c6256dc06a3eec3e77724ab5",
+        "blob_sha1": "f839ceb2d86ec5c89df7f171435bd8f7c9b77898",
         "native": false,
         "owner": "P1 sourcefree integration",
         "path": "candidate/p1_cold.py",
         "provenance": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
-        "sha256": "9b6bd69aa3c8258a478535742fc797a6c1c9f855ec49677be4d86b5818a7bf20",
+        "sha256": "aa9d90147a17b34ef72ca3ab32d0a5ad0deebf12f17008f56e44972603338054",
         "source_commit": "THIS_RETURN",
         "time": "cold interpreter"
       },

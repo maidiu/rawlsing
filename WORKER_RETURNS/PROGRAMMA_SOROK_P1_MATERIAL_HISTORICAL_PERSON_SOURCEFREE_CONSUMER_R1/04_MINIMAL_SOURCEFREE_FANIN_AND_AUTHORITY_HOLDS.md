@@ -19,7 +19,7 @@ candidate/p1_consumer.py
   -> candidate/p1_cold.py for a separate interpreter cold read
 ```
 
-The actual imported files are copied under `candidate/deps/m35/` (20 files) and `candidate/deps/join_e/` (478 files). The S35 JSON is copied as a resource under `candidate/deps/s35/`; it is not installed as a native rule. No 640-file blanket transplant, no live PRE-MAIN edit, no Pyat world, and no production/native write occurred.
+The actual imported files are copied under `candidate/deps/m35/` (20 files), its exact 48-file BP2 vendor closure at `candidate/deps/m35_vendor/`, and `candidate/deps/join_e/` (478 files). The S35 JSON is copied as a resource under `candidate/deps/s35/`; it is not installed as a native rule. No 640-file blanket transplant, no live PRE-MAIN edit, no Pyat world, and no production/native write occurred.
 
 ## What is imported and what is rejected
 

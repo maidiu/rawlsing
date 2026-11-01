@@ -10,6 +10,7 @@ From the P1 worktree, with Python 3.11.3 and pytest 9.1.1:
 OUT=$PWD/WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1
 PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
   M35_JOIN_E_RETURN="$OUT/candidate/deps/join_e" \
+  M35_BP2_VENDOR="$OUT/candidate/deps/m35_vendor" \
   PYTHONPATH="$OUT/candidate:$OUT/candidate/deps/m35:$OUT/candidate/deps/join_e" \
   python3 -m pytest -q "$OUT/candidate/tests/test_p1.py" \
   -p no:cacheprovider --junitxml="$OUT/evidence/p1-junit.xml"
@@ -19,6 +20,7 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
 ```sh
 PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
   M35_JOIN_E_RETURN="$OUT/candidate/deps/join_e" \
+  M35_BP2_VENDOR="$OUT/candidate/deps/m35_vendor" \
   PYTHONPATH="$OUT/candidate/deps/m35:$OUT/candidate/deps/join_e" \
   python3 -m pytest -q "$OUT/candidate/deps/m35/tests" \
   -p no:cacheprovider --junitxml="$OUT/evidence/m35-junit.xml"
@@ -27,10 +29,13 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
+  M35_BP2_VENDOR="$OUT/candidate/deps/m35_vendor" \
   PYTHONPATH="$OUT/candidate/deps/m35:$OUT/candidate/deps/join_e" \
   python3 "$OUT/candidate/deps/m35/oracles/m35_source_mutation_oracle.py"
 # 9 rejected / 0 accepted, exit 0
 ```
+
+The bundled 48-file BP2 vendor closure is pinned at `candidate/deps/m35_vendor/` and selected by `M35_BP2_VENDOR`, so the run does not depend on the host-absolute warm path.
 
 The four-life runner and hostile receipt are also committed as scripts:
 

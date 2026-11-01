@@ -19,13 +19,13 @@
         "accepted": true,
         "admission": {
           "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_510eef5493c41459b59f4466d75e514c834e97df33f01ed564af2f5cd1d5cbb6",
-          "admission_id": "b56419f4436500405bdaaad29b752debe35e8d48895c5c3d7bc10f57a9ed98be",
+          "admission_id": "136e6d59a2ac2a68e62948d12fb0cf177b18f4122d52522850305d585753ae3a",
           "attention_excluded": true,
           "clock": 10,
-          "consumed_state_hash": "471e56488c65eea02a5ed39fc8894af0147656f0850f994038119a3772b6d3b6",
+          "consumed_state_hash": "497fd7401545ead0152d8b6296eaf09bdd9e885f2c06180686ab202213c65439",
           "contact_outcome": "",
-          "contract_hash": "fc9ddfec1a7f61ee3ac28bb5a3bd68bf1048b3b6ebdfe1cb15151459dea3161d",
-          "fact_count": 1,
+          "contract_hash": "cbb51c31a7b4ed8e6e4bd7182aa5945c620ce0a0ffdf4b7bea425b189b2cb4eb",
+          "fact_count": 2,
           "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
           "knowledge_ref_count": 0,
           "message_episode_id": "",
@@ -33,10 +33,10 @@
           "native": false,
           "schema": "R31E_EXPRESSION_ADMISSION@1",
           "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
-          "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_d5e01cb8b7fd9af0d1bf2569f916adcbab1813bade9b8b17f83fef5340773466",
+          "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_653885105fb012879e795b5e9317e33aa93d38682280ad0d6c600028479f01b8",
           "strategy": "HELP_ACCEPT",
-          "target_id": "96d03ced284a9735bf71c8a98067f1cde3ee4a04c6b8413ab9367fd19fd2b84e",
-          "template_id": "help_accept_2",
+          "target_id": "2480ca41e1a4d44bb17f5837974825aac8f7abac75a378f2bcaf3a1a7b657a05",
+          "template_id": "help_accept_1",
           "validation": {
             "checks": {
               "a_at_workshop": true,
@@ -67,24 +67,30 @@
               "field": "tools_remaining",
               "kind": "ACTOR_FIELD",
               "value": 1
+            },
+            {
+              "field": "tool_available",
+              "kind": "WORLD_RESOURCE",
+              "scope": "workshop",
+              "value": true
             }
           ],
-          "gesture": "A clears a space at the bench.",
+          "gesture": "A sets the tool beside your hand.",
           "knowledge_refs": [],
           "schema": "R31E_EXPRESSION_CANDIDATE@1",
           "slots": {},
-          "speech": "Put your hand on the near edge. I'll take the slack.",
+          "speech": "Hold the near edge. I'll check the seam.",
           "strategy": "HELP_ACCEPT",
-          "template_id": "help_accept_2",
+          "template_id": "help_accept_1",
           "tone": "practical",
-          "variant": 1
+          "variant": 0
         },
-        "contract_hash": "fc9ddfec1a7f61ee3ac28bb5a3bd68bf1048b3b6ebdfe1cb15151459dea3161d",
+        "contract_hash": "cbb51c31a7b4ed8e6e4bd7182aa5945c620ce0a0ffdf4b7bea425b189b2cb4eb",
         "status": "OK",
         "strategy": "HELP_ACCEPT",
         "surface": [
           "A material repair is performed in the workshop.",
-          "the repair worker says: \"Put your hand on the near edge. I'll take the slack.\" A clears a space at the bench."
+          "the repair worker says: \"Hold the near edge. I'll check the seam.\" A sets the tool beside your hand."
         ]
       },
       "a_tools_remaining": 1,
@@ -109,7 +115,7 @@
         "ok": true,
         "process": {
           "executable": "/usr/local/bin/python3",
-          "pid": 18692
+          "pid": 19933
         },
         "returncode": 0,
         "source": {
@@ -130,7 +136,7 @@
           "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
           "source_grade": "TEST_ONLY_SOURCEFREE"
         },
-        "state_root": "/private/tmp/p1-run-final/A_share_access_request",
+        "state_root": "/private/tmp/p1-run-final2/A_share_access_request",
         "status": {
           "actor_model": "LIVE_ACTOR_MODEL_NOT_RUN",
           "attention": "focused",
@@ -142,7 +148,7 @@
           "expression_port": "R31E_EXPRESSION_PORT@1",
           "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
           "j_source_ref": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
-          "j_target_id": "96d03ced284a9735bf71c8a98067f1cde3ee4a04c6b8413ab9367fd19fd2b84e",
+          "j_target_id": "2480ca41e1a4d44bb17f5837974825aac8f7abac75a378f2bcaf3a1a7b657a05",
           "location": "workshop",
           "material_performance": "omit",
           "messages": 0,
@@ -194,7 +200,7 @@
                   "perception": 2,
                   "world_event": 1
                 },
-                "root_hash": "445b5be98bb1e84f6acabc439df5d41e2bc2676469ab15e1650b641e7cd2b809"
+                "root_hash": "36a12841f7bbc2e60b11e80b7daf0985b80d122d26c7f47ada186b8332c1bf7a"
               },
               "branch_id": "first_session"
             },
@@ -217,7 +223,7 @@
           "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
         }
       },
-      "e1_event_hash": "5a674ae417ce80b92c969beb084dc7b7521efcb8105c99747da25eee1a8fbbd8",
+      "e1_event_hash": "7bae65e73c13df74f4cb21a5a09028fc5f1016c6dc085573fa66c73de1f89d6b",
       "id": "A_SHARE_ACCESS_A_REQUEST",
       "meta_schema": "SOROK_SAME_PERSON_JOIN@1",
       "native": false,
@@ -276,8 +282,8 @@
         "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
         "source_grade": "TEST_ONLY_SOURCEFREE"
       },
-      "state_root": "/private/tmp/p1-run-final/A_share_access_request",
-      "target_id": "96d03ced284a9735bf71c8a98067f1cde3ee4a04c6b8413ab9367fd19fd2b84e",
+      "state_root": "/private/tmp/p1-run-final2/A_share_access_request",
+      "target_id": "2480ca41e1a4d44bb17f5837974825aac8f7abac75a378f2bcaf3a1a7b657a05",
       "world_clock": 10
     },
     "B": {
@@ -294,7 +300,7 @@
           ],
           "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
           "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-          "c8_commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+          "c8_commit_receipt_id": "4ebbdb0f7d4eb4db834ab18e84c37dfca760800ddfa0c1bd434927339ed3a863",
           "c8_occurrence_id": "OCC-0001",
           "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
           "committed": true,
@@ -305,7 +311,7 @@
           "e1_adp019": {
             "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
             "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-            "commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+            "commit_receipt_id": "4ebbdb0f7d4eb4db834ab18e84c37dfca760800ddfa0c1bd434927339ed3a863",
             "event_time": 242,
             "identity_digest": "32f9f2b5d784507a88c5e8c1881d2469501af3ecf1657b034fcbbcfab1e3cd9d",
             "native_grant": "NOT_GRANTED",
@@ -313,7 +319,7 @@
             "state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
             "writer_version": 1
           },
-          "event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+          "event_hash": "a0b0343027bfee47de0c08043abb9ec356113a74a4b5d53d70fced886ed4994e",
           "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
           "event_reason": "OK",
           "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",
@@ -389,7 +395,7 @@
           "target_id": "",
           "target_reason": "NO_PROPOSAL"
         },
-        "e1_event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+        "e1_event_hash": "a0b0343027bfee47de0c08043abb9ec356113a74a4b5d53d70fced886ed4994e",
         "gm01_source": {
           "a_e1_clock": 6,
           "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
@@ -414,13 +420,13 @@
         "target_id": ""
       },
       "c8": {
-        "anchor_log": "/private/tmp/p1-run-final/B_share_no_access/bp2/bp2/anchor/rows.json",
-        "anchor_watermark": "/private/tmp/p1-run-final/B_share_no_access/bp2/bp2/anchor/watermark.json",
+        "anchor_log": "/private/tmp/p1-run-final2/B_share_no_access/bp2/bp2/anchor/rows.json",
+        "anchor_watermark": "/private/tmp/p1-run-final2/B_share_no_access/bp2/bp2/anchor/watermark.json",
         "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
-        "e1_event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
-        "journal_path": "/private/tmp/p1-run-final/B_share_no_access/bp2/bp2/journal/journal.json",
+        "e1_event_hash": "a0b0343027bfee47de0c08043abb9ec356113a74a4b5d53d70fced886ed4994e",
+        "journal_path": "/private/tmp/p1-run-final2/B_share_no_access/bp2/bp2/journal/journal.json",
         "key_id": "BP2-TEST-KEY",
-        "key_path": "/private/tmp/p1-run-final/B_share_no_access/bp2/bp2/keys/writer_keys.json",
+        "key_path": "/private/tmp/p1-run-final2/B_share_no_access/bp2/bp2/keys/writer_keys.json",
         "occurrence_id": "OCC-0001"
       },
       "c9": {
@@ -430,7 +436,7 @@
         ],
         "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
         "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-        "c8_commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+        "c8_commit_receipt_id": "4ebbdb0f7d4eb4db834ab18e84c37dfca760800ddfa0c1bd434927339ed3a863",
         "c8_occurrence_id": "OCC-0001",
         "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
         "committed": true,
@@ -441,7 +447,7 @@
         "e1_adp019": {
           "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
           "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-          "commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+          "commit_receipt_id": "4ebbdb0f7d4eb4db834ab18e84c37dfca760800ddfa0c1bd434927339ed3a863",
           "event_time": 242,
           "identity_digest": "32f9f2b5d784507a88c5e8c1881d2469501af3ecf1657b034fcbbcfab1e3cd9d",
           "native_grant": "NOT_GRANTED",
@@ -449,7 +455,7 @@
           "state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
           "writer_version": 1
         },
-        "event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+        "event_hash": "a0b0343027bfee47de0c08043abb9ec356113a74a4b5d53d70fced886ed4994e",
         "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
         "event_reason": "OK",
         "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",
@@ -542,20 +548,20 @@
         "ok": true,
         "process": {
           "executable": "/usr/local/bin/python3",
-          "pid": 18701
+          "pid": 19934
         },
         "returncode": 0,
         "sidecar": {
           "a_access_admitted": false,
           "a_response": null,
           "c8": {
-            "anchor_log": "/private/tmp/p1-run-final/B_share_no_access/bp2/bp2/anchor/rows.json",
-            "anchor_watermark": "/private/tmp/p1-run-final/B_share_no_access/bp2/bp2/anchor/watermark.json",
+            "anchor_log": "/private/tmp/p1-run-final2/B_share_no_access/bp2/bp2/anchor/rows.json",
+            "anchor_watermark": "/private/tmp/p1-run-final2/B_share_no_access/bp2/bp2/anchor/watermark.json",
             "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
-            "e1_event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
-            "journal_path": "/private/tmp/p1-run-final/B_share_no_access/bp2/bp2/journal/journal.json",
+            "e1_event_hash": "a0b0343027bfee47de0c08043abb9ec356113a74a4b5d53d70fced886ed4994e",
+            "journal_path": "/private/tmp/p1-run-final2/B_share_no_access/bp2/bp2/journal/journal.json",
             "key_id": "BP2-TEST-KEY",
-            "key_path": "/private/tmp/p1-run-final/B_share_no_access/bp2/bp2/keys/writer_keys.json",
+            "key_path": "/private/tmp/p1-run-final2/B_share_no_access/bp2/bp2/keys/writer_keys.json",
             "occurrence_id": "OCC-0001"
           },
           "c9": {
@@ -565,7 +571,7 @@
             ],
             "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
             "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-            "c8_commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+            "c8_commit_receipt_id": "4ebbdb0f7d4eb4db834ab18e84c37dfca760800ddfa0c1bd434927339ed3a863",
             "c8_occurrence_id": "OCC-0001",
             "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
             "committed": true,
@@ -576,7 +582,7 @@
             "e1_adp019": {
               "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
               "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-              "commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+              "commit_receipt_id": "4ebbdb0f7d4eb4db834ab18e84c37dfca760800ddfa0c1bd434927339ed3a863",
               "event_time": 242,
               "identity_digest": "32f9f2b5d784507a88c5e8c1881d2469501af3ecf1657b034fcbbcfab1e3cd9d",
               "native_grant": "NOT_GRANTED",
@@ -584,7 +590,7 @@
               "state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
               "writer_version": 1
             },
-            "event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+            "event_hash": "a0b0343027bfee47de0c08043abb9ec356113a74a4b5d53d70fced886ed4994e",
             "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
             "event_reason": "OK",
             "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",
@@ -683,7 +689,7 @@
           "target_id": "",
           "variant": "A_REPAIR_LONG"
         },
-        "state_root": "/private/tmp/p1-run-final/B_share_no_access/product",
+        "state_root": "/private/tmp/p1-run-final2/B_share_no_access/product",
         "view": {
           "a_access_admitted": false,
           "a_response": null,
@@ -715,7 +721,7 @@
                   ],
                   "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
                   "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-                  "c8_commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+                  "c8_commit_receipt_id": "4ebbdb0f7d4eb4db834ab18e84c37dfca760800ddfa0c1bd434927339ed3a863",
                   "c8_occurrence_id": "OCC-0001",
                   "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
                   "committed": true,
@@ -726,7 +732,7 @@
                   "e1_adp019": {
                     "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
                     "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-                    "commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+                    "commit_receipt_id": "4ebbdb0f7d4eb4db834ab18e84c37dfca760800ddfa0c1bd434927339ed3a863",
                     "event_time": 242,
                     "identity_digest": "32f9f2b5d784507a88c5e8c1881d2469501af3ecf1657b034fcbbcfab1e3cd9d",
                     "native_grant": "NOT_GRANTED",
@@ -734,7 +740,7 @@
                     "state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
                     "writer_version": 1
                   },
-                  "event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+                  "event_hash": "a0b0343027bfee47de0c08043abb9ec356113a74a4b5d53d70fced886ed4994e",
                   "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
                   "event_reason": "OK",
                   "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",
@@ -810,7 +816,7 @@
                   "target_id": "",
                   "target_reason": "NO_PROPOSAL"
                 },
-                "e1_event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+                "e1_event_hash": "a0b0343027bfee47de0c08043abb9ec356113a74a4b5d53d70fced886ed4994e",
                 "gm01_source": {
                   "a_e1_clock": 6,
                   "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
@@ -836,9 +842,9 @@
               },
               "branch_id": "root",
               "clock": 10,
-              "episode_id": "TEST_ONLY_BP4_EP_a09e0e92f2c556079ffe4efc2906d341dd3f333f8c4a712109ff09516bc04ff8",
+              "episode_id": "TEST_ONLY_BP4_EP_54045d858d78627d4628860f4e1d45b7605bb0eac990f8f7e4d9f4ed32f4f1e0",
               "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
-              "hash": "a09e0e92f2c556079ffe4efc2906d341dd3f333f8c4a712109ff09516bc04ff8",
+              "hash": "54045d858d78627d4628860f4e1d45b7605bb0eac990f8f7e4d9f4ed32f4f1e0",
               "kind": "GM01_NO_ACCESS",
               "native": false,
               "schema": "BP4_C12_EPISODE@1"
@@ -942,7 +948,7 @@
                 ],
                 "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
                 "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-                "c8_commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+                "c8_commit_receipt_id": "4ebbdb0f7d4eb4db834ab18e84c37dfca760800ddfa0c1bd434927339ed3a863",
                 "c8_occurrence_id": "OCC-0001",
                 "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
                 "committed": true,
@@ -953,7 +959,7 @@
                 "e1_adp019": {
                   "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
                   "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-                  "commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+                  "commit_receipt_id": "4ebbdb0f7d4eb4db834ab18e84c37dfca760800ddfa0c1bd434927339ed3a863",
                   "event_time": 242,
                   "identity_digest": "32f9f2b5d784507a88c5e8c1881d2469501af3ecf1657b034fcbbcfab1e3cd9d",
                   "native_grant": "NOT_GRANTED",
@@ -961,7 +967,7 @@
                   "state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
                   "writer_version": 1
                 },
-                "event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+                "event_hash": "a0b0343027bfee47de0c08043abb9ec356113a74a4b5d53d70fced886ed4994e",
                 "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
                 "event_reason": "OK",
                 "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",
@@ -1037,7 +1043,7 @@
                 "target_id": "",
                 "target_reason": "NO_PROPOSAL"
               },
-              "e1_event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+              "e1_event_hash": "a0b0343027bfee47de0c08043abb9ec356113a74a4b5d53d70fced886ed4994e",
               "gm01_source": {
                 "a_e1_clock": 6,
                 "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
@@ -1063,9 +1069,9 @@
             },
             "branch_id": "root",
             "clock": 10,
-            "episode_id": "TEST_ONLY_BP4_EP_a09e0e92f2c556079ffe4efc2906d341dd3f333f8c4a712109ff09516bc04ff8",
+            "episode_id": "TEST_ONLY_BP4_EP_54045d858d78627d4628860f4e1d45b7605bb0eac990f8f7e4d9f4ed32f4f1e0",
             "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
-            "hash": "a09e0e92f2c556079ffe4efc2906d341dd3f333f8c4a712109ff09516bc04ff8",
+            "hash": "54045d858d78627d4628860f4e1d45b7605bb0eac990f8f7e4d9f4ed32f4f1e0",
             "kind": "GM01_NO_ACCESS",
             "native": false,
             "schema": "BP4_C12_EPISODE@1"
@@ -1188,7 +1194,7 @@
         "ok": true,
         "process": {
           "executable": "/usr/local/bin/python3",
-          "pid": 18703
+          "pid": 19935
         },
         "returncode": 0,
         "source": {
@@ -1209,7 +1215,7 @@
           "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
           "source_grade": "TEST_ONLY_SOURCEFREE"
         },
-        "state_root": "/private/tmp/p1-run-final/C_refuse_targetless",
+        "state_root": "/private/tmp/p1-run-final2/C_refuse_targetless",
         "status": {
           "actor_model": "LIVE_ACTOR_MODEL_NOT_RUN",
           "attention": "focused",
@@ -1222,7 +1228,7 @@
             ],
             "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
             "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-            "c8_commit_receipt_id": "7b9ce85b2555846adddd6387b47d653dc40f299f22d80507b61d54b9a8dd7966",
+            "c8_commit_receipt_id": "460e097aeae22dbd995939394aa9daf9f584ad38bdf298a5c4f93c4fbdab9bc9",
             "c8_occurrence_id": "OCC-0001",
             "c8_state_digest": "5e92ae09f1e97fe5d3c94234d9ce228011bf08e21bf022804ee34369e0e453c4",
             "committed": true,
@@ -1233,7 +1239,7 @@
             "e1_adp019": {
               "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
               "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
-              "commit_receipt_id": "7b9ce85b2555846adddd6387b47d653dc40f299f22d80507b61d54b9a8dd7966",
+              "commit_receipt_id": "460e097aeae22dbd995939394aa9daf9f584ad38bdf298a5c4f93c4fbdab9bc9",
               "event_time": 242,
               "identity_digest": "22f4219094b0c17fa7a54d87d651f61f123162ff6567365658ceb4e240a3906a",
               "native_grant": "NOT_GRANTED",
@@ -1241,7 +1247,7 @@
               "state_digest": "5e92ae09f1e97fe5d3c94234d9ce228011bf08e21bf022804ee34369e0e453c4",
               "writer_version": 1
             },
-            "event_hash": "4ecd216ba02c86e474f65c93dfb8c3dc45bbe005becc6783fdab563a1bd6b0ef",
+            "event_hash": "149c4f7d9d1e7f163d9b7e897a2ceacd60d6224002f351bb52d4ef7a4c4e0723",
             "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
             "event_reason": "OK",
             "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",
@@ -1372,7 +1378,7 @@
                   "perception": 2,
                   "world_event": 1
                 },
-                "root_hash": "f12de9a45e5f68a310b8bc5f3254dfee1a4a2bf38c165e5704b790f4c5ce7ba0"
+                "root_hash": "04b040f9a7488e221059d337bebe728449d1fb992d72f38ef1ff45315da0bf63"
               },
               "branch_id": "first_session"
             },
@@ -1406,7 +1412,7 @@
               "b_operation": "REFUSE_TOOL",
               "b_to_actor": "TEST_ONLY_R31J_A",
               "c8_state_digest": "5e92ae09f1e97fe5d3c94234d9ce228011bf08e21bf022804ee34369e0e453c4",
-              "e1_event_hash": "4ecd216ba02c86e474f65c93dfb8c3dc45bbe005becc6783fdab563a1bd6b0ef",
+              "e1_event_hash": "149c4f7d9d1e7f163d9b7e897a2ceacd60d6224002f351bb52d4ef7a4c4e0723",
               "seed_actors": {
                 "a": "TEST_ONLY_BP1_R26V_ACTOR_A",
                 "b": "TEST_ONLY_BP1_R26V_ACTOR_B"
@@ -1435,7 +1441,7 @@
           "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
         }
       },
-      "e1_event_hash": "4ecd216ba02c86e474f65c93dfb8c3dc45bbe005becc6783fdab563a1bd6b0ef",
+      "e1_event_hash": "149c4f7d9d1e7f163d9b7e897a2ceacd60d6224002f351bb52d4ef7a4c4e0723",
       "id": "C_B_REFUSE_A_REFUSAL",
       "meta_schema": "SOROK_SAME_PERSON_REFUSAL@1",
       "native": false,
@@ -1494,7 +1500,7 @@
         "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
         "source_grade": "TEST_ONLY_SOURCEFREE"
       },
-      "state_root": "/private/tmp/p1-run-final/C_refuse_targetless",
+      "state_root": "/private/tmp/p1-run-final2/C_refuse_targetless",
       "target_id": "",
       "world_clock": 10
     },
@@ -1521,12 +1527,12 @@
           "accepted": true,
           "admission": {
             "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_510eef5493c41459b59f4466d75e514c834e97df33f01ed564af2f5cd1d5cbb6",
-            "admission_id": "2f72d563799fbbbf2ad8314afe56b691cb7b24982728c7741f8ed1816089d5c1",
+            "admission_id": "72c3f784d78eb25bc603c0086a7837d3536f8009ca6489c102ae199c05d090f9",
             "attention_excluded": true,
             "clock": 10,
-            "consumed_state_hash": "4fab8dff49fae6964c9eecffb182399ae4964d182a97f9ac5a95af32f4e16e2a",
+            "consumed_state_hash": "7d31cf4bd5bc4c160c82df86e012d26b3ad18cb4ef4db37bf8cccdf969043e72",
             "contact_outcome": "",
-            "contract_hash": "2d0a6bb5761be52092e941625e7454302ba66b3b4520f0196982a60fe21fe6f5",
+            "contract_hash": "538a9eb3c0f710a5711971add5be23264ed84fc72de6f98cd805b02ec2406bd8",
             "fact_count": 1,
             "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
             "knowledge_ref_count": 0,
@@ -1535,9 +1541,9 @@
             "native": false,
             "schema": "R31E_EXPRESSION_ADMISSION@1",
             "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
-            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_0f0f58cd07b4fca96db5abb323eee206fa9fa8b6a92016f73527f89e6e936e95",
+            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_18855adf01555aa37610c857ffaa54463a272756ff1351c1eb7d44bd7c9a29d0",
             "strategy": "HELP_ACCEPT",
-            "target_id": "a5e2b2ed8cbacffdd01c9e3638f53209d6e805bb59ff1e57ff4f0e9d6eddbcd8",
+            "target_id": "7f0aef5ef9a8f91a21a1fb678bfa796d88aa6dbb6edf61c914643456d89bacb1",
             "template_id": "help_accept_2",
             "validation": {
               "checks": {
@@ -1581,7 +1587,7 @@
             "tone": "practical",
             "variant": 1
           },
-          "contract_hash": "2d0a6bb5761be52092e941625e7454302ba66b3b4520f0196982a60fe21fe6f5",
+          "contract_hash": "538a9eb3c0f710a5711971add5be23264ed84fc72de6f98cd805b02ec2406bd8",
           "status": "OK",
           "strategy": "HELP_ACCEPT",
           "surface": [
@@ -1610,7 +1616,7 @@
           "ok": true,
           "process": {
             "executable": "/usr/local/bin/python3",
-            "pid": 18708
+            "pid": 19936
           },
           "returncode": 0,
           "source": {
@@ -1631,7 +1637,7 @@
             "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
             "source_grade": "TEST_ONLY_SOURCEFREE"
           },
-          "state_root": "/private/tmp/p1-run-final/D_share_e2_vs_omit/omit",
+          "state_root": "/private/tmp/p1-run-final2/D_share_e2_vs_omit/omit",
           "status": {
             "actor_model": "LIVE_ACTOR_MODEL_NOT_RUN",
             "attention": "focused",
@@ -1643,7 +1649,7 @@
             "expression_port": "R31E_EXPRESSION_PORT@1",
             "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
             "j_source_ref": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
-            "j_target_id": "a5e2b2ed8cbacffdd01c9e3638f53209d6e805bb59ff1e57ff4f0e9d6eddbcd8",
+            "j_target_id": "7f0aef5ef9a8f91a21a1fb678bfa796d88aa6dbb6edf61c914643456d89bacb1",
             "location": "workshop",
             "material_performance": "omit",
             "messages": 0,
@@ -1695,7 +1701,7 @@
                     "perception": 2,
                     "world_event": 1
                   },
-                  "root_hash": "4e7a8c11d91f7169fcd7e0fd8f084efbb4944a518702e39ef52cde977f11f11a"
+                  "root_hash": "66c733523e97c337ed23fb9d473ed029f38dab2178c19ee933f0cada1b5d9c44"
                 },
                 "branch_id": "first_session"
               },
@@ -1718,7 +1724,7 @@
             "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
           }
         },
-        "e1_event_hash": "ecf55046500c361518825ee1460ae17744845580a618e743cb711451e6dcf2d0",
+        "e1_event_hash": "3222e09af3be588d7b970a5239a58cbb2ae50d81c61d0ef4e3dbe2f20e22ee5f",
         "meta_schema": "SOROK_SAME_PERSON_JOIN@1",
         "native": false,
         "root_branch": "root",
@@ -1774,8 +1780,8 @@
           "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
           "source_grade": "TEST_ONLY_SOURCEFREE"
         },
-        "state_root": "/private/tmp/p1-run-final/D_share_e2_vs_omit/omit",
-        "target_id": "a5e2b2ed8cbacffdd01c9e3638f53209d6e805bb59ff1e57ff4f0e9d6eddbcd8",
+        "state_root": "/private/tmp/p1-run-final2/D_share_e2_vs_omit/omit",
+        "target_id": "7f0aef5ef9a8f91a21a1fb678bfa796d88aa6dbb6edf61c914643456d89bacb1",
         "world_clock": 10
       },
       "performed": {
@@ -1784,12 +1790,12 @@
           "accepted": false,
           "admission": {
             "action_event_id": "",
-            "admission_id": "39901d7bd7187cb24ea07ba72300730b7e5003e7096d6193fae56168d9b9eaa8",
+            "admission_id": "a0668aa7cb52a4a6e53621c75536850f98467f34d200abff0bd964660a4bdef4",
             "attention_excluded": true,
             "clock": 10,
-            "consumed_state_hash": "609d24f1b7cb244d7273b967d3fced243b0dac57cc8f55f4568ca38798c4e9f4",
+            "consumed_state_hash": "48e789148cb8078d5c7eaf35c31327f34d9f5caf76771888a1ee65849dc26a15",
             "contact_outcome": "",
-            "contract_hash": "75f9040ca0f2f8a96afa9020f869efb5f11a9e455c5b66b89fce4220c66f2911",
+            "contract_hash": "00cee39fee9225f19141605547677599018375a60c02809a7aba8f4dc785a678",
             "fact_count": 1,
             "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
             "knowledge_ref_count": 0,
@@ -1798,10 +1804,10 @@
             "native": false,
             "schema": "R31E_EXPRESSION_ADMISSION@1",
             "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
-            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_32a84d8bb8177b285e84a535d18e7e007fe7d629cae2c930571dce9465461647",
+            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_e03c84d63f377e0bc2b3f885b996fd68f90686c86598ce1978e70a10dd787149",
             "strategy": "HELP_REFUSE",
-            "target_id": "856d44b2da7be8e0ccefdf47132f83f045fc2f90c64d3c978f18eda4e6ab2ad9",
-            "template_id": "help_refuse_material_2",
+            "target_id": "ed9697f0081f88e5fba4f9f44aca7cddddb8745a763dcde7e5f0090915bc6333",
+            "template_id": "help_refuse_material_1",
             "validation": {
               "checks": {
                 "action_allowed": true,
@@ -1830,21 +1836,21 @@
                 "kind": "MATERIAL_PRESSURE"
               }
             ],
-            "gesture": "A looks at the empty tool space.",
+            "gesture": "A turns the empty bench over.",
             "knowledge_refs": [],
             "schema": "R31E_EXPRESSION_CANDIDATE@1",
             "slots": {},
-            "speech": "The tool's gone. I can't do it today.",
+            "speech": "I'm out of material. I can't start that now.",
             "strategy": "HELP_REFUSE",
-            "template_id": "help_refuse_material_2",
+            "template_id": "help_refuse_material_1",
             "tone": "flat",
-            "variant": 1
+            "variant": 0
           },
-          "contract_hash": "75f9040ca0f2f8a96afa9020f869efb5f11a9e455c5b66b89fce4220c66f2911",
+          "contract_hash": "00cee39fee9225f19141605547677599018375a60c02809a7aba8f4dc785a678",
           "status": "OK",
           "strategy": "HELP_REFUSE",
           "surface": [
-            "the repair worker says: \"The tool's gone. I can't do it today.\" A looks at the empty tool space."
+            "the repair worker says: \"I'm out of material. I can't start that now.\" A turns the empty bench over."
           ]
         },
         "a_tools_remaining": 0,
@@ -1868,7 +1874,7 @@
           "ok": true,
           "process": {
             "executable": "/usr/local/bin/python3",
-            "pid": 18709
+            "pid": 19937
           },
           "returncode": 0,
           "source": {
@@ -1889,7 +1895,7 @@
             "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
             "source_grade": "TEST_ONLY_SOURCEFREE"
           },
-          "state_root": "/private/tmp/p1-run-final/D_share_e2_vs_omit/e2",
+          "state_root": "/private/tmp/p1-run-final2/D_share_e2_vs_omit/e2",
           "status": {
             "actor_model": "LIVE_ACTOR_MODEL_NOT_RUN",
             "attention": "focused",
@@ -1901,7 +1907,7 @@
             "expression_port": "R31E_EXPRESSION_PORT@1",
             "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
             "j_source_ref": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
-            "j_target_id": "856d44b2da7be8e0ccefdf47132f83f045fc2f90c64d3c978f18eda4e6ab2ad9",
+            "j_target_id": "ed9697f0081f88e5fba4f9f44aca7cddddb8745a763dcde7e5f0090915bc6333",
             "location": "workshop",
             "material_performance": "e2",
             "messages": 0,
@@ -1953,7 +1959,7 @@
                     "perception": 3,
                     "world_event": 2
                   },
-                  "root_hash": "be89f9647ec75ddf87ddb54b8d19044b4e22cd15817b6d5d1169e1a0ee587177"
+                  "root_hash": "05103224fac023a96647d7197c21ce7beec55724e76e7c8706b3635cbf6d1c18"
                 },
                 "branch_id": "first_session"
               },
@@ -1976,7 +1982,7 @@
             "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
           }
         },
-        "e1_event_hash": "4100b4ee9d11a0acf2c32e2cdf1c37b6286596caf6fc09efaacbe4b5623e7d89",
+        "e1_event_hash": "3ebf65f60d39fced91725129f72085dbb0ed62b34eb6fb4bc76b6f3376e11bdf",
         "meta_schema": "SOROK_SAME_PERSON_JOIN@1",
         "native": false,
         "root_branch": "root",
@@ -2034,8 +2040,8 @@
           "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
           "source_grade": "TEST_ONLY_SOURCEFREE"
         },
-        "state_root": "/private/tmp/p1-run-final/D_share_e2_vs_omit/e2",
-        "target_id": "856d44b2da7be8e0ccefdf47132f83f045fc2f90c64d3c978f18eda4e6ab2ad9",
+        "state_root": "/private/tmp/p1-run-final2/D_share_e2_vs_omit/e2",
+        "target_id": "ed9697f0081f88e5fba4f9f44aca7cddddb8745a763dcde7e5f0090915bc6333",
         "world_clock": 10
       }
     }
