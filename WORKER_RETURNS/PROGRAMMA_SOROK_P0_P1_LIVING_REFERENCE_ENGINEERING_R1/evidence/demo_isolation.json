@@ -1,0 +1,117 @@
+{
+  "operating_files_after": {
+    "SNAPSHOT.json": "ce69ae22c3946160c085ab5e249b0af7998e232d2bd9a6cb09c57ae54cce9f4e",
+    "evidence/journal.jsonl": "80621332431fed1869ee8701854b793d273fef2b0342d81fa6b7b5f6cd553247",
+    "r2_live_transaction.json": "eb4ece146061893061065a01dc85cfaf44fdcf7bc1ce09a454517ccafda4466f",
+    "state.json": "ce69ae22c3946160c085ab5e249b0af7998e232d2bd9a6cb09c57ae54cce9f4e"
+  },
+  "operating_files_before": {
+    "SNAPSHOT.json": "ce69ae22c3946160c085ab5e249b0af7998e232d2bd9a6cb09c57ae54cce9f4e",
+    "evidence/journal.jsonl": "80621332431fed1869ee8701854b793d273fef2b0342d81fa6b7b5f6cd553247",
+    "r2_live_transaction.json": "eb4ece146061893061065a01dc85cfaf44fdcf7bc1ce09a454517ccafda4466f",
+    "state.json": "ce69ae22c3946160c085ab5e249b0af7998e232d2bd9a6cb09c57ae54cce9f4e"
+  },
+  "operating_files_unchanged": true,
+  "receipt": {
+    "baseline": {
+      "edges": 515,
+      "nodes": 274
+    },
+    "cold_readback": {
+      "edges": 741,
+      "exit_code": 0,
+      "nodes": 288,
+      "state_digest_equal": true
+    },
+    "mode": "DISPOSABLE_TEMP_ONLY",
+    "operating_files_written": false,
+    "oscience_import": {
+      "conflicts": [
+        {
+          "from": "S5",
+          "kind": "MULTIPLE_RELATIONS",
+          "relations": [
+            "SCIENTIFIC_PRODUCT_REQUISITE_LINK__CANDIDATE",
+            "human_validation_required"
+          ],
+          "to": "A5"
+        }
+      ],
+      "counts": {
+        "legacy_records": 102,
+        "legacy_source_grounded": 102,
+        "new_nodes": 14,
+        "typed_edges": 226,
+        "workstream_upserts": 17
+      },
+      "edges": 741,
+      "evidence_digest": "be429bc1faf783a8ffd5aa1c01bee4d0d59e02da9f9fd091da09b9e9a108177b",
+      "legacy_source_grounded": 102,
+      "missing_sources": [],
+      "nodes": 288,
+      "status": "CANDIDATE_EVIDENCE_IMPORTED"
+    },
+    "receipt_path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-olive-r3-demo-svzjn_2z/r2_live_transaction.json",
+    "schema": "SOROK_OLIVE_R3_DISPOSABLE_DEMO@1",
+    "self_declared_review": {
+      "engineering_axis_unchanged": true,
+      "engineering_status": "PENDING_INDEPENDENT_ACCEPTANCE",
+      "promotion_pending": true,
+      "review_axis_unchanged": true,
+      "review_status": "PENDING_INDEPENDENT_ACCEPTANCE"
+    },
+    "source_provenance": {
+      "P1_A_ACCESS_PATH": {
+        "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+        "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+        "object_type": "blob",
+        "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md"
+      },
+      "P1_B_MATERIAL_SOURCE": {
+        "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+        "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+        "object_type": "blob",
+        "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md"
+      }
+    },
+    "source_restore": {
+      "restored": [
+        "P1_B_MATERIAL_SOURCE",
+        "P1_NO_ACCESS_CONSUMER"
+      ],
+      "second_red_preserved": true,
+      "second_restore": "APPLIED_CANDIDATE_ONLY",
+      "status": "APPLIED_CANDIDATE_ONLY",
+      "unrelated_after": {
+        "A5_human": "NOT_PROVEN",
+        "Q_GAME_001": "NONE_PROVEN_AT_PREMAIN",
+        "S0_consumer": "NOT_A_RUNTIME_MODULE",
+        "pyat_status": "EXTERNAL_OWNER_HELD"
+      }
+    },
+    "source_withdrawal": {
+      "invalidated": [
+        "P1_LATER_HELP_CONSUMER",
+        "P1_NO_ACCESS_CONSUMER"
+      ],
+      "second_independent_red": {
+        "authority": "NOT_ADOPTED",
+        "consumer": "INVALIDATED_BY_UPSTREAM",
+        "engineering": "SOURCE_DEFINITION_ONLY",
+        "human": "NOT_PROVEN",
+        "operational": "CANDIDATE_ONLY",
+        "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+        "science": "NOT_ISSUED",
+        "source_recovery": "SOURCE_EXACT"
+      },
+      "status": "SIMULATED_NOT_ADOPTED"
+    },
+    "synthetic_requirement": {
+      "operating_gap_created": false,
+      "status": "QUARANTINED_SYNTHETIC_OR_UNVERIFIABLE"
+    },
+    "tamper": {
+      "detected": "STATE_DIGEST_MISMATCH"
+    }
+  }
+}

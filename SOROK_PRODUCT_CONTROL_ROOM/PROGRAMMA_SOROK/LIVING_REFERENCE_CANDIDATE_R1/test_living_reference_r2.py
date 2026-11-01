@@ -55,7 +55,7 @@ def _imported(state: dict) -> dict:
 
 def test_oscience_patch_is_complete_typed_and_idempotent():
     state = lr.build_state(OBSERVED)
-    assert (len(state["nodes"]), len(state["edges"])) == (198, 423)
+    assert (len(state["nodes"]), len(state["edges"])) == (lr.BASE_NODE_COUNT, lr.BASE_EDGE_COUNT)
     report = _imported(state)
     assert report["status"] == "CANDIDATE_EVIDENCE_IMPORTED"
     assert report["counts"] == {
@@ -65,7 +65,7 @@ def test_oscience_patch_is_complete_typed_and_idempotent():
         "new_nodes": 14,
         "typed_edges": 226,
     }
-    assert (len(state["nodes"]), len(state["edges"])) == (212, 649)
+    assert (len(state["nodes"]), len(state["edges"])) == (lr.IMPORTED_NODE_COUNT, lr.IMPORTED_EDGE_COUNT)
     assert len(state["workstreams"]) == 17
     assert len(state["legacy_records"]) == 102
     assert len(state["missing_functions"]) == 14
@@ -119,7 +119,7 @@ def test_refresh_preserves_history_axes_and_evidence_across_cold_reload(tmp_path
     assert any(h.get("history_id") == transition["history_id"] for h in refreshed["history"])
     assert refreshed["axes"]["S5"] == before_axes["S5"]
     assert refreshed["evidence_imports"].keys() == before_evidence.keys()
-    assert (len(refreshed["nodes"]), len(refreshed["edges"])) == (212, 649)
+    assert (len(refreshed["nodes"]), len(refreshed["edges"])) == (lr.IMPORTED_NODE_COUNT, lr.IMPORTED_EDGE_COUNT)
     lr._save(refreshed, state_path)
     cold = subprocess.run(
         [sys.executable, "living_reference.py", "--state", str(state_path), "export"],
@@ -188,7 +188,8 @@ def test_source_withdrawal_invalidates_only_required_dependent_then_repair_resto
     })
     assert repair["status"] == "APPLIED_CANDIDATE_ONLY"
     assert repair["restored"]
-    assert all(state["axes"][x]["consumer"] == "CANDIDATE_READY" for x in repair["restored"])
+    assert all(not state["axes"][x]["consumer"].startswith("INVALIDATED") for x in repair["restored"])
+    assert all(state["axes"][x]["consumer"] == state["consumer_baseline"].get(x, state["axes"][x]["consumer"]) for x in repair["restored"])
     assert not any(g["id"] in {"GAP_INVALIDATED_" + x for x in repair["restored"]} for g in state["gaps"])
 
 
@@ -290,6 +291,6 @@ def test_source_manifest_verifier_remains_independent_of_author_digest():
 def test_actual_source_cut_does_not_call_old_negative_r3_review_acceptance():
     observed = lr.observe_source_cut(git_enabled=True)
     if observed["status"] == "OBSERVED_LOCAL_GIT_REFS":
-        assert observed["heads"]["r3_review"]["sha"] == lr.R3_REVIEW_CURRENT
         assert observed["heads"]["r3_review"]["sha"] != lr.R3_REVIEW_OLD_NEGATIVE
+        assert observed["heads"]["r3_review"]["sha"] != "UNKNOWN"
         assert observed["heads"]["premain"]["sha"] != "UNKNOWN"

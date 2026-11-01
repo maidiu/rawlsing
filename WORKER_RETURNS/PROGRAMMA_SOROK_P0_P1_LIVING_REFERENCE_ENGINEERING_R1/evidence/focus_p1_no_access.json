@@ -1,0 +1,160 @@
+{
+  "axes": {
+    "authority": "NOT_ADOPTED",
+    "consumer": "NONE_PROVEN_AT_PREMAIN",
+    "engineering": "SOURCE_DEFINITION_ONLY",
+    "human": "NOT_PROVEN",
+    "operational": "CANDIDATE_ONLY",
+    "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+    "science": "NOT_ISSUED",
+    "source_recovery": "SOURCE_EXACT"
+  },
+  "id": "P1_LIFE_B_SHARE_NO_ACCESS",
+  "incoming": [],
+  "inverse_navigation": "Derived from the same directed edges; no second manual graph.",
+  "maturity": {
+    "id": "P1_LIFE_B_SHARE_NO_ACCESS",
+    "owner": "P1_OWNER",
+    "rule": "Stages are independent evidence axes; code does not prove theory and native validation is not inferred from a fixture.",
+    "source_refs": [
+      {
+        "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+        "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+        "depth": "FULL_TEXT_READ",
+        "line_end": 85,
+        "line_start": 1,
+        "object_type": "blob",
+        "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md",
+        "quote": "Grade: TEST_ONLY_SOURCEFREE_NOT_NATIVE. A speech label is not the causal source.",
+        "reader": "PROGRAMMA_ENGINEER_R1"
+      }
+    ],
+    "stages": {
+      "A": {
+        "status": "SOURCEFREE_PARTIAL"
+      },
+      "C": {
+        "status": "TEST_ONLY"
+      },
+      "E": {
+        "status": "AUTHOR_TESTED"
+      },
+      "I": {
+        "status": "PRESENT"
+      },
+      "T": {
+        "status": "TEST_ONLY"
+      },
+      "V": {
+        "status": "MISSING"
+      }
+    },
+    "title": "P1 life B: identical B share, A access denied, no invented help response"
+  },
+  "missing_or_unproven": [],
+  "neighbourhood": {
+    "edges": 2,
+    "nodes": [
+      "P1_LIFE_B_SHARE_NO_ACCESS",
+      "P1_B_MATERIAL_SOURCE",
+      "P1_NO_ACCESS_CONSUMER"
+    ]
+  },
+  "node": {
+    "id": "P1_LIFE_B_SHARE_NO_ACCESS",
+    "kind": "TEST_TRAJECTORY",
+    "layer": "L4",
+    "maturity": {
+      "A": {
+        "status": "SOURCEFREE_PARTIAL"
+      },
+      "C": {
+        "status": "TEST_ONLY"
+      },
+      "E": {
+        "status": "AUTHOR_TESTED"
+      },
+      "I": {
+        "status": "PRESENT"
+      },
+      "T": {
+        "status": "TEST_ONLY"
+      },
+      "V": {
+        "status": "MISSING"
+      }
+    },
+    "owner": "P1_OWNER",
+    "programma_p1": true,
+    "source_refs": [
+      {
+        "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+        "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+        "depth": "FULL_TEXT_READ",
+        "line_end": 85,
+        "line_start": 1,
+        "object_type": "blob",
+        "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md",
+        "quote": "Grade: TEST_ONLY_SOURCEFREE_NOT_NATIVE. A speech label is not the causal source.",
+        "reader": "PROGRAMMA_ENGINEER_R1"
+      }
+    ],
+    "status": "TEST_ONLY",
+    "summary": "Same B share; A access denied; no target; no A response invented.",
+    "title": "P1 life B: identical B share, A access denied, no invented help response"
+  },
+  "outgoing": [
+    {
+      "causal": false,
+      "dependency": "EVIDENCE",
+      "dependency_type": "EPISTEMIC_EVIDENCE",
+      "edge_id": "EDGE_6f9ab53178c1bb36",
+      "from": "P1_LIFE_B_SHARE_NO_ACCESS",
+      "grade": "TEST_ONLY",
+      "hypothetical": false,
+      "relation": "uses_same_b_share_source",
+      "required": false,
+      "source": {},
+      "source_refs": [
+        {
+          "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+          "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+          "depth": "FULL_TEXT_READ",
+          "line_end": 85,
+          "line_start": 1,
+          "object_type": "blob",
+          "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md",
+          "quote": "Grade: TEST_ONLY_SOURCEFREE_NOT_NATIVE. A speech label is not the causal source.",
+          "reader": "PROGRAMMA_ENGINEER_R1"
+        }
+      ],
+      "to": "P1_B_MATERIAL_SOURCE"
+    },
+    {
+      "causal": true,
+      "dependency": "REQUIRED_CAUSAL",
+      "dependency_type": "REQUIRED_DEPENDENCY",
+      "edge_id": "EDGE_fe33adcd38af2a2e",
+      "from": "P1_LIFE_B_SHARE_NO_ACCESS",
+      "grade": "TEST_ONLY_PREREQUISITE",
+      "hypothetical": false,
+      "relation": "required_prerequisite",
+      "required": true,
+      "source": {},
+      "source_refs": [
+        {
+          "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+          "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+          "depth": "FULL_TEXT_READ",
+          "line_end": 85,
+          "line_start": 1,
+          "object_type": "blob",
+          "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md",
+          "quote": "Grade: TEST_ONLY_SOURCEFREE_NOT_NATIVE. A speech label is not the causal source.",
+          "reader": "PROGRAMMA_ENGINEER_R1"
+        }
+      ],
+      "to": "P1_NO_ACCESS_CONSUMER"
+    }
+  ]
+}

@@ -15,8 +15,8 @@ import verify_source_manifest as vsm
 class LivingReferenceTests(unittest.TestCase):
     def test_refresh_and_read_commands_share_state(self):
         state = lr.build_state()
-        self.assertEqual(len(state["nodes"]), 198)
-        self.assertEqual(len(state["edges"]), 423)
+        self.assertEqual(len(state["nodes"]), lr.BASE_NODE_COUNT)
+        self.assertEqual(len(state["edges"]), lr.BASE_EDGE_COUNT)
         self.assertEqual(state["source_count"], 144)
         self.assertGreaterEqual(len(state["pyat_boundary"]), 9)
         self.assertEqual(state["pyat_boundary"]["id"], "PYAT_EXTERNAL_BOUNDARY")
@@ -105,14 +105,15 @@ class LivingReferenceTests(unittest.TestCase):
         self.assertEqual(state["pyat_boundary"]["status"], "EXTERNAL_OWNER_HELD")
         self.assertTrue(state["history"][-1]["invalidated"])
 
-    def test_intake_new_requirement_is_visible_and_old_history_preserved(self):
+    def test_synthetic_intake_is_quarantined_and_cannot_create_operating_gap(self):
         state = lr.build_state()
         old_history = len(state["history"])
         item = lr.intake_candidate(state, {"id": "NEW-RETURN", "branch": "x", "sha": "a" * 40, "new_requirement": "NEW_REQUISITE", "tests": {"passed": 1}})
-        self.assertEqual(item["status"], "CANDIDATE_NOT_PROMOTED")
-        self.assertTrue(any(g["node"] == "NEW_REQUISITE" for g in state["gaps"]))
-        self.assertEqual(len(state["history"]), old_history + 1)
+        self.assertEqual(item["status"], "QUARANTINED_SYNTHETIC_OR_UNVERIFIABLE")
+        self.assertFalse(any(g["node"] == "NEW_REQUISITE" for g in state["gaps"]))
+        self.assertEqual(len(state["history"]), old_history)
         self.assertEqual(state["history"][0]["history_id"], "H0001")
+        self.assertTrue(state["quarantined_intake"])
 
     def test_snapshot_death_restore_and_forged_source_failure(self):
         state = lr.build_state()

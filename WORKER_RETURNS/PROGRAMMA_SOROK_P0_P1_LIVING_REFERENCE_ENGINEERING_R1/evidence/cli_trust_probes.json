@@ -1,0 +1,129 @@
+{
+  "axis_after": {
+    "authority": "UNADOPTED",
+    "consumer": "AUTHOR_TESTED_ONLY",
+    "engineering": "AUTHOR_TESTED_UNADOPTED",
+    "human": "NOT_PROVEN",
+    "operational": "RETURNED_UNADOPTED",
+    "review": "NOT_INDEPENDENTLY_REVIEWED",
+    "science": "NO_NATIVE_SCIENCE",
+    "source_recovery": "CANDIDATE_ONLY"
+  },
+  "quarantined_intake": [
+    {
+      "claimed_tests": {},
+      "kind": "QUARANTINED_INTAKE_ATTACK",
+      "read_at": "2026-11-01T20:43:12.068170+00:00",
+      "reason": "SYNTHETIC_OR_UNVERIFIABLE_RETURN",
+      "return_id": "SYNTHETIC-ATTACK",
+      "sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "status": "QUARANTINED_SYNTHETIC_OR_UNVERIFIABLE"
+    }
+  ],
+  "self_review": {
+    "applied": {
+      "event_id": "fc70566cc971c7700dea3166ed34493488e4a1a2a37e0033215bc633edd9ff83",
+      "kind": "TRANSITION_REQUEST",
+      "status": "PENDING_INDEPENDENT_ACCEPTANCE"
+    },
+    "axes": {
+      "CP-A5-R2": {
+        "authority": "UNADOPTED",
+        "consumer": "AUTHOR_TESTED_ONLY",
+        "engineering": "AUTHOR_TESTED_UNADOPTED",
+        "human": "NOT_PROVEN",
+        "operational": "RETURNED_UNADOPTED",
+        "review": "NOT_INDEPENDENTLY_REVIEWED",
+        "science": "NO_NATIVE_SCIENCE",
+        "source_recovery": "CANDIDATE_ONLY"
+      }
+    },
+    "event": {
+      "actor": {
+        "principal": "PROGRAMMA_ENGINEER_R1",
+        "role": "IMPLEMENTER",
+        "verified": false
+      },
+      "created_at": "2026-11-01T20:43:11.462570+00:00",
+      "event_id": "fc70566cc971c7700dea3166ed34493488e4a1a2a37e0033215bc633edd9ff83",
+      "kind": "TRANSITION_REQUEST",
+      "payload": {
+        "fixture": {
+          "dimension": "review",
+          "evidence": {
+            "kind": "SOURCEFREE_REVIEW",
+            "review_scope": [
+              "CP-A5-R2"
+            ],
+            "review_status": "PASS",
+            "reviewed_sha": "67f667421fc90b22aad95cfc253a16feabc92348",
+            "reviewer_role": "INDEPENDENT_I3_ENGINEER",
+            "source": {
+              "blob": "b52b0c9a9ff6b49acf5b3f648f33cd49ad7cebdb",
+              "commit": "913765328e4fab12b150ea01421ed6b445158184",
+              "object_type": "blob",
+              "path": "WORKER_RETURNS/SOROK-CP-A5-R2/01_ACTUAL_A3_A5_LIFE_AND_ENCOUNTER_TRACE.json"
+            }
+          },
+          "node_id": "CP-A5-R2",
+          "to": "REVIEW_PASSED_SCOPED"
+        }
+      },
+      "prev_event_hash": "22565fd2a79b1d40cb0d67a546edd4cd417b10ee33d8af366f0de1b147be8d84",
+      "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+      "sequence": 5,
+      "source": {
+        "blob": "b52b0c9a9ff6b49acf5b3f648f33cd49ad7cebdb",
+        "commit": "913765328e4fab12b150ea01421ed6b445158184",
+        "object_type": "blob",
+        "path": "WORKER_RETURNS/SOROK-CP-A5-R2/01_ACTUAL_A3_A5_LIFE_AND_ENCOUNTER_TRACE.json"
+      }
+    },
+    "expected_head": null,
+    "head": "fc70566cc971c7700dea3166ed34493488e4a1a2a37e0033215bc633edd9ff83",
+    "journal_head": "fc70566cc971c7700dea3166ed34493488e4a1a2a37e0033215bc633edd9ff83",
+    "revision": 5,
+    "stale_expected_head": false,
+    "state_digest": "c1aa61338a5591545d1dabf7da8932071bb73950ab7b55100e438460ed5fb7a2",
+    "status": "EVENT_APPENDED"
+  },
+  "synthetic_gap_present": false,
+  "synthetic_return": {
+    "applied": {
+      "event_id": "a284be5378c1be9a2ea2114330ea30fa0837405d8ab9a52920419c4193a462f9",
+      "kind": "RETURN_INTAKE",
+      "status": "QUARANTINED_SYNTHETIC_OR_UNVERIFIABLE"
+    },
+    "axes": {
+      "SYNTHETIC-ATTACK": null
+    },
+    "event": {
+      "actor": {
+        "principal": "PROGRAMMA_ENGINEER_R1",
+        "role": "IMPLEMENTER",
+        "verified": false
+      },
+      "created_at": "2026-11-01T20:43:12.068170+00:00",
+      "event_id": "a284be5378c1be9a2ea2114330ea30fa0837405d8ab9a52920419c4193a462f9",
+      "kind": "RETURN_INTAKE",
+      "payload": {
+        "branch": "x",
+        "fixture_origin": true,
+        "id": "SYNTHETIC-ATTACK",
+        "new_requirement": "SOROK_R2_NEW_REQUIREMENT",
+        "sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "prev_event_hash": "fc70566cc971c7700dea3166ed34493488e4a1a2a37e0033215bc633edd9ff83",
+      "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+      "sequence": 6,
+      "source": {}
+    },
+    "expected_head": null,
+    "head": "a284be5378c1be9a2ea2114330ea30fa0837405d8ab9a52920419c4193a462f9",
+    "journal_head": "a284be5378c1be9a2ea2114330ea30fa0837405d8ab9a52920419c4193a462f9",
+    "revision": 6,
+    "stale_expected_head": false,
+    "state_digest": "c851fda82466d9e99c7029d15470733515bdcb008f79e97d9888462fa1ff902d",
+    "status": "EVENT_APPENDED"
+  }
+}

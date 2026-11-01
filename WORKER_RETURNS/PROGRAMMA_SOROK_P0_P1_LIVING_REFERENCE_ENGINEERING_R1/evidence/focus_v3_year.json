@@ -1,0 +1,312 @@
+{
+  "axes": {
+    "authority": "NOT_ADOPTED",
+    "consumer": "NONE_PROVEN_AT_PREMAIN",
+    "engineering": "SOURCE_DEFINITION_ONLY",
+    "human": "NOT_PROVEN",
+    "operational": "CANDIDATE_ONLY",
+    "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+    "science": "NOT_ISSUED",
+    "source_recovery": "SOURCE_EXACT"
+  },
+  "id": "V3_RUN_ONE_YEAR",
+  "incoming": [
+    {
+      "causal": false,
+      "dependency": "HISTORICAL",
+      "dependency_type": "HISTORICAL",
+      "edge_id": "EDGE_4f1860ec98e7d065",
+      "from": "V3_EXTERNAL_SIMULATION",
+      "grade": "HISTORICAL_EXTERNAL",
+      "hypothetical": false,
+      "relation": "historically_calls",
+      "required": false,
+      "source": {},
+      "source_refs": [
+        {
+          "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+          "line_end": 170,
+          "line_start": 160,
+          "note": "Imports run_one_year and build_persona_sheet; calls at lines 563 and 749.",
+          "path": "/Users/matthewsmith/Desktop/Rawlsing/server/generation/simulation.py",
+          "reader": "PROGRAMMA_ENGINEER_R1",
+          "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+          "sha256": "ac0ce203becfbb3d3a7ac942014d8eb2257bfd1fb450ddc2536a98d97058cd6b",
+          "symbol": "run_simulation_for_session"
+        },
+        {
+          "blob": "992fa1e23ada3d34d8ee1931d375375694882f7d",
+          "commit": "12433b89e100d2c4b9b20a94c4ccca7d2af7529a",
+          "depth": "FULL_TEXT_READ",
+          "line_end": 40,
+          "line_start": 1,
+          "object_type": "blob",
+          "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_C_ORIGINAL_NEO_ENGINEERING_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+          "quote": "RESEARCH_RETURN; independent I3 documentary investigation, not scientific issuance, native integration, independent self-review or HQ adoption.",
+          "reader": "PROGRAMMA_ENGINEER_R1"
+        }
+      ],
+      "to": "V3_RUN_ONE_YEAR"
+    },
+    {
+      "causal": false,
+      "dependency": "EVIDENCE",
+      "dependency_type": "EPISTEMIC_EVIDENCE",
+      "edge_id": "EDGE_98a2a1179a2fd0d5",
+      "from": "V3_EXTERNAL_MEMBER_HASH_MISMATCH",
+      "grade": "UNRESOLVED",
+      "hypothetical": false,
+      "relation": "qualifies_source_identity",
+      "required": false,
+      "source": {},
+      "source_refs": [
+        {
+          "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+          "line_end": 60,
+          "line_start": 12,
+          "note": "Direct local external copy. SHA-256 differs from W1-C prior member hash da3147c3; do not conflate.",
+          "path": "/Users/matthewsmith/Desktop/Rawlsing/v3/engine/yearly_step.py",
+          "reader": "PROGRAMMA_ENGINEER_R1",
+          "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+          "sha256": "47c97bfae08134f14fbd38b0cc997823a047474e0fbf7da6ddff9f1412a5235d",
+          "symbol": "run_one_year"
+        },
+        {
+          "blob": "992fa1e23ada3d34d8ee1931d375375694882f7d",
+          "commit": "12433b89e100d2c4b9b20a94c4ccca7d2af7529a",
+          "depth": "FULL_TEXT_READ",
+          "line_end": 40,
+          "line_start": 1,
+          "object_type": "blob",
+          "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_C_ORIGINAL_NEO_ENGINEERING_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+          "quote": "RESEARCH_RETURN; independent I3 documentary investigation, not scientific issuance, native integration, independent self-review or HQ adoption.",
+          "reader": "PROGRAMMA_ENGINEER_R1"
+        }
+      ],
+      "to": "V3_RUN_ONE_YEAR"
+    },
+    {
+      "causal": false,
+      "dependency": "EVIDENCE",
+      "dependency_type": "EPISTEMIC_EVIDENCE",
+      "edge_id": "EDGE_4b87e56ec3f59036",
+      "from": "W1_C_RETURN",
+      "grade": "RETURN_REPORT",
+      "hypothetical": false,
+      "relation": "evidence_for_historical_external_route",
+      "required": false,
+      "source": {},
+      "source_refs": [
+        {
+          "blob": "992fa1e23ada3d34d8ee1931d375375694882f7d",
+          "commit": "12433b89e100d2c4b9b20a94c4ccca7d2af7529a",
+          "depth": "FULL_TEXT_READ",
+          "line_end": 40,
+          "line_start": 1,
+          "object_type": "blob",
+          "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_C_ORIGINAL_NEO_ENGINEERING_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+          "quote": "RESEARCH_RETURN; independent I3 documentary investigation, not scientific issuance, native integration, independent self-review or HQ adoption.",
+          "reader": "PROGRAMMA_ENGINEER_R1"
+        }
+      ],
+      "to": "V3_RUN_ONE_YEAR"
+    }
+  ],
+  "inverse_navigation": "Derived from the same directed edges; no second manual graph.",
+  "maturity": {
+    "id": "V3_RUN_ONE_YEAR",
+    "owner": "ORIGINAL_V3_SOURCE_OWNER",
+    "rule": "Stages are independent evidence axes; code does not prove theory and native validation is not inferred from a fixture.",
+    "source_refs": [
+      {
+        "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+        "line_end": 60,
+        "line_start": 12,
+        "note": "Direct local external copy. SHA-256 differs from W1-C prior member hash da3147c3; do not conflate.",
+        "path": "/Users/matthewsmith/Desktop/Rawlsing/v3/engine/yearly_step.py",
+        "reader": "PROGRAMMA_ENGINEER_R1",
+        "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+        "sha256": "47c97bfae08134f14fbd38b0cc997823a047474e0fbf7da6ddff9f1412a5235d",
+        "symbol": "run_one_year"
+      },
+      {
+        "blob": "992fa1e23ada3d34d8ee1931d375375694882f7d",
+        "commit": "12433b89e100d2c4b9b20a94c4ccca7d2af7529a",
+        "depth": "FULL_TEXT_READ",
+        "line_end": 40,
+        "line_start": 1,
+        "object_type": "blob",
+        "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_C_ORIGINAL_NEO_ENGINEERING_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+        "quote": "RESEARCH_RETURN; independent I3 documentary investigation, not scientific issuance, native integration, independent self-review or HQ adoption.",
+        "reader": "PROGRAMMA_ENGINEER_R1"
+      }
+    ],
+    "stages": {
+      "A": {
+        "status": "HISTORICAL"
+      },
+      "C": {
+        "status": "HISTORICAL"
+      },
+      "E": {
+        "status": "HISTORICAL"
+      },
+      "I": {
+        "status": "PRESENT"
+      },
+      "T": {
+        "status": "SUPERSEDED"
+      },
+      "V": {
+        "status": "MISSING"
+      }
+    },
+    "title": "Historical V3 yearly_step.run_one_year"
+  },
+  "missing_or_unproven": [
+    {
+      "causal": false,
+      "dependency": "MISSING_EDGE",
+      "dependency_type": "MISSING_EDGE",
+      "edge_id": "EDGE_b771eb0b4ff6bb0f",
+      "from": "V3_RUN_ONE_YEAR",
+      "grade": "MISSING",
+      "hypothetical": true,
+      "relation": "no_current_importer_found",
+      "required": false,
+      "source": {},
+      "source_refs": [
+        {
+          "blob": "992fa1e23ada3d34d8ee1931d375375694882f7d",
+          "commit": "12433b89e100d2c4b9b20a94c4ccca7d2af7529a",
+          "depth": "FULL_TEXT_READ",
+          "line_end": 40,
+          "line_start": 1,
+          "object_type": "blob",
+          "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_C_ORIGINAL_NEO_ENGINEERING_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+          "quote": "RESEARCH_RETURN; independent I3 documentary investigation, not scientific issuance, native integration, independent self-review or HQ adoption.",
+          "reader": "PROGRAMMA_ENGINEER_R1"
+        }
+      ],
+      "to": "CURRENT_V3_IMPORTER_MISSING"
+    }
+  ],
+  "neighbourhood": {
+    "edges": 5,
+    "nodes": [
+      "V3_RUN_ONE_YEAR",
+      "CURRENT_V3_IMPORTER_MISSING",
+      "V3_EXTERNAL_MEMBER_HASH_MISMATCH",
+      "V3_EXTERNAL_SIMULATION",
+      "W1_C_RETURN"
+    ]
+  },
+  "node": {
+    "id": "V3_RUN_ONE_YEAR",
+    "kind": "HISTORICAL_IMPLEMENTATION",
+    "layer": "L4",
+    "maturity": {
+      "A": {
+        "status": "HISTORICAL"
+      },
+      "C": {
+        "status": "HISTORICAL"
+      },
+      "E": {
+        "status": "HISTORICAL"
+      },
+      "I": {
+        "status": "PRESENT"
+      },
+      "T": {
+        "status": "SUPERSEDED"
+      },
+      "V": {
+        "status": "MISSING"
+      }
+    },
+    "owner": "ORIGINAL_V3_SOURCE_OWNER",
+    "programma_p1": true,
+    "source_refs": [
+      {
+        "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+        "line_end": 60,
+        "line_start": 12,
+        "note": "Direct local external copy. SHA-256 differs from W1-C prior member hash da3147c3; do not conflate.",
+        "path": "/Users/matthewsmith/Desktop/Rawlsing/v3/engine/yearly_step.py",
+        "reader": "PROGRAMMA_ENGINEER_R1",
+        "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+        "sha256": "47c97bfae08134f14fbd38b0cc997823a047474e0fbf7da6ddff9f1412a5235d",
+        "symbol": "run_one_year"
+      },
+      {
+        "blob": "992fa1e23ada3d34d8ee1931d375375694882f7d",
+        "commit": "12433b89e100d2c4b9b20a94c4ccca7d2af7529a",
+        "depth": "FULL_TEXT_READ",
+        "line_end": 40,
+        "line_start": 1,
+        "object_type": "blob",
+        "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_C_ORIGINAL_NEO_ENGINEERING_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+        "quote": "RESEARCH_RETURN; independent I3 documentary investigation, not scientific issuance, native integration, independent self-review or HQ adoption.",
+        "reader": "PROGRAMMA_ENGINEER_R1"
+      }
+    ],
+    "status": "HISTORICAL_EXTERNAL_SOURCE",
+    "summary": "Actual historical external Python function; old numeric defaults, pseudo-random events and type inference are not current native science.",
+    "title": "Historical V3 yearly_step.run_one_year"
+  },
+  "outgoing": [
+    {
+      "causal": false,
+      "dependency": "HISTORICAL",
+      "dependency_type": "HISTORICAL",
+      "edge_id": "EDGE_aa7b70f85b3509b2",
+      "from": "V3_RUN_ONE_YEAR",
+      "grade": "HISTORICAL_EXTERNAL",
+      "hypothetical": false,
+      "relation": "historically_called_by",
+      "required": false,
+      "source": {},
+      "source_refs": [
+        {
+          "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+          "line_end": 170,
+          "line_start": 160,
+          "note": "Imports run_one_year and build_persona_sheet; calls at lines 563 and 749.",
+          "path": "/Users/matthewsmith/Desktop/Rawlsing/server/generation/simulation.py",
+          "reader": "PROGRAMMA_ENGINEER_R1",
+          "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+          "sha256": "ac0ce203becfbb3d3a7ac942014d8eb2257bfd1fb450ddc2536a98d97058cd6b",
+          "symbol": "run_simulation_for_session"
+        }
+      ],
+      "to": "V3_EXTERNAL_SIMULATION"
+    },
+    {
+      "causal": false,
+      "dependency": "MISSING_EDGE",
+      "dependency_type": "MISSING_EDGE",
+      "edge_id": "EDGE_b771eb0b4ff6bb0f",
+      "from": "V3_RUN_ONE_YEAR",
+      "grade": "MISSING",
+      "hypothetical": true,
+      "relation": "no_current_importer_found",
+      "required": false,
+      "source": {},
+      "source_refs": [
+        {
+          "blob": "992fa1e23ada3d34d8ee1931d375375694882f7d",
+          "commit": "12433b89e100d2c4b9b20a94c4ccca7d2af7529a",
+          "depth": "FULL_TEXT_READ",
+          "line_end": 40,
+          "line_start": 1,
+          "object_type": "blob",
+          "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_C_ORIGINAL_NEO_ENGINEERING_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+          "quote": "RESEARCH_RETURN; independent I3 documentary investigation, not scientific issuance, native integration, independent self-review or HQ adoption.",
+          "reader": "PROGRAMMA_ENGINEER_R1"
+        }
+      ],
+      "to": "CURRENT_V3_IMPORTER_MISSING"
+    }
+  ]
+}

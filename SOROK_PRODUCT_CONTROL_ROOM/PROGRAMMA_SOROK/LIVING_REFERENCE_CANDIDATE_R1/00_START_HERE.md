@@ -1,86 +1,98 @@
-# SOROK PROGRAMMA — living reference candidate R2
+# SOROK PROGRAMMA — living reference candidate R3
 
-**Status:** `WORKING_CANDIDATE_NOT_HQ_ADJUDICATED` — persistent sourcefree
-Sorok-only operating map. It is not native person acceptance, science issuance,
-owner adoption or a priority decree. Scope hold: this is a bounded R3-derived
-substrate repair and O-SCIENCE candidate ingest, not a successor whole Sorok
-Programma; full Programma must be source-grounded against the complete estate.
+**Status:** `WORKING_CANDIDATE_NOT_HQ_ADJUDICATED__WHOLE_SCOPE_NOT_YET_PROVEN`.
+
+This is the one bounded living reference for the whole Sorok undertaking: original
+purpose, explanations and alternatives, exact source/code cuts, actual consumers,
+negative evidence, maturity gaps, owners and next lawful work. It is not the
+developmental person. No native, human A5, PRE-MAIN or owner adoption is issued.
 
 ## Current cut
 
 | Item | Exact value |
 |---|---|
-| Start | `67f667421fc90b22aad95cfc253a16feabc92348` |
-| Seed build PRE-MAIN | `f40c26301d7d5b811c1bb92efa4934ad564ce5b3` |
-| Observed PRE-MAIN | actual `origin/integration/pre-main-reconciliation-r1` read |
-| R3 source/index | `e50d32eb6816578145d17dcd637a0b90b3a1ef40` |
-| R3 review current | `06f40a3eabb4acfc57f433144224695c2427c25f` |
-| R3 old negative (not acceptance) | `3f3d9ec2fddc36bd4047bc6c730382c65a5e692a` |
-| O-SCIENCE return | `45efe65f73475e6a815e5fe93c3ee5179de27f67` |
-| Program Map | `865b5b01e1a27e99020cf2bb389af8cd4c874b57:2a0a3a42d66f566f92d5c333fbbea4a5adb383b2` |
-
-`refresh` reads the actual local Git refs when available and records the exact
-read timestamp. A branch is not a running process; SEALED is never assumed live.
+| Engineering base | `a89e5ccbe67400168aaea8367f7aa00ca0de7625` |
+| Governing W1 synthesis | `e5a25cbc4f2b9d7476a72637d3e371ee3254742e` |
+| Sorok product cut | `865b5b01e1a27e99020cf2bb389af8cd4c874b57` |
+| Original/Astra cut | `4f2ce6f9bdfdd2232a23d839905cb386cde96dcd` |
+| CAN008/CAN011 cut | `25830fe7462bb9e29bc4087e6ae14f3f84cec377` |
+| P1 sourcefree return | `b65c75a9e62618690f7d02265bc9e850af549161` |
+| JOIN-V review | `4387dc818a96fda2d5271672505fbd9da1059703` |
+| RRIF F2 | `cf578514434532b48e86c76c1d38d6250323a1ce` |
+| PRE-MAIN observed | `8e44ca9c751049d65e6def47600b5c073ee04b29` |
 
 ## Persisted reference
 
-| Count | Value |
+| Item | Value |
 |---|---:|
-| Nodes | 212 |
-| Edges | 649 |
-| Source rows | 144 Sorok + 3 references |
+| Nodes | 288 |
+| Edges | 741 |
+| Sorok source rows | 144 + 3 references |
 | Workstreams S0–S16 | 17 |
-| Inherited C/A/M/N/O/E records | 102 / 102 source-grounded from R3 |
-| Missing C12→A5 functions | 14 |
-| O-SCIENCE candidate edges | 226 |
-| Dynamic gaps | 38 |
-| Derived work-now candidates | 38 |
+| Whole-Program Gaps | 50 |
+| Journal events | 4 (GENESIS, O-SCIENCE candidate, quarantine, W1-A real return) |
 | External boundary | 1 Pyat contract node only |
 
-The baseline R1 graph is 198 nodes / 423 edges. The O-SCIENCE import is a
-candidate-evidence merge into the same graph, not a second tracker.
+Exact counts are derived in `state.json`; do not use this table as a completeness
+denominator.
 
-## What runs
+## Trust boundary
+
+- `r2_live_transaction.py` is disposable by default. It writes only a temporary
+  state, snapshot and receipt, and proves the operating files are byte-identical
+  before/after.
+- The contaminated R2 state, snapshot and historical receipt are preserved under
+  `quarantine/historical_demo_contamination/` with a manifest and SHA-256.
+- Excluded historical demo/self-review events are inventoried in that manifest;
+  they are not replayed or relabelled as acceptance.
+- Canonical change evidence is the append-only `evidence/journal.jsonl` hash
+  chain. `state.json` and `SNAPSHOT.json` are derived by deterministic replay.
+- Promotion of review/engineering/consumer requires an independently verifiable
+  reviewer principal, distinct author, exact subject SHA, assertion, scope,
+  appointment/intake record and immutable review record. Self-written
+  `reviewer_role`/`PASS`, genuine unrelated SHAs, stale subjects and local
+  selfhashes do not qualify.
+- Source withdrawal invalidates only explicit required-causal dependents.
+  Restoration recomputes every active prerequisite; a second independent RED
+  remains. Mention, hypothesis, association, alternative and source-location
+  edges are not blockers.
+
+## Main commands
 
 ```sh
-python3 living_reference.py refresh
-python3 living_reference.py ingest-oscience
-python3 living_reference.py overview
-python3 living_reference.py zoom S5 --depth 2
-python3 living_reference.py gaps --domain S15
-python3 living_reference.py blocked-chain A5
+python3 living_reference.py home
+python3 living_reference.py focus Q_HEALTH_001 --depth 2
+python3 living_reference.py lateral CAN011_RULE_T_MISSING
+python3 living_reference.py maturity Q_HEALTH_001
+python3 living_reference.py whole-gaps --stage T
+python3 living_reference.py whole-gaps --domain S14
+python3 living_reference.py owners
+python3 living_reference.py code V3_RUN_ONE_YEAR
+python3 living_reference.py evidence JOIN_V_4387
 python3 living_reference.py work-now
-python3 living_reference.py coverage
-python3 living_reference.py source S5
-python3 living_reference.py consumer A5
-python3 living_reference.py alternatives S5
-python3 living_reference.py workers
-python3 living_reference.py history H0001
-python3 living_reference.py export
-python3 living_reference.py intake-return FILE.json
-python3 living_reference.py apply-authorized-transition FILE.json
+python3 living_reference.py html --output programma_home.html
+python3 living_reference.py journal
+python3 living_reference.py verify-journal
+python3 living_reference.py verify-sources
 python3 verify_source_manifest.py
 python3 r2_live_transaction.py
 ```
 
-`refresh` merges seeds and source-cut observations into the existing persisted
-state. It never resets history, axes, imported evidence, discovered gaps or
-candidate transitions. Duplicate O-SCIENCE imports are idempotent; changed input
-cuts are recorded as visible deltas and staleness gaps, never auto-GREEN.
+Existing `overview`, `zoom`, `gaps`, `blocked-chain`, `source`, `consumer`,
+`alternatives`, `history`, `workers`, `coverage`, `export`, `intake-return` and
+`apply-authorized-transition` remain available. `critical-path` remains only a
+legacy DAG illustration.
 
-`blocked-chain` is a typed required-blocker/impact view. `critical-path` remains
-only a legacy DAG illustration and says so.
+## Scope limits
 
-## Authority limits
-
-- O-SCIENCE evidence is `UNREVIEWED_CANDIDATE_EVIDENCE`; its 226 links are
-  hypotheses, not issued original propositions. Original S questions/output are
-  preserved exactly from the Program Map.
-- The 102 inherited records have exact R3 source identity, but source exactness
-  is not scientific issuance.
-- No CAN008/CAN011/ADP/SCI05, native Pyat world/N11/N12/C11, native C4/C11/C12,
-  human A5, production import, PRE-MAIN merge or owner adoption is issued.
-- Owner grants remain `OWNER_EVIDENCE_PENDING_MANUAL_VERIFICATION`. Human
-  participant evidence is simulated/candidate locally, never `PROVEN`.
-- R6/R7 and the four sourcefree assets remain returned/unadopted. The external
-  Pyat boundary is not locally mutable.
+- O-SCIENCE evidence is `UNREVIEWED_CANDIDATE_EVIDENCE`; its links are candidate
+  hypotheses, not issued original propositions.
+- W1-A is a real returned artifact at an exact SHA, ingested as candidate
+  evidence. It does not become owner adoption or independent whole-estate proof.
+- P1, JOIN-E/7bf, RRIF F2, C9/C12 and M6/GT0 remain at their exact sourcefree,
+  scoped or held grades. No acceptance migrates across versions or roots.
+- Native CAN008/CAN011/ADP/SCI05, C8/C9/C11/C12, Pyat N11/N12, human A5 and
+  PRE-MAIN integration remain external work.
+- Library continuity is dated reported evidence, `NOT_ACCESSED_NOW`; a branch is
+  not a running process; queued High is not observed High.
+- Broader estate population remains incomplete: `WHOLE_SCOPE_NOT_YET_PROVEN`.

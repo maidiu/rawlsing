@@ -1,0 +1,93 @@
+{
+  "axes_after": {
+    "authority": "NOT_ADOPTED",
+    "consumer": "NONE_PROVEN_AT_PREMAIN",
+    "engineering": "SOURCE_DEFINITION_ONLY",
+    "human": "NOT_PROVEN",
+    "operational": "CANDIDATE_EVIDENCE",
+    "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+    "science": "NOT_ISSUED",
+    "source_recovery": "SOURCE_EXACT"
+  },
+  "cold_persisted": true,
+  "event_id": "22565fd2a79b1d40cb0d67a546edd4cd417b10ee33d8af366f0de1b147be8d84",
+  "event_sequence": 4,
+  "gap": {
+    "affected_consumer": "SOROK_HQ operator",
+    "alternatives": [
+      "treat selected reads as complete",
+      "continue breadth ingest with visible limits"
+    ],
+    "blocked_by": [],
+    "blockers": [],
+    "class": "UNREPRESENTED_REQUIREMENT",
+    "consequence": "The return is treated as whole-estate proof or owner adoption.",
+    "dependencies": [
+      "SOROK_HQ intake"
+    ],
+    "domain": "SOURCE_BREADTH",
+    "existing_evidence": [
+      "W1-A return at e7787d7f"
+    ],
+    "falsifier": "The return is treated as whole-estate proof or owner adoption.",
+    "hq_judgment_required": true,
+    "id": "GAP-W1-A-WHOLE-SCOPE",
+    "impact": {
+      "affected_l0": [],
+      "affected_sectors": [],
+      "downstream_required_count": 0
+    },
+    "independently_actionable": true,
+    "missing_stages": [
+      "T",
+      "A",
+      "E",
+      "C",
+      "V"
+    ],
+    "next": "Review the exact return scope and connect its unsupported estate families to explicit missing or unread nodes.",
+    "node": "W1_A_RETURN",
+    "owner": "W1_A_RESEARCHER / SOROK_HQ",
+    "parallel_group": "WHOLE_PROGRAM_GAP",
+    "parent_obligation": "Whole-estate source coverage required by the W1-A return",
+    "smallest_useful_next_action": "Review the exact return scope and connect its unsupported estate families to explicit missing or unread nodes.",
+    "status": "UNREVIEWED_CANDIDATE_EVIDENCE"
+  },
+  "node_evidence": [
+    {
+      "evidence": {
+        "grade": "CANDIDATE_NOT_PROMOTED",
+        "return_sha": "e7787d7f22dfcc9dd1ad786d953755b4f4d410c7"
+      },
+      "history_id": "H0003",
+      "kind": "RETURN_CANDIDATE_EVIDENCE",
+      "return_sha": "e7787d7f22dfcc9dd1ad786d953755b4f4d410c7"
+    }
+  ],
+  "note": "Real returned artifact at exact SHA; candidate grade only. No independent acceptance or owner adoption is inferred.",
+  "return_sha": "e7787d7f22dfcc9dd1ad786d953755b4f4d410c7",
+  "source": {
+    "blob": "b457bebf63d4ae12d01b8481481368bcd082e269",
+    "commit": "e7787d7f22dfcc9dd1ad786d953755b4f4d410c7",
+    "object_type": "blob",
+    "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_A_VISION_ASTRA_R1/00_FINDINGS_AND_RECOMMENDATIONS.md"
+  },
+  "status": "RETURNED_CANDIDATE_EVIDENCE",
+  "work_now_candidate": {
+    "blockers": [],
+    "consequence": "The return is treated as whole-estate proof or owner adoption.",
+    "domain": "SOURCE_BREADTH",
+    "gap_id": "GAP-W1-A-WHOLE-SCOPE",
+    "hq_judgment_required": true,
+    "impact": {
+      "affected_l0": [],
+      "affected_sectors": [],
+      "downstream_required_count": 0
+    },
+    "next": "Review the exact return scope and connect its unsupported estate families to explicit missing or unread nodes.",
+    "node": "W1_A_RETURN",
+    "owner": "W1_A_RESEARCHER / SOROK_HQ",
+    "parallel_group": "WHOLE_PROGRAM_GAP",
+    "status": "UNREVIEWED_CANDIDATE_EVIDENCE"
+  }
+}
