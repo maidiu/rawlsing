@@ -1,0 +1,94 @@
+{
+  "schema": "RRIF_V_HOSTILE_COUNTS@1",
+  "cuts": {
+    "canonical": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+    "A": "84182f9fa7044d67689ea4f80eabf7e9337f15c2",
+    "B": "59e6e62600814d82cfefd1a2137b7aa63316bc95",
+    "HQ_crossjoin": "f5a9facd189af6756c2b15c8daebe680016f658a",
+    "E8": "e95d6edb9300b2cc8b0ad2c70dff3953c8afe1ba"
+  },
+  "A": {
+    "branch_rows": 845,
+    "unique_names": 845,
+    "unique_tips": 838,
+    "code_bearing": 321,
+    "stranded": 276,
+    "exact_present": 45,
+    "evidence_only": 458,
+    "no_delta": 66,
+    "variants": 3135,
+    "locals": {
+      "BRANCH_TIP_EXACT": 1717,
+      "PREMAIN_MODIFIED_SAME_PATH": 928,
+      "PREMAIN_EXACT_SAME_PATH": 199,
+      "PREMAIN_EXACT_OTHER_PATH": 291
+    },
+    "classes": {
+      "IMPLEMENTATION_BRANCH_ONLY_EXACT": 1333,
+      "IMPLEMENTATION_CURRENT_MODIFIED": 866,
+      "IMPLEMENTATION_CURRENT_EXACT": 446,
+      "EVIDENCE_OR_TEST_OR_DOCUMENT": 490
+    },
+    "other_path_targets": 11,
+    "other_path_target_test": 65,
+    "branch_only_exact_impl": 1333,
+    "multi_exact_branch_variants": 851,
+    "declared_subtraction": 2269,
+    "stranded_classified_fate": 81,
+    "stranded_unclassified_fate": 195,
+    "exact_present_classified_fate": 22,
+    "exact_present_unclassified_fate": 23
+  },
+  "B": {
+    "fate_rows": 845,
+    "primary_rows": 155,
+    "unique_primary_ids": 122,
+    "decision_records": 135,
+    "fate_classified": 151,
+    "hq_other_class_rows": 5,
+    "hq_other_unclassified_rows": 4,
+    "multi_branch_decision_records": 32,
+    "duplicate_tip_groups": 7,
+    "crosswalk_records": 135,
+    "crosswalk_promoted_ids": 0,
+    "crosswalk_max_observed_families": 145
+  },
+  "accepted_nine": {
+    "all_exact": [
+      "integration/pyat-hq145-c1-02-source-free-accepted-r1",
+      "integration/pyat-hq159-c1-03r-source-free-accepted-r1",
+      "integration/pyat-hq162-c1-03a-source-free-accepted-r1",
+      "integration/pyat-hq168-c1-03-successor-join-accepted-r1"
+    ],
+    "partial": [
+      "integration/pyat-hq147-n10e-at17-source-free-accepted-r1"
+    ],
+    "nonexact": [
+      "integration/pyat-hq130-c3-source-free-accepted-r1",
+      "integration/pyat-hq139-c1-01-source-free-accepted-r1",
+      "integration/pyat-hq151-c5-n5-source-free-accepted-r1"
+    ],
+    "no_code": [
+      "integration/pyat-hq166-at07-successor-spine-accepted-r1"
+    ],
+    "premain_ancestors": 0
+  },
+  "counterexample_checks": {
+    "C3_R5": "C3/R9 exact assets in 24847592; current D01/D02/R9 paths absent",
+    "R157": "34 code deltas / 4 exact / 6 modified / 24 absent",
+    "HQ282_P01": "6 code absent",
+    "P07": "3 code deltas / 1 absent / 2 modified",
+    "PR525_526_563": "ancestors of PREMAIN",
+    "J2I": "branches ancestors; no delta"
+  },
+  "false_subtraction": {
+    "declared_total": 2269,
+    "branch_only_exact_impl": 1333,
+    "other_path_exact": 291,
+    "other_path_test_targets": 65,
+    "false_current_components": 1624
+  },
+  "limits": [
+    "No semantic equivalence, merge, source-owner authenticity, science or adoption."
+  ]
+}
