@@ -1,0 +1,60 @@
+{
+  "schema": "SOROK_RRIF_E_F1_TERMINAL_DELTA_REVIEW_LOCATOR@1",
+  "reviewer": {
+    "role": "same independent sourcefree code/receiving reviewer",
+    "prior_review": "1198691534c050c19c7c874454b54f99011006c4",
+    "independence": "review-only; not F1 author, HQ, PRE-MAIN integrator or self-adopter"
+  },
+  "host": {
+    "hostname": "oldMac.lan",
+    "platform": "macOS 13.7.8 (22H730)",
+    "architecture": "x86_64",
+    "python": "3.11.3",
+    "git": "2.39.1"
+  },
+  "harness": {
+    "name": "OpenCode",
+    "pid": 27700,
+    "model": "deepseek-v4.1-flash",
+    "model_id": "opencode-go/deepseek-v4.1-flash",
+    "requested_effort": "MAX",
+    "actual_effort": "UNVERIFIED_BY_HARNESS"
+  },
+  "exclusive_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-rrif-e-f1-review-20261101",
+  "review_branch": "review/sorok-rrif-e-f1-packet-delta-terminal-20261101-r1",
+  "review_dispatch_sha": "37bd2048081507cd4235f2097744a916b8efa0ae",
+  "f1_dispatch_sha": "d7df4da4f159313b31981796b9f1ebcd91bfd8be",
+  "f1_subject": {
+    "branch": "agent/sorok-rrif-e-exact-receiver-packet-fix-20261031-r1",
+    "commit": "1973d28ed4ba4c9e58c9d96fbe358445dddc929c",
+    "tree": "05e3763d84b3148daffd0f3d1f01a6ab7be4e713"
+  },
+  "tested_premain": {
+    "branch": "integration/pre-main-reconciliation-r1",
+    "commit": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+    "unchanged_start_end": true
+  },
+  "r2_base": {
+    "commit": "598d9e9eaba5143950c63317705fd09104fbf463",
+    "tree": "1161ce3d990ca78fe1b97c915dc86e559f17236b",
+    "files": 459,
+    "vendor_rows": 444,
+    "source_manifest_sha256": "7cfcb4679e36b522e83cc7120dbc166ce61dd220099c2aca8f5c9ddb5252c126"
+  },
+  "full_candidate": {
+    "commit": "8d9585296ff264b947559f4a78f49f73ca45e53a",
+    "tree": "5394e33ec81766a4ee891b0d58007f24ac1d1303",
+    "files": 640,
+    "preimage_entries": 639,
+    "r3_extension_files": 174
+  },
+  "test_worktree": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/rrif-e-f1-premain",
+  "results": {
+    "r2_tests": "20 passed",
+    "r3_tests": "9 passed",
+    "e_tests": "6 passed",
+    "first_consumer": "PASS_PARTIAL_SAME_ROOT_C9_C12__C9_ACTOR_OWNER_HELD__CP_A5_SEPARATE_ROOT",
+    "verdict": "REVISE_ONE_EXACT_PACKET_DEFECT"
+  },
+  "final_remote_sha": "PENDING_POST_PUSH_READBACK"
+}
