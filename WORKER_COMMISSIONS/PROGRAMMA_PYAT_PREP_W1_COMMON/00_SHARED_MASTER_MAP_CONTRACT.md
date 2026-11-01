@@ -1,4 +1,4 @@
-# PROGRAMMA PYAT W1 — common six-lane reconnaissance and build-readiness contract (2026-11-01)
+# PROGRAMMA PYAT W1 — common seven-lane reconnaissance and build-readiness contract (2026-11-01)
 
 ## Actual job
 Prepare one comprehensive navigable Pyat source→PRE-V3→N12 seam map, with plans/subplans, actual best existing implementations across main/PREMAIN/unintegrated/history, scoped maturity of every component, typed current/proposed seams, unknowns, work state, source references and explainable top-down/sideways/bottom-up views. This is NOT a new engine for Pyat's survey analysis, a roleplay, a new controller, a speculative theory encyclopedia or a duplicate task tracker.
@@ -21,16 +21,17 @@ Create `ATOMIC_FINDINGS.jsonl` for evidence-bearing assertions, and a lane-speci
 For each assigned piece, distinguish `plan_state`, `science_state`, `engineering_state`, `code_location`, `integration_state`, `first_consumer_state`, `review_state`, `authority_state`, and `gap_to_next_maturity`; do not aggregate to a percentage or flatten conditional dependencies into mandatory blockers.
 All outputs include exact input counts and bounded coverage: what searched, what direct-read, omitted, stale, returned-only, and not evidenced. Mark discrepancies. No status elevation solely because a worker authored this document.
 
-## The six independent lanes
+## The seven independent lanes
 A — overlapping architecture and nested plans, requirements, parent/child/cross-membership.
-B — code/version realization across main, PRE-MAIN, pending and historical, identify strongest extant version by claim.
+B — present and recent-pending concrete implementation realization across main/PRE-MAIN/accessible engineering branches, strongest current available versions.
+G — historical/deep unintegrated implementation variant recovery from earlier Pyat generations and archived branches, avoid re-census; strongest extant past versions against current.
 C — producer/consumer ABI, actual first consumers, version/migration/conditioned dependency graph.
 D — original35 source/authority and prospective workload, data-grade vs engineering-grade obligations.
 E — current HQ work, decisions, live PRs, past/returned work, reviewer/owner and true currentness.
 F — one logical data model, current-reference reuse, ingestion architecture, interaction/zoom views and pilot acceptance (not build).
 
 ## Later fan-in (NOT authorized for workers to impersonate)
-After six distinct returns, an independent integrator resolves duplication/conflict, constructs one master graph and tests real top-down and inverse traversals; then a distinct review. Do not construct six rival canonical maps. No blanket original science or product-completion claim.
+After seven distinct returns, an independent integrator resolves duplication/conflict, constructs one master graph and tests real top-down and inverse traversals; then a distinct review. Do not construct seven rival canonical maps. No blanket original science or product-completion claim.
 
 ## Completion standard for each worker
 A complete, independently useful source-grounded return, scoped machine-readable tables, exact missing links and 2–4 real traversal examples; finite prioritized handoff to integrator; all input and evidence uncertainty disclosed. No extra worker commissions from within lane.
