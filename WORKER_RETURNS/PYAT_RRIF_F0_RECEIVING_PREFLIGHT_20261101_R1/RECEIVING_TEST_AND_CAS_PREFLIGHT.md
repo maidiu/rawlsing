@@ -210,6 +210,8 @@ The tests prove refusal for:
 
 They also prove the only path to `receiving_ready` is both gates fully satisfied.
 
+Scope limit: the checker verifies declared test-receipt fields plus live Git blobs; it does not execute the pytest suites itself. The integrator must run the exact commands in sections 2, 3 and 4 and supply the resulting receipts. A false declaration is outside what a source-free preflight can prove.
+
 ## 6. Live CAS preflight refusal
 
 Command (from the F0 worktree, read-only against the canonical object database):
