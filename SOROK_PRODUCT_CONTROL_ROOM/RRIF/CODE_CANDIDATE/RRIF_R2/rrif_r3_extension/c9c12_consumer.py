@@ -47,11 +47,36 @@ def read_r2_c9_snapshot(root: str | Path, *, actor_id: str = "TEST_ONLY_BP1_R26V
             _c12_path(root), actor_id=actor_id, branch_id="root")
         result["consumer"] = "C9C12_R2_ACTOR_SNAPSHOT"
         return result
-    except (sqlite3.Error, c9c12_reader.C9C12Refusal) as exc:
+    except c9c12_reader.C9C12Refusal as exc:
+        # A present-but-rejected writer, actor, receipt or permission is NOT
+        # equivalent to a missing C9 source. Preserve the reader's exact code.
         return {
-            "status": "C9_SOURCE_MISSING",
+            "status": "C9_SOURCE_MISSING" if exc.code == "C9_SOURCE_MISSING" else "C9_SOURCE_REFUSED",
             "actor_id": actor_id,
             "reason": type(exc).__name__ + ":" + str(exc),
+            "refusal_code": exc.code,
+            "consumer": "C9C12_R2_ACTOR_SNAPSHOT",
+            "sourcefree": True,
+        }
+    except sqlite3.OperationalError as exc:
+        # RRIF-R2 currently supplies a C12 SQLite file, not an actor DB.
+        # Only its specifically absent actor_meta table is a source-absence
+        # witness. Other missing tables / invalid SQL are schema faults.
+        actor_meta_absent = str(exc).strip().lower() == "no such table: actor_meta"
+        return {
+            "status": "C9_SOURCE_MISSING" if actor_meta_absent else "C9_SCHEMA_READ_FAILURE",
+            "actor_id": actor_id,
+            "reason": type(exc).__name__ + ":" + str(exc),
+            "refusal_code": "C9_ACTOR_META_ABSENT" if actor_meta_absent else "C9_SQL_OPERATIONAL_ERROR",
+            "consumer": "C9C12_R2_ACTOR_SNAPSHOT",
+            "sourcefree": True,
+        }
+    except sqlite3.DatabaseError as exc:
+        return {
+            "status": "C9_SCHEMA_READ_FAILURE",
+            "actor_id": actor_id,
+            "reason": type(exc).__name__ + ":" + str(exc),
+            "refusal_code": "C9_SQL_DATABASE_ERROR",
             "consumer": "C9C12_R2_ACTOR_SNAPSHOT",
             "sourcefree": True,
         }
