@@ -1,0 +1,40 @@
+name: PROGRAMMA Sorok Chat Query Sourcefree
+
+on:
+  pull_request:
+    paths:
+      - "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/chat_gateway.py"
+      - "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/test_chat_gateway.py"
+      - ".github/workflows/programma-sorok-chat-query-sourcefree.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  read-only-chat-gateway:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout actual proposed chat branch
+        uses: actions/checkout@v4
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Execute only sourcefree query-router tests
+        working-directory: SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1
+        run: python -m unittest -v test_chat_gateway
+      - name: Prove no authority or mutable command accepted
+        working-directory: SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1
+        run: |
+          python - <<'PY'
+          from chat_gateway import ChatQueryError, validate
+          for verb in ("apply-authorized-transition", "commit-transition", "intake-return", "refresh", "rebuild", "recover", "ingest-oscience", "export"):
+              try:
+                  validate({"verb": verb})
+              except ChatQueryError:
+                  continue
+              raise AssertionError("unauthorized verb: " + verb)
+          print("CHAT_PORT_WRITE_REFUSAL_PASS")
+          PY
