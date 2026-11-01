@@ -1,0 +1,47 @@
+# COPY-PASTE LAUNCH — PROGRAMMA SOROK WAVE 1 / D
+
+ROLE: Independent source-grounded Browser investigator for Whole program history, decisions, actual work/ownership and future agent protocol. NOT Sorok HQ, Codex HQ, original scientist/owner, code engineer, canonical integrator or your own reviewer.
+REPOSITORY: maidiu/rawlsing (PRIVATE). Read-only source across GitHub + authorized native ChatGPT Library; write ONLY your own isolated return folder on the assigned branch.
+PROPOSED USER-SELECTED EDITOR/MODEL: Browser / GPT-6 HIGH. Actual Browser model/effort/account must be explicitly user-selected and verified when available; no automatic switch. INTELLIGENCE: I3 / HIGH.
+EXECUTION: S0/S1 authenticated private GitHub + native Library research; NO S2/local Mac execution unless the user separately commissions it. If missing source requires mainMac, specify exact targeted follow-up only; do not fake S2 or direct new agents.
+SINGLE_AGENT_FULL_DELIVERABLE: YES. Parallel with other W1 A-E; all five independent, no cross-branch worker writes. No active worker disturbance, no PRE-MAIN/worker/HQ/canonical state mutation, no Pyat substantive work, no owner-science issuance or agent self-appointment.
+BRANCH: research/programma-sorok-w1-d-history-work-control-20261101-r1
+COMMISSION PATH: WORKER_COMMISSIONS/PROGRAMMA_SOROK_W1_D_HISTORY_WORK_CONTROL_R1/00_COPY_PASTE_LAUNCH.md
+SOURCE OF SHARED RULES: WORKER_COMMISSIONS/PROGRAMMA_SOROK_W1_COMMON/00_SHARED_VISION_AND_RESEARCH_CONTRACT.md; this file is inherited in YOUR branch from the single source-bounded common W1 base and MUST be read first. If you cannot access it, return honest SOURCE_UNAVAILABLE rather than ignoring its core nonnegotiables.
+
+SHARED OBJECTIVE IN BRIEF: We are BUILDING PROGRAMMA SOROK—the maximally comprehensible, source-linked, updatable, navigable, useful WHOLE program of Sorok's conception-to-finish development. We are NOT building a person inside this first wave; recovered RRIF code, P1, O-LIVE, historical question inventories and original theories are inputs, NOT automatic organizing centers. One logical reference; maximum capability/minimum complication; no bureaucratic review treadmill; no missing source invented; no simulated self-review in live state. The output is substantive RESEARCH FOR THE DESIGN, not a new Programma backend, a psychological rule or an adopted architecture.
+
+## YOUR DISTINCT RESEARCH COMMISSION
+
+MISSION: Recover the real historical and CURRENT organizational intelligence of Sorok that PROGRAMMA must make reusable: original questions/decisions/risks and rejected ideas, existing source/code returns, qualified reviews, exact ownership and rights, current HQ continuity, workers, uncompleted requirements and how an event changes the live plan. This is not an RRIF or branch census. No mock canonical adoption.
+
+SOURCES TO INSPECT DIRECTLY:
+1. Original Sorok numbered corpus 00–87+, later cuts, dockets D001/D002/D003/D007; primary registers QUESTIONS.jsonl, DECISIONS.jsonl, RISKS.jsonl and their schema, historic at 123 questions/248 decisions/204 risks. Identify source-graded relationships, supersession and their actual status at later cuts; numbers are historical rows, not 575 open tasks.
+2. Live PRE-MAIN and Sorok control room CURRENT_PROGRESS and previous HQ revisions; 00–00E, HQ motions; Codex HQ October 22 appointment and later user HQ-only/no-direct-code/manual-launch override; October 24 Browser acting HQ limited appointment; current actual execution permissions. The record of a branch is not a running worker.
+3. Actual ChatGPT Library /Rawlsing/SOROK HQ: latest pointer, complete last snapshot/parent, evergreen GitHub-FIRST Library-LAST continuity protocol, and relevant research Library; verify CURRENT branch facts before reconciling snapshots.
+4. Existing full PROGRAMMA Sorok operating constitution/00A and 3-return adjudication at d1a5019eba0b190133dc64fcb53caf6c11fce90d, original Vision/Astra returns @4f8ba029922cc59f4b45541b8ae028e4ba913c6a, original/Neo engineering @10c4b25f2b7f421ef476610c4dd0e3c674e8f3bc, O-LIVE R2 @a89e5ccbe67400168aaea8367f7aa00ca0de7625, P1 @b65c75a9e62618690f7d02265bc9e850af549161, RRIF F2 @cf578514434532b48e86c76c1d38d6250323a1ce. These represent different source/owner/adoption grades. The old single-agent whole-estate fan-in @211786f890d109405c21bd128ed4afde9787468b is PRE-RRIF closeout, not live worker proof.
+5. Current controller separate repo maidiu/rawlsing-controller (actual R59/R62/63 and Sorok attachment): distinguish implemented real OpenCode worker/review effect plumbing and authenticated return queue from currently UNPROVED full autonomous same-HQ continuation, model-effort routing and user-authorized Sorok auto dispatch. Do not presume every technical capability is activated.
+
+DELIVER:
+- Reconstruct functional story of Sorok's development: original ambitions → exploration/early V3 → Neo and science/authority challenges → independent sourcefree experiments/return+review/integration → PROGRAMMA recognition. Tie selected SIGNIFICANT original decisions and negatives to current implementation/remaining product obligations. Avoid chronological monotony.
+- Show how historical Q/D/R records relate to current objects: question answered in one historical model but reopened after counterexample; decision superseded with WHY_NOT; rejected method still functionally useful; unresolved owner with consequence; a returned code patch accepted at sourcefree but not scientifically native.
+- Differentiate real decision actors (user, original CAN/ADP issuers, Sorok HQ, Browser acting HQ, PRE-MAIN receiver, Pyat interface owner, independent reviewer, ordinary author) with actual scope. Do not manufacture new approval court or transfer authority.
+- Propose the MINIMUM agent-touch protocol after PROGRAMMA is installed: bounded scoped context; actual changed object/function/consumer/source/evidence; negative tests; concise machine-readable delta; derived change in dependencies/priority; owner/scope. Mechanical claims validated automatically. When is independent reviewer indispensable vs wasteful? One input-to-intake/qualified-transition workflow, no series of ceremonial approval stations.
+- Propose reliable actual active-work/branch/session bookkeeping and succession: GH authoritative current code; Library exact continuity; controller actual queue/lease/receipt status; remote branch READY/RETURNED not RUNNING. How to detect stale work and no-duplicate paid launch. Separate actual user-manual launch vs future named autonomous permitted lanes.
+- Demonstrate 4 hard organizational traversals: old question→changed decision→current missing owner; current exact RED→repair→review→owner hold; in-progress worker→source cut→admission/current effect; new prospective HQ→current critical path with no archaeology; legitimate source withdrawal→affected work-now without false global green.
+- Give a bounded, mechanism-first schema suggestion (objects/edges/history/ownership) without choosing runtime/data engine. Explain anti-bureaucratic controls for reviewer issuance, no self-adoption, no simulated fixture promotion; propose how a working HQ can decide big work without another rounds-of-approvals.
+- Note what actual source or user/human permission is unavailable and must be requested instead of fabricated.
+
+LIMITS: No further 294/97 RRIF census, no native source/actor data, no live controller activation, no changing PRE-MAIN/canonical HQ, no independent reviewer self-appointment, no evidence-less percent completion.
+
+YOUR DISTINCT OUTPUT: qualified historical decision/negative/owner and current work intelligence, lean future agent event protocol and exact succession/dispatch discipline for PROGRAMMA.
+
+## STRICT RETURN CONTRACT
+Write ONLY under WORKER_RETURNS/PROGRAMMA_SOROK_W1_D_HISTORY_WORK_CONTROL_R1/ on this same isolated branch:
+- 00_FINDINGS_AND_RECOMMENDATIONS.md — substantial, argued, source-linked and explicit source-read depth, real contradictions, decisive architecture requirements, alternative findings/WHY_NOT, specific open gaps, 2–4 highest-value decisions for joint synthesis. Do not pad with process narrative or generic status tables.
+- 01_SOURCE_GROUNDED_ATOMIC_FINDINGS.json — lightweight machine-ready claim/relation candidates as defined in shared W1 contract; actual commit/path/blob/section or Library source/location; historical vs current and author vs reviewer vs owner scopes. Do not turn this into a competing canonical graph/schema.
+- 02_REAL_TRAVERSALS_ALTERNATIVES_AND_GAPS.md — required real cases for THIS prong, inverse or lateral traversal, meaningful broken edges, source/reviewer grade, alternatives and falsifiers.
+- SESSION_LOCATOR.json — actual source cuts/reads, Library access, host/model/effort UNKNOWN if not exposed, READ vs NOT_READ vs NOT_RUN, and actual final pushed SHA if technically possible without self-reference; provide SHA in final message.
+One source-grounded recommendation can be decisive; do not manufacture artificial issue volume. No PR, source code, canonical PROGRAMMA state or cross-owner mutations. A good return creates architectural knowledge and permits comparison; it does NOT make every question green.
+
+MANDATORY FINAL RESPONSE: final exact 40-hex remote branch SHA, direct links to the three substantive returns, 4–8 sentences on the most important findings, substantive source omissions and how this prong materially changes the shared architectural choice. No new subcommissions.
