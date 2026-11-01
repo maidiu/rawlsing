@@ -1,0 +1,17 @@
+# RRIF-E3 finite-closeout gate verdict — nonadopting
+
+**ENGINEERING:** `HOLD_RRIF_TERMINAL` (C3 accepted historical D01/D02, actual current decoder call; S06G real current B5/M2 integrity candidate, not independently accepted). **SCIENTIFIC:** `HOLD` original source/use, with F6 A's inflated support claim `RED`. **AUTHORITY:** `HOLD`—E3 cannot authorize original U/E_pre, Field Forge, source, model, Sorok actor, N11/N12, or PRE-MAIN merge.
+
+## Exact finite additional inheritance defects and owners
+
+1. **R157** at `agent/pyat-pre553-r157-final-review@d81bc2c67baf933461ae6cfca468f24779cc7e44`: 34 final-branch comparative rows vs RRIF-C 32 intro blob records/19 unique path names and D2 19 absent. Owner: R157 source-configuration maintainer and Pyat HQ historical ledger. Negative: no fixture-as-native, no false weights/U/E_pre, no false retirement of 35-wave configuration. Completion: pinned path-level 34→32→19 source/path grain join + corrected precise retirement wording, no new global recensus.
+2. **C5** at accepted wrapper `35c0a3768d07`: one frozen GT2 current owner match/19,211 refusal, not generic service/API. Owner: C5/N5 structural owner and Pyat HQ intake. Completion: scope-label correction, source and dormant wrapper API retained, named consumer/restart if ever required.
+3. **N10E** accepted provider blob `23167aa25291` and E03 sourcefree N9/N10W fixture: exact-byte vs behavior vs native selection must be separated. Owners: N10E/AT17/AT19 and N9/N10W. Negatives: exact determinant reachability unproved, context issuer absent, fabricated other-world input cannot count as selected world. Completion: qualified ledger fields, not N9 implementation.
+4. **C3 D01/D02**, current `pre553_physical_decoder.py` and R5 codec: original decoder/codec owner, real `ee_p2x_darwin_stage_backend.py:713` reader. Faults: declared encoding, opaque date/fold, aware-time refusal and PR526 snapshot/wrong-SHA tamper. Completion: independently reviewed bounded patch, or justified explicit held-with-negative response and named owner.
+5. **S06G**, current learned B5/M2 lifecycle/release: original B5/M2 owner + independent hostile security reviewer. Faults: 12 S06FR public-event/checkpoint/select/atomicity conditions, nonselected tests and remaining fixture incompatibility. Completion: genuine review and bounded independent accept/deny/hold; D3 S06 remains separate weak wrapper.
+
+Every one of 30 cases already has an exact worker source, negative, owner and wake in sibling JSONL; HQ may close **finite RRIF historical accounting** once correction decisions and any chosen immediately lawful sourcefree repairs are independently adjudicated and final scope-appropriate audit accepts the resulting ledger. That does **not** require all35 source-native U/E_pre, F1–F8 completion, positive native N9/N10W, N11, N12, Sorok actor, or living PROGRAMMA PYAT construction.
+
+**Process restriction:** #580–584 are held. #564/#565/#569–571/#575–579/#577 must not be equated with idle/running based on GitHub issue state. Browser could see remote refs, not local processes or worktrees; no new launch, no protected write, no source/native execution. E3 does not self-adopt, and HQ controls further implementation review and any lawful protected CAS fan-in.
+
+**This return's jurisdiction:** isolated documentary E3 review branch only; original commissioned OpenCode branch unchanged to honor user's one-writer instruction.
