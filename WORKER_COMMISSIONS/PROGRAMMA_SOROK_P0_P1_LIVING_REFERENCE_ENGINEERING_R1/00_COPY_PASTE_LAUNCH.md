@@ -8,7 +8,7 @@ AGENT_TYPE: Bounded Programma Sorok Python reference engineer
 INTELLIGENCE_LEVEL: I2
 SINGLE_AGENT_FULL_DELIVERABLE: YES
 EXECUTION_SURFACE: S2_LOCAL_CHECKOUT_PYTHON_PYTEST_SUBPROCESS
-USER_SELECTED_EDITOR_MODEL_PAIR: Existing user-authorized OpenCode pair if its current controller lane is qualified; otherwise preserve the unlaunched commission.
+USER_SELECTED_EDITOR_MODEL_PAIR: Existing qualified OpenCode pair if available; otherwise user-selected local S2 harness for manual dispatch.
 MODEL: DeepSeek V4.1-Flash recommended, subject to actual availability and user selection.
 REASONING: MAX
 PROVIDER/EDITOR_HARNESS: EXISTING_AUTHORIZED_OPENCODE_OR_USER_SELECTED
@@ -34,7 +34,7 @@ Implement a trustworthy, usable first vertical slice of PROGRAMMA SOROK: the one
 Own P0 trust repair AND P1 multidomain navigation/gap intelligence as one coherent deliverable. Preserve useful O-LIVE mechanisms. Recovery is an auxiliary source-loss check, never the root ontology or completeness denominator. No new database, service, controller, model call, scientific court or duplicate architecture study.
 
 STARTUP AND WRITE BOUNDARY
-The user now authorizes VERY SAFELY delegable work through the established OpenCode controller. This supersedes the older mission’s manual-launch default only where the existing lane actually qualifies. HQ must establish the full required execution surface; a generic tool-only worker with Bash disabled is not evidence of S2 test capability. Do not bypass it through an unmanaged runner. This worker cannot launch other agents.
+The user authorizes VERY SAFELY delegable work through the established OpenCode controller. The installed generic external profile currently denies Bash and supplies no generic host test runner; its frozen suite belongs to JOIN-V only. This full S2 job is therefore prepared for the mission's user-selected manual-dispatch fallback until an existing qualified lane is available. HQ must not bypass the controller through an unmanaged shell autolaunch or rebuild it for this assignment. This worker cannot launch other agents.
 Fetch the named engineering branch. Confirm its initial HEAD is exactly STARTUP_SHA and it is not owned by another active writer. Reuse a suitable isolated checkout; create an isolated checkout only if needed. Do not reset an existing dirty checkout or occupy the original O-LIVE branch. If a newer return already occupies this exact work identity, reconcile with HQ instead of replaying the job.
 Allowed writes:
 1. SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/** — existing code, focused helpers/tests, source-backed seed records, one event/history channel, derived outputs and quarantined historical demo evidence.
