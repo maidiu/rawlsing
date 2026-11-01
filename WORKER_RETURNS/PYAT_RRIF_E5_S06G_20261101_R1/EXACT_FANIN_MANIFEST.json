@@ -1,0 +1,169 @@
+{
+  "schema": "rawlsing.worker_fanin.v1",
+  "task_id": "PYAT-RRIF-E5-S06G-20261101-R1",
+  "status": "READY_FOR_DISTINCT_POST_PATCH_REVIEW",
+  "adoption": "NOT_ADOPTED",
+  "authority": "NONE",
+  "repository": "maidiu/rawlsing",
+  "remote": "origin",
+  "branch": "agent/pyat-rrif-e5-s06g-b5m2-compatible-hardening-20261101-r1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-rrif-e5-s06g-b5m2-compatible-hardening-20261101-r1",
+  "lineage": {
+    "startup_pre_main_commit": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+    "source_content_commit": "f3defd3cb84e2bab4be3df3300fd1289c6ebadfb",
+    "s06g_reference_tip": "0ff13995cc55db00d02b08004e62f75d4c5cb36e",
+    "s06g_b5_lifecycle_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+    "s06g_b5_release_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+    "e2_review_branch": "review/pyat-rrif-e2-s06g-integrity-hostile-20261031-r1",
+    "e2_review_content_commit": "7a9a8dc360119bd2d4a9c8176561f9330c243159",
+    "e2_review_head": "46a4ba7baf90d75c4941e9ddc2e372e07b4db0f4",
+    "s06fr_review_head": "1b5b6072f855a74864c82d0f1b3923327bfb8b99",
+    "s06fr_overlay_test_blob": "a25cf5a5ecec4b473ccceaec8a032747d804da7d"
+  },
+  "substrate": {
+    "host": "mainMac",
+    "os": "macOS 13.2.1 (22D68)",
+    "arch": "x86_64",
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "opencode": "1.18.34",
+    "model_surface": "opencode-go/deepseek-v4.1-flash",
+    "local_variant": "max",
+    "provider_max_attestation": false
+  },
+  "source_files": [
+    {
+      "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+      "role": "B5 lifecycle atomic/integrity hardening",
+      "before_blob": "a11c9eb73abab9be118ef4f0b6e325e676059f27",
+      "after_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+      "diff": "+545/-4"
+    },
+    {
+      "path": "rawlsing_next/pre553_learned_product_release.py",
+      "role": "M2 repository atomic/integrity hardening",
+      "before_blob": "f76c390665f06ef126968ccf1a6b2d816f43ae92",
+      "after_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+      "diff": "+155/-10"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_learned_product_lifecycle.py",
+      "role": "accepted B5 court; byte-unchanged",
+      "before_blob": "d7ab66fe50aacb2d4223dca223d0d702af11270c",
+      "after_blob": "d7ab66fe50aacb2d4223dca223d0d702af11270c",
+      "diff": "0/0"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_learned_product_release.py",
+      "role": "accepted M2 court; byte-unchanged; two historical fixture conflicts remain RED",
+      "before_blob": "d45b54190815b4c6af506579962a9aac8a7074c2",
+      "after_blob": "d45b54190815b4c6af506579962a9aac8a7074c2",
+      "diff": "0/0"
+    }
+  ],
+  "test_files": [
+    {
+      "path": "rawlsing_next/tests/test_pre553_s06g_atomic_integrity.py",
+      "role": "S06G repair court; 42 tests; import adapted to local fixtures",
+      "blob": "9964464cd86c077ff5b9a99cea6fb0a41e516c80"
+    },
+    {
+      "path": "rawlsing_next/tests/s06g_fixtures.py",
+      "role": "standalone source-free B5/M2 fixture helpers",
+      "blob": "f3040bb40a246e7b0bdea243060458d2045ab43b"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_s06f_native_owner_security.py",
+      "role": "compatibility shim for frozen S06FR overlay; no S06F test functions",
+      "blob": "6974f7d5e2f4ed66bb36b6160ce2ced08574d5b5"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_e5_s06g_independent_hostile.py",
+      "role": "E2 independent hostile court; 10 tests",
+      "blob": "9a469ad0940216e02967c94159db943d2979154a"
+    }
+  ],
+  "test_commands": [
+    {
+      "name": "unfiltered_full",
+      "scope": [
+        "test_pre553_learned_product_lifecycle.py",
+        "test_pre553_learned_product_release.py",
+        "test_pre553_s06g_atomic_integrity.py",
+        "test_pre553_e5_s06g_independent_hostile.py",
+        "test_pre553_ee14_selected_current_asof_hq260.py",
+        "test_pre553_learned_world_composition.py",
+        "frozen S06FR overlay"
+      ],
+      "result": "179 passed, 14 failed",
+      "exit": 1,
+      "log": "test_receipts/unfiltered_full.log"
+    },
+    {
+      "name": "filtered_14_deselected",
+      "filter": "not OBSERVED and not test_17_binding_cannot_resolve_different_release and not test_18_endpoint_failover_only_among_same_release",
+      "result": "179 passed, 14 deselected",
+      "exit": 0,
+      "log": "test_receipts/filtered_14_deselected.log"
+    }
+  ],
+  "results": {
+    "accepted_b5": "39 passed",
+    "accepted_m2": "26 passed, 2 failed",
+    "s06g_new_court": "42 passed",
+    "e2_independent_court": "10 passed",
+    "adjacent_ee14_and_world": "45 passed",
+    "s06fr_overlay": "17 passed, 12 historical defect-presence failed",
+    "skips": 0,
+    "errors": 0
+  },
+  "accepted_test_conflicts": [
+    {
+      "test": "test_17_binding_cannot_resolve_different_release",
+      "failure": "M2ReleaseError RELEASE_UNAVAILABLE at foreign release registration",
+      "unchanged": true,
+      "reconciled_test": "test_reconciled_m2_17_early_refusal_and_lawful_downstream_mismatch",
+      "owner_choice": "Accept fixture invalidity or reject the register_binding change; do not weaken release_exact or edit in place"
+    },
+    {
+      "test": "test_18_endpoint_failover_only_among_same_release",
+      "failure": "M2ReleaseError RELEASE_UNAVAILABLE at foreign binding registration",
+      "unchanged": true,
+      "reconciled_test": "test_reconciled_m2_18_early_refusal_and_lawful_failover_mismatch",
+      "owner_choice": "Accept fixture invalidity or reject the register_binding change; do not weaken release_exact or edit in place"
+    }
+  ],
+  "historical_negatives": {
+    "source": "S06FR 1b5b6072f855a74864c82d0f1b3923327bfb8b99",
+    "overlay_blob": "a25cf5a5ecec4b473ccceaec8a032747d804da7d",
+    "count": 12,
+    "status": "preserved RED defect-presence; not demanded green on repaired code"
+  },
+  "abi": {
+    "public_b5_methods_unchanged": true,
+    "public_m2_methods_unchanged": true,
+    "private_deltas": [
+      "M2Repository._insert staticmethod -> instance method with owner transaction",
+      "register_representation/register_binding call release_exact earlier",
+      "event payloads frozen recursively"
+    ],
+    "adjacent_callsite_courts": "45/45 pass"
+  },
+  "security_holds": [
+    "LOCAL_UNAUTHENTICATED only",
+    "EXTERNAL_ISSUER_HOLD remains",
+    "no protected CURRENT",
+    "no OS-kill durability",
+    "no multiprocess/cross-process custody",
+    "no source-native/survey/actor execution",
+    "no N11/N12/C11/C12",
+    "no PRE-MAIN/main/Sorok mutation",
+    "no self-adoption"
+  ],
+  "verdicts": {
+    "engineering": "ACCEPT_SCOPED_LOCAL_UNAUTHENTICATED_WITH_TWO_ACCEPTED_M2_FIXTURE_CONFLICTS",
+    "scientific": "HOLD",
+    "authority": "HOLD"
+  },
+  "final_branch_sha": "reported_live_after_artifact_commit"
+}

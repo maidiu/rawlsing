@@ -1,0 +1,1543 @@
+..............................................................FF........ [ 37%]
+........................................................................ [ 74%]
+.............................FFFFFFFFF..FF..F....                        [100%]
+=================================== FAILURES ===================================
+_______________ test_17_binding_cannot_resolve_different_release _______________
+
+    def test_17_binding_cannot_resolve_different_release():
+        repo1, release1, _, _, _, _ = build_fixture(subject_label="release-one")
+        repo2, release2, subject2, producer2, _, _ = build_fixture(subject_label="release-two")
+        # Recreate release-two representation inside repo1 only as a foreign exact record.
+        # First copy its producer subject/closures is intentionally avoided; a foreign
+        # representation exact-ref is enough to test release mismatch at publication.
+        locator = ref("foreign:locator", "RepresentationLocator")
+        integrity = ref("foreign:integrity", "RepresentationIntegrity")
+        from rawlsing_next.pre553_learned_product_release import RepresentationRecord
+>       repo1.register_representation(
+            RepresentationRecord(
+                release_ref=release2.ref,
+                resolved_subject_ref=subject2,
+                producer_contract_ref=producer2,
+                resolution_mode="CONTENT_ADDRESSED_MATERIALIZATION",
+                resolver_or_locator_ref=locator,
+                representation_integrity_ref=integrity,
+            )
+        )
+
+rawlsing_next/tests/test_pre553_learned_product_release.py:385: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_release.py:476: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:606: in register_representation
+    release = self.release_exact(representation.release_ref)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:493: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:667: in release_exact
+    _fail("RELEASE_UNAVAILABLE", "requested exact release is unavailable")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = 'RELEASE_UNAVAILABLE', message = 'requested exact release is unavailable'
+
+    def _fail(code: str, message: str) -> None:
+>       raise M2ReleaseError(code, message)
+E       rawlsing_next.pre553_learned_product_release.M2ReleaseError: RELEASE_UNAVAILABLE: requested exact release is unavailable
+
+rawlsing_next/pre553_learned_product_release.py:74: M2ReleaseError
+______________ test_18_endpoint_failover_only_among_same_release _______________
+
+    def test_18_endpoint_failover_only_among_same_release():
+        repo, release, subject, producer, _, _ = build_fixture(subject_label="failover-one")
+        b1, _, _ = bind_representation(
+            repo, release, subject, producer,
+            label="failover-a", mode="CONTENT_ADDRESSED_MATERIALIZATION",
+        )
+        b2, _, _ = bind_representation(
+            repo, release, subject, producer,
+            label="failover-b", mode="CONTENT_ADDRESSED_MATERIALIZATION",
+        )
+        result = resolve_release_exact(
+            repo,
+            release.ref,
+            publication_binding_refs=(b1.ref, b2.ref),
+            unavailable_binding_refs=(b1.ref,),
+        )
+        assert result.receipt.used_publication_binding_ref == b2.ref
+    
+        repo_other, release_other, subject_other, producer_other, _, _ = build_fixture(
+            subject_label="failover-other"
+        )
+        other_binding, _, _ = bind_representation(
+            repo_other,
+            release_other,
+            subject_other,
+            producer_other,
+            label="other-endpoint",
+            mode="CONTENT_ADDRESSED_MATERIALIZATION",
+        )
+        # Register exact foreign binding into repo solely to attack the failover list.
+>       repo.register_binding(other_binding)
+
+rawlsing_next/tests/test_pre553_learned_product_release.py:436: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_release.py:476: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:632: in register_binding
+    release = self.release_exact(binding.release_ref)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:493: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:667: in release_exact
+    _fail("RELEASE_UNAVAILABLE", "requested exact release is unavailable")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = 'RELEASE_UNAVAILABLE', message = 'requested exact release is unavailable'
+
+    def _fail(code: str, message: str) -> None:
+>       raise M2ReleaseError(code, message)
+E       rawlsing_next.pre553_learned_product_release.M2ReleaseError: RELEASE_UNAVAILABLE: requested exact release is unavailable
+
+rawlsing_next/pre553_learned_product_release.py:74: M2ReleaseError
+____ test_OBSERVED_direct_b5_append_bypasses_native_preflight[RECERTIFIES] _____
+
+kind = 'RECERTIFIES'
+
+    @pytest.mark.parametrize('kind', ['RECERTIFIES', 'CURRENT_SELECTED', 'PRODUCT_PUBLISHED'])
+    def test_OBSERVED_direct_b5_append_bypasses_native_preflight(kind):
+        x, s, _ = checkpoint_with_publication()
+        saved = x._append_events
+        event = x._event(event_kind=kind, subject=subject('unregistered-direct-event'),
+            event_authority_ref=ref('Authority', 'unissued'), event_rule_ref=ref('Rule', 'unissued'))
+        x._native_security_mode = 'EXTERNAL_CUSTODY'
+>       saved((event,))
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_lifecycle.py:1990: in _append_events
+    self._require_mutation_transaction("_append_events")
+rawlsing_next/pre553_learned_product_lifecycle.py:1517: in _require_mutation_transaction
+    self._native_mutation_preflight(operation)
+rawlsing_next/pre553_learned_product_lifecycle.py:1543: in _native_mutation_preflight
+    self.require_external_issuer(operation)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x108a20b10>
+operation = '_append_events'
+
+    def require_external_issuer(self, operation: str) -> None:
+        """Fail closed until a competent external issuer/root exists and is bound."""
+>       raise LearnedProductLifecycleError(
+            "EXTERNAL_ISSUER_HOLD: no independently anchored B5 issuer, "
+            f"revocation/as-of source or custody root for {operation}"
+        )
+E       rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleError: EXTERNAL_ISSUER_HOLD: no independently anchored B5 issuer, revocation/as-of source or custody root for _append_events
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1530: LearnedProductLifecycleError
+__ test_OBSERVED_direct_b5_append_bypasses_native_preflight[CURRENT_SELECTED] __
+
+kind = 'CURRENT_SELECTED'
+
+    @pytest.mark.parametrize('kind', ['RECERTIFIES', 'CURRENT_SELECTED', 'PRODUCT_PUBLISHED'])
+    def test_OBSERVED_direct_b5_append_bypasses_native_preflight(kind):
+        x, s, _ = checkpoint_with_publication()
+        saved = x._append_events
+        event = x._event(event_kind=kind, subject=subject('unregistered-direct-event'),
+            event_authority_ref=ref('Authority', 'unissued'), event_rule_ref=ref('Rule', 'unissued'))
+        x._native_security_mode = 'EXTERNAL_CUSTODY'
+>       saved((event,))
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_lifecycle.py:1990: in _append_events
+    self._require_mutation_transaction("_append_events")
+rawlsing_next/pre553_learned_product_lifecycle.py:1517: in _require_mutation_transaction
+    self._native_mutation_preflight(operation)
+rawlsing_next/pre553_learned_product_lifecycle.py:1543: in _native_mutation_preflight
+    self.require_external_issuer(operation)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10828d210>
+operation = '_append_events'
+
+    def require_external_issuer(self, operation: str) -> None:
+        """Fail closed until a competent external issuer/root exists and is bound."""
+>       raise LearnedProductLifecycleError(
+            "EXTERNAL_ISSUER_HOLD: no independently anchored B5 issuer, "
+            f"revocation/as-of source or custody root for {operation}"
+        )
+E       rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleError: EXTERNAL_ISSUER_HOLD: no independently anchored B5 issuer, revocation/as-of source or custody root for _append_events
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1530: LearnedProductLifecycleError
+_ test_OBSERVED_direct_b5_append_bypasses_native_preflight[PRODUCT_PUBLISHED] __
+
+kind = 'PRODUCT_PUBLISHED'
+
+    @pytest.mark.parametrize('kind', ['RECERTIFIES', 'CURRENT_SELECTED', 'PRODUCT_PUBLISHED'])
+    def test_OBSERVED_direct_b5_append_bypasses_native_preflight(kind):
+        x, s, _ = checkpoint_with_publication()
+        saved = x._append_events
+        event = x._event(event_kind=kind, subject=subject('unregistered-direct-event'),
+            event_authority_ref=ref('Authority', 'unissued'), event_rule_ref=ref('Rule', 'unissued'))
+        x._native_security_mode = 'EXTERNAL_CUSTODY'
+>       saved((event,))
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_lifecycle.py:1990: in _append_events
+    self._require_mutation_transaction("_append_events")
+rawlsing_next/pre553_learned_product_lifecycle.py:1517: in _require_mutation_transaction
+    self._native_mutation_preflight(operation)
+rawlsing_next/pre553_learned_product_lifecycle.py:1543: in _native_mutation_preflight
+    self.require_external_issuer(operation)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x108be0510>
+operation = '_append_events'
+
+    def require_external_issuer(self, operation: str) -> None:
+        """Fail closed until a competent external issuer/root exists and is bound."""
+>       raise LearnedProductLifecycleError(
+            "EXTERNAL_ISSUER_HOLD: no independently anchored B5 issuer, "
+            f"revocation/as-of source or custody root for {operation}"
+        )
+E       rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleError: EXTERNAL_ISSUER_HOLD: no independently anchored B5 issuer, revocation/as-of source or custody root for _append_events
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1530: LearnedProductLifecycleError
+__________ test_OBSERVED_direct_m2_insert_bypasses_type_and_preflight __________
+
+    def test_OBSERVED_direct_m2_insert_bypasses_type_and_preflight():
+        repo = M2()
+        repo._native_security_mode = 'EXTERNAL_CUSTODY'
+        fake = ref('Release', 'unissued')
+>       repo._insert(repo._releases, fake, 'not-a-ReleaseCore', 'COLLISION')
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_release.py:537: in _insert
+    self._native_mutation_preflight("_insert")
+rawlsing_next/pre553_learned_product_release.py:531: in _native_mutation_preflight
+    self.require_external_issuer(operation)
+rawlsing_next/pre553_learned_product_release.py:518: in require_external_issuer
+    _fail(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = 'EXTERNAL_ISSUER_HOLD'
+message = 'no independently authenticated producer, epoch/revocation or external custody root for M2 _insert'
+
+    def _fail(code: str, message: str) -> None:
+>       raise M2ReleaseError(code, message)
+E       rawlsing_next.pre553_learned_product_release.M2ReleaseError: EXTERNAL_ISSUER_HOLD: no independently authenticated producer, epoch/revocation or external custody root for M2 _insert
+
+rawlsing_next/pre553_learned_product_release.py:74: M2ReleaseError
+_ test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay[replay_root_ref] _
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x1090bf9d0>
+
+    def _verify_native_checkpoint_semantics(self) -> None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+    
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+    
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+    
+        try:
+            while index < len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+>                   raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+E                   rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint event semantics differ from native operation
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1819: LearnedProductLifecycleConflict
+
+The above exception was the direct cause of the following exception:
+
+field = 'replay_root_ref'
+
+    @pytest.mark.parametrize('field', ['replay_root_ref', 'determinant_set_hash', 'producer_permission_ceiling'])
+    def test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay(field):
+        x, s, cp = checkpoint_with_publication()
+        event = x.events[-1]
+        payload = dict(event.payload)
+        payload[field] = semantic_hash('alien') if field == 'determinant_set_hash' else ref('Alien', field).as_dict()
+        forged_event = replace(event, payload=payload)
+        cp['checkpoint_payload']['events'][-1] = forged_event.as_dict()
+        cp['checkpoint_hash'] = semantic_hash(cp['checkpoint_payload'])
+>       restored = B5.from_checkpoint(cp)
+                   ^^^^^^^^^^^^^^^^^^^^^^
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_lifecycle.py:3363: in from_checkpoint
+    executor._verify_native_checkpoint_semantics()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x1090bf9d0>
+
+    def _verify_native_checkpoint_semantics(self) -> None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+    
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+    
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+    
+        try:
+            while index < len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+                    raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+                index += len(generated)
+    
+            # Legacy no-op receipts lack a history anchor. They must match an
+            # actual registration prefix graph; they cannot affect any release.
+            # This preserves lawful no-op history without inventing an ordinal.
+            for receipt in self._invalidations.values():
+                if receipt.invalidation_event_refs:
+                    continue
+                valid = False
+                for graph in graphs:
+                    direct, transitive = graph.affected(receipt.changed_determinant_refs)
+                    if direct or transitive:
+                        continue
+                    unaffected = graph.unaffected(())
+                    expected = InvalidationReceipt(
+                        changed_determinant_refs=receipt.changed_determinant_refs,
+                        directly_affected_release_refs=(), transitively_affected_release_refs=(),
+                        affected_product_refs=(),
+                        unaffected_product_refs=tuple(replay._subject(ref).product_ref for ref in unaffected),
+                        dependency_closure_receipt_ref=receipt.dependency_closure_receipt_ref,
+                        invalidation_event_refs=())
+                    if receipt == expected:
+                        valid = True
+                        break
+                if not valid:
+                    raise LearnedProductLifecycleConflict("invalid no-op invalidation receipt")
+                replay._invalidations[receipt.ref.key] = receipt
+            if replay._checkpoint_payload() != self._checkpoint_payload():
+                raise LearnedProductLifecycleConflict("checkpoint receipts/state differ from native operations")
+        except (KeyError, TypeError, ValueError, IndexError, LearnedProductLifecycleError) as exc:
+>           raise LearnedProductLifecycleConflict(f"checkpoint semantic replay rejected: {exc}") from exc
+E           rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint semantic replay rejected: checkpoint event semantics differ from native operation
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1850: LearnedProductLifecycleConflict
+_ test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay[determinant_set_hash] _
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x1091821d0>
+
+    def _verify_native_checkpoint_semantics(self) -> None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+    
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+    
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+    
+        try:
+            while index < len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+>                   raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+E                   rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint event semantics differ from native operation
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1819: LearnedProductLifecycleConflict
+
+The above exception was the direct cause of the following exception:
+
+field = 'determinant_set_hash'
+
+    @pytest.mark.parametrize('field', ['replay_root_ref', 'determinant_set_hash', 'producer_permission_ceiling'])
+    def test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay(field):
+        x, s, cp = checkpoint_with_publication()
+        event = x.events[-1]
+        payload = dict(event.payload)
+        payload[field] = semantic_hash('alien') if field == 'determinant_set_hash' else ref('Alien', field).as_dict()
+        forged_event = replace(event, payload=payload)
+        cp['checkpoint_payload']['events'][-1] = forged_event.as_dict()
+        cp['checkpoint_hash'] = semantic_hash(cp['checkpoint_payload'])
+>       restored = B5.from_checkpoint(cp)
+                   ^^^^^^^^^^^^^^^^^^^^^^
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_lifecycle.py:3363: in from_checkpoint
+    executor._verify_native_checkpoint_semantics()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x1091821d0>
+
+    def _verify_native_checkpoint_semantics(self) -> None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+    
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+    
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+    
+        try:
+            while index < len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+                    raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+                index += len(generated)
+    
+            # Legacy no-op receipts lack a history anchor. They must match an
+            # actual registration prefix graph; they cannot affect any release.
+            # This preserves lawful no-op history without inventing an ordinal.
+            for receipt in self._invalidations.values():
+                if receipt.invalidation_event_refs:
+                    continue
+                valid = False
+                for graph in graphs:
+                    direct, transitive = graph.affected(receipt.changed_determinant_refs)
+                    if direct or transitive:
+                        continue
+                    unaffected = graph.unaffected(())
+                    expected = InvalidationReceipt(
+                        changed_determinant_refs=receipt.changed_determinant_refs,
+                        directly_affected_release_refs=(), transitively_affected_release_refs=(),
+                        affected_product_refs=(),
+                        unaffected_product_refs=tuple(replay._subject(ref).product_ref for ref in unaffected),
+                        dependency_closure_receipt_ref=receipt.dependency_closure_receipt_ref,
+                        invalidation_event_refs=())
+                    if receipt == expected:
+                        valid = True
+                        break
+                if not valid:
+                    raise LearnedProductLifecycleConflict("invalid no-op invalidation receipt")
+                replay._invalidations[receipt.ref.key] = receipt
+            if replay._checkpoint_payload() != self._checkpoint_payload():
+                raise LearnedProductLifecycleConflict("checkpoint receipts/state differ from native operations")
+        except (KeyError, TypeError, ValueError, IndexError, LearnedProductLifecycleError) as exc:
+>           raise LearnedProductLifecycleConflict(f"checkpoint semantic replay rejected: {exc}") from exc
+E           rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint semantic replay rejected: checkpoint event semantics differ from native operation
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1850: LearnedProductLifecycleConflict
+_ test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay[producer_permission_ceiling] _
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x108a21290>
+
+    def _verify_native_checkpoint_semantics(self) -> None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+    
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+    
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+    
+        try:
+            while index < len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+>                   raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+E                   rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint event semantics differ from native operation
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1819: LearnedProductLifecycleConflict
+
+The above exception was the direct cause of the following exception:
+
+field = 'producer_permission_ceiling'
+
+    @pytest.mark.parametrize('field', ['replay_root_ref', 'determinant_set_hash', 'producer_permission_ceiling'])
+    def test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay(field):
+        x, s, cp = checkpoint_with_publication()
+        event = x.events[-1]
+        payload = dict(event.payload)
+        payload[field] = semantic_hash('alien') if field == 'determinant_set_hash' else ref('Alien', field).as_dict()
+        forged_event = replace(event, payload=payload)
+        cp['checkpoint_payload']['events'][-1] = forged_event.as_dict()
+        cp['checkpoint_hash'] = semantic_hash(cp['checkpoint_payload'])
+>       restored = B5.from_checkpoint(cp)
+                   ^^^^^^^^^^^^^^^^^^^^^^
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_lifecycle.py:3363: in from_checkpoint
+    executor._verify_native_checkpoint_semantics()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x108a21290>
+
+    def _verify_native_checkpoint_semantics(self) -> None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+    
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+    
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+    
+        try:
+            while index < len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+                    raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+                index += len(generated)
+    
+            # Legacy no-op receipts lack a history anchor. They must match an
+            # actual registration prefix graph; they cannot affect any release.
+            # This preserves lawful no-op history without inventing an ordinal.
+            for receipt in self._invalidations.values():
+                if receipt.invalidation_event_refs:
+                    continue
+                valid = False
+                for graph in graphs:
+                    direct, transitive = graph.affected(receipt.changed_determinant_refs)
+                    if direct or transitive:
+                        continue
+                    unaffected = graph.unaffected(())
+                    expected = InvalidationReceipt(
+                        changed_determinant_refs=receipt.changed_determinant_refs,
+                        directly_affected_release_refs=(), transitively_affected_release_refs=(),
+                        affected_product_refs=(),
+                        unaffected_product_refs=tuple(replay._subject(ref).product_ref for ref in unaffected),
+                        dependency_closure_receipt_ref=receipt.dependency_closure_receipt_ref,
+                        invalidation_event_refs=())
+                    if receipt == expected:
+                        valid = True
+                        break
+                if not valid:
+                    raise LearnedProductLifecycleConflict("invalid no-op invalidation receipt")
+                replay._invalidations[receipt.ref.key] = receipt
+            if replay._checkpoint_payload() != self._checkpoint_payload():
+                raise LearnedProductLifecycleConflict("checkpoint receipts/state differ from native operations")
+        except (KeyError, TypeError, ValueError, IndexError, LearnedProductLifecycleError) as exc:
+>           raise LearnedProductLifecycleConflict(f"checkpoint semantic replay rejected: {exc}") from exc
+E           rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint semantic replay rejected: checkpoint event semantics differ from native operation
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1850: LearnedProductLifecycleConflict
+______________ test_OBSERVED_publication_torn_after_event_append _______________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108b68610>
+
+    def test_OBSERVED_publication_torn_after_event_append(monkeypatch):
+        x = B5()
+        s = register(x, subject('torn'))
+        prior = x.export_checkpoint()
+        append = x._append_events
+        def crash(events):
+            append(events)
+            raise RuntimeError('simulated process interruption after ledger append')
+        monkeypatch.setattr(x, '_append_events', crash)
+        with pytest.raises(RuntimeError):
+            x.publish_product(s.release_ref, event_authority_ref=ref('Authority', 'pub'), event_rule_ref=ref('Rule', 'pub'))
+>       assert x.events[-1].event_kind == 'PRODUCT_PUBLISHED'
+E       AssertionError: assert 'PRODUCT_REGISTERED' == 'PRODUCT_PUBLISHED'
+E         
+E         - PRODUCT_PUBLISHED
+E         + PRODUCT_REGISTERED
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:125: AssertionError
+_________ test_OBSERVED_m2_check_then_insert_race_overwrites_collision _________
+
+    def test_OBSERVED_m2_check_then_insert_race_overwrites_collision():
+        repo = M2()
+        barrier = Barrier(2)
+        class RacingDict(dict):
+            def get(self, key, default=None):
+                result = super().get(key, default)
+                barrier.wait(timeout=5)
+                return result
+        store = RacingDict()
+        identity = ref('TestIdentity', 'same')
+        errors = []
+        def insert(value):
+            try:
+                repo._insert(store, identity, value, 'COLLISION')
+            except Exception as exc:
+                errors.append(exc)
+        threads = [Thread(target=insert, args=(value,)) for value in ('A', 'B')]
+        for thread in threads: thread.start()
+        for thread in threads: thread.join(timeout=6)
+>       assert not errors and all(not thread.is_alive() for thread in threads)
+E       AssertionError: assert (not [M2ReleaseError('INTERNAL_MUTATION_OUTSIDE_TRANSACTION: _insert requires native writer transaction'), M2ReleaseError('INTERNAL_MUTATION_OUTSIDE_TRANSACTION: _insert requires native writer transaction')])
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:150: AssertionError
+_____ test_OBSERVED_concurrent_b5_selection_accepts_two_stale_predecessors _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108a6c810>
+
+    def test_OBSERVED_concurrent_b5_selection_accepts_two_stale_predecessors(monkeypatch):
+        x = B5()
+        a = register(x, subject('race-a'), publish=True)
+        b = register(x, subject('race-b'), publish=True)
+        key = x.selection_key(product_family_ref=a.product_family_ref,
+            selection_scope_ref=a.selection_scope_ref, selection_purpose_ref=ref('Purpose', 'race'))
+        barrier = Barrier(2)
+        original = x._assert_expected_previous
+        def checked(*args, **kwargs):
+            result = original(*args, **kwargs)
+            barrier.wait(timeout=5)  # Both real checks finish before either commits.
+            return result
+        monkeypatch.setattr(x, '_assert_expected_previous', checked)
+        receipts, errors = [], []
+        def select(item):
+            try:
+                receipts.append(x.select_current(key.ref, item.release_ref,
+                    expected_previous_receipt_ref=None, event_authority_ref=ref('Authority', 'race'),
+                    event_rule_ref=ref('Rule', 'race'), selection_attestation_ref=ref('Attestation', 'race')))
+            except Exception as exc:
+                errors.append(exc)
+        threads = [Thread(target=select, args=(item,)) for item in (a, b)]
+        for thread in threads: thread.start()
+        for thread in threads: thread.join(timeout=6)
+>       assert not errors and len(receipts) == 2
+E       assert (not [BrokenBarrierError(), BrokenBarrierError()])
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:198: AssertionError
+_________ test_OBSERVED_public_event_payload_changes_internal_identity _________
+
+    def test_OBSERVED_public_event_payload_changes_internal_identity():
+        x, s, cp = checkpoint_with_publication()
+        old_ref = x.events[-1].ref
+>       x.events[-1].payload['attacker'] = True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: 'mappingproxy' object does not support item assignment
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:206: TypeError
+______ test_OBSERVED_rebuild_receipt_can_link_event_for_different_release ______
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x108b3b550>
+
+    def _verify_native_checkpoint_semantics(self) -> None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+    
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+    
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+    
+        try:
+            while index < len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+                    raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+                index += len(generated)
+    
+            # Legacy no-op receipts lack a history anchor. They must match an
+            # actual registration prefix graph; they cannot affect any release.
+            # This preserves lawful no-op history without inventing an ordinal.
+            for receipt in self._invalidations.values():
+                if receipt.invalidation_event_refs:
+                    continue
+                valid = False
+                for graph in graphs:
+                    direct, transitive = graph.affected(receipt.changed_determinant_refs)
+                    if direct or transitive:
+                        continue
+                    unaffected = graph.unaffected(())
+                    expected = InvalidationReceipt(
+                        changed_determinant_refs=receipt.changed_determinant_refs,
+                        directly_affected_release_refs=(), transitively_affected_release_refs=(),
+                        affected_product_refs=(),
+                        unaffected_product_refs=tuple(replay._subject(ref).product_ref for ref in unaffected),
+                        dependency_closure_receipt_ref=receipt.dependency_closure_receipt_ref,
+                        invalidation_event_refs=())
+                    if receipt == expected:
+                        valid = True
+                        break
+                if not valid:
+                    raise LearnedProductLifecycleConflict("invalid no-op invalidation receipt")
+                replay._invalidations[receipt.ref.key] = receipt
+            if replay._checkpoint_payload() != self._checkpoint_payload():
+>               raise LearnedProductLifecycleConflict("checkpoint receipts/state differ from native operations")
+E               rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint receipts/state differ from native operations
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1848: LearnedProductLifecycleConflict
+
+The above exception was the direct cause of the following exception:
+
+    def test_OBSERVED_rebuild_receipt_can_link_event_for_different_release():
+        x = B5()
+        a = register(x, subject('receipt-a'))
+        b = register(x, subject('receipt-b'))
+        receipt = x.record_rebuild_eligibility(a.release_ref, event_authority_ref=ref('Authority', 'rebuild'),
+            event_rule_ref=ref('Rule', 'rebuild'), execution_mechanism_ref=None)
+        cp = x.export_checkpoint()
+        cp['checkpoint_payload']['rebuild_eligibility'] = [replace(receipt, release_ref=b.release_ref).as_dict()]
+        cp['checkpoint_hash'] = semantic_hash(cp['checkpoint_payload'])
+>       restored = B5.from_checkpoint(cp)
+                   ^^^^^^^^^^^^^^^^^^^^^^
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:233: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_lifecycle.py:3363: in from_checkpoint
+    executor._verify_native_checkpoint_semantics()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x108b3b550>
+
+    def _verify_native_checkpoint_semantics(self) -> None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+    
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+    
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+    
+        try:
+            while index < len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+                    raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+                index += len(generated)
+    
+            # Legacy no-op receipts lack a history anchor. They must match an
+            # actual registration prefix graph; they cannot affect any release.
+            # This preserves lawful no-op history without inventing an ordinal.
+            for receipt in self._invalidations.values():
+                if receipt.invalidation_event_refs:
+                    continue
+                valid = False
+                for graph in graphs:
+                    direct, transitive = graph.affected(receipt.changed_determinant_refs)
+                    if direct or transitive:
+                        continue
+                    unaffected = graph.unaffected(())
+                    expected = InvalidationReceipt(
+                        changed_determinant_refs=receipt.changed_determinant_refs,
+                        directly_affected_release_refs=(), transitively_affected_release_refs=(),
+                        affected_product_refs=(),
+                        unaffected_product_refs=tuple(replay._subject(ref).product_ref for ref in unaffected),
+                        dependency_closure_receipt_ref=receipt.dependency_closure_receipt_ref,
+                        invalidation_event_refs=())
+                    if receipt == expected:
+                        valid = True
+                        break
+                if not valid:
+                    raise LearnedProductLifecycleConflict("invalid no-op invalidation receipt")
+                replay._invalidations[receipt.ref.key] = receipt
+            if replay._checkpoint_payload() != self._checkpoint_payload():
+                raise LearnedProductLifecycleConflict("checkpoint receipts/state differ from native operations")
+        except (KeyError, TypeError, ValueError, IndexError, LearnedProductLifecycleError) as exc:
+>           raise LearnedProductLifecycleConflict(f"checkpoint semantic replay rejected: {exc}") from exc
+E           rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint semantic replay rejected: checkpoint receipts/state differ from native operations
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1850: LearnedProductLifecycleConflict
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pre553_learned_product_release.py::test_17_binding_cannot_resolve_different_release
+FAILED rawlsing_next/tests/test_pre553_learned_product_release.py::test_18_endpoint_failover_only_among_same_release
+FAILED ../../../../../var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py::test_OBSERVED_direct_b5_append_bypasses_native_preflight[RECERTIFIES]
+FAILED ../../../../../var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py::test_OBSERVED_direct_b5_append_bypasses_native_preflight[CURRENT_SELECTED]
+FAILED ../../../../../var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py::test_OBSERVED_direct_b5_append_bypasses_native_preflight[PRODUCT_PUBLISHED]
+FAILED ../../../../../var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py::test_OBSERVED_direct_m2_insert_bypasses_type_and_preflight
+FAILED ../../../../../var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py::test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay[replay_root_ref]
+FAILED ../../../../../var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py::test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay[determinant_set_hash]
+FAILED ../../../../../var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py::test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay[producer_permission_ceiling]
+FAILED ../../../../../var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py::test_OBSERVED_publication_torn_after_event_append
+FAILED ../../../../../var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py::test_OBSERVED_m2_check_then_insert_race_overwrites_collision
+FAILED ../../../../../var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py::test_OBSERVED_concurrent_b5_selection_accepts_two_stale_predecessors
+FAILED ../../../../../var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py::test_OBSERVED_public_event_payload_changes_internal_identity
+FAILED ../../../../../var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/e2-s06g-src/WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py::test_OBSERVED_rebuild_receipt_can_link_event_for_different_release
+14 failed, 179 passed in 23.64s
