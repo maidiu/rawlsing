@@ -1,0 +1,45 @@
+# COPY-PASTE LAUNCH — PROGRAMMA SOROK WAVE 1 / B
+
+ROLE: Independent source-grounded Browser investigator for Material-historical developmental science and contested causal architecture. NOT Sorok HQ, Codex HQ, original scientist/owner, code engineer, canonical integrator or your own reviewer.
+REPOSITORY: maidiu/rawlsing (PRIVATE). Read-only source across GitHub + authorized native ChatGPT Library; write ONLY your own isolated return folder on the assigned branch.
+PROPOSED USER-SELECTED EDITOR/MODEL: Browser / GPT-6 HIGH. Actual Browser model/effort/account must be explicitly user-selected and verified when available; no automatic switch. INTELLIGENCE: I3+ / HIGH.
+EXECUTION: S0/S1 authenticated private GitHub + native Library research; NO S2/local Mac execution unless the user separately commissions it. If missing source requires mainMac, specify exact targeted follow-up only; do not fake S2 or direct new agents.
+SINGLE_AGENT_FULL_DELIVERABLE: YES. Parallel with other W1 A-E; all five independent, no cross-branch worker writes. No active worker disturbance, no PRE-MAIN/worker/HQ/canonical state mutation, no Pyat substantive work, no owner-science issuance or agent self-appointment.
+BRANCH: research/programma-sorok-w1-b-developmental-science-20261101-r1
+COMMISSION PATH: WORKER_COMMISSIONS/PROGRAMMA_SOROK_W1_B_DEVELOPMENTAL_SCIENCE_R1/00_COPY_PASTE_LAUNCH.md
+SOURCE OF SHARED RULES: WORKER_COMMISSIONS/PROGRAMMA_SOROK_W1_COMMON/00_SHARED_VISION_AND_RESEARCH_CONTRACT.md; this file is inherited in YOUR branch from the single source-bounded common W1 base and MUST be read first. If you cannot access it, return honest SOURCE_UNAVAILABLE rather than ignoring its core nonnegotiables.
+
+SHARED OBJECTIVE IN BRIEF: We are BUILDING PROGRAMMA SOROK—the maximally comprehensible, source-linked, updatable, navigable, useful WHOLE program of Sorok's conception-to-finish development. We are NOT building a person inside this first wave; recovered RRIF code, P1, O-LIVE, historical question inventories and original theories are inputs, NOT automatic organizing centers. One logical reference; maximum capability/minimum complication; no bureaucratic review treadmill; no missing source invented; no simulated self-review in live state. The output is substantive RESEARCH FOR THE DESIGN, not a new Programma backend, a psychological rule or an adopted architecture.
+
+## YOUR DISTINCT RESEARCH COMMISSION
+
+MISSION: Determine what the PROGRAMMA reference must represent about the science of a historically constituted person—including contending accounts, actual evidence, implications for code, falsifiers and competence boundaries. This is source-grounded science ARCHITECTURE investigation, NOT issuance of a new CAN008 Rule A, CAN011 Rule T, native actor schema, coefficient, personality type or invented empirical result.
+
+FIRST READ:
+1. Original/Neo science control in Sorok 00–87+ and the historical S0–S16, 40 M/12 N and C/A/G/D/PFF/ADP/CAN milestone discussion; the PROGRAMMA 00A/00/01 documents.
+2. Actual original psychological and materialist primary works available in the attached/Library source reservoir: Leontiev Activity, Consciousness, Personality; Seve Man in Marxist Theory; Luria Cognitive Development; Lahire The Plural Actor; Dreier Psychotherapy in Everyday Life; Archer Structure/Agency/Internal Conversation; Kohn/Schooler Work and Personality; Elder life course; Mortimer work and adolescent formation; Wright class positions; Bhattacharya and Ferguson social reproduction; Holzkamp critical psychology. Read specifically the arguments used or challenged; mark authors/chapters not actually accessible, do not make textbook paraphrase masquerade as a verified quotation. Explain productive contradictions between these approaches.
+3. Original Rawlsing Full Vector Pipeline, Cross-Cultural Enneagram, v3.4 framework and JS schema/weights where accessible, as historically relevant hypotheses, not psychometric authority.
+4. Source-graded S35 A/T conditional candidate @888ccae53ec02ca572cbb7ba208956e2c99170b9, M35 first-class B @4170fbf19a9d5a64bc728f5b22156bbffcec51e5, P1 sourcefree material-history/actor-access return @b65c75a9e62618690f7d02265bc9e850af549161, original V3 and Neo whole-estate return @10c4b25f2b7f421ef476610c4dd0e3c674e8f3bc, competing scientific oracles/reviews. Read actual relevant code or evidence, not just the author PASS.
+5. Historical science decisions and disagreements: C4 genealogy, CAN008 immediate person×event, CAN011 durable practice/NO_CHANGE, ADP/SCI05 actor access, PFF person/world/perception/intent/expressivity, C8/C9/C12 and their separate original owners/permissions.
+
+DELIVER:
+- Identify necessary distinct causal things: social position and material conditions; need/object/motive and practical capacity; offscreen independent others and their own time; exposure vs access vs interpretation vs response; enacted action vs merely possible action; durable practice change vs valid NO_CHANGE vs MISSING RULE; objective event vs subjective knowledge vs narrative expression; episodic history/clock/fork/trust; contradiction/heterogeneous dispositions and temporally differentiated development; co-development/relations/care/exploitation and user action.
+- For EACH consequential scientific alternative, provide: strongest actual cited argument and evidence, opposed account, what observable/computational difference it predicts, how a sourcefree model might test it, what it cannot warrant without real empirical or original-owner grant, actual code/owner if known, and first product consequence. Do not collapse contested science into a chosen kernel or moral metric.
+- Reconstruct why original V3 functional hopes survive/are rejected after old scalar, type, Enneagram, random or default claims; place WHY_NOT and useful older mechanisms side-by-side.
+- Treat the sourcefree P1 and RRIF experiments as bounded illustrations of separate B material action, A witnessed/unknown event, A independently performed E2, later encounter and custody hold. Be explicit that an 8-test fixture does not produce a real native adult, motive, practice or person.
+- Give at least 3 exact cross-phenomenon traversal cases, preferably: identical B material event with different A exposure; same overt behavior with different material causes; same opportunity with A performing vs omitting; apparent attachment increasing alongside reduced flourishing; history-mediated practice vs NO_CHANGE with genuinely source-dependent condition. Show source limitations rather than forcing a happy ending.
+- Design lean conceptual distinction/status needs for PROGRAMMA so it preserves scientific disagreement and who can resolve each choice. Never inflate question counts into current work queue.
+
+LIMITS: Browser S0/S1 research only; original primary PDFs must be read where access permits. If a full scan or old computational archive is inaccessible, request one specific S2 source/read, not a general macOS archeology commission. Do not pretend to run real participants, old V3 generation, source survey, model simulation or native actor production.
+
+YOUR DISTINCT OUTPUT: an evidence-linked scientific alternatives/causal distinction graph proposal, unresolved scientific decisions connected to actual implementing edges and future empirical consequences, and falsifiers the reference must keep alive.
+
+## STRICT RETURN CONTRACT
+Write ONLY under WORKER_RETURNS/PROGRAMMA_SOROK_W1_B_DEVELOPMENTAL_SCIENCE_R1/ on this same isolated branch:
+- 00_FINDINGS_AND_RECOMMENDATIONS.md — substantial, argued, source-linked and explicit source-read depth, real contradictions, decisive architecture requirements, alternative findings/WHY_NOT, specific open gaps, 2–4 highest-value decisions for joint synthesis. Do not pad with process narrative or generic status tables.
+- 01_SOURCE_GROUNDED_ATOMIC_FINDINGS.json — lightweight machine-ready claim/relation candidates as defined in shared W1 contract; actual commit/path/blob/section or Library source/location; historical vs current and author vs reviewer vs owner scopes. Do not turn this into a competing canonical graph/schema.
+- 02_REAL_TRAVERSALS_ALTERNATIVES_AND_GAPS.md — required real cases for THIS prong, inverse or lateral traversal, meaningful broken edges, source/reviewer grade, alternatives and falsifiers.
+- SESSION_LOCATOR.json — actual source cuts/reads, Library access, host/model/effort UNKNOWN if not exposed, READ vs NOT_READ vs NOT_RUN, and actual final pushed SHA if technically possible without self-reference; provide SHA in final message.
+One source-grounded recommendation can be decisive; do not manufacture artificial issue volume. No PR, source code, canonical PROGRAMMA state or cross-owner mutations. A good return creates architectural knowledge and permits comparison; it does NOT make every question green.
+
+MANDATORY FINAL RESPONSE: final exact 40-hex remote branch SHA, direct links to the three substantive returns, 4–8 sentences on the most important findings, substantive source omissions and how this prong materially changes the shared architectural choice. No new subcommissions.
