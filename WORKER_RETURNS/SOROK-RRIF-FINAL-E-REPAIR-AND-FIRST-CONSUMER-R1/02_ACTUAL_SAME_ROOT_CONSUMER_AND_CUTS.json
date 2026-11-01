@@ -1,0 +1,92 @@
+{
+  "actual_call_path": [
+    "joined.session.JoinedSession.start(perform=\"omit\")",
+    "R2 JOIN-E material omission and C9 target",
+    "product.say/do_help/attend/wait(30)",
+    "JoinedSession.fork_alt(\"alt\")",
+    "JoinedSession.open(state) cold reopen and return_session",
+    "joined.c12_verify_repair.verify_branch_chain_repaired(root/alt)",
+    "joined.c12_custody.coordinated_guard_report",
+    "rrif_r3_extension.c9c12_consumer.read_r2_c12 (root + first_session)",
+    "rrif_r3_extension.c9c12_consumer.read_r2_c9_snapshot",
+    "rrif_r3_extension.cp_a5_consumer.run_cp_a5_consumer (separate root)",
+    "rrif_r3_extension.cp_a5_consumer.ask_cp_a5 (separate root)"
+  ],
+  "actual_output": {
+    "c12_alt_ok": true,
+    "c12_root_ok": true,
+    "c9_actor_status": "C9_SOURCE_MISSING",
+    "c9c12_status": "INCOMPATIBLE_WITHOUT_OWNER_MIGRATION__ROOT_COLD_READ_ONLY_UNDER_OWNER_ANCHOR_HOLD__FORK_LEGACY_ROOT_UNVERIFIED",
+    "cold_verify_ok": true,
+    "cp_a5": {
+      "ask_status": "UNKNOWN",
+      "assertion_status": "PASS",
+      "decision": "RETAIN_TOOL",
+      "market_status": "UNKNOWN",
+      "read_only": true,
+      "same_root_with_r2": false
+    },
+    "custody_classification": "BOTH_GREEN__SELF_HASH_PLUS_GUARDED_ROWS__NO_OWNER_ANCHOR",
+    "encounter": {
+      "attend_status": "NO_CHANGE",
+      "help_accepted": true,
+      "help_strategy": "HELP_ACCEPT",
+      "return_scene_open": true,
+      "say_strategy": "RECIPROCATE",
+      "scene_open_after_wait": false,
+      "wait_clock": 40
+    },
+    "fork": {
+      "cold_branch": "alt",
+      "created_branch": "alt",
+      "receipt": "alt"
+    },
+    "legacy_fork": "LEGACY_HELD",
+    "material_event": {
+      "b_performed": true,
+      "c8_state_digest": "b33f575956a180874af7e0b02bc29b6210f45eac95bf1aba3720998d515555c8",
+      "source_operation": "SHARE_TOOL",
+      "target_id": "5fd292a98c1c5210ab91c8f59c26b9cb3b3d7fb7bed2548f801696b05534b434"
+    },
+    "status": "PASS_PARTIAL_SAME_ROOT_C9_C12__C9_ACTOR_OWNER_HELD__CP_A5_SEPARATE_ROOT",
+    "upstream_verifier_errors": [
+      "episode:0:body_hash_mismatch",
+      "episode:1:body_hash_mismatch"
+    ],
+    "upstream_verifier_ok": false
+  },
+  "authority": {
+    "external_anchor": "OWNER_ANCHOR_REQUIRED",
+    "native_c8_c9_c12": false,
+    "native_cp_a5": false,
+    "native_person": false,
+    "owner_adoption": false
+  },
+  "branch": "research/sorok-rrif-terminal-a-b-fanin-commission-20261031-r1",
+  "dispatch_commit": "e0d816953e97625e8176f0a16e722927bc786d2c",
+  "exact_incompatibilities": {
+    "c9_actor": "R2 product has no actor_meta table; C9C12-R2 read_actor_snapshot returns C9_SOURCE_MISSING",
+    "cp_a5_origin": "CP-A5 expects TEST_ONLY_BP1_ACTOR_A; R2 uses TEST_ONLY_BP1_R26V_ACTOR_A -> BP2_ORIGIN_INVARIANT_MISMATCH",
+    "legacy_root": "first_session fork root is legacy; C9C12 guard holds it",
+    "writer_versions": "R2 C12 writer BP4_C12_STORE@1; C9C12-R2 guard reads @1 but no C9 actor schema is present"
+  },
+  "not_claimed": [
+    "native person",
+    "native C9/C12",
+    "external owner anchor",
+    "CP-A5 same-root weld",
+    "human A5",
+    "PREMAIN merge"
+  ],
+  "premain_read_cut": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "schema": "SOROK_RRIF_E_ACTUAL_SAME_ROOT_CONSUMER_AND_CUTS@1",
+  "source_cuts": {
+    "c9c12_r2": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+    "cp_a5_r2": "913765328e4fab12b150ea01421ed6b445158184",
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135",
+    "join_v": "4387dc818a96fda2d5271672505fbd9da1059703",
+    "old_c9_writer": "fac064c9c3370d598e9b7469af652ae3504bc4ba",
+    "r2": "598d9e9eaba5143950c63317705fd09104fbf463",
+    "r3_extension": "248618e6ea9549439b5a146246bc1eb2e0076cf6"
+  }
+}

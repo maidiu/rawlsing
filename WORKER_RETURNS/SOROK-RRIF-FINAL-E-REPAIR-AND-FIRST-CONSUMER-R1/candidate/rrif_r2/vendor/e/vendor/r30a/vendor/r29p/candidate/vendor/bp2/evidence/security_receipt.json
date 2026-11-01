@@ -1,0 +1,24 @@
+{
+  "closed_in_candidate_process": [
+    "old OUT9 class writer routes closed",
+    "forged KeyedCapability refused",
+    "unkeyed receipt forgery refused by keyed proof",
+    "withheld anchor / tampered watermark MAC refused",
+    "byte-valid rollback detected by the external anchor",
+    "stale writer version refused",
+    "empty expected OUT9 state digest refused",
+    "key store inside the journal directory refused",
+    "crash after rename before proof sidecar refused, not acknowledged",
+    "self-actuator and self-occurrence E2 refused"
+  ],
+  "schema": "BP2_SECURITY_RECEIPT@1",
+  "tests": [
+    "tests/test_joined_security.py"
+  ],
+  "typed_residuals": [
+    "old writer callable in a process that does not import the BP3 gate (D1)",
+    "a leaked TEST_ONLY key can mint a valid capability (D2)",
+    "anchor log+watermark rolled back together defeat detection (D2)",
+    "raw OUT9 reads the unacknowledged post-crash state (typed HOLD required)"
+  ]
+}

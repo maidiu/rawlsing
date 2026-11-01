@@ -1,0 +1,93 @@
+{
+  "all_expected": true,
+  "candidate": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/rrif-final-e/WORKER_RETURNS/SOROK-RRIF-FINAL-E-REPAIR-AND-FIRST-CONSUMER-R1/candidate/rrif_r2",
+  "candidate_preimage_sha256": "40b849ba1de96ea6240b32dfb5c3f40f90a171ea3c8ed188693bd5cdfbb27e4c",
+  "courts": [
+    {
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-o",
+        "addopts=",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml",
+        "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/rrif-final-e/WORKER_RETURNS/SOROK-RRIF-FINAL-E-REPAIR-AND-FIRST-CONSUMER-R1/candidate/evidence/r2_original_20.xml",
+        "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/rrif-final-e/WORKER_RETURNS/SOROK-RRIF-FINAL-E-REPAIR-AND-FIRST-CONSUMER-R1/candidate/rrif_r2/tests/test_join.py",
+        "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/rrif-final-e/WORKER_RETURNS/SOROK-RRIF-FINAL-E-REPAIR-AND-FIRST-CONSUMER-R1/candidate/rrif_r2/tests/test_rrif_r2_c12.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "r2_original_20",
+      "passed_expectation": true,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "41849be53451b4e411a436fd178a6254dff6a316719d7edf36945fb646425ebf",
+      "summary": "20 passed in 11.83s"
+    },
+    {
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-o",
+        "addopts=",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml",
+        "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/rrif-final-e/WORKER_RETURNS/SOROK-RRIF-FINAL-E-REPAIR-AND-FIRST-CONSUMER-R1/candidate/evidence/r3_extension_9.xml",
+        "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/rrif-final-e/WORKER_RETURNS/SOROK-RRIF-FINAL-E-REPAIR-AND-FIRST-CONSUMER-R1/candidate/rrif_r2/rrif_r3_extension/tests/test_rrif_r3_extension.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "r3_extension_9",
+      "passed_expectation": true,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "424b6cec6b1fec73000193e97ac779b9f9d79242fb78971ee21e3ae43c1fd631",
+      "summary": "9 passed in 7.73s"
+    },
+    {
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-o",
+        "addopts=",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml",
+        "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/rrif-final-e/WORKER_RETURNS/SOROK-RRIF-FINAL-E-REPAIR-AND-FIRST-CONSUMER-R1/candidate/evidence/rrif_e_repair_6.xml",
+        "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/rrif-final-e/WORKER_RETURNS/SOROK-RRIF-FINAL-E-REPAIR-AND-FIRST-CONSUMER-R1/candidate/rrif_r2/tests/test_rrif_e_repair.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "rrif_e_repair_6",
+      "passed_expectation": true,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "3f7870d7a8c295b2dc0cba75164a8ae598f819928f47bea0008b7e13cb3b7f9c",
+      "summary": "6 passed in 3.47s"
+    },
+    {
+      "command": [
+        "/usr/local/bin/python3",
+        "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/rrif-final-e/WORKER_RETURNS/SOROK-RRIF-FINAL-E-REPAIR-AND-FIRST-CONSUMER-R1/candidate/rrif_r2/first_consumer_cli.py",
+        "--root",
+        "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/rrif-final-e/WORKER_RETURNS/SOROK-RRIF-FINAL-E-REPAIR-AND-FIRST-CONSUMER-R1/candidate/evidence/first_consumer_state"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "name": "first_consumer",
+      "passed_expectation": true,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "90f0aeb4ef40fafd8ae4f30a59adb9585d6e6a2bebab04fc5ed3aba9223d2e95",
+      "summary": ""
+    }
+  ],
+  "first_consumer_receipt_sha256": "90f0aeb4ef40fafd8ae4f30a59adb9585d6e6a2bebab04fc5ed3aba9223d2e95",
+  "repo": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/rrif-final-e",
+  "schema": "SOROK_RRIF_E_EXECUTED_COURTS@1",
+  "source_manifest_sha256": "7cfcb4679e36b522e83cc7120dbc166ce61dd220099c2aca8f5c9ddb5252c126"
+}

@@ -1,0 +1,88 @@
+{
+  "additive_patch": {
+    "apply_from": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2",
+    "files": {
+      "RRIF_R2_CANDIDATE_SOURCE_PREIMAGE.json": {
+        "sha256": "40b849ba1de96ea6240b32dfb5c3f40f90a171ea3c8ed188693bd5cdfbb27e4c",
+        "size": 125097
+      },
+      "first_consumer_cli.py": {
+        "sha256": "a15c101dd6737aa4124bb6c7e7d71d7807cb9f6e71632d701bfbe8f67b11d229",
+        "size": 860
+      },
+      "joined/c12_custody.py": {
+        "sha256": "a19d1eadcb495653dd20cec0e82142d0d922a78b767b11ace1bf4004cff6f817",
+        "size": 2249
+      },
+      "joined/c12_verify_repair.py": {
+        "sha256": "09200dc0777fb8f01e10f7a566b4c72e4f3d19902778cd9eb4917f7932cc9a60",
+        "size": 2811
+      },
+      "joined/c9c12_compat.py": {
+        "sha256": "4bb2db7f08357db76061ad79f68a7777b1ea37a631b02644d9661842811540d6",
+        "size": 2001
+      },
+      "joined/first_consumer.py": {
+        "sha256": "8a611ab7593556fb028e054217eb6807faaaf9475dfbee2d831c41ee44a97722",
+        "size": 5969
+      },
+      "joined/source_identity.py": {
+        "sha256": "dee4826fca877ac1dc40852ba2581948cba1eaef5add175e7c5ffe105ec5826a",
+        "size": 2936
+      },
+      "tests/test_rrif_e_repair.py": {
+        "sha256": "11a666f4f5358a8077c937c3bf0d57ae54ee04546d83371275cdfdff885e019e",
+        "size": 7999
+      },
+      "tests/test_rrif_r2_c12.py": {
+        "sha256": "adba18455fff5819d3840aa3e49d4a49a0f5acdb29187df0bf7a840c88cc5b70",
+        "size": 3940
+      }
+    },
+    "path": "RRIF_E_ADDITIVE.patch",
+    "sha256": "11d4cf23fcb57d79e33a79511cf3c57d3ea53e63f4f5aeb3573608892a20bbb5"
+  },
+  "authority": "SOURCEFREE_CANDIDATE_NOT_OWNER_ADOPTED",
+  "base_candidate_commit": "598d9e9eaba5143950c63317705fd09104fbf463",
+  "base_candidate_path": "SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2",
+  "base_candidate_required": true,
+  "first_consumer": {
+    "command": "python3 first_consumer_cli.py --root <receipt-root>",
+    "expected_status": "PASS_PARTIAL_SAME_ROOT_C9_C12__C9_ACTOR_OWNER_HELD__CP_A5_SEPARATE_ROOT",
+    "external_anchor": "OWNER_ANCHOR_REQUIRED"
+  },
+  "not_included": [
+    "444 copied vendor files (exact prerequisite from R2 base)",
+    "C9 actor_meta migration or synthetic C9 actor rows",
+    "CP-A5 same-root weld by actor relabeling",
+    "external C12 owner key/anchor",
+    "native CAN/ADP/SCI05, Pyat world, human A5"
+  ],
+  "owner_review_questions": [
+    "Does the owner accept the R2 base candidate and exact 444-file vendor closure?",
+    "Does the owner accept the repaired verifier as sourcefree self-consistency only?",
+    "Does the C9/C12 incompatible edge remain owner-held or receive a lawful migration?",
+    "Which current PREMAIN path receives the packet, and who reviews the exact patch?"
+  ],
+  "premain_read_cut": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "rollback": {
+    "command": "git -C <premain-worktree> checkout -- SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2 && git -C <premain-worktree> clean -fd SOROK_PRODUCT_CONTROL_ROOM/RRIF/CODE_CANDIDATE/RRIF_R2",
+    "note": "The receiving packet is additive; no PREMAIN merge or commit is performed by this worker."
+  },
+  "schema": "RRIF_E_MINIMAL_RECEIVING_DEPENDENCIES@1",
+  "source_cuts": {
+    "c9c12_r2": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+    "cp_a5_r2": "913765328e4fab12b150ea01421ed6b445158184",
+    "join_e": "7bf2da302996491ddf34b9a039fea47ac982d135",
+    "join_v": "4387dc818a96fda2d5271672505fbd9da1059703",
+    "r2": "598d9e9eaba5143950c63317705fd09104fbf463",
+    "r3_extension": "248618e6ea9549439b5a146246bc1eb2e0076cf6"
+  },
+  "vendor_closure": {
+    "note": "The 444 vendor files are not included in this additive patch. They must be installed from the exact R2 candidate commit or from the candidate receipt before applying the patch.",
+    "source_manifest": "SOURCE_MANIFEST.json",
+    "source_manifest_sha256": "7cfcb4679e36b522e83cc7120dbc166ce61dd220099c2aca8f5c9ddb5252c126",
+    "vendor_bytes_must_remain_exact": true,
+    "vendor_manifest_rows": 444
+  }
+}

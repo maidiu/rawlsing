@@ -1,0 +1,221 @@
+{
+  "alternatives_considered": {
+    "lawful_deny": {
+      "conditions": [
+        "target permission revoked, or the target request is self-issued"
+      ],
+      "observed": {
+        "branch": "DENY",
+        "occurrence_preserved": true,
+        "reason": "PERMISSION_SELF_ISSUED",
+        "target_rows": 0
+      },
+      "requirement": "DENY branch committed, no target row, occurrence kept",
+      "status": "EXECUTED"
+    },
+    "lawful_no_change": {
+      "conditions": [
+        "insufficient distinct independently enacted history, or no eligible material source"
+      ],
+      "observed": {
+        "branch": "NO_CHANGE",
+        "occurrence_preserved": true,
+        "reason": "TARGET_RULE_ABSENT / NO_PROPOSAL",
+        "target_rows": 0
+      },
+      "requirement": "occurrence preserved, no target row, no ghost state",
+      "status": "EXECUTED"
+    },
+    "positive_create": {
+      "conditions": [
+        "two distinct BP1 enacted acts",
+        "an independent other-actor performed offer",
+        "granted material access in the event scene",
+        "separately granted CAN011 target update"
+      ],
+      "observed": {
+        "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+        "actor_source_hash": "bf80ce4a1cddafa2eadab57fdda43942c70cca999bd49c864a34e9c1e33f82e2",
+        "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+        "c8_occurrence_id": "OCC-0001",
+        "c8_state_digest": "058d006c1ce79d2783b02a3bb4e2f92d0672aec9b406b5f3312453f9c5608b4b",
+        "consumed_state_hash": "4907a662d2494d9f7949d1f809195264e001f90d39021feb73e5a75cc31c656d",
+        "e2_actuator_ref": "TEST_ONLY_ACTUATOR_BP2_INDEPENDENT",
+        "e2_consumed_state_hash": "4907a662d2494d9f7949d1f809195264e001f90d39021feb73e5a75cc31c656d",
+        "e2_occurrence_ref": "TEST_ONLY_OCCURRENCE_BP2_E2",
+        "grant_hash": "3236a56072294efecd81b7817b6b54ec4afa31be33ec5886ad8852a9172bd970",
+        "other_actor_id": "TEST_ONLY_BP1_ACTOR_B",
+        "other_source_hash": "ba1266db1726ce17c426df62ec7e4a028b47ee09f7388b243e2ae47dc3ab0fcb",
+        "rule_a_content_hash": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+        "rule_t_content_hash": "457894cf45902c8a4db1077bb1d043feef1b9c7bba67ad1e231e19978d1da3cb",
+        "target_record_hash": "8d784d48096f4d32d0df3d7c659a23b501681877a948580e0c0150ac60efcd3e"
+      },
+      "status": "EXECUTED"
+    }
+  },
+  "based_on": {
+    "p0_architecture": "4073ae2a3363d05e429e3be885486f094414b8ce",
+    "pa0_atlas": "3b39c86b376efff8c11833b8451c1791adddb9bc",
+    "ps0_commit": "b1f8155338e6fae9fdca0fd11a810199ed12f3ca",
+    "ps0_document": "WORKER_RETURNS/SOROK-20261019-PS0-INDEPENDENT-PERSON-SCIENCE-R1/05_PRECISE_SCIENTIFIC_DECISION_OWNER_DOCKET.md",
+    "ps0_trial": "PS0-D01"
+  },
+  "competent_owners": [
+    {
+      "current_state": "CAN008_RULE_ISSUER_UNVERIFIED__UNISSUED",
+      "decision": "issue one exact rule body/version/content hash, subject and readset scope, response alternatives and valid-empty condition, with adoption provenance and effective time",
+      "owner": "CAN008 R2 concrete RULE_A issuing authority"
+    },
+    {
+      "current_state": "RULE_T_AND_GRANT_UNISSUED",
+      "decision": "issue one exact RULE_T (kind, semantic object, operation, state kind), plus a CREATE/NO_CHANGE/DENY grant with before and write sets, expiry and revocation",
+      "owner": "CAN011 separate target-state owner"
+    },
+    {
+      "current_state": "ADP019_ADMISSION_RECEIPT_ABSENT",
+      "decision": "admit the exact precipitating occurrence and emit the owner receipt",
+      "owner": "ADP019 V3 external admission court"
+    },
+    {
+      "current_state": "OPPORTUNITY_AND_ENCOUNTER_UNISSUED",
+      "decision": "bind AVAILABLE -> OPPORTUNITY -> ENCOUNTER for this exact subject",
+      "owner": "ADP010 encounter owner"
+    },
+    {
+      "current_state": "TEST_ONLY_FIXTURE_ACTORS_NOT_NATIVE",
+      "decision": "issue the native actor and independent other source",
+      "owner": "ADP007 actor genesis / ADP015 other-and-family owner"
+    },
+    {
+      "current_state": "TEST_ONLY_DECLARED_ACTUATOR_NOT_NATIVE",
+      "decision": "admit one independently performed E2 action after the commit",
+      "owner": "native later-action / actuator owner"
+    },
+    {
+      "current_state": "PRODUCTION_REGISTRY_EMPTY",
+      "decision": "populate the accepted production transition registry by owner action",
+      "owner": "PSEPF production-registry binder"
+    }
+  ],
+  "decision_options": [
+    "ADOPT",
+    "REVISE",
+    "REJECT",
+    "REQUEST_EVIDENCE"
+  ],
+  "evidence_grade": {
+    "current": "L1_PHYSICALLY_EXECUTABLE_SOURCEFREE_TECHNICAL_POSITIVE",
+    "target_after_owner_decisions": "L2_NATIVE_SCIENTIFIC_RELEASE",
+    "this_worker_issues_none_of_the_above": true
+  },
+  "forbidden_shortcuts": [
+    "P psychology without a P source",
+    "historical copy of one actor into a second actor",
+    "actor knowability inferred from a structural source",
+    "automatic trauma, trait, need or attachment coefficient",
+    "narrator- or response-text-performed event",
+    "production registry entry created by a fixture, hash or boolean",
+    "future-child information influencing a present outcome",
+    "two acts treated as a universal habit/practice law",
+    "role, seed, stereotype or fixture identity as acquired personality"
+  ],
+  "one_finite_trial": {
+    "description": "Same-world E1 occurrence -> persisted target -> an actual, independently performed later E2 action, with a source severance RED and a separate no-effect alternative GREEN.",
+    "falsifiers": [
+      "the named joined assertion fails when any one source edge is cut",
+      "a fabricated response cannot create a durable target",
+      "a self-performer cannot pass E2 admission",
+      "no target row exists on NO_CHANGE or DENY"
+    ],
+    "input": [
+      "one committed BP3 C8 occurrence carrying two distinct BP1 actor/history identities and one shared material task",
+      "the other actor's own performed offer (not the focal actor's)",
+      "an externally issued concrete CAN008 RULE_A (this request asks for it; the TEST_ONLY body here is a placeholder)",
+      "a separately owned concrete CAN011 RULE_T and grant (requested)",
+      "an independently performed later E2 action owner receipt (requested)"
+    ],
+    "observable": [
+      "target branch CREATE / NO_CHANGE / DENY",
+      "target record hash and consumed state hash",
+      "E2 admission or typed hold",
+      "the six same-assertion source severances"
+    ],
+    "operation": [
+      "actor ingress",
+      "E1 event witness",
+      "read-only conditioning",
+      "RULE_A response",
+      "RULE_T target evaluation",
+      "atomic durable full-record commit",
+      "later committed-state read",
+      "independent E2 admission bound to the consumed state hash"
+    ]
+  },
+  "proposed_scope": {
+    "semantic_object": "c9p:coordinated_material_inspection",
+    "state_kind": "V3MS_PRACTICE",
+    "subject_scope": "one exact actor id",
+    "temporal_sufficiency": "not decided by this worker",
+    "transfer_to_later_choice": "not decided by this worker",
+    "valid_empty_condition": "insufficient declared enacted history"
+  },
+  "request_hash": "fab6e5aac5711525c0e17308ef968112351c55106cf101d57a37a67f8feef0fa",
+  "request_id": "PS0-D01-BP2-RULE-A-T-REQUEST-R1",
+  "requested_new_scientific_rule_a": {
+    "issuer_decision_required": true,
+    "kind": "CAN008_RULE_A",
+    "native_content_hash": null,
+    "status": "PROPOSED_ONLY_NOT_ISSUED",
+    "test_only_content_hash": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+    "test_only_semantics": {
+      "allowed_subjects": [
+        "TEST_ONLY_BP1_ACTOR_A"
+      ],
+      "authority_id": "TEST_ONLY_CAN008",
+      "authority_version": "1",
+      "native": false,
+      "permitted_readset_classes": [
+        "ResolvedStructuralContext"
+      ],
+      "predicates": [
+        "two distinct declared enacted acts",
+        "independent other offer",
+        "material access"
+      ],
+      "rule_id": "TEST_ONLY_BP2_CAN008_RULE_A",
+      "rule_version": "1"
+    }
+  },
+  "requested_new_scientific_rule_t": {
+    "issuer_decision_required": true,
+    "kind": "CAN011_RULE_T",
+    "native_content_hash": null,
+    "status": "PROPOSED_ONLY_NOT_ISSUED",
+    "test_only_content_hash": "457894cf45902c8a4db1077bb1d043feef1b9c7bba67ad1e231e19978d1da3cb",
+    "test_only_semantics": {
+      "accepted_semantic_objects": [
+        "c9p:coordinated_material_inspection"
+      ],
+      "allowed_operations": [
+        "CREATE"
+      ],
+      "authority_id": "TEST_ONLY_CAN011",
+      "authority_version": "1",
+      "native": false,
+      "response_rule_content_hash": "aa5033ca2b5f6321203652bf32537618fefbde4836ada572404702bef1869574",
+      "rule_id": "TEST_ONLY_BP2_CAN011_RULE_T",
+      "rule_version": "1",
+      "state_kind_id": "V3MS_PRACTICE"
+    }
+  },
+  "schema": "BP2_PS0_D01_SCIENTIFIC_DECISION_REQUEST@1",
+  "status": "SCIENTIFIC_DECISION_REQUEST__NOT_AN_ISSUED_RULE",
+  "what_is_not_claimed": [
+    "no native actor, person, parent, child or genealogy",
+    "no native CAN008 RULE_A or CAN011 RULE_T",
+    "no ADP010 encounter, ADP019 admission or native E2",
+    "no psychology, personality, need, practice rate or universal coefficient",
+    "no production install, KMS key or trusted anchor",
+    "no L2 native-scientific or L3 user-product release"
+  ]
+}

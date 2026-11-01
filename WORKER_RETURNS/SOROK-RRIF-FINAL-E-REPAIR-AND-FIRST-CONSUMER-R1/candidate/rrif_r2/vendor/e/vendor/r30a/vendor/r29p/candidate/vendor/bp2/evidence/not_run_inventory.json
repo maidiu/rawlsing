@@ -1,0 +1,75 @@
+{
+  "not_run": [
+    {
+      "item": "native ADP019 admission",
+      "owner": "V3 External Admission Court",
+      "reason": "no owner receipt issued; TEST_ONLY grade only"
+    },
+    {
+      "item": "native ADP010 opportunity/encounter",
+      "owner": "ADP010 encounter owner",
+      "reason": "production registry empty"
+    },
+    {
+      "item": "native CAN008 RULE_A",
+      "owner": "CAN008 R2 concrete rule issuer",
+      "reason": "rule body/version/hash unissued"
+    },
+    {
+      "item": "native CAN011 RULE_T + grant",
+      "owner": "separate CAN011 target owner",
+      "reason": "unissued"
+    },
+    {
+      "item": "native E2 performed action",
+      "owner": "native actuator/occurrence owner",
+      "reason": "TEST_ONLY declared actuator only"
+    },
+    {
+      "item": "native ADP007 actor / ADP015 other",
+      "owner": "ADP007/ADP015 owners",
+      "reason": "TEST_ONLY fixture actors"
+    },
+    {
+      "item": "C8 D1 production writer cutover",
+      "owner": "C8 writer owner",
+      "reason": "import-only gate; old writer callable outside the gated import"
+    },
+    {
+      "item": "C8 D2 production KMS/anchor custody",
+      "owner": "key/anchor custodian",
+      "reason": "TEST_ONLY key file + local keyed anchor"
+    },
+    {
+      "item": "C8 D3 native event issuance",
+      "owner": "ADP019 owner",
+      "reason": "no admission"
+    },
+    {
+      "item": "power-failure/media durability proof",
+      "owner": "storage owner",
+      "reason": "fsync+rename is not a power-failure guarantee"
+    },
+    {
+      "item": "Pyat N11/N12 receiving schema",
+      "owner": "Pyat HQ",
+      "reason": "out of scope; not read as authority"
+    },
+    {
+      "item": "C11 weld / C12 generated person",
+      "owner": "C11/C12 authorities",
+      "reason": "not attempted"
+    },
+    {
+      "item": "original raw respondent source use",
+      "owner": "source custodian",
+      "reason": "no permission; not accessed"
+    },
+    {
+      "item": "production registry population",
+      "owner": "PSEPF registry binder",
+      "reason": "empty by design"
+    }
+  ],
+  "schema": "BP2_NOT_RUN_INVENTORY@1"
+}

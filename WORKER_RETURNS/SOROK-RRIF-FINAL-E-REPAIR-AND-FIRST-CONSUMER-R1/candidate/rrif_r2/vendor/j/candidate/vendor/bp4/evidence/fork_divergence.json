@@ -1,0 +1,111 @@
+{
+  "branch_private_work_events": true,
+  "diverged": true,
+  "fork": {
+    "branch": {
+      "actor_ids": [
+        "A",
+        "B"
+      ],
+      "branch_id": "branch_leave",
+      "created_clock": 10,
+      "fork_clock": 10,
+      "parent_branch_id": "root",
+      "root_counts": {
+        "checkpoint": 2,
+        "episode": 1,
+        "perception": 4,
+        "world_event": 2
+      },
+      "root_hash": "ea4748f4677416f4391a12286002dcd0ebce05396ba5fd42990f5b340f891bfa"
+    },
+    "shared_root": {
+      "detail": {
+        "checkpoint": {
+          "count": 2,
+          "equal": true
+        },
+        "episode": {
+          "count": 1,
+          "equal": true
+        },
+        "perception": {
+          "count": 4,
+          "equal": true
+        },
+        "world_event": {
+          "count": 2,
+          "equal": true
+        }
+      },
+      "equal": true,
+      "fork_clock": 10,
+      "mode": "parent_child"
+    },
+    "status": "OK"
+  },
+  "leave_branch": {
+    "completed_units": 4,
+    "position": "market",
+    "public_work_events": [
+      "TEST_ONLY_BP4_WORLD_EVT_324b154fd7cc0e3e5c8c662e535300bf9311c1e39f146b23e31f7a0d979929cd"
+    ],
+    "role": "finishing"
+  },
+  "schema": "SOROK_BP4_FORK_DIVERGENCE@1",
+  "shared_after": {
+    "detail": {
+      "checkpoint": {
+        "count": 2,
+        "equal": true
+      },
+      "episode": {
+        "count": 1,
+        "equal": true
+      },
+      "perception": {
+        "count": 4,
+        "equal": true
+      },
+      "world_event": {
+        "count": 2,
+        "equal": true
+      }
+    },
+    "equal": true,
+    "fork_clock": 10,
+    "mode": "parent_child"
+  },
+  "shared_before": {
+    "detail": {
+      "checkpoint": {
+        "count": 2,
+        "equal": true
+      },
+      "episode": {
+        "count": 1,
+        "equal": true
+      },
+      "perception": {
+        "count": 4,
+        "equal": true
+      },
+      "world_event": {
+        "count": 2,
+        "equal": true
+      }
+    },
+    "equal": true,
+    "fork_clock": 10,
+    "mode": "parent_child"
+  },
+  "shared_root_equal": true,
+  "take_branch": {
+    "completed_units": 3,
+    "position": "market",
+    "public_work_events": [
+      "TEST_ONLY_BP4_WORLD_EVT_6dfd2d700c69638b3fcbc6942af16b86d23278e4122e2fc9958018379f4cce70"
+    ],
+    "role": "finishing"
+  }
+}

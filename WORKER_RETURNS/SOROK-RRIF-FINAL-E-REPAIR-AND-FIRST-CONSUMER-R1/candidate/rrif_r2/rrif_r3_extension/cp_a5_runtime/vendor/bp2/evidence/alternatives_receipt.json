@@ -1,0 +1,46 @@
+{
+  "deny_self_issued": {
+    "branch": "DENY",
+    "committed": true,
+    "occurrence_rows": 1,
+    "reason": "PERMISSION_SELF_ISSUED",
+    "target_rows": 0
+  },
+  "no_change_denied_material": {
+    "branch": "NO_CHANGE",
+    "material_eligible": false,
+    "material_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+    "target_rows": 0
+  },
+  "no_change_empty_rule_registry": {
+    "branch": "NO_CHANGE",
+    "committed": true,
+    "occurrence_rows": 1,
+    "reason": "NO_PROPOSAL",
+    "response_reason": "CAN008_RULE_ABSENT_FROM_REGISTRY",
+    "response_status": "REFUSED",
+    "target_rows": 0
+  },
+  "schema": "BP2_ALTERNATIVES_RECEIPT@1",
+  "two_actor_histories": {
+    "A": {
+      "actor_id": "TEST_ONLY_BP1_ACTOR_A",
+      "actor_source_hash": "bf80ce4a1cddafa2eadab57fdda43942c70cca999bd49c864a34e9c1e33f82e2",
+      "consumed_state_hash": "d534207d27a1bb4625cae5624c4b406b2e56f727f74d4d1d50debf04f142cb38",
+      "other_actor_id": "TEST_ONLY_BP1_ACTOR_B",
+      "response_hash": "a74c914d4e17e2590312bea11a816bd856b53fd2c167ba3c15bcb12b186dd389",
+      "target_id": "fa0da4bf7ed311c5336cf12e47c40733229a9ec468872a0b36b527a949863fbe",
+      "target_record_hash": "b2ecec0ac57d2f18cea02db53255cc467f247deda2aa6bd29eb00790a44d946a"
+    },
+    "B": {
+      "actor_id": "TEST_ONLY_BP1_ACTOR_B",
+      "actor_source_hash": "ba1266db1726ce17c426df62ec7e4a028b47ee09f7388b243e2ae47dc3ab0fcb",
+      "consumed_state_hash": "8bf35824da5a4b35b14616e691055e47263e93892669d198f50dc260388fd7c4",
+      "other_actor_id": "TEST_ONLY_BP1_ACTOR_A",
+      "response_hash": "8c73784f052df9d3b10572072ba388d20309db3549d396cf25ebddf8c1e7a08a",
+      "target_id": "5eab864ecf64116fb613e8915f0706931f2996fde732735f85fb330c94a058d5",
+      "target_record_hash": "89a003b6237d0cde3a1e7cc717d4aff63382d741eef0d0a15178f7450b0dd717"
+    },
+    "distinct": true
+  }
+}
