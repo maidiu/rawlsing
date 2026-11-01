@@ -2,8 +2,8 @@
 
 **Branch:** `agent/pyat-rrif-d2-source-ingress-custody-20261031-r1`
 **Startup / PRE-MAIN:** `8e44ca9c751049d65e6def47600b5c073ee04b29`
-**Content commit:** `TO_BE_RECORDED_AFTER_COMMIT`
-**Final branch HEAD / direct readback:** `TO_BE_RECORDED_AFTER_PUSH`
+**Content commit:** `d29ceef2f8c5723c61021f400a92b4342d8107d2`
+**Final returned content SHA:** `d29ceef2f8c5723c61021f400a92b4342d8107d2` (direct `ls-remote` readback verified)
 **Role:** independent sourcefree lineage adjudicator/repair-candidate author. Not HQ, native issuer, PRE-MAIN integrator or own reviewer.
 
 ## Bottom line

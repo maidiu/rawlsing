@@ -14,8 +14,9 @@
 | A×B | `f5a9facd189af6756c2b15c8daebe680016f658a` |
 | E8 | `e95d6edb9300b2cc8b0ad2c70dff3953c8afe1ba` |
 | Worktree | `/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-rrif-d2-source-ingress-custody-20261031-r1` |
-| Content commit | `TO_BE_RECORDED_AFTER_COMMIT` |
-| Final branch HEAD / readback | `TO_BE_RECORDED_AFTER_PUSH` |
+| Content commit | `d29ceef2f8c5723c61021f400a92b4342d8107d2` |
+| Final returned content SHA / readback | `d29ceef2f8c5723c61021f400a92b4342d8107d2` (direct `ls-remote`) |
+| Readback receipt commit | recorded in final handback |
 
 ## Host / model / effort
 
