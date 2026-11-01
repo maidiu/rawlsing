@@ -1,0 +1,169 @@
+FFFFFFFFFF                                                               [100%]
+=================================== FAILURES ===================================
+________________ test_nested_payload_frozen_and_export_detached ________________
+
+    def test_nested_payload_frozen_and_export_detached():
+        x, s, _ = cp()
+        event = x.events[-1]
+        old = event.ref
+>       with pytest.raises((TypeError, AttributeError)):
+E       Failed: DID NOT RAISE any of (<class 'TypeError'>, <class 'AttributeError'>)
+
+WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py:95: Failed
+_______ test_rehashed_publication_payload_field_refused[replay_root_ref] _______
+
+field = 'replay_root_ref'
+
+    @pytest.mark.parametrize("field", ["replay_root_ref", "determinant_set_hash", "producer_permission_ceiling"])
+    def test_rehashed_publication_payload_field_refused(field):
+        x, s, checkpoint = cp()
+        payload = dict(x.events[-1].payload)
+        payload[field] = semantic_hash("alien") if field == "determinant_set_hash" else R("Alien", field).as_dict()
+        checkpoint["checkpoint_payload"]["events"][-1] = replace(x.events[-1], payload=payload).as_dict()
+        checkpoint["checkpoint_hash"] = semantic_hash(checkpoint["checkpoint_payload"])
+>       with pytest.raises(LearnedProductLifecycleConflict):
+E       Failed: DID NOT RAISE <class 'rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict'>
+
+WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py:110: Failed
+____ test_rehashed_publication_payload_field_refused[determinant_set_hash] _____
+
+field = 'determinant_set_hash'
+
+    @pytest.mark.parametrize("field", ["replay_root_ref", "determinant_set_hash", "producer_permission_ceiling"])
+    def test_rehashed_publication_payload_field_refused(field):
+        x, s, checkpoint = cp()
+        payload = dict(x.events[-1].payload)
+        payload[field] = semantic_hash("alien") if field == "determinant_set_hash" else R("Alien", field).as_dict()
+        checkpoint["checkpoint_payload"]["events"][-1] = replace(x.events[-1], payload=payload).as_dict()
+        checkpoint["checkpoint_hash"] = semantic_hash(checkpoint["checkpoint_payload"])
+>       with pytest.raises(LearnedProductLifecycleConflict):
+E       Failed: DID NOT RAISE <class 'rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict'>
+
+WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py:110: Failed
+_ test_rehashed_publication_payload_field_refused[producer_permission_ceiling] _
+
+field = 'producer_permission_ceiling'
+
+    @pytest.mark.parametrize("field", ["replay_root_ref", "determinant_set_hash", "producer_permission_ceiling"])
+    def test_rehashed_publication_payload_field_refused(field):
+        x, s, checkpoint = cp()
+        payload = dict(x.events[-1].payload)
+        payload[field] = semantic_hash("alien") if field == "determinant_set_hash" else R("Alien", field).as_dict()
+        checkpoint["checkpoint_payload"]["events"][-1] = replace(x.events[-1], payload=payload).as_dict()
+        checkpoint["checkpoint_hash"] = semantic_hash(checkpoint["checkpoint_payload"])
+>       with pytest.raises(LearnedProductLifecycleConflict):
+E       Failed: DID NOT RAISE <class 'rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict'>
+
+WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py:110: Failed
+__________ test_torn_publish_rolls_back_and_prior_checkpoint_restores __________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10bffc450>
+
+    def test_torn_publish_rolls_back_and_prior_checkpoint_restores(monkeypatch):
+        x = LearnedProductLifecycleExecutor()
+        s = reg(x, S("torn"), publish=False)
+        prior = x.export_checkpoint()
+        append = x._append_events
+    
+        def interrupted(events):
+            append(events)
+            raise RuntimeError("injected after append")
+    
+        monkeypatch.setattr(x, "_append_events", interrupted)
+        with pytest.raises(RuntimeError):
+            x.publish_product(s.release_ref, event_authority_ref=R("EventAuthority", "pub"),
+                              event_rule_ref=R("EventRule", "pub"))
+>       assert x.events[-1].event_kind == "PRODUCT_REGISTERED"
+E       AssertionError: assert 'PRODUCT_PUBLISHED' == 'PRODUCT_REGISTERED'
+E         
+E         - PRODUCT_REGISTERED
+E         + PRODUCT_PUBLISHED
+
+WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py:128: AssertionError
+______ test_concurrent_selection_one_winner_one_conflict_and_cold_restore ______
+
+    def test_concurrent_selection_one_winner_one_conflict_and_cold_restore():
+        x = LearnedProductLifecycleExecutor()
+        a = reg(x, S("race-a"))
+        b = reg(x, S("race-b"))
+        k = key(x, a)
+        barrier = Barrier(2)
+        winners, errors = [], []
+    
+        def run(item):
+            barrier.wait(timeout=5)
+            try:
+                winners.append(select(x, k, item))
+            except Exception as exc:
+                errors.append(exc)
+    
+        threads = [Thread(target=run, args=(item,)) for item in (a, b)]
+        for t in threads: t.start()
+        for t in threads: t.join(timeout=6)
+        assert all(not t.is_alive() for t in threads)
+>       assert len(winners) == 1 and len(errors) == 1
+E       AssertionError: assert (2 == 1)
+E        +  where 2 = len([CurrentSelectionReceipt(selection_key_ref=ExactRef(kind='B5Lifecycle:SELECTION_KEY', object_id='urn:rawlsing:pre553:b...', content_hash='67c0b817db3ac9efa6f09e46092d482caf680473d0df5e915936ed0135e4c396'), receipt_state='CURRENT_SELECTED')])
+
+WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py:152: AssertionError
+_________________ test_saved_helpers_require_owner_transaction _________________
+
+    def test_saved_helpers_require_owner_transaction():
+        x, s, checkpoint = cp()
+        event = x._event(event_kind="PRODUCT_PUBLISHED", subject=S("unregistered"),
+                         event_authority_ref=R("Authority", "unissued"),
+                         event_rule_ref=R("Rule", "unissued"))
+>       with pytest.raises(LearnedProductLifecycleConflict, match="transaction"):
+E       Failed: DID NOT RAISE <class 'rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict'>
+
+WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py:163: Failed
+______________ test_rebuild_receipt_cross_release_rehash_refused _______________
+
+    def test_rebuild_receipt_cross_release_rehash_refused():
+        x = LearnedProductLifecycleExecutor()
+        a = reg(x, S("a"), publish=False)
+        b = reg(x, S("b"), publish=False)
+        receipt = x.record_rebuild_eligibility(a.release_ref, execution_mechanism_ref=None,
+                                               event_authority_ref=R("Authority", "rebuild"),
+                                               event_rule_ref=R("Rule", "rebuild"))
+        checkpoint = x.export_checkpoint()
+        checkpoint["checkpoint_payload"]["rebuild_eligibility"] = [
+            replace(receipt, release_ref=b.release_ref).as_dict()
+        ]
+        checkpoint["checkpoint_hash"] = semantic_hash(checkpoint["checkpoint_payload"])
+>       with pytest.raises(LearnedProductLifecycleConflict):
+E       Failed: DID NOT RAISE <class 'rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict'>
+
+WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py:183: Failed
+_____________ test_m2_foreign_binding_refused_before_later_oracle ______________
+
+    def test_m2_foreign_binding_refused_before_later_oracle():
+        repo, release, subject, producer, _, _ = build_fixture(subject_label="e2-first")
+        foreign, other, osource, oproducer, _, _ = build_fixture(subject_label="e2-foreign")
+        binding, _, _ = bind_representation(foreign, other, osource, oproducer,
+                                            label="e2-foreign", mode="CONTENT_ADDRESSED_MATERIALIZATION")
+>       with pytest.raises(M2ReleaseError) as exc:
+E       Failed: DID NOT RAISE <class 'rawlsing_next.pre553_learned_product_release.M2ReleaseError'>
+
+WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py:192: Failed
+_________________ test_honest_local_unauthenticated_downgrade __________________
+
+    def test_honest_local_unauthenticated_downgrade():
+        x, s, _ = cp()
+>       assert x.native_security_mode == "LOCAL_UNAUTHENTICATED"
+               ^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'LearnedProductLifecycleExecutor' object has no attribute 'native_security_mode'
+
+WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py:199: AttributeError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py::test_nested_payload_frozen_and_export_detached
+FAILED WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py::test_rehashed_publication_payload_field_refused[replay_root_ref]
+FAILED WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py::test_rehashed_publication_payload_field_refused[determinant_set_hash]
+FAILED WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py::test_rehashed_publication_payload_field_refused[producer_permission_ceiling]
+FAILED WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py::test_torn_publish_rolls_back_and_prior_checkpoint_restores
+FAILED WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py::test_concurrent_selection_one_winner_one_conflict_and_cold_restore
+FAILED WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py::test_saved_helpers_require_owner_transaction
+FAILED WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py::test_rebuild_receipt_cross_release_rehash_refused
+FAILED WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py::test_m2_foreign_binding_refused_before_later_oracle
+FAILED WORKER_RETURNS/PYAT_RRIF_E2_S06G_HOSTILE_20261031_R1/reviewer_tests/test_e2_independent_hostile.py::test_honest_local_unauthenticated_downgrade
+10 failed in 0.27s
