@@ -1,0 +1,22 @@
+........................................................................ [ 84%]
+........ss..F                                                            [100%]
+=================================== FAILURES ===================================
+_________________ test_accepted_owners_a04_a04s_a05_untouched __________________
+
+    def test_accepted_owners_a04_a04s_a05_untouched():
+        import subprocess as _sp
+        r = _sp.run(
+            ["git", "diff", "--name-only",
+             "b68de0dd35a9885efcb46bcd8ec9cbe41dabf500", "--", "rawlsing_next/"],
+            capture_output=True, text=True, cwd=str(REPO_ROOT))
+        assert r.returncode == 0
+>       assert r.stdout.strip() == ""
+E       AssertionError: assert 'rawlsing_nex..._candidate.py' == ''
+E
+E         + rawlsing_next/pre553_original_workload_v2_verifier_candidate.py
+E         + rawlsing_next/tests/test_pre553_original_workload_v2_verifier_candidate.py
+
+rawlsing_next/tests/test_pre553_original_workload_v2_verifier_candidate.py:802: AssertionError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_verifier_candidate.py::test_accepted_owners_a04_a04s_a05_untouched
+1 failed, 82 passed, 2 skipped in 26.77s

@@ -1,0 +1,254 @@
+{
+  "absent_paths": {
+    "pre553_batch_durable_checkpoint_candidate": {
+      "exists": false,
+      "path": "rawlsing_next/pre553_batch_durable_checkpoint_candidate.py"
+    },
+    "pre553_governed_batch_checkpoint_integration_candidate": {
+      "exists": false,
+      "path": "rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py"
+    },
+    "pre553_original_workload_binder_candidate": {
+      "exists": false,
+      "path": "rawlsing_next/pre553_original_workload_binder_candidate.py"
+    },
+    "pre553_original_workload_contract_v2_candidate": {
+      "exists": false,
+      "path": "rawlsing_next/pre553_original_workload_contract_v2_candidate.py"
+    },
+    "pre553_original_workload_v2_verifier_candidate": {
+      "exists": false,
+      "path": "rawlsing_next/pre553_original_workload_v2_verifier_candidate.py"
+    },
+    "pre553_production_binding": {
+      "exists": false,
+      "path": "rawlsing_next/pre553_production_binding.py"
+    },
+    "pre553_source_read_admission": {
+      "exists": false,
+      "path": "rawlsing_next/pre553_source_read_admission.py"
+    },
+    "pre553_universal_empirical_extension": {
+      "exists": false,
+      "path": "rawlsing_next/pre553_universal_empirical_extension.py"
+    },
+    "pre553_universal_evidence_binding": {
+      "exists": false,
+      "path": "rawlsing_next/pre553_universal_evidence_binding.py"
+    },
+    "pre553_v2_durable_consumer_integration_candidate": {
+      "exists": false,
+      "path": "rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py"
+    },
+    "s06_trusted_release_replay": {
+      "exists": false,
+      "path": "rawlsing_next/s06_trusted_release_replay.py"
+    }
+  },
+  "all35": {
+    "compile_signature": "(*, bundle: 'NativePreimageBundle', as_of: 'str', host: 'str', purpose: 'str', measure_kind: 'str' = 'RAW') -> 'WorkloadCompilation'",
+    "compile_universal_workload_callers_outside_module": [
+      "rawlsing_next/tests/test_universal_workload.py"
+    ],
+    "interpretation": "original35_roster validates caller-supplied wave dictionaries; reconcile_estate_workloads validates caller-supplied workloads and IssuedEstateFrontier; compile_universal_workload takes one NativePreimageBundle. No current function constructs requests for all 35 waves.",
+    "issued_module_callers": [
+      {
+        "kind": "PRODUCTION_OR_WORKER",
+        "path": "rawlsing_next/pre553_native_workload_binding.py"
+      }
+    ],
+    "original35_roster_callers_outside_module": [],
+    "reconcile_estate_workloads_callers_outside_module": [],
+    "reconcile_signature": "(waves, workloads, frontier: 'IssuedEstateFrontier')",
+    "roster_is_identity_only": true,
+    "roster_size": 35,
+    "short_roster_refusal": "WorkloadAdmissionError:INDEPENDENT_ORIGINAL35_ROSTER_REQUIRED",
+    "universal_module_callers": [
+      {
+        "kind": "TEST",
+        "path": "rawlsing_next/tests/test_universal_workload.py"
+      }
+    ]
+  },
+  "current_modules": {
+    "pre553_batch_runner": {
+      "exists": true,
+      "git_blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "importers": [
+        {
+          "kind": "PRODUCTION_OR_WORKER",
+          "path": "rawlsing_next/pre553_issued_workload.py"
+        },
+        {
+          "kind": "PRODUCTION_OR_WORKER",
+          "path": "rawlsing_next/pre553_native_workload_binding.py"
+        },
+        {
+          "kind": "TEST",
+          "path": "rawlsing_next/tests/test_pre553_batch_runner.py"
+        }
+      ],
+      "lines": 690,
+      "path": "rawlsing_next/pre553_batch_runner.py"
+    },
+    "pre553_issued_workload": {
+      "exists": true,
+      "git_blob": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "importers": [
+        {
+          "kind": "PRODUCTION_OR_WORKER",
+          "path": "rawlsing_next/pre553_native_workload_binding.py"
+        }
+      ],
+      "lines": 342,
+      "path": "rawlsing_next/pre553_issued_workload.py"
+    },
+    "pre553_learned_product_lifecycle": {
+      "exists": true,
+      "git_blob": "a11c9eb73abab9be118ef4f0b6e325e676059f27",
+      "importers": [
+        {
+          "kind": "PRODUCTION_OR_WORKER",
+          "path": "rawlsing_next/pre553_learned_world_composition.py"
+        },
+        {
+          "kind": "TEST",
+          "path": "rawlsing_next/tests/test_pre553_learned_product_lifecycle.py"
+        },
+        {
+          "kind": "TEST",
+          "path": "rawlsing_next/tests/test_pre553_learned_world_composition.py"
+        }
+      ],
+      "lines": 2882,
+      "path": "rawlsing_next/pre553_learned_product_lifecycle.py"
+    },
+    "pre553_learned_world_composition": {
+      "exists": true,
+      "git_blob": "4a8e27a226a9c06606f5ba493d2cc7356d491a7b",
+      "importers": [
+        {
+          "kind": "TEST",
+          "path": "rawlsing_next/tests/test_pre553_learned_world_composition.py"
+        }
+      ],
+      "lines": 1426,
+      "path": "rawlsing_next/pre553_learned_world_composition.py"
+    },
+    "pre553_native_workload_binding": {
+      "exists": true,
+      "git_blob": "dac73e484f8619088f5c6701b2b6991c07540f3b",
+      "importers": [
+        {
+          "kind": "PRODUCTION_OR_WORKER",
+          "path": "rawlsing_next/pre553_universal_workload.py"
+        },
+        {
+          "kind": "TEST",
+          "path": "rawlsing_next/tests/test_universal_workload.py"
+        }
+      ],
+      "lines": 1089,
+      "path": "rawlsing_next/pre553_native_workload_binding.py"
+    },
+    "pre553_source_native_preimage_adapter": {
+      "exists": true,
+      "git_blob": "a6299c1a6e8b26bd055ced1f49e5b757f20ccd8c",
+      "importers": [
+        {
+          "kind": "PRODUCTION_OR_WORKER",
+          "path": "rawlsing_next/pre553_native_workload_binding.py"
+        },
+        {
+          "kind": "PRODUCTION_OR_WORKER",
+          "path": "rawlsing_next/pre553_universal_workload.py"
+        },
+        {
+          "kind": "TEST",
+          "path": "rawlsing_next/tests/test_universal_source_projection.py"
+        },
+        {
+          "kind": "TEST",
+          "path": "rawlsing_next/tests/test_universal_workload.py"
+        }
+      ],
+      "lines": 916,
+      "path": "rawlsing_next/pre553_source_native_preimage_adapter.py"
+    },
+    "pre553_universal_workload": {
+      "exists": true,
+      "git_blob": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e",
+      "importers": [
+        {
+          "kind": "TEST",
+          "path": "rawlsing_next/tests/test_universal_workload.py"
+        }
+      ],
+      "lines": 1221,
+      "path": "rawlsing_next/pre553_universal_workload.py"
+    },
+    "universal_grammar.enumerate": {
+      "exists": true,
+      "git_blob": "fd9203a0b272f98771c24070d01a9e5287c9b099",
+      "importers": [
+        {
+          "kind": "TEST",
+          "path": "rawlsing_next/tests/test_universal_grammar.py"
+        }
+      ],
+      "lines": 550,
+      "path": "rawlsing_next/universal_grammar/enumerate.py"
+    },
+    "universal_grammar.native_map": {
+      "exists": true,
+      "git_blob": "3db04a006802276f131442f299009b1402cb42c9",
+      "importers": [
+        {
+          "kind": "PRODUCTION_OR_WORKER",
+          "path": "rawlsing_next/pre553_native_workload_binding.py"
+        },
+        {
+          "kind": "PRODUCTION_OR_WORKER",
+          "path": "rawlsing_next/pre553_universal_workload.py"
+        },
+        {
+          "kind": "TEST",
+          "path": "rawlsing_next/tests/test_universal_grammar.py"
+        },
+        {
+          "kind": "TEST",
+          "path": "rawlsing_next/tests/test_universal_workload.py"
+        }
+      ],
+      "lines": 2816,
+      "path": "rawlsing_next/universal_grammar/native_map.py"
+    },
+    "universal_grammar.types": {
+      "exists": true,
+      "git_blob": "e7b196efe5b1f86134c27a80bfdd8f472be76e5d",
+      "importers": [
+        {
+          "kind": "PRODUCTION_OR_WORKER",
+          "path": "rawlsing_next/pre553_native_workload_binding.py"
+        },
+        {
+          "kind": "PRODUCTION_OR_WORKER",
+          "path": "rawlsing_next/pre553_universal_workload.py"
+        },
+        {
+          "kind": "TEST",
+          "path": "rawlsing_next/tests/test_universal_grammar.py"
+        },
+        {
+          "kind": "TEST",
+          "path": "rawlsing_next/tests/test_universal_workload.py"
+        }
+      ],
+      "lines": 887,
+      "path": "rawlsing_next/universal_grammar/types.py"
+    }
+  },
+  "head": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "head_subject": "Accept scoped S7FIX structural source identity, preserve hostile PE RED and V2K R61 retirement (#563)",
+  "schema": "PYAT_RRIF_D3_LINEAGE_PROBE@1"
+}
