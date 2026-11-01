@@ -35,6 +35,7 @@ def make_observed(premain_head=None):
                 for item in gate["payload"]
             },
             "reviewer_sha": REVIEWER_SHA[gate_id],
+            "reviewer_receipt_present": True,
         }
     return observed
 
@@ -49,7 +50,7 @@ def make_receipts(gates=("g1_e4f_d02", "g2_e5_s06g")):
                 "reviewed_sha": gate["candidate_sha"],
                 "reviewer_branch": gate["review_branch"],
                 "reviewer_sha": REVIEWER_SHA[gate_id],
-                "receipt_path": f"WORKER_RETURNS/{gate_id}/review.json",
+                "receipt_path": gate["review_receipt_path"],
                 "reviewer_distinct_from_author": True,
             },
             "tests": copy.deepcopy(gate["required_test_receipts"]),
@@ -183,3 +184,38 @@ def test_reviewer_branch_still_at_premain_refuses_even_with_claimed_receipts():
     decision = preflight.evaluate_receiving(ALLOWLIST, make_receipts(), observed)
     assert decision["gates"]["g1_e4f_d02"]["selectable"] is False
     assert any("REVIEWER_BRANCH_STILL_AT_PREMAIN" in b for b in decision["gates"]["g1_e4f_d02"]["blockers"])
+
+def test_live_reviewer_receipt_absence_fails_closed():
+    observed = make_observed()
+    observed["candidates"]["g1_e4f_d02"]["reviewer_receipt_present"] = False
+    decision = preflight.evaluate_receiving(ALLOWLIST, make_receipts(), observed)
+    assert decision["gates"]["g1_e4f_d02"]["selectable"] is False
+    assert any(
+        "REVIEW_RECEIPT_NOT_PRESENT_AT_LIVE_REVIEWER_SHA" in b
+        for b in decision["gates"]["g1_e4f_d02"]["blockers"]
+    )
+
+
+def test_receipt_path_must_match_declared_reviewer_receipt():
+    receipts = make_receipts()
+    receipts["receipts"]["g1_e4f_d02"]["review"]["receipt_path"] = "WORKER_RETURNS/other/review.md"
+    decision = preflight.evaluate_receiving(ALLOWLIST, receipts, make_observed())
+    assert decision["gates"]["g1_e4f_d02"]["selectable"] is False
+    assert any("REVIEW_RECEIPT_PATH_MISMATCH" in b for b in decision["gates"]["g1_e4f_d02"]["blockers"])
+
+
+def test_receipt_reviewer_sha_must_match_live_reviewer_branch():
+    receipts = make_receipts()
+    receipts["receipts"]["g1_e4f_d02"]["review"]["reviewer_sha"] = "0" * 40
+    decision = preflight.evaluate_receiving(ALLOWLIST, receipts, make_observed())
+    assert decision["gates"]["g1_e4f_d02"]["selectable"] is False
+    assert any("REVIEWER_SHA_DOES_NOT_MATCH_LIVE_BRANCH" in b for b in decision["gates"]["g1_e4f_d02"]["blockers"])
+
+
+def test_absent_reviewer_branch_refuses_even_with_claimed_receipts():
+    observed = make_observed()
+    observed["candidates"]["g1_e4f_d02"]["reviewer_sha"] = None
+    observed["candidates"]["g1_e4f_d02"]["reviewer_receipt_present"] = False
+    decision = preflight.evaluate_receiving(ALLOWLIST, make_receipts(), observed)
+    assert decision["gates"]["g1_e4f_d02"]["selectable"] is False
+    assert "REVIEWER_BRANCH_ABSENT" in decision["gates"]["g1_e4f_d02"]["blockers"]

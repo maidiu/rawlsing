@@ -62,6 +62,12 @@ def observe_repo(repo: str | Path, allowlist: Mapping[str, Any],
         branch = gate["candidate_branch"]
         sha = _resolve_ref(repo, branch)
         reviewer_sha = _resolve_ref(repo, gate["review_branch"])
+        receipt_path = gate.get("review_receipt_path")
+        reviewer_receipt_present = bool(
+            reviewer_sha
+            and receipt_path
+            and _git(repo, "cat-file", "-e", f"{reviewer_sha}:{receipt_path}", check=False) is not None
+        )
         payload_blobs: dict[str, dict[str, str | None]] = {}
         for item in gate["payload"]:
             path = item["path"]
@@ -74,6 +80,7 @@ def observe_repo(repo: str | Path, allowlist: Mapping[str, Any],
             "changed": _diff_paths(repo, pin, sha) if sha else [],
             "payload_blobs": payload_blobs,
             "reviewer_sha": reviewer_sha,
+            "reviewer_receipt_present": reviewer_receipt_present,
         }
     return observed
 
@@ -184,6 +191,10 @@ def evaluate_receiving(allowlist: Mapping[str, Any], receipts: Mapping[str, Any]
                 gate_result["blockers"].append("REVIEWER_BRANCH_MISMATCH")
             if not review.get("receipt_path"):
                 gate_result["blockers"].append("REVIEW_RECEIPT_PATH_MISSING")
+            elif gate.get("review_receipt_path") and review.get("receipt_path") != gate["review_receipt_path"]:
+                gate_result["blockers"].append("REVIEW_RECEIPT_PATH_MISMATCH")
+            if observed_gate.get("reviewer_receipt_present") is not True:
+                gate_result["blockers"].append("REVIEW_RECEIPT_NOT_PRESENT_AT_LIVE_REVIEWER_SHA")
             if review.get("reviewer_distinct_from_author") is not True:
                 gate_result["blockers"].append("REVIEWER_NOT_DISTINCT_FROM_AUTHOR")
             if review.get("reviewer_sha") != reviewer_sha:

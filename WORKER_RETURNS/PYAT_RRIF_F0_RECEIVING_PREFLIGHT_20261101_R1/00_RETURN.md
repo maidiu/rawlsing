@@ -1,119 +1,139 @@
 # PYAT RRIF-F0 — INDEPENDENT PRE-MAIN RECEIVING PREFLIGHT — RETURN R1
 
-Status: `PREFLIGHT_COMPLETE__BOTH_CODE_GATES_BLOCKED_PENDING_E4FR_E6_AND_M2_OWNER__LEDGER_DOCUMENTARY_PASS__TERMINAL_PENDING_REVIEW_CAS`
+Status: `PREFLIGHT_COMPLETE__E4F_INDEPENDENT_REVIEW_RETURNED_POSITIVE__E5_E6_HOLD__NO_MERGE__LEDGER_PENDING_REVIEW_CAS`
 
-Binary receiving recommendation: `DO_NOT_SELECT_OR_MERGE_ANY_CANDIDATE_YET`
+Binary receiving recommendation: `E4F_RECEIVABLE_ONLY_WITH_EXACT_INTEGRATOR_RECEIPT__E5_NOT_SELECTABLE__NO_MERGE`
 
-One-line result: exact E4F and E5 blob identities are pinned and their path sets are disjoint; PRE-MAIN remains `8e44ca9c`; E1 D02 is still explicitly RED on real pandas `Timestamp`; E5 reproduces 179 pass/14 fail and cannot be selected as green; the live preflight refuses both gates because E4FR has no returned review, E6 has no returned review, and there is no M2 owner compatibility decision. The 34-lineage ledger's existing documentary counts and R157/C5 source/negative/restart pointers pass at their original RRIF-C scope. No PRE-MAIN, protected, source-native, or scientific authority was exercised.
+One-line result: the exact E4F and E5 blobs and path sets are pinned and disjoint; PRE-MAIN remains `8e44ca9c`; E1 `ffd03934` still stringifies real SAV/DTA `DATETIME` cells and therefore remains explicitly RED; E5 reproduces `179 passed / 14 failed` and is not green; the independent E4FR return `7cd2206f` approves the exact E4F candidate `f2c0af32`, while the independent E6 return `b0f7675b` holds E5 for a missing owner-authorized versioned M2 fixture amendment. The live preflight refuses both gates without receipts and selects only the six E4F payload paths when the prepared E4FR receipt is supplied; E5 remains blocked. The 34-lineage ledger passes its documentary checks at the commissioned cut and remains `PENDING_REVIEW_CAS`. No merge, protected write, source-native execution, or scientific claim occurred.
 
 ## 1. Identity and execution envelope
 
-- Role: independent I2+ receiving-compatibility, exact-source and CAS-preflight engineer. Not Pyat HQ, production integrator, E4F/E5 author, E6 reviewer, or own reviewer.
-- Worktree: `/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-rrif-f0-receiving-cas-preflight-20261101-r1`
-- Branch: `agent/pyat-rrif-f0-receiving-cas-preflight-20261101-r1`
-- STARTUP_SHA / PRE-MAIN: `8e44ca9c751049d65e6def47600b5c073ee04b29`
-- Live PRE-MAIN recheck: `refs/remotes/origin/integration/pre-main-reconciliation-r1` = `8e44ca9c751049d65e6def47600b5c073ee04b29` at preflight.
-- E1 C3 candidate: `ffd03934d0a86c98ed095d973e45587bd5751013`
-- E4 hostile return: `5dc00a1eb0d2881a9d74661b7a94d436cc7b7c60`
-- E4F corrected candidate: `f2c0af3273d612bff0a7bd2407532b52caf4348b`
-- E4FR reviewer branch: `review/pyat-rrif-e4fr-d02-corrected-consumer-hostile-20261101-r1` at `8e44ca9c...` (no returned review yet)
-- E5 candidate: `96e6d49ac18274332751c5fbb87c6ed370e8fd9c`
-- E6 reviewer branch: `review/pyat-rrif-e6-b5m2-postpatch-hostile-20261101-r1` at `8e44ca9c...` (no returned review yet)
-- HQ ledger commission cut: `d80901e9de78803c031fa9d25146f7d8b6aeba2c`; live branch head observed `75eb695ad27652020f9ffc0363f846a7c85ca758`, one added E4F intake document above the commissioned cut.
-- Host: `mainMac.lan`, macOS 13.2.1 (22D68), Darwin 22.3.0, x86_64.
-- Harness: OpenCode 1.18.34, agent `build`.
-- Session DB read-only: `ses_e680bf28effeGdJ4hyA8lvBrk7`, `{"id":"deepseek-v4.1-flash","providerID":"opencode-go","variant":"max"}`, version `1.18.34`. MAX was observed active; no model/provider/account/editor/effort switch occurred.
-- Python 3.11.3, pytest 9.0.2, pyreadstat 1.3.2, pandas 2.3.1, numpy 2.3.2.
-- Execution surface: isolated sparse Git worktrees, source-free pytest and read-only Git inspection. No raw survey source, native source, actor, N11/N12, Sorok, PROGRAMMA, or protected write.
+- Role: independent I2+ receiving-compatibility, exact-source and CAS-preflight engineer. Not Pyat HQ, production integrator, E4F/E5/E6 author, E4FR/E6 reviewer, or own reviewer.
+- PRE-MAIN / startup: `8e44ca9c751049d65e6def47600b5c073ee04b29`.
+- Live PRE-MAIN recheck: `refs/remotes/origin/integration/pre-main-reconciliation-r1` = `8e44ca9c751049d65e6def47600b5c073ee04b29` at `2026-11-01T18:03Z`.
+- Host: `oldMac.lan`, macOS 13.7.8 (22H730), Darwin 22.6.0, x86_64.
+- Harness: OpenCode 1.18.34, agent `build`, session `ses_e67cec34cffe8Tq2tQ7k2Xpe3V`.
+- Model read-back from the local OpenCode database: `{"id":"deepseek-v4.1-flash","providerID":"opencode-go","variant":"max"}`. The proposed DeepSeek V4.1-Flash / MAX pair was actually active; no model, provider, account, editor, or effort switch occurred.
+- Test runtime: CPython 3.11.3; pytest 9.1.1; pandas 3.0.6; numpy 2.4.6; pyreadstat 1.3.6; pyarrow 25.0.1; duckdb 2.0.0. The three non-system packages were installed only in the isolated `/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/f0-venv` test virtualenv.
+- Execution surface: detached, sparse, throwaway Git worktrees under `/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/f0-wt-{premain,e1,e4f,e5}`. No active worker worktree was entered or modified. No raw survey source, native source, actor, N11/N12, Sorok, or PROGRAMMA execution occurred.
+- Receipt provenance: the previous commit on this branch referenced temporary worktrees, a canonical repository path, and log files that are absent on this host. Every receipt in this return was re-run here from the exact SHAs; earlier hashes are not relied on. Conclusions that remain true are retained, and live reviewer returns are updated.
 
-## 2. Exact candidate identities and path collision result
+## 2. Exact candidates, merge bases, and collision
 
-| Candidate | Exact SHA | Production payload | Tests payload | Evidence-only |
-|---|---|---|---|---|
-| E4F | `f2c0af3273d612bff0a7bd2407532b52caf4348b` | 2 files | 4 files | E1 + E4F return docs |
-| E5 | `96e6d49ac18274332751c5fbb87c6ed370e8fd9c` | 2 files | 4 files | E5 return docs |
-| E4 hostile | `5dc00a1eb0d2881a9d74661b7a94d436cc7b7c60` | 0 | 0 | 4 review docs |
-| E4FR | `8e44ca9c751049d65e6def47600b5c073ee04b29` | none returned | none returned | none returned |
-| E6 | `8e44ca9c751049d65e6def47600b5c073ee04b29` | none returned | none returned | none returned |
+| Item | Exact identity | Merge base with PRE-MAIN |
+|---|---|---|
+| PRE-MAIN | `8e44ca9c751049d65e6def47600b5c073ee04b29` | — |
+| E1 C3 candidate | `ffd03934d0a86c98ed095d973e45587bd5751013` | `8e44ca9c7` |
+| E4 hostile return | `5dc00a1eb0d2881a9d74661b7a94d436cc7b7c60` | `8e44ca9c7` |
+| E4F corrected candidate | `f2c0af3273d612bff0a7bd2407532b52caf4348b` (parent `ffd03934d`) | `8e44ca9c7` |
+| E5 B5/M2 candidate | `96e6d49ac18274332751c5fbb87c6ed370e8fd9c` (parent `f3defd3cb`) | `8e44ca9c7` |
+| E4FR reviewer return | `7cd2206fd976606d3816589e2fce03c03c827f39` | `8e44ca9c7` |
+| E6 reviewer return | `b0f7675bf4f434bc8964c9b3ebc8392bb33d56fb` | `8e44ca9c7` |
+| HQ ledger commissioned cut | `d80901e9de78803c031fa9d25146f7d8b6aeba2c` | — |
+| HQ ledger live head | `75eb695ad27652020f9ffc0363f846a7c85ca758` | — |
 
-- E1 vs PRE-MAIN: exactly 2 production paths and 3 test paths, plus E1 return docs.
-- E4F vs E1: only the two corrected production blobs, one new E4F 314-line test, and E4F return docs.
-- E5 vs PRE-MAIN: exactly 2 production paths and 4 test paths, plus E5 return docs.
-- E4F payload versus E5 payload: **zero overlapping paths**.
-- `git merge-tree --write-tree` between E4F and E5 from PRE-MAIN exited `0` with no conflict message (`d3faba89...` tree).
-- Exact before/after blobs and per-path ownership are in `EXACT_PATCH_PATH_AND_BLOB_ALLOWLIST.json`.
+- E4F payload: two production files plus four tests; six paths.
+- E5 payload: two production files plus four tests; six paths.
+- Exact payload intersection: **empty**.
+- `git merge-tree --write-tree --messages f2c0af32 96e6d49ac` exited `0` and produced tree `d3faba8905802abb505e2cb1b1a7d3cf43b36bdc`; no conflict output.
+- The before/after blobs in `EXACT_PATCH_PATH_AND_BLOB_ALLOWLIST.json` were recomputed with `git rev-parse <rev>:<path>` and match the candidate trees. Byte identity is not authority, ABI compatibility, behavioural equivalence, source rights, or scientific meaning.
 
-Byte identity is not authority. This preflight does not claim ABI compatibility, behavioural equivalence, source rights, scientific meaning, or external issuer authority.
+## 3. Current independent gate state
 
-## 3. Test and baseline results
+### E4F — independent review returned positive
+
+- E4FR returned at `2026-11-01T13:00:10-05:00` as `7cd2206f`, reviewing exact E4F `f2c0af32`.
+- Reviewer status: `APPROVE_E4F_PHYSICAL_D01_D02_SOURCEFREE_FANIN__ENGINEERING_PASS__SCIENTIFIC_AND_AUTHORITY_HELD__NESTED_ITEM_BOUNDARY_NONBLOCKING`.
+- The review records the exact production blobs `4b89c459` / `f5f64d9b` and test blob `c07c2019`, and adjudicates the two-level item chain as a disclosed non-blocking boundary outside the bounded one-level D02 promise.
+- The F0 preflight can select the six E4F paths only when the exact E4FR receipt is supplied and the receipt file exists at the live reviewer SHA. This return does not merge or adopt them.
+- E4F is still an engineering candidate: scientific and authority claims remain held by the reviewer and by this preflight.
+
+### E5 — independent review returned HOLD
+
+- E6 returned at `2026-11-01T12:55:37-05:00` as `b0f7675b`.
+- Reviewer status: `HOLD_E5_LOCAL_SOURCEFREE_FANIN_PENDING_OWNER_AUTHORIZED_VERSIONED_M2_FIXTURE_AMENDMENT`.
+- E6 found genuine local sourcefree merit but held fan-in because the two accepted M2 tests remain byte-unchanged and RED and no accepted-M2 owner permission exists for a versioned fixture amendment.
+- The required owner decision is absent. E6 states that after an owner amendment the resulting SHA must be re-run and re-reviewed by a distinct reviewer.
+- E5 is therefore not selectable on this return.
+
+### Terminal ledger
+
+- The 34-lineage HQ ledger at the commissioned cut passes its existing documentary checks; the live head `75eb695` adds only `06_E4F_RETURN_AND_FINAL_REVIEW_GATE.md` above `d80901e9`.
+- The E4FR and E6 returns are outside that HQ cut and are not ledger acceptance.
+- Terminal decision remains `PENDING_REVIEW_CAS`.
+
+## 4. Test receipts
+
+All commands used `PYTHONDONTWRITEBYTECODE=1`, `-p no:cacheprovider`, and a JUnit receipt. Exact commands are in `RECEIVING_TEST_AND_CAS_PREFLIGHT.md`.
 
 | Check | Result | Exit |
 |---|---|---:|
-| PRE-MAIN accepted B5 + accepted M2 | 67 passed (39 B5 + 28 M2; 0 failed, 0 skipped) | 0 |
-| PRE-MAIN E2 independent hostile | 10 failed, 0 passed | 1 |
-| E1 D02 real SAV/DTA `Timestamp` probe | SAV/DTA cells `str`; aware subclass and wrapper `str`; explicit RED | 0 probe |
-| E4F E1 33 + E4F 12 | 45 passed | 0 |
-| E4F selected regressions | 194 passed, 1 skipped | 0 |
-| E5 unfiltered | 179 passed, 14 failed, 0 skipped/errors | 1 |
-| E5 filtered selection | 179 passed, 14 deselected (selection, not green) | 0 |
-| Receiving preflight unit tests | 12 passed | 0 |
-| Live preflight with no reviewer/owner receipts | both gates BLOCKED, nothing selectable | 2 |
-| Ledger documentary precheck | pass, with one stale-C3 warning | 0 |
+| PRE-MAIN accepted B5 + M2 | `67 passed` (39 B5 + 28 M2) | 0 |
+| PRE-MAIN E2 hostile, serial | `10 failed` | 1 |
+| E1 own D01/D02/integration suite | `33 passed` | 0 |
+| E1 real SAV/DTA probe | `3 failed`: both formats `str`; naive `Timestamp` subclass unsupported | 1 |
+| E4F E1 33 + E4F 12 | `45 passed` | 0 |
+| E4F selected regressions | `194 passed, 1 skipped` | 0 |
+| E5 unfiltered | `179 passed, 14 failed` | 1 |
+| E5 filtered selection | `179 passed, 14 deselected` (selection only) | 0 |
+| G01 hostile PRE-MAIN | `2 failed, 6 deselected` | 1 |
+| G01 hostile E4F | `2 failed, 6 deselected`, same node ids and assertion values | 1 |
+| Preflight unit tests | `16 passed` | 0 |
+| Live preflight, no receipts | both gates BLOCKED, `selectable_payload: []` | 2 |
+| Live preflight, prepared E4FR receipt | E4F SELECTABLE (6 paths), E5 BLOCKED, `receiving_ready: false` | 2 |
+| Ledger documentary precheck | pass; one C3 stale-row warning | 0 |
 
-E5 breakdown matches its return:
+E5 breakdown: accepted B5 39/39; accepted M2 26/28 (the two named foreign-release fixture conflicts); S06G repair 42/42; E2 independent 10/10; adjacent EE14 asof + world 45/45; frozen S06FR overlay 17 pass / 12 historical `OBSERVED` failures. The filtered selection is not a green full suite.
 
-- Accepted B5: 39/39 pass.
-- Accepted M2: 26/28 pass; `test_17_binding_cannot_resolve_different_release` and `test_18_endpoint_failover_only_among_same_release` fail early with `RELEASE_UNAVAILABLE` at unregistered foreign release/binding setup.
-- S06G repair court: 42/42 pass.
-- E2 independent hostile court: 10/10 pass on E5, 10/10 failed on PRE-MAIN.
-- Adjacent EE14 asof + world composition: 45/45 pass.
-- Frozen S06FR overlay: 17 pass / 12 historical defect-presence failures.
+The PRE-MAIN E2 baseline is timing-sensitive: serial clean runs produced `10 failed`; one run concurrent with a separate pytest process produced `9 failed, 1 passed`, with `test_concurrent_selection_one_winner_one_conflict_and_cold_restore` passing. E6 independently recorded the same nondeterministic race caveat. The E5 candidate passes the E2 court 10/10 in the observed runs.
 
-The 14 E5 failures are not relabeled green. The filtered 179/14-deselected run is explicitly a selection, not a green full suite.
+The E4F selected-suite skip is the known pyreadstat writer limitation: `test_real_writer_dta_extended_missing_fixture_or_typed_dependency_limitation` (`missing_user_values` not exposed). It is not treated as a pass.
 
-## 4. Live preflight refusal
+The E1 RED is explicit: at `ffd03934`, the real SAV and DTA `DATETIME` cells are `str '2008-04-05 06:07:08'`, and `opaque_decoder_value` rejects the naive `datetime` subclass. E1's own 33 tests are unit-level and do not exercise the real subclass route; selecting only that green suite would misstate D02.
 
-Command and exact result are in `RECEIVING_TEST_AND_CAS_PREFLIGHT.md`.
+## 5. Preflight tool and refusal behaviour
 
-Current blockers:
+`receiving_preflight.py` observes Git only and evaluates a pure fail-closed decision. `test_receiving_preflight.py` now covers 16 cases, including:
 
-- E4F gate: E4FR reviewer branch has no returned commit; no independent positive review receipt; no test receipts; not selectable.
-- E5 gate: E6 reviewer branch is still at PRE-MAIN; no independent positive review receipt; no M2 owner compatibility decision; no test receipts; not selectable.
-- `selectable_payload` is empty.
-- Exit `2` (fail closed).
+- absent reviewer receipt, reviewer branch absent, reviewer branch still at PRE-MAIN, reviewer equal to candidate;
+- reviewer SHA not matching the live branch, receipt path not declared, receipt path absent at the live reviewer SHA;
+- changed PRE-MAIN head, wrong before/after blob, changed path outside the allowlist, payload collision;
+- missing M2 owner decision, wrong conflict-test set, filtered selection claimed green;
+- selection requires both gates; one gate can be selected only with its own exact receipts.
 
-The preflight code also fails closed on changed PRE-MAIN head, wrong candidate SHA, wrong before/after blob, path outside allowlist, payload collision, reviewer branch at PRE-MAIN or equal to candidate, reviewer not distinct, wrong reviewed SHA, missing/failed test receipts, missing M2 owner decision, wrong conflict-test set, or claiming the filtered selection as green.
+Live no-receipt result: `receiving_ready: false`, `selectable_payload: []`, exit `2`.
+Live prepared-E4FR-receipt result: E4F `SELECTABLE`, E5 `BLOCKED` by `REVIEW_VERDICT 'HOLD' != 'ACCEPT'`, the RED unfiltered status, and the missing owner decision; `receiving_ready: false`, exit `2`.
 
-## 5. Receiving order
+The prepared receipt is in `receipts_template` in the allowlist. It is a starting receipt transcribed from the returned reviews and the F0 test runs, not an integrator attestation. The integrator must re-verify the exact SHAs, re-run the required tests, and attest the receipt before use.
 
-1. Recheck live `integration/pre-main-reconciliation-r1` equals `8e44ca9c...` immediately before any owner CAS.
-2. E4F gate only after E4FR independent positive review of exact `f2c0af327...`, including explicit adjudication of nested two-or-more-level `.item()` chains and the fact that the first R5 seam is loaded from a pinned historical Git object.
-3. Apply only the six E4F payload paths. No wholesale branch merge, no E1-alone, no E4 rejection-as-acceptance.
-4. Run the E4F required tests and the explicit E1 D02 RED/GREEN negative witness.
-5. E5 gate only after independent E6 positive review of exact `96e6d49ac...` and a versioned M2 owner decision accepting or rejecting the two named fixture amendments. No reviewer may invent the owner decision.
-6. Apply only the six E5 payload paths. No wholesale branch merge, no old S06F owner import, no `release_exact` weakening, no accepted-test edit in place.
-7. Run E5 unfiltered and record 179/14 honestly; run the filtered selection only as a selection. Do not call it green.
-8. Record the final terminal ledger decision as `PENDING_REVIEW_CAS` until HQ receives the exact reviews and CAS evidence.
+## 6. Receiving order
 
-## 6. Grades
+1. Recheck live PRE-MAIN equals `8e44ca9c...` immediately before any owner CAS.
+2. Recheck E4F equals `f2c0af32...` and E4FR equals `7cd2206f...`.
+3. Run the E4F required tests and the E1 RED witness.
+4. Supply the exact E4FR receipt; apply only the six E4F payload paths. No branch merge, no E1-alone, no E4 rejection-as-acceptance.
+5. Do not receive E5 on the current E6 HOLD. If the accepted-M2 owner later issues a versioned fixture amendment, the resulting SHA needs a fresh full court and a distinct reviewer; update the allowlist, the owner decision, and the test receipts before selection.
+6. Apply E5 only as six exact paths after that re-review and owner decision; do not weaken `release_exact`, edit accepted tests in place, or treat the filtered selection as green.
+7. Keep the terminal ledger at `PENDING_REVIEW_CAS` until the exact CAS evidence exists.
 
-- ENGINEERING: `PASS_CANDIDATE__F0_RECEIVING_PREFLIGHT_COMPLETE__BOTH_GATES_CORRECTLY_BLOCKED`. Blob/path/test/collision/CAS-refusal work is complete and reproducible; it is not an independent review of E4F or E5.
+## 7. Grades
+
+- ENGINEERING: `PASS__F0_RECEIVING_PREFLIGHT_COMPLETE__E4F_REVIEW_RETURNED__E5_ON_INDEPENDENT_HOLD`. Blob/path/collision/test/CAS-refusal work is complete and locally reproducible.
 - SCIENTIFIC: `NO_SCIENTIFIC_OR_SOURCE_MEANING_CLAIM__HELD`. No raw source, original U/E_pre, native licence, actor, N11/N12, Sorok, or PROGRAMMA execution or claim.
 - AUTHORITY: `HELD`. No protected PRE-MAIN mutation, merge, force-push, branch deletion, owner CAS, adoption, issuer/use, or self-review.
 
-## 7. Holds and NOT_RUN
+## 8. Holds and NOT_RUN
 
-- HOLD: E4FR independent review of exact E4F SHA.
-- HOLD: E6 independent review of exact E5 SHA and M2 owner fixture-amendment decision.
-- HOLD: protected PRE-MAIN receiving CAS and merge.
+- HOLD: E5 pending an owner-authorized versioned M2 fixture amendment and a distinct re-review of the resulting SHA.
+- HOLD: protected PRE-MAIN receiving CAS and any merge.
 - HOLD: terminal RRIF decision, which remains `PENDING_REVIEW_CAS`.
 - HOLD: source-native science, original U/E_pre, G01 authority, R9 broker, old S06F owner import, external issuer, N11/N12, Sorok actor, PROGRAMMA.
-- NOT_RUN: full repository suite; only the exact baseline, E4F selected, E5 unfiltered/filtered, preflight, and ledger commands in the return.
-- NOT_RUN: new historical branch census. The ledger check reads existing RRIF-C and HQ artifacts at their original scope.
-- NOT_RUN: E4F/E5 hostile re-review. That belongs to E4FR/E6, not this engineer.
+- NOT_RUN: E4FR/E6 hostile re-review; their returned verdicts are read, not duplicated.
+- NOT_RUN: full repository suite; only the exact baseline, E1/E4F/E5 selected courts, G01, preflight, and ledger commands in the receipt document.
+- NOT_RUN: new historical census; the ledger check reads existing artifacts at their original scope.
 
-## 8. Return discipline
+## 9. Return discipline
 
-Only the four return documents and three minimal preflight code/test files are added on this branch. No production file, test file, PRE-MAIN/main, E4F/E5/E6 worktree, ledger branch, protected source, or other worker state was modified. Exact returned HEAD is read back from origin with `git ls-remote` after push and reported in the worker terminal response; it is not embedded here because embedding it would change the commit it identifies.
+Only the four return documents and the two sourcefree preflight code/test files are modified on branch `agent/pyat-rrif-f0-receiving-cas-preflight-20261101-r1`; `ledger_precheck.py` is retained unchanged. No production file, candidate test file, PRE-MAIN/main ref, E4F/E5/E6 worktree, ledger branch, protected source, or other worker state was modified. The exact returned 40-hex HEAD is read back from origin with `git ls-remote` after push and reported in the worker terminal response; it is not embedded here because embedding it would change the commit it identifies.
 
-Terminal: `RRIF_F0__BLOBS_AND_PATHS_PINNED__ZERO_COLLISION__E1_D02_RED_RETAINED__E5_179_14_HONEST__BOTH_GATES_BLOCKED_PENDING_E4FR_E6_M2_OWNER__TERMINAL_LEDGER_PENDING_REVIEW_CAS`
+Terminal: `RRIF_F0__E4F_APPROVED_BY_E4FR_7CD2206F__E5_HELD_BY_E6_B0F7675B__ZERO_PATH_COLLISION__E1_D02_RED_RETAINED__NO_MERGE__LEDGER_PENDING_REVIEW_CAS`

@@ -1,6 +1,6 @@
 {
   "schema": "PYAT_RRIF_F0_RECEIVING_ALLOWLIST@1.0.0",
-  "generated_utc": "2026-11-01",
+  "generated_utc": "2026-11-01T18:08:00Z",
   "repository": "maidiu/rawlsing",
   "premain_ref": "refs/remotes/origin/integration/pre-main-reconciliation-r1",
   "premain_pin": "8e44ca9c751049d65e6def47600b5c073ee04b29",
@@ -12,7 +12,8 @@
   "collision_rule": {
     "rule": "gate payload path sets MUST be disjoint; evidence prefixes do not count as receiving payload",
     "observed_e4f_vs_e5_payload_intersection": [],
-    "observed_e4f_vs_e5_merge_tree_exit": 0
+    "observed_e4f_vs_e5_merge_tree_exit": 0,
+    "observed_e4f_vs_e5_merge_tree": "d3faba8905802abb505e2cb1b1a7d3cf43b36bdc"
   },
   "gates": {
     "g1_e4f_d02": {
@@ -20,10 +21,10 @@
       "candidate_branch": "agent/pyat-rrif-e4f-d02-real-datetime-fix-20261101-r1",
       "candidate_sha": "f2c0af3273d612bff0a7bd2407532b52caf4348b",
       "candidate_parent": "ffd03934d0a86c98ed095d973e45587bd5751013",
-      "status_at_preflight": "BLOCKED_PENDING_INDEPENDENT_E4FR_REVIEW",
+      "status_at_preflight": "INDEPENDENT_E4FR_APPROVE_RETURNED__READY_FOR_INTEGRATOR_RECEIPT__NOT_MERGED",
       "review_branch": "review/pyat-rrif-e4fr-d02-corrected-consumer-hostile-20261101-r1",
-      "review_branch_sha_at_preflight": "8e44ca9c751049d65e6def47600b5c073ee04b29",
-      "review_sha_pin": null,
+      "review_branch_sha_at_preflight": "7cd2206fd976606d3816589e2fce03c03c827f39",
+      "review_sha_pin": "7cd2206fd976606d3816589e2fce03c03c827f39",
       "review_verdict_required": "ACCEPT",
       "review_must_be_distinct_from_author": true,
       "review_must_adjudicate_exact_candidate_sha": true,
@@ -44,6 +45,12 @@
           "sha": "f2c0af3273d612bff0a7bd2407532b52caf4348b",
           "verdict": "ENGINEERING_PASS_CANDIDATE_PENDING_INDEPENDENT_REVIEW",
           "selection_allowed": false
+        },
+        "e4fr_final_review": {
+          "sha": "7cd2206fd976606d3816589e2fce03c03c827f39",
+          "verdict": "APPROVE_E4F_EXACT_F2C0AF32__ENGINEERING_PASS__SCIENCE_AND_AUTHORITY_HELD",
+          "reviewed_sha": "f2c0af3273d612bff0a7bd2407532b52caf4348b",
+          "selection_allowed": "ONLY_WITH_INTEGRATOR_RECEIPT"
         }
       },
       "payload": [
@@ -113,17 +120,22 @@
       "notes": [
         "Do not receive E1 ffd03934 alone; E4 REJECT is preserved and E4F is the corrected successor candidate.",
         "E4F test-only historical seam loading is a review point; no production seam file is added."
-      ]
+      ],
+      "candidate_merge_base": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+      "review_receipt_path": "WORKER_RETURNS/PYAT_RRIF_E4FR_D02_FINAL_20261101_R1/00_RETURN.md",
+      "review_returned_at_utc": "2026-11-01T18:00:10Z",
+      "review_verdict_observed": "APPROVE_E4F_PHYSICAL_D01_D02_SOURCEFREE_FANIN__ENGINEERING_PASS__SCIENTIFIC_AND_AUTHORITY_HELD__NESTED_ITEM_BOUNDARY_NONBLOCKING",
+      "review_verdict_normalization": "E4FR status APPROVE_* is recorded as the machine verdict ACCEPT; the integrator receipt must carry both the normalized verdict and reviewer_status_text"
     },
     "g2_e5_s06g": {
       "title": "E5 S06G B5/M2 local unauthenticated integrity hardening",
       "candidate_branch": "agent/pyat-rrif-e5-s06g-b5m2-compatible-hardening-20261101-r1",
       "candidate_sha": "96e6d49ac18274332751c5fbb87c6ed370e8fd9c",
-      "candidate_parent": "8e44ca9c751049d65e6def47600b5c073ee04b29",
-      "status_at_preflight": "BLOCKED_PENDING_E6_REVIEW_AND_M2_OWNER_COMPATIBILITY_DECISION",
+      "candidate_parent": "f3defd3cb84e2bab4be3df3300fd1289c6ebadfb",
+      "status_at_preflight": "BLOCKED__E6_INDEPENDENT_HOLD__NO_M2_OWNER_FIXTURE_AMENDMENT",
       "review_branch": "review/pyat-rrif-e6-b5m2-postpatch-hostile-20261101-r1",
-      "review_branch_sha_at_preflight": "8e44ca9c751049d65e6def47600b5c073ee04b29",
-      "review_sha_pin": null,
+      "review_branch_sha_at_preflight": "b0f7675bf4f434bc8964c9b3ebc8392bb33d56fb",
+      "review_sha_pin": "b0f7675bf4f434bc8964c9b3ebc8392bb33d56fb",
       "review_verdict_required": "ACCEPT",
       "review_must_be_distinct_from_author": true,
       "review_must_adjudicate_exact_candidate_sha": true,
@@ -143,7 +155,9 @@
         ],
         "must_bind_candidate_sha": true,
         "must_name_owner_and_decision_ref": true,
-        "must_not_weaken_release_exact": true
+        "must_not_weaken_release_exact": true,
+        "owner_decision_status_at_preflight": "ABSENT",
+        "e6_required_next_action": "accepted-M2 owner must issue an explicit versioned fixture amendment for both named conflicts; do not weaken release_exact or edit accepted tests in place"
       },
       "payload": [
         {
@@ -218,15 +232,19 @@
         "Do not select E5 on the filtered 179/14-deselected run as a green full suite.",
         "Do not weaken release_exact or edit accepted tests in place.",
         "LOCAL_UNAUTHENTICATED only; external issuer, durable custody, multiprocess and actor authority remain held."
-      ]
+      ],
+      "candidate_source_content_commit": "f3defd3cb84e2bab4be3df3300fd1289c6ebadfb",
+      "candidate_merge_base": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+      "review_receipt_path": "WORKER_RETURNS/PYAT_RRIF_E6_B5M2_POSTPATCH_20261101_R1/00_RETURN.md",
+      "review_returned_at_utc": "2026-11-01T17:55:37Z",
+      "review_verdict_observed": "HOLD_E5_LOCAL_SOURCEFREE_FANIN_PENDING_OWNER_AUTHORIZED_VERSIONED_M2_FIXTURE_AMENDMENT"
     }
   },
   "disabled_approvals": [
     "E1 ffd03934 alone (E4 REJECT preserved; D02 real Timestamp RED)",
     "E4 5dc00a1e as acceptance (it is a rejection receipt)",
-    "E4F before independent E4FR positive exact-SHA review",
-    "E5 before independent E6 positive exact-SHA review",
-    "E5 without a versioned M2 owner fixture-amendment decision on both named conflicts",
+    "E4F merge/adoption without the integrator receipt binding exact E4FR 7cd2206f to exact candidate f2c0af32",
+    "E5 on the E6 HOLD or without an owner-authorized versioned M2 fixture amendment for both named conflicts",
     "E5 filtered 179-pass/14-deselected selection as a green full suite",
     "wholesale branch cherry-pick or merge of E4F or E5",
     "any old S06F owner branch, R9 broker, or G01 authority import",
@@ -240,40 +258,128 @@
     "receipts": {
       "g1_e4f_d02": {
         "review": {
-          "verdict": "PENDING",
-          "reviewed_sha": null,
-          "reviewer_branch": null,
-          "reviewer_sha": null,
-          "receipt_path": null,
-          "reviewer_distinct_from_author": null
+          "verdict": "ACCEPT",
+          "reviewed_sha": "f2c0af3273d612bff0a7bd2407532b52caf4348b",
+          "reviewer_branch": "review/pyat-rrif-e4fr-d02-corrected-consumer-hostile-20261101-r1",
+          "reviewer_sha": "7cd2206fd976606d3816589e2fce03c03c827f39",
+          "receipt_path": "WORKER_RETURNS/PYAT_RRIF_E4FR_D02_FINAL_20261101_R1/00_RETURN.md",
+          "reviewer_distinct_from_author": true,
+          "reviewer_status_text": "APPROVE_E4F_PHYSICAL_D01_D02_SOURCEFREE_FANIN__ENGINEERING_PASS__SCIENTIFIC_AND_AUTHORITY_HELD__NESTED_ITEM_BOUNDARY_NONBLOCKING",
+          "attestation": "OBSERVED_REVIEWER_RETURN__INTEGRATOR_MUST_REVERIFY"
         },
-        "tests": {}
+        "tests": {
+          "e1_c3_33": {
+            "passed": 33,
+            "failed": 0,
+            "skipped": 0,
+            "status": "PASS"
+          },
+          "e4f_d02_12": {
+            "passed": 12,
+            "failed": 0,
+            "skipped": 0,
+            "status": "PASS"
+          },
+          "selected_regressions": {
+            "passed": 194,
+            "failed": 0,
+            "skipped": 1,
+            "status": "PASS"
+          },
+          "real_sav_dta_first_seam": {
+            "status": "PASS"
+          },
+          "g01_hostile": {
+            "expected_failures": 2,
+            "baseline_identical": true,
+            "status": "KNOWN_PREEXISTING_RED"
+          }
+        }
       },
       "g2_e5_s06g": {
         "review": {
-          "verdict": "PENDING",
-          "reviewed_sha": null,
-          "reviewer_branch": null,
-          "reviewer_sha": null,
-          "receipt_path": null,
-          "reviewer_distinct_from_author": null
+          "verdict": "HOLD",
+          "reviewed_sha": "96e6d49ac18274332751c5fbb87c6ed370e8fd9c",
+          "reviewer_branch": "review/pyat-rrif-e6-b5m2-postpatch-hostile-20261101-r1",
+          "reviewer_sha": "b0f7675bf4f434bc8964c9b3ebc8392bb33d56fb",
+          "receipt_path": "WORKER_RETURNS/PYAT_RRIF_E6_B5M2_POSTPATCH_20261101_R1/00_RETURN.md",
+          "reviewer_distinct_from_author": true,
+          "reviewer_status_text": "HOLD_E5_LOCAL_SOURCEFREE_FANIN_PENDING_OWNER_AUTHORIZED_VERSIONED_M2_FIXTURE_AMENDMENT",
+          "attestation": "OBSERVED_REVIEWER_RETURN__INTEGRATOR_MUST_REVERIFY"
         },
         "owner_decision": {
-          "decision": "PENDING",
-          "reviewed_sha": null,
-          "conflict_tests": [],
+          "decision": "PENDING_OWNER_AUTHORIZED_VERSIONED_M2_FIXTURE_AMENDMENT",
+          "reviewed_sha": "96e6d49ac18274332751c5fbb87c6ed370e8fd9c",
+          "conflict_tests": [
+            "test_17_binding_cannot_resolve_different_release",
+            "test_18_endpoint_failover_only_among_same_release"
+          ],
           "owner": null,
           "decision_ref": null
         },
-        "tests": {}
+        "tests": {
+          "unfiltered": {
+            "passed": 179,
+            "failed": 14,
+            "accepted_conflicts": 2,
+            "historical_defect_presence": 12,
+            "status": "RED_PENDING_OWNER_FIXTURE_AMENDMENT",
+            "owner_approval": "ABSENT"
+          },
+          "filtered_selection": {
+            "passed": 179,
+            "deselected": 14,
+            "status": "SELECTION_NOT_GREEN"
+          },
+          "accepted_b5": {
+            "passed": 39,
+            "failed": 0,
+            "status": "PASS"
+          },
+          "s06g_repair": {
+            "passed": 42,
+            "failed": 0,
+            "status": "PASS"
+          },
+          "e2_independent": {
+            "passed": 10,
+            "failed": 0,
+            "status": "PASS"
+          },
+          "adjacent": {
+            "passed": 45,
+            "failed": 0,
+            "status": "PASS"
+          }
+        }
       }
-    }
+    },
+    "_scope": "PREPARED_FROM_OBSERVED_INDEPENDENT_RETURNS_AND_F0_TEST_RUNS; AN AUTHORIZED INTEGRATOR MUST REVERIFY EXACT SHAS AND ATTEST BEFORE USE"
   },
   "terminal_ledger": {
     "commissioned_branch": "research/pyat-rrif-hq-d1d5-intake-20261031-r1",
     "commissioned_sha": "d80901e9de78803c031fa9d25146f7d8b6aeba2c",
     "live_head_observed_at_preflight": "75eb695ad27652020f9ffc0363f846a7c85ca758",
-    "live_head_note": "75eb695 adds only 06_E4F_RETURN_AND_FINAL_REVIEW_GATE.md above d80901e9; it is HQ intake, not independent E4FR acceptance.",
-    "terminal_decision": "PENDING_REVIEW_CAS"
+    "live_head_note": "75eb695 adds only 06_E4F_RETURN_AND_FINAL_REVIEW_GATE.md above d80901e9; the E4FR and E6 returns are outside that HQ cut and are not ledger acceptance.",
+    "terminal_decision": "PENDING_REVIEW_CAS",
+    "e4fr_return_branch": "review/pyat-rrif-e4fr-d02-corrected-consumer-hostile-20261101-r1",
+    "e4fr_return_sha": "7cd2206fd976606d3816589e2fce03c03c827f39",
+    "e6_return_branch": "review/pyat-rrif-e6-b5m2-postpatch-hostile-20261101-r1",
+    "e6_return_sha": "b0f7675bf4f434bc8964c9b3ebc8392bb33d56fb"
+  },
+  "preflight_observed": {
+    "observed_at_utc": "2026-11-01T18:08:00Z",
+    "host": "oldMac.lan",
+    "premain_head": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+    "e1_head": "ffd03934d0a86c98ed095d973e45587bd5751013",
+    "e4_hostile_head": "5dc00a1eb0d2881a9d74661b7a94d436cc7b7c60",
+    "e4f_head": "f2c0af3273d612bff0a7bd2407532b52caf4348b",
+    "e5_head": "96e6d49ac18274332751c5fbb87c6ed370e8fd9c",
+    "e4fr_head": "7cd2206fd976606d3816589e2fce03c03c827f39",
+    "e6_head": "b0f7675bf4f434bc8964c9b3ebc8392bb33d56fb",
+    "hq_ledger_live_head": "75eb695ad27652020f9ffc0363f846a7c85ca758",
+    "payload_path_intersection_e4f_e5": [],
+    "merge_tree_exit": 0,
+    "merge_tree_tree": "d3faba8905802abb505e2cb1b1a7d3cf43b36bdc"
   }
 }
