@@ -1,0 +1,115 @@
+{
+  "schema": "SOROK_GATE01_COVERAGE_AND_NEGATIVE_TESTS@1",
+  "premain_read_cut": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "branch_head": "3162a4af6b0d543b8da1fb2f5e84c3537ad12716",
+  "checks": [
+    {
+      "id": "G01-EXACT-BRANCH-ROSTER",
+      "expected": 294,
+      "observed": 294,
+      "pass": true,
+      "evidence": "02_ALL_294_HISTORICAL_BRIDGES.jsonl one row per unique original branch name"
+    },
+    {
+      "id": "G01-NO-DUPLICATE-BRIDGE",
+      "expected": "294 unique names and bridge_ids",
+      "observed": "294 unique",
+      "pass": true
+    },
+    {
+      "id": "G01-DISJOINT-UNION",
+      "expected": "189 excluded + 8 integration-only + 97 true undecided = 294",
+      "observed": "189+8+97=294",
+      "pass": true
+    },
+    {
+      "id": "G01-B3AS-NOT-REOPENED",
+      "expected": "B3AS only integration/owner review; not in true-undecided survivors",
+      "observed": "SOROK294-002 accepted-scoped integration only; B3AS review rows historical",
+      "pass": true
+    },
+    {
+      "id": "G01-C9R-NOT-REOPENED",
+      "expected": "C9R/C9RI scoped acceptance; no new 29-case review",
+      "observed": "C9R SOROK294-011 integration only; C9RI review historical",
+      "pass": true
+    },
+    {
+      "id": "G01-JOIN-E-NOT-REOPENED",
+      "expected": "JOIN-E accepted scoped; JOIN-V review historical; no new fork repair",
+      "observed": "D273/D294 integration only; D274 historical review; DEV-R closed",
+      "pass": true
+    },
+    {
+      "id": "G01-DEV-R-CLOSED",
+      "expected": "DEV-R not a survivor",
+      "observed": "codex/sorok-dev-r-20261022 classified closed-redo",
+      "pass": true
+    },
+    {
+      "id": "G01-ACCEPTED-NOT-MERGED",
+      "expected": "0 exact accepted branch source blobs in current PREMAIN",
+      "observed": "0/294 exact primary blobs present; no actual current consumer",
+      "pass": true
+    },
+    {
+      "id": "G01-NO-FALSE-MERGED",
+      "expected": "No current_status EXACTLY_INCORPORATED for accepted-not-merged branches",
+      "observed": "B3AS/C9R/JOIN-E remain ACCEPTED_SCOPED_NOT_IN_PREMAIN",
+      "pass": true
+    },
+    {
+      "id": "G01-NATIVE-HOLDS",
+      "expected": "No native CAN/ADP/SCI05/C8/C9/C12/C11/Pyat/A5 adoption",
+      "observed": "all sourcefree/scoped/historical; native holds in HDE-019 and current progress",
+      "pass": true
+    },
+    {
+      "id": "G01-CURRENT-PAIR-CONFLICT",
+      "expected": "Record md36 vs json35 disagreement",
+      "observed": "HDE-001/HDE-002/HDE-018; md parent 80b != current 8e44; json only B3AS acceptance",
+      "pass": true
+    },
+    {
+      "id": "G01-NEGATIVE-EVIDENCE-RETAINED",
+      "expected": "B3/X3, BP2P4JI, C9 R3B, BP4R and other old negatives not erased",
+      "observed": "negative fields/excerpts in 02/03 and HDE-011/HDE-008; no new source census",
+      "pass": true
+    }
+  ],
+  "counts": {
+    "original_branch_records": 294,
+    "excluded_from_recovery": 189,
+    "accepted_scoped_integration_only": 8,
+    "true_undecided_survivors": 97,
+    "named_function_records_in_bridge": 1252,
+    "code_entrypoint_records": 1510,
+    "exact_primary_source_blob_in_current_premain": 0,
+    "actual_current_first_consumer_proved": 0
+  },
+  "disjointness": {
+    "excluded_bridge_ids": 189,
+    "integration_bridge_ids": 8,
+    "survivor_bridge_ids": 97,
+    "union": 294,
+    "duplicates": 0
+  },
+  "native_holds": [
+    "CAN008 concrete Rule A",
+    "CAN011 concrete Rule T/grant",
+    "ADP007/009/015/019/020 actor/event/genealogy/memory/access",
+    "SCI05",
+    "C8 D1/D2/D3",
+    "Pyat N11/N12",
+    "C11/native C12",
+    "human A5",
+    "production/PRE-MAIN adoption"
+  ],
+  "not_tested": [
+    "No historical worker script was executed.",
+    "No current or historical source implementation was imported.",
+    "No native survey/actor/world source was run.",
+    "No human A5 or production service was used."
+  ],
+  "verdict": "PASS_SCOPED_FOR_294_BRANCH_DECISION_BRIDGE__NOT_WHOLE_PROGRAM_COMPLETION"
+}
