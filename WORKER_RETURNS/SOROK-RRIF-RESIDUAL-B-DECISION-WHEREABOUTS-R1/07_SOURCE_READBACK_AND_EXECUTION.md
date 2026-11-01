@@ -14,8 +14,9 @@
 | Remote branch at start | `42ad21a53cc82e3c17445b099903c12d927b2f12` |
 | Worktree | `/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-rrif-residual-b-20261031-r1` |
 | Local branch HEAD at start | `42ad21a53cc82e3c17445b099903c12d927b2f12` |
-| Content commit (pre-push) | `TO_BE_RECORDED_AFTER_COMMIT` |
-| Final returned SHA | `TO_BE_RECORDED_AFTER_PUSH` (direct `ls-remote` readback) |
+| Content commit | `1cf5eb3d3676632c1f7b2fbe66c6a1ed73318160` |
+| Final returned content SHA | `1cf5eb3d3676632c1f7b2fbe66c6a1ed73318160` (direct `ls-remote` readback) |
+| Receipt-only follow-up | branch HEAD recorded in the final handback; contains this readback update only |
 
 The worktree was created from the canonical private clone at `~/Desktop/rawlsing_r02v_r2_canonical` using the exclusive assigned branch. No other session/worktree was modified. No force, reset, branch deletion, source-native execution, PRE-MAIN write, Pyat work or PROGRAMMA work occurred.
 
