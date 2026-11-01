@@ -1,3 +1,11 @@
+# PYAT RRIF — FINITE TERMINAL CLOSEOUT — 2026-11-01
+
+The post-gap RRIF branch/function recovery docket is **CLOSED at exact finite historical scope**, not as full original-source science or total Rawlsing production. Current protected receiving has C3 PR #602 MERGED `0075c15fdfb1ca7dea3c5cb54ace3652e0201441` and B5/M2 PR #605 MERGED `fe3f5b4714b11015813537407f7eb4bbb6bc2c10`. M2 modern scoped sourcefree 175 PASS unfiltered, direct proof witness PASS, original M2 v1.0 unchanged archived. Historic G01 2 RED, FIABC 144 PASS/3 RED, S06FR old 12 defect-presence assertion RED retained. 34 lineages/321 code branch identities/155 introducers fully accounted with narrow current, explicitly held and historical non-current fates. All native/source-science/actor/external rights remain held. PROGRAMMA remains stopped by user until fresh explicit release. Canonical terminal detail: `PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/RRIF_FINITE_TERMINAL_CLOSEOUT_20261101.md`; exact row ledger `RRIF_THIRTY_FOUR_LINEAGE_TERMINAL_20261101.jsonl`.
+
+Earlier progress retained intact below.
+
+---
+
 # PYAT RRIF M2 VERSIONED SOURCEFREE RECEIVING — 2026-11-01
 
 User authorized completion of the exact HQ118 M2 v1.1 accepted-fixture decision after recommendation. This branch contains byte-identical E6-reviewed B5/M2 production blobs (E5 `96e6d49ac18274332751c5fbb87c6ed370e8fd9c`); 28-case original M2 accepted test blob `d45b54190815b4c6af506579962a9aac8a7074c2` preserved verbatim as non-discovered historical archive; only active test cases 17/18 are versioned to first assert atomic `RELEASE_UNAVAILABLE`, then lawfully register exact foreign subject + five closures + release, and preserve original downstream `PUBLICATION_BINDING_MISMATCH`. E6's independent 11-case adversarial suite is included byte-exact. No new scientific or original source rights.
