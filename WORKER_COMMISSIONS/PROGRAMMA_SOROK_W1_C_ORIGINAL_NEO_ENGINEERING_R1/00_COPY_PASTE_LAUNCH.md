@@ -1,0 +1,46 @@
+# COPY-PASTE LAUNCH — PROGRAMMA SOROK WAVE 1 / C
+
+ROLE: Independent source-grounded Browser investigator for Original V3, Neo V3, current engineering and real consumer topology. NOT Sorok HQ, Codex HQ, original scientist/owner, code engineer, canonical integrator or your own reviewer.
+REPOSITORY: maidiu/rawlsing (PRIVATE). Read-only source across GitHub + authorized native ChatGPT Library; write ONLY your own isolated return folder on the assigned branch.
+PROPOSED USER-SELECTED EDITOR/MODEL: Browser / GPT-6 HIGH. Actual Browser model/effort/account must be explicitly user-selected and verified when available; no automatic switch. INTELLIGENCE: I3 / HIGH.
+EXECUTION: S0/S1 authenticated private GitHub + native Library research; NO S2/local Mac execution unless the user separately commissions it. If missing source requires mainMac, specify exact targeted follow-up only; do not fake S2 or direct new agents.
+SINGLE_AGENT_FULL_DELIVERABLE: YES. Parallel with other W1 A-E; all five independent, no cross-branch worker writes. No active worker disturbance, no PRE-MAIN/worker/HQ/canonical state mutation, no Pyat substantive work, no owner-science issuance or agent self-appointment.
+BRANCH: research/programma-sorok-w1-c-original-neo-engineering-20261101-r1
+COMMISSION PATH: WORKER_COMMISSIONS/PROGRAMMA_SOROK_W1_C_ORIGINAL_NEO_ENGINEERING_R1/00_COPY_PASTE_LAUNCH.md
+SOURCE OF SHARED RULES: WORKER_COMMISSIONS/PROGRAMMA_SOROK_W1_COMMON/00_SHARED_VISION_AND_RESEARCH_CONTRACT.md; this file is inherited in YOUR branch from the single source-bounded common W1 base and MUST be read first. If you cannot access it, return honest SOURCE_UNAVAILABLE rather than ignoring its core nonnegotiables.
+
+SHARED OBJECTIVE IN BRIEF: We are BUILDING PROGRAMMA SOROK—the maximally comprehensible, source-linked, updatable, navigable, useful WHOLE program of Sorok's conception-to-finish development. We are NOT building a person inside this first wave; recovered RRIF code, P1, O-LIVE, historical question inventories and original theories are inputs, NOT automatic organizing centers. One logical reference; maximum capability/minimum complication; no bureaucratic review treadmill; no missing source invented; no simulated self-review in live state. The output is substantive RESEARCH FOR THE DESIGN, not a new Programma backend, a psychological rule or an adopted architecture.
+
+## YOUR DISTINCT RESEARCH COMMISSION
+
+MISSION: Map the actual implementation organism, old through current, to identify what a WHOLE PROGRAMMA must be able to navigate from a named requirement all the way to exact source/function/consumer and back. Distinguish actual runnable/current from historic external staging, code found only in worker branches, sourcefree fixture, reviewed-scoped sourcefree and protected native. No code implementation this wave.
+
+PRIMARY SOURCES:
+1. Original vs Neo engineering return @10c4b25f2b7f421ef476610c4dd0e3c674e8f3bc, particularly 114 original V3 Python modules/579 functions/43 classes source registry, functional provenance, 37-node/35-edge actual consumer graph and missing-function/contradiction artifacts; check a meaningful sample of ORIGINAL historical source files/modules/member hashes against actual Git/archive where browser access exists. Original archive container hash mismatch is separate from matching 114 member bytes.
+2. Original V3 framework v3.4, driverSchema.json, driverTypeWeights.js, enneagramBatch.js, Full Rawlsing Vector Pipeline, V2 importer and external staging application, where accessible. Historical external path server/generation/simulation.py → v3/io/persona_sheet.py → server/chat/turn.py → v2/run_conversation_chat.py is NOT current PRE-MAIN native import merely because it once ran.
+3. Neo sourcefree BP1/BP2/BP3/BP4/BP2P4J/R31J/R31E/JOIN-E, actual reviewed JOIN-V, C9R/C9RI, C12 verifier/custody, first A0/A2 encounter and current m1–m6/GT0; use actual code and last independent review where verified.
+4. Full E sourcefree RRIF archive @8d9585296ff264b947559f4a78f49f73ca45e53a, F1 independent RED @86afe1845022fcf3cdd9e8b5ca4136ddb661336c, F2 full Git 459-blobs author-test repair @cf578514434532b48e86c76c1d38d6250323a1ce. Sourcefree P1 @b65c75a9e62618690f7d02265bc9e850af549161. These are examples/inputs, NOT the taxonomy or automatic merged capital.
+5. Original CAN008/CAN011/ADP/SCI05, PFF/V2, C0–C12/A0–A5, C11 seam, external Pyat N11/N12 receiver requirements as actually owned. Current PRE-MAIN @8e44ca9c751049d65e6def47600b5c073ee04b29 at preparation; recheck live.
+6. O-LIVE current one-reference candidate @a89e5ccbe67400168aaea8367f7aa00ca0de7625 only to identify how real code/function/consumer edges could be represented, not to engineer it.
+
+QUESTIONS YOU MUST ANSWER:
+- Which actual original V3 functions can be source-verified, what are their inputs, outputs and ORIGINAL first consumers, and what has no current owner/consumer? Which genuinely reusable functional innovations survived a rejected scalar/type/LLM fallback model?
+- For the Neo/current chain, which concrete module/function instantiates objective external B material event, world/actor access distinction, immediate A, durable T or lawful NO_CHANGE, C8/C9/C12 storage/read/cold, first interaction and V2 expression? Which are author fixture vs independently reviewed vs actually merged/current? No blind claim that a code path has a real first consumer.
+- Identify exact code-contract fractures with evidence: C9 actor_meta absent, C9/C12 writer/read cut mismatch, CP-A5 separate root, sourcefree C12 selfhash vs external custody, original old V3 container mismatch, BP2P4J verifier, owner selection. Do not unnecessarily re-investigate already closed named repairs.
+- Specify minimal data/provenance needed for PROGRAMMA implementation nodes: source commit/tree/blob + path + symbol signature where verified, dependency/import, actual executor/test/first caller, review, scientific authority, historical/currentness, known broken edge, owner and its consequence for terminal product.
+- Demonstrate 4–5 bidirectional use cases: start at original function and ascend to purpose/user consequence; start at modern blocked actor+consumer and find exact historical comparable code and why it cannot simply be imported; start at an original scientific requirement and trace actual module or qualified NONE; sourcefree P1 returned at exact cut and what is still unknown; verified fork/cold code vs untrusted owner anchor.
+- State narrowly which materially needed original files/live tests REQUIRE local mainMac. Propose an exact single evidence retrieval request (paths/expected hashes/test/why needed), not an unlimited archive excavation; do NOT commission or start it.
+
+LIMITS: BROWSER documentary code reads through authenticated private GitHub/Library; do not claim S2 execution, local SHA256 verification of unreachable external archive, native person startup, real model execution or productive repo edits. Do not develop the person, rewrite old code, move files, merge PRE-MAIN or create new import architecture.
+
+YOUR DISTINCT OUTPUT: source-backed old/current function and consumer topology, exact version/authority separations, engineering graph requirements and critical missing implementation edges, not another comprehensive recovery census.
+
+## STRICT RETURN CONTRACT
+Write ONLY under WORKER_RETURNS/PROGRAMMA_SOROK_W1_C_ORIGINAL_NEO_ENGINEERING_R1/ on this same isolated branch:
+- 00_FINDINGS_AND_RECOMMENDATIONS.md — substantial, argued, source-linked and explicit source-read depth, real contradictions, decisive architecture requirements, alternative findings/WHY_NOT, specific open gaps, 2–4 highest-value decisions for joint synthesis. Do not pad with process narrative or generic status tables.
+- 01_SOURCE_GROUNDED_ATOMIC_FINDINGS.json — lightweight machine-ready claim/relation candidates as defined in shared W1 contract; actual commit/path/blob/section or Library source/location; historical vs current and author vs reviewer vs owner scopes. Do not turn this into a competing canonical graph/schema.
+- 02_REAL_TRAVERSALS_ALTERNATIVES_AND_GAPS.md — required real cases for THIS prong, inverse or lateral traversal, meaningful broken edges, source/reviewer grade, alternatives and falsifiers.
+- SESSION_LOCATOR.json — actual source cuts/reads, Library access, host/model/effort UNKNOWN if not exposed, READ vs NOT_READ vs NOT_RUN, and actual final pushed SHA if technically possible without self-reference; provide SHA in final message.
+One source-grounded recommendation can be decisive; do not manufacture artificial issue volume. No PR, source code, canonical PROGRAMMA state or cross-owner mutations. A good return creates architectural knowledge and permits comparison; it does NOT make every question green.
+
+MANDATORY FINAL RESPONSE: final exact 40-hex remote branch SHA, direct links to the three substantive returns, 4–8 sentences on the most important findings, substantive source omissions and how this prong materially changes the shared architectural choice. No new subcommissions.
